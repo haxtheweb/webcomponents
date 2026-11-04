@@ -20,6 +20,13 @@ class MultipleChoice extends QuestionElement {
       verbs: ["answered"],
       objectType: "http://adlnet.gov/expapi/activities/cmi.interaction",
       interactionType: "choice",
+      definition: [
+        "name",
+        "interactionType",
+        "choices",
+        "correctResponsesPattern",
+      ],
+      response: "ids of the selected choices joined by [,]",
       result: [
         "success",
         "completion",
@@ -54,9 +61,11 @@ class MultipleChoice extends QuestionElement {
     return html`<p>
       ${this._tParts(this.t.multipleChoiceDirections, {
         selection: html`<strong
-          >${!this.singleOption
-            ? this.t.selectAllThatApply
-            : this.t.selectTheAnswer}</strong
+          >${
+            !this.singleOption
+              ? this.t.selectAllThatApply
+              : this.t.selectTheAnswer
+          }</strong
         >`,
         checkAnswer: html`<strong>${this.t.checkAnswer}</strong>`,
       })}

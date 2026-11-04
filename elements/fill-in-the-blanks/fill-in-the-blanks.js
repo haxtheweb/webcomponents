@@ -4,6 +4,13 @@
  */
 import { html, css } from "lit";
 import { MarkTheWords } from "@haxtheweb/mark-the-words/mark-the-words.js";
+import {
+  fillInResponse,
+  XAPI_ITEM_DELIMITER,
+} from "@haxtheweb/user-action/lib/xapi.js";
+
+// most correctResponsesPattern combinations sent for blanks with synonyms
+const FILL_IN_PATTERN_LIMIT = 32;
 
 /**
  * `fill-in-the-blanks`
@@ -28,6 +35,8 @@ class FillInTheBlanks extends MarkTheWords {
       verbs: ["answered"],
       objectType: "http://adlnet.gov/expapi/activities/cmi.interaction",
       interactionType: "fill-in",
+      definition: ["name", "interactionType", "correctResponsesPattern"],
+      response: "the text of each blank, in order, joined by [,]",
       result: [
         "success",
         "completion",
@@ -40,16 +49,44 @@ class FillInTheBlanks extends MarkTheWords {
       done: "answered correctly or out of attempts",
     };
   }
-  // what the learner typed in each blank, in order
+  // xAPI fill-in: one item per blank, in order, joined by "[,]" (order
+  // matters, the spec default); items are compared without case and
+  // trimmed, as isCorrect does, which a pattern without {case_matters=true}
+  // means. A blank with synonyms has several right answers, so the pattern
+  // lists every combination, up to FILL_IN_PATTERN_LIMIT; beyond that, or
+  // when an answer holds the "[,]" delimiter, no pattern is sent rather than
+  // a wrong one. No components: the response is the learner's own text.
+  xapiDefinition() {
+    const blanks = (this.answers || []).map((a) =>
+      (Array.isArray(a.answer) ? a.answer : [a.answer])
+        .map((t) => String(t == null ? "" : t).trim())
+        .filter(Boolean),
+    );
+    if (
+      !blanks.length ||
+      blanks.some(
+        (list) =>
+          !list.length || list.some((t) => t.includes(XAPI_ITEM_DELIMITER)),
+      ) ||
+      blanks.reduce((n, list) => n * list.length, 1) > FILL_IN_PATTERN_LIMIT
+    ) {
+      return {};
+    }
+    let combos = [[]];
+    blanks.forEach((list) => {
+      combos = combos.flatMap((c) => list.map((t) => [...c, t]));
+    });
+    return { correctResponsesPattern: combos.map((c) => fillInResponse(c)) };
+  }
+  // what the learner typed or picked in each blank, in order
   learnerResponse() {
-    return (this.answers || [])
-      .map((_a, i) => {
-        const input =
-          this.shadowRoot &&
-          this.shadowRoot.querySelector(`[data-answer-index="${i}"]`);
-        return input && input.value != null ? String(input.value) : "";
-      })
-      .join("[,]");
+    const items = (this.answers || []).map((_a, i) => {
+      const input =
+        this.shadowRoot &&
+        this.shadowRoot.querySelector(`[data-answer-index="${i}"]`);
+      return input && input.value != null ? String(input.value).trim() : "";
+    });
+    return items.some(Boolean) ? fillInResponse(items) : "";
   }
   learnerScore() {
     return {
@@ -342,9 +379,11 @@ class FillInTheBlanks extends MarkTheWords {
       <div class="text">
         ${this.wordList.map(
           (word) => html`
-            ${word.text.match(/^\[?[^[\]]*\]/)
-              ? this.renderFillInBlankField(word)
-              : html`${word.text} `}
+            ${
+              word.text.match(/^\[?[^[\]]*\]/)
+                ? this.renderFillInBlankField(word)
+                : html`${word.text} `
+            }
           `,
         )}
       </div>
@@ -415,9 +454,9 @@ class FillInTheBlanks extends MarkTheWords {
     }
     return html`<span class="blank ${status}"
         ><span class="blank-number" aria-hidden="true">${index + 1}</span
-        >${control}${status
-          ? this.renderOptionStatus(status === "correct")
-          : ""}</span
+        >${control}${
+          status ? this.renderOptionStatus(status === "correct") : ""
+        }</span
       >${trailing} `;
   }
 

@@ -10,10 +10,13 @@ import {
   MemoryStatementAdapter,
 } from "@haxtheweb/user-scaffold/lib/user-scaffold-storage.js";
 import {
+  activityId,
   buildStatement,
+  legacyActivityId,
   pageUrl,
   XAPI_EXTENSIONS,
 } from "@haxtheweb/user-action/lib/xapi.js";
+import "@haxtheweb/multiple-choice/multiple-choice.js";
 
 const flush = (ms = 40) => new Promise((r) => setTimeout(r, ms));
 const page = (id, order, title, tags = "") => ({
@@ -141,6 +144,49 @@ describe("HAXcms learner progress", () => {
       new CustomEvent("learner-progress-request", { detail }),
     );
     expect(detail.record.status).to.equal("correct");
+  });
+
+  it("keeps choice ids in the record, plain words beside them, and migrates old keys", async () => {
+    host.innerHTML = `<multiple-choice resource="#saved-res" question="Faster in air?"><input data-correct="true" value="Light" /><input value="Sound" /></multiple-choice>`;
+    const q = host.firstElementChild;
+    await flush();
+    await q.updateComplete;
+    // an earlier version saved this question under its fingerprint key
+    const oldId = legacyActivityId(q);
+    expect(oldId).to.not.equal(activityId(q));
+    UserScaffoldInstance.recordStatement(
+      "lp-site",
+      buildStatement({
+        verb: "answered",
+        object: { id: oldId, interactionType: "choice" },
+        result: {
+          success: false,
+          response: "Sound",
+          extensions: { [XAPI_EXTENSIONS.attempts]: 1 },
+        },
+      }),
+      { page: "p1", trackable: true },
+    );
+    // the question asks on load: the old record is found and moved
+    globalThis.dispatchEvent(new CustomEvent("learner-progress-ready"));
+    await flush();
+    const site = UserScaffoldInstance.readSite("lp-site");
+    expect(site.activities[oldId]).to.equal(undefined);
+    expect(site.activities[activityId(q)].migratedFrom).to.equal(oldId);
+    expect(site.pages.p1.activities).to.include(activityId(q));
+    expect(site.pages.p1.activities).to.not.include(oldId);
+    // a new answer: ids in response, text resolved for the dashboard
+    q.resetAnswer();
+    await flush();
+    q.displayedAnswers.forEach((a) => {
+      a.userGuess = a.label === "Light" ? true : "";
+    });
+    q.checkAnswer();
+    await flush(80);
+    const act = UserScaffoldInstance.readActivity("lp-site", activityId(q));
+    expect(act.count).to.equal(2);
+    expect(act.response).to.match(/^c-[0-9a-f]{8}$/);
+    expect(act.responseText).to.equal("Light");
   });
 
   it("counts trackable elements on the page and applies the done rule", async () => {

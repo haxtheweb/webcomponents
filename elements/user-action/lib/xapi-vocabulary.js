@@ -68,6 +68,8 @@ export const XAPI_VOCABULARY = {
     verbs: ["answered"],
     objectType: "http://adlnet.gov/expapi/activities/cmi.interaction",
     interactionType: "fill-in",
+    definition: ["name", "interactionType", "correctResponsesPattern"],
+    response: "the text of each blank, in order, joined by [,]",
     result: [
       "success",
       "completion",
@@ -97,6 +99,13 @@ export const XAPI_VOCABULARY = {
     verbs: ["answered"],
     objectType: "http://adlnet.gov/expapi/activities/cmi.interaction",
     interactionType: "choice",
+    definition: [
+      "name",
+      "interactionType",
+      "choices",
+      "correctResponsesPattern",
+    ],
+    response: "ids of the words marked joined by [,]",
     result: [
       "success",
       "completion",
@@ -115,6 +124,14 @@ export const XAPI_VOCABULARY = {
     verbs: ["answered"],
     objectType: "http://adlnet.gov/expapi/activities/cmi.interaction",
     interactionType: "matching",
+    definition: [
+      "name",
+      "interactionType",
+      "source",
+      "target",
+      "correctResponsesPattern",
+    ],
+    response: "source[.]target id pairs joined by [,]",
     result: [
       "success",
       "completion",
@@ -133,6 +150,13 @@ export const XAPI_VOCABULARY = {
     verbs: ["answered"],
     objectType: "http://adlnet.gov/expapi/activities/cmi.interaction",
     interactionType: "choice",
+    definition: [
+      "name",
+      "interactionType",
+      "choices",
+      "correctResponsesPattern",
+    ],
+    response: "ids of the selected choices joined by [,]",
     result: [
       "success",
       "completion",
@@ -151,6 +175,8 @@ export const XAPI_VOCABULARY = {
     verbs: ["answered"],
     objectType: "http://adlnet.gov/expapi/activities/cmi.interaction",
     interactionType: "fill-in",
+    definition: ["name", "interactionType", "correctResponsesPattern"],
+    response: "the text the learner typed",
     result: [
       "success",
       "completion",
@@ -169,6 +195,13 @@ export const XAPI_VOCABULARY = {
     verbs: ["answered"],
     objectType: "http://adlnet.gov/expapi/activities/cmi.interaction",
     interactionType: "sequencing",
+    definition: [
+      "name",
+      "interactionType",
+      "choices",
+      "correctResponsesPattern",
+    ],
+    response: "choice ids in the learner's order joined by [,]",
     result: [
       "success",
       "completion",
@@ -186,7 +219,14 @@ export const XAPI_VOCABULARY = {
     event: "user-engagement",
     verbs: ["answered"],
     objectType: "http://adlnet.gov/expapi/activities/cmi.interaction",
-    interactionType: "matching",
+    interactionType: "choice",
+    definition: [
+      "name",
+      "interactionType",
+      "choices",
+      "correctResponsesPattern",
+    ],
+    response: "ids of the tags applied joined by [,]",
     result: [
       "success",
       "completion",
@@ -205,6 +245,8 @@ export const XAPI_VOCABULARY = {
     verbs: ["answered"],
     objectType: "http://adlnet.gov/expapi/activities/cmi.interaction",
     interactionType: "true-false",
+    definition: ["name", "interactionType", "correctResponsesPattern"],
+    response: "true or false",
     result: [
       "success",
       "completion",

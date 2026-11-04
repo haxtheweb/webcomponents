@@ -100,6 +100,37 @@ export const XAPI_EXTENSIONS = {
 
 export const XAPI_PLATFORM = "HAX";
 
+/**
+ * xAPI 1.0.3 interaction types (cmi.interaction interactionType)
+ */
+export const XAPI_INTERACTION_TYPES = [
+  "true-false",
+  "choice",
+  "fill-in",
+  "long-fill-in",
+  "matching",
+  "performance",
+  "sequencing",
+  "likert",
+  "numeric",
+  "other",
+];
+
+/**
+ * Interaction component lists an object definition can carry
+ */
+export const XAPI_COMPONENT_LISTS = [
+  "choices",
+  "scale",
+  "source",
+  "target",
+  "steps",
+];
+
+// response / correctResponsesPattern delimiters (xAPI 1.0.3)
+export const XAPI_ITEM_DELIMITER = "[,]";
+export const XAPI_PAIR_DELIMITER = "[.]";
+
 // FNV-1a 32 bit, hex. Deterministic and tiny; not a security feature.
 export function xapiHash(str) {
   let h = 0x811c9dc5;
@@ -183,10 +214,36 @@ export function siteUrl() {
 }
 
 /**
- * Stable activity id for an element: page URL + "#" + key. The key is the
- * element id when it has one; otherwise its tag plus a hash of what the
- * author wrote (question, title or the fingerprint given), plus its position
- * among same-key elements when more than one on the page would collide.
+ * The `resource` attribute an element had in its markup when it connected
+ * (authored, or saved by HAX), or "" when it had none. SchemaBehaviors
+ * (@haxtheweb/schema-behaviors) records it as `_xapiAuthoredResource` before
+ * its first update, which is when it generates a random `resource` for
+ * elements without one; a generated value changes on every page load, so it
+ * is never used here. Elements without SchemaBehaviors can set
+ * `_xapiAuthoredResource` themselves (read the attribute in
+ * connectedCallback before anything can write it).
+ * @param {HTMLElement} element
+ * @returns {string}
+ */
+export function authoredResource(element) {
+  const r =
+    element && typeof element._xapiAuthoredResource === "string"
+      ? element._xapiAuthoredResource.trim()
+      : "";
+  return r && r !== "null" ? r : "";
+}
+
+/**
+ * Stable activity id for an element: page URL + "#" + key. The key is, in
+ * order:
+ *   1. the element id, when the author set one;
+ *   2. the `resource` the element had in its markup (see authoredResource;
+ *      never one generated during this page load), without its leading "#";
+ *   3. its tag plus a hash of what the author wrote (question, title or the
+ *      fingerprint given).
+ * 2 and 3 add the element's position among same-key elements ("-1", "-2")
+ * when more than one on the page would collide (a block duplicated with its
+ * resource, two identical questions).
  * @param {HTMLElement} element
  * @param {string} [fingerprint] author content that identifies it
  * @returns {string}
@@ -198,19 +255,70 @@ export function activityKey(element, fingerprint) {
   if (element.id) {
     return String(element.id);
   }
+  const resource = authoredResource(element);
+  if (resource) {
+    const base = resource.replace(/^#/, "");
+    return withPosition(
+      element,
+      base,
+      (peer) => !peer.id && authoredResource(peer) === resource,
+      "[resource]",
+    );
+  }
   const base = baseKey(
     element,
     fingerprint != null ? fingerprint : fingerprintOf(element),
   );
+  return withPosition(
+    element,
+    base,
+    (peer) =>
+      !peer.id &&
+      !authoredResource(peer) &&
+      baseKey(peer, fingerprintOf(peer)) === base,
+  );
+}
+
+/**
+ * The key activityKey gave before authored resources were used (element id,
+ * else tag + fingerprint hash + position among same-fingerprint elements).
+ * Lets a progress store find, once, what it saved under that key.
+ * @param {HTMLElement} element
+ * @param {string} [fingerprint]
+ * @returns {string}
+ */
+export function legacyActivityKey(element, fingerprint) {
+  if (!element) {
+    return "";
+  }
+  if (element.id) {
+    return String(element.id);
+  }
+  const base = baseKey(
+    element,
+    fingerprint != null ? fingerprint : fingerprintOf(element),
+  );
+  return withPosition(
+    element,
+    base,
+    (peer) => !peer.id && baseKey(peer, fingerprintOf(peer)) === base,
+  );
+}
+
+export function legacyActivityId(element, fingerprint) {
+  const key = legacyActivityKey(element, fingerprint);
+  return `${pageUrl()}#${encodeURIComponent(key)}`;
+}
+
+// base, or base-n when element is the n-th (0 based) of the peers on its
+// page that share the base; selector defaults to the element's tag
+function withPosition(element, base, isPeer, selector) {
   let n = 0;
   try {
-    const tag = element.tagName.toLowerCase();
     const root = element.getRootNode();
-    const peers = Array.from(root.querySelectorAll(tag)).filter(
-      (peer) =>
-        peer === element ||
-        (!peer.id && baseKey(peer, fingerprintOf(peer)) === base),
-    );
+    const peers = Array.from(
+      root.querySelectorAll(selector || element.tagName.toLowerCase()),
+    ).filter((peer) => peer === element || isPeer(peer));
     n = peers.indexOf(element);
   } catch {
     n = 0;
@@ -350,7 +458,9 @@ function cleanScore(score) {
  * @param {Object} parts
  * @param {string} parts.verb key of XAPI_VERBS or a full verb IRI
  * @param {Object} parts.object { id, name, description, type,
- *   interactionType, extensions } or an element (then its activityId is used)
+ *   interactionType, correctResponsesPattern, choices, scale, source, target,
+ *   steps, extensions }; component lists are [{ id, description }] with the
+ *   description as text (put in a language map here) or a language map
  * @param {Object} [parts.result] { success, completion, response, score:
  *   {raw, max, min, scaled}, duration, extensions }
  * @param {Object} [parts.context] { pageId, pageName, siteId, siteName,
@@ -388,6 +498,25 @@ export function buildStatement({
   if (obj.interactionType) {
     definition.type = XAPI_ACTIVITY_TYPES.interaction;
     definition.interactionType = obj.interactionType;
+    if (
+      Array.isArray(obj.correctResponsesPattern) &&
+      obj.correctResponsesPattern.length
+    ) {
+      definition.correctResponsesPattern = obj.correctResponsesPattern.map(
+        (p) => String(p),
+      );
+    }
+    XAPI_COMPONENT_LISTS.forEach((list) => {
+      if (Array.isArray(obj[list])) {
+        definition[list] = obj[list].map((c) => ({
+          id: String(c.id),
+          description:
+            c.description && typeof c.description === "object"
+              ? { ...c.description }
+              : languageMap(c.description, lang),
+        }));
+      }
+    });
   }
   if (obj.extensions) {
     definition.extensions = { ...obj.extensions };
@@ -478,6 +607,192 @@ export function responseText(value) {
     return JSON.stringify(value);
   } catch {
     return "";
+  }
+}
+
+/*
+ * Interaction components (xAPI 1.0.3 "Interaction Activities"): for choice,
+ * sequencing, matching (and likert, performance) result.response and
+ * correctResponsesPattern hold component ids; what each id means lives in
+ * object.definition (choices, source, target, ...).
+ *
+ * Component ids: "c-" + 8 hex characters of a hash of the component's text
+ * (whitespace collapsed). They depend only on the text, so reordering or
+ * shuffling options keeps every id and rewording an option gives it a new
+ * one. Two options with the same id in one list (same text, or a hash
+ * collision) are told apart deterministically: they are ordered by their
+ * text and the second gets "-2", the third "-3", ... Ids only use
+ * [a-z0-9-], so they never contain the "[,]" or "[.]" delimiters.
+ */
+function componentText(text) {
+  let s = String(text == null ? "" : text);
+  if (typeof s.normalize === "function") {
+    s = s.normalize("NFC");
+  }
+  return s.replace(/\s+/g, " ").trim();
+}
+
+export function componentId(text) {
+  return `c-${xapiHash(componentText(text)).padStart(8, "0")}`;
+}
+
+/**
+ * Ids for a list of component texts, in the same order, unique in the list
+ * @param {string[]} texts
+ * @returns {string[]}
+ */
+export function componentIds(texts) {
+  const list = Array.isArray(texts) ? texts.map(componentText) : [];
+  const ids = list.map((t) => componentId(t));
+  const byId = {};
+  ids.forEach((id, i) => {
+    (byId[id] = byId[id] || []).push(i);
+  });
+  Object.keys(byId).forEach((id) => {
+    const group = byId[id];
+    if (group.length < 2) {
+      return;
+    }
+    group
+      .slice()
+      .sort((a, b) => (list[a] < list[b] ? -1 : list[a] > list[b] ? 1 : a - b))
+      .forEach((index, n) => {
+        ids[index] = n === 0 ? id : `${id}-${n + 1}`;
+      });
+  });
+  return ids;
+}
+
+/**
+ * Component list for an object definition: [{ id, description }]
+ * (description stays text; buildStatement makes it a language map)
+ * @param {string[]} texts
+ */
+export function interactionComponents(texts) {
+  const list = Array.isArray(texts) ? texts : [];
+  const ids = componentIds(list);
+  return list.map((t, i) => ({ id: ids[i], description: componentText(t) }));
+}
+
+/**
+ * result.response / pattern for choice and sequencing: ids joined by "[,]"
+ */
+export function choiceResponse(ids) {
+  return (Array.isArray(ids) ? ids : [])
+    .filter((id) => id != null && id !== "")
+    .join(XAPI_ITEM_DELIMITER);
+}
+
+/**
+ * result.response / pattern for matching: [[sourceId, targetId], ...] as
+ * "s[.]t[,]s2[.]t2"
+ */
+export function matchingResponse(pairs) {
+  return (Array.isArray(pairs) ? pairs : [])
+    .filter((p) => Array.isArray(p) && p[0] && p[1])
+    .map((p) => `${p[0]}${XAPI_PAIR_DELIMITER}${p[1]}`)
+    .join(XAPI_ITEM_DELIMITER);
+}
+
+/**
+ * One fill-in / long-fill-in item of free text. The spec has no escape for
+ * the "[,]" delimiter, so it (and "[.]") is reduced to its middle character.
+ * A characterstring parameter ({case_matters=...}, {lang=...}) is only
+ * recognised at the start of an item, so text that itself starts with "{"
+ * gets the item level {lang=<tag>} parameter the spec defines in front of
+ * it; readers drop that prefix and read the text after it unchanged.
+ * @param {string} text
+ * @param {string} [lang]
+ */
+export function fillInItem(text, lang) {
+  const s = String(text == null ? "" : text)
+    .split(XAPI_ITEM_DELIMITER)
+    .join(",")
+    .split(XAPI_PAIR_DELIMITER)
+    .join(".");
+  return s.charAt(0) === "{" ? `{lang=${lang || xapiLanguage()}}${s}` : s;
+}
+
+/**
+ * Learner text of a fill-in item (fillInItem undone)
+ */
+export function fillInText(item) {
+  return String(item == null ? "" : item).replace(/^\{lang=[^}]*\}/, "");
+}
+
+/**
+ * result.response for fill-in / long-fill-in: one item per blank, "[,]"
+ */
+export function fillInResponse(items, lang) {
+  return (Array.isArray(items) ? items : [items])
+    .map((t) => fillInItem(t, lang))
+    .join(XAPI_ITEM_DELIMITER);
+}
+
+// first value of a language map
+function mapText(map) {
+  if (!map || typeof map !== "object") {
+    return "";
+  }
+  const keys = Object.keys(map);
+  return keys.length ? String(map[keys[0]]) : "";
+}
+
+/**
+ * The learner's response of a statement in plain words, resolving component
+ * ids through its object definition (for dashboards and "Recent activity";
+ * never sent anywhere). Ids not in the definition are shown as they are.
+ * @param {XAPIStatement} statement
+ * @returns {string}
+ */
+export function describeResponse(statement) {
+  const result = statement && statement.result ? statement.result : {};
+  if (result.response == null) {
+    return "";
+  }
+  const response = String(result.response);
+  const def =
+    statement.object && statement.object.definition
+      ? statement.object.definition
+      : {};
+  const named = (list) => {
+    const out = {};
+    (Array.isArray(def[list]) ? def[list] : []).forEach((c) => {
+      out[c.id] = mapText(c.description) || c.id;
+    });
+    return (id) =>
+      Object.prototype.hasOwnProperty.call(out, id) ? out[id] : id;
+  };
+  const items = response === "" ? [] : response.split(XAPI_ITEM_DELIMITER);
+  switch (def.interactionType) {
+    case "true-false":
+      return response === "true"
+        ? "True"
+        : response === "false"
+          ? "False"
+          : response;
+    case "choice":
+    case "sequencing": {
+      const name = named("choices");
+      return items.map(name).join(", ");
+    }
+    case "likert":
+      return items.map(named("scale")).join(", ");
+    case "matching": {
+      const source = named("source");
+      const target = named("target");
+      return items
+        .map((pair) => {
+          const [s, t] = pair.split(XAPI_PAIR_DELIMITER);
+          return `${source(s)} → ${target(t)}`;
+        })
+        .join("; ");
+    }
+    case "fill-in":
+    case "long-fill-in":
+      return items.map(fillInText).join(", ");
+    default:
+      return response;
   }
 }
 

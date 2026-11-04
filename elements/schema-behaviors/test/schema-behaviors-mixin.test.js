@@ -243,3 +243,56 @@ describe("SchemaBehaviors mixin — fixture a11y preserved", () => {
     await expect(el).shadowDom.to.be.accessible();
   });
 });
+
+describe("SchemaBehaviors mixin — authored resource (xAPI keys)", () => {
+  const tick = () => new Promise((r) => setTimeout(r, 0));
+
+  it("element defined before the markup: records the authored value only", async () => {
+    const host = await fixture(html`<div></div>`);
+    // created, attribute set, then connected (the order the HTML parser
+    // uses for an element that is already defined)
+    const authored = globalThis.document.createElement("test-schema-element");
+    authored.setAttribute("resource", "#authored-before");
+    const bare = globalThis.document.createElement("test-schema-element");
+    expect(authored._xapiAuthoredResource).to.equal(undefined);
+    host.append(authored, bare);
+    expect(authored._xapiAuthoredResource).to.equal("#authored-before");
+    expect(bare._xapiAuthoredResource).to.equal("");
+    await authored.updateComplete;
+    await bare.updateComplete;
+    // behaviour unchanged: the authored one kept, a missing one generated
+    expect(authored.getAttribute("resource")).to.equal("#authored-before");
+    expect(bare.getAttribute("resource")).to.match(/^#/);
+    // the generated value is never recorded as authored, even after a move
+    host.append(bare);
+    await tick();
+    expect(bare._xapiAuthoredResource).to.equal("");
+  });
+
+  it("element defined after the markup (upgrade): reads it in the constructor", async () => {
+    const tag = "test-schema-late-element";
+    const host = await fixture(html`<div></div>`);
+    host.innerHTML = `<${tag} resource="#authored-late"></${tag}><${tag}></${tag}>`;
+    const [authored, bare] = Array.from(host.children);
+    class Late extends SchemaBehaviors(LitElement) {}
+    globalThis.customElements.define(tag, Late);
+    expect(authored._xapiAuthoredResource).to.equal("#authored-late");
+    expect(bare._xapiAuthoredResource).to.equal("");
+    await authored.updateComplete;
+    await bare.updateComplete;
+    expect(authored.schemaResourceID).to.equal("#authored-late");
+    expect(bare.getAttribute("resource")).to.match(/^#/);
+    expect(bare._xapiAuthoredResource).to.equal("");
+  });
+
+  it("treats the string null like no resource, as _schemaMapChanged does", async () => {
+    const el = globalThis.document.createElement("test-schema-element");
+    el.setAttribute("resource", "null");
+    const host = await fixture(html`<div></div>`);
+    host.append(el);
+    await el.updateComplete;
+    // recorded as written; @haxtheweb/user-action authoredResource() ignores "null"
+    expect(el._xapiAuthoredResource).to.equal("null");
+    expect(el.getAttribute("resource")).to.not.equal("null");
+  });
+});

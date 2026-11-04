@@ -13,7 +13,9 @@
  *   statement for the page, and the trackable elements on it are counted
  *   using the generated xAPI vocabulary (user-action/lib/xapi-vocabulary.js).
  * - Read back: answers `learner-progress-request` window events (questions
- *   and checklists asking for their saved result) from the profile, fires
+ *   and checklists asking for their saved result) from the profile, moving
+ *   a record saved under detail.legacyActivityId (the old content
+ *   fingerprint id) to detail.activityId once; fires
  *   `learner-progress-ready` once it is listening and `learner-progress-
  *   cleared` after clear().
  * - Preferences: mirrors the site's dark mode and sound status into the
@@ -29,7 +31,9 @@ import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js"
 import { UABroker } from "@haxtheweb/user-action/lib/UserActionBroker.js";
 import {
   buildStatement,
+  describeResponse,
   languageMap,
+  legacyActivityId,
   setActorProvider,
   siteUrl,
   XAPI_ACTIVITY_TYPES,
@@ -224,12 +228,21 @@ class HAXCMSLearnerProgress {
       def.name = def.name || languageMap(store.siteTitle, lang);
       ca.grouping[0].definition = def;
     }
+    // an element keyed by its authored resource now may have saved data
+    // under its old content fingerprint id; that record moves over once
+    let legacyId = "";
+    if (element && element.tagName && statement.object) {
+      const legacy = legacyActivityId(element);
+      legacyId = legacy !== statement.object.id ? legacy : "";
+    }
     const recorded = this.profile.recordStatement(key, statement, {
       page,
       tag,
       trackable: this.isTrackable(tag),
       imported,
       pageTitle: store.activeTitle,
+      responseText: describeResponse(statement),
+      legacyId,
     });
     if (recorded) {
       this.lastStatement = statement;
@@ -240,7 +253,11 @@ class HAXCMSLearnerProgress {
     if (!d || !d.activityId || !this.siteKey) {
       return;
     }
-    d.record = this.profile.readActivity(this.siteKey, d.activityId);
+    d.record = this.profile.readActivity(
+      this.siteKey,
+      d.activityId,
+      d.legacyActivityId,
+    );
   }
   _scheduleScan() {
     clearTimeout(this._scanTimer);

@@ -2,9 +2,14 @@ import { fixture, expect, html } from "@open-wc/testing";
 import {
   activityId,
   activityKey,
+  authoredResource,
   buildStatement,
+  choiceResponse,
+  describeResponse,
   deviceActor,
   educationalRecordContext,
+  interactionComponents,
+  legacyActivityKey,
   pageUrl,
   responseText,
   setActorProvider,
@@ -133,6 +138,66 @@ describe("xapi statement builder", () => {
     expect(activityId(a)).to.equal(activityId(a));
   });
 
+  it("keys by id, then authored resource, then content", async () => {
+    const el = await fixture(
+      html`<div>
+        <span id="has-id" title="same" resource="#r0"></span
+        ><span title="same" resource="#r1"></span
+        ><span title="same" resource="#generated"></span
+        ><span title="same"></span>
+      </div>`,
+    );
+    const [withId, authored, generated, plain] = el.querySelectorAll("span");
+    // what SchemaBehaviors records on connect (see schema-behaviors.js)
+    withId._xapiAuthoredResource = "#r0";
+    authored._xapiAuthoredResource = "#r1";
+    generated._xapiAuthoredResource = "";
+    expect(activityKey(withId)).to.equal("has-id");
+    expect(authoredResource(authored)).to.equal("#r1");
+    expect(activityKey(authored)).to.equal("r1");
+    // a resource that was not in the markup is ignored
+    expect(activityKey(generated)).to.match(/^span-[0-9a-f]+$/);
+    expect(activityKey(plain)).to.equal(`${activityKey(generated)}-1`);
+    // the old rule counted the authored element as a twin
+    expect(legacyActivityKey(authored)).to.equal(activityKey(generated));
+    expect(legacyActivityKey(plain)).to.equal(`${activityKey(generated)}-2`);
+    // a duplicated block with the same authored resource stays distinct
+    const twin = authored.cloneNode();
+    twin._xapiAuthoredResource = "#r1";
+    el.appendChild(twin);
+    expect(activityKey(twin)).to.equal("r1-1");
+  });
+
+  it("puts interaction components into the definition as language maps", () => {
+    const choices = interactionComponents(["Yes", "No"]);
+    const s = buildStatement({
+      verb: "answered",
+      object: {
+        id: "https://example.org/q",
+        interactionType: "choice",
+        choices,
+        correctResponsesPattern: [choices[0].id],
+      },
+      result: { response: choiceResponse([choices[1].id]) },
+      context: { language: "fr" },
+    });
+    expect(s.object.definition.choices).to.deep.equal([
+      { id: choices[0].id, description: { fr: "Yes" } },
+      { id: choices[1].id, description: { fr: "No" } },
+    ]);
+    expect(s.object.definition.correctResponsesPattern).to.deep.equal([
+      choices[0].id,
+    ]);
+    expect(s.result.response).to.equal(choices[1].id);
+    expect(describeResponse(s)).to.equal("No");
+    // components are only for interactions
+    const plain = buildStatement({
+      verb: "experienced",
+      object: { id: "https://example.org/p", choices },
+    });
+    expect(plain.object.definition.choices).to.equal(undefined);
+  });
+
   it("converts loose engagement details", () => {
     const s = statementFromEngagement({
       activityDisplay: "progressed",
@@ -250,6 +315,14 @@ describe("xAPI vocabulary", () => {
     expect(XAPI_VOCABULARY["sorting-question"].interactionType).to.equal(
       "sequencing",
     );
+    expect(XAPI_VOCABULARY["tagging-question"].interactionType).to.equal(
+      "choice",
+    );
+    expect(XAPI_VOCABULARY["matching-question"].definition).to.include.members([
+      "source",
+      "target",
+      "correctResponsesPattern",
+    ]);
   });
 
   it("knows which elements count toward page completion", () => {

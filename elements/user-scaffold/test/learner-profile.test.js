@@ -70,6 +70,43 @@ describe("user-scaffold learner profile", () => {
     );
   });
 
+  it("moves a record kept under the old fingerprint id once", () => {
+    us.recordStatement(SITE, answered("old-fp", true), {
+      page: "p1",
+      trackable: true,
+    });
+    // read with the new id: found through the legacy id and moved
+    const a = us.readActivity(SITE, "new-res", "old-fp");
+    expect(a.status).to.equal("correct");
+    expect(a.migratedFrom).to.equal("old-fp");
+    expect(us.readActivity(SITE, "old-fp")).to.equal(null);
+    expect(us.readSite(SITE).pages.p1.activities).to.deep.equal(["new-res"]);
+    // once only: new data under the new id is never replaced by old data
+    us.recordStatement(SITE, answered("old-fp-2", false), { page: "p1" });
+    us.recordStatement(SITE, answered("new-2", true), { page: "p1" });
+    expect(us.readActivity(SITE, "new-2", "old-fp-2").success).to.equal(true);
+    expect(us.readActivity(SITE, "old-fp-2").success).to.equal(false);
+  });
+
+  it("moves the old record when the first new statement arrives", () => {
+    us.recordStatement(SITE, answered("fp", false, 1, 3, false), {
+      page: "p2",
+      trackable: true,
+    });
+    us.recordStatement(SITE, answered("res", true, 2, 3), {
+      page: "p2",
+      trackable: true,
+      legacyId: "fp",
+      responseText: "Huey, Dewey",
+    });
+    const a = us.readActivity(SITE, "res");
+    expect(a.count).to.equal(2);
+    expect(a.attempts).to.equal(2);
+    expect(a.responseText).to.equal("Huey, Dewey");
+    expect(us.readSite(SITE).pages.p2.activities).to.deep.equal(["res"]);
+    expect(us.pageProgress(SITE, "p2").engaged).to.equal(1);
+  });
+
   it("gives each site a pseudonymous actor", () => {
     const a = us.siteActor(SITE, { url: "https://s.test/" });
     expect(a.objectType).to.equal("Agent");

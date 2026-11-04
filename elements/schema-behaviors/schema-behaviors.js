@@ -21,6 +21,29 @@ export const SchemaBehaviors = function (SuperClass) {
           bib: "http://bib.schema.org",
         },
       };
+      // the resource the markup gave this element, if any, before
+      // _schemaMapChanged can generate one (see connectedCallback). An
+      // upgraded element already has its attributes here; one the parser
+      // creates gets them after the constructor, so it is read on connect.
+      if (this.hasAttribute("resource")) {
+        this._xapiAuthoredResource = this.getAttribute("resource") || "";
+      }
+    }
+    /**
+     * Record, once, whether `resource` came from the markup (authored or
+     * saved by HAX) as `_xapiAuthoredResource` ("" when it did not). The
+     * first update, which is where a missing resource is generated, only
+     * runs after connecting, so this always sees the markup value. Learner
+     * data (@haxtheweb/user-action/lib/xapi.js activityKey) uses it so an
+     * id generated during this page load never names an activity.
+     */
+    connectedCallback() {
+      if (this._xapiAuthoredResource === undefined) {
+        this._xapiAuthoredResource = this.getAttribute("resource") || "";
+      }
+      if (super.connectedCallback) {
+        super.connectedCallback();
+      }
     }
     /**
      * Popular convention across libraries

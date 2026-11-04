@@ -69,7 +69,13 @@ describe("QuestionElement learner data", () => {
     expect(s.object.definition.interactionType).to.equal("choice");
     expect(s.result.success).to.equal(false);
     expect(s.result.completion).to.equal(false);
-    expect(s.result.response).to.equal("Mickey");
+    // xAPI choice: the response is the id of the choice, its text is in
+    // the definition
+    const mickey = s.object.definition.choices.find(
+      (c) => Object.values(c.description)[0] === "Mickey",
+    );
+    expect(mickey.id).to.match(/^c-[0-9a-f]{8}$/);
+    expect(s.result.response).to.equal(mickey.id);
     expect(s.result.score).to.deep.equal({ min: 0, raw: 0, max: 1, scaled: 0 });
     expect(s.result.extensions[XAPI_EXTENSIONS.attempts]).to.equal(1);
     expect(s.result.extensions[XAPI_EXTENSIONS.maxAttempts]).to.equal(2);

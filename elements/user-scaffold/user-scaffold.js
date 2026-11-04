@@ -82,7 +82,9 @@ const newUuid = () => {
  *         activities: [activityId], trackable, trackableByTag } },
  *       activities: { <activityId>: { page, tag, name, verb, verbs, count,
  *         first, last, trackable, done, status, success, attempts,
- *         maxAttempts, score, response } },
+ *         maxAttempts, score, response (xAPI result.response, component ids
+ *         for choice / matching / sequencing), responseText (the same in
+ *         plain words, when the recorder resolved it), migratedFrom } },
  *       counts: { byElement: { <tag>: { <verb>: n } }, byVerb: { <verb>: n } },
  *       statementCount } } }
  * Every xAPI statement recorded is also appended to the statements list
@@ -558,7 +560,9 @@ export class UserScaffold extends HTMLElement {
    * (already recorded, or an import for an activity that already has data).
    * @param {string} site
    * @param {Object} statement xAPI statement
-   * @param {Object} meta { page, tag, trackable, imported, pageTitle }
+   * @param {Object} meta { page, tag, trackable, imported, pageTitle,
+   *   responseText (result.response in plain words), legacyId (an older id
+   *   of the same activity whose data moves to this one, once) }
    */
   recordStatement(site, statement, meta = {}) {
     if (!site || !statement || !statement.object || !statement.object.id) {
@@ -569,6 +573,9 @@ export class UserScaffold extends HTMLElement {
     }
     const siteRec = this._site(site);
     const id = statement.object.id;
+    if (meta.legacyId) {
+      this._migrateActivity(siteRec, meta.legacyId, id);
+    }
     const existing = siteRec.activities[id];
     if (meta.imported && existing && existing.count > 0) {
       return null;
@@ -618,6 +625,13 @@ export class UserScaffold extends HTMLElement {
     }
     if (result.response != null) {
       act.response = result.response;
+      // the response in plain words (component ids resolved through the
+      // object definition by the caller), for dashboards on this device
+      if (typeof meta.responseText === "string") {
+        act.responseText = meta.responseText;
+      } else {
+        delete act.responseText;
+      }
     }
     const attempts = extensionOf(result, "attempts");
     if (attempts != null) {
@@ -655,12 +669,52 @@ export class UserScaffold extends HTMLElement {
     return toJS(act);
   }
   /**
-   * Summary for one activity of a site, or null
+   * Summary for one activity of a site, or null. legacyId: the id an older
+   * version of the element keyed the same activity by (its content
+   * fingerprint); when only that one has data it is moved to activityId
+   * first, once.
    */
-  readActivity(site, activityId) {
+  readActivity(site, activityId, legacyId) {
     const siteRec = this._profile().sites[site];
+    if (siteRec && legacyId) {
+      this._migrateActivity(siteRec, legacyId, activityId);
+    }
     const act = siteRec ? siteRec.activities[activityId] : null;
     return act ? toJS(act) : null;
+  }
+  /**
+   * Move what was saved under activity id `from` to `to` (also in the page
+   * lists), when `to` has nothing yet. Statements already in the statement
+   * list keep the object id they were sent with. Returns true when moved.
+   */
+  _migrateActivity(siteRec, from, to) {
+    if (
+      !siteRec ||
+      !from ||
+      !to ||
+      from === to ||
+      !siteRec.activities[from] ||
+      siteRec.activities[to]
+    ) {
+      return false;
+    }
+    const act = siteRec.activities[from];
+    act.migratedFrom = from;
+    siteRec.activities[to] = act;
+    delete siteRec.activities[from];
+    Object.keys(siteRec.pages || {}).forEach((pid) => {
+      const list = siteRec.pages[pid].activities || [];
+      const at = list.indexOf(from);
+      if (at > -1) {
+        if (list.includes(to)) {
+          list.splice(at, 1);
+        } else {
+          list.splice(at, 1, to);
+        }
+      }
+    });
+    this._saveLongTerm();
+    return true;
   }
   /**
    * Status of a page: "done" when every trackable activity the learner

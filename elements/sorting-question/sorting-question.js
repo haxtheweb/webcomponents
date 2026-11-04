@@ -1,6 +1,9 @@
 // dependencies / things imported
 import { html, css, nothing } from "lit";
-import { QuestionElement } from "@haxtheweb/multiple-choice/lib/QuestionElement.js";
+import {
+  QuestionElement,
+  choiceResponse,
+} from "@haxtheweb/multiple-choice/lib/QuestionElement.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import "@haxtheweb/simple-toast/simple-toast.js";
@@ -22,6 +25,13 @@ export class SortingQuestion extends QuestionElement {
       verbs: ["answered"],
       objectType: "http://adlnet.gov/expapi/activities/cmi.interaction",
       interactionType: "sequencing",
+      definition: [
+        "name",
+        "interactionType",
+        "choices",
+        "correctResponsesPattern",
+      ],
+      response: "choice ids in the learner's order joined by [,]",
       result: [
         "success",
         "completion",
@@ -34,14 +44,40 @@ export class SortingQuestion extends QuestionElement {
       done: "answered correctly or out of attempts",
     };
   }
-  // the order the learner left the options in
+  // xAPI sequencing: the options are the choices; the authored order is
+  // the correct order
+  xapiDefinition() {
+    const components = this.xapiComponents();
+    return components.length
+      ? {
+          choices: components.map(({ id, description }) => ({
+            id,
+            description,
+          })),
+          correctResponsesPattern: [
+            choiceResponse(components.map((c) => c.id)),
+          ],
+        }
+      : {};
+  }
+  // choice ids in the order the learner left the options in (options are
+  // read off the UI and matched to the authored ones by their text)
   learnerResponse() {
     const options = this.getOptions();
-    return options
-      ? Array.from(options)
-          .map((o) => (o.innerText || o.textContent || "").trim())
-          .join("[,]")
-      : "";
+    if (!options) {
+      return "";
+    }
+    const free = this.xapiComponents();
+    const norm = (s) =>
+      String(s || "")
+        .replace(/\s+/g, " ")
+        .trim();
+    const ids = Array.from(options).map((o) => {
+      const text = norm(o.innerText || o.textContent);
+      const i = free.findIndex((c) => norm(c.description) === norm(text));
+      return i > -1 ? free.splice(i, 1)[0].id : "";
+    });
+    return ids.every(Boolean) ? choiceResponse(ids) : "";
   }
   learnerScore() {
     return { raw: this.numberCorrect, max: this.answers.length };
@@ -371,9 +407,11 @@ export class SortingQuestion extends QuestionElement {
         ${this.displayedAnswers.map(
           (answer) =>
             html`<sorting-option ?disabled="${this.disabled}"
-              >${answer.image
-                ? html`<img src="${answer.image}" alt="${answer.alt}" />`
-                : nothing}${answer.label}</sorting-option
+              >${
+                answer.image
+                  ? html`<img src="${answer.image}" alt="${answer.alt}" />`
+                  : nothing
+              }${answer.label}</sorting-option
             >`,
         )}
       </fieldset>
@@ -406,32 +444,40 @@ export class SortingQuestion extends QuestionElement {
 
   // this manages the output of the feedback area
   renderFeedback() {
-    return html` ${!this.edit
-      ? html`
-          ${this.showAnswer && this.numberCorrect !== this.answers.length
-            ? html` <p class="feedback">
-                ${this._tParts(this.t.numCorrectOutOfTotal, {
-                  correct: this.numberCorrect,
-                  total: this.answers.length,
-                })}
-              </p>`
-            : ``}
-          ${this.showAnswer && this.numberCorrect === this.answers.length
-            ? html` <p class="feedback">${this.correctText}</p>`
-            : ``}
-          ${this.showAnswer
-            ? this.renderFeedbackSlots(
-                this.numberCorrect === this.answers.length,
-              )
-            : ``}
-          <simple-toolbar-button
-            ?disabled="${this.disabled || !this.showAnswer}"
-            @click="${this.resetAnswer}"
-            label="${this.t.tryAgain}"
-          >
-          </simple-toolbar-button>
-        `
-      : this.renderEditModeFeedbackAreas()}`;
+    return html` ${
+      !this.edit
+        ? html`
+            ${
+              this.showAnswer && this.numberCorrect !== this.answers.length
+                ? html` <p class="feedback">
+                    ${this._tParts(this.t.numCorrectOutOfTotal, {
+                      correct: this.numberCorrect,
+                      total: this.answers.length,
+                    })}
+                  </p>`
+                : ``
+            }
+            ${
+              this.showAnswer && this.numberCorrect === this.answers.length
+                ? html` <p class="feedback">${this.correctText}</p>`
+                : ``
+            }
+            ${
+              this.showAnswer
+                ? this.renderFeedbackSlots(
+                    this.numberCorrect === this.answers.length,
+                  )
+                : ``
+            }
+            <simple-toolbar-button
+              ?disabled="${this.disabled || !this.showAnswer}"
+              @click="${this.resetAnswer}"
+              label="${this.t.tryAgain}"
+            >
+            </simple-toolbar-button>
+          `
+        : this.renderEditModeFeedbackAreas()
+    }`;
   }
 
   /**

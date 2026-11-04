@@ -1,5 +1,11 @@
 import { QuestionElement } from "./QuestionElement.js";
 import { html } from "lit";
+import {
+  fillInItem,
+  fillInResponse,
+  fillInText,
+  XAPI_ITEM_DELIMITER,
+} from "@haxtheweb/user-action/lib/xapi.js";
 /**
  * `short-answer-question`
  * `Ask the user a question from a set of possible answers.`
@@ -20,6 +26,8 @@ class ShortAnswerQuestion extends QuestionElement {
       verbs: ["answered"],
       objectType: "http://adlnet.gov/expapi/activities/cmi.interaction",
       interactionType: "fill-in",
+      definition: ["name", "interactionType", "correctResponsesPattern"],
+      response: "the text the learner typed",
       result: [
         "success",
         "completion",
@@ -32,6 +40,24 @@ class ShortAnswerQuestion extends QuestionElement {
       done: "answered correctly or out of attempts",
     };
   }
+  // xAPI fill-in: the response is what the learner typed (that is the
+  // answer, so it is not a component id). Every authored option is an
+  // accepted answer, compared without case, which is what a pattern without
+  // {case_matters=true} means; options holding the "[,]" delimiter can not
+  // be written as one item, so they are left out of the pattern.
+  xapiDefinition() {
+    const accepted = (this.answers || [])
+      .map((a) => (a && typeof a.label === "string" ? a.label : ""))
+      .filter((label) => label && !label.includes(XAPI_ITEM_DELIMITER));
+    return accepted.length
+      ? { correctResponsesPattern: accepted.map((l) => fillInItem(l)) }
+      : {};
+  }
+  learnerResponse() {
+    return typeof this.shortanswer === "string" && this.shortanswer
+      ? fillInResponse([this.shortanswer])
+      : "";
+  }
   _canRestoreGuess() {
     return true;
   }
@@ -39,7 +65,7 @@ class ShortAnswerQuestion extends QuestionElement {
     if (typeof response !== "string" || !response) {
       return false;
     }
-    this.shortanswer = response;
+    this.shortanswer = fillInText(response);
     return true;
   }
   forgetLearnerResponse() {
@@ -97,11 +123,9 @@ class ShortAnswerQuestion extends QuestionElement {
       <simple-fields-field
         type="textarea"
         ?disabled="${this.disabled || this.showAnswer}"
-        class="tag-option ${this.showAnswer
-          ? this.isCorrect()
-            ? "correct"
-            : "incorrect"
-          : ""}"
+        class="tag-option ${
+          this.showAnswer ? (this.isCorrect() ? "correct" : "incorrect") : ""
+        }"
         property="oer:answer"
         name="0"
         @keydown="${(e) => {
