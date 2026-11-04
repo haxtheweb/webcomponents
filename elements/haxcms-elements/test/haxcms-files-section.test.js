@@ -2,6 +2,7 @@
 // (haxtheweb/issues#3180): the bulk actions move from the hax-file-actions
 // select into the shell's action bar via runAction(id) / clearSelection().
 import { fixture, expect, html, oneEvent, waitUntil } from "@open-wc/testing";
+import { answerAdminDialogs } from "./fixtures/admin-dialog-answers.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import "../lib/core/admin/haxcms-site-admin.js";
@@ -109,15 +110,13 @@ const BASELINE = {
   ],
 };
 
-let calls, real;
+let calls, real, restoreDialogs;
 
 function stubBackend() {
   calls = [];
   real = {
     has: MicroFrontendRegistry.has,
     call: MicroFrontendRegistry.call,
-    confirm: globalThis.confirm,
-    prompt: globalThis.prompt,
   };
   MicroFrontendRegistry.has = () => true;
   MicroFrontendRegistry.call = async (name, params) => {
@@ -126,21 +125,22 @@ function stubBackend() {
     }
     return { status: 200, data: { files: FILES, total: FILES.length } };
   };
-  globalThis.confirm = (msg) => {
-    calls.push(["confirm", msg]);
-    return true;
-  };
-  globalThis.prompt = (msg, def) => {
-    calls.push(["prompt", msg, def]);
-    return "pic";
-  };
+  restoreDialogs = answerAdminDialogs({
+    confirm: (msg) => {
+      calls.push(["confirm", msg]);
+      return true;
+    },
+    prompt: (msg, def) => {
+      calls.push(["prompt", msg, def]);
+      return "pic";
+    },
+  });
 }
 
 function restoreBackend() {
   MicroFrontendRegistry.has = real.has;
   MicroFrontendRegistry.call = real.call;
-  globalThis.confirm = real.confirm;
-  globalThis.prompt = real.prompt;
+  restoreDialogs();
 }
 
 async function filesSection(inShell = true) {

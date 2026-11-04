@@ -19,6 +19,10 @@ import {
 import "@haxtheweb/code-editor/code-editor.js";
 import "@haxtheweb/hax-body/lib/hax-upload-field.js";
 import "@haxtheweb/haxcms-elements/lib/core/admin/haxcms-admin-add-area.js";
+import {
+  adminConfirm,
+  adminPrompt,
+} from "@haxtheweb/haxcms-elements/lib/core/admin/haxcms-admin-confirm.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { waitForAppHAXSystemApiRegistryReady } from "../app-hax-system-api-registry.js";
 import "./haxcms-system-allowed-blocks.js";
@@ -235,6 +239,11 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
       noSkeletonOptions: "No skeleton options were returned.",
       renamePromptUnavailable: "Rename prompt is unavailable.",
       renameSkeleton: "Rename skeleton",
+      cancel: "Cancel",
+      skeletonName: "Skeleton name",
+      renameAction: "Rename",
+      deleteSkeletonTitle: "Delete skeleton",
+      deleteAction: "Delete",
       skeletonNameRequired: "Skeleton name is required.",
       skeletonNameNeedsAlphanumeric:
         "Skeleton name must include letters or numbers.",
@@ -3230,10 +3239,14 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
       typeof option.label === "string" && option.label.trim() !== ""
         ? option.label.trim()
         : currentName;
-    const requestedName = globalThis.prompt(
-      this.t.renameSkeleton,
-      currentDisplayName,
-    );
+    const requestedName = await adminPrompt({
+      title: this.t.renameSkeleton,
+      label: this.t.skeletonName,
+      value: currentDisplayName,
+      required: true,
+      confirmLabel: this.t.renameAction,
+      cancelLabel: this.t.cancel,
+    });
     if (typeof requestedName !== "string") {
       return;
     }
@@ -3297,14 +3310,17 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
     ) {
       return;
     }
-    if (!globalThis || typeof globalThis.confirm !== "function") {
-      this.statusMessage = this.t.deleteConfirmationUnavailable;
-      return;
-    }
     const machineName = this._normalizeMachineName(option.machineName);
-    const shouldDelete = globalThis.confirm(
-      this.t.deleteSkeletonConfirm.replace("{machineName}", () => machineName),
-    );
+    const shouldDelete = await adminConfirm({
+      title: this.t.deleteSkeletonTitle,
+      message: this.t.deleteSkeletonConfirm.replace(
+        "{machineName}",
+        () => machineName,
+      ),
+      confirmLabel: this.t.deleteAction,
+      cancelLabel: this.t.cancel,
+      danger: true,
+    });
     if (!shouldDelete) {
       return;
     }

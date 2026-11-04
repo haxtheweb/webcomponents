@@ -3,6 +3,9 @@
 // Replace…, Publish, Unpublish, Show / Hide in menu and Delete… on them,
 // and the detail panel shows the focused page.
 import { fixture, expect, html, oneEvent, waitUntil } from "@open-wc/testing";
+import { answerAdminDialogs } from "./fixtures/admin-dialog-answers.js";
+
+let restoreDialogs = () => {};
 import { sendKeys } from "@web/test-runner-commands";
 import { store } from "../lib/core/haxcms-site-store.js";
 import "../lib/core/admin/haxcms-site-admin.js";
@@ -112,6 +115,11 @@ describe("haxcms-content-admin-dialog replace payload", () => {
   let realConfirm, prompts;
   beforeEach(() => {
     realConfirm = globalThis.confirm;
+    // the section asks with the HAX UI confirm now; route its answers to
+    // the stub each test sets on globalThis.confirm
+    restoreDialogs = answerAdminDialogs({
+      confirm: (msg) => globalThis.confirm(msg),
+    });
     prompts = [];
     globalThis.confirm = (msg) => {
       prompts.push(msg);
@@ -120,6 +128,7 @@ describe("haxcms-content-admin-dialog replace payload", () => {
   });
   afterEach(() => {
     globalThis.confirm = realConfirm;
+    restoreDialogs();
   });
 
   it("Replace… opens a chooser and sends the captured detail", async () => {
@@ -199,6 +208,8 @@ describe("haxcms-content-admin-dialog replace payload", () => {
       sent++;
     });
     await replaceThroughChooser(el);
+    await waitUntil(() => prompts.length === 1);
+    await new Promise((r) => setTimeout(r, 20));
     expect(sent).to.equal(0);
     expect(prompts.length).to.equal(1);
   });
@@ -238,10 +249,16 @@ describe("haxcms-content-admin-dialog section state", () => {
   let realConfirm;
   beforeEach(() => {
     realConfirm = globalThis.confirm;
+    // the section asks with the HAX UI confirm now; route its answers to
+    // the stub each test sets on globalThis.confirm
+    restoreDialogs = answerAdminDialogs({
+      confirm: (msg) => globalThis.confirm(msg),
+    });
     globalThis.confirm = () => true;
   });
   afterEach(() => {
     globalThis.confirm = realConfirm;
+    restoreDialogs();
   });
 
   it("reports the checked pages and every bulk action", async () => {
@@ -377,10 +394,16 @@ describe("haxcms-content-admin-dialog layout", () => {
   let realConfirm;
   beforeEach(() => {
     realConfirm = globalThis.confirm;
+    // the section asks with the HAX UI confirm now; route its answers to
+    // the stub each test sets on globalThis.confirm
+    restoreDialogs = answerAdminDialogs({
+      confirm: (msg) => globalThis.confirm(msg),
+    });
     globalThis.confirm = () => true;
   });
   afterEach(() => {
     globalThis.confirm = realConfirm;
+    restoreDialogs();
   });
 
   const titles = (el) =>
@@ -536,10 +559,16 @@ describe("haxcms-content-admin-dialog in haxcms-site-admin", () => {
   let realConfirm;
   beforeEach(() => {
     realConfirm = globalThis.confirm;
+    // the section asks with the HAX UI confirm now; route its answers to
+    // the stub each test sets on globalThis.confirm
+    restoreDialogs = answerAdminDialogs({
+      confirm: (msg) => globalThis.confirm(msg),
+    });
     globalThis.confirm = () => true;
   });
   afterEach(() => {
     globalThis.confirm = realConfirm;
+    restoreDialogs();
   });
 
   it("the shell's Replace… opens the chooser that sends the replace", async () => {
@@ -583,10 +612,16 @@ describe("haxcms-content-admin-dialog selector column", () => {
   let realConfirm;
   beforeEach(() => {
     realConfirm = globalThis.confirm;
+    // the section asks with the HAX UI confirm now; route its answers to
+    // the stub each test sets on globalThis.confirm
+    restoreDialogs = answerAdminDialogs({
+      confirm: (msg) => globalThis.confirm(msg),
+    });
     globalThis.confirm = () => true;
   });
   afterEach(() => {
     globalThis.confirm = realConfirm;
+    restoreDialogs();
   });
 
   const MULTI_DETAIL = Object.assign({}, REPLACE_DETAIL, { search: "ce" });
@@ -753,6 +788,11 @@ describe("haxcms-content-admin-dialog bulk page actions", () => {
       manifest[item.id] = item;
     });
     realConfirm = globalThis.confirm;
+    // the section asks with the HAX UI confirm now; route its answers to
+    // the stub each test sets on globalThis.confirm
+    restoreDialogs = answerAdminDialogs({
+      confirm: (msg) => globalThis.confirm(msg),
+    });
     realFind = store.findItem;
     realToast = store.toast;
     globalThis.confirm = (msg) => {
@@ -766,6 +806,7 @@ describe("haxcms-content-admin-dialog bulk page actions", () => {
   });
   afterEach(() => {
     globalThis.confirm = realConfirm;
+    restoreDialogs();
     store.findItem = realFind;
     store.toast = realToast;
     globalThis.removeEventListener("haxcms-save-node-details", onDetails);
@@ -1077,10 +1118,16 @@ describe("haxcms-content-admin-dialog page actions menu", () => {
   let realConfirm;
   beforeEach(() => {
     realConfirm = globalThis.confirm;
+    // the section asks with the HAX UI confirm now; route its answers to
+    // the stub each test sets on globalThis.confirm
+    restoreDialogs = answerAdminDialogs({
+      confirm: (msg) => globalThis.confirm(msg),
+    });
     globalThis.confirm = () => true;
   });
   afterEach(() => {
     globalThis.confirm = realConfirm;
+    restoreDialogs();
   });
 
   const row = (el, id) =>

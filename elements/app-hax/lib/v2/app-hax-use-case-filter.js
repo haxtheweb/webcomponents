@@ -6,6 +6,7 @@ import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import { store } from "./AppHaxStore.js";
 import { HaxUiAdminTokens } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
+import { adminPrompt } from "@haxtheweb/haxcms-elements/lib/core/admin/haxcms-admin-confirm.js";
 import "./app-hax-use-case.js";
 import "./app-hax-search-results.js";
 import "./app-hax-filter-tag.js";
@@ -84,6 +85,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
       newSite: "New site",
       importedSite: "Imported site",
       enterAUrl: "Enter a URL",
+      cancel: "Cancel",
       importInvalidStructure: "Import did not return a valid structure",
       importFailed: "Import failed",
       wordDocImportTitle: "Word Doc",
@@ -2905,7 +2907,14 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
         );
       } else if (selectedTemplate.importKind === "url") {
         const promptText = selectedTemplate.prompt || this.t.enterAUrl;
-        const promptUrl = globalThis.prompt(promptText);
+        const promptUrl = await adminPrompt({
+          title: selectedTemplate.useCaseTitle || this.t.importContent,
+          label: promptText,
+          placeholder: "https://",
+          required: true,
+          confirmLabel: this.t.import,
+          cancelLabel: this.t.cancel,
+        });
         if (!promptUrl) {
           return;
         }
