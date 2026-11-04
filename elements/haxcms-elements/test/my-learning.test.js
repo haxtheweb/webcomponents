@@ -226,7 +226,10 @@ describe("my-learning dashboard", () => {
       t.textContent.replace(/\s+/g, " ").trim(),
     );
     // p1 (q1 + video) and p3 (game) are done; ch1, p2, p2a, ch2 not
-    expect(tiles[0]).to.contain("2 / 6");
+    // pages read 3 of 6, 2 of them done (p1: q1 + video, p3: game)
+    expect(tiles[0]).to.contain("Pages read");
+    expect(tiles[0]).to.contain("3 / 6");
+    expect(tiles[0]).to.contain("2 done");
     // 4 of 5 trackable activities done (checklist in progress)
     expect(tiles[1]).to.contain("4 / 5");
     expect(tiles[1]).to.contain("1 in progress");
@@ -283,7 +286,7 @@ describe("my-learning dashboard", () => {
     expect(waves.total).to.equal(4);
     const radios = () =>
       el.shadowRoot.querySelectorAll('input[name="group-by"]');
-    expect(radios().length).to.equal(4);
+    expect(radios().length).to.equal(5);
     expect(radios()[0].checked).to.equal(true);
     radios()[1].click();
     await el.updateComplete;
@@ -456,6 +459,376 @@ describe("my-learning dashboard", () => {
     expect(items[1]).to.contain("Read “p1”");
   });
 
+  describe("repair from stored statements (real-style manifest)", () => {
+    // what HAXcms pages look like: slugs under the site base, statements
+    // sent from the page URL with or without a trailing slash / index.html
+    const base = new URL("./", document.baseURI).href;
+    const REAL = {
+      id: "b8e14c34-6f48-4f74-aca4-f35428f49855",
+      title: "HAXcellence",
+      metadata: {
+        platform: {},
+        theme: { variables: {} },
+        site: { name: "haxcellence", settings: {} },
+      },
+      items: [
+        { ...item("item-lab", null, 0, "Lab"), slug: "lab" },
+        { ...item("item-lab-q", "item-lab", 0, "Questions"), slug: "lab/q" },
+        { ...item("item-lab-v", "item-lab", 1, "Video"), slug: "lab/video" },
+      ],
+    };
+    const KEY = REAL.id;
+    let k = 0;
+    const real = (pageUrl, objectId, verb, result, tag) => ({
+      id: `10000000-0000-4000-8000-${String(++k).padStart(12, "0")}`,
+      verb: {
+        id: `http://adlnet.gov/expapi/verbs/${verb}`,
+        display: { "en-US": verb },
+      },
+      object: {
+        id: objectId,
+        definition: { name: { "en-US": objectId } },
+      },
+      result,
+      context: {
+        contextActivities: { parent: [{ id: pageUrl }] },
+        extensions: { [XAPI_EXTENSIONS.element]: tag },
+      },
+      timestamp: new Date(Date.UTC(2026, 10, 4, 12, 0, k)).toISOString(),
+    });
+    const lost = () => [
+      real(`${base}lab/q`, `${base}lab/q`, "experienced", {}, "haxcms-page"),
+      real(
+        `${base}lab/q/`,
+        `${base}lab/q#q1`,
+        "answered",
+        {
+          success: false,
+          extensions: { [XAPI_EXTENSIONS.attempts]: 1 },
+        },
+        "multiple-choice",
+      ),
+      real(
+        `${base}lab/q/index.html?x=1`,
+        `${base}lab/q#q1`,
+        "answered",
+        {
+          success: true,
+          completion: true,
+          extensions: { [XAPI_EXTENSIONS.attempts]: 2 },
+        },
+        "multiple-choice",
+      ),
+      real(
+        `${base}lab/video#t=3`,
+        `${base}lab/video#v`,
+        "completed",
+        {
+          completion: true,
+        },
+        "video-player",
+      ),
+    ];
+    beforeEach(async () => {
+      store.manifest = JSON.parse(JSON.stringify(REAL));
+      store.activeId = "item-lab-q";
+      await flush();
+    });
+
+    it("keys the site by manifest id and finds pages by URL", () => {
+      expect(LearnerProgress.siteKey).to.equal(KEY);
+      const [read, wrong, right, video] = lost();
+      expect(LearnerProgress.pageOfStatement(read)).to.equal("item-lab-q");
+      expect(LearnerProgress.pageOfStatement(wrong)).to.equal("item-lab-q");
+      expect(LearnerProgress.pageOfStatement(right)).to.equal("item-lab-q");
+      expect(LearnerProgress.pageOfStatement(video)).to.equal("item-lab-v");
+      const other = real("https://elsewhere.example/x", "y", "answered", {});
+      expect(LearnerProgress.pageOfStatement(other)).to.equal("");
+    });
+
+    it("rebuilds lost activities once, without double counting", async () => {
+      // statements stored, profile empty: what a lost profile write leaves
+      const stored = lost();
+      for (const st of stored) {
+        await UserScaffoldInstance.statementAdapter.add(KEY, st);
+      }
+      expect(UserScaffoldInstance.readSite(KEY)).to.equal(null);
+      const el = await make(
+        html`<my-learning scope="site" recent></my-learning>`,
+      );
+      const site = UserScaffoldInstance.readSite(KEY);
+      const q = site.activities[`${base}lab/q#q1`];
+      expect(q.page).to.equal("item-lab-q");
+      expect(q.count).to.equal(2);
+      expect(q.firstTry).to.equal(false);
+      expect(q.done).to.equal(true);
+      expect(site.pages["item-lab-q"].visits).to.equal(1);
+      expect(site.activities[`${base}lab/video#v`].page).to.equal("item-lab-v");
+      expect(el._data.tiles.activitiesDone).to.equal(2);
+      expect(el._data.tiles.firstTry).to.equal(0);
+      expect(el.shadowRoot.querySelector(".empty")).to.equal(null);
+      // again: nothing changes, nothing is stored twice
+      expect(LearnerProgress.repair(stored)).to.equal(0);
+      await el.refresh();
+      expect(
+        UserScaffoldInstance.readSite(KEY).activities[`${base}lab/q#q1`].count,
+      ).to.equal(2);
+      expect((await UserScaffoldInstance.statements(KEY)).length).to.equal(4);
+    });
+
+    it("rebuilds a stale activity from all of its statements", async () => {
+      const stored = lost();
+      for (const st of stored) {
+        await UserScaffoldInstance.statementAdapter.add(KEY, st);
+      }
+      // the profile caught only the first answer
+      UserScaffoldInstance.recordStatement(KEY, stored[1], {
+        page: "item-lab-q",
+        trackable: true,
+      });
+      const el = await make(html`<my-learning scope="site"></my-learning>`);
+      const q =
+        UserScaffoldInstance.readSite(KEY).activities[`${base}lab/q#q1`];
+      expect(q.count).to.equal(2);
+      expect(q.done).to.equal(true);
+      expect(el._data.tiles.activitiesDone).to.equal(2);
+    });
+
+    it("counts pages read and visits from statements when only browsing", async () => {
+      const reads = [
+        real(`${base}lab/q`, `${base}lab/q`, "experienced", {}, "haxcms-page"),
+        real(
+          `${base}lab/q/`,
+          `${base}lab/q/`,
+          "experienced",
+          {},
+          "haxcms-page",
+        ),
+        real(
+          `${base}lab/video`,
+          `${base}lab/video`,
+          "experienced",
+          {},
+          "haxcms-page",
+        ),
+      ];
+      for (const st of reads) {
+        await UserScaffoldInstance.statementAdapter.add(KEY, st);
+      }
+      const el = await make(html`<my-learning scope="site"></my-learning>`);
+      expect(el.isEmpty(el._data)).to.equal(false);
+      expect(el._data.tiles.pagesRead).to.equal(2);
+      expect(el._data.tiles.pagesTotal).to.equal(3);
+      expect(el._data.tiles.visits).to.equal(3);
+      expect(el._data.tiles.firstTry).to.equal(null);
+      const tiles = text(el, ".tiles");
+      expect(tiles).to.contain("Pages read 2 / 3");
+      expect(tiles).to.contain("Visits 3");
+      expect(tiles).to.contain("First-try accuracy —");
+      expect(el.shadowRoot.querySelector(".chart")).to.not.equal(null);
+      expect(el.shadowRoot.querySelector(".pages")).to.not.equal(null);
+    });
+
+    it("leaves activities that are up to date alone", () => {
+      const stored = lost();
+      [stored[1], stored[2]].forEach((st) =>
+        UserScaffoldInstance.recordStatement(KEY, st, {
+          page: "item-lab-q",
+          trackable: true,
+        }),
+      );
+      const before =
+        UserScaffoldInstance.readSite(KEY).activities[`${base}lab/q#q1`];
+      LearnerProgress.repair(stored);
+      const q =
+        UserScaffoldInstance.readSite(KEY).activities[`${base}lab/q#q1`];
+      expect(q.count).to.equal(2);
+      expect(q.first).to.equal(before.first);
+      expect(
+        UserScaffoldInstance.readSite(KEY).activities[`${base}lab/video#v`]
+          .count,
+      ).to.equal(1);
+    });
+  });
+
+  describe("map view", () => {
+    const mapNodes = (el) => [...el.shadowRoot.querySelectorAll(".map-node")];
+    const crumbs = (el) =>
+      [...el.shadowRoot.querySelectorAll(".map-path li")].map((li) =>
+        li.textContent.trim(),
+      );
+    const press = (node, key) =>
+      node.dispatchEvent(
+        new KeyboardEvent("keydown", { key, bubbles: true, composed: true }),
+      );
+
+    it("puts you at the centre, sections then their pages around you", async () => {
+      seed();
+      const el = await make(
+        html`<my-learning scope="site" view="map"></my-learning>`,
+      );
+      expect(el._data.view).to.equal("map");
+      expect(text(el, ".map-center")).to.equal("You");
+      const nodes = mapNodes(el);
+      expect(nodes.map((n) => n.dataset.id)).to.deep.equal([
+        "ch1",
+        "p1",
+        "p2",
+        "p2a",
+        "ch2",
+        "p3",
+      ]);
+      expect(nodes.every((n) => n.tagName === "BUTTON")).to.equal(true);
+      const byId = (id) => nodes.find((n) => n.dataset.id === id);
+      expect(byId("p1").dataset.state).to.equal("done");
+      expect(byId("p2").dataset.state).to.equal("in-progress");
+      expect(byId("p2a").dataset.state).to.equal("not-started");
+      expect(byId("ch1").dataset.state).to.equal("in-progress");
+      expect(byId("ch1").getAttribute("aria-label")).to.equal(
+        "Chapter 1, In progress, 1 of 4 pages done",
+      );
+      expect(byId("p3").getAttribute("aria-label")).to.equal(
+        "Sound, Done, 1 of 1 activities done",
+      );
+      // one tab stop, the legend in words, the table with every node
+      expect(nodes.filter((n) => n.tabIndex === 0).length).to.equal(1);
+      expect(text(el, ".map-legend")).to.equal(
+        "Done In progress Visited Not started",
+      );
+      expect(
+        el.shadowRoot.querySelectorAll(".map ~ details tbody tr").length,
+      ).to.equal(6);
+      await expect(el).shadowDom.to.be.accessible();
+    });
+
+    it("moves with arrow keys, drills in with Enter and out with Escape", async () => {
+      seed();
+      const el = await make(
+        html`<my-learning scope="site" view="map"></my-learning>`,
+      );
+      let nodes = mapNodes(el);
+      nodes[0].focus();
+      press(nodes[0], "ArrowRight");
+      expect(el.shadowRoot.activeElement.dataset.id).to.equal("p1");
+      press(el.shadowRoot.activeElement, "ArrowLeft");
+      press(el.shadowRoot.activeElement, "ArrowLeft");
+      expect(el.shadowRoot.activeElement.dataset.id).to.equal("p3");
+      press(el.shadowRoot.activeElement, "Home");
+      expect(el.shadowRoot.activeElement.dataset.id).to.equal("ch1");
+      // Enter on a button is a click: drill into the section
+      el.shadowRoot.activeElement.click();
+      await el.updateComplete;
+      await flush();
+      expect(text(el, ".map-center-title")).to.equal("Chapter 1");
+      expect(mapNodes(el).map((n) => n.dataset.id)).to.deep.equal([
+        "p1",
+        "p2",
+        "p2a",
+      ]);
+      expect(crumbs(el)).to.deep.equal(["You", "Chapter 1"]);
+      expect(
+        el.shadowRoot.querySelector('.map-path [aria-current="location"]')
+          .textContent,
+      ).to.equal("Chapter 1");
+      expect(text(el, '.chart [role="status"]')).to.equal("Showing Chapter 1");
+      // into a page: its activities
+      mapNodes(el)[0].click();
+      await el.updateComplete;
+      nodes = mapNodes(el);
+      expect(nodes.map((n) => n.dataset.kind)).to.deep.equal([
+        "activity",
+        "activity",
+      ]);
+      expect(nodes.map((n) => n.title)).to.deep.equal([
+        "q1",
+        "Wave on a slinky",
+      ]);
+      expect(text(el, ".map-center")).to.contain("Waves 101");
+      expect(text(el, ".map-center")).to.contain("2 of 2 activities done");
+      // Escape steps out one level, focus on the page we came from
+      const evt = new KeyboardEvent("keydown", {
+        key: "Escape",
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+      });
+      el.shadowRoot.activeElement.dispatchEvent(evt);
+      expect(evt.defaultPrevented).to.equal(true);
+      await el.updateComplete;
+      await flush();
+      expect(text(el, ".map-center-title")).to.equal("Chapter 1");
+      expect(el.shadowRoot.activeElement.dataset.id).to.equal("p1");
+      // the breadcrumb steps all the way out
+      el.shadowRoot.querySelector(".map-path button").click();
+      await el.updateComplete;
+      expect(text(el, ".map-center")).to.equal("You");
+      // at the top Escape is left for the dialog
+      const top = new KeyboardEvent("keydown", {
+        key: "Escape",
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+      });
+      mapNodes(el)[0].dispatchEvent(top);
+      expect(top.defaultPrevented).to.equal(false);
+    });
+
+    it("drills from a page in the outer ring straight to its activities", async () => {
+      seed();
+      const el = await make(
+        html`<my-learning scope="site" view="map"></my-learning>`,
+      );
+      mapNodes(el)
+        .find((n) => n.dataset.id === "p2")
+        .click();
+      await el.updateComplete;
+      expect(crumbs(el)).to.deep.equal(["You", "Chapter 1", "Energy"]);
+      expect(mapNodes(el).length).to.equal(2);
+    });
+
+    it("shows sections only on a big site, every page still in the table", async () => {
+      const many = [item("big", null, 0, "Big section")];
+      for (let i = 0; i < 60; i++) {
+        many.push(item(`b${i}`, "big", i, `Page ${i}`));
+      }
+      store.manifest = { ...JSON.parse(JSON.stringify(MANIFEST)), items: many };
+      store.activeId = "b1";
+      visit("b1");
+      const el = await make(
+        html`<my-learning scope="site" view="map"></my-learning>`,
+      );
+      expect(mapNodes(el).map((n) => n.dataset.id)).to.deep.equal(["big"]);
+      expect(mapNodes(el)[0].tabIndex).to.equal(0);
+      expect(
+        el.shadowRoot.querySelectorAll(".map ~ details tbody tr").length,
+      ).to.equal(61);
+      mapNodes(el)[0].click();
+      await el.updateComplete;
+      expect(mapNodes(el).length).to.equal(60);
+    });
+
+    it("draws names as text", async () => {
+      const evil = '<img src="x" onerror="globalThis.__mlMap=1">';
+      visit("p1", 1, {});
+      record("p1", "x1", "answered", { success: true }, "multiple-choice", {
+        name: evil,
+      });
+      store.manifest = {
+        ...JSON.parse(JSON.stringify(MANIFEST)),
+        items: [item("p1", null, 0, evil)],
+      };
+      const el = await make(
+        html`<my-learning scope="site" view="map"></my-learning>`,
+      );
+      mapNodes(el)[0].click();
+      await el.updateComplete;
+      expect(el.shadowRoot.querySelector("img")).to.equal(null);
+      expect(globalThis.__mlMap).to.equal(undefined);
+      expect(text(el, ".map-center")).to.contain(evil);
+      expect(mapNodes(el)[0].getAttribute("title")).to.equal(evil);
+    });
+  });
+
   it("renders learner and author text as text, never markup", async () => {
     visit("p1", 1, {});
     const evil = '<img src="x" onerror="globalThis.__mlXss=1">';
@@ -538,7 +911,9 @@ describe("my-learning dashboard", () => {
     expect(status.textContent.trim()).to.equal(
       "Your learning data for Physics 010 was cleared.",
     );
-    expect(el.shadowRoot.querySelector(".empty")).to.not.equal(null);
+    // only the page open now is left (its visit is noted again)
+    expect(el._data.engaged).to.equal(0);
+    expect(el._data.tiles.activitiesDone).to.equal(0);
   });
 
   it("clears everything on this device when that is chosen", async () => {
@@ -568,14 +943,44 @@ describe("my-learning dashboard", () => {
   });
 
   it("updates live when a statement is recorded", async () => {
-    visit("p1", 1, { "multiple-choice": 1 });
     const el = await make(html`<my-learning scope="site"></my-learning>`);
-    expect(el._data.empty).to.equal(true);
+    expect(el.isEmpty(el._data)).to.equal(true);
+    UserScaffoldInstance.setPageTrackable(SITE, "p1", 1, {
+      "multiple-choice": 1,
+    });
     answer("p1", "live-q", true);
     await flush(150);
     await el.updateComplete;
-    expect(el._data.empty).to.equal(false);
+    expect(el.isEmpty(el._data)).to.equal(false);
+    expect(el._data.engaged).to.equal(1);
     expect(el._statements.length).to.equal(1);
+    expect(el.shadowRoot.querySelector(".tiles")).to.not.equal(null);
+  });
+
+  it("is not empty with only page reads: tiles, chart, pages and recent", async () => {
+    visit("p1");
+    visit("p3");
+    record("p1", "page-p1", "experienced", {}, "haxcms-page", {
+      name: "Waves 101",
+    });
+    record("p3", "page-p3", "experienced", {}, "haxcms-page", {
+      name: "Sound",
+    });
+    const el = await make(
+      html`<my-learning scope="site" recent></my-learning>`,
+    );
+    expect(el.shadowRoot.querySelector(".empty")).to.equal(null);
+    const tiles = text(el, ".tiles");
+    expect(tiles).to.contain("Pages read 2 / 6");
+    expect(tiles).to.contain("0 done");
+    expect(tiles).to.contain("Visits 2");
+    // no questions answered: a dash, not 0%
+    expect(tiles).to.contain("First-try accuracy —");
+    expect(el.shadowRoot.querySelector(".chart")).to.not.equal(null);
+    expect(
+      el.shadowRoot.querySelector('.pages li[data-page="p1"]').dataset.status,
+    ).to.equal("visited");
+    expect(el.shadowRoot.querySelectorAll(".recent li").length).to.equal(2);
   });
 
   it("passes an accessibility audit", async () => {

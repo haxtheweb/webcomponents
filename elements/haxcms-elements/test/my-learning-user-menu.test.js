@@ -1,5 +1,6 @@
 import { fixture, expect, html, aTimeout } from "@open-wc/testing";
 import "../lib/core/haxcms-site-editor-ui.js";
+import "@haxtheweb/simple-modal/simple-modal.js";
 
 describe("haxcms-site-editor-ui My learning menu item", () => {
   let element;
@@ -49,5 +50,46 @@ describe("haxcms-site-editor-ui My learning menu item", () => {
     expect(el.hasAttribute("in-dialog")).to.equal(true);
     expect(el.recent).to.equal(true);
     expect(el.preferences).to.equal(true);
+  });
+
+  it("has a close button and closes with it or with Escape", async () => {
+    const modal = globalThis.SimpleModal.requestAvailability();
+    const openIt = async () => {
+      await element._openMyLearning();
+      for (let i = 0; i < 50 && !modal.opened; i++) {
+        await aTimeout(20);
+      }
+      await modal.updateComplete;
+    };
+    await openIt();
+    expect(modal.opened).to.equal(true);
+    expect(modal.querySelector("my-learning")).to.not.equal(null);
+    const close = modal.shadowRoot.querySelector("#close");
+    expect(close).to.not.equal(null);
+    close.click();
+    await aTimeout(50);
+    expect(modal.opened).to.equal(false);
+    await openIt();
+    expect(modal.opened).to.equal(true);
+    // Escape inside the clear confirm only cancels the confirm
+    const ml = modal.querySelector("my-learning");
+    await ml.updateComplete;
+    ml.shadowRoot.querySelector("#clear").click();
+    await ml.updateComplete;
+    ml.shadowRoot.querySelector("#confirm").dispatchEvent(
+      new KeyboardEvent("keydown", {
+        key: "Escape",
+        bubbles: true,
+        composed: true,
+      }),
+    );
+    await aTimeout(50);
+    expect(modal.opened).to.equal(true);
+    expect(ml.shadowRoot.querySelector("#confirm")).to.equal(null);
+    globalThis.dispatchEvent(
+      new KeyboardEvent("keydown", { key: "Escape", bubbles: true }),
+    );
+    await aTimeout(50);
+    expect(modal.opened).to.equal(false);
   });
 });

@@ -2,7 +2,7 @@
  * Copyright 2026 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css, nothing } from "lit";
+import { LitElement, html, css, svg, nothing } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import {
   DDDBlockStyles,
@@ -41,7 +41,19 @@ export const MY_LEARNING_SCOPES = [
   "children",
   "site",
 ];
-export const MY_LEARNING_VIEWS = ["tags", "sections", "activity", "element"];
+export const MY_LEARNING_VIEWS = [
+  "tags",
+  "sections",
+  "activity",
+  "element",
+  "map",
+];
+export const MY_LEARNING_STATES = [
+  "done",
+  "in-progress",
+  "visited",
+  "not-started",
+];
 // order the Activity view lists its rows in
 export const MY_LEARNING_KINDS = [
   "pages",
@@ -56,6 +68,9 @@ export const MY_LEARNING_KINDS = [
 const UNTAGGED = "(untagged)";
 const RECENT_LIMIT = 10;
 const RADAR_MIN_WIDTH = 520;
+// most pages the Map view draws around their sections at once
+// room each page dot needs on its arc, in percent of the drawing
+const MAP_DOT_SPACING = 4.5;
 
 const visible = (i) =>
   i &&
@@ -217,6 +232,157 @@ export function elementTitle(tag) {
   return title;
 }
 
+// a page or section state from the states of the pages it holds
+const combinedState = (states) => {
+  if (!states.length) {
+    return "not-started";
+  }
+  if (states.every((st) => st === "done")) {
+    return "done";
+  }
+  if (states.some((st) => st === "done" || st === "in-progress")) {
+    return "in-progress";
+  }
+  return states.some((st) => st === "visited") ? "visited" : "not-started";
+};
+
+/**
+ * What the Map view draws at one level of drilling in.
+ *   path []            you at the centre, sections around you, each
+ *                      section's pages around it
+ *   path [section]     the section at the centre, its pages around it
+ *   path [..., page]   the page at the centre, its activities around it
+ * Sections are the top level items of the scope (the children of the
+ * scope root; the root itself is a section of its own).
+ * @param {Object} o
+ * @param {Array} o.items manifest items
+ * @param {string[]} o.pages page ids in scope, in outline order
+ * @param {string|null} o.root scope root
+ * @param {Object[]} o.pageRows [{ id, title, status, done, trackable }]
+ * @param {Object} o.activitiesByPage { pageId: [{ id, name, tag, done }] }
+ * @param {string[]} [o.path] ids drilled into
+ * @returns {{ center: Object, nodes: Object[], path: Object[] }} nodes:
+ *   { id, kind (section | page | activity), title, state, done, total,
+ *   children: [{ id, title, state }] (sections at the top level) }
+ */
+export function mapModel({
+  items,
+  pages,
+  root,
+  pageRows,
+  activitiesByPage,
+  path = [],
+}) {
+  const byId = new Map((items || []).map((i) => [i.id, i]));
+  const rows = new Map((pageRows || []).map((r) => [r.id, r]));
+  const acts = activitiesByPage || {};
+  const sectionOf = (id) => {
+    if (id === root) {
+      return id;
+    }
+    let cur = byId.get(id);
+    let guard = 0;
+    while (
+      cur &&
+      cur.parent &&
+      byId.has(cur.parent) &&
+      cur.parent !== root &&
+      guard++ < 50
+    ) {
+      cur = byId.get(cur.parent);
+    }
+    return cur ? cur.id : id;
+  };
+  const order = [];
+  const members = new Map();
+  (pages || []).forEach((id) => {
+    const k = sectionOf(id);
+    if (!members.has(k)) {
+      members.set(k, []);
+      order.push(k);
+    }
+    members.get(k).push(id);
+  });
+  const title = (id) => {
+    const r = rows.get(id);
+    const i = byId.get(id);
+    return (r && r.title) || (i && i.title) || id;
+  };
+  const pageNode = (id) => {
+    const r = rows.get(id) || {};
+    return {
+      id,
+      kind: "page",
+      title: title(id),
+      state: r.status || "not-started",
+      done: r.done || 0,
+      total: r.trackable || 0,
+    };
+  };
+  const sectionNode = (id) => {
+    const list = members.get(id) || [id];
+    const states = list.map((pid) => pageNode(pid).state);
+    return {
+      id,
+      kind: "section",
+      title: title(id),
+      state: combinedState(states),
+      done: states.filter((st) => st === "done").length,
+      total: list.length,
+      children: list.filter((pid) => pid !== id).map(pageNode),
+    };
+  };
+  const activityNodes = (pid) =>
+    (Array.isArray(acts[pid]) ? acts[pid] : []).map((a) => ({
+      id: a.id,
+      kind: "activity",
+      tag: a.tag,
+      title: a.name || a.id,
+      state: a.done ? "done" : "in-progress",
+      done: a.done ? 1 : 0,
+      total: 1,
+    }));
+  // follow the path as far as it is valid
+  const trail = [];
+  let where = null;
+  for (const id of Array.isArray(path) ? path : []) {
+    if (!where && members.has(id)) {
+      where = sectionNode(id);
+    } else if (
+      where &&
+      where.kind === "section" &&
+      where.children.some((c) => c.id === id)
+    ) {
+      where = pageNode(id);
+    } else if (!where && (pages || []).includes(id)) {
+      where = pageNode(id);
+    } else {
+      break;
+    }
+    trail.push(where);
+  }
+  if (!where) {
+    return {
+      center: { id: "", kind: "you", title: "" },
+      nodes: order.map(sectionNode),
+      path: trail,
+    };
+  }
+  if (where.kind === "section" && where.children.length) {
+    return { center: where, nodes: where.children, path: trail };
+  }
+  const nodes = activityNodes(where.id);
+  return {
+    center: {
+      ...where,
+      done: nodes.filter((n) => n.state === "done").length,
+      total: Math.max(pageNode(where.id).total, nodes.length),
+    },
+    nodes,
+    path: trail,
+  };
+}
+
 /**
  * File name for a download of a site's statements:
  * <site>-xapi-statements.json, the site part lower case letters, digits and
@@ -275,6 +441,8 @@ export async function openMyLearning(origin, options = {}) {
         invokedBy: origin,
         clone: false,
         modal: true,
+        // a close button in the titlebar; Escape closes it too (below)
+        showClose: true,
         styles: {
           ...SITE_ADMIN_TITLEBAR_STYLES,
           ...SITE_ADMIN_MODAL_SIZE,
@@ -288,6 +456,26 @@ export async function openMyLearning(origin, options = {}) {
       },
     }),
   );
+  // Escape closes the dialog, unless my-learning used it first (it cancels
+  // its own clear confirm and stops the key there)
+  const onKey = (e) => {
+    if (e.key === "Escape" && !e.defaultPrevented && el.isConnected) {
+      el.dispatchEvent(
+        new CustomEvent("simple-modal-hide", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: {},
+        }),
+      );
+    }
+  };
+  const done = () => {
+    globalThis.removeEventListener("keydown", onKey);
+    globalThis.removeEventListener("simple-modal-closed", done);
+  };
+  globalThis.addEventListener("keydown", onKey);
+  globalThis.addEventListener("simple-modal-closed", done);
   return el;
 }
 
@@ -337,6 +525,9 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
     this._message = "";
     this._radarReady = false;
     this._radarFailed = false;
+    this._mapPath = [];
+    this._mapFocus = 0;
+    this._mapMessage = "";
     this.t = {
       ...this.t,
       myLearning: "My learning",
@@ -345,8 +536,9 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
       clearMyData: "Clear my learning data",
       nothingYet:
         "Nothing recorded yet. Answer a question or watch a video and it shows up here.",
-      pagesDone: "Pages done",
-      pagesDoneDetail: "{percent}% done",
+      pagesRead: "Pages read",
+      pagesReadDetail: "{done} done",
+      notYet: "—",
       activitiesDone: "Activities done",
       inProgress: "{count} in progress",
       firstTryAccuracy: "First-try accuracy",
@@ -363,6 +555,22 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
       chartSections: "Progress by section",
       chartActivity: "Progress by activity",
       chartElement: "Progress by element",
+      viewMap: "Map",
+      chartMap: "Your learning map",
+      mapYou: "You",
+      mapPath: "Map path",
+      mapShowing: "Showing {name}",
+      mapPagesDone: "{done} of {total} pages done",
+      mapActivitiesDone: "{done} of {total} activities done",
+      mapNodeLabel: "{name}, {state}, {progress}",
+      mapNodeLabelShort: "{name}, {state}",
+      mapNoActivities: "Nothing to do on this page yet.",
+      mapKeys:
+        "Arrow keys move between items, Enter opens one, Escape goes back.",
+      mapLegend: "Map key",
+      tableName: "Name",
+      tableState: "State",
+      tableProgress: "Progress",
       accuracy: "First-try accuracy",
       radarFirstTryDone: "{firstTry}% first try · {done}% done",
       radarDone: "{done}% done",
@@ -487,6 +695,9 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
       _clearChoice: { type: String, state: true },
       _message: { type: String, state: true },
       _radarReady: { type: Boolean, state: true },
+      _mapPath: { type: Array, state: true },
+      _mapFocus: { type: Number, state: true },
+      _mapMessage: { type: String, state: true },
     };
   }
   connectedCallback() {
@@ -567,9 +778,21 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
     const ticket = ++this.__refreshes;
     this._data = this.compute();
     const list = await this.exportStatements();
-    if (ticket === this.__refreshes) {
-      this._statements = list;
+    if (ticket !== this.__refreshes) {
+      return;
     }
+    // stored statements are the source of truth: put back anything the
+    // profile is missing (lost writes) before showing it
+    let repaired = 0;
+    try {
+      repaired = LearnerProgress.repair(list);
+    } catch {
+      repaired = 0;
+    }
+    if (repaired) {
+      this._data = this.compute();
+    }
+    this._statements = list;
     if (this._wantsRadar(this._data) && !this._radarReady) {
       this._loadRadar();
     }
@@ -608,6 +831,7 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
       sections: "section",
       activity: "activity",
       element: "element",
+      map: "section",
     }[view];
     const summary = key
       ? LearnerProgress.summarize({
@@ -634,21 +858,63 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
         trackable: p.trackable,
       };
     });
+    // pages read and visits: from the page read statements stored for
+    // the pages in scope (the source of truth); a page the profile saw
+    // opened but whose statements cannot be matched to the outline (a moved
+    // slug) still counts, so the numbers never go down
     let visits = 0;
     let last = "";
+    const inScope = new Set(sc.pages);
+    const reads = this._statements.filter(
+      (st) =>
+        st.context &&
+        st.context.extensions &&
+        st.context.extensions[XAPI_EXTENSIONS.element] === PAGE_ELEMENT,
+    );
+    const readPages = new Set();
+    reads.forEach((st) => {
+      const id = LearnerProgress.pageOfStatement(st);
+      if (inScope.has(id)) {
+        visits++;
+        readPages.add(id);
+        if (st.timestamp && String(st.timestamp) > last) {
+          last = String(st.timestamp);
+        }
+      }
+    });
+    let profileVisits = 0;
     sc.pages.forEach((id) => {
       const p = recPage(id);
-      if (p) {
-        visits += p.visits || 0;
+      if (p && p.visits > 0) {
+        profileVisits += p.visits;
+        readPages.add(id);
         if (p.lastVisit && String(p.lastVisit) > last) {
           last = String(p.lastVisit);
         }
       }
     });
+    visits = Math.max(visits, profileVisits);
+    const read = readPages.size;
+    // trackable activities of each page in scope, for the Map view
+    // null prototype: page ids are keys (any id, even "__proto__")
+    const activitiesByPage = Object.create(null);
+    const recActs = siteRec && siteRec.activities ? siteRec.activities : {};
+    Object.keys(recActs)
+      .map((id) => ({ id, a: recActs[id] }))
+      .filter(({ a }) => a && a.trackable !== false && inScope.has(a.page))
+      .sort((x, y) =>
+        String(x.a.first || "").localeCompare(String(y.a.first || "")),
+      )
+      .forEach(({ id, a }) => {
+        const list = activitiesByPage[a.page] || [];
+        list.push({ id, name: a.name || "", tag: a.tag || "", done: !!a.done });
+        activitiesByPage[a.page] = list;
+      });
     const engaged = totals ? totals.engaged : 0;
     const tiles = {
       pagesDone: pageRows.filter((r) => r.status === "done").length,
       pagesTotal: pageRows.length,
+      pagesRead: read,
       activitiesDone: totals ? totals.engagedDone : 0,
       activitiesTotal: totals ? Math.max(totals.trackable, engaged) : 0,
       inProgress: totals ? engaged - totals.engagedDone : 0,
@@ -663,13 +929,21 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
       root: sc.root,
       rootTitle: sc.root && byId.has(sc.root) ? byId.get(sc.root).title : "",
       view,
-      empty: !engaged,
+      // trackable activity in scope (the chart needs some)
+      engaged,
+      // any page of the site opened on this device
+      visited:
+        reads.length > 0 ||
+        Object.keys(recPages).some((id) => recPages[id].visits > 0),
       hasRecord: Boolean(siteRec),
       tiles,
       groups: summary
         ? this._withData(this._groups(view, summary, sc, byId, recPage))
         : [],
       pageRows,
+      items,
+      pages: sc.pages,
+      activitiesByPage,
       preferences: profile.preferences || {},
       session: profile.session || {},
     };
@@ -798,7 +1072,7 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
     return (
       Boolean(data) &&
       this.chart &&
-      !data.empty &&
+      data.engaged > 0 &&
       (width === 0 || width >= RADAR_MIN_WIDTH) &&
       (data.view === "tags" || data.view === "sections") &&
       data.groups.length >= 3 &&
@@ -888,6 +1162,7 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
   }
   _onKeydown(e) {
     if (e.key === "Escape" && this._confirming) {
+      e.preventDefault();
       e.stopPropagation();
       this._closeConfirm();
     }
@@ -1328,6 +1603,282 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
           white-space: nowrap;
           border: 0;
         }
+        .map-path ol {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: var(--ddd-spacing-1);
+          margin: 0 0 var(--ddd-spacing-2);
+          padding: 0;
+          list-style: none;
+          font-size: var(--ddd-font-size-4xs);
+        }
+        .map-path li {
+          margin: 0;
+          padding: 0;
+          font-size: inherit;
+        }
+        .map-path li + li::before {
+          content: "›";
+          margin-inline-end: var(--ddd-spacing-1);
+          color: var(--my-learning-muted);
+        }
+        .map-path button {
+          font: inherit;
+          padding: 0;
+          border: 0;
+          background: transparent;
+          color: light-dark(
+            var(--ddd-theme-default-link),
+            var(--ddd-theme-default-linkLight)
+          );
+          text-decoration: underline;
+          cursor: pointer;
+        }
+        .map-path span[aria-current] {
+          font-weight: var(--ddd-font-weight-bold);
+        }
+        .map-path button:focus-visible,
+        .map-node:focus-visible {
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
+        }
+        .map-keys {
+          margin: 0 0 var(--ddd-spacing-2);
+          font-size: var(--ddd-font-size-4xs);
+          color: var(--my-learning-muted);
+        }
+        .map-legend,
+        .map {
+          --map-done: var(--my-learning-done);
+          --map-partial: var(--my-learning-partial);
+          --map-visited: light-dark(
+            var(--ddd-theme-default-limestoneGray),
+            var(--ddd-theme-default-slateGray)
+          );
+          --map-empty: var(--my-learning-muted);
+          --map-surface: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+        }
+        .map {
+          position: relative;
+          width: 100%;
+          max-width: var(--map-size, 560px);
+          aspect-ratio: 1;
+          margin-inline: auto;
+        }
+        .map svg {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+        }
+        .map line {
+          stroke: var(--my-learning-line);
+          stroke-width: 0.5;
+        }
+        .map line.twig {
+          stroke-width: 0.25;
+        }
+        .map-center,
+        .map-node {
+          position: absolute;
+          transform: translate(-50%, -50%);
+        }
+        .map-center {
+          left: 50%;
+          top: 50%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          width: clamp(96px, 24%, 150px);
+          height: clamp(96px, 24%, 150px);
+          border-radius: var(--ddd-radius-circle);
+          background-color: var(--ddd-chart-1);
+          color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+          font-weight: var(--ddd-font-weight-bold);
+          font-size: var(--ddd-font-size-4xs);
+          text-align: center;
+          padding: var(--ddd-spacing-1);
+          box-sizing: border-box;
+          overflow: hidden;
+        }
+        .map-center-title {
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+          line-clamp: 2;
+          overflow: hidden;
+          max-width: 100%;
+        }
+        .map-center[data-state="done"] {
+          background-color: var(--map-done);
+        }
+        .map-center[data-state="in-progress"] {
+          background-color: var(--map-partial);
+        }
+        .map-center[data-state="visited"],
+        .map-center[data-state="not-started"] {
+          background-color: var(--map-surface);
+          color: inherit;
+          border: var(--ddd-border-sm);
+          border-color: var(--map-empty);
+        }
+        .map-center-sub {
+          font-size: 0.85em;
+          font-weight: var(--ddd-font-weight-regular);
+        }
+        .map-node {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: var(--ddd-spacing-1);
+          min-width: 24px;
+          min-height: 24px;
+          margin: 0;
+          padding: 0;
+          border: 0;
+          background: transparent;
+          color: inherit;
+          font: inherit;
+          cursor: pointer;
+        }
+        .map-node[data-kind="activity"] {
+          cursor: default;
+        }
+        .map-node .dot {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          box-sizing: border-box;
+          width: 44px;
+          height: 44px;
+          border-radius: var(--ddd-radius-circle);
+          border: var(--ddd-border-sm);
+          border-color: var(--map-empty);
+          background-color: var(--map-surface);
+          font-weight: var(--ddd-font-weight-bold);
+          color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+        }
+        .map-node.ring-2 .dot {
+          width: 16px;
+          height: 16px;
+        }
+        .map.drilled .map-node .dot {
+          width: 36px;
+          height: 36px;
+        }
+        .map-node[data-state="done"] .dot,
+        .swatch[data-state="done"] {
+          background-color: var(--map-done);
+          border-color: var(--map-done);
+        }
+        .map-node[data-state="in-progress"] .dot,
+        .swatch[data-state="in-progress"] {
+          background-color: var(--map-partial);
+          border-color: var(--map-partial);
+        }
+        .map-node[data-state="visited"] .dot,
+        .swatch[data-state="visited"] {
+          background-color: var(--map-visited);
+          border-color: var(--map-visited);
+        }
+        .map-node[data-state="not-started"] .dot {
+          color: inherit;
+        }
+        .map-node .name {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          width: max-content;
+          max-width: 8rem;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+          line-clamp: 2;
+          overflow: hidden;
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-bold);
+          line-height: var(--ddd-lh-120);
+          text-align: center;
+          color: var(--my-learning-heading);
+          padding: 0 var(--ddd-spacing-1);
+          border-radius: var(--ddd-radius-xs);
+          background-color: light-dark(
+            rgb(255 255 255 / 0.85),
+            rgb(0 3 33 / 0.85)
+          );
+        }
+        .map-node .name[data-side="right"],
+        .map-node .name[data-side="left"] {
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        .map-node .name[data-side="right"] {
+          left: calc(100% + 4px);
+          text-align: start;
+        }
+        .map-node .name[data-side="left"] {
+          left: auto;
+          right: calc(100% + 4px);
+          text-align: end;
+        }
+        .map-node .name[data-side="top"] {
+          bottom: calc(100% + 2px);
+        }
+        .map-node .name[data-side="bottom"] {
+          top: calc(100% + 2px);
+        }
+        .map-legend {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: var(--ddd-spacing-3);
+          margin: var(--ddd-spacing-3) 0 0;
+          padding: 0;
+          list-style: none;
+          font-size: var(--ddd-font-size-4xs);
+          color: var(--my-learning-muted);
+        }
+        .map-legend li {
+          margin: 0;
+          padding: 0;
+          font-size: inherit;
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-1);
+        }
+        .swatch {
+          display: inline-block;
+          box-sizing: border-box;
+          width: 12px;
+          height: 12px;
+          border-radius: var(--ddd-radius-circle);
+          border: var(--ddd-border-sm);
+          border-color: var(--map-empty);
+        }
+        .map-none {
+          text-align: center;
+          font-size: var(--ddd-font-size-4xs);
+        }
+        @media (forced-colors: active) {
+          .map-node .dot,
+          .map-center,
+          .swatch {
+            forced-color-adjust: none;
+            border-color: CanvasText;
+          }
+        }
         radar-chart {
           display: block;
           max-width: 720px;
@@ -1471,8 +2022,14 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
       </div>
     </div>`;
   }
+  /**
+   * Nothing to show: no statements stored and no page opened for this site
+   */
+  isEmpty(data) {
+    return !this._statements.length && !(data && data.visited);
+  }
   renderBody(data) {
-    if (data.empty) {
+    if (this.isEmpty(data)) {
       return html`<p class="empty" part="empty">${this.t.nothingYet}</p>
         ${this.preferences ? this.renderPreferences(data) : nothing}`;
     }
@@ -1497,9 +2054,9 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
   renderTiles(data) {
     const t = data.tiles;
     const first =
-      t.firstTry == null ? this.t.noValue : `${Math.round(t.firstTry * 100)}%`;
-    const pagesDone = fill(this.t.doneOf, {
-      done: t.pagesDone,
+      t.firstTry == null ? this.t.notYet : `${Math.round(t.firstTry * 100)}%`;
+    const pagesRead = fill(this.t.doneOf, {
+      done: t.pagesRead,
       total: t.pagesTotal,
     });
     const last = t.lastVisit
@@ -1507,12 +2064,12 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
       : this.t.noValue;
     return html`<dl class="tiles" part="tiles">
       <div class="tile panel">
-        <dt>${this.t.pagesDone}</dt>
+        <dt>${this.t.pagesRead}</dt>
         <dd>
-          <span class="big">${pagesDone}</span>
+          <span class="big">${pagesRead}</span>
           <span class="small"
-            >${fill(this.t.pagesDoneDetail, {
-              percent: pct(t.pagesDone, t.pagesTotal),
+            >${fill(this.t.pagesReadDetail, {
+              done: t.pagesDone,
             })}</span
           >
         </dd>
@@ -1555,10 +2112,13 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
       sections: this.t.chartSections,
       activity: this.t.chartActivity,
       element: this.t.chartElement,
+      map: this.t.chartMap,
     }[view];
   }
   _setView(view) {
     this._view = view;
+    this._mapPath = [];
+    this._mapFocus = 0;
     this._data = this.compute();
     if (this._wantsRadar(this._data) && !this._radarReady) {
       this._loadRadar();
@@ -1570,33 +2130,368 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
       ["sections", this.t.viewSections],
       ["activity", this.t.viewActivity],
       ["element", this.t.viewElement],
+      ["map", this.t.viewMap],
     ];
     const title = this._chartTitle(data.view);
     const radar = this.chartType === "radar";
+    if (data.view === "map") {
+      return html`<div class="panel chart" part="chart">
+        <h3 id="chart-title">${title}</h3>
+        ${this.renderViewChips(views, data)} ${this.renderMap(data, title)}
+      </div>`;
+    }
     // the radar names itself in its own header
     const heading = radar ? nothing : html`<h3 id="chart-title">${title}</h3>`;
     const drawing = radar
       ? this.renderRadar(data, title)
       : this.renderBars(data, title);
     return html`<div class="panel chart" part="chart">
-      ${heading}
-      <fieldset class="chips" role="radiogroup">
-        <legend>${this.t.groupBy}</legend>
-        ${views.map(
-          ([v, label]) =>
-            html`<label class="chip"
-              ><input
-                type="radio"
-                name="group-by"
-                value="${v}"
-                .checked="${data.view === v}"
-                @change="${() => this._setView(v)}"
-              /><span>${label}</span></label
-            >`,
-        )}
-      </fieldset>
-      ${drawing}
+      ${heading} ${this.renderViewChips(views, data)} ${drawing}
     </div>`;
+  }
+  renderViewChips(views, data) {
+    return html`<fieldset class="chips" role="radiogroup">
+      <legend>${this.t.groupBy}</legend>
+      ${views.map(
+        ([v, label]) =>
+          html`<label class="chip"
+            ><input
+              type="radio"
+              name="group-by"
+              value="${v}"
+              .checked="${data.view === v}"
+              @change="${() => this._setView(v)}"
+            /><span>${label}</span></label
+          >`,
+      )}
+    </fieldset>`;
+  }
+  /**
+   * Map view model for the current drill path (see mapModel)
+   */
+  mapView(data) {
+    const d = data || this._data;
+    return mapModel({
+      items: d.items,
+      pages: d.pages,
+      root: d.root,
+      pageRows: d.pageRows,
+      activitiesByPage: d.activitiesByPage,
+      path: this._mapPath,
+    });
+  }
+  _mapProgress(n) {
+    if (n.kind === "activity") {
+      return "";
+    }
+    const tpl =
+      n.kind === "section" && n.children && n.children.length
+        ? this.t.mapPagesDone
+        : this.t.mapActivitiesDone;
+    return fill(tpl, { done: n.done, total: n.total });
+  }
+  _mapDrill(node) {
+    if (node.kind === "activity") {
+      return;
+    }
+    const m = this.mapView();
+    const base = m.path.map((n) => n.id);
+    // a page at the top level sits under its section
+    if (node.kind === "page" && !base.length && node.section) {
+      base.push(node.section);
+    }
+    this._mapPath = [...base, node.id];
+    this._mapFocus = 0;
+    this._mapMessage = fill(this.t.mapShowing, { name: node.title });
+    this._focusMapNode();
+  }
+  _mapBack(to) {
+    const m = this.mapView();
+    if (!m.path.length) {
+      return false;
+    }
+    const left = m.path[m.path.length - 1];
+    const keep = typeof to === "number" ? to : m.path.length - 1;
+    this._mapPath = m.path.slice(0, keep).map((n) => n.id);
+    // focus the node we came back from
+    const next = this.mapView();
+    const flat = this._mapFlat(next);
+    const at = flat.findIndex((n) => n.id === left.id);
+    this._mapFocus = at > -1 ? at : 0;
+    const where = next.path.length
+      ? next.path[next.path.length - 1].title
+      : this.t.mapYou;
+    this._mapMessage = fill(this.t.mapShowing, { name: where });
+    this._focusMapNode();
+    return true;
+  }
+  // nodes in keyboard order: each section, then its pages
+  /**
+   * Where the Map view draws each node, in keyboard order: a ring node,
+   * then the page dots around it (top level, only for sections whose pages
+   * fit the arc they get; see mapPagesFit). The rings and the drawing grow
+   * with the number of nodes so neighbours keep apart. Labels sit outside
+   * each node on its own side of the circle.
+   * @returns {{ placed: Object[], lines: Array, size: number }}
+   */
+  _mapLayout(m) {
+    const top = !m.path.length;
+    const n = m.nodes.length;
+    const angle = (i) => (2 * Math.PI * i) / Math.max(n, 1) - Math.PI / 2;
+    const pos = (r, a) => [50 + r * Math.cos(a), 50 + r * Math.sin(a)];
+    // the arc each ring node owns, and how many page dots fit on it
+    const span = Math.min(0.9, ((2 * Math.PI) / Math.max(n, 1)) * 0.7);
+    const r2 = 43;
+    const fits = Math.max(1, Math.floor((span * r2) / MAP_DOT_SPACING) + 1);
+    const showKids = (node) =>
+      top &&
+      Array.isArray(node.children) &&
+      node.children.length > 0 &&
+      node.children.length <= fits;
+    const anyKids = m.nodes.some(showKids);
+    const r1 = anyKids
+      ? 25
+      : Math.min(36, Math.max(top ? 28 : 30, 22 + n * 1.2));
+    const side = (a) => {
+      // above / below only right at the top and bottom, so neighbours
+      // there lean apart
+      const c = Math.cos(a);
+      if (c > 0.2) {
+        return "right";
+      }
+      if (c < -0.2) {
+        return "left";
+      }
+      return Math.sin(a) < 0 ? "top" : "bottom";
+    };
+    const placed = [];
+    const lines = [];
+    let dots = 0;
+    m.nodes.forEach((node, i) => {
+      const a = angle(i);
+      const [x, y] = pos(r1, a);
+      lines.push([50, 50, x, y, "spoke"]);
+      placed.push({ node, x, y, ring: 1, side: side(a) });
+      if (showKids(node)) {
+        const kids = node.children;
+        kids.forEach((c, j) => {
+          const b =
+            kids.length > 1 ? a + span * (j / (kids.length - 1) - 0.5) : a;
+          const [px, py] = pos(r2, b);
+          lines.push([x, y, px, py, "twig"]);
+          placed.push({
+            node: { ...c, section: node.id },
+            x: px,
+            y: py,
+            ring: 2,
+            side: side(b),
+          });
+          dots++;
+        });
+      }
+    });
+    // more around the circle, a bigger drawing (within the container)
+    const size = Math.round(
+      Math.min(760, Math.max(440, 360 + n * 28 + dots * 4)),
+    );
+    return { placed, lines, size };
+  }
+  // nodes in keyboard order (the drawn ones), or every node (all, the table)
+  _mapFlat(m, all = false) {
+    if (!all) {
+      return this._mapLayout(m).placed.map((p) => p.node);
+    }
+    const out = [];
+    m.nodes.forEach((n) => {
+      out.push(n);
+      if (!m.path.length && n.children) {
+        n.children.forEach((c) => out.push({ ...c, section: n.id }));
+      }
+    });
+    return out;
+  }
+  _focusMapNode() {
+    this.updateComplete.then(() => {
+      const nodes = this.shadowRoot.querySelectorAll(".map-node");
+      const el = nodes[this._mapFocus] || nodes[0];
+      if (el) {
+        el.focus();
+      }
+    });
+  }
+  _onMapKeydown(e) {
+    const nodes = [...this.shadowRoot.querySelectorAll(".map-node")];
+    const at = nodes.indexOf(e.target);
+    if (e.key === "Escape") {
+      if (this._mapBack()) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      return;
+    }
+    if (at < 0 || !nodes.length) {
+      return;
+    }
+    const step = {
+      ArrowRight: 1,
+      ArrowDown: 1,
+      ArrowLeft: -1,
+      ArrowUp: -1,
+    }[e.key];
+    let next = -1;
+    if (step) {
+      next = (at + step + nodes.length) % nodes.length;
+    } else if (e.key === "Home") {
+      next = 0;
+    } else if (e.key === "End") {
+      next = nodes.length - 1;
+    }
+    if (next > -1) {
+      e.preventDefault();
+      this._mapFocus = next;
+      nodes[next].focus();
+    }
+  }
+  renderMap(data, title) {
+    const m = this.mapView(data);
+    const top = !m.path.length;
+    const n = m.nodes.length;
+    const { placed, lines, size } = this._mapLayout(m);
+    const flat = placed.map((p) => p.node);
+    // keyboard order is the order of flat
+    const order = new Map(
+      flat.map((f, i) => [`${f.section || ""}|${f.id}`, i]),
+    );
+    const stateWord = (st) => this._stateText(st);
+    const center = top
+      ? html`<span class="map-center you" aria-hidden="true"
+          >${this.t.mapYou}</span
+        >`
+      : html`<span class="map-center" data-state="${m.center.state}"
+          ><span class="map-center-title">${m.center.title}</span
+          ><span class="map-center-sub"
+            >${this._mapProgress(m.center)}</span
+          ></span
+        >`;
+    const crumbs = [
+      { title: this.t.mapYou, at: 0 },
+      ...m.path.map((p, i) => ({ title: p.title, at: i + 1 })),
+    ];
+    return html`<nav class="map-path" aria-label="${this.t.mapPath}">
+        <ol>
+          ${crumbs.map((c, i) =>
+            i === crumbs.length - 1
+              ? html`<li><span aria-current="location">${c.title}</span></li>`
+              : html`<li>
+                  <button type="button" @click="${() => this._mapBack(c.at)}">
+                    ${c.title}
+                  </button>
+                </li>`,
+          )}
+        </ol>
+      </nav>
+      <p class="map-keys" id="map-keys">${this.t.mapKeys}</p>
+      <div
+        class="map ${top ? "top" : "drilled"}"
+        style="--map-size: ${size}px"
+        part="map"
+        role="group"
+        aria-labelledby="chart-title"
+        aria-describedby="map-keys"
+        @keydown="${this._onMapKeydown}"
+      >
+        <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+          ${lines.map(
+            ([x1, y1, x2, y2, k]) =>
+              svg`<line class="${k}" x1="${x1.toFixed(2)}" y1="${y1.toFixed(2)}" x2="${x2.toFixed(2)}" y2="${y2.toFixed(2)}"></line>`,
+          )}
+        </svg>
+        ${center}
+        ${placed.map(({ node, x, y, ring, side }) => {
+          const idx = order.get(`${node.section || ""}|${node.id}`);
+          const progress = this._mapProgress(node);
+          const label = fill(
+            progress ? this.t.mapNodeLabel : this.t.mapNodeLabelShort,
+            { name: node.title, state: stateWord(node.state), progress },
+          );
+          const glyph =
+            node.kind === "activity" ? this._glyphFor(node.tag) : "";
+          // pages in the outer ring are named by their button label only;
+          // long names are cut to two lines (the label has all of it)
+          const name =
+            ring === 2
+              ? nothing
+              : html`<span class="name" data-side="${side}" aria-hidden="true"
+                  >${node.title}</span
+                >`;
+          return html`<button
+            type="button"
+            class="map-node ring-${ring}"
+            data-kind="${node.kind}"
+            data-state="${node.state}"
+            data-id="${node.id}"
+            style="left: ${x.toFixed(2)}%; top: ${y.toFixed(2)}%"
+            tabindex="${idx === this._mapFocus ? "0" : "-1"}"
+            aria-label="${label}"
+            title="${node.title}"
+            @click="${() => this._mapDrill(node)}"
+            @focus="${() => (this._mapFocus = idx)}"
+          >
+            <span class="dot" aria-hidden="true">${glyph}</span>
+            ${name}
+          </button>`;
+        })}
+      </div>
+      ${n ? nothing : html`<p class="map-none">${this.t.mapNoActivities}</p>`}
+      <ul class="map-legend" aria-label="${this.t.mapLegend}">
+        ${MY_LEARNING_STATES.map(
+          (st) =>
+            html`<li>
+              <span class="swatch" data-state="${st}" aria-hidden="true"></span
+              >${stateWord(st)}
+            </li>`,
+        )}
+      </ul>
+      <p class="sr-only" role="status" aria-live="polite">
+        ${this._mapMessage}
+      </p>
+      <details>
+        <summary>${this.t.showTable}</summary>
+        <table class="ddd-table condensed">
+          <caption class="sr-only">
+            ${title}
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">${this.t.tableName}</th>
+              <th scope="col">${this.t.tableState}</th>
+              <th scope="col">${this.t.tableProgress}</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${this._mapFlat(m, true).map(
+              (f) =>
+                html`<tr>
+                  <th scope="row">${f.title}</th>
+                  <td>${stateWord(f.state)}</td>
+                  <td>${this._mapProgress(f)}</td>
+                </tr>`,
+            )}
+          </tbody>
+        </table>
+      </details>`;
+  }
+  _glyphFor(tag) {
+    return (
+      {
+        questions: "?",
+        cards: "?",
+        checklists: "✓",
+        videos: "▶",
+        audio: "▶",
+        games: "★",
+      }[activityKindOf(tag)] || "•"
+    );
   }
   renderRadar(data, title) {
     const groups = data.groups;
@@ -1972,6 +2867,7 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
               sections: "Sections",
               activity: "Activity",
               element: "Element",
+              map: "Map",
             },
           },
           {

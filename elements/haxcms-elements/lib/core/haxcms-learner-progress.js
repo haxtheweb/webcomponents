@@ -334,6 +334,61 @@ class HAXCMSLearnerProgress {
     });
   }
   /**
+   * Outline item id a stored statement belongs to, from its page: the
+   * statement's parent activity (the page it was sent from) or, for a page
+   * read, its object; matched against the URL of every outline item.
+   */
+  pageOfStatement(statement) {
+    const norm = (u) =>
+      String(u || "")
+        .split("#")[0]
+        .split("?")[0]
+        .replace(/\/index\.html$/, "")
+        .replace(/\/$/, "");
+    if (!this.__pageUrls || this.__pageUrlsFor !== store.manifest) {
+      this.__pageUrlsFor = store.manifest;
+      this.__pageUrls = new Map();
+      const m = toJS(store.manifest);
+      (m && Array.isArray(m.items) ? m.items : []).forEach((i) => {
+        try {
+          const url = norm(new URL(i.slug || "", globalThis.document.baseURI));
+          if (i.id && url && !this.__pageUrls.has(url)) {
+            this.__pageUrls.set(url, i.id);
+          }
+        } catch {
+          // not a usable slug
+        }
+      });
+    }
+    const ctx = statement && statement.context ? statement.context : {};
+    const ext = ctx.extensions || {};
+    const ca = ctx.contextActivities || {};
+    const parent =
+      Array.isArray(ca.parent) && ca.parent[0] ? ca.parent[0] : null;
+    const url =
+      ext[XAPI_EXTENSIONS.element] === PAGE_ELEMENT && statement.object
+        ? statement.object.id
+        : parent
+          ? parent.id
+          : "";
+    return this.__pageUrls.get(norm(url)) || "";
+  }
+  /**
+   * Rebuild what the learner profile lost from this site's stored
+   * statements (see UserScaffold.repairSite). Returns how much changed.
+   */
+  repair(statements) {
+    const key = this.siteKey;
+    if (!key || !Array.isArray(statements) || !statements.length) {
+      return 0;
+    }
+    return this.profile.repairSite(key, statements, {
+      pageOf: (st) => this.pageOfStatement(st),
+      trackableOf: (tag) => this.isTrackable(tag),
+      pageElement: PAGE_ELEMENT,
+    });
+  }
+  /**
    * Forget this site's progress on this device, including checklist ticks
    * kept under bullet-check-list's own keys
    */

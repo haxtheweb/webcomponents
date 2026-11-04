@@ -182,6 +182,23 @@ export class UserScaffold extends HTMLElement {
     globalThis.addEventListener("dragover", this.userDragAction.bind(this), {
       signal: this.windowControllers.signal,
     });
+    // another tab of this origin saved long-term memory: take its copy, so
+    // the next save here does not write back a stale profile over it
+    globalThis.addEventListener("storage", this._onStorage.bind(this), {
+      signal: this.windowControllers.signal,
+    });
+  }
+  _onStorage(e) {
+    const adapter = this._memoryAdapter;
+    if (
+      e &&
+      adapter &&
+      adapter.key &&
+      e.key === adapter.key &&
+      typeof adapter.load === "function"
+    ) {
+      this.ltMemory = adapter.load() || {};
+    }
   }
   userKeyDownAction(e) {
     if (e.isTrusted) {
@@ -563,13 +580,20 @@ export class UserScaffold extends HTMLElement {
    * @param {Object} statement xAPI statement
    * @param {Object} meta { page, tag, trackable, imported, pageTitle,
    *   responseText (result.response in plain words), legacyId (an older id
-   *   of the same activity whose data moves to this one, once) }
+   *   of the same activity whose data moves to this one, once), replay
+   *   (rebuilding from stored statements: not deduplicated, not stored) }
    */
   recordStatement(site, statement, meta = {}) {
     if (!site || !statement || !statement.object || !statement.object.id) {
       return null;
     }
-    if (statement.id && this._seenStatements.has(statement.id)) {
+    // meta.replay: rebuilding the profile from statements already stored
+    // (repairSite); not new, so neither deduplicated nor stored again
+    if (
+      !meta.replay &&
+      statement.id &&
+      this._seenStatements.has(statement.id)
+    ) {
       return null;
     }
     const siteRec = this._site(site);
@@ -666,7 +690,7 @@ export class UserScaffold extends HTMLElement {
     siteRec.counts.byVerb[verb] = (siteRec.counts.byVerb[verb] || 0) + 1;
     siteRec.statementCount = (siteRec.statementCount || 0) + 1;
     this._saveLongTerm();
-    if (this._statementAdapter) {
+    if (this._statementAdapter && !meta.replay) {
       Promise.resolve(this._statementAdapter.add(site, statement)).catch(
         () => {},
       );
@@ -1050,6 +1074,105 @@ export class UserScaffold extends HTMLElement {
    */
   async statements(site) {
     return this._statementAdapter ? this._statementAdapter.list(site) : [];
+  }
+  /**
+   * Bring a site's profile record back in line with its stored statements,
+   * which are the source of truth; the profile record is a cache of them
+   * (it can lose writes, e.g. when an older tab saved long-term memory over
+   * a newer one). Activities the profile does not know, or knows from fewer
+   * statements than are stored (stale), are rebuilt by replaying their
+   * statements through recordStatement, oldest first, so they come out as
+   * if recorded live; up to date ones are left alone, so running this again
+   * changes nothing. Activities with more history than the stored
+   * statements (statements kept only in memory) are kept.
+   * Page visits are raised to the number of page reads stored.
+   * @param {string} site
+   * @param {Object[]} statements the site's stored statements
+   * @param {Object} o
+   * @param {Function} o.pageOf (statement) => outline item id, or ""
+   * @param {Function} [o.trackableOf] (tag) => counts toward a page being done
+   * @param {string} [o.pageElement] element tag of page reads ("haxcms-page")
+   * @returns {number} statements replayed plus pages whose visits changed
+   */
+  repairSite(site, statements, { pageOf, trackableOf, pageElement } = {}) {
+    if (!site || !Array.isArray(statements) || typeof pageOf !== "function") {
+      return 0;
+    }
+    const existing = this._profile().sites[site];
+    const known = new Set(
+      existing ? Object.keys(existing.activities || {}) : [],
+    );
+    const sorted = statements
+      .filter((st) => st && st.object && st.object.id)
+      .sort((a, b) =>
+        String(a.timestamp || "").localeCompare(String(b.timestamp || "")),
+      );
+    let changed = 0;
+    // an activity the profile has with fewer statements than are stored is
+    // stale (it missed writes): drop it and replay all of its statements
+    const perObject = new Map();
+    sorted.forEach((st) =>
+      perObject.set(st.object.id, (perObject.get(st.object.id) || 0) + 1),
+    );
+    perObject.forEach((n, id) => {
+      const act =
+        existing &&
+        Object.prototype.hasOwnProperty.call(existing.activities, id)
+          ? existing.activities[id]
+          : null;
+      if (act && (act.count || 0) < n) {
+        delete existing.activities[id];
+        known.delete(id);
+      }
+    });
+    const reads = new Map();
+    sorted.forEach((st) => {
+      const page = pageOf(st) || "";
+      const ctx = st.context || {};
+      const tag = extensionOf(ctx, "element") || "";
+      if (page && pageElement && tag === pageElement) {
+        const r = reads.get(page) || { count: 0, first: "", last: "" };
+        r.count += 1;
+        r.first = r.first || st.timestamp || "";
+        r.last = st.timestamp || r.last;
+        reads.set(page, r);
+      }
+      if (known.has(st.object.id)) {
+        return;
+      }
+      const done = this.recordStatement(site, st, {
+        page,
+        tag,
+        trackable:
+          typeof trackableOf === "function" ? Boolean(trackableOf(tag)) : true,
+        replay: true,
+      });
+      if (done) {
+        changed++;
+      }
+    });
+    if (reads.size) {
+      const siteRec = this._site(site);
+      reads.forEach((r, page) => {
+        const p = this._page(siteRec, page);
+        if ((p.visits || 0) < r.count) {
+          p.visits = r.count;
+          p.firstVisit = p.firstVisit || r.first || null;
+          if (!p.lastVisit || String(r.last) > String(p.lastVisit)) {
+            p.lastVisit = r.last || p.lastVisit;
+          }
+          if (
+            !siteRec.lastVisit ||
+            String(r.last) > String(siteRec.lastVisit)
+          ) {
+            siteRec.lastVisit = r.last || siteRec.lastVisit;
+          }
+          changed++;
+        }
+      });
+      this._saveLongTerm();
+    }
+    return changed;
   }
   /**
    * Forget everything recorded for a site on this device

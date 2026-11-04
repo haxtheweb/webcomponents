@@ -409,6 +409,78 @@ describe("user-scaffold summarize", () => {
   });
 });
 
+describe("user-scaffold across reloads and tabs", () => {
+  const KEY = "user-scaffold-test-reload";
+  afterEach(() => new LocalStorageMemoryAdapter(KEY).clear());
+  const scaffold = () => {
+    const el = globalThis.document.createElement("user-scaffold");
+    el.setMemoryAdapter(new LocalStorageMemoryAdapter(KEY));
+    el.setStatementAdapter(new MemoryStatementAdapter());
+    return el;
+  };
+
+  it("keeps activities and visits after a reload", () => {
+    const a = scaffold();
+    a.recordPageVisit(SITE, "p1");
+    a.recordStatement(SITE, answered("q1", true), { page: "p1" });
+    a.disconnectedCallback();
+    // a new page load reads what the last one saved
+    const b = scaffold();
+    const site = b.readSite(SITE);
+    expect(site.pages.p1.visits).to.equal(1);
+    expect(site.activities.q1.done).to.equal(true);
+    expect(b.pageProgress(SITE, "p1").status).to.equal("done");
+    b.disconnectedCallback();
+  });
+
+  it("takes another tab's save before writing its own", () => {
+    const older = scaffold(); // opened first, loads an empty profile
+    const newer = scaffold();
+    newer.recordStatement(SITE, answered("q1", true), { page: "p1" });
+    // the browser tells the older tab about the newer tab's save
+    globalThis.dispatchEvent(
+      new StorageEvent("storage", { key: KEY, newValue: "x" }),
+    );
+    older.recordPageVisit(SITE, "p2");
+    const saved = new LocalStorageMemoryAdapter(KEY).load();
+    expect(Object.keys(saved.profile.sites[SITE].activities)).to.deep.equal([
+      "q1",
+    ]);
+    expect(saved.profile.sites[SITE].pages.p2.visits).to.equal(1);
+    // other keys are ignored
+    globalThis.dispatchEvent(new StorageEvent("storage", { key: "other" }));
+    expect(older.readSite(SITE).activities.q1.done).to.equal(true);
+    older.disconnectedCallback();
+    newer.disconnectedCallback();
+  });
+
+  it("repairs a site from its statements, once", () => {
+    const us = freshScaffold();
+    const stored = [
+      st("p1", "experienced", {}, "haxcms-page"),
+      answered("q1", false),
+      answered("q1", true, 2),
+      st("p1", "experienced", {}, "haxcms-page"),
+    ];
+    const opts = {
+      pageOf: () => "p1",
+      trackableOf: (tag) => tag !== "haxcms-page",
+      pageElement: "haxcms-page",
+    };
+    expect(us.repairSite(SITE, stored, opts)).to.be.greaterThan(0);
+    const site = us.readSite(SITE);
+    expect(site.activities.q1.count).to.equal(2);
+    expect(site.activities.q1.firstTry).to.equal(false);
+    expect(site.activities.p1.trackable).to.equal(false);
+    expect(site.pages.p1.visits).to.equal(2);
+    expect(us.repairSite(SITE, stored, opts)).to.equal(0);
+    expect(us.readSite(SITE).activities.q1.count).to.equal(2);
+    expect(us.repairSite("", stored, opts)).to.equal(0);
+    expect(us.repairSite(SITE, stored, {})).to.equal(0);
+    us.disconnectedCallback();
+  });
+});
+
 describe("user-scaffold clearAll", () => {
   it("forgets the whole profile and every site's statements", async () => {
     const us = freshScaffold();
