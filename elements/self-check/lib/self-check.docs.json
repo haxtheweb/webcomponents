@@ -140,11 +140,16 @@
     "heading",
     "question"
   ],
-  "events": [],
+  "events": [
+    "user-engagement"
+  ],
   "hax": {
     "canScale": false,
     "canEditSource": true,
     "contentEditable": false,
+    "designSystem": {
+      "primary": true
+    },
     "gizmo": {
       "title": "Self Check",
       "description": "Users can complete a self-check.",
@@ -250,7 +255,7 @@
       }
     ]
   },
-  "surfaceHash": "473338d2f32b",
+  "surfaceHash": "25c803ab9e59",
   "walkthroughs": [
     {
       "id": "",

@@ -37,6 +37,11 @@ export const CourseDesignLinkRowStyles = css`
     text-transform: none;
     transition: border-color var(--ddd-duration-normal, 0.3s) ease-in-out;
   }
+  @media (prefers-reduced-motion: reduce) {
+    .link-row {
+      transition: none;
+    }
+  }
   .link-row:hover {
     border-color: light-dark(
       var(--ddd-theme-default-nittanyNavy),
