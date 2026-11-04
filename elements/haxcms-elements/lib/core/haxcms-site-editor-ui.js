@@ -2935,8 +2935,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       selectPage: "Select page",
       siteDashboard: "Sites Dashboard",
       cancel: "Cancel",
-      unsavedChangesWillBeLostIfSelectingOkAreYouSure:
-        "Unsaved changes will be lost if you select OK. Are you sure?",
+      unsavedPageChangesWillBeLost:
+        "Your unsaved changes to this page will be lost.",
+      discardChanges: "Discard changes",
+      keepEditing: "Keep editing",
       editDetails: "Page details",
       add: "Add",
       source: "Source",
@@ -7301,10 +7303,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   }
   _confirmCancelEditing(e) {
     let confirmDialog = globalThis.document.createElement("hax-confirm-dialog");
-    confirmDialog.message =
-      this.t.unsavedChangesWillBeLostIfSelectingOkAreYouSure;
-    confirmDialog.confirmLabel = this.t.ok;
-    confirmDialog.cancelLabel = this.t.cancel;
+    confirmDialog.message = this.t.unsavedPageChangesWillBeLost;
+    confirmDialog.confirmLabel = this.t.discardChanges;
+    confirmDialog.cancelLabel = this.t.keepEditing;
     confirmDialog.destructive = true;
     confirmDialog.closeOnConfirm = false;
     confirmDialog.confirmCallback = () => this._cancelEditing(e);
