@@ -2,9 +2,12 @@
  * Copyright 2026 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { LitElement, html, css, nothing } from "lit";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
+// the select lists every icon, so it needs the manifest (simple-icons.js
+// only registers iconset locations)
+import "@haxtheweb/simple-icon/lib/simple-iconset-manifest.js";
 import { SimpleIconsetStore } from "@haxtheweb/simple-icon/lib/simple-iconset.js";
 
 /**
@@ -71,13 +74,29 @@ export const iconFriendlyName = (icon) => {
 
 // how many rows render at once; more are added as the list scrolls
 const PAGE_SIZE = 60;
+// tallest the option list gets, like a native select's dropdown
+const LIST_MAX_HEIGHT = 280;
+// narrowest the dropdown gets so names stay readable in skinny columns
+const PANEL_MIN_WIDTH = 240;
+// space kept between the dropdown and the trigger / viewport edge
+const GAP = 4;
+const EDGE = 8;
+// counter for unique ids; ids only need to be unique in the page, not secret
+let _instanceCount = 0;
+// top-layer rendering escapes any overflow / transform on ancestors (e.g. the
+// HAX settings tray); position: fixed is the fallback where it is unsupported
+const SUPPORTS_POPOVER =
+  typeof HTMLElement !== "undefined" &&
+  typeof HTMLElement.prototype.showPopover === "function";
 
 /**
  * `simple-icon-select`
  * A searchable select list of icons where every option shows the icon plus
- * its name (modeled on the Merlin icon program results). The list expands
- * in the document flow instead of floating, so it is never clipped by a
- * narrow form column like the HAX element settings panel.
+ * its name (modeled on the Merlin icon program results). Like a native
+ * select, the dropdown floats over the page (top layer when supported,
+ * position: fixed otherwise) anchored to the field, so it never changes the
+ * surrounding layout and is never clipped by a narrow container like the HAX
+ * element settings panel. It opens upward when there is no room below.
  *
  * Accepts the same inputs as simple-icon-picker (icons, include-sets,
  * exclude-sets, exclude, allow-null, value) and fires `value-changed`, so it
@@ -153,7 +172,9 @@ class SimpleIconSelect extends LitElement {
     this.__activeIndex = -1;
     this.__limit = PAGE_SIZE;
     this.__allIcons = [];
-    this.__uid = `sis-${Math.random().toString(36).slice(2, 9)}`;
+    _instanceCount += 1;
+    this.__uid = `simple-icon-select-${_instanceCount}`;
+    this.__reposition = this._schedulePosition.bind(this);
   }
 
   static get styles() {
@@ -171,7 +192,6 @@ class SimpleIconSelect extends LitElement {
           );
           color: var(--simple-fields-color, currentColor);
           --simple-icon-select-row-size: 32px;
-          --simple-icon-select-list-max-height: 280px;
           --simple-icon-select-border-color: var(
             --simple-fields-border-color,
             light-dark(
@@ -231,10 +251,6 @@ class SimpleIconSelect extends LitElement {
           cursor: pointer;
           text-align: start;
         }
-        :host([expanded]) .trigger {
-          border-bottom-left-radius: 0;
-          border-bottom-right-radius: 0;
-        }
         .trigger:focus-visible,
         .search:focus-visible,
         .search:focus {
@@ -263,13 +279,23 @@ class SimpleIconSelect extends LitElement {
           transform: rotate(180deg);
         }
         .panel {
+          /* floats like a native select dropdown: out of the box model and
+             positioned against the viewport from the trigger rect in JS */
+          position: fixed;
+          inset: auto;
+          margin: 0;
+          z-index: var(--simple-icon-select-z-index, 1000);
+          overflow: visible;
+          color: inherit;
+          font: inherit;
           border: var(--ddd-border-xs, 1px solid)
             var(--simple-icon-select-border-color);
-          border-top: none;
-          border-radius: 0 0
-            var(--simple-fields-border-radius, var(--ddd-radius-xs, 4px))
-            var(--simple-fields-border-radius, var(--ddd-radius-xs, 4px));
+          border-radius: var(
+            --simple-fields-border-radius,
+            var(--ddd-radius-xs, 4px)
+          );
           background-color: var(--simple-icon-select-background-color);
+          box-shadow: var(--ddd-boxShadow-md, rgba(0, 0, 0, 0.25) 0 4px 12px 0);
           padding: var(--ddd-spacing-1, 4px);
         }
         .panel[hidden] {
@@ -286,7 +312,7 @@ class SimpleIconSelect extends LitElement {
           list-style: none;
           margin: var(--ddd-spacing-1, 4px) 0 0;
           padding: 0;
-          max-height: var(--simple-icon-select-list-max-height);
+          max-height: var(--simple-icon-select-list-max-height, 280px);
           overflow-y: auto;
           overflow-x: hidden;
           overscroll-behavior: contain;
@@ -444,7 +470,12 @@ class SimpleIconSelect extends LitElement {
           aria-hidden="true"
         ></simple-icon-lite>
       </button>
-      <div class="panel" part="panel" ?hidden="${!this.expanded}">
+      <div
+        class="panel"
+        part="panel"
+        popover="${SUPPORTS_POPOVER ? "manual" : nothing}"
+        ?hidden="${!this.expanded}"
+      >
         <input
           class="search"
           part="search"
@@ -547,6 +578,8 @@ class SimpleIconSelect extends LitElement {
 
   disconnectedCallback() {
     globalThis.removeEventListener("pointerdown", this.__outsideHandler, true);
+    this._detachPositioning();
+    this.expanded = false;
     super.disconnectedCallback();
   }
 
@@ -599,23 +632,119 @@ class SimpleIconSelect extends LitElement {
       if (pos !== -1) this.__limit = pos + PAGE_SIZE;
     }
     await this.updateComplete;
+    const panel = this._panel;
+    if (SUPPORTS_POPOVER && panel && !panel.matches(":popover-open")) {
+      panel.showPopover();
+    }
+    this._positionPanel();
+    this._attachPositioning();
     const index = this._rows.findIndex((icon) =>
       this.value ? icon === this.value : icon === null,
     );
     this._setActive(index >= 0 ? index : 0, true);
     const search = this.shadowRoot.querySelector(".search");
-    if (search) search.focus();
+    if (search) search.focus({ preventScroll: true });
   }
 
   async close(refocus = false) {
     if (!this.expanded) return;
     this.expanded = false;
     this.__activeIndex = -1;
+    this._detachPositioning();
+    const panel = this._panel;
+    if (SUPPORTS_POPOVER && panel && panel.matches(":popover-open")) {
+      panel.hidePopover();
+    }
     if (refocus) {
       await this.updateComplete;
       const trigger = this.shadowRoot.querySelector(".trigger");
       if (trigger) trigger.focus();
     }
+  }
+
+  get _panel() {
+    return this.shadowRoot ? this.shadowRoot.querySelector(".panel") : null;
+  }
+
+  _attachPositioning() {
+    // capture so scrolling any ancestor (form, tray, page) keeps it anchored
+    globalThis.addEventListener("scroll", this.__reposition, true);
+    globalThis.addEventListener("resize", this.__reposition);
+  }
+
+  _detachPositioning() {
+    globalThis.removeEventListener("scroll", this.__reposition, true);
+    globalThis.removeEventListener("resize", this.__reposition);
+    if (this.__positionFrame) {
+      globalThis.cancelAnimationFrame(this.__positionFrame);
+      this.__positionFrame = null;
+    }
+  }
+
+  _schedulePosition(e) {
+    // scrolling the option list itself does not move the anchor
+    if (e && e.type === "scroll" && e.composedPath) {
+      const list = this.shadowRoot.querySelector('ul[role="listbox"]');
+      if (list && e.composedPath()[0] === list) return;
+    }
+    if (this.__positionFrame) return;
+    this.__positionFrame = globalThis.requestAnimationFrame(() => {
+      this.__positionFrame = null;
+      this._positionPanel();
+    });
+  }
+
+  /**
+   * place the dropdown against the trigger the way a native select does:
+   * below when it fits, otherwise above, clamped to the viewport
+   */
+  _positionPanel() {
+    const panel = this._panel;
+    const trigger = this.shadowRoot.querySelector(".trigger");
+    const list = this.shadowRoot.querySelector('ul[role="listbox"]');
+    if (!this.expanded || !panel || !trigger || !list) return;
+    const rect = trigger.getBoundingClientRect();
+    const vw = globalThis.innerWidth;
+    const vh = globalThis.innerHeight;
+    // anchor scrolled fully out of view: close, like a native select
+    if (rect.bottom < 0 || rect.top > vh) {
+      this.close(false);
+      return;
+    }
+    const width = Math.min(
+      Math.max(rect.width, PANEL_MIN_WIDTH),
+      vw - EDGE * 2,
+    );
+    const left = Math.min(Math.max(rect.left, EDGE), vw - width - EDGE);
+    panel.style.width = `${width}px`;
+    panel.style.left = `${left}px`;
+    // height of everything in the panel except the scrolling list
+    panel.style.setProperty(
+      "--simple-icon-select-list-max-height",
+      `${LIST_MAX_HEIGHT}px`,
+    );
+    const chrome = panel.offsetHeight - list.offsetHeight;
+    const wanted = chrome + Math.min(LIST_MAX_HEIGHT, list.scrollHeight);
+    const below = vh - rect.bottom - GAP - EDGE;
+    const above = rect.top - GAP - EDGE;
+    const up = below < wanted && above > below;
+    const room = up ? above : below;
+    const listMax = Math.max(
+      Math.min(LIST_MAX_HEIGHT, room - chrome),
+      Math.min(96, LIST_MAX_HEIGHT),
+    );
+    panel.style.setProperty(
+      "--simple-icon-select-list-max-height",
+      `${listMax}px`,
+    );
+    if (up) {
+      panel.style.top = "auto";
+      panel.style.bottom = `${vh - rect.top + GAP}px`;
+    } else {
+      panel.style.bottom = "auto";
+      panel.style.top = `${rect.bottom + GAP}px`;
+    }
+    this.setAttribute("placement", up ? "top" : "bottom");
   }
 
   focus() {
@@ -659,6 +788,7 @@ class SimpleIconSelect extends LitElement {
     this.__activeIndex = 0;
     const list = this.shadowRoot.querySelector('ul[role="listbox"]');
     if (list) list.scrollTop = 0;
+    this.updateComplete.then(() => this._positionPanel());
   }
 
   _listScroll(e) {

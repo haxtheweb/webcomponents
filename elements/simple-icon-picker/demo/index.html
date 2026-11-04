@@ -5,7 +5,31 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>SimpleIconPicker: simple-icon-picker Demo</title>
     
+    <meta name="color-scheme" content="light dark">
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+      body {
+        background-color: light-dark(#ffffff, #1b1b1b);
+        color: light-dark(#1b1b1b, #f5f5f5);
+      }
+      .icondemo {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+        color: inherit;
+      }
+      .icondemo label {
+        color: inherit;
+        font-weight: 600;
+      }
+      .narrow {
+        max-width: 220px;
+      }
+    </style>
 
     <script type="module">
       
@@ -21,8 +45,21 @@
       <h3>simple-icon-select (searchable list, used by the HAXSchema iconpicker field)</h3>
       <demo-snippet>
         <template>
-          <div style="max-width: 220px">
+          <div class="narrow">
             <simple-icon-select label="Icon" value="icons:search"></simple-icon-select>
+          </div>
+        </template>
+      </demo-snippet>
+
+      <h3>simple-icon-select inside a narrow, clipped panel (like the HAX settings tray)</h3>
+      <demo-snippet>
+        <template>
+          <div style="width: 260px; height: 160px; overflow: auto; padding: 8px; border: 1px solid light-dark(#a2aaad, #666666);">
+            <div class="icondemo">
+              <label id="tray-icon-label">Icon</label>
+              <simple-icon-select aria-labelledby="tray-icon-label" label="Icon" style="flex: 1 1 120px"></simple-icon-select>
+            </div>
+            <p>The dropdown floats over this panel instead of growing it.</p>
           </div>
         </template>
       </demo-snippet>
@@ -48,12 +85,12 @@
       <h3>Custom simple-icon-picker demo</h3>
       <demo-snippet>
         <template>
-          <div id="icondemo">
-            <label id="iconpicker-label">Pick an Icon: </label> 
+          <div class="icondemo">
+            <label id="iconpicker-label-1">Pick an Icon: </label> 
             <simple-icon-picker 
               id="iconpicker2" 
               allow-null 
-              aria-labelledby="iconpicker-label" 
+              aria-labelledby="iconpicker-label-1" 
               block-label 
               value="icons:search">
             </simple-icon-picker>
@@ -75,12 +112,12 @@
       <h3>Using every icon</h3>
       <demo-snippet>
         <template>
-          <div id="icondemo">
-            <label id="iconpicker-label">Pick an Icon: </label> 
+          <div class="icondemo">
+            <label id="iconpicker-label-2">Pick an Icon: </label> 
             <simple-icon-picker 
               id="iconpicker3" 
               allow-null 
-              aria-labelledby="iconpicker-label" 
+              aria-labelledby="iconpicker-label-2" 
               value="icons:search">
             </simple-icon-picker>
           </div>
@@ -90,13 +127,13 @@
       <h3>Using only 'av' icons</h3>
       <demo-snippet>
         <template>
-          <div id="icondemo">
-            <label id="iconpicker-label">Pick an Icon: </label> 
+          <div class="icondemo">
+            <label id="iconpicker-label-3">Pick an Icon: </label> 
             <simple-icon-picker 
-              id="iconpicker3" 
+              id="iconpicker6" 
               allow-null 
               include-sets='["av"]'
-              aria-labelledby="iconpicker-label">
+              aria-labelledby="iconpicker-label-3">
             </simple-icon-picker>
           </div>
         </template>
@@ -105,13 +142,13 @@
       <h3>Excluding 'av' and 'image' icons</h3>
       <demo-snippet>
         <template>
-          <div id="icondemo">
-            <label id="iconpicker-label">Pick an Icon: </label> 
+          <div class="icondemo">
+            <label id="iconpicker-label-4">Pick an Icon: </label> 
             <simple-icon-picker 
               id="iconpicker4" 
               allow-null 
               exclude-sets='["av","image"]'
-              aria-labelledby="iconpicker-label">
+              aria-labelledby="iconpicker-label-4">
             </simple-icon-picker>
           </div>
         </template>
@@ -120,13 +157,13 @@
       <h3>Excluding specific icons </h3>
       <demo-snippet>
         <template>
-          <div id="icondemo">
-            <label id="iconpicker-label">Pick an Icon: </label> 
+          <div class="icondemo">
+            <label id="iconpicker-label-5">Pick an Icon: </label> 
             <simple-icon-picker 
               id="iconpicker5" 
               allow-null 
               exclude='["av:add-to-queue","av:airplay","av:album","av:art-track"]'
-              aria-labelledby="iconpicker-label">
+              aria-labelledby="iconpicker-label-5">
             </simple-icon-picker>
           </div>
         </template>

@@ -56,9 +56,58 @@ describe("simple-icon-select", () => {
     expect(paint.querySelector(".name").textContent.trim()).to.equal(
       "Format paint",
     );
-    // panel is in document flow, never absolutely positioned (no clipping)
+    // dropdown floats like a native select instead of joining the flow
     const panel = element.shadowRoot.querySelector(".panel");
-    expect(getComputedStyle(panel).position).to.equal("static");
+    expect(getComputedStyle(panel).position).to.equal("fixed");
+  });
+
+  it("opening does not change the surrounding layout (box model)", async () => {
+    const wrap = await fixture(html`
+      <div style="width: 180px; overflow: hidden; padding: 8px">
+        <simple-icon-select label="Icon" .icons="${ICONS}"></simple-icon-select>
+        <p id="after">after</p>
+      </div>
+    `);
+    const el = wrap.querySelector("simple-icon-select");
+    const after = wrap.querySelector("#after");
+    const hostBefore = el.getBoundingClientRect().height;
+    const afterTop = after.getBoundingClientRect().top;
+    await el.open();
+    expect(el.getBoundingClientRect().height).to.equal(hostBefore);
+    expect(after.getBoundingClientRect().top).to.equal(afterTop);
+    // anchored right under the trigger and wider than the skinny column
+    const trigger = el.shadowRoot
+      .querySelector(".trigger")
+      .getBoundingClientRect();
+    const panel = el.shadowRoot.querySelector(".panel").getBoundingClientRect();
+    expect(Math.round(panel.top)).to.equal(Math.round(trigger.bottom + 4));
+    expect(panel.width).to.be.at.least(240);
+    // overflow: hidden on the column does not clip it
+    expect(panel.height).to.be.greaterThan(100);
+    expect(el.getAttribute("placement")).to.equal("bottom");
+  });
+
+  it("opens upward when there is no room below", async () => {
+    const wrap = await fixture(html`
+      <div style="position: fixed; bottom: 4px; left: 8px; width: 200px">
+        <simple-icon-select label="Icon" .icons="${ICONS}"></simple-icon-select>
+      </div>
+    `);
+    const el = wrap.querySelector("simple-icon-select");
+    await el.open();
+    const trigger = el.shadowRoot
+      .querySelector(".trigger")
+      .getBoundingClientRect();
+    const panel = el.shadowRoot.querySelector(".panel").getBoundingClientRect();
+    expect(el.getAttribute("placement")).to.equal("top");
+    expect(panel.bottom).to.be.at.most(trigger.top);
+  });
+
+  it("uses unique, non-random ids per instance", async () => {
+    const a = await fixture(html`<simple-icon-select></simple-icon-select>`);
+    const b = await fixture(html`<simple-icon-select></simple-icon-select>`);
+    expect(a.__uid).to.match(/^simple-icon-select-\d+$/);
+    expect(a.__uid).to.not.equal(b.__uid);
   });
 
   it("filters by name or id as you type", async () => {
