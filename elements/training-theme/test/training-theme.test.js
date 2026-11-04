@@ -123,4 +123,21 @@ describe("elementName test", function () {
       element.shadowRoot.querySelector(".ring-count").textContent.trim(),
     ).to.equal("1");
   });
+
+  it("lets the page scroll on phones instead of trapping touch in main", async () => {
+    const prev = element.responsiveSize;
+    element.responsiveSize = "xs";
+    element.setAttribute("responsive-size", "xs");
+    await element.updateComplete;
+    const cs = globalThis.getComputedStyle(
+      element.shadowRoot.querySelector(".main"),
+    );
+    // a non-scrolling overflow box with overscroll containment swallows
+    // touch scrolling in the stacked layout (Chrome mobile, portrait)
+    expect(cs.overflowY).to.equal("visible");
+    expect(cs.overscrollBehaviorY).to.equal("auto");
+    element.responsiveSize = prev;
+    element.setAttribute("responsive-size", prev);
+    await element.updateComplete;
+  });
 });
