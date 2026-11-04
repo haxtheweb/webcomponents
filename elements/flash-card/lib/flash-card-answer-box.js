@@ -4,6 +4,7 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { DDDStatusTokens } from "@haxtheweb/d-d-d/lib/DDDStatusTokens.js";
 
 export class FlashCardAnswerBox extends I18NMixin(DDD) {
   static get tag() {
@@ -130,7 +131,10 @@ export class FlashCardAnswerBox extends I18NMixin(DDD) {
   // mirrors the input + button treatment in multiple-choice/QuestionElement
   // so flash-card reads as part of the same question family
   static get styles() {
+    // DDD form-status tokens: the same correct / incorrect colours the
+    // rest of the question family uses
     return css`
+      ${DDDStatusTokens}
       :host {
         display: block;
         width: 100%;
@@ -230,13 +234,10 @@ export class FlashCardAnswerBox extends I18NMixin(DDD) {
         --simple-icon-width: var(--ddd-icon-xs);
       }
       :host([status="correct"]) #status-icon {
-        color: var(--ddd-theme-default-opportunityGreen);
+        color: var(--ddd-status-correct-signal);
       }
       :host([status="incorrect"]) #status-icon {
-        color: light-dark(
-          var(--ddd-theme-default-wonderPurple),
-          var(--ddd-theme-default-athertonViolet)
-        );
+        color: var(--ddd-status-incorrect-signal);
       }
       .answer-message {
         margin: 0;
