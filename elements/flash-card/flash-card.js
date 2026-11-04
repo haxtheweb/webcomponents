@@ -184,6 +184,12 @@ export class FlashCard extends I18NMixin(SchemaBehaviors(DDD)) {
   provideFeedback() {
     let toastColor, toastIcon, toastText;
     let toastShowEventName = "simple-toast-show";
+    // support for haxcms toast, like QuestionElement: its status shows as a
+    // tone (badge and stripe) so the icon isn't slotted in there
+    const haxToast = Boolean(globalThis.HAXCMSToast);
+    if (haxToast) {
+      toastShowEventName = "haxcms-toast-show";
+    }
 
     if (this.status === "correct") {
       toastColor = "green";
@@ -192,7 +198,7 @@ export class FlashCard extends I18NMixin(SchemaBehaviors(DDD)) {
       this.makeItRain();
       this.playSound("success");
     } else if (this.status === "incorrect") {
-      toastColor = "red";
+      toastColor = "purple";
       toastIcon = "icons:thumb-down";
       toastText = this.t.tryAgain;
       this.playSound("error");
@@ -205,6 +211,8 @@ export class FlashCard extends I18NMixin(SchemaBehaviors(DDD)) {
       si.style.marginLeft = "16px";
       si.style.setProperty("--simple-icon-height", "24px");
       si.style.setProperty("--simple-icon-width", "24px");
+      // simple-toast colours the icon from the DDD form-status tokens
+      si.setAttribute("data-status", this.status);
 
       globalThis.dispatchEvent(
         new CustomEvent(toastShowEventName, {
@@ -215,7 +223,12 @@ export class FlashCard extends I18NMixin(SchemaBehaviors(DDD)) {
             text: toastText,
             accentColor: toastColor,
             duration: 3000,
-            slot: si,
+            slot: haxToast ? undefined : si,
+            tone: haxToast
+              ? this.status === "correct"
+                ? "success"
+                : "incorrect"
+              : undefined,
           },
         }),
       );

@@ -256,6 +256,24 @@ describe("haxcms-toast", () => {
       expect(element.children.length).to.equal(0);
     });
 
+    it("takes the DDD form-status purple for incorrect answers", async () => {
+      show({ text: "2 out of 4 correct", duration: 5000, tone: "incorrect" });
+      await element.updateComplete;
+      expect(element.tone).to.equal("incorrect");
+      const styles = getComputedStyle(element);
+      const signal = styles
+        .getPropertyValue("--ddd-status-incorrect-signal")
+        .trim();
+      expect(signal).to.not.equal("");
+      // the tone colour is the DDD incorrect signal (purple), not warning
+      expect(styles.getPropertyValue("--haxcms-toast-tone").trim()).to.equal(
+        signal,
+      );
+      expect(
+        element.shadowRoot.querySelector(".hax-ui-sr-only").textContent,
+      ).to.contain("Incorrect");
+    });
+
     it("uses Merlin's icon for the assistant", async () => {
       show({ text: "Thinking", merlin: true, duration: 5000 });
       await element.updateComplete;

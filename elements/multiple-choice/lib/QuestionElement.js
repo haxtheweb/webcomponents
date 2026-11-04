@@ -551,7 +551,7 @@ export class QuestionElement extends SchemaBehaviors(
       this.playSound("success");
       extras.hat = "party";
     } else {
-      toastColor = "red";
+      toastColor = "purple";
       toastIcon = "icons:thumb-down";
       toastText = this.incorrectText;
       extras.fire = true;
@@ -559,8 +559,8 @@ export class QuestionElement extends SchemaBehaviors(
     }
     si.icon = toastIcon;
     si.style.marginLeft = "16px";
-    si.accentColor = toastColor;
-    si.dark = true;
+    // simple-toast colours the icon from the DDD form-status tokens
+    si.setAttribute("data-status", correctness ? "correct" : "incorrect");
     // gets it all the way to the top immediately
     globalThis.dispatchEvent(
       new CustomEvent(toastShowEventName, {
@@ -572,7 +572,7 @@ export class QuestionElement extends SchemaBehaviors(
           accentColor: toastColor,
           duration: 3000,
           slot: haxToast ? undefined : si,
-          tone: haxToast ? (correctness ? "success" : "warning") : undefined,
+          tone: haxToast ? (correctness ? "success" : "incorrect") : undefined,
           ...extras,
         },
       }),

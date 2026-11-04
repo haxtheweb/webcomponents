@@ -146,7 +146,10 @@ describe("sorting-question behavior", () => {
     expect(el.getOptions("incorrect").length).to.equal(2);
     expect(audioHeard.includes("error")).to.equal(true);
     expect(toasts.length).to.equal(1);
-    expect(toasts[0].detail.accentColor).to.equal("red");
+    expect(toasts[0].detail.accentColor).to.equal("purple");
+    expect(toasts[0].detail.slot.getAttribute("data-status")).to.equal(
+      "incorrect",
+    );
     expect(toasts[0].detail.fire).to.equal(true);
     // feedback paragraph counts the one correct placement
     const feedback = el.shadowRoot.querySelector("p.feedback");
@@ -215,6 +218,7 @@ describe("sorting-question behavior", () => {
       await flush();
       expect(haxToasts.length).to.equal(1);
       expect(haxToasts[0].detail.accentColor).to.equal("green");
+      expect(haxToasts[0].detail.tone).to.equal("success");
     } finally {
       globalThis.removeEventListener("haxcms-toast-show", haxHandler);
     }

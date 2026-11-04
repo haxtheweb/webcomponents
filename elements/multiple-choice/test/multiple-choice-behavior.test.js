@@ -553,7 +553,7 @@ describe("multiple-choice behavior", () => {
       expect(confetti).to.exist;
       expect(confetti.hasAttribute("popped")).to.equal(true);
     });
-    it("wrong answers toast red, play error and fire the feedback", async () => {
+    it("wrong answers toast purple, play error and fire the feedback", async () => {
       const el = await ready();
       el.displayedAnswers = el.displayedAnswers.map((a) => ({
         ...a,
@@ -565,7 +565,11 @@ describe("multiple-choice behavior", () => {
       expect(el.isCorrect()).to.equal(false);
       expect(audioHeard.includes("error")).to.equal(true);
       expect(toasts.length).to.equal(1);
-      expect(toasts[0].detail.accentColor).to.equal("red");
+      expect(toasts[0].detail.accentColor).to.equal("purple");
+      // the icon carries the DDD form status simple-toast colours it by
+      expect(toasts[0].detail.slot.getAttribute("data-status")).to.equal(
+        "incorrect",
+      );
       expect(toasts[0].detail.fire).to.equal(true);
     });
     it("user-engagement fires with the quiz name and correctness", async () => {
