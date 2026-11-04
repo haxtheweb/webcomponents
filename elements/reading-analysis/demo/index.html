@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>ReadingAnalysis: reading-analysis Demo</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import "@haxtheweb/demo-snippet/demo-snippet.js";
+      import "../reading-analysis.js";
+    </script>
+    <style>
+      body {
+        background-color: light-dark(white, black);
+        color-scheme: light dark;
+      }
+      demo-snippet * {
+        background-color: light-dark(transparent, black);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Flag evidence, by sentence</h3>
+      <demo-snippet>
+        <template>
+          <reading-analysis
+            question="Identify evidence for each theme in how early rock and roll was received."
+            mode="flag"
+            unit="sentence"
+            max-attempts="3"
+          >
+            <h3>Who was afraid of rock and roll?</h3>
+            <p>In the early 1950s, record charts in the United States were split by race. Music by Black artists was sold as rhythm and blues and kept off most pop radio playlists. When white teenagers started buying those records anyway, the industry's first answer was the cover version. White singers re-recorded the same songs with softer arrangements, and the covers usually outsold the originals on the pop chart.</p>
+            <p>Disc jockeys like Alan Freed pushed the other way. His stage shows put Black and white performers on the same bill, and in some cities the audiences mixed on the dance floor for the first time. Promoters noticed that integrated crowds bought more tickets than segregated ones.</p>
+            <p>Opponents framed the music as a danger to order. Newspapers ran stories about seats torn up at screenings of films with rock soundtracks, and some towns banned shows after fights broke out outside. Police in a few cities cleared dance halls before the headliner played, which often started the scuffles the papers then reported.</p>
+            <p>Some of the loudest critics linked the music to Cold War fears. Segregationist councils in the South called it a plot to weaken American youth, and a few preachers described it as a communist tool. Fans and musicians mostly laughed the charge off, and the label never stuck outside the groups that already opposed integration.</p>
+            <figure>
+              <img src="ticket.svg" alt="Ticket stub for a rock and roll revue marked open seating">
+              <figcaption>A ticket stub from a touring revue. Open seating was advertised as a selling point in some northern venues.</figcaption>
+            </figure>
+            <input value="Racism" data-targets="c-bc7f5e43,c-4b7e0b02,c-c81c0688,c-c8ffe489" />
+            <input value="Violence" data-targets="c-244fcdea,c-5131939f" />
+            <input value="Communism" data-targets="c-8cdd307f" />
+            <p slot="feedbackCorrect">Each theme shows up in more than one place. Notice how the same events were read in opposite ways.</p>
+            <p slot="hint">Look for who is acting in each sentence: the record industry, the promoters, the police, or the critics.</p>
+          </reading-analysis>
+        </template>
+      </demo-snippet>
+
+      <h3>Flag evidence, by paragraph</h3>
+      <reading-analysis
+        question="Which paragraphs show each theme?"
+        mode="flag"
+        unit="paragraph"
+      >
+            <h3>Who was afraid of rock and roll?</h3>
+            <p>In the early 1950s, record charts in the United States were split by race. Music by Black artists was sold as rhythm and blues and kept off most pop radio playlists. When white teenagers started buying those records anyway, the industry's first answer was the cover version. White singers re-recorded the same songs with softer arrangements, and the covers usually outsold the originals on the pop chart.</p>
+            <p>Disc jockeys like Alan Freed pushed the other way. His stage shows put Black and white performers on the same bill, and in some cities the audiences mixed on the dance floor for the first time. Promoters noticed that integrated crowds bought more tickets than segregated ones.</p>
+            <p>Opponents framed the music as a danger to order. Newspapers ran stories about seats torn up at screenings of films with rock soundtracks, and some towns banned shows after fights broke out outside. Police in a few cities cleared dance halls before the headliner played, which often started the scuffles the papers then reported.</p>
+            <p>Some of the loudest critics linked the music to Cold War fears. Segregationist councils in the South called it a plot to weaken American youth, and a few preachers described it as a communist tool. Fans and musicians mostly laughed the charge off, and the label never stuck outside the groups that already opposed integration.</p>
+            <figure>
+              <img src="ticket.svg" alt="Ticket stub for a rock and roll revue marked open seating">
+              <figcaption>A ticket stub from a touring revue. Open seating was advertised as a selling point in some northern venues.</figcaption>
+            </figure>
+        <input value="Racism" data-targets="c-740b0f10,c-c0ed50d5,c-c8ffe489" />
+        <input value="Violence" data-targets="c-80536256" />
+        <input value="Communism" data-targets="c-fb98580e" />
+      </reading-analysis>
+
+      <h3>Select one sentence</h3>
+      <reading-analysis
+        question="Select the sentence that best shows how the record industry kept Black artists from pop audiences."
+        mode="one"
+        unit="sentence"
+        max-attempts="2"
+      >
+            <h3>Who was afraid of rock and roll?</h3>
+            <p>In the early 1950s, record charts in the United States were split by race. Music by Black artists was sold as rhythm and blues and kept off most pop radio playlists. When white teenagers started buying those records anyway, the industry's first answer was the cover version. White singers re-recorded the same songs with softer arrangements, and the covers usually outsold the originals on the pop chart.</p>
+            <p>Disc jockeys like Alan Freed pushed the other way. His stage shows put Black and white performers on the same bill, and in some cities the audiences mixed on the dance floor for the first time. Promoters noticed that integrated crowds bought more tickets than segregated ones.</p>
+            <p>Opponents framed the music as a danger to order. Newspapers ran stories about seats torn up at screenings of films with rock soundtracks, and some towns banned shows after fights broke out outside. Police in a few cities cleared dance halls before the headliner played, which often started the scuffles the papers then reported.</p>
+            <p>Some of the loudest critics linked the music to Cold War fears. Segregationist councils in the South called it a plot to weaken American youth, and a few preachers described it as a communist tool. Fans and musicians mostly laughed the charge off, and the label never stuck outside the groups that already opposed integration.</p>
+            <figure>
+              <img src="ticket.svg" alt="Ticket stub for a rock and roll revue marked open seating">
+              <figcaption>A ticket stub from a touring revue. Open seating was advertised as a selling point in some northern venues.</figcaption>
+            </figure>
+        <input data-select-one data-targets="c-4b7e0b02" />
+      </reading-analysis>
+    </div>
+  </body>
+</html>

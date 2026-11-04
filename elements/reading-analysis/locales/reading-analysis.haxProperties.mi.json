@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Tātari pānui",
+    "description": "Ka tohu ngā ākonga ki te haki i ngā rerenga kōrero, kōwae, whakaahua rānei i tētahi pānui he taunakitanga mō ia tapanga, ka kōwhiri rānei i te wāhanga e tino whakautu ana i tētahi pātai."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pātai",
+        "description": "Te mea e tonoa ana ngā ākonga kia kitea i te pānui."
+      },
+      {
+        "property": "mode",
+        "title": "Ngohe",
+        "description": "Tohu taunakitanga: ka piri ngā ākonga i ia haki ki te taha o tōna taunakitanga. Kōwhiri kotahi: ka kōwhiri ngā ākonga i te wāhanga kotahi e tino whakautu ana i te pātai."
+      },
+      {
+        "property": "unit",
+        "title": "Ka kōwhiri ngā ākonga",
+        "description": "Te mea e tohu ana te ākonga i te pānui. Ka taea tonu te kōwhiri whakaahua."
+      },
+      {
+        "property": "answers",
+        "title": "Haki",
+        "description": "Ngā tapanga ka whakatakotoria e ngā ākonga. Whakamahia te Tohua ngā whakautu i te tahua paraka hei kōwhiri i te wāhi e tika ai ia mea."
+      },
+      {
+        "slot": "",
+        "title": "Pānui",
+        "description": "Te pānui e mahi ai ngā ākonga. Ko tētahi HTML: ngā upoko, ngā kōwae, ngā rārangi me ngā whakaahua."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Hōputu kōeke",
+        "description": "OER Schema: hōputu kōeke mō tēnei aromatawai (hei tauira, piro, reta, ōrau, whakaotinga)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Whāinga ako",
+        "description": "OER Schema: te whāinga ako e hono ana ki tēnei aromatawai."
+      },
+      {
+        "property": "forCourse",
+        "title": "Akoranga",
+        "description": "OER Schema: te akoranga i hangaia ai tēnei aromatawai."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Ngā whakamātau",
+        "description": "E hia ngā wā ka taea e te ākonga te arowhai. Ko te 0 he mutunga kore."
+      },
+      {
+        "property": "collapsible",
+        "title": "Ka taea te hinga",
+        "description": "Whakaatu i tēnei pātai hei rarangi ka whakatuwhera ka katia. Ka katia ētahi atu pātai ka taea te hinga e tata ana ina whakatuwheratia tētahi."
+      },
+      {
+        "property": "collapsed",
+        "title": "Tīmata ka hinga",
+        "description": "Ina taea te hinga, tīmata hei rarangi kati e whakaatu ana i te pātai me tōna āhua anake."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Ingoa o te pātaitai",
+        "description": "Ingoa pātaitai ka tukuna atu hei whakamahi i ngā taiao e ārahina ana e xAPI, hei tautuhi i tēnei tūemi"
+      }
+    ]
+  }
+}

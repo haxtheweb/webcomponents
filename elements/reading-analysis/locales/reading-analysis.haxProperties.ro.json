@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Analiza lecturii",
+    "description": "Cursanții marchează propozițiile, paragrafele sau figurile dintr-un text care sunt dovezi pentru fiecare etichetă, sau selectează pasajul care răspunde cel mai bine la o întrebare."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Întrebare",
+        "description": "Ce trebuie să găsească cursanții în text."
+      },
+      {
+        "property": "mode",
+        "title": "Activitate",
+        "description": "Marcarea dovezilor: cursanții pun fiecare marcaj lângă dovada corespunzătoare. Selectarea unuia: cursanții aleg singurul pasaj care răspunde cel mai bine la întrebare."
+      },
+      {
+        "property": "unit",
+        "title": "Cursanții selectează",
+        "description": "Ce indică un cursant în text. Figurile pot fi selectate întotdeauna."
+      },
+      {
+        "property": "answers",
+        "title": "Marcaje",
+        "description": "Etichetele pe care le plasează cursanții. Folosește Marchează răspunsurile din meniul blocului pentru a alege unde trebuie pus fiecare."
+      },
+      {
+        "slot": "",
+        "title": "Text",
+        "description": "Textul în care lucrează cursanții. Orice HTML: titluri, paragrafe, liste și figuri."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format de notare",
+        "description": "OER Schema: formatul de notare pentru această evaluare (de ex. puncte, literă, procent, finalizare)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Obiectiv de învățare",
+        "description": "OER Schema: obiectivul de învățare asociat acestei evaluări."
+      },
+      {
+        "property": "forCourse",
+        "title": "Curs",
+        "description": "OER Schema: cursul căruia îi este destinată această evaluare."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Încercări",
+        "description": "De câte ori poate verifica un cursant. 0 înseamnă nelimitat."
+      },
+      {
+        "property": "collapsible",
+        "title": "Pliabil",
+        "description": "Afișează această întrebare ca un rând care se deschide și se închide. Deschiderea uneia le închide pe celelalte întrebări pliabile de lângă ea."
+      },
+      {
+        "property": "collapsed",
+        "title": "Pornește pliat",
+        "description": "Când este pliabil, pornește ca un rând închis care arată doar întrebarea și starea ei."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Numele testului",
+        "description": "Numele testului transmis pentru identificarea acestui element în medii bazate pe xAPI"
+      }
+    ]
+  }
+}

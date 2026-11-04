@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Leesontleding",
+    "description": "Leerders plaas vlaggies by die sinne, paragrawe of figure in 'n leesstuk wat bewys is vir elke etiket, of kies die gedeelte wat 'n vraag die beste beantwoord."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Vraag",
+        "description": "Wat leerders gevra word om in die leesstuk te vind."
+      },
+      {
+        "property": "mode",
+        "title": "Aktiwiteit",
+        "description": "Merk bewyse: leerders plak elke vlaggie langs die bewys daarvoor. Kies een: leerders kies die enkele gedeelte wat die vraag die beste beantwoord."
+      },
+      {
+        "property": "unit",
+        "title": "Leerders kies",
+        "description": "Waarna 'n leerder in die leesstuk wys. Figure kan altyd gekies word."
+      },
+      {
+        "property": "answers",
+        "title": "Vlaggies",
+        "description": "Die etikette wat leerders plaas. Gebruik Merk antwoorde in die blokkieskieslys om te kies waar elkeen hoort."
+      },
+      {
+        "slot": "",
+        "title": "Leesstuk",
+        "description": "Die leesstuk waarin leerders werk. Enige HTML: opskrifte, paragrawe, lyste en figure."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Nasienformaat",
+        "description": "OER Schema: nasienformaat vir hierdie assessering (bv. punte, letter, persentasie, voltooiing)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Leeruitkoms",
+        "description": "OER Schema: leeruitkoms wat met hierdie assessering verband hou."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursus",
+        "description": "OER Schema: kursus waarvoor hierdie assessering bedoel is."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Pogings",
+        "description": "Hoeveel keer 'n leerder kan nagaan. 0 beteken onbeperk."
+      },
+      {
+        "property": "collapsible",
+        "title": "Opvoubaar",
+        "description": "Wys hierdie vraag as 'n ry wat oop- en toemaak. As een oopgemaak word, word die ander opvoubare vrae daarnaas toegemaak."
+      },
+      {
+        "property": "collapsed",
+        "title": "Begin ingevou",
+        "description": "Wanneer opvouubaar, begin as 'n toe ry wat net die vraag en sy status wys."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Naam van die vasvra",
+        "description": "Vasvranaam wat deurgegee word vir gebruik in xAPI-gedrewe omgewings om hierdie item te identifiseer"
+      }
+    ]
+  }
+}

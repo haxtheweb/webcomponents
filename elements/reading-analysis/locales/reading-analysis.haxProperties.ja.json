@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "読解分析",
+    "description": "学習者が文章の中で各ラベルの根拠となる文・段落・図にフラグを付けるか、質問に最もよく答える箇所を選択します。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "問題",
+        "description": "学習者が文章の中で見つけるよう求められる内容。"
+      },
+      {
+        "property": "mode",
+        "title": "アクティビティ",
+        "description": "根拠にフラグ付け: 学習者は各フラグをその根拠の横に貼ります。1つ選択: 学習者は質問に最もよく答える箇所を1つだけ選びます。"
+      },
+      {
+        "property": "unit",
+        "title": "学習者が選択する単位",
+        "description": "学習者が文章の中で指し示すもの。図はいつでも選択できます。"
+      },
+      {
+        "property": "answers",
+        "title": "フラグ",
+        "description": "学習者が置くラベル。ブロックメニューの「正解を設定」で、それぞれを置く場所を選びます。"
+      },
+      {
+        "slot": "",
+        "title": "読み物",
+        "description": "学習者が取り組む文章。見出し、段落、リスト、図など任意のHTML。"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "採点形式",
+        "description": "OER Schema: この評価の採点形式（例: 点数、レター評価、パーセント、完了）。"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "学習目標",
+        "description": "OER Schema: この評価に関連付けられた学習目標。"
+      },
+      {
+        "property": "forCourse",
+        "title": "コース",
+        "description": "OER Schema: この評価の対象となるコース。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "試行回数",
+        "description": "学習者が答え合わせできる回数。0 は無制限です。"
+      },
+      {
+        "property": "collapsible",
+        "title": "折りたたみ可能",
+        "description": "この質問を開閉できる行として表示します。1つを開くと、隣り合う他の折りたたみ可能な質問は閉じます。"
+      },
+      {
+        "property": "collapsed",
+        "title": "折りたたんだ状態で開始",
+        "description": "折りたたみ可能な場合、質問とその状態だけを表示する閉じた行として開始します。"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "クイズ名",
+        "description": "xAPI環境でこの項目を識別するために渡されるクイズ名"
+      }
+    ]
+  }
+}

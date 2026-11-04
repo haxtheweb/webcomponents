@@ -169,6 +169,32 @@ export const XAPI_VOCABULARY = {
     done: "answered correctly or out of attempts",
     source: "elements/multiple-choice/multiple-choice.js",
   },
+  "reading-analysis": {
+    tag: "reading-analysis",
+    event: "user-engagement",
+    verbs: ["answered"],
+    objectType: "http://adlnet.gov/expapi/activities/cmi.interaction",
+    interactionType: "choice",
+    definition: [
+      "name",
+      "interactionType",
+      "choices",
+      "correctResponsesPattern",
+    ],
+    response:
+      "flag mode: ids of the flag-and-passage pairs placed, joined by [,]; select-one mode: the id of the passage chosen",
+    result: [
+      "success",
+      "completion",
+      "response",
+      "score",
+      "extensions.attempts",
+      "extensions.max-attempts",
+    ],
+    countsTowardCompletion: true,
+    done: "every expected flag placed with no wrong ones (or the right passage selected), or out of attempts",
+    source: "elements/reading-analysis/reading-analysis.js",
+  },
   "short-answer-question": {
     tag: "short-answer-question",
     event: "user-engagement",

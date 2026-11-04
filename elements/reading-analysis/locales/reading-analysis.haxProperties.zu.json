@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Ukuhlaziywa kokufundwayo",
+    "description": "Abafundi babeka amafulegi emishweni, ezigabeni noma ezithombeni ekufundwayo eziwubufakazi belebula ngalinye, noma bakhethe isiqephu esiphendula umbuzo kangcono kakhulu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Umbuzo",
+        "description": "Lokho abafundi abacelwa ukuthi bakuthole ekufundwayo."
+      },
+      {
+        "property": "mode",
+        "title": "Umsebenzi",
+        "description": "Maka ubufakazi: abafundi babeka ifulegi ngalinye eduze kobufakazi balo. Khetha esisodwa: abafundi bakhetha isiqephu esisodwa esiphendula umbuzo kangcono kakhulu."
+      },
+      {
+        "property": "unit",
+        "title": "Abafundi bakhetha",
+        "description": "Lokho umfundi akukhombayo ekufundwayo. Izithombe zingakhethwa njalo."
+      },
+      {
+        "property": "answers",
+        "title": "Amafulegi",
+        "description": "Amalebula abekwa ngabafundi. Sebenzisa u-Maka izimpendulo kumenyu yebhulokhi ukukhetha lapho ngalinye lifanele khona."
+      },
+      {
+        "slot": "",
+        "title": "Okufundwayo",
+        "description": "Okufundwayo abasebenza kukho abafundi. Noma iyiphi i-HTML: izihloko, izigaba, uhlu nezithombe."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Ifomethi yokumaka",
+        "description": "OER Schema: ifomethi yokumaka yalokhu kuhlola (isb. amaphuzu, uhlamvu, iphesenti, ukuphothula)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Inhloso yokufunda",
+        "description": "OER Schema: inhloso yokufunda ehlobene nalokhu kuhlola."
+      },
+      {
+        "property": "forCourse",
+        "title": "Isifundo",
+        "description": "OER Schema: isifundo lokhu kuhlola okuhloselwe sona."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Imizamo",
+        "description": "Kangaki umfundi angahlola. U-0 usho ukuthi akunamkhawulo."
+      },
+      {
+        "property": "collapsible",
+        "title": "Iyagoqeka",
+        "description": "Bonisa lombuzo njengomugqa ovulekayo futhi uvaleke. Ukuvula owodwa kuvala eminye imibuzo egoqekayo eduze kwawo."
+      },
+      {
+        "property": "collapsed",
+        "title": "Qala igoqiwe",
+        "description": "Uma igoqeka, qala njengomugqa ovaliwe obonisa umbuzo nesimo sawo kuphela."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Igama lemibuzo",
+        "description": "Igama lemibuzo elidluliselwayo ukuze lisetshenziswe ezindaweni eziqhutshwa yi-xAPI ukuhlonza le nto"
+      }
+    ]
+  }
+}

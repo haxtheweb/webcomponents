@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Uchambuzi wa usomaji",
+    "description": "Wanafunzi huweka bendera kwenye sentensi, aya au picha katika usomaji ambazo ni ushahidi wa kila lebo, au huchagua kifungu kinachojibu swali vizuri zaidi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Swali",
+        "description": "Kile wanafunzi wanachoombwa kupata katika usomaji."
+      },
+      {
+        "property": "mode",
+        "title": "Shughuli",
+        "description": "Weka bendera kwenye ushahidi: wanafunzi huweka kila bendera kando ya ushahidi wake. Chagua kimoja: wanafunzi huchagua kifungu kimoja kinachojibu swali vizuri zaidi."
+      },
+      {
+        "property": "unit",
+        "title": "Wanafunzi huchagua",
+        "description": "Kile mwanafunzi anachoelekeza katika usomaji. Picha zinaweza kuchaguliwa kila wakati."
+      },
+      {
+        "property": "answers",
+        "title": "Bendera",
+        "description": "Lebo ambazo wanafunzi huweka. Tumia Weka alama kwenye majibu katika menyu ya kizuizi kuchagua mahali kila moja inapostahili."
+      },
+      {
+        "slot": "",
+        "title": "Usomaji",
+        "description": "Usomaji ambao wanafunzi hufanyia kazi. HTML yoyote: vichwa, aya, orodha na picha."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Muundo wa kupanga alama",
+        "description": "OER Schema: muundo wa kupanga alama wa tathmini hii (k.m. pointi, herufi, asilimia, ukamilishaji)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Lengo la kujifunza",
+        "description": "OER Schema: lengo la kujifunza linalohusiana na tathmini hii."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kozi",
+        "description": "OER Schema: kozi ambayo tathmini hii imekusudiwa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Majaribio",
+        "description": "Mara ngapi mwanafunzi anaweza kukagua. 0 inamaanisha bila kikomo."
+      },
+      {
+        "property": "collapsible",
+        "title": "Inayokunjika",
+        "description": "Onyesha swali hili kama safu inayofunguka na kufungwa. Kufungua moja hufunga maswali mengine yanayokunjika yaliyo kando yake."
+      },
+      {
+        "property": "collapsed",
+        "title": "Anza ikiwa imekunjwa",
+        "description": "Inapokunjika, anza kama safu iliyofungwa inayoonyesha swali na hali yake pekee."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Jina la jaribio",
+        "description": "Jina la jaribio linalopitishwa kwa matumizi katika mazingira yanayoendeshwa na xAPI ili kutambulisha kipengee hiki"
+      }
+    ]
+  }
+}

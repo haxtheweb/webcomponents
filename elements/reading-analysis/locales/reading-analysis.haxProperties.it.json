@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Analisi della lettura",
+    "description": "Gli studenti contrassegnano con bandierine le frasi, i paragrafi o le figure di un testo che costituiscono prove per ciascuna etichetta, oppure selezionano il passaggio che risponde meglio a una domanda."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Domanda",
+        "description": "Cosa si chiede agli studenti di trovare nel testo."
+      },
+      {
+        "property": "mode",
+        "title": "Attività",
+        "description": "Segnala le prove: gli studenti attaccano ogni bandierina accanto alle prove corrispondenti. Selezionane uno: gli studenti scelgono l'unico passaggio che risponde meglio alla domanda."
+      },
+      {
+        "property": "unit",
+        "title": "Gli studenti selezionano",
+        "description": "Cosa indica lo studente nel testo. Le figure si possono sempre selezionare."
+      },
+      {
+        "property": "answers",
+        "title": "Bandierine",
+        "description": "Le etichette che gli studenti posizionano. Usa Segna le risposte nel menu del blocco per scegliere dove va ciascuna."
+      },
+      {
+        "slot": "",
+        "title": "Testo",
+        "description": "Il testo su cui lavorano gli studenti. Qualsiasi HTML: titoli, paragrafi, elenchi e figure."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Formato di valutazione",
+        "description": "OER Schema: formato di valutazione per questa verifica (es. punti, lettera, percentuale, completamento)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Obiettivo di apprendimento",
+        "description": "OER Schema: obiettivo di apprendimento associato a questa verifica."
+      },
+      {
+        "property": "forCourse",
+        "title": "Corso",
+        "description": "OER Schema: corso a cui è destinata questa verifica."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Tentativi",
+        "description": "Quante volte uno studente può verificare. 0 significa illimitato."
+      },
+      {
+        "property": "collapsible",
+        "title": "Comprimibile",
+        "description": "Mostra questa domanda come una riga che si apre e si chiude. Aprirne una chiude le altre domande comprimibili accanto."
+      },
+      {
+        "property": "collapsed",
+        "title": "Inizia compresso",
+        "description": "Se comprimibile, parte come una riga chiusa che mostra solo la domanda e il suo stato."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nome del quiz",
+        "description": "Nome del quiz passato per l'identificazione di questo elemento negli ambienti basati su xAPI"
+      }
+    ]
+  }
+}

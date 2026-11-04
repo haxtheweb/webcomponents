@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Dadansoddi darllen",
+    "description": "Mae dysgwyr yn gosod baneri ar y brawddegau, paragraffau neu ffigurau mewn darn sy'n dystiolaeth ar gyfer pob label, neu'n dewis y darn sy'n ateb cwestiwn orau."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Cwestiwn",
+        "description": "Beth y gofynnir i ddysgwyr ddod o hyd iddo yn y darn."
+      },
+      {
+        "property": "mode",
+        "title": "Gweithgaredd",
+        "description": "Baneru tystiolaeth: mae dysgwyr yn glynu pob baner wrth ymyl y dystiolaeth drosti. Dewis un: mae dysgwyr yn dewis yr un darn sy'n ateb y cwestiwn orau."
+      },
+      {
+        "property": "unit",
+        "title": "Mae dysgwyr yn dewis",
+        "description": "Yr hyn y mae dysgwr yn pwyntio ato yn y darn. Gellir dewis ffigurau bob amser."
+      },
+      {
+        "property": "answers",
+        "title": "Baneri",
+        "description": "Y labeli y mae dysgwyr yn eu gosod. Defnyddiwch Marcio atebion yn newislen y bloc i ddewis ble mae pob un yn perthyn."
+      },
+      {
+        "slot": "",
+        "title": "Darn darllen",
+        "description": "Y darn y mae dysgwyr yn gweithio ynddo. Unrhyw HTML: penawdau, paragraffau, rhestrau a ffigurau."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Fformat graddio",
+        "description": "OER Schema: fformat graddio ar gyfer yr asesiad hwn (e.e. pwyntiau, llythyren, canran, cwblhau)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Amcan dysgu",
+        "description": "OER Schema: amcan dysgu sy'n gysylltiedig â'r asesiad hwn."
+      },
+      {
+        "property": "forCourse",
+        "title": "Cwrs",
+        "description": "OER Schema: y cwrs y bwriedir yr asesiad hwn ar ei gyfer."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Ymdrechion",
+        "description": "Sawl gwaith y gall dysgwr wirio. Mae 0 yn golygu diderfyn."
+      },
+      {
+        "property": "collapsible",
+        "title": "Plygadwy",
+        "description": "Dangos y cwestiwn hwn fel rhes sy'n agor ac yn cau. Mae agor un yn cau'r cwestiynau plygadwy eraill wrth ei ymyl."
+      },
+      {
+        "property": "collapsed",
+        "title": "Dechrau wedi'i blygu",
+        "description": "Pan fydd yn blygadwy, dechrau fel rhes gaeedig sy'n dangos y cwestiwn a'i statws yn unig."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Enw'r cwis",
+        "description": "Enw'r cwis a drosglwyddir i'w ddefnyddio mewn amgylcheddau a yrrir gan xAPI i adnabod yr eitem hon"
+      }
+    ]
+  }
+}

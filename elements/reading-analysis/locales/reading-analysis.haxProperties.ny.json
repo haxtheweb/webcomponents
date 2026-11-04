@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Kusanthula zowerenga",
+    "description": "Ophunzira amaika mbendera pa ziganizo, ndime kapena zithunzi m'nkhani zomwe zili umboni wa chizindikiro chilichonse, kapena amasankha gawo lomwe likuyankha bwino kwambiri funso."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Funso",
+        "description": "Zomwe ophunzira akufunsidwa kupeza m'nkhani."
+      },
+      {
+        "property": "mode",
+        "title": "Ntchito",
+        "description": "Ikani mbendera pa umboni: ophunzira amamata mbendera iliyonse pambali pa umboni wake. Sankhani chimodzi: ophunzira amasankha gawo limodzi lokha lomwe likuyankha bwino kwambiri funsoli."
+      },
+      {
+        "property": "unit",
+        "title": "Ophunzira amasankha",
+        "description": "Zomwe wophunzira amaloza m'nkhani. Zithunzi zitha kusankhidwa nthawi zonse."
+      },
+      {
+        "property": "answers",
+        "title": "Mbendera",
+        "description": "Zizindikiro zomwe ophunzira amaika. Gwiritsani ntchito Lembani mayankho mu menyu ya chipika kuti musankhe komwe chilichonse chikuyenera kukhala."
+      },
+      {
+        "slot": "",
+        "title": "Nkhani yowerenga",
+        "description": "Nkhani yomwe ophunzira amagwiramo ntchito. HTML iliyonse: mitu, ndime, mindandanda ndi zithunzi."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Njira yopatsira maksi",
+        "description": "OER Schema: njira yopatsira maksi pa mayeso awa (mwachitsanzo mfundo, chilembo, peresenti, kumaliza)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Cholinga cha maphunziro",
+        "description": "OER Schema: cholinga cha maphunziro chokhudzana ndi mayeso awa."
+      },
+      {
+        "property": "forCourse",
+        "title": "Maphunziro",
+        "description": "OER Schema: maphunziro omwe mayeso awa akukonzedwera."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Zoyesera",
+        "description": "Kangati wophunzira angayang'ane. 0 amatanthauza zopanda malire."
+      },
+      {
+        "property": "collapsible",
+        "title": "Yopindika",
+        "description": "Onetsani funso ili ngati mzere womwe umatsegulidwa ndi kutsekedwa. Kutsegula limodzi kumatseka mafunso ena opindika oyandikana nalo."
+      },
+      {
+        "property": "collapsed",
+        "title": "Yambani yopindidwa",
+        "description": "Ikapindika, yambani ngati mzere wotsekedwa womwe umangowonetsa funso ndi momwe lilili."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Dzina la mayeso",
+        "description": "Dzina la mayeso loperekedwa kuti ligwiritsidwe ntchito m'malo oyendetsedwa ndi xAPI pozindikira chinthuchi"
+      }
+    ]
+  }
+}

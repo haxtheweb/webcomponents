@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Läsanalys",
+    "description": "Eleverna sätter flaggor vid de meningar, stycken eller figurer i en text som är belägg för varje etikett, eller markerar det avsnitt som bäst besvarar en fråga."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Fråga",
+        "description": "Vad eleverna ska hitta i texten."
+      },
+      {
+        "property": "mode",
+        "title": "Aktivitet",
+        "description": "Flagga belägg: eleverna sätter varje flagga vid belägget för den. Välj ett: eleverna väljer det enda avsnitt som bäst besvarar frågan."
+      },
+      {
+        "property": "unit",
+        "title": "Eleverna markerar",
+        "description": "Vad en elev pekar på i texten. Figurer kan alltid markeras."
+      },
+      {
+        "property": "answers",
+        "title": "Flaggor",
+        "description": "Etiketterna som eleverna placerar. Använd Markera svar i blockmenyn för att välja var var och en hör hemma."
+      },
+      {
+        "slot": "",
+        "title": "Text",
+        "description": "Texten som eleverna arbetar i. Valfri HTML: rubriker, stycken, listor och figurer."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Bedömningsformat",
+        "description": "OER Schema: bedömningsformat för den här bedömningen (t.ex. poäng, betyg, procent, slutförande)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Lärandemål",
+        "description": "OER Schema: lärandemål som hör till den här bedömningen."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurs",
+        "description": "OER Schema: kurs som den här bedömningen är avsedd för."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Försök",
+        "description": "Hur många gånger en elev kan kontrollera. 0 betyder obegränsat."
+      },
+      {
+        "property": "collapsible",
+        "title": "Hopfällbar",
+        "description": "Visa den här frågan som en rad som öppnas och stängs. När du öppnar en stängs de andra hopfällbara frågorna bredvid."
+      },
+      {
+        "property": "collapsed",
+        "title": "Börja hopfälld",
+        "description": "När den är hopfällbar, börja som en stängd rad som bara visar frågan och dess status."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Quizets namn",
+        "description": "Quiznamn som skickas med för att identifiera objektet i xAPI-drivna miljöer"
+      }
+    ]
+  }
+}

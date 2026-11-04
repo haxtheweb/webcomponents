@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Falanqaynta akhrinta",
+    "description": "Ardaydu waxay calan dhigaan weedhaha, baaragaraafyada ama sawirrada qoraalka ee caddaynta u ah summad kasta, ama waxay doortaan qaybta sida ugu fiican uga jawaabaysa su'aal."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Su'aal",
+        "description": "Waxa ardayda laga codsanayo inay ka helaan qoraalka."
+      },
+      {
+        "property": "mode",
+        "title": "Hawl",
+        "description": "Calan dhig caddaynta: ardaydu waxay calan kasta dhigaan agta caddayntiisa. Mid dooro: ardaydu waxay doortaan qaybta keliya ee sida ugu fiican uga jawaabaysa su'aasha."
+      },
+      {
+        "property": "unit",
+        "title": "Ardaydu waxay doortaan",
+        "description": "Waxa ardaygu qoraalka ku tilmaamo. Sawirrada mar walba waa la dooran karaa."
+      },
+      {
+        "property": "answers",
+        "title": "Calamado",
+        "description": "Summadaha ardaydu dhigaan. Isticmaal Calaamadee jawaabaha ee liiska qaybta si aad u doorato meesha mid kasta ka tirsan yahay."
+      },
+      {
+        "slot": "",
+        "title": "Qoraal",
+        "description": "Qoraalka ardaydu ka shaqeeyaan. HTML kasta: cinwaanno, baaragaraafyo, liisas iyo sawirro."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Qaabka dhibcaha",
+        "description": "OER Schema: qaabka dhibcaha qiimayntan (tusaale dhibco, xaraf, boqolkiiba, dhammaystir)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ujeeddada waxbarasho",
+        "description": "OER Schema: ujeeddada waxbarasho ee la xiriirta qiimayntan."
+      },
+      {
+        "property": "forCourse",
+        "title": "Koorso",
+        "description": "OER Schema: koorsada loogu talagalay qiimayntan."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Isku dayo",
+        "description": "Inta jeer ee ardaygu hubin karo. 0 macnaheedu waa xad la'aan."
+      },
+      {
+        "property": "collapsible",
+        "title": "La isku laaban karo",
+        "description": "U muuji su'aashan sidii saf furma oo xirma. Mid furiddiisa wuxuu xidhayaa su'aalaha kale ee la isku laaban karo ee ku dhow."
+      },
+      {
+        "property": "collapsed",
+        "title": "Ku bilow isku laaban",
+        "description": "Marka la isku laaban karo, ku bilow saf xiran oo muujinaya su'aasha iyo xaaladeeda oo keliya."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Magaca imtixaanka",
+        "description": "Magaca imtixaanka loo gudbiyo deegaannada xAPI si loo aqoonsado walaxdan"
+      }
+    ]
+  }
+}

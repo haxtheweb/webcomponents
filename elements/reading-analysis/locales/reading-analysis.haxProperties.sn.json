@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Kuongorora zvakaverengwa",
+    "description": "Vadzidzi vanoisa mireza pamitsara, ndima kana mifananidzo iri muzvinyorwa zvinova humbowo hwechiratidzo chimwe nechimwe, kana kusarudza chikamu chinopindura mubvunzo zvakanyanya."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Mubvunzo",
+        "description": "Zvinokumbirwa vadzidzi kuti vawane muzvinyorwa."
+      },
+      {
+        "property": "mode",
+        "title": "Basa",
+        "description": "Isa mureza pahumbowo: vadzidzi vanoisa mureza wega wega padivi pehumbowo hwawo. Sarudza chimwe: vadzidzi vanosarudza chikamu chimwe chete chinopindura mubvunzo zvakanyanya."
+      },
+      {
+        "property": "unit",
+        "title": "Vadzidzi vanosarudza",
+        "description": "Zvinonongedzwa nemudzidzi muzvinyorwa. Mifananidzo inogona kusarudzwa nguva dzose."
+      },
+      {
+        "property": "answers",
+        "title": "Mireza",
+        "description": "Zviratidzo zvinoiswa nevadzidzi. Shandisa Maka mhinduro mumenyu yebhuroka kusarudza panofanira kuiswa chimwe nechimwe."
+      },
+      {
+        "slot": "",
+        "title": "Zvinyorwa",
+        "description": "Zvinyorwa zvinoshandirwa nevadzidzi. Chero HTML: misoro, ndima, zvinyorwa zvakarongwa nemifananidzo."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Nzira yekupa mamaki",
+        "description": "OER Schema: nzira yekupa mamaki yeongororo iyi (semuenzaniso mapoinzi, tsamba, chikamu muzana, kupedzisa)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Chinangwa chekudzidza",
+        "description": "OER Schema: chinangwa chekudzidza chakabatanidzwa neongororo iyi."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kosi",
+        "description": "OER Schema: kosi yakagadzirirwa ongororo iyi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Kuedza",
+        "description": "Kakawanda kunogona mudzidzi kutarisa. 0 zvinoreva kusingagumi."
+      },
+      {
+        "property": "collapsible",
+        "title": "Inopeteka",
+        "description": "Sarudza mubvunzo uyu semutsetse unozaruka nekuvharika. Kuvhura mumwe kunovharisa mimwe mibvunzo inopeteka iri padhuze."
+      },
+      {
+        "property": "collapsed",
+        "title": "Tanga yakapetwa",
+        "description": "Painopeteka, tanga semutsetse wakavharwa unongoratidza mubvunzo nemamiriro awo."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Zita rekuedzwa",
+        "description": "Zita rekuedzwa rinoshandiswa munzvimbo dzinoshandisa xAPI kuziva chinhu ichi"
+      }
+    ]
+  }
+}

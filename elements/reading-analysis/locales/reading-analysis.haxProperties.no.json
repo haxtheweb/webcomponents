@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Leseanalyse",
+    "description": "Elevene flagger setningene, avsnittene eller figurene i en tekst som er bevis for hver etikett, eller velger utdraget som best svarer på et spørsmål."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Spørsmål",
+        "description": "Hva elevene skal finne i teksten."
+      },
+      {
+        "property": "mode",
+        "title": "Aktivitet",
+        "description": "Flagg bevis: elevene fester hvert flagg ved beviset for det. Velg ett: elevene velger det ene utdraget som best svarer på spørsmålet."
+      },
+      {
+        "property": "unit",
+        "title": "Elevene velger",
+        "description": "Hva en elev peker på i teksten. Figurer kan alltid velges."
+      },
+      {
+        "property": "answers",
+        "title": "Flagg",
+        "description": "Etikettene elevene plasserer. Bruk Marker svar i blokkmenyen for å velge hvor hver av dem hører hjemme."
+      },
+      {
+        "slot": "",
+        "title": "Lesetekst",
+        "description": "Teksten elevene arbeider i. All HTML: overskrifter, avsnitt, lister og figurer."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Vurderingsformat",
+        "description": "OER Schema: vurderingsformat for denne vurderingen (f.eks. poeng, bokstav, prosent, fullført)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Læringsmål",
+        "description": "OER Schema: læringsmål knyttet til denne vurderingen."
+      },
+      {
+        "property": "forCourse",
+        "title": "Emne",
+        "description": "OER Schema: emnet denne vurderingen er beregnet for."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Forsøk",
+        "description": "Hvor mange ganger en elev kan sjekke. 0 betyr ubegrenset."
+      },
+      {
+        "property": "collapsible",
+        "title": "Sammenleggbar",
+        "description": "Vis dette spørsmålet som en rad som åpnes og lukkes. Når du åpner ett, lukkes de andre sammenleggbare spørsmålene ved siden av."
+      },
+      {
+        "property": "collapsed",
+        "title": "Start sammenfoldet",
+        "description": "Når det er sammenleggbart, start som en lukket rad som bare viser spørsmålet og statusen."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Navn på quizen",
+        "description": "Quiznavn som sendes inn i xAPI-baserte miljøer for å identifisere dette elementet"
+      }
+    ]
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "阅读分析",
+    "description": "学习者在阅读材料中为每个标签标记作为证据的句子、段落或图片，或选择最能回答问题的段落。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "问题",
+        "description": "学习者需要在阅读材料中找到的内容。"
+      },
+      {
+        "property": "mode",
+        "title": "活动",
+        "description": "标记证据：学习者将每个标记放在其证据旁。单选：学习者选择最能回答问题的唯一段落。"
+      },
+      {
+        "property": "unit",
+        "title": "学习者选择",
+        "description": "学习者在阅读材料中指向的对象。图片始终可以选择。"
+      },
+      {
+        "property": "answers",
+        "title": "标记",
+        "description": "学习者放置的标签。使用区块菜单中的“标注答案”选择每个标签应放置的位置。"
+      },
+      {
+        "slot": "",
+        "title": "阅读材料",
+        "description": "学习者使用的阅读材料。任意 HTML：标题、段落、列表和图片。"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "评分格式",
+        "description": "OER Schema：此测评的评分格式（例如分数、等级、百分比、完成度）。"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "学习目标",
+        "description": "OER Schema：与此测评关联的学习目标。"
+      },
+      {
+        "property": "forCourse",
+        "title": "课程",
+        "description": "OER Schema：此测评所面向的课程。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "尝试次数",
+        "description": "学习者可以检查的次数。0 表示不限次数。"
+      },
+      {
+        "property": "collapsible",
+        "title": "可折叠",
+        "description": "将此问题显示为可展开和收起的一行。展开其中一个时,旁边其他可折叠的问题会收起。"
+      },
+      {
+        "property": "collapsed",
+        "title": "默认折叠",
+        "description": "可折叠时,默认显示为仅包含问题及其状态的收起行。"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "测验名称",
+        "description": "传入的测验名称，用于在 xAPI 驱动的环境中识别此项目"
+      }
+    ]
+  }
+}

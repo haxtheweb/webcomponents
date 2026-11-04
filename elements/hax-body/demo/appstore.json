@@ -613,6 +613,7 @@
     "tagging-question": "@haxtheweb/tagging-question/tagging-question.js",
     "matching-question": "@haxtheweb/matching-question/matching-question.js",
     "mark-the-words": "@haxtheweb/mark-the-words/mark-the-words.js",
+    "reading-analysis": "@haxtheweb/reading-analysis/reading-analysis.js",
     "fill-in-the-blanks": "@haxtheweb/fill-in-the-blanks/fill-in-the-blanks.js",
     "accent-card": "@haxtheweb/accent-card/accent-card.js",
     "a11y-gif-player": "@haxtheweb/a11y-gif-player/a11y-gif-player.js",

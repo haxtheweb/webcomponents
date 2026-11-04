@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Teksti analüüs",
+    "description": "Õppijad märgivad lipukestega teksti laused, lõigud või joonised, mis on tõendiks iga sildi kohta, või valivad lõigu, mis vastab küsimusele kõige paremini."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Küsimus",
+        "description": "Mida õppijad peavad tekstist leidma."
+      },
+      {
+        "property": "mode",
+        "title": "Tegevus",
+        "description": "Tõendite märkimine: õppijad kleebivad iga lipukese selle tõendi kõrvale. Ühe valimine: õppijad valivad ainsa lõigu, mis vastab küsimusele kõige paremini."
+      },
+      {
+        "property": "unit",
+        "title": "Õppijad valivad",
+        "description": "Millele õppija tekstis osutab. Jooniseid saab alati valida."
+      },
+      {
+        "property": "answers",
+        "title": "Lipukesed",
+        "description": "Sildid, mida õppijad paigutavad. Kasuta ploki menüüs käsku Märgi vastused, et valida, kuhu igaüks kuulub."
+      },
+      {
+        "slot": "",
+        "title": "Tekst",
+        "description": "Tekst, millega õppijad töötavad. Mis tahes HTML: pealkirjad, lõigud, loendid ja joonised."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Hindamisvorming",
+        "description": "OER Schema: selle hindamise hindamisvorming (nt punktid, täht, protsent, sooritus)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Õpieesmärk",
+        "description": "OER Schema: selle hindamisega seotud õpieesmärk."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursus",
+        "description": "OER Schema: kursus, millele see hindamine on mõeldud."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Katsed",
+        "description": "Mitu korda õppija saab kontrollida. 0 tähendab piiramatult."
+      },
+      {
+        "property": "collapsible",
+        "title": "Voldutav",
+        "description": "Kuva see küsimus real, mida saab avada ja sulgeda. Ühe avamine sulgeb selle kõrval olevad teised voldutavad küsimused."
+      },
+      {
+        "property": "collapsed",
+        "title": "Alusta volditult",
+        "description": "Voldutava puhul algab see suletud reana, mis näitab ainult küsimust ja selle olekut."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Testi nimi",
+        "description": "Testi nimi, mida kasutatakse xAPI-põhistes keskkondades selle üksuse tuvastamiseks"
+      }
+    ]
+  }
+}

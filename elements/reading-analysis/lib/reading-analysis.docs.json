@@ -1,0 +1,236 @@
+{
+  "tag": "reading-analysis",
+  "folder": "reading-analysis",
+  "package": "@haxtheweb/reading-analysis",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Reading analysis",
+  "description": "Learners flag the sentences, paragraphs or figures in a reading that are evidence for each label, or select the passage that best answers a question.",
+  "icon": "icons:flag",
+  "tags": [
+    "Instructional",
+    "reading",
+    "evidence",
+    "annotate",
+    "activity",
+    "knowledge check",
+    "assessment"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/reading-analysis/reading-analysis.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/reading-analysis/reading-analysis.js",
+  "install": "npm i @haxtheweb/reading-analysis",
+  "demoHtml": "<reading-analysis question=\"Identify evidence for each theme in how early rock and roll was received.\" mode=\"flag\" unit=\"sentence\" maxAttempts=\"3\">\n  <h3>Who was afraid of rock and roll?</h3>\n              <p>In the early 1950s, record charts in the United States were split by race. Music by Black artists was sold as rhythm and blues and kept off most pop radio playlists. When white teenagers started buying those records anyway, the industry's first answer was the cover version. White singers re-recorded the same songs with softer arrangements, and the covers usually outsold the originals on the pop chart.</p>\n              <p>Disc jockeys like Alan Freed pushed the other way. His stage shows put Black and white performers on the same bill, and in some cities the audiences mixed on the dance floor for the first time. Promoters noticed that integrated crowds bought more tickets than segregated ones.</p>\n              <p>Opponents framed the music as a danger to order. Newspapers ran stories about seats torn up at screenings of films with rock soundtracks, and some towns banned shows after fights broke out outside. Police in a few cities cleared dance halls before the headliner played, which often started the scuffles the papers then reported.</p>\n              <p>Some of the loudest critics linked the music to Cold War fears. Segregationist councils in the South called it a plot to weaken American youth, and a few preachers described it as a communist tool. Fans and musicians mostly laughed the charge off, and the label never stuck outside the groups that already opposed integration.</p>\n              <figure>\n                <img src=\"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20440%20220%22%20role%3D%22img%22%20aria-labelledby%3D%22t%22%3E%3Ctitle%20id%3D%22t%22%3ETicket%20stub%20for%20a%20rock%20and%20roll%20revue%20marked%20open%20seating%3C/title%3E%3Crect%20width%3D%22440%22%20height%3D%22220%22%20fill%3D%22%23e3f3fb%22/%3E%3Crect%20x%3D%2228%22%20y%3D%2232%22%20width%3D%22384%22%20height%3D%22156%22%20rx%3D%228%22%20fill%3D%22%23ffffff%22%20stroke%3D%22%231e407c%22%20stroke-width%3D%223%22%20stroke-dasharray%3D%2210%206%22/%3E%3Ctext%20x%3D%2256%22%20y%3D%2288%22%20font-family%3D%22Arial%20Narrow%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20fill%3D%22%231e407c%22%3EROCK%20%26amp%3B%20ROLL%20REVUE%3C/text%3E%3Ctext%20x%3D%2256%22%20y%3D%22124%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2220%22%20fill%3D%22%23314d64%22%3EAdmit%20one%20%C2%B7%20Thursday%208%20PM%3C/text%3E%3Ctext%20x%3D%2256%22%20y%3D%22158%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2218%22%20fill%3D%22%23314d64%22%3EOpen%20seating%20%C2%B7%20all%20welcome%3C/text%3E%3Cline%20x1%3D%22336%22%20y1%3D%2232%22%20x2%3D%22336%22%20y2%3D%22188%22%20stroke%3D%22%231e407c%22%20stroke-width%3D%223%22%20stroke-dasharray%3D%226%206%22/%3E%3C/svg%3E%0A\" alt=\"Ticket stub for a rock and roll revue marked open seating\">\n                <figcaption>A ticket stub from a touring revue. Open seating was advertised as a selling point in some northern venues.</figcaption>\n              </figure>\n  <input value=\"Racism\" data-targets=\"c-bc7f5e43,c-4b7e0b02,c-c81c0688,c-c8ffe489\" />\n  <input value=\"Violence\" data-targets=\"c-244fcdea,c-5131939f\" />\n  <input value=\"Communism\" data-targets=\"c-8cdd307f\" />\n</reading-analysis>",
+  "attributes": [
+    {
+      "name": "mode",
+      "property": "mode",
+      "type": "string",
+      "default": "\"flag\"",
+      "description": "\"flag\": stick labelled flags on evidence; \"one\": select one passage",
+      "hax": {
+        "title": "Activity",
+        "input": "select",
+        "options": {
+          "flag": "Flag evidence",
+          "one": "Select one"
+        }
+      }
+    },
+    {
+      "name": "unit",
+      "property": "unit",
+      "type": "string",
+      "default": "\"sentence\"",
+      "description": "what a learner points at: \"sentence\", \"paragraph\" or \"figure\"",
+      "hax": {
+        "title": "Learners select",
+        "input": "select",
+        "options": {
+          "sentence": "Sentences",
+          "paragraph": "Paragraphs",
+          "figure": "Figures only"
+        }
+      }
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {
+    "api": "1",
+    "type": "grid",
+    "editingElement": "core",
+    "hideDefaultSettings": false,
+    "canScale": true,
+    "canEditSource": true,
+    "contentEditable": false,
+    "designSystem": {
+      "primary": true,
+      "accent": true
+    },
+    "gizmo": {
+      "title": "Reading analysis",
+      "description": "Learners flag the sentences, paragraphs or figures in a reading that are evidence for each label, or select the passage that best answers a question.",
+      "icon": "icons:flag",
+      "color": "blue",
+      "tags": [
+        "Instructional",
+        "reading",
+        "evidence",
+        "annotate",
+        "activity",
+        "knowledge check",
+        "assessment"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "question",
+          "title": "Question",
+          "description": "What learners are asked to find in the reading.",
+          "inputMethod": "textfield",
+          "required": true
+        },
+        {
+          "property": "mode",
+          "title": "Activity",
+          "description": "Flag evidence: learners stick each flag beside the evidence for it. Select one: learners choose the single passage that best answers the question.",
+          "inputMethod": "select",
+          "options": {
+            "flag": "Flag evidence",
+            "one": "Select one"
+          }
+        },
+        {
+          "property": "unit",
+          "title": "Learners select",
+          "description": "What a learner points at in the reading. Figures can always be selected.",
+          "inputMethod": "select",
+          "options": {
+            "sentence": "Sentences",
+            "paragraph": "Paragraphs",
+            "figure": "Figures only"
+          }
+        },
+        {
+          "property": "answers",
+          "title": "Flags",
+          "description": "The labels learners place. Use Mark answers in the block menu to choose where each one belongs.",
+          "inputMethod": "array",
+          "itemLabel": "label",
+          "hideDuplicate": true,
+          "expanded": true,
+          "properties": [
+            {
+              "property": "label",
+              "title": "Flag",
+              "inputMethod": "textfield",
+              "required": true
+            }
+          ]
+        },
+        {
+          "slot": "",
+          "title": "Reading",
+          "description": "The reading learners work in. Any HTML: headings, paragraphs, lists and figures.",
+          "inputMethod": "code-editor"
+        },
+        {
+          "property": "gradingFormat",
+          "title": "Grading format",
+          "description": "OER Schema: grading format for this assessment (e.g. points, letter, percent, completion).",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "hasLearningObjective",
+          "title": "Learning objective",
+          "description": "OER Schema: learning objective associated with this assessment.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "forCourse",
+          "title": "Course",
+          "description": "OER Schema: course this assessment is intended for.",
+          "inputMethod": "textfield"
+        }
+      ],
+      "advanced": [
+        {
+          "property": "maxAttempts",
+          "title": "Attempts",
+          "description": "How many times a learner can check. 0 means unlimited.",
+          "inputMethod": "number"
+        },
+        {
+          "property": "collapsible",
+          "title": "Collapsible",
+          "description": "Show this question as a row that opens and closes. Opening one closes the other collapsible questions beside it.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "collapsed",
+          "title": "Start collapsed",
+          "description": "When collapsible, start as a closed row that shows only the question and its status.",
+          "inputMethod": "boolean"
+        }
+      ],
+      "developer": [
+        {
+          "property": "quizName",
+          "title": "Name of the quiz",
+          "description": "Quiz name passed in for use in xAPI driven environments for identification of this item",
+          "inputMethod": "textfield"
+        }
+      ]
+    },
+    "saveOptions": {
+      "unsetAttributes": [
+        "edit",
+        "attempts",
+        "answers",
+        "displayed-answers",
+        "t",
+        "show-answer",
+        "_placed",
+        "_picked",
+        "_held",
+        "_marking"
+      ]
+    },
+    "documentation": {
+      "howTo": null,
+      "purpose": null
+    },
+    "demoSchema": [
+      {
+        "tag": "reading-analysis",
+        "properties": {
+          "question": "Identify evidence for each theme in how early rock and roll was received.",
+          "mode": "flag",
+          "unit": "sentence",
+          "maxAttempts": 3
+        },
+        "content": "<h3>Who was afraid of rock and roll?</h3>\n            <p>In the early 1950s, record charts in the United States were split by race. Music by Black artists was sold as rhythm and blues and kept off most pop radio playlists. When white teenagers started buying those records anyway, the industry's first answer was the cover version. White singers re-recorded the same songs with softer arrangements, and the covers usually outsold the originals on the pop chart.</p>\n            <p>Disc jockeys like Alan Freed pushed the other way. His stage shows put Black and white performers on the same bill, and in some cities the audiences mixed on the dance floor for the first time. Promoters noticed that integrated crowds bought more tickets than segregated ones.</p>\n            <p>Opponents framed the music as a danger to order. Newspapers ran stories about seats torn up at screenings of films with rock soundtracks, and some towns banned shows after fights broke out outside. Police in a few cities cleared dance halls before the headliner played, which often started the scuffles the papers then reported.</p>\n            <p>Some of the loudest critics linked the music to Cold War fears. Segregationist councils in the South called it a plot to weaken American youth, and a few preachers described it as a communist tool. Fans and musicians mostly laughed the charge off, and the label never stuck outside the groups that already opposed integration.</p>\n            <figure>\n              <img src=\"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20440%20220%22%20role%3D%22img%22%20aria-labelledby%3D%22t%22%3E%3Ctitle%20id%3D%22t%22%3ETicket%20stub%20for%20a%20rock%20and%20roll%20revue%20marked%20open%20seating%3C/title%3E%3Crect%20width%3D%22440%22%20height%3D%22220%22%20fill%3D%22%23e3f3fb%22/%3E%3Crect%20x%3D%2228%22%20y%3D%2232%22%20width%3D%22384%22%20height%3D%22156%22%20rx%3D%228%22%20fill%3D%22%23ffffff%22%20stroke%3D%22%231e407c%22%20stroke-width%3D%223%22%20stroke-dasharray%3D%2210%206%22/%3E%3Ctext%20x%3D%2256%22%20y%3D%2288%22%20font-family%3D%22Arial%20Narrow%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20fill%3D%22%231e407c%22%3EROCK%20%26amp%3B%20ROLL%20REVUE%3C/text%3E%3Ctext%20x%3D%2256%22%20y%3D%22124%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2220%22%20fill%3D%22%23314d64%22%3EAdmit%20one%20%C2%B7%20Thursday%208%20PM%3C/text%3E%3Ctext%20x%3D%2256%22%20y%3D%22158%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2218%22%20fill%3D%22%23314d64%22%3EOpen%20seating%20%C2%B7%20all%20welcome%3C/text%3E%3Cline%20x1%3D%22336%22%20y1%3D%2232%22%20x2%3D%22336%22%20y2%3D%22188%22%20stroke%3D%22%231e407c%22%20stroke-width%3D%223%22%20stroke-dasharray%3D%226%206%22/%3E%3C/svg%3E%0A\" alt=\"Ticket stub for a rock and roll revue marked open seating\">\n              <figcaption>A ticket stub from a touring revue. Open seating was advertised as a selling point in some northern venues.</figcaption>\n            </figure>\n<input value=\"Racism\" data-targets=\"c-bc7f5e43,c-4b7e0b02,c-c81c0688,c-c8ffe489\" />\n<input value=\"Violence\" data-targets=\"c-244fcdea,c-5131939f\" />\n<input value=\"Communism\" data-targets=\"c-8cdd307f\" />"
+      }
+    ]
+  },
+  "surfaceHash": "de2c0a329797",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/reading-analysis",
+    "file": "reading-analysis.js"
+  }
+}

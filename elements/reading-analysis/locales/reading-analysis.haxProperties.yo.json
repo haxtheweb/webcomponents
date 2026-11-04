@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Ìtúpalẹ̀ ìwé kíkà",
+    "description": "Àwọn akẹ́kọ̀ọ́ máa ń fi àsíá sí àwọn gbólóhùn, ìpínrọ̀ tàbí àwòrán nínú ìwé kíkà tí ó jẹ́ ẹ̀rí fún àmì kọ̀ọ̀kan, tàbí kí wọ́n yan apá tí ó dáhùn ìbéèrè kan jù lọ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Ìbéèrè",
+        "description": "Ohun tí a ní kí àwọn akẹ́kọ̀ọ́ wá nínú ìwé kíkà."
+      },
+      {
+        "property": "mode",
+        "title": "Iṣẹ́ ṣíṣe",
+        "description": "Fi àsíá sí ẹ̀rí: àwọn akẹ́kọ̀ọ́ máa ń gbé àsíá kọ̀ọ̀kan sí ẹ̀gbẹ́ ẹ̀rí rẹ̀. Yan ọ̀kan: àwọn akẹ́kọ̀ọ́ máa ń yan apá kan ṣoṣo tí ó dáhùn ìbéèrè náà jù lọ."
+      },
+      {
+        "property": "unit",
+        "title": "Ohun tí àwọn akẹ́kọ̀ọ́ ń yàn",
+        "description": "Ohun tí akẹ́kọ̀ọ́ ń tọ́ka sí nínú ìwé kíkà. A lè yan àwọn àwòrán nígbà gbogbo."
+      },
+      {
+        "property": "answers",
+        "title": "Àwọn àsíá",
+        "description": "Àwọn àmì tí àwọn akẹ́kọ̀ọ́ ń gbé kalẹ̀. Lo Sàmì sí àwọn ìdáhùn nínú àkójọ ìbúlọ́ọ̀kù láti yan ibi tí ọ̀kọ̀ọ̀kan yẹ kí ó wà."
+      },
+      {
+        "slot": "",
+        "title": "Ìwé kíkà",
+        "description": "Ìwé kíkà tí àwọn akẹ́kọ̀ọ́ ń ṣiṣẹ́ lé lórí. HTML èyíkéyìí: àwọn àkọlé, ìpínrọ̀, àkójọ àti àwòrán."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Ọ̀nà ìfúnmáàkì",
+        "description": "OER Schema: ọ̀nà ìfúnmáàkì fún ìgbéléwọ̀n yìí (fún àpẹẹrẹ máàkì, lẹ́tà, ìdá-ọgọ́rùn-ún, ìparí)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Àfojúsùn ẹ̀kọ́",
+        "description": "OER Schema: àfojúsùn ẹ̀kọ́ tí ó jẹmọ́ ìgbéléwọ̀n yìí."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kọ́ọ̀sì",
+        "description": "OER Schema: kọ́ọ̀sì tí a pète ìgbéléwọ̀n yìí fún."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Àwọn ìgbìyànjú",
+        "description": "Ìgbà mélòó ni akẹ́kọ̀ọ́ lè ṣàyẹ̀wò. 0 túmọ̀ sí láìní òpin."
+      },
+      {
+        "property": "collapsible",
+        "title": "Tó ṣeé ká",
+        "description": "Fi ìbéèrè yìí hàn bí ìlà tó ń ṣí tó sì ń padé. Ṣíṣí ọ̀kan yóò pa àwọn ìbéèrè míì tó ṣeé ká tó wà lẹ́gbẹ̀ẹ́ rẹ̀."
+      },
+      {
+        "property": "collapsed",
+        "title": "Bẹ̀rẹ̀ ní ká",
+        "description": "Nígbà tó bá ṣeé ká, bẹ̀rẹ̀ bí ìlà tí a ti pa tó ń fi ìbéèrè àti ipò rẹ̀ nìkan hàn."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Orúkọ ìdánwò kékeré náà",
+        "description": "Orúkọ ìdánwò kékeré tí a fi ránṣẹ́ fún lílò ní àwọn àyíká tí xAPI ń darí láti dá ẹyọ yìí mọ̀"
+      }
+    ]
+  }
+}
