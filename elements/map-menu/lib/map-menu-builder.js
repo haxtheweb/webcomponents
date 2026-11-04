@@ -24,6 +24,7 @@ class MapMenuBuilder extends LitElement {
     this.isNested = false;
     this.isHorizontal = false;
     this.progress = null;
+    this.trackable = null;
   }
   /**
    * LitElement life cycle - render
@@ -56,10 +57,12 @@ class MapMenuBuilder extends LitElement {
                           .published="${this.getPublishedStatus(item)}"
                           ?hide-in-menu="${this.hideInMenuStatus(item)}"
                           progress="${this.progressOf(item)}"
+                          trackable="${this.trackableOf(item)}"
                         >
                           <map-menu-builder
                             .items="${item.children}"
                             .progress="${this.progress}"
+                            .trackable="${this.trackable}"
                             ?edit-controls="${this.editControls}"
                             selected="${this.selected}"
                             depth-count="${this.depthCount + 1}"
@@ -91,6 +94,7 @@ class MapMenuBuilder extends LitElement {
                             ? item.metadata.status
                             : ""}"
                           progress="${this.progressOf(item)}"
+                          trackable="${this.trackableOf(item)}"
                         ></map-menu-item>
                       `}
                 `,
@@ -106,6 +110,15 @@ class MapMenuBuilder extends LitElement {
     return this.progress && item && this.progress[item.id]
       ? this.progress[item.id]
       : "";
+  }
+
+  // trackable element count for an item ("" when there are no counts)
+  trackableOf(item) {
+    if (!this.trackable || !item) {
+      return "";
+    }
+    const n = this.trackable[item.id];
+    return typeof n === "number" ? String(n) : "";
   }
 
   hideInMenuStatus(item) {
@@ -177,6 +190,13 @@ class MapMenuBuilder extends LitElement {
        * "visited" | "not-started" }. Empty shows no marks.
        */
       progress: {
+        type: Object,
+      },
+      /**
+       * Trackable element counts by item id ({ <id>: number }), shown as a
+       * quiet count for authors. Empty shows nothing.
+       */
+      trackable: {
         type: Object,
       },
     };

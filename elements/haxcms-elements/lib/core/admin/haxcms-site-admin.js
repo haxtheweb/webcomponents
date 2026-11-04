@@ -203,6 +203,9 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
       reportsInstructional: "Instructional",
       reportsInstructionalDescription:
         "Objectives, practice and activities across the course.",
+      reportsLearning: "Learning activity",
+      reportsLearningDescription:
+        "Which elements can record learner progress, page by page.",
       reportsFreshness: "Freshness",
       reportsFreshnessDescription:
         "When pages were last edited and what may be out of date.",

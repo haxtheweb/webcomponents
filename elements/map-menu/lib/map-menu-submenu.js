@@ -137,6 +137,7 @@ class MapMenuSubmenu extends LitElement {
     this.label = "";
     this.status = "";
     this.progress = "";
+    this.trackable = "";
     this.itemtitle = "";
     this.locked = false;
     this.published = true;
@@ -219,6 +220,7 @@ class MapMenuSubmenu extends LitElement {
           ?locked="${this.locked}"
           status="${this.status}"
           progress="${this.progress}"
+          trackable="${this.trackable}"
         ></map-menu-header>
         <slot></slot>
       </a11y-collapse>
@@ -316,6 +318,12 @@ class MapMenuSubmenu extends LitElement {
       progress: {
         type: String,
         reflect: true,
+      },
+      /**
+       * Trackable element count for authors, passed to the header
+       */
+      trackable: {
+        type: String,
       },
     };
   }

@@ -9,6 +9,12 @@ import {
   renderProgressLabel,
   renderProgressMark,
 } from "./map-menu-progress.js";
+import {
+  MapMenuTrackableStrings,
+  mapMenuTrackableStyles,
+  renderTrackableCount,
+  renderTrackableLabel,
+} from "./map-menu-trackable.js";
 class MapMenuItem extends I18NMixin(LitElement) {
   /**
    * LitElement constructable styles enhancement
@@ -16,6 +22,7 @@ class MapMenuItem extends I18NMixin(LitElement) {
   static get styles() {
     return [
       mapMenuProgressStyles,
+      mapMenuTrackableStyles,
       css`
         :host {
           display: block;
@@ -185,7 +192,8 @@ class MapMenuItem extends I18NMixin(LitElement) {
               `
             : html`<div class="no-icon"></div>`}
           ${renderProgressMark(this.progress)}
-          <span class="title">${this.itemtitle}${this.renderProgress()}</span>
+          <span class="title">${this.itemtitle}${this.renderSpoken()}</span>
+          ${renderTrackableCount(this.trackable)}
         </button>
       </a>
       ${this.editControls && this.active
@@ -200,6 +208,14 @@ class MapMenuItem extends I18NMixin(LitElement) {
   // spoken progress after the title (", Done"); nothing without progress
   renderProgress() {
     return renderProgressLabel(this.progress, this.t);
+  }
+  // spoken after the title: progress, then the trackable count
+  renderSpoken() {
+    return html`${this.renderProgress()}${this.renderTrackable()}`;
+  }
+  // spoken trackable count after the title (", 4 trackable")
+  renderTrackable() {
+    return renderTrackableLabel(this.trackable, this.t);
   }
   static get tag() {
     return "map-menu-item";
@@ -219,9 +235,11 @@ class MapMenuItem extends I18NMixin(LitElement) {
     this.locked = false;
     this.status = "";
     this.progress = "";
+    this.trackable = "";
     this.t = {
       pageIsUnpublished: "Page is unpublished",
       ...MapMenuProgressStrings,
+      ...MapMenuTrackableStrings,
     };
     this.registerLocalization({
       context: this,
@@ -310,6 +328,13 @@ class MapMenuItem extends I18NMixin(LitElement) {
       progress: {
         type: String,
         reflect: true,
+      },
+      /**
+       * Trackable element count for authors (edit mode): "" shows nothing,
+       * "0" a dash, otherwise the number.
+       */
+      trackable: {
+        type: String,
       },
     };
   }

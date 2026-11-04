@@ -7,6 +7,12 @@ import {
   renderProgressLabel,
   renderProgressMark,
 } from "./map-menu-progress.js";
+import {
+  MapMenuTrackableStrings,
+  mapMenuTrackableStyles,
+  renderTrackableCount,
+  renderTrackableLabel,
+} from "./map-menu-trackable.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 class MapMenuHeader extends I18NMixin(LitElement) {
@@ -16,6 +22,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
   static get styles() {
     return [
       mapMenuProgressStyles,
+      mapMenuTrackableStyles,
       css`
         :host {
           display: block;
@@ -209,7 +216,8 @@ class MapMenuHeader extends I18NMixin(LitElement) {
               `
             : ``}
           ${renderProgressMark(this.progress)}
-          <div class="title">${this.itemtitle}${this.renderProgress()}</div>
+          <div class="title">${this.itemtitle}${this.renderSpoken()}</div>
+          ${renderTrackableCount(this.trackable)}
         </button>
       </a>
       ${this.editControls && this.active
@@ -225,6 +233,14 @@ class MapMenuHeader extends I18NMixin(LitElement) {
   // spoken progress after the title (", Done"); nothing without progress
   renderProgress() {
     return renderProgressLabel(this.progress, this.t);
+  }
+  // spoken after the title: progress, then the trackable count
+  renderSpoken() {
+    return html`${this.renderProgress()}${this.renderTrackable()}`;
+  }
+  // spoken trackable count after the title (", 4 trackable")
+  renderTrackable() {
+    return renderTrackableLabel(this.trackable, this.t);
   }
   static get tag() {
     return "map-menu-header";
@@ -248,9 +264,11 @@ class MapMenuHeader extends I18NMixin(LitElement) {
     this.locked = false;
     this.itemtitle = "";
     this.progress = "";
+    this.trackable = "";
     this.t = {
       pageIsUnpublished: "Page is unpublished",
       ...MapMenuProgressStrings,
+      ...MapMenuTrackableStrings,
     };
     this.registerLocalization({
       context: this,
@@ -368,6 +386,13 @@ class MapMenuHeader extends I18NMixin(LitElement) {
       progress: {
         type: String,
         reflect: true,
+      },
+      /**
+       * Trackable element count for authors (edit mode): "" shows nothing,
+       * "0" a dash, otherwise the number.
+       */
+      trackable: {
+        type: String,
       },
       selected: {
         type: String,
