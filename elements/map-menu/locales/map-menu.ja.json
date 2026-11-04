@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "ページは非公開です"
+  "pageIsUnpublished": "ページは非公開です",
+  "progressDone": "完了",
+  "progressInProgress": "進行中",
+  "progressVisited": "訪問済み"
 }

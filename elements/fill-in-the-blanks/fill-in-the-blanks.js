@@ -18,6 +18,45 @@ class FillInTheBlanks extends MarkTheWords {
   static get tag() {
     return "fill-in-the-blanks";
   }
+  /**
+   * xAPI statements this element sends (see scripts/generate-xapi-vocabulary.mjs)
+   */
+  static get xapiVocabulary() {
+    return {
+      tag: "fill-in-the-blanks",
+      event: "user-engagement",
+      verbs: ["answered"],
+      objectType: "http://adlnet.gov/expapi/activities/cmi.interaction",
+      interactionType: "fill-in",
+      result: [
+        "success",
+        "completion",
+        "response",
+        "score",
+        "extensions.attempts",
+        "extensions.max-attempts",
+      ],
+      countsTowardCompletion: true,
+      done: "answered correctly or out of attempts",
+    };
+  }
+  // what the learner typed in each blank, in order
+  learnerResponse() {
+    return (this.answers || [])
+      .map((_a, i) => {
+        const input =
+          this.shadowRoot &&
+          this.shadowRoot.querySelector(`[data-answer-index="${i}"]`);
+        return input && input.value != null ? String(input.value) : "";
+      })
+      .join("[,]");
+  }
+  learnerScore() {
+    return {
+      raw: this.numberCorrect || 0,
+      max: (this.answers || []).length || 1,
+    };
+  }
 
   static get properties() {
     return {
@@ -303,11 +342,9 @@ class FillInTheBlanks extends MarkTheWords {
       <div class="text">
         ${this.wordList.map(
           (word) => html`
-            ${
-              word.text.match(/^\[?[^[\]]*\]/)
-                ? this.renderFillInBlankField(word)
-                : html`${word.text} `
-            }
+            ${word.text.match(/^\[?[^[\]]*\]/)
+              ? this.renderFillInBlankField(word)
+              : html`${word.text} `}
           `,
         )}
       </div>
@@ -378,9 +415,9 @@ class FillInTheBlanks extends MarkTheWords {
     }
     return html`<span class="blank ${status}"
         ><span class="blank-number" aria-hidden="true">${index + 1}</span
-        >${control}${
-          status ? this.renderOptionStatus(status === "correct") : ""
-        }</span
+        >${control}${status
+          ? this.renderOptionStatus(status === "correct")
+          : ""}</span
       >${trailing} `;
   }
 

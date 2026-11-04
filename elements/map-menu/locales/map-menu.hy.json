@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "Էջը հրապարակված չէ"
+  "pageIsUnpublished": "Էջը հրապարակված չէ",
+  "progressDone": "Ավարտված է",
+  "progressInProgress": "Ընթացքի մեջ",
+  "progressVisited": "Այցելած"
 }

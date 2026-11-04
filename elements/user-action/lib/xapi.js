@@ -1,0 +1,532 @@
+/**
+ * Copyright 2026 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ *
+ * Shared xAPI helpers for HAX learner data.
+ *
+ * Every HAX element that reports what a learner did fires one event:
+ * `user-engagement` (bubbles, composed). Its detail keeps the loose fields
+ * elements always sent and adds `statement`, an xAPI 1.0.3 statement (or the
+ * parts needed to finish one), so the same data can be kept on the learner's
+ * device today and sent to a Learning Record Store (LRS) later without being
+ * reshaped. Elements only announce; they never store anything. A listener
+ * (the HAXcms progress store) finishes, de-duplicates and keeps statements.
+ *
+ * Educational record marker: every statement built here carries
+ *   context.contextActivities.category = [{ id: XAPI_EDUCATIONAL_RECORD_CATEGORY,
+ *     definition: { name: { "en-US": "Educational record" } } }]
+ *   context.extensions[XAPI_EXTENSIONS.educationalRecord] = true
+ * so any LRS or adapter that receives it can recognise learner data that
+ * may be an education record (FERPA style handling: access limited to the
+ * learner and the institution, no sale or secondary use, deletable on
+ * request). Statements also carry context.platform "HAX", the page as
+ * contextActivities.parent and the site / course as contextActivities.grouping.
+ *
+ * Actor: xAPI requires one. HAX never invents a real identity: by default the
+ * progress store registers a pseudonymous device account per site
+ * ({ objectType: "Agent", account: { homePage: <site url>, name: <random
+ * uuid kept on this device> } }) through setActorProvider(). A signed-in
+ * adapter (HAXcms server, LRS) can register a different provider later.
+ * Without a provider the statement has no actor and the listener adds one.
+ *
+ * @typedef {Object} UserEngagementDetail
+ * @property {string} activityDisplay verb the element performed, for example
+ *   answered, attempted, completed, experienced, progressed, interacted
+ * @property {string} [objectName] human name of the activity (quiz name,
+ *   checklist title, game name)
+ * @property {string} [objectId] author supplied id of the activity, when any
+ * @property {string} [objectDetail] the part of the activity involved (an
+ *   item label, a concept)
+ * @property {boolean} [resultSuccess] whether the learner was right
+ * @property {number} [resultScore] score, 0 to 1 unless documented otherwise
+ * @property {boolean} [resultCompletion] whether the activity is now done
+ * @property {XAPIStatement} [statement] the xAPI statement for this event
+ *
+ * @typedef {Object} XAPIStatement xAPI 1.0.3 statement
+ * @property {string} id uuid
+ * @property {Object} [actor] Agent; filled by the progress store when absent
+ * @property {{id: string, display: Object}} verb
+ * @property {{id: string, objectType: string, definition: Object}} object
+ * @property {{success?: boolean, completion?: boolean, response?: string,
+ *   score?: {raw: number, min: number, max: number, scaled: number},
+ *   duration?: string, extensions?: Object}} [result]
+ * @property {Object} context platform, language, contextActivities, extensions
+ * @property {string} timestamp ISO 8601
+ * @property {string} version "1.0.3"
+ */
+
+export const XAPI_VERSION = "1.0.3";
+
+/**
+ * ADL verb IRIs used by HAX elements
+ */
+export const XAPI_VERBS = {
+  answered: "http://adlnet.gov/expapi/verbs/answered",
+  attempted: "http://adlnet.gov/expapi/verbs/attempted",
+  completed: "http://adlnet.gov/expapi/verbs/completed",
+  experienced: "http://adlnet.gov/expapi/verbs/experienced",
+  progressed: "http://adlnet.gov/expapi/verbs/progressed",
+  passed: "http://adlnet.gov/expapi/verbs/passed",
+  failed: "http://adlnet.gov/expapi/verbs/failed",
+  interacted: "http://adlnet.gov/expapi/verbs/interacted",
+};
+
+/**
+ * Activity types used by HAX elements
+ */
+export const XAPI_ACTIVITY_TYPES = {
+  interaction: "http://adlnet.gov/expapi/activities/cmi.interaction",
+  lesson: "http://adlnet.gov/expapi/activities/lesson",
+  course: "http://adlnet.gov/expapi/activities/course",
+  objective: "http://adlnet.gov/expapi/activities/objective",
+  media: "http://adlnet.gov/expapi/activities/media",
+  simulation: "http://adlnet.gov/expapi/activities/simulation",
+  interactionGeneric: "http://adlnet.gov/expapi/activities/interaction",
+};
+
+export const XAPI_EDUCATIONAL_RECORD_CATEGORY =
+  "https://haxtheweb.org/xapi/category/educational-record";
+
+/**
+ * HAX extension IRIs
+ */
+export const XAPI_EXTENSIONS = {
+  educationalRecord: "https://haxtheweb.org/xapi/extensions/educational-record",
+  attempts: "https://haxtheweb.org/xapi/extensions/attempts",
+  maxAttempts: "https://haxtheweb.org/xapi/extensions/max-attempts",
+  element: "https://haxtheweb.org/xapi/extensions/element",
+  imported: "https://haxtheweb.org/xapi/extensions/imported",
+};
+
+export const XAPI_PLATFORM = "HAX";
+
+// FNV-1a 32 bit, hex. Deterministic and tiny; not a security feature.
+export function xapiHash(str) {
+  let h = 0x811c9dc5;
+  const s = String(str || "");
+  for (let i = 0; i < s.length; i++) {
+    h ^= s.charCodeAt(i);
+    h = Math.imul(h, 0x01000193);
+  }
+  return (h >>> 0).toString(16);
+}
+
+/**
+ * Random uuid (v4)
+ */
+export function xapiUuid() {
+  const c = globalThis.crypto;
+  if (c && typeof c.randomUUID === "function") {
+    return c.randomUUID();
+  }
+  const bytes = new Uint8Array(16);
+  if (c && typeof c.getRandomValues === "function") {
+    c.getRandomValues(bytes);
+  } else {
+    for (let i = 0; i < 16; i++) {
+      bytes[i] = Math.floor(Math.random() * 256);
+    }
+  }
+  bytes[6] = (bytes[6] & 0x0f) | 0x40;
+  bytes[8] = (bytes[8] & 0x3f) | 0x80;
+  const hex = Array.from(bytes, (b) => b.toString(16).padStart(2, "0"));
+  return `${hex.slice(0, 4).join("")}-${hex.slice(4, 6).join("")}-${hex
+    .slice(6, 8)
+    .join("")}-${hex.slice(8, 10).join("")}-${hex.slice(10).join("")}`;
+}
+
+/**
+ * Language map for display names, in the language of the page
+ */
+export function xapiLanguage() {
+  try {
+    const lang =
+      globalThis.document &&
+      globalThis.document.documentElement &&
+      globalThis.document.documentElement.lang;
+    return lang || "en-US";
+  } catch {
+    return "en-US";
+  }
+}
+
+export function languageMap(text, lang) {
+  return { [lang || xapiLanguage()]: String(text == null ? "" : text) };
+}
+
+/**
+ * URL of the current page without query or fragment
+ */
+export function pageUrl() {
+  try {
+    const l = globalThis.location;
+    return `${l.origin}${l.pathname}`;
+  } catch {
+    return "";
+  }
+}
+
+/**
+ * URL of the site: the document base (HAXcms sites set one) without file
+ * or query, otherwise the origin.
+ */
+export function siteUrl() {
+  try {
+    const base = new URL(
+      globalThis.document.baseURI || globalThis.location.href,
+    );
+    const path = base.pathname.replace(/[^/]*$/, "");
+    return `${base.origin}${path}`;
+  } catch {
+    return pageUrl();
+  }
+}
+
+/**
+ * Stable activity id for an element: page URL + "#" + key. The key is the
+ * element id when it has one; otherwise its tag plus a hash of what the
+ * author wrote (question, title or the fingerprint given), plus its position
+ * among same-key elements when more than one on the page would collide.
+ * @param {HTMLElement} element
+ * @param {string} [fingerprint] author content that identifies it
+ * @returns {string}
+ */
+export function activityKey(element, fingerprint) {
+  if (!element) {
+    return "";
+  }
+  if (element.id) {
+    return String(element.id);
+  }
+  const base = baseKey(
+    element,
+    fingerprint != null ? fingerprint : fingerprintOf(element),
+  );
+  let n = 0;
+  try {
+    const tag = element.tagName.toLowerCase();
+    const root = element.getRootNode();
+    const peers = Array.from(root.querySelectorAll(tag)).filter(
+      (peer) =>
+        peer === element ||
+        (!peer.id && baseKey(peer, fingerprintOf(peer)) === base),
+    );
+    n = peers.indexOf(element);
+  } catch {
+    n = 0;
+  }
+  return n > 0 ? `${base}-${n}` : base;
+}
+
+// tag plus a hash of the author content, before telling twins apart
+function baseKey(element, text) {
+  const tag = (element.tagName || "activity").toLowerCase();
+  return `${tag}-${xapiHash(`${tag}\u0001${text || ""}`)}`;
+}
+
+// the fingerprint an element of the same tag would use for itself
+function fingerprintOf(el) {
+  if (el && typeof el.xapiFingerprint === "function") {
+    return el.xapiFingerprint();
+  }
+  if (!el) {
+    return "";
+  }
+  return (
+    el.question ||
+    el.title ||
+    (typeof el.getAttribute === "function" ? el.getAttribute("title") : "") ||
+    ""
+  );
+}
+
+export function activityId(element, fingerprint) {
+  const key = activityKey(element, fingerprint);
+  return `${pageUrl()}#${encodeURIComponent(key)}`;
+}
+
+// actor registered by the progress store or a signed-in adapter
+let _actorProvider = null;
+
+/**
+ * Register the function that returns the xAPI actor for new statements.
+ * Pass null to remove it.
+ */
+export function setActorProvider(fn) {
+  _actorProvider = typeof fn === "function" ? fn : null;
+}
+
+export function currentActor() {
+  try {
+    return _actorProvider ? _actorProvider() : null;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Pseudonymous device account: never a name or email.
+ */
+export function deviceActor(name, homePage) {
+  return {
+    objectType: "Agent",
+    account: {
+      homePage: homePage || siteUrl(),
+      name: String(name || xapiUuid()),
+    },
+  };
+}
+
+/**
+ * The educational record context every HAX statement carries.
+ */
+export function educationalRecordContext(options = {}) {
+  const lang = options.language || xapiLanguage();
+  const page = options.pageId || pageUrl();
+  const site = options.siteId || siteUrl();
+  const parent = {
+    id: page,
+    objectType: "Activity",
+    definition: { type: XAPI_ACTIVITY_TYPES.lesson },
+  };
+  if (options.pageName) {
+    parent.definition.name = languageMap(options.pageName, lang);
+  }
+  const grouping = {
+    id: site,
+    objectType: "Activity",
+    definition: { type: XAPI_ACTIVITY_TYPES.course },
+  };
+  if (options.siteName) {
+    grouping.definition.name = languageMap(options.siteName, lang);
+  }
+  return {
+    platform: XAPI_PLATFORM,
+    language: lang,
+    contextActivities: {
+      parent: [parent],
+      grouping: [grouping],
+      category: [
+        {
+          id: XAPI_EDUCATIONAL_RECORD_CATEGORY,
+          objectType: "Activity",
+          definition: { name: { "en-US": "Educational record" } },
+        },
+      ],
+    },
+    extensions: {
+      [XAPI_EXTENSIONS.educationalRecord]: true,
+    },
+  };
+}
+
+function cleanScore(score) {
+  if (!score || typeof score !== "object") {
+    return undefined;
+  }
+  const out = {};
+  const raw = Number(score.raw);
+  const max = score.max != null ? Number(score.max) : undefined;
+  const min = score.min != null ? Number(score.min) : 0;
+  if (!Number.isNaN(raw)) {
+    out.raw = raw;
+  }
+  out.min = min;
+  if (max != null && !Number.isNaN(max)) {
+    out.max = max;
+  }
+  let scaled = score.scaled != null ? Number(score.scaled) : undefined;
+  if (scaled == null && out.raw != null && out.max != null && out.max > min) {
+    scaled = (out.raw - min) / (out.max - min);
+  }
+  if (scaled != null && !Number.isNaN(scaled)) {
+    out.scaled = Math.max(-1, Math.min(1, Math.round(scaled * 10000) / 10000));
+  }
+  return out;
+}
+
+/**
+ * Build an xAPI 1.0.3 statement.
+ * @param {Object} parts
+ * @param {string} parts.verb key of XAPI_VERBS or a full verb IRI
+ * @param {Object} parts.object { id, name, description, type,
+ *   interactionType, extensions } or an element (then its activityId is used)
+ * @param {Object} [parts.result] { success, completion, response, score:
+ *   {raw, max, min, scaled}, duration, extensions }
+ * @param {Object} [parts.context] { pageId, pageName, siteId, siteName,
+ *   language, extensions } merged into the educational record context
+ * @param {Object} [parts.actor] defaults to the registered actor provider
+ * @returns {XAPIStatement}
+ */
+export function buildStatement({
+  verb,
+  object,
+  result,
+  context,
+  actor,
+  id,
+  timestamp,
+} = {}) {
+  const verbKey = Object.keys(XAPI_VERBS).find(
+    (k) => k === verb || XAPI_VERBS[k] === verb,
+  );
+  const verbId = verbKey ? XAPI_VERBS[verbKey] : String(verb || "");
+  const verbName = verbKey || verbId.split("/").pop();
+  const ctx = context || {};
+  const lang = ctx.language || xapiLanguage();
+  const obj = object || {};
+  const definition = {};
+  if (obj.name) {
+    definition.name = languageMap(obj.name, lang);
+  }
+  if (obj.description) {
+    definition.description = languageMap(obj.description, lang);
+  }
+  if (obj.type) {
+    definition.type = obj.type;
+  }
+  if (obj.interactionType) {
+    definition.type = XAPI_ACTIVITY_TYPES.interaction;
+    definition.interactionType = obj.interactionType;
+  }
+  if (obj.extensions) {
+    definition.extensions = { ...obj.extensions };
+  }
+  const statement = {
+    id: id || xapiUuid(),
+    verb: { id: verbId, display: { "en-US": verbName } },
+    object: {
+      id: obj.id || pageUrl(),
+      objectType: "Activity",
+      definition,
+    },
+    context: educationalRecordContext({ ...ctx, language: lang }),
+    timestamp: timestamp || new Date().toISOString(),
+    version: XAPI_VERSION,
+  };
+  if (ctx.extensions) {
+    Object.assign(statement.context.extensions, ctx.extensions);
+  }
+  const who = actor || currentActor();
+  if (who) {
+    statement.actor = who;
+  }
+  if (result && typeof result === "object") {
+    const r = {};
+    if (typeof result.success === "boolean") {
+      r.success = result.success;
+    }
+    if (typeof result.completion === "boolean") {
+      r.completion = result.completion;
+    }
+    if (result.response != null && result.response !== "") {
+      r.response = String(result.response);
+    }
+    const score = cleanScore(result.score);
+    if (score) {
+      r.score = score;
+    }
+    if (result.duration) {
+      r.duration = result.duration;
+    }
+    if (result.extensions) {
+      r.extensions = { ...result.extensions };
+    }
+    if (Object.keys(r).length) {
+      statement.result = r;
+    }
+  }
+  return statement;
+}
+
+/**
+ * ISO 8601 duration from milliseconds
+ */
+export function xapiDuration(ms) {
+  const s = Math.max(0, Number(ms) || 0) / 1000;
+  return `PT${Math.round(s * 100) / 100}S`;
+}
+
+/**
+ * Text form of a learner's answer for result.response. Arrays become the
+ * xAPI multi value form (items joined by "[,]").
+ */
+export function responseText(value) {
+  if (value == null) {
+    return "";
+  }
+  if (typeof value === "string") {
+    return value;
+  }
+  if (typeof value === "number" || typeof value === "boolean") {
+    return String(value);
+  }
+  if (Array.isArray(value)) {
+    return value
+      .map((v) =>
+        v && typeof v === "object"
+          ? v.label != null
+            ? v.label
+            : v.text != null
+              ? v.text
+              : JSON.stringify(v)
+          : String(v),
+      )
+      .join("[,]");
+  }
+  try {
+    return JSON.stringify(value);
+  } catch {
+    return "";
+  }
+}
+
+/**
+ * Build a statement for an engagement detail that came without one (older
+ * or third party emitters), from the loose fields.
+ * @param {UserEngagementDetail} detail
+ * @param {HTMLElement} [element] the element that fired it
+ */
+export function statementFromEngagement(detail, element) {
+  const d = detail || {};
+  const result = {};
+  if (typeof d.resultSuccess === "boolean") {
+    result.success = d.resultSuccess;
+  }
+  if (typeof d.resultCompletion === "boolean") {
+    result.completion = d.resultCompletion;
+  }
+  if (typeof d.resultScore === "number") {
+    result.score = { raw: d.resultScore, max: 1, min: 0 };
+  }
+  if (d.resultResponse != null) {
+    result.response = responseText(d.resultResponse);
+  }
+  let objectId = "";
+  if (d.objectId && /^[a-z][a-z0-9+.-]*:/i.test(String(d.objectId))) {
+    objectId = String(d.objectId);
+  } else if (d.objectId) {
+    objectId = `${pageUrl()}#${encodeURIComponent(d.objectId)}`;
+  } else if (element && element.tagName) {
+    objectId = activityId(element);
+  } else {
+    objectId = `${pageUrl()}#${encodeURIComponent(
+      `activity-${xapiHash(d.objectName || "")}`,
+    )}`;
+  }
+  return buildStatement({
+    verb: d.activityDisplay || "interacted",
+    object: {
+      id: objectId,
+      name: d.objectName,
+      description: d.objectDetail,
+    },
+    result,
+    context: {
+      extensions:
+        element && element.tagName
+          ? { [XAPI_EXTENSIONS.element]: element.tagName.toLowerCase() }
+          : undefined,
+    },
+  });
+}

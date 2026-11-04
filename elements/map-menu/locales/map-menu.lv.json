@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "Lapa nav publicēta"
+  "pageIsUnpublished": "Lapa nav publicēta",
+  "progressDone": "Pabeigts",
+  "progressInProgress": "Procesā",
+  "progressVisited": "Apmeklēts"
 }

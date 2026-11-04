@@ -51,6 +51,7 @@
     "@haxtheweb/simple-icon": "^26.8.0",
     "@haxtheweb/simple-toast": "^26.8.0",
     "@haxtheweb/simple-toolbar": "^26.8.0",
+    "@haxtheweb/user-action": "^26.8.0",
     "lit": "3.3.3"
   },
   "devDependencies": {

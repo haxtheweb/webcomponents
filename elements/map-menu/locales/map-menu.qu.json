@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "Rapiqa mana rikuchisqachu"
+  "pageIsUnpublished": "Rapiqa mana rikuchisqachu",
+  "progressDone": "Tukusqa",
+  "progressInProgress": "Rinanpi",
+  "progressVisited": "Watukusqa"
 }

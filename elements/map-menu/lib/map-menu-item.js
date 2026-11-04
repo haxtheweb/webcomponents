@@ -3,12 +3,19 @@ import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
+import {
+  MapMenuProgressStrings,
+  mapMenuProgressStyles,
+  renderProgressLabel,
+  renderProgressMark,
+} from "./map-menu-progress.js";
 class MapMenuItem extends I18NMixin(LitElement) {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
     return [
+      mapMenuProgressStyles,
       css`
         :host {
           display: block;
@@ -157,45 +164,42 @@ class MapMenuItem extends I18NMixin(LitElement) {
   render() {
     return html` <a tabindex="-1" href="${this.url}" title="${this.itemtitle}">
         <button>
-          ${
-            !this.published
-              ? html`<simple-icon-lite
-                  id="unpublished"
-                  title="${this.t.pageIsUnpublished}"
-                  icon="icons:visibility-off"
-                ></simple-icon-lite>`
-              : ``
-          }
-          ${
-            this.icon
-              ? html`
-                  <simple-icon-lite
-                    icon="${this.icon}"
-                    id="icon"
-                  ></simple-icon-lite>
-                  ${
-                    this.iconLabel
-                      ? html`<simple-tooltip for="icon"
-                          >${this.iconLabel}</simple-tooltip
-                        >`
-                      : ``
-                  }
-                `
-              : html`<div class="no-icon"></div>`
-          }
-          <span class="title">${this.itemtitle}</span>
+          ${!this.published
+            ? html`<simple-icon-lite
+                id="unpublished"
+                title="${this.t.pageIsUnpublished}"
+                icon="icons:visibility-off"
+              ></simple-icon-lite>`
+            : ``}
+          ${this.icon
+            ? html`
+                <simple-icon-lite
+                  icon="${this.icon}"
+                  id="icon"
+                ></simple-icon-lite>
+                ${this.iconLabel
+                  ? html`<simple-tooltip for="icon"
+                      >${this.iconLabel}</simple-tooltip
+                    >`
+                  : ``}
+              `
+            : html`<div class="no-icon"></div>`}
+          ${renderProgressMark(this.progress)}
+          <span class="title">${this.itemtitle}${this.renderProgress()}</span>
         </button>
       </a>
-      ${
-        this.editControls && this.active
-          ? html` <div class="ops">
-              <haxcms-page-operations
-                class="op"
-                action-id="${this.id}"
-              ></haxcms-page-operations>
-            </div>`
-          : ``
-      }`;
+      ${this.editControls && this.active
+        ? html` <div class="ops">
+            <haxcms-page-operations
+              class="op"
+              action-id="${this.id}"
+            ></haxcms-page-operations>
+          </div>`
+        : ``}`;
+  }
+  // spoken progress after the title (", Done"); nothing without progress
+  renderProgress() {
+    return renderProgressLabel(this.progress, this.t);
   }
   static get tag() {
     return "map-menu-item";
@@ -214,8 +218,10 @@ class MapMenuItem extends I18NMixin(LitElement) {
     this.published = false;
     this.locked = false;
     this.status = "";
+    this.progress = "";
     this.t = {
       pageIsUnpublished: "Page is unpublished",
+      ...MapMenuProgressStrings,
     };
     this.registerLocalization({
       context: this,
@@ -294,6 +300,14 @@ class MapMenuItem extends I18NMixin(LitElement) {
         reflect: true,
       },
       status: {
+        type: String,
+        reflect: true,
+      },
+      /**
+       * Learner progress mark: done, in-progress, visited or not-started.
+       * Empty (the default) shows no mark.
+       */
+      progress: {
         type: String,
         reflect: true,
       },

@@ -1,6 +1,12 @@
 import { LitElement, html, css } from "lit";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import {
+  MapMenuProgressStrings,
+  mapMenuProgressStyles,
+  renderProgressLabel,
+  renderProgressMark,
+} from "./map-menu-progress.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 class MapMenuHeader extends I18NMixin(LitElement) {
@@ -9,6 +15,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
    */
   static get styles() {
     return [
+      mapMenuProgressStyles,
       css`
         :host {
           display: block;
@@ -73,6 +80,12 @@ class MapMenuHeader extends I18NMixin(LitElement) {
           visibility: none;
           opacity: 0;
           pointer-events: none;
+        }
+
+        :host .progress-mark[data-progress] simple-icon-lite {
+          visibility: visible;
+          opacity: 1;
+          margin: 0;
         }
 
         simple-icon-lite {
@@ -174,48 +187,45 @@ class MapMenuHeader extends I18NMixin(LitElement) {
   render() {
     return html` <a tabindex="-1" href="${this.url}" title="${this.itemtitle}">
         <button>
-          ${
-            !this.published
-              ? html`<simple-icon-lite
-                  id="unpublished"
-                  title="${this.t.pageIsUnpublished}"
-                  icon="icons:visibility-off"
-                ></simple-icon-lite>`
-              : ``
-          }
-          ${
-            this.icon
-              ? html`
-                  <simple-icon-lite
-                    icon="${this.icon}"
-                    part="icon"
-                    id="icon"
-                  ></simple-icon-lite>
-                  ${
-                    this.iconLabel
-                      ? html`<simple-tooltip for="icon"
-                          >${this.iconLabel}</simple-tooltip
-                        >`
-                      : ``
-                  }
-                `
-              : ``
-          }
-          <div class="title">${this.itemtitle}</div>
+          ${!this.published
+            ? html`<simple-icon-lite
+                id="unpublished"
+                title="${this.t.pageIsUnpublished}"
+                icon="icons:visibility-off"
+              ></simple-icon-lite>`
+            : ``}
+          ${this.icon
+            ? html`
+                <simple-icon-lite
+                  icon="${this.icon}"
+                  part="icon"
+                  id="icon"
+                ></simple-icon-lite>
+                ${this.iconLabel
+                  ? html`<simple-tooltip for="icon"
+                      >${this.iconLabel}</simple-tooltip
+                    >`
+                  : ``}
+              `
+            : ``}
+          ${renderProgressMark(this.progress)}
+          <div class="title">${this.itemtitle}${this.renderProgress()}</div>
         </button>
       </a>
-      ${
-        this.editControls && this.active
-          ? html` <div class="ops">
-              <haxcms-page-operations
-                class="op"
-                action-id="${this.id}"
-              ></haxcms-page-operations>
-            </div>`
-          : ``
-      }`;
+      ${this.editControls && this.active
+        ? html` <div class="ops">
+            <haxcms-page-operations
+              class="op"
+              action-id="${this.id}"
+            ></haxcms-page-operations>
+          </div>`
+        : ``}`;
   }
 
+  // spoken progress after the title (", Done"); nothing without progress
+  renderProgress() {
+    return renderProgressLabel(this.progress, this.t);
+  }
   static get tag() {
     return "map-menu-header";
   }
@@ -237,8 +247,10 @@ class MapMenuHeader extends I18NMixin(LitElement) {
     this.hovered = false;
     this.locked = false;
     this.itemtitle = "";
+    this.progress = "";
     this.t = {
       pageIsUnpublished: "Page is unpublished",
+      ...MapMenuProgressStrings,
     };
     this.registerLocalization({
       context: this,
@@ -346,6 +358,14 @@ class MapMenuHeader extends I18NMixin(LitElement) {
         type: Boolean,
       },
       status: {
+        type: String,
+        reflect: true,
+      },
+      /**
+       * Learner progress mark: done, in-progress, visited or not-started.
+       * Empty (the default) shows no mark.
+       */
+      progress: {
         type: String,
         reflect: true,
       },

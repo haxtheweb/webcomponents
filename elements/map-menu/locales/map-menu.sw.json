@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "Ukurasa haujachapishwa"
+  "pageIsUnpublished": "Ukurasa haujachapishwa",
+  "progressDone": "Imekamilika",
+  "progressInProgress": "Inaendelea",
+  "progressVisited": "Imetembelewa"
 }

@@ -12,6 +12,40 @@ export class SortingQuestion extends QuestionElement {
   static get tag() {
     return "sorting-question";
   }
+  /**
+   * xAPI statements this element sends (see scripts/generate-xapi-vocabulary.mjs)
+   */
+  static get xapiVocabulary() {
+    return {
+      tag: "sorting-question",
+      event: "user-engagement",
+      verbs: ["answered"],
+      objectType: "http://adlnet.gov/expapi/activities/cmi.interaction",
+      interactionType: "sequencing",
+      result: [
+        "success",
+        "completion",
+        "response",
+        "score",
+        "extensions.attempts",
+        "extensions.max-attempts",
+      ],
+      countsTowardCompletion: true,
+      done: "answered correctly or out of attempts",
+    };
+  }
+  // the order the learner left the options in
+  learnerResponse() {
+    const options = this.getOptions();
+    return options
+      ? Array.from(options)
+          .map((o) => (o.innerText || o.textContent || "").trim())
+          .join("[,]")
+      : "";
+  }
+  learnerScore() {
+    return { raw: this.numberCorrect, max: this.answers.length };
+  }
 
   // get the options directly off the UI. This will help in providing them in the correct order as well
   // this is definitely an anti pattern for us but displayedAnswers is effectively just setting the INITIAL
@@ -188,18 +222,14 @@ export class SortingQuestion extends QuestionElement {
               },
             }),
           );
-          // start of data passing, this is a prototype atm
-          let eventData = {
-            activityDisplay: "answered",
-            objectName: this.quizName,
-            resultSuccess: gotRight,
-          };
+          // learner data, once per check: checkAnswerCallback already
+          // counted this attempt
           this.dispatchEvent(
             new CustomEvent("user-engagement", {
               bubbles: true,
               composed: true,
               cancelable: false,
-              detail: eventData,
+              detail: this.engagementDetail(gotRight, this.attempts),
             }),
           );
         } else {
@@ -341,11 +371,9 @@ export class SortingQuestion extends QuestionElement {
         ${this.displayedAnswers.map(
           (answer) =>
             html`<sorting-option ?disabled="${this.disabled}"
-              >${
-                answer.image
-                  ? html`<img src="${answer.image}" alt="${answer.alt}" />`
-                  : nothing
-              }${answer.label}</sorting-option
+              >${answer.image
+                ? html`<img src="${answer.image}" alt="${answer.alt}" />`
+                : nothing}${answer.label}</sorting-option
             >`,
         )}
       </fieldset>
@@ -378,40 +406,32 @@ export class SortingQuestion extends QuestionElement {
 
   // this manages the output of the feedback area
   renderFeedback() {
-    return html` ${
-      !this.edit
-        ? html`
-            ${
-              this.showAnswer && this.numberCorrect !== this.answers.length
-                ? html` <p class="feedback">
-                    ${this._tParts(this.t.numCorrectOutOfTotal, {
-                      correct: this.numberCorrect,
-                      total: this.answers.length,
-                    })}
-                  </p>`
-                : ``
-            }
-            ${
-              this.showAnswer && this.numberCorrect === this.answers.length
-                ? html` <p class="feedback">${this.correctText}</p>`
-                : ``
-            }
-            ${
-              this.showAnswer
-                ? this.renderFeedbackSlots(
-                    this.numberCorrect === this.answers.length,
-                  )
-                : ``
-            }
-            <simple-toolbar-button
-              ?disabled="${this.disabled || !this.showAnswer}"
-              @click="${this.resetAnswer}"
-              label="${this.t.tryAgain}"
-            >
-            </simple-toolbar-button>
-          `
-        : this.renderEditModeFeedbackAreas()
-    }`;
+    return html` ${!this.edit
+      ? html`
+          ${this.showAnswer && this.numberCorrect !== this.answers.length
+            ? html` <p class="feedback">
+                ${this._tParts(this.t.numCorrectOutOfTotal, {
+                  correct: this.numberCorrect,
+                  total: this.answers.length,
+                })}
+              </p>`
+            : ``}
+          ${this.showAnswer && this.numberCorrect === this.answers.length
+            ? html` <p class="feedback">${this.correctText}</p>`
+            : ``}
+          ${this.showAnswer
+            ? this.renderFeedbackSlots(
+                this.numberCorrect === this.answers.length,
+              )
+            : ``}
+          <simple-toolbar-button
+            ?disabled="${this.disabled || !this.showAnswer}"
+            @click="${this.resetAnswer}"
+            label="${this.t.tryAgain}"
+          >
+          </simple-toolbar-button>
+        `
+      : this.renderEditModeFeedbackAreas()}`;
   }
 
   /**

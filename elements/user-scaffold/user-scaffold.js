@@ -2,12 +2,11 @@
  * Copyright 2023
  * @license , see License.md for full text.
  */
+import { validURL } from "@haxtheweb/utils/utils.js";
 import {
-  localStorageSet,
-  localStorageGet,
-  localStorageDelete,
-  validURL,
-} from "@haxtheweb/utils/utils.js";
+  LocalStorageMemoryAdapter,
+  IndexedDBStatementAdapter,
+} from "./lib/user-scaffold-storage.js";
 import {
   observable,
   makeObservable,
@@ -41,9 +40,54 @@ export const UserScaffoldInstance =
   globalThis.UserScaffold.requestAvailability();
 
 const MEMORYINTERVALPOLLING = 300;
+export const USER_PROFILE_VERSION = 1;
+const PROFILE_KEY = "profile";
+// verbs that finish an activity on their own
+const DONE_VERBS = ["completed", "passed", "failed"];
+const verbKeyOf = (statement) => {
+  const v = statement && statement.verb ? statement.verb : {};
+  return (
+    (v.display && v.display["en-US"]) ||
+    String(v.id || "")
+      .split("/")
+      .pop() ||
+    "interacted"
+  );
+};
+const extensionOf = (obj, suffix) => {
+  const ext = obj && obj.extensions ? obj.extensions : {};
+  const key = Object.keys(ext).find((k) => k.endsWith(`/${suffix}`));
+  return key ? ext[key] : undefined;
+};
+const newUuid = () => {
+  const c = globalThis.crypto;
+  if (c && typeof c.randomUUID === "function") {
+    return c.randomUUID();
+  }
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (ch) => {
+    const r = Math.floor(Math.random() * 16);
+    return (ch === "x" ? r : (r & 0x3) | 0x8).toString(16);
+  });
+};
 /**
  * `user-scaffold`
  * `memory and context to establish and maintain appropriate user scaffolding`
+ *
+ * Learner profile: long-term memory holds ONE profile for the person using
+ * this browser (readProfile()), shaped as
+ *   { v, preferences: { darkMode, soundStatus, audioDescription: {<src>: bool} },
+ *     session: { firstVisit, lastVisit, visits, lastLogin },
+ *     sites: { <siteKey>: { url, title, actor, firstVisit, lastVisit,
+ *       pages: { <pageId>: { title, url, firstVisit, lastVisit, visits,
+ *         activities: [activityId], trackable, trackableByTag } },
+ *       activities: { <activityId>: { page, tag, name, verb, verbs, count,
+ *         first, last, trackable, done, status, success, attempts,
+ *         maxAttempts, score, response } },
+ *       counts: { byElement: { <tag>: { <verb>: n } }, byVerb: { <verb>: n } },
+ *       statementCount } } }
+ * Every xAPI statement recorded is also appended to the statements list
+ * (IndexedDB by default, see lib/user-scaffold-storage.js). Nothing here is
+ * sent anywhere; the actor of each site is a random per-device account.
  *
  * @demo demo/index.html
  * @element user-scaffold
@@ -66,7 +110,10 @@ export class UserScaffold extends HTMLElement {
       interactionDelay: 0,
       interactionCount: 0,
     };
-    this.ltMemory = localStorageGet("user-scaffold-ltMemory", {});
+    this._memoryAdapter = new LocalStorageMemoryAdapter();
+    this._statementAdapter = new IndexedDBStatementAdapter();
+    this._seenStatements = new Set();
+    this.ltMemory = this._memoryAdapter.load();
     this.action = {
       type: null,
       architype: null,
@@ -302,7 +349,7 @@ export class UserScaffold extends HTMLElement {
     if (type == "long") {
       prop = "ltMemory";
       this[prop][key] = value;
-      localStorageSet(`user-scaffold-${prop}`, this[prop]);
+      this._saveLongTerm();
     } else {
       this[prop][key] = value;
     }
@@ -313,7 +360,9 @@ export class UserScaffold extends HTMLElement {
     if (type == "long") {
       prop = "ltMemory";
       delete this[prop][key];
-      localStorageDelete(`user-scaffold-${prop}`);
+      // keep the rest of long-term memory (the learner profile lives there);
+      // removing the whole storage key used to drop every other value
+      this._saveLongTerm();
     } else {
       delete this[prop][key];
     }
@@ -332,6 +381,559 @@ export class UserScaffold extends HTMLElement {
   // key is the same
   get memory() {
     return { ...this.ltMemory, ...this.stMemory };
+  }
+  _saveLongTerm() {
+    return this._memoryAdapter.save(toJS(this.ltMemory));
+  }
+  /**
+   * Swap where long-term memory is kept (see lib/user-scaffold-storage.js).
+   * Reloads long-term memory from the new adapter.
+   */
+  setMemoryAdapter(adapter) {
+    if (adapter && typeof adapter.load === "function") {
+      this._memoryAdapter = adapter;
+      this.ltMemory = adapter.load() || {};
+    }
+  }
+  /**
+   * Swap where the statements list is kept (memory, IndexedDB, later the
+   * HAXcms server or an LRS)
+   */
+  setStatementAdapter(adapter) {
+    if (adapter && typeof adapter.add === "function") {
+      this._statementAdapter = adapter;
+    }
+  }
+  get statementAdapter() {
+    return this._statementAdapter;
+  }
+  // the profile object inside long-term memory, created on first use
+  _profile() {
+    let p = this.ltMemory[PROFILE_KEY];
+    if (!p || typeof p !== "object" || p.v !== USER_PROFILE_VERSION) {
+      this.ltMemory[PROFILE_KEY] = {
+        v: USER_PROFILE_VERSION,
+        preferences: {},
+        session: {},
+        sites: {},
+      };
+      p = this.ltMemory[PROFILE_KEY];
+    }
+    return p;
+  }
+  /**
+   * Plain copy of the learner profile
+   */
+  readProfile() {
+    return toJS(this._profile());
+  }
+  readPreference(key, fallback = null) {
+    const prefs = this._profile().preferences;
+    return key in prefs ? toJS(prefs[key]) : fallback;
+  }
+  writePreference(key, value) {
+    const prefs = this._profile().preferences;
+    if (JSON.stringify(toJS(prefs[key])) !== JSON.stringify(value)) {
+      prefs[key] = value;
+      this._saveLongTerm();
+    }
+  }
+  /**
+   * Note a visit (and a sign in when login is true)
+   */
+  recordSession({ login = false } = {}) {
+    const s = this._profile().session;
+    const now = new Date().toISOString();
+    if (!s.firstVisit) {
+      s.firstVisit = now;
+    }
+    s.lastVisit = now;
+    s.visits = (s.visits || 0) + 1;
+    if (login) {
+      s.lastLogin = now;
+    }
+    this._saveLongTerm();
+  }
+  /**
+   * The record kept for one site
+   */
+  readSite(site) {
+    const rec = this._profile().sites[site];
+    return rec ? toJS(rec) : null;
+  }
+  _site(site, info = {}) {
+    const sites = this._profile().sites;
+    if (!sites[site]) {
+      sites[site] = {
+        url: info.url || site,
+        title: info.title || "",
+        actor: {
+          objectType: "Agent",
+          account: { homePage: info.url || site, name: newUuid() },
+        },
+        firstVisit: new Date().toISOString(),
+        lastVisit: null,
+        pages: {},
+        activities: {},
+        counts: { byElement: {}, byVerb: {} },
+        statementCount: 0,
+      };
+    }
+    if (info.title && sites[site].title !== info.title) {
+      sites[site].title = info.title;
+    }
+    return sites[site];
+  }
+  /**
+   * Pseudonymous xAPI actor for a site: a random account kept on this
+   * device, never a name or email.
+   */
+  siteActor(site, info = {}) {
+    const existed = Boolean(this._profile().sites[site]);
+    const rec = this._site(site, info);
+    if (!existed) {
+      this._saveLongTerm();
+    }
+    return toJS(rec.actor);
+  }
+  _page(siteRec, page, info = {}) {
+    if (!siteRec.pages[page]) {
+      siteRec.pages[page] = {
+        title: info.title || "",
+        url: info.url || "",
+        firstVisit: null,
+        lastVisit: null,
+        visits: 0,
+        activities: [],
+      };
+    }
+    const p = siteRec.pages[page];
+    if (info.title) {
+      p.title = info.title;
+    }
+    if (info.url) {
+      p.url = info.url;
+    }
+    return p;
+  }
+  /**
+   * Note that a page of a site was opened
+   */
+  recordPageVisit(site, page, info = {}) {
+    if (!site || !page) {
+      return;
+    }
+    const siteRec = this._site(site, info.site || {});
+    const p = this._page(siteRec, page, info);
+    const now = new Date().toISOString();
+    if (!p.firstVisit) {
+      p.firstVisit = now;
+    }
+    p.lastVisit = now;
+    p.visits = (p.visits || 0) + 1;
+    siteRec.lastVisit = now;
+    this._saveLongTerm();
+  }
+  /**
+   * How many trackable elements a page holds, overall and per tag
+   */
+  setPageTrackable(site, page, count, byTag = {}) {
+    if (!site || !page) {
+      return;
+    }
+    const p = this._page(this._site(site), page);
+    if (
+      p.trackable !== count ||
+      JSON.stringify(toJS(p.trackableByTag || {})) !== JSON.stringify(byTag)
+    ) {
+      p.trackable = count;
+      p.trackableByTag = { ...byTag };
+      this._saveLongTerm();
+    }
+  }
+  /**
+   * Record one xAPI statement for a site. Updates the activity summary,
+   * counts and the page it belongs to, and appends the statement to the
+   * statements list. Returns the activity summary, or null when skipped
+   * (already recorded, or an import for an activity that already has data).
+   * @param {string} site
+   * @param {Object} statement xAPI statement
+   * @param {Object} meta { page, tag, trackable, imported, pageTitle }
+   */
+  recordStatement(site, statement, meta = {}) {
+    if (!site || !statement || !statement.object || !statement.object.id) {
+      return null;
+    }
+    if (statement.id && this._seenStatements.has(statement.id)) {
+      return null;
+    }
+    const siteRec = this._site(site);
+    const id = statement.object.id;
+    const existing = siteRec.activities[id];
+    if (meta.imported && existing && existing.count > 0) {
+      return null;
+    }
+    if (statement.id) {
+      this._seenStatements.add(statement.id);
+    }
+    const verb = verbKeyOf(statement);
+    const def = statement.object.definition || {};
+    const result = statement.result || {};
+    const ctxExt = statement.context || {};
+    const tag = meta.tag || extensionOf(ctxExt, "element") || "";
+    const ts = statement.timestamp || new Date().toISOString();
+    const act = existing || {
+      page: meta.page || "",
+      tag,
+      name: "",
+      first: ts,
+      count: 0,
+      verbs: {},
+      done: false,
+    };
+    if (meta.page && !act.page) {
+      act.page = meta.page;
+    }
+    const nameMap = def.name || {};
+    const name = nameMap[Object.keys(nameMap)[0]];
+    if (name) {
+      act.name = name;
+    }
+    if (def.interactionType) {
+      act.interactionType = def.interactionType;
+    }
+    act.trackable = meta.trackable !== false;
+    act.verb = verb;
+    act.verbs[verb] = (act.verbs[verb] || 0) + 1;
+    act.count += 1;
+    act.last = ts;
+    if (typeof result.success === "boolean") {
+      act.success = result.success;
+      if (verb === "answered") {
+        act.status = result.success ? "correct" : "incorrect";
+      }
+    }
+    if (result.score) {
+      act.score = { ...result.score };
+    }
+    if (result.response != null) {
+      act.response = result.response;
+    }
+    const attempts = extensionOf(result, "attempts");
+    if (attempts != null) {
+      act.attempts = attempts;
+    }
+    const maxAttempts = extensionOf(result, "max-attempts");
+    if (maxAttempts != null) {
+      act.maxAttempts = maxAttempts;
+    }
+    if (result.completion === true || DONE_VERBS.includes(verb)) {
+      act.done = true;
+    }
+    if (meta.imported) {
+      act.imported = true;
+    }
+    siteRec.activities[id] = act;
+    if (act.page) {
+      const p = this._page(siteRec, act.page, { title: meta.pageTitle });
+      if (!p.activities.includes(id)) {
+        p.activities.push(id);
+      }
+    }
+    const byEl = siteRec.counts.byElement;
+    const elKey = tag || "unknown";
+    byEl[elKey] = byEl[elKey] || {};
+    byEl[elKey][verb] = (byEl[elKey][verb] || 0) + 1;
+    siteRec.counts.byVerb[verb] = (siteRec.counts.byVerb[verb] || 0) + 1;
+    siteRec.statementCount = (siteRec.statementCount || 0) + 1;
+    this._saveLongTerm();
+    if (this._statementAdapter) {
+      Promise.resolve(this._statementAdapter.add(site, statement)).catch(
+        () => {},
+      );
+    }
+    return toJS(act);
+  }
+  /**
+   * Summary for one activity of a site, or null
+   */
+  readActivity(site, activityId) {
+    const siteRec = this._profile().sites[site];
+    const act = siteRec ? siteRec.activities[activityId] : null;
+    return act ? toJS(act) : null;
+  }
+  /**
+   * Status of a page: "done" when every trackable activity the learner
+   * engaged with on it is done, "in-progress" when some are not,
+   * "visited" when opened with nothing engaged, "not-started" otherwise.
+   */
+  pageStatus(site, page) {
+    return this.pageProgress(site, page).status;
+  }
+  /**
+   * { status, engaged, done, trackable } for a page
+   */
+  pageProgress(site, page) {
+    const siteRec = this._profile().sites[site];
+    const p = siteRec ? siteRec.pages[page] : null;
+    if (!p) {
+      return { status: "not-started", engaged: 0, done: 0, trackable: 0 };
+    }
+    const acts = (p.activities || [])
+      .map((id) => siteRec.activities[id])
+      .filter((a) => a && a.trackable !== false);
+    const done = acts.filter((a) => a.done).length;
+    // done = every trackable activity on the page is done, not only the
+    // ones the learner has touched so far
+    const trackable = Math.max(p.trackable || 0, acts.length);
+    let status = "visited";
+    if (acts.length) {
+      status = done >= trackable ? "done" : "in-progress";
+    } else if (!p.visits) {
+      status = "not-started";
+    }
+    return {
+      status,
+      engaged: acts.length,
+      done,
+      trackable,
+    };
+  }
+  /**
+   * { done, total, byPage } for a site; pages limits it to those page ids
+   * (the site outline), otherwise every page the profile knows
+   */
+  siteProgress(site, pages) {
+    const siteRec = this._profile().sites[site];
+    const ids = Array.isArray(pages)
+      ? pages
+      : siteRec
+        ? Object.keys(siteRec.pages)
+        : [];
+    const byPage = {};
+    let done = 0;
+    ids.forEach((id) => {
+      byPage[id] = this.pageStatus(site, id);
+      if (byPage[id] === "done") {
+        done++;
+      }
+    });
+    const engaged = siteRec
+      ? Object.values(siteRec.activities).some((a) => a.trackable !== false)
+      : false;
+    return { done, total: ids.length, byPage, engaged };
+  }
+  /**
+   * Copy preferences that elements kept under their own localStorage keys
+   * into the profile, once per key. The old keys are left in place and stay
+   * readable. Covered: video-player-ad-<source> (audio description per
+   * video), app-hax-darkMode, app-hax-soundStatus.
+   */
+  importLegacyPreferences(storage = globalThis.localStorage) {
+    const p = this._profile();
+    p.migrations = p.migrations || {};
+    let changed = false;
+    try {
+      if (!storage) {
+        return false;
+      }
+      const ad = { ...(toJS(p.preferences.audioDescription) || {}) };
+      for (let i = 0; i < storage.length; i++) {
+        const key = storage.key(i);
+        if (key && key.indexOf("video-player-ad-") === 0) {
+          const src = key.slice("video-player-ad-".length);
+          if (!(src in ad)) {
+            ad[src] = storage.getItem(key) === "true";
+            changed = true;
+          }
+        }
+      }
+      if (changed) {
+        p.preferences.audioDescription = ad;
+      }
+      [
+        ["app-hax-darkMode", "darkMode"],
+        ["app-hax-soundStatus", "soundStatus"],
+      ].forEach(([key, pref]) => {
+        const raw = storage.getItem(key);
+        if (raw !== null && !(pref in p.preferences)) {
+          try {
+            p.preferences[pref] = JSON.parse(raw);
+            changed = true;
+          } catch {
+            // not JSON; leave it
+          }
+        }
+      });
+    } catch {
+      return false;
+    }
+    if (changed) {
+      p.migrations.legacyPreferences = new Date().toISOString();
+      this._saveLongTerm();
+    }
+    return changed;
+  }
+  /**
+   * Counts for dashboards and insights, grouped one way, over a scope of
+   * the site outline. Page tags, sections and ancestors are resolved at read
+   * time from the outline given (the site manifest items), so the profile
+   * never goes stale when an author retags or moves a page.
+   * @param {Object} o
+   * @param {string} o.site site key
+   * @param {Array} [o.outline] [{ id, parent, title, tags }] (tags: array or
+   *   comma separated string); without it, page / verb / element grouping
+   *   and the "all" / "page" scopes still work
+   * @param {string} [o.scope] "page" | "parent" (the page's parent and every
+   *   page below it) | "branch" (the page and every page below it) |
+   *   "children" (only the pages below it) | "all" (default)
+   * @param {string} [o.pageId] outline item id the scope is relative to
+   * @param {string} [o.groupBy] "page" (default) | "tag" | "section" (top
+   *   level ancestor) | "verb" | "element"
+   * @returns {{ scope, pageId, groupBy, pages: string[], groups: Object,
+   *   totals: Object }} each group: { activities, done, statements,
+   *   answered, correct, accuracy, trackable, pages }
+   */
+  summarize({ site, outline, scope = "all", pageId, groupBy = "page" } = {}) {
+    const siteRec = this.readSite(site) || { pages: {}, activities: {} };
+    const items = Array.isArray(outline) ? outline : [];
+    const byId = {};
+    items.forEach((i) => {
+      byId[i.id] = i;
+    });
+    const childrenOf = (id) =>
+      items.filter((i) => i.parent === id).map((i) => i.id);
+    const below = (id) => {
+      const out = [];
+      const walk = (pid) =>
+        childrenOf(pid).forEach((cid) => {
+          out.push(cid);
+          walk(cid);
+        });
+      walk(id);
+      return out;
+    };
+    const known = Array.from(
+      new Set([...items.map((i) => i.id), ...Object.keys(siteRec.pages)]),
+    );
+    let pages = known;
+    if (scope === "page") {
+      pages = [pageId];
+    } else if (scope === "branch") {
+      pages = [pageId, ...below(pageId)];
+    } else if (scope === "children") {
+      pages = below(pageId);
+    } else if (scope === "parent") {
+      const parent = byId[pageId] ? byId[pageId].parent : null;
+      pages = parent ? [parent, ...below(parent)] : known;
+    }
+    const inScope = new Set(pages);
+    const tagsOf = (id) => {
+      const t = byId[id] ? byId[id].tags : null;
+      const list = Array.isArray(t) ? t : String(t || "").split(",");
+      const clean = list.map((x) => String(x).trim()).filter(Boolean);
+      return clean.length ? clean : ["(untagged)"];
+    };
+    const sectionOf = (id) => {
+      let cur = byId[id];
+      let guard = 0;
+      while (cur && cur.parent && byId[cur.parent] && guard++ < 50) {
+        cur = byId[cur.parent];
+      }
+      return cur ? cur.id : id;
+    };
+    const blank = () => ({
+      activities: 0,
+      done: 0,
+      statements: 0,
+      answered: 0,
+      correct: 0,
+      accuracy: null,
+      trackable: 0,
+      pages: 0,
+    });
+    const groups = {};
+    const group = (key) => {
+      groups[key] = groups[key] || blank();
+      return groups[key];
+    };
+    const totals = blank();
+    const pageKeys = (id) =>
+      groupBy === "tag"
+        ? tagsOf(id)
+        : groupBy === "section"
+          ? [sectionOf(id)]
+          : groupBy === "page"
+            ? [id]
+            : null;
+    pages.forEach((id) => {
+      const p = siteRec.pages[id];
+      if (!p) {
+        return;
+      }
+      totals.pages++;
+      totals.trackable += p.trackable || 0;
+      const keys = pageKeys(id);
+      if (keys) {
+        keys.forEach((k) => {
+          const g = group(k);
+          g.pages++;
+          g.trackable += p.trackable || 0;
+        });
+      }
+    });
+    Object.keys(siteRec.activities).forEach((aid) => {
+      const a = siteRec.activities[aid];
+      if (!inScope.has(a.page)) {
+        return;
+      }
+      const add = (g, statements) => {
+        g.activities++;
+        g.statements += statements;
+        if (a.done) {
+          g.done++;
+        }
+        if (typeof a.success === "boolean") {
+          g.answered++;
+          if (a.success) {
+            g.correct++;
+          }
+        }
+      };
+      add(totals, a.count || 0);
+      if (groupBy === "verb") {
+        Object.keys(a.verbs || {}).forEach((v) => add(group(v), a.verbs[v]));
+      } else if (groupBy === "element") {
+        add(group(a.tag || "unknown"), a.count || 0);
+      } else {
+        pageKeys(a.page).forEach((k) => add(group(k), a.count || 0));
+      }
+    });
+    [totals, ...Object.values(groups)].forEach((g) => {
+      g.accuracy = g.answered
+        ? Math.round((g.correct / g.answered) * 1000) / 1000
+        : null;
+    });
+    return { scope, pageId: pageId || null, groupBy, pages, groups, totals };
+  }
+  /**
+   * Statements recorded for a site (async)
+   */
+  async statements(site) {
+    return this._statementAdapter ? this._statementAdapter.list(site) : [];
+  }
+  /**
+   * Forget everything recorded for a site on this device
+   */
+  async clearSite(site) {
+    const sites = this._profile().sites;
+    if (sites[site]) {
+      delete sites[site];
+      this._saveLongTerm();
+    }
+    if (this._statementAdapter) {
+      await this._statementAdapter.clear(site);
+    }
   }
   /**
    * detect base64 object

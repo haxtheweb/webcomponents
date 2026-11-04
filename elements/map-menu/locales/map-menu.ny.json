@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "Tsamba silinasindikizidwe"
+  "pageIsUnpublished": "Tsamba silinasindikizidwe",
+  "progressDone": "Zatha",
+  "progressInProgress": "Akuchitika",
+  "progressVisited": "Anayendera"
 }

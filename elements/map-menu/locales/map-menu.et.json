@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "Leht on avaldamata"
+  "pageIsUnpublished": "Leht on avaldamata",
+  "progressDone": "Tehtud",
+  "progressInProgress": "Pooleli",
+  "progressVisited": "Külastatud"
 }

@@ -10,6 +10,41 @@ class ShortAnswerQuestion extends QuestionElement {
   static get tag() {
     return "short-answer-question";
   }
+  /**
+   * xAPI statements this element sends (see scripts/generate-xapi-vocabulary.mjs)
+   */
+  static get xapiVocabulary() {
+    return {
+      tag: "short-answer-question",
+      event: "user-engagement",
+      verbs: ["answered"],
+      objectType: "http://adlnet.gov/expapi/activities/cmi.interaction",
+      interactionType: "fill-in",
+      result: [
+        "success",
+        "completion",
+        "response",
+        "score",
+        "extensions.attempts",
+        "extensions.max-attempts",
+      ],
+      countsTowardCompletion: true,
+      done: "answered correctly or out of attempts",
+    };
+  }
+  _canRestoreGuess() {
+    return true;
+  }
+  restoreLearnerResponse(response) {
+    if (typeof response !== "string" || !response) {
+      return false;
+    }
+    this.shortanswer = response;
+    return true;
+  }
+  forgetLearnerResponse() {
+    this.shortanswer = null;
+  }
   constructor() {
     super();
     this.t = {
@@ -62,9 +97,11 @@ class ShortAnswerQuestion extends QuestionElement {
       <simple-fields-field
         type="textarea"
         ?disabled="${this.disabled || this.showAnswer}"
-        class="tag-option ${
-          this.showAnswer ? (this.isCorrect() ? "correct" : "incorrect") : ""
-        }"
+        class="tag-option ${this.showAnswer
+          ? this.isCorrect()
+            ? "correct"
+            : "incorrect"
+          : ""}"
         property="oer:answer"
         name="0"
         @keydown="${(e) => {

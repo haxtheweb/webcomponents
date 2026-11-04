@@ -18,6 +18,13 @@
               "readonly": true
             },
             {
+              "kind": "field",
+              "name": "xapiVocabulary",
+              "static": true,
+              "description": "xAPI statements this element sends (see scripts/generate-xapi-vocabulary.mjs)",
+              "readonly": true
+            },
+            {
               "kind": "method",
               "name": "renderDirections",
               "inheritedFrom": {
@@ -274,6 +281,150 @@
             {
               "kind": "method",
               "name": "checkAnswerCallback",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "xapiInteractionType",
+              "description": "What this question writes into xAPI object definitions; subclasses get\nit from their static xapiVocabulary",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "xapiFingerprint",
+              "description": "Author content that identifies this question when it has no id; used\nfor its xAPI activity id",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "learnerResponse",
+              "description": "The learner's current answer as text (xAPI result.response)",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "learnerScore",
+              "parameters": [
+                {
+                  "name": "correct"
+                }
+              ],
+              "description": "Score of the current answer: { raw, max }",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "engagementDetail",
+              "parameters": [
+                {
+                  "name": "correct",
+                  "type": {
+                    "text": "boolean"
+                  }
+                },
+                {
+                  "name": "attempt",
+                  "description": "which attempt this is (1 based)",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "user-engagement detail for an answer check: the fields this event has\nalways carried plus `statement`, an xAPI statement (verb answered).",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_canRestoreGuess",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "restoreLearnerResponse",
+              "parameters": [
+                {
+                  "name": "response"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_requestLearnerProgress",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_applyLearnerRecord",
+              "parameters": [
+                {
+                  "name": "record"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_clearLearnerProgress",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_learnerDone",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_pillStatus",
+              "parameters": [
+                {
+                  "name": "status"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_resumeStack",
               "inheritedFrom": {
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"
@@ -1355,7 +1506,15 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "prototype engagement data after a check",
+              "description": "after a check. detail: { activityDisplay (\"answered\"), objectName, resultSuccess, statement (xAPI) }",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "description": "on window when the visitor view loads. detail: { activityId, tag, record } where a listener sets record.",
+              "name": "learner-progress-request",
               "inheritedFrom": {
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"
@@ -1388,7 +1547,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "Superclass for HAX question types (multiple-choice, true-false-question,\nshort-answer-question, fill-in-the-blanks, mark-the-words,\nmatching-question, sorting-question, tagging-question).\n\nStacking: a question can opt in with `collapsible`, and any run of\nquestions that are adjacent element siblings (same container, same\ngrid-plate column) stacks automatically without attributes. In a stack the\nfirst question starts open and the rest collapsed, unless the author set\n`collapsed`. Opening one closes the others in the run. A correct answer\ncollapses the question after a short pause and opens the next unanswered\nquestion in the run. Nothing about a visitor's progress is stored.",
+          "description": "Superclass for HAX question types (multiple-choice, true-false-question,\nshort-answer-question, fill-in-the-blanks, mark-the-words,\nmatching-question, sorting-question, tagging-question).\n\nStacking: a question can opt in with `collapsible`, and any run of\nquestions that are adjacent element siblings (same container, same\ngrid-plate column) stacks automatically without attributes. In a stack the\nfirst question starts open and the rest collapsed, unless the author set\n`collapsed`. Opening one closes the others in the run. A correct answer\ncollapses the question after a short pause and opens the next unanswered\nquestion in the run. The element itself stores nothing about a visitor.\n\nLearner progress: after every check the element announces the result as\nan xAPI statement (user-engagement detail.statement, see",
           "name": "QuestionElement",
           "members": [
             {
@@ -1513,6 +1672,98 @@
             {
               "kind": "method",
               "name": "checkAnswerCallback"
+            },
+            {
+              "kind": "method",
+              "name": "xapiInteractionType",
+              "description": "What this question writes into xAPI object definitions; subclasses get\nit from their static xapiVocabulary"
+            },
+            {
+              "kind": "method",
+              "name": "xapiFingerprint",
+              "description": "Author content that identifies this question when it has no id; used\nfor its xAPI activity id"
+            },
+            {
+              "kind": "method",
+              "name": "learnerResponse",
+              "description": "The learner's current answer as text (xAPI result.response)"
+            },
+            {
+              "kind": "method",
+              "name": "learnerScore",
+              "parameters": [
+                {
+                  "name": "correct"
+                }
+              ],
+              "description": "Score of the current answer: { raw, max }"
+            },
+            {
+              "kind": "method",
+              "name": "engagementDetail",
+              "parameters": [
+                {
+                  "name": "correct",
+                  "type": {
+                    "text": "boolean"
+                  }
+                },
+                {
+                  "name": "attempt",
+                  "description": "which attempt this is (1 based)",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "user-engagement detail for an answer check: the fields this event has\nalways carried plus `statement`, an xAPI statement (verb answered)."
+            },
+            {
+              "kind": "method",
+              "name": "_canRestoreGuess"
+            },
+            {
+              "kind": "method",
+              "name": "restoreLearnerResponse",
+              "parameters": [
+                {
+                  "name": "response"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_requestLearnerProgress"
+            },
+            {
+              "kind": "method",
+              "name": "_applyLearnerRecord",
+              "parameters": [
+                {
+                  "name": "record"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_clearLearnerProgress"
+            },
+            {
+              "kind": "method",
+              "name": "_learnerDone"
+            },
+            {
+              "kind": "method",
+              "name": "_pillStatus",
+              "parameters": [
+                {
+                  "name": "status"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_resumeStack"
             },
             {
               "kind": "method",
@@ -2084,7 +2335,11 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "prototype engagement data after a check"
+              "description": "after a check. detail: { activityDisplay (\"answered\"), objectName, resultSuccess, statement (xAPI) }"
+            },
+            {
+              "description": "on window when the visitor view loads. detail: { activityId, tag, record } where a listener sets record.",
+              "name": "learner-progress-request"
             }
           ],
           "attributes": [
@@ -2387,6 +2642,34 @@
             },
             {
               "kind": "field",
+              "name": "xapiVocabulary",
+              "static": true,
+              "description": "xAPI statements this element sends (see scripts/generate-xapi-vocabulary.mjs)",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_canRestoreGuess",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "restoreLearnerResponse",
+              "parameters": [
+                {
+                  "name": "response"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "haxProperties",
               "static": true,
               "description": "haxProperties integration via file reference",
@@ -2672,6 +2955,129 @@
             {
               "kind": "method",
               "name": "checkAnswerCallback",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "xapiInteractionType",
+              "description": "What this question writes into xAPI object definitions; subclasses get\nit from their static xapiVocabulary",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "xapiFingerprint",
+              "description": "Author content that identifies this question when it has no id; used\nfor its xAPI activity id",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "learnerResponse",
+              "description": "The learner's current answer as text (xAPI result.response)",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "learnerScore",
+              "parameters": [
+                {
+                  "name": "correct"
+                }
+              ],
+              "description": "Score of the current answer: { raw, max }",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "engagementDetail",
+              "parameters": [
+                {
+                  "name": "correct",
+                  "type": {
+                    "text": "boolean"
+                  }
+                },
+                {
+                  "name": "attempt",
+                  "description": "which attempt this is (1 based)",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "user-engagement detail for an answer check: the fields this event has\nalways carried plus `statement`, an xAPI statement (verb answered).",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_requestLearnerProgress",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_applyLearnerRecord",
+              "parameters": [
+                {
+                  "name": "record"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_clearLearnerProgress",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_learnerDone",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_pillStatus",
+              "parameters": [
+                {
+                  "name": "status"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_resumeStack",
               "inheritedFrom": {
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"
@@ -3732,7 +4138,15 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "prototype engagement data after a check",
+              "description": "after a check. detail: { activityDisplay (\"answered\"), objectName, resultSuccess, statement (xAPI) }",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "description": "on window when the visitor view loads. detail: { activityId, tag, record } where a listener sets record.",
+              "name": "learner-progress-request",
               "inheritedFrom": {
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"
@@ -3772,6 +4186,13 @@
               "kind": "field",
               "name": "tag",
               "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "xapiVocabulary",
+              "static": true,
+              "description": "xAPI statements this element sends (see scripts/generate-xapi-vocabulary.mjs)",
               "readonly": true
             },
             {
@@ -4016,6 +4437,150 @@
             {
               "kind": "method",
               "name": "checkAnswerCallback",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "xapiInteractionType",
+              "description": "What this question writes into xAPI object definitions; subclasses get\nit from their static xapiVocabulary",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "xapiFingerprint",
+              "description": "Author content that identifies this question when it has no id; used\nfor its xAPI activity id",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "learnerResponse",
+              "description": "The learner's current answer as text (xAPI result.response)",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "learnerScore",
+              "parameters": [
+                {
+                  "name": "correct"
+                }
+              ],
+              "description": "Score of the current answer: { raw, max }",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "engagementDetail",
+              "parameters": [
+                {
+                  "name": "correct",
+                  "type": {
+                    "text": "boolean"
+                  }
+                },
+                {
+                  "name": "attempt",
+                  "description": "which attempt this is (1 based)",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "user-engagement detail for an answer check: the fields this event has\nalways carried plus `statement`, an xAPI statement (verb answered).",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_canRestoreGuess",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "restoreLearnerResponse",
+              "parameters": [
+                {
+                  "name": "response"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_requestLearnerProgress",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_applyLearnerRecord",
+              "parameters": [
+                {
+                  "name": "record"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_clearLearnerProgress",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_learnerDone",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_pillStatus",
+              "parameters": [
+                {
+                  "name": "status"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_resumeStack",
               "inheritedFrom": {
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"
@@ -5112,7 +5677,15 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "prototype engagement data after a check",
+              "description": "after a check. detail: { activityDisplay (\"answered\"), objectName, resultSuccess, statement (xAPI) }",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "description": "on window when the visitor view loads. detail: { activityId, tag, record } where a listener sets record.",
+              "name": "learner-progress-request",
               "inheritedFrom": {
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"

@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "게시되지 않은 페이지입니다"
+  "pageIsUnpublished": "게시되지 않은 페이지입니다",
+  "progressDone": "완료",
+  "progressInProgress": "진행 중",
+  "progressVisited": "방문함"
 }

@@ -192,13 +192,13 @@
       "order": 0,
       "src": "audio-player.motion.json",
       "file": "lib/audio-player.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/audio-player.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

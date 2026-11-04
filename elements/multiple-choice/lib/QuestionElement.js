@@ -15,6 +15,12 @@ import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import "@haxtheweb/simple-toast/simple-toast.js";
 import "@haxtheweb/grid-plate/grid-plate.js";
+import {
+  activityId,
+  buildStatement,
+  responseText,
+  XAPI_EXTENSIONS,
+} from "@haxtheweb/user-action/lib/xapi.js";
 
 // automatic stacks: questions that sit right next to each other (adjacent
 // element siblings in the same container, or the same grid-plate column)
@@ -69,13 +75,26 @@ const watchQuestionStackParent = (parent) => {
  * first question starts open and the rest collapsed, unless the author set
  * `collapsed`. Opening one closes the others in the run. A correct answer
  * collapses the question after a short pause and opens the next unanswered
- * question in the run. Nothing about a visitor's progress is stored.
+ * question in the run. The element itself stores nothing about a visitor.
+ *
+ * Learner progress: after every check the element announces the result as
+ * an xAPI statement (user-engagement detail.statement, see
+ * @haxtheweb/user-action/lib/xapi.js). When the page loads it asks, with a
+ * window `learner-progress-request` event, whether a listener (the HAXcms
+ * learner progress helper) has a saved result for it; with one, the stack
+ * shows the saved status pill, keeps the attempts used and opens at the first
+ * question not done yet. multiple-choice, true-false-question and
+ * short-answer-question also put the learner's previous answer back. With no
+ * listener on the page nothing changes.
  *
  * @fires question-element-state - bubbling, composed; after every answer
  *   check. detail: { tag, question, quizName, status ("correct" or
  *   "incorrect"), correct, attempts, maxAttempts, guess }. Meant for a course
  *   level user data object to listen for; the element stores nothing.
- * @fires user-engagement - prototype engagement data after a check
+ * @fires user-engagement - after a check. detail: { activityDisplay
+ *   ("answered"), objectName, resultSuccess, statement (xAPI) }
+ * @fires learner-progress-request - on window when the visitor view loads.
+ *   detail: { activityId, tag, record } where a listener sets record.
  */
 export class QuestionElement extends SchemaBehaviors(
   I18NMixin(DDDSuper(LitElement)),
@@ -101,8 +120,26 @@ export class QuestionElement extends SchemaBehaviors(
     super.connectedCallback();
     this._stackParent = this.parentNode;
     watchQuestionStackParent(this._stackParent);
+    if (!this._progressListeners) {
+      this._progressListeners = new AbortController();
+      const opts = { signal: this._progressListeners.signal };
+      globalThis.addEventListener(
+        "learner-progress-ready",
+        () => this._requestLearnerProgress(),
+        opts,
+      );
+      globalThis.addEventListener(
+        "learner-progress-cleared",
+        () => this._clearLearnerProgress(),
+        opts,
+      );
+    }
   }
   disconnectedCallback() {
+    if (this._progressListeners) {
+      this._progressListeners.abort();
+      this._progressListeners = null;
+    }
     if (this._completionTimer) {
       clearTimeout(this._completionTimer);
       this._completionTimer = null;
@@ -496,7 +533,9 @@ export class QuestionElement extends SchemaBehaviors(
       .slice(run.indexOf(this) + 1)
       .find(
         (el) =>
-          !el._haxstate && !(el.showAnswer && el._shellStatus() === "correct"),
+          !el._haxstate &&
+          !(el.showAnswer && el._shellStatus() === "correct") &&
+          !(el._restored && el._restored.done),
       );
     if (next) {
       run.forEach((el) => {
@@ -577,22 +616,213 @@ export class QuestionElement extends SchemaBehaviors(
         },
       }),
     );
-    // start of data passing, this is a prototype atm
-    let eventData = {
-      activityDisplay: "answered",
-      objectName: this.quizName,
-      resultSuccess: correctness,
-    };
+    // learner data: the loose fields plus an xAPI statement for this check
     this.dispatchEvent(
       new CustomEvent("user-engagement", {
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: eventData,
+        detail: this.engagementDetail(correctness, this.attempts + 1),
       }),
     );
     // add to the attempts but AFTER everything runs so we can process if no more attempts exist
     this.attempts++;
+  }
+
+  /**
+   * What this question writes into xAPI object definitions; subclasses get
+   * it from their static xapiVocabulary
+   */
+  xapiInteractionType() {
+    const v = this.constructor.xapiVocabulary;
+    return (v && v.interactionType) || "other";
+  }
+  /**
+   * Author content that identifies this question when it has no id; used
+   * for its xAPI activity id
+   */
+  xapiFingerprint() {
+    return `${this.question || ""}\u0001${this.quizName || ""}`;
+  }
+  /**
+   * The learner's current answer as text (xAPI result.response)
+   */
+  learnerResponse() {
+    const guess = this.getGuess();
+    if (this.guessDataValue === "display" && Array.isArray(guess)) {
+      return responseText(guess.map((a) => a.label));
+    }
+    return responseText(guess);
+  }
+  /**
+   * Score of the current answer: { raw, max }
+   */
+  learnerScore(correct) {
+    return { raw: correct ? 1 : 0, max: 1 };
+  }
+  /**
+   * user-engagement detail for an answer check: the fields this event has
+   * always carried plus `statement`, an xAPI statement (verb answered).
+   * @param {boolean} correct
+   * @param {number} attempt which attempt this is (1 based)
+   */
+  engagementDetail(correct, attempt) {
+    const max = Number(this.maxAttempts) || 0;
+    const statement = buildStatement({
+      verb: "answered",
+      object: {
+        id: activityId(this),
+        name: this.question || this.quizName,
+        interactionType: this.xapiInteractionType(),
+      },
+      result: {
+        success: !!correct,
+        completion: !!correct || (max > 0 && attempt >= max),
+        response: this.learnerResponse(),
+        score: { min: 0, ...this.learnerScore(correct) },
+        extensions: {
+          [XAPI_EXTENSIONS.attempts]: attempt,
+          [XAPI_EXTENSIONS.maxAttempts]: max,
+        },
+      },
+      context: {
+        extensions: {
+          [XAPI_EXTENSIONS.element]: this.tagName.toLowerCase(),
+        },
+      },
+    });
+    return {
+      activityDisplay: "answered",
+      objectName: this.quizName,
+      resultSuccess: !!correct,
+      statement,
+    };
+  }
+
+  // types whose previous answer can be put back without side effects
+  _canRestoreGuess() {
+    return (
+      this.guessDataValue === "display" &&
+      ["multiple-choice", "true-false-question"].includes(
+        this.tagName.toLowerCase(),
+      )
+    );
+  }
+  // put the learner's saved answer back; false when this type can not
+  restoreLearnerResponse(response) {
+    if (!this._canRestoreGuess() || typeof response !== "string") {
+      return false;
+    }
+    const labels = response.split("[,]");
+    let matched = 0;
+    (this.displayedAnswers || []).forEach((a) => {
+      const on = labels.includes(a.label);
+      a.userGuess = on ? true : "";
+      if (on) {
+        matched++;
+      }
+    });
+    return matched > 0;
+  }
+  // ask a learner progress listener for what this visitor did before
+  _requestLearnerProgress() {
+    if (!this.isConnected || this._haxstate || this.edit) {
+      return;
+    }
+    const detail = {
+      activityId: activityId(this),
+      tag: this.tagName.toLowerCase(),
+      record: null,
+    };
+    globalThis.dispatchEvent(
+      new CustomEvent("learner-progress-request", { detail }),
+    );
+    this._progressChecked = true;
+    if (detail.record && typeof detail.record === "object") {
+      this._applyLearnerRecord(detail.record);
+    } else {
+      this._resumeStack();
+    }
+  }
+  _applyLearnerRecord(record) {
+    this._restored = record;
+    const attempts = Number(record.attempts) || 0;
+    if (attempts > this.attempts) {
+      this.attempts = attempts;
+      this._restoredAttempts = attempts;
+    }
+    if (
+      !this.showAnswer &&
+      record.response &&
+      (record.status === "correct" || record.status === "incorrect") &&
+      this.restoreLearnerResponse(record.response)
+    ) {
+      this._restoredGuess = true;
+      this.showAnswer = true;
+    }
+    this.requestUpdate();
+    this._resumeStack();
+  }
+  _clearLearnerProgress() {
+    this._restored = null;
+    this._dropRestored();
+    this.requestUpdate();
+  }
+  // take back an answer and attempt count put back from saved progress
+  _dropRestored() {
+    if (this._restoredGuess) {
+      this._restoredGuess = false;
+      this.showAnswer = false;
+      this.forgetLearnerResponse();
+    }
+    if (this._restoredAttempts && this.attempts === this._restoredAttempts) {
+      this.attempts = 0;
+    }
+    this._restoredAttempts = 0;
+  }
+  // undo restoreLearnerResponse
+  forgetLearnerResponse() {
+    (this.displayedAnswers || []).forEach((a) => {
+      a.userGuess = "";
+    });
+  }
+  // a question the learner already finished (now or on an earlier visit)
+  _learnerDone() {
+    if (this.showAnswer && this._shellStatus() === "correct") {
+      return true;
+    }
+    return Boolean(this._restored && this._restored.done);
+  }
+  // status for the collapsed row pill, falling back to the saved result
+  _pillStatus(status) {
+    if (status !== "ready") {
+      return status;
+    }
+    const r = this._restored;
+    if (r && (r.status === "correct" || r.status === "incorrect")) {
+      return r.status;
+    }
+    return status;
+  }
+  // returning visitor: once every question of the stack has asked for its
+  // saved result, open the first one not done and close the rest
+  _resumeStack() {
+    if (!this._inStack || this._haxstate || !this.isConnected) {
+      return;
+    }
+    const run = this._stackRun();
+    if (
+      !run.every((el) => el._progressChecked) ||
+      !run.some((el) => el._restored)
+    ) {
+      return;
+    }
+    const target = run.find((el) => !el._learnerDone());
+    run.forEach((el) => {
+      if (!el._haxstate) {
+        el.collapsed = el !== target;
+      }
+    });
   }
 
   /**
@@ -1626,33 +1856,31 @@ export class QuestionElement extends SchemaBehaviors(
     // (Lit change-in-update warning) while keeping post-createElement timing
     queueMicrotask(() => {
       this.loadLightDomData();
+      // answers settle over a couple of updates; ask for saved progress after
+      setTimeout(() => {
+        this.updateComplete.then(() => this._requestLearnerProgress());
+      }, 0);
     });
   }
 
   render() {
     return html`
       <meta property="oer:assessing" content="${this.relatedResource}" />
-      ${
-        this.gradingFormat
-          ? html`<meta
-              property="oer:gradingFormat"
-              content="${this.gradingFormat}"
-            />`
-          : nothing
-      }
-      ${
-        this.hasLearningObjective
-          ? html`<meta
-              property="oer:hasLearningObjective"
-              content="${this.hasLearningObjective}"
-            />`
-          : nothing
-      }
-      ${
-        this.forCourse
-          ? html`<meta property="oer:forCourse" content="${this.forCourse}" />`
-          : nothing
-      }
+      ${this.gradingFormat
+        ? html`<meta
+            property="oer:gradingFormat"
+            content="${this.gradingFormat}"
+          />`
+        : nothing}
+      ${this.hasLearningObjective
+        ? html`<meta
+            property="oer:hasLearningObjective"
+            content="${this.hasLearningObjective}"
+          />`
+        : nothing}
+      ${this.forCourse
+        ? html`<meta property="oer:forCourse" content="${this.forCourse}" />`
+        : nothing}
       ${cache(this.edit ? this.renderEditView() : this.renderShell())}
     `;
   }
@@ -1762,27 +1990,25 @@ export class QuestionElement extends SchemaBehaviors(
 
   // attempts counter plus the directions and related content toggles
   renderHeaderTools(hasRelated) {
-    return html`${
-        this.maxAttempts > 0
-          ? html`<span class="shell-attempts"
-              >${this._tParts(this.t.attemptsUsed, {
-                used: Math.min(
-                  this.attempts + (this.showAnswer ? 0 : 1),
-                  this.maxAttempts,
-                ),
-                max: this.maxAttempts,
-              })}</span
-            >`
-          : nothing
-      }
+    return html`${this.maxAttempts > 0
+        ? html`<span class="shell-attempts"
+            >${this._tParts(this.t.attemptsUsed, {
+              used: Math.min(
+                this.attempts + (this.showAnswer ? 0 : 1),
+                this.maxAttempts,
+              ),
+              max: this.maxAttempts,
+            })}</span
+          >`
+        : nothing}
       <button
         class="ddd-block-action"
         id="directions-toggle"
         aria-controls="directions"
         aria-expanded="${this._directionsOpen ? "true" : "false"}"
-        aria-label="${
-          this._directionsOpen ? this.t.hideDirections : this.t.showDirections
-        }"
+        aria-label="${this._directionsOpen
+          ? this.t.hideDirections
+          : this.t.showDirections}"
         title="${this.t.directions}"
         @click="${this._toggleDirections}"
       >
@@ -1791,28 +2017,24 @@ export class QuestionElement extends SchemaBehaviors(
           aria-hidden="true"
         ></simple-icon-lite>
       </button>
-      ${
-        hasRelated
-          ? html`<button
-              class="ddd-block-action"
-              id="related-toggle"
-              aria-controls="related"
-              aria-expanded="${this._relatedOpen ? "true" : "false"}"
-              aria-label="${
-                this._relatedOpen
-                  ? this.t.hideRelatedContent
-                  : this.t.showRelatedContent
-              }"
-              title="${this.t.relatedContent}"
-              @click="${this._toggleRelated}"
-            >
-              <simple-icon-lite
-                icon="av:library-books"
-                aria-hidden="true"
-              ></simple-icon-lite>
-            </button>`
-          : nothing
-      }`;
+      ${hasRelated
+        ? html`<button
+            class="ddd-block-action"
+            id="related-toggle"
+            aria-controls="related"
+            aria-expanded="${this._relatedOpen ? "true" : "false"}"
+            aria-label="${this._relatedOpen
+              ? this.t.hideRelatedContent
+              : this.t.showRelatedContent}"
+            title="${this.t.relatedContent}"
+            @click="${this._toggleRelated}"
+          >
+            <simple-icon-lite
+              icon="av:library-books"
+              aria-hidden="true"
+            ></simple-icon-lite>
+          </button>`
+        : nothing}`;
   }
 
   // icon and word for a checked result, so it never relies on colour alone
@@ -1865,7 +2087,9 @@ export class QuestionElement extends SchemaBehaviors(
               >${this.question}</span
             >
           </span>
-          ${expanded ? nothing : this.renderStackStatus(status)}
+          ${expanded
+            ? nothing
+            : this.renderStackStatus(this._pillStatus(status))}
           <simple-icon-lite
             class="shell-chevron"
             icon="${expanded ? "icons:expand-less" : "icons:expand-more"}"
@@ -1873,13 +2097,11 @@ export class QuestionElement extends SchemaBehaviors(
           ></simple-icon-lite>
         </button>
       </h3>
-      ${
-        expanded
-          ? html`<span class="ddd-block-actions"
-              >${this.renderHeaderTools(hasRelated)}</span
-            >`
-          : nothing
-      }
+      ${expanded
+        ? html`<span class="ddd-block-actions"
+            >${this.renderHeaderTools(hasRelated)}</span
+          >`
+        : nothing}
     </div>`;
   }
 
@@ -1894,19 +2116,17 @@ export class QuestionElement extends SchemaBehaviors(
       this.querySelector && this.querySelector('[slot="content"]');
     const stack = this._isStackable();
     const expanded = !stack || !this.collapsed;
-    const panel = html`${
-        hasRelated
-          ? html`<div
-              id="related"
-              class="shell-strip shell-related"
-              role="region"
-              aria-label="${this.t.relatedContent}"
-              ?hidden="${!this._relatedOpen}"
-            >
-              <slot name="content"></slot>
-            </div>`
-          : nothing
-      }
+    const panel = html`${hasRelated
+        ? html`<div
+            id="related"
+            class="shell-strip shell-related"
+            role="region"
+            aria-label="${this.t.relatedContent}"
+            ?hidden="${!this._relatedOpen}"
+          >
+            <slot name="content"></slot>
+          </div>`
+        : nothing}
       <div
         id="directions"
         class="shell-strip shell-directions"
@@ -1916,26 +2136,20 @@ export class QuestionElement extends SchemaBehaviors(
         >${this.renderDirections()}
       </div>
       <div class="ddd-block-body shell-body">
-        ${
-          stack
-            ? nothing
-            : html`<h3
-                id="question-heading"
-                property="oer:name"
-                ?hidden="${!this.question}"
-              >
-                ${this.question}
-              </h3>`
-        }
+        ${stack
+          ? nothing
+          : html`<h3
+              id="question-heading"
+              property="oer:name"
+              ?hidden="${!this.question}"
+            >
+              ${this.question}
+            </h3>`}
         ${this.renderInteraction()}
       </div>
-      ${
-        this.showAnswer
-          ? html`<div class="shell-feedback-panel">
-              ${this.renderFeedback()}
-            </div>`
-          : nothing
-      }
+      ${this.showAnswer
+        ? html`<div class="shell-feedback-panel">${this.renderFeedback()}</div>`
+        : nothing}
       <div id="legend" class="sr-only">${this.renderLegend()}</div>
       <div class="ddd-block-footer shell-action-bar">
         <div
@@ -1947,22 +2161,18 @@ export class QuestionElement extends SchemaBehaviors(
           aria-atomic="true"
           aria-label="${this.t.feedback}"
         >
-          ${
-            status !== "ready"
-              ? html`<span class="shell-status-chip" aria-hidden="true"
-                    ><simple-icon-lite
-                      icon="${result.icon}"
-                    ></simple-icon-lite></span
-                  ><span
-                    ><strong class="shell-status-word">${result.word}</strong>
-                    ${
-                      status === "correct"
-                        ? this.correctText
-                        : this.incorrectText
-                    }</span
-                  >`
-              : nothing
-          }
+          ${status !== "ready"
+            ? html`<span class="shell-status-chip" aria-hidden="true"
+                  ><simple-icon-lite
+                    icon="${result.icon}"
+                  ></simple-icon-lite></span
+                ><span
+                  ><strong class="shell-status-word">${result.word}</strong>
+                  ${status === "correct"
+                    ? this.correctText
+                    : this.incorrectText}</span
+                >`
+            : nothing}
         </div>
         ${!this.hideButtons ? this.renderButtons() : nothing}
       </div>`;
@@ -1974,31 +2184,29 @@ export class QuestionElement extends SchemaBehaviors(
           aria-labelledby="eyebrow question-heading"
           aria-describedby="directions"
           data-status="${status}"
-          data-stack="${
-            stack ? (expanded ? "expanded" : "collapsed") : nothing
-          }"
+          data-stack="${stack
+            ? expanded
+              ? "expanded"
+              : "collapsed"
+            : nothing}"
         >
-          ${
-            stack
-              ? this.renderStackHeader(status, expanded, hasRelated)
-              : renderDDDBlockHeader({
-                  id: "eyebrow",
-                  icon: "hax:head-question",
-                  label: this.renderEyebrow(),
-                  actions: this.renderHeaderTools(hasRelated),
-                })
-          }
-          ${
-            stack
-              ? html`<div
-                  id="shell-panel"
-                  class="shell-panel"
-                  ?hidden="${!expanded}"
-                >
-                  ${panel}
-                </div>`
-              : panel
-          }
+          ${stack
+            ? this.renderStackHeader(status, expanded, hasRelated)
+            : renderDDDBlockHeader({
+                id: "eyebrow",
+                icon: "hax:head-question",
+                label: this.renderEyebrow(),
+                actions: this.renderHeaderTools(hasRelated),
+              })}
+          ${stack
+            ? html`<div
+                id="shell-panel"
+                class="shell-panel"
+                ?hidden="${!expanded}"
+              >
+                ${panel}
+              </div>`
+            : panel}
         </div>
       </confetti-container>
     `;
@@ -2038,13 +2246,11 @@ export class QuestionElement extends SchemaBehaviors(
             ></simple-icon-lite
             >${this.t.feedback}
             <span class="sr-only" aria-live="polite" aria-atomic="true"
-              >${
-                this.showAnswer
-                  ? this.isCorrect()
-                    ? this.correctText
-                    : this.incorrectText
-                  : ""
-              }</span
+              >${this.showAnswer
+                ? this.isCorrect()
+                  ? this.correctText
+                  : this.incorrectText
+                : ""}</span
             >
           </summary>
           <div class="container">
@@ -2061,28 +2267,25 @@ export class QuestionElement extends SchemaBehaviors(
             ${this.renderFeedback()}
           </div>
         </details>
-        ${
-          this.querySelector &&
-          this.querySelector('[slot="content"]') &&
-          !this.edit
-            ? html` <details ?open="${!this.showAnswer}" id="related">
-                <summary>
-                  <simple-icon-lite
-                    class="details-icon"
-                    icon="lrn:content"
-                  ></simple-icon-lite
-                  >${this.t.relatedContent}
-                </summary>
-                <div class="container">
-                  <slot name="content"></slot>
-                </div>
-              </details>`
-            : nothing
-        }
+        ${this.querySelector &&
+        this.querySelector('[slot="content"]') &&
+        !this.edit
+          ? html` <details ?open="${!this.showAnswer}" id="related">
+              <summary>
+                <simple-icon-lite
+                  class="details-icon"
+                  icon="lrn:content"
+                ></simple-icon-lite
+                >${this.t.relatedContent}
+              </summary>
+              <div class="container">
+                <slot name="content"></slot>
+              </div>
+            </details>`
+          : nothing}
         <details
-          ?open="${
-            this.querySelector && !this.querySelector('[slot="content"]')
-          }"
+          ?open="${this.querySelector &&
+          !this.querySelector('[slot="content"]')}"
           id="directions"
         >
           <summary>
@@ -2112,35 +2315,30 @@ export class QuestionElement extends SchemaBehaviors(
               name="${index}"
               @mousedown="${this.clickSingle}"
               @keydown="${this.clickSingle}"
-              class="tag-option ${
-                answer && this.showAnswer && answer.userGuess
-                  ? answer.correct
-                    ? "correct"
-                    : "incorrect"
-                  : ""
-              }"
-              aria-invalid="${
-                this.showAnswer && answer && answer.userGuess && !answer.correct
-                  ? "true"
-                  : "false"
-              }"
+              class="tag-option ${answer && this.showAnswer && answer.userGuess
+                ? answer.correct
+                  ? "correct"
+                  : "incorrect"
+                : ""}"
+              aria-invalid="${this.showAnswer &&
+              answer &&
+              answer.userGuess &&
+              !answer.correct
+                ? "true"
+                : "false"}"
               .value="${answer ? answer.userGuess : ""}"
               @value-changed="${this.checkedEvent}"
               label="${answer && answer.label ? answer.label : ""}"
-              >${
-                answer.image
-                  ? html`<img
-                      src="${answer.image}"
-                      alt="${answer.alt}"
-                      slot="label-prefix"
-                      part="image"
-                    />`
-                  : nothing
-              }${
-                answer && this.showAnswer && answer.userGuess
-                  ? this.renderOptionStatus(answer.correct)
-                  : nothing
-              }</simple-fields-field
+              >${answer.image
+                ? html`<img
+                    src="${answer.image}"
+                    alt="${answer.alt}"
+                    slot="label-prefix"
+                    part="image"
+                  />`
+                : nothing}${answer && this.showAnswer && answer.userGuess
+                ? this.renderOptionStatus(answer.correct)
+                : nothing}</simple-fields-field
             >
           `,
         )}
@@ -2169,12 +2367,10 @@ export class QuestionElement extends SchemaBehaviors(
         <simple-toolbar-button
           id="check"
           ?hidden="${!this.edit && this.showAnswer}"
-          ?disabled="${
-            this.disabled ||
-            !this.inactiveCase() ||
-            this.showAnswer ||
-            this.attemptsExhausted()
-          }"
+          ?disabled="${this.disabled ||
+          !this.inactiveCase() ||
+          this.showAnswer ||
+          this.attemptsExhausted()}"
           @click="${this.checkAnswer}"
           label="${this.t.checkAnswer}"
         >
@@ -2182,11 +2378,9 @@ export class QuestionElement extends SchemaBehaviors(
         <simple-toolbar-button
           id="reset"
           ?hidden="${!this.edit && !this.showAnswer}"
-          ?disabled="${
-            this.disabled ||
-            !this.inactiveCase() ||
-            (this.inactiveCase() && !this.showAnswer)
-          }"
+          ?disabled="${this.disabled ||
+          !this.inactiveCase() ||
+          (this.inactiveCase() && !this.showAnswer)}"
           @click="${this.resetAnswer}"
           label="${this.t.tryAgain}"
         >
@@ -2221,44 +2415,34 @@ export class QuestionElement extends SchemaBehaviors(
     const has = (name) =>
       this.querySelector && this.querySelector(`[slot="${name}"]`);
     if (correct) {
-      return html`${
-        has("feedbackCorrect")
-          ? html`<slot
-              name="feedbackCorrect"
-              property="oer:correctFeedback"
-            ></slot>`
-          : nothing
-      }${
-        has("evidence")
-          ? html`<h4>${this.t.evidence}</h4>
-              <div><slot name="evidence"></slot></div>`
-          : nothing
-      }`;
-    }
-    return html`${
-      has("feedbackIncorrect")
+      return html`${has("feedbackCorrect")
         ? html`<slot
-            name="feedbackIncorrect"
-            property="oer:incorrectFeedback"
+            name="feedbackCorrect"
+            property="oer:correctFeedback"
           ></slot>`
-        : nothing
-    }${
-      has("hint")
-        ? html`<h4>${this.t.needAHint}</h4>
-            <div><slot name="hint"></slot></div>`
-        : nothing
-    }`;
+        : nothing}${has("evidence")
+        ? html`<h4>${this.t.evidence}</h4>
+            <div><slot name="evidence"></slot></div>`
+        : nothing}`;
+    }
+    return html`${has("feedbackIncorrect")
+      ? html`<slot
+          name="feedbackIncorrect"
+          property="oer:incorrectFeedback"
+        ></slot>`
+      : nothing}${has("hint")
+      ? html`<h4>${this.t.needAHint}</h4>
+          <div><slot name="hint"></slot></div>`
+      : nothing}`;
   }
 
   // this manages the output of the feedback area
   renderFeedback() {
-    return html`${
-      !this.edit
-        ? this.showAnswer
-          ? this.renderFeedbackSlots(this.isCorrect())
-          : nothing
-        : this.renderEditModeFeedbackAreas()
-    }`;
+    return html`${!this.edit
+      ? this.showAnswer
+        ? this.renderFeedbackSlots(this.isCorrect())
+        : nothing
+      : this.renderEditModeFeedbackAreas()}`;
   }
 
   clickSingle(e) {
@@ -2434,6 +2618,10 @@ export class QuestionElement extends SchemaBehaviors(
 
   haxeditModeChanged(value) {
     this._haxstate = value;
+    // a restored visitor answer or attempt count never reaches authoring
+    if (value) {
+      this._dropRestored();
+    }
     if (this.collapsible || this._inStack) {
       // editing starts from the collapsed state the author set, never one a
       // visitor left behind, and shows the full authoring view

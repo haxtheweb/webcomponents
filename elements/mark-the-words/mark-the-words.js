@@ -12,6 +12,35 @@ export class MarkTheWords extends QuestionElement {
   static get tag() {
     return "mark-the-words";
   }
+  /**
+   * xAPI statements this element sends (see scripts/generate-xapi-vocabulary.mjs)
+   */
+  static get xapiVocabulary() {
+    return {
+      tag: "mark-the-words",
+      event: "user-engagement",
+      verbs: ["answered"],
+      objectType: "http://adlnet.gov/expapi/activities/cmi.interaction",
+      interactionType: "choice",
+      result: [
+        "success",
+        "completion",
+        "response",
+        "score",
+        "extensions.attempts",
+        "extensions.max-attempts",
+      ],
+      countsTowardCompletion: true,
+      done: "answered correctly or out of attempts",
+    };
+  }
+  // the words the learner selected
+  learnerResponse() {
+    return (this.wordList || [])
+      .filter((w) => w.selected)
+      .map((w) => w.text)
+      .join("[,]");
+  }
 
   constructor() {
     super();
@@ -271,13 +300,12 @@ export class MarkTheWords extends QuestionElement {
             <button
               ?disabled="${this.showAnswer}"
               aria-pressed="${word.selected ? "true" : "false"}"
-              class="tag-option ${word.selected ? "selected" : ""} ${
-                this.showAnswer && word.selected
-                  ? word.correct
-                    ? "correct"
-                    : "incorrect"
-                  : ""
-              }"
+              class="tag-option ${word.selected ? "selected" : ""} ${this
+                .showAnswer && word.selected
+                ? word.correct
+                  ? "correct"
+                  : "incorrect"
+                : ""}"
               @click="${this.selectWord}"
             >
               ${word.text}
@@ -300,128 +328,109 @@ export class MarkTheWords extends QuestionElement {
 
   // this manages the output of the feedback area
   renderFeedback() {
-    return html` ${
-      !this.edit
-        ? html`
-            ${
-              this.showAnswer
-                ? html` <p class="feedback">
-                      ${this._tParts(this.t.numCorrectOutOfGuessed, {
-                        correct: this.numberCorrect,
-                        total: this.displayedAnswers.filter(
-                          (answer) => answer.correct,
-                        ).length,
-                        guessed: this.numberGuessed,
-                      })}
-                    </p>
-                    ${
-                      this.wordList.filter((word) => word.selected).length > 0
-                        ? html`
-                            <h4>${this.t.wordsSelectedFeedback}</h4>
-                            <dl>
-                              ${this.wordList
-                                .filter((word) => word.selected)
-                                .map(
-                                  (answer) => html`
-                                    <dt
-                                      class="${
-                                        answer.correct ? "correct" : "incorrect"
-                                      }"
-                                    >
-                                      ${answer.text}
-                                    </dt>
-                                    <dd>${answer.selectedFeedback}</dd>
-                                  `,
-                                )}
-                            </dl>
-                          `
-                        : nothing
-                    }
-                    ${
-                      this.wordList.filter(
-                        (word) => !word.selected && word.unselectedFeedback,
-                      ).length > 0
-                        ? html`
-                            <h4>${this.t.wordsNotSelectedFeedback}</h4>
-                            <dl>
-                              ${this.wordList
-                                .filter(
-                                  (word) =>
-                                    !word.selected && word.unselectedFeedback,
-                                )
-                                .map(
-                                  (answer) => html`
-                                    <dd>${answer.unselectedFeedback}</dd>
-                                  `,
-                                )}
-                            </dl>
-                          `
-                        : nothing
-                    }
-                    ${
-                      this.querySelector &&
-                      this.querySelector('[slot="feedbackIncorrect"]')
-                        ? html`<slot
-                            name="feedbackIncorrect"
-                            property="oer:incorrectFeedback"
-                          ></slot>`
-                        : ``
-                    }`
-                : ``
-            }
-            ${
-              this.showAnswer &&
-              this.numberCorrect ===
-                this.displayedAnswers.filter((answer) => answer.correct).length
-                ? html` <p class="feedback">${this.correctText}</p>
-                    ${
-                      this.querySelector &&
-                      this.querySelector('[slot="feedbackCorrect"]')
-                        ? html`<slot
-                            name="feedbackCorrect"
-                            property="oer:correctFeedback"
-                          ></slot>`
-                        : ``
-                    }`
-                : ``
-            }
-            ${
-              this.querySelector &&
-              this.querySelector('[slot="hint"]') &&
-              this.showAnswer &&
-              this.numberCorrect !==
-                this.displayedAnswers.filter((answer) => answer.correct).length
-                ? html`
-                    <h4>${this.t.needAHint}</h4>
-                    <div>
-                      <slot name="hint"></slot>
-                    </div>
-                  `
-                : ``
-            }
-            ${
-              this.querySelector &&
-              this.querySelector('[slot="evidence"]') &&
-              this.showAnswer &&
-              this.numberCorrect ===
-                this.displayedAnswers.filter((answer) => answer.correct).length
-                ? html`
-                    <h4>${this.t.evidence}</h4>
-                    <div>
-                      <slot name="evidence"></slot>
-                    </div>
-                  `
-                : ``
-            }
-            <simple-toolbar-button
-              ?disabled="${this.disabled || !this.showAnswer}"
-              @click="${this.resetAnswer}"
-              label="${this.t.tryAgain}"
-            >
-            </simple-toolbar-button>
-          `
-        : this.renderEditModeFeedbackAreas()
-    }`;
+    return html` ${!this.edit
+      ? html`
+          ${this.showAnswer
+            ? html` <p class="feedback">
+                  ${this._tParts(this.t.numCorrectOutOfGuessed, {
+                    correct: this.numberCorrect,
+                    total: this.displayedAnswers.filter(
+                      (answer) => answer.correct,
+                    ).length,
+                    guessed: this.numberGuessed,
+                  })}
+                </p>
+                ${this.wordList.filter((word) => word.selected).length > 0
+                  ? html`
+                      <h4>${this.t.wordsSelectedFeedback}</h4>
+                      <dl>
+                        ${this.wordList
+                          .filter((word) => word.selected)
+                          .map(
+                            (answer) => html`
+                              <dt
+                                class="${answer.correct
+                                  ? "correct"
+                                  : "incorrect"}"
+                              >
+                                ${answer.text}
+                              </dt>
+                              <dd>${answer.selectedFeedback}</dd>
+                            `,
+                          )}
+                      </dl>
+                    `
+                  : nothing}
+                ${this.wordList.filter(
+                  (word) => !word.selected && word.unselectedFeedback,
+                ).length > 0
+                  ? html`
+                      <h4>${this.t.wordsNotSelectedFeedback}</h4>
+                      <dl>
+                        ${this.wordList
+                          .filter(
+                            (word) => !word.selected && word.unselectedFeedback,
+                          )
+                          .map(
+                            (answer) => html`
+                              <dd>${answer.unselectedFeedback}</dd>
+                            `,
+                          )}
+                      </dl>
+                    `
+                  : nothing}
+                ${this.querySelector &&
+                this.querySelector('[slot="feedbackIncorrect"]')
+                  ? html`<slot
+                      name="feedbackIncorrect"
+                      property="oer:incorrectFeedback"
+                    ></slot>`
+                  : ``}`
+            : ``}
+          ${this.showAnswer &&
+          this.numberCorrect ===
+            this.displayedAnswers.filter((answer) => answer.correct).length
+            ? html` <p class="feedback">${this.correctText}</p>
+                ${this.querySelector &&
+                this.querySelector('[slot="feedbackCorrect"]')
+                  ? html`<slot
+                      name="feedbackCorrect"
+                      property="oer:correctFeedback"
+                    ></slot>`
+                  : ``}`
+            : ``}
+          ${this.querySelector &&
+          this.querySelector('[slot="hint"]') &&
+          this.showAnswer &&
+          this.numberCorrect !==
+            this.displayedAnswers.filter((answer) => answer.correct).length
+            ? html`
+                <h4>${this.t.needAHint}</h4>
+                <div>
+                  <slot name="hint"></slot>
+                </div>
+              `
+            : ``}
+          ${this.querySelector &&
+          this.querySelector('[slot="evidence"]') &&
+          this.showAnswer &&
+          this.numberCorrect ===
+            this.displayedAnswers.filter((answer) => answer.correct).length
+            ? html`
+                <h4>${this.t.evidence}</h4>
+                <div>
+                  <slot name="evidence"></slot>
+                </div>
+              `
+            : ``}
+          <simple-toolbar-button
+            ?disabled="${this.disabled || !this.showAnswer}"
+            @click="${this.resetAnswer}"
+            label="${this.t.tryAgain}"
+          >
+          </simple-toolbar-button>
+        `
+      : this.renderEditModeFeedbackAreas()}`;
   }
 
   // HAX specific callback

@@ -25,6 +25,20 @@ class AudioPlayer extends VideoPlayer {
   static get tag() {
     return "audio-player";
   }
+  /**
+   * xAPI statements this element sends (see scripts/generate-xapi-vocabulary.mjs)
+   */
+  static get xapiVocabulary() {
+    return {
+      tag: "audio-player",
+      event: "user-engagement",
+      verbs: ["completed"],
+      objectType: "http://adlnet.gov/expapi/activities/media",
+      result: ["completion"],
+      countsTowardCompletion: true,
+      done: "played to the end",
+    };
+  }
   // haxProperty definition
   static get haxProperties() {
     return {

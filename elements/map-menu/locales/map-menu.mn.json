@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "Хуудас нийтлэгдээгүй"
+  "pageIsUnpublished": "Хуудас нийтлэгдээгүй",
+  "progressDone": "Дууссан",
+  "progressInProgress": "Явагдаж байна",
+  "progressVisited": "Зочилсон"
 }

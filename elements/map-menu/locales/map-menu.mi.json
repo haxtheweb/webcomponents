@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "Kāore anō te whārangi kia whakaputaina"
+  "pageIsUnpublished": "Kāore anō te whārangi kia whakaputaina",
+  "progressDone": "Kua oti",
+  "progressInProgress": "E haere ana",
+  "progressVisited": "Kua toro atu"
 }

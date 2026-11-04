@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "Halaman belum diterbitkan"
+  "pageIsUnpublished": "Halaman belum diterbitkan",
+  "progressDone": "Selesai",
+  "progressInProgress": "Sedang berlangsung",
+  "progressVisited": "Dikunjungi"
 }

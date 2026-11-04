@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "Az oldal nincs közzétéve"
+  "pageIsUnpublished": "Az oldal nincs közzétéve",
+  "progressDone": "Kész",
+  "progressInProgress": "Folyamatban",
+  "progressVisited": "Meglátogatva"
 }

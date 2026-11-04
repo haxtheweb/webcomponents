@@ -99,6 +99,8 @@
   "slots": [],
   "events": [
     "bullet-check-list-changed",
+    "learner-progress-import",
+    "learner-progress-request",
     "user-engagement"
   ],
   "hax": {
@@ -217,7 +219,7 @@
       }
     ]
   },
-  "surfaceHash": "4aa5d87f11fb",
+  "surfaceHash": "2e1b807bd078",
   "walkthroughs": [
     {
       "id": "",

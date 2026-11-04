@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "Siden er ikke publisert"
+  "pageIsUnpublished": "Siden er ikke publisert",
+  "progressDone": "Fullført",
+  "progressInProgress": "Pågår",
+  "progressVisited": "Besøkt"
 }

@@ -4,6 +4,7 @@
  */
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
+import { LearnerProgress } from "./haxcms-learner-progress.js";
 import {
   varExists,
   varGet,
@@ -182,6 +183,8 @@ const HAXCMSTheme = function (SuperClass) {
      */
     connectedCallback() {
       super.connectedCallback();
+      // learner progress (statements into the learner profile on this device)
+      LearnerProgress.start();
       // re-establish the wiring instance's watchdog autorun in case this
       // is a reconnect after a disconnect disposed it; fresh themes already
       // established it from the wiring constructor and the guard prevents

@@ -162,8 +162,8 @@
           "desc": "Auto scroll an active element i…"
         },
         {
-          "name": "active-indicator",
-          "desc": "Show active indicator animation"
+          "name": "progress",
+          "desc": "Learner progress marks by item…"
         }
       ],
       "active": [
@@ -212,7 +212,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "active-indicator=\"false\""
+      "s": "progress=\"null\""
     },
     {
       "type": "text",
@@ -332,8 +332,8 @@
       "py": 508,
       "ex": 796,
       "ey": 560,
-      "label": "active-indicator",
-      "sub": "on or off",
+      "label": "progress",
+      "sub": "\"null\"",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -355,8 +355,8 @@
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set auto scroll",
-      "text": "Auto scroll an active element if not in view. Show active indicator animation."
+      "title": "Set auto scroll and progress",
+      "text": "Auto scroll an active element if not in view."
     },
     {
       "t": 14.8,
@@ -370,7 +370,7 @@
     "line": "Hierarchical navigation menu built from a site outline",
     "code": ""
   },
-  "surfaceHash": "85de8622c7f5",
+  "surfaceHash": "8ed59da0e91e",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

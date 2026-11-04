@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "ಪುಟ ಪ್ರಕಟವಾಗಿಲ್ಲ"
+  "pageIsUnpublished": "ಪುಟ ಪ್ರಕಟವಾಗಿಲ್ಲ",
+  "progressDone": "ಪೂರ್ಣಗೊಂಡಿದೆ",
+  "progressInProgress": "ಪ್ರಗತಿಯಲ್ಲಿದೆ",
+  "progressVisited": "ಭೇಟಿ ನೀಡಲಾಗಿದೆ"
 }

@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "Pagina este nepublicată"
+  "pageIsUnpublished": "Pagina este nepublicată",
+  "progressDone": "Finalizat",
+  "progressInProgress": "În curs",
+  "progressVisited": "Vizitat"
 }

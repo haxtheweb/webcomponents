@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "გვერდი გამოუქვეყნებელია"
+  "pageIsUnpublished": "გვერდი გამოუქვეყნებელია",
+  "progressDone": "დასრულებულია",
+  "progressInProgress": "მიმდინარეობს",
+  "progressVisited": "ნანახია"
 }

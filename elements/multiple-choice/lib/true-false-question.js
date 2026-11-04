@@ -9,6 +9,28 @@ class TrueFalseQuestion extends QuestionElement {
   static get tag() {
     return "true-false-question";
   }
+  /**
+   * xAPI statements this element sends (see scripts/generate-xapi-vocabulary.mjs)
+   */
+  static get xapiVocabulary() {
+    return {
+      tag: "true-false-question",
+      event: "user-engagement",
+      verbs: ["answered"],
+      objectType: "http://adlnet.gov/expapi/activities/cmi.interaction",
+      interactionType: "true-false",
+      result: [
+        "success",
+        "completion",
+        "response",
+        "score",
+        "extensions.attempts",
+        "extensions.max-attempts",
+      ],
+      countsTowardCompletion: true,
+      done: "answered correctly or out of attempts",
+    };
+  }
   constructor() {
     super();
     this.t = {

@@ -33,7 +33,8 @@
     "@haxtheweb/intersection-element": "^26.0.0",
     "@haxtheweb/multiple-choice": "^26.0.0",
     "@haxtheweb/rpg-character": "^26.0.0",
-    "@haxtheweb/schema-behaviors": "^26.0.0"
+    "@haxtheweb/schema-behaviors": "^26.0.0",
+    "@haxtheweb/user-action": "^26.0.0"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.11.0",

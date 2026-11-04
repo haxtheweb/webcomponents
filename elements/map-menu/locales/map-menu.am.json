@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "ገጹ አልታተመም"
+  "pageIsUnpublished": "ገጹ አልታተመም",
+  "progressDone": "ተጠናቋል",
+  "progressInProgress": "በሂደት ላይ",
+  "progressVisited": "ተጎብኝቷል"
 }

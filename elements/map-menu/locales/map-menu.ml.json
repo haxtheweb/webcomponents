@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "പേജ് പ്രസിദ്ധീകരിച്ചിട്ടില്ല"
+  "pageIsUnpublished": "പേജ് പ്രസിദ്ധീകരിച്ചിട്ടില്ല",
+  "progressDone": "പൂർത്തിയായി",
+  "progressInProgress": "പുരോഗമിക്കുന്നു",
+  "progressVisited": "സന്ദർശിച്ചു"
 }

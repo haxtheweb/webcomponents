@@ -10,6 +10,28 @@ class MultipleChoice extends QuestionElement {
   static get tag() {
     return "multiple-choice";
   }
+  /**
+   * xAPI statements this element sends (see scripts/generate-xapi-vocabulary.mjs)
+   */
+  static get xapiVocabulary() {
+    return {
+      tag: "multiple-choice",
+      event: "user-engagement",
+      verbs: ["answered"],
+      objectType: "http://adlnet.gov/expapi/activities/cmi.interaction",
+      interactionType: "choice",
+      result: [
+        "success",
+        "completion",
+        "response",
+        "score",
+        "extensions.attempts",
+        "extensions.max-attempts",
+      ],
+      countsTowardCompletion: true,
+      done: "answered correctly or out of attempts",
+    };
+  }
   constructor() {
     super();
     this.t = {
@@ -32,11 +54,9 @@ class MultipleChoice extends QuestionElement {
     return html`<p>
       ${this._tParts(this.t.multipleChoiceDirections, {
         selection: html`<strong
-          >${
-            !this.singleOption
-              ? this.t.selectAllThatApply
-              : this.t.selectTheAnswer
-          }</strong
+          >${!this.singleOption
+            ? this.t.selectAllThatApply
+            : this.t.selectTheAnswer}</strong
         >`,
         checkAnswer: html`<strong>${this.t.checkAnswer}</strong>`,
       })}

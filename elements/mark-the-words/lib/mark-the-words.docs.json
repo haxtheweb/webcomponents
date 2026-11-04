@@ -227,13 +227,13 @@
       "order": 0,
       "src": "mark-the-words.motion.json",
       "file": "lib/mark-the-words.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/mark-the-words.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

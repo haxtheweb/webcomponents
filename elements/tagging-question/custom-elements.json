@@ -18,6 +18,13 @@
               "readonly": true
             },
             {
+              "kind": "field",
+              "name": "xapiVocabulary",
+              "static": true,
+              "description": "xAPI statements this element sends (see scripts/generate-xapi-vocabulary.mjs)",
+              "readonly": true
+            },
+            {
               "kind": "method",
               "name": "renderDirections"
             },

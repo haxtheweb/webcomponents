@@ -22,6 +22,20 @@ class UserAction extends HTMLElement {
     return "user-action";
   }
   /**
+   * xAPI statements this element sends (see scripts/generate-xapi-vocabulary.mjs)
+   */
+  static get xapiVocabulary() {
+    return {
+      tag: "user-action",
+      event: "user-engagement",
+      verbs: ["experienced", "interacted"],
+      objectType: "http://adlnet.gov/expapi/activities/interaction",
+      result: [],
+      countsTowardCompletion: false,
+      done: "never; records that something was seen or used",
+    };
+  }
+  /**
    * life cycle
    */
   constructor() {

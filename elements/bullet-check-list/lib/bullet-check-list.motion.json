@@ -413,7 +413,7 @@
     "line": "A list of checkboxes. Readers tick items off and their prog…",
     "code": "<bullet-check-list></bullet-check-list>"
   },
-  "surfaceHash": "4aa5d87f11fb",
+  "surfaceHash": "2e1b807bd078",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

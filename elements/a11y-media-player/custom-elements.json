@@ -19,6 +19,13 @@
               "readonly": true
             },
             {
+              "kind": "field",
+              "name": "xapiVocabulary",
+              "static": true,
+              "description": "xAPI statements this element sends (see scripts/generate-xapi-vocabulary.mjs)",
+              "readonly": true
+            },
+            {
               "kind": "method",
               "name": "_getTranslation",
               "parameters": [
@@ -877,6 +884,11 @@
               "kind": "method",
               "name": "_handleMediaEnded",
               "description": "handles media ending: stop and reset to the start so the UI doesn't hang\nnear the end with __playing stuck true. Native HTML5 fires `ended`; the\nYouTube bridge dispatches a matching `ended` for YT state 0. When looping\nis enabled, restart playback instead (HTML5 loops natively and never\nreaches this branch; for YouTube this provides single-video looping)."
+            },
+            {
+              "kind": "method",
+              "name": "_announceEnded",
+              "description": "Learner data: the media was played to the end. Fires user-engagement\n(verb completed, with an xAPI statement) once per play-through; the\nnative and YouTube ended events can both arrive for one ending. When the\nplayer sits inside video-player or audio-player, that element is the\nactivity."
             },
             {
               "kind": "method",
@@ -1864,6 +1876,12 @@
                 "text": "CustomEvent"
               },
               "description": "Fires when transcript toggles"
+            },
+            {
+              "name": "user-engagement",
+              "type": {
+                "text": "CustomEvent"
+              }
             }
           ],
           "attributes": [

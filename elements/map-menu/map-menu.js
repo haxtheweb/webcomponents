@@ -484,6 +484,7 @@ class MapMenu extends SchemaBehaviors(LitElement) {
     this.items = [];
     this.autoScroll = false;
     this.activeIndicator = false;
+    this.progress = null;
     // Bind listeners immediately so we don't miss initial active-item updates
     // when selected state is set quickly during first paint.
     this.addEventListener("link-clicked", this.__linkClickedHandler.bind(this));
@@ -511,6 +512,7 @@ class MapMenu extends SchemaBehaviors(LitElement) {
             max-depth="${this.maxDepth}"
             .items="${this.items}"
             .selected="${this.selected}"
+            .progress="${this.progress}"
           ></map-menu-builder>
         </map-menu-container>
       </div>
@@ -575,6 +577,13 @@ class MapMenu extends SchemaBehaviors(LitElement) {
       autoScroll: {
         type: Boolean,
         attribute: "auto-scroll",
+      },
+      /**
+       * Learner progress marks by item id: { <id>: "done" | "in-progress" |
+       * "visited" | "not-started" }. Empty (the default) shows no marks.
+       */
+      progress: {
+        type: Object,
       },
       /**
        * Show active indicator animation

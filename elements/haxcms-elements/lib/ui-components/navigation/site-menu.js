@@ -2,17 +2,25 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { LitElement, html, css, nothing } from "lit";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import "@haxtheweb/map-menu/map-menu.js";
-import { localStorageGet } from "@haxtheweb/utils/utils.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { HAXCMSThemeParts } from "../../core/utils/HAXCMSThemeParts.js";
+import { LearnerProgress } from "../../core/haxcms-learner-progress.js";
 /**
  * `site-menu`
  * `Menu hierarchy`
+ *
+ * Learner progress: once the visitor has engaged with a trackable activity
+ * on the site (questions, checklists, games, media), each page gets a mark
+ * (done, in progress, visited, not started; spoken after the title) and the
+ * menu shows "N of M pages done" above it. Vertical menus only; set
+ * hide-progress to turn it off. Progress is read from the learner profile on
+ * this device (see core/haxcms-learner-progress.js).
  */
-class SiteMenu extends HAXCMSThemeParts(LitElement) {
+class SiteMenu extends I18NMixin(HAXCMSThemeParts(LitElement)) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -47,6 +55,28 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
           );
           scrollbar-color: var(--site-menu-scrollbar-color, #252737);
           scrollbar-width: thick;
+        }
+        .progress-summary {
+          display: block;
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-medium);
+          color: var(
+            --site-menu-progress-color,
+            light-dark(
+              var(--ddd-theme-default-slateGray),
+              var(--ddd-theme-default-limestoneLight)
+            )
+          );
+          border-bottom: var(--ddd-border-xs);
+          border-color: var(
+            --site-menu-progress-line,
+            light-dark(
+              var(--ddd-theme-default-limestoneLight),
+              var(--ddd-theme-default-slateGray)
+            )
+          );
         }
         map-menu:not(:defined) {
           display: none;
@@ -95,8 +125,32 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
     this.isFlex = false;
     this.isHorizontal = false;
     this.maxDepth = 5;
+    this.hideProgress = false;
+    this._progress = null;
+    this._progressSummary = null;
+    this.t = {
+      ...this.t,
+      pagesDone: "{done} of {total} pages done",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../../locales/", import.meta.url).href,
+    });
     this.__operationsLoaded = false;
     this.__disposer = [];
+    LearnerProgress.start();
+    // learner progress marks, from the profile on this device
+    this.__disposer.push(
+      autorun((_reaction) => {
+        const p = LearnerProgress.siteProgress();
+        Promise.resolve().then(() => {
+          this._progress = p.engaged ? p.byPage : null;
+          this._progressSummary = p.engaged
+            ? { done: p.done, total: p.total }
+            : null;
+        });
+      }),
+    );
     this.__disposer.push(
       autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.routerManifest);
@@ -152,9 +206,30 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
   /**
    * LitElement life cycle - render callback
    */
+  _showProgress() {
+    if (!this._progress || this.hideProgress) {
+      return false;
+    }
+    return !this.isFlex && !this.isHorizontal;
+  }
+  // "N of M pages done" above the menu, once there is progress to show
+  renderProgressSummary(progress) {
+    if (!progress || !this._progressSummary) {
+      return nothing;
+    }
+    const text = this.t.pagesDone
+      .replace("{done}", this._progressSummary.done)
+      .replace("{total}", this._progressSummary.total);
+    return html`<div class="progress-summary" part="progress-summary">
+      ${text}
+    </div>`;
+  }
   render() {
+    const progress = this._showProgress();
     return html`
+      ${this.renderProgressSummary(progress)}
       <map-menu
+        .progress="${progress ? this._progress : null}"
         .part="map-menu ${this.editMode ? `edit-mode-active` : ``}"
         ?inert="${this.editMode}"
         aria-disabled="${this.editMode ? `true` : `false`}"
@@ -250,6 +325,15 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
         type: String,
         attribute: "track-icon",
       },
+      /**
+       * Do not show learner progress marks or the pages done summary
+       */
+      hideProgress: {
+        type: Boolean,
+        attribute: "hide-progress",
+      },
+      _progress: { type: Object, state: true },
+      _progressSummary: { type: Object, state: true },
     };
   }
 
@@ -265,46 +349,15 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
     super.disconnectedCallback();
   }
   /**
-   * When map menu changes let's set a track icon internal to it.
+   * When map menu changes let's set a track icon internal to it. Page visits
+   * are recorded in the learner profile by core/haxcms-learner-progress.js;
+   * the old HAXCMSSystemData accessData write never ran (that object was
+   * never given a manifests key) and has been removed.
    */
   mapMenuActiveChanged(e) {
     // update the UI directly
-    e.detail.trackIcon = this.trackIcon;
-    try {
-      // now work on the user data object in the theme layer
-      let userData = localStorageGet("HAXCMSSystemData");
-      if (userData.manifests) {
-        if (
-          typeof userData.manifests[this.routerManifest.id] === typeof undefined
-        ) {
-          userData.manifests[this.routerManifest.id] = {
-            accessData: {},
-          };
-        }
-        // edge case when switching rapidly
-        if (!userData.manifests[this.routerManifest.id].accessData) {
-          userData.manifests[this.routerManifest.id].accessData = {};
-        }
-        userData.manifests[this.routerManifest.id].accessData[e.detail.id] = {
-          timestamp: Math.floor(Date.now() / 1000),
-          trackIcon: this.trackIcon,
-        };
-        for (let i in this.routerManifest.items) {
-          if (this.routerManifest.items[i].id === e.detail.id) {
-            this.routerManifest.items[i].metadata.accessData =
-              userData.manifests[this.routerManifest.id].accessData[
-                e.detail.id
-              ];
-          }
-        }
-      }
-      // save this back to the system data
-      globalThis.localStorage.setItem(
-        "HAXCMSSystemData",
-        JSON.stringify(userData),
-      );
-    } catch {
-      // intentionally empty
+    if (e && e.detail) {
+      e.detail.trackIcon = this.trackIcon;
     }
   }
   mapMenuHoveredChanged(e) {

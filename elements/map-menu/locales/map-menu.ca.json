@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "La pàgina no està publicada"
+  "pageIsUnpublished": "La pàgina no està publicada",
+  "progressDone": "Fet",
+  "progressInProgress": "En curs",
+  "progressVisited": "Visitat"
 }

@@ -203,8 +203,8 @@
           "desc": "Learning Objective"
         },
         {
-          "name": "accent-color",
-          "desc": "Card accent color."
+          "name": "img-keyword",
+          "desc": "Image Keyword"
         }
       ],
       "active": [
@@ -253,7 +253,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "accent-color=\"blue\""
+      "s": "img-keyword=\"Image Keyword\""
     },
     {
       "type": "text",
@@ -373,8 +373,8 @@
       "py": 518,
       "ex": 796,
       "ey": 570,
-      "label": "accent-color",
-      "sub": "any color",
+      "label": "img-keyword",
+      "sub": "\"Image Keyword\"",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -411,7 +411,7 @@
     "line": "Practice concepts with front-and-back flash cards.",
     "code": "<flash-card></flash-card>"
   },
-  "surfaceHash": "831d66a85d33",
+  "surfaceHash": "447f10f3585a",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

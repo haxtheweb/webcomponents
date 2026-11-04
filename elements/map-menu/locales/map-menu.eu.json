@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "Orria ez dago argitaratuta"
+  "pageIsUnpublished": "Orria ez dago argitaratuta",
+  "progressDone": "Eginda",
+  "progressInProgress": "Egiten",
+  "progressVisited": "Bisitatua"
 }

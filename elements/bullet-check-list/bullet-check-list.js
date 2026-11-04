@@ -9,6 +9,12 @@ import {
 } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
+import {
+  activityId,
+  buildStatement,
+  XAPI_ACTIVITY_TYPES,
+  XAPI_EXTENSIONS,
+} from "@haxtheweb/user-action/lib/xapi.js";
 
 /**
  * `bullet-check-list`
@@ -24,6 +30,14 @@ import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
  * - HAX generates and saves a random `storage-id` the first time the element
  *   is edited, so authored lists keep their key when labels are re-worded.
  * Value: JSON {"v":1,"checked":["<item label>", ...]}
+ *
+ * Learner progress: every tick also goes out as an xAPI statement
+ * (user-engagement detail.statement; progressed, then completed when all
+ * are ticked) that the learner profile keeps. Ticks saved under the key
+ * above before that existed are announced once with a
+ * `learner-progress-import` event so the profile picks them up. The key is
+ * still written and read for backwards compatibility; when it is empty the
+ * list asks the profile (`learner-progress-request`) for its ticks.
  *
  * @demo demo/index.html
  * @element bullet-check-list
@@ -44,6 +58,50 @@ export function bulletCheckListHash(str) {
 class BulletCheckList extends SchemaBehaviors(I18NMixin(DDD)) {
   static get tag() {
     return "bullet-check-list";
+  }
+
+  /**
+   * xAPI statements this element sends (see scripts/generate-xapi-vocabulary.mjs)
+   */
+  static get xapiVocabulary() {
+    return {
+      tag: "bullet-check-list",
+      event: "user-engagement",
+      verbs: ["progressed", "completed"],
+      objectType: "http://adlnet.gov/expapi/activities/objective",
+      result: ["completion", "response", "score"],
+      countsTowardCompletion: true,
+      done: "every item ticked",
+    };
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    if (!this._progressListeners) {
+      this._progressListeners = new AbortController();
+      globalThis.addEventListener(
+        "learner-progress-cleared",
+        () => {
+          this._checked = [];
+        },
+        { signal: this._progressListeners.signal },
+      );
+    }
+  }
+
+  disconnectedCallback() {
+    if (this._progressListeners) {
+      this._progressListeners.abort();
+      this._progressListeners = null;
+    }
+    super.disconnectedCallback();
+  }
+
+  /**
+   * Author content that identifies this list for its xAPI activity id
+   */
+  xapiFingerprint() {
+    return BulletCheckList.baseId(this);
   }
 
   static get styles() {
@@ -478,6 +536,83 @@ class BulletCheckList extends SchemaBehaviors(I18NMixin(DDD)) {
     this._storageKey = this._computeStorageKey();
     const keys = this._items.map((i) => i.key);
     this._checked = this._readStore().filter((k) => keys.includes(k));
+    // after this update: hand legacy ticks to the profile once, or read
+    // the ticks back from it when the legacy key is empty
+    const key = this._storageKey;
+    Promise.resolve().then(() => this._syncProgress(key));
+  }
+
+  _syncProgress(key) {
+    if (!this.isConnected || this._haxstate || this._storageKey !== key) {
+      return;
+    }
+    if (this._checked.length) {
+      if (this._importedKey !== key) {
+        this._importedKey = key;
+        const items = this._items;
+        const done = items.filter((i) => this._isChecked(i)).length;
+        this.dispatchEvent(
+          new CustomEvent("learner-progress-import", {
+            bubbles: true,
+            composed: true,
+            detail: {
+              statement: this._statement(
+                done === items.length ? "completed" : "progressed",
+                done,
+                items.length,
+                true,
+              ),
+            },
+          }),
+        );
+      }
+      return;
+    }
+    const detail = {
+      activityId: activityId(this),
+      tag: BulletCheckList.tag,
+      record: null,
+    };
+    globalThis.dispatchEvent(
+      new CustomEvent("learner-progress-request", { detail }),
+    );
+    const record = detail.record;
+    if (record && typeof record.response === "string" && record.response) {
+      const keys = this._items.map((i) => i.key);
+      const ticks = record.response
+        .split("[,]")
+        .filter((k) => keys.includes(k));
+      if (ticks.length) {
+        this._importedKey = key;
+        this._checked = ticks;
+        this._writeStore();
+      }
+    }
+  }
+
+  // xAPI statement for the current ticks
+  _statement(verb, done, total, imported = false) {
+    const ext = { [XAPI_EXTENSIONS.element]: BulletCheckList.tag };
+    if (imported) {
+      ext[XAPI_EXTENSIONS.imported] = true;
+    }
+    return buildStatement({
+      verb,
+      object: {
+        id: activityId(this),
+        name: this.title || this._storageKey,
+        type: XAPI_ACTIVITY_TYPES.objective,
+      },
+      result: {
+        completion: total > 0 && done === total,
+        response: this._items
+          .filter((i) => this._isChecked(i) && !i.preChecked)
+          .map((i) => i.key)
+          .join("[,]"),
+        score: { raw: done, max: total, min: 0 },
+      },
+      context: { extensions: ext },
+    });
   }
 
   willUpdate(changedProperties) {
@@ -546,6 +681,7 @@ class BulletCheckList extends SchemaBehaviors(I18NMixin(DDD)) {
           objectDetail: item.label,
           resultCompletion: done === total,
           resultScore: total ? done / total : 0,
+          statement: this._statement(activityDisplay, done, total),
         },
       }),
     );
@@ -582,20 +718,16 @@ class BulletCheckList extends SchemaBehaviors(I18NMixin(DDD)) {
             @change="${(e) => this._toggle(item, e)}"
           />
           <span class="marker" aria-hidden="true"
-            >${
-              checked
-                ? html`<simple-icon-lite icon="check"></simple-icon-lite>`
-                : this.ordered
-                  ? index + 1
-                  : html`<span class="dot"></span>`
-            }</span
+            >${checked
+              ? html`<simple-icon-lite icon="check"></simple-icon-lite>`
+              : this.ordered
+                ? index + 1
+                : html`<span class="dot"></span>`}</span
           >
           <span class="text">${item.label}</span>
-          ${
-            index === current
-              ? html`<span class="badge">${this.t.currentStep}</span>`
-              : ``
-          }
+          ${index === current
+            ? html`<span class="badge">${this.t.currentStep}</span>`
+            : ``}
         </label>
       </li>`;
     });
@@ -619,15 +751,13 @@ class BulletCheckList extends SchemaBehaviors(I18NMixin(DDD)) {
             aria-labelledby="${this.title ? "title" : nothing}"
             aria-label="${ifDefined(this.title ? undefined : label)}"
           >
-            ${
-              this.ordered
-                ? html`<ol role="list">
-                    ${rows}
-                  </ol>`
-                : html`<ul role="list">
-                    ${rows}
-                  </ul>`
-            }
+            ${this.ordered
+              ? html`<ol role="list">
+                  ${rows}
+                </ol>`
+              : html`<ul role="list">
+                  ${rows}
+                </ul>`}
           </div>
         </div>
         <div class="ddd-block-footer">

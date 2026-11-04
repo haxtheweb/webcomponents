@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "Síðan er ikki útgivin"
+  "pageIsUnpublished": "Síðan er ikki útgivin",
+  "progressDone": "Liðugt",
+  "progressInProgress": "Í gerð",
+  "progressVisited": "Vitjað"
 }

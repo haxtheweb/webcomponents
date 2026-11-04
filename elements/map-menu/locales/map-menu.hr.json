@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "Stranica nije objavljena"
+  "pageIsUnpublished": "Stranica nije objavljena",
+  "progressDone": "Završeno",
+  "progressInProgress": "U tijeku",
+  "progressVisited": "Posjećeno"
 }

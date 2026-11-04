@@ -8,10 +8,31 @@ import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "./lib/flash-card-answer-box.js";
 import "./lib/flash-card-prompt-img.js";
+import {
+  activityId,
+  buildStatement,
+  XAPI_EXTENSIONS,
+} from "@haxtheweb/user-action/lib/xapi.js";
 
 export class FlashCard extends I18NMixin(SchemaBehaviors(DDD)) {
   static get tag() {
     return "flash-card";
+  }
+
+  /**
+   * xAPI statements this element sends (see scripts/generate-xapi-vocabulary.mjs)
+   */
+  static get xapiVocabulary() {
+    return {
+      tag: "flash-card",
+      event: "user-engagement",
+      verbs: ["answered"],
+      objectType: "http://adlnet.gov/expapi/activities/cmi.interaction",
+      interactionType: "fill-in",
+      result: ["success", "completion", "response", "score"],
+      countsTowardCompletion: true,
+      done: "answered correctly",
+    };
   }
 
   // HTMLElement life-cycle, built in; use this for setting defaults
@@ -178,6 +199,52 @@ export class FlashCard extends I18NMixin(SchemaBehaviors(DDD)) {
   statusChanged(e) {
     this.status = e.detail;
     this.provideFeedback();
+    if (this.status === "correct" || this.status === "incorrect") {
+      this._announceAnswer(e);
+    }
+  }
+
+  // learner data for a checked card (user-engagement with an xAPI statement)
+  _announceAnswer(e) {
+    const box = e && e.target;
+    const correct = this.status === "correct";
+    const response = box && box.userAnswer ? String(box.userAnswer) : "";
+    this.dispatchEvent(
+      new CustomEvent("user-engagement", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: {
+          activityDisplay: "answered",
+          objectName: this.textContent.trim().slice(0, 120),
+          resultSuccess: correct,
+          statement: buildStatement({
+            verb: "answered",
+            object: {
+              id: activityId(this),
+              name: this.textContent.trim().slice(0, 120),
+              interactionType: "fill-in",
+            },
+            result: {
+              success: correct,
+              completion: correct,
+              response,
+              score: { raw: correct ? 1 : 0, max: 1, min: 0 },
+            },
+            context: {
+              extensions: { [XAPI_EXTENSIONS.element]: "flash-card" },
+            },
+          }),
+        },
+      }),
+    );
+  }
+
+  /**
+   * Author content that identifies this card for its xAPI activity id
+   */
+  xapiFingerprint() {
+    return this.textContent.trim();
   }
 
   // Provide visual and audio feedback similar to QuestionElement
@@ -264,17 +331,15 @@ export class FlashCard extends I18NMixin(SchemaBehaviors(DDD)) {
       </div>
       <div class="ddd-block-body">
         <confetti-container id="confetti">
-          ${
-            !this.imgSource && !this.imgKeyword
-              ? ``
-              : html`
-                  <flash-card-image-prompt
-                    img-src="${this.imgSource}"
-                    img-keyword="${this.imgKeyword}"
-                    status="${this.status}"
-                  ></flash-card-image-prompt>
-                `
-          }
+          ${!this.imgSource && !this.imgKeyword
+            ? ``
+            : html`
+                <flash-card-image-prompt
+                  img-src="${this.imgSource}"
+                  img-keyword="${this.imgKeyword}"
+                  status="${this.status}"
+                ></flash-card-image-prompt>
+              `}
           <flash-card-answer-box
             @flash-card-status-change="${this.statusChanged}"
           >

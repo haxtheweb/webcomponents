@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "Bladsy is ongepubliseer"
+  "pageIsUnpublished": "Bladsy is ongepubliseer",
+  "progressDone": "Voltooi",
+  "progressInProgress": "Besig",
+  "progressVisited": "Besoek"
 }
