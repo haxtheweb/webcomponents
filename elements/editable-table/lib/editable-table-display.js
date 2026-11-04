@@ -4,10 +4,7 @@
  */
 import { html, css, nothing } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
-import {
-  displayBehaviors,
-  editableTableDisplayStyles,
-} from "./editable-table-behaviors.js";
+import { displayBehaviors } from "./editable-table-behaviors.js";
 import { ResponsiveUtilityBehaviors } from "@haxtheweb/responsive-utility/lib/responsive-utility-behaviors.js";
 import "@haxtheweb/simple-picker/simple-picker.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
@@ -17,6 +14,7 @@ import {
   DDDBlockStyles,
   renderDDDBlockHeader,
 } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
+import { DDDTableStyles } from "@haxtheweb/d-d-d/lib/DDDTable.js";
 
 /**
  * `editable-table-display`
@@ -25,7 +23,6 @@ import {
  * @demo ./demo/editor.html
  * @customElement
  * @extends displayBehaviors
- * @extends editableTableDisplayStyles
  * @extends ResponsiveUtilityBehaviors
  * @extends LitElement
  */
@@ -36,15 +33,134 @@ class EditableTableDisplay extends I18NMixin(
     return [
       DDDVariables,
       super.styles,
-      editableTableDisplayStyles,
       DDDBlockStyles,
+      DDDTableStyles,
       css`
+        /* the table takes the shared DDD table look (DDDTable.js); the
+           editable-table custom properties still win when they are set */
+        :host {
+          display: block;
+          width: 100%;
+          max-width: 100%;
+          margin: var(--ddd-spacing-4) 0;
+          font-size: var(--editable-table-font-size, unset);
+          font-family: var(--editable-table-font-family, inherit);
+          color: var(
+            --editable-table-color,
+            light-dark(
+              var(--ddd-theme-default-coalyGray),
+              var(--ddd-theme-default-white)
+            )
+          );
+          background-color: var(--editable-table-bg-color, transparent);
+        }
         :host([hidden]),
         :host([disabled]) {
           display: none !important;
         }
+        @media screen {
+          :host([responsive]) {
+            overflow-x: visible;
+          }
+        }
+        .offscreen {
+          position: absolute;
+          left: -9999px;
+          font-size: 0;
+          height: 0;
+          width: 0;
+          overflow: hidden;
+          margin: 0;
+          padding: 0;
+        }
+        table.ddd-table {
+          --ddd-table-color: var(--editable-table-color);
+          --ddd-table-background: var(--editable-table-bg-color);
+          --ddd-table-font-family: var(--editable-table-font-family);
+          --ddd-table-font-size: var(--editable-table-font-size);
+          --ddd-table-divider: var(--editable-table-border-color);
+          --ddd-table-header-background: var(--editable-table-heading-bg-color);
+          --ddd-table-header-color: var(--editable-table-heading-color);
+          --ddd-table-row-header-color: var(--editable-table-heading-color);
+          --ddd-table-stripe-background: var(--editable-table-stripe-bg-color);
+          --ddd-table-caption-color: var(--editable-table-caption-color);
+          --ddd-table-cell-padding-block: var(
+            --editable-table-cell-vertical-padding
+          );
+          --ddd-table-cell-padding-inline: var(
+            --editable-table-cell-horizontal-padding
+          );
+          --ddd-table-cell-padding-block-condensed: var(
+            --editable-table-cell-vertical-padding-condensed
+          );
+          --ddd-table-cell-padding-inline-condensed: var(
+            --editable-table-cell-horizontal-padding-condensed
+          );
+          font-weight: var(
+            --editable-table-light-weight,
+            var(--ddd-font-weight-regular, 400)
+          );
+        }
+        table.ddd-table thead th {
+          font-weight: var(
+            --editable-table-heavy-weight,
+            var(--ddd-font-weight-bold, 700)
+          );
+        }
+        /* numeric-styles keeps its meaning: numeric columns right-aligned
+           (now the default) and negative numbers in red */
+        table[numeric-styles] .th-or-td[numeric] {
+          text-align: end;
+          font-variant-numeric: tabular-nums;
+        }
+        table[numeric-styles] .td[negative] .cell,
+        table[numeric-styles] .tfoot-tr .th-or-td[negative] {
+          color: var(
+            --editable-table-negative-color,
+            light-dark(
+              var(--ddd-theme-default-original87Pink),
+              var(--ddd-theme-default-discoveryCoral)
+            )
+          );
+        }
+        span.cell {
+          display: block;
+        }
+        editable-table-sort,
+        editable-table-filter {
+          text-align: inherit;
+        }
+        .column {
+          width: calc(var(--simple-picker-option-size) + 6px);
+          overflow: visible;
+          display: none;
+          margin-right: 0px;
+          --simple-picker-border-width: 1px;
+          --simple-picker-focus-border-width: 1px;
+          --simple-picker-border-color: var(
+            --editable-table-border-color,
+            light-dark(
+              var(--ddd-theme-default-limestoneGray),
+              var(--ddd-theme-default-slateGray)
+            )
+          );
+        }
+        @media screen {
+          :host([responsive][responsive-size="xs"]) .column {
+            display: inline-flex;
+            width: 30px;
+            overflow: visible;
+          }
+          :host([responsive][responsive-size="xs"]) .th[xs-hidden],
+          :host([responsive][responsive-size="xs"]) .td[xs-hidden] {
+            display: none;
+          }
+        }
         .ddd-block-body {
           padding: var(--ddd-spacing-3) var(--ddd-spacing-4);
+          overflow-x: auto;
+        }
+        .embedded-scroll {
           overflow-x: auto;
         }
         .embedded-actions {
@@ -167,7 +283,8 @@ class EditableTableDisplay extends I18NMixin(
           ? html`<div class="embedded-actions">
               ${this._renderBlockActions()}
             </div>`
-          : nothing}${table}
+          : nothing}
+        <div class="embedded-scroll">${table}</div>
         <div id="htmlImport" hidden><slot></slot></div>`;
     }
     return html`
@@ -189,11 +306,18 @@ class EditableTableDisplay extends I18NMixin(
   }
 
   _renderTable() {
+    // which columns hold numbers, worked out once per render for the
+    // right-aligned, tabular-digit DDD number style
+    const cols = (this.data && this.data[0] ? this.data[0] : []).length;
+    this._numberColumns = [];
+    for (let i = 0; i < cols; i++) {
+      this._numberColumns.push(this._isNumberColumn(i));
+    }
     return html`
       <table
         id="table"
         ?bordered="${this.bordered}"
-        class="table"
+        class="table ddd-table"
         ?column-header="${this.columnHeader}"
         ?column-striped="${this.columnStriped}"
         ?condensed="${this.condensed}"
@@ -217,6 +341,7 @@ class EditableTableDisplay extends I18NMixin(
                   class="th th-or-td"
                   cell-index="${index}"
                   ?numeric="${this._isNumericColumn(index)}"
+                  ?data-numeric="${this._isNumberCol(index)}"
                   scope="col"
                   part="th"
                   ?xs-hidden="${this._isColHidden(index, this.selected || 1)}"
@@ -666,6 +791,7 @@ class EditableTableDisplay extends I18NMixin(
       class="th th-or-td"
       cell-index="${index}"
       ?numeric="${this._isNumericColumn(index)}"
+      ?data-numeric="${this._isNumberCol(index)}"
       scope="row"
       ?xs-hidden="${this._isColHidden(index, this.selected || 1)}"
     >
@@ -687,6 +813,7 @@ class EditableTableDisplay extends I18NMixin(
       class="td th-or-td"
       cell-index="${index}"
       ?numeric="${this._isNumericColumn(index)}"
+      ?data-numeric="${this._isNumberCol(index)}"
       ?negative="${this._isNegative(cell)}"
       ?xs-hidden="${this._isColHidden(index, this.selected || 1)}"
     >
@@ -711,6 +838,18 @@ class EditableTableDisplay extends I18NMixin(
             >`
           : this.getHTML(this._replaceBlankCell(cell))}
     </td>`;
+  }
+
+  /**
+   * Whether a column holds numbers (right-aligned, tabular digits), from
+   * the per-render cache with a direct check as the fallback
+   * @param {number} index column number
+   * @returns {boolean}
+   */
+  _isNumberCol(index) {
+    return this._numberColumns && index < this._numberColumns.length
+      ? this._numberColumns[index]
+      : this._isNumberColumn(index);
   }
 
   /**

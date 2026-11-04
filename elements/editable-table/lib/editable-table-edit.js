@@ -41,6 +41,69 @@ class EditableTableEdit extends I18NMixin(editBehaviors(DDD)) {
           pointer-events: none;
           cursor: not-allowed;
         }
+        /* the edit grid follows the DDD table colours (DDDTable.js) so it
+           stays readable in dark mode: no black stripes, regular weight
+           text, a tinted header row; the editable-table custom properties
+           still win when they are set */
+        :host,
+        table,
+        .th,
+        .td,
+        .th-or-td .icon-container {
+          font-weight: var(
+            --editable-table-light-weight,
+            var(--ddd-font-weight-regular, 400)
+          );
+          color: var(
+            --editable-table-color,
+            light-dark(
+              var(--ddd-theme-default-coalyGray),
+              var(--ddd-theme-default-white)
+            )
+          );
+          background-color: var(--editable-table-bg-color, transparent);
+        }
+        caption {
+          background-color: var(
+            --editable-table-caption-bg-color,
+            var(--editable-table-bg-color, transparent)
+          );
+        }
+        .thead-tr .th,
+        .thead-tr .th .icon-container {
+          font-weight: var(
+            --editable-table-heavy-weight,
+            var(--ddd-font-weight-bold, 700)
+          );
+          color: var(
+            --editable-table-heading-color,
+            light-dark(
+              var(--ddd-theme-default-nittanyNavy),
+              var(--ddd-theme-default-white)
+            )
+          );
+          background-color: var(
+            --editable-table-heading-bg-color,
+            light-dark(
+              var(--ddd-theme-default-limestoneMaxLight),
+              var(--ddd-theme-default-coalyGray)
+            )
+          );
+        }
+        *[striped] .tbody-tr:nth-child(2n + 1) .th-or-td,
+        *[striped] .tbody-tr:nth-child(2n + 1) .th-or-td .icon-container,
+        *[column-striped] .tbody-tr .th-or-td:nth-child(2n),
+        *[column-striped] .tbody-tr .th-or-td:nth-child(2n) .icon-container,
+        *[column-striped] .tfoot-tr .th-or-td:nth-child(2n),
+        *[column-striped] .tfoot-tr .th-or-td:nth-child(2n) .icon-container {
+          background-color: var(
+            --editable-table-stripe-bg-color,
+            light-dark(
+              var(--ddd-theme-default-slateMaxLight),
+              var(--ddd-theme-default-nittanyNavy)
+            )
+          );
+        }
         .filter-icon,
         .sortable-icon {
           display: none;

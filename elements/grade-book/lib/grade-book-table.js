@@ -35,6 +35,7 @@ class GradeBookTable extends LitElement {
   render() {
     return html`
       <editable-table
+        hide-block-header
         ?edit-mode="${this.editMode}"
         bordered
         column-header

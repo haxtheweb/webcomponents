@@ -1830,6 +1830,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                           )
                         : html`
                             <editable-table-display
+                              hide-block-header
                               bordered
                               copyable
                               condensed

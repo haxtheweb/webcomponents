@@ -146,6 +146,7 @@ export const UIRenderPieces = function (SuperClass) {
           auto
         >
           <editable-table-display
+            hide-block-header
             accent-color="${this.accentColor}"
             bordered
             column-header

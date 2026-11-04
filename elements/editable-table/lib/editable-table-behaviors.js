@@ -1189,7 +1189,10 @@ export const displayBehaviors = function (SuperClass) {
      * @returns {boolean} whether cell contents are numeric and negative
      */
     _isNegative(cell) {
-      return this._isNumericCell(cell) && cell.trim().indexOf("-") === 0;
+      return (
+        (this._isNumericCell(cell) || this._isNumberLike(cell)) &&
+        String(cell).trim().indexOf("-") === 0
+      );
     }
 
     /**
@@ -1212,6 +1215,53 @@ export const displayBehaviors = function (SuperClass) {
         if (!this._isNumericCell(this.tbody[i][index])) numeric = false;
       }
       return numeric;
+    }
+
+    /**
+     * Whether a cell reads as a number for display (right-aligned, tabular
+     * digits): an optional sign, an optional currency symbol, digits with
+     * optional thousands commas and decimals, an optional trailing percent.
+     * Markup and non-breaking spaces are ignored. Display only: sorting and
+     * CSV export keep using _isNumericCell.
+     * @param {string} cell cell contents (may contain HTML)
+     * @returns {boolean} whether the cell is a number
+     */
+    _isNumberLike(cell) {
+      if (cell === undefined || cell === null) return false;
+      let str = String(cell)
+        .replace(/<[^>]*>/g, "")
+        .replace(/&nbsp;|\u00a0/g, " ")
+        .trim();
+      if (str === "") return false;
+      return /^[-+]?[$€£¥]?\s?[-+]?(\d{1,3}(,\d{3})+|\d+)?(\.\d+)?\s?%?$/.test(
+        str,
+      )
+        ? /\d/.test(str)
+        : false;
+    }
+
+    /**
+     * Whether a body column holds numbers for display: every non-empty cell
+     * is number-like (see _isNumberLike) and at least one cell is filled.
+     * @param {number} index column index
+     * @returns {boolean} whether the column is numeric
+     */
+    _isNumberColumn(index) {
+      let found = false;
+      for (let i = 0; i < this.tbody.length; i++) {
+        let cell = this.tbody[i] ? this.tbody[i][index] : undefined,
+          text =
+            cell === undefined || cell === null
+              ? ""
+              : String(cell)
+                  .replace(/<[^>]*>/g, "")
+                  .replace(/&nbsp;|\u00a0/g, " ")
+                  .trim();
+        if (text === "") continue;
+        if (!this._isNumberLike(cell)) return false;
+        found = true;
+      }
+      return found;
     }
 
     /**
