@@ -50,9 +50,9 @@ describe("simple-icon-select", () => {
     // "No icon" row plus every icon
     expect(list.length).to.equal(ICONS.length + 1);
     const paint = list.find((r) => r.dataset.value === "editor:format-paint");
-    expect(paint.querySelector("simple-icon-lite").getAttribute("icon")).to.equal(
-      "editor:format-paint",
-    );
+    expect(
+      paint.querySelector("simple-icon-lite").getAttribute("icon"),
+    ).to.equal("editor:format-paint");
     expect(paint.querySelector(".name").textContent.trim()).to.equal(
       "Format paint",
     );

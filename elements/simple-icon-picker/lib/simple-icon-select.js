@@ -17,7 +17,7 @@ const _toList = (list) => {
     try {
       const parsed = JSON.parse(list);
       return Array.isArray(parsed) && parsed.length > 0 ? parsed : false;
-    } catch (e) {
+    } catch {
       return false;
     }
   }
@@ -165,7 +165,10 @@ class SimpleIconSelect extends LitElement {
           width: 100%;
           box-sizing: border-box;
           font-family: inherit;
-          font-size: var(--simple-fields-font-size, var(--ddd-font-size-4xs, 14px));
+          font-size: var(
+            --simple-fields-font-size,
+            var(--ddd-font-size-4xs, 14px)
+          );
           color: var(--simple-fields-color, currentColor);
           --simple-icon-select-row-size: 32px;
           --simple-icon-select-list-max-height: 280px;
@@ -219,7 +222,10 @@ class SimpleIconSelect extends LitElement {
           background-color: var(--simple-icon-select-background-color);
           border: var(--ddd-border-xs, 1px solid)
             var(--simple-icon-select-border-color);
-          border-radius: var(--simple-fields-border-radius, var(--ddd-radius-xs, 4px));
+          border-radius: var(
+            --simple-fields-border-radius,
+            var(--ddd-radius-xs, 4px)
+          );
         }
         .trigger {
           cursor: pointer;
@@ -487,7 +493,9 @@ class SimpleIconSelect extends LitElement {
                 <span class="tile" aria-hidden="true">
                   ${
                     icon
-                      ? html`<simple-icon-lite icon="${icon}"></simple-icon-lite>`
+                      ? html`<simple-icon-lite
+                          icon="${icon}"
+                        ></simple-icon-lite>`
                       : ``
                   }
                 </span>
@@ -611,7 +619,8 @@ class SimpleIconSelect extends LitElement {
   }
 
   focus() {
-    const trigger = this.shadowRoot && this.shadowRoot.querySelector(".trigger");
+    const trigger =
+      this.shadowRoot && this.shadowRoot.querySelector(".trigger");
     if (trigger) trigger.focus();
     else super.focus();
   }
