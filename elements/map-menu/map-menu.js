@@ -485,7 +485,6 @@ class MapMenu extends SchemaBehaviors(LitElement) {
     this.autoScroll = false;
     this.activeIndicator = false;
     this.progress = null;
-    this.trackable = null;
     // Bind listeners immediately so we don't miss initial active-item updates
     // when selected state is set quickly during first paint.
     this.addEventListener("link-clicked", this.__linkClickedHandler.bind(this));
@@ -514,7 +513,6 @@ class MapMenu extends SchemaBehaviors(LitElement) {
             .items="${this.items}"
             .selected="${this.selected}"
             .progress="${this.progress}"
-            .trackable="${this.trackable}"
           ></map-menu-builder>
         </map-menu-container>
       </div>
@@ -585,14 +583,6 @@ class MapMenu extends SchemaBehaviors(LitElement) {
        * "visited" | "not-started" }. Empty (the default) shows no marks.
        */
       progress: {
-        type: Object,
-      },
-      /**
-       * Trackable element counts by item id ({ <id>: number }): a quiet
-       * grey count per item for authors (site-menu sets it in edit mode
-       * only). Empty (the default) shows nothing.
-       */
-      trackable: {
         type: Object,
       },
       /**

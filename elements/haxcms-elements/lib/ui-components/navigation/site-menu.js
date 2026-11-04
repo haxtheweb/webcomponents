@@ -9,9 +9,6 @@ import "@haxtheweb/map-menu/map-menu.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { HAXCMSThemeParts } from "../../core/utils/HAXCMSThemeParts.js";
 import { LearnerProgress } from "../../core/haxcms-learner-progress.js";
-// authors only: loaded the first time HAX edit mode turns on
-const loadTrackableScan = () =>
-  import("../../core/insights/learning-activity-scan.js");
 /**
  * `site-menu`
  * `Menu hierarchy`
@@ -22,12 +19,6 @@ const loadTrackableScan = () =>
  * menu shows "N of M pages done" above it. Vertical menus only; set
  * hide-progress to turn it off. Progress is read from the learner profile on
  * this device (see core/haxcms-learner-progress.js).
- *
- * Trackable count (authors only): while HAX edit mode is on, each page also
- * shows a small grey count of the elements on it that can send learner
- * statements (a dash for none), from the Learning activity scan
- * (core/insights/learning-activity-scan.js, loaded only then). Vertical
- * menus only; hidden again when edit mode ends.
  */
 class SiteMenu extends I18NMixin(HAXCMSThemeParts(LitElement)) {
   /**
@@ -137,7 +128,6 @@ class SiteMenu extends I18NMixin(HAXCMSThemeParts(LitElement)) {
     this.hideProgress = false;
     this._progress = null;
     this._progressSummary = null;
-    this._trackable = null;
     this.t = {
       ...this.t,
       pagesDone: "{done} of {total} pages done",
@@ -159,13 +149,6 @@ class SiteMenu extends I18NMixin(HAXCMSThemeParts(LitElement)) {
             ? { done: p.done, total: p.total }
             : null;
         });
-      }),
-    );
-    // trackable counts for authors, only while HAX edit mode is on
-    this.__disposer.push(
-      autorun((_reaction) => {
-        const editing = !!toJS(store.editMode);
-        Promise.resolve().then(() => this._trackableMode(editing));
       }),
     );
     this.__disposer.push(
@@ -209,39 +192,6 @@ class SiteMenu extends I18NMixin(HAXCMSThemeParts(LitElement)) {
     );
   }
   /**
-   * Turn the authors' trackable counts on (edit mode) or off
-   */
-  async _trackableMode(editing) {
-    this.__trackableEditing = editing;
-    if (!editing) {
-      this._trackable = null;
-      return;
-    }
-    if (!this.__trackableScan) {
-      this.__trackableScan = loadTrackableScan();
-    }
-    const scan = await this.__trackableScan;
-    if (!this.__trackableEditing) {
-      return;
-    }
-    scan.watchActivePageTrackable(store, autorun);
-    if (!this.__trackableOff) {
-      this.__trackableOff = scan.onTrackableChange(() => {
-        if (this.__trackableEditing) {
-          this._trackable = scan.trackableCountsById();
-        }
-      });
-    }
-    this._trackable = scan.trackableCountsById();
-    await scan.ensureSiteTrackable();
-    if (this.__trackableEditing) {
-      this._trackable = scan.trackableCountsById();
-    }
-  }
-  _showTrackable() {
-    return !!this._trackable && !this.isFlex && !this.isHorizontal;
-  }
-  /**
    * Keep edit controls in sync when flex mode changes after login state.
    * isFlex is not a MobX value, so the login autorun alone cannot react to it.
    */
@@ -280,7 +230,6 @@ class SiteMenu extends I18NMixin(HAXCMSThemeParts(LitElement)) {
       ${this.renderProgressSummary(progress)}
       <map-menu
         .progress="${progress ? this._progress : null}"
-        .trackable="${this._showTrackable() ? this._trackable : null}"
         .part="map-menu ${this.editMode ? `edit-mode-active` : ``}"
         ?inert="${this.editMode}"
         aria-disabled="${this.editMode ? `true` : `false`}"
@@ -385,15 +334,10 @@ class SiteMenu extends I18NMixin(HAXCMSThemeParts(LitElement)) {
       },
       _progress: { type: Object, state: true },
       _progressSummary: { type: Object, state: true },
-      _trackable: { type: Object, state: true },
     };
   }
 
   disconnectedCallback() {
-    if (this.__trackableOff) {
-      this.__trackableOff();
-      this.__trackableOff = null;
-    }
     for (let i in this.__disposer) {
       const disposer = this.__disposer[i];
       if (typeof disposer === "function") {

@@ -2,7 +2,5 @@
   "pageIsUnpublished": "Page is unpublished",
   "progressDone": "Done",
   "progressInProgress": "In progress",
-  "progressVisited": "Visited",
-  "trackableCount": "{count} trackable",
-  "trackableNone": "nothing trackable"
+  "progressVisited": "Visited"
 }

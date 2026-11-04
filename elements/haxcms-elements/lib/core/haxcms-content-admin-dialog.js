@@ -142,6 +142,10 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
       _sortDir: { state: true },
       /** "search" or "replace" when that request could not be sent */
       _searchError: { state: true },
+      /** trackable element counts by page id (Activities column) */
+      _trackable: { state: true },
+      /** the Activities counts are still being read */
+      _trackableBusy: { state: true },
     };
   }
 
@@ -254,6 +258,11 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
       updated: "Updated",
       parent: "Parent",
       slug: "Slug",
+      laActivitiesColumn: "Activities",
+      laActivitiesCount: "{count} trackable elements",
+      laActivitiesOne: "1 trackable element",
+      laActivitiesNone: "No trackable elements",
+      laActivitiesCounting: "Counting trackable elements",
       actions: "Actions",
       viewRevisions: "View revisions",
       viewPageRevisions: "View page revisions",
@@ -341,6 +350,8 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
     this._sortKey = "updated";
     this._sortDir = "desc";
     this._searchError = "";
+    this._trackable = null;
+    this._trackableBusy = false;
     this.__disposer = [];
     this.__searchResponseHandler = this._onSearchResults.bind(this);
     this.__replaceResponseHandler = this._onReplaceResults.bind(this);
@@ -742,6 +753,15 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
           font-family: var(--ddd-font-mono, ui-monospace, monospace);
           font-size: var(--hax-ui-admin-font-size-xs);
         }
+        table.pages th.activities,
+        table.pages td.activities {
+          text-align: end;
+          white-space: nowrap;
+        }
+        table.pages td.activities {
+          font-variant-numeric: tabular-nums;
+          color: var(--hax-ui-text-muted);
+        }
         table.pages td.updated {
           font-variant-numeric: tabular-nums;
           color: var(--hax-ui-text-muted);
@@ -1024,7 +1044,9 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
             min-width: 0;
           }
           table.pages th.slug,
-          table.pages td.slug {
+          table.pages td.slug,
+          table.pages th.activities,
+          table.pages td.activities {
             display: none;
           }
           td.title {
@@ -1068,6 +1090,7 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
             border: 0;
           }
           table.pages thead th.slug,
+          table.pages thead th.activities,
           table.pages thead th.actions {
             display: none;
           }
@@ -1195,7 +1218,92 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
     );
   }
 
+  /**
+   * Activities column: trackable element counts per page from the Learning
+   * activity scan (loaded the first time the table draws, sharing its
+   * per-page cache with the Learning activity report). Read only; a saved
+   * page's count is dropped and read again.
+   */
+  async _startTrackable() {
+    if (this.__trackableStarted) {
+      return;
+    }
+    this.__trackableStarted = true;
+    this._trackableBusy = true;
+    let scan;
+    try {
+      scan = await import("./insights/learning-activity-scan.js");
+    } catch {
+      this._trackableBusy = false;
+      return;
+    }
+    this.__trackableScan = scan;
+    scan.watchActivePageTrackable(store, autorun);
+    this.__trackableOff = scan.onTrackableChange(() => {
+      this._trackable = scan.trackableCountsById();
+      this._refreshTrackable();
+    });
+    this._trackable = scan.trackableCountsById();
+    await this._refreshTrackable();
+  }
+
+  /** read the counts of any page in the table that has none yet */
+  async _refreshTrackable() {
+    const scan = this.__trackableScan;
+    if (!scan || this.__trackableReading) {
+      return;
+    }
+    this.__trackableReading = true;
+    this._trackableBusy = true;
+    try {
+      await scan.ensureTrackable(
+        (this.rows || []).map((row) => row.id),
+        { manifest: toJS(store.manifest) },
+      );
+    } catch {
+      // the column stays quiet
+    }
+    this.__trackableReading = false;
+    this._trackableBusy = false;
+    this._trackable = scan.trackableCountsById();
+  }
+
+  /** the count for a row: a number, or null when not counted (yet) */
+  _trackableOf(row) {
+    const counts = this._trackable;
+    if (!counts || !row || typeof counts[row.id] !== "number") {
+      return null;
+    }
+    return counts[row.id];
+  }
+
+  _renderActivities(row) {
+    const n = this._trackableOf(row);
+    if (n === null) {
+      if (!this._trackableBusy) {
+        return nothing;
+      }
+      return html`<span class="none" aria-hidden="true">…</span
+        ><span class="hax-ui-sr-only">${this.t.laActivitiesCounting}</span>`;
+    }
+    if (n === 0) {
+      return html`<span class="none" aria-hidden="true">—</span
+        ><span class="hax-ui-sr-only">${this.t.laActivitiesNone}</span>`;
+    }
+    const words =
+      n === 1
+        ? this.t.laActivitiesOne
+        : this.t.laActivitiesCount.replace("{count}", () => String(n));
+    return html`<span aria-hidden="true">${n}</span
+      ><span class="hax-ui-sr-only">${words}</span>`;
+  }
+
   disconnectedCallback() {
+    if (this.__trackableOff) {
+      this.__trackableOff();
+      this.__trackableOff = null;
+    }
+    this.__trackableStarted = false;
     if (this.__resizeObserver) {
       this.__resizeObserver.disconnect();
       this.__resizeObserver = null;
@@ -2780,6 +2888,11 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
       { key: "updated", label: this.t.updated, cls: "updated" },
       { key: "parent", label: this.t.parent, cls: "parent" },
       { key: "slug", label: this.t.slug, cls: "slug" },
+      {
+        key: "activities",
+        label: this.t.laActivitiesColumn,
+        cls: "activities",
+      },
     ];
   }
 
@@ -2801,6 +2914,11 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
   }
 
   _sortValueFor(row, key) {
+    if (key === "activities") {
+      // not counted yet sorts before none
+      const n = this._trackableOf(row);
+      return n === null ? -1 : n;
+    }
     if (key === "updated") {
       return row.updated || 0;
     }
@@ -3007,6 +3125,9 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
    * end page history and the ⋯ item menu.
    */
   _renderTable() {
+    if (!this.__trackableStarted) {
+      Promise.resolve().then(() => this._startTrackable());
+    }
     const shown = this.filteredRows.map((row) => row.id);
     const checkedShown = shown.filter((id) => this._isChecked(id)).length;
     const allChecked = shown.length > 0 && checkedShown === shown.length;
@@ -3125,6 +3246,7 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
               }
             </td>
             <td class="slug mono" title="${row.slug}">${row.slug}</td>
+            <td class="activities">${this._renderActivities(row)}</td>
             <td class="actions">
               <span class="row-acts">
                 <button
@@ -3218,6 +3340,8 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
         <dd>${row.parent || this.t.none}</dd>
         <dt>${this.t.slug}</dt>
         <dd class="mono">${row.slug}</dd>
+        <dt>${this.t.laActivitiesColumn}</dt>
+        <dd class="activities">${this._renderActivities(row)}</dd>
         <dt>${this.t.description}</dt>
         <dd>${row.description || this.t.none}</dd>
         <dt>${this.t.tags}</dt>

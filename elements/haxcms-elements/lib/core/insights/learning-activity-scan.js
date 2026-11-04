@@ -15,8 +15,8 @@
  *   request per page for a branch) and the same parser (insights-html.js
  *   parseHtml, an inert DOMParser document or the built-in tree parser).
  *   Nothing is rendered or run; tags are only counted.
- * - Cache: counts per page id, shared by the report and the quiet outline
- *   badge. A save of the active page drops its entry; fresh content for the
+ * - Cache: counts per page id, shared by the report and the Activities
+ *   column of the site admin Content table. A save of the active page drops its entry; fresh content for the
  *   active page replaces it.
  *
  * Kept free of UI so it can move into a plugin with the report element
@@ -24,7 +24,11 @@
  */
 import { XAPI_VOCABULARY } from "@haxtheweb/user-action/lib/xapi-vocabulary.js";
 import { parseHtml } from "./insights-html.js";
-import { loadInsightsPages } from "./insights-loader.js";
+import {
+  fetchInsightsPages,
+  loadInsightsPages,
+  resolveSiteUrls,
+} from "./insights-loader.js";
 
 /**
  * Element groups, in table / legend order. Derived from the vocabulary:
@@ -226,9 +230,12 @@ export function summarizeLearningActivity(rows, vocab) {
   };
 }
 
-/* ---------- cache shared by the report and the outline badge ---------- */
+/* ------- cache shared by the report and the Content table column ------- */
 
 const pageCounts = new Map();
+const pending = new Set();
+// pages a single read failed for; tried again after invalidateTrackable()
+const failed = new Set();
 const listeners = new Set();
 let siteLoad = null;
 
@@ -266,8 +273,10 @@ export function rememberTrackable(pageId, counts) {
 export function invalidateTrackable(pageId) {
   if (pageId) {
     pageCounts.delete(pageId);
+    failed.delete(pageId);
   } else {
     pageCounts.clear();
+    failed.clear();
     siteLoad = null;
   }
   notify();
@@ -282,7 +291,7 @@ export function onTrackableChange(fn) {
 }
 
 /**
- * Plain { id: count } of every cached page, for the outline badge.
+ * Plain { id: count } of every cached page, for the Content table.
  */
 export function trackableCountsById() {
   const out = Object.create(null);
@@ -396,4 +405,56 @@ export function ensureSiteTrackable(opts = {}, retry = false) {
     siteLoad = scanLearningActivity({ ...opts, rootId: "" }).catch(() => null);
   }
   return siteLoad;
+}
+
+/**
+ * Make sure the given pages have cached counts: one site scan first (see
+ * ensureSiteTrackable), then any page still missing (a page saved since,
+ * or added) is read on its own with the same content request a branch scan
+ * uses. Quiet on failure: those pages stay uncounted.
+ * @param {string[]} ids page ids
+ * @param {Object} [opts] { manifest (site.json, needed for single pages),
+ *   fetchImpl, baseUrl, siteApiBasePath }
+ */
+export async function ensureTrackable(ids, opts = {}) {
+  await ensureSiteTrackable(opts);
+  const want = new Set(
+    (Array.isArray(ids) ? ids : []).filter(
+      (id) => id && !pageCounts.has(id) && !pending.has(id) && !failed.has(id),
+    ),
+  );
+  const items =
+    opts.manifest && Array.isArray(opts.manifest.items)
+      ? opts.manifest.items.filter((it) => it && want.has(it.id))
+      : [];
+  if (!items.length) {
+    return;
+  }
+  const byId = Object.create(null);
+  items.forEach((it) => {
+    byId[it.id] = it;
+    pending.add(it.id);
+  });
+  try {
+    const pages = await fetchInsightsPages({
+      scope: "branch",
+      targetItems: items,
+      byId,
+      urls: resolveSiteUrls(opts),
+      fetchImpl: opts.fetchImpl,
+    });
+    const vocab = vocabularyMap();
+    pages.forEach((p) => {
+      if (p && p.item && p.item.id) {
+        pageCounts.set(p.item.id, countTrackable(p.html, vocab));
+      }
+    });
+  } catch {
+    // quiet: these pages stay uncounted until they change again
+    items.forEach((it) => failed.add(it.id));
+  }
+  items.forEach((it) => pending.delete(it.id));
+  if (items.some((it) => pageCounts.has(it.id))) {
+    notify();
+  }
 }

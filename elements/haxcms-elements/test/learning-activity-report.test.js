@@ -6,7 +6,6 @@ import {
   countTrackable,
   invalidateTrackable,
   pageHref,
-  rememberTrackable,
   scanLearningActivity,
   trackableCountsById,
   cachedTrackable,
@@ -18,8 +17,6 @@ import {
 } from "../lib/core/insights/learning-activity-report.js";
 import "../lib/core/insights/haxcms-site-reports.js";
 import { getSiteAdminSection } from "../lib/core/admin/site-admin-sections.js";
-import "../lib/ui-components/navigation/site-menu.js";
-import "@haxtheweb/map-menu/lib/map-menu-item.js";
 
 const flush = (ms = 40) => new Promise((r) => setTimeout(r, ms));
 const ORIGIN = globalThis.location.origin;
@@ -645,84 +642,5 @@ describe("learning activity: Reports screen", () => {
     await flush(50);
     await el.updateComplete;
     expect(rep()).to.equal(null);
-  });
-});
-
-describe("learning activity: outline badge", () => {
-  let saved;
-  before(() => {
-    saved = { manifest: store.manifest, editMode: store.editMode };
-  });
-  after(() => {
-    store.manifest = saved.manifest;
-    store.editMode = saved.editMode;
-    invalidateTrackable();
-  });
-
-  it("menu items draw a quiet count, a dash for none, nothing without", async () => {
-    const el = await fixture(
-      html`<map-menu-item itemtitle="Waves 101" trackable="4"></map-menu-item>`,
-    );
-    const badge = () => el.shadowRoot.querySelector(".trackable-count");
-    expect(badge().textContent.trim()).to.equal("4");
-    expect(badge().getAttribute("aria-hidden")).to.equal("true");
-    expect(
-      el.shadowRoot.querySelector("button").textContent.replace(/\s+/g, " "),
-    ).to.include("Waves 101, 4 trackable");
-    el.trackable = "0";
-    await el.updateComplete;
-    expect(badge().textContent.trim()).to.equal("—");
-    el.trackable = "";
-    await el.updateComplete;
-    expect(badge()).to.equal(null);
-  });
-
-  it("site menu shows counts only in edit mode", async () => {
-    store.editMode = false;
-    store.manifest = JSON.parse(JSON.stringify(MANIFEST));
-    rememberTrackable("p1", countTrackable(PAGES.p1));
-    rememberTrackable("p2", countTrackable(PAGES.p2));
-    rememberTrackable("p4", countTrackable(PAGES.p4));
-    const menu = await fixture(html`<site-menu></site-menu>`);
-    await flush(150);
-    await menu.updateComplete;
-    const mm = menu.shadowRoot.querySelector("map-menu");
-    await mm.updateComplete;
-    const items = () => {
-      const out = {};
-      mm.shadowRoot
-        .querySelectorAll("map-menu-item, map-menu-header")
-        .forEach((i) => {
-          out[i.id] = i;
-        });
-      return out;
-    };
-    const badgeOf = (i) =>
-      i && i.shadowRoot ? i.shadowRoot.querySelector(".trackable-count") : null;
-    // learners (no edit mode): nothing
-    expect(mm.trackable).to.equal(null);
-    expect(badgeOf(items().p1)).to.equal(null);
-    store.editMode = true;
-    await flush(150);
-    await menu.updateComplete;
-    await mm.updateComplete;
-    await flush(50);
-    let all = items();
-    await Promise.all(Object.values(all).map((i) => i.updateComplete));
-    expect(mm.trackable.p1).to.equal(4);
-    expect(badgeOf(all.p1).textContent.trim()).to.equal("4");
-    expect(badgeOf(all.p4).textContent.trim()).to.equal("—");
-    // a saved page drops its count until its content is read again
-    store.activeId = "p1";
-    globalThis.dispatchEvent(new CustomEvent("haxcms-trigger-update-node"));
-    await flush(50);
-    expect(cachedTrackable("p1")).to.equal(null);
-    store.editMode = false;
-    await flush(150);
-    await menu.updateComplete;
-    expect(mm.trackable).to.equal(null);
-    all = items();
-    await Promise.all(Object.values(all).map((i) => i.updateComplete));
-    expect(badgeOf(all.p2)).to.equal(null);
   });
 });

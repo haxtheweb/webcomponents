@@ -688,6 +688,11 @@
   "laShowPagesWithout": "Show pages without activities",
   "laHidePagesWithout": "Hide pages without activities",
   "laSectionCounts": "{pages} with activities · {count} trackable",
+  "laActivitiesColumn": "Activities",
+  "laActivitiesCount": "{count} trackable elements",
+  "laActivitiesOne": "1 trackable element",
+  "laActivitiesNone": "No trackable elements",
+  "laActivitiesCounting": "Counting trackable elements",
   "reportsLearning": "Learning activity",
   "reportsLearningDescription": "Which elements can record learner progress, page by page."
 }
