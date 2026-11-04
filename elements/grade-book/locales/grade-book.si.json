@@ -60,5 +60,12 @@
   "downloadPDF": "PDF බාගන්න",
   "displayMode1": "ප්‍රකාරය 1",
   "displayMode2": "ප්‍රකාරය 2",
-  "twoWindows": "කවුළු දෙකක්"
+  "twoWindows": "කවුළු දෙකක්",
+  "notGraded": "ශ්‍රේණිගත කර නැත",
+  "gradeValue": "{points} න් {score}",
+  "studentPosition": "ශිෂ්‍යයා {current} / {total}",
+  "rosterCaption": "ශිෂ්‍යයෝ: {students} · පැවරුම්: {assignments}",
+  "gridInstructions": "ඊතල යතුරු ශ්‍රේණි අතර ගමන් කරයි, Enter ශ්‍රේණිගත කිරීම විවෘත කරයි",
+  "totalScore": "මුළු ලකුණු",
+  "lockTotalScore": "මුළු ලකුණු අගුළු දමන්න"
 }

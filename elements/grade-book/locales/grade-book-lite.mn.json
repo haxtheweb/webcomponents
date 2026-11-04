@@ -57,5 +57,12 @@
   "expandAll": "Бүгдийг дэлгэх",
   "displayMode1": "Горим 1",
   "displayMode2": "Горим 2",
-  "twoWindows": "Хоёр цонх"
+  "twoWindows": "Хоёр цонх",
+  "notGraded": "Дүгнээгүй",
+  "gradeValue": "{points}-аас {score}",
+  "studentPosition": "Оюутан {current} / {total}",
+  "rosterCaption": "Оюутнууд: {students} · Даалгаврууд: {assignments}",
+  "gridInstructions": "Сумтай товчнууд дүнгүүдийн хооронд шилжинэ, Enter дүгнэлтийг нээнэ",
+  "totalScore": "Нийт оноо",
+  "lockTotalScore": "Нийт оноог түгжих"
 }

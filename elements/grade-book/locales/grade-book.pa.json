@@ -60,5 +60,12 @@
   "downloadPDF": "PDF ਡਾਊਨਲੋਡ ਕਰੋ",
   "displayMode1": "ਮੋਡ 1",
   "displayMode2": "ਮੋਡ 2",
-  "twoWindows": "ਦੋ ਵਿੰਡੋਆਂ"
+  "twoWindows": "ਦੋ ਵਿੰਡੋਆਂ",
+  "notGraded": "ਗ੍ਰੇਡ ਨਹੀਂ ਦਿੱਤਾ",
+  "gradeValue": "{points} ਵਿੱਚੋਂ {score}",
+  "studentPosition": "ਵਿਦਿਆਰਥੀ {current} / {total}",
+  "rosterCaption": "ਵਿਦਿਆਰਥੀ: {students} · ਅਸਾਈਨਮੈਂਟਾਂ: {assignments}",
+  "gridInstructions": "ਐਰੋ ਕੁੰਜੀਆਂ ਗ੍ਰੇਡਾਂ ਵਿਚਕਾਰ ਜਾਂਦੀਆਂ ਹਨ, Enter ਗ੍ਰੇਡਿੰਗ ਖੋਲ੍ਹਦੀ ਹੈ",
+  "totalScore": "ਕੁੱਲ ਸਕੋਰ",
+  "lockTotalScore": "ਕੁੱਲ ਸਕੋਰ ਲਾਕ ਕਰੋ"
 }

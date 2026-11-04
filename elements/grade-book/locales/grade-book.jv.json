@@ -60,5 +60,12 @@
   "downloadPDF": "Undhuh PDF",
   "displayMode1": "Mode 1",
   "displayMode2": "Mode 2",
-  "twoWindows": "Rong jendhela"
+  "twoWindows": "Rong jendhela",
+  "notGraded": "Durung dinilai",
+  "gradeValue": "{score} saka {points}",
+  "studentPosition": "Siswa {current} / {total}",
+  "rosterCaption": "Siswa: {students} · Tugas: {assignments}",
+  "gridInstructions": "Tombol panah pindhah antarane nilai, Enter mbukak penilaian",
+  "totalScore": "Skor total",
+  "lockTotalScore": "Kunci skor total"
 }

@@ -57,5 +57,12 @@
   "expandAll": "Proširi sve",
   "displayMode1": "Način 1",
   "displayMode2": "Način 2",
-  "twoWindows": "Dva prozora"
+  "twoWindows": "Dva prozora",
+  "notGraded": "Nije ocijenjeno",
+  "gradeValue": "{score} od {points}",
+  "studentPosition": "Učenik {current} / {total}",
+  "rosterCaption": "Učenici: {students} · Zadaće: {assignments}",
+  "gridInstructions": "Tipke sa strelicama kreću se između ocjena, Enter otvara ocjenjivanje",
+  "totalScore": "Ukupan rezultat",
+  "lockTotalScore": "Zaključaj ukupan rezultat"
 }

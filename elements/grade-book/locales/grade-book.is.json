@@ -60,5 +60,12 @@
   "downloadPDF": "Sækja PDF",
   "displayMode1": "Hamur 1",
   "displayMode2": "Hamur 2",
-  "twoWindows": "Tveir gluggar"
+  "twoWindows": "Tveir gluggar",
+  "notGraded": "Ekki metið",
+  "gradeValue": "{score} af {points}",
+  "studentPosition": "Nemandi {current} / {total}",
+  "rosterCaption": "Nemendur: {students} · Verkefni: {assignments}",
+  "gridInstructions": "Örvatakkar fara á milli einkunna, Enter opnar einkunnagjöf",
+  "totalScore": "Heildarstig",
+  "lockTotalScore": "Læsa heildarstigum"
 }

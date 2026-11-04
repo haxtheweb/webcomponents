@@ -60,5 +60,12 @@
   "downloadPDF": "Ṣe ìgbàsílẹ̀ PDF",
   "displayMode1": "Ipò 1",
   "displayMode2": "Ipò 2",
-  "twoWindows": "Fèrèsé méjì"
+  "twoWindows": "Fèrèsé méjì",
+  "notGraded": "A kò tíì ṣe àyẹ̀wò",
+  "gradeValue": "{score} nínú {points}",
+  "studentPosition": "Akẹ́kọ̀ọ́ {current} / {total}",
+  "rosterCaption": "Àwọn akẹ́kọ̀ọ́: {students} · Àwọn iṣẹ́ àyànfúnni: {assignments}",
+  "gridInstructions": "Àwọn kọ́kọ́rọ́ ọfà ń gbé láàrin àwọn máàkì, Enter ń ṣí ìsàmì-fúnni",
+  "totalScore": "Àpapọ̀ máàkì",
+  "lockTotalScore": "Tìpa àpapọ̀ máàkì"
 }

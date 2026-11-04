@@ -57,5 +57,12 @@
   "expandAll": "Expandir todo",
   "displayMode1": "Modo 1",
   "displayMode2": "Modo 2",
-  "twoWindows": "Dúas xanelas"
+  "twoWindows": "Dúas xanelas",
+  "notGraded": "Sen cualificar",
+  "gradeValue": "{score} de {points}",
+  "studentPosition": "Estudante {current} / {total}",
+  "rosterCaption": "Estudantes: {students} · Tarefas: {assignments}",
+  "gridInstructions": "As teclas de dirección móvense entre as notas, Intro abre a cualificación",
+  "totalScore": "Puntuación total",
+  "lockTotalScore": "Bloquear a puntuación total"
 }

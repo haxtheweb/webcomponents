@@ -57,5 +57,12 @@
   "expandAll": "सबै विस्तार गर्नुहोस्",
   "displayMode1": "मोड १",
   "displayMode2": "मोड २",
-  "twoWindows": "दुई विन्डो"
+  "twoWindows": "दुई विन्डो",
+  "notGraded": "ग्रेड गरिएको छैन",
+  "gradeValue": "{points} मध्ये {score}",
+  "studentPosition": "विद्यार्थी {current} / {total}",
+  "rosterCaption": "विद्यार्थीहरू: {students} · असाइनमेन्टहरू: {assignments}",
+  "gridInstructions": "एरो कुञ्जीहरूले ग्रेडहरूबीच सर्छन्, Enter ले ग्रेडिङ खोल्छ",
+  "totalScore": "कुल अंक",
+  "lockTotalScore": "कुल अंक लक गर्नुहोस्"
 }

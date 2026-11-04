@@ -57,5 +57,12 @@
   "expandAll": "ಎಲ್ಲವನ್ನೂ ವಿಸ್ತರಿಸಿ",
   "displayMode1": "ಮೋಡ್ 1",
   "displayMode2": "ಮೋಡ್ 2",
-  "twoWindows": "ಎರಡು ವಿಂಡೋಗಳು"
+  "twoWindows": "ಎರಡು ವಿಂಡೋಗಳು",
+  "notGraded": "ಗ್ರೇಡ್ ಮಾಡಿಲ್ಲ",
+  "gradeValue": "{points} ರಲ್ಲಿ {score}",
+  "studentPosition": "ವಿದ್ಯಾರ್ಥಿ {current} / {total}",
+  "rosterCaption": "ವಿದ್ಯಾರ್ಥಿಗಳು: {students} · ಅಸೈನ್‌ಮೆಂಟ್‌ಗಳು: {assignments}",
+  "gridInstructions": "ಬಾಣದ ಕೀಲಿಗಳು ಗ್ರೇಡ್‌ಗಳ ನಡುವೆ ಚಲಿಸುತ್ತವೆ, Enter ಗ್ರೇಡಿಂಗ್ ತೆರೆಯುತ್ತದೆ",
+  "totalScore": "ಒಟ್ಟು ಅಂಕ",
+  "lockTotalScore": "ಒಟ್ಟು ಅಂಕ ಲಾಕ್ ಮಾಡಿ"
 }

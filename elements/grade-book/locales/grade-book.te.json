@@ -60,5 +60,12 @@
   "downloadPDF": "PDF డౌన్‌లోడ్ చేయి",
   "displayMode1": "మోడ్ 1",
   "displayMode2": "మోడ్ 2",
-  "twoWindows": "రెండు విండోలు"
+  "twoWindows": "రెండు విండోలు",
+  "notGraded": "గ్రేడ్ చేయలేదు",
+  "gradeValue": "{points}లో {score}",
+  "studentPosition": "విద్యార్థి {current} / {total}",
+  "rosterCaption": "విద్యార్థులు: {students} · అసైన్‌మెంట్‌లు: {assignments}",
+  "gridInstructions": "బాణం కీలు గ్రేడ్‌ల మధ్య కదులుతాయి, Enter గ్రేడింగ్‌ను తెరుస్తుంది",
+  "totalScore": "మొత్తం స్కోరు",
+  "lockTotalScore": "మొత్తం స్కోరును లాక్ చేయండి"
 }

@@ -57,5 +57,12 @@
   "expandAll": "အားလုံး ချဲ့ရန်",
   "displayMode1": "မုဒ် ၁",
   "displayMode2": "မုဒ် ၂",
-  "twoWindows": "ဝင်းဒိုး နှစ်ခု"
+  "twoWindows": "ဝင်းဒိုး နှစ်ခု",
+  "notGraded": "အဆင့်မသတ်မှတ်ရသေးပါ",
+  "gradeValue": "{points} အနက် {score}",
+  "studentPosition": "ကျောင်းသား {current} / {total}",
+  "rosterCaption": "ကျောင်းသားများ- {students} · အလုပ်များ- {assignments}",
+  "gridInstructions": "မြှားခလုတ်များဖြင့် အဆင့်များအကြား ရွှေ့ပြီး Enter ဖြင့် အဆင့်သတ်မှတ်ခြင်းကို ဖွင့်ပါ",
+  "totalScore": "စုစုပေါင်းရမှတ်",
+  "lockTotalScore": "စုစုပေါင်းရမှတ်ကို လော့ခ်ချပါ"
 }

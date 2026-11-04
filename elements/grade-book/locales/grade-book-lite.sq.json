@@ -57,5 +57,12 @@
   "expandAll": "Hap të gjitha",
   "displayMode1": "Modaliteti 1",
   "displayMode2": "Modaliteti 2",
-  "twoWindows": "Dy dritare"
+  "twoWindows": "Dy dritare",
+  "notGraded": "I pavlerësuar",
+  "gradeValue": "{score} nga {points}",
+  "studentPosition": "Studenti {current} / {total}",
+  "rosterCaption": "Studentët: {students} · Detyrat: {assignments}",
+  "gridInstructions": "Tastet me shigjeta lëvizin mes notave, Enter hap vlerësimin",
+  "totalScore": "Pikët totale",
+  "lockTotalScore": "Blloko pikët totale"
 }

@@ -57,5 +57,12 @@
   "expandAll": "सर्व विस्तारित करा",
   "displayMode1": "मोड 1",
   "displayMode2": "मोड 2",
-  "twoWindows": "दोन विंडो"
+  "twoWindows": "दोन विंडो",
+  "notGraded": "श्रेणी दिलेली नाही",
+  "gradeValue": "{points} पैकी {score}",
+  "studentPosition": "विद्यार्थी {current} / {total}",
+  "rosterCaption": "विद्यार्थी: {students} · असाइनमेंट: {assignments}",
+  "gridInstructions": "अ‍ॅरो कीज श्रेणींमध्ये फिरतात, Enter ग्रेडिंग उघडते",
+  "totalScore": "एकूण गुण",
+  "lockTotalScore": "एकूण गुण लॉक करा"
 }

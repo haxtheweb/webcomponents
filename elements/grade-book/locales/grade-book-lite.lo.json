@@ -57,5 +57,12 @@
   "expandAll": "ຂະຫຍາຍທັງໝົດ",
   "displayMode1": "ໂໝດ 1",
   "displayMode2": "ໂໝດ 2",
-  "twoWindows": "ສອງໜ້າຕ່າງ"
+  "twoWindows": "ສອງໜ້າຕ່າງ",
+  "notGraded": "ຍັງບໍ່ໄດ້ໃຫ້ຄະແນນ",
+  "gradeValue": "{score} ຈາກ {points}",
+  "studentPosition": "ນັກຮຽນ {current} / {total}",
+  "rosterCaption": "ນັກຮຽນ: {students} · ວຽກມອບໝາຍ: {assignments}",
+  "gridInstructions": "ປຸ່ມລູກສອນເລື່ອນລະຫວ່າງຄະແນນ, ກົດ Enter ເພື່ອເປີດການໃຫ້ຄະແນນ",
+  "totalScore": "ຄະແນນລວມ",
+  "lockTotalScore": "ລັອກຄະແນນລວມ"
 }

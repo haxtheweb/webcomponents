@@ -60,5 +60,12 @@
   "downloadPDF": "I-download ang PDF",
   "displayMode1": "Mode 1",
   "displayMode2": "Mode 2",
-  "twoWindows": "Dalawang window"
+  "twoWindows": "Dalawang window",
+  "notGraded": "Hindi pa namarkahan",
+  "gradeValue": "{score} sa {points}",
+  "studentPosition": "Mag-aaral {current} / {total}",
+  "rosterCaption": "Mga mag-aaral: {students} · Mga takdang-aralin: {assignments}",
+  "gridInstructions": "Ang mga arrow key ay lumilipat sa pagitan ng mga marka, binubuksan ng Enter ang pagmamarka",
+  "totalScore": "Kabuuang iskor",
+  "lockTotalScore": "I-lock ang kabuuang iskor"
 }

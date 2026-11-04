@@ -57,5 +57,12 @@
   "expandAll": "Hunda bal'isi",
   "displayMode1": "Haalata 1",
   "displayMode2": "Haalata 2",
-  "twoWindows": "Foddaawwan lama"
+  "twoWindows": "Foddaawwan lama",
+  "notGraded": "Hin madaalamne",
+  "gradeValue": "{score} kan {points}",
+  "studentPosition": "Barattuu {current} / {total}",
+  "rosterCaption": "Barattoota: {students} · Hojiiwwan: {assignments}",
+  "gridInstructions": "Furtuuwwan xiyyaa qabxii gidduu ni socho'u, Enter madaallii ni bana",
+  "totalScore": "Ida'ama qabxii",
+  "lockTotalScore": "Ida'ama qabxii cufi"
 }

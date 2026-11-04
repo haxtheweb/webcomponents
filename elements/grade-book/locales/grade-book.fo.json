@@ -60,5 +60,12 @@
   "downloadPDF": "Tak PDF niður",
   "displayMode1": "Háttur 1",
   "displayMode2": "Háttur 2",
-  "twoWindows": "Tveir gluggar"
+  "twoWindows": "Tveir gluggar",
+  "notGraded": "Ikki mett",
+  "gradeValue": "{score} av {points}",
+  "studentPosition": "Næmingur {current} / {total}",
+  "rosterCaption": "Næmingar: {students} · Uppgávur: {assignments}",
+  "gridInstructions": "Pílalyklar flyta millum próvtøl, Enter letur upp meting",
+  "totalScore": "Samlað stigatal",
+  "lockTotalScore": "Læs samlað stigatal"
 }
