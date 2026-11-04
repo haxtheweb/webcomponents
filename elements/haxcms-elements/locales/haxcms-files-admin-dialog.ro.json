@@ -75,5 +75,11 @@
   "selectFile": "Selectează {name}",
   "copyPath": "Copiază calea",
   "pathCopied": "Cale copiată",
-  "embedInPage": "Încorporează în pagină"
+  "embedInPage": "Încorporează în pagină",
+  "deleteFilesTitle": "Șterge fișierele",
+  "renameFilesTitle": "Redenumește fișierele",
+  "replaceOriginalsTitle": "Înlocuiește fișierele originale",
+  "newName": "Nume nou",
+  "deleteAction": "Șterge",
+  "renameAction": "Redenumește"
 }

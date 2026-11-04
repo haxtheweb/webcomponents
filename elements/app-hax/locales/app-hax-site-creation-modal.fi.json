@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Sivusto luotu onnistuneesti!",
   "newSiteReady": "Uusi sivustosi ”{siteName}” on valmis käyttöön.",
   "stayHere": "Pysy tässä",
-  "goToSite": "Siirry sivustolle"
+  "goToSite": "Siirry sivustolle",
+  "stepOf": "Vaihe {step}/{total}"
 }

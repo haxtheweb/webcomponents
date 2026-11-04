@@ -644,5 +644,14 @@
   "primarySidebar": "Hlavní postranní panel",
   "contents": "Obsah",
   "continue": "Pokračovat",
-  "noResultsFor": "Pro „{search}“ nebyly nalezeny žádné výsledky"
+  "noResultsFor": "Pro „{search}“ nebyly nalezeny žádné výsledky",
+  "duplicatePageTitle": "Duplikovat stránku",
+  "duplicateAction": "Duplikovat",
+  "newPageTitle": "Název",
+  "importFromUrlTitle": "Importovat z URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Zahodit změny osnovy?",
+  "outlineSaveTitle": "Uložit změny osnovy?",
+  "discardChanges": "Zahodit změny",
+  "keepEditing": "Pokračovat v úpravách"
 }

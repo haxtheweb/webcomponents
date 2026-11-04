@@ -100,5 +100,6 @@
   "vitepressImportDescription": "Import repo dokumen VitePress ke dalam laman HAX baharu",
   "vitepressImportPrompt": "URL untuk repo git VitePress",
   "quartoImportDescription": "Import repo dokumen Quarto ke dalam laman HAX baharu",
-  "quartoImportPrompt": "URL untuk repo git Quarto"
+  "quartoImportPrompt": "URL untuk repo git Quarto",
+  "cancel": "Batal"
 }

@@ -124,5 +124,13 @@
   "showApiKeyValue": "Arată valoarea cheii API",
   "noSettingsForPanel": "Încă nu există setări disponibile pentru acest panou.",
   "saving": "Se salvează…",
-  "save": "Salvează"
+  "save": "Salvează",
+  "dropSkeletonFile": "Plasați aici un schelet .json sau",
+  "browseFiles": "Răsfoiește",
+  "skeletonUploadNote": "Scheletele încărcate pot fi redenumite sau șterse; scheletele de bază pot fi doar dezactivate.",
+  "skeletonName": "Numele scheletului",
+  "renameAction": "Redenumește",
+  "deleteSkeletonTitle": "Șterge scheletul",
+  "deleteAction": "Șterge",
+  "cancel": "Anulează"
 }

@@ -644,5 +644,14 @@
   "primarySidebar": "Babban Labule na Gefe",
   "contents": "Abubuwan ciki",
   "continue": "Ci gaba",
-  "noResultsFor": "Ba a sami sakamako ga \"{search}\" ba"
+  "noResultsFor": "Ba a sami sakamako ga \"{search}\" ba",
+  "duplicatePageTitle": "Kwafa shafi",
+  "duplicateAction": "Kwafa",
+  "newPageTitle": "Take",
+  "importFromUrlTitle": "Shigo da daga URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "A watsar da canje-canjen tsari?",
+  "outlineSaveTitle": "A ajiye canje-canjen tsari?",
+  "discardChanges": "Watsar da canje-canje",
+  "keepEditing": "Ci gaba da gyarawa"
 }

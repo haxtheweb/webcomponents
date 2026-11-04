@@ -75,5 +75,11 @@
   "selectFile": "{name} തിരഞ്ഞെടുക്കുക",
   "copyPath": "പാത്ത് പകർത്തുക",
   "pathCopied": "പാത്ത് പകർത്തി",
-  "embedInPage": "പേജിൽ എംബെഡ് ചെയ്യുക"
+  "embedInPage": "പേജിൽ എംബെഡ് ചെയ്യുക",
+  "deleteFilesTitle": "ഫയലുകൾ ഇല്ലാതാക്കുക",
+  "renameFilesTitle": "ഫയലുകളുടെ പേര് മാറ്റുക",
+  "replaceOriginalsTitle": "യഥാർത്ഥ ഫയലുകൾ മാറ്റിസ്ഥാപിക്കുക",
+  "newName": "പുതിയ പേര്",
+  "deleteAction": "ഇല്ലാതാക്കുക",
+  "renameAction": "പേര് മാറ്റുക"
 }

@@ -60,5 +60,10 @@
   "pageUnit": "پاڼه",
   "pagesUnit": "پاڼې",
   "replacementUnit": "بدلون",
-  "replacementsUnit": "بدلونونه"
+  "replacementsUnit": "بدلونونه",
+  "deletePagesTitle": "پاڼې ړنګې کړئ",
+  "deleteAction": "ړنګول",
+  "replaceTitle": "په پاڼو کې ځای پر ځای کول",
+  "removeMatchesTitle": "ټولې موندنې لرې کول",
+  "removeAction": "لرې کول"
 }

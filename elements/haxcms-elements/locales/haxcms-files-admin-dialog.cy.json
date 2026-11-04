@@ -75,5 +75,11 @@
   "selectFile": "Dewis {name}",
   "copyPath": "Copïo'r llwybr",
   "pathCopied": "Llwybr wedi'i gopïo",
-  "embedInPage": "Mewnblannu yn y dudalen"
+  "embedInPage": "Mewnblannu yn y dudalen",
+  "deleteFilesTitle": "Dileu ffeiliau",
+  "renameFilesTitle": "Ailenwi ffeiliau",
+  "replaceOriginalsTitle": "Amnewid y ffeiliau gwreiddiol",
+  "newName": "Enw newydd",
+  "deleteAction": "Dileu",
+  "renameAction": "Ailenwi"
 }

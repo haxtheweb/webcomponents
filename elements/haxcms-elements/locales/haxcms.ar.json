@@ -644,5 +644,14 @@
   "primarySidebar": "الشريط الجانبي الرئيسي",
   "contents": "المحتويات",
   "continue": "متابعة",
-  "noResultsFor": "لم يتم العثور على نتائج لـ \"{search}\""
+  "noResultsFor": "لم يتم العثور على نتائج لـ \"{search}\"",
+  "duplicatePageTitle": "تكرار الصفحة",
+  "duplicateAction": "تكرار",
+  "newPageTitle": "العنوان",
+  "importFromUrlTitle": "استيراد من عنوان URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "تجاهل تغييرات المخطط؟",
+  "outlineSaveTitle": "حفظ تغييرات المخطط؟",
+  "discardChanges": "تجاهل التغييرات",
+  "keepEditing": "متابعة التحرير"
 }

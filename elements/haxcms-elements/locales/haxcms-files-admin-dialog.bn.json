@@ -75,5 +75,11 @@
   "selectFile": "{name} নির্বাচন করুন",
   "copyPath": "পাথ কপি করুন",
   "pathCopied": "পাথ কপি হয়েছে",
-  "embedInPage": "পেজে এমবেড করুন"
+  "embedInPage": "পেজে এমবেড করুন",
+  "deleteFilesTitle": "ফাইল মুছুন",
+  "renameFilesTitle": "ফাইলের নাম বদলান",
+  "replaceOriginalsTitle": "মূল ফাইল প্রতিস্থাপন করুন",
+  "newName": "নতুন নাম",
+  "deleteAction": "মুছুন",
+  "renameAction": "নাম বদলান"
 }

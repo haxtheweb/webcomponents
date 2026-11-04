@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Ο ιστότοπος δημιουργήθηκε με επιτυχία!",
   "newSiteReady": "Ο νέος σας ιστότοπος «{siteName}» είναι έτοιμος για χρήση.",
   "stayHere": "Παραμονή εδώ",
-  "goToSite": "Μετάβαση στον ιστότοπο"
+  "goToSite": "Μετάβαση στον ιστότοπο",
+  "stepOf": "Βήμα {step} από {total}"
 }

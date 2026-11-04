@@ -100,5 +100,6 @@
   "vitepressImportDescription": "ਨਵੀਂ HAX ਸਾਈਟ ਵਿੱਚ VitePress ਦਸਤਾਵੇਜ਼ ਰਿਪੋ ਆਯਾਤ ਕਰੋ",
   "vitepressImportPrompt": "VitePress git ਰਿਪੋ ਦਾ URL",
   "quartoImportDescription": "ਨਵੀਂ HAX ਸਾਈਟ ਵਿੱਚ Quarto ਦਸਤਾਵੇਜ਼ ਰਿਪੋ ਆਯਾਤ ਕਰੋ",
-  "quartoImportPrompt": "Quarto git ਰਿਪੋ ਦਾ URL"
+  "quartoImportPrompt": "Quarto git ਰਿਪੋ ਦਾ URL",
+  "cancel": "ਰੱਦ ਕਰੋ"
 }

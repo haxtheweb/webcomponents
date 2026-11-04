@@ -60,5 +60,10 @@
   "pageUnit": "orri",
   "pagesUnit": "orri",
   "replacementUnit": "ordezkapen",
-  "replacementsUnit": "ordezkapen"
+  "replacementsUnit": "ordezkapen",
+  "deletePagesTitle": "Ezabatu orriak",
+  "deleteAction": "Ezabatu",
+  "replaceTitle": "Ordeztu orrietan",
+  "removeMatchesTitle": "Kendu bat-etortze guztiak",
+  "removeAction": "Kendu"
 }

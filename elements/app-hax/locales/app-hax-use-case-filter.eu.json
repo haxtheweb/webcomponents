@@ -100,5 +100,6 @@
   "vitepressImportDescription": "Inportatu VitePress dokumentazio-biltegi bat HAX gune berri batera",
   "vitepressImportPrompt": "VitePress git biltegiaren URLa",
   "quartoImportDescription": "Inportatu Quarto dokumentazio-biltegi bat HAX gune berri batera",
-  "quartoImportPrompt": "Quarto git biltegiaren URLa"
+  "quartoImportPrompt": "Quarto git biltegiaren URLa",
+  "cancel": "Utzi"
 }

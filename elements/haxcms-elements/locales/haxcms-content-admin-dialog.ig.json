@@ -60,5 +60,10 @@
   "pageUnit": "ibe",
   "pagesUnit": "peeji",
   "replacementUnit": "nnọchi",
-  "replacementsUnit": "nnọchi"
+  "replacementsUnit": "nnọchi",
+  "deletePagesTitle": "Hichapụ ibe",
+  "deleteAction": "Hichapụ",
+  "replaceTitle": "Dochie n'ibe",
+  "removeMatchesTitle": "Wepụ ihe niile dakọrọ",
+  "removeAction": "Wepụ"
 }

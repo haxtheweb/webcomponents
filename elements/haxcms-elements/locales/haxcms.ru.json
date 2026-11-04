@@ -644,5 +644,14 @@
   "primarySidebar": "Основная боковая панель",
   "contents": "Содержание",
   "continue": "Продолжить",
-  "noResultsFor": "По запросу «{search}» ничего не найдено"
+  "noResultsFor": "По запросу «{search}» ничего не найдено",
+  "duplicatePageTitle": "Дублировать страницу",
+  "duplicateAction": "Дублировать",
+  "newPageTitle": "Название",
+  "importFromUrlTitle": "Импорт по URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Отменить изменения структуры?",
+  "outlineSaveTitle": "Сохранить изменения структуры?",
+  "discardChanges": "Отменить изменения",
+  "keepEditing": "Продолжить редактирование"
 }

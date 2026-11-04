@@ -124,5 +124,13 @@
   "showApiKeyValue": "API કી મૂલ્ય બતાવો",
   "noSettingsForPanel": "આ પેનલ માટે હજુ કોઈ સેટિંગ્સ ઉપલબ્ધ નથી.",
   "saving": "સાચવી રહ્યા છીએ…",
-  "save": "સાચવો"
+  "save": "સાચવો",
+  "dropSkeletonFile": "સ્કેલેટન .json અહીં મૂકો અથવા",
+  "browseFiles": "બ્રાઉઝ કરો",
+  "skeletonUploadNote": "અપલોડ કરેલા સ્કેલેટનનું નામ બદલી શકાય છે અથવા તેને કાઢી નાખી શકાય છે; મુખ્ય સ્કેલેટન ફક્ત બંધ કરી શકાય છે.",
+  "skeletonName": "સ્કેલેટનનું નામ",
+  "renameAction": "નામ બદલો",
+  "deleteSkeletonTitle": "સ્કેલેટન કાઢી નાખો",
+  "deleteAction": "કાઢી નાખો",
+  "cancel": "રદ કરો"
 }

@@ -75,5 +75,11 @@
   "selectFile": "تحديد {name}",
   "copyPath": "نسخ المسار",
   "pathCopied": "تم نسخ المسار",
-  "embedInPage": "تضمين في الصفحة"
+  "embedInPage": "تضمين في الصفحة",
+  "deleteFilesTitle": "حذف الملفات",
+  "renameFilesTitle": "إعادة تسمية الملفات",
+  "replaceOriginalsTitle": "استبدال الملفات الأصلية",
+  "newName": "الاسم الجديد",
+  "deleteAction": "حذف",
+  "renameAction": "إعادة التسمية"
 }

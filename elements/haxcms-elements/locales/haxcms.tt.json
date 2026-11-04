@@ -644,5 +644,14 @@
   "primarySidebar": "Төп ян панель",
   "contents": "Эчтәлек",
   "continue": "Дәвам итү",
-  "noResultsFor": "\"{search}\" буенча нәтиҗәләр табылмады"
+  "noResultsFor": "\"{search}\" буенча нәтиҗәләр табылмады",
+  "duplicatePageTitle": "Битне кабатлау",
+  "duplicateAction": "Кабатлау",
+  "newPageTitle": "Исем",
+  "importFromUrlTitle": "URL адресыннан импортлау",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Структура үзгәрешләрен кире кагаргамы?",
+  "outlineSaveTitle": "Структура үзгәрешләрен сакларгамы?",
+  "discardChanges": "Үзгәрешләрне кире кагу",
+  "keepEditing": "Төзәтүне дәвам итү"
 }

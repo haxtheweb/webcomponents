@@ -124,5 +124,13 @@
   "showApiKeyValue": "Waarde van API-sleutel tonen",
   "noSettingsForPanel": "Nog geen instellingen beschikbaar voor dit paneel.",
   "saving": "Opslaan…",
-  "save": "Opslaan"
+  "save": "Opslaan",
+  "dropSkeletonFile": "Sleep een skelet-.json hierheen of",
+  "browseFiles": "Bladeren",
+  "skeletonUploadNote": "Geüploade skeletten kunnen worden hernoemd of verwijderd; kernskeletten kunnen alleen worden uitgeschakeld.",
+  "skeletonName": "Skeletnaam",
+  "renameAction": "Hernoemen",
+  "deleteSkeletonTitle": "Skelet verwijderen",
+  "deleteAction": "Verwijderen",
+  "cancel": "Annuleren"
 }

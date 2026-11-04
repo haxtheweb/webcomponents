@@ -644,5 +644,14 @@
   "primarySidebar": "Peamine külgriba",
   "contents": "Sisukord",
   "continue": "Jätka",
-  "noResultsFor": "Päringule „{search}\" tulemusi ei leitud"
+  "noResultsFor": "Päringule „{search}\" tulemusi ei leitud",
+  "duplicatePageTitle": "Dubleeri leht",
+  "duplicateAction": "Dubleeri",
+  "newPageTitle": "Pealkiri",
+  "importFromUrlTitle": "Impordi URL-ilt",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Kas loobuda struktuuri muudatustest?",
+  "outlineSaveTitle": "Kas salvestada struktuuri muudatused?",
+  "discardChanges": "Loobu muudatustest",
+  "keepEditing": "Jätka muutmist"
 }

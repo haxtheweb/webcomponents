@@ -75,5 +75,11 @@
   "selectFile": "{name} fili",
   "copyPath": "Karaa garagalchi",
   "pathCopied": "Karaan garagalfameera",
-  "embedInPage": "Fuula keessa maxxansi"
+  "embedInPage": "Fuula keessa maxxansi",
+  "deleteFilesTitle": "Faayiloota haqi",
+  "renameFilesTitle": "Maqaa faayiloota jijjiiri",
+  "replaceOriginalsTitle": "Faayiloota jalqabaa bakka buusi",
+  "newName": "Maqaa haaraa",
+  "deleteAction": "Haqi",
+  "renameAction": "Maqaa jijjiiri"
 }

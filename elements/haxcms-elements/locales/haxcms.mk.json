@@ -644,5 +644,14 @@
   "primarySidebar": "Главна странична лента",
   "contents": "Содржина",
   "continue": "Продолжи",
-  "noResultsFor": "Не се пронајдени резултати за „{search}“"
+  "noResultsFor": "Не се пронајдени резултати за „{search}“",
+  "duplicatePageTitle": "Дуплирај страница",
+  "duplicateAction": "Дуплирај",
+  "newPageTitle": "Наслов",
+  "importFromUrlTitle": "Увези од URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Да се отфрлат промените во структурата?",
+  "outlineSaveTitle": "Да се зачуваат промените во структурата?",
+  "discardChanges": "Отфрли ги промените",
+  "keepEditing": "Продолжи со уредување"
 }

@@ -60,5 +60,10 @@
   "pageUnit": "kuatiarogue",
   "pagesUnit": "kuatiarogue",
   "replacementUnit": "ñemyengovia",
-  "replacementsUnit": "ñemyengovia"
+  "replacementsUnit": "ñemyengovia",
+  "deletePagesTitle": "Emboguete kuatiarogue",
+  "deleteAction": "Mboguete",
+  "replaceTitle": "Emyengovia kuatiaroguépe",
+  "removeMatchesTitle": "Embogue opaite ojojoguáva",
+  "removeAction": "Embogue"
 }

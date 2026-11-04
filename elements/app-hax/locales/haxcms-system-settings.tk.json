@@ -124,5 +124,13 @@
   "showApiKeyValue": "API açarynyň bahasyny görkez",
   "noSettingsForPanel": "Bu panel üçin heniz sazlama ýok.",
   "saving": "Ýatda saklanýar…",
-  "save": "Ýatda saklamak"
+  "save": "Ýatda saklamak",
+  "dropSkeletonFile": "Şablonyň .json faýlyny şu ýere süýräň ýa-da",
+  "browseFiles": "Gözden geçir",
+  "skeletonUploadNote": "Ýüklenen şablonlaryň adyny üýtgedip ýa-da pozup bolýar; esasy şablonlary diňe öçürip bolýar.",
+  "skeletonName": "Şablonyň ady",
+  "renameAction": "Adyny üýtget",
+  "deleteSkeletonTitle": "Şablony pozmak",
+  "deleteAction": "Pozmak",
+  "cancel": "Ýatyrmak"
 }

@@ -75,5 +75,11 @@
   "selectFile": "{name} тандоо",
   "copyPath": "Жолду көчүрүү",
   "pathCopied": "Жол көчүрүлдү",
-  "embedInPage": "Баракка кыстаруу"
+  "embedInPage": "Баракка кыстаруу",
+  "deleteFilesTitle": "Файлдарды өчүрүү",
+  "renameFilesTitle": "Файлдардын атын өзгөртүү",
+  "replaceOriginalsTitle": "Түпнуска файлдарды алмаштыруу",
+  "newName": "Жаңы ат",
+  "deleteAction": "Өчүрүү",
+  "renameAction": "Атын өзгөртүү"
 }

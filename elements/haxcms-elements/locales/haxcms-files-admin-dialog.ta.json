@@ -75,5 +75,11 @@
   "selectFile": "{name} ஐத் தேர்ந்தெடு",
   "copyPath": "பாதையை நகலெடு",
   "pathCopied": "பாதை நகலெடுக்கப்பட்டது",
-  "embedInPage": "பக்கத்தில் உட்பொதி"
+  "embedInPage": "பக்கத்தில் உட்பொதி",
+  "deleteFilesTitle": "கோப்புகளை நீக்கு",
+  "renameFilesTitle": "கோப்புகளின் பெயர் மாற்று",
+  "replaceOriginalsTitle": "அசல் கோப்புகளை மாற்றியமை",
+  "newName": "புதிய பெயர்",
+  "deleteAction": "நீக்கு",
+  "renameAction": "பெயர் மாற்று"
 }

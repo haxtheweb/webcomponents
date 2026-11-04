@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Saýt üstünlikli döredildi!",
   "newSiteReady": "Täze \"{siteName}\" saýtyňyz ulanmaga taýýar.",
   "stayHere": "Şu ýerde gal",
-  "goToSite": "Saýta geç"
+  "goToSite": "Saýta geç",
+  "stepOf": "Ädim {step} / {total}"
 }

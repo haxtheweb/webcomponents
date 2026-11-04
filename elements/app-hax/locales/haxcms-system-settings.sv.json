@@ -124,5 +124,13 @@
   "showApiKeyValue": "Visa API-nyckelns värde",
   "noSettingsForPanel": "Inga inställningar tillgängliga för den här panelen än.",
   "saving": "Sparar…",
-  "save": "Spara"
+  "save": "Spara",
+  "dropSkeletonFile": "Släpp en skelettfil (.json) eller",
+  "browseFiles": "Bläddra",
+  "skeletonUploadNote": "Uppladdade skelett kan byta namn eller tas bort; kärnskelett kan bara stängas av.",
+  "skeletonName": "Skelettnamn",
+  "renameAction": "Byt namn",
+  "deleteSkeletonTitle": "Ta bort skelett",
+  "deleteAction": "Ta bort",
+  "cancel": "Avbryt"
 }

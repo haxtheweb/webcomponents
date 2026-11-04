@@ -124,5 +124,13 @@
   "showApiKeyValue": "Показати значення ключа API",
   "noSettingsForPanel": "Для цієї панелі ще немає налаштувань.",
   "saving": "Збереження…",
-  "save": "Зберегти"
+  "save": "Зберегти",
+  "dropSkeletonFile": "Перетягніть файл скелета .json або",
+  "browseFiles": "Огляд",
+  "skeletonUploadNote": "Завантажені скелети можна перейменувати або видалити; основні скелети можна лише вимкнути.",
+  "skeletonName": "Назва скелета",
+  "renameAction": "Перейменувати",
+  "deleteSkeletonTitle": "Видалити скелет",
+  "deleteAction": "Видалити",
+  "cancel": "Скасувати"
 }

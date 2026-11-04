@@ -124,5 +124,13 @@
   "showApiKeyValue": "ສະແດງຄ່າ API key",
   "noSettingsForPanel": "ຍັງບໍ່ມີການຕັ້ງຄ່າສຳລັບແຜງນີ້.",
   "saving": "ກຳລັງບັນທຶກ…",
-  "save": "ບັນທຶກ"
+  "save": "ບັນທຶກ",
+  "dropSkeletonFile": "ລາກໄຟລ໌ໂຄງຮ່າງ .json ມາວາງ ຫຼື",
+  "browseFiles": "ເລືອກໄຟລ໌",
+  "skeletonUploadNote": "ໂຄງຮ່າງທີ່ອັບໂຫຼດສາມາດປ່ຽນຊື່ ຫຼື ລຶບໄດ້; ໂຄງຮ່າງຫຼັກສາມາດປິດໄດ້ເທົ່ານັ້ນ.",
+  "skeletonName": "ຊື່ໂຄງຮ່າງ",
+  "renameAction": "ປ່ຽນຊື່",
+  "deleteSkeletonTitle": "ລຶບໂຄງຮ່າງ",
+  "deleteAction": "ລຶບ",
+  "cancel": "ຍົກເລີກ"
 }

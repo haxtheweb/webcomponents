@@ -644,5 +644,14 @@
   "primarySidebar": "แถบด้านข้างหลัก",
   "contents": "สารบัญ",
   "continue": "ถัดไป",
-  "noResultsFor": "ไม่พบผลลัพธ์สำหรับ \"{search}\""
+  "noResultsFor": "ไม่พบผลลัพธ์สำหรับ \"{search}\"",
+  "duplicatePageTitle": "ทำสำเนาหน้า",
+  "duplicateAction": "ทำสำเนา",
+  "newPageTitle": "ชื่อเรื่อง",
+  "importFromUrlTitle": "นำเข้าจาก URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "ละทิ้งการเปลี่ยนแปลงโครงสร้างหรือไม่",
+  "outlineSaveTitle": "บันทึกการเปลี่ยนแปลงโครงสร้างหรือไม่",
+  "discardChanges": "ละทิ้งการเปลี่ยนแปลง",
+  "keepEditing": "แก้ไขต่อ"
 }

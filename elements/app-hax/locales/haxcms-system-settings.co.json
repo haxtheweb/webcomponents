@@ -124,5 +124,13 @@
   "showApiKeyValue": "Mustrà u valore di a chjave API",
   "noSettingsForPanel": "Nisunu parametru dispunibule per stu pannellu per avà.",
   "saving": "Salvamentu…",
-  "save": "Salvà"
+  "save": "Salvà",
+  "dropSkeletonFile": "Depone un scheletru .json o",
+  "browseFiles": "Sfuglià",
+  "skeletonUploadNote": "I scheletri caricati ponu esse rinuminati o squassati; i scheletri di basa ponu solu esse disattivati.",
+  "skeletonName": "Nome di u scheletru",
+  "renameAction": "Rinuminà",
+  "deleteSkeletonTitle": "Squassà u scheletru",
+  "deleteAction": "Squassà",
+  "cancel": "Abbandunà"
 }

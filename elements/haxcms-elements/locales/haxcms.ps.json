@@ -644,5 +644,14 @@
   "primarySidebar": "اصلي څنګ پټه",
   "contents": "منځپانګې",
   "continue": "دوام",
-  "noResultsFor": "د «{search}» لپاره هېڅ پایله ونه موندل شوه"
+  "noResultsFor": "د «{search}» لپاره هېڅ پایله ونه موندل شوه",
+  "duplicatePageTitle": "پاڼه دوه ګونی کول",
+  "duplicateAction": "دوه ګونی کول",
+  "newPageTitle": "سرلیک",
+  "importFromUrlTitle": "له URL څخه راوړل",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "د جوړښت بدلونونه پرېږدئ؟",
+  "outlineSaveTitle": "د جوړښت بدلونونه خوندي کړئ؟",
+  "discardChanges": "بدلونونه پرېښودل",
+  "keepEditing": "سمون ته دوام ورکول"
 }

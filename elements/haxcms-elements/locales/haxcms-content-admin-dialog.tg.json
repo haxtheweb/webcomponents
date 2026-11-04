@@ -60,5 +60,10 @@
   "pageUnit": "саҳифа",
   "pagesUnit": "саҳифаҳо",
   "replacementUnit": "ивазкунӣ",
-  "replacementsUnit": "ивазкунӣ"
+  "replacementsUnit": "ивазкунӣ",
+  "deletePagesTitle": "Нест кардани саҳифаҳо",
+  "deleteAction": "Нест кардан",
+  "replaceTitle": "Иваз кардан дар саҳифаҳо",
+  "removeMatchesTitle": "Хориҷ кардани ҳамаи мувофиқатҳо",
+  "removeAction": "Хориҷ кардан"
 }

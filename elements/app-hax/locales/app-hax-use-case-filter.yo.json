@@ -100,5 +100,6 @@
   "vitepressImportDescription": "Kó ibi ìpamọ́ ìwé VitePress wọlé sínú ojú òpó HAX tuntun",
   "vitepressImportPrompt": "URL fún ibi ìpamọ́ git VitePress",
   "quartoImportDescription": "Kó ibi ìpamọ́ ìwé Quarto wọlé sínú ojú òpó HAX tuntun",
-  "quartoImportPrompt": "URL fún ibi ìpamọ́ git Quarto"
+  "quartoImportPrompt": "URL fún ibi ìpamọ́ git Quarto",
+  "cancel": "Fagilé"
 }

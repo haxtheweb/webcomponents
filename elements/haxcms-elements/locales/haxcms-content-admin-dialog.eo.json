@@ -60,5 +60,10 @@
   "pageUnit": "paĝo",
   "pagesUnit": "paĝoj",
   "replacementUnit": "anstataŭigo",
-  "replacementsUnit": "anstataŭigoj"
+  "replacementsUnit": "anstataŭigoj",
+  "deletePagesTitle": "Forigi paĝojn",
+  "deleteAction": "Forigi",
+  "replaceTitle": "Anstataŭigi en paĝoj",
+  "removeMatchesTitle": "Forigi ĉiujn kongruojn",
+  "removeAction": "Forigi"
 }

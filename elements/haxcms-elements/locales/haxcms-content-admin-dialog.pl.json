@@ -60,5 +60,10 @@
   "pageUnit": "stronę",
   "pagesUnit": "strony",
   "replacementUnit": "zamianę",
-  "replacementsUnit": "zamian"
+  "replacementsUnit": "zamian",
+  "deletePagesTitle": "Usuwanie stron",
+  "deleteAction": "Usuń",
+  "replaceTitle": "Zamień na stronach",
+  "removeMatchesTitle": "Usuń wszystkie dopasowania",
+  "removeAction": "Usuń"
 }

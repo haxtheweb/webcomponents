@@ -60,5 +60,10 @@
   "pageUnit": "หน้า",
   "pagesUnit": "หน้า",
   "replacementUnit": "จุด",
-  "replacementsUnit": "จุด"
+  "replacementsUnit": "จุด",
+  "deletePagesTitle": "ลบหน้า",
+  "deleteAction": "ลบ",
+  "replaceTitle": "แทนที่ในหน้า",
+  "removeMatchesTitle": "นำรายการที่ตรงกันทั้งหมดออก",
+  "removeAction": "นำออก"
 }

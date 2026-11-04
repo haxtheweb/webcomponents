@@ -644,5 +644,14 @@
   "primarySidebar": "Primäre Seitenleiste",
   "contents": "Inhalt",
   "continue": "Weiter",
-  "noResultsFor": "Keine Ergebnisse für „{search}“ gefunden"
+  "noResultsFor": "Keine Ergebnisse für „{search}“ gefunden",
+  "duplicatePageTitle": "Seite duplizieren",
+  "duplicateAction": "Duplizieren",
+  "newPageTitle": "Titel",
+  "importFromUrlTitle": "Von einer URL importieren",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Gliederungsänderungen verwerfen?",
+  "outlineSaveTitle": "Gliederungsänderungen speichern?",
+  "discardChanges": "Änderungen verwerfen",
+  "keepEditing": "Weiter bearbeiten"
 }

@@ -644,5 +644,14 @@
   "primarySidebar": "Ĉefa flankbreto",
   "contents": "Enhavo",
   "continue": "Daŭrigi",
-  "noResultsFor": "Neniuj rezultoj trovitaj por \"{search}\""
+  "noResultsFor": "Neniuj rezultoj trovitaj por \"{search}\"",
+  "duplicatePageTitle": "Duobligi paĝon",
+  "duplicateAction": "Duobligi",
+  "newPageTitle": "Titolo",
+  "importFromUrlTitle": "Importi el URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Ĉu forĵeti ŝanĝojn de la strukturo?",
+  "outlineSaveTitle": "Ĉu konservi ŝanĝojn de la strukturo?",
+  "discardChanges": "Forĵeti ŝanĝojn",
+  "keepEditing": "Daŭrigi redaktadon"
 }

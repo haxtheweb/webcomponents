@@ -644,5 +644,14 @@
   "primarySidebar": "مکيه سائيڊبار",
   "contents": "مواد",
   "continue": "جاري رکو",
-  "noResultsFor": "\"{search}\" لاءِ ڪو نتيجو نه مليو"
+  "noResultsFor": "\"{search}\" لاءِ ڪو نتيجو نه مليو",
+  "duplicatePageTitle": "صفحي جو نقل ٺاهيو",
+  "duplicateAction": "نقل ٺاهيو",
+  "newPageTitle": "عنوان",
+  "importFromUrlTitle": "URL مان امپورٽ ڪريو",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "خاڪي جون تبديليون رد ڪريو؟",
+  "outlineSaveTitle": "خاڪي جون تبديليون محفوظ ڪريو؟",
+  "discardChanges": "تبديليون رد ڪريو",
+  "keepEditing": "ايڊٽ ڪندا رهو"
 }

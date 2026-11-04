@@ -124,5 +124,13 @@
   "showApiKeyValue": "إظهار قيمة مفتاح API",
   "noSettingsForPanel": "لا توجد إعدادات متاحة لهذه اللوحة بعد.",
   "saving": "جارٍ الحفظ…",
-  "save": "حفظ"
+  "save": "حفظ",
+  "dropSkeletonFile": "أفلت ملف هيكل .json أو",
+  "browseFiles": "استعراض",
+  "skeletonUploadNote": "يمكن إعادة تسمية الهياكل المرفوعة أو حذفها؛ أما الهياكل الأساسية فيمكن إيقاف تشغيلها فقط.",
+  "skeletonName": "اسم الهيكل",
+  "renameAction": "إعادة التسمية",
+  "deleteSkeletonTitle": "حذف الهيكل",
+  "deleteAction": "حذف",
+  "cancel": "إلغاء"
 }

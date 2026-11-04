@@ -75,5 +75,11 @@
   "selectFile": "Selezziunà {name}",
   "copyPath": "Cupià u chjassu",
   "pathCopied": "Chjassu cupiatu",
-  "embedInPage": "Incrustà in a pagina"
+  "embedInPage": "Incrustà in a pagina",
+  "deleteFilesTitle": "Squassà i schedarii",
+  "renameFilesTitle": "Rinuminà i schedarii",
+  "replaceOriginalsTitle": "Rimpiazzà i schedarii originali",
+  "newName": "Novu nome",
+  "deleteAction": "Squassà",
+  "renameAction": "Rinuminà"
 }

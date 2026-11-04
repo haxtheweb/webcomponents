@@ -644,5 +644,14 @@
   "primarySidebar": "Główny pasek boczny",
   "contents": "Spis treści",
   "continue": "Dalej",
-  "noResultsFor": "Brak wyników dla „{search}”"
+  "noResultsFor": "Brak wyników dla „{search}”",
+  "duplicatePageTitle": "Duplikuj stronę",
+  "duplicateAction": "Duplikuj",
+  "newPageTitle": "Tytuł",
+  "importFromUrlTitle": "Importuj z adresu URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Odrzucić zmiany w strukturze?",
+  "outlineSaveTitle": "Zapisać zmiany w strukturze?",
+  "discardChanges": "Odrzuć zmiany",
+  "keepEditing": "Kontynuuj edycję"
 }

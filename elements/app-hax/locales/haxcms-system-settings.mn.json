@@ -124,5 +124,13 @@
   "showApiKeyValue": "API түлхүүрийн утгыг харуулах",
   "noSettingsForPanel": "Энэ самбарт одоогоор тохиргоо алга.",
   "saving": "Хадгалж байна…",
-  "save": "Хадгалах"
+  "save": "Хадгалах",
+  "dropSkeletonFile": "Загварын .json файлыг энд чирж оруулах эсвэл",
+  "browseFiles": "Сонгох",
+  "skeletonUploadNote": "Байршуулсан загваруудын нэрийг өөрчлөх эсвэл устгах боломжтой; үндсэн загваруудыг зөвхөн унтраах боломжтой.",
+  "skeletonName": "Загварын нэр",
+  "renameAction": "Нэр өөрчлөх",
+  "deleteSkeletonTitle": "Загвар устгах",
+  "deleteAction": "Устгах",
+  "cancel": "Цуцлах"
 }

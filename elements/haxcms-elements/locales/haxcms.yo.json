@@ -644,5 +644,14 @@
   "primarySidebar": "Ẹ̀gbẹ́ Àkọ́kọ́",
   "contents": "Àwọn àkóónú",
   "continue": "Tẹ̀síwájú",
-  "noResultsFor": "A kò rí èsì kankan fún \"{search}\""
+  "noResultsFor": "A kò rí èsì kankan fún \"{search}\"",
+  "duplicatePageTitle": "Ṣe ẹ̀dà ojú-ìwé",
+  "duplicateAction": "Ṣe ẹ̀dà",
+  "newPageTitle": "Àkọlé",
+  "importFromUrlTitle": "Gbé wọlé láti URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Sọ àwọn àyípadà ìlapa nù?",
+  "outlineSaveTitle": "Fi àwọn àyípadà ìlapa pamọ́?",
+  "discardChanges": "Sọ àwọn àyípadà nù",
+  "keepEditing": "Máa ṣàtúnṣe lọ"
 }

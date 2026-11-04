@@ -644,5 +644,14 @@
   "primarySidebar": "Shiriti anësor kryesor",
   "contents": "Përmbajtja",
   "continue": "Vazhdo",
-  "noResultsFor": "Nuk u gjetën rezultate për \"{search}\""
+  "noResultsFor": "Nuk u gjetën rezultate për \"{search}\"",
+  "duplicatePageTitle": "Dyfisho faqen",
+  "duplicateAction": "Dyfisho",
+  "newPageTitle": "Titulli",
+  "importFromUrlTitle": "Importo nga një URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Të hidhen ndryshimet e strukturës?",
+  "outlineSaveTitle": "Të ruhen ndryshimet e strukturës?",
+  "discardChanges": "Hidh ndryshimet",
+  "keepEditing": "Vazhdo redaktimin"
 }

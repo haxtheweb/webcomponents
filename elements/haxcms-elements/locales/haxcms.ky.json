@@ -644,5 +644,14 @@
   "primarySidebar": "Негизги каптал панель",
   "contents": "Мазмуну",
   "continue": "Улантуу",
-  "noResultsFor": "\"{search}\" боюнча эч нерсе табылган жок"
+  "noResultsFor": "\"{search}\" боюнча эч нерсе табылган жок",
+  "duplicatePageTitle": "Барактын көчүрмөсүн түзүү",
+  "duplicateAction": "Көчүрмөсүн түзүү",
+  "newPageTitle": "Аталышы",
+  "importFromUrlTitle": "URL'ден импорттоо",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Структурадагы өзгөртүүлөр ташталсынбы?",
+  "outlineSaveTitle": "Структурадагы өзгөртүүлөр сакталсынбы?",
+  "discardChanges": "Өзгөртүүлөрдү таштоо",
+  "keepEditing": "Түзөтүүнү улантуу"
 }

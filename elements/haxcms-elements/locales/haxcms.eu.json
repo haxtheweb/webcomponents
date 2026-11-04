@@ -644,5 +644,14 @@
   "primarySidebar": "Alboko barra nagusia",
   "contents": "Edukiak",
   "continue": "Jarraitu",
-  "noResultsFor": "Ez da emaitzarik aurkitu \"{search}\" bilaketarako"
+  "noResultsFor": "Ez da emaitzarik aurkitu \"{search}\" bilaketarako",
+  "duplicatePageTitle": "Bikoiztu orria",
+  "duplicateAction": "Bikoiztu",
+  "newPageTitle": "Izenburua",
+  "importFromUrlTitle": "Inportatu URL batetik",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Eskemaren aldaketak baztertu?",
+  "outlineSaveTitle": "Eskemaren aldaketak gorde?",
+  "discardChanges": "Baztertu aldaketak",
+  "keepEditing": "Jarraitu editatzen"
 }

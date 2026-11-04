@@ -644,5 +644,14 @@
   "primarySidebar": "Bar Sisi Utama",
   "contents": "Kandungan",
   "continue": "Teruskan",
-  "noResultsFor": "Tiada hasil ditemui untuk \"{search}\""
+  "noResultsFor": "Tiada hasil ditemui untuk \"{search}\"",
+  "duplicatePageTitle": "Pendua halaman",
+  "duplicateAction": "Pendua",
+  "newPageTitle": "Tajuk",
+  "importFromUrlTitle": "Import daripada URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Buang perubahan garis besar?",
+  "outlineSaveTitle": "Simpan perubahan garis besar?",
+  "discardChanges": "Buang perubahan",
+  "keepEditing": "Teruskan mengedit"
 }

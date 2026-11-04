@@ -644,5 +644,14 @@
   "primarySidebar": "Paetaha Matua",
   "contents": "Ihirangi",
   "continue": "Haere tonu",
-  "noResultsFor": "Kāore he hua i kitea mō \"{search}\""
+  "noResultsFor": "Kāore he hua i kitea mō \"{search}\"",
+  "duplicatePageTitle": "Tāruarua whārangi",
+  "duplicateAction": "Tāruarua",
+  "newPageTitle": "Taitara",
+  "importFromUrlTitle": "Kawemai i tētahi URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Me whakarere ngā panonitanga ki te hanganga?",
+  "outlineSaveTitle": "Me tiaki ngā panonitanga ki te hanganga?",
+  "discardChanges": "Whakarere panonitanga",
+  "keepEditing": "Whakatika tonu"
 }

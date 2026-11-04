@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "I Angitu te Waihanga Pae!",
   "newSiteReady": "Kua rite tō pae hou \"{siteName}\" hei whakamahi.",
   "stayHere": "Noho Mai Ki Konei",
-  "goToSite": "Haere ki te Pae"
+  "goToSite": "Haere ki te Pae",
+  "stepOf": "Kaupae {step} o {total}"
 }

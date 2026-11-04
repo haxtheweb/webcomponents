@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "A webhely sikeresen létrehozva!",
   "newSiteReady": "Az új webhelyed („{siteName}”) használatra kész.",
   "stayHere": "Maradok",
-  "goToSite": "Ugrás a webhelyre"
+  "goToSite": "Ugrás a webhelyre",
+  "stepOf": "{step}. lépés (összesen {total})"
 }

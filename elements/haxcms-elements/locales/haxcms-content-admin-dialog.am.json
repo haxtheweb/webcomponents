@@ -60,5 +60,10 @@
   "pageUnit": "ገጽ",
   "pagesUnit": "ገጾች",
   "replacementUnit": "መተካት",
-  "replacementsUnit": "መተካቶች"
+  "replacementsUnit": "መተካቶች",
+  "deletePagesTitle": "ገጾችን ሰርዝ",
+  "deleteAction": "ሰርዝ",
+  "replaceTitle": "በገጾች ውስጥ ተካ",
+  "removeMatchesTitle": "ሁሉንም ተዛማጆች አስወግድ",
+  "removeAction": "አስወግድ"
 }

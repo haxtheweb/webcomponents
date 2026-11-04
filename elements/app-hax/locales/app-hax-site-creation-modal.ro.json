@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Site creat cu succes!",
   "newSiteReady": "Noul tău site „{siteName}” este gata de utilizare.",
   "stayHere": "Rămân aici",
-  "goToSite": "Mergi la site"
+  "goToSite": "Mergi la site",
+  "stepOf": "Pasul {step} din {total}"
 }

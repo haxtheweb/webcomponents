@@ -60,5 +60,10 @@
   "pageUnit": "පිටුව",
   "pagesUnit": "පිටු",
   "replacementUnit": "ප්‍රතිස්ථාපනය",
-  "replacementsUnit": "ප්‍රතිස්ථාපන"
+  "replacementsUnit": "ප්‍රතිස්ථාපන",
+  "deletePagesTitle": "පිටු මකන්න",
+  "deleteAction": "මකන්න",
+  "replaceTitle": "පිටුවල ප්‍රතිස්ථාපනය කරන්න",
+  "removeMatchesTitle": "සියලු ගැළපීම් ඉවත් කරන්න",
+  "removeAction": "ඉවත් කරන්න"
 }

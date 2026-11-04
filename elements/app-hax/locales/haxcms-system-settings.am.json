@@ -124,5 +124,13 @@
   "showApiKeyValue": "የAPI ቁልፍ እሴትን አሳይ",
   "noSettingsForPanel": "ለዚህ ፓነል እስካሁን ምንም ቅንብሮች የሉም።",
   "saving": "በማስቀመጥ ላይ…",
-  "save": "አስቀምጥ"
+  "save": "አስቀምጥ",
+  "dropSkeletonFile": "የአብነት .json ፋይል እዚህ ይጣሉ ወይም",
+  "browseFiles": "አስስ",
+  "skeletonUploadNote": "የተሰቀሉ አብነቶች እንደገና ሊሰየሙ ወይም ሊሰረዙ ይችላሉ፤ ዋና አብነቶች ሊጠፉ ብቻ ይችላሉ።",
+  "skeletonName": "የአብነት ስም",
+  "renameAction": "እንደገና ሰይም",
+  "deleteSkeletonTitle": "አብነቱን ሰርዝ",
+  "deleteAction": "ሰርዝ",
+  "cancel": "ሰርዝ"
 }

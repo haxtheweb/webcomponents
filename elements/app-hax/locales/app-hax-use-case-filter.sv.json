@@ -100,5 +100,6 @@
   "vitepressImportDescription": "Importera ett VitePress-dokumentationsrepo till en ny HAX-webbplats",
   "vitepressImportPrompt": "URL till VitePress-repot",
   "quartoImportDescription": "Importera ett Quarto-dokumentationsrepo till en ny HAX-webbplats",
-  "quartoImportPrompt": "URL till Quarto-repot"
+  "quartoImportPrompt": "URL till Quarto-repot",
+  "cancel": "Avbryt"
 }

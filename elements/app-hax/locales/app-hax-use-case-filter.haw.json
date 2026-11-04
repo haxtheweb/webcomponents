@@ -100,5 +100,6 @@
   "vitepressImportDescription": "Hoʻokomo i kahi waihona palapala VitePress i loko o kahi pūnaewele HAX hou",
   "vitepressImportPrompt": "URL no ka waihona git VitePress",
   "quartoImportDescription": "Hoʻokomo i kahi waihona palapala Quarto i loko o kahi pūnaewele HAX hou",
-  "quartoImportPrompt": "URL no ka waihona git Quarto"
+  "quartoImportPrompt": "URL no ka waihona git Quarto",
+  "cancel": "Hoʻopau"
 }

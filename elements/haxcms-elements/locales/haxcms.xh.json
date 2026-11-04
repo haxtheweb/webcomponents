@@ -644,5 +644,14 @@
   "primarySidebar": "Ibha esecaleni eyiNtloko",
   "contents": "Iziqulatho",
   "continue": "Qhubeka",
-  "noResultsFor": "Akukho ziphumo zifunyenweyo ze-\"{search}\""
+  "noResultsFor": "Akukho ziphumo zifunyenweyo ze-\"{search}\"",
+  "duplicatePageTitle": "Phinda wenze ikopi yephepha",
+  "duplicateAction": "Phinda wenze ikopi",
+  "newPageTitle": "Isihloko",
+  "importFromUrlTitle": "Ngenisa ukusuka kwi-URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Lahla iinguqu zolwakhiwo?",
+  "outlineSaveTitle": "Gcina iinguqu zolwakhiwo?",
+  "discardChanges": "Lahla iinguqu",
+  "keepEditing": "Qhubeka uhlela"
 }

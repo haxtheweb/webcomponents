@@ -644,5 +644,14 @@
   "primarySidebar": "Birincil Kenar Çubuğu",
   "contents": "İçindekiler",
   "continue": "Devam",
-  "noResultsFor": "\"{search}\" için sonuç bulunamadı"
+  "noResultsFor": "\"{search}\" için sonuç bulunamadı",
+  "duplicatePageTitle": "Sayfayı çoğalt",
+  "duplicateAction": "Çoğalt",
+  "newPageTitle": "Başlık",
+  "importFromUrlTitle": "Bir URL'den içe aktar",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Anahat değişiklikleri atılsın mı?",
+  "outlineSaveTitle": "Anahat değişiklikleri kaydedilsin mi?",
+  "discardChanges": "Değişiklikleri at",
+  "keepEditing": "Düzenlemeye devam et"
 }

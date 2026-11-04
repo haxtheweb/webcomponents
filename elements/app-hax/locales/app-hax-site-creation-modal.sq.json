@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Sajti u krijua me sukses!",
   "newSiteReady": "Sajti yt i ri \"{siteName}\" është gati për përdorim.",
   "stayHere": "Qëndro këtu",
-  "goToSite": "Shko te sajti"
+  "goToSite": "Shko te sajti",
+  "stepOf": "Hapi {step} nga {total}"
 }

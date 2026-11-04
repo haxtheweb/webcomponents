@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Tovuti Imeundwa kwa Mafanikio!",
   "newSiteReady": "Tovuti yako mpya \"{siteName}\" iko tayari kutumika.",
   "stayHere": "Baki Hapa",
-  "goToSite": "Nenda kwenye Tovuti"
+  "goToSite": "Nenda kwenye Tovuti",
+  "stepOf": "Hatua {step} kati ya {total}"
 }

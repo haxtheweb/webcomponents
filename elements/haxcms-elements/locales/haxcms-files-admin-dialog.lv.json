@@ -75,5 +75,11 @@
   "selectFile": "Atlasīt {name}",
   "copyPath": "Kopēt ceļu",
   "pathCopied": "Ceļš nokopēts",
-  "embedInPage": "Iegult lapā"
+  "embedInPage": "Iegult lapā",
+  "deleteFilesTitle": "Dzēst failus",
+  "renameFilesTitle": "Pārdēvēt failus",
+  "replaceOriginalsTitle": "Aizstāt oriģinālos failus",
+  "newName": "Jauns nosaukums",
+  "deleteAction": "Dzēst",
+  "renameAction": "Pārdēvēt"
 }

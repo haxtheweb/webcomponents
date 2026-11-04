@@ -124,5 +124,13 @@
   "showApiKeyValue": "Rādīt API atslēgas vērtību",
   "noSettingsForPanel": "Šim panelim vēl nav pieejamu iestatījumu.",
   "saving": "Saglabā…",
-  "save": "Saglabāt"
+  "save": "Saglabāt",
+  "dropSkeletonFile": "Ievelciet karkasa .json failu vai",
+  "browseFiles": "Pārlūkot",
+  "skeletonUploadNote": "Augšupielādētos karkasus var pārdēvēt vai dzēst; pamata karkasus var tikai izslēgt.",
+  "skeletonName": "Karkasa nosaukums",
+  "renameAction": "Pārdēvēt",
+  "deleteSkeletonTitle": "Dzēst karkasu",
+  "deleteAction": "Dzēst",
+  "cancel": "Atcelt"
 }

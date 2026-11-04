@@ -100,5 +100,6 @@
   "vitepressImportDescription": "Ներմուծել VitePress փաստաթղթերի պահոց նոր HAX կայքում",
   "vitepressImportPrompt": "VitePress git պահոցի URL-ը",
   "quartoImportDescription": "Ներմուծել Quarto փաստաթղթերի պահոց նոր HAX կայքում",
-  "quartoImportPrompt": "Quarto git պահոցի URL-ը"
+  "quartoImportPrompt": "Quarto git պահոցի URL-ը",
+  "cancel": "Չեղարկել"
 }

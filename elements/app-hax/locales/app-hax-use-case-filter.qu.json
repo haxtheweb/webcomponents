@@ -100,5 +100,6 @@
   "vitepressImportDescription": "VitePress qillqakuna repota musuq HAX tiyanaman haykuchiy",
   "vitepressImportPrompt": "VitePress git repop URL-nin",
   "quartoImportDescription": "Quarto qillqakuna repota musuq HAX tiyanaman haykuchiy",
-  "quartoImportPrompt": "Quarto git repop URL-nin"
+  "quartoImportPrompt": "Quarto git repop URL-nin",
+  "cancel": "Chinkachiy"
 }

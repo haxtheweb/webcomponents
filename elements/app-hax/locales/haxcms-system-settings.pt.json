@@ -124,5 +124,13 @@
   "showApiKeyValue": "Mostrar valor da chave de API",
   "noSettingsForPanel": "Ainda não há configurações disponíveis para este painel.",
   "saving": "Salvando…",
-  "save": "Salvar"
+  "save": "Salvar",
+  "dropSkeletonFile": "Solte um .json de esqueleto ou",
+  "browseFiles": "Procurar",
+  "skeletonUploadNote": "Esqueletos enviados podem ser renomeados ou excluídos; esqueletos principais só podem ser desativados.",
+  "skeletonName": "Nome do esqueleto",
+  "renameAction": "Renomear",
+  "deleteSkeletonTitle": "Excluir esqueleto",
+  "deleteAction": "Excluir",
+  "cancel": "Cancelar"
 }

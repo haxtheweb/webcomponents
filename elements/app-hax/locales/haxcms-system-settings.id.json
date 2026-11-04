@@ -124,5 +124,13 @@
   "showApiKeyValue": "Tampilkan nilai kunci API",
   "noSettingsForPanel": "Belum ada pengaturan untuk panel ini.",
   "saving": "Menyimpan…",
-  "save": "Simpan"
+  "save": "Simpan",
+  "dropSkeletonFile": "Letakkan kerangka .json atau",
+  "browseFiles": "Telusuri",
+  "skeletonUploadNote": "Kerangka yang diunggah dapat diganti namanya atau dihapus; kerangka inti hanya dapat dinonaktifkan.",
+  "skeletonName": "Nama kerangka",
+  "renameAction": "Ganti nama",
+  "deleteSkeletonTitle": "Hapus kerangka",
+  "deleteAction": "Hapus",
+  "cancel": "Batal"
 }

@@ -644,5 +644,14 @@
   "primarySidebar": "Primary Sidebar",
   "contents": "Contents",
   "continue": "Continue",
-  "noResultsFor": "No results found for \"{search}\""
+  "noResultsFor": "No results found for \"{search}\"",
+  "duplicatePageTitle": "Duplicate page",
+  "duplicateAction": "Duplicate",
+  "newPageTitle": "Title",
+  "importFromUrlTitle": "Import from a URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Discard outline changes?",
+  "outlineSaveTitle": "Save outline changes?",
+  "discardChanges": "Discard changes",
+  "keepEditing": "Keep editing"
 }

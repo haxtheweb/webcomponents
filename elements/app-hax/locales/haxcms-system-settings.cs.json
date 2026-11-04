@@ -124,5 +124,13 @@
   "showApiKeyValue": "Zobrazit hodnotu API klíče",
   "noSettingsForPanel": "Pro tento panel zatím nejsou k dispozici žádná nastavení.",
   "saving": "Ukládání…",
-  "save": "Uložit"
+  "save": "Uložit",
+  "dropSkeletonFile": "Přetáhněte kostru .json nebo",
+  "browseFiles": "Procházet",
+  "skeletonUploadNote": "Nahrané kostry lze přejmenovat nebo smazat; základní kostry lze pouze vypnout.",
+  "skeletonName": "Název kostry",
+  "renameAction": "Přejmenovat",
+  "deleteSkeletonTitle": "Smazat kostru",
+  "deleteAction": "Smazat",
+  "cancel": "Zrušit"
 }

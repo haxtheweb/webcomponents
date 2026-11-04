@@ -100,5 +100,6 @@
   "vitepressImportDescription": "Ngenisa i-repo yemibhalo ye-VitePress kusayithi entsha ye-HAX",
   "vitepressImportPrompt": "I-URL ye-repo ye-git ye-VitePress",
   "quartoImportDescription": "Ngenisa i-repo yemibhalo ye-Quarto kusayithi entsha ye-HAX",
-  "quartoImportPrompt": "I-URL ye-repo ye-git ye-Quarto"
+  "quartoImportPrompt": "I-URL ye-repo ye-git ye-Quarto",
+  "cancel": "Khansela"
 }

@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Web byl úspěšně vytvořen!",
   "newSiteReady": "Váš nový web „{siteName}“ je připraven k použití.",
   "stayHere": "Zůstat zde",
-  "goToSite": "Přejít na web"
+  "goToSite": "Přejít na web",
+  "stepOf": "Krok {step} z {total}"
 }

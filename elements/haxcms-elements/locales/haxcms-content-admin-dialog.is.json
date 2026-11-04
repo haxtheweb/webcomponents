@@ -60,5 +60,10 @@
   "pageUnit": "síðu",
   "pagesUnit": "síður",
   "replacementUnit": "útskiptingu",
-  "replacementsUnit": "útskiptingum"
+  "replacementsUnit": "útskiptingum",
+  "deletePagesTitle": "Eyða síðum",
+  "deleteAction": "Eyða",
+  "replaceTitle": "Skipta út á síðum",
+  "removeMatchesTitle": "Fjarlægja allar samsvaranir",
+  "removeAction": "Fjarlægja"
 }

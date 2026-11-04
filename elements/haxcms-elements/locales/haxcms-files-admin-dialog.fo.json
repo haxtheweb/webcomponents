@@ -75,5 +75,11 @@
   "selectFile": "Vel {name}",
   "copyPath": "Avrita leið",
   "pathCopied": "Leið avritað",
-  "embedInPage": "Innfell á síðu"
+  "embedInPage": "Innfell á síðu",
+  "deleteFilesTitle": "Strika fílur",
+  "renameFilesTitle": "Gev fílum nýtt navn",
+  "replaceOriginalsTitle": "Skift út upprunafílur",
+  "newName": "Nýtt navn",
+  "deleteAction": "Strika",
+  "renameAction": "Gev nýtt navn"
 }

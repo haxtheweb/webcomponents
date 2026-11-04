@@ -75,5 +75,11 @@
   "selectFile": "Sarudza {name}",
   "copyPath": "Kopa nzira",
   "pathCopied": "Nzira yakopwa",
-  "embedInPage": "Nyudza mupeji"
+  "embedInPage": "Nyudza mupeji",
+  "deleteFilesTitle": "Dzima mafaira",
+  "renameFilesTitle": "Tumidza mafaira mazita matsva",
+  "replaceOriginalsTitle": "Tsiva mafaira ekutanga",
+  "newName": "Zita idzva",
+  "deleteAction": "Dzima",
+  "renameAction": "Tumidza zita idzva"
 }

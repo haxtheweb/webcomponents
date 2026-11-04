@@ -644,5 +644,14 @@
   "primarySidebar": "Upau wa Kando Mkuu",
   "contents": "Yaliyomo",
   "continue": "Endelea",
-  "noResultsFor": "Hakuna matokeo yaliyopatikana kwa \"{search}\""
+  "noResultsFor": "Hakuna matokeo yaliyopatikana kwa \"{search}\"",
+  "duplicatePageTitle": "Rudufu ukurasa",
+  "duplicateAction": "Rudufu",
+  "newPageTitle": "Kichwa",
+  "importFromUrlTitle": "Ingiza kutoka URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Tupa mabadiliko ya muundo?",
+  "outlineSaveTitle": "Hifadhi mabadiliko ya muundo?",
+  "discardChanges": "Tupa mabadiliko",
+  "keepEditing": "Endelea kuhariri"
 }

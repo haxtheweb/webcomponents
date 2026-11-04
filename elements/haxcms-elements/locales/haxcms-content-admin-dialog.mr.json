@@ -60,5 +60,10 @@
   "pageUnit": "पान",
   "pagesUnit": "पाने",
   "replacementUnit": "बदल",
-  "replacementsUnit": "बदल"
+  "replacementsUnit": "बदल",
+  "deletePagesTitle": "पाने हटवा",
+  "deleteAction": "हटवा",
+  "replaceTitle": "पानांमध्ये बदला",
+  "removeMatchesTitle": "सर्व जुळण्या काढा",
+  "removeAction": "काढा"
 }

@@ -644,5 +644,14 @@
   "primarySidebar": "Ensisijainen sivupalkki",
   "contents": "Sisältö",
   "continue": "Jatka",
-  "noResultsFor": "Ei tuloksia haulle ”{search}”"
+  "noResultsFor": "Ei tuloksia haulle ”{search}”",
+  "duplicatePageTitle": "Monista sivu",
+  "duplicateAction": "Monista",
+  "newPageTitle": "Otsikko",
+  "importFromUrlTitle": "Tuo URL-osoitteesta",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Hylätäänkö rakenteen muutokset?",
+  "outlineSaveTitle": "Tallennetaanko rakenteen muutokset?",
+  "discardChanges": "Hylkää muutokset",
+  "keepEditing": "Jatka muokkaamista"
 }

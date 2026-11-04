@@ -644,5 +644,14 @@
   "primarySidebar": "Pangunahing Sidebar",
   "contents": "Mga Nilalaman",
   "continue": "Magpatuloy",
-  "noResultsFor": "Walang nakitang resulta para sa \"{search}\""
+  "noResultsFor": "Walang nakitang resulta para sa \"{search}\"",
+  "duplicatePageTitle": "I-duplicate ang pahina",
+  "duplicateAction": "I-duplicate",
+  "newPageTitle": "Pamagat",
+  "importFromUrlTitle": "Mag-import mula sa URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Itapon ang mga pagbabago sa outline?",
+  "outlineSaveTitle": "I-save ang mga pagbabago sa outline?",
+  "discardChanges": "Itapon ang mga pagbabago",
+  "keepEditing": "Magpatuloy sa pag-edit"
 }

@@ -644,5 +644,14 @@
   "primarySidebar": "Primaire zijbalk",
   "contents": "Inhoud",
   "continue": "Doorgaan",
-  "noResultsFor": "Geen resultaten gevonden voor \"{search}\""
+  "noResultsFor": "Geen resultaten gevonden voor \"{search}\"",
+  "duplicatePageTitle": "Pagina dupliceren",
+  "duplicateAction": "Dupliceren",
+  "newPageTitle": "Titel",
+  "importFromUrlTitle": "Importeren via een URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Wijzigingen in de structuur negeren?",
+  "outlineSaveTitle": "Wijzigingen in de structuur opslaan?",
+  "discardChanges": "Wijzigingen negeren",
+  "keepEditing": "Doorgaan met bewerken"
 }

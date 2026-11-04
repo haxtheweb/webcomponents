@@ -75,5 +75,11 @@
   "selectFile": "Zaznacz {name}",
   "copyPath": "Kopiuj ścieżkę",
   "pathCopied": "Skopiowano ścieżkę",
-  "embedInPage": "Osadź na stronie"
+  "embedInPage": "Osadź na stronie",
+  "deleteFilesTitle": "Usuń pliki",
+  "renameFilesTitle": "Zmień nazwy plików",
+  "replaceOriginalsTitle": "Zastąp oryginalne pliki",
+  "newName": "Nowa nazwa",
+  "deleteAction": "Usuń",
+  "renameAction": "Zmień nazwę"
 }

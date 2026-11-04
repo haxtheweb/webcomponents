@@ -60,5 +60,10 @@
   "pageUnit": "p'anqa",
   "pagesUnit": "p'anqakuna",
   "replacementUnit": "rantiy",
-  "replacementsUnit": "rantiykuna"
+  "replacementsUnit": "rantiykuna",
+  "deletePagesTitle": "P'anqakunata qulluy",
+  "deleteAction": "Qulluchiy",
+  "replaceTitle": "P'anqakunapi rantinchay",
+  "removeMatchesTitle": "Llapan tupaqkunata hurquy",
+  "removeAction": "Hurquy"
 }

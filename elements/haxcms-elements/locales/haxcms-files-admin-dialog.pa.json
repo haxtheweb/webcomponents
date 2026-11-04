@@ -75,5 +75,11 @@
   "selectFile": "{name} ਚੁਣੋ",
   "copyPath": "ਪਾਥ ਕਾਪੀ ਕਰੋ",
   "pathCopied": "ਪਾਥ ਕਾਪੀ ਹੋ ਗਿਆ",
-  "embedInPage": "ਪੰਨੇ ਵਿੱਚ ਏਮਬੈੱਡ ਕਰੋ"
+  "embedInPage": "ਪੰਨੇ ਵਿੱਚ ਏਮਬੈੱਡ ਕਰੋ",
+  "deleteFilesTitle": "ਫ਼ਾਈਲਾਂ ਮਿਟਾਓ",
+  "renameFilesTitle": "ਫ਼ਾਈਲਾਂ ਦੇ ਨਾਮ ਬਦਲੋ",
+  "replaceOriginalsTitle": "ਅਸਲ ਫ਼ਾਈਲਾਂ ਬਦਲੋ",
+  "newName": "ਨਵਾਂ ਨਾਮ",
+  "deleteAction": "ਮਿਟਾਓ",
+  "renameAction": "ਨਾਮ ਬਦਲੋ"
 }

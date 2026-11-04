@@ -60,5 +60,10 @@
   "pageUnit": "iphepha",
   "pagesUnit": "amaphepha",
   "replacementUnit": "utshintsho",
-  "replacementsUnit": "iinguqu"
+  "replacementsUnit": "iinguqu",
+  "deletePagesTitle": "Cima amaphepha",
+  "deleteAction": "Cima",
+  "replaceTitle": "Tshintsha kumaphepha",
+  "removeMatchesTitle": "Susa zonke ezihambelanayo",
+  "removeAction": "Susa"
 }

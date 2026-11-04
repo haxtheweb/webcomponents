@@ -75,5 +75,11 @@
   "selectFile": "انتخاب {name}",
   "copyPath": "کپی مسیر",
   "pathCopied": "مسیر کپی شد",
-  "embedInPage": "جاسازی در صفحه"
+  "embedInPage": "جاسازی در صفحه",
+  "deleteFilesTitle": "حذف فایل‌ها",
+  "renameFilesTitle": "تغییر نام فایل‌ها",
+  "replaceOriginalsTitle": "جایگزینی فایل‌های اصلی",
+  "newName": "نام جدید",
+  "deleteAction": "حذف",
+  "renameAction": "تغییر نام"
 }

@@ -75,5 +75,11 @@
   "selectFile": "{name} ಆಯ್ಕೆಮಾಡಿ",
   "copyPath": "ಮಾರ್ಗ ನಕಲಿಸಿ",
   "pathCopied": "ಮಾರ್ಗ ನಕಲಿಸಲಾಗಿದೆ",
-  "embedInPage": "ಪುಟದಲ್ಲಿ ಎಂಬೆಡ್ ಮಾಡಿ"
+  "embedInPage": "ಪುಟದಲ್ಲಿ ಎಂಬೆಡ್ ಮಾಡಿ",
+  "deleteFilesTitle": "ಫೈಲ್‌ಗಳನ್ನು ಅಳಿಸಿ",
+  "renameFilesTitle": "ಫೈಲ್‌ಗಳನ್ನು ಮರುಹೆಸರಿಸಿ",
+  "replaceOriginalsTitle": "ಮೂಲ ಫೈಲ್‌ಗಳನ್ನು ಬದಲಾಯಿಸಿ",
+  "newName": "ಹೊಸ ಹೆಸರು",
+  "deleteAction": "ಅಳಿಸಿ",
+  "renameAction": "ಮರುಹೆಸರಿಸಿ"
 }

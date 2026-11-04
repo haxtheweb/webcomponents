@@ -100,5 +100,6 @@
   "vitepressImportDescription": "នាំចូលឃ្លាំងឯកសារ VitePress ទៅក្នុងគេហទំព័រ HAX ថ្មី",
   "vitepressImportPrompt": "URL សម្រាប់ឃ្លាំង git របស់ VitePress",
   "quartoImportDescription": "នាំចូលឃ្លាំងឯកសារ Quarto ទៅក្នុងគេហទំព័រ HAX ថ្មី",
-  "quartoImportPrompt": "URL សម្រាប់ឃ្លាំង git របស់ Quarto"
+  "quartoImportPrompt": "URL សម្រាប់ឃ្លាំង git របស់ Quarto",
+  "cancel": "បោះបង់"
 }

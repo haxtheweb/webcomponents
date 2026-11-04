@@ -644,5 +644,14 @@
   "primarySidebar": "기본 사이드바",
   "contents": "목차",
   "continue": "계속",
-  "noResultsFor": "\"{search}\"에 대한 검색 결과가 없습니다"
+  "noResultsFor": "\"{search}\"에 대한 검색 결과가 없습니다",
+  "duplicatePageTitle": "페이지 복제",
+  "duplicateAction": "복제",
+  "newPageTitle": "제목",
+  "importFromUrlTitle": "URL에서 가져오기",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "개요 변경 사항을 버릴까요?",
+  "outlineSaveTitle": "개요 변경 사항을 저장할까요?",
+  "discardChanges": "변경 사항 버리기",
+  "keepEditing": "계속 편집"
 }

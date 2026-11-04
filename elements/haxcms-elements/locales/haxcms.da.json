@@ -644,5 +644,14 @@
   "primarySidebar": "Primær sidebjælke",
   "contents": "Indhold",
   "continue": "Fortsæt",
-  "noResultsFor": "Ingen resultater fundet for \"{search}\""
+  "noResultsFor": "Ingen resultater fundet for \"{search}\"",
+  "duplicatePageTitle": "Duplikér side",
+  "duplicateAction": "Duplikér",
+  "newPageTitle": "Titel",
+  "importFromUrlTitle": "Importér fra en URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Kassér ændringer i strukturen?",
+  "outlineSaveTitle": "Gem ændringer i strukturen?",
+  "discardChanges": "Kassér ændringer",
+  "keepEditing": "Fortsæt redigering"
 }

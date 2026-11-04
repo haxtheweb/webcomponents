@@ -644,5 +644,14 @@
   "primarySidebar": "Ibha Eseceleni Eyinhloko",
   "contents": "Okuqukethwe",
   "continue": "Qhubeka",
-  "noResultsFor": "Ayikho imiphumela etholakele ye-\"{search}\""
+  "noResultsFor": "Ayikho imiphumela etholakele ye-\"{search}\"",
+  "duplicatePageTitle": "Phinda kabili ikhasi",
+  "duplicateAction": "Phinda kabili",
+  "newPageTitle": "Isihloko",
+  "importFromUrlTitle": "Ngenisa kusuka ku-URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Lahla izinguquko zesakhiwo?",
+  "outlineSaveTitle": "Londoloza izinguquko zesakhiwo?",
+  "discardChanges": "Lahla izinguquko",
+  "keepEditing": "Qhubeka uhlela"
 }

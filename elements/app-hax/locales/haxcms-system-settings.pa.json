@@ -124,5 +124,13 @@
   "showApiKeyValue": "API ਕੁੰਜੀ ਦਾ ਮੁੱਲ ਦਿਖਾਓ",
   "noSettingsForPanel": "ਇਸ ਪੈਨਲ ਲਈ ਹਾਲੇ ਕੋਈ ਸੈਟਿੰਗ ਉਪਲਬਧ ਨਹੀਂ।",
   "saving": "ਸੰਭਾਲਿਆ ਜਾ ਰਿਹਾ ਹੈ…",
-  "save": "ਸੰਭਾਲੋ"
+  "save": "ਸੰਭਾਲੋ",
+  "dropSkeletonFile": "ਸਕੈਲਟਨ .json ਇੱਥੇ ਸੁੱਟੋ ਜਾਂ",
+  "browseFiles": "ਬ੍ਰਾਊਜ਼ ਕਰੋ",
+  "skeletonUploadNote": "ਅੱਪਲੋਡ ਕੀਤੇ ਸਕੈਲਟਨਾਂ ਦਾ ਨਾਮ ਬਦਲਿਆ ਜਾਂ ਉਨ੍ਹਾਂ ਨੂੰ ਮਿਟਾਇਆ ਜਾ ਸਕਦਾ ਹੈ; ਮੁੱਖ ਸਕੈਲਟਨ ਸਿਰਫ਼ ਬੰਦ ਕੀਤੇ ਜਾ ਸਕਦੇ ਹਨ।",
+  "skeletonName": "ਸਕੈਲਟਨ ਦਾ ਨਾਮ",
+  "renameAction": "ਨਾਮ ਬਦਲੋ",
+  "deleteSkeletonTitle": "ਸਕੈਲਟਨ ਮਿਟਾਓ",
+  "deleteAction": "ਮਿਟਾਓ",
+  "cancel": "ਰੱਦ ਕਰੋ"
 }

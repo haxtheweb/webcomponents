@@ -60,5 +60,10 @@
   "pageUnit": "صفحو",
   "pagesUnit": "صفحا",
   "replacementUnit": "متبادل",
-  "replacementsUnit": "متبادل"
+  "replacementsUnit": "متبادل",
+  "deletePagesTitle": "صفحا ختم ڪريو",
+  "deleteAction": "ڊليٽ ڪريو",
+  "replaceTitle": "صفحن ۾ مٽايو",
+  "removeMatchesTitle": "سڀ ملندڙ هٽايو",
+  "removeAction": "هٽايو"
 }

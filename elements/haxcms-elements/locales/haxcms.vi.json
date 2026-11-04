@@ -644,5 +644,14 @@
   "primarySidebar": "Thanh bên chính",
   "contents": "Mục lục",
   "continue": "Tiếp tục",
-  "noResultsFor": "Không tìm thấy kết quả cho \"{search}\""
+  "noResultsFor": "Không tìm thấy kết quả cho \"{search}\"",
+  "duplicatePageTitle": "Nhân bản trang",
+  "duplicateAction": "Nhân bản",
+  "newPageTitle": "Tiêu đề",
+  "importFromUrlTitle": "Nhập từ URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Bỏ các thay đổi dàn ý?",
+  "outlineSaveTitle": "Lưu các thay đổi dàn ý?",
+  "discardChanges": "Bỏ thay đổi",
+  "keepEditing": "Tiếp tục chỉnh sửa"
 }

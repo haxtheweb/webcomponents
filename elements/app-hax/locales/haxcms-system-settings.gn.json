@@ -124,5 +124,13 @@
   "showApiKeyValue": "Ehechauka API key tepykue",
   "noSettingsForPanel": "Ndaipóri gueteri ñemboheko ko pa'ũme g̃uarã.",
   "saving": "Oñeñongatuhína…",
-  "save": "Ñongatu"
+  "save": "Ñongatu",
+  "dropSkeletonFile": "Emoĩ kanguekue .json ko'ápe térã",
+  "browseFiles": "Eheka",
+  "skeletonUploadNote": "Kanguekue ojehupíva ikatu oñembohéra pyahu térã oñembogue; kanguekue ypyguáva ikatu oñemboty añoite.",
+  "skeletonName": "Kanguekue réra",
+  "renameAction": "Embohéra pyahu",
+  "deleteSkeletonTitle": "Emboguete kanguekue",
+  "deleteAction": "Mboguete",
+  "cancel": "Heja"
 }

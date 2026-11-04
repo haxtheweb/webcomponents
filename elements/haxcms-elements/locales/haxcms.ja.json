@@ -644,5 +644,14 @@
   "primarySidebar": "メインサイドバー",
   "contents": "目次",
   "continue": "続ける",
-  "noResultsFor": "「{search}」の検索結果は見つかりませんでした"
+  "noResultsFor": "「{search}」の検索結果は見つかりませんでした",
+  "duplicatePageTitle": "ページを複製",
+  "duplicateAction": "複製",
+  "newPageTitle": "タイトル",
+  "importFromUrlTitle": "URL からインポート",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "アウトラインの変更を破棄しますか？",
+  "outlineSaveTitle": "アウトラインの変更を保存しますか？",
+  "discardChanges": "変更を破棄",
+  "keepEditing": "編集を続ける"
 }

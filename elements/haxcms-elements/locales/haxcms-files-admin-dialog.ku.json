@@ -75,5 +75,11 @@
   "selectFile": "{name} hilbijêre",
   "copyPath": "Rêyê kopî bike",
   "pathCopied": "Rê hat kopîkirin",
-  "embedInPage": "Di rûpelê de bi cih bike"
+  "embedInPage": "Di rûpelê de bi cih bike",
+  "deleteFilesTitle": "Pelan jê bibe",
+  "renameFilesTitle": "Navê pelan biguherîne",
+  "replaceOriginalsTitle": "Pelên orîjînal biguherîne",
+  "newName": "Navê nû",
+  "deleteAction": "Jê bibe",
+  "renameAction": "Navê biguherîne"
 }

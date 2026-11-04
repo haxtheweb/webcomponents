@@ -100,5 +100,6 @@
   "vitepressImportDescription": "VitePress resminama repozitoriýasyny täze HAX saýtyna import et",
   "vitepressImportPrompt": "VitePress git repozitoriýasynyň URL-i",
   "quartoImportDescription": "Quarto resminama repozitoriýasyny täze HAX saýtyna import et",
-  "quartoImportPrompt": "Quarto git repozitoriýasynyň URL-i"
+  "quartoImportPrompt": "Quarto git repozitoriýasynyň URL-i",
+  "cancel": "Ýatyrmak"
 }

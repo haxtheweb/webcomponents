@@ -644,5 +644,14 @@
   "primarySidebar": "Mbali Yaikulu",
   "contents": "Zamkati",
   "continue": "Pitirizani",
-  "noResultsFor": "Palibe zotsatira zopezeka za \"{search}\""
+  "noResultsFor": "Palibe zotsatira zopezeka za \"{search}\"",
+  "duplicatePageTitle": "Pangani kope la tsamba",
+  "duplicateAction": "Pangani kope",
+  "newPageTitle": "Mutu",
+  "importFromUrlTitle": "Bweretsani kuchokera ku URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Kusiya zosintha za kapangidwe?",
+  "outlineSaveTitle": "Sungani zosintha za kapangidwe?",
+  "discardChanges": "Siyani zosintha",
+  "keepEditing": "Pitirizani kusintha"
 }

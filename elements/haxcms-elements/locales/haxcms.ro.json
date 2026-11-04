@@ -644,5 +644,14 @@
   "primarySidebar": "Bara laterală principală",
   "contents": "Cuprins",
   "continue": "Continuă",
-  "noResultsFor": "Nu s-au găsit rezultate pentru „{search}”"
+  "noResultsFor": "Nu s-au găsit rezultate pentru „{search}”",
+  "duplicatePageTitle": "Duplică pagina",
+  "duplicateAction": "Duplică",
+  "newPageTitle": "Titlu",
+  "importFromUrlTitle": "Importă dintr-un URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Renunțați la modificările structurii?",
+  "outlineSaveTitle": "Salvați modificările structurii?",
+  "discardChanges": "Renunță la modificări",
+  "keepEditing": "Continuă editarea"
 }

@@ -644,5 +644,14 @@
   "primarySidebar": "Κύρια πλαϊνή στήλη",
   "contents": "Περιεχόμενα",
   "continue": "Συνέχεια",
-  "noResultsFor": "Δεν βρέθηκαν αποτελέσματα για «{search}»"
+  "noResultsFor": "Δεν βρέθηκαν αποτελέσματα για «{search}»",
+  "duplicatePageTitle": "Διπλασιασμός σελίδας",
+  "duplicateAction": "Διπλασιασμός",
+  "newPageTitle": "Τίτλος",
+  "importFromUrlTitle": "Εισαγωγή από URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Απόρριψη αλλαγών διάρθρωσης;",
+  "outlineSaveTitle": "Αποθήκευση αλλαγών διάρθρωσης;",
+  "discardChanges": "Απόρριψη αλλαγών",
+  "keepEditing": "Συνέχεια επεξεργασίας"
 }

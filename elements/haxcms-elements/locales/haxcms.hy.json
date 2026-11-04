@@ -644,5 +644,14 @@
   "primarySidebar": "Հիմնական կողագոտի",
   "contents": "Բովանդակություն",
   "continue": "Շարունակել",
-  "noResultsFor": "«{search}»-ի համար արդյունքներ չեն գտնվել"
+  "noResultsFor": "«{search}»-ի համար արդյունքներ չեն գտնվել",
+  "duplicatePageTitle": "Կրկնօրինակել էջը",
+  "duplicateAction": "Կրկնօրինակել",
+  "newPageTitle": "Վերնագիր",
+  "importFromUrlTitle": "Ներմուծել URL-ից",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Անտեսե՞լ կառուցվածքի փոփոխությունները",
+  "outlineSaveTitle": "Պահպանե՞լ կառուցվածքի փոփոխությունները",
+  "discardChanges": "Անտեսել փոփոխությունները",
+  "keepEditing": "Շարունակել խմբագրումը"
 }

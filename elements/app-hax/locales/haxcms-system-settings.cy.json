@@ -124,5 +124,13 @@
   "showApiKeyValue": "Dangos gwerth yr allwedd API",
   "noSettingsForPanel": "Dim gosodiadau ar gael ar gyfer y panel hwn eto.",
   "saving": "Yn cadw…",
-  "save": "Cadw"
+  "save": "Cadw",
+  "dropSkeletonFile": "Gollyngwch sgerbwd .json neu",
+  "browseFiles": "Pori",
+  "skeletonUploadNote": "Gellir ailenwi neu ddileu sgerbydau sydd wedi'u llwytho i fyny; dim ond diffodd sgerbydau craidd y gellir ei wneud.",
+  "skeletonName": "Enw'r sgerbwd",
+  "renameAction": "Ailenwi",
+  "deleteSkeletonTitle": "Dileu sgerbwd",
+  "deleteAction": "Dileu",
+  "cancel": "Canslo"
 }
