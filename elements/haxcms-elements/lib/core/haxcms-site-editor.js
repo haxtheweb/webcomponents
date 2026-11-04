@@ -990,16 +990,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
           if (!this.jwt || this.jwt === "" || this.jwt === "null") {
             this._clearAllRefreshRetryCounts();
             this._snapshotPendingEditForLogout();
-            this.dispatchEvent(
-              new CustomEvent("jwt-login-logout", {
-                composed: true,
-                bubbles: true,
-                cancelable: false,
-                detail: {
-                  redirect: true,
-                },
-              }),
-            );
+            this._jwtLogout();
             return;
           }
           const retryMeta = this._incrementRefreshRetryCount(target);
@@ -1007,16 +998,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
             this._clearRefreshRetryCount(retryMeta.retryKey);
             this._clearAllRefreshRetryCounts();
             this._snapshotPendingEditForLogout();
-            this.dispatchEvent(
-              new CustomEvent("jwt-login-logout", {
-                composed: true,
-                bubbles: true,
-                cancelable: false,
-                detail: {
-                  redirect: true,
-                },
-              }),
-            );
+            this._jwtLogout();
             return;
           }
           this.dispatchEvent(
@@ -1195,6 +1177,24 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     });
   }
   /**
+   * End the session through jwt-login and follow its redirect-url once the
+   * logout request settles (jwt-login waits for the server before it
+   * navigates). One place for every "session is gone" path in the editor.
+   */
+  _jwtLogout() {
+    this.dispatchEvent(
+      new CustomEvent("jwt-login-logout", {
+        composed: true,
+        bubbles: true,
+        cancelable: false,
+        detail: {
+          redirect: true,
+        },
+      }),
+    );
+  }
+
+  /**
    * Respond to a failed request to refresh the token by killing the logout process
    */
   // Phase 6 (L2 documentation): refresh-token family revocation on logout
@@ -1218,16 +1218,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
       }
       this._snapshotPendingEditForLogout();
     }
-    this.dispatchEvent(
-      new CustomEvent("jwt-login-logout", {
-        composed: true,
-        bubbles: true,
-        cancelable: false,
-        detail: {
-          redirect: true,
-        },
-      }),
-    );
+    this._jwtLogout();
   }
 
   connectedCallback() {
