@@ -380,12 +380,16 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
           transform: translateX(-50%);
         }
 
+        /* the brim sits on the character's own hair line: the art's crown
+           is centred at x 208 of 405 (77px at 150px wide) and the sprite
+           is 1.5px left of its box's centre, so the hat is placed from
+           the left rather than centred; 16px down puts the brim's bottom
+           edge on the bottom of the hair line */
         .hat-avatar app-hax-simple-hat-progress {
           position: absolute;
-          left: 50%;
-          top: 0;
+          left: calc(50% - 78.5px);
+          top: 16px;
           width: 150px;
-          transform: translateX(-50%);
           z-index: 1;
         }
 

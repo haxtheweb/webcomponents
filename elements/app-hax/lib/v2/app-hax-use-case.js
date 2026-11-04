@@ -100,9 +100,14 @@ export class AppHaxUseCase extends I18NMixin(LitElement) {
           background-color: var(--hax-ui-selected);
         }
 
+        /* every card is the same shape: a 4:3 preview, so a tall theme
+           screenshot is cropped to its top instead of stretching the card
+           (overflow: hidden stops aspect-ratio growing to fit the image) */
         .image {
           height: var(--app-hax-use-case-image-height);
           aspect-ratio: 4 / 3;
+          overflow: hidden;
+          min-height: 0;
           flex-shrink: 0;
           position: relative;
           display: flex;
