@@ -60,5 +60,10 @@
   "pageUnit": "peji",
   "pagesUnit": "mapeji",
   "replacementUnit": "kutsiva",
-  "replacementsUnit": "kutsiva"
+  "replacementsUnit": "kutsiva",
+  "laActivitiesColumn": "Mabasa",
+  "laActivitiesCount": "Zvinhu {count} zvinoteverwa",
+  "laActivitiesOne": "Chinhu 1 chinoteverwa",
+  "laActivitiesNone": "Hapana zvinhu zvinoteverwa",
+  "laActivitiesCounting": "Kuverenga zvinhu zvinoteverwa"
 }

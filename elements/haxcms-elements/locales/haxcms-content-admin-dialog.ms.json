@@ -60,5 +60,10 @@
   "pageUnit": "halaman",
   "pagesUnit": "halaman",
   "replacementUnit": "gantian",
-  "replacementsUnit": "gantian"
+  "replacementsUnit": "gantian",
+  "laActivitiesColumn": "Aktiviti",
+  "laActivitiesCount": "{count} elemen boleh jejak",
+  "laActivitiesOne": "1 elemen boleh jejak",
+  "laActivitiesNone": "Tiada elemen boleh jejak",
+  "laActivitiesCounting": "Mengira elemen boleh jejak"
 }

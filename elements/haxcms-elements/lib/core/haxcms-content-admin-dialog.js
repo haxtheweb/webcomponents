@@ -2885,14 +2885,14 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
     return [
       { key: "title", label: this.t.title, cls: "title" },
       { key: "status", label: this.t.status, cls: "status" },
-      { key: "updated", label: this.t.updated, cls: "updated" },
-      { key: "parent", label: this.t.parent, cls: "parent" },
-      { key: "slug", label: this.t.slug, cls: "slug" },
       {
         key: "activities",
         label: this.t.laActivitiesColumn,
         cls: "activities",
       },
+      { key: "updated", label: this.t.updated, cls: "updated" },
+      { key: "parent", label: this.t.parent, cls: "parent" },
+      { key: "slug", label: this.t.slug, cls: "slug" },
     ];
   }
 
@@ -3225,6 +3225,7 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
                     >`
               }
             </td>
+            <td class="activities">${this._renderActivities(row)}</td>
             <td class="updated">
               ${
                 row.updated
@@ -3246,7 +3247,6 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
               }
             </td>
             <td class="slug mono" title="${row.slug}">${row.slug}</td>
-            <td class="activities">${this._renderActivities(row)}</td>
             <td class="actions">
               <span class="row-acts">
                 <button

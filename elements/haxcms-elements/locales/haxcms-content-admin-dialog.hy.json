@@ -60,5 +60,10 @@
   "pageUnit": "էջ",
   "pagesUnit": "էջեր",
   "replacementUnit": "փոխարինում",
-  "replacementsUnit": "փոխարինում"
+  "replacementsUnit": "փոխարինում",
+  "laActivitiesColumn": "Ակտիվություններ",
+  "laActivitiesCount": "{count} հետևելի տարր",
+  "laActivitiesOne": "1 հետևելի տարր",
+  "laActivitiesNone": "Հետևելի տարրեր չկան",
+  "laActivitiesCounting": "Հետևելի տարրերի հաշվում"
 }

@@ -60,5 +60,10 @@
   "pageUnit": "səhifə",
   "pagesUnit": "səhifə",
   "replacementUnit": "əvəzləmə",
-  "replacementsUnit": "əvəzləmə"
+  "replacementsUnit": "əvəzləmə",
+  "laActivitiesColumn": "Fəaliyyətlər",
+  "laActivitiesCount": "{count} izlənə bilən element",
+  "laActivitiesOne": "1 izlənə bilən element",
+  "laActivitiesNone": "İzlənə bilən element yoxdur",
+  "laActivitiesCounting": "İzlənə bilən elementlər sayılır"
 }

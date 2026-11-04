@@ -60,5 +60,10 @@
   "pageUnit": "bog",
   "pagesUnit": "bogag",
   "replacementUnit": "beddel",
-  "replacementsUnit": "beddelaad"
+  "replacementsUnit": "beddelaad",
+  "laActivitiesColumn": "Hawlo",
+  "laActivitiesCount": "{count} curiye oo la raadraaci karo",
+  "laActivitiesOne": "1 curiye oo la raadraaci karo",
+  "laActivitiesNone": "Ma jiraan curiyeyaal la raadraaci karo",
+  "laActivitiesCounting": "Waa la tirinayaa curiyeyaasha la raadraaci karo"
 }

@@ -60,5 +60,10 @@
   "pageUnit": "rûpel",
   "pagesUnit": "rûpel",
   "replacementUnit": "guhertin",
-  "replacementsUnit": "guhertin"
+  "replacementsUnit": "guhertin",
+  "laActivitiesColumn": "Çalakî",
+  "laActivitiesCount": "{count} hêmanên şopandinê",
+  "laActivitiesOne": "1 hêmana şopandinê",
+  "laActivitiesNone": "Tu hêmanên şopandinê tune",
+  "laActivitiesCounting": "Hêmanên şopandinê têne hejmartin"
 }

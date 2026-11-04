@@ -60,5 +60,10 @@
   "pageUnit": "psl.",
   "pagesUnit": "puslapiai",
   "replacementUnit": "pakeitimas",
-  "replacementsUnit": "pakeitimai"
+  "replacementsUnit": "pakeitimai",
+  "laActivitiesColumn": "Veiklos",
+  "laActivitiesCount": "Sekamų elementų: {count}",
+  "laActivitiesOne": "1 sekamas elementas",
+  "laActivitiesNone": "Sekamų elementų nėra",
+  "laActivitiesCounting": "Skaičiuojami sekami elementai"
 }

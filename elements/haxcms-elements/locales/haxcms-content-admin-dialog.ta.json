@@ -60,5 +60,10 @@
   "pageUnit": "பக்கம்",
   "pagesUnit": "பக்கங்கள்",
   "replacementUnit": "மாற்றீடு",
-  "replacementsUnit": "மாற்றீடுகள்"
+  "replacementsUnit": "மாற்றீடுகள்",
+  "laActivitiesColumn": "செயல்பாடுகள்",
+  "laActivitiesCount": "{count} கண்காணிக்கக்கூடிய கூறுகள்",
+  "laActivitiesOne": "1 கண்காணிக்கக்கூடிய கூறு",
+  "laActivitiesNone": "கண்காணிக்கக்கூடிய கூறுகள் இல்லை",
+  "laActivitiesCounting": "கண்காணிக்கக்கூடிய கூறுகளை எண்ணுகிறது"
 }

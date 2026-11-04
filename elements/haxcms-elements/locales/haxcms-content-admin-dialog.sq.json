@@ -60,5 +60,10 @@
   "pageUnit": "faqe",
   "pagesUnit": "faqe",
   "replacementUnit": "zëvendësim",
-  "replacementsUnit": "zëvendësime"
+  "replacementsUnit": "zëvendësime",
+  "laActivitiesColumn": "Veprimtari",
+  "laActivitiesCount": "{count} elemente të gjurmueshme",
+  "laActivitiesOne": "1 element i gjurmueshëm",
+  "laActivitiesNone": "Asnjë element i gjurmueshëm",
+  "laActivitiesCounting": "Po numërohen elementet e gjurmueshme"
 }

@@ -60,5 +60,10 @@
   "pageUnit": "stronę",
   "pagesUnit": "strony",
   "replacementUnit": "zamianę",
-  "replacementsUnit": "zamian"
+  "replacementsUnit": "zamian",
+  "laActivitiesColumn": "Aktywności",
+  "laActivitiesCount": "Elementy śledzone: {count}",
+  "laActivitiesOne": "1 element śledzony",
+  "laActivitiesNone": "Brak elementów śledzonych",
+  "laActivitiesCounting": "Liczenie elementów śledzonych"
 }

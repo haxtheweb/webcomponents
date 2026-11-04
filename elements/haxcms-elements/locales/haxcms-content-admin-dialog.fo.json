@@ -60,5 +60,10 @@
   "pageUnit": "síðu",
   "pagesUnit": "síður",
   "replacementUnit": "útskifting",
-  "replacementsUnit": "útskiftingar"
+  "replacementsUnit": "útskiftingar",
+  "laActivitiesColumn": "Virksemi",
+  "laActivitiesCount": "{count} sporbar elementir",
+  "laActivitiesOne": "1 sporbart element",
+  "laActivitiesNone": "Eingi sporbar elementir",
+  "laActivitiesCounting": "Teljir sporbar elementir"
 }

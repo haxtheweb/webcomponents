@@ -60,5 +60,10 @@
   "pageUnit": "страница",
   "pagesUnit": "странице",
   "replacementUnit": "заменом",
-  "replacementsUnit": "замена"
+  "replacementsUnit": "замена",
+  "laActivitiesColumn": "Активности",
+  "laActivitiesCount": "Елемената који се могу пратити: {count}",
+  "laActivitiesOne": "1 елемент који се може пратити",
+  "laActivitiesNone": "Нема елемената који се могу пратити",
+  "laActivitiesCounting": "Бројање елемената који се могу пратити"
 }

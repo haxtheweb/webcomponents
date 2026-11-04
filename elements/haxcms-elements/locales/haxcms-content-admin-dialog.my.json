@@ -60,5 +60,10 @@
   "pageUnit": "စာမျက်နှာ",
   "pagesUnit": "စာမျက်နှာများ",
   "replacementUnit": "အစားထိုးမှု",
-  "replacementsUnit": "အစားထိုးမှု"
+  "replacementsUnit": "အစားထိုးမှု",
+  "laActivitiesColumn": "လှုပ်ရှားမှုများ",
+  "laActivitiesCount": "ခြေရာခံနိုင်သော ဒြပ်စင် {count} ခု",
+  "laActivitiesOne": "ခြေရာခံနိုင်သော ဒြပ်စင် 1 ခု",
+  "laActivitiesNone": "ခြေရာခံနိုင်သော ဒြပ်စင် မရှိပါ",
+  "laActivitiesCounting": "ခြေရာခံနိုင်သော ဒြပ်စင်များကို ရေတွက်နေသည်"
 }

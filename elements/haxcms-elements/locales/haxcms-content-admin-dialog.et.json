@@ -60,5 +60,10 @@
   "pageUnit": "leht",
   "pagesUnit": "lehte",
   "replacementUnit": "asendus",
-  "replacementsUnit": "asendust"
+  "replacementsUnit": "asendust",
+  "laActivitiesColumn": "Tegevused",
+  "laActivitiesCount": "{count} jälgitavat elementi",
+  "laActivitiesOne": "1 jälgitav element",
+  "laActivitiesNone": "Jälgitavaid elemente pole",
+  "laActivitiesCounting": "Jälgitavate elementide loendamine"
 }

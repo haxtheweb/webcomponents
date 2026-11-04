@@ -60,5 +60,10 @@
   "pageUnit": "पेज",
   "pagesUnit": "पेज",
   "replacementUnit": "प्रतिस्थापन",
-  "replacementsUnit": "प्रतिस्थापन"
+  "replacementsUnit": "प्रतिस्थापन",
+  "laActivitiesColumn": "गतिविधियाँ",
+  "laActivitiesCount": "{count} ट्रैक करने योग्य तत्व",
+  "laActivitiesOne": "1 ट्रैक करने योग्य तत्व",
+  "laActivitiesNone": "कोई ट्रैक करने योग्य तत्व नहीं",
+  "laActivitiesCounting": "ट्रैक करने योग्य तत्व गिने जा रहे हैं"
 }

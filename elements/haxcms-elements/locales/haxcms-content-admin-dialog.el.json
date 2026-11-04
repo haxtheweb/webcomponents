@@ -60,5 +60,10 @@
   "pageUnit": "σελίδα",
   "pagesUnit": "σελίδες",
   "replacementUnit": "αντικατάσταση",
-  "replacementsUnit": "αντικαταστάσεις"
+  "replacementsUnit": "αντικαταστάσεις",
+  "laActivitiesColumn": "Δραστηριότητες",
+  "laActivitiesCount": "{count} ανιχνεύσιμα στοιχεία",
+  "laActivitiesOne": "1 ανιχνεύσιμο στοιχείο",
+  "laActivitiesNone": "Κανένα ανιχνεύσιμο στοιχείο",
+  "laActivitiesCounting": "Καταμέτρηση ανιχνεύσιμων στοιχείων"
 }

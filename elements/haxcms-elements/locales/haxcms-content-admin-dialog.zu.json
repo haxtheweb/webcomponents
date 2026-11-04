@@ -60,5 +60,10 @@
   "pageUnit": "ikhasi",
   "pagesUnit": "amakhasi",
   "replacementUnit": "ushintsho",
-  "replacementsUnit": "izinguquko"
+  "replacementsUnit": "izinguquko",
+  "laActivitiesColumn": "Imisebenzi",
+  "laActivitiesCount": "Izinto ezingalandelelwa ezingu-{count}",
+  "laActivitiesOne": "Into eyodwa engalandelelwa",
+  "laActivitiesNone": "Azikho izinto ezingalandelelwa",
+  "laActivitiesCounting": "Kubalwa izinto ezingalandelelwa"
 }

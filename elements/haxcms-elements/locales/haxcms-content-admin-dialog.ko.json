@@ -60,5 +60,10 @@
   "pageUnit": "개 페이지",
   "pagesUnit": "페이지",
   "replacementUnit": "건 바꿈",
-  "replacementsUnit": "건 바꿈"
+  "replacementsUnit": "건 바꿈",
+  "laActivitiesColumn": "활동",
+  "laActivitiesCount": "추적 가능한 요소 {count}개",
+  "laActivitiesOne": "추적 가능한 요소 1개",
+  "laActivitiesNone": "추적 가능한 요소 없음",
+  "laActivitiesCounting": "추적 가능한 요소 세는 중"
 }

@@ -60,5 +60,10 @@
   "pageUnit": "Seite",
   "pagesUnit": "Seiten",
   "replacementUnit": "Ersetzung",
-  "replacementsUnit": "Ersetzungen"
+  "replacementsUnit": "Ersetzungen",
+  "laActivitiesColumn": "Aktivitäten",
+  "laActivitiesCount": "{count} erfassbare Elemente",
+  "laActivitiesOne": "1 erfassbares Element",
+  "laActivitiesNone": "Keine erfassbaren Elemente",
+  "laActivitiesCounting": "Erfassbare Elemente werden gezählt"
 }

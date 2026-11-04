@@ -60,5 +60,10 @@
   "pageUnit": "صفحہ",
   "pagesUnit": "صفحے",
   "replacementUnit": "تبدیلی",
-  "replacementsUnit": "تبدیلیاں"
+  "replacementsUnit": "تبدیلیاں",
+  "laActivitiesColumn": "سرگرمیاں",
+  "laActivitiesCount": "{count} ٹریک ہون والے عناصر",
+  "laActivitiesOne": "1 ٹریک ہون والا عنصر",
+  "laActivitiesNone": "کوئی ٹریک ہون والا عنصر نئیں",
+  "laActivitiesCounting": "ٹریک ہون والے عناصر گنے جا رہے نیں"
 }

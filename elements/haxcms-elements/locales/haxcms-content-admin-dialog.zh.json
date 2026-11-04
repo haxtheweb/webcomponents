@@ -60,5 +60,10 @@
   "pageUnit": "个页面",
   "pagesUnit": "页",
   "replacementUnit": "处替换",
-  "replacementsUnit": "处替换"
+  "replacementsUnit": "处替换",
+  "laActivitiesColumn": "活动",
+  "laActivitiesCount": "{count} 个可追踪元素",
+  "laActivitiesOne": "1 个可追踪元素",
+  "laActivitiesNone": "没有可追踪元素",
+  "laActivitiesCounting": "正在统计可追踪元素"
 }

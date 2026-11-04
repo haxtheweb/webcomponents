@@ -60,5 +60,10 @@
   "pageUnit": "דף",
   "pagesUnit": "דפים",
   "replacementUnit": "החלפה",
-  "replacementsUnit": "החלפות"
+  "replacementsUnit": "החלפות",
+  "laActivitiesColumn": "פעילויות",
+  "laActivitiesCount": "{count} רכיבים הניתנים למעקב",
+  "laActivitiesOne": "רכיב אחד הניתן למעקב",
+  "laActivitiesNone": "אין רכיבים הניתנים למעקב",
+  "laActivitiesCounting": "סופר רכיבים הניתנים למעקב"
 }

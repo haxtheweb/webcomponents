@@ -60,5 +60,10 @@
   "pageUnit": "oldal",
   "pagesUnit": "oldal",
   "replacementUnit": "csere",
-  "replacementsUnit": "csere"
+  "replacementsUnit": "csere",
+  "laActivitiesColumn": "Tevékenységek",
+  "laActivitiesCount": "{count} követhető elem",
+  "laActivitiesOne": "1 követhető elem",
+  "laActivitiesNone": "Nincsenek követhető elemek",
+  "laActivitiesCounting": "Követhető elemek számlálása"
 }

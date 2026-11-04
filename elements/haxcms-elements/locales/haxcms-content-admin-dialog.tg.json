@@ -60,5 +60,10 @@
   "pageUnit": "саҳифа",
   "pagesUnit": "саҳифаҳо",
   "replacementUnit": "ивазкунӣ",
-  "replacementsUnit": "ивазкунӣ"
+  "replacementsUnit": "ивазкунӣ",
+  "laActivitiesColumn": "Фаъолиятҳо",
+  "laActivitiesCount": "{count} унсури пайгиришаванда",
+  "laActivitiesOne": "1 унсури пайгиришаванда",
+  "laActivitiesNone": "Унсурҳои пайгиришаванда нестанд",
+  "laActivitiesCounting": "Унсурҳои пайгиришаванда шумурда мешаванд"
 }

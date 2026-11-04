@@ -60,5 +60,10 @@
   "pageUnit": "iphepha",
   "pagesUnit": "amaphepha",
   "replacementUnit": "utshintsho",
-  "replacementsUnit": "iinguqu"
+  "replacementsUnit": "iinguqu",
+  "laActivitiesColumn": "Imisebenzi",
+  "laActivitiesCount": "Izinto ezinokulandelelwa ezi-{count}",
+  "laActivitiesOne": "Into enye enokulandelelwa",
+  "laActivitiesNone": "Akukho zinto zinokulandelelwa",
+  "laActivitiesCounting": "Kubalwa izinto ezinokulandelelwa"
 }

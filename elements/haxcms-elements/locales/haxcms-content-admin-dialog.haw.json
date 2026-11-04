@@ -60,5 +60,10 @@
   "pageUnit": "ʻaoʻao",
   "pagesUnit": "ʻaoʻao",
   "replacementUnit": "pani",
-  "replacementsUnit": "pani"
+  "replacementsUnit": "pani",
+  "laActivitiesColumn": "Nā hana",
+  "laActivitiesCount": "{count} mau mea hiki ke hahai ʻia",
+  "laActivitiesOne": "1 mea hiki ke hahai ʻia",
+  "laActivitiesNone": "ʻAʻohe mea hiki ke hahai ʻia",
+  "laActivitiesCounting": "Ke helu nei i nā mea hiki ke hahai ʻia"
 }

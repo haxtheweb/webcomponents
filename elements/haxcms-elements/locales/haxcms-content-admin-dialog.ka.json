@@ -60,5 +60,10 @@
   "pageUnit": "გვერდი",
   "pagesUnit": "გვერდი",
   "replacementUnit": "ჩანაცვლება",
-  "replacementsUnit": "ჩანაცვლება"
+  "replacementsUnit": "ჩანაცვლება",
+  "laActivitiesColumn": "აქტივობები",
+  "laActivitiesCount": "{count} თვალყურის სადევნებელი ელემენტი",
+  "laActivitiesOne": "1 თვალყურის სადევნებელი ელემენტი",
+  "laActivitiesNone": "თვალყურის სადევნებელი ელემენტები არ არის",
+  "laActivitiesCounting": "თვალყურის სადევნებელი ელემენტების დათვლა"
 }

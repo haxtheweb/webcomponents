@@ -60,5 +60,10 @@
   "pageUnit": "صفحه",
   "pagesUnit": "صفحه",
   "replacementUnit": "جایگزینی",
-  "replacementsUnit": "جایگزینی"
+  "replacementsUnit": "جایگزینی",
+  "laActivitiesColumn": "فعالیت‌ها",
+  "laActivitiesCount": "{count} عنصر قابل ردیابی",
+  "laActivitiesOne": "۱ عنصر قابل ردیابی",
+  "laActivitiesNone": "هیچ عنصر قابل ردیابی‌ای وجود ندارد",
+  "laActivitiesCounting": "در حال شمارش عناصر قابل ردیابی"
 }

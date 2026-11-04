@@ -60,5 +60,10 @@
   "pageUnit": "бет",
   "pagesUnit": "бет",
   "replacementUnit": "ауыстыру",
-  "replacementsUnit": "ауыстыру"
+  "replacementsUnit": "ауыстыру",
+  "laActivitiesColumn": "Тапсырмалар",
+  "laActivitiesCount": "{count} бақыланатын элемент",
+  "laActivitiesOne": "1 бақыланатын элемент",
+  "laActivitiesNone": "Бақыланатын элементтер жоқ",
+  "laActivitiesCounting": "Бақыланатын элементтер саналуда"
 }

@@ -60,5 +60,10 @@
   "pageUnit": "страница",
   "pagesUnit": "страници",
   "replacementUnit": "замяна",
-  "replacementsUnit": "замени"
+  "replacementsUnit": "замени",
+  "laActivitiesColumn": "Дейности",
+  "laActivitiesCount": "{count} проследяеми елемента",
+  "laActivitiesOne": "1 проследяем елемент",
+  "laActivitiesNone": "Няма проследяеми елементи",
+  "laActivitiesCounting": "Преброяване на проследяемите елементи"
 }

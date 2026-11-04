@@ -60,5 +60,10 @@
   "pageUnit": "стр.",
   "pagesUnit": "страниц",
   "replacementUnit": "замена",
-  "replacementsUnit": "замен"
+  "replacementsUnit": "замен",
+  "laActivitiesColumn": "Задания",
+  "laActivitiesCount": "Отслеживаемых элементов: {count}",
+  "laActivitiesOne": "1 отслеживаемый элемент",
+  "laActivitiesNone": "Нет отслеживаемых элементов",
+  "laActivitiesCounting": "Подсчёт отслеживаемых элементов"
 }

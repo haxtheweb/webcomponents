@@ -60,5 +60,10 @@
   "pageUnit": "síðu",
   "pagesUnit": "síður",
   "replacementUnit": "útskiptingu",
-  "replacementsUnit": "útskiptingum"
+  "replacementsUnit": "útskiptingum",
+  "laActivitiesColumn": "Verkefni",
+  "laActivitiesCount": "{count} rekjanlegar einingar",
+  "laActivitiesOne": "1 rekjanleg eining",
+  "laActivitiesNone": "Engar rekjanlegar einingar",
+  "laActivitiesCounting": "Telur rekjanlegar einingar"
 }

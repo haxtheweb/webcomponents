@@ -60,5 +60,10 @@
   "pageUnit": "kuatiarogue",
   "pagesUnit": "kuatiarogue",
   "replacementUnit": "ñemyengovia",
-  "replacementsUnit": "ñemyengovia"
+  "replacementsUnit": "ñemyengovia",
+  "laActivitiesColumn": "Tembiapokuéra",
+  "laActivitiesCount": "{count} mba'e ikatúva oñemoñe'ẽ",
+  "laActivitiesOne": "1 mba'e ikatúva oñemoñe'ẽ",
+  "laActivitiesNone": "Ndaipóri mba'e ikatúva oñemoñe'ẽ",
+  "laActivitiesCounting": "Ojepapa mba'e ikatúva oñemoñe'ẽ"
 }

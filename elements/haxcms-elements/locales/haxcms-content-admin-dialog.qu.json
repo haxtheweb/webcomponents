@@ -60,5 +60,10 @@
   "pageUnit": "p'anqa",
   "pagesUnit": "p'anqakuna",
   "replacementUnit": "rantiy",
-  "replacementsUnit": "rantiykuna"
+  "replacementsUnit": "rantiykuna",
+  "laActivitiesColumn": "Rurayninkuna",
+  "laActivitiesCount": "{count} qatipay atina elementokuna",
+  "laActivitiesOne": "1 qatipay atina elemento",
+  "laActivitiesNone": "Mana qatipay atina elementokuna kanchu",
+  "laActivitiesCounting": "Qatipay atina elementokunata yupachkan"
 }

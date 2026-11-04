@@ -60,5 +60,10 @@
   "pageUnit": "ໜ້າ",
   "pagesUnit": "ໜ້າ",
   "replacementUnit": "ການແທນທີ່",
-  "replacementsUnit": "ການແທນທີ່"
+  "replacementsUnit": "ການແທນທີ່",
+  "laActivitiesColumn": "ກິດຈະກຳ",
+  "laActivitiesCount": "ອົງປະກອບທີ່ຕິດຕາມໄດ້ {count} ອັນ",
+  "laActivitiesOne": "ອົງປະກອບທີ່ຕິດຕາມໄດ້ 1 ອັນ",
+  "laActivitiesNone": "ບໍ່ມີອົງປະກອບທີ່ຕິດຕາມໄດ້",
+  "laActivitiesCounting": "ກຳລັງນັບອົງປະກອບທີ່ຕິດຕາມໄດ້"
 }

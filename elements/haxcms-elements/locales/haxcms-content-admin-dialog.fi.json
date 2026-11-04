@@ -60,5 +60,10 @@
   "pageUnit": "sivu",
   "pagesUnit": "sivua",
   "replacementUnit": "korvaus",
-  "replacementsUnit": "korvausta"
+  "replacementsUnit": "korvausta",
+  "laActivitiesColumn": "Tehtävät",
+  "laActivitiesCount": "{count} seurattavaa elementtiä",
+  "laActivitiesOne": "1 seurattava elementti",
+  "laActivitiesNone": "Ei seurattavia elementtejä",
+  "laActivitiesCounting": "Lasketaan seurattavia elementtejä"
 }

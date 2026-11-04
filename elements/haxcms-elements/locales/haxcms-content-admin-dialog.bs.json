@@ -60,5 +60,10 @@
   "pageUnit": "stranica",
   "pagesUnit": "stranice",
   "replacementUnit": "zamjena",
-  "replacementsUnit": "zamjena"
+  "replacementsUnit": "zamjena",
+  "laActivitiesColumn": "Aktivnosti",
+  "laActivitiesCount": "Elemenata koji se mogu pratiti: {count}",
+  "laActivitiesOne": "1 element koji se može pratiti",
+  "laActivitiesNone": "Nema elemenata koji se mogu pratiti",
+  "laActivitiesCounting": "Brojanje elemenata koji se mogu pratiti"
 }

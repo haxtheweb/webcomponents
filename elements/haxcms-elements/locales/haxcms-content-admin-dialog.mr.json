@@ -60,5 +60,10 @@
   "pageUnit": "पान",
   "pagesUnit": "पाने",
   "replacementUnit": "बदल",
-  "replacementsUnit": "बदल"
+  "replacementsUnit": "बदल",
+  "laActivitiesColumn": "क्रिया",
+  "laActivitiesCount": "{count} ट्रॅक करता येणारे घटक",
+  "laActivitiesOne": "1 ट्रॅक करता येणारा घटक",
+  "laActivitiesNone": "ट्रॅक करता येणारे घटक नाहीत",
+  "laActivitiesCounting": "ट्रॅक करता येणारे घटक मोजले जात आहेत"
 }

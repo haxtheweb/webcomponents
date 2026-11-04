@@ -60,5 +60,10 @@
   "pageUnit": "ukurasa",
   "pagesUnit": "kurasa",
   "replacementUnit": "ubadilishaji",
-  "replacementsUnit": "ubadilishaji"
+  "replacementsUnit": "ubadilishaji",
+  "laActivitiesColumn": "Shughuli",
+  "laActivitiesCount": "Vipengele {count} vinavyofuatiliwa",
+  "laActivitiesOne": "Kipengele 1 kinachofuatiliwa",
+  "laActivitiesNone": "Hakuna vipengele vinavyofuatiliwa",
+  "laActivitiesCounting": "Inahesabu vipengele vinavyofuatiliwa"
 }

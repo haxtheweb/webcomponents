@@ -60,5 +60,10 @@
   "pageUnit": "పేజీ",
   "pagesUnit": "పేజీలు",
   "replacementUnit": "భర్తీ",
-  "replacementsUnit": "భర్తీలు"
+  "replacementsUnit": "భర్తీలు",
+  "laActivitiesColumn": "కార్యకలాపాలు",
+  "laActivitiesCount": "{count} ట్రాక్ చేయదగిన అంశాలు",
+  "laActivitiesOne": "1 ట్రాక్ చేయదగిన అంశం",
+  "laActivitiesNone": "ట్రాక్ చేయదగిన అంశాలు లేవు",
+  "laActivitiesCounting": "ట్రాక్ చేయదగిన అంశాలను లెక్కిస్తోంది"
 }

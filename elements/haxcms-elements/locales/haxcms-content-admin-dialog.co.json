@@ -60,5 +60,10 @@
   "pageUnit": "pagina",
   "pagesUnit": "pagine",
   "replacementUnit": "rimpiazzamentu",
-  "replacementsUnit": "rimpiazzamenti"
+  "replacementsUnit": "rimpiazzamenti",
+  "laActivitiesColumn": "Attività",
+  "laActivitiesCount": "{count} elementi tracciabili",
+  "laActivitiesOne": "1 elementu tracciabile",
+  "laActivitiesNone": "Nisun elementu tracciabile",
+  "laActivitiesCounting": "Contu di l'elementi tracciabili"
 }

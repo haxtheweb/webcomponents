@@ -60,5 +60,10 @@
   "pageUnit": "পেজ",
   "pagesUnit": "পেজ",
   "replacementUnit": "প্রতিস্থাপন",
-  "replacementsUnit": "প্রতিস্থাপন"
+  "replacementsUnit": "প্রতিস্থাপন",
+  "laActivitiesColumn": "কার্যকলাপ",
+  "laActivitiesCount": "{count}টি ট্র্যাকযোগ্য উপাদান",
+  "laActivitiesOne": "১টি ট্র্যাকযোগ্য উপাদান",
+  "laActivitiesNone": "কোনো ট্র্যাকযোগ্য উপাদান নেই",
+  "laActivitiesCounting": "ট্র্যাকযোগ্য উপাদান গণনা করা হচ্ছে"
 }

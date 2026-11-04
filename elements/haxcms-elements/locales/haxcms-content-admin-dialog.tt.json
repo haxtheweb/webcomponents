@@ -60,5 +60,10 @@
   "pageUnit": "бит",
   "pagesUnit": "битләр",
   "replacementUnit": "алыштыру",
-  "replacementsUnit": "алыштыру"
+  "replacementsUnit": "алыштыру",
+  "laActivitiesColumn": "Биремнәр",
+  "laActivitiesCount": "{count} күзәтелә торган элемент",
+  "laActivitiesOne": "1 күзәтелә торган элемент",
+  "laActivitiesNone": "Күзәтелә торган элементлар юк",
+  "laActivitiesCounting": "Күзәтелә торган элементлар санала"
 }

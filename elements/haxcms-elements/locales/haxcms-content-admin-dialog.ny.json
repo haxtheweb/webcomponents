@@ -60,5 +60,10 @@
   "pageUnit": "tsamba",
   "pagesUnit": "masamba",
   "replacementUnit": "kusintha",
-  "replacementsUnit": "zosintha"
+  "replacementsUnit": "zosintha",
+  "laActivitiesColumn": "Ntchito",
+  "laActivitiesCount": "Zinthu {count} zotsatirika",
+  "laActivitiesOne": "Chinthu 1 chotsatirika",
+  "laActivitiesNone": "Palibe zinthu zotsatirika",
+  "laActivitiesCounting": "Kuwerenga zinthu zotsatirika"
 }

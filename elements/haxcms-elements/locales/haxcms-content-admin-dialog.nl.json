@@ -60,5 +60,10 @@
   "pageUnit": "pagina",
   "pagesUnit": "pagina's",
   "replacementUnit": "vervanging",
-  "replacementsUnit": "vervangingen"
+  "replacementsUnit": "vervangingen",
+  "laActivitiesColumn": "Activiteiten",
+  "laActivitiesCount": "{count} volgbare elementen",
+  "laActivitiesOne": "1 volgbaar element",
+  "laActivitiesNone": "Geen volgbare elementen",
+  "laActivitiesCounting": "Volgbare elementen tellen"
 }

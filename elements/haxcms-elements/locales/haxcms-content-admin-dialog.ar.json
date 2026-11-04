@@ -60,5 +60,10 @@
   "pageUnit": "صفحة",
   "pagesUnit": "الصفحات",
   "replacementUnit": "استبدال",
-  "replacementsUnit": "استبدالات"
+  "replacementsUnit": "استبدالات",
+  "laActivitiesColumn": "الأنشطة",
+  "laActivitiesCount": "{count} من العناصر القابلة للتتبّع",
+  "laActivitiesOne": "عنصر واحد قابل للتتبّع",
+  "laActivitiesNone": "لا توجد عناصر قابلة للتتبّع",
+  "laActivitiesCounting": "جارٍ عدّ العناصر القابلة للتتبّع"
 }

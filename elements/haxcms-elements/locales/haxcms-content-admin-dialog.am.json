@@ -60,5 +60,10 @@
   "pageUnit": "ገጽ",
   "pagesUnit": "ገጾች",
   "replacementUnit": "መተካት",
-  "replacementsUnit": "መተካቶች"
+  "replacementsUnit": "መተካቶች",
+  "laActivitiesColumn": "እንቅስቃሴዎች",
+  "laActivitiesCount": "{count} ሊከታተሉ የሚችሉ ክፍሎች",
+  "laActivitiesOne": "1 ሊከታተል የሚችል ክፍል",
+  "laActivitiesNone": "ሊከታተሉ የሚችሉ ክፍሎች የሉም",
+  "laActivitiesCounting": "ሊከታተሉ የሚችሉ ክፍሎችን በመቁጠር ላይ"
 }

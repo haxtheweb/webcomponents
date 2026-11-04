@@ -60,5 +60,10 @@
   "pageUnit": "ទំព័រ",
   "pagesUnit": "ទំព័រ",
   "replacementUnit": "ការជំនួស",
-  "replacementsUnit": "ការជំនួស"
+  "replacementsUnit": "ការជំនួស",
+  "laActivitiesColumn": "សកម្មភាព",
+  "laActivitiesCount": "ធាតុដែលអាចតាមដានបាន {count}",
+  "laActivitiesOne": "ធាតុដែលអាចតាមដានបាន 1",
+  "laActivitiesNone": "គ្មានធាតុដែលអាចតាមដានបាន",
+  "laActivitiesCounting": "កំពុងរាប់ធាតុដែលអាចតាមដានបាន"
 }

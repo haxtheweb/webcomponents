@@ -60,5 +60,10 @@
   "pageUnit": "sahypa",
   "pagesUnit": "sahypa",
   "replacementUnit": "çalyşma",
-  "replacementsUnit": "çalyşma"
+  "replacementsUnit": "çalyşma",
+  "laActivitiesColumn": "Işjeňlikler",
+  "laActivitiesCount": "{count} yzarlanyp bilinýän element",
+  "laActivitiesOne": "1 yzarlanyp bilinýän element",
+  "laActivitiesNone": "Yzarlanyp bilinýän element ýok",
+  "laActivitiesCounting": "Yzarlanyp bilinýän elementler sanalýar"
 }

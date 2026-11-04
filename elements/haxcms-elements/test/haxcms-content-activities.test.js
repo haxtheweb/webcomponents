@@ -102,7 +102,7 @@ describe("haxcms-content-admin-dialog Activities column", () => {
     invalidateTrackable();
   });
 
-  it("adds a sortable Activities header after the existing columns", async () => {
+  it("adds a sortable Activities header right after Status", async () => {
     const el = await contentSection();
     const heads = [...el.shadowRoot.querySelectorAll("table.pages thead th")]
       .map((th) => th.className)
@@ -110,10 +110,10 @@ describe("haxcms-content-admin-dialog Activities column", () => {
     expect(heads).to.deep.equal([
       "title",
       "status",
+      "activities",
       "updated",
       "parent",
       "slug",
-      "activities",
       "actions",
     ]);
     const btn = el.shadowRoot.querySelector(

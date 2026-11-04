@@ -60,5 +60,10 @@
   "pageUnit": "whārangi",
   "pagesUnit": "whārangi",
   "replacementUnit": "whakakapinga",
-  "replacementsUnit": "whakakapinga"
+  "replacementsUnit": "whakakapinga",
+  "laActivitiesColumn": "Ngā ngohe",
+  "laActivitiesCount": "{count} ngā huānga ka taea te aroturuki",
+  "laActivitiesOne": "1 huānga ka taea te aroturuki",
+  "laActivitiesNone": "Kāore he huānga ka taea te aroturuki",
+  "laActivitiesCounting": "E tatau ana i ngā huānga ka taea te aroturuki"
 }

@@ -60,5 +60,10 @@
   "pageUnit": "halaman",
   "pagesUnit": "halaman",
   "replacementUnit": "penggantian",
-  "replacementsUnit": "penggantian"
+  "replacementsUnit": "penggantian",
+  "laActivitiesColumn": "Aktivitas",
+  "laActivitiesCount": "{count} elemen yang dapat dilacak",
+  "laActivitiesOne": "1 elemen yang dapat dilacak",
+  "laActivitiesNone": "Tidak ada elemen yang dapat dilacak",
+  "laActivitiesCounting": "Menghitung elemen yang dapat dilacak"
 }

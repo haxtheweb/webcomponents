@@ -60,5 +60,10 @@
   "pageUnit": "stran",
   "pagesUnit": "strani",
   "replacementUnit": "zamenjavo",
-  "replacementsUnit": "zamenjavami"
+  "replacementsUnit": "zamenjavami",
+  "laActivitiesColumn": "Dejavnosti",
+  "laActivitiesCount": "Sledljivi elementi: {count}",
+  "laActivitiesOne": "1 sledljiv element",
+  "laActivitiesNone": "Ni sledljivih elementov",
+  "laActivitiesCounting": "Štetje sledljivih elementov"
 }

@@ -60,5 +60,10 @@
   "pageUnit": "page",
   "pagesUnit": "pages",
   "replacementUnit": "remplacement",
-  "replacementsUnit": "remplacements"
+  "replacementsUnit": "remplacements",
+  "laActivitiesColumn": "Activités",
+  "laActivitiesCount": "{count} éléments suivis",
+  "laActivitiesOne": "1 élément suivi",
+  "laActivitiesNone": "Aucun élément suivi",
+  "laActivitiesCounting": "Comptage des éléments suivis"
 }

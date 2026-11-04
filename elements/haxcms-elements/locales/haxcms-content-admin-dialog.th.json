@@ -60,5 +60,10 @@
   "pageUnit": "หน้า",
   "pagesUnit": "หน้า",
   "replacementUnit": "จุด",
-  "replacementsUnit": "จุด"
+  "replacementsUnit": "จุด",
+  "laActivitiesColumn": "กิจกรรม",
+  "laActivitiesCount": "องค์ประกอบที่ติดตามได้ {count} รายการ",
+  "laActivitiesOne": "องค์ประกอบที่ติดตามได้ 1 รายการ",
+  "laActivitiesNone": "ไม่มีองค์ประกอบที่ติดตามได้",
+  "laActivitiesCounting": "กำลังนับองค์ประกอบที่ติดตามได้"
 }

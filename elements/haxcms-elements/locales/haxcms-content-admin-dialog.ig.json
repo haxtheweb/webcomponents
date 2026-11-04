@@ -60,5 +60,10 @@
   "pageUnit": "ibe",
   "pagesUnit": "peeji",
   "replacementUnit": "nnọchi",
-  "replacementsUnit": "nnọchi"
+  "replacementsUnit": "nnọchi",
+  "laActivitiesColumn": "Ọrụ",
+  "laActivitiesCount": "Ihe {count} enwere ike ịchọpụta",
+  "laActivitiesOne": "Ihe 1 enwere ike ịchọpụta",
+  "laActivitiesNone": "Enweghị ihe enwere ike ịchọpụta",
+  "laActivitiesCounting": "Na-agụ ihe ndị enwere ike ịchọpụta"
 }

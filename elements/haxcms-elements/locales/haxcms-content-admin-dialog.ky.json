@@ -60,5 +60,10 @@
   "pageUnit": "барак",
   "pagesUnit": "барактар",
   "replacementUnit": "алмаштыруу",
-  "replacementsUnit": "алмаштыруу"
+  "replacementsUnit": "алмаштыруу",
+  "laActivitiesColumn": "Тапшырмалар",
+  "laActivitiesCount": "{count} көзөмөлдөнүүчү элемент",
+  "laActivitiesOne": "1 көзөмөлдөнүүчү элемент",
+  "laActivitiesNone": "Көзөмөлдөнүүчү элементтер жок",
+  "laActivitiesCounting": "Көзөмөлдөнүүчү элементтер саналууда"
 }

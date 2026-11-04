@@ -60,5 +60,10 @@
   "pageUnit": "shafi",
   "pagesUnit": "shafuka",
   "replacementUnit": "maye gurbi",
-  "replacementsUnit": "maye gurbi"
+  "replacementsUnit": "maye gurbi",
+  "laActivitiesColumn": "Ayyuka",
+  "laActivitiesCount": "Abubuwa {count} da za a iya bibiya",
+  "laActivitiesOne": "Abu 1 da za a iya bibiya",
+  "laActivitiesNone": "Babu abubuwan da za a iya bibiya",
+  "laActivitiesCounting": "Ana ƙirga abubuwan da za a iya bibiya"
 }

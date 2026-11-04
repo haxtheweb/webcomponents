@@ -60,5 +60,10 @@
   "pageUnit": "stránka",
   "pagesUnit": "stránky",
   "replacementUnit": "nahrazení",
-  "replacementsUnit": "nahrazení"
+  "replacementsUnit": "nahrazení",
+  "laActivitiesColumn": "Aktivity",
+  "laActivitiesCount": "Sledovatelné prvky: {count}",
+  "laActivitiesOne": "1 sledovatelný prvek",
+  "laActivitiesNone": "Žádné sledovatelné prvky",
+  "laActivitiesCounting": "Počítání sledovatelných prvků"
 }

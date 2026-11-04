@@ -60,5 +60,10 @@
   "pageUnit": "tudalen",
   "pagesUnit": "tudalennau",
   "replacementUnit": "amnewidiad",
-  "replacementsUnit": "amnewidiad"
+  "replacementsUnit": "amnewidiad",
+  "laActivitiesColumn": "Gweithgareddau",
+  "laActivitiesCount": "{count} elfen y gellir eu holrhain",
+  "laActivitiesOne": "1 elfen y gellir ei holrhain",
+  "laActivitiesNone": "Dim elfennau y gellir eu holrhain",
+  "laActivitiesCounting": "Yn cyfrif elfennau y gellir eu holrhain"
 }

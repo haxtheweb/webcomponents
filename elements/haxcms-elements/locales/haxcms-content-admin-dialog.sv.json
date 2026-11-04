@@ -60,5 +60,10 @@
   "pageUnit": "sida",
   "pagesUnit": "sidor",
   "replacementUnit": "ersättning",
-  "replacementsUnit": "ersättningar"
+  "replacementsUnit": "ersättningar",
+  "laActivitiesColumn": "Aktiviteter",
+  "laActivitiesCount": "{count} spårbara element",
+  "laActivitiesOne": "1 spårbart element",
+  "laActivitiesNone": "Inga spårbara element",
+  "laActivitiesCounting": "Räknar spårbara element"
 }

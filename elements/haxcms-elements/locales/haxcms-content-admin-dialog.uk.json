@@ -60,5 +60,10 @@
   "pageUnit": "сторінку",
   "pagesUnit": "сторінки",
   "replacementUnit": "заміну",
-  "replacementsUnit": "замін"
+  "replacementsUnit": "замін",
+  "laActivitiesColumn": "Завдання",
+  "laActivitiesCount": "Відстежуваних елементів: {count}",
+  "laActivitiesOne": "1 відстежуваний елемент",
+  "laActivitiesNone": "Немає відстежуваних елементів",
+  "laActivitiesCounting": "Підрахунок відстежуваних елементів"
 }

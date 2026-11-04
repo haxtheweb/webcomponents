@@ -60,5 +60,10 @@
   "pageUnit": "páxina",
   "pagesUnit": "páxinas",
   "replacementUnit": "substitución",
-  "replacementsUnit": "substitucións"
+  "replacementsUnit": "substitucións",
+  "laActivitiesColumn": "Actividades",
+  "laActivitiesCount": "{count} elementos rastrexables",
+  "laActivitiesOne": "1 elemento rastrexable",
+  "laActivitiesNone": "Ningún elemento rastrexable",
+  "laActivitiesCounting": "Contando elementos rastrexables"
 }

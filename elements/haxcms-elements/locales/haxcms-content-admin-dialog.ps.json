@@ -60,5 +60,10 @@
   "pageUnit": "پاڼه",
   "pagesUnit": "پاڼې",
   "replacementUnit": "بدلون",
-  "replacementsUnit": "بدلونونه"
+  "replacementsUnit": "بدلونونه",
+  "laActivitiesColumn": "فعالیتونه",
+  "laActivitiesCount": "{count} تعقیبېدونکي عناصر",
+  "laActivitiesOne": "۱ تعقیبېدونکی عنصر",
+  "laActivitiesNone": "هېڅ تعقیبېدونکی عنصر نشته",
+  "laActivitiesCounting": "تعقیبېدونکي عناصر شمېرل کېږي"
 }

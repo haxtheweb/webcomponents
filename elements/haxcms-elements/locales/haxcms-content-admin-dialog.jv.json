@@ -60,5 +60,10 @@
   "pageUnit": "kaca",
   "pagesUnit": "kaca",
   "replacementUnit": "panggantosan",
-  "replacementsUnit": "panggantosan"
+  "replacementsUnit": "panggantosan",
+  "laActivitiesColumn": "Kagiyatan",
+  "laActivitiesCount": "{count} unsur sing bisa dilacak",
+  "laActivitiesOne": "1 unsur sing bisa dilacak",
+  "laActivitiesNone": "Ora ana unsur sing bisa dilacak",
+  "laActivitiesCounting": "Ngetung unsur sing bisa dilacak"
 }

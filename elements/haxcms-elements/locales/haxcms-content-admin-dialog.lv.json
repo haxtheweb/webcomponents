@@ -60,5 +60,10 @@
   "pageUnit": "lapa",
   "pagesUnit": "lapas",
   "replacementUnit": "aizstāšana",
-  "replacementsUnit": "aizstāšanas"
+  "replacementsUnit": "aizstāšanas",
+  "laActivitiesColumn": "Aktivitātes",
+  "laActivitiesCount": "Izsekojamo elementu skaits: {count}",
+  "laActivitiesOne": "1 izsekojams elements",
+  "laActivitiesNone": "Nav izsekojamu elementu",
+  "laActivitiesCounting": "Skaita izsekojamos elementus"
 }

@@ -60,5 +60,10 @@
   "pageUnit": "старонка",
   "pagesUnit": "старонкі",
   "replacementUnit": "замена",
-  "replacementsUnit": "замен"
+  "replacementsUnit": "замен",
+  "laActivitiesColumn": "Заданні",
+  "laActivitiesCount": "Адсочваных элементаў: {count}",
+  "laActivitiesOne": "1 адсочваны элемент",
+  "laActivitiesNone": "Няма адсочваных элементаў",
+  "laActivitiesCounting": "Падлік адсочваных элементаў"
 }

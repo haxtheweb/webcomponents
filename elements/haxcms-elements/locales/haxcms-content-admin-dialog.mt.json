@@ -60,5 +60,10 @@
   "pageUnit": "paġna",
   "pagesUnit": "paġni",
   "replacementUnit": "sostituzzjoni",
-  "replacementsUnit": "sostituzzjonijiet"
+  "replacementsUnit": "sostituzzjonijiet",
+  "laActivitiesColumn": "Attivitajiet",
+  "laActivitiesCount": "{count} elementi traċċabbli",
+  "laActivitiesOne": "Element traċċabbli wieħed",
+  "laActivitiesNone": "L-ebda element traċċabbli",
+  "laActivitiesCounting": "Qed jiġu magħduda l-elementi traċċabbli"
 }

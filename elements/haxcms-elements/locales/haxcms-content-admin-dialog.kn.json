@@ -60,5 +60,10 @@
   "pageUnit": "ಪುಟ",
   "pagesUnit": "ಪುಟಗಳು",
   "replacementUnit": "ಬದಲಿ",
-  "replacementsUnit": "ಬದಲಿಗಳು"
+  "replacementsUnit": "ಬದಲಿಗಳು",
+  "laActivitiesColumn": "ಚಟುವಟಿಕೆಗಳು",
+  "laActivitiesCount": "{count} ಟ್ರ್ಯಾಕ್ ಮಾಡಬಹುದಾದ ಅಂಶಗಳು",
+  "laActivitiesOne": "1 ಟ್ರ್ಯಾಕ್ ಮಾಡಬಹುದಾದ ಅಂಶ",
+  "laActivitiesNone": "ಟ್ರ್ಯಾಕ್ ಮಾಡಬಹುದಾದ ಅಂಶಗಳಿಲ್ಲ",
+  "laActivitiesCounting": "ಟ್ರ್ಯಾಕ್ ಮಾಡಬಹುದಾದ ಅಂಶಗಳನ್ನು ಎಣಿಸಲಾಗುತ್ತಿದೆ"
 }

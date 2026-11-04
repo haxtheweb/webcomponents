@@ -60,5 +60,10 @@
   "pageUnit": "side",
   "pagesUnit": "sider",
   "replacementUnit": "erstatning",
-  "replacementsUnit": "erstatninger"
+  "replacementsUnit": "erstatninger",
+  "laActivitiesColumn": "Aktiviteter",
+  "laActivitiesCount": "{count} sporbare elementer",
+  "laActivitiesOne": "1 sporbart element",
+  "laActivitiesNone": "Ingen sporbare elementer",
+  "laActivitiesCounting": "Tæller sporbare elementer"
 }

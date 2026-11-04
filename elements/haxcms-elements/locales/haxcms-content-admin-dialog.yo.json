@@ -60,5 +60,10 @@
   "pageUnit": "ojú-ìwé",
   "pagesUnit": "ojú-ìwé",
   "replacementUnit": "ìrọ́pò",
-  "replacementsUnit": "ìrọ́pò"
+  "replacementsUnit": "ìrọ́pò",
+  "laActivitiesColumn": "Àwọn iṣẹ́",
+  "laActivitiesCount": "Àwọn èròjà {count} tí a lè tọpinpin",
+  "laActivitiesOne": "Èròjà 1 tí a lè tọpinpin",
+  "laActivitiesNone": "Kò sí èròjà tí a lè tọpinpin",
+  "laActivitiesCounting": "Ń ka àwọn èròjà tí a lè tọpinpin"
 }

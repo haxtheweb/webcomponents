@@ -60,5 +60,10 @@
   "pageUnit": "sayfa",
   "pagesUnit": "sayfa",
   "replacementUnit": "değiştirme",
-  "replacementsUnit": "değiştirme"
+  "replacementsUnit": "değiştirme",
+  "laActivitiesColumn": "Etkinlikler",
+  "laActivitiesCount": "{count} izlenebilir öğe",
+  "laActivitiesOne": "1 izlenebilir öğe",
+  "laActivitiesNone": "İzlenebilir öğe yok",
+  "laActivitiesCounting": "İzlenebilir öğeler sayılıyor"
 }

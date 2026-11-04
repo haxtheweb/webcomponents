@@ -60,5 +60,10 @@
   "pageUnit": "صفحو",
   "pagesUnit": "صفحا",
   "replacementUnit": "متبادل",
-  "replacementsUnit": "متبادل"
+  "replacementsUnit": "متبادل",
+  "laActivitiesColumn": "سرگرميون",
+  "laActivitiesCount": "{count} ٽريڪ ٿيندڙ عنصر",
+  "laActivitiesOne": "1 ٽريڪ ٿيندڙ عنصر",
+  "laActivitiesNone": "ڪو به ٽريڪ ٿيندڙ عنصر ناهي",
+  "laActivitiesCounting": "ٽريڪ ٿيندڙ عنصر ڳڻيا پيا وڃن"
 }
