@@ -52,7 +52,8 @@ describe("media-image shared toolchain", () => {
       await el.updateComplete;
       const image = el.shadowRoot.querySelector("media-image-image");
       expect(image.getAttribute("tabindex")).to.equal("0");
-      expect(image.modalTitle).to.equal("");
+      // with no figure label or caption the pop up is titled by the alt text
+      expect(image.modalTitle).to.equal("A photo");
       expect(image.modalContent).to.exist;
       expect(image.modalContent.tagName.toLowerCase()).to.equal(
         "image-inspector",

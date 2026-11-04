@@ -4,6 +4,9 @@ import "@haxtheweb/simple-modal/simple-modal.js";
  * to pop passed in items up via...
  * @var {string} this.modalTitle - title to display in modal
  * @var {object} this.modalContent - HTML element to display as content
+ * @var {object} this.modalStyles - optional simple-modal CSS variables for the
+ *   dialog; when unset the handler keeps its original 50vw x 50vh sizing
+ * @var {string} this.modalTitleIcon - optional icon drawn before the title
  */
 export const SimpleModalHandler = function (SuperClass) {
   return class extends SuperClass {
@@ -49,10 +52,11 @@ export const SimpleModalHandler = function (SuperClass) {
         composed: true,
         detail: {
           title: this.modalTitle,
+          titleIcon: this.modalTitleIcon || null,
           elements: {
             content: this.modalContent,
           },
-          styles: {
+          styles: this.modalStyles || {
             "--simple-modal-min-width": "50vw",
             "--simple-modal-min-height": "50vh",
           },

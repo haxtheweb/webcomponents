@@ -22,20 +22,43 @@ class ImageInspector extends I18NMixin(LitElement) {
           overflow: hidden;
         }
 
+        /* toolbar buttons follow the HAX modal icon button: 32px square,
+           4px corners, muted icon that darkens on hover, a visible focus
+           ring from the browser, so the inspector reads as part of the
+           dialog around it */
         simple-icon-button-lite {
           display: inline-flex;
-          --simple-icon-width: var(--ddd-icon-xs, 32px);
-          --simple-icon-height: var(--ddd-icon-xs, 32px);
-          margin: 0 var(--ddd-spacing-1, 4px);
-          padding: var(--ddd-spacing-1, 4px);
-          border-radius: var(--ddd-radius-0, 0);
+          --simple-icon-width: var(--ddd-icon-4xs, 16px);
+          --simple-icon-height: var(--ddd-icon-4xs, 16px);
+          --simple-icon-button-border-radius: var(--ddd-radius-xs, 4px);
+          --simple-icon-button-focus-opacity: 1;
+          --simple-icon-button-focus-color: currentColor;
+          width: var(--ddd-control-height-xs, 32px);
+          height: var(--ddd-control-height-xs, 32px);
+          margin: 0;
+          padding: 0;
+          border-radius: var(--ddd-radius-xs, 4px);
           background-color: var(
             --image-inspector-background-color,
+            transparent
+          );
+          color: var(
+            --image-inspector-color,
             light-dark(
-              var(--ddd-theme-default-white, #fdfdfd),
-              var(--ddd-theme-default-coalyGray, #262626)
+              var(--ddd-theme-default-slateGray, #314d64),
+              var(--ddd-theme-default-white65, rgba(255, 255, 255, 0.65))
             )
           );
+          transition:
+            background-color var(--ddd-duration-fast, 0.15s)
+              var(--ddd-timing-ease, ease-in-out),
+            color var(--ddd-duration-fast, 0.15s)
+              var(--ddd-timing-ease, ease-in-out);
+          cursor: pointer;
+        }
+        simple-icon-button-lite:hover,
+        simple-icon-button-lite:focus-within,
+        simple-icon-button-lite:active {
           color: var(
             --image-inspector-color,
             light-dark(
@@ -43,22 +66,27 @@ class ImageInspector extends I18NMixin(LitElement) {
               var(--ddd-theme-default-white, #ffffff)
             )
           );
-          transition: var(--ddd-duration-normal, 0.3s) all
-            var(--ddd-timing-ease, ease-in-out);
-          cursor: pointer;
-        }
-        simple-icon-button-lite:hover,
-        simple-icon-button-lite:focus,
-        simple-icon-button-lite:active {
           background-color: var(
             --image-inspector-background-color-active,
             light-dark(
-              var(--ddd-theme-default-limestoneLight, #e4e5e7),
-              var(--ddd-theme-default-slateGray, #314d64)
+              var(--ddd-theme-default-limestoneMaxLight, #f2f2f4),
+              color-mix(
+                in srgb,
+                var(--ddd-theme-default-white, #ffffff) 8%,
+                transparent
+              )
             )
           );
         }
-
+        a {
+          display: inline-flex;
+          border-radius: var(--ddd-radius-xs, 4px);
+        }
+        @media (prefers-reduced-motion: reduce) {
+          simple-icon-button-lite {
+            transition: none;
+          }
+        }
         img-pan-zoom.top-rotated {
           top: var(--ddd-spacing-30, 150px);
           pointer-events: none; /** disable pointer events when rotated bc of HTML canvas issue */
@@ -70,20 +98,31 @@ class ImageInspector extends I18NMixin(LitElement) {
         .wrap {
           justify-content: center;
           display: flex;
+          margin-bottom: var(--ddd-spacing-3, 12px);
         }
+        /* one quiet toolbar group: hairline border, 8px corners, 4px gaps */
         .internal-btn-wrap {
-          border: var(--ddd-border-md, 2px) solid
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-1, 4px);
+          padding: var(--ddd-spacing-1, 4px);
+          border: var(--ddd-border-xs, 1px) solid
             var(
               --image-inspector-border-color,
               light-dark(
-                var(--ddd-theme-default-coalyGray, #262626),
-                var(--ddd-theme-default-white, #ffffff)
+                var(--ddd-theme-default-limestoneLight, #e4e5e7),
+                color-mix(
+                  in srgb,
+                  var(--ddd-theme-default-white, #ffffff) 18%,
+                  transparent
+                )
               )
             );
+          border-radius: var(--ddd-radius-sm, 8px);
           background-color: var(
             --image-inspector-background-color,
             light-dark(
-              var(--ddd-theme-default-white, #fdfdfd),
+              var(--ddd-theme-default-white, #ffffff),
               var(--ddd-theme-default-coalyGray, #262626)
             )
           );
