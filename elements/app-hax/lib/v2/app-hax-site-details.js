@@ -414,60 +414,59 @@ export class AppHaxSiteDetails extends I18NMixin(SimpleColors) {
     return html`
       <div class="pre"><slot name="pre"></slot></div>
       <div class="flex-container" id="infomation">
-          <div class="info-group">
-            <div class="info-headings">${this.t.created}</div>
-            <simple-datetime
-                format="m/j/y"
-                .timestamp="${this.details.created}"
-                unix
-                class="info-date"
-            ></simple-datetime>
-          </div>
-          <div class="info-group">
-            <div class="info-headings">${this.t.updated}</div>
-            <simple-datetime
-                format="m/j/y"
-                .timestamp="${this.details.updated}"
-                unix
-                class="info-date"
-            ></simple-datetime>
-          </div>
-          <div class = info-group>
-            <div class="info-headings">${this.t.pages}</div>
-            <div class="info-item">${this.details.pages}</div>
-          </div>
-          <div class = info-group>
-            <div class="info-headings">${this.t.url}</div>
-            <a href="${
-              this.details.url
-            }" class="info-item" id="slug">${makeSlug(this.details.url)}</a>
-          </div>
-      </div>
-        <div class="flex-container" id="actions">
-          ${this.detailOps.map((item) => {
-            const itemLabel = this.t[item.labelKey] || item.name;
-            return html`
-              <div class="info-group">
-                <simple-icon-button-lite
-                  data-site="${this.siteId}"
-                  data-site-operation="${item.op}"
-                  data-site-operation-name="${itemLabel}"
-                  icon="${item.icon}"
-                  id="op-${item.op}"
-                  class="info-icon"
-                  label="${itemLabel}"
-                  aria-label="${itemLabel}"
-                  @click=${this.siteOperation}
-                >
-                  <div class="info-item">${itemLabel.toLowerCase()}</div>
-                </simple-icon-button-lite>
-                <simple-tooltip for="op-${item.op}" position="bottom"
-                  >${itemLabel}</simple-tooltip
-                >
-              </div>
-            `;
-          })}
+        <div class="info-group">
+          <div class="info-headings">${this.t.created}</div>
+          <simple-datetime
+            format="m/j/y"
+            .timestamp="${this.details.created}"
+            unix
+            class="info-date"
+          ></simple-datetime>
         </div>
+        <div class="info-group">
+          <div class="info-headings">${this.t.updated}</div>
+          <simple-datetime
+            format="m/j/y"
+            .timestamp="${this.details.updated}"
+            unix
+            class="info-date"
+          ></simple-datetime>
+        </div>
+        <div class="info-group">
+          <div class="info-headings">${this.t.pages}</div>
+          <div class="info-item">${this.details.pages}</div>
+        </div>
+        <div class="info-group">
+          <div class="info-headings">${this.t.url}</div>
+          <a href="${this.details.url}" class="info-item" id="slug"
+            >${makeSlug(this.details.url)}</a
+          >
+        </div>
+      </div>
+      <div class="flex-container" id="actions">
+        ${this.detailOps.map((item) => {
+          const itemLabel = this.t[item.labelKey] || item.name;
+          return html`
+            <div class="info-group">
+              <simple-icon-button-lite
+                data-site="${this.siteId}"
+                data-site-operation="${item.op}"
+                data-site-operation-name="${itemLabel}"
+                icon="${item.icon}"
+                id="op-${item.op}"
+                class="info-icon"
+                label="${itemLabel}"
+                aria-label="${itemLabel}"
+                @click=${this.siteOperation}
+              >
+                <div class="info-item">${itemLabel.toLowerCase()}</div>
+              </simple-icon-button-lite>
+              <simple-tooltip for="op-${item.op}" position="bottom"
+                >${itemLabel}</simple-tooltip
+              >
+            </div>
+          `;
+        })}
       </div>
     `;
   }
