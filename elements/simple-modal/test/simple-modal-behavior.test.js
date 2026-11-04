@@ -89,6 +89,31 @@ describe("simple-modal behavior", () => {
     el.close();
   });
 
+  it("takes no room for an empty buttons area, and shows it when filled", async () => {
+    const el = await fixture(html`<simple-modal></simple-modal>`);
+    const area = () => el.shadowRoot.querySelector(".buttons");
+    // content only: the empty area is hidden, so its margin cannot push
+    // the dialog into scrolling onto nothing
+    el.show("T", "m", { content: makeContent("<p>Only content</p>") }, null);
+    await settleDialog(el, 30);
+    expect(area().hidden).to.be.true;
+    expect(getComputedStyle(area()).display).to.equal("none");
+    el.close();
+    await settleDialog(el, 30);
+    // with buttons it is shown as before
+    const buttons = makeContent("<button>OK</button>");
+    el.show(
+      "T",
+      "m",
+      { content: makeContent("<p>Content</p>"), buttons },
+      null,
+    );
+    await settleDialog(el, 30);
+    expect(area().hidden).to.be.false;
+    expect(getComputedStyle(area()).display).to.not.equal("none");
+    el.close();
+  });
+
   it("focuses slotted buttons that expose focusInitial", async () => {
     const el = await fixture(html`<simple-modal></simple-modal>`);
     let focused = false;

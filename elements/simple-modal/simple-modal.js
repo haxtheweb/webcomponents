@@ -365,6 +365,12 @@ class SimpleModal extends I18NMixin(LitElement) {
           );
         }
 
+        /* an empty buttons area takes no room: its margin alone made the
+           dialog taller than its content, so web-dialog scrolled onto
+           nothing */
+        .buttons[hidden] {
+          display: none !important;
+        }
         .buttons {
           padding: 0;
           padding: var(--simple-modal-buttons-padding, 0);
@@ -455,6 +461,21 @@ class SimpleModal extends I18NMixin(LitElement) {
       `,
     ];
   }
+  /**
+   * Show the buttons area only while something is slotted into it.
+   */
+  _buttonsSlotChanged(e) {
+    const slot = e && e.target ? e.target : null;
+    const nodes =
+      slot && typeof slot.assignedNodes === "function"
+        ? slot.assignedNodes({ flatten: true })
+        : [];
+    this._hasButtons = nodes.some(
+      (node) =>
+        node.nodeType === 1 ||
+        (node.nodeType === 3 && node.textContent.trim() !== ""),
+    );
+  }
   render() {
     return html` <web-dialog
       id="dialog"
@@ -498,8 +519,8 @@ class SimpleModal extends I18NMixin(LitElement) {
         <slot name="content"></slot>
       </p>
       <slot name="custom" part="custom"></slot>
-      <div class="buttons" part="buttons">
-        <slot name="buttons"></slot>
+      <div class="buttons" part="buttons" ?hidden="${!this._hasButtons}">
+        <slot name="buttons" @slotchange="${this._buttonsSlotChanged}"></slot>
       </div>
     </web-dialog>`;
   }
@@ -508,6 +529,8 @@ class SimpleModal extends I18NMixin(LitElement) {
   static get properties() {
     return {
       ...super.properties,
+      /** something is slotted into the buttons area */
+      _hasButtons: { type: Boolean, state: true },
       /**
        * heading / label of the modal
        */
@@ -588,6 +611,7 @@ class SimpleModal extends I18NMixin(LitElement) {
    */
   constructor() {
     super();
+    this._hasButtons = false;
     this.t = this.t || {};
     this.t = {
       ...this.t,
