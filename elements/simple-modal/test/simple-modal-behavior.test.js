@@ -339,6 +339,30 @@ describe("simple-modal behavior", () => {
     expect(title.textContent.includes("T")).to.be.true;
   });
 
+  it("separates breadcrumbs with a quiet slash", async () => {
+    const el = await fixture(html`<simple-modal></simple-modal>`);
+    el.show(
+      "Site Settings / Structure",
+      "m",
+      { content: makeContent("<p>x</p>") },
+      null,
+      null,
+      null,
+      null,
+      false,
+      true,
+      false,
+      "",
+      [{ label: "Site Settings" }, { label: "Structure" }],
+    );
+    await settleDialog(el, 30);
+    const sep = el.shadowRoot.querySelector(".breadcrumb-separator");
+    expect(sep.textContent.trim()).to.equal("/");
+    expect(sep.getAttribute("aria-hidden")).to.equal("true");
+    expect(Number(getComputedStyle(sep).opacity)).to.be.below(1);
+    el.close();
+  });
+
   it("renders icons on clickable breadcrumb buttons", async () => {
     const el = await fixture(html`<simple-modal></simple-modal>`);
     el.title = "T";

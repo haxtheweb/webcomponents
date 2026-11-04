@@ -7002,7 +7002,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     return key && this.t[key] ? this.t[key] : sectionTitle;
   }
   _siteSettingsTrailTitle(sectionTitle) {
-    return `${this.t.siteSettings} > ${this._sectionLabel(sectionTitle)}`;
+    return `${this.t.siteSettings} / ${this._sectionLabel(sectionTitle)}`;
   }
   _siteSettingsBreadcrumbMeta(
     sectionTitle,
