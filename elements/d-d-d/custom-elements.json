@@ -194,136 +194,6 @@
               }
             }
           ]
-        },
-        {
-          "kind": "class",
-          "description": "",
-          "name": "DDDSample",
-          "members": [
-            {
-              "kind": "field",
-              "name": "tag",
-              "static": true,
-              "readonly": true
-            },
-            {
-              "kind": "field",
-              "name": "type",
-              "privacy": "public",
-              "type": {
-                "text": "null"
-              },
-              "default": "null",
-              "attribute": "type",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "option",
-              "privacy": "public",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "attribute": "option"
-            },
-            {
-              "kind": "field",
-              "name": "tooltip",
-              "privacy": "public",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "present the label as a tooltip on hover/focus instead of\ndisplaying it visibly next to the sample swatch",
-              "default": "false",
-              "attribute": "tooltip",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "properties",
-              "static": true,
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "DDDSuper",
-                "module": "d-d-d.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "styles",
-              "static": true,
-              "description": "LitElement style callback",
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "DDDSuper",
-                "module": "d-d-d.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "isSafari",
-              "privacy": "public",
-              "type": {
-                "text": "boolean"
-              },
-              "attribute": "is-safari",
-              "reflects": true,
-              "inheritedFrom": {
-                "name": "DDDSuper",
-                "module": "d-d-d.js"
-              }
-            }
-          ],
-          "attributes": [
-            {
-              "name": "type",
-              "type": {
-                "text": "null"
-              },
-              "default": "null",
-              "fieldName": "type"
-            },
-            {
-              "name": "option",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "fieldName": "option"
-            },
-            {
-              "name": "tooltip",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "present the label as a tooltip on hover/focus instead of\ndisplaying it visibly next to the sample swatch",
-              "default": "false",
-              "fieldName": "tooltip"
-            },
-            {
-              "name": "is-safari",
-              "type": {
-                "text": "boolean"
-              },
-              "fieldName": "isSafari",
-              "inheritedFrom": {
-                "name": "DDDSuper",
-                "module": "d-d-d.js"
-              }
-            }
-          ],
-          "mixins": [
-            {
-              "name": "DDDSuper",
-              "module": "d-d-d.js"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "customElement": true
         }
       ],
       "exports": [
@@ -363,21 +233,6 @@
           "name": "DDDFonts",
           "declaration": {
             "name": "DDDFonts",
-            "module": "d-d-d.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "DDDSample",
-          "declaration": {
-            "name": "DDDSample",
-            "module": "d-d-d.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "declaration": {
-            "name": "DDDSample",
             "module": "d-d-d.js"
           }
         }
@@ -1523,36 +1378,6 @@
         },
         {
           "kind": "variable",
-          "name": "DDDLetterSpacing",
-          "default": "css` .ls-16-sm { letter-spacing: var(--ddd-ls-16-sm); } .ls-18-sm { letter-spacing: var(--ddd-ls-18-sm); } .ls-20-sm { letter-spacing: var(--ddd-ls-20-sm); } .ls-22-sm { letter-spacing: var(--ddd-ls-22-sm); } .ls-24-sm { letter-spacing: var(--ddd-ls-24-sm); } .ls-28-sm { letter-spacing: var(--ddd-ls-28-sm); } .ls-32-sm { letter-spacing: var(--ddd-ls-32-sm); } .ls-36-sm { letter-spacing: var(--ddd-ls-36-sm); } .ls-40-sm { letter-spacing: var(--ddd-ls-40-sm); } .ls-48-sm { letter-spacing: var(--ddd-ls-48-sm); } .ls-56-sm { letter-spacing: var(--ddd-ls-56-sm); } .ls-64-sm { letter-spacing: var(--ddd-ls-64-sm); } .ls-72-sm { letter-spacing: var(--ddd-ls-72-sm); } .ls-16-lg { letter-spacing: var(--ddd-ls-16-lg); } .ls-18-lg { letter-spacing: var(--ddd-ls-18-lg); } .ls-20-lg { letter-spacing: var(--ddd-ls-20-lg); } .ls-22-lg { letter-spacing: var(--ddd-ls-22-lg); } .ls-24-lg { letter-spacing: var(--ddd-ls-24-lg); } .ls-28-lg { letter-spacing: var(--ddd-ls-28-lg); } .ls-32-lg { letter-spacing: var(--ddd-ls-32-lg); } .ls-36-lg { letter-spacing: var(--ddd-ls-36-lg); } .ls-40-lg { letter-spacing: var(--ddd-ls-40-lg); } .ls-48-lg { letter-spacing: var(--ddd-ls-48-lg); } .ls-56-lg { letter-spacing: var(--ddd-ls-56-lg); } .ls-64-lg { letter-spacing: var(--ddd-ls-64-lg); } .ls-72-lg { letter-spacing: var(--ddd-ls-72-lg); } `"
-        },
-        {
-          "kind": "variable",
-          "name": "DDDBoxShadow",
-          "default": "css` .bs-0 { box-shadow: none; } .bs-xs { box-shadow: var(--ddd-boxShadow-sm); } .bs-sm { box-shadow: var(--ddd-boxShadow-sm); } .bs-md { box-shadow: var(--ddd-boxShadow-md); } .bs-lg { box-shadow: var(--ddd-boxShadow-lg); } .bs-xl { box-shadow: var(--ddd-boxShadow-xl); } `"
-        },
-        {
-          "kind": "variable",
-          "name": "DDDBorderRadius",
-          "default": "css` .r-0 { border-radius: var(--ddd-radius-0); } .r-xs { border-radius: var(--ddd-radius-xs); } .r-sm { border-radius: var(--ddd-radius-sm); } .r-md { border-radius: var(--ddd-radius-md); } .r-lg { border-radius: var(--ddd-radius-lg); } .r-xl { border-radius: var(--ddd-radius-xl); } .r-rounded { border-radius: var(--ddd-radius-rounded); } .r-circle { border-radius: var(--ddd-radius-circle); } `"
-        },
-        {
-          "kind": "variable",
-          "name": "DDDBackground",
-          "default": "css` .bg-transparent { background-color: transparent; } .bg-white { background-color: var(--ddd-theme-default-white); } .bg-gradient-navBar { background: var(--ddd-theme-default-gradient-navBar); } .bg-gradient-footer { background: var(--ddd-theme-default-gradient-footer); } .bg-gradient-newsFeature { background: var(--ddd-theme-default-gradient-newsFeature); } .bg-gradient-buttons { background: var(--ddd-theme-default-gradient-buttons); } .bg-gradient-hero { background: var(--ddd-theme-default-gradient-hero); } .bg-gradient-hero2 { background: var(--ddd-theme-default-gradient-hero2); } `"
-        },
-        {
-          "kind": "variable",
-          "name": "DDDFontWeight",
-          "default": "css` .fw-0 { font-weight: var(--ddd-font-weight-regular); /* available for navigation */ } .fw-1 { font-weight: var(--ddd-font-weight-medium); /* available for headers */ } .fw-2 { font-weight: var(--ddd-font-weight-bold); /* available for headers */ } .fw-3 { font-weight: var( --ddd-font-weight-black ); /* default for headers, body & navigation */ } `"
-        },
-        {
-          "kind": "variable",
-          "name": "DDDFontClasses",
-          "default": "css` .ddd-font-navigation { font-family: var(--ddd-font-navigation); font-size: var(--ddd-theme-h4-font-size); font-weight: var(--ddd-font-weight-bold); } .ddd-font-primary { font-family: var(--ddd-font-primary); } .ddd-font-secondary { font-family: var(--ddd-font-secondary); } `"
-        },
-        {
-          "kind": "variable",
           "name": "DDDBreadcrumb",
           "default": "css` .breadcrumb { font-weight: var(--ddd-font-weight-light); margin: var(--ddd-spacing-6) 0; padding: 0; pointer-events: auto; list-style: \"/\"; gap: var(--ddd-spacing-2); display: flex; flex-flow: row; color: light-dark( var(--ddd-theme-default-link), var(--ddd-theme-default-linkLight) ); line-height: normal; text-align: start; } .breadcrumb li::marker { color: light-dark(black, white); font-weight: var(--ddd-font-weight-bold); } .breadcrumb li:first-child { list-style: none; } .breadcrumb li:last-child a { color: light-dark(black, white); pointer-events: none; } .breadcrumb li a { vertical-align: text-top; display: inline-block; padding: 0 var(--ddd-spacing-2); font-family: var(--ddd-font-navigation); font-weight: var(--ddd-font-weight-regular); text-decoration: none; } .breadcrumb li a:hover { text-decoration: underline; pointer-events: auto; } `"
         },
@@ -1577,7 +1402,7 @@
           "type": {
             "text": "array"
           },
-          "default": "[ DDDGlobalStyles, DDDVariables, DDDPaletteStyles, DDDDataAttributesStart, DDDSkeleton, DDDDataAttributesEnd, ...instructionalStyles, DDDResetStart, DDDReadingList, DDDResetEnd, DDDBreadcrumb, DDDLetterSpacing, DDDBoxShadow, DDDBorderRadius, DDDBackground, DDDFontClasses, DDDFontWeight, DDDAnimations, ]"
+          "default": "[ DDDGlobalStyles, DDDVariables, DDDPaletteStyles, DDDDataAttributesStart, DDDSkeleton, DDDDataAttributesEnd, ...instructionalStyles, DDDResetStart, DDDReadingList, DDDResetEnd, DDDAnimations, ]"
         }
       ],
       "exports": [
@@ -1727,54 +1552,6 @@
         },
         {
           "kind": "js",
-          "name": "DDDLetterSpacing",
-          "declaration": {
-            "name": "DDDLetterSpacing",
-            "module": "lib/DDDStyles.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "DDDBoxShadow",
-          "declaration": {
-            "name": "DDDBoxShadow",
-            "module": "lib/DDDStyles.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "DDDBorderRadius",
-          "declaration": {
-            "name": "DDDBorderRadius",
-            "module": "lib/DDDStyles.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "DDDBackground",
-          "declaration": {
-            "name": "DDDBackground",
-            "module": "lib/DDDStyles.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "DDDFontWeight",
-          "declaration": {
-            "name": "DDDFontWeight",
-            "module": "lib/DDDStyles.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "DDDFontClasses",
-          "declaration": {
-            "name": "DDDFontClasses",
-            "module": "lib/DDDStyles.js"
-          }
-        },
-        {
-          "kind": "js",
           "name": "DDDBreadcrumb",
           "declaration": {
             "name": "DDDBreadcrumb",
@@ -1832,6 +1609,121 @@
           "declaration": {
             "name": "DDDTableStyles",
             "module": "lib/DDDTable.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/DDDUtilityClasses.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "DDDLetterSpacing",
+          "default": "css` .ls-16-sm { letter-spacing: var(--ddd-ls-16-sm); } .ls-18-sm { letter-spacing: var(--ddd-ls-18-sm); } .ls-20-sm { letter-spacing: var(--ddd-ls-20-sm); } .ls-22-sm { letter-spacing: var(--ddd-ls-22-sm); } .ls-24-sm { letter-spacing: var(--ddd-ls-24-sm); } .ls-28-sm { letter-spacing: var(--ddd-ls-28-sm); } .ls-32-sm { letter-spacing: var(--ddd-ls-32-sm); } .ls-36-sm { letter-spacing: var(--ddd-ls-36-sm); } .ls-40-sm { letter-spacing: var(--ddd-ls-40-sm); } .ls-48-sm { letter-spacing: var(--ddd-ls-48-sm); } .ls-56-sm { letter-spacing: var(--ddd-ls-56-sm); } .ls-64-sm { letter-spacing: var(--ddd-ls-64-sm); } .ls-72-sm { letter-spacing: var(--ddd-ls-72-sm); } .ls-16-lg { letter-spacing: var(--ddd-ls-16-lg); } .ls-18-lg { letter-spacing: var(--ddd-ls-18-lg); } .ls-20-lg { letter-spacing: var(--ddd-ls-20-lg); } .ls-22-lg { letter-spacing: var(--ddd-ls-22-lg); } .ls-24-lg { letter-spacing: var(--ddd-ls-24-lg); } .ls-28-lg { letter-spacing: var(--ddd-ls-28-lg); } .ls-32-lg { letter-spacing: var(--ddd-ls-32-lg); } .ls-36-lg { letter-spacing: var(--ddd-ls-36-lg); } .ls-40-lg { letter-spacing: var(--ddd-ls-40-lg); } .ls-48-lg { letter-spacing: var(--ddd-ls-48-lg); } .ls-56-lg { letter-spacing: var(--ddd-ls-56-lg); } .ls-64-lg { letter-spacing: var(--ddd-ls-64-lg); } .ls-72-lg { letter-spacing: var(--ddd-ls-72-lg); } `"
+        },
+        {
+          "kind": "variable",
+          "name": "DDDBoxShadow",
+          "default": "css` .bs-0 { box-shadow: none; } .bs-xs { box-shadow: var(--ddd-boxShadow-sm); } .bs-sm { box-shadow: var(--ddd-boxShadow-sm); } .bs-md { box-shadow: var(--ddd-boxShadow-md); } .bs-lg { box-shadow: var(--ddd-boxShadow-lg); } .bs-xl { box-shadow: var(--ddd-boxShadow-xl); } `"
+        },
+        {
+          "kind": "variable",
+          "name": "DDDBorderRadius",
+          "default": "css` .r-0 { border-radius: var(--ddd-radius-0); } .r-xs { border-radius: var(--ddd-radius-xs); } .r-sm { border-radius: var(--ddd-radius-sm); } .r-md { border-radius: var(--ddd-radius-md); } .r-lg { border-radius: var(--ddd-radius-lg); } .r-xl { border-radius: var(--ddd-radius-xl); } .r-rounded { border-radius: var(--ddd-radius-rounded); } .r-circle { border-radius: var(--ddd-radius-circle); } `"
+        },
+        {
+          "kind": "variable",
+          "name": "DDDBackground",
+          "default": "css` .bg-transparent { background-color: transparent; } .bg-white { background-color: var(--ddd-theme-default-white); } .bg-gradient-navBar { background: var(--ddd-theme-default-gradient-navBar); } .bg-gradient-footer { background: var(--ddd-theme-default-gradient-footer); } .bg-gradient-newsFeature { background: var(--ddd-theme-default-gradient-newsFeature); } .bg-gradient-buttons { background: var(--ddd-theme-default-gradient-buttons); } .bg-gradient-hero { background: var(--ddd-theme-default-gradient-hero); } .bg-gradient-hero2 { background: var(--ddd-theme-default-gradient-hero2); } `"
+        },
+        {
+          "kind": "variable",
+          "name": "DDDFontWeight",
+          "default": "css` .fw-0 { font-weight: var(--ddd-font-weight-regular); /* available for navigation */ } .fw-1 { font-weight: var(--ddd-font-weight-medium); /* available for headers */ } .fw-2 { font-weight: var(--ddd-font-weight-bold); /* available for headers */ } .fw-3 { font-weight: var( --ddd-font-weight-black ); /* default for headers, body & navigation */ } `"
+        },
+        {
+          "kind": "variable",
+          "name": "DDDFontClasses",
+          "default": "css` .ddd-font-navigation { font-family: var(--ddd-font-navigation); font-size: var(--ddd-theme-h4-font-size); font-weight: var(--ddd-font-weight-bold); } .ddd-font-primary { font-family: var(--ddd-font-primary); } .ddd-font-secondary { font-family: var(--ddd-font-secondary); } `"
+        },
+        {
+          "kind": "variable",
+          "name": "DDDHeaderBorderClasses",
+          "default": "css` .ddd-theme-header-border-thickness-0 { --ddd-theme-header-border-thickness: var( --ddd-theme-header-border-thickness-0 ); } .ddd-theme-header-border-thickness-xs { --ddd-theme-header-border-thickness: var( --ddd-theme-header-border-thickness-xs ); } .ddd-theme-header-border-thickness-sm { --ddd-theme-header-border-thickness: var( --ddd-theme-header-border-thickness-sm ); } .ddd-theme-header-border-thickness-md { --ddd-theme-header-border-thickness: var( --ddd-theme-header-border-thickness-md ); } .ddd-theme-header-border-thickness-lg { --ddd-theme-header-border-thickness: var( --ddd-theme-header-border-thickness-lg ); } .ddd-theme-header-border-treatment-0 { --ddd-theme-header-border-treatment: var( --ddd-theme-header-border-treatment-0 ); } .ddd-theme-header-border-treatment-sm { --ddd-theme-header-border-treatment: var( --ddd-theme-header-border-treatment-sm ); } .ddd-theme-header-border-treatment-md { --ddd-theme-header-border-treatment: var( --ddd-theme-header-border-treatment-md ); } .ddd-theme-header-border-treatment-lg { --ddd-theme-header-border-treatment: var( --ddd-theme-header-border-treatment-lg ); } .ddd-theme-header-border-treatment-10p { --ddd-theme-header-border-treatment: var( --ddd-theme-header-border-treatment-10p ); } .ddd-theme-header-border-treatment-25p { --ddd-theme-header-border-treatment: var( --ddd-theme-header-border-treatment-25p ); } .ddd-theme-header-border-treatment-50p { --ddd-theme-header-border-treatment: var( --ddd-theme-header-border-treatment-50p ); } .ddd-theme-header-border-treatment-75p { --ddd-theme-header-border-treatment: var( --ddd-theme-header-border-treatment-75p ); } .ddd-theme-header-border-treatment-full { --ddd-theme-header-border-treatment: var( --ddd-theme-header-border-treatment-full ); } `"
+        },
+        {
+          "kind": "variable",
+          "name": "DDDUtilityClasses",
+          "type": {
+            "text": "array"
+          },
+          "default": "[ DDDLetterSpacing, DDDBoxShadow, DDDBorderRadius, DDDBackground, DDDFontWeight, DDDFontClasses, DDDHeaderBorderClasses, ]"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DDDLetterSpacing",
+          "declaration": {
+            "name": "DDDLetterSpacing",
+            "module": "lib/DDDUtilityClasses.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DDDBoxShadow",
+          "declaration": {
+            "name": "DDDBoxShadow",
+            "module": "lib/DDDUtilityClasses.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DDDBorderRadius",
+          "declaration": {
+            "name": "DDDBorderRadius",
+            "module": "lib/DDDUtilityClasses.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DDDBackground",
+          "declaration": {
+            "name": "DDDBackground",
+            "module": "lib/DDDUtilityClasses.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DDDFontWeight",
+          "declaration": {
+            "name": "DDDFontWeight",
+            "module": "lib/DDDUtilityClasses.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DDDFontClasses",
+          "declaration": {
+            "name": "DDDFontClasses",
+            "module": "lib/DDDUtilityClasses.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DDDHeaderBorderClasses",
+          "declaration": {
+            "name": "DDDHeaderBorderClasses",
+            "module": "lib/DDDUtilityClasses.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DDDUtilityClasses",
+          "declaration": {
+            "name": "DDDUtilityClasses",
+            "module": "lib/DDDUtilityClasses.js"
           }
         }
       ]
@@ -2245,6 +2137,159 @@
           "declaration": {
             "name": "HaxUiAdminScheme",
             "module": "lib/HaxUiAdminTokens.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/d-d-d-sample.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "DDDSample",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "type",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "option",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "option"
+            },
+            {
+              "kind": "field",
+              "name": "tooltip",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "present the label as a tooltip on hover/focus instead of\ndisplaying it visibly next to the sample swatch",
+              "default": "false",
+              "attribute": "tooltip",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "DDDSuper",
+                "module": "d-d-d.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "description": "LitElement style callback",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "DDDSuper",
+                "module": "d-d-d.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "isSafari",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "is-safari",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "DDDSuper",
+                "module": "d-d-d.js"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "type",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "type"
+            },
+            {
+              "name": "option",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "option"
+            },
+            {
+              "name": "tooltip",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "present the label as a tooltip on hover/focus instead of\ndisplaying it visibly next to the sample swatch",
+              "default": "false",
+              "fieldName": "tooltip"
+            },
+            {
+              "name": "is-safari",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "isSafari",
+              "inheritedFrom": {
+                "name": "DDDSuper",
+                "module": "d-d-d.js"
+              }
+            }
+          ],
+          "mixins": [
+            {
+              "name": "DDDSuper",
+              "module": "/d-d-d.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DDDSample",
+          "declaration": {
+            "name": "DDDSample",
+            "module": "lib/d-d-d-sample.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "DDDSample",
+            "module": "lib/d-d-d-sample.js"
           }
         }
       ]
