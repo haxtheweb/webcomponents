@@ -734,6 +734,29 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
             );
             gap: var(--ddd-spacing-2, 8px);
           }
+
+          /* phones: wrap every create option into the results grid so
+             none sit off-screen in a sideways scroller */
+          .quick-create {
+            padding-left: var(--ddd-spacing-4, 16px);
+            padding-right: var(--ddd-spacing-4, 16px);
+          }
+          .quick-create-grid {
+            display: grid;
+            grid-template-columns: repeat(
+              auto-fill,
+              minmax(clamp(120px, 30vw, 144px), 1fr)
+            );
+            gap: var(--ddd-spacing-2, 8px);
+            overflow: visible;
+            scroll-snap-type: none;
+            padding-bottom: 0;
+          }
+          .quick-create-grid > div,
+          .quick-create-grid app-hax-use-case {
+            min-width: 0;
+            --app-hax-use-case-card-width: 100%;
+          }
         }
 
         @media (max-width: 480px) {
@@ -743,7 +766,8 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
             font-size: var(--ddd-font-size-s, 16px);
             margin: 0 0 var(--ddd-spacing-3, 12px) 0;
           }
-          .template-results {
+          .template-results,
+          .quick-create-grid {
             grid-template-columns: repeat(2, minmax(0, 1fr));
           }
           #returnToSection app-hax-search-results {
@@ -1114,11 +1138,10 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
   }
 
   render() {
-    const isMobile = this.isMobile;
     const skeletons = Array.isArray(this.items)
       ? this.items.filter((i) => i && i.dataType === "skeleton")
       : [];
-    const quickSkeletons = isMobile ? [] : skeletons.slice(0, 3);
+    const quickSkeletons = skeletons.slice(0, 3);
 
     return html`
       <div class="contentSection">
@@ -1148,7 +1171,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
             <div role="listitem">
               <app-hax-use-case
                 .source=${""}
-                .title=${isMobile ? this.t.templates : this.t.moreTemplates}
+                .title=${this.t.moreTemplates}
                 .description=${this.t.browseAllTemplateStarters}
                 .iconImage=${[
                   { icon: "icons:add", tooltip: this.t.moreTemplatesTooltip },
@@ -1158,50 +1181,40 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
                   this.scrollToGroup("from-template-heading", "skeleton")}
               ></app-hax-use-case>
             </div>
-            ${
-              !isMobile
-                ? html`
-                    <div role="listitem">
-                      <app-hax-use-case
-                        .source=${""}
-                        .title=${this.t.fromScratch}
-                        .description=${this.t.startFromBlankSiteWithTheme}
-                        .iconImage=${[
-                          {
-                            icon: "editor:insert-drive-file",
-                            tooltip: this.t.fromScratchTooltip,
-                          },
-                        ]}
-                        ?dark="${this.dark}"
-                        @click=${() =>
-                          this.scrollToGroup("from-scratch-heading", "blank")}
-                      ></app-hax-use-case>
-                    </div>
-                  `
-                : ""
-            }
-            ${
-              !isMobile
-                ? html`
-                    <div role="listitem">
-                      <app-hax-use-case
-                        .source=${""}
-                        .title=${this.t.import}
-                        .description=${this.t.importContentFromExistingSource}
-                        .iconImage=${[
-                          {
-                            icon: "icons:cloud-download",
-                            tooltip: this.t.importContent,
-                          },
-                        ]}
-                        ?dark="${this.dark}"
-                        @click=${() =>
-                          this.scrollToGroup("from-existing-heading", "import")}
-                      ></app-hax-use-case>
-                    </div>
-                  `
-                : ""
-            }
+
+            <div role="listitem">
+              <app-hax-use-case
+                .source=${""}
+                .title=${this.t.fromScratch}
+                .description=${this.t.startFromBlankSiteWithTheme}
+                .iconImage=${[
+                  {
+                    icon: "editor:insert-drive-file",
+                    tooltip: this.t.fromScratchTooltip,
+                  },
+                ]}
+                ?dark="${this.dark}"
+                @click=${() =>
+                  this.scrollToGroup("from-scratch-heading", "blank")}
+              ></app-hax-use-case>
+            </div>
+
+            <div role="listitem">
+              <app-hax-use-case
+                .source=${""}
+                .title=${this.t.import}
+                .description=${this.t.importContentFromExistingSource}
+                .iconImage=${[
+                  {
+                    icon: "icons:cloud-download",
+                    tooltip: this.t.importContent,
+                  },
+                ]}
+                ?dark="${this.dark}"
+                @click=${() =>
+                  this.scrollToGroup("from-existing-heading", "import")}
+              ></app-hax-use-case>
+            </div>
           </div>
         </section>
 
@@ -1461,43 +1474,37 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
                         }
                       </div>
 
-                      ${
-                        !isMobile
-                          ? html`
-                              <div
-                                class="template-group"
-                                role="region"
-                                aria-labelledby="from-existing-heading"
+                      <div
+                        class="template-group"
+                        role="region"
+                        aria-labelledby="from-existing-heading"
+                        aria-live="polite"
+                      >
+                        <h3
+                          id="from-existing-heading"
+                          class="template-group-heading"
+                        >
+                          ${this.t.fromExistingSource}
+                        </h3>
+                        ${
+                          importEntries.length > 0
+                            ? html`<div
+                                class="template-results"
+                                role="grid"
+                                aria-label="${this.t.importOptions}"
+                                aria-describedby="template-count"
+                              >
+                                ${renderEntries(importEntries)}
+                              </div>`
+                            : html`<p
+                                role="status"
+                                class="no-results"
                                 aria-live="polite"
                               >
-                                <h3
-                                  id="from-existing-heading"
-                                  class="template-group-heading"
-                                >
-                                  ${this.t.fromExistingSource}
-                                </h3>
-                                ${
-                                  importEntries.length > 0
-                                    ? html`<div
-                                        class="template-results"
-                                        role="grid"
-                                        aria-label="${this.t.importOptions}"
-                                        aria-describedby="template-count"
-                                      >
-                                        ${renderEntries(importEntries)}
-                                      </div>`
-                                    : html`<p
-                                        role="status"
-                                        class="no-results"
-                                        aria-live="polite"
-                                      >
-                                        ${this.t.noImportOptionsMatchFilters}
-                                      </p>`
-                                }
-                              </div>
-                            `
-                          : ""
-                      }
+                                ${this.t.noImportOptionsMatchFilters}
+                              </p>`
+                        }
+                      </div>
                     `;
                   })()
                 : this.loading
@@ -1903,6 +1910,15 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
     // properties synchronously inside the update cycle.
     if (changedProperties.has("items")) {
       this._maybeAutoOpenUseCaseFromUrl();
+      // Template cards arrive after the quick-create row first renders, so
+      // scroll snapping would keep the old first card in view and push the
+      // new templates off the left edge. Start the row at the beginning.
+      const grid = this.shadowRoot
+        ? this.shadowRoot.querySelector(".quick-create-grid")
+        : null;
+      if (grid) {
+        grid.scrollLeft = 0;
+      }
     }
   }
 
