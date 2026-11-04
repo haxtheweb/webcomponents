@@ -57,5 +57,12 @@
   "expandAll": "Ehangu'r cyfan",
   "displayMode1": "Modd 1",
   "displayMode2": "Modd 2",
-  "twoWindows": "Dwy ffenestr"
+  "twoWindows": "Dwy ffenestr",
+  "notGraded": "Heb ei raddio",
+  "gradeValue": "{score} o {points}",
+  "studentPosition": "Myfyriwr {current} / {total}",
+  "rosterCaption": "Myfyrwyr: {students} · Aseiniadau: {assignments}",
+  "gridInstructions": "Mae'r bysellau saeth yn symud rhwng graddau, mae Enter yn agor y graddio",
+  "totalScore": "Cyfanswm y sgôr",
+  "lockTotalScore": "Cloi cyfanswm y sgôr"
 }

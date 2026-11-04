@@ -60,5 +60,10 @@
   "pageUnit": "страница",
   "pagesUnit": "страници",
   "replacementUnit": "замяна",
-  "replacementsUnit": "замени"
+  "replacementsUnit": "замени",
+  "deletePagesTitle": "Изтриване на страници",
+  "deleteAction": "Изтриване",
+  "replaceTitle": "Замяна в страниците",
+  "removeMatchesTitle": "Премахване на всички съвпадения",
+  "removeAction": "Премахване"
 }

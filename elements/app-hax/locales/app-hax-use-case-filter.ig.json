@@ -100,5 +100,6 @@
   "vitepressImportDescription": "Bubata repo akwụkwọ VitePress n'ime saịtị HAX ọhụrụ",
   "vitepressImportPrompt": "URL maka repo git VitePress",
   "quartoImportDescription": "Bubata repo akwụkwọ Quarto n'ime saịtị HAX ọhụrụ",
-  "quartoImportPrompt": "URL maka repo git Quarto"
+  "quartoImportPrompt": "URL maka repo git Quarto",
+  "cancel": "Kagbuo"
 }

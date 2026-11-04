@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Сайт ийгиликтүү түзүлдү!",
   "newSiteReady": "Жаңы \"{siteName}\" сайтыңыз колдонууга даяр.",
   "stayHere": "Ушул жерде калуу",
-  "goToSite": "Сайтка өтүү"
+  "goToSite": "Сайтка өтүү",
+  "stepOf": "{total} кадамдын {step}-кадамы"
 }

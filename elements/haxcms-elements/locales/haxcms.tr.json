@@ -10,7 +10,6 @@
   "selectPage": "Sayfa seç",
   "siteDashboard": "Siteler Panosu",
   "cancel": "İptal",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "OK seçilirse kaydedilmemiş değişiklikler kaybolacak, emin misiniz?",
   "editDetails": "Ayrıntıları düzenle",
   "add": "Ekle",
   "source": "Kaynak",
@@ -644,5 +643,14 @@
   "primarySidebar": "Birincil Kenar Çubuğu",
   "contents": "İçindekiler",
   "continue": "Devam",
-  "noResultsFor": "\"{search}\" için sonuç bulunamadı"
+  "noResultsFor": "\"{search}\" için sonuç bulunamadı",
+  "duplicatePageTitle": "Sayfayı çoğalt",
+  "duplicateAction": "Çoğalt",
+  "newPageTitle": "Başlık",
+  "importFromUrlTitle": "Bir URL'den içe aktar",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Anahat değişiklikleri atılsın mı?",
+  "outlineSaveTitle": "Anahat değişiklikleri kaydedilsin mi?",
+  "discardChanges": "Değişiklikleri at",
+  "keepEditing": "Düzenlemeye devam et"
 }

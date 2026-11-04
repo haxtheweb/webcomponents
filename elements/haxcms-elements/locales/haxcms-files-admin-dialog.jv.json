@@ -75,5 +75,11 @@
   "selectFile": "Pilih {name}",
   "copyPath": "Salin path",
   "pathCopied": "Path disalin",
-  "embedInPage": "Lebokake ing kaca"
+  "embedInPage": "Lebokake ing kaca",
+  "deleteFilesTitle": "Busak berkas",
+  "renameFilesTitle": "Ganti jeneng berkas",
+  "replaceOriginalsTitle": "Ganti berkas asli",
+  "newName": "Jeneng anyar",
+  "deleteAction": "Busak",
+  "renameAction": "Ganti jeneng"
 }

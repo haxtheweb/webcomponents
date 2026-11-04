@@ -10,7 +10,6 @@
   "selectPage": "Chọn trang",
   "siteDashboard": "Bảng điều khiển trang",
   "cancel": "Hủy",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Những thay đổi chưa lưu sẽ bị mất nếu bạn chọn OK, bạn có chắc chắn không?",
   "editDetails": "Chỉnh sửa chi tiết",
   "add": "Thêm",
   "source": "Mã nguồn",
@@ -644,5 +643,14 @@
   "primarySidebar": "Thanh bên chính",
   "contents": "Mục lục",
   "continue": "Tiếp tục",
-  "noResultsFor": "Không tìm thấy kết quả cho \"{search}\""
+  "noResultsFor": "Không tìm thấy kết quả cho \"{search}\"",
+  "duplicatePageTitle": "Nhân bản trang",
+  "duplicateAction": "Nhân bản",
+  "newPageTitle": "Tiêu đề",
+  "importFromUrlTitle": "Nhập từ URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Bỏ các thay đổi dàn ý?",
+  "outlineSaveTitle": "Lưu các thay đổi dàn ý?",
+  "discardChanges": "Bỏ thay đổi",
+  "keepEditing": "Tiếp tục chỉnh sửa"
 }

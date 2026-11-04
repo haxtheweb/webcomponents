@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Vietne veiksmīgi izveidota!",
   "newSiteReady": "Jūsu jaunā vietne \"{siteName}\" ir gatava lietošanai.",
   "stayHere": "Palikt šeit",
-  "goToSite": "Doties uz vietni"
+  "goToSite": "Doties uz vietni",
+  "stepOf": "{step}. solis no {total}"
 }

@@ -10,7 +10,6 @@
   "selectPage": "ಪುಟವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ",
   "siteDashboard": "ಸೈಟ್‌ಗಳ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್",
   "cancel": "ರದ್ದುಮಾಡಿ",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "OK ಆಯ್ಕೆ ಮಾಡಿದರೆ ಉಳಿಸದ ಬದಲಾವಣೆಗಳು ಕಳೆದುಹೋಗುತ್ತವೆ, ನಿಮಗೆ ಖಚಿತವೇ?",
   "editDetails": "ವಿವರಗಳನ್ನು ಸಂಪಾದಿಸಿ",
   "add": "ಸೇರಿಸಿ",
   "source": "ಮೂಲ",
@@ -644,5 +643,14 @@
   "primarySidebar": "ಮುಖ್ಯ ಸೈಡ್‌ಬಾರ್",
   "contents": "ಪರಿವಿಡಿ",
   "continue": "ಮುಂದುವರಿಸಿ",
-  "noResultsFor": "\"{search}\" ಗೆ ಯಾವುದೇ ಫಲಿತಾಂಶಗಳು ಕಂಡುಬಂದಿಲ್ಲ"
+  "noResultsFor": "\"{search}\" ಗೆ ಯಾವುದೇ ಫಲಿತಾಂಶಗಳು ಕಂಡುಬಂದಿಲ್ಲ",
+  "duplicatePageTitle": "ಪುಟವನ್ನು ನಕಲು ಮಾಡಿ",
+  "duplicateAction": "ನಕಲು ಮಾಡಿ",
+  "newPageTitle": "ಶೀರ್ಷಿಕೆ",
+  "importFromUrlTitle": "URL ನಿಂದ ಆಮದು ಮಾಡಿ",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "ರಚನೆಯ ಬದಲಾವಣೆಗಳನ್ನು ತ್ಯಜಿಸಬೇಕೇ?",
+  "outlineSaveTitle": "ರಚನೆಯ ಬದಲಾವಣೆಗಳನ್ನು ಉಳಿಸಬೇಕೇ?",
+  "discardChanges": "ಬದಲಾವಣೆಗಳನ್ನು ತ್ಯಜಿಸಿ",
+  "keepEditing": "ಸಂಪಾದನೆ ಮುಂದುವರಿಸಿ"
 }

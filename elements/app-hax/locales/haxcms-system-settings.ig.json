@@ -124,5 +124,13 @@
   "showApiKeyValue": "Gosi uru igodo API",
   "noSettingsForPanel": "Enweghị ntọala dị maka ogwe a ugbu a.",
   "saving": "Na-echekwa…",
-  "save": "Chekwaa"
+  "save": "Chekwaa",
+  "dropSkeletonFile": "Dobe ndebiri .json ebe a ma ọ bụ",
+  "browseFiles": "Chọgharịa",
+  "skeletonUploadNote": "Enwere ike ịgụgharị aha ma ọ bụ hichapụ ndebiri ndị ebugoro; ọ bụ naanị ịgbanyụ ka enwere ike ime ndebiri isi.",
+  "skeletonName": "Aha ndebiri",
+  "renameAction": "Gụgharịa aha",
+  "deleteSkeletonTitle": "Hichapụ ndebiri",
+  "deleteAction": "Hichapụ",
+  "cancel": "Kagbuo"
 }

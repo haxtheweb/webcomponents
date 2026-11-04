@@ -1,3 +1,6 @@
+// the style guide pickers render HAXOptionSampleFactory previews, which
+// are d-d-d-sample elements; d-d-d.js no longer defines it
+import "./d-d-d-sample.js";
 import {
   getDDDStyleGuideOptionsForTag,
   getDDDStyleGuidePresetByKey,

@@ -124,5 +124,13 @@
   "showApiKeyValue": "Whakaatu i te uara kī API",
   "noSettingsForPanel": "Kāore anō he tautuhinga e wātea ana mō tēnei paewhiri.",
   "saving": "E tiaki ana…",
-  "save": "Tiaki"
+  "save": "Tiaki",
+  "dropSkeletonFile": "Tukuna mai he kōnae anga .json, rānei",
+  "browseFiles": "Pūtirotiro",
+  "skeletonUploadNote": "Ka taea te whakaingoa anō, te muku rānei i ngā anga kua tukuake; ko ngā anga matua ka taea anake te whakaweto.",
+  "skeletonName": "Ingoa anga",
+  "renameAction": "Whakaingoa anō",
+  "deleteSkeletonTitle": "Muku anga",
+  "deleteAction": "Muku",
+  "cancel": "Whakakore"
 }

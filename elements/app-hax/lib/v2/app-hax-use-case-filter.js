@@ -5,6 +5,8 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import { store } from "./AppHaxStore.js";
+import { HaxUiAdminTokens } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
+import { adminPrompt } from "@haxtheweb/haxcms-elements/lib/core/admin/haxcms-admin-confirm.js";
 import "./app-hax-use-case.js";
 import "./app-hax-search-results.js";
 import "./app-hax-filter-tag.js";
@@ -83,6 +85,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
       newSite: "New site",
       importedSite: "Imported site",
       enterAUrl: "Enter a URL",
+      cancel: "Cancel",
       importInvalidStructure: "Import did not return a valid structure",
       importFailed: "Import failed",
       wordDocImportTitle: "Word Doc",
@@ -291,6 +294,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
 
   static get styles() {
     return [
+      ...HaxUiAdminTokens,
       css`
         :root {
           --page-column-width: 800px;
@@ -315,9 +319,11 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
           box-sizing: border-box;
         }
 
+        /* section layout (HAX UI): every area shares one 24px left edge,
+           a 22px section heading over a 1px rule, then its cards */
         .quick-create {
-          padding: var(--ddd-spacing-5, 20px) var(--ddd-spacing-5, 20px)
-            var(--ddd-spacing-4, 16px);
+          padding: var(--ddd-spacing-5, 20px) var(--ddd-spacing-6, 24px)
+            var(--ddd-spacing-5, 20px);
           background-color: var(--ddd-theme-default-limestoneLight);
           color: var(--ddd-theme-default-nittanyNavy, #001e44);
         }
@@ -330,13 +336,12 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
 
         .quick-create h2 {
           color: inherit;
-          margin: 0 0 var(--ddd-spacing-4, 16px) 0;
         }
 
         .quick-create-grid {
           display: flex;
-          justify-content: center;
-          gap: var(--ddd-spacing-4, 16px);
+          justify-content: flex-start;
+          gap: var(--hax-ui-gap-lg);
           overflow-x: auto;
           overflow-y: hidden;
           padding-bottom: var(--ddd-spacing-2, 8px);
@@ -358,22 +363,35 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
           box-sizing: border-box;
         }
 
+        /* group headings inside a section: the admin rail's group title,
+           small caps over a hairline that runs to the edge */
         .template-group-heading {
-          font-family: var(--ddd-font-primary, sans-serif);
-          color: var(--accent-color);
-          margin: 0 0 var(--ddd-spacing-4, 16px) var(--ddd-spacing-7, 28px);
-          text-decoration: underline;
-          text-decoration-thickness: var(--ddd-border-size-xs, 1px);
-          text-underline-offset: var(--ddd-spacing-1, 4px);
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-lg);
+          margin: var(--ddd-spacing-6, 24px) 0 var(--hax-ui-gap-lg);
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          font-weight: var(--ddd-font-weight-bold, 700);
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          color: var(--hax-ui-text-muted);
+        }
+        .template-group-heading::after {
+          content: "";
+          flex: 1;
+          border-top: 1px solid var(--hax-ui-line);
         }
 
         .template-results {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(200px, 0fr));
-          gap: var(--ddd-spacing-4, 16px);
+          grid-template-columns: repeat(
+            auto-fill,
+            var(--app-hax-use-case-card-width, 180px)
+          );
+          gap: var(--hax-ui-gap-lg);
           justify-content: flex-start;
-          justify-items: center;
-          padding: 0 var(--ddd-spacing-5, 20px);
+          padding: 0;
           box-sizing: border-box;
         }
 
@@ -391,27 +409,37 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
         }
 
         .decorative-line {
-          border-bottom: 4px solid var(--ddd-theme-default-skyBlue);
+          border-bottom: 1px solid var(--hax-ui-line);
           box-sizing: border-box;
           width: 100%;
-          margin: 0 0 var(--ddd-spacing-3, 12px) 0;
+          margin: 0 0 var(--hax-ui-gap-lg) 0;
         }
 
         #from-template-heading {
-          margin-top: var(--ddd-spacing-5, 20px);
+          margin-top: var(--hax-ui-gap-lg);
         }
 
         :host(:not([show-filter])) app-hax-search-results {
           width: 100%;
         }
 
+        /* section headings: the admin panel heading (22px bold) */
         h2,
         .returnTo h2,
         .startNew h2 {
-          font-family: var(--ddd-font-primary, sans-serif);
-          font-size: var(--ddd-font-size-m);
-          color: var(--accent-color);
-          margin: 0 0 var(--ddd-spacing-4, 16px) 0;
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: 22px;
+          font-weight: var(--ddd-font-weight-bold, 700);
+          line-height: 1.2;
+          color: var(--hax-ui-text);
+          margin: 0 0 var(--hax-ui-gap-lg) 0;
+        }
+        .quick-create h2 {
+          margin-bottom: var(--hax-ui-gap-lg);
+        }
+        #returnToSection,
+        #startJourneySection {
+          padding-top: var(--ddd-spacing-6, 24px);
         }
         .startNew,
         .returnTo {
@@ -428,53 +456,42 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
           min-width: 200px;
           width: 60%;
         }
+        /* search and sort: a 40px HAX UI field and a 32px icon button */
         input[type="text"] {
           width: 100%;
-          padding: var(--ddd-spacing-3, 12px) var(--ddd-spacing-3, 12px)
-            var(--ddd-spacing-3, 12px) var(--ddd-spacing-3, 12px);
-          font-size: var(--ddd-font-size-xs, 12px);
-          border-radius: 12px;
-          border: var(--ddd-border-sm, 2px solid);
-          border-color: var(--ddd-theme-default-limestoneGray);
-          background: var(--ddd-theme-default-limestoneLight);
-          color: var(--ddd-theme-default-coalyGray, #222);
-          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
+          height: var(--hax-ui-field-height);
+          padding: 0 calc(var(--hax-ui-icon) + 24px) 0 var(--hax-ui-gap-lg);
+          font-size: var(--hax-ui-admin-font-size);
+          font-family: var(--hax-ui-admin-font-family);
+          border-radius: var(--hax-ui-radius);
+          border: 1px solid var(--hax-ui-line-strong);
+          background: var(--hax-ui-surface);
+          color: var(--hax-ui-text);
+          transition: border-color var(--hax-ui-duration) var(--hax-ui-easing);
           box-sizing: border-box;
-          font-family: var(--ddd-font-primary, sans-serif);
           margin: 0;
-          min-height: var(--ddd-spacing-12, 48px);
         }
-        :host([dark]) input[type="text"],
-        body.dark-mode input[type="text"] {
-          background: var(--ddd-theme-default-coalyGray, #333);
-          color: var(--ddd-theme-default-white, white);
-          border-color: var(--ddd-theme-default-slateGray, #666);
+        input[type="text"]::placeholder {
+          color: var(--hax-ui-text-muted);
+        }
+        input[type="text"]:hover {
+          border-color: var(--hax-ui-text-muted);
         }
         input[type="text"]:focus {
-          border: var(--ddd-border-md, 2px solid);
-          border-color: var(--ddd-theme-default-accent);
-          outline: none;
-        }
-        :host([dark]) input[type="text"]:focus,
-        body.dark-mode input[type="text"]:focus {
-          background: var(--ddd-theme-default-coalyGray, #333);
-          border-color: var(--ddd-theme-default-accent);
+          border-color: var(--hax-ui-accent-strong);
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 1px;
         }
         .search-icon {
           position: absolute;
-          right: var(--ddd-spacing-3, 12px);
+          right: var(--hax-ui-gap-lg);
           top: 50%;
           transform: translateY(-50%);
-          font-size: var(--ddd-font-size-xs, 14px);
-          color: var(--ddd-theme-default-nittanyNavy, #001e44);
+          color: var(--hax-ui-text-muted);
           pointer-events: none;
           z-index: 1;
-          --simple-icon-width: 25px;
-          --simple-icon-height: 25px;
-        }
-        :host([dark]) .search-icon,
-        body.dark-mode .search-icon {
-          color: var(--ddd-theme-default-white, white);
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
         }
         .filter {
           margin: var(--ddd-spacing-4, 16px) auto;
@@ -500,87 +517,74 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
           display: none;
         }
         .sort-control {
-          margin-top: var(--ddd-spacing-2, 8px);
-          margin-bottom: var(--ddd-spacing-3, 12px);
           display: flex;
           align-items: center;
-          gap: var(--ddd-spacing-1, 4px);
+          gap: var(--hax-ui-gap);
           position: relative;
         }
         .sort-button {
-          color: var(--ddd-theme-default-nittanyNavy, #001e44);
-          background: transparent;
-          border: none;
-          box-shadow: none;
-          padding: var(--ddd-spacing-2, 8px);
+          color: var(--hax-ui-text);
+          background: var(--hax-ui-surface);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius);
+          padding: 0;
           cursor: pointer;
           display: flex;
           align-items: center;
           justify-content: center;
-          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
-          outline: none;
-          min-height: var(--ddd-spacing-7, 28px);
-          min-width: var(--ddd-spacing-7, 28px);
-          --simple-icon-width: 40px;
-          --simple-icon-height: 40px;
+          transition:
+            background-color var(--hax-ui-duration) var(--hax-ui-easing),
+            border-color var(--hax-ui-duration) var(--hax-ui-easing);
+          width: var(--hax-ui-row-height);
+          height: var(--hax-ui-row-height);
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
         }
-
-        :host([dark]) .sort-button,
-        body.dark-mode .sort-button {
-          color: var(--ddd-theme-default-white, white);
-        }
-
-        :host([dark]) .sort-button:hover,
-        body.dark-mode .sort-button:hover {
-          color: var(--ddd-theme-default-limestoneGray);
-        }
-
         .sort-button:hover,
-        body.dark-mode .sort-button:hover {
-          color: var(--ddd-theme-default-accent);
+        .sort-button[aria-expanded="true"] {
+          background: var(--hax-ui-hover);
+          border-color: var(--hax-ui-accent-strong);
         }
-
+        .sort-button:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
+        }
         .sort-menu {
           position: absolute;
           top: 100%;
-          left: 0;
-          margin-top: var(--ddd-spacing-1, 4px);
-          background: var(--ddd-theme-default-limestoneLight);
-          border: var(--ddd-border-xs, 1px solid)
-            var(--ddd-theme-default-limestoneLight);
-          border-radius: var(--ddd-radius-sm, 4px);
-          box-shadow: var(--ddd-boxShadow-md);
+          right: 0;
+          margin-top: var(--hax-ui-gap);
+          padding: var(--hax-ui-gap);
+          background: var(--hax-ui-surface);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius-lg);
+          box-shadow: var(--hax-ui-shadow-popover);
           min-width: 200px;
           z-index: 1000;
         }
         .sort-menu-item {
-          display: block;
+          display: flex;
+          align-items: center;
           width: 100%;
-          padding: var(--ddd-spacing-2, 8px) var(--ddd-spacing-3, 12px);
+          min-height: var(--hax-ui-row-height);
+          padding: 0 var(--hax-ui-gap-md);
           background: none;
           border: none;
+          border-radius: var(--hax-ui-radius);
           text-align: left;
           cursor: pointer;
-          font-family: var(--ddd-font-primary, sans-serif);
-          font-size: var(--ddd-font-size-3xs, 11px);
-          color: var(--ddd-theme-default-coalyGray, #222);
-          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size);
+          color: var(--hax-ui-text);
+          transition: background-color var(--hax-ui-duration)
+            var(--hax-ui-easing);
         }
         .sort-menu-item:hover {
-          background: var(--ddd-theme-default-limestoneGray, #f5f5f5);
+          background: var(--hax-ui-hover);
         }
-        .sort-menu-item:focus {
-          outline: var(--ddd-border-md, 2px solid)
-            var(--ddd-theme-default-keystoneYellow, #ffd100);
+        .sort-menu-item:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
           outline-offset: -2px;
-        }
-        :host([dark]) .sort-menu-item,
-        body.dark-mode .sort-menu-item {
-          color: var(--ddd-theme-default-black);
-        }
-        :host([dark]) .sort-menu-item:hover,
-        body.dark-mode .sort-menu-item:hover {
-          background: var(--ddd-theme-default-limestoneGray);
         }
         .sort-select {
           width: 100%;
@@ -723,17 +727,35 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
             font-size: var(--ddd-font-size-s, 18px);
           }
 
-          .template-group-heading {
-            margin-left: var(--ddd-spacing-3, 12px);
-          }
-
           .template-results {
             grid-template-columns: repeat(
-              auto-fit,
+              auto-fill,
               minmax(clamp(120px, 30vw, 144px), 1fr)
             );
             gap: var(--ddd-spacing-2, 8px);
-            padding: 0 var(--ddd-spacing-3, 12px);
+          }
+
+          /* phones: wrap every create option into the results grid so
+             none sit off-screen in a sideways scroller */
+          .quick-create {
+            padding-left: var(--ddd-spacing-4, 16px);
+            padding-right: var(--ddd-spacing-4, 16px);
+          }
+          .quick-create-grid {
+            display: grid;
+            grid-template-columns: repeat(
+              auto-fill,
+              minmax(clamp(120px, 30vw, 144px), 1fr)
+            );
+            gap: var(--ddd-spacing-2, 8px);
+            overflow: visible;
+            scroll-snap-type: none;
+            padding-bottom: 0;
+          }
+          .quick-create-grid > div,
+          .quick-create-grid app-hax-use-case {
+            min-width: 0;
+            --app-hax-use-case-card-width: 100%;
           }
         }
 
@@ -744,7 +766,8 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
             font-size: var(--ddd-font-size-s, 16px);
             margin: 0 0 var(--ddd-spacing-3, 12px) 0;
           }
-          .template-results {
+          .template-results,
+          .quick-create-grid {
             grid-template-columns: repeat(2, minmax(0, 1fr));
           }
           #returnToSection app-hax-search-results {
@@ -1115,11 +1138,10 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
   }
 
   render() {
-    const isMobile = this.isMobile;
     const skeletons = Array.isArray(this.items)
       ? this.items.filter((i) => i && i.dataType === "skeleton")
       : [];
-    const quickSkeletons = isMobile ? [] : skeletons.slice(0, 3);
+    const quickSkeletons = skeletons.slice(0, 3);
 
     return html`
       <div class="contentSection">
@@ -1149,7 +1171,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
             <div role="listitem">
               <app-hax-use-case
                 .source=${""}
-                .title=${isMobile ? this.t.templates : this.t.moreTemplates}
+                .title=${this.t.moreTemplates}
                 .description=${this.t.browseAllTemplateStarters}
                 .iconImage=${[
                   { icon: "icons:add", tooltip: this.t.moreTemplatesTooltip },
@@ -1159,50 +1181,40 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
                   this.scrollToGroup("from-template-heading", "skeleton")}
               ></app-hax-use-case>
             </div>
-            ${
-              !isMobile
-                ? html`
-                    <div role="listitem">
-                      <app-hax-use-case
-                        .source=${""}
-                        .title=${this.t.fromScratch}
-                        .description=${this.t.startFromBlankSiteWithTheme}
-                        .iconImage=${[
-                          {
-                            icon: "editor:insert-drive-file",
-                            tooltip: this.t.fromScratchTooltip,
-                          },
-                        ]}
-                        ?dark="${this.dark}"
-                        @click=${() =>
-                          this.scrollToGroup("from-scratch-heading", "blank")}
-                      ></app-hax-use-case>
-                    </div>
-                  `
-                : ""
-            }
-            ${
-              !isMobile
-                ? html`
-                    <div role="listitem">
-                      <app-hax-use-case
-                        .source=${""}
-                        .title=${this.t.import}
-                        .description=${this.t.importContentFromExistingSource}
-                        .iconImage=${[
-                          {
-                            icon: "icons:cloud-download",
-                            tooltip: this.t.importContent,
-                          },
-                        ]}
-                        ?dark="${this.dark}"
-                        @click=${() =>
-                          this.scrollToGroup("from-existing-heading", "import")}
-                      ></app-hax-use-case>
-                    </div>
-                  `
-                : ""
-            }
+
+            <div role="listitem">
+              <app-hax-use-case
+                .source=${""}
+                .title=${this.t.fromScratch}
+                .description=${this.t.startFromBlankSiteWithTheme}
+                .iconImage=${[
+                  {
+                    icon: "editor:insert-drive-file",
+                    tooltip: this.t.fromScratchTooltip,
+                  },
+                ]}
+                ?dark="${this.dark}"
+                @click=${() =>
+                  this.scrollToGroup("from-scratch-heading", "blank")}
+              ></app-hax-use-case>
+            </div>
+
+            <div role="listitem">
+              <app-hax-use-case
+                .source=${""}
+                .title=${this.t.import}
+                .description=${this.t.importContentFromExistingSource}
+                .iconImage=${[
+                  {
+                    icon: "icons:cloud-download",
+                    tooltip: this.t.importContent,
+                  },
+                ]}
+                ?dark="${this.dark}"
+                @click=${() =>
+                  this.scrollToGroup("from-existing-heading", "import")}
+              ></app-hax-use-case>
+            </div>
           </div>
         </section>
 
@@ -1462,43 +1474,37 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
                         }
                       </div>
 
-                      ${
-                        !isMobile
-                          ? html`
-                              <div
-                                class="template-group"
-                                role="region"
-                                aria-labelledby="from-existing-heading"
+                      <div
+                        class="template-group"
+                        role="region"
+                        aria-labelledby="from-existing-heading"
+                        aria-live="polite"
+                      >
+                        <h3
+                          id="from-existing-heading"
+                          class="template-group-heading"
+                        >
+                          ${this.t.fromExistingSource}
+                        </h3>
+                        ${
+                          importEntries.length > 0
+                            ? html`<div
+                                class="template-results"
+                                role="grid"
+                                aria-label="${this.t.importOptions}"
+                                aria-describedby="template-count"
+                              >
+                                ${renderEntries(importEntries)}
+                              </div>`
+                            : html`<p
+                                role="status"
+                                class="no-results"
                                 aria-live="polite"
                               >
-                                <h3
-                                  id="from-existing-heading"
-                                  class="template-group-heading"
-                                >
-                                  ${this.t.fromExistingSource}
-                                </h3>
-                                ${
-                                  importEntries.length > 0
-                                    ? html`<div
-                                        class="template-results"
-                                        role="grid"
-                                        aria-label="${this.t.importOptions}"
-                                        aria-describedby="template-count"
-                                      >
-                                        ${renderEntries(importEntries)}
-                                      </div>`
-                                    : html`<p
-                                        role="status"
-                                        class="no-results"
-                                        aria-live="polite"
-                                      >
-                                        ${this.t.noImportOptionsMatchFilters}
-                                      </p>`
-                                }
-                              </div>
-                            `
-                          : ""
-                      }
+                                ${this.t.noImportOptionsMatchFilters}
+                              </p>`
+                        }
+                      </div>
                     `;
                   })()
                 : this.loading
@@ -1904,6 +1910,15 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
     // properties synchronously inside the update cycle.
     if (changedProperties.has("items")) {
       this._maybeAutoOpenUseCaseFromUrl();
+      // Template cards arrive after the quick-create row first renders, so
+      // scroll snapping would keep the old first card in view and push the
+      // new templates off the left edge. Start the row at the beginning.
+      const grid = this.shadowRoot
+        ? this.shadowRoot.querySelector(".quick-create-grid")
+        : null;
+      if (grid) {
+        grid.scrollLeft = 0;
+      }
     }
   }
 
@@ -2927,7 +2942,14 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
         );
       } else if (selectedTemplate.importKind === "url") {
         const promptText = selectedTemplate.prompt || this.t.enterAUrl;
-        const promptUrl = globalThis.prompt(promptText);
+        const promptUrl = await adminPrompt({
+          title: selectedTemplate.useCaseTitle || this.t.importContent,
+          label: promptText,
+          placeholder: "https://",
+          required: true,
+          confirmLabel: this.t.import,
+          cancelLabel: this.t.cancel,
+        });
         if (!promptUrl) {
           return;
         }

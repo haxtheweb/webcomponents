@@ -10,7 +10,6 @@
   "selectPage": "Chagua ukurasa",
   "siteDashboard": "Dashibodi ya tovuti",
   "cancel": "Ghairi",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Mabadiliko yasiyohifadhiwa yatapotea ukichagua OK. Una uhakika?",
   "editDetails": "Hariri maelezo",
   "add": "Ongeza",
   "source": "Chanzo",
@@ -644,5 +643,14 @@
   "primarySidebar": "Upau wa Kando Mkuu",
   "contents": "Yaliyomo",
   "continue": "Endelea",
-  "noResultsFor": "Hakuna matokeo yaliyopatikana kwa \"{search}\""
+  "noResultsFor": "Hakuna matokeo yaliyopatikana kwa \"{search}\"",
+  "duplicatePageTitle": "Rudufu ukurasa",
+  "duplicateAction": "Rudufu",
+  "newPageTitle": "Kichwa",
+  "importFromUrlTitle": "Ingiza kutoka URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Tupa mabadiliko ya muundo?",
+  "outlineSaveTitle": "Hifadhi mabadiliko ya muundo?",
+  "discardChanges": "Tupa mabadiliko",
+  "keepEditing": "Endelea kuhariri"
 }

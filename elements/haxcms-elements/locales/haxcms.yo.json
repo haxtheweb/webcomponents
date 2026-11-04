@@ -10,7 +10,6 @@
   "selectPage": "Yan ojú-ìwé",
   "siteDashboard": "Àkóójọpọ̀ Àwọn Sáítì",
   "cancel": "Parí",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Àwọn àtúnṣe tí a kò tì í fi pamọ́ yóò sọnu tí o bá yan OK. Ṣe o dá ẹ̀kún?",
   "editDetails": "Ṣàtúnṣe àlàyé",
   "add": "Fikún",
   "source": "Orísun",
@@ -644,5 +643,14 @@
   "primarySidebar": "Ẹ̀gbẹ́ Àkọ́kọ́",
   "contents": "Àwọn àkóónú",
   "continue": "Tẹ̀síwájú",
-  "noResultsFor": "A kò rí èsì kankan fún \"{search}\""
+  "noResultsFor": "A kò rí èsì kankan fún \"{search}\"",
+  "duplicatePageTitle": "Ṣe ẹ̀dà ojú-ìwé",
+  "duplicateAction": "Ṣe ẹ̀dà",
+  "newPageTitle": "Àkọlé",
+  "importFromUrlTitle": "Gbé wọlé láti URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Sọ àwọn àyípadà ìlapa nù?",
+  "outlineSaveTitle": "Fi àwọn àyípadà ìlapa pamọ́?",
+  "discardChanges": "Sọ àwọn àyípadà nù",
+  "keepEditing": "Máa ṣàtúnṣe lọ"
 }

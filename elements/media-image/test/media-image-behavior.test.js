@@ -218,6 +218,57 @@ describe("media-image behavior", () => {
       await el.updateComplete;
       expect(el.modalTitle).to.equal("");
     });
+
+    it("titles the pop up with the alt text when no title or caption exists", async () => {
+      const el = await fixture(
+        html`<media-image
+          source="files/photo.jpg"
+          alt="A grey cat"
+        ></media-image>`,
+      );
+      await el.updateComplete;
+      expect(el.modalTitle).to.equal("");
+      expect(
+        el.shadowRoot
+          .querySelector("media-image-image")
+          .getAttribute("modal-title"),
+      ).to.equal("A grey cat");
+    });
+  });
+
+  describe("pop up dialog frame", () => {
+    it("opens with the HAX dialog titlebar, surface and title icon", async () => {
+      const el = await fixture(
+        html`<media-image
+          source="files/photo.jpg"
+          alt="A grey cat"
+        ></media-image>`,
+      );
+      await el.updateComplete;
+      const image = el.shadowRoot.querySelector("media-image-image");
+      await aTimeout(10);
+      let captured = null;
+      image.addEventListener("simple-modal-show", (e) => {
+        captured = e;
+      });
+      image.click();
+      expect(captured).to.exist;
+      const styles = captured.detail.styles;
+      expect(styles["--simple-modal-titlebar-background"]).to.contain(
+        "--hax-ui-titlebar",
+      );
+      expect(styles["--simple-modal-titlebar-height"]).to.contain("48px");
+      expect(styles["--simple-modal-titlebar-font-size"]).to.equal("16px");
+      expect(styles["--simple-modal-content-container-background"]).to.contain(
+        "light-dark(",
+      );
+      expect(styles["--simple-modal-min-width"]).to.equal("50vw");
+      expect(captured.detail.titleIcon).to.equal("image:photo");
+      expect(captured.detail.title).to.equal("A grey cat");
+      expect(captured.detail.elements.content.tagName).to.equal(
+        "IMAGE-INSPECTOR",
+      );
+    });
   });
 
   describe("caption handling", () => {

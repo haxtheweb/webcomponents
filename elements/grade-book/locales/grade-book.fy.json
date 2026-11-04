@@ -60,5 +60,12 @@
   "downloadPDF": "PDF downloade",
   "displayMode1": "Modus 1",
   "displayMode2": "Modus 2",
-  "twoWindows": "Twa finsters"
+  "twoWindows": "Twa finsters",
+  "notGraded": "Net beoardiele",
+  "gradeValue": "{score} fan {points}",
+  "studentPosition": "Studint {current} / {total}",
+  "rosterCaption": "Studinten: {students} · Opdrachten: {assignments}",
+  "gridInstructions": "Pylktoetsen bewege tusken sifers, Enter iepenet de beoardieling",
+  "totalScore": "Totale score",
+  "lockTotalScore": "Totale score blokkearje"
 }

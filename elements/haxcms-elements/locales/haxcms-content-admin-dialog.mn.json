@@ -60,5 +60,10 @@
   "pageUnit": "хуудас",
   "pagesUnit": "хуудас",
   "replacementUnit": "солилт",
-  "replacementsUnit": "солилт"
+  "replacementsUnit": "солилт",
+  "deletePagesTitle": "Хуудас устгах",
+  "deleteAction": "Устгах",
+  "replaceTitle": "Хуудсуудад солих",
+  "removeMatchesTitle": "Бүх тохирлыг хасах",
+  "removeAction": "Хасах"
 }

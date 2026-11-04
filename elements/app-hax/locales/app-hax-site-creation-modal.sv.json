@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Webbplatsen har skapats!",
   "newSiteReady": "Din nya webbplats \"{siteName}\" är klar att använda.",
   "stayHere": "Stanna här",
-  "goToSite": "Gå till webbplatsen"
+  "goToSite": "Gå till webbplatsen",
+  "stepOf": "Steg {step} av {total}"
 }

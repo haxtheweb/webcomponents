@@ -100,5 +100,6 @@
   "vitepressImportDescription": "Een VitePress-documentatierepo importeren in een nieuwe HAX-site",
   "vitepressImportPrompt": "URL van de VitePress-git-repo",
   "quartoImportDescription": "Een Quarto-documentatierepo importeren in een nieuwe HAX-site",
-  "quartoImportPrompt": "URL van de Quarto-git-repo"
+  "quartoImportPrompt": "URL van de Quarto-git-repo",
+  "cancel": "Annuleren"
 }

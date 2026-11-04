@@ -10,7 +10,6 @@
   "selectPage": "בחר דף",
   "siteDashboard": "לוח בקרה של אתרים",
   "cancel": "בטל",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "שינויים שלא נשמרו יאבדו אם תבחר OK. האם אתה בטוח?",
   "editDetails": "ערוך פרטים",
   "add": "הוסף",
   "source": "מקור",
@@ -644,5 +643,14 @@
   "primarySidebar": "סרגל צד ראשי",
   "contents": "תוכן עניינים",
   "continue": "המשך",
-  "noResultsFor": "לא נמצאו תוצאות עבור \"{search}\""
+  "noResultsFor": "לא נמצאו תוצאות עבור \"{search}\"",
+  "duplicatePageTitle": "שכפול דף",
+  "duplicateAction": "שכפול",
+  "newPageTitle": "כותרת",
+  "importFromUrlTitle": "ייבוא מכתובת URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "לבטל את השינויים במתאר?",
+  "outlineSaveTitle": "לשמור את השינויים במתאר?",
+  "discardChanges": "ביטול השינויים",
+  "keepEditing": "המשך עריכה"
 }

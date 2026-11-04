@@ -1,6 +1,6 @@
 import { LitElement, html, css, nothing } from "lit";
 import { GradeBookStore } from "./grade-book-store.js";
-import { toJS } from "mobx";
+import { autorun, toJS } from "mobx";
 import "./letter-grade.js";
 /**
  * `letter-grade-picker`
@@ -18,6 +18,25 @@ class LetterGradePicker extends LitElement {
     this.input = false;
     this.possible = 0;
     this.score = 0;
+    // a copy of the store's grade scale; kept current by the autorun in
+    // connectedCallback so the picker renders once a gradebook loads
+    this.gradeScale = toJS(GradeBookStore.gradeScale) || [];
+    this.__disposer = null;
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    if (!this.__disposer) {
+      this.__disposer = autorun(() => {
+        this.gradeScale = toJS(GradeBookStore.gradeScale) || [];
+      });
+    }
+  }
+  disconnectedCallback() {
+    if (this.__disposer) {
+      this.__disposer();
+      this.__disposer = null;
+    }
+    super.disconnectedCallback();
   }
   static get properties() {
     return {
@@ -28,6 +47,7 @@ class LetterGradePicker extends LitElement {
       input: { type: Boolean },
       possible: { type: Number },
       score: { type: Number },
+      gradeScale: { type: Array, attribute: false },
     };
   }
   static get styles() {
@@ -65,12 +85,12 @@ class LetterGradePicker extends LitElement {
         button[active="active"] letter-grade,
         letter-grade[active="active"] {
           filter: brightness(90%) saturate(4);
-          outline: 2px solid black;
+          outline: 2px solid currentColor;
           outline-offset: -2px;
         }
         button[data-selected-value] letter-grade {
           filter: brightness(100%) saturate(1);
-          outline: 4px solid black;
+          outline: 4px solid currentColor;
           outline-offset: -4px;
         }
         .score-wrapper {
@@ -91,7 +111,7 @@ class LetterGradePicker extends LitElement {
     return html`
       <div class="wrapper">
         <slot name="prefix"><span class="prefix">${this.label}</span></slot>
-        ${(GradeBookStore.gradeScale || []).map(
+        ${(this.gradeScale || []).map(
           (scale, index) => html`
             <button
               ?data-selected-value="${scale.letter == this.value}"
@@ -113,24 +133,22 @@ class LetterGradePicker extends LitElement {
             </button>
           `,
         )}
-        ${
-          this.input
-            ? html`
-                <span class="score-wrapper">
-                  <simple-fields-field
-                    type="number"
-                    part="simple-fields-field"
-                    min="0"
-                    value="${this.score}"
-                    max="${this.possible}"
-                    @value-changed="${this.scoreUpdated}"
-                    maxlength="10"
-                  ></simple-fields-field>
-                  / ${this.possible}</span
-                >
-              `
-            : nothing
-        }
+        ${this.input
+          ? html`
+              <span class="score-wrapper">
+                <simple-fields-field
+                  type="number"
+                  part="simple-fields-field"
+                  min="0"
+                  value="${this.score}"
+                  max="${this.possible}"
+                  @value-changed="${this.scoreUpdated}"
+                  maxlength="10"
+                ></simple-fields-field>
+                / ${this.possible}</span
+              >
+            `
+          : nothing}
         <slot name="suffix"></slot>
         ${this.input ? html`` : nothing}
       </div>

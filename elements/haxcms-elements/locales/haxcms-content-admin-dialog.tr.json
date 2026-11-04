@@ -60,5 +60,10 @@
   "pageUnit": "sayfa",
   "pagesUnit": "sayfa",
   "replacementUnit": "değiştirme",
-  "replacementsUnit": "değiştirme"
+  "replacementsUnit": "değiştirme",
+  "deletePagesTitle": "Sayfaları sil",
+  "deleteAction": "Sil",
+  "replaceTitle": "Sayfalarda değiştir",
+  "removeMatchesTitle": "Tüm eşleşmeleri kaldır",
+  "removeAction": "Kaldır"
 }

@@ -57,5 +57,12 @@
   "expandAll": "Ҳамаро кушодан",
   "displayMode1": "Реҷаи 1",
   "displayMode2": "Реҷаи 2",
-  "twoWindows": "Ду равзана"
+  "twoWindows": "Ду равзана",
+  "notGraded": "Баҳогузорӣ нашудааст",
+  "gradeValue": "{score} аз {points}",
+  "studentPosition": "Донишҷӯ {current} / {total}",
+  "rosterCaption": "Донишҷӯён: {students} · Супоришҳо: {assignments}",
+  "gridInstructions": "Тугмаҳои тирча байни баҳоҳо ҳаракат мекунанд, Enter баҳогузориро мекушояд",
+  "totalScore": "Холи умумӣ",
+  "lockTotalScore": "Қулф кардани холи умумӣ"
 }

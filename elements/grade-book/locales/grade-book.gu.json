@@ -60,5 +60,12 @@
   "downloadPDF": "PDF ડાઉનલોડ કરો",
   "displayMode1": "મોડ 1",
   "displayMode2": "મોડ 2",
-  "twoWindows": "બે વિન્ડો"
+  "twoWindows": "બે વિન્ડો",
+  "notGraded": "ગ્રેડ આપેલ નથી",
+  "gradeValue": "{points} માંથી {score}",
+  "studentPosition": "વિદ્યાર્થી {current} / {total}",
+  "rosterCaption": "વિદ્યાર્થીઓ: {students} · સોંપણીઓ: {assignments}",
+  "gridInstructions": "એરો કી ગ્રેડ વચ્ચે ખસે છે, Enter ગ્રેડિંગ ખોલે છે",
+  "totalScore": "કુલ સ્કોર",
+  "lockTotalScore": "કુલ સ્કોર લૉક કરો"
 }

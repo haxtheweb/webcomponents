@@ -100,5 +100,6 @@
   "vitepressImportDescription": "VitePress docs repo ကို HAX ဆိုက်အသစ်သို့ တင်သွင်းရန်",
   "vitepressImportPrompt": "VitePress git repo ၏ URL",
   "quartoImportDescription": "Quarto docs repo ကို HAX ဆိုက်အသစ်သို့ တင်သွင်းရန်",
-  "quartoImportPrompt": "Quarto git repo ၏ URL"
+  "quartoImportPrompt": "Quarto git repo ၏ URL",
+  "cancel": "မလုပ်တော့ပါ"
 }

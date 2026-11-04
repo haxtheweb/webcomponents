@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Sayt uğurla yaradıldı!",
   "newSiteReady": "Yeni \"{siteName}\" saytınız istifadəyə hazırdır.",
   "stayHere": "Burada qal",
-  "goToSite": "Sayta keç"
+  "goToSite": "Sayta keç",
+  "stepOf": "Addım {step} / {total}"
 }

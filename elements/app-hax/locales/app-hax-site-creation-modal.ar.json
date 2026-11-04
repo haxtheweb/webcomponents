@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "تم إنشاء الموقع بنجاح!",
   "newSiteReady": "موقعك الجديد «{siteName}» جاهز للاستخدام.",
   "stayHere": "البقاء هنا",
-  "goToSite": "الانتقال إلى الموقع"
+  "goToSite": "الانتقال إلى الموقع",
+  "stepOf": "الخطوة {step} من {total}"
 }

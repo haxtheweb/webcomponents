@@ -1,9 +1,10 @@
 // Bulk file action confirmation (haxtheweb/issues#3121)
 import { fixture, expect, html } from "@open-wc/testing";
 import "../lib/core/haxcms-files-admin-dialog.js";
+import { answerAdminDialogs } from "./fixtures/admin-dialog-answers.js";
 
 describe("haxcms-files-admin-dialog bulk confirmation", () => {
-  let el, realConfirm, prompts, ran;
+  let el, restoreDialogs, prompts, ran;
   const rows = (n) =>
     Array.from({ length: n }, (_, i) => ({
       path: `files/img-${i}.png`,
@@ -16,7 +17,7 @@ describe("haxcms-files-admin-dialog bulk confirmation", () => {
     );
     prompts = [];
     ran = [];
-    realConfirm = globalThis.confirm;
+    restoreDialogs = () => {};
     el._canScale = () => true;
     el._canConvertToJpg = () => true;
     el._runBulkOp = async (r) => {
@@ -24,13 +25,16 @@ describe("haxcms-files-admin-dialog bulk confirmation", () => {
     };
   });
   afterEach(() => {
-    globalThis.confirm = realConfirm;
+    restoreDialogs();
   });
   const answer = (value) => {
-    globalThis.confirm = (msg) => {
-      prompts.push(msg);
-      return value;
-    };
+    restoreDialogs();
+    restoreDialogs = answerAdminDialogs({
+      confirm: (msg) => {
+        prompts.push(msg);
+        return value;
+      },
+    });
   };
 
   it("delete confirms with the item count and stops on cancel", async () => {

@@ -60,5 +60,10 @@
   "pageUnit": "صفحہ",
   "pagesUnit": "صفحے",
   "replacementUnit": "تبدیلی",
-  "replacementsUnit": "تبدیلیاں"
+  "replacementsUnit": "تبدیلیاں",
+  "deletePagesTitle": "صفحے مٹاؤ",
+  "deleteAction": "مٹاؤ",
+  "replaceTitle": "صفحیاں وچ بدلو",
+  "removeMatchesTitle": "سارے میل ہٹاؤ",
+  "removeAction": "ہٹاؤ"
 }

@@ -60,5 +60,10 @@
   "pageUnit": "ukurasa",
   "pagesUnit": "kurasa",
   "replacementUnit": "ubadilishaji",
-  "replacementsUnit": "ubadilishaji"
+  "replacementsUnit": "ubadilishaji",
+  "deletePagesTitle": "Futa kurasa",
+  "deleteAction": "Futa",
+  "replaceTitle": "Badilisha katika kurasa",
+  "removeMatchesTitle": "Ondoa yote yanayolingana",
+  "removeAction": "Ondoa"
 }

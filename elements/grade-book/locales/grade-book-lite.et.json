@@ -57,5 +57,12 @@
   "expandAll": "Laienda kõik",
   "displayMode1": "Režiim 1",
   "displayMode2": "Režiim 2",
-  "twoWindows": "Kaks akent"
+  "twoWindows": "Kaks akent",
+  "notGraded": "Hindamata",
+  "gradeValue": "{score} punktist {points}",
+  "studentPosition": "Õpilane {current} / {total}",
+  "rosterCaption": "Õpilased: {students} · Ülesanded: {assignments}",
+  "gridInstructions": "Nooleklahvid liiguvad hinnete vahel, Enter avab hindamise",
+  "totalScore": "Koguhinne",
+  "lockTotalScore": "Lukusta koguhinne"
 }

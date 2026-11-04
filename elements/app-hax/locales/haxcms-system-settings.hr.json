@@ -124,5 +124,13 @@
   "showApiKeyValue": "Prikaži vrijednost API ključa",
   "noSettingsForPanel": "Za ovu ploču još nema dostupnih postavki.",
   "saving": "Spremanje…",
-  "save": "Spremi"
+  "save": "Spremi",
+  "dropSkeletonFile": "Ispustite kostur .json ili",
+  "browseFiles": "Pregledaj",
+  "skeletonUploadNote": "Preneseni kosturi mogu se preimenovati ili izbrisati; osnovni kosturi mogu se samo isključiti.",
+  "skeletonName": "Naziv kostura",
+  "renameAction": "Preimenuj",
+  "deleteSkeletonTitle": "Izbriši kostur",
+  "deleteAction": "Izbriši",
+  "cancel": "Odustani"
 }

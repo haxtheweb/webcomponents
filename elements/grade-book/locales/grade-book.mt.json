@@ -60,5 +60,12 @@
   "downloadPDF": "Niżżel il-PDF",
   "displayMode1": "Mod 1",
   "displayMode2": "Mod 2",
-  "twoWindows": "Żewġ twieqi"
+  "twoWindows": "Żewġ twieqi",
+  "notGraded": "Mhux ivvalutat",
+  "gradeValue": "{score} minn {points}",
+  "studentPosition": "Student {current} / {total}",
+  "rosterCaption": "Studenti: {students} · Kompiti: {assignments}",
+  "gridInstructions": "Il-ċwievet tal-vleġeġ jiċċaqalqu bejn il-gradi, Enter jiftaħ il-gradar",
+  "totalScore": "Skor totali",
+  "lockTotalScore": "Illokkja l-iskor totali"
 }

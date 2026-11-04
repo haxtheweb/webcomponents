@@ -10,7 +10,6 @@
   "selectPage": "Vælg side",
   "siteDashboard": "Sitedashboard",
   "cancel": "Annuller",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Ikke-gemte ændringer går tabt, hvis du vælger OK, er du sikker?",
   "editDetails": "Rediger detaljer",
   "add": "Tilføj",
   "source": "Kilde",
@@ -644,5 +643,14 @@
   "primarySidebar": "Primær sidebjælke",
   "contents": "Indhold",
   "continue": "Fortsæt",
-  "noResultsFor": "Ingen resultater fundet for \"{search}\""
+  "noResultsFor": "Ingen resultater fundet for \"{search}\"",
+  "duplicatePageTitle": "Duplikér side",
+  "duplicateAction": "Duplikér",
+  "newPageTitle": "Titel",
+  "importFromUrlTitle": "Importér fra en URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Kassér ændringer i strukturen?",
+  "outlineSaveTitle": "Gem ændringer i strukturen?",
+  "discardChanges": "Kassér ændringer",
+  "keepEditing": "Fortsæt redigering"
 }

@@ -124,5 +124,13 @@
   "showApiKeyValue": "API anahtarı değerini göster",
   "noSettingsForPanel": "Bu panel için henüz kullanılabilir ayar yok.",
   "saving": "Kaydediliyor…",
-  "save": "Kaydet"
+  "save": "Kaydet",
+  "dropSkeletonFile": "Bir iskelet .json dosyası bırakın veya",
+  "browseFiles": "Gözat",
+  "skeletonUploadNote": "Yüklenen iskeletler yeniden adlandırılabilir veya silinebilir; temel iskeletler yalnızca kapatılabilir.",
+  "skeletonName": "İskelet adı",
+  "renameAction": "Yeniden adlandır",
+  "deleteSkeletonTitle": "İskeleti sil",
+  "deleteAction": "Sil",
+  "cancel": "İptal"
 }

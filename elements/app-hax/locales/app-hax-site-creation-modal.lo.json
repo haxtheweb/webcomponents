@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "ສ້າງເວັບໄຊສຳເລັດແລ້ວ!",
   "newSiteReady": "ເວັບໄຊໃໝ່ຂອງທ່ານ \"{siteName}\" ພ້ອມໃຊ້ງານແລ້ວ.",
   "stayHere": "ຢູ່ທີ່ນີ້",
-  "goToSite": "ໄປທີ່ເວັບໄຊ"
+  "goToSite": "ໄປທີ່ເວັບໄຊ",
+  "stepOf": "ຂັ້ນຕອນ {step} ຈາກ {total}"
 }

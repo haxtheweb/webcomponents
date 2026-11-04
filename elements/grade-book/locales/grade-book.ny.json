@@ -60,5 +60,12 @@
   "downloadPDF": "Tsitsani PDF",
   "displayMode1": "Njira 1",
   "displayMode2": "Njira 2",
-  "twoWindows": "Mawindo awiri"
+  "twoWindows": "Mawindo awiri",
+  "notGraded": "Sinaperekedwe giredi",
+  "gradeValue": "{score} pa {points}",
+  "studentPosition": "Wophunzira {current} / {total}",
+  "rosterCaption": "Ophunzira: {students} · Ntchito: {assignments}",
+  "gridInstructions": "Mafungulo a mivi amasuntha pakati pa magiredi, Enter imatsegula kupereka giredi",
+  "totalScore": "Mapointi onse",
+  "lockTotalScore": "Tsekani mapointi onse"
 }

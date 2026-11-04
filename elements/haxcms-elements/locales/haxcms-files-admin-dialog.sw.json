@@ -75,5 +75,11 @@
   "selectFile": "Chagua {name}",
   "copyPath": "Nakili njia",
   "pathCopied": "Njia imenakiliwa",
-  "embedInPage": "Pachika kwenye ukurasa"
+  "embedInPage": "Pachika kwenye ukurasa",
+  "deleteFilesTitle": "Futa faili",
+  "renameFilesTitle": "Badilisha majina ya faili",
+  "replaceOriginalsTitle": "Badilisha faili asili",
+  "newName": "Jina jipya",
+  "deleteAction": "Futa",
+  "renameAction": "Badilisha jina"
 }

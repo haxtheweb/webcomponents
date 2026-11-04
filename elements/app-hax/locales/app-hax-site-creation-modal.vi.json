@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Đã tạo trang web thành công!",
   "newSiteReady": "Trang web mới \"{siteName}\" của bạn đã sẵn sàng sử dụng.",
   "stayHere": "Ở lại đây",
-  "goToSite": "Đi đến trang web"
+  "goToSite": "Đi đến trang web",
+  "stepOf": "Bước {step}/{total}"
 }

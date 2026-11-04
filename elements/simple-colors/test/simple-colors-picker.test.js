@@ -54,4 +54,55 @@ describe("simple-colors-picker", () => {
     expect(el.hideOptionLabels).to.equal(true);
     expect(el.options[0][0].value).to.contain("--simple-colors-");
   });
+
+  // page-break's Accent color showed a literal "false" in HAX settings:
+  // a value that matches no color, set after first render, left no option
+  // selected. It should fall back to None.
+  [
+    ["undefined", undefined],
+    ["false", false],
+    ['"false"', "false"],
+    ["an unknown name", "not-a-color"],
+  ].forEach(([name, val]) => {
+    it(`falls back to None when the value changes to ${name}`, async () => {
+      const el = await fixture(
+        html`<simple-colors-picker value="red"></simple-colors-picker>`,
+      );
+      el.value = val;
+      await el.updateComplete;
+      await el.updateComplete;
+      const label = el.shadowRoot
+        .querySelector("#sample simple-picker-option")
+        .shadowRoot.querySelector("#label")
+        .textContent.trim();
+      expect(el.value).to.equal(null);
+      expect(label).to.equal("None");
+    });
+  });
+
+  it("falls back to None when dark mode and a bad value land together", async () => {
+    const el = await fixture(
+      html`<simple-colors-picker></simple-colors-picker>`,
+    );
+    el.dark = true;
+    el.value = false;
+    await el.updateComplete;
+    await el.updateComplete;
+    expect(el.value).to.equal(null);
+    expect(el.__selectedOption.alt).to.equal("None");
+  });
+
+  // In the HAX editor the option list was rebuilt during the picker's
+  // update, after simple-picker had read that update's changes, so the
+  // dropdown kept a stale (or empty) list. A rebuild must reach the dropdown.
+  it("rebuilds the dropdown list when the options are rebuilt", async () => {
+    const el = await fixture(
+      html`<simple-colors-picker></simple-colors-picker>`,
+    );
+    el.shades = true;
+    await el.updateComplete;
+    await el.updateComplete;
+    expect(el.__options.length).to.equal(el.options.length);
+    expect(el.__options[0][0].value).to.contain("--simple-colors-");
+  });
 });

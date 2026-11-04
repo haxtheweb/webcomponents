@@ -60,5 +60,10 @@
   "pageUnit": "сторінку",
   "pagesUnit": "сторінки",
   "replacementUnit": "заміну",
-  "replacementsUnit": "замін"
+  "replacementsUnit": "замін",
+  "deletePagesTitle": "Видалення сторінок",
+  "deleteAction": "Видалити",
+  "replaceTitle": "Заміна на сторінках",
+  "removeMatchesTitle": "Вилучити всі збіги",
+  "removeAction": "Вилучити"
 }

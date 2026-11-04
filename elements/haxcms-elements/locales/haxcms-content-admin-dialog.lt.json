@@ -60,5 +60,10 @@
   "pageUnit": "psl.",
   "pagesUnit": "puslapiai",
   "replacementUnit": "pakeitimas",
-  "replacementsUnit": "pakeitimai"
+  "replacementsUnit": "pakeitimai",
+  "deletePagesTitle": "Puslapių trynimas",
+  "deleteAction": "Ištrinti",
+  "replaceTitle": "Pakeitimas puslapiuose",
+  "removeMatchesTitle": "Pašalinti visus atitikmenis",
+  "removeAction": "Pašalinti"
 }

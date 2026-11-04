@@ -60,5 +60,10 @@
   "pageUnit": "страница",
   "pagesUnit": "страници",
   "replacementUnit": "замена",
-  "replacementsUnit": "замени"
+  "replacementsUnit": "замени",
+  "deletePagesTitle": "Бришење страници",
+  "deleteAction": "Избриши",
+  "replaceTitle": "Замена во страници",
+  "removeMatchesTitle": "Отстрани ги сите совпаѓања",
+  "removeAction": "Отстрани"
 }

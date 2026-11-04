@@ -124,5 +124,13 @@
   "showApiKeyValue": "Nirxa mifteya API nîşan bide",
   "noSettingsForPanel": "Ji bo vê panelê hîn tu mîheng berdest nînin.",
   "saving": "Tê tomarkirin…",
-  "save": "Tomar bike"
+  "save": "Tomar bike",
+  "dropSkeletonFile": "Pelek îskeletê ya .json berde an",
+  "browseFiles": "Bigere",
+  "skeletonUploadNote": "Navê îskeletên barkirî dikare bê guhertin an ew dikarin bên jêbirin; îskeletên bingehîn tenê dikarin bên neçalakkirin.",
+  "skeletonName": "Navê îskeletê",
+  "renameAction": "Navê biguherîne",
+  "deleteSkeletonTitle": "Îskeletê jê bibe",
+  "deleteAction": "Jê bibe",
+  "cancel": "Betal bike"
 }

@@ -124,5 +124,13 @@
   "showApiKeyValue": "Ipakita ang halaga ng API key",
   "noSettingsForPanel": "Wala pang available na setting para sa panel na ito.",
   "saving": "Sine-save…",
-  "save": "I-save"
+  "save": "I-save",
+  "dropSkeletonFile": "I-drop ang skeleton .json o",
+  "browseFiles": "Mag-browse",
+  "skeletonUploadNote": "Ang mga in-upload na skeleton ay maaaring palitan ng pangalan o burahin; ang mga core skeleton ay maaari lamang i-off.",
+  "skeletonName": "Pangalan ng skeleton",
+  "renameAction": "Palitan ang pangalan",
+  "deleteSkeletonTitle": "Burahin ang skeleton",
+  "deleteAction": "Burahin",
+  "cancel": "Kanselahin"
 }

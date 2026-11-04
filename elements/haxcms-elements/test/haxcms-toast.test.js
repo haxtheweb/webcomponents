@@ -3,6 +3,8 @@
 import { fixture, expect, html } from "@open-wc/testing";
 import { haxcmsToastTone } from "../lib/core/haxcms-toast.js";
 import { store } from "../lib/core/haxcms-site-store.js";
+import { encodeCharacter } from "@haxtheweb/rpg-character/lib/rpg-character-code.js";
+import { saveAvatarCode } from "@haxtheweb/rpg-character/lib/rpg-character-avatar.js";
 
 describe("haxcms-toast", () => {
   let element;
@@ -254,6 +256,88 @@ describe("haxcms-toast", () => {
       expect(element.tone).to.equal("warning");
       expect(spinner.parentNode).to.equal(null);
       expect(element.children.length).to.equal(0);
+    });
+
+    it("takes the DDD form-status purple for incorrect answers", async () => {
+      show({ text: "2 out of 4 correct", duration: 5000, tone: "incorrect" });
+      await element.updateComplete;
+      expect(element.tone).to.equal("incorrect");
+      const styles = getComputedStyle(element);
+      const signal = styles
+        .getPropertyValue("--ddd-status-incorrect-signal")
+        .trim();
+      expect(signal).to.not.equal("");
+      // the tone colour is the DDD incorrect signal (purple), not warning
+      expect(styles.getPropertyValue("--haxcms-toast-tone").trim()).to.equal(
+        signal,
+      );
+      expect(
+        element.shadowRoot.querySelector(".hax-ui-sr-only").textContent,
+      ).to.contain("Incorrect");
+    });
+
+    describe("the person's customized character", () => {
+      const knight = encodeCharacter({ preset: "knight", hat: "crown" });
+      const character = () => element.shadowRoot.querySelector("rpg-character");
+      afterEach(() => {
+        globalThis.localStorage.removeItem("rpg-character-avatar:testuser");
+      });
+
+      it("draws the seed character when none is saved", async () => {
+        element.userName = "testuser";
+        show({ text: "Saved", duration: 5000 });
+        await element.updateComplete;
+        expect(character().getAttribute("seed")).to.equal("testuser");
+        expect(character().getAttribute("code")).to.equal("");
+        // the toast's default hat stays for characters nobody customized
+        expect(character().getAttribute("hat")).to.equal("coffee");
+      });
+
+      it("draws the character saved in this browser", async () => {
+        globalThis.localStorage.setItem(
+          "rpg-character-avatar:testuser",
+          knight,
+        );
+        element.userName = "other";
+        await element.updateComplete;
+        element.userName = "testuser";
+        show({ text: "Saved", duration: 5000 });
+        await element.updateComplete;
+        expect(character().getAttribute("code")).to.equal(knight);
+        // no default hat over theirs
+        expect(character().getAttribute("hat")).to.equal("none");
+      });
+
+      it("prefers the backend's avatar code", async () => {
+        element.userName = "testuser";
+        element.avatarCode = knight;
+        show({ text: "Saved", duration: 5000 });
+        await element.updateComplete;
+        expect(character().getAttribute("code")).to.equal(knight);
+      });
+
+      it("keeps a hat the caller asked for on top of theirs", async () => {
+        element.userName = "testuser";
+        element.avatarCode = knight;
+        show({ text: "Great job!", duration: 5000, hat: "party" });
+        await element.updateComplete;
+        expect(character().getAttribute("code")).to.equal(knight);
+        expect(character().getAttribute("hat")).to.equal("party");
+      });
+
+      it("updates as soon as they save a new character", async () => {
+        element.userName = "testuser";
+        show({ text: "Saved", duration: 5000 });
+        await element.updateComplete;
+        expect(character().getAttribute("code")).to.equal("");
+        saveAvatarCode("testuser", knight);
+        await element.updateComplete;
+        expect(character().getAttribute("code")).to.equal(knight);
+        // another person's save does not change this toast
+        saveAvatarCode("someone-else", "");
+        await element.updateComplete;
+        expect(character().getAttribute("code")).to.equal(knight);
+      });
     });
 
     it("uses Merlin's icon for the assistant", async () => {

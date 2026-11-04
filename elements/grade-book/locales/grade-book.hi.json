@@ -60,5 +60,12 @@
   "downloadPDF": "PDF डाउनलोड करें",
   "displayMode1": "मोड 1",
   "displayMode2": "मोड 2",
-  "twoWindows": "दो विंडो"
+  "twoWindows": "दो विंडो",
+  "notGraded": "ग्रेड नहीं दिया गया",
+  "gradeValue": "{points} में से {score}",
+  "studentPosition": "छात्र {current} / {total}",
+  "rosterCaption": "छात्र: {students} · असाइनमेंट: {assignments}",
+  "gridInstructions": "ऐरो कुंजियाँ ग्रेड के बीच जाती हैं, Enter ग्रेडिंग खोलता है",
+  "totalScore": "कुल अंक",
+  "lockTotalScore": "कुल अंक लॉक करें"
 }

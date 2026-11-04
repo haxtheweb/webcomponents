@@ -100,5 +100,6 @@
   "vitepressImportDescription": "ייבוא מאגר תיעוד VitePress לאתר HAX חדש",
   "vitepressImportPrompt": "כתובת URL של מאגר ה-git של VitePress",
   "quartoImportDescription": "ייבוא מאגר תיעוד Quarto לאתר HAX חדש",
-  "quartoImportPrompt": "כתובת URL של מאגר ה-git של Quarto"
+  "quartoImportPrompt": "כתובת URL של מאגר ה-git של Quarto",
+  "cancel": "ביטול"
 }

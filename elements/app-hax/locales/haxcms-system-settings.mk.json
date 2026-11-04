@@ -124,5 +124,13 @@
   "showApiKeyValue": "Прикажи ја вредноста на API-клучот",
   "noSettingsForPanel": "Сѐ уште нема достапни поставки за овој панел.",
   "saving": "Се зачувува…",
-  "save": "Зачувај"
+  "save": "Зачувај",
+  "dropSkeletonFile": "Повлечете .json датотека со скелет или",
+  "browseFiles": "Прелистај",
+  "skeletonUploadNote": "Поставените скелети може да се преименуваат или избришат; основните скелети може само да се исклучат.",
+  "skeletonName": "Име на скелет",
+  "renameAction": "Преименувај",
+  "deleteSkeletonTitle": "Избриши скелет",
+  "deleteAction": "Избриши",
+  "cancel": "Откажи"
 }

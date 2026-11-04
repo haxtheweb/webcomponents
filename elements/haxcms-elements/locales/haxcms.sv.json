@@ -10,7 +10,6 @@
   "selectPage": "Välj sida",
   "siteDashboard": "Webbplatspanel",
   "cancel": "Avbryt",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Osparade ändringar kommer att försvinna om du väljer OK, är du säker?",
   "editDetails": "Redigera detaljer",
   "add": "Lägg till",
   "source": "Källa",
@@ -644,5 +643,14 @@
   "primarySidebar": "Primärt sidofält",
   "contents": "Innehåll",
   "continue": "Fortsätt",
-  "noResultsFor": "Inga resultat hittades för \"{search}\""
+  "noResultsFor": "Inga resultat hittades för \"{search}\"",
+  "duplicatePageTitle": "Duplicera sida",
+  "duplicateAction": "Duplicera",
+  "newPageTitle": "Titel",
+  "importFromUrlTitle": "Importera från en URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Förkasta ändringar i strukturen?",
+  "outlineSaveTitle": "Spara ändringar i strukturen?",
+  "discardChanges": "Förkasta ändringar",
+  "keepEditing": "Fortsätt redigera"
 }

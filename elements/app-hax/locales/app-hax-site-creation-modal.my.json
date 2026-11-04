@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "ဆိုက်ကို အောင်မြင်စွာ ဖန်တီးပြီးပါပြီ!",
   "newSiteReady": "သင့်ဆိုက်အသစ် \"{siteName}\" အသုံးပြုရန် အသင့်ဖြစ်ပါပြီ။",
   "stayHere": "ဒီမှာပဲ နေရန်",
-  "goToSite": "ဆိုက်သို့ သွားရန်"
+  "goToSite": "ဆိုက်သို့ သွားရန်",
+  "stepOf": "အဆင့် {step} / {total}"
 }

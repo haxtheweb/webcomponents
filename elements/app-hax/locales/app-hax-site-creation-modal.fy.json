@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Webstee mei sukses oanmakke!",
   "newSiteReady": "Jo nije webstee \"{siteName}\" is klear foar gebrûk.",
   "stayHere": "Hjir bliuwe",
-  "goToSite": "Nei webstee gean"
+  "goToSite": "Nei webstee gean",
+  "stepOf": "Stap {step} fan {total}"
 }

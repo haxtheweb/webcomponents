@@ -127,6 +127,12 @@ describe("HAXCMSRememberRoute", () => {
       expect(toasts[0].slot.getAttribute("href")).to.equal(
         new URL("/rr-site/page-2", globalThis.location.href).href,
       );
+      // a plain link the toast styles as a HAX UI button: no nested button
+      // and no inline styles fighting the toast's slotted styles
+      expect(toasts[0].slot.tagName).to.equal("A");
+      expect(toasts[0].slot.textContent).to.equal("Resume");
+      expect(toasts[0].slot.querySelector("button")).to.equal(null);
+      expect(toasts[0].slot.getAttribute("style")).to.equal(null);
       expect(el.__evaluateRoute).to.equal(true);
     } finally {
       el.remove();

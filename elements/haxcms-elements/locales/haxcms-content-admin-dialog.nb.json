@@ -60,5 +60,10 @@
   "pageUnit": "side",
   "pagesUnit": "sider",
   "replacementUnit": "erstatning",
-  "replacementsUnit": "erstatninger"
+  "replacementsUnit": "erstatninger",
+  "deletePagesTitle": "Slett sider",
+  "deleteAction": "Slett",
+  "replaceTitle": "Erstatt i sider",
+  "removeMatchesTitle": "Fjern alle treff",
+  "removeAction": "Fjern"
 }

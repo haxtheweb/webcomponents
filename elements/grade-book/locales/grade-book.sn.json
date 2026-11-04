@@ -60,5 +60,12 @@
   "downloadPDF": "Dhawunirodha PDF",
   "displayMode1": "Modhi 1",
   "displayMode2": "Modhi 2",
-  "twoWindows": "Mahwindo maviri"
+  "twoWindows": "Mahwindo maviri",
+  "notGraded": "Haina kuyerwa",
+  "gradeValue": "{score} pa{points}",
+  "studentPosition": "Mudzidzi {current} / {total}",
+  "rosterCaption": "Vadzidzi: {students} · Mabasa: {assignments}",
+  "gridInstructions": "Makiyi ane museve anofamba pakati pamamakisi, Enter inovhura kuyera",
+  "totalScore": "Mamakisi ese",
+  "lockTotalScore": "Vhara mamakisi ese"
 }

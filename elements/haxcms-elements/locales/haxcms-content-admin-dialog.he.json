@@ -60,5 +60,10 @@
   "pageUnit": "דף",
   "pagesUnit": "דפים",
   "replacementUnit": "החלפה",
-  "replacementsUnit": "החלפות"
+  "replacementsUnit": "החלפות",
+  "deletePagesTitle": "מחיקת דפים",
+  "deleteAction": "מחיקה",
+  "replaceTitle": "החלפה בדפים",
+  "removeMatchesTitle": "הסרת כל ההתאמות",
+  "removeAction": "הסרה"
 }

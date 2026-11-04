@@ -75,5 +75,11 @@
   "selectFile": "ជ្រើសរើស {name}",
   "copyPath": "ចម្លងផ្លូវ",
   "pathCopied": "បានចម្លងផ្លូវ",
-  "embedInPage": "បង្កប់ក្នុងទំព័រ"
+  "embedInPage": "បង្កប់ក្នុងទំព័រ",
+  "deleteFilesTitle": "លុបឯកសារ",
+  "renameFilesTitle": "ប្ដូរឈ្មោះឯកសារ",
+  "replaceOriginalsTitle": "ជំនួសឯកសារដើម",
+  "newName": "ឈ្មោះថ្មី",
+  "deleteAction": "លុប",
+  "renameAction": "ប្ដូរឈ្មោះ"
 }

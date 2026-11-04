@@ -75,5 +75,11 @@
   "selectFile": "Vælg {name}",
   "copyPath": "Kopiér sti",
   "pathCopied": "Sti kopieret",
-  "embedInPage": "Indlejr på siden"
+  "embedInPage": "Indlejr på siden",
+  "deleteFilesTitle": "Slet filer",
+  "renameFilesTitle": "Omdøb filer",
+  "replaceOriginalsTitle": "Erstat originale filer",
+  "newName": "Nyt navn",
+  "deleteAction": "Slet",
+  "renameAction": "Omdøb"
 }

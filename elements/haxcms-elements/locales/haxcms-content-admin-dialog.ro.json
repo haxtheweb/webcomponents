@@ -60,5 +60,10 @@
   "pageUnit": "pagină",
   "pagesUnit": "pagini",
   "replacementUnit": "înlocuire",
-  "replacementsUnit": "înlocuiri"
+  "replacementsUnit": "înlocuiri",
+  "deletePagesTitle": "Ștergere pagini",
+  "deleteAction": "Șterge",
+  "replaceTitle": "Înlocuire în pagini",
+  "removeMatchesTitle": "Elimină toate potrivirile",
+  "removeAction": "Elimină"
 }

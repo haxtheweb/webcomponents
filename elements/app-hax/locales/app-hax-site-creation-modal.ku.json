@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Malper bi serkeftî hat afirandin!",
   "newSiteReady": "Malpera te ya nû \"{siteName}\" ji bo bikaranînê amade ye.",
   "stayHere": "Li vir bimîne",
-  "goToSite": "Here malperê"
+  "goToSite": "Here malperê",
+  "stepOf": "Gav {step} ji {total}"
 }

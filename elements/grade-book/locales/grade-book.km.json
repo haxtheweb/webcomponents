@@ -60,5 +60,12 @@
   "downloadPDF": "ទាញយក PDF",
   "displayMode1": "របៀប 1",
   "displayMode2": "របៀប 2",
-  "twoWindows": "បង្អួចពីរ"
+  "twoWindows": "បង្អួចពីរ",
+  "notGraded": "មិនទាន់ដាក់ពិន្ទុ",
+  "gradeValue": "{score} លើ {points}",
+  "studentPosition": "សិស្ស {current} / {total}",
+  "rosterCaption": "សិស្ស: {students} · កិច្ចការ: {assignments}",
+  "gridInstructions": "ប្រើគ្រាប់ចុចព្រួញដើម្បីផ្លាស់ទីរវាងពិន្ទុ ហើយចុច Enter ដើម្បីបើកការដាក់ពិន្ទុ",
+  "totalScore": "ពិន្ទុសរុប",
+  "lockTotalScore": "ចាក់សោពិន្ទុសរុប"
 }

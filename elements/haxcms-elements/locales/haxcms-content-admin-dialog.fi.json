@@ -60,5 +60,10 @@
   "pageUnit": "sivu",
   "pagesUnit": "sivua",
   "replacementUnit": "korvaus",
-  "replacementsUnit": "korvausta"
+  "replacementsUnit": "korvausta",
+  "deletePagesTitle": "Poista sivuja",
+  "deleteAction": "Poista",
+  "replaceTitle": "Korvaa sivuilla",
+  "removeMatchesTitle": "Poista kaikki osumat",
+  "removeAction": "Poista"
 }

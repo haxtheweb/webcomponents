@@ -57,5 +57,12 @@
   "expandAll": "Spiegà tuttu",
   "displayMode1": "Modu 1",
   "displayMode2": "Modu 2",
-  "twoWindows": "Duie finestre"
+  "twoWindows": "Duie finestre",
+  "notGraded": "Micca valutatu",
+  "gradeValue": "{score} nantu à {points}",
+  "studentPosition": "Studente {current} / {total}",
+  "rosterCaption": "Studenti: {students} · Cumpiti: {assignments}",
+  "gridInstructions": "I tasti freccia si spostanu trà i voti, Enter apre a valutazione",
+  "totalScore": "Puntu tutale",
+  "lockTotalScore": "Bluccà u puntu tutale"
 }

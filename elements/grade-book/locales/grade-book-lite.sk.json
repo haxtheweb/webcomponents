@@ -57,5 +57,12 @@
   "expandAll": "Rozbaliť všetko",
   "displayMode1": "Režim 1",
   "displayMode2": "Režim 2",
-  "twoWindows": "Dve okná"
+  "twoWindows": "Dve okná",
+  "notGraded": "Nehodnotené",
+  "gradeValue": "{score} z {points}",
+  "studentPosition": "Študent {current} / {total}",
+  "rosterCaption": "Študenti: {students} · Úlohy: {assignments}",
+  "gridInstructions": "Šípky sa pohybujú medzi známkami, Enter otvorí hodnotenie",
+  "totalScore": "Celkové skóre",
+  "lockTotalScore": "Zamknúť celkové skóre"
 }

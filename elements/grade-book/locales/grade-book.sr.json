@@ -60,5 +60,12 @@
   "downloadPDF": "Преузми PDF",
   "displayMode1": "Режим 1",
   "displayMode2": "Режим 2",
-  "twoWindows": "Два прозора"
+  "twoWindows": "Два прозора",
+  "notGraded": "Није оцењено",
+  "gradeValue": "{score} од {points}",
+  "studentPosition": "Ученик {current} / {total}",
+  "rosterCaption": "Ученици: {students} · Задаци: {assignments}",
+  "gridInstructions": "Тастери са стрелицама крећу се између оцена, Enter отвара оцењивање",
+  "totalScore": "Укупан резултат",
+  "lockTotalScore": "Закључај укупан резултат"
 }

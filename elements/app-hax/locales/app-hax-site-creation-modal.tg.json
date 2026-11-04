@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Сомона бомуваффақият сохта шуд!",
   "newSiteReady": "Сомонаи нави шумо «{siteName}» барои истифода омода аст.",
   "stayHere": "Дар ин ҷо мондан",
-  "goToSite": "Ба сомона гузаштан"
+  "goToSite": "Ба сомона гузаштан",
+  "stepOf": "Қадами {step} аз {total}"
 }

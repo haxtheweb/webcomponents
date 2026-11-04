@@ -10,7 +10,6 @@
   "selectPage": "Seleziona pagina",
   "siteDashboard": "Dashboard dei siti",
   "cancel": "Annulla",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Le modifiche non salvate andranno perse se selezioni OK, sei sicuro?",
   "editDetails": "Modifica dettagli",
   "add": "Aggiungi",
   "source": "Sorgente",
@@ -644,5 +643,14 @@
   "primarySidebar": "Barra laterale principale",
   "contents": "Contenuti",
   "continue": "Continua",
-  "noResultsFor": "Nessun risultato trovato per \"{search}\""
+  "noResultsFor": "Nessun risultato trovato per \"{search}\"",
+  "duplicatePageTitle": "Duplica pagina",
+  "duplicateAction": "Duplica",
+  "newPageTitle": "Titolo",
+  "importFromUrlTitle": "Importa da un URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Scartare le modifiche alla struttura?",
+  "outlineSaveTitle": "Salvare le modifiche alla struttura?",
+  "discardChanges": "Scarta modifiche",
+  "keepEditing": "Continua a modificare"
 }

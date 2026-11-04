@@ -60,5 +60,10 @@
   "pageUnit": "leathanach",
   "pagesUnit": "leathanaigh",
   "replacementUnit": "athsholáthar",
-  "replacementsUnit": "athsholáthar"
+  "replacementsUnit": "athsholáthar",
+  "deletePagesTitle": "Scrios leathanaigh",
+  "deleteAction": "Scrios",
+  "replaceTitle": "Ionadaigh i leathanaigh",
+  "removeMatchesTitle": "Bain gach meaitseáil",
+  "removeAction": "Bain"
 }

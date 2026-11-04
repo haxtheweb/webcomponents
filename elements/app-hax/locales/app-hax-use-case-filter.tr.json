@@ -100,5 +100,6 @@
   "vitepressImportDescription": "Bir VitePress belge deposunu yeni bir HAX sitesine aktarın",
   "vitepressImportPrompt": "VitePress git deposunun URL'si",
   "quartoImportDescription": "Bir Quarto belge deposunu yeni bir HAX sitesine aktarın",
-  "quartoImportPrompt": "Quarto git deposunun URL'si"
+  "quartoImportPrompt": "Quarto git deposunun URL'si",
+  "cancel": "İptal"
 }

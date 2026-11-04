@@ -124,5 +124,13 @@
   "showApiKeyValue": "Hiện giá trị khóa API",
   "noSettingsForPanel": "Chưa có cài đặt nào cho bảng này.",
   "saving": "Đang lưu…",
-  "save": "Lưu"
+  "save": "Lưu",
+  "dropSkeletonFile": "Thả tệp khung mẫu .json hoặc",
+  "browseFiles": "Duyệt",
+  "skeletonUploadNote": "Khung mẫu đã tải lên có thể đổi tên hoặc xóa; khung mẫu lõi chỉ có thể tắt.",
+  "skeletonName": "Tên khung mẫu",
+  "renameAction": "Đổi tên",
+  "deleteSkeletonTitle": "Xóa khung mẫu",
+  "deleteAction": "Xóa",
+  "cancel": "Hủy"
 }

@@ -1,5 +1,9 @@
 import { SimpleIconsetStore } from "./simple-iconset.js";
-import "./simple-iconset-manifest.js";
+// Registers where each simple-icon iconset lives, which is all an icon
+// needs to render (icon="set:name" resolves to set/name.svg). It does not
+// load the iconset manifest (the list of every icon name, about 14K
+// minified): only pickers and the iconset demo list icons, and they import
+// ./simple-iconset-manifest.js themselves.
 const here = new URL("./simple-icons.js", import.meta.url).href + "/../";
 [
   "av",

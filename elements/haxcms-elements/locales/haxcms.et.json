@@ -10,7 +10,6 @@
   "selectPage": "Vali lehekülg",
   "siteDashboard": "Saitide töölaud",
   "cancel": "Tühista",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Salvestamata muudatused lähevad kaduma, kui valid OK, kas oled kindel?",
   "editDetails": "Muuda üksikasju",
   "add": "Lisa",
   "source": "Lähtekood",
@@ -644,5 +643,14 @@
   "primarySidebar": "Peamine külgriba",
   "contents": "Sisukord",
   "continue": "Jätka",
-  "noResultsFor": "Päringule „{search}\" tulemusi ei leitud"
+  "noResultsFor": "Päringule „{search}\" tulemusi ei leitud",
+  "duplicatePageTitle": "Dubleeri leht",
+  "duplicateAction": "Dubleeri",
+  "newPageTitle": "Pealkiri",
+  "importFromUrlTitle": "Impordi URL-ilt",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Kas loobuda struktuuri muudatustest?",
+  "outlineSaveTitle": "Kas salvestada struktuuri muudatused?",
+  "discardChanges": "Loobu muudatustest",
+  "keepEditing": "Jätka muutmist"
 }

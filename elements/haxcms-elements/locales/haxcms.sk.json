@@ -10,7 +10,6 @@
   "selectPage": "Vybrať stránku",
   "siteDashboard": "Panel stránok",
   "cancel": "Zrušiť",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Neuložené zmeny sa stratia, ak vyberiete OK. Ste si istí?",
   "editDetails": "Upraviť podrobnosti",
   "add": "Pridať",
   "source": "Zdroj",
@@ -644,5 +643,14 @@
   "primarySidebar": "Hlavný bočný panel",
   "contents": "Obsah",
   "continue": "Pokračovať",
-  "noResultsFor": "Pre „{search}“ sa nenašli žiadne výsledky"
+  "noResultsFor": "Pre „{search}“ sa nenašli žiadne výsledky",
+  "duplicatePageTitle": "Duplikovať stránku",
+  "duplicateAction": "Duplikovať",
+  "newPageTitle": "Názov",
+  "importFromUrlTitle": "Importovať z URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Zahodiť zmeny osnovy?",
+  "outlineSaveTitle": "Uložiť zmeny osnovy?",
+  "discardChanges": "Zahodiť zmeny",
+  "keepEditing": "Pokračovať v úpravách"
 }

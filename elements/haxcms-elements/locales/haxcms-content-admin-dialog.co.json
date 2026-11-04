@@ -60,5 +60,10 @@
   "pageUnit": "pagina",
   "pagesUnit": "pagine",
   "replacementUnit": "rimpiazzamentu",
-  "replacementsUnit": "rimpiazzamenti"
+  "replacementsUnit": "rimpiazzamenti",
+  "deletePagesTitle": "Sguassà pagine",
+  "deleteAction": "Squassà",
+  "replaceTitle": "Rimpiazzà in e pagine",
+  "removeMatchesTitle": "Caccià tutte e currispundenze",
+  "removeAction": "Caccià"
 }

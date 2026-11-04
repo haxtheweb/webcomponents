@@ -10,7 +10,6 @@
   "selectPage": "انتخاب صفحه",
   "siteDashboard": "داشبورد سایت‌ها",
   "cancel": "لغو",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "تغییرات ذخیره نشده در صورت انتخاب OK از بین خواهند رفت، آیا مطمئن هستید؟",
   "editDetails": "ویرایش جزئیات",
   "add": "افزودن",
   "source": "مبدأ",
@@ -644,5 +643,14 @@
   "primarySidebar": "نوار کناری اصلی",
   "contents": "فهرست مطالب",
   "continue": "ادامه",
-  "noResultsFor": "هیچ نتیجه‌ای برای «{search}» یافت نشد"
+  "noResultsFor": "هیچ نتیجه‌ای برای «{search}» یافت نشد",
+  "duplicatePageTitle": "تکثیر صفحه",
+  "duplicateAction": "تکثیر",
+  "newPageTitle": "عنوان",
+  "importFromUrlTitle": "وارد کردن از یک URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "تغییرات ساختار دور انداخته شود؟",
+  "outlineSaveTitle": "تغییرات ساختار ذخیره شود؟",
+  "discardChanges": "دور انداختن تغییرات",
+  "keepEditing": "ادامهٔ ویرایش"
 }

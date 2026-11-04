@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "سائيٽ ڪاميابيءَ سان ٺهي وئي!",
   "newSiteReady": "توهان جي نئين سائيٽ \"{siteName}\" استعمال لاءِ تيار آهي.",
   "stayHere": "هتي رهو",
-  "goToSite": "سائيٽ تي وڃو"
+  "goToSite": "سائيٽ تي وڃو",
+  "stepOf": "قدم {step} / {total}"
 }

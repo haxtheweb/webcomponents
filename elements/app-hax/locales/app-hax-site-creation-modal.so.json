@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Goobta Si Guul Leh Ayaa Loo Abuuray!",
   "newSiteReady": "Goobtaada cusub \"{siteName}\" diyaar ayay u tahay isticmaal.",
   "stayHere": "Halkan Joog",
-  "goToSite": "U Gudub Goobta"
+  "goToSite": "U Gudub Goobta",
+  "stepOf": "Tallaabada {step} ee {total}"
 }

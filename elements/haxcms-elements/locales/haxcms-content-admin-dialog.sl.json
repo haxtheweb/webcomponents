@@ -60,5 +60,10 @@
   "pageUnit": "stran",
   "pagesUnit": "strani",
   "replacementUnit": "zamenjavo",
-  "replacementsUnit": "zamenjavami"
+  "replacementsUnit": "zamenjavami",
+  "deletePagesTitle": "Brisanje strani",
+  "deleteAction": "Izbriši",
+  "replaceTitle": "Zamenjava na straneh",
+  "removeMatchesTitle": "Odstrani vsa ujemanja",
+  "removeAction": "Odstrani"
 }

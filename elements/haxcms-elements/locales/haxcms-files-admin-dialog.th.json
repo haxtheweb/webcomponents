@@ -75,5 +75,11 @@
   "selectFile": "เลือก {name}",
   "copyPath": "คัดลอกพาธ",
   "pathCopied": "คัดลอกพาธแล้ว",
-  "embedInPage": "ฝังในหน้า"
+  "embedInPage": "ฝังในหน้า",
+  "deleteFilesTitle": "ลบไฟล์",
+  "renameFilesTitle": "เปลี่ยนชื่อไฟล์",
+  "replaceOriginalsTitle": "แทนที่ไฟล์ต้นฉบับ",
+  "newName": "ชื่อใหม่",
+  "deleteAction": "ลบ",
+  "renameAction": "เปลี่ยนชื่อ"
 }

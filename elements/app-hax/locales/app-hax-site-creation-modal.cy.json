@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Gwefan wedi'i Chreu'n Llwyddiannus!",
   "newSiteReady": "Mae eich gwefan newydd \"{siteName}\" yn barod i'w defnyddio.",
   "stayHere": "Aros Yma",
-  "goToSite": "Mynd i'r Wefan"
+  "goToSite": "Mynd i'r Wefan",
+  "stepOf": "Cam {step} o {total}"
 }

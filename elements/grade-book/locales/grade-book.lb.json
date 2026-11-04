@@ -60,5 +60,12 @@
   "downloadPDF": "PDF eroflueden",
   "displayMode1": "Modus 1",
   "displayMode2": "Modus 2",
-  "twoWindows": "Zwou Fënsteren"
+  "twoWindows": "Zwou Fënsteren",
+  "notGraded": "Net bewäert",
+  "gradeValue": "{score} vun {points}",
+  "studentPosition": "Student {current} / {total}",
+  "rosterCaption": "Studenten: {students} · Aufgaben: {assignments}",
+  "gridInstructions": "D'Pfeiltaste bewege sech tëscht de Note, d'Enter-Tast mécht d'Bewäertung op",
+  "totalScore": "Gesamtpunktzuel",
+  "lockTotalScore": "Gesamtpunktzuel spären"
 }

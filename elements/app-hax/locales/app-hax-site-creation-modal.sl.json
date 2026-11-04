@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Spletno mesto je uspešno ustvarjeno!",
   "newSiteReady": "Vaše novo spletno mesto »{siteName}« je pripravljeno za uporabo.",
   "stayHere": "Ostani tukaj",
-  "goToSite": "Pojdi na spletno mesto"
+  "goToSite": "Pojdi na spletno mesto",
+  "stepOf": "Korak {step} od {total}"
 }

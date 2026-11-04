@@ -100,5 +100,6 @@
   "vitepressImportDescription": "Pinza repo yezvinyorwa zveVitePress musaiti itsva yeHAX",
   "vitepressImportPrompt": "URL ye git repo yeVitePress",
   "quartoImportDescription": "Pinza repo yezvinyorwa zveQuarto musaiti itsva yeHAX",
-  "quartoImportPrompt": "URL ye git repo yeQuarto"
+  "quartoImportPrompt": "URL ye git repo yeQuarto",
+  "cancel": "Kanzura"
 }

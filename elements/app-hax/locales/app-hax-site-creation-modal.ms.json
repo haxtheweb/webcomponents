@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Laman Berjaya Dicipta!",
   "newSiteReady": "Laman baharu anda \"{siteName}\" sedia untuk digunakan.",
   "stayHere": "Kekal Di Sini",
-  "goToSite": "Pergi ke Laman"
+  "goToSite": "Pergi ke Laman",
+  "stepOf": "Langkah {step} daripada {total}"
 }

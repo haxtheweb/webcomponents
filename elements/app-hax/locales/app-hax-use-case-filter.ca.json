@@ -100,5 +100,6 @@
   "vitepressImportDescription": "Importa un repositori de documentació de VitePress a un lloc HAX nou",
   "vitepressImportPrompt": "URL del repositori git de VitePress",
   "quartoImportDescription": "Importa un repositori de documentació de Quarto a un lloc HAX nou",
-  "quartoImportPrompt": "URL del repositori git de Quarto"
+  "quartoImportPrompt": "URL del repositori git de Quarto",
+  "cancel": "Cancel·la"
 }

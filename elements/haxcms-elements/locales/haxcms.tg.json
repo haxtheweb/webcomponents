@@ -10,7 +10,6 @@
   "selectPage": "Саҳифаро интихоб кунед",
   "siteDashboard": "Дашборди сомонаҳо",
   "cancel": "Бекор кардан",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Тағйиротҳои нигоҳдоштанашуда дар сурати интихоби OK талаф мешаванд, шумо мутмаин ҳастед?",
   "editDetails": "Таҳрири тафсилот",
   "add": "Илова кардан",
   "source": "Манбаъ",
@@ -644,5 +643,14 @@
   "primarySidebar": "Панели паҳлӯии асосӣ",
   "contents": "Мундариҷа",
   "continue": "Идома",
-  "noResultsFor": "Барои \"{search}\" натиҷа ёфт нашуд"
+  "noResultsFor": "Барои \"{search}\" натиҷа ёфт нашуд",
+  "duplicatePageTitle": "Нусхабардории саҳифа",
+  "duplicateAction": "Нусхабардорӣ",
+  "newPageTitle": "Сарлавҳа",
+  "importFromUrlTitle": "Воридот аз URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Тағйироти сохторро рад мекунед?",
+  "outlineSaveTitle": "Тағйироти сохторро нигоҳ медоред?",
+  "discardChanges": "Рад кардани тағйирот",
+  "keepEditing": "Идомаи таҳрир"
 }

@@ -10,7 +10,6 @@
   "selectPage": "Selecteer pagina",
   "siteDashboard": "Sites overzicht",
   "cancel": "Annuleren",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Niet-opgeslagen wijzigingen gaan verloren als je OK selecteert, weet je het zeker?",
   "editDetails": "Details bewerken",
   "add": "Toevoegen",
   "source": "Bron",
@@ -644,5 +643,14 @@
   "primarySidebar": "Primaire zijbalk",
   "contents": "Inhoud",
   "continue": "Doorgaan",
-  "noResultsFor": "Geen resultaten gevonden voor \"{search}\""
+  "noResultsFor": "Geen resultaten gevonden voor \"{search}\"",
+  "duplicatePageTitle": "Pagina dupliceren",
+  "duplicateAction": "Dupliceren",
+  "newPageTitle": "Titel",
+  "importFromUrlTitle": "Importeren via een URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Wijzigingen in de structuur negeren?",
+  "outlineSaveTitle": "Wijzigingen in de structuur opslaan?",
+  "discardChanges": "Wijzigingen negeren",
+  "keepEditing": "Doorgaan met bewerken"
 }
