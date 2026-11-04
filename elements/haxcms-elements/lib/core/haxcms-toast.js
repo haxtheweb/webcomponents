@@ -7,6 +7,10 @@ import {
 } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
 import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminIcons.js";
 import { DDDStatusTokens } from "@haxtheweb/d-d-d/lib/DDDStatusTokens.js";
+import {
+  loadAvatarCode,
+  AVATAR_EVENT,
+} from "@haxtheweb/rpg-character/lib/rpg-character-avatar.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
@@ -100,6 +104,10 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
       /** stays until closed (duration 0 or alwaysvisible) */
       sticky: { type: Boolean, reflect: true },
       userName: { type: String },
+      /** avatar code from the backend (userData.avatarCode), if it stores one */
+      avatarCode: { type: String },
+      /** the person's saved character code, if they customized one */
+      _avatar: { type: String, state: true },
     };
   }
 
@@ -502,10 +510,15 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
     this._onPause = this._onPause.bind(this);
     this._onResume = this._onResume.bind(this);
     this._onKeydown = this._onKeydown.bind(this);
+    this.avatarCode = "";
+    this._avatar = "";
+    this.__hatFromCaller = false;
     autorun(() => {
       const _mobx_val_0 = toJS(store.userData.userName);
+      const _mobx_val_1 = toJS(store.userData.avatarCode);
       Promise.resolve().then(() => {
         this.userName = _mobx_val_0;
+        this.avatarCode = _mobx_val_1 || "";
       });
     });
     autorun(() => {
@@ -534,6 +547,33 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
     this.addEventListener("focusin", this._onPause, { signal });
     this.addEventListener("focusout", this._onResume, { signal });
     this.addEventListener("keydown", this._onKeydown, { signal });
+    // the person saved a new character (user menu / character builder):
+    // the next toast, or the open one, shows it right away
+    globalThis.addEventListener(
+      AVATAR_EVENT,
+      (e) => {
+        if (e.detail && e.detail.userName === this.userName) {
+          this._avatar = e.detail.code || "";
+        }
+      },
+      { signal },
+    );
+  }
+
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
+    }
+    // the person's customized character, the same one their user menu
+    // shows: a backend code wins, otherwise the one saved in this browser
+    if (
+      changedProperties.has("userName") ||
+      changedProperties.has("avatarCode")
+    ) {
+      this._avatar = loadAvatarCode(this.userName, {
+        avatarCode: this.avatarCode,
+      });
+    }
   }
 
   disconnectedCallback() {
@@ -545,6 +585,10 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
   showSimpleToast(e) {
     const detail = e && e.detail ? e.detail : {};
     super.showSimpleToast(e);
+    // a hat the caller asked for (party, error, construction...) says what
+    // happened, so it goes on top; otherwise the default coffee hat is only
+    // for characters the person has not customized
+    this.__hatFromCaller = !!detail.hat;
     // the base class reads a 0 duration as "use the default"; 0 means
     // "stay until closed", as callers like view-only mode expect
     if (detail.duration === 0) {
@@ -756,8 +800,9 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
                   height="${this.characterHeight}"
                   width="${this.characterWidth}"
                   seed="${this.userName || ""}"
+                  code="${this._avatar || ""}"
                   ?fire="${this.fire}"
-                  hat="${this.hat}"
+                  hat="${this._avatar && !this.__hatFromCaller ? "none" : this.hat}"
                   speed="${this.speed}"
                   part="rpg-character"
                   ?walking="${this.walking}"
