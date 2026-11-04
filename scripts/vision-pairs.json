@@ -1,0 +1,60 @@
+{
+  "$comment": "Opposing UI action pairs checked by scripts/vision-pairs-check.mjs. Each member's fill and the shared background are a DDD or HAX UI token name (resolved from elements/d-d-d/lib for light and dark), a literal hex, or the word background for an unfilled (outlined / text) button. cues lists what tells the pair apart besides color: outline, pattern, label, strike, icon. See haxtheweb/issues for the color vision tracking issue.",
+  "pairs": [
+    {
+      "id": "editor-toolbar-save-cancel",
+      "where": "elements/haxcms-elements/lib/core/haxcms-site-editor-ui.js (#editbutton in edit mode vs #cancelbutton)",
+      "background": { "light": "#ffffff", "dark": "#000000" },
+      "accept": {
+        "label": "Save",
+        "fill": {
+          "light": "--ddd-theme-default-nittanyNavy",
+          "dark": "--ddd-theme-default-linkLight"
+        },
+        "cues": ["icon"]
+      },
+      "reject": {
+        "label": "Cancel",
+        "fill": "background",
+        "cues": ["outline", "pattern", "icon"]
+      }
+    },
+    {
+      "id": "site-admin-save-discard",
+      "where": "elements/haxcms-elements/lib/core/admin/haxcms-site-admin.js (.hax-ui-btn.primary.save vs .ghost.discard)",
+      "background": "--hax-ui-surface",
+      "accept": {
+        "label": "Save",
+        "fill": "--hax-ui-primary",
+        "cues": ["label"]
+      },
+      "reject": { "label": "Discard", "fill": "background", "cues": ["label"] }
+    },
+    {
+      "id": "site-admin-leave-prompt",
+      "where": "elements/haxcms-elements/lib/core/admin/haxcms-site-admin.js (.save-leave vs .discard-leave)",
+      "background": "--hax-ui-surface",
+      "accept": {
+        "label": "Save and leave",
+        "fill": "--hax-ui-primary",
+        "cues": ["label"]
+      },
+      "reject": {
+        "label": "Discard and leave",
+        "fill": "background",
+        "cues": ["outline", "label"]
+      }
+    },
+    {
+      "id": "outline-designer-pending-delete-row",
+      "where": "elements/outline-designer/outline-designer.js (li.item[data-about-to-delete] vs a plain row)",
+      "background": "--hax-ui-surface",
+      "accept": { "label": "Row", "fill": "background", "cues": [] },
+      "reject": {
+        "label": "Row marked for delete",
+        "fill": "--hax-ui-danger-soft",
+        "cues": ["pattern", "strike", "label"]
+      }
+    }
+  ]
+}
