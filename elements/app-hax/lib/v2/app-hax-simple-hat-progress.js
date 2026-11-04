@@ -61,6 +61,9 @@ export class AppHaxSimpleHatProgress extends I18NMixin(DDDSuper(LitElement)) {
           position: relative;
         }
 
+        /* the brim is the progress track (the art leaves it open): one
+           continuous bar that fills left to right in the HAX UI accent,
+           and turns success green when it reaches 100% */
         .progress-bar {
           position: absolute;
           left: calc(40 / 405 * 100%);
@@ -74,15 +77,27 @@ export class AppHaxSimpleHatProgress extends I18NMixin(DDDSuper(LitElement)) {
 
         .progress-fill {
           height: 100%;
-          background: linear-gradient(
-            90deg,
-            var(--ddd-theme-default-original87Pink, #bc204b) 0%,
-            var(--ddd-theme-default-keystoneYellow, #ffd100) 50%,
-            var(--ddd-theme-default-futureLime, #99cc33) 100%
-          );
-          background-size: calc(336 / 405 * 100cqw) 100%;
-          transition: width var(--ddd-duration-slow, 0.6s) ease;
           width: 0%;
+          background-color: var(
+            --hax-ui-accent-strong,
+            light-dark(
+              var(--ddd-theme-default-link, #005fa9),
+              var(--ddd-theme-default-skyBlue, #009cde)
+            )
+          );
+          transition:
+            width var(--ddd-duration-slow, 0.6s) ease,
+            background-color var(--ddd-duration-normal, 0.3s) ease;
+        }
+
+        :host([complete]) .progress-fill {
+          background-color: var(
+            --hax-ui-success,
+            light-dark(
+              var(--ddd-theme-default-opportunityGreen, #008755),
+              var(--ddd-theme-default-futureLime, #99cc33)
+            )
+          );
         }
 
         .progress-text {
@@ -110,6 +125,10 @@ export class AppHaxSimpleHatProgress extends I18NMixin(DDDSuper(LitElement)) {
   }
 
   updated(changedProperties) {
+    if (changedProperties.has("progress") || changedProperties.has("max")) {
+      const done = this.max > 0 && this.progress >= this.max;
+      this.toggleAttribute("complete", done);
+    }
     if (changedProperties.has("progress")) {
       const progressFill = this.shadowRoot.querySelector(".progress-fill");
       if (progressFill) {

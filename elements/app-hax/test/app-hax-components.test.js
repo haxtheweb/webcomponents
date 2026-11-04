@@ -436,6 +436,25 @@ describe("app-hax-simple-hat-progress", () => {
     expect(bar.getAttribute("aria-valuenow")).to.equal("0");
   });
 
+  it("fills one solid bar and marks itself complete at the max", async () => {
+    const el = await fixture(
+      html`<app-hax-simple-hat-progress
+        progress="40"
+      ></app-hax-simple-hat-progress>`,
+    );
+    await el.updateComplete;
+    const fill = el.shadowRoot.querySelector(".progress-fill");
+    // a single colour, not the old pink-yellow-lime gradient
+    expect(getComputedStyle(fill).backgroundImage).to.equal("none");
+    expect(el.hasAttribute("complete")).to.be.false;
+    const running = getComputedStyle(fill).backgroundColor;
+    el.progress = 100;
+    await el.updateComplete;
+    expect(el.hasAttribute("complete")).to.be.true;
+    await new Promise((r) => setTimeout(r, 400));
+    expect(getComputedStyle(fill).backgroundColor).to.not.equal(running);
+  });
+
   it("defaults max to 100", () => {
     const el = document.createElement("app-hax-simple-hat-progress");
     expect(el.max).to.equal(100);

@@ -319,9 +319,11 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
           box-sizing: border-box;
         }
 
+        /* section layout (HAX UI): every area shares one 24px left edge,
+           a 22px section heading over a 1px rule, then its cards */
         .quick-create {
-          padding: var(--ddd-spacing-5, 20px) var(--ddd-spacing-5, 20px)
-            var(--ddd-spacing-4, 16px);
+          padding: var(--ddd-spacing-5, 20px) var(--ddd-spacing-6, 24px)
+            var(--ddd-spacing-5, 20px);
           background-color: var(--ddd-theme-default-limestoneLight);
           color: var(--ddd-theme-default-nittanyNavy, #001e44);
         }
@@ -334,13 +336,12 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
 
         .quick-create h2 {
           color: inherit;
-          margin: 0 0 var(--ddd-spacing-4, 16px) 0;
         }
 
         .quick-create-grid {
           display: flex;
-          justify-content: center;
-          gap: var(--ddd-spacing-4, 16px);
+          justify-content: flex-start;
+          gap: var(--hax-ui-gap-lg);
           overflow-x: auto;
           overflow-y: hidden;
           padding-bottom: var(--ddd-spacing-2, 8px);
@@ -362,22 +363,35 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
           box-sizing: border-box;
         }
 
+        /* group headings inside a section: the admin rail's group title,
+           small caps over a hairline that runs to the edge */
         .template-group-heading {
-          font-family: var(--ddd-font-primary, sans-serif);
-          color: var(--accent-color);
-          margin: 0 0 var(--ddd-spacing-4, 16px) var(--ddd-spacing-7, 28px);
-          text-decoration: underline;
-          text-decoration-thickness: var(--ddd-border-size-xs, 1px);
-          text-underline-offset: var(--ddd-spacing-1, 4px);
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-lg);
+          margin: var(--ddd-spacing-6, 24px) 0 var(--hax-ui-gap-lg);
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          font-weight: var(--ddd-font-weight-bold, 700);
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          color: var(--hax-ui-text-muted);
+        }
+        .template-group-heading::after {
+          content: "";
+          flex: 1;
+          border-top: 1px solid var(--hax-ui-line);
         }
 
         .template-results {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(200px, 0fr));
-          gap: var(--ddd-spacing-4, 16px);
+          grid-template-columns: repeat(
+            auto-fill,
+            var(--app-hax-use-case-card-width, 180px)
+          );
+          gap: var(--hax-ui-gap-lg);
           justify-content: flex-start;
-          justify-items: center;
-          padding: 0 var(--ddd-spacing-5, 20px);
+          padding: 0;
           box-sizing: border-box;
         }
 
@@ -395,27 +409,37 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
         }
 
         .decorative-line {
-          border-bottom: 4px solid var(--ddd-theme-default-skyBlue);
+          border-bottom: 1px solid var(--hax-ui-line);
           box-sizing: border-box;
           width: 100%;
-          margin: 0 0 var(--ddd-spacing-3, 12px) 0;
+          margin: 0 0 var(--hax-ui-gap-lg) 0;
         }
 
         #from-template-heading {
-          margin-top: var(--ddd-spacing-5, 20px);
+          margin-top: var(--hax-ui-gap-lg);
         }
 
         :host(:not([show-filter])) app-hax-search-results {
           width: 100%;
         }
 
+        /* section headings: the admin panel heading (22px bold) */
         h2,
         .returnTo h2,
         .startNew h2 {
-          font-family: var(--ddd-font-primary, sans-serif);
-          font-size: var(--ddd-font-size-m);
-          color: var(--accent-color);
-          margin: 0 0 var(--ddd-spacing-4, 16px) 0;
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: 22px;
+          font-weight: var(--ddd-font-weight-bold, 700);
+          line-height: 1.2;
+          color: var(--hax-ui-text);
+          margin: 0 0 var(--hax-ui-gap-lg) 0;
+        }
+        .quick-create h2 {
+          margin-bottom: var(--hax-ui-gap-lg);
+        }
+        #returnToSection,
+        #startJourneySection {
+          padding-top: var(--ddd-spacing-6, 24px);
         }
         .startNew,
         .returnTo {
@@ -703,17 +727,12 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
             font-size: var(--ddd-font-size-s, 18px);
           }
 
-          .template-group-heading {
-            margin-left: var(--ddd-spacing-3, 12px);
-          }
-
           .template-results {
             grid-template-columns: repeat(
-              auto-fit,
+              auto-fill,
               minmax(clamp(120px, 30vw, 144px), 1fr)
             );
             gap: var(--ddd-spacing-2, 8px);
-            padding: 0 var(--ddd-spacing-3, 12px);
           }
         }
 
