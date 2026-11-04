@@ -86,10 +86,15 @@
     }
   ],
   "slots": [],
-  "events": [],
+  "events": [
+    "user-engagement"
+  ],
   "hax": {
     "canScale": false,
     "canEditSource": false,
+    "designSystem": {
+      "primary": true
+    },
     "gizmo": {
       "title": "Vocab",
       "description": "Vocabulary term.",
@@ -198,7 +203,7 @@
       }
     ]
   },
-  "surfaceHash": "e4548f19ac7d",
+  "surfaceHash": "11e16ae6a75d",
   "walkthroughs": [
     {
       "id": "",

@@ -51,6 +51,17 @@
               "readonly": true
             },
             {
+              "kind": "field",
+              "name": "xapiVocabulary",
+              "static": true,
+              "description": "xAPI statements this element sends (see scripts/generate-xapi-vocabulary.mjs)",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_announceCompare"
+            },
+            {
               "kind": "method",
               "name": "haxHooks",
               "description": "#3050: a file backing the top or bottom image was modified in place.\nRefresh the live preview by cache-busting the slotted shadow <img> srcs\ndirectly so the persisted `topSrc` / `bottomSrc` properties (and saved\ncontent) stay clean."
@@ -246,6 +257,14 @@
               },
               "description": "src for top image",
               "attribute": "top-src"
+            }
+          ],
+          "events": [
+            {
+              "name": "user-engagement",
+              "type": {
+                "text": "CustomEvent"
+              }
             }
           ],
           "attributes": [

@@ -104,6 +104,9 @@
   "hax": {
     "canScale": false,
     "canEditSource": true,
+    "designSystem": {
+      "primary": true
+    },
     "gizmo": {
       "title": "Flash card",
       "description": "Practice concepts with front-and-back flash cards.",
@@ -180,13 +183,13 @@
       "order": 0,
       "src": "flash-card.motion.json",
       "file": "lib/flash-card.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/flash-card.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {
