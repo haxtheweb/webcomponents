@@ -9,7 +9,7 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 // the picker lists every icon, so it needs the manifest (simple-icons.js
 // only registers iconset locations)
 import "@haxtheweb/simple-icon/lib/simple-iconset-manifest.js";
-import { SimpleIconsetStore } from "@haxtheweb/simple-icon/lib/simple-iconset.js";
+import { filterStoredIcons } from "./lib/simple-icon-select.js";
 
 /**
  * `simple-icon-picker`
@@ -190,46 +190,11 @@ class SimpleIconPicker extends SimplePicker {
    * @memberof SimpleIconPicker
    */
   _getStoredIcons() {
-    let icons =
-        SimpleIconsetStore && SimpleIconsetStore.iconlist
-          ? SimpleIconsetStore.iconlist
-          : [],
-      includeSets =
-        this.includeSets && this.includeSets.length > 0
-          ? typeof this.includeSets !== typeof []
-            ? JSON.parse(this.includeSets)
-            : this.includeSets
-          : false,
-      excludeSets =
-        this.excludeSets && this.excludeSets.length > 0
-          ? typeof this.excludeSets !== typeof []
-            ? JSON.parse(this.excludeSets)
-            : this.excludeSets
-          : false,
-      exclude =
-        this.exclude && this.exclude.length > 0
-          ? typeof this.exclude !== typeof []
-            ? JSON.parse(this.exclude)
-            : this.exclude
-          : false;
-    if (includeSets || excludeSets || exclude)
-      icons = icons.filter((icon) => {
-        let prefix = icon,
-          iconname = icon,
-          include = true;
-        prefix = prefix.replace(/:.*/, "");
-        // strip the icons: prefix so exclusion matches prefix-less names too
-        iconname = iconname.replace("icons:", "");
-        if (
-          exclude &&
-          (exclude.includes(icon) || exclude.includes(`icons:${iconname}`))
-        )
-          include = false;
-        if (includeSets && !includeSets.includes(prefix)) include = false;
-        if (excludeSets && excludeSets.includes(prefix)) include = false;
-        return include;
-      });
-    return icons;
+    return filterStoredIcons({
+      includeSets: this.includeSets,
+      excludeSets: this.excludeSets,
+      exclude: this.exclude,
+    });
   }
 
   /**

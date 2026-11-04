@@ -11,11 +11,22 @@
       
       import "@haxtheweb/demo-snippet/demo-snippet.js";
       import '../simple-icon-picker.js';
+      import '../lib/simple-icon-select.js';
+      import '@haxtheweb/hax-iconset/lib/simple-hax-iconset.js';
     </script>
     
   </head>
   <body>
     <div class="vertical-section-container centered">
+      <h3>simple-icon-select (searchable list, used by the HAXSchema iconpicker field)</h3>
+      <demo-snippet>
+        <template>
+          <div style="max-width: 220px">
+            <simple-icon-select label="Icon" value="icons:search"></simple-icon-select>
+          </div>
+        </template>
+      </demo-snippet>
+
       <h3>Basic simple-icon-picker demo</h3>
       <demo-snippet>
         <template>
