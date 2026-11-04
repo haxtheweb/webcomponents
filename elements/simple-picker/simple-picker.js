@@ -1111,7 +1111,21 @@ const SimplePickerBehaviors = function (SuperClass) {
           }
           if (found) i = (this.__options || []).length;
         }
-        if (sel === null) this.value = null;
+        if (sel === null) {
+          // the value matched no option. Clearing it here runs inside
+          // willUpdate, so no second pass resolves the null option; pick it
+          // now or the closed control shows a bare "false" label
+          this.value = null;
+          for (let i = 0; i < this.__options.length && sel === null; i++) {
+            for (let j = 0; j < this.__options[i].length; j++) {
+              if (this.__options[i][j].value === null) {
+                this.__activeDesc = `option-${i}-${j}`;
+                sel = this.__options[i][j];
+                break;
+              }
+            }
+          }
+        }
         this.__selectedOption = sel;
       }
 
