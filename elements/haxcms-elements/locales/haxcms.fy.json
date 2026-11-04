@@ -644,5 +644,6 @@
   "primarySidebar": "Primêre sydbalke",
   "contents": "Ynhâld",
   "continue": "Trochgean",
-  "noResultsFor": "Gjin resultaten fûn foar \"{search}\""
+  "noResultsFor": "Gjin resultaten fûn foar \"{search}\"",
+  "myLearning": "Myn learen"
 }

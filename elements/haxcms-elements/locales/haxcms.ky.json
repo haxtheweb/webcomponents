@@ -644,5 +644,6 @@
   "primarySidebar": "Негизги каптал панель",
   "contents": "Мазмуну",
   "continue": "Улантуу",
-  "noResultsFor": "\"{search}\" боюнча эч нерсе табылган жок"
+  "noResultsFor": "\"{search}\" боюнча эч нерсе табылган жок",
+  "myLearning": "Менин окуум"
 }

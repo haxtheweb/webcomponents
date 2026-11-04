@@ -644,5 +644,6 @@
   "primarySidebar": "Barre latérale principale",
   "contents": "Sommaire",
   "continue": "Continuer",
-  "noResultsFor": "Aucun résultat trouvé pour « {search} »"
+  "noResultsFor": "Aucun résultat trouvé pour « {search} »",
+  "myLearning": "Mon apprentissage"
 }

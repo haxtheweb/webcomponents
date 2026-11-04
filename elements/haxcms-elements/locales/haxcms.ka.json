@@ -644,5 +644,6 @@
   "primarySidebar": "მთავარი გვერდითი ზოლი",
   "contents": "შიგთავსი",
   "continue": "გაგრძელება",
-  "noResultsFor": "„{search}“-ისთვის შედეგები ვერ მოიძებნა"
+  "noResultsFor": "„{search}“-ისთვის შედეგები ვერ მოიძებნა",
+  "myLearning": "ჩემი სწავლა"
 }

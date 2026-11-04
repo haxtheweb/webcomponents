@@ -644,5 +644,6 @@
   "primarySidebar": "แถบด้านข้างหลัก",
   "contents": "สารบัญ",
   "continue": "ถัดไป",
-  "noResultsFor": "ไม่พบผลลัพธ์สำหรับ \"{search}\""
+  "noResultsFor": "ไม่พบผลลัพธ์สำหรับ \"{search}\"",
+  "myLearning": "การเรียนรู้ของฉัน"
 }

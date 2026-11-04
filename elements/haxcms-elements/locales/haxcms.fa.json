@@ -644,5 +644,6 @@
   "primarySidebar": "نوار کناری اصلی",
   "contents": "فهرست مطالب",
   "continue": "ادامه",
-  "noResultsFor": "هیچ نتیجه‌ای برای «{search}» یافت نشد"
+  "noResultsFor": "هیچ نتیجه‌ای برای «{search}» یافت نشد",
+  "myLearning": "یادگیری من"
 }

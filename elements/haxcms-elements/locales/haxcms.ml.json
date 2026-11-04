@@ -644,5 +644,6 @@
   "primarySidebar": "പ്രാഥമിക സൈഡ്ബാർ",
   "contents": "ഉള്ളടക്കം",
   "continue": "തുടരുക",
-  "noResultsFor": "\"{search}\" എന്നതിന് ഫലങ്ങളൊന്നും കണ്ടെത്തിയില്ല"
+  "noResultsFor": "\"{search}\" എന്നതിന് ഫലങ്ങളൊന്നും കണ്ടെത്തിയില്ല",
+  "myLearning": "എന്റെ പഠനം"
 }

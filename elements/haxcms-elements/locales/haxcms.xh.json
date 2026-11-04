@@ -644,5 +644,6 @@
   "primarySidebar": "Ibha esecaleni eyiNtloko",
   "contents": "Iziqulatho",
   "continue": "Qhubeka",
-  "noResultsFor": "Akukho ziphumo zifunyenweyo ze-\"{search}\""
+  "noResultsFor": "Akukho ziphumo zifunyenweyo ze-\"{search}\"",
+  "myLearning": "Ukufunda kwam"
 }

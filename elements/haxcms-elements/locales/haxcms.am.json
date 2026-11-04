@@ -644,5 +644,6 @@
   "primarySidebar": "ዋና የጎን አሞሌ",
   "contents": "ማውጫ",
   "continue": "ቀጥል",
-  "noResultsFor": "ለ\"{search}\" ምንም ውጤቶች አልተገኙም"
+  "noResultsFor": "ለ\"{search}\" ምንም ውጤቶች አልተገኙም",
+  "myLearning": "የእኔ ትምህርት"
 }

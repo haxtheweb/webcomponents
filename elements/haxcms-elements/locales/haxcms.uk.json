@@ -644,5 +644,6 @@
   "primarySidebar": "Основна бічна панель",
   "contents": "Зміст",
   "continue": "Продовжити",
-  "noResultsFor": "Нічого не знайдено за запитом «{search}»"
+  "noResultsFor": "Нічого не знайдено за запитом «{search}»",
+  "myLearning": "Моє навчання"
 }

@@ -644,5 +644,6 @@
   "primarySidebar": "Основна странична лента",
   "contents": "Съдържание",
   "continue": "Продължаване",
-  "noResultsFor": "Няма намерени резултати за „{search}“"
+  "noResultsFor": "Няма намерени резултати за „{search}“",
+  "myLearning": "Моето обучение"
 }

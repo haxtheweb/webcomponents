@@ -644,5 +644,6 @@
   "primarySidebar": "Հիմնական կողագոտի",
   "contents": "Բովանդակություն",
   "continue": "Շարունակել",
-  "noResultsFor": "«{search}»-ի համար արդյունքներ չեն գտնվել"
+  "noResultsFor": "«{search}»-ի համար արդյունքներ չեն գտնվել",
+  "myLearning": "Իմ ուսումը"
 }

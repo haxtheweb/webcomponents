@@ -644,5 +644,6 @@
   "primarySidebar": "Bar Sisi Utama",
   "contents": "Kandungan",
   "continue": "Teruskan",
-  "noResultsFor": "Tiada hasil ditemui untuk \"{search}\""
+  "noResultsFor": "Tiada hasil ditemui untuk \"{search}\"",
+  "myLearning": "Pembelajaran saya"
 }

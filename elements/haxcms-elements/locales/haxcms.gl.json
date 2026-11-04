@@ -644,5 +644,6 @@
   "primarySidebar": "Barra lateral principal",
   "contents": "Contidos",
   "continue": "Continuar",
-  "noResultsFor": "Non se atoparon resultados para \"{search}\""
+  "noResultsFor": "Non se atoparon resultados para \"{search}\"",
+  "myLearning": "A miña aprendizaxe"
 }

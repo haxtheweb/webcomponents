@@ -644,5 +644,6 @@
   "primarySidebar": "Hlavný bočný panel",
   "contents": "Obsah",
   "continue": "Pokračovať",
-  "noResultsFor": "Pre „{search}“ sa nenašli žiadne výsledky"
+  "noResultsFor": "Pre „{search}“ sa nenašli žiadne výsledky",
+  "myLearning": "Moje učenie"
 }

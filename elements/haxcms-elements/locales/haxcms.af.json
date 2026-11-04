@@ -644,5 +644,6 @@
   "primarySidebar": "Primêre sybalk",
   "contents": "Inhoud",
   "continue": "Gaan voort",
-  "noResultsFor": "Geen resultate gevind vir \"{search}\" nie"
+  "noResultsFor": "Geen resultate gevind vir \"{search}\" nie",
+  "myLearning": "My leer"
 }

@@ -644,5 +644,6 @@
   "primarySidebar": "Κύρια πλαϊνή στήλη",
   "contents": "Περιεχόμενα",
   "continue": "Συνέχεια",
-  "noResultsFor": "Δεν βρέθηκαν αποτελέσματα για «{search}»"
+  "noResultsFor": "Δεν βρέθηκαν αποτελέσματα για «{search}»",
+  "myLearning": "Η μάθησή μου"
 }

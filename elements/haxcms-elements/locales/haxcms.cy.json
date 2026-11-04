@@ -644,5 +644,6 @@
   "primarySidebar": "Bar Ochr Cynradd",
   "contents": "Cynnwys",
   "continue": "Parhau",
-  "noResultsFor": "Dim canlyniadau ar gyfer \"{search}\""
+  "noResultsFor": "Dim canlyniadau ar gyfer \"{search}\"",
+  "myLearning": "Fy nysgu"
 }

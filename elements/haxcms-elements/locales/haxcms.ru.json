@@ -644,5 +644,6 @@
   "primarySidebar": "Основная боковая панель",
   "contents": "Содержание",
   "continue": "Продолжить",
-  "noResultsFor": "По запросу «{search}» ничего не найдено"
+  "noResultsFor": "По запросу «{search}» ничего не найдено",
+  "myLearning": "Моё обучение"
 }

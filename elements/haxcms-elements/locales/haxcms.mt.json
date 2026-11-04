@@ -644,5 +644,6 @@
   "primarySidebar": "Sidebar Primarja",
   "contents": "Kontenut",
   "continue": "Kompli",
-  "noResultsFor": "Ma nstab l-ebda riżultat għal \"{search}\""
+  "noResultsFor": "Ma nstab l-ebda riżultat għal \"{search}\"",
+  "myLearning": "It-tagħlim tiegħi"
 }

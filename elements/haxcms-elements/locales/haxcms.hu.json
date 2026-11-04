@@ -644,5 +644,6 @@
   "primarySidebar": "Elsődleges oldalsáv",
   "contents": "Tartalom",
   "continue": "Tovább",
-  "noResultsFor": "Nincs találat a következőre: „{search}”"
+  "noResultsFor": "Nincs találat a következőre: „{search}”",
+  "myLearning": "Tanulásom"
 }

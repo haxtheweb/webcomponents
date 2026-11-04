@@ -644,5 +644,6 @@
   "primarySidebar": "Негізгі бүйірлік панель",
   "contents": "Мазмұны",
   "continue": "Жалғастыру",
-  "noResultsFor": "«{search}» бойынша нәтиже табылмады"
+  "noResultsFor": "«{search}» бойынша нәтиже табылмады",
+  "myLearning": "Менің оқуым"
 }

@@ -644,5 +644,6 @@
   "primarySidebar": "メインサイドバー",
   "contents": "目次",
   "continue": "続ける",
-  "noResultsFor": "「{search}」の検索結果は見つかりませんでした"
+  "noResultsFor": "「{search}」の検索結果は見つかりませんでした",
+  "myLearning": "私の学習"
 }

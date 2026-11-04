@@ -644,5 +644,6 @@
   "primarySidebar": "Główny pasek boczny",
   "contents": "Spis treści",
   "continue": "Dalej",
-  "noResultsFor": "Brak wyników dla „{search}”"
+  "noResultsFor": "Brak wyników dla „{search}”",
+  "myLearning": "Moja nauka"
 }

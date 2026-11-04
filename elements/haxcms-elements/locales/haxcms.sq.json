@@ -644,5 +644,6 @@
   "primarySidebar": "Shiriti anësor kryesor",
   "contents": "Përmbajtja",
   "continue": "Vazhdo",
-  "noResultsFor": "Nuk u gjetën rezultate për \"{search}\""
+  "noResultsFor": "Nuk u gjetën rezultate për \"{search}\"",
+  "myLearning": "Mësimi im"
 }

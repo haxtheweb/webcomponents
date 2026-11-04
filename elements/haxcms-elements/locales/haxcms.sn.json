@@ -644,5 +644,6 @@
   "primarySidebar": "Sidebar Huru",
   "contents": "Zviri mukati",
   "continue": "Enderera mberi",
-  "noResultsFor": "Hapana mhinduro dzawanikwa dze\"{search}\""
+  "noResultsFor": "Hapana mhinduro dzawanikwa dze\"{search}\"",
+  "myLearning": "Kudzidza kwangu"
 }

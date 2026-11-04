@@ -644,5 +644,6 @@
   "primarySidebar": "الشريط الجانبي الرئيسي",
   "contents": "المحتويات",
   "continue": "متابعة",
-  "noResultsFor": "لم يتم العثور على نتائج لـ \"{search}\""
+  "noResultsFor": "لم يتم العثور على نتائج لـ \"{search}\"",
+  "myLearning": "تعلّمي"
 }

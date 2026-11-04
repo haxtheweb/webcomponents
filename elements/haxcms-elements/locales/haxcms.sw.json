@@ -644,5 +644,6 @@
   "primarySidebar": "Upau wa Kando Mkuu",
   "contents": "Yaliyomo",
   "continue": "Endelea",
-  "noResultsFor": "Hakuna matokeo yaliyopatikana kwa \"{search}\""
+  "noResultsFor": "Hakuna matokeo yaliyopatikana kwa \"{search}\"",
+  "myLearning": "Masomo yangu"
 }

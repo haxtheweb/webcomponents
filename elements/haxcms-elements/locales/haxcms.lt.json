@@ -644,5 +644,6 @@
   "primarySidebar": "Pagrindinė šoninė juosta",
   "contents": "Turinys",
   "continue": "Tęsti",
-  "noResultsFor": "Nerasta rezultatų pagal „{search}“"
+  "noResultsFor": "Nerasta rezultatų pagal „{search}“",
+  "myLearning": "Mano mokymasis"
 }

@@ -644,5 +644,6 @@
   "primarySidebar": "Alboko barra nagusia",
   "contents": "Edukiak",
   "continue": "Jarraitu",
-  "noResultsFor": "Ez da emaitzarik aurkitu \"{search}\" bilaketarako"
+  "noResultsFor": "Ez da emaitzarik aurkitu \"{search}\" bilaketarako",
+  "myLearning": "Nire ikaskuntza"
 }

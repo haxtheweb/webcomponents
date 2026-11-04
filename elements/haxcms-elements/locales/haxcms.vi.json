@@ -644,5 +644,6 @@
   "primarySidebar": "Thanh bên chính",
   "contents": "Mục lục",
   "continue": "Tiếp tục",
-  "noResultsFor": "Không tìm thấy kết quả cho \"{search}\""
+  "noResultsFor": "Không tìm thấy kết quả cho \"{search}\"",
+  "myLearning": "Việc học của tôi"
 }
