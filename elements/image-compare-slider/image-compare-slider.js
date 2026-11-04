@@ -27,6 +27,12 @@ const escapeAttr = (value) =>
     .replace(/"/g, "&quot;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;");
+import {
+  activityId,
+  buildStatement,
+  XAPI_ACTIVITY_TYPES,
+  XAPI_EXTENSIONS,
+} from "@haxtheweb/user-action/lib/xapi.js";
 
 class ImageCompareSlider extends I18NMixin(
   IntersectionObserverMixin(SchemaBehaviors(LitElement)),
@@ -123,6 +129,11 @@ class ImageCompareSlider extends I18NMixin(
         /* page paragraph margins would otherwise win over the slot */
         .desc ::slotted(*) {
           margin-block: 0 !important;
+        }
+        /* an author picked DDD primary colours the slider control */
+        :host([data-primary]) a11y-compare-image {
+          --a11y-compare-image-control-fill: var(--ddd-theme-primary);
+          --a11y-compare-image-control-ink: var(--ddd-theme-bgContrast, white);
         }
         a11y-compare-image {
           --a11y-compare-image-stage-padding: var(--ddd-spacing-4);
@@ -346,6 +357,7 @@ class ImageCompareSlider extends I18NMixin(
                 ?fit="${this._fullscreen}"
                 position="${this.position}"
                 data-pulse
+                @input="${this._announceCompare}"
               >
                 <img
                   slot="bottom"
@@ -368,6 +380,53 @@ class ImageCompareSlider extends I18NMixin(
 
   static get tag() {
     return "image-compare-slider";
+  }
+  /**
+   * xAPI statements this element sends (see scripts/generate-xapi-vocabulary.mjs)
+   */
+  static get xapiVocabulary() {
+    return {
+      tag: "image-compare-slider",
+      event: "user-engagement",
+      verbs: ["interacted"],
+      objectType: "http://adlnet.gov/expapi/activities/interaction",
+      result: [],
+      countsTowardCompletion: false,
+      done: "never required; records that the learner moved the slider",
+    };
+  }
+  // learner data: the learner moved the slider to compare. Once per visit.
+  _announceCompare() {
+    if (this._compareSent) {
+      return;
+    }
+    this._compareSent = true;
+    const name = String(this.title || this.topAlt || "Image compare").trim();
+    this.dispatchEvent(
+      new CustomEvent("user-engagement", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: {
+          activityDisplay: "interacted",
+          objectName: name.slice(0, 120),
+          statement: buildStatement({
+            verb: "interacted",
+            object: {
+              id: activityId(
+                this,
+                `image-compare-slider\u0001${this.topSrc || ""}\u0001${this.bottomSrc || ""}`,
+              ),
+              name: name.slice(0, 120),
+              type: XAPI_ACTIVITY_TYPES.interactionGeneric,
+            },
+            context: {
+              extensions: { [XAPI_EXTENSIONS.element]: "image-compare-slider" },
+            },
+          }),
+        },
+      }),
+    );
   }
 
   static get properties() {
