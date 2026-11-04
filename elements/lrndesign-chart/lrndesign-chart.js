@@ -11,6 +11,7 @@ import {
 } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 import { DDDAccentStyles } from "@haxtheweb/d-d-d/lib/DDDAccent.js";
 import { DDDChartStyles } from "@haxtheweb/d-d-d/lib/DDDChart.js";
+import { DDDTableStyles } from "@haxtheweb/d-d-d/lib/DDDTable.js";
 /**
  * `lrndesign-chart`
  * common properties and behaviors for lrndesign chart types
@@ -40,6 +41,7 @@ const LrndesignChart = function (SuperClass) {
         DDDBlockStyles,
         DDDAccentStyles,
         DDDChartStyles,
+        DDDTableStyles,
         css`
           /* chartist reads --chartist-color-1 ... 15; they come from the
              shared DDD chart palette and repeat after eight. accent-color
@@ -131,44 +133,7 @@ const LrndesignChart = function (SuperClass) {
             margin-top: var(--ddd-spacing-3);
             overflow-x: auto;
           }
-          table.data {
-            width: 100%;
-            border-collapse: collapse;
-            font-family: var(--ddd-font-primary);
-            font-size: var(--ddd-font-size-4xs);
-            color: inherit;
-          }
-          table.data th,
-          table.data td {
-            padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
-            text-align: start;
-            border-bottom: var(--ddd-border-xs);
-            border-color: light-dark(
-              var(--ddd-theme-default-limestoneLight),
-              var(--ddd-theme-default-slateGray)
-            );
-          }
-          table.data thead th {
-            background-color: light-dark(
-              var(--ddd-theme-default-limestoneMaxLight),
-              var(--ddd-theme-default-nittanyNavy)
-            );
-            color: light-dark(
-              var(--ddd-theme-default-nittanyNavy),
-              var(--ddd-theme-default-white)
-            );
-            font-weight: var(--ddd-font-weight-bold);
-          }
-          table.data tbody th {
-            font-weight: var(--ddd-font-weight-bold);
-          }
-          table.data .num {
-            text-align: end;
-            font-variant-numeric: tabular-nums;
-          }
-          table.data tbody tr:last-child > * {
-            border-bottom: none;
-          }
+          /* the data table takes the shared DDD table look (DDDTable.js) */
 
           ul.legend {
             display: flex;
@@ -302,7 +267,7 @@ const LrndesignChart = function (SuperClass) {
             Array.isArray(row) &&
             row.some((cell) => cell !== "" && cell !== undefined),
         );
-      return html`<table class="data">
+      return html`<table class="data ddd-table">
         ${colHeads
           ? html`<thead>
               <tr>

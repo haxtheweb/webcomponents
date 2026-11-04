@@ -1776,6 +1776,7 @@ class GradeBook extends UIRenderPieces(
                         <letter-grade-picker></letter-grade-picker>
 
                         <editable-table-display
+                          hide-block-header
                           accent-color="${this.accentColor}"
                           bordered
                           column-header

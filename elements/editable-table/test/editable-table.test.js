@@ -713,3 +713,23 @@ describe('Test Desktop Responsiveness', () => {
       expect(hidden).to.equal(true);
     })
 }) */
+
+describe("editable-table number detection", () => {
+  it("reads cell text inertly and classifies numbers", async () => {
+    const el = await fixture(html`<editable-table></editable-table>`);
+    globalThis.__cellTextRan = false;
+    expect(el._cellText("<b>$1,200</b>")).to.equal("$1,200");
+    expect(el._cellText("12&nbsp;%")).to.equal("12 %");
+    expect(
+      el._cellText(
+        '<img src=x onerror="globalThis.__cellTextRan=true"><scr<script>ipt>4',
+      ),
+    ).to.contain("4");
+    await new Promise((r) => setTimeout(r, 50));
+    expect(globalThis.__cellTextRan).to.equal(false);
+    expect(el._isNumberLike("<em>-1.2%</em>")).to.equal(true);
+    expect(el._isNumberLike("€3.50")).to.equal(true);
+    expect(el._isNumberLike("<script>1</script>")).to.equal(false);
+    expect(el._isNumberLike("Apples")).to.equal(false);
+  });
+});

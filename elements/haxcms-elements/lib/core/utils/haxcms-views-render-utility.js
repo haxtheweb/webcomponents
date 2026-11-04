@@ -898,6 +898,7 @@ export const renderTablePreview = (records, options = {}) => {
   return html`
     <div class="table-scroll">
       <editable-table-display
+        hide-block-header
         bordered
         condensed
         column-header

@@ -45,6 +45,35 @@ class EditableTableSort extends I18NMixin(SimpleToolbarButtonBehaviors(DDD)) {
           flex: 1 1 auto !important;
           display: inline-block;
           padding: var(--ddd-spacing-1);
+          text-align: inherit;
+        }
+        /* a subtle DDD icon button: no box until hover or focus, and the
+           unsorted icon sits back so the active sort stands out */
+        *[part="button"] {
+          color: var(--simple-toolbar-button-color, inherit);
+          border-color: var(--simple-toolbar-button-border-color, transparent);
+          border-radius: var(--ddd-radius-xs);
+          margin-inline-start: var(--ddd-spacing-1);
+        }
+        *[part="button"]:hover {
+          background-color: var(
+            --simple-toolbar-button-hover-bg,
+            light-dark(
+              var(--ddd-theme-default-limestoneLight),
+              var(--ddd-theme-default-slateGray)
+            )
+          );
+          border-color: var(
+            --simple-toolbar-button-hover-border-color,
+            transparent
+          );
+        }
+        *[part="button"]:focus-visible {
+          outline: var(--ddd-focus-ring, 2px solid currentColor);
+          outline-offset: var(--ddd-focus-offset, 2px);
+        }
+        :host(:not([sort-mode="asc"]):not([sort-mode="desc"])) #icon {
+          opacity: 0.6;
         }
       `,
     ];

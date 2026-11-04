@@ -1457,11 +1457,22 @@ const ChartistRenderSuper = function (SuperClass) {
         if (!thead && data.labels) {
           thead = data.labels;
         }
+        const filled = (cell) =>
+          cell !== undefined && cell !== null && cell !== "";
         table = table || globalThis.document.createElement("table");
+        // with row headings the header row keeps its corner cell even when
+        // it is empty (a CSV header like ",Q1,Q2"): dropping it shifts every
+        // column heading one place left once the table is read back
         if (thead)
           html += `
            <thead><tr>
-             ${thead.row ? `<th scope="row">${thead.row}</th>` : ``}
+             ${
+               filled(thead.row)
+                 ? `<th scope="row">${thead.row}</th>`
+                 : rowHeads && thead.col
+                   ? `<td></td>`
+                   : ``
+             }
              ${
                thead.col
                  ? thead.col.map((th) => `<th scope="col">${th}</th>`).join("")
@@ -1475,7 +1486,13 @@ const ChartistRenderSuper = function (SuperClass) {
                .map(
                  (tr) => `
                <tr>
-                 ${tr.th ? `<th scope="row">${tr.th}</th>` : ``}
+                 ${
+                   filled(tr.th)
+                     ? `<th scope="row">${tr.th}</th>`
+                     : rowHeads && tr.td
+                       ? `<td></td>`
+                       : ``
+                 }
                  ${tr.td ? tr.td.map((td) => `<td>${td}</td>`).join("") : ``}
                </tr>
              `,
@@ -1525,7 +1542,9 @@ const ChartistRenderSuper = function (SuperClass) {
           let temp = [];
           tr.querySelectorAll("th,td").forEach((td) => {
             let html = td.innerHTML.trim();
-            temp.push(isNaN(html) ? html : parseInt(html));
+            // an empty cell stays empty ("" is not NaN, but parseInt makes
+            // it NaN, which then renders as the text NaN)
+            temp.push(html === "" || isNaN(html) ? html : parseInt(html));
           });
           data.push(temp);
         });

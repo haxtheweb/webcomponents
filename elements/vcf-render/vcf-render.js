@@ -453,8 +453,6 @@ export class VcfRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
         condensed
         column-header
         sort
-        printable
-        downloadable
       >
         <table>
           ${this.headingText

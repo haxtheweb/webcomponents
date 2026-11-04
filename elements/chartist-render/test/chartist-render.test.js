@@ -360,6 +360,79 @@ describe("chartist-render test", () => {
       ]);
     });
 
+    // a CSV whose header row starts with an empty corner cell used to lose
+    // that cell in the generated light DOM table, so once the table was read
+    // back every x label shifted one place (Q2, Q3, Q4 under Q1's bars)
+    [
+      ["an empty first header cell", ",Q1,Q2,Q3,Q4"],
+      ["a named first header cell", "Region,Q1,Q2,Q3,Q4"],
+    ].forEach(([name, header]) => {
+      it(`keeps labels and series aligned for a CSV with ${name}`, async () => {
+        const csv = `${header}\nNorth,5,4,3,7\nSouth,3,2,9,5\n`;
+        element.dataSource = `data:text/plain,${encodeURIComponent(csv)}`;
+        await aTimeout(300);
+        await element.updateComplete;
+        await aTimeout(100);
+        expect(element.chartData.labels).to.deep.equal([
+          "Q1",
+          "Q2",
+          "Q3",
+          "Q4",
+        ]);
+        const series = element.chartData.series.filter((row) => row.length);
+        expect(series).to.deep.equal([
+          [5, 4, 3, 7],
+          [3, 2, 9, 5],
+        ]);
+        // the row headings (series names) and column headings line up in
+        // the generated table
+        const table = element.querySelector("table");
+        const heads = [...table.querySelectorAll("thead th[scope=col]")].map(
+          (th) => th.textContent.trim(),
+        );
+        expect(heads).to.deep.equal(["Q1", "Q2", "Q3", "Q4"]);
+        const rows = [...table.querySelectorAll("tbody tr")].filter((tr) =>
+          tr.querySelector("th"),
+        );
+        expect(
+          rows.map((tr) => tr.querySelector("th").textContent),
+        ).to.deep.equal(["North", "South"]);
+        rows.forEach((tr) =>
+          expect(tr.children.length).to.equal(
+            table.querySelector("thead tr").children.length,
+          ),
+        );
+        expect(element.data[0].length).to.equal(5);
+      });
+    });
+
+    it("keeps empty cells empty when reading a table back", async () => {
+      const el = await fixture(html`
+        <chartist-render type="bar">
+          <table>
+            <thead>
+              <tr>
+                <td></td>
+                <th>Q1</th>
+                <th>Q2</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>North</th>
+                <td>5</td>
+                <td>4</td>
+              </tr>
+            </tbody>
+          </table>
+        </chartist-render>
+      `);
+      await el.updateComplete;
+      await aTimeout(100);
+      expect(el.data[0]).to.deep.equal(["", "Q1", "Q2"]);
+      expect(el.chartData.labels).to.deep.equal(["Q1", "Q2"]);
+    });
+
     it("supports the deprecated object form of data", async () => {
       element.data = { labels: ["x", "y"], series: [[1, 2]] };
       await element.updateComplete;
