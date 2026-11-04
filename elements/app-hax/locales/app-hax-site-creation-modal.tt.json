@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Сайт уңышлы булдырылды!",
   "newSiteReady": "Яңа «{siteName}» сайтыгыз кулланырга әзер.",
   "stayHere": "Монда калу",
-  "goToSite": "Сайтка күчү"
+  "goToSite": "Сайтка күчү",
+  "stepOf": "Адым {step} / {total}"
 }

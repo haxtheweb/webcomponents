@@ -75,5 +75,11 @@
   "selectFile": "Roghnaigh {name}",
   "copyPath": "Cóipeáil an chonair",
   "pathCopied": "Conair cóipeáilte",
-  "embedInPage": "Leabaigh sa leathanach"
+  "embedInPage": "Leabaigh sa leathanach",
+  "deleteFilesTitle": "Scrios comhaid",
+  "renameFilesTitle": "Athainmnigh comhaid",
+  "replaceOriginalsTitle": "Ionadaigh na bunchomhaid",
+  "newName": "Ainm nua",
+  "deleteAction": "Scrios",
+  "renameAction": "Athainmnigh"
 }

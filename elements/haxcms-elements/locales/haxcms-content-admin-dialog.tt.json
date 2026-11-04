@@ -60,5 +60,10 @@
   "pageUnit": "бит",
   "pagesUnit": "битләр",
   "replacementUnit": "алыштыру",
-  "replacementsUnit": "алыштыру"
+  "replacementsUnit": "алыштыру",
+  "deletePagesTitle": "Битләрне бетерү",
+  "deleteAction": "Бетерү",
+  "replaceTitle": "Битләрдә алыштыру",
+  "removeMatchesTitle": "Барлык туры килүләрне алу",
+  "removeAction": "Алу"
 }

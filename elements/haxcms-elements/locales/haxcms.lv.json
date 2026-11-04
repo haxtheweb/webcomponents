@@ -644,5 +644,14 @@
   "primarySidebar": "Galvenā sānjosla",
   "contents": "Saturs",
   "continue": "Turpināt",
-  "noResultsFor": "Vaicājumam \"{search}\" nav atrasts neviens rezultāts"
+  "noResultsFor": "Vaicājumam \"{search}\" nav atrasts neviens rezultāts",
+  "duplicatePageTitle": "Dublēt lapu",
+  "duplicateAction": "Dublēt",
+  "newPageTitle": "Nosaukums",
+  "importFromUrlTitle": "Importēt no URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Atmest struktūras izmaiņas?",
+  "outlineSaveTitle": "Saglabāt struktūras izmaiņas?",
+  "discardChanges": "Atmest izmaiņas",
+  "keepEditing": "Turpināt rediģēt"
 }

@@ -100,5 +100,6 @@
   "vitepressImportDescription": "Flyt eitt VitePress-skjalagoymslusavn inn í ein nýggjan HAX-vevstað",
   "vitepressImportPrompt": "URL til VitePress git-goymslusavnið",
   "quartoImportDescription": "Flyt eitt Quarto-skjalagoymslusavn inn í ein nýggjan HAX-vevstað",
-  "quartoImportPrompt": "URL til Quarto git-goymslusavnið"
+  "quartoImportPrompt": "URL til Quarto git-goymslusavnið",
+  "cancel": "Angra"
 }

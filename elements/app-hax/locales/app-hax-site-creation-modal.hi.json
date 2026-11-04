@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "साइट सफलतापूर्वक बनाई गई!",
   "newSiteReady": "आपकी नई साइट \"{siteName}\" उपयोग के लिए तैयार है।",
   "stayHere": "यहीं रहें",
-  "goToSite": "साइट पर जाएँ"
+  "goToSite": "साइट पर जाएँ",
+  "stepOf": "{total} में से चरण {step}"
 }

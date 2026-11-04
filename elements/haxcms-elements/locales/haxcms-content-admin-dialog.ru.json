@@ -60,5 +60,10 @@
   "pageUnit": "стр.",
   "pagesUnit": "страниц",
   "replacementUnit": "замена",
-  "replacementsUnit": "замен"
+  "replacementsUnit": "замен",
+  "deletePagesTitle": "Удаление страниц",
+  "deleteAction": "Удалить",
+  "replaceTitle": "Замена на страницах",
+  "removeMatchesTitle": "Удалить все совпадения",
+  "removeAction": "Удалить"
 }

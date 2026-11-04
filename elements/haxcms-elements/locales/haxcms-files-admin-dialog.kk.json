@@ -75,5 +75,11 @@
   "selectFile": "{name} таңдау",
   "copyPath": "Жолды көшіру",
   "pathCopied": "Жол көшірілді",
-  "embedInPage": "Бетке ендіру"
+  "embedInPage": "Бетке ендіру",
+  "deleteFilesTitle": "Файлдарды жою",
+  "renameFilesTitle": "Файлдардың атын өзгерту",
+  "replaceOriginalsTitle": "Түпнұсқа файлдарды ауыстыру",
+  "newName": "Жаңа атау",
+  "deleteAction": "Жою",
+  "renameAction": "Атын өзгерту"
 }

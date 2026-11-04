@@ -644,5 +644,14 @@
   "primarySidebar": "Асноўная бакавая панэль",
   "contents": "Змесціва",
   "continue": "Працягнуць",
-  "noResultsFor": "Па запыце «{search}» нічога не знойдзена"
+  "noResultsFor": "Па запыце «{search}» нічога не знойдзена",
+  "duplicatePageTitle": "Дубляваць старонку",
+  "duplicateAction": "Дубляваць",
+  "newPageTitle": "Загаловак",
+  "importFromUrlTitle": "Імпартаваць з URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Адхіліць змены структуры?",
+  "outlineSaveTitle": "Захаваць змены структуры?",
+  "discardChanges": "Адхіліць змены",
+  "keepEditing": "Працягнуць рэдагаванне"
 }

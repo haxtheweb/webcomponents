@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "අඩවිය සාර්ථකව සාදන ලදී!",
   "newSiteReady": "ඔබේ නව අඩවිය \"{siteName}\" භාවිතයට සූදානම්.",
   "stayHere": "මෙහි රැඳී සිටින්න",
-  "goToSite": "අඩවියට යන්න"
+  "goToSite": "අඩවියට යන්න",
+  "stepOf": "පියවර {step} / {total}"
 }

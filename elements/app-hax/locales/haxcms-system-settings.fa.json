@@ -124,5 +124,13 @@
   "showApiKeyValue": "نمایش مقدار کلید API",
   "noSettingsForPanel": "هنوز تنظیماتی برای این پنل در دسترس نیست.",
   "saving": "در حال ذخیره…",
-  "save": "ذخیره"
+  "save": "ذخیره",
+  "dropSkeletonFile": "یک فایل اسکلت .json را اینجا رها کنید یا",
+  "browseFiles": "مرور",
+  "skeletonUploadNote": "اسکلت‌های بارگذاری‌شده را می‌توان تغییر نام داد یا حذف کرد؛ اسکلت‌های اصلی را فقط می‌توان غیرفعال کرد.",
+  "skeletonName": "نام اسکلت",
+  "renameAction": "تغییر نام",
+  "deleteSkeletonTitle": "حذف اسکلت",
+  "deleteAction": "حذف",
+  "cancel": "لغو"
 }

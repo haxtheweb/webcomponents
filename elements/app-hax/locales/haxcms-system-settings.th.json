@@ -124,5 +124,13 @@
   "showApiKeyValue": "แสดงค่าคีย์ API",
   "noSettingsForPanel": "ยังไม่มีการตั้งค่าสำหรับแผงนี้",
   "saving": "กำลังบันทึก…",
-  "save": "บันทึก"
+  "save": "บันทึก",
+  "dropSkeletonFile": "วางไฟล์ .json ของโครงร่างที่นี่ หรือ",
+  "browseFiles": "เรียกดู",
+  "skeletonUploadNote": "โครงร่างที่อัปโหลดสามารถเปลี่ยนชื่อหรือลบได้ ส่วนโครงร่างหลักทำได้เพียงปิดใช้งานเท่านั้น",
+  "skeletonName": "ชื่อโครงร่าง",
+  "renameAction": "เปลี่ยนชื่อ",
+  "deleteSkeletonTitle": "ลบโครงร่าง",
+  "deleteAction": "ลบ",
+  "cancel": "ยกเลิก"
 }

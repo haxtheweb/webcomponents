@@ -644,5 +644,14 @@
   "primarySidebar": "प्राथमिक साइडबार",
   "contents": "सामग्री",
   "continue": "जारी रखें",
-  "noResultsFor": "\"{search}\" के लिए कोई परिणाम नहीं मिला"
+  "noResultsFor": "\"{search}\" के लिए कोई परिणाम नहीं मिला",
+  "duplicatePageTitle": "पेज डुप्लिकेट करें",
+  "duplicateAction": "डुप्लिकेट करें",
+  "newPageTitle": "शीर्षक",
+  "importFromUrlTitle": "URL से इंपोर्ट करें",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "आउटलाइन के बदलाव छोड़ें?",
+  "outlineSaveTitle": "आउटलाइन के बदलाव सहेजें?",
+  "discardChanges": "बदलाव छोड़ें",
+  "keepEditing": "संपादन जारी रखें"
 }

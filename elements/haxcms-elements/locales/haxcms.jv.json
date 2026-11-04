@@ -644,5 +644,14 @@
   "primarySidebar": "Sidebar Utama",
   "contents": "Isi",
   "continue": "Terusake",
-  "noResultsFor": "Ora ana asil kanggo \"{search}\""
+  "noResultsFor": "Ora ana asil kanggo \"{search}\"",
+  "duplicatePageTitle": "Duplikat kaca",
+  "duplicateAction": "Duplikat",
+  "newPageTitle": "Irah-irahan",
+  "importFromUrlTitle": "Impor saka URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Buwang owahan kerangka?",
+  "outlineSaveTitle": "Simpen owahan kerangka?",
+  "discardChanges": "Buwang owahan",
+  "keepEditing": "Terusake nyunting"
 }

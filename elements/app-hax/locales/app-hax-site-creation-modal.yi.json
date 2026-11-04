@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "וועבזײַטל הצלחהדיק באַשאַפֿן!",
   "newSiteReady": "דײַן נײַ וועבזײַטל \"{siteName}\" איז גרייט צו באַניצן.",
   "stayHere": "בלײַב דאָ",
-  "goToSite": "גיי צום וועבזײַטל"
+  "goToSite": "גיי צום וועבזײַטל",
+  "stepOf": "שריט {step} פֿון {total}"
 }

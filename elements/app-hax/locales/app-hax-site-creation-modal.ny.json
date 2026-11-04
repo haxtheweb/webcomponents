@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Webusayiti Yapangidwa Bwino!",
   "newSiteReady": "Webusayiti yanu yatsopano \"{siteName}\" yakonzeka kugwiritsidwa ntchito.",
   "stayHere": "Khalani Pano",
-  "goToSite": "Pitani ku Webusayiti"
+  "goToSite": "Pitani ku Webusayiti",
+  "stepOf": "Gawo {step} mwa {total}"
 }

@@ -644,5 +644,14 @@
   "primarySidebar": "הויפּט־זײַטנבאַנד",
   "contents": "אינהאַלט",
   "continue": "ווײַטער",
-  "noResultsFor": "קיין רעזולטאַטן נישט געפֿונען פֿאַר \"{search}\""
+  "noResultsFor": "קיין רעזולטאַטן נישט געפֿונען פֿאַר \"{search}\"",
+  "duplicatePageTitle": "דופּליקירן זײַט",
+  "duplicateAction": "דופּליקירן",
+  "newPageTitle": "טיטל",
+  "importFromUrlTitle": "אימפּאָרטירן פֿון אַ URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "אַוועקוואַרפֿן די סטרוקטור־ענדערונגען?",
+  "outlineSaveTitle": "אָפּהיטן די סטרוקטור־ענדערונגען?",
+  "discardChanges": "וואַרף אַוועק ענדערונגען",
+  "keepEditing": "רעדאַקטיר ווײַטער"
 }

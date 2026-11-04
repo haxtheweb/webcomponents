@@ -124,5 +124,13 @@
   "showApiKeyValue": "د API کیلي ارزښت وښایاست",
   "noSettingsForPanel": "د دې پینل لپاره لا هېڅ تنظیمات شتون نه لري.",
   "saving": "خوندي کېږي…",
-  "save": "خوندي کول"
+  "save": "خوندي کول",
+  "dropSkeletonFile": "د سکلیټن .json فایل دلته راوغورځوئ یا",
+  "browseFiles": "لټول",
+  "skeletonUploadNote": "د پورته شویو سکلیټنونو نوم بدلېدای یا ړنګېدای شي؛ اصلي سکلیټنونه یوازې بندېدای شي.",
+  "skeletonName": "د سکلیټن نوم",
+  "renameAction": "نوم بدلول",
+  "deleteSkeletonTitle": "سکلیټن ړنګول",
+  "deleteAction": "ړنګول",
+  "cancel": "لغوه کول"
 }

@@ -75,5 +75,11 @@
   "selectFile": "Koho iā {name}",
   "copyPath": "Kope i ke ala",
   "pathCopied": "Ua kope ʻia ke ala",
-  "embedInPage": "Hoʻokomo pili i ka ʻaoʻao"
+  "embedInPage": "Hoʻokomo pili i ka ʻaoʻao",
+  "deleteFilesTitle": "Holoi i nā faila",
+  "renameFilesTitle": "Kapa hou i nā faila",
+  "replaceOriginalsTitle": "Pani i nā faila kumu",
+  "newName": "Inoa hou",
+  "deleteAction": "Holoi",
+  "renameAction": "Kapa hou"
 }

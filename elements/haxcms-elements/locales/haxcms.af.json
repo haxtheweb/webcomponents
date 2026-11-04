@@ -644,5 +644,14 @@
   "primarySidebar": "Primêre sybalk",
   "contents": "Inhoud",
   "continue": "Gaan voort",
-  "noResultsFor": "Geen resultate gevind vir \"{search}\" nie"
+  "noResultsFor": "Geen resultate gevind vir \"{search}\" nie",
+  "duplicatePageTitle": "Dupliseer bladsy",
+  "duplicateAction": "Dupliseer",
+  "newPageTitle": "Titel",
+  "importFromUrlTitle": "Voer in vanaf 'n URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Gooi buitelynveranderinge weg?",
+  "outlineSaveTitle": "Stoor buitelynveranderinge?",
+  "discardChanges": "Gooi veranderinge weg",
+  "keepEditing": "Hou aan redigeer"
 }

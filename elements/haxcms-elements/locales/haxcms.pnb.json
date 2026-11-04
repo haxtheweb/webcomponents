@@ -644,5 +644,14 @@
   "primarySidebar": "مڈھلی سائیڈ بار",
   "contents": "فہرست",
   "continue": "جاری رکھو",
-  "noResultsFor": "\"{search}\" لئی کوئی نتیجہ نئیں لبھا"
+  "noResultsFor": "\"{search}\" لئی کوئی نتیجہ نئیں لبھا",
+  "duplicatePageTitle": "صفحے دی نقل بناؤ",
+  "duplicateAction": "نقل بناؤ",
+  "newPageTitle": "سرناواں",
+  "importFromUrlTitle": "URL توں درآمد کرو",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "کیہ ڈھانچے دیاں تبدیلیاں چھڈنیاں نیں؟",
+  "outlineSaveTitle": "کیہ ڈھانچے دیاں تبدیلیاں سانبھنیاں نیں؟",
+  "discardChanges": "تبدیلیاں چھڈو",
+  "keepEditing": "ترمیم جاری رکھو"
 }

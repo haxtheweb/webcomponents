@@ -60,5 +60,10 @@
   "pageUnit": "စာမျက်နှာ",
   "pagesUnit": "စာမျက်နှာများ",
   "replacementUnit": "အစားထိုးမှု",
-  "replacementsUnit": "အစားထိုးမှု"
+  "replacementsUnit": "အစားထိုးမှု",
+  "deletePagesTitle": "စာမျက်နှာများ ဖျက်ရန်",
+  "deleteAction": "ဖျက်ရန်",
+  "replaceTitle": "စာမျက်နှာများတွင် အစားထိုးရန်",
+  "removeMatchesTitle": "ကိုက်ညီမှုအားလုံး ဖယ်ရှားရန်",
+  "removeAction": "ဖယ်ရှားရန်"
 }

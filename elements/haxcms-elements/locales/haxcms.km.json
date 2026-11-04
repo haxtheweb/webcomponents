@@ -644,5 +644,14 @@
   "primarySidebar": "របារចំហៀងចម្បង",
   "contents": "មាតិកា",
   "continue": "បន្ត",
-  "noResultsFor": "រកមិនឃើញលទ្ធផលសម្រាប់ \"{search}\" ទេ"
+  "noResultsFor": "រកមិនឃើញលទ្ធផលសម្រាប់ \"{search}\" ទេ",
+  "duplicatePageTitle": "ស្ទួនទំព័រ",
+  "duplicateAction": "ស្ទួន",
+  "newPageTitle": "ចំណងជើង",
+  "importFromUrlTitle": "នាំចូលពី URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "បោះបង់ការផ្លាស់ប្ដូររចនាសម្ព័ន្ធ?",
+  "outlineSaveTitle": "រក្សាទុកការផ្លាស់ប្ដូររចនាសម្ព័ន្ធ?",
+  "discardChanges": "បោះបង់ការផ្លាស់ប្ដូរ",
+  "keepEditing": "បន្តកែសម្រួល"
 }

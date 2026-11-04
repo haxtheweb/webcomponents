@@ -75,5 +75,11 @@
   "selectFile": "Интихоби {name}",
   "copyPath": "Нусхабардории роҳ",
   "pathCopied": "Роҳ нусхабардорӣ шуд",
-  "embedInPage": "Ҷойгир кардан дар саҳифа"
+  "embedInPage": "Ҷойгир кардан дар саҳифа",
+  "deleteFilesTitle": "Нест кардани файлҳо",
+  "renameFilesTitle": "Тағйири номи файлҳо",
+  "replaceOriginalsTitle": "Иваз кардани файлҳои аслӣ",
+  "newName": "Номи нав",
+  "deleteAction": "Нест кардан",
+  "renameAction": "Тағйири ном"
 }

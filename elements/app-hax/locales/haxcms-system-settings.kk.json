@@ -124,5 +124,13 @@
   "showApiKeyValue": "API кілті мәнін көрсету",
   "noSettingsForPanel": "Бұл панель үшін әзірге параметрлер жоқ.",
   "saving": "Сақталуда…",
-  "save": "Сақтау"
+  "save": "Сақтау",
+  "dropSkeletonFile": "Үлгінің .json файлын осында тастаңыз немесе",
+  "browseFiles": "Шолу",
+  "skeletonUploadNote": "Жүктелген үлгілердің атын өзгертуге немесе жоюға болады; негізгі үлгілерді тек өшіруге болады.",
+  "skeletonName": "Үлгі атауы",
+  "renameAction": "Атын өзгерту",
+  "deleteSkeletonTitle": "Үлгіні жою",
+  "deleteAction": "Жою",
+  "cancel": "Бас тарту"
 }

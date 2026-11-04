@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Saiti Yagadzirwa Zvakanaka!",
   "newSiteReady": "Saiti yako itsva \"{siteName}\" yagadzirira kushandiswa.",
   "stayHere": "Gara Pano",
-  "goToSite": "Enda kuSaiti"
+  "goToSite": "Enda kuSaiti",
+  "stepOf": "Nhanho {step} pa {total}"
 }

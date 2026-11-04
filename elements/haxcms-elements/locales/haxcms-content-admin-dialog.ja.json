@@ -60,5 +60,10 @@
   "pageUnit": "ページ",
   "pagesUnit": "ページ",
   "replacementUnit": "件の置換",
-  "replacementsUnit": "件の置換"
+  "replacementsUnit": "件の置換",
+  "deletePagesTitle": "ページの削除",
+  "deleteAction": "削除",
+  "replaceTitle": "ページ内で置換",
+  "removeMatchesTitle": "一致をすべて削除",
+  "removeAction": "削除"
 }

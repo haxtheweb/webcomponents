@@ -124,5 +124,13 @@
   "showApiKeyValue": "Prikaži vrednost ključa API",
   "noSettingsForPanel": "Za to ploščo še ni razpoložljivih nastavitev.",
   "saving": "Shranjevanje …",
-  "save": "Shrani"
+  "save": "Shrani",
+  "dropSkeletonFile": "Spustite sem ogrodje .json ali",
+  "browseFiles": "Prebrskaj",
+  "skeletonUploadNote": "Naložena ogrodja lahko preimenujete ali izbrišete; osnovna ogrodja lahko samo izklopite.",
+  "skeletonName": "Ime ogrodja",
+  "renameAction": "Preimenuj",
+  "deleteSkeletonTitle": "Izbriši ogrodje",
+  "deleteAction": "Izbriši",
+  "cancel": "Prekliči"
 }

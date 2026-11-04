@@ -60,5 +60,10 @@
   "pageUnit": "صفحہ",
   "pagesUnit": "صفحات",
   "replacementUnit": "تبدیلی",
-  "replacementsUnit": "تبدیلیاں"
+  "replacementsUnit": "تبدیلیاں",
+  "deletePagesTitle": "صفحات حذف کریں",
+  "deleteAction": "حذف کریں",
+  "replaceTitle": "صفحات میں تبدیل کریں",
+  "removeMatchesTitle": "تمام مماثلتیں ہٹائیں",
+  "removeAction": "ہٹائیں"
 }

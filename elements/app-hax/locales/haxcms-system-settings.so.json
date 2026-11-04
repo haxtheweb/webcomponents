@@ -124,5 +124,13 @@
   "showApiKeyValue": "Muuji qiimaha furaha API",
   "noSettingsForPanel": "Weli dejimo looma hayo guddigan.",
   "saving": "Waa la kaydinayaa…",
-  "save": "Kaydi"
+  "save": "Kaydi",
+  "dropSkeletonFile": "Halkan dhig qaab .json ah ama",
+  "browseFiles": "Baadh",
+  "skeletonUploadNote": "Qaababka la soo geliyay waa la beddeli karaa magacooda ama waa la tirtiri karaa; qaababka aasaasiga ah waa la dami karaa oo keliya.",
+  "skeletonName": "Magaca qaabka",
+  "renameAction": "Magac cusub u bixi",
+  "deleteSkeletonTitle": "Tirtir qaabka",
+  "deleteAction": "Tirtir",
+  "cancel": "Jooji"
 }

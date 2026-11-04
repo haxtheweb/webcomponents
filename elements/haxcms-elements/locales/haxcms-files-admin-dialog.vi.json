@@ -75,5 +75,11 @@
   "selectFile": "Chọn {name}",
   "copyPath": "Sao chép đường dẫn",
   "pathCopied": "Đã sao chép đường dẫn",
-  "embedInPage": "Nhúng vào trang"
+  "embedInPage": "Nhúng vào trang",
+  "deleteFilesTitle": "Xóa tệp",
+  "renameFilesTitle": "Đổi tên tệp",
+  "replaceOriginalsTitle": "Thay thế tệp gốc",
+  "newName": "Tên mới",
+  "deleteAction": "Xóa",
+  "renameAction": "Đổi tên"
 }

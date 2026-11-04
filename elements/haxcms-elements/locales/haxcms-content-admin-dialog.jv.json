@@ -60,5 +60,10 @@
   "pageUnit": "kaca",
   "pagesUnit": "kaca",
   "replacementUnit": "panggantosan",
-  "replacementsUnit": "panggantosan"
+  "replacementsUnit": "panggantosan",
+  "deletePagesTitle": "Busak kaca",
+  "deleteAction": "Busak",
+  "replaceTitle": "Ganti ing kaca",
+  "removeMatchesTitle": "Busak kabeh sing cocog",
+  "removeAction": "Busak"
 }

@@ -60,5 +60,10 @@
   "pageUnit": "გვერდი",
   "pagesUnit": "გვერდი",
   "replacementUnit": "ჩანაცვლება",
-  "replacementsUnit": "ჩანაცვლება"
+  "replacementsUnit": "ჩანაცვლება",
+  "deletePagesTitle": "გვერდების წაშლა",
+  "deleteAction": "წაშლა",
+  "replaceTitle": "ჩანაცვლება გვერდებში",
+  "removeMatchesTitle": "ყველა დამთხვევის წაშლა",
+  "removeAction": "წაშლა"
 }

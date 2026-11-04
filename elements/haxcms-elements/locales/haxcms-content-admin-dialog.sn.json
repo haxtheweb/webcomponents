@@ -60,5 +60,10 @@
   "pageUnit": "peji",
   "pagesUnit": "mapeji",
   "replacementUnit": "kutsiva",
-  "replacementsUnit": "kutsiva"
+  "replacementsUnit": "kutsiva",
+  "deletePagesTitle": "Dzima mapeji",
+  "deleteAction": "Dzima",
+  "replaceTitle": "Tsiva mumapeji",
+  "removeMatchesTitle": "Bvisa zvese zvinoenderana",
+  "removeAction": "Bvisa"
 }

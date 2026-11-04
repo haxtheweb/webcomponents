@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "สร้างไซต์สำเร็จ!",
   "newSiteReady": "ไซต์ใหม่ของคุณ \"{siteName}\" พร้อมใช้งานแล้ว",
   "stayHere": "อยู่ที่นี่ต่อ",
-  "goToSite": "ไปที่ไซต์"
+  "goToSite": "ไปที่ไซต์",
+  "stepOf": "ขั้นตอนที่ {step} จาก {total}"
 }

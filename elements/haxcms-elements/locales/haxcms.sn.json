@@ -644,5 +644,14 @@
   "primarySidebar": "Sidebar Huru",
   "contents": "Zviri mukati",
   "continue": "Enderera mberi",
-  "noResultsFor": "Hapana mhinduro dzawanikwa dze\"{search}\""
+  "noResultsFor": "Hapana mhinduro dzawanikwa dze\"{search}\"",
+  "duplicatePageTitle": "Kopa peji",
+  "duplicateAction": "Kopa",
+  "newPageTitle": "Musoro",
+  "importFromUrlTitle": "Unza kubva kuURL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Rasa shanduko dzechimiro?",
+  "outlineSaveTitle": "Chengetedza shanduko dzechimiro?",
+  "discardChanges": "Rasa shanduko",
+  "keepEditing": "Ramba uchigadzirisa"
 }

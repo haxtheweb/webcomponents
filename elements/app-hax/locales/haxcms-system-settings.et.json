@@ -124,5 +124,13 @@
   "showApiKeyValue": "Näita API-võtme väärtust",
   "noSettingsForPanel": "Selle paneeli jaoks pole veel seadeid saadaval.",
   "saving": "Salvestamine…",
-  "save": "Salvesta"
+  "save": "Salvesta",
+  "dropSkeletonFile": "Lohista skeleti .json siia või",
+  "browseFiles": "Sirvi",
+  "skeletonUploadNote": "Üleslaaditud skelette saab ümber nimetada või kustutada; põhiskelette saab ainult välja lülitada.",
+  "skeletonName": "Skeleti nimi",
+  "renameAction": "Nimeta ümber",
+  "deleteSkeletonTitle": "Kustuta skelett",
+  "deleteAction": "Kustuta",
+  "cancel": "Tühista"
 }

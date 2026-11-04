@@ -100,5 +100,6 @@
   "vitepressImportDescription": "የVitePress ሰነዶች ማከማቻን ወደ አዲስ የHAX ድረ-ገጽ አስመጣ",
   "vitepressImportPrompt": "የVitePress git ማከማቻ URL",
   "quartoImportDescription": "የQuarto ሰነዶች ማከማቻን ወደ አዲስ የHAX ድረ-ገጽ አስመጣ",
-  "quartoImportPrompt": "የQuarto git ማከማቻ URL"
+  "quartoImportPrompt": "የQuarto git ማከማቻ URL",
+  "cancel": "ሰርዝ"
 }

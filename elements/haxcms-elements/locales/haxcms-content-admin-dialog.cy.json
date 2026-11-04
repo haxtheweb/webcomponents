@@ -60,5 +60,10 @@
   "pageUnit": "tudalen",
   "pagesUnit": "tudalennau",
   "replacementUnit": "amnewidiad",
-  "replacementsUnit": "amnewidiad"
+  "replacementsUnit": "amnewidiad",
+  "deletePagesTitle": "Dileu tudalennau",
+  "deleteAction": "Dileu",
+  "replaceTitle": "Amnewid mewn tudalennau",
+  "removeMatchesTitle": "Tynnu pob cyfatebiaeth",
+  "removeAction": "Tynnu"
 }

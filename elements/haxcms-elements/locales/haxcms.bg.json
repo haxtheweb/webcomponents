@@ -644,5 +644,14 @@
   "primarySidebar": "Основна странична лента",
   "contents": "Съдържание",
   "continue": "Продължаване",
-  "noResultsFor": "Няма намерени резултати за „{search}“"
+  "noResultsFor": "Няма намерени резултати за „{search}“",
+  "duplicatePageTitle": "Дублиране на страница",
+  "duplicateAction": "Дублиране",
+  "newPageTitle": "Заглавие",
+  "importFromUrlTitle": "Импортиране от URL адрес",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Отхвърляне на промените в структурата?",
+  "outlineSaveTitle": "Запазване на промените в структурата?",
+  "discardChanges": "Отхвърляне на промените",
+  "keepEditing": "Продължаване на редактирането"
 }

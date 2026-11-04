@@ -124,5 +124,13 @@
   "showApiKeyValue": "显示 API 密钥值",
   "noSettingsForPanel": "搿只面板还呒没可用个设置。",
   "saving": "正在保存…",
-  "save": "保存"
+  "save": "保存",
+  "dropSkeletonFile": "拖一只骨架 .json 进来，或者",
+  "browseFiles": "浏览",
+  "skeletonUploadNote": "上传个骨架可以重命名或者删除；核心骨架只好关脱。",
+  "skeletonName": "骨架名字",
+  "renameAction": "重命名",
+  "deleteSkeletonTitle": "删除骨架",
+  "deleteAction": "删除",
+  "cancel": "取消"
 }

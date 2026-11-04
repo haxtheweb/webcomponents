@@ -644,5 +644,14 @@
   "primarySidebar": "Primêre sydbalke",
   "contents": "Ynhâld",
   "continue": "Trochgean",
-  "noResultsFor": "Gjin resultaten fûn foar \"{search}\""
+  "noResultsFor": "Gjin resultaten fûn foar \"{search}\"",
+  "duplicatePageTitle": "Side duplisearje",
+  "duplicateAction": "Duplisearje",
+  "newPageTitle": "Titel",
+  "importFromUrlTitle": "Ymportearje fan in URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Wizigingen yn de struktuer ferwerpe?",
+  "outlineSaveTitle": "Wizigingen yn de struktuer bewarje?",
+  "discardChanges": "Wizigingen ferwerpe",
+  "keepEditing": "Fierder bewurkje"
 }

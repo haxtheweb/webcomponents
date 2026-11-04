@@ -124,5 +124,13 @@
   "showApiKeyValue": "Паказаць значэнне ключа API",
   "noSettingsForPanel": "Для гэтай панэлі пакуль няма налад.",
   "saving": "Захаванне…",
-  "save": "Захаваць"
+  "save": "Захаваць",
+  "dropSkeletonFile": "Перацягніце сюды .json шкілета або",
+  "browseFiles": "Агляд",
+  "skeletonUploadNote": "Запампаваныя шкілеты можна перайменаваць або выдаліць; асноўныя шкілеты можна толькі адключыць.",
+  "skeletonName": "Назва шкілета",
+  "renameAction": "Перайменаваць",
+  "deleteSkeletonTitle": "Выдаліць шкілет",
+  "deleteAction": "Выдаліць",
+  "cancel": "Скасаваць"
 }

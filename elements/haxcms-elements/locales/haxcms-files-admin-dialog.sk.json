@@ -75,5 +75,11 @@
   "selectFile": "Vybrať {name}",
   "copyPath": "Kopírovať cestu",
   "pathCopied": "Cesta skopírovaná",
-  "embedInPage": "Vložiť do stránky"
+  "embedInPage": "Vložiť do stránky",
+  "deleteFilesTitle": "Odstrániť súbory",
+  "renameFilesTitle": "Premenovať súbory",
+  "replaceOriginalsTitle": "Nahradiť pôvodné súbory",
+  "newName": "Nový názov",
+  "deleteAction": "Odstrániť",
+  "renameAction": "Premenovať"
 }

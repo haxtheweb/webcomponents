@@ -75,5 +75,11 @@
   "selectFile": "Agħżel {name}",
   "copyPath": "Ikkopja l-mogħdija",
   "pathCopied": "Il-mogħdija ġiet ikkupjata",
-  "embedInPage": "Inkorpora fil-paġna"
+  "embedInPage": "Inkorpora fil-paġna",
+  "deleteFilesTitle": "Ħassar fajls",
+  "renameFilesTitle": "Semmi l-fajls mill-ġdid",
+  "replaceOriginalsTitle": "Ibdel il-fajls oriġinali",
+  "newName": "Isem ġdid",
+  "deleteAction": "Ħassar",
+  "renameAction": "Semmi mill-ġdid"
 }

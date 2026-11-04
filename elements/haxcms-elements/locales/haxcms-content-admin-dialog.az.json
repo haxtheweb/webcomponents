@@ -60,5 +60,10 @@
   "pageUnit": "səhifə",
   "pagesUnit": "səhifə",
   "replacementUnit": "əvəzləmə",
-  "replacementsUnit": "əvəzləmə"
+  "replacementsUnit": "əvəzləmə",
+  "deletePagesTitle": "Səhifələri silmə",
+  "deleteAction": "Sil",
+  "replaceTitle": "Səhifələrdə əvəz et",
+  "removeMatchesTitle": "Bütün uyğunluqları sil",
+  "removeAction": "Sil"
 }

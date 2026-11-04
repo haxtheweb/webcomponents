@@ -60,5 +60,10 @@
   "pageUnit": "sida",
   "pagesUnit": "sidor",
   "replacementUnit": "ersättning",
-  "replacementsUnit": "ersättningar"
+  "replacementsUnit": "ersättningar",
+  "deletePagesTitle": "Radera sidor",
+  "deleteAction": "Ta bort",
+  "replaceTitle": "Ersätt på sidor",
+  "removeMatchesTitle": "Ta bort alla träffar",
+  "removeAction": "Ta bort"
 }

@@ -644,5 +644,14 @@
   "primarySidebar": "Pagrindinė šoninė juosta",
   "contents": "Turinys",
   "continue": "Tęsti",
-  "noResultsFor": "Nerasta rezultatų pagal „{search}“"
+  "noResultsFor": "Nerasta rezultatų pagal „{search}“",
+  "duplicatePageTitle": "Dubliuoti puslapį",
+  "duplicateAction": "Dubliuoti",
+  "newPageTitle": "Pavadinimas",
+  "importFromUrlTitle": "Importuoti iš URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Atmesti struktūros pakeitimus?",
+  "outlineSaveTitle": "Išsaugoti struktūros pakeitimus?",
+  "discardChanges": "Atmesti pakeitimus",
+  "keepEditing": "Tęsti redagavimą"
 }

@@ -60,5 +60,10 @@
   "pageUnit": "ਪੰਨਾ",
   "pagesUnit": "ਪੰਨੇ",
   "replacementUnit": "ਬਦਲਾਅ",
-  "replacementsUnit": "ਬਦਲਾਅ"
+  "replacementsUnit": "ਬਦਲਾਅ",
+  "deletePagesTitle": "ਪੰਨੇ ਮਿਟਾਓ",
+  "deleteAction": "ਮਿਟਾਓ",
+  "replaceTitle": "ਪੰਨਿਆਂ ਵਿੱਚ ਬਦਲੋ",
+  "removeMatchesTitle": "ਸਾਰੇ ਮੇਲ ਹਟਾਓ",
+  "removeAction": "ਹਟਾਓ"
 }

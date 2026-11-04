@@ -124,5 +124,13 @@
   "showApiKeyValue": "Tampilake nilai kunci API",
   "noSettingsForPanel": "Durung ana setelan sing kasedhiya kanggo panel iki.",
   "saving": "Lagi nyimpen…",
-  "save": "Simpen"
+  "save": "Simpen",
+  "dropSkeletonFile": "Seret cithakan .json mrene utawa",
+  "browseFiles": "Telusuri",
+  "skeletonUploadNote": "Cithakan sing diunggah bisa diganti jenenge utawa dibusak; cithakan inti mung bisa dipateni.",
+  "skeletonName": "Jeneng cithakan",
+  "renameAction": "Ganti jeneng",
+  "deleteSkeletonTitle": "Busak cithakan",
+  "deleteAction": "Busak",
+  "cancel": "Batal"
 }

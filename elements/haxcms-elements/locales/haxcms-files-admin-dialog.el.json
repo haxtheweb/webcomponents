@@ -75,5 +75,11 @@
   "selectFile": "Επιλογή {name}",
   "copyPath": "Αντιγραφή διαδρομής",
   "pathCopied": "Η διαδρομή αντιγράφηκε",
-  "embedInPage": "Ενσωμάτωση στη σελίδα"
+  "embedInPage": "Ενσωμάτωση στη σελίδα",
+  "deleteFilesTitle": "Διαγραφή αρχείων",
+  "renameFilesTitle": "Μετονομασία αρχείων",
+  "replaceOriginalsTitle": "Αντικατάσταση αρχικών αρχείων",
+  "newName": "Νέο όνομα",
+  "deleteAction": "Διαγραφή",
+  "renameAction": "Μετονομασία"
 }

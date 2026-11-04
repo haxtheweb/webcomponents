@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "سایټ په بریالیتوب سره جوړ شو!",
   "newSiteReady": "ستاسو نوی سایټ «{siteName}» د کارونې لپاره چمتو دی.",
   "stayHere": "دلته پاتې شئ",
-  "goToSite": "سایټ ته لاړ شئ"
+  "goToSite": "سایټ ته لاړ شئ",
+  "stepOf": "ګام {step} له {total} څخه"
 }

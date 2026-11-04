@@ -124,5 +124,13 @@
   "showApiKeyValue": "API යතුරු අගය පෙන්වන්න",
   "noSettingsForPanel": "මෙම පැනලය සඳහා තවම සැකසුම් නොමැත.",
   "saving": "සුරකිමින්…",
-  "save": "සුරකින්න"
+  "save": "සුරකින්න",
+  "dropSkeletonFile": "සැකිලි .json ගොනුවක් මෙහි දමන්න හෝ",
+  "browseFiles": "පිරික්සන්න",
+  "skeletonUploadNote": "උඩුගත කළ සැකිලි නැවත නම් කිරීමට හෝ මැකීමට හැක; මූලික සැකිලි අක්‍රිය කිරීමට පමණක් හැක.",
+  "skeletonName": "සැකිල්ලේ නම",
+  "renameAction": "නැවත නම් කරන්න",
+  "deleteSkeletonTitle": "සැකිල්ල මකන්න",
+  "deleteAction": "මකන්න",
+  "cancel": "අවලංගු කරන්න"
 }

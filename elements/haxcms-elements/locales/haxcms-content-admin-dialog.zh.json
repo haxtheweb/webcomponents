@@ -60,5 +60,10 @@
   "pageUnit": "个页面",
   "pagesUnit": "页",
   "replacementUnit": "处替换",
-  "replacementsUnit": "处替换"
+  "replacementsUnit": "处替换",
+  "deletePagesTitle": "删除页面",
+  "deleteAction": "删除",
+  "replaceTitle": "在页面中替换",
+  "removeMatchesTitle": "删除所有匹配项",
+  "removeAction": "删除"
 }

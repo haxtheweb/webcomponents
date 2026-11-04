@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Situs Kasil Digawe!",
   "newSiteReady": "Situs anyarmu \"{siteName}\" wis siap dienggo.",
   "stayHere": "Tetep Ing Kene",
-  "goToSite": "Menyang Situs"
+  "goToSite": "Menyang Situs",
+  "stepOf": "Langkah {step} saka {total}"
 }

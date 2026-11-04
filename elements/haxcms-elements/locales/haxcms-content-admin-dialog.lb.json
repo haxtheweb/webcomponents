@@ -60,5 +60,10 @@
   "pageUnit": "Säit",
   "pagesUnit": "Säiten",
   "replacementUnit": "Ersetzung",
-  "replacementsUnit": "Ersetzungen"
+  "replacementsUnit": "Ersetzungen",
+  "deletePagesTitle": "Säite läschen",
+  "deleteAction": "Läschen",
+  "replaceTitle": "A Säiten ersetzen",
+  "removeMatchesTitle": "All Treffer ewechhuelen",
+  "removeAction": "Ewechhuelen"
 }

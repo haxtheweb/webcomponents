@@ -124,5 +124,13 @@
   "showApiKeyValue": "API açarının dəyərini göstər",
   "noSettingsForPanel": "Bu panel üçün hələ parametr yoxdur.",
   "saving": "Saxlanılır…",
-  "save": "Saxla"
+  "save": "Saxla",
+  "dropSkeletonFile": "Skelet .json faylını bura atın və ya",
+  "browseFiles": "Gözdən keçir",
+  "skeletonUploadNote": "Yüklənmiş skeletlərin adı dəyişdirilə və ya silinə bilər; əsas skeletlər yalnız söndürülə bilər.",
+  "skeletonName": "Skelet adı",
+  "renameAction": "Adını dəyiş",
+  "deleteSkeletonTitle": "Skeleti sil",
+  "deleteAction": "Sil",
+  "cancel": "Ləğv et"
 }

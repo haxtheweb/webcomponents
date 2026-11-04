@@ -644,5 +644,14 @@
   "primarySidebar": "Barra lateral principal",
   "contents": "Continguts",
   "continue": "Continua",
-  "noResultsFor": "No s'han trobat resultats per a \"{search}\""
+  "noResultsFor": "No s'han trobat resultats per a \"{search}\"",
+  "duplicatePageTitle": "Duplica la pàgina",
+  "duplicateAction": "Duplica",
+  "newPageTitle": "Títol",
+  "importFromUrlTitle": "Importa des d'un URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Voleu descartar els canvis de l'estructura?",
+  "outlineSaveTitle": "Voleu desar els canvis de l'estructura?",
+  "discardChanges": "Descarta els canvis",
+  "keepEditing": "Continua editant"
 }

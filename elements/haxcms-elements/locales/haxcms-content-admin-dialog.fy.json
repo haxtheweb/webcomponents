@@ -60,5 +60,10 @@
   "pageUnit": "side",
   "pagesUnit": "siden",
   "replacementUnit": "ferfanging",
-  "replacementsUnit": "ferfangings"
+  "replacementsUnit": "ferfangings",
+  "deletePagesTitle": "Siden wiskje",
+  "deleteAction": "Wiskje",
+  "replaceTitle": "Ferfange yn siden",
+  "removeMatchesTitle": "Alle oerienkomsten fuortsmite",
+  "removeAction": "Fuortsmite"
 }

@@ -644,5 +644,14 @@
   "primarySidebar": "Tenda Yke Peteĩha",
   "contents": "Tetepy",
   "continue": "Eku'ejey",
-  "noResultsFor": "Ndojejuhúi mba'eve \"{search}\" rehegua"
+  "noResultsFor": "Ndojejuhúi mba'eve \"{search}\" rehegua",
+  "duplicatePageTitle": "Mokõimbo kuatiarogue",
+  "duplicateAction": "Mokõimbo",
+  "newPageTitle": "Téra",
+  "importFromUrlTitle": "Egueru URL-gui",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Emboyke ñemoambue ñembohysýipe?",
+  "outlineSaveTitle": "Eñongatu ñemoambue ñembohysýipe?",
+  "discardChanges": "Emboyke ñemoambue",
+  "keepEditing": "Esegi rehai"
 }

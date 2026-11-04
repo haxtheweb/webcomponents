@@ -75,5 +75,11 @@
   "selectFile": "Khetha i-{name}",
   "copyPath": "Kopa indlela",
   "pathCopied": "Indlela ikopiwe",
-  "embedInPage": "Faka kwiphepha"
+  "embedInPage": "Faka kwiphepha",
+  "deleteFilesTitle": "Cima iifayile",
+  "renameFilesTitle": "Thiya iifayile ngokutsha",
+  "replaceOriginalsTitle": "Tshintsha iifayile zoqobo",
+  "newName": "Igama elitsha",
+  "deleteAction": "Cima",
+  "renameAction": "Thiya ngokutsha"
 }

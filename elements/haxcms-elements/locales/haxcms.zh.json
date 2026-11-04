@@ -644,5 +644,14 @@
   "primarySidebar": "主侧边栏",
   "contents": "目录",
   "continue": "继续",
-  "noResultsFor": "未找到“{search}”的结果"
+  "noResultsFor": "未找到“{search}”的结果",
+  "duplicatePageTitle": "复制页面",
+  "duplicateAction": "复制",
+  "newPageTitle": "标题",
+  "importFromUrlTitle": "从 URL 导入",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "放弃大纲更改？",
+  "outlineSaveTitle": "保存大纲更改？",
+  "discardChanges": "放弃更改",
+  "keepEditing": "继续编辑"
 }

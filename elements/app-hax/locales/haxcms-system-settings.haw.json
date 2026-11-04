@@ -124,5 +124,13 @@
   "showApiKeyValue": "Hōʻike i ka waiwai kī API",
   "noSettingsForPanel": "ʻAʻohe hoʻonohonoho i loaʻa no kēia papa i kēia manawa.",
   "saving": "Ke mālama nei…",
-  "save": "Mālama"
+  "save": "Mālama",
+  "dropSkeletonFile": "Kau mai i kekahi kumu hoʻolālā .json a i ʻole",
+  "browseFiles": "Huli",
+  "skeletonUploadNote": "Hiki ke kapa hou a holoi paha i nā kumu hoʻolālā i hoʻouka ʻia; hiki ke hoʻopio wale ʻia nā kumu hoʻolālā kumu.",
+  "skeletonName": "Inoa o ke kumu hoʻolālā",
+  "renameAction": "Kapa hou",
+  "deleteSkeletonTitle": "Holoi i ke kumu hoʻolālā",
+  "deleteAction": "Holoi",
+  "cancel": "Hoʻopau"
 }

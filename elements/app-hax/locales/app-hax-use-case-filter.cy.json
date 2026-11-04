@@ -100,5 +100,6 @@
   "vitepressImportDescription": "Mewnforio ystorfa ddogfennau VitePress i wefan HAX newydd",
   "vitepressImportPrompt": "URL ystorfa git VitePress",
   "quartoImportDescription": "Mewnforio ystorfa ddogfennau Quarto i wefan HAX newydd",
-  "quartoImportPrompt": "URL ystorfa git Quarto"
+  "quartoImportPrompt": "URL ystorfa git Quarto",
+  "cancel": "Canslo"
 }

@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Situs Berhasil Dibuat!",
   "newSiteReady": "Situs baru Anda \"{siteName}\" siap digunakan.",
   "stayHere": "Tetap di Sini",
-  "goToSite": "Buka Situs"
+  "goToSite": "Buka Situs",
+  "stepOf": "Langkah {step} dari {total}"
 }

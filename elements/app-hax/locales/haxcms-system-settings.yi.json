@@ -124,5 +124,13 @@
   "showApiKeyValue": "ווײַז דעם API שליסל",
   "noSettingsForPanel": "נאָך קיין באַשטימונגען פֿאַר דעם פּאַנעל.",
   "saving": "היט אױף…",
-  "save": "אױפֿהיטן"
+  "save": "אױפֿהיטן",
+  "dropSkeletonFile": "לאָז אַראָפּ אַ סקעלעט .json אָדער",
+  "browseFiles": "בלעטערן",
+  "skeletonUploadNote": "אַרויפֿגעלאָדענע סקעלעטן קען מען איבערבאַנעמען אָדער אויסמעקן; יסוד־סקעלעטן קען מען נאָר אויסלעשן.",
+  "skeletonName": "סקעלעט־נאָמען",
+  "renameAction": "בײַט דעם נאָמען",
+  "deleteSkeletonTitle": "מעק אויס סקעלעט",
+  "deleteAction": "אויסמעקן",
+  "cancel": "אָפּזאָגן"
 }

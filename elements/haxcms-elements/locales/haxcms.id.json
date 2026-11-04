@@ -644,5 +644,14 @@
   "primarySidebar": "Bilah Sisi Utama",
   "contents": "Isi",
   "continue": "Lanjutkan",
-  "noResultsFor": "Tidak ada hasil untuk \"{search}\""
+  "noResultsFor": "Tidak ada hasil untuk \"{search}\"",
+  "duplicatePageTitle": "Duplikat halaman",
+  "duplicateAction": "Duplikat",
+  "newPageTitle": "Judul",
+  "importFromUrlTitle": "Impor dari URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Buang perubahan struktur?",
+  "outlineSaveTitle": "Simpan perubahan struktur?",
+  "discardChanges": "Buang perubahan",
+  "keepEditing": "Lanjutkan mengedit"
 }

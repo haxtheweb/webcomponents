@@ -644,5 +644,14 @@
   "primarySidebar": "Primær sidestolpe",
   "contents": "Innhold",
   "continue": "Fortsett",
-  "noResultsFor": "Fant ingen resultater for «{search}»"
+  "noResultsFor": "Fant ingen resultater for «{search}»",
+  "duplicatePageTitle": "Dupliser side",
+  "duplicateAction": "Dupliser",
+  "newPageTitle": "Tittel",
+  "importFromUrlTitle": "Importer fra en URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Forkaste endringer i strukturen?",
+  "outlineSaveTitle": "Lagre endringer i strukturen?",
+  "discardChanges": "Forkast endringer",
+  "keepEditing": "Fortsett å redigere"
 }

@@ -60,5 +60,10 @@
   "pageUnit": "trang",
   "pagesUnit": "trang",
   "replacementUnit": "lần thay thế",
-  "replacementsUnit": "lần thay thế"
+  "replacementsUnit": "lần thay thế",
+  "deletePagesTitle": "Xóa trang",
+  "deleteAction": "Xóa",
+  "replaceTitle": "Thay thế trong các trang",
+  "removeMatchesTitle": "Xóa tất cả kết quả khớp",
+  "removeAction": "Xóa"
 }

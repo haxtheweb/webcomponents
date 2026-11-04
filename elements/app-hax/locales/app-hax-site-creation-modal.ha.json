@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "An Ƙirƙiri Gidan Yanar Gizo Cikin Nasara!",
   "newSiteReady": "Sabon gidan yanar gizonka \"{siteName}\" ya shirya don amfani.",
   "stayHere": "Zauna Nan",
-  "goToSite": "Je zuwa Gidan Yanar Gizo"
+  "goToSite": "Je zuwa Gidan Yanar Gizo",
+  "stepOf": "Mataki na {step} cikin {total}"
 }

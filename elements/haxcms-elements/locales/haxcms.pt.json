@@ -644,5 +644,14 @@
   "primarySidebar": "Barra lateral principal",
   "contents": "Conteúdo",
   "continue": "Continuar",
-  "noResultsFor": "Nenhum resultado encontrado para \"{search}\""
+  "noResultsFor": "Nenhum resultado encontrado para \"{search}\"",
+  "duplicatePageTitle": "Duplicar página",
+  "duplicateAction": "Duplicar",
+  "newPageTitle": "Título",
+  "importFromUrlTitle": "Importar de uma URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Descartar alterações na estrutura?",
+  "outlineSaveTitle": "Salvar alterações na estrutura?",
+  "discardChanges": "Descartar alterações",
+  "keepEditing": "Continuar editando"
 }

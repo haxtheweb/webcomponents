@@ -644,5 +644,14 @@
   "primarySidebar": "Glavna stranska vrstica",
   "contents": "Vsebina",
   "continue": "Nadaljuj",
-  "noResultsFor": "Za »{search}« ni najdenih rezultatov"
+  "noResultsFor": "Za »{search}« ni najdenih rezultatov",
+  "duplicatePageTitle": "Podvoji stran",
+  "duplicateAction": "Podvoji",
+  "newPageTitle": "Naslov",
+  "importFromUrlTitle": "Uvozi iz URL-ja",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Želite zavreči spremembe strukture?",
+  "outlineSaveTitle": "Želite shraniti spremembe strukture?",
+  "discardChanges": "Zavrzi spremembe",
+  "keepEditing": "Nadaljuj urejanje"
 }

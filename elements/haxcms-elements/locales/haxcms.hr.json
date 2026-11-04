@@ -644,5 +644,14 @@
   "primarySidebar": "Primarna bočna traka",
   "contents": "Sadržaj",
   "continue": "Nastavi",
-  "noResultsFor": "Nema rezultata za „{search}”"
+  "noResultsFor": "Nema rezultata za „{search}”",
+  "duplicatePageTitle": "Dupliciraj stranicu",
+  "duplicateAction": "Dupliciraj",
+  "newPageTitle": "Naslov",
+  "importFromUrlTitle": "Uvezi s URL-a",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Odbaciti promjene strukture?",
+  "outlineSaveTitle": "Spremiti promjene strukture?",
+  "discardChanges": "Odbaci promjene",
+  "keepEditing": "Nastavi uređivati"
 }

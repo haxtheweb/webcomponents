@@ -75,5 +75,11 @@
   "selectFile": "Zaɓi {name}",
   "copyPath": "Kwafi hanya",
   "pathCopied": "An kwafi hanya",
-  "embedInPage": "Saka a cikin shafi"
+  "embedInPage": "Saka a cikin shafi",
+  "deleteFilesTitle": "Share fayiloli",
+  "renameFilesTitle": "Sake sunan fayiloli",
+  "replaceOriginalsTitle": "Maye gurbin fayilolin asali",
+  "newName": "Sabon suna",
+  "deleteAction": "Share",
+  "renameAction": "Sake suna"
 }

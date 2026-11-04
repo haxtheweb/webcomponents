@@ -60,5 +60,10 @@
   "pageUnit": "oldal",
   "pagesUnit": "oldal",
   "replacementUnit": "csere",
-  "replacementsUnit": "csere"
+  "replacementsUnit": "csere",
+  "deletePagesTitle": "Oldalak törlése",
+  "deleteAction": "Törlés",
+  "replaceTitle": "Csere az oldalakon",
+  "removeMatchesTitle": "Összes találat eltávolítása",
+  "removeAction": "Eltávolítás"
 }

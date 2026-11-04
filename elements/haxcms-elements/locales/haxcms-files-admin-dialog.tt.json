@@ -75,5 +75,11 @@
   "selectFile": "{name} сайлау",
   "copyPath": "Юлны күчерү",
   "pathCopied": "Юл күчерелде",
-  "embedInPage": "Биткә урнаштыру"
+  "embedInPage": "Биткә урнаштыру",
+  "deleteFilesTitle": "Файлларны бетерү",
+  "renameFilesTitle": "Файлларның исемен үзгәртү",
+  "replaceOriginalsTitle": "Оригиналь файлларны алыштыру",
+  "newName": "Яңа исем",
+  "deleteAction": "Бетерү",
+  "renameAction": "Исемен үзгәртү"
 }

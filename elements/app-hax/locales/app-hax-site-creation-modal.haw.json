@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Ua kūleʻa ka hana ʻana i ka pūnaewele!",
   "newSiteReady": "Ua mākaukau kou pūnaewele hou \"{siteName}\" no ka hoʻohana ʻana.",
   "stayHere": "Noho ma ʻaneʻi",
-  "goToSite": "E hele i ka pūnaewele"
+  "goToSite": "E hele i ka pūnaewele",
+  "stepOf": "Pae {step} o {total}"
 }

@@ -75,5 +75,11 @@
   "selectFile": "Họrọ {name}",
   "copyPath": "Detuo ụzọ",
   "pathCopied": "Edetuola ụzọ",
-  "embedInPage": "Tinye n'ime ibe"
+  "embedInPage": "Tinye n'ime ibe",
+  "deleteFilesTitle": "Hichapụ faịlụ",
+  "renameFilesTitle": "Gụgharịa aha faịlụ",
+  "replaceOriginalsTitle": "Dochie faịlụ mbụ",
+  "newName": "Aha ọhụrụ",
+  "deleteAction": "Hichapụ",
+  "renameAction": "Gụgharịa aha"
 }

@@ -75,5 +75,11 @@
   "selectFile": "Sankhani {name}",
   "copyPath": "Koperani njira",
   "pathCopied": "Njira yakopedwa",
-  "embedInPage": "Lowetsani m'tsamba"
+  "embedInPage": "Lowetsani m'tsamba",
+  "deleteFilesTitle": "Fufutani mafayilo",
+  "renameFilesTitle": "Sinthani mayina a mafayilo",
+  "replaceOriginalsTitle": "Sinthanitsani mafayilo oyambirira",
+  "newName": "Dzina latsopano",
+  "deleteAction": "Fufutani",
+  "renameAction": "Sinthani dzina"
 }

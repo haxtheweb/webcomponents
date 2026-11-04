@@ -124,5 +124,13 @@
   "showApiKeyValue": "Montri valoron de API-ŝlosilo",
   "noSettingsForPanel": "Ankoraŭ neniuj agordoj disponeblas por ĉi tiu panelo.",
   "saving": "Konservante…",
-  "save": "Konservi"
+  "save": "Konservi",
+  "dropSkeletonFile": "Demetu skeleton .json aŭ",
+  "browseFiles": "Foliumi",
+  "skeletonUploadNote": "Alŝutitaj skeletoj povas esti renomitaj aŭ forigitaj; kernaj skeletoj povas nur esti malŝaltitaj.",
+  "skeletonName": "Nomo de skeleto",
+  "renameAction": "Renomi",
+  "deleteSkeletonTitle": "Forigi skeleton",
+  "deleteAction": "Forigi",
+  "cancel": "Nuligi"
 }

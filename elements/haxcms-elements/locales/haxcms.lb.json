@@ -644,5 +644,14 @@
   "primarySidebar": "Haaptsäiteleescht",
   "contents": "Inhalt",
   "continue": "Weider",
-  "noResultsFor": "Keng Resultater fonnt fir „{search}“"
+  "noResultsFor": "Keng Resultater fonnt fir „{search}“",
+  "duplicatePageTitle": "Säit duplizéieren",
+  "duplicateAction": "Duplizéieren",
+  "newPageTitle": "Titel",
+  "importFromUrlTitle": "Vun enger URL importéieren",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Ännerunge vun der Struktur verwerfen?",
+  "outlineSaveTitle": "Ännerunge vun der Struktur späicheren?",
+  "discardChanges": "Ännerunge verwerfen",
+  "keepEditing": "Weider beaarbechten"
 }
