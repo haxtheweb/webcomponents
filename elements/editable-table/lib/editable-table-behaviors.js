@@ -1218,6 +1218,25 @@ export const displayBehaviors = function (SuperClass) {
     }
 
     /**
+     * Plain text of a cell for classification only (never rendered).
+     * Parsed with DOMParser, whose documents are inert (no scripts run, no
+     * resources load), instead of stripping tags with a regular expression.
+     * @param {string} cell cell contents (may contain HTML)
+     * @returns {string} trimmed text with non-breaking spaces as spaces
+     */
+    _cellText(cell) {
+      if (cell === undefined || cell === null) return "";
+      const raw = String(cell);
+      let text = raw;
+      if (raw.indexOf("<") !== -1 || raw.indexOf("&") !== -1) {
+        text =
+          new globalThis.DOMParser().parseFromString(raw, "text/html").body
+            .textContent || "";
+      }
+      return text.replace(/\u00a0/g, " ").trim();
+    }
+
+    /**
      * Whether a cell reads as a number for display (right-aligned, tabular
      * digits): an optional sign, an optional currency symbol, digits with
      * optional thousands commas and decimals, an optional trailing percent.
@@ -1227,11 +1246,7 @@ export const displayBehaviors = function (SuperClass) {
      * @returns {boolean} whether the cell is a number
      */
     _isNumberLike(cell) {
-      if (cell === undefined || cell === null) return false;
-      let str = String(cell)
-        .replace(/<[^>]*>/g, "")
-        .replace(/&nbsp;|\u00a0/g, " ")
-        .trim();
+      let str = this._cellText(cell);
       if (str === "") return false;
       return /^[-+]?[$€£¥]?\s?[-+]?(\d{1,3}(,\d{3})+|\d+)?(\.\d+)?\s?%?$/.test(
         str,
@@ -1250,13 +1265,7 @@ export const displayBehaviors = function (SuperClass) {
       let found = false;
       for (let i = 0; i < this.tbody.length; i++) {
         let cell = this.tbody[i] ? this.tbody[i][index] : undefined,
-          text =
-            cell === undefined || cell === null
-              ? ""
-              : String(cell)
-                  .replace(/<[^>]*>/g, "")
-                  .replace(/&nbsp;|\u00a0/g, " ")
-                  .trim();
+          text = this._cellText(cell);
         if (text === "") continue;
         if (!this._isNumberLike(cell)) return false;
         found = true;
