@@ -170,13 +170,15 @@ class HAXCMSOutlineEditorDialog extends HaxcmsAdminSectionMixin(
         .hidden="${this.viewMode}"
         .items="${this.manifestItems}"
       ></outline-designer>
-      ${this.inShell
-        ? nothing
-        : html`<div class="buttons">
-            <button @click="${this._saveTap}" class="hax-modal-btn">
-              ${this.t.save}
-            </button>
-          </div>`}
+      ${
+        this.inShell
+          ? nothing
+          : html`<div class="buttons">
+              <button @click="${this._saveTap}" class="hax-modal-btn">
+                ${this.t.save}
+              </button>
+            </div>`
+      }
     `;
   }
   constructor() {

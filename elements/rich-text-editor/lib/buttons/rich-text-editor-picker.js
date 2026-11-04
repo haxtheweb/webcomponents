@@ -81,9 +81,9 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
         <simple-picker
           id="button"
           ?allow-null="${this.allowNull}"
-          class="rtebutton ${this.labelVisibleClass}-label ${this.toggled
-            ? "toggled"
-            : ""}"
+          class="rtebutton ${this.labelVisibleClass}-label ${
+            this.toggled ? "toggled" : ""
+          }"
           ?disabled="${this.disabled}"
           ?hide-null-option="${this.hideNullOption}"
           .controls="${super.controls}"

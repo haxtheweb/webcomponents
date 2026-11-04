@@ -448,8 +448,9 @@ export class ConceptMapGame extends MicroGameBase {
     return html`
       <div
         class="node ${on ? "on" : ""} ${i === 0 ? "up" : ""}"
-        style="left:${p.x}px;top:${p.y}px;--nc:var(--cmg-c${i % 7});--ns:${this
-          ._ns}px"
+        style="left:${p.x}px;top:${p.y}px;--nc:var(--cmg-c${i % 7});--ns:${
+          this._ns
+        }px"
       >
         <div class="tile" aria-hidden="true">
           <span>${letter}</span>${on ? html`<i class="check"></i>` : ""}
@@ -497,16 +498,18 @@ export class ConceptMapGame extends MicroGameBase {
             )}
           </div>
           <div class="count">${this._countText()}</div>
-          ${this.done || this.editMode
-            ? ""
-            : html`<button
-                class="btn alt small"
-                type="button"
-                aria-keyshortcuts="N"
-                @click="${this._nextClick}"
-              >
-                ${this.t.nextConcept}
-              </button>`}
+          ${
+            this.done || this.editMode
+              ? ""
+              : html`<button
+                  class="btn alt small"
+                  type="button"
+                  aria-keyshortcuts="N"
+                  @click="${this._nextClick}"
+                >
+                  ${this.t.nextConcept}
+                </button>`
+          }
           ${this.renderBarExtras()}
           <div class="hint" aria-hidden="true">
             ${this.coarse ? this.t.hintTouch : this.t.hintKeys}
@@ -544,8 +547,9 @@ export class ConceptMapGame extends MicroGameBase {
             </svg>
             <div
               class="hub ${this.done ? "done" : ""}"
-              style="width:${this._hd}px;height:${this
-                ._hd}px;background:${this._hubBackground()}"
+              style="width:${this._hd}px;height:${
+                this._hd
+              }px;background:${this._hubBackground()}"
             >
               <span>${this.hubLabel}</span>
             </div>
@@ -562,24 +566,26 @@ export class ConceptMapGame extends MicroGameBase {
         <div class="dialog">
           <span
             class="tag"
-            style="${d
-              ? "--nc:var(--cmg-c" + (d.i % 7) + ");--tc:var(--cmg-on)"
-              : ""}"
+            style="${
+              d ? "--nc:var(--cmg-c" + (d.i % 7) + ");--tc:var(--cmg-on)" : ""
+            }"
             >${d ? d.label : this.t.guide}</span
           >
           <p class="text">
             <span aria-hidden="true">${d ? d.text : this.t.guideText}</span>
-            ${d && d.url
-              ? html` <a
-                  class="more"
-                  href="${d.url}"
-                  target="_blank"
-                  rel="noopener"
-                  >${this.t.learnMore}<span class="sr">
-                    ${d.label} (${this.t.opensNew})</span
-                  ></a
-                >`
-              : ""}
+            ${
+              d && d.url
+                ? html` <a
+                    class="more"
+                    href="${d.url}"
+                    target="_blank"
+                    rel="noopener"
+                    >${this.t.learnMore}<span class="sr">
+                      ${d.label} (${this.t.opensNew})</span
+                    ></a
+                  >`
+                : ""
+            }
           </p>
           <p class="sr" aria-live="polite">
             ${d ? d.label + ". " + d.text : this.t.guideText}
@@ -638,10 +644,8 @@ export class ConceptMapGame extends MicroGameBase {
           touch-action: pan-y;
           outline-offset: -6px;
           background-color: var(--micro-game-paper);
-          background-image: linear-gradient(
-              var(--cmg-grid) 1px,
-              transparent 1px
-            ),
+          background-image:
+            linear-gradient(var(--cmg-grid) 1px, transparent 1px),
             linear-gradient(90deg, var(--cmg-grid) 1px, transparent 1px);
           background-size: 32px 32px;
         }

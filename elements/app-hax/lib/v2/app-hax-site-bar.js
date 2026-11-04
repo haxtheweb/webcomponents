@@ -733,29 +733,31 @@ export class AppHaxSiteBars extends I18NMixin(SimpleColors) {
     return html`
       <div id="mainCard">
         <div class="cardImage">
-          ${this.image
-            ? html`
-                <a
-                  class="imageLink"
-                  href="${this.siteUrl}"
-                  aria-label="${this.t.openSite.replace(
-                    "{title}",
-                    () => this.title || this.t.site,
-                  )}"
-                >
-                  <img
-                    src="${this.image}"
-                    alt="${this.t.siteThemeScreenshot.replace(
+          ${
+            this.image
+              ? html`
+                  <a
+                    class="imageLink"
+                    href="${this.siteUrl}"
+                    aria-label="${this.t.openSite.replace(
                       "{title}",
                       () => this.title || this.t.site,
                     )}"
-                    loading="lazy"
-                    decoding="async"
-                    fetchpriority="low"
-                  />
-                </a>
-              `
-            : ""}
+                  >
+                    <img
+                      src="${this.image}"
+                      alt="${this.t.siteThemeScreenshot.replace(
+                        "{title}",
+                        () => this.title || this.t.site,
+                      )}"
+                      loading="lazy"
+                      decoding="async"
+                      fetchpriority="low"
+                    />
+                  </a>
+                `
+              : ""
+          }
         </div>
         <div class="cardContent">
           <div class="titleBar">
@@ -803,21 +805,23 @@ export class AppHaxSiteBars extends I18NMixin(SimpleColors) {
                   label="${this.t.archive}"
                   @click=${this.archiveSite}
                 ></simple-toolbar-button>
-                ${store &&
-                store.AppHaxAPI &&
-                typeof store.AppHaxAPI.supportsCall === "function" &&
-                store.AppHaxAPI.supportsCall("haxiamAddUserAccess")
-                  ? html`
-                      <simple-toolbar-button
-                        icon="account-circle"
-                        icon-position="left"
-                        align-horizontal="left"
-                        show-text-label
-                        label="${this.t.userAccess}"
-                        @click=${this.openUserAccess}
-                      ></simple-toolbar-button>
-                    `
-                  : ""}
+                ${
+                  store &&
+                  store.AppHaxAPI &&
+                  typeof store.AppHaxAPI.supportsCall === "function" &&
+                  store.AppHaxAPI.supportsCall("haxiamAddUserAccess")
+                    ? html`
+                        <simple-toolbar-button
+                          icon="account-circle"
+                          icon-position="left"
+                          align-horizontal="left"
+                          show-text-label
+                          label="${this.t.userAccess}"
+                          @click=${this.openUserAccess}
+                        ></simple-toolbar-button>
+                      `
+                    : ""
+                }
               </simple-context-menu>
             </div>
           </div>

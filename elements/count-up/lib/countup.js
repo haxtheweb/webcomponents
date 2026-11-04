@@ -14,7 +14,7 @@ let __assign =
   CountUp = (function () {
     function t(t, i, a) {
       let s = this;
-      (this.target = t),
+      ((this.target = t),
         (this.endVal = i),
         (this.options = a),
         (this.version = "2.0.4"),
@@ -40,7 +40,7 @@ let __assign =
         (this.count = function (t) {
           s.startTime || (s.startTime = t);
           let i = t - s.startTime;
-          (s.remaining = s.duration - i),
+          ((s.remaining = s.duration - i),
             s.useEasing
               ? s.countDown
                 ? (s.frameVal =
@@ -67,7 +67,7 @@ let __assign =
               ? (s.rAF = requestAnimationFrame(s.count))
               : null !== s.finalEndVal
                 ? s.update(s.finalEndVal)
-                : s.callback && s.callback();
+                : s.callback && s.callback());
         }),
         (this.formatNumber = function (t) {
           let i,
@@ -86,8 +86,8 @@ let __assign =
             r = "";
 
             for (let l = 0, h = n.length; l < h; ++l)
-              0 !== l && l % 3 === 0 && (r = s.options.separator + r),
-                (r = n[h - l - 1] + r);
+              (0 !== l && l % 3 === 0 && (r = s.options.separator + r),
+                (r = n[h - l - 1] + r));
 
             n = r;
           }
@@ -127,7 +127,7 @@ let __assign =
           "string" === typeof t ? globalThis.document.getElementById(t) : t),
         this.el
           ? this.printValue(this.startVal)
-          : (this.error = "[CountUp] target is null or undefined");
+          : (this.error = "[CountUp] target is null or undefined"));
     }
 
     return (
@@ -139,9 +139,9 @@ let __assign =
         if (Math.abs(i) > this.options.smartEasingThreshold) {
           this.finalEndVal = t;
           let a = this.countDown ? 1 : -1;
-          (this.endVal = t + a * this.options.smartEasingAmount),
-            (this.duration = this.duration / 2);
-        } else (this.endVal = t), (this.finalEndVal = null);
+          ((this.endVal = t + a * this.options.smartEasingAmount),
+            (this.duration = this.duration / 2));
+        } else ((this.endVal = t), (this.finalEndVal = null));
 
         this.finalEndVal
           ? (this.useEasing = !1)
@@ -157,32 +157,32 @@ let __assign =
             : this.printValue(this.endVal));
       }),
       (t.prototype.pauseResume = function () {
-        this.paused
+        (this.paused
           ? ((this.startTime = null),
             (this.duration = this.remaining),
             (this.startVal = this.frameVal),
             this.determineDirectionAndSmartEasing(),
             (this.rAF = requestAnimationFrame(this.count)))
           : cancelAnimationFrame(this.rAF),
-          (this.paused = !this.paused);
+          (this.paused = !this.paused));
       }),
       (t.prototype.reset = function () {
-        cancelAnimationFrame(this.rAF),
+        (cancelAnimationFrame(this.rAF),
           (this.paused = !0),
           this.resetDuration(),
           (this.startVal = this.validateValue(this.options.startVal)),
           (this.frameVal = this.startVal),
-          this.printValue(this.startVal);
+          this.printValue(this.startVal));
       }),
       (t.prototype.update = function (t) {
-        cancelAnimationFrame(this.rAF),
+        (cancelAnimationFrame(this.rAF),
           (this.startTime = null),
           (this.endVal = this.validateValue(t)),
           this.endVal !== this.frameVal &&
             ((this.startVal = this.frameVal),
             this.finalEndVal || this.resetDuration(),
             this.determineDirectionAndSmartEasing(),
-            (this.rAF = requestAnimationFrame(this.count)));
+            (this.rAF = requestAnimationFrame(this.count))));
       }),
       (t.prototype.printValue = function (t) {
         let i = this.formattingFn(t);
@@ -202,9 +202,9 @@ let __assign =
           : ((this.error = "[CountUp] invalid start or end value: " + t), null);
       }),
       (t.prototype.resetDuration = function () {
-        (this.startTime = null),
+        ((this.startTime = null),
           (this.duration = 1e3 * Number(this.options.duration)),
-          (this.remaining = this.duration);
+          (this.remaining = this.duration));
       }),
       t
     );

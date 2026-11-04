@@ -751,16 +751,18 @@ class CleanTwo extends LTIResizingMixin(
           <div class="content">
             <div id="haxcms-theme-top"></div>
             <header class="header">
-              ${!["xl"].includes(this.responsiveSize)
-                ? html`
-                    <div part="site-menu-content">
-                      <site-menu-content
-                        .part="${this.editMode ? `edit-mode-active` : ``}"
-                        mobile
-                      ></site-menu-content>
-                    </div>
-                  `
-                : ``}
+              ${
+                !["xl"].includes(this.responsiveSize)
+                  ? html`
+                      <div part="site-menu-content">
+                        <site-menu-content
+                          .part="${this.editMode ? `edit-mode-active` : ``}"
+                          mobile
+                        ></site-menu-content>
+                      </div>
+                    `
+                  : ``
+              }
               ${this.HAXCMSMobileMenuButton("right")}
               <site-modal
                 @site-modal-click="${this.siteModalClick}"
@@ -775,15 +777,17 @@ class CleanTwo extends LTIResizingMixin(
                 <site-search></site-search>
               </site-modal>
               ${this.PDFPageButton()}
-              ${MicroFrontendRegistry.has("@system/siteToHtml")
-                ? html`${this.PrintSiteButton()}${this.PrintBranchButton()}`
-                : html`<replace-tag
-                    with="site-print-button"
-                    position="right"
-                    class="btn js-toolbar-action"
-                    import-method="view"
-                    part="print-btn"
-                  ></replace-tag>`}
+              ${
+                MicroFrontendRegistry.has("@system/siteToHtml")
+                  ? html`${this.PrintSiteButton()}${this.PrintBranchButton()}`
+                  : html`<replace-tag
+                      with="site-print-button"
+                      position="right"
+                      class="btn js-toolbar-action"
+                      import-method="view"
+                      part="print-btn"
+                    ></replace-tag>`
+              }
               ${this.QRCodeButton("right")}
               <replace-tag
                 with="site-rss-button"
@@ -875,17 +879,19 @@ class CleanTwo extends LTIResizingMixin(
             </footer>
           </div>
         </div>
-        ${["xl"].includes(this.responsiveSize)
-          ? html`
-              <div class="right-col" part="site-menu-content right-col">
-                <div class="site-menu-content-wrapper">
-                  <site-menu-content
-                    .part="${this.editMode ? `edit-mode-active` : ``}"
-                  ></site-menu-content>
+        ${
+          ["xl"].includes(this.responsiveSize)
+            ? html`
+                <div class="right-col" part="site-menu-content right-col">
+                  <div class="site-menu-content-wrapper">
+                    <site-menu-content
+                      .part="${this.editMode ? `edit-mode-active` : ``}"
+                    ></site-menu-content>
+                  </div>
                 </div>
-              </div>
-            `
-          : ``}
+              `
+            : ``
+        }
       </div>
     `;
   }

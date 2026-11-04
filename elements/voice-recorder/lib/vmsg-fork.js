@@ -229,8 +229,9 @@ export class Recorder {
 
     return getUserMedia({ audio: true }).then((stream) => {
       this.stream = stream;
-      const audioCtx = (this.audioCtx = new (globalThis.AudioContext ||
-        globalThis.webkitAudioContext)());
+      const audioCtx = (this.audioCtx = new (
+        globalThis.AudioContext || globalThis.webkitAudioContext
+      )());
 
       const sourceNode = audioCtx.createMediaStreamSource(stream);
       const gainNode = (this.gainNode = (

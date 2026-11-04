@@ -1127,8 +1127,8 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
           overflow-wrap: anywhere;
         }
         .diff.source {
-          font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas,
-            monospace;
+          font-family:
+            ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
           font-size: 12px;
           line-height: 1.5;
         }
@@ -1233,8 +1233,8 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
           overflow-wrap: anywhere;
         }
         code {
-          font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas,
-            monospace;
+          font-family:
+            ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
         }
         .actions {
           flex: none;
@@ -1434,12 +1434,14 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
   render() {
     return html`
       <div class="layout">
-        ${!this.narrow || this._pane !== "detail"
-          ? this._renderList()
-          : nothing}
-        ${!this.narrow || this._pane === "detail"
-          ? this._renderDetail()
-          : nothing}
+        ${
+          !this.narrow || this._pane !== "detail" ? this._renderList() : nothing
+        }
+        ${
+          !this.narrow || this._pane === "detail"
+            ? this._renderDetail()
+            : nothing
+        }
       </div>
       ${this._confirm ? this._renderConfirm() : nothing}
     `;
@@ -1469,14 +1471,16 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
       <aside class="list" aria-label="${this.t.pageHistory}">
         <div class="list-head">
           <p class="count" role="status" aria-live="polite">
-            ${this.loading && !this.revisions.length
-              ? this.t.loadingRevisions
-              : this._count(
-                  this.total === 1
-                    ? "revisionCountSingular"
-                    : "revisionCountPlural",
-                  this.total,
-                )}
+            ${
+              this.loading && !this.revisions.length
+                ? this.t.loadingRevisions
+                : this._count(
+                    this.total === 1
+                      ? "revisionCountSingular"
+                      : "revisionCountPlural",
+                    this.total,
+                  )
+            }
           </p>
           <div class="chips" role="group" aria-label="${this.t.filterBy}">
             ${REVISION_FILTERS.map(
@@ -1497,71 +1501,85 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
           </div>
         </div>
         <div class="scroll">
-          ${!this.loading && !this.revisions.length
-            ? html`<p class="hax-ui-empty empty">${this.t.noRevisionsFound}</p>`
-            : !shown.length && this.revisions.length
-              ? html`<p class="hax-ui-empty empty">${this.t.noneMatch}</p>`
-              : html`<ol class="timeline">
-                  ${groups.map(
-                    (group) => html`
-                      <li>
-                        <h3 class="day">${this._dayLabel(group)}</h3>
-                        <ul>
-                          ${group.items.map((r) =>
-                            this._renderRow(r, r.hash === newest),
-                          )}
-                        </ul>
-                      </li>
-                    `,
-                  )}
-                </ol>`}
-          ${this.revisions.length && this.revisions.length < this.total
-            ? html`<button
-                type="button"
-                class="hax-ui-btn more"
-                ?disabled="${this.loading}"
-                @click="${() => this._loadRevisions(this.revisions.length)}"
-              >
-                ${this.loading ? this.t.loadingRevisions : this.t.showOlder}
-              </button>`
-            : nothing}
+          ${
+            !this.loading && !this.revisions.length
+              ? html`<p class="hax-ui-empty empty">
+                  ${this.t.noRevisionsFound}
+                </p>`
+              : !shown.length && this.revisions.length
+                ? html`<p class="hax-ui-empty empty">${this.t.noneMatch}</p>`
+                : html`<ol class="timeline">
+                    ${groups.map(
+                      (group) => html`
+                        <li>
+                          <h3 class="day">${this._dayLabel(group)}</h3>
+                          <ul>
+                            ${group.items.map((r) =>
+                              this._renderRow(r, r.hash === newest),
+                            )}
+                          </ul>
+                        </li>
+                      `,
+                    )}
+                  </ol>`
+          }
+          ${
+            this.revisions.length && this.revisions.length < this.total
+              ? html`<button
+                  type="button"
+                  class="hax-ui-btn more"
+                  ?disabled="${this.loading}"
+                  @click="${() => this._loadRevisions(this.revisions.length)}"
+                >
+                  ${this.loading ? this.t.loadingRevisions : this.t.showOlder}
+                </button>`
+              : nothing
+          }
         </div>
       </aside>
     `;
   }
 
   _actorPills(revision, isCurrent) {
-    return html`${isCurrent
-      ? html`<span class="hax-ui-pill" data-tone="current"
-          ><simple-icon-lite
-            icon="${HaxUiAdminIcons.check}"
-            aria-hidden="true"
-          ></simple-icon-lite
-          >${this.t.current}</span
-        >`
-      : nothing}
-    ${revision.actor === "A"
-      ? html`<span class="hax-ui-pill" data-tone="accent"
-          ><simple-icon-lite
-            icon="${HaxUiAdminIcons.advanced}"
-            aria-hidden="true"
-          ></simple-icon-lite
-          >${this.t.agent}</span
-        >`
-      : nothing}
-    ${revision.actor === "S"
-      ? html`<span class="hax-ui-pill" data-tone="muted"
-          >${this.t.system}</span
-        >`
-      : nothing}
-    ${revision.external
-      ? html`<span
-          class="hax-ui-pill"
-          data-tone="muted"
-          title="${this.t.unlabelledHelp}"
-          >${this.t.unlabelled}</span
-        >`
-      : nothing}`;
+    return html`${
+      isCurrent
+        ? html`<span class="hax-ui-pill" data-tone="current"
+            ><simple-icon-lite
+              icon="${HaxUiAdminIcons.check}"
+              aria-hidden="true"
+            ></simple-icon-lite
+            >${this.t.current}</span
+          >`
+        : nothing
+    }
+    ${
+      revision.actor === "A"
+        ? html`<span class="hax-ui-pill" data-tone="accent"
+            ><simple-icon-lite
+              icon="${HaxUiAdminIcons.advanced}"
+              aria-hidden="true"
+            ></simple-icon-lite
+            >${this.t.agent}</span
+          >`
+        : nothing
+    }
+    ${
+      revision.actor === "S"
+        ? html`<span class="hax-ui-pill" data-tone="muted"
+            >${this.t.system}</span
+          >`
+        : nothing
+    }
+    ${
+      revision.external
+        ? html`<span
+            class="hax-ui-pill"
+            data-tone="muted"
+            title="${this.t.unlabelledHelp}"
+            >${this.t.unlabelled}</span
+          >`
+        : nothing
+    }`;
   }
 
   _renderRow(revision, isCurrent) {
@@ -1573,26 +1591,30 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
           data-hash="${revision.hash}"
           data-family="${revision.family}"
           data-kind="${revision.kind}"
-          aria-current="${revision.hash === this.selectedHash
-            ? "true"
-            : "false"}"
+          aria-current="${
+            revision.hash === this.selectedHash ? "true" : "false"
+          }"
           @click="${() => this._openRow(revision.hash)}"
           @keydown="${this._onRowKeydown}"
         >
           <span class="what"
-            >${revision.kind === "structure"
-              ? html`<simple-icon-lite
-                  icon="${HaxUiAdminIcons.structure}"
-                  aria-hidden="true"
-                ></simple-icon-lite>`
-              : nothing}${this._label(revision)}</span
+            >${
+              revision.kind === "structure"
+                ? html`<simple-icon-lite
+                    icon="${HaxUiAdminIcons.structure}"
+                    aria-hidden="true"
+                  ></simple-icon-lite>`
+                : nothing
+            }${this._label(revision)}</span
           >
           <span class="when">${this._time(revision)}</span>
-          ${revision.summary
-            ? html`<span class="sum" title="${revision.summary}"
-                >${revision.summary}</span
-              >`
-            : nothing}
+          ${
+            revision.summary
+              ? html`<span class="sum" title="${revision.summary}"
+                  >${revision.summary}</span
+                >`
+              : nothing
+          }
           <span class="who"
             >${this.t.by.replace(
               "{name}",
@@ -1647,11 +1669,13 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
     if (index < 0) {
       return html`<section class="detail">
         <div class="detail-scroll">
-          ${this.loading
-            ? html`<p class="hax-ui-message note">
-                ${this.t.loadingRevisions}
-              </p>`
-            : html`<p class="hax-ui-empty empty">${this.t.selectVersion}</p>`}
+          ${
+            this.loading
+              ? html`<p class="hax-ui-message note">
+                  ${this.t.loadingRevisions}
+                </p>`
+              : html`<p class="hax-ui-empty empty">${this.t.selectVersion}</p>`
+          }
         </div>
       </section>`;
     }
@@ -1679,12 +1703,16 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
             >
             ${this._ago(revision) ? html`(${this._ago(revision)})` : nothing}
           </p>
-          ${revision.summary && revision.summary !== this._label(revision)
-            ? html`<p class="sub">${revision.summary}</p>`
-            : nothing}
-          ${isCurrent
-            ? html`<p class="hax-ui-message note">${this.t.isCurrent}</p>`
-            : nothing}
+          ${
+            revision.summary && revision.summary !== this._label(revision)
+              ? html`<p class="sub">${revision.summary}</p>`
+              : nothing
+          }
+          ${
+            isCurrent
+              ? html`<p class="hax-ui-message note">${this.t.isCurrent}</p>`
+              : nothing
+          }
           <div class="controls">
             <div
               class="hax-ui-seg ${this.narrow ? "wrap" : ""}"
@@ -1725,25 +1753,31 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
                       this._showAll = false;
                     }}"
                   >
-                    ${v === "text"
-                      ? this.t.viewText
-                      : v === "rendered"
-                        ? this.t.viewRendered
-                        : this.t.viewSource}
+                    ${
+                      v === "text"
+                        ? this.t.viewText
+                        : v === "rendered"
+                          ? this.t.viewRendered
+                          : this.t.viewSource
+                    }
                   </button>`,
               )}
             </div>
           </div>
           ${this._renderBody(index, revision, mode)}
-          ${revision.changes && revision.changes.length
-            ? this._renderChanges(revision.changes)
-            : nothing}
+          ${
+            revision.changes && revision.changes.length
+              ? this._renderChanges(revision.changes)
+              : nothing
+          }
           ${this._renderTechnical(revision)}
         </div>
         <div class="actions">
-          ${this._error && !this._confirm
-            ? html`<span class="hint" role="alert">${this._error}</span>`
-            : html`<span class="hint"></span>`}
+          ${
+            this._error && !this._confirm
+              ? html`<span class="hint" role="alert">${this._error}</span>`
+              : html`<span class="hint"></span>`
+          }
           <button
             type="button"
             class="hax-ui-btn ${isCurrent ? "" : "primary"} restore-btn"
@@ -1810,9 +1844,11 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
             >
             ${this._ago(revision) ? html`(${this._ago(revision)})` : nothing}
           </p>
-          ${revision.summary
-            ? html`<p class="sub">${revision.summary}</p>`
-            : nothing}
+          ${
+            revision.summary
+              ? html`<p class="sub">${revision.summary}</p>`
+              : nothing
+          }
           <p class="hax-ui-message note structure-note">
             ${this.t.structureNotContent}
           </p>
@@ -1821,20 +1857,22 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
         </div>
         <div class="actions">
           <span class="hint">${this.t.structureNoRestore}</span>
-          ${this.inShell
-            ? html`<button
-                type="button"
-                class="hax-ui-btn primary go-structure"
-                data-action="structure"
-                @click="${this._goToStructure}"
-              >
-                <simple-icon-lite
-                  icon="${HaxUiAdminIcons.structure}"
-                  aria-hidden="true"
-                ></simple-icon-lite>
-                ${this.t.goToStructure}
-              </button>`
-            : nothing}
+          ${
+            this.inShell
+              ? html`<button
+                  type="button"
+                  class="hax-ui-btn primary go-structure"
+                  data-action="structure"
+                  @click="${this._goToStructure}"
+                >
+                  <simple-icon-lite
+                    icon="${HaxUiAdminIcons.structure}"
+                    aria-hidden="true"
+                  ></simple-icon-lite>
+                  ${this.t.goToStructure}
+                </button>`
+              : nothing
+          }
         </div>
       </section>
     `;
@@ -1915,82 +1953,102 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
       const collapsed = runs.some((r) => r.type === "skip");
       body = html`
         <div class="stats">
-          ${d.changed
-            ? html`<span class="plus">${added}</span
-                ><span class="minus">${removed}</span>
-                <span class="legend">
-                  <ins
-                    >${cmp.restoreView
-                      ? this.t.legendRestoreAdds
-                      : this.t.legendAdded}</ins
-                  >
-                  <del
-                    >${cmp.restoreView
-                      ? this.t.legendRestoreRemoves
-                      : this.t.legendRemoved}</del
-                  >
-                </span>`
-            : html`<span
-                >${source
-                  ? this.t.noSourceChange
-                  : structural && mode === "change"
-                    ? this.t.noTextChangeStructure
-                    : this.t.noTextChange}</span
-              >`}
-          ${collapsed && d.changed
-            ? html`<button
-                type="button"
-                class="linkish"
-                @click="${() => {
-                  this._showAll = true;
-                }}"
-              >
-                ${this.t.showFullText}
-              </button>`
-            : nothing}
+          ${
+            d.changed
+              ? html`<span class="plus">${added}</span
+                  ><span class="minus">${removed}</span>
+                  <span class="legend">
+                    <ins
+                      >${
+                        cmp.restoreView
+                          ? this.t.legendRestoreAdds
+                          : this.t.legendAdded
+                      }</ins
+                    >
+                    <del
+                      >${
+                        cmp.restoreView
+                          ? this.t.legendRestoreRemoves
+                          : this.t.legendRemoved
+                      }</del
+                    >
+                  </span>`
+              : html`<span
+                  >${
+                    source
+                      ? this.t.noSourceChange
+                      : structural && mode === "change"
+                        ? this.t.noTextChangeStructure
+                        : this.t.noTextChange
+                  }</span
+                >`
+          }
+          ${
+            collapsed && d.changed
+              ? html`<button
+                  type="button"
+                  class="linkish"
+                  @click="${() => {
+                    this._showAll = true;
+                  }}"
+                >
+                  ${this.t.showFullText}
+                </button>`
+              : nothing
+          }
         </div>
-        ${cmp.first
-          ? html`<p class="hax-ui-message note">${this.t.firstVersion}</p>`
-          : nothing}
-        ${d.changed || this._showAll
-          ? html`<div class="diff ${source ? "source" : ""}">
-              ${this._renderRuns(runs, source)}
-            </div>`
-          : nothing}
+        ${
+          cmp.first
+            ? html`<p class="hax-ui-message note">${this.t.firstVersion}</p>`
+            : nothing
+        }
+        ${
+          d.changed || this._showAll
+            ? html`<div class="diff ${source ? "source" : ""}">
+                ${this._renderRuns(runs, source)}
+              </div>`
+            : nothing
+        }
       `;
     }
     return html`
-      ${metaChanges.length
-        ? html`<h4>${this.t.detailsChanged}</h4>
-            <table>
-              <caption class="hax-ui-sr-only">
-                ${this.t.detailsChanged}
-              </caption>
-              <thead>
-                <tr>
-                  <th scope="col">${this.t.field}</th>
-                  <th scope="col">${this.t.before}</th>
-                  <th scope="col">${this.t.after}</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${metaChanges.map(
-                  (c) =>
-                    html`<tr data-field="${c.field}">
-                      <td>
-                        ${this.t[
-                          "field" +
-                            c.field.charAt(0).toUpperCase() +
-                            c.field.slice(1)
-                        ] || c.field}
-                      </td>
-                      <td><del>${this._metaValue(c.field, c.before)}</del></td>
-                      <td><ins>${this._metaValue(c.field, c.after)}</ins></td>
-                    </tr>`,
-                )}
-              </tbody>
-            </table>`
-        : nothing}
+      ${
+        metaChanges.length
+          ? html`<h4>${this.t.detailsChanged}</h4>
+              <table>
+                <caption class="hax-ui-sr-only">
+                  ${this.t.detailsChanged}
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col">${this.t.field}</th>
+                    <th scope="col">${this.t.before}</th>
+                    <th scope="col">${this.t.after}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${metaChanges.map(
+                    (c) =>
+                      html`<tr data-field="${c.field}">
+                        <td>
+                          ${
+                            this.t[
+                              "field" +
+                                c.field.charAt(0).toUpperCase() +
+                                c.field.slice(1)
+                            ] || c.field
+                          }
+                        </td>
+                        <td>
+                          <del>${this._metaValue(c.field, c.before)}</del>
+                        </td>
+                        <td><ins>${this._metaValue(c.field, c.after)}</ins></td>
+                      </tr>`,
+                  )}
+                </tbody>
+              </table>`
+          : nothing
+      }
       ${body}
     `;
   }
@@ -2025,10 +2083,12 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
           </dd>
           <dt>${this.t.techActor}</dt>
           <dd>${this.t["actor" + revision.actor] || revision.actor}</dd>
-          ${revision.txn
-            ? html`<dt>${this.t.techTxn}</dt>
-                <dd><code>${revision.txn}</code></dd>`
-            : nothing}
+          ${
+            revision.txn
+              ? html`<dt>${this.t.techTxn}</dt>
+                  <dd><code>${revision.txn}</code></dd>`
+              : nothing
+          }
           <dt>${this.t.techCommit}</dt>
           <dd><code>${revision.hash}</code></dd>
           <dt>${this.t.techMessage}</dt>
@@ -2077,9 +2137,11 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
               this._dateTime(revision),
             )}
           </h3>
-          ${this._error
-            ? html`<p class="error" role="alert">${this._error}</p>`
-            : nothing}
+          ${
+            this._error
+              ? html`<p class="error" role="alert">${this._error}</p>`
+              : nothing
+          }
           <ul class="facts">
             <li>
               <simple-icon-lite
@@ -2087,26 +2149,30 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
                 aria-hidden="true"
               ></simple-icon-lite>
               <span
-                >${d
-                  ? this.t.restoreContent
-                      .replace("{added}", () =>
-                        this._count("addedWords", d.added),
-                      )
-                      .replace("{removed}", () =>
-                        this._count("removedWords", d.removed),
-                      )
-                  : this.t.restoreContentPlain}</span
+                >${
+                  d
+                    ? this.t.restoreContent
+                        .replace("{added}", () =>
+                          this._count("addedWords", d.added),
+                        )
+                        .replace("{removed}", () =>
+                          this._count("removedWords", d.removed),
+                        )
+                    : this.t.restoreContentPlain
+                }</span
               >
             </li>
-            ${mine && mine.hasItemMetadata
-              ? html`<li>
-                  <simple-icon-lite
-                    icon="${HaxUiAdminIcons.details}"
-                    aria-hidden="true"
-                  ></simple-icon-lite>
-                  <span>${this.t.restoreDetails}</span>
-                </li>`
-              : nothing}
+            ${
+              mine && mine.hasItemMetadata
+                ? html`<li>
+                    <simple-icon-lite
+                      icon="${HaxUiAdminIcons.details}"
+                      aria-hidden="true"
+                    ></simple-icon-lite>
+                    <span>${this.t.restoreDetails}</span>
+                  </li>`
+                : nothing
+            }
             <li>
               <simple-icon-lite
                 icon="${HaxUiAdminIcons.structure}"
@@ -2120,9 +2186,11 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
                 aria-hidden="true"
               ></simple-icon-lite>
               <span
-                >${later.length === 1
-                  ? this.t.restoreUndoesOne
-                  : this._count("restoreUndoes", later.length)}
+                >${
+                  later.length === 1
+                    ? this.t.restoreUndoesOne
+                    : this._count("restoreUndoes", later.length)
+                }
                 <ul class="undone">
                   ${later.map(
                     (r) =>

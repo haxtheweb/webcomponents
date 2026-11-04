@@ -3322,10 +3322,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               id="content-edit"
               label="${this.t.configureBlock} • Ctrl⇧4"
               ?hidden="${!this.editMode}"
-              ?disabled="${!this.activeTagName ||
-              this.activeTagName == "" ||
-              !this.activeNode ||
-              !this.activeNode.tagName}"
+              ?disabled="${
+                !this.activeTagName ||
+                this.activeTagName == "" ||
+                !this.activeNode ||
+                !this.activeNode.tagName
+              }"
               voice-command="(modify)(configure)(edit) selected"
               role="menuitem"
               controls="tray-detail"
@@ -3376,10 +3378,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             ></simple-toolbar-button>
             <simple-toolbar-button
               ?hidden="${!this.pageAllowed}"
-              ?disabled="${this.activeItem &&
-              this.activeItem.metadata &&
-              this.activeItem.metadata.locked &&
-              !this.editMode}"
+              ?disabled="${
+                this.activeItem &&
+                this.activeItem.metadata &&
+                this.activeItem.metadata.locked &&
+                !this.editMode
+              }"
               class="top-bar-button"
               role="menuitem"
               id="editbutton"
@@ -3390,10 +3394,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               voice-command="edit (this) page"
             ></simple-toolbar-button>
             <simple-toolbar-button
-              ?hidden="${!this.activeItem ||
-              !this.activeItem.metadata ||
-              !this.activeItem.metadata.locked ||
-              this.editMode}"
+              ?hidden="${
+                !this.activeItem ||
+                !this.activeItem.metadata ||
+                !this.activeItem.metadata.locked ||
+                this.editMode
+              }"
               id="lockbutton"
               class="top-bar-button"
               icon="icons:lock"
@@ -3424,9 +3430,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               icon="hax:wand"
               id="search"
               class="merlin"
-              data-event="${this.responsiveSize === "xs"
-                ? "super-daemon-modal"
-                : "super-daemon"}"
+              data-event="${
+                this.responsiveSize === "xs"
+                  ? "super-daemon-modal"
+                  : "super-daemon"
+              }"
               mini
               wand
               droppable-type="${this.activeType}"
@@ -3437,19 +3445,21 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         </div>
         <div slot="right" class="topbar-right-group">
           <div class="toolbar-buttons right-toolbar-buttons" role="menubar">
-            ${this.__haxcmsButtonAddReady
-              ? html`<haxcms-button-add
-                  ?hidden="${!store.platformAllows("addPage")}"
-                  ?disabled="${this.editMode}"
-                  id="addpagebutton"
-                  class="top-bar-button"
-                  align-horizontal="center"
-                  icon="hax:add-page"
-                  label="${this.t.addPage} • Ctrl⇧1"
-                  merlin
-                  role="menuitem"
-                ></haxcms-button-add>`
-              : ``}
+            ${
+              this.__haxcmsButtonAddReady
+                ? html`<haxcms-button-add
+                    ?hidden="${!store.platformAllows("addPage")}"
+                    ?disabled="${this.editMode}"
+                    id="addpagebutton"
+                    class="top-bar-button"
+                    align-horizontal="center"
+                    icon="hax:add-page"
+                    label="${this.t.addPage} • Ctrl⇧1"
+                    merlin
+                    role="menuitem"
+                  ></haxcms-button-add>`
+                : ``
+            }
             <simple-toolbar-button
               ?hidden="${!store.platformAllows("outlineDesigner")}"
               ?disabled="${this.editMode}"
@@ -3518,14 +3528,16 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               <button
                 class="soundToggle"
                 @click="${this.soundToggle}"
-                aria-label="${this.soundIcon &&
-                this.soundIcon.indexOf("Full") !== -1
-                  ? this.t.toggleSoundEffectsOff
-                  : this.t.toggleSoundEffectsOn}"
-                aria-pressed="${this.soundIcon &&
-                this.soundIcon.indexOf("Full") !== -1
-                  ? "true"
-                  : "false"}"
+                aria-label="${
+                  this.soundIcon && this.soundIcon.indexOf("Full") !== -1
+                    ? this.t.toggleSoundEffectsOff
+                    : this.t.toggleSoundEffectsOn
+                }"
+                aria-pressed="${
+                  this.soundIcon && this.soundIcon.indexOf("Full") !== -1
+                    ? "true"
+                    : "false"
+                }"
               >
                 <simple-icon-lite
                   src="${this.soundIcon}"
@@ -3573,16 +3585,20 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           </app-hax-user-menu>
         </div>
       </app-hax-top-bar>
-      ${this.themePreviewOpen && this.__themePreviewReady
-        ? html`<haxcms-theme-preview-panel
-            open
-            @haxcms-theme-preview-collapsed-changed=${this
-              ._handleThemePreviewCollapsedChanged}
-            @haxcms-theme-preview-cancel=${this._handleThemePreviewCancel}
-            @haxcms-theme-preview-open-admin=${this
-              ._handleThemePreviewOpenAdmin}
-          ></haxcms-theme-preview-panel>`
-        : ``}
+      ${
+        this.themePreviewOpen && this.__themePreviewReady
+          ? html`<haxcms-theme-preview-panel
+              open
+              @haxcms-theme-preview-collapsed-changed=${
+                this._handleThemePreviewCollapsedChanged
+              }
+              @haxcms-theme-preview-cancel=${this._handleThemePreviewCancel}
+              @haxcms-theme-preview-open-admin=${
+                this._handleThemePreviewOpenAdmin
+              }
+            ></haxcms-theme-preview-panel>`
+          : ``
+      }
     `;
   }
 
@@ -4532,9 +4548,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         machineName: "page-as-data",
         context: ">",
         program: async (input, values) => {
-          const { createPageAsDataProgram } = await import(
-            "./utils/PageAsDataProgram.js"
-          );
+          const { createPageAsDataProgram } =
+            await import("./utils/PageAsDataProgram.js");
           const pageAsDataProgram = createPageAsDataProgram(this);
           return await pageAsDataProgram(input, values);
         },
@@ -4648,9 +4663,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         machineName: "print-options",
         program: async (input, values) => {
           // Import the print program dynamically
-          const { createPrintProgram } = await import(
-            "./utils/PrintProgram.js"
-          );
+          const { createPrintProgram } =
+            await import("./utils/PrintProgram.js");
           const printProgram = createPrintProgram(this);
           return await printProgram(input, values);
         },
@@ -4675,9 +4689,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         name: this.t.exportThisPage,
         machineName: "export-page",
         program: async (input, values) => {
-          const { createExportPageProgram } = await import(
-            "./utils/ExportPageProgram.js"
-          );
+          const { createExportPageProgram } =
+            await import("./utils/ExportPageProgram.js");
           const exportPageProgram = createExportPageProgram(this);
           return await exportPageProgram(input, values);
         },
@@ -4702,9 +4715,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         name: this.t.exportThisSite,
         machineName: "export-site",
         program: async (input, values) => {
-          const { createExportSiteProgram } = await import(
-            "./utils/ExportSiteProgram.js"
-          );
+          const { createExportSiteProgram } =
+            await import("./utils/ExportSiteProgram.js");
           const exportSiteProgram = createExportSiteProgram(this);
           return await exportSiteProgram(input, values);
         },
@@ -4731,9 +4743,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         machineName: "edit-title",
         placeholder: this.t.enterNewTitle,
         program: async (input, values) => {
-          const { createEditTitleProgram } = await import(
-            "./utils/EditTitleProgram.js"
-          );
+          const { createEditTitleProgram } =
+            await import("./utils/EditTitleProgram.js");
           const editTitleProgram = createEditTitleProgram(this);
           return await editTitleProgram(input, values);
         },
@@ -4760,9 +4771,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         machineName: "edit-description",
         placeholder: this.t.enterNewDescription,
         program: async (input, values) => {
-          const { createEditDescriptionProgram } = await import(
-            "./utils/EditDescriptionProgram.js"
-          );
+          const { createEditDescriptionProgram } =
+            await import("./utils/EditDescriptionProgram.js");
           const editDescriptionProgram = createEditDescriptionProgram(this);
           return await editDescriptionProgram(input, values);
         },
@@ -4789,9 +4799,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         machineName: "edit-slug",
         placeholder: this.t.enterNewSlug,
         program: async (input, values) => {
-          const { createEditSlugProgram } = await import(
-            "./utils/EditSlugProgram.js"
-          );
+          const { createEditSlugProgram } =
+            await import("./utils/EditSlugProgram.js");
           const editSlugProgram = createEditSlugProgram(this);
           return await editSlugProgram(input, values);
         },
@@ -4827,9 +4836,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           return Array.isArray(tags) ? tags.join(", ") : tags;
         },
         program: async (input, values) => {
-          const { createEditTagsProgram } = await import(
-            "./utils/EditTagsProgram.js"
-          );
+          const { createEditTagsProgram } =
+            await import("./utils/EditTagsProgram.js");
           const editTagsProgram = createEditTagsProgram(this);
           return await editTagsProgram(input, values);
         },
@@ -4856,9 +4864,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         machineName: "edit-icon",
         placeholder: this.t.typeToSearchIconsByName,
         program: async (input, values) => {
-          const { createEditIconProgram } = await import(
-            "./utils/EditIconProgram.js"
-          );
+          const { createEditIconProgram } =
+            await import("./utils/EditIconProgram.js");
           const editIconProgram = createEditIconProgram(this);
           return await editIconProgram(input, values);
         },
@@ -4981,9 +4988,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         name: this.t.shareCurrentPageLink,
         machineName: "share-page-link",
         program: async (input, values) => {
-          const { createSharePageProgram } = await import(
-            "./utils/SharePageProgram.js"
-          );
+          const { createSharePageProgram } =
+            await import("./utils/SharePageProgram.js");
           const sharePageProgram = createSharePageProgram(this);
           return await sharePageProgram(input, values);
         },
@@ -5172,9 +5178,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     // lecture player
     import("@haxtheweb/video-player/lib/lecture-player.js");
     // AI chat bot
-    import(
-      "@haxtheweb/haxcms-elements/lib/ui-components/magic/site-ai-chat.js"
-    );
+    import("@haxtheweb/haxcms-elements/lib/ui-components/magic/site-ai-chat.js");
   }
 
   unlockAllThemes() {
@@ -5402,13 +5406,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     let copied = false;
     try {
       if (
-         
         globalThis.navigator &&
         globalThis.navigator.clipboard &&
         globalThis.navigator.clipboard.writeText
       ) {
         await globalThis.navigator.clipboard.writeText(shareLink);
-         
+
         copied = true;
       }
     } catch {
@@ -5456,9 +5459,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   }
 
   async _exportPageAsMarkdown(content, title) {
-    const { _exportPageAsMarkdown } = await import(
-      "./utils/ExportPageProgram.js"
-    );
+    const { _exportPageAsMarkdown } =
+      await import("./utils/ExportPageProgram.js");
     return _exportPageAsMarkdown.call(this, content, title);
   }
 
@@ -5473,9 +5475,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   }
 
   async _exportPageAsHAXSchema() {
-    const { _exportPageAsHAXSchema } = await import(
-      "./utils/ExportPageProgram.js"
-    );
+    const { _exportPageAsHAXSchema } =
+      await import("./utils/ExportPageProgram.js");
     return _exportPageAsHAXSchema.call(this);
   }
 
@@ -5491,9 +5492,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   }
 
   async _exportSiteAsMarkdown(manifest, title, baseUrl) {
-    const { _exportSiteAsMarkdown } = await import(
-      "./utils/ExportSiteProgram.js"
-    );
+    const { _exportSiteAsMarkdown } =
+      await import("./utils/ExportSiteProgram.js");
     return _exportSiteAsMarkdown.call(this, manifest, title, baseUrl);
   }
 
@@ -5513,16 +5513,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   }
 
   async _downloadSiteArchive() {
-    const { _downloadSiteArchive } = await import(
-      "./utils/ExportSiteProgram.js"
-    );
+    const { _downloadSiteArchive } =
+      await import("./utils/ExportSiteProgram.js");
     return _downloadSiteArchive.call(this);
   }
 
   async _exportSiteAsSkeleton(manifest, title, baseUrl, options = {}) {
-    const { _exportSiteAsSkeleton } = await import(
-      "./utils/ExportSiteProgram.js"
-    );
+    const { _exportSiteAsSkeleton } =
+      await import("./utils/ExportSiteProgram.js");
     return _exportSiteAsSkeleton.call(this, manifest, title, baseUrl, options);
   }
 

@@ -846,16 +846,18 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           ([context, label]) =>
             html`<button
               type="button"
-              aria-pressed="${this.commandContext === context
-                ? "true"
-                : "false"}"
+              aria-pressed="${
+                this.commandContext === context ? "true" : "false"
+              }"
               @click="${() => this._setContext(context)}"
             >
-              ${context !== "*"
-                ? html`<span class="context-key" aria-hidden="true"
-                    >${context}</span
-                  >`
-                : nothing}${label}
+              ${
+                context !== "*"
+                  ? html`<span class="context-key" aria-hidden="true"
+                      >${context}</span
+                    >`
+                  : nothing
+              }${label}
             </button>`,
         )}
       </div>
@@ -908,38 +910,46 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     >
       <div class="details-head">
         <span class="details-icon" aria-hidden="true">
-          ${item.icon
-            ? html`<simple-icon-lite icon="${item.icon}"></simple-icon-lite>`
-            : item.image
-              ? html`<img src="${item.image}" alt="" />`
-              : item.textCharacter
-                ? html`${item.textCharacter}`
-                : nothing}
+          ${
+            item.icon
+              ? html`<simple-icon-lite icon="${item.icon}"></simple-icon-lite>`
+              : item.image
+                ? html`<img src="${item.image}" alt="" />`
+                : item.textCharacter
+                  ? html`${item.textCharacter}`
+                  : nothing
+          }
         </span>
         <div>
           <h3 class="details-title">${item.title}</h3>
           ${path ? html`<div class="details-path">${path}</div>` : nothing}
         </div>
       </div>
-      ${item.description
-        ? html`<p class="details-desc">${item.description}</p>`
-        : nothing}
-      ${item.more
-        ? html`<div class="details-more">${item.more}</div>`
-        : nothing}
-      ${previewTag
-        ? html`<div class="details-preview">
-            <span class="details-label">${this.t.preview}</span>
-            <hax-element-demo render-tag="${previewTag}"></hax-element-demo>
-          </div>`
-        : nothing}
-      ${tags.length > 0
-        ? html`<div class="details-tags">
-            ${tags
-              .slice(0, 5)
-              .map((tag) => html`<span class="hax-ui-pill">${tag}</span>`)}
-          </div>`
-        : nothing}
+      ${
+        item.description
+          ? html`<p class="details-desc">${item.description}</p>`
+          : nothing
+      }
+      ${
+        item.more ? html`<div class="details-more">${item.more}</div>` : nothing
+      }
+      ${
+        previewTag
+          ? html`<div class="details-preview">
+              <span class="details-label">${this.t.preview}</span>
+              <hax-element-demo render-tag="${previewTag}"></hax-element-demo>
+            </div>`
+          : nothing
+      }
+      ${
+        tags.length > 0
+          ? html`<div class="details-tags">
+              ${tags
+                .slice(0, 5)
+                .map((tag) => html`<span class="hax-ui-pill">${tag}</span>`)}
+            </div>`
+          : nothing
+      }
       <button
         type="button"
         class="hax-ui-btn primary details-run"
@@ -956,19 +966,27 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
         return nothing;
       }
       return html`<div class="footer">
-        ${this.filtered.length > 1
-          ? html`<span class="mini-results-counter"
-              >${this.t.resultsCount.replace(
-                "{count}",
-                () => this.filtered.length,
-              )}</span
-            >`
-          : nothing}
-        ${this.wand
-          ? html`<button type="button" class="expand" @click="${this._expand}">
-              ${this.t.openFullMerlin}
-            </button>`
-          : nothing}
+        ${
+          this.filtered.length > 1
+            ? html`<span class="mini-results-counter"
+                >${this.t.resultsCount.replace(
+                  "{count}",
+                  () => this.filtered.length,
+                )}</span
+              >`
+            : nothing
+        }
+        ${
+          this.wand
+            ? html`<button
+                type="button"
+                class="expand"
+                @click="${this._expand}"
+              >
+                ${this.t.openFullMerlin}
+              </button>`
+            : nothing
+        }
       </div>`;
     }
     return html`<div class="footer">
@@ -1463,40 +1481,47 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           @focusin="${this._resultsHover}"
           @super-daemon-row-selected="${this.itemSelected}"
         >
-          ${this.filtered.length > 0
-            ? this.mini
-              ? html`
-                  <div
-                    class="results-list"
-                    role="listbox"
-                    id="results-listbox"
-                    aria-label="${this.t.results || "Results"}"
-                  >
-                    ${this.filtered.map((item, i) =>
-                      this._renderResultRow(item, i),
-                    )}
-                  </div>
-                `
-              : html`
-                  <lit-virtualizer
-                    role="listbox"
-                    id="results-listbox"
-                    aria-label="${this.t.results || "Results"}"
-                    scroller
-                    .items=${this.filtered}
-                    .renderItem=${(item, i) => this._renderResultRow(item, i)}
-                  ></lit-virtualizer>
-                `
-            : this.loading
-              ? html`<div class="loading">
-                  ${this.t.loadingResults || "Loading results"}..
-                </div>`
-              : html`<div class="no-results">
-                  ${this.programName && (this.programSearch || "").trim() === ""
-                    ? this.t.typeToSeeResults || "Type something to see results"
-                    : this.t.noResultsForThisTerm || "No results for this term"}
-                  <div class="slotted"><slot></slot></div>
-                </div> `}
+          ${
+            this.filtered.length > 0
+              ? this.mini
+                ? html`
+                    <div
+                      class="results-list"
+                      role="listbox"
+                      id="results-listbox"
+                      aria-label="${this.t.results || "Results"}"
+                    >
+                      ${this.filtered.map((item, i) =>
+                        this._renderResultRow(item, i),
+                      )}
+                    </div>
+                  `
+                : html`
+                    <lit-virtualizer
+                      role="listbox"
+                      id="results-listbox"
+                      aria-label="${this.t.results || "Results"}"
+                      scroller
+                      .items=${this.filtered}
+                      .renderItem=${(item, i) => this._renderResultRow(item, i)}
+                    ></lit-virtualizer>
+                  `
+              : this.loading
+                ? html`<div class="loading">
+                    ${this.t.loadingResults || "Loading results"}..
+                  </div>`
+                : html`<div class="no-results">
+                    ${
+                      this.programName &&
+                      (this.programSearch || "").trim() === ""
+                        ? this.t.typeToSeeResults ||
+                          "Type something to see results"
+                        : this.t.noResultsForThisTerm ||
+                          "No results for this term"
+                    }
+                    <div class="slotted"><slot></slot></div>
+                  </div> `
+          }
         </div>
         ${this._renderDetails()}
       </div>

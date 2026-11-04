@@ -79,42 +79,50 @@ class AiUsageLicense extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
     return html`
       <meta property="oer:uri" content="${this.uri || this.licenseLink}" />
       <div class="license-body">
-        ${this.licenseImage
-          ? html`
-              <a
-                class="license-badge"
-                target="_blank"
-                href="${this.licenseLink}"
-                rel="noopener noreferrer"
-                aria-label="${this.licenseName} - AI Usage License"
-                ><img
-                  loading="lazy"
-                  alt="${this.licenseTag} - ${this.licenseName}"
-                  src="${this.licenseImage}"
-              /></a>
-            `
-          : ``}
-        ${this.licenseTag
-          ? html`
-              <span class="license-tag"
-                ><a
-                  class="license-link"
+        ${
+          this.licenseImage
+            ? html`
+                <a
+                  class="license-badge"
                   target="_blank"
                   href="${this.licenseLink}"
                   rel="noopener noreferrer"
-                  >${this.licenseTag}</a
-                ></span
-              >
-            `
-          : ``}
-        ${this.licenseName
-          ? html`<span> &mdash; ${this.licenseName}</span>`
-          : ``}
-        ${this.licenseDescription
-          ? html`<div class="license-description">
-              ${this.licenseDescription}
-            </div>`
-          : ``}
+                  aria-label="${this.licenseName} - AI Usage License"
+                  ><img
+                    loading="lazy"
+                    alt="${this.licenseTag} - ${this.licenseName}"
+                    src="${this.licenseImage}"
+                /></a>
+              `
+            : ``
+        }
+        ${
+          this.licenseTag
+            ? html`
+                <span class="license-tag"
+                  ><a
+                    class="license-link"
+                    target="_blank"
+                    href="${this.licenseLink}"
+                    rel="noopener noreferrer"
+                    >${this.licenseTag}</a
+                  ></span
+                >
+              `
+            : ``
+        }
+        ${
+          this.licenseName
+            ? html`<span> &mdash; ${this.licenseName}</span>`
+            : ``
+        }
+        ${
+          this.licenseDescription
+            ? html`<div class="license-description">
+                ${this.licenseDescription}
+              </div>`
+            : ``
+        }
       </div>
     `;
   }

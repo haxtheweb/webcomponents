@@ -207,17 +207,19 @@ class SiteMenuButton extends HAXCMSI18NMixin(
           <slot name="suffix" @slotchange="${this.__syncSlottedText}"></slot>
         </button>
       </a>
-      ${!this.hideLabel && this.label
-        ? html`
-            <simple-tooltip
-              for="menulink"
-              offset="8"
-              .position="${this.position}"
-            >
-              ${this.label}
-            </simple-tooltip>
-          `
-        : ``}
+      ${
+        !this.hideLabel && this.label
+          ? html`
+              <simple-tooltip
+                for="menulink"
+                offset="8"
+                .position="${this.position}"
+              >
+                ${this.label}
+              </simple-tooltip>
+            `
+          : ``
+      }
     `;
   }
   /**

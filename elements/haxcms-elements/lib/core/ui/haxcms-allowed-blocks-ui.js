@@ -718,31 +718,37 @@ class HAXCMSAllowedBlocksUI extends HaxcmsAdminSectionMixin(
               </div>
             </div>
             <div class="hax-ui-note note">
-              ${this.inventoryReady
-                ? html`${this.t.selectedOfAvailable
-                    .replace("{selected}", () => toggleableSelected)
-                    .replace("{total}", () => toggleableTotal)}
-                  ${HAXStore.requiredPrimitives.size
-                    ? html`<span> • ${this.t.requiredTextNote}</span>`
-                    : ""}`
-                : html`${this.t.loadingInventory}`}
+              ${
+                this.inventoryReady
+                  ? html`${this.t.selectedOfAvailable
+                      .replace("{selected}", () => toggleableSelected)
+                      .replace("{total}", () => toggleableTotal)}
+                    ${
+                      HAXStore.requiredPrimitives.size
+                        ? html`<span> • ${this.t.requiredTextNote}</span>`
+                        : ""
+                    }`
+                  : html`${this.t.loadingInventory}`
+              }
             </div>
             <div class="blocks-list">
               ${groupedBlocks.map((group) => this._renderGroup(group))}
             </div>
           </div>
         </div>
-        ${this.inShell
-          ? nothing
-          : html`<div class="actions">
-              <button
-                class="action"
-                ?disabled=${this.busy || !this.inventoryReady}
-                @click="${this._saveAllowedBlocks}"
-              >
-                ${this.t.save}
-              </button>
-            </div>`}
+        ${
+          this.inShell
+            ? nothing
+            : html`<div class="actions">
+                <button
+                  class="action"
+                  ?disabled=${this.busy || !this.inventoryReady}
+                  @click="${this._saveAllowedBlocks}"
+                >
+                  ${this.t.save}
+                </button>
+              </div>`
+        }
       </div>
       ${this.activePreview ? this._renderPreview() : nothing}
     `;

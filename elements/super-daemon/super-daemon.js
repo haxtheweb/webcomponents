@@ -1311,98 +1311,102 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
    * LitElement render callback
    */
   render() {
-    return html`${this.mini
-      ? html`
-          <absolute-position-behavior
-            justify
-            position="${this.wand ? "right" : "bottom"}"
-            allow-overlap
-            sticky
-            auto
-            .target="${this.activeNode}"
-            ?hidden="${!this.opened}"
-          >
-            <super-daemon-ui
-              ?opened="${this.opened}"
-              ?mini="${this.mini}"
-              ?wand="${this.wand}"
-              icon="${this.icon}"
-              ?dark="${this.dark}"
-              ?loading="${this.loading}"
-              like="${this.like}"
-              ?listening-for-input="${this.listeningForInput}"
-              ?voice-search="${this.voiceSearch}"
-              .items="${this.itemsForDisplay(this.items, this.programResults)}"
-              command-context="${this.commandContext}"
-              program-name="${this.programName}"
-              program-placeholder="${this.programPlaceholder || ""}"
-              program-search="${this.programSearch}"
-              @value-changed="${this.inputfilterChanged}"
-              @super-daemon-close="${this.close}"
-              @super-daemon-expand="${this.expand}"
-              @super-daemon-command-context-changed="${this
-                .commandContextChanged}"
-              >${this.noResultsSlot(
-                this.like || this.programSearch,
-              )}</super-daemon-ui
+    return html`${
+      this.mini
+        ? html`
+            <absolute-position-behavior
+              justify
+              position="${this.wand ? "right" : "bottom"}"
+              allow-overlap
+              sticky
+              auto
+              .target="${this.activeNode}"
+              ?hidden="${!this.opened}"
             >
-          </absolute-position-behavior>
-        `
-      : html`
-          <web-dialog
-            id="dialog"
-            center
-            role="dialog"
-            part="dialog"
-            aria-label="${this.t.superDaemon}"
-            aria-modal="true"
-            ?open="${this.opened}"
-            @open="${this.open}"
-            @close="${this.close}"
-            @focusout="${this.focusout}"
-          >
-            <div class="titlebar" part="titlebar">
-              ${merlinWand()}
-              <h2>${this.t.merlin}</h2>
-              <span class="keys" aria-hidden="true"
-                >${this.key1} + ${this.key2}</span
+              <super-daemon-ui
+                ?opened="${this.opened}"
+                ?mini="${this.mini}"
+                ?wand="${this.wand}"
+                icon="${this.icon}"
+                ?dark="${this.dark}"
+                ?loading="${this.loading}"
+                like="${this.like}"
+                ?listening-for-input="${this.listeningForInput}"
+                ?voice-search="${this.voiceSearch}"
+                .items="${this.itemsForDisplay(this.items, this.programResults)}"
+                command-context="${this.commandContext}"
+                program-name="${this.programName}"
+                program-placeholder="${this.programPlaceholder || ""}"
+                program-search="${this.programSearch}"
+                @value-changed="${this.inputfilterChanged}"
+                @super-daemon-close="${this.close}"
+                @super-daemon-expand="${this.expand}"
+                @super-daemon-command-context-changed="${
+                  this.commandContextChanged
+                }"
+                >${this.noResultsSlot(
+                  this.like || this.programSearch,
+                )}</super-daemon-ui
               >
-              <button
-                type="button"
-                id="cancel"
-                aria-label="${this.t.closeMerlin}"
-                title="${this.t.closeMerlin}"
-                @click="${this.close}"
-              >
-                <simple-icon-lite
-                  icon="${HaxUiAdminIcons.close}"
-                ></simple-icon-lite>
-              </button>
-            </div>
-            <super-daemon-ui
-              ?opened="${this.opened}"
-              icon="${this.icon}"
-              ?loading="${this.loading}"
-              like="${this.like}"
-              ?dark="${this.dark}"
-              ?voice-search="${this.voiceSearch}"
-              ?listening-for-input="${this.listeningForInput}"
-              @like-changed="${this.likeChanged}"
-              .items="${this.itemsForDisplay(this.items, this.programResults)}"
-              command-context="${this.commandContext}"
-              program-name="${this.programName}"
-              program-placeholder="${this.programPlaceholder || ""}"
-              program-search="${this.programSearch}"
-              @value-changed="${this.inputfilterChanged}"
-              @super-daemon-close="${this.close}"
-              @super-daemon-command-context-changed="${this
-                .commandContextChanged}"
-              >${this.noResultsSlot(
-                this.like || this.programSearch,
-              )}</super-daemon-ui
+            </absolute-position-behavior>
+          `
+        : html`
+            <web-dialog
+              id="dialog"
+              center
+              role="dialog"
+              part="dialog"
+              aria-label="${this.t.superDaemon}"
+              aria-modal="true"
+              ?open="${this.opened}"
+              @open="${this.open}"
+              @close="${this.close}"
+              @focusout="${this.focusout}"
             >
-          </web-dialog>
-        `} `;
+              <div class="titlebar" part="titlebar">
+                ${merlinWand()}
+                <h2>${this.t.merlin}</h2>
+                <span class="keys" aria-hidden="true"
+                  >${this.key1} + ${this.key2}</span
+                >
+                <button
+                  type="button"
+                  id="cancel"
+                  aria-label="${this.t.closeMerlin}"
+                  title="${this.t.closeMerlin}"
+                  @click="${this.close}"
+                >
+                  <simple-icon-lite
+                    icon="${HaxUiAdminIcons.close}"
+                  ></simple-icon-lite>
+                </button>
+              </div>
+              <super-daemon-ui
+                ?opened="${this.opened}"
+                icon="${this.icon}"
+                ?loading="${this.loading}"
+                like="${this.like}"
+                ?dark="${this.dark}"
+                ?voice-search="${this.voiceSearch}"
+                ?listening-for-input="${this.listeningForInput}"
+                @like-changed="${this.likeChanged}"
+                .items="${this.itemsForDisplay(this.items, this.programResults)}"
+                command-context="${this.commandContext}"
+                program-name="${this.programName}"
+                program-placeholder="${this.programPlaceholder || ""}"
+                program-search="${this.programSearch}"
+                @value-changed="${this.inputfilterChanged}"
+                @super-daemon-close="${this.close}"
+                @super-daemon-command-context-changed="${
+                  this.commandContextChanged
+                }"
+                >${this.noResultsSlot(
+                  this.like || this.programSearch,
+                )}</super-daemon-ui
+              >
+            </web-dialog>
+          `
+    } `;
   }
   /**
    * Move from the mini / wand popover to the full Merlin dialog, keeping

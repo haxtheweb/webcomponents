@@ -657,10 +657,12 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
     get fieldMainTemplate() {
       return html`
         <div
-          class="${this.inline ||
-          ["checkbox", "color", "radio"].includes(this.type || "text")
-            ? "field-main inline"
-            : "field-main"} ${this.isRowBasedField ? "row-layout" : ""}"
+          class="${
+            this.inline ||
+            ["checkbox", "color", "radio"].includes(this.type || "text")
+              ? "field-main inline"
+              : "field-main"
+          } ${this.isRowBasedField ? "row-layout" : ""}"
           part="field-main"
         >
           ${this.labelTemplate}
@@ -925,9 +927,9 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
      * @memberof SimpleFieldsContainer
      */
     get suffixTemplate() {
-      return html` ${this.suffix
-        ? html`${this.suffix}`
-        : html`<slot name="suffix"></slot>`}`;
+      return html` ${
+        this.suffix ? html`${this.suffix}` : html`<slot name="suffix"></slot>`
+      }`;
     }
     /**
      * focuses on field

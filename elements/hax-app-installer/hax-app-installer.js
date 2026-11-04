@@ -1271,10 +1271,8 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
    */
   async _copyToClipboard(text, field) {
     try {
-      /* eslint-disable baseline-js/use-baseline -- writeText works in Chrome, Firefox and Safari; failure is caught */
       if (globalThis.navigator && globalThis.navigator.clipboard) {
         await globalThis.navigator.clipboard.writeText(text);
-        /* eslint-enable baseline-js/use-baseline */
       }
     } catch {
       // fallback - ignore
@@ -1545,11 +1543,13 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
         <div class="step-content">
           ${this.renderStepIndicator()}
           <div class="step-container">
-            ${this.loading
-              ? this.renderLoading()
-              : this.error
-                ? this.renderError()
-                : this.renderStepContent()}
+            ${
+              this.loading
+                ? this.renderLoading()
+                : this.error
+                  ? this.renderError()
+                  : this.renderStepContent()
+            }
           </div>
         </div>
         ${this.renderHelpFooter()}
@@ -1574,10 +1574,11 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
           (i) => html`
             <span
               class="confetti-bit"
-              style="left:${(i * 4.1) % 100}%;background:${colors[
-                i % colors.length
-              ]};animation-delay:${(i % 6) * 0.12}s;animation-duration:${2.4 +
-              (i % 5) * 0.3}s;"
+              style="left:${(i * 4.1) % 100}%;background:${
+                colors[i % colors.length]
+              };animation-delay:${(i % 6) * 0.12}s;animation-duration:${
+                2.4 + (i % 5) * 0.3
+              }s;"
             ></span>
           `,
         )}
@@ -1661,16 +1662,18 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
           `;
           return html`
             <li class="step-${state} ${canGoBack ? "step-clickable" : ""}">
-              ${canGoBack
-                ? html`<button
-                    class="step-link"
-                    @click="${() => this._goToStep(s.num)}"
-                    title="${this.t.back}"
-                    aria-label="${this.t.back}: ${s.label}"
-                  >
-                    ${inner}
-                  </button>`
-                : html`<span class="step-static">${inner}</span>`}
+              ${
+                canGoBack
+                  ? html`<button
+                      class="step-link"
+                      @click="${() => this._goToStep(s.num)}"
+                      title="${this.t.back}"
+                      aria-label="${this.t.back}: ${s.label}"
+                    >
+                      ${inner}
+                    </button>`
+                  : html`<span class="step-static">${inner}</span>`
+              }
             </li>
           `;
         })}
@@ -1715,69 +1718,80 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
     return html`
       <h2>${this.t.verifyRequirements}</h2>
       <p class="description">${this.t.verifyRequirementsDescription}</p>
-      ${this._preparePermissionCommand
-        ? html`
-            <div class="permission-banner">
-              <div class="permission-banner-head">
-                <simple-icon-lite icon="icons:lock"></simple-icon-lite>
-                <strong>${this.t.permissionRequired}</strong>
+      ${
+        this._preparePermissionCommand
+          ? html`
+              <div class="permission-banner">
+                <div class="permission-banner-head">
+                  <simple-icon-lite icon="icons:lock"></simple-icon-lite>
+                  <strong>${this.t.permissionRequired}</strong>
+                </div>
+                ${
+                  this._preparePermissionHint
+                    ? html`<p class="permission-banner-hint">
+                        ${this._preparePermissionHint}
+                      </p>`
+                    : ""
+                }
+                <pre class="cmd-block permission-cmd">
+${this._preparePermissionCommand}</pre>
               </div>
-              ${this._preparePermissionHint
-                ? html`<p class="permission-banner-hint">
-                    ${this._preparePermissionHint}
-                  </p>`
-                : ""}
-              <pre class="cmd-block permission-cmd">
-${this._preparePermissionCommand}</pre
-              >
-            </div>
-          `
-        : ""}
-      ${hasErrors
-        ? html`
-            <div class="prepare-action">
-              <button
-                class="btn btn-primary"
-                @click="${this._prepareEnvironment}"
-              >
-                <simple-icon-lite
-                  icon="icons:create-new-folder"
-                  style="--simple-icon-width: var(--ddd-icon-4xs); --simple-icon-height: var(--ddd-icon-4xs);"
-                ></simple-icon-lite>
-                ${this.t.createMissingFiles}
-              </button>
-            </div>
-          `
-        : ""}
-      ${needsConfig.length === 0
-        ? html`
-            <div class="no-issues">
-              <simple-icon-lite icon="icons:check-circle"></simple-icon-lite>
-              <span>${this.t.allRequirementsMet}</span>
-            </div>
-          `
-        : html`
-            <div class="req-section">
-              <h3>
-                <simple-icon-lite
-                  icon="icons:error"
-                  class="status-error"
-                ></simple-icon-lite>
-                ${this.t.requirementsNeedingConfiguration}
-              </h3>
-              ${this.renderReqTable(needsConfig, true)}
-            </div>
-          `}
-      ${allPassed.length > 0
-        ? html`
-            <div class="req-section">
-              <details class="req-details">
-                <summary>${this.t.passedChecks} (${allPassed.length})</summary>
-                ${this.renderReqTable(allPassed, false)}
-              </details>
-            </div>
-          `
-        : ""}
+            `
+          : ""
+      }
+      ${
+        hasErrors
+          ? html`
+              <div class="prepare-action">
+                <button
+                  class="btn btn-primary"
+                  @click="${this._prepareEnvironment}"
+                >
+                  <simple-icon-lite
+                    icon="icons:create-new-folder"
+                    style="--simple-icon-width: var(--ddd-icon-4xs); --simple-icon-height: var(--ddd-icon-4xs);"
+                  ></simple-icon-lite>
+                  ${this.t.createMissingFiles}
+                </button>
+              </div>
+            `
+          : ""
+      }
+      ${
+        needsConfig.length === 0
+          ? html`
+              <div class="no-issues">
+                <simple-icon-lite icon="icons:check-circle"></simple-icon-lite>
+                <span>${this.t.allRequirementsMet}</span>
+              </div>
+            `
+          : html`
+              <div class="req-section">
+                <h3>
+                  <simple-icon-lite
+                    icon="icons:error"
+                    class="status-error"
+                  ></simple-icon-lite>
+                  ${this.t.requirementsNeedingConfiguration}
+                </h3>
+                ${this.renderReqTable(needsConfig, true)}
+              </div>
+            `
+      }
+      ${
+        allPassed.length > 0
+          ? html`
+              <div class="req-section">
+                <details class="req-details">
+                  <summary>
+                    ${this.t.passedChecks} (${allPassed.length})
+                  </summary>
+                  ${this.renderReqTable(allPassed, false)}
+                </details>
+              </div>
+            `
+          : ""
+      }
       <div class="btn-row">
         <button class="btn btn-secondary" @click="${() => this._goToStep(1)}">
           <simple-icon-lite
@@ -1786,34 +1800,38 @@ ${this._preparePermissionCommand}</pre
           ></simple-icon-lite>
           ${this.t.back}
         </button>
-        ${hasErrors
-          ? html`
-              <button
-                class="btn btn-secondary"
-                @click="${() => this.fetchState()}"
-              >
-                <simple-icon-lite
-                  icon="icons:refresh"
-                  style="--simple-icon-width: var(--ddd-icon-4xs); --simple-icon-height: var(--ddd-icon-4xs);"
-                ></simple-icon-lite>
-                ${this.t.recheckRequirements}
-              </button>
-            `
-          : ""}
-        ${!hasErrors
-          ? html`
-              <button
-                class="btn btn-primary"
-                @click="${this._handleStep2Continue}"
-              >
-                ${this.t.continue}
-                <simple-icon-lite
-                  icon="icons:arrow-forward"
-                  style="--simple-icon-width: var(--ddd-icon-4xs); --simple-icon-height: var(--ddd-icon-4xs);"
-                ></simple-icon-lite>
-              </button>
-            `
-          : ""}
+        ${
+          hasErrors
+            ? html`
+                <button
+                  class="btn btn-secondary"
+                  @click="${() => this.fetchState()}"
+                >
+                  <simple-icon-lite
+                    icon="icons:refresh"
+                    style="--simple-icon-width: var(--ddd-icon-4xs); --simple-icon-height: var(--ddd-icon-4xs);"
+                  ></simple-icon-lite>
+                  ${this.t.recheckRequirements}
+                </button>
+              `
+            : ""
+        }
+        ${
+          !hasErrors
+            ? html`
+                <button
+                  class="btn btn-primary"
+                  @click="${this._handleStep2Continue}"
+                >
+                  ${this.t.continue}
+                  <simple-icon-lite
+                    icon="icons:arrow-forward"
+                    style="--simple-icon-width: var(--ddd-icon-4xs); --simple-icon-height: var(--ddd-icon-4xs);"
+                  ></simple-icon-lite>
+                </button>
+              `
+            : ""
+        }
       </div>
     `;
   }
@@ -1848,15 +1866,20 @@ ${this._preparePermissionCommand}</pre
                 </td>
                 <td>${row.value}</td>
                 <td>${row.description}</td>
-                ${showCommand
-                  ? html`<td>
-                      ${row.suggestedCommand
-                        ? html`<code>
-                            <pre class="cmd-block">${row.suggestedCommand}</pre>
-                          </code>`
-                        : ""}
-                    </td>`
-                  : ""}
+                ${
+                  showCommand
+                    ? html`<td>
+                        ${
+                          row.suggestedCommand
+                            ? html`<code>
+                                <pre class="cmd-block">
+${row.suggestedCommand}</pre>
+                              </code>`
+                            : ""
+                        }
+                      </td>`
+                    : ""
+                }
               </tr>
             `;
           })}
@@ -1882,16 +1905,18 @@ ${this._preparePermissionCommand}</pre
     return html`
       <h2>${this.t.configureSystem}</h2>
       <p class="description">${this.t.configureSystemDescription}</p>
-      ${this._serverErrors && this._serverErrors.length
-        ? html`
-            <div class="server-error-banner" role="alert">
-              <simple-icon-lite icon="icons:error"></simple-icon-lite>
-              <ul>
-                ${this._serverErrors.map((msg) => html`<li>${msg}</li>`)}
-              </ul>
-            </div>
-          `
-        : ""}
+      ${
+        this._serverErrors && this._serverErrors.length
+          ? html`
+              <div class="server-error-banner" role="alert">
+                <simple-icon-lite icon="icons:error"></simple-icon-lite>
+                <ul>
+                  ${this._serverErrors.map((msg) => html`<li>${msg}</li>`)}
+                </ul>
+              </div>
+            `
+          : ""
+      }
       <div class="field-group">
         <label for="username-input">${this.t.adminUsername}</label>
         <input
@@ -1912,21 +1937,25 @@ ${this._preparePermissionCommand}</pre
           autocomplete="new-password"
         />
         <div class="help-text">${this.t.passwordHelp}</div>
-        ${strength.score > 0
-          ? html`
-              <div
-                class="strength-meter"
-                role="meter"
-                aria-valuemin="0"
-                aria-valuemax="4"
-                aria-valuenow="${strength.score}"
-                aria-label="${this.t.passwordStrength}"
-              >
-                <div class="strength-bar strength-${strength.score}"></div>
-                <span class="strength-label">${this.t[strength.labelKey]}</span>
-              </div>
-            `
-          : ""}
+        ${
+          strength.score > 0
+            ? html`
+                <div
+                  class="strength-meter"
+                  role="meter"
+                  aria-valuemin="0"
+                  aria-valuemax="4"
+                  aria-valuenow="${strength.score}"
+                  aria-label="${this.t.passwordStrength}"
+                >
+                  <div class="strength-bar strength-${strength.score}"></div>
+                  <span class="strength-label"
+                    >${this.t[strength.labelKey]}</span
+                  >
+                </div>
+              `
+            : ""
+        }
         <div
           class="password-criteria"
           role="group"
@@ -1958,18 +1987,24 @@ ${this._preparePermissionCommand}</pre
           @input="${this._handleConfirmPasswordChange}"
           autocomplete="new-password"
         />
-        ${this._confirmPasswordInput !== ""
-          ? html`
-              <div class="confirm-feedback ${confirmed ? "match" : "mismatch"}">
-                <simple-icon-lite
-                  icon="${confirmed ? "icons:check" : "icons:close"}"
-                ></simple-icon-lite>
-                ${confirmed
-                  ? this.t.passwordsMatch
-                  : this.t.passwordsDoNotMatch}
-              </div>
-            `
-          : ""}
+        ${
+          this._confirmPasswordInput !== ""
+            ? html`
+                <div
+                  class="confirm-feedback ${confirmed ? "match" : "mismatch"}"
+                >
+                  <simple-icon-lite
+                    icon="${confirmed ? "icons:check" : "icons:close"}"
+                  ></simple-icon-lite>
+                  ${
+                    confirmed
+                      ? this.t.passwordsMatch
+                      : this.t.passwordsDoNotMatch
+                  }
+                </div>
+              `
+            : ""
+        }
       </div>
       <div class="btn-row">
         <button class="btn btn-secondary" @click="${() => this._goToStep(2)}">
@@ -2012,18 +2047,24 @@ ${this._preparePermissionCommand}</pre
             title="${this.t.copy}"
           >
             <simple-icon-lite
-              icon="${this._copiedField === "username"
-                ? "icons:check"
-                : "icons:content-copy"}"
+              icon="${
+                this._copiedField === "username"
+                  ? "icons:check"
+                  : "icons:content-copy"
+              }"
             ></simple-icon-lite>
           </button>
         </div>
         <div class="credential-row">
           <span class="credential-label">
             ${this.t.password}
-            ${passwordWasGenerated
-              ? html`<span class="generated-tag">${this.t.autoGenerated}</span>`
-              : ""}
+            ${
+              passwordWasGenerated
+                ? html`<span class="generated-tag"
+                    >${this.t.autoGenerated}</span
+                  >`
+                : ""
+            }
           </span>
           <span class="credential-value"
             >${this._passwordRevealed ? password : "••••••••••••"}</span
@@ -2036,9 +2077,11 @@ ${this._preparePermissionCommand}</pre
             aria-pressed="${this._passwordRevealed ? "true" : "false"}"
           >
             <simple-icon-lite
-              icon="${this._passwordRevealed
-                ? "icons:visibility-off"
-                : "icons:visibility"}"
+              icon="${
+                this._passwordRevealed
+                  ? "icons:visibility-off"
+                  : "icons:visibility"
+              }"
             ></simple-icon-lite>
           </button>
           <button
@@ -2047,9 +2090,11 @@ ${this._preparePermissionCommand}</pre
             title="${this.t.copy}"
           >
             <simple-icon-lite
-              icon="${this._copiedField === "password"
-                ? "icons:check"
-                : "icons:content-copy"}"
+              icon="${
+                this._copiedField === "password"
+                  ? "icons:check"
+                  : "icons:content-copy"
+              }"
             ></simple-icon-lite>
           </button>
         </div>

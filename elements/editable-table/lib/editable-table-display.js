@@ -279,11 +279,13 @@ class EditableTableDisplay extends I18NMixin(
     if (this.hideBlockHeader) {
       // embedded in another block: that block's header names the table, so
       // only the actions stay visible, in a small row above it
-      return html`${this.downloadable || this.copyable || this.printable
-          ? html`<div class="embedded-actions">
-              ${this._renderBlockActions()}
-            </div>`
-          : nothing}
+      return html`${
+          this.downloadable || this.copyable || this.printable
+            ? html`<div class="embedded-actions">
+                ${this._renderBlockActions()}
+              </div>`
+            : nothing
+        }
         <div class="embedded-scroll">${table}</div>
         <div id="htmlImport" hidden><slot></slot></div>`;
     }
@@ -346,40 +348,44 @@ class EditableTableDisplay extends I18NMixin(
                   part="th"
                   ?xs-hidden="${this._isColHidden(index, this.selected || 1)}"
                 >
-                  ${!this.sort
-                    ? this.getHTML(this._replaceBlankCell(th))
-                    : html`
-                        <editable-table-sort
-                          column-index="${index}"
-                          sort-column="${this.sortColumn}"
-                          sort-mode="${this.sortColumn === index
-                            ? this.sortMode
-                            : "none"}"
-                        >
-                          ${this.getHTML(this._replaceBlankCell(th))}
-                        </editable-table-sort>
-                      `}
-                  ${!this.disableResponsive &&
-                  index > 0 &&
-                  this.selected == index
-                    ? html` <simple-picker
-                          id="simple-picker-${index}"
-                          class="column"
-                          align-right
-                          aria-label="${this.t.selectColumn}"
-                          @change="${this._selectedChanged}"
-                          hide-sample
-                          .options="${this.options}"
-                          .value="${index}"
-                        >
-                        </simple-picker>
-                        <simple-tooltip
-                          position="top"
-                          for="simple-picker-${index}"
-                          aria-hidden="true"
-                          >${this.t.selectColumn}</simple-tooltip
-                        >`
-                    : ``}
+                  ${
+                    !this.sort
+                      ? this.getHTML(this._replaceBlankCell(th))
+                      : html`
+                          <editable-table-sort
+                            column-index="${index}"
+                            sort-column="${this.sortColumn}"
+                            sort-mode="${
+                              this.sortColumn === index ? this.sortMode : "none"
+                            }"
+                          >
+                            ${this.getHTML(this._replaceBlankCell(th))}
+                          </editable-table-sort>
+                        `
+                  }
+                  ${
+                    !this.disableResponsive &&
+                    index > 0 &&
+                    this.selected == index
+                      ? html` <simple-picker
+                            id="simple-picker-${index}"
+                            class="column"
+                            align-right
+                            aria-label="${this.t.selectColumn}"
+                            @change="${this._selectedChanged}"
+                            hide-sample
+                            .options="${this.options}"
+                            .value="${index}"
+                          >
+                          </simple-picker>
+                          <simple-tooltip
+                            position="top"
+                            for="simple-picker-${index}"
+                            aria-hidden="true"
+                            >${this.t.selectColumn}</simple-tooltip
+                          >`
+                      : ``
+                  }
                 </th>
               `,
             )}
@@ -390,13 +396,15 @@ class EditableTableDisplay extends I18NMixin(
             this._isRowFiltered(tr) ? "" : this._tbodyTr(tr),
           )}
         </tbody>
-        ${!this.footer
-          ? ""
-          : html`
-              <tfoot class="tfoot" part="tfoot">
-                ${this._tbodyTr(this.tfoot[0], true, true)}
-              </tfoot>
-            `}
+        ${
+          !this.footer
+            ? ""
+            : html`
+                <tfoot class="tfoot" part="tfoot">
+                  ${this._tbodyTr(this.tfoot[0], true, true)}
+                </tfoot>
+              `
+        }
       </table>
     `;
   }
@@ -817,26 +825,28 @@ class EditableTableDisplay extends I18NMixin(
       ?negative="${this._isNegative(cell)}"
       ?xs-hidden="${this._isColHidden(index, this.selected || 1)}"
     >
-      ${this.filter
-        ? html`
-            <editable-table-filter
-              class="cell"
-              column-index="${index}"
-              text="${this._replaceBlankCell(cell)}"
-              ?toggled="${this._isCellFiltered(
-                index,
-                this.filterColumn,
-                this.filtered,
-              )}"
-            >
-              ${this.getHTML(this._replaceBlankCell(cell))}
-            </editable-table-filter>
-          `
-        : !noFilter
-          ? html`<span class="cell"
-              >${this.getHTML(this._replaceBlankCell(cell))}</span
-            >`
-          : this.getHTML(this._replaceBlankCell(cell))}
+      ${
+        this.filter
+          ? html`
+              <editable-table-filter
+                class="cell"
+                column-index="${index}"
+                text="${this._replaceBlankCell(cell)}"
+                ?toggled="${this._isCellFiltered(
+                  index,
+                  this.filterColumn,
+                  this.filtered,
+                )}"
+              >
+                ${this.getHTML(this._replaceBlankCell(cell))}
+              </editable-table-filter>
+            `
+          : !noFilter
+            ? html`<span class="cell"
+                >${this.getHTML(this._replaceBlankCell(cell))}</span
+              >`
+            : this.getHTML(this._replaceBlankCell(cell))
+      }
     </td>`;
   }
 

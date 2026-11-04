@@ -125,12 +125,14 @@ class GradeBookPopUp extends I18NMixin(LitElement) {
       GradeBookStore.database.assignments &&
       GradeBookStore.database.assignments[GradeBookStore.activeAssignment];
     let pre = html`<h3>${this.t.studentSubmission}</h3>
-      ${activeAssignmentData && activeAssignmentData._ISODueDate
-        ? html`${this.t.submitted}
-            <relative-time
-              .datetime="${activeAssignmentData._ISODueDate}"
-            ></relative-time> `
-        : ``}`;
+      ${
+        activeAssignmentData && activeAssignmentData._ISODueDate
+          ? html`${this.t.submitted}
+              <relative-time
+                .datetime="${activeAssignmentData._ISODueDate}"
+              ></relative-time> `
+          : ``
+      }`;
     // test if this smells like a URL
     if (validURL(data)) {
       return html`${pre}<a

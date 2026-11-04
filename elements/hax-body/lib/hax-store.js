@@ -3634,9 +3634,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           // simple-symbol-picker.js (no standalone data file), so importing
           // that module populates the globalThis entry as a side effect.
           if (!globalThis.SimplePickerSymbols) {
-            await import(
-              "@haxtheweb/simple-picker/lib/simple-symbol-picker.js"
-            );
+            await import("@haxtheweb/simple-picker/lib/simple-symbol-picker.js");
           }
           // resolve a readable name for an entity, falling back to a
           // title-cased version of the entity name when unmapped

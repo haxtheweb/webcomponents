@@ -337,22 +337,24 @@ export class FlashCardAnswerBox extends I18NMixin(DDD) {
         @keydown="${(e) => (e.key === "Enter" ? this.checkUserAnswer() : "")}"
         .value="${this.userAnswer}"
       />
-      ${this.status !== "pending"
-        ? html`<p id="status-message" class="feedback">
-              <simple-icon-lite
-                id="status-icon"
-                icon="${this.icon}"
-                aria-hidden="true"
-              ></simple-icon-lite
-              >${this.message}
-            </p>
-            <p class="answer-message">
-              ${this.t.correctAnswer.replace(
-                "{answer}",
-                () => this.correctAnswer,
-              )}
-            </p>`
-        : ``}
+      ${
+        this.status !== "pending"
+          ? html`<p id="status-message" class="feedback">
+                <simple-icon-lite
+                  id="status-icon"
+                  icon="${this.icon}"
+                  aria-hidden="true"
+                ></simple-icon-lite
+                >${this.message}
+              </p>
+              <p class="answer-message">
+                ${this.t.correctAnswer.replace(
+                  "{answer}",
+                  () => this.correctAnswer,
+                )}
+              </p>`
+          : ``
+      }
       <div id="buttons">
         <simple-toolbar-button
           id="check"

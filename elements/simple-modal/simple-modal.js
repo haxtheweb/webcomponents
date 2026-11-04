@@ -479,17 +479,19 @@ class SimpleModal extends I18NMixin(LitElement) {
           ${this._renderTitle()}
         </h3>
         <div></div>
-        ${!this.modal || this.showClose
-          ? html`<simple-icon-button-lite
-              id="close"
-              dark
-              icon="${this.closeIcon}"
-              @click="${this.close}"
-              label="${this.closeLabel}"
-              part="close"
-            >
-            </simple-icon-button-lite>`
-          : ``}
+        ${
+          !this.modal || this.showClose
+            ? html`<simple-icon-button-lite
+                id="close"
+                dark
+                icon="${this.closeIcon}"
+                @click="${this.close}"
+                label="${this.closeLabel}"
+                part="close"
+              >
+              </simple-icon-button-lite>`
+            : ``
+        }
       </div>
       <div id="headerbar" part="headerbar"><slot name="header"></slot></div>
       <p id="simple-modal-content" part="content">
@@ -1105,30 +1107,36 @@ class SimpleModal extends I18NMixin(LitElement) {
               class="breadcrumb-button"
               @click="${(e) => this._handleBreadcrumbClick(crumb, index, e)}"
             >
-              ${icon
-                ? html`<simple-icon-lite
-                    class="breadcrumb-icon"
-                    icon="${icon}"
-                    aria-hidden="true"
-                  ></simple-icon-lite>`
-                : ``}
+              ${
+                icon
+                  ? html`<simple-icon-lite
+                      class="breadcrumb-icon"
+                      icon="${icon}"
+                      aria-hidden="true"
+                    ></simple-icon-lite>`
+                  : ``
+              }
               <span>${crumb.label}</span>
             </button>`
           : html`<span class="breadcrumb-current" aria-current="page">
-              ${icon
-                ? html`<simple-icon-lite
-                    class="breadcrumb-icon"
-                    icon="${icon}"
-                    aria-hidden="true"
-                  ></simple-icon-lite>`
-                : ``}
+              ${
+                icon
+                  ? html`<simple-icon-lite
+                      class="breadcrumb-icon"
+                      icon="${icon}"
+                      aria-hidden="true"
+                    ></simple-icon-lite>`
+                  : ``
+              }
               <span>${crumb.label}</span>
             </span>`;
-        return html`${index > 0
-          ? html`<span class="breadcrumb-separator" aria-hidden="true"
-              >&gt;</span
-            >`
-          : ``}${item}`;
+        return html`${
+          index > 0
+            ? html`<span class="breadcrumb-separator" aria-hidden="true"
+                >&gt;</span
+              >`
+            : ``
+        }${item}`;
       })}
     </nav>`;
   }

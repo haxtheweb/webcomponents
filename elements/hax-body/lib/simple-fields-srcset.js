@@ -285,11 +285,13 @@ class SimpleFieldsSrcset extends I18NMixin(
           aria-labelledby="${this.id}-label"
           aria-live="polite"
         >
-          ${this.__rows.length === 0
-            ? html`<div class="empty-state" part="empty-state">
-                ${this.t.noResponsiveSources}
-              </div>`
-            : this.__rows.map((row, i) => this._rowTemplate(row, i))}
+          ${
+            this.__rows.length === 0
+              ? html`<div class="empty-state" part="empty-state">
+                  ${this.t.noResponsiveSources}
+                </div>`
+              : this.__rows.map((row, i) => this._rowTemplate(row, i))
+          }
         </div>
         <div id="add-row" part="add-row">
           <button

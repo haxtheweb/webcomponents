@@ -166,17 +166,53 @@ class RetroCard extends SimpleColors {
 
   // render function
   render() {
-    return html` ${!this.nosource
-      ? html`
-          <a class="link" href="${this.url}" @click="${this._clickCard}">
-            ${this.__source
-              ? html`<img
-                  class="img"
-                  loading="lazy"
-                  src="${this.__source}"
-                  alt="${[this.title, this.subtitle].filter(Boolean).join(" ")}"
-                />`
-              : ``}
+    return html` ${
+      !this.nosource
+        ? html`
+            <a class="link" href="${this.url}" @click="${this._clickCard}">
+              ${
+                this.__source
+                  ? html`<img
+                      class="img"
+                      loading="lazy"
+                      src="${this.__source}"
+                      alt="${[this.title, this.subtitle].filter(Boolean).join(" ")}"
+                    />`
+                  : ``
+              }
+              <div class="title" part="title">
+                <slot name="title"></slot>${this.title}
+              </div>
+              <div class="subtitle" part="subtitle">
+                <slot name="subtitle">${this.subtitle}</slot>
+              </div>
+              <div class="description" part="description"><slot></slot></div>
+              ${
+                this.__cardTags
+                  ? html`<hr />
+                      <div class="card-tags" part="card-tags">
+                        ${this.__cardTags.map(
+                          (tag) =>
+                            html`<span class="project-tag" part="project-tag"
+                              >${tag.trim()}</span
+                            >`,
+                        )}
+                      </div>`
+                  : ``
+              }
+            </a>
+          `
+        : html` <div class="link">
+            ${
+              this.__source
+                ? html`<img
+                    class="img"
+                    loading="lazy"
+                    src="${this.__source}"
+                    alt="${[this.title, this.subtitle].filter(Boolean).join(" ")}"
+                  />`
+                : ``
+            }
             <div class="title" part="title">
               <slot name="title"></slot>${this.title}
             </div>
@@ -184,47 +220,21 @@ class RetroCard extends SimpleColors {
               <slot name="subtitle">${this.subtitle}</slot>
             </div>
             <div class="description" part="description"><slot></slot></div>
-            ${this.__cardTags
-              ? html`<hr />
-                  <div class="card-tags" part="card-tags">
-                    ${this.__cardTags.map(
-                      (tag) =>
-                        html`<span class="project-tag" part="project-tag"
-                          >${tag.trim()}</span
-                        >`,
-                    )}
-                  </div>`
-              : ``}
-          </a>
-        `
-      : html` <div class="link">
-          ${this.__source
-            ? html`<img
-                class="img"
-                loading="lazy"
-                src="${this.__source}"
-                alt="${[this.title, this.subtitle].filter(Boolean).join(" ")}"
-              />`
-            : ``}
-          <div class="title" part="title">
-            <slot name="title"></slot>${this.title}
-          </div>
-          <div class="subtitle" part="subtitle">
-            <slot name="subtitle">${this.subtitle}</slot>
-          </div>
-          <div class="description" part="description"><slot></slot></div>
-          ${this.__cardTags
-            ? html`<hr />
-                <div class="card-tags" part="card-tags">
-                  ${this.__cardTags.map(
-                    (tag) =>
-                      html`<span class="project-tag" part="project-tag"
-                        >${tag.trim()}</span
-                      >`,
-                  )}
-                </div>`
-            : ``}
-        </div>`}`;
+            ${
+              this.__cardTags
+                ? html`<hr />
+                    <div class="card-tags" part="card-tags">
+                      ${this.__cardTags.map(
+                        (tag) =>
+                          html`<span class="project-tag" part="project-tag"
+                            >${tag.trim()}</span
+                          >`,
+                      )}
+                    </div>`
+                : ``
+            }
+          </div>`
+    }`;
   }
 
   // haxProperty definition

@@ -263,7 +263,8 @@ class EnhancedText extends LitElement {
           0%,
           100% {
             box-shadow:
-              0em -2.6em 0em 0em var(--enhanced-text-color, var(--enhanced-text-loader-color)),
+              0em -2.6em 0em 0em
+                var(--enhanced-text-color, var(--enhanced-text-loader-color)),
               1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2),
               2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
               1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
@@ -275,7 +276,8 @@ class EnhancedText extends LitElement {
           12.5% {
             box-shadow:
               0em -2.6em 0em 0em rgba(255, 255, 255, 0.7),
-              1.8em -1.8em 0 0em var(--enhanced-text-color, var(--enhanced-text-loader-color)),
+              1.8em -1.8em 0 0em
+                var(--enhanced-text-color, var(--enhanced-text-loader-color)),
               2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
               1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
               0em 2.5em 0 0em rgba(255, 255, 255, 0.2),
@@ -326,7 +328,8 @@ class EnhancedText extends LitElement {
               2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
               1.75em 1.75em 0 0em rgba(255, 255, 255, 0.5),
               0em 2.5em 0 0em rgba(255, 255, 255, 0.7),
-              -1.8em 1.8em 0 0em var(--enhanced-text-color, var(--enhanced-text-loader-color)),
+              -1.8em 1.8em 0 0em
+                var(--enhanced-text-color, var(--enhanced-text-loader-color)),
               -2.6em 0em 0 0em rgba(255, 255, 255, 0.2),
               -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
           }
@@ -338,7 +341,8 @@ class EnhancedText extends LitElement {
               1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
               0em 2.5em 0 0em rgba(255, 255, 255, 0.5),
               -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.7),
-              -2.6em 0em 0 0em var(--enhanced-text-color, var(--enhanced-text-loader-color)),
+              -2.6em 0em 0 0em
+                var(--enhanced-text-color, var(--enhanced-text-loader-color)),
               -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
           }
           87.5% {
@@ -358,7 +362,8 @@ class EnhancedText extends LitElement {
           0%,
           100% {
             box-shadow:
-              0em -2.6em 0em 0em var(--enhanced-text-color, var(--enhanced-text-loader-color)),
+              0em -2.6em 0em 0em
+                var(--enhanced-text-color, var(--enhanced-text-loader-color)),
               1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2),
               2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
               1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
@@ -370,7 +375,8 @@ class EnhancedText extends LitElement {
           12.5% {
             box-shadow:
               0em -2.6em 0em 0em rgba(255, 255, 255, 0.7),
-              1.8em -1.8em 0 0em var(--enhanced-text-color, var(--enhanced-text-loader-color)),
+              1.8em -1.8em 0 0em
+                var(--enhanced-text-color, var(--enhanced-text-loader-color)),
               2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
               1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
               0em 2.5em 0 0em rgba(255, 255, 255, 0.2),
@@ -421,7 +427,8 @@ class EnhancedText extends LitElement {
               2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
               1.75em 1.75em 0 0em rgba(255, 255, 255, 0.5),
               0em 2.5em 0 0em rgba(255, 255, 255, 0.7),
-              -1.8em 1.8em 0 0em var(--enhanced-text-color, var(--enhanced-text-loader-color)),
+              -1.8em 1.8em 0 0em
+                var(--enhanced-text-color, var(--enhanced-text-loader-color)),
               -2.6em 0em 0 0em rgba(255, 255, 255, 0.2),
               -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
           }
@@ -433,7 +440,8 @@ class EnhancedText extends LitElement {
               1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
               0em 2.5em 0 0em rgba(255, 255, 255, 0.5),
               -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.7),
-              -2.6em 0em 0 0em var(--enhanced-text-color, var(--enhanced-text-loader-color)),
+              -2.6em 0em 0 0em
+                var(--enhanced-text-color, var(--enhanced-text-loader-color)),
               -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
           }
           87.5% {

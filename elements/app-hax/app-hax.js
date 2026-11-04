@@ -1635,9 +1635,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     import("./lib/v2/app-hax-toast.js");
     import("./lib/v2/app-hax-darkmode-toggle.js");
     import("./lib/v2/app-hax-search-results.js");
-    import(
-      "@haxtheweb/haxcms-elements/lib/core/ui/app-hax-user-menu-button.js"
-    );
+    import("@haxtheweb/haxcms-elements/lib/core/ui/app-hax-user-menu-button.js");
     this.dispatchEvent(
       new CustomEvent("app-hax-loaded", {
         composed: true,
@@ -2351,19 +2349,21 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
               name="app-header-pre"
               @slotchange="${this._syncHeaderPreSlot}"
             ></slot>
-            ${!this.hasHeaderPre
-              ? html`<a id="home" title="${this.t.home}" href="home">
-                    <simple-icon-lite
-                      id="hlogo"
-                      icon="hax:hax2022"
-                      class="haxLogo"
-                      title="${this.t.home}"
-                    ></simple-icon-lite>
-                  </a>
-                  <simple-tooltip for="hlogo" position="right">
-                    ${this.t.home}
-                  </simple-tooltip>`
-              : ``}
+            ${
+              !this.hasHeaderPre
+                ? html`<a id="home" title="${this.t.home}" href="home">
+                      <simple-icon-lite
+                        id="hlogo"
+                        icon="hax:hax2022"
+                        class="haxLogo"
+                        title="${this.t.home}"
+                      ></simple-icon-lite>
+                    </a>
+                    <simple-tooltip for="hlogo" position="right">
+                      ${this.t.home}
+                    </simple-tooltip>`
+                : ``
+            }
           </div>
 
           <div slot="center">${this.t.haxSiteDashboard}</div>
@@ -2401,14 +2401,16 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                 <button
                   class="soundToggle"
                   @click="${soundToggle}"
-                  aria-label="${this.soundIcon &&
-                  this.soundIcon.indexOf("Full") !== -1
-                    ? this.t.toggleSoundEffectsOff
-                    : this.t.toggleSoundEffectsOn}"
-                  aria-pressed="${this.soundIcon &&
-                  this.soundIcon.indexOf("Full") !== -1
-                    ? "true"
-                    : "false"}"
+                  aria-label="${
+                    this.soundIcon && this.soundIcon.indexOf("Full") !== -1
+                      ? this.t.toggleSoundEffectsOff
+                      : this.t.toggleSoundEffectsOn
+                  }"
+                  aria-pressed="${
+                    this.soundIcon && this.soundIcon.indexOf("Full") !== -1
+                      ? "true"
+                      : "false"
+                  }"
                 >
                   <simple-icon-lite
                     src="${this.soundIcon}"
@@ -2419,17 +2421,19 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                   <span class="sound-label">${this.t.soundEffects}</span>
                 </button>
               </div>
-              ${this._allowSystemSettings()
-                ? html`
-                    <app-hax-user-menu-button
-                      id="systemsettingsbutton"
-                      slot="main-menu"
-                      icon="settings"
-                      label="${this.t.settings}"
-                      @click="${this._openSystemSettingsMenuTap}"
-                    ></app-hax-user-menu-button>
-                  `
-                : ""}
+              ${
+                this._allowSystemSettings()
+                  ? html`
+                      <app-hax-user-menu-button
+                        id="systemsettingsbutton"
+                        slot="main-menu"
+                        icon="settings"
+                        label="${this.t.settings}"
+                        @click="${this._openSystemSettingsMenuTap}"
+                      ></app-hax-user-menu-button>
+                    `
+                  : ""
+              }
               <app-hax-user-menu-button
                 slot="main-menu"
                 icon="face"

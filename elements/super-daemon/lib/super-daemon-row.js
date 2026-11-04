@@ -411,11 +411,13 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
       <!-- aria-selected lives on the host (role=option, set dynamically by
            super-daemon-ui); hardcoding it on the inner button as false
            conflicted with the host value for assistive tech -->
-      ${this.groupLabel
-        ? html`<div class="group-label" part="group-label" aria-hidden="true">
-            ${this.groupLabel}
-          </div>`
-        : ``}
+      ${
+        this.groupLabel
+          ? html`<div class="group-label" part="group-label" aria-hidden="true">
+              ${this.groupLabel}
+            </div>`
+          : ``
+      }
       <button
         part="button"
         tabindex="-1"
@@ -426,75 +428,97 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
         @focusin="${this._focusIn}"
         @focusout="${this._focusOut}"
       >
-        ${this.icon || this.image || this.textCharacter
-          ? html`<span class="tile" part="tile">
-              ${this.icon
-                ? html`<simple-icon-lite
-                    icon="${this.icon}"
-                    class="result-icon"
-                  ></simple-icon-lite>`
-                : ``}
-              ${this.image
-                ? html`<img src="${this.image}" class="result-image" alt="" />`
-                : ``}
-              ${this.textCharacter
-                ? html`<span class="result-textCharacter"
-                    >${this.textCharacter}</span
-                  >`
-                : ``}
-            </span>`
-          : ``}
+        ${
+          this.icon || this.image || this.textCharacter
+            ? html`<span class="tile" part="tile">
+                ${
+                  this.icon
+                    ? html`<simple-icon-lite
+                        icon="${this.icon}"
+                        class="result-icon"
+                      ></simple-icon-lite>`
+                    : ``
+                }
+                ${
+                  this.image
+                    ? html`<img
+                        src="${this.image}"
+                        class="result-image"
+                        alt=""
+                      />`
+                    : ``
+                }
+                ${
+                  this.textCharacter
+                    ? html`<span class="result-textCharacter"
+                        >${this.textCharacter}</span
+                      >`
+                    : ``
+                }
+              </span>`
+            : ``
+        }
         <div class="label-wrap" part="label-wrap">
           <div class="action" part="action">${this.title}</div>
-          ${!this.mini && this.pathLabel(this.path)
-            ? html`<div class="path" part="path">
-                ${this.pathLabel(this.path)}
-              </div>`
-            : ``}
+          ${
+            !this.mini && this.pathLabel(this.path)
+              ? html`<div class="path" part="path">
+                  ${this.pathLabel(this.path)}
+                </div>`
+              : ``
+          }
         </div>
-        ${this.shortcut
-          ? html`<kbd class="shortcut" part="shortcut" aria-hidden="true"
-              >${this.shortcut}</kbd
-            >`
-          : ""}
-        ${this.externalLink
-          ? html`<simple-icon-lite
-              icon="${HaxUiAdminIcons.external}"
-              class="external-link-icon"
-              title="${this.t.opensInNewWindow}"
-              aria-hidden="true"
-            ></simple-icon-lite>`
-          : ""}
-        ${this.more
-          ? html`<simple-icon-button
-              class="more"
-              ?dark="${this.dark}"
-              accent-color="${this.accentColor}"
-              label="${this.t.moreDetails || "More details"}"
-              icon="${HaxUiAdminIcons.more}"
-              aria-controls="details"
-              @click="${this.toggleDetailsClick}"
-              @keydown="${this.toggleDetailsKey}"
-            ></simple-icon-button>`
-          : html`<div class="more"></div>`}
+        ${
+          this.shortcut
+            ? html`<kbd class="shortcut" part="shortcut" aria-hidden="true"
+                >${this.shortcut}</kbd
+              >`
+            : ""
+        }
+        ${
+          this.externalLink
+            ? html`<simple-icon-lite
+                icon="${HaxUiAdminIcons.external}"
+                class="external-link-icon"
+                title="${this.t.opensInNewWindow}"
+                aria-hidden="true"
+              ></simple-icon-lite>`
+            : ""
+        }
+        ${
+          this.more
+            ? html`<simple-icon-button
+                class="more"
+                ?dark="${this.dark}"
+                accent-color="${this.accentColor}"
+                label="${this.t.moreDetails || "More details"}"
+                icon="${HaxUiAdminIcons.more}"
+                aria-controls="details"
+                @click="${this.toggleDetailsClick}"
+                @keydown="${this.toggleDetailsKey}"
+              ></simple-icon-button>`
+            : html`<div class="more"></div>`
+        }
         <simple-icon-lite
           icon="${HaxUiAdminIcons.enter}"
           class="enter-icon"
           aria-hidden="true"
         ></simple-icon-lite>
       </button>
-      ${this.more
-        ? html`<details
-            id="details"
-            ?open="${this.showDetails}"
-            @toggle="${this.openChanged}"
-          >
-            <summary>${this.t.details || "Details"}</summary>
-            <div>
-              <slot></slot>
-            </div>
-          </details>`
-        : ``}
+      ${
+        this.more
+          ? html`<details
+              id="details"
+              ?open="${this.showDetails}"
+              @toggle="${this.openChanged}"
+            >
+              <summary>${this.t.details || "Details"}</summary>
+              <div>
+                <slot></slot>
+              </div>
+            </details>`
+          : ``
+      }
     `;
   }
   // toggle on click but prevent the event from bubbling up

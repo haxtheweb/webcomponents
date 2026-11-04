@@ -163,9 +163,11 @@ class AwesomeExplosion extends DDDSuper(LitElement) {
         aria-label="${this._getAriaLabel()}"
       />
       <span class="visually-hidden">
-        ${this.soundEnabled
-          ? "Click or hover to play explosion sound"
-          : "Visual explosion effect (sound disabled)"}
+        ${
+          this.soundEnabled
+            ? "Click or hover to play explosion sound"
+            : "Visual explosion effect (sound disabled)"
+        }
       </span>
     `;
   }

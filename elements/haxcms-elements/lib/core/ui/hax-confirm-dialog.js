@@ -118,9 +118,9 @@ class HAXConfirmDialog extends I18NMixin(DDD) {
           <button
             type="button"
             data-action="confirm"
-            class="hax-ui-btn ${this.destructive
-              ? "danger-fill destructive"
-              : "primary"}"
+            class="hax-ui-btn ${
+              this.destructive ? "danger-fill destructive" : "primary"
+            }"
             @click=${this._confirmTap}
           >
             ${this.confirmLabel || this.t.confirm}

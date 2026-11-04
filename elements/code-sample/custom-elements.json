@@ -17,6 +17,12 @@
             },
             {
               "kind": "field",
+              "name": "_frameLabel",
+              "description": "Block header type label: Code, plus the language when one is set",
+              "readonly": true
+            },
+            {
+              "kind": "field",
               "name": "haxProperties",
               "static": true,
               "readonly": true
@@ -259,7 +265,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ copy: \"Copy\", done: \"Done\", error: \"Error\", copyToClipboard: \"Copy to clipboard\", }"
+              "default": "{ copy: \"Copy\", done: \"Done\", error: \"Error\", copyToClipboard: \"Copy to clipboard\", code: \"Code\", }"
             }
           ],
           "attributes": [

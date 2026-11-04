@@ -804,6 +804,14 @@
             },
             {
               "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, reading: \"Reading\", ebook: \"Ebook\", }"
+            },
+            {
+              "kind": "field",
               "name": "typeof",
               "privacy": "public",
               "type": {
@@ -878,6 +886,12 @@
               },
               "default": "\"icons:book\"",
               "fieldName": "icon"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
             }
           ],
           "superclass": {
@@ -1139,6 +1153,25 @@
               "readonly": true
             },
             {
+              "kind": "field",
+              "name": "_canFullscreen",
+              "description": "Full screen is offered only where the browser supports it",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_fullscreenChanged"
+            },
+            {
+              "kind": "method",
+              "name": "_toggleFullscreen",
+              "description": "Toggle the frame body (the slotted embed) in and out of full screen"
+            },
+            {
+              "kind": "method",
+              "name": "_editUrl"
+            },
+            {
               "kind": "method",
               "name": "postProcessgetHaxJSONSchema",
               "parameters": [
@@ -1154,7 +1187,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ ...this.t, edit: \"edit\", }"
+              "default": "{ ...this.t, edit: \"edit\", activity: \"Activity\", interactive: \"Interactive\", fullScreen: \"Full screen\", exitFullScreen: \"Exit full screen\", }"
             },
             {
               "kind": "field",
@@ -1165,6 +1198,16 @@
               },
               "default": "false",
               "attribute": "_editing"
+            },
+            {
+              "kind": "field",
+              "name": "_fullscreen",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "_fullscreen"
             },
             {
               "kind": "field",
@@ -1179,6 +1222,14 @@
               },
               "default": "false",
               "fieldName": "_editing"
+            },
+            {
+              "name": "_fullscreen",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "_fullscreen"
             }
           ],
           "mixins": [
@@ -1301,6 +1352,20 @@
             },
             {
               "kind": "field",
+              "name": "fileType",
+              "description": "Upper case file extension of the link (PDF, DOCX...) or empty when the\nlink has no recognisable extension",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, worksheet: \"Worksheet\", download: \"Download\", }"
+            },
+            {
+              "kind": "field",
               "name": "title",
               "privacy": "public",
               "type": {
@@ -1336,6 +1401,12 @@
               },
               "default": "\"\"",
               "fieldName": "link"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
             }
           ],
           "superclass": {

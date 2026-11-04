@@ -167,18 +167,19 @@ class PolarisStoryCard extends I18NMixin(LitElement) {
   render() {
     const card = html`
       <div class="wrapper">
-        ${this.image
-          ? html`<div
-              class="card-image"
-              role="img"
-              aria-hidden="${this.link ? "true" : "false"}"
-              aria-label="${this.label || this.pillar || this.t.storyImage}"
-              style="background-image: url(${this
-                .image}); background-size: ${this
-                .backgroundSize}; background-attachment: ${this
-                .backgroundAttachment};"
-            ></div>`
-          : ``}
+        ${
+          this.image
+            ? html`<div
+                class="card-image"
+                role="img"
+                aria-hidden="${this.link ? "true" : "false"}"
+                aria-label="${this.label || this.pillar || this.t.storyImage}"
+                style="background-image: url(${this.image}); background-size: ${
+                  this.backgroundSize
+                }; background-attachment: ${this.backgroundAttachment};"
+              ></div>`
+            : ``
+        }
         <span class="pillar${this.pillar ? `` : ` pillar-hidden`}"
           >${this.pillar}</span
         >
@@ -191,8 +192,10 @@ class PolarisStoryCard extends I18NMixin(LitElement) {
       ? html`<a
           class="link"
           href="${this.link}"
-          aria-label="${[this.pillar, this.label].filter(Boolean).join(" ") ||
-          this.t.storyCard}"
+          aria-label="${
+            [this.pillar, this.label].filter(Boolean).join(" ") ||
+            this.t.storyCard
+          }"
           @click="${this._clickLink}"
           >${card}</a
         >`

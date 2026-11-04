@@ -206,9 +206,11 @@ class InsightsComponents extends I18NMixin(LitElement) {
         aria-expanded="${this._expanded[key] ? "true" : "false"}"
         @click="${() => this._toggle(key)}"
       >
-        ${this._expanded[key]
-          ? this.t.showFewer
-          : this.t.showAll.replace("{n}", () => list.length)}
+        ${
+          this._expanded[key]
+            ? this.t.showFewer
+            : this.t.showAll.replace("{n}", () => list.length)
+        }
       </button>
     </div>`;
   }
@@ -333,55 +335,59 @@ class InsightsComponents extends I18NMixin(LitElement) {
           >${this._pagesText(this.t.countAcrossOne, this.t.countAcross)}</span
         >
       </h3>
-      ${rows.length
-        ? html`<div class="tbl-wrap">
-              <table class="tags ${key}">
-                <caption class="sr-only">
-                  ${caption}
-                </caption>
-                <thead>
-                  <tr>
-                    <th scope="col">${this.t.element}</th>
-                    <th scope="col">${this.t.uses}</th>
-                    <th scope="col" class="num">${this.t.pages}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  ${shown.map((r) => {
-                    const warn = !!flagged[r.tag];
-                    const w = max
-                      ? Math.max(Math.round((r.count / max) * 100), 2)
-                      : 0;
-                    return html`<tr data-tag="${r.tag}">
-                      <td>
-                        <code>${r.tag}</code>${warn
-                          ? html`<span
-                              class="hax-ui-pill flagged"
-                              data-tone="warning"
-                              >${this.t.flagged}</span
-                            >`
-                          : nothing}
-                      </td>
-                      <td class="use">
-                        <div class="meter">
-                          <span class="track" aria-hidden="true"
-                            ><span
-                              class="fill"
-                              data-tone="${warn ? "warning" : ""}"
-                              style="width:${w}%"
-                            ></span
-                          ></span>
-                          <span class="num">${r.count.toLocaleString()}</span>
-                        </div>
-                      </td>
-                      <td class="num">${r.pages}</td>
-                    </tr>`;
-                  })}
-                </tbody>
-              </table>
-            </div>
-            ${this._moreBtn(key, rows)}`
-        : html`<p class="hax-ui-empty empty">${emptyText}</p>`}
+      ${
+        rows.length
+          ? html`<div class="tbl-wrap">
+                <table class="tags ${key}">
+                  <caption class="sr-only">
+                    ${caption}
+                  </caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">${this.t.element}</th>
+                      <th scope="col">${this.t.uses}</th>
+                      <th scope="col" class="num">${this.t.pages}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${shown.map((r) => {
+                      const warn = !!flagged[r.tag];
+                      const w = max
+                        ? Math.max(Math.round((r.count / max) * 100), 2)
+                        : 0;
+                      return html`<tr data-tag="${r.tag}">
+                        <td>
+                          <code>${r.tag}</code>${
+                            warn
+                              ? html`<span
+                                  class="hax-ui-pill flagged"
+                                  data-tone="warning"
+                                  >${this.t.flagged}</span
+                                >`
+                              : nothing
+                          }
+                        </td>
+                        <td class="use">
+                          <div class="meter">
+                            <span class="track" aria-hidden="true"
+                              ><span
+                                class="fill"
+                                data-tone="${warn ? "warning" : ""}"
+                                style="width:${w}%"
+                              ></span
+                            ></span>
+                            <span class="num">${r.count.toLocaleString()}</span>
+                          </div>
+                        </td>
+                        <td class="num">${r.pages}</td>
+                      </tr>`;
+                    })}
+                  </tbody>
+                </table>
+              </div>
+              ${this._moreBtn(key, rows)}`
+          : html`<p class="hax-ui-empty empty">${emptyText}</p>`
+      }
     </section>`;
   }
 
@@ -391,26 +397,30 @@ class InsightsComponents extends I18NMixin(LitElement) {
       <h3 class="block" id="cp-flags">
         ${this.t.flagsTitle}<span class="hint">${this.t.flagsHint}</span>
       </h3>
-      ${flags.length
-        ? html`<ul class="findings flags">
-            ${flags.map(
-              (f) =>
-                html`<li data-code="${f.code}">
-                  <span
-                    class="hax-ui-pill"
-                    data-tone="${f.state === "review" ? "warning" : "accent"}"
-                    >${f.state === "review"
-                      ? this.t.stateReview
-                      : this.t.stateInfo}</span
-                  >
-                  <span class="t"
-                    >${f.title}<span class="d">${f.detail}</span></span
-                  >
-                  ${this._renderFlagPages(f)}
-                </li>`,
-            )}
-          </ul>`
-        : html`<p class="hax-ui-empty empty">${this.t.noFlags}</p>`}
+      ${
+        flags.length
+          ? html`<ul class="findings flags">
+              ${flags.map(
+                (f) =>
+                  html`<li data-code="${f.code}">
+                    <span
+                      class="hax-ui-pill"
+                      data-tone="${f.state === "review" ? "warning" : "accent"}"
+                      >${
+                        f.state === "review"
+                          ? this.t.stateReview
+                          : this.t.stateInfo
+                      }</span
+                    >
+                    <span class="t"
+                      >${f.title}<span class="d">${f.detail}</span></span
+                    >
+                    ${this._renderFlagPages(f)}
+                  </li>`,
+              )}
+            </ul>`
+          : html`<p class="hax-ui-empty empty">${this.t.noFlags}</p>`
+      }
     </section>`;
   }
 
@@ -433,18 +443,22 @@ class InsightsComponents extends I18NMixin(LitElement) {
       aria-label="${this.t.flagPages.replace("{title}", () => f.title)}"
     >
       ${shown.map((p) => this._openPageBtn(p))}
-      ${list.length > FLAG_PAGES
-        ? html`<button
-            type="button"
-            class="sbtn show-all flag-more"
-            aria-expanded="${open ? "true" : "false"}"
-            @click="${() => this._toggle(key)}"
-          >
-            ${open
-              ? this.t.showFewer
-              : this.t.showAll.replace("{n}", () => list.length)}
-          </button>`
-        : nothing}
+      ${
+        list.length > FLAG_PAGES
+          ? html`<button
+              type="button"
+              class="sbtn show-all flag-more"
+              aria-expanded="${open ? "true" : "false"}"
+              @click="${() => this._toggle(key)}"
+            >
+              ${
+                open
+                  ? this.t.showFewer
+                  : this.t.showAll.replace("{n}", () => list.length)
+              }
+            </button>`
+          : nothing
+      }
     </span>`;
   }
 
@@ -454,17 +468,19 @@ class InsightsComponents extends I18NMixin(LitElement) {
       <h3 class="block" id="cp-unused">
         ${this.t.unusedTitle}<span class="hint">${this.t.unusedHint}</span>
       </h3>
-      ${rows.length
-        ? html`<ul class="findings unused">
-            ${rows.map(
-              (s) =>
-                html`<li data-tag="${s.tag}">
-                  <code>${s.tag}</code>
-                  <span class="t d">${s.why}</span>
-                </li>`,
-            )}
-          </ul>`
-        : html`<p class="hax-ui-empty empty">${this.t.noUnused}</p>`}
+      ${
+        rows.length
+          ? html`<ul class="findings unused">
+              ${rows.map(
+                (s) =>
+                  html`<li data-tag="${s.tag}">
+                    <code>${s.tag}</code>
+                    <span class="t d">${s.why}</span>
+                  </li>`,
+              )}
+            </ul>`
+          : html`<p class="hax-ui-empty empty">${this.t.noUnused}</p>`
+      }
     </section>`;
   }
 }

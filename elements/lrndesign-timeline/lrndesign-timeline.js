@@ -356,18 +356,20 @@ class LrndesignTimeline extends I18NMixin(SchemaBehaviors(SimpleColors)) {
                       <h2 property="oer:name">${event.heading}</h2>
                     </div>
                     <div class="media-outer">
-                      ${!event.imagesrc || event.imagesrc === ""
-                        ? ``
-                        : html`
-                            <div>
+                      ${
+                        !event.imagesrc || event.imagesrc === ""
+                          ? ``
+                          : html`
                               <div>
-                                <img
-                                  alt="${event.imagealt}"
-                                  src="${event.imagesrc}"
-                                />
+                                <div>
+                                  <img
+                                    alt="${event.imagealt}"
+                                    src="${event.imagesrc}"
+                                  />
+                                </div>
                               </div>
-                            </div>
-                          `}
+                            `
+                      }
                     </div>
                   </div>
                   <div class="details" property="oer:description">

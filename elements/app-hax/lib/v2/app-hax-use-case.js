@@ -352,17 +352,19 @@ export class AppHaxUseCase extends I18NMixin(LitElement) {
         aria-label="${cardLabel}"
       >
         <div class="image">
-          ${hasSource
-            ? html`<img
-                src="${this.source}"
-                alt="${safeTitle}"
-                loading="lazy"
-                decoding="async"
-                fetchpriority="high"
-              />`
-            : html`<div class="image-placeholder" aria-hidden="true">
-                <simple-icon-lite icon="${primaryIcon}"></simple-icon-lite>
-              </div>`}
+          ${
+            hasSource
+              ? html`<img
+                  src="${this.source}"
+                  alt="${safeTitle}"
+                  loading="lazy"
+                  decoding="async"
+                  fetchpriority="high"
+                />`
+              : html`<div class="image-placeholder" aria-hidden="true">
+                  <simple-icon-lite icon="${primaryIcon}"></simple-icon-lite>
+                </div>`
+          }
         </div>
         <div class="title">
           <h3>${safeTitle}</h3>

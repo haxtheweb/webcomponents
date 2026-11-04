@@ -288,7 +288,11 @@ export class MediaPlaylist extends SchemaBehaviors(
             );
         }
         :host(:dir(rtl)) .playlist-item.active {
-          box-shadow: inset -3px 0 0 light-dark(var(--ddd-theme-default-nittanyNavy), var(--ddd-theme-default-skyBlue));
+          box-shadow: inset -3px 0 0
+            light-dark(
+              var(--ddd-theme-default-nittanyNavy),
+              var(--ddd-theme-default-skyBlue)
+            );
         }
 
         .playlist-number {
@@ -427,31 +431,33 @@ export class MediaPlaylist extends SchemaBehaviors(
         })}
         <div class="layout">
           <div class="player-area">
-            ${activeItem
-              ? activeItem.isAudio
-                ? html`
-                    <audio-player
-                      id="player"
-                      source="${activeItem.source}"
-                      media-title="${activeItem.mediaTitle}"
-                      thumbnail-src="${activeItem.thumbnailSrc}"
-                      .tracks="${activeItem.tracks}"
-                      crossorigin="${activeItem.crossorigin}"
-                      lang="${activeItem.lang}"
-                    ></audio-player>
-                  `
-                : html`
-                    <video-player
-                      id="player"
-                      source="${activeItem.source}"
-                      media-title="${activeItem.mediaTitle}"
-                      thumbnail-src="${activeItem.thumbnailSrc}"
-                      .tracks="${activeItem.tracks}"
-                      crossorigin="${activeItem.crossorigin}"
-                      lang="${activeItem.lang}"
-                    ></video-player>
-                  `
-              : html``}
+            ${
+              activeItem
+                ? activeItem.isAudio
+                  ? html`
+                      <audio-player
+                        id="player"
+                        source="${activeItem.source}"
+                        media-title="${activeItem.mediaTitle}"
+                        thumbnail-src="${activeItem.thumbnailSrc}"
+                        .tracks="${activeItem.tracks}"
+                        crossorigin="${activeItem.crossorigin}"
+                        lang="${activeItem.lang}"
+                      ></audio-player>
+                    `
+                  : html`
+                      <video-player
+                        id="player"
+                        source="${activeItem.source}"
+                        media-title="${activeItem.mediaTitle}"
+                        thumbnail-src="${activeItem.thumbnailSrc}"
+                        .tracks="${activeItem.tracks}"
+                        crossorigin="${activeItem.crossorigin}"
+                        lang="${activeItem.lang}"
+                      ></video-player>
+                    `
+                : html``
+            }
           </div>
           <div class="playlist">
             <h3 class="playlist-header">${this.t.playlist}</h3>
@@ -460,28 +466,31 @@ export class MediaPlaylist extends SchemaBehaviors(
                 (item, index) => html`
                   <li>
                     <button
-                      class="playlist-item ${index === this.activeIndex
-                        ? "active"
-                        : ""}"
+                      class="playlist-item ${
+                        index === this.activeIndex ? "active" : ""
+                      }"
                       @click="${() => this._setActiveIndex(index)}"
-                      aria-current="${index === this.activeIndex
-                        ? "true"
-                        : "false"}"
-                      aria-label="${this.t
-                        .play} ${item.title}, ${item.duration}"
+                      aria-current="${
+                        index === this.activeIndex ? "true" : "false"
+                      }"
+                      aria-label="${
+                        this.t.play
+                      } ${item.title}, ${item.duration}"
                       data-index="${index}"
                     >
                       <span class="playlist-number">${index + 1}</span>
-                      ${item.thumbnailSrc
-                        ? html`
-                            <img
-                              class="playlist-thumbnail"
-                              src="${item.thumbnailSrc}"
-                              alt=""
-                              loading="lazy"
-                            />
-                          `
-                        : html` <div class="playlist-thumbnail"></div> `}
+                      ${
+                        item.thumbnailSrc
+                          ? html`
+                              <img
+                                class="playlist-thumbnail"
+                                src="${item.thumbnailSrc}"
+                                alt=""
+                                loading="lazy"
+                              />
+                            `
+                          : html` <div class="playlist-thumbnail"></div> `
+                      }
                       <div class="playlist-info">
                         <span class="playlist-title">${item.title}</span>
                         <span class="playlist-duration">${item.duration}</span>

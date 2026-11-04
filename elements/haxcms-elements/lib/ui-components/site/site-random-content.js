@@ -494,24 +494,32 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
           >
         </div>
 
-        ${this.loading
-          ? html` <div class="loading">${this.t.loading}</div> `
-          : nothing}
-        ${!this.loading && !this.page
-          ? html` <div class="no-content">${this.t.noPage}</div> `
-          : nothing}
-        ${!this.loading &&
-        this.page &&
-        (!this.randomElement || this.allElements.length === 0)
-          ? html` <div class="no-content">${this.t.noContent}</div> `
-          : nothing}
-        ${!this.loading && this.randomElement
-          ? html`
-              <div class="random-element">
-                ${unsafeHTML(sanitizeHTMLString(this.randomElement.html))}
-              </div>
-            `
-          : nothing}
+        ${
+          this.loading
+            ? html` <div class="loading">${this.t.loading}</div> `
+            : nothing
+        }
+        ${
+          !this.loading && !this.page
+            ? html` <div class="no-content">${this.t.noPage}</div> `
+            : nothing
+        }
+        ${
+          !this.loading &&
+          this.page &&
+          (!this.randomElement || this.allElements.length === 0)
+            ? html` <div class="no-content">${this.t.noContent}</div> `
+            : nothing
+        }
+        ${
+          !this.loading && this.randomElement
+            ? html`
+                <div class="random-element">
+                  ${unsafeHTML(sanitizeHTMLString(this.randomElement.html))}
+                </div>
+              `
+            : nothing
+        }
       </div>
     `;
   }

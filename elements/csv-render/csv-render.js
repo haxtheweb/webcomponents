@@ -246,13 +246,15 @@ class CsvRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
         >${this.t.downloadTableData}</simple-tooltip
       >
       <table class="table" summary="${this.summary}">
-        ${this.caption
-          ? html`
-              <caption part="caption">
-                ${this.caption}
-              </caption>
-            `
-          : ""}
+        ${
+          this.caption
+            ? html`
+                <caption part="caption">
+                  ${this.caption}
+                </caption>
+              `
+            : ""
+        }
         <thead>
           <tr>
             ${this.tableHeadings.map(

@@ -102,35 +102,37 @@ export class GlossyPortfolioBreadcrumb extends DDDSuper(I18NMixin(LitElement)) {
   }
   // render function
   render() {
-    return html` ${this.items.length > 0
-      ? html`
-          <ol
-            class="breadcrumb"
-            itemscope
-            itemtype="https://schema.org/BreadcrumbList"
-            aria-label="${this.t.breadcrumb}"
-          >
-            ${this.items.map(
-              (item, index) =>
-                html`<li
-                  itemprop="itemListElement"
-                  itemscope
-                  itemtype="https://schema.org/ListItem"
-                  aria-current="${index === this.items.length - 1
-                    ? "page"
-                    : undefined}"
-                >
-                  <a itemprop="item" href="${item.slug}"
-                    ><span itemprop="name"
-                      >${item.title ? item.title : item.slug}</span
-                    ></a
+    return html` ${
+      this.items.length > 0
+        ? html`
+            <ol
+              class="breadcrumb"
+              itemscope
+              itemtype="https://schema.org/BreadcrumbList"
+              aria-label="${this.t.breadcrumb}"
+            >
+              ${this.items.map(
+                (item, index) =>
+                  html`<li
+                    itemprop="itemListElement"
+                    itemscope
+                    itemtype="https://schema.org/ListItem"
+                    aria-current="${
+                      index === this.items.length - 1 ? "page" : undefined
+                    }"
                   >
-                  <meta itemprop="position" content="${index + 1}" />
-                </li>`,
-            )}
-          </ol>
-        `
-      : ``}`;
+                    <a itemprop="item" href="${item.slug}"
+                      ><span itemprop="name"
+                        >${item.title ? item.title : item.slug}</span
+                      ></a
+                    >
+                    <meta itemprop="position" content="${index + 1}" />
+                  </li>`,
+              )}
+            </ol>
+          `
+        : ``
+    }`;
   }
 
   static get properties() {

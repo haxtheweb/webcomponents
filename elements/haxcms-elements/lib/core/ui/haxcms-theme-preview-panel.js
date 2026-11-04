@@ -660,18 +660,22 @@ class HAXCMSThemePreviewPanel extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
         </header>
         <div class="content">
           <div class="picker-column">
-            ${this.loadingThemes
-              ? html`<p class="hax-ui-note status">${this.t.loadingThemes}</p>`
-              : html`<haxcms-theme-picker
-                  class="theme-picker"
-                  mini
-                  .label=${this.t.theme}
-                  .value=${this.selectedTheme}
-                  .showStatusFlags=${false}
-                  .options=${this.themeOptions}
-                  .showAllThemes=${this.showAllThemes}
-                  @value-changed=${this._themeValueChanged}
-                ></haxcms-theme-picker>`}
+            ${
+              this.loadingThemes
+                ? html`<p class="hax-ui-note status">
+                    ${this.t.loadingThemes}
+                  </p>`
+                : html`<haxcms-theme-picker
+                    class="theme-picker"
+                    mini
+                    .label=${this.t.theme}
+                    .value=${this.selectedTheme}
+                    .showStatusFlags=${false}
+                    .options=${this.themeOptions}
+                    .showAllThemes=${this.showAllThemes}
+                    @value-changed=${this._themeValueChanged}
+                  ></haxcms-theme-picker>`
+            }
           </div>
           <div class="picker-column">
             <h3 class="picker-heading">${this.t.palette}</h3>

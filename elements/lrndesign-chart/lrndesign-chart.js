@@ -268,21 +268,23 @@ const LrndesignChart = function (SuperClass) {
             row.some((cell) => cell !== "" && cell !== undefined),
         );
       return html`<table class="data ddd-table">
-        ${colHeads
-          ? html`<thead>
-              <tr>
-                ${data[0].map(
-                  (cell, i) =>
-                    html`<th
-                      scope="col"
-                      class="${i > 0 || !rowHeads ? "num" : ""}"
-                    >
-                      ${this._cellText(cell)}
-                    </th>`,
-                )}
-              </tr>
-            </thead>`
-          : nothing}
+        ${
+          colHeads
+            ? html`<thead>
+                <tr>
+                  ${data[0].map(
+                    (cell, i) =>
+                      html`<th
+                        scope="col"
+                        class="${i > 0 || !rowHeads ? "num" : ""}"
+                      >
+                        ${this._cellText(cell)}
+                      </th>`,
+                  )}
+                </tr>
+              </thead>`
+            : nothing
+        }
         <tbody>
           ${body.map(
             (row) =>
@@ -348,20 +350,22 @@ const LrndesignChart = function (SuperClass) {
                 icon="editor:border-all"
                 aria-hidden="true"
               ></simple-icon-lite></button
-            >${this.dataSource
-              ? html`<a
-                  class="ddd-block-action"
-                  id="download"
-                  href="${this.dataSource}"
-                  download
-                  aria-label="${this.t.downloadData}"
-                  title="${this.t.downloadData}"
-                  ><simple-icon-lite
-                    icon="icons:file-download"
-                    aria-hidden="true"
-                  ></simple-icon-lite
-                ></a>`
-              : nothing}`,
+            >${
+              this.dataSource
+                ? html`<a
+                    class="ddd-block-action"
+                    id="download"
+                    href="${this.dataSource}"
+                    download
+                    aria-label="${this.t.downloadData}"
+                    title="${this.t.downloadData}"
+                    ><simple-icon-lite
+                      icon="icons:file-download"
+                      aria-hidden="true"
+                    ></simple-icon-lite
+                  ></a>`
+                : nothing
+            }`,
         })}
         <div id="${id}-desc" class="ddd-block-body desc" ?hidden="${!hasDesc}">
           ${this.chartDesc}<slot
@@ -378,23 +382,25 @@ const LrndesignChart = function (SuperClass) {
             aria-describedby="${id}-table ${id}-desc"
             class="ct-chart ${this.scale}"
           ></div>
-          ${legend.length
-            ? html`<ul class="legend">
-                ${legend.map(
-                  (name, i) =>
-                    html`<li>
-                      <span
-                        class="swatch"
-                        aria-hidden="true"
-                        style="background-color: var(--chartist-color-${(i %
-                          15) +
-                        1})"
-                      ></span
-                      >${name}
-                    </li>`,
-                )}
-              </ul>`
-            : nothing}
+          ${
+            legend.length
+              ? html`<ul class="legend">
+                  ${legend.map(
+                    (name, i) =>
+                      html`<li>
+                        <span
+                          class="swatch"
+                          aria-hidden="true"
+                          style="background-color: var(--chartist-color-${
+                            (i % 15) + 1
+                          })"
+                        ></span
+                        >${name}
+                      </li>`,
+                  )}
+                </ul>`
+              : nothing
+          }
           <div
             id="${id}-table"
             class="${this.showTable ? "table" : "table sr-only"}"

@@ -245,16 +245,18 @@ class BootstrapBreadcrumb extends I18NMixin(LitElement) {
                   title="${item.title}"
                   aria-current="${isLast ? "page" : nothing}"
                 >
-                  ${isLast
-                    ? html`<span>${item.title}</span>`
-                    : html`<a
-                        href="${item.slug}"
-                        aria-label="${this.t.navigateToItem.replace(
-                          "{title}",
-                          () => item.title || "",
-                        )}"
-                        >${item.title}</a
-                      >`}
+                  ${
+                    isLast
+                      ? html`<span>${item.title}</span>`
+                      : html`<a
+                          href="${item.slug}"
+                          aria-label="${this.t.navigateToItem.replace(
+                            "{title}",
+                            () => item.title || "",
+                          )}"
+                          >${item.title}</a
+                        >`
+                  }
                 </li>
               `;
             })}

@@ -349,64 +349,68 @@ export class AppHaxSiteLogin extends I18NMixin(DDDSuper(LitElement)) {
       ></rpg-character>
       <p
         id="errorText"
-        class="${this.errorMSG === this.t.invalidUsernameOrPassword
-          ? "failed"
-          : ""}"
+        class="${
+          this.errorMSG === this.t.invalidUsernameOrPassword ? "failed" : ""
+        }"
         role="status"
       >
         ${this.errorMSG}
       </p>
       <div id="inputcontainer">
-        ${this.hidePassword
-          ? html` <div class="form-group">
-                <input
-                  id="username"
-                  class="hax-ui-input"
-                  type="text"
-                  placeholder="${this.t.enterYourUsername}"
-                  aria-label="${this.t.username}"
-                  @input="${this.nameChange}"
-                  @keydown="${this.handleKeyDown}"
-                />
-              </div>
-              <button
-                class="hax-ui-btn primary"
-                ?disabled="${!this.username}"
-                @click=${this.checkUsername}
-              >
-                <simple-icon-lite icon="icons:arrow-forward"></simple-icon-lite>
-                ${this.t.next}
-              </button>`
-          : html` <div class="notyou">
-                ${this.t.welcomeBack.replace("{username}", () => this.username)}
-                <a @click=${this.reset}>${this.t.notYou}</a>
-              </div>
-              <div class="form-group">
-                <input
-                  id="password"
-                  class="hax-ui-input"
-                  type="password"
-                  placeholder="${this.t.enterYourPassword}"
-                  aria-label="${this.t.password}"
-                  @input="${this.passChange}"
-                  @keydown="${this.handleKeyDown}"
-                />
-                <simple-icon-button-lite
-                  icon="lrn:view-off"
-                  tabindex="-1"
-                  title="${this.t.togglePasswordDisplay}"
-                  @click="${this.toggleViewPass}"
-                  class="visibility-icon"
-                ></simple-icon-button-lite>
-              </div>
-              <button
-                class="hax-ui-btn primary"
-                ?disabled="${!this.hasPass}"
-                @click=${this.checkPassword}
-              >
-                <simple-icon-lite icon="icons:input"></simple-icon-lite>
-                ${this.t.login}
-              </button>`}
+        ${
+          this.hidePassword
+            ? html` <div class="form-group">
+                  <input
+                    id="username"
+                    class="hax-ui-input"
+                    type="text"
+                    placeholder="${this.t.enterYourUsername}"
+                    aria-label="${this.t.username}"
+                    @input="${this.nameChange}"
+                    @keydown="${this.handleKeyDown}"
+                  />
+                </div>
+                <button
+                  class="hax-ui-btn primary"
+                  ?disabled="${!this.username}"
+                  @click=${this.checkUsername}
+                >
+                  <simple-icon-lite
+                    icon="icons:arrow-forward"
+                  ></simple-icon-lite>
+                  ${this.t.next}
+                </button>`
+            : html` <div class="notyou">
+                  ${this.t.welcomeBack.replace("{username}", () => this.username)}
+                  <a @click=${this.reset}>${this.t.notYou}</a>
+                </div>
+                <div class="form-group">
+                  <input
+                    id="password"
+                    class="hax-ui-input"
+                    type="password"
+                    placeholder="${this.t.enterYourPassword}"
+                    aria-label="${this.t.password}"
+                    @input="${this.passChange}"
+                    @keydown="${this.handleKeyDown}"
+                  />
+                  <simple-icon-button-lite
+                    icon="lrn:view-off"
+                    tabindex="-1"
+                    title="${this.t.togglePasswordDisplay}"
+                    @click="${this.toggleViewPass}"
+                    class="visibility-icon"
+                  ></simple-icon-button-lite>
+                </div>
+                <button
+                  class="hax-ui-btn primary"
+                  ?disabled="${!this.hasPass}"
+                  @click=${this.checkPassword}
+                >
+                  <simple-icon-lite icon="icons:input"></simple-icon-lite>
+                  ${this.t.login}
+                </button>`
+        }
         <div class="external">
           <slot name="externalproviders"></slot>
         </div>

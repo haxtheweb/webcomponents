@@ -236,8 +236,9 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
             <tr>
               <td width="800" colspan="5" align="center">
                 <img
-                  src="${new URL("assets/header.jpg", import.meta.url)
-                    .href}/../HEADER.jpg"
+                  src="${
+                    new URL("assets/header.jpg", import.meta.url).href
+                  }/../HEADER.jpg"
                   border="0"
                   align="absbottom"
                   alt=""
@@ -249,8 +250,9 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
             <tr>
               <td
                 width="8"
-                background="${new URL("assets/header.jpg", import.meta.url)
-                  .href}/../sidefilm.jpg"
+                background="${
+                  new URL("assets/header.jpg", import.meta.url).href
+                }/../sidefilm.jpg"
                 valign="top"
               ></td>
               <td width="128" valign="top">
@@ -264,8 +266,9 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
                     target="_blank"
                     rel="noopener"
                     ><img
-                      src="${new URL("assets/header.jpg", import.meta.url)
-                        .href}/../acid88.gif"
+                      src="${
+                        new URL("assets/header.jpg", import.meta.url).href
+                      }/../acid88.gif"
                       border="0"
                       width="88"
                       height="31"
@@ -278,8 +281,9 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
               </td>
               <td
                 width="8"
-                background="${new URL("assets/header.jpg", import.meta.url)
-                  .href}/../sidefilm.jpg"
+                background="${
+                  new URL("assets/header.jpg", import.meta.url).href
+                }/../sidefilm.jpg"
                 valign="top"
               ></td>
               <td width="20"></td>
@@ -290,10 +294,9 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
                 <main id="contentcontainer" role="main" tabindex="-1">
                   <site-active-title
                     class="title-text"
-                    style="background-image: url(${new URL(
-                      "assets/header.jpg",
-                      import.meta.url,
-                    ).href}/../movies.jpg)"
+                    style="background-image: url(${
+                      new URL("assets/header.jpg", import.meta.url).href
+                    }/../movies.jpg)"
                   ></site-active-title>
                   <table
                     role="presentation"
@@ -311,23 +314,28 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
                                 <td align="left">
                                   <p class="posted">
                                     ${this.t.posted}
-                                    ${this.activeItem &&
-                                    this.activeItem.metadata &&
-                                    this.activeItem.metadata.created
-                                      ? html`<simple-datetime
-                                          unix
-                                          .timestamp="${this.activeItem.metadata
-                                            .created}"
-                                        ></simple-datetime>`
-                                      : ``}
+                                    ${
+                                      this.activeItem &&
+                                      this.activeItem.metadata &&
+                                      this.activeItem.metadata.created
+                                        ? html`<simple-datetime
+                                            unix
+                                            .timestamp="${
+                                              this.activeItem.metadata.created
+                                            }"
+                                          ></simple-datetime>`
+                                        : ``
+                                    }
                                   </p>
                                 </td>
                                 <td>
                                   <p class="posted">
                                     ${this.t.titleLabel}
-                                    ${this.activeItem && this.activeItem.title
-                                      ? this.activeItem.title
-                                      : ``}
+                                    ${
+                                      this.activeItem && this.activeItem.title
+                                        ? this.activeItem.title
+                                        : ``
+                                    }
                                   </p>
                                 </td>
                                 <td align="right">

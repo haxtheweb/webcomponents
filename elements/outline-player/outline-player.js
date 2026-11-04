@@ -413,9 +413,9 @@ class OutlinePlayer extends I18NMixin(
       <div class="layout">
         <nav aria-label="${this.t.siteNavigation}" typeof="oer:TableOfContents">
           <div
-            class="drawer ${this.opened ? "opened" : ""} ${this.closed
-              ? "closed"
-              : ""}"
+            class="drawer ${this.opened ? "opened" : ""} ${
+              this.closed ? "closed" : ""
+            }"
             id="drawer"
           >
             <site-menu></site-menu>

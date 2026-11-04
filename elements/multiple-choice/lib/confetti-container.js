@@ -70,7 +70,7 @@
   // Sequin Class
   function Sequin(canvas, options) {
     this.options = options;
-    (this.color = colors[Math.floor(randomRange(0, colors.length))].back),
+    ((this.color = colors[Math.floor(randomRange(0, colors.length))].back),
       (this.radius = randomRange(1, 2)),
       (this.position = {
         x: randomRange(
@@ -89,7 +89,7 @@
       (this.velocity = {
         x: randomRange(-6, 6),
         y: randomRange(-8, -12),
-      });
+      }));
   }
   Sequin.prototype.update = function () {
     // apply forces to velocity

@@ -684,8 +684,8 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
           border: 1px solid var(--hax-ui-line);
           border-radius: var(--hax-ui-radius);
           background-color: var(--hax-ui-hover);
-          font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas,
-            monospace;
+          font-family:
+            ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
           font-size: 12px;
         }
         .path span {
@@ -2564,45 +2564,51 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
             @change="${(e) => this._onRowCheck(r, e)}"
           />
           <span class="thumb" aria-hidden="true">
-            ${thumb
-              ? html`<img
-                  src="${this._previewUrl(r)}"
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                  @error="${() => this._onThumbError(r)}"
-                />`
-              : html`<simple-icon-lite
-                  icon="${this._fileIcon(r)}"
-                ></simple-icon-lite>`}
+            ${
+              thumb
+                ? html`<img
+                    src="${this._previewUrl(r)}"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                    @error="${() => this._onThumbError(r)}"
+                  />`
+                : html`<simple-icon-lite
+                    icon="${this._fileIcon(r)}"
+                  ></simple-icon-lite>`
+            }
           </span>
           <span class="info">
             <span class="name" title="${r.path || r.name}">${r.name}</span>
             <span class="meta"
               >${this._kind(r)} ·
-              ${this._fmtBytes(r.size)}${when
-                ? html` ·
-                    <span title="${this._fmtDate(when)}"
-                      >${this._fmtRelativeDate(when)}</span
-                    >`
-                : nothing}</span
+              ${this._fmtBytes(r.size)}${
+                when
+                  ? html` ·
+                      <span title="${this._fmtDate(when)}"
+                        >${this._fmtRelativeDate(when)}</span
+                      >`
+                  : nothing
+              }</span
             >
           </span>
           <span class="card-acts">
-            ${r.publicUrl
-              ? html`<a
-                  class="cbtn"
-                  href="${r.publicUrl}"
-                  target="_blank"
-                  rel="noopener"
-                  aria-label="${openLabel}"
-                  title="${openLabel}"
-                  ><simple-icon-lite
-                    icon="${HaxUiAdminIcons.external}"
-                    aria-hidden="true"
-                  ></simple-icon-lite
-                ></a>`
-              : nothing}
+            ${
+              r.publicUrl
+                ? html`<a
+                    class="cbtn"
+                    href="${r.publicUrl}"
+                    target="_blank"
+                    rel="noopener"
+                    aria-label="${openLabel}"
+                    title="${openLabel}"
+                    ><simple-icon-lite
+                      icon="${HaxUiAdminIcons.external}"
+                      aria-hidden="true"
+                    ></simple-icon-lite
+                  ></a>`
+                : nothing
+            }
             <button
               type="button"
               class="cbtn"
@@ -2678,8 +2684,10 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
             <input
               type="checkbox"
               data-action="select-all"
-              .checked="${this.rows.length > 0 &&
-              this.selectedRows.size === this.rows.length}"
+              .checked="${
+                this.rows.length > 0 &&
+                this.selectedRows.size === this.rows.length
+              }"
               ?disabled="${this.busy || this.rows.length === 0}"
               @change="${(e) => this._toggleSelectAll(e.target.checked)}"
             />
@@ -2738,9 +2746,9 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
               html`<button
                 type="button"
                 data-type="${item.value}"
-                aria-pressed="${this.filterType === item.value
-                  ? "true"
-                  : "false"}"
+                aria-pressed="${
+                  this.filterType === item.value ? "true" : "false"
+                }"
                 ?disabled="${filtersDisabled}"
                 @click="${() => this._setFilterType(item.value)}"
               >
@@ -2948,8 +2956,10 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
               title="${this.t.selectAllFiles}"
               data-action="select-all"
               ?disabled="${this.busy || this.rows.length === 0}"
-              .checked="${this.rows.length > 0 &&
-              this.selectedRows.size === this.rows.length}"
+              .checked="${
+                this.rows.length > 0 &&
+                this.selectedRows.size === this.rows.length
+              }"
               @change="${(e) => this._toggleSelectAll(e.target.checked)}"
             />
           </th>
@@ -3058,26 +3068,30 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
           data-cp="${r.path}"
           success-message="${this.t.pathCopied}"
         ></simple-clipboard-copy-button>
-        ${r.publicUrl
-          ? html`<a
-              class="hax-ui-icon-btn"
-              href="${r.publicUrl}"
-              target="_blank"
-              rel="noopener"
-              aria-label="${this.t.openFile.replace("{name}", () => r.name)}"
-              title="${this.t.openFile.replace("{name}", () => r.name)}"
-              ><simple-icon-lite
-                icon="${HaxUiAdminIcons.external}"
-                aria-hidden="true"
-              ></simple-icon-lite
-            ></a>`
-          : nothing}
+        ${
+          r.publicUrl
+            ? html`<a
+                class="hax-ui-icon-btn"
+                href="${r.publicUrl}"
+                target="_blank"
+                rel="noopener"
+                aria-label="${this.t.openFile.replace("{name}", () => r.name)}"
+                title="${this.t.openFile.replace("{name}", () => r.name)}"
+                ><simple-icon-lite
+                  icon="${HaxUiAdminIcons.external}"
+                  aria-hidden="true"
+                ></simple-icon-lite
+              ></a>`
+            : nothing
+        }
       </div>
-      ${count > 1
-        ? html`<p class="hax-ui-message insp-multi">
-            ${this.t.inspectorMany.replace("{count}", () => String(count))}
-          </p>`
-        : nothing}
+      ${
+        count > 1
+          ? html`<p class="hax-ui-message insp-multi">
+              ${this.t.inspectorMany.replace("{count}", () => String(count))}
+            </p>`
+          : nothing
+      }
     </aside>`;
   }
 
@@ -3090,15 +3104,17 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
     const showPager = this.pageTotal > this.pageLimit;
     return html`
       <div class="shell">
-        ${this.inShell
-          ? nothing
-          : html`<div class="ph">
-              <div class="ph-text">
-                <h2>${this.t.files}</h2>
-                <p>${this.t.filesDescription}</p>
-              </div>
-              ${this._renderAddArea()}
-            </div>`}
+        ${
+          this.inShell
+            ? nothing
+            : html`<div class="ph">
+                <div class="ph-text">
+                  <h2>${this.t.files}</h2>
+                  <p>${this.t.filesDescription}</p>
+                </div>
+                ${this._renderAddArea()}
+              </div>`
+        }
         <hax-upload-field
           class="uploader"
           hide-input
@@ -3114,37 +3130,43 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
           @upload-response="${this._onUploadEnd}"
         >
         </hax-upload-field>
-        ${this.compact
-          ? this._renderCompactBar(typeItems, filtersDisabled)
-          : this._renderWideBar(typeItems, filtersDisabled)}
+        ${
+          this.compact
+            ? this._renderCompactBar(typeItems, filtersDisabled)
+            : this._renderWideBar(typeItems, filtersDisabled)
+        }
         <div
-          class="hax-ui-note status ${this.errorMessage ? "error" : ""} ${!this
-            .loading && !this.errorMessage
-            ? "quiet"
-            : ""}"
+          class="hax-ui-note status ${this.errorMessage ? "error" : ""} ${
+            !this.loading && !this.errorMessage ? "quiet" : ""
+          }"
           aria-live="polite"
         >
-          ${this.loading
-            ? this.t.loading
-            : this.errorMessage
-              ? this.errorMessage
-              : ``}
+          ${
+            this.loading
+              ? this.t.loading
+              : this.errorMessage
+                ? this.errorMessage
+                : ``
+          }
         </div>
-        ${!this.inShell && this.selectedRows.size > 0
-          ? html`
-              <hax-file-actions
-                selected-count="${this.selectedRows.size}"
-                image-count="${this._selectedRowObjects().filter((r) =>
-                  this._isImg(r),
-                ).length}"
-                ?busy="${this.busy}"
-                ?can-scale="${this._selectedRowObjects().some((r) =>
-                  this._canScale(r),
-                )}"
-              >
-              </hax-file-actions>
-            `
-          : nothing}
+        ${
+          !this.inShell && this.selectedRows.size > 0
+            ? html`
+                <hax-file-actions
+                  selected-count="${this.selectedRows.size}"
+                  image-count="${
+                    this._selectedRowObjects().filter((r) => this._isImg(r))
+                      .length
+                  }"
+                  ?busy="${this.busy}"
+                  ?can-scale="${this._selectedRowObjects().some((r) =>
+                    this._canScale(r),
+                  )}"
+                >
+                </hax-file-actions>
+              `
+            : nothing
+        }
         <div class="split">
           <div
             class="tw"
@@ -3155,29 +3177,35 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
             @pointercancel="${this._longPress.pointercancel}"
             @keydown="${this._onRowMenuKey}"
           >
-            ${this.rows.length === 0 && !this.loading
-              ? html`<div class="hax-ui-note empty">
-                  ${this.t.noFilesFound}
-                </div>`
-              : this.compact
-                ? this._renderCards()
-                : this._renderTable()}
+            ${
+              this.rows.length === 0 && !this.loading
+                ? html`<div class="hax-ui-note empty">
+                    ${this.t.noFilesFound}
+                  </div>`
+                : this.compact
+                  ? this._renderCards()
+                  : this._renderTable()
+            }
           </div>
-          ${this.compact || this.rows.length === 0
-            ? nothing
-            : this._renderInspector()}
+          ${
+            this.compact || this.rows.length === 0
+              ? nothing
+              : this._renderInspector()
+          }
         </div>
-        ${showPager
-          ? html`<simple-pager
-              mode="full"
-              limit="${this.pageLimit}"
-              offset="${this.pageOffset}"
-              total="${this.pageTotal}"
-              count="${this.rows.length}"
-              label="${this.t.filesPagination}"
-              @page-changed="${this._onPageChanged}"
-            ></simple-pager>`
-          : nothing}
+        ${
+          showPager
+            ? html`<simple-pager
+                mode="full"
+                limit="${this.pageLimit}"
+                offset="${this.pageOffset}"
+                total="${this.pageTotal}"
+                count="${this.rows.length}"
+                label="${this.t.filesPagination}"
+                @page-changed="${this._onPageChanged}"
+              ></simple-pager>`
+            : nothing
+        }
         ${this._choice ? this._renderChoice() : nothing}
         ${renderAdminRowMenu(this.t.fileActions, this._rowMenuItems())}
       </div>

@@ -20,8 +20,9 @@ class TestA11yBehaviors extends A11yBehaviors(LitElement) {
   render() {
     return html`
       <div
-        style="background-color: ${this.backgroundColor}; color: ${this
-          .textColor};"
+        style="background-color: ${this.backgroundColor}; color: ${
+          this.textColor
+        };"
         role="region"
         aria-label="Test region"
       >

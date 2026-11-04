@@ -276,38 +276,44 @@ class CollectionItem extends DDD {
         @click="${this._handleClick}"
       >
         <div class="wrap">
-          ${this.image
-            ? html`<div
-                class="image"
-                part="image"
-                role="${this.alt ? "img" : "presentation"}"
-                aria-label="${this.alt ? this.alt : nothing}"
-                style="${`background-image:url("${this.image}")`}"
-              ></div>`
-            : html`<div
-                class="image placeholder"
-                part="image"
-                aria-hidden="true"
-              >
-                <simple-icon-lite
-                  icon="${this.icon ? this.icon : "icons:book"}"
-                ></simple-icon-lite>
-              </div>`}
-          ${this.icon && this.image
-            ? html`<div class="icon" aria-hidden="true">
-                <simple-icon-lite icon="${this.icon}"></simple-icon-lite>
-              </div>`
-            : html`<div class="no-icon"></div>`}
+          ${
+            this.image
+              ? html`<div
+                  class="image"
+                  part="image"
+                  role="${this.alt ? "img" : "presentation"}"
+                  aria-label="${this.alt ? this.alt : nothing}"
+                  style="${`background-image:url("${this.image}")`}"
+                ></div>`
+              : html`<div
+                  class="image placeholder"
+                  part="image"
+                  aria-hidden="true"
+                >
+                  <simple-icon-lite
+                    icon="${this.icon ? this.icon : "icons:book"}"
+                  ></simple-icon-lite>
+                </div>`
+          }
+          ${
+            this.icon && this.image
+              ? html`<div class="icon" aria-hidden="true">
+                  <simple-icon-lite icon="${this.icon}"></simple-icon-lite>
+                </div>`
+              : html`<div class="no-icon"></div>`
+          }
           <div class="text">
             <div><slot></slot></div>
             <div class="line-1">${this.line1}</div>
             <div class="line-2">${this.line2}</div>
             <div class="line-3">${this.line3}</div>
-            ${tags.length > 0
-              ? html`<ul class="tags">
-                  ${tags.map((tag) => html`<li>${tag}</li>`)}
-                </ul>`
-              : html`<div class="no-tags"></div>`}
+            ${
+              tags.length > 0
+                ? html`<ul class="tags">
+                    ${tags.map((tag) => html`<li>${tag}</li>`)}
+                  </ul>`
+                : html`<div class="no-tags"></div>`
+            }
           </div>
         </div>
       </a>

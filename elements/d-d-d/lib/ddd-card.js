@@ -165,39 +165,43 @@ export class DddCard extends I18NMixin(DDDSuper(LitElement)) {
     return html`
       <div class="card">
         <div class="image" part="image">
-          ${this.src
-            ? html`<img
-                src="${this.src}"
-                alt="${this.alt}"
-                part="img"
-                loading="lazy"
-                decoding="async"
-                fetchpriority="low"
-              />`
-            : nothing}
+          ${
+            this.src
+              ? html`<img
+                  src="${this.src}"
+                  alt="${this.alt}"
+                  part="img"
+                  loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                />`
+              : nothing
+          }
         </div>
         <div class="title" part="title">${this.title}</div>
         <div class="description" part="description">
           <slot></slot>
         </div>
         <div class="button-wrapper" part="button-wrapper">
-          ${this.href
-            ? html`
-                <a
-                  @click="${this._clickCard}"
-                  href="${this.href}"
-                  role="button"
-                  rel="${this.rel}"
-                  target="${this.target}"
-                  part="a"
-                >
-                  <button part="button" tabindex="-1">
-                    ${this.label || this.t.explore}
-                    ${!this.noArrow ? `>` : nothing}
-                  </button>
-                </a>
-              `
-            : nothing}
+          ${
+            this.href
+              ? html`
+                  <a
+                    @click="${this._clickCard}"
+                    href="${this.href}"
+                    role="button"
+                    rel="${this.rel}"
+                    target="${this.target}"
+                    part="a"
+                  >
+                    <button part="button" tabindex="-1">
+                      ${this.label || this.t.explore}
+                      ${!this.noArrow ? `>` : nothing}
+                    </button>
+                  </a>
+                `
+              : nothing
+          }
         </div>
       </div>
     `;

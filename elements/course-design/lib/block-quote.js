@@ -35,9 +35,11 @@ export class BlockQuote extends DDD {
   render() {
     return html`
       <div id="wrap">
-        ${this.image
-          ? html` <img id="image" src="${this.image}" alt="${this.alt}" /> `
-          : ""}
+        ${
+          this.image
+            ? html` <img id="image" src="${this.image}" alt="${this.alt}" /> `
+            : ""
+        }
         <div id="quote_wrap">
           <div id="inner_wrap">
             <div id="quote">
@@ -50,9 +52,11 @@ export class BlockQuote extends DDD {
               <simple-icon-lite icon="editor:format-quote"></simple-icon-lite>
             </div>
             <div id="citation">
-              ${this.citation
-                ? html` <p><span class="dash">--</span> ${this.citation}</p> `
-                : ""}
+              ${
+                this.citation
+                  ? html` <p><span class="dash">--</span> ${this.citation}</p> `
+                  : ""
+              }
             </div>
           </div>
         </div>

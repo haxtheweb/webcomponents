@@ -284,19 +284,21 @@ class ChamferTheme extends HAXCMSThemeParts(
         <div class="banner" part="banner">
           <site-region name="banner"></site-region>
           <slot name="banner">
-            ${this.image
-              ? html`
-                  <a href="${this.imageLink}">
-                    <img
-                      src="${this.image}"
-                      alt="${this.imageAlt}"
-                      loading="lazy"
-                      decoding="async"
-                      fetchpriority="low"
-                    />
-                  </a>
-                `
-              : ``}
+            ${
+              this.image
+                ? html`
+                    <a href="${this.imageLink}">
+                      <img
+                        src="${this.image}"
+                        alt="${this.imageAlt}"
+                        loading="lazy"
+                        decoding="async"
+                        fetchpriority="low"
+                      />
+                    </a>
+                  `
+                : ``
+            }
           </slot>
         </div>
         <div class="body-area" part="body-area">

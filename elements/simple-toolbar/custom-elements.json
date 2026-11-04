@@ -386,7 +386,16 @@
                   "name": "_e"
                 }
               ],
-              "description": "resizes toolbar on window resize"
+              "description": "resizes toolbar when its own width changes"
+            },
+            {
+              "kind": "method",
+              "name": "_observeResize",
+              "description": "Watch the toolbar's own box instead of the window. The toolbar can\nchange width without the window resizing (tray or panel resize,\nbeing shown after display: none), and other toolbars on the page no\nlonger re-measure when only this one changed. Only width matters for\nwhich buttons wrap, so height changes caused by collapsing buttons\nare ignored, and the work runs in the next frame so it never\nre-enters the observer callback."
+            },
+            {
+              "kind": "method",
+              "name": "_unobserveResize"
             },
             {
               "kind": "method",
@@ -1503,7 +1512,24 @@
                   "name": "_e"
                 }
               ],
-              "description": "resizes toolbar on window resize",
+              "description": "resizes toolbar when its own width changes",
+              "inheritedFrom": {
+                "name": "SimpleToolbarBehaviors",
+                "module": "simple-toolbar.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_observeResize",
+              "description": "Watch the toolbar's own box instead of the window. The toolbar can\nchange width without the window resizing (tray or panel resize,\nbeing shown after display: none), and other toolbars on the page no\nlonger re-measure when only this one changed. Only width matters for\nwhich buttons wrap, so height changes caused by collapsing buttons\nare ignored, and the work runs in the next frame so it never\nre-enters the observer callback.",
+              "inheritedFrom": {
+                "name": "SimpleToolbarBehaviors",
+                "module": "simple-toolbar.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_unobserveResize",
               "inheritedFrom": {
                 "name": "SimpleToolbarBehaviors",
                 "module": "simple-toolbar.js"
@@ -2513,7 +2539,24 @@
                   "name": "_e"
                 }
               ],
-              "description": "resizes toolbar on window resize",
+              "description": "resizes toolbar when its own width changes",
+              "inheritedFrom": {
+                "name": "SimpleToolbarBehaviors",
+                "module": "simple-toolbar.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_observeResize",
+              "description": "Watch the toolbar's own box instead of the window. The toolbar can\nchange width without the window resizing (tray or panel resize,\nbeing shown after display: none), and other toolbars on the page no\nlonger re-measure when only this one changed. Only width matters for\nwhich buttons wrap, so height changes caused by collapsing buttons\nare ignored, and the work runs in the next frame so it never\nre-enters the observer callback.",
+              "inheritedFrom": {
+                "name": "SimpleToolbarBehaviors",
+                "module": "simple-toolbar.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_unobserveResize",
               "inheritedFrom": {
                 "name": "SimpleToolbarBehaviors",
                 "module": "simple-toolbar.js"
@@ -3920,7 +3963,24 @@
                   "name": "_e"
                 }
               ],
-              "description": "resizes toolbar on window resize",
+              "description": "resizes toolbar when its own width changes",
+              "inheritedFrom": {
+                "name": "SimpleToolbarBehaviors",
+                "module": "simple-toolbar.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_observeResize",
+              "description": "Watch the toolbar's own box instead of the window. The toolbar can\nchange width without the window resizing (tray or panel resize,\nbeing shown after display: none), and other toolbars on the page no\nlonger re-measure when only this one changed. Only width matters for\nwhich buttons wrap, so height changes caused by collapsing buttons\nare ignored, and the work runs in the next frame so it never\nre-enters the observer callback.",
+              "inheritedFrom": {
+                "name": "SimpleToolbarBehaviors",
+                "module": "simple-toolbar.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_unobserveResize",
               "inheritedFrom": {
                 "name": "SimpleToolbarBehaviors",
                 "module": "simple-toolbar.js"
@@ -4775,6 +4835,12 @@
             },
             {
               "kind": "field",
+              "name": "shortcutTemplate",
+              "description": "template for the display-only shortcut chip",
+              "readonly": true
+            },
+            {
+              "kind": "field",
               "name": "buttonTemplate",
               "description": "template for button, based on whether or not the button toggles",
               "readonly": true
@@ -4915,6 +4981,28 @@
             },
             {
               "kind": "field",
+              "name": "shortcutLabel",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Display only: a keyboard shortcut that runs the same action\nelsewhere (e.g. \"Alt↑\", \"Ctrl⇧S\"), drawn as a key chip after the\nlabel, the way Merlin rows show theirs. It does not bind a key.",
+              "default": "\"\"",
+              "attribute": "shortcut-label"
+            },
+            {
+              "kind": "field",
+              "name": "keyShortcuts",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "The same shortcut in aria-keyshortcuts syntax (\"Alt+ArrowUp\"),\nset on the inner button so assistive technology announces it",
+              "default": "\"\"",
+              "attribute": "key-shortcuts"
+            },
+            {
+              "kind": "field",
               "name": "isCurrentItem",
               "privacy": "public",
               "type": {
@@ -5024,6 +5112,24 @@
               "description": "Optional space-separated list of shortcut keys",
               "default": "\"\"",
               "fieldName": "shortcutKeys"
+            },
+            {
+              "name": "shortcut-label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Display only: a keyboard shortcut that runs the same action\nelsewhere (e.g. \"Alt↑\", \"Ctrl⇧S\"), drawn as a key chip after the\nlabel, the way Merlin rows show theirs. It does not bind a key.",
+              "default": "\"\"",
+              "fieldName": "shortcutLabel"
+            },
+            {
+              "name": "key-shortcuts",
+              "type": {
+                "text": "string"
+              },
+              "description": "The same shortcut in aria-keyshortcuts syntax (\"Alt+ArrowUp\"),\nset on the inner button so assistive technology announces it",
+              "default": "\"\"",
+              "fieldName": "keyShortcuts"
             },
             {
               "name": "target",
@@ -5136,6 +5242,32 @@
               "description": "Optional space-separated list of shortcut keys",
               "default": "\"\"",
               "fieldName": "shortcutKeys",
+              "inheritedFrom": {
+                "name": "SimpleToolbarButtonBehaviors",
+                "module": "lib/simple-toolbar-button.js"
+              }
+            },
+            {
+              "name": "shortcut-label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Display only: a keyboard shortcut that runs the same action\nelsewhere (e.g. \"Alt↑\", \"Ctrl⇧S\"), drawn as a key chip after the\nlabel, the way Merlin rows show theirs. It does not bind a key.",
+              "default": "\"\"",
+              "fieldName": "shortcutLabel",
+              "inheritedFrom": {
+                "name": "SimpleToolbarButtonBehaviors",
+                "module": "lib/simple-toolbar-button.js"
+              }
+            },
+            {
+              "name": "key-shortcuts",
+              "type": {
+                "text": "string"
+              },
+              "description": "The same shortcut in aria-keyshortcuts syntax (\"Alt+ArrowUp\"),\nset on the inner button so assistive technology announces it",
+              "default": "\"\"",
+              "fieldName": "keyShortcuts",
               "inheritedFrom": {
                 "name": "SimpleToolbarButtonBehaviors",
                 "module": "lib/simple-toolbar-button.js"
@@ -5593,6 +5725,16 @@
             },
             {
               "kind": "field",
+              "name": "shortcutTemplate",
+              "description": "template for the display-only shortcut chip",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "SimpleToolbarButtonBehaviors",
+                "module": "lib/simple-toolbar-button.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "buttonTemplate",
               "description": "template for button, based on whether or not the button toggles",
               "readonly": true,
@@ -5794,6 +5936,36 @@
               "description": "Optional space-separated list of shortcut keys",
               "default": "\"\"",
               "attribute": "shortcut-keys",
+              "inheritedFrom": {
+                "name": "SimpleToolbarButtonBehaviors",
+                "module": "lib/simple-toolbar-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "shortcutLabel",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Display only: a keyboard shortcut that runs the same action\nelsewhere (e.g. \"Alt↑\", \"Ctrl⇧S\"), drawn as a key chip after the\nlabel, the way Merlin rows show theirs. It does not bind a key.",
+              "default": "\"\"",
+              "attribute": "shortcut-label",
+              "inheritedFrom": {
+                "name": "SimpleToolbarButtonBehaviors",
+                "module": "lib/simple-toolbar-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "keyShortcuts",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "The same shortcut in aria-keyshortcuts syntax (\"Alt+ArrowUp\"),\nset on the inner button so assistive technology announces it",
+              "default": "\"\"",
+              "attribute": "key-shortcuts",
               "inheritedFrom": {
                 "name": "SimpleToolbarButtonBehaviors",
                 "module": "lib/simple-toolbar-button.js"
@@ -6417,6 +6589,16 @@
             },
             {
               "kind": "field",
+              "name": "shortcutTemplate",
+              "description": "template for the display-only shortcut chip",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "SimpleToolbarButtonBehaviors",
+                "module": "lib/simple-toolbar-button.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "labelStyles",
               "static": true,
               "description": "styles for offscreen elements",
@@ -6615,6 +6797,36 @@
             },
             {
               "kind": "field",
+              "name": "shortcutLabel",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Display only: a keyboard shortcut that runs the same action\nelsewhere (e.g. \"Alt↑\", \"Ctrl⇧S\"), drawn as a key chip after the\nlabel, the way Merlin rows show theirs. It does not bind a key.",
+              "default": "\"\"",
+              "attribute": "shortcut-label",
+              "inheritedFrom": {
+                "name": "SimpleToolbarButtonBehaviors",
+                "module": "lib/simple-toolbar-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "keyShortcuts",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "The same shortcut in aria-keyshortcuts syntax (\"Alt+ArrowUp\"),\nset on the inner button so assistive technology announces it",
+              "default": "\"\"",
+              "attribute": "key-shortcuts",
+              "inheritedFrom": {
+                "name": "SimpleToolbarButtonBehaviors",
+                "module": "lib/simple-toolbar-button.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "isCurrentItem",
               "privacy": "public",
               "type": {
@@ -6738,6 +6950,32 @@
               "description": "Optional space-separated list of shortcut keys",
               "default": "\"\"",
               "fieldName": "shortcutKeys",
+              "inheritedFrom": {
+                "name": "SimpleToolbarButtonBehaviors",
+                "module": "lib/simple-toolbar-button.js"
+              }
+            },
+            {
+              "name": "shortcut-label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Display only: a keyboard shortcut that runs the same action\nelsewhere (e.g. \"Alt↑\", \"Ctrl⇧S\"), drawn as a key chip after the\nlabel, the way Merlin rows show theirs. It does not bind a key.",
+              "default": "\"\"",
+              "fieldName": "shortcutLabel",
+              "inheritedFrom": {
+                "name": "SimpleToolbarButtonBehaviors",
+                "module": "lib/simple-toolbar-button.js"
+              }
+            },
+            {
+              "name": "key-shortcuts",
+              "type": {
+                "text": "string"
+              },
+              "description": "The same shortcut in aria-keyshortcuts syntax (\"Alt+ArrowUp\"),\nset on the inner button so assistive technology announces it",
+              "default": "\"\"",
+              "fieldName": "keyShortcuts",
               "inheritedFrom": {
                 "name": "SimpleToolbarButtonBehaviors",
                 "module": "lib/simple-toolbar-button.js"
@@ -7438,6 +7676,16 @@
             },
             {
               "kind": "field",
+              "name": "shortcutTemplate",
+              "description": "template for the display-only shortcut chip",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "SimpleToolbarButtonBehaviors",
+                "module": "lib/simple-toolbar-button.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "labelStyles",
               "static": true,
               "description": "styles for offscreen elements",
@@ -7592,6 +7840,36 @@
             },
             {
               "kind": "field",
+              "name": "shortcutLabel",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Display only: a keyboard shortcut that runs the same action\nelsewhere (e.g. \"Alt↑\", \"Ctrl⇧S\"), drawn as a key chip after the\nlabel, the way Merlin rows show theirs. It does not bind a key.",
+              "default": "\"\"",
+              "attribute": "shortcut-label",
+              "inheritedFrom": {
+                "name": "SimpleToolbarButtonBehaviors",
+                "module": "lib/simple-toolbar-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "keyShortcuts",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "The same shortcut in aria-keyshortcuts syntax (\"Alt+ArrowUp\"),\nset on the inner button so assistive technology announces it",
+              "default": "\"\"",
+              "attribute": "key-shortcuts",
+              "inheritedFrom": {
+                "name": "SimpleToolbarButtonBehaviors",
+                "module": "lib/simple-toolbar-button.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "isCurrentItem",
               "privacy": "public",
               "type": {
@@ -7722,6 +8000,32 @@
               "description": "Optional space-separated list of shortcut keys",
               "default": "\"\"",
               "fieldName": "shortcutKeys",
+              "inheritedFrom": {
+                "name": "SimpleToolbarButtonBehaviors",
+                "module": "lib/simple-toolbar-button.js"
+              }
+            },
+            {
+              "name": "shortcut-label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Display only: a keyboard shortcut that runs the same action\nelsewhere (e.g. \"Alt↑\", \"Ctrl⇧S\"), drawn as a key chip after the\nlabel, the way Merlin rows show theirs. It does not bind a key.",
+              "default": "\"\"",
+              "fieldName": "shortcutLabel",
+              "inheritedFrom": {
+                "name": "SimpleToolbarButtonBehaviors",
+                "module": "lib/simple-toolbar-button.js"
+              }
+            },
+            {
+              "name": "key-shortcuts",
+              "type": {
+                "text": "string"
+              },
+              "description": "The same shortcut in aria-keyshortcuts syntax (\"Alt+ArrowUp\"),\nset on the inner button so assistive technology announces it",
+              "default": "\"\"",
+              "fieldName": "keyShortcuts",
               "inheritedFrom": {
                 "name": "SimpleToolbarButtonBehaviors",
                 "module": "lib/simple-toolbar-button.js"
@@ -8355,6 +8659,16 @@
             },
             {
               "kind": "field",
+              "name": "shortcutTemplate",
+              "description": "template for the display-only shortcut chip",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "SimpleToolbarButtonBehaviors",
+                "module": "lib/simple-toolbar-button.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "labelStyles",
               "static": true,
               "description": "styles for offscreen elements",
@@ -8509,6 +8823,36 @@
             },
             {
               "kind": "field",
+              "name": "shortcutLabel",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Display only: a keyboard shortcut that runs the same action\nelsewhere (e.g. \"Alt↑\", \"Ctrl⇧S\"), drawn as a key chip after the\nlabel, the way Merlin rows show theirs. It does not bind a key.",
+              "default": "\"\"",
+              "attribute": "shortcut-label",
+              "inheritedFrom": {
+                "name": "SimpleToolbarButtonBehaviors",
+                "module": "lib/simple-toolbar-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "keyShortcuts",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "The same shortcut in aria-keyshortcuts syntax (\"Alt+ArrowUp\"),\nset on the inner button so assistive technology announces it",
+              "default": "\"\"",
+              "attribute": "key-shortcuts",
+              "inheritedFrom": {
+                "name": "SimpleToolbarButtonBehaviors",
+                "module": "lib/simple-toolbar-button.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "isCurrentItem",
               "privacy": "public",
               "type": {
@@ -8624,6 +8968,32 @@
               "description": "Optional space-separated list of shortcut keys",
               "default": "\"\"",
               "fieldName": "shortcutKeys",
+              "inheritedFrom": {
+                "name": "SimpleToolbarButtonBehaviors",
+                "module": "lib/simple-toolbar-button.js"
+              }
+            },
+            {
+              "name": "shortcut-label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Display only: a keyboard shortcut that runs the same action\nelsewhere (e.g. \"Alt↑\", \"Ctrl⇧S\"), drawn as a key chip after the\nlabel, the way Merlin rows show theirs. It does not bind a key.",
+              "default": "\"\"",
+              "fieldName": "shortcutLabel",
+              "inheritedFrom": {
+                "name": "SimpleToolbarButtonBehaviors",
+                "module": "lib/simple-toolbar-button.js"
+              }
+            },
+            {
+              "name": "key-shortcuts",
+              "type": {
+                "text": "string"
+              },
+              "description": "The same shortcut in aria-keyshortcuts syntax (\"Alt+ArrowUp\"),\nset on the inner button so assistive technology announces it",
+              "default": "\"\"",
+              "fieldName": "keyShortcuts",
               "inheritedFrom": {
                 "name": "SimpleToolbarButtonBehaviors",
                 "module": "lib/simple-toolbar-button.js"
@@ -9233,6 +9603,16 @@
             },
             {
               "kind": "field",
+              "name": "shortcutTemplate",
+              "description": "template for the display-only shortcut chip",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "SimpleToolbarButtonBehaviors",
+                "module": "lib/simple-toolbar-button.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "buttonTemplate",
               "description": "template for button, based on whether or not the button toggles",
               "readonly": true,
@@ -9392,6 +9772,36 @@
               "description": "Optional space-separated list of shortcut keys",
               "default": "\"\"",
               "attribute": "shortcut-keys",
+              "inheritedFrom": {
+                "name": "SimpleToolbarButtonBehaviors",
+                "module": "lib/simple-toolbar-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "shortcutLabel",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Display only: a keyboard shortcut that runs the same action\nelsewhere (e.g. \"Alt↑\", \"Ctrl⇧S\"), drawn as a key chip after the\nlabel, the way Merlin rows show theirs. It does not bind a key.",
+              "default": "\"\"",
+              "attribute": "shortcut-label",
+              "inheritedFrom": {
+                "name": "SimpleToolbarButtonBehaviors",
+                "module": "lib/simple-toolbar-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "keyShortcuts",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "The same shortcut in aria-keyshortcuts syntax (\"Alt+ArrowUp\"),\nset on the inner button so assistive technology announces it",
+              "default": "\"\"",
+              "attribute": "key-shortcuts",
               "inheritedFrom": {
                 "name": "SimpleToolbarButtonBehaviors",
                 "module": "lib/simple-toolbar-button.js"
@@ -9574,6 +9984,32 @@
               "description": "Optional space-separated list of shortcut keys",
               "default": "\"\"",
               "fieldName": "shortcutKeys",
+              "inheritedFrom": {
+                "name": "SimpleToolbarButtonBehaviors",
+                "module": "lib/simple-toolbar-button.js"
+              }
+            },
+            {
+              "name": "shortcut-label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Display only: a keyboard shortcut that runs the same action\nelsewhere (e.g. \"Alt↑\", \"Ctrl⇧S\"), drawn as a key chip after the\nlabel, the way Merlin rows show theirs. It does not bind a key.",
+              "default": "\"\"",
+              "fieldName": "shortcutLabel",
+              "inheritedFrom": {
+                "name": "SimpleToolbarButtonBehaviors",
+                "module": "lib/simple-toolbar-button.js"
+              }
+            },
+            {
+              "name": "key-shortcuts",
+              "type": {
+                "text": "string"
+              },
+              "description": "The same shortcut in aria-keyshortcuts syntax (\"Alt+ArrowUp\"),\nset on the inner button so assistive technology announces it",
+              "default": "\"\"",
+              "fieldName": "keyShortcuts",
               "inheritedFrom": {
                 "name": "SimpleToolbarButtonBehaviors",
                 "module": "lib/simple-toolbar-button.js"

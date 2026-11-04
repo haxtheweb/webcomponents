@@ -161,42 +161,43 @@ class ProductOffering extends IntersectionObserverMixin(DDD) {
    */
   render() {
     return html`
-      ${this.elementVisible
-        ? html` <!-- Container -->
-            <div class="container">
-              <img
-                class="image"
-                src="${this.source}"
-                alt="${this.alt}"
-                loading="lazy"
-              />
+      ${
+        this.elementVisible
+          ? html` <!-- Container -->
+              <div class="container">
+                <img
+                  class="image"
+                  src="${this.source}"
+                  alt="${this.alt}"
+                  loading="lazy"
+                />
 
-              <div class="square">
-                <!-- Icon, Header -->
-                <div class="squareTitle">
-                  <!-- icon -->
-                  <div class="icon-background">
-                    <simple-icon
-                      accent-color="${this.accentColor}"
-                      ?dark="${this.dark}"
-                      .icon="${this.icon}"
-                    ></simple-icon>
+                <div class="square">
+                  <!-- Icon, Header -->
+                  <div class="squareTitle">
+                    <!-- icon -->
+                    <div class="icon-background">
+                      <simple-icon
+                        accent-color="${this.accentColor}"
+                        ?dark="${this.dark}"
+                        .icon="${this.icon}"
+                      ></simple-icon>
+                    </div>
+                    <!-- header -->
+                    <h4>
+                      <span class="underline">${this._titleOne}</span
+                      >&nbsp;<span>${this._titleTwo}</span>
+                    </h4>
                   </div>
-                  <!-- header -->
-                  <h4>
-                    <span class="underline">${this._titleOne}</span>&nbsp;<span
-                      >${this._titleTwo}</span
-                    >
-                  </h4>
-                </div>
 
-                <!-- description -->
-                <div class="sqaureDescription">
-                  <slot name="description">${this.description}</slot>
+                  <!-- description -->
+                  <div class="sqaureDescription">
+                    <slot name="description">${this.description}</slot>
+                  </div>
                 </div>
-              </div>
-            </div>`
-        : ``}
+              </div>`
+          : ``
+      }
     `;
   }
   /**

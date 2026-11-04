@@ -66,17 +66,19 @@ class SiteFooter extends LitElement {
   render() {
     return html`
       <div class="wrapper">
-        ${this.manifest
-          ? html`
-              <license-element
-                .title="${this.siteTitle}"
-                .creator="${this.manifest.author}"
-                .source="${this.manifest.domain}"
-                .license="${this.manifest.license}"
-              >
-              </license-element>
-            `
-          : ``}
+        ${
+          this.manifest
+            ? html`
+                <license-element
+                  .title="${this.siteTitle}"
+                  .creator="${this.manifest.author}"
+                  .source="${this.manifest.domain}"
+                  .license="${this.manifest.license}"
+                >
+                </license-element>
+              `
+            : ``
+        }
       </div>
     `;
   }

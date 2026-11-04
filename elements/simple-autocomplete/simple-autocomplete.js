@@ -131,21 +131,23 @@ class SimpleAutocomplete extends I18NMixin(SimpleFilterMixin(LitElement)) {
    */
   render() {
     return html`
-      ${!this.hideInput
-        ? html`<span
-            part="input"
-            id="input"
-            name="input"
-            role="combobox"
-            aria-expanded="${this.opened}"
-            aria-controls="list"
-            aria-autocomplete="list"
-            aria-label="${this.inputLabel || this.t.search}"
-            @input="${this.inputChanged}"
-            contenteditable
-            @keydown="${this.a11yInputKeys}"
-          ></span>`
-        : ``}
+      ${
+        !this.hideInput
+          ? html`<span
+              part="input"
+              id="input"
+              name="input"
+              role="combobox"
+              aria-expanded="${this.opened}"
+              aria-controls="list"
+              aria-autocomplete="list"
+              aria-label="${this.inputLabel || this.t.search}"
+              @input="${this.inputChanged}"
+              contenteditable
+              @keydown="${this.a11yInputKeys}"
+            ></span>`
+          : ``
+      }
       <simple-popover
         part="popover simple-popover"
         auto
@@ -157,48 +159,54 @@ class SimpleAutocomplete extends I18NMixin(SimpleFilterMixin(LitElement)) {
         position="bottom"
         for="input"
       >
-        ${this.filtered.length > 0 && this.opened
-          ? html` <ul
-              part="list"
-              id="list"
-              role="listbox"
-              @keydown="${this.a11yListKeys}"
-            >
-              ${this.filtered.map(
-                (item, i) =>
-                  html`${i < this.itemLimit
-                    ? html`<!-- role=option lives on the button so the
+        ${
+          this.filtered.length > 0 && this.opened
+            ? html` <ul
+                part="list"
+                id="list"
+                role="listbox"
+                @keydown="${this.a11yListKeys}"
+              >
+                ${this.filtered.map(
+                  (item, i) =>
+                    html`${
+                      i < this.itemLimit
+                        ? html`<!-- role=option lives on the button so the
                           listbox option itself is the focusable widget
                           (avoids nesting an interactive button inside an
                           interactive option); options are focused
                           programmatically per the ARIA combobox pattern -->
-                        <li
-                          role="presentation"
-                          part="list-item"
-                          value="${item.value}"
-                          data-index="${i}"
-                        >
-                          <button
-                            part="button"
-                            role="option"
-                            tabindex="-1"
-                            value="${item.value}"
-                            data-index="${i}"
-                            @click="${this.itemSelect}"
-                          >
-                            ${item.icon
-                              ? html`<simple-icon-lite
-                                  icon="${item.icon}"
-                                ></simple-icon-lite>`
-                              : ``}${item.label}
-                          </button>
-                        </li>`
-                    : ``}`,
-              )}
-            </ul>`
-          : html`<div class="no-results" part="no-result" role="status">
-              ${this.t.noResults}
-            </div>`}
+                            <li
+                              role="presentation"
+                              part="list-item"
+                              value="${item.value}"
+                              data-index="${i}"
+                            >
+                              <button
+                                part="button"
+                                role="option"
+                                tabindex="-1"
+                                value="${item.value}"
+                                data-index="${i}"
+                                @click="${this.itemSelect}"
+                              >
+                                ${
+                                  item.icon
+                                    ? html`<simple-icon-lite
+                                        icon="${item.icon}"
+                                      ></simple-icon-lite>`
+                                    : ``
+                                }${item.label}
+                              </button>
+                            </li>`
+                        : ``
+                    }`,
+                )}
+              </ul>`
+            : html`<div class="no-results" part="no-result" role="status">
+                ${this.t.noResults}
+              </div>`
+        }
       </simple-popover>
     `;
   }

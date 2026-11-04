@@ -499,8 +499,9 @@ export class ConceptQuestGame extends ConceptMapGame {
         stroke="var(--micro-game-ink)"
         stroke-width="2.5"
       />
-      ${on
-        ? svg`<rect
+      ${
+        on
+          ? svg`<rect
               x="14"
               y="36"
               width="8"
@@ -517,7 +518,7 @@ export class ConceptQuestGame extends ConceptMapGame {
               stroke="var(--micro-game-ink)"
               stroke-width="2"
             />`
-        : svg`<rect
+          : svg`<rect
               x="29"
               y="47"
               width="6"
@@ -528,7 +529,8 @@ export class ConceptQuestGame extends ConceptMapGame {
               fill="none"
               stroke="var(--micro-game-ink)"
               stroke-width="1.8"
-            />`}
+            />`
+      }
     </svg>`;
   }
 
@@ -538,8 +540,9 @@ export class ConceptQuestGame extends ConceptMapGame {
     return html`
       <div
         class="node house ${on ? "on" : "locked"} ${i === 0 ? "up" : ""}"
-        style="left:${p.x}px;top:${p.y}px;--nc:var(--cmg-c${i % 7});--ns:${this
-          ._ns}px"
+        style="left:${p.x}px;top:${p.y}px;--nc:var(--cmg-c${i % 7});--ns:${
+          this._ns
+        }px"
       >
         <div class="tile" aria-hidden="true">
           ${this._house(on)}${on ? html`<i class="check"></i>` : ""}
@@ -590,36 +593,40 @@ export class ConceptQuestGame extends ConceptMapGame {
       <p class="sr" aria-live="assertive">
         ${this.t.appears.replace("{name}", n.label)}
       </p>
-      ${asking
-        ? html`<div
-            class="popover"
-            role="dialog"
-            aria-labelledby="enc-title"
-            style="${nc}"
-          >
-            <p class="enc-title" id="enc-title">
-              ${this.t.appears.replace("{name}", n.label)}
-            </p>
-            <p class="enc-q" id="enc-q">${e.qa.q}</p>
-            <div class="choices" role="group" aria-labelledby="enc-q">
-              ${e.order.map(
-                (ci, pos) =>
-                  html`<button
-                    type="button"
-                    class="choice ${e.wrong.includes(ci) ? "wrong" : ""}"
-                    aria-disabled="${e.wrong.includes(ci) || e.phase !== "ask"
-                      ? "true"
-                      : "false"}"
-                    @click="${() => this._answer(ci)}"
-                  >
-                    <span class="key" aria-hidden="true">${pos + 1}</span>
-                    <span>${e.qa.choices[ci]}</span>
-                  </button>`,
-              )}
-            </div>
-            <p class="enc-fb" role="status">${e.fb}</p>
-          </div>`
-        : ""}
+      ${
+        asking
+          ? html`<div
+              class="popover"
+              role="dialog"
+              aria-labelledby="enc-title"
+              style="${nc}"
+            >
+              <p class="enc-title" id="enc-title">
+                ${this.t.appears.replace("{name}", n.label)}
+              </p>
+              <p class="enc-q" id="enc-q">${e.qa.q}</p>
+              <div class="choices" role="group" aria-labelledby="enc-q">
+                ${e.order.map(
+                  (ci, pos) =>
+                    html`<button
+                      type="button"
+                      class="choice ${e.wrong.includes(ci) ? "wrong" : ""}"
+                      aria-disabled="${
+                        e.wrong.includes(ci) || e.phase !== "ask"
+                          ? "true"
+                          : "false"
+                      }"
+                      @click="${() => this._answer(ci)}"
+                    >
+                      <span class="key" aria-hidden="true">${pos + 1}</span>
+                      <span>${e.qa.choices[ci]}</span>
+                    </button>`,
+                )}
+              </div>
+              <p class="enc-fb" role="status">${e.fb}</p>
+            </div>`
+          : ""
+      }
     `;
   }
 
@@ -647,20 +654,22 @@ export class ConceptQuestGame extends ConceptMapGame {
         </div>
         <div class="rc-col">
           <p class="rc-h">${this.t.recapReview}</p>
-          ${review.length
-            ? html`<ul class="rc-list">
-                ${review.map(
-                  (r) =>
-                    html`<li class="bad">
-                      <span class="rc-label">${r.label}</span>
-                      <span class="rc-state"
-                        >✗ ${r.tries} ${this.t.recapTries}</span
-                      >
-                      <span class="rc-text">${r.text}</span>
-                    </li>`,
-                )}
-              </ul>`
-            : html`<p class="rc-none">${this.t.recapNone}</p>`}
+          ${
+            review.length
+              ? html`<ul class="rc-list">
+                  ${review.map(
+                    (r) =>
+                      html`<li class="bad">
+                        <span class="rc-label">${r.label}</span>
+                        <span class="rc-state"
+                          >✗ ${r.tries} ${this.t.recapTries}</span
+                        >
+                        <span class="rc-text">${r.text}</span>
+                      </li>`,
+                  )}
+                </ul>`
+              : html`<p class="rc-none">${this.t.recapNone}</p>`
+          }
         </div>
       </div>
     `;
@@ -676,7 +685,8 @@ export class ConceptQuestGame extends ConceptMapGame {
             var(--ddd-theme-default-futureLime) 16%,
             var(--micro-game-paper)
           );
-          background-image: radial-gradient(
+          background-image:
+            radial-gradient(
               circle at 20% 30%,
               color-mix(in srgb, var(--cmg-c1) 35%, transparent) 0 2px,
               transparent 3px

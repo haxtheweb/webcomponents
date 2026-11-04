@@ -305,9 +305,11 @@ class InsightsFreshness extends I18NMixin(LitElement) {
         aria-expanded="${this._expanded[key] ? "true" : "false"}"
         @click="${() => this._toggle(key)}"
       >
-        ${this._expanded[key]
-          ? this.t.showFewer
-          : this.t.showAll.replace("{n}", () => list.length)}
+        ${
+          this._expanded[key]
+            ? this.t.showFewer
+            : this.t.showAll.replace("{n}", () => list.length)
+        }
       </button>
     </div>`;
   }
@@ -432,23 +434,25 @@ class InsightsFreshness extends I18NMixin(LitElement) {
       <h3 class="block" id="fr-timeline">
         ${this.t.timeline}<span class="hint">${this.t.timelineHint}</span>
       </h3>
-      ${events.length
-        ? html`<ol class="events">
-            ${events.map(
-              (e) =>
-                html`<li data-code="${e.code}">
-                  <span class="hax-ui-pill" data-tone="${e.tone || ""}"
-                    >${e.code === "now"
-                      ? this.t.today
-                      : formatDay(e.date)}</span
-                  >
-                  <span class="t"
-                    >${e.title}<span class="d">${e.detail}</span></span
-                  >
-                </li>`,
-            )}
-          </ol>`
-        : html`<p class="hax-ui-empty empty">${this.t.noEvents}</p>`}
+      ${
+        events.length
+          ? html`<ol class="events">
+              ${events.map(
+                (e) =>
+                  html`<li data-code="${e.code}">
+                    <span class="hax-ui-pill" data-tone="${e.tone || ""}"
+                      >${
+                        e.code === "now" ? this.t.today : formatDay(e.date)
+                      }</span
+                    >
+                    <span class="t"
+                      >${e.title}<span class="d">${e.detail}</span></span
+                    >
+                  </li>`,
+              )}
+            </ol>`
+          : html`<p class="hax-ui-empty empty">${this.t.noEvents}</p>`
+      }
     </section>`;
   }
 
@@ -471,40 +475,49 @@ class InsightsFreshness extends I18NMixin(LitElement) {
             this._pageCount(sec),
             this.t.pagesCountOne,
             this.t.pagesCount,
-          )}${bands ? ` · ${bands}` : ""}${k.neverSaved
-            ? html` · ${this.t.ageNeverSaved.replace("{n}", () => k.neverSaved)}`
-            : nothing}</span
+          )}${bands ? ` · ${bands}` : ""}${
+            k.neverSaved
+              ? html` ·
+                ${this.t.ageNeverSaved.replace("{n}", () => k.neverSaved)}`
+              : nothing
+          }</span
         >
       </h3>
-      ${max
-        ? html`<ul class="cols">
-            ${buckets.map(
-              (b) =>
-                html`<li data-tone="${b.tone || ""}">
-                  <span class="num">${b.count}</span>
-                  <span
-                    class="col"
-                    data-tone="${b.tone || ""}"
-                    aria-hidden="true"
-                    style="height:${Math.max(
-                      Math.round((b.count / max) * 120),
-                      2,
-                    )}px"
-                  ></span>
-                  <span class="lbl"
-                    >${b.label}${b.tone
-                      ? html`<span class="sr-only"
-                          >,
-                          ${b.tone === "danger"
-                            ? this.t.ageDanger
-                            : this.t.ageWarning}</span
-                        >`
-                      : nothing}</span
-                  >
-                </li>`,
-            )}
-          </ul>`
-        : html`<p class="hax-ui-empty empty">${this.t.noAges}</p>`}
+      ${
+        max
+          ? html`<ul class="cols">
+              ${buckets.map(
+                (b) =>
+                  html`<li data-tone="${b.tone || ""}">
+                    <span class="num">${b.count}</span>
+                    <span
+                      class="col"
+                      data-tone="${b.tone || ""}"
+                      aria-hidden="true"
+                      style="height:${Math.max(
+                        Math.round((b.count / max) * 120),
+                        2,
+                      )}px"
+                    ></span>
+                    <span class="lbl"
+                      >${b.label}${
+                        b.tone
+                          ? html`<span class="sr-only"
+                              >,
+                              ${
+                                b.tone === "danger"
+                                  ? this.t.ageDanger
+                                  : this.t.ageWarning
+                              }</span
+                            >`
+                          : nothing
+                      }</span
+                    >
+                  </li>`,
+              )}
+            </ul>`
+          : html`<p class="hax-ui-empty empty">${this.t.noAges}</p>`
+      }
     </section>`;
   }
 
@@ -515,34 +528,38 @@ class InsightsFreshness extends I18NMixin(LitElement) {
       <h3 class="block" id="fr-term">
         ${this.t.termTitle}<span class="hint">${this.t.termHint}</span>
       </h3>
-      ${rows.length
-        ? html`<ul class="findings term">
-              ${shown.map(
-                (r) =>
-                  html`<li data-where="${r.where || "title"}">
-                    <span class="t"
-                      >${r.title}<span class="d"
-                        >${r.reason}${r.where === "text" && r.snippet
-                          ? html` · “${this._mark(r.snippet, r.match)}”`
-                          : nothing}</span
-                      ></span
-                    >
-                    <span
-                      class="hax-ui-pill where"
-                      data-tone="${r.where === "text" ? "accent" : ""}"
-                      title="${this.t.matchedIn.replace("{where}", () =>
-                        r.where === "text" ? this.t.inText : this.t.inTitle,
-                      )}"
-                      >${r.where === "text"
-                        ? this.t.inText
-                        : this.t.inTitle}</span
-                    >
-                    ${this._openBtn(r.title, r.slug)}
-                  </li>`,
-              )}
-            </ul>
-            ${this._moreBtn("term", rows)}`
-        : html`<p class="hax-ui-empty empty">${this.t.noTerm}</p>`}
+      ${
+        rows.length
+          ? html`<ul class="findings term">
+                ${shown.map(
+                  (r) =>
+                    html`<li data-where="${r.where || "title"}">
+                      <span class="t"
+                        >${r.title}<span class="d"
+                          >${r.reason}${
+                            r.where === "text" && r.snippet
+                              ? html` · “${this._mark(r.snippet, r.match)}”`
+                              : nothing
+                          }</span
+                        ></span
+                      >
+                      <span
+                        class="hax-ui-pill where"
+                        data-tone="${r.where === "text" ? "accent" : ""}"
+                        title="${this.t.matchedIn.replace("{where}", () =>
+                          r.where === "text" ? this.t.inText : this.t.inTitle,
+                        )}"
+                        >${
+                          r.where === "text" ? this.t.inText : this.t.inTitle
+                        }</span
+                      >
+                      ${this._openBtn(r.title, r.slug)}
+                    </li>`,
+                )}
+              </ul>
+              ${this._moreBtn("term", rows)}`
+          : html`<p class="hax-ui-empty empty">${this.t.noTerm}</p>`
+      }
     </section>`;
   }
 
@@ -572,34 +589,36 @@ class InsightsFreshness extends I18NMixin(LitElement) {
       <h3 class="block" id="fr-bulk">
         ${this.t.bulkTitle}<span class="hint">${this.t.bulkHint}</span>
       </h3>
-      ${rows.length
-        ? html`<div class="tbl-wrap">
-            <table class="bulk">
-              <caption class="sr-only">
-                ${this.t.bulkCaption}
-              </caption>
-              <thead>
-                <tr>
-                  <th scope="col">${this.t.date}</th>
-                  <th scope="col">${this.t.from}</th>
-                  <th scope="col">${this.t.to}</th>
-                  <th scope="col" class="num">${this.t.pages}</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${rows.map(
-                  (b) =>
-                    html`<tr>
-                      <td>${formatDay(b.date)}</td>
-                      <td>${fmtTime(b.start)} UTC</td>
-                      <td>${fmtTime(b.end)} UTC</td>
-                      <td class="num">${b.count}</td>
-                    </tr>`,
-                )}
-              </tbody>
-            </table>
-          </div>`
-        : html`<p class="hax-ui-empty empty">${this.t.noBulk}</p>`}
+      ${
+        rows.length
+          ? html`<div class="tbl-wrap">
+              <table class="bulk">
+                <caption class="sr-only">
+                  ${this.t.bulkCaption}
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col">${this.t.date}</th>
+                    <th scope="col">${this.t.from}</th>
+                    <th scope="col">${this.t.to}</th>
+                    <th scope="col" class="num">${this.t.pages}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${rows.map(
+                    (b) =>
+                      html`<tr>
+                        <td>${formatDay(b.date)}</td>
+                        <td>${fmtTime(b.start)} UTC</td>
+                        <td>${fmtTime(b.end)} UTC</td>
+                        <td class="num">${b.count}</td>
+                      </tr>`,
+                  )}
+                </tbody>
+              </table>
+            </div>`
+          : html`<p class="hax-ui-empty empty">${this.t.noBulk}</p>`
+      }
     </section>`;
   }
 
@@ -610,48 +629,52 @@ class InsightsFreshness extends I18NMixin(LitElement) {
       <h3 class="block" id="fr-pages">
         ${this.t.pagesTitle}<span class="hint">${this.t.pagesHint}</span>
       </h3>
-      ${rows.length
-        ? html`<div class="tbl-wrap">
-              <table class="pages">
-                <caption class="sr-only">
-                  ${this.t.pagesCaption}
-                </caption>
-                <thead>
-                  <tr>
-                    <th scope="col">${this.t.page}</th>
-                    <th scope="col">${this.t.created}</th>
-                    <th scope="col">${this.t.updated}</th>
-                    <th scope="col" class="num">${this.t.daysSince}</th>
-                    <th scope="col">${this.t.termReason}</th>
-                    <th scope="col">
-                      <span class="sr-only">${this.t.actions}</span>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  ${shown.map(
-                    (p) =>
-                      html`<tr data-page="${p.pageId}">
-                        <td>${p.title}</td>
-                        <td>${p.created ? formatDay(p.created) : "–"}</td>
-                        <td>
-                          ${p.updated ? formatDay(p.updated) : this.t.notSaved}
-                        </td>
-                        <td class="num">
-                          ${p.daysSinceUpdate === null ||
-                          p.daysSinceUpdate === undefined
-                            ? "–"
-                            : p.daysSinceUpdate}
-                        </td>
-                        <td>${p.termReason || ""}</td>
-                        <td>${this._openBtn(p.title, p.slug)}</td>
-                      </tr>`,
-                  )}
-                </tbody>
-              </table>
-            </div>
-            ${this._moreBtn("pages", rows)}`
-        : html`<p class="hax-ui-empty empty">${this.t.noPages}</p>`}
+      ${
+        rows.length
+          ? html`<div class="tbl-wrap">
+                <table class="pages">
+                  <caption class="sr-only">
+                    ${this.t.pagesCaption}
+                  </caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">${this.t.page}</th>
+                      <th scope="col">${this.t.created}</th>
+                      <th scope="col">${this.t.updated}</th>
+                      <th scope="col" class="num">${this.t.daysSince}</th>
+                      <th scope="col">${this.t.termReason}</th>
+                      <th scope="col">
+                        <span class="sr-only">${this.t.actions}</span>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${shown.map(
+                      (p) =>
+                        html`<tr data-page="${p.pageId}">
+                          <td>${p.title}</td>
+                          <td>${p.created ? formatDay(p.created) : "–"}</td>
+                          <td>
+                            ${p.updated ? formatDay(p.updated) : this.t.notSaved}
+                          </td>
+                          <td class="num">
+                            ${
+                              p.daysSinceUpdate === null ||
+                              p.daysSinceUpdate === undefined
+                                ? "–"
+                                : p.daysSinceUpdate
+                            }
+                          </td>
+                          <td>${p.termReason || ""}</td>
+                          <td>${this._openBtn(p.title, p.slug)}</td>
+                        </tr>`,
+                    )}
+                  </tbody>
+                </table>
+              </div>
+              ${this._moreBtn("pages", rows)}`
+          : html`<p class="hax-ui-empty empty">${this.t.noPages}</p>`
+      }
     </section>`;
   }
 
@@ -672,9 +695,11 @@ class InsightsFreshness extends I18NMixin(LitElement) {
         </p>
         <p>
           <strong>${this.t.remindersTitle}.</strong>
-          ${this._days() === 365
-            ? this.t.remindersTextYear
-            : this.t.remindersText.replace("{days}", () => this._days())}
+          ${
+            this._days() === 365
+              ? this.t.remindersTextYear
+              : this.t.remindersText.replace("{days}", () => this._days())
+          }
           <span class="needs-reminders">${reminders}.</span>
         </p>
       </div>

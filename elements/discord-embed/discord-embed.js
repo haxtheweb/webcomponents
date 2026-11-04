@@ -105,38 +105,40 @@ class DiscordEmbed extends I18NMixin(LitElement) {
   }
 
   render() {
-    return html`${this.source && isDiscordEmbedSource(this.source)
-      ? html`
-          <div class="ddd-block">
-            ${renderDDDBlockHeader({
-              icon: "communication:forum",
-              label: html`${this.t.chat} · Discord`,
-              actions: html`<a
-                class="ddd-block-action"
-                href="${this._openUrl}"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="${this.t.openOnDiscord}"
-                title="${this.t.openOnDiscord}"
-                ><simple-icon-lite
-                  icon="icons:open-in-new"
-                  aria-hidden="true"
-                ></simple-icon-lite
-              ></a>`,
-            })}
-            <div class="ddd-block-body">
-              <iframe-loader>
-                <iframe
-                  data-src="${this.source}"
-                  title="${this.t.discordChatEmbed}"
-                  height="${this.height}"
-                  width="${this.width}"
-                ></iframe>
-              </iframe-loader>
+    return html`${
+      this.source && isDiscordEmbedSource(this.source)
+        ? html`
+            <div class="ddd-block">
+              ${renderDDDBlockHeader({
+                icon: "communication:forum",
+                label: html`${this.t.chat} · Discord`,
+                actions: html`<a
+                  class="ddd-block-action"
+                  href="${this._openUrl}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="${this.t.openOnDiscord}"
+                  title="${this.t.openOnDiscord}"
+                  ><simple-icon-lite
+                    icon="icons:open-in-new"
+                    aria-hidden="true"
+                  ></simple-icon-lite
+                ></a>`,
+              })}
+              <div class="ddd-block-body">
+                <iframe-loader>
+                  <iframe
+                    data-src="${this.source}"
+                    title="${this.t.discordChatEmbed}"
+                    height="${this.height}"
+                    width="${this.width}"
+                  ></iframe>
+                </iframe-loader>
+              </div>
             </div>
-          </div>
-        `
-      : html`<div>${this.t.invalidShareLink}</div>`}`;
+          `
+        : html`<div>${this.t.invalidShareLink}</div>`
+    }`;
   }
 
   /**

@@ -500,9 +500,11 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
           )}
         </div>
         <span class="grow edited-note"
-          >${editedCount
-            ? this._f(this.t.editedNote, { n: editedCount })
-            : this.t.editHint}</span
+          >${
+            editedCount
+              ? this._f(this.t.editedNote, { n: editedCount })
+              : this.t.editHint
+          }</span
         >
         <button
           type="button"
@@ -527,42 +529,46 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
         </button>
         <span class="sr-only" id="save-needs">${save.needs || ""}</span>
       </div>
-      ${!items.length
-        ? html`<p class="hax-ui-empty empty">${this.t.noImages}</p>`
-        : !shown.length
-          ? html`<p class="hax-ui-empty empty">${this.t.noImagesInFilter}</p>`
-          : html`<div class="tbl-wrap">
-              <table class="alt-table">
-                <caption class="sr-only">
-                  ${this.t.altCaption}
-                </caption>
-                <thead>
-                  <tr>
-                    <th scope="col">${this.t.preview}</th>
-                    <th scope="col">${this.t.imageAndPage}</th>
-                    <th scope="col" class="alt-col">${this.t.altText}</th>
-                    <th scope="col">${this.t.status}</th>
-                    <th scope="col">
-                      <span class="sr-only">${this.t.actions}</span>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  ${limited.map((x) => this._renderAltRow(x))}
-                </tbody>
-              </table>
-            </div>`}
-      ${shown.length > limited.length
-        ? html`<button
-            type="button"
-            class="sbtn more show-all-alt"
-            @click="${() => {
-              this._showAllAlt = true;
-            }}"
-          >
-            ${this._f(this.t.showAll, { n: shown.length })}
-          </button>`
-        : nothing}
+      ${
+        !items.length
+          ? html`<p class="hax-ui-empty empty">${this.t.noImages}</p>`
+          : !shown.length
+            ? html`<p class="hax-ui-empty empty">${this.t.noImagesInFilter}</p>`
+            : html`<div class="tbl-wrap">
+                <table class="alt-table">
+                  <caption class="sr-only">
+                    ${this.t.altCaption}
+                  </caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">${this.t.preview}</th>
+                      <th scope="col">${this.t.imageAndPage}</th>
+                      <th scope="col" class="alt-col">${this.t.altText}</th>
+                      <th scope="col">${this.t.status}</th>
+                      <th scope="col">
+                        <span class="sr-only">${this.t.actions}</span>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${limited.map((x) => this._renderAltRow(x))}
+                  </tbody>
+                </table>
+              </div>`
+      }
+      ${
+        shown.length > limited.length
+          ? html`<button
+              type="button"
+              class="sbtn more show-all-alt"
+              @click="${() => {
+                this._showAllAlt = true;
+              }}"
+            >
+              ${this._f(this.t.showAll, { n: shown.length })}
+            </button>`
+          : nothing
+      }
       <p class="hax-ui-note note">${this.t.notSaved}</p>
     </section>`;
   }
@@ -588,9 +594,9 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
       <td>
         <code class="file">${row.file}</code>
         <span class="meta"
-          >${row.pageTitle}${extra.length
-            ? ` · ${extra.join(" · ")}`
-            : ""}</span
+          >${row.pageTitle}${
+            extra.length ? ` · ${extra.join(" · ")}` : ""
+          }</span
         >
       </td>
       <td>
@@ -606,16 +612,14 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
           @keydown="${(e) => this._onAltKeydown(e, x)}"
         />
         <span class="meta"
-          >${value.length > this._th("altMaxLength", Infinity)
-            ? this._f(this.t.altLengthOver, {
-                n: value.length,
-                max: this._th("altMaxLength", 0),
-              })
-            : this._p(
-                value.length,
-                this.t.characterOne,
-                this.t.characters,
-              )}${x.edited ? ` · ${this.t.edited}` : ""}</span
+          >${
+            value.length > this._th("altMaxLength", Infinity)
+              ? this._f(this.t.altLengthOver, {
+                  n: value.length,
+                  max: this._th("altMaxLength", 0),
+                })
+              : this._p(value.length, this.t.characterOne, this.t.characters)
+          }${x.edited ? ` · ${this.t.edited}` : ""}</span
         >
       </td>
       <td id="st-${x.i}">
@@ -683,53 +687,59 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
           )}
         </div>
       </div>
-      ${shown.length
-        ? html`<div class="tbl-wrap">
-            <table class="crit-table">
-              <caption class="sr-only">
-                ${this.t.wcagCaption}
-              </caption>
-              <thead>
-                <tr>
-                  <th scope="col">${this.t.sc}</th>
-                  <th scope="col">${this.t.criterion}</th>
-                  <th scope="col">${this.t.result}</th>
-                  <th scope="col">${this.t.found}</th>
-                  <th scope="col">${this.t.how}</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${shown.map(
-                  (c) =>
-                    html`<tr data-sc="${c.sc}">
-                      <td><code>${c.sc}</code></td>
-                      <td>${c.name}</td>
-                      <td>
-                        <span
-                          class="hax-ui-pill"
-                          data-tone="${STATE_TONE[c.state] || ""}"
-                          >${this._stateLabel(c.state)}</span
-                        >
-                      </td>
-                      <td class="found">
-                        ${c.found}
-                        ${c.unavailable && c.unavailable.available === false
-                          ? html`<span
-                                class="hax-ui-pill"
-                                data-tone="soon"
-                                title="${c.unavailable.needs}"
-                                >${this.t.comingSoon}</span
-                              >
-                              <span class="meta">${c.unavailable.needs}</span>`
-                          : nothing}
-                      </td>
-                      <td class="meta">${c.how}</td>
-                    </tr>`,
-                )}
-              </tbody>
-            </table>
-          </div>`
-        : html`<p class="hax-ui-empty empty">${this.t.noChecksInFilter}</p>`}
+      ${
+        shown.length
+          ? html`<div class="tbl-wrap">
+              <table class="crit-table">
+                <caption class="sr-only">
+                  ${this.t.wcagCaption}
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col">${this.t.sc}</th>
+                    <th scope="col">${this.t.criterion}</th>
+                    <th scope="col">${this.t.result}</th>
+                    <th scope="col">${this.t.found}</th>
+                    <th scope="col">${this.t.how}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${shown.map(
+                    (c) =>
+                      html`<tr data-sc="${c.sc}">
+                        <td><code>${c.sc}</code></td>
+                        <td>${c.name}</td>
+                        <td>
+                          <span
+                            class="hax-ui-pill"
+                            data-tone="${STATE_TONE[c.state] || ""}"
+                            >${this._stateLabel(c.state)}</span
+                          >
+                        </td>
+                        <td class="found">
+                          ${c.found}
+                          ${
+                            c.unavailable && c.unavailable.available === false
+                              ? html`<span
+                                    class="hax-ui-pill"
+                                    data-tone="soon"
+                                    title="${c.unavailable.needs}"
+                                    >${this.t.comingSoon}</span
+                                  >
+                                  <span class="meta"
+                                    >${c.unavailable.needs}</span
+                                  >`
+                              : nothing
+                          }
+                        </td>
+                        <td class="meta">${c.how}</td>
+                      </tr>`,
+                  )}
+                </tbody>
+              </table>
+            </div>`
+          : html`<p class="hax-ui-empty empty">${this.t.noChecksInFilter}</p>`
+      }
     </section>`;
   }
 
@@ -747,45 +757,49 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
           )}</span
         >
       </h3>
-      ${rows.length
-        ? html`<ul class="findings heading-errors">
-            ${limited.map(
-              (h) =>
-                html`<li>
-                  <span class="t">${h.title}</span>
-                  <span class="chips"
-                    >${(h.chips || []).map(
-                      (c) =>
-                        html`<span class="hax-ui-pill" data-tone="danger"
-                          >${c}</span
-                        >`,
-                    )}</span
-                  >
-                  <button
-                    type="button"
-                    class="sbtn open-page"
-                    aria-label="${this._f(this.t.openPageLabel, {
-                      title: h.title,
-                    })}"
-                    @click="${() => this._openPage(h.slug)}"
-                  >
-                    ${this.t.openPage}
-                  </button>
-                </li>`,
-            )}
-          </ul>`
-        : html`<p class="hax-ui-empty empty">${this.t.noHeadingErrors}</p>`}
-      ${rows.length > limited.length
-        ? html`<button
-            type="button"
-            class="sbtn more"
-            @click="${() => {
-              this._showAllHeadings = true;
-            }}"
-          >
-            ${this._f(this.t.showAll, { n: rows.length })}
-          </button>`
-        : nothing}
+      ${
+        rows.length
+          ? html`<ul class="findings heading-errors">
+              ${limited.map(
+                (h) =>
+                  html`<li>
+                    <span class="t">${h.title}</span>
+                    <span class="chips"
+                      >${(h.chips || []).map(
+                        (c) =>
+                          html`<span class="hax-ui-pill" data-tone="danger"
+                            >${c}</span
+                          >`,
+                      )}</span
+                    >
+                    <button
+                      type="button"
+                      class="sbtn open-page"
+                      aria-label="${this._f(this.t.openPageLabel, {
+                        title: h.title,
+                      })}"
+                      @click="${() => this._openPage(h.slug)}"
+                    >
+                      ${this.t.openPage}
+                    </button>
+                  </li>`,
+              )}
+            </ul>`
+          : html`<p class="hax-ui-empty empty">${this.t.noHeadingErrors}</p>`
+      }
+      ${
+        rows.length > limited.length
+          ? html`<button
+              type="button"
+              class="sbtn more"
+              @click="${() => {
+                this._showAllHeadings = true;
+              }}"
+            >
+              ${this._f(this.t.showAll, { n: rows.length })}
+            </button>`
+          : nothing
+      }
     </section>`;
   }
 
@@ -832,9 +846,9 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
               })}<span class="d">${note}</span></span
             >
             <span class="num"
-              >${c.ratio === null
-                ? "–"
-                : this._f(this.t.ratio, { n: c.ratio })}</span
+              >${
+                c.ratio === null ? "–" : this._f(this.t.ratio, { n: c.ratio })
+              }</span
             >
             <span
               class="hax-ui-pill"

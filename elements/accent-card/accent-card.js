@@ -357,16 +357,18 @@ class AccentCard extends I18NMixin(IntersectionObserverMixin(DDD)) {
           part="image-wrapper"
           ?hidden="${!this.elementVisible || !this.imageSrc}"
         >
-          ${this.imageSrc
-            ? html`
-                <img
-                  src="${this.imageSrc}"
-                  alt="${this.imageAlt || ""}"
-                  class="image"
-                  part="image"
-                />
-              `
-            : ""}
+          ${
+            this.imageSrc
+              ? html`
+                  <img
+                    src="${this.imageSrc}"
+                    alt="${this.imageAlt || ""}"
+                    class="image"
+                    part="image"
+                  />
+                `
+              : ""
+          }
           <div id="imagecorner"><slot name="image-corner"></slot></div>
         </div>
         <div class="body">
@@ -385,26 +387,32 @@ class AccentCard extends I18NMixin(IntersectionObserverMixin(DDD)) {
             <slot name="content"></slot>
           </div>
           <div class="footer">
-            ${this._opensNewTab()
-              ? html`
-                  <a
-                    href="${this.link}"
-                    target="_blank"
-                    rel="nofollow noopener"
-                    part="link"
-                  >
-                    <slot name="footer"></slot>
-                    <simple-icon-lite
-                      icon="${this.icon}"
-                      aria-hidden="true"
-                      style="${this.iconSize
-                        ? `--simple-icon-height: var(--ddd-icon-${this.iconSize}); --simple-icon-width: var(--ddd-icon-${this.iconSize});`
-                        : `--simple-icon-height: var(--ddd-icon-xxs); --simple-icon-width: var(--ddd-icon-xxs);`}"
-                    ></simple-icon-lite>
-                    <span class="sr-only new-tab">${this.t.opensInNewTab}</span>
-                  </a>
-                `
-              : html`<slot name="footer"></slot>`}
+            ${
+              this._opensNewTab()
+                ? html`
+                    <a
+                      href="${this.link}"
+                      target="_blank"
+                      rel="nofollow noopener"
+                      part="link"
+                    >
+                      <slot name="footer"></slot>
+                      <simple-icon-lite
+                        icon="${this.icon}"
+                        aria-hidden="true"
+                        style="${
+                          this.iconSize
+                            ? `--simple-icon-height: var(--ddd-icon-${this.iconSize}); --simple-icon-width: var(--ddd-icon-${this.iconSize});`
+                            : `--simple-icon-height: var(--ddd-icon-xxs); --simple-icon-width: var(--ddd-icon-xxs);`
+                        }"
+                      ></simple-icon-lite>
+                      <span class="sr-only new-tab"
+                        >${this.t.opensInNewTab}</span
+                      >
+                    </a>
+                  `
+                : html`<slot name="footer"></slot>`
+            }
           </div>
         </div>
       </div>

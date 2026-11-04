@@ -118,8 +118,9 @@ export class AppHaxSimpleHatProgress extends I18NMixin(DDDSuper(LitElement)) {
       <div class="hat-container">
         <img
           class="hat-image"
-          src="${new URL("../assets/images/HatBlank.svg", import.meta.url)
-            .href}"
+          src="${
+            new URL("../assets/images/HatBlank.svg", import.meta.url).href
+          }"
           alt="${this.t.progressHat}"
           loading="lazy"
           decoding="async"

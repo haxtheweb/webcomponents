@@ -90,12 +90,14 @@ export class AppHaxUserMenuButton extends DDDSuper(LitElement) {
         part="menu-button"
         @click="${this.handleClick}"
       >
-        ${this.icon
-          ? html`<simple-icon-lite
-              class="icon"
-              icon="${this.icon}"
-            ></simple-icon-lite>`
-          : ""}
+        ${
+          this.icon
+            ? html`<simple-icon-lite
+                class="icon"
+                icon="${this.icon}"
+              ></simple-icon-lite>`
+            : ""
+        }
         <span class="label">${this.label}</span>
       </button>
     `;

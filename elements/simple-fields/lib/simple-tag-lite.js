@@ -119,24 +119,28 @@ export const SimpleTagLiteSuper = function (SuperClass) {
     render() {
       return html`
         <span>${this.value}<slot></slot></span>
-        ${this.readonly
-          ? ""
-          : html`
-              <simple-icon-button-lite
-                icon="${!!this.toggles && !!this.toggled && !!this.toggledIcon
-                  ? this.toggledIcon
-                  : this.icon}"
-                label="${this.t.removeValue.replace(
-                  "{value}",
-                  () => this.value,
-                )}"
-                ?hidden="${!this.cancelButton}"
-                @click="${this.clickEvent}"
-                ?disabled="${this.disabled}"
-                ?toggles="${this.toggles}"
-                ?toggled="${this.toggled}"
-              ></simple-icon-button-lite>
-            `}
+        ${
+          this.readonly
+            ? ""
+            : html`
+                <simple-icon-button-lite
+                  icon="${
+                    !!this.toggles && !!this.toggled && !!this.toggledIcon
+                      ? this.toggledIcon
+                      : this.icon
+                  }"
+                  label="${this.t.removeValue.replace(
+                    "{value}",
+                    () => this.value,
+                  )}"
+                  ?hidden="${!this.cancelButton}"
+                  @click="${this.clickEvent}"
+                  ?disabled="${this.disabled}"
+                  ?toggles="${this.toggles}"
+                  ?toggled="${this.toggled}"
+                ></simple-icon-button-lite>
+              `
+        }
       `;
     }
     clickEvent(_e) {

@@ -250,11 +250,13 @@ class StopNote extends SchemaBehaviors(I18NMixin(remoteLinkBehavior(DDD))) {
               aria-hidden="true"
             ></simple-icon
           ></span>
-          ${statusLabel
-            ? html`<span class="ddd-block-label status-label"
-                >${statusLabel}</span
-              >`
-            : ``}
+          ${
+            statusLabel
+              ? html`<span class="ddd-block-label status-label"
+                  >${statusLabel}</span
+                >`
+              : ``
+          }
         </div>
         <div class="ddd-block-body message_wrap">
           <h3
@@ -269,15 +271,17 @@ class StopNote extends SchemaBehaviors(I18NMixin(remoteLinkBehavior(DDD))) {
             <slot @slotchange="${this._handleSlotChange}"></slot>
             <slot name="message" @slotchange="${this._handleSlotChange}"></slot>
           </div>
-          ${this.url
-            ? html`
-                <div class="link">
-                  <a href="${this.url}" id="link">
-                    ${this.t.moreInformation} &gt;
-                  </a>
-                </div>
-              `
-            : ``}
+          ${
+            this.url
+              ? html`
+                  <div class="link">
+                    <a href="${this.url}" id="link">
+                      ${this.t.moreInformation} &gt;
+                    </a>
+                  </div>
+                `
+              : ``
+          }
         </div>
       </div>
     `;

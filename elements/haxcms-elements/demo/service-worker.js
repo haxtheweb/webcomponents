@@ -512,7 +512,7 @@ self.addEventListener("fetch", function (event) {
   else if ("function" == typeof define && define.amd) define([], e);
   else {
     var t;
-    (t =
+    ((t =
       "undefined" != typeof window
         ? window
         : "undefined" != typeof global
@@ -520,7 +520,7 @@ self.addEventListener("fetch", function (event) {
           : "undefined" != typeof self
             ? self
             : this),
-      (t.toolbox = e());
+      (t.toolbox = e()));
   }
 })(function () {
   return (function e(t, n, r) {
@@ -671,8 +671,8 @@ self.addEventListener("fetch", function (event) {
             });
           }
           function h(e) {
-            e instanceof Promise || p(e),
-              (m.preCacheItems = m.preCacheItems.concat(e));
+            (e instanceof Promise || p(e),
+              (m.preCacheItems = m.preCacheItems.concat(e)));
           }
           function p(e) {
             var t = Array.isArray(e);
@@ -722,7 +722,7 @@ self.addEventListener("fetch", function (event) {
           function r(e) {
             return new Promise(function (t, n) {
               var r = indexedDB.open(u + e, f);
-              (r.onupgradeneeded = function () {
+              ((r.onupgradeneeded = function () {
                 var e = r.result.createObjectStore(h, { keyPath: p });
                 e.createIndex(l, l, { unique: !1 });
               }),
@@ -731,23 +731,23 @@ self.addEventListener("fetch", function (event) {
                 }),
                 (r.onerror = function () {
                   n(r.error);
-                });
+                }));
             });
           }
           function o(e) {
-            return e in d || (d[e] = r(e)), d[e];
+            return (e in d || (d[e] = r(e)), d[e]);
           }
           function i(e, t, n) {
             return new Promise(function (r, o) {
               var i = e.transaction(h, "readwrite"),
                 c = i.objectStore(h);
-              c.put({ url: t, timestamp: n }),
+              (c.put({ url: t, timestamp: n }),
                 (i.oncomplete = function () {
                   r(e);
                 }),
                 (i.onabort = function () {
                   o(i.error);
-                });
+                }));
             });
           }
           function c(e, t, n) {
@@ -758,17 +758,17 @@ self.addEventListener("fetch", function (event) {
                     s = e.transaction(h, "readwrite"),
                     a = s.objectStore(h),
                     u = a.index(l);
-                  (u.openCursor().onsuccess = function (e) {
+                  ((u.openCursor().onsuccess = function (e) {
                     var t = e.target.result;
                     if (t && n - i > t.value[l]) {
                       var r = t.value[p];
-                      c.push(r), a.delete(r), t.continue();
+                      (c.push(r), a.delete(r), t.continue());
                     }
                   }),
                     (s.oncomplete = function () {
                       r(c);
                     }),
-                    (s.onabort = o);
+                    (s.onabort = o));
                 })
               : Promise.resolve([]);
           }
@@ -780,23 +780,23 @@ self.addEventListener("fetch", function (event) {
                     c = i.objectStore(h),
                     s = c.index(l),
                     a = s.count();
-                  (s.count().onsuccess = function () {
+                  ((s.count().onsuccess = function () {
                     var e = a.result;
                     e > t &&
                       (s.openCursor().onsuccess = function (n) {
                         var r = n.target.result;
                         if (r) {
                           var i = r.value[p];
-                          o.push(i),
+                          (o.push(i),
                             c.delete(i),
-                            e - o.length > t && r.continue();
+                            e - o.length > t && r.continue());
                         }
                       });
                   }),
                     (i.oncomplete = function () {
                       n(o);
                     }),
-                    (i.onabort = r);
+                    (i.onabort = r));
                 })
               : Promise.resolve([]);
           }
@@ -841,7 +841,7 @@ self.addEventListener("fetch", function (event) {
           }
           function c(e) {
             var t = u.cache.name + "$$$inactive$$$";
-            s.debug("install event fired"),
+            (s.debug("install event fired"),
               s.debug("creating cache [" + t + "]"),
               e.waitUntil(
                 s.openCache({ cache: { name: t } }).then(function (e) {
@@ -855,7 +855,7 @@ self.addEventListener("fetch", function (event) {
                       );
                     });
                 }),
-              );
+              ));
           }
           e("serviceworker-cache-polyfill");
           var s = e("./helpers"),
@@ -878,7 +878,7 @@ self.addEventListener("fetch", function (event) {
         function (e, t, n) {
           "use strict";
           var r;
-          (r = self.registration
+          ((r = self.registration
             ? self.registration.scope
             : self.scope || new URL("./", self.location).href),
             (t.exports = {
@@ -891,7 +891,7 @@ self.addEventListener("fetch", function (event) {
               networkTimeoutSeconds: null,
               preCacheItems: [],
               successResponses: /^0|([123]\d\d)|(40[14567])|410$/,
-            });
+            }));
         },
         {},
       ],
@@ -902,29 +902,29 @@ self.addEventListener("fetch", function (event) {
             o = r.pathname,
             i = e("path-to-regexp"),
             c = function (e, t, n, r) {
-              t instanceof RegExp
+              (t instanceof RegExp
                 ? (this.fullUrlRegExp = t)
                 : (0 !== t.indexOf("/") && (t = o + t),
                   (this.keys = []),
                   (this.regexp = i(t, this.keys))),
                 (this.method = e),
                 (this.options = r),
-                (this.handler = n);
+                (this.handler = n));
             };
-          (c.prototype.makeHandler = function (e) {
+          ((c.prototype.makeHandler = function (e) {
             var t;
             if (this.regexp) {
               var n = this.regexp.exec(e);
-              (t = {}),
+              ((t = {}),
                 this.keys.forEach(function (e, r) {
                   t[e.name] = n[r + 1];
-                });
+                }));
             }
             return function (e) {
               return this.handler(e, t, this.options);
             }.bind(this);
           }),
-            (t.exports = c);
+            (t.exports = c));
         },
         { "path-to-regexp": 15 },
       ],
@@ -937,41 +937,43 @@ self.addEventListener("fetch", function (event) {
           var o = e("./route"),
             i = e("./helpers"),
             c = function (e, t) {
-              for (var n = e.entries(), r = n.next(), o = []; !r.done; ) {
+              for (var n = e.entries(), r = n.next(), o = []; !r.done;) {
                 var i = new RegExp(r.value[0]);
-                i.test(t) && o.push(r.value[1]), (r = n.next());
+                (i.test(t) && o.push(r.value[1]), (r = n.next()));
               }
               return o;
             },
             s = function () {
-              (this.routes = new Map()),
+              ((this.routes = new Map()),
                 this.routes.set(RegExp, new Map()),
-                (this.default = null);
+                (this.default = null));
             };
-          ["get", "post", "put", "delete", "head", "any"].forEach(function (e) {
-            s.prototype[e] = function (t, n, r) {
-              return this.add(e, t, n, r);
-            };
-          }),
+          (["get", "post", "put", "delete", "head", "any"].forEach(
+            function (e) {
+              s.prototype[e] = function (t, n, r) {
+                return this.add(e, t, n, r);
+              };
+            },
+          ),
             (s.prototype.add = function (e, t, n, c) {
               c = c || {};
               var s;
-              t instanceof RegExp
+              (t instanceof RegExp
                 ? (s = RegExp)
                 : ((s = c.origin || self.location.origin),
                   (s = s instanceof RegExp ? s.source : r(s))),
-                (e = e.toLowerCase());
+                (e = e.toLowerCase()));
               var a = new o(e, t, n, c);
               this.routes.has(s) || this.routes.set(s, new Map());
               var u = this.routes.get(s);
               u.has(e) || u.set(e, new Map());
               var f = u.get(e),
                 h = a.regexp || a.fullUrlRegExp;
-              f.has(h.source) &&
+              (f.has(h.source) &&
                 i.debug(
                   '"' + t + '" resolves to same regex as existing route.',
                 ),
-                f.set(h.source, a);
+                f.set(h.source, a));
             }),
             (s.prototype.matchMethod = function (e, t) {
               var n = new URL(t),
@@ -1000,7 +1002,7 @@ self.addEventListener("fetch", function (event) {
                 this.matchMethod("any", e.url)
               );
             }),
-            (t.exports = new s());
+            (t.exports = new s()));
         },
         { "./helpers": 1, "./route": 5 },
       ],
@@ -1060,7 +1062,7 @@ self.addEventListener("fetch", function (event) {
                 var s = !1,
                   a = [],
                   u = function (e) {
-                    a.push(e.toString()),
+                    (a.push(e.toString()),
                       s
                         ? c(
                             new Error(
@@ -1069,12 +1071,13 @@ self.addEventListener("fetch", function (event) {
                                 '"',
                             ),
                           )
-                        : (s = !0);
+                        : (s = !0));
                   },
                   f = function (e) {
                     e instanceof Response ? r(e) : u("No result returned");
                   };
-                o.fetchAndCache(e.clone(), n).then(f, u), i(e, t, n).then(f, u);
+                (o.fetchAndCache(e.clone(), n).then(f, u),
+                  i(e, t, n).then(f, u));
               })
             );
           }
@@ -1133,12 +1136,9 @@ self.addEventListener("fetch", function (event) {
                   .then(function (e) {
                     if ((s && clearTimeout(s), r.test(e.status))) return e;
                     throw (
-                      (i.debug(
-                        "Response was an HTTP error: " + e.statusText,
-                        n,
-                      ),
+                      i.debug("Response was an HTTP error: " + e.statusText, n),
                       (a = e),
-                      new Error("Bad response"))
+                      new Error("Bad response")
                     );
                   })
                   .catch(function (r) {
@@ -1156,7 +1156,7 @@ self.addEventListener("fetch", function (event) {
                       })
                     );
                   });
-                return u.push(h), Promise.race(u);
+                return (u.push(h), Promise.race(u));
               })
             );
           }
@@ -1171,7 +1171,8 @@ self.addEventListener("fetch", function (event) {
           "use strict";
           function r(e, t, n) {
             return (
-              o.debug("Strategy: network only [" + e.url + "]", n), fetch(e)
+              o.debug("Strategy: network only [" + e.url + "]", n),
+              fetch(e)
             );
           }
           var o = e("../helpers");
@@ -1187,7 +1188,7 @@ self.addEventListener("fetch", function (event) {
             i = e("./helpers"),
             c = e("./strategies"),
             s = e("./listeners");
-          i.debug("Service Worker Toolbox is loading"),
+          (i.debug("Service Worker Toolbox is loading"),
             self.addEventListener("install", s.installListener),
             self.addEventListener("activate", s.activateListener),
             self.addEventListener("fetch", s.fetchListener),
@@ -1202,7 +1203,7 @@ self.addEventListener("fetch", function (event) {
               cache: i.cache,
               uncache: i.uncache,
               precache: i.precache,
-            });
+            }));
         },
         {
           "./helpers": 1,
@@ -1233,7 +1234,6 @@ self.addEventListener("fetch", function (event) {
                 c = "",
                 s = (t && t.delimiter) || "/";
               null != (n = x.exec(e));
-
             ) {
               var f = n[0],
                 h = n[1],
@@ -1265,7 +1265,7 @@ self.addEventListener("fetch", function (event) {
                 });
               }
             }
-            return i < e.length && (c += e.substr(i)), c && r.push(c), r;
+            return (i < e.length && (c += e.substr(i)), c && r.push(c), r);
           }
           function o(e, t) {
             return s(r(e, t));
@@ -1360,7 +1360,7 @@ self.addEventListener("fetch", function (event) {
             return e.replace(/([=!:$\/()])/g, "\\$1");
           }
           function f(e, t) {
-            return (e.keys = t), e;
+            return ((e.keys = t), e);
           }
           function h(e) {
             return e.sensitive ? "" : "i";
@@ -1391,7 +1391,7 @@ self.addEventListener("fetch", function (event) {
             return m(r(e, n), t, n);
           }
           function m(e, t, n) {
-            v(t) || ((n = t || n), (t = [])), (n = n || {});
+            (v(t) || ((n = t || n), (t = [])), (n = n || {}));
             for (
               var r = n.strict, o = n.end !== !1, i = "", c = 0;
               c < e.length;
@@ -1402,14 +1402,14 @@ self.addEventListener("fetch", function (event) {
               else {
                 var u = a(s.prefix),
                   p = "(?:" + s.pattern + ")";
-                t.push(s),
+                (t.push(s),
                   s.repeat && (p += "(?:" + u + p + ")*"),
                   (p = s.optional
                     ? s.partial
                       ? u + "(" + p + ")?"
                       : "(?:" + u + "(" + p + "))?"
                     : u + "(" + p + ")"),
-                  (i += p);
+                  (i += p));
               }
             }
             var l = a(n.delimiter || "/"),
@@ -1429,11 +1429,11 @@ self.addEventListener("fetch", function (event) {
             );
           }
           var v = e("isarray");
-          (t.exports = g),
+          ((t.exports = g),
             (t.exports.parse = r),
             (t.exports.compile = o),
             (t.exports.tokensToFunction = s),
-            (t.exports.tokensToRegExp = m);
+            (t.exports.tokensToRegExp = m));
           var x = new RegExp(
             [
               "(\\\\.)",
@@ -1458,9 +1458,9 @@ self.addEventListener("fetch", function (event) {
                 ("Chrome" === n && r >= 50))) ||
               ((Cache.prototype.addAll = function (e) {
                 function t(e) {
-                  (this.name = "NetworkError"),
+                  ((this.name = "NetworkError"),
                     (this.code = 19),
-                    (this.message = e);
+                    (this.message = e));
                 }
                 var n = this;
                 return (

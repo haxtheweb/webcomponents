@@ -1,21 +1,18 @@
 function createUnityInstance(e, t, n) {
   function r(e, t, n) {
     if (u.startupErrorHandler) return void u.startupErrorHandler(e, t, n);
-    if (
-      !(
-        (u.errorHandler && u.errorHandler(e, t, n)) ||
-        (console.log("Invoking error handler due to\n" + e),
-        "function" == typeof dump &&
-          dump("Invoking error handler due to\n" + e),
-        e.indexOf("UnknownError") != -1 ||
-          e.indexOf("Program terminated with exit(0)") != -1 ||
-          r.didShowErrorMessage)
-      )
-    ) {
+    if (!(
+      (u.errorHandler && u.errorHandler(e, t, n)) ||
+      (console.log("Invoking error handler due to\n" + e),
+      "function" == typeof dump && dump("Invoking error handler due to\n" + e),
+      e.indexOf("UnknownError") != -1 ||
+        e.indexOf("Program terminated with exit(0)") != -1 ||
+        r.didShowErrorMessage)
+    )) {
       var e =
         "An error occurred running the Unity content on this page. See your browser JavaScript console for more info. The error was:\n" +
         e;
-      e.indexOf("DISABLE_EXCEPTION_CATCHING") != -1
+      (e.indexOf("DISABLE_EXCEPTION_CATCHING") != -1
         ? (e =
             "An exception has occurred, but exception handling has been disabled in this build. If you are the developer of this content, enable exceptions in your project WebGL player settings to be able to catch the exception or see the stack trace.")
         : e.indexOf("Cannot enlarge memory arrays") != -1
@@ -28,7 +25,7 @@ function createUnityInstance(e, t, n) {
             (e =
               "The browser could not allocate enough memory for the WebGL content. If you are the developer of this content, try allocating less memory to your WebGL build in the WebGL player settings."),
         alert(e),
-        (r.didShowErrorMessage = !0);
+        (r.didShowErrorMessage = !0));
     }
   }
   function a(e) {
@@ -77,7 +74,7 @@ function createUnityInstance(e, t, n) {
   function i(e, t) {
     if ("symbolsUrl" != e) {
       var r = u.downloadProgress[e];
-      r ||
+      (r ||
         (r = u.downloadProgress[e] =
           {
             started: !1,
@@ -93,7 +90,7 @@ function createUnityInstance(e, t, n) {
             (r.lengthComputable = t.lengthComputable),
             (r.total = t.total)),
           (r.loaded = t.loaded),
-          "load" == t.type && (r.finished = !0));
+          "load" == t.type && (r.finished = !0)));
       var a = 0,
         i = 0,
         s = 0,
@@ -102,10 +99,10 @@ function createUnityInstance(e, t, n) {
       for (var e in u.downloadProgress) {
         var r = u.downloadProgress[e];
         if (!r.started) return 0;
-        s++,
+        (s++,
           r.lengthComputable
             ? ((a += r.loaded), (i += r.total), o++)
-            : r.finished || d++;
+            : r.finished || d++);
       }
       var l = s ? (s - d - (i ? (o * (i - a)) / i : 0)) / s : 0;
       n(0.9 * l);
@@ -144,7 +141,7 @@ function createUnityInstance(e, t, n) {
               { type: "application/javascript" },
             ),
           );
-          (a.worker = new Worker(i)),
+          ((a.worker = new Worker(i)),
             (a.worker.onmessage = function (e) {
               return e.data.ready
                 ? void URL.revokeObjectURL(i)
@@ -152,7 +149,7 @@ function createUnityInstance(e, t, n) {
                   void delete this.callbacks[e.data.id]);
             }),
             (a.worker.callbacks = {}),
-            (a.worker.nextCallbackId = 0);
+            (a.worker.nextCallbackId = 0));
         }
         var s = a.worker.nextCallbackId++;
         return (
@@ -173,15 +170,15 @@ function createUnityInstance(e, t, n) {
               cacheControl: u.cacheControl(u[e]),
             })
           : new XMLHttpRequest();
-      r.open("GET", u[e]),
+      (r.open("GET", u[e]),
         (r.responseType = "arraybuffer"),
         r.addEventListener("progress", function (t) {
           i(e, t);
         }),
         r.addEventListener("load", function (n) {
-          i(e, n), s(new Uint8Array(r.response), u[e], t);
+          (i(e, n), s(new Uint8Array(r.response), u[e], t));
         }),
-        r.send();
+        r.send());
     });
   }
   function d() {
@@ -191,24 +188,24 @@ function createUnityInstance(e, t, n) {
       );
       return new Promise(function (e, n) {
         var r = document.createElement("script");
-        (r.src = t),
+        ((r.src = t),
           (r.onload = function () {
-            delete r.onload, URL.revokeObjectURL(t), e(unityFramework);
+            (delete r.onload, URL.revokeObjectURL(t), e(unityFramework));
           }),
           document.body.appendChild(r),
           u.deinitializers.push(function () {
             document.body.removeChild(r);
-          });
+          }));
       });
     });
   }
   function l() {
     Promise.all([d(), o("codeUrl")]).then(function (e) {
-      (u.wasmBinary = e[1]), e[0](u);
+      ((u.wasmBinary = e[1]), e[0](u));
     });
     var e = o("dataUrl");
     u.preRun.push(function () {
-      u.addRunDependency("dataUrl"),
+      (u.addRunDependency("dataUrl"),
         e.then(function (e) {
           var t = new DataView(e.buffer, e.byteOffset, e.byteLength),
             n = 0,
@@ -219,7 +216,7 @@ function createUnityInstance(e, t, n) {
             throw "unknown data format";
           n += r.length;
           var a = t.getUint32(n, !0);
-          for (n += 4; n < a; ) {
+          for (n += 4; n < a;) {
             var i = t.getUint32(n, !0);
             n += 4;
             var s = t.getUint32(n, !0);
@@ -237,7 +234,7 @@ function createUnityInstance(e, t, n) {
             u.FS_createDataFile(d, null, e.subarray(i, i + s), !0, !0, !0);
           }
           u.removeRunDependency("dataUrl");
-        });
+        }));
     });
   }
   n = n || function () {};
@@ -253,10 +250,10 @@ function createUnityInstance(e, t, n) {
     intervals: {},
     setInterval: function (e, t) {
       var n = window.setInterval(e, t);
-      return (this.intervals[n] = !0), n;
+      return ((this.intervals[n] = !0), n);
     },
     clearInterval: function (e) {
-      delete this.intervals[e], window.clearInterval(e);
+      (delete this.intervals[e], window.clearInterval(e));
     },
     preRun: [],
     postRun: [],
@@ -272,12 +269,12 @@ function createUnityInstance(e, t, n) {
     disabledCanvasEvents: ["contextmenu", "dragstart"],
   };
   for (var c in t) u[c] = t[c];
-  (u.streamingAssetsUrl = new URL(u.streamingAssetsUrl, document.URL).href),
+  ((u.streamingAssetsUrl = new URL(u.streamingAssetsUrl, document.URL).href),
     u.disabledCanvasEvents.forEach(function (t) {
       e.addEventListener(t, function (e) {
         e.preventDefault();
       });
-    });
+    }));
   var f = {
     Module: u,
     SetFullscreen: function () {
@@ -292,11 +289,11 @@ function createUnityInstance(e, t, n) {
     },
     Quit: function () {
       return new Promise(function (e, t) {
-        (u.shouldQuit = !0), (u.onQuit = e);
+        ((u.shouldQuit = !0), (u.onQuit = e));
       });
     },
   };
-  (u.SystemInfo = (function () {
+  ((u.SystemInfo = (function () {
     var e,
       t,
       n,
@@ -306,7 +303,7 @@ function createUnityInstance(e, t, n) {
       s = navigator.appName,
       o = navigator.appVersion,
       d = parseInt(navigator.appVersion, 10);
-    (t = i.indexOf("Opera")) != -1
+    ((t = i.indexOf("Opera")) != -1
       ? ((s = "Opera"),
         (o = i.substring(t + 6)),
         (t = i.indexOf("Version")) != -1 && (o = i.substring(t + 8)))
@@ -337,7 +334,7 @@ function createUnityInstance(e, t, n) {
       isNaN(d)
         ? ((o = "" + parseFloat(navigator.appVersion)),
           (d = parseInt(navigator.appVersion, 10)))
-        : (o = "" + parseFloat(o));
+        : (o = "" + parseFloat(o)));
     var l = /Mobile|mini|Fennec|Android|iP(ad|od|hone)/.test(a),
       u = r,
       c = [
@@ -394,8 +391,8 @@ function createUnityInstance(e, t, n) {
         p = /Android ([\.\_\d]+)/.exec(i)[1];
         break;
       case "iOS":
-        (p = /OS (\d+)_(\d+)_?(\d+)?/.exec(a)),
-          (p = p[1] + "." + p[2] + "." + (0 | p[3]));
+        ((p = /OS (\d+)_(\d+)_?(\d+)?/.exec(a)),
+          (p = p[1] + "." + p[2] + "." + (0 | p[3])));
     }
     return {
       width: screen.width ? screen.width : 0,
@@ -456,12 +453,12 @@ function createUnityInstance(e, t, n) {
         if ("undefined" == typeof SharedArrayBuffer) return !1;
         var e = new WebAssembly.Memory({ initial: 1, maximum: 1, shared: !0 }),
           t = e.buffer instanceof SharedArrayBuffer;
-        return delete e, t;
+        return (delete e, t);
       })(),
     };
   })()),
     (u.abortHandler = function (e) {
-      return r(e, "", 0), !0;
+      return (r(e, "", 0), !0);
     }),
     globalThis.addEventListener("error", a),
     globalThis.addEventListener("unhandledrejection", a),
@@ -488,7 +485,6 @@ function createUnityInstance(e, t, n) {
               r.database = t,
                 r.database || e("indexedDB database could not be opened");
               r.queue.length;
-
             ) {
               var n = r.queue.shift();
               r.database
@@ -499,7 +495,7 @@ function createUnityInstance(e, t, n) {
         }
         function n() {
           var e = a.open(s.name, s.version);
-          (e.onupgradeneeded = function (e) {
+          ((e.onupgradeneeded = function (e) {
             var t = e.target.result;
             t.objectStoreNames.contains(d.name) || t.createObjectStore(d.name);
           }),
@@ -508,7 +504,7 @@ function createUnityInstance(e, t, n) {
             }),
             (e.onerror = function () {
               t(null);
-            });
+            }));
         }
         var r = this;
         r.queue = [];
@@ -519,7 +515,7 @@ function createUnityInstance(e, t, n) {
               window.webkitIndexedDB ||
               window.msIndexedDB,
             i = a.open(s.name);
-          (i.onupgradeneeded = function (e) {
+          ((i.onupgradeneeded = function (e) {
             var t = e.target.result.createObjectStore(o.name, {
               keyPath: "url",
             });
@@ -540,7 +536,7 @@ function createUnityInstance(e, t, n) {
             }),
             (i.onerror = function () {
               t(null);
-            });
+            }));
         } catch (e) {
           t(null);
         }
@@ -571,7 +567,7 @@ function createUnityInstance(e, t, n) {
         );
       }
       function i(t) {
-        (this.cache = { enabled: !1 }),
+        ((this.cache = { enabled: !1 }),
           t &&
             ((this.cache.control = t.cacheControl),
             (this.cache.company = t.companyName),
@@ -631,7 +627,7 @@ function createUnityInstance(e, t, n) {
                           t.statusText,
                       ));
             }.bind(this),
-          );
+          ));
       }
       var s = { name: "UnityCache", version: 2 },
         o = { name: "XMLHttpRequest", version: 1 },
@@ -649,11 +645,11 @@ function createUnityInstance(e, t, n) {
               .objectStore(e);
             "openKeyCursor" == t && ((i = i.index(n[0])), (n = n.slice(1)));
             var s = i[t].apply(i, n);
-            "function" == typeof r &&
+            ("function" == typeof r &&
               (s.onsuccess = function (e) {
                 r(e.target.result);
               }),
-              (s.onerror = a);
+              (s.onerror = a));
           } catch (e) {
             "function" == typeof a && a(e);
           }
@@ -663,7 +659,7 @@ function createUnityInstance(e, t, n) {
             : "function" == typeof a && a(new Error("indexedDB access denied"));
       };
       var l = new r();
-      (i.prototype.send = function (t) {
+      ((i.prototype.send = function (t) {
         var r = this.xhr,
           a = this.cache,
           i = arguments;
@@ -682,23 +678,23 @@ function createUnityInstance(e, t, n) {
                     (a.result.accessed = Date.now()),
                     "immutable" == a.control)
                   )
-                    (a.revalidated = !0),
+                    ((a.revalidated = !0),
                       l.execute(o.name, "put", [a.result]),
                       r.dispatchEvent(new Event("load")),
                       e(
                         "'" +
                           a.result.url +
                           "' served from the indexedDB cache without revalidation",
-                      );
+                      ));
                   else if (
                     n(a.result.url) &&
                     (a.result.responseHeaders["Last-Modified"] ||
                       a.result.responseHeaders.ETag)
                   ) {
                     var s = new XMLHttpRequest();
-                    s.open("HEAD", a.result.url),
+                    (s.open("HEAD", a.result.url),
                       (s.onload = function () {
-                        (a.revalidated = ["Last-Modified", "ETag"].every(
+                        ((a.revalidated = ["Last-Modified", "ETag"].every(
                           function (e) {
                             return (
                               !a.result.responseHeaders[e] ||
@@ -716,11 +712,11 @@ function createUnityInstance(e, t, n) {
                                   a.result.url +
                                   "' successfully revalidated and served from the indexedDB cache",
                               ))
-                            : r.send.apply(r, i);
+                            : r.send.apply(r, i));
                       }),
-                      s.send();
+                      s.send());
                   } else
-                    a.result.responseHeaders["Last-Modified"]
+                    (a.result.responseHeaders["Last-Modified"]
                       ? (r.setRequestHeader(
                           "If-Modified-Since",
                           a.result.responseHeaders["Last-Modified"],
@@ -732,7 +728,7 @@ function createUnityInstance(e, t, n) {
                           a.result.responseHeaders.ETag,
                         ),
                         r.setRequestHeader("Cache-Control", "no-cache")),
-                      r.send.apply(r, i);
+                      r.send.apply(r, i));
                 },
                 function (e) {
                   r.send.apply(r, i);
@@ -766,7 +762,7 @@ function createUnityInstance(e, t, n) {
             (this.cache.enabled = !1),
             this.xhr.setRequestHeader.apply(this.xhr, arguments)
           );
-        });
+        }));
       var u = new XMLHttpRequest();
       for (var c in u)
         i.prototype.hasOwnProperty(c) ||
@@ -794,7 +790,7 @@ function createUnityInstance(e, t, n) {
             );
           })(c);
       return i;
-    })());
+    })()));
   var h = {
     gzip: {
       require: function (e) {
@@ -808,7 +804,7 @@ function createUnityInstance(e, t, n) {
                 e || {},
               );
               var t = this.options;
-              t.raw &&
+              (t.raw &&
                 t.windowBits >= 0 &&
                 t.windowBits < 16 &&
                 ((t.windowBits = -t.windowBits),
@@ -825,11 +821,11 @@ function createUnityInstance(e, t, n) {
                 (this.ended = !1),
                 (this.chunks = []),
                 (this.strm = new c()),
-                (this.strm.avail_out = 0);
+                (this.strm.avail_out = 0));
               var n = s.inflateInit2(this.strm, t.windowBits);
               if (n !== l.Z_OK) throw new Error(u[n]);
-              (this.header = new f()),
-                s.inflateGetHeader(this.strm, this.header);
+              ((this.header = new f()),
+                s.inflateGetHeader(this.strm, this.header));
             }
             function a(e, t) {
               var n = new r(t);
@@ -837,7 +833,7 @@ function createUnityInstance(e, t, n) {
               return n.result;
             }
             function i(e, t) {
-              return (t = t || {}), (t.raw = !0), a(e, t);
+              return ((t = t || {}), (t.raw = !0), a(e, t));
             }
             var s = e("./zlib/inflate"),
               o = e("./utils/common"),
@@ -847,7 +843,7 @@ function createUnityInstance(e, t, n) {
               c = e("./zlib/zstream"),
               f = e("./zlib/gzheader"),
               h = Object.prototype.toString;
-            (r.prototype.push = function (e, t) {
+            ((r.prototype.push = function (e, t) {
               var n,
                 r,
                 a,
@@ -859,14 +855,14 @@ function createUnityInstance(e, t, n) {
                 b = this.options.dictionary,
                 m = !1;
               if (this.ended) return !1;
-              (r = t === ~~t ? t : t === !0 ? l.Z_FINISH : l.Z_NO_FLUSH),
+              ((r = t === ~~t ? t : t === !0 ? l.Z_FINISH : l.Z_NO_FLUSH),
                 "string" == typeof e
                   ? (f.input = d.binstring2buf(e))
                   : "[object ArrayBuffer]" === h.call(e)
                     ? (f.input = new Uint8Array(e))
                     : (f.input = e),
                 (f.next_in = 0),
-                (f.avail_in = f.input.length);
+                (f.avail_in = f.input.length));
               do {
                 if (
                   (0 === f.avail_out &&
@@ -886,8 +882,8 @@ function createUnityInstance(e, t, n) {
                   n === l.Z_BUF_ERROR && m === !0 && ((n = l.Z_OK), (m = !1)),
                   n !== l.Z_STREAM_END && n !== l.Z_OK)
                 )
-                  return this.onEnd(n), (this.ended = !0), !1;
-                f.next_out &&
+                  return (this.onEnd(n), (this.ended = !0), !1);
+                (f.next_out &&
                   ((0 !== f.avail_out &&
                     n !== l.Z_STREAM_END &&
                     (0 !== f.avail_in ||
@@ -901,7 +897,7 @@ function createUnityInstance(e, t, n) {
                         i && o.arraySet(f.output, f.output, a, i, 0),
                         this.onData(u))
                       : this.onData(o.shrinkBuf(f.output, f.next_out)))),
-                  0 === f.avail_in && 0 === f.avail_out && (m = !0);
+                  0 === f.avail_in && 0 === f.avail_out && (m = !0));
               } while (
                 (f.avail_in > 0 || 0 === f.avail_out) &&
                 n !== l.Z_STREAM_END
@@ -921,18 +917,18 @@ function createUnityInstance(e, t, n) {
                 this.chunks.push(e);
               }),
               (r.prototype.onEnd = function (e) {
-                e === l.Z_OK &&
+                (e === l.Z_OK &&
                   ("string" === this.options.to
                     ? (this.result = this.chunks.join(""))
                     : (this.result = o.flattenChunks(this.chunks))),
                   (this.chunks = []),
                   (this.err = e),
-                  (this.msg = this.strm.msg);
+                  (this.msg = this.strm.msg));
               }),
               (n.Inflate = r),
               (n.inflate = a),
               (n.inflateRaw = i),
-              (n.ungzip = a);
+              (n.ungzip = a));
           },
           "utils/common.js": function (e, t, n) {
             "use strict";
@@ -940,11 +936,10 @@ function createUnityInstance(e, t, n) {
               "undefined" != typeof Uint8Array &&
               "undefined" != typeof Uint16Array &&
               "undefined" != typeof Int32Array;
-            (n.assign = function (e) {
+            ((n.assign = function (e) {
               for (
                 var t = Array.prototype.slice.call(arguments, 1);
                 t.length;
-
               ) {
                 var n = t.shift();
                 if (n) {
@@ -961,7 +956,7 @@ function createUnityInstance(e, t, n) {
                   : e.subarray
                     ? e.subarray(0, t)
                     : ((e.length = t), e);
-              });
+              }));
             var a = {
                 arraySet: function (e, t, n, r, a) {
                   if (t.subarray && e.subarray)
@@ -976,7 +971,7 @@ function createUnityInstance(e, t, n) {
                     t < n;
                     t++
                   )
-                    (i = e[t]), s.set(i, a), (a += i.length);
+                    ((i = e[t]), s.set(i, a), (a += i.length));
                   return s;
                 },
               },
@@ -988,7 +983,7 @@ function createUnityInstance(e, t, n) {
                   return [].concat.apply([], e);
                 },
               };
-            (n.setTyped = function (e) {
+            ((n.setTyped = function (e) {
               e
                 ? ((n.Buf8 = Uint8Array),
                   (n.Buf16 = Uint16Array),
@@ -999,7 +994,7 @@ function createUnityInstance(e, t, n) {
                   (n.Buf32 = Array),
                   n.assign(n, i));
             }),
-              n.setTyped(r);
+              n.setTyped(r));
           },
           "utils/strings.js": function (e, t, n) {
             "use strict";
@@ -1036,7 +1031,7 @@ function createUnityInstance(e, t, n) {
                         : d >= 192
                           ? 2
                           : 1;
-            (o[254] = o[254] = 1),
+            ((o[254] = o[254] = 1),
               (n.string2buf = function (e) {
                 var t,
                   n,
@@ -1046,15 +1041,15 @@ function createUnityInstance(e, t, n) {
                   o = e.length,
                   d = 0;
                 for (i = 0; i < o; i++)
-                  (n = e.charCodeAt(i)),
+                  ((n = e.charCodeAt(i)),
                     55296 === (64512 & n) &&
                       i + 1 < o &&
                       ((r = e.charCodeAt(i + 1)),
                       56320 === (64512 & r) &&
                         ((n = 65536 + ((n - 55296) << 10) + (r - 56320)), i++)),
-                    (d += n < 128 ? 1 : n < 2048 ? 2 : n < 65536 ? 3 : 4);
+                    (d += n < 128 ? 1 : n < 2048 ? 2 : n < 65536 ? 3 : 4));
                 for (t = new a.Buf8(d), s = 0, i = 0; s < d; i++)
-                  (n = e.charCodeAt(i)),
+                  ((n = e.charCodeAt(i)),
                     55296 === (64512 & n) &&
                       i + 1 < o &&
                       ((r = e.charCodeAt(i + 1)),
@@ -1072,7 +1067,7 @@ function createUnityInstance(e, t, n) {
                           : ((t[s++] = 240 | (n >>> 18)),
                             (t[s++] = 128 | ((n >>> 12) & 63)),
                             (t[s++] = 128 | ((n >>> 6) & 63)),
-                            (t[s++] = 128 | (63 & n)));
+                            (t[s++] = 128 | (63 & n))));
                 return t;
               }),
               (n.buf2binstring = function (e) {
@@ -1094,12 +1089,13 @@ function createUnityInstance(e, t, n) {
                   s,
                   d = t || e.length,
                   l = new Array(2 * d);
-                for (a = 0, n = 0; n < d; )
+                for (a = 0, n = 0; n < d;)
                   if (((i = e[n++]), i < 128)) l[a++] = i;
-                  else if (((s = o[i]), s > 4)) (l[a++] = 65533), (n += s - 1);
+                  else if (((s = o[i]), s > 4))
+                    ((l[a++] = 65533), (n += s - 1));
                   else {
-                    for (i &= 2 === s ? 31 : 3 === s ? 15 : 7; s > 1 && n < d; )
-                      (i = (i << 6) | (63 & e[n++])), s--;
+                    for (i &= 2 === s ? 31 : 3 === s ? 15 : 7; s > 1 && n < d;)
+                      ((i = (i << 6) | (63 & e[n++])), s--);
                     s > 1
                       ? (l[a++] = 65533)
                       : i < 65536
@@ -1115,11 +1111,10 @@ function createUnityInstance(e, t, n) {
                 for (
                   t = t || e.length, t > e.length && (t = e.length), n = t - 1;
                   n >= 0 && 128 === (192 & e[n]);
-
                 )
                   n--;
                 return n < 0 ? t : 0 === n ? t : n + o[e[n]] > t ? n : t;
-              });
+              }));
           },
           "zlib/inflate.js": function (e, t, n) {
             "use strict";
@@ -1132,7 +1127,7 @@ function createUnityInstance(e, t, n) {
               );
             }
             function a() {
-              (this.mode = 0),
+              ((this.mode = 0),
                 (this.last = !1),
                 (this.wrap = 0),
                 (this.havedict = !1),
@@ -1166,7 +1161,7 @@ function createUnityInstance(e, t, n) {
                 (this.distdyn = null),
                 (this.sane = 0),
                 (this.back = 0),
-                (this.was = 0);
+                (this.was = 0));
             }
             function i(e) {
               var t;
@@ -1231,27 +1226,22 @@ function createUnityInstance(e, t, n) {
             function u(e) {
               if (ve) {
                 var t;
-                for (
-                  m = new g.Buf32(512), w = new g.Buf32(32), t = 0;
-                  t < 144;
-
-                )
+                for (m = new g.Buf32(512), w = new g.Buf32(32), t = 0; t < 144;)
                   e.lens[t++] = 8;
-                for (; t < 256; ) e.lens[t++] = 9;
-                for (; t < 280; ) e.lens[t++] = 7;
-                for (; t < 288; ) e.lens[t++] = 8;
+                for (; t < 256;) e.lens[t++] = 9;
+                for (; t < 280;) e.lens[t++] = 7;
+                for (; t < 288;) e.lens[t++] = 8;
                 for (
                   x(E, e.lens, 0, 288, m, 0, e.work, { bits: 9 }), t = 0;
                   t < 32;
-
                 )
                   e.lens[t++] = 5;
-                x(S, e.lens, 0, 32, w, 0, e.work, { bits: 5 }), (ve = !1);
+                (x(S, e.lens, 0, 32, w, 0, e.work, { bits: 5 }), (ve = !1));
               }
-              (e.lencode = m),
+              ((e.lencode = m),
                 (e.lenbits = 9),
                 (e.distcode = w),
-                (e.distbits = 5);
+                (e.distbits = 5));
             }
             function c(e, t, n, r) {
               var a,
@@ -1313,7 +1303,7 @@ function createUnityInstance(e, t, n) {
                 ];
               if (!e || !e.state || !e.output || (!e.input && 0 !== e.avail_in))
                 return N;
-              (n = e.state),
+              ((n = e.state),
                 n.mode === K && (n.mode = V),
                 (o = e.next_out),
                 (i = e.output),
@@ -1325,7 +1315,7 @@ function createUnityInstance(e, t, n) {
                 (h = n.bits),
                 (p = d),
                 (b = l),
-                (_e = L);
+                (_e = L));
               e: for (;;)
                 switch (n.mode) {
                   case M:
@@ -1333,18 +1323,18 @@ function createUnityInstance(e, t, n) {
                       n.mode = V;
                       break;
                     }
-                    for (; h < 16; ) {
+                    for (; h < 16;) {
                       if (0 === d) break e;
-                      d--, (f += a[s++] << h), (h += 8);
+                      (d--, (f += a[s++] << h), (h += 8));
                     }
                     if (2 & n.wrap && 35615 === f) {
-                      (n.check = 0),
+                      ((n.check = 0),
                         (Ce[0] = 255 & f),
                         (Ce[1] = (f >>> 8) & 255),
                         (n.check = y(n.check, Ce, 2, 0)),
                         (f = 0),
                         (h = 0),
-                        (n.mode = H);
+                        (n.mode = H));
                       break;
                     }
                     if (
@@ -1352,11 +1342,11 @@ function createUnityInstance(e, t, n) {
                       n.head && (n.head.done = !1),
                       !(1 & n.wrap) || (((255 & f) << 8) + (f >> 8)) % 31)
                     ) {
-                      (e.msg = "incorrect header check"), (n.mode = fe);
+                      ((e.msg = "incorrect header check"), (n.mode = fe));
                       break;
                     }
                     if ((15 & f) !== T) {
-                      (e.msg = "unknown compression method"), (n.mode = fe);
+                      ((e.msg = "unknown compression method"), (n.mode = fe));
                       break;
                     }
                     if (
@@ -1364,42 +1354,42 @@ function createUnityInstance(e, t, n) {
                     )
                       n.wbits = xe;
                     else if (xe > n.wbits) {
-                      (e.msg = "invalid window size"), (n.mode = fe);
+                      ((e.msg = "invalid window size"), (n.mode = fe));
                       break;
                     }
-                    (n.dmax = 1 << xe),
+                    ((n.dmax = 1 << xe),
                       (e.adler = n.check = 1),
                       (n.mode = 512 & f ? G : K),
                       (f = 0),
-                      (h = 0);
+                      (h = 0));
                     break;
                   case H:
-                    for (; h < 16; ) {
+                    for (; h < 16;) {
                       if (0 === d) break e;
-                      d--, (f += a[s++] << h), (h += 8);
+                      (d--, (f += a[s++] << h), (h += 8));
                     }
                     if (((n.flags = f), (255 & n.flags) !== T)) {
-                      (e.msg = "unknown compression method"), (n.mode = fe);
+                      ((e.msg = "unknown compression method"), (n.mode = fe));
                       break;
                     }
                     if (57344 & n.flags) {
-                      (e.msg = "unknown header flags set"), (n.mode = fe);
+                      ((e.msg = "unknown header flags set"), (n.mode = fe));
                       break;
                     }
-                    n.head && (n.head.text = (f >> 8) & 1),
+                    (n.head && (n.head.text = (f >> 8) & 1),
                       512 & n.flags &&
                         ((Ce[0] = 255 & f),
                         (Ce[1] = (f >>> 8) & 255),
                         (n.check = y(n.check, Ce, 2, 0))),
                       (f = 0),
                       (h = 0),
-                      (n.mode = D);
+                      (n.mode = D));
                   case D:
-                    for (; h < 32; ) {
+                    for (; h < 32;) {
                       if (0 === d) break e;
-                      d--, (f += a[s++] << h), (h += 8);
+                      (d--, (f += a[s++] << h), (h += 8));
                     }
-                    n.head && (n.head.time = f),
+                    (n.head && (n.head.time = f),
                       512 & n.flags &&
                         ((Ce[0] = 255 & f),
                         (Ce[1] = (f >>> 8) & 255),
@@ -1408,34 +1398,35 @@ function createUnityInstance(e, t, n) {
                         (n.check = y(n.check, Ce, 4, 0))),
                       (f = 0),
                       (h = 0),
-                      (n.mode = Z);
+                      (n.mode = Z));
                   case Z:
-                    for (; h < 16; ) {
+                    for (; h < 16;) {
                       if (0 === d) break e;
-                      d--, (f += a[s++] << h), (h += 8);
+                      (d--, (f += a[s++] << h), (h += 8));
                     }
-                    n.head && ((n.head.xflags = 255 & f), (n.head.os = f >> 8)),
+                    (n.head &&
+                      ((n.head.xflags = 255 & f), (n.head.os = f >> 8)),
                       512 & n.flags &&
                         ((Ce[0] = 255 & f),
                         (Ce[1] = (f >>> 8) & 255),
                         (n.check = y(n.check, Ce, 2, 0))),
                       (f = 0),
                       (h = 0),
-                      (n.mode = z);
+                      (n.mode = z));
                   case z:
                     if (1024 & n.flags) {
-                      for (; h < 16; ) {
+                      for (; h < 16;) {
                         if (0 === d) break e;
-                        d--, (f += a[s++] << h), (h += 8);
+                        (d--, (f += a[s++] << h), (h += 8));
                       }
-                      (n.length = f),
+                      ((n.length = f),
                         n.head && (n.head.extra_len = f),
                         512 & n.flags &&
                           ((Ce[0] = 255 & f),
                           (Ce[1] = (f >>> 8) & 255),
                           (n.check = y(n.check, Ce, 2, 0))),
                         (f = 0),
-                        (h = 0);
+                        (h = 0));
                     } else n.head && (n.head.extra = null);
                     n.mode = F;
                   case F:
@@ -1456,17 +1447,17 @@ function createUnityInstance(e, t, n) {
                       n.length)
                     )
                       break e;
-                    (n.length = 0), (n.mode = j);
+                    ((n.length = 0), (n.mode = j));
                   case j:
                     if (2048 & n.flags) {
                       if (0 === d) break e;
                       m = 0;
                       do
-                        (xe = a[s + m++]),
+                        ((xe = a[s + m++]),
                           n.head &&
                             xe &&
                             n.length < 65536 &&
-                            (n.head.name += String.fromCharCode(xe));
+                            (n.head.name += String.fromCharCode(xe)));
                       while (xe && m < d);
                       if (
                         (512 & n.flags && (n.check = y(n.check, a, m, s)),
@@ -1476,17 +1467,17 @@ function createUnityInstance(e, t, n) {
                       )
                         break e;
                     } else n.head && (n.head.name = null);
-                    (n.length = 0), (n.mode = P);
+                    ((n.length = 0), (n.mode = P));
                   case P:
                     if (4096 & n.flags) {
                       if (0 === d) break e;
                       m = 0;
                       do
-                        (xe = a[s + m++]),
+                        ((xe = a[s + m++]),
                           n.head &&
                             xe &&
                             n.length < 65536 &&
-                            (n.head.comment += String.fromCharCode(xe));
+                            (n.head.comment += String.fromCharCode(xe)));
                       while (xe && m < d);
                       if (
                         (512 & n.flags && (n.check = y(n.check, a, m, s)),
@@ -1499,27 +1490,30 @@ function createUnityInstance(e, t, n) {
                     n.mode = q;
                   case q:
                     if (512 & n.flags) {
-                      for (; h < 16; ) {
+                      for (; h < 16;) {
                         if (0 === d) break e;
-                        d--, (f += a[s++] << h), (h += 8);
+                        (d--, (f += a[s++] << h), (h += 8));
                       }
                       if (f !== (65535 & n.check)) {
-                        (e.msg = "header crc mismatch"), (n.mode = fe);
+                        ((e.msg = "header crc mismatch"), (n.mode = fe));
                         break;
                       }
-                      (f = 0), (h = 0);
+                      ((f = 0), (h = 0));
                     }
-                    n.head &&
+                    (n.head &&
                       ((n.head.hcrc = (n.flags >> 9) & 1), (n.head.done = !0)),
                       (e.adler = n.check = 0),
-                      (n.mode = K);
+                      (n.mode = K));
                     break;
                   case G:
-                    for (; h < 32; ) {
+                    for (; h < 32;) {
                       if (0 === d) break e;
-                      d--, (f += a[s++] << h), (h += 8);
+                      (d--, (f += a[s++] << h), (h += 8));
                     }
-                    (e.adler = n.check = r(f)), (f = 0), (h = 0), (n.mode = X);
+                    ((e.adler = n.check = r(f)),
+                      (f = 0),
+                      (h = 0),
+                      (n.mode = X));
                   case X:
                     if (0 === n.havedict)
                       return (
@@ -1531,17 +1525,17 @@ function createUnityInstance(e, t, n) {
                         (n.bits = h),
                         B
                       );
-                    (e.adler = n.check = 1), (n.mode = K);
+                    ((e.adler = n.check = 1), (n.mode = K));
                   case K:
                     if (t === C || t === R) break e;
                   case V:
                     if (n.last) {
-                      (f >>>= 7 & h), (h -= 7 & h), (n.mode = le);
+                      ((f >>>= 7 & h), (h -= 7 & h), (n.mode = le));
                       break;
                     }
-                    for (; h < 3; ) {
+                    for (; h < 3;) {
                       if (0 === d) break e;
-                      d--, (f += a[s++] << h), (h += 8);
+                      (d--, (f += a[s++] << h), (h += 8));
                     }
                     switch (((n.last = 1 & f), (f >>>= 1), (h -= 1), 3 & f)) {
                       case 0:
@@ -1549,7 +1543,7 @@ function createUnityInstance(e, t, n) {
                         break;
                       case 1:
                         if ((u(n), (n.mode = ne), t === R)) {
-                          (f >>>= 2), (h -= 2);
+                          ((f >>>= 2), (h -= 2));
                           break e;
                         }
                         break;
@@ -1557,17 +1551,17 @@ function createUnityInstance(e, t, n) {
                         n.mode = $;
                         break;
                       case 3:
-                        (e.msg = "invalid block type"), (n.mode = fe);
+                        ((e.msg = "invalid block type"), (n.mode = fe));
                     }
-                    (f >>>= 2), (h -= 2);
+                    ((f >>>= 2), (h -= 2));
                     break;
                   case Y:
-                    for (f >>>= 7 & h, h -= 7 & h; h < 32; ) {
+                    for (f >>>= 7 & h, h -= 7 & h; h < 32;) {
                       if (0 === d) break e;
-                      d--, (f += a[s++] << h), (h += 8);
+                      (d--, (f += a[s++] << h), (h += 8));
                     }
                     if ((65535 & f) !== ((f >>> 16) ^ 65535)) {
-                      (e.msg = "invalid stored block lengths"), (n.mode = fe);
+                      ((e.msg = "invalid stored block lengths"), (n.mode = fe));
                       break;
                     }
                     if (
@@ -1584,20 +1578,20 @@ function createUnityInstance(e, t, n) {
                     if ((m = n.length)) {
                       if ((m > d && (m = d), m > l && (m = l), 0 === m))
                         break e;
-                      g.arraySet(i, a, s, m, o),
+                      (g.arraySet(i, a, s, m, o),
                         (d -= m),
                         (s += m),
                         (l -= m),
                         (o += m),
-                        (n.length -= m);
+                        (n.length -= m));
                       break;
                     }
                     n.mode = K;
                     break;
                   case $:
-                    for (; h < 14; ) {
+                    for (; h < 14;) {
                       if (0 === d) break e;
-                      d--, (f += a[s++] << h), (h += 8);
+                      (d--, (f += a[s++] << h), (h += 8));
                     }
                     if (
                       ((n.nlen = (31 & f) + 257),
@@ -1611,20 +1605,20 @@ function createUnityInstance(e, t, n) {
                       (h -= 4),
                       n.nlen > 286 || n.ndist > 30)
                     ) {
-                      (e.msg = "too many length or distance symbols"),
-                        (n.mode = fe);
+                      ((e.msg = "too many length or distance symbols"),
+                        (n.mode = fe));
                       break;
                     }
-                    (n.have = 0), (n.mode = ee);
+                    ((n.have = 0), (n.mode = ee));
                   case ee:
-                    for (; n.have < n.ncode; ) {
-                      for (; h < 3; ) {
+                    for (; n.have < n.ncode;) {
+                      for (; h < 3;) {
                         if (0 === d) break e;
-                        d--, (f += a[s++] << h), (h += 8);
+                        (d--, (f += a[s++] << h), (h += 8));
                       }
-                      (n.lens[Re[n.have++]] = 7 & f), (f >>>= 3), (h -= 3);
+                      ((n.lens[Re[n.have++]] = 7 & f), (f >>>= 3), (h -= 3));
                     }
-                    for (; n.have < 19; ) n.lens[Re[n.have++]] = 0;
+                    for (; n.have < 19;) n.lens[Re[n.have++]] = 0;
                     if (
                       ((n.lencode = n.lendyn),
                       (n.lenbits = 7),
@@ -1633,12 +1627,12 @@ function createUnityInstance(e, t, n) {
                       (n.lenbits = Ee.bits),
                       _e)
                     ) {
-                      (e.msg = "invalid code lengths set"), (n.mode = fe);
+                      ((e.msg = "invalid code lengths set"), (n.mode = fe));
                       break;
                     }
-                    (n.have = 0), (n.mode = te);
+                    ((n.have = 0), (n.mode = te));
                   case te:
-                    for (; n.have < n.nlen + n.ndist; ) {
+                    for (; n.have < n.nlen + n.ndist;) {
                       for (
                         ;
                         (Oe = n.lencode[f & ((1 << n.lenbits) - 1)]),
@@ -1646,62 +1640,62 @@ function createUnityInstance(e, t, n) {
                           (we = (Oe >>> 16) & 255),
                           (ge = 65535 & Oe),
                           !(me <= h);
-
                       ) {
                         if (0 === d) break e;
-                        d--, (f += a[s++] << h), (h += 8);
+                        (d--, (f += a[s++] << h), (h += 8));
                       }
                       if (ge < 16)
-                        (f >>>= me), (h -= me), (n.lens[n.have++] = ge);
+                        ((f >>>= me), (h -= me), (n.lens[n.have++] = ge));
                       else {
                         if (16 === ge) {
-                          for (Se = me + 2; h < Se; ) {
+                          for (Se = me + 2; h < Se;) {
                             if (0 === d) break e;
-                            d--, (f += a[s++] << h), (h += 8);
+                            (d--, (f += a[s++] << h), (h += 8));
                           }
                           if (((f >>>= me), (h -= me), 0 === n.have)) {
-                            (e.msg = "invalid bit length repeat"),
-                              (n.mode = fe);
+                            ((e.msg = "invalid bit length repeat"),
+                              (n.mode = fe));
                             break;
                           }
-                          (xe = n.lens[n.have - 1]),
+                          ((xe = n.lens[n.have - 1]),
                             (m = 3 + (3 & f)),
                             (f >>>= 2),
-                            (h -= 2);
+                            (h -= 2));
                         } else if (17 === ge) {
-                          for (Se = me + 3; h < Se; ) {
+                          for (Se = me + 3; h < Se;) {
                             if (0 === d) break e;
-                            d--, (f += a[s++] << h), (h += 8);
+                            (d--, (f += a[s++] << h), (h += 8));
                           }
-                          (f >>>= me),
+                          ((f >>>= me),
                             (h -= me),
                             (xe = 0),
                             (m = 3 + (7 & f)),
                             (f >>>= 3),
-                            (h -= 3);
+                            (h -= 3));
                         } else {
-                          for (Se = me + 7; h < Se; ) {
+                          for (Se = me + 7; h < Se;) {
                             if (0 === d) break e;
-                            d--, (f += a[s++] << h), (h += 8);
+                            (d--, (f += a[s++] << h), (h += 8));
                           }
-                          (f >>>= me),
+                          ((f >>>= me),
                             (h -= me),
                             (xe = 0),
                             (m = 11 + (127 & f)),
                             (f >>>= 7),
-                            (h -= 7);
+                            (h -= 7));
                         }
                         if (n.have + m > n.nlen + n.ndist) {
-                          (e.msg = "invalid bit length repeat"), (n.mode = fe);
+                          ((e.msg = "invalid bit length repeat"),
+                            (n.mode = fe));
                           break;
                         }
-                        for (; m--; ) n.lens[n.have++] = xe;
+                        for (; m--;) n.lens[n.have++] = xe;
                       }
                     }
                     if (n.mode === fe) break;
                     if (0 === n.lens[256]) {
-                      (e.msg = "invalid code -- missing end-of-block"),
-                        (n.mode = fe);
+                      ((e.msg = "invalid code -- missing end-of-block"),
+                        (n.mode = fe));
                       break;
                     }
                     if (
@@ -1711,7 +1705,7 @@ function createUnityInstance(e, t, n) {
                       (n.lenbits = Ee.bits),
                       _e)
                     ) {
-                      (e.msg = "invalid literal/lengths set"), (n.mode = fe);
+                      ((e.msg = "invalid literal/lengths set"), (n.mode = fe));
                       break;
                     }
                     if (
@@ -1731,7 +1725,7 @@ function createUnityInstance(e, t, n) {
                       (n.distbits = Ee.bits),
                       _e)
                     ) {
-                      (e.msg = "invalid distances set"), (n.mode = fe);
+                      ((e.msg = "invalid distances set"), (n.mode = fe));
                       break;
                     }
                     if (((n.mode = ne), t === R)) break e;
@@ -1739,7 +1733,7 @@ function createUnityInstance(e, t, n) {
                     n.mode = re;
                   case re:
                     if (d >= 6 && l >= 258) {
-                      (e.next_out = o),
+                      ((e.next_out = o),
                         (e.avail_out = l),
                         (e.next_in = s),
                         (e.avail_in = d),
@@ -1754,7 +1748,7 @@ function createUnityInstance(e, t, n) {
                         (d = e.avail_in),
                         (f = n.hold),
                         (h = n.bits),
-                        n.mode === K && (n.back = -1);
+                        n.mode === K && (n.back = -1));
                       break;
                     }
                     for (
@@ -1764,10 +1758,9 @@ function createUnityInstance(e, t, n) {
                         (we = (Oe >>> 16) & 255),
                         (ge = 65535 & Oe),
                         !(me <= h);
-
                     ) {
                       if (0 === d) break e;
-                      d--, (f += a[s++] << h), (h += 8);
+                      (d--, (f += a[s++] << h), (h += 8));
                     }
                     if (we && 0 === (240 & we)) {
                       for (
@@ -1778,12 +1771,11 @@ function createUnityInstance(e, t, n) {
                           (we = (Oe >>> 16) & 255),
                           (ge = 65535 & Oe),
                           !(ve + me <= h);
-
                       ) {
                         if (0 === d) break e;
-                        d--, (f += a[s++] << h), (h += 8);
+                        (d--, (f += a[s++] << h), (h += 8));
                       }
-                      (f >>>= ve), (h -= ve), (n.back += ve);
+                      ((f >>>= ve), (h -= ve), (n.back += ve));
                     }
                     if (
                       ((f >>>= me),
@@ -1796,26 +1788,26 @@ function createUnityInstance(e, t, n) {
                       break;
                     }
                     if (32 & we) {
-                      (n.back = -1), (n.mode = K);
+                      ((n.back = -1), (n.mode = K));
                       break;
                     }
                     if (64 & we) {
-                      (e.msg = "invalid literal/length code"), (n.mode = fe);
+                      ((e.msg = "invalid literal/length code"), (n.mode = fe));
                       break;
                     }
-                    (n.extra = 15 & we), (n.mode = ae);
+                    ((n.extra = 15 & we), (n.mode = ae));
                   case ae:
                     if (n.extra) {
-                      for (Se = n.extra; h < Se; ) {
+                      for (Se = n.extra; h < Se;) {
                         if (0 === d) break e;
-                        d--, (f += a[s++] << h), (h += 8);
+                        (d--, (f += a[s++] << h), (h += 8));
                       }
-                      (n.length += f & ((1 << n.extra) - 1)),
+                      ((n.length += f & ((1 << n.extra) - 1)),
                         (f >>>= n.extra),
                         (h -= n.extra),
-                        (n.back += n.extra);
+                        (n.back += n.extra));
                     }
-                    (n.was = n.length), (n.mode = ie);
+                    ((n.was = n.length), (n.mode = ie));
                   case ie:
                     for (
                       ;
@@ -1824,10 +1816,9 @@ function createUnityInstance(e, t, n) {
                         (we = (Oe >>> 16) & 255),
                         (ge = 65535 & Oe),
                         !(me <= h);
-
                     ) {
                       if (0 === d) break e;
-                      d--, (f += a[s++] << h), (h += 8);
+                      (d--, (f += a[s++] << h), (h += 8));
                     }
                     if (0 === (240 & we)) {
                       for (
@@ -1840,31 +1831,31 @@ function createUnityInstance(e, t, n) {
                           (we = (Oe >>> 16) & 255),
                           (ge = 65535 & Oe),
                           !(ve + me <= h);
-
                       ) {
                         if (0 === d) break e;
-                        d--, (f += a[s++] << h), (h += 8);
+                        (d--, (f += a[s++] << h), (h += 8));
                       }
-                      (f >>>= ve), (h -= ve), (n.back += ve);
+                      ((f >>>= ve), (h -= ve), (n.back += ve));
                     }
                     if (((f >>>= me), (h -= me), (n.back += me), 64 & we)) {
-                      (e.msg = "invalid distance code"), (n.mode = fe);
+                      ((e.msg = "invalid distance code"), (n.mode = fe));
                       break;
                     }
-                    (n.offset = ge), (n.extra = 15 & we), (n.mode = se);
+                    ((n.offset = ge), (n.extra = 15 & we), (n.mode = se));
                   case se:
                     if (n.extra) {
-                      for (Se = n.extra; h < Se; ) {
+                      for (Se = n.extra; h < Se;) {
                         if (0 === d) break e;
-                        d--, (f += a[s++] << h), (h += 8);
+                        (d--, (f += a[s++] << h), (h += 8));
                       }
-                      (n.offset += f & ((1 << n.extra) - 1)),
+                      ((n.offset += f & ((1 << n.extra) - 1)),
                         (f >>>= n.extra),
                         (h -= n.extra),
-                        (n.back += n.extra);
+                        (n.back += n.extra));
                     }
                     if (n.offset > n.dmax) {
-                      (e.msg = "invalid distance too far back"), (n.mode = fe);
+                      ((e.msg = "invalid distance too far back"),
+                        (n.mode = fe));
                       break;
                     }
                     n.mode = oe;
@@ -1872,30 +1863,30 @@ function createUnityInstance(e, t, n) {
                     if (0 === l) break e;
                     if (((m = b - l), n.offset > m)) {
                       if (((m = n.offset - m), m > n.whave && n.sane)) {
-                        (e.msg = "invalid distance too far back"),
-                          (n.mode = fe);
+                        ((e.msg = "invalid distance too far back"),
+                          (n.mode = fe));
                         break;
                       }
-                      m > n.wnext
+                      (m > n.wnext
                         ? ((m -= n.wnext), (w = n.wsize - m))
                         : (w = n.wnext - m),
                         m > n.length && (m = n.length),
-                        (be = n.window);
-                    } else (be = i), (w = o - n.offset), (m = n.length);
-                    m > l && (m = l), (l -= m), (n.length -= m);
+                        (be = n.window));
+                    } else ((be = i), (w = o - n.offset), (m = n.length));
+                    (m > l && (m = l), (l -= m), (n.length -= m));
                     do i[o++] = be[w++];
                     while (--m);
                     0 === n.length && (n.mode = re);
                     break;
                   case de:
                     if (0 === l) break e;
-                    (i[o++] = n.length), l--, (n.mode = re);
+                    ((i[o++] = n.length), l--, (n.mode = re));
                     break;
                   case le:
                     if (n.wrap) {
-                      for (; h < 32; ) {
+                      for (; h < 32;) {
                         if (0 === d) break e;
-                        d--, (f |= a[s++] << h), (h += 8);
+                        (d--, (f |= a[s++] << h), (h += 8));
                       }
                       if (
                         ((b -= l),
@@ -1909,23 +1900,23 @@ function createUnityInstance(e, t, n) {
                         (b = l),
                         (n.flags ? f : r(f)) !== n.check)
                       ) {
-                        (e.msg = "incorrect data check"), (n.mode = fe);
+                        ((e.msg = "incorrect data check"), (n.mode = fe));
                         break;
                       }
-                      (f = 0), (h = 0);
+                      ((f = 0), (h = 0));
                     }
                     n.mode = ue;
                   case ue:
                     if (n.wrap && n.flags) {
-                      for (; h < 32; ) {
+                      for (; h < 32;) {
                         if (0 === d) break e;
-                        d--, (f += a[s++] << h), (h += 8);
+                        (d--, (f += a[s++] << h), (h += 8));
                       }
                       if (f !== (4294967295 & n.total)) {
-                        (e.msg = "incorrect length check"), (n.mode = fe);
+                        ((e.msg = "incorrect length check"), (n.mode = fe));
                         break;
                       }
-                      (f = 0), (h = 0);
+                      ((f = 0), (h = 0));
                     }
                     n.mode = ce;
                   case ce:
@@ -1976,7 +1967,7 @@ function createUnityInstance(e, t, n) {
             function h(e) {
               if (!e || !e.state) return N;
               var t = e.state;
-              return t.window && (t.window = null), (e.state = null), L;
+              return (t.window && (t.window = null), (e.state = null), L);
             }
             function p(e, t) {
               var n;
@@ -2060,7 +2051,7 @@ function createUnityInstance(e, t, n) {
               we = 15,
               ge = we,
               ve = !0;
-            (n.inflateReset = s),
+            ((n.inflateReset = s),
               (n.inflateReset2 = o),
               (n.inflateResetKeep = i),
               (n.inflateInit = l),
@@ -2069,7 +2060,7 @@ function createUnityInstance(e, t, n) {
               (n.inflateEnd = h),
               (n.inflateGetHeader = p),
               (n.inflateSetDictionary = b),
-              (n.inflateInfo = "pako inflate (from Nodeca project)");
+              (n.inflateInfo = "pako inflate (from Nodeca project)"));
           },
           "zlib/constants.js": function (e, t, n) {
             "use strict";
@@ -2120,7 +2111,7 @@ function createUnityInstance(e, t, n) {
           "zlib/zstream.js": function (e, t, n) {
             "use strict";
             function r() {
-              (this.input = null),
+              ((this.input = null),
                 (this.next_in = 0),
                 (this.avail_in = 0),
                 (this.total_in = 0),
@@ -2131,14 +2122,14 @@ function createUnityInstance(e, t, n) {
                 (this.msg = ""),
                 (this.state = null),
                 (this.data_type = 2),
-                (this.adler = 0);
+                (this.adler = 0));
             }
             t.exports = r;
           },
           "zlib/gzheader.js": function (e, t, n) {
             "use strict";
             function r() {
-              (this.text = 0),
+              ((this.text = 0),
                 (this.time = 0),
                 (this.xflags = 0),
                 (this.os = 0),
@@ -2147,7 +2138,7 @@ function createUnityInstance(e, t, n) {
                 (this.name = ""),
                 (this.comment = ""),
                 (this.hcrc = 0),
-                (this.done = !1);
+                (this.done = !1));
             }
             t.exports = r;
           },
@@ -2157,12 +2148,11 @@ function createUnityInstance(e, t, n) {
               for (
                 var a = (65535 & e) | 0, i = ((e >>> 16) & 65535) | 0, s = 0;
                 0 !== n;
-
               ) {
-                (s = n > 2e3 ? 2e3 : n), (n -= s);
-                do (a = (a + t[r++]) | 0), (i = (i + a) | 0);
+                ((s = n > 2e3 ? 2e3 : n), (n -= s));
+                do ((a = (a + t[r++]) | 0), (i = (i + a) | 0));
                 while (--s);
-                (a %= 65521), (i %= 65521);
+                ((a %= 65521), (i %= 65521));
               }
               return a | (i << 16) | 0;
             }
@@ -2219,7 +2209,7 @@ function createUnityInstance(e, t, n) {
                 O,
                 C,
                 R;
-              (n = e.state),
+              ((n = e.state),
                 (i = e.next_in),
                 (C = e.input),
                 (s = i + (e.avail_in - 5)),
@@ -2237,11 +2227,11 @@ function createUnityInstance(e, t, n) {
                 (w = n.lencode),
                 (g = n.distcode),
                 (v = (1 << n.lenbits) - 1),
-                (y = (1 << n.distbits) - 1);
+                (y = (1 << n.distbits) - 1));
               e: do {
-                m < 15 &&
+                (m < 15 &&
                   ((b += C[i++] << m), (m += 8), (b += C[i++] << m), (m += 8)),
-                  (k = w[b & v]);
+                  (k = w[b & v]));
                 t: for (;;) {
                   if (
                     ((x = k >>> 24),
@@ -2261,10 +2251,10 @@ function createUnityInstance(e, t, n) {
                         n.mode = a;
                         break e;
                       }
-                      (e.msg = "invalid literal/length code"), (n.mode = r);
+                      ((e.msg = "invalid literal/length code"), (n.mode = r));
                       break e;
                     }
-                    (_ = 65535 & k),
+                    ((_ = 65535 & k),
                       (x &= 15),
                       x &&
                         (m < x && ((b += C[i++] << m), (m += 8)),
@@ -2276,7 +2266,7 @@ function createUnityInstance(e, t, n) {
                         (m += 8),
                         (b += C[i++] << m),
                         (m += 8)),
-                      (k = g[b & y]);
+                      (k = g[b & y]));
                     n: for (;;) {
                       if (
                         ((x = k >>> 24),
@@ -2289,7 +2279,7 @@ function createUnityInstance(e, t, n) {
                           k = g[(65535 & k) + (b & ((1 << x) - 1))];
                           continue n;
                         }
-                        (e.msg = "invalid distance code"), (n.mode = r);
+                        ((e.msg = "invalid distance code"), (n.mode = r));
                         break e;
                       }
                       if (
@@ -2302,13 +2292,14 @@ function createUnityInstance(e, t, n) {
                         (E += b & ((1 << x) - 1)),
                         E > u)
                       ) {
-                        (e.msg = "invalid distance too far back"), (n.mode = r);
+                        ((e.msg = "invalid distance too far back"),
+                          (n.mode = r));
                         break e;
                       }
                       if (((b >>>= x), (m -= x), (x = o - d), E > x)) {
                         if (((x = E - x), x > f && n.sane)) {
-                          (e.msg = "invalid distance too far back"),
-                            (n.mode = r);
+                          ((e.msg = "invalid distance too far back"),
+                            (n.mode = r));
                           break e;
                         }
                         if (((S = 0), (O = p), 0 === h)) {
@@ -2316,7 +2307,7 @@ function createUnityInstance(e, t, n) {
                             _ -= x;
                             do R[o++] = p[S++];
                             while (--x);
-                            (S = o - E), (O = R);
+                            ((S = o - E), (O = R));
                           }
                         } else if (h < x) {
                           if (((S += c + h - x), (x -= h), x < _)) {
@@ -2324,31 +2315,31 @@ function createUnityInstance(e, t, n) {
                             do R[o++] = p[S++];
                             while (--x);
                             if (((S = 0), h < _)) {
-                              (x = h), (_ -= x);
+                              ((x = h), (_ -= x));
                               do R[o++] = p[S++];
                               while (--x);
-                              (S = o - E), (O = R);
+                              ((S = o - E), (O = R));
                             }
                           }
                         } else if (((S += h - x), x < _)) {
                           _ -= x;
                           do R[o++] = p[S++];
                           while (--x);
-                          (S = o - E), (O = R);
+                          ((S = o - E), (O = R));
                         }
-                        for (; _ > 2; )
-                          (R[o++] = O[S++]),
+                        for (; _ > 2;)
+                          ((R[o++] = O[S++]),
                             (R[o++] = O[S++]),
                             (R[o++] = O[S++]),
-                            (_ -= 3);
+                            (_ -= 3));
                         _ && ((R[o++] = O[S++]), _ > 1 && (R[o++] = O[S++]));
                       } else {
                         S = o - E;
                         do
-                          (R[o++] = R[S++]),
+                          ((R[o++] = R[S++]),
                             (R[o++] = R[S++]),
                             (R[o++] = R[S++]),
-                            (_ -= 3);
+                            (_ -= 3));
                         while (_ > 2);
                         _ && ((R[o++] = R[S++]), _ > 1 && (R[o++] = R[S++]));
                       }
@@ -2358,7 +2349,7 @@ function createUnityInstance(e, t, n) {
                   break;
                 }
               } while (i < s && o < l);
-              (_ = m >> 3),
+              ((_ = m >> 3),
                 (i -= _),
                 (m -= _ << 3),
                 (b &= (1 << m) - 1),
@@ -2367,7 +2358,7 @@ function createUnityInstance(e, t, n) {
                 (e.avail_in = i < s ? 5 + (s - i) : 5 - (i - s)),
                 (e.avail_out = o < l ? 257 + (l - o) : 257 - (o - l)),
                 (n.hold = b),
-                (n.bits = m);
+                (n.bits = m));
             };
           },
           "zlib/inftrees.js": function (e, t, n) {
@@ -2428,7 +2419,10 @@ function createUnityInstance(e, t, n) {
               for (A = R, N = a; N >= 1 && 0 === z[N]; N--);
               if ((A > N && (A = N), 0 === N))
                 return (
-                  (b[m++] = 20971520), (b[m++] = 20971520), (g.bits = 1), 0
+                  (b[m++] = 20971520),
+                  (b[m++] = 20971520),
+                  (g.bits = 1),
+                  0
                 );
               for (B = 1; B < N && 0 === z[B]; B++);
               for (A < B && (A = B), T = 1, L = 1; L <= a; L++)
@@ -2455,7 +2449,7 @@ function createUnityInstance(e, t, n) {
               )
                 return 1;
               for (;;) {
-                (S = L - U),
+                ((S = L - U),
                   w[W] < E
                     ? ((O = 0), (C = w[W]))
                     : w[W] > E
@@ -2463,12 +2457,12 @@ function createUnityInstance(e, t, n) {
                       : ((O = 96), (C = 0)),
                   (v = 1 << (L - U)),
                   (y = 1 << I),
-                  (B = y);
+                  (B = y));
                 do
-                  (y -= v),
-                    (b[_ + (H >> U) + y] = (S << 24) | (O << 16) | C | 0);
+                  ((y -= v),
+                    (b[_ + (H >> U) + y] = (S << 24) | (O << 16) | C | 0));
                 while (0 !== y);
-                for (v = 1 << (L - 1); H & v; ) v >>= 1;
+                for (v = 1 << (L - 1); H & v;) v >>= 1;
                 if (
                   (0 !== v ? ((H &= v - 1), (H += v)) : (H = 0),
                   W++,
@@ -2481,12 +2475,11 @@ function createUnityInstance(e, t, n) {
                   for (
                     0 === U && (U = A), _ += B, I = L - U, T = 1 << I;
                     I + U < N && ((T -= z[I + U]), !(T <= 0));
-
                   )
-                    I++, (T <<= 1);
+                    (I++, (T <<= 1));
                   if (((M += 1 << I), (e === d && M > i) || (e === l && M > s)))
                     return 1;
-                  (k = H & x), (b[k] = (A << 24) | (I << 16) | (_ - m) | 0);
+                  ((k = H & x), (b[k] = (A << 24) | (I << 16) | (_ - m) | 0));
                 }
               }
               return (
@@ -2547,7 +2540,7 @@ function createUnityInstance(e, t, n) {
           if (((t += 2 + e[t] + (e[t + 1] << 8)), t > e.length)) return !1;
         }
         if (8 & r) {
-          for (; t < e.length && e[t]; ) t++;
+          for (; t < e.length && e[t];) t++;
           if (t + 1 > e.length) return !1;
           t++;
         }
@@ -2569,7 +2562,7 @@ function createUnityInstance(e, t, n) {
           (u.startupErrorHandler = t),
           n(0),
           u.postRun.push(function () {
-            n(1), delete u.startupErrorHandler, e(f);
+            (n(1), delete u.startupErrorHandler, e(f));
           }),
           l())
         : t("Your browser does not support WebAssembly.")

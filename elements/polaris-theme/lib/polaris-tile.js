@@ -196,36 +196,40 @@ export class PolarisTile extends I18NMixin(LitElement) {
           <div class="name">
             <slot>${this.line1}</slot>
           </div>
-          ${this.line2
-            ? html`
-                <div class="splitspacer">
-                  <hr class="split-line" />
-                </div>
-                <div class="additionalText">${this.line2}</div>
-              `
-            : ``}
-          ${this.link
-            ? html`<a
-                class="button"
-                href="${this.link}"
-                @click="${this._clickLink}"
-                aria-label="${this.line1
-                  ? this.line1
-                  : this.t.additionalDetails}"
-                title="${this.line1 ? this.line1 : this.t.additionalDetails}"
-                ><svg
-                  viewBox="0 0 24 24"
-                  width="24"
-                  height="24"
-                  aria-hidden="true"
-                  focusable="false"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M14 3v2h3.59l-9.3 9.3 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2z"
-                  ></path></svg
-              ></a>`
-            : ``}
+          ${
+            this.line2
+              ? html`
+                  <div class="splitspacer">
+                    <hr class="split-line" />
+                  </div>
+                  <div class="additionalText">${this.line2}</div>
+                `
+              : ``
+          }
+          ${
+            this.link
+              ? html`<a
+                  class="button"
+                  href="${this.link}"
+                  @click="${this._clickLink}"
+                  aria-label="${
+                    this.line1 ? this.line1 : this.t.additionalDetails
+                  }"
+                  title="${this.line1 ? this.line1 : this.t.additionalDetails}"
+                  ><svg
+                    viewBox="0 0 24 24"
+                    width="24"
+                    height="24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M14 3v2h3.59l-9.3 9.3 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2z"
+                    ></path></svg
+                ></a>`
+              : ``
+          }
         </div>
       </div>
     `;

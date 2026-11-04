@@ -288,58 +288,66 @@ export class RPGCharacterToast extends SimpleToastEl {
         ></div>
       </div>
       <div class="bubble bubble-wrapper" part="bubble-wrapper">
-        ${!this.merlin
-          ? html`<div class="dismiss-wrap">
-              <simple-icon-button-lite
-                class="dismiss"
-                icon="close"
-                id="toast-dismiss-button"
-                label="${this.closeText}"
-                title="${this.closeText}"
-                @click="${this.hide}"
-              ></simple-icon-button-lite>
-              <simple-tooltip for="toast-dismiss-button" position="bottom"
-                >${this.closeText}</simple-tooltip
-              >
-            </div>`
-          : ``}
+        ${
+          !this.merlin
+            ? html`<div class="dismiss-wrap">
+                <simple-icon-button-lite
+                  class="dismiss"
+                  icon="close"
+                  id="toast-dismiss-button"
+                  label="${this.closeText}"
+                  title="${this.closeText}"
+                  @click="${this.hide}"
+                ></simple-icon-button-lite>
+                <simple-tooltip for="toast-dismiss-button" position="bottom"
+                  >${this.closeText}</simple-tooltip
+                >
+              </div>`
+            : ``
+        }
         <span class="bubble leftedge" part="bubble-left"></span>
         <span class="bubble mid" part="bubble-mid">
           <slot name="pre"></slot>
-          ${this.future
-            ? html` <future-terminal-text
-                fadein
-                glitch
-                glitch-max="3"
-                glitch-duration="40"
-              ></future-terminal-text>`
-            : html`<div class="message">${this.text}</div>`}
-          ${this.awaitingMerlinInput
-            ? html`<simple-icon-lite
-                class="awaiting-input"
-                icon="hax:loading"
-              ></simple-icon-lite>`
-            : ``}
+          ${
+            this.future
+              ? html` <future-terminal-text
+                  fadein
+                  glitch
+                  glitch-max="3"
+                  glitch-duration="40"
+                ></future-terminal-text>`
+              : html`<div class="message">${this.text}</div>`
+          }
+          ${
+            this.awaitingMerlinInput
+              ? html`<simple-icon-lite
+                  class="awaiting-input"
+                  icon="hax:loading"
+                ></simple-icon-lite>`
+              : ``
+          }
         </span>
         <span class="bubble rightedge" part="bubble-right"></span>
-        ${this.merlin
-          ? html` <simple-icon
-              class="merlin"
-              icon="hax:wand"
-              accent-color="purple"
-            ></simple-icon>`
-          : html`
-              <rpg-character
-                height="${this.characterHeight}"
-                width="${this.characterWidth}"
-                seed="${this.userName}"
-                ?fire="${this.fire}"
-                hat="${this.hat}"
-                speed="${this.speed}"
-                part="rpg-character"
-                ?walking="${this.walking}"
-              ></rpg-character>
-            `}
+        ${
+          this.merlin
+            ? html` <simple-icon
+                class="merlin"
+                icon="hax:wand"
+                accent-color="purple"
+              ></simple-icon>`
+            : html`
+                <rpg-character
+                  height="${this.characterHeight}"
+                  width="${this.characterWidth}"
+                  seed="${this.userName}"
+                  ?fire="${this.fire}"
+                  hat="${this.hat}"
+                  speed="${this.speed}"
+                  part="rpg-character"
+                  ?walking="${this.walking}"
+                ></rpg-character>
+              `
+        }
         ${!this.merlin ? html`<div class="buttons"><slot></slot></div>` : ``}
       </div>
     `;

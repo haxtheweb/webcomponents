@@ -334,81 +334,87 @@ class InsightsContent extends I18NMixin(LitElement) {
       <h3 class="block" id="by-section">
         ${this.t.bySection} <span class="hint">${this.t.bySectionHint}</span>
       </h3>
-      ${rows.length
-        ? html`<div class="tbl-wrap">
-            <table class="sections">
-              <caption class="sr-only">
-                ${this.t.sectionsCaption}
-              </caption>
-              <thead>
-                <tr>
-                  <th scope="col">${this.t.section}</th>
-                  <th scope="col" class="num">${this.t.pages}</th>
-                  <th scope="col" class="num">${this.t.words}</th>
-                  <th scope="col">${this.t.paragraphs}</th>
-                  <th scope="col" class="num">${this.t.headings}</th>
-                  <th scope="col" class="num">${this.t.readMin}</th>
-                  <th scope="col" class="num">${this.t.videos}</th>
-                  <th scope="col" class="num">${this.t.embeds}</th>
-                  <th scope="col" class="num">${this.t.images}</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${limited.map(
-                  (s) =>
-                    html`<tr data-section="${s.name}">
-                      <td><code>${s.name}</code></td>
-                      <td class="num">${this._n(s.pages)}</td>
-                      <td class="num">${this._n(s.words)}</td>
-                      <td>
-                        <span class="cell-bar"
-                          ><span class="track" aria-hidden="true"
-                            ><span
-                              class="fill"
-                              style="width: ${Math.round(
-                                (s.paragraphs / maxP) * 100,
-                              )}%"
-                            ></span></span
-                          ><span class="num"
-                            >${this._n(s.paragraphs)}</span
-                          ></span
-                        >
-                      </td>
-                      <td class="num">
-                        ${s.flagged
-                          ? html`<span
-                              class="hax-ui-pill"
-                              data-tone="warning"
-                              title="${flagLabel}"
-                              >${this._f(this.t.noHeadingsFlag, {
-                                n: this._n(s.headings),
-                              })}<span class="sr-only"
-                                >: ${flagLabel}</span
-                              ></span
-                            >`
-                          : this._n(s.headings)}
-                      </td>
-                      <td class="num">${this._n(s.readMinutes)}</td>
-                      <td class="num">${this._n(s.videos)}</td>
-                      <td class="num">${this._n(s.embeds)}</td>
-                      <td class="num">${this._n(s.images)}</td>
-                    </tr>`,
-                )}
-              </tbody>
-            </table>
-          </div>`
-        : html`<p class="hax-ui-empty empty">${this.t.noSections}</p>`}
-      ${rows.length > limited.length
-        ? html`<button
-            type="button"
-            class="sbtn more"
-            @click="${() => {
-              this._showAllSections = true;
-            }}"
-          >
-            ${this._f(this.t.showAll, { n: rows.length })}
-          </button>`
-        : nothing}
+      ${
+        rows.length
+          ? html`<div class="tbl-wrap">
+              <table class="sections">
+                <caption class="sr-only">
+                  ${this.t.sectionsCaption}
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col">${this.t.section}</th>
+                    <th scope="col" class="num">${this.t.pages}</th>
+                    <th scope="col" class="num">${this.t.words}</th>
+                    <th scope="col">${this.t.paragraphs}</th>
+                    <th scope="col" class="num">${this.t.headings}</th>
+                    <th scope="col" class="num">${this.t.readMin}</th>
+                    <th scope="col" class="num">${this.t.videos}</th>
+                    <th scope="col" class="num">${this.t.embeds}</th>
+                    <th scope="col" class="num">${this.t.images}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${limited.map(
+                    (s) =>
+                      html`<tr data-section="${s.name}">
+                        <td><code>${s.name}</code></td>
+                        <td class="num">${this._n(s.pages)}</td>
+                        <td class="num">${this._n(s.words)}</td>
+                        <td>
+                          <span class="cell-bar"
+                            ><span class="track" aria-hidden="true"
+                              ><span
+                                class="fill"
+                                style="width: ${Math.round(
+                                  (s.paragraphs / maxP) * 100,
+                                )}%"
+                              ></span></span
+                            ><span class="num"
+                              >${this._n(s.paragraphs)}</span
+                            ></span
+                          >
+                        </td>
+                        <td class="num">
+                          ${
+                            s.flagged
+                              ? html`<span
+                                  class="hax-ui-pill"
+                                  data-tone="warning"
+                                  title="${flagLabel}"
+                                  >${this._f(this.t.noHeadingsFlag, {
+                                    n: this._n(s.headings),
+                                  })}<span class="sr-only"
+                                    >: ${flagLabel}</span
+                                  ></span
+                                >`
+                              : this._n(s.headings)
+                          }
+                        </td>
+                        <td class="num">${this._n(s.readMinutes)}</td>
+                        <td class="num">${this._n(s.videos)}</td>
+                        <td class="num">${this._n(s.embeds)}</td>
+                        <td class="num">${this._n(s.images)}</td>
+                      </tr>`,
+                  )}
+                </tbody>
+              </table>
+            </div>`
+          : html`<p class="hax-ui-empty empty">${this.t.noSections}</p>`
+      }
+      ${
+        rows.length > limited.length
+          ? html`<button
+              type="button"
+              class="sbtn more"
+              @click="${() => {
+                this._showAllSections = true;
+              }}"
+            >
+              ${this._f(this.t.showAll, { n: rows.length })}
+            </button>`
+          : nothing
+      }
     </section>`;
   }
 
@@ -422,47 +428,53 @@ class InsightsContent extends I18NMixin(LitElement) {
         ${this.t.longestPages}
         <span class="hint">${this._f(this.t.longestHint, { n: per })}</span>
       </h3>
-      ${rows.length
-        ? html`<ul class="findings longest">
-            ${rows.map(
-              (l) =>
-                html`<li>
-                  <span class="t"
-                    >${l.title}<span class="d"
-                      >${l.perHeading === null
-                        ? this.t.noHeadingsSub
-                        : this._f(this.t.perHeading, {
-                            n: l.perHeading,
-                          })}</span
-                    ></span
-                  >
-                  ${l.warn
-                    ? html`<span
-                        class="hax-ui-pill"
-                        data-tone="warning"
-                        title="${tooLong}"
-                        >${this.t.tooLong}<span class="sr-only"
-                          >: ${tooLong}</span
-                        ></span
-                      >`
-                    : nothing}
-                  <span class="track" aria-hidden="true"
-                    ><span
-                      class="fill"
-                      data-tone="${l.warn ? "warning" : ""}"
-                      style="width: ${Math.round((l.paragraphs / max) * 100)}%"
-                    ></span
-                  ></span>
-                  <span class="num"
-                    >${this._f(this.t.paragraphsShort, {
-                      n: l.paragraphs,
-                    })}</span
-                  >
-                  ${this._openButton(l.title, l.slug)}
-                </li>`,
-            )}
-          </ul>`
-        : html`<p class="hax-ui-empty empty">${this.t.noLongest}</p>`}
+      ${
+        rows.length
+          ? html`<ul class="findings longest">
+              ${rows.map(
+                (l) =>
+                  html`<li>
+                    <span class="t"
+                      >${l.title}<span class="d"
+                        >${
+                          l.perHeading === null
+                            ? this.t.noHeadingsSub
+                            : this._f(this.t.perHeading, {
+                                n: l.perHeading,
+                              })
+                        }</span
+                      ></span
+                    >
+                    ${
+                      l.warn
+                        ? html`<span
+                            class="hax-ui-pill"
+                            data-tone="warning"
+                            title="${tooLong}"
+                            >${this.t.tooLong}<span class="sr-only"
+                              >: ${tooLong}</span
+                            ></span
+                          >`
+                        : nothing
+                    }
+                    <span class="track" aria-hidden="true"
+                      ><span
+                        class="fill"
+                        data-tone="${l.warn ? "warning" : ""}"
+                        style="width: ${Math.round((l.paragraphs / max) * 100)}%"
+                      ></span
+                    ></span>
+                    <span class="num"
+                      >${this._f(this.t.paragraphsShort, {
+                        n: l.paragraphs,
+                      })}</span
+                    >
+                    ${this._openButton(l.title, l.slug)}
+                  </li>`,
+              )}
+            </ul>`
+          : html`<p class="hax-ui-empty empty">${this.t.noLongest}</p>`
+      }
     </section>`;
   }
 
@@ -476,16 +488,18 @@ class InsightsContent extends I18NMixin(LitElement) {
             <span class="track" aria-hidden="true"
               ><span
                 class="fill"
-                style="width: ${b.count
-                  ? Math.max(Math.round((b.count / max) * 100), 2)
-                  : 0}%"
+                style="width: ${
+                  b.count ? Math.max(Math.round((b.count / max) * 100), 2) : 0
+                }%"
               ></span
             ></span>
             <span class="num"
               >${this._n(b.count)}<span class="sr-only">
-                ${b.count === 1
-                  ? this.t.pageCountOne
-                  : this.t.pageCount.replace("{n}", "")}</span
+                ${
+                  b.count === 1
+                    ? this.t.pageCountOne
+                    : this.t.pageCount.replace("{n}", "")
+                }</span
               ></span
             >
           </div>`,
@@ -517,17 +531,19 @@ class InsightsContent extends I18NMixin(LitElement) {
           >${this._f(this.t.readabilityHint, { n: minWords })}</span
         >
       </h3>
-      ${rd.scored
-        ? html`${this._bars(bands, "readability")}
-            <p class="readability-median">
-              ${this._f(
-                rd.scored === 1 ? this.t.medianGradeOne : this.t.medianGrade,
-                { n: rd.median, scored: this._n(rd.scored) },
-              )}
+      ${
+        rd.scored
+          ? html`${this._bars(bands, "readability")}
+              <p class="readability-median">
+                ${this._f(
+                  rd.scored === 1 ? this.t.medianGradeOne : this.t.medianGrade,
+                  { n: rd.median, scored: this._n(rd.scored) },
+                )}
+              </p>`
+          : html`<p class="hax-ui-empty empty">
+              ${this._f(this.t.noReadability, { n: minWords })}
             </p>`
-        : html`<p class="hax-ui-empty empty">
-            ${this._f(this.t.noReadability, { n: minWords })}
-          </p>`}
+      }
     </section>`;
   }
 
@@ -539,30 +555,34 @@ class InsightsContent extends I18NMixin(LitElement) {
         ${this.t.thinTitle}
         <span class="hint">${this._thinText(this.t.thinHint)}</span>
       </h3>
-      ${rows.length
-        ? html`<ul class="findings thin">
-            ${limited.map(
-              (t) =>
-                html`<li>
-                  <span class="t"
-                    >${t.title}<span class="d">${t.what}</span></span
-                  >
-                  ${this._openButton(t.title, t.slug)}
-                </li>`,
-            )}
-          </ul>`
-        : html`<p class="hax-ui-empty empty">${this.t.noThin}</p>`}
-      ${rows.length > limited.length
-        ? html`<button
-            type="button"
-            class="sbtn more"
-            @click="${() => {
-              this._showAllThin = true;
-            }}"
-          >
-            ${this._f(this.t.showAll, { n: rows.length })}
-          </button>`
-        : nothing}
+      ${
+        rows.length
+          ? html`<ul class="findings thin">
+              ${limited.map(
+                (t) =>
+                  html`<li>
+                    <span class="t"
+                      >${t.title}<span class="d">${t.what}</span></span
+                    >
+                    ${this._openButton(t.title, t.slug)}
+                  </li>`,
+              )}
+            </ul>`
+          : html`<p class="hax-ui-empty empty">${this.t.noThin}</p>`
+      }
+      ${
+        rows.length > limited.length
+          ? html`<button
+              type="button"
+              class="sbtn more"
+              @click="${() => {
+                this._showAllThin = true;
+              }}"
+            >
+              ${this._f(this.t.showAll, { n: rows.length })}
+            </button>`
+          : nothing
+      }
     </section>`;
   }
 
@@ -573,59 +593,65 @@ class InsightsContent extends I18NMixin(LitElement) {
       <h3 class="block" id="every-page">
         ${this.t.everyPage} <span class="hint">${this.t.everyPageHint}</span>
       </h3>
-      ${rows.length
-        ? html`<div class="tbl-wrap">
-            <table class="pages">
-              <caption class="sr-only">
-                ${this.t.pagesCaption}
-              </caption>
-              <thead>
-                <tr>
-                  <th scope="col">${this.t.title}</th>
-                  <th scope="col">${this.t.section}</th>
-                  <th scope="col" class="num">${this.t.words}</th>
-                  <th scope="col" class="num">${this.t.paragraphs}</th>
-                  <th scope="col" class="num">${this.t.headings}</th>
-                  <th scope="col" class="num">${this.t.readMin}</th>
-                  <th scope="col" class="num">${this.t.grade}</th>
-                  <th scope="col">
-                    <span class="sr-only">${this.t.openPage}</span>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                ${limited.map(
-                  (p) =>
-                    html`<tr>
-                      <td>${p.title}</td>
-                      <td><code>${p.section}</code></td>
-                      <td class="num">${this._n(p.words)}</td>
-                      <td class="num">${this._n(p.paragraphs)}</td>
-                      <td class="num">${this._n(p.headings)}</td>
-                      <td class="num">${this._n(p.readMinutes)}</td>
-                      <td class="num">
-                        ${p.grade === null || p.grade === undefined
-                          ? "–"
-                          : p.grade}
-                      </td>
-                      <td>${this._openButton(p.title, p.slug)}</td>
-                    </tr>`,
-                )}
-              </tbody>
-            </table>
-          </div>`
-        : html`<p class="hax-ui-empty empty">${this.t.noPages}</p>`}
-      ${rows.length > limited.length
-        ? html`<button
-            type="button"
-            class="sbtn more"
-            @click="${() => {
-              this._showAllPages = true;
-            }}"
-          >
-            ${this._f(this.t.showAll, { n: rows.length })}
-          </button>`
-        : nothing}
+      ${
+        rows.length
+          ? html`<div class="tbl-wrap">
+              <table class="pages">
+                <caption class="sr-only">
+                  ${this.t.pagesCaption}
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col">${this.t.title}</th>
+                    <th scope="col">${this.t.section}</th>
+                    <th scope="col" class="num">${this.t.words}</th>
+                    <th scope="col" class="num">${this.t.paragraphs}</th>
+                    <th scope="col" class="num">${this.t.headings}</th>
+                    <th scope="col" class="num">${this.t.readMin}</th>
+                    <th scope="col" class="num">${this.t.grade}</th>
+                    <th scope="col">
+                      <span class="sr-only">${this.t.openPage}</span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${limited.map(
+                    (p) =>
+                      html`<tr>
+                        <td>${p.title}</td>
+                        <td><code>${p.section}</code></td>
+                        <td class="num">${this._n(p.words)}</td>
+                        <td class="num">${this._n(p.paragraphs)}</td>
+                        <td class="num">${this._n(p.headings)}</td>
+                        <td class="num">${this._n(p.readMinutes)}</td>
+                        <td class="num">
+                          ${
+                            p.grade === null || p.grade === undefined
+                              ? "–"
+                              : p.grade
+                          }
+                        </td>
+                        <td>${this._openButton(p.title, p.slug)}</td>
+                      </tr>`,
+                  )}
+                </tbody>
+              </table>
+            </div>`
+          : html`<p class="hax-ui-empty empty">${this.t.noPages}</p>`
+      }
+      ${
+        rows.length > limited.length
+          ? html`<button
+              type="button"
+              class="sbtn more"
+              @click="${() => {
+                this._showAllPages = true;
+              }}"
+            >
+              ${this._f(this.t.showAll, { n: rows.length })}
+            </button>`
+          : nothing
+      }
     </section>`;
   }
 

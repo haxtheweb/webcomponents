@@ -404,6 +404,14 @@
           "description": "Helpers for the canonical language registry (`languages.json`).\n\nThe registry is the one list of languages HAX knows about. Anything that\nlets a person pick, store or resolve a language (installer, system\nsettings, site settings, the CLI, the backends) should go through it\ninstead of keeping its own list.\n\nShape of `languages.json`:\n- `languages` is keyed by the canonical code that gets stored (`en`, `sw`,\n  `pt-BR`, `zh-CN`).\n- An entry without `parent` is a language. An entry with `parent` is a\n  regional variant (`en-GB`) that resolves to its parent's translations.\n- `locale` is the translation file suffix (`<namespace>.<locale>.json`),\n  so `zh-CN` stores as `zh-CN` but loads `zh` files.\n- `aliases` are other codes that resolve to the entry (legacy codes like\n  `iw`, script tags like `zh-Hans`).\n- `popular` is an optional rank used to put the most common languages\n  first in short lists.\n\nThis module has no DOM or DDD dependency so the same code can run in a\nbrowser, in Node (inject the parsed JSON with `setLanguageRegistry`) and\nin tests."
         },
         {
+          "kind": "variable",
+          "name": "lookup",
+          "type": {
+            "text": "object"
+          },
+          "default": "{}"
+        },
+        {
           "kind": "function",
           "name": "setLanguageRegistry",
           "parameters": [
@@ -488,6 +496,11 @@
               "text": "String|null"
             }
           }
+        },
+        {
+          "kind": "variable",
+          "name": "code",
+          "default": "lookup[cleaned]"
         },
         {
           "kind": "function",

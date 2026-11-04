@@ -313,11 +313,13 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
           >
             <img
               class="logo desktop"
-              src="${store.manifest &&
-              store.manifest.metadata &&
-              store.manifest.metadata.site
-                ? store.manifest.metadata.site.logo
-                : ""}"
+              src="${
+                store.manifest &&
+                store.manifest.metadata &&
+                store.manifest.metadata.site
+                  ? store.manifest.metadata.site.logo
+                  : ""
+              }"
               @error=${this.handleImageError}
               alt=""
             />
@@ -360,11 +362,13 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
           >
             <img
               class="logo mobile"
-              src="${store.manifest &&
-              store.manifest.metadata &&
-              store.manifest.metadata.site
-                ? store.manifest.metadata.site.logo
-                : ""}"
+              src="${
+                store.manifest &&
+                store.manifest.metadata &&
+                store.manifest.metadata.site
+                  ? store.manifest.metadata.site.logo
+                  : ""
+              }"
               @error=${this.handleImageError}
               alt=""
             />
@@ -377,67 +381,69 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
             aria-expanded="${this.isOpen}"
             aria-controls="mobile-nav-menu"
           >
-            ${this.isOpen
-              ? html`
-                  <svg
-                    class="cross mobile"
-                    version="1.1"
-                    id="Layer_1"
-                    xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink"
-                    x="0px"
-                    y="0px"
-                    width="122.878px"
-                    height="122.88px"
-                    viewBox="0 0 122.878 122.88"
-                    enable-background="new 0 0 122.878 122.88"
-                    xml:space="preserve"
-                  >
-                    <g>
-                      <path
-                        d="M1.426,8.313c-1.901-1.901-1.901-4.984,0-6.886c1.901-1.902,4.984-1.902,6.886,0l53.127,53.127l53.127-53.127 c1.901-1.902,4.984-1.902,6.887,0c1.901,1.901,1.901,4.985,0,6.886L68.324,61.439l53.128,53.128c1.901,1.901,1.901,4.984,0,6.886 c-1.902,1.902-4.985,1.902-6.887,0L61.438,68.326L8.312,121.453c-1.901,1.902-4.984,1.902-6.886,0 c-1.901-1.901-1.901-4.984,0-6.886l53.127-53.128L1.426,8.313L1.426,8.313z"
-                        fill="white"
-                      />
-                    </g>
-                  </svg>
-                `
-              : html`
-                  <svg
-                    class="hamburger mobile"
-                    width="800px"
-                    height="800px"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g id="SVGRepo_bgCarrier" stroke-width="0" />
-                    <g
-                      id="SVGRepo_tracerCarrier"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <g id="SVGRepo_iconCarrier">
-                      <path
-                        d="M4 18L20 18"
-                        stroke="#ffffff"
-                        stroke-width="2"
+            ${
+              this.isOpen
+                ? html`
+                    <svg
+                      class="cross mobile"
+                      version="1.1"
+                      id="Layer_1"
+                      xmlns="http://www.w3.org/2000/svg"
+                      xmlns:xlink="http://www.w3.org/1999/xlink"
+                      x="0px"
+                      y="0px"
+                      width="122.878px"
+                      height="122.88px"
+                      viewBox="0 0 122.878 122.88"
+                      enable-background="new 0 0 122.878 122.88"
+                      xml:space="preserve"
+                    >
+                      <g>
+                        <path
+                          d="M1.426,8.313c-1.901-1.901-1.901-4.984,0-6.886c1.901-1.902,4.984-1.902,6.886,0l53.127,53.127l53.127-53.127 c1.901-1.902,4.984-1.902,6.887,0c1.901,1.901,1.901,4.985,0,6.886L68.324,61.439l53.128,53.128c1.901,1.901,1.901,4.984,0,6.886 c-1.902,1.902-4.985,1.902-6.887,0L61.438,68.326L8.312,121.453c-1.901,1.902-4.984,1.902-6.886,0 c-1.901-1.901-1.901-4.984,0-6.886l53.127-53.128L1.426,8.313L1.426,8.313z"
+                          fill="white"
+                        />
+                      </g>
+                    </svg>
+                  `
+                : html`
+                    <svg
+                      class="hamburger mobile"
+                      width="800px"
+                      height="800px"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g id="SVGRepo_bgCarrier" stroke-width="0" />
+                      <g
+                        id="SVGRepo_tracerCarrier"
                         stroke-linecap="round"
+                        stroke-linejoin="round"
                       />
-                      <path
-                        d="M4 12L20 12"
-                        stroke="#ffffff"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                      />
-                      <path
-                        d="M4 6L20 6"
-                        stroke="#ffffff"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                      />
-                    </g>
-                  </svg>
-                `}
+                      <g id="SVGRepo_iconCarrier">
+                        <path
+                          d="M4 18L20 18"
+                          stroke="#ffffff"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                        />
+                        <path
+                          d="M4 12L20 12"
+                          stroke="#ffffff"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                        />
+                        <path
+                          d="M4 6L20 6"
+                          stroke="#ffffff"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                        />
+                      </g>
+                    </svg>
+                  `
+            }
           </button>
         </div>
         <div class="mobile nav-menu" id="mobile-nav-menu">

@@ -56,9 +56,9 @@ class RichTextEditorIconPicker extends RichTextEditorPickerBehaviors(
       <simple-icon-picker
         id="button"
         ?allow-null="${this.allowNull}"
-        class="rtebutton ${this.labelVisibleClass}-label ${this.toggled
-          ? "toggled"
-          : ""}"
+        class="rtebutton ${this.labelVisibleClass}-label ${
+          this.toggled ? "toggled" : ""
+        }"
         .controls="${super.controls}"
         ?disabled="${this.disabled}"
         .icons="${this.icons}"

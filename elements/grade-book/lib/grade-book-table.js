@@ -51,17 +51,19 @@ class GradeBookTable extends LitElement {
               <td>${this.t.highRange}</td>
               <td>${this.t.lowRange}</td>
             </tr>
-            ${this.database && this.database.gradeScale
-              ? this.database.gradeScale.map(
-                  (scale) => html`
-                    <tr>
-                      <td>${scale.letter}</td>
-                      <td>${scale.highRange}</td>
-                      <td>${scale.lowRange}</td>
-                    </tr>
-                  `,
-                )
-              : ``}
+            ${
+              this.database && this.database.gradeScale
+                ? this.database.gradeScale.map(
+                    (scale) => html`
+                      <tr>
+                        <td>${scale.letter}</td>
+                        <td>${scale.highRange}</td>
+                        <td>${scale.lowRange}</td>
+                      </tr>
+                    `,
+                  )
+                : ``
+            }
           </tbody>
         </table>
       </editable-table>

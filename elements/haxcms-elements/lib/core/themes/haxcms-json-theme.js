@@ -187,46 +187,56 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
                 <code>${this.nativeFormatUrl}</code>
               </p>
             </div>
-            ${allowChildrenToggle
-              ? html`
-                  <div class="controls">
-                    <simple-icon-button-lite
-                      @click="${this.toggleChildren}"
-                      id="togglebtn"
-                      icon="${this.showChildren
-                        ? "expand-less"
-                        : "expand-more"}"
-                      label="${this.showChildren
-                        ? this.t.hideChildren
-                        : this.t.showChildren}"
-                      title="${this.showChildren
-                        ? this.t.hideChildren
-                        : this.t.showChildren}"
+            ${
+              allowChildrenToggle
+                ? html`
+                    <div class="controls">
+                      <simple-icon-button-lite
+                        @click="${this.toggleChildren}"
+                        id="togglebtn"
+                        icon="${
+                          this.showChildren ? "expand-less" : "expand-more"
+                        }"
+                        label="${
+                          this.showChildren
+                            ? this.t.hideChildren
+                            : this.t.showChildren
+                        }"
+                        title="${
+                          this.showChildren
+                            ? this.t.hideChildren
+                            : this.t.showChildren
+                        }"
+                      >
+                        ${
+                          this.showChildren
+                            ? this.t.hideChildren
+                            : this.t.showChildren
+                        }
+                      </simple-icon-button-lite>
+                    </div>
+                  `
+                : ""
+            }
+            ${
+              this.loading
+                ? html`
+                    <div class="loading">
+                      ${this.t.loadingFormatData.replace("{format}", () =>
+                        routeFormat.toUpperCase(),
+                      )}
+                    </div>
+                  `
+                : html`
+                    <code-sample
+                      type="${currentType}"
+                      copy-clipboard-button
+                      .value="${currentData}"
                     >
-                      ${this.showChildren
-                        ? this.t.hideChildren
-                        : this.t.showChildren}
-                    </simple-icon-button-lite>
-                  </div>
-                `
-              : ""}
-            ${this.loading
-              ? html`
-                  <div class="loading">
-                    ${this.t.loadingFormatData.replace("{format}", () =>
-                      routeFormat.toUpperCase(),
-                    )}
-                  </div>
-                `
-              : html`
-                  <code-sample
-                    type="${currentType}"
-                    copy-clipboard-button
-                    .value="${currentData}"
-                  >
-                    <pre><code>${currentData}</code></pre>
-                  </code-sample>
-                `}
+                      <pre><code>${currentData}</code></pre>
+                    </code-sample>
+                  `
+            }
           </section>
         </article>
       </main>
@@ -352,7 +362,6 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
   }
 
   async copyToClipboard(_e) {
-    // eslint-disable-next-line baseline-js/use-baseline -- feature check on navigator.clipboard
     if (globalThis.navigator && globalThis.navigator.clipboard) {
       try {
         let dataToCopy;
@@ -375,7 +384,6 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
           dataToCopy = "";
         }
 
-        // eslint-disable-next-line baseline-js/use-baseline -- writeText works in Chrome, Firefox and Safari; failure is caught
         await globalThis.navigator.clipboard.writeText(dataToCopy);
         if (
           globalThis.SimpleToast &&
@@ -415,12 +423,11 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
     if (
       this.nativeFormatUrl &&
       globalThis.navigator &&
-      /* eslint-disable baseline-js/use-baseline -- writeText works in Chrome, Firefox and Safari; failure is caught */
       globalThis.navigator.clipboard
     ) {
       try {
         await globalThis.navigator.clipboard.writeText(this.nativeFormatUrl);
-        /* eslint-enable baseline-js/use-baseline */
+
         if (
           globalThis.SimpleToast &&
           globalThis.SimpleToast.requestAvailability

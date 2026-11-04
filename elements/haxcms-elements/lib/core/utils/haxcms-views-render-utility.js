@@ -786,9 +786,9 @@ export const renderCollectionPreview = (records, options = {}) => {
         return html`
           <collection-item
             line1="${recordTitle(record, options)}"
-            line2="${bodyIsHtml
-              ? ""
-              : shortValue(recordDescription(record), 180)}"
+            line2="${
+              bodyIsHtml ? "" : shortValue(recordDescription(record), 180)
+            }"
             url="${url}"
             image="${recordImage(record, options)}"
             icon="${recordIcon(record)}"
@@ -819,15 +819,17 @@ export const renderGridPreview = (records, options = {}) => {
             </div>
             <div slot="content">
               ${renderRecordPrimary(record, 240, options)}
-              ${url
-                ? html`<a
-                    class="card-link"
-                    href="${url}"
-                    target="_blank"
-                    rel="noopener"
-                    >${viewsText(options, "viewsOpenRecord")}</a
-                  >`
-                : html``}
+              ${
+                url
+                  ? html`<a
+                      class="card-link"
+                      href="${url}"
+                      target="_blank"
+                      rel="noopener"
+                      >${viewsText(options, "viewsOpenRecord")}</a
+                    >`
+                  : html``
+              }
             </div>
           </accent-card>
         `;
@@ -851,11 +853,13 @@ export const renderBulletedListPreview = (records, options = {}) => {
         return html`
           <li class="result-list-item">
             <h4 class="result-title">
-              ${url
-                ? html`<a href="${url}" target="_blank" rel="noopener"
-                    >${recordTitle(record, options)}</a
-                  >`
-                : recordTitle(record, options)}
+              ${
+                url
+                  ? html`<a href="${url}" target="_blank" rel="noopener"
+                      >${recordTitle(record, options)}</a
+                    >`
+                  : recordTitle(record, options)
+              }
             </h4>
             ${renderRecordPrimary(record, 360, options)}
           </li>
@@ -876,11 +880,13 @@ export const renderContentPreview = (records, options = {}) => {
         return html`
           <article class="content-record">
             <h3 class="content-record-title">
-              ${url
-                ? html`<a href="${url}" target="_blank" rel="noopener"
-                    >${recordTitle(record, options)}</a
-                  >`
-                : recordTitle(record, options)}
+              ${
+                url
+                  ? html`<a href="${url}" target="_blank" rel="noopener"
+                      >${recordTitle(record, options)}</a
+                    >`
+                  : recordTitle(record, options)
+              }
             </h3>
             ${renderRecordPrimary(record, 720, options)}
           </article>
@@ -952,9 +958,19 @@ export const renderCarouselPreview = (records, options = {}) => {
           const url = recordUrl(record, options);
           return html`
             <div class="media-gallery-item">
-              ${url
-                ? html`<a href="${url}" target="_blank" rel="noopener"
-                    ><img
+              ${
+                url
+                  ? html`<a href="${url}" target="_blank" rel="noopener"
+                      ><img
+                        src="${image}"
+                        alt="${viewsText(options, "viewsTitlePreview").replace(
+                          "{title}",
+                          () => recordTitle(record, options),
+                        )}"
+                        loading="lazy"
+                        decoding="async"
+                    /></a>`
+                  : html`<img
                       src="${image}"
                       alt="${viewsText(options, "viewsTitlePreview").replace(
                         "{title}",
@@ -962,16 +978,8 @@ export const renderCarouselPreview = (records, options = {}) => {
                       )}"
                       loading="lazy"
                       decoding="async"
-                  /></a>`
-                : html`<img
-                    src="${image}"
-                    alt="${viewsText(options, "viewsTitlePreview").replace(
-                      "{title}",
-                      () => recordTitle(record, options),
-                    )}"
-                    loading="lazy"
-                    decoding="async"
-                  />`}
+                    />`
+              }
               <span class="media-gallery-caption"
                 >${recordTitle(record, options)}</span
               >
@@ -1011,11 +1019,13 @@ export const renderCarouselPreview = (records, options = {}) => {
                   decoding="async"
                 />
                 <figcaption>
-                  ${url
-                    ? html`<a href="${url}" target="_blank" rel="noopener"
-                        >${recordTitle(record, options)}</a
-                      >`
-                    : recordTitle(record, options)}
+                  ${
+                    url
+                      ? html`<a href="${url}" target="_blank" rel="noopener"
+                          >${recordTitle(record, options)}</a
+                        >`
+                      : recordTitle(record, options)
+                  }
                 </figcaption>
               </figure>
             `;
@@ -1028,11 +1038,13 @@ export const renderCarouselPreview = (records, options = {}) => {
               <div slot="heading">${recordTitle(record, options)}</div>
               <div slot="content">
                 ${renderRecordBody(record, 300)}
-                ${url
-                  ? html`<a href="${url}" target="_blank" rel="noopener"
-                      >${viewsText(options, "viewsOpenRecord")}</a
-                    >`
-                  : html``}
+                ${
+                  url
+                    ? html`<a href="${url}" target="_blank" rel="noopener"
+                        >${viewsText(options, "viewsOpenRecord")}</a
+                      >`
+                    : html``
+                }
               </div>
             </accent-card>
           `;

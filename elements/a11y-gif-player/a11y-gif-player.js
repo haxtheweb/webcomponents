@@ -183,73 +183,81 @@ class A11yGifPlayer extends I18NMixin(
           <span class="ddd-block-label"
             >${this.t.image} · ${this.t.animatedGif}</span
           >
-          ${this.alt
-            ? html`<span class="ddd-block-title" aria-hidden="true"
-                >${this.alt}</span
-              >`
-            : ``}
+          ${
+            this.alt
+              ? html`<span class="ddd-block-title" aria-hidden="true"
+                  >${this.alt}</span
+                >`
+              : ``
+          }
         </span>
       </div>
       <div class="ddd-block-body">
-        ${this.elementVisible
-          ? html`
-              <div id="container">
-                <slot hidden></slot>
-                <img
-                  id="gif"
-                  src="${this.__gifLoaded && this.__playing
-                    ? this.src
-                    : this.srcWithoutAnimation}"
-                  alt="${this.alt}"
-                  loading="lazy"
-                  aria-describedby="${this.longdesc ? "longdesc" : ""} ${(
-                    this.describedBy || ""
-                  ).trim()}"
-                  slot="summary"
-                />
-                ${this.__playing
-                  ? html`<img
-                      src="${this.src}"
-                      alt=""
-                      hidden
-                      slot="summary"
-                      @load="${this.__imageLoaded}"
-                    />`
-                  : ``}
+        ${
+          this.elementVisible
+            ? html`
+                <div id="container">
+                  <slot hidden></slot>
+                  <img
+                    id="gif"
+                    src="${
+                      this.__gifLoaded && this.__playing
+                        ? this.src
+                        : this.srcWithoutAnimation
+                    }"
+                    alt="${this.alt}"
+                    loading="lazy"
+                    aria-describedby="${this.longdesc ? "longdesc" : ""} ${(
+                      this.describedBy || ""
+                    ).trim()}"
+                    slot="summary"
+                  />
+                  ${
+                    this.__playing
+                      ? html`<img
+                          src="${this.src}"
+                          alt=""
+                          hidden
+                          slot="summary"
+                          @load="${this.__imageLoaded}"
+                        />`
+                      : ``
+                  }
 
-                <button
-                  id="button"
-                  aria-label="${this.t.toggleAnimation} GIF"
-                  aria-controls="gif"
-                  aria-pressed="${this.__playing ? "true" : "false"}"
-                  @click="${this.toggle}"
-                  ?disabled="${this.disabled || !this.src}"
-                  .style="background-image: url('${this.srcWithoutAnimation}')"
-                >
-                  <svg
-                    id="svg"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 200 200"
+                  <button
+                    id="button"
+                    aria-label="${this.t.toggleAnimation} GIF"
+                    aria-controls="gif"
+                    aria-pressed="${this.__playing ? "true" : "false"}"
+                    @click="${this.toggle}"
+                    ?disabled="${this.disabled || !this.src}"
+                    .style="background-image: url('${this.srcWithoutAnimation}')"
                   >
-                    <g>
-                      <polygon points="30,20 30,180 170,100"></polygon>
-                      <!-- i18n-ignore: file format name -->
-                      <text x="50" y="115" font-size="40px">GIF</text>
-                    </g>
-                  </svg>
-                </button>
-                <a11y-details
-                  id="longdesc"
-                  ?hidden="${!this.src || !this.longdesc}"
-                  .style="opacity:${this.__playing ? 0 : 1}"
-                >
-                  <div slot="summary">${this.t.info}</div>
-                  <div slot="details">${this.longdesc}</div>
-                </a11y-details>
-              </div>
-            `
-          : ``}
+                    <svg
+                      id="svg"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 200 200"
+                    >
+                      <g>
+                        <polygon points="30,20 30,180 170,100"></polygon>
+                        <!-- i18n-ignore: file format name -->
+                        <text x="50" y="115" font-size="40px">GIF</text>
+                      </g>
+                    </svg>
+                  </button>
+                  <a11y-details
+                    id="longdesc"
+                    ?hidden="${!this.src || !this.longdesc}"
+                    .style="opacity:${this.__playing ? 0 : 1}"
+                  >
+                    <div slot="summary">${this.t.info}</div>
+                    <div slot="details">${this.longdesc}</div>
+                  </a11y-details>
+                </div>
+              `
+            : ``
+        }
       </div>
     </div>`;
   }
@@ -349,12 +357,12 @@ class A11yGifPlayer extends I18NMixin(
         // support for automatic web service scrape of the gif for a still image
         if (this.shadowRoot && !this.srcWithoutAnimation && this.src) {
           // import registry
-          import(
-            "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js"
-          ).then(async () => {
-            this._automaticStill = true;
-            this.srcWithoutAnimation = await this.generateStill(this.src);
-          });
+          import("@haxtheweb/micro-frontend-registry/micro-frontend-registry.js").then(
+            async () => {
+              this._automaticStill = true;
+              this.srcWithoutAnimation = await this.generateStill(this.src);
+            },
+          );
         }
       }
       // support src changing after the fact, we are visible, and set to automatic generation
@@ -375,11 +383,11 @@ class A11yGifPlayer extends I18NMixin(
     // enable core services, though should be available
     const MicroFrontendRegistry =
       globalThis.MicroFrontendRegistry.requestAvailability();
-    await import(
-      "@haxtheweb/micro-frontend-registry/lib/microServices.js"
-    ).then((_e) => {
-      MicroFrontendRegistry.enableServices(["core"]);
-    });
+    await import("@haxtheweb/micro-frontend-registry/lib/microServices.js").then(
+      (_e) => {
+        MicroFrontendRegistry.enableServices(["core"]);
+      },
+    );
     return MicroFrontendRegistry.url("@core/imgManipulate", {
       quality: 50,
       src: src,

@@ -571,9 +571,11 @@ class TrainingTheme extends HAXCMSOperationButtons(
           <div class="sidebar-header">
             <div class="sidebar-top-row">
               <div class="eyebrow">${authorName}</div>
-              ${["xs", "sm"].includes(this.responsiveSize)
-                ? this.HAXCMSMobileMenuButton("bottom")
-                : ``}
+              ${
+                ["xs", "sm"].includes(this.responsiveSize)
+                  ? this.HAXCMSMobileMenuButton("bottom")
+                  : ``
+              }
             </div>
             <div class="sidebar-title">
               ${varGet(this, "manifest.title", "")}
@@ -582,49 +584,52 @@ class TrainingTheme extends HAXCMSOperationButtons(
               ${varGet(this, "manifest.description", "")}
             </div>
           </div>
-          ${total > 0
-            ? html`
-                <div
-                  class="progress"
-                  role="progressbar"
-                  aria-valuemin="0"
-                  aria-valuemax="${total}"
-                  aria-valuenow="${visited}"
-                  aria-label="${visited} ${this.t.of} ${total} ${this.t
-                    .pagesViewed}"
-                >
-                  <div class="ring" aria-hidden="true">
-                    <svg viewBox="0 0 56 56">
-                      <circle
-                        class="ring-track"
-                        cx="28"
-                        cy="28"
-                        r="24"
-                        fill="none"
-                        stroke-width="5"
-                      ></circle>
-                      <circle
-                        class="ring-progress"
-                        cx="28"
-                        cy="28"
-                        r="24"
-                        fill="none"
-                        stroke-width="5"
-                        stroke-linecap="round"
-                        stroke-dasharray="${ringCircumference}"
-                        stroke-dashoffset="${ringOffset}"
-                        transform="rotate(-90 28 28)"
-                      ></circle>
-                    </svg>
-                    <div class="ring-count">${visited}</div>
+          ${
+            total > 0
+              ? html`
+                  <div
+                    class="progress"
+                    role="progressbar"
+                    aria-valuemin="0"
+                    aria-valuemax="${total}"
+                    aria-valuenow="${visited}"
+                    aria-label="${visited} ${this.t.of} ${total} ${
+                      this.t.pagesViewed
+                    }"
+                  >
+                    <div class="ring" aria-hidden="true">
+                      <svg viewBox="0 0 56 56">
+                        <circle
+                          class="ring-track"
+                          cx="28"
+                          cy="28"
+                          r="24"
+                          fill="none"
+                          stroke-width="5"
+                        ></circle>
+                        <circle
+                          class="ring-progress"
+                          cx="28"
+                          cy="28"
+                          r="24"
+                          fill="none"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          stroke-dasharray="${ringCircumference}"
+                          stroke-dashoffset="${ringOffset}"
+                          transform="rotate(-90 28 28)"
+                        ></circle>
+                      </svg>
+                      <div class="ring-count">${visited}</div>
+                    </div>
+                    <div class="progress-text">
+                      <div>${visited} ${this.t.of} ${total}</div>
+                      <div>${this.t.pagesViewed}</div>
+                    </div>
                   </div>
-                  <div class="progress-text">
-                    <div>${visited} ${this.t.of} ${total}</div>
-                    <div>${this.t.pagesViewed}</div>
-                  </div>
-                </div>
-              `
-            : ``}
+                `
+              : ``
+          }
           <nav
             id="haxcmsmobilemenunav"
             aria-label="${this.t.trainingTopics}"
@@ -645,23 +650,29 @@ class TrainingTheme extends HAXCMSOperationButtons(
               `,
             )}
           </nav>
-          ${authorName || authorEmail
-            ? html`
-                <div class="sidebar-footer">
-                  ${authorName
-                    ? html`<div class="footer-name">${authorName}</div>`
-                    : ``}
-                  ${authorEmail
-                    ? html`
-                        <div class="footer-support">
-                          ${this.t.support}:
-                          <a href="mailto:${authorEmail}">${authorEmail}</a>
-                        </div>
-                      `
-                    : ``}
-                </div>
-              `
-            : ``}
+          ${
+            authorName || authorEmail
+              ? html`
+                  <div class="sidebar-footer">
+                    ${
+                      authorName
+                        ? html`<div class="footer-name">${authorName}</div>`
+                        : ``
+                    }
+                    ${
+                      authorEmail
+                        ? html`
+                            <div class="footer-support">
+                              ${this.t.support}:
+                              <a href="mailto:${authorEmail}">${authorEmail}</a>
+                            </div>
+                          `
+                        : ``
+                    }
+                  </div>
+                `
+              : ``
+          }
         </aside>
         <main class="main">
           <div class="content-column">

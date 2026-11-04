@@ -59,9 +59,8 @@ class HAXCMSBackendDemo extends LitElement {
       systemAppSettings.systemOpenApiPath
     ) {
       try {
-        const { configureAppHAXSystemApiRegistry } = await import(
-          "@haxtheweb/app-hax/lib/v2/app-hax-system-api-registry.js"
-        );
+        const { configureAppHAXSystemApiRegistry } =
+          await import("@haxtheweb/app-hax/lib/v2/app-hax-system-api-registry.js");
         await configureAppHAXSystemApiRegistry(systemAppSettings, this.jwt);
       } catch (e) {
         console.warn("System API registry not available in site context", e);

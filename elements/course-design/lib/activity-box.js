@@ -159,14 +159,16 @@ export class ActivityBox extends DDD {
   render() {
     return html`
       <div class="container">
-        ${this.icon
-          ? html`
-              <simple-icon
-                icon="${this.icon}"
-                ?no-colorize=${this.nocolourize}
-              ></simple-icon>
-            `
-          : html``}
+        ${
+          this.icon
+            ? html`
+                <simple-icon
+                  icon="${this.icon}"
+                  ?no-colorize=${this.nocolourize}
+                ></simple-icon>
+              `
+            : html``
+        }
         <div class="tag" ?hidden=${!this.tag}>
           <span class="tag-content"
             ><simple-icon icon="check-circle"></simple-icon>${this.tag}</span

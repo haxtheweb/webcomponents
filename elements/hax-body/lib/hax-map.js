@@ -364,71 +364,73 @@ class HaxMap extends I18NMixin(SimpleColors) {
     this.elementList = [...elements];
   }
   render() {
-    return html`${this.hidden
-      ? ``
-      : html` <ul>
-          ${this.indentedElements(this.elementList).map((element, index) => {
-            return html`
-              <li
-                class="${element.parent
-                  ? `parent-${element.parent}`
-                  : "no-parent"} ${[
-                  "h1",
-                  "h2",
-                  "h3",
-                  "h4",
-                  "h5",
-                  "h6",
-                  element.tag,
-                ].includes(element.parent)
-                  ? ""
-                  : "is-child"}"
-              >
-                <hax-toolbar-item
-                  align-horizontal="left"
-                  @click="${(_e) => this.goToItem(index)}"
-                  @dblclick="${(_e) => this.editItem(index)}"
-                  data-index="${index}"
-                  ?data-active-item="${element.node === this.activeNode}"
-                  icon="${element.icon}"
-                  label="${element.name}"
-                  show-text-label
+    return html`${
+      this.hidden
+        ? ``
+        : html` <ul>
+            ${this.indentedElements(this.elementList).map((element, index) => {
+              return html`
+                <li
+                  class="${
+                    element.parent ? `parent-${element.parent}` : "no-parent"
+                  } ${
+                    ["h1", "h2", "h3", "h4", "h5", "h6", element.tag].includes(
+                      element.parent,
+                    )
+                      ? ""
+                      : "is-child"
+                  }"
                 >
-                </hax-toolbar-item>
-                ${element.tag != "page-break"
-                  ? html`
-                      <simple-icon-button-lite
-                        icon="${this.isLocked(index)
-                          ? "icons:lock"
-                          : "icons:lock-open"}"
-                        @click="${(_e) => this.itemOp(index, "lock")}"
-                        title="${this.t.lockUnlock}"
-                      ></simple-icon-button-lite>
-                      <simple-icon-button-lite
-                        icon="hax:keyboard-arrow-up"
-                        @click="${(_e) => this.itemOp(index, "up")}"
-                        title="${this.t.moveUp}"
-                        ?disabled="${this.isLocked(index)}"
-                      ></simple-icon-button-lite>
-                      <simple-icon-button-lite
-                        icon="hax:keyboard-arrow-down"
-                        @click="${(_e) => this.itemOp(index, "down")}"
-                        title="${this.t.moveDown}"
-                        ?disabled="${this.isLocked(index)}"
-                      ></simple-icon-button-lite>
-                      <simple-icon-button-lite
-                        class="del"
-                        icon="delete"
-                        @click="${(_e) => this.itemOp(index, "delete")}"
-                        title="${this.t.delete}"
-                        ?disabled="${this.isLocked(index)}"
-                      ></simple-icon-button-lite>
-                    `
-                  : ``}
-              </li>
-            `;
-          })}
-        </ul>`} `;
+                  <hax-toolbar-item
+                    align-horizontal="left"
+                    @click="${(_e) => this.goToItem(index)}"
+                    @dblclick="${(_e) => this.editItem(index)}"
+                    data-index="${index}"
+                    ?data-active-item="${element.node === this.activeNode}"
+                    icon="${element.icon}"
+                    label="${element.name}"
+                    show-text-label
+                  >
+                  </hax-toolbar-item>
+                  ${
+                    element.tag != "page-break"
+                      ? html`
+                          <simple-icon-button-lite
+                            icon="${
+                              this.isLocked(index)
+                                ? "icons:lock"
+                                : "icons:lock-open"
+                            }"
+                            @click="${(_e) => this.itemOp(index, "lock")}"
+                            title="${this.t.lockUnlock}"
+                          ></simple-icon-button-lite>
+                          <simple-icon-button-lite
+                            icon="hax:keyboard-arrow-up"
+                            @click="${(_e) => this.itemOp(index, "up")}"
+                            title="${this.t.moveUp}"
+                            ?disabled="${this.isLocked(index)}"
+                          ></simple-icon-button-lite>
+                          <simple-icon-button-lite
+                            icon="hax:keyboard-arrow-down"
+                            @click="${(_e) => this.itemOp(index, "down")}"
+                            title="${this.t.moveDown}"
+                            ?disabled="${this.isLocked(index)}"
+                          ></simple-icon-button-lite>
+                          <simple-icon-button-lite
+                            class="del"
+                            icon="delete"
+                            @click="${(_e) => this.itemOp(index, "delete")}"
+                            title="${this.t.delete}"
+                            ?disabled="${this.isLocked(index)}"
+                          ></simple-icon-button-lite>
+                        `
+                      : ``
+                  }
+                </li>
+              `;
+            })}
+          </ul>`
+    } `;
   }
   editItem(index) {
     if (index !== false && this.elementList[index].node) {

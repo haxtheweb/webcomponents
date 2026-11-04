@@ -365,78 +365,90 @@ class SimpleFileUpload extends I18NMixin(DDD) {
             <div class="file-row" role="listitem" aria-label="${file.name}">
               <div class="file-info">
                 <div class="file-name">${file.name}</div>
-                ${file.error
-                  ? html`
-                      <div class="file-status file-error">${file.error}</div>
-                    `
-                  : html`
-                      <div class="file-status">
-                        ${this._statusLabel(file.status)}
-                        ${file.progress > 0 && file.progress < 100
-                          ? ` (${file.progress}%)`
-                          : ""}
-                      </div>
-                    `}
-                ${file.progress > 0 && file.progress < 100
-                  ? html`
-                      <div class="file-progress" aria-hidden="true">
-                        <div
-                          class="file-progress-bar"
-                          style="inline-size: ${file.progress}%;"
-                        ></div>
-                      </div>
-                    `
-                  : ""}
+                ${
+                  file.error
+                    ? html`
+                        <div class="file-status file-error">${file.error}</div>
+                      `
+                    : html`
+                        <div class="file-status">
+                          ${this._statusLabel(file.status)}
+                          ${
+                            file.progress > 0 && file.progress < 100
+                              ? ` (${file.progress}%)`
+                              : ""
+                          }
+                        </div>
+                      `
+                }
+                ${
+                  file.progress > 0 && file.progress < 100
+                    ? html`
+                        <div class="file-progress" aria-hidden="true">
+                          <div
+                            class="file-progress-bar"
+                            style="inline-size: ${file.progress}%;"
+                          ></div>
+                        </div>
+                      `
+                    : ""
+                }
               </div>
               <div class="file-actions">
-                ${!file.complete && !file.abort && !file.error
-                  ? html`
-                      <button
-                        @click="${() => this._abortFile(index)}"
-                        aria-label="${this.t.cancelUploadOf.replace(
-                          "{name}",
-                          () => file.name,
-                        )}"
-                        title="${this.t.cancel}"
-                      >
-                        ×
-                      </button>
-                    `
-                  : ""}
-                ${file.error ||
-                file.status === "Cancelled" ||
-                file.status === "Aborted"
-                  ? html`
-                      <button
-                        @click="${() => this._retryFile(index)}"
-                        aria-label="${this.t.retryUploadOf.replace(
-                          "{name}",
-                          () => file.name,
-                        )}"
-                        title="${this.t.retry}"
-                      >
-                        ↻
-                      </button>
-                    `
-                  : ""}
-                ${file.complete ||
-                file.abort ||
-                file.error ||
-                file.status === "Cancelled" ||
-                file.status === "Aborted"
-                  ? html`
-                      <button
-                        @click="${() => this._removeFile(index)}"
-                        aria-label="${this.t.removeFromQueue.replace(
-                          "{name}",
-                          () => file.name,
-                        )}"
-                        title="${this.t.remove}"
-                      >
-                        🗑
-                      </button>
-                    `
-                  : ""}
+                ${
+                  !file.complete && !file.abort && !file.error
+                    ? html`
+                        <button
+                          @click="${() => this._abortFile(index)}"
+                          aria-label="${this.t.cancelUploadOf.replace(
+                            "{name}",
+                            () => file.name,
+                          )}"
+                          title="${this.t.cancel}"
+                        >
+                          ×
+                        </button>
+                      `
+                    : ""
+                }
+                ${
+                  file.error ||
+                  file.status === "Cancelled" ||
+                  file.status === "Aborted"
+                    ? html`
+                        <button
+                          @click="${() => this._retryFile(index)}"
+                          aria-label="${this.t.retryUploadOf.replace(
+                            "{name}",
+                            () => file.name,
+                          )}"
+                          title="${this.t.retry}"
+                        >
+                          ↻
+                        </button>
+                      `
+                    : ""
+                }
+                ${
+                  file.complete ||
+                  file.abort ||
+                  file.error ||
+                  file.status === "Cancelled" ||
+                  file.status === "Aborted"
+                    ? html`
+                        <button
+                          @click="${() => this._removeFile(index)}"
+                          aria-label="${this.t.removeFromQueue.replace(
+                            "{name}",
+                            () => file.name,
+                          )}"
+                          title="${this.t.remove}"
+                        >
+                          🗑
+                        </button>
+                      `
+                    : ""
+                }
               </div>
             </div>
           `,

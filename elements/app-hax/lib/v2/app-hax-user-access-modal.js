@@ -330,29 +330,35 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
       <div class="modal-content">
         <h3>${this.t.userAccess}</h3>
 
-        ${this.siteTitle
-          ? html`
-              <div class="site-info">
-                <p>${this.t.grantAccessTo}</p>
-                <div class="site-title">${this.siteTitle}</div>
-              </div>
-            `
-          : ""}
+        ${
+          this.siteTitle
+            ? html`
+                <div class="site-info">
+                  <p>${this.t.grantAccessTo}</p>
+                  <div class="site-title">${this.siteTitle}</div>
+                </div>
+              `
+            : ""
+        }
 
         <p>${this.t.enterUsername}</p>
 
         <div class="character-container">
-          ${this.username
-            ? html`
-                <rpg-character
-                  seed="${this.username}"
-                  height="120"
-                  width="96"
-                ></rpg-character>
-              `
-            : html`
-                <div class="empty-character">${this.t.characterWillAppear}</div>
-              `}
+          ${
+            this.username
+              ? html`
+                  <rpg-character
+                    seed="${this.username}"
+                    height="120"
+                    width="96"
+                  ></rpg-character>
+                `
+              : html`
+                  <div class="empty-character">
+                    ${this.t.characterWillAppear}
+                  </div>
+                `
+          }
         </div>
 
         <div class="input-container">
@@ -382,14 +388,16 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
             @click="${this._handleAddUser}"
             ?disabled="${this.loading || !this.username.trim()}"
           >
-            ${this.loading
-              ? html`
-                  <div class="loading">
-                    <simple-icon icon="hax:loading"></simple-icon>
-                    <span>${this.t.loadingAddingUser}</span>
-                  </div>
-                `
-              : this.t.addUser}
+            ${
+              this.loading
+                ? html`
+                    <div class="loading">
+                      <simple-icon icon="hax:loading"></simple-icon>
+                      <span>${this.t.loadingAddingUser}</span>
+                    </div>
+                  `
+                : this.t.addUser
+            }
           </button>
         </div>
       </div>

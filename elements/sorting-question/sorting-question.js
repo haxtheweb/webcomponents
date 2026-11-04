@@ -341,9 +341,11 @@ export class SortingQuestion extends QuestionElement {
         ${this.displayedAnswers.map(
           (answer) =>
             html`<sorting-option ?disabled="${this.disabled}"
-              >${answer.image
-                ? html`<img src="${answer.image}" alt="${answer.alt}" />`
-                : nothing}${answer.label}</sorting-option
+              >${
+                answer.image
+                  ? html`<img src="${answer.image}" alt="${answer.alt}" />`
+                  : nothing
+              }${answer.label}</sorting-option
             >`,
         )}
       </fieldset>
@@ -376,32 +378,40 @@ export class SortingQuestion extends QuestionElement {
 
   // this manages the output of the feedback area
   renderFeedback() {
-    return html` ${!this.edit
-      ? html`
-          ${this.showAnswer && this.numberCorrect !== this.answers.length
-            ? html` <p class="feedback">
-                  ${this._tParts(this.t.numCorrectOutOfTotal, {
-                    correct: this.numberCorrect,
-                    total: this.answers.length,
-                  })}
-                </p>`
-            : ``}
-          ${this.showAnswer && this.numberCorrect === this.answers.length
-            ? html` <p class="feedback">${this.correctText}</p>`
-            : ``}
-          ${this.showAnswer
-            ? this.renderFeedbackSlots(
-                this.numberCorrect === this.answers.length,
-              )
-            : ``}
-          <simple-toolbar-button
-            ?disabled="${this.disabled || !this.showAnswer}"
-            @click="${this.resetAnswer}"
-            label="${this.t.tryAgain}"
-          >
-          </simple-toolbar-button>
-        `
-      : this.renderEditModeFeedbackAreas()}`;
+    return html` ${
+      !this.edit
+        ? html`
+            ${
+              this.showAnswer && this.numberCorrect !== this.answers.length
+                ? html` <p class="feedback">
+                    ${this._tParts(this.t.numCorrectOutOfTotal, {
+                      correct: this.numberCorrect,
+                      total: this.answers.length,
+                    })}
+                  </p>`
+                : ``
+            }
+            ${
+              this.showAnswer && this.numberCorrect === this.answers.length
+                ? html` <p class="feedback">${this.correctText}</p>`
+                : ``
+            }
+            ${
+              this.showAnswer
+                ? this.renderFeedbackSlots(
+                    this.numberCorrect === this.answers.length,
+                  )
+                : ``
+            }
+            <simple-toolbar-button
+              ?disabled="${this.disabled || !this.showAnswer}"
+              @click="${this.resetAnswer}"
+              label="${this.t.tryAgain}"
+            >
+            </simple-toolbar-button>
+          `
+        : this.renderEditModeFeedbackAreas()
+    }`;
   }
 
   /**

@@ -198,13 +198,15 @@ class A11yMediaButton extends LitElement {
       >
         <simple-icon-lite icon="${this.icon}"></simple-icon-lite>
       </button>
-      ${this.label
-        ? html`
-            <simple-tooltip for="button" position="${this.tooltipPosition}"
-              >${this.label}</simple-tooltip
-            >
-          `
-        : ``}
+      ${
+        this.label
+          ? html`
+              <simple-tooltip for="button" position="${this.tooltipPosition}"
+                >${this.label}</simple-tooltip
+              >
+            `
+          : ``
+      }
     `;
   }
 

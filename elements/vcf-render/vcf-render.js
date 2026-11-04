@@ -455,11 +455,13 @@ export class VcfRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
         sort
       >
         <table>
-          ${this.headingText
-            ? html`<caption>
-                ${this.headingText}
-              </caption>`
-            : nothing}
+          ${
+            this.headingText
+              ? html`<caption>
+                  ${this.headingText}
+                </caption>`
+              : nothing
+          }
           <thead>
             <tr>
               <th>${this.t.name}</th>
@@ -547,56 +549,66 @@ export class VcfRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
           return html`
             <li class="row" role="listitem">
               <span class="avatar" aria-hidden="true"
-                >${contact.photo
-                  ? html`<img src="${contact.photo}" alt="" loading="lazy" />`
-                  : this.initials(contact)}</span
+                >${
+                  contact.photo
+                    ? html`<img src="${contact.photo}" alt="" loading="lazy" />`
+                    : this.initials(contact)
+                }</span
               >
               <span class="meta">
-                ${site
-                  ? html`<a class="name" href="${site}">${name}</a>`
-                  : html`<span class="name">${name}</span>`}
+                ${
+                  site
+                    ? html`<a class="name" href="${site}">${name}</a>`
+                    : html`<span class="name">${name}</span>`
+                }
                 ${role ? html`<span class="role">${role}</span>` : nothing}
               </span>
-              ${contact.email || tel
-                ? html`<span class="row-actions">
-                    ${contact.email
-                      ? html`<a
-                          class="ddd-block-action"
-                          href="mailto:${contact.email}"
-                          aria-label="${String(this.t.emailName).replace(
-                            "{name}",
-                            name,
-                          )}"
-                          title="${String(this.t.emailName).replace(
-                            "{name}",
-                            name,
-                          )}"
-                          ><simple-icon-lite
-                            icon="communication:email"
-                            aria-hidden="true"
-                          ></simple-icon-lite
-                        ></a>`
-                      : nothing}
-                    ${tel
-                      ? html`<a
-                          class="ddd-block-action"
-                          href="${tel}"
-                          aria-label="${String(this.t.callName).replace(
-                            "{name}",
-                            name,
-                          )}"
-                          title="${String(this.t.callName).replace(
-                            "{name}",
-                            name,
-                          )}"
-                          ><simple-icon-lite
-                            icon="communication:call"
-                            aria-hidden="true"
-                          ></simple-icon-lite
-                        ></a>`
-                      : nothing}
-                  </span>`
-                : nothing}
+              ${
+                contact.email || tel
+                  ? html`<span class="row-actions">
+                      ${
+                        contact.email
+                          ? html`<a
+                              class="ddd-block-action"
+                              href="mailto:${contact.email}"
+                              aria-label="${String(this.t.emailName).replace(
+                                "{name}",
+                                name,
+                              )}"
+                              title="${String(this.t.emailName).replace(
+                                "{name}",
+                                name,
+                              )}"
+                              ><simple-icon-lite
+                                icon="communication:email"
+                                aria-hidden="true"
+                              ></simple-icon-lite
+                            ></a>`
+                          : nothing
+                      }
+                      ${
+                        tel
+                          ? html`<a
+                              class="ddd-block-action"
+                              href="${tel}"
+                              aria-label="${String(this.t.callName).replace(
+                                "{name}",
+                                name,
+                              )}"
+                              title="${String(this.t.callName).replace(
+                                "{name}",
+                                name,
+                              )}"
+                              ><simple-icon-lite
+                                icon="communication:call"
+                                aria-hidden="true"
+                              ></simple-icon-lite
+                            ></a>`
+                          : nothing
+                      }
+                    </span>`
+                  : nothing
+              }
             </li>
           `;
         })}
@@ -689,9 +701,11 @@ export class VcfRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
             : nothing,
         })}
         <div class="ddd-block-body ${flush ? "flush" : ""}">${body}</div>
-        ${showsContacts
-          ? html`<div class="ddd-block-footer">${this.footerText}</div>`
-          : nothing}
+        ${
+          showsContacts
+            ? html`<div class="ddd-block-footer">${this.footerText}</div>`
+            : nothing
+        }
       </div>
     `;
   }

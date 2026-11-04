@@ -3,15 +3,12 @@ import { expect } from "@open-wc/testing";
 globalThis.appSettings = {};
 
 const { store } = await import("../lib/v2/AppHaxStore.js");
-const { AppHaxUseCaseFilter } = await import(
-  "../lib/v2/app-hax-use-case-filter.js"
-);
-const { MicroFrontendRegistry } = await import(
-  "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js"
-);
-const { enableServices } = await import(
-  "@haxtheweb/micro-frontend-registry/lib/microServices.js"
-);
+const { AppHaxUseCaseFilter } =
+  await import("../lib/v2/app-hax-use-case-filter.js");
+const { MicroFrontendRegistry } =
+  await import("@haxtheweb/micro-frontend-registry/micro-frontend-registry.js");
+const { enableServices } =
+  await import("@haxtheweb/micro-frontend-registry/lib/microServices.js");
 
 function createFilter() {
   const el = new AppHaxUseCaseFilter();

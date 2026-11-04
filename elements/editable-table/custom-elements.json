@@ -683,6 +683,75 @@
             },
             {
               "kind": "method",
+              "name": "_cellText",
+              "parameters": [
+                {
+                  "name": "cell",
+                  "description": "cell contents (may contain HTML)",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Plain text of a cell for classification only (never rendered).\nParsed with DOMParser, whose documents are inert (no scripts run, no\nresources load), instead of stripping tags with a regular expression.",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "inheritedFrom": {
+                "name": "displayBehaviors",
+                "module": "lib/editable-table-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_isNumberLike",
+              "parameters": [
+                {
+                  "name": "cell",
+                  "description": "cell contents (may contain HTML)",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Whether a cell reads as a number for display (right-aligned, tabular\ndigits): an optional sign, an optional currency symbol, digits with\noptional thousands commas and decimals, an optional trailing percent.\nMarkup and non-breaking spaces are ignored. Display only: sorting and\nCSV export keep using _isNumericCell.",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "displayBehaviors",
+                "module": "lib/editable-table-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_isNumberColumn",
+              "parameters": [
+                {
+                  "name": "index",
+                  "description": "column index",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "Whether a body column holds numbers for display: every non-empty cell\nis number-like (see _isNumberLike) and at least one cell is filled.",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "displayBehaviors",
+                "module": "lib/editable-table-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "_isRowFiltered",
               "parameters": [
                 {
@@ -1344,6 +1413,63 @@
                 }
               ],
               "description": "Determines if an entire body column contains numeric data",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_cellText",
+              "parameters": [
+                {
+                  "name": "cell",
+                  "description": "cell contents (may contain HTML)",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Plain text of a cell for classification only (never rendered).\nParsed with DOMParser, whose documents are inert (no scripts run, no\nresources load), instead of stripping tags with a regular expression.",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_isNumberLike",
+              "parameters": [
+                {
+                  "name": "cell",
+                  "description": "cell contents (may contain HTML)",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Whether a cell reads as a number for display (right-aligned, tabular\ndigits): an optional sign, an optional currency symbol, digits with\noptional thousands commas and decimals, an optional trailing percent.\nMarkup and non-breaking spaces are ignored. Display only: sorting and\nCSV export keep using _isNumericCell.",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_isNumberColumn",
+              "parameters": [
+                {
+                  "name": "index",
+                  "description": "column index",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "Whether a body column holds numbers for display: every non-empty cell\nis number-like (see _isNumberLike) and at least one cell is filled.",
               "return": {
                 "type": {
                   "text": "boolean"
@@ -2018,6 +2144,75 @@
                 }
               ],
               "description": "Determines if an entire body column contains numeric data",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "displayBehaviors",
+                "module": "lib/editable-table-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_cellText",
+              "parameters": [
+                {
+                  "name": "cell",
+                  "description": "cell contents (may contain HTML)",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Plain text of a cell for classification only (never rendered).\nParsed with DOMParser, whose documents are inert (no scripts run, no\nresources load), instead of stripping tags with a regular expression.",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "inheritedFrom": {
+                "name": "displayBehaviors",
+                "module": "lib/editable-table-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_isNumberLike",
+              "parameters": [
+                {
+                  "name": "cell",
+                  "description": "cell contents (may contain HTML)",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Whether a cell reads as a number for display (right-aligned, tabular\ndigits): an optional sign, an optional currency symbol, digits with\noptional thousands commas and decimals, an optional trailing percent.\nMarkup and non-breaking spaces are ignored. Display only: sorting and\nCSV export keep using _isNumericCell.",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "displayBehaviors",
+                "module": "lib/editable-table-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_isNumberColumn",
+              "parameters": [
+                {
+                  "name": "index",
+                  "description": "column index",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "Whether a body column holds numbers for display: every non-empty cell\nis number-like (see _isNumberLike) and at least one cell is filled.",
               "return": {
                 "type": {
                   "text": "boolean"
@@ -2775,6 +2970,25 @@
             },
             {
               "kind": "method",
+              "name": "_isNumberCol",
+              "parameters": [
+                {
+                  "name": "index",
+                  "description": "column number",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "Whether a column holds numbers (right-aligned, tabular digits), from\nthe per-render cache with a direct check as the fallback",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "kind": "method",
               "name": "_updateCols",
               "description": "update responsive columns menu"
             },
@@ -3202,6 +3416,75 @@
                 }
               ],
               "description": "Determines if an entire body column contains numeric data",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "displayBehaviors",
+                "module": "lib/editable-table-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_cellText",
+              "parameters": [
+                {
+                  "name": "cell",
+                  "description": "cell contents (may contain HTML)",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Plain text of a cell for classification only (never rendered).\nParsed with DOMParser, whose documents are inert (no scripts run, no\nresources load), instead of stripping tags with a regular expression.",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "inheritedFrom": {
+                "name": "displayBehaviors",
+                "module": "lib/editable-table-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_isNumberLike",
+              "parameters": [
+                {
+                  "name": "cell",
+                  "description": "cell contents (may contain HTML)",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Whether a cell reads as a number for display (right-aligned, tabular\ndigits): an optional sign, an optional currency symbol, digits with\noptional thousands commas and decimals, an optional trailing percent.\nMarkup and non-breaking spaces are ignored. Display only: sorting and\nCSV export keep using _isNumericCell.",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "displayBehaviors",
+                "module": "lib/editable-table-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_isNumberColumn",
+              "parameters": [
+                {
+                  "name": "index",
+                  "description": "column index",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "Whether a body column holds numbers for display: every non-empty cell\nis number-like (see _isNumberLike) and at least one cell is filled.",
               "return": {
                 "type": {
                   "text": "boolean"
@@ -4588,6 +4871,75 @@
                 }
               ],
               "description": "Determines if an entire body column contains numeric data",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "displayBehaviors",
+                "module": "lib/editable-table-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_cellText",
+              "parameters": [
+                {
+                  "name": "cell",
+                  "description": "cell contents (may contain HTML)",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Plain text of a cell for classification only (never rendered).\nParsed with DOMParser, whose documents are inert (no scripts run, no\nresources load), instead of stripping tags with a regular expression.",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "inheritedFrom": {
+                "name": "displayBehaviors",
+                "module": "lib/editable-table-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_isNumberLike",
+              "parameters": [
+                {
+                  "name": "cell",
+                  "description": "cell contents (may contain HTML)",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Whether a cell reads as a number for display (right-aligned, tabular\ndigits): an optional sign, an optional currency symbol, digits with\noptional thousands commas and decimals, an optional trailing percent.\nMarkup and non-breaking spaces are ignored. Display only: sorting and\nCSV export keep using _isNumericCell.",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "displayBehaviors",
+                "module": "lib/editable-table-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_isNumberColumn",
+              "parameters": [
+                {
+                  "name": "index",
+                  "description": "column index",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "Whether a body column holds numbers for display: every non-empty cell\nis number-like (see _isNumberLike) and at least one cell is filled.",
               "return": {
                 "type": {
                   "text": "boolean"

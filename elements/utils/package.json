@@ -56,5 +56,6 @@
     "@web/dev-server-esbuild": "1.0.5",
     "lint-staged": "15.5.2"
   },
-  "gitHead": "245e0cd5ba8ffa15c755a58abc4f60f74a2f876c"
+  "gitHead": "245e0cd5ba8ffa15c755a58abc4f60f74a2f876c",
+  "customElements": "custom-elements.json"
 }

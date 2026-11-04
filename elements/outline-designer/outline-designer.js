@@ -1546,68 +1546,71 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     const dt = this._dropTarget;
     const mod = this._isMac() ? "⌘" : "Ctrl";
     return html` <div
-        class="controls ${this.storeTools ? "store-tools" : ""} ${this
-          ._optionsOpen
-          ? "options-open"
-          : ""}"
+        class="controls ${this.storeTools ? "store-tools" : ""} ${
+          this._optionsOpen ? "options-open" : ""
+        }"
       >
         ${this._renderSelectAll(
           entries.filter((e) => e.kind === "item").map((e) => e.item),
         )}
-        ${this.storeTools
-          ? html`
-              <div class="import-controls">
-                <div class="import-field">
-                  <span class="import-label" aria-hidden="true"
-                    >${this.t.importThisContent}</span
-                  >
-                  <simple-fields-field
-                    class="hax-ui-simple-field compact"
-                    id="targetselector"
-                    label="${this.t.importThisContent}"
-                    type="select"
-                    value="children"
-                    .itemsList="${[
-                      {
-                        text: this.t.asChildrenOf,
-                        value: "children",
-                      },
-                      {
-                        text: this.t.above,
-                        value: "above",
-                      },
-                      {
-                        text: this.t.below,
-                        value: "below",
-                      },
-                    ]}"
-                  ></simple-fields-field>
+        ${
+          this.storeTools
+            ? html`
+                <div class="import-controls">
+                  <div class="import-field">
+                    <span class="import-label" aria-hidden="true"
+                      >${this.t.importThisContent}</span
+                    >
+                    <simple-fields-field
+                      class="hax-ui-simple-field compact"
+                      id="targetselector"
+                      label="${this.t.importThisContent}"
+                      type="select"
+                      value="children"
+                      .itemsList="${[
+                        {
+                          text: this.t.asChildrenOf,
+                          value: "children",
+                        },
+                        {
+                          text: this.t.above,
+                          value: "above",
+                        },
+                        {
+                          text: this.t.below,
+                          value: "below",
+                        },
+                      ]}"
+                    ></simple-fields-field>
+                  </div>
+                  <div class="import-field">
+                    <span class="import-label" aria-hidden="true"
+                      >${this.t.importContentUnderThisPage}</span
+                    >
+                    <simple-fields-field
+                      class="hax-ui-simple-field compact"
+                      id="itemselector"
+                      label="${this.t.importContentUnderThisPage}"
+                      type="select"
+                      value="${this.activeId}"
+                      .itemsList="${this.getSiteItems()}"
+                    ></simple-fields-field>
+                  </div>
                 </div>
-                <div class="import-field">
-                  <span class="import-label" aria-hidden="true"
-                    >${this.t.importContentUnderThisPage}</span
-                  >
-                  <simple-fields-field
-                    class="hax-ui-simple-field compact"
-                    id="itemselector"
-                    label="${this.t.importContentUnderThisPage}"
-                    type="select"
-                    value="${this.activeId}"
-                    .itemsList="${this.getSiteItems()}"
-                  ></simple-fields-field>
-                </div>
-              </div>
-            `
-          : ``}
-        ${this.hostActions
-          ? ``
-          : html`<simple-toolbar-button
-              class="control"
-              icon="add"
-              @click="${this._addTop}"
-              label="${this.t.addPage}"
-              show-text-label
-            ></simple-toolbar-button>`}
+              `
+            : ``
+        }
+        ${
+          this.hostActions
+            ? ``
+            : html`<simple-toolbar-button
+                class="control"
+                icon="add"
+                @click="${this._addTop}"
+                label="${this.t.addPage}"
+                show-text-label
+              ></simple-toolbar-button>`
+        }
         <simple-toolbar-button
           class="control options-btn"
           icon="${this._optionsOpen ? "close" : "more-vert"}"
@@ -1638,29 +1641,33 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
             label="${this.t.expandAll}"
             show-text-label
           ></simple-toolbar-button>
-          ${this.selectedPages.length > 0 && !this.hostActions
-            ? html`<simple-toolbar-button
-                icon="delete"
-                @click="${this._deleteSelectedShown}"
-                class="control"
-                show-text-label
-                label="${this.t.deleteSelected.replace(
-                  "{count}",
-                  () => this.selectedPages.length,
-                )}"
-              ></simple-toolbar-button>`
-            : ``}
-          ${this.hasDeletedItems()
-            ? html`<simple-toolbar-button
-                icon="delete"
-                @click="${this.toggleDelete}"
-                class="control"
-                show-text-label
-                label="${!this.hideDelete
-                  ? this.t.hideDeleted
-                  : this.t.showDeleted}"
-              ></simple-toolbar-button>`
-            : ``}
+          ${
+            this.selectedPages.length > 0 && !this.hostActions
+              ? html`<simple-toolbar-button
+                  icon="delete"
+                  @click="${this._deleteSelectedShown}"
+                  class="control"
+                  show-text-label
+                  label="${this.t.deleteSelected.replace(
+                    "{count}",
+                    () => this.selectedPages.length,
+                  )}"
+                ></simple-toolbar-button>`
+              : ``
+          }
+          ${
+            this.hasDeletedItems()
+              ? html`<simple-toolbar-button
+                  icon="delete"
+                  @click="${this.toggleDelete}"
+                  class="control"
+                  show-text-label
+                  label="${
+                    !this.hideDelete ? this.t.hideDeleted : this.t.showDeleted
+                  }"
+                ></simple-toolbar-button>`
+              : ``
+          }
           <div
             class="hax-ui-seg density"
             role="group"
@@ -1681,9 +1688,9 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           <simple-toolbar-button
             class="control options-btn"
             icon="hardware:keyboard"
-            label="${this.showHints
-              ? this.t.hideKeyboardHelp
-              : this.t.showKeyboardHelp}"
+            label="${
+              this.showHints ? this.t.hideKeyboardHelp : this.t.showKeyboardHelp
+            }"
             show-text-label
             @click="${this._toggleHints}"
           ></simple-toolbar-button>
@@ -1712,50 +1719,61 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           class="dropline"
           aria-hidden="true"
           ?hidden="${!dt || !dt.line}"
-          style="${dt && dt.line
-            ? `top:${dt.line.top}px;left:${dt.line.left}px`
-            : ""}"
+          style="${
+            dt && dt.line ? `top:${dt.line.top}px;left:${dt.line.left}px` : ""
+          }"
         ></div>
       </div>
       <div
         class="drag-ghost"
         ?hidden="${!this._drag}"
         aria-hidden="true"
-        style="${this._drag
-          ? `transform:translate(${this._drag.x + 14}px, ${this._drag.y + (this._drag.touch ? -48 : 14)}px)`
-          : ""}"
+        style="${
+          this._drag
+            ? `transform:translate(${this._drag.x + 14}px, ${this._drag.y + (this._drag.touch ? -48 : 14)}px)`
+            : ""
+        }"
       >
-        ${this._drag
-          ? html`<span class="ghost-title">${this._drag.title}</span>${this
-                ._drag.count
-                ? html`<span class="ghost-count">+${this._drag.count}</span>`
-                : ``}`
-          : ``}
+        ${
+          this._drag
+            ? html`<span class="ghost-title">${this._drag.title}</span>${
+                  this._drag.count
+                    ? html`<span class="ghost-count"
+                        >+${this._drag.count}</span
+                      >`
+                    : ``
+                }`
+            : ``
+        }
       </div>
       <div class="footer">
         <div class="drag-status ${this._drag || this._undo ? "live" : ""}">
           <span class="status-text" aria-hidden="true"
-            >${this._drag
-              ? this._statusText
-              : this._undo
-                ? this._undo.message
-                : this._coarsePointer()
-                  ? this.t.touchDragHint
-                  : this.t.dragHint}</span
+            >${
+              this._drag
+                ? this._statusText
+                : this._undo
+                  ? this._undo.message
+                  : this._coarsePointer()
+                    ? this.t.touchDragHint
+                    : this.t.dragHint
+            }</span
           >
-          ${this._undo && !this._drag
-            ? html`<button
-                type="button"
-                class="undo-btn"
-                aria-label="${this.t.undoAction.replace(
-                  "{action}",
-                  () => this._undo.message,
-                )}"
-                @click="${this.undo}"
-              >
-                ${this.t.undo}
-              </button>`
-            : nothing}
+          ${
+            this._undo && !this._drag
+              ? html`<button
+                  type="button"
+                  class="undo-btn"
+                  aria-label="${this.t.undoAction.replace(
+                    "{action}",
+                    () => this._undo.message,
+                  )}"
+                  @click="${this.undo}"
+                >
+                  ${this.t.undo}
+                </button>`
+              : nothing
+          }
         </div>
         <div class="hints" id="hints">
           <span class="hax-ui-sr-only">${this.t.keyboardHelp}:</span>
@@ -2086,18 +2104,20 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       } else if (d < entry.depth || mode === "contents") {
         cols.push(
           html`<span class="col"
-            >${cont
-              ? html`<i class="ln full ${this._hl(g)}"></i>`
-              : nothing}</span
+            >${
+              cont ? html`<i class="ln full ${this._hl(g)}"></i>` : nothing
+            }</span
           >`,
         );
       } else {
         cols.push(
           html`<span class="col"
             ><i class="ln top ${this._hl(g)}"></i
-            ><i class="ln tick ${this._hl(g)}"></i>${cont && mode === "item"
-              ? html`<i class="ln bot ${this._hl(g)}"></i>`
-              : nothing}</span
+            ><i class="ln tick ${this._hl(g)}"></i>${
+              cont && mode === "item"
+                ? html`<i class="ln bot ${this._hl(g)}"></i>`
+                : nothing
+            }</span
           >`,
         );
       }
@@ -2127,13 +2147,15 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         title="${label}"
         data-add-parent="${entry.parentId || ""}"
         data-add-depth="${entry.depth}"
-        style="${this._vtActive &&
-        this._vtOn(`a:${entry.parentId || ""}-${entry.depth}`)
-          ? `view-transition-name:${this._vtName(
-              "a",
-              `${entry.parentId || "root"}-${entry.depth}`,
-            )};view-transition-class:od-row`
-          : ""}"
+        style="${
+          this._vtActive &&
+          this._vtOn(`a:${entry.parentId || ""}-${entry.depth}`)
+            ? `view-transition-name:${this._vtName(
+                "a",
+                `${entry.parentId || "root"}-${entry.depth}`,
+              )};view-transition-class:od-row`
+            : ""
+        }"
         @click="${() => this._addInGroup(entry.parentId)}"
       >
         ${this._renderCols(entry, "add")}
@@ -2444,9 +2466,9 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       <li
         role="treeitem"
         tabindex="${this.__renderRovingId === item.id ? "0" : "-1"}"
-        aria-label="${item.title}${states.length
-          ? `, ${states.join(", ")}`
-          : ""}"
+        aria-label="${item.title}${
+          states.length ? `, ${states.join(", ")}` : ""
+        }"
         aria-expanded="${hasKids ? (collapsed ? "false" : "true") : nothing}"
         aria-level="${parseInt(item.indent) + 1}"
         aria-setsize="${siblings.length}"
@@ -2456,20 +2478,19 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         @mouseenter="${this.setActiveItemForActions}"
         @click="${this.handleItemClick}"
         @contextmenu="${this._onContextMenu}"
-        class="item indent-${item.indent < 20 ? item.indent : 20} ${!this
-          .hideContentOps && item.showContent
-          ? "content-open"
-          : ""} ${item.modified ? "modified" : ""} ${this.activePage === item.id
-          ? "active-page"
-          : ""} ${selected ? "selected-page" : ""} ${locked
-          ? "locked"
-          : ""} ${current ? "current-page" : ""} ${dt &&
-        dt.zone === "child" &&
-        dt.targetId === item.id
-          ? "drop-target-child"
-          : ""} ${pressing ? "pressing" : ""} ${this._nudgeId === item.id
-          ? "nudging"
-          : ""}"
+        class="item indent-${item.indent < 20 ? item.indent : 20} ${
+          !this.hideContentOps && item.showContent ? "content-open" : ""
+        } ${item.modified ? "modified" : ""} ${
+          this.activePage === item.id ? "active-page" : ""
+        } ${selected ? "selected-page" : ""} ${
+          locked ? "locked" : ""
+        } ${current ? "current-page" : ""} ${
+          dt && dt.zone === "child" && dt.targetId === item.id
+            ? "drop-target-child"
+            : ""
+        } ${pressing ? "pressing" : ""} ${
+          this._nudgeId === item.id ? "nudging" : ""
+        }"
         style="${[
           pressing ? `--outline-designer-press-ms:${this._press.holdMs}ms` : "",
           this._vtActive && this._vtOn(item.id)
@@ -2501,36 +2522,40 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         </span>
         ${ctx.cols || nothing}
         <span class="toggle">
-          ${hasKids
-            ? html`<button
-                type="button"
-                class="collapse-btn ${this._hl(group)}"
-                tabindex="-1"
-                aria-hidden="true"
-                ?disabled="${locked}"
-                title="${collapsed
-                  ? this.t.expandChildren
-                  : this.t.collapseChildren}"
-                @click="${this._onChevronClick}"
-              >
-                <simple-icon-lite
-                  icon="${collapsed
-                    ? "hardware:keyboard-arrow-right"
-                    : "hardware:keyboard-arrow-down"}"
-                ></simple-icon-lite>
-              </button>`
-            : html`<span class="leaf ${this._hl(group)}"></span>`}
+          ${
+            hasKids
+              ? html`<button
+                  type="button"
+                  class="collapse-btn ${this._hl(group)}"
+                  tabindex="-1"
+                  aria-hidden="true"
+                  ?disabled="${locked}"
+                  title="${
+                    collapsed ? this.t.expandChildren : this.t.collapseChildren
+                  }"
+                  @click="${this._onChevronClick}"
+                >
+                  <simple-icon-lite
+                    icon="${
+                      collapsed
+                        ? "hardware:keyboard-arrow-right"
+                        : "hardware:keyboard-arrow-down"
+                    }"
+                  ></simple-icon-lite>
+                </button>`
+              : html`<span class="leaf ${this._hl(group)}"></span>`
+          }
         </span>
         <span class="grip" aria-hidden="true" title="${this.t.dragToReorder}"
           ><simple-icon-lite icon="icons:reorder"></simple-icon-lite
         ></span>
         <span
           class="title"
-          style="${this._vtActive &&
-          this._vtOn(item.id) &&
-          !this._vtPlain.has(item.id)
-            ? `view-transition-name:${this._vtName("t", item.id)};view-transition-class:od-title`
-            : ""}"
+          style="${
+            this._vtActive && this._vtOn(item.id) && !this._vtPlain.has(item.id)
+              ? `view-transition-name:${this._vtName("t", item.id)};view-transition-class:od-title`
+              : ""
+          }"
         >
           <span
             class="label shown"
@@ -2545,54 +2570,66 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
             @blur="${this.blurTitle}"
             @keydown="${this.monitorEsc}"
           ></span>
-          ${item.modified && !item.new
-            ? html`<span
-                class="modified-dot"
-                title="${this.t.modified}"
-              ></span>`
-            : nothing}
-          ${locked
-            ? html`<simple-icon-lite
-                class="lock-icon"
-                icon="icons:lock"
-                title="${this.t.lock}"
-              ></simple-icon-lite>`
-            : nothing}
+          ${
+            item.modified && !item.new
+              ? html`<span
+                  class="modified-dot"
+                  title="${this.t.modified}"
+                ></span>`
+              : nothing
+          }
+          ${
+            locked
+              ? html`<simple-icon-lite
+                  class="lock-icon"
+                  icon="icons:lock"
+                  title="${this.t.lock}"
+                ></simple-icon-lite>`
+              : nothing
+          }
         </span>
-        ${item.new
-          ? html`<span class="hax-ui-pill" data-tone="success"
-              >${this.t.newBadge}</span
-            >`
-          : nothing}
-        ${item.delete
-          ? html`<span class="hax-ui-pill" data-tone="danger"
-              >${this.t.deletingBadge}</span
-            >`
-          : nothing}
-        ${current
-          ? html`<span class="hax-ui-pill" data-tone="accent"
-              >${this.t.currentPage}</span
-            >`
-          : nothing}
-        ${hiddenCount
-          ? html`<span
-              class="hax-ui-pill"
-              title="${this.t.hiddenSubpages.replace(
-                "{count}",
-                () => hiddenCount,
-              )}"
-              >${hiddenCount}</span
-            >`
-          : nothing}
+        ${
+          item.new
+            ? html`<span class="hax-ui-pill" data-tone="success"
+                >${this.t.newBadge}</span
+              >`
+            : nothing
+        }
+        ${
+          item.delete
+            ? html`<span class="hax-ui-pill" data-tone="danger"
+                >${this.t.deletingBadge}</span
+              >`
+            : nothing
+        }
+        ${
+          current
+            ? html`<span class="hax-ui-pill" data-tone="accent"
+                >${this.t.currentPage}</span
+              >`
+            : nothing
+        }
+        ${
+          hiddenCount
+            ? html`<span
+                class="hax-ui-pill"
+                title="${this.t.hiddenSubpages.replace(
+                  "{count}",
+                  () => hiddenCount,
+                )}"
+                >${hiddenCount}</span
+              >`
+            : nothing
+        }
         <button
           type="button"
           class="act content-toggle-btn"
           tabindex="-1"
           aria-hidden="true"
           aria-pressed="${item.showContent ? "true" : "false"}"
-          ?hidden="${this.hideContentOps ||
-          item.contents === "" ||
-          !item.contents}"
+          ?hidden="${
+            this.hideContentOps || item.contents === "" || !item.contents
+          }"
           ?disabled="${locked}"
           title="${this.t.contentStructure}"
           @click="${this.toggleContent}"
@@ -2600,21 +2637,23 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           <simple-icon-lite icon="editor:insert-drive-file"></simple-icon-lite>
         </button>
         <span class="trail">
-          ${locked
-            ? nothing
-            : html`<button
-                type="button"
-                class="act add-child-btn"
-                tabindex="-1"
-                aria-hidden="true"
-                title="${this.t.addSubpage}"
-                @click="${(e) => {
-                  e.stopPropagation();
-                  this.addChildItem(index);
-                }}"
-              >
-                <simple-icon-lite icon="add"></simple-icon-lite>
-              </button>`}
+          ${
+            locked
+              ? nothing
+              : html`<button
+                  type="button"
+                  class="act add-child-btn"
+                  tabindex="-1"
+                  aria-hidden="true"
+                  title="${this.t.addSubpage}"
+                  @click="${(e) => {
+                    e.stopPropagation();
+                    this.addChildItem(index);
+                  }}"
+                >
+                  <simple-icon-lite icon="add"></simple-icon-lite>
+                </button>`
+          }
           <button
             type="button"
             class="act actions-menu-button"
@@ -2714,41 +2753,45 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     const ready = !this._lazyOps || this._opsShown.has(item.id);
     return html` <li
       ?data-ops-pending="${!ready}"
-      style="${!ready && this._opsRowHeight
-        ? `box-sizing:border-box;min-height:${this._opsRowHeight}px`
-        : ""}"
+      style="${
+        !ready && this._opsRowHeight
+          ? `box-sizing:border-box;min-height:${this._opsRowHeight}px`
+          : ""
+      }"
       role="treeitem"
       aria-level="${parseInt(item.indent) + 2}"
       tabindex="-1"
-      class="content-adding-operations indent-${item.indent < 20
-        ? item.indent
-        : 20}"
+      class="content-adding-operations indent-${
+        item.indent < 20 ? item.indent : 20
+      }"
       data-item-for-content-id="${item.id}"
       ?data-contents-collapsed="${!item.showContent}"
       ?data-about-to-delete="${item.delete}"
       ?hidden="${this.hideDelete && item.delete}"
     >
       ${cols}
-      ${!ready
-        ? nothing
-        : this.haxGizmos.map(
-            (gizmo) => html`
-              <simple-icon-button-lite
-                class="operation"
-                icon="${gizmo.icon}"
-                value="${gizmo.tag}"
-                label="${this.t.addContentType.replace(
-                  "{title}",
-                  () => gizmo.title,
-                )}"
-                @click="${this.prependNodeToContent}"
-                >${this.t.addContentType.replace(
-                  "{title}",
-                  () => gizmo.title,
-                )}</simple-icon-button-lite
-              >
-            `,
-          )}
+      ${
+        !ready
+          ? nothing
+          : this.haxGizmos.map(
+              (gizmo) => html`
+                <simple-icon-button-lite
+                  class="operation"
+                  icon="${gizmo.icon}"
+                  value="${gizmo.tag}"
+                  label="${this.t.addContentType.replace(
+                    "{title}",
+                    () => gizmo.title,
+                  )}"
+                  @click="${this.prependNodeToContent}"
+                  >${this.t.addContentType.replace(
+                    "{title}",
+                    () => gizmo.title,
+                  )}</simple-icon-button-lite
+                >
+              `,
+            )
+      }
     </li>`;
   }
   // add content to the top of the item in question
@@ -2813,9 +2856,9 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         )
         .replace("{title}", () => item.title)}"
       tabindex="-1"
-      class="content-child content-${part} indent-${indent < 20
-        ? indent
-        : 20} ${last ? "last" : ""}"
+      class="content-child content-${part} indent-${
+        indent < 20 ? indent : 20
+      } ${last ? "last" : ""}"
       data-node-index="${index}"
       data-content-parent-id="${item.id}"
       ?data-contents-collapsed="${!item.showContent}"
@@ -2830,17 +2873,19 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           @click="${this.setActivePreview}"
         ></simple-icon-button-lite>
       </div>
-      ${part === "heading"
-        ? html`
-            <span
-              class="label shown"
-              ?disabled="${item.metadata.locked}"
-              @dblclick="${this.editTitle}"
-              >${label}</span
-            >
-            <span class="label-edit" @keydown="${this.monitorEsc}"></span>
-          `
-        : html`<span class="label shown">${label}</span>`}
+      ${
+        part === "heading"
+          ? html`
+              <span
+                class="label shown"
+                ?disabled="${item.metadata.locked}"
+                @dblclick="${this.editTitle}"
+                >${label}</span
+              >
+              <span class="label-edit" @keydown="${this.monitorEsc}"></span>
+            `
+          : html`<span class="label shown">${label}</span>`
+      }
       <div class="content-operations">
         <simple-icon-button-lite
           class="content-operation"

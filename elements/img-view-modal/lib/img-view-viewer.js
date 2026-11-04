@@ -318,35 +318,40 @@ class ImgViewViewer extends I18NMixin(FullscreenBehaviors(ImgPanZoom)) {
 
   render() {
     return html`
-      ${!this.dzi
-        ? html`
-            ${this.hideSpinner
-              ? ``
-              : html`
-                  <div id="loader" ?hidden="${this.loaded}">
-                    <hexagon-loader
-                      ?loading=${this.loading || !this.loaded}
-                      item-count="4"
-                    ></hexagon-loader>
-                  </div>
-                  <img-loader
-                    ?loaded="${this.loaded}"
-                    @loaded-changed="${this.loadedChangedEvent}"
-                    ?loading="${this.loading}"
-                    @loading-changed="${this.loadingChangedEvent}"
-                    src="${this.loadSrc}"
-                    described-by="${this.describedBy || ""}"
-                  ></img-loader>
-                `}
-          `
-        : ""}
+      ${
+        !this.dzi
+          ? html`
+              ${
+                this.hideSpinner
+                  ? ``
+                  : html`
+                      <div id="loader" ?hidden="${this.loaded}">
+                        <hexagon-loader
+                          ?loading=${this.loading || !this.loaded}
+                          item-count="4"
+                        ></hexagon-loader>
+                      </div>
+                      <img-loader
+                        ?loaded="${this.loaded}"
+                        @loaded-changed="${this.loadedChangedEvent}"
+                        ?loading="${this.loading}"
+                        @loading-changed="${this.loadingChangedEvent}"
+                        src="${this.loadSrc}"
+                        described-by="${this.describedBy || ""}"
+                      ></img-loader>
+                    `
+              }
+            `
+          : ""
+      }
       <div id="container">
         ${this.getToolbars("top")}
         <div>
           <div
             id="viewer"
-            style="height:calc(var(--img-view-viewer-height, 500px) - ${this
-              .toolbarsHeight}px)"
+            style="height:calc(var(--img-view-viewer-height, 500px) - ${
+              this.toolbarsHeight
+            }px)"
           ></div>
         </div>
         <div id="placeholder">
@@ -854,9 +859,11 @@ class ImgViewViewer extends I18NMixin(FullscreenBehaviors(ImgPanZoom)) {
             .id="${config.id || undefined}"
             class="button-group ${config.type || ""}"
           >
-            ${!Array.isArray(config.contents)
-              ? config.contents
-              : (config.contents || []).map((item) => this._item(item, top))}
+            ${
+              !Array.isArray(config.contents)
+                ? config.contents
+                : (config.contents || []).map((item) => this._item(item, top))
+            }
           </div>
         `;
   }

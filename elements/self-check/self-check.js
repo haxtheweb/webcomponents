@@ -258,15 +258,19 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
   }
   render() {
     return html`
-      ${this.hasLearningObjective
-        ? html`<meta
-            property="oer:hasLearningObjective"
-            content="${this.hasLearningObjective}"
-          />`
-        : ``}
-      ${this.assessing
-        ? html`<meta property="oer:assessing" content="${this.assessing}" />`
-        : ``}
+      ${
+        this.hasLearningObjective
+          ? html`<meta
+              property="oer:hasLearningObjective"
+              content="${this.hasLearningObjective}"
+            />`
+          : ``
+      }
+      ${
+        this.assessing
+          ? html`<meta property="oer:assessing" content="${this.assessing}" />`
+          : ``
+      }
       <div class="ddd-block">
         <div id="header_wrap" class="ddd-block-header">
           <simple-icon-lite
@@ -280,15 +284,17 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
           </div>
         </div>
         <div class="image-wrap">
-          ${this.image
-            ? html`${this.renderSVGLoader()}
-                <img
-                  src="${this.image}"
-                  alt="${this.alt}"
-                  aria-describedby="${this.describedBy || ""}"
-                  loading="lazy"
-                />`
-            : ``}
+          ${
+            this.image
+              ? html`${this.renderSVGLoader()}
+                  <img
+                    src="${this.image}"
+                    alt="${this.alt}"
+                    aria-describedby="${this.describedBy || ""}"
+                    loading="lazy"
+                  />`
+              : ``
+          }
         </div>
         <div id="question_wrap">
           <div class="question" ?inert="${this.correct}">
@@ -300,17 +306,19 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
             <user-action track="visibility">
               <slot></slot>
             </user-action>
-            ${this.link
-              ? html`
-                  <div class="more_info">
-                    <user-action track="click" every="every"
-                      ><a href="${this.link}" target="_blank" rel="noopener"
-                        >${this.t.moreInformation}..</a
-                      ></user-action
-                    >
-                  </div>
-                `
-              : ``}
+            ${
+              this.link
+                ? html`
+                    <div class="more_info">
+                      <user-action track="click" every="every"
+                        ><a href="${this.link}" target="_blank" rel="noopener"
+                          >${this.t.moreInformation}..</a
+                        ></user-action
+                      >
+                    </div>
+                  `
+                : ``
+            }
           </div>
         </div>
         <div class="ddd-block-footer action-bar">

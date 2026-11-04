@@ -769,44 +769,48 @@ export class WebContainerEl extends I18NMixin(DDDSuper(LitElement)) {
   // Lit render the HTML
   render() {
     return html` <div class="container" part="container">
-        ${!this.hideEditor
-          ? html` <div class="editor" part="editor">
-              <div class="files" part="files">
-                ${this.filesShown.map(
-                  (file) =>
-                    html`<button
-                      @click="${this.updateFile}"
-                      data-fname="${file.file}"
-                      aria-pressed="${file.file === this.fname
-                        ? "true"
-                        : "false"}"
-                    >
-                      ${file.label}
-                    </button>`,
-                )}
-              </div>
-              <code-editor
-                part="code-editor"
-                @value-changed="${this.editorValueChanged}"
-              ></code-editor>
-            </div>`
-          : ``}
-        <div class="preview" part="preview">
-          ${!this.hideWindow
-            ? html`<div
-                  class="status"
-                  part="status"
-                  role="status"
-                  aria-live="polite"
-                >
-                  ${this.status}
+        ${
+          !this.hideEditor
+            ? html` <div class="editor" part="editor">
+                <div class="files" part="files">
+                  ${this.filesShown.map(
+                    (file) =>
+                      html`<button
+                        @click="${this.updateFile}"
+                        data-fname="${file.file}"
+                        aria-pressed="${
+                          file.file === this.fname ? "true" : "false"
+                        }"
+                      >
+                        ${file.label}
+                      </button>`,
+                  )}
                 </div>
-                <iframe
-                  part="iframe"
-                  title="${this.t.webContainerPreview}"
-                  src="${new URL("./lib/loading.html", import.meta.url).href}"
-                ></iframe>`
-            : ``}
+                <code-editor
+                  part="code-editor"
+                  @value-changed="${this.editorValueChanged}"
+                ></code-editor>
+              </div>`
+            : ``
+        }
+        <div class="preview" part="preview">
+          ${
+            !this.hideWindow
+              ? html`<div
+                    class="status"
+                    part="status"
+                    role="status"
+                    aria-live="polite"
+                  >
+                    ${this.status}
+                  </div>
+                  <iframe
+                    part="iframe"
+                    title="${this.t.webContainerPreview}"
+                    src="${new URL("./lib/loading.html", import.meta.url).href}"
+                  ></iframe>`
+              : ``
+          }
         </div>
       </div>
       <div class="terminal" part="terminal"></div>`;

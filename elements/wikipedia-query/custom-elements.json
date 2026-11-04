@@ -19,6 +19,12 @@
               "readonly": true
             },
             {
+              "kind": "field",
+              "name": "articleUrl",
+              "description": "Link to the full article on Wikipedia, or empty without a search",
+              "readonly": true
+            },
+            {
               "kind": "method",
               "name": "updateArticle",
               "parameters": [
@@ -78,6 +84,14 @@
               "static": true,
               "description": "haxProperties integration via file reference",
               "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, fromWikipedia: \"From Wikipedia\", reading: \"Reading\", readFullArticle: \"Read the full article on Wikipedia\", }"
             },
             {
               "kind": "field",
@@ -210,6 +224,10 @@
             {
               "name": "IntersectionObserverMixin",
               "package": "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js"
+            },
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
             }
           ],
           "superclass": {

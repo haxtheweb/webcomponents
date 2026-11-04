@@ -191,17 +191,31 @@ class MediaImage extends SchemaBehaviors(DDD) {
   }
   render() {
     return html`
-      ${this.__figureLabel
-        ? html`
-            <figure-label
-              title="${this.figureLabelTitle}"
-              description="${this.figureLabelDescription}"
-            ></figure-label>
-          `
-        : ``}
-      ${this.link
-        ? html`<a href="${this.link}"
-            ><media-image-image
+      ${
+        this.__figureLabel
+          ? html`
+              <figure-label
+                title="${this.figureLabelTitle}"
+                description="${this.figureLabelDescription}"
+              ></figure-label>
+            `
+          : ``
+      }
+      ${
+        this.link
+          ? html`<a href="${this.link}"
+              ><media-image-image
+                ?round="${this.round}"
+                resource="${this.schemaResourceID}-image"
+                source="${this.thumbnail || this.source}"
+                full-source="${this.source}"
+                modal-title="${this.modalTitle}"
+                alt="${this.alt}"
+                tabindex="${!this.disableZoom ? "0" : "-1"}"
+                @click="${this._handleClick}"
+              ></media-image-image
+            ></a>`
+          : html`<media-image-image
               ?round="${this.round}"
               resource="${this.schemaResourceID}-image"
               source="${this.thumbnail || this.source}"
@@ -210,43 +224,39 @@ class MediaImage extends SchemaBehaviors(DDD) {
               alt="${this.alt}"
               tabindex="${!this.disableZoom ? "0" : "-1"}"
               @click="${this._handleClick}"
-            ></media-image-image
-          ></a>`
-        : html`<media-image-image
-            ?round="${this.round}"
-            resource="${this.schemaResourceID}-image"
-            source="${this.thumbnail || this.source}"
-            full-source="${this.source}"
-            modal-title="${this.modalTitle}"
-            alt="${this.alt}"
-            tabindex="${!this.disableZoom ? "0" : "-1"}"
-            @click="${this._handleClick}"
-            @keydown="${this._handleImageKeydown}"
-          ></media-image-image>`}
+              @keydown="${this._handleImageKeydown}"
+            ></media-image-image>`
+      }
       <media-image-citation>
         <slot class="citation" name="citation"
-          >${this.citation && this.asMd
-            ? html`<md-block
-                style="--ddd-spacing-6:0px;"
-                markdown="${this.citation}"
-              ></md-block>`
-            : html`${this.citation}`}</slot
+          >${
+            this.citation && this.asMd
+              ? html`<md-block
+                  style="--ddd-spacing-6:0px;"
+                  markdown="${this.citation}"
+                ></md-block>`
+              : html`${this.citation}`
+          }</slot
         >
       </media-image-citation>
-      ${this._hasCaption
-        ? html`
-            <media-image-caption>
-              <slot name="caption">
-                >${this.caption && this.asMd
-                  ? html`<md-block
-                      style="--ddd-spacing-6:0px;"
-                      markdown="${this.caption}"
-                    ></md-block>`
-                  : html`${this.caption}`}</slot
-              >
-            </media-image-caption>
-          `
-        : ``}
+      ${
+        this._hasCaption
+          ? html`
+              <media-image-caption>
+                <slot name="caption">
+                  >${
+                    this.caption && this.asMd
+                      ? html`<md-block
+                          style="--ddd-spacing-6:0px;"
+                          markdown="${this.caption}"
+                        ></md-block>`
+                      : html`${this.caption}`
+                  }</slot
+                >
+              </media-image-caption>
+            `
+          : ``
+      }
     `;
   }
   haxHooks() {

@@ -32,9 +32,11 @@ class MultipleChoice extends QuestionElement {
     return html`<p>
       ${this._tParts(this.t.multipleChoiceDirections, {
         selection: html`<strong
-          >${!this.singleOption
-            ? this.t.selectAllThatApply
-            : this.t.selectTheAnswer}</strong
+          >${
+            !this.singleOption
+              ? this.t.selectAllThatApply
+              : this.t.selectTheAnswer
+          }</strong
         >`,
         checkAnswer: html`<strong>${this.t.checkAnswer}</strong>`,
       })}

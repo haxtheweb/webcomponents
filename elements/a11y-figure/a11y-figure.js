@@ -162,9 +162,11 @@ class A11yFigure extends A11yDetails {
   render() {
     return html`
       <figure>
-        ${this.imgSrc
-          ? html` <img src="${this.imgSrc}" alt="${this.imgAlt}" /> `
-          : ``}
+        ${
+          this.imgSrc
+            ? html` <img src="${this.imgSrc}" alt="${this.imgAlt}" /> `
+            : ``
+        }
         <slot name="image" ?hidden="${this.imgSrc}"></slot>
         <figcaption>
           <slot name="figcaption"></slot>

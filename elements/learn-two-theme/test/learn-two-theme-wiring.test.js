@@ -241,9 +241,7 @@ describe("learn-two-theme search modal wiring", () => {
     this.timeout(10000);
     // pre-warm the dynamic import target so the modal-click handler resolves
     // from cache while the fake singleton is installed
-    await import(
-      "@haxtheweb/haxcms-elements/lib/ui-components/site/site-search.js"
-    );
+    await import("@haxtheweb/haxcms-elements/lib/ui-components/site/site-search.js");
     const el = await fixture(html`<learn-two-theme></learn-two-theme>`);
     await el.updateComplete;
     const originalSimpleModal = globalThis.SimpleModal;

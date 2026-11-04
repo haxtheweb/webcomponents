@@ -561,9 +561,11 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
               id="button"
               aria-label="${this.currentLabel || undefined}"
               aria-checked="${this.isToggled ? "true" : "false"}"
-              aria-describedby="${!!this.describedby && this.describedby !== ""
-                ? this.describedby
-                : undefined}"
+              aria-describedby="${
+                !!this.describedby && this.describedby !== ""
+                  ? this.describedby
+                  : undefined
+              }"
               class="simple-toolbar-button"
               ?disabled="${this.disabled}"
               aria-controls="${this.controls || undefined}"
@@ -574,11 +576,9 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
               @focus="${this._handleFocus}"
               part="button"
               role="radio"
-              tabindex="${this.role === "menuitem"
-                ? 0
-                : this.isCurrentItem
-                  ? 0
-                  : -1}"
+              tabindex="${
+                this.role === "menuitem" ? 0 : this.isCurrentItem ? 0 : -1
+              }"
             >
               ${this.buttonInnerTemplate}
             </button>
@@ -588,10 +588,11 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
                 id="button"
                 aria-label="${this.currentLabel || undefined}"
                 aria-pressed="${this.isToggled ? "true" : "false"}"
-                aria-describedby="${!!this.describedby &&
-                this.describedby !== ""
-                  ? this.describedby
-                  : undefined}"
+                aria-describedby="${
+                  !!this.describedby && this.describedby !== ""
+                    ? this.describedby
+                    : undefined
+                }"
                 class="simple-toolbar-button"
                 ?disabled="${this.disabled}"
                 aria-controls="${this.controls || undefined}"
@@ -601,11 +602,9 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
                 @blur="${this._handleBlur}"
                 @focus="${this._handleFocus}"
                 part="button"
-                tabindex="${this.role === "menuitem"
-                  ? 0
-                  : this.isCurrentItem
-                    ? 0
-                    : -1}"
+                tabindex="${
+                  this.role === "menuitem" ? 0 : this.isCurrentItem ? 0 : -1
+                }"
               >
                 ${this.buttonInnerTemplate}
               </button>
@@ -613,10 +612,11 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
           : html` <button
                 id="button"
                 aria-label="${this.currentLabel || undefined}"
-                aria-describedby="${!!this.describedby &&
-                this.describedby !== ""
-                  ? this.describedby
-                  : undefined}"
+                aria-describedby="${
+                  !!this.describedby && this.describedby !== ""
+                    ? this.describedby
+                    : undefined
+                }"
                 class="simple-toolbar-button"
                 ?disabled="${this.disabled}"
                 aria-controls="${this.controls || undefined}"
@@ -626,11 +626,9 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
                 @blur="${this._handleBlur}"
                 @focus="${this._handleFocus}"
                 part="button"
-                tabindex="${this.role === "menuitem"
-                  ? 0
-                  : this.isCurrentItem
-                    ? 0
-                    : -1}"
+                tabindex="${
+                  this.role === "menuitem" ? 0 : this.isCurrentItem ? 0 : -1
+                }"
               >
                 ${this.buttonInnerTemplate}
               </button>

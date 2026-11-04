@@ -965,16 +965,14 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
       // view. A non-2xx status or missing data means creation failed —
       // surface the backend message instead of confetti + "Go to Site".
       const createResult = store.AppHaxAPI.lastResponse.createSite;
-      if (
-        !(
-          createResult &&
-          typeof createResult === "object" &&
-          typeof createResult.status === "number" &&
-          createResult.status >= 200 &&
-          createResult.status < 400 &&
-          createResult.data
-        )
-      ) {
+      if (!(
+        createResult &&
+        typeof createResult === "object" &&
+        typeof createResult.status === "number" &&
+        createResult.status >= 200 &&
+        createResult.status < 400 &&
+        createResult.data
+      )) {
         this.currentStep = 1;
         this.isCreating = false;
         this.errorMessage = haxcmsApiMessage(
@@ -1189,11 +1187,13 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
         ${[1, 2].map(
           (step) => html`
             <div
-              class="step-dot ${this.currentStep > step
-                ? "completed"
-                : this.currentStep === step
-                  ? "active"
-                  : ""}"
+              class="step-dot ${
+                this.currentStep > step
+                  ? "completed"
+                  : this.currentStep === step
+                    ? "active"
+                    : ""
+              }"
             ></div>
           `,
         )}
@@ -1204,22 +1204,24 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
   renderNamingStep() {
     return html`
       <div class="template-info">
-        ${this.source
-          ? html`
-              <div class="template-image">
-                <img
-                  src="${this.source}"
-                  alt="${this.t.templatePreview.replace(
-                    "{title}",
-                    () => this.title,
-                  )}"
-                  loading="lazy"
-                  decoding="async"
-                  fetchpriority="high"
-                />
-              </div>
-            `
-          : ""}
+        ${
+          this.source
+            ? html`
+                <div class="template-image">
+                  <img
+                    src="${this.source}"
+                    alt="${this.t.templatePreview.replace(
+                      "{title}",
+                      () => this.title,
+                    )}"
+                    loading="lazy"
+                    decoding="async"
+                    fetchpriority="high"
+                  />
+                </div>
+              `
+            : ""
+        }
         <div class="template-details">
           <h3 class="template-title">${this.title}</h3>
           <p class="template-description">${this.description}</p>
@@ -1245,9 +1247,11 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
           maxlength="50"
           required
         />
-        ${this.errorMessage
-          ? html` <div class="error-message">${this.errorMessage}</div> `
-          : ""}
+        ${
+          this.errorMessage
+            ? html` <div class="error-message">${this.errorMessage}</div> `
+            : ""
+        }
       </div>
     `;
   }
@@ -1348,11 +1352,13 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
       >
         <div class="modal-header">
           <h2 class="modal-title">
-            ${this.currentStep === 1
-              ? this.t.createNewSite
-              : this.currentStep === 2
-                ? this.t.creatingSiteEllipsis
-                : this.t.siteCreatedExclaim}
+            ${
+              this.currentStep === 1
+                ? this.t.createNewSite
+                : this.currentStep === 2
+                  ? this.t.creatingSiteEllipsis
+                  : this.t.siteCreatedExclaim
+            }
           </h2>
           <button
             class="close-button"
@@ -1367,16 +1373,20 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
         <div class="modal-content">
           ${this.showConfetti ? html`<div class="confetti"></div>` : ""}
           ${this.renderStepIndicator()}
-          ${this.currentStep === 1
-            ? this.renderNamingStep()
-            : this.currentStep === 2
-              ? this.renderCreatingStep()
-              : this.renderSuccessStep()}
-          ${this.currentStep === 1
-            ? this.renderNamingButtons()
-            : this.currentStep === 3
-              ? this.renderSuccessButtons()
-              : html``}
+          ${
+            this.currentStep === 1
+              ? this.renderNamingStep()
+              : this.currentStep === 2
+                ? this.renderCreatingStep()
+                : this.renderSuccessStep()
+          }
+          ${
+            this.currentStep === 1
+              ? this.renderNamingButtons()
+              : this.currentStep === 3
+                ? this.renderSuccessButtons()
+                : html``
+          }
         </div>
       </web-dialog>
     `;

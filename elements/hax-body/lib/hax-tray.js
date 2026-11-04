@@ -799,13 +799,13 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
         id="haxMenuAlign"
         event-name="toggle-element-align"
         icon="arrow-${this.elementAlign == "left" ? "forward" : "back"}"
-        label="${this.elementAlign == "left"
-          ? this.t.menuRight
-          : this.t.menuLeft}"
+        label="${
+          this.elementAlign == "left" ? this.t.menuRight : this.t.menuLeft
+        }"
         index="${this.elementAlign == "left" ? "1" : "0"}"
-        tooltip="${this.t.move} ${this.elementAlign == "left"
-          ? this.t.right
-          : this.t.left}"
+        tooltip="${this.t.move} ${
+          this.elementAlign == "left" ? this.t.right : this.t.left
+        }"
       >
       </hax-tray-button>
     `;
@@ -882,10 +882,12 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
         icon="image:tune"
         id="content-edit"
         label="${this.t.edit}"
-        ?disabled="${!this.activeTagName ||
-        this.activeTagName == "" ||
-        !this.activeNode ||
-        !this.activeNode.tagName}"
+        ?disabled="${
+          !this.activeTagName ||
+          this.activeTagName == "" ||
+          !this.activeNode ||
+          !this.activeNode.tagName
+        }"
         voice-command="(modify)(configure)(edit) selected"
         controls="tray-detail"
         tooltip="${this.t.edit} ${this.activeTagName}"
@@ -1009,11 +1011,13 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
       id="settingsform"
       ?dark="${this.haxUiTheme == "haxdark"}"
       disable-responsive
-      code-theme="${this.haxUiTheme == "system"
-        ? "auto"
-        : this.haxUiTheme == "haxdark"
-          ? "vs-dark"
-          : "vs"}"
+      code-theme="${
+        this.haxUiTheme == "system"
+          ? "auto"
+          : this.haxUiTheme == "haxdark"
+            ? "vs-dark"
+            : "vs"
+      }"
       ?hidden="${this.trayDetail !== "content-edit"}"
     ></simple-fields>`;
   }
@@ -1024,22 +1028,26 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
         ?hidden="${hidden || !HAXStore.platformAllows("uploadMedia")}"
         show-sources
       ></hax-tray-upload>
-      ${HAXStore.platformAllows("pageTemplates")
-        ? html`<hax-stax-browser
-            id="pagesbrowser"
-            ?hidden="${hidden}"
-            label="${this.t.pages}"
-            template-type="page"
-          ></hax-stax-browser>`
-        : ""}
-      ${HAXStore.platformAllows("blockTemplates")
-        ? html`<hax-stax-browser
-            id="staxbrowser"
-            ?hidden="${hidden}"
-            label="${this.t.templates}"
-            template-type="area"
-          ></hax-stax-browser>`
-        : ""}
+      ${
+        HAXStore.platformAllows("pageTemplates")
+          ? html`<hax-stax-browser
+              id="pagesbrowser"
+              ?hidden="${hidden}"
+              label="${this.t.pages}"
+              template-type="page"
+            ></hax-stax-browser>`
+          : ""
+      }
+      ${
+        HAXStore.platformAllows("blockTemplates")
+          ? html`<hax-stax-browser
+              id="staxbrowser"
+              ?hidden="${hidden}"
+              label="${this.t.templates}"
+              template-type="area"
+            ></hax-stax-browser>`
+          : ""
+      }
       <hax-gizmo-browser
         id="gizmobrowser"
         ?hidden="${hidden}"

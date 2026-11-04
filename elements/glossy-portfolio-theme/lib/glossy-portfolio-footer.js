@@ -174,15 +174,20 @@ export class GlossyPortfolioFooter extends DDDSuper(I18NMixin(LitElement)) {
             )}
           </p>
           <p class="center">© ${this.copyrightYear}</p>
-          ${this.licenseLink
-            ? html`
-                <div class="license item">
-                  <a href="${this.licenseLink}" target="_blank">
-                    <img src="${this.licenseImage}" alt="${this.licenseName}" />
-                  </a>
-                </div>
-              `
-            : html``}
+          ${
+            this.licenseLink
+              ? html`
+                  <div class="license item">
+                    <a href="${this.licenseLink}" target="_blank">
+                      <img
+                        src="${this.licenseImage}"
+                        alt="${this.licenseName}"
+                      />
+                    </a>
+                  </div>
+                `
+              : html``
+          }
         </div>
       </footer>
     `;

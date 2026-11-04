@@ -74,12 +74,14 @@ class LessonOverview extends I18NMixin(IntersectionObserverMixin(LitElement)) {
     ];
   }
   render() {
-    return html`${this.elementVisible
-      ? html` <div class="wrapper">
-          <slot name="prefix"></slot>
-          <slot></slot>
-        </div>`
-      : ``}`;
+    return html`${
+      this.elementVisible
+        ? html` <div class="wrapper">
+            <slot name="prefix"></slot>
+            <slot></slot>
+          </div>`
+        : ``
+    }`;
   }
 
   updated(changedProperties) {

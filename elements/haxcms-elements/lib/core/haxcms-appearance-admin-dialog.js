@@ -1442,23 +1442,27 @@ class HAXCMSAppearanceAdminDialog extends HaxcmsAdminSectionMixin(
       data-field="${field.property}"
       ?data-changed="${changed}"
     >
-      ${changed
-        ? html`<span
-            class="dot"
-            role="img"
-            aria-label="${this.t.changed}: ${field.title}"
-          ></span>`
-        : html`<span></span>`}
-      ${field.inputMethod === "colorpicker"
-        ? this._renderAccentField(field)
-        : html`<simple-fields
-            data-group="${group.key}"
-            .fields="${this._fieldList(field)}"
-            .value="${this._fieldValue(field)}"
-            .schematizer="${HaxSchematizer}"
-            .elementizer="${HaxElementizer}"
-            @value-changed="${this._onFieldValueChanged}"
-          ></simple-fields>`}
+      ${
+        changed
+          ? html`<span
+              class="dot"
+              role="img"
+              aria-label="${this.t.changed}: ${field.title}"
+            ></span>`
+          : html`<span></span>`
+      }
+      ${
+        field.inputMethod === "colorpicker"
+          ? this._renderAccentField(field)
+          : html`<simple-fields
+              data-group="${group.key}"
+              .fields="${this._fieldList(field)}"
+              .value="${this._fieldValue(field)}"
+              .schematizer="${HaxSchematizer}"
+              .elementizer="${HaxElementizer}"
+              @value-changed="${this._onFieldValueChanged}"
+            ></simple-fields>`
+      }
     </div>`;
   }
 
@@ -1492,16 +1496,20 @@ class HAXCMSAppearanceAdminDialog extends HaxcmsAdminSectionMixin(
     }
     return html`<div class="accent-field">
       <label for="${id}">${field.title}</label>
-      ${field.description
-        ? html`<p class="help" id="${id}-help">${field.description}</p>`
-        : nothing}
+      ${
+        field.description
+          ? html`<p class="help" id="${id}-help">${field.description}</p>`
+          : nothing
+      }
       <div class="accent-control">
         <span
           class="accent-swatch ${current ? "" : "none"}"
           aria-hidden="true"
-          style="${current
-            ? `background-color: var(--simple-colors-default-theme-${current}-7)`
-            : ""}"
+          style="${
+            current
+              ? `background-color: var(--simple-colors-default-theme-${current}-7)`
+              : ""
+          }"
         ></span>
         <select
           id="${id}"
@@ -1543,17 +1551,21 @@ class HAXCMSAppearanceAdminDialog extends HaxcmsAdminSectionMixin(
             aria-hidden="true"
           ></simple-icon-lite>
           <h3>${group.label}</h3>
-          ${count > 0
-            ? html`<span
-                class="dot"
-                role="img"
-                aria-label="${this.t.changed}"
-              ></span>`
-            : nothing}
+          ${
+            count > 0
+              ? html`<span
+                  class="dot"
+                  role="img"
+                  aria-label="${this.t.changed}"
+                ></span>`
+              : nothing
+          }
         </summary>
-        ${group.description
-          ? html`<span class="group-help">${group.description}</span>`
-          : nothing}
+        ${
+          group.description
+            ? html`<span class="group-help">${group.description}</span>`
+            : nothing
+        }
         ${group.fields.map((field) => this._renderField(group, field))}
       </details>
     `;
@@ -1563,50 +1575,60 @@ class HAXCMSAppearanceAdminDialog extends HaxcmsAdminSectionMixin(
     return html`
       <div class="panel-shell">
         <div class="panel-scroll">
-          ${!this.inShell
-            ? html`<div class="intro">
-                <h2>${this.t.appearance}</h2>
-                <p>${this.t.appearanceNote}</p>
-              </div>`
-            : nothing}
-          ${this.errorMessage
-            ? html`<p
-                class="hax-ui-message status"
-                data-tone="danger"
-                role="alert"
-              >
-                ${this.errorMessage}
-              </p>`
-            : nothing}
-          ${!this.errorMessage && this.groups.length === 0
-            ? html`<p class="hax-ui-message status">
-                ${this.t.noAppearanceSettings}
-              </p>`
-            : nothing}
-          ${!this.errorMessage
-            ? this.groups.map((group) => this._renderGroup(group))
-            : nothing}
+          ${
+            !this.inShell
+              ? html`<div class="intro">
+                  <h2>${this.t.appearance}</h2>
+                  <p>${this.t.appearanceNote}</p>
+                </div>`
+              : nothing
+          }
+          ${
+            this.errorMessage
+              ? html`<p
+                  class="hax-ui-message status"
+                  data-tone="danger"
+                  role="alert"
+                >
+                  ${this.errorMessage}
+                </p>`
+              : nothing
+          }
+          ${
+            !this.errorMessage && this.groups.length === 0
+              ? html`<p class="hax-ui-message status">
+                  ${this.t.noAppearanceSettings}
+                </p>`
+              : nothing
+          }
+          ${
+            !this.errorMessage
+              ? this.groups.map((group) => this._renderGroup(group))
+              : nothing
+          }
         </div>
-        ${!this.inShell
-          ? html`<div class="actions">
-              <button
-                type="button"
-                class="action"
-                @click="${this._openThemePreviewTap}"
-                ?disabled="${this.groups.length === 0}"
-              >
-                ${this.t.themePreview}
-              </button>
-              <button
-                type="button"
-                class="action primary"
-                @click="${this._saveAppearanceSettingsTap}"
-                ?disabled="${this.groups.length === 0}"
-              >
-                ${this.t.save}
-              </button>
-            </div>`
-          : nothing}
+        ${
+          !this.inShell
+            ? html`<div class="actions">
+                <button
+                  type="button"
+                  class="action"
+                  @click="${this._openThemePreviewTap}"
+                  ?disabled="${this.groups.length === 0}"
+                >
+                  ${this.t.themePreview}
+                </button>
+                <button
+                  type="button"
+                  class="action primary"
+                  @click="${this._saveAppearanceSettingsTap}"
+                  ?disabled="${this.groups.length === 0}"
+                >
+                  ${this.t.save}
+                </button>
+              </div>`
+            : nothing
+        }
       </div>
     `;
   }

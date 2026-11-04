@@ -246,31 +246,38 @@ export class AuthorCard extends DDDSuper(I18NMixin(LitElement)) {
         <div class="inner">
           <div class="left">${this._renderImage()}</div>
           <div class="right">
-            ${this.name
-              ? this.profileUrl
-                ? html`<a href="${this.profileUrl}" class="profile-link"
-                    ><p class="name">${this.name}</p></a
-                  >`
-                : html`<p class="name">${this.name}</p>`
-              : ""}
+            ${
+              this.name
+                ? this.profileUrl
+                  ? html`<a href="${this.profileUrl}" class="profile-link"
+                      ><p class="name">${this.name}</p></a
+                    >`
+                  : html`<p class="name">${this.name}</p>`
+                : ""
+            }
             ${this.title ? html` <p class="job-title">${this.title}</p> ` : ""}
-            ${this.description
-              ? html` <div class="bio">${this.description}</div> `
-              : ""}
-            ${this.socialLink
-              ? html`
-                  <a
-                    class="link"
-                    href="${this.socialLink}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="${this.t.visitProfile} ${this.socialHandle ||
-                    this.name}"
-                  >
-                    ${this.socialHandle || this.t.visitProfile} →
-                  </a>
-                `
-              : ""}
+            ${
+              this.description
+                ? html` <div class="bio">${this.description}</div> `
+                : ""
+            }
+            ${
+              this.socialLink
+                ? html`
+                    <a
+                      class="link"
+                      href="${this.socialLink}"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="${this.t.visitProfile} ${
+                        this.socialHandle || this.name
+                      }"
+                    >
+                      ${this.socialHandle || this.t.visitProfile} →
+                    </a>
+                  `
+                : ""
+            }
           </div>
         </div>
       </div>

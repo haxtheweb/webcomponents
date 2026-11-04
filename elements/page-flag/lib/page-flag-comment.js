@@ -101,14 +101,16 @@ export class PageFlagComment extends I18NMixin(LitElement) {
   render() {
     return html`
       <div class="comment">
-        ${this.editMode
-          ? html`<simple-emoji-picker
-              align-right
-              label="${this.t.reaction}"
-              value="${this.mood}"
-              @value-changed="${this.emojiChanged}"
-            ></simple-emoji-picker>`
-          : html`<div class="emoji" .innerHTML="${this.mood}"></div>`}
+        ${
+          this.editMode
+            ? html`<simple-emoji-picker
+                align-right
+                label="${this.t.reaction}"
+                value="${this.mood}"
+                @value-changed="${this.emojiChanged}"
+              ></simple-emoji-picker>`
+            : html`<div class="emoji" .innerHTML="${this.mood}"></div>`
+        }
         <div class="comment__header">
           <div class="comment__header__avatar">
             <rpg-character
@@ -138,29 +140,35 @@ export class PageFlagComment extends I18NMixin(LitElement) {
         </div>
         <div class="comment__footer">
           <div class="comment__footer__actions">
-            ${!this.readOnly
-              ? html`
-                  ${this.canEdit
-                    ? html`<simple-icon-button
-                        icon="${this.editMode ? "save" : "editor:mode-edit"}"
-                        title="${this.editMode ? this.t.edit : this.t.update}"
-                        @click="${this.editOp}"
-                      ></simple-icon-button> `
-                    : ``}
-                  <simple-icon-button
-                    icon="reply"
-                    title="${this.t.reply}"
-                    @click="${this.replyOp}"
-                  ></simple-icon-button>
-                  ${this.canEdit
-                    ? html`<simple-icon-button
-                        icon="delete"
-                        title="${this.t.delete}"
-                        @click="${this.deleteOp}"
-                      ></simple-icon-button>`
-                    : ``}
-                `
-              : ``}
+            ${
+              !this.readOnly
+                ? html`
+                    ${
+                      this.canEdit
+                        ? html`<simple-icon-button
+                            icon="${this.editMode ? "save" : "editor:mode-edit"}"
+                            title="${this.editMode ? this.t.edit : this.t.update}"
+                            @click="${this.editOp}"
+                          ></simple-icon-button> `
+                        : ``
+                    }
+                    <simple-icon-button
+                      icon="reply"
+                      title="${this.t.reply}"
+                      @click="${this.replyOp}"
+                    ></simple-icon-button>
+                    ${
+                      this.canEdit
+                        ? html`<simple-icon-button
+                            icon="delete"
+                            title="${this.t.delete}"
+                            @click="${this.deleteOp}"
+                          ></simple-icon-button>`
+                        : ``
+                    }
+                  `
+                : ``
+            }
           </div>
         </div>
       </div>

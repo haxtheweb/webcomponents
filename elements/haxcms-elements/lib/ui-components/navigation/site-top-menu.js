@@ -234,34 +234,36 @@ class SiteTopMenu extends I18NMixin(LitElement) {
           <slot name="prefix"></slot>
           ${this.__items.map(
             (item, index) => html`
-              ${item.metadata.hideInMenu === true ||
-              item.metadata.published === false
-                ? ``
-                : html`
-                    <li class="spacing">
-                      <a
-                        data-id="${item.id}"
-                        class="link"
-                        tabindex="-1"
-                        title="${this.t.goToPage.replace(
-                          "{title}",
-                          () => item.title,
-                        )}"
-                        href="${item.slug}"
-                        part="a"
-                        itemprop="url"
-                      >
-                        <button id="item-${item.id}" part="button">
-                          <span class="link-index"
-                            >${this.humanIndex(index)}</span
-                          >
-                          <span class="link-title" itemprop="name"
-                            >${item.title}</span
-                          >
-                        </button>
-                      </a>
-                    </li>
-                  `}
+              ${
+                item.metadata.hideInMenu === true ||
+                item.metadata.published === false
+                  ? ``
+                  : html`
+                      <li class="spacing">
+                        <a
+                          data-id="${item.id}"
+                          class="link"
+                          tabindex="-1"
+                          title="${this.t.goToPage.replace(
+                            "{title}",
+                            () => item.title,
+                          )}"
+                          href="${item.slug}"
+                          part="a"
+                          itemprop="url"
+                        >
+                          <button id="item-${item.id}" part="button">
+                            <span class="link-index"
+                              >${this.humanIndex(index)}</span
+                            >
+                            <span class="link-title" itemprop="name"
+                              >${item.title}</span
+                            >
+                          </button>
+                        </a>
+                      </li>
+                    `
+              }
             `,
           )}
           <slot name="suffix"></slot>

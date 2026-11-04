@@ -139,9 +139,11 @@ export class SiteHomeRoute extends HAXCMSI18NMixin(DDD) {
 
     return html`
       <div role="status" aria-live="polite">
-        ${!homePage
-          ? html`<p>${this.t.noPages}</p>`
-          : html`<p>${this.t.navigating}</p>`}
+        ${
+          !homePage
+            ? html`<p>${this.t.noPages}</p>`
+            : html`<p>${this.t.navigating}</p>`
+        }
       </div>
     `;
   }

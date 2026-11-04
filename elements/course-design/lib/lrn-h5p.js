@@ -198,33 +198,39 @@ export class LrnH5p extends I18NMixin(LitElement) {
           label: html`${this.t.activity} · ${this.t.interactive} (H5P)`,
           actions:
             (this._editing && editUrl) || this._canFullscreen
-              ? html`${this._editing && editUrl
-                  ? html`<a
-                      id="edit"
-                      class="ddd-block-action has-text"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      href="${editUrl}"
-                      >${this.t.edit}</a
-                    >`
-                  : ``}
-                ${this._canFullscreen
-                  ? html`<button
-                      class="ddd-block-action"
-                      type="button"
-                      aria-label="${fsLabel}"
-                      title="${fsLabel}"
-                      aria-pressed="${this._fullscreen ? "true" : "false"}"
-                      @click="${this._toggleFullscreen}"
-                    >
-                      <simple-icon-lite
-                        icon="${this._fullscreen
-                          ? "icons:fullscreen-exit"
-                          : "icons:fullscreen"}"
-                        aria-hidden="true"
-                      ></simple-icon-lite>
-                    </button>`
-                  : ``}`
+              ? html`${
+                  this._editing && editUrl
+                    ? html`<a
+                        id="edit"
+                        class="ddd-block-action has-text"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href="${editUrl}"
+                        >${this.t.edit}</a
+                      >`
+                    : ``
+                }
+                ${
+                  this._canFullscreen
+                    ? html`<button
+                        class="ddd-block-action"
+                        type="button"
+                        aria-label="${fsLabel}"
+                        title="${fsLabel}"
+                        aria-pressed="${this._fullscreen ? "true" : "false"}"
+                        @click="${this._toggleFullscreen}"
+                      >
+                        <simple-icon-lite
+                          icon="${
+                            this._fullscreen
+                              ? "icons:fullscreen-exit"
+                              : "icons:fullscreen"
+                          }"
+                          aria-hidden="true"
+                        ></simple-icon-lite>
+                      </button>`
+                    : ``
+                }`
               : null,
         })}
         <div class="ddd-block-body">

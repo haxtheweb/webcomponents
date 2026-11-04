@@ -883,9 +883,9 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
   renderStickyNavMirror() {
     return html`
       <div
-        class="nav-section sticky-nav-mirror${this.__navStuck && !this.editMode
-          ? ` stuck`
-          : ``}"
+        class="nav-section sticky-nav-mirror${
+          this.__navStuck && !this.editMode ? ` stuck` : ``
+        }"
       >
         <div class="header-branding">${this.renderMirrorMobileButton()}</div>
         <nav
@@ -968,9 +968,11 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
             aria-hidden="${this.__navStuck ? "true" : "false"}"
           >
             <div class="header-branding">
-              ${["xs", "sm"].includes(this.responsiveSize)
-                ? this.HAXCMSMobileMenuButton("right")
-                : ``}
+              ${
+                ["xs", "sm"].includes(this.responsiveSize)
+                  ? this.HAXCMSMobileMenuButton("right")
+                  : ``
+              }
             </div>
             ${this.HAXCMSFlexMenu()}
           </div>

@@ -137,45 +137,48 @@ class WikipediaQuery extends IntersectionObserverMixin(I18NMixin(DDD)) {
   // LitElement render function
   render() {
     const articleUrl = this.articleUrl;
-    return html` ${this.elementVisible
-      ? html`<div class="ddd-block">
-          ${renderDDDBlockHeader({
-            chip: "W",
-            label: this.hideTitle ? this.t.fromWikipedia : this.t.reading,
-            after: html`<h3
-              class="ddd-block-title"
-              .hidden="${this.hideTitle}"
-              part="heading-3"
-            >
-              ${this._title}
-            </h3>`,
-            actions: articleUrl
-              ? html`<a
-                  class="ddd-block-action"
-                  href="${articleUrl}"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="${this.t.readFullArticle}"
-                  title="${this.t.readFullArticle}"
-                  ><simple-icon-lite
-                    icon="icons:open-in-new"
-                    aria-hidden="true"
-                  ></simple-icon-lite
-                ></a>`
-              : null,
-          })}
-          <div id="result"></div>
-          <citation-element
-            creator="{Wikipedia contributors}"
-            scope="sibling"
-            license="by-sa"
-            title="${this.search} --- {Wikipedia}{,} The Free Encyclopedia"
-            source="https://${this
-              .language}.wikipedia.org/w/index.php?title=${this.search}"
-            date="${this.__now}"
-          ></citation-element>
-        </div>`
-      : ``}`;
+    return html` ${
+      this.elementVisible
+        ? html`<div class="ddd-block">
+            ${renderDDDBlockHeader({
+              chip: "W",
+              label: this.hideTitle ? this.t.fromWikipedia : this.t.reading,
+              after: html`<h3
+                class="ddd-block-title"
+                .hidden="${this.hideTitle}"
+                part="heading-3"
+              >
+                ${this._title}
+              </h3>`,
+              actions: articleUrl
+                ? html`<a
+                    class="ddd-block-action"
+                    href="${articleUrl}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="${this.t.readFullArticle}"
+                    title="${this.t.readFullArticle}"
+                    ><simple-icon-lite
+                      icon="icons:open-in-new"
+                      aria-hidden="true"
+                    ></simple-icon-lite
+                  ></a>`
+                : null,
+            })}
+            <div id="result"></div>
+            <citation-element
+              creator="{Wikipedia contributors}"
+              scope="sibling"
+              license="by-sa"
+              title="${this.search} --- {Wikipedia}{,} The Free Encyclopedia"
+              source="https://${
+                this.language
+              }.wikipedia.org/w/index.php?title=${this.search}"
+              date="${this.__now}"
+            ></citation-element>
+          </div>`
+        : ``
+    }`;
   }
   updateArticle(search, headers, language) {
     fetch(

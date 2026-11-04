@@ -1055,42 +1055,50 @@ class HAXCMSSitePlatformUI extends HaxcmsAdminSectionMixin(
           <p class="platform-note">${this.t.featuresWarning}</p>
 
           <div class="row">
-            ${!this.platformSettingsMode
-              ? html`
-                  <div class="section">
-                    <div class="audience-content">
-                      <div class="audience-selector">
-                        <label for="audience">${this.t.experienceLevel}</label>
-                        <select
-                          id="audience"
-                          @change="${this._audienceChanged}"
-                        >
-                          ${this.audienceOptions.map(
-                            (opt) =>
-                              html`<option
-                                value="${opt.value}"
-                                ?selected=${this.audience === opt.value}
-                              >
-                                ${this.t[opt.value] || opt.label}
-                              </option>`,
-                          )}
-                        </select>
+            ${
+              !this.platformSettingsMode
+                ? html`
+                    <div class="section">
+                      <div class="audience-content">
+                        <div class="audience-selector">
+                          <label for="audience"
+                            >${this.t.experienceLevel}</label
+                          >
+                          <select
+                            id="audience"
+                            @change="${this._audienceChanged}"
+                          >
+                            ${this.audienceOptions.map(
+                              (opt) =>
+                                html`<option
+                                  value="${opt.value}"
+                                  ?selected=${this.audience === opt.value}
+                                >
+                                  ${this.t[opt.value] || opt.label}
+                                </option>`,
+                            )}
+                          </select>
+                        </div>
+                        <img
+                          class="toolbar-img"
+                          src=${toolbarImgPath}
+                          alt="${this.t.toolbarPreviewAlt.replace(
+                            "{audience}",
+                            () => this.audience,
+                          )}"
+                        />
                       </div>
-                      <img
-                        class="toolbar-img"
-                        src=${toolbarImgPath}
-                        alt="${this.t.toolbarPreviewAlt.replace(
-                          "{audience}",
-                          () => this.audience,
-                        )}"
-                      />
+                      ${
+                        this.pageCount > 20
+                          ? html`<div class="note">
+                              ${this.t.largeSiteWarning}
+                            </div>`
+                          : ""
+                      }
                     </div>
-                    ${this.pageCount > 20
-                      ? html`<div class="note">${this.t.largeSiteWarning}</div>`
-                      : ""}
-                  </div>
-                `
-              : ``}
+                  `
+                : ``
+            }
             ${this._renderFeatureSection(
               this.t.cmsFeatures,
               HaxUiAdminIcons.cms,
@@ -1107,15 +1115,19 @@ class HAXCMSSitePlatformUI extends HaxcmsAdminSectionMixin(
         <div class="actions">
           <button
             class="action"
-            @click="${this.platformSettingsMode
-              ? this._savePlatformSettings
-              : this._download}"
+            @click="${
+              this.platformSettingsMode
+                ? this._savePlatformSettings
+                : this._download
+            }"
           >
-            ${this.busy
-              ? this.t.generating
-              : this.platformSettingsMode
-                ? this.t.save
-                : this.t.download}
+            ${
+              this.busy
+                ? this.t.generating
+                : this.platformSettingsMode
+                  ? this.t.save
+                  : this.t.download
+            }
           </button>
         </div>
       </div>
@@ -1310,13 +1322,15 @@ class HAXCMSSitePlatformUI extends HaxcmsAdminSectionMixin(
         ></button>
         <div>
           <span class="lab" id="${id}-label"
-            >${changed
-              ? html`<span
-                  class="dot"
-                  role="img"
-                  aria-label="${this.t.changed}"
-                ></span>`
-              : nothing}${this._featureText(item, "label")}</span
+            >${
+              changed
+                ? html`<span
+                    class="dot"
+                    role="img"
+                    aria-label="${this.t.changed}"
+                  ></span>`
+                : nothing
+            }${this._featureText(item, "label")}</span
           ><span class="help" id="${id}-help"
             >${this._featureText(item, "description")}</span
           >
@@ -1338,27 +1352,29 @@ class HAXCMSSitePlatformUI extends HaxcmsAdminSectionMixin(
           </span>
         </summary>
         <div class="controls-container">
-          ${this.isMobile
-            ? html`
-                <div class="mobile-feature-list">
-                  ${features.map((f) => this._renderFeatureCard(f))}
-                </div>
-              `
-            : html`
-                <div class="feature-table-wrapper">
-                  <table class="feature-table">
-                    <thead>
-                      <tr>
-                        <th class="select-col">${this.t.enabled}</th>
-                        <th>${this.t.feature}</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      ${features.map((f) => this._renderFeatureRow(f))}
-                    </tbody>
-                  </table>
-                </div>
-              `}
+          ${
+            this.isMobile
+              ? html`
+                  <div class="mobile-feature-list">
+                    ${features.map((f) => this._renderFeatureCard(f))}
+                  </div>
+                `
+              : html`
+                  <div class="feature-table-wrapper">
+                    <table class="feature-table">
+                      <thead>
+                        <tr>
+                          <th class="select-col">${this.t.enabled}</th>
+                          <th>${this.t.feature}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        ${features.map((f) => this._renderFeatureRow(f))}
+                      </tbody>
+                    </table>
+                  </div>
+                `
+          }
         </div>
       </details>
     `;
@@ -1596,9 +1612,8 @@ class HAXCMSSitePlatformUI extends HaxcmsAdminSectionMixin(
     try {
       this.busy = true;
       // Load generator on demand
-      const { default: SiteSkeletonGenerator } = await import(
-        "../utils/site-skeleton-generator.js"
-      );
+      const { default: SiteSkeletonGenerator } =
+        await import("../utils/site-skeleton-generator.js");
 
       const skeleton = await SiteSkeletonGenerator.generateFromCurrentSite(
         true,

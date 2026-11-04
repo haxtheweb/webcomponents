@@ -257,10 +257,11 @@ class StarRating extends I18NMixin(SchemaBehaviors(SimpleColors)) {
           ${this.renderStar(this.numStars, this.interactive)}
         </div>
         <div class="rating">
-          <span aria-hidden="true">${this._starValue}/${this.numStars}</span
-          >${this.interactive
-            ? html`<span class="sr-only">${this._spokenRating}</span>`
-            : nothing}
+          <span aria-hidden="true">${this._starValue}/${this.numStars}</span>${
+            this.interactive
+              ? html`<span class="sr-only">${this._spokenRating}</span>`
+              : nothing
+          }
         </div>
       </div>
     `;
@@ -402,15 +403,17 @@ class StarRating extends I18NMixin(SchemaBehaviors(SimpleColors)) {
             .buttonTabindex="${value === this._tabStopStar ? 0 : -1}"
             typeof="${this.rubricScaleMode ? "oer:RubricLevel" : nothing}"
             property="${this.rubricScaleMode ? "oer:hasLevel" : nothing}"
-            >${this.rubricScaleMode
-              ? html`<meta
-                    property="oer:levelOrdinal"
-                    content="${value}"
-                  /><meta
-                    property="oer:levelPoints"
-                    content="${this._rubricLevelPoints(value)}"
-                  />`
-              : nothing}</simple-icon-button
+            >${
+              this.rubricScaleMode
+                ? html`<meta
+                      property="oer:levelOrdinal"
+                      content="${value}"
+                    /><meta
+                      property="oer:levelPoints"
+                      content="${this._rubricLevelPoints(value)}"
+                    />`
+                : nothing
+            }</simple-icon-button
           >`,
         );
       } else {
@@ -423,15 +426,17 @@ class StarRating extends I18NMixin(SchemaBehaviors(SimpleColors)) {
             class="star"
             typeof="${this.rubricScaleMode ? "oer:RubricLevel" : nothing}"
             property="${this.rubricScaleMode ? "oer:hasLevel" : nothing}"
-            >${this.rubricScaleMode
-              ? html`<meta
-                    property="oer:levelOrdinal"
-                    content="${count + 1}"
-                  /><meta
-                    property="oer:levelPoints"
-                    content="${this._rubricLevelPoints(count + 1)}"
-                  />`
-              : nothing}</simple-icon
+            >${
+              this.rubricScaleMode
+                ? html`<meta
+                      property="oer:levelOrdinal"
+                      content="${count + 1}"
+                    /><meta
+                      property="oer:levelPoints"
+                      content="${this._rubricLevelPoints(count + 1)}"
+                    />`
+                : nothing
+            }</simple-icon
           >`,
         );
       }

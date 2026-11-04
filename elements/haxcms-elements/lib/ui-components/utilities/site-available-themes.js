@@ -535,13 +535,15 @@ export class SiteAvailableThemes extends I18NMixin(DDD) {
         ${visibleThemes.map(
           (theme) => html`
             <div
-              class="theme-card ${theme.element === this.currentTheme
-                ? "current"
-                : ""}"
+              class="theme-card ${
+                theme.element === this.currentTheme ? "current" : ""
+              }"
             >
-              ${theme.element === this.currentTheme
-                ? html` <div class="current-badge">${this.t.active}</div> `
-                : ""}
+              ${
+                theme.element === this.currentTheme
+                  ? html` <div class="current-badge">${this.t.active}</div> `
+                  : ""
+              }
               <div class="theme-thumbnail">
                 <img
                   src="${theme.thumbnailPath || theme.fullImagePath}"
@@ -550,41 +552,53 @@ export class SiteAvailableThemes extends I18NMixin(DDD) {
                   decoding="async"
                 />
               </div>
-              ${this.showDetails
-                ? html`
-                    <div class="theme-info">
-                      <h3 class="theme-name">${theme.name}</h3>
-                      ${theme.description
-                        ? html`
-                            <p class="theme-description">
-                              ${theme.description}
-                            </p>
-                          `
-                        : ""}
-                      <div class="theme-element">&lt;${theme.element}&gt;</div>
-                      <button
-                        class="preview-button"
-                        type="button"
-                        aria-label="${theme.element === this.currentTheme
-                          ? this.t.themeIsActive.replace(
-                              "{name}",
-                              () => theme.name,
-                            )
-                          : this.t.applyTheme.replace(
-                              "{name}",
-                              () => theme.name,
-                            )}"
-                        ?disabled="${theme.element === this.currentTheme}"
-                        @click="${() => this.switchTheme(theme.element)}"
-                      >
-                        <simple-icon-lite icon="visibility"></simple-icon-lite>
-                        ${theme.element === this.currentTheme
-                          ? this.t.active
-                          : this.t.apply}
-                      </button>
-                    </div>
-                  `
-                : ""}
+              ${
+                this.showDetails
+                  ? html`
+                      <div class="theme-info">
+                        <h3 class="theme-name">${theme.name}</h3>
+                        ${
+                          theme.description
+                            ? html`
+                                <p class="theme-description">
+                                  ${theme.description}
+                                </p>
+                              `
+                            : ""
+                        }
+                        <div class="theme-element">
+                          &lt;${theme.element}&gt;
+                        </div>
+                        <button
+                          class="preview-button"
+                          type="button"
+                          aria-label="${
+                            theme.element === this.currentTheme
+                              ? this.t.themeIsActive.replace(
+                                  "{name}",
+                                  () => theme.name,
+                                )
+                              : this.t.applyTheme.replace(
+                                  "{name}",
+                                  () => theme.name,
+                                )
+                          }"
+                          ?disabled="${theme.element === this.currentTheme}"
+                          @click="${() => this.switchTheme(theme.element)}"
+                        >
+                          <simple-icon-lite
+                            icon="visibility"
+                          ></simple-icon-lite>
+                          ${
+                            theme.element === this.currentTheme
+                              ? this.t.active
+                              : this.t.apply
+                          }
+                        </button>
+                      </div>
+                    `
+                  : ""
+              }
             </div>
           `,
         )}
@@ -626,30 +640,43 @@ export class SiteAvailableThemes extends I18NMixin(DDD) {
                 </td>
                 <td>
                   <div class="table-name">${theme.name}</div>
-                  ${theme.element === this.currentTheme
-                    ? html` <div class="current-label">${this.t.active}</div> `
-                    : ""}
+                  ${
+                    theme.element === this.currentTheme
+                      ? html`
+                          <div class="current-label">${this.t.active}</div>
+                        `
+                      : ""
+                  }
                 </td>
                 <td>
                   <div class="table-element">&lt;${theme.element}&gt;</div>
                 </td>
-                ${this.showDetails
-                  ? html`<td>${theme.description || ""}</td>`
-                  : ""}
+                ${
+                  this.showDetails
+                    ? html`<td>${theme.description || ""}</td>`
+                    : ""
+                }
                 <td>
                   <button
                     class="preview-button"
                     type="button"
-                    aria-label="${theme.element === this.currentTheme
-                      ? this.t.themeIsActive.replace("{name}", () => theme.name)
-                      : this.t.applyTheme.replace("{name}", () => theme.name)}"
+                    aria-label="${
+                      theme.element === this.currentTheme
+                        ? this.t.themeIsActive.replace(
+                            "{name}",
+                            () => theme.name,
+                          )
+                        : this.t.applyTheme.replace("{name}", () => theme.name)
+                    }"
                     ?disabled="${theme.element === this.currentTheme}"
                     @click="${() => this.switchTheme(theme.element)}"
                   >
                     <simple-icon-lite icon="visibility"></simple-icon-lite>
-                    ${theme.element === this.currentTheme
-                      ? this.t.active
-                      : this.t.apply}
+                    ${
+                      theme.element === this.currentTheme
+                        ? this.t.active
+                        : this.t.apply
+                    }
                   </button>
                 </td>
               </tr>
@@ -704,9 +731,11 @@ export class SiteAvailableThemes extends I18NMixin(DDD) {
         </div>
       </div>
 
-      ${this.viewMode === "gallery"
-        ? this.renderGalleryView()
-        : this.renderTableView()}
+      ${
+        this.viewMode === "gallery"
+          ? this.renderGalleryView()
+          : this.renderTableView()
+      }
     `;
   }
 

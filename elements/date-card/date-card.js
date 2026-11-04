@@ -205,31 +205,39 @@ class DateCard extends DDD {
           ${this.day ? html`<span class="dayName">${this.day}</span>` : html``}
         </div>
       </div>
-      ${this.title
-        ? html`
-            <div
-              class="details"
-              title=""
-              style="margin:${this.borderSpacing}px;"
-            >
-              <p class="title">${this.title}</p>
-              <p class="time">
-                ${this.day ? html` ${this.day}, ` : html``}${this.month}
-                ${this.date}${this.nth(this.date)}
-                ${this.startTime
-                  ? html`
-                      ${this.endTime
-                        ? html` from ${this.startTime} - ${this.endTime} `
-                        : html` at ${this.startTime} `}
-                    `
-                  : html``}
-              </p>
-              ${this.location
-                ? html` <p class="location">${this.location}</p> `
-                : html``}
-            </div>
-          `
-        : html``}
+      ${
+        this.title
+          ? html`
+              <div
+                class="details"
+                title=""
+                style="margin:${this.borderSpacing}px;"
+              >
+                <p class="title">${this.title}</p>
+                <p class="time">
+                  ${this.day ? html` ${this.day}, ` : html``}${this.month}
+                  ${this.date}${this.nth(this.date)}
+                  ${
+                    this.startTime
+                      ? html`
+                          ${
+                            this.endTime
+                              ? html` from ${this.startTime} - ${this.endTime} `
+                              : html` at ${this.startTime} `
+                          }
+                        `
+                      : html``
+                  }
+                </p>
+                ${
+                  this.location
+                    ? html` <p class="location">${this.location}</p> `
+                    : html``
+                }
+              </div>
+            `
+          : html``
+      }
     `;
   }
 }

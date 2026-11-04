@@ -576,11 +576,12 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
           );
 
           /* site font variables */
-          --portfolio-font-body: "Source Code Pro", system-ui, Monaco, Consolas,
-            "Lucida Console", monospace;
-          --portfolio-font-header: "Work Sans", system-ui, -apple-system,
-            BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue",
-            "Lucida Grande", Arial, sans-serif;
+          --portfolio-font-body:
+            "Source Code Pro", system-ui, Monaco, Consolas, "Lucida Console",
+            monospace;
+          --portfolio-font-header:
+            "Work Sans", system-ui, -apple-system, BlinkMacSystemFont, "Roboto",
+            "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
 
           --portfolio-fontsize-responsive: clamp(16px, 2vw, 22px);
 
@@ -1454,40 +1455,91 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
     return html`
       <!-- Render cards based on filtered tags -->
-      ${filteredTags.length > 0
-        ? filteredTags.map(
-            (topTag) => html`
-              <h2 class="listing-category">
-                <a
-                  tabindex="${this.editMode ? "-1" : "0"}"
-                  ?disabled="${this.editMode}"
-                  @click="${this.testEditMode}"
-                  href="x/displays/tags?tag=${topTag.trim()}"
-                  >${topTag}</a
-                >
-              </h2>
-              <div class="listing-grid">
-                ${filteredItems
-                  .filter((item) => {
-                    const tags = normalizeTags(
-                      toJS(item.metadata && item.metadata.tags),
-                    );
-                    // Return all items with the filtered tag
-                    return tags.includes(topTag);
-                  })
-                  .map((item) => {
-                    // Get all tags from the item
-                    const itemTags = normalizeTags(
-                      toJS(item.metadata && item.metadata.tags),
-                    );
-                    const secondTag = itemTags[1] || "";
+      ${
+        filteredTags.length > 0
+          ? filteredTags.map(
+              (topTag) => html`
+                <h2 class="listing-category">
+                  <a
+                    tabindex="${this.editMode ? "-1" : "0"}"
+                    ?disabled="${this.editMode}"
+                    @click="${this.testEditMode}"
+                    href="x/displays/tags?tag=${topTag.trim()}"
+                    >${topTag}</a
+                  >
+                </h2>
+                <div class="listing-grid">
+                  ${filteredItems
+                    .filter((item) => {
+                      const tags = normalizeTags(
+                        toJS(item.metadata && item.metadata.tags),
+                      );
+                      // Return all items with the filtered tag
+                      return tags.includes(topTag);
+                    })
+                    .map((item) => {
+                      // Get all tags from the item
+                      const itemTags = normalizeTags(
+                        toJS(item.metadata && item.metadata.tags),
+                      );
+                      const secondTag = itemTags[1] || "";
 
-                    return html`
+                      return html`
+                        <a
+                          tabindex="${this.editMode ? "-1" : "0"}"
+                          ?disabled="${this.editMode}"
+                          class="listing-card"
+                          href="${item.slug}"
+                          @click="${this.testEditMode}"
+                        >
+                          <div class="listing-cardimg">
+                            <img
+                              src="${getPostLogo(item)}"
+                              alt=""
+                              loading="lazy"
+                              decoding="async"
+                              fetchpriority="low"
+                            />
+                          </div>
+                          <div class="listing-cardtitle">${item.title}</div>
+                          <div class="listing-cardtag">${secondTag}</div>
+                        </a>
+                      `;
+                    })}
+                </div>
+              `,
+            )
+          : html``
+      }
+
+      <!-- Render cards with no tags -->
+      ${
+        !this.selectedTag &&
+        this.items.some((item) => {
+          // Will return true if at least one item does not have tags
+          return (
+            normalizeTags(toJS(item.metadata && item.metadata.tags)).length ===
+            0
+          );
+        })
+          ? html`
+              <div class="listing-category"></div>
+              <div class="listing-grid">
+                ${this.items
+                  .filter((item) => {
+                    // Return all items with no tags
+                    return (
+                      normalizeTags(toJS(item.metadata && item.metadata.tags))
+                        .length === 0
+                    );
+                  })
+                  .map(
+                    (item) => html`
                       <a
-                        tabindex="${this.editMode ? "-1" : "0"}"
-                        ?disabled="${this.editMode}"
                         class="listing-card"
                         href="${item.slug}"
+                        tabindex="${this.editMode ? "-1" : "0"}"
+                        ?disabled="${this.editMode}"
                         @click="${this.testEditMode}"
                       >
                         <div class="listing-cardimg">
@@ -1500,59 +1552,13 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
                           />
                         </div>
                         <div class="listing-cardtitle">${item.title}</div>
-                        <div class="listing-cardtag">${secondTag}</div>
                       </a>
-                    `;
-                  })}
+                    `,
+                  )}
               </div>
-            `,
-          )
-        : html``}
-
-      <!-- Render cards with no tags -->
-      ${!this.selectedTag &&
-      this.items.some((item) => {
-        // Will return true if at least one item does not have tags
-        return (
-          normalizeTags(toJS(item.metadata && item.metadata.tags)).length === 0
-        );
-      })
-        ? html`
-            <div class="listing-category"></div>
-            <div class="listing-grid">
-              ${this.items
-                .filter((item) => {
-                  // Return all items with no tags
-                  return (
-                    normalizeTags(toJS(item.metadata && item.metadata.tags))
-                      .length === 0
-                  );
-                })
-                .map(
-                  (item) => html`
-                    <a
-                      class="listing-card"
-                      href="${item.slug}"
-                      tabindex="${this.editMode ? "-1" : "0"}"
-                      ?disabled="${this.editMode}"
-                      @click="${this.testEditMode}"
-                    >
-                      <div class="listing-cardimg">
-                        <img
-                          src="${getPostLogo(item)}"
-                          alt=""
-                          loading="lazy"
-                          decoding="async"
-                          fetchpriority="low"
-                        />
-                      </div>
-                      <div class="listing-cardtitle">${item.title}</div>
-                    </a>
-                  `,
-                )}
-            </div>
-          `
-        : ""}
+            `
+          : ""
+      }
     `;
   }
 
@@ -1619,11 +1625,13 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
                   tabindex="${this.editMode ? "-1" : "0"}"
                   ?disabled="${this.editMode}"
                   @click="${this.testEditMode}"
-                  class="menu-item ${this.activeItem &&
-                  (item.id === this.activeItem.id ||
-                    (this.ancestorItem && item.id === this.ancestorItem.id))
-                    ? "active"
-                    : ""}"
+                  class="menu-item ${
+                    this.activeItem &&
+                    (item.id === this.activeItem.id ||
+                      (this.ancestorItem && item.id === this.ancestorItem.id))
+                      ? "active"
+                      : ""
+                  }"
                   href="${item.slug}"
                 >
                   ${item.title}
@@ -1631,191 +1639,219 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
               `,
             )}
           </nav>
-          ${this.menuOverflow.length > 0
-            ? html`
-                <div class="mobile-menu-wrapper">
-                  <button
-                    type="button"
-                    class=${this.menuOpen ? "close" : ""}
-                    aria-label="${this.t.toggleMenu}"
-                    aria-expanded="${this.menuOpen ? "true" : "false"}"
-                    aria-controls="overflow-menu"
-                    @click="${() => (this.menuOpen = !this.menuOpen)}"
-                  >
-                    <div class="navicon"></div>
-                  </button>
-                  <ul
-                    id="overflow-menu"
-                    class="hidden-links ${!this.menuOpen ? "hidden" : ""}"
-                  >
-                    ${this.menuOverflow.map(
-                      (item) =>
-                        html` <li>
-                          <a
-                            class="${this.activeItem &&
-                            (item.id === this.activeItem.id ||
-                              (this.ancestorItem &&
-                                item.id === this.ancestorItem.id))
-                              ? "active"
-                              : ""}"
-                            href="${item.slug}"
-                            tabindex="${this.editMode ? "-1" : "0"}"
-                            ?disabled="${this.editMode}"
-                            @click="${this.testEditMode}"
-                          >
-                            ${item.title}
-                          </a>
-                        </li>`,
-                    )}
-                  </ul>
-                </div>
-              `
-            : ""}
-        </div>
-        ${this.menuOverflow.length === 0
-          ? html`
-              <simple-icon-button-lite
-                title="${this.t.changeTheme}"
-                label="${this.t.changeTheme}"
-                icon="image:style"
-                class="theme-picker"
-                @click="${this.togglePalette}"
-              ></simple-icon-button-lite>
-            `
-          : ""}
-      </header>
-
-      <nav class="breadcrumb" aria-label="${this.t.breadcrumb}">
-        ${this.activeParent
-          ? html`
-              <a
-                tabindex="${this.editMode ? "-1" : "0"}"
-                ?disabled="${this.editMode}"
-                href=${this.activeParent.slug}
-                @click="${this.testEditMode}"
-              >
-                <span class="breadcrumb-arrow">←</span>
-                <span class="breadcrumb-parent"
-                  >${this.activeParent.title}</span
-                >
-              </a>
-              <span class="breadcrumb-split">/</span>
-              <span class="breadcrumb-title">${this.activeItem.title}</span>
-            `
-          : ``}
-      </nav>
-
-      ${this.activeLayout == "media"
-        ? html`<site-active-media-banner></site-active-media-banner>`
-        : ""}
-
-      <main id="contentcontainer" class="container" role="main">
-        ${this.activeLayout == "listing"
-          ? html`
-              <div class="listing-titlecontainer">
-                <site-active-title></site-active-title>
-                <!-- Render select for filtering tags (only appears if >1 tag OR 1 tag and items with no tag) -->
-                ${this.categoryTags.length > 1 ||
-                (this.categoryTags.length > 0 &&
-                  this.items.some(
-                    (item) =>
-                      normalizeTags(toJS(item.metadata && item.metadata.tags))
-                        .length === 0,
-                  ))
-                  ? html` <label class="list-filter-label" for="listing-filter"
-                        >${this.t.tagFilter}</label
-                      >
-                      <select
-                        ?disabled="${this.editMode}"
-                        id="listing-filter"
-                        @change=${(e) => (this.selectedTag = e.target.value)}
-                      >
-                        <option value="" ?selected="${this.selectedTag === ""}">
-                          ${this.t.all}
-                        </option>
-                        ${this.categoryTags.map(
-                          (tag) =>
-                            html` <option
-                              value="${tag}"
-                              ?selected="${this.selectedTag === tag}"
-                            >
-                              ${tag}
-                            </option>`,
-                        )}
-                      </select>`
-                  : ""}
-              </div>
-            `
-          : html`
-              <site-active-title></site-active-title>
-              ${this.activeTags && this.activeTags.length > 0
-                ? html`
-                    <ul class="tag-list">
-                      ${(this.activeLayout === "listing"
-                        ? this.activeTags
-                        : this.activeTags.slice(1)
-                      ).map(
+          ${
+            this.menuOverflow.length > 0
+              ? html`
+                  <div class="mobile-menu-wrapper">
+                    <button
+                      type="button"
+                      class=${this.menuOpen ? "close" : ""}
+                      aria-label="${this.t.toggleMenu}"
+                      aria-expanded="${this.menuOpen ? "true" : "false"}"
+                      aria-controls="overflow-menu"
+                      @click="${() => (this.menuOpen = !this.menuOpen)}"
+                    >
+                      <div class="navicon"></div>
+                    </button>
+                    <ul
+                      id="overflow-menu"
+                      class="hidden-links ${!this.menuOpen ? "hidden" : ""}"
+                    >
+                      ${this.menuOverflow.map(
                         (item) =>
-                          html`<li>
+                          html` <li>
                             <a
+                              class="${
+                                this.activeItem &&
+                                (item.id === this.activeItem.id ||
+                                  (this.ancestorItem &&
+                                    item.id === this.ancestorItem.id))
+                                  ? "active"
+                                  : ""
+                              }"
+                              href="${item.slug}"
                               tabindex="${this.editMode ? "-1" : "0"}"
-                              @click="${this.testEditMode}"
                               ?disabled="${this.editMode}"
-                              href="x/displays/tags?tag=${item.trim()}"
-                              >${item}</a
+                              @click="${this.testEditMode}"
                             >
+                              ${item.title}
+                            </a>
                           </li>`,
                       )}
                     </ul>
-                  `
-                : ""}
-            `}
+                  </div>
+                `
+              : ""
+          }
+        </div>
+        ${
+          this.menuOverflow.length === 0
+            ? html`
+                <simple-icon-button-lite
+                  title="${this.t.changeTheme}"
+                  label="${this.t.changeTheme}"
+                  icon="image:style"
+                  class="theme-picker"
+                  @click="${this.togglePalette}"
+                ></simple-icon-button-lite>
+              `
+            : ""
+        }
+      </header>
+
+      <nav class="breadcrumb" aria-label="${this.t.breadcrumb}">
+        ${
+          this.activeParent
+            ? html`
+                <a
+                  tabindex="${this.editMode ? "-1" : "0"}"
+                  ?disabled="${this.editMode}"
+                  href=${this.activeParent.slug}
+                  @click="${this.testEditMode}"
+                >
+                  <span class="breadcrumb-arrow">←</span>
+                  <span class="breadcrumb-parent"
+                    >${this.activeParent.title}</span
+                  >
+                </a>
+                <span class="breadcrumb-split">/</span>
+                <span class="breadcrumb-title">${this.activeItem.title}</span>
+              `
+            : ``
+        }
+      </nav>
+
+      ${
+        this.activeLayout == "media"
+          ? html`<site-active-media-banner></site-active-media-banner>`
+          : ""
+      }
+
+      <main id="contentcontainer" class="container" role="main">
+        ${
+          this.activeLayout == "listing"
+            ? html`
+                <div class="listing-titlecontainer">
+                  <site-active-title></site-active-title>
+                  <!-- Render select for filtering tags (only appears if >1 tag OR 1 tag and items with no tag) -->
+                  ${
+                    this.categoryTags.length > 1 ||
+                    (this.categoryTags.length > 0 &&
+                      this.items.some(
+                        (item) =>
+                          normalizeTags(
+                            toJS(item.metadata && item.metadata.tags),
+                          ).length === 0,
+                      ))
+                      ? html` <label
+                            class="list-filter-label"
+                            for="listing-filter"
+                            >${this.t.tagFilter}</label
+                          >
+                          <select
+                            ?disabled="${this.editMode}"
+                            id="listing-filter"
+                            @change=${(e) => (this.selectedTag = e.target.value)}
+                          >
+                            <option
+                              value=""
+                              ?selected="${this.selectedTag === ""}"
+                            >
+                              ${this.t.all}
+                            </option>
+                            ${this.categoryTags.map(
+                              (tag) =>
+                                html` <option
+                                  value="${tag}"
+                                  ?selected="${this.selectedTag === tag}"
+                                >
+                                  ${tag}
+                                </option>`,
+                            )}
+                          </select>`
+                      : ""
+                  }
+                </div>
+              `
+            : html`
+                <site-active-title></site-active-title>
+                ${
+                  this.activeTags && this.activeTags.length > 0
+                    ? html`
+                        <ul class="tag-list">
+                          ${(this.activeLayout === "listing"
+                            ? this.activeTags
+                            : this.activeTags.slice(1)
+                          ).map(
+                            (item) =>
+                              html`<li>
+                                <a
+                                  tabindex="${this.editMode ? "-1" : "0"}"
+                                  @click="${this.testEditMode}"
+                                  ?disabled="${this.editMode}"
+                                  href="x/displays/tags?tag=${item.trim()}"
+                                  >${item}</a
+                                >
+                              </li>`,
+                          )}
+                        </ul>
+                      `
+                    : ""
+                }
+              `
+        }
         ${this.activeLayout == "listing" ? this._renderListing() : ""}
 
         <div id="slot"><slot></slot></div>
       </main>
 
       <div class="pagination">
-        ${this.activeParent
-          ? html`
-              ${this.prevSibling
-                ? html`
-                    <a
-                      class="prev"
-                      tabindex="${this.editMode ? "-1" : "0"}"
-                      ?disabled="${this.editMode}"
-                      href="${this.prevSibling.slug}"
-                      @click="${this.testEditMode}"
-                    >
-                      <simple-icon-lite
-                        icon="icons:chevron-left"
-                      ></simple-icon-lite>
-                      <span class="pagination-text"
-                        >${this.prevSibling.title}</span
-                      >
-                    </a>
-                  `
-                : ""}
-              ${this.nextSibling
-                ? html`
-                    <a
-                      tabindex="${this.editMode ? "-1" : "0"}"
-                      ?disabled="${this.editMode}"
-                      class="next"
-                      href="${this.nextSibling.slug}"
-                      @click="${this.testEditMode}"
-                    >
-                      <span class="pagination-text"
-                        >${this.nextSibling.title}</span
-                      >
-                      <simple-icon-lite
-                        icon="icons:chevron-right"
-                      ></simple-icon-lite>
-                    </a>
-                  `
-                : ""}
-            `
-          : ""}
+        ${
+          this.activeParent
+            ? html`
+                ${
+                  this.prevSibling
+                    ? html`
+                        <a
+                          class="prev"
+                          tabindex="${this.editMode ? "-1" : "0"}"
+                          ?disabled="${this.editMode}"
+                          href="${this.prevSibling.slug}"
+                          @click="${this.testEditMode}"
+                        >
+                          <simple-icon-lite
+                            icon="icons:chevron-left"
+                          ></simple-icon-lite>
+                          <span class="pagination-text"
+                            >${this.prevSibling.title}</span
+                          >
+                        </a>
+                      `
+                    : ""
+                }
+                ${
+                  this.nextSibling
+                    ? html`
+                        <a
+                          tabindex="${this.editMode ? "-1" : "0"}"
+                          ?disabled="${this.editMode}"
+                          class="next"
+                          href="${this.nextSibling.slug}"
+                          @click="${this.testEditMode}"
+                        >
+                          <span class="pagination-text"
+                            >${this.nextSibling.title}</span
+                          >
+                          <simple-icon-lite
+                            icon="icons:chevron-right"
+                          ></simple-icon-lite>
+                        </a>
+                      `
+                    : ""
+                }
+              `
+            : ""
+        }
       </div>
 
       <footer>
@@ -1853,27 +1889,29 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
           xmlns:cc="${this.licenseLink}"
           xmlns:dc="http://purl.org/dc/elements/1.1/"
         >
-          ${this.licenseImage
-            ? html`
-                <a
-                  class="big-license-link"
-                  target="_blank"
-                  href="${this.licenseLink}"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    loading="lazy"
-                    decoding="async"
-                    fetchpriority="low"
-                    alt="${this.t.licenseGraphic.replace(
-                      "{license}",
-                      () => this.licenseName,
-                    )}"
-                    src="${this.licenseImage}"
-                  />
-                </a>
-              `
-            : ``}
+          ${
+            this.licenseImage
+              ? html`
+                  <a
+                    class="big-license-link"
+                    target="_blank"
+                    href="${this.licenseLink}"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      loading="lazy"
+                      decoding="async"
+                      fetchpriority="low"
+                      alt="${this.t.licenseGraphic.replace(
+                        "{license}",
+                        () => this.licenseName,
+                      )}"
+                      src="${this.licenseImage}"
+                    />
+                  </a>
+                `
+              : ``
+          }
         </div>
         <simple-icon-button-lite
           icon="image:style"

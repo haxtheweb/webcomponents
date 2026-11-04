@@ -60,11 +60,13 @@ class MdBlock extends DDD {
   // render function
   render() {
     return html`<div>${unsafeHTML(this._parsedMarkdown)}</div>
-      ${this._loadError
-        ? html`<div class="source-error" role="status" aria-live="polite">
-            ${this._loadError}
-          </div>`
-        : ``}`;
+      ${
+        this._loadError
+          ? html`<div class="source-error" role="status" aria-live="polite">
+              ${this._loadError}
+            </div>`
+          : ``
+      }`;
   }
 
   // haxProperty definition

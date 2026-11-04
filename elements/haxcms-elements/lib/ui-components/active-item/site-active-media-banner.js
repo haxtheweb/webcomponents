@@ -231,56 +231,62 @@ export class SiteActiveMediaBanner extends DDDSuper(LitElement) {
 
   render() {
     return html`
-      ${this.mediaType === "image"
-        ? html` <div class="media-banner">
-            <img
-              crossorigin="anonymous"
-              src="${this.mediaSource}"
-              alt=""
-              fetchpriority="high"
-            />
-            ${this.fileExt === "gif"
-              ? html`<div class="content">
-                  <div class="page-title">
-                    <site-active-title part="page-title"></site-active-title>
-                    ${this.description}
+      ${
+        this.mediaType === "image"
+          ? html` <div class="media-banner">
+              <img
+                crossorigin="anonymous"
+                src="${this.mediaSource}"
+                alt=""
+                fetchpriority="high"
+              />
+              ${
+                this.fileExt === "gif"
+                  ? html`<div class="content">
+                      <div class="page-title">
+                        <site-active-title
+                          part="page-title"
+                        ></site-active-title>
+                        ${this.description}
+                      </div>
+                    </div>`
+                  : html``
+              }
+            </div>`
+          : this.mediaType === "video"
+            ? html`
+                <div class="media-banner" data-has-control>
+                  <video
+                    crossorigin="anonymous"
+                    loop
+                    ?autoplay="${this.playing}"
+                    muted
+                    playsinline
+                    aria-hidden="true"
+                    tabindex="-1"
+                  >
+                    <source
+                      src=${this.mediaSource}
+                      type="video/${this.fileExt}"
+                    />
+                  </video>
+                  <div class="content">
+                    <div class="page-title">
+                      <site-active-title part="page-title"></site-active-title>
+                      ${this.description}
+                    </div>
                   </div>
-                </div>`
-              : html``}
-          </div>`
-        : this.mediaType === "video"
-          ? html`
-              <div class="media-banner" data-has-control>
-                <video
-                  crossorigin="anonymous"
-                  loop
-                  ?autoplay="${this.playing}"
-                  muted
-                  playsinline
-                  aria-hidden="true"
-                  tabindex="-1"
-                >
-                  <source
-                    src=${this.mediaSource}
-                    type="video/${this.fileExt}"
-                  />
-                </video>
-                <div class="content">
-                  <div class="page-title">
-                    <site-active-title part="page-title"></site-active-title>
-                    ${this.description}
-                  </div>
+                  <simple-icon-button-lite
+                    class="media-control"
+                    part="media-control"
+                    icon="${this.icon}"
+                    label="${this.playing ? this.t.pauseVideo : this.t.playVideo}"
+                    @click="${this.__videoHandler}"
+                  ></simple-icon-button-lite>
                 </div>
-                <simple-icon-button-lite
-                  class="media-control"
-                  part="media-control"
-                  icon="${this.icon}"
-                  label="${this.playing ? this.t.pauseVideo : this.t.playVideo}"
-                  @click="${this.__videoHandler}"
-                ></simple-icon-button-lite>
-              </div>
-            `
-          : html``}
+              `
+            : html``
+      }
     `;
   }
 

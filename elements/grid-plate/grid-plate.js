@@ -349,9 +349,9 @@ class GridPlate extends LitElement {
         ${[1, 2, 3, 4, 5, 6].map(
           (num) => html`
             <div
-              class="column ${this.columns < num
-                ? "not-shown"
-                : "drag-enabled"}"
+              class="column ${
+                this.columns < num ? "not-shown" : "drag-enabled"
+              }"
               id="col${num}"
               data-label="column ${num}"
               data-layout-slotname="col-${num}"

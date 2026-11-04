@@ -1517,57 +1517,57 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
       const keepOpen = !!e.detail.keepOpen;
       // docxImport use the routine from app-hax
       if (reqBody.docximport) {
-        await import(
-          "@haxtheweb/file-system-broker/lib/docx-file-system-broker.js"
-        ).then(async (_e) => {
-          // enable core services
-          enableServices(["haxcms"]);
-          // get the broker for docx selection
-          const broker = globalThis.FileSystemBroker.requestAvailability();
-          const file = await broker.loadFile("docx");
-          // tee up as a form for upload
-          const formData = new FormData();
-          formData.append("method", reqBody.docximport); // this is a branch or site based importer
-          let structure = "course";
-          if (
-            this.manifest.metadata.build &&
-            this.manifest.metadata.structure
-          ) {
-            structure = this.manifest.metadata.structure;
-          }
-          formData.append("type", structure);
-          formData.append("parentId", reqBody.parent); // optional parent value, if set, this becomes the parent info for top level pages
-          formData.append("upload", file);
-          this.setProcessingVisual();
-          const response = await MicroFrontendRegistry.call(
-            "@system/importDocx",
-            formData,
-          );
-          store.toast(this.t.finished, 300);
-          if (
-            response.status === 200 &&
-            response.data &&
-            response.data.items &&
-            response.data.items.length > 0
-          ) {
-            globalThis.dispatchEvent(
-              new CustomEvent("haxcms-docx-import-items", {
-                bubbles: true,
-                composed: true,
-                cancelable: true,
-                detail: {
-                  items: response.data.items,
-                  parentId: reqBody.parent,
-                },
-              }),
+        await import("@haxtheweb/file-system-broker/lib/docx-file-system-broker.js").then(
+          async (_e) => {
+            // enable core services
+            enableServices(["haxcms"]);
+            // get the broker for docx selection
+            const broker = globalThis.FileSystemBroker.requestAvailability();
+            const file = await broker.loadFile("docx");
+            // tee up as a form for upload
+            const formData = new FormData();
+            formData.append("method", reqBody.docximport); // this is a branch or site based importer
+            let structure = "course";
+            if (
+              this.manifest.metadata.build &&
+              this.manifest.metadata.structure
+            ) {
+              structure = this.manifest.metadata.structure;
+            }
+            formData.append("type", structure);
+            formData.append("parentId", reqBody.parent); // optional parent value, if set, this becomes the parent info for top level pages
+            formData.append("upload", file);
+            this.setProcessingVisual();
+            const response = await MicroFrontendRegistry.call(
+              "@system/importDocx",
+              formData,
             );
-          } else {
-            store.toast(this.t.invalidDocxResponse, 4000, {
-              hat: "construction",
-              tone: "danger",
-            });
-          }
-        });
+            store.toast(this.t.finished, 300);
+            if (
+              response.status === 200 &&
+              response.data &&
+              response.data.items &&
+              response.data.items.length > 0
+            ) {
+              globalThis.dispatchEvent(
+                new CustomEvent("haxcms-docx-import-items", {
+                  bubbles: true,
+                  composed: true,
+                  cancelable: true,
+                  detail: {
+                    items: response.data.items,
+                    parentId: reqBody.parent,
+                  },
+                }),
+              );
+            } else {
+              store.toast(this.t.invalidDocxResponse, 4000, {
+                hat: "construction",
+                tone: "danger",
+              });
+            }
+          },
+        );
       } else {
         this.setProcessingVisual();
         await this._requestJson({

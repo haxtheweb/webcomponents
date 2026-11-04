@@ -713,11 +713,13 @@ class HAXCMSSEOAdminDialog extends HaxcmsAdminFieldsMixin(I18NMixin(DDD)) {
         ></span>`
       : nothing;
     return html`<div>
-      ${useLabel
-        ? html`<label class="lab" for="${id}" id="${id}-label"
-            >${dot}${field.title}</label
-          >`
-        : html`<span class="lab" id="${id}-label">${dot}${field.title}</span>`}
+      ${
+        useLabel
+          ? html`<label class="lab" for="${id}" id="${id}-label"
+              >${dot}${field.title}</label
+            >`
+          : html`<span class="lab" id="${id}-label">${dot}${field.title}</span>`
+      }
       <span class="help" id="${id}-help">${field.description}</span>
     </div>`;
   }
@@ -734,9 +736,11 @@ class HAXCMSSEOAdminDialog extends HaxcmsAdminFieldsMixin(I18NMixin(DDD)) {
     return keys.map(
       (key) =>
         html`<option value="${key}" ?selected="${current === key}">
-          ${Object.prototype.hasOwnProperty.call(options, key)
-            ? options[key]
-            : key}
+          ${
+            Object.prototype.hasOwnProperty.call(options, key)
+              ? options[key]
+              : key
+          }
         </option>`,
     );
   }
@@ -775,16 +779,18 @@ class HAXCMSSEOAdminDialog extends HaxcmsAdminFieldsMixin(I18NMixin(DDD)) {
               @click="${() => this._setValue(key, !value)}"
             ></button>
             <span aria-hidden="true">${value ? this.t.on : this.t.off}</span>
-            ${key === "manifest-metadata-site-settings-pathauto"
-              ? html`<span class="spacer"></span
-                  ><button
-                    type="button"
-                    class="hax-ui-btn normalize"
-                    @click="${this._normalizeSlugsTap}"
-                  >
-                    ${this.t.normalizeSlugs}
-                  </button>`
-              : nothing}
+            ${
+              key === "manifest-metadata-site-settings-pathauto"
+                ? html`<span class="spacer"></span
+                    ><button
+                      type="button"
+                      class="hax-ui-btn normalize"
+                      @click="${this._normalizeSlugsTap}"
+                    >
+                      ${this.t.normalizeSlugs}
+                    </button>`
+                : nothing
+            }
           </div>
         </div>`;
       case "haxupload":
@@ -850,49 +856,63 @@ class HAXCMSSEOAdminDialog extends HaxcmsAdminFieldsMixin(I18NMixin(DDD)) {
 
   render() {
     return html`
-      ${this.errorMessage
-        ? html`<p class="hax-ui-message status" data-tone="danger" role="alert">
-            ${this.errorMessage}
-          </p>`
-        : nothing}
-      ${!this.errorMessage && this.groups.length === 0
-        ? html`<p class="hax-ui-message status">${this.t.noSeoSettings}</p>`
-        : nothing}
-      ${!this.errorMessage
-        ? this.groups.map(
-            (group) => html`
-              <details ?open="${group.open}" data-group="${group.key}">
-                <summary>
-                  <simple-icon-lite
-                    icon="${HaxUiAdminIcons.chevron}"
-                    aria-hidden="true"
-                  ></simple-icon-lite>
-                  <h3>${group.label}</h3>
-                  ${this._groupChanged(group)
-                    ? html`<span
-                        class="dot"
-                        role="img"
-                        aria-label="${this.t.hasChanges}"
-                      ></span>`
-                    : nothing}
-                </summary>
-                ${group.fields.map((field) => this._renderField(field))}
-              </details>
-            `,
-          )
-        : nothing}
-      ${!this.inShell
-        ? html`<div class="standalone-actions">
-            <button
-              type="button"
-              class="hax-ui-btn primary save"
-              ?disabled="${!this.canSave}"
-              @click="${this.save}"
+      ${
+        this.errorMessage
+          ? html`<p
+              class="hax-ui-message status"
+              data-tone="danger"
+              role="alert"
             >
-              ${this.t.save}
-            </button>
-          </div>`
-        : nothing}
+              ${this.errorMessage}
+            </p>`
+          : nothing
+      }
+      ${
+        !this.errorMessage && this.groups.length === 0
+          ? html`<p class="hax-ui-message status">${this.t.noSeoSettings}</p>`
+          : nothing
+      }
+      ${
+        !this.errorMessage
+          ? this.groups.map(
+              (group) => html`
+                <details ?open="${group.open}" data-group="${group.key}">
+                  <summary>
+                    <simple-icon-lite
+                      icon="${HaxUiAdminIcons.chevron}"
+                      aria-hidden="true"
+                    ></simple-icon-lite>
+                    <h3>${group.label}</h3>
+                    ${
+                      this._groupChanged(group)
+                        ? html`<span
+                            class="dot"
+                            role="img"
+                            aria-label="${this.t.hasChanges}"
+                          ></span>`
+                        : nothing
+                    }
+                  </summary>
+                  ${group.fields.map((field) => this._renderField(field))}
+                </details>
+              `,
+            )
+          : nothing
+      }
+      ${
+        !this.inShell
+          ? html`<div class="standalone-actions">
+              <button
+                type="button"
+                class="hax-ui-btn primary save"
+                ?disabled="${!this.canSave}"
+                @click="${this.save}"
+              >
+                ${this.t.save}
+              </button>
+            </div>`
+          : nothing
+      }
     `;
   }
 }

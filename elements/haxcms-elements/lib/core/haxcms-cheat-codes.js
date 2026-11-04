@@ -673,8 +673,9 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
 
       globalThis.beepClickHandler = (_e) => {
         // Create audio context for beep sounds
-        const audioContext = new (globalThis.AudioContext ||
-          globalThis.webkitAudioContext)();
+        const audioContext = new (
+          globalThis.AudioContext || globalThis.webkitAudioContext
+        )();
         const oscillator = audioContext.createOscillator();
         const gainNode = audioContext.createGain();
 
@@ -1463,8 +1464,9 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       popupCount++;
 
       // Play Furby spawn sound when each one appears
-      const audioContext = new (globalThis.AudioContext ||
-        globalThis.webkitAudioContext)();
+      const audioContext = new (
+        globalThis.AudioContext || globalThis.webkitAudioContext
+      )();
       const oscillator = audioContext.createOscillator();
       const gainNode = audioContext.createGain();
 
@@ -2039,8 +2041,9 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
     globalThis.document.body.appendChild(win95Desktop);
 
     // Play Windows 95 startup sound (web audio)
-    const audioContext = new (globalThis.AudioContext ||
-      globalThis.webkitAudioContext)();
+    const audioContext = new (
+      globalThis.AudioContext || globalThis.webkitAudioContext
+    )();
 
     // Create the classic Windows startup chord progression
     const playStartupSound = () => {
@@ -2875,8 +2878,9 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
     globalThis.document.body.appendChild(ytmndOverlay);
 
     // Play repeating audio loop
-    const audioContext = new (globalThis.AudioContext ||
-      globalThis.webkitAudioContext)();
+    const audioContext = new (
+      globalThis.AudioContext || globalThis.webkitAudioContext
+    )();
     let audioInterval = setInterval(() => {
       // Play YTMND-style beeping melody
       const notes = [440, 554, 659, 440]; // A, C#, E, A
@@ -3031,8 +3035,9 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
     globalThis.document.body.appendChild(geocitiesOverlay);
 
     // Play MIDI-style background music
-    const audioContext = new (globalThis.AudioContext ||
-      globalThis.webkitAudioContext)();
+    const audioContext = new (
+      globalThis.AudioContext || globalThis.webkitAudioContext
+    )();
     const playMIDIStyle = () => {
       const melody = [261, 294, 329, 349, 392, 440, 493, 523]; // C major scale
       let noteIndex = 0;
@@ -3512,8 +3517,9 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
           specialElement.style.animation = "chickenbutt-found 1s ease-out";
 
           // Success sound
-          const audioContext = new (globalThis.AudioContext ||
-            globalThis.webkitAudioContext)();
+          const audioContext = new (
+            globalThis.AudioContext || globalThis.webkitAudioContext
+          )();
           const oscillator = audioContext.createOscillator();
           const gainNode = audioContext.createGain();
 
@@ -3583,8 +3589,9 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       `;
 
       // Victory celebration sound
-      const audioContext = new (globalThis.AudioContext ||
-        globalThis.webkitAudioContext)();
+      const audioContext = new (
+        globalThis.AudioContext || globalThis.webkitAudioContext
+      )();
       const victoryMelody = [523, 659, 784, 1047]; // C, E, G, C octave
 
       victoryMelody.forEach((freq, index) => {

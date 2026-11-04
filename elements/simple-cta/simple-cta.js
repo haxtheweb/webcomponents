@@ -188,15 +188,17 @@ class SimpleCta extends DDDPulseEffectSuper(
       @click="${this._clickCard}"
     >
       <span
-        class="btn ${this.large ? "large" : ""} ${this.hideIcon
-          ? "hideIcon"
-          : ""} "
-        ><span class="label">${this.label}</span><slot></slot>${!this.hideIcon
-          ? html`<simple-icon-lite
-              class="icon"
-              icon="${this.icon}"
-            ></simple-icon-lite>`
-          : ``}</span
+        class="btn ${this.large ? "large" : ""} ${
+          this.hideIcon ? "hideIcon" : ""
+        } "
+        ><span class="label">${this.label}</span><slot></slot>${
+          !this.hideIcon
+            ? html`<simple-icon-lite
+                class="icon"
+                icon="${this.icon}"
+              ></simple-icon-lite>`
+            : ``
+        }</span
       >
     </a>`;
   }

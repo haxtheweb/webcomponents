@@ -289,7 +289,6 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
     const url = new URL(globalThis.location.href);
     url.hash = `${this.hashPrefix}-slide-${this.slide}`;
     try {
-      // eslint-disable-next-line baseline-js/use-baseline -- writeText works in Chrome, Firefox and Safari; failure is caught
       await globalThis.navigator.clipboard.writeText(url.href);
       this._announce(this.t.linkCopied);
     } catch (error) {
@@ -542,9 +541,11 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
             .replace("{number}", () => this.slide)
             .replace("{total}", () => last)}</span
         >
-        ${this.deck && this.deck.title
-          ? html`<span class="ddd-block-title">${this.deck.title}</span>`
-          : nothing}
+        ${
+          this.deck && this.deck.title
+            ? html`<span class="ddd-block-title">${this.deck.title}</span>`
+            : nothing
+        }
       </span>
       <span class="ddd-block-actions">
         <simple-icon-button-lite
@@ -573,41 +574,43 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
         <simple-icon-button-lite
           class="ddd-block-action"
           icon="${this.mode === "grid" ? "icons:view-carousel" : "icons:apps"}"
-          label="${this.mode === "grid"
-            ? this.t.viewOneSlide
-            : this.t.viewAllSlides}"
-          title="${this.mode === "grid"
-            ? this.t.viewOneSlide
-            : this.t.viewAllSlides}"
+          label="${
+            this.mode === "grid" ? this.t.viewOneSlide : this.t.viewAllSlides
+          }"
+          title="${
+            this.mode === "grid" ? this.t.viewOneSlide : this.t.viewAllSlides
+          }"
           toggles
           ?toggled="${this.mode === "grid"}"
           @click="${this.toggleMode}"
         ></simple-icon-button-lite>
         <simple-icon-button-lite
           class="ddd-block-action"
-          icon="${this.presenting
-            ? "icons:fullscreen-exit"
-            : "icons:fullscreen"}"
-          label="${this.presenting
-            ? this.t.exitFullScreen
-            : this.t.presentFullScreen}"
-          title="${this.presenting
-            ? this.t.exitFullScreen
-            : this.t.presentFullScreen}"
+          icon="${
+            this.presenting ? "icons:fullscreen-exit" : "icons:fullscreen"
+          }"
+          label="${
+            this.presenting ? this.t.exitFullScreen : this.t.presentFullScreen
+          }"
+          title="${
+            this.presenting ? this.t.exitFullScreen : this.t.presentFullScreen
+          }"
           toggles
           ?toggled="${this.presenting}"
           ?disabled="${!this.fullscreenAvailable}"
           @click="${this.togglePresenting}"
         ></simple-icon-button-lite>
-        ${this.downloadable && this.deck && this.deck.pptx
-          ? html`<simple-icon-button-lite
-              class="ddd-block-action"
-              icon="icons:file-download"
-              label="${this.t.downloadPresentation}"
-              title="${this.t.downloadPresentation}"
-              @click="${this.downloadPptx}"
-            ></simple-icon-button-lite>`
-          : nothing}
+        ${
+          this.downloadable && this.deck && this.deck.pptx
+            ? html`<simple-icon-button-lite
+                class="ddd-block-action"
+                icon="icons:file-download"
+                label="${this.t.downloadPresentation}"
+                title="${this.t.downloadPresentation}"
+                @click="${this.downloadPptx}"
+              ></simple-icon-button-lite>`
+            : nothing
+        }
       </span>
     </div>`;
   }
@@ -658,14 +661,16 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
       @keydown="${this._onKeyDown}"
     >
       ${this.renderToolbar()}
-      ${this.mode === "grid"
-        ? this.renderGrid()
-        : html`<div id="stage" aria-hidden="true"></div>
-            <div class="text">
-              <h3>${current.title}</h3>
-              ${unsafeHTML(sanitizeHTMLString(current.html))}
-              ${this.renderNotes(current)}
-            </div>`}
+      ${
+        this.mode === "grid"
+          ? this.renderGrid()
+          : html`<div id="stage" aria-hidden="true"></div>
+              <div class="text">
+                <h3>${current.title}</h3>
+                ${unsafeHTML(sanitizeHTMLString(current.html))}
+                ${this.renderNotes(current)}
+              </div>`
+      }
       <div aria-live="polite" class="message">
         ${this._message || `${this.t.slide} ${this.slide}: ${current.title}`}
       </div>

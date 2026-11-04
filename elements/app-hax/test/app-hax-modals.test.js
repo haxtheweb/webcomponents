@@ -3,9 +3,8 @@ import { fixture, expect, html } from "@open-wc/testing";
 globalThis.appSettings = {};
 
 const { store } = await import("../lib/v2/AppHaxStore.js");
-const { AppHaxConfirmationModal } = await import(
-  "../lib/v2/app-hax-confirmation-modal.js"
-);
+const { AppHaxConfirmationModal } =
+  await import("../lib/v2/app-hax-confirmation-modal.js");
 await import("../lib/v2/app-hax-site-login.js");
 
 // Helper: create an unconnected confirmation modal with a mock shadowRoot

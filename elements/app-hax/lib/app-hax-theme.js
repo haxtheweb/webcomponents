@@ -492,9 +492,9 @@ class AppHaxTheme extends HAXCMSRememberRoute(
                 ${this.HAXCMSMobileMenuButton()}
 
                 <site-breadcrumb
-                  part="page-breadcrumb ${this.editMode
-                    ? `edit-mode-active`
-                    : ``}"
+                  part="page-breadcrumb ${
+                    this.editMode ? `edit-mode-active` : ``
+                  }"
                 ></site-breadcrumb>
                 <site-active-title part="page-title"></site-active-title>
                 <site-active-tags
@@ -631,7 +631,8 @@ class AppHaxTheme extends HAXCMSRememberRoute(
           --app-hax-background-color: black;
         }
         body:not(.bad-device) {
-          background-image: url("${unsafeCSS(LMGridBox)}"),
+          background-image:
+            url("${unsafeCSS(LMGridBox)}"),
             url("${unsafeCSS(DesignLightModeLeft)}"),
             url("${unsafeCSS(DesignLightModeRight)}");
           background-repeat: repeat, repeat-y, repeat-y;
@@ -652,7 +653,8 @@ class AppHaxTheme extends HAXCMSRememberRoute(
           display: unset;
         }
         body.dark-mode {
-          background-image: url("${unsafeCSS(DMGridBox)}"),
+          background-image:
+            url("${unsafeCSS(DMGridBox)}"),
             url("${unsafeCSS(DesignDarkModeLeft)}"),
             url("${unsafeCSS(DesignDarkModeRight)}");
         }

@@ -347,15 +347,19 @@ export class SortingOption extends I18NMixin(DDDSuper(LitElement)) {
   render() {
     return html`
       <div class="feedback-container">
-        ${this.correct || this.incorrect
-          ? html`<simple-icon-lite
-              class="icon"
-              icon="${this.correct ? "check" : "clear"}"
-              title="${this.correct
-                ? this.t.answerInCorrectOrder
-                : this.t.answerInIncorrectOrder}"
-            ></simple-icon-lite>`
-          : html`<div class="icon"></div>`}
+        ${
+          this.correct || this.incorrect
+            ? html`<simple-icon-lite
+                class="icon"
+                icon="${this.correct ? "check" : "clear"}"
+                title="${
+                  this.correct
+                    ? this.t.answerInCorrectOrder
+                    : this.t.answerInIncorrectOrder
+                }"
+              ></simple-icon-lite>`
+            : html`<div class="icon"></div>`
+        }
       </div>
       <div class="option-slot-wrapper"><slot></slot></div>
       <div class="arrow-container">

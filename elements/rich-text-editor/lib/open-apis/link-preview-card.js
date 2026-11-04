@@ -132,15 +132,17 @@ export class LinkPreviewCard extends DDDSuper(LitElement) {
         ${this.loadingState ? html`<div class="loader"></div>` : ""}
         <div class="card" style="--theme-color:${this.themeColor}">
           <div class="image">
-            ${this.image
-              ? html`<img
-                  src="${this.image}"
-                  alt="${this.title}"
-                  loading="lazy"
-                  decoding="async"
-                  fetchpriority="low"
-                />`
-              : ""}
+            ${
+              this.image
+                ? html`<img
+                    src="${this.image}"
+                    alt="${this.title}"
+                    loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
+                  />`
+                : ""
+            }
           </div>
           <div class="details">
             <a href="${this.link}" target="_blank" rel="noopener noreferrer">
@@ -165,11 +167,11 @@ export class LinkPreviewCard extends DDDSuper(LitElement) {
     // enable core services, though should be available
     const MicroFrontendRegistry =
       globalThis.MicroFrontendRegistry.requestAvailability();
-    await import(
-      "@haxtheweb/micro-frontend-registry/lib/microServices.js"
-    ).then((_e) => {
-      MicroFrontendRegistry.enableServices(["core"]);
-    });
+    await import("@haxtheweb/micro-frontend-registry/lib/microServices.js").then(
+      (_e) => {
+        MicroFrontendRegistry.enableServices(["core"]);
+      },
+    );
     this.loadingState = true;
     try {
       let data = await MicroFrontendRegistry.call("@core/websiteMetadata", {

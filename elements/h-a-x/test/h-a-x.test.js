@@ -6,8 +6,9 @@ describe("h-a-x test", () => {
   beforeEach(async () => {
     element = await fixture(
       html` <h-a-x
-        app-store='{"url": "${new URL("../demo/appstore.json", import.meta.url)
-          .href}"}'
+        app-store='{"url": "${
+          new URL("../demo/appstore.json", import.meta.url).href
+        }"}'
         offset-margin="0px 0px 0px 48px"
         element-align="right"
       >

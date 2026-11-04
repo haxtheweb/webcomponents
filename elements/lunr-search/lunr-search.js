@@ -37,27 +37,35 @@ class LunrSearch extends I18NMixin(LitElement) {
     // no heading-per-result (heading hierarchy) and missing titles are
     // guarded so no empty headings render (haxtheweb/issues#3102)
     return html`
-      ${this.demo
-        ? html`<div class="results" aria-live="polite">
-            ${this.results && this.results.length > 0
-              ? html`<ul aria-label="${this.t.searchResults}">
-                  ${this.results.map(
-                    (item) =>
-                      html`<li>
-                        ${item && item.title
-                          ? html`<span class="result-title"
-                              >${item.title}</span
-                            >`
-                          : ``}
-                        ${item && item.description
-                          ? html`<p>${item.description}</p>`
-                          : ``}
-                      </li>`,
-                  )}
-                </ul>`
-              : ``}
-          </div>`
-        : ``}
+      ${
+        this.demo
+          ? html`<div class="results" aria-live="polite">
+              ${
+                this.results && this.results.length > 0
+                  ? html`<ul aria-label="${this.t.searchResults}">
+                      ${this.results.map(
+                        (item) =>
+                          html`<li>
+                            ${
+                              item && item.title
+                                ? html`<span class="result-title"
+                                    >${item.title}</span
+                                  >`
+                                : ``
+                            }
+                            ${
+                              item && item.description
+                                ? html`<p>${item.description}</p>`
+                                : ``
+                            }
+                          </li>`,
+                      )}
+                    </ul>`
+                  : ``
+              }
+            </div>`
+          : ``
+      }
       <slot></slot>
     `;
   }

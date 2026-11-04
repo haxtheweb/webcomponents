@@ -211,13 +211,13 @@
       "order": 0,
       "src": "lrndesign-timeline.motion.json",
       "file": "lib/lrndesign-timeline.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/lrndesign-timeline.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

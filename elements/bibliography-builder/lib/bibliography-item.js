@@ -169,9 +169,9 @@ export class BibliographyItem extends SchemaBehaviors(
         if (format === "APA") {
           // Issue num only applies if there's a volume num
           const volumeDetails = this.parentVer
-            ? html`<i>${this.parentVer}</i>${this.childVer
-                  ? html`(${this.childVer})`
-                  : ""}`
+            ? html`<i>${this.parentVer}</i>${
+                  this.childVer ? html`(${this.childVer})` : ""
+                }`
             : "";
 
           // End page only applies if there's a start page

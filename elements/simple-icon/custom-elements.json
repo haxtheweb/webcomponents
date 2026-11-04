@@ -836,6 +836,18 @@
           },
           "tagName": "simple-clipboard-copy-button",
           "customElement": true
+        },
+        {
+          "kind": "variable",
+          "name": "value"
+        },
+        {
+          "kind": "variable",
+          "name": "copied",
+          "type": {
+            "text": "boolean"
+          },
+          "default": "false"
         }
       ],
       "exports": [

@@ -144,25 +144,27 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
         @click="${this._toggleDialog}"
       ></simple-icon-button-lite>
       <simple-context-menu title="${this.t.outlineActions}">
-        ${store.platformAllows("addPage") && !this.editMode
-          ? html`
-              <haxcms-button-add
-                id="addpagebutton"
-                class="top-bar-button"
-                icon="hax:add-page"
-                icon-position="left"
-                label="${this.t.addPage}"
-                type="child"
-                action-id="${this.actionId}"
-                shortcut-label="${this._shortcut("cms-add-page").label}"
-                key-shortcuts="${this._shortcut("cms-add-page").aria}"
-                merlin
-                @click="${this._closeDialog}"
-                show-text-label
-                autofocus
-              ></haxcms-button-add>
-            `
-          : ""}
+        ${
+          store.platformAllows("addPage") && !this.editMode
+            ? html`
+                <haxcms-button-add
+                  id="addpagebutton"
+                  class="top-bar-button"
+                  icon="hax:add-page"
+                  icon-position="left"
+                  label="${this.t.addPage}"
+                  type="child"
+                  action-id="${this.actionId}"
+                  shortcut-label="${this._shortcut("cms-add-page").label}"
+                  key-shortcuts="${this._shortcut("cms-add-page").aria}"
+                  merlin
+                  @click="${this._closeDialog}"
+                  show-text-label
+                  autofocus
+                ></haxcms-button-add>
+              `
+            : ""
+        }
         <simple-toolbar-button
           icon="${HaxUiAdminIcons.moveUp}"
           icon-position="left"
@@ -218,33 +220,37 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
           key-shortcuts="${this._shortcut("cms-outline").aria}"
           @click=${this._openSiteOutline}
         ></simple-toolbar-button>
-        ${this.isLocked
-          ? html`
-              <simple-toolbar-button
-                icon="icons:lock"
-                icon-position="left"
-                align-horizontal="left"
-                show-text-label
-                label="${this.t.unlock}"
-                @click=${this._toggleLock}
-              ></simple-toolbar-button>
-            `
-          : html``}
-        ${store.platformAllows("deletePage")
-          ? html`
-              <hr />
-              <simple-toolbar-button
-                class="delete-button danger"
-                icon="${HaxUiAdminIcons.delete}"
-                icon-position="left"
-                align-horizontal="left"
-                show-text-label
-                label="${this.t.delete}"
-                ?disabled="${this.isLocked}"
-                @click=${this._deletePage}
-              ></simple-toolbar-button>
-            `
-          : ""}
+        ${
+          this.isLocked
+            ? html`
+                <simple-toolbar-button
+                  icon="icons:lock"
+                  icon-position="left"
+                  align-horizontal="left"
+                  show-text-label
+                  label="${this.t.unlock}"
+                  @click=${this._toggleLock}
+                ></simple-toolbar-button>
+              `
+            : html``
+        }
+        ${
+          store.platformAllows("deletePage")
+            ? html`
+                <hr />
+                <simple-toolbar-button
+                  class="delete-button danger"
+                  icon="${HaxUiAdminIcons.delete}"
+                  icon-position="left"
+                  align-horizontal="left"
+                  show-text-label
+                  label="${this.t.delete}"
+                  ?disabled="${this.isLocked}"
+                  @click=${this._deletePage}
+                ></simple-toolbar-button>
+              `
+            : ""
+        }
       </simple-context-menu>
     `;
   }

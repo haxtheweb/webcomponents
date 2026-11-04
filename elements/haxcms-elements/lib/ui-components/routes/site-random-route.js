@@ -96,9 +96,11 @@ export class SiteRandomRoute extends HAXCMSI18NMixin(DDD) {
 
     return html`
       <div role="status" aria-live="polite">
-        ${!randomPage
-          ? html`<p>${this.t.noPages}</p>`
-          : html`<p>${this.t.navigating}</p>`}
+        ${
+          !randomPage
+            ? html`<p>${this.t.noPages}</p>`
+            : html`<p>${this.t.navigating}</p>`
+        }
       </div>
     `;
   }

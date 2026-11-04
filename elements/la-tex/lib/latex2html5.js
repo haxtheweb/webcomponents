@@ -2974,7 +2974,6 @@
                 for (
                   index = basic > 0 ? basic + 1 : 0;
                   index < inputLength /* no final expression */;
-
                 ) {
                   // `index` is the index of the next character to be consumed.
                   // Decode a generalized variable-length integer into `delta`,
@@ -7907,14 +7906,14 @@
             }
 
             function range(start, stop, step) {
-              (start = +start),
+              ((start = +start),
                 (stop = +stop),
                 (step =
                   (n = arguments.length) < 2
                     ? ((stop = start), (start = 0), 1)
                     : n < 3
                       ? 1
-                      : +step);
+                      : +step));
 
               var i = -1,
                 n = Math.max(0, Math.ceil((stop - start) / step)) | 0,
@@ -7938,10 +7937,10 @@
                 ticks,
                 step;
 
-              (stop = +stop), (start = +start), (count = +count);
+              ((stop = +stop), (start = +start), (count = +count));
               if (start === stop && count > 0) return [start];
               if ((reverse = stop < start))
-                (n = start), (start = stop), (stop = n);
+                ((n = start), (start = stop), (stop = n));
               if (
                 (step = tickIncrement(start, stop, count)) === 0 ||
                 !isFinite(step)
@@ -8018,8 +8017,8 @@
 
                 // Remove any thresholds outside the domain.
                 var m = tz.length;
-                while (tz[0] <= x0) tz.shift(), --m;
-                while (tz[m - 1] > x1) tz.pop(), --m;
+                while (tz[0] <= x0) (tz.shift(), --m);
+                while (tz[m - 1] > x1) (tz.pop(), --m);
 
                 var bins = new Array(m + 1),
                   bin;
@@ -8278,7 +8277,7 @@
                   compare((xi = values[i]), xj) < 0 ||
                   compare(xj, xj) !== 0
                 ) {
-                  (xj = xi), (j = i);
+                  ((xj = xi), (j = i));
                 }
               }
 
@@ -8326,12 +8325,10 @@
               for (
                 var i = -1, m = min(matrix, length), transpose = new Array(m);
                 ++i < m;
-
               ) {
                 for (
                   var j = -1, n, row = (transpose[i] = new Array(n));
                   ++j < n;
-
                 ) {
                   row[j] = matrix[j][i];
                 }
@@ -8587,7 +8584,7 @@
               };
 
               axis.ticks = function () {
-                return (tickArguments = slice.call(arguments)), axis;
+                return ((tickArguments = slice.call(arguments)), axis);
               };
 
               axis.tickArguments = function (_) {
@@ -9065,12 +9062,12 @@
                 Emitter.prototype = {
                   beforestart: function () {
                     if (++this.active === 1)
-                      (this.state.emitter = this), (this.starting = true);
+                      ((this.state.emitter = this), (this.starting = true));
                     return this;
                   },
                   start: function () {
                     if (this.starting)
-                      (this.starting = false), this.emit("start");
+                      ((this.starting = false), this.emit("start"));
                     return this;
                   },
                   brush: function () {
@@ -9079,7 +9076,7 @@
                   },
                   end: function () {
                     if (--this.active === 0)
-                      delete this.state.emitter, this.emit("end");
+                      (delete this.state.emitter, this.emit("end"));
                     return this;
                   },
                   emit: function (type) {
@@ -9217,64 +9214,64 @@
                       case MODE_SPACE:
                       case MODE_DRAG: {
                         if (signX)
-                          (dx = Math.max(W - w0, Math.min(E - e0, dx))),
+                          ((dx = Math.max(W - w0, Math.min(E - e0, dx))),
                             (w1 = w0 + dx),
-                            (e1 = e0 + dx);
+                            (e1 = e0 + dx));
                         if (signY)
-                          (dy = Math.max(N - n0, Math.min(S - s0, dy))),
+                          ((dy = Math.max(N - n0, Math.min(S - s0, dy))),
                             (n1 = n0 + dy),
-                            (s1 = s0 + dy);
+                            (s1 = s0 + dy));
                         break;
                       }
                       case MODE_HANDLE: {
                         if (signX < 0)
-                          (dx = Math.max(W - w0, Math.min(E - w0, dx))),
+                          ((dx = Math.max(W - w0, Math.min(E - w0, dx))),
                             (w1 = w0 + dx),
-                            (e1 = e0);
+                            (e1 = e0));
                         else if (signX > 0)
-                          (dx = Math.max(W - e0, Math.min(E - e0, dx))),
+                          ((dx = Math.max(W - e0, Math.min(E - e0, dx))),
                             (w1 = w0),
-                            (e1 = e0 + dx);
+                            (e1 = e0 + dx));
                         if (signY < 0)
-                          (dy = Math.max(N - n0, Math.min(S - n0, dy))),
+                          ((dy = Math.max(N - n0, Math.min(S - n0, dy))),
                             (n1 = n0 + dy),
-                            (s1 = s0);
+                            (s1 = s0));
                         else if (signY > 0)
-                          (dy = Math.max(N - s0, Math.min(S - s0, dy))),
+                          ((dy = Math.max(N - s0, Math.min(S - s0, dy))),
                             (n1 = n0),
-                            (s1 = s0 + dy);
+                            (s1 = s0 + dy));
                         break;
                       }
                       case MODE_CENTER: {
                         if (signX)
-                          (w1 = Math.max(W, Math.min(E, w0 - dx * signX))),
-                            (e1 = Math.max(W, Math.min(E, e0 + dx * signX)));
+                          ((w1 = Math.max(W, Math.min(E, w0 - dx * signX))),
+                            (e1 = Math.max(W, Math.min(E, e0 + dx * signX))));
                         if (signY)
-                          (n1 = Math.max(N, Math.min(S, n0 - dy * signY))),
-                            (s1 = Math.max(N, Math.min(S, s0 + dy * signY)));
+                          ((n1 = Math.max(N, Math.min(S, n0 - dy * signY))),
+                            (s1 = Math.max(N, Math.min(S, s0 + dy * signY))));
                         break;
                       }
                     }
 
                     if (e1 < w1) {
                       signX *= -1;
-                      (t = w0), (w0 = e0), (e0 = t);
-                      (t = w1), (w1 = e1), (e1 = t);
+                      ((t = w0), (w0 = e0), (e0 = t));
+                      ((t = w1), (w1 = e1), (e1 = t));
                       if (type in flipX)
                         overlay.attr("cursor", cursors[(type = flipX[type])]);
                     }
 
                     if (s1 < n1) {
                       signY *= -1;
-                      (t = n0), (n0 = s0), (s0 = t);
-                      (t = n1), (n1 = s1), (s1 = t);
+                      ((t = n0), (n0 = s0), (s0 = t));
+                      ((t = n1), (n1 = s1), (s1 = t));
                       if (type in flipY)
                         overlay.attr("cursor", cursors[(type = flipY[type])]);
                     }
 
                     if (state.selection) selection = state.selection; // May be set by brush.move!
-                    if (lockX) (w1 = selection[0][0]), (e1 = selection[1][0]);
-                    if (lockY) (n1 = selection[0][1]), (s1 = selection[1][1]);
+                    if (lockX) ((w1 = selection[0][0]), (e1 = selection[1][0]));
+                    if (lockY) ((n1 = selection[0][1]), (s1 = selection[1][1]));
 
                     if (
                       selection[0][0] !== w1 ||
@@ -9314,7 +9311,7 @@
                     overlay.attr("cursor", cursors.overlay);
                     if (state.selection) selection = state.selection; // May be set by brush.move (on start)!
                     if (empty(selection))
-                      (state.selection = null), redraw.call(that);
+                      ((state.selection = null), redraw.call(that));
                     emit.end();
                   }
 
@@ -9329,9 +9326,9 @@
                         // ALT
                         if (mode === MODE_HANDLE) {
                           if (signX)
-                            (e0 = e1 - dx * signX), (w0 = w1 + dx * signX);
+                            ((e0 = e1 - dx * signX), (w0 = w1 + dx * signX));
                           if (signY)
-                            (s0 = s1 - dy * signY), (n0 = n1 + dy * signY);
+                            ((s0 = s1 - dy * signY), (n0 = n1 + dy * signY));
                           mode = MODE_CENTER;
                           move();
                         }
@@ -9383,9 +9380,9 @@
                         if (mode === MODE_SPACE) {
                           if (d3Selection.event.altKey) {
                             if (signX)
-                              (e0 = e1 - dx * signX), (w0 = w1 + dx * signX);
+                              ((e0 = e1 - dx * signX), (w0 = w1 + dx * signX));
                             if (signY)
-                              (s0 = s1 - dy * signY), (n0 = n1 + dy * signY);
+                              ((s0 = s1 - dy * signY), (n0 = n1 + dy * signY));
                             mode = MODE_CENTER;
                           } else {
                             if (signX < 0) e0 = e1;
@@ -9514,9 +9511,9 @@
                   j;
 
                 // Compute the sum.
-                (k = 0), (i = -1);
+                ((k = 0), (i = -1));
                 while (++i < n) {
-                  (x = 0), (j = -1);
+                  ((x = 0), (j = -1));
                   while (++j < n) {
                     x += matrix[i][j];
                   }
@@ -9547,9 +9544,9 @@
 
                 // Compute the start and end angle for each group and subgroup.
                 // Note: Opera has a bug reordering object literal properties!
-                (x = 0), (i = -1);
+                ((x = 0), (i = -1));
                 while (++i < n) {
-                  (x0 = x), (j = -1);
+                  ((x0 = x), (j = -1));
                   while (++j < n) {
                     var di = groupIndex[i],
                       dj = subgroupIndex[di][j],
@@ -9685,7 +9682,7 @@
                 context.quadraticCurveTo(0, 0, sx0, sy0);
                 context.closePath();
 
-                if (buffer) return (context = null), buffer + "" || null;
+                if (buffer) return ((context = null), buffer + "" || null);
               }
 
               ribbon.radius = function (_) {
@@ -9886,10 +9883,10 @@
                 if (rollup != null && depth >= keys.length)
                   array = map$$1.entries();
                 else
-                  (array = []),
+                  ((array = []),
                     map$$1.each(function (v, k) {
                       array.push({ key: k, values: entries(v, depth) });
-                    });
+                    }));
                 return sortKey != null
                   ? array.sort(function (a, b) {
                       return sortKey(a.key, b.key);
@@ -10817,7 +10814,7 @@
                 .map(function (t) {
                   var name = "",
                     i = t.indexOf(".");
-                  if (i >= 0) (name = t.slice(i + 1)), (t = t.slice(0, i));
+                  if (i >= 0) ((name = t.slice(i + 1)), (t = t.slice(0, i)));
                   if (t && !types.hasOwnProperty(t))
                     throw new Error("unknown type: " + t);
                   return { type: t, name: name };
@@ -10891,8 +10888,8 @@
             function set(type, name, callback) {
               for (var i = 0, n = type.length; i < n; ++i) {
                 if (type[i].name === name) {
-                  (type[i] = noop),
-                    (type = type.slice(0, i).concat(type.slice(i + 1)));
+                  ((type[i] = noop),
+                    (type = type.slice(0, i).concat(type.slice(i + 1))));
                   break;
                 }
               }
@@ -11179,12 +11176,12 @@
                     n;
                   switch (type) {
                     case "start":
-                      (gestures[id] = gesture), (n = active++);
+                      ((gestures[id] = gesture), (n = active++));
                       break;
                     case "end":
-                      delete gestures[id], --active; // nobreak
+                      (delete gestures[id], --active); // nobreak
                     case "drag":
-                      (p = point(container, id)), (n = active);
+                      ((p = point(container, id)), (n = active));
                       break;
                   }
                   d3Selection.customEvent(
@@ -11321,10 +11318,10 @@
                   columns,
                   rows = parseRows(text, function (row, i) {
                     if (convert) return convert(row, i - 1);
-                    (columns = row),
+                    ((columns = row),
                       (convert = f
                         ? customConverter(row, f)
-                        : objectConverter(row));
+                        : objectConverter(row)));
                   });
                 rows.columns = columns || [];
                 return rows;
@@ -11345,7 +11342,7 @@
 
                 function token() {
                   if (eof) return EOF;
-                  if (eol) return (eol = false), EOL;
+                  if (eol) return ((eol = false), EOL);
 
                   // Unescape quotes.
                   var i,
@@ -11377,12 +11374,12 @@
                   }
 
                   // Return last token before EOF.
-                  return (eof = true), text.slice(j, N);
+                  return ((eof = true), text.slice(j, N));
                 }
 
                 while ((t = token()) !== EOF) {
                   var row = [];
-                  while (t !== EOL && t !== EOF) row.push(t), (t = token());
+                  while (t !== EOL && t !== EOF) (row.push(t), (t = token()));
                   if (f && (row = f(row, n++)) == null) continue;
                   rows.push(row);
                 }
@@ -11813,11 +11810,11 @@
                     sy = 0;
 
                   for (i = 0; i < n; ++i) {
-                    (node = nodes[i]), (sx += node.x), (sy += node.y);
+                    ((node = nodes[i]), (sx += node.x), (sy += node.y));
                   }
 
                   for (sx = sx / n - x, sy = sy / n - y, i = 0; i < n; ++i) {
-                    (node = nodes[i]), (node.x -= sx), (node.y -= sy);
+                    ((node = nodes[i]), (node.x -= sx), (node.y -= sy));
                   }
                 }
 
@@ -11877,7 +11874,7 @@
                     tree = d3Quadtree.quadtree(nodes, x, y).visitAfter(prepare);
                     for (i = 0; i < n; ++i) {
                       node = nodes[i];
-                      (ri = radii[node.index]), (ri2 = ri * ri);
+                      ((ri = radii[node.index]), (ri2 = ri * ri));
                       xi = node.x + node.vx;
                       yi = node.y + node.vy;
                       tree.visit(apply);
@@ -11894,8 +11891,8 @@
                           y = yi - data.y - data.vy,
                           l = x * x + y * y;
                         if (l < r * r) {
-                          if (x === 0) (x = jiggle()), (l += x * x);
-                          if (y === 0) (y = jiggle()), (l += y * y);
+                          if (x === 0) ((x = jiggle()), (l += x * x));
+                          if (y === 0) ((y = jiggle()), (l += y * y));
                           l = ((r - (l = Math.sqrt(l))) / l) * strength;
                           node.vx += (x *= l) * (r = (rj *= rj) / (ri2 + rj));
                           node.vy += (y *= l) * r;
@@ -11927,8 +11924,8 @@
                     node;
                   radii = new Array(n);
                   for (i = 0; i < n; ++i)
-                    (node = nodes[i]),
-                      (radii[node.index] = +radius(node, i, nodes));
+                    ((node = nodes[i]),
+                      (radii[node.index] = +radius(node, i, nodes)));
                 }
 
                 force.initialize = function (_) {
@@ -11994,16 +11991,16 @@
                       i < n;
                       ++i
                     ) {
-                      (link = links[i]),
+                      ((link = links[i]),
                         (source = link.source),
-                        (target = link.target);
+                        (target = link.target));
                       x =
                         target.x + target.vx - source.x - source.vx || jiggle();
                       y =
                         target.y + target.vy - source.y - source.vy || jiggle();
                       l = Math.sqrt(x * x + y * y);
                       l = ((l - distances[i]) / l) * alpha * strengths[i];
-                      (x *= l), (y *= l);
+                      ((x *= l), (y *= l));
                       target.vx -= x * (b = bias[i]);
                       target.vy -= y * b;
                       source.vx += x * (b = 1 - b);
@@ -12022,7 +12019,7 @@
                     link;
 
                   for (i = 0, count = new Array(n); i < m; ++i) {
-                    (link = links[i]), (link.index = i);
+                    ((link = links[i]), (link.index = i));
                     if (typeof link.source !== "object")
                       link.source = find(nodeById, link.source);
                     if (typeof link.target !== "object")
@@ -12034,14 +12031,14 @@
                   }
 
                   for (i = 0, bias = new Array(m); i < m; ++i) {
-                    (link = links[i]),
+                    ((link = links[i]),
                       (bias[i] =
                         count[link.source.index] /
-                        (count[link.source.index] + count[link.target.index]));
+                        (count[link.source.index] + count[link.target.index])));
                   }
 
-                  (strengths = new Array(m)), initializeStrength();
-                  (distances = new Array(m)), initializeDistance();
+                  ((strengths = new Array(m)), initializeStrength());
+                  ((distances = new Array(m)), initializeDistance());
                 }
 
                 function initializeStrength() {
@@ -12147,15 +12144,15 @@
                   for (i = 0; i < n; ++i) {
                     node = nodes[i];
                     if (node.fx == null) node.x += node.vx *= velocityDecay;
-                    else (node.x = node.fx), (node.vx = 0);
+                    else ((node.x = node.fx), (node.vx = 0));
                     if (node.fy == null) node.y += node.vy *= velocityDecay;
-                    else (node.y = node.fy), (node.vy = 0);
+                    else ((node.y = node.fy), (node.vy = 0));
                   }
                 }
 
                 function initializeNodes() {
                   for (var i = 0, n = nodes.length, node; i < n; ++i) {
-                    (node = nodes[i]), (node.index = i);
+                    ((node = nodes[i]), (node.index = i));
                     if (isNaN(node.x) || isNaN(node.y)) {
                       var radius = initialRadius * Math.sqrt(i),
                         angle = i * initialAngle;
@@ -12179,11 +12176,11 @@
                   tick: tick,
 
                   restart: function () {
-                    return stepper.restart(step), simulation;
+                    return (stepper.restart(step), simulation);
                   },
 
                   stop: function () {
-                    return stepper.stop(), simulation;
+                    return (stepper.stop(), simulation);
                   },
 
                   nodes: function (_) {
@@ -12251,7 +12248,7 @@
                       dx = x - node.x;
                       dy = y - node.y;
                       d2 = dx * dx + dy * dy;
-                      if (d2 < radius) (closest = node), (radius = d2);
+                      if (d2 < radius) ((closest = node), (radius = d2));
                     }
 
                     return closest;
@@ -12282,7 +12279,7 @@
                       .quadtree(nodes, x$1, y$1)
                       .visitAfter(accumulate);
                   for (alpha = _, i = 0; i < n; ++i)
-                    (node = nodes[i]), tree.visit(apply);
+                    ((node = nodes[i]), tree.visit(apply));
                 }
 
                 function initialize() {
@@ -12292,8 +12289,8 @@
                     node;
                   strengths = new Array(n);
                   for (i = 0; i < n; ++i)
-                    (node = nodes[i]),
-                      (strengths[node.index] = +strength(node, i, nodes));
+                    ((node = nodes[i]),
+                      (strengths[node.index] = +strength(node, i, nodes)));
                 }
 
                 function accumulate(quad) {
@@ -12309,10 +12306,10 @@
                   if (quad.length) {
                     for (x = y = i = 0; i < 4; ++i) {
                       if ((q = quad[i]) && (c = Math.abs(q.value))) {
-                        (strength += q.value),
+                        ((strength += q.value),
                           (weight += c),
                           (x += c * q.x),
-                          (y += c * q.y);
+                          (y += c * q.y));
                       }
                     }
                     quad.x = x / weight;
@@ -12343,8 +12340,8 @@
                   // Limit forces for very close nodes; randomize direction if coincident.
                   if ((w * w) / theta2 < l) {
                     if (l < distanceMax2) {
-                      if (x === 0) (x = jiggle()), (l += x * x);
-                      if (y === 0) (y = jiggle()), (l += y * y);
+                      if (x === 0) ((x = jiggle()), (l += x * x));
+                      if (y === 0) ((y = jiggle()), (l += y * y));
                       if (l < distanceMin2) l = Math.sqrt(distanceMin2 * l);
                       node.vx += (x * quad.value * alpha) / l;
                       node.vy += (y * quad.value * alpha) / l;
@@ -12357,8 +12354,8 @@
 
                   // Limit forces for very close nodes; randomize direction if coincident.
                   if (quad.data !== node || quad.next) {
-                    if (x === 0) (x = jiggle()), (l += x * x);
-                    if (y === 0) (y = jiggle()), (l += y * y);
+                    if (x === 0) ((x = jiggle()), (l += x * x));
+                    if (y === 0) ((y = jiggle()), (l += y * y));
                     if (l < distanceMin2) l = Math.sqrt(distanceMin2 * l);
                   }
 
@@ -12442,7 +12439,7 @@
                 }
 
                 force.initialize = function (_) {
-                  (nodes = _), initialize();
+                  ((nodes = _), initialize());
                 };
 
                 force.strength = function (_) {
@@ -12482,8 +12479,8 @@
 
                 function force(alpha) {
                   for (var i = 0, n = nodes.length, node; i < n; ++i) {
-                    (node = nodes[i]),
-                      (node.vx += (xz[i] - node.x) * strengths[i] * alpha);
+                    ((node = nodes[i]),
+                      (node.vx += (xz[i] - node.x) * strengths[i] * alpha));
                   }
                 }
 
@@ -12534,8 +12531,8 @@
 
                 function force(alpha) {
                   for (var i = 0, n = nodes.length, node; i < n; ++i) {
-                    (node = nodes[i]),
-                      (node.vy += (yz[i] - node.y) * strengths[i] * alpha);
+                    ((node = nodes[i]),
+                      (node.vy += (yz[i] - node.y) * strengths[i] * alpha));
                   }
                 }
 
@@ -12635,7 +12632,7 @@
                 j;
 
               // If the tree is empty, initialize the root as a leaf.
-              if (!node) return (tree._root = leaf), tree;
+              if (!node) return ((tree._root = leaf), tree);
 
               // Find the existing leaf for the new point, or add it.
               while (node.length) {
@@ -12646,7 +12643,7 @@
                 if (
                   ((parent = node), !(node = node[(i = (bottom << 1) | right)]))
                 )
-                  return (parent[i] = leaf), tree;
+                  return ((parent[i] = leaf), tree);
               }
 
               // Is the new point is exactly coincident with the existing point?
@@ -12672,7 +12669,7 @@
                 (i = (bottom << 1) | right) ===
                 (j = ((yp >= ym) << 1) | (xp >= xm))
               );
-              return (parent[j] = node), (parent[i] = leaf), tree;
+              return ((parent[j] = node), (parent[i] = leaf), tree);
             }
 
             function addAll(data) {
@@ -12742,22 +12739,22 @@
 
                 while (x0 > x || x >= x1 || y0 > y || y >= y1) {
                   i = ((y < y0) << 1) | (x < x0);
-                  (parent = new Array(4)),
+                  ((parent = new Array(4)),
                     (parent[i] = node),
                     (node = parent),
-                    (z *= 2);
+                    (z *= 2));
                   switch (i) {
                     case 0:
-                      (x1 = x0 + z), (y1 = y0 + z);
+                      ((x1 = x0 + z), (y1 = y0 + z));
                       break;
                     case 1:
-                      (x0 = x1 - z), (y1 = y0 + z);
+                      ((x0 = x1 - z), (y1 = y0 + z));
                       break;
                     case 2:
-                      (x1 = x0 + z), (y0 = y1 - z);
+                      ((x1 = x0 + z), (y0 = y1 - z));
                       break;
                     case 3:
-                      (x0 = x1 - z), (y0 = y1 - z);
+                      ((x0 = x1 - z), (y0 = y1 - z));
                       break;
                   }
                 }
@@ -12819,8 +12816,8 @@
               if (node) quads.push(new Quad(node, x0, y0, x3, y3));
               if (radius == null) radius = Infinity;
               else {
-                (x0 = x - radius), (y0 = y - radius);
-                (x3 = x + radius), (y3 = y + radius);
+                ((x0 = x - radius), (y0 = y - radius));
+                ((x3 = x + radius), (y3 = y + radius));
                 radius *= radius;
               }
 
@@ -12862,8 +12859,8 @@
                     d2 = dx * dx + dy * dy;
                   if (d2 < radius) {
                     var d = Math.sqrt((radius = d2));
-                    (x0 = x - d), (y0 = y - d);
-                    (x3 = x + d), (y3 = y + d);
+                    ((x0 = x - d), (y0 = y - d));
+                    ((x3 = x + d), (y3 = y + d));
                     data = node.data;
                   }
                 }
@@ -12919,7 +12916,7 @@
                     parent[(i + 2) & 3] ||
                     parent[(i + 3) & 3]
                   )
-                    (retainer = parent), (j = i);
+                    ((retainer = parent), (j = i));
                 }
 
               // Find the point to remove.
@@ -12930,11 +12927,12 @@
               // If there are multiple coincident points, remove just the point.
               if (previous)
                 return (
-                  next ? (previous.next = next) : delete previous.next, this
+                  next ? (previous.next = next) : delete previous.next,
+                  this
                 );
 
               // If this is the root point, remove it.
-              if (!parent) return (this._root = next), this;
+              if (!parent) return ((this._root = next), this);
 
               // Remove this leaf.
               next ? (parent[i] = next) : delete parent[i];
@@ -13107,7 +13105,7 @@
 
               if (!node) return copy;
 
-              if (!node.length) return (copy._root = leaf_copy(node)), copy;
+              if (!node.length) return ((copy._root = leaf_copy(node)), copy);
 
               nodes = [{ source: node, target: (copy._root = new Array(4)) }];
               while ((node = nodes.pop())) {
@@ -13184,7 +13182,7 @@
             };
 
             var exponent = function (x) {
-              return (x = formatDecimal(Math.abs(x))), x ? x[1] : NaN;
+              return ((x = formatDecimal(Math.abs(x))), x ? x[1] : NaN);
             };
 
             var formatGroup = function (grouping, thousands) {
@@ -13341,13 +13339,13 @@
                 type = match[9] || "";
 
               // The "n" type is an alias for ",g".
-              if (type === "n") (comma = true), (type = "g");
+              if (type === "n") ((comma = true), (type = "g"));
               // Map invalid types to the default format.
               else if (!formatTypes[type]) type = "";
 
               // If zero fill is specified, padding goes after sign and before digits.
               if (zero || (fill === "0" && align === "="))
-                (zero = true), (fill = "0"), (align = "=");
+                ((zero = true), (fill = "0"), (align = "="));
 
               this.fill = fill;
               this.align = align;
@@ -13496,7 +13494,7 @@
                     // Break the formatted value into the integer “value” part that can be
                     // grouped, and fractional or exponential “suffix” part that is not.
                     if (maybeSuffix) {
-                      (i = -1), (n = value.length);
+                      ((i = -1), (n = value.length));
                       while (++i < n) {
                         if (((c = value.charCodeAt(i)), 48 > c || c > 57)) {
                           valueSuffix =
@@ -13523,11 +13521,11 @@
 
                   // If the fill character is "0", grouping is applied after padding.
                   if (comma && zero)
-                    (value = group(
+                    ((value = group(
                       padding + value,
                       padding.length ? width - valueSuffix.length : Infinity,
                     )),
-                      (padding = "");
+                      (padding = ""));
 
                   // Reconstruct the final output based on the desired alignment.
                   switch (align) {
@@ -13611,7 +13609,7 @@
             };
 
             var precisionRound = function (step, max) {
-              (step = Math.abs(step)), (max = Math.abs(max) - step);
+              ((step = Math.abs(step)), (max = Math.abs(max) - step));
               return Math.max(0, exponent(max) - exponent(step)) + 1;
             };
 
@@ -13756,8 +13754,8 @@
                   i = -1,
                   n = coordinates.length;
                 while (++i < n)
-                  (object = coordinates[i]),
-                    stream.point(object[0], object[1], object[2]);
+                  ((object = coordinates[i]),
+                    stream.point(object[0], object[1], object[2]));
               },
               LineString: function (object, stream) {
                 streamLine(object.coordinates, stream, 0);
@@ -13791,8 +13789,8 @@
                 coordinate;
               stream.lineStart();
               while (++i < n)
-                (coordinate = coordinates[i]),
-                  stream.point(coordinate[0], coordinate[1], coordinate[2]);
+                ((coordinate = coordinates[i]),
+                  stream.point(coordinate[0], coordinate[1], coordinate[2]));
               stream.lineEnd();
             }
 
@@ -13850,15 +13848,15 @@
 
             function areaPointFirst(lambda, phi) {
               areaStream.point = areaPoint;
-              (lambda00 = lambda), (phi00 = phi);
-              (lambda *= radians), (phi *= radians);
-              (lambda0 = lambda),
+              ((lambda00 = lambda), (phi00 = phi));
+              ((lambda *= radians), (phi *= radians));
+              ((lambda0 = lambda),
                 (cosPhi0 = cos((phi = phi / 2 + quarterPi))),
-                (sinPhi0 = sin(phi));
+                (sinPhi0 = sin(phi)));
             }
 
             function areaPoint(lambda, phi) {
-              (lambda *= radians), (phi *= radians);
+              ((lambda *= radians), (phi *= radians));
               phi = phi / 2 + quarterPi; // half the angular distance from south pole
 
               // Spherical excess E for a spherical triangle with vertices: south pole,
@@ -13875,7 +13873,7 @@
               areaRingSum.add(atan2(v, u));
 
               // Advance the previous points.
-              (lambda0 = lambda), (cosPhi0 = cosPhi), (sinPhi0 = sinPhi);
+              ((lambda0 = lambda), (cosPhi0 = cosPhi), (sinPhi0 = sinPhi));
             }
 
             var area = function (object) {
@@ -13909,7 +13907,7 @@
 
             // TODO return a
             function cartesianAddInPlace(a, b) {
-              (a[0] += b[0]), (a[1] += b[1]), (a[2] += b[2]);
+              ((a[0] += b[0]), (a[1] += b[1]), (a[2] += b[2]));
             }
 
             function cartesianScale(vector, k) {
@@ -13919,7 +13917,7 @@
             // TODO return d
             function cartesianNormalizeInPlace(d) {
               var l = sqrt(d[0] * d[0] + d[1] * d[1] + d[2] * d[2]);
-              (d[0] /= l), (d[1] /= l), (d[2] /= l);
+              ((d[0] /= l), (d[1] /= l), (d[2] /= l));
             }
 
             var lambda0$1;
@@ -13951,10 +13949,10 @@
                 boundsStream.lineStart = boundsLineStart;
                 boundsStream.lineEnd = boundsLineEnd;
                 if (areaRingSum < 0)
-                  (lambda0$1 = -(lambda1 = 180)), (phi0 = -(phi1 = 90));
+                  ((lambda0$1 = -(lambda1 = 180)), (phi0 = -(phi1 = 90)));
                 else if (deltaSum > epsilon) phi1 = 90;
                 else if (deltaSum < -epsilon) phi0 = -90;
-                (range$1[0] = lambda0$1), (range$1[1] = lambda1);
+                ((range$1[0] = lambda0$1), (range$1[1] = lambda1));
               },
             };
 
@@ -14025,7 +14023,7 @@
               }
               if (phi < phi0) phi0 = phi;
               if (phi > phi1) phi1 = phi;
-              (p0 = p), (lambda2 = lambda);
+              ((p0 = p), (lambda2 = lambda));
             }
 
             function boundsLineStart() {
@@ -14033,7 +14031,7 @@
             }
 
             function boundsLineEnd() {
-              (range$1[0] = lambda0$1), (range$1[1] = lambda1);
+              ((range$1[0] = lambda0$1), (range$1[1] = lambda1));
               boundsStream.point = boundsPoint;
               p0 = null;
             }
@@ -14045,7 +14043,7 @@
                   abs(delta) > 180 ? delta + (delta > 0 ? 360 : -360) : delta,
                 );
               } else {
-                (lambda00$1 = lambda), (phi00$1 = phi);
+                ((lambda00$1 = lambda), (phi00$1 = phi));
               }
               areaStream.point(lambda, phi);
               linePoint(lambda, phi);
@@ -14059,7 +14057,7 @@
               boundsRingPoint(lambda00$1, phi00$1);
               areaStream.lineEnd();
               if (abs(deltaSum) > epsilon) lambda0$1 = -(lambda1 = 180);
-              (range$1[0] = lambda0$1), (range$1[1] = lambda1);
+              ((range$1[0] = lambda0$1), (range$1[1] = lambda1));
               p0 = null;
             }
 
@@ -14114,7 +14112,7 @@
                 ) {
                   b = merged[i];
                   if ((delta = angle(a[1], b[0])) > deltaMax)
-                    (deltaMax = delta), (lambda0$1 = b[0]), (lambda1 = a[1]);
+                    ((deltaMax = delta), (lambda0$1 = b[0]), (lambda1 = a[1]));
                 }
               }
 
@@ -14165,7 +14163,7 @@
 
             // Arithmetic mean of Cartesian vectors.
             function centroidPoint(lambda, phi) {
-              (lambda *= radians), (phi *= radians);
+              ((lambda *= radians), (phi *= radians));
               var cosPhi = cos(phi);
               centroidPointCartesian(
                 cosPhi * cos(lambda),
@@ -14186,7 +14184,7 @@
             }
 
             function centroidLinePointFirst(lambda, phi) {
-              (lambda *= radians), (phi *= radians);
+              ((lambda *= radians), (phi *= radians));
               var cosPhi = cos(phi);
               x0 = cosPhi * cos(lambda);
               y0 = cosPhi * sin(lambda);
@@ -14196,7 +14194,7 @@
             }
 
             function centroidLinePoint(lambda, phi) {
-              (lambda *= radians), (phi *= radians);
+              ((lambda *= radians), (phi *= radians));
               var cosPhi = cos(phi),
                 x = cosPhi * cos(lambda),
                 y = cosPhi * sin(lambda),
@@ -14232,8 +14230,8 @@
             }
 
             function centroidRingPointFirst(lambda, phi) {
-              (lambda00$2 = lambda), (phi00$2 = phi);
-              (lambda *= radians), (phi *= radians);
+              ((lambda00$2 = lambda), (phi00$2 = phi));
+              ((lambda *= radians), (phi *= radians));
               centroidStream.point = centroidRingPoint;
               var cosPhi = cos(phi);
               x0 = cosPhi * cos(lambda);
@@ -14243,7 +14241,7 @@
             }
 
             function centroidRingPoint(lambda, phi) {
-              (lambda *= radians), (phi *= radians);
+              ((lambda *= radians), (phi *= radians));
               var cosPhi = cos(phi),
                 x = cosPhi * cos(lambda),
                 y = cosPhi * sin(lambda),
@@ -14275,9 +14273,9 @@
 
               // If the area-weighted ccentroid is undefined, fall back to length-weighted ccentroid.
               if (m < epsilon2) {
-                (x = X1), (y = Y1), (z = Z1);
+                ((x = X1), (y = Y1), (z = Z1));
                 // If the feature has zero length, fall back to arithmetic mean of point vectors.
-                if (W1 < epsilon) (x = X0), (y = Y0), (z = Z0);
+                if (W1 < epsilon) ((x = X0), (y = Y0), (z = Z0));
                 m = x * x + y * y + z * z;
                 // If the feature still has an undefined ccentroid, then return.
                 if (m < epsilon2) return [NaN, NaN];
@@ -14294,12 +14292,12 @@
 
             var compose = function (a, b) {
               function compose(x, y) {
-                return (x = a(x, y)), b(x[0], x[1]);
+                return ((x = a(x, y)), b(x[0], x[1]));
               }
 
               if (a.invert && b.invert)
                 compose.invert = function (x, y) {
-                  return (x = b.invert(x, y)), x && a.invert(x[0], x[1]);
+                  return ((x = b.invert(x, y)), x && a.invert(x[0], x[1]));
                 };
 
               return compose;
@@ -14456,7 +14454,7 @@
 
             // Returns the signed angle of a cartesian point relative to [cosRadius, 0, 0].
             function circleRadius(cosRadius, point) {
-              (point = cartesian(point)), (point[0] -= cosRadius);
+              ((point = cartesian(point)), (point[0] -= cosRadius));
               cartesianNormalizeInPlace(point);
               var radius = acos(-point[1]);
               return ((-point[2] < 0 ? -radius : radius) + tau - epsilon) % tau;
@@ -14472,7 +14470,7 @@
 
               function point(x, y) {
                 ring.push((x = rotate(x, y)));
-                (x[0] *= degrees), (x[1] *= degrees);
+                ((x[0] *= degrees), (x[1] *= degrees));
               }
 
               function circle() {
@@ -14778,7 +14776,7 @@
                     var startInside = polygonContains(polygon, start);
                     if (segments.length) {
                       if (!polygonStarted)
-                        sink.polygonStart(), (polygonStarted = true);
+                        (sink.polygonStart(), (polygonStarted = true));
                       clipRejoin(
                         segments,
                         compareIntersection,
@@ -14788,13 +14786,13 @@
                       );
                     } else if (startInside) {
                       if (!polygonStarted)
-                        sink.polygonStart(), (polygonStarted = true);
+                        (sink.polygonStart(), (polygonStarted = true));
                       sink.lineStart();
                       interpolate(null, null, 1, sink);
                       sink.lineEnd();
                     }
                     if (polygonStarted)
-                      sink.polygonEnd(), (polygonStarted = false);
+                      (sink.polygonEnd(), (polygonStarted = false));
                     segments = polygon = null;
                   },
                   sphere: function () {
@@ -14857,7 +14855,7 @@
                     segment = ringSegments[0];
                     if ((m = segment.length - 1) > 0) {
                       if (!polygonStarted)
-                        sink.polygonStart(), (polygonStarted = true);
+                        (sink.polygonStart(), (polygonStarted = true));
                       sink.lineStart();
                       for (i = 0; i < m; ++i)
                         sink.point((point = segment[i])[0], point[1]);
@@ -15090,7 +15088,7 @@
                     if (v && (!point0 || !pointEqual(point0, point1))) {
                       stream.point(point1[0], point1[1]);
                     }
-                    (point0 = point1), (v0 = v), (c0 = c);
+                    ((point0 = point1), (v0 = v), (c0 = c));
                   },
                   lineEnd: function () {
                     if (v0) stream.lineEnd();
@@ -15150,14 +15148,14 @@
                   z;
 
                 if (lambda1 < lambda0)
-                  (z = lambda0), (lambda0 = lambda1), (lambda1 = z);
+                  ((z = lambda0), (lambda0 = lambda1), (lambda1 = z));
 
                 var delta = lambda1 - lambda0,
                   polar = abs(delta - pi) < epsilon,
                   meridian = polar || delta < epsilon;
 
                 if (!polar && phi1 < phi0)
-                  (z = phi0), (phi0 = phi1), (phi1 = z);
+                  ((z = phi0), (phi0 = phi1), (phi1 = z));
 
                 // Check that the first point is between a and b.
                 if (
@@ -15251,8 +15249,8 @@
                 if (r < t1) t1 = r;
               }
 
-              if (t0 > 0) (a[0] = ax + t0 * dx), (a[1] = ay + t0 * dy);
-              if (t1 < 1) (b[0] = ax + t1 * dx), (b[1] = ay + t1 * dy);
+              if (t0 > 0) ((a[0] = ax + t0 * dx), (a[1] = ay + t0 * dy));
+              if (t1 < 1) ((b[0] = ax + t1 * dx), (b[1] = ay + t1 * dy));
               return true;
             };
 
@@ -15363,11 +15361,11 @@
                       j < m;
                       ++j
                     ) {
-                      (a0 = b0),
+                      ((a0 = b0),
                         (a1 = b1),
                         (point = ring[j]),
                         (b0 = point[0]),
-                        (b1 = point[1]);
+                        (b1 = point[1]));
                       if (a1 <= y1) {
                         if (
                           b1 > y1 &&
@@ -15389,10 +15387,10 @@
 
                 // Buffer geometry within a polygon and then clip it en masse.
                 function polygonStart() {
-                  (activeStream = bufferStream),
+                  ((activeStream = bufferStream),
                     (segments = []),
                     (polygon = []),
-                    (clean = true);
+                    (clean = true));
                 }
 
                 function polygonEnd() {
@@ -15417,7 +15415,7 @@
                     }
                     stream.polygonEnd();
                   }
-                  (activeStream = stream), (segments = polygon = ring = null);
+                  ((activeStream = stream), (segments = polygon = ring = null));
                 }
 
                 function lineStart() {
@@ -15445,7 +15443,7 @@
                   var v = visible(x, y);
                   if (polygon) ring.push([x, y]);
                   if (first) {
-                    (x__ = x), (y__ = y), (v__ = v);
+                    ((x__ = x), (y__ = y), (v__ = v));
                     first = false;
                     if (v) {
                       activeStream.lineStart();
@@ -15477,7 +15475,7 @@
                       }
                     }
                   }
-                  (x_ = x), (y_ = y), (v_ = v);
+                  ((x_ = x), (y_ = y), (v_ = v));
                 }
 
                 return clipStream;
@@ -15544,15 +15542,15 @@
             }
 
             function lengthPointFirst(lambda, phi) {
-              (lambda *= radians), (phi *= radians);
-              (lambda0$2 = lambda),
+              ((lambda *= radians), (phi *= radians));
+              ((lambda0$2 = lambda),
                 (sinPhi0$1 = sin(phi)),
-                (cosPhi0$1 = cos(phi));
+                (cosPhi0$1 = cos(phi)));
               lengthStream.point = lengthPoint;
             }
 
             function lengthPoint(lambda, phi) {
-              (lambda *= radians), (phi *= radians);
+              ((lambda *= radians), (phi *= radians));
               var sinPhi = sin(phi),
                 cosPhi = cos(phi),
                 delta = abs(lambda - lambda0$2),
@@ -15562,7 +15560,9 @@
                 y = cosPhi0$1 * sinPhi - sinPhi0$1 * cosPhi * cosDelta,
                 z = sinPhi0$1 * sinPhi + cosPhi0$1 * cosPhi * cosDelta;
               lengthSum.add(atan2(sqrt(x * x + y * y), z));
-              (lambda0$2 = lambda), (sinPhi0$1 = sinPhi), (cosPhi0$1 = cosPhi);
+              ((lambda0$2 = lambda),
+                (sinPhi0$1 = sinPhi),
+                (cosPhi0$1 = cosPhi));
             }
 
             var length = function (object) {
@@ -15668,7 +15668,7 @@
             }
 
             function ringRadians(ring) {
-              return (ring = ring.map(pointRadians)), ring.pop(), ring;
+              return ((ring = ring.map(pointRadians)), ring.pop(), ring);
             }
 
             function pointRadians(point) {
@@ -15777,10 +15777,10 @@
                     [X0, Y0],
                     [X1, Y1],
                   ];
-                (X0 = +_[0][0]), (X1 = +_[1][0]);
-                (Y0 = +_[0][1]), (Y1 = +_[1][1]);
-                if (X0 > X1) (_ = X0), (X0 = X1), (X1 = _);
-                if (Y0 > Y1) (_ = Y0), (Y0 = Y1), (Y1 = _);
+                ((X0 = +_[0][0]), (X1 = +_[1][0]));
+                ((Y0 = +_[0][1]), (Y1 = +_[1][1]));
+                if (X0 > X1) ((_ = X0), (X0 = X1), (X1 = _));
+                if (Y0 > Y1) ((_ = Y0), (Y0 = Y1), (Y1 = _));
                 return graticule.precision(precision);
               };
 
@@ -15790,10 +15790,10 @@
                     [x0, y0],
                     [x1, y1],
                   ];
-                (x0 = +_[0][0]), (x1 = +_[1][0]);
-                (y0 = +_[0][1]), (y1 = +_[1][1]);
-                if (x0 > x1) (_ = x0), (x0 = x1), (x1 = _);
-                if (y0 > y1) (_ = y0), (y0 = y1), (y1 = _);
+                ((x0 = +_[0][0]), (x1 = +_[1][0]));
+                ((y0 = +_[0][1]), (y1 = +_[1][1]));
+                if (x0 > x1) ((_ = x0), (x0 = x1), (x1 = _));
+                if (y0 > y1) ((_ = y0), (y0 = y1), (y1 = _));
                 return graticule.precision(precision);
               };
 
@@ -15804,13 +15804,13 @@
 
               graticule.stepMajor = function (_) {
                 if (!arguments.length) return [DX, DY];
-                (DX = +_[0]), (DY = +_[1]);
+                ((DX = +_[0]), (DY = +_[1]));
                 return graticule;
               };
 
               graticule.stepMinor = function (_) {
                 if (!arguments.length) return [dx, dy];
-                (dx = +_[0]), (dy = +_[1]);
+                ((dx = +_[0]), (dy = +_[1]));
                 return graticule;
               };
 
@@ -15918,12 +15918,12 @@
 
             function areaPointFirst$1(x, y) {
               areaStream$1.point = areaPoint$1;
-              (x00 = x0$1 = x), (y00 = y0$1 = y);
+              ((x00 = x0$1 = x), (y00 = y0$1 = y));
             }
 
             function areaPoint$1(x, y) {
               areaRingSum$1.add(y0$1 * x - x0$1 * y);
-              (x0$1 = x), (y0$1 = y);
+              ((x0$1 = x), (y0$1 = y));
             }
 
             function areaRingEnd$1() {
@@ -16074,7 +16074,7 @@
             PathContext.prototype = {
               _radius: 4.5,
               pointRadius: function (_) {
-                return (this._radius = _), this;
+                return ((this._radius = _), this);
               },
               polygonStart: function () {
                 this._line = 0;
@@ -16141,13 +16141,13 @@
 
             function lengthPointFirst$1(x, y) {
               lengthStream$1.point = lengthPoint$1;
-              (x00$2 = x0$4 = x), (y00$2 = y0$4 = y);
+              ((x00$2 = x0$4 = x), (y00$2 = y0$4 = y));
             }
 
             function lengthPoint$1(x, y) {
-              (x0$4 -= x), (y0$4 -= y);
+              ((x0$4 -= x), (y0$4 -= y));
               lengthSum$1.add(sqrt(x0$4 * x0$4 + y0$4 * y0$4));
-              (x0$4 = x), (y0$4 = y);
+              ((x0$4 = x), (y0$4 = y));
             }
 
             function PathString() {
@@ -16159,7 +16159,7 @@
               _circle: circle$1(4.5),
               pointRadius: function (_) {
                 if ((_ = +_) !== this._radius)
-                  (this._radius = _), (this._circle = null);
+                  ((this._radius = _), (this._circle = null));
                 return this;
               },
               polygonStart: function () {
@@ -16563,12 +16563,12 @@
                 }
 
                 function ringPoint(lambda, phi) {
-                  linePoint((lambda00 = lambda), phi),
+                  (linePoint((lambda00 = lambda), phi),
                     (x00 = x0),
                     (y00 = y0),
                     (a00 = a0),
                     (b00 = b0),
-                    (c00 = c0);
+                    (c00 = c0));
                   resampleStream.point = linePoint;
                 }
 
@@ -16658,7 +16658,7 @@
               }
 
               function projectTransform(x, y) {
-                return (x = project(x, y)), [x[0] * k + dx, dy - x[1] * k];
+                return ((x = project(x, y)), [x[0] * k + dx, dy - x[1] * k]);
               }
 
               projection.stream = function (stream) {
@@ -16960,13 +16960,15 @@
 
               albersUsa.precision = function (_) {
                 if (!arguments.length) return lower48.precision();
-                lower48.precision(_), alaska.precision(_), hawaii.precision(_);
+                (lower48.precision(_),
+                  alaska.precision(_),
+                  hawaii.precision(_));
                 return reset();
               };
 
               albersUsa.scale = function (_) {
                 if (!arguments.length) return lower48.scale();
-                lower48.scale(_), alaska.scale(_ * 0.35), hawaii.scale(_);
+                (lower48.scale(_), alaska.scale(_ * 0.35), hawaii.scale(_));
                 return albersUsa.translate(lower48.translate());
               };
 
@@ -17668,9 +17670,9 @@
                 i,
                 n;
               do {
-                (current = next.reverse()), (next = []);
+                ((current = next.reverse()), (next = []));
                 while ((node = current.pop())) {
-                  callback(node), (children = node.children);
+                  (callback(node), (children = node.children));
                   if (children)
                     for (i = 0, n = children.length; i < n; ++i) {
                       next.push(children[i]);
@@ -17686,7 +17688,7 @@
                 children,
                 i;
               while ((node = nodes.pop())) {
-                callback(node), (children = node.children);
+                (callback(node), (children = node.children));
                 if (children)
                   for (i = children.length - 1; i >= 0; --i) {
                     nodes.push(children[i]);
@@ -17703,7 +17705,7 @@
                 i,
                 n;
               while ((node = nodes.pop())) {
-                next.push(node), (children = node.children);
+                (next.push(node), (children = node.children));
                 if (children)
                   for (i = 0, n = children.length; i < n; ++i) {
                     nodes.push(children[i]);
@@ -17899,7 +17901,7 @@
               while (i < n) {
                 p = circles[i];
                 if (e && enclosesWeak(e, p)) ++i;
-                else (e = encloseBasis((B = extendBasis(B, p)))), (i = 0);
+                else ((e = encloseBasis((B = extendBasis(B, p)))), (i = 0));
               }
 
               return e;
@@ -18087,67 +18089,67 @@
               var a, b, c, n, aa, ca, i, j, k, sj, sk;
 
               // Place the first circle.
-              (a = circles[0]), (a.x = 0), (a.y = 0);
+              ((a = circles[0]), (a.x = 0), (a.y = 0));
               if (!(n > 1)) return a.r;
 
               // Place the second circle.
-              (b = circles[1]), (a.x = -b.r), (b.x = a.r), (b.y = 0);
+              ((b = circles[1]), (a.x = -b.r), (b.x = a.r), (b.y = 0));
               if (!(n > 2)) return a.r + b.r;
 
               // Place the third circle.
               place(b, a, (c = circles[2]));
 
               // Initialize the front-chain using the first three circles a, b and c.
-              (a = new Node$1(a)), (b = new Node$1(b)), (c = new Node$1(c));
+              ((a = new Node$1(a)), (b = new Node$1(b)), (c = new Node$1(c)));
               a.next = c.previous = b;
               b.next = a.previous = c;
               c.next = b.previous = a;
 
               // Attempt to place each remaining circle…
               pack: for (i = 3; i < n; ++i) {
-                place(a._, b._, (c = circles[i])), (c = new Node$1(c));
+                (place(a._, b._, (c = circles[i])), (c = new Node$1(c)));
 
                 // Find the closest intersecting circle on the front-chain, if any.
                 // “Closeness” is determined by linear distance along the front-chain.
                 // “Ahead” or “behind” is likewise determined by linear distance.
-                (j = b.next), (k = a.previous), (sj = b._.r), (sk = a._.r);
+                ((j = b.next), (k = a.previous), (sj = b._.r), (sk = a._.r));
                 do {
                   if (sj <= sk) {
                     if (intersects(j._, c._)) {
-                      (b = j), (a.next = b), (b.previous = a), --i;
+                      ((b = j), (a.next = b), (b.previous = a), --i);
                       continue pack;
                     }
-                    (sj += j._.r), (j = j.next);
+                    ((sj += j._.r), (j = j.next));
                   } else {
                     if (intersects(k._, c._)) {
-                      (a = k), (a.next = b), (b.previous = a), --i;
+                      ((a = k), (a.next = b), (b.previous = a), --i);
                       continue pack;
                     }
-                    (sk += k._.r), (k = k.previous);
+                    ((sk += k._.r), (k = k.previous));
                   }
                 } while (j !== k.next);
 
                 // Success! Insert the new circle c between a and b.
-                (c.previous = a), (c.next = b), (a.next = b.previous = b = c);
+                ((c.previous = a), (c.next = b), (a.next = b.previous = b = c));
 
                 // Compute the new closest circle pair to the centroid.
                 aa = score(a);
                 while ((c = c.next) !== b) {
                   if ((ca = score(c)) < aa) {
-                    (a = c), (aa = ca);
+                    ((a = c), (aa = ca));
                   }
                 }
                 b = a.next;
               }
 
               // Compute the enclosing circle of the front chain.
-              (a = [b._]), (c = b);
+              ((a = [b._]), (c = b));
               while ((c = c.next) !== b) a.push(c._);
               c = enclose(a);
 
               // Translate the circles to put the enclosing circle around the origin.
               for (i = 0; i < n; ++i)
-                (a = circles[i]), (a.x -= c.x), (a.y -= c.y);
+                ((a = circles[i]), (a.x -= c.x), (a.y -= c.y));
 
               return c.r;
             }
@@ -18187,7 +18189,7 @@
                 padding = constantZero;
 
               function pack(root) {
-                (root.x = dx / 2), (root.y = dy / 2);
+                ((root.x = dx / 2), (root.y = dy / 2));
                 if (radius) {
                   root
                     .eachBefore(radiusLeaf(radius))
@@ -18278,8 +18280,8 @@
                 k = parent.value && (x1 - x0) / parent.value;
 
               while (++i < n) {
-                (node = nodes[i]), (node.y0 = y0), (node.y1 = y1);
-                (node.x0 = x0), (node.x1 = x0 += node.value * k);
+                ((node = nodes[i]), (node.y0 = y0), (node.y1 = y1));
+                ((node.x0 = x0), (node.x1 = x0 += node.value * k));
               }
             };
 
@@ -18369,7 +18371,7 @@
                   nodeByKey = {};
 
                 for (i = 0; i < n; ++i) {
-                  (d = data[i]), (node = nodes[i] = new Node(d));
+                  ((d = data[i]), (node = nodes[i] = new Node(d)));
                   if ((nodeId = id(d, i, data)) != null && (nodeId += "")) {
                     nodeKey = keyPrefix + (node.id = nodeId);
                     nodeByKey[nodeKey] =
@@ -18378,7 +18380,7 @@
                 }
 
                 for (i = 0; i < n; ++i) {
-                  (node = nodes[i]), (nodeId = parentId(data[i], i, data));
+                  ((node = nodes[i]), (nodeId = parentId(data[i], i, data)));
                   if (nodeId == null || !(nodeId += "")) {
                     if (root) throw new Error("multiple roots");
                     root = node;
@@ -18529,7 +18531,7 @@
                 var t = treeRoot(root);
 
                 // Compute the layout using Buchheim et al.’s algorithm.
-                t.eachAfter(firstWalk), (t.parent.m = -t.z);
+                (t.eachAfter(firstWalk), (t.parent.m = -t.z));
                 t.eachBefore(secondWalk);
 
                 // If a fixed node size is specified, scale x and y.
@@ -18677,8 +18679,8 @@
                 k = parent.value && (y1 - y0) / parent.value;
 
               while (++i < n) {
-                (node = nodes[i]), (node.x0 = x0), (node.x1 = x1);
-                (node.y0 = y0), (node.y1 = y0 += node.value * k);
+                ((node = nodes[i]), (node.x0 = x0), (node.x1 = x1));
+                ((node.y0 = y0), (node.y1 = y0 += node.value * k));
               }
             };
 
@@ -18704,7 +18706,7 @@
                 beta;
 
               while (i0 < n) {
-                (dx = x1 - x0), (dy = y1 - y0);
+                ((dx = x1 - x0), (dy = y1 - y0));
 
                 // Find the next non-empty node.
                 do sumValue = nodes[i1++].value;
@@ -18752,7 +18754,7 @@
                     value ? (x0 += (dx * sumValue) / value) : x1,
                     y1,
                   );
-                (value -= sumValue), (i0 = i1);
+                ((value -= sumValue), (i0 = i1));
               }
 
               return rows;
@@ -18905,8 +18907,8 @@
               function partition(i, j, value, x0, y0, x1, y1) {
                 if (i >= j - 1) {
                   var node = nodes[i];
-                  (node.x0 = x0), (node.y0 = y0);
-                  (node.x1 = x1), (node.y1 = y1);
+                  ((node.x0 = x0), (node.y0 = y0));
+                  ((node.x1 = x1), (node.y1 = y1));
                   return;
                 }
 
@@ -18965,7 +18967,7 @@
                     value = parent.value;
 
                   while (++j < m) {
-                    (row = rows[j]), (nodes = row.children);
+                    ((row = rows[j]), (nodes = row.children));
                     for (i = row.value = 0, n = nodes.length; i < n; ++i)
                       row.value += nodes[i].value;
                     if (row.dice)
@@ -19225,7 +19227,7 @@
                 (a = +a),
                 (b = +b),
                 function (t) {
-                  return d.setTime(a * (1 - t) + b * t), d;
+                  return (d.setTime(a * (1 - t) + b * t), d);
                 }
               );
             }
@@ -19287,7 +19289,7 @@
                 q = []; // number interpolators
 
               // Coerce inputs to strings.
-              (a = a + ""), (b = b + "");
+              ((a = a + ""), (b = b + ""));
 
               // Interpolate pairs of numbers in a & b.
               while ((am = reA.exec(a)) && (bm = reB.exec(b))) {
@@ -19397,12 +19399,12 @@
             function decompose(a, b, c, d, e, f) {
               var scaleX, scaleY, skewX;
               if ((scaleX = Math.sqrt(a * a + b * b)))
-                (a /= scaleX), (b /= scaleX);
-              if ((skewX = a * c + b * d)) (c -= a * skewX), (d -= b * skewX);
+                ((a /= scaleX), (b /= scaleX));
+              if ((skewX = a * c + b * d)) ((c -= a * skewX), (d -= b * skewX));
               if ((scaleY = Math.sqrt(c * c + d * d)))
-                (c /= scaleY), (d /= scaleY), (skewX /= scaleY);
+                ((c /= scaleY), (d /= scaleY), (skewX /= scaleY));
               if (a * d < b * c)
-                (a = -a), (b = -b), (skewX = -skewX), (scaleX = -scaleX);
+                ((a = -a), (b = -b), (skewX = -skewX), (scaleX = -scaleX));
               return {
                 translateX: e,
                 translateY: f,
@@ -19418,9 +19420,9 @@
             function parseCss(value) {
               if (value === "none") return identity;
               if (!cssNode)
-                (cssNode = document.createElement("DIV")),
+                ((cssNode = document.createElement("DIV")),
                   (cssRoot = document.documentElement),
-                  (cssView = document.defaultView);
+                  (cssView = document.defaultView));
               cssNode.style.transform = value;
               value = cssView
                 .getComputedStyle(cssRoot.appendChild(cssNode), null)
@@ -19514,7 +19516,7 @@
               return function (a, b) {
                 var s = [], // string constants and placeholders
                   q = []; // number interpolators
-                (a = parse(a)), (b = parse(b));
+                ((a = parse(a)), (b = parse(b)));
                 translate(
                   a.translateX,
                   a.translateY,
@@ -19806,7 +19808,7 @@
               },
               closePath: function () {
                 if (this._x1 !== null) {
-                  (this._x1 = this._x0), (this._y1 = this._y0);
+                  ((this._x1 = this._x0), (this._y1 = this._y0));
                   this._ += "Z";
                 }
               },
@@ -19840,7 +19842,7 @@
                   (this._y1 = +y);
               },
               arcTo: function (x1, y1, x2, y2, r) {
-                (x1 = +x1), (y1 = +y1), (x2 = +x2), (y2 = +y2), (r = +r);
+                ((x1 = +x1), (y1 = +y1), (x2 = +x2), (y2 = +y2), (r = +r));
                 var x0 = this._x1,
                   y0 = this._y1,
                   x21 = x2 - x1,
@@ -19905,7 +19907,7 @@
                 }
               },
               arc: function (x, y, r, a0, a1, ccw) {
-                (x = +x), (y = +y), (r = +r), (ccw = !!ccw);
+                ((x = +x), (y = +y), (r = +r), (ccw = !!ccw));
                 var dx = r * Math.cos(a0),
                   dy = r * Math.sin(a0),
                   x0 = x + dx,
@@ -20049,7 +20051,7 @@
                 y += (a[1] + b[1]) * c;
               }
 
-              return (k *= 3), [x / k, y / k];
+              return ((k *= 3), [x / k, y / k]);
             };
 
             // Returns the 2D cross product of AB and AC vectors, i.e., the z-component of
@@ -20136,13 +20138,13 @@
                 inside = false;
 
               for (var i = 0; i < n; ++i) {
-                (p = polygon[i]), (x1 = p[0]), (y1 = p[1]);
+                ((p = polygon[i]), (x1 = p[0]), (y1 = p[1]));
                 if (
                   y1 > y !== y0 > y &&
                   x < ((x0 - x1) * (y - y1)) / (y0 - y1) + x1
                 )
                   inside = !inside;
-                (x0 = x1), (y0 = y1);
+                ((x0 = x1), (y0 = y1));
               }
 
               return inside;
@@ -20221,7 +20223,7 @@
                 j;
 
               // If the tree is empty, initialize the root as a leaf.
-              if (!node) return (tree._root = leaf), tree;
+              if (!node) return ((tree._root = leaf), tree);
 
               // Find the existing leaf for the new point, or add it.
               while (node.length) {
@@ -20232,7 +20234,7 @@
                 if (
                   ((parent = node), !(node = node[(i = (bottom << 1) | right)]))
                 )
-                  return (parent[i] = leaf), tree;
+                  return ((parent[i] = leaf), tree);
               }
 
               // Is the new point is exactly coincident with the existing point?
@@ -20258,7 +20260,7 @@
                 (i = (bottom << 1) | right) ===
                 (j = ((yp >= ym) << 1) | (xp >= xm))
               );
-              return (parent[j] = node), (parent[i] = leaf), tree;
+              return ((parent[j] = node), (parent[i] = leaf), tree);
             }
 
             function addAll(data) {
@@ -20290,8 +20292,8 @@
               }
 
               // If there were no (valid) points, inherit the existing extent.
-              if (x1 < x0) (x0 = this._x0), (x1 = this._x1);
-              if (y1 < y0) (y0 = this._y0), (y1 = this._y1);
+              if (x1 < x0) ((x0 = this._x0), (x1 = this._x1));
+              if (y1 < y0) ((y0 = this._y0), (y1 = this._y1));
 
               // Expand the tree to cover the new points.
               this.cover(x0, y0).cover(x1, y1);
@@ -20332,9 +20334,9 @@
                 ) {
                   case 0: {
                     do
-                      (parent = new Array(4)),
+                      ((parent = new Array(4)),
                         (parent[i] = node),
-                        (node = parent);
+                        (node = parent));
                     while (
                       ((z *= 2), (x1 = x0 + z), (y1 = y0 + z), x > x1 || y > y1)
                     );
@@ -20342,9 +20344,9 @@
                   }
                   case 1: {
                     do
-                      (parent = new Array(4)),
+                      ((parent = new Array(4)),
                         (parent[i] = node),
-                        (node = parent);
+                        (node = parent));
                     while (
                       ((z *= 2), (x0 = x1 - z), (y1 = y0 + z), x0 > x || y > y1)
                     );
@@ -20352,9 +20354,9 @@
                   }
                   case 2: {
                     do
-                      (parent = new Array(4)),
+                      ((parent = new Array(4)),
                         (parent[i] = node),
-                        (node = parent);
+                        (node = parent));
                     while (
                       ((z *= 2), (x1 = x0 + z), (y0 = y1 - z), x > x1 || y0 > y)
                     );
@@ -20362,9 +20364,9 @@
                   }
                   case 3: {
                     do
-                      (parent = new Array(4)),
+                      ((parent = new Array(4)),
                         (parent[i] = node),
-                        (node = parent);
+                        (node = parent));
                     while (
                       ((z *= 2), (x0 = x1 - z), (y0 = y1 - z), x0 > x || y0 > y)
                     );
@@ -20432,8 +20434,8 @@
               if (node) quads.push(new Quad(node, x0, y0, x3, y3));
               if (radius == null) radius = Infinity;
               else {
-                (x0 = x - radius), (y0 = y - radius);
-                (x3 = x + radius), (y3 = y + radius);
+                ((x0 = x - radius), (y0 = y - radius));
+                ((x3 = x + radius), (y3 = y + radius));
                 radius *= radius;
               }
 
@@ -20475,8 +20477,8 @@
                     d2 = dx * dx + dy * dy;
                   if (d2 < radius) {
                     var d = Math.sqrt((radius = d2));
-                    (x0 = x - d), (y0 = y - d);
-                    (x3 = x + d), (y3 = y + d);
+                    ((x0 = x - d), (y0 = y - d));
+                    ((x3 = x + d), (y3 = y + d));
                     data = node.data;
                   }
                 }
@@ -20532,7 +20534,7 @@
                     parent[(i + 2) & 3] ||
                     parent[(i + 3) & 3]
                   )
-                    (retainer = parent), (j = i);
+                    ((retainer = parent), (j = i));
                 }
 
               // Find the point to remove.
@@ -20543,11 +20545,12 @@
               // If there are multiple coincident points, remove just the point.
               if (previous)
                 return (
-                  next ? (previous.next = next) : delete previous.next, this
+                  next ? (previous.next = next) : delete previous.next,
+                  this
                 );
 
               // If this is the root point, remove it.
-              if (!parent) return (this._root = next), this;
+              if (!parent) return ((this._root = next), this);
 
               // Remove this leaf.
               next ? (parent[i] = next) : delete parent[i];
@@ -20720,7 +20723,7 @@
 
               if (!node) return copy;
 
-              if (!node.length) return (copy._root = leaf_copy(node)), copy;
+              if (!node.length) return ((copy._root = leaf_copy(node)), copy);
 
               nodes = [{ source: node, target: (copy._root = new Array(4)) }];
               while ((node = nodes.pop())) {
@@ -20794,7 +20797,7 @@
                 if (this._error != null) return this;
                 var t = slice.call(arguments, 1);
                 t.push(callback);
-                ++this._waiting, this._tasks.push(t);
+                (++this._waiting, this._tasks.push(t));
                 poke(this);
                 return this;
               },
@@ -20842,7 +20845,7 @@
                   j = t.length - 1,
                   c = t[j];
                 t[j] = end(q, i);
-                --q._waiting, ++q._active;
+                (--q._waiting, ++q._active);
                 t = c.apply(null, t);
                 if (!q._tasks[i]) continue; // task finished synchronously
                 q._tasks[i] = t || noabort;
@@ -20852,7 +20855,7 @@
             function end(q, i) {
               return function (e, r) {
                 if (!q._tasks[i]) return; // ignore multiple callbacks
-                --q._active, ++q._ended;
+                (--q._active, ++q._ended);
                 q._tasks[i] = null;
                 if (q._error != null) return; // ignore secondary errors
                 if (e != null) {
@@ -20931,7 +20934,7 @@
               function randomUniform(min, max) {
                 min = min == null ? 0 : +min;
                 max = max == null ? 1 : +max;
-                if (arguments.length === 1) (max = min), (min = 0);
+                if (arguments.length === 1) ((max = min), (min = 0));
                 else max -= min;
                 return function () {
                   return source() * max + min;
@@ -20952,7 +20955,7 @@
                   var y;
 
                   // If available, use the second previously-generated uniform random.
-                  if (x != null) (y = x), (x = null);
+                  if (x != null) ((y = x), (x = null));
                   // Otherwise, generate a new x and y.
                   else
                     do {
@@ -21177,7 +21180,7 @@
                 if (responseType != null) xhr.responseType = responseType;
                 if (timeout > 0) xhr.timeout = timeout;
                 if (callback == null && typeof data === "function")
-                  (callback = data), (data = null);
+                  ((callback = data), (data = null));
                 if (callback != null && callback.length === 1)
                   callback = fixCallback(callback);
                 if (callback != null)
@@ -21256,7 +21259,7 @@
 
           var dsv = function (defaultMimeType, parse) {
             return function (url, row, callback) {
-              if (arguments.length < 3) (callback = row), (row = null);
+              if (arguments.length < 3) ((callback = row), (row = null));
               var r = request(url).mimeType(defaultMimeType);
               r.row = function (_) {
                 return arguments.length
@@ -21408,10 +21411,10 @@
                   columns,
                   rows = parseRows(text, function (row, i) {
                     if (convert) return convert(row, i - 1);
-                    (columns = row),
+                    ((columns = row),
                       (convert = f
                         ? customConverter(row, f)
-                        : objectConverter(row));
+                        : objectConverter(row)));
                   });
                 rows.columns = columns || [];
                 return rows;
@@ -21432,7 +21435,7 @@
 
                 function token() {
                   if (eof) return EOF;
-                  if (eol) return (eol = false), EOL;
+                  if (eol) return ((eol = false), EOL);
 
                   // Unescape quotes.
                   var i,
@@ -21464,12 +21467,12 @@
                   }
 
                   // Return last token before EOF.
-                  return (eof = true), text.slice(j, N);
+                  return ((eof = true), text.slice(j, N));
                 }
 
                 while ((t = token()) !== EOF) {
                   var row = [];
-                  while (t !== EOL && t !== EOF) row.push(t), (t = token());
+                  while (t !== EOL && t !== EOF) (row.push(t), (t = token()));
                   if (f && (row = f(row, n++)) == null) continue;
                   rows.push(row);
                 }
@@ -21678,7 +21681,7 @@
 
                 scale.domain = function (_) {
                   if (!arguments.length) return domain.slice();
-                  (domain = []), (index = d3Collection.map());
+                  ((domain = []), (index = d3Collection.map()));
                   var i = -1,
                     n = _.length,
                     d,
@@ -21735,8 +21738,8 @@
                   start += (stop - start - step * (n - paddingInner)) * align;
                   bandwidth = step * (1 - paddingInner);
                   if (round)
-                    (start = Math.round(start)),
-                      (bandwidth = Math.round(bandwidth));
+                    ((start = Math.round(start)),
+                      (bandwidth = Math.round(bandwidth)));
                   var values = d3Array.range(n).map(function (i) {
                     return start + step * i;
                   });
@@ -21754,7 +21757,11 @@
                 };
 
                 scale.rangeRound = function (_) {
-                  return (range$$1 = [+_[0], +_[1]]), (round = true), rescale();
+                  return (
+                    (range$$1 = [+_[0], +_[1]]),
+                    (round = true),
+                    rescale()
+                  );
                 };
 
                 scale.bandwidth = function () {
@@ -21870,8 +21877,9 @@
                   r0 = range$$1[0],
                   r1 = range$$1[1];
                 if (d1 < d0)
-                  (d0 = deinterpolate(d1, d0)), (r0 = reinterpolate(r1, r0));
-                else (d0 = deinterpolate(d0, d1)), (r0 = reinterpolate(r0, r1));
+                  ((d0 = deinterpolate(d1, d0)), (r0 = reinterpolate(r1, r0)));
+                else
+                  ((d0 = deinterpolate(d0, d1)), (r0 = reinterpolate(r0, r1)));
                 return function (x) {
                   return r0(d0(x));
                 };
@@ -22068,8 +22076,8 @@
                     step;
 
                   if (stop < start) {
-                    (step = start), (start = stop), (stop = step);
-                    (step = i0), (i0 = i1), (i1 = step);
+                    ((step = start), (start = stop), (stop = step));
+                    ((step = i0), (i0 = i1), (i1 = step));
                   }
 
                   step = d3Array.tickIncrement(start, stop, count);
@@ -22145,8 +22153,8 @@
                   t;
 
                 if (x1 < x0) {
-                  (t = i0), (i0 = i1), (i1 = t);
-                  (t = x0), (x0 = x1), (x1 = t);
+                  ((t = i0), (i0 = i1), (i1 = t));
+                  ((t = x0), (x0 = x1), (x1 = t));
                 }
 
                 domain[i0] = interval.floor(x0);
@@ -22213,9 +22221,9 @@
                   pows = powp(10);
 
                 function rescale() {
-                  (logs = logp(base)), (pows = powp(base));
+                  ((logs = logp(base)), (pows = powp(base)));
                   if (domain()[0] < 0)
-                    (logs = reflect(logs)), (pows = reflect(pows));
+                    ((logs = reflect(logs)), (pows = reflect(pows)));
                   return scale;
                 }
 
@@ -22233,7 +22241,7 @@
                     v = d[d.length - 1],
                     r;
 
-                  if ((r = v < u)) (i = u), (u = v), (v = i);
+                  if ((r = v < u)) ((i = u), (u = v), (v = i));
 
                   var i = logs(u),
                     j = logs(v),
@@ -22244,7 +22252,7 @@
                     z = [];
 
                   if (!(base % 1) && j - i < n) {
-                    (i = Math.round(i) - 1), (j = Math.round(j) + 1);
+                    ((i = Math.round(i) - 1), (j = Math.round(j) + 1));
                     if (u > 0)
                       for (; i < j; ++i) {
                         for (k = 1, p = pows(i); k < base; ++k) {
@@ -22631,7 +22639,7 @@
                     t1 = d[d.length - 1],
                     r = t1 < t0,
                     t;
-                  if (r) (t = t0), (t0 = t1), (t1 = t);
+                  if (r) ((t = t0), (t0 = t1), (t1 = t));
                   t = tickInterval(interval, t0, t1, step);
                   t = t ? t.range(t0, t1 + 1) : []; // inclusive stop
                   return r ? t.reverse() : t;
@@ -22894,7 +22902,7 @@
             }
 
             function exponent(x) {
-              return (x = formatDecimal(Math.abs(x))), x ? x[1] : NaN;
+              return ((x = formatDecimal(Math.abs(x))), x ? x[1] : NaN);
             }
 
             function formatGroup(grouping, thousands) {
@@ -23148,16 +23156,16 @@
                   type = specifier.type;
 
                 // The "n" type is an alias for ",g".
-                if (type === "n") (comma = true), (type = "g");
+                if (type === "n") ((comma = true), (type = "g"));
                 // The "" type, and any invalid type, is an alias for ".12~g".
                 else if (!formatTypes[type])
-                  precision === undefined && (precision = 12),
+                  (precision === undefined && (precision = 12),
                     (trim = true),
-                    (type = "g");
+                    (type = "g"));
 
                 // If zero fill is specified, padding goes after sign and before digits.
                 if (zero || (fill === "0" && align === "="))
-                  (zero = true), (fill = "0"), (align = "=");
+                  ((zero = true), (fill = "0"), (align = "="));
 
                 // Compute the prefix and suffix.
                 // For SI-prefix, the suffix is lazily computed.
@@ -23236,7 +23244,7 @@
                     // Break the formatted value into the integer “value” part that can be
                     // grouped, and fractional or exponential “suffix” part that is not.
                     if (maybeSuffix) {
-                      (i = -1), (n = value.length);
+                      ((i = -1), (n = value.length));
                       while (++i < n) {
                         if (((c = value.charCodeAt(i)), 48 > c || c > 57)) {
                           valueSuffix =
@@ -23263,11 +23271,11 @@
 
                   // If the fill character is "0", grouping is applied after padding.
                   if (comma && zero)
-                    (value = group(
+                    ((value = group(
                       padding + value,
                       padding.length ? width - valueSuffix.length : Infinity,
                     )),
-                      (padding = "");
+                      (padding = ""));
 
                   // Reconstruct the final output based on the desired alignment.
                   switch (align) {
@@ -23352,7 +23360,7 @@
             }
 
             function precisionRound(step, max) {
-              (step = Math.abs(step)), (max = Math.abs(max) - step);
+              ((step = Math.abs(step)), (max = Math.abs(max) - step));
               return Math.max(0, exponent(max) - exponent(step)) + 1;
             }
 
@@ -23588,8 +23596,8 @@
                     if (d.V < 1 || d.V > 53) return null;
                     if (!("w" in d)) d.w = 1;
                     if ("Z" in d) {
-                      (week = utcDate(newDate(d.y, 0, 1))),
-                        (day = week.getUTCDay());
+                      ((week = utcDate(newDate(d.y, 0, 1))),
+                        (day = week.getUTCDay()));
                       week =
                         day > 4 || day === 0
                           ? d3Time.utcMonday.ceil(week)
@@ -23599,8 +23607,8 @@
                       d.m = week.getUTCMonth();
                       d.d = week.getUTCDate() + ((d.w + 6) % 7);
                     } else {
-                      (week = localDate(newDate(d.y, 0, 1))),
-                        (day = week.getDay());
+                      ((week = localDate(newDate(d.y, 0, 1))),
+                        (day = week.getDay()));
                       week =
                         day > 4 || day === 0
                           ? d3Time.timeMonday.ceil(week)
@@ -24506,7 +24514,7 @@
 
             function selection_data(value, key) {
               if (!value) {
-                (data = new Array(this.size())), (j = -1);
+                ((data = new Array(this.size())), (j = -1));
                 this.each(function (d) {
                   data[++j] = d;
                 });
@@ -24634,7 +24642,6 @@
               for (
                 var groups = this._groups, j = -1, m = groups.length;
                 ++j < m;
-
               ) {
                 for (
                   var group = groups[j],
@@ -24642,7 +24649,6 @@
                     next = group[i],
                     node;
                   --i >= 0;
-
                 ) {
                   if ((node = group[i])) {
                     if (next && node.compareDocumentPosition(next) ^ 4)
@@ -25184,7 +25190,7 @@
                 .map(function (t) {
                   var name = "",
                     i = t.indexOf(".");
-                  if (i >= 0) (name = t.slice(i + 1)), (t = t.slice(0, i));
+                  if (i >= 0) ((name = t.slice(i + 1)), (t = t.slice(0, i)));
                   return { type: t, name: name };
                 });
             }
@@ -25295,8 +25301,8 @@
               } else {
                 event = window.document.createEvent("Event");
                 if (params)
-                  event.initEvent(type, params.bubbles, params.cancelable),
-                    (event.detail = params.detail);
+                  (event.initEvent(type, params.bubbles, params.cancelable),
+                    (event.detail = params.detail));
                 else event.initEvent(type, false, false);
               }
 
@@ -25422,7 +25428,7 @@
 
               if (svg.createSVGPoint) {
                 var point = svg.createSVGPoint();
-                (point.x = event.clientX), (point.y = event.clientY);
+                ((point.x = event.clientX), (point.y = event.clientY));
                 point = point.matrixTransform(node.getScreenCTM().inverse());
                 return [point.x, point.y];
               }
@@ -25451,8 +25457,8 @@
 
             function touch(node, touches, identifier) {
               if (arguments.length < 3)
-                (identifier = touches),
-                  (touches = sourceEvent().changedTouches);
+                ((identifier = touches),
+                  (touches = sourceEvent().changedTouches));
 
               for (
                 var i = 0, n = touches ? touches.length : 0, touch;
@@ -25608,7 +25614,7 @@
               // Pick the closer of the two intersection points.
               // TODO Is there a faster way to determine which intersection to use?
               if (dx0 * dx0 + dy0 * dy0 > dx1 * dx1 + dy1 * dy1)
-                (cx0 = cx1), (cy0 = cy1);
+                ((cx0 = cx1), (cy0 = cy1));
 
               return {
                 cx: cx0,
@@ -25643,7 +25649,7 @@
                 if (!context) context = buffer = d3Path.path();
 
                 // Ensure that the outer radius is always larger than the inner radius.
-                if (r1 < r0) (r = r1), (r1 = r0), (r0 = r);
+                if (r1 < r0) ((r = r1), (r1 = r0), (r0 = r));
 
                 // Is it a point?
                 if (!(r1 > epsilon)) context.moveTo(0, 0);
@@ -25685,11 +25691,11 @@
                     var p0 = asin((rp / r0) * sin(ap)),
                       p1 = asin((rp / r1) * sin(ap));
                     if ((da0 -= p0 * 2) > epsilon)
-                      (p0 *= cw ? 1 : -1), (a00 += p0), (a10 -= p0);
-                    else (da0 = 0), (a00 = a10 = (a0 + a1) / 2);
+                      ((p0 *= cw ? 1 : -1), (a00 += p0), (a10 -= p0));
+                    else ((da0 = 0), (a00 = a10 = (a0 + a1) / 2));
                     if ((da1 -= p1 * 2) > epsilon)
-                      (p1 *= cw ? 1 : -1), (a01 += p1), (a11 -= p1);
-                    else (da1 = 0), (a01 = a11 = (a0 + a1) / 2);
+                      ((p1 *= cw ? 1 : -1), (a01 += p1), (a11 -= p1));
+                    else ((da1 = 0), (a01 = a11 = (a0 + a1) / 2));
                   }
 
                   var x01 = r1 * cos(a01),
@@ -25779,8 +25785,8 @@
 
                   // Or is the outer ring just a circular arc?
                   else
-                    context.moveTo(x01, y01),
-                      context.arc(0, 0, r1, a01, a11, !cw);
+                    (context.moveTo(x01, y01),
+                      context.arc(0, 0, r1, a01, a11, !cw));
 
                   // Is there no inner ring, and it’s a circular sector?
                   // Or perhaps it’s an annular sector collapsed due to padding?
@@ -25838,7 +25844,7 @@
 
                 context.closePath();
 
-                if (buffer) return (context = null), buffer + "" || null;
+                if (buffer) return ((context = null), buffer + "" || null);
               }
 
               arc.centroid = function () {
@@ -25938,7 +25944,7 @@
                 this._line = 1 - this._line;
               },
               point: function (x, y) {
-                (x = +x), (y = +y);
+                ((x = +x), (y = +y));
                 switch (this._point) {
                   case 0:
                     this._point = 1;
@@ -25995,7 +26001,7 @@
                     output.point(+x$$1(d, i, data), +y$$1(d, i, data));
                 }
 
-                if (buffer) return (output = null), buffer + "" || null;
+                if (buffer) return ((output = null), buffer + "" || null);
               }
 
               line.x = function (_) {
@@ -26079,7 +26085,7 @@
                     }
                   }
                   if (defined0) {
-                    (x0z[i] = +x0(d, i, data)), (y0z[i] = +y0(d, i, data));
+                    ((x0z[i] = +x0(d, i, data)), (y0z[i] = +y0(d, i, data)));
                     output.point(
                       x1 ? +x1(d, i, data) : x0z[i],
                       y1 ? +y1(d, i, data) : y0z[i],
@@ -26087,7 +26093,7 @@
                   }
                 }
 
-                if (buffer) return (output = null), buffer + "" || null;
+                if (buffer) return ((output = null), buffer + "" || null);
               }
 
               function arealine() {
@@ -26246,7 +26252,7 @@
                   i < n;
                   ++i, a0 = a1
                 ) {
-                  (j = index[i]),
+                  ((j = index[i]),
                     (v = arcs[j]),
                     (a1 = a0 + (v > 0 ? v * k : 0) + pa),
                     (arcs[j] = {
@@ -26256,7 +26262,7 @@
                       startAngle: a0,
                       endAngle: a1,
                       padAngle: p,
-                    });
+                    }));
                 }
 
                 return arcs;
@@ -26341,8 +26347,8 @@
             function lineRadial(l) {
               var c = l.curve;
 
-              (l.angle = l.x), delete l.x;
-              (l.radius = l.y), delete l.y;
+              ((l.angle = l.x), delete l.x);
+              ((l.radius = l.y), delete l.y);
 
               l.curve = function (_) {
                 return arguments.length ? c(curveRadial(_)) : c()._curve;
@@ -26363,28 +26369,28 @@
                 y0 = a.lineY0,
                 y1 = a.lineY1;
 
-              (a.angle = a.x), delete a.x;
-              (a.startAngle = a.x0), delete a.x0;
-              (a.endAngle = a.x1), delete a.x1;
-              (a.radius = a.y), delete a.y;
-              (a.innerRadius = a.y0), delete a.y0;
-              (a.outerRadius = a.y1), delete a.y1;
-              (a.lineStartAngle = function () {
+              ((a.angle = a.x), delete a.x);
+              ((a.startAngle = a.x0), delete a.x0);
+              ((a.endAngle = a.x1), delete a.x1);
+              ((a.radius = a.y), delete a.y);
+              ((a.innerRadius = a.y0), delete a.y0);
+              ((a.outerRadius = a.y1), delete a.y1);
+              ((a.lineStartAngle = function () {
                 return lineRadial(x0());
               }),
-                delete a.lineX0;
-              (a.lineEndAngle = function () {
+                delete a.lineX0);
+              ((a.lineEndAngle = function () {
                 return lineRadial(x1());
               }),
-                delete a.lineX1;
-              (a.lineInnerRadius = function () {
+                delete a.lineX1);
+              ((a.lineInnerRadius = function () {
                 return lineRadial(y0());
               }),
-                delete a.lineY0;
-              (a.lineOuterRadius = function () {
+                delete a.lineY0);
+              ((a.lineOuterRadius = function () {
                 return lineRadial(y1());
               }),
-                delete a.lineY1;
+                delete a.lineY1);
 
               a.curve = function (_) {
                 return arguments.length ? c(curveRadial(_)) : c()._curve;
@@ -26427,7 +26433,7 @@
                   +x$$1.apply(this, ((argv[0] = t), argv)),
                   +y$$1.apply(this, argv),
                 );
-                if (buffer) return (context = null), buffer + "" || null;
+                if (buffer) return ((context = null), buffer + "" || null);
               }
 
               link.source = function (_) {
@@ -26488,8 +26494,8 @@
 
             function linkRadial() {
               var l = link(curveRadial$1);
-              (l.angle = l.x), delete l.x;
-              (l.radius = l.y), delete l.y;
+              ((l.angle = l.x), delete l.x);
+              ((l.radius = l.y), delete l.y);
               return l;
             }
 
@@ -26618,7 +26624,7 @@
                 type
                   .apply(this, arguments)
                   .draw(context, +size.apply(this, arguments));
-                if (buffer) return (context = null), buffer + "" || null;
+                if (buffer) return ((context = null), buffer + "" || null);
               }
 
               symbol.type = function (_) {
@@ -26684,7 +26690,7 @@
                 this._line = 1 - this._line;
               },
               point: function (x, y) {
-                (x = +x), (y = +y);
+                ((x = +x), (y = +y));
                 switch (this._point) {
                   case 0:
                     this._point = 1;
@@ -26705,8 +26711,8 @@
                     point(this, x, y);
                     break;
                 }
-                (this._x0 = this._x1), (this._x1 = x);
-                (this._y0 = this._y1), (this._y1 = y);
+                ((this._x0 = this._x1), (this._x1 = x));
+                ((this._y0 = this._y1), (this._y1 = y));
               },
             };
 
@@ -26763,19 +26769,19 @@
                 }
               },
               point: function (x, y) {
-                (x = +x), (y = +y);
+                ((x = +x), (y = +y));
                 switch (this._point) {
                   case 0:
                     this._point = 1;
-                    (this._x2 = x), (this._y2 = y);
+                    ((this._x2 = x), (this._y2 = y));
                     break;
                   case 1:
                     this._point = 2;
-                    (this._x3 = x), (this._y3 = y);
+                    ((this._x3 = x), (this._y3 = y));
                     break;
                   case 2:
                     this._point = 3;
-                    (this._x4 = x), (this._y4 = y);
+                    ((this._x4 = x), (this._y4 = y));
                     this._context.moveTo(
                       (this._x0 + 4 * this._x1 + x) / 6,
                       (this._y0 + 4 * this._y1 + y) / 6,
@@ -26785,8 +26791,8 @@
                     point(this, x, y);
                     break;
                 }
-                (this._x0 = this._x1), (this._x1 = x);
-                (this._y0 = this._y1), (this._y1 = y);
+                ((this._x0 = this._x1), (this._x1 = x));
+                ((this._y0 = this._y1), (this._y1 = y));
               },
             };
 
@@ -26815,7 +26821,7 @@
                 this._line = 1 - this._line;
               },
               point: function (x, y) {
-                (x = +x), (y = +y);
+                ((x = +x), (y = +y));
                 switch (this._point) {
                   case 0:
                     this._point = 1;
@@ -26837,8 +26843,8 @@
                     point(this, x, y);
                     break;
                 }
-                (this._x0 = this._x1), (this._x1 = x);
-                (this._y0 = this._y1), (this._y1 = y);
+                ((this._x0 = this._x1), (this._x1 = x));
+                ((this._y0 = this._y1), (this._y1 = y));
               },
             };
 
@@ -26949,7 +26955,7 @@
                 this._line = 1 - this._line;
               },
               point: function (x, y) {
-                (x = +x), (y = +y);
+                ((x = +x), (y = +y));
                 switch (this._point) {
                   case 0:
                     this._point = 1;
@@ -26959,7 +26965,7 @@
                     break;
                   case 1:
                     this._point = 2;
-                    (this._x1 = x), (this._y1 = y);
+                    ((this._x1 = x), (this._y1 = y));
                     break;
                   case 2:
                     this._point = 3; // proceed
@@ -26967,8 +26973,8 @@
                     point$1(this, x, y);
                     break;
                 }
-                (this._x0 = this._x1), (this._x1 = this._x2), (this._x2 = x);
-                (this._y0 = this._y1), (this._y1 = this._y2), (this._y2 = y);
+                ((this._x0 = this._x1), (this._x1 = this._x2), (this._x2 = x));
+                ((this._y0 = this._y1), (this._y1 = this._y2), (this._y2 = y));
               },
             };
 
@@ -27029,11 +27035,11 @@
                 }
               },
               point: function (x, y) {
-                (x = +x), (y = +y);
+                ((x = +x), (y = +y));
                 switch (this._point) {
                   case 0:
                     this._point = 1;
-                    (this._x3 = x), (this._y3 = y);
+                    ((this._x3 = x), (this._y3 = y));
                     break;
                   case 1:
                     this._point = 2;
@@ -27041,14 +27047,14 @@
                     break;
                   case 2:
                     this._point = 3;
-                    (this._x5 = x), (this._y5 = y);
+                    ((this._x5 = x), (this._y5 = y));
                     break;
                   default:
                     point$1(this, x, y);
                     break;
                 }
-                (this._x0 = this._x1), (this._x1 = this._x2), (this._x2 = x);
-                (this._y0 = this._y1), (this._y1 = this._y2), (this._y2 = y);
+                ((this._x0 = this._x1), (this._x1 = this._x2), (this._x2 = x));
+                ((this._y0 = this._y1), (this._y1 = this._y2), (this._y2 = y));
               },
             };
 
@@ -27092,7 +27098,7 @@
                 this._line = 1 - this._line;
               },
               point: function (x, y) {
-                (x = +x), (y = +y);
+                ((x = +x), (y = +y));
                 switch (this._point) {
                   case 0:
                     this._point = 1;
@@ -27112,8 +27118,8 @@
                     point$1(this, x, y);
                     break;
                 }
-                (this._x0 = this._x1), (this._x1 = this._x2), (this._x2 = x);
-                (this._y0 = this._y1), (this._y1 = this._y2), (this._y2 = y);
+                ((this._x0 = this._x1), (this._x1 = this._x2), (this._x2 = x));
+                ((this._y0 = this._y1), (this._y1 = this._y2), (this._y2 = y));
               },
             };
 
@@ -27205,7 +27211,7 @@
                 this._line = 1 - this._line;
               },
               point: function (x, y) {
-                (x = +x), (y = +y);
+                ((x = +x), (y = +y));
 
                 if (this._point) {
                   var x23 = this._x2 - x,
@@ -27235,10 +27241,10 @@
                     break;
                 }
 
-                (this._l01_a = this._l12_a), (this._l12_a = this._l23_a);
-                (this._l01_2a = this._l12_2a), (this._l12_2a = this._l23_2a);
-                (this._x0 = this._x1), (this._x1 = this._x2), (this._x2 = x);
-                (this._y0 = this._y1), (this._y1 = this._y2), (this._y2 = y);
+                ((this._l01_a = this._l12_a), (this._l12_a = this._l23_a));
+                ((this._l01_2a = this._l12_2a), (this._l12_2a = this._l23_2a));
+                ((this._x0 = this._x1), (this._x1 = this._x2), (this._x2 = x));
+                ((this._y0 = this._y1), (this._y1 = this._y2), (this._y2 = y));
               },
             };
 
@@ -27308,7 +27314,7 @@
                 }
               },
               point: function (x, y) {
-                (x = +x), (y = +y);
+                ((x = +x), (y = +y));
 
                 if (this._point) {
                   var x23 = this._x2 - x,
@@ -27324,7 +27330,7 @@
                 switch (this._point) {
                   case 0:
                     this._point = 1;
-                    (this._x3 = x), (this._y3 = y);
+                    ((this._x3 = x), (this._y3 = y));
                     break;
                   case 1:
                     this._point = 2;
@@ -27332,17 +27338,17 @@
                     break;
                   case 2:
                     this._point = 3;
-                    (this._x5 = x), (this._y5 = y);
+                    ((this._x5 = x), (this._y5 = y));
                     break;
                   default:
                     point$2(this, x, y);
                     break;
                 }
 
-                (this._l01_a = this._l12_a), (this._l12_a = this._l23_a);
-                (this._l01_2a = this._l12_2a), (this._l12_2a = this._l23_2a);
-                (this._x0 = this._x1), (this._x1 = this._x2), (this._x2 = x);
-                (this._y0 = this._y1), (this._y1 = this._y2), (this._y2 = y);
+                ((this._l01_a = this._l12_a), (this._l12_a = this._l23_a));
+                ((this._l01_2a = this._l12_2a), (this._l12_2a = this._l23_2a));
+                ((this._x0 = this._x1), (this._x1 = this._x2), (this._x2 = x));
+                ((this._y0 = this._y1), (this._y1 = this._y2), (this._y2 = y));
               },
             };
 
@@ -27395,7 +27401,7 @@
                 this._line = 1 - this._line;
               },
               point: function (x, y) {
-                (x = +x), (y = +y);
+                ((x = +x), (y = +y));
 
                 if (this._point) {
                   var x23 = this._x2 - x,
@@ -27428,10 +27434,10 @@
                     break;
                 }
 
-                (this._l01_a = this._l12_a), (this._l12_a = this._l23_a);
-                (this._l01_2a = this._l12_2a), (this._l12_2a = this._l23_2a);
-                (this._x0 = this._x1), (this._x1 = this._x2), (this._x2 = x);
-                (this._y0 = this._y1), (this._y1 = this._y2), (this._y2 = y);
+                ((this._l01_a = this._l12_a), (this._l12_a = this._l23_a));
+                ((this._l01_2a = this._l12_2a), (this._l12_2a = this._l23_2a));
+                ((this._x0 = this._x1), (this._x1 = this._x2), (this._x2 = x));
+                ((this._y0 = this._y1), (this._y1 = this._y2), (this._y2 = y));
               },
             };
 
@@ -27463,9 +27469,9 @@
                 if (this._point) this._context.closePath();
               },
               point: function (x, y) {
-                (x = +x), (y = +y);
+                ((x = +x), (y = +y));
                 if (this._point) this._context.lineTo(x, y);
-                else (this._point = 1), this._context.moveTo(x, y);
+                else ((this._point = 1), this._context.moveTo(x, y));
               },
             };
 
@@ -27549,7 +27555,7 @@
               point: function (x, y) {
                 var t1 = NaN;
 
-                (x = +x), (y = +y);
+                ((x = +x), (y = +y));
                 if (x === this._x1 && y === this._y1) return; // Ignore coincident points.
                 switch (this._point) {
                   case 0:
@@ -27570,8 +27576,8 @@
                     break;
                 }
 
-                (this._x0 = this._x1), (this._x1 = x);
-                (this._y0 = this._y1), (this._y1 = y);
+                ((this._x0 = this._x1), (this._x1 = x));
+                ((this._y0 = this._y1), (this._y1 = y));
                 this._t0 = t1;
               },
             };
@@ -27673,12 +27679,14 @@
                 a = new Array(n),
                 b = new Array(n),
                 r = new Array(n);
-              (a[0] = 0), (b[0] = 2), (r[0] = x[0] + 2 * x[1]);
+              ((a[0] = 0), (b[0] = 2), (r[0] = x[0] + 2 * x[1]));
               for (i = 1; i < n - 1; ++i)
-                (a[i] = 1), (b[i] = 4), (r[i] = 4 * x[i] + 2 * x[i + 1]);
-              (a[n - 1] = 2), (b[n - 1] = 7), (r[n - 1] = 8 * x[n - 1] + x[n]);
+                ((a[i] = 1), (b[i] = 4), (r[i] = 4 * x[i] + 2 * x[i + 1]));
+              ((a[n - 1] = 2),
+                (b[n - 1] = 7),
+                (r[n - 1] = 8 * x[n - 1] + x[n]));
               for (i = 1; i < n; ++i)
-                (m = a[i] / b[i - 1]), (b[i] -= m), (r[i] -= m * r[i - 1]);
+                ((m = a[i] / b[i - 1]), (b[i] -= m), (r[i] -= m * r[i - 1]));
               a[n - 1] = r[n - 1] / b[n - 1];
               for (i = n - 2; i >= 0; --i) a[i] = (r[i] - a[i + 1]) / b[i];
               b[n - 1] = (x[n] + a[n - 1]) / 2;
@@ -27712,10 +27720,10 @@
                 if (this._line || (this._line !== 0 && this._point === 1))
                   this._context.closePath();
                 if (this._line >= 0)
-                  (this._t = 1 - this._t), (this._line = 1 - this._line);
+                  ((this._t = 1 - this._t), (this._line = 1 - this._line));
               },
               point: function (x, y) {
-                (x = +x), (y = +y);
+                ((x = +x), (y = +y));
                 switch (this._point) {
                   case 0:
                     this._point = 1;
@@ -27737,7 +27745,7 @@
                     break;
                   }
                 }
-                (this._x = x), (this._y = y);
+                ((this._x = x), (this._y = y));
               },
             };
 
@@ -27760,7 +27768,7 @@
                 i < n;
                 ++i
               ) {
-                (s0 = s1), (s1 = series[order[i]]);
+                ((s0 = s1), (s1 = series[order[i]]));
                 for (j = 0; j < m; ++j) {
                   s1[j][1] += s1[j][0] = isNaN(s0[j][1]) ? s0[j][0] : s0[j][1];
                 }
@@ -27866,9 +27874,9 @@
               ) {
                 for (yp = yn = 0, i = 0; i < n; ++i) {
                   if ((dy = (d = series[order[i]][j])[1] - d[0]) >= 0) {
-                    (d[0] = yp), (d[1] = yp += dy);
+                    ((d[0] = yp), (d[1] = yp += dy));
                   } else if (dy < 0) {
-                    (d[1] = yn), (d[0] = yn += dy);
+                    ((d[1] = yn), (d[0] = yn += dy));
                   } else {
                     d[0] = yp;
                   }
@@ -27907,7 +27915,7 @@
                       skj1 = sk[j - 1][1] || 0;
                     s3 += skj0 - skj1;
                   }
-                  (s1 += sij0), (s2 += s3 * sij0);
+                  ((s1 += sij0), (s2 += s3 * sij0));
                 }
                 s0[j - 1][1] += s0[j - 1][0] = y;
                 if (s1) y -= s2 / s1;
@@ -28230,7 +28238,8 @@
                     if (d.V < 1 || d.V > 53) return null;
                     if (!("w" in d)) d.w = 1;
                     if ("Z" in d) {
-                      (week = utcDate(newYear(d.y))), (day = week.getUTCDay());
+                      ((week = utcDate(newYear(d.y))),
+                        (day = week.getUTCDay()));
                       week =
                         day > 4 || day === 0
                           ? d3Time.utcMonday.ceil(week)
@@ -28240,7 +28249,7 @@
                       d.m = week.getUTCMonth();
                       d.d = week.getUTCDate() + ((d.w + 6) % 7);
                     } else {
-                      (week = newDate(newYear(d.y))), (day = week.getDay());
+                      ((week = newDate(newYear(d.y))), (day = week.getDay()));
                       week =
                         day > 4 || day === 0
                           ? d3Time.timeMonday.ceil(week)
@@ -28847,7 +28856,7 @@
               }
 
               interval.floor = function (date) {
-                return floori((date = new Date(+date))), date;
+                return (floori((date = new Date(+date))), date);
               };
 
               interval.ceil = function (date) {
@@ -28882,9 +28891,9 @@
                 step = step == null ? 1 : Math.floor(step);
                 if (!(start < stop) || !(step > 0)) return range; // also handles Invalid Date
                 do
-                  range.push((previous = new Date(+start))),
+                  (range.push((previous = new Date(+start))),
                     offseti(start, step),
-                    floori(start);
+                    floori(start));
                 while (previous < start && start < stop);
                 return range;
               };
@@ -28913,8 +28922,8 @@
 
               if (count) {
                 interval.count = function (start, end) {
-                  t0.setTime(+start), t1.setTime(+end);
-                  floori(t0), floori(t1);
+                  (t0.setTime(+start), t1.setTime(+end));
+                  (floori(t0), floori(t1));
                   return Math.floor(count(t0, t1));
                 };
 
@@ -29456,7 +29465,7 @@
             function poke() {
               var now = clock.now(),
                 delay = now - clockLast;
-              if (delay > pokeDelay) (clockSkew -= delay), (clockLast = now);
+              if (delay > pokeDelay) ((clockSkew -= delay), (clockLast = now));
             }
 
             function nap() {
@@ -29467,9 +29476,9 @@
               while (t1) {
                 if (t1._call) {
                   if (time > t1._time) time = t1._time;
-                  (t0 = t1), (t1 = t1._next);
+                  ((t0 = t1), (t1 = t1._next));
                 } else {
-                  (t2 = t1._next), (t1._next = null);
+                  ((t2 = t1._next), (t1._next = null));
                   t1 = t0 ? (t0._next = t2) : (taskHead = t2);
                 }
               }
@@ -29487,9 +29496,9 @@
                 if (interval) interval = clearInterval(interval);
               } else {
                 if (!interval)
-                  (clockLast = clock.now()),
-                    (interval = setInterval(poke, pokeDelay));
-                (frame = 1), setFrame(wake);
+                  ((clockLast = clock.now()),
+                    (interval = setInterval(poke, pokeDelay)));
+                ((frame = 1), setFrame(wake));
               }
             }
 
@@ -29510,8 +29519,8 @@
             function interval$1(callback, delay, time) {
               var t = new Timer(),
                 total = delay;
-              if (delay == null) return t.restart(callback, delay, time), t;
-              (delay = +delay), (time = time == null ? now() : +time);
+              if (delay == null) return (t.restart(callback, delay, time), t);
+              ((delay = +delay), (time = time == null ? now() : +time));
               t.restart(
                 function tick(elapsed) {
                   elapsed += total;
@@ -30709,7 +30718,10 @@
                   !(timing = timing[id])
                 ) {
                   if (!(node = node.parentNode)) {
-                    return (defaultTiming.time = d3Timer.now()), defaultTiming;
+                    return (
+                      (defaultTiming.time = d3Timer.now()),
+                      defaultTiming
+                    );
                   }
                 }
                 return timing;
@@ -30719,11 +30731,11 @@
                 var id, timing;
 
                 if (name instanceof Transition) {
-                  (id = name._id), (name = name._name);
+                  ((id = name._id), (name = name._name));
                 } else {
-                  (id = newId()),
+                  ((id = newId()),
                     ((timing = defaultTiming).time = d3Timer.now()),
-                    (name = name == null ? null : name + "");
+                    (name = name == null ? null : name + ""));
                 }
 
                 for (
@@ -31246,10 +31258,10 @@
               var site = cell.site,
                 va = edge.left,
                 vb = edge.right;
-              if (site === vb) (vb = va), (va = site);
+              if (site === vb) ((vb = va), (va = site));
               if (vb) return Math.atan2(vb[1] - va[1], vb[0] - va[0]);
-              if (site === va) (va = edge[1]), (vb = edge[0]);
-              else (va = edge[0]), (vb = edge[1]);
+              if (site === va) ((va = edge[1]), (vb = edge[0]));
+              else ((va = edge[0]), (vb = edge[1]));
               return Math.atan2(va[0] - vb[0], vb[1] - va[1]);
             }
 
@@ -31274,8 +31286,11 @@
                   var index = new Array(m),
                     array = new Array(m);
                   for (j = 0; j < m; ++j)
-                    (index[j] = j),
-                      (array[j] = cellHalfedgeAngle(cell, edges[halfedges[j]]));
+                    ((index[j] = j),
+                      (array[j] = cellHalfedgeAngle(
+                        cell,
+                        edges[halfedges[j]],
+                      )));
                   index.sort(function (i, j) {
                     return array[j] - array[i];
                   });
@@ -31315,17 +31330,17 @@
                   }
 
                   // Insert any border edges as necessary.
-                  (iHalfedge = 0), (nHalfedges = halfedges.length);
+                  ((iHalfedge = 0), (nHalfedges = halfedges.length));
                   while (iHalfedge < nHalfedges) {
-                    (end = cellHalfedgeEnd(cell, edges[halfedges[iHalfedge]])),
+                    ((end = cellHalfedgeEnd(cell, edges[halfedges[iHalfedge]])),
                       (endX = end[0]),
-                      (endY = end[1]);
-                    (start = cellHalfedgeStart(
+                      (endY = end[1]));
+                    ((start = cellHalfedgeStart(
                       cell,
                       edges[halfedges[++iHalfedge % nHalfedges]],
                     )),
                       (startX = start[0]),
-                      (startY = start[1]);
+                      (startY = start[1]));
                     if (
                       Math.abs(endX - startX) > epsilon ||
                       Math.abs(endY - startY) > epsilon
@@ -31392,7 +31407,7 @@
                     dx = site[0] - x0;
                     dy = site[1] - y0;
                     d2 = dx * dx + dy * dy;
-                    if (d2 < dc) (dc = d2), (cover = cell);
+                    if (d2 < dc) ((dc = d2), (cover = cell));
                   }
                 }
 
@@ -31751,7 +31766,7 @@
                 ) {
                   if (site[0] !== x || site[1] !== y) {
                     addBeach(site);
-                    (x = site[0]), (y = site[1]);
+                    ((x = site[0]), (y = site[1]));
                   }
                   site = sites.pop();
                 } else if (circle) {
@@ -31854,7 +31869,7 @@
 
                 // Traverse the half-edges to find a closer cell, if any.
                 do {
-                  (cell = that.cells[(i0 = i1)]), (i1 = null);
+                  ((cell = that.cells[(i0 = i1)]), (i1 = null));
                   cell.halfedges.forEach(function (e) {
                     var edge = that.edges[e],
                       v = edge.left;
@@ -31862,7 +31877,7 @@
                     var vx = x - v[0],
                       vy = y - v[1],
                       v2 = vx * vx + vy * vy;
-                    if (v2 < d2) (d2 = v2), (i1 = v.index);
+                    if (v2 < d2) ((d2 = v2), (i1 = v.index));
                   });
                 } while (i1 !== null);
 
@@ -32526,10 +32541,10 @@
 
                   nopropagation();
                   for (i = 0; i < n; ++i) {
-                    (t = touches[i]),
-                      (p = d3Selection.touch(this, touches, t.identifier));
+                    ((t = touches[i]),
+                      (p = d3Selection.touch(this, touches, t.identifier)));
                     p = [p, this.__zoom.invert(p), t.identifier];
-                    if (!g.touch0) (g.touch0 = p), (started = true);
+                    if (!g.touch0) ((g.touch0 = p), (started = true));
                     else if (!g.touch1) g.touch1 = p;
                   }
 
@@ -32566,8 +32581,8 @@
                   if (touchstarting)
                     touchstarting = clearTimeout(touchstarting);
                   for (i = 0; i < n; ++i) {
-                    (t = touches[i]),
-                      (p = d3Selection.touch(this, touches, t.identifier));
+                    ((t = touches[i]),
+                      (p = d3Selection.touch(this, touches, t.identifier)));
                     if (g.touch0 && g.touch0[2] === t.identifier)
                       g.touch0[0] = p;
                     else if (g.touch1 && g.touch1[2] === t.identifier)
@@ -32586,7 +32601,7 @@
                     t = scale(t, Math.sqrt(dp / dl));
                     p = [(p0[0] + p1[0]) / 2, (p0[1] + p1[1]) / 2];
                     l = [(l0[0] + l1[0]) / 2, (l0[1] + l1[1]) / 2];
-                  } else if (g.touch0) (p = g.touch0[0]), (l = g.touch0[1]);
+                  } else if (g.touch0) ((p = g.touch0[0]), (l = g.touch0[1]));
                   else return;
                   g.zoom(
                     "touch",
@@ -32614,7 +32629,7 @@
                       delete g.touch1;
                   }
                   if (g.touch1 && !g.touch0)
-                    (g.touch0 = g.touch1), delete g.touch1;
+                    ((g.touch0 = g.touch1), delete g.touch1);
                   if (g.touch0) g.touch0[1] = this.__zoom.invert(g.touch0[0]);
                   else g.end();
                 }
@@ -33075,14 +33090,14 @@
             };
 
             var range = function (start, stop, step) {
-              (start = +start),
+              ((start = +start),
                 (stop = +stop),
                 (step =
                   (n = arguments.length) < 2
                     ? ((stop = start), (start = 0), 1)
                     : n < 3
                       ? 1
-                      : +step);
+                      : +step));
 
               var i = -1,
                 n = Math.max(0, Math.ceil((stop - start) / step)) | 0,
@@ -33106,10 +33121,10 @@
                 ticks,
                 step;
 
-              (stop = +stop), (start = +start), (count = +count);
+              ((stop = +stop), (start = +start), (count = +count));
               if (start === stop && count > 0) return [start];
               if ((reverse = stop < start))
-                (n = start), (start = stop), (stop = n);
+                ((n = start), (start = stop), (stop = n));
               if (
                 (step = tickIncrement(start, stop, count)) === 0 ||
                 !isFinite(step)
@@ -33190,8 +33205,8 @@
 
                 // Remove any thresholds outside the domain.
                 var m = tz.length;
-                while (tz[0] <= x0) tz.shift(), --m;
-                while (tz[m - 1] > x1) tz.pop(), --m;
+                while (tz[0] <= x0) (tz.shift(), --m);
+                while (tz[m - 1] > x1) (tz.pop(), --m);
 
                 var bins = new Array(m + 1),
                   bin;
@@ -33450,7 +33465,7 @@
                   compare((xi = values[i]), xj) < 0 ||
                   compare(xj, xj) !== 0
                 ) {
-                  (xj = xi), (j = i);
+                  ((xj = xi), (j = i));
                 }
               }
 
@@ -33498,12 +33513,10 @@
               for (
                 var i = -1, m = min(matrix, length), transpose = new Array(m);
                 ++i < m;
-
               ) {
                 for (
                   var j = -1, n, row = (transpose[i] = new Array(n));
                   ++j < n;
-
                 ) {
                   row[j] = matrix[j][i];
                 }
@@ -33708,10 +33721,10 @@
                 if (rollup != null && depth >= keys.length)
                   array = map$$1.entries();
                 else
-                  (array = []),
+                  ((array = []),
                     map$$1.each(function (v, k) {
                       array.push({ key: k, values: entries(v, depth) });
-                    });
+                    }));
                 return sortKey != null
                   ? array.sort(function (a, b) {
                       return sortKey(a.key, b.key);
@@ -34548,7 +34561,7 @@
                 .map(function (t) {
                   var name = "",
                     i = t.indexOf(".");
-                  if (i >= 0) (name = t.slice(i + 1)), (t = t.slice(0, i));
+                  if (i >= 0) ((name = t.slice(i + 1)), (t = t.slice(0, i)));
                   if (t && !types.hasOwnProperty(t))
                     throw new Error("unknown type: " + t);
                   return { type: t, name: name };
@@ -34622,8 +34635,8 @@
             function set(type, name, callback) {
               for (var i = 0, n = type.length; i < n; ++i) {
                 if (type[i].name === name) {
-                  (type[i] = noop),
-                    (type = type.slice(0, i).concat(type.slice(i + 1)));
+                  ((type[i] = noop),
+                    (type = type.slice(0, i).concat(type.slice(i + 1))));
                   break;
                 }
               }
@@ -34909,12 +34922,12 @@
                     n;
                   switch (type) {
                     case "start":
-                      (gestures[id] = gesture), (n = active++);
+                      ((gestures[id] = gesture), (n = active++));
                       break;
                     case "end":
-                      delete gestures[id], --active; // nobreak
+                      (delete gestures[id], --active); // nobreak
                     case "drag":
-                      (p = point(container, id)), (n = active);
+                      ((p = point(container, id)), (n = active));
                       break;
                   }
                   d3Selection.customEvent(
@@ -35483,7 +35496,7 @@
                 (a = +a),
                 (b -= a),
                 function (t) {
-                  return d.setTime(a + b * t), d;
+                  return (d.setTime(a + b * t), d);
                 }
               );
             };
@@ -35545,7 +35558,7 @@
                 q = []; // number interpolators
 
               // Coerce inputs to strings.
-              (a = a + ""), (b = b + "");
+              ((a = a + ""), (b = b + ""));
 
               // Interpolate pairs of numbers in a & b.
               while ((am = reA.exec(a)) && (bm = reB.exec(b))) {
@@ -35638,12 +35651,12 @@
             var decompose = function (a, b, c, d, e, f) {
               var scaleX, scaleY, skewX;
               if ((scaleX = Math.sqrt(a * a + b * b)))
-                (a /= scaleX), (b /= scaleX);
-              if ((skewX = a * c + b * d)) (c -= a * skewX), (d -= b * skewX);
+                ((a /= scaleX), (b /= scaleX));
+              if ((skewX = a * c + b * d)) ((c -= a * skewX), (d -= b * skewX));
               if ((scaleY = Math.sqrt(c * c + d * d)))
-                (c /= scaleY), (d /= scaleY), (skewX /= scaleY);
+                ((c /= scaleY), (d /= scaleY), (skewX /= scaleY));
               if (a * d < b * c)
-                (a = -a), (b = -b), (skewX = -skewX), (scaleX = -scaleX);
+                ((a = -a), (b = -b), (skewX = -skewX), (scaleX = -scaleX));
               return {
                 translateX: e,
                 translateY: f,
@@ -35662,9 +35675,9 @@
             function parseCss(value) {
               if (value === "none") return identity;
               if (!cssNode)
-                (cssNode = document.createElement("DIV")),
+                ((cssNode = document.createElement("DIV")),
                   (cssRoot = document.documentElement),
-                  (cssView = document.defaultView);
+                  (cssView = document.defaultView));
               cssNode.style.transform = value;
               value = cssView
                 .getComputedStyle(cssRoot.appendChild(cssNode), null)
@@ -35758,7 +35771,7 @@
               return function (a, b) {
                 var s = [], // string constants and placeholders
                   q = []; // number interpolators
-                (a = parse(a)), (b = parse(b));
+                ((a = parse(a)), (b = parse(b)));
                 translate(
                   a.translateX,
                   a.translateY,
@@ -36039,7 +36052,7 @@
               },
               closePath: function () {
                 if (this._x1 !== null) {
-                  (this._x1 = this._x0), (this._y1 = this._y0);
+                  ((this._x1 = this._x0), (this._y1 = this._y0));
                   this._ += "Z";
                 }
               },
@@ -36073,7 +36086,7 @@
                   (this._y1 = +y);
               },
               arcTo: function (x1, y1, x2, y2, r) {
-                (x1 = +x1), (y1 = +y1), (x2 = +x2), (y2 = +y2), (r = +r);
+                ((x1 = +x1), (y1 = +y1), (x2 = +x2), (y2 = +y2), (r = +r));
                 var x0 = this._x1,
                   y0 = this._y1,
                   x21 = x2 - x1,
@@ -36140,7 +36153,7 @@
                 }
               },
               arc: function (x, y, r, a0, a1, ccw) {
-                (x = +x), (y = +y), (r = +r);
+                ((x = +x), (y = +y), (r = +r));
                 var dx = r * Math.cos(a0),
                   dy = r * Math.sin(a0),
                   x0 = x + dx,
@@ -36553,7 +36566,7 @@
 
             function selection_data(value, key) {
               if (!value) {
-                (data = new Array(this.size())), (j = -1);
+                ((data = new Array(this.size())), (j = -1));
                 this.each(function (d) {
                   data[++j] = d;
                 });
@@ -36667,7 +36680,6 @@
               for (
                 var groups = this._groups, j = -1, m = groups.length;
                 ++j < m;
-
               ) {
                 for (
                   var group = groups[j],
@@ -36675,7 +36687,6 @@
                     next = group[i],
                     node;
                   --i >= 0;
-
                 ) {
                   if ((node = group[i])) {
                     if (next && next !== node.nextSibling)
@@ -37215,7 +37226,7 @@
                 .map(function (t) {
                   var name = "",
                     i = t.indexOf(".");
-                  if (i >= 0) (name = t.slice(i + 1)), (t = t.slice(0, i));
+                  if (i >= 0) ((name = t.slice(i + 1)), (t = t.slice(0, i)));
                   return { type: t, name: name };
                 });
             }
@@ -37326,8 +37337,8 @@
               } else {
                 event = window.document.createEvent("Event");
                 if (params)
-                  event.initEvent(type, params.bubbles, params.cancelable),
-                    (event.detail = params.detail);
+                  (event.initEvent(type, params.bubbles, params.cancelable),
+                    (event.detail = params.detail));
                 else event.initEvent(type, false, false);
               }
 
@@ -37452,7 +37463,7 @@
 
               if (svg.createSVGPoint) {
                 var point = svg.createSVGPoint();
-                (point.x = event.clientX), (point.y = event.clientY);
+                ((point.x = event.clientX), (point.y = event.clientY));
                 point = point.matrixTransform(node.getScreenCTM().inverse());
                 return [point.x, point.y];
               }
@@ -37481,8 +37492,8 @@
 
             function touch(node, touches, identifier) {
               if (arguments.length < 3)
-                (identifier = touches),
-                  (touches = sourceEvent().changedTouches);
+                ((identifier = touches),
+                  (touches = sourceEvent().changedTouches));
 
               for (
                 var i = 0, n = touches ? touches.length : 0, touch;
@@ -37554,7 +37565,7 @@
 
             function newInterval(floori, offseti, count, field) {
               function interval(date) {
-                return floori((date = new Date(+date))), date;
+                return (floori((date = new Date(+date))), date);
               }
 
               interval.floor = interval;
@@ -37591,9 +37602,9 @@
                 step = step == null ? 1 : Math.floor(step);
                 if (!(start < stop) || !(step > 0)) return range; // also handles Invalid Date
                 do
-                  range.push((previous = new Date(+start))),
+                  (range.push((previous = new Date(+start))),
                     offseti(start, step),
-                    floori(start);
+                    floori(start));
                 while (previous < start && start < stop);
                 return range;
               };
@@ -37622,8 +37633,8 @@
 
               if (count) {
                 interval.count = function (start, end) {
-                  t0.setTime(+start), t1.setTime(+end);
-                  floori(t0), floori(t1);
+                  (t0.setTime(+start), t1.setTime(+end));
+                  (floori(t0), floori(t1));
                   return Math.floor(count(t0, t1));
                 };
 
@@ -38177,7 +38188,7 @@
             function poke() {
               var now = clock.now(),
                 delay = now - clockLast;
-              if (delay > pokeDelay) (clockSkew -= delay), (clockLast = now);
+              if (delay > pokeDelay) ((clockSkew -= delay), (clockLast = now));
             }
 
             function nap() {
@@ -38188,9 +38199,9 @@
               while (t1) {
                 if (t1._call) {
                   if (time > t1._time) time = t1._time;
-                  (t0 = t1), (t1 = t1._next);
+                  ((t0 = t1), (t1 = t1._next));
                 } else {
-                  (t2 = t1._next), (t1._next = null);
+                  ((t2 = t1._next), (t1._next = null));
                   t1 = t0 ? (t0._next = t2) : (taskHead = t2);
                 }
               }
@@ -38208,9 +38219,9 @@
                 if (interval) interval = clearInterval(interval);
               } else {
                 if (!interval)
-                  (clockLast = clock.now()),
-                    (interval = setInterval(poke, pokeDelay));
-                (frame = 1), setFrame(wake);
+                  ((clockLast = clock.now()),
+                    (interval = setInterval(poke, pokeDelay)));
+                ((frame = 1), setFrame(wake));
               }
             }
 
@@ -38231,8 +38242,8 @@
             var interval$1 = function (callback, delay, time) {
               var t = new Timer(),
                 total = delay;
-              if (delay == null) return t.restart(callback, delay, time), t;
-              (delay = +delay), (time = time == null ? now() : +time);
+              if (delay == null) return (t.restart(callback, delay, time), t);
+              ((delay = +delay), (time = time == null ? now() : +time));
               t.restart(
                 function tick(elapsed) {
                   elapsed += total;
@@ -39307,7 +39318,10 @@
                   !(timing = timing[id])
                 ) {
                   if (!(node = node.parentNode)) {
-                    return (defaultTiming.time = d3Timer.now()), defaultTiming;
+                    return (
+                      (defaultTiming.time = d3Timer.now()),
+                      defaultTiming
+                    );
                   }
                 }
                 return timing;
@@ -39317,11 +39331,11 @@
                 var id, timing;
 
                 if (name instanceof Transition) {
-                  (id = name._id), (name = name._name);
+                  ((id = name._id), (name = name._name));
                 } else {
-                  (id = newId()),
+                  ((id = newId()),
                     ((timing = defaultTiming).time = d3Timer.now()),
-                    (name = name == null ? null : name + "");
+                    (name = name == null ? null : name + ""));
                 }
 
                 for (

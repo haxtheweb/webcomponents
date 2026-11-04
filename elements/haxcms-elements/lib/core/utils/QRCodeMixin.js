@@ -79,23 +79,25 @@ const QRCodeMixin = function (SuperClass) {
             fit-to-visible-bounds
             auto
           >
-            ${this.showQRCode
-              ? html`
-                  <div style="width:190px;height:190px;">
-                    <q-r
-                      modulesize="4"
-                      margin="0"
-                      title="${store.activeTitle}"
-                      data="${
-                        globalThis.location.href.replace(
-                          "https://iam",
-                          "https://oer",
-                        ) /* @hack needs to be from a registry! */
-                      }"
-                    ></q-r>
-                  </div>
-                `
-              : ``}
+            ${
+              this.showQRCode
+                ? html`
+                    <div style="width:190px;height:190px;">
+                      <q-r
+                        modulesize="4"
+                        margin="0"
+                        title="${store.activeTitle}"
+                        data="${
+                          globalThis.location.href.replace(
+                            "https://iam",
+                            "https://oer",
+                          ) /* @hack needs to be from a registry! */
+                        }"
+                      ></q-r>
+                    </div>
+                  `
+                : ``
+            }
           </simple-popover>
         </div>
       `;

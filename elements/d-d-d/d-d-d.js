@@ -212,9 +212,10 @@ export class DDDSample extends DDDSuper(LitElement) {
         }
 
         .sample {
-          transition: background-color var(--ddd-duration-normal, .3s) ease-in-out,
-          color var(--ddd-duration-normal, .3s) ease-in-out,
-          border-color var(--ddd-duration-normal, .3s) ease-in-out;
+          transition:
+            background-color var(--ddd-duration-normal, 0.3s) ease-in-out,
+            color var(--ddd-duration-normal, 0.3s) ease-in-out,
+            border-color var(--ddd-duration-normal, 0.3s) ease-in-out;
         }
 
         :host([type="accent"]) .sample,
@@ -229,7 +230,10 @@ export class DDDSample extends DDDSuper(LitElement) {
         :host([type="border"]) .sample,
         :host([type="border-radius"]) .sample,
         :host([type="box-shadow"]) .sample {
-          --ddd-theme-primary: var(--ddd-sample-theme-primary, light-dark(black,white));
+          --ddd-theme-primary: var(
+            --ddd-sample-theme-primary,
+            light-dark(black, white)
+          );
           --ddd-theme-accent: var(
             --ddd-sample-theme-accent,
             var(--ddd-accent-3)
@@ -295,7 +299,10 @@ export class DDDSample extends DDDSuper(LitElement) {
 
         :host([type="margin"]) .sample[data-margin],
         :host([type="padding"]) .sample {
-          --ddd-theme-primary: var(--ddd-sample-theme-primary, light-dark(black, white));
+          --ddd-theme-primary: var(
+            --ddd-sample-theme-primary,
+            light-dark(black, white)
+          );
           display: inline-block;
           height: var(--ddd-spacing-4);
           padding-top: 0;
@@ -445,11 +452,16 @@ export class DDDSample extends DDDSuper(LitElement) {
           >${ApplicationAttributeData[this.type][this.option]}<slot></slot
         ></span>
       </div>
-      ${this.tooltip
-        ? html`<simple-tooltip for="sample" fit-to-visible-bounds position="top"
-            >${ApplicationAttributeData[this.type][this.option]}</simple-tooltip
-          >`
-        : ``}
+      ${
+        this.tooltip
+          ? html`<simple-tooltip
+              for="sample"
+              fit-to-visible-bounds
+              position="top"
+              >${ApplicationAttributeData[this.type][this.option]}</simple-tooltip
+            >`
+          : ``
+      }
     `;
   }
 

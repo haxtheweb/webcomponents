@@ -213,35 +213,39 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
   // Lit render the HTML
   render() {
     return html`
-      ${this.data.length > 0
-        ? html`
-            <div class="container-background">
-              <div class="projects-header">
-                <div class="grid-title">${this.title.toUpperCase()}</div>
-                <div class="filters">${this.displayFilters()}</div>
+      ${
+        this.data.length > 0
+          ? html`
+              <div class="container-background">
+                <div class="projects-header">
+                  <div class="grid-title">${this.title.toUpperCase()}</div>
+                  <div class="filters">${this.displayFilters()}</div>
+                </div>
+                <div class="card-container">
+                  ${this.filteredData.map((item) => {
+                    return html`
+                      <glossy-portfolio-card
+                        class="card"
+                        title="${item.title}"
+                        thumbnail=${
+                          item.metadata && item.metadata.image
+                            ? item.metadata.image
+                            : store.manifest &&
+                                store.manifest.metadata &&
+                                store.manifest.metadata.site
+                              ? store.manifest.metadata.site.logo
+                              : ""
+                        }
+                        slug="${item.slug}"
+                      >
+                      </glossy-portfolio-card>
+                    `;
+                  })}
+                </div>
               </div>
-              <div class="card-container">
-                ${this.filteredData.map((item) => {
-                  return html`
-                    <glossy-portfolio-card
-                      class="card"
-                      title="${item.title}"
-                      thumbnail=${item.metadata && item.metadata.image
-                        ? item.metadata.image
-                        : store.manifest &&
-                            store.manifest.metadata &&
-                            store.manifest.metadata.site
-                          ? store.manifest.metadata.site.logo
-                          : ""}
-                      slug="${item.slug}"
-                    >
-                    </glossy-portfolio-card>
-                  `;
-                })}
-              </div>
-            </div>
-          `
-        : html``}
+            `
+          : html``
+      }
     `;
   }
 

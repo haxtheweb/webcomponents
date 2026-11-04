@@ -137,15 +137,17 @@ class SimpleBlogPost extends SimpleColors {
       <main>
         <article>
           <div class="article-image">
-            ${this.hasImage
-              ? html`
-                  <div
-                    id="image"
-                    class="post-image-image"
-                    style='background-image: url("${this.image}");'
-                  ></div>
-                `
-              : ``}
+            ${
+              this.hasImage
+                ? html`
+                    <div
+                      id="image"
+                      class="post-image-image"
+                      style='background-image: url("${this.image}");'
+                    ></div>
+                  `
+                : ``
+            }
             <div class="post-meta">
               <site-active-title></site-active-title>
             </div>

@@ -160,39 +160,41 @@ class SiteBreadcrumb extends HAXCMSI18NMixin(DDD) {
   }
   // render function
   render() {
-    return html` ${this.items.length > 0
-      ? html`
-          <ol
-            class="breadcrumb"
-            part="${this.editMode
-              ? `breadcrumb edit-mode-active`
-              : `breadcrumb`}"
-            aria-disabled="${this.editMode ? `true` : `false`}"
-            itemscope
-            itemtype="https://schema.org/BreadcrumbList"
-          >
-            ${this.items.map(
-              (item, index) =>
-                html`<li
-                  itemprop="itemListElement"
-                  itemscope
-                  itemtype="https://schema.org/ListItem"
-                >
-                  <a
-                    itemprop="item"
-                    href="${item.slug}"
-                    tabindex="${this.editMode ? -1 : 0}"
-                    aria-disabled="${this.editMode ? `true` : `false`}"
-                    ><span itemprop="name"
-                      >${item.title ? item.title : item.slug}</span
-                    ></a
+    return html` ${
+      this.items.length > 0
+        ? html`
+            <ol
+              class="breadcrumb"
+              part="${
+                this.editMode ? `breadcrumb edit-mode-active` : `breadcrumb`
+              }"
+              aria-disabled="${this.editMode ? `true` : `false`}"
+              itemscope
+              itemtype="https://schema.org/BreadcrumbList"
+            >
+              ${this.items.map(
+                (item, index) =>
+                  html`<li
+                    itemprop="itemListElement"
+                    itemscope
+                    itemtype="https://schema.org/ListItem"
                   >
-                  <meta itemprop="position" content="${index + 1}" />
-                </li>`,
-            )}
-          </ol>
-        `
-      : ``}`;
+                    <a
+                      itemprop="item"
+                      href="${item.slug}"
+                      tabindex="${this.editMode ? -1 : 0}"
+                      aria-disabled="${this.editMode ? `true` : `false`}"
+                      ><span itemprop="name"
+                        >${item.title ? item.title : item.slug}</span
+                      ></a
+                    >
+                    <meta itemprop="position" content="${index + 1}" />
+                  </li>`,
+              )}
+            </ol>
+          `
+        : ``
+    }`;
   }
 
   static get properties() {

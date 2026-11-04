@@ -415,9 +415,9 @@ export class ImageGallery extends I18NMixin(DDD) {
         ${this.images.map(
           (image, index) => html`
             <button
-              class="grid-item ${image.element === this._newImageElement
-                ? "new-image"
-                : ""} ${image.uploading ? "uploading" : ""}"
+              class="grid-item ${
+                image.element === this._newImageElement ? "new-image" : ""
+              } ${image.uploading ? "uploading" : ""}"
               aria-label="${this.t.openImage}: ${image.alt || ""}"
               title="${this.t.openImage}: ${image.alt || ""}"
               @click="${(e) => this._handleImageClick(e, image, index)}"
@@ -443,9 +443,9 @@ export class ImageGallery extends I18NMixin(DDD) {
         ${this.images.map(
           (image, index) => html`
             <button
-              class="masonry-item ${image.element === this._newImageElement
-                ? "new-image"
-                : ""} ${image.uploading ? "uploading" : ""}"
+              class="masonry-item ${
+                image.element === this._newImageElement ? "new-image" : ""
+              } ${image.uploading ? "uploading" : ""}"
               aria-label="${this.t.openImage}: ${image.alt || ""}"
               title="${this.t.openImage}: ${image.alt || ""}"
               @click="${(e) => this._handleImageClick(e, image, index)}"
@@ -465,37 +465,41 @@ export class ImageGallery extends I18NMixin(DDD) {
     return html`
       <div class="gallery-layout">
         <div class="gallery-main">
-          ${activeImage
-            ? html`
-                <div class="gallery-nav-wrap">
-                  <simple-icon-button-lite
-                    id="prev-btn"
-                    icon="hardware:keyboard-arrow-left"
-                    label="${this.t.previous}"
-                    title="${this.t.previous}"
-                    ?disabled="${this.activeIndex === 0}"
-                    @click="${() => this._setActiveIndex(this.activeIndex - 1)}"
-                  ></simple-icon-button-lite>
-                  <simple-icon-button-lite
-                    id="next-btn"
-                    icon="hardware:keyboard-arrow-right"
-                    label="${this.t.next}"
-                    title="${this.t.next}"
-                    ?disabled="${this.activeIndex === this.images.length - 1}"
-                    @click="${() => this._setActiveIndex(this.activeIndex + 1)}"
-                  ></simple-icon-button-lite>
-                </div>
-                <img
-                  src="${activeImage.src}"
-                  alt="${activeImage.alt}"
-                  @dblclick="${() => this._handleDblClick(this.activeIndex)}"
-                />
-              `
-            : html``}
+          ${
+            activeImage
+              ? html`
+                  <div class="gallery-nav-wrap">
+                    <simple-icon-button-lite
+                      id="prev-btn"
+                      icon="hardware:keyboard-arrow-left"
+                      label="${this.t.previous}"
+                      title="${this.t.previous}"
+                      ?disabled="${this.activeIndex === 0}"
+                      @click="${() => this._setActiveIndex(this.activeIndex - 1)}"
+                    ></simple-icon-button-lite>
+                    <simple-icon-button-lite
+                      id="next-btn"
+                      icon="hardware:keyboard-arrow-right"
+                      label="${this.t.next}"
+                      title="${this.t.next}"
+                      ?disabled="${this.activeIndex === this.images.length - 1}"
+                      @click="${() => this._setActiveIndex(this.activeIndex + 1)}"
+                    ></simple-icon-button-lite>
+                  </div>
+                  <img
+                    src="${activeImage.src}"
+                    alt="${activeImage.alt}"
+                    @dblclick="${() => this._handleDblClick(this.activeIndex)}"
+                  />
+                `
+              : html``
+          }
         </div>
-        ${activeImage && activeImage.alt
-          ? html` <div class="gallery-caption">${activeImage.alt}</div> `
-          : html``}
+        ${
+          activeImage && activeImage.alt
+            ? html` <div class="gallery-caption">${activeImage.alt}</div> `
+            : html``
+        }
         <div
           class="gallery-thumbnails"
           role="tablist"
@@ -504,11 +508,11 @@ export class ImageGallery extends I18NMixin(DDD) {
           ${this.images.map(
             (image, index) => html`
               <button
-                class="gallery-thumbnail ${index === this.activeIndex
-                  ? "active"
-                  : ""} ${image.element === this._newImageElement
-                  ? "new-image"
-                  : ""} ${image.uploading ? "uploading" : ""}"
+                class="gallery-thumbnail ${
+                  index === this.activeIndex ? "active" : ""
+                } ${
+                  image.element === this._newImageElement ? "new-image" : ""
+                } ${image.uploading ? "uploading" : ""}"
                 role="tab"
                 aria-selected="${index === this.activeIndex ? "true" : "false"}"
                 aria-label="${image.alt || ""}"

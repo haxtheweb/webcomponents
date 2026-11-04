@@ -3,9 +3,8 @@ import { fixture, expect, html } from "@open-wc/testing";
 globalThis.appSettings = {};
 
 const { store } = await import("../lib/v2/AppHaxStore.js");
-const { AppHaxSiteCreationModal } = await import(
-  "../lib/v2/app-hax-site-creation-modal.js"
-);
+const { AppHaxSiteCreationModal } =
+  await import("../lib/v2/app-hax-site-creation-modal.js");
 const { AppHaxSiteDetails } = await import("../lib/v2/app-hax-site-details.js");
 
 function createModal() {

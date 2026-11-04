@@ -127,42 +127,50 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
       <div id="inner">
         <slot name="img"></slot>
         <slot></slot>
-        ${this.noPrevNext
+        ${
+          this.noPrevNext
+            ? ``
+            : html`
+                <a11y-carousel-button
+                  class="prevnext"
+                  button-type="prev"
+                  controls="${this.prev}"
+                  title="${prevLabel}"
+                >
+                  <span class="sr-only">${prevLabel}</span>
+                  <simple-icon-lite
+                    icon="icons:chevron-left"
+                  ></simple-icon-lite>
+                </a11y-carousel-button>
+                <a11y-carousel-button
+                  class="prevnext"
+                  button-type="next"
+                  controls="${this.next}"
+                  title="${nextLabel}"
+                >
+                  <span class="sr-only">${nextLabel}</span>
+                  <simple-icon-lite
+                    icon="icons:chevron-right"
+                  ></simple-icon-lite>
+                </a11y-carousel-button>
+              `
+        }
+      </div>
+      ${
+        this.noButtons
           ? ``
           : html`
-              <a11y-carousel-button
-                class="prevnext"
-                button-type="prev"
-                controls="${this.prev}"
-                title="${prevLabel}"
-              >
-                <span class="sr-only">${prevLabel}</span>
-                <simple-icon-lite icon="icons:chevron-left"></simple-icon-lite>
-              </a11y-carousel-button>
-              <a11y-carousel-button
-                class="prevnext"
-                button-type="next"
-                controls="${this.next}"
-                title="${nextLabel}"
-              >
-                <span class="sr-only">${nextLabel}</span>
-                <simple-icon-lite icon="icons:chevron-right"></simple-icon-lite>
-              </a11y-carousel-button>
-            `}
-      </div>
-      ${this.noButtons
-        ? ``
-        : html`
-            <div class="buttons">
-              ${(this.itemData || []).map(
-                (item) => html`
-                  <a11y-carousel-button class="button" controls="${item.id}">
-                    <span class="sr-only">${item.index + 1}</span>
-                  </a11y-carousel-button>
-                `,
-              )}
-            </div>
-          `}
+              <div class="buttons">
+                ${(this.itemData || []).map(
+                  (item) => html`
+                    <a11y-carousel-button class="button" controls="${item.id}">
+                      <span class="sr-only">${item.index + 1}</span>
+                    </a11y-carousel-button>
+                  `,
+                )}
+              </div>
+            `
+      }
       <div><slot name="below"></slot></div>
     `;
   }

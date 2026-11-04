@@ -695,9 +695,9 @@ class HaxPalettePicker extends I18NMixin(DDD) {
       ${this._renderDisc(option)}
       <div>
         <p class="specimen-name">
-          ${option.label}${active && this.showStatusFlags
-            ? ` · ${this.t.active}`
-            : ""}
+          ${option.label}${
+            active && this.showStatusFlags ? ` · ${this.t.active}` : ""
+          }
         </p>
         ${this._renderCodes(option)}
       </div>
@@ -715,18 +715,20 @@ class HaxPalettePicker extends I18NMixin(DDD) {
       role="tooltip"
       ?hidden="${!option}"
     >
-      ${option
-        ? html`<div class="peek-head">
-              ${this._renderDisc(option)}
-              <div>
-                <p class="peek-name">${option.label}</p>
-                <span class="peek-sub"
-                  >${active ? this.t.activePaletteLabel : this.t.palette}</span
-                >
+      ${
+        option
+          ? html`<div class="peek-head">
+                ${this._renderDisc(option)}
+                <div>
+                  <p class="peek-name">${option.label}</p>
+                  <span class="peek-sub"
+                    >${active ? this.t.activePaletteLabel : this.t.palette}</span
+                  >
+                </div>
               </div>
-            </div>
-            ${this._renderCodes(option)}`
-        : ""}
+              ${this._renderCodes(option)}`
+          : ""
+      }
     </div>`;
   }
 
@@ -852,9 +854,9 @@ class HaxPalettePicker extends I18NMixin(DDD) {
       <fieldset
         role="radiogroup"
         aria-label="${this.label || this.t.paletteSelection}"
-        aria-describedby="${this.description
-          ? `${this.__inputId}-description`
-          : ""}"
+        aria-describedby="${
+          this.description ? `${this.__inputId}-description` : ""
+        }"
         ?disabled="${this.disabled}"
       >
         <legend ?hidden="${!this.label}">${this.label}</legend>

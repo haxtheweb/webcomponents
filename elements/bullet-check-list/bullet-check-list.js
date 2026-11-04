@@ -582,16 +582,20 @@ class BulletCheckList extends SchemaBehaviors(I18NMixin(DDD)) {
             @change="${(e) => this._toggle(item, e)}"
           />
           <span class="marker" aria-hidden="true"
-            >${checked
-              ? html`<simple-icon-lite icon="check"></simple-icon-lite>`
-              : this.ordered
-                ? index + 1
-                : html`<span class="dot"></span>`}</span
+            >${
+              checked
+                ? html`<simple-icon-lite icon="check"></simple-icon-lite>`
+                : this.ordered
+                  ? index + 1
+                  : html`<span class="dot"></span>`
+            }</span
           >
           <span class="text">${item.label}</span>
-          ${index === current
-            ? html`<span class="badge">${this.t.currentStep}</span>`
-            : ``}
+          ${
+            index === current
+              ? html`<span class="badge">${this.t.currentStep}</span>`
+              : ``
+          }
         </label>
       </li>`;
     });
@@ -615,13 +619,15 @@ class BulletCheckList extends SchemaBehaviors(I18NMixin(DDD)) {
             aria-labelledby="${this.title ? "title" : nothing}"
             aria-label="${ifDefined(this.title ? undefined : label)}"
           >
-            ${this.ordered
-              ? html`<ol role="list">
-                  ${rows}
-                </ol>`
-              : html`<ul role="list">
-                  ${rows}
-                </ul>`}
+            ${
+              this.ordered
+                ? html`<ol role="list">
+                    ${rows}
+                  </ol>`
+                : html`<ul role="list">
+                    ${rows}
+                  </ul>`
+            }
           </div>
         </div>
         <div class="ddd-block-footer">

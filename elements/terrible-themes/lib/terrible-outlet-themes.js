@@ -174,8 +174,9 @@ class TerribleOutletThemes extends HAXCMSRememberRoute(
           <tr>
             <td colspan="2">
               <img
-                src="${new URL("assets/header.jpg", import.meta.url)
-                  .href}/../lips.jpg"
+                src="${
+                  new URL("assets/header.jpg", import.meta.url).href
+                }/../lips.jpg"
                 width="125"
                 height="74"
                 border="0"

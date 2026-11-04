@@ -541,7 +541,7 @@
     var polylen = poly.length,
       genpolylen = genpoly.length;
     for (var i = 0; i < genpolylen; ++i) modulus.push(0);
-    for (var i = 0; i < polylen; ) {
+    for (var i = 0; i < polylen;) {
       var quotient = GF256_INVMAP[modulus[i++]];
       if (quotient >= 0) {
         for (var j = 0; j < genpolylen; ++j) {
@@ -825,7 +825,7 @@
 
       // evaluate the current row
       groups = [0]; // the first empty group of white
-      for (var j = 0; j < n; ) {
+      for (var j = 0; j < n;) {
         var k;
         for (k = 0; j < n && row[j]; ++k) ++j;
         groups.push(k);
@@ -836,7 +836,7 @@
 
       // evaluate the current column
       groups = [0];
-      for (var j = 0; j < n; ) {
+      for (var j = 0; j < n;) {
         var k;
         for (k = 0; j < n && matrix[j][i]; ++k) ++j;
         groups.push(k);
@@ -955,13 +955,11 @@
         } else {
           mode = MODE_OCTET;
         }
-      } else if (
-        !(
-          mode == MODE_NUMERIC ||
-          mode == MODE_ALPHANUMERIC ||
-          mode == MODE_OCTET
-        )
-      ) {
+      } else if (!(
+        mode == MODE_NUMERIC ||
+        mode == MODE_ALPHANUMERIC ||
+        mode == MODE_OCTET
+      )) {
         throw "invalid or unsupported mode";
       }
 

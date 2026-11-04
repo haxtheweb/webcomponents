@@ -171,21 +171,25 @@ export class SiteTagsRoute extends HAXCMSI18NMixin(DDD) {
   }
 
   renderXTags() {
-    return html` ${this.params && this.params.tag
-      ? html`<simple-tag
-          class="all-tags"
-          part="simple-tag all-tags"
-          value="Remove '${this.params.tag}' filter"
-          @click="${this._resetClick}"
-          @keydown="${this._resetKeydown}"
-          tabindex="0"
-        ></simple-tag>`
-      : nothing}
+    return html` ${
+      this.params && this.params.tag
+        ? html`<simple-tag
+            class="all-tags"
+            part="simple-tag all-tags"
+            value="Remove '${this.params.tag}' filter"
+            @click="${this._resetClick}"
+            @keydown="${this._resetKeydown}"
+            tabindex="0"
+          ></simple-tag>`
+        : nothing
+    }
     ${Object.keys(this.resultsTags).map(
       (tag) =>
-        html` ${this.params.tag === tag.trim()
-          ? nothing
-          : html`${this.renderXTagsTag(tag)}`}`,
+        html` ${
+          this.params.tag === tag.trim()
+            ? nothing
+            : html`${this.renderXTagsTag(tag)}`
+        }`,
     )}
     ${this.renderXTagsItems(this.filteredItems)}`;
   }
@@ -198,9 +202,9 @@ export class SiteTagsRoute extends HAXCMSI18NMixin(DDD) {
       @click="${this._tagClick}"
       @keydown="${this._tagKeydown}"
       tabindex="0"
-      >${this.resultsTags[tag] > 1
-        ? html` (${this.resultsTags[tag]})`
-        : nothing}
+      >${
+        this.resultsTags[tag] > 1 ? html` (${this.resultsTags[tag]})` : nothing
+      }
     </simple-tag>`;
   }
 

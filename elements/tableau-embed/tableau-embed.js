@@ -150,9 +150,7 @@ export class TableauEmbed extends I18NMixin(LitElement) {
   async loadTableau() {
     try {
       if (!globalThis.customElements.get("tableau-viz")) {
-        await import(
-          "https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js"
-        );
+        await import("https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js");
       }
       this.loaded = true;
       this.loading = false;
@@ -183,21 +181,25 @@ export class TableauEmbed extends I18NMixin(LitElement) {
           : null,
       })}
       <div class="ddd-block-body">
-        ${!this.loaded
-          ? html`<div class="loading-msg" role="status" aria-live="polite">
-              ${this.loading
-                ? this.t.loadingTableau
-                : this.t.unableToLoadTableau}
-            </div>`
-          : html`<tableau-viz
-              src="${this.src}"
-              width="${this.width}"
-              height="${this.height}"
-              toolbar="${this.toolbar}"
-              ?hide-tabs="${this.hideTabs}"
-              device="${this.device}"
-              aria-label="${this.t.tableauVisualization}"
-            ></tableau-viz>`}
+        ${
+          !this.loaded
+            ? html`<div class="loading-msg" role="status" aria-live="polite">
+                ${
+                  this.loading
+                    ? this.t.loadingTableau
+                    : this.t.unableToLoadTableau
+                }
+              </div>`
+            : html`<tableau-viz
+                src="${this.src}"
+                width="${this.width}"
+                height="${this.height}"
+                toolbar="${this.toolbar}"
+                ?hide-tabs="${this.hideTabs}"
+                device="${this.device}"
+                aria-label="${this.t.tableauVisualization}"
+              ></tableau-viz>`
+        }
       </div>
     </div>`;
   }

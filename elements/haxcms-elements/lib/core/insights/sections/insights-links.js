@@ -399,27 +399,29 @@ class InsightsLinks extends I18NMixin(LitElement) {
       <h3 class="block">
         ${this.t.findings}<span class="hint">${this.t.findingsHint}</span>
       </h3>
-      ${all.length
-        ? html`<div
-            class="hax-ui-seg wrap filters"
-            role="group"
-            aria-label="${this.t.filterFindings}"
-          >
-            ${FILTERS.map(
-              (f) =>
-                html`<button
-                  type="button"
-                  data-filter="${f}"
-                  aria-pressed="${this._filter === f ? "true" : "false"}"
-                  @click="${() => {
-                    this._filter = f;
-                  }}"
-                >
-                  ${this.t[f]} <span class="num">${counts[f] || 0}</span>
-                </button>`,
-            )}
-          </div>`
-        : nothing}
+      ${
+        all.length
+          ? html`<div
+              class="hax-ui-seg wrap filters"
+              role="group"
+              aria-label="${this.t.filterFindings}"
+            >
+              ${FILTERS.map(
+                (f) =>
+                  html`<button
+                    type="button"
+                    data-filter="${f}"
+                    aria-pressed="${this._filter === f ? "true" : "false"}"
+                    @click="${() => {
+                      this._filter = f;
+                    }}"
+                  >
+                    ${this.t[f]} <span class="num">${counts[f] || 0}</span>
+                  </button>`,
+              )}
+            </div>`
+          : nothing
+      }
       ${body}
     </section>`;
   }
@@ -430,44 +432,48 @@ class InsightsLinks extends I18NMixin(LitElement) {
       <h3 class="block">
         ${this.t.leanOn}<span class="hint">${this.t.leanOnHint}</span>
       </h3>
-      ${rows.length
-        ? html`<ul class="findings lean-on">
-            ${rows.map((r) => {
-              const parts = [];
-              if (r.embeds) {
-                parts.push(
-                  this._plural(r.embeds, this.t.embedOne, this.t.embedCount),
-                );
-              }
-              if (r.videos) {
-                parts.push(
-                  this._plural(r.videos, this.t.videoOne, this.t.videoCount),
-                );
-              }
-              if (r.worksheets) {
-                parts.push(this.t.worksheet);
-              }
-              if (r.hosts.length) {
-                parts.push(
-                  this._plural(
-                    r.hosts.length,
-                    this.t.hostOne,
-                    this.t.hostCount,
-                  ),
-                );
-              }
-              return html`<li>
-                <span class="t"
-                  >${r.title}<span class="d"
-                    >${parts.join(" · ")}${r.hosts.length
-                      ? html` · ${r.hosts.join(", ")}`
-                      : nothing}</span
-                  ></span
-                >${this._openBtn(r.slug, r.title)}
-              </li>`;
-            })}
-          </ul>`
-        : html`<div class="hax-ui-empty empty">${this.t.noLeanOn}</div>`}
+      ${
+        rows.length
+          ? html`<ul class="findings lean-on">
+              ${rows.map((r) => {
+                const parts = [];
+                if (r.embeds) {
+                  parts.push(
+                    this._plural(r.embeds, this.t.embedOne, this.t.embedCount),
+                  );
+                }
+                if (r.videos) {
+                  parts.push(
+                    this._plural(r.videos, this.t.videoOne, this.t.videoCount),
+                  );
+                }
+                if (r.worksheets) {
+                  parts.push(this.t.worksheet);
+                }
+                if (r.hosts.length) {
+                  parts.push(
+                    this._plural(
+                      r.hosts.length,
+                      this.t.hostOne,
+                      this.t.hostCount,
+                    ),
+                  );
+                }
+                return html`<li>
+                  <span class="t"
+                    >${r.title}<span class="d"
+                      >${parts.join(" · ")}${
+                        r.hosts.length
+                          ? html` · ${r.hosts.join(", ")}`
+                          : nothing
+                      }</span
+                    ></span
+                  >${this._openBtn(r.slug, r.title)}
+                </li>`;
+              })}
+            </ul>`
+          : html`<div class="hax-ui-empty empty">${this.t.noLeanOn}</div>`
+      }
     </section>`;
   }
 
@@ -500,9 +506,11 @@ class InsightsLinks extends I18NMixin(LitElement) {
       <h3 class="block">
         ${this.t.embedHosts}<span class="hint">${this.t.embedHostsHint}</span>
       </h3>
-      ${rows.length
-        ? this._hostTable("embedHosts", this.t.embedHosts, rows)
-        : html`<div class="hax-ui-empty empty">${this.t.noEmbedHosts}</div>`}
+      ${
+        rows.length
+          ? this._hostTable("embedHosts", this.t.embedHosts, rows)
+          : html`<div class="hax-ui-empty empty">${this.t.noEmbedHosts}</div>`
+      }
     </section>`;
   }
 
@@ -518,9 +526,11 @@ class InsightsLinks extends I18NMixin(LitElement) {
           )}</span
         >
       </h3>
-      ${out.hosts.length
-        ? this._hostTable("outside", this.t.outsideList, out.hosts)
-        : html`<div class="hax-ui-empty empty">${this.t.noOutside}</div>`}
+      ${
+        out.hosts.length
+          ? this._hostTable("outside", this.t.outsideList, out.hosts)
+          : html`<div class="hax-ui-empty empty">${this.t.noOutside}</div>`
+      }
     </section>`;
   }
 
@@ -549,17 +559,19 @@ class InsightsLinks extends I18NMixin(LitElement) {
               >${this.t.comingSoon}</span
             >
           </li>
-          ${schedNeeds
-            ? html`<li>
-                <span class="t"
-                  >${this.t.statusWeekly}<span class="d"
-                    >${schedNeeds}</span
-                  ></span
-                ><span class="hax-ui-pill" data-tone="soon"
-                  >${this.t.comingSoon}</span
-                >
-              </li>`
-            : nothing}
+          ${
+            schedNeeds
+              ? html`<li>
+                  <span class="t"
+                    >${this.t.statusWeekly}<span class="d"
+                      >${schedNeeds}</span
+                    ></span
+                  ><span class="hax-ui-pill" data-tone="soon"
+                    >${this.t.comingSoon}</span
+                  >
+                </li>`
+              : nothing
+          }
         </ul>
         <button
           type="button"

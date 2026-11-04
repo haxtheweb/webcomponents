@@ -533,11 +533,13 @@ class HAXCMSSiteReports extends HaxcmsAdminSectionMixin(I18NMixin(LitElement)) {
                 aria-pressed="${this.density === d ? "true" : "false"}"
                 @click="${() => this._setDensity(d)}"
               >
-                ${d === "compact"
-                  ? this.t.densityCompact
-                  : d === "roomy"
-                    ? this.t.densityRoomy
-                    : this.t.densityDefault}
+                ${
+                  d === "compact"
+                    ? this.t.densityCompact
+                    : d === "roomy"
+                      ? this.t.densityRoomy
+                      : this.t.densityDefault
+                }
               </button>`,
           )}
         </div>
@@ -551,15 +553,17 @@ class HAXCMSSiteReports extends HaxcmsAdminSectionMixin(I18NMixin(LitElement)) {
         aria-live="polite"
       >
         <span>${this._statusText()}</span>
-        ${this._status === "error"
-          ? html`<button
-              type="button"
-              class="btn"
-              @click="${() => this._scan(true)}"
-            >
-              ${this.t.tryAgain}
-            </button>`
-          : nothing}
+        ${
+          this._status === "error"
+            ? html`<button
+                type="button"
+                class="btn"
+                @click="${() => this._scan(true)}"
+              >
+                ${this.t.tryAgain}
+              </button>`
+            : nothing
+        }
       </div>
     `;
   }

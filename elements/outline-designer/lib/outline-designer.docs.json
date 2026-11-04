@@ -127,6 +127,14 @@
       "hax": null
     },
     {
+      "name": "host-actions",
+      "property": "hostActions",
+      "type": "boolean",
+      "default": "false",
+      "description": "The host draws the bulk actions (the site admin action bar holds Delete selected), so the toolbar leaves its own out",
+      "hax": null
+    },
+    {
       "name": "fidelity",
       "property": "fidelity",
       "type": "string",
@@ -180,11 +188,12 @@
     "controls"
   ],
   "events": [
+    "outline-designer-rendered",
     "outline-designer-request-navigate",
     "simple-modal-hide"
   ],
   "hax": {},
-  "surfaceHash": "7a19191ef70f",
+  "surfaceHash": "86d9194845e2",
   "walkthroughs": [],
   "videos": [],
   "motion": {

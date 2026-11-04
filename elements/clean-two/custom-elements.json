@@ -13,6 +13,10 @@
           "members": [
             {
               "kind": "method",
+              "name": "HAXCMSGlobalStyleSheetContent"
+            },
+            {
+              "kind": "method",
               "name": "searchItemSelected",
               "parameters": [
                 {

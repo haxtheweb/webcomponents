@@ -723,6 +723,16 @@
             },
             {
               "kind": "method",
+              "name": "_readableName",
+              "parameters": [
+                {
+                  "name": "key"
+                }
+              ],
+              "description": "\"deep-purple\" reads as \"Deep purple\""
+            },
+            {
+              "kind": "method",
               "name": "_fireChangeEvent",
               "description": "Fires with any property change."
             },

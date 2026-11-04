@@ -8,9 +8,8 @@ const {
   configureAppHAXSystemApiRegistry,
   waitForAppHAXSystemApiRegistryReady,
 } = await import("../lib/v2/app-hax-system-api-registry.js");
-const { MicroFrontendRegistry } = await import(
-  "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js"
-);
+const { MicroFrontendRegistry } =
+  await import("@haxtheweb/micro-frontend-registry/micro-frontend-registry.js");
 
 // The module stores state on globalThis.__AppHaxSystemApiRegistryState.
 // We reset it between tests to avoid cross-test interference.

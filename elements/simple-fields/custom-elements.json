@@ -1266,8 +1266,27 @@
       "path": "lib/simple-context-menu.js",
       "declarations": [
         {
+          "kind": "function",
+          "name": "contextMenuShortcut",
+          "parameters": [
+            {
+              "name": "descriptor",
+              "description": "{ key, ctrl, alt, meta, shift }",
+              "type": {
+                "text": "object"
+              }
+            }
+          ],
+          "description": "One way to write a shortcut for every item menu, matching Merlin's labels\n(KeyboardShortcutManager.generateLabel: \"Ctrl\", \"Alt\", \"Meta\", then\n\"\\u21e7\" for Shift, then the key, no separators, e.g. \"Ctrl\\u21e7S\"),\nwith arrows and Enter as their symbols. Returns the visible label and\nthe aria-keyshortcuts value.",
+          "return": {
+            "type": {
+              "text": "{label: string, aria: string}"
+            }
+          }
+        },
+        {
           "kind": "class",
-          "description": "`simple-context-menu`\n`Reusable context menu dialog with keyboard navigation and accessibility`",
+          "description": "",
           "name": "SimpleContextMenu",
           "members": [
             {
@@ -1275,6 +1294,25 @@
               "name": "tag",
               "static": true,
               "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_header",
+              "description": "the visible label; the menu itself is named from title"
+            },
+            {
+              "kind": "method",
+              "name": "_onSlotChange",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Items are menuitems and rules are separators, as simple-toolbar's own\nmenus mark them; an item that sets its own role keeps it"
+            },
+            {
+              "kind": "method",
+              "name": "_onPointer"
             },
             {
               "kind": "method",
@@ -1491,6 +1529,18 @@
             },
             {
               "kind": "field",
+              "name": "keyboard",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Set while the menu is used from the keyboard; shows the focus ring",
+              "default": "false",
+              "attribute": "keyboard",
+              "reflects": true
+            },
+            {
+              "kind": "field",
               "name": "_anchorElement",
               "type": {
                 "text": "null"
@@ -1566,17 +1616,32 @@
               "description": "Offset from anchor element (in pixels)",
               "default": "4",
               "fieldName": "offset"
+            },
+            {
+              "name": "keyboard",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Set while the menu is used from the keyboard; shows the focus ring",
+              "default": "false",
+              "fieldName": "keyboard"
             }
           ],
           "superclass": {
             "name": "DDD",
             "package": "@haxtheweb/d-d-d/d-d-d.js"
-          },
-          "tagName": "simple-context-menu",
-          "customElement": true
+          }
         }
       ],
       "exports": [
+        {
+          "kind": "js",
+          "name": "contextMenuShortcut",
+          "declaration": {
+            "name": "contextMenuShortcut",
+            "module": "lib/simple-context-menu.js"
+          }
+        },
         {
           "kind": "custom-element-definition",
           "declaration": {
@@ -19000,7 +19065,7 @@
           "type": {
             "text": "array"
           },
-          "default": "[ ...SimpleFieldsTooltipStyles, css` button, button[aria-selected], simple-toolbar-button::part(button), simple-toolbar-menu::part(button) { color: var(--simple-fields-button-color, var(--simple-fields-color)); background-color: var( --simple-fields-button-background-color, var(--simple-fields-background-color) ); border-width: 1px; border-style: solid; border-color: var( --simple-fields-button-border-color, var(--simple-fields-border-color, #999) ); opacity: var(--simple-fields-button-focus-opacity, 1); font-family: var( --simple-fields-button-font-family, var(--simple-fields-font-family, sans-serif) ); font-size: var(--simple-fields-button-font-size, 14px); line-height: var(--simple-fields-button-line-height 22px); text-transform: var(--simple-fields-button-text-transform, unset); border-radius: var(--simple-fields-border-radius, 4px); padding: var(--simple-fields-button-padding-sm, 1px) var(--simple-fields-button-padding, 2px); min-height: calc( 24px + 2 * var(--simple-fields-button-padding-sm, 2px) + 2px ); } simple-toolbar-menu-item > simple-toolbar-button::part(button) { border-color: transparent; border-radius: 0 !important; } simple-toolbar-button.danger::part(button), simple-toolbar-menu.danger::part(button) { background-color: var( --simple-fields-button-danger-color, var(--simple-fields-error-color, #b40000) ); color: var(--simple-fields-button-danger-background-color, white); } button[aria-pressed=\"true\"], button[aria-selected=\"true\"], simple-toolbar-button[toggled]::part(button) { color: var( --simple-fields-button-toggled-color, var(--simple-fields-accent-color, #3f51b5) ); background-color: var( --simple-fields-button-toggled-background-color, unset ); border-color: var( --simple-fields-button-toggled-border-color, var(--simple-fields-color, currentColor) ); opacity: var(--simple-fields-button-toggled-opacity, 1); } simple-toolbar-menu-item > simple-toolbar-button.danger:hover::part(button[aria-pressed=\"true\"]), simple-toolbar-menu-item > simple-toolbar-button.danger:focus-within::part( button[aria-pressed=\"true\"] ) { background-color: var( --simple-fields-button-danger-color, var(--simple-fields-error-color, #b40000) ); color: var(--simple-fields-button-danger-background-color, white); border-color: var(--simple-fields-button-danger-focus-color, #8a0000); } button:focus, button:hover, button[aria-selected=\"false\"]:not([disabled]):focus, button[aria-selected=\"false\"]:not([disabled]):hover, simple-toolbar-button:focus-within::part(button), simple-toolbar-button:hover::part(button), simple-toolbar-menu:focus-within::part(button), simple-toolbar-menu:hover::part(button), simple-toolbar-menu-item > simple-toolbar-button:hover::part(button), simple-toolbar-menu-item > simple-toolbar-button:focus-within::part(button) { color: var(--simple-fields-button-focus-color, unset); background-color: var( --simple-fields-button-focus-background-color, var(--simple-fields-accent-color-light, #d9eaff) ); border-color: var( --simple-fields-button-focus-border-color, var(--simple-fields-accent-color, #3f51b5) ); opacity: var(--simple-fields-button-focus-opacity, 1); text-decoration: var(--simple-fields-button-focus-text-decoration, unset); } simple-toolbar-menu.danger:focus-within::part(button), simple-toolbar-menu.danger:hover::part(button), simple-toolbar-menu-item > simple-toolbar-button.danger:hover::part(button), simple-toolbar-menu-item > simple-toolbar-button.danger:focus-within::part(button) { background-color: var(--simple-fields-button-danger-focus-color, #8a0000); color: var(--simple-fields-button-danger-background-color, white); border-color: var(--simple-fields-button-danger-focus-color, #8a0000); } button:disabled, button[disabled], simple-toolbar-button[disabled], simple-toolbar-menu[disabled] { color: var(--simple-fields-button-disabled-color, unset); background-color: var( --simple-fields-button-disabled-background-color, unset ); border-color: var(--simple-fields-button-disabled-border-color, unset); opacity: var( --simple-fields-button-disabled-opacity, var(--simple-fields-disabled-opacity, 0.7) ); } `, ]"
+          "default": "[ ...SimpleFieldsTooltipStyles, css` button, button[aria-selected], simple-toolbar-button::part(button), simple-toolbar-menu::part(button) { color: var(--simple-fields-button-color, var(--simple-fields-color)); background-color: var( --simple-fields-button-background-color, var(--simple-fields-background-color) ); border-width: 1px; border-style: solid; border-color: var( --simple-fields-button-border-color, var(--simple-fields-border-color, #999) ); opacity: var(--simple-fields-button-focus-opacity, 1); font-family: var( --simple-fields-button-font-family, var(--simple-fields-font-family, sans-serif) ); font-size: var(--simple-fields-button-font-size, 14px); line-height: var(--simple-fields-button-line-height, 22px); text-transform: var(--simple-fields-button-text-transform, unset); border-radius: var(--simple-fields-border-radius, 4px); padding: var(--simple-fields-button-padding-sm, 1px) var(--simple-fields-button-padding, 2px); min-height: calc( 24px + 2 * var(--simple-fields-button-padding-sm, 2px) + 2px ); } simple-toolbar-menu-item > simple-toolbar-button::part(button) { border-color: transparent; border-radius: 0 !important; } simple-toolbar-button.danger::part(button), simple-toolbar-menu.danger::part(button) { background-color: var( --simple-fields-button-danger-color, var(--simple-fields-error-color, #b40000) ); color: var(--simple-fields-button-danger-background-color, white); } button[aria-pressed=\"true\"], button[aria-selected=\"true\"], simple-toolbar-button[toggled]::part(button) { color: var( --simple-fields-button-toggled-color, var(--simple-fields-accent-color, #3f51b5) ); background-color: var( --simple-fields-button-toggled-background-color, unset ); border-color: var( --simple-fields-button-toggled-border-color, var(--simple-fields-color, currentColor) ); opacity: var(--simple-fields-button-toggled-opacity, 1); } button:focus, button:hover, button[aria-selected=\"false\"]:not([disabled]):focus, button[aria-selected=\"false\"]:not([disabled]):hover, simple-toolbar-button:focus-within::part(button), simple-toolbar-button:hover::part(button), simple-toolbar-menu:focus-within::part(button), simple-toolbar-menu:hover::part(button), simple-toolbar-menu-item > simple-toolbar-button:hover::part(button), simple-toolbar-menu-item > simple-toolbar-button:focus-within::part(button) { color: var(--simple-fields-button-focus-color, unset); background-color: var( --simple-fields-button-focus-background-color, var(--simple-fields-accent-color-light, #d9eaff) ); border-color: var( --simple-fields-button-focus-border-color, var(--simple-fields-accent-color, #3f51b5) ); opacity: var(--simple-fields-button-focus-opacity, 1); text-decoration: var(--simple-fields-button-focus-text-decoration, unset); } simple-toolbar-menu.danger:focus-within::part(button), simple-toolbar-menu.danger:hover::part(button), simple-toolbar-menu-item > simple-toolbar-button.danger:hover::part(button), simple-toolbar-menu-item > simple-toolbar-button.danger:focus-within::part(button) { background-color: var(--simple-fields-button-danger-focus-color, #8a0000); color: var(--simple-fields-button-danger-background-color, white); border-color: var(--simple-fields-button-danger-focus-color, #8a0000); } button:disabled, button[disabled], simple-toolbar-button[disabled], simple-toolbar-menu[disabled] { color: var(--simple-fields-button-disabled-color, unset); background-color: var( --simple-fields-button-disabled-background-color, unset ); border-color: var(--simple-fields-button-disabled-border-color, unset); opacity: var( --simple-fields-button-disabled-opacity, var(--simple-fields-disabled-opacity, 0.7) ); } `, ]"
         },
         {
           "kind": "variable",
@@ -19008,7 +19073,7 @@
           "type": {
             "text": "array"
           },
-          "default": "[ css` *[part=\"field-desc\"], *[part=\"error-desc\"], *[part=\"error-meta\"] { color: var(--simple-fields-meta-color); font-size: var(--simple-fields-meta-font-size, 10px); line-height: var(--simple-fields-meta-line-height, 110%); opacity: var(--simple-fields-meta-opacity, unset); text-transform: none; } :host:hover *[part=\"field-desc\"], :host:hover-within *[part=\"error-desc\"], :host:hover-within *[part=\"error-meta\"], :host:hover *[part=\"field-desc\"], :host:hover *[part=\"error-desc\"], :host:hover *[part=\"error-meta\"] { color: var(--simple-fields-focus-meta-color); opacity: var(--simple-fields-focus-meta-opacity, unset); } /* Row-based fields (Ubuntu-style settings layout, issue #2996): description text is relocated as subtext under the label (or behind an (i) info icon for long text), so the field-desc shown here is not gated by hover. The host carries a [row-layout] attribute (mirrored from isRowBasedField) so this auto-applies to every field type as later phases convert it. */ :host([row-layout]) *[part=\"field-desc\"] { opacity: var(--simple-fields-meta-opacity, 1); } `, ]"
+          "default": "[ css` *[part=\"field-desc\"], *[part=\"error-desc\"], *[part=\"error-meta\"] { color: var(--simple-fields-meta-color); font-size: var(--simple-fields-meta-font-size, 10px); line-height: var(--simple-fields-meta-line-height, 110%); opacity: var(--simple-fields-meta-opacity, unset); text-transform: none; } /* Row-based fields (Ubuntu-style settings layout, issue #2996): description text is relocated as subtext under the label (or behind an (i) info icon for long text), so the field-desc shown here is not gated by hover. The host carries a [row-layout] attribute (mirrored from isRowBasedField) so this auto-applies to every field type as later phases convert it. */ :host([row-layout]) *[part=\"field-desc\"] { opacity: var(--simple-fields-meta-opacity, 1); } `, ]"
         },
         {
           "kind": "variable",

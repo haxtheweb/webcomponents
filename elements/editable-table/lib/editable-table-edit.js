@@ -642,36 +642,42 @@ class EditableTableEdit extends I18NMixin(editBehaviors(DDD)) {
           >
           </rich-text-editor>
           <div class="icons">
-            ${!this.downloadable
-              ? ""
-              : html`
-                  <simple-icon-lite
-                    class="downloadable-icon"
-                    icon="file-download"
-                    aria-hidden="true"
-                  >
-                  </simple-icon-lite>
-                `}
-            ${!this.printable
-              ? ""
-              : html`
-                  <simple-icon-lite
-                    class="printable-icon"
-                    icon="print"
-                    aria-hidden="true"
-                  >
-                  </simple-icon-lite>
-                `}
-            ${!this.copyable
-              ? ""
-              : html`
-                  <simple-icon-lite
-                    class="copyable-icon"
-                    icon="content-copy"
-                    aria-hidden="true"
-                  >
-                  </simple-icon-lite>
-                `}
+            ${
+              !this.downloadable
+                ? ""
+                : html`
+                    <simple-icon-lite
+                      class="downloadable-icon"
+                      icon="file-download"
+                      aria-hidden="true"
+                    >
+                    </simple-icon-lite>
+                  `
+            }
+            ${
+              !this.printable
+                ? ""
+                : html`
+                    <simple-icon-lite
+                      class="printable-icon"
+                      icon="print"
+                      aria-hidden="true"
+                    >
+                    </simple-icon-lite>
+                  `
+            }
+            ${
+              !this.copyable
+                ? ""
+                : html`
+                    <simple-icon-lite
+                      class="copyable-icon"
+                      icon="content-copy"
+                      aria-hidden="true"
+                    >
+                    </simple-icon-lite>
+                  `
+            }
           </div>
         </div>
       </caption>
@@ -717,11 +723,13 @@ class EditableTableEdit extends I18NMixin(editBehaviors(DDD)) {
   editableRow(rowIndex, rowData) {
     return html`
       <tr
-        class="tr ${rowIndex == 0 && this.columnHeader
-          ? "thead-tr"
-          : rowIndex == this.data.length - 1 && this.footer
-            ? "tfoot-tr"
-            : "tbody-tr"}"
+        class="tr ${
+          rowIndex == 0 && this.columnHeader
+            ? "thead-tr"
+            : rowIndex == this.data.length - 1 && this.footer
+              ? "tfoot-tr"
+              : "tbody-tr"
+        }"
       >
         <th scope="row">${this.rowMenuButton(rowIndex)}</th>
         ${(rowData || []).map((cellData, colIndex) =>
@@ -758,10 +766,12 @@ class EditableTableEdit extends I18NMixin(editBehaviors(DDD)) {
   editableCell(rowIndex, colIndex, contents) {
     return html`
       <td
-        class="${(colIndex === 0 && this.rowHeader) ||
-        (rowIndex == 0 && this.columnHeader)
-          ? "th"
-          : "td"} th-or-td"
+        class="${
+          (colIndex === 0 && this.rowHeader) ||
+          (rowIndex == 0 && this.columnHeader)
+            ? "th"
+            : "td"
+        } th-or-td"
         ?negative="${this._isNegative(contents)}"
         ?numeric="${this._isNumericColumn(colIndex)}"
         @click="${this._onCellClick}"

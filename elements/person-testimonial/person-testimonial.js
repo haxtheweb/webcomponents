@@ -155,19 +155,23 @@ class PersonTestimonial extends SchemaBehaviors(DDD) {
   render() {
     return html`
       <div class="card">
-        ${this.image
-          ? html` <div class="image">
-              <img
-                property="oer:image"
-                src="${this.image}"
-                loading="lazy"
-                alt="${this.name ||
-                this.position ||
-                "Person giving this testimonial"}"
-                aria-describedby="${ifDefined(this.describedBy)}"
-              />
-            </div>`
-          : ``}
+        ${
+          this.image
+            ? html` <div class="image">
+                <img
+                  property="oer:image"
+                  src="${this.image}"
+                  loading="lazy"
+                  alt="${
+                    this.name ||
+                    this.position ||
+                    "Person giving this testimonial"
+                  }"
+                  aria-describedby="${ifDefined(this.describedBy)}"
+                />
+              </div>`
+            : ``
+        }
         <div class="arrow_right"></div>
         <div class="wrap">
           <div class="testimonial" data-layout-slotname="Quote">
@@ -181,9 +185,11 @@ class PersonTestimonial extends SchemaBehaviors(DDD) {
           </div>
           <div class="byline">
             <div class="name" property="oer:name">${this.name}</div>
-            ${this.name && this.position
-              ? html`<span class="sep" aria-hidden="true"> · </span>`
-              : ``}
+            ${
+              this.name && this.position
+                ? html`<span class="sep" aria-hidden="true"> · </span>`
+                : ``
+            }
             <div class="position">${this.position}</div>
           </div>
         </div>

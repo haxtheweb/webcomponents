@@ -183,7 +183,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ revealAnswer: \"Reveal Answer\", close: \"Close\", moreInformation: \"More information\", }"
+              "default": "{ revealAnswer: \"Reveal Answer\", close: \"Close\", hideAnswer: \"Hide answer\", moreInformation: \"More information\", }"
             },
             {
               "kind": "field",

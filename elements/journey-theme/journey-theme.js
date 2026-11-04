@@ -206,31 +206,37 @@ class JourneyTheme extends HAXCMSLitElementTheme {
               href="${item.slug}"
               part="child-page-link"
               class="child-page-link"
-              >${item.metadata.image
-                ? html`<img
-                    src="${item.metadata.image}"
-                    loading="lazy"
-                    decoding="async"
-                    part="child-page-link-img"
-                    fetchpriority="low"
-                    alt="${item.title}"
-                  />`
-                : html`<img
-                    part="child-page-link-img"
-                    loading="lazy"
-                    decoding="async"
-                    fetchpriority="low"
-                    src="${store.manifest &&
-                    store.manifest.metadata &&
-                    store.manifest.metadata.author
-                      ? store.manifest.metadata.author.image
-                      : ""}"
-                    alt="${store.manifest &&
-                    store.manifest.metadata &&
-                    store.manifest.metadata.author
-                      ? store.manifest.metadata.author.name
-                      : ""}"
-                  />`}
+              >${
+                item.metadata.image
+                  ? html`<img
+                      src="${item.metadata.image}"
+                      loading="lazy"
+                      decoding="async"
+                      part="child-page-link-img"
+                      fetchpriority="low"
+                      alt="${item.title}"
+                    />`
+                  : html`<img
+                      part="child-page-link-img"
+                      loading="lazy"
+                      decoding="async"
+                      fetchpriority="low"
+                      src="${
+                        store.manifest &&
+                        store.manifest.metadata &&
+                        store.manifest.metadata.author
+                          ? store.manifest.metadata.author.image
+                          : ""
+                      }"
+                      alt="${
+                        store.manifest &&
+                        store.manifest.metadata &&
+                        store.manifest.metadata.author
+                          ? store.manifest.metadata.author.name
+                          : ""
+                      }"
+                    />`
+              }
               ${item.title}
             </a>`,
         )}
@@ -858,33 +864,38 @@ class JourneyTheme extends HAXCMSLitElementTheme {
         ></simple-icon-button-lite>
         <div class="author">
           <a href="${this.basePath}"
-            >${this.manifest.metadata.author.image
-              ? html` <img
-                  class="author-image"
-                  loading="lazy"
-                  decoding="async"
-                  fetchpriority="low"
-                  src="${this.manifest.metadata.author.image}"
-                  alt="${this.manifest.metadata.author.name}"
-                />`
-              : ``}
-            ${this.location && this.location.route.name === "home"
-              ? html`<h1>${this.manifest.title}</h1>
-                  <h2>${this.manifest.description}</h2>`
-              : html`<div class="site-title-heading">
-                    ${this.manifest.title}
-                  </div>
-                  <div class="site-description">
-                    ${this.manifest.description}
-                  </div>`}
+            >${
+              this.manifest.metadata.author.image
+                ? html` <img
+                    class="author-image"
+                    loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
+                    src="${this.manifest.metadata.author.image}"
+                    alt="${this.manifest.metadata.author.name}"
+                  />`
+                : ``
+            }
+            ${
+              this.location && this.location.route.name === "home"
+                ? html`<h1>${this.manifest.title}</h1>
+                    <h2>${this.manifest.description}</h2>`
+                : html`<div class="site-title-heading">
+                      ${this.manifest.title}
+                    </div>
+                    <div class="site-description">
+                      ${this.manifest.description}
+                    </div>`
+            }
           </a>
         </div>
       </header>
       <nav
-        class="lower-header-box ${this.location &&
-        this.location.route.name === "home"
-          ? "home"
-          : "not-home"}"
+        class="lower-header-box ${
+          this.location && this.location.route.name === "home"
+            ? "home"
+            : "not-home"
+        }"
         aria-label="${this.t.siteSections}"
       >
         <simple-tooltip for="top" position="bottom"
@@ -895,143 +906,167 @@ class JourneyTheme extends HAXCMSLitElementTheme {
             id="top"
             title="${this.t.home}"
             label="${this.t.home}"
-            icon="${this.manifest.metadata.icon
-              ? this.manifest.metadata.icon
-              : "av:album"}"
+            icon="${
+              this.manifest.metadata.icon
+                ? this.manifest.metadata.icon
+                : "av:album"
+            }"
           ></simple-icon-button-lite
         ></a>
-        ${this.location && this.location.route.name !== "home"
-          ? html` ${this._items.map((item, _index) => {
-              return html`
-                <simple-tooltip for="top-${item.id}" position="bottom"
-                  >${item.title}</simple-tooltip
-                >
-                <a
-                  tabindex="-1"
-                  href="${item.slug}"
-                  class="article-link-icon top ${this.activeItem &&
-                  (item.id === this.activeItem.id ||
-                    (this.ancestorItem && item.id === this.ancestorItem.id))
-                    ? "active"
-                    : ""}"
-                  ><simple-icon-button-lite
-                    id="top-${item.id}"
-                    title="${item.title}"
-                    label="${item.title}"
-                    class="article"
-                    icon="${item.metadata.icon
-                      ? item.metadata.icon
-                      : "av:album"}"
-                  ></simple-icon-button-lite
-                ></a>
-              `;
-            })}`
-          : ``}
-      </nav>
-      <main
-        class="main ${this.location && this.location.route.name === "home"
-          ? "home"
-          : "not-home"}"
-      >
-        <div class="articles">
-          ${this.location && this.location.route.name === "home"
-            ? html` ${this._items.map((item, index) => {
+        ${
+          this.location && this.location.route.name !== "home"
+            ? html` ${this._items.map((item, _index) => {
                 return html`
-                  <article class="post ${index % 2 === 0 ? "even" : "odd"}">
-                    <simple-tooltip
-                      for="v-${item.id}"
-                      position="${index % 2 === 0 ? "left" : "right"}"
-                      >${item.title}</simple-tooltip
-                    >
-                    <a
-                      tabindex="-1"
-                      href="${item.slug}"
-                      class="article-link-icon"
-                      ><simple-icon-button-lite
-                        id="v-${item.id}"
-                        label="${item.title}"
-                        title="${item.title}"
-                        class="article"
-                        icon="${item.metadata.icon
-                          ? item.metadata.icon
-                          : "av:album"}"
-                      ></simple-icon-button-lite
-                    ></a>
-                    <div class="article-wrap">
-                      <h3>${item.title}</h3>
-                      <div>
-                        <p>${item.description}</p>
-                      </div>
-                      ${this.getItemChildren(item.id).length > 0
-                        ? html` <div class="child-pages-container">
-                            ${this.getItemChildren(item.id).map(
-                              (child) => html`
-                                <simple-tooltip
-                                  for="v-${child.id}"
-                                  position="bottom"
-                                  >${child.title}</simple-tooltip
-                                >
-                                <a
-                                  id="v-${child.id}"
-                                  href="${child.slug}"
-                                  title="${child.title}"
-                                  class="child-page-link"
-                                  >${child.metadata.image
-                                    ? html`<img
-                                        src="${child.metadata.image}"
-                                        loading="lazy"
-                                        decoding="async"
-                                        fetchpriority="low"
-                                        alt="${child.title}"
-                                      />`
-                                    : html`<img
-                                        loading="lazy"
-                                        decoding="async"
-                                        fetchpriority="low"
-                                        src="${this.manifest.metadata.author
-                                          .image}"
-                                        alt="${this.manifest.metadata.author
-                                          .name}"
-                                      />`}
-                                </a>
-                              `,
-                            )}
-                          </div>`
-                        : ``}
-                      <simple-cta
-                        link="${item.slug}"
-                        label="${this.t.readMore}"
-                      ></simple-cta>
-                    </div>
-                  </article>
+                  <simple-tooltip for="top-${item.id}" position="bottom"
+                    >${item.title}</simple-tooltip
+                  >
+                  <a
+                    tabindex="-1"
+                    href="${item.slug}"
+                    class="article-link-icon top ${
+                      this.activeItem &&
+                      (item.id === this.activeItem.id ||
+                        (this.ancestorItem && item.id === this.ancestorItem.id))
+                        ? "active"
+                        : ""
+                    }"
+                    ><simple-icon-button-lite
+                      id="top-${item.id}"
+                      title="${item.title}"
+                      label="${item.title}"
+                      class="article"
+                      icon="${
+                        item.metadata.icon ? item.metadata.icon : "av:album"
+                      }"
+                    ></simple-icon-button-lite
+                  ></a>
                 `;
               })}`
-            : ``}
+            : ``
+        }
+      </nav>
+      <main
+        class="main ${
+          this.location && this.location.route.name === "home"
+            ? "home"
+            : "not-home"
+        }"
+      >
+        <div class="articles">
+          ${
+            this.location && this.location.route.name === "home"
+              ? html` ${this._items.map((item, index) => {
+                  return html`
+                    <article class="post ${index % 2 === 0 ? "even" : "odd"}">
+                      <simple-tooltip
+                        for="v-${item.id}"
+                        position="${index % 2 === 0 ? "left" : "right"}"
+                        >${item.title}</simple-tooltip
+                      >
+                      <a
+                        tabindex="-1"
+                        href="${item.slug}"
+                        class="article-link-icon"
+                        ><simple-icon-button-lite
+                          id="v-${item.id}"
+                          label="${item.title}"
+                          title="${item.title}"
+                          class="article"
+                          icon="${
+                            item.metadata.icon ? item.metadata.icon : "av:album"
+                          }"
+                        ></simple-icon-button-lite
+                      ></a>
+                      <div class="article-wrap">
+                        <h3>${item.title}</h3>
+                        <div>
+                          <p>${item.description}</p>
+                        </div>
+                        ${
+                          this.getItemChildren(item.id).length > 0
+                            ? html` <div class="child-pages-container">
+                                ${this.getItemChildren(item.id).map(
+                                  (child) => html`
+                                    <simple-tooltip
+                                      for="v-${child.id}"
+                                      position="bottom"
+                                      >${child.title}</simple-tooltip
+                                    >
+                                    <a
+                                      id="v-${child.id}"
+                                      href="${child.slug}"
+                                      title="${child.title}"
+                                      class="child-page-link"
+                                      >${
+                                        child.metadata.image
+                                          ? html`<img
+                                              src="${child.metadata.image}"
+                                              loading="lazy"
+                                              decoding="async"
+                                              fetchpriority="low"
+                                              alt="${child.title}"
+                                            />`
+                                          : html`<img
+                                              loading="lazy"
+                                              decoding="async"
+                                              fetchpriority="low"
+                                              src="${
+                                                this.manifest.metadata.author
+                                                  .image
+                                              }"
+                                              alt="${
+                                                this.manifest.metadata.author
+                                                  .name
+                                              }"
+                                            />`
+                                      }
+                                    </a>
+                                  `,
+                                )}
+                              </div>`
+                            : ``
+                        }
+                        <simple-cta
+                          link="${item.slug}"
+                          label="${this.t.readMore}"
+                        ></simple-cta>
+                      </div>
+                    </article>
+                  `;
+                })}`
+              : ``
+          }
         </div>
         <article
           part="transitioncontent"
-          class="${this.location && this.location.route.name === "home"
-            ? "home"
-            : "not-home"}"
+          class="${
+            this.location && this.location.route.name === "home"
+              ? "home"
+              : "not-home"
+          }"
         >
-          ${this.location && this.location.route.name !== "home"
-            ? html`
-                <site-breadcrumb></site-breadcrumb>
-                <site-active-title></site-active-title>
-              `
-            : ``}
+          ${
+            this.location && this.location.route.name !== "home"
+              ? html`
+                  <site-breadcrumb></site-breadcrumb>
+                  <site-active-title></site-active-title>
+                `
+              : ``
+          }
           <!-- this block and names are required for HAX to edit the content of the page. contentcontainer, slot, and wrapping the slot. -->
           <div id="contentcontainer" tabindex="-1">
             <div id="slot">
-              ${this.location && this.location.route.name !== "home"
-                ? html`<slot></slot>
-                    <site-collection-list
-                      published="true"
-                      limit="0"
-                      sort="order"
-                      parent="${this.activeItem ? this.activeItem.id : null}"
-                    ></site-collection-list>`
-                : ``}
+              ${
+                this.location && this.location.route.name !== "home"
+                  ? html`<slot></slot>
+                      <site-collection-list
+                        published="true"
+                        limit="0"
+                        sort="order"
+                        parent="${this.activeItem ? this.activeItem.id : null}"
+                      ></site-collection-list>`
+                  : ``
+              }
             </div>
           </div>
         </article>
@@ -1040,25 +1075,29 @@ class JourneyTheme extends HAXCMSLitElementTheme {
         <div class="author">
           <div class="spacing">
             <a href="${this.basePath}" title="${this.t.home}"
-              >${this.manifest.metadata.author.image
-                ? html` <img
-                    class="author-image"
-                    loading="lazy"
-                    decoding="async"
-                    fetchpriority="low"
-                    src="${this.manifest.metadata.author.image}"
-                    alt="${this.manifest.metadata.author.name}"
-                  />`
-                : ``}
+              >${
+                this.manifest.metadata.author.image
+                  ? html` <img
+                      class="author-image"
+                      loading="lazy"
+                      decoding="async"
+                      fetchpriority="low"
+                      src="${this.manifest.metadata.author.image}"
+                      alt="${this.manifest.metadata.author.name}"
+                    />`
+                  : ``
+              }
             </a>
             <div class="h1">${this.manifest.title}</div>
             <div class="h2">${this.manifest.description}</div>
             <div>
-              ${this.pageCurrent > 0
-                ? html`${this.t.pageOfTotal
-                    .replace("{current}", () => this.pageCurrent)
-                    .replace("{total}", () => this.pageTotal)}`
-                : nothing} <br /><br />
+              ${
+                this.pageCurrent > 0
+                  ? html`${this.t.pageOfTotal
+                      .replace("{current}", () => this.pageCurrent)
+                      .replace("{total}", () => this.pageTotal)}`
+                  : nothing
+              } <br /><br />
               ${this.t.siteGenerated.replace(
                 "{date}",
                 () => this.lastUpdated ?? "",
@@ -1070,27 +1109,29 @@ class JourneyTheme extends HAXCMSLitElementTheme {
               xmlns:cc="${this.licenseLink}"
               xmlns:dc="http://purl.org/dc/elements/1.1/"
             >
-              ${this.licenseImage
-                ? html`
-                    <a
-                      class="big-license-link"
-                      target="_blank"
-                      href="${this.licenseLink}"
-                      rel="noopener noreferrer"
-                    >
-                      <img
-                        loading="lazy"
-                        decoding="async"
-                        fetchpriority="low"
-                        alt="${this.t.licenseGraphic.replace(
-                          "{license}",
-                          () => this.licenseName,
-                        )}"
-                        src="${this.licenseImage}"
-                      />
-                    </a>
-                  `
-                : ``}
+              ${
+                this.licenseImage
+                  ? html`
+                      <a
+                        class="big-license-link"
+                        target="_blank"
+                        href="${this.licenseLink}"
+                        rel="noopener noreferrer"
+                      >
+                        <img
+                          loading="lazy"
+                          decoding="async"
+                          fetchpriority="low"
+                          alt="${this.t.licenseGraphic.replace(
+                            "{license}",
+                            () => this.licenseName,
+                          )}"
+                          src="${this.licenseImage}"
+                        />
+                      </a>
+                    `
+                  : ``
+              }
             </div>
             <simple-icon-button-lite
               label="${this.t.changeTheme}"

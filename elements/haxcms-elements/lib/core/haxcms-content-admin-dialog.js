@@ -2860,9 +2860,11 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
         ${column.label}
         <simple-icon-lite
           class="${sorted ? "" : "idle"}"
-          icon="${sorted && this._sortDir === "desc"
-            ? HaxUiAdminIcons.moveDown
-            : HaxUiAdminIcons.moveUp}"
+          icon="${
+            sorted && this._sortDir === "desc"
+              ? HaxUiAdminIcons.moveDown
+              : HaxUiAdminIcons.moveUp
+          }"
           aria-hidden="true"
         ></simple-icon-lite>
       </button>
@@ -2962,39 +2964,41 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
         this._onSearchLimit,
         "per-page",
       )}
-      ${total > 0
-        ? html`<span class="range"
-              >${this._fill(this.t.rangeOf, { start, end, total })}</span
-            >
-            <button
-              type="button"
-              class="hax-ui-icon-btn page-prev"
-              aria-label="${this.t.previousPage}"
-              title="${this.t.previousPage}"
-              ?disabled="${this.pageOffset <= 0}"
-              @click="${() =>
-                this._goToOffset(this.pageOffset - this.pageLimit)}"
-            >
-              <simple-icon-lite
-                icon="${HaxUiAdminIcons.chevronLeft}"
-                aria-hidden="true"
-              ></simple-icon-lite>
-            </button>
-            <button
-              type="button"
-              class="hax-ui-icon-btn page-next"
-              aria-label="${this.t.nextPage}"
-              title="${this.t.nextPage}"
-              ?disabled="${end >= total}"
-              @click="${() =>
-                this._goToOffset(this.pageOffset + this.pageLimit)}"
-            >
-              <simple-icon-lite
-                icon="${HaxUiAdminIcons.chevron}"
-                aria-hidden="true"
-              ></simple-icon-lite>
-            </button>`
-        : nothing}
+      ${
+        total > 0
+          ? html`<span class="range"
+                >${this._fill(this.t.rangeOf, { start, end, total })}</span
+              >
+              <button
+                type="button"
+                class="hax-ui-icon-btn page-prev"
+                aria-label="${this.t.previousPage}"
+                title="${this.t.previousPage}"
+                ?disabled="${this.pageOffset <= 0}"
+                @click="${() =>
+                  this._goToOffset(this.pageOffset - this.pageLimit)}"
+              >
+                <simple-icon-lite
+                  icon="${HaxUiAdminIcons.chevronLeft}"
+                  aria-hidden="true"
+                ></simple-icon-lite>
+              </button>
+              <button
+                type="button"
+                class="hax-ui-icon-btn page-next"
+                aria-label="${this.t.nextPage}"
+                title="${this.t.nextPage}"
+                ?disabled="${end >= total}"
+                @click="${() =>
+                  this._goToOffset(this.pageOffset + this.pageLimit)}"
+              >
+                <simple-icon-lite
+                  icon="${HaxUiAdminIcons.chevron}"
+                  aria-hidden="true"
+                ></simple-icon-lite>
+              </button>`
+          : nothing
+      }
     </div>`;
   }
 
@@ -3041,9 +3045,9 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
         ${this.pagedRows.map((row, index) => {
           const checked = this._isChecked(row.id);
           return html`<tr
-            class="${checked ? "checked" : ""} ${row.id === this._focusId
-              ? "focus"
-              : ""}"
+            class="${checked ? "checked" : ""} ${
+              row.id === this._focusId ? "focus" : ""
+            }"
             data-node-id="${row.id}"
           >
             <td class="select">
@@ -3075,14 +3079,16 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
               >
                 ${row.title}
               </button>
-              ${row.locked
-                ? html`<simple-icon-lite
-                    class="lock"
-                    icon="${HaxUiAdminIcons.key}"
-                    title="${this.t.locked}"
-                    aria-label="${this.t.locked}"
-                  ></simple-icon-lite>`
-                : nothing}
+              ${
+                row.locked
+                  ? html`<simple-icon-lite
+                      class="lock"
+                      icon="${HaxUiAdminIcons.key}"
+                      title="${this.t.locked}"
+                      aria-label="${this.t.locked}"
+                    ></simple-icon-lite>`
+                  : nothing
+              }
             </td>
             <td class="status">
               <span
@@ -3090,27 +3096,33 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
                 data-tone="${row.published ? "success" : "neutral"}"
                 >${row.statusLabel}</span
               >
-              ${row.visible
-                ? nothing
-                : html`<span class="hax-ui-pill hidden-pill"
-                    >${this.t.hiddenFromMenu}</span
-                  >`}
+              ${
+                row.visible
+                  ? nothing
+                  : html`<span class="hax-ui-pill hidden-pill"
+                      >${this.t.hiddenFromMenu}</span
+                    >`
+              }
             </td>
             <td class="updated">
-              ${row.updated
-                ? html`<time
-                    datetime="${this._isoDate(row.updated)}"
-                    title="${this._fullDate(row.updated)}"
-                    >${row.updatedLabel}</time
-                  >`
-                : html`<span class="none" aria-hidden="true">—</span>`}
+              ${
+                row.updated
+                  ? html`<time
+                      datetime="${this._isoDate(row.updated)}"
+                      title="${this._fullDate(row.updated)}"
+                      >${row.updatedLabel}</time
+                    >`
+                  : html`<span class="none" aria-hidden="true">—</span>`
+              }
             </td>
             <td class="parent" title="${row.parent}">
-              ${row.parentSlug
-                ? html`<a class="parent-link" href="${row.parentSlug}"
-                    >${row.parent}</a
-                  >`
-                : html`<span class="none">—</span>`}
+              ${
+                row.parentSlug
+                  ? html`<a class="parent-link" href="${row.parentSlug}"
+                      >${row.parent}</a
+                    >`
+                  : html`<span class="none">—</span>`
+              }
             </td>
             <td class="slug mono" title="${row.slug}">${row.slug}</td>
             <td class="actions">
@@ -3162,15 +3174,19 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
       aria-label="${this.t.detailsOf.replace("{title}", () => row.title)}"
     >
       <figure class="pv">
-        ${preview && preview.state === "ready"
-          ? html`<div class="pv-frame" inert aria-hidden="true">
-              <div class="pv-page">${unsafeHTML(preview.html)}</div>
-            </div>`
-          : html`<div class="pv-frame pv-msg">
-              ${preview && preview.state === "loading"
-                ? this.t.previewLoading
-                : this.t.previewUnavailable}
-            </div>`}
+        ${
+          preview && preview.state === "ready"
+            ? html`<div class="pv-frame" inert aria-hidden="true">
+                <div class="pv-page">${unsafeHTML(preview.html)}</div>
+              </div>`
+            : html`<div class="pv-frame pv-msg">
+                ${
+                  preview && preview.state === "loading"
+                    ? this.t.previewLoading
+                    : this.t.previewUnavailable
+                }
+              </div>`
+        }
         <figcaption class="hax-ui-sr-only">
           ${this.t.previewOf.replace("{title}", () => row.title)}
         </figcaption>
@@ -3182,12 +3198,16 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
           data-tone="${row.published ? "success" : "neutral"}"
           >${row.statusLabel}</span
         >
-        ${row.visible
-          ? nothing
-          : html`<span class="hax-ui-pill">${this.t.hiddenFromMenu}</span>`}
-        ${row.locked
-          ? html`<span class="hax-ui-pill">${this.t.locked}</span>`
-          : nothing}
+        ${
+          row.visible
+            ? nothing
+            : html`<span class="hax-ui-pill">${this.t.hiddenFromMenu}</span>`
+        }
+        ${
+          row.locked
+            ? html`<span class="hax-ui-pill">${this.t.locked}</span>`
+            : nothing
+        }
       </div>
       <dl>
         <dt>${this.t.updated}</dt>
@@ -3240,9 +3260,11 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
       @keydown="${this._onChoiceKeydown}"
     >
       <span class="choice-title" id="choice-title"
-        >${count === 1
-          ? this.t.replaceInPage
-          : this.t.replaceInPages.replace("{count}", () => count)}</span
+        >${
+          count === 1
+            ? this.t.replaceInPage
+            : this.t.replaceInPages.replace("{count}", () => count)
+        }</span
       >
       <label class="field hax-ui-tool-field choice-find">
         <span>${this.t.find}</span>
@@ -3368,14 +3390,18 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
       <simple-icon-lite icon="${HaxUiAdminIcons.search}" aria-hidden="true">
       </simple-icon-lite>
       <span class="lead"
-        >${query && this.filterField !== "visibility"
-          ? this._fill(this.t.nothingMatchesQuery, { query })
-          : this.t.nothingMatchesFilter}</span
+        >${
+          query && this.filterField !== "visibility"
+            ? this._fill(this.t.nothingMatchesQuery, { query })
+            : this.t.nothingMatchesFilter
+        }</span
       >
       <span class="hint"
-        >${this.filterField === "search"
-          ? this.t.emptySearchHint
-          : this.t.emptyFilterHint}</span
+        >${
+          this.filterField === "search"
+            ? this.t.emptySearchHint
+            : this.t.emptyFilterHint
+        }</span
       >
     </div>`;
   }
@@ -3390,47 +3416,55 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
     const rows = this.filteredRows;
     return html`
       <div class="panel-shell">
-        ${this.inShell
-          ? nothing
-          : html`<div class="local-add">
-              <haxcms-admin-add-area
-                accept="${this.addArea.accept}"
-                label="${this.addArea.label}"
-                browse-label="${this.addArea.browseLabel}"
-                hint="${this.addArea.hint}"
-                message="${this.addArea.message}"
-                tone="${this.addArea.tone}"
-                ?disabled="${this.addArea.disabled}"
-                ?busy="${this.addArea.busy}"
-                @admin-add-files="${(e) => this.addFiles(e.detail)}"
-              ></haxcms-admin-add-area>
-            </div>`}
+        ${
+          this.inShell
+            ? nothing
+            : html`<div class="local-add">
+                <haxcms-admin-add-area
+                  accept="${this.addArea.accept}"
+                  label="${this.addArea.label}"
+                  browse-label="${this.addArea.browseLabel}"
+                  hint="${this.addArea.hint}"
+                  message="${this.addArea.message}"
+                  tone="${this.addArea.tone}"
+                  ?disabled="${this.addArea.disabled}"
+                  ?busy="${this.addArea.busy}"
+                  @admin-add-files="${(e) => this.addFiles(e.detail)}"
+                ></haxcms-admin-add-area>
+              </div>`
+        }
         <div
           class="filters"
           role="group"
           aria-label="${this.t.showOnlyItemsWhere}"
         >
-          ${this.inShell
-            ? nothing
-            : html`<h3 class="filters-title">${this.t.showOnlyItemsWhere}</h3>`}
-          <div class="controls">
-            ${this.filterField === "visibility"
+          ${
+            this.inShell
               ? nothing
-              : html`<label class="field hax-ui-tool-field grow query">
-                  <simple-icon-lite
-                    icon="${HaxUiAdminIcons.search}"
-                    aria-hidden="true"
-                  ></simple-icon-lite>
-                  <input
-                    type="search"
-                    name="filter-value"
-                    aria-label="${this.t.value}"
-                    placeholder="${this._searchPlaceholder()}"
-                    .value="${this.filterValue}"
-                    @input="${(e) => this._onFilterValue(this._v(e))}"
-                    @keydown="${this._onSearchInputKeydown}"
-                  />
-                </label>`}
+              : html`<h3 class="filters-title">
+                  ${this.t.showOnlyItemsWhere}
+                </h3>`
+          }
+          <div class="controls">
+            ${
+              this.filterField === "visibility"
+                ? nothing
+                : html`<label class="field hax-ui-tool-field grow query">
+                    <simple-icon-lite
+                      icon="${HaxUiAdminIcons.search}"
+                      aria-hidden="true"
+                    ></simple-icon-lite>
+                    <input
+                      type="search"
+                      name="filter-value"
+                      aria-label="${this.t.value}"
+                      placeholder="${this._searchPlaceholder()}"
+                      .value="${this.filterValue}"
+                      @input="${(e) => this._onFilterValue(this._v(e))}"
+                      @keydown="${this._onSearchInputKeydown}"
+                    />
+                  </label>`
+            }
             ${this._renderSelect(
               "filter-field",
               this.t.filterBy,
@@ -3443,96 +3477,104 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
               ],
               this._onFilterField,
             )}
-            ${this.filterField === "visibility"
-              ? this._renderSelect(
-                  "filter-value",
-                  this.t.value,
-                  this.filterValue,
-                  [
-                    { value: "any", text: this.t.any },
-                    { value: "published", text: this.t.published },
-                    { value: "unpublished", text: this.t.unpublished },
-                    { value: "visible", text: this.t.visible },
-                    { value: "not-visible", text: this.t.notVisible },
-                  ],
-                  this._onFilterValue,
-                )
-              : nothing}
-            ${isSearch
-              ? html`${this._renderSelect(
-                    "search-mode",
-                    this.t.searchType,
-                    this.searchMode,
+            ${
+              this.filterField === "visibility"
+                ? this._renderSelect(
+                    "filter-value",
+                    this.t.value,
+                    this.filterValue,
                     [
-                      { value: "fulltext", text: this.t.fullText },
-                      { value: "selector", text: this.t.querySelector },
+                      { value: "any", text: this.t.any },
+                      { value: "published", text: this.t.published },
+                      { value: "unpublished", text: this.t.unpublished },
+                      { value: "visible", text: this.t.visible },
+                      { value: "not-visible", text: this.t.notVisible },
                     ],
-                    this._onSearchMode,
-                  )}
-                  <button
-                    type="button"
-                    class="toggle"
-                    name="case-sensitive"
-                    role="switch"
-                    aria-checked="${this.searchCaseSensitive
-                      ? "true"
-                      : "false"}"
-                    @click="${() =>
-                      this._onSearchCaseSensitive({
-                        detail: {
-                          value: this.searchCaseSensitive ? "false" : "true",
-                        },
-                      })}"
-                  >
-                    <span class="track" aria-hidden="true"></span>
-                    ${this.t.caseSensitive}
-                  </button>`
-              : nothing}
+                    this._onFilterValue,
+                  )
+                : nothing
+            }
+            ${
+              isSearch
+                ? html`${this._renderSelect(
+                      "search-mode",
+                      this.t.searchType,
+                      this.searchMode,
+                      [
+                        { value: "fulltext", text: this.t.fullText },
+                        { value: "selector", text: this.t.querySelector },
+                      ],
+                      this._onSearchMode,
+                    )}
+                    <button
+                      type="button"
+                      class="toggle"
+                      name="case-sensitive"
+                      role="switch"
+                      aria-checked="${
+                        this.searchCaseSensitive ? "true" : "false"
+                      }"
+                      @click="${() =>
+                        this._onSearchCaseSensitive({
+                          detail: {
+                            value: this.searchCaseSensitive ? "false" : "true",
+                          },
+                        })}"
+                    >
+                      <span class="track" aria-hidden="true"></span>
+                      ${this.t.caseSensitive}
+                    </button>`
+                : nothing
+            }
           </div>
-          ${this._searchError === "replace"
-            ? html`<div class="note error" role="alert">
-                <simple-icon-lite
-                  icon="${HaxUiAdminIcons.error}"
-                  aria-hidden="true"
-                ></simple-icon-lite>
-                <span class="grow">${this.t.replaceFailed}</span>
-              </div>`
-            : nothing}
+          ${
+            this._searchError === "replace"
+              ? html`<div class="note error" role="alert">
+                  <simple-icon-lite
+                    icon="${HaxUiAdminIcons.error}"
+                    aria-hidden="true"
+                  ></simple-icon-lite>
+                  <span class="grow">${this.t.replaceFailed}</span>
+                </div>`
+              : nothing
+          }
         </div>
-        ${this._refused.length
-          ? html`<div class="hax-ui-callout refused" data-tone="warning">
-              <simple-icon-lite
-                icon="${HaxUiAdminIcons.warning}"
-                aria-hidden="true"
-              ></simple-icon-lite>
-              <span class="refused-text"
-                >${this.t.filesGoInFiles}
-                ${this._fill(this.t.turnedAway, {
-                  list: this._refused.join(", "),
-                })}</span
-              >
-              <button
-                type="button"
-                class="hax-ui-btn open-files"
-                @click="${this._goToFiles}"
-              >
-                ${this.t.openFiles}
-              </button>
-              <button
-                type="button"
-                class="hax-ui-icon-btn dismiss-refused"
-                aria-label="${this.t.dismiss}"
-                @click="${() => {
-                  this._refused = [];
-                }}"
-              >
+        ${
+          this._refused.length
+            ? html`<div class="hax-ui-callout refused" data-tone="warning">
                 <simple-icon-lite
-                  icon="${HaxUiAdminIcons.close}"
+                  icon="${HaxUiAdminIcons.warning}"
                   aria-hidden="true"
                 ></simple-icon-lite>
-              </button>
-            </div>`
-          : nothing}
+                <span class="refused-text"
+                  >${this.t.filesGoInFiles}
+                  ${this._fill(this.t.turnedAway, {
+                    list: this._refused.join(", "),
+                  })}</span
+                >
+                <button
+                  type="button"
+                  class="hax-ui-btn open-files"
+                  @click="${this._goToFiles}"
+                >
+                  ${this.t.openFiles}
+                </button>
+                <button
+                  type="button"
+                  class="hax-ui-icon-btn dismiss-refused"
+                  aria-label="${this.t.dismiss}"
+                  @click="${() => {
+                    this._refused = [];
+                  }}"
+                >
+                  <simple-icon-lite
+                    icon="${HaxUiAdminIcons.close}"
+                    aria-hidden="true"
+                  ></simple-icon-lite>
+                </button>
+              </div>`
+            : nothing
+        }
         <div class="summary">
           <p class="meta" role="status" aria-live="polite">
             ${this._summaryText()}
@@ -3542,18 +3584,22 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
         <div class="split">
           <div
             class="table-scroll"
-            aria-busy="${this.searchLoading || this._busyText
-              ? "true"
-              : "false"}"
+            aria-busy="${
+              this.searchLoading || this._busyText ? "true" : "false"
+            }"
           >
-            ${rows.length === 0 || this._searchError === "search"
-              ? this._renderEmpty()
-              : this._renderTable()}
+            ${
+              rows.length === 0 || this._searchError === "search"
+                ? this._renderEmpty()
+                : this._renderTable()
+            }
             ${this._choice ? this._renderChoice() : nothing}
           </div>
-          ${this.compact || this.rows.length === 0
-            ? nothing
-            : this._renderDetail()}
+          ${
+            this.compact || this.rows.length === 0
+              ? nothing
+              : this._renderDetail()
+          }
         </div>
         ${this.inShell ? nothing : this._renderLocalBar()}
         ${renderAdminRowMenu(this.t.pageActions, this._rowMenuItems())}

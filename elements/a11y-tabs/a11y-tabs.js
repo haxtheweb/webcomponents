@@ -781,11 +781,13 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
         ?disabled="${tab.disabled || this.disabled}"
         tabindex="${tab.id === this.activeTab ? 0 : -1}"
         role="tab"
-        part="${tab.id === this.activeTab && !this.disabled
-          ? "tab-active"
-          : this.disabled || tab.disabled
-            ? "tab-disabled"
-            : ""} tab tab-${tab.id}"
+        part="${
+          tab.id === this.activeTab && !this.disabled
+            ? "tab-active"
+            : this.disabled || tab.disabled
+              ? "tab-disabled"
+              : ""
+        } tab tab-${tab.id}"
       >
         ${this._tabIcon(tab, "flagIcon")} ${this._tabLabel(tab)}
         ${this._tabFlag(tab)} ${this._tabIcon(tab, "icon")}

@@ -36,16 +36,18 @@ class VoiceRecorder extends LitElement {
   }
   render() {
     return html`
-      ${!this.recording
-        ? html`
-            <simple-icon-button-lite
-              icon="av:mic"
-              label="${this.label}"
-              @click="${this.toggleRecording}"
-              >${this.label}</simple-icon-button-lite
-            >
-          `
-        : html``}
+      ${
+        !this.recording
+          ? html`
+              <simple-icon-button-lite
+                icon="av:mic"
+                label="${this.label}"
+                @click="${this.toggleRecording}"
+                >${this.label}</simple-icon-button-lite
+              >
+            `
+          : html``
+      }
       <slot></slot>
     `;
   }

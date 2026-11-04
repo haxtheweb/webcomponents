@@ -164,7 +164,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ ...this.t, playlist: \"Playlist\", carousel: \"carousel\", slide: \"slide\", slideNumber: \"Slide {number}\", slideOfTotal: \"Slide {number} of {total}\", previousSlide: \"Previous slide\", nextSlide: \"Next slide\", slidePages: \"Slide pages\", goToSlide: \"Go to slide {number}\", }"
+              "default": "{ ...this.t, playlist: \"Playlist\", carousel: \"carousel\", slide: \"slide\", slideNumber: \"Slide {number}\", slideOfTotal: \"Slide {number} of {total}\", previousSlide: \"Previous slide\", nextSlide: \"Next slide\", slidePages: \"Slide pages\", goToSlide: \"Go to slide {number}\", slides: \"Slides\", position: \"{number} of {total}\", }"
             },
             {
               "kind": "field",

@@ -163,30 +163,37 @@ class EditableTable extends editBehaviors(SchemaBehaviors(DDD)) {
     const startCol = this.rowHeader ? 1 : 0;
     return html`
       <div class="oer-rubric-schema" hidden>
-        ${this.rubricType
-          ? html`<meta
-              property="oer:rubricType"
-              content="${this.rubricType}"
-            />`
-          : nothing}
-        ${headerRow.length
-          ? html`
-              <span typeof="oer:RubricScale" property="oer:rubricScale">
-                ${headerRow.map((cell, colIndex) =>
-                  colIndex < startCol
-                    ? nothing
-                    : html`
-                        <span typeof="oer:RubricLevel" property="oer:hasLevel">
-                          <meta
-                            property="oer:levelOrdinal"
-                            content="${colIndex - startCol + 1}"
-                          />
-                        </span>
-                      `,
-                )}
-              </span>
-            `
-          : nothing}
+        ${
+          this.rubricType
+            ? html`<meta
+                property="oer:rubricType"
+                content="${this.rubricType}"
+              />`
+            : nothing
+        }
+        ${
+          headerRow.length
+            ? html`
+                <span typeof="oer:RubricScale" property="oer:rubricScale">
+                  ${headerRow.map((cell, colIndex) =>
+                    colIndex < startCol
+                      ? nothing
+                      : html`
+                          <span
+                            typeof="oer:RubricLevel"
+                            property="oer:hasLevel"
+                          >
+                            <meta
+                              property="oer:levelOrdinal"
+                              content="${colIndex - startCol + 1}"
+                            />
+                          </span>
+                        `,
+                  )}
+                </span>
+              `
+            : nothing
+        }
         ${this.tbody.map(
           (row, _rowIndex) => html`
             <span typeof="oer:RubricCriterion">
@@ -200,12 +207,14 @@ class EditableTable extends editBehaviors(SchemaBehaviors(DDD)) {
                           property="oer:levelOrdinal"
                           content="${colIndex - startCol + 1}"
                         />
-                        ${this._isNumericCell(cell)
-                          ? html`<meta
-                              property="oer:levelPoints"
-                              content="${cell}"
-                            />`
-                          : nothing}
+                        ${
+                          this._isNumericCell(cell)
+                            ? html`<meta
+                                property="oer:levelPoints"
+                                content="${cell}"
+                              />`
+                            : nothing
+                        }
                       </span>
                     `,
               )}

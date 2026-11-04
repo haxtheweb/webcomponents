@@ -1632,21 +1632,27 @@ export class QuestionElement extends SchemaBehaviors(
   render() {
     return html`
       <meta property="oer:assessing" content="${this.relatedResource}" />
-      ${this.gradingFormat
-        ? html`<meta
-            property="oer:gradingFormat"
-            content="${this.gradingFormat}"
-          />`
-        : nothing}
-      ${this.hasLearningObjective
-        ? html`<meta
-            property="oer:hasLearningObjective"
-            content="${this.hasLearningObjective}"
-          />`
-        : nothing}
-      ${this.forCourse
-        ? html`<meta property="oer:forCourse" content="${this.forCourse}" />`
-        : nothing}
+      ${
+        this.gradingFormat
+          ? html`<meta
+              property="oer:gradingFormat"
+              content="${this.gradingFormat}"
+            />`
+          : nothing
+      }
+      ${
+        this.hasLearningObjective
+          ? html`<meta
+              property="oer:hasLearningObjective"
+              content="${this.hasLearningObjective}"
+            />`
+          : nothing
+      }
+      ${
+        this.forCourse
+          ? html`<meta property="oer:forCourse" content="${this.forCourse}" />`
+          : nothing
+      }
       ${cache(this.edit ? this.renderEditView() : this.renderShell())}
     `;
   }
@@ -1756,25 +1762,27 @@ export class QuestionElement extends SchemaBehaviors(
 
   // attempts counter plus the directions and related content toggles
   renderHeaderTools(hasRelated) {
-    return html`${this.maxAttempts > 0
-        ? html`<span class="shell-attempts"
-            >${this._tParts(this.t.attemptsUsed, {
-              used: Math.min(
-                this.attempts + (this.showAnswer ? 0 : 1),
-                this.maxAttempts,
-              ),
-              max: this.maxAttempts,
-            })}</span
-          >`
-        : nothing}
+    return html`${
+        this.maxAttempts > 0
+          ? html`<span class="shell-attempts"
+              >${this._tParts(this.t.attemptsUsed, {
+                used: Math.min(
+                  this.attempts + (this.showAnswer ? 0 : 1),
+                  this.maxAttempts,
+                ),
+                max: this.maxAttempts,
+              })}</span
+            >`
+          : nothing
+      }
       <button
         class="ddd-block-action"
         id="directions-toggle"
         aria-controls="directions"
         aria-expanded="${this._directionsOpen ? "true" : "false"}"
-        aria-label="${this._directionsOpen
-          ? this.t.hideDirections
-          : this.t.showDirections}"
+        aria-label="${
+          this._directionsOpen ? this.t.hideDirections : this.t.showDirections
+        }"
         title="${this.t.directions}"
         @click="${this._toggleDirections}"
       >
@@ -1783,24 +1791,28 @@ export class QuestionElement extends SchemaBehaviors(
           aria-hidden="true"
         ></simple-icon-lite>
       </button>
-      ${hasRelated
-        ? html`<button
-            class="ddd-block-action"
-            id="related-toggle"
-            aria-controls="related"
-            aria-expanded="${this._relatedOpen ? "true" : "false"}"
-            aria-label="${this._relatedOpen
-              ? this.t.hideRelatedContent
-              : this.t.showRelatedContent}"
-            title="${this.t.relatedContent}"
-            @click="${this._toggleRelated}"
-          >
-            <simple-icon-lite
-              icon="av:library-books"
-              aria-hidden="true"
-            ></simple-icon-lite>
-          </button>`
-        : nothing}`;
+      ${
+        hasRelated
+          ? html`<button
+              class="ddd-block-action"
+              id="related-toggle"
+              aria-controls="related"
+              aria-expanded="${this._relatedOpen ? "true" : "false"}"
+              aria-label="${
+                this._relatedOpen
+                  ? this.t.hideRelatedContent
+                  : this.t.showRelatedContent
+              }"
+              title="${this.t.relatedContent}"
+              @click="${this._toggleRelated}"
+            >
+              <simple-icon-lite
+                icon="av:library-books"
+                aria-hidden="true"
+              ></simple-icon-lite>
+            </button>`
+          : nothing
+      }`;
   }
 
   // icon and word for a checked result, so it never relies on colour alone
@@ -1861,11 +1873,13 @@ export class QuestionElement extends SchemaBehaviors(
           ></simple-icon-lite>
         </button>
       </h3>
-      ${expanded
-        ? html`<span class="ddd-block-actions"
-            >${this.renderHeaderTools(hasRelated)}</span
-          >`
-        : nothing}
+      ${
+        expanded
+          ? html`<span class="ddd-block-actions"
+              >${this.renderHeaderTools(hasRelated)}</span
+            >`
+          : nothing
+      }
     </div>`;
   }
 
@@ -1880,17 +1894,19 @@ export class QuestionElement extends SchemaBehaviors(
       this.querySelector && this.querySelector('[slot="content"]');
     const stack = this._isStackable();
     const expanded = !stack || !this.collapsed;
-    const panel = html`${hasRelated
-        ? html`<div
-            id="related"
-            class="shell-strip shell-related"
-            role="region"
-            aria-label="${this.t.relatedContent}"
-            ?hidden="${!this._relatedOpen}"
-          >
-            <slot name="content"></slot>
-          </div>`
-        : nothing}
+    const panel = html`${
+        hasRelated
+          ? html`<div
+              id="related"
+              class="shell-strip shell-related"
+              role="region"
+              aria-label="${this.t.relatedContent}"
+              ?hidden="${!this._relatedOpen}"
+            >
+              <slot name="content"></slot>
+            </div>`
+          : nothing
+      }
       <div
         id="directions"
         class="shell-strip shell-directions"
@@ -1900,20 +1916,26 @@ export class QuestionElement extends SchemaBehaviors(
         >${this.renderDirections()}
       </div>
       <div class="ddd-block-body shell-body">
-        ${stack
-          ? nothing
-          : html`<h3
-              id="question-heading"
-              property="oer:name"
-              ?hidden="${!this.question}"
-            >
-              ${this.question}
-            </h3>`}
+        ${
+          stack
+            ? nothing
+            : html`<h3
+                id="question-heading"
+                property="oer:name"
+                ?hidden="${!this.question}"
+              >
+                ${this.question}
+              </h3>`
+        }
         ${this.renderInteraction()}
       </div>
-      ${this.showAnswer
-        ? html`<div class="shell-feedback-panel">${this.renderFeedback()}</div>`
-        : nothing}
+      ${
+        this.showAnswer
+          ? html`<div class="shell-feedback-panel">
+              ${this.renderFeedback()}
+            </div>`
+          : nothing
+      }
       <div id="legend" class="sr-only">${this.renderLegend()}</div>
       <div class="ddd-block-footer shell-action-bar">
         <div
@@ -1925,17 +1947,22 @@ export class QuestionElement extends SchemaBehaviors(
           aria-atomic="true"
           aria-label="${this.t.feedback}"
         >
-          ${status !== "ready"
-            ? html`<span class="shell-status-chip" aria-hidden="true"
-                  ><simple-icon-lite icon="${result.icon}"></simple-icon-lite></span
-                ><span
-                  ><strong class="shell-status-word">${result.word}</strong
-                  >
-                  ${status === "correct"
-                    ? this.correctText
-                    : this.incorrectText}</span
-                >`
-            : nothing}
+          ${
+            status !== "ready"
+              ? html`<span class="shell-status-chip" aria-hidden="true"
+                    ><simple-icon-lite
+                      icon="${result.icon}"
+                    ></simple-icon-lite></span
+                  ><span
+                    ><strong class="shell-status-word">${result.word}</strong>
+                    ${
+                      status === "correct"
+                        ? this.correctText
+                        : this.incorrectText
+                    }</span
+                  >`
+              : nothing
+          }
         </div>
         ${!this.hideButtons ? this.renderButtons() : nothing}
       </div>`;
@@ -1947,29 +1974,31 @@ export class QuestionElement extends SchemaBehaviors(
           aria-labelledby="eyebrow question-heading"
           aria-describedby="directions"
           data-status="${status}"
-          data-stack="${stack
-            ? expanded
-              ? "expanded"
-              : "collapsed"
-            : nothing}"
+          data-stack="${
+            stack ? (expanded ? "expanded" : "collapsed") : nothing
+          }"
         >
-          ${stack
-            ? this.renderStackHeader(status, expanded, hasRelated)
-            : renderDDDBlockHeader({
-                id: "eyebrow",
-                icon: "hax:head-question",
-                label: this.renderEyebrow(),
-                actions: this.renderHeaderTools(hasRelated),
-              })}
-          ${stack
-            ? html`<div
-                id="shell-panel"
-                class="shell-panel"
-                ?hidden="${!expanded}"
-              >
-                ${panel}
-              </div>`
-            : panel}
+          ${
+            stack
+              ? this.renderStackHeader(status, expanded, hasRelated)
+              : renderDDDBlockHeader({
+                  id: "eyebrow",
+                  icon: "hax:head-question",
+                  label: this.renderEyebrow(),
+                  actions: this.renderHeaderTools(hasRelated),
+                })
+          }
+          ${
+            stack
+              ? html`<div
+                  id="shell-panel"
+                  class="shell-panel"
+                  ?hidden="${!expanded}"
+                >
+                  ${panel}
+                </div>`
+              : panel
+          }
         </div>
       </confetti-container>
     `;
@@ -2009,11 +2038,13 @@ export class QuestionElement extends SchemaBehaviors(
             ></simple-icon-lite
             >${this.t.feedback}
             <span class="sr-only" aria-live="polite" aria-atomic="true"
-              >${this.showAnswer
-                ? this.isCorrect()
-                  ? this.correctText
-                  : this.incorrectText
-                : ""}</span
+              >${
+                this.showAnswer
+                  ? this.isCorrect()
+                    ? this.correctText
+                    : this.incorrectText
+                  : ""
+              }</span
             >
           </summary>
           <div class="container">
@@ -2030,25 +2061,28 @@ export class QuestionElement extends SchemaBehaviors(
             ${this.renderFeedback()}
           </div>
         </details>
-        ${this.querySelector &&
-        this.querySelector('[slot="content"]') &&
-        !this.edit
-          ? html` <details ?open="${!this.showAnswer}" id="related">
-              <summary>
-                <simple-icon-lite
-                  class="details-icon"
-                  icon="lrn:content"
-                ></simple-icon-lite
-                >${this.t.relatedContent}
-              </summary>
-              <div class="container">
-                <slot name="content"></slot>
-              </div>
-            </details>`
-          : nothing}
+        ${
+          this.querySelector &&
+          this.querySelector('[slot="content"]') &&
+          !this.edit
+            ? html` <details ?open="${!this.showAnswer}" id="related">
+                <summary>
+                  <simple-icon-lite
+                    class="details-icon"
+                    icon="lrn:content"
+                  ></simple-icon-lite
+                  >${this.t.relatedContent}
+                </summary>
+                <div class="container">
+                  <slot name="content"></slot>
+                </div>
+              </details>`
+            : nothing
+        }
         <details
-          ?open="${this.querySelector &&
-          !this.querySelector('[slot="content"]')}"
+          ?open="${
+            this.querySelector && !this.querySelector('[slot="content"]')
+          }"
           id="directions"
         >
           <summary>
@@ -2078,30 +2112,35 @@ export class QuestionElement extends SchemaBehaviors(
               name="${index}"
               @mousedown="${this.clickSingle}"
               @keydown="${this.clickSingle}"
-              class="tag-option ${answer && this.showAnswer && answer.userGuess
-                ? answer.correct
-                  ? "correct"
-                  : "incorrect"
-                : ""}"
-              aria-invalid="${this.showAnswer &&
-              answer &&
-              answer.userGuess &&
-              !answer.correct
-                ? "true"
-                : "false"}"
+              class="tag-option ${
+                answer && this.showAnswer && answer.userGuess
+                  ? answer.correct
+                    ? "correct"
+                    : "incorrect"
+                  : ""
+              }"
+              aria-invalid="${
+                this.showAnswer && answer && answer.userGuess && !answer.correct
+                  ? "true"
+                  : "false"
+              }"
               .value="${answer ? answer.userGuess : ""}"
               @value-changed="${this.checkedEvent}"
               label="${answer && answer.label ? answer.label : ""}"
-              >${answer.image
-                ? html`<img
-                    src="${answer.image}"
-                    alt="${answer.alt}"
-                    slot="label-prefix"
-                    part="image"
-                  />`
-                : nothing}${answer && this.showAnswer && answer.userGuess
-                ? this.renderOptionStatus(answer.correct)
-                : nothing}</simple-fields-field
+              >${
+                answer.image
+                  ? html`<img
+                      src="${answer.image}"
+                      alt="${answer.alt}"
+                      slot="label-prefix"
+                      part="image"
+                    />`
+                  : nothing
+              }${
+                answer && this.showAnswer && answer.userGuess
+                  ? this.renderOptionStatus(answer.correct)
+                  : nothing
+              }</simple-fields-field
             >
           `,
         )}
@@ -2130,10 +2169,12 @@ export class QuestionElement extends SchemaBehaviors(
         <simple-toolbar-button
           id="check"
           ?hidden="${!this.edit && this.showAnswer}"
-          ?disabled="${this.disabled ||
-          !this.inactiveCase() ||
-          this.showAnswer ||
-          this.attemptsExhausted()}"
+          ?disabled="${
+            this.disabled ||
+            !this.inactiveCase() ||
+            this.showAnswer ||
+            this.attemptsExhausted()
+          }"
           @click="${this.checkAnswer}"
           label="${this.t.checkAnswer}"
         >
@@ -2141,9 +2182,11 @@ export class QuestionElement extends SchemaBehaviors(
         <simple-toolbar-button
           id="reset"
           ?hidden="${!this.edit && !this.showAnswer}"
-          ?disabled="${this.disabled ||
-          !this.inactiveCase() ||
-          (this.inactiveCase() && !this.showAnswer)}"
+          ?disabled="${
+            this.disabled ||
+            !this.inactiveCase() ||
+            (this.inactiveCase() && !this.showAnswer)
+          }"
           @click="${this.resetAnswer}"
           label="${this.t.tryAgain}"
         >
@@ -2178,31 +2221,44 @@ export class QuestionElement extends SchemaBehaviors(
     const has = (name) =>
       this.querySelector && this.querySelector(`[slot="${name}"]`);
     if (correct) {
-      return html`${has("feedbackCorrect")
-        ? html`<slot name="feedbackCorrect" property="oer:correctFeedback"></slot>`
-        : nothing}${has("evidence")
-        ? html`<h4>${this.t.evidence}</h4>
-            <div><slot name="evidence"></slot></div>`
-        : nothing}`;
+      return html`${
+        has("feedbackCorrect")
+          ? html`<slot
+              name="feedbackCorrect"
+              property="oer:correctFeedback"
+            ></slot>`
+          : nothing
+      }${
+        has("evidence")
+          ? html`<h4>${this.t.evidence}</h4>
+              <div><slot name="evidence"></slot></div>`
+          : nothing
+      }`;
     }
-    return html`${has("feedbackIncorrect")
-      ? html`<slot
-          name="feedbackIncorrect"
-          property="oer:incorrectFeedback"
-        ></slot>`
-      : nothing}${has("hint")
-      ? html`<h4>${this.t.needAHint}</h4>
-          <div><slot name="hint"></slot></div>`
-      : nothing}`;
+    return html`${
+      has("feedbackIncorrect")
+        ? html`<slot
+            name="feedbackIncorrect"
+            property="oer:incorrectFeedback"
+          ></slot>`
+        : nothing
+    }${
+      has("hint")
+        ? html`<h4>${this.t.needAHint}</h4>
+            <div><slot name="hint"></slot></div>`
+        : nothing
+    }`;
   }
 
   // this manages the output of the feedback area
   renderFeedback() {
-    return html`${!this.edit
-      ? this.showAnswer
-        ? this.renderFeedbackSlots(this.isCorrect())
-        : nothing
-      : this.renderEditModeFeedbackAreas()}`;
+    return html`${
+      !this.edit
+        ? this.showAnswer
+          ? this.renderFeedbackSlots(this.isCorrect())
+          : nothing
+        : this.renderEditModeFeedbackAreas()
+    }`;
   }
 
   clickSingle(e) {

@@ -111,8 +111,9 @@ class RelativeHeadingStateManager extends LitElement {
         duration="5000"
         ?hidden="${!this.usesCopyLink}"
         ?disabled="${!this.usesCopyLink}"
-        text="${this.copyHeading.copyMessage || this.copyMessage}: ${this
-          .copyUrl}"
+        text="${this.copyHeading.copyMessage || this.copyMessage}: ${
+          this.copyUrl
+        }"
       >
         <simple-icon-button-lite
           icon="${this.copyHeading.closeIcon || this.closeIcon}"

@@ -515,102 +515,122 @@ export class ResumeTheme extends DDDSuper(HAXCMSLitElementTheme) {
           aria-label="${this.t.contactInformation}"
         >
           <div class="avatar-wrapper" part="avatar-wrapper">
-            ${this.authorImage
-              ? html`<img
-                  class="avatar"
-                  src="${this.authorImage}"
-                  alt="${this.authorName}"
-                  part="avatar"
-                  fetchpriority="high"
-                />`
-              : html`<div
-                  class="avatar-placeholder"
-                  part="avatar"
-                  aria-label="${this.authorName}"
-                >
-                  ${this.authorName
-                    ? this.authorName
-                        .split(" ")
-                        .map((n) => n[0])
-                        .join("")
-                        .slice(0, 2)
-                    : "R"}
-                </div>`}
+            ${
+              this.authorImage
+                ? html`<img
+                    class="avatar"
+                    src="${this.authorImage}"
+                    alt="${this.authorName}"
+                    part="avatar"
+                    fetchpriority="high"
+                  />`
+                : html`<div
+                    class="avatar-placeholder"
+                    part="avatar"
+                    aria-label="${this.authorName}"
+                  >
+                    ${
+                      this.authorName
+                        ? this.authorName
+                            .split(" ")
+                            .map((n) => n[0])
+                            .join("")
+                            .slice(0, 2)
+                        : "R"
+                    }
+                  </div>`
+            }
           </div>
-          ${this.authorName
-            ? html`<h1 class="name" part="name">${this.authorName}</h1>`
-            : ``}
+          ${
+            this.authorName
+              ? html`<h1 class="name" part="name">${this.authorName}</h1>`
+              : ``
+          }
           <p class="subtitle" part="subtitle">${this.siteDescription}</p>
 
           <div class="contact-ring" part="contact-ring">
-            ${this.authorEmail
-              ? html`<div class="contact-item" part="contact-item">
-                  <div class="contact-icon">
-                    <simple-icon-lite icon="icons:mail"></simple-icon-lite>
-                  </div>
-                  <div class="contact-text">
-                    <a href="mailto:${this.authorEmail}" part="contact-link"
-                      >${this.authorEmail}</a
-                    >
-                  </div>
-                </div>`
-              : ""}
-            ${this.authorPhone
-              ? html`<div class="contact-item" part="contact-item">
-                  <div class="contact-icon">
-                    <simple-icon-lite
-                      icon="communication:phone"
-                    ></simple-icon-lite>
-                  </div>
-                  <div class="contact-text">
-                    <a href="tel:${this.authorPhone}" part="contact-link"
-                      >${this.authorPhone}</a
-                    >
-                  </div>
-                </div>`
-              : ""}
-            ${this.authorLocation
-              ? html`<div class="contact-item" part="contact-item">
-                  <div class="contact-icon">
-                    <simple-icon-lite icon="icons:room"></simple-icon-lite>
-                  </div>
-                  <div class="contact-text">
-                    <span part="contact-text">${this.authorLocation}</span>
-                  </div>
-                </div>`
-              : ""}
-            ${this.authorWebsite
-              ? html`<div class="contact-item" part="contact-item">
-                  <div class="contact-icon">
-                    <simple-icon-lite icon="icons:language"></simple-icon-lite>
-                  </div>
-                  <div class="contact-text">
-                    <a
-                      href="${this.authorWebsite}"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      part="contact-link"
-                      >${this.authorWebsite.replace(/^https?:\/\//, "")}</a
-                    >
-                  </div>
-                </div>`
-              : ""}
-            ${this.authorWebsite2
-              ? html`<div class="contact-item" part="contact-item">
-                  <div class="contact-icon">
-                    <simple-icon-lite icon="icons:language"></simple-icon-lite>
-                  </div>
-                  <div class="contact-text">
-                    <a
-                      href="${this.authorWebsite2}"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      part="contact-link"
-                      >${this.authorWebsite2.replace(/^https?:\/\//, "")}</a
-                    >
-                  </div>
-                </div>`
-              : ""}
+            ${
+              this.authorEmail
+                ? html`<div class="contact-item" part="contact-item">
+                    <div class="contact-icon">
+                      <simple-icon-lite icon="icons:mail"></simple-icon-lite>
+                    </div>
+                    <div class="contact-text">
+                      <a href="mailto:${this.authorEmail}" part="contact-link"
+                        >${this.authorEmail}</a
+                      >
+                    </div>
+                  </div>`
+                : ""
+            }
+            ${
+              this.authorPhone
+                ? html`<div class="contact-item" part="contact-item">
+                    <div class="contact-icon">
+                      <simple-icon-lite
+                        icon="communication:phone"
+                      ></simple-icon-lite>
+                    </div>
+                    <div class="contact-text">
+                      <a href="tel:${this.authorPhone}" part="contact-link"
+                        >${this.authorPhone}</a
+                      >
+                    </div>
+                  </div>`
+                : ""
+            }
+            ${
+              this.authorLocation
+                ? html`<div class="contact-item" part="contact-item">
+                    <div class="contact-icon">
+                      <simple-icon-lite icon="icons:room"></simple-icon-lite>
+                    </div>
+                    <div class="contact-text">
+                      <span part="contact-text">${this.authorLocation}</span>
+                    </div>
+                  </div>`
+                : ""
+            }
+            ${
+              this.authorWebsite
+                ? html`<div class="contact-item" part="contact-item">
+                    <div class="contact-icon">
+                      <simple-icon-lite
+                        icon="icons:language"
+                      ></simple-icon-lite>
+                    </div>
+                    <div class="contact-text">
+                      <a
+                        href="${this.authorWebsite}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        part="contact-link"
+                        >${this.authorWebsite.replace(/^https?:\/\//, "")}</a
+                      >
+                    </div>
+                  </div>`
+                : ""
+            }
+            ${
+              this.authorWebsite2
+                ? html`<div class="contact-item" part="contact-item">
+                    <div class="contact-icon">
+                      <simple-icon-lite
+                        icon="icons:language"
+                      ></simple-icon-lite>
+                    </div>
+                    <div class="contact-text">
+                      <a
+                        href="${this.authorWebsite2}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        part="contact-link"
+                        >${this.authorWebsite2.replace(/^https?:\/\//, "")}</a
+                      >
+                    </div>
+                  </div>`
+                : ""
+            }
             ${this.renderSocialLink(this.authorSocialLink)}
             ${this.renderSocialLink(this.authorSocialLink2)}
           </div>

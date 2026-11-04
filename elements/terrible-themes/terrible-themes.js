@@ -362,8 +362,9 @@ class TerribleThemes extends HAXCMSRememberRoute(
               </table>
               <a aria-disabled="true" role="link" tabindex="-1"
                 ><img
-                  src="${new URL("lib/assets/header.jpg", import.meta.url)
-                    .href}/../header-room407.jpg"
+                  src="${
+                    new URL("lib/assets/header.jpg", import.meta.url).href
+                  }/../header-room407.jpg"
                   width="100%"
                   height="200"
                   border="0"
@@ -448,8 +449,9 @@ class TerribleThemes extends HAXCMSRememberRoute(
                                           type="prev"
                                           position="right"
                                           class="navigation"
-                                          @label-changed="${this
-                                            .__prevPageLabelChanged}"
+                                          @label-changed="${
+                                            this.__prevPageLabelChanged
+                                          }"
                                         >
                                           <div slot="suffix" class="wrapper">
                                             <div class="top">
@@ -465,8 +467,9 @@ class TerribleThemes extends HAXCMSRememberRoute(
                                           type="next"
                                           position="left"
                                           class="navigation"
-                                          @label-changed="${this
-                                            .__nextPageLabelChanged}"
+                                          @label-changed="${
+                                            this.__nextPageLabelChanged
+                                          }"
                                         >
                                           <div slot="prefix" class="wrapper">
                                             <div class="top">

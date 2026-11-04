@@ -1102,49 +1102,55 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
             <dt>${this.t.size}</dt>
             <dd>
               ${this._fmtBytes(f.size)}
-              ${compressRec
-                ? html`<simple-icon-button-lite
-                    class="info-action-btn"
-                    icon="icons:compress"
-                    label="${compressRec.label}"
-                    title="${compressRec.label}"
-                    ?disabled="${this.__fileActionsBusy}"
-                    @click="${() => this._runFileRec(compressRec)}"
-                    >90</simple-icon-button-lite
-                  >`
-                : html``}
+              ${
+                compressRec
+                  ? html`<simple-icon-button-lite
+                      class="info-action-btn"
+                      icon="icons:compress"
+                      label="${compressRec.label}"
+                      title="${compressRec.label}"
+                      ?disabled="${this.__fileActionsBusy}"
+                      @click="${() => this._runFileRec(compressRec)}"
+                      >90</simple-icon-button-lite
+                    >`
+                  : html``
+              }
             </dd>
             <dt>${this.t.dimensions}</dt>
             <dd>
-              ${f.width && f.height
-                ? f.width + " \u00d7 " + f.height
-                : "\u2014"}
-              ${resizeRec
-                ? html`<simple-icon-button-lite
-                    class="info-action-btn"
-                    icon="image:transform"
-                    label="${resizeRec.label}"
-                    title="${resizeRec.label}"
-                    ?disabled="${this.__fileActionsBusy}"
-                    @click="${() => this._runFileRec(resizeRec)}"
-                  ></simple-icon-button-lite>`
-                : html``}
+              ${
+                f.width && f.height ? f.width + " \u00d7 " + f.height : "\u2014"
+              }
+              ${
+                resizeRec
+                  ? html`<simple-icon-button-lite
+                      class="info-action-btn"
+                      icon="image:transform"
+                      label="${resizeRec.label}"
+                      title="${resizeRec.label}"
+                      ?disabled="${this.__fileActionsBusy}"
+                      @click="${() => this._runFileRec(resizeRec)}"
+                    ></simple-icon-button-lite>`
+                  : html``
+              }
             </dd>
             <dt>${this.t.type}</dt>
             <dd>${f.type || "\u2014"}</dd>
           </dl>
-          ${hasUuid
-            ? html`<div class="rec-more">
-                <hax-file-actions
-                  mode="field"
-                  selected-count="1"
-                  image-count="1"
-                  ?can-scale="${!this.__fileActionsBusy}"
-                  ?busy="${this.__fileActionsBusy}"
-                  @hax-file-action="${this._onInlineFileAction}"
-                ></hax-file-actions>
-              </div>`
-            : html``}
+          ${
+            hasUuid
+              ? html`<div class="rec-more">
+                  <hax-file-actions
+                    mode="field"
+                    selected-count="1"
+                    image-count="1"
+                    ?can-scale="${!this.__fileActionsBusy}"
+                    ?busy="${this.__fileActionsBusy}"
+                    @hax-file-action="${this._onInlineFileAction}"
+                  ></hax-file-actions>
+                </div>`
+              : html``
+          }
           <div
             class="rec-status ${this.__fileActionsError ? "error" : ""}"
             aria-live="polite"

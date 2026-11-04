@@ -71,15 +71,17 @@ export const UIRenderPieces = function (SuperClass) {
           id="activestudentbtn"
           ?disabled="${!this.ready}"
         >
-          ${this.database &&
-          this.database.roster &&
-          this.database.roster[this.activeStudent] &&
-          this.database.roster[this.activeStudent].photo
-            ? html`<img
-                src="${this.database.roster[this.activeStudent].photo}"
-                loading="lazy"
-              />`
-            : html`<simple-icon-lite icon="social:person"></simple-icon-lite>`}
+          ${
+            this.database &&
+            this.database.roster &&
+            this.database.roster[this.activeStudent] &&
+            this.database.roster[this.activeStudent].photo
+              ? html`<img
+                  src="${this.database.roster[this.activeStudent].photo}"
+                  loading="lazy"
+                />`
+              : html`<simple-icon-lite icon="social:person"></simple-icon-lite>`
+          }
           <span class="hide-900">${this.t.activeStudent}</span>
         </simple-icon-button-lite>
         <simple-popover
@@ -88,13 +90,15 @@ export const UIRenderPieces = function (SuperClass) {
           auto
         >
           <div>
-            ${this.database &&
-            this.database.roster &&
-            this.database.roster[this.activeStudent]
-              ? html` <grade-book-student-block
-                  .student="${this.database.roster[this.activeStudent]}"
-                ></grade-book-student-block>`
-              : nothing}
+            ${
+              this.database &&
+              this.database.roster &&
+              this.database.roster[this.activeStudent]
+                ? html` <grade-book-student-block
+                    .student="${this.database.roster[this.activeStudent]}"
+                  ></grade-book-student-block>`
+                : nothing
+            }
 
             <div class="active-student-grade-history">
               ${this.activeStudentSubmissions.map(
@@ -102,9 +106,11 @@ export const UIRenderPieces = function (SuperClass) {
                   <button
                     .value="${sRecord.assignmentIndex}"
                     @click="${this.studentLetterGradeHistoryClick}"
-                    class="${this.activeAssignment === sRecord.assignmentIndex
-                      ? `activeAssignment`
-                      : ``}"
+                    class="${
+                      this.activeAssignment === sRecord.assignmentIndex
+                        ? `activeAssignment`
+                        : ``
+                    }"
                   >
                     <letter-grade
                       mini
@@ -252,28 +258,32 @@ export const UIRenderPieces = function (SuperClass) {
           for="activeassignmentbtn"
           auto
         >
-          ${this.database &&
-          this.database.assignments &&
-          this.database.assignments[this.activeAssignment]
-            ? html`
-                <h3>
-                  ${this.database.assignments[this.activeAssignment].name}
-                </h3>
-                ${this.t.dueDate}:
-                <relative-time
-                  threshold="PT0S"
-                  .datetime="${this.database.assignments[this.activeAssignment]
-                    ._ISODueDate}"
-                  month="short"
-                  day="numeric"
-                  year="numeric"
-                  hour="numeric"
-                  minute="numeric"
-                  time-zone-name="short"
-                >
-                </relative-time>
-              `
-            : nothing}
+          ${
+            this.database &&
+            this.database.assignments &&
+            this.database.assignments[this.activeAssignment]
+              ? html`
+                  <h3>
+                    ${this.database.assignments[this.activeAssignment].name}
+                  </h3>
+                  ${this.t.dueDate}:
+                  <relative-time
+                    threshold="PT0S"
+                    .datetime="${
+                      this.database.assignments[this.activeAssignment]
+                        ._ISODueDate
+                    }"
+                    month="short"
+                    day="numeric"
+                    year="numeric"
+                    hour="numeric"
+                    minute="numeric"
+                    time-zone-name="short"
+                  >
+                  </relative-time>
+                `
+              : nothing
+          }
         </simple-popover>`;
     }
     // toggle logic for button

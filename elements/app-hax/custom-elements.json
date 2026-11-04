@@ -68,6 +68,16 @@
             },
             {
               "kind": "method",
+              "name": "_logoutThenReload",
+              "description": "End the session through jwt-login and reload once the server has\nanswered the logout, so the refresh cookie is really gone before the\ndashboard rehydrates (haxtheweb/issues#3209 item 5). Falls back to a\ntimed reload if no jwt-login-logout-complete arrives (cross-domain\nlogout urls navigate away instead)."
+            },
+            {
+              "kind": "method",
+              "name": "_jwtLogout",
+              "description": "End the session through jwt-login without a redirect; the reload is\nhandled here"
+            },
+            {
+              "kind": "method",
               "name": "goToLocation",
               "parameters": [
                 {
@@ -110,7 +120,7 @@
               "name": "_jwtLoggedIn",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },

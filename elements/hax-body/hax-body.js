@@ -1045,19 +1045,23 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         allow-overlap
         auto
         sticky
-        data-node-type="${!this.activeNode
-          ? ""
-          : this.viewSourceToggle &&
-              this.activeNode &&
-              this.activeNode.parentNode &&
-              this.activeNode.parentNode.tagName
-            ? this.activeNode.parentNode.tagName
-            : this.activeNode.tagName}"
-        .target="${!this.activeNode
-          ? globalThis.document.body
-          : this.viewSourceToggle
-            ? this.activeNode.parentNode
-            : this.activeNode}"
+        data-node-type="${
+          !this.activeNode
+            ? ""
+            : this.viewSourceToggle &&
+                this.activeNode &&
+                this.activeNode.parentNode &&
+                this.activeNode.parentNode.tagName
+              ? this.activeNode.parentNode.tagName
+              : this.activeNode.tagName
+        }"
+        .target="${
+          !this.activeNode
+            ? globalThis.document.body
+            : this.viewSourceToggle
+              ? this.activeNode.parentNode
+              : this.activeNode
+        }"
         .trayStatus="${this.trayStatus}"
         ?hidden="${!this.activeNode || !this.editMode}"
       >
@@ -3387,8 +3391,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       node.setAttribute("slot", move);
     } else if (node && parent && parent !== this) {
       //move out of layout
-      (target = direction > 0 ? parent.nextElementSibling : parent),
-        (move = parent.getAttribute("slot"));
+      ((target = direction > 0 ? parent.nextElementSibling : parent),
+        (move = parent.getAttribute("slot")));
       if (target) {
         parent.parentNode.insertBefore(node, target);
         if (move) node.setAttribute("slot", move);
@@ -3775,12 +3779,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           // make sure a new list also creates an li
           if (!replacement.innerHTML.includes("<fake-hax-list-break>")) {
             replacement.innerHTML = "<li>" + node.innerHTML + "</li>";
-          } else if (
-            !(
-              node.tagName.toLowerCase() === "ul" ||
-              node.tagName.toLowerCase() === "ol"
-            )
-          ) {
+          } else if (!(
+            node.tagName.toLowerCase() === "ul" ||
+            node.tagName.toLowerCase() === "ol"
+          )) {
             replacement.innerHTML = node.innerHTML
               .trim()
               .replace(/<fake-hax-list-break>/g, "<li>")

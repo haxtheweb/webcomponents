@@ -243,13 +243,15 @@ class CollectionRow extends DDD {
     return html`
       <div class="wrap">
         <div class="image-wrap">
-          ${this.image
-            ? html`<img
-                class="image"
-                src="${this.image}"
-                alt="${this.alt ? this.alt : ""}"
-              />`
-            : ``}
+          ${
+            this.image
+              ? html`<img
+                  class="image"
+                  src="${this.image}"
+                  alt="${this.alt ? this.alt : ""}"
+                />`
+              : ``
+          }
         </div>
         <div>
           <p class="text">
@@ -262,17 +264,21 @@ class CollectionRow extends DDD {
         </div>
       </div>
       <div class="footer">
-        ${this.icon
-          ? html`<simple-icon-lite
-              icon="${this.icon}"
-              aria-hidden="true"
-            ></simple-icon-lite>`
-          : ``}
-        ${tags.length > 0
-          ? html`<ul class="tags">
-              ${tags.map((tag) => html`<li>${tag}</li>`)}
-            </ul>`
-          : ``}
+        ${
+          this.icon
+            ? html`<simple-icon-lite
+                icon="${this.icon}"
+                aria-hidden="true"
+              ></simple-icon-lite>`
+            : ``
+        }
+        ${
+          tags.length > 0
+            ? html`<ul class="tags">
+                ${tags.map((tag) => html`<li>${tag}</li>`)}
+              </ul>`
+            : ``
+        }
       </div>
     `;
   }

@@ -132,7 +132,7 @@ function make_xlsx_lib(XLSX) {
           e2 = 0,
           e3 = 0,
           e4 = 0;
-        for (var i = 0; i < input.length; ) {
+        for (var i = 0; i < input.length;) {
           c1 = input.charCodeAt(i++);
           e1 = c1 >> 2;
 
@@ -162,7 +162,7 @@ function make_xlsx_lib(XLSX) {
           e3 = 0,
           e4 = 0;
         input = input.replace(/[^\w\+\/\=]/g, "");
-        for (var i = 0; i < input.length; ) {
+        for (var i = 0; i < input.length;) {
           e1 = map.indexOf(input.charAt(i++));
           e2 = map.indexOf(input.charAt(i++));
           c1 = (e1 << 2) | (e2 >> 4);
@@ -1318,7 +1318,7 @@ function make_xlsx_lib(XLSX) {
             i++;
             break;
           case '"':
-            for (; /*cc=*/ fmt.charCodeAt(++i) !== 34 && i < fmt.length; ) {
+            for (; /*cc=*/ fmt.charCodeAt(++i) !== 34 && i < fmt.length;) {
               /*empty*/
             }
             ++i;
@@ -1440,7 +1440,7 @@ function make_xlsx_lib(XLSX) {
             i += 7;
             break;
           case '"' /* Literal text */:
-            for (o = ""; (cc = fmt.charCodeAt(++i)) !== 34 && i < fmt.length; )
+            for (o = ""; (cc = fmt.charCodeAt(++i)) !== 34 && i < fmt.length;)
               o += String.fromCharCode(cc);
             out[out.length] = { t: "t", v: o };
             ++i;
@@ -2139,7 +2139,7 @@ function make_xlsx_lib(XLSX) {
     function crc32_bstr(bstr, seed) {
       var C = seed ^ -1,
         L = bstr.length - 1;
-      for (var i = 0; i < L; ) {
+      for (var i = 0; i < L;) {
         C = (C >>> 8) ^ T[(C ^ bstr.charCodeAt(i++)) & 0xff];
         C = (C >>> 8) ^ T[(C ^ bstr.charCodeAt(i++)) & 0xff];
       }
@@ -2151,7 +2151,7 @@ function make_xlsx_lib(XLSX) {
       if (buf.length > 10000) return crc32_buf_8(buf, seed);
       var C = seed ^ -1,
         L = buf.length - 3;
-      for (var i = 0; i < L; ) {
+      for (var i = 0; i < L;) {
         C = (C >>> 8) ^ T[(C ^ buf[i++]) & 0xff];
         C = (C >>> 8) ^ T[(C ^ buf[i++]) & 0xff];
         C = (C >>> 8) ^ T[(C ^ buf[i++]) & 0xff];
@@ -2164,7 +2164,7 @@ function make_xlsx_lib(XLSX) {
     function crc32_buf_8(buf, seed) {
       var C = seed ^ -1,
         L = buf.length - 7;
-      for (var i = 0; i < L; ) {
+      for (var i = 0; i < L;) {
         C = (C >>> 8) ^ T[(C ^ buf[i++]) & 0xff];
         C = (C >>> 8) ^ T[(C ^ buf[i++]) & 0xff];
         C = (C >>> 8) ^ T[(C ^ buf[i++]) & 0xff];
@@ -2180,7 +2180,7 @@ function make_xlsx_lib(XLSX) {
 
     function crc32_str(str, seed) {
       var C = seed ^ -1;
-      for (var i = 0, L = str.length, c, d; i < L; ) {
+      for (var i = 0, L = str.length, c, d; i < L;) {
         c = str.charCodeAt(i++);
         if (c < 0x80) {
           C = (C >>> 8) ^ T[(C ^ c) & 0xff];
@@ -2594,7 +2594,7 @@ function make_xlsx_lib(XLSX) {
       var modulus = ssz - 1,
         j = 0,
         jj = 0;
-      for (j = start; j >= 0; ) {
+      for (j = start; j >= 0;) {
         chkd[j] = true;
         buf[buf.length] = j;
         buf_chain.push(sectors[j]);
@@ -2627,7 +2627,7 @@ function make_xlsx_lib(XLSX) {
         if (chkd[k]) continue;
         buf_chain = [];
         var seen = [];
-        for (j = k; j >= 0; ) {
+        for (j = k; j >= 0;) {
           seen[j] = true;
           chkd[j] = true;
           buf[buf.length] = j;
@@ -3423,7 +3423,7 @@ function make_xlsx_lib(XLSX) {
       /* read literal and dist codes at once */
       var hcodes = [];
       maxlen = 1;
-      for (; hcodes.length < _HLIT + _HDIST; ) {
+      for (; hcodes.length < _HLIT + _HDIST;) {
         ccode = dyn_cmap[read_bits_7(data, boff)];
         boff += ccode & 7;
         switch ((ccode >>>= 3)) {
@@ -4926,7 +4926,7 @@ function make_xlsx_lib(XLSX) {
       if (!Buffer.isBuffer(b)) return ___utf16le(b, s, e);
       return b
         .toString("utf16le", s, e)
-        .replace(chr0, "") /*.replace(chr1,'!')*/;
+        .replace(chr0, ""); /*.replace(chr1,'!')*/
     };
     __hexlify = function (b, s, l) {
       return Buffer.isBuffer(b)
@@ -5412,7 +5412,7 @@ function make_xlsx_lib(XLSX) {
       l;
     if (isNaN(t)) return; // TODO: throw something here?
     if (!length) length = XLSBRecordEnum[t].p || (payload || []).length || 0;
-    l = 1 + (t >= 0x80 ? 1 : 0) + 1 /* + length*/;
+    l = 1 + (t >= 0x80 ? 1 : 0) + 1; /* + length*/
     if (length >= 0x80) ++l;
     if (length >= 0x4000) ++l;
     if (length >= 0x200000) ++l;

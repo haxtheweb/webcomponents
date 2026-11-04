@@ -175,11 +175,13 @@ class EditableTableEditorRowcol extends SimpleToolbarMenuBehaviors(
         label="${label}"
         show-text-label
         align-horizontal="left"
-        @button-toggled="${deleteItem
-          ? this._onDelete
-          : after
-            ? this._onInsertAfter
-            : this._onInsertBefore}"
+        @button-toggled="${
+          deleteItem
+            ? this._onDelete
+            : after
+              ? this._onInsertAfter
+              : this._onInsertBefore
+        }"
       >
       </simple-toolbar-button>
     </simple-toolbar-menu-item>`;

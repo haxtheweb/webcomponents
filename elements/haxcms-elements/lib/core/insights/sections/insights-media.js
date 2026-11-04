@@ -411,20 +411,22 @@ class InsightsMedia extends I18NMixin(LitElement) {
           >${this._p(rows.length, this.t.pagesHintOne, this.t.pagesHint)}</span
         >
       </h3>
-      ${rows.length
-        ? html`<ul class="findings">
-              ${this._limited("noMedia", rows).map(
-                (r) =>
-                  html`<li>
-                    <span class="t">${r.title}</span>${this._openBtn(
-                      r.slug,
-                      r.title,
-                    )}
-                  </li>`,
-              )}
-            </ul>
-            ${this._moreBtn("noMedia", rows)}`
-        : html`<div class="hax-ui-empty empty">${this.t.allHaveMedia}</div>`}
+      ${
+        rows.length
+          ? html`<ul class="findings">
+                ${this._limited("noMedia", rows).map(
+                  (r) =>
+                    html`<li>
+                      <span class="t">${r.title}</span>${this._openBtn(
+                        r.slug,
+                        r.title,
+                      )}
+                    </li>`,
+                )}
+              </ul>
+              ${this._moreBtn("noMedia", rows)}`
+          : html`<div class="hax-ui-empty empty">${this.t.allHaveMedia}</div>`
+      }
     </section>`;
   }
 
@@ -441,31 +443,33 @@ class InsightsMedia extends I18NMixin(LitElement) {
           <span><i class="key-i"></i>${this.t.images}</span>
         </span>
       </h3>
-      ${rows.length
-        ? html`<div class="bars">
-            ${rows.map(
-              (s) =>
-                html`<div class="bar">
-                  <span class="sec-name" title="${s.name}">${s.name}</span>
-                  <div
-                    class="stack"
-                    role="img"
-                    aria-label="${this._fmt(this.t.sectionAria, {
-                      name: s.name,
-                      v: this._p(s.videos, this.t.videoOne, this.t.videosN),
-                      e: this._p(s.embeds, this.t.embedOne, this.t.embedsN),
-                      i: this._p(s.images, this.t.imageOne, this.t.imagesN),
-                    })}"
-                  >
-                    <span class="seg-v" style="width: ${w(s.videos)}"></span>
-                    <span class="seg-e" style="width: ${w(s.embeds)}"></span>
-                    <span class="seg-i" style="width: ${w(s.images)}"></span>
-                  </div>
-                  <span class="num">${s.total}</span>
-                </div>`,
-            )}
-          </div>`
-        : html`<div class="hax-ui-empty empty">${this.t.noSections}</div>`}
+      ${
+        rows.length
+          ? html`<div class="bars">
+              ${rows.map(
+                (s) =>
+                  html`<div class="bar">
+                    <span class="sec-name" title="${s.name}">${s.name}</span>
+                    <div
+                      class="stack"
+                      role="img"
+                      aria-label="${this._fmt(this.t.sectionAria, {
+                        name: s.name,
+                        v: this._p(s.videos, this.t.videoOne, this.t.videosN),
+                        e: this._p(s.embeds, this.t.embedOne, this.t.embedsN),
+                        i: this._p(s.images, this.t.imageOne, this.t.imagesN),
+                      })}"
+                    >
+                      <span class="seg-v" style="width: ${w(s.videos)}"></span>
+                      <span class="seg-e" style="width: ${w(s.embeds)}"></span>
+                      <span class="seg-i" style="width: ${w(s.images)}"></span>
+                    </div>
+                    <span class="num">${s.total}</span>
+                  </div>`,
+              )}
+            </div>`
+          : html`<div class="hax-ui-empty empty">${this.t.noSections}</div>`
+      }
     </section>`;
   }
 
@@ -481,13 +485,15 @@ class InsightsMedia extends I18NMixin(LitElement) {
         <td class="num">${d.html}</td>
         <td class="num">${d.index}</td>
         <td>
-          ${d.missing
-            ? html`<span class="hax-ui-pill" data-tone="warning"
-                >${this._fmt(this.t.missing, { n: d.missing })}</span
-              >`
-            : html`<span class="hax-ui-pill" data-tone="success"
-                >${this.t.inSync}</span
-              >`}
+          ${
+            d.missing
+              ? html`<span class="hax-ui-pill" data-tone="warning"
+                  >${this._fmt(this.t.missing, { n: d.missing })}</span
+                >`
+              : html`<span class="hax-ui-pill" data-tone="success"
+                  >${this.t.inSync}</span
+                >`
+          }
         </td>
       </tr>`;
     };

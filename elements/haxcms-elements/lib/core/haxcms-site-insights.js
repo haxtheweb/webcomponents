@@ -1792,9 +1792,9 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                   role="tab"
                   toggles
                   aria-controls="report-table-panel"
-                  aria-selected="${this.activeTab === tab.id
-                    ? "true"
-                    : "false"}"
+                  aria-selected="${
+                    this.activeTab === tab.id ? "true" : "false"
+                  }"
                   ?toggled="${this.activeTab === tab.id}"
                   @click="${this._reportTabClicked}"
                 >
@@ -1813,68 +1813,72 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
               full
               ?loading="${this.loading}"
             ></loading-indicator>
-            ${this.loading
-              ? html`<p role="status" aria-live="polite">
-                  ${this.t.loading} ${activeReport.label}..
-                </p>`
-              : html`
-                  ${this._renderActiveFilters()}
-                  <div class="report-table-scroll">
-                    ${bodyRows.length === 0
-                      ? html`<p>${this._activeEmptyStateMessage()}</p>`
-                      : useNativeTable
-                        ? this._nativeReportTable(
-                            headerRow,
-                            bodyRows,
-                            activeReport.label,
-                          )
-                        : html`
-                            <editable-table-display
-                              hide-block-header
-                              bordered
-                              copyable
-                              condensed
-                              column-header
-                              downloadable
-                              printable
-                              responsive
-                              sort
-                              striped
-                              scroll
-                            >
-                              <table>
-                                <caption>
-                                  ${activeReport.label} ${this.t.reports}
-                                </caption>
-                                <thead>
-                                  <tr>
-                                    ${headerRow.map(
-                                      (header) =>
-                                        html`<th>
-                                          ${this._toCellValue(header)}
-                                        </th>`,
-                                    )}
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  ${bodyRows.map(
-                                    (row) => html`
+            ${
+              this.loading
+                ? html`<p role="status" aria-live="polite">
+                    ${this.t.loading} ${activeReport.label}..
+                  </p>`
+                : html`
+                    ${this._renderActiveFilters()}
+                    <div class="report-table-scroll">
+                      ${
+                        bodyRows.length === 0
+                          ? html`<p>${this._activeEmptyStateMessage()}</p>`
+                          : useNativeTable
+                            ? this._nativeReportTable(
+                                headerRow,
+                                bodyRows,
+                                activeReport.label,
+                              )
+                            : html`
+                                <editable-table-display
+                                  hide-block-header
+                                  bordered
+                                  copyable
+                                  condensed
+                                  column-header
+                                  downloadable
+                                  printable
+                                  responsive
+                                  sort
+                                  striped
+                                  scroll
+                                >
+                                  <table>
+                                    <caption>
+                                      ${activeReport.label} ${this.t.reports}
+                                    </caption>
+                                    <thead>
                                       <tr>
-                                        ${row.map(
-                                          (cell) =>
-                                            html`<td>
-                                              ${this._renderCell(cell)}
-                                            </td>`,
+                                        ${headerRow.map(
+                                          (header) =>
+                                            html`<th>
+                                              ${this._toCellValue(header)}
+                                            </th>`,
                                         )}
                                       </tr>
-                                    `,
-                                  )}
-                                </tbody>
-                              </table>
-                            </editable-table-display>
-                          `}
-                  </div>
-                `}
+                                    </thead>
+                                    <tbody>
+                                      ${bodyRows.map(
+                                        (row) => html`
+                                          <tr>
+                                            ${row.map(
+                                              (cell) =>
+                                                html`<td>
+                                                  ${this._renderCell(cell)}
+                                                </td>`,
+                                            )}
+                                          </tr>
+                                        `,
+                                      )}
+                                    </tbody>
+                                  </table>
+                                </editable-table-display>
+                              `
+                      }
+                    </div>
+                  `
+            }
           </section>
         </div>
       </div>

@@ -157,37 +157,45 @@ class MapMenuItem extends I18NMixin(LitElement) {
   render() {
     return html` <a tabindex="-1" href="${this.url}" title="${this.itemtitle}">
         <button>
-          ${!this.published
-            ? html`<simple-icon-lite
-                id="unpublished"
-                title="${this.t.pageIsUnpublished}"
-                icon="icons:visibility-off"
-              ></simple-icon-lite>`
-            : ``}
-          ${this.icon
-            ? html`
-                <simple-icon-lite
-                  icon="${this.icon}"
-                  id="icon"
-                ></simple-icon-lite>
-                ${this.iconLabel
-                  ? html`<simple-tooltip for="icon"
-                      >${this.iconLabel}</simple-tooltip
-                    >`
-                  : ``}
-              `
-            : html`<div class="no-icon"></div>`}
+          ${
+            !this.published
+              ? html`<simple-icon-lite
+                  id="unpublished"
+                  title="${this.t.pageIsUnpublished}"
+                  icon="icons:visibility-off"
+                ></simple-icon-lite>`
+              : ``
+          }
+          ${
+            this.icon
+              ? html`
+                  <simple-icon-lite
+                    icon="${this.icon}"
+                    id="icon"
+                  ></simple-icon-lite>
+                  ${
+                    this.iconLabel
+                      ? html`<simple-tooltip for="icon"
+                          >${this.iconLabel}</simple-tooltip
+                        >`
+                      : ``
+                  }
+                `
+              : html`<div class="no-icon"></div>`
+          }
           <span class="title">${this.itemtitle}</span>
         </button>
       </a>
-      ${this.editControls && this.active
-        ? html` <div class="ops">
-            <haxcms-page-operations
-              class="op"
-              action-id="${this.id}"
-            ></haxcms-page-operations>
-          </div>`
-        : ``}`;
+      ${
+        this.editControls && this.active
+          ? html` <div class="ops">
+              <haxcms-page-operations
+                class="op"
+                action-id="${this.id}"
+              ></haxcms-page-operations>
+            </div>`
+          : ``
+      }`;
   }
   static get tag() {
     return "map-menu-item";

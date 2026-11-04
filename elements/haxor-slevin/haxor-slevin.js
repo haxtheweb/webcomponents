@@ -300,8 +300,9 @@ class HaxorSlevin extends I18NMixin(
           display: flex;
         }
         .subtitle {
-          font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans",
-            Geneva, Arial, sans-serif;
+          font-family:
+            "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva,
+            Arial, sans-serif;
           letter-spacing: -0.02em;
           font-weight: 300;
           font-style: normal;
@@ -390,9 +391,11 @@ class HaxorSlevin extends I18NMixin(
                   accent-color="${this.color}"
                   accent-heading
                   horizontal
-                  image-src="${post.metadata && post.metadata.image
-                    ? post.metadata.image
-                    : this.image}"
+                  image-src="${
+                    post.metadata && post.metadata.image
+                      ? post.metadata.image
+                      : this.image
+                  }"
                   image-alt="${post.title}"
                 >
                   <div slot="heading"><h2>${post.title}</h2></div>
@@ -413,14 +416,16 @@ class HaxorSlevin extends I18NMixin(
           <article id="contentcontainer">
             <site-region name="contentTop"></site-region>
             <site-git-corner position="right"></site-git-corner>
-            ${this.activeItem &&
-            this.activeItem.metadata &&
-            this.activeItem.metadata.image
-              ? html`<full-width-image
-                  source="${this.activeItem.metadata.image}"
-                  caption="${this.activeItem.title}"
-                ></full-width-image>`
-              : html`<site-active-title></site-active-title>`}
+            ${
+              this.activeItem &&
+              this.activeItem.metadata &&
+              this.activeItem.metadata.image
+                ? html`<full-width-image
+                    source="${this.activeItem.metadata.image}"
+                    caption="${this.activeItem.title}"
+                  ></full-width-image>`
+                : html`<site-active-title></site-active-title>`
+            }
             <h3 class="subtitle" .hidden="${!this.subtitle}">
               ${this.subtitle}
             </h3>
@@ -445,9 +450,11 @@ class HaxorSlevin extends I18NMixin(
                   accent-color="${this.color}"
                   accent-heading
                   horizontal
-                  image-src="${post.metadata && post.metadata.image
-                    ? post.metadata.image
-                    : this.image}"
+                  image-src="${
+                    post.metadata && post.metadata.image
+                      ? post.metadata.image
+                      : this.image
+                  }"
                   image-alt="${post.title}"
                 >
                   <div slot="heading"><h2>${post.title}</h2></div>

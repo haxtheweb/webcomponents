@@ -152,15 +152,17 @@ export class ProductGlance extends SimpleColors {
     return html`
       <div class="wrapper">
         <div class="icon-wrapper">
-          ${this.icon
-            ? html`<simple-icon
-                class="icon"
-                icon="${this.icon}"
-                accent-color="${this.accentColor}"
-                .contrast="${this.contrast}"
-                ?dark="${this.dark}"
-              ></simple-icon>`
-            : html``}
+          ${
+            this.icon
+              ? html`<simple-icon
+                  class="icon"
+                  icon="${this.icon}"
+                  accent-color="${this.accentColor}"
+                  .contrast="${this.contrast}"
+                  ?dark="${this.dark}"
+                ></simple-icon>`
+              : html``
+          }
         </div>
         <div class="text-wrapper">
           <div class="title-text"><slot name="title">${this.title}</slot></div>

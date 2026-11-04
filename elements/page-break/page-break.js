@@ -809,122 +809,128 @@ export class PageBreak extends IntersectionObserverMixin(
         >${this.title}</a
       >
       ${this._bandLoaded ? pageBreakBand.renderPageBreakBand(this) : ``}
-      ${this.linkUrl
-        ? html`<div class="link-info">
-            <div>
-              <strong>${this.t.linkMessage}</strong>
-            </div>
-            <a
-              class="link-url"
-              href="${this.linkUrl}"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              ${this.linkUrl}
-            </a>
-            <div>
-              ${this.linkTarget === "_blank"
-                ? this.t.linkOpensInNewWindow
-                : this.t.linkOpensInSameWindow}
-            </div>
-          </div>`
-        : ``}
-      ${this.isLoggedIn && !this._haxState
-        ? html`
-            <simple-toolbar-button
-              class="menu-button"
-              icon="icons:create"
-              id="pageactionsbtn"
-              label="${this.t.pageActions}"
-              @click="${this._toggleMenu}"
-            ></simple-toolbar-button>
-            <simple-context-menu id="menu" title="${this.t.pageActions}">
+      ${
+        this.linkUrl
+          ? html`<div class="link-info">
+              <div>
+                <strong>${this.t.linkMessage}</strong>
+              </div>
+              <a
+                class="link-url"
+                href="${this.linkUrl}"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                ${this.linkUrl}
+              </a>
+              <div>
+                ${
+                  this.linkTarget === "_blank"
+                    ? this.t.linkOpensInNewWindow
+                    : this.t.linkOpensInSameWindow
+                }
+              </div>
+            </div>`
+          : ``
+      }
+      ${
+        this.isLoggedIn && !this._haxState
+          ? html`
               <simple-toolbar-button
-                class="menu-item"
-                icon="hax:page-edit"
-                label="${this.t.editPage}"
-                show-text-label
-                @click="${this._editPage}"
-                ?disabled="${this.locked}"
-                autofocus
+                class="menu-button"
+                icon="icons:create"
+                id="pageactionsbtn"
+                label="${this.t.pageActions}"
+                @click="${this._toggleMenu}"
               ></simple-toolbar-button>
-              <simple-toolbar-button
-                class="menu-item"
-                icon="editor:title"
-                label="${this.t.modifyPageTitle}"
-                show-text-label
-                @click="${this._editTitle}"
-                ?disabled="${this.locked}"
-              ></simple-toolbar-button>
-              <simple-toolbar-button
-                class="menu-item"
-                icon="hax:hax2022"
-                label="${this.t.modifyPageIcon}"
-                show-text-label
-                @click="${this._editIcon}"
-                ?disabled="${this.locked}"
-              ></simple-toolbar-button>
-              <simple-toolbar-button
-                class="menu-item"
-                icon="image:photo-library"
-                label="${this.t.editMedia}"
-                show-text-label
-                @click="${this._editMedia}"
-                ?disabled="${this.locked}"
-                ?hidden=${!store.platformAllows("uploadMedia")}
-              ></simple-toolbar-button>
-              <simple-toolbar-button
-                class="menu-item"
-                icon="icons:label"
-                label="${this.t.editTags}"
-                show-text-label
-                @click="${this._editTags}"
-                ?disabled="${this.locked}"
-              ></simple-toolbar-button>
-              <simple-toolbar-button
-                class="menu-item"
-                icon="icons:history"
-                label="${this.t.viewRevisions}"
-                show-text-label
-                @click="${this._openRevisions}"
-              ></simple-toolbar-button>
-              <simple-toolbar-button
-                class="menu-item"
-                icon="hax:graph"
-                label="${this.t.pageReport}"
-                show-text-label
-                @click="${this._openPageReport}"
-                ?hidden=${!store.platformAllows("insights")}
-              ></simple-toolbar-button>
-              <simple-toolbar-button
-                class="menu-item"
-                icon="${this.published
-                  ? "icons:visibility-off"
-                  : "icons:visibility"}"
-                label="${this.published ? this.t.unpublish : this.t.publish}"
-                show-text-label
-                @click="${this._togglePublished}"
-                ?disabled="${this.locked}"
-              ></simple-toolbar-button>
-              <simple-toolbar-button
-                class="menu-item"
-                icon="${this.locked ? "icons:lock" : "icons:lock-open"}"
-                label="${this.locked ? this.t.unlock : this.t.lock}"
-                show-text-label
-                @click="${this._toggleLocked}"
-              ></simple-toolbar-button>
-              <simple-toolbar-button
-                class="menu-item-delete"
-                icon="icons:delete"
-                label="${this.t.delete}"
-                show-text-label
-                @click="${this._deletePage}"
-                ?disabled="${this.locked}"
-                ?hidden=${!store.platformAllows("deletePage")}
-              ></simple-toolbar-button>
-            </simple-context-menu>
-          `
-        : ``}
+              <simple-context-menu id="menu" title="${this.t.pageActions}">
+                <simple-toolbar-button
+                  class="menu-item"
+                  icon="hax:page-edit"
+                  label="${this.t.editPage}"
+                  show-text-label
+                  @click="${this._editPage}"
+                  ?disabled="${this.locked}"
+                  autofocus
+                ></simple-toolbar-button>
+                <simple-toolbar-button
+                  class="menu-item"
+                  icon="editor:title"
+                  label="${this.t.modifyPageTitle}"
+                  show-text-label
+                  @click="${this._editTitle}"
+                  ?disabled="${this.locked}"
+                ></simple-toolbar-button>
+                <simple-toolbar-button
+                  class="menu-item"
+                  icon="hax:hax2022"
+                  label="${this.t.modifyPageIcon}"
+                  show-text-label
+                  @click="${this._editIcon}"
+                  ?disabled="${this.locked}"
+                ></simple-toolbar-button>
+                <simple-toolbar-button
+                  class="menu-item"
+                  icon="image:photo-library"
+                  label="${this.t.editMedia}"
+                  show-text-label
+                  @click="${this._editMedia}"
+                  ?disabled="${this.locked}"
+                  ?hidden=${!store.platformAllows("uploadMedia")}
+                ></simple-toolbar-button>
+                <simple-toolbar-button
+                  class="menu-item"
+                  icon="icons:label"
+                  label="${this.t.editTags}"
+                  show-text-label
+                  @click="${this._editTags}"
+                  ?disabled="${this.locked}"
+                ></simple-toolbar-button>
+                <simple-toolbar-button
+                  class="menu-item"
+                  icon="icons:history"
+                  label="${this.t.viewRevisions}"
+                  show-text-label
+                  @click="${this._openRevisions}"
+                ></simple-toolbar-button>
+                <simple-toolbar-button
+                  class="menu-item"
+                  icon="hax:graph"
+                  label="${this.t.pageReport}"
+                  show-text-label
+                  @click="${this._openPageReport}"
+                  ?hidden=${!store.platformAllows("insights")}
+                ></simple-toolbar-button>
+                <simple-toolbar-button
+                  class="menu-item"
+                  icon="${
+                    this.published ? "icons:visibility-off" : "icons:visibility"
+                  }"
+                  label="${this.published ? this.t.unpublish : this.t.publish}"
+                  show-text-label
+                  @click="${this._togglePublished}"
+                  ?disabled="${this.locked}"
+                ></simple-toolbar-button>
+                <simple-toolbar-button
+                  class="menu-item"
+                  icon="${this.locked ? "icons:lock" : "icons:lock-open"}"
+                  label="${this.locked ? this.t.unlock : this.t.lock}"
+                  show-text-label
+                  @click="${this._toggleLocked}"
+                ></simple-toolbar-button>
+                <simple-toolbar-button
+                  class="menu-item-delete"
+                  icon="icons:delete"
+                  label="${this.t.delete}"
+                  show-text-label
+                  @click="${this._deletePage}"
+                  ?disabled="${this.locked}"
+                  ?hidden=${!store.platformAllows("deletePage")}
+                ></simple-toolbar-button>
+              </simple-context-menu>
+            `
+          : ``
+      }
     `;
   }
   _toggleMenu(e) {

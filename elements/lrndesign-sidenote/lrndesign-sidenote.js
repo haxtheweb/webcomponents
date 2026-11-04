@@ -174,27 +174,36 @@ export class LrndesignSidenote extends DDD {
         role="${ifDefined(hasLabel ? "note" : undefined)}"
         aria-labelledby="${ifDefined(hasLabel ? "label" : undefined)}"
       >
-        ${hasLabel || icon
-          ? html`<div id="header" class="ddd-block-header">
-              ${icon
-                ? html`<span id="icon" class="ddd-block-chip" aria-hidden="true"
-                    ><simple-icon
-                      icon="${icon}"
-                      aria-hidden="true"
-                    ></simple-icon
-                  ></span>`
-                : ""}
-              ${hasLabel
-                ? html`<div
-                    id="label"
-                    class="ddd-block-label"
-                    property="oer:name"
-                  >
-                    ${this.label}
-                  </div>`
-                : ""}
-            </div>`
-          : ""}
+        ${
+          hasLabel || icon
+            ? html`<div id="header" class="ddd-block-header">
+                ${
+                  icon
+                    ? html`<span
+                        id="icon"
+                        class="ddd-block-chip"
+                        aria-hidden="true"
+                        ><simple-icon
+                          icon="${icon}"
+                          aria-hidden="true"
+                        ></simple-icon
+                      ></span>`
+                    : ""
+                }
+                ${
+                  hasLabel
+                    ? html`<div
+                        id="label"
+                        class="ddd-block-label"
+                        property="oer:name"
+                      >
+                        ${this.label}
+                      </div>`
+                    : ""
+                }
+              </div>`
+            : ""
+        }
         <div id="content" class="ddd-block-body"><slot></slot></div>
       </div>
     `;

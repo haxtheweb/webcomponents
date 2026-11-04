@@ -344,40 +344,48 @@ class InsightsOverview extends I18NMixin(LitElement) {
       <h3 class="block" id="fix-next">
         ${this.t.fixNext} <span class="hint">${this.t.fixNextHint}</span>
       </h3>
-      ${list.length
-        ? html`<ul class="findings">
-            ${list.map(
-              (f) =>
-                html`<li>
-                  <span
-                    class="hax-ui-pill"
-                    data-tone="${SEVERITY_TONE[f.severity] || ""}"
-                    >${this._severityLabel(f.severity)}</span
-                  >
-                  <span class="t"
-                    >${f.title}${f.detail
-                      ? html`<span class="d">${f.detail}</span>`
-                      : nothing}</span
-                  >
-                  ${this._findingButton(f)}
-                </li>`,
-            )}
-          </ul>`
-        : html`<p class="hax-ui-empty empty">${this.t.nothingToFix}</p>`}
-      ${all.length > fixNext.length
-        ? html`<button
-            type="button"
-            class="sbtn more"
-            aria-expanded="${this._allFindings ? "true" : "false"}"
-            @click="${() => {
-              this._allFindings = !this._allFindings;
-            }}"
-          >
-            ${this._allFindings
-              ? this._f(this.t.showFewerFindings, { n: fixNext.length })
-              : this._f(this.t.showAllFindings, { n: all.length })}
-          </button>`
-        : nothing}
+      ${
+        list.length
+          ? html`<ul class="findings">
+              ${list.map(
+                (f) =>
+                  html`<li>
+                    <span
+                      class="hax-ui-pill"
+                      data-tone="${SEVERITY_TONE[f.severity] || ""}"
+                      >${this._severityLabel(f.severity)}</span
+                    >
+                    <span class="t"
+                      >${f.title}${
+                        f.detail
+                          ? html`<span class="d">${f.detail}</span>`
+                          : nothing
+                      }</span
+                    >
+                    ${this._findingButton(f)}
+                  </li>`,
+              )}
+            </ul>`
+          : html`<p class="hax-ui-empty empty">${this.t.nothingToFix}</p>`
+      }
+      ${
+        all.length > fixNext.length
+          ? html`<button
+              type="button"
+              class="sbtn more"
+              aria-expanded="${this._allFindings ? "true" : "false"}"
+              @click="${() => {
+                this._allFindings = !this._allFindings;
+              }}"
+            >
+              ${
+                this._allFindings
+                  ? this._f(this.t.showFewerFindings, { n: fixNext.length })
+                  : this._f(this.t.showAllFindings, { n: all.length })
+              }
+            </button>`
+          : nothing
+      }
     </section>`;
   }
 
@@ -423,9 +431,11 @@ class InsightsOverview extends I18NMixin(LitElement) {
           class="hax-ui-pill health-score"
           data-tone="${scoreTone(h.score, th)}"
           title="${noScore ? this.t.noScoreLabel : ""}"
-          >${scoreLabel}${noScore
-            ? html`<span class="sr-only">${this.t.noScoreLabel}</span>`
-            : nothing}</span
+          >${scoreLabel}${
+            noScore
+              ? html`<span class="sr-only">${this.t.noScoreLabel}</span>`
+              : nothing
+          }</span
         >
         <span class="hint"
           >${noScore ? this.t.nothingToCheckYet : this.t.healthHint}</span
@@ -438,22 +448,24 @@ class InsightsOverview extends I18NMixin(LitElement) {
               <div class="score">
                 <span class="t"
                   >${c.label}<span class="d"
-                    >${c.total
-                      ? this._f(this.t.passedOf, {
-                          passed: this._n(c.passed),
-                          total: this._n(c.total),
-                          how: c.total === 1 && c.howOne ? c.howOne : c.how,
-                        })
-                      : this.t.noneToCheck}</span
+                    >${
+                      c.total
+                        ? this._f(this.t.passedOf, {
+                            passed: this._n(c.passed),
+                            total: this._n(c.total),
+                            how: c.total === 1 && c.howOne ? c.howOne : c.how,
+                          })
+                        : this.t.noneToCheck
+                    }</span
                   ></span
                 >
                 <span class="track" aria-hidden="true"
                   ><span
                     class="fill"
                     data-tone="${scoreTone(c.score, th)}"
-                    style="width: ${c.score === null
-                      ? 0
-                      : Math.max(c.score, 2)}%"
+                    style="width: ${
+                      c.score === null ? 0 : Math.max(c.score, 2)
+                    }%"
                   ></span
                 ></span>
                 <span class="num"
@@ -494,38 +506,42 @@ class InsightsOverview extends I18NMixin(LitElement) {
           ${this.t.openContent}
         </button>
       </h3>
-      ${folders.length
-        ? html`<div class="bars folders">
-            ${folders.map(
-              (f) =>
-                html`<div class="bar">
-                  <span class="folder-name"
-                    ><code>${f.name}</code>${f.flagged
-                      ? html` <span
-                          class="hax-ui-pill"
-                          data-tone="warning"
-                          title="${this.t.folderFlaggedLabel}"
-                          >${this.t.folderFlagged}<span class="sr-only"
-                            >: ${this.t.folderFlaggedLabel}</span
-                          ></span
-                        >`
-                      : nothing}</span
-                  >
-                  <span class="track" aria-hidden="true"
-                    ><span
-                      class="fill"
-                      data-tone="${f.flagged ? "warning" : ""}"
-                      style="width: ${Math.max(
-                        Math.round((f.pages / max) * 100),
-                        2,
-                      )}%"
-                    ></span
-                  ></span>
-                  <span class="num">${this._n(f.pages)}</span>
-                </div>`,
-            )}
-          </div>`
-        : html`<p class="hax-ui-empty empty">${this.t.noFolders}</p>`}
+      ${
+        folders.length
+          ? html`<div class="bars folders">
+              ${folders.map(
+                (f) =>
+                  html`<div class="bar">
+                    <span class="folder-name"
+                      ><code>${f.name}</code>${
+                        f.flagged
+                          ? html` <span
+                              class="hax-ui-pill"
+                              data-tone="warning"
+                              title="${this.t.folderFlaggedLabel}"
+                              >${this.t.folderFlagged}<span class="sr-only"
+                                >: ${this.t.folderFlaggedLabel}</span
+                              ></span
+                            >`
+                          : nothing
+                      }</span
+                    >
+                    <span class="track" aria-hidden="true"
+                      ><span
+                        class="fill"
+                        data-tone="${f.flagged ? "warning" : ""}"
+                        style="width: ${Math.max(
+                          Math.round((f.pages / max) * 100),
+                          2,
+                        )}%"
+                      ></span
+                    ></span>
+                    <span class="num">${this._n(f.pages)}</span>
+                  </div>`,
+              )}
+            </div>`
+          : html`<p class="hax-ui-empty empty">${this.t.noFolders}</p>`
+      }
     </section>`;
   }
 

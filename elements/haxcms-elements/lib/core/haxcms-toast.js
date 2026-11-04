@@ -711,48 +711,58 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
     return html`
       <div class="card" part="card">
         <div class="avatar" part="avatar">
-          ${this.merlin
-            ? html`<simple-icon-lite
-                class="merlin-icon"
-                icon="hax:wand"
-                aria-hidden="true"
-              ></simple-icon-lite>`
-            : html`<rpg-character
-                height="${this.characterHeight}"
-                width="${this.characterWidth}"
-                seed="${this.userName || ""}"
-                ?fire="${this.fire}"
-                hat="${this.hat}"
-                speed="${this.speed}"
-                part="rpg-character"
-                ?walking="${this.walking}"
-                aria-hidden="true"
-              ></rpg-character>`}
-          ${icon
-            ? html`<span class="badge" aria-hidden="true"
-                ><simple-icon-lite icon="${icon}"></simple-icon-lite
-              ></span>`
-            : nothing}
+          ${
+            this.merlin
+              ? html`<simple-icon-lite
+                  class="merlin-icon"
+                  icon="hax:wand"
+                  aria-hidden="true"
+                ></simple-icon-lite>`
+              : html`<rpg-character
+                  height="${this.characterHeight}"
+                  width="${this.characterWidth}"
+                  seed="${this.userName || ""}"
+                  ?fire="${this.fire}"
+                  hat="${this.hat}"
+                  speed="${this.speed}"
+                  part="rpg-character"
+                  ?walking="${this.walking}"
+                  aria-hidden="true"
+                ></rpg-character>`
+          }
+          ${
+            icon
+              ? html`<span class="badge" aria-hidden="true"
+                  ><simple-icon-lite icon="${icon}"></simple-icon-lite
+                ></span>`
+              : nothing
+          }
         </div>
         <div class="body">
-          ${this.tone !== "info"
-            ? html`<span class="hax-ui-sr-only">${this.t[this.tone]}:</span>`
-            : nothing}
+          ${
+            this.tone !== "info"
+              ? html`<span class="hax-ui-sr-only">${this.t[this.tone]}:</span>`
+              : nothing
+          }
           <slot name="pre"></slot>
-          ${this.future
-            ? html`<future-terminal-text
-                fadein
-                glitch
-                glitch-max="3"
-                glitch-duration="40"
-              ></future-terminal-text>`
-            : html`<p class="message">
-                ${this.text}${this.awaitingMerlinInput
-                  ? html`<span class="thinking" aria-hidden="true"
-                      ><span></span><span></span><span></span
-                    ></span>`
-                  : nothing}
-              </p>`}
+          ${
+            this.future
+              ? html`<future-terminal-text
+                  fadein
+                  glitch
+                  glitch-max="3"
+                  glitch-duration="40"
+                ></future-terminal-text>`
+              : html`<p class="message">
+                  ${this.text}${
+                    this.awaitingMerlinInput
+                      ? html`<span class="thinking" aria-hidden="true"
+                          ><span></span><span></span><span></span
+                        ></span>`
+                      : nothing
+                  }
+                </p>`
+          }
         </div>
         <button
           type="button"

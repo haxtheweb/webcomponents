@@ -278,8 +278,8 @@ export class AppHaxSearchResults extends I18NMixin(SimpleColors) {
         @media (max-width: 1200px) {
           :host {
             min-width: calc(
-              2 * var(--app-hax-site-card-width) + var(--app-hax-site-card-gap) +
-                2 * var(--ddd-spacing-12, 56px)
+              2 * var(--app-hax-site-card-width) +
+                var(--app-hax-site-card-gap) + 2 * var(--ddd-spacing-12, 56px)
             );
           }
         }
@@ -477,59 +477,67 @@ export class AppHaxSearchResults extends I18NMixin(SimpleColors) {
           >
         </button>
         <ul id="results" @scroll="${this.handleScroll}">
-          ${itemsToRender.length > 0
-            ? itemsToRender.map(
-                (item) =>
-                  html` <li>
-                    <app-hax-site-bar
-                      ?dark="${this.dark}"
-                      site-id="${item.id}"
-                      .siteUrl="${item.slug}"
-                      .slug="${item.slug}"
-                      .image="${this.getThemeImage(item)}"
-                      last-updated-time="${varGet(
-                        item,
-                        "metadata.site.updated",
-                        0,
-                      )}"
-                      accent-color="${varGet(
-                        item,
-                        "metadata.theme.variables.cssVariable",
-                        "",
-                      )
-                        .replace("--simple-colors-default-theme-", "")
-                        .replace("-7", "")}"
-                    >
-                      <a
-                        slot="heading"
-                        href="${item.slug}"
-                        tabindex="-1"
-                        title="${item.title}"
-                      >
-                        ${item.title}
-                      </a>
-                      <span slot="subHeading">${item.author}</span>
-                      <app-hax-site-details
-                        slot="band"
-                        .details="${this.getItemDetails(item)}"
+          ${
+            itemsToRender.length > 0
+              ? itemsToRender.map(
+                  (item) =>
+                    html` <li>
+                      <app-hax-site-bar
+                        ?dark="${this.dark}"
                         site-id="${item.id}"
+                        .siteUrl="${item.slug}"
+                        .slug="${item.slug}"
+                        .image="${this.getThemeImage(item)}"
+                        last-updated-time="${varGet(
+                          item,
+                          "metadata.site.updated",
+                          0,
+                        )}"
+                        accent-color="${varGet(
+                          item,
+                          "metadata.theme.variables.cssVariable",
+                          "",
+                        )
+                          .replace("--simple-colors-default-theme-", "")
+                          .replace("-7", "")}"
                       >
-                        <div class="description" slot="pre">
-                          ${item.description}
-                        </div>
-                      </app-hax-site-details>
-                    </app-hax-site-bar>
-                  </li>`,
-              )
-            : ``}
+                        <a
+                          slot="heading"
+                          href="${item.slug}"
+                          tabindex="-1"
+                          title="${item.title}"
+                        >
+                          ${item.title}
+                        </a>
+                        <span slot="subHeading">${item.author}</span>
+                        <app-hax-site-details
+                          slot="band"
+                          .details="${this.getItemDetails(item)}"
+                          site-id="${item.id}"
+                        >
+                          <div class="description" slot="pre">
+                            ${item.description}
+                          </div>
+                        </app-hax-site-details>
+                      </app-hax-site-bar>
+                    </li>`,
+                )
+              : ``
+          }
         </ul>
-        ${itemsToRender.length === 0
-          ? html`<div id="noResult" role="status" aria-live="polite">
-              ${this.searchTerm !== ""
-                ? html`${this.t.noResults}<strong>"${this.searchTerm}"</strong>`
-                : this.t.noResultsCreateNewSite}
-            </div>`
-          : ``}
+        ${
+          itemsToRender.length === 0
+            ? html`<div id="noResult" role="status" aria-live="polite">
+                ${
+                  this.searchTerm !== ""
+                    ? html`${this.t.noResults}<strong
+                          >"${this.searchTerm}"</strong
+                        >`
+                    : this.t.noResultsCreateNewSite
+                }
+              </div>`
+            : ``
+        }
         <simple-tooltip for="scroll-right-btn" position="top"
           >${this.t.next}</simple-tooltip
         >

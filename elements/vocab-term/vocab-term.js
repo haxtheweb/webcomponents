@@ -243,72 +243,78 @@ class VocabTerm extends SchemaBehaviors(I18NMixin(LitElement)) {
    * LitElement render callback
    */
   render() {
-    return html` ${!this.popoverMode
-      ? html`
-          <div>
-            <details
-              part="term"
-              class="vocab-term-trigger"
-              ?hidden="${!this.term}"
-            >
-              <summary id="summary" property="oer:name">${this.term}</summary>
-            </details>
-            <simple-modal-template title="${this.term ? this.term : ""}">
-              <div slot="content">${this.renderLabel()}</div>
-              <p slot="content" property="oer:description">
-                ${this.information}
-              </p>
-              ${this.links && this.links.length > 0 && this.links.map
-                ? html` <ul slot="content">
-                    ${this.links.map(
-                      (el) => html`
-                        <li>
-                          <a
-                            href="${el.href}"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            >${el.title}</a
-                          >
-                        </li>
-                      `,
-                    )}
-                  </ul>`
-                : ``}
-            </simple-modal-template>
-          </div>
-        `
-      : html`
-          <details class="vocab-term-trigger">
-            <summary id="summary" property="oer:name">${this.term}</summary>
-            <div part="information">
-              <simple-popover for="summary" position="top" auto>
-                ${this.renderLabel()}
-                <p class="vocab-term-name">${this.term}</p>
-                <p property="oer:description">${this.information}</p>
-                <div part="links">
-                  ${this.links && this.links.length > 0 && this.links.map
-                    ? html`
-                        <ul>
-                          ${this.links.map(
-                            (el) => html`
-                              <li>
-                                <a
-                                  href="${el.href}"
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  >${el.title}</a
-                                >
-                              </li>
-                            `,
-                          )}
-                        </ul>
-                      `
-                    : ``}
-                </div>
-              </simple-popover>
+    return html` ${
+      !this.popoverMode
+        ? html`
+            <div>
+              <details
+                part="term"
+                class="vocab-term-trigger"
+                ?hidden="${!this.term}"
+              >
+                <summary id="summary" property="oer:name">${this.term}</summary>
+              </details>
+              <simple-modal-template title="${this.term ? this.term : ""}">
+                <div slot="content">${this.renderLabel()}</div>
+                <p slot="content" property="oer:description">
+                  ${this.information}
+                </p>
+                ${
+                  this.links && this.links.length > 0 && this.links.map
+                    ? html` <ul slot="content">
+                        ${this.links.map(
+                          (el) => html`
+                            <li>
+                              <a
+                                href="${el.href}"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                >${el.title}</a
+                              >
+                            </li>
+                          `,
+                        )}
+                      </ul>`
+                    : ``
+                }
+              </simple-modal-template>
             </div>
-          </details>
-        `}`;
+          `
+        : html`
+            <details class="vocab-term-trigger">
+              <summary id="summary" property="oer:name">${this.term}</summary>
+              <div part="information">
+                <simple-popover for="summary" position="top" auto>
+                  ${this.renderLabel()}
+                  <p class="vocab-term-name">${this.term}</p>
+                  <p property="oer:description">${this.information}</p>
+                  <div part="links">
+                    ${
+                      this.links && this.links.length > 0 && this.links.map
+                        ? html`
+                            <ul>
+                              ${this.links.map(
+                                (el) => html`
+                                  <li>
+                                    <a
+                                      href="${el.href}"
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      >${el.title}</a
+                                    >
+                                  </li>
+                                `,
+                              )}
+                            </ul>
+                          `
+                        : ``
+                    }
+                  </div>
+                </simple-popover>
+              </div>
+            </details>
+          `
+    }`;
   }
   /**
    * Convention we use

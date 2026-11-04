@@ -221,12 +221,14 @@ class CodeSample extends I18NMixin(LitElement) {
         </button>
       </div>
       <div class="ddd-block-body">
-        ${this._haxstate
-          ? html`<code-editor
-              language="${this.type}"
-              style="--monaco-element-iframe-height:${this.getMinHeight()};"
-            ></code-editor>`
-          : ``}
+        ${
+          this._haxstate
+            ? html`<code-editor
+                language="${this.type}"
+                style="--monaco-element-iframe-height:${this.getMinHeight()};"
+              ></code-editor>`
+            : ``
+        }
         <div class="code-sample-wrapper">
           <div id="theme"></div>
           <div id="demo" class="demo"></div>

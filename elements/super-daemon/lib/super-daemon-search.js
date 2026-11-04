@@ -191,16 +191,20 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
   render() {
     return html`<div class="field merlin-wand-host" part="field">
       ${MERLIN_ICONS.includes(this.icon) ? merlinWand() : ``}
-      ${this.commandContext != "*"
-        ? html`<simple-icon-lite
-            title="${this.getActiveTitle(this.commandContext)}"
-            icon="${this.getActiveIcon(this.commandContext)}"
-            class="user-context-icon"
-          ></simple-icon-lite>`
-        : ``}
-      ${this.programName
-        ? html`<span class="program">${this.programName}</span>`
-        : ``}
+      ${
+        this.commandContext != "*"
+          ? html`<simple-icon-lite
+              title="${this.getActiveTitle(this.commandContext)}"
+              icon="${this.getActiveIcon(this.commandContext)}"
+              class="user-context-icon"
+            ></simple-icon-lite>`
+          : ``
+      }
+      ${
+        this.programName
+          ? html`<span class="program">${this.programName}</span>`
+          : ``
+      }
       <simple-fields-field
         id="inputfilter"
         role="combobox"
@@ -219,18 +223,20 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
         autofocus
         part="filter"
       ></simple-fields-field>
-      ${this.voiceSearch
-        ? html`<simple-icon-button-lite
-            class="voice ${this.listeningForInput ? "listening" : ""}"
-            @click="${this.voiceSearchClick}"
-            icon="${this.listeningForInput
-              ? "hax:loading"
-              : HaxUiAdminIcons.voice}"
-            ?dark="${this.dark}"
-            title="${this.t.voiceSearch || "Voice search"}"
-            label="${this.t.voiceSearch || "Voice search"}"
-          ></simple-icon-button-lite>`
-        : ``}
+      ${
+        this.voiceSearch
+          ? html`<simple-icon-button-lite
+              class="voice ${this.listeningForInput ? "listening" : ""}"
+              @click="${this.voiceSearchClick}"
+              icon="${
+                this.listeningForInput ? "hax:loading" : HaxUiAdminIcons.voice
+              }"
+              ?dark="${this.dark}"
+              title="${this.t.voiceSearch || "Voice search"}"
+              label="${this.t.voiceSearch || "Voice search"}"
+            ></simple-icon-button-lite>`
+          : ``
+      }
     </div>`;
   }
 

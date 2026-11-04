@@ -352,9 +352,11 @@ export class GlossyPortfolioTheme extends DDDSuper(
       <glossy-portfolio-header></glossy-portfolio-header>
 
       <div class="body-wrapper">
-        ${this.isHome
-          ? html`<glossy-portfolio-home></glossy-portfolio-home>`
-          : html``}
+        ${
+          this.isHome
+            ? html`<glossy-portfolio-home></glossy-portfolio-home>`
+            : html``
+        }
         <main class="max-body-width" role="main">
           <article id="contentcontainer" class="grow contentcontainer">
             <glossy-portfolio-breadcrumb></glossy-portfolio-breadcrumb>

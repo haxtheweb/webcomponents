@@ -264,15 +264,17 @@ export class FlashCard extends I18NMixin(SchemaBehaviors(DDD)) {
       </div>
       <div class="ddd-block-body">
         <confetti-container id="confetti">
-          ${!this.imgSource && !this.imgKeyword
-            ? ``
-            : html`
-                <flash-card-image-prompt
-                  img-src="${this.imgSource}"
-                  img-keyword="${this.imgKeyword}"
-                  status="${this.status}"
-                ></flash-card-image-prompt>
-              `}
+          ${
+            !this.imgSource && !this.imgKeyword
+              ? ``
+              : html`
+                  <flash-card-image-prompt
+                    img-src="${this.imgSource}"
+                    img-keyword="${this.imgKeyword}"
+                    status="${this.status}"
+                  ></flash-card-image-prompt>
+                `
+          }
           <flash-card-answer-box
             @flash-card-status-change="${this.statusChanged}"
           >

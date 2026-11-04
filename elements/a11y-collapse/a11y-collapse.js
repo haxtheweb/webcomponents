@@ -174,14 +174,16 @@ class A11yCollapse extends DDD {
   }
   render() {
     return html`
-      ${this.headingButton || this.accordion
-        ? this._makeHeadingButton()
-        : this._makeIconButton()}
+      ${
+        this.headingButton || this.accordion
+          ? this._makeHeadingButton()
+          : this._makeIconButton()
+      }
       <div id="content" aria-hidden="${this.expanded ? "false" : "true"}">
         <div id="content-inner">
-          ${this.expanded
-            ? html`<slot name="content"></slot><slot></slot>`
-            : ``}
+          ${
+            this.expanded ? html`<slot name="content"></slot><slot></slot>` : ``
+          }
         </div>
       </div>
     `;
@@ -471,9 +473,11 @@ class A11yCollapse extends DDD {
       >
         <span id="heading" part="heading-id">
           <span id="text">
-            ${this.heading
-              ? html`<span part="heading">${this.heading}</span>`
-              : ``}<slot name="heading"></slot>
+            ${
+              this.heading
+                ? html`<span part="heading">${this.heading}</span>`
+                : ``
+            }<slot name="heading"></slot>
           </span>
           <simple-icon-lite
             id="expand"
@@ -506,9 +510,9 @@ class A11yCollapse extends DDD {
     return html`
       <div id="heading" part="heading-id">
         <div id="text">
-          ${this.heading
-            ? html`<p part="heading">${this.heading}</p>`
-            : ``}<slot name="heading"></slot>
+          ${
+            this.heading ? html`<p part="heading">${this.heading}</p>` : ``
+          }<slot name="heading"></slot>
         </div>
         <simple-icon-button-lite
           id="expand"

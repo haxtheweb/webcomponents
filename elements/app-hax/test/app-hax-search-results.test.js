@@ -3,9 +3,8 @@ import { fixture, expect, html } from "@open-wc/testing";
 globalThis.appSettings = {};
 
 const { store } = await import("../lib/v2/AppHaxStore.js");
-const { AppHaxSearchResults } = await import(
-  "../lib/v2/app-hax-search-results.js"
-);
+const { AppHaxSearchResults } =
+  await import("../lib/v2/app-hax-search-results.js");
 
 function createSearchResults() {
   const el = new AppHaxSearchResults();

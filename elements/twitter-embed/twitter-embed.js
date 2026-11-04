@@ -191,11 +191,11 @@ class TwitterEmbed extends I18NMixin(LitElement) {
       <div
         @click="${this._clickPrevent}"
         class="twitter-tweet twitter-tweet-rendered"
-        style="display: flex; max-width: ${this
-          .dataWidth}; width: 100%; margin-top: 10px; margin-bottom: 10px; pointer-events:${this
-          ._haxstate
-          ? "none"
-          : "inherit"}"
+        style="display: flex; max-width: ${
+          this.dataWidth
+        }; width: 100%; margin-top: 10px; margin-bottom: 10px; pointer-events:${
+          this._haxstate ? "none" : "inherit"
+        }"
       >
         <iframe
           .sandbox="allow-same-origin allow-scripts ${this.allowPopups}"
@@ -204,13 +204,17 @@ class TwitterEmbed extends I18NMixin(LitElement) {
           loading="lazy"
           allowtransparency="true"
           allow="autoplay; encrypted-media; fullscreen"
-          style="position: static; visibility: visible; width: ${this
-            .dataWidth}; height: 498px; display: block; flex-grow: 1;"
+          style="position: static; visibility: visible; width: ${
+            this.dataWidth
+          }; height: 498px; display: block; flex-grow: 1;"
           title="${this.t.twitterTweet}"
-          src="https://platform.x.com/embed/index.html?dnt=true&amp;frame=false&amp;hideCard=false&amp;hideThread=false&amp;id=${this
-            .tweetId}&amp;lang=${this.lang}&amp;theme=${this
-            .dataTheme}&amp;widgetsVersion=223fc1c4%3A1596143124634&amp;width=${this
-            .dataWidth}"
+          src="https://platform.x.com/embed/index.html?dnt=true&amp;frame=false&amp;hideCard=false&amp;hideThread=false&amp;id=${
+            this.tweetId
+          }&amp;lang=${this.lang}&amp;theme=${
+            this.dataTheme
+          }&amp;widgetsVersion=223fc1c4%3A1596143124634&amp;width=${
+            this.dataWidth
+          }"
           data-tweet-id="${this.tweetId}"
         >
         </iframe>

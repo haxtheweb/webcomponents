@@ -1904,11 +1904,10 @@ class HAXCMSViewsAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
   }
 
   _copyToClipboard(text = "") {
-    /* eslint-disable baseline-js/use-baseline -- writeText works in Chrome, Firefox and Safari; failure is caught */
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard
         .writeText(text)
-        /* eslint-enable baseline-js/use-baseline */
+
         .then(() => {
           if (store && typeof store.toast === "function") {
             store.toast(this.t.copiedToClipboard, 2000);
@@ -2190,11 +2189,13 @@ class HAXCMSViewsAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
     return html`<div class="fr ${stack ? "stack" : ""}">
       <div>
         <label class="lab" for="${id}" id="${id}-label">${label}</label>
-        ${help
-          ? html`<span class="help" id="${id}-help" title="${help}"
-              >${help}</span
-            >`
-          : nothing}
+        ${
+          help
+            ? html`<span class="help" id="${id}-help" title="${help}"
+                >${help}</span
+              >`
+            : nothing
+        }
       </div>
       ${control}
     </div>`;
@@ -2215,8 +2216,9 @@ class HAXCMSViewsAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
           (option) =>
             html`<option
               value="${option.value}"
-              ?selected="${this._safeString(value) ===
-              this._safeString(option.value)}"
+              ?selected="${
+                this._safeString(value) === this._safeString(option.value)
+              }"
             >
               ${option.text}
             </option>`,
@@ -2454,18 +2456,20 @@ class HAXCMSViewsAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
                 this.selectedFields,
                 (value, checked) => this._onFieldToggle(value, checked),
               )}
-              ${includeOptions.length > 0
-                ? this._renderChecklist(
-                    "includes",
-                    {
-                      label: this.t.includeRelatedResources,
-                      help: this.t.relatedHelp,
-                    },
-                    includeOptions,
-                    this.selectedIncludes,
-                    (value, checked) => this._onIncludeToggle(value, checked),
-                  )
-                : nothing}`,
+              ${
+                includeOptions.length > 0
+                  ? this._renderChecklist(
+                      "includes",
+                      {
+                        label: this.t.includeRelatedResources,
+                        help: this.t.relatedHelp,
+                      },
+                      includeOptions,
+                      this.selectedIncludes,
+                      (value, checked) => this._onIncludeToggle(value, checked),
+                    )
+                  : nothing
+              }`,
             )}
             ${this._renderGroup(
               "filter",
@@ -2544,12 +2548,14 @@ class HAXCMSViewsAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
                     (item) =>
                       html`<button
                         type="button"
-                        data-sort-direction="${item.descending
-                          ? "desc"
-                          : "asc"}"
-                        aria-pressed="${this.sortDescending === item.descending
-                          ? "true"
-                          : "false"}"
+                        data-sort-direction="${
+                          item.descending ? "desc" : "asc"
+                        }"
+                        aria-pressed="${
+                          this.sortDescending === item.descending
+                            ? "true"
+                            : "false"
+                        }"
                         ?disabled="${!this.sortField}"
                         @click="${() => this._onSortDirection(item.descending)}"
                       >
@@ -2582,8 +2588,9 @@ class HAXCMSViewsAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
                 class="query-path"
                 aria-labelledby="views-query-label"
                 title="${this.queryUrl}"
-                >${this._displayPath(path) ||
-                this._entityEndpoint(entityConfig)}</code
+                >${
+                  this._displayPath(path) || this._entityEndpoint(entityConfig)
+                }</code
               >
               <button
                 type="button"
@@ -2600,30 +2607,32 @@ class HAXCMSViewsAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
                 >${this.t.copyPath}
               </button>
             </div>
-            ${!this.inShell
-              ? html`<div class="actions">
-                  ${this.selectionActions.map(
-                    (action) =>
-                      html`<button
-                        type="button"
-                        class="hax-ui-btn soon"
-                        data-action="${action.id}"
-                        title="${this.t.comingSoon}"
-                        disabled
-                      >
-                        <simple-icon-lite
-                          icon="${action.icon}"
-                          aria-hidden="true"
-                        ></simple-icon-lite
-                        >${action.label}<span
-                          class="hax-ui-pill"
-                          data-tone="soon"
-                          >${this.t.soon}</span
+            ${
+              !this.inShell
+                ? html`<div class="actions">
+                    ${this.selectionActions.map(
+                      (action) =>
+                        html`<button
+                          type="button"
+                          class="hax-ui-btn soon"
+                          data-action="${action.id}"
+                          title="${this.t.comingSoon}"
+                          disabled
                         >
-                      </button>`,
-                  )}
-                </div>`
-              : nothing}
+                          <simple-icon-lite
+                            icon="${action.icon}"
+                            aria-hidden="true"
+                          ></simple-icon-lite
+                          >${action.label}<span
+                            class="hax-ui-pill"
+                            data-tone="soon"
+                            >${this.t.soon}</span
+                          >
+                        </button>`,
+                    )}
+                  </div>`
+                : nothing
+            }
           </div>
         </section>
         <section class="preview" aria-labelledby="views-preview-title">
@@ -2671,18 +2680,20 @@ class HAXCMSViewsAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
           <div class="pv-stage">
             <div class="pv-surface">
               ${this._renderPreview()}
-              ${this.previewRecords.length > 0 &&
-              this.previewTotal > this.previewRecords.length
-                ? html`<simple-pager
-                    mode="full"
-                    limit="${this.pageLimit}"
-                    offset="${this.pageOffset}"
-                    total="${this.previewTotal}"
-                    count="${this.previewRecords.length}"
-                    label="${this.t.previewPagination}"
-                    @page-changed="${this._onPageChanged}"
-                  ></simple-pager>`
-                : nothing}
+              ${
+                this.previewRecords.length > 0 &&
+                this.previewTotal > this.previewRecords.length
+                  ? html`<simple-pager
+                      mode="full"
+                      limit="${this.pageLimit}"
+                      offset="${this.pageOffset}"
+                      total="${this.previewTotal}"
+                      count="${this.previewRecords.length}"
+                      label="${this.t.previewPagination}"
+                      @page-changed="${this._onPageChanged}"
+                    ></simple-pager>`
+                  : nothing
+              }
             </div>
           </div>
         </section>

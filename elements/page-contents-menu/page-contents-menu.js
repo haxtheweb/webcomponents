@@ -204,26 +204,28 @@ class PageContentsMenu extends SchemaBehaviors(DDD) {
           </simple-tooltip>
           ${!this.mobile ? html` <div class="label">${this.label}</div> ` : ``}
         </div>
-        ${this.mobile
-          ? html`
-              <simple-popover
-                class="dropdown pull-left font-settings js-toolbar-action settings-container"
-                ?hidden="${this.hideSettings}"
-                position="${this.position}"
-                auto
-              >
+        ${
+          this.mobile
+            ? html`
+                <simple-popover
+                  class="dropdown pull-left font-settings js-toolbar-action settings-container"
+                  ?hidden="${this.hideSettings}"
+                  position="${this.position}"
+                  auto
+                >
+                  <ol class="contents">
+                    ${this.items.map((item, index) =>
+                      this.renderItem(item, index),
+                    )}
+                  </ol>
+                </simple-popover>
+              `
+            : html`
                 <ol class="contents">
-                  ${this.items.map((item, index) =>
-                    this.renderItem(item, index),
-                  )}
+                  ${this.items.map((item, index) => this.renderItem(item, index))}
                 </ol>
-              </simple-popover>
-            `
-          : html`
-              <ol class="contents">
-                ${this.items.map((item, index) => this.renderItem(item, index))}
-              </ol>
-            `}
+              `
+        }
       </section>
     `;
   }

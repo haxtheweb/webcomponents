@@ -9,9 +9,9 @@ if (/^h/.test(document.location))
   if ("noModule" in HTMLScriptElement.prototype) {
     if (!globalThis.__appCustomEnv) {
       var s = document.createElement("script");
-      (s.src = "./custom/build/custom.es6.js"),
+      ((s.src = "./custom/build/custom.es6.js"),
         (s.type = "module"),
-        t.parentNode.insertBefore(s, t);
+        t.parentNode.insertBefore(s, t));
     }
   } else
     console.error(
@@ -22,7 +22,7 @@ var o = "./";
 globalThis.__appCDN && (o = globalThis.__appCDN);
 var r = "build/es6/node_modules/@haxtheweb/haxcms-elements/lib/base.css",
   l = document.createElement("link");
-(l.rel = "stylesheet"),
+((l.rel = "stylesheet"),
   (l.href = o + r),
   (l.type = "text/css"),
   (l.onerror = (e) => {
@@ -30,7 +30,7 @@ var r = "build/es6/node_modules/@haxtheweb/haxcms-elements/lib/base.css",
       var t = c;
       if (!globalThis.__appCDNBlockFallback) {
         var s = document.createElement("link");
-        (s.rel = "stylesheet"),
+        ((s.rel = "stylesheet"),
           (s.type = "text/css"),
           (s.onerror = (e) => {
             haxcmsFallbackStylesError(e);
@@ -52,16 +52,16 @@ var r = "build/es6/node_modules/@haxtheweb/haxcms-elements/lib/base.css",
               : ((c = "./"),
                 console.error(
                   "Styles Local delivery failed and all alternative CDNs failed to load. You might be offline, in a secure environment or doing testing intentionally to generate this *shrug*",
-                ));
+                )));
       }
     })();
-  });
+  }));
 var n = document.getElementsByTagName("link")[0];
 if ((n.parentNode.insertBefore(l, n), !globalThis.__appCustomEnv)) {
   var a = document.createElement("link");
-  (a.rel = "stylesheet"),
+  ((a.rel = "stylesheet"),
     (a.href = "./theme/theme.css"),
     (a.type = "text/css"),
-    n.parentNode.insertBefore(a, n);
+    n.parentNode.insertBefore(a, n));
 }
 var c = o;

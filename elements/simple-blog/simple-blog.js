@@ -125,36 +125,38 @@ class SimpleBlog extends I18NMixin(
     return html`
       <main id="main-content" tabindex="-1">
         <a class="skip-link" href="#main-content">${this.t.skipToContent}</a>
-        ${this.selectedPage === 0
-          ? html`
-              <section>
-                <simple-blog-header></simple-blog-header>
-                <simple-blog-listing></simple-blog-listing>
-              </section>
-            `
-          : html`<section>
-              <simple-icon-button
-                id="backbutton"
-                icon="icons:arrow-back"
-                label="${this.t.backToBlog}"
-                @click="${this._goBack}"
-              ></simple-icon-button>
-              <simple-tooltip
-                for="backbutton"
-                position="right"
-                offset="14"
-                animation-delay="0"
-                >${this.t.backToListing}
-              </simple-tooltip>
-              <article>
-                <simple-blog-post ?edit-mode="${this.editMode}"
-                  ><slot></slot
-                ></simple-blog-post>
-              </article>
-              <footer>
-                <simple-blog-footer id="footer"></simple-blog-footer>
-              </footer>
-            </section>`}
+        ${
+          this.selectedPage === 0
+            ? html`
+                <section>
+                  <simple-blog-header></simple-blog-header>
+                  <simple-blog-listing></simple-blog-listing>
+                </section>
+              `
+            : html`<section>
+                <simple-icon-button
+                  id="backbutton"
+                  icon="icons:arrow-back"
+                  label="${this.t.backToBlog}"
+                  @click="${this._goBack}"
+                ></simple-icon-button>
+                <simple-tooltip
+                  for="backbutton"
+                  position="right"
+                  offset="14"
+                  animation-delay="0"
+                  >${this.t.backToListing}
+                </simple-tooltip>
+                <article>
+                  <simple-blog-post ?edit-mode="${this.editMode}"
+                    ><slot></slot
+                  ></simple-blog-post>
+                </article>
+                <footer>
+                  <simple-blog-footer id="footer"></simple-blog-footer>
+                </footer>
+              </section>`
+        }
       </main>
     `;
   }

@@ -286,18 +286,20 @@ class HAXFileActions extends I18NMixin(DDD) {
       <div
         class="acts"
         role="group"
-        aria-label="${this._isFieldMode
-          ? this.t.imageActions
-          : this.t.bulkFileActions}"
+        aria-label="${
+          this._isFieldMode ? this.t.imageActions : this.t.bulkFileActions
+        }"
       >
-        ${this._isFieldMode
-          ? ""
-          : html`<span class="count"
-              >${(this.selectedCount === 1
-                ? this.t.fileSelected
-                : this.t.filesSelected
-              ).replace("{count}", () => this.selectedCount)}</span
-            >`}
+        ${
+          this._isFieldMode
+            ? ""
+            : html`<span class="count"
+                >${(this.selectedCount === 1
+                  ? this.t.fileSelected
+                  : this.t.filesSelected
+                ).replace("{count}", () => this.selectedCount)}</span
+              >`
+        }
         <simple-fields-field
           label="${this.t.action}"
           type="select"

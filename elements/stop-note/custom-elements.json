@@ -149,7 +149,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ moreInformation: \"More Information\", }"
+              "default": "{ moreInformation: \"More Information\", status_stop: \"Stop\", status_warning: \"Warning\", status_success: \"Success\", status_info: \"Note\", }"
             }
           ],
           "attributes": [

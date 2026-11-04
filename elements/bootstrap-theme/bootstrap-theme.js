@@ -48,9 +48,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
         integrations: {
           hax: {
             importer: () =>
-              import(
-                "@haxtheweb/bootstrap-theme/lib/BootstrapStyleGuideAuthoring.js"
-              ),
+              import("@haxtheweb/bootstrap-theme/lib/BootstrapStyleGuideAuthoring.js"),
             exportName: "registerBootstrapStyleGuideAuthoring",
             shouldLoad: (context = {}) =>
               !!context.editMode && context.isAuthenticated !== false,
@@ -660,16 +658,18 @@ class BootstrapTheme extends HAXCMSThemeParts(
           aria-label="${this.t.siteMenu}"
         >
           <div class="site-title" part="site-title">
-            ${this.__siteImage
-              ? html`<img
-                  class="site-img"
-                  src="${this.__siteImage}"
-                  alt="${this.t.siteLogo.replace(
-                    "{title}",
-                    () => this.__siteTitle || "",
-                  )}"
-                />`
-              : ``}
+            ${
+              this.__siteImage
+                ? html`<img
+                    class="site-img"
+                    src="${this.__siteImage}"
+                    alt="${this.t.siteLogo.replace(
+                      "{title}",
+                      () => this.__siteTitle || "",
+                    )}"
+                  />`
+                : ``
+            }
             ${this.__siteTitle ? html`<h4>${this.__siteTitle}</h4>` : ``}
           </div>
           ${this.HAXCMSMobileMenu()}
@@ -711,9 +711,9 @@ class BootstrapTheme extends HAXCMSThemeParts(
                     <site-search
                       hide-input
                       search="${this.searchTerm}"
-                      ?aria-hidden="${this.searchTerm === ""
-                        ? "true"
-                        : "false"}"
+                      ?aria-hidden="${
+                        this.searchTerm === "" ? "true" : "false"
+                      }"
                       style="${this.searchTerm === "" ? "display: none;" : ""}"
                       @search-item-selected=${this.searchItemSelected}
                       role="search"
@@ -751,9 +751,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
    */
   async searchChanged(evt) {
     if (evt.detail.searchText) {
-      await import(
-        "@haxtheweb/haxcms-elements/lib/ui-components/site/site-search.js"
-      );
+      await import("@haxtheweb/haxcms-elements/lib/ui-components/site/site-search.js");
       this.searchTerm = evt.detail.searchText;
     } else {
       this.searchTerm = "";

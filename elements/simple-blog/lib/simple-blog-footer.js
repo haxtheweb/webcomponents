@@ -162,12 +162,11 @@ class SimpleBlogFooter extends I18NMixin(SimpleColors) {
       <div class="background-closer-image-wrap">
         <div
           class="background-closer-image"
-          style="background-image: url(${varExists(
-            this.manifest,
-            "metadata.theme.variables.image",
-          )
-            ? this.manifest.metadata.theme.variables.image
-            : ""})"
+          style="background-image: url(${
+            varExists(this.manifest, "metadata.theme.variables.image")
+              ? this.manifest.metadata.theme.variables.image
+              : ""
+          })"
         ></div>
       </div>
       <div class="inner">
@@ -197,9 +196,11 @@ class SimpleBlogFooter extends I18NMixin(SimpleColors) {
           ${varExists(this.manifest, "title") ? this.manifest.title : ""}
         </h2>
         <p class="blog-description">
-          ${varExists(this.manifest, "description")
-            ? this.manifest.description
-            : ""}
+          ${
+            varExists(this.manifest, "description")
+              ? this.manifest.description
+              : ""
+          }
         </p>
       </div>
     `;

@@ -104,10 +104,9 @@ class SpotifyEmbed extends I18NMixin(LitElement) {
         })}
         <div class="ddd-block-body">
           <iframe
-            src="https://open.spotify.com/embed/${this.type}/${this
-              .playlistid}?utm_source=generator${this.theme
-              ? `&theme=${this.theme}`
-              : ""}"
+            src="https://open.spotify.com/embed/${this.type}/${
+              this.playlistid
+            }?utm_source=generator${this.theme ? `&theme=${this.theme}` : ""}"
             title="${this._embedTitle}"
             height="${this.size == "normal" ? "352" : "152"}"
             style="border-radius:12px"

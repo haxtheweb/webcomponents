@@ -117,32 +117,38 @@ export const PrintBranchMixin = function (SuperClass) {
     }
     PrintBranchButton(position = "auto") {
       return html`
-        ${MicroFrontendRegistry.has("@system/siteToHtml")
-          ? html` <div
-              class="print-branch-btn"
-              part="${this.editMode ? `edit-mode-active` : ``}"
-            >
-              <simple-icon-button-lite
-                part="print-branch-btn"
-                class="btn"
-                icon="${this.__printBranchLoading
-                  ? `hax:loading`
-                  : `icons:print`}"
-                @click="${this.printBranchOfSite}"
-                icon-position="top"
-                label="${this.__printBranchLoading
-                  ? this.t.printingPleaseWait
-                  : this.t.printPage}"
-                id="print-branch-btn"
+        ${
+          MicroFrontendRegistry.has("@system/siteToHtml")
+            ? html` <div
+                class="print-branch-btn"
+                part="${this.editMode ? `edit-mode-active` : ``}"
               >
-              </simple-icon-button-lite>
-              <simple-tooltip for="print-branch-btn" position="${position}">
-                ${this.__printBranchLoading
-                  ? this.t.printingPleaseWait
-                  : this.t.printPage}
-              </simple-tooltip>
-            </div>`
-          : ``}
+                <simple-icon-button-lite
+                  part="print-branch-btn"
+                  class="btn"
+                  icon="${
+                    this.__printBranchLoading ? `hax:loading` : `icons:print`
+                  }"
+                  @click="${this.printBranchOfSite}"
+                  icon-position="top"
+                  label="${
+                    this.__printBranchLoading
+                      ? this.t.printingPleaseWait
+                      : this.t.printPage
+                  }"
+                  id="print-branch-btn"
+                >
+                </simple-icon-button-lite>
+                <simple-tooltip for="print-branch-btn" position="${position}">
+                  ${
+                    this.__printBranchLoading
+                      ? this.t.printingPleaseWait
+                      : this.t.printPage
+                  }
+                </simple-tooltip>
+              </div>`
+            : ``
+        }
       `;
     }
     async printBranchOfSite(_e) {
@@ -199,32 +205,38 @@ export const PrintBranchMixin = function (SuperClass) {
     }
     PrintSiteButton(position = "auto") {
       return html`
-        ${MicroFrontendRegistry.has("@system/siteToHtml")
-          ? html` <div
-              class="print-branch-btn"
-              part="${this.editMode ? `edit-mode-active` : ``}"
-            >
-              <simple-icon-button-lite
-                part="print-branch-btn"
-                class="btn"
-                icon="${this.__printBranchLoading
-                  ? `hax:loading`
-                  : `icons:print`}"
-                @click="${this.printWholeSite}"
-                icon-position="top"
-                label="${this.__printBranchLoading
-                  ? this.t.printingPleaseWait
-                  : this.t.printSite}"
-                id="print-branch-btn"
+        ${
+          MicroFrontendRegistry.has("@system/siteToHtml")
+            ? html` <div
+                class="print-branch-btn"
+                part="${this.editMode ? `edit-mode-active` : ``}"
               >
-              </simple-icon-button-lite>
-              <simple-tooltip for="print-branch-btn" position="${position}">
-                ${this.__printBranchLoading
-                  ? this.t.printingPleaseWait
-                  : this.t.printSite}
-              </simple-tooltip>
-            </div>`
-          : ``}
+                <simple-icon-button-lite
+                  part="print-branch-btn"
+                  class="btn"
+                  icon="${
+                    this.__printBranchLoading ? `hax:loading` : `icons:print`
+                  }"
+                  @click="${this.printWholeSite}"
+                  icon-position="top"
+                  label="${
+                    this.__printBranchLoading
+                      ? this.t.printingPleaseWait
+                      : this.t.printSite
+                  }"
+                  id="print-branch-btn"
+                >
+                </simple-icon-button-lite>
+                <simple-tooltip for="print-branch-btn" position="${position}">
+                  ${
+                    this.__printBranchLoading
+                      ? this.t.printingPleaseWait
+                      : this.t.printSite
+                  }
+                </simple-tooltip>
+              </div>`
+            : ``
+        }
       `;
     }
     async printWholeSite(_e) {

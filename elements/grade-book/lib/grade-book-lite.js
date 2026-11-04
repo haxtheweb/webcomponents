@@ -1090,24 +1090,28 @@ class GradeBookLite extends UIRenderPieces(
   // of which can be reached from on-premises deployments.
   PDFPageButton(position = "auto") {
     return html`
-      ${MicroFrontendRegistry.has("@core/htmlToPdf")
-        ? html` <div class="pdf-page-btn">
-            <simple-icon-button-lite
-              part="pdf-page-btn"
-              class="btn"
-              icon="${this.__pdfLoading ? `hax:loading` : `lrn:pdf`}"
-              id="pdf-page-btn"
-              @click="${this.downloadPDFviaMicro}"
-              icon-position="top"
-            >
-            </simple-icon-button-lite>
-            <simple-tooltip for="pdf-page-btn" position="${position}">
-              ${this.__pdfLoading
-                ? this.t.downloadingPdfPleaseWait
-                : this.t.downloadPdf}
-            </simple-tooltip>
-          </div>`
-        : ``}
+      ${
+        MicroFrontendRegistry.has("@core/htmlToPdf")
+          ? html` <div class="pdf-page-btn">
+              <simple-icon-button-lite
+                part="pdf-page-btn"
+                class="btn"
+                icon="${this.__pdfLoading ? `hax:loading` : `lrn:pdf`}"
+                id="pdf-page-btn"
+                @click="${this.downloadPDFviaMicro}"
+                icon-position="top"
+              >
+              </simple-icon-button-lite>
+              <simple-tooltip for="pdf-page-btn" position="${position}">
+                ${
+                  this.__pdfLoading
+                    ? this.t.downloadingPdfPleaseWait
+                    : this.t.downloadPdf
+                }
+              </simple-tooltip>
+            </div>`
+          : ``
+      }
     `;
   }
   /**
@@ -1196,43 +1200,49 @@ class GradeBookLite extends UIRenderPieces(
             @click="${this.changeAssignment}"
             value="next"
             title="${this.t.nextAssignment}"
-            ?disabled="${(this.database && this.database.assignments
-              ? this.database.assignments.length
-              : 0) -
-              1 ===
-              this.activeAssignment || !this.ready}"
+            ?disabled="${
+              (this.database && this.database.assignments
+                ? this.database.assignments.length
+                : 0) -
+                1 ===
+                this.activeAssignment || !this.ready
+            }"
             icon="arrow-forward"
           >
             <span class="hide-900" value="next">${this.t.next}</span>
           </simple-icon-button-lite>
         </div>
         <div class="group">${this.renderGradeScaleBtn()}</div>
-        ${this.ready && this.source === "filesystem" && this.sourceData
-          ? html`
-              <div class="group">
-                <simple-icon-button-lite
-                  @click="${this.saveToFilesystem}"
-                  title="${this.t.saveGradebook}"
-                  ?disabled="${!this.sourceData}"
-                  icon="save"
-                >
-                  <span class="hide-900">${this.t.saveGradebook}</span>
-                </simple-icon-button-lite>
-              </div>
-            `
-          : nothing}
+        ${
+          this.ready && this.source === "filesystem" && this.sourceData
+            ? html`
+                <div class="group">
+                  <simple-icon-button-lite
+                    @click="${this.saveToFilesystem}"
+                    title="${this.t.saveGradebook}"
+                    ?disabled="${!this.sourceData}"
+                    icon="save"
+                  >
+                    <span class="hide-900">${this.t.saveGradebook}</span>
+                  </simple-icon-button-lite>
+                </div>
+              `
+            : nothing
+        }
       </div>
       <div ?hidden="${this.sourceData}" class="source-selection">
         <label>${this.t.selectGradebookSource}..</label>
         <select id="source" @change="${this.selectSource}">
-          ${this.hasFilePicker
-            ? html`<option
-                value="filesystem"
-                ?selected="${this.source === "filesystem"}"
-              >
-                ${this.t.fileSystem}
-              </option>`
-            : nothing}
+          ${
+            this.hasFilePicker
+              ? html`<option
+                  value="filesystem"
+                  ?selected="${this.source === "filesystem"}"
+                >
+                  ${this.t.fileSystem}
+                </option>`
+              : nothing
+          }
           <option
             value="googledocs"
             ?selected="${this.source === "googledocs"}"
@@ -1250,20 +1260,22 @@ class GradeBookLite extends UIRenderPieces(
         >
           <span class="hide-900">${this.t.loadGradebook}</span>
         </simple-icon-button-lite>
-        ${this.source == "filesystem" && this.prevLocalFileReference
-          ? html`
-              <simple-icon-button-lite
-                @click="${this.loadFromExistingSource}"
-                title="${this.t.loadGradebook}"
-                ?disabled="${this.sourceData}"
-                icon="folder-shared"
-              >
-                <span class="hide-900"
-                  >${this.t.load} ${this.prevLocalFileReference.name}</span
+        ${
+          this.source == "filesystem" && this.prevLocalFileReference
+            ? html`
+                <simple-icon-button-lite
+                  @click="${this.loadFromExistingSource}"
+                  title="${this.t.loadGradebook}"
+                  ?disabled="${this.sourceData}"
+                  icon="folder-shared"
                 >
-              </simple-icon-button-lite>
-            `
-          : nothing}
+                  <span class="hide-900"
+                    >${this.t.load} ${this.prevLocalFileReference.name}</span
+                  >
+                </simple-icon-button-lite>
+              `
+            : nothing
+        }
         <input
           id="sourcedata"
           placeholder="${this.t.sourceData}"
@@ -1277,9 +1289,13 @@ class GradeBookLite extends UIRenderPieces(
           ?hidden="${this.source != "json"}"
         ></textarea>
       </div>
-      ${this.source === "filesystem" && this.loading
-        ? html`<p class="source-selection">${this.t.loadingFilePleaseWait}</p>`
-        : nothing}
+      ${
+        this.source === "filesystem" && this.loading
+          ? html`<p class="source-selection">
+              ${this.t.loadingFilePleaseWait}
+            </p>`
+          : nothing
+      }
       <a11y-tabs
         id="studentassessment"
         full-width
@@ -1294,170 +1310,177 @@ class GradeBookLite extends UIRenderPieces(
           icon="assignment-ind"
           label="${this.t.activeAssessment}"
         >
-          ${this.activeRubric[0]
-            ? html`
-                <grid-plate disable-responsive layout="1-1">
-                  <div slot="col-1" class="tag-group">
-                    <simple-fields-field
-                      id="inputfilter"
-                      @value-changed="${this.inputfilterChanged}"
-                      .value="${this.like}"
-                      label="${this.t.filter}"
-                      placeholder="${this.t.tagSearch}"
-                      type="text"
-                      auto-validate=""
-                      autofocus
-                      part="filter"
-                    ></simple-fields-field>
-                    <simple-icon-button-lite
-                      @click="${this.collapseAll}"
-                      icon="hardware:keyboard-arrow-right"
-                      class="control"
-                      value=""
-                      >${this.t.collapseAll}</simple-icon-button-lite
-                    >
-                    <simple-icon-button-lite
-                      @click="${this.expandAll}"
-                      icon="hardware:keyboard-arrow-down"
-                      class="control"
-                      value=""
-                      >${this.t.expandAll}</simple-icon-button-lite
-                    >
-                    ${this.database.tags.categories.length > 0
-                      ? html`
-                          <a11y-collapse-group
-                            heading-button
-                            id="categoriesgroup"
-                            global-options='{"expanded": true}'
-                          >
-                            ${this.database.tags.categories.map(
-                              (category, i) => html`
-                                <a11y-collapse>
-                                  <div slot="heading">
-                                    <simple-colors
-                                      accent-color="${this.pickColor(i)}"
-                                      ><span></span></simple-colors
-                                    >${category}
-                                  </div>
-                                  <div slot="content">
-                                    ${this.filtered
-                                      .filter((item) => {
-                                        return item.category.includes(category);
-                                      })
-                                      .map(
-                                        (term) =>
-                                          // @todo add support for keyboard based assignment of tag to criteria
-                                          html`<simple-tag
-                                            draggable="true"
-                                            tabindex="0"
-                                            @dragstart="${this.setDragTransfer}"
-                                            accent-color="${this.pickColor(i)}"
-                                            value="${term.term}"
-                                            .data="${term}"
-                                          ></simple-tag>`,
-                                      )}
-                                  </div>
-                                </a11y-collapse>
-                              `,
-                            )}
-                          </a11y-collapse-group>
-                        `
-                      : nothing}
-                  </div>
-                  <div slot="col-2">
-                    <h3>${this.activeRubric[0].name}</h3>
-                    ${this.PDFPageButton()}
-                    ${this.activeRubric.map(
-                      (rubric, _index) => html`
-                        <letter-grade-picker></letter-grade-picker>
-
-                        <editable-table-display
-                          hide-block-header
-                          accent-color="${this.accentColor}"
-                          bordered
-                          column-header
-                          condensed
-                          disable-responsive
-                          scroll
-                          striped
-                        >
-                          <table>
-                            <tbody>
-                              <tr>
-                                ${rubric.qualitative.map(
-                                  (cat) => html` <td>${cat}</td> `,
-                                )}
-                              </tr>
-                              <tr>
-                                ${rubric.qualitative.map(
-                                  (cat) => html`
-                                    <td>
-                                      <simple-fields-tag-list
-                                        style="background-color:transparent;"
-                                        data-criteria="${rubric.criteria}"
-                                        label="${cat}"
-                                      ></simple-fields-tag-list>
-                                    </td>
+          ${
+            this.activeRubric[0]
+              ? html`
+                  <grid-plate disable-responsive layout="1-1">
+                    <div slot="col-1" class="tag-group">
+                      <simple-fields-field
+                        id="inputfilter"
+                        @value-changed="${this.inputfilterChanged}"
+                        .value="${this.like}"
+                        label="${this.t.filter}"
+                        placeholder="${this.t.tagSearch}"
+                        type="text"
+                        auto-validate=""
+                        autofocus
+                        part="filter"
+                      ></simple-fields-field>
+                      <simple-icon-button-lite
+                        @click="${this.collapseAll}"
+                        icon="hardware:keyboard-arrow-right"
+                        class="control"
+                        value=""
+                        >${this.t.collapseAll}</simple-icon-button-lite
+                      >
+                      <simple-icon-button-lite
+                        @click="${this.expandAll}"
+                        icon="hardware:keyboard-arrow-down"
+                        class="control"
+                        value=""
+                        >${this.t.expandAll}</simple-icon-button-lite
+                      >
+                      ${
+                        this.database.tags.categories.length > 0
+                          ? html`
+                              <a11y-collapse-group
+                                heading-button
+                                id="categoriesgroup"
+                                global-options='{"expanded": true}'
+                              >
+                                ${this.database.tags.categories.map(
+                                  (category, i) => html`
+                                    <a11y-collapse>
+                                      <div slot="heading">
+                                        <simple-colors
+                                          accent-color="${this.pickColor(i)}"
+                                          ><span></span></simple-colors
+                                        >${category}
+                                      </div>
+                                      <div slot="content">
+                                        ${this.filtered
+                                          .filter((item) => {
+                                            return item.category.includes(
+                                              category,
+                                            );
+                                          })
+                                          .map(
+                                            (term) =>
+                                              // @todo add support for keyboard based assignment of tag to criteria
+                                              html`<simple-tag
+                                                draggable="true"
+                                                tabindex="0"
+                                                @dragstart="${this.setDragTransfer}"
+                                                accent-color="${this.pickColor(i)}"
+                                                value="${term.term}"
+                                                .data="${term}"
+                                              ></simple-tag>`,
+                                          )}
+                                      </div>
+                                    </a11y-collapse>
                                   `,
                                 )}
-                              </tr>
-                            </tbody>
-                          </table>
-                        </editable-table-display>
-                        <h4>
-                          ${this.t.additionalCriteriaFeedback.replace(
-                            "{criteria}",
-                            () => rubric.criteria,
+                              </a11y-collapse-group>
+                            `
+                          : nothing
+                      }
+                    </div>
+                    <div slot="col-2">
+                      <h3>${this.activeRubric[0].name}</h3>
+                      ${this.PDFPageButton()}
+                      ${this.activeRubric.map(
+                        (rubric, _index) => html`
+                          <letter-grade-picker></letter-grade-picker>
+
+                          <editable-table-display
+                            hide-block-header
+                            accent-color="${this.accentColor}"
+                            bordered
+                            column-header
+                            condensed
+                            disable-responsive
+                            scroll
+                            striped
+                          >
+                            <table>
+                              <tbody>
+                                <tr>
+                                  ${rubric.qualitative.map(
+                                    (cat) => html` <td>${cat}</td> `,
+                                  )}
+                                </tr>
+                                <tr>
+                                  ${rubric.qualitative.map(
+                                    (cat) => html`
+                                      <td>
+                                        <simple-fields-tag-list
+                                          style="background-color:transparent;"
+                                          data-criteria="${rubric.criteria}"
+                                          label="${cat}"
+                                        ></simple-fields-tag-list>
+                                      </td>
+                                    `,
+                                  )}
+                                </tr>
+                              </tbody>
+                            </table>
+                          </editable-table-display>
+                          <h4>
+                            ${this.t.additionalCriteriaFeedback.replace(
+                              "{criteria}",
+                              () => rubric.criteria,
+                            )}
+                          </h4>
+                          <simple-fields-field
+                            type="textarea"
+                            data-rubric-written
+                            data-criteria="${rubric.criteria}"
+                          ></simple-fields-field>
+                        `,
+                      )}
+                      <div class="student-feedback-wrap">
+                        <div class="student-feedback-text">
+                          <h3 class="heading">${this.t.overallFeedback}</h3>
+                          <simple-fields-field
+                            type="textarea"
+                            data-criteria="overall"
+                            data-rubric-written
+                          ></simple-fields-field>
+                        </div>
+                        <div class="student-feedback-score">
+                          <simple-icon-button-lite
+                            icon="${this.scoreLock ? `lock` : `lock-open`}"
+                            @click="${this.toggleLock}"
+                          ></simple-icon-button-lite>
+                          <simple-fields-field
+                            ?disabled="${this.scoreLock}"
+                            type="number"
+                            min="0"
+                            id="totalpts"
+                            maxlength="10"
+                            @value-changed="${this.totalScoreChangedEvent}"
+                          ></simple-fields-field>
+                          ${this.t.outOfPoints.replace(
+                            "{points}",
+                            () =>
+                              this.database.assignments[this.activeAssignment]
+                                .points,
                           )}
-                        </h4>
-                        <simple-fields-field
-                          type="textarea"
-                          data-rubric-written
-                          data-criteria="${rubric.criteria}"
-                        ></simple-fields-field>
-                      `,
-                    )}
-                    <div class="student-feedback-wrap">
-                      <div class="student-feedback-text">
-                        <h3 class="heading">${this.t.overallFeedback}</h3>
-                        <simple-fields-field
-                          type="textarea"
-                          data-criteria="overall"
-                          data-rubric-written
-                        ></simple-fields-field>
-                      </div>
-                      <div class="student-feedback-score">
-                        <simple-icon-button-lite
-                          icon="${this.scoreLock ? `lock` : `lock-open`}"
-                          @click="${this.toggleLock}"
-                        ></simple-icon-button-lite>
-                        <simple-fields-field
-                          ?disabled="${this.scoreLock}"
-                          type="number"
-                          min="0"
-                          id="totalpts"
-                          maxlength="10"
-                          @value-changed="${this.totalScoreChangedEvent}"
-                        ></simple-fields-field>
-                        ${this.t.outOfPoints.replace(
-                          "{points}",
-                          () =>
-                            this.database.assignments[this.activeAssignment]
-                              .points,
-                        )}
-                        <letter-grade
-                          style="margin:-8px 0 0 16px;"
-                          total="${this.database.assignments[
-                            this.activeAssignment
-                          ].points}"
-                          score="${this.totalScore}"
-                        ></letter-grade>
+                          <letter-grade
+                            style="margin:-8px 0 0 16px;"
+                            total="${
+                              this.database.assignments[this.activeAssignment]
+                                .points
+                            }"
+                            score="${this.totalScore}"
+                          ></letter-grade>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </grid-plate>
-              `
-            : nothing}
+                  </grid-plate>
+                `
+              : nothing
+          }
         </a11y-tab>
         <a11y-tab
           id="studentreporttab"
@@ -1465,131 +1488,143 @@ class GradeBookLite extends UIRenderPieces(
           label="${this.t.studentReportView}"
         >
           <div id="studentreport">
-            ${!this.loading &&
-            this.database.assignments &&
-            this.database.assignments[this.activeAssignment]
-              ? html`
-                  <letter-grade
-                    class="student-report-score"
-                    show-scale
-                    total="${this.database.assignments[this.activeAssignment]
-                      .points}"
-                    score="${this.totalScore}"
-                  ></letter-grade>
-                  <h2>${this.t.feedbackReport}</h2>
-                  <div class="student-report-wrap">
-                    <a11y-collapse-group
-                      heading-button
-                      expanded
-                      style="width:80%;"
-                    >
-                      ${this.database.rubrics
-                        .filter((item) => {
-                          return (
-                            item.shortName ==
-                            this.database.assignments[this.activeAssignment]
-                              .rubric
-                          );
-                        })
-                        .map(
-                          (rubric) => html`
-                            <a11y-collapse class="student-feedback-text">
-                              <div slot="heading" class="heading">
-                                <span style="font-size:20px;"
-                                  >${rubric.criteria}</span
-                                >
-                              </div>
-                              <div slot="content">
-                                <div class="student-feedback-score-heading">
-                                  <div>
-                                    ${this.getCriteriaScore(rubric.criteria)} /
-                                    ${Math.round(
-                                      (rubric.percentage / 100) *
-                                        this.database.assignments[
-                                          this.activeAssignment
-                                        ].points,
-                                    )}
-                                  </div>
-                                  <h3>${this.t.criteriaDetails}</h3>
+            ${
+              !this.loading &&
+              this.database.assignments &&
+              this.database.assignments[this.activeAssignment]
+                ? html`
+                    <letter-grade
+                      class="student-report-score"
+                      show-scale
+                      total="${
+                        this.database.assignments[this.activeAssignment].points
+                      }"
+                      score="${this.totalScore}"
+                    ></letter-grade>
+                    <h2>${this.t.feedbackReport}</h2>
+                    <div class="student-report-wrap">
+                      <a11y-collapse-group
+                        heading-button
+                        expanded
+                        style="width:80%;"
+                      >
+                        ${this.database.rubrics
+                          .filter((item) => {
+                            return (
+                              item.shortName ==
+                              this.database.assignments[this.activeAssignment]
+                                .rubric
+                            );
+                          })
+                          .map(
+                            (rubric) => html`
+                              <a11y-collapse class="student-feedback-text">
+                                <div slot="heading" class="heading">
+                                  <span style="font-size:20px;"
+                                    >${rubric.criteria}</span
+                                  >
                                 </div>
-                                <p>${rubric.description}</p>
-                                <h3>${this.t.yourFeedback}</h3>
-                                <ul>
-                                  ${rubric.qualitative.map(
-                                    (cat) => html`
-                                      <h4>${cat}</h4>
-                                      <ul>
-                                        ${this.activeGrading[rubric.criteria]
-                                          ? html`${this.activeGrading[
-                                              rubric.criteria
-                                            ][cat].map(
-                                              (tag) =>
-                                                html` <li>
-                                                  <span>${tag.term}</span
-                                                  >${tag.description
-                                                    ? html` - ${tag.description}`
-                                                    : ``}
-                                                  ${tag.associatedMaterial
-                                                    ? html`
-                                                        <ul>
-                                                          ${tag.associatedMaterial.map(
-                                                            (material) => html`
-                                                              <li>
-                                                                <a
-                                                                  href="${material}"
-                                                                  target="_blank"
-                                                                  rel="noopener noreferrer"
-                                                                  >${material}</a
-                                                                >
-                                                              </li>
-                                                            `,
-                                                          )}
-                                                        </ul>
-                                                      `
-                                                    : ``}
-                                                </li>`,
-                                            )}`
-                                          : ``}
-                                      </ul>
-                                    `,
-                                  )}
-                                </ul>
-                                <h3>
-                                  ${this.t.additionalCriteriaFeedbackHeading}
-                                </h3>
-                                <p>
-                                  ${this.getCriteriaFeedback(rubric.criteria)}
-                                </p>
-                              </div>
-                            </a11y-collapse>
-                          `,
-                        )}
-                      <a11y-collapse class="student-feedback-text">
-                        <div slot="heading" class="heading">
-                          <span style="font-size:20px;"
-                            >${this.t.overallFeedback}</span
-                          >
-                        </div>
-                        <div slot="content">
-                          <p>${this.getCriteriaFeedback("overall")}</p>
-                          <h2>${this.t.yourTotalScore}</h2>
-                          <div class="score-display">
-                            ${this.t.scoreOutOfPoints
-                              .replace("{score}", () => this.totalScore)
-                              .replace(
-                                "{points}",
-                                () =>
-                                  this.database.assignments[
-                                    this.activeAssignment
-                                  ].points,
-                              )}
+                                <div slot="content">
+                                  <div class="student-feedback-score-heading">
+                                    <div>
+                                      ${this.getCriteriaScore(rubric.criteria)}
+                                      /
+                                      ${Math.round(
+                                        (rubric.percentage / 100) *
+                                          this.database.assignments[
+                                            this.activeAssignment
+                                          ].points,
+                                      )}
+                                    </div>
+                                    <h3>${this.t.criteriaDetails}</h3>
+                                  </div>
+                                  <p>${rubric.description}</p>
+                                  <h3>${this.t.yourFeedback}</h3>
+                                  <ul>
+                                    ${rubric.qualitative.map(
+                                      (cat) => html`
+                                        <h4>${cat}</h4>
+                                        <ul>
+                                          ${
+                                            this.activeGrading[rubric.criteria]
+                                              ? html`${this.activeGrading[
+                                                  rubric.criteria
+                                                ][cat].map(
+                                                  (tag) =>
+                                                    html` <li>
+                                                      <span>${tag.term}</span>${
+                                                        tag.description
+                                                          ? html` -
+                                                            ${tag.description}`
+                                                          : ``
+                                                      }
+                                                      ${
+                                                        tag.associatedMaterial
+                                                          ? html`
+                                                              <ul>
+                                                                ${tag.associatedMaterial.map(
+                                                                  (
+                                                                    material,
+                                                                  ) => html`
+                                                                    <li>
+                                                                      <a
+                                                                        href="${material}"
+                                                                        target="_blank"
+                                                                        rel="noopener noreferrer"
+                                                                        >${material}</a
+                                                                      >
+                                                                    </li>
+                                                                  `,
+                                                                )}
+                                                              </ul>
+                                                            `
+                                                          : ``
+                                                      }
+                                                    </li>`,
+                                                )}`
+                                              : ``
+                                          }
+                                        </ul>
+                                      `,
+                                    )}
+                                  </ul>
+                                  <h3>
+                                    ${this.t.additionalCriteriaFeedbackHeading}
+                                  </h3>
+                                  <p>
+                                    ${this.getCriteriaFeedback(rubric.criteria)}
+                                  </p>
+                                </div>
+                              </a11y-collapse>
+                            `,
+                          )}
+                        <a11y-collapse class="student-feedback-text">
+                          <div slot="heading" class="heading">
+                            <span style="font-size:20px;"
+                              >${this.t.overallFeedback}</span
+                            >
                           </div>
-                        </div>
-                      </a11y-collapse>
-                    </a11y-collapse-group>
-                  </div>
-                `
-              : nothing}
+                          <div slot="content">
+                            <p>${this.getCriteriaFeedback("overall")}</p>
+                            <h2>${this.t.yourTotalScore}</h2>
+                            <div class="score-display">
+                              ${this.t.scoreOutOfPoints
+                                .replace("{score}", () => this.totalScore)
+                                .replace(
+                                  "{points}",
+                                  () =>
+                                    this.database.assignments[
+                                      this.activeAssignment
+                                    ].points,
+                                )}
+                            </div>
+                          </div>
+                        </a11y-collapse>
+                      </a11y-collapse-group>
+                    </div>
+                  `
+                : nothing
+            }
           </div>
         </a11y-tab>
       </a11y-tabs>

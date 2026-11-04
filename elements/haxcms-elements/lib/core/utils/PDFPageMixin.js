@@ -45,17 +45,21 @@ export const PDFPageMixin = function (SuperClass) {
             class="btn"
             icon="${this.__pdfLoading ? `hax:loading` : `lrn:pdf`}"
             id="pdf-page-btn"
-            label="${this.__pdfLoading
-              ? this.t.downloadingPdfPleaseWait
-              : this.t.downloadPdf}"
+            label="${
+              this.__pdfLoading
+                ? this.t.downloadingPdfPleaseWait
+                : this.t.downloadPdf
+            }"
             @click="${this.downloadPDFviaMicro}"
             icon-position="top"
           >
           </simple-icon-button-lite>
           <simple-tooltip for="pdf-page-btn" position="${position}">
-            ${this.__pdfLoading
-              ? this.t.downloadingPdfPleaseWait
-              : this.t.downloadPdf}
+            ${
+              this.__pdfLoading
+                ? this.t.downloadingPdfPleaseWait
+                : this.t.downloadPdf
+            }
           </simple-tooltip>
         </div>
       `;

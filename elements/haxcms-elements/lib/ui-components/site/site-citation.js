@@ -234,19 +234,23 @@ export class SiteCitation extends HAXCMSI18NMixin(DDD) {
             ${this.t.copy}
           </button>
         </div>
-        ${c
-          ? html`<p class="citation ${c.style}" part="citation">
-              ${c.segments.map((s) =>
-                s.italic ? html`<i>${s.text}</i>` : s.text,
-              )}
-            </p>`
-          : html`<p class="empty">${this.t.noData}</p>`}
+        ${
+          c
+            ? html`<p class="citation ${c.style}" part="citation">
+                ${c.segments.map((s) =>
+                  s.italic ? html`<i>${s.text}</i>` : s.text,
+                )}
+              </p>`
+            : html`<p class="empty">${this.t.noData}</p>`
+        }
         <div class="status" role="status" aria-live="polite" aria-atomic="true">
-          ${this.copied
-            ? this.t.copied
-            : this.copyFailed
-              ? this.t.copyFailed
-              : nothing}
+          ${
+            this.copied
+              ? this.t.copied
+              : this.copyFailed
+                ? this.t.copyFailed
+                : nothing
+          }
         </div>
       </div>
     `;
@@ -273,10 +277,9 @@ export class SiteCitation extends HAXCMSI18NMixin(DDD) {
     this._clearStatus();
     let ok = false;
     try {
-      /* eslint-disable baseline-js/use-baseline -- writeText works in Chrome, Firefox and Safari; failure is caught */
       if (globalThis.navigator && globalThis.navigator.clipboard) {
         await globalThis.navigator.clipboard.writeText(c.text);
-        /* eslint-enable baseline-js/use-baseline */
+
         ok = true;
       }
     } catch {

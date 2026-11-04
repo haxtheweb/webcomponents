@@ -205,40 +205,42 @@ class ChatControlBar extends I18NMixin(DDD) {
           <button
             id="view-button"
             @click=${this.handleViewButton}
-            aria-label="${this.isFullView
-              ? this.t.exitFullView
-              : this.t.enterFullView}"
+            aria-label="${
+              this.isFullView ? this.t.exitFullView : this.t.enterFullView
+            }"
           >
             <simple-icon-lite
-              icon="${this.isFullView
-                ? "icons:fullscreen-exit"
-                : "icons:fullscreen"}"
+              icon="${
+                this.isFullView ? "icons:fullscreen-exit" : "icons:fullscreen"
+              }"
             ></simple-icon-lite>
           </button>
           <simple-tooltip
             for="view-button"
             position="${this.isFullView ? "left" : "top"}"
-            >${this.isFullView
-              ? this.t.exitFullView
-              : this.t.enterFullView}</simple-tooltip
+            >${
+              this.isFullView ? this.t.exitFullView : this.t.enterFullView
+            }</simple-tooltip
           >
 
-          ${this.isFullView
-            ? html`
-                <button
-                  id="hide-button"
-                  @click=${this.handleHideButton}
-                  aria-label="${this.t.hideInterface}"
-                >
-                  <simple-icon-lite icon="remove"></simple-icon-lite>
-                </button>
-                <simple-tooltip
-                  for="hide-button"
-                  position="${this.isFullView ? "left" : "top"}"
-                  >${this.t.hideInterface}</simple-tooltip
-                >
-              `
-            : ""}
+          ${
+            this.isFullView
+              ? html`
+                  <button
+                    id="hide-button"
+                    @click=${this.handleHideButton}
+                    aria-label="${this.t.hideInterface}"
+                  >
+                    <simple-icon-lite icon="remove"></simple-icon-lite>
+                  </button>
+                  <simple-tooltip
+                    for="hide-button"
+                    position="${this.isFullView ? "left" : "top"}"
+                    >${this.t.hideInterface}</simple-tooltip
+                  >
+                `
+              : ""
+          }
         </div>
       </div>
     `;

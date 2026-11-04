@@ -575,7 +575,6 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
 
   async copyCode() {
     try {
-      // eslint-disable-next-line baseline-js/use-baseline -- writeText works in Chrome, Firefox and Safari; failure falls back to selecting the text
       await globalThis.navigator.clipboard.writeText(this.code);
       this.status = this.t.copied;
     } catch {
@@ -806,10 +805,13 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
     const dirty = this.dirty;
     return html`<div class="ftr">
       <div class="st ${dirty ? "dirty" : ""}" role="status" aria-live="polite">
-        ${dirty
-          ? html`<span class="dot" aria-hidden="true"></span>${this.t
-                .unsavedChanges}`
-          : this.t.noUnsavedChanges}
+        ${
+          dirty
+            ? html`<span class="dot" aria-hidden="true"></span>${
+                  this.t.unsavedChanges
+                }`
+            : this.t.noUnsavedChanges
+        }
       </div>
       <button
         type="button"

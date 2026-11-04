@@ -406,13 +406,13 @@
       "order": 0,
       "src": "media-image.motion.json",
       "file": "lib/media-image.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/media-image.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

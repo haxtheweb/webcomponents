@@ -277,20 +277,24 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
         aria-atomic="true"
         class="sr-only"
       >
-        ${this.whileLoading
-          ? "Searching..."
-          : this.search.length > 0
-            ? `${this.__results.length} ${this.t.results} ${this.t.found.toLowerCase()}`
-            : ""}
+        ${
+          this.whileLoading
+            ? "Searching..."
+            : this.search.length > 0
+              ? `${this.__results.length} ${this.t.results} ${this.t.found.toLowerCase()}`
+              : ""
+        }
       </div>
 
-      ${this.search.length > 0
-        ? html`
-            <h1 class="results-found-text" aria-hidden="true">
-              ${this.t.found} ${this.__results.length} ${this.t.results}.
-            </h1>
-          `
-        : html``}
+      ${
+        this.search.length > 0
+          ? html`
+              <h1 class="results-found-text" aria-hidden="true">
+                ${this.t.found} ${this.__results.length} ${this.t.results}.
+              </h1>
+            `
+          : html``
+      }
 
       <lunr-search id="lunr"></lunr-search>
       <loading-indicator
@@ -299,96 +303,106 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
         aria-label="${this.t.loadingSearchResults}"
       ></loading-indicator>
 
-      ${this.__results.length > 0
-        ? html`
-            <section
-              id="search-results"
-              role="region"
-              aria-label="${this.t.searchResults}"
-              class="search-results"
-            >
-              ${this.__results.map(
-                (item, index) => html`
-                  <a
-                    class="result"
-                    .href="${item.slug ? item.slug : item.location}"
-                    @click="${this.selectionMade}"
-                    tabindex="0"
-                    role="option"
-                    aria-posinset="${index + 1}"
-                    aria-setsize="${this.__results.length}"
-                    aria-describedby="result-${index}-desc"
-                  >
-                    <div class="title">
-                      ${item.icon
-                        ? html`<simple-icon-lite
-                            class="page-title-icon"
-                            icon="${item.icon}"
-                            aria-hidden="true"
-                          ></simple-icon-lite>`
-                        : ``}
-                      ${item.title}<span
-                        ?hidden="${!this.showPath}"
-                        class="link-text"
-                        aria-hidden="true"
-                        >(${item.location})</span
-                      >
-                      ${item.tags && item.tags != ""
-                        ? html`<div
-                            class="tags"
-                            role="list"
-                            aria-label="${this.t.searchResultTags}"
-                          >
-                            ${item.tags
-                              .split(",")
-                              .map(
-                                (tag) =>
-                                  html`<simple-tag
-                                    value="${tag.trim()}"
-                                    role="listitem"
-                                  ></simple-tag>`,
-                              )}
-                          </div>`
-                        : ``}
-                    </div>
-                    <div class="date" ?hidden="${!this.showDate}">
-                      <simple-datetime
-                        format="M jS"
-                        .timestamp="${item.created}"
-                        unix
-                        aria-label="${this.t.createdOn}"
-                        >${item.created}</simple-datetime
-                      >
-                    </div>
-                    ${item.breadcrumb
-                      ? html`<nav
-                          class="breadcrumb"
-                          aria-label="${this.t.pageLocation}"
+      ${
+        this.__results.length > 0
+          ? html`
+              <section
+                id="search-results"
+                role="region"
+                aria-label="${this.t.searchResults}"
+                class="search-results"
+              >
+                ${this.__results.map(
+                  (item, index) => html`
+                    <a
+                      class="result"
+                      .href="${item.slug ? item.slug : item.location}"
+                      @click="${this.selectionMade}"
+                      tabindex="0"
+                      role="option"
+                      aria-posinset="${index + 1}"
+                      aria-setsize="${this.__results.length}"
+                      aria-describedby="result-${index}-desc"
+                    >
+                      <div class="title">
+                        ${
+                          item.icon
+                            ? html`<simple-icon-lite
+                                class="page-title-icon"
+                                icon="${item.icon}"
+                                aria-hidden="true"
+                              ></simple-icon-lite>`
+                            : ``
+                        }
+                        ${item.title}<span
+                          ?hidden="${!this.showPath}"
+                          class="link-text"
+                          aria-hidden="true"
+                          >(${item.location})</span
                         >
-                          ${item.breadcrumb.map(
-                            (crumb, i) =>
-                              html`${i != 0
-                                  ? html`<simple-icon-lite
-                                      icon="icons:chevron-right"
-                                      aria-hidden="true"
-                                    ></simple-icon-lite>`
-                                  : ``}<span>${crumb.title}</span>`,
-                          )}
-                        </nav>`
-                      : ``}
-                    <div id="result-${index}-desc" class="description">
-                      ${item.description}..
-                    </div>
-                  </a>
-                `,
-              )}
-            </section>
-          `
-        : this.search.length > 0 && !this.whileLoading
-          ? html`<div class="no-results" role="status">
-              ${this.t.noResultsFor.replace("{search}", () => this.search)}
-            </div>`
-          : html``}
+                        ${
+                          item.tags && item.tags != ""
+                            ? html`<div
+                                class="tags"
+                                role="list"
+                                aria-label="${this.t.searchResultTags}"
+                              >
+                                ${item.tags
+                                  .split(",")
+                                  .map(
+                                    (tag) =>
+                                      html`<simple-tag
+                                        value="${tag.trim()}"
+                                        role="listitem"
+                                      ></simple-tag>`,
+                                  )}
+                              </div>`
+                            : ``
+                        }
+                      </div>
+                      <div class="date" ?hidden="${!this.showDate}">
+                        <simple-datetime
+                          format="M jS"
+                          .timestamp="${item.created}"
+                          unix
+                          aria-label="${this.t.createdOn}"
+                          >${item.created}</simple-datetime
+                        >
+                      </div>
+                      ${
+                        item.breadcrumb
+                          ? html`<nav
+                              class="breadcrumb"
+                              aria-label="${this.t.pageLocation}"
+                            >
+                              ${item.breadcrumb.map(
+                                (crumb, i) =>
+                                  html`${
+                                      i != 0
+                                        ? html`<simple-icon-lite
+                                            icon="icons:chevron-right"
+                                            aria-hidden="true"
+                                          ></simple-icon-lite>`
+                                        : ``
+                                    }<span>${crumb.title}</span>`,
+                              )}
+                            </nav>`
+                          : ``
+                      }
+                      <div id="result-${index}-desc" class="description">
+                        ${item.description}..
+                      </div>
+                    </a>
+                  `,
+                )}
+              </section>
+            `
+          : this.search.length > 0 && !this.whileLoading
+            ? html`<div class="no-results" role="status">
+                ${this.t.noResultsFor.replace("{search}", () => this.search)}
+              </div>`
+            : html``
+      }
     `;
   }
   selectionMade(e) {

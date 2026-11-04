@@ -158,9 +158,11 @@ class ChatMessage extends DDD {
   render() {
     return html`
       <div class="chat-message-wrapper">
-        ${this.isSentPrompt
-          ? this.renderSentMessage()
-          : this.renderReceivedMessage()}
+        ${
+          this.isSentPrompt
+            ? this.renderSentMessage()
+            : this.renderReceivedMessage()
+        }
       </div>
     `;
   }

@@ -26,6 +26,14 @@
             },
             {
               "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, table: \"Table\", }"
+            },
+            {
+              "kind": "field",
               "name": "title",
               "privacy": "public",
               "type": {
@@ -82,6 +90,10 @@
             }
           ],
           "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            },
             {
               "name": "SchemaBehaviors",
               "package": "@haxtheweb/schema-behaviors/schema-behaviors.js"

@@ -201,21 +201,25 @@ class HAXCMSDevTheme extends HAXCMSLitElementTheme {
         <div>
           icon:
           <simple-icon
-            icon="${this.manifest.metadata &&
-            this.manifest.metadata.theme &&
-            this.manifest.metadata.theme.variables
-              ? this.manifest.metadata.theme.variables.icon
-              : ""}"
+            icon="${
+              this.manifest.metadata &&
+              this.manifest.metadata.theme &&
+              this.manifest.metadata.theme.variables
+                ? this.manifest.metadata.theme.variables.icon
+                : ""
+            }"
           ></simple-icon>
         </div>
         <div>
           image:
           <img
-            src="${this.manifest.metadata &&
-            this.manifest.metadata.theme &&
-            this.manifest.metadata.theme.variables
-              ? this.manifest.metadata.theme.variables.image
-              : ""}"
+            src="${
+              this.manifest.metadata &&
+              this.manifest.metadata.theme &&
+              this.manifest.metadata.theme.variables
+                ? this.manifest.metadata.theme.variables.image
+                : ""
+            }"
             height="200px"
             width="200px"
           />

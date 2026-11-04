@@ -184,18 +184,23 @@ export class FlashCardPromptImg extends DDD {
       <div>
         <div class="overlay">
           <div class="backgroundbox">
-            ${this.imgSrc !== ""
-              ? html`<img src="${this.imgSrc}" alt="" />`
-              : html`<img
-                  src="https://loremflickr.com/320/240/${this
-                    .imgKeyword}?lock=1"
-                  alt=""
-                />`}
+            ${
+              this.imgSrc !== ""
+                ? html`<img src="${this.imgSrc}" alt="" />`
+                : html`<img
+                    src="https://loremflickr.com/320/240/${
+                      this.imgKeyword
+                    }?lock=1"
+                    alt=""
+                  />`
+            }
           </div>
         </div>
-        ${this.answerIcon
-          ? html`<simple-icon-lite icon="${this.icon}"></simple-icon-lite>`
-          : ``}
+        ${
+          this.answerIcon
+            ? html`<simple-icon-lite icon="${this.icon}"></simple-icon-lite>`
+            : ``
+        }
       </div>
     `;
   }

@@ -3927,9 +3927,11 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
           class="rail-item"
           aria-current="${current ? "page" : "false"}"
           aria-disabled="${panel.disabled ? "true" : "false"}"
-          title="${panel.disabled
-            ? `${panel.label}: ${this.t.comingSoon}`
-            : panel.label}"
+          title="${
+            panel.disabled
+              ? `${panel.label}: ${this.t.comingSoon}`
+              : panel.label
+          }"
           @click="${(e) => this._navigatePanel(panel.key, e)}"
         >
           <simple-icon-lite
@@ -3939,22 +3941,24 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
           <span class="label">${panel.label}</span>
           ${this._railBadge(panel)}
         </button>
-        ${anchors.length > 0
-          ? html`<ul class="rail-sub">
-              ${anchors.map(
-                (anchor) =>
-                  html`<li>
-                    <button
-                      type="button"
-                      class="rail-item sub"
-                      @click="${(e) => this._scrollToAnchor(anchor.id, e)}"
-                    >
-                      <span class="label">${anchor.label}</span>
-                    </button>
-                  </li>`,
-              )}
-            </ul>`
-          : nothing}
+        ${
+          anchors.length > 0
+            ? html`<ul class="rail-sub">
+                ${anchors.map(
+                  (anchor) =>
+                    html`<li>
+                      <button
+                        type="button"
+                        class="rail-item sub"
+                        @click="${(e) => this._scrollToAnchor(anchor.id, e)}"
+                      >
+                        <span class="label">${anchor.label}</span>
+                      </button>
+                    </li>`,
+                )}
+              </ul>`
+            : nothing
+        }
       </li>
     `;
   }
@@ -3984,9 +3988,11 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
             @click="${this._toggleRail}"
           >
             <simple-icon-lite
-              icon="${this._railCollapsed
-                ? HaxUiAdminIcons.railExpand
-                : HaxUiAdminIcons.railCollapse}"
+              icon="${
+                this._railCollapsed
+                  ? HaxUiAdminIcons.railExpand
+                  : HaxUiAdminIcons.railCollapse
+              }"
               aria-hidden="true"
             ></simple-icon-lite>
             <span class="label"
@@ -4030,15 +4036,19 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
         </span>
         <span class="title">${row.title}</span>
         <span class="value">${this._renderStatusValue(row)}</span>
-        ${row.description || (Array.isArray(row.links) && row.links.length)
-          ? html`<span class="desc"
-              >${row.description
-                ? html`<span
-                    >${this._renderStatusDescription(row.description)}</span
-                  >`
-                : nothing}${this._renderStatusLinks(row.links)}</span
-            >`
-          : nothing}
+        ${
+          row.description || (Array.isArray(row.links) && row.links.length)
+            ? html`<span class="desc"
+                >${
+                  row.description
+                    ? html`<span
+                        >${this._renderStatusDescription(row.description)}</span
+                      >`
+                    : nothing
+                }${this._renderStatusLinks(row.links)}</span
+              >`
+            : nothing
+        }
       </li>
     `;
   }
@@ -4051,14 +4061,18 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
     const counts = this._statusCounts();
     const sections = this._statusSections();
     return html`
-      ${this.statusLoading && !this.__statusLoaded
-        ? html`<p class="hax-ui-note">${this.t.loadingStatusReport}</p>`
-        : nothing}
-      ${this.statusError
-        ? html`<p class="hax-ui-message" data-tone="danger">
-            ${this.statusError}
-          </p>`
-        : nothing}
+      ${
+        this.statusLoading && !this.__statusLoaded
+          ? html`<p class="hax-ui-note">${this.t.loadingStatusReport}</p>`
+          : nothing
+      }
+      ${
+        this.statusError
+          ? html`<p class="hax-ui-message" data-tone="danger">
+              ${this.statusError}
+            </p>`
+          : nothing
+      }
       <div class="facts">
         <div class="fact">
           <span class="k">${this.t.runtime}</span>
@@ -4078,33 +4092,39 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
           <span class="k">${this.t.latestRelease}</span>
           <span class="v"
             >${latest}
-            ${known
-              ? html`<span
-                  class="hax-ui-pill tone"
-                  data-tone="${behind ? "warning" : "ok"}"
-                  >${behind ? this.t.updateAvailable : this.t.upToDate}</span
-                >`
-              : nothing}</span
+            ${
+              known
+                ? html`<span
+                    class="hax-ui-pill tone"
+                    data-tone="${behind ? "warning" : "ok"}"
+                    >${behind ? this.t.updateAvailable : this.t.upToDate}</span
+                  >`
+                : nothing
+            }</span
           >
         </div>
       </div>
       <div class="tally">
-        ${counts.error > 0
-          ? html`<span class="hax-ui-pill tone" data-tone="error"
-              >${this.t.errorsCount.replace(
-                "{count}",
-                () => counts.error,
-              )}</span
-            >`
-          : nothing}
-        ${counts.warning > 0
-          ? html`<span class="hax-ui-pill tone" data-tone="warning"
-              >${this.t.warningsCount.replace(
-                "{count}",
-                () => counts.warning,
-              )}</span
-            >`
-          : nothing}
+        ${
+          counts.error > 0
+            ? html`<span class="hax-ui-pill tone" data-tone="error"
+                >${this.t.errorsCount.replace(
+                  "{count}",
+                  () => counts.error,
+                )}</span
+              >`
+            : nothing
+        }
+        ${
+          counts.warning > 0
+            ? html`<span class="hax-ui-pill tone" data-tone="warning"
+                >${this.t.warningsCount.replace(
+                  "{count}",
+                  () => counts.warning,
+                )}</span
+              >`
+            : nothing
+        }
         <span class="hax-ui-pill tone" data-tone="ok"
           >${this.t.okCount.replace("{count}", () => counts.ok)}</span
         >
@@ -4157,9 +4177,9 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
             (view) => html`
               <button
                 type="button"
-                aria-pressed="${(this._filterView || "all") === view.id
-                  ? "true"
-                  : "false"}"
+                aria-pressed="${
+                  (this._filterView || "all") === view.id ? "true" : "false"
+                }"
                 @click="${() => this._setFilterView(view.id)}"
               >
                 ${view.label}<span class="n">${view.count}</span>
@@ -4185,58 +4205,68 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
       this._canMutateSkeletonOption(option),
     );
     return html`
-      ${this.loadingSkeletons
-        ? html`<p class="hax-ui-note">${this.t.loadingSkeletonOptions}</p>`
-        : nothing}
+      ${
+        this.loadingSkeletons
+          ? html`<p class="hax-ui-note">${this.t.loadingSkeletonOptions}</p>`
+          : nothing
+      }
       ${this._renderListTools("skeletons", options, this.t.filterSkeletons)}
       <div class="drop">
-        ${this._hasSchemaFileOperationEndpoint()
-          ? html`
-              <p>${this.t.dropSkeletonHelp}</p>
-              <hax-upload-field
-                id="skeleton-upload-field"
-                hide-source-selector
-                hide-input
-                no-camera
-                no-voice-record
-                no-screen-record
-              ></hax-upload-field>
-            `
-          : html`<p>${this.t.uploadEndpointUnavailable}</p>`}
+        ${
+          this._hasSchemaFileOperationEndpoint()
+            ? html`
+                <p>${this.t.dropSkeletonHelp}</p>
+                <hax-upload-field
+                  id="skeleton-upload-field"
+                  hide-source-selector
+                  hide-input
+                  no-camera
+                  no-voice-record
+                  no-screen-record
+                ></hax-upload-field>
+              `
+            : html`<p>${this.t.uploadEndpointUnavailable}</p>`
+        }
       </div>
-      ${options.length === 0 && !this.loadingSkeletons
-        ? html`<p class="hax-ui-empty">${this.t.noSkeletonOptions}</p>`
-        : visible.length === 0
-          ? html`<p class="hax-ui-empty">${this.t.noMatches}</p>`
-          : html`
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th class="check-col" scope="col">${this.t.on}</th>
-                    <th scope="col">${this.t.skeleton}</th>
-                    <th scope="col" class="hide-narrow">
-                      ${this.t.machineName}
-                    </th>
-                    <th scope="col" class="hide-narrow">${this.t.category}</th>
-                    <th scope="col">${this.t.source}</th>
-                    ${showActions
-                      ? html`<th scope="col" class="actions-col">
-                          <span class="sr-only">${this.t.actions}</span>
-                        </th>`
-                      : nothing}
-                  </tr>
-                </thead>
-                <tbody>
-                  ${visible.map((option) =>
-                    this._renderSkeletonOptionRow(
-                      option,
-                      options.indexOf(option),
-                      showActions,
-                    ),
-                  )}
-                </tbody>
-              </table>
-            `}
+      ${
+        options.length === 0 && !this.loadingSkeletons
+          ? html`<p class="hax-ui-empty">${this.t.noSkeletonOptions}</p>`
+          : visible.length === 0
+            ? html`<p class="hax-ui-empty">${this.t.noMatches}</p>`
+            : html`
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th class="check-col" scope="col">${this.t.on}</th>
+                      <th scope="col">${this.t.skeleton}</th>
+                      <th scope="col" class="hide-narrow">
+                        ${this.t.machineName}
+                      </th>
+                      <th scope="col" class="hide-narrow">
+                        ${this.t.category}
+                      </th>
+                      <th scope="col">${this.t.source}</th>
+                      ${
+                        showActions
+                          ? html`<th scope="col" class="actions-col">
+                              <span class="sr-only">${this.t.actions}</span>
+                            </th>`
+                          : nothing
+                      }
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${visible.map((option) =>
+                      this._renderSkeletonOptionRow(
+                        option,
+                        options.indexOf(option),
+                        showActions,
+                      ),
+                    )}
+                  </tbody>
+                </table>
+              `
+      }
     `;
   }
 
@@ -4262,81 +4292,93 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
         <td>
           <label class="option-name" for="${inputId}"
             >${option.label}
-            ${changed
-              ? html`<span class="hax-ui-pill tone" data-tone="accent"
-                  >${this.t.changed}</span
-                >`
-              : nothing}</label
+            ${
+              changed
+                ? html`<span class="hax-ui-pill tone" data-tone="accent"
+                    >${this.t.changed}</span
+                  >`
+                : nothing
+            }</label
           >
-          ${option.description
-            ? html`<p class="option-desc">${option.description}</p>`
-            : nothing}
+          ${
+            option.description
+              ? html`<p class="option-desc">${option.description}</p>`
+              : nothing
+          }
         </td>
         <td class="mono hide-narrow">${option.machineName}</td>
         <td class="hide-narrow">
-          ${categories.length > 0
-            ? categories.map(
-                (category) =>
-                  html`<span class="hax-ui-pill tone">${category}</span> `,
-              )
-            : html`<span class="option-desc">—</span>`}
+          ${
+            categories.length > 0
+              ? categories.map(
+                  (category) =>
+                    html`<span class="hax-ui-pill tone">${category}</span> `,
+                )
+              : html`<span class="option-desc">—</span>`
+          }
         </td>
         <td>
           <span
             class="hax-ui-pill tone"
-            data-tone="${this._isUserSkeletonOption(option)
-              ? "accent"
-              : "outline"}"
-            >${this._isUserSkeletonOption(option)
-              ? this.t.uploaded
-              : this.t.core}</span
+            data-tone="${
+              this._isUserSkeletonOption(option) ? "accent" : "outline"
+            }"
+            >${
+              this._isUserSkeletonOption(option) ? this.t.uploaded : this.t.core
+            }</span
           >
         </td>
-        ${showActions
-          ? html`<td class="actions-col">
-              <span class="row-actions">
-                ${canRename
-                  ? html`<button
-                      type="button"
-                      class="hax-ui-icon-btn"
-                      aria-label="${this.t.renameSkeletonNamed.replace(
-                        "{machineName}",
-                        () => option.machineName,
-                      )}"
-                      title="${this.t.renameSkeleton}"
-                      ?disabled="${actionDisabled}"
-                      @click="${(e) => this._renameSkeletonOption(option, e)}"
-                    >
-                      <simple-icon-lite
-                        icon="${HaxUiAdminIcons.edit}"
-                        aria-hidden="true"
-                      ></simple-icon-lite>
-                    </button>`
-                  : nothing}
-                ${canDelete
-                  ? html`<button
-                      type="button"
-                      class="hax-ui-icon-btn danger"
-                      aria-label="${this.t.deleteSkeletonNamed.replace(
-                        "{machineName}",
-                        () => option.machineName,
-                      )}"
-                      title="${this.t.deleteSkeletonNamed.replace(
-                        "{machineName}",
-                        () => option.machineName,
-                      )}"
-                      ?disabled="${actionDisabled}"
-                      @click="${(e) => this._deleteSkeletonOption(option, e)}"
-                    >
-                      <simple-icon-lite
-                        icon="${HaxUiAdminIcons.delete}"
-                        aria-hidden="true"
-                      ></simple-icon-lite>
-                    </button>`
-                  : nothing}
-              </span>
-            </td>`
-          : nothing}
+        ${
+          showActions
+            ? html`<td class="actions-col">
+                <span class="row-actions">
+                  ${
+                    canRename
+                      ? html`<button
+                          type="button"
+                          class="hax-ui-icon-btn"
+                          aria-label="${this.t.renameSkeletonNamed.replace(
+                            "{machineName}",
+                            () => option.machineName,
+                          )}"
+                          title="${this.t.renameSkeleton}"
+                          ?disabled="${actionDisabled}"
+                          @click="${(e) => this._renameSkeletonOption(option, e)}"
+                        >
+                          <simple-icon-lite
+                            icon="${HaxUiAdminIcons.edit}"
+                            aria-hidden="true"
+                          ></simple-icon-lite>
+                        </button>`
+                      : nothing
+                  }
+                  ${
+                    canDelete
+                      ? html`<button
+                          type="button"
+                          class="hax-ui-icon-btn danger"
+                          aria-label="${this.t.deleteSkeletonNamed.replace(
+                            "{machineName}",
+                            () => option.machineName,
+                          )}"
+                          title="${this.t.deleteSkeletonNamed.replace(
+                            "{machineName}",
+                            () => option.machineName,
+                          )}"
+                          ?disabled="${actionDisabled}"
+                          @click="${(e) => this._deleteSkeletonOption(option, e)}"
+                        >
+                          <simple-icon-lite
+                            icon="${HaxUiAdminIcons.delete}"
+                            aria-hidden="true"
+                          ></simple-icon-lite>
+                        </button>`
+                      : nothing
+                  }
+                </span>
+              </td>`
+            : nothing
+        }
       </tr>
     `;
   }
@@ -4358,19 +4400,23 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
     const options = Array.isArray(this.themeOptions) ? this.themeOptions : [];
     const visible = this._filteredOptions("themes", options);
     return html`
-      ${this.loadingThemes
-        ? html`<p class="hax-ui-note">${this.t.loadingThemeOptions}</p>`
-        : nothing}
+      ${
+        this.loadingThemes
+          ? html`<p class="hax-ui-note">${this.t.loadingThemeOptions}</p>`
+          : nothing
+      }
       ${this._renderListTools("themes", options, this.t.filterThemes)}
-      ${options.length === 0 && !this.loadingThemes
-        ? html`<p class="hax-ui-empty">${this.t.noThemeOptions}</p>`
-        : visible.length === 0
-          ? html`<p class="hax-ui-empty">${this.t.noMatches}</p>`
-          : html`<div class="cards">
-              ${visible.map((option) =>
-                this._renderThemeOptionRow(option, options.indexOf(option)),
-              )}
-            </div>`}
+      ${
+        options.length === 0 && !this.loadingThemes
+          ? html`<p class="hax-ui-empty">${this.t.noThemeOptions}</p>`
+          : visible.length === 0
+            ? html`<p class="hax-ui-empty">${this.t.noMatches}</p>`
+            : html`<div class="cards">
+                ${visible.map((option) =>
+                  this._renderThemeOptionRow(option, options.indexOf(option)),
+                )}
+              </div>`
+      }
     `;
   }
 
@@ -4382,17 +4428,19 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
     return html`
       <div class="card ${checked ? "" : "off"} ${changed ? "changed" : ""}">
         <div class="shot">
-          ${option.screenshot
-            ? html`<img
-                src="${this._themeScreenshotLarge(option.screenshot)}"
-                alt="${this.t.themePreviewAlt.replace(
-                  "{theme}",
-                  () => option.label,
-                )}"
-                loading="lazy"
-                @error="${(e) => this._onThemeImageError(option, e)}"
-              />`
-            : html`<span>${this.t.noPreview}</span>`}
+          ${
+            option.screenshot
+              ? html`<img
+                  src="${this._themeScreenshotLarge(option.screenshot)}"
+                  alt="${this.t.themePreviewAlt.replace(
+                    "{theme}",
+                    () => option.label,
+                  )}"
+                  loading="lazy"
+                  @error="${(e) => this._onThemeImageError(option, e)}"
+                />`
+              : html`<span>${this.t.noPreview}</span>`
+          }
         </div>
         <div class="card-cap">
           <input
@@ -4406,17 +4454,20 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
               >${option.label}</label
             >
             <span class="meta"
-              ><span class="mono">${option.machineName}</span
-              >${categories.length > 0
-                ? html` · ${categories.join(", ")}`
-                : nothing}</span
+              ><span class="mono">${option.machineName}</span>${
+                categories.length > 0
+                  ? html` · ${categories.join(", ")}`
+                  : nothing
+              }</span
             >
           </span>
-          ${changed
-            ? html`<span class="hax-ui-pill tone" data-tone="accent"
-                >${this.t.changed}</span
-              >`
-            : nothing}
+          ${
+            changed
+              ? html`<span class="hax-ui-pill tone" data-tone="accent"
+                  >${this.t.changed}</span
+                >`
+              : nothing
+          }
         </div>
       </div>
     `;
@@ -4486,25 +4537,27 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
             />
             <span class="unit" aria-hidden="true">MB</span>
           </span>
-          ${overServer
-            ? html`<p
-                class="hax-ui-message"
-                data-tone="warning"
-                id="media-upload-note"
-                role="note"
-              >
-                <simple-icon-lite
-                  icon="${HaxUiAdminIcons.warning}"
-                  aria-hidden="true"
-                ></simple-icon-lite>
-                <span
-                  >${this.t.serverUploadLimitNote.replace(
-                    "{limit}",
-                    () => serverLimit.label,
-                  )}</span
+          ${
+            overServer
+              ? html`<p
+                  class="hax-ui-message"
+                  data-tone="warning"
+                  id="media-upload-note"
+                  role="note"
                 >
-              </p>`
-            : nothing}
+                  <simple-icon-lite
+                    icon="${HaxUiAdminIcons.warning}"
+                    aria-hidden="true"
+                  ></simple-icon-lite>
+                  <span
+                    >${this.t.serverUploadLimitNote.replace(
+                      "{limit}",
+                      () => serverLimit.label,
+                    )}</span
+                  >
+                </p>`
+              : nothing
+          }
         </div>
       </div>
       <div class="hax-ui-field-row">
@@ -4626,75 +4679,89 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
   _renderIntegrationsPanel() {
     const fields = this._integrationFields();
     return html`
-      ${this.apiKeysLoading
-        ? html`<p class="hax-ui-note">${this.t.loadingSavedApiKeys}</p>`
-        : nothing}
-      ${this.apiKeysError
-        ? html`<p class="hax-ui-message" data-tone="danger">
-            ${this.apiKeysError}
-          </p>`
-        : nothing}
-      ${fields.length === 0
-        ? html`<p class="hax-ui-empty">${this.t.noIntegrationProviders}</p>`
-        : fields.map(
-            (field) => html`
-              <div class="hax-ui-field-row">
-                <div class="hax-ui-field-label">
-                  <label for="${this._integrationInputId(field.property)}"
-                    >${field.providerLabel ||
-                    field.title ||
-                    field.property}</label
-                  >
-                  ${field.helpUrl
-                    ? html`<p>
-                        <a
-                          class="link"
-                          href="${field.helpUrl}"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          >${this.t.getApiKey}</a
-                        >
-                      </p>`
-                    : nothing}
+      ${
+        this.apiKeysLoading
+          ? html`<p class="hax-ui-note">${this.t.loadingSavedApiKeys}</p>`
+          : nothing
+      }
+      ${
+        this.apiKeysError
+          ? html`<p class="hax-ui-message" data-tone="danger">
+              ${this.apiKeysError}
+            </p>`
+          : nothing
+      }
+      ${
+        fields.length === 0
+          ? html`<p class="hax-ui-empty">${this.t.noIntegrationProviders}</p>`
+          : fields.map(
+              (field) => html`
+                <div class="hax-ui-field-row">
+                  <div class="hax-ui-field-label">
+                    <label for="${this._integrationInputId(field.property)}"
+                      >${
+                        field.providerLabel || field.title || field.property
+                      }</label
+                    >
+                    ${
+                      field.helpUrl
+                        ? html`<p>
+                            <a
+                              class="link"
+                              href="${field.helpUrl}"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              >${this.t.getApiKey}</a
+                            >
+                          </p>`
+                        : nothing
+                    }
+                  </div>
+                  <div class="hax-ui-field-control inline">
+                    <input
+                      id="${this._integrationInputId(field.property)}"
+                      class="hax-ui-input mono"
+                      type="${
+                        this._isApiKeyVisible(field.property)
+                          ? "text"
+                          : "password"
+                      }"
+                      .value="${this._integrationFieldValue(field.property)}"
+                      autocomplete="off"
+                      autocorrect="off"
+                      autocapitalize="none"
+                      spellcheck="false"
+                      @input="${(e) =>
+                        this._onApiKeyInputChanged(field.property, e)}"
+                    />
+                    <button
+                      type="button"
+                      class="hax-ui-icon-btn"
+                      aria-label="${
+                        this._isApiKeyVisible(field.property)
+                          ? this.t.hideApiKeyValue
+                          : this.t.showApiKeyValue
+                      }"
+                      aria-pressed="${
+                        this._isApiKeyVisible(field.property) ? "true" : "false"
+                      }"
+                      @click="${(e) =>
+                        this._toggleApiKeyVisibility(field.property, e)}"
+                    >
+                      <simple-icon-lite
+                        icon="${
+                          this._isApiKeyVisible(field.property)
+                            ? HaxUiAdminIcons.hide
+                            : HaxUiAdminIcons.preview
+                        }"
+                        aria-hidden="true"
+                      ></simple-icon-lite>
+                    </button>
+                  </div>
                 </div>
-                <div class="hax-ui-field-control inline">
-                  <input
-                    id="${this._integrationInputId(field.property)}"
-                    class="hax-ui-input mono"
-                    type="${this._isApiKeyVisible(field.property)
-                      ? "text"
-                      : "password"}"
-                    .value="${this._integrationFieldValue(field.property)}"
-                    autocomplete="off"
-                    autocorrect="off"
-                    autocapitalize="none"
-                    spellcheck="false"
-                    @input="${(e) =>
-                      this._onApiKeyInputChanged(field.property, e)}"
-                  />
-                  <button
-                    type="button"
-                    class="hax-ui-icon-btn"
-                    aria-label="${this._isApiKeyVisible(field.property)
-                      ? this.t.hideApiKeyValue
-                      : this.t.showApiKeyValue}"
-                    aria-pressed="${this._isApiKeyVisible(field.property)
-                      ? "true"
-                      : "false"}"
-                    @click="${(e) =>
-                      this._toggleApiKeyVisibility(field.property, e)}"
-                  >
-                    <simple-icon-lite
-                      icon="${this._isApiKeyVisible(field.property)
-                        ? HaxUiAdminIcons.hide
-                        : HaxUiAdminIcons.preview}"
-                      aria-hidden="true"
-                    ></simple-icon-lite>
-                  </button>
-                </div>
-              </div>
-            `,
-          )}
+              `,
+            )
+      }
     `;
   }
 
@@ -4743,9 +4810,11 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
       return html`<div class="st" role="status">
         <span class="dot" aria-hidden="true"></span>
         <b
-          >${changes.length === 1
-            ? this.t.unsavedChange
-            : this.t.unsavedChanges.replace("{count}", () => changes.length)}</b
+          >${
+            changes.length === 1
+              ? this.t.unsavedChange
+              : this.t.unsavedChanges.replace("{count}", () => changes.length)
+          }</b
         >
         <span class="list">${changes.join(" · ")}</span>
       </div>`;
@@ -4850,9 +4919,9 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
       this.statusMessage && !this._showPanelSaveAction(panel);
     return html`
       <div
-        class="section ${this._railCollapsed || this._narrow
-          ? "rail-collapsed"
-          : ""} ${this._narrow ? "narrow" : ""}"
+        class="section ${
+          this._railCollapsed || this._narrow ? "rail-collapsed" : ""
+        } ${this._narrow ? "narrow" : ""}"
       >
         ${this._renderRail()}
         <section class="main" aria-labelledby="panel-title">
@@ -4864,11 +4933,13 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
             ${this._renderHeaderActions(panel)}
           </header>
           <div class="body">
-            ${showInlineMessage
-              ? html`<p class="hax-ui-note" role="status">
-                  ${this.statusMessage}
-                </p>`
-              : nothing}
+            ${
+              showInlineMessage
+                ? html`<p class="hax-ui-note" role="status">
+                    ${this.statusMessage}
+                  </p>`
+                : nothing
+            }
             ${this._renderActivePanelContent(panel)}
           </div>
           ${this._renderFooter(panel)}

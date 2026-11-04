@@ -344,72 +344,76 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
           <simple-tooltip for="sm-stop" position="top"
             >${this.t.stop}</simple-tooltip
           >
-          ${this.showDisplayOptions
-            ? html`<div class="at-separator"></div>
-                <simple-icon-button-lite
-                  class="ddd-block-action"
-                  id="sm-zoom-out"
-                  icon="icons:zoom-out"
-                  label="${this.t.zoomOut}"
-                  @click="${this._zoomOut}"
-                ></simple-icon-button-lite>
-                <simple-tooltip for="sm-zoom-out" position="top"
-                  >${this.t.zoomOut}</simple-tooltip
-                >
-                <simple-icon-button-lite
-                  class="ddd-block-action"
-                  id="sm-zoom-in"
-                  icon="icons:zoom-in"
-                  label="${this.t.zoomIn}"
-                  @click="${this._zoomIn}"
-                ></simple-icon-button-lite>
-                <simple-tooltip for="sm-zoom-in" position="top"
-                  >${this.t.zoomIn}</simple-tooltip
-                >
-                <simple-icon-button-lite
-                  class="ddd-block-action"
-                  id="sm-stretch"
-                  icon="icons:aspect-ratio"
-                  label="${this.t.stretch}"
-                  @click="${this._toggleStretch}"
-                ></simple-icon-button-lite>
-                <simple-tooltip for="sm-stretch" position="top"
-                  >${this.t.stretch}</simple-tooltip
-                >
-                <simple-icon-button-lite
-                  class="ddd-block-action"
-                  id="sm-layout"
-                  icon="icons:view-module"
-                  label="${this.t.layout}"
-                  @click="${this._toggleLayout}"
-                ></simple-icon-button-lite>
-                <simple-tooltip for="sm-layout" position="top"
-                  >${this.t.layout}</simple-tooltip
-                >`
-            : ``}
-          ${this.showExport
-            ? html`<div class="at-separator"></div>
-                <simple-icon-button-lite
-                  class="ddd-block-action"
-                  id="sm-download"
-                  icon="icons:file-download"
-                  label="${this.t.downloadMidi}"
-                  @click="${this._downloadMidi}"
-                ></simple-icon-button-lite>
-                <simple-tooltip for="sm-download" position="top"
-                  >${this.t.downloadMidi}</simple-tooltip
-                >
-                <simple-icon-button-lite
-                  class="ddd-block-action"
-                  id="sm-print"
-                  icon="icons:print"
-                  label="${this.t.print}"
-                  @click="${this._print}"
-                ></simple-icon-button-lite>
-                <simple-tooltip for="sm-print" position="top"
-                  >${this.t.print}</simple-tooltip
-                >`
-            : ``}
+          ${
+            this.showDisplayOptions
+              ? html`<div class="at-separator"></div>
+                  <simple-icon-button-lite
+                    class="ddd-block-action"
+                    id="sm-zoom-out"
+                    icon="icons:zoom-out"
+                    label="${this.t.zoomOut}"
+                    @click="${this._zoomOut}"
+                  ></simple-icon-button-lite>
+                  <simple-tooltip for="sm-zoom-out" position="top"
+                    >${this.t.zoomOut}</simple-tooltip
+                  >
+                  <simple-icon-button-lite
+                    class="ddd-block-action"
+                    id="sm-zoom-in"
+                    icon="icons:zoom-in"
+                    label="${this.t.zoomIn}"
+                    @click="${this._zoomIn}"
+                  ></simple-icon-button-lite>
+                  <simple-tooltip for="sm-zoom-in" position="top"
+                    >${this.t.zoomIn}</simple-tooltip
+                  >
+                  <simple-icon-button-lite
+                    class="ddd-block-action"
+                    id="sm-stretch"
+                    icon="icons:aspect-ratio"
+                    label="${this.t.stretch}"
+                    @click="${this._toggleStretch}"
+                  ></simple-icon-button-lite>
+                  <simple-tooltip for="sm-stretch" position="top"
+                    >${this.t.stretch}</simple-tooltip
+                  >
+                  <simple-icon-button-lite
+                    class="ddd-block-action"
+                    id="sm-layout"
+                    icon="icons:view-module"
+                    label="${this.t.layout}"
+                    @click="${this._toggleLayout}"
+                  ></simple-icon-button-lite>
+                  <simple-tooltip for="sm-layout" position="top"
+                    >${this.t.layout}</simple-tooltip
+                  >`
+              : ``
+          }
+          ${
+            this.showExport
+              ? html`<div class="at-separator"></div>
+                  <simple-icon-button-lite
+                    class="ddd-block-action"
+                    id="sm-download"
+                    icon="icons:file-download"
+                    label="${this.t.downloadMidi}"
+                    @click="${this._downloadMidi}"
+                  ></simple-icon-button-lite>
+                  <simple-tooltip for="sm-download" position="top"
+                    >${this.t.downloadMidi}</simple-tooltip
+                  >
+                  <simple-icon-button-lite
+                    class="ddd-block-action"
+                    id="sm-print"
+                    icon="icons:print"
+                    label="${this.t.print}"
+                    @click="${this._print}"
+                  ></simple-icon-button-lite>
+                  <simple-tooltip for="sm-print" position="top"
+                    >${this.t.print}</simple-tooltip
+                  >`
+              : ``
+          }
         </div>`,
       })}
       <div class="ddd-block-body">
@@ -418,16 +422,18 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
           <slot name="${SURFACE_SLOT}"></slot>
         </div>
         <div class="at-status">
-          ${!this._playerReady
-            ? html`<span class="at-load-text"
-                >${this.t.loading} ${this._loadProgress}%</span
-              >`
-            : html`<div class="at-progress-track">
-                <div
-                  class="at-progress-fill"
-                  style="width: ${this._playProgress}%"
-                ></div>
-              </div>`}
+          ${
+            !this._playerReady
+              ? html`<span class="at-load-text"
+                  >${this.t.loading} ${this._loadProgress}%</span
+                >`
+              : html`<div class="at-progress-track">
+                  <div
+                    class="at-progress-fill"
+                    style="width: ${this._playProgress}%"
+                  ></div>
+                </div>`
+          }
           <span class="at-time" aria-live="polite">${this._timeText}</span>
         </div>
       </div>

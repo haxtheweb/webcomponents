@@ -744,50 +744,68 @@ class RpgCharacter extends SimpleColors {
         ${this.renderPiece(shirt, hide)} ${this.renderPiece(pants)}
         ${this.renderPiece(accessories)} ${this.renderPiece(base, hide)}
         ${this.leg !== "" ? this.renderPiece(leg) : ``}
-        ${expression !== "none"
-          ? this.renderCells(expressionArt[expression])
-          : ``}
-        ${feetList.includes(feet)
-          ? this.renderPiece(
-              new URL(`./lib/feet/${feet}.svg`, import.meta.url).href,
-            )
-          : ``}
-        ${pet !== "none" && !perchedPetList.includes(pet)
-          ? this.renderPiece(
-              new URL(`./lib/pet/${pet}.svg`, import.meta.url).href,
-            )
-          : ``}
-        ${offhandList.includes(offhand) && holdsOffhand
-          ? this.renderPiece(
-              new URL(`./lib/offhand/${offhand}.svg`, import.meta.url).href,
-            )
-          : ``}
+        ${
+          expression !== "none"
+            ? this.renderCells(expressionArt[expression])
+            : ``
+        }
+        ${
+          feetList.includes(feet)
+            ? this.renderPiece(
+                new URL(`./lib/feet/${feet}.svg`, import.meta.url).href,
+              )
+            : ``
+        }
+        ${
+          pet !== "none" && !perchedPetList.includes(pet)
+            ? this.renderPiece(
+                new URL(`./lib/pet/${pet}.svg`, import.meta.url).href,
+              )
+            : ``
+        }
+        ${
+          offhandList.includes(offhand) && holdsOffhand
+            ? this.renderPiece(
+                new URL(`./lib/offhand/${offhand}.svg`, import.meta.url).href,
+              )
+            : ``
+        }
         ${this.renderPiece(hatColor)} ${onFire ? this.renderPiece(fire) : ``}
-        ${mask !== "none"
-          ? this.renderPiece(
-              new URL(`./lib/mask/${mask}.svg`, import.meta.url).href,
-            )
-          : ``}
+        ${
+          mask !== "none"
+            ? this.renderPiece(
+                new URL(`./lib/mask/${mask}.svg`, import.meta.url).href,
+              )
+            : ``
+        }
         ${hatFileName !== "none" ? this.renderPiece(hat) : ``}
         ${pose !== "none" ? this.renderCells(poseArt[pose].cells) : ``}
-        ${pet !== "none" && perchedPetList.includes(pet)
-          ? this.renderPiece(
-              new URL(`./lib/pet/${pet}.svg`, import.meta.url).href,
-            )
-          : ``}
-        ${itemList.includes(item) && holdsItem
-          ? this.renderPiece(
-              new URL(`./lib/item/${item}.svg`, import.meta.url).href,
-            )
-          : ``}
-        ${item === "flag" && holdsItem && this._flagText()
-          ? this.renderFlagText()
-          : ``}
+        ${
+          pet !== "none" && perchedPetList.includes(pet)
+            ? this.renderPiece(
+                new URL(`./lib/pet/${pet}.svg`, import.meta.url).href,
+              )
+            : ``
+        }
+        ${
+          itemList.includes(item) && holdsItem
+            ? this.renderPiece(
+                new URL(`./lib/item/${item}.svg`, import.meta.url).href,
+              )
+            : ``
+        }
+        ${
+          item === "flag" && holdsItem && this._flagText()
+            ? this.renderFlagText()
+            : ``
+        }
         ${this._slot("circle") ? this.renderPiece(circle) : ``}
       </div>
-      ${this.demo
-        ? html`<div id="demo" style="${sizeStyle}">${this.seed}</div>`
-        : ``}
+      ${
+        this.demo
+          ? html`<div id="demo" style="${sizeStyle}">${this.seed}</div>`
+          : ``
+      }
     `;
   }
 

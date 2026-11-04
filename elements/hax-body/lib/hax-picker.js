@@ -92,26 +92,28 @@ class HaxPicker extends I18NMixin(LitElement) {
   }
   render() {
     return html`
-      ${this.keywords
-        ? html` <div id="filters">
-            <simple-icon-button-lite
-              icon="editable-table:filter${!this.filterOn ? "" : "-off"}"
-              label="${this.t.toggleFilters}"
-              tooltip-position="right"
-              @click="${(_e) => (this.filterOn = !this.filterOn)}"
-            >
-            </simple-icon-button-lite>
-            <simple-fields-field
-              ?hidden="${!this.filterOn}"
-              id="hax-gizmo-filters"
-              label="${this.t.filters}"
-              type="checkbox"
-              .options="${this.keywords}"
-              @value-changed="${this._handleFilters}"
-            >
-            </simple-fields-field>
-          </div>`
-        : ""}
+      ${
+        this.keywords
+          ? html` <div id="filters">
+              <simple-icon-button-lite
+                icon="editable-table:filter${!this.filterOn ? "" : "-off"}"
+                label="${this.t.toggleFilters}"
+                tooltip-position="right"
+                @click="${(_e) => (this.filterOn = !this.filterOn)}"
+              >
+              </simple-icon-button-lite>
+              <simple-fields-field
+                ?hidden="${!this.filterOn}"
+                id="hax-gizmo-filters"
+                label="${this.t.filters}"
+                type="checkbox"
+                .options="${this.keywords}"
+                @value-changed="${this._handleFilters}"
+              >
+              </simple-fields-field>
+            </div>`
+          : ""
+      }
       <simple-button-grid columns="4" always-expanded>
         ${this.selectionList.map((element, index) =>
           !this._isFiltered(element.keywords)
@@ -127,22 +129,26 @@ class HaxPicker extends I18NMixin(LitElement) {
                     id="picker-item-${index}"
                     @click="${this._selected}"
                     data-selected="${index}"
-                    ?disabled="${HAXStore.activeGizmo &&
-                    HAXStore.activeGizmo.tag == element.tag}"
+                    ?disabled="${
+                      HAXStore.activeGizmo &&
+                      HAXStore.activeGizmo.tag == element.tag
+                    }"
                     label="${element.title}"
                     icon="${element.icon}"
                     icon-position="top"
                     slot="button"
                   ></hax-tray-button>
-                  ${this.activePreview === parseInt(index)
-                    ? html`
-                        <hax-element-demo
-                          render-tag="${element.tag}"
-                          slot="options"
-                          active-picker-schema="${index}"
-                        ></hax-element-demo>
-                      `
-                    : ``}
+                  ${
+                    this.activePreview === parseInt(index)
+                      ? html`
+                          <hax-element-demo
+                            render-tag="${element.tag}"
+                            slot="options"
+                            active-picker-schema="${index}"
+                          ></hax-element-demo>
+                        `
+                      : ``
+                  }
                 </simple-popover-selection>
               `,
         )}

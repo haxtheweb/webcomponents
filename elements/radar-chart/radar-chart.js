@@ -659,18 +659,20 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
     const active = this._tip ? this._tip.i : -1;
     return html`
       <figure class="ddd-block">
-        ${compact
-          ? html`<div class="ddd-block-header">
-              ${this._renderChip()}
-              <span class="ddd-block-label">${this._typeLabel}</span>
-            </div>`
-          : html`<figcaption class="ddd-block-header">
-              ${this._renderChip()}
-              <span class="ddd-block-text">
+        ${
+          compact
+            ? html`<div class="ddd-block-header">
+                ${this._renderChip()}
                 <span class="ddd-block-label">${this._typeLabel}</span>
-                <span class="ddd-block-title" id="cap">${this.title}</span>
-              </span>
-            </figcaption>`}
+              </div>`
+            : html`<figcaption class="ddd-block-header">
+                ${this._renderChip()}
+                <span class="ddd-block-text">
+                  <span class="ddd-block-label">${this._typeLabel}</span>
+                  <span class="ddd-block-title" id="cap">${this.title}</span>
+                </span>
+              </figcaption>`
+        }
         <div class="chart">
           <svg
             viewBox="0 0 ${w} ${h}"
@@ -687,12 +689,14 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
               const [x, y] = this._point(i, n, max, max);
               return svg`<line class="axis" x1="${this._box.cx}" y1="${this._box.cy}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}"></line>`;
             })}
-            ${compact
-              ? ""
-              : levels.map((l) => {
-                  const [x, y] = this._point(0, n, l * step, max);
-                  return svg`<text class="scale-label" x="${x + 3}" y="${y - 2}">${Number((l * step).toFixed(1))}</text>`;
-                })}
+            ${
+              compact
+                ? ""
+                : levels.map((l) => {
+                    const [x, y] = this._point(0, n, l * step, max);
+                    return svg`<text class="scale-label" x="${x + 3}" y="${y - 2}">${Number((l * step).toFixed(1))}</text>`;
+                  })
+            }
             <polygon
               class="target"
               points="${this._polygon(rows, "target", max)}"
@@ -709,9 +713,11 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
               const [x, y] = this._point(i, n, row.score, max);
               return svg`<circle class="dot ${i === active ? "active" : ""}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4.5"></circle>`;
             })}
-            ${compact
-              ? ""
-              : rows.map((row, i) => this._renderLabel(row, i, n, max))}
+            ${
+              compact
+                ? ""
+                : rows.map((row, i) => this._renderLabel(row, i, n, max))
+            }
             ${rows.map((row, i) => {
               // generous invisible targets; target points first so the
               // score point wins where the two coincide
@@ -732,65 +738,86 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
           ${this._renderTip(rows, max)}
         </div>
         <p id="desc" hidden>${this._description(data)}</p>
-        ${this.showLegend && !compact
-          ? html`<ul class="legend">
-              <li>
-                <svg
-                  class="swatch score"
-                  viewBox="0 0 28 12"
-                  aria-hidden="true"
-                  focusable="false"
-                >
-                  <line class="score-line" x1="0" y1="6" x2="28" y2="6"></line>
-                  <circle class="score-mark" cx="14" cy="6" r="4"></circle></svg
-                >${this.scoreLabel}
-              </li>
-              <li>
-                <svg
-                  class="swatch target"
-                  viewBox="0 0 28 12"
-                  aria-hidden="true"
-                  focusable="false"
-                >
-                  <line class="target-line" x1="0" y1="6" x2="28" y2="6"></line>
-                  <rect
-                    class="target-mark"
-                    x="10"
-                    y="2"
-                    width="8"
-                    height="8"
-                  ></rect></svg
-                >${this.targetLabel}
-              </li>
-            </ul>`
-          : ""}
-        ${compact
-          ? ""
-          : html`<details class="ddd-block-footer">
-              <summary>${this.t.showData}</summary>
-              <table>
-                <caption>
-                  ${this.title}
-                </caption>
-                <thead>
-                  <tr>
-                    <th scope="col">${this.t.category}</th>
-                    <th scope="col">${this.scoreLabel}</th>
-                    <th scope="col">${this.targetLabel}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  ${rows.map(
-                    (row) =>
-                      html`<tr>
-                        <th scope="row">${row.name}</th>
-                        <td class="num">${row.score} / ${max}</td>
-                        <td class="num">${row.target} / ${max}</td>
-                      </tr>`,
-                  )}
-                </tbody>
-              </table>
-            </details>`}
+        ${
+          this.showLegend && !compact
+            ? html`<ul class="legend">
+                <li>
+                  <svg
+                    class="swatch score"
+                    viewBox="0 0 28 12"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <line
+                      class="score-line"
+                      x1="0"
+                      y1="6"
+                      x2="28"
+                      y2="6"
+                    ></line>
+                    <circle
+                      class="score-mark"
+                      cx="14"
+                      cy="6"
+                      r="4"
+                    ></circle></svg
+                  >${this.scoreLabel}
+                </li>
+                <li>
+                  <svg
+                    class="swatch target"
+                    viewBox="0 0 28 12"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <line
+                      class="target-line"
+                      x1="0"
+                      y1="6"
+                      x2="28"
+                      y2="6"
+                    ></line>
+                    <rect
+                      class="target-mark"
+                      x="10"
+                      y="2"
+                      width="8"
+                      height="8"
+                    ></rect></svg
+                  >${this.targetLabel}
+                </li>
+              </ul>`
+            : ""
+        }
+        ${
+          compact
+            ? ""
+            : html`<details class="ddd-block-footer">
+                <summary>${this.t.showData}</summary>
+                <table>
+                  <caption>
+                    ${this.title}
+                  </caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">${this.t.category}</th>
+                      <th scope="col">${this.scoreLabel}</th>
+                      <th scope="col">${this.targetLabel}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${rows.map(
+                      (row) =>
+                        html`<tr>
+                          <th scope="row">${row.name}</th>
+                          <td class="num">${row.score} / ${max}</td>
+                          <td class="num">${row.target} / ${max}</td>
+                        </tr>`,
+                    )}
+                  </tbody>
+                </table>
+              </details>`
+        }
       </figure>
     `;
   }

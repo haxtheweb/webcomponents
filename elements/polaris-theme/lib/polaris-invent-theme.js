@@ -649,15 +649,17 @@ class PolarisInventTheme extends LTIResizingMixin(
             <site-search></site-search>
           </site-modal>
           ${this.PDFPageButton("right")}
-          ${MicroFrontendRegistry.has("@system/siteToHtml")
-            ? this.PrintBranchButton("right")
-            : html`<replace-tag
-                with="site-print-button"
-                position="right"
-                class="btn js-toolbar-action"
-                import-method="view"
-                part="print-btn"
-              ></replace-tag>`}
+          ${
+            MicroFrontendRegistry.has("@system/siteToHtml")
+              ? this.PrintBranchButton("right")
+              : html`<replace-tag
+                  with="site-print-button"
+                  position="right"
+                  class="btn js-toolbar-action"
+                  import-method="view"
+                  part="print-btn"
+                ></replace-tag>`
+          }
           ${this.QRCodeButton("right")}
           <div class="left-col ddd-font-navigation" part="left-col">
             ${this.HAXCMSMobileMenu()}

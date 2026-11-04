@@ -231,9 +231,11 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
           html`<li>
             <span>${shortcut.description}</span>
             <span class="shortcut-key"
-              >${shortcut.type === "markdown"
-                ? html`<code>${shortcut.label}</code>`
-                : html`<kbd class="hax-ui-kbd">${shortcut.label}</kbd>`}</span
+              >${
+                shortcut.type === "markdown"
+                  ? html`<code>${shortcut.label}</code>`
+                  : html`<kbd class="hax-ui-kbd">${shortcut.label}</kbd>`
+              }</span
             >
           </li>`,
       )}
@@ -572,9 +574,9 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
             html`<button
               type="button"
               data-context="${context.id}"
-              aria-pressed="${this.shortcutContext === context.id
-                ? "true"
-                : "false"}"
+              aria-pressed="${
+                this.shortcutContext === context.id ? "true" : "false"
+              }"
               @click="${() => {
                 this.shortcutContext = context.id;
               }}"
@@ -591,12 +593,14 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
 
   render() {
     return html`
-      ${!this.inShell
-        ? html`<div class="page-head">
-            <h2>${this.t.helpAndAbout}</h2>
-            <p class="intro">${this.t.aboutIntro}</p>
-          </div>`
-        : nothing}
+      ${
+        !this.inShell
+          ? html`<div class="page-head">
+              <h2>${this.t.helpAndAbout}</h2>
+              <p class="intro">${this.t.aboutIntro}</p>
+            </div>`
+          : nothing
+      }
       <div class="cols">
         <div class="col">
           <section data-group="community">

@@ -463,18 +463,20 @@ class PageSection extends DDD {
             <slot name="buttons"></slot>
           </div>
         </div>
-        ${this.scroller
-          ? html`<simple-icon-button-lite
-                class="scroller"
-                icon="icons:arrow-downward"
-                id="scroller"
-                @click="${this.scrollToNextTarget}"
-                label="${this.scrollerLabel}"
-              ></simple-icon-button-lite
-              ><simple-tooltip for="scroller" position="top"
-                >${this.scrollerLabel}</simple-tooltip
-              >`
-          : ``}
+        ${
+          this.scroller
+            ? html`<simple-icon-button-lite
+                  class="scroller"
+                  icon="icons:arrow-downward"
+                  id="scroller"
+                  @click="${this.scrollToNextTarget}"
+                  label="${this.scrollerLabel}"
+                ></simple-icon-button-lite
+                ><simple-tooltip for="scroller" position="top"
+                  >${this.scrollerLabel}</simple-tooltip
+                >`
+            : ``
+        }
         ${this.fold ? html`<div class="fold"></div>` : ``}
       </section>
     `;

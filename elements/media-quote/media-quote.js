@@ -256,39 +256,47 @@ class MediaQuote extends I18NMixin(DDD) {
                   <slot name="quote">${this.quote}</slot>
                 </blockquote>
               </div>
-              ${this.hasAuthor || this.author
-                ? html`
-                    <div class="citation">
-                      <span class="author"
-                        ><slot name="author">${this.author}</slot></span
-                      >${this.hasAuthorDetail || this.authorDetail
-                        ? html`<span class="author-detail"
-                            ><span aria-hidden="true"> · </span
-                            ><slot name="author-detail"
-                              >${this.authorDetail}</slot
-                            ></span
-                          >`
-                        : ""}
-                    </div>
-                  `
-                : ""}
+              ${
+                this.hasAuthor || this.author
+                  ? html`
+                      <div class="citation">
+                        <span class="author"
+                          ><slot name="author">${this.author}</slot></span
+                        >${
+                          this.hasAuthorDetail || this.authorDetail
+                            ? html`<span class="author-detail"
+                                ><span aria-hidden="true"> · </span
+                                ><slot name="author-detail"
+                                  >${this.authorDetail}</slot
+                                ></span
+                              >`
+                            : ""
+                        }
+                      </div>
+                    `
+                  : ""
+              }
             </div>
-            ${this.src
-              ? html`<img src="${this.src}" alt="${this.alt}" />`
-              : nothing}
+            ${
+              this.src
+                ? html`<img src="${this.src}" alt="${this.alt}" />`
+                : nothing
+            }
           </div>
-          ${this.hasCaption || this.caption
-            ? html`
-                <div class="caption">
-                  <details>
-                    <summary>${this.t.showCaption}</summary>
-                    <figcaption>
-                      <slot name="caption">${this.caption}</slot>
-                    </figcaption>
-                  </details>
-                </div>
-              `
-            : ""}
+          ${
+            this.hasCaption || this.caption
+              ? html`
+                  <div class="caption">
+                    <details>
+                      <summary>${this.t.showCaption}</summary>
+                      <figcaption>
+                        <slot name="caption">${this.caption}</slot>
+                      </figcaption>
+                    </details>
+                  </div>
+                `
+              : ""
+          }
         </figure>
       </div>
     `;

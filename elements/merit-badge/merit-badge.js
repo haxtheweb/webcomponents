@@ -145,29 +145,33 @@ class MeritBadge extends I18NMixin(SchemaBehaviors(LitElement)) {
     return html`
       <meta property="oer:skill" content="${this.skill}" />
       <div class="container">
-        ${this.badgeUnlocked
-          ? html`<badge-sticker
-              badge-image="${this.badgeImage}"
-              badge-title="${this.badgeTitle}"
-              badge-details="${this.badgeDetails}"
-              hyper-link="${this.hyperLink}"
-              badge-skills="${this.badgeSkills}"
-              badge-unlocked="false"
-              badge-color="${this.badgeColor}"
-            >
-            </badge-sticker>`
-          : html`<locked-badge></locked-badge>`}
+        ${
+          this.badgeUnlocked
+            ? html`<badge-sticker
+                badge-image="${this.badgeImage}"
+                badge-title="${this.badgeTitle}"
+                badge-details="${this.badgeDetails}"
+                hyper-link="${this.hyperLink}"
+                badge-skills="${this.badgeSkills}"
+                badge-unlocked="false"
+                badge-color="${this.badgeColor}"
+              >
+              </badge-sticker>`
+            : html`<locked-badge></locked-badge>`
+        }
         <button
           class="unlockButton ${this.badgeUnlocked ? "unlocked" : ""}"
           @click="${this.unlockButtonClicked}"
         >
-          ${this.badgeUnlocked
-            ? html`<simple-icon-lite
-                  icon="icons:check"
-                  aria-hidden="true"
-                ></simple-icon-lite
-                ><span class="label">${this.t.unlocked}</span>`
-            : html`<span class="label">${this.t.unlock}</span>`}
+          ${
+            this.badgeUnlocked
+              ? html`<simple-icon-lite
+                    icon="icons:check"
+                    aria-hidden="true"
+                  ></simple-icon-lite
+                  ><span class="label">${this.t.unlocked}</span>`
+              : html`<span class="label">${this.t.unlock}</span>`
+          }
         </button>
       </div>
     `;

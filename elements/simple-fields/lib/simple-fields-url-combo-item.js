@@ -349,9 +349,11 @@ class SimpleFieldsUrlComboItem extends LitElement {
   get labelTemplate() {
     return html`<span part="label">
       ${this.primaryLabelTemplate}
-      ${!!this.name && this.name.trim() !== ""
-        ? this.secondaryLabelTemplate
-        : ""}
+      ${
+        !!this.name && this.name.trim() !== ""
+          ? this.secondaryLabelTemplate
+          : ""
+      }
     </span>`;
   }
   /**

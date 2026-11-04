@@ -45,9 +45,8 @@ export const createEditIconProgram = (context) => {
 
     // Lazy import so the iconset is only loaded when this program runs and
     // is never eagerly pulled into the initial bundle.
-    const { SimpleIconsetStore } = await import(
-      "@haxtheweb/simple-icon/lib/simple-iconset.js"
-    );
+    const { SimpleIconsetStore } =
+      await import("@haxtheweb/simple-icon/lib/simple-iconset.js");
     const allIcons =
       SimpleIconsetStore && SimpleIconsetStore.iconlist
         ? [...SimpleIconsetStore.iconlist].sort()

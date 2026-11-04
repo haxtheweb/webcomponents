@@ -376,13 +376,15 @@ class HAXCMSSiteDetailsDialog extends HaxcmsAdminFieldsMixin(I18NMixin(DDD)) {
   _renderLabel(field, id) {
     return html`<div>
       <label class="lab" for="${id}" id="${id}-label"
-        >${this._isChanged(field.property)
-          ? html`<span
-              class="dot"
-              role="img"
-              aria-label="${this.t.changed}"
-            ></span>`
-          : nothing}${field.title}</label
+        >${
+          this._isChanged(field.property)
+            ? html`<span
+                class="dot"
+                role="img"
+                aria-label="${this.t.changed}"
+              ></span>`
+            : nothing
+        }${field.title}</label
       ><span class="help" id="${id}-help">${field.description}</span>
     </div>`;
   }
@@ -447,11 +449,13 @@ class HAXCMSSiteDetailsDialog extends HaxcmsAdminFieldsMixin(I18NMixin(DDD)) {
               aria-describedby="${id}-help${invalid ? ` ${id}-msg` : ""}"
               @input="${(e) => this._setValue(key, e.target.value)}"
             />
-            ${invalid
-              ? html`<span class="msg" id="${id}-msg"
-                  >${this.t.titleRequired}</span
-                >`
-              : nothing}
+            ${
+              invalid
+                ? html`<span class="msg" id="${id}-msg"
+                    >${this.t.titleRequired}</span
+                  >`
+                : nothing
+            }
           </div>
         </div>`;
       }
@@ -460,14 +464,22 @@ class HAXCMSSiteDetailsDialog extends HaxcmsAdminFieldsMixin(I18NMixin(DDD)) {
 
   render() {
     return html`
-      ${this.errorMessage
-        ? html`<p class="hax-ui-message status" data-tone="danger" role="alert">
-            ${this.errorMessage}
-          </p>`
-        : nothing}
-      ${!this.errorMessage && this.groups.length === 0
-        ? html`<p class="hax-ui-message status">${this.t.noSiteDetails}</p>`
-        : nothing}
+      ${
+        this.errorMessage
+          ? html`<p
+              class="hax-ui-message status"
+              data-tone="danger"
+              role="alert"
+            >
+              ${this.errorMessage}
+            </p>`
+          : nothing
+      }
+      ${
+        !this.errorMessage && this.groups.length === 0
+          ? html`<p class="hax-ui-message status">${this.t.noSiteDetails}</p>`
+          : nothing
+      }
       ${this.groups.map(
         (group) => html`
           <details ?open="${group.open}" data-group="${group.key}">
@@ -482,18 +494,20 @@ class HAXCMSSiteDetailsDialog extends HaxcmsAdminFieldsMixin(I18NMixin(DDD)) {
           </details>
         `,
       )}
-      ${!this.inShell
-        ? html`<div class="standalone-actions">
-            <button
-              type="button"
-              class="hax-ui-btn primary"
-              ?disabled="${!this.canSave}"
-              @click="${this.save}"
-            >
-              ${this.t.save}
-            </button>
-          </div>`
-        : nothing}
+      ${
+        !this.inShell
+          ? html`<div class="standalone-actions">
+              <button
+                type="button"
+                class="hax-ui-btn primary"
+                ?disabled="${!this.canSave}"
+                @click="${this.save}"
+              >
+                ${this.t.save}
+              </button>
+            </div>`
+          : nothing
+      }
     `;
   }
 }

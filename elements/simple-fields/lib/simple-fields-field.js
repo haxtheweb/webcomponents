@@ -991,25 +991,30 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
     get fieldMainTemplate() {
       return html`
         <div
-          class="${this.inline ||
-          ["checkbox", "color", "radio"].includes(this.type || "text")
-            ? "field-main inline"
-            : "field-main"} ${this.sortedOptions &&
-          !this.sortedOptions.length > 0
-            ? "field-main-multi"
-            : "field-main-single"} ${this.isRowBasedField ? "row-layout" : ""}"
+          class="${
+            this.inline ||
+            ["checkbox", "color", "radio"].includes(this.type || "text")
+              ? "field-main inline"
+              : "field-main"
+          } ${
+            this.sortedOptions && !this.sortedOptions.length > 0
+              ? "field-main-multi"
+              : "field-main-single"
+          } ${this.isRowBasedField ? "row-layout" : ""}"
           part="field-main"
         >
           ${this.labelTemplate}
           <div id="field-main-inner" part="field-main-inner">
             ${this.prefixTemplate}
-            ${this.fieldElementTag === "input"
-              ? this.inputTemplate
-              : this.fieldElementTag === "select"
-                ? this.selectTemplate
-                : this.fieldElementTag === "textarea"
-                  ? this.textareaTemplate
-                  : ``}
+            ${
+              this.fieldElementTag === "input"
+                ? this.inputTemplate
+                : this.fieldElementTag === "select"
+                  ? this.selectTemplate
+                  : this.fieldElementTag === "textarea"
+                    ? this.textareaTemplate
+                    : ``
+            }
             ${this.suffixTemplate}
           </div>
         </div>
@@ -1074,21 +1079,23 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
                     for="${this.id}.${option.value}"
                     class="radio-label"
                     part="option-label"
-                    >${option.html
-                      ? html`<div
-                          @click="${(e) => {
-                            // @note this can cause issues in listening up above..
-                            e.preventDefault();
-                            e.stopPropagation();
-                            this._handleIconClick(
-                              this.getChecked(option),
-                              option,
-                            );
-                          }}"
-                        >
-                          ${option.html}
-                        </div>`
-                      : option.text}</label
+                    >${
+                      option.html
+                        ? html`<div
+                            @click="${(e) => {
+                              // @note this can cause issues in listening up above..
+                              e.preventDefault();
+                              e.stopPropagation();
+                              this._handleIconClick(
+                                this.getChecked(option),
+                                option,
+                              );
+                            }}"
+                          >
+                            ${option.html}
+                          </div>`
+                        : option.text
+                    }</label
                   >${this.getInput(option)}
                 </div>
               `,
@@ -1142,21 +1149,20 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
           <slot name="input-prefix"></slot>
           <input
             ?autofocus="${this.autofocus}"
-            aria-describedby="${this.describedBy ||
-            "description error-message"}"
+            aria-describedby="${
+              this.describedBy || "description error-message"
+            }"
             aria-invalid="${this.error ? "true" : "false"}"
             @blur="${this._onFocusout}"
             @change="${this._handleFieldChange}"
             ?checked="${checked}"
-            class="field ${[
-              "checkbox",
-              "color",
-              "file",
-              "radio",
-              "range",
-            ].includes(this.type)
-              ? ""
-              : "box-input"}"
+            class="field ${
+              ["checkbox", "color", "file", "radio", "range"].includes(
+                this.type,
+              )
+                ? ""
+                : "box-input"
+            }"
             ?disabled="${this.disabled}"
             @focus="${this._onFocusin}"
             @click="${this._onFocusin}"
@@ -1174,21 +1180,23 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             part="option-input"
           />
           <slot name="input-suffix"></slot>
-          ${this.type !== "checkbox" && this.type !== "radio"
-            ? ""
-            : html`
-                <simple-icon-lite
-                  icon="${icon}"
-                  @click="${(e) => {
-                    // @note this can cause issues in listening up above..
-                    e.preventDefault();
-                    e.stopPropagation();
-                    this._handleIconClick(checked, option);
-                  }}"
-                  part="option-icon"
-                >
-                </simple-icon-lite>
-              `}
+          ${
+            this.type !== "checkbox" && this.type !== "radio"
+              ? ""
+              : html`
+                  <simple-icon-lite
+                    icon="${icon}"
+                    @click="${(e) => {
+                      // @note this can cause issues in listening up above..
+                      e.preventDefault();
+                      e.stopPropagation();
+                      this._handleIconClick(checked, option);
+                    }}"
+                    part="option-icon"
+                  >
+                  </simple-icon-lite>
+                `
+          }
         </span>
       `;
     }
@@ -1260,9 +1268,11 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
         <option
           part="select-option"
           .id="${this.id}.${option.value}"
-          ?selected="${this.multiple
-            ? this.value && this.value.includes(option.value)
-            : this.value === option.value}"
+          ?selected="${
+            this.multiple
+              ? this.value && this.value.includes(option.value)
+              : this.value === option.value
+          }"
           ?disabled="${option.disabled}"
           .value="${option.value}"
         >

@@ -58,5 +58,6 @@
     "haxtheweb",
     "lit"
   ],
-  "gitHead": "245e0cd5ba8ffa15c755a58abc4f60f74a2f876c"
+  "gitHead": "245e0cd5ba8ffa15c755a58abc4f60f74a2f876c",
+  "customElements": "custom-elements.json"
 }

@@ -350,32 +350,36 @@ class SimpleFieldsUpload extends I18NMixin(
       >
         <span class="label-text">
           <span>${this.label}${this.error ? "*" : ""}</span>
-          ${this._hasInlineDescription
-            ? html`<span id="description" part="description"
-                >${this.description}</span
-              >`
-            : ``}
+          ${
+            this._hasInlineDescription
+              ? html`<span id="description" part="description"
+                  >${this.description}</span
+                >`
+              : ``
+          }
         </span>
-        ${this._hasInfoTooltip
-          ? html`<simple-icon-button-lite
-                id="${infoId}"
-                icon="icons:info-outline"
-                label="${this.label
-                  ? `${this.label} details`
-                  : `Upload details`}"
-                part="info-toggle"
-                class="info-toggle"
-                @click="${(e) => e.stopPropagation()}"
-              ></simple-icon-button-lite>
-              <simple-tooltip
-                for="${infoId}"
-                position="bottom"
-                fit-to-visible-bounds
-                part="info-tooltip"
-              >
-                ${this.description}
-              </simple-tooltip>`
-          : ``}
+        ${
+          this._hasInfoTooltip
+            ? html`<simple-icon-button-lite
+                  id="${infoId}"
+                  icon="icons:info-outline"
+                  label="${
+                    this.label ? `${this.label} details` : `Upload details`
+                  }"
+                  part="info-toggle"
+                  class="info-toggle"
+                  @click="${(e) => e.stopPropagation()}"
+                ></simple-icon-button-lite>
+                <simple-tooltip
+                  for="${infoId}"
+                  position="bottom"
+                  fit-to-visible-bounds
+                  part="info-tooltip"
+                >
+                  ${this.description}
+                </simple-tooltip>`
+            : ``
+        }
       </legend>
     `;
   }
@@ -469,10 +473,12 @@ class SimpleFieldsUpload extends I18NMixin(
           </button>
           <div
             part="browse-area"
-            ?hidden="${this.option == "selfie" ||
-            this.option == "audio" ||
-            this.option == "screenrecord" ||
-            this.hideInput}"
+            ?hidden="${
+              this.option == "selfie" ||
+              this.option == "audio" ||
+              this.option == "screenrecord" ||
+              this.hideInput
+            }"
           >
             <simple-fields-url-combo
               id="url"
@@ -484,9 +490,9 @@ class SimpleFieldsUpload extends I18NMixin(
               auto-validate=""
               part="url"
               ?disabled="${this.disabled}"
-              display-as="${this.responsiveSize.indexOf("l") > -1
-                ? "grid"
-                : ""}"
+              display-as="${
+                this.responsiveSize.indexOf("l") > -1 ? "grid" : ""
+              }"
               .itemsList="${this.itemsList}"
               @click="${(e) => e.stopImmediatePropagation()}"
               @mousedown="${(e) => e.stopImmediatePropagation()}"
@@ -509,9 +515,11 @@ class SimpleFieldsUpload extends I18NMixin(
             @click="${this._handleCancel}"
             slot="drop-label"
             part="cancel-media"
-            ?hidden="${this.option !== "selfie" &&
-            this.option !== "audio" &&
-            this.option !== "screenrecord"}"
+            ?hidden="${
+              this.option !== "selfie" &&
+              this.option !== "audio" &&
+              this.option !== "screenrecord"
+            }"
           >
           </simple-toolbar-button>
           <div

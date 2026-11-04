@@ -145,22 +145,24 @@ class LicenseElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
       >
         <meta property="oer:name" content="${this.title}" />
         <meta property="oer:uri" content="${this.source}" />
-        ${this.licenseImage
-          ? html`
-              <a
-                class="big-license-link"
-                target="_blank"
-                href="${this.licenseLink}"
-                rel="noopener noreferrer"
-                ><img
-                  loading="lazy"
-                  alt="${this.t.licenseGraphic.replace("{license}", () =>
-                    this._licenseDisplayName(),
-                  )}"
-                  src="${this.licenseImage}"
-              /></a>
-            `
-          : ``}
+        ${
+          this.licenseImage
+            ? html`
+                <a
+                  class="big-license-link"
+                  target="_blank"
+                  href="${this.licenseLink}"
+                  rel="noopener noreferrer"
+                  ><img
+                    loading="lazy"
+                    alt="${this.t.licenseGraphic.replace("{license}", () =>
+                      this._licenseDisplayName(),
+                    )}"
+                    src="${this.licenseImage}"
+                /></a>
+              `
+            : ``
+        }
         ${this._fillTemplate(
           this.license ? this.t.workByCreatorLicensed : this.t.workByCreator,
           {
@@ -184,20 +186,22 @@ class LicenseElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
             >`,
           },
         )} <span rel="dc:source" href="${this.source}"></span>
-        ${this.hasMore
-          ? html`
-              <span
-                >${this._fillTemplate(this.t.permissionsBeyondScope, {
-                  link: html`<a
-                    rel="cc:morePermissions noopener noreferrer"
-                    target="_blank"
-                    href="${this.moreLink}"
-                    >${this.moreLabel}</a
-                  >`,
-                })}</span
-              >
-            `
-          : ``}
+        ${
+          this.hasMore
+            ? html`
+                <span
+                  >${this._fillTemplate(this.t.permissionsBeyondScope, {
+                    link: html`<a
+                      rel="cc:morePermissions noopener noreferrer"
+                      target="_blank"
+                      href="${this.moreLink}"
+                      >${this.moreLabel}</a
+                    >`,
+                  })}</span
+                >
+              `
+            : ``
+        }
       </div>
     `;
   }

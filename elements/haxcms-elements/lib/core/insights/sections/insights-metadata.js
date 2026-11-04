@@ -204,9 +204,11 @@ class InsightsMetadata extends I18NMixin(LitElement) {
         aria-expanded="${this._expanded[key] ? "true" : "false"}"
         @click="${() => this._toggle(key)}"
       >
-        ${this._expanded[key]
-          ? this.t.showFewer
-          : this.t.showAll.replace("{n}", () => list.length)}
+        ${
+          this._expanded[key]
+            ? this.t.showFewer
+            : this.t.showAll.replace("{n}", () => list.length)
+        }
       </button>
     </div>`;
   }
@@ -324,23 +326,25 @@ class InsightsMetadata extends I18NMixin(LitElement) {
       <h3 class="block" id="md-checks">
         ${this.t.checks}<span class="hint">${this.t.checksHint}</span>
       </h3>
-      ${checks.length
-        ? html`<ul class="findings checks">
-            ${checks.map(
-              (c) =>
-                html`<li data-code="${c.code}" data-state="${c.state}">
-                  <span
-                    class="hax-ui-pill"
-                    data-tone="${STATE_TONE[c.state] || "soon"}"
-                    >${this._stateLabel(c.state)}</span
-                  >
-                  <span class="t"
-                    >${c.title}<span class="d">${c.detail}</span></span
-                  >
-                </li>`,
-            )}
-          </ul>`
-        : html`<p class="hax-ui-empty empty">${this.t.noChecks}</p>`}
+      ${
+        checks.length
+          ? html`<ul class="findings checks">
+              ${checks.map(
+                (c) =>
+                  html`<li data-code="${c.code}" data-state="${c.state}">
+                    <span
+                      class="hax-ui-pill"
+                      data-tone="${STATE_TONE[c.state] || "soon"}"
+                      >${this._stateLabel(c.state)}</span
+                    >
+                    <span class="t"
+                      >${c.title}<span class="d">${c.detail}</span></span
+                    >
+                  </li>`,
+              )}
+            </ul>`
+          : html`<p class="hax-ui-empty empty">${this.t.noChecks}</p>`
+      }
     </section>`;
   }
 
@@ -357,18 +361,20 @@ class InsightsMetadata extends I18NMixin(LitElement) {
           )}</span
         >
       </h3>
-      ${rows.length
-        ? html`<ul class="findings nodesc">
-              ${shown.map(
-                (r) =>
-                  html`<li>
-                    <span class="t">${r.title}</span>
-                    ${this._openBtn(r.title, r.slug)}
-                  </li>`,
-              )}
-            </ul>
-            ${this._moreBtn("nodesc", rows)}`
-        : html`<p class="hax-ui-empty empty">${this.t.noDescEmpty}</p>`}
+      ${
+        rows.length
+          ? html`<ul class="findings nodesc">
+                ${shown.map(
+                  (r) =>
+                    html`<li>
+                      <span class="t">${r.title}</span>
+                      ${this._openBtn(r.title, r.slug)}
+                    </li>`,
+                )}
+              </ul>
+              ${this._moreBtn("nodesc", rows)}`
+          : html`<p class="hax-ui-empty empty">${this.t.noDescEmpty}</p>`
+      }
     </section>`;
   }
 
@@ -380,45 +386,47 @@ class InsightsMetadata extends I18NMixin(LitElement) {
       <h3 class="block" id="md-titles">
         ${this.t.titlesTitle}<span class="hint">${this.t.titlesHint}</span>
       </h3>
-      ${empty
-        ? html`<p class="hax-ui-empty empty">${this.t.noTitlesEmpty}</p>`
-        : html`<ul class="findings titles">
-            ${shared.map(
-              (g) =>
-                html`<li class="shared">
-                  <div class="group">
-                    <div class="group-head">
-                      <span class="t">“${g.title}”</span>
-                      <span class="hax-ui-pill" data-tone="warning"
-                        >${this.t.sharedLabel.replace(
-                          "{n}",
-                          () => g.count,
-                        )}</span
-                      >
+      ${
+        empty
+          ? html`<p class="hax-ui-empty empty">${this.t.noTitlesEmpty}</p>`
+          : html`<ul class="findings titles">
+              ${shared.map(
+                (g) =>
+                  html`<li class="shared">
+                    <div class="group">
+                      <div class="group-head">
+                        <span class="t">“${g.title}”</span>
+                        <span class="hax-ui-pill" data-tone="warning"
+                          >${this.t.sharedLabel.replace(
+                            "{n}",
+                            () => g.count,
+                          )}</span
+                        >
+                      </div>
+                      <ul class="group-pages">
+                        ${(g.pageList || []).map((p) => {
+                          const label = p.slug || p.title;
+                          return html`<li>
+                            <span class="t d">${label}</span>
+                            ${this._openBtn(`${p.title} (${label})`, p.slug)}
+                          </li>`;
+                        })}
+                      </ul>
                     </div>
-                    <ul class="group-pages">
-                      ${(g.pageList || []).map((p) => {
-                        const label = p.slug || p.title;
-                        return html`<li>
-                          <span class="t d">${label}</span>
-                          ${this._openBtn(`${p.title} (${label})`, p.slug)}
-                        </li>`;
-                      })}
-                    </ul>
-                  </div>
-                </li>`,
-            )}
-            ${generic.map(
-              (r) =>
-                html`<li class="generic">
-                  <span class="t">“${r.title}”</span>
-                  <span class="hax-ui-pill" data-tone="warning"
-                    >${this.t.genericLabel}</span
-                  >
-                  ${this._openBtn(r.title, r.slug)}
-                </li>`,
-            )}
-          </ul>`}
+                  </li>`,
+              )}
+              ${generic.map(
+                (r) =>
+                  html`<li class="generic">
+                    <span class="t">“${r.title}”</span>
+                    <span class="hax-ui-pill" data-tone="warning"
+                      >${this.t.genericLabel}</span
+                    >
+                    ${this._openBtn(r.title, r.slug)}
+                  </li>`,
+              )}
+            </ul>`
+      }
     </section>`;
   }
 
@@ -429,53 +437,63 @@ class InsightsMetadata extends I18NMixin(LitElement) {
       <h3 class="block" id="md-pages">
         ${this.t.pagesTitle}<span class="hint">${this.t.pagesHint}</span>
       </h3>
-      ${rows.length
-        ? html`<div class="tbl-wrap">
-              <table class="pages">
-                <caption class="sr-only">
-                  ${this.t.pagesCaption}
-                </caption>
-                <thead>
-                  <tr>
-                    <th scope="col">${this.t.page}</th>
-                    <th scope="col">${this.t.description}</th>
-                    <th scope="col">${this.t.sharedTitle}</th>
-                    <th scope="col">${this.t.genericTitle}</th>
-                    <th scope="col">${this.t.published}</th>
-                    <th scope="col">
-                      <span class="sr-only">${this.t.actions}</span>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  ${shown.map(
-                    (p) =>
-                      html`<tr data-page="${p.pageId}">
-                        <td>${p.title}</td>
-                        <td>
-                          ${p.hasDescription
-                            ? this.t.present
-                            : html`<span class="warn">${this.t.missing}</span>`}
-                        </td>
-                        <td>
-                          ${p.sharedTitle
-                            ? html`<span class="warn">${this.t.yes}</span>`
-                            : this.t.no}
-                        </td>
-                        <td>
-                          ${p.genericTitle
-                            ? html`<span class="warn">${this.t.yes}</span>`
-                            : this.t.no}
-                        </td>
-                        <td>${p.published ? this.t.yes : this.t.no}</td>
-                        <td>${this._openBtn(p.title, p.slug)}</td>
-                      </tr>`,
-                  )}
-                </tbody>
-              </table>
-            </div>
-            ${this._moreBtn("pages", rows)}`
-        : html`<p class="hax-ui-empty empty">${this.t.noPages}</p>`}
+      ${
+        rows.length
+          ? html`<div class="tbl-wrap">
+                <table class="pages">
+                  <caption class="sr-only">
+                    ${this.t.pagesCaption}
+                  </caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">${this.t.page}</th>
+                      <th scope="col">${this.t.description}</th>
+                      <th scope="col">${this.t.sharedTitle}</th>
+                      <th scope="col">${this.t.genericTitle}</th>
+                      <th scope="col">${this.t.published}</th>
+                      <th scope="col">
+                        <span class="sr-only">${this.t.actions}</span>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${shown.map(
+                      (p) =>
+                        html`<tr data-page="${p.pageId}">
+                          <td>${p.title}</td>
+                          <td>
+                            ${
+                              p.hasDescription
+                                ? this.t.present
+                                : html`<span class="warn"
+                                    >${this.t.missing}</span
+                                  >`
+                            }
+                          </td>
+                          <td>
+                            ${
+                              p.sharedTitle
+                                ? html`<span class="warn">${this.t.yes}</span>`
+                                : this.t.no
+                            }
+                          </td>
+                          <td>
+                            ${
+                              p.genericTitle
+                                ? html`<span class="warn">${this.t.yes}</span>`
+                                : this.t.no
+                            }
+                          </td>
+                          <td>${p.published ? this.t.yes : this.t.no}</td>
+                          <td>${this._openBtn(p.title, p.slug)}</td>
+                        </tr>`,
+                    )}
+                  </tbody>
+                </table>
+              </div>
+              ${this._moreBtn("pages", rows)}`
+          : html`<p class="hax-ui-empty empty">${this.t.noPages}</p>`
+      }
     </section>`;
   }
 }

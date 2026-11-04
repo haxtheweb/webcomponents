@@ -140,7 +140,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ toggleAnimation: \"Toggle animation\", info: \"info\", }"
+              "default": "{ toggleAnimation: \"Toggle animation\", info: \"info\", image: \"Image\", animatedGif: \"Animated GIF\", }"
             },
             {
               "kind": "field",

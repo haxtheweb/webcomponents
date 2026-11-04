@@ -1159,46 +1159,50 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
                   this.scrollToGroup("from-template-heading", "skeleton")}
               ></app-hax-use-case>
             </div>
-            ${!isMobile
-              ? html`
-                  <div role="listitem">
-                    <app-hax-use-case
-                      .source=${""}
-                      .title=${this.t.fromScratch}
-                      .description=${this.t.startFromBlankSiteWithTheme}
-                      .iconImage=${[
-                        {
-                          icon: "editor:insert-drive-file",
-                          tooltip: this.t.fromScratchTooltip,
-                        },
-                      ]}
-                      ?dark="${this.dark}"
-                      @click=${() =>
-                        this.scrollToGroup("from-scratch-heading", "blank")}
-                    ></app-hax-use-case>
-                  </div>
-                `
-              : ""}
-            ${!isMobile
-              ? html`
-                  <div role="listitem">
-                    <app-hax-use-case
-                      .source=${""}
-                      .title=${this.t.import}
-                      .description=${this.t.importContentFromExistingSource}
-                      .iconImage=${[
-                        {
-                          icon: "icons:cloud-download",
-                          tooltip: this.t.importContent,
-                        },
-                      ]}
-                      ?dark="${this.dark}"
-                      @click=${() =>
-                        this.scrollToGroup("from-existing-heading", "import")}
-                    ></app-hax-use-case>
-                  </div>
-                `
-              : ""}
+            ${
+              !isMobile
+                ? html`
+                    <div role="listitem">
+                      <app-hax-use-case
+                        .source=${""}
+                        .title=${this.t.fromScratch}
+                        .description=${this.t.startFromBlankSiteWithTheme}
+                        .iconImage=${[
+                          {
+                            icon: "editor:insert-drive-file",
+                            tooltip: this.t.fromScratchTooltip,
+                          },
+                        ]}
+                        ?dark="${this.dark}"
+                        @click=${() =>
+                          this.scrollToGroup("from-scratch-heading", "blank")}
+                      ></app-hax-use-case>
+                    </div>
+                  `
+                : ""
+            }
+            ${
+              !isMobile
+                ? html`
+                    <div role="listitem">
+                      <app-hax-use-case
+                        .source=${""}
+                        .title=${this.t.import}
+                        .description=${this.t.importContentFromExistingSource}
+                        .iconImage=${[
+                          {
+                            icon: "icons:cloud-download",
+                            tooltip: this.t.importContent,
+                          },
+                        ]}
+                        ?dark="${this.dark}"
+                        @click=${() =>
+                          this.scrollToGroup("from-existing-heading", "import")}
+                      ></app-hax-use-case>
+                    </div>
+                  `
+                : ""
+            }
           </div>
         </section>
 
@@ -1251,52 +1255,54 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
                   aria-hidden="true"
                 ></simple-icon-lite>
               </button>
-              ${this.sortMenuOpen
-                ? html`
-                    <div
-                      id="sort-menu"
-                      class="sort-menu"
-                      role="menu"
-                      aria-label="${this.t.sortOptions}"
-                    >
-                      <button
-                        role="menuitem"
-                        class="sort-menu-item"
-                        @click=${() => this.handleSortChange("newest")}
+              ${
+                this.sortMenuOpen
+                  ? html`
+                      <div
+                        id="sort-menu"
+                        class="sort-menu"
+                        role="menu"
+                        aria-label="${this.t.sortOptions}"
                       >
-                        ${this.t.recentlyUpdated}
-                      </button>
-                      <button
-                        role="menuitem"
-                        class="sort-menu-item"
-                        @click=${() => this.handleSortChange("az")}
-                      >
-                        ${this.t.titleAZ}
-                      </button>
-                      <button
-                        role="menuitem"
-                        class="sort-menu-item"
-                        @click=${() => this.handleSortChange("za")}
-                      >
-                        ${this.t.titleZA}
-                      </button>
-                      <button
-                        role="menuitem"
-                        class="sort-menu-item"
-                        @click=${() => this.handleSortChange("oldest")}
-                      >
-                        ${this.t.leastRecentlyUpdated}
-                      </button>
-                      <button
-                        role="menuitem"
-                        class="sort-menu-item"
-                        @click=${() => this.handleSortChange("theme")}
-                      >
-                        ${this.t.themeName}
-                      </button>
-                    </div>
-                  `
-                : ""}
+                        <button
+                          role="menuitem"
+                          class="sort-menu-item"
+                          @click=${() => this.handleSortChange("newest")}
+                        >
+                          ${this.t.recentlyUpdated}
+                        </button>
+                        <button
+                          role="menuitem"
+                          class="sort-menu-item"
+                          @click=${() => this.handleSortChange("az")}
+                        >
+                          ${this.t.titleAZ}
+                        </button>
+                        <button
+                          role="menuitem"
+                          class="sort-menu-item"
+                          @click=${() => this.handleSortChange("za")}
+                        >
+                          ${this.t.titleZA}
+                        </button>
+                        <button
+                          role="menuitem"
+                          class="sort-menu-item"
+                          @click=${() => this.handleSortChange("oldest")}
+                        >
+                          ${this.t.leastRecentlyUpdated}
+                        </button>
+                        <button
+                          role="menuitem"
+                          class="sort-menu-item"
+                          @click=${() => this.handleSortChange("theme")}
+                        >
+                          ${this.t.themeName}
+                        </button>
+                      </div>
+                    `
+                  : ""
+              }
             </div>
 
             <div id="reset-help" class="visually-hidden">
@@ -1344,178 +1350,196 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
               )}
             </div>
 
-            ${this.filteredItems.length > 0
-              ? (() => {
-                  const skeletonEntries = [];
-                  const blankEntries = [];
-                  const importEntries = [];
-                  this.filteredItems.forEach((item, index) => {
-                    if (item && item.dataType === "skeleton") {
-                      skeletonEntries.push({ item, index });
-                    }
-                    if (item && item.dataType === "blank") {
-                      blankEntries.push({ item, index });
-                    }
-                    if (item && item.dataType === "import") {
-                      importEntries.push({ item, index });
-                    }
-                  });
+            ${
+              this.filteredItems.length > 0
+                ? (() => {
+                    const skeletonEntries = [];
+                    const blankEntries = [];
+                    const importEntries = [];
+                    this.filteredItems.forEach((item, index) => {
+                      if (item && item.dataType === "skeleton") {
+                        skeletonEntries.push({ item, index });
+                      }
+                      if (item && item.dataType === "blank") {
+                        blankEntries.push({ item, index });
+                      }
+                      if (item && item.dataType === "import") {
+                        importEntries.push({ item, index });
+                      }
+                    });
 
-                  const renderEntries = (entries) => {
-                    return entries.map(
-                      (entry, gridIndex) => html`
-                        <div
-                          role="gridcell"
-                          aria-rowindex="${gridIndex + 1}"
-                          aria-colindex="1"
+                    const renderEntries = (entries) => {
+                      return entries.map(
+                        (entry, gridIndex) => html`
+                          <div
+                            role="gridcell"
+                            aria-rowindex="${gridIndex + 1}"
+                            aria-colindex="1"
+                          >
+                            <app-hax-use-case
+                              data-item-index="${entry.index}"
+                              data-data-type="${entry.item.dataType}"
+                              .source=${entry.item.useCaseImage || ""}
+                              .title=${entry.item.useCaseTitle || ""}
+                              .description=${entry.item.useCaseDescription || ""}
+                              .demoLink=${entry.item.demoLink || ""}
+                              .iconImage=${entry.item.useCaseIcon || []}
+                              .isSelected=${entry.item.isSelected || false}
+                              .showContinue=${entry.item.showContinue || false}
+                              ?dark="${this.dark}"
+                              @toggle-display=${(e) =>
+                                this.toggleDisplay(entry.index, e)}
+                              @continue-action=${() =>
+                                this.continueAction(entry.index)}
+                            ></app-hax-use-case>
+                          </div>
+                        `,
+                      );
+                    };
+
+                    return html`
+                      <div
+                        class="template-group"
+                        role="region"
+                        aria-labelledby="from-template-heading"
+                        aria-live="polite"
+                      >
+                        <h3
+                          id="from-template-heading"
+                          class="template-group-heading"
                         >
+                          ${this.t.fromTemplate}
+                        </h3>
+                        ${
+                          skeletonEntries.length > 0
+                            ? html`<div
+                                class="template-results"
+                                role="grid"
+                                aria-label="${this.t.templateBasedStarters}"
+                                aria-describedby="template-count"
+                              >
+                                ${renderEntries(skeletonEntries)}
+                              </div>`
+                            : html`<p
+                                role="status"
+                                class="no-results"
+                                aria-live="polite"
+                              >
+                                ${this.t.noTemplatesMatchFilters}
+                              </p>`
+                        }
+                      </div>
+
+                      <div
+                        class="template-group"
+                        role="region"
+                        aria-labelledby="from-scratch-heading"
+                        aria-live="polite"
+                      >
+                        <h3
+                          id="from-scratch-heading"
+                          class="template-group-heading"
+                        >
+                          ${this.t.fromScratchUsingTheme}
+                        </h3>
+                        ${
+                          blankEntries.length > 0
+                            ? html`<div
+                                class="template-results"
+                                role="grid"
+                                aria-label="${this.t.themeBasedStarters}"
+                                aria-describedby="template-count"
+                              >
+                                ${renderEntries(blankEntries)}
+                              </div>`
+                            : html`<p
+                                role="status"
+                                class="no-results"
+                                aria-live="polite"
+                              >
+                                ${this.t.noThemesMatchFilters}
+                              </p>`
+                        }
+                      </div>
+
+                      ${
+                        !isMobile
+                          ? html`
+                              <div
+                                class="template-group"
+                                role="region"
+                                aria-labelledby="from-existing-heading"
+                                aria-live="polite"
+                              >
+                                <h3
+                                  id="from-existing-heading"
+                                  class="template-group-heading"
+                                >
+                                  ${this.t.fromExistingSource}
+                                </h3>
+                                ${
+                                  importEntries.length > 0
+                                    ? html`<div
+                                        class="template-results"
+                                        role="grid"
+                                        aria-label="${this.t.importOptions}"
+                                        aria-describedby="template-count"
+                                      >
+                                        ${renderEntries(importEntries)}
+                                      </div>`
+                                    : html`<p
+                                        role="status"
+                                        class="no-results"
+                                        aria-live="polite"
+                                      >
+                                        ${this.t.noImportOptionsMatchFilters}
+                                      </p>`
+                                }
+                              </div>
+                            `
+                          : ""
+                      }
+                    `;
+                  })()
+                : this.loading
+                  ? html`<p
+                      role="status"
+                      class="loading-message"
+                      aria-live="polite"
+                    >
+                      ${this.t.loadingTemplates}
+                    </p>`
+                  : this.items && this.items.length > 0
+                    ? html`<p
+                        role="status"
+                        class="no-results"
+                        aria-live="polite"
+                      >
+                        ${this.t.noTemplatesMatchResetFilters}
+                      </p>`
+                    : html`
+                        <div class="fallback-message">
+                          <p
+                            role="status"
+                            class="no-results"
+                            aria-live="polite"
+                          >
+                            ${this.errorMessage || this.t.noTemplatesAvailable}
+                          </p>
                           <app-hax-use-case
-                            data-item-index="${entry.index}"
-                            data-data-type="${entry.item.dataType}"
-                            .source=${entry.item.useCaseImage || ""}
-                            .title=${entry.item.useCaseTitle || ""}
-                            .description=${entry.item.useCaseDescription || ""}
-                            .demoLink=${entry.item.demoLink || ""}
-                            .iconImage=${entry.item.useCaseIcon || []}
-                            .isSelected=${entry.item.isSelected || false}
-                            .showContinue=${entry.item.showContinue || false}
+                            .source=""
+                            .title="${this.t.blankSite}"
+                            .description="${this.t.blankSiteDescription}"
+                            .iconImage=${[]}
+                            .isSelected=${this.selectedCardIndex === -1}
+                            .showContinue=${this.selectedCardIndex === -1}
                             ?dark="${this.dark}"
-                            @toggle-display=${(e) =>
-                              this.toggleDisplay(entry.index, e)}
-                            @continue-action=${() =>
-                              this.continueAction(entry.index)}
+                            @toggle-display=${(e) => this.toggleDisplay(-1, e)}
+                            @continue-action=${() => this.continueAction(-1)}
                           ></app-hax-use-case>
                         </div>
-                      `,
-                    );
-                  };
-
-                  return html`
-                    <div
-                      class="template-group"
-                      role="region"
-                      aria-labelledby="from-template-heading"
-                      aria-live="polite"
-                    >
-                      <h3
-                        id="from-template-heading"
-                        class="template-group-heading"
-                      >
-                        ${this.t.fromTemplate}
-                      </h3>
-                      ${skeletonEntries.length > 0
-                        ? html`<div
-                            class="template-results"
-                            role="grid"
-                            aria-label="${this.t.templateBasedStarters}"
-                            aria-describedby="template-count"
-                          >
-                            ${renderEntries(skeletonEntries)}
-                          </div>`
-                        : html`<p
-                            role="status"
-                            class="no-results"
-                            aria-live="polite"
-                          >
-                            ${this.t.noTemplatesMatchFilters}
-                          </p>`}
-                    </div>
-
-                    <div
-                      class="template-group"
-                      role="region"
-                      aria-labelledby="from-scratch-heading"
-                      aria-live="polite"
-                    >
-                      <h3
-                        id="from-scratch-heading"
-                        class="template-group-heading"
-                      >
-                        ${this.t.fromScratchUsingTheme}
-                      </h3>
-                      ${blankEntries.length > 0
-                        ? html`<div
-                            class="template-results"
-                            role="grid"
-                            aria-label="${this.t.themeBasedStarters}"
-                            aria-describedby="template-count"
-                          >
-                            ${renderEntries(blankEntries)}
-                          </div>`
-                        : html`<p
-                            role="status"
-                            class="no-results"
-                            aria-live="polite"
-                          >
-                            ${this.t.noThemesMatchFilters}
-                          </p>`}
-                    </div>
-
-                    ${!isMobile
-                      ? html`
-                          <div
-                            class="template-group"
-                            role="region"
-                            aria-labelledby="from-existing-heading"
-                            aria-live="polite"
-                          >
-                            <h3
-                              id="from-existing-heading"
-                              class="template-group-heading"
-                            >
-                              ${this.t.fromExistingSource}
-                            </h3>
-                            ${importEntries.length > 0
-                              ? html`<div
-                                  class="template-results"
-                                  role="grid"
-                                  aria-label="${this.t.importOptions}"
-                                  aria-describedby="template-count"
-                                >
-                                  ${renderEntries(importEntries)}
-                                </div>`
-                              : html`<p
-                                  role="status"
-                                  class="no-results"
-                                  aria-live="polite"
-                                >
-                                  ${this.t.noImportOptionsMatchFilters}
-                                </p>`}
-                          </div>
-                        `
-                      : ""}
-                  `;
-                })()
-              : this.loading
-                ? html`<p
-                    role="status"
-                    class="loading-message"
-                    aria-live="polite"
-                  >
-                    ${this.t.loadingTemplates}
-                  </p>`
-                : this.items && this.items.length > 0
-                  ? html`<p role="status" class="no-results" aria-live="polite">
-                      ${this.t.noTemplatesMatchResetFilters}
-                    </p>`
-                  : html`
-                      <div class="fallback-message">
-                        <p role="status" class="no-results" aria-live="polite">
-                          ${this.errorMessage || this.t.noTemplatesAvailable}
-                        </p>
-                        <app-hax-use-case
-                          .source=""
-                          .title="${this.t.blankSite}"
-                          .description="${this.t.blankSiteDescription}"
-                          .iconImage=${[]}
-                          .isSelected=${this.selectedCardIndex === -1}
-                          .showContinue=${this.selectedCardIndex === -1}
-                          ?dark="${this.dark}"
-                          @toggle-display=${(e) => this.toggleDisplay(-1, e)}
-                          @continue-action=${() => this.continueAction(-1)}
-                        ></app-hax-use-case>
-                      </div>
-                    `}
+                      `
+            }
           </section>
         </div>
       </div>
@@ -2869,9 +2893,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
     try {
       const [{ MicroFrontendRegistry }, { enableServices }] = await Promise.all(
         [
-          import(
-            "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js"
-          ),
+          import("@haxtheweb/micro-frontend-registry/micro-frontend-registry.js"),
           import("@haxtheweb/micro-frontend-registry/lib/microServices.js"),
         ],
       );
@@ -2883,9 +2905,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
         const fileType = selectedTemplate.fileType || "docx";
         // Ensure the file broker is available
         if (fileType === "docx") {
-          await import(
-            "@haxtheweb/file-system-broker/lib/docx-file-system-broker.js"
-          );
+          await import("@haxtheweb/file-system-broker/lib/docx-file-system-broker.js");
         } else {
           await import("@haxtheweb/file-system-broker/file-system-broker.js");
         }

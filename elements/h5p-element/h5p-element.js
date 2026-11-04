@@ -180,42 +180,52 @@ class H5PElement extends I18NMixin(LitElement) {
           <span class="h5p-el-frame-label"
             >${this.t.activity} · ${this.t.interactive} (H5P)</span
           >
-          ${this._canFullscreen
-            ? html`<button
-                class="h5p-el-frame-open"
-                type="button"
-                aria-label="${fsLabel}"
-                title="${fsLabel}"
-                aria-pressed="${this._fullscreen ? "true" : "false"}"
-                @click="${this._toggleFullscreen}"
-              >
-                <simple-icon-lite
-                  icon="${this._fullscreen
-                    ? "icons:fullscreen-exit"
-                    : "icons:fullscreen"}"
-                  aria-hidden="true"
-                ></simple-icon-lite>
-              </button>`
-            : ``}
+          ${
+            this._canFullscreen
+              ? html`<button
+                  class="h5p-el-frame-open"
+                  type="button"
+                  aria-label="${fsLabel}"
+                  title="${fsLabel}"
+                  aria-pressed="${this._fullscreen ? "true" : "false"}"
+                  @click="${this._toggleFullscreen}"
+                >
+                  <simple-icon-lite
+                    icon="${
+                      this._fullscreen
+                        ? "icons:fullscreen-exit"
+                        : "icons:fullscreen"
+                    }"
+                    aria-hidden="true"
+                  ></simple-icon-lite>
+                </button>`
+              : ``
+          }
         </div>
         <div class="h5p-el-frame-body">
-          ${!this.source
-            ? html`<h5p-wrapped-element><slot></slot></h5p-wrapped-element>`
-            : html`<div
-                  class="h5p-container"
-                  data-content-id="wrapper-${this.contentId}"
-                ></div>
-                ${this.status === "loading" || this.status === "error"
-                  ? html`<p
-                      role="status"
-                      aria-live="polite"
-                      style="margin:0;padding:var(--ddd-spacing-3, 12px);font-family:var(--ddd-font-navigation, sans-serif);font-size:var(--ddd-font-size-xs, 14px);"
-                    >
-                      ${this.status === "loading"
-                        ? "Unpacking H5P content…"
-                        : this.errorMessage}
-                    </p>`
-                  : ""}`}
+          ${
+            !this.source
+              ? html`<h5p-wrapped-element><slot></slot></h5p-wrapped-element>`
+              : html`<div
+                    class="h5p-container"
+                    data-content-id="wrapper-${this.contentId}"
+                  ></div>
+                  ${
+                    this.status === "loading" || this.status === "error"
+                      ? html`<p
+                          role="status"
+                          aria-live="polite"
+                          style="margin:0;padding:var(--ddd-spacing-3, 12px);font-family:var(--ddd-font-navigation, sans-serif);font-size:var(--ddd-font-size-xs, 14px);"
+                        >
+                          ${
+                            this.status === "loading"
+                              ? "Unpacking H5P content…"
+                              : this.errorMessage
+                          }
+                        </p>`
+                      : ""
+                  }`
+          }
         </div>
       </div>`;
   }

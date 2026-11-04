@@ -56,29 +56,33 @@ class ImgPanZoom extends LitElement {
   render() {
     return html`
       <!-- Only preload regular images -->
-      ${!this.dzi
-        ? html`
-            ${this.hideSpinner || this.loaded
-              ? ``
-              : html`
-                  <div id="loader">
-                    <hexagon-loader
-                      ?loading=${this.loading || !this.loaded}
-                      item-count="4"
-                      size="small"
-                    ></hexagon-loader>
-                  </div>
-                `}
-            <img-loader
-              ?loaded="${this.loaded}"
-              @loaded-changed="${this.loadedChangedEvent}"
-              ?loading="${this.loading}"
-              @loading-changed="${this.loadingChangedEvent}"
-              src="${this.src || (this.sources || [])[0]}"
-              described-by="${this.describedBy || ""}"
-            ></img-loader>
-          `
-        : ""}
+      ${
+        !this.dzi
+          ? html`
+              ${
+                this.hideSpinner || this.loaded
+                  ? ``
+                  : html`
+                      <div id="loader">
+                        <hexagon-loader
+                          ?loading=${this.loading || !this.loaded}
+                          item-count="4"
+                          size="small"
+                        ></hexagon-loader>
+                      </div>
+                    `
+              }
+              <img-loader
+                ?loaded="${this.loaded}"
+                @loaded-changed="${this.loadedChangedEvent}"
+                ?loading="${this.loading}"
+                @loading-changed="${this.loadingChangedEvent}"
+                src="${this.src || (this.sources || [])[0]}"
+                described-by="${this.describedBy || ""}"
+              ></img-loader>
+            `
+          : ""
+      }
 
       <!-- Openseadragon -->
       <div id="viewer"></div>

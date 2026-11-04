@@ -62,11 +62,9 @@ class ShortAnswerQuestion extends QuestionElement {
       <simple-fields-field
         type="textarea"
         ?disabled="${this.disabled || this.showAnswer}"
-        class="tag-option ${this.showAnswer
-          ? this.isCorrect()
-            ? "correct"
-            : "incorrect"
-          : ""}"
+        class="tag-option ${
+          this.showAnswer ? (this.isCorrect() ? "correct" : "incorrect") : ""
+        }"
         property="oer:answer"
         name="0"
         @keydown="${(e) => {

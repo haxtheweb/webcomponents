@@ -226,7 +226,7 @@ class CountUpElement extends IntersectionObserverMixin(LitElement) {
   _prefersReducedMotion() {
     return Boolean(
       globalThis.matchMedia &&
-        globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches,
+      globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches,
     );
   }
 

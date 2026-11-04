@@ -974,7 +974,6 @@ export class DocumentationPlayer extends DDDSuper(I18NMixin(LitElement)) {
     const text = this.snippets[key] || "";
     let ok = false;
     try {
-      // eslint-disable-next-line baseline-js/use-baseline -- try/catch falls back to execCommand copy
       await globalThis.navigator.clipboard.writeText(text);
       ok = true;
     } catch {
@@ -1037,13 +1036,15 @@ export class DocumentationPlayer extends DDDSuper(I18NMixin(LitElement)) {
     return html`<div class="badges">
       <span class="badge">${d.package}@${d.version}</span>
       <span class="badge">${d.license || ""}</span>
-      ${state === "reviewed"
-        ? html`<span class="badge ok">${this.t.reviewed}</span>`
-        : state === "awaiting"
-          ? html`<span class="badge">${this.t.awaitingReview}</span>`
-          : state === "stale"
-            ? html`<span class="badge warn">${this.t.stale}</span>`
-            : ""}
+      ${
+        state === "reviewed"
+          ? html`<span class="badge ok">${this.t.reviewed}</span>`
+          : state === "awaiting"
+            ? html`<span class="badge">${this.t.awaitingReview}</span>`
+            : state === "stale"
+              ? html`<span class="badge warn">${this.t.stale}</span>`
+              : ""
+      }
     </div>`;
   }
 
@@ -1067,11 +1068,13 @@ export class DocumentationPlayer extends DDDSuper(I18NMixin(LitElement)) {
           aria-pressed="${this.playing}"
           @click="${this._togglePlay}"
         >
-          ${this.playing
-            ? this.t.pause
-            : this.finished
-              ? this.t.replay
-              : this.t.play}
+          ${
+            this.playing
+              ? this.t.pause
+              : this.finished
+                ? this.t.replay
+                : this.t.play
+          }
         </button>
         <input
           type="range"
@@ -1113,24 +1116,28 @@ export class DocumentationPlayer extends DDDSuper(I18NMixin(LitElement)) {
         this.videos,
         v ? (this.videoFor(this.topic) || {}).id : "",
       )}
-      ${v
-        ? html`<video-player
-              source="${v.source}"
-              media-title="${v.title}"
-              track="${ifDefined(v.captions || undefined)}"
-            ></video-player>
-            ${v.tutorial
-              ? html`<div class="row">
-                  <a
-                    class="btn"
-                    href="${v.tutorial}"
-                    target="_blank"
-                    rel="noopener"
-                    >${this.t.openTutorial}</a
-                  >
-                </div>`
-              : ""}`
-        : html`<slot></slot>`}
+      ${
+        v
+          ? html`<video-player
+                source="${v.source}"
+                media-title="${v.title}"
+                track="${ifDefined(v.captions || undefined)}"
+              ></video-player>
+              ${
+                v.tutorial
+                  ? html`<div class="row">
+                      <a
+                        class="btn"
+                        href="${v.tutorial}"
+                        target="_blank"
+                        rel="noopener"
+                        >${this.t.openTutorial}</a
+                      >
+                    </div>`
+                  : ""
+              }`
+          : html`<slot></slot>`
+      }
     </section>`;
   }
 
@@ -1144,27 +1151,33 @@ export class DocumentationPlayer extends DDDSuper(I18NMixin(LitElement)) {
       <h3>${this.t.demoMarkup}</h3>
       <pre>${d ? d.demoHtml : this.childMarkup}</pre>
       <div class="row">
-        ${d
-          ? html`<button class="btn primary" @click="${this._runLive}">
-              ${this.t.runLive}
-            </button>`
-          : ""}
-        ${demoHref
-          ? html`<a
-              class="btn"
-              href="${demoHref}"
-              target="_blank"
-              rel="noopener"
-              >${this.t.openDemoSource}</a
-            >`
-          : ""}
+        ${
+          d
+            ? html`<button class="btn primary" @click="${this._runLive}">
+                ${this.t.runLive}
+              </button>`
+            : ""
+        }
+        ${
+          demoHref
+            ? html`<a
+                class="btn"
+                href="${demoHref}"
+                target="_blank"
+                rel="noopener"
+                >${this.t.openDemoSource}</a
+              >`
+            : ""
+        }
       </div>
       <p class="note" ?hidden="${!d}">
-        ${this.liveState === "ok"
-          ? this.t.liveOk
-          : this.liveState === "fail"
-            ? this.t.liveFail
-            : this.t.liveNote}
+        ${
+          this.liveState === "ok"
+            ? this.t.liveOk
+            : this.liveState === "fail"
+              ? this.t.liveFail
+              : this.t.liveNote
+        }
       </p>
       <div class="demo-mount" id="mount" ?hidden="${!this.liveState}"></div>
     </section>`;
@@ -1190,50 +1203,62 @@ export class DocumentationPlayer extends DDDSuper(I18NMixin(LitElement)) {
             </tr>
           </thead>
           <tbody>
-            ${d.attributes.length
-              ? d.attributes.map(
-                  (a) =>
-                    html`<tr>
-                      <td><code>${a.name}</code></td>
-                      <td>${a.type}</td>
-                      <td>
-                        ${a.default === ""
-                          ? "-"
-                          : html`<code>${a.default}</code>`}
-                      </td>
-                      <td>${a.description || "-"}</td>
-                      <td>
-                        ${a.hax
-                          ? `${a.hax.input}${a.hax.options ? `: ${Object.keys(a.hax.options).join(", ")}` : ""}`
-                          : "-"}
-                      </td>
-                    </tr>`,
-                )
-              : html`<tr>
-                  <td colspan="5">${this.t.none}</td>
-                </tr>`}
+            ${
+              d.attributes.length
+                ? d.attributes.map(
+                    (a) =>
+                      html`<tr>
+                        <td><code>${a.name}</code></td>
+                        <td>${a.type}</td>
+                        <td>
+                          ${
+                            a.default === ""
+                              ? "-"
+                              : html`<code>${a.default}</code>`
+                          }
+                        </td>
+                        <td>${a.description || "-"}</td>
+                        <td>
+                          ${
+                            a.hax
+                              ? `${a.hax.input}${a.hax.options ? `: ${Object.keys(a.hax.options).join(", ")}` : ""}`
+                              : "-"
+                          }
+                        </td>
+                      </tr>`,
+                  )
+                : html`<tr>
+                    <td colspan="5">${this.t.none}</td>
+                  </tr>`
+            }
           </tbody>
         </table>
       </div>
       <h3>${this.t.slots}</h3>
       <div class="chips">
-        ${d.slots.length
-          ? d.slots.map((s) => html`<code>${s}</code>`)
-          : this.t.none}
+        ${
+          d.slots.length
+            ? d.slots.map((s) => html`<code>${s}</code>`)
+            : this.t.none
+        }
       </div>
       <h3>${this.t.events}</h3>
       <div class="chips">
-        ${d.events.length
-          ? d.events.map((s) => html`<code>${s}</code>`)
-          : this.t.none}
+        ${
+          d.events.length
+            ? d.events.map((s) => html`<code>${s}</code>`)
+            : this.t.none
+        }
       </div>
-      ${docsHref
-        ? html`<div class="row">
-            <a class="btn" href="${docsHref}" target="_blank" rel="noopener"
-              >${this.t.openDocs}</a
-            >
-          </div>`
-        : ""}
+      ${
+        docsHref
+          ? html`<div class="row">
+              <a class="btn" href="${docsHref}" target="_blank" rel="noopener"
+                >${this.t.openDocs}</a
+              >
+            </div>`
+          : ""
+      }
     </section>`;
   }
 
@@ -1316,11 +1341,13 @@ export class DocumentationPlayer extends DDDSuper(I18NMixin(LitElement)) {
         </button>
         ${this.inHax ? this.renderHAXInjectButton() : ""}
         <span class="grow"></span>
-        ${tree
-          ? html`<a href="${tree}" target="_blank" rel="noopener"
-              >${this.t.source}</a
-            >`
-          : ""}
+        ${
+          tree
+            ? html`<a href="${tree}" target="_blank" rel="noopener"
+                >${this.t.source}</a
+              >`
+            : ""
+        }
       </div>
     `;
   }
@@ -1331,19 +1358,23 @@ export class DocumentationPlayer extends DDDSuper(I18NMixin(LitElement)) {
       <div class="head">
         <div>
           <h2>
-            ${this.url
-              ? html`<a href="${this.url}" target="_blank" rel="noopener"
-                  >${this.label}</a
-                >`
-              : this.label}
+            ${
+              this.url
+                ? html`<a href="${this.url}" target="_blank" rel="noopener"
+                    >${this.label}</a
+                  >`
+                : this.label
+            }
           </h2>
-          ${this.imageUrl
-            ? html`<p class="meta">
-                <a href="${this.imageUrl}" target="_blank" rel="noopener"
-                  >${this.t.openPreviewSource}</a
-                >
-              </p>`
-            : ""}
+          ${
+            this.imageUrl
+              ? html`<p class="meta">
+                  <a href="${this.imageUrl}" target="_blank" rel="noopener"
+                    >${this.t.openPreviewSource}</a
+                  >
+                </p>`
+              : ""
+          }
         </div>
       </div>
       <nav

@@ -623,9 +623,11 @@ class ChatInterface extends DDD {
     return html`
       <div class="chat-interface-wrapper">
         <div class="chat-wrapper">
-          ${ChatStore.developerModeEnabled
-            ? html` <chat-developer-panel></chat-developer-panel> `
-            : ""}
+          ${
+            ChatStore.developerModeEnabled
+              ? html` <chat-developer-panel></chat-developer-panel> `
+              : ""
+          }
           <div class="main-wrapper">
             <chat-control-bar></chat-control-bar>
             <div class="chat-container">
@@ -638,8 +640,9 @@ class ChatInterface extends DDD {
                     <chat-message
                       message="${message.message}"
                       ?sent-prompt="${message.author === ChatStore.userName}"
-                      ?suggested-prompts="${ChatStore.currentSuggestions
-                        .length > 0}"
+                      ?suggested-prompts="${
+                        ChatStore.currentSuggestions.length > 0
+                      }"
                     ></chat-message>
                   `,
                 )}

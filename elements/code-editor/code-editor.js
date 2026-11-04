@@ -194,12 +194,14 @@ class CodeEditor extends I18NMixin(SchemaBehaviors(LitElement)) {
       ><code>
   ${this.placeholder}</code></pre>
       <slot hidden></slot>
-      ${this.showCodePen
-        ? html`<div class="code-pen-container" part="code-pen">
-            <span>${this.t.checkItOutOnCodePen} </span
-            ><code-pen-button .data="${this.codePenData}"></code-pen-button>
-          </div>`
-        : ``}
+      ${
+        this.showCodePen
+          ? html`<div class="code-pen-container" part="code-pen">
+              <span>${this.t.checkItOutOnCodePen} </span
+              ><code-pen-button .data="${this.codePenData}"></code-pen-button>
+            </div>`
+          : ``
+      }
     `;
   }
 

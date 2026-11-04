@@ -78,9 +78,9 @@ class SimpleIconsetDemo extends LitElement {
                           icon="${iconset.name}:${icon}"
                         ></simple-icon-lite>
                         <div id="icon-text">
-                          ${iconset.name === "icons"
-                            ? ""
-                            : `${iconset.name}:`}${icon}
+                          ${
+                            iconset.name === "icons" ? "" : `${iconset.name}:`
+                          }${icon}
                         </div>
                       </div>
                     </li>

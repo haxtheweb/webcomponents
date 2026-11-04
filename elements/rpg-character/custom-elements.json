@@ -1150,6 +1150,33 @@
             },
             {
               "kind": "field",
+              "name": "dirty",
+              "description": "true when the code differs from what the builder opened with",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_save"
+            },
+            {
+              "kind": "method",
+              "name": "_cancel"
+            },
+            {
+              "kind": "method",
+              "name": "_step",
+              "parameters": [
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "delta"
+                }
+              ],
+              "description": "step a numbered look choice (body, skin...) to the previous or next"
+            },
+            {
+              "kind": "field",
               "name": "character",
               "readonly": true
             },
@@ -1264,6 +1291,10 @@
               ]
             },
             {
+              "kind": "method",
+              "name": "renderActions"
+            },
+            {
               "kind": "field",
               "name": "code",
               "privacy": "public",
@@ -1298,6 +1329,40 @@
             },
             {
               "kind": "field",
+              "name": "actions",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Draw a Cancel / Save action bar (in a dialog). Save fires\nrpg-character-builder-save, Cancel rpg-character-builder-cancel.",
+              "default": "false",
+              "attribute": "actions",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "saveLabel",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Label for Save in the action bar",
+              "default": "\"\"",
+              "attribute": "save-label"
+            },
+            {
+              "kind": "field",
+              "name": "cancelLabel",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Label for Cancel in the action bar",
+              "default": "\"\"",
+              "attribute": "cancel-label"
+            },
+            {
+              "kind": "field",
               "name": "_labels",
               "privacy": "public",
               "type": {
@@ -1308,14 +1373,34 @@
             },
             {
               "kind": "field",
+              "name": "_initialCode",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
               "name": "t",
               "type": {
                 "text": "object"
               },
-              "default": "{ characterBuilder: \"Character builder\", name: \"Name\", randomize: \"Randomize\", look: \"Look\", style: \"Style\", gear: \"Gear\", extras: \"Extras\", body: \"Body\", skin: \"Skin\", hair: \"Hair\", hairColor: \"Hair color\", face: \"Face\", faceItem: \"Glasses\", accessory: \"Neckwear\", shirt: \"Shirt\", pants: \"Pants\", circle: \"Circle background\", copyCode: \"Copy code\", copied: \"Copied!\", invalidCode: \"That is not a character code.\", preview: \"Character preview\", }"
+              "default": "{ characterBuilder: \"Character builder\", name: \"Name\", randomize: \"Randomize\", look: \"Look\", style: \"Style\", gear: \"Gear\", extras: \"Extras\", body: \"Body\", skin: \"Skin\", hair: \"Hair\", hairColor: \"Hair color\", face: \"Face\", faceItem: \"Glasses\", accessory: \"Neckwear\", shirt: \"Shirt\", pants: \"Pants\", circle: \"Circle background\", copyCode: \"Copy code\", copied: \"Copied!\", invalidCode: \"That is not a character code.\", preview: \"Character preview\", previous: \"Previous {name}\", next: \"Next {name}\", variant: \"{current} of {total}\", save: \"Save\", cancel: \"Cancel\", unsavedChanges: \"Unsaved changes\", noUnsavedChanges: \"No unsaved changes\", codeHelp: \"Paste a code to load a character, or copy this one to use it anywhere.\", }"
             }
           ],
           "events": [
+            {
+              "name": "rpg-character-builder-save",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "rpg-character-builder-cancel",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
             {
               "name": "value-changed",
               "type": {
@@ -1350,6 +1435,33 @@
               },
               "default": "\"\"",
               "fieldName": "status"
+            },
+            {
+              "name": "actions",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Draw a Cancel / Save action bar (in a dialog). Save fires\nrpg-character-builder-save, Cancel rpg-character-builder-cancel.",
+              "default": "false",
+              "fieldName": "actions"
+            },
+            {
+              "name": "save-label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Label for Save in the action bar",
+              "default": "\"\"",
+              "fieldName": "saveLabel"
+            },
+            {
+              "name": "cancel-label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Label for Cancel in the action bar",
+              "default": "\"\"",
+              "fieldName": "cancelLabel"
             },
             {
               "name": "_labels",

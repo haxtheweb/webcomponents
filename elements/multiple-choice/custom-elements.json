@@ -427,6 +427,19 @@
             },
             {
               "kind": "method",
+              "name": "_resultIconWord",
+              "parameters": [
+                {
+                  "name": "correct"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "renderStackStatus",
               "parameters": [
                 {
@@ -513,6 +526,19 @@
             {
               "kind": "method",
               "name": "renderLegend",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderFeedbackSlots",
+              "parameters": [
+                {
+                  "name": "correct"
+                }
+              ],
               "inheritedFrom": {
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"
@@ -1580,6 +1606,15 @@
             },
             {
               "kind": "method",
+              "name": "_resultIconWord",
+              "parameters": [
+                {
+                  "name": "correct"
+                }
+              ]
+            },
+            {
+              "kind": "method",
               "name": "renderStackStatus",
               "parameters": [
                 {
@@ -1638,6 +1673,15 @@
             {
               "kind": "method",
               "name": "renderLegend"
+            },
+            {
+              "kind": "method",
+              "name": "renderFeedbackSlots",
+              "parameters": [
+                {
+                  "name": "correct"
+                }
+              ]
             },
             {
               "kind": "method",
@@ -2781,6 +2825,19 @@
             },
             {
               "kind": "method",
+              "name": "_resultIconWord",
+              "parameters": [
+                {
+                  "name": "correct"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "renderStackStatus",
               "parameters": [
                 {
@@ -2851,6 +2908,19 @@
             {
               "kind": "method",
               "name": "renderLegend",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderFeedbackSlots",
+              "parameters": [
+                {
+                  "name": "correct"
+                }
+              ],
               "inheritedFrom": {
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"
@@ -4099,6 +4169,19 @@
             },
             {
               "kind": "method",
+              "name": "_resultIconWord",
+              "parameters": [
+                {
+                  "name": "correct"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "renderStackStatus",
               "parameters": [
                 {
@@ -4193,6 +4276,19 @@
             {
               "kind": "method",
               "name": "renderLegend",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderFeedbackSlots",
+              "parameters": [
+                {
+                  "name": "correct"
+                }
+              ],
               "inheritedFrom": {
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"

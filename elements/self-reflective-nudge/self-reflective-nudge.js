@@ -390,16 +390,20 @@ export class SelfReflectiveNudge extends DDDSuper(I18NMixin(LitElement)) {
             )}
           </div>
           <div class="nudge-region" role="status" aria-live="polite">
-            ${nudge && nudge.nudge
-              ? html`<div class="nudge" part="nudge">
-                  <p><strong>${this.t.nudge}:</strong> ${nudge.nudge}</p>
-                  ${link
-                    ? html`<a href="${link}" part="link"
-                        >${this.t.reviewLink}</a
-                      >`
-                    : nothing}
-                </div>`
-              : nothing}
+            ${
+              nudge && nudge.nudge
+                ? html`<div class="nudge" part="nudge">
+                    <p><strong>${this.t.nudge}:</strong> ${nudge.nudge}</p>
+                    ${
+                      link
+                        ? html`<a href="${link}" part="link"
+                            >${this.t.reviewLink}</a
+                          >`
+                        : nothing
+                    }
+                  </div>`
+                : nothing
+            }
           </div>
         </fieldset>
       </div>

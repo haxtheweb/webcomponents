@@ -606,58 +606,69 @@ export class LinkCardTheme extends HAXCMSThemeParts(
           id="main-content"
           tabindex="-1"
         >
-          ${this.profileImage
-            ? html`<img
-                class="profile-image"
-                src="${this.profileImage}"
-                alt="${profileAlt}"
-                loading="lazy"
-                decoding="async"
-                fetchpriority="low"
-              />`
-            : html`<div class="profile-image-fallback" aria-hidden="true">
-                <simple-icon-lite icon="account-circle"></simple-icon-lite>
-              </div>`}
+          ${
+            this.profileImage
+              ? html`<img
+                  class="profile-image"
+                  src="${this.profileImage}"
+                  alt="${profileAlt}"
+                  loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                />`
+              : html`<div class="profile-image-fallback" aria-hidden="true">
+                  <simple-icon-lite icon="account-circle"></simple-icon-lite>
+                </div>`
+          }
           <h1>${this.profileName}</h1>
-          ${this.profileDescription
-            ? html`<p class="description">${this.profileDescription}</p>`
-            : ``}
+          ${
+            this.profileDescription
+              ? html`<p class="description">${this.profileDescription}</p>`
+              : ``
+          }
           <nav class="primary-links" aria-label="${this.t.primaryLinks}">
-            ${this.linkItems.length > 0
-              ? this.linkItems.map(
-                  (item) =>
-                    html`<a
-                      class="link-button"
-                      href="${item.href}"
-                      target="${item.target}"
-                      rel="${ifDefined(item.rel)}"
-                      @click="${this.testEditMode}"
-                      >${item.title}</a
-                    >`,
-                )
-              : html`<p class="empty-state">${this.t.emptyStateLinks}</p>`}
-          </nav>
-          ${this.socialItems.length > 0
-            ? html`<ul class="social-links" aria-label="${this.t.socialLinks}">
-                ${this.socialItems.map(
-                  (item) =>
-                    html`<li>
-                      <a
-                        class="social-link"
+            ${
+              this.linkItems.length > 0
+                ? this.linkItems.map(
+                    (item) =>
+                      html`<a
+                        class="link-button"
                         href="${item.href}"
                         target="${item.target}"
                         rel="${ifDefined(item.rel)}"
                         @click="${this.testEditMode}"
-                        aria-label="${this._socialAriaLabel(item)}"
-                      >
-                        <simple-icon-lite
-                          icon="${this._socialIcon(item.socialType)}"
-                        ></simple-icon-lite>
-                      </a>
-                    </li>`,
-                )}
-              </ul>`
-            : ``}
+                        >${item.title}</a
+                      >`,
+                  )
+                : html`<p class="empty-state">${this.t.emptyStateLinks}</p>`
+            }
+          </nav>
+          ${
+            this.socialItems.length > 0
+              ? html`<ul
+                  class="social-links"
+                  aria-label="${this.t.socialLinks}"
+                >
+                  ${this.socialItems.map(
+                    (item) =>
+                      html`<li>
+                        <a
+                          class="social-link"
+                          href="${item.href}"
+                          target="${item.target}"
+                          rel="${ifDefined(item.rel)}"
+                          @click="${this.testEditMode}"
+                          aria-label="${this._socialAriaLabel(item)}"
+                        >
+                          <simple-icon-lite
+                            icon="${this._socialIcon(item.socialType)}"
+                          ></simple-icon-lite>
+                        </a>
+                      </li>`,
+                  )}
+                </ul>`
+              : ``
+          }
         </main>
         <div id="contentcontainer">
           <div id="slot"><slot></slot></div>

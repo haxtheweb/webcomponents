@@ -226,29 +226,33 @@ export class SuperDaemonToast extends I18NMixin(SimpleToastEl) {
 
   render() {
     return html` <div class="bubble">
-      ${this.awaitingMerlinInput
-        ? html`<simple-icon-lite
-            class="awaiting-input"
-            icon="hax:loading"
-          ></simple-icon-lite>`
-        : html`
-            <simple-icon
-              class="merlin"
-              icon="hax:wand"
-              accent-color="purple"
-            ></simple-icon>
-          `}
+      ${
+        this.awaitingMerlinInput
+          ? html`<simple-icon-lite
+              class="awaiting-input"
+              icon="hax:loading"
+            ></simple-icon-lite>`
+          : html`
+              <simple-icon
+                class="merlin"
+                icon="hax:wand"
+                accent-color="purple"
+              ></simple-icon>
+            `
+      }
       <span class="bubble rightedge"></span>
       <span class="bubble mid">
         <slot name="pre"></slot>
-        ${this.future
-          ? html` <future-terminal-text
-              fadein
-              glitch
-              glitch-max="3"
-              glitch-duration="40"
-            ></future-terminal-text>`
-          : html`${this.text}`}
+        ${
+          this.future
+            ? html` <future-terminal-text
+                fadein
+                glitch
+                glitch-max="3"
+                glitch-duration="40"
+              ></future-terminal-text>`
+            : html`${this.text}`
+        }
         <slot></slot>
       </span>
       <span class="bubble leftedge"></span>

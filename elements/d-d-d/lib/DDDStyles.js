@@ -500,8 +500,9 @@ export const DDDVariables = css`
     --ddd-font-primary: "Roboto", "Franklin Gothic Medium", Tahoma, sans-serif;
     --ddd-font-secondary: "Roboto Slab", serif;
     --ddd-font-navigation: "Roboto Condensed", sans-serif; /* navigation font */
-    --ddd-font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas,
-      "Liberation Mono", "Courier New", monospace; /* code, keyboard input, tabular data */
+    --ddd-font-mono:
+      ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono",
+      "Courier New", monospace; /* code, keyboard input, tabular data */
 
     /* font weights - generalized */
     --ddd-font-weight-light: 300;
@@ -1078,14 +1079,8 @@ const DDDDataAttributesStart = css`
       font-style: normal;
       position: absolute;
       padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
-      color: var(
-        --ddd-theme-font-color,
-        var(--ddd-theme-default-white, #fff)
-      );
-      background-color: var(
-        --ddd-theme-default-info,
-        rgba(175, 184, 193, 0.2)
-      );
+      color: var(--ddd-theme-font-color, var(--ddd-theme-default-white, #fff));
+      background-color: var(--ddd-theme-default-info, rgba(175, 184, 193, 0.2));
       font-size: var(--ddd-theme-body-font-size);
       font-weight: var(--ddd-font-weight-regular);
       border-radius: var(--ddd-radius-xs);
@@ -1133,8 +1128,8 @@ export const DDDSkeleton = css`
     background-repeat: no-repeat;
     border-radius: var(--ddd-skeleton-radius);
     color: transparent;
-    animation: ddd-skeleton var(--ddd-skeleton-duration)
-      var(--ddd-timing-ease) infinite;
+    animation: ddd-skeleton var(--ddd-skeleton-duration) var(--ddd-timing-ease)
+      infinite;
   }
   [data-skeleton="text"] {
     height: var(--ddd-skeleton-text-height);
@@ -2212,7 +2207,8 @@ const DDDResetEnd = css`
       (
           var(--initialLetter) * var(--ddd-theme-body-font-size) * 1.5 *
             var(--special-multiplier)
-        ) + 20px
+        ) +
+        20px
     );
   }
 

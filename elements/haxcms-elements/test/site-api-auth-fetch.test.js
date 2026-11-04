@@ -53,9 +53,8 @@ describe("site-api-auth-fetch", () => {
   it("shares its state key with the site API registry", async () => {
     // importing the registry must not replace or fork the state object the
     // helper reads; configureHAXCMSSiteApiRegistry writes auth.jwt into it
-    const registry = await import(
-      "../lib/core/utils/haxcms-site-api-registry.js"
-    );
+    const registry =
+      await import("../lib/core/utils/haxcms-site-api-registry.js");
     const prevFetch = globalThis.fetch;
     globalThis.fetch = async () => ({ ok: false, status: 404 });
     try {

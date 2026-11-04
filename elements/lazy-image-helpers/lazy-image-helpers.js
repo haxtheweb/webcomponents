@@ -115,8 +115,9 @@ export const lazyImageLoader = function (SuperClass) {
       };
     }
     renderSVGLoader() {
-      return html`${!this.imageLoaded
-        ? svg`
+      return html`${
+        !this.imageLoaded
+          ? svg`
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="max-height:400px;width:100%;margin:auto;background:#f1f2f3;display:block;z-index:1;position:relative" preserveAspectRatio="xMidYMid" viewBox="0 0 300 200">
       <image
         xlink:href=""
@@ -124,7 +125,8 @@ export const lazyImageLoader = function (SuperClass) {
         preserveAspectRatio="xMidYMid meet"
       ></image>
       </svg>`
-        : ``}`;
+          : ``
+      }`;
     }
   };
 };

@@ -171,9 +171,9 @@ class ChatButton extends I18NMixin(DDD) {
         @click=${this.handleChatButton}
         @keydown=${this.keyPress}
         tabindex="0"
-        aria-label="${this.isInterfaceHidden
-          ? this.t.openInterface
-          : this.t.closeInterface}"
+        aria-label="${
+          this.isInterfaceHidden ? this.t.openInterface : this.t.closeInterface
+        }"
       >
         <div class="icon-wrapper">
           <simple-icon-lite icon="${this.buttonIcon}"></simple-icon-lite>

@@ -157,6 +157,38 @@
             },
             {
               "kind": "method",
+              "name": "_failRefresh",
+              "parameters": [
+                {
+                  "name": "value"
+                },
+                {
+                  "name": "proactive"
+                },
+                {
+                  "name": "what"
+                }
+              ],
+              "description": "A refresh failed (bad response or network error): drop the pending\nrefresh state. A proactive refresh only warns; any other refresh fires\njwt-login-refresh-error ({ value }) because the session is gone."
+            },
+            {
+              "kind": "method",
+              "name": "_finishLogout",
+              "parameters": [
+                {
+                  "name": "ok"
+                },
+                {
+                  "name": "status"
+                },
+                {
+                  "name": "redirect"
+                }
+              ],
+              "description": "Every logout path ends here: clear the in-flight flag, report the result\nas `jwt-login-logout-complete`, then follow redirectUrl if asked to."
+            },
+            {
+              "kind": "method",
               "name": "_handleNetworkError",
               "parameters": [
                 {
@@ -416,12 +448,6 @@
               }
             },
             {
-              "name": "jwt-login-refresh-error",
-              "type": {
-                "text": "CustomEvent"
-              }
-            },
-            {
               "name": "jwt-login-login-failed",
               "type": {
                 "text": "CustomEvent"
@@ -429,6 +455,12 @@
             },
             {
               "name": "jwt-login-logout-complete",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "jwt-login-refresh-error",
               "type": {
                 "text": "CustomEvent"
               }

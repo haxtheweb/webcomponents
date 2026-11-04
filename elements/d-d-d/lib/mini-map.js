@@ -125,14 +125,16 @@ export class MiniMap extends I18NMixin(DDD) {
         ?data-line="${this.lineList.includes(index)}"
         @click="${this._handleCellClick}"
       >
-        ${node
-          ? html`<span
-              class="node node-${node.type}"
-              data-type="${node.type}"
-              id="node-${index}"
-              >${node.name}</span
-            >`
-          : index}
+        ${
+          node
+            ? html`<span
+                class="node node-${node.type}"
+                data-type="${node.type}"
+                id="node-${index}"
+                >${node.name}</span
+              >`
+            : index
+        }
       </button>
     `;
   }

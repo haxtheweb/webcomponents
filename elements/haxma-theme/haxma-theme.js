@@ -144,8 +144,9 @@ export class HaxmaTheme extends I18NMixin(
         body {
           margin: 0;
           padding: 0;
-          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
-            Arial, sans-serif;
+          font-family:
+            -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+            sans-serif;
           background-color: var(--haxma-bg);
           color: var(--haxma-text);
           line-height: 1.6;
@@ -189,8 +190,9 @@ export class HaxmaTheme extends I18NMixin(
           display: block;
           min-height: 100vh;
           background-color: var(--haxma-bg);
-          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
-            Arial, sans-serif;
+          font-family:
+            -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+            sans-serif;
           line-height: 1.6;
           color-scheme: light;
           --haxma-primary: #5551ff;
@@ -899,12 +901,16 @@ export class HaxmaTheme extends I18NMixin(
                   class="nav-link"
                   @label-changed="${this.__prevPageLabelChanged}"
                 >
-                  ${this.prevPage
-                    ? html`
-                        <div class="nav-direction">${this.t.previousArrow}</div>
-                        <div class="nav-title">${this.prevPage}</div>
-                      `
-                    : ""}
+                  ${
+                    this.prevPage
+                      ? html`
+                          <div class="nav-direction">
+                            ${this.t.previousArrow}
+                          </div>
+                          <div class="nav-title">${this.prevPage}</div>
+                        `
+                      : ""
+                  }
                 </site-menu-button>
               </div>
 
@@ -915,12 +921,14 @@ export class HaxmaTheme extends I18NMixin(
                   class="nav-link"
                   @label-changed="${this.__nextPageLabelChanged}"
                 >
-                  ${this.nextPage
-                    ? html`
-                        <div class="nav-direction">${this.t.nextArrow}</div>
-                        <div class="nav-title">${this.nextPage}</div>
-                      `
-                    : ""}
+                  ${
+                    this.nextPage
+                      ? html`
+                          <div class="nav-direction">${this.t.nextArrow}</div>
+                          <div class="nav-title">${this.nextPage}</div>
+                        `
+                      : ""
+                  }
                 </site-menu-button>
               </div>
             </nav>

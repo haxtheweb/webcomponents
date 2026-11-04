@@ -349,37 +349,41 @@ class InsightsInstructional extends I18NMixin(LitElement) {
       <h3 class="block">
         ${this.t.activityMap}<span class="hint">${this.t.activityHint}</span>
       </h3>
-      ${rows.length
-        ? html`<div class="tbl-wrap">
-            <table class="heat" aria-label="${this.t.activityMap}">
-              <thead>
-                <tr>
-                  <th scope="col">${this.t.section}</th>
-                  <th scope="col" class="num">${this.t.pages}</th>
-                  ${cols.map(
-                    (c) =>
-                      html`<th scope="col" data-col="${c.id}">${c.label}</th>`,
+      ${
+        rows.length
+          ? html`<div class="tbl-wrap">
+              <table class="heat" aria-label="${this.t.activityMap}">
+                <thead>
+                  <tr>
+                    <th scope="col">${this.t.section}</th>
+                    <th scope="col" class="num">${this.t.pages}</th>
+                    ${cols.map(
+                      (c) =>
+                        html`<th scope="col" data-col="${c.id}">
+                          ${c.label}
+                        </th>`,
+                    )}
+                  </tr>
+                </thead>
+                <tbody>
+                  ${rows.map(
+                    (m) =>
+                      html`<tr data-section="${m.name}">
+                        <th scope="row"><code>${m.name}</code></th>
+                        <td class="num">${m.pages}</td>
+                        ${m.cells.map(
+                          (c) =>
+                            html`<td data-col="${c.id}" data-l="${c.level}">
+                              ${c.count}
+                            </td>`,
+                        )}
+                      </tr>`,
                   )}
-                </tr>
-              </thead>
-              <tbody>
-                ${rows.map(
-                  (m) =>
-                    html`<tr data-section="${m.name}">
-                      <th scope="row"><code>${m.name}</code></th>
-                      <td class="num">${m.pages}</td>
-                      ${m.cells.map(
-                        (c) =>
-                          html`<td data-col="${c.id}" data-l="${c.level}">
-                            ${c.count}
-                          </td>`,
-                      )}
-                    </tr>`,
-                )}
-              </tbody>
-            </table>
-          </div>`
-        : html`<div class="hax-ui-empty empty">${this.t.noSections}</div>`}
+                </tbody>
+              </table>
+            </div>`
+          : html`<div class="hax-ui-empty empty">${this.t.noSections}</div>`
+      }
     </section>`;
   }
 
@@ -404,27 +408,29 @@ class InsightsInstructional extends I18NMixin(LitElement) {
           >${this.t.practiceListHint}</span
         >
       </h3>
-      ${rows.length
-        ? html`<ul class="findings">
-              ${this._limited("practice", rows).map(
-                (r) =>
-                  html`<li data-state="${r.state}">
-                    <span class="t"
-                      >${r.title}<span class="d"
-                        >${r.what === "empty" ? this.t.empty : r.what}</span
-                      ></span
-                    >
-                    <span
-                      class="hax-ui-pill"
-                      data-tone="${STATE_TONE[r.state] || ""}"
-                      >${this._stateLabel(r.state)}</span
-                    >
-                    ${this._openBtn(r.slug, r.title)}
-                  </li>`,
-              )}
-            </ul>
-            ${this._moreBtn("practice", rows)}`
-        : html`<div class="hax-ui-empty empty">${this.t.noPractice}</div>`}
+      ${
+        rows.length
+          ? html`<ul class="findings">
+                ${this._limited("practice", rows).map(
+                  (r) =>
+                    html`<li data-state="${r.state}">
+                      <span class="t"
+                        >${r.title}<span class="d"
+                          >${r.what === "empty" ? this.t.empty : r.what}</span
+                        ></span
+                      >
+                      <span
+                        class="hax-ui-pill"
+                        data-tone="${STATE_TONE[r.state] || ""}"
+                        >${this._stateLabel(r.state)}</span
+                      >
+                      ${this._openBtn(r.slug, r.title)}
+                    </li>`,
+                )}
+              </ul>
+              ${this._moreBtn("practice", rows)}`
+          : html`<div class="hax-ui-empty empty">${this.t.noPractice}</div>`
+      }
     </section>`;
   }
 
@@ -438,44 +444,50 @@ class InsightsInstructional extends I18NMixin(LitElement) {
           >${this.t.practicePerSectionHint}</span
         >
       </h3>
-      ${rows.length
-        ? html`<div class="bars">
-            ${rows.map(
-              (r) =>
-                html`<div class="bar" data-section="${r.name}">
-                  <code class="name" title="${r.name}">${r.name}</code>
-                  <div class="track" aria-hidden="true">
-                    <div
-                      class="fill"
-                      style="width: ${Math.round((r.count / max) * 100)}%"
-                    ></div>
-                  </div>
-                  <span class="end"
-                    >${r.count
-                      ? html`<span class="num">${r.count}</span>`
-                      : html`<span class="hax-ui-pill" data-tone="danger"
-                          >${this.t.none}</span
-                        >`}</span
-                  >
-                </div>`,
-            )}
-          </div>`
-        : html`<div class="hax-ui-empty empty">${this.t.noSections}</div>`}
+      ${
+        rows.length
+          ? html`<div class="bars">
+              ${rows.map(
+                (r) =>
+                  html`<div class="bar" data-section="${r.name}">
+                    <code class="name" title="${r.name}">${r.name}</code>
+                    <div class="track" aria-hidden="true">
+                      <div
+                        class="fill"
+                        style="width: ${Math.round((r.count / max) * 100)}%"
+                      ></div>
+                    </div>
+                    <span class="end"
+                      >${
+                        r.count
+                          ? html`<span class="num">${r.count}</span>`
+                          : html`<span class="hax-ui-pill" data-tone="danger"
+                              >${this.t.none}</span
+                            >`
+                      }</span
+                    >
+                  </div>`,
+              )}
+            </div>`
+          : html`<div class="hax-ui-empty empty">${this.t.noSections}</div>`
+      }
       <div class="weeks">
         <h3 class="block">${this.t.weeksList}</h3>
-        ${weeks.length
-          ? html`<ul class="findings weeks-list">
-              ${weeks.map(
-                (w) =>
-                  html`<li>
-                    <code class="t">${w}</code
-                    ><span class="hax-ui-pill" data-tone="warning"
-                      >${this.t.none}</span
-                    >
-                  </li>`,
-              )}
-            </ul>`
-          : html`<div class="hax-ui-empty empty">${this.t.everyWeek}</div>`}
+        ${
+          weeks.length
+            ? html`<ul class="findings weeks-list">
+                ${weeks.map(
+                  (w) =>
+                    html`<li>
+                      <code class="t">${w}</code
+                      ><span class="hax-ui-pill" data-tone="warning"
+                        >${this.t.none}</span
+                      >
+                    </li>`,
+                )}
+              </ul>`
+            : html`<div class="hax-ui-empty empty">${this.t.everyWeek}</div>`
+        }
       </div>
     </section>`;
   }
@@ -490,24 +502,26 @@ class InsightsInstructional extends I18NMixin(LitElement) {
           >${this._p(total, this.t.bloomHintOne, this.t.bloomHint)}</span
         >
       </h3>
-      ${total
-        ? html`<div class="bars">
-            ${rows.map(
-              (r) =>
-                html`<div class="bar" data-level="${r.level}">
-                  <span class="name">${r.level}</span>
-                  <div class="track" aria-hidden="true">
-                    <div
-                      class="fill"
-                      data-tone="${r.level === "Unmatched" ? "muted" : ""}"
-                      style="width: ${Math.round((r.count / max) * 100)}%"
-                    ></div>
-                  </div>
-                  <span class="num">${r.count}</span>
-                </div>`,
-            )}
-          </div>`
-        : html`<div class="hax-ui-empty empty">${this.t.noObjectives}</div>`}
+      ${
+        total
+          ? html`<div class="bars">
+              ${rows.map(
+                (r) =>
+                  html`<div class="bar" data-level="${r.level}">
+                    <span class="name">${r.level}</span>
+                    <div class="track" aria-hidden="true">
+                      <div
+                        class="fill"
+                        data-tone="${r.level === "Unmatched" ? "muted" : ""}"
+                        style="width: ${Math.round((r.count / max) * 100)}%"
+                      ></div>
+                    </div>
+                    <span class="num">${r.count}</span>
+                  </div>`,
+              )}
+            </div>`
+          : html`<div class="hax-ui-empty empty">${this.t.noObjectives}</div>`
+      }
     </section>`;
   }
 
@@ -515,40 +529,42 @@ class InsightsInstructional extends I18NMixin(LitElement) {
     const rows = ins.objectives || [];
     return html`<section class="objectives">
       <h3 class="block">${this.t.objectivesList}</h3>
-      ${rows.length
-        ? html`<div class="tbl-wrap">
-              <table aria-label="${this.t.objectivesList}">
-                <thead>
-                  <tr>
-                    <th scope="col">${this.t.objective}</th>
-                    <th scope="col">${this.t.verb}</th>
-                    <th scope="col">${this.t.level}</th>
-                    <th scope="col">${this.t.page}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  ${this._limited("objectives", rows).map(
-                    (o) =>
-                      html`<tr>
-                        <td>${o.text}</td>
-                        <td><code>${o.verb}</code></td>
-                        <td>
-                          <span
-                            class="hax-ui-pill"
-                            data-tone="${o.level === "Unmatched"
-                              ? ""
-                              : "accent"}"
-                            >${o.level}</span
-                          >
-                        </td>
-                        <td>${o.title} ${this._openBtn(o.slug, o.title)}</td>
-                      </tr>`,
-                  )}
-                </tbody>
-              </table>
-            </div>
-            ${this._moreBtn("objectives", rows)}`
-        : html`<div class="hax-ui-empty empty">${this.t.noObjectives}</div>`}
+      ${
+        rows.length
+          ? html`<div class="tbl-wrap">
+                <table aria-label="${this.t.objectivesList}">
+                  <thead>
+                    <tr>
+                      <th scope="col">${this.t.objective}</th>
+                      <th scope="col">${this.t.verb}</th>
+                      <th scope="col">${this.t.level}</th>
+                      <th scope="col">${this.t.page}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${this._limited("objectives", rows).map(
+                      (o) =>
+                        html`<tr>
+                          <td>${o.text}</td>
+                          <td><code>${o.verb}</code></td>
+                          <td>
+                            <span
+                              class="hax-ui-pill"
+                              data-tone="${
+                                o.level === "Unmatched" ? "" : "accent"
+                              }"
+                              >${o.level}</span
+                            >
+                          </td>
+                          <td>${o.title} ${this._openBtn(o.slug, o.title)}</td>
+                        </tr>`,
+                    )}
+                  </tbody>
+                </table>
+              </div>
+              ${this._moreBtn("objectives", rows)}`
+          : html`<div class="hax-ui-empty empty">${this.t.noObjectives}</div>`
+      }
     </section>`;
   }
 
@@ -558,45 +574,53 @@ class InsightsInstructional extends I18NMixin(LitElement) {
       <h3 class="block">
         ${this.t.walls}<span class="hint">${this.t.wallsHint}</span>
       </h3>
-      ${rows.length
-        ? html`<ul class="findings">
-            ${rows.map(
-              (r) =>
-                html`<li>
-                  <span class="t"
-                    >${r.title}<span class="d"
-                      >${this._fmt(
-                        r.headings ? this.t.wallDetail : this.t.wallNoHeadings,
-                        {
-                          p: r.paragraphs,
-                          h: this._p(
-                            r.headings,
-                            this.t.headingOne,
-                            this.t.headingsCount,
-                          ),
-                          w: this._p(
-                            r.words,
-                            this.t.wordOne,
-                            this.t.wordsCount,
-                          ),
-                        },
-                      )}</span
-                    ></span
-                  >
-                  ${r.warn
-                    ? html`<span class="hax-ui-pill" data-tone="warning"
-                        >${r.perHeading === null
-                          ? this.t.noHeadings
-                          : this._fmt(this.t.perHeading, {
-                              n: r.perHeading,
-                            })}</span
-                      >`
-                    : nothing}
-                  ${this._openBtn(r.slug, r.title)}
-                </li>`,
-            )}
-          </ul>`
-        : html`<div class="hax-ui-empty empty">${this.t.noWalls}</div>`}
+      ${
+        rows.length
+          ? html`<ul class="findings">
+              ${rows.map(
+                (r) =>
+                  html`<li>
+                    <span class="t"
+                      >${r.title}<span class="d"
+                        >${this._fmt(
+                          r.headings
+                            ? this.t.wallDetail
+                            : this.t.wallNoHeadings,
+                          {
+                            p: r.paragraphs,
+                            h: this._p(
+                              r.headings,
+                              this.t.headingOne,
+                              this.t.headingsCount,
+                            ),
+                            w: this._p(
+                              r.words,
+                              this.t.wordOne,
+                              this.t.wordsCount,
+                            ),
+                          },
+                        )}</span
+                      ></span
+                    >
+                    ${
+                      r.warn
+                        ? html`<span class="hax-ui-pill" data-tone="warning"
+                            >${
+                              r.perHeading === null
+                                ? this.t.noHeadings
+                                : this._fmt(this.t.perHeading, {
+                                    n: r.perHeading,
+                                  })
+                            }</span
+                          >`
+                        : nothing
+                    }
+                    ${this._openBtn(r.slug, r.title)}
+                  </li>`,
+              )}
+            </ul>`
+          : html`<div class="hax-ui-empty empty">${this.t.noWalls}</div>`
+      }
     </section>`;
   }
 
@@ -606,19 +630,21 @@ class InsightsInstructional extends I18NMixin(LitElement) {
       <h3 class="block">
         ${this.t.working}<span class="hint">${this.t.workingHint}</span>
       </h3>
-      ${rows.length
-        ? html`<ul class="findings">
-            ${rows.map(
-              (r) =>
-                html`<li data-id="${r.id}">
-                  <span class="n">${r.count}</span>
-                  <span class="t"
-                    >${r.title}<span class="d">${r.detail}</span></span
-                  >
-                </li>`,
-            )}
-          </ul>`
-        : html`<div class="hax-ui-empty empty">${this.t.noWorking}</div>`}
+      ${
+        rows.length
+          ? html`<ul class="findings">
+              ${rows.map(
+                (r) =>
+                  html`<li data-id="${r.id}">
+                    <span class="n">${r.count}</span>
+                    <span class="t"
+                      >${r.title}<span class="d">${r.detail}</span></span
+                    >
+                  </li>`,
+              )}
+            </ul>`
+          : html`<div class="hax-ui-empty empty">${this.t.noWorking}</div>`
+      }
     </section>`;
   }
 
@@ -629,15 +655,17 @@ class InsightsInstructional extends I18NMixin(LitElement) {
       <span class="hax-ui-pill" data-tone="soon">${this.t.comingSoon}</span>
       <div class="txt">
         <strong>${this.t.thresholdsTitle}</strong>
-        ${th
-          ? html`<span class="in-use"
-              >${this._fmt(this.t.thresholdsInUse, {
-                perHeading: th.paragraphsPerHeadingWarn,
-                longPage: th.longPageParagraphs,
-                thinWords: th.thinMaxWords,
-              })}</span
-            >`
-          : nothing}
+        ${
+          th
+            ? html`<span class="in-use"
+                >${this._fmt(this.t.thresholdsInUse, {
+                  perHeading: th.paragraphsPerHeadingWarn,
+                  longPage: th.longPageParagraphs,
+                  thinWords: th.thinMaxWords,
+                })}</span
+              >`
+            : nothing
+        }
         ${this.t.thresholdsBody}
         <span id="threshold-needs">${needs}.</span>
       </div>

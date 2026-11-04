@@ -77,58 +77,64 @@ class HaxViewSource extends I18NMixin(LitElement) {
     ];
   }
   render() {
-    return html`${this.hidden
-      ? ``
-      : html` <hax-toolbar>
-            <hax-tray-button
-              label="${this.t.updateHTML}"
-              icon="icons:check"
-              @click="${this.updateBodyFromHTML}"
-              icon-position="top"
-              class="updatecontent"
-            >
-            </hax-tray-button>
-            <hax-tray-button
-              @click="${this.scrubContent}"
-              icon="editor:format-clear"
-              label="${this.t.cleanFormatting}"
-              icon-position="top"
-            >
-            </hax-tray-button>
-            ${MicroFrontendRegistry.has("@core/prettyHtml")
-              ? html`
-                  <hax-tray-button
-                    label="${this.t.prettifyHtml}"
-                    icon="hax:format-textblock"
-                    @click="${this.prettifyContent}"
-                    icon-position="top"
-                  >
-                  </hax-tray-button>
-                `
-              : html``}
-            <hax-tray-button
-              @click="${this.selectBody}"
-              icon="icons:content-copy"
-              label="${this.t.copyHTML}"
-              icon-position="top"
-            >
-            </hax-tray-button>
-          </hax-toolbar>
-          <div id="wrapper">
-            <div id="spacer"></div>
-            <textarea id="hiddentextarea" hidden></textarea>
-            <code-editor
-              id="textarea"
-              theme="${this.haxUiTheme == "hax"
-                ? "vs"
-                : this.haxUiTheme == "haxdark"
-                  ? "vs-dark"
-                  : "auto"}"
-              language="html"
-              font-size="13"
-              word-wrap
-            ></code-editor>
-          </div>`} `;
+    return html`${
+      this.hidden
+        ? ``
+        : html` <hax-toolbar>
+              <hax-tray-button
+                label="${this.t.updateHTML}"
+                icon="icons:check"
+                @click="${this.updateBodyFromHTML}"
+                icon-position="top"
+                class="updatecontent"
+              >
+              </hax-tray-button>
+              <hax-tray-button
+                @click="${this.scrubContent}"
+                icon="editor:format-clear"
+                label="${this.t.cleanFormatting}"
+                icon-position="top"
+              >
+              </hax-tray-button>
+              ${
+                MicroFrontendRegistry.has("@core/prettyHtml")
+                  ? html`
+                      <hax-tray-button
+                        label="${this.t.prettifyHtml}"
+                        icon="hax:format-textblock"
+                        @click="${this.prettifyContent}"
+                        icon-position="top"
+                      >
+                      </hax-tray-button>
+                    `
+                  : html``
+              }
+              <hax-tray-button
+                @click="${this.selectBody}"
+                icon="icons:content-copy"
+                label="${this.t.copyHTML}"
+                icon-position="top"
+              >
+              </hax-tray-button>
+            </hax-toolbar>
+            <div id="wrapper">
+              <div id="spacer"></div>
+              <textarea id="hiddentextarea" hidden></textarea>
+              <code-editor
+                id="textarea"
+                theme="${
+                  this.haxUiTheme == "hax"
+                    ? "vs"
+                    : this.haxUiTheme == "haxdark"
+                      ? "vs-dark"
+                      : "auto"
+                }"
+                language="html"
+                font-size="13"
+                word-wrap
+              ></code-editor>
+            </div>`
+    } `;
   }
   static get tag() {
     return "hax-view-source";

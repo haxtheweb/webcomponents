@@ -303,9 +303,11 @@ class FillInTheBlanks extends MarkTheWords {
       <div class="text">
         ${this.wordList.map(
           (word) => html`
-            ${word.text.match(/^\[?[^[\]]*\]/)
-              ? this.renderFillInBlankField(word)
-              : html`${word.text} `}
+            ${
+              word.text.match(/^\[?[^[\]]*\]/)
+                ? this.renderFillInBlankField(word)
+                : html`${word.text} `
+            }
           `,
         )}
       </div>
@@ -376,9 +378,9 @@ class FillInTheBlanks extends MarkTheWords {
     }
     return html`<span class="blank ${status}"
         ><span class="blank-number" aria-hidden="true">${index + 1}</span
-        >${control}${status
-          ? this.renderOptionStatus(status === "correct")
-          : ""}</span
+        >${control}${
+          status ? this.renderOptionStatus(status === "correct") : ""
+        }</span
       >${trailing} `;
   }
 

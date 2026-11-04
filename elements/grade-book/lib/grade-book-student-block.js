@@ -50,41 +50,55 @@ class GradeBookStudentBlock extends I18NMixin(LitElement) {
     return html`
       <grid-plate layout="1-2" disable-responsive>
         <div slot="col-1" style="text-align:center;">
-          ${this.student.photo
-            ? html`
-                <img
-                  src="${this.student.photo}"
-                  alt="${this.t.profileImageFor} ${this.student.prefName}"
-                />
-              `
-            : html`
-                <simple-icon-lite icon="account-circle"></simple-icon-lite>
-              `}
+          ${
+            this.student.photo
+              ? html`
+                  <img
+                    src="${this.student.photo}"
+                    alt="${this.t.profileImageFor} ${this.student.prefName}"
+                  />
+                `
+              : html`
+                  <simple-icon-lite icon="account-circle"></simple-icon-lite>
+                `
+          }
         </div>
         <div slot="col-2">
           <h2>${this.student.name}</h2>
           <ul>
-            ${this.student.userId
-              ? html`<li>${this.t.userID}: ${this.student.userId}</li>`
-              : ``}
-            ${this.student.prefName
-              ? html`<li>${this.t.preferredName}: ${this.student.prefName}</li>`
-              : ``}
-            ${this.student.email
-              ? html`<li>
-                  <a href="mailto:${this.student.email}"
-                    >${this.t.emailAddress}</a
-                  >
-                </li>`
-              : ``}
-            ${this.student.notes
-              ? html`<li>${this.t.notes}: ${this.student.notes}</li>`
-              : ``}
-            ${this.student.interests
-              ? html`<li>
-                  ${this.t.interests}: ${this.student.interests.join(",")}
-                </li>`
-              : ``}
+            ${
+              this.student.userId
+                ? html`<li>${this.t.userID}: ${this.student.userId}</li>`
+                : ``
+            }
+            ${
+              this.student.prefName
+                ? html`<li>
+                    ${this.t.preferredName}: ${this.student.prefName}
+                  </li>`
+                : ``
+            }
+            ${
+              this.student.email
+                ? html`<li>
+                    <a href="mailto:${this.student.email}"
+                      >${this.t.emailAddress}</a
+                    >
+                  </li>`
+                : ``
+            }
+            ${
+              this.student.notes
+                ? html`<li>${this.t.notes}: ${this.student.notes}</li>`
+                : ``
+            }
+            ${
+              this.student.interests
+                ? html`<li>
+                    ${this.t.interests}: ${this.student.interests.join(",")}
+                  </li>`
+                : ``
+            }
           </ul>
         </div>
       </grid-plate>

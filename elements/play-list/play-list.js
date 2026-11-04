@@ -390,103 +390,107 @@ class PlayList extends I18NMixin(DDD) {
    */
   render() {
     return html`
-      ${this.items && this.items.length > 0 && !this.edit
-        ? html`
-            <div
-              class="carousel ddd-block"
-              role="region"
-              aria-roledescription="${this.t.carousel}"
-              aria-label="${this.t.playlist}"
-              tabindex="0"
-              @keydown="${this._handleKeydown}"
-              @touchstart="${this._handleTouchStart}"
-              @touchmove="${this._handleTouchMove}"
-              @touchend="${this._handleTouchEnd}"
-            >
-              ${renderDDDBlockHeader({
-                icon: "image:slideshow",
-                label: html`${this.t.slides} ·
-                ${this.t.position
-                  .replace("{number}", () =>
-                    Math.min(this.slide + 1, this.items.length),
-                  )
-                  .replace("{total}", () => this.items.length)}`,
-                actions:
-                  this.navigation && this.orientation === "horizontal"
-                    ? html`<span class="carousel-nav">
-                        <simple-icon-button-lite
-                          class="ddd-block-action"
-                          icon="hardware:keyboard-arrow-left"
-                          label="${this.t.previousSlide}"
-                          title="${this.t.previousSlide}"
-                          @click="${this._goToPrevious}"
-                        ></simple-icon-button-lite>
-                        <simple-icon-button-lite
-                          class="ddd-block-action"
-                          icon="hardware:keyboard-arrow-right"
-                          label="${this.t.nextSlide}"
-                          title="${this.t.nextSlide}"
-                          @click="${this._goToNext}"
-                        ></simple-icon-button-lite>
-                      </span>`
-                    : null,
-              })}
+      ${
+        this.items && this.items.length > 0 && !this.edit
+          ? html`
               <div
-                class="carousel-viewport"
-                style="--aspect-ratio: ${this.aspectRatio};"
+                class="carousel ddd-block"
+                role="region"
+                aria-roledescription="${this.t.carousel}"
+                aria-label="${this.t.playlist}"
+                tabindex="0"
+                @keydown="${this._handleKeydown}"
+                @touchstart="${this._handleTouchStart}"
+                @touchmove="${this._handleTouchMove}"
+                @touchend="${this._handleTouchEnd}"
               >
+                ${renderDDDBlockHeader({
+                  icon: "image:slideshow",
+                  label: html`${this.t.slides} ·
+                  ${this.t.position
+                    .replace("{number}", () =>
+                      Math.min(this.slide + 1, this.items.length),
+                    )
+                    .replace("{total}", () => this.items.length)}`,
+                  actions:
+                    this.navigation && this.orientation === "horizontal"
+                      ? html`<span class="carousel-nav">
+                          <simple-icon-button-lite
+                            class="ddd-block-action"
+                            icon="hardware:keyboard-arrow-left"
+                            label="${this.t.previousSlide}"
+                            title="${this.t.previousSlide}"
+                            @click="${this._goToPrevious}"
+                          ></simple-icon-button-lite>
+                          <simple-icon-button-lite
+                            class="ddd-block-action"
+                            icon="hardware:keyboard-arrow-right"
+                            label="${this.t.nextSlide}"
+                            title="${this.t.nextSlide}"
+                            @click="${this._goToNext}"
+                          ></simple-icon-button-lite>
+                        </span>`
+                      : null,
+                })}
                 <div
-                  class="carousel-track ${this.orientation === "vertical"
-                    ? "vertical"
-                    : ""}"
-                  style="transform: ${this._getTransform()};"
+                  class="carousel-viewport"
+                  style="--aspect-ratio: ${this.aspectRatio};"
                 >
-                  ${this.items.map(
-                    (item, index) => html`
-                      <play-list-slide
-                        class="carousel-item"
-                        role="group"
-                        aria-roledescription="${this.t.slide}"
-                        aria-label="${this.t.slideOfTotal
-                          .replace("{number}", () => index + 1)
-                          .replace("{total}", () => this.items.length)}"
-                        ?active="${index === this.slide}"
-                      >
-                        ${this.renderHAXItem(item)}
-                      </play-list-slide>
-                    `,
-                  )}
+                  <div
+                    class="carousel-track ${
+                      this.orientation === "vertical" ? "vertical" : ""
+                    }"
+                    style="transform: ${this._getTransform()};"
+                  >
+                    ${this.items.map(
+                      (item, index) => html`
+                        <play-list-slide
+                          class="carousel-item"
+                          role="group"
+                          aria-roledescription="${this.t.slide}"
+                          aria-label="${this.t.slideOfTotal
+                            .replace("{number}", () => index + 1)
+                            .replace("{total}", () => this.items.length)}"
+                          ?active="${index === this.slide}"
+                        >
+                          ${this.renderHAXItem(item)}
+                        </play-list-slide>
+                      `,
+                    )}
+                  </div>
                 </div>
+                ${
+                  this.pagination
+                    ? html`
+                        <div
+                          class="carousel-pagination"
+                          role="tablist"
+                          aria-label="${this.t.slidePages}"
+                        >
+                          ${this.items.map(
+                            (item, index) => html`
+                              <button
+                                class="pagination-dot"
+                                role="tab"
+                                aria-label="${this.t.goToSlide.replace(
+                                  "{number}",
+                                  () => index + 1,
+                                )}"
+                                title="${this._getSlideTitle(item, index)}"
+                                aria-selected="${index === this.slide}"
+                                tabindex="0"
+                                @click="${() => this._goToSlide(index)}"
+                              ></button>
+                            `,
+                          )}
+                        </div>
+                      `
+                    : nothing
+                }
               </div>
-              ${this.pagination
-                ? html`
-                    <div
-                      class="carousel-pagination"
-                      role="tablist"
-                      aria-label="${this.t.slidePages}"
-                    >
-                      ${this.items.map(
-                        (item, index) => html`
-                          <button
-                            class="pagination-dot"
-                            role="tab"
-                            aria-label="${this.t.goToSlide.replace(
-                              "{number}",
-                              () => index + 1,
-                            )}"
-                            title="${this._getSlideTitle(item, index)}"
-                            aria-selected="${index === this.slide}"
-                            tabindex="0"
-                            @click="${() => this._goToSlide(index)}"
-                          ></button>
-                        `,
-                      )}
-                    </div>
-                  `
-                : nothing}
-            </div>
-          `
-        : html`<div class="edit-wrapper"><slot></slot></div>`}
+            `
+          : html`<div class="edit-wrapper"><slot></slot></div>`
+      }
     `;
   }
 

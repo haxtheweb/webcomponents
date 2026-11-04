@@ -176,13 +176,13 @@
       "order": 0,
       "src": "sorting-question.motion.json",
       "file": "lib/sorting-question.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/sorting-question.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

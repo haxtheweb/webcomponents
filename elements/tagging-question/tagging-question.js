@@ -331,25 +331,29 @@ class TaggingQuestion extends QuestionElement {
             <button
               ?disabled="${this.disabled || this.showAnswer}"
               aria-pressed="true"
-              class="tag-option ${this.showAnswer
-                ? answer.correct
-                  ? "correct"
-                  : "incorrect"
-                : ""}"
+              class="tag-option ${
+                this.showAnswer
+                  ? answer.correct
+                    ? "correct"
+                    : "incorrect"
+                  : ""
+              }"
               draggable="${this.showAnswer ? "false" : "true"}"
               @dragstart="${this.handleDrag}"
               @dragend="${this.handleDragEnd}"
               @click="${() => this.handleTagClick(answer)}"
             >
-              ${this.showAnswer
-                ? html`<simple-icon-lite
-                      icon="${answer.correct ? "icons:check" : "icons:close"}"
-                      aria-hidden="true"
-                    ></simple-icon-lite
-                    ><span class="sr-only"
-                      >${answer.correct ? this.t.correct : this.t.incorrect}:
-                    </span>`
-                : ""}${answer.label}
+              ${
+                this.showAnswer
+                  ? html`<simple-icon-lite
+                        icon="${answer.correct ? "icons:check" : "icons:close"}"
+                        aria-hidden="true"
+                      ></simple-icon-lite
+                      ><span class="sr-only"
+                        >${answer.correct ? this.t.correct : this.t.incorrect}:
+                      </span>`
+                  : ""
+              }${answer.label}
             </button>
           `,
         )}
@@ -439,51 +443,65 @@ class TaggingQuestion extends QuestionElement {
           },
         )}
       </p>
-      ${notes.length
-        ? html`<ul class="tag-notes">
-            ${notes.map(
-              (note) =>
-                html`<li>
-                  <span class="tag-note-label ${note.status}"
-                    >${note.status === "unselected"
-                      ? html`<span class="sr-only"
-                          >${this.t.answersNotSelected}:
-                        </span>`
-                      : html`<span class="sr-only"
-                          >${note.status === "correct"
-                            ? this.t.correct
-                            : this.t.incorrect}:
-                        </span>`}${note.label}</span
-                  >
-                  ${note.text}
-                </li>`,
-            )}
-          </ul>`
-        : ""}
-      ${!correct &&
-      this.querySelector &&
-      this.querySelector('[slot="feedbackIncorrect"]')
-        ? html`<slot
-            name="feedbackIncorrect"
-            property="oer:incorrectFeedback"
-          ></slot>`
-        : ``}
-      ${correct &&
-      this.querySelector &&
-      this.querySelector('[slot="feedbackCorrect"]')
-        ? html`<slot
-            name="feedbackCorrect"
-            property="oer:correctFeedback"
-          ></slot>`
-        : ``}
-      ${!correct && this.querySelector && this.querySelector('[slot="hint"]')
-        ? html`<h4>${this.t.needAHint}</h4>
-            <div><slot name="hint"></slot></div>`
-        : ``}
-      ${correct && this.querySelector && this.querySelector('[slot="evidence"]')
-        ? html`<h4>${this.t.evidence}</h4>
-            <div><slot name="evidence"></slot></div>`
-        : ``}
+      ${
+        notes.length
+          ? html`<ul class="tag-notes">
+              ${notes.map(
+                (note) =>
+                  html`<li>
+                    <span class="tag-note-label ${note.status}"
+                      >${
+                        note.status === "unselected"
+                          ? html`<span class="sr-only"
+                              >${this.t.answersNotSelected}:
+                            </span>`
+                          : html`<span class="sr-only"
+                              >${
+                                note.status === "correct"
+                                  ? this.t.correct
+                                  : this.t.incorrect
+                              }:
+                            </span>`
+                      }${note.label}</span
+                    >
+                    ${note.text}
+                  </li>`,
+              )}
+            </ul>`
+          : ""
+      }
+      ${
+        !correct &&
+        this.querySelector &&
+        this.querySelector('[slot="feedbackIncorrect"]')
+          ? html`<slot
+              name="feedbackIncorrect"
+              property="oer:incorrectFeedback"
+            ></slot>`
+          : ``
+      }
+      ${
+        correct &&
+        this.querySelector &&
+        this.querySelector('[slot="feedbackCorrect"]')
+          ? html`<slot
+              name="feedbackCorrect"
+              property="oer:correctFeedback"
+            ></slot>`
+          : ``
+      }
+      ${
+        !correct && this.querySelector && this.querySelector('[slot="hint"]')
+          ? html`<h4>${this.t.needAHint}</h4>
+              <div><slot name="hint"></slot></div>`
+          : ``
+      }
+      ${
+        correct && this.querySelector && this.querySelector('[slot="evidence"]')
+          ? html`<h4>${this.t.evidence}</h4>
+              <div><slot name="evidence"></slot></div>`
+          : ``
+      }
     `;
   }
 

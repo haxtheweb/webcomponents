@@ -62,9 +62,11 @@ class LrndesignImagemap extends LitElement {
             id="heading"
             parent="${this.parent || this.subtopicOf}"
           >
-            ${this.label
-              ? html` <h1>${this.label}</h1> `
-              : html` <slot name="heading"></slot> `}
+            ${
+              this.label
+                ? html` <h1>${this.label}</h1> `
+                : html` <slot name="heading"></slot> `
+            }
           </relative-heading>
           <div id="desc"><slot name="desc"></slot></div>
           <slot name="source" hidden></slot>
@@ -74,18 +76,18 @@ class LrndesignImagemap extends LitElement {
         <simple-popover
           auto
           ?hidden="${!this.__activeHotspot}"
-          position="${!this.__activeHotspot
-            ? "bottom"
-            : this.__activeHotspot.position}"
+          position="${
+            !this.__activeHotspot ? "bottom" : this.__activeHotspot.position
+          }"
           .for="${!this.__activeHotspot ? undefined : this.__activeHotspot.id}"
         >
           <relative-heading
             disable-link
             class="sub-heading"
             parent="heading"
-            id="subheading-${!this.__activeHotspot
-              ? undefined
-              : this.__activeHotspot.id}"
+            id="subheading-${
+              !this.__activeHotspot ? undefined : this.__activeHotspot.id
+            }"
           >
             <h2>${!this.__activeHotspot ? "" : this.__activeHotspot.label}</h2>
           </relative-heading>

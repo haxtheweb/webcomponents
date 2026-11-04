@@ -593,9 +593,11 @@ class TwentySixTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
               ?disabled="${this.editMode}"
               part="site-title"
             ></site-title>
-            ${this.siteDescription
-              ? html`<p class="site-description">${this.siteDescription}</p>`
-              : ``}
+            ${
+              this.siteDescription
+                ? html`<p class="site-description">${this.siteDescription}</p>`
+                : ``
+            }
             <nav
               class="top-menu"
               aria-label="${this.t.topMenuLinks}"
@@ -626,52 +628,62 @@ class TwentySixTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
               <section id="slot">
                 <slot></slot>
               </section>
-              ${hasMetadata
-                ? html`
-                    <footer class="post-meta" part="post-meta">
-                      ${this.pageCreated
-                        ? html`
-                            <span class="meta-group">
-                              <simple-icon-lite
-                                icon="icons:date-range"
-                                aria-hidden="true"
-                              ></simple-icon-lite>
-                              <simple-datetime
-                                format="F j, Y"
-                                unix
-                                .timestamp="${this.pageCreated}"
-                              ></simple-datetime>
-                            </span>
-                          `
-                        : ``}
-                      ${tags.length > 0
-                        ? html`
-                            <span class="meta-group">
-                              <simple-icon-lite
-                                icon="icons:folder-open"
-                                aria-hidden="true"
-                              ></simple-icon-lite>
-                              <span class="category-list">
-                                ${tags.map(
-                                  (tag, index) => html`
-                                    <a
-                                      href="${this._tagLink(tag)}"
-                                      @click="${this._preventInEditMode}"
-                                    >
-                                      ${tag}
-                                    </a>
-                                    ${index < tags.length - 1
-                                      ? html`<span class="separator">,</span>`
-                                      : ``}
-                                  `,
-                                )}
-                              </span>
-                            </span>
-                          `
-                        : ``}
-                    </footer>
-                  `
-                : ``}
+              ${
+                hasMetadata
+                  ? html`
+                      <footer class="post-meta" part="post-meta">
+                        ${
+                          this.pageCreated
+                            ? html`
+                                <span class="meta-group">
+                                  <simple-icon-lite
+                                    icon="icons:date-range"
+                                    aria-hidden="true"
+                                  ></simple-icon-lite>
+                                  <simple-datetime
+                                    format="F j, Y"
+                                    unix
+                                    .timestamp="${this.pageCreated}"
+                                  ></simple-datetime>
+                                </span>
+                              `
+                            : ``
+                        }
+                        ${
+                          tags.length > 0
+                            ? html`
+                                <span class="meta-group">
+                                  <simple-icon-lite
+                                    icon="icons:folder-open"
+                                    aria-hidden="true"
+                                  ></simple-icon-lite>
+                                  <span class="category-list">
+                                    ${tags.map(
+                                      (tag, index) => html`
+                                        <a
+                                          href="${this._tagLink(tag)}"
+                                          @click="${this._preventInEditMode}"
+                                        >
+                                          ${tag}
+                                        </a>
+                                        ${
+                                          index < tags.length - 1
+                                            ? html`<span class="separator"
+                                                >,</span
+                                              >`
+                                            : ``
+                                        }
+                                      `,
+                                    )}
+                                  </span>
+                                </span>
+                              `
+                            : ``
+                        }
+                      </footer>
+                    `
+                  : ``
+              }
             </article>
             <nav class="link-actions" aria-label="${this.t.postNavigation}">
               <div class="link-actions-inner">

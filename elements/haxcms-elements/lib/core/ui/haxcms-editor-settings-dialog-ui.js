@@ -226,13 +226,15 @@ class HAXCMSEditorSettingsDialogUI extends HaxcmsAdminSectionMixin(
         <div class="fr">
           <div>
             <label class="lab" for="audience" id="audience-label"
-              >${changed
-                ? html`<span
-                    class="dot"
-                    role="img"
-                    aria-label="${this.t.changed}"
-                  ></span>`
-                : nothing}${this.t.experienceLevel}</label
+              >${
+                changed
+                  ? html`<span
+                      class="dot"
+                      role="img"
+                      aria-label="${this.t.changed}"
+                    ></span>`
+                  : nothing
+              }${this.t.experienceLevel}</label
             ><span class="help" id="audience-help"
               >${this.t.experienceLevelDescription}</span
             >
@@ -275,13 +277,15 @@ class HAXCMSEditorSettingsDialogUI extends HaxcmsAdminSectionMixin(
         </summary>
         <p class="hax-ui-message status">${this.t.futureButtonConfiguration}</p>
       </details>
-      ${!this.inShell
-        ? html`<div class="standalone-actions">
-            <button type="button" class="save" @click="${this.save}">
-              ${this.busy ? this.t.saving : this.t.save}
-            </button>
-          </div>`
-        : nothing}
+      ${
+        !this.inShell
+          ? html`<div class="standalone-actions">
+              <button type="button" class="save" @click="${this.save}">
+                ${this.busy ? this.t.saving : this.t.save}
+              </button>
+            </div>`
+          : nothing
+      }
     `;
   }
 

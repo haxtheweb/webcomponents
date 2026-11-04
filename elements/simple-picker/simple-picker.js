@@ -342,7 +342,8 @@ const SimplePickerBehaviors = function (SuperClass) {
               var(
                   --simple-picker-options-border-width,
                   var(--simple-picker-border-width, 1px)
-                ) * 2
+                ) *
+                2
             );
           }
 
@@ -463,16 +464,18 @@ const SimplePickerBehaviors = function (SuperClass) {
         <div
           id="listbox"
           role="listbox"
-          aria-activedescendant="${this.expanded
-            ? this.__activeDesc
-            : undefined}"
-          aria-labelledby="${this.ariaLabelledby ||
-          (this.label && this.label.trim() !== "" ? "listLabel" : undefined)}"
+          aria-activedescendant="${
+            this.expanded ? this.__activeDesc : undefined
+          }"
+          aria-labelledby="${
+            this.ariaLabelledby ||
+            (this.label && this.label.trim() !== "" ? "listLabel" : undefined)
+          }"
           aria-label="${this._computeListboxAriaLabel()}"
           ?disabled="${this.disabled || !this.__options}"
-          aria-disabled="${this.disabled || !this.__options
-            ? "true"
-            : undefined}"
+          aria-disabled="${
+            this.disabled || !this.__options ? "true" : undefined
+          }"
           part="input"
           tabindex="0"
           @click="${this._handleListboxClick}"
@@ -483,16 +486,16 @@ const SimplePickerBehaviors = function (SuperClass) {
             <simple-picker-option
               ?hide-option-labels="${this.hideOptionLabels}"
               ?title-as-html="${this.titleAsHtml}"
-              .icon="${this.__selectedOption
-                ? this.__selectedOption.icon
-                : false}"
-              .label="${this.__selectedOption
-                ? this.__selectedOption.alt
-                : false}"
+              .icon="${
+                this.__selectedOption ? this.__selectedOption.icon : false
+              }"
+              .label="${
+                this.__selectedOption ? this.__selectedOption.alt : false
+              }"
               part="sample-option"
-              .style=${this.__selectedOption
-                ? this.__selectedOption.style
-                : false}
+              .style=${
+                this.__selectedOption ? this.__selectedOption.style : false
+              }
               aria-hidden="true"
             >
             </simple-picker-option>

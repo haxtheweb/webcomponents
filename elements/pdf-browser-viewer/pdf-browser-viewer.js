@@ -247,36 +247,42 @@ class PdfBrowserViewer extends I18NMixin(LitElement) {
                 aria-hidden="true"
               ></simple-icon-lite
             ></a>
-            ${!this.card
-              ? html`<a
-                  class="ddd-block-action"
-                  href="${this.file}"
-                  download="${this._fileName || nothing}"
-                  aria-label="${this.t.downloadPdf}"
-                  title="${this.t.downloadPdf}"
-                  ><simple-icon-lite
-                    icon="icons:file-download"
-                    aria-hidden="true"
-                  ></simple-icon-lite
-                ></a>`
-              : nothing}
-            ${this._canFullscreen
-              ? html`<button
-                  class="ddd-block-action"
-                  type="button"
-                  aria-label="${fsLabel}"
-                  title="${fsLabel}"
-                  aria-pressed="${this._fullscreen ? "true" : "false"}"
-                  @click="${this._toggleFullscreen}"
-                >
-                  <simple-icon-lite
-                    icon="${this._fullscreen
-                      ? "icons:fullscreen-exit"
-                      : "icons:fullscreen"}"
-                    aria-hidden="true"
-                  ></simple-icon-lite>
-                </button>`
-              : nothing}`
+            ${
+              !this.card
+                ? html`<a
+                    class="ddd-block-action"
+                    href="${this.file}"
+                    download="${this._fileName || nothing}"
+                    aria-label="${this.t.downloadPdf}"
+                    title="${this.t.downloadPdf}"
+                    ><simple-icon-lite
+                      icon="icons:file-download"
+                      aria-hidden="true"
+                    ></simple-icon-lite
+                  ></a>`
+                : nothing
+            }
+            ${
+              this._canFullscreen
+                ? html`<button
+                    class="ddd-block-action"
+                    type="button"
+                    aria-label="${fsLabel}"
+                    title="${fsLabel}"
+                    aria-pressed="${this._fullscreen ? "true" : "false"}"
+                    @click="${this._toggleFullscreen}"
+                  >
+                    <simple-icon-lite
+                      icon="${
+                        this._fullscreen
+                          ? "icons:fullscreen-exit"
+                          : "icons:fullscreen"
+                      }"
+                      aria-hidden="true"
+                    ></simple-icon-lite>
+                  </button>`
+                : nothing
+            }`
         : null,
     });
   }
@@ -284,36 +290,38 @@ class PdfBrowserViewer extends I18NMixin(LitElement) {
   render() {
     const labelledby = this.heading || this._fileName ? "label title" : "label";
     return html`
-      ${this.card
-        ? html`
-            <div
-              class="card ddd-block"
-              elevation="${this.elevation}"
-              role="group"
-              aria-labelledby="${labelledby}"
-            >
-              ${this.renderHeader()}
-              <div class="card-content ddd-block-body">
-                ${this.renderObject()}
+      ${
+        this.card
+          ? html`
+              <div
+                class="card ddd-block"
+                elevation="${this.elevation}"
+                role="group"
+                aria-labelledby="${labelledby}"
+              >
+                ${this.renderHeader()}
+                <div class="card-content ddd-block-body">
+                  ${this.renderObject()}
+                </div>
+                <div class="card-actions">
+                  <button @click="${this._download}">
+                    ${this.downloadLabel}
+                  </button>
+                </div>
               </div>
-              <div class="card-actions">
-                <button @click="${this._download}">
-                  ${this.downloadLabel}
-                </button>
+            `
+          : html`
+              <div
+                class="ddd-block"
+                role="group"
+                aria-labelledby="${labelledby}"
+                style="width: ${this._frameWidth()}"
+              >
+                ${this.renderHeader()}
+                <div class="ddd-block-body">${this.renderObject()}</div>
               </div>
-            </div>
-          `
-        : html`
-            <div
-              class="ddd-block"
-              role="group"
-              aria-labelledby="${labelledby}"
-              style="width: ${this._frameWidth()}"
-            >
-              ${this.renderHeader()}
-              <div class="ddd-block-body">${this.renderObject()}</div>
-            </div>
-          `}
+            `
+      }
     `;
   }
 

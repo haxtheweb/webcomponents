@@ -28,7 +28,7 @@ Note: since JSZip 3 removed critical functionality, this version assigns to the
     define([], e);
   } else {
     var f;
-    "undefined" != typeof globalThis
+    ("undefined" != typeof globalThis
       ? (f = globalThis)
       : "undefined" != typeof window
         ? (f = window)
@@ -37,7 +37,7 @@ Note: since JSZip 3 removed critical functionality, this version assigns to the
           : "undefined" != typeof $ && $.global
             ? (f = $.global)
             : "undefined" != typeof self && (f = self),
-      (f.JSZipSync = e());
+      (f.JSZipSync = e()));
   }
 })(function () {
   var define, module, exports;
@@ -1967,7 +1967,7 @@ Usage:
             //     String.fromCharCode.apply than Uint16Array.
             var utf16buf = new Array(len * 2);
 
-            for (out = 0, i = 0; i < len; ) {
+            for (out = 0, i = 0; i < len;) {
               c = buf[i++];
               // quick process ascii
               if (c < 0x80) {
@@ -4053,7 +4053,7 @@ Usage:
             //     String.fromCharCode.apply than Uint16Array.
             var utf16buf = new Array(len * 2);
 
-            for (out = 0, i = 0; i < len; ) {
+            for (out = 0, i = 0; i < len;) {
               c = buf[i++];
               // quick process ascii
               if (c < 0x80) {
@@ -4883,7 +4883,7 @@ Usage:
               /* Insert the string window[strstart .. strstart+2] in the
                * dictionary, and set hash_head to the head of the hash chain:
                */
-              hash_head = 0 /*NIL*/;
+              hash_head = 0; /*NIL*/
               if (s.lookahead >= MIN_MATCH) {
                 /*** INSERT_STRING(s, s.strstart, hash_head); ***/
                 s.ins_h =
@@ -5031,7 +5031,7 @@ Usage:
               /* Insert the string window[strstart .. strstart+2] in the
                * dictionary, and set hash_head to the head of the hash chain:
                */
-              hash_head = 0 /*NIL*/;
+              hash_head = 0; /*NIL*/
               if (s.lookahead >= MIN_MATCH) {
                 /*** INSERT_STRING(s, s.strstart, hash_head); ***/
                 s.ins_h =
@@ -6357,19 +6357,19 @@ exports.deflateTune = deflateTune;
 
               dolen: for (;;) {
                 // Goto emulation
-                op = here >>> 24 /*here.bits*/;
+                op = here >>> 24; /*here.bits*/
                 hold >>>= op;
                 bits -= op;
-                op = (here >>> 16) & 0xff /*here.op*/;
+                op = (here >>> 16) & 0xff; /*here.op*/
                 if (op === 0) {
                   /* literal */
                   //Tracevv((stderr, here.val >= 0x20 && here.val < 0x7f ?
                   //        "inflate:         literal '%c'\n" :
                   //        "inflate:         literal 0x%02x\n", here.val));
-                  output[_out++] = here & 0xffff /*here.val*/;
+                  output[_out++] = here & 0xffff; /*here.val*/
                 } else if (op & 16) {
                   /* length base */
-                  len = here & 0xffff /*here.val*/;
+                  len = here & 0xffff; /*here.val*/
                   op &= 15; /* number of extra bits */
                   if (op) {
                     if (bits < op) {
@@ -6391,14 +6391,14 @@ exports.deflateTune = deflateTune;
 
                   dodist: for (;;) {
                     // goto emulation
-                    op = here >>> 24 /*here.bits*/;
+                    op = here >>> 24; /*here.bits*/
                     hold >>>= op;
                     bits -= op;
-                    op = (here >>> 16) & 0xff /*here.op*/;
+                    op = (here >>> 16) & 0xff; /*here.op*/
 
                     if (op & 16) {
                       /* distance base */
-                      dist = here & 0xffff /*here.val*/;
+                      dist = here & 0xffff; /*here.val*/
                       op &= 15; /* number of extra bits */
                       if (bits < op) {
                         hold += input[_in++] << bits;
@@ -6764,7 +6764,7 @@ exports.deflateTune = deflateTune;
             state.last = 0;
             state.havedict = 0;
             state.dmax = 32768;
-            state.head = null /*Z_NULL*/;
+            state.head = null; /*Z_NULL*/
             state.hold = 0;
             state.bits = 0;
             //state.lencode = state.distcode = state.next = state.codes;
@@ -6839,10 +6839,10 @@ exports.deflateTune = deflateTune;
             //if (state === Z_NULL) return Z_MEM_ERROR;
             //Tracev((stderr, "inflate: allocated\n"));
             strm.state = state;
-            state.window = null /*Z_NULL*/;
+            state.window = null; /*Z_NULL*/
             ret = inflateReset2(strm, windowBits);
             if (ret !== Z_OK) {
-              strm.state = null /*Z_NULL*/;
+              strm.state = null; /*Z_NULL*/
             }
             return ret;
           }
@@ -7057,7 +7057,7 @@ exports.deflateTune = deflateTune;
                   //===//
                   if (state.wrap & 2 && hold === 0x8b1f) {
                     /* gzip header */
-                    state.check = 0 /*crc32(0L, Z_NULL, 0)*/;
+                    state.check = 0; /*crc32(0L, Z_NULL, 0)*/
                     //=== CRC2(state.check, hold);
                     hbuf[0] = hold & 0xff;
                     hbuf[1] = (hold >>> 8) & 0xff;
@@ -7102,7 +7102,7 @@ exports.deflateTune = deflateTune;
                   }
                   state.dmax = 1 << len;
                   //Tracev((stderr, "inflate:   zlib header ok\n"));
-                  strm.adler = state.check = 1 /*adler32(0L, Z_NULL, 0)*/;
+                  strm.adler = state.check = 1; /*adler32(0L, Z_NULL, 0)*/
                   state.mode = hold & 0x200 ? DICTID : TYPE;
                   //=== INITBITS();
                   hold = 0;
@@ -7232,7 +7232,7 @@ exports.deflateTune = deflateTune;
                     bits = 0;
                     //===//
                   } else if (state.head) {
-                    state.head.extra = null /*Z_NULL*/;
+                    state.head.extra = null; /*Z_NULL*/
                   }
                   state.mode = EXTRA;
                 /* falls through */
@@ -7366,7 +7366,7 @@ exports.deflateTune = deflateTune;
                     state.head.hcrc = (state.flags >> 9) & 1;
                     state.head.done = true;
                   }
-                  strm.adler = state.check = 0 /*crc32(0L, Z_NULL, 0)*/;
+                  strm.adler = state.check = 0; /*crc32(0L, Z_NULL, 0)*/
                   state.mode = TYPE;
                   break;
                 case DICTID:
@@ -7399,7 +7399,7 @@ exports.deflateTune = deflateTune;
                     //---
                     return Z_NEED_DICT;
                   }
-                  strm.adler = state.check = 1 /*adler32(0L, Z_NULL, 0)*/;
+                  strm.adler = state.check = 1; /*adler32(0L, Z_NULL, 0)*/
                   state.mode = TYPE;
                 /* falls through */
                 case TYPE:
@@ -7426,7 +7426,7 @@ exports.deflateTune = deflateTune;
                     bits += 8;
                   }
                   //===//
-                  state.last = hold & 0x01 /*BITS(1)*/;
+                  state.last = hold & 0x01; /*BITS(1)*/
                   //--- DROPBITS(1) ---//
                   hold >>>= 1;
                   bits -= 1;
@@ -7923,7 +7923,7 @@ exports.deflateTune = deflateTune;
                     }
                     //===//
                     state.length +=
-                      hold & ((1 << state.extra) - 1) /*BITS(state.extra)*/;
+                      hold & ((1 << state.extra) - 1); /*BITS(state.extra)*/
                     //--- DROPBITS(state.extra) ---//
                     hold >>>= state.extra;
                     bits -= state.extra;
@@ -8019,7 +8019,7 @@ exports.deflateTune = deflateTune;
                     }
                     //===//
                     state.offset +=
-                      hold & ((1 << state.extra) - 1) /*BITS(state.extra)*/;
+                      hold & ((1 << state.extra) - 1); /*BITS(state.extra)*/
                     //--- DROPBITS(state.extra) ---//
                     hold >>>= state.extra;
                     bits -= state.extra;
@@ -8979,7 +8979,7 @@ exports.inflateUndermine = inflateUndermine;
               if (n >= base) {
                 xbits = extra[n - base];
               }
-              f = tree[n * 2] /*.Freq*/;
+              f = tree[n * 2]; /*.Freq*/
               s.opt_len += f * (bits + xbits);
               if (has_stree) {
                 s.static_len += f * (stree[n * 2 + 1] /*.Len*/ + xbits);
@@ -9023,7 +9023,7 @@ exports.inflateUndermine = inflateUndermine;
                 if (tree[m * 2 + 1] /*.Len*/ !== bits) {
                   // Trace((stderr,"code %d bits %d->%d\n", m, tree[m].Len, bits));
                   s.opt_len +=
-                    (bits - tree[m * 2 + 1]) /*.Len*/ * tree[m * 2] /*.Freq*/;
+                    (bits - tree[m * 2 + 1]) /*.Len*/ * tree[m * 2]; /*.Freq*/
                   tree[m * 2 + 1] /*.Len*/ = bits;
                 }
                 n--;
@@ -9416,7 +9416,7 @@ exports.inflateUndermine = inflateUndermine;
               s.opt_len--;
 
               if (has_stree) {
-                s.static_len -= stree[node * 2 + 1] /*.Len*/;
+                s.static_len -= stree[node * 2 + 1]; /*.Len*/
               }
               /* node is 0 or 1 so it does not have extra bits */
             }
@@ -9448,7 +9448,7 @@ exports.inflateUndermine = inflateUndermine;
 
               /* Create a new node father of n and m */
               tree[node * 2] /*.Freq*/ =
-                tree[n * 2] /*.Freq*/ + tree[m * 2] /*.Freq*/;
+                tree[n * 2] /*.Freq*/ + tree[m * 2]; /*.Freq*/
               s.depth[node] =
                 (s.depth[n] >= s.depth[m] ? s.depth[n] : s.depth[m]) + 1;
               tree[n * 2 + 1] /*.Dad*/ = tree[m * 2 + 1] /*.Dad*/ = node;
@@ -9495,7 +9495,7 @@ exports.inflateUndermine = inflateUndermine;
 
             for (n = 0; n <= max_code; n++) {
               curlen = nextlen;
-              nextlen = tree[(n + 1) * 2 + 1] /*.Len*/;
+              nextlen = tree[(n + 1) * 2 + 1]; /*.Len*/
 
               if (++count < max_count && curlen === nextlen) {
                 continue;
@@ -9553,7 +9553,7 @@ exports.inflateUndermine = inflateUndermine;
 
             for (n = 0; n <= max_code; n++) {
               curlen = nextlen;
-              nextlen = tree[(n + 1) * 2 + 1] /*.Len*/;
+              nextlen = tree[(n + 1) * 2 + 1]; /*.Len*/
 
               if (++count < max_count && curlen === nextlen) {
                 continue;
@@ -9934,11 +9934,11 @@ exports.inflateUndermine = inflateUndermine;
             /* total number of bytes output so far */
             this.total_out = 0;
             /* last error message, NULL if no error */
-            this.msg = "" /*Z_NULL*/;
+            this.msg = ""; /*Z_NULL*/
             /* not visible by applications */
             this.state = null;
             /* best guess about the data type: binary or text */
-            this.data_type = 2 /*Z_UNKNOWN*/;
+            this.data_type = 2; /*Z_UNKNOWN*/
             /* adler32 value of the uncompressed data */
             this.adler = 0;
           }

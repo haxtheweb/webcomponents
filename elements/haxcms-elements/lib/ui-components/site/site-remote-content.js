@@ -116,19 +116,27 @@ class SiteRemoteContent extends HAXCMSI18NMixin(
    */
   render() {
     return html`
-      ${this.elementVisible
-        ? html`
-            <div class="loading">
-              ${this.loading
-                ? html`<simple-icon-lite icon="hax:loading"></simple-icon-lite>`
-                : ``}
-            </div>
-            ${this.showTitle && this._remoteTitle
-              ? html`<h3>${this._remoteTitle}</h3>`
-              : ``}
-            <div id="slot"><slot></slot></div>
-          `
-        : ``}
+      ${
+        this.elementVisible
+          ? html`
+              <div class="loading">
+                ${
+                  this.loading
+                    ? html`<simple-icon-lite
+                        icon="hax:loading"
+                      ></simple-icon-lite>`
+                    : ``
+                }
+              </div>
+              ${
+                this.showTitle && this._remoteTitle
+                  ? html`<h3>${this._remoteTitle}</h3>`
+                  : ``
+              }
+              <div id="slot"><slot></slot></div>
+            `
+          : ``
+      }
       <div id="content"></div>
     `;
   }

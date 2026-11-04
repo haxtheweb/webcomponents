@@ -17,6 +17,13 @@
   "demoHtml": "<page-break published locked=\"false\" status=\"new\" title=\"New page\" data-hax-ray=\"Page break\"></page-break>",
   "attributes": [
     {
+      "name": "data-hax-ray",
+      "type": "",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
       "name": "iconType",
       "property": "iconType",
       "type": "string",
@@ -577,7 +584,7 @@
       }
     ]
   },
-  "surfaceHash": "dab71628bc6c",
+  "surfaceHash": "5e71e44ec260",
   "walkthroughs": [],
   "videos": [],
   "motion": {

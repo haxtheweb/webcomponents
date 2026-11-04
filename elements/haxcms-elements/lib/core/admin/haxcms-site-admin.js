@@ -1042,43 +1042,45 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
             `,
           )}
         </div>
-        ${advanced.length
-          ? html`
-              <h3 class="group-title" id="advanced-title">
-                ${this.t.advanced}
-              </h3>
-              <div
-                class="advanced-grid"
-                role="group"
-                aria-labelledby="advanced-title"
-              >
-                ${advanced.map(
-                  (section) => html`
-                    <button
-                      type="button"
-                      class="acard"
-                      data-route="${section.route}"
-                      title="${this._includesText(section)}"
-                      @click="${() => this._go(section.route)}"
-                    >
-                      <span class="ic"
-                        ><simple-icon-lite
-                          icon="${section.icon}"
-                          aria-hidden="true"
-                        ></simple-icon-lite
-                      ></span>
-                      <span>
-                        <span class="name">${this._label(section)}</span>
-                        <span class="card-desc"
-                          >${this._description(section)}</span
-                        >
-                      </span>
-                    </button>
-                  `,
-                )}
-              </div>
-            `
-          : nothing}
+        ${
+          advanced.length
+            ? html`
+                <h3 class="group-title" id="advanced-title">
+                  ${this.t.advanced}
+                </h3>
+                <div
+                  class="advanced-grid"
+                  role="group"
+                  aria-labelledby="advanced-title"
+                >
+                  ${advanced.map(
+                    (section) => html`
+                      <button
+                        type="button"
+                        class="acard"
+                        data-route="${section.route}"
+                        title="${this._includesText(section)}"
+                        @click="${() => this._go(section.route)}"
+                      >
+                        <span class="ic"
+                          ><simple-icon-lite
+                            icon="${section.icon}"
+                            aria-hidden="true"
+                          ></simple-icon-lite
+                        ></span>
+                        <span>
+                          <span class="name">${this._label(section)}</span>
+                          <span class="card-desc"
+                            >${this._description(section)}</span
+                          >
+                        </span>
+                      </button>
+                    `,
+                  )}
+                </div>
+              `
+            : nothing
+        }
       </div>
     `;
   }
@@ -1250,12 +1252,13 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
               type="button"
               class="rail-item"
               data-route="${section.route}"
-              aria-current="${onSection &&
-              (this.route === section.route || !children.length)
-                ? "page"
-                : onSection
-                  ? "true"
-                  : "false"}"
+              aria-current="${
+                onSection && (this.route === section.route || !children.length)
+                  ? "page"
+                  : onSection
+                    ? "true"
+                    : "false"
+              }"
               title="${collapsed ? "" : this._includesText(section)}"
               data-tip="${this._label(section)}"
               @click="${() => this._go(section.route)}"
@@ -1267,60 +1270,64 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
               <span class="label">${this._label(section)}</span>
               ${this._statusBadge(section)}
             </button>
-            ${children.length && !collapsed
-              ? html`<button
-                  type="button"
-                  class="rail-toggle"
-                  data-route="${section.route}"
-                  aria-expanded="${open ? "true" : "false"}"
-                  aria-controls="sub-${section.route}"
-                  aria-label="${(open
-                    ? this.t.hideParts
-                    : this.t.showParts
-                  ).replace("{section}", () => this._label(section))}"
-                  @click="${() => this._toggleExpanded(section.route)}"
-                >
-                  <simple-icon-lite
-                    icon="${HaxUiAdminIcons.chevron}"
-                    aria-hidden="true"
-                  ></simple-icon-lite>
-                </button>`
-              : nothing}
+            ${
+              children.length && !collapsed
+                ? html`<button
+                    type="button"
+                    class="rail-toggle"
+                    data-route="${section.route}"
+                    aria-expanded="${open ? "true" : "false"}"
+                    aria-controls="sub-${section.route}"
+                    aria-label="${(open
+                      ? this.t.hideParts
+                      : this.t.showParts
+                    ).replace("{section}", () => this._label(section))}"
+                    @click="${() => this._toggleExpanded(section.route)}"
+                  >
+                    <simple-icon-lite
+                      icon="${HaxUiAdminIcons.chevron}"
+                      aria-hidden="true"
+                    ></simple-icon-lite>
+                  </button>`
+                : nothing
+            }
           </div>
-          ${open
-            ? html`<ul class="rail-sub" id="sub-${section.route}">
-                ${children.map((child) => {
-                  const here = child.route
-                    ? this.route === child.route
-                    : onSection && this._anchor === child.key;
-                  return html`<li>
-                    <button
-                      type="button"
-                      class="rail-item sub ${child.icon ? "has-icon" : ""}"
-                      data-route="${child.route || section.route}"
-                      data-child="${child.key}"
-                      aria-current="${here
-                        ? child.route
-                          ? "page"
-                          : "location"
-                        : "false"}"
-                      title="${collapsed ? "" : this._label(child)}"
-                      data-tip="${this._label(child)}"
-                      @click="${() => this._goChild(section, child)}"
-                    >
-                      ${child.icon
-                        ? html`<simple-icon-lite
-                            icon="${child.icon}"
-                            aria-hidden="true"
-                          ></simple-icon-lite>`
-                        : nothing}
-                      <span class="label">${this._label(child)}</span>
-                      ${this._badge(child.route || child.key)}
-                    </button>
-                  </li>`;
-                })}
-              </ul>`
-            : nothing}
+          ${
+            open
+              ? html`<ul class="rail-sub" id="sub-${section.route}">
+                  ${children.map((child) => {
+                    const here = child.route
+                      ? this.route === child.route
+                      : onSection && this._anchor === child.key;
+                    return html`<li>
+                      <button
+                        type="button"
+                        class="rail-item sub ${child.icon ? "has-icon" : ""}"
+                        data-route="${child.route || section.route}"
+                        data-child="${child.key}"
+                        aria-current="${
+                          here ? (child.route ? "page" : "location") : "false"
+                        }"
+                        title="${collapsed ? "" : this._label(child)}"
+                        data-tip="${this._label(child)}"
+                        @click="${() => this._goChild(section, child)}"
+                      >
+                        ${
+                          child.icon
+                            ? html`<simple-icon-lite
+                                icon="${child.icon}"
+                                aria-hidden="true"
+                              ></simple-icon-lite>`
+                            : nothing
+                        }
+                        <span class="label">${this._label(child)}</span>
+                        ${this._badge(child.route || child.key)}
+                      </button>
+                    </li>`;
+                  })}
+                </ul>`
+              : nothing
+          }
         </li>
       `;
     });
@@ -1341,19 +1348,21 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
     const toggleLabel = collapsed ? this.t.expandMenu : this.t.collapseMenu;
     return html`
       <div
-        class="section ${collapsed ? "rail-collapsed" : ""} ${this._narrow
-          ? "narrow"
-          : ""} ${overlay ? "rail-overlay" : ""}"
+        class="section ${collapsed ? "rail-collapsed" : ""} ${
+          this._narrow ? "narrow" : ""
+        } ${overlay ? "rail-overlay" : ""}"
       >
-        ${overlay
-          ? html`<div
-              class="rail-scrim"
-              aria-hidden="true"
-              @click="${() => {
-                this._railOpen = false;
-              }}"
-            ></div>`
-          : nothing}
+        ${
+          overlay
+            ? html`<div
+                class="rail-scrim"
+                aria-hidden="true"
+                @click="${() => {
+                  this._railOpen = false;
+                }}"
+              ></div>`
+            : nothing
+        }
         <nav
           class="rail"
           id="rail"
@@ -1373,9 +1382,11 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
             @click="${this.toggleRail}"
           >
             <simple-icon-lite
-              icon="${collapsed
-                ? HaxUiAdminIcons.railExpand
-                : HaxUiAdminIcons.railCollapse}"
+              icon="${
+                collapsed
+                  ? HaxUiAdminIcons.railExpand
+                  : HaxUiAdminIcons.railCollapse
+              }"
               aria-hidden="true"
             ></simple-icon-lite>
             <span class="label" aria-hidden="true">${toggleLabel}</span>
@@ -1383,41 +1394,49 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
           <ul>
             ${this._renderRailItems(primary)}
           </ul>
-          ${advanced.length
-            ? html`<div class="rail-label">
-                  <span class="label">${this.t.advanced}</span>
-                </div>
-                <ul>
-                  ${this._renderRailItems(advanced)}
+          ${
+            advanced.length
+              ? html`<div class="rail-label">
+                    <span class="label">${this.t.advanced}</span>
+                  </div>
+                  <ul>
+                    ${this._renderRailItems(advanced)}
+                  </ul>`
+              : nothing
+          }
+          ${
+            help.length
+              ? html`<ul class="rail-help">
+                  ${this._renderRailItems(help)}
                 </ul>`
-            : nothing}
-          ${help.length
-            ? html`<ul class="rail-help">
-                ${this._renderRailItems(help)}
-              </ul>`
-            : nothing}
+              : nothing
+          }
         </nav>
         <div class="main">
           ${section.header === false ? nothing : this._renderHeader(resolved)}
           <div class="body ${section.fill ? "fill" : ""}"><slot></slot></div>
-          ${section.footer === "form"
-            ? this._renderFormBar()
-            : section.footer === "selection"
-              ? this._renderSelectionBar()
-              : nothing}
+          ${
+            section.footer === "form"
+              ? this._renderFormBar()
+              : section.footer === "selection"
+                ? this._renderSelectionBar()
+                : nothing
+          }
         </div>
-        ${this._tip
-          ? html`<div
-              class="rail-tip"
-              aria-hidden="true"
-              style="${styleMap({
-                top: `${this._tip.top}px`,
-                left: `${this._tip.left}px`,
-              })}"
-            >
-              ${this._tip.text}
-            </div>`
-          : nothing}
+        ${
+          this._tip
+            ? html`<div
+                class="rail-tip"
+                aria-hidden="true"
+                style="${styleMap({
+                  top: `${this._tip.top}px`,
+                  left: `${this._tip.left}px`,
+                })}"
+              >
+                ${this._tip.text}
+              </div>`
+            : nothing
+        }
       </div>
     `;
   }
@@ -1427,49 +1446,59 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
       <div class="ph">
         <div class="ph-text">
           <h2>
-            ${this._headerText && this._headerText.title
-              ? this._headerText.title
-              : this._label(resolved)}
-            ${resolved && resolved.section && resolved.section.status === "beta"
-              ? html`<span
-                  class="hax-ui-pill ph-status"
-                  data-tone="beta"
-                  title="${this.t.betaDescription}"
-                  >${this.t.beta}</span
-                >`
-              : nothing}
+            ${
+              this._headerText && this._headerText.title
+                ? this._headerText.title
+                : this._label(resolved)
+            }
+            ${
+              resolved && resolved.section && resolved.section.status === "beta"
+                ? html`<span
+                    class="hax-ui-pill ph-status"
+                    data-tone="beta"
+                    title="${this.t.betaDescription}"
+                    >${this.t.beta}</span
+                  >`
+                : nothing
+            }
           </h2>
           <p>
-            ${this._headerText && this._headerText.description
-              ? this._headerText.description
-              : this._description(resolved)}
+            ${
+              this._headerText && this._headerText.description
+                ? this._headerText.description
+                : this._description(resolved)
+            }
           </p>
         </div>
         ${this._addArea ? this._renderAddArea() : nothing}
-        ${this._headerActions.length
-          ? html`<div class="ph-actions">
-              ${this._headerActions.map(
-                (action) => html`
-                  <button
-                    type="button"
-                    class="hax-ui-btn header-action"
-                    data-action="${action.id}"
-                    ?disabled="${!!action.disabled}"
-                    @click="${() =>
-                      this._callSection("runHeaderAction", action.id)}"
-                  >
-                    ${action.icon
-                      ? html`<simple-icon-lite
-                          icon="${action.icon}"
-                          aria-hidden="true"
-                        ></simple-icon-lite>`
-                      : nothing}
-                    ${action.label}
-                  </button>
-                `,
-              )}
-            </div>`
-          : nothing}
+        ${
+          this._headerActions.length
+            ? html`<div class="ph-actions">
+                ${this._headerActions.map(
+                  (action) => html`
+                    <button
+                      type="button"
+                      class="hax-ui-btn header-action"
+                      data-action="${action.id}"
+                      ?disabled="${!!action.disabled}"
+                      @click="${() =>
+                        this._callSection("runHeaderAction", action.id)}"
+                    >
+                      ${
+                        action.icon
+                          ? html`<simple-icon-lite
+                              icon="${action.icon}"
+                              aria-hidden="true"
+                            ></simple-icon-lite>`
+                          : nothing
+                      }
+                      ${action.label}
+                    </button>
+                  `,
+                )}
+              </div>`
+            : nothing
+        }
       </div>
     `;
   }
@@ -1519,29 +1548,35 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
     const soon = !!action.soon;
     return html`<button
       type="button"
-      class="hax-ui-btn bulk ${action.danger && !soon ? "danger" : ""} ${soon
-        ? "soon"
-        : ""}"
+      class="hax-ui-btn bulk ${action.danger && !soon ? "danger" : ""} ${
+        soon ? "soon" : ""
+      }"
       data-action="${action.id}"
       title="${soon ? this.t.comingSoon : ""}"
-      ?disabled="${soon ||
-      (!count && action.needsSelection !== false) ||
-      !!action.disabled}"
+      ?disabled="${
+        soon || (!count && action.needsSelection !== false) || !!action.disabled
+      }"
       @click="${() => {
         this._moreOpen = false;
         this._callSection("runAction", action.id);
       }}"
     >
-      ${action.icon
-        ? html`<simple-icon-lite
-            icon="${action.icon}"
-            aria-hidden="true"
-          ></simple-icon-lite>`
-        : nothing}
+      ${
+        action.icon
+          ? html`<simple-icon-lite
+              icon="${action.icon}"
+              aria-hidden="true"
+            ></simple-icon-lite>`
+          : nothing
+      }
       ${action.label}
-      ${soon
-        ? html`<span class="hax-ui-pill" data-tone="soon">${this.t.soon}</span>`
-        : nothing}
+      ${
+        soon
+          ? html`<span class="hax-ui-pill" data-tone="soon"
+              >${this.t.soon}</span
+            >`
+          : nothing
+      }
     </button>`;
   }
 
@@ -1558,54 +1593,62 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
 
   /** Clear and the bulk actions, folding into More on a narrow bar */
   _renderBulkGroup(count) {
-    return html`${count
-      ? html`<button
-          type="button"
-          class="hax-ui-btn ghost clear"
-          @click="${() => this._callSection("clearSelection")}"
-        >
-          ${this.t.clearSelection}
-        </button>`
-      : nothing}
-    ${this._narrow &&
-    this._actions.length > 1 &&
-    !this._actions.every((action) => action.soon)
-      ? html`${this._renderBulk(this._actions[0], count)}
-          <div class="more-wrap">
-            <button
-              type="button"
-              class="hax-ui-btn more-btn"
-              aria-haspopup="true"
-              aria-expanded="${this._moreOpen ? "true" : "false"}"
-              aria-controls="more-actions"
-              aria-label="${this.t.moreActionsLabel}"
-              ?disabled="${!count &&
-              !this._actions
-                .slice(1)
-                .some((action) => action.needsSelection === false)}"
-              @click="${this._toggleMore}"
-            >
-              ${this.t.moreActions}
-              <simple-icon-lite
-                icon="${HaxUiAdminIcons.chevron}"
-                aria-hidden="true"
-              ></simple-icon-lite>
-            </button>
-            ${this._moreOpen
-              ? html`<div
-                  class="more-menu"
-                  id="more-actions"
-                  role="group"
-                  aria-label="${this.t.moreActionsLabel}"
-                  @keydown="${this._onMoreKeydown}"
-                >
-                  ${this._actions
+    return html`${
+      count
+        ? html`<button
+            type="button"
+            class="hax-ui-btn ghost clear"
+            @click="${() => this._callSection("clearSelection")}"
+          >
+            ${this.t.clearSelection}
+          </button>`
+        : nothing
+    }
+    ${
+      this._narrow &&
+      this._actions.length > 1 &&
+      !this._actions.every((action) => action.soon)
+        ? html`${this._renderBulk(this._actions[0], count)}
+            <div class="more-wrap">
+              <button
+                type="button"
+                class="hax-ui-btn more-btn"
+                aria-haspopup="true"
+                aria-expanded="${this._moreOpen ? "true" : "false"}"
+                aria-controls="more-actions"
+                aria-label="${this.t.moreActionsLabel}"
+                ?disabled="${
+                  !count &&
+                  !this._actions
                     .slice(1)
-                    .map((action) => this._renderBulk(action, count))}
-                </div>`
-              : nothing}
-          </div>`
-      : this._actions.map((action) => this._renderBulk(action, count))}`;
+                    .some((action) => action.needsSelection === false)
+                }"
+                @click="${this._toggleMore}"
+              >
+                ${this.t.moreActions}
+                <simple-icon-lite
+                  icon="${HaxUiAdminIcons.chevron}"
+                  aria-hidden="true"
+                ></simple-icon-lite>
+              </button>
+              ${
+                this._moreOpen
+                  ? html`<div
+                      class="more-menu"
+                      id="more-actions"
+                      role="group"
+                      aria-label="${this.t.moreActionsLabel}"
+                      @keydown="${this._onMoreKeydown}"
+                    >
+                      ${this._actions
+                        .slice(1)
+                        .map((action) => this._renderBulk(action, count))}
+                    </div>`
+                  : nothing
+              }
+            </div>`
+        : this._actions.map((action) => this._renderBulk(action, count))
+    }`;
   }
 
   _toggleMore() {
@@ -1675,18 +1718,22 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
           role="${this._status === "error" ? "alert" : "status"}"
           aria-live="polite"
         >
-          ${this._actions.length && this._selected
-            ? html`<b class="sel">${this._selectionWords(this._selected)}</b
-                ><span class="sep" aria-hidden="true">·</span>`
-            : nothing}
+          ${
+            this._actions.length && this._selected
+              ? html`<b class="sel">${this._selectionWords(this._selected)}</b
+                  ><span class="sep" aria-hidden="true">·</span>`
+              : nothing
+          }
           ${this._statusLine()}
         </div>
-        ${this._actions.length
-          ? html`${this._renderBulkGroup(this._selected)}<span
-                class="bar-sep"
-                aria-hidden="true"
-              ></span>`
-          : nothing}
+        ${
+          this._actions.length
+            ? html`${this._renderBulkGroup(this._selected)}<span
+                  class="bar-sep"
+                  aria-hidden="true"
+                ></span>`
+            : nothing
+        }
         <button
           type="button"
           class="hax-ui-btn ghost discard"
@@ -1723,9 +1770,11 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
             ${this.t.leaveTitle.replace("{section}", () => name)}
           </h3>
           <p id="leave-desc">
-            ${this._changes.length
-              ? this._changes.join(" · ")
-              : this.t.leaveDescription}
+            ${
+              this._changes.length
+                ? this._changes.join(" · ")
+                : this.t.leaveDescription
+            }
           </p>
           <div class="acts">
             <button

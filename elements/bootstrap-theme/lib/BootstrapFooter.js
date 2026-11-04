@@ -222,44 +222,48 @@ class BootstrapFooter extends I18NMixin(LitElement) {
         role="navigation"
         aria-label="${this.t.pageNavigation}"
       >
-        ${this._backwardItem && this._backwardItem.slug
-          ? html`
-              <a
-                class="btn btn-outline-primary backward"
-                href="${this._backwardItem.slug}"
-                role="button"
-                aria-label="${this.t.goToPreviousPage.replace(
-                  "{title}",
-                  () => this._backwardItem.title || "",
-                )}"
-              >
-                <simple-icon-lite
-                  icon="av:fast-rewind"
-                  aria-hidden="true"
-                ></simple-icon-lite>
-                <span>${this._backwardItem.title}</span>
-              </a>
-            `
-          : ""}
-        ${this._forwardItem && this._forwardItem.slug
-          ? html`
-              <a
-                class="btn btn-outline-primary forward"
-                href="${this._forwardItem.slug}"
-                role="button"
-                aria-label="${this.t.goToNextPage.replace(
-                  "{title}",
-                  () => this._forwardItem.title || "",
-                )}"
-              >
-                <span>${this._forwardItem.title}</span>
-                <simple-icon-lite
-                  icon="av:fast-forward"
-                  aria-hidden="true"
-                ></simple-icon-lite>
-              </a>
-            `
-          : ""}
+        ${
+          this._backwardItem && this._backwardItem.slug
+            ? html`
+                <a
+                  class="btn btn-outline-primary backward"
+                  href="${this._backwardItem.slug}"
+                  role="button"
+                  aria-label="${this.t.goToPreviousPage.replace(
+                    "{title}",
+                    () => this._backwardItem.title || "",
+                  )}"
+                >
+                  <simple-icon-lite
+                    icon="av:fast-rewind"
+                    aria-hidden="true"
+                  ></simple-icon-lite>
+                  <span>${this._backwardItem.title}</span>
+                </a>
+              `
+            : ""
+        }
+        ${
+          this._forwardItem && this._forwardItem.slug
+            ? html`
+                <a
+                  class="btn btn-outline-primary forward"
+                  href="${this._forwardItem.slug}"
+                  role="button"
+                  aria-label="${this.t.goToNextPage.replace(
+                    "{title}",
+                    () => this._forwardItem.title || "",
+                  )}"
+                >
+                  <span>${this._forwardItem.title}</span>
+                  <simple-icon-lite
+                    icon="av:fast-forward"
+                    aria-hidden="true"
+                  ></simple-icon-lite>
+                </a>
+              `
+            : ""
+        }
       </nav>
     `;
   }

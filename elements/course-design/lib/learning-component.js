@@ -149,34 +149,38 @@ class LearningComponent extends I18NMixin(DDD) {
     return html`
       <div class="ddd-block">
         <div class="ddd-block-header header">
-          ${this.icon
-            ? html`<span class="ddd-block-chip" aria-hidden="true"
-                ><simple-icon-lite icon="${this.icon}"></simple-icon-lite
-              ></span>`
-            : ``}
+          ${
+            this.icon
+              ? html`<span class="ddd-block-chip" aria-hidden="true"
+                  ><simple-icon-lite icon="${this.icon}"></simple-icon-lite
+                ></span>`
+              : ``
+          }
           <div class="ddd-block-text">
             <div class="ddd-block-label sub-title">${this.subtitle}</div>
             <div class="ddd-block-title title">${this.title}</div>
           </div>
-          ${this.url
-            ? html`<div class="ddd-block-actions urlbutton">
-                <a
-                  href="${this.url}"
-                  id="url"
-                  class="ddd-block-action"
-                  target="_blank"
-                  rel="nofollow noopener"
-                  aria-label="${this.t.readMore}"
-                  ><simple-icon-lite
-                    icon="icons:add-circle-outline"
-                    aria-hidden="true"
-                  ></simple-icon-lite
-                ></a>
-                <simple-tooltip for="url" animation-delay="0"
-                  >${this.t.readMore}</simple-tooltip
-                >
-              </div>`
-            : ``}
+          ${
+            this.url
+              ? html`<div class="ddd-block-actions urlbutton">
+                  <a
+                    href="${this.url}"
+                    id="url"
+                    class="ddd-block-action"
+                    target="_blank"
+                    rel="nofollow noopener"
+                    aria-label="${this.t.readMore}"
+                    ><simple-icon-lite
+                      icon="icons:add-circle-outline"
+                      aria-hidden="true"
+                    ></simple-icon-lite
+                  ></a>
+                  <simple-tooltip for="url" animation-delay="0"
+                    >${this.t.readMore}</simple-tooltip
+                  >
+                </div>`
+              : ``
+          }
         </div>
         <div class="ddd-block-body content ${this.url ? "urlPresent" : ""}">
           <div class="slot">

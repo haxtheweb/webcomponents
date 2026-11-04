@@ -101,27 +101,37 @@ export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
       <div class="preview-wrap">
         <slot></slot>
       </div>
-      ${this.gizmoTitle || truncatedDescription
-        ? html`
-            <div class="info">
-              ${this.gizmoTitle
-                ? html`
-                    <div class="title">
-                      ${this.gizmoIcon
-                        ? html`<simple-icon-lite
-                            icon="${this.gizmoIcon}"
-                          ></simple-icon-lite>`
-                        : ""}
-                      <span>${this.gizmoTitle}</span>
-                    </div>
-                  `
-                : ""}
-              ${truncatedDescription
-                ? html`<div class="description">${truncatedDescription}</div>`
-                : ""}
-            </div>
-          `
-        : ""}
+      ${
+        this.gizmoTitle || truncatedDescription
+          ? html`
+              <div class="info">
+                ${
+                  this.gizmoTitle
+                    ? html`
+                        <div class="title">
+                          ${
+                            this.gizmoIcon
+                              ? html`<simple-icon-lite
+                                  icon="${this.gizmoIcon}"
+                                ></simple-icon-lite>`
+                              : ""
+                          }
+                          <span>${this.gizmoTitle}</span>
+                        </div>
+                      `
+                    : ""
+                }
+                ${
+                  truncatedDescription
+                    ? html`<div class="description">
+                        ${truncatedDescription}
+                      </div>`
+                    : ""
+                }
+              </div>
+            `
+          : ""
+      }
     `;
   }
   updated(changedProperties) {

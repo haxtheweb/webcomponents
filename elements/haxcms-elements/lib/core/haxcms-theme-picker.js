@@ -598,9 +598,9 @@ class HAXCMSThemePicker extends I18NMixin(DDD) {
     const id = `${this.__inputId}-${index}`;
     return html`
       <label
-        class="option ${checked ? "selected" : ""} ${showActiveState
-          ? "active"
-          : ""}"
+        class="option ${checked ? "selected" : ""} ${
+          showActiveState ? "active" : ""
+        }"
       >
         <input
           id="${id}"
@@ -625,22 +625,24 @@ class HAXCMSThemePicker extends I18NMixin(DDD) {
               >${this.t.selected}</span
             >
           </div>
-          ${this._isThumbnailUnavailable(option)
-            ? html`
-                <div class="preview preview-fallback" aria-hidden="true">
-                  ${this.t.noPreview}
-                </div>
-              `
-            : html`
-                <img
-                  class="preview"
-                  src="${option.thumbnail}"
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                  @error="${() => this._markThumbnailError(option)}"
-                />
-              `}
+          ${
+            this._isThumbnailUnavailable(option)
+              ? html`
+                  <div class="preview preview-fallback" aria-hidden="true">
+                    ${this.t.noPreview}
+                  </div>
+                `
+              : html`
+                  <img
+                    class="preview"
+                    src="${option.thumbnail}"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                    @error="${() => this._markThumbnailError(option)}"
+                  />
+                `
+          }
         </div>
         <div class="theme-name">${option.label}</div>
         <span
@@ -671,9 +673,9 @@ class HAXCMSThemePicker extends I18NMixin(DDD) {
       <fieldset
         role="radiogroup"
         aria-label="${this.label || this.t.themeSelection}"
-        aria-describedby="${this.description
-          ? `${this.__inputId}-description`
-          : ""}"
+        aria-describedby="${
+          this.description ? `${this.__inputId}-description` : ""
+        }"
         ?disabled="${this.disabled}"
       >
         <legend ?hidden="${!this.label}">${this.label}</legend>

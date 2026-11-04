@@ -13,6 +13,40 @@
           "members": [
             {
               "kind": "field",
+              "name": "_fileName",
+              "description": "File name shown as the title when there is no heading; blob and data\nurls have no meaningful name so they get none",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "_canFullscreen",
+              "description": "Full screen is offered only where the browser supports it",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_fullscreenChanged"
+            },
+            {
+              "kind": "method",
+              "name": "_toggleFullscreen",
+              "description": "Toggle the viewer in and out of full screen"
+            },
+            {
+              "kind": "method",
+              "name": "_frameWidth",
+              "description": "The frame takes the authored width (a bare number means pixels) and\nthe viewer fills the frame, so a fixed width no longer leaves an empty\nband beside the viewer."
+            },
+            {
+              "kind": "method",
+              "name": "renderObject"
+            },
+            {
+              "kind": "method",
+              "name": "renderHeader"
+            },
+            {
+              "kind": "field",
               "name": "tag",
               "static": true,
               "readonly": true
@@ -33,6 +67,24 @@
               "static": true,
               "description": "haxProperties integration via file reference",
               "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, document: \"Document\", openInNewTab: \"Open the PDF in a new tab\", downloadPdf: \"Download the PDF\", fullScreen: \"Full screen\", exitFullScreen: \"Exit full screen\", }"
+            },
+            {
+              "kind": "field",
+              "name": "_fullscreen",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "_fullscreen"
             },
             {
               "kind": "field",
@@ -214,6 +266,20 @@
               "description": "The z-depth of the card, from 0-5.",
               "default": "\"1\"",
               "fieldName": "elevation"
+            },
+            {
+              "name": "_fullscreen",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "_fullscreen"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
             }
           ],
           "superclass": {

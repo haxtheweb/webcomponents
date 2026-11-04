@@ -312,11 +312,13 @@ class HAXCMSSiteImportExportDashboard extends I18NMixin(DDD) {
           <span class="action-description"
             >${this._actionText(item, "description")}</span
           >
-          ${this._isActionDisabled(item)
-            ? html`<span class="action-disabled"
-                >${this.t.disabledInFeatures}</span
-              >`
-            : ""}
+          ${
+            this._isActionDisabled(item)
+              ? html`<span class="action-disabled"
+                  >${this.t.disabledInFeatures}</span
+                >`
+              : ""
+          }
         </span>
       </button>
     `;

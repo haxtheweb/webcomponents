@@ -20,7 +20,7 @@
     function i(s) {
       if (e[s]) return e[s].exports;
       var n = (e[s] = { i: s, l: !1, exports: {} });
-      return t[s].call(n.exports, n, n.exports, i), (n.l = !0), n.exports;
+      return (t[s].call(n.exports, n, n.exports, i), (n.l = !0), n.exports);
     }
     return (
       (i.m = t),
@@ -45,7 +45,7 @@
             : function () {
                 return t;
               };
-        return i.d(e, "a", e), e;
+        return (i.d(e, "a", e), e);
       }),
       (i.o = function (t, e) {
         return Object.prototype.hasOwnProperty.call(t, e);
@@ -56,7 +56,7 @@
   })([
     function (t, e, i) {
       "use strict";
-      i.r(e),
+      (i.r(e),
         function (t) {
           var s = i(93),
             n = function () {
@@ -70,7 +70,7 @@
            *  @author Yotam Mann
            *  @license http://opensource.org/licenses/MIT MIT License
            *  @copyright 2014-2019 Yotam Mann
-           */ (n.prototype.toString = function () {
+           */ ((n.prototype.toString = function () {
             for (var t in n) {
               var e = t[0].match(/^[A-Z]$/),
                 i = n[t] === this.constructor;
@@ -84,7 +84,7 @@
             (n.prototype.set = function (t, e) {
               if (n.isString(t)) {
                 var i = {};
-                (i[t] = e), (t = i);
+                ((i[t] = e), (t = i));
               }
               t: for (var s in t) {
                 e = t[s];
@@ -125,7 +125,7 @@
                 if (-1 !== s.indexOf(".")) {
                   for (var r = s.split("."), l = 0; l < r.length - 1; l++) {
                     var u = r[l];
-                    (a[u] = a[u] || {}), (a = a[u]), (o = o[u]);
+                    ((a[u] = a[u] || {}), (a = a[u]), (o = o[u]));
                   }
                   s = r[r.length - 1];
                 }
@@ -180,7 +180,8 @@
             (n.prototype.log = function () {
               if (this.debug || this.toString() === n.global.TONE_DEBUG_CLASS) {
                 var t = Array.from(arguments);
-                t.unshift(this.toString() + ":"), console.log.apply(void 0, t);
+                (t.unshift(this.toString() + ":"),
+                  console.log.apply(void 0, t));
               }
             }),
             (n.prototype.assert = function (t, e) {
@@ -189,12 +190,12 @@
             (n.connectSeries = function () {
               for (var t = arguments[0], e = 1; e < arguments.length; e++) {
                 var i = arguments[e];
-                n.connect(t, i), (t = i);
+                (n.connect(t, i), (t = i));
               }
               return n;
             }),
             (n.connect = function (t, e, i, s) {
-              for (; n.isDefined(e.input); )
+              for (; n.isDefined(e.input);)
                 n.isArray(e.input)
                   ? ((s = n.defaultArg(s, 0)), (e = e.input[s]), (s = 0))
                   : e.input && (e = e.input);
@@ -207,7 +208,7 @@
             }),
             (n.disconnect = function (t, e, i, s) {
               if (e) {
-                for (var o = !1; !o; )
+                for (var o = !1; !o;)
                   n.isArray(e.input)
                     ? (n.isDefined(s)
                         ? n.disconnect(t, e.input[s], i)
@@ -306,11 +307,11 @@
             }),
             (n.extend = function (t, e) {
               function i() {}
-              n.isUndef(e) && (e = n),
+              (n.isUndef(e) && (e = n),
                 (i.prototype = e.prototype),
                 (t.prototype = new i()),
                 (t.prototype.constructor = t),
-                (t._super = e);
+                (t._super = e));
             }),
             (n._audioContext = null),
             (n.start = function () {
@@ -321,10 +322,10 @@
                 return n._audioContext;
               },
               set: function (t) {
-                t.isContext
+                (t.isContext
                   ? (n._audioContext = t)
                   : (n._audioContext = new n.Context(t)),
-                  n.Context.emit("init", n._audioContext);
+                  n.Context.emit("init", n._audioContext));
               },
             }),
             Object.defineProperty(n.prototype, "context", {
@@ -363,15 +364,15 @@
               if (n.initialized) t(n.context);
               else {
                 var e = function () {
-                  t(n.context), n.Context.off("init", e);
+                  (t(n.context), n.Context.off("init", e));
                 };
                 n.Context.on("init", e);
               }
               return n;
             }),
             (n.version = s.a),
-            (e.default = n);
-        }.call(this, i(147));
+            (e.default = n));
+        }.call(this, i(147)));
     },
     function (t, e, i) {
       "use strict";
@@ -385,11 +386,11 @@
         if (o.connect(a) !== a) {
           var r = AudioNode.prototype.connect;
           AudioNode.prototype.connect = function () {
-            return r.apply(this, arguments), arguments[0];
+            return (r.apply(this, arguments), arguments[0]);
           };
         }
       }
-      (s.default.AudioNode = function () {
+      ((s.default.AudioNode = function () {
         s.default.call(this);
         var t = s.default.defaults(arguments, ["context"], {
           context: s.default.context,
@@ -403,12 +404,12 @@
           },
         }),
         (s.default.AudioNode.prototype.createInsOuts = function (t, e) {
-          1 === t
+          (1 === t
             ? (this.input = this.context.createGain())
             : t > 1 && (this.input = new Array(t)),
             1 === e
               ? (this.output = this.context.createGain())
-              : e > 1 && (this.output = new Array(e));
+              : e > 1 && (this.output = new Array(e)));
         }),
         Object.defineProperty(s.default.AudioNode.prototype, "channelCount", {
           get: function () {
@@ -485,7 +486,9 @@
         (s.default.AudioNode.prototype.chain = function () {
           var t = Array.from(arguments);
           return (
-            t.unshift(this), s.default.connectSeries.apply(void 0, t), this
+            t.unshift(this),
+            s.default.connectSeries.apply(void 0, t),
+            this
           );
         }),
         (s.default.AudioNode.prototype.fan = function () {
@@ -503,14 +506,14 @@
             (this._context = null),
             this
           );
-        });
+        }));
       e.default = s.default.AudioNode;
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(4), i(14), i(30), i(44), i(20), i(3);
+      (i(4), i(14), i(30), i(44), i(20), i(3));
       if (
         s.default.supported &&
         !s.default.global.AudioContext.prototype.createConstantSource
@@ -525,46 +528,49 @@
             s++
           )
             i[s] = 1;
-          (this._bufferSource = t.createBufferSource()),
+          ((this._bufferSource = t.createBufferSource()),
             (this._bufferSource.channelCount = 1),
             (this._bufferSource.channelCountMode = "explicit"),
             (this._bufferSource.buffer = e),
-            (this._bufferSource.loop = !0);
+            (this._bufferSource.loop = !0));
           var n = (this._output = t.createGain());
-          (this.offset = n.gain), this._bufferSource.connect(n);
+          ((this.offset = n.gain), this._bufferSource.connect(n));
         };
-        (n.prototype.start = function (t) {
-          return this._bufferSource.start(t), this;
+        ((n.prototype.start = function (t) {
+          return (this._bufferSource.start(t), this);
         }),
           (n.prototype.stop = function (t) {
-            return this._bufferSource.stop(t), this;
+            return (this._bufferSource.stop(t), this);
           }),
           (n.prototype.connect = function () {
-            return this._output.connect.apply(this._output, arguments), this;
+            return (this._output.connect.apply(this._output, arguments), this);
           }),
           (n.prototype.disconnect = function () {
-            return this._output.disconnect.apply(this._output, arguments), this;
+            return (
+              this._output.disconnect.apply(this._output, arguments),
+              this
+            );
           }),
           (AudioContext.prototype.createConstantSource = function () {
             return new n(this);
           }),
           (s.default.Context.prototype.createConstantSource = function () {
             return new n(this);
-          });
+          }));
       }
-      (s.default.Signal = function () {
+      ((s.default.Signal = function () {
         var t = s.default.defaults(
           arguments,
           ["value", "units"],
           s.default.Signal,
         );
-        s.default.Param.call(this, t),
+        (s.default.Param.call(this, t),
           (this._constantSource = this.context.createConstantSource()),
           this._constantSource.start(0),
           (this._param = this._constantSource.offset),
           (this.value = t.value),
           (this.output = this._constantSource),
-          (this.input = this._param = this.output.offset);
+          (this.input = this._param = this.output.offset));
       }),
         s.default.extend(s.default.Signal, s.default.Param),
         (s.default.Signal.defaults = {
@@ -589,21 +595,21 @@
             (this._constantSource = null),
             this
           );
-        });
+        }));
       e.default = s.default.Signal;
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(14), i(4), i(1);
-      (s.default.Gain = function () {
+      (i(14), i(4), i(1));
+      ((s.default.Gain = function () {
         var t = s.default.defaults(
           arguments,
           ["gain", "units"],
           s.default.Gain,
         );
-        s.default.AudioNode.call(this, t),
+        (s.default.AudioNode.call(this, t),
           (this.input =
             this.output =
             this._gainNode =
@@ -614,26 +620,26 @@
             value: t.gain,
             convert: t.convert,
           })),
-          this._readOnly("gain");
+          this._readOnly("gain"));
       }),
         s.default.extend(s.default.Gain, s.default.AudioNode),
         (s.default.Gain.defaults = { gain: 1, convert: !0 }),
         (s.default.Gain.prototype.dispose = function () {
-          s.default.AudioNode.prototype.dispose.call(this),
+          (s.default.AudioNode.prototype.dispose.call(this),
             this._gainNode.disconnect(),
             (this._gainNode = null),
             this._writable("gain"),
             this.gain.dispose(),
-            (this.gain = null);
+            (this.gain = null));
         }),
-        (e.default = s.default.Gain);
+        (e.default = s.default.Gain));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(63), i(46), i(45), i(20);
-      (s.default.Type = {
+      (i(63), i(46), i(45), i(20));
+      ((s.default.Type = {
         Default: "number",
         Time: "time",
         Frequency: "frequency",
@@ -690,19 +696,19 @@
                 ? t.toTicks()
                 : void 0;
         }),
-        (e.default = s.default);
+        (e.default = s.default));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(14), i(3), i(30);
-      (s.default.Multiply = function (t) {
-        s.default.Signal.call(this),
+      (i(14), i(3), i(30));
+      ((s.default.Multiply = function (t) {
+        (s.default.Signal.call(this),
           this.createInsOuts(2, 0),
           (this._mult = this.input[0] = this.output = new s.default.Gain()),
           (this._param = this.input[1] = this.output.gain),
-          (this.value = s.default.defaultArg(t, 0));
+          (this.value = s.default.defaultArg(t, 0)));
       }),
         s.default.extend(s.default.Multiply, s.default.Signal),
         (s.default.Multiply.prototype.dispose = function () {
@@ -714,15 +720,15 @@
             this
           );
         }),
-        (e.default = s.default.Multiply);
+        (e.default = s.default.Multiply));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(16), i(27), i(40), i(4), i(34), i(2), i(1);
-      (s.default.Source = function (t) {
-        (t = s.default.defaultArg(t, s.default.Source.defaults)),
+      (i(16), i(27), i(40), i(4), i(34), i(2), i(1));
+      ((s.default.Source = function (t) {
+        ((t = s.default.defaultArg(t, s.default.Source.defaults)),
           s.default.AudioNode.call(this),
           (this._volume = this.output = new s.default.Volume(t.volume)),
           (this.volume = this._volume.volume),
@@ -733,7 +739,7 @@
           (this._scheduled = []),
           (this._volume.output.output.channelCount = 2),
           (this._volume.output.output.channelCountMode = "explicit"),
-          (this.mute = t.mute);
+          (this.mute = t.mute));
       }),
         s.default.extend(s.default.Source, s.default.AudioNode),
         (s.default.Source.defaults = { volume: 0, mute: !1 }),
@@ -765,24 +771,24 @@
                 this._synced || (t = Math.max(t, this.context.currentTime))),
             this._state.getValueAtTime(t) === s.default.State.Started)
           )
-            this._state.cancel(t),
+            (this._state.cancel(t),
               this._state.setStateAtTime(s.default.State.Started, t),
-              this.restart(t, e, i);
+              this.restart(t, e, i));
           else if (
             (this._state.setStateAtTime(s.default.State.Started, t),
             this._synced)
           ) {
             var n = this._state.get(t);
-            (n.offset = s.default.defaultArg(e, 0)), (n.duration = i);
+            ((n.offset = s.default.defaultArg(e, 0)), (n.duration = i));
             var o = s.default.Transport.schedule(
               function (t) {
                 this._start(t, e, i);
               }.bind(this),
               t,
             );
-            this._scheduled.push(o),
+            (this._scheduled.push(o),
               s.default.Transport.state === s.default.State.Started &&
-                this._syncedStart(this.now(), s.default.Transport.seconds);
+                this._syncedStart(this.now(), s.default.Transport.seconds));
           } else this._start.apply(this, arguments);
           return this;
         }),
@@ -812,8 +818,8 @@
                 if (i && i.state === s.default.State.Started && i.time !== e) {
                   var n,
                     o = e - this.toSeconds(i.time);
-                  i.duration && (n = this.toSeconds(i.duration) - o),
-                    this._start(t, this.toSeconds(i.offset) + o, n);
+                  (i.duration && (n = this.toSeconds(i.duration) - o),
+                    this._start(t, this.toSeconds(i.offset) + o, n));
                 }
               }
             }.bind(this)),
@@ -830,18 +836,18 @@
           );
         }),
         (s.default.Source.prototype.unsync = function () {
-          this._synced &&
+          (this._synced &&
             (s.default.Transport.off("stop pause loopEnd", this._syncedStop),
             s.default.Transport.off("start loopStart", this._syncedStart)),
-            (this._synced = !1);
+            (this._synced = !1));
           for (var t = 0; t < this._scheduled.length; t++) {
             var e = this._scheduled[t];
             s.default.Transport.clear(e);
           }
-          return (this._scheduled = []), this._state.cancel(0), this;
+          return ((this._scheduled = []), this._state.cancel(0), this);
         }),
         (s.default.Source.prototype.dispose = function () {
-          s.default.AudioNode.prototype.dispose.call(this),
+          (s.default.AudioNode.prototype.dispose.call(this),
             this.unsync(),
             (this._scheduled = null),
             this._writable("volume"),
@@ -849,15 +855,15 @@
             (this._volume = null),
             (this.volume = null),
             this._state.dispose(),
-            (this._state = null);
+            (this._state = null));
         }),
-        (e.default = s.default.Source);
+        (e.default = s.default.Source));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(30), i(44);
+      (i(30), i(44));
       if (
         s.default.supported &&
         !s.default.global.AudioContext.prototype._native_createWaveShaper
@@ -873,14 +879,14 @@
             this._internalNode))
               this._defineProperty(this._internalNode, e);
           };
-          Object.defineProperty(o.prototype, "curve", {
+          (Object.defineProperty(o.prototype, "curve", {
             get: function () {
               return this._curve;
             },
             set: function (t) {
               this._curve = t;
               var e = new Float32Array(t.length + 1);
-              e.set(t, 1), (e[0] = t[0]), (this._internalNode.curve = e);
+              (e.set(t, 1), (e[0] = t[0]), (this._internalNode.curve = e));
             },
           }),
             (o.prototype._defineProperty = function (t, e) {
@@ -899,11 +905,11 @@
             (s.default.global.AudioContext.prototype.createWaveShaper =
               function () {
                 return new o(this);
-              });
+              }));
         }
       }
-      (s.default.WaveShaper = function (t, e) {
-        s.default.SignalBase.call(this),
+      ((s.default.WaveShaper = function (t, e) {
+        (s.default.SignalBase.call(this),
           (this._shaper =
             this.input =
             this.output =
@@ -917,7 +923,7 @@
                 ((this._curve = new Float32Array(
                   s.default.defaultArg(e, 1024),
                 )),
-                this.setMap(t));
+                this.setMap(t)));
       }),
         s.default.extend(s.default.WaveShaper, s.default.SignalBase),
         (s.default.WaveShaper.prototype.setMap = function (t) {
@@ -931,15 +937,15 @@
             var n = (i / (s - 1)) * 2 - 1;
             e[i] = t(n, i);
           }
-          return (this.curve = e), this;
+          return ((this.curve = e), this);
         }),
         Object.defineProperty(s.default.WaveShaper.prototype, "curve", {
           get: function () {
             return this._shaper.curve;
           },
           set: function (t) {
-            (this._curve = new Float32Array(t)),
-              (this._shaper.curve = this._curve);
+            ((this._curve = new Float32Array(t)),
+              (this._shaper.curve = this._curve));
           },
         }),
         Object.defineProperty(s.default.WaveShaper.prototype, "oversample", {
@@ -962,17 +968,17 @@
             (this._curve = null),
             this
           );
-        });
+        }));
       e.default = s.default.WaveShaper;
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(23), i(1);
-      (s.default.Effect = function () {
+      (i(23), i(1));
+      ((s.default.Effect = function () {
         var t = s.default.defaults(arguments, ["wet"], s.default.Effect);
-        s.default.AudioNode.call(this),
+        (s.default.AudioNode.call(this),
           this.createInsOuts(1, 1),
           (this._dryWet = new s.default.CrossFade(t.wet)),
           (this.wet = this._dryWet.fade),
@@ -982,12 +988,12 @@
           s.default.connect(this.input, this.effectSend),
           this.effectReturn.connect(this._dryWet.b),
           this._dryWet.connect(this.output),
-          this._readOnly(["wet"]);
+          this._readOnly(["wet"]));
       }),
         s.default.extend(s.default.Effect, s.default.AudioNode),
         (s.default.Effect.defaults = { wet: 1 }),
         (s.default.Effect.prototype.connectEffect = function (t) {
-          return this.effectSend.chain(t, this.effectReturn), this;
+          return (this.effectSend.chain(t, this.effectReturn), this);
         }),
         (s.default.Effect.prototype.dispose = function () {
           return (
@@ -1003,20 +1009,20 @@
             this
           );
         }),
-        (e.default = s.default.Effect);
+        (e.default = s.default.Effect));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(2), i(1);
-      (s.default.Filter = function () {
+      (i(2), i(1));
+      ((s.default.Filter = function () {
         var t = s.default.defaults(
           arguments,
           ["frequency", "type", "rolloff"],
           s.default.Filter,
         );
-        s.default.AudioNode.call(this),
+        (s.default.AudioNode.call(this),
           this.createInsOuts(1, 1),
           (this._filters = []),
           (this.frequency = new s.default.Signal(
@@ -1033,7 +1039,7 @@
           (this._type = t.type),
           (this._rolloff = t.rolloff),
           (this.rolloff = t.rolloff),
-          this._readOnly(["detune", "frequency", "gain", "Q"]);
+          this._readOnly(["detune", "frequency", "gain", "Q"]));
       }),
         s.default.extend(s.default.Filter, s.default.AudioNode),
         (s.default.Filter.defaults = {
@@ -1078,18 +1084,18 @@
               throw new RangeError(
                 "Tone.Filter: rolloff can only be -12, -24, -48 or -96",
               );
-            (e += 1), (this._rolloff = t), this.input.disconnect();
+            ((e += 1), (this._rolloff = t), this.input.disconnect());
             for (var i = 0; i < this._filters.length; i++)
-              this._filters[i].disconnect(), (this._filters[i] = null);
+              (this._filters[i].disconnect(), (this._filters[i] = null));
             this._filters = new Array(e);
             for (var n = 0; n < e; n++) {
               var o = this.context.createBiquadFilter();
-              (o.type = this._type),
+              ((o.type = this._type),
                 this.frequency.connect(o.frequency),
                 this.detune.connect(o.detune),
                 this.Q.connect(o.Q),
                 this.gain.connect(o.gain),
-                (this._filters[n] = o);
+                (this._filters[n] = o));
             }
             var a = [this.input].concat(this._filters).concat([this.output]);
             s.default.connectSeries.apply(s.default, a);
@@ -1115,14 +1121,14 @@
             this._filters.forEach(
               function () {
                 var t = this.context.createBiquadFilter();
-                (t.type = this._type),
+                ((t.type = this._type),
                   (t.Q.value = this.Q.value),
                   (t.frequency.value = this.frequency.value),
                   (t.gain.value = this.gain.value),
                   t.getFrequencyResponse(i, a, r),
                   a.forEach(function (t, i) {
                     e[i] *= t;
-                  });
+                  }));
               }.bind(this),
             ),
             e
@@ -1131,7 +1137,7 @@
         (s.default.Filter.prototype.dispose = function () {
           s.default.AudioNode.prototype.dispose.call(this);
           for (var t = 0; t < this._filters.length; t++)
-            this._filters[t].disconnect(), (this._filters[t] = null);
+            (this._filters[t].disconnect(), (this._filters[t] = null));
           return (
             (this._filters = null),
             this._writable(["detune", "frequency", "gain", "Q"]),
@@ -1146,24 +1152,24 @@
             this
           );
         }),
-        (e.default = s.default.Filter);
+        (e.default = s.default.Filter));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(1);
-      (s.default.Merge = function (t) {
-        (t = s.default.defaultArg(t, 2)),
+      ((s.default.Merge = function (t) {
+        ((t = s.default.defaultArg(t, 2)),
           s.default.AudioNode.call(this),
           this.createInsOuts(t, 0),
-          (this._merger = this.output = this.context.createChannelMerger(t));
+          (this._merger = this.output = this.context.createChannelMerger(t)));
         for (var e = 0; e < t; e++)
-          (this.input[e] = new s.default.Gain()),
+          ((this.input[e] = new s.default.Gain()),
             this.input[e].connect(this._merger, 0, e),
             (this.input[e].channelCount = 1),
-            (this.input[e].channelCountMode = "explicit");
-        (this.left = this.input[0]), (this.right = this.input[1]);
+            (this.input[e].channelCountMode = "explicit"));
+        ((this.left = this.input[0]), (this.right = this.input[1]));
       }),
         s.default.extend(s.default.Merge, s.default.AudioNode),
         (s.default.Merge.prototype.dispose = function () {
@@ -1179,14 +1185,14 @@
             this
           );
         }),
-        (e.default = s.default.Merge);
+        (e.default = s.default.Merge));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(35), i(4);
-      s.default.supported &&
+      (i(35), i(4));
+      (s.default.supported &&
         (AudioBuffer.prototype.copyToChannel ||
           ((AudioBuffer.prototype.copyToChannel = function (t, e, i) {
             var s = this.getChannelData(e);
@@ -1204,7 +1210,7 @@
             ["url", "onload", "onerror"],
             s.default.Buffer,
           );
-          s.default.call(this),
+          (s.default.call(this),
             (this._buffer = null),
             (this._reversed = t.reverse),
             (this._xhr = null),
@@ -1212,7 +1218,7 @@
             t.url instanceof AudioBuffer || t.url instanceof s.default.Buffer
               ? (this.set(t.url), this.loaded || (this.onload = t.onload))
               : s.default.isString(t.url) &&
-                this.load(t.url).then(t.onload).catch(t.onerror);
+                this.load(t.url).then(t.onload).catch(t.onerror));
         }),
         s.default.extend(s.default.Buffer),
         (s.default.Buffer.defaults = {
@@ -1227,7 +1233,7 @@
               ? t.loaded
                 ? (this._buffer = t.get())
                 : (t.onload = function () {
-                    this.set(t), this.onload(this);
+                    (this.set(t), this.onload(this));
                   }.bind(this))
               : (this._buffer = t),
             this._reversed && this._reverse(),
@@ -1243,14 +1249,14 @@
               this._xhr = s.default.Buffer.load(
                 t,
                 function (t) {
-                  (this._xhr = null),
+                  ((this._xhr = null),
                     this.set(t),
                     n(this),
                     this.onload(this),
-                    e && e(this);
+                    e && e(this));
                 }.bind(this),
                 function (t) {
-                  (this._xhr = null), o(t), i && i(t);
+                  ((this._xhr = null), o(t), i && i(t));
                 }.bind(this),
               );
             }.bind(this),
@@ -1294,7 +1300,7 @@
             n = this.context.createBuffer(i, s, this.context.sampleRate);
           e || 1 !== i || (t = [t]);
           for (var o = 0; o < i; o++) n.copyToChannel(t[o], o);
-          return (this._buffer = n), this;
+          return ((this._buffer = n), this);
         }),
         (s.default.Buffer.prototype.toMono = function (t) {
           if (s.default.isNumber(t)) this.fromArray(this.toArray(t));
@@ -1308,10 +1314,10 @@
             )
               for (var o = this.toArray(n), a = 0; a < o.length; a++)
                 e[a] += o[a];
-            (e = e.map(function (t) {
+            ((e = e.map(function (t) {
               return t / i;
             })),
-              this.fromArray(e);
+              this.fromArray(e));
           }
           return this;
         }),
@@ -1411,16 +1417,16 @@
                 ? s.default.context
                     .decodeAudioData(d.response)
                     .then(function (t) {
-                      (d.progress = 1),
+                      ((d.progress = 1),
                         u(),
                         e(t),
                         s.default.Buffer._removeFromDownloadQueue(d),
                         0 === s.default.Buffer._downloadQueue.length &&
-                          s.default.Buffer.emit("load");
+                          s.default.Buffer.emit("load"));
                     })
                     .catch(function () {
-                      s.default.Buffer._removeFromDownloadQueue(d),
-                        l("Tone.Buffer: could not decode audio data: " + t);
+                      (s.default.Buffer._removeFromDownloadQueue(d),
+                        l("Tone.Buffer: could not decode audio data: " + t));
                     })
                 : l("Tone.Buffer: could not locate file: " + t);
             }),
@@ -1436,7 +1442,7 @@
         (s.default.Buffer.cancelDownloads = function () {
           return (
             s.default.Buffer._downloadQueue.slice().forEach(function (t) {
-              s.default.Buffer._removeFromDownloadQueue(t), t.abort();
+              (s.default.Buffer._removeFromDownloadQueue(t), t.abort());
             }),
             s.default.Buffer
           );
@@ -1454,37 +1460,37 @@
         (s.default.loaded = function () {
           var t, e;
           function i() {
-            s.default.Buffer.off("load", t), s.default.Buffer.off("error", e);
+            (s.default.Buffer.off("load", t), s.default.Buffer.off("error", e));
           }
           return new Promise(function (i, n) {
-            (t = function () {
+            ((t = function () {
               i();
             }),
               (e = function () {
                 n();
               }),
               s.default.Buffer.on("load", t),
-              s.default.Buffer.on("error", e);
+              s.default.Buffer.on("error", e));
           })
             .then(i)
             .catch(function (t) {
               throw (i(), new Error(t));
             });
-        });
+        }));
       e.default = s.default.Buffer;
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(17), i(26), i(1), i(2), i(22), i(4), i(28);
-      (s.default.LFO = function () {
+      (i(17), i(26), i(1), i(2), i(22), i(4), i(28));
+      ((s.default.LFO = function () {
         var t = s.default.defaults(
           arguments,
           ["frequency", "min", "max"],
           s.default.LFO,
         );
-        s.default.AudioNode.call(this),
+        (s.default.AudioNode.call(this),
           (this._oscillator = new s.default.Oscillator({
             frequency: t.frequency,
             type: t.type,
@@ -1507,7 +1513,7 @@
           this._zeros.connect(this._a2g),
           this._stoppedSignal.connect(this._a2g),
           this._readOnly(["amplitude", "frequency"]),
-          (this.phase = t.phase);
+          (this.phase = t.phase));
       }),
         s.default.extend(s.default.LFO, s.default.AudioNode),
         (s.default.LFO.defaults = {
@@ -1537,12 +1543,16 @@
         }),
         (s.default.LFO.prototype.sync = function () {
           return (
-            this._oscillator.sync(), this._oscillator.syncFrequency(), this
+            this._oscillator.sync(),
+            this._oscillator.syncFrequency(),
+            this
           );
         }),
         (s.default.LFO.prototype.unsync = function () {
           return (
-            this._oscillator.unsync(), this._oscillator.unsyncFrequency(), this
+            this._oscillator.unsync(),
+            this._oscillator.unsyncFrequency(),
+            this
           );
         }),
         Object.defineProperty(s.default.LFO.prototype, "min", {
@@ -1550,7 +1560,7 @@
             return this._toUnits(this._scaler.min);
           },
           set: function (t) {
-            (t = this._fromUnits(t)), (this._scaler.min = t);
+            ((t = this._fromUnits(t)), (this._scaler.min = t));
           },
         }),
         Object.defineProperty(s.default.LFO.prototype, "max", {
@@ -1558,7 +1568,7 @@
             return this._toUnits(this._scaler.max);
           },
           set: function (t) {
-            (t = this._fromUnits(t)), (this._scaler.max = t);
+            ((t = this._fromUnits(t)), (this._scaler.max = t));
           },
         }),
         Object.defineProperty(s.default.LFO.prototype, "type", {
@@ -1566,9 +1576,9 @@
             return this._oscillator.type;
           },
           set: function (t) {
-            (this._oscillator.type = t),
+            ((this._oscillator.type = t),
               (this._stoppedValue = this._oscillator._getInitialValue()),
-              (this._stoppedSignal.value = this._stoppedValue);
+              (this._stoppedSignal.value = this._stoppedValue));
           },
         }),
         Object.defineProperty(s.default.LFO.prototype, "phase", {
@@ -1576,9 +1586,9 @@
             return this._oscillator.phase;
           },
           set: function (t) {
-            (this._oscillator.phase = t),
+            ((this._oscillator.phase = t),
               (this._stoppedValue = this._oscillator._getInitialValue()),
-              (this._stoppedSignal.value = this._stoppedValue);
+              (this._stoppedSignal.value = this._stoppedValue));
           },
         }),
         Object.defineProperty(s.default.LFO.prototype, "units", {
@@ -1588,7 +1598,7 @@
           set: function (t) {
             var e = this.min,
               i = this.max;
-            (this._units = t), (this.min = e), (this.max = i);
+            ((this._units = t), (this.min = e), (this.max = i));
           },
         }),
         Object.defineProperty(s.default.LFO.prototype, "state", {
@@ -1627,20 +1637,20 @@
             this
           );
         }),
-        (e.default = s.default.LFO);
+        (e.default = s.default.LFO));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(29), i(90), i(2), i(3);
-      (s.default.Subtract = function (t) {
-        s.default.Signal.call(this),
+      (i(29), i(90), i(2), i(3));
+      ((s.default.Subtract = function (t) {
+        (s.default.Signal.call(this),
           this.createInsOuts(2, 0),
           (this._sum = this.input[0] = this.output = new s.default.Gain()),
           (this._neg = new s.default.Negate()),
           (this._param = this.input[1] = new s.default.Signal(t)),
-          this._param.chain(this._neg, this._sum);
+          this._param.chain(this._neg, this._sum));
       }),
         s.default.extend(s.default.Subtract, s.default.Signal),
         (s.default.Subtract.prototype.dispose = function () {
@@ -1653,20 +1663,20 @@
             this
           );
         }),
-        (e.default = s.default.Subtract);
+        (e.default = s.default.Subtract));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(4), i(1), i(24);
-      (s.default.Param = function () {
+      (i(4), i(1), i(24));
+      ((s.default.Param = function () {
         var t = s.default.defaults(
           arguments,
           ["param", "units", "convert"],
           s.default.Param,
         );
-        s.default.AudioNode.call(this, t),
+        (s.default.AudioNode.call(this, t),
           (this._param = this.input = t.param),
           (this.units = t.units),
           (this.convert = t.convert),
@@ -1674,7 +1684,7 @@
           (this._events = new s.default.Timeline(1e3)),
           s.default.isDefined(t.value) &&
             this._param &&
-            this.setValueAtTime(t.value, 0);
+            this.setValueAtTime(t.value, 0));
       }),
         s.default.extend(s.default.Param, s.default.AudioNode),
         (s.default.Param.defaults = {
@@ -1688,9 +1698,9 @@
             return this._toUnits(this.getValueAtTime(t));
           },
           set: function (t) {
-            (this._initialValue = this._fromUnits(t)),
+            ((this._initialValue = this._fromUnits(t)),
               this.cancelScheduledValues(this.now()),
-              this.setValueAtTime(t, this.now());
+              this.setValueAtTime(t, this.now()));
           },
         }),
         Object.defineProperty(s.default.Param.prototype, "minValue", {
@@ -1783,14 +1793,14 @@
           else if (i.type === s.default.Param.AutomationType.Target) {
             var a,
               r = this._events.getBefore(i.time);
-            (a = null === r ? n : r.value),
+            ((a = null === r ? n : r.value),
               (o = this._exponentialApproach(
                 i.time,
                 a,
                 i.value,
                 i.constant,
                 t,
-              ));
+              )));
           } else
             o =
               null === e
@@ -1905,10 +1915,10 @@
           );
         }),
         (s.default.Param.prototype.setValueCurveAtTime = function (t, e, i, n) {
-          (n = s.default.defaultArg(n, 1)),
+          ((n = s.default.defaultArg(n, 1)),
             (i = this.toSeconds(i)),
             (e = this.toSeconds(e)),
-            this.setValueAtTime(t[0] * n, e);
+            this.setValueAtTime(t[0] * n, e));
           for (var o = i / (t.length - 1), a = 1; a < t.length; a++)
             this.linearRampToValueAtTime(t[a] * n, e + a * o);
           return this;
@@ -1925,8 +1935,8 @@
         (s.default.Param.prototype.cancelAndHoldAtTime = function (t) {
           t = this.toSeconds(t);
           var e = this.getValueAtTime(t);
-          this.log("cancelAndHoldAtTime", t, "value=" + e),
-            this._param.cancelScheduledValues(t);
+          (this.log("cancelAndHoldAtTime", t, "value=" + e),
+            this._param.cancelScheduledValues(t));
           var i = this._events.get(t),
             n = this._events.getAfter(t);
           return (
@@ -1995,17 +2005,17 @@
             this
           );
         }),
-        (e.default = s.default.Param);
+        (e.default = s.default.Param));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(8), i(19), i(10), i(23);
-      (s.default.StereoEffect = function () {
+      (i(8), i(19), i(10), i(23));
+      ((s.default.StereoEffect = function () {
         s.default.AudioNode.call(this);
         var t = s.default.defaults(arguments, ["wet"], s.default.Effect);
-        this.createInsOuts(1, 1),
+        (this.createInsOuts(1, 1),
           (this._dryWet = new s.default.CrossFade(t.wet)),
           (this.wet = this._dryWet.fade),
           (this._split = new s.default.Split()),
@@ -2018,7 +2028,7 @@
           s.default.connect(this.input, this._dryWet, 0, 0),
           this._merge.connect(this._dryWet, 0, 1),
           this._dryWet.connect(this.output),
-          this._readOnly(["wet"]);
+          this._readOnly(["wet"]));
       }),
         s.default.extend(s.default.StereoEffect, s.default.Effect),
         (s.default.StereoEffect.prototype.dispose = function () {
@@ -2039,18 +2049,18 @@
             this
           );
         }),
-        (e.default = s.default.StereoEffect);
+        (e.default = s.default.StereoEffect));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(83), i(4), i(24), i(35), i(3), i(81), i(80), i(56);
-      (s.default.Transport = function () {
-        s.default.Emitter.call(this),
+      (i(83), i(4), i(24), i(35), i(3), i(81), i(80), i(56));
+      ((s.default.Transport = function () {
+        (s.default.Emitter.call(this),
           s.default.getContext(
             function () {
-              (this.loop = !1),
+              ((this.loop = !1),
                 (this._loopStart = 0),
                 (this._loopEnd = 0),
                 (this._ppq = n.defaults.PPQ),
@@ -2072,9 +2082,9 @@
                 (this._syncedSignals = []),
                 (this._swingTicks = n.defaults.PPQ / 2),
                 (this._swingAmount = 0),
-                (this.context.transport = this);
+                (this.context.transport = this));
             }.bind(this),
-          );
+          ));
       }),
         s.default.extend(s.default.Transport, s.default.Emitter),
         (s.default.Transport.defaults = {
@@ -2097,7 +2107,7 @@
               n = Math.sin(i * Math.PI) * this._swingAmount;
             t += s.default.Ticks((2 * this._swingTicks) / 3).toSeconds() * n;
           }
-          this.loop &&
+          (this.loop &&
             e >= this._loopEnd &&
             (this.emit("loopEnd", t),
             this._clock.setTicksAtTime(this._loopStart, t),
@@ -2106,7 +2116,7 @@
             this.emit("loop", t)),
             this._timeline.forEachAtTime(e, function (e) {
               e.invoke(t);
-            });
+            }));
         }),
         (s.default.Transport.prototype.schedule = function (t, e) {
           var i = new s.default.TransportEvent(this, {
@@ -2135,9 +2145,9 @@
         (s.default.Transport.prototype.clear = function (t) {
           if (this._scheduledEvents.hasOwnProperty(t)) {
             var e = this._scheduledEvents[t.toString()];
-            e.timeline.remove(e.event),
+            (e.timeline.remove(e.event),
               e.event.dispose(),
-              delete this._scheduledEvents[t.toString()];
+              delete this._scheduledEvents[t.toString()]);
           }
           return this;
         }),
@@ -2171,10 +2181,10 @@
           );
         }),
         (s.default.Transport.prototype._bindClockEvents = function () {
-          this._clock.on(
+          (this._clock.on(
             "start",
             function (t, e) {
-              (e = s.default.Ticks(e).toSeconds()), this.emit("start", t, e);
+              ((e = s.default.Ticks(e).toSeconds()), this.emit("start", t, e));
             }.bind(this),
           ),
             this._clock.on(
@@ -2188,7 +2198,7 @@
               function (t) {
                 this.emit("pause", t);
               }.bind(this),
-            );
+            ));
         }),
         Object.defineProperty(s.default.Transport.prototype, "state", {
           get: function () {
@@ -2203,10 +2213,10 @@
           );
         }),
         (s.default.Transport.prototype.stop = function (t) {
-          return this._clock.stop(t), this;
+          return (this._clock.stop(t), this);
         }),
         (s.default.Transport.prototype.pause = function (t) {
-          return this._clock.pause(t), this;
+          return (this._clock.pause(t), this);
         }),
         (s.default.Transport.prototype.toggle = function (t) {
           return (
@@ -2222,8 +2232,8 @@
             return this._timeSignature;
           },
           set: function (t) {
-            s.default.isArray(t) && (t = (t[0] / t[1]) * 4),
-              (this._timeSignature = t);
+            (s.default.isArray(t) && (t = (t[0] / t[1]) * 4),
+              (this._timeSignature = t));
           },
         }),
         Object.defineProperty(s.default.Transport.prototype, "loopStart", {
@@ -2243,7 +2253,7 @@
           },
         }),
         (s.default.Transport.prototype.setLoopPoints = function (t, e) {
-          return (this.loopStart = t), (this.loopEnd = e), this;
+          return ((this.loopStart = t), (this.loopEnd = e), this);
         }),
         Object.defineProperty(s.default.Transport.prototype, "swing", {
           get: function () {
@@ -2325,7 +2335,7 @@
           },
           set: function (t) {
             var e = this.bpm.value;
-            (this._ppq = t), (this.bpm.value = e);
+            ((this._ppq = t), (this.bpm.value = e));
           },
         }),
         (s.default.Transport.prototype._fromUnits = function (t) {
@@ -2380,9 +2390,9 @@
             (this._repeatedEvents = null),
             this
           );
-        });
+        }));
       var n = s.default.Transport;
-      (s.default.Transport = new n()),
+      ((s.default.Transport = new n()),
         s.default.Context.on("init", function (t) {
           t.transport && t.transport.isTransport
             ? (s.default.Transport = t.transport)
@@ -2391,20 +2401,20 @@
         s.default.Context.on("close", function (t) {
           t.transport && t.transport.isTransport && t.transport.dispose();
         }),
-        (e.default = s.default.Transport);
+        (e.default = s.default.Transport));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(2), i(6), i(16), i(64);
-      (s.default.Oscillator = function () {
+      (i(2), i(6), i(16), i(64));
+      ((s.default.Oscillator = function () {
         var t = s.default.defaults(
           arguments,
           ["frequency", "type"],
           s.default.Oscillator,
         );
-        s.default.Source.call(this, t),
+        (s.default.Source.call(this, t),
           (this._oscillator = null),
           (this.frequency = new s.default.Signal(
             t.frequency,
@@ -2420,7 +2430,7 @@
             t.type !== s.default.Oscillator.Type.Custom &&
             (this._type = this.baseType + t.partialCount.toString()),
           (this.phase = this._phase),
-          this._readOnly(["frequency", "detune"]);
+          this._readOnly(["frequency", "detune"]));
       }),
         s.default.extend(s.default.Oscillator, s.default.Source),
         (s.default.Oscillator.defaults = {
@@ -2441,7 +2451,7 @@
         (s.default.Oscillator.prototype._start = function (t) {
           this.log("start", t);
           var e = new s.default.OscillatorNode();
-          (this._oscillator = e),
+          ((this._oscillator = e),
             this._wave
               ? this._oscillator.setPeriodicWave(this._wave)
               : (this._oscillator.type = this._type),
@@ -2449,7 +2459,7 @@
             this.frequency.connect(this._oscillator.frequency),
             this.detune.connect(this._oscillator.detune),
             (t = this.toSeconds(t)),
-            this._oscillator.start(t);
+            this._oscillator.start(t));
         }),
         (s.default.Oscillator.prototype._stop = function (t) {
           return (
@@ -2467,10 +2477,10 @@
           );
         }),
         (s.default.Oscillator.prototype.syncFrequency = function () {
-          return s.default.Transport.syncSignal(this.frequency), this;
+          return (s.default.Transport.syncSignal(this.frequency), this);
         }),
         (s.default.Oscillator.prototype.unsyncFrequency = function () {
-          return s.default.Transport.unsyncSignal(this.frequency), this;
+          return (s.default.Transport.unsyncSignal(this.frequency), this);
         }),
         Object.defineProperty(s.default.Oscillator.prototype, "type", {
           get: function () {
@@ -2484,15 +2494,15 @@
               s.default.Oscillator.Type.Sawtooth,
             ].includes(t);
             if (0 === this._phase && e)
-              (this._wave = null),
+              ((this._wave = null),
                 (this._partialCount = 0),
-                null !== this._oscillator && (this._oscillator.type = t);
+                null !== this._oscillator && (this._oscillator.type = t));
             else {
               var i = this._getRealImaginary(t, this._phase),
                 n = this.context.createPeriodicWave(i[0], i[1]);
-              (this._wave = n),
+              ((this._wave = n),
                 null !== this._oscillator &&
-                  this._oscillator.setPeriodicWave(this._wave);
+                  this._oscillator.setPeriodicWave(this._wave));
             }
             this._type = t;
           },
@@ -2516,15 +2526,16 @@
           set: function (t) {
             var e = this._type,
               i = /^(sine|triangle|square|sawtooth)(\d+)$/.exec(this._type);
-            i && (e = i[1]),
+            (i && (e = i[1]),
               this._type !== s.default.Oscillator.Type.Custom &&
-                (this.type = 0 === t ? e : e + t.toString());
+                (this.type = 0 === t ? e : e + t.toString()));
           },
         }),
         (s.default.Oscillator.prototype.get = function () {
           var t = s.default.prototype.get.apply(this, arguments);
           return (
-            t.type !== s.default.Oscillator.Type.Custom && delete t.partials, t
+            t.type !== s.default.Oscillator.Type.Custom && delete t.partials,
+            t
           );
         }),
         (s.default.Oscillator.prototype._getRealImaginary = function (t, e) {
@@ -2533,35 +2544,35 @@
             o = new Float32Array(i),
             a = 1;
           if (t === s.default.Oscillator.Type.Custom)
-            (a = this._partials.length + 1),
+            ((a = this._partials.length + 1),
               (this._partialCount = this._partials.length),
-              (i = a);
+              (i = a));
           else {
             var r = /^(sine|triangle|square|sawtooth)(\d+)$/.exec(t);
-            r
+            (r
               ? ((a = parseInt(r[2]) + 1),
                 (this._partialCount = parseInt(r[2])),
                 (t = r[1]),
                 (i = a = Math.max(a, 2)))
               : (this._partialCount = 0),
-              (this._partials = []);
+              (this._partials = []));
           }
           for (var l = 1; l < i; ++l) {
             var u,
               d = 2 / (l * Math.PI);
             switch (t) {
               case s.default.Oscillator.Type.Sine:
-                (u = l <= a ? 1 : 0), (this._partials[l - 1] = u);
+                ((u = l <= a ? 1 : 0), (this._partials[l - 1] = u));
                 break;
               case s.default.Oscillator.Type.Square:
-                (u = 1 & l ? 2 * d : 0), (this._partials[l - 1] = u);
+                ((u = 1 & l ? 2 * d : 0), (this._partials[l - 1] = u));
                 break;
               case s.default.Oscillator.Type.Sawtooth:
-                (u = d * (1 & l ? 1 : -1)), (this._partials[l - 1] = u);
+                ((u = d * (1 & l ? 1 : -1)), (this._partials[l - 1] = u));
                 break;
               case s.default.Oscillator.Type.Triangle:
-                (u = 1 & l ? d * d * 2 * (((l - 1) >> 1) & 1 ? -1 : 1) : 0),
-                  (this._partials[l - 1] = u);
+                ((u = 1 & l ? d * d * 2 * (((l - 1) >> 1) & 1 ? -1 : 1) : 0),
+                  (this._partials[l - 1] = u));
                 break;
               case s.default.Oscillator.Type.Custom:
                 u = this._partials[l - 1];
@@ -2599,8 +2610,8 @@
             return this._partials;
           },
           set: function (t) {
-            (this._partials = t),
-              (this.type = s.default.Oscillator.Type.Custom);
+            ((this._partials = t),
+              (this.type = s.default.Oscillator.Type.Custom));
           },
         }),
         Object.defineProperty(s.default.Oscillator.prototype, "phase", {
@@ -2608,7 +2619,7 @@
             return this._phase * (180 / Math.PI);
           },
           set: function (t) {
-            (this._phase = (t * Math.PI) / 180), (this.type = this._type);
+            ((this._phase = (t * Math.PI) / 180), (this.type = this._type));
           },
         }),
         (s.default.Oscillator.prototype.dispose = function () {
@@ -2626,20 +2637,20 @@
             this
           );
         }),
-        (e.default = s.default.Oscillator);
+        (e.default = s.default.Oscillator));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(14), i(1);
-      (s.default.Delay = function () {
+      (i(14), i(1));
+      ((s.default.Delay = function () {
         var t = s.default.defaults(
           arguments,
           ["delayTime", "maxDelay"],
           s.default.Delay,
         );
-        s.default.AudioNode.call(this, t),
+        (s.default.AudioNode.call(this, t),
           (this._maxDelay = Math.max(
             this.toSeconds(t.maxDelay),
             this.toSeconds(t.delayTime),
@@ -2653,7 +2664,7 @@
             units: s.default.Type.Time,
             value: t.delayTime,
           })),
-          this._readOnly("delayTime");
+          this._readOnly("delayTime"));
       }),
         s.default.extend(s.default.Delay, s.default.AudioNode),
         (s.default.Delay.defaults = { maxDelay: 1, delayTime: 0 }),
@@ -2672,24 +2683,25 @@
             this
           );
         }),
-        (e.default = s.default.Delay);
+        (e.default = s.default.Delay));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(3), i(1);
-      (s.default.Split = function (t) {
-        (t = s.default.defaultArg(t, 2)),
+      (i(3), i(1));
+      ((s.default.Split = function (t) {
+        ((t = s.default.defaultArg(t, 2)),
           s.default.AudioNode.call(this),
           this.createInsOuts(0, t),
-          (this._splitter = this.input = this.context.createChannelSplitter(t));
+          (this._splitter = this.input =
+            this.context.createChannelSplitter(t)));
         for (var e = 0; e < t; e++)
-          (this.output[e] = new s.default.Gain()),
+          ((this.output[e] = new s.default.Gain()),
             s.default.connect(this._splitter, this.output[e], e, 0),
             (this.output[e].channelCount = 1),
-            (this.output[e].channelCountMode = "explicit");
-        (this.left = this.output[0]), (this.right = this.output[1]);
+            (this.output[e].channelCountMode = "explicit"));
+        ((this.left = this.output[0]), (this.right = this.output[1]));
       }),
         s.default.extend(s.default.Split, s.default.AudioNode),
         (s.default.Split.prototype.dispose = function () {
@@ -2705,7 +2717,7 @@
             this
           );
         }),
-        (e.default = s.default.Split);
+        (e.default = s.default.Split));
     },
     function (t, e, i) {
       "use strict";
@@ -2752,7 +2764,7 @@
           "createChannelMerger",
           "audioWorklet",
         ];
-      (s.default.Context = function () {
+      ((s.default.Context = function () {
         s.default.Emitter.call(this);
         var t = s.default.defaults(arguments, ["context"], s.default.Context);
         if (
@@ -2762,9 +2774,9 @@
           throw new Error(
             "could not create AudioContext. Possibly too many AudioContexts running already.",
           );
-        for (this._context = t.context; this._context.rawContext; )
+        for (this._context = t.context; this._context.rawContext;)
           this._context = this._context.rawContext;
-        n.forEach(
+        (n.forEach(
           function (t) {
             this._defineProperty(this._context, t);
           }.bind(this),
@@ -2788,7 +2800,7 @@
           this.on("tick", this._timeoutLoop.bind(this)),
           (this._context.onstatechange = function (t) {
             this.emit("statechange", t);
-          }.bind(this));
+          }.bind(this)));
       }),
         s.default.extend(s.default.Context, s.default.Emitter),
         s.default.Emitter.mixin(s.default.Context),
@@ -2875,7 +2887,6 @@
             this._timeouts &&
             this._timeouts.length &&
             this._timeouts.peek().time <= t;
-
           )
             this._timeouts.shift().callback();
         }),
@@ -2929,18 +2940,18 @@
             if (((this._latencyHint = t), s.default.isString(t)))
               switch (t) {
                 case "interactive":
-                  (e = 0.1), (this._context.latencyHint = t);
+                  ((e = 0.1), (this._context.latencyHint = t));
                   break;
                 case "playback":
-                  (e = 0.8), (this._context.latencyHint = t);
+                  ((e = 0.8), (this._context.latencyHint = t));
                   break;
                 case "balanced":
-                  (e = 0.25), (this._context.latencyHint = t);
+                  ((e = 0.25), (this._context.latencyHint = t));
                   break;
                 case "fastest":
-                  (this._context.latencyHint = "interactive"), (e = 0.01);
+                  ((this._context.latencyHint = "interactive"), (e = 0.01));
               }
-            (this.lookAhead = e), (this.updateInterval = e / 3);
+            ((this.lookAhead = e), (this.updateInterval = e / 3));
           },
         }),
         (s.default.Context.prototype.dispose = function () {
@@ -2956,12 +2967,12 @@
               this._constants = null;
             }.bind(this),
           );
-        });
+        }));
       var a = function (t, e, i) {
-        (this._type = e),
+        ((this._type = e),
           (this._updateInterval = i),
           (this._callback = s.default.defaultArg(t, s.default.noOp)),
-          this._createClock();
+          this._createClock());
       };
       if (
         ((a.Type = {
@@ -2979,12 +2990,12 @@
             ]),
             e = URL.createObjectURL(t),
             i = new Worker(e);
-          (i.onmessage = this._callback.bind(this)), (this._worker = i);
+          ((i.onmessage = this._callback.bind(this)), (this._worker = i));
         }),
         (a.prototype._createTimeout = function () {
           this._timeout = setTimeout(
             function () {
-              this._createTimeout(), this._callback();
+              (this._createTimeout(), this._callback());
             }.bind(this),
             1e3 * this._updateInterval,
           );
@@ -2994,7 +3005,7 @@
             try {
               this._createWorker();
             } catch (t) {
-              (this._type = a.Type.Timeout), this._createClock();
+              ((this._type = a.Type.Timeout), this._createClock());
             }
           else this._type === a.Type.Timeout && this._createTimeout();
         }),
@@ -3003,9 +3014,9 @@
             return this._updateInterval;
           },
           set: function (t) {
-            (this._updateInterval = Math.max(t, 128 / 44100)),
+            ((this._updateInterval = Math.max(t, 128 / 44100)),
               this._type === a.Type.Worker &&
-                this._worker.postMessage(Math.max(1e3 * t, 1));
+                this._worker.postMessage(Math.max(1e3 * t, 1)));
           },
         }),
         Object.defineProperty(a.prototype, "type", {
@@ -3013,19 +3024,19 @@
             return this._type;
           },
           set: function (t) {
-            this._disposeClock(), (this._type = t), this._createClock();
+            (this._disposeClock(), (this._type = t), this._createClock());
           },
         }),
         (a.prototype._disposeClock = function () {
-          this._timeout &&
+          (this._timeout &&
             (clearTimeout(this._timeout), (this._timeout = null)),
             this._worker &&
               (this._worker.terminate(),
               (this._worker.onmessage = null),
-              (this._worker = null));
+              (this._worker = null)));
         }),
         (a.prototype.dispose = function () {
-          this._disposeClock(), (this._callback = null);
+          (this._disposeClock(), (this._callback = null));
         }),
         s.default.supported && !s.default.initialized)
       ) {
@@ -3050,14 +3061,14 @@
       "use strict";
       i.r(e);
       var s = i(0);
-      i(4), i(40);
-      (s.default.Instrument = function (t) {
-        (t = s.default.defaultArg(t, s.default.Instrument.defaults)),
+      (i(4), i(40));
+      ((s.default.Instrument = function (t) {
+        ((t = s.default.defaultArg(t, s.default.Instrument.defaults)),
           s.default.AudioNode.call(this),
           (this._volume = this.output = new s.default.Volume(t.volume)),
           (this.volume = this._volume.volume),
           this._readOnly("volume"),
-          (this._scheduledEvents = []);
+          (this._scheduledEvents = []));
       }),
         s.default.extend(s.default.Instrument, s.default.AudioNode),
         (s.default.Instrument.defaults = { volume: 0 }),
@@ -3077,7 +3088,7 @@
               n = t[e],
               o = s.default.Transport.schedule(
                 function (s) {
-                  (t[e] = s), i.apply(this, t);
+                  ((t[e] = s), i.apply(this, t));
                 }.bind(this),
                 n,
               );
@@ -3122,21 +3133,21 @@
             this
           );
         }),
-        (e.default = s.default.Instrument);
+        (e.default = s.default.Instrument));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(7), i(2);
-      (s.default.AudioToGain = function () {
-        s.default.SignalBase.call(this),
+      (i(7), i(2));
+      ((s.default.AudioToGain = function () {
+        (s.default.SignalBase.call(this),
           (this._norm =
             this.input =
             this.output =
               new s.default.WaveShaper(function (t) {
                 return (t + 1) / 2;
-              }));
+              })));
       }),
         s.default.extend(s.default.AudioToGain, s.default.SignalBase),
         (s.default.AudioToGain.prototype.dispose = function () {
@@ -3147,15 +3158,15 @@
             this
           );
         }),
-        (e.default = s.default.AudioToGain);
+        (e.default = s.default.AudioToGain));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(2), i(13), i(89), i(3), i(1);
-      (s.default.CrossFade = function (t) {
-        s.default.AudioNode.call(this),
+      (i(2), i(13), i(89), i(3), i(1));
+      ((s.default.CrossFade = function (t) {
+        (s.default.AudioNode.call(this),
           this.createInsOuts(2, 1),
           (this.a = this.input[0] = new s.default.Gain()),
           (this.b = this.input[1] = new s.default.Gain()),
@@ -3173,7 +3184,7 @@
           s.default.connect(this._one, this._invert, 0, 0),
           this.fade.connect(this._invert, 0, 1),
           this._invert.chain(this._equalPowerA, this.a.gain),
-          this._readOnly("fade");
+          this._readOnly("fade"));
       }),
         s.default.extend(s.default.CrossFade, s.default.AudioNode),
         (s.default.CrossFade.prototype.dispose = function () {
@@ -3196,15 +3207,15 @@
             this
           );
         }),
-        (e.default = s.default.CrossFade);
+        (e.default = s.default.CrossFade));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      (s.default.Timeline = function () {
+      ((s.default.Timeline = function () {
         var t = s.default.defaults(arguments, ["memory"], s.default.Timeline);
-        s.default.call(this), (this._timeline = []), (this.memory = t.memory);
+        (s.default.call(this), (this._timeline = []), (this.memory = t.memory));
       }),
         s.default.extend(s.default.Timeline),
         (s.default.Timeline.defaults = { memory: 1 / 0 }),
@@ -3226,7 +3237,7 @@
         }),
         (s.default.Timeline.prototype.remove = function (t) {
           var e = this._timeline.indexOf(t);
-          return -1 !== e && this._timeline.splice(e, 1), this;
+          return (-1 !== e && this._timeline.splice(e, 1), this);
         }),
         (s.default.Timeline.prototype.get = function (t, e) {
           e = s.default.defaultArg(e, "time");
@@ -3270,7 +3281,10 @@
         }),
         (s.default.Timeline.prototype.cancelBefore = function (t) {
           var e = this._search(t);
-          return e >= 0 && (this._timeline = this._timeline.slice(e + 1)), this;
+          return (
+            e >= 0 && (this._timeline = this._timeline.slice(e + 1)),
+            this
+          );
         }),
         (s.default.Timeline.prototype.previousEvent = function (t) {
           var e = this._timeline.indexOf(t);
@@ -3283,7 +3297,7 @@
             n = this._timeline.length,
             o = n;
           if (n > 0 && this._timeline[n - 1][e] <= t) return n - 1;
-          for (; i < o; ) {
+          for (; i < o;) {
             var a = Math.floor(i + (o - i) / 2),
               r = this._timeline[a],
               l = this._timeline[a + 1];
@@ -3299,24 +3313,24 @@
           return -1;
         }),
         (s.default.Timeline.prototype._iterate = function (t, e, i) {
-          (e = s.default.defaultArg(e, 0)),
+          ((e = s.default.defaultArg(e, 0)),
             (i = s.default.defaultArg(i, this._timeline.length - 1)),
             this._timeline.slice(e, i + 1).forEach(
               function (e) {
                 t.call(this, e);
               }.bind(this),
-            );
+            ));
         }),
         (s.default.Timeline.prototype.forEach = function (t) {
-          return this._iterate(t), this;
+          return (this._iterate(t), this);
         }),
         (s.default.Timeline.prototype.forEachBefore = function (t, e) {
           var i = this._search(t);
-          return -1 !== i && this._iterate(e, 0, i), this;
+          return (-1 !== i && this._iterate(e, 0, i), this);
         }),
         (s.default.Timeline.prototype.forEachAfter = function (t, e) {
           var i = this._search(t);
-          return this._iterate(e, i + 1), this;
+          return (this._iterate(e, i + 1), this);
         }),
         (s.default.Timeline.prototype.forEachBetween = function (t, e, i) {
           var s = this._search(t),
@@ -3331,9 +3345,9 @@
           );
         }),
         (s.default.Timeline.prototype.forEachFrom = function (t, e) {
-          for (var i = this._search(t); i >= 0 && this._timeline[i].time >= t; )
+          for (var i = this._search(t); i >= 0 && this._timeline[i].time >= t;)
             i--;
-          return this._iterate(e, i + 1), this;
+          return (this._iterate(e, i + 1), this);
         }),
         (s.default.Timeline.prototype.forEachAtTime = function (t, e) {
           var i = this._search(t);
@@ -3356,17 +3370,17 @@
             this
           );
         }),
-        (e.default = s.default.Timeline);
+        (e.default = s.default.Timeline));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(21), i(2);
-      (s.default.Monophonic = function (t) {
-        (t = s.default.defaultArg(t, s.default.Monophonic.defaults)),
+      (i(21), i(2));
+      ((s.default.Monophonic = function (t) {
+        ((t = s.default.defaultArg(t, s.default.Monophonic.defaults)),
           s.default.Instrument.call(this, t),
-          (this.portamento = t.portamento);
+          (this.portamento = t.portamento));
       }),
         s.default.extend(s.default.Monophonic, s.default.Instrument),
         (s.default.Monophonic.defaults = { portamento: 0 }),
@@ -3392,7 +3406,7 @@
         (s.default.Monophonic.prototype._triggerEnvelopeRelease =
           function () {}),
         (s.default.Monophonic.prototype.getLevelAtTime = function (t) {
-          return (t = this.toSeconds(t)), this.envelope.getValueAtTime(t);
+          return ((t = this.toSeconds(t)), this.envelope.getValueAtTime(t));
         }),
         (s.default.Monophonic.prototype.setNote = function (t, e) {
           if (
@@ -3404,21 +3418,21 @@
           } else this.frequency.setValueAtTime(t, e);
           return this;
         }),
-        (e.default = s.default.Monophonic);
+        (e.default = s.default.Monophonic));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(29), i(5), i(2);
-      (s.default.Scale = function (t, e) {
-        s.default.SignalBase.call(this),
+      (i(29), i(5), i(2));
+      ((s.default.Scale = function (t, e) {
+        (s.default.SignalBase.call(this),
           (this._outputMin = s.default.defaultArg(t, 0)),
           (this._outputMax = s.default.defaultArg(e, 1)),
           (this._scale = this.input = new s.default.Multiply(1)),
           (this._add = this.output = new s.default.Add(0)),
           this._scale.connect(this._add),
-          this._setRange();
+          this._setRange());
       }),
         s.default.extend(s.default.Scale, s.default.SignalBase),
         Object.defineProperty(s.default.Scale.prototype, "min", {
@@ -3426,7 +3440,7 @@
             return this._outputMin;
           },
           set: function (t) {
-            (this._outputMin = t), this._setRange();
+            ((this._outputMin = t), this._setRange());
           },
         }),
         Object.defineProperty(s.default.Scale.prototype, "max", {
@@ -3434,12 +3448,12 @@
             return this._outputMax;
           },
           set: function (t) {
-            (this._outputMax = t), this._setRange();
+            ((this._outputMax = t), this._setRange());
           },
         }),
         (s.default.Scale.prototype._setRange = function () {
-          (this._add.value = this._outputMin),
-            (this._scale.value = this._outputMax - this._outputMin);
+          ((this._add.value = this._outputMin),
+            (this._scale.value = this._outputMax - this._outputMin));
         }),
         (s.default.Scale.prototype.dispose = function () {
           return (
@@ -3451,22 +3465,22 @@
             this
           );
         }),
-        (e.default = s.default.Scale);
+        (e.default = s.default.Scale));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(2), i(3), i(1);
-      (s.default.Volume = function () {
+      (i(2), i(3), i(1));
+      ((s.default.Volume = function () {
         var t = s.default.defaults(arguments, ["volume"], s.default.Volume);
-        s.default.AudioNode.call(this, t),
+        (s.default.AudioNode.call(this, t),
           (this.output = this.input =
             new s.default.Gain(t.volume, s.default.Type.Decibels)),
           (this._unmutedVolume = t.volume),
           (this.volume = this.output.gain),
           this._readOnly("volume"),
-          (this.mute = t.mute);
+          (this.mute = t.mute));
       }),
         s.default.extend(s.default.Volume, s.default.AudioNode),
         (s.default.Volume.defaults = { volume: 0, mute: !1 }),
@@ -3491,17 +3505,17 @@
             this
           );
         }),
-        (e.default = s.default.Volume);
+        (e.default = s.default.Volume));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(3), i(30);
-      (s.default.Zero = function () {
-        s.default.SignalBase.call(this),
+      (i(3), i(30));
+      ((s.default.Zero = function () {
+        (s.default.SignalBase.call(this),
           (this._gain = this.input = this.output = new s.default.Gain()),
-          s.default.connect(this.context.getConstant(0), this._gain);
+          s.default.connect(this.context.getConstant(0), this._gain));
       }),
         s.default.extend(s.default.Zero, s.default.SignalBase),
         (s.default.Zero.prototype.dispose = function () {
@@ -3512,15 +3526,15 @@
             this
           );
         }),
-        (e.default = s.default.Zero);
+        (e.default = s.default.Zero));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(2), i(3);
-      (s.default.Add = function (t) {
-        s.default.Signal.call(this),
+      (i(2), i(3));
+      ((s.default.Add = function (t) {
+        (s.default.Signal.call(this),
           this.createInsOuts(2, 0),
           (this._sum =
             this.input[0] =
@@ -3528,7 +3542,7 @@
             this.output =
               new s.default.Gain()),
           (this._param = this.input[1] = new s.default.Signal(t)),
-          this._param.connect(this._sum);
+          this._param.connect(this._sum));
       }),
         s.default.extend(s.default.Add, s.default.Signal),
         (s.default.Add.prototype.dispose = function () {
@@ -3539,14 +3553,14 @@
             this
           );
         }),
-        (e.default = s.default.Add);
+        (e.default = s.default.Add));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(1);
-      (s.default.SignalBase = function () {
+      ((s.default.SignalBase = function () {
         s.default.AudioNode.call(this);
       }),
         s.default.extend(s.default.SignalBase, s.default.AudioNode),
@@ -3563,36 +3577,36 @@
             this
           );
         }),
-        (e.default = s.default.SignalBase);
+        (e.default = s.default.SignalBase));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(47), i(3);
-      (s.default.AmplitudeEnvelope = function () {
-        s.default.Envelope.apply(this, arguments),
+      (i(47), i(3));
+      ((s.default.AmplitudeEnvelope = function () {
+        (s.default.Envelope.apply(this, arguments),
           (this.input = this.output = new s.default.Gain()),
-          this._sig.connect(this.output.gain);
+          this._sig.connect(this.output.gain));
       }),
         s.default.extend(s.default.AmplitudeEnvelope, s.default.Envelope),
         (s.default.AmplitudeEnvelope.prototype.dispose = function () {
-          return s.default.Envelope.prototype.dispose.call(this), this;
+          return (s.default.Envelope.prototype.dispose.call(this), this);
         }),
-        (e.default = s.default.AmplitudeEnvelope);
+        (e.default = s.default.AmplitudeEnvelope));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(11), i(6), i(3), i(1);
-      (s.default.BufferSource = function () {
+      (i(11), i(6), i(3), i(1));
+      ((s.default.BufferSource = function () {
         var t = s.default.defaults(
           arguments,
           ["buffer", "onload"],
           s.default.BufferSource,
         );
-        s.default.AudioNode.call(this, t),
+        (s.default.AudioNode.call(this, t),
           (this.onended = t.onended),
           (this._startTime = -1),
           (this._sourceStarted = !1),
@@ -3614,7 +3628,7 @@
           (this._onendedTimeout = -1),
           (this.loop = t.loop),
           (this.loopStart = t.loopStart),
-          (this.loopEnd = t.loopEnd);
+          (this.loopEnd = t.loopEnd));
       }),
         s.default.extend(s.default.BufferSource, s.default.AudioNode),
         (s.default.BufferSource.defaults = {
@@ -3645,7 +3659,7 @@
           );
         }),
         (s.default.BufferSource.prototype.start = function (t, e, i, n) {
-          this.log("start", t, e, i, n),
+          (this.log("start", t, e, i, n),
             this.assert(-1 === this._startTime, "can only be started once"),
             this.assert(
               this.buffer.loaded,
@@ -3658,7 +3672,7 @@
               : s.default.defaultArg(e, 0)),
             (e = this.toSeconds(e)),
             (e = Math.max(e, 0)),
-            (n = s.default.defaultArg(n, 1));
+            (n = s.default.defaultArg(n, 1)));
           var o = this.toSeconds(this.fadeIn);
           if (
             (o > 0
@@ -3671,7 +3685,7 @@
             s.default.isDefined(i))
           ) {
             var a = this.toSeconds(i);
-            (a = Math.max(a, 0)), this.stop(t + a);
+            ((a = Math.max(a, 0)), this.stop(t + a));
           }
           if (this.loop) {
             var r = this.loopEnd || this.buffer.duration,
@@ -3687,14 +3701,14 @@
           );
         }),
         (s.default.BufferSource.prototype.stop = function (t) {
-          this.log("stop", t),
+          (this.log("stop", t),
             this.assert(
               this.buffer.loaded,
               "buffer is either not set or not loaded",
             ),
             this.assert(!this._sourceStopped, "source is already stopped"),
             (t = this.toSeconds(t)),
-            -1 !== this._stopTime && this.cancelStop();
+            -1 !== this._stopTime && this.cancelStop());
           var e = this.toSeconds(this.fadeOut);
           return (
             (this._stopTime = t + e),
@@ -3715,11 +3729,11 @@
         (s.default.BufferSource.prototype.cancelStop = function () {
           if (-1 !== this._startTime && !this._sourceStopped) {
             var t = this.toSeconds(this.fadeIn);
-            this._gainNode.gain.cancelScheduledValues(
+            (this._gainNode.gain.cancelScheduledValues(
               this._startTime + t + this.sampleTime,
             ),
               this.context.clearTimeout(this._onendedTimeout),
-              (this._stopTime = -1);
+              (this._stopTime = -1));
           }
           return this;
         }),
@@ -3727,7 +3741,7 @@
           if (!this._sourceStopped) {
             this._sourceStopped = !0;
             var t = "exponential" === this.curve ? 2 * this.fadeOut : 0;
-            this._sourceStarted &&
+            (this._sourceStarted &&
               -1 !== this._stopTime &&
               this._source.stop(this._stopTime + t),
               this.onended(this),
@@ -3737,7 +3751,7 @@
                     (this._source.disconnect(), this._gainNode.disconnect());
                 }.bind(this),
                 1e3 * t + 100,
-              );
+              ));
           }
         }),
         Object.defineProperty(s.default.BufferSource.prototype, "loopStart", {
@@ -3769,7 +3783,7 @@
             return this._source.loop;
           },
           set: function (t) {
-            (this._source.loop = t), this.cancelStop();
+            ((this._source.loop = t), this.cancelStop());
           },
         }),
         (s.default.BufferSource.prototype.dispose = function () {
@@ -3791,27 +3805,27 @@
             this
           );
         }),
-        (e.default = s.default.BufferSource);
+        (e.default = s.default.BufferSource));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(8), i(2), i(5), i(3);
-      (s.default.FeedbackEffect = function () {
+      (i(8), i(2), i(5), i(3));
+      ((s.default.FeedbackEffect = function () {
         var t = s.default.defaults(
           arguments,
           ["feedback"],
           s.default.FeedbackEffect,
         );
-        s.default.Effect.call(this, t),
+        (s.default.Effect.call(this, t),
           (this._feedbackGain = new s.default.Gain(
             t.feedback,
             s.default.Type.NormalRange,
           )),
           (this.feedback = this._feedbackGain.gain),
           this.effectReturn.chain(this._feedbackGain, this.effectSend),
-          this._readOnly(["feedback"]);
+          this._readOnly(["feedback"]));
       }),
         s.default.extend(s.default.FeedbackEffect, s.default.Effect),
         (s.default.FeedbackEffect.defaults = { feedback: 0.125 }),
@@ -3825,15 +3839,15 @@
             this
           );
         }),
-        (e.default = s.default.FeedbackEffect);
+        (e.default = s.default.FeedbackEffect));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(24), i(4);
-      (s.default.TimelineState = function (t) {
-        s.default.Timeline.call(this), (this._initial = t);
+      (i(24), i(4));
+      ((s.default.TimelineState = function (t) {
+        (s.default.Timeline.call(this), (this._initial = t));
       }),
         s.default.extend(s.default.TimelineState, s.default.Timeline),
         (s.default.TimelineState.prototype.getValueAtTime = function (t) {
@@ -3841,7 +3855,7 @@
           return null !== e ? e.state : this._initial;
         }),
         (s.default.TimelineState.prototype.setStateAtTime = function (t, e) {
-          return this.add({ state: t, time: e }), this;
+          return (this.add({ state: t, time: e }), this);
         }),
         (s.default.TimelineState.prototype.getLastState = function (t, e) {
           e = this.toSeconds(e);
@@ -3859,29 +3873,29 @@
               if (n.state === t) return n;
             }
         }),
-        (e.default = s.default.TimelineState);
+        (e.default = s.default.TimelineState));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      (s.default.Emitter = function () {
-        s.default.call(this), (this._events = {});
+      ((s.default.Emitter = function () {
+        (s.default.call(this), (this._events = {}));
       }),
         s.default.extend(s.default.Emitter),
         (s.default.Emitter.prototype.on = function (t, e) {
           for (var i = t.split(/\W+/), s = 0; s < i.length; s++) {
             var n = i[s];
-            this._events.hasOwnProperty(n) || (this._events[n] = []),
-              this._events[n].push(e);
+            (this._events.hasOwnProperty(n) || (this._events[n] = []),
+              this._events[n].push(e));
           }
           return this;
         }),
         (s.default.Emitter.prototype.once = function (t, e) {
           var i = function () {
-            e.apply(this, arguments), this.off(t, i);
+            (e.apply(this, arguments), this.off(t, i));
           }.bind(this);
-          return this.on(t, i), this;
+          return (this.on(t, i), this);
         }),
         (s.default.Emitter.prototype.off = function (t, e) {
           for (var i = t.split(/\W+/), n = 0; n < i.length; n++)
@@ -3917,17 +3931,19 @@
         }),
         (s.default.Emitter.prototype.dispose = function () {
           return (
-            s.default.prototype.dispose.call(this), (this._events = null), this
+            s.default.prototype.dispose.call(this),
+            (this._events = null),
+            this
           );
         }),
-        (e.default = s.default.Emitter);
+        (e.default = s.default.Emitter));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(1), i(44);
-      s.default.supported &&
+      (i(1), i(44));
+      (s.default.supported &&
         (AnalyserNode.prototype.getFloatTimeDomainData ||
           (AnalyserNode.prototype.getFloatTimeDomainData = function (t) {
             var e = new Uint8Array(t.length);
@@ -3940,7 +3956,7 @@
             ["type", "size"],
             s.default.Analyser,
           );
-          s.default.AudioNode.call(this),
+          (s.default.AudioNode.call(this),
             (this._analyser =
               this.input =
               this.output =
@@ -3948,7 +3964,7 @@
             (this._type = t.type),
             (this._buffer = null),
             (this.size = t.size),
-            (this.type = t.type);
+            (this.type = t.type));
         }),
         s.default.extend(s.default.Analyser, s.default.AudioNode),
         (s.default.Analyser.defaults = {
@@ -3971,8 +3987,8 @@
             return this._analyser.frequencyBinCount;
           },
           set: function (t) {
-            (this._analyser.fftSize = 2 * t),
-              (this._buffer = new Float32Array(t));
+            ((this._analyser.fftSize = 2 * t),
+              (this._buffer = new Float32Array(t)));
           },
         }),
         Object.defineProperty(s.default.Analyser.prototype, "type", {
@@ -3997,25 +4013,25 @@
           },
         }),
         (s.default.Analyser.prototype.dispose = function () {
-          s.default.AudioNode.prototype.dispose.call(this),
+          (s.default.AudioNode.prototype.dispose.call(this),
             this._analyser.disconnect(),
             (this._analyser = null),
-            (this._buffer = null);
-        });
+            (this._buffer = null));
+        }));
       e.default = s.default.Analyser;
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(6), i(17), i(50), i(69), i(49), i(68), i(67);
-      (s.default.OmniOscillator = function () {
+      (i(6), i(17), i(50), i(69), i(49), i(68), i(67));
+      ((s.default.OmniOscillator = function () {
         var t = s.default.defaults(
           arguments,
           ["frequency", "type"],
           s.default.OmniOscillator,
         );
-        s.default.Source.call(this, t),
+        (s.default.Source.call(this, t),
           (this.frequency = new s.default.Signal(
             t.frequency,
             s.default.Type.Frequency,
@@ -4025,7 +4041,7 @@
           (this._oscillator = null),
           (this.type = t.type),
           this._readOnly(["frequency", "detune"]),
-          this.set(t);
+          this.set(t));
       }),
         s.default.extend(s.default.OmniOscillator, s.default.Source),
         (s.default.OmniOscillator.defaults = {
@@ -4033,14 +4049,14 @@
           detune: 0,
           type: "sine",
           phase: 0,
-        });
+        }));
       var n = "PulseOscillator",
         o = "PWMOscillator",
         a = "Oscillator",
         r = "FMOscillator",
         l = "AMOscillator",
         u = "FatOscillator";
-      (s.default.OmniOscillator.prototype._start = function (t) {
+      ((s.default.OmniOscillator.prototype._start = function (t) {
         this._oscillator.start(t);
       }),
         (s.default.OmniOscillator.prototype._stop = function (t) {
@@ -4112,7 +4128,7 @@
         }),
         (s.default.OmniOscillator.prototype.get = function (t) {
           var e = this._oscillator.get(t);
-          return (e.type = this.type), e;
+          return ((e.type = this.type), e);
         }),
         (s.default.OmniOscillator.prototype._createNewOscillator = function (
           t,
@@ -4123,17 +4139,17 @@
               i = this.now();
             if (null !== this._oscillator) {
               var n = this._oscillator;
-              n.stop(i),
+              (n.stop(i),
                 this.context.setTimeout(function () {
-                  n.dispose(), (n = null);
-                }, this.blockTime);
+                  (n.dispose(), (n = null));
+                }, this.blockTime));
             }
-            (this._oscillator = new e()),
+            ((this._oscillator = new e()),
               this.frequency.connect(this._oscillator.frequency),
               this.detune.connect(this._oscillator.detune),
               this._oscillator.connect(this.output),
               this.state === s.default.State.Started &&
-                this._oscillator.start(i);
+                this._oscillator.start(i));
           }
         }),
         Object.defineProperty(s.default.OmniOscillator.prototype, "phase", {
@@ -4143,7 +4159,7 @@
           set: function (t) {
             this._oscillator.phase = t;
           },
-        });
+        }));
       var d = {
         PulseOscillator: "pulse",
         PWMOscillator: "pwm",
@@ -4152,13 +4168,13 @@
         AMOscillator: "am",
         FatOscillator: "fat",
       };
-      Object.defineProperty(s.default.OmniOscillator.prototype, "sourceType", {
+      (Object.defineProperty(s.default.OmniOscillator.prototype, "sourceType", {
         get: function () {
           return d[this._sourceType];
         },
         set: function (t) {
           var e = "sine";
-          "pwm" !== this._oscillator.type &&
+          ("pwm" !== this._oscillator.type &&
             "pulse" !== this._oscillator.type &&
             (e = this._oscillator.type),
             t === d.FMOscillator
@@ -4171,7 +4187,7 @@
                     ? (this.type = e)
                     : t === d.PulseOscillator
                       ? (this.type = "pulse")
-                      : t === d.PWMOscillator && (this.type = "pwm");
+                      : t === d.PWMOscillator && (this.type = "pwm"));
         },
       }),
         Object.defineProperty(s.default.OmniOscillator.prototype, "baseType", {
@@ -4267,22 +4283,22 @@
             this
           );
         }),
-        (e.default = s.default.OmniOscillator);
+        (e.default = s.default.OmniOscillator));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(31), i(37), i(25);
-      (s.default.Synth = function (t) {
-        (t = s.default.defaultArg(t, s.default.Synth.defaults)),
+      (i(31), i(37), i(25));
+      ((s.default.Synth = function (t) {
+        ((t = s.default.defaultArg(t, s.default.Synth.defaults)),
           s.default.Monophonic.call(this, t),
           (this.oscillator = new s.default.OmniOscillator(t.oscillator)),
           (this.frequency = this.oscillator.frequency),
           (this.detune = this.oscillator.detune),
           (this.envelope = new s.default.AmplitudeEnvelope(t.envelope)),
           this.oscillator.chain(this.envelope, this.output),
-          this._readOnly(["oscillator", "frequency", "detune", "envelope"]);
+          this._readOnly(["oscillator", "frequency", "detune", "envelope"]));
       }),
         s.default.extend(s.default.Synth, s.default.Monophonic),
         (s.default.Synth.defaults = {
@@ -4323,19 +4339,19 @@
             this
           );
         }),
-        (e.default = s.default.Synth);
+        (e.default = s.default.Synth));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(6), i(11), i(32);
-      (s.default.Noise = function () {
+      (i(6), i(11), i(32));
+      ((s.default.Noise = function () {
         var t = s.default.defaults(arguments, ["type"], s.default.Noise);
-        s.default.Source.call(this, t),
+        (s.default.Source.call(this, t),
           (this._source = null),
           (this._type = t.type),
-          (this._playbackRate = t.playbackRate);
+          (this._playbackRate = t.playbackRate));
       }),
         s.default.extend(s.default.Noise, s.default.Source),
         (s.default.Noise.defaults = { type: "white", playbackRate: 1 }),
@@ -4349,7 +4365,7 @@
                 throw new TypeError("Tone.Noise: invalid type: " + t);
               if (((this._type = t), this.state === s.default.State.Started)) {
                 var e = this.now();
-                this._stop(e), this._start(e);
+                (this._stop(e), this._start(e));
               }
             }
           },
@@ -4359,26 +4375,26 @@
             return this._playbackRate;
           },
           set: function (t) {
-            (this._playbackRate = t),
-              this._source && (this._source.playbackRate.value = t);
+            ((this._playbackRate = t),
+              this._source && (this._source.playbackRate.value = t));
           },
         }),
         (s.default.Noise.prototype._start = function (t) {
           var e = n[this._type];
-          (this._source = new s.default.BufferSource(e).connect(this.output)),
+          ((this._source = new s.default.BufferSource(e).connect(this.output)),
             (this._source.loop = !0),
             (this._source.playbackRate.value = this._playbackRate),
             this._source.start(
               this.toSeconds(t),
               Math.random() * (e.duration - 0.001),
-            );
+            ));
         }),
         (s.default.Noise.prototype._stop = function (t) {
           this._source &&
             (this._source.stop(this.toSeconds(t)), (this._source = null));
         }),
         (s.default.Noise.prototype.restart = function (t) {
-          return this._stop(t), this._start(t), this;
+          return (this._stop(t), this._start(t), this);
         }),
         (s.default.Noise.prototype.dispose = function () {
           return (
@@ -4388,10 +4404,10 @@
             (this._buffer = null),
             this
           );
-        });
+        }));
       var n = {},
         o = {};
-      Object.defineProperty(n, "pink", {
+      (Object.defineProperty(n, "pink", {
         get: function () {
           if (!o.pink) {
             for (var t = [], e = 0; e < 2; e++) {
@@ -4403,10 +4419,10 @@
                 u,
                 d,
                 f = new Float32Array(220500);
-              (t[e] = f), (i = n = a = r = l = u = d = 0);
+              ((t[e] = f), (i = n = a = r = l = u = d = 0));
               for (var h = 0; h < 220500; h++) {
                 var c = 2 * Math.random() - 1;
-                (i = 0.99886 * i + 0.0555179 * c),
+                ((i = 0.99886 * i + 0.0555179 * c),
                   (n = 0.99332 * n + 0.0750759 * c),
                   (a = 0.969 * a + 0.153852 * c),
                   (r = 0.8665 * r + 0.3104856 * c),
@@ -4414,7 +4430,7 @@
                   (u = -0.7616 * u - 0.016898 * c),
                   (f[h] = i + n + a + r + l + u + d + 0.5362 * c),
                   (f[h] *= 0.11),
-                  (d = 0.115926 * c);
+                  (d = 0.115926 * c));
               }
             }
             o.pink = new s.default.Buffer().fromArray(t);
@@ -4430,7 +4446,7 @@
                 t[e] = i;
                 for (var n = 0, a = 0; a < 220500; a++) {
                   var r = 2 * Math.random() - 1;
-                  (i[a] = (n + 0.02 * r) / 1.02), (n = i[a]), (i[a] *= 3.5);
+                  ((i[a] = (n + 0.02 * r) / 1.02), (n = i[a]), (i[a] *= 3.5));
                 }
               }
               o.brown = new s.default.Buffer().fromArray(t);
@@ -4451,18 +4467,18 @@
             return o.white;
           },
         }),
-        (e.default = s.default.Noise);
+        (e.default = s.default.Noise));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(27), i(20), i(1);
-      (s.default.Master = function () {
-        s.default.AudioNode.call(this),
+      (i(27), i(20), i(1));
+      ((s.default.Master = function () {
+        (s.default.AudioNode.call(this),
           s.default.getContext(
             function () {
-              this.createInsOuts(1, 0),
+              (this.createInsOuts(1, 0),
                 (this._volume = this.output = new s.default.Volume()),
                 (this.volume = this._volume.volume),
                 this._readOnly("volume"),
@@ -4471,9 +4487,9 @@
                   this.output,
                   this.context.destination,
                 ),
-                (this.context.master = this);
+                (this.context.master = this));
             }.bind(this),
-          );
+          ));
       }),
         s.default.extend(s.default.Master, s.default.AudioNode),
         (s.default.Master.defaults = { volume: 0, mute: !1 }),
@@ -4489,22 +4505,22 @@
         (s.default.Master.prototype.chain = function () {
           this.input.disconnect();
           var t = Array.from(arguments);
-          t.unshift(this.input),
+          (t.unshift(this.input),
             t.push(this.output),
-            s.default.connectSeries.apply(void 0, t);
+            s.default.connectSeries.apply(void 0, t));
         }),
         (s.default.Master.prototype.dispose = function () {
-          s.default.AudioNode.prototype.dispose.call(this),
+          (s.default.AudioNode.prototype.dispose.call(this),
             this._writable("volume"),
             this._volume.dispose(),
             (this._volume = null),
-            (this.volume = null);
+            (this.volume = null));
         }),
         (s.default.AudioNode.prototype.toMaster = function () {
-          return this.connect(this.context.master), this;
-        });
+          return (this.connect(this.context.master), this);
+        }));
       var n = s.default.Master;
-      (s.default.Master = new n()),
+      ((s.default.Master = new n()),
         s.default.Context.on("init", function (t) {
           t.master && t.master.isMaster
             ? (s.default.Master = t.master)
@@ -4513,25 +4529,25 @@
         s.default.Context.on("close", function (t) {
           t.master && t.master.isMaster && t.master.dispose();
         }),
-        (e.default = s.default.Master);
+        (e.default = s.default.Master));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(86), i(47);
-      (s.default.FrequencyEnvelope = function () {
+      (i(86), i(47));
+      ((s.default.FrequencyEnvelope = function () {
         var t = s.default.defaults(
           arguments,
           ["attack", "decay", "sustain", "release"],
           s.default.Envelope,
         );
-        (t = s.default.defaultArg(t, s.default.FrequencyEnvelope.defaults)),
+        ((t = s.default.defaultArg(t, s.default.FrequencyEnvelope.defaults)),
           s.default.ScaledEnvelope.call(this, t),
           (this._octaves = t.octaves),
           (this.baseFrequency = t.baseFrequency),
           (this.octaves = t.octaves),
-          (this.exponent = t.exponent);
+          (this.exponent = t.exponent));
       }),
         s.default.extend(s.default.FrequencyEnvelope, s.default.Envelope),
         (s.default.FrequencyEnvelope.defaults = {
@@ -4547,8 +4563,8 @@
               return this._scale.min;
             },
             set: function (t) {
-              (this._scale.min = this.toFrequency(t)),
-                (this.octaves = this._octaves);
+              ((this._scale.min = this.toFrequency(t)),
+                (this.octaves = this._octaves));
             },
           },
         ),
@@ -4560,8 +4576,8 @@
               return this._octaves;
             },
             set: function (t) {
-              (this._octaves = t),
-                (this._scale.max = this.baseFrequency * Math.pow(2, t));
+              ((this._octaves = t),
+                (this._scale.max = this.baseFrequency * Math.pow(2, t)));
             },
           },
         ),
@@ -4578,21 +4594,21 @@
           },
         ),
         (s.default.FrequencyEnvelope.prototype.dispose = function () {
-          return s.default.ScaledEnvelope.prototype.dispose.call(this), this;
+          return (s.default.ScaledEnvelope.prototype.dispose.call(this), this);
         }),
-        (e.default = s.default.FrequencyEnvelope);
+        (e.default = s.default.FrequencyEnvelope));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(26), i(61);
-      (s.default.ScaleExp = function (t, e, i) {
-        s.default.SignalBase.call(this),
+      (i(26), i(61));
+      ((s.default.ScaleExp = function (t, e, i) {
+        (s.default.SignalBase.call(this),
           (this._scale = this.output = new s.default.Scale(t, e)),
           (this._exp = this.input =
             new s.default.Pow(s.default.defaultArg(i, 2))),
-          this._exp.connect(this._scale);
+          this._exp.connect(this._scale));
       }),
         s.default.extend(s.default.ScaleExp, s.default.SignalBase),
         Object.defineProperty(s.default.ScaleExp.prototype, "exponent", {
@@ -4629,20 +4645,20 @@
             this
           );
         }),
-        (e.default = s.default.ScaleExp);
+        (e.default = s.default.ScaleExp));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(14), i(1);
-      (s.default.Compressor = function () {
+      (i(14), i(1));
+      ((s.default.Compressor = function () {
         var t = s.default.defaults(
           arguments,
           ["threshold", "ratio"],
           s.default.Compressor,
         );
-        s.default.AudioNode.call(this),
+        (s.default.AudioNode.call(this),
           (this._compressor =
             this.input =
             this.output =
@@ -4670,7 +4686,7 @@
             convert: !1,
           })),
           this._readOnly(["knee", "release", "attack", "ratio", "threshold"]),
-          this.set(t);
+          this.set(t));
       }),
         s.default.extend(s.default.Compressor, s.default.AudioNode),
         (s.default.Compressor.defaults = {
@@ -4699,14 +4715,14 @@
             this
           );
         }),
-        (e.default = s.default.Compressor);
+        (e.default = s.default.Compressor));
     },
     function (t, e, i) {
       "use strict";
       var s = i(0);
       i(92);
       if (s.default.supported) {
-        !s.default.global.hasOwnProperty("AudioContext") &&
+        (!s.default.global.hasOwnProperty("AudioContext") &&
           s.default.global.hasOwnProperty("webkitAudioContext") &&
           (s.default.global.AudioContext = s.default.global.webkitAudioContext),
           AudioContext.prototype.close ||
@@ -4734,7 +4750,7 @@
           !AudioContext.prototype.createDelay &&
             AudioContext.prototype.createDelayNode &&
             (AudioContext.prototype.createDelay =
-              AudioContext.prototype.createDelayNode);
+              AudioContext.prototype.createDelayNode));
         var n = !1,
           o = new OfflineAudioContext(1, 1, 44100),
           a = new Uint32Array([
@@ -4764,7 +4780,7 @@
       i.r(e);
       var s = i(0);
       i(63);
-      (s.default.TransportTime = function (t, e) {
+      ((s.default.TransportTime = function (t, e) {
         if (!(this instanceof s.default.TransportTime))
           return new s.default.TransportTime(t, e);
         s.default.Time.call(this, t, e);
@@ -4773,14 +4789,14 @@
         (s.default.TransportTime.prototype._now = function () {
           return s.default.Transport.seconds;
         }),
-        (e.default = s.default.TransportTime);
+        (e.default = s.default.TransportTime));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(62);
-      (s.default.Frequency = function (t, e) {
+      ((s.default.Frequency = function (t, e) {
         if (!(this instanceof s.default.Frequency))
           return new s.default.Frequency(t, e);
         s.default.TimeBase.call(this, t, e);
@@ -4847,7 +4863,7 @@
             e = Math.log2(t / s.default.Frequency.A4),
             i = Math.round(12 * e) + 57,
             n = Math.floor(i / 12);
-          return n < 0 && (i += -12 * n), o[i % 12] + n.toString();
+          return (n < 0 && (i += -12 * n), o[i % 12] + n.toString());
         }),
         (s.default.Frequency.prototype.toSeconds = function () {
           return 1 / s.default.TimeBase.prototype.toSeconds.call(this);
@@ -4879,7 +4895,7 @@
         (s.default.Frequency.prototype._secondsToUnits = function (t) {
           return 1 / t;
         }),
-        (s.default.Frequency.prototype._defaultUnits = "hz");
+        (s.default.Frequency.prototype._defaultUnits = "hz"));
       var n = {
           cbb: -2,
           cb: -1,
@@ -4918,27 +4934,27 @@
           bx: 13,
         },
         o = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
-      (s.default.Frequency.A4 = 440),
+      ((s.default.Frequency.A4 = 440),
         (s.default.Frequency.mtof = function (t) {
           return s.default.Frequency.A4 * Math.pow(2, (t - 69) / 12);
         }),
         (s.default.Frequency.ftom = function (t) {
           return 69 + Math.round(12 * Math.log2(t / s.default.Frequency.A4));
         }),
-        (e.default = s.default.Frequency);
+        (e.default = s.default.Frequency));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(2), i(61), i(4), i(1);
-      (s.default.Envelope = function () {
+      (i(2), i(61), i(4), i(1));
+      ((s.default.Envelope = function () {
         var t = s.default.defaults(
           arguments,
           ["attack", "decay", "sustain", "release"],
           s.default.Envelope,
         );
-        s.default.AudioNode.call(this),
+        (s.default.AudioNode.call(this),
           (this.attack = t.attack),
           (this.decay = t.decay),
           (this.sustain = t.sustain),
@@ -4948,7 +4964,7 @@
           (this._sig = this.output = new s.default.Signal(0)),
           (this.attackCurve = t.attackCurve),
           (this.releaseCurve = t.releaseCurve),
-          (this.decayCurve = t.decayCurve);
+          (this.decayCurve = t.decayCurve));
       }),
         s.default.extend(s.default.Envelope, s.default.AudioNode),
         (s.default.Envelope.defaults = {
@@ -5008,7 +5024,7 @@
           },
         }),
         (s.default.Envelope.prototype.triggerAttack = function (t, e) {
-          this.log("triggerAttack", t, e), (t = this.toSeconds(t));
+          (this.log("triggerAttack", t, e), (t = this.toSeconds(t)));
           var i = this.toSeconds(this.attack),
             n = this.toSeconds(this.decay);
           e = s.default.defaultArg(e, 1);
@@ -5031,16 +5047,16 @@
           if (n) {
             var l = e * this.sustain,
               u = t + i;
-            this.log("decay", u),
+            (this.log("decay", u),
               "linear" === this._decayCurve
                 ? this._sig.linearRampTo(l, n, u + this.sampleTime)
                 : "exponential" === this._decayCurve &&
-                  this._sig.exponentialApproachValueAtTime(l, u, n);
+                  this._sig.exponentialApproachValueAtTime(l, u, n));
           }
           return this;
         }),
         (s.default.Envelope.prototype.triggerRelease = function (t) {
-          this.log("triggerRelease", t), (t = this.toSeconds(t));
+          (this.log("triggerRelease", t), (t = this.toSeconds(t)));
           var e = this.getValueAtTime(t);
           if (e > 0) {
             var i = this.toSeconds(this.release);
@@ -5073,7 +5089,7 @@
           );
         }),
         (s.default.Envelope.prototype.cancel = function (t) {
-          return this._sig.cancelScheduledValues(t), this;
+          return (this._sig.cancelScheduledValues(t), this);
         }),
         (s.default.Envelope.prototype.connect =
           s.default.SignalBase.prototype.connect),
@@ -5093,7 +5109,7 @@
           for (t = 0; t < 128; t++) a[t] = Math.ceil((t / 127) * 5) / 5;
           var r = [];
           for (t = 0; t < 128; t++)
-            (e = t / 127), (r[t] = 0.5 * (1 - Math.cos(Math.PI * e)));
+            ((e = t / 127), (r[t] = 0.5 * (1 - Math.cos(Math.PI * e))));
           var l,
             u = [];
           for (t = 0; t < 128; t++) {
@@ -5127,20 +5143,20 @@
             this
           );
         }),
-        (e.default = s.default.Envelope);
+        (e.default = s.default.Envelope));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(23), i(10), i(19), i(7), i(28), i(3), i(2), i(20);
+      (i(23), i(10), i(19), i(7), i(28), i(3), i(2), i(20));
       if (
         s.default.supported &&
         !s.default.global.AudioContext.prototype.createStereoPanner
       ) {
         var n = function (t) {
-          (this.context = t),
-            (this.pan = new s.default.Signal(0, s.default.Type.AudioRange));
+          ((this.context = t),
+            (this.pan = new s.default.Signal(0, s.default.Type.AudioRange)));
           var e = new s.default.WaveShaper(function (t) {
               return s.default.equalPowerScale((t + 1) / 2);
             }, 4096),
@@ -5150,15 +5166,15 @@
             n = new s.default.Gain(),
             o = new s.default.Gain(),
             a = (this.input = new s.default.Split());
-          (a._splitter.channelCountMode = "explicit"),
-            new s.default.Zero().fan(e, i);
+          ((a._splitter.channelCountMode = "explicit"),
+            new s.default.Zero().fan(e, i));
           var r = (this.output = new s.default.Merge());
-          a.left.chain(n, r.left),
+          (a.left.chain(n, r.left),
             a.right.chain(o, r.right),
             this.pan.chain(i, n.gain),
-            this.pan.chain(e, o.gain);
+            this.pan.chain(e, o.gain));
         };
-        (n.prototype.disconnect = function () {
+        ((n.prototype.disconnect = function () {
           this.output.disconnect.apply(this.output, arguments);
         }),
           (n.prototype.connect = function () {
@@ -5169,19 +5185,19 @@
           }),
           (s.default.Context.prototype.createStereoPanner = function () {
             return new n(this);
-          });
+          }));
       }
-      i(22), i(1);
-      (s.default.Panner = function () {
+      (i(22), i(1));
+      ((s.default.Panner = function () {
         var t = s.default.defaults(arguments, ["pan"], s.default.Panner);
-        s.default.AudioNode.call(this),
+        (s.default.AudioNode.call(this),
           (this._panner =
             this.input =
             this.output =
               this.context.createStereoPanner()),
           (this.pan = this._panner.pan),
           (this.pan.value = t.pan),
-          this._readOnly("pan");
+          this._readOnly("pan"));
       }),
         s.default.extend(s.default.Panner, s.default.AudioNode),
         (s.default.Panner.defaults = { pan: 0 }),
@@ -5194,21 +5210,21 @@
             (this.pan = null),
             this
           );
-        });
+        }));
       e.default = s.default.Panner;
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(6), i(17), i(5), i(3);
-      (s.default.FMOscillator = function () {
+      (i(6), i(17), i(5), i(3));
+      ((s.default.FMOscillator = function () {
         var t = s.default.defaults(
           arguments,
           ["frequency", "type", "modulationType"],
           s.default.FMOscillator,
         );
-        s.default.Source.call(this, t),
+        (s.default.Source.call(this, t),
           (this._carrier = new s.default.Oscillator(t.frequency, t.type)),
           (this.frequency = new s.default.Signal(
             t.frequency,
@@ -5238,7 +5254,7 @@
             "frequency",
             "detune",
             "harmonicity",
-          ]);
+          ]));
       }),
         s.default.extend(s.default.FMOscillator, s.default.Source),
         (s.default.FMOscillator.defaults = {
@@ -5251,13 +5267,13 @@
           harmonicity: 1,
         }),
         (s.default.FMOscillator.prototype._start = function (t) {
-          this._modulator.start(t), this._carrier.start(t);
+          (this._modulator.start(t), this._carrier.start(t));
         }),
         (s.default.FMOscillator.prototype._stop = function (t) {
-          this._modulator.stop(t), this._carrier.stop(t);
+          (this._modulator.stop(t), this._carrier.stop(t));
         }),
         (s.default.FMOscillator.prototype.restart = function (t) {
-          this._modulator.restart(t), this._carrier.restart(t);
+          (this._modulator.restart(t), this._carrier.restart(t));
         }),
         Object.defineProperty(s.default.FMOscillator.prototype, "type", {
           get: function () {
@@ -5304,7 +5320,7 @@
             return this._carrier.phase;
           },
           set: function (t) {
-            (this._carrier.phase = t), (this._modulator.phase = t);
+            ((this._carrier.phase = t), (this._modulator.phase = t));
           },
         }),
         Object.defineProperty(s.default.FMOscillator.prototype, "partials", {
@@ -5340,20 +5356,20 @@
             this
           );
         }),
-        (e.default = s.default.FMOscillator);
+        (e.default = s.default.FMOscillator));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(6), i(17), i(2), i(7), i(3);
-      (s.default.PulseOscillator = function () {
+      (i(6), i(17), i(2), i(7), i(3));
+      ((s.default.PulseOscillator = function () {
         var t = s.default.defaults(
           arguments,
           ["frequency", "width"],
           s.default.Oscillator,
         );
-        s.default.Source.call(this, t),
+        (s.default.Source.call(this, t),
           (this.width = new s.default.Signal(
             t.width,
             s.default.Type.NormalRange,
@@ -5372,7 +5388,7 @@
           })),
           this._sawtooth.chain(this._thresh, this.output),
           this.width.chain(this._widthGate, this._thresh),
-          this._readOnly(["width", "frequency", "detune"]);
+          this._readOnly(["width", "frequency", "detune"]));
       }),
         s.default.extend(s.default.PulseOscillator, s.default.Source),
         (s.default.PulseOscillator.defaults = {
@@ -5382,19 +5398,19 @@
           width: 0.2,
         }),
         (s.default.PulseOscillator.prototype._start = function (t) {
-          (t = this.toSeconds(t)),
+          ((t = this.toSeconds(t)),
             this._sawtooth.start(t),
-            this._widthGate.gain.setValueAtTime(1, t);
+            this._widthGate.gain.setValueAtTime(1, t));
         }),
         (s.default.PulseOscillator.prototype._stop = function (t) {
-          (t = this.toSeconds(t)),
+          ((t = this.toSeconds(t)),
             this._sawtooth.stop(t),
-            this._widthGate.gain.setValueAtTime(0, t);
+            this._widthGate.gain.setValueAtTime(0, t));
         }),
         (s.default.PulseOscillator.prototype.restart = function (t) {
-          this._sawtooth.restart(t),
+          (this._sawtooth.restart(t),
             this._widthGate.gain.cancelScheduledValues(t),
-            this._widthGate.gain.setValueAtTime(1, t);
+            this._widthGate.gain.setValueAtTime(1, t));
         }),
         Object.defineProperty(s.default.PulseOscillator.prototype, "phase", {
           get: function () {
@@ -5436,20 +5452,20 @@
             this
           );
         }),
-        (e.default = s.default.PulseOscillator);
+        (e.default = s.default.PulseOscillator));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(16), i(4), i(34);
-      (s.default.Event = function () {
+      (i(16), i(4), i(34));
+      ((s.default.Event = function () {
         var t = s.default.defaults(
           arguments,
           ["callback", "value"],
           s.default.Event,
         );
-        s.default.call(this),
+        (s.default.call(this),
           (this._loop = t.loop),
           (this.callback = t.callback),
           (this.value = t.value),
@@ -5461,7 +5477,7 @@
           (this._probability = t.probability),
           (this._humanize = t.humanize),
           (this.mute = t.mute),
-          (this.playbackRate = t.playbackRate);
+          (this.playbackRate = t.playbackRate));
       }),
         s.default.extend(s.default.Event),
         (s.default.Event.defaults = {
@@ -5490,17 +5506,17 @@
                     !0 === this._loop ||
                     (s.default.isNumber(this._loop) && this._loop > 1)
                   ) {
-                    (e = 1 / 0),
+                    ((e = 1 / 0),
                       s.default.isNumber(this._loop) &&
-                        (e = this._loop * this._getLoopDuration());
+                        (e = this._loop * this._getLoopDuration()));
                     var n = this._state.getAfter(i);
-                    null !== n && (e = Math.min(e, n.time - i)),
+                    (null !== n && (e = Math.min(e, n.time - i)),
                       e !== 1 / 0 &&
                         (this._state.setStateAtTime(
                           s.default.State.Stopped,
                           i + e + 1,
                         ),
-                        (e = s.default.Ticks(e)));
+                        (e = s.default.Ticks(e))));
                     var o = s.default.Ticks(this._getLoopDuration());
                     t.id = s.default.Transport.scheduleRepeat(
                       this._tick.bind(this),
@@ -5570,7 +5586,7 @@
             this._state.setStateAtTime(s.default.State.Stopped, t);
             var e = this._state.getBefore(t),
               i = t;
-            null !== e && (i = e.time), this._rescheduleEvents(i);
+            (null !== e && (i = e.time), this._rescheduleEvents(i));
           }
           return this;
         }),
@@ -5595,9 +5611,9 @@
               return;
             if (this.humanize) {
               var i = 0.02;
-              s.default.isBoolean(this.humanize) ||
+              (s.default.isBoolean(this.humanize) ||
                 (i = this.toSeconds(this.humanize)),
-                (t += (2 * Math.random() - 1) * i);
+                (t += (2 * Math.random() - 1) * i));
             }
             this.callback(t, this.value);
           }
@@ -5612,7 +5628,7 @@
             return this._loop;
           },
           set: function (t) {
-            (this._loop = t), this._rescheduleEvents();
+            ((this._loop = t), this._rescheduleEvents());
           },
         }),
         Object.defineProperty(s.default.Event.prototype, "playbackRate", {
@@ -5620,7 +5636,7 @@
             return this._playbackRate;
           },
           set: function (t) {
-            (this._playbackRate = t), this._rescheduleEvents();
+            ((this._playbackRate = t), this._rescheduleEvents());
           },
         }),
         Object.defineProperty(s.default.Event.prototype, "loopEnd", {
@@ -5628,8 +5644,8 @@
             return s.default.Ticks(this._loopEnd).toSeconds();
           },
           set: function (t) {
-            (this._loopEnd = this.toTicks(t)),
-              this._loop && this._rescheduleEvents();
+            ((this._loopEnd = this.toTicks(t)),
+              this._loop && this._rescheduleEvents());
           },
         }),
         Object.defineProperty(s.default.Event.prototype, "loopStart", {
@@ -5637,8 +5653,8 @@
             return s.default.Ticks(this._loopStart).toSeconds();
           },
           set: function (t) {
-            (this._loopStart = this.toTicks(t)),
-              this._loop && this._rescheduleEvents();
+            ((this._loopStart = this.toTicks(t)),
+              this._loop && this._rescheduleEvents());
           },
         }),
         Object.defineProperty(s.default.Event.prototype, "progress", {
@@ -5656,21 +5672,21 @@
           },
         }),
         (s.default.Event.prototype.dispose = function () {
-          this.cancel(),
+          (this.cancel(),
             this._state.dispose(),
             (this._state = null),
             (this.callback = null),
-            (this.value = null);
+            (this.value = null));
         }),
-        (e.default = s.default.Event);
+        (e.default = s.default.Event));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(2), i(13), i(29), i(10), i(3), i(1);
-      (s.default.MidSideMerge = function () {
-        s.default.AudioNode.call(this),
+      (i(2), i(13), i(29), i(10), i(3), i(1));
+      ((s.default.MidSideMerge = function () {
+        (s.default.AudioNode.call(this),
           this.createInsOuts(2, 0),
           (this.mid = this.input[0] = new s.default.Gain()),
           (this._left = new s.default.Add()),
@@ -5686,7 +5702,7 @@
           this._left.connect(this._timesTwoLeft),
           this._right.connect(this._timesTwoRight),
           this._timesTwoLeft.connect(this._merge, 0, 0),
-          this._timesTwoRight.connect(this._merge, 0, 1);
+          this._timesTwoRight.connect(this._merge, 0, 1));
       }),
         s.default.extend(s.default.MidSideMerge, s.default.AudioNode),
         (s.default.MidSideMerge.prototype.dispose = function () {
@@ -5709,15 +5725,15 @@
             this
           );
         }),
-        (e.default = s.default.MidSideMerge);
+        (e.default = s.default.MidSideMerge));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(29), i(13), i(2), i(19), i(1);
-      (s.default.MidSideSplit = function () {
-        s.default.AudioNode.call(this),
+      (i(29), i(13), i(2), i(19), i(1));
+      ((s.default.MidSideSplit = function () {
+        (s.default.AudioNode.call(this),
           this.createInsOuts(0, 2),
           (this._split = this.input = new s.default.Split()),
           (this._midAdd = new s.default.Add()),
@@ -5729,7 +5745,7 @@
           this._split.connect(this._sideSubtract, 0, 0),
           this._split.connect(this._sideSubtract, 1, 1),
           this._midAdd.connect(this.mid),
-          this._sideSubtract.connect(this.side);
+          this._sideSubtract.connect(this.side));
       }),
         s.default.extend(s.default.MidSideSplit, s.default.AudioNode),
         (s.default.MidSideSplit.prototype.dispose = function () {
@@ -5748,20 +5764,20 @@
             this
           );
         }),
-        (e.default = s.default.MidSideSplit);
+        (e.default = s.default.MidSideSplit));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(2), i(9), i(1), i(59);
-      (s.default.LowpassCombFilter = function () {
+      (i(2), i(9), i(1), i(59));
+      ((s.default.LowpassCombFilter = function () {
         var t = s.default.defaults(
           arguments,
           ["delayTime", "resonance", "dampening"],
           s.default.LowpassCombFilter,
         );
-        s.default.AudioNode.call(this),
+        (s.default.AudioNode.call(this),
           (this._combFilter = this.output =
             new s.default.FeedbackCombFilter(t.delayTime, t.resonance)),
           (this.delayTime = this._combFilter.delayTime),
@@ -5775,7 +5791,7 @@
           (this.dampening = this._lowpass.frequency),
           (this.resonance = this._combFilter.resonance),
           this._lowpass.connect(this._combFilter),
-          this._readOnly(["dampening", "resonance", "delayTime"]);
+          this._readOnly(["dampening", "resonance", "delayTime"]));
       }),
         s.default.extend(s.default.LowpassCombFilter, s.default.AudioNode),
         (s.default.LowpassCombFilter.defaults = {
@@ -5797,14 +5813,14 @@
             this
           );
         }),
-        (e.default = s.default.LowpassCombFilter);
+        (e.default = s.default.LowpassCombFilter));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(45);
-      (s.default.Ticks = function (t, e) {
+      ((s.default.Ticks = function (t, e) {
         if (!(this instanceof s.default.Ticks))
           return new s.default.Ticks(t, e);
         s.default.TransportTime.call(this, t, e);
@@ -5829,21 +5845,21 @@
         (s.default.Ticks.prototype.toSeconds = function () {
           return (this.valueOf() / this._getPPQ()) * (60 / this._getBpm());
         }),
-        (e.default = s.default.Ticks);
+        (e.default = s.default.Ticks));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(55);
-      (s.default.TransportEvent = function (t, e) {
-        (e = s.default.defaultArg(e, s.default.TransportEvent.defaults)),
+      ((s.default.TransportEvent = function (t, e) {
+        ((e = s.default.defaultArg(e, s.default.TransportEvent.defaults)),
           s.default.call(this),
           (this.Transport = t),
           (this.id = s.default.TransportEvent._eventId++),
           (this.time = s.default.Ticks(e.time)),
           (this.callback = e.callback),
-          (this._once = e.once);
+          (this._once = e.once));
       }),
         s.default.extend(s.default.TransportEvent),
         (s.default.TransportEvent.defaults = {
@@ -5865,25 +5881,25 @@
             this
           );
         }),
-        (e.default = s.default.TransportEvent);
+        (e.default = s.default.TransportEvent));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(82), i(34), i(24), i(14);
-      (s.default.TickSource = function () {
+      (i(82), i(34), i(24), i(14));
+      ((s.default.TickSource = function () {
         var t = s.default.defaults(
           arguments,
           ["frequency"],
           s.default.TickSource,
         );
-        (this.frequency = new s.default.TickSignal(t.frequency)),
+        ((this.frequency = new s.default.TickSignal(t.frequency)),
           this._readOnly("frequency"),
           (this._state = new s.default.TimelineState(s.default.State.Stopped)),
           this._state.setStateAtTime(s.default.State.Stopped, 0),
           (this._tickOffset = new s.default.Timeline()),
-          this.setTicksAtTime(0, 0);
+          this.setTicksAtTime(0, 0));
       }),
         s.default.extend(s.default.TickSource),
         (s.default.TickSource.defaults = { frequency: 1 }),
@@ -5947,13 +5963,13 @@
               function (t) {
                 var e = n.time,
                   i = this._tickOffset.get(t.time);
-                i.time >= n.time && ((o = i.ticks), (e = i.time)),
+                (i.time >= n.time && ((o = i.ticks), (e = i.time)),
                   n.state === s.default.State.Started &&
                     t.state !== s.default.State.Started &&
                     (o +=
                       this.frequency.getTicksAtTime(t.time) -
                       this.frequency.getTicksAtTime(e)),
-                  (n = t);
+                  (n = t));
               }.bind(this),
             ),
             this._state.remove(i),
@@ -5992,11 +6008,11 @@
               function (t) {
                 var e = n.time,
                   i = this._tickOffset.get(t.time);
-                i.time >= n.time && ((o = i.seconds), (e = i.time)),
+                (i.time >= n.time && ((o = i.seconds), (e = i.time)),
                   n.state === s.default.State.Started &&
                     t.state !== s.default.State.Started &&
                     (o += t.time - e),
-                  (n = t);
+                  (n = t));
               }.bind(this),
             ),
             this._state.remove(i),
@@ -6016,7 +6032,7 @@
           );
         }),
         (s.default.TickSource.prototype.getStateAtTime = function (t) {
-          return (t = this.toSeconds(t)), this._state.getValueAtTime(t);
+          return ((t = this.toSeconds(t)), this._state.getValueAtTime(t));
         }),
         (s.default.TickSource.prototype.getTimeOfTick = function (t, e) {
           e = s.default.defaultArg(e, this.now());
@@ -6037,14 +6053,14 @@
               t,
               e,
               function (e) {
-                n.state === s.default.State.Started &&
+                (n.state === s.default.State.Started &&
                   e.state !== s.default.State.Started &&
                   this.forEachTickBetween(
                     Math.max(n.time, t),
                     e.time - this.sampleTime,
                     i,
                   ),
-                  (n = e);
+                  (n = e));
               }.bind(this),
             ),
             (t = Math.max(n.time, t)),
@@ -6056,7 +6072,6 @@
             for (
               var r = this.frequency.getTimeOfTick(o + a), l = null;
               r < e && this._state;
-
             ) {
               try {
                 i(r, Math.round(this.getTicksAtTime(r)));
@@ -6083,20 +6098,20 @@
             this
           );
         }),
-        (e.default = s.default.TickSource);
+        (e.default = s.default.TickSource));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(87), i(13), i(2), i(4), i(18), i(1);
-      (s.default.Follower = function () {
+      (i(87), i(13), i(2), i(4), i(18), i(1));
+      ((s.default.Follower = function () {
         var t = s.default.defaults(
           arguments,
           ["smoothing"],
           s.default.Follower,
         );
-        s.default.AudioNode.call(this),
+        (s.default.AudioNode.call(this),
           this.createInsOuts(1, 1),
           (this._abs = new s.default.Abs()),
           (this._filter = this.context.createBiquadFilter()),
@@ -6109,7 +6124,7 @@
           s.default.connect(this.input, this._delay),
           s.default.connect(this.input, this._sub, 0, 1),
           this._sub.chain(this._abs, this._filter, this.output),
-          (this.smoothing = t.smoothing);
+          (this.smoothing = t.smoothing));
       }),
         s.default.extend(s.default.Follower, s.default.AudioNode),
         (s.default.Follower.defaults = { smoothing: 0.05 }),
@@ -6118,9 +6133,9 @@
             return this._smoothing;
           },
           set: function (t) {
-            (this._smoothing = t),
+            ((this._smoothing = t),
               (this._filter.frequency.value =
-                0.5 * s.default.Time(t).toFrequency());
+                0.5 * s.default.Time(t).toFrequency()));
           },
         }),
         (s.default.Follower.prototype.connect =
@@ -6139,20 +6154,20 @@
             this
           );
         }),
-        (e.default = s.default.Follower);
+        (e.default = s.default.Follower));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(42), i(2), i(14), i(18), i(3), i(1);
-      (s.default.FeedbackCombFilter = function () {
+      (i(42), i(2), i(14), i(18), i(3), i(1));
+      ((s.default.FeedbackCombFilter = function () {
         var t = s.default.defaults(
           arguments,
           ["delayTime", "resonance"],
           s.default.FeedbackCombFilter,
         );
-        s.default.AudioNode.call(this),
+        (s.default.AudioNode.call(this),
           (this._delay =
             this.input =
             this.output =
@@ -6164,7 +6179,7 @@
           )),
           (this.resonance = this._feedback.gain),
           this._delay.chain(this._feedback, this._delay),
-          this._readOnly(["resonance", "delayTime"]);
+          this._readOnly(["resonance", "delayTime"]));
       }),
         s.default.extend(s.default.FeedbackCombFilter, s.default.AudioNode),
         (s.default.FeedbackCombFilter.defaults = {
@@ -6184,20 +6199,20 @@
             this
           );
         }),
-        (e.default = s.default.FeedbackCombFilter);
+        (e.default = s.default.FeedbackCombFilter));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(9), i(2), i(3), i(1);
-      (s.default.MultibandSplit = function () {
+      (i(9), i(2), i(3), i(1));
+      ((s.default.MultibandSplit = function () {
         var t = s.default.defaults(
           arguments,
           ["lowFrequency", "highFrequency"],
           s.default.MultibandSplit,
         );
-        s.default.AudioNode.call(this),
+        (s.default.AudioNode.call(this),
           (this.input = new s.default.Gain()),
           (this.output = new Array(3)),
           (this.low = this.output[0] = new s.default.Filter(0, "lowpass")),
@@ -6229,7 +6244,7 @@
             "low",
             "highFrequency",
             "lowFrequency",
-          ]);
+          ]));
       }),
         s.default.extend(s.default.MultibandSplit, s.default.AudioNode),
         (s.default.MultibandSplit.defaults = {
@@ -6264,20 +6279,20 @@
             this
           );
         }),
-        (e.default = s.default.MultibandSplit);
+        (e.default = s.default.MultibandSplit));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(7);
-      (s.default.Pow = function (t) {
-        s.default.SignalBase.call(this),
+      ((s.default.Pow = function (t) {
+        (s.default.SignalBase.call(this),
           (this._exp = s.default.defaultArg(t, 1)),
           (this._expScaler =
             this.input =
             this.output =
-              new s.default.WaveShaper(this._expFunc(this._exp), 8192));
+              new s.default.WaveShaper(this._expFunc(this._exp), 8192)));
       }),
         s.default.extend(s.default.Pow, s.default.SignalBase),
         Object.defineProperty(s.default.Pow.prototype, "value", {
@@ -6285,7 +6300,7 @@
             return this._exp;
           },
           set: function (t) {
-            (this._exp = t), this._expScaler.setMap(this._expFunc(this._exp));
+            ((this._exp = t), this._expScaler.setMap(this._expFunc(this._exp)));
           },
         }),
         (s.default.Pow.prototype._expFunc = function (t) {
@@ -6301,13 +6316,13 @@
             this
           );
         }),
-        (e.default = s.default.Pow);
+        (e.default = s.default.Pow));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      (s.default.TimeBase = function (t, e) {
+      ((s.default.TimeBase = function (t, e) {
         if (!(this instanceof s.default.TimeBase))
           return new s.default.TimeBase(t, e);
         if (
@@ -6318,10 +6333,10 @@
             parseFloat(this._val) == this._val &&
             "+" !== this._val.charAt(0))
         )
-          (this._val = parseFloat(this._val)),
-            (this._units = this._defaultUnits);
+          ((this._val = parseFloat(this._val)),
+            (this._units = this._defaultUnits));
         else if (t && t.constructor === this.constructor)
-          (this._val = t._val), (this._units = t._units);
+          ((this._val = t._val), (this._units = t._units));
         else if (t instanceof s.default.TimeBase)
           switch (this._defaultUnits) {
             case "s":
@@ -6358,7 +6373,8 @@
             regexp: /^(\d+)t$/i,
             method: function (t) {
               return (
-                (t = parseInt(t)), this._beatsToUnits(8 / (3 * parseInt(t)))
+                (t = parseInt(t)),
+                this._beatsToUnits(8 / (3 * parseInt(t)))
               );
             },
           },
@@ -6481,16 +6497,16 @@
           return 1e3 * this.toSeconds();
         }),
         (s.default.TimeBase.prototype.dispose = function () {
-          (this._val = null), (this._units = null);
+          ((this._val = null), (this._units = null));
         }),
-        (e.default = s.default.TimeBase);
+        (e.default = s.default.TimeBase));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(62), i(46);
-      (s.default.Time = function (t, e) {
+      (i(62), i(46));
+      ((s.default.Time = function (t, e) {
         if (!(this instanceof s.default.Time)) return new s.default.Time(t, e);
         s.default.TimeBase.call(this, t, e);
       }),
@@ -6528,7 +6544,7 @@
         (s.default.Time.prototype.toNotation = function () {
           for (var t = this.toSeconds(), e = ["1m"], i = 1; i < 8; i++) {
             var n = Math.pow(2, i);
-            e.push(n + "n."), e.push(n + "n"), e.push(n + "t");
+            (e.push(n + "n."), e.push(n + "n"), e.push(n + "t"));
           }
           e.push("0");
           var o = e[0],
@@ -6565,14 +6581,14 @@
         (s.default.Time.prototype.toMidi = function () {
           return s.default.Frequency.ftom(this.toFrequency());
         }),
-        (e.default = s.default.Time);
+        (e.default = s.default.Time));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(11), i(6), i(3), i(1);
-      s.default.supported &&
+      (i(11), i(6), i(3), i(1));
+      (s.default.supported &&
         (OscillatorNode.prototype.setPeriodicWave ||
           (OscillatorNode.prototype.setPeriodicWave =
             OscillatorNode.prototype.setWaveTable),
@@ -6585,7 +6601,7 @@
             ["frequency", "type"],
             s.default.OscillatorNode,
           );
-          s.default.AudioNode.call(this, t),
+          (s.default.AudioNode.call(this, t),
             (this.onended = t.onended),
             (this._startTime = -1),
             (this._stopTime = -1),
@@ -6603,7 +6619,7 @@
               units: s.default.Type.Cents,
               value: t.detune,
             })),
-            (this._gain = 1);
+            (this._gain = 1));
         }),
         s.default.extend(s.default.OscillatorNode, s.default.AudioNode),
         (s.default.OscillatorNode.defaults = {
@@ -6642,7 +6658,7 @@
           );
         }),
         (s.default.OscillatorNode.prototype.setPeriodicWave = function (t) {
-          return this._oscillator.setPeriodicWave(t), this;
+          return (this._oscillator.setPeriodicWave(t), this);
         }),
         (s.default.OscillatorNode.prototype.stop = function (t) {
           return (
@@ -6662,7 +6678,7 @@
                 this.context.clearTimeout(this._timeout),
                 (this._timeout = this.context.setTimeout(
                   function () {
-                    this._oscillator.stop(this.now()),
+                    (this._oscillator.stop(this.now()),
                       this.onended(),
                       setTimeout(
                         function () {
@@ -6671,7 +6687,7 @@
                             this._gainNode.disconnect());
                         }.bind(this),
                         100,
-                      );
+                      ));
                   }.bind(this),
                   this._stopTime - this.context.currentTime,
                 )))
@@ -6715,17 +6731,17 @@
               (this.detune = null)),
             this
           );
-        });
+        }));
       e.default = s.default.OscillatorNode;
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(11), i(6), i(57), i(32);
-      (s.default.Player = function (t) {
+      (i(11), i(6), i(57), i(32));
+      ((s.default.Player = function (t) {
         var e;
-        t instanceof s.default.Buffer && t.loaded
+        (t instanceof s.default.Buffer && t.loaded
           ? ((t = t.get()), (e = s.default.Player.defaults))
           : (e = s.default.defaults(
               arguments,
@@ -6746,7 +6762,7 @@
           (this._playbackRate = e.playbackRate),
           (this._activeSources = []),
           (this.fadeIn = e.fadeIn),
-          (this.fadeOut = e.fadeOut);
+          (this.fadeOut = e.fadeOut));
       }),
         s.default.extend(s.default.Player, s.default.Source),
         (s.default.Player.defaults = {
@@ -6764,32 +6780,32 @@
           return this._buffer.load(t, this._onload.bind(this, e));
         }),
         (s.default.Player.prototype._onload = function (t) {
-          (t = s.default.defaultArg(t, s.default.noOp))(this),
-            this.autostart && this.start();
+          ((t = s.default.defaultArg(t, s.default.noOp))(this),
+            this.autostart && this.start());
         }),
         (s.default.Player.prototype._onSourceEnd = function (t) {
           var e = this._activeSources.indexOf(t);
-          this._activeSources.splice(e, 1),
+          (this._activeSources.splice(e, 1),
             0 !== this._activeSources.length ||
               this._synced ||
               this._state.setStateAtTime(
                 s.default.State.Stopped,
                 s.default.now(),
-              );
+              ));
         }),
         (s.default.Player.prototype._start = function (t, e, i) {
-          (e = this._loop
+          ((e = this._loop
             ? s.default.defaultArg(e, this._loopStart)
             : s.default.defaultArg(e, 0)),
             (e = this.toSeconds(e)),
-            this._synced && (e *= this._playbackRate);
+            this._synced && (e *= this._playbackRate));
           var n = s.default.defaultArg(
             i,
             Math.max(this._buffer.duration - e, 0),
           );
-          (n = this.toSeconds(n)),
+          ((n = this.toSeconds(n)),
             (n /= this._playbackRate),
-            (t = this.toSeconds(t));
+            (t = this.toSeconds(t)));
           var o = new s.default.BufferSource({
             buffer: this._buffer,
             loop: this._loop,
@@ -6821,7 +6837,7 @@
           );
         }),
         (s.default.Player.prototype.restart = function (t, e, i) {
-          return this._stop(t), this._start(t, e, i), this;
+          return (this._stop(t), this._start(t, e, i), this);
         }),
         (s.default.Player.prototype.seek = function (t, e) {
           return (
@@ -6832,17 +6848,17 @@
           );
         }),
         (s.default.Player.prototype.setLoopPoints = function (t, e) {
-          return (this.loopStart = t), (this.loopEnd = e), this;
+          return ((this.loopStart = t), (this.loopEnd = e), this);
         }),
         Object.defineProperty(s.default.Player.prototype, "loopStart", {
           get: function () {
             return this._loopStart;
           },
           set: function (t) {
-            (this._loopStart = t),
+            ((this._loopStart = t),
               this._activeSources.forEach(function (e) {
                 e.loopStart = t;
-              });
+              }));
           },
         }),
         Object.defineProperty(s.default.Player.prototype, "loopEnd", {
@@ -6850,10 +6866,10 @@
             return this._loopEnd;
           },
           set: function (t) {
-            (this._loopEnd = t),
+            ((this._loopEnd = t),
               this._activeSources.forEach(function (e) {
                 e.loopEnd = t;
-              });
+              }));
           },
         }),
         Object.defineProperty(s.default.Player.prototype, "buffer", {
@@ -6893,10 +6909,10 @@
             this._playbackRate = t;
             var e = this.now(),
               i = this._state.getNextState(s.default.State.Stopped, e);
-            i && this._state.cancel(i.time),
+            (i && this._state.cancel(i.time),
               this._activeSources.forEach(function (i) {
-                i.cancelStop(), i.playbackRate.setValueAtTime(t, e);
-              });
+                (i.cancelStop(), i.playbackRate.setValueAtTime(t, e));
+              }));
           },
         }),
         Object.defineProperty(s.default.Player.prototype, "reverse", {
@@ -6924,15 +6940,15 @@
             this
           );
         }),
-        (e.default = s.default.Player);
+        (e.default = s.default.Player));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(31), i(41), i(37), i(2), i(9), i(25);
-      (s.default.MonoSynth = function (t) {
-        (t = s.default.defaultArg(t, s.default.MonoSynth.defaults)),
+      (i(31), i(41), i(37), i(2), i(9), i(25));
+      ((s.default.MonoSynth = function (t) {
+        ((t = s.default.defaultArg(t, s.default.MonoSynth.defaults)),
           s.default.Monophonic.call(this, t),
           (this.oscillator = new s.default.OmniOscillator(t.oscillator)),
           (this.frequency = this.oscillator.frequency),
@@ -6952,7 +6968,7 @@
             "filter",
             "filterEnvelope",
             "envelope",
-          ]);
+          ]));
       }),
         s.default.extend(s.default.MonoSynth, s.default.Monophonic),
         (s.default.MonoSynth.defaults = {
@@ -7019,20 +7035,20 @@
             this
           );
         }),
-        (e.default = s.default.MonoSynth);
+        (e.default = s.default.MonoSynth));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(6), i(17), i(5), i(3);
-      (s.default.FatOscillator = function () {
+      (i(6), i(17), i(5), i(3));
+      ((s.default.FatOscillator = function () {
         var t = s.default.defaults(
           arguments,
           ["frequency", "type", "spread"],
           s.default.FatOscillator,
         );
-        s.default.Source.call(this, t),
+        (s.default.Source.call(this, t),
           (this.frequency = new s.default.Signal(
             t.frequency,
             s.default.Type.Frequency,
@@ -7045,7 +7061,7 @@
           (this._partials = t.partials),
           (this._partialCount = t.partialCount),
           (this.count = t.count),
-          this._readOnly(["frequency", "detune"]);
+          this._readOnly(["frequency", "detune"]));
       }),
         s.default.extend(s.default.FatOscillator, s.default.Source),
         (s.default.FatOscillator.defaults = {
@@ -7059,22 +7075,22 @@
           partialCount: 0,
         }),
         (s.default.FatOscillator.prototype._start = function (t) {
-          (t = this.toSeconds(t)),
+          ((t = this.toSeconds(t)),
             this._forEach(function (e) {
               e.start(t);
-            });
+            }));
         }),
         (s.default.FatOscillator.prototype._stop = function (t) {
-          (t = this.toSeconds(t)),
+          ((t = this.toSeconds(t)),
             this._forEach(function (e) {
               e.stop(t);
-            });
+            }));
         }),
         (s.default.FatOscillator.prototype.restart = function (t) {
-          (t = this.toSeconds(t)),
+          ((t = this.toSeconds(t)),
             this._forEach(function (e) {
               e.restart(t);
-            });
+            }));
         }),
         (s.default.FatOscillator.prototype._forEach = function (t) {
           for (var e = 0; e < this._oscillators.length; e++)
@@ -7085,10 +7101,10 @@
             return this._type;
           },
           set: function (t) {
-            (this._type = t),
+            ((this._type = t),
               this._forEach(function (e) {
                 e.type = t;
-              });
+              }));
           },
         }),
         Object.defineProperty(s.default.FatOscillator.prototype, "spread", {
@@ -7111,13 +7127,13 @@
           },
           set: function (t) {
             if (((t = Math.max(t, 1)), this._oscillators.length !== t)) {
-              this._forEach(function (t) {
+              (this._forEach(function (t) {
                 t.dispose();
               }),
-                (this._oscillators = []);
+                (this._oscillators = []));
               for (var e = 0; e < t; e++) {
                 var i = new s.default.Oscillator();
-                this.type === s.default.Oscillator.Type.Custom
+                (this.type === s.default.Oscillator.Type.Custom
                   ? (i.partials = this._partials)
                   : (i.type = this._type),
                   (i.partialCount = this._partialCount),
@@ -7126,13 +7142,13 @@
                   this.frequency.connect(i.frequency),
                   this.detune.connect(i.detune),
                   i.connect(this.output),
-                  (this._oscillators[e] = i);
+                  (this._oscillators[e] = i));
               }
-              (this.spread = this._spread),
+              ((this.spread = this._spread),
                 this.state === s.default.State.Started &&
                   this._forEach(function (t) {
                     t.start();
-                  });
+                  }));
             }
           },
         }),
@@ -7141,10 +7157,10 @@
             return this._phase;
           },
           set: function (t) {
-            (this._phase = t),
+            ((this._phase = t),
               this._forEach(function (e) {
                 e.phase = t;
-              });
+              }));
           },
         }),
         Object.defineProperty(s.default.FatOscillator.prototype, "baseType", {
@@ -7152,10 +7168,10 @@
             return this._oscillators[0].baseType;
           },
           set: function (t) {
-            this._forEach(function (e) {
+            (this._forEach(function (e) {
               e.baseType = t;
             }),
-              (this._type = this._oscillators[0].type);
+              (this._type = this._oscillators[0].type));
           },
         }),
         Object.defineProperty(s.default.FatOscillator.prototype, "partials", {
@@ -7163,11 +7179,11 @@
             return this._oscillators[0].partials;
           },
           set: function (t) {
-            (this._partials = t),
+            ((this._partials = t),
               (this._type = s.default.Oscillator.Type.Custom),
               this._forEach(function (e) {
                 e.partials = t;
-              });
+              }));
           },
         }),
         Object.defineProperty(
@@ -7178,11 +7194,11 @@
               return this._oscillators[0].partialCount;
             },
             set: function (t) {
-              (this._partialCount = t),
+              ((this._partialCount = t),
                 this._forEach(function (e) {
                   e.partialCount = t;
                 }),
-                (this._type = this._oscillators[0].type);
+                (this._type = this._oscillators[0].type));
             },
           },
         ),
@@ -7202,20 +7218,20 @@
             this
           );
         }),
-        (e.default = s.default.FatOscillator);
+        (e.default = s.default.FatOscillator));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(6), i(17), i(5), i(3), i(22);
-      (s.default.AMOscillator = function () {
+      (i(6), i(17), i(5), i(3), i(22));
+      ((s.default.AMOscillator = function () {
         var t = s.default.defaults(
           arguments,
           ["frequency", "type", "modulationType"],
           s.default.AMOscillator,
         );
-        s.default.Source.call(this, t),
+        (s.default.Source.call(this, t),
           (this._carrier = new s.default.Oscillator(t.frequency, t.type)),
           (this.frequency = this._carrier.frequency),
           (this.detune = this._carrier.detune),
@@ -7236,7 +7252,7 @@
           ),
           this._carrier.chain(this._modulationNode, this.output),
           (this.phase = t.phase),
-          this._readOnly(["frequency", "detune", "harmonicity"]);
+          this._readOnly(["frequency", "detune", "harmonicity"]));
       }),
         s.default.extend(s.default.AMOscillator, s.default.Oscillator),
         (s.default.AMOscillator.defaults = {
@@ -7248,13 +7264,13 @@
           harmonicity: 1,
         }),
         (s.default.AMOscillator.prototype._start = function (t) {
-          this._modulator.start(t), this._carrier.start(t);
+          (this._modulator.start(t), this._carrier.start(t));
         }),
         (s.default.AMOscillator.prototype._stop = function (t) {
-          this._modulator.stop(t), this._carrier.stop(t);
+          (this._modulator.stop(t), this._carrier.stop(t));
         }),
         (s.default.AMOscillator.prototype.restart = function (t) {
-          this._modulator.restart(t), this._carrier.restart(t);
+          (this._modulator.restart(t), this._carrier.restart(t));
         }),
         Object.defineProperty(s.default.AMOscillator.prototype, "type", {
           get: function () {
@@ -7301,7 +7317,7 @@
             return this._carrier.phase;
           },
           set: function (t) {
-            (this._carrier.phase = t), (this._modulator.phase = t);
+            ((this._carrier.phase = t), (this._modulator.phase = t));
           },
         }),
         Object.defineProperty(s.default.AMOscillator.prototype, "partials", {
@@ -7331,20 +7347,20 @@
             this
           );
         }),
-        (e.default = s.default.AMOscillator);
+        (e.default = s.default.AMOscillator));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(6), i(50), i(17), i(5);
-      (s.default.PWMOscillator = function () {
+      (i(6), i(50), i(17), i(5));
+      ((s.default.PWMOscillator = function () {
         var t = s.default.defaults(
           arguments,
           ["frequency", "modulationFrequency"],
           s.default.PWMOscillator,
         );
-        s.default.Source.call(this, t),
+        (s.default.Source.call(this, t),
           (this._pulse = new s.default.PulseOscillator(t.modulationFrequency)),
           (this._pulse._sawtooth.type = "sine"),
           (this._modulator = new s.default.Oscillator({
@@ -7358,7 +7374,7 @@
           (this.modulationFrequency = this._pulse.frequency),
           this._modulator.chain(this._scale, this._pulse.width),
           this._pulse.connect(this.output),
-          this._readOnly(["modulationFrequency", "frequency", "detune"]);
+          this._readOnly(["modulationFrequency", "frequency", "detune"]));
       }),
         s.default.extend(s.default.PWMOscillator, s.default.Source),
         (s.default.PWMOscillator.defaults = {
@@ -7368,15 +7384,17 @@
           modulationFrequency: 0.4,
         }),
         (s.default.PWMOscillator.prototype._start = function (t) {
-          (t = this.toSeconds(t)),
+          ((t = this.toSeconds(t)),
             this._modulator.start(t),
-            this._pulse.start(t);
+            this._pulse.start(t));
         }),
         (s.default.PWMOscillator.prototype._stop = function (t) {
-          (t = this.toSeconds(t)), this._modulator.stop(t), this._pulse.stop(t);
+          ((t = this.toSeconds(t)),
+            this._modulator.stop(t),
+            this._pulse.stop(t));
         }),
         (s.default.PWMOscillator.prototype.restart = function (t) {
-          this._modulator.restart(t), this._pulse.restart(t);
+          (this._modulator.restart(t), this._pulse.restart(t));
         }),
         Object.defineProperty(s.default.PWMOscillator.prototype, "type", {
           get: function () {
@@ -7417,20 +7435,20 @@
             this
           );
         }),
-        (e.default = s.default.PWMOscillator);
+        (e.default = s.default.PWMOscillator));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(51), i(4), i(16);
-      (s.default.Part = function () {
+      (i(51), i(4), i(16));
+      ((s.default.Part = function () {
         var t = s.default.defaults(
           arguments,
           ["callback", "events"],
           s.default.Part,
         );
-        s.default.Event.call(this, t), (this._events = []);
+        (s.default.Event.call(this, t), (this._events = []));
         for (var e = 0; e < t.events.length; e++)
           Array.isArray(t.events[e])
             ? this.add(t.events[e][0], t.events[e][1])
@@ -7468,7 +7486,7 @@
           );
         }),
         (s.default.Part.prototype._startNote = function (t, e, i) {
-          (e -= i),
+          ((e -= i),
             this._loop
               ? t.startOffset >= this._loopStart &&
                 t.startOffset < this._loopEnd
@@ -7477,17 +7495,17 @@
                 : t.startOffset < this._loopStart &&
                   t.startOffset >= i &&
                   ((t.loop = !1), t.start(s.default.Ticks(e)))
-              : t.startOffset >= i && t.start(s.default.Ticks(e));
+              : t.startOffset >= i && t.start(s.default.Ticks(e)));
         }),
         Object.defineProperty(s.default.Part.prototype, "startOffset", {
           get: function () {
             return this._startOffset;
           },
           set: function (t) {
-            (this._startOffset = t),
+            ((this._startOffset = t),
               this._forEach(function (t) {
                 t.startOffset += this._startOffset;
-              });
+              }));
           },
         }),
         (s.default.Part.prototype.stop = function (t) {
@@ -7510,7 +7528,7 @@
           ) {
             var o = this._events[n];
             if (Math.abs(t.toTicks() - o.startOffset) < i)
-              return s.default.isDefined(e) && (o.value = e), o;
+              return (s.default.isDefined(e) && (o.value = e), o);
           }
           return s.default.isDefined(e)
             ? (this.add(t, e), this._events[this._events.length - 1])
@@ -7551,7 +7569,8 @@
           );
         }),
         (s.default.Part.prototype.remove = function (t, e) {
-          t.hasOwnProperty("time") && (t = (e = t).time), (t = this.toTicks(t));
+          (t.hasOwnProperty("time") && (t = (e = t).time),
+            (t = this.toTicks(t)));
           for (var i = this._events.length - 1; i >= 0; i--) {
             var n = this._events[i];
             n.startOffset === t &&
@@ -7608,7 +7627,7 @@
             return this._probability;
           },
           set: function (t) {
-            (this._probability = t), this._setAll("probability", t);
+            ((this._probability = t), this._setAll("probability", t));
           },
         }),
         Object.defineProperty(s.default.Part.prototype, "humanize", {
@@ -7616,7 +7635,7 @@
             return this._humanize;
           },
           set: function (t) {
-            (this._humanize = t), this._setAll("humanize", t);
+            ((this._humanize = t), this._setAll("humanize", t));
           },
         }),
         Object.defineProperty(s.default.Part.prototype, "loop", {
@@ -7624,13 +7643,13 @@
             return this._loop;
           },
           set: function (t) {
-            (this._loop = t),
+            ((this._loop = t),
               this._forEach(function (e) {
-                (e._loopStart = this._loopStart),
+                ((e._loopStart = this._loopStart),
                   (e._loopEnd = this._loopEnd),
                   (e.loop = t),
-                  this._testLoopBoundries(e);
-              });
+                  this._testLoopBoundries(e));
+              }));
           },
         }),
         Object.defineProperty(s.default.Part.prototype, "loopEnd", {
@@ -7638,11 +7657,11 @@
             return s.default.Ticks(this._loopEnd).toSeconds();
           },
           set: function (t) {
-            (this._loopEnd = this.toTicks(t)),
+            ((this._loopEnd = this.toTicks(t)),
               this._loop &&
                 this._forEach(function (e) {
-                  (e.loopEnd = t), this._testLoopBoundries(e);
-                });
+                  ((e.loopEnd = t), this._testLoopBoundries(e));
+                }));
           },
         }),
         Object.defineProperty(s.default.Part.prototype, "loopStart", {
@@ -7650,11 +7669,11 @@
             return s.default.Ticks(this._loopStart).toSeconds();
           },
           set: function (t) {
-            (this._loopStart = this.toTicks(t)),
+            ((this._loopStart = this.toTicks(t)),
               this._loop &&
                 this._forEach(function (t) {
-                  (t.loopStart = this.loopStart), this._testLoopBoundries(t);
-                });
+                  ((t.loopStart = this.loopStart), this._testLoopBoundries(t));
+                }));
           },
         }),
         Object.defineProperty(s.default.Part.prototype, "playbackRate", {
@@ -7662,7 +7681,7 @@
             return this._playbackRate;
           },
           set: function (t) {
-            (this._playbackRate = t), this._setAll("playbackRate", t);
+            ((this._playbackRate = t), this._setAll("playbackRate", t));
           },
         }),
         Object.defineProperty(s.default.Part.prototype, "length", {
@@ -7679,20 +7698,20 @@
             this
           );
         }),
-        (e.default = s.default.Part);
+        (e.default = s.default.Part));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(51);
-      (s.default.Loop = function () {
+      ((s.default.Loop = function () {
         var t = s.default.defaults(
           arguments,
           ["callback", "interval"],
           s.default.Loop,
         );
-        s.default.call(this),
+        (s.default.call(this),
           (this._event = new s.default.Event({
             callback: this._tick.bind(this),
             loop: !0,
@@ -7701,7 +7720,7 @@
             probability: t.probability,
           })),
           (this.callback = t.callback),
-          (this.iterations = t.iterations);
+          (this.iterations = t.iterations));
       }),
         s.default.extend(s.default.Loop),
         (s.default.Loop.defaults = {
@@ -7713,13 +7732,13 @@
           mute: !1,
         }),
         (s.default.Loop.prototype.start = function (t) {
-          return this._event.start(t), this;
+          return (this._event.start(t), this);
         }),
         (s.default.Loop.prototype.stop = function (t) {
-          return this._event.stop(t), this;
+          return (this._event.stop(t), this);
         }),
         (s.default.Loop.prototype.cancel = function (t) {
-          return this._event.cancel(t), this;
+          return (this._event.cancel(t), this);
         }),
         (s.default.Loop.prototype._tick = function (t) {
           this.callback(t);
@@ -7783,22 +7802,22 @@
           },
         }),
         (s.default.Loop.prototype.dispose = function () {
-          this._event.dispose(), (this._event = null), (this.callback = null);
+          (this._event.dispose(), (this._event = null), (this.callback = null));
         }),
-        (e.default = s.default.Loop);
+        (e.default = s.default.Loop));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(15), i(33);
-      (s.default.StereoXFeedbackEffect = function () {
+      (i(15), i(33));
+      ((s.default.StereoXFeedbackEffect = function () {
         var t = s.default.defaults(
           arguments,
           ["feedback"],
           s.default.FeedbackEffect,
         );
-        s.default.StereoEffect.call(this, t),
+        (s.default.StereoEffect.call(this, t),
           (this.feedback = new s.default.Signal(
             t.feedback,
             s.default.Type.NormalRange,
@@ -7808,7 +7827,7 @@
           this.effectReturnL.chain(this._feedbackLR, this.effectSendR),
           this.effectReturnR.chain(this._feedbackRL, this.effectSendL),
           this.feedback.fan(this._feedbackLR.gain, this._feedbackRL.gain),
-          this._readOnly(["feedback"]);
+          this._readOnly(["feedback"]));
       }),
         s.default.extend(
           s.default.StereoXFeedbackEffect,
@@ -7827,15 +7846,15 @@
             this
           );
         }),
-        (e.default = s.default.StereoXFeedbackEffect);
+        (e.default = s.default.StereoXFeedbackEffect));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(8), i(53), i(52);
-      (s.default.MidSideEffect = function () {
-        s.default.Effect.apply(this, arguments),
+      (i(8), i(53), i(52));
+      ((s.default.MidSideEffect = function () {
+        (s.default.Effect.apply(this, arguments),
           (this._midSideSplit = new s.default.MidSideSplit()),
           (this._midSideMerge = new s.default.MidSideMerge()),
           (this.midSend = this._midSideSplit.mid),
@@ -7843,7 +7862,7 @@
           (this.midReturn = this._midSideMerge.mid),
           (this.sideReturn = this._midSideMerge.side),
           this.effectSend.connect(this._midSideSplit),
-          this._midSideMerge.connect(this.effectReturn);
+          this._midSideMerge.connect(this.effectReturn));
       }),
         s.default.extend(s.default.MidSideEffect, s.default.Effect),
         (s.default.MidSideEffect.prototype.dispose = function () {
@@ -7860,30 +7879,30 @@
             this
           );
         }),
-        (e.default = s.default.MidSideEffect);
+        (e.default = s.default.MidSideEffect));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(11), i(8);
-      (s.default.Convolver = function () {
+      (i(11), i(8));
+      ((s.default.Convolver = function () {
         var t = s.default.defaults(
           arguments,
           ["url", "onload"],
           s.default.Convolver,
         );
-        s.default.Effect.call(this, t),
+        (s.default.Effect.call(this, t),
           (this._convolver = this.context.createConvolver()),
           (this._buffer = new s.default.Buffer(
             t.url,
             function (e) {
-              (this.buffer = e.get()), t.onload();
+              ((this.buffer = e.get()), t.onload());
             }.bind(this),
           )),
           this._buffer.loaded && (this.buffer = this._buffer),
           (this.normalize = t.normalize),
-          this.connectEffect(this._convolver);
+          this.connectEffect(this._convolver));
       }),
         s.default.extend(s.default.Convolver, s.default.Effect),
         (s.default.Convolver.defaults = {
@@ -7895,13 +7914,13 @@
             return this._buffer.length ? this._buffer : null;
           },
           set: function (t) {
-            this._buffer.set(t),
+            (this._buffer.set(t),
               this._convolver.buffer &&
                 (this.effectSend.disconnect(),
                 this._convolver.disconnect(),
                 (this._convolver = this.context.createConvolver()),
                 this.connectEffect(this._convolver)),
-              (this._convolver.buffer = this._buffer.get());
+              (this._convolver.buffer = this._buffer.get()));
           },
         }),
         Object.defineProperty(s.default.Convolver.prototype, "normalize", {
@@ -7916,7 +7935,7 @@
           return this._buffer.load(
             t,
             function (t) {
-              (this.buffer = t), e && e();
+              ((this.buffer = t), e && e());
             }.bind(this),
           );
         }),
@@ -7930,15 +7949,15 @@
             this
           );
         }),
-        (e.default = s.default.Convolver);
+        (e.default = s.default.Convolver));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(7), i(5), i(13);
-      (s.default.Modulo = function (t) {
-        s.default.SignalBase.call(this),
+      (i(7), i(5), i(13));
+      ((s.default.Modulo = function (t) {
+        (s.default.SignalBase.call(this),
           this.createInsOuts(1, 0),
           (this._shaper = new s.default.WaveShaper(Math.pow(2, 16))),
           (this._multiply = new s.default.Multiply()),
@@ -7949,7 +7968,7 @@
           this._modSignal.connect(this._multiply, 0, 0),
           this._shaper.connect(this._multiply, 0, 1),
           this._multiply.connect(this._subtract, 0, 1),
-          this._setWaveShaper(t);
+          this._setWaveShaper(t));
       }),
         s.default.extend(s.default.Modulo, s.default.SignalBase),
         (s.default.Modulo.prototype._setWaveShaper = function (t) {
@@ -7962,7 +7981,7 @@
             return this._modSignal.value;
           },
           set: function (t) {
-            (this._modSignal.value = t), this._setWaveShaper(t);
+            ((this._modSignal.value = t), this._setWaveShaper(t));
           },
         }),
         (s.default.Modulo.prototype.dispose = function () {
@@ -7979,23 +7998,23 @@
             this
           );
         }),
-        (e.default = s.default.Modulo);
+        (e.default = s.default.Modulo));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(20), i(92);
-      (s.default.OfflineContext = function (t, e, i) {
+      (i(20), i(92));
+      ((s.default.OfflineContext = function (t, e, i) {
         var n = new OfflineAudioContext(t, e * i, i);
-        s.default.Context.call(this, {
+        (s.default.Context.call(this, {
           context: n,
           clockSource: "offline",
           lookAhead: 0,
           updateInterval: 128 / i,
         }),
           (this._duration = e),
-          (this._currentTime = 0);
+          (this._currentTime = 0));
       }),
         s.default.extend(s.default.OfflineContext, s.default.Context),
         (s.default.OfflineContext.prototype.now = function () {
@@ -8005,21 +8024,21 @@
           return Promise.resolve();
         }),
         (s.default.OfflineContext.prototype.render = function () {
-          for (; this._duration - this._currentTime >= 0; )
-            this.emit("tick"), (this._currentTime += 0.005);
+          for (; this._duration - this._currentTime >= 0;)
+            (this.emit("tick"), (this._currentTime += 0.005));
           return this._context.startRendering();
         }),
         (s.default.OfflineContext.prototype.close = function () {
-          return (this._context = null), Promise.resolve();
+          return ((this._context = null), Promise.resolve());
         }),
-        (e.default = s.default.OfflineContext);
+        (e.default = s.default.OfflineContext));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(16), i(11), i(76), i(40);
-      (s.default.Offline = function (t, e) {
+      (i(16), i(11), i(76), i(40));
+      ((s.default.Offline = function (t, e) {
         var i = s.default.context.sampleRate,
           n = s.default.context,
           o = new s.default.OfflineContext(2, e, i);
@@ -8039,14 +8058,14 @@
           })
         );
       }),
-        (e.default = s.default.Offline);
+        (e.default = s.default.Offline));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(11);
-      (s.default.Buffers = function (t) {
+      ((s.default.Buffers = function (t) {
         var e = Array.prototype.slice.call(arguments);
         e.shift();
         var i = s.default.defaults(e, ["onload", "baseUrl"], s.default.Buffers);
@@ -8055,8 +8074,8 @@
         (this.baseUrl = i.baseUrl),
         (this._loadingCount = 0),
         t))
-          this._loadingCount++,
-            this.add(n, t[n], this._bufferLoaded.bind(this, i.onload));
+          (this._loadingCount++,
+            this.add(n, t[n], this._bufferLoaded.bind(this, i.onload)));
       }),
         s.default.extend(s.default.Buffers),
         (s.default.Buffers.defaults = { onload: s.default.noOp, baseUrl: "" }),
@@ -8068,7 +8087,7 @@
           throw new Error("Tone.Buffers: no buffer named " + t);
         }),
         (s.default.Buffers.prototype._bufferLoaded = function (t) {
-          this._loadingCount--, 0 === this._loadingCount && t && t(this);
+          (this._loadingCount--, 0 === this._loadingCount && t && t(this));
         }),
         Object.defineProperty(s.default.Buffers.prototype, "loaded", {
           get: function () {
@@ -8098,27 +8117,27 @@
         (s.default.Buffers.prototype.dispose = function () {
           for (var t in (s.default.prototype.dispose.call(this), this._buffers))
             this._buffers[t].dispose();
-          return (this._buffers = null), this;
+          return ((this._buffers = null), this);
         }),
-        (e.default = s.default.Buffers);
+        (e.default = s.default.Buffers));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      (s.default.CtrlPattern = function () {
+      ((s.default.CtrlPattern = function () {
         var t = s.default.defaults(
           arguments,
           ["values", "type"],
           s.default.CtrlPattern,
         );
-        s.default.call(this),
+        (s.default.call(this),
           (this.values = t.values),
           (this.index = 0),
           (this._type = null),
           (this._shuffled = null),
           (this._direction = null),
-          (this.type = t.type);
+          (this.type = t.type));
       }),
         s.default.extend(s.default.CtrlPattern),
         (s.default.CtrlPattern.Type = {
@@ -8157,7 +8176,7 @@
             return this._type;
           },
           set: function (t) {
-            (this._type = t),
+            ((this._type = t),
               (this._shuffled = null),
               this._type === s.default.CtrlPattern.Type.Up ||
               this._type === s.default.CtrlPattern.Type.UpDown ||
@@ -8177,7 +8196,9 @@
               this._type === s.default.CtrlPattern.Type.RandomOnce
                 ? this._shuffleValues()
                 : this._type === s.default.CtrlPattern.Type.Random &&
-                  (this.index = Math.floor(Math.random() * this.values.length));
+                  (this.index = Math.floor(
+                    Math.random() * this.values.length,
+                  )));
           },
         }),
         (s.default.CtrlPattern.prototype.next = function () {
@@ -8247,23 +8268,23 @@
           var t = [];
           this._shuffled = [];
           for (var e = 0; e < this.values.length; e++) t[e] = e;
-          for (; t.length > 0; ) {
+          for (; t.length > 0;) {
             var i = t.splice(Math.floor(t.length * Math.random()), 1);
             this._shuffled.push(i[0]);
           }
         }),
         (s.default.CtrlPattern.prototype.dispose = function () {
-          (this._shuffled = null), (this.values = null);
+          ((this._shuffled = null), (this.values = null));
         }),
-        (e.default = s.default.CtrlPattern);
+        (e.default = s.default.CtrlPattern));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(56), i(55);
-      (s.default.TransportRepeatEvent = function (t, e) {
-        s.default.TransportEvent.call(this, t, e),
+      (i(56), i(55));
+      ((s.default.TransportRepeatEvent = function (t, e) {
+        (s.default.TransportEvent.call(this, t, e),
           (e = s.default.defaultArg(
             e,
             s.default.TransportRepeatEvent.defaults,
@@ -8275,7 +8296,7 @@
           (this._nextTick = this.time),
           (this._boundRestart = this._restart.bind(this)),
           this.Transport.on("start loopStart", this._boundRestart),
-          this._restart();
+          this._restart());
       }),
         s.default.extend(
           s.default.TransportRepeatEvent,
@@ -8286,8 +8307,8 @@
           interval: 1,
         }),
         (s.default.TransportRepeatEvent.prototype.invoke = function (t) {
-          this._createEvents(t),
-            s.default.TransportEvent.prototype.invoke.call(this, t);
+          (this._createEvents(t),
+            s.default.TransportEvent.prototype.invoke.call(this, t));
         }),
         (s.default.TransportRepeatEvent.prototype._createEvents = function (t) {
           var e = this.Transport.getTicksAtTime(t);
@@ -8302,11 +8323,11 @@
             )));
         }),
         (s.default.TransportRepeatEvent.prototype._restart = function (t) {
-          this.Transport.clear(this._currentId),
+          (this.Transport.clear(this._currentId),
             this.Transport.clear(this._nextId),
-            (this._nextTick = this.time);
+            (this._nextTick = this.time));
           var e = this.Transport.getTicksAtTime(t);
-          e > this.time &&
+          (e > this.time &&
             (this._nextTick =
               this.time +
               Math.ceil((e - this.time) / this._interval) * this._interval),
@@ -8318,7 +8339,7 @@
             (this._nextId = this.Transport.scheduleOnce(
               this.invoke.bind(this),
               s.default.Ticks(this._nextTick),
-            ));
+            )));
         }),
         (s.default.TransportRepeatEvent.prototype.dispose = function () {
           return (
@@ -8332,15 +8353,15 @@
             this
           );
         }),
-        (e.default = s.default.TransportRepeatEvent);
+        (e.default = s.default.TransportRepeatEvent));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(4);
-      (s.default.IntervalTimeline = function () {
-        s.default.call(this), (this._root = null), (this._length = 0);
+      ((s.default.IntervalTimeline = function () {
+        (s.default.call(this), (this._root = null), (this._length = 0));
       }),
         s.default.extend(s.default.IntervalTimeline),
         (s.default.IntervalTimeline.prototype.add = function (t) {
@@ -8354,9 +8375,11 @@
             null === this._root ? (this._root = e) : this._root.insert(e),
               this._length++;
             null !== e;
-
           )
-            e.updateHeight(), e.updateMax(), this._rebalance(e), (e = e.parent);
+            (e.updateHeight(),
+              e.updateMax(),
+              this._rebalance(e),
+              (e = e.parent));
           return this;
         }),
         (s.default.IntervalTimeline.prototype.remove = function (t) {
@@ -8366,7 +8389,7 @@
             for (var i = 0; i < e.length; i++) {
               var s = e[i];
               if (s.event === t) {
-                this._removeNode(s), this._length--;
+                (this._removeNode(s), this._length--);
                 break;
               }
             }
@@ -8390,7 +8413,7 @@
           );
         }),
         (s.default.IntervalTimeline.prototype._setRoot = function (t) {
-          (this._root = t), null !== this._root && (this._root.parent = null);
+          ((this._root = t), null !== this._root && (this._root.parent = null));
         }),
         (s.default.IntervalTimeline.prototype._replaceNodeInParent = function (
           t,
@@ -8410,29 +8433,29 @@
             var e, i;
             if (t.getBalance() > 0)
               if (null === t.left.right)
-                ((e = t.left).right = t.right), (i = e);
+                (((e = t.left).right = t.right), (i = e));
               else {
-                for (e = t.left.right; null !== e.right; ) e = e.right;
-                (e.parent.right = e.left),
+                for (e = t.left.right; null !== e.right;) e = e.right;
+                ((e.parent.right = e.left),
                   (i = e.parent),
                   (e.left = t.left),
-                  (e.right = t.right);
+                  (e.right = t.right));
               }
             else if (null === t.right.left)
-              ((e = t.right).left = t.left), (i = e);
+              (((e = t.right).left = t.left), (i = e));
             else {
-              for (e = t.right.left; null !== e.left; ) e = e.left;
-              (e.parent.left = e.right),
+              for (e = t.right.left; null !== e.left;) e = e.left;
+              ((e.parent.left = e.right),
                 (i = e.parent),
                 (e.left = t.left),
-                (e.right = t.right);
+                (e.right = t.right));
             }
-            null !== t.parent
+            (null !== t.parent
               ? t.isLeftChild()
                 ? (t.parent.left = e)
                 : (t.parent.right = e)
               : this._setRoot(e),
-              this._rebalance(i);
+              this._rebalance(i));
           }
           t.dispose();
         }),
@@ -8440,17 +8463,17 @@
           var e = t.parent,
             i = t.isLeftChild(),
             s = t.right;
-          (t.right = s.left),
+          ((t.right = s.left),
             (s.left = t),
-            null !== e ? (i ? (e.left = s) : (e.right = s)) : this._setRoot(s);
+            null !== e ? (i ? (e.left = s) : (e.right = s)) : this._setRoot(s));
         }),
         (s.default.IntervalTimeline.prototype._rotateRight = function (t) {
           var e = t.parent,
             i = t.isLeftChild(),
             s = t.left;
-          (t.left = s.right),
+          ((t.left = s.right),
             (s.right = t),
-            null !== e ? (i ? (e.left = s) : (e.right = s)) : this._setRoot(s);
+            null !== e ? (i ? (e.left = s) : (e.right = s)) : this._setRoot(s));
         }),
         (s.default.IntervalTimeline.prototype._rebalance = function (t) {
           var e = t.getBalance();
@@ -8515,19 +8538,19 @@
               t.push(e);
             });
           for (var e = 0; e < t.length; e++) t[e].dispose();
-          return (t = null), (this._root = null), this;
-        });
+          return ((t = null), (this._root = null), this);
+        }));
       var n = function (t, e, i) {
-        (this.event = i),
+        ((this.event = i),
           (this.low = t),
           (this.high = e),
           (this.max = this.high),
           (this._left = null),
           (this._right = null),
           (this.parent = null),
-          (this.height = 0);
+          (this.height = 0));
       };
-      (n.prototype.insert = function (t) {
+      ((n.prototype.insert = function (t) {
         t.low <= this.low
           ? null === this.left
             ? (this.left = t)
@@ -8543,14 +8566,14 @@
             this.low > t || (null !== this.right && this.right.search(t, e)));
         }),
         (n.prototype.searchAfter = function (t, e) {
-          this.low >= t &&
+          (this.low >= t &&
             (e.push(this), null !== this.left && this.left.searchAfter(t, e)),
-            null !== this.right && this.right.searchAfter(t, e);
+            null !== this.right && this.right.searchAfter(t, e));
         }),
         (n.prototype.traverse = function (t) {
-          t(this),
+          (t(this),
             null !== this.left && this.left.traverse(t),
-            null !== this.right && this.right.traverse(t);
+            null !== this.right && this.right.traverse(t));
         }),
         (n.prototype.updateHeight = function () {
           null !== this.left && null !== this.right
@@ -8562,11 +8585,11 @@
                 : (this.height = 0);
         }),
         (n.prototype.updateMax = function () {
-          (this.max = this.high),
+          ((this.max = this.high),
             null !== this.left &&
               (this.max = Math.max(this.max, this.left.max)),
             null !== this.right &&
-              (this.max = Math.max(this.max, this.right.max));
+              (this.max = Math.max(this.max, this.right.max)));
         }),
         (n.prototype.getBalance = function () {
           var t = 0;
@@ -8587,10 +8610,10 @@
             return this._left;
           },
           set: function (t) {
-            (this._left = t),
+            ((this._left = t),
               null !== t && (t.parent = this),
               this.updateHeight(),
-              this.updateMax();
+              this.updateMax());
           },
         }),
         Object.defineProperty(n.prototype, "right", {
@@ -8598,19 +8621,19 @@
             return this._right;
           },
           set: function (t) {
-            (this._right = t),
+            ((this._right = t),
               null !== t && (t.parent = this),
               this.updateHeight(),
-              this.updateMax();
+              this.updateMax());
           },
         }),
         (n.prototype.dispose = function () {
-          (this.parent = null),
+          ((this.parent = null),
             (this._left = null),
             (this._right = null),
-            (this.event = null);
+            (this.event = null));
         }),
-        (e.default = s.default.IntervalTimeline);
+        (e.default = s.default.IntervalTimeline));
     },
     function (t, e, i) {
       "use strict";
@@ -8619,15 +8642,15 @@
       i(2);
       function n(t) {
         return function (e, i) {
-          (i = this.toSeconds(i)), t.apply(this, arguments);
+          ((i = this.toSeconds(i)), t.apply(this, arguments));
           var s = this._events.get(i),
             n = this._events.previousEvent(s),
             o = this._getTicksUntilEvent(n, i);
-          return (s.ticks = Math.max(o, 0)), this;
+          return ((s.ticks = Math.max(o, 0)), this);
         };
       }
-      (s.default.TickSignal = function (t) {
-        (t = s.default.defaultArg(t, 1)),
+      ((s.default.TickSignal = function (t) {
+        ((t = s.default.defaultArg(t, 1)),
           s.default.Signal.call(this, {
             units: s.default.Type.Ticks,
             value: t,
@@ -8638,7 +8661,7 @@
             type: s.default.Param.AutomationType.SetValue,
             time: 0,
             value: t,
-          });
+          }));
       }),
         s.default.extend(s.default.TickSignal, s.default.Signal),
         (s.default.TickSignal.prototype.setValueAtTime = n(
@@ -8648,9 +8671,9 @@
           s.default.Signal.prototype.linearRampToValueAtTime,
         )),
         (s.default.TickSignal.prototype.setTargetAtTime = function (t, e, i) {
-          (e = this.toSeconds(e)),
+          ((e = this.toSeconds(e)),
             this.setRampPoint(e),
-            (t = this._fromUnits(t));
+            (t = this._fromUnits(t)));
           for (
             var s = this._events.get(e),
               n = Math.round(Math.max(1 / i, 1)),
@@ -8666,7 +8689,7 @@
         }),
         (s.default.TickSignal.prototype.exponentialRampToValueAtTime =
           function (t, e) {
-            (e = this.toSeconds(e)), (t = this._fromUnits(t));
+            ((e = this.toSeconds(e)), (t = this._fromUnits(t)));
             for (
               var i = this._events.get(e),
                 s = Math.round(Math.max(10 * (e - i.time), 1)),
@@ -8736,25 +8759,25 @@
           );
         }),
         (s.default.TickSignal.prototype.timeToTicks = function (t, e) {
-          (e = this.toSeconds(e)), (t = this.toSeconds(t));
+          ((e = this.toSeconds(e)), (t = this.toSeconds(t)));
           var i = this.getTicksAtTime(e),
             n = this.getTicksAtTime(e + t);
           return new s.default.Ticks(n - i);
         }),
-        (e.default = s.default.TickSignal);
+        (e.default = s.default.TickSignal));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(57), i(34), i(35), i(20);
-      (s.default.Clock = function () {
+      (i(57), i(34), i(35), i(20));
+      ((s.default.Clock = function () {
         var t = s.default.defaults(
           arguments,
           ["callback", "frequency"],
           s.default.Clock,
         );
-        s.default.Emitter.call(this),
+        (s.default.Emitter.call(this),
           (this.callback = t.callback),
           (this._nextTick = 0),
           (this._tickSource = new s.default.TickSource(t.frequency)),
@@ -8764,7 +8787,7 @@
           (this._state = new s.default.TimelineState(s.default.State.Stopped)),
           this._state.setStateAtTime(s.default.State.Stopped, 0),
           (this._boundLoop = this._loop.bind(this)),
-          this.context.on("tick", this._boundLoop);
+          this.context.on("tick", this._boundLoop));
       }),
         s.default.extend(s.default.Clock, s.default.Emitter),
         (s.default.Clock.defaults = { callback: s.default.noOp, frequency: 1 }),
@@ -8824,7 +8847,7 @@
           return this._tickSource.getSecondsAtTime(t);
         }),
         (s.default.Clock.prototype.setTicksAtTime = function (t, e) {
-          return this._tickSource.setTicksAtTime(t, e), this;
+          return (this._tickSource.setTicksAtTime(t, e), this);
         }),
         (s.default.Clock.prototype.getTicksAtTime = function (t) {
           return this._tickSource.getTicksAtTime(t);
@@ -8837,7 +8860,7 @@
         (s.default.Clock.prototype._loop = function () {
           var t = this._lastUpdate,
             e = this.now();
-          (this._lastUpdate = e),
+          ((this._lastUpdate = e),
             t !== e &&
               (this._state.forEachBetween(
                 t,
@@ -8862,13 +8885,13 @@
                 function (t, e) {
                   this.callback(t, e);
                 }.bind(this),
-              ));
+              )));
         }),
         (s.default.Clock.prototype.getStateAtTime = function (t) {
-          return (t = this.toSeconds(t)), this._state.getValueAtTime(t);
+          return ((t = this.toSeconds(t)), this._state.getValueAtTime(t));
         }),
         (s.default.Clock.prototype.dispose = function () {
-          s.default.Emitter.prototype.dispose.call(this),
+          (s.default.Emitter.prototype.dispose.call(this),
             this.context.off("tick", this._boundLoop),
             this._writable("frequency"),
             this._tickSource.dispose(),
@@ -8878,23 +8901,23 @@
             (this._nextTick = 1 / 0),
             (this.callback = null),
             this._state.dispose(),
-            (this._state = null);
+            (this._state = null));
         }),
-        (e.default = s.default.Clock);
+        (e.default = s.default.Clock));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(2), i(5), i(7);
-      (s.default.GreaterThanZero = function () {
-        s.default.SignalBase.call(this),
+      (i(2), i(5), i(7));
+      ((s.default.GreaterThanZero = function () {
+        (s.default.SignalBase.call(this),
           (this._thresh = this.output =
             new s.default.WaveShaper(function (t) {
               return t <= 0 ? 0 : 1;
             }, 127)),
           (this._scale = this.input = new s.default.Multiply(1e4)),
-          this._scale.connect(this._thresh);
+          this._scale.connect(this._thresh));
       }),
         s.default.extend(s.default.GreaterThanZero, s.default.SignalBase),
         (s.default.GreaterThanZero.prototype.dispose = function () {
@@ -8907,20 +8930,20 @@
             this
           );
         }),
-        (e.default = s.default.GreaterThanZero);
+        (e.default = s.default.GreaterThanZero));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(84), i(13), i(2);
-      (s.default.GreaterThan = function (t) {
-        s.default.Signal.call(this),
+      (i(84), i(13), i(2));
+      ((s.default.GreaterThan = function (t) {
+        (s.default.Signal.call(this),
           this.createInsOuts(2, 0),
           (this._param = this.input[0] = new s.default.Subtract(t)),
           (this.input[1] = this._param.input[1]),
           (this._gtz = this.output = new s.default.GreaterThanZero()),
-          this._param.connect(this._gtz);
+          this._param.connect(this._gtz));
       }),
         s.default.extend(s.default.GreaterThan, s.default.Signal),
         (s.default.GreaterThan.prototype.dispose = function () {
@@ -8931,24 +8954,24 @@
             this
           );
         }),
-        (e.default = s.default.GreaterThan);
+        (e.default = s.default.GreaterThan));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(47), i(26);
-      (s.default.ScaledEnvelope = function () {
+      (i(47), i(26));
+      ((s.default.ScaledEnvelope = function () {
         var t = s.default.defaults(
           arguments,
           ["attack", "decay", "sustain", "release"],
           s.default.Envelope,
         );
-        s.default.Envelope.call(this, t),
+        (s.default.Envelope.call(this, t),
           (t = s.default.defaultArg(t, s.default.ScaledEnvelope.defaults)),
           (this._exp = this.output = new s.default.Pow(t.exponent)),
           (this._scale = this.output = new s.default.Scale(t.min, t.max)),
-          this._sig.chain(this._exp, this._scale);
+          this._sig.chain(this._exp, this._scale));
       }),
         s.default.extend(s.default.ScaledEnvelope, s.default.Envelope),
         (s.default.ScaledEnvelope.defaults = { min: 0, max: 1, exponent: 1 }),
@@ -8986,21 +9009,21 @@
             this
           );
         }),
-        (e.default = s.default.ScaledEnvelope);
+        (e.default = s.default.ScaledEnvelope));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(7), i(30);
-      (s.default.Abs = function () {
-        s.default.SignalBase.call(this),
+      (i(7), i(30));
+      ((s.default.Abs = function () {
+        (s.default.SignalBase.call(this),
           (this._abs =
             this.input =
             this.output =
               new s.default.WaveShaper(function (t) {
                 return Math.abs(t) < 0.001 ? 0 : Math.abs(t);
-              }, 1024));
+              }, 1024)));
       }),
         s.default.extend(s.default.Abs, s.default.SignalBase),
         (s.default.Abs.prototype.dispose = function () {
@@ -9011,20 +9034,20 @@
             this
           );
         }),
-        (e.default = s.default.Abs);
+        (e.default = s.default.Abs));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(3), i(1);
-      (s.default.Solo = function () {
+      (i(3), i(1));
+      ((s.default.Solo = function () {
         var t = s.default.defaults(arguments, ["solo"], s.default.Solo);
-        s.default.AudioNode.call(this),
+        (s.default.AudioNode.call(this),
           (this.input = this.output = new s.default.Gain()),
           (this._soloBind = this._soloed.bind(this)),
           this.context.on("solo", this._soloBind),
-          (this.solo = t.solo);
+          (this.solo = t.solo));
       }),
         s.default.extend(s.default.Solo, s.default.AudioNode),
         (s.default.Solo.defaults = { solo: !1 }),
@@ -9033,8 +9056,8 @@
             return this._isSoloed();
           },
           set: function (t) {
-            t ? this._addSolo() : this._removeSolo(),
-              this.context.emit("solo", this);
+            (t ? this._addSolo() : this._removeSolo(),
+              this.context.emit("solo", this));
           },
         }),
         Object.defineProperty(s.default.Solo.prototype, "muted", {
@@ -9043,9 +9066,9 @@
           },
         }),
         (s.default.Solo.prototype._addSolo = function () {
-          s.default.isArray(this.context._currentSolo) ||
+          (s.default.isArray(this.context._currentSolo) ||
             (this.context._currentSolo = []),
-            this._isSoloed() || this.context._currentSolo.push(this);
+            this._isSoloed() || this.context._currentSolo.push(this));
         }),
         (s.default.Solo.prototype._removeSolo = function () {
           if (this._isSoloed()) {
@@ -9082,15 +9105,15 @@
             this
           );
         }),
-        (e.default = s.default.Solo);
+        (e.default = s.default.Solo));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(7);
-      (s.default.EqualPowerGain = function () {
-        s.default.SignalBase.call(this),
+      ((s.default.EqualPowerGain = function () {
+        (s.default.SignalBase.call(this),
           (this._eqPower =
             this.input =
             this.output =
@@ -9099,7 +9122,7 @@
                   return Math.abs(t) < 0.001 ? 0 : s.default.equalPowerScale(t);
                 }.bind(this),
                 4096,
-              ));
+              )));
       }),
         s.default.extend(s.default.EqualPowerGain, s.default.SignalBase),
         (s.default.EqualPowerGain.prototype.dispose = function () {
@@ -9110,19 +9133,19 @@
             this
           );
         }),
-        (e.default = s.default.EqualPowerGain);
+        (e.default = s.default.EqualPowerGain));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(5), i(2);
-      (s.default.Negate = function () {
-        s.default.SignalBase.call(this),
+      (i(5), i(2));
+      ((s.default.Negate = function () {
+        (s.default.SignalBase.call(this),
           (this._multiply =
             this.input =
             this.output =
-              new s.default.Multiply(-1));
+              new s.default.Multiply(-1)));
       }),
         s.default.extend(s.default.Negate, s.default.SignalBase),
         (s.default.Negate.prototype.dispose = function () {
@@ -9133,27 +9156,27 @@
             this
           );
         }),
-        (e.default = s.default.Negate);
+        (e.default = s.default.Negate));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(48), i(27), i(1);
-      (s.default.PanVol = function () {
+      (i(48), i(27), i(1));
+      ((s.default.PanVol = function () {
         var t = s.default.defaults(
           arguments,
           ["pan", "volume"],
           s.default.PanVol,
         );
-        s.default.AudioNode.call(this),
+        (s.default.AudioNode.call(this),
           (this._panner = this.input = new s.default.Panner(t.pan)),
           (this.pan = this._panner.pan),
           (this._volume = this.output = new s.default.Volume(t.volume)),
           (this.volume = this._volume.volume),
           this._panner.connect(this._volume),
           (this.mute = t.mute),
-          this._readOnly(["pan", "volume"]);
+          this._readOnly(["pan", "volume"]));
       }),
         s.default.extend(s.default.PanVol, s.default.AudioNode),
         (s.default.PanVol.defaults = { pan: 0, volume: 0, mute: !1 }),
@@ -9178,7 +9201,7 @@
             this
           );
         }),
-        (e.default = s.default.PanVol);
+        (e.default = s.default.PanVol));
     },
     function (t, e, i) {
       "use strict";
@@ -9195,10 +9218,10 @@
           (OfflineAudioContext.prototype.startRendering = function () {
             return new Promise(
               function (t) {
-                (this.oncomplete = function (e) {
+                ((this.oncomplete = function (e) {
                   t(e.renderedBuffer);
                 }),
-                  this._native_startRendering();
+                  this._native_startRendering());
               }.bind(this),
             );
           }));
@@ -9213,7 +9236,7 @@
       i.r(e);
       var s = i(0);
       i(46);
-      (s.default.Midi = function (t, e) {
+      ((s.default.Midi = function (t, e) {
         if (!(this instanceof s.default.Midi)) return new s.default.Midi(t, e);
         s.default.Frequency.call(this, t, e);
       }),
@@ -9248,23 +9271,23 @@
         (s.default.Midi.prototype.transpose = function (t) {
           return new this.constructor(this.toMidi() + t);
         }),
-        (e.default = s.default.Midi);
+        (e.default = s.default.Midi));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(27), i(1);
-      (s.default.UserMedia = function () {
+      (i(27), i(1));
+      ((s.default.UserMedia = function () {
         var t = s.default.defaults(arguments, ["volume"], s.default.UserMedia);
-        s.default.AudioNode.call(this),
+        (s.default.AudioNode.call(this),
           (this._mediaStream = null),
           (this._stream = null),
           (this._device = null),
           (this._volume = this.output = new s.default.Volume(t.volume)),
           (this.volume = this._volume.volume),
           this._readOnly("volume"),
-          (this.mute = t.mute);
+          (this.mute = t.mute));
       }),
         s.default.extend(s.default.UserMedia, s.default.AudioNode),
         (s.default.UserMedia.defaults = { volume: 0, mute: !1 }),
@@ -9383,14 +9406,14 @@
             );
           },
         }),
-        (e.default = s.default.UserMedia);
+        (e.default = s.default.UserMedia));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(65), i(27), i(1);
-      (s.default.Players = function (t) {
+      (i(65), i(27), i(1));
+      ((s.default.Players = function (t) {
         var e = Array.prototype.slice.call(arguments);
         e.shift();
         var i = s.default.defaults(e, ["onload"], s.default.Players);
@@ -9406,8 +9429,8 @@
         (this._fadeIn = i.fadeIn),
         (this._fadeOut = i.fadeOut),
         t))
-          this._loadingCount++,
-            this.add(n, t[n], this._bufferLoaded.bind(this, i.onload));
+          (this._loadingCount++,
+            this.add(n, t[n], this._bufferLoaded.bind(this, i.onload)));
       }),
         s.default.extend(s.default.Players, s.default.AudioNode),
         (s.default.Players.defaults = {
@@ -9418,7 +9441,7 @@
           fadeOut: 0,
         }),
         (s.default.Players.prototype._bufferLoaded = function (t) {
-          this._loadingCount--, 0 === this._loadingCount && t && t(this);
+          (this._loadingCount--, 0 === this._loadingCount && t && t(this));
         }),
         Object.defineProperty(s.default.Players.prototype, "mute", {
           get: function () {
@@ -9433,10 +9456,10 @@
             return this._fadeIn;
           },
           set: function (t) {
-            (this._fadeIn = t),
+            ((this._fadeIn = t),
               this._forEach(function (e) {
                 e.fadeIn = t;
-              });
+              }));
           },
         }),
         Object.defineProperty(s.default.Players.prototype, "fadeOut", {
@@ -9444,10 +9467,10 @@
             return this._fadeOut;
           },
           set: function (t) {
-            (this._fadeOut = t),
+            ((this._fadeOut = t),
               this._forEach(function (e) {
                 e.fadeOut = t;
-              });
+              }));
           },
         }),
         Object.defineProperty(s.default.Players.prototype, "state", {
@@ -9513,20 +9536,20 @@
             this
           );
         }),
-        (e.default = s.default.Players);
+        (e.default = s.default.Players));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(6), i(11), i(32);
-      (s.default.GrainPlayer = function () {
+      (i(6), i(11), i(32));
+      ((s.default.GrainPlayer = function () {
         var t = s.default.defaults(
           arguments,
           ["url", "onload"],
           s.default.GrainPlayer,
         );
-        s.default.Source.call(this, t),
+        (s.default.Source.call(this, t),
           (this.buffer = new s.default.Buffer(
             t.url,
             t.onload.bind(void 0, this),
@@ -9549,7 +9572,7 @@
           (this.loopStart = t.loopStart),
           (this.loopEnd = t.loopEnd),
           (this.reverse = t.reverse),
-          this._clock.on("stop", this._onstop.bind(this));
+          this._clock.on("stop", this._onstop.bind(this)));
       }),
         s.default.extend(s.default.GrainPlayer, s.default.Source),
         (s.default.GrainPlayer.defaults = {
@@ -9564,19 +9587,19 @@
           reverse: !1,
         }),
         (s.default.GrainPlayer.prototype._start = function (t, e, i) {
-          (e = s.default.defaultArg(e, 0)),
+          ((e = s.default.defaultArg(e, 0)),
             (e = this.toSeconds(e)),
             (t = this.toSeconds(t)),
             (this._offset = e),
             this._clock.start(t),
-            i && this.stop(t + this.toSeconds(i));
+            i && this.stop(t + this.toSeconds(i)));
         }),
         (s.default.GrainPlayer.prototype._stop = function (t) {
           this._clock.stop(t);
         }),
         (s.default.GrainPlayer.prototype._onstop = function (t) {
           this._activeSources.forEach(function (e) {
-            (e.fadeOut = 0), e.stop(t);
+            ((e.fadeOut = 0), e.stop(t));
           });
         }),
         (s.default.GrainPlayer.prototype._tick = function (t) {
@@ -9594,14 +9617,14 @@
                   this.detune / 100,
                 ),
               }).connect(this.output);
-            i.start(t, this._offset),
+            (i.start(t, this._offset),
               (this._offset += this.grainSize),
               i.stop(t + this.grainSize / this.playbackRate),
               this._activeSources.push(i),
               (i.onended = function () {
                 var t = this._activeSources.indexOf(i);
                 -1 !== t && this._activeSources.splice(t, 1);
-              }.bind(this));
+              }.bind(this)));
           }
         }),
         Object.defineProperty(s.default.GrainPlayer.prototype, "playbackRate", {
@@ -9609,7 +9632,7 @@
             return this._playbackRate;
           },
           set: function (t) {
-            (this._playbackRate = t), (this.grainSize = this._grainSize);
+            ((this._playbackRate = t), (this.grainSize = this._grainSize));
           },
         }),
         Object.defineProperty(s.default.GrainPlayer.prototype, "loopStart", {
@@ -9641,9 +9664,9 @@
             return this._grainSize;
           },
           set: function (t) {
-            (this._grainSize = this.toSeconds(t)),
+            ((this._grainSize = this.toSeconds(t)),
               (this._clock.frequency.value =
-                this._playbackRate / this._grainSize);
+                this._playbackRate / this._grainSize));
           },
         }),
         Object.defineProperty(s.default.GrainPlayer.prototype, "overlap", {
@@ -9673,15 +9696,15 @@
             this
           );
         }),
-        (e.default = s.default.GrainPlayer);
+        (e.default = s.default.GrainPlayer));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(16), i(2), i(45);
-      (s.default.TransportTimelineSignal = function () {
-        s.default.Signal.apply(this, arguments),
+      (i(16), i(2), i(45));
+      ((s.default.TransportTimelineSignal = function () {
+        (s.default.Signal.apply(this, arguments),
           (this.output = this._outputSig =
             new s.default.Signal(this._initialValue)),
           (this._lastVal = this.value),
@@ -9691,7 +9714,7 @@
           )),
           (this._bindAnchorValue = this._anchorValue.bind(this)),
           s.default.Transport.on("start stop pause", this._bindAnchorValue),
-          (this._events.memory = 1 / 0);
+          (this._events.memory = 1 / 0));
       }),
         s.default.extend(s.default.TransportTimelineSignal, s.default.Signal),
         (s.default.TransportTimelineSignal.prototype._onTick = function (t) {
@@ -9792,28 +9815,28 @@
             );
           }),
         (s.default.TransportTimelineSignal.prototype.dispose = function () {
-          s.default.Transport.clear(this._synced),
+          (s.default.Transport.clear(this._synced),
             s.default.Transport.off("start stop pause", this._syncedCallback),
             this._events.cancel(0),
             s.default.Signal.prototype.dispose.call(this),
             this._outputSig.dispose(),
-            (this._outputSig = null);
+            (this._outputSig = null));
         }),
-        (e.default = s.default.TransportTimelineSignal);
+        (e.default = s.default.TransportTimelineSignal));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(29), i(5);
-      (s.default.Normalize = function (t, e) {
-        s.default.SignalBase.call(this),
+      (i(29), i(5));
+      ((s.default.Normalize = function (t, e) {
+        (s.default.SignalBase.call(this),
           (this._inputMin = s.default.defaultArg(t, 0)),
           (this._inputMax = s.default.defaultArg(e, 1)),
           (this._sub = this.input = new s.default.Add(0)),
           (this._div = this.output = new s.default.Multiply(1)),
           this._sub.connect(this._div),
-          this._setRange();
+          this._setRange());
       }),
         s.default.extend(s.default.Normalize, s.default.SignalBase),
         Object.defineProperty(s.default.Normalize.prototype, "min", {
@@ -9821,7 +9844,7 @@
             return this._inputMin;
           },
           set: function (t) {
-            (this._inputMin = t), this._setRange();
+            ((this._inputMin = t), this._setRange());
           },
         }),
         Object.defineProperty(s.default.Normalize.prototype, "max", {
@@ -9829,12 +9852,12 @@
             return this._inputMax;
           },
           set: function (t) {
-            (this._inputMax = t), this._setRange();
+            ((this._inputMax = t), this._setRange());
           },
         }),
         (s.default.Normalize.prototype._setRange = function () {
-          (this._sub.value = -this._inputMin),
-            (this._div.value = 1 / (this._inputMax - this._inputMin));
+          ((this._sub.value = -this._inputMin),
+            (this._div.value = 1 / (this._inputMax - this._inputMin)));
         }),
         (s.default.Normalize.prototype.dispose = function () {
           return (
@@ -9846,21 +9869,21 @@
             this
           );
         }),
-        (e.default = s.default.Normalize);
+        (e.default = s.default.Normalize));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(7), i(2);
-      (s.default.GainToAudio = function () {
-        s.default.SignalBase.call(this),
+      (i(7), i(2));
+      ((s.default.GainToAudio = function () {
+        (s.default.SignalBase.call(this),
           (this._norm =
             this.input =
             this.output =
               new s.default.WaveShaper(function (t) {
                 return 2 * Math.abs(t) - 1;
-              }));
+              })));
       }),
         s.default.extend(s.default.GainToAudio, s.default.SignalBase),
         (s.default.GainToAudio.prototype.dispose = function () {
@@ -9871,14 +9894,14 @@
             this
           );
         }),
-        (e.default = s.default.GainToAudio);
+        (e.default = s.default.GainToAudio));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(21), i(78), i(32);
-      (s.default.Sampler = function (t) {
+      (i(21), i(78), i(32));
+      ((s.default.Sampler = function (t) {
         var e = Array.prototype.slice.call(arguments);
         e.shift();
         var i = s.default.defaults(e, ["onload", "baseUrl"], s.default.Sampler);
@@ -9894,11 +9917,11 @@
               );
             n[o] = t[o];
           }
-        (this._buffers = new s.default.Buffers(n, i.onload, i.baseUrl)),
+        ((this._buffers = new s.default.Buffers(n, i.onload, i.baseUrl)),
           (this._activeSources = {}),
           (this.attack = i.attack),
           (this.release = i.release),
-          (this.curve = i.curve);
+          (this.curve = i.curve));
       }),
         s.default.extend(s.default.Sampler, s.default.Instrument),
         (s.default.Sampler.defaults = {
@@ -9909,7 +9932,7 @@
           curve: "exponential",
         }),
         (s.default.Sampler.prototype._findClosest = function (t) {
-          for (var e = 0; e < 96; ) {
+          for (var e = 0; e < 96;) {
             if (this._buffers.has(t + e)) return -e;
             if (this._buffers.has(t - e)) return e;
             e++;
@@ -9917,7 +9940,7 @@
           throw new Error("No available buffers for note: " + t);
         }),
         (s.default.Sampler.prototype.triggerAttack = function (t, e, i) {
-          this.log("triggerAttack", t, e, i), Array.isArray(t) || (t = [t]);
+          (this.log("triggerAttack", t, e, i), Array.isArray(t) || (t = [t]));
           for (var n = 0; n < t.length; n++) {
             var o = s.default.Frequency(t[n]).toMidi(),
               a = this._findClosest(o),
@@ -9931,7 +9954,7 @@
                 fadeOut: this.release,
                 curve: this.curve,
               }).connect(this.output);
-            d.start(e, 0, l.duration / u, i),
+            (d.start(e, 0, l.duration / u, i),
               s.default.isArray(this._activeSources[o]) ||
                 (this._activeSources[o] = []),
               this._activeSources[o].push(d),
@@ -9940,12 +9963,12 @@
                   var t = this._activeSources[o].indexOf(d);
                   -1 !== t && this._activeSources[o].splice(t, 1);
                 }
-              }.bind(this));
+              }.bind(this)));
           }
           return this;
         }),
         (s.default.Sampler.prototype.triggerRelease = function (t, e) {
-          this.log("triggerRelease", t, e), Array.isArray(t) || (t = [t]);
+          (this.log("triggerRelease", t, e), Array.isArray(t) || (t = [t]));
           for (var i = 0; i < t.length; i++) {
             var n = s.default.Frequency(t[i]).toMidi();
             this._activeSources[n] &&
@@ -9960,7 +9983,7 @@
         }),
         (s.default.Sampler.prototype.releaseAll = function (t) {
           for (var e in ((t = this.toSeconds(t)), this._activeSources))
-            for (var i = this._activeSources[e]; i.length; ) {
+            for (var i = this._activeSources[e]; i.length;) {
               i.shift().stop(t);
             }
           return this;
@@ -10015,22 +10038,22 @@
             this._activeSources[t].forEach(function (t) {
               t.dispose();
             });
-          return (this._activeSources = null), this;
+          return ((this._activeSources = null), this);
         }),
-        (e.default = s.default.Sampler);
+        (e.default = s.default.Sampler));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(38), i(6);
-      (s.default.PolySynth = function () {
+      (i(38), i(6));
+      ((s.default.PolySynth = function () {
         var t = s.default.defaults(
           arguments,
           ["polyphony", "voice"],
           s.default.PolySynth,
         );
-        s.default.Instrument.call(this, t),
+        (s.default.Instrument.call(this, t),
           ((t = s.default.defaultArg(
             t,
             s.default.Instrument.defaults,
@@ -10041,17 +10064,17 @@
           (this.voices = new Array(t.polyphony)),
           this.assert(t.polyphony > 0, "polyphony must be greater than 0"),
           (this.detune = new s.default.Signal(t.detune, s.default.Type.Cents)),
-          this._readOnly("detune");
+          this._readOnly("detune"));
         for (var e = 0; e < t.polyphony; e++) {
           var i = new t.voice(arguments[2], arguments[3]);
           if (!(i instanceof s.default.Monophonic))
             throw new Error(
               "Synth constructor must be instance of Tone.Monophonic",
             );
-          (this.voices[e] = i),
+          ((this.voices[e] = i),
             (i.index = e),
             i.connect(this.output),
-            i.hasOwnProperty("detune") && this.detune.connect(i.detune);
+            i.hasOwnProperty("detune") && this.detune.connect(i.detune));
         }
       }),
         s.default.extend(s.default.PolySynth, s.default.Instrument),
@@ -10076,7 +10099,7 @@
               function (e, i) {
                 var s = e.getLevelAtTime(t + this.blockTime),
                   n = i.getLevelAtTime(t + this.blockTime);
-                return s < 1e-5 && (s = 0), n < 1e-5 && (n = 0), s - n;
+                return (s < 1e-5 && (s = 0), n < 1e-5 && (n = 0), s - n);
               }.bind(this),
             )[0]
           );
@@ -10088,7 +10111,8 @@
             t.forEach(
               function (t) {
                 var s = this._getClosestVoice(e, t);
-                s.triggerAttack(t, e, i), this.log("triggerAttack", s.index, t);
+                (s.triggerAttack(t, e, i),
+                  this.log("triggerAttack", s.index, t));
               }.bind(this),
             ),
             this
@@ -10101,7 +10125,7 @@
             t.forEach(
               function (t) {
                 var i = this._getClosestVoice(e, t);
-                this.log("triggerRelease", i.index, t), i.triggerRelease(e);
+                (this.log("triggerRelease", i.index, t), i.triggerRelease(e));
               }.bind(this),
             ),
             this
@@ -10163,15 +10187,15 @@
           );
         }),
         (s.default.PolySynth.MAX_POLYPHONY = 20),
-        (e.default = s.default.PolySynth);
+        (e.default = s.default.PolySynth));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(21), i(39), i(54);
-      (s.default.PluckSynth = function (t) {
-        (t = s.default.defaultArg(t, s.default.PluckSynth.defaults)),
+      (i(21), i(39), i(54));
+      ((s.default.PluckSynth = function (t) {
+        ((t = s.default.defaultArg(t, s.default.PluckSynth.defaults)),
           s.default.Instrument.call(this, t),
           (this._noise = new s.default.Noise("pink")),
           (this.attackNoise = t.attackNoise),
@@ -10183,7 +10207,7 @@
           (this.dampening = this._lfcf.dampening),
           this._noise.connect(this._lfcf),
           this._lfcf.connect(this.output),
-          this._readOnly(["resonance", "dampening"]);
+          this._readOnly(["resonance", "dampening"]));
       }),
         s.default.extend(s.default.PluckSynth, s.default.Instrument),
         (s.default.PluckSynth.defaults = {
@@ -10192,7 +10216,7 @@
           resonance: 0.7,
         }),
         (s.default.PluckSynth.prototype.triggerAttack = function (t, e) {
-          (t = this.toFrequency(t)), (e = this.toSeconds(e));
+          ((t = this.toFrequency(t)), (e = this.toSeconds(e)));
           var i = 1 / t;
           return (
             this._lfcf.delayTime.setValueAtTime(i, e),
@@ -10214,20 +10238,20 @@
             this
           );
         }),
-        (e.default = s.default.PluckSynth);
+        (e.default = s.default.PluckSynth));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(31), i(41), i(39), i(2), i(9), i(21);
-      (s.default.NoiseSynth = function (t) {
-        (t = s.default.defaultArg(t, s.default.NoiseSynth.defaults)),
+      (i(31), i(41), i(39), i(2), i(9), i(21));
+      ((s.default.NoiseSynth = function (t) {
+        ((t = s.default.defaultArg(t, s.default.NoiseSynth.defaults)),
           s.default.Instrument.call(this, t),
           (this.noise = new s.default.Noise(t.noise)),
           (this.envelope = new s.default.AmplitudeEnvelope(t.envelope)),
           this.noise.chain(this.envelope, this.output),
-          this._readOnly(["noise", "envelope"]);
+          this._readOnly(["noise", "envelope"]));
       }),
         s.default.extend(s.default.NoiseSynth, s.default.Instrument),
         (s.default.NoiseSynth.defaults = {
@@ -10283,7 +10307,7 @@
             this
           );
         }),
-        (e.default = s.default.NoiseSynth);
+        (e.default = s.default.NoiseSynth));
     },
     function (t, e, i) {
       "use strict";
@@ -10299,8 +10323,8 @@
           i(26),
           i(5),
           [1, 1.483, 1.932, 2.546, 2.63, 3.897]);
-      (s.default.MetalSynth = function (t) {
-        (t = s.default.defaultArg(t, s.default.MetalSynth.defaults)),
+      ((s.default.MetalSynth = function (t) {
+        ((t = s.default.defaultArg(t, s.default.MetalSynth.defaults)),
           s.default.Instrument.call(this, t),
           (this.frequency = new s.default.Signal(
             t.frequency,
@@ -10322,7 +10346,7 @@
             sustain: 0,
             release: t.envelope.release,
           }).chain(this._filterFreqScaler, this._highpass.frequency)),
-          this.envelope.connect(this._amplitue.gain);
+          this.envelope.connect(this._amplitue.gain));
         for (var e = 0; e < n.length; e++) {
           var i = new s.default.FMOscillator({
             type: "square",
@@ -10330,9 +10354,10 @@
             harmonicity: t.harmonicity,
             modulationIndex: t.modulationIndex,
           });
-          i.connect(this._highpass), (this._oscillators[e] = i);
+          (i.connect(this._highpass), (this._oscillators[e] = i));
           var o = new s.default.Multiply(n[e]);
-          (this._freqMultipliers[e] = o), this.frequency.chain(o, i.frequency);
+          ((this._freqMultipliers[e] = o),
+            this.frequency.chain(o, i.frequency));
         }
         this.octaves = t.octaves;
       }),
@@ -10421,7 +10446,7 @@
             return this._filterFreqScaler.min;
           },
           set: function (t) {
-            (this._filterFreqScaler.min = t), (this.octaves = this._octaves);
+            ((this._filterFreqScaler.min = t), (this.octaves = this._octaves));
           },
         }),
         Object.defineProperty(s.default.MetalSynth.prototype, "octaves", {
@@ -10429,16 +10454,17 @@
             return this._octaves;
           },
           set: function (t) {
-            (this._octaves = t),
+            ((this._octaves = t),
               (this._filterFreqScaler.max =
-                this._filterFreqScaler.min * Math.pow(2, t));
+                this._filterFreqScaler.min * Math.pow(2, t)));
           },
         }),
         (s.default.MetalSynth.prototype.dispose = function () {
           s.default.Instrument.prototype.dispose.call(this);
           for (var t = 0; t < this._oscillators.length; t++)
-            this._oscillators[t].dispose(), this._freqMultipliers[t].dispose();
-          (this._oscillators = null),
+            (this._oscillators[t].dispose(),
+              this._freqMultipliers[t].dispose());
+          ((this._oscillators = null),
             (this._freqMultipliers = null),
             this.frequency.dispose(),
             (this.frequency = null),
@@ -10449,24 +10475,24 @@
             this.envelope.dispose(),
             (this.envelope = null),
             this._highpass.dispose(),
-            (this._highpass = null);
+            (this._highpass = null));
         }),
-        (e.default = s.default.MetalSynth);
+        (e.default = s.default.MetalSynth));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(37), i(21), i(31);
-      (s.default.MembraneSynth = function (t) {
-        (t = s.default.defaultArg(t, s.default.MembraneSynth.defaults)),
+      (i(37), i(21), i(31));
+      ((s.default.MembraneSynth = function (t) {
+        ((t = s.default.defaultArg(t, s.default.MembraneSynth.defaults)),
           s.default.Instrument.call(this, t),
           (this.oscillator = new s.default.OmniOscillator(t.oscillator)),
           (this.envelope = new s.default.AmplitudeEnvelope(t.envelope)),
           (this.octaves = t.octaves),
           (this.pitchDecay = t.pitchDecay),
           this.oscillator.chain(this.envelope, this.output),
-          this._readOnly(["oscillator", "envelope"]);
+          this._readOnly(["oscillator", "envelope"]));
       }),
         s.default.extend(s.default.MembraneSynth, s.default.Instrument),
         (s.default.MembraneSynth.defaults = {
@@ -10518,15 +10544,15 @@
             this
           );
         }),
-        (e.default = s.default.MembraneSynth);
+        (e.default = s.default.MembraneSynth));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(38), i(2), i(5), i(25);
-      (s.default.FMSynth = function (t) {
-        (t = s.default.defaultArg(t, s.default.FMSynth.defaults)),
+      (i(38), i(2), i(5), i(25));
+      ((s.default.FMSynth = function (t) {
+        ((t = s.default.defaultArg(t, s.default.FMSynth.defaults)),
           s.default.Monophonic.call(this, t),
           (this._carrier = new s.default.Synth(t.carrier)),
           (this._carrier.volume.value = -10),
@@ -10564,7 +10590,7 @@
             "modulation",
             "modulationEnvelope",
             "detune",
-          ]);
+          ]));
       }),
         s.default.extend(s.default.FMSynth, s.default.Monophonic),
         (s.default.FMSynth.defaults = {
@@ -10631,15 +10657,15 @@
             this
           );
         }),
-        (e.default = s.default.FMSynth);
+        (e.default = s.default.FMSynth));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(66), i(12), i(2), i(5), i(25), i(14);
-      (s.default.DuoSynth = function (t) {
-        (t = s.default.defaultArg(t, s.default.DuoSynth.defaults)),
+      (i(66), i(12), i(2), i(5), i(25), i(14));
+      ((s.default.DuoSynth = function (t) {
+        ((t = s.default.defaultArg(t, s.default.DuoSynth.defaults)),
           s.default.Monophonic.call(this, t),
           (this.voice0 = new s.default.MonoSynth(t.voice0)),
           (this.voice0.volume.value = -10),
@@ -10671,7 +10697,7 @@
             "frequency",
             "vibratoAmount",
             "vibratoRate",
-          ]);
+          ]));
       }),
         s.default.extend(s.default.DuoSynth, s.default.Monophonic),
         (s.default.DuoSynth.defaults = {
@@ -10750,15 +10776,15 @@
             this
           );
         }),
-        (e.default = s.default.DuoSynth);
+        (e.default = s.default.DuoSynth));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(38), i(2), i(5), i(25), i(22), i(3);
-      (s.default.AMSynth = function (t) {
-        (t = s.default.defaultArg(t, s.default.AMSynth.defaults)),
+      (i(38), i(2), i(5), i(25), i(22), i(3));
+      ((s.default.AMSynth = function (t) {
+        ((t = s.default.defaultArg(t, s.default.AMSynth.defaults)),
           s.default.Monophonic.call(this, t),
           (this._carrier = new s.default.Synth()),
           (this._carrier.volume.value = -10),
@@ -10795,7 +10821,7 @@
             "modulation",
             "modulationEnvelope",
             "detune",
-          ]);
+          ]));
       }),
         s.default.extend(s.default.AMSynth, s.default.Monophonic),
         (s.default.AMSynth.defaults = {
@@ -10859,14 +10885,14 @@
             this
           );
         }),
-        (e.default = s.default.AMSynth);
+        (e.default = s.default.AMSynth));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(70), i(16);
-      (s.default.Sequence = function () {
+      (i(70), i(16));
+      ((s.default.Sequence = function () {
         var t = s.default.defaults(
             arguments,
             ["callback", "events", "subdivision"],
@@ -10909,7 +10935,8 @@
             );
           }
           return (
-            s.default.Part.prototype.add.call(this, this._indexTime(t), e), this
+            s.default.Part.prototype.add.call(this, this._indexTime(t), e),
+            this
           );
         }),
         (s.default.Sequence.prototype.remove = function (t, e) {
@@ -10926,27 +10953,27 @@
                 .toSeconds();
         }),
         (s.default.Sequence.prototype.dispose = function () {
-          return s.default.Part.prototype.dispose.call(this), this;
+          return (s.default.Part.prototype.dispose.call(this), this);
         }),
-        (e.default = s.default.Sequence);
+        (e.default = s.default.Sequence));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(71), i(79);
-      (s.default.Pattern = function () {
+      (i(71), i(79));
+      ((s.default.Pattern = function () {
         var t = s.default.defaults(
           arguments,
           ["callback", "values", "pattern"],
           s.default.Pattern,
         );
-        s.default.Loop.call(this, t),
+        (s.default.Loop.call(this, t),
           (this._pattern = new s.default.CtrlPattern({
             values: t.values,
             type: t.pattern,
             index: t.index,
-          }));
+          })));
       }),
         s.default.extend(s.default.Pattern, s.default.Loop),
         (s.default.Pattern.defaults = {
@@ -10955,7 +10982,7 @@
           values: [],
         }),
         (s.default.Pattern.prototype._tick = function (t) {
-          this.callback(t, this._pattern.value), this._pattern.next();
+          (this.callback(t, this._pattern.value), this._pattern.next());
         }),
         Object.defineProperty(s.default.Pattern.prototype, "index", {
           get: function () {
@@ -10987,24 +11014,24 @@
           },
         }),
         (s.default.Pattern.prototype.dispose = function () {
-          s.default.Loop.prototype.dispose.call(this),
+          (s.default.Loop.prototype.dispose.call(this),
             this._pattern.dispose(),
-            (this._pattern = null);
+            (this._pattern = null));
         }),
-        (e.default = s.default.Pattern);
+        (e.default = s.default.Pattern));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(8), i(18), i(12);
-      (s.default.Vibrato = function () {
+      (i(8), i(18), i(12));
+      ((s.default.Vibrato = function () {
         var t = s.default.defaults(
           arguments,
           ["frequency", "depth"],
           s.default.Vibrato,
         );
-        s.default.Effect.call(this, t),
+        (s.default.Effect.call(this, t),
           (this._delayNode = new s.default.Delay(0, t.maxDelay)),
           (this._lfo = new s.default.LFO({
             type: t.type,
@@ -11019,7 +11046,7 @@
           (this.depth = this._lfo.amplitude),
           (this.depth.value = t.depth),
           this._readOnly(["frequency", "depth"]),
-          this.effectSend.chain(this._delayNode, this.effectReturn);
+          this.effectSend.chain(this._delayNode, this.effectReturn));
       }),
         s.default.extend(s.default.Vibrato, s.default.Effect),
         (s.default.Vibrato.defaults = {
@@ -11037,29 +11064,29 @@
           },
         }),
         (s.default.Vibrato.prototype.dispose = function () {
-          s.default.Effect.prototype.dispose.call(this),
+          (s.default.Effect.prototype.dispose.call(this),
             this._delayNode.dispose(),
             (this._delayNode = null),
             this._lfo.dispose(),
             (this._lfo = null),
             this._writable(["frequency", "depth"]),
             (this.frequency = null),
-            (this.depth = null);
+            (this.depth = null));
         }),
-        (e.default = s.default.Vibrato);
+        (e.default = s.default.Vibrato));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(12), i(15);
-      (s.default.Tremolo = function () {
+      (i(12), i(15));
+      ((s.default.Tremolo = function () {
         var t = s.default.defaults(
           arguments,
           ["frequency", "depth"],
           s.default.Tremolo,
         );
-        s.default.StereoEffect.call(this, t),
+        (s.default.StereoEffect.call(this, t),
           (this._lfoL = new s.default.LFO({ phase: t.spread, min: 1, max: 0 })),
           (this._lfoR = new s.default.LFO({ phase: t.spread, min: 1, max: 0 })),
           (this._amplitudeL = new s.default.Gain()),
@@ -11080,7 +11107,7 @@
           this.frequency.fan(this._lfoL.frequency, this._lfoR.frequency),
           this.depth.fan(this._lfoR.amplitude, this._lfoL.amplitude),
           (this.type = t.type),
-          (this.spread = t.spread);
+          (this.spread = t.spread));
       }),
         s.default.extend(s.default.Tremolo, s.default.StereoEffect),
         (s.default.Tremolo.defaults = {
@@ -11090,10 +11117,10 @@
           spread: 180,
         }),
         (s.default.Tremolo.prototype.start = function (t) {
-          return this._lfoL.start(t), this._lfoR.start(t), this;
+          return (this._lfoL.start(t), this._lfoR.start(t), this);
         }),
         (s.default.Tremolo.prototype.stop = function (t) {
-          return this._lfoL.stop(t), this._lfoR.stop(t), this;
+          return (this._lfoL.stop(t), this._lfoR.stop(t), this);
         }),
         (s.default.Tremolo.prototype.sync = function (t) {
           return (
@@ -11116,7 +11143,7 @@
             return this._lfoL.type;
           },
           set: function (t) {
-            (this._lfoL.type = t), (this._lfoR.type = t);
+            ((this._lfoL.type = t), (this._lfoR.type = t));
           },
         }),
         Object.defineProperty(s.default.Tremolo.prototype, "spread", {
@@ -11124,7 +11151,7 @@
             return this._lfoR.phase - this._lfoL.phase;
           },
           set: function (t) {
-            (this._lfoL.phase = 90 - t / 2), (this._lfoR.phase = t / 2 + 90);
+            ((this._lfoL.phase = 90 - t / 2), (this._lfoR.phase = t / 2 + 90));
           },
         }),
         (s.default.Tremolo.prototype.dispose = function () {
@@ -11144,20 +11171,20 @@
             this
           );
         }),
-        (e.default = s.default.Tremolo);
+        (e.default = s.default.Tremolo));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(73), i(2), i(5), i(13);
-      (s.default.StereoWidener = function () {
+      (i(73), i(2), i(5), i(13));
+      ((s.default.StereoWidener = function () {
         var t = s.default.defaults(
           arguments,
           ["width"],
           s.default.StereoWidener,
         );
-        s.default.MidSideEffect.call(this, t),
+        (s.default.MidSideEffect.call(this, t),
           (this.width = new s.default.Signal(
             t.width,
             s.default.Type.NormalRange,
@@ -11180,7 +11207,7 @@
           (this._sideMult = new s.default.Multiply()),
           this.width.connect(this._twoTimesWidthSide),
           this._twoTimesWidthSide.connect(this._sideMult, 0, 1),
-          this.sideSend.chain(this._sideMult, this.sideReturn);
+          this.sideSend.chain(this._sideMult, this.sideReturn));
       }),
         s.default.extend(s.default.StereoWidener, s.default.MidSideEffect),
         (s.default.StereoWidener.defaults = { width: 0.5 }),
@@ -11203,20 +11230,20 @@
             this
           );
         }),
-        (e.default = s.default.StereoWidener);
+        (e.default = s.default.StereoWidener));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(15), i(33), i(3);
-      (s.default.StereoFeedbackEffect = function () {
+      (i(15), i(33), i(3));
+      ((s.default.StereoFeedbackEffect = function () {
         var t = s.default.defaults(
           arguments,
           ["feedback"],
           s.default.FeedbackEffect,
         );
-        s.default.StereoEffect.call(this, t),
+        (s.default.StereoEffect.call(this, t),
           (this.feedback = new s.default.Signal(
             t.feedback,
             s.default.Type.NormalRange,
@@ -11226,7 +11253,7 @@
           this.effectReturnL.chain(this._feedbackL, this.effectSendL),
           this.effectReturnR.chain(this._feedbackR, this.effectSendR),
           this.feedback.fan(this._feedbackL.gain, this._feedbackR.gain),
-          this._readOnly(["feedback"]);
+          this._readOnly(["feedback"]));
       }),
         s.default.extend(
           s.default.StereoFeedbackEffect,
@@ -11245,20 +11272,20 @@
             this
           );
         }),
-        (e.default = s.default.StereoFeedbackEffect);
+        (e.default = s.default.StereoFeedbackEffect));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(77), i(9), i(10), i(39), i(3), i(74);
-      (s.default.Reverb = function () {
+      (i(77), i(9), i(10), i(39), i(3), i(74));
+      ((s.default.Reverb = function () {
         var t = s.default.defaults(arguments, ["decay"], s.default.Reverb);
-        s.default.Effect.call(this, t),
+        (s.default.Effect.call(this, t),
           (this._convolver = this.context.createConvolver()),
           (this.decay = t.decay),
           (this.preDelay = t.preDelay),
-          this.connectEffect(this._convolver);
+          this.connectEffect(this._convolver));
       }),
         s.default.extend(s.default.Reverb, s.default.Effect),
         (s.default.Reverb.defaults = { decay: 1.5, preDelay: 0.01 }),
@@ -11269,9 +11296,9 @@
                 var t = new s.default.Noise(),
                   e = new s.default.Noise(),
                   i = new s.default.Merge();
-                t.connect(i.left), e.connect(i.right);
+                (t.connect(i.left), e.connect(i.right));
                 var n = new s.default.Gain().toMaster();
-                i.connect(n),
+                (i.connect(n),
                   t.start(0),
                   e.start(0),
                   n.gain.setValueAtTime(0, 0),
@@ -11280,13 +11307,13 @@
                     0,
                     this.preDelay,
                     this.decay + this.preDelay,
-                  );
+                  ));
               }.bind(this),
               this.decay + this.preDelay,
             )
             .then(
               function (t) {
-                return (this._convolver.buffer = t.get()), this;
+                return ((this._convolver.buffer = t.get()), this);
               }.bind(this),
             );
         }),
@@ -11298,16 +11325,16 @@
             this
           );
         }),
-        (e.default = s.default.Reverb);
+        (e.default = s.default.Reverb));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(12), i(23), i(2), i(33), i(18);
-      (s.default.PitchShift = function () {
+      (i(12), i(23), i(2), i(33), i(18));
+      ((s.default.PitchShift = function () {
         var t = s.default.defaults(arguments, ["pitch"], s.default.PitchShift);
-        s.default.FeedbackEffect.call(this, t),
+        (s.default.FeedbackEffect.call(this, t),
           (this._frequency = new s.default.Signal(0)),
           (this._delayA = new s.default.Delay(0, 1)),
           (this._lfoA = new s.default.LFO({
@@ -11342,12 +11369,12 @@
             this._crossFadeLFO.frequency,
           ),
           this.effectSend.fan(this._delayA, this._delayB),
-          this._crossFade.chain(this._feedbackDelay, this.effectReturn);
+          this._crossFade.chain(this._feedbackDelay, this.effectReturn));
         var e = this.now();
-        this._lfoA.start(e),
+        (this._lfoA.start(e),
           this._lfoB.start(e),
           this._crossFadeLFO.start(e),
-          (this.windowSize = this._windowSize);
+          (this.windowSize = this._windowSize));
       }),
         s.default.extend(s.default.PitchShift, s.default.FeedbackEffect),
         (s.default.PitchShift.defaults = {
@@ -11363,7 +11390,7 @@
           set: function (t) {
             this._pitch = t;
             var e = 0;
-            t < 0
+            (t < 0
               ? ((this._lfoA.min = 0),
                 (this._lfoA.max = this._windowSize),
                 (this._lfoB.min = 0),
@@ -11374,7 +11401,7 @@
                 (this._lfoB.min = this._windowSize),
                 (this._lfoB.max = 0),
                 (e = s.default.intervalToFrequencyRatio(t) - 1)),
-              (this._frequency.value = e * (1.2 / this._windowSize));
+              (this._frequency.value = e * (1.2 / this._windowSize)));
           },
         }),
         Object.defineProperty(s.default.PitchShift.prototype, "windowSize", {
@@ -11382,7 +11409,8 @@
             return this._windowSize;
           },
           set: function (t) {
-            (this._windowSize = this.toSeconds(t)), (this.pitch = this._pitch);
+            ((this._windowSize = this.toSeconds(t)),
+              (this.pitch = this._pitch));
           },
         }),
         (s.default.PitchShift.prototype.dispose = function () {
@@ -11409,20 +11437,20 @@
             this
           );
         }),
-        (e.default = s.default.PitchShift);
+        (e.default = s.default.PitchShift));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(72), i(2), i(18);
-      (s.default.PingPongDelay = function () {
+      (i(72), i(2), i(18));
+      ((s.default.PingPongDelay = function () {
         var t = s.default.defaults(
           arguments,
           ["delayTime", "feedback"],
           s.default.PingPongDelay,
         );
-        s.default.StereoXFeedbackEffect.call(this, t),
+        (s.default.StereoXFeedbackEffect.call(this, t),
           (this._leftDelay = new s.default.Delay(0, t.maxDelayTime)),
           (this._rightDelay = new s.default.Delay(0, t.maxDelayTime)),
           (this._rightPreDelay = new s.default.Delay(0, t.maxDelayTime)),
@@ -11443,7 +11471,7 @@
           ),
           this._feedbackLR.disconnect(),
           this._feedbackLR.connect(this._rightDelay),
-          this._readOnly(["delayTime"]);
+          this._readOnly(["delayTime"]));
       }),
         s.default.extend(
           s.default.PingPongDelay,
@@ -11468,20 +11496,20 @@
             this
           );
         }),
-        (e.default = s.default.PingPongDelay);
+        (e.default = s.default.PingPongDelay));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(12), i(9), i(15);
-      (s.default.Phaser = function () {
+      (i(12), i(9), i(15));
+      ((s.default.Phaser = function () {
         var t = s.default.defaults(
           arguments,
           ["frequency", "octaves", "baseFrequency"],
           s.default.Phaser,
         );
-        s.default.StereoEffect.call(this, t),
+        (s.default.StereoEffect.call(this, t),
           (this._lfoL = new s.default.LFO(t.frequency, 0, 1)),
           (this._lfoR = new s.default.LFO(t.frequency, 0, 1)),
           (this._lfoR.phase = 180),
@@ -11501,7 +11529,7 @@
           (this.octaves = t.octaves),
           this._lfoL.start(),
           this._lfoR.start(),
-          this._readOnly(["frequency", "Q"]);
+          this._readOnly(["frequency", "Q"]));
       }),
         s.default.extend(s.default.Phaser, s.default.StereoEffect),
         (s.default.Phaser.defaults = {
@@ -11514,12 +11542,12 @@
         (s.default.Phaser.prototype._makeFilters = function (t, e, i) {
           for (var n = new Array(t), o = 0; o < t; o++) {
             var a = this.context.createBiquadFilter();
-            (a.type = "allpass"),
+            ((a.type = "allpass"),
               i.connect(a.Q),
               e.connect(a.frequency),
-              (n[o] = a);
+              (n[o] = a));
           }
-          return s.default.connectSeries.apply(s.default, n), n;
+          return (s.default.connectSeries.apply(s.default, n), n);
         }),
         Object.defineProperty(s.default.Phaser.prototype, "octaves", {
           get: function () {
@@ -11528,7 +11556,7 @@
           set: function (t) {
             this._octaves = t;
             var e = this._baseFrequency * Math.pow(2, t);
-            (this._lfoL.max = e), (this._lfoR.max = e);
+            ((this._lfoL.max = e), (this._lfoR.max = e));
           },
         }),
         Object.defineProperty(s.default.Phaser.prototype, "baseFrequency", {
@@ -11536,29 +11564,29 @@
             return this._baseFrequency;
           },
           set: function (t) {
-            (this._baseFrequency = t),
+            ((this._baseFrequency = t),
               (this._lfoL.min = t),
               (this._lfoR.min = t),
-              (this.octaves = this._octaves);
+              (this.octaves = this._octaves));
           },
         }),
         (s.default.Phaser.prototype.dispose = function () {
-          s.default.StereoEffect.prototype.dispose.call(this),
+          (s.default.StereoEffect.prototype.dispose.call(this),
             this._writable(["frequency", "Q"]),
             this.Q.dispose(),
             (this.Q = null),
             this._lfoL.dispose(),
             (this._lfoL = null),
             this._lfoR.dispose(),
-            (this._lfoR = null);
+            (this._lfoR = null));
           for (var t = 0; t < this._filtersL.length; t++)
-            this._filtersL[t].disconnect(), (this._filtersL[t] = null);
+            (this._filtersL[t].disconnect(), (this._filtersL[t] = null));
           this._filtersL = null;
           for (var e = 0; e < this._filtersR.length; e++)
-            this._filtersR[e].disconnect(), (this._filtersR[e] = null);
-          return (this._filtersR = null), (this.frequency = null), this;
+            (this._filtersR[e].disconnect(), (this._filtersR[e] = null));
+          return ((this._filtersR = null), (this.frequency = null), this);
         }),
-        (e.default = s.default.Phaser);
+        (e.default = s.default.Phaser));
     },
     function (t, e, i) {
       "use strict";
@@ -11567,25 +11595,25 @@
         n = (i(59), i(15), i(26), [0.06748, 0.06404, 0.08212, 0.09004]),
         o = [0.773, 0.802, 0.753, 0.733],
         a = [347, 113, 37];
-      (s.default.JCReverb = function () {
+      ((s.default.JCReverb = function () {
         var t = s.default.defaults(arguments, ["roomSize"], s.default.JCReverb);
-        s.default.StereoEffect.call(this, t),
+        (s.default.StereoEffect.call(this, t),
           (this.roomSize = new s.default.Signal(
             t.roomSize,
             s.default.Type.NormalRange,
           )),
           (this._scaleRoomSize = new s.default.Scale(-0.733, 0.197)),
           (this._allpassFilters = []),
-          (this._feedbackCombFilters = []);
+          (this._feedbackCombFilters = []));
         for (var e = 0; e < a.length; e++) {
           var i = this.context.createBiquadFilter();
-          (i.type = "allpass"),
+          ((i.type = "allpass"),
             (i.frequency.value = a[e]),
-            this._allpassFilters.push(i);
+            this._allpassFilters.push(i));
         }
         for (var r = 0; r < n.length; r++) {
           var l = new s.default.FeedbackCombFilter(n[r], 0.1);
-          this._scaleRoomSize.connect(l.resonance),
+          (this._scaleRoomSize.connect(l.resonance),
             (l.resonance.value = o[r]),
             s.default.connect(
               this._allpassFilters[this._allpassFilters.length - 1],
@@ -11594,25 +11622,25 @@
             r < n.length / 2
               ? l.connect(this.effectReturnL)
               : l.connect(this.effectReturnR),
-            this._feedbackCombFilters.push(l);
+            this._feedbackCombFilters.push(l));
         }
-        this.roomSize.connect(this._scaleRoomSize),
+        (this.roomSize.connect(this._scaleRoomSize),
           s.default.connectSeries.apply(s.default, this._allpassFilters),
           this.effectSendL.connect(this._allpassFilters[0]),
           this.effectSendR.connect(this._allpassFilters[0]),
-          this._readOnly(["roomSize"]);
+          this._readOnly(["roomSize"]));
       }),
         s.default.extend(s.default.JCReverb, s.default.StereoEffect),
         (s.default.JCReverb.defaults = { roomSize: 0.5 }),
         (s.default.JCReverb.prototype.dispose = function () {
           s.default.StereoEffect.prototype.dispose.call(this);
           for (var t = 0; t < this._allpassFilters.length; t++)
-            this._allpassFilters[t].disconnect(),
-              (this._allpassFilters[t] = null);
+            (this._allpassFilters[t].disconnect(),
+              (this._allpassFilters[t] = null));
           this._allpassFilters = null;
           for (var e = 0; e < this._feedbackCombFilters.length; e++)
-            this._feedbackCombFilters[e].dispose(),
-              (this._feedbackCombFilters[e] = null);
+            (this._feedbackCombFilters[e].dispose(),
+              (this._feedbackCombFilters[e] = null));
           return (
             (this._feedbackCombFilters = null),
             this._writable(["roomSize"]),
@@ -11623,7 +11651,7 @@
             this
           );
         }),
-        (e.default = s.default.JCReverb);
+        (e.default = s.default.JCReverb));
     },
     function (t, e, i) {
       "use strict";
@@ -11647,13 +11675,13 @@
             1116 / 44100,
           ]),
         o = [225, 556, 441, 341];
-      (s.default.Freeverb = function () {
+      ((s.default.Freeverb = function () {
         var t = s.default.defaults(
           arguments,
           ["roomSize", "dampening"],
           s.default.Freeverb,
         );
-        s.default.StereoEffect.call(this, t),
+        (s.default.StereoEffect.call(this, t),
           (this.roomSize = new s.default.Signal(
             t.roomSize,
             s.default.Type.NormalRange,
@@ -11664,29 +11692,29 @@
           )),
           (this._combFilters = []),
           (this._allpassFiltersL = []),
-          (this._allpassFiltersR = []);
+          (this._allpassFiltersR = []));
         for (var e = 0; e < o.length; e++) {
           var i = this.context.createBiquadFilter();
-          (i.type = "allpass"),
+          ((i.type = "allpass"),
             (i.frequency.value = o[e]),
-            this._allpassFiltersL.push(i);
+            this._allpassFiltersL.push(i));
         }
         for (var a = 0; a < o.length; a++) {
           var r = this.context.createBiquadFilter();
-          (r.type = "allpass"),
+          ((r.type = "allpass"),
             (r.frequency.value = o[a]),
-            this._allpassFiltersR.push(r);
+            this._allpassFiltersR.push(r));
         }
         for (var l = 0; l < n.length; l++) {
           var u = new s.default.LowpassCombFilter(n[l]);
-          l < n.length / 2
+          (l < n.length / 2
             ? this.effectSendL.chain(u, this._allpassFiltersL[0])
             : this.effectSendR.chain(u, this._allpassFiltersR[0]),
             this.roomSize.connect(u.resonance),
             this.dampening.connect(u.dampening),
-            this._combFilters.push(u);
+            this._combFilters.push(u));
         }
-        s.default.connectSeries.apply(s.default, this._allpassFiltersL),
+        (s.default.connectSeries.apply(s.default, this._allpassFiltersL),
           s.default.connectSeries.apply(s.default, this._allpassFiltersR),
           s.default.connect(
             this._allpassFiltersL[this._allpassFiltersL.length - 1],
@@ -11696,22 +11724,22 @@
             this._allpassFiltersR[this._allpassFiltersR.length - 1],
             this.effectReturnR,
           ),
-          this._readOnly(["roomSize", "dampening"]);
+          this._readOnly(["roomSize", "dampening"]));
       }),
         s.default.extend(s.default.Freeverb, s.default.StereoEffect),
         (s.default.Freeverb.defaults = { roomSize: 0.7, dampening: 3e3 }),
         (s.default.Freeverb.prototype.dispose = function () {
           s.default.StereoEffect.prototype.dispose.call(this);
           for (var t = 0; t < this._allpassFiltersL.length; t++)
-            this._allpassFiltersL[t].disconnect(),
-              (this._allpassFiltersL[t] = null);
+            (this._allpassFiltersL[t].disconnect(),
+              (this._allpassFiltersL[t] = null));
           this._allpassFiltersL = null;
           for (var e = 0; e < this._allpassFiltersR.length; e++)
-            this._allpassFiltersR[e].disconnect(),
-              (this._allpassFiltersR[e] = null);
+            (this._allpassFiltersR[e].disconnect(),
+              (this._allpassFiltersR[e] = null));
           this._allpassFiltersR = null;
           for (var i = 0; i < this._combFilters.length; i++)
-            this._combFilters[i].dispose(), (this._combFilters[i] = null);
+            (this._combFilters[i].dispose(), (this._combFilters[i] = null));
           return (
             (this._combFilters = null),
             this._writable(["roomSize", "dampening"]),
@@ -11722,24 +11750,24 @@
             this
           );
         }),
-        (e.default = s.default.Freeverb);
+        (e.default = s.default.Freeverb));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(33), i(2), i(18);
-      (s.default.FeedbackDelay = function () {
+      (i(33), i(2), i(18));
+      ((s.default.FeedbackDelay = function () {
         var t = s.default.defaults(
           arguments,
           ["delayTime", "feedback"],
           s.default.FeedbackDelay,
         );
-        s.default.FeedbackEffect.call(this, t),
+        (s.default.FeedbackEffect.call(this, t),
           (this._delayNode = new s.default.Delay(t.delayTime, t.maxDelay)),
           (this.delayTime = this._delayNode.delayTime),
           this.connectEffect(this._delayNode),
-          this._readOnly(["delayTime"]);
+          this._readOnly(["delayTime"]));
       }),
         s.default.extend(s.default.FeedbackDelay, s.default.FeedbackEffect),
         (s.default.FeedbackDelay.defaults = { delayTime: 0.25, maxDelay: 1 }),
@@ -11753,25 +11781,25 @@
             this
           );
         }),
-        (e.default = s.default.FeedbackDelay);
+        (e.default = s.default.FeedbackDelay));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(8), i(7);
-      (s.default.Distortion = function () {
+      (i(8), i(7));
+      ((s.default.Distortion = function () {
         var t = s.default.defaults(
           arguments,
           ["distortion"],
           s.default.Distortion,
         );
-        s.default.Effect.call(this, t),
+        (s.default.Effect.call(this, t),
           (this._shaper = new s.default.WaveShaper(4096)),
           (this._distortion = t.distortion),
           this.connectEffect(this._shaper),
           (this.distortion = t.distortion),
-          (this.oversample = t.oversample);
+          (this.oversample = t.oversample));
       }),
         s.default.extend(s.default.Distortion, s.default.Effect),
         (s.default.Distortion.defaults = {
@@ -11809,20 +11837,20 @@
             this
           );
         }),
-        (e.default = s.default.Distortion);
+        (e.default = s.default.Distortion));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(12), i(15), i(18);
-      (s.default.Chorus = function () {
+      (i(12), i(15), i(18));
+      ((s.default.Chorus = function () {
         var t = s.default.defaults(
           arguments,
           ["frequency", "delayTime", "depth"],
           s.default.Chorus,
         );
-        s.default.StereoEffect.call(this, t),
+        (s.default.StereoEffect.call(this, t),
           (this._depth = t.depth),
           (this._delayTime = t.delayTime / 1e3),
           (this._lfoL = new s.default.LFO({
@@ -11852,7 +11880,7 @@
           (this.frequency.value = t.frequency),
           (this.type = t.type),
           this._readOnly(["frequency"]),
-          (this.spread = t.spread);
+          (this.spread = t.spread));
       }),
         s.default.extend(s.default.Chorus, s.default.StereoEffect),
         (s.default.Chorus.defaults = {
@@ -11869,10 +11897,10 @@
           set: function (t) {
             this._depth = t;
             var e = this._delayTime * t;
-            (this._lfoL.min = Math.max(this._delayTime - e, 0)),
+            ((this._lfoL.min = Math.max(this._delayTime - e, 0)),
               (this._lfoL.max = this._delayTime + e),
               (this._lfoR.min = Math.max(this._delayTime - e, 0)),
-              (this._lfoR.max = this._delayTime + e);
+              (this._lfoR.max = this._delayTime + e));
           },
         }),
         Object.defineProperty(s.default.Chorus.prototype, "delayTime", {
@@ -11880,7 +11908,7 @@
             return 1e3 * this._delayTime;
           },
           set: function (t) {
-            (this._delayTime = t / 1e3), (this.depth = this._depth);
+            ((this._delayTime = t / 1e3), (this.depth = this._depth));
           },
         }),
         Object.defineProperty(s.default.Chorus.prototype, "type", {
@@ -11888,7 +11916,7 @@
             return this._lfoL.type;
           },
           set: function (t) {
-            (this._lfoL.type = t), (this._lfoR.type = t);
+            ((this._lfoL.type = t), (this._lfoR.type = t));
           },
         }),
         Object.defineProperty(s.default.Chorus.prototype, "spread", {
@@ -11896,7 +11924,7 @@
             return this._lfoR.phase - this._lfoL.phase;
           },
           set: function (t) {
-            (this._lfoL.phase = 90 - t / 2), (this._lfoR.phase = t / 2 + 90);
+            ((this._lfoL.phase = 90 - t / 2), (this._lfoR.phase = t / 2 + 90));
           },
         }),
         (s.default.Chorus.prototype.dispose = function () {
@@ -11915,21 +11943,21 @@
             this
           );
         }),
-        (e.default = s.default.Chorus);
+        (e.default = s.default.Chorus));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(8), i(7);
-      (s.default.Chebyshev = function () {
+      (i(8), i(7));
+      ((s.default.Chebyshev = function () {
         var t = s.default.defaults(arguments, ["order"], s.default.Chebyshev);
-        s.default.Effect.call(this, t),
+        (s.default.Effect.call(this, t),
           (this._shaper = new s.default.WaveShaper(4096)),
           (this._order = t.order),
           this.connectEffect(this._shaper),
           (this.order = t.order),
-          (this.oversample = t.oversample);
+          (this.oversample = t.oversample));
       }),
         s.default.extend(s.default.Chebyshev, s.default.Effect),
         (s.default.Chebyshev.defaults = { order: 1, oversample: "none" }),
@@ -11974,23 +12002,23 @@
             this
           );
         }),
-        (e.default = s.default.Chebyshev);
+        (e.default = s.default.Chebyshev));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(8), i(13), i(75);
-      (s.default.BitCrusher = function () {
+      (i(8), i(13), i(75));
+      ((s.default.BitCrusher = function () {
         var t = s.default.defaults(arguments, ["bits"], s.default.BitCrusher);
         s.default.Effect.call(this, t);
         var e = 1 / Math.pow(2, t.bits - 1);
-        (this._subtract = new s.default.Subtract()),
+        ((this._subtract = new s.default.Subtract()),
           (this._modulo = new s.default.Modulo(e)),
           (this._bits = t.bits),
           this.effectSend.fan(this._subtract, this._modulo),
           this._modulo.connect(this._subtract, 0, 1),
-          this._subtract.connect(this.effectReturn);
+          this._subtract.connect(this.effectReturn));
       }),
         s.default.extend(s.default.BitCrusher, s.default.Effect),
         (s.default.BitCrusher.defaults = { bits: 4 }),
@@ -12014,20 +12042,20 @@
             this
           );
         }),
-        (e.default = s.default.BitCrusher);
+        (e.default = s.default.BitCrusher));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(58), i(42), i(8), i(9);
-      (s.default.AutoWah = function () {
+      (i(58), i(42), i(8), i(9));
+      ((s.default.AutoWah = function () {
         var t = s.default.defaults(
           arguments,
           ["baseFrequency", "octaves", "sensitivity"],
           s.default.AutoWah,
         );
-        s.default.Effect.call(this, t),
+        (s.default.Effect.call(this, t),
           (this.follower = new s.default.Follower(t.follower)),
           (this._sweepRange = new s.default.ScaleExp(0, 1, 0.5)),
           (this._baseFrequency = t.baseFrequency),
@@ -12056,7 +12084,7 @@
           ),
           this._setSweepRange(),
           (this.sensitivity = t.sensitivity),
-          this._readOnly(["gain", "Q"]);
+          this._readOnly(["gain", "Q"]));
       }),
         s.default.extend(s.default.AutoWah, s.default.Effect),
         (s.default.AutoWah.defaults = {
@@ -12072,7 +12100,7 @@
             return this._octaves;
           },
           set: function (t) {
-            (this._octaves = t), this._setSweepRange();
+            ((this._octaves = t), this._setSweepRange());
           },
         }),
         Object.defineProperty(s.default.AutoWah.prototype, "baseFrequency", {
@@ -12080,7 +12108,7 @@
             return this._baseFrequency;
           },
           set: function (t) {
-            (this._baseFrequency = t), this._setSweepRange();
+            ((this._baseFrequency = t), this._setSweepRange());
           },
         }),
         Object.defineProperty(s.default.AutoWah.prototype, "sensitivity", {
@@ -12092,11 +12120,11 @@
           },
         }),
         (s.default.AutoWah.prototype._setSweepRange = function () {
-          (this._sweepRange.min = this._baseFrequency),
+          ((this._sweepRange.min = this._baseFrequency),
             (this._sweepRange.max = Math.min(
               this._baseFrequency * Math.pow(2, this._octaves),
               this.context.sampleRate / 2,
-            ));
+            )));
         }),
         (s.default.AutoWah.prototype.dispose = function () {
           return (
@@ -12117,20 +12145,20 @@
             this
           );
         }),
-        (e.default = s.default.AutoWah);
+        (e.default = s.default.AutoWah));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(8), i(12), i(48);
-      (s.default.AutoPanner = function () {
+      (i(8), i(12), i(48));
+      ((s.default.AutoPanner = function () {
         var t = s.default.defaults(
           arguments,
           ["frequency"],
           s.default.AutoPanner,
         );
-        s.default.Effect.call(this, t),
+        (s.default.Effect.call(this, t),
           (this._lfo = new s.default.LFO({
             frequency: t.frequency,
             amplitude: t.depth,
@@ -12143,7 +12171,7 @@
           this.connectEffect(this._panner),
           this._lfo.connect(this._panner.pan),
           (this.type = t.type),
-          this._readOnly(["depth", "frequency"]);
+          this._readOnly(["depth", "frequency"]));
       }),
         s.default.extend(s.default.AutoPanner, s.default.Effect),
         (s.default.AutoPanner.defaults = {
@@ -12152,16 +12180,16 @@
           depth: 1,
         }),
         (s.default.AutoPanner.prototype.start = function (t) {
-          return this._lfo.start(t), this;
+          return (this._lfo.start(t), this);
         }),
         (s.default.AutoPanner.prototype.stop = function (t) {
-          return this._lfo.stop(t), this;
+          return (this._lfo.stop(t), this);
         }),
         (s.default.AutoPanner.prototype.sync = function (t) {
-          return this._lfo.sync(t), this;
+          return (this._lfo.sync(t), this);
         }),
         (s.default.AutoPanner.prototype.unsync = function () {
-          return this._lfo.unsync(), this;
+          return (this._lfo.unsync(), this);
         }),
         Object.defineProperty(s.default.AutoPanner.prototype, "type", {
           get: function () {
@@ -12184,20 +12212,20 @@
             this
           );
         }),
-        (e.default = s.default.AutoPanner);
+        (e.default = s.default.AutoPanner));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(8), i(12), i(9);
-      (s.default.AutoFilter = function () {
+      (i(8), i(12), i(9));
+      ((s.default.AutoFilter = function () {
         var t = s.default.defaults(
           arguments,
           ["frequency", "baseFrequency", "octaves"],
           s.default.AutoFilter,
         );
-        s.default.Effect.call(this, t),
+        (s.default.Effect.call(this, t),
           (this._lfo = new s.default.LFO({
             frequency: t.frequency,
             amplitude: t.depth,
@@ -12211,7 +12239,7 @@
           (this.type = t.type),
           this._readOnly(["frequency", "depth"]),
           (this.octaves = t.octaves),
-          (this.baseFrequency = t.baseFrequency);
+          (this.baseFrequency = t.baseFrequency));
       }),
         s.default.extend(s.default.AutoFilter, s.default.Effect),
         (s.default.AutoFilter.defaults = {
@@ -12223,16 +12251,16 @@
           filter: { type: "lowpass", rolloff: -12, Q: 1 },
         }),
         (s.default.AutoFilter.prototype.start = function (t) {
-          return this._lfo.start(t), this;
+          return (this._lfo.start(t), this);
         }),
         (s.default.AutoFilter.prototype.stop = function (t) {
-          return this._lfo.stop(t), this;
+          return (this._lfo.stop(t), this);
         }),
         (s.default.AutoFilter.prototype.sync = function (t) {
-          return this._lfo.sync(t), this;
+          return (this._lfo.sync(t), this);
         }),
         (s.default.AutoFilter.prototype.unsync = function () {
-          return this._lfo.unsync(), this;
+          return (this._lfo.unsync(), this);
         }),
         Object.defineProperty(s.default.AutoFilter.prototype, "type", {
           get: function () {
@@ -12247,8 +12275,8 @@
             return this._lfo.min;
           },
           set: function (t) {
-            (this._lfo.min = this.toFrequency(t)),
-              (this.octaves = this._octaves);
+            ((this._lfo.min = this.toFrequency(t)),
+              (this.octaves = this._octaves));
           },
         }),
         Object.defineProperty(s.default.AutoFilter.prototype, "octaves", {
@@ -12256,8 +12284,8 @@
             return this._octaves;
           },
           set: function (t) {
-            (this._octaves = t),
-              (this._lfo.max = this.baseFrequency * Math.pow(2, t));
+            ((this._octaves = t),
+              (this._lfo.max = this.baseFrequency * Math.pow(2, t)));
           },
         }),
         (s.default.AutoFilter.prototype.dispose = function () {
@@ -12273,22 +12301,22 @@
             this
           );
         }),
-        (e.default = s.default.AutoFilter);
+        (e.default = s.default.AutoFilter));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(23), i(10), i(19), i(2), i(22), i(28);
-      (s.default.Listener = function () {
-        s.default.call(this),
+      (i(23), i(10), i(19), i(2), i(22), i(28));
+      ((s.default.Listener = function () {
+        (s.default.call(this),
           (this._orientation = [0, 0, 0, 0, 0, 0]),
           (this._position = [0, 0, 0]),
           s.default.getContext(
             function () {
               this.set(n.defaults);
             }.bind(this),
-          );
+          ));
       }),
         s.default.extend(s.default.Listener),
         (s.default.Listener.defaults = {
@@ -12307,7 +12335,7 @@
         (s.default.Listener.prototype.setPosition = function (t, e, i) {
           if (this.context.rawContext.listener.positionX) {
             var s = this.now();
-            this.context.rawContext.listener.positionX.setTargetAtTime(
+            (this.context.rawContext.listener.positionX.setTargetAtTime(
               t,
               s,
               this._rampTimeConstant,
@@ -12321,9 +12349,12 @@
                 i,
                 s,
                 this._rampTimeConstant,
-              );
+              ));
           } else this.context.rawContext.listener.setPosition(t, e, i);
-          return (this._position = Array.prototype.slice.call(arguments)), this;
+          return (
+            (this._position = Array.prototype.slice.call(arguments)),
+            this
+          );
         }),
         (s.default.Listener.prototype.setOrientation = function (
           t,
@@ -12335,7 +12366,7 @@
         ) {
           if (this.context.rawContext.listener.forwardX) {
             var a = this.now();
-            this.context.rawContext.listener.forwardX.setTargetAtTime(
+            (this.context.rawContext.listener.forwardX.setTargetAtTime(
               t,
               a,
               this._rampTimeConstant,
@@ -12364,17 +12395,18 @@
                 o,
                 a,
                 this._rampTimeConstant,
-              );
+              ));
           } else
             this.context.rawContext.listener.setOrientation(t, e, i, s, n, o);
           return (
-            (this._orientation = Array.prototype.slice.call(arguments)), this
+            (this._orientation = Array.prototype.slice.call(arguments)),
+            this
           );
         }),
         Object.defineProperty(s.default.Listener.prototype, "positionX", {
           set: function (t) {
-            (this._position[0] = t),
-              this.setPosition.apply(this, this._position);
+            ((this._position[0] = t),
+              this.setPosition.apply(this, this._position));
           },
           get: function () {
             return this._position[0];
@@ -12382,8 +12414,8 @@
         }),
         Object.defineProperty(s.default.Listener.prototype, "positionY", {
           set: function (t) {
-            (this._position[1] = t),
-              this.setPosition.apply(this, this._position);
+            ((this._position[1] = t),
+              this.setPosition.apply(this, this._position));
           },
           get: function () {
             return this._position[1];
@@ -12391,8 +12423,8 @@
         }),
         Object.defineProperty(s.default.Listener.prototype, "positionZ", {
           set: function (t) {
-            (this._position[2] = t),
-              this.setPosition.apply(this, this._position);
+            ((this._position[2] = t),
+              this.setPosition.apply(this, this._position));
           },
           get: function () {
             return this._position[2];
@@ -12400,8 +12432,8 @@
         }),
         Object.defineProperty(s.default.Listener.prototype, "forwardX", {
           set: function (t) {
-            (this._orientation[0] = t),
-              this.setOrientation.apply(this, this._orientation);
+            ((this._orientation[0] = t),
+              this.setOrientation.apply(this, this._orientation));
           },
           get: function () {
             return this._orientation[0];
@@ -12409,8 +12441,8 @@
         }),
         Object.defineProperty(s.default.Listener.prototype, "forwardY", {
           set: function (t) {
-            (this._orientation[1] = t),
-              this.setOrientation.apply(this, this._orientation);
+            ((this._orientation[1] = t),
+              this.setOrientation.apply(this, this._orientation));
           },
           get: function () {
             return this._orientation[1];
@@ -12418,8 +12450,8 @@
         }),
         Object.defineProperty(s.default.Listener.prototype, "forwardZ", {
           set: function (t) {
-            (this._orientation[2] = t),
-              this.setOrientation.apply(this, this._orientation);
+            ((this._orientation[2] = t),
+              this.setOrientation.apply(this, this._orientation));
           },
           get: function () {
             return this._orientation[2];
@@ -12427,8 +12459,8 @@
         }),
         Object.defineProperty(s.default.Listener.prototype, "upX", {
           set: function (t) {
-            (this._orientation[3] = t),
-              this.setOrientation.apply(this, this._orientation);
+            ((this._orientation[3] = t),
+              this.setOrientation.apply(this, this._orientation));
           },
           get: function () {
             return this._orientation[3];
@@ -12436,8 +12468,8 @@
         }),
         Object.defineProperty(s.default.Listener.prototype, "upY", {
           set: function (t) {
-            (this._orientation[4] = t),
-              this.setOrientation.apply(this, this._orientation);
+            ((this._orientation[4] = t),
+              this.setOrientation.apply(this, this._orientation));
           },
           get: function () {
             return this._orientation[4];
@@ -12445,36 +12477,36 @@
         }),
         Object.defineProperty(s.default.Listener.prototype, "upZ", {
           set: function (t) {
-            (this._orientation[5] = t),
-              this.setOrientation.apply(this, this._orientation);
+            ((this._orientation[5] = t),
+              this.setOrientation.apply(this, this._orientation));
           },
           get: function () {
             return this._orientation[5];
           },
         }),
         (s.default.Listener.prototype.dispose = function () {
-          return (this._orientation = null), (this._position = null), this;
-        });
+          return ((this._orientation = null), (this._position = null), this);
+        }));
       var n = s.default.Listener;
-      (s.default.Listener = new n()),
+      ((s.default.Listener = new n()),
         s.default.Context.on("init", function (t) {
           t.listener && t.listener.isListener
             ? (s.default.Listener = t.listener)
             : (s.default.Listener = new n());
         }),
-        (e.default = s.default.Listener);
+        (e.default = s.default.Listener));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(24);
-      (s.default.Draw = function () {
-        s.default.call(this),
+      ((s.default.Draw = function () {
+        (s.default.call(this),
           (this._events = new s.default.Timeline()),
           (this.expiration = 0.25),
           (this.anticipation = 0.008),
-          (this._boundDrawLoop = this._drawLoop.bind(this));
+          (this._boundDrawLoop = this._drawLoop.bind(this)));
       }),
         s.default.extend(s.default.Draw),
         (s.default.Draw.prototype.schedule = function (t, e) {
@@ -12486,14 +12518,13 @@
           );
         }),
         (s.default.Draw.prototype.cancel = function (t) {
-          return this._events.cancel(this.toSeconds(t)), this;
+          return (this._events.cancel(this.toSeconds(t)), this);
         }),
         (s.default.Draw.prototype._drawLoop = function () {
           for (
             var t = s.default.context.currentTime;
             this._events.length &&
             this._events.peek().time - this.anticipation <= t;
-
           ) {
             var e = this._events.shift();
             t - e.time <= this.expiration && e.callback();
@@ -12501,18 +12532,18 @@
           this._events.length > 0 && requestAnimationFrame(this._boundDrawLoop);
         }),
         (s.default.Draw = new s.default.Draw()),
-        (e.default = s.default.Draw);
+        (e.default = s.default.Draw));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0),
         n = (i(3), {});
-      (s.default.prototype.send = function (t, e) {
-        n.hasOwnProperty(t) || (n[t] = this.context.createGain()),
-          (e = s.default.defaultArg(e, 0));
+      ((s.default.prototype.send = function (t, e) {
+        (n.hasOwnProperty(t) || (n[t] = this.context.createGain()),
+          (e = s.default.defaultArg(e, 0)));
         var i = new s.default.Gain(e, s.default.Type.Decibels);
-        return this.connect(i), i.connect(n[t]), i;
+        return (this.connect(i), i.connect(n[t]), i);
       }),
         (s.default.prototype.receive = function (t, e) {
           return (
@@ -12524,23 +12555,23 @@
         s.default.Context.on("init", function (t) {
           t.buses ? (n = t.buses) : ((n = {}), (t.buses = n));
         }),
-        (e.default = s.default);
+        (e.default = s.default));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(4);
-      (s.default.CtrlRandom = function () {
+      ((s.default.CtrlRandom = function () {
         var t = s.default.defaults(
           arguments,
           ["min", "max"],
           s.default.CtrlRandom,
         );
-        s.default.call(this),
+        (s.default.call(this),
           (this.min = t.min),
           (this.max = t.max),
-          (this.integer = t.integer);
+          (this.integer = t.integer));
       }),
         s.default.extend(s.default.CtrlRandom),
         (s.default.CtrlRandom.defaults = { min: 0, max: 1, integer: !1 }),
@@ -12550,19 +12581,19 @@
               e = this.toSeconds(this.max),
               i = Math.random(),
               s = i * t + (1 - i) * e;
-            return this.integer && (s = Math.floor(s)), s;
+            return (this.integer && (s = Math.floor(s)), s);
           },
         }),
-        (e.default = s.default.CtrlRandom);
+        (e.default = s.default.CtrlRandom));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      (s.default.CtrlMarkov = function (t, e) {
-        s.default.call(this),
+      ((s.default.CtrlMarkov = function (t, e) {
+        (s.default.call(this),
           (this.values = s.default.defaultArg(t, {})),
-          (this.value = s.default.defaultArg(e, Object.keys(this.values)[0]));
+          (this.value = s.default.defaultArg(e, Object.keys(this.values)[0])));
       }),
         s.default.extend(s.default.CtrlMarkov),
         (s.default.CtrlMarkov.prototype.next = function () {
@@ -12593,10 +12624,10 @@
         (s.default.CtrlMarkov.prototype._getProbDistribution = function (t) {
           for (var e = [], i = 0, n = !1, o = 0; o < t.length; o++) {
             var a = t[o];
-            s.default.isObject(a)
+            (s.default.isObject(a)
               ? ((n = !0), (e[o] = a.probability))
               : (e[o] = 1 / t.length),
-              (i += e[o]);
+              (i += e[o]));
           }
           if (n) for (var r = 0; r < e.length; r++) e[r] = e[r] / i;
           return e;
@@ -12604,20 +12635,22 @@
         (s.default.CtrlMarkov.prototype.dispose = function () {
           this.values = null;
         }),
-        (e.default = s.default.CtrlMarkov);
+        (e.default = s.default.CtrlMarkov));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(4);
-      (s.default.CtrlInterpolate = function () {
+      ((s.default.CtrlInterpolate = function () {
         var t = s.default.defaults(
           arguments,
           ["values", "index"],
           s.default.CtrlInterpolate,
         );
-        s.default.call(this), (this.values = t.values), (this.index = t.index);
+        (s.default.call(this),
+          (this.values = t.values),
+          (this.index = t.index));
       }),
         s.default.extend(s.default.CtrlInterpolate),
         (s.default.CtrlInterpolate.defaults = { index: 0, values: [] }),
@@ -12652,21 +12685,21 @@
         (s.default.CtrlInterpolate.prototype.dispose = function () {
           this.values = null;
         }),
-        (e.default = s.default.CtrlInterpolate);
+        (e.default = s.default.CtrlInterpolate));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(36), i(1);
-      (s.default.Waveform = function () {
+      (i(36), i(1));
+      ((s.default.Waveform = function () {
         var t = s.default.defaults(arguments, ["size"], s.default.Waveform);
-        (t.type = s.default.Analyser.Type.Waveform),
+        ((t.type = s.default.Analyser.Type.Waveform),
           s.default.AudioNode.call(this),
           (this._analyser =
             this.input =
             this.output =
-              new s.default.Analyser(t));
+              new s.default.Analyser(t)));
       }),
         s.default.extend(s.default.Waveform, s.default.AudioNode),
         (s.default.Waveform.defaults = { size: 1024 }),
@@ -12682,24 +12715,24 @@
           },
         }),
         (s.default.Waveform.prototype.dispose = function () {
-          s.default.AudioNode.prototype.dispose.call(this),
+          (s.default.AudioNode.prototype.dispose.call(this),
             this._analyser.dispose(),
-            (this._analyser = null);
+            (this._analyser = null));
         }),
-        (e.default = s.default.Waveform);
+        (e.default = s.default.Waveform));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(23), i(10), i(19), i(2), i(22), i(28), i(1);
-      (s.default.Panner3D = function () {
+      (i(23), i(10), i(19), i(2), i(22), i(28), i(1));
+      ((s.default.Panner3D = function () {
         var t = s.default.defaults(
           arguments,
           ["positionX", "positionY", "positionZ"],
           s.default.Panner3D,
         );
-        s.default.AudioNode.call(this),
+        (s.default.AudioNode.call(this),
           (this._panner =
             this.input =
             this.output =
@@ -12723,7 +12756,7 @@
           (this.orientationZ = t.orientationZ),
           (this.positionX = t.positionX),
           (this.positionY = t.positionY),
-          (this.positionZ = t.positionZ);
+          (this.positionZ = t.positionZ));
       }),
         s.default.extend(s.default.Panner3D, s.default.AudioNode),
         (s.default.Panner3D.defaults = {
@@ -12746,7 +12779,7 @@
         (s.default.Panner3D.prototype.setPosition = function (t, e, i) {
           if (this._panner.positionX) {
             var s = this.now();
-            this._panner.positionX.setTargetAtTime(
+            (this._panner.positionX.setTargetAtTime(
               t,
               s,
               this._rampTimeConstant,
@@ -12760,14 +12793,17 @@
                 i,
                 s,
                 this._rampTimeConstant,
-              );
+              ));
           } else this._panner.setPosition(t, e, i);
-          return (this._position = Array.prototype.slice.call(arguments)), this;
+          return (
+            (this._position = Array.prototype.slice.call(arguments)),
+            this
+          );
         }),
         (s.default.Panner3D.prototype.setOrientation = function (t, e, i) {
           if (this._panner.orientationX) {
             var s = this.now();
-            this._panner.orientationX.setTargetAtTime(
+            (this._panner.orientationX.setTargetAtTime(
               t,
               s,
               this._rampTimeConstant,
@@ -12781,16 +12817,17 @@
                 i,
                 s,
                 this._rampTimeConstant,
-              );
+              ));
           } else this._panner.setOrientation(t, e, i);
           return (
-            (this._orientation = Array.prototype.slice.call(arguments)), this
+            (this._orientation = Array.prototype.slice.call(arguments)),
+            this
           );
         }),
         Object.defineProperty(s.default.Panner3D.prototype, "positionX", {
           set: function (t) {
-            (this._position[0] = t),
-              this.setPosition.apply(this, this._position);
+            ((this._position[0] = t),
+              this.setPosition.apply(this, this._position));
           },
           get: function () {
             return this._position[0];
@@ -12798,8 +12835,8 @@
         }),
         Object.defineProperty(s.default.Panner3D.prototype, "positionY", {
           set: function (t) {
-            (this._position[1] = t),
-              this.setPosition.apply(this, this._position);
+            ((this._position[1] = t),
+              this.setPosition.apply(this, this._position));
           },
           get: function () {
             return this._position[1];
@@ -12807,8 +12844,8 @@
         }),
         Object.defineProperty(s.default.Panner3D.prototype, "positionZ", {
           set: function (t) {
-            (this._position[2] = t),
-              this.setPosition.apply(this, this._position);
+            ((this._position[2] = t),
+              this.setPosition.apply(this, this._position));
           },
           get: function () {
             return this._position[2];
@@ -12816,8 +12853,8 @@
         }),
         Object.defineProperty(s.default.Panner3D.prototype, "orientationX", {
           set: function (t) {
-            (this._orientation[0] = t),
-              this.setOrientation.apply(this, this._orientation);
+            ((this._orientation[0] = t),
+              this.setOrientation.apply(this, this._orientation));
           },
           get: function () {
             return this._orientation[0];
@@ -12825,8 +12862,8 @@
         }),
         Object.defineProperty(s.default.Panner3D.prototype, "orientationY", {
           set: function (t) {
-            (this._orientation[1] = t),
-              this.setOrientation.apply(this, this._orientation);
+            ((this._orientation[1] = t),
+              this.setOrientation.apply(this, this._orientation));
           },
           get: function () {
             return this._orientation[1];
@@ -12834,8 +12871,8 @@
         }),
         Object.defineProperty(s.default.Panner3D.prototype, "orientationZ", {
           set: function (t) {
-            (this._orientation[2] = t),
-              this.setOrientation.apply(this, this._orientation);
+            ((this._orientation[2] = t),
+              this.setOrientation.apply(this, this._orientation));
           },
           get: function () {
             return this._orientation[2];
@@ -12869,15 +12906,15 @@
             this
           );
         }),
-        (e.default = s.default.Panner3D);
+        (e.default = s.default.Panner3D));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(60), i(43), i(1);
-      (s.default.MultibandCompressor = function (t) {
-        s.default.AudioNode.call(this),
+      (i(60), i(43), i(1));
+      ((s.default.MultibandCompressor = function (t) {
+        (s.default.AudioNode.call(this),
           (t = s.default.defaultArg(
             arguments,
             s.default.MultibandCompressor.defaults,
@@ -12902,7 +12939,7 @@
             "low",
             "highFrequency",
             "lowFrequency",
-          ]);
+          ]));
       }),
         s.default.extend(s.default.MultibandCompressor, s.default.AudioNode),
         (s.default.MultibandCompressor.defaults = {
@@ -12935,19 +12972,19 @@
             this
           );
         }),
-        (e.default = s.default.MultibandCompressor);
+        (e.default = s.default.MultibandCompressor));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(10), i(1);
-      (s.default.Mono = function () {
-        s.default.AudioNode.call(this),
+      (i(10), i(1));
+      ((s.default.Mono = function () {
+        (s.default.AudioNode.call(this),
           this.createInsOuts(1, 0),
           (this._merge = this.output = new s.default.Merge()),
           s.default.connect(this.input, this._merge, 0, 0),
-          s.default.connect(this.input, this._merge, 0, 1);
+          s.default.connect(this.input, this._merge, 0, 1));
       }),
         s.default.extend(s.default.Mono, s.default.AudioNode),
         (s.default.Mono.prototype.dispose = function () {
@@ -12958,15 +12995,15 @@
             this
           );
         }),
-        (e.default = s.default.Mono);
+        (e.default = s.default.Mono));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(53), i(52), i(43), i(1);
-      (s.default.MidSideCompressor = function (t) {
-        s.default.AudioNode.call(this),
+      (i(53), i(52), i(43), i(1));
+      ((s.default.MidSideCompressor = function (t) {
+        (s.default.AudioNode.call(this),
           (t = s.default.defaultArg(t, s.default.MidSideCompressor.defaults)),
           (this._midSideSplit = this.input = new s.default.MidSideSplit()),
           (this._midSideMerge = this.output = new s.default.MidSideMerge()),
@@ -12974,7 +13011,7 @@
           (this.side = new s.default.Compressor(t.side)),
           this._midSideSplit.mid.chain(this.mid, this._midSideMerge.mid),
           this._midSideSplit.side.chain(this.side, this._midSideMerge.side),
-          this._readOnly(["mid", "side"]);
+          this._readOnly(["mid", "side"]));
       }),
         s.default.extend(s.default.MidSideCompressor, s.default.AudioNode),
         (s.default.MidSideCompressor.defaults = {
@@ -13008,22 +13045,22 @@
             this
           );
         }),
-        (e.default = s.default.MidSideCompressor);
+        (e.default = s.default.MidSideCompressor));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(36), i(1);
-      (s.default.Meter = function () {
+      (i(36), i(1));
+      ((s.default.Meter = function () {
         var t = s.default.defaults(arguments, ["smoothing"], s.default.Meter);
-        s.default.AudioNode.call(this),
+        (s.default.AudioNode.call(this),
           (this.smoothing = t.smoothing),
           (this._rms = 0),
           (this.input =
             this.output =
             this._analyser =
-              new s.default.Analyser("waveform", 256));
+              new s.default.Analyser("waveform", 256)));
       }),
         s.default.extend(s.default.Meter, s.default.AudioNode),
         (s.default.Meter.defaults = { smoothing: 0.8 }),
@@ -13053,16 +13090,16 @@
             this
           );
         }),
-        (e.default = s.default.Meter);
+        (e.default = s.default.Meter));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(43), i(1);
-      (s.default.Limiter = function () {
+      (i(43), i(1));
+      ((s.default.Limiter = function () {
         var t = s.default.defaults(arguments, ["threshold"], s.default.Limiter);
-        s.default.AudioNode.call(this),
+        (s.default.AudioNode.call(this),
           (this._compressor =
             this.input =
             this.output =
@@ -13072,7 +13109,7 @@
                 threshold: t.threshold,
               })),
           (this.threshold = this._compressor.threshold),
-          this._readOnly("threshold");
+          this._readOnly("threshold"));
       }),
         s.default.extend(s.default.Limiter, s.default.AudioNode),
         (s.default.Limiter.defaults = { threshold: -12 }),
@@ -13086,20 +13123,20 @@
             this
           );
         }),
-        (e.default = s.default.Limiter);
+        (e.default = s.default.Limiter));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(58), i(85), i(1);
-      (s.default.Gate = function () {
+      (i(58), i(85), i(1));
+      ((s.default.Gate = function () {
         var t = s.default.defaults(
           arguments,
           ["threshold", "smoothing"],
           s.default.Gate,
         );
-        s.default.AudioNode.call(this),
+        (s.default.AudioNode.call(this),
           this.createInsOuts(1, 1),
           (this._follower = new s.default.Follower(t.smoothing)),
           (this._gt = new s.default.GreaterThan(
@@ -13111,7 +13148,7 @@
             this._follower,
             this._gt,
             this.output.gain,
-          );
+          ));
       }),
         s.default.extend(s.default.Gate, s.default.AudioNode),
         (s.default.Gate.defaults = { smoothing: 0.1, threshold: -40 }),
@@ -13141,21 +13178,21 @@
             this
           );
         }),
-        (e.default = s.default.Gate);
+        (e.default = s.default.Gate));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(36), i(1);
-      (s.default.FFT = function () {
+      (i(36), i(1));
+      ((s.default.FFT = function () {
         var t = s.default.defaults(arguments, ["size"], s.default.FFT);
-        (t.type = s.default.Analyser.Type.FFT),
+        ((t.type = s.default.Analyser.Type.FFT),
           s.default.AudioNode.call(this),
           (this._analyser =
             this.input =
             this.output =
-              new s.default.Analyser(t));
+              new s.default.Analyser(t)));
       }),
         s.default.extend(s.default.FFT, s.default.AudioNode),
         (s.default.FFT.defaults = { size: 1024 }),
@@ -13171,24 +13208,24 @@
           },
         }),
         (s.default.FFT.prototype.dispose = function () {
-          s.default.AudioNode.prototype.dispose.call(this),
+          (s.default.AudioNode.prototype.dispose.call(this),
             this._analyser.dispose(),
-            (this._analyser = null);
+            (this._analyser = null));
         }),
-        (e.default = s.default.FFT);
+        (e.default = s.default.FFT));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(60), i(3), i(1);
-      (s.default.EQ3 = function () {
+      (i(60), i(3), i(1));
+      ((s.default.EQ3 = function () {
         var t = s.default.defaults(
           arguments,
           ["low", "mid", "high"],
           s.default.EQ3,
         );
-        s.default.AudioNode.call(this),
+        (s.default.AudioNode.call(this),
           (this.output = new s.default.Gain()),
           (this._multibandSplit = this.input =
             new s.default.MultibandSplit({
@@ -13216,7 +13253,7 @@
             "high",
             "lowFrequency",
             "highFrequency",
-          ]);
+          ]));
       }),
         s.default.extend(s.default.EQ3, s.default.AudioNode),
         (s.default.EQ3.defaults = {
@@ -13253,20 +13290,20 @@
             this
           );
         }),
-        (e.default = s.default.EQ3);
+        (e.default = s.default.EQ3));
     },
     function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      i(91), i(88), i(1);
-      (s.default.Channel = function () {
+      (i(91), i(88), i(1));
+      ((s.default.Channel = function () {
         var t = s.default.defaults(
           arguments,
           ["volume", "pan"],
           s.default.PanVol,
         );
-        s.default.AudioNode.call(this, t),
+        (s.default.AudioNode.call(this, t),
           (this._solo = this.input = new s.default.Solo(t.solo)),
           (this._panVol = this.output =
             new s.default.PanVol({
@@ -13277,7 +13314,7 @@
           (this.pan = this._panVol.pan),
           (this.volume = this._panVol.volume),
           this._solo.connect(this._panVol),
-          this._readOnly(["pan", "volume"]);
+          this._readOnly(["pan", "volume"]));
       }),
         s.default.extend(s.default.Channel, s.default.AudioNode),
         (s.default.Channel.defaults = {
@@ -13320,7 +13357,7 @@
             this
           );
         }),
-        (e.default = s.default.Channel);
+        (e.default = s.default.Channel));
     },
     function (t, e) {
       var i;
@@ -13335,7 +13372,7 @@
       t.exports = i;
     },
     function (t, e, i) {
-      i(31),
+      (i(31),
         i(36),
         i(146),
         i(43),
@@ -13478,7 +13515,7 @@
         i(62),
         i(45),
         i(4),
-        (t.exports = i(0).default);
+        (t.exports = i(0).default));
     },
   ]);
 });
@@ -13498,7 +13535,7 @@
       function n(r) {
         if (e[r]) return e[r].exports;
         var i = (e[r] = { i: r, l: !1, exports: {} });
-        return t[r].call(i.exports, i, i.exports, n), (i.l = !0), i.exports;
+        return (t[r].call(i.exports, i, i.exports, n), (i.l = !0), i.exports);
       }
       return (
         (n.m = t),
@@ -13507,10 +13544,10 @@
           n.o(t, e) || Object.defineProperty(t, e, { enumerable: !0, get: r });
         }),
         (n.r = function (t) {
-          "undefined" != typeof Symbol &&
+          ("undefined" != typeof Symbol &&
             Symbol.toStringTag &&
             Object.defineProperty(t, Symbol.toStringTag, { value: "Module" }),
-            Object.defineProperty(t, "__esModule", { value: !0 });
+            Object.defineProperty(t, "__esModule", { value: !0 }));
         }),
         (n.t = function (t, e) {
           if ((1 & e && (t = n(t)), 8 & e)) return t;
@@ -13540,7 +13577,7 @@
               : function () {
                   return t;
                 };
-          return n.d(e, "a", e), e;
+          return (n.d(e, "a", e), e);
         }),
         (n.o = function (t, e) {
           return Object.prototype.hasOwnProperty.call(t, e);
@@ -13554,7 +13591,7 @@
       },
       function (t, e, n) {
         "use strict";
-        n.r(e),
+        (n.r(e),
           n.d(e, "DEFAULT_QUARTERS_PER_MINUTE", function () {
             return r;
           }),
@@ -13638,7 +13675,7 @@
           }),
           n.d(e, "HI_CLICK_CLASS", function () {
             return q;
-          });
+          }));
         const r = 120,
           i = 16,
           o = 4,
@@ -13681,7 +13718,7 @@
       },
       function (t, e, n) {
         "use strict";
-        n.r(e),
+        (n.r(e),
           n.d(e, "Level", function () {
             return r;
           }),
@@ -13693,14 +13730,14 @@
           }),
           n.d(e, "logWithDuration", function () {
             return a;
-          });
+          }));
         var r,
           i = n(6);
         !(function (t) {
-          (t[(t.NONE = 0)] = "NONE"),
+          ((t[(t.NONE = 0)] = "NONE"),
             (t[(t.WARN = 5)] = "WARN"),
             (t[(t.INFO = 10)] = "INFO"),
-            (t[(t.DEBUG = 20)] = "DEBUG");
+            (t[(t.DEBUG = 20)] = "DEBUG"));
         })(r || (r = {}));
         let o = 10;
         function s(t, e = "Magenta.js", n = 10) {
@@ -13721,7 +13758,7 @@
       function (t, e, n) {
         "use strict";
         (function (t) {
-          n.d(e, "a", function () {
+          (n.d(e, "a", function () {
             return i;
           }),
             n.d(e, "d", function () {
@@ -13732,7 +13769,7 @@
             }),
             n.d(e, "b", function () {
               return u;
-            });
+            }));
           const r = (function () {
               if ("undefined" != typeof globalThis) return globalThis;
               if ("undefined" != typeof self) return self;
@@ -13756,7 +13793,7 @@
       },
       function (t, e, n) {
         "use strict";
-        n.r(e),
+        (n.r(e),
           n.d(e, "MultipleTimeSignatureException", function () {
             return o;
           }),
@@ -13825,32 +13862,32 @@
           }),
           n.d(e, "split", function () {
             return E;
-          });
+          }));
         var r = n(2),
           i = n(1);
         class o extends Error {
           constructor(t) {
-            super(t), Object.setPrototypeOf(this, new.target.prototype);
+            (super(t), Object.setPrototypeOf(this, new.target.prototype));
           }
         }
         class s extends Error {
           constructor(t) {
-            super(t), Object.setPrototypeOf(this, new.target.prototype);
+            (super(t), Object.setPrototypeOf(this, new.target.prototype));
           }
         }
         class a extends Error {
           constructor(t) {
-            super(t), Object.setPrototypeOf(this, new.target.prototype);
+            (super(t), Object.setPrototypeOf(this, new.target.prototype));
           }
         }
         class u extends Error {
           constructor(t) {
-            super(t), Object.setPrototypeOf(this, new.target.prototype);
+            (super(t), Object.setPrototypeOf(this, new.target.prototype));
           }
         }
         class c extends Error {
           constructor(t) {
-            super(t), Object.setPrototypeOf(this, new.target.prototype);
+            (super(t), Object.setPrototypeOf(this, new.target.prototype));
           }
         }
         function l(t) {
@@ -13923,8 +13960,8 @@
                     `at ${e.time} seconds`,
                 );
             }
-            (n.timeSignatures[0].time = 0),
-              (n.timeSignatures = [n.timeSignatures[0]]);
+            ((n.timeSignatures[0].time = 0),
+              (n.timeSignatures = [n.timeSignatures[0]]));
           } else {
             const t = r.a.TimeSignature.create({
               numerator: 4,
@@ -13944,7 +13981,7 @@
               `Numerator is 0. Time signature: ${u.numerator}/${u.denominator}`,
             );
           if (n.tempos.length > 0)
-            m(n), (n.tempos[0].time = 0), (n.tempos = [n.tempos[0]]);
+            (m(n), (n.tempos[0].time = 0), (n.tempos = [n.tempos[0]]));
           else {
             const t = r.a.Tempo.create({
               qpm: i.DEFAULT_QUARTERS_PER_MINUTE,
@@ -14015,7 +14052,7 @@
             );
         }
         function v(t, e) {
-          b(t), m(t);
+          (b(t), m(t));
           const n = l(t);
           e
             ? n.tempos && n.tempos.length > 0
@@ -14029,11 +14066,11 @@
           return (
             (n.totalTime = o(n.totalQuantizedSteps)),
             n.notes.forEach((t) => {
-              (t.startTime = o(t.quantizedStartStep)),
+              ((t.startTime = o(t.quantizedStartStep)),
                 (t.endTime = o(t.quantizedEndStep)),
                 (n.totalTime = Math.max(n.totalTime, t.endTime)),
                 delete t.quantizedStartStep,
-                delete t.quantizedEndStep;
+                delete t.quantizedEndStep);
             }),
             f(n).forEach((t) => {
               t.time = o(t.time);
@@ -14071,12 +14108,12 @@
           const n = new Set(t.notes.map((t) => t.instrument)),
             i = new Set(e.notes.map((t) => t.instrument)),
             o = [];
-          t.notes.forEach((t) => {
+          (t.notes.forEach((t) => {
             i.has(t.instrument) || o.push(r.a.Note.create(t));
           }),
             e.notes.forEach((t) => {
               n.has(t.instrument) && o.push(r.a.Note.create(t));
-            });
+            }));
           const s = l(t);
           return (
             (s.notes = o.sort((t, e) => {
@@ -14095,11 +14132,11 @@
               return n || t.quantizedStartStep - e.quantizedStartStep;
             }),
             i = new r.a.Note();
-          (i.pitch = n[0].pitch),
+          ((i.pitch = n[0].pitch),
             (i.instrument = n[0].instrument),
             (i.quantizedStartStep = n[0].quantizedStartStep),
             (i.quantizedEndStep = n[0].quantizedEndStep),
-            e.notes.push(i);
+            e.notes.push(i));
           let o = 0;
           for (let t = 1; t < n.length; t++) {
             const i = n[t],
@@ -14114,12 +14151,12 @@
                 i.quantizedEndStep - i.quantizedStartStep;
             else {
               const i = new r.a.Note();
-              (i.pitch = n[t].pitch),
+              ((i.pitch = n[t].pitch),
                 (i.instrument = n[t].instrument),
                 (i.quantizedStartStep = n[t].quantizedStartStep),
                 (i.quantizedEndStep = n[t].quantizedEndStep),
                 e.notes.push(i),
-                o++;
+                o++);
             }
           }
           return e;
@@ -14171,30 +14208,30 @@
               throw Error(
                 `Sequence ${t[u].id} has no ${e}, and no individual duration was provided.`,
               );
-            0 === u
+            (0 === u
               ? (s = l(t[0]))
               : Array.prototype.push.apply(
                   s.notes,
                   t[u].notes.map((t) => {
                     const e = r.a.Note.create(t);
-                    return (e[n] += a), (e[i] += a), e;
+                    return ((e[n] += a), (e[i] += a), e);
                   }),
                 ),
-              (a += c);
+              (a += c));
           }
-          return (s[e] = a), s;
+          return ((s[e] = a), s);
         }
         function q(t, e, n, r, i, o, s) {
           const a = l(t);
-          (a[r] = n),
+          ((a[r] = n),
             (a.notes = a.notes.filter(
               (t) => t[i] >= e && t[i] <= n && (s || t[o] <= n),
             )),
-            (a[r] -= e);
+            (a[r] -= e));
           for (let t = 0; t < a.notes.length; t++)
-            (a.notes[t][i] -= e),
+            ((a.notes[t][i] -= e),
               (a.notes[t][o] -= e),
-              s && (a.notes[t][o] = Math.min(a.notes[t][o], a[r]));
+              s && (a.notes[t][o] = Math.min(a.notes[t][o], a[r])));
           return a;
         }
         function E(t, e) {
@@ -14219,26 +14256,26 @@
               else {
                 if (u.quantizedStartStep < e) {
                   const t = r.a.Note.create(u);
-                  (t.quantizedEndStep = e),
+                  ((t.quantizedEndStep = e),
                     (t.startTime = t.endTime = void 0),
                     a.push(t),
                     (u.quantizedStartStep = s + e),
-                    (u.quantizedEndStep = h);
-                } else (u.quantizedStartStep = c), (u.quantizedEndStep = h);
+                    (u.quantizedEndStep = h));
+                } else ((u.quantizedStartStep = c), (u.quantizedEndStep = h));
                 if (
                   ((u.quantizedEndStep > e || u.quantizedStartStep > e) &&
                     (t -= 1),
                   0 !== a.length)
                 ) {
                   const t = l(n);
-                  (t.notes = a), (t.totalQuantizedSteps = e), o.push(t);
+                  ((t.notes = a), (t.totalQuantizedSteps = e), o.push(t));
                 }
-                (a = []), (s += e);
+                ((a = []), (s += e));
               }
           }
           if (0 !== a.length) {
             const t = l(n);
-            (t.notes = a), (t.totalQuantizedSteps = e), o.push(t);
+            ((t.notes = a), (t.totalQuantizedSteps = e), o.push(t));
           }
           return o;
         }
@@ -14255,7 +14292,7 @@
           function o(t) {
             function e(t, n) {
               if (!(this instanceof e)) return new e(t, n);
-              Object.defineProperty(this, "message", {
+              (Object.defineProperty(this, "message", {
                 get: function () {
                   return t;
                 },
@@ -14265,7 +14302,7 @@
                   : Object.defineProperty(this, "stack", {
                       value: new Error().stack || "",
                     }),
-                n && i(this, n);
+                n && i(this, n));
             }
             return (
               ((e.prototype = Object.create(Error.prototype)).constructor = e),
@@ -14280,7 +14317,7 @@
               e
             );
           }
-          (r.asPromise = n(22)),
+          ((r.asPromise = n(22)),
             (r.base64 = n(23)),
             (r.EventEmitter = n(24)),
             (r.float = n(25)),
@@ -14290,10 +14327,10 @@
             (r.LongBits = n(29)),
             (r.isNode = Boolean(
               void 0 !== t &&
-                t &&
-                t.process &&
-                t.process.versions &&
-                t.process.versions.node,
+              t &&
+              t.process &&
+              t.process.versions &&
+              t.process.versions.node,
             )),
             (r.global =
               (r.isNode && t) ||
@@ -14406,7 +14443,7 @@
                       return new t(e);
                     }))
                 : (r._Buffer_from = r._Buffer_allocUnsafe = null);
-            });
+            }));
         }).call(this, n(9));
       },
       function (t, e) {
@@ -14423,7 +14460,7 @@
       },
       function (t, e, n) {
         "use strict";
-        n.r(e),
+        (n.r(e),
           n.d(e, "NO_EVENT", function () {
             return s;
           }),
@@ -14441,7 +14478,7 @@
           }),
           n.d(e, "MelodyRegister", function () {
             return h;
-          });
+          }));
         var r = n(0),
           i = n(2),
           o = n(7);
@@ -14449,7 +14486,7 @@
           a = 1;
         class u {
           constructor(t, e, n) {
-            (this.events = t), (this.minPitch = e), (this.maxPitch = n);
+            ((this.events = t), (this.minPitch = e), (this.maxPitch = n));
           }
           static fromNoteSequence(t, e, n, r = !0, i) {
             o.assertIsQuantizedSequence(t);
@@ -14471,9 +14508,9 @@
                     "`NoteSequence` has a pitch outside of the valid range: " +
                       t.pitch,
                   );
-                (c[t.quantizedStartStep] = t.pitch - e + 2),
+                ((c[t.quantizedStartStep] = t.pitch - e + 2),
                   (c[t.quantizedEndStep] = a),
-                  (l = t.quantizedStartStep);
+                  (l = t.quantizedStartStep));
               }),
               new u(c, e, n)
             );
@@ -14490,11 +14527,11 @@
                   r && ((r.quantizedEndStep = t), n.notes.push(r), (r = null));
                   break;
                 default:
-                  r && ((r.quantizedEndStep = t), n.notes.push(r)),
+                  (r && ((r.quantizedEndStep = t), n.notes.push(r)),
                     (r = i.a.Note.create({
                       pitch: e - 2 + this.minPitch,
                       quantizedStartStep: t,
-                    }));
+                    })));
               }
             }
             return (
@@ -14528,14 +14565,14 @@
               if (t.events[r] >= 2) {
                 if (null !== i) {
                   let e;
-                  0 === n.get(i, 0) &&
+                  (0 === n.get(i, 0) &&
                     0 === n.get(i, 1) &&
                     0 === n.get(i, 2) &&
                     (i = -1),
-                    (e = t.events[r] < o ? 0 : t.events[r] > o ? 2 : 1);
+                    (e = t.events[r] < o ? 0 : t.events[r] > o ? 2 : 1));
                   for (let t = r; t > i; --t) n.set(1, t, e);
                 }
-                (i = r), (o = t.events[r]);
+                ((i = r), (o = t.events[r]));
               }
             if (i !== e - 1)
               if (
@@ -14551,17 +14588,17 @@
         }
         class h {
           constructor(t) {
-            (this.boundaryPitches = t), (this.depth = t.length + 1);
+            ((this.boundaryPitches = t), (this.depth = t.length + 1));
           }
           meanMelodyPitch(t) {
             let e = 0,
               n = 0,
               r = null;
             for (let i = 0; i < t.events.length; ++i)
-              t.events[i] === a
+              (t.events[i] === a
                 ? (r = null)
                 : t.events[i] >= 2 && (r = t.minPitch + t.events[i] - 2),
-                null !== r && ((e += r), (n += 1));
+                null !== r && ((e += r), (n += 1)));
             return n ? e / n : null;
           }
           extract(t) {
@@ -14572,7 +14609,6 @@
             for (
               ;
               i < this.boundaryPitches.length && n >= this.boundaryPitches[i];
-
             )
               i++;
             const o = r.buffer([e, this.depth]);
@@ -14584,7 +14620,7 @@
       ,
       function (t, e, n) {
         "use strict";
-        n.r(e),
+        (n.r(e),
           n.d(e, "DEFAULT_DRUM_PITCH_CLASSES", function () {
             return l;
           }),
@@ -14620,7 +14656,7 @@
           }),
           n.d(e, "GrooveConverter", function () {
             return v;
-          });
+          }));
         var r = n(0),
           i = n(2),
           o = n(1),
@@ -14665,10 +14701,10 @@
         }
         class p {
           constructor(t) {
-            (this.NUM_SPLITS = 0),
+            ((this.NUM_SPLITS = 0),
               (this.SEGMENTED_BY_TRACK = !1),
               (this.numSteps = t.numSteps),
-              (this.numSegments = t.numSegments);
+              (this.numSegments = t.numSegments));
           }
           tensorSteps(t) {
             return r.scalar(t.shape[0], "int32");
@@ -14676,9 +14712,9 @@
         }
         class f extends p {
           constructor(t) {
-            super(t),
+            (super(t),
               (this.pitchClasses = t.pitchClasses || l),
-              (this.pitchToClass = new Map());
+              (this.pitchToClass = new Map()));
             for (let t = 0; t < this.pitchClasses.length; ++t)
               this.pitchClasses[t].forEach((e) => {
                 this.pitchToClass.set(e, t);
@@ -14692,8 +14728,8 @@
             for (let t = 0; t < e; ++t) n.set(1, t, -1);
             return (
               t.notes.forEach((t) => {
-                n.set(1, t.quantizedStartStep, this.pitchToClass.get(t.pitch)),
-                  n.set(0, t.quantizedStartStep, -1);
+                (n.set(1, t.quantizedStartStep, this.pitchToClass.get(t.pitch)),
+                  n.set(0, t.quantizedStartStep, -1));
               }),
               n.toTensor()
             );
@@ -14714,7 +14750,7 @@
                       isDrum: !0,
                     }),
                   );
-            return (r.totalQuantizedSteps = s.length), r;
+            return ((r.totalQuantizedSteps = s.length), r);
           }
         }
         class m extends f {
@@ -14737,12 +14773,12 @@
                     }),
                   );
             }
-            return (r.totalQuantizedSteps = t.shape[0]), r;
+            return ((r.totalQuantizedSteps = t.shape[0]), r);
           }
         }
         class d extends f {
           constructor(t) {
-            super(t), (this.depth = Math.pow(2, this.pitchClasses.length));
+            (super(t), (this.depth = Math.pow(2, this.pitchClasses.length)));
           }
           toTensor(t) {
             c.assertIsRelativeQuantizedSequence(t);
@@ -14755,13 +14791,13 @@
         }
         class g extends p {
           constructor(t) {
-            super(t),
+            (super(t),
               (this.NOTE_OFF = 1),
               (this.FIRST_PITCH = 2),
               (this.minPitch = t.minPitch),
               (this.maxPitch = t.maxPitch),
               (this.ignorePolyphony = t.ignorePolyphony),
-              (this.depth = t.maxPitch - t.minPitch + 1 + this.FIRST_PITCH);
+              (this.depth = t.maxPitch - t.minPitch + 1 + this.FIRST_PITCH));
           }
           toTensor(t) {
             const e = a.Melody.fromNoteSequence(
@@ -14790,12 +14826,12 @@
         }
         class S extends p {
           constructor(t, e) {
-            super(t),
+            (super(t),
               (this.minPitch = t.minPitch),
               (this.maxPitch = t.maxPitch),
               (this.ignorePolyphony = t.ignorePolyphony),
               (this.melodyControl = e),
-              (this.depth = e.depth);
+              (this.depth = e.depth));
           }
           toTensor(t) {
             const e = a.Melody.fromNoteSequence(
@@ -14825,7 +14861,7 @@
                     isDrum: !0,
                   }),
                 );
-            return (r.totalQuantizedSteps = o.length), r;
+            return ((r.totalQuantizedSteps = o.length), r);
           }
         }
         class b extends S {
@@ -14841,22 +14877,22 @@
             for (let t = 0; t < a.length; ++t) {
               switch (a[t]) {
                 case 0:
-                  (u -= 1),
+                  ((u -= 1),
                     u < this.minPitch &&
                       ((u = this.minPitch),
                       s.log(
                         "Pitch range exceeded when creating NoteSequence from shape.",
                         "MelodyShapeConverter",
-                      ));
+                      )));
                   break;
                 case 2:
-                  (u += 1),
+                  ((u += 1),
                     u > this.maxPitch &&
                       ((u = this.maxPitch),
                       s.log(
                         "Pitch range exceeded when creating NoteSequence from shape.",
                         "MelodyShapeConverter",
-                      ));
+                      )));
               }
               r.notes.push(
                 i.a.Note.create({
@@ -14866,12 +14902,12 @@
                 }),
               );
             }
-            return (r.totalQuantizedSteps = a.length), r;
+            return ((r.totalQuantizedSteps = a.length), r);
           }
         }
         class w extends p {
           constructor(t) {
-            super(t),
+            (super(t),
               (this.NUM_SPLITS = 3),
               (this.MEL_PROG_RANGE = [0, 31]),
               (this.BASS_PROG_RANGE = [32, 39]),
@@ -14884,7 +14920,7 @@
               (this.depth =
                 this.melConverter.depth +
                 this.bassConverter.depth +
-                this.drumsConverter.depth);
+                this.drumsConverter.depth));
           }
           toTensor(t) {
             c.assertIsQuantizedSequence(t);
@@ -14929,13 +14965,15 @@
               ),
               o = await this.melConverter.toNoteSequence(i[0], e, n);
             o.notes.forEach((t) => {
-              (t.instrument = 0), (t.program = 0);
+              ((t.instrument = 0), (t.program = 0));
             });
             const s = await this.bassConverter.toNoteSequence(i[1], e, n);
             o.notes.push(
               ...s.notes.map(
                 (t) => (
-                  (t.instrument = 1), (t.program = this.BASS_PROG_RANGE[0]), t
+                  (t.instrument = 1),
+                  (t.program = this.BASS_PROG_RANGE[0]),
+                  t
                 ),
               ),
             );
@@ -14949,7 +14987,7 @@
         }
         class P extends p {
           constructor(t) {
-            super(t),
+            (super(t),
               (this.SEGMENTED_BY_TRACK = !0),
               (this.stepsPerQuarter = t.stepsPerQuarter),
               (this.totalSteps = t.totalSteps),
@@ -14966,14 +15004,14 @@
                 r
                   .oneHot(r.tensor1d([this.endToken], "int32"), this.depth)
                   .as1D(),
-              ));
+              )));
           }
           trackToTensor(t) {
             const e = this.numSteps / this.numSegments;
             let n = void 0;
             if (t) {
-              for (; t.events.length > e - 2; ) t.events.pop();
-              (n = r.buffer([t.events.length + 2], "int32")),
+              for (; t.events.length > e - 2;) t.events.pop();
+              ((n = r.buffer([t.events.length + 2], "int32")),
                 n.set(
                   this.performanceEventDepth +
                     (t.isDrum ? this.numPrograms - 1 : t.program),
@@ -15003,7 +15041,7 @@
                       throw new Error("Unrecognized performance event: " + t);
                   }
                 }),
-                n.set(this.endToken, t.events.length + 1);
+                n.set(this.endToken, t.events.length + 1));
             } else n = r.buffer([1], "int32", new Int32Array([this.endToken]));
             return r.tidy(() => {
               const t = r.oneHot(n.toTensor(), this.depth);
@@ -15038,11 +15076,10 @@
                 .sort((t, e) =>
                   e.isDrum ? -1 : t.isDrum ? 1 : t.program - e.program,
                 );
-            for (; i.length > this.numSegments; ) i.pop();
+            for (; i.length > this.numSegments;) i.pop();
             for (
               i.forEach((t) => t.setNumSteps(this.totalSteps));
               i.length < this.numSegments;
-
             )
               i.push(void 0);
             return r.tidy(() =>
@@ -15104,12 +15141,12 @@
                   o.map(async (t) => {
                     const e = await t.data(),
                       n = this.tokensToTrack(e);
-                    return t.dispose(), n;
+                    return (t.dispose(), n);
                   }),
                 )
               ).forEach((t, e) => {
-                t.setNumSteps(this.totalSteps),
-                  i.notes.push(...t.toNoteSequence(e).notes);
+                (t.setNumSteps(this.totalSteps),
+                  i.notes.push(...t.toNoteSequence(e).notes));
               }),
               i
             );
@@ -15117,20 +15154,20 @@
         }
         class v extends p {
           constructor(t) {
-            super(t),
+            (super(t),
               (this.TAPIFY_CHANNEL = 3),
               (this.stepsPerQuarter =
                 t.stepsPerQuarter || o.DEFAULT_STEPS_PER_QUARTER),
               (this.pitchClasses = t.pitchClasses || l),
-              (this.pitchToClass = new Map());
+              (this.pitchToClass = new Map()));
             for (let t = 0; t < this.pitchClasses.length; ++t)
               this.pitchClasses[t].forEach((e) => {
                 this.pitchToClass.set(e, t);
               });
-            (this.humanize = t.humanize || !1),
+            ((this.humanize = t.humanize || !1),
               (this.tapify = t.tapify || !1),
               (this.splitInstruments = t.splitInstruments || !1),
-              (this.depth = 3);
+              (this.depth = 3));
           }
           toTensor(t) {
             const e = c.isRelativeQuantizedSequence(t)
@@ -15171,11 +15208,11 @@
             for (let t = 0; t < n; ++t)
               for (let e = 0; e < u; ++e) {
                 const n = a[t].get(e);
-                l.set(n ? 1 : 0, t, e),
+                (l.set(n ? 1 : 0, t, e),
                   this.humanize ||
                     this.tapify ||
                     h.set(n ? n.velocity / o.MAX_MIDI_VELOCITY : 0, t, e),
-                  this.humanize || p.set(n ? f(n) : 0, t, e);
+                  this.humanize || p.set(n ? f(n) : 0, t, e));
               }
             return r.tidy(() => {
               const t = l.toTensor(),
@@ -15230,21 +15267,21 @@
       },
       function (t, e, n) {
         "use strict";
-        n.r(e),
+        (n.r(e),
           n.d(e, "Performance", function () {
             return a;
-          });
+          }));
         var r = n(2),
           i = n(1),
           o = n(7),
           s = n(4);
         class a {
           constructor(t, e, n, r, i) {
-            (this.events = t),
+            ((this.events = t),
               (this.maxShiftSteps = e),
               (this.numVelocityBins = n),
               (this.program = r),
-              (this.isDrum = i);
+              (this.isDrum = i));
           }
           static fromNoteSequence(t, e, n, r) {
             o.assertIsQuantizedSequence(t);
@@ -15281,9 +15318,10 @@
               d = n;
             for (const t of h) {
               if (t.step > m) {
-                for (; t.step > m + e; )
-                  f.push({ type: "time-shift", steps: e }), (m += e);
-                f.push({ type: "time-shift", steps: t.step - m }), (m = t.step);
+                for (; t.step > m + e;)
+                  (f.push({ type: "time-shift", steps: e }), (m += e));
+                (f.push({ type: "time-shift", steps: t.step - m }),
+                  (m = t.step));
               }
               if (t.isOffset)
                 f.push({ type: "note-off", pitch: u[t.index].pitch });
@@ -15306,7 +15344,7 @@
               S = Array.from(new Set(s.map((t) => t.program))),
               y = g || 1 !== S.length ? void 0 : S[0],
               b = new a(f, e, n, y, g);
-            return b.setNumSteps(t.totalQuantizedSteps), b;
+            return (b.setNumSteps(t.totalQuantizedSteps), b);
           }
           getNumSteps() {
             return this.events
@@ -15321,10 +15359,10 @@
                 const n = this.events[this.events.length - 1];
                 if ("time-shift" === n.type) {
                   const r = Math.min(t - e, this.maxShiftSteps - n.steps);
-                  (n.steps += r), (e += r);
+                  ((n.steps += r), (e += r));
                 }
               }
-              for (; e < t; )
+              for (; e < t;)
                 e + this.maxShiftSteps > t
                   ? (this.events.push({ type: "time-shift", steps: t - e }),
                     (e = t))
@@ -15334,7 +15372,7 @@
                     }),
                     (e += this.maxShiftSteps));
             } else if (e > t)
-              for (; this.events.length && e > t; ) {
+              for (; this.events.length && e > t;) {
                 const n = this.events[this.events.length - 1];
                 "time-shift" === n.type
                   ? e - n.steps < t
@@ -15430,20 +15468,20 @@
           s = i.base64,
           a = i.utf8;
         function u(t, e, n) {
-          (this.fn = t), (this.len = e), (this.next = void 0), (this.val = n);
+          ((this.fn = t), (this.len = e), (this.next = void 0), (this.val = n));
         }
         function c() {}
         function l(t) {
-          (this.head = t.head),
+          ((this.head = t.head),
             (this.tail = t.tail),
             (this.len = t.len),
-            (this.next = t.states);
+            (this.next = t.states));
         }
         function h() {
-          (this.len = 0),
+          ((this.len = 0),
             (this.head = new u(c, 0, 0)),
             (this.tail = this.head),
-            (this.states = null);
+            (this.states = null));
         }
         var p = function () {
           return i.Buffer
@@ -15460,24 +15498,24 @@
           e[n] = 255 & t;
         }
         function m(t, e) {
-          (this.len = t), (this.next = void 0), (this.val = e);
+          ((this.len = t), (this.next = void 0), (this.val = e));
         }
         function d(t, e, n) {
-          for (; t.hi; )
-            (e[n++] = (127 & t.lo) | 128),
+          for (; t.hi;)
+            ((e[n++] = (127 & t.lo) | 128),
               (t.lo = ((t.lo >>> 7) | (t.hi << 25)) >>> 0),
-              (t.hi >>>= 7);
-          for (; t.lo > 127; )
-            (e[n++] = (127 & t.lo) | 128), (t.lo = t.lo >>> 7);
+              (t.hi >>>= 7));
+          for (; t.lo > 127;)
+            ((e[n++] = (127 & t.lo) | 128), (t.lo = t.lo >>> 7));
           e[n++] = t.lo;
         }
         function g(t, e, n) {
-          (e[n] = 255 & t),
+          ((e[n] = 255 & t),
             (e[n + 1] = (t >>> 8) & 255),
             (e[n + 2] = (t >>> 16) & 255),
-            (e[n + 3] = t >>> 24);
+            (e[n + 3] = t >>> 24));
         }
-        (h.create = p()),
+        ((h.create = p()),
           (h.alloc = function (t) {
             return new i.Array(t);
           }),
@@ -15492,7 +15530,7 @@
           }),
           (m.prototype = Object.create(u.prototype)),
           (m.prototype.fn = function (t, e, n) {
-            for (; t > 127; ) (e[n++] = (127 & t) | 128), (t >>>= 7);
+            for (; t > 127;) ((e[n++] = (127 & t) | 128), (t >>>= 7));
             e[n] = t;
           }),
           (h.prototype.uint32 = function (t) {
@@ -15545,7 +15583,7 @@
           }),
           (h.prototype.double = function (t) {
             return this._push(i.float.writeDoubleLE, 8, t);
-          });
+          }));
         var S = i.Array.prototype.set
           ? function (t, e, n) {
               e.set(t, n);
@@ -15553,12 +15591,12 @@
           : function (t, e, n) {
               for (var r = 0; r < t.length; ++r) e[n + r] = t[r];
             };
-        (h.prototype.bytes = function (t) {
+        ((h.prototype.bytes = function (t) {
           var e = t.length >>> 0;
           if (!e) return this._push(f, 1, 0);
           if (i.isString(t)) {
             var n = h.alloc((e = s.length(t)));
-            s.decode(t, n, 0), (t = n);
+            (s.decode(t, n, 0), (t = n));
           }
           return this.uint32(e)._push(S, e, t);
         }),
@@ -15604,14 +15642,13 @@
                 e = this.constructor.alloc(this.len),
                 n = 0;
               t;
-
             )
-              t.fn(t.val, e, n), (n += t.len), (t = t.next);
+              (t.fn(t.val, e, n), (n += t.len), (t = t.next));
             return e;
           }),
           (h._configure = function (t) {
-            (r = t), (h.create = p()), r._configure();
-          });
+            ((r = t), (h.create = p()), r._configure());
+          }));
       },
       function (t, e, n) {
         "use strict";
@@ -15626,7 +15663,7 @@
           );
         }
         function u(t) {
-          (this.buf = t), (this.pos = 0), (this.len = t.length);
+          ((this.buf = t), (this.pos = 0), (this.len = t.length));
         }
         var c,
           l =
@@ -15715,7 +15752,7 @@
             f(this.buf, (this.pos += 4)),
           );
         }
-        (u.create = h()),
+        ((u.create = h()),
           (u.prototype._slice =
             i.Array.prototype.subarray || i.Array.prototype.slice),
           (u.prototype.uint32 =
@@ -15771,12 +15808,12 @@
           (u.prototype.float = function () {
             if (this.pos + 4 > this.len) throw a(this, 4);
             var t = i.float.readFloatLE(this.buf, this.pos);
-            return (this.pos += 4), t;
+            return ((this.pos += 4), t);
           }),
           (u.prototype.double = function () {
             if (this.pos + 8 > this.len) throw a(this, 4);
             var t = i.float.readDoubleLE(this.buf, this.pos);
-            return (this.pos += 8), t;
+            return ((this.pos += 8), t);
           }),
           (u.prototype.bytes = function () {
             var t = this.uint32(),
@@ -15818,7 +15855,7 @@
                 this.skip(this.uint32());
                 break;
               case 3:
-                for (; 4 != (t = 7 & this.uint32()); ) this.skipType(t);
+                for (; 4 != (t = 7 & this.uint32());) this.skipType(t);
                 break;
               case 5:
                 this.skip(4);
@@ -15831,7 +15868,7 @@
             return this;
           }),
           (u._configure = function (t) {
-            (r = t), (u.create = h()), r._configure();
+            ((r = t), (u.create = h()), r._configure());
             var e = i.Long ? "toLong" : "toNumber";
             i.merge(u.prototype, {
               int64: function () {
@@ -15850,7 +15887,7 @@
                 return m.call(this)[e](!1);
               },
             });
-          });
+          }));
       },
       function (t, e, n) {
         "use strict";
@@ -15861,7 +15898,7 @@
           a = o.Writer,
           u = o.util,
           c = o.roots.default || (o.roots.default = {});
-        (c.tensorflow =
+        ((c.tensorflow =
           (((i = {}).magenta =
             (((r = {}).NoteSequence = (function () {
               function t(t) {
@@ -16037,7 +16074,6 @@
                     var n = void 0 === e ? t.len : t.pos + e,
                       r = new c.tensorflow.magenta.NoteSequence();
                     t.pos < n;
-
                   ) {
                     var i = t.uint32();
                     switch (i >>> 3) {
@@ -16059,42 +16095,42 @@
                         r.ticksPerQuarter = t.int32();
                         break;
                       case 5:
-                        (r.timeSignatures && r.timeSignatures.length) ||
+                        ((r.timeSignatures && r.timeSignatures.length) ||
                           (r.timeSignatures = []),
                           r.timeSignatures.push(
                             c.tensorflow.magenta.NoteSequence.TimeSignature.decode(
                               t,
                               t.uint32(),
                             ),
-                          );
+                          ));
                         break;
                       case 6:
-                        (r.keySignatures && r.keySignatures.length) ||
+                        ((r.keySignatures && r.keySignatures.length) ||
                           (r.keySignatures = []),
                           r.keySignatures.push(
                             c.tensorflow.magenta.NoteSequence.KeySignature.decode(
                               t,
                               t.uint32(),
                             ),
-                          );
+                          ));
                         break;
                       case 7:
-                        (r.tempos && r.tempos.length) || (r.tempos = []),
+                        ((r.tempos && r.tempos.length) || (r.tempos = []),
                           r.tempos.push(
                             c.tensorflow.magenta.NoteSequence.Tempo.decode(
                               t,
                               t.uint32(),
                             ),
-                          );
+                          ));
                         break;
                       case 8:
-                        (r.notes && r.notes.length) || (r.notes = []),
+                        ((r.notes && r.notes.length) || (r.notes = []),
                           r.notes.push(
                             c.tensorflow.magenta.NoteSequence.Note.decode(
                               t,
                               t.uint32(),
                             ),
-                          );
+                          ));
                         break;
                       case 9:
                         r.totalTime = t.double();
@@ -16105,34 +16141,34 @@
                           : t.int64();
                         break;
                       case 10:
-                        (r.pitchBends && r.pitchBends.length) ||
+                        ((r.pitchBends && r.pitchBends.length) ||
                           (r.pitchBends = []),
                           r.pitchBends.push(
                             c.tensorflow.magenta.NoteSequence.PitchBend.decode(
                               t,
                               t.uint32(),
                             ),
-                          );
+                          ));
                         break;
                       case 11:
-                        (r.controlChanges && r.controlChanges.length) ||
+                        ((r.controlChanges && r.controlChanges.length) ||
                           (r.controlChanges = []),
                           r.controlChanges.push(
                             c.tensorflow.magenta.NoteSequence.ControlChange.decode(
                               t,
                               t.uint32(),
                             ),
-                          );
+                          ));
                         break;
                       case 12:
-                        (r.partInfos && r.partInfos.length) ||
+                        ((r.partInfos && r.partInfos.length) ||
                           (r.partInfos = []),
                           r.partInfos.push(
                             c.tensorflow.magenta.NoteSequence.PartInfo.decode(
                               t,
                               t.uint32(),
                             ),
-                          );
+                          ));
                         break;
                       case 13:
                         r.sourceInfo =
@@ -16142,34 +16178,35 @@
                           );
                         break;
                       case 14:
-                        (r.textAnnotations && r.textAnnotations.length) ||
+                        ((r.textAnnotations && r.textAnnotations.length) ||
                           (r.textAnnotations = []),
                           r.textAnnotations.push(
                             c.tensorflow.magenta.NoteSequence.TextAnnotation.decode(
                               t,
                               t.uint32(),
                             ),
-                          );
+                          ));
                         break;
                       case 20:
-                        (r.sectionAnnotations && r.sectionAnnotations.length) ||
+                        ((r.sectionAnnotations &&
+                          r.sectionAnnotations.length) ||
                           (r.sectionAnnotations = []),
                           r.sectionAnnotations.push(
                             c.tensorflow.magenta.NoteSequence.SectionAnnotation.decode(
                               t,
                               t.uint32(),
                             ),
-                          );
+                          ));
                         break;
                       case 21:
-                        (r.sectionGroups && r.sectionGroups.length) ||
+                        ((r.sectionGroups && r.sectionGroups.length) ||
                           (r.sectionGroups = []),
                           r.sectionGroups.push(
                             c.tensorflow.magenta.NoteSequence.SectionGroup.decode(
                               t,
                               t.uint32(),
                             ),
-                          );
+                          ));
                         break;
                       case 15:
                         r.quantizationInfo =
@@ -16200,7 +16237,8 @@
                 }),
                 (t.decodeDelimited = function (t) {
                   return (
-                    t instanceof s || (t = new s(t)), this.decode(t, t.uint32())
+                    t instanceof s || (t = new s(t)),
+                    this.decode(t, t.uint32())
                   );
                 }),
                 (t.verify = function (t) {
@@ -16733,7 +16771,7 @@
                             ? r.toNumber()
                             : r;
                     } else n.totalQuantizedSteps = e.longs === String ? "0" : 0;
-                    (n.subsequenceInfo = null),
+                    ((n.subsequenceInfo = null),
                       u.Long
                         ? ((r = new u.Long(0, 0, !1)),
                           (n.referenceNumber =
@@ -16743,7 +16781,7 @@
                                 ? r.toNumber()
                                 : r))
                         : (n.referenceNumber = e.longs === String ? "0" : 0),
-                      (n.sequenceMetadata = null);
+                      (n.sequenceMetadata = null));
                   }
                   if (
                     (null != t.id && t.hasOwnProperty("id") && (n.id = t.id),
@@ -17015,7 +17053,6 @@
                         var n = void 0 === e ? t.len : t.pos + e,
                           r = new c.tensorflow.magenta.NoteSequence.Note();
                         t.pos < n;
-
                       ) {
                         var i = t.uint32();
                         switch (i >>> 3) {
@@ -17602,7 +17639,6 @@
                           r =
                             new c.tensorflow.magenta.NoteSequence.TimeSignature();
                         t.pos < n;
-
                       ) {
                         var i = t.uint32();
                         switch (i >>> 3) {
@@ -17730,7 +17766,6 @@
                           r =
                             new c.tensorflow.magenta.NoteSequence.KeySignature();
                         t.pos < n;
-
                       ) {
                         var i = t.uint32();
                         switch (i >>> 3) {
@@ -18027,7 +18062,6 @@
                         var n = void 0 === e ? t.len : t.pos + e,
                           r = new c.tensorflow.magenta.NoteSequence.Tempo();
                         t.pos < n;
-
                       ) {
                         var i = t.uint32();
                         switch (i >>> 3) {
@@ -18144,7 +18178,6 @@
                         var n = void 0 === e ? t.len : t.pos + e,
                           r = new c.tensorflow.magenta.NoteSequence.PitchBend();
                         t.pos < n;
-
                       ) {
                         var i = t.uint32();
                         switch (i >>> 3) {
@@ -18312,7 +18345,6 @@
                           r =
                             new c.tensorflow.magenta.NoteSequence.ControlChange();
                         t.pos < n;
-
                       ) {
                         var i = t.uint32();
                         switch (i >>> 3) {
@@ -18533,7 +18565,6 @@
                         var n = void 0 === e ? t.len : t.pos + e,
                           r = new c.tensorflow.magenta.NoteSequence.PartInfo();
                         t.pos < n;
-
                       ) {
                         var i = t.uint32();
                         switch (i >>> 3) {
@@ -18641,7 +18672,6 @@
                           r =
                             new c.tensorflow.magenta.NoteSequence.SourceInfo();
                         t.pos < n;
-
                       ) {
                         var i = t.uint32();
                         switch (i >>> 3) {
@@ -18904,7 +18934,6 @@
                           r =
                             new c.tensorflow.magenta.NoteSequence.TextAnnotation();
                         t.pos < n;
-
                       ) {
                         var i = t.uint32();
                         switch (i >>> 3) {
@@ -19134,7 +19163,6 @@
                           r =
                             new c.tensorflow.magenta.NoteSequence.QuantizationInfo();
                         t.pos < n;
-
                       ) {
                         var i = t.uint32();
                         switch (i >>> 3) {
@@ -19253,7 +19281,6 @@
                           r =
                             new c.tensorflow.magenta.NoteSequence.SubsequenceInfo();
                         t.pos < n;
-
                       ) {
                         var i = t.uint32();
                         switch (i >>> 3) {
@@ -19370,7 +19397,6 @@
                           r =
                             new c.tensorflow.magenta.NoteSequence.SectionAnnotation();
                         t.pos < n;
-
                       ) {
                         var i = t.uint32();
                         switch (i >>> 3) {
@@ -19530,7 +19556,6 @@
                         var n = void 0 === e ? t.len : t.pos + e,
                           r = new c.tensorflow.magenta.NoteSequence.Section();
                         t.pos < n;
-
                       ) {
                         var i = t.uint32();
                         switch (i >>> 3) {
@@ -19703,19 +19728,18 @@
                           r =
                             new c.tensorflow.magenta.NoteSequence.SectionGroup();
                         t.pos < n;
-
                       ) {
                         var i = t.uint32();
                         switch (i >>> 3) {
                           case 1:
-                            (r.sections && r.sections.length) ||
+                            ((r.sections && r.sections.length) ||
                               (r.sections = []),
                               r.sections.push(
                                 c.tensorflow.magenta.NoteSequence.Section.decode(
                                   t,
                                   t.uint32(),
                                 ),
-                              );
+                              ));
                             break;
                           case 2:
                             r.numTimes = t.int32();
@@ -19778,7 +19802,8 @@
                         }
                       }
                       return (
-                        null != t.numTimes && (e.numTimes = 0 | t.numTimes), e
+                        null != t.numTimes && (e.numTimes = 0 | t.numTimes),
+                        e
                       );
                     }),
                     (t.toObject = function (t, e) {
@@ -19857,7 +19882,6 @@
                     var n = void 0 === e ? t.len : t.pos + e,
                       r = new c.tensorflow.magenta.SequenceMetadata();
                     t.pos < n;
-
                   ) {
                     var i = t.uint32();
                     switch (i >>> 3) {
@@ -19868,13 +19892,13 @@
                         r.artist = t.string();
                         break;
                       case 3:
-                        (r.genre && r.genre.length) || (r.genre = []),
-                          r.genre.push(t.string());
+                        ((r.genre && r.genre.length) || (r.genre = []),
+                          r.genre.push(t.string()));
                         break;
                       case 4:
-                        (r.composers && r.composers.length) ||
+                        ((r.composers && r.composers.length) ||
                           (r.composers = []),
-                          r.composers.push(t.string());
+                          r.composers.push(t.string()));
                         break;
                       default:
                         t.skipType(7 & i);
@@ -19884,7 +19908,8 @@
                 }),
                 (t.decodeDelimited = function (t) {
                   return (
-                    t instanceof s || (t = new s(t)), this.decode(t, t.uint32())
+                    t instanceof s || (t = new s(t)),
+                    this.decode(t, t.uint32())
                   );
                 }),
                 (t.verify = function (t) {
@@ -20007,7 +20032,6 @@
                     var n = void 0 === e ? t.len : t.pos + e,
                       r = new c.tensorflow.magenta.VelocityRange();
                     t.pos < n;
-
                   ) {
                     var i = t.uint32();
                     switch (i >>> 3) {
@@ -20025,7 +20049,8 @@
                 }),
                 (t.decodeDelimited = function (t) {
                   return (
-                    t instanceof s || (t = new s(t)), this.decode(t, t.uint32())
+                    t instanceof s || (t = new s(t)),
+                    this.decode(t, t.uint32())
                   );
                 }),
                 (t.verify = function (t) {
@@ -20068,12 +20093,12 @@
             })()),
             r)),
           i)),
-          (t.exports = c);
+          (t.exports = c));
       },
       ,
       function (t, e, n) {
         "use strict";
-        n.r(e),
+        (n.r(e),
           n.d(e, "ChordQuality", function () {
             return vt;
           }),
@@ -20100,9 +20125,9 @@
           }),
           n.d(e, "PitchChordEncoder", function () {
             return qt;
-          });
+          }));
         var r = {};
-        n.r(r),
+        (n.r(r),
           n.d(r, "names", function () {
             return a;
           }),
@@ -20156,9 +20181,9 @@
           }),
           n.d(r, "enharmonic", function () {
             return _;
-          });
+          }));
         var i = {};
-        n.r(i),
+        (n.r(i),
           n.d(i, "names", function () {
             return lt;
           }),
@@ -20182,7 +20207,7 @@
           }),
           n.d(i, "tokenize", function () {
             return bt;
-          });
+          }));
         var o = n(0),
           s = "C C# Db D D# Eb E F F# Gb G G# Ab A A# Bb B".split(" "),
           a = function (t) {
@@ -20295,7 +20320,7 @@
             });
           },
           A = function (t, e) {
-            void 0 === t && (t = {}), void 0 === e && (e = null);
+            (void 0 === t && (t = {}), void 0 === e && (e = null));
             var n = e ? Object.assign({}, m(e), t) : t,
               r = n.step,
               i = n.alt,
@@ -20516,17 +20541,17 @@
               n = [],
               r = [],
               i = function (t, e, i) {
-                (n[t] = e), (r[i] = r[i] || []), r[i].push(t);
+                ((n[t] = e), (r[i] = r[i] || []), r[i].push(t));
               };
             e.forEach(function (e) {
               var n = t[e][0].split(" "),
                 r = t[e][1],
                 o = X(n);
-              i(e, n, o),
+              (i(e, n, o),
                 r &&
                   r.forEach(function (t) {
                     return i(t, n, o);
-                  });
+                  }));
             });
             var o = Object.keys(n).sort(),
               s = function (t) {
@@ -20631,20 +20656,20 @@
         ];
         var vt;
         !(function (t) {
-          (t[(t.Major = 0)] = "Major"),
+          ((t[(t.Major = 0)] = "Major"),
             (t[(t.Minor = 1)] = "Minor"),
             (t[(t.Augmented = 2)] = "Augmented"),
             (t[(t.Diminished = 3)] = "Diminished"),
-            (t[(t.Other = 4)] = "Other");
+            (t[(t.Other = 4)] = "Other"));
         })(vt || (vt = {}));
         class Nt extends Error {
           constructor(t) {
-            super(t), Object.setPrototypeOf(this, new.target.prototype);
+            (super(t), Object.setPrototypeOf(this, new.target.prototype));
           }
         }
         class Tt extends Error {
           constructor(t) {
-            super(t), Object.setPrototypeOf(this, new.target.prototype);
+            (super(t), Object.setPrototypeOf(this, new.target.prototype));
           }
         }
         class Ot {
@@ -20690,7 +20715,7 @@
         }
         class At extends It {
           constructor() {
-            super(...arguments), (this.depth = 1 + 2 * wt.NUM_PITCH_CLASSES);
+            (super(...arguments), (this.depth = 1 + 2 * wt.NUM_PITCH_CLASSES));
           }
           index(t) {
             if (t === wt.NO_CHORD) return 0;
@@ -20708,7 +20733,7 @@
         }
         class kt extends It {
           constructor() {
-            super(...arguments), (this.depth = 1 + 4 * wt.NUM_PITCH_CLASSES);
+            (super(...arguments), (this.depth = 1 + 4 * wt.NUM_PITCH_CLASSES));
           }
           index(t) {
             if (t === wt.NO_CHORD) return 0;
@@ -20726,7 +20751,7 @@
         }
         class qt extends It {
           constructor() {
-            super(...arguments), (this.depth = 1 + 3 * wt.NUM_PITCH_CLASSES);
+            (super(...arguments), (this.depth = 1 + 3 * wt.NUM_PITCH_CLASSES));
           }
           encode(t) {
             return o.tidy(() => {
@@ -20754,11 +20779,11 @@
         "use strict";
         var r = e;
         function i() {
-          r.util._configure(),
+          (r.util._configure(),
             r.Writer._configure(r.BufferWriter),
-            r.Reader._configure(r.BufferReader);
+            r.Reader._configure(r.BufferReader));
         }
-        (r.build = "minimal"),
+        ((r.build = "minimal"),
           (r.Writer = n(14)),
           (r.BufferWriter = n(30)),
           (r.Reader = n(15)),
@@ -20767,7 +20792,7 @@
           (r.rpc = n(32)),
           (r.roots = n(34)),
           (r.configure = i),
-          i();
+          i());
       },
       function (t, e, n) {
         "use strict";
@@ -20776,7 +20801,7 @@
             r = 0,
             i = 2,
             o = !0;
-          for (; i < arguments.length; ) n[r++] = arguments[i++];
+          for (; i < arguments.length;) n[r++] = arguments[i++];
           return new Promise(function (i, s) {
             n[r] = function (t) {
               if (o)
@@ -20785,7 +20810,6 @@
                   for (
                     var e = new Array(arguments.length - 1), n = 0;
                     n < e.length;
-
                   )
                     e[n++] = arguments[n];
                   i.apply(null, e);
@@ -20805,10 +20829,10 @@
         r.length = function (t) {
           var e = t.length;
           if (!e) return 0;
-          for (var n = 0; --e % 4 > 1 && "=" === t.charAt(e); ) ++n;
+          for (var n = 0; --e % 4 > 1 && "=" === t.charAt(e);) ++n;
           return Math.ceil(3 * t.length) / 4 - n;
         };
-        for (var i = new Array(64), o = new Array(123), s = 0; s < 64; )
+        for (var i = new Array(64), o = new Array(123), s = 0; s < 64;)
           o[
             (i[s] =
               s < 26
@@ -20820,17 +20844,17 @@
                     : (s - 59) | 43)
           ] = s++;
         r.encode = function (t, e, n) {
-          for (var r, o = null, s = [], a = 0, u = 0; e < n; ) {
+          for (var r, o = null, s = [], a = 0, u = 0; e < n;) {
             var c = t[e++];
             switch (u) {
               case 0:
-                (s[a++] = i[c >> 2]), (r = (3 & c) << 4), (u = 1);
+                ((s[a++] = i[c >> 2]), (r = (3 & c) << 4), (u = 1));
                 break;
               case 1:
-                (s[a++] = i[r | (c >> 4)]), (r = (15 & c) << 2), (u = 2);
+                ((s[a++] = i[r | (c >> 4)]), (r = (15 & c) << 2), (u = 2));
                 break;
               case 2:
-                (s[a++] = i[r | (c >> 6)]), (s[a++] = i[63 & c]), (u = 0);
+                ((s[a++] = i[r | (c >> 6)]), (s[a++] = i[63 & c]), (u = 0));
             }
             a > 8191 &&
               ((o || (o = [])).push(String.fromCharCode.apply(String, s)),
@@ -20844,23 +20868,25 @@
               : String.fromCharCode.apply(String, s.slice(0, a))
           );
         };
-        (r.decode = function (t, e, n) {
-          for (var r, i = n, s = 0, a = 0; a < t.length; ) {
+        ((r.decode = function (t, e, n) {
+          for (var r, i = n, s = 0, a = 0; a < t.length;) {
             var u = t.charCodeAt(a++);
             if (61 === u && s > 1) break;
             if (void 0 === (u = o[u])) throw Error("invalid encoding");
             switch (s) {
               case 0:
-                (r = u), (s = 1);
+                ((r = u), (s = 1));
                 break;
               case 1:
-                (e[n++] = (r << 2) | ((48 & u) >> 4)), (r = u), (s = 2);
+                ((e[n++] = (r << 2) | ((48 & u) >> 4)), (r = u), (s = 2));
                 break;
               case 2:
-                (e[n++] = ((15 & r) << 4) | ((60 & u) >> 2)), (r = u), (s = 3);
+                ((e[n++] = ((15 & r) << 4) | ((60 & u) >> 2)),
+                  (r = u),
+                  (s = 3));
                 break;
               case 3:
-                (e[n++] = ((3 & r) << 6) | u), (s = 0);
+                ((e[n++] = ((3 & r) << 6) | u), (s = 0));
             }
           }
           if (1 === s) throw Error("invalid encoding");
@@ -20870,14 +20896,14 @@
             return /^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/.test(
               t,
             );
-          });
+          }));
       },
       function (t, e, n) {
         "use strict";
         function r() {
           this._listeners = {};
         }
-        (t.exports = r),
+        ((t.exports = r),
           (r.prototype.on = function (t, e, n) {
             return (
               (this._listeners[t] || (this._listeners[t] = [])).push({
@@ -20891,19 +20917,19 @@
             if (void 0 === t) this._listeners = {};
             else if (void 0 === e) this._listeners[t] = [];
             else
-              for (var n = this._listeners[t], r = 0; r < n.length; )
+              for (var n = this._listeners[t], r = 0; r < n.length;)
                 n[r].fn === e ? n.splice(r, 1) : ++r;
             return this;
           }),
           (r.prototype.emit = function (t) {
             var e = this._listeners[t];
             if (e) {
-              for (var n = [], r = 1; r < arguments.length; )
+              for (var n = [], r = 1; r < arguments.length;)
                 n.push(arguments[r++]);
-              for (r = 0; r < e.length; ) e[r].fn.apply(e[r++].ctx, n);
+              for (r = 0; r < e.length;) e[r].fn.apply(e[r++].ctx, n);
             }
             return this;
-          });
+          }));
       },
       function (t, e, n) {
         "use strict";
@@ -20915,18 +20941,18 @@
                     n = new Uint8Array(e.buffer),
                     r = 128 === n[3];
                   function i(t, r, i) {
-                    (e[0] = t),
+                    ((e[0] = t),
                       (r[i] = n[0]),
                       (r[i + 1] = n[1]),
                       (r[i + 2] = n[2]),
-                      (r[i + 3] = n[3]);
+                      (r[i + 3] = n[3]));
                   }
                   function o(t, r, i) {
-                    (e[0] = t),
+                    ((e[0] = t),
                       (r[i] = n[3]),
                       (r[i + 1] = n[2]),
                       (r[i + 2] = n[1]),
-                      (r[i + 3] = n[0]);
+                      (r[i + 3] = n[0]));
                   }
                   function s(t, r) {
                     return (
@@ -20946,10 +20972,10 @@
                       e[0]
                     );
                   }
-                  (t.writeFloatLE = r ? i : o),
+                  ((t.writeFloatLE = r ? i : o),
                     (t.writeFloatBE = r ? o : i),
                     (t.readFloatLE = r ? s : a),
-                    (t.readFloatBE = r ? a : s);
+                    (t.readFloatBE = r ? a : s));
                 })()
               : (function () {
                   function e(t, e, n, r) {
@@ -20992,10 +21018,10 @@
                         ? 1401298464324817e-60 * i * s
                         : i * Math.pow(2, o - 150) * (s + 8388608);
                   }
-                  (t.writeFloatLE = e.bind(null, i)),
+                  ((t.writeFloatLE = e.bind(null, i)),
                     (t.writeFloatBE = e.bind(null, o)),
                     (t.readFloatLE = n.bind(null, s)),
-                    (t.readFloatBE = n.bind(null, a));
+                    (t.readFloatBE = n.bind(null, a)));
                 })(),
             "undefined" != typeof Float64Array
               ? (function () {
@@ -21003,7 +21029,7 @@
                     n = new Uint8Array(e.buffer),
                     r = 128 === n[7];
                   function i(t, r, i) {
-                    (e[0] = t),
+                    ((e[0] = t),
                       (r[i] = n[0]),
                       (r[i + 1] = n[1]),
                       (r[i + 2] = n[2]),
@@ -21011,10 +21037,10 @@
                       (r[i + 4] = n[4]),
                       (r[i + 5] = n[5]),
                       (r[i + 6] = n[6]),
-                      (r[i + 7] = n[7]);
+                      (r[i + 7] = n[7]));
                   }
                   function o(t, r, i) {
-                    (e[0] = t),
+                    ((e[0] = t),
                       (r[i] = n[7]),
                       (r[i + 1] = n[6]),
                       (r[i + 2] = n[5]),
@@ -21022,7 +21048,7 @@
                       (r[i + 4] = n[3]),
                       (r[i + 5] = n[2]),
                       (r[i + 6] = n[1]),
-                      (r[i + 7] = n[0]);
+                      (r[i + 7] = n[0]));
                   }
                   function s(t, r) {
                     return (
@@ -21050,28 +21076,29 @@
                       e[0]
                     );
                   }
-                  (t.writeDoubleLE = r ? i : o),
+                  ((t.writeDoubleLE = r ? i : o),
                     (t.writeDoubleBE = r ? o : i),
                     (t.readDoubleLE = r ? s : a),
-                    (t.readDoubleBE = r ? a : s);
+                    (t.readDoubleBE = r ? a : s));
                 })()
               : (function () {
                   function e(t, e, n, r, i, o) {
                     var s = r < 0 ? 1 : 0;
                     if ((s && (r = -r), 0 === r))
-                      t(0, i, o + e), t(1 / r > 0 ? 0 : 2147483648, i, o + n);
-                    else if (isNaN(r)) t(0, i, o + e), t(2146959360, i, o + n);
+                      (t(0, i, o + e), t(1 / r > 0 ? 0 : 2147483648, i, o + n));
+                    else if (isNaN(r))
+                      (t(0, i, o + e), t(2146959360, i, o + n));
                     else if (r > 17976931348623157e292)
-                      t(0, i, o + e),
-                        t(((s << 31) | 2146435072) >>> 0, i, o + n);
+                      (t(0, i, o + e),
+                        t(((s << 31) | 2146435072) >>> 0, i, o + n));
                     else {
                       var a;
                       if (r < 22250738585072014e-324)
-                        t((a = r / 5e-324) >>> 0, i, o + e),
-                          t(((s << 31) | (a / 4294967296)) >>> 0, i, o + n);
+                        (t((a = r / 5e-324) >>> 0, i, o + e),
+                          t(((s << 31) | (a / 4294967296)) >>> 0, i, o + n));
                       else {
                         var u = Math.floor(Math.log(r) / Math.LN2);
-                        1024 === u && (u = 1023),
+                        (1024 === u && (u = 1023),
                           t(
                             (4503599627370496 * (a = r * Math.pow(2, -u))) >>>
                               0,
@@ -21085,7 +21112,7 @@
                               0,
                             i,
                             o + n,
-                          );
+                          ));
                       }
                     }
                   }
@@ -21103,25 +21130,25 @@
                         ? 5e-324 * a * c
                         : a * Math.pow(2, u - 1075) * (c + 4503599627370496);
                   }
-                  (t.writeDoubleLE = e.bind(null, i, 0, 4)),
+                  ((t.writeDoubleLE = e.bind(null, i, 0, 4)),
                     (t.writeDoubleBE = e.bind(null, o, 4, 0)),
                     (t.readDoubleLE = n.bind(null, s, 0, 4)),
-                    (t.readDoubleBE = n.bind(null, a, 4, 0));
+                    (t.readDoubleBE = n.bind(null, a, 4, 0)));
                 })(),
             t
           );
         }
         function i(t, e, n) {
-          (e[n] = 255 & t),
+          ((e[n] = 255 & t),
             (e[n + 1] = (t >>> 8) & 255),
             (e[n + 2] = (t >>> 16) & 255),
-            (e[n + 3] = t >>> 24);
+            (e[n + 3] = t >>> 24));
         }
         function o(t, e, n) {
-          (e[n] = t >>> 24),
+          ((e[n] = t >>> 24),
             (e[n + 1] = (t >>> 16) & 255),
             (e[n + 2] = (t >>> 8) & 255),
-            (e[n + 3] = 255 & t);
+            (e[n + 3] = 255 & t));
         }
         function s(t, e) {
           return (
@@ -21149,7 +21176,7 @@
       function (t, e, n) {
         "use strict";
         var r = e;
-        (r.length = function (t) {
+        ((r.length = function (t) {
           for (var e = 0, n = 0, r = 0; r < t.length; ++r)
             (n = t.charCodeAt(r)) < 128
               ? (e += 1)
@@ -21162,8 +21189,8 @@
         }),
           (r.read = function (t, e, n) {
             if (n - e < 1) return "";
-            for (var r, i = null, o = [], s = 0; e < n; )
-              (r = t[e++]) < 128
+            for (var r, i = null, o = [], s = 0; e < n;)
+              ((r = t[e++]) < 128
                 ? (o[s++] = r)
                 : r > 191 && r < 224
                   ? (o[s++] = ((31 & r) << 6) | (63 & t[e++]))
@@ -21182,7 +21209,7 @@
                         (63 & t[e++])),
                 s > 8191 &&
                   ((i || (i = [])).push(String.fromCharCode.apply(String, o)),
-                  (s = 0));
+                  (s = 0)));
             return i
               ? (s && i.push(String.fromCharCode.apply(String, o.slice(0, s))),
                 i.join(""))
@@ -21206,7 +21233,7 @@
                       (e[n++] = ((r >> 6) & 63) | 128),
                       (e[n++] = (63 & r) | 128));
             return n - o;
-          });
+          }));
       },
       function (t, e, n) {
         "use strict";
@@ -21219,7 +21246,7 @@
             if (n < 1 || n > i) return t(n);
             s + n > r && ((o = t(r)), (s = 0));
             var a = e.call(o, s, (s += n));
-            return 7 & s && (s = 1 + (7 | s)), a;
+            return (7 & s && (s = 1 + (7 | s)), a);
           };
         };
       },
@@ -21228,10 +21255,10 @@
         t.exports = i;
         var r = n(8);
         function i(t, e) {
-          (this.lo = t >>> 0), (this.hi = e >>> 0);
+          ((this.lo = t >>> 0), (this.hi = e >>> 0));
         }
         var o = (i.zero = new i(0, 0));
-        (o.toNumber = function () {
+        ((o.toNumber = function () {
           return 0;
         }),
           (o.zzEncode = o.zzDecode =
@@ -21240,9 +21267,9 @@
             }),
           (o.length = function () {
             return 1;
-          });
+          }));
         var s = (i.zeroHash = "\0\0\0\0\0\0\0\0");
-        (i.fromNumber = function (t) {
+        ((i.fromNumber = function (t) {
           if (0 === t) return o;
           var e = t < 0;
           e && (t = -t);
@@ -21268,7 +21295,7 @@
             if (!t && this.hi >>> 31) {
               var e = (1 + ~this.lo) >>> 0,
                 n = ~this.hi >>> 0;
-              return e || (n = (n + 1) >>> 0), -(e + 4294967296 * n);
+              return (e || (n = (n + 1) >>> 0), -(e + 4294967296 * n));
             }
             return this.lo + 4294967296 * this.hi;
           }),
@@ -21276,9 +21303,9 @@
             return r.Long
               ? new r.Long(0 | this.lo, 0 | this.hi, Boolean(t))
               : { low: 0 | this.lo, high: 0 | this.hi, unsigned: Boolean(t) };
-          });
+          }));
         var a = String.prototype.charCodeAt;
-        (i.fromHash = function (t) {
+        ((i.fromHash = function (t) {
           return t === s
             ? o
             : new i(
@@ -21345,7 +21372,7 @@
               : n < 128
                 ? 9
                 : 10;
-          });
+          }));
       },
       function (t, e, n) {
         "use strict";
@@ -21363,8 +21390,8 @@
               ? e.utf8Write(t, n)
               : e.write(t, n);
         }
-        (o._configure = function () {
-          (o.alloc = i._Buffer_allocUnsafe),
+        ((o._configure = function () {
+          ((o.alloc = i._Buffer_allocUnsafe),
             (o.writeBytesBuffer =
               i.Buffer &&
               i.Buffer.prototype instanceof Uint8Array &&
@@ -21374,21 +21401,23 @@
                   }
                 : function (t, e, n) {
                     if (t.copy) t.copy(e, n, 0, t.length);
-                    else for (var r = 0; r < t.length; ) e[n++] = t[r++];
-                  });
+                    else for (var r = 0; r < t.length;) e[n++] = t[r++];
+                  }));
         }),
           (o.prototype.bytes = function (t) {
             i.isString(t) && (t = i._Buffer_from(t, "base64"));
             var e = t.length >>> 0;
             return (
-              this.uint32(e), e && this._push(o.writeBytesBuffer, e, t), this
+              this.uint32(e),
+              e && this._push(o.writeBytesBuffer, e, t),
+              this
             );
           }),
           (o.prototype.string = function (t) {
             var e = i.Buffer.byteLength(t);
-            return this.uint32(e), e && this._push(s, e, t), this;
+            return (this.uint32(e), e && this._push(s, e, t), this);
           }),
-          o._configure();
+          o._configure());
       },
       function (t, e, n) {
         "use strict";
@@ -21399,7 +21428,7 @@
         function o(t) {
           r.call(this, t);
         }
-        (o._configure = function () {
+        ((o._configure = function () {
           i.Buffer && (o.prototype._slice = i.Buffer.prototype.slice);
         }),
           (o.prototype.string = function () {
@@ -21415,7 +21444,7 @@
                   (this.pos = Math.min(this.pos + t, this.len)),
                 );
           }),
-          o._configure();
+          o._configure());
       },
       function (t, e, n) {
         "use strict";
@@ -21428,12 +21457,12 @@
         function i(t, e, n) {
           if ("function" != typeof t)
             throw TypeError("rpcImpl must be a function");
-          r.EventEmitter.call(this),
+          (r.EventEmitter.call(this),
             (this.rpcImpl = t),
             (this.requestDelimited = Boolean(e)),
-            (this.responseDelimited = Boolean(n));
+            (this.responseDelimited = Boolean(n)));
         }
-        ((i.prototype = Object.create(r.EventEmitter.prototype)).constructor =
+        (((i.prototype = Object.create(r.EventEmitter.prototype)).constructor =
           i),
           (i.prototype.rpcCall = function t(e, n, i, o, s) {
             if (!o) throw TypeError("request must be specified");
@@ -21447,7 +21476,7 @@
                     o,
                   ).finish(),
                   function (t, n) {
-                    if (t) return a.emit("error", t, e), s(t);
+                    if (t) return (a.emit("error", t, e), s(t));
                     if (null !== n) {
                       if (!(n instanceof i))
                         try {
@@ -21456,9 +21485,9 @@
                               a.responseDelimited ? "decodeDelimited" : "decode"
                             ](n);
                         } catch (t) {
-                          return a.emit("error", t, e), s(t);
+                          return (a.emit("error", t, e), s(t));
                         }
-                      return a.emit("data", n, e), s(null, n);
+                      return (a.emit("data", n, e), s(null, n));
                     }
                     a.end(!0);
                   },
@@ -21484,7 +21513,7 @@
                 this.emit("end").off()),
               this
             );
-          });
+          }));
       },
       function (t, e, n) {
         "use strict";
@@ -21493,7 +21522,7 @@
       ,
       function (t, e, n) {
         "use strict";
-        n.r(e),
+        (n.r(e),
           n.d(e, "auxiliaryInputFromSpec", function () {
             return i;
           }),
@@ -21502,7 +21531,7 @@
           }),
           n.d(e, "BinaryCounter", function () {
             return s;
-          });
+          }));
         var r = n(0);
         function i(t) {
           switch (t.type) {
@@ -21566,7 +21595,7 @@
         var o = (function () {
           function t(t) {
             var n = this;
-            (this.tempos = []),
+            ((this.tempos = []),
               (this.timeSignatures = []),
               (this.keySignatures = []),
               (this.meta = []),
@@ -21601,21 +21630,21 @@
                                 type: t.type,
                               }));
                 }),
-                this.update());
+                this.update()));
           }
           return (
             (t.prototype.update = function () {
               var t = this,
                 e = 0,
                 n = 0;
-              this.tempos.sort(function (t, e) {
+              (this.tempos.sort(function (t, e) {
                 return t.ticks - e.ticks;
               }),
                 this.tempos.forEach(function (r, i) {
                   var o = i > 0 ? t.tempos[i - 1].bpm : t.tempos[0].bpm,
                     s = r.ticks / t.ppq - n,
                     a = (60 / o) * s;
-                  (r.time = a + e), (e = r.time), (n += s);
+                  ((r.time = a + e), (e = r.time), (n += s));
                 }),
                 this.timeSignatures.sort(function (t, e) {
                   return t.ticks - e.ticks;
@@ -21627,8 +21656,9 @@
                       t.ppq /
                       r.timeSignature[0] /
                       (r.timeSignature[1] / 4);
-                  (r.measures = r.measures || 0), (e.measures = i + r.measures);
-                });
+                  ((r.measures = r.measures || 0),
+                    (e.measures = i + r.measures));
+                }));
             }),
             (t.prototype.ticksToSeconds = function (t) {
               var e = r.search(this.tempos, t);
@@ -21681,7 +21711,7 @@
               };
             }),
             (t.prototype.fromJSON = function (t) {
-              (this.name = t.name),
+              ((this.name = t.name),
                 (this.tempos = t.tempos.map(function (t) {
                   return Object.assign({}, t);
                 })),
@@ -21695,10 +21725,10 @@
                   return Object.assign({}, t);
                 })),
                 i.set(this, t.ppq),
-                this.update();
+                this.update());
             }),
             (t.prototype.setTempo = function (t) {
-              (this.tempos = [{ bpm: t, ticks: 0 }]), this.update();
+              ((this.tempos = [{ bpm: t, ticks: 0 }]), this.update());
             }),
             t
           );
@@ -21773,7 +21803,7 @@
                   return (function (o) {
                     if (n)
                       throw new TypeError("Generator is already executing.");
-                    for (; s; )
+                    for (; s;)
                       try {
                         if (
                           ((n = 1),
@@ -21795,12 +21825,12 @@
                             i = o;
                             break;
                           case 4:
-                            return s.label++, { value: o[1], done: !1 };
+                            return (s.label++, { value: o[1], done: !1 });
                           case 5:
-                            s.label++, (r = o[1]), (o = [0]);
+                            (s.label++, (r = o[1]), (o = [0]));
                             continue;
                           case 7:
-                            (o = s.ops.pop()), s.trys.pop();
+                            ((o = s.ops.pop()), s.trys.pop());
                             continue;
                           default:
                             if (
@@ -21819,19 +21849,19 @@
                               break;
                             }
                             if (6 === o[0] && s.label < i[1]) {
-                              (s.label = i[1]), (i = o);
+                              ((s.label = i[1]), (i = o));
                               break;
                             }
                             if (i && s.label < i[2]) {
-                              (s.label = i[2]), s.ops.push(o);
+                              ((s.label = i[2]), s.ops.push(o));
                               break;
                             }
-                            i[2] && s.ops.pop(), s.trys.pop();
+                            (i[2] && s.ops.pop(), s.trys.pop());
                             continue;
                         }
                         o = e.call(t, s);
                       } catch (t) {
-                        (o = [6, t]), (r = 0);
+                        ((o = [6, t]), (r = 0));
                       } finally {
                         n = i = 0;
                       }
@@ -21850,12 +21880,12 @@
             function t(t) {
               var e = this,
                 n = null;
-              t &&
+              (t &&
                 (t instanceof ArrayBuffer && (t = new Uint8Array(t)),
                 (n = o.parseMidi(t)).tracks.forEach(function (t) {
                   var e = 0;
                   t.forEach(function (t) {
-                    (e += t.deltaTime), (t.absoluteTime = e);
+                    ((e += t.deltaTime), (t.absoluteTime = e));
                   });
                 }),
                 (n.tracks = (function (t) {
@@ -21879,7 +21909,7 @@
                           ? (c = i.get(h))
                           : ((c = r + i.size), i.set(h, c));
                       }
-                      e[c] || e.push([]), e[c].push(u);
+                      (e[c] || e.push([]), e[c].push(u));
                     }
                   return e;
                 })(n.tracks))),
@@ -21891,7 +21921,7 @@
                   })),
                   1 === n.header.format &&
                     0 === this.tracks[0].duration &&
-                    this.tracks.shift());
+                    this.tracks.shift()));
             }
             return (
               (t.fromUrl = function (e) {
@@ -21945,7 +21975,7 @@
               }),
               (t.prototype.addTrack = function () {
                 var t = new u.Track(void 0, this.header);
-                return this.tracks.push(t), t;
+                return (this.tracks.push(t), t);
               }),
               (t.prototype.toArray = function () {
                 return s.encode(this);
@@ -21960,16 +21990,16 @@
               }),
               (t.prototype.fromJSON = function (t) {
                 var e = this;
-                (this.header = new a.Header()),
+                ((this.header = new a.Header()),
                   this.header.fromJSON(t.header),
                   (this.tracks = t.tracks.map(function (t) {
                     var n = new u.Track(void 0, e.header);
-                    return n.fromJSON(t), n;
-                  }));
+                    return (n.fromJSON(t), n);
+                  })));
               }),
               (t.prototype.clone = function () {
                 var e = new t();
-                return e.fromJSON(this.toJSON()), e;
+                return (e.fromJSON(this.toJSON()), e);
               }),
               t
             );
@@ -21985,7 +22015,7 @@
       ,
       ,
       function (t, e, n) {
-        (e.parseMidi = n(80)), (e.writeMidi = n(81));
+        ((e.parseMidi = n(80)), (e.writeMidi = n(81)));
       },
       function (t, e, n) {
         "use strict";
@@ -21995,7 +22025,7 @@
             i = t.length,
             o = i;
           if (i > 0 && t[i - 1][n] <= e) return i - 1;
-          for (; r < o; ) {
+          for (; r < o;) {
             var s = Math.floor(r + (o - r) / 2),
               a = t[s],
               u = t[s + 1];
@@ -22010,14 +22040,14 @@
           }
           return -1;
         }
-        Object.defineProperty(e, "__esModule", { value: !0 }),
+        (Object.defineProperty(e, "__esModule", { value: !0 }),
           (e.search = r),
           (e.insert = function (t, e, n) {
             if ((void 0 === n && (n = "ticks"), t.length)) {
               var i = r(t, e[n], n);
               t.splice(i + 1, 0, e);
             } else t.push(e);
-          });
+          }));
       },
       function (t, e, n) {
         "use strict";
@@ -22079,10 +22109,9 @@
                     },
                     l = this;
                   i.length;
-
                 )
                   u();
-                t
+                (t
                   .filter(function (t) {
                     return "controller" === t.type;
                   })
@@ -22102,7 +22131,7 @@
                         ticks: t.absoluteTime,
                         value: t.value / Math.pow(2, 13),
                       });
-                    });
+                    }));
               }
             }
             return (
@@ -22114,7 +22143,9 @@
                     e,
                   );
                 return (
-                  Object.assign(n, t), r.insert(this.notes, n, "ticks"), this
+                  Object.assign(n, t),
+                  r.insert(this.notes, n, "ticks"),
+                  this
                 );
               }),
               (t.prototype.addCC = function (t) {
@@ -22226,7 +22257,7 @@
       },
       function (t, e, n) {
         "use strict";
-        Object.defineProperty(e, "__esModule", { value: !0 }),
+        (Object.defineProperty(e, "__esModule", { value: !0 }),
           (e.controlChangeNames = {
             1: "modulationWheel",
             2: "breath",
@@ -22244,18 +22275,18 @@
           }),
           (e.controlChangeIds = Object.keys(e.controlChangeNames).reduce(
             function (t, n) {
-              return (t[e.controlChangeNames[n]] = n), t;
+              return ((t[e.controlChangeNames[n]] = n), t);
             },
             {},
-          ));
+          )));
         var r = new WeakMap(),
           i = new WeakMap(),
           o = (function () {
             function t(t, e) {
-              r.set(this, e),
+              (r.set(this, e),
                 i.set(this, t.controllerType),
                 (this.ticks = t.absoluteTime),
-                (this.value = t.value);
+                (this.value = t.value));
             }
             return (
               Object.defineProperty(t.prototype, "number", {
@@ -22299,14 +22330,16 @@
         e.ControlChange = o;
       },
       function (t, e, n) {
-        self,
+        (self,
           (t.exports = (function (t) {
             var e = {};
             function n(r) {
               if (e[r]) return e[r].exports;
               var i = (e[r] = { i: r, l: !1, exports: {} });
               return (
-                t[r].call(i.exports, i, i.exports, n), (i.l = !0), i.exports
+                t[r].call(i.exports, i, i.exports, n),
+                (i.l = !0),
+                i.exports
               );
             }
             return (
@@ -22317,12 +22350,12 @@
                   Object.defineProperty(t, e, { enumerable: !0, get: r });
               }),
               (n.r = function (t) {
-                "undefined" != typeof Symbol &&
+                ("undefined" != typeof Symbol &&
                   Symbol.toStringTag &&
                   Object.defineProperty(t, Symbol.toStringTag, {
                     value: "Module",
                   }),
-                  Object.defineProperty(t, "__esModule", { value: !0 });
+                  Object.defineProperty(t, "__esModule", { value: !0 }));
               }),
               (n.t = function (t, e) {
                 if ((1 & e && (t = n(t)), 8 & e)) return t;
@@ -22356,7 +22389,7 @@
                     : function () {
                         return t;
                       };
-                return n.d(e, "a", e), e;
+                return (n.d(e, "a", e), e);
               }),
               (n.o = function (t, e) {
                 return Object.prototype.hasOwnProperty.call(t, e);
@@ -22367,7 +22400,7 @@
           })([
             function (t, e, n) {
               "use strict";
-              n.r(e),
+              (n.r(e),
                 n.d(e, "SVGNS", function () {
                   return r;
                 }),
@@ -22382,7 +22415,7 @@
                 }),
                 n.d(e, "setFade", function () {
                   return a;
-                });
+                }));
               const r = "http://www.w3.org/2000/svg";
               function i(t, e, n, i, o, s, a = 1) {
                 const u = globalThis.document.createElementNS(r, "path");
@@ -22400,31 +22433,35 @@
               }
               function o(t, e, n, i, o, s = !1, a = 1, u = 1) {
                 const c = globalThis.document.createElementNS(r, "text");
-                c.setAttributeNS(null, "font-family", "Times"),
+                (c.setAttributeNS(null, "font-family", "Times"),
                   c.setAttributeNS(null, "font-size", o),
                   s && c.setAttributeNS(null, "font-weight", "bold"),
                   c.setAttributeNS(
                     null,
                     "transform",
                     `translate(${n}, ${i}) scale(${a}, ${u})`,
-                  );
+                  ));
                 const l = globalThis.document.createTextNode(e);
-                return c.appendChild(l), t.appendChild(c), c;
+                return (c.appendChild(l), t.appendChild(c), c);
               }
               function s(t, e) {
                 const n = globalThis.document.createElementNS(r, "g");
-                return n.setAttribute("data-id", e), t.appendChild(n), n;
+                return (n.setAttribute("data-id", e), t.appendChild(n), n);
               }
               function a(t, e = !1, n = 1, i = 0) {
                 let o = t.querySelector("animate");
                 if (!o) {
-                  (o = globalThis.document.createElementNS(
+                  ((o = globalThis.document.createElementNS(
                     r,
                     "animate",
                   )).setAttributeNS(null, "attributeName", "opacity"),
                     o.setAttributeNS(null, "dur", "4s"),
                     o.setAttributeNS(null, "fill", "freeze"),
-                    o.setAttributeNS(null, "keyTimes", "0; 0.25; 0.5; 0.75; 1");
+                    o.setAttributeNS(
+                      null,
+                      "keyTimes",
+                      "0; 0.25; 0.5; 0.75; 1",
+                    ));
                   const t = (n + 3 * i) / 4;
                   o.setAttributeNS(
                     null,
@@ -22443,7 +22480,7 @@
             },
             function (t, e, n) {
               "use strict";
-              n.r(e),
+              (n.r(e),
                 n.d(e, "PATH_SCALE", function () {
                   return r;
                 }),
@@ -22482,7 +22519,7 @@
                 }),
                 n.d(e, "ACCIDENTAL_PATHS", function () {
                   return g;
-                });
+                }));
               const r = 100,
                 i =
                   "M 0,10 C 0,-15 35,-50 80,-50 110,-50 125,-35 125,-10 \n125,15 90,50 45,50 15,50 0,35 0,10 Z",
@@ -22580,7 +22617,7 @@
             },
             function (t, e, n) {
               "use strict";
-              n.r(e),
+              (n.r(e),
                 n.d(e, "MIN_RESOLUTION", function () {
                   return r;
                 }),
@@ -22592,7 +22629,7 @@
                 }),
                 n.d(e, "COMPACT_SPACING", function () {
                   return s;
-                });
+                }));
               const r = 0.0625,
                 i = 15,
                 o = 1,
@@ -22600,7 +22637,7 @@
             },
             function (t, e, n) {
               "use strict";
-              n.r(e),
+              (n.r(e),
                 n.d(e, "MAX_QUARTER_DIVISION", function () {
                   return u;
                 }),
@@ -22609,7 +22646,7 @@
                 }),
                 n.d(e, "StaffSVGRender", function () {
                   return l;
-                });
+                }));
               var r = n(2),
                 i = n(0),
                 o = n(1);
@@ -22680,22 +22717,22 @@
                 u = 16;
               var c;
               !(function (t) {
-                (t[(t.PAGE = 0)] = "PAGE"),
+                ((t[(t.PAGE = 0)] = "PAGE"),
                   (t[(t.NOTE = 1)] = "NOTE"),
-                  (t[(t.BAR = 2)] = "BAR");
+                  (t[(t.BAR = 2)] = "BAR"));
               })(c || (c = {}));
               class l {
                 constructor(t, e, n) {
-                  (this.handleScrollEvent = (t) => {
-                    (this.lastKnownScrollLeft = this.parentElement.scrollLeft),
+                  ((this.handleScrollEvent = (t) => {
+                    ((this.lastKnownScrollLeft = this.parentElement.scrollLeft),
                       this.ticking ||
                         globalThis.requestAnimationFrame(() => {
-                          this.changeAndDrawSignaturesIfNeeded(
+                          (this.changeAndDrawSignaturesIfNeeded(
                             this.lastKnownScrollLeft,
                           ),
-                            (this.ticking = !1);
+                            (this.ticking = !1));
                         }),
-                      (this.ticking = !0);
+                      (this.ticking = !0));
                   }),
                     (this.scoreInfo = t),
                     (this.config = {
@@ -22717,12 +22754,12 @@
                       (this.config.noteSpacing =
                         r.COMPACT_SPACING * this.scale)),
                     this.clear(),
-                    this.redraw();
+                    this.redraw());
                 }
                 clear() {
-                  for (; this.div.lastChild; )
+                  for (; this.div.lastChild;)
                     this.div.removeChild(this.div.lastChild);
-                  (this.div.style.overflow = "visible"),
+                  ((this.div.style.overflow = "visible"),
                     (this.div.style.position = "relative"),
                     (this.overlaySVG = globalThis.document.createElementNS(
                       i.SVGNS,
@@ -22772,14 +22809,14 @@
                       this.staffSVG,
                       "signatures",
                     )),
-                    this.staffG.appendChild(this.signaturesG);
+                    this.staffG.appendChild(this.signaturesG));
                   let t = 0,
                     e = 0;
                   this.scoreInfo.notes.forEach((n) => {
-                    (t += n.pitch), ++e;
+                    ((t += n.pitch), ++e);
                   });
                   const n = t / e;
-                  (this.clef = n < 60 ? 50 : 71),
+                  ((this.clef = n < 60 ? 50 : 71),
                     (this.signaturesList = [{ x: 0, q: 0 }]),
                     (this.signatureCurrent = 0),
                     (this.signatureNext = 0),
@@ -22794,7 +22831,7 @@
                     (this.playingNotes = []),
                     (this.lastBar = 0),
                     (this.barAccidentals = {}),
-                    (this.lastQ = -1);
+                    (this.lastQ = -1));
                 }
                 isPaintingActiveNote(t, e) {
                   const n = t.start === e.start,
@@ -22808,22 +22845,22 @@
                   const r = 0 === this.config.pixelsPerTimeStep;
                   if (t) {
                     const o = [];
-                    this.playingNotes.forEach((e) => {
+                    (this.playingNotes.forEach((e) => {
                       this.isPaintingActiveNote(e, t)
                         ? o.push(e)
                         : this.highlightElement(this.getGroup(e), !1);
                     }),
-                      (this.playingNotes = o);
+                      (this.playingNotes = o));
                     const s = this.getGroup(t);
                     if (s) {
-                      this.playingNotes.push(t),
+                      (this.playingNotes.push(t),
                         this.highlightElement(s, !0),
                         (n =
                           s.getBoundingClientRect().left -
-                          this.staffSVG.getBoundingClientRect().left);
+                          this.staffSVG.getBoundingClientRect().left));
                       const o = t.start,
                         a = s.getAttribute("data-is-bar-beginning");
-                      (this.scrollType !== c.BAR || a) &&
+                      ((this.scrollType !== c.BAR || a) &&
                         this.scrollIntoViewIfNeeded(e, n),
                         !r &&
                           this.signaturesBlinking &&
@@ -22832,14 +22869,14 @@
                           Object(i.setFade)(
                             this.overlayG,
                             this.signaturesBlinking,
-                          ));
+                          )));
                     }
                   } else {
                     this.setDetails();
                     const t = -1 === this.lastQ;
                     let e = 0,
                       n = 0;
-                    t
+                    (t
                       ? ((n = this.drawSignatures(
                           this.overlayG,
                           e,
@@ -22851,13 +22888,13 @@
                         (n += this.drawRests(this.initialRest, e + n)))
                       : (e = this.width),
                       this.musicBlockMap.forEach((t, i) => {
-                        r || (e = this.quartersToTime(i) * this.hStepSize),
+                        (r || (e = this.quartersToTime(i) * this.hStepSize),
                           i > this.lastQ
                             ? ((n += this.drawMusicBlock(t, e + n)),
                               (this.lastQ = i))
                             : i === this.lastQ &&
-                              (n += this.drawRests(t, e + n));
-                      });
+                              (n += this.drawRests(t, e + n)));
+                      }));
                     const i = this.staffSVG.getBoundingClientRect(),
                       o = this.musicG.getBoundingClientRect();
                     if (
@@ -22873,12 +22910,12 @@
                         e = this.quartersToTime(this.lastQ + t.notes[0].length);
                       this.width = e * this.config.pixelsPerTimeStep;
                     }
-                    this.staffSVG.setAttributeNS(
+                    (this.staffSVG.setAttributeNS(
                       null,
                       "width",
                       "" + this.width,
                     ),
-                      this.redrawStaff(this.linesG, 0, this.width);
+                      this.redrawStaff(this.linesG, 0, this.width));
                   }
                   return n;
                 }
@@ -22894,14 +22931,14 @@
                       0 === t.notes[0].length
                         ? "[infinite]"
                         : "" + 4 / t.notes[0].length;
-                    console.warn(
+                    (console.warn(
                       " StaffRender ",
                       "background:orange; color:white",
                       `StaffRender does not handle notes shorther than 1/${
                         4 / r.MIN_RESOLUTION
                       }th, and this score tries to draw a 1/${e}th. Shortest possible note will be drawn instead.`,
                     ),
-                      (a = r.MIN_RESOLUTION);
+                      (a = r.MIN_RESOLUTION));
                   }
                   const u = o.NOTE_PATHS[a];
                   let c;
@@ -22947,7 +22984,7 @@
                           n.opacity,
                         );
                       }
-                      Object(i.drawSVGPath)(
+                      (Object(i.drawSVGPath)(
                         n.g,
                         u.path,
                         e + s,
@@ -22976,7 +23013,7 @@
                             this.scale,
                             this.scale,
                             n.opacity,
-                          );
+                          ));
                     }),
                     u.stemAnchor)
                   ) {
@@ -23014,7 +23051,7 @@
                       );
                     else if (u.flags > 1)
                       for (let t = 0; t < u.flags; ++t)
-                        Object(i.drawSVGPath)(
+                        (Object(i.drawSVGPath)(
                           c,
                           o.multiFlagPath,
                           l,
@@ -23023,7 +23060,7 @@
                           this.scale * (p ? -1 : 1),
                           1,
                         ),
-                          (a += (p ? -2 : 2) * this.vStepSize);
+                          (a += (p ? -2 : 2) * this.vStepSize));
                   }
                   return (
                     0 === this.config.pixelsPerTimeStep &&
@@ -23072,10 +23109,10 @@
                       l /= 2
                     );
                     let h = l;
-                    for (; (s || u) && h >= r.MIN_RESOLUTION; ) {
+                    for (; (s || u) && h >= r.MIN_RESOLUTION;) {
                       if (h <= s) {
-                        (n += this.drawBarIfNeeded(a, e + n)),
-                          (n += this.drawSignaturesIfNeeded(a, e + n));
+                        ((n += this.drawBarIfNeeded(a, e + n)),
+                          (n += this.drawSignaturesIfNeeded(a, e + n)));
                         const t = Object(i.drawSVGPath)(
                           this.musicG,
                           o.REST_PATHS[h],
@@ -23084,12 +23121,12 @@
                           this.scale,
                           this.scale,
                         );
-                        this.config.pixelsPerTimeStep > 0
+                        (this.config.pixelsPerTimeStep > 0
                           ? (e += this.quartersToTime(h) * this.hStepSize)
                           : ((n += t.getBoundingClientRect().width),
                             (n += this.config.noteSpacing)),
                           (a += h),
-                          (s -= h);
+                          (s -= h));
                       }
                       if (u && s <= 0) {
                         const t = this.getBarLength();
@@ -23130,7 +23167,7 @@
                   return r;
                 }
                 clearSignatureOverlay() {
-                  for (; this.overlayG.lastChild; )
+                  for (; this.overlayG.lastChild;)
                     this.overlayG.removeChild(this.overlayG.lastChild);
                 }
                 drawSignaturesIfNeeded(t, e) {
@@ -23142,8 +23179,8 @@
                       r.COMPACT_SPACING *
                       this.scale *
                       (this.config.pixelsPerTimeStep > 0 ? 3 : 2);
-                    this.signaturesList.push({ x: e - a, q: t }),
-                      null === this.signatureNext && (this.signatureNext = e);
+                    (this.signaturesList.push({ x: e - a, q: t }),
+                      null === this.signatureNext && (this.signatureNext = e));
                     const u =
                       t > 0
                         ? Object(i.createSVGGroupChild)(
@@ -23162,7 +23199,7 @@
                   const p =
                     t === this.overlayG || this.config.pixelsPerTimeStep > 0;
                   if (p) {
-                    (l = globalThis.document.createElementNS(
+                    ((l = globalThis.document.createElementNS(
                       i.SVGNS,
                       "rect",
                     )).setAttributeNS(null, "x", "" + e),
@@ -23170,7 +23207,7 @@
                       l.setAttributeNS(null, "width", "1"),
                       l.setAttributeNS(null, "height", "1"),
                       l.setAttribute("data-id", "background"),
-                      t.appendChild(l);
+                      t.appendChild(l));
                     const n = globalThis.document.defaultView.getComputedStyle(
                       this.div.parentElement,
                     );
@@ -23189,7 +23226,7 @@
                       this.scale,
                       this.scale,
                     );
-                    this.setFill(n), (h += 3 * c);
+                    (this.setFill(n), (h += 3 * c));
                   }
                   if (s) {
                     const n = a[this.key].accidental,
@@ -23204,13 +23241,13 @@
                           this.scale,
                           this.scale,
                         );
-                      this.setFill(u), (h += u.getBoundingClientRect().width);
+                      (this.setFill(u), (h += u.getBoundingClientRect().width));
                     });
                   }
                   if (u) {
                     const n = Object(i.createSVGGroupChild)(t, "time-key"),
                       r = 2.85 * this.config.noteHeight + "px";
-                    Object(i.drawSVGText)(
+                    (Object(i.drawSVGText)(
                       n,
                       "" + this.timeSignatureNumerator,
                       e + h,
@@ -23227,7 +23264,7 @@
                         !0,
                       ),
                       this.setFill(n),
-                      (h += n.getBoundingClientRect().width + c);
+                      (h += n.getBoundingClientRect().width + c));
                   }
                   const f = this.redrawStaff(t, e, h);
                   this.setStroke(f);
@@ -23283,7 +23320,7 @@
                       ++n
                     )
                       e = this.scoreInfo.keySignatures[n].key;
-                    if (e !== this.key) return (this.key = e), !0;
+                    if (e !== this.key) return ((this.key = e), !0);
                   }
                   return !1;
                 }
@@ -23297,8 +23334,8 @@
                       this.scoreInfo.timeSignatures[r].start <= t;
                       ++r
                     )
-                      (e = this.scoreInfo.timeSignatures[r].numerator),
-                        (n = this.scoreInfo.timeSignatures[r].denominator);
+                      ((e = this.scoreInfo.timeSignatures[r].numerator),
+                        (n = this.scoreInfo.timeSignatures[r].denominator));
                     if (
                       e !== this.timeSignatureNumerator ||
                       n !== this.timeSignatureDenominator
@@ -23317,27 +23354,28 @@
                     t < this.signatureCurrent ||
                     (null !== this.signatureNext && this.signatureNext <= t)
                   ) {
-                    (e = this.signaturesList[0].q), (this.signatureNext = null);
+                    ((e = this.signaturesList[0].q),
+                      (this.signatureNext = null));
                     for (let n = 0; n < this.signaturesList.length; ++n) {
                       if (t < this.signaturesList[n].x) {
                         this.signatureNext = this.signaturesList[n].x;
                         break;
                       }
-                      (this.signatureCurrent = this.signaturesList[n].x),
-                        (e = this.signaturesList[n].q);
+                      ((this.signatureCurrent = this.signaturesList[n].x),
+                        (e = this.signaturesList[n].q));
                     }
                   }
                   if (void 0 !== e) {
                     const t = this.key,
                       n = this.timeSignatureNumerator,
                       r = this.timeSignatureDenominator;
-                    this.changeKeySignatureIfNeeded(e),
+                    (this.changeKeySignatureIfNeeded(e),
                       this.changeTimeSignatureIfNeeded(e),
                       this.clearSignatureOverlay(),
                       this.drawSignatures(this.overlayG, 0, !0, !0, !0),
                       (this.key = t),
                       (this.timeSignatureNumerator = n),
-                      (this.timeSignatureDenominator = r);
+                      (this.timeSignatureDenominator = r));
                   }
                   this.config.pixelsPerTimeStep > 0 &&
                     0 === t &&
@@ -23369,12 +23407,12 @@
                   if (t < 0) {
                     this.staffOffset -= t;
                     const e = `translate(0, ${this.staffOffset})`;
-                    this.overlayG.setAttributeNS(null, "transform", e),
+                    (this.overlayG.setAttributeNS(null, "transform", e),
                       this.staffG.setAttributeNS(null, "transform", e),
-                      (n = this.height - t);
+                      (n = this.height - t));
                   }
                   if ((n = Math.max(n, e - t)) > this.height) {
-                    (this.height = n),
+                    ((this.height = n),
                       this.overlaySVG.setAttributeNS(
                         null,
                         "height",
@@ -23384,14 +23422,14 @@
                         null,
                         "height",
                         "" + this.height,
-                      );
+                      ));
                     const t = this.div.querySelectorAll(
                       'rect[data-id="background"]',
                     );
                     for (let e = 0; e < t.length; ++e) {
                       const n = t[e];
-                      n.setAttributeNS(null, "y", "" + -this.staffOffset),
-                        n.setAttributeNS(null, "height", "" + this.height);
+                      (n.setAttributeNS(null, "y", "" + -this.staffOffset),
+                        n.setAttributeNS(null, "height", "" + this.height));
                     }
                   }
                 }
@@ -23399,8 +23437,8 @@
                   t.setAttributeNS(null, "fill", this.getColor(e));
                 }
                 setStroke(t, e = r.LINE_STROKE, n = !1) {
-                  t.setAttributeNS(null, "stroke", this.getColor(n)),
-                    t.setAttributeNS(null, "stroke-width", "" + e);
+                  (t.setAttributeNS(null, "stroke", this.getColor(n)),
+                    t.setAttributeNS(null, "stroke-width", "" + e));
                 }
                 getColor(t) {
                   return `rgb(${
@@ -23416,8 +23454,8 @@
                   return this.staffSVG.querySelector(`g[data-id="${e}-${n}"]`);
                 }
                 highlightElement(t, e) {
-                  t.setAttribute("fill", this.getColor(e)),
-                    t.setAttribute("stroke", this.getColor(e));
+                  (t.setAttribute("fill", this.getColor(e)),
+                    t.setAttribute("stroke", this.getColor(e)));
                 }
                 getBarBeginnings() {
                   const t = new Set();
@@ -23447,22 +23485,22 @@
                   let t = new Map();
                   const e = this.getBarBeginnings(),
                     n = new Set(e);
-                  this.scoreInfo.notes
+                  (this.scoreInfo.notes
                     .slice()
                     .sort((t, e) => t.start - e.start)
                     .forEach((e) => {
                       const r = this.getQNote(e);
-                      n.add(r.start),
+                      (n.add(r.start),
                         n.add(r.start + r.length),
                         t.has(r.start)
                           ? t.get(r.start).push(r)
-                          : t.set(r.start, [r]);
+                          : t.set(r.start, [r]));
                     }),
                     Array.from(n)
                       .sort((t, e) => t - e)
                       .forEach((e) => {
                         const n = [];
-                        t.forEach((t) => {
+                        (t.forEach((t) => {
                           t.forEach((t) => {
                             const r = this.splitQNote(t, e);
                             r && n.push(r);
@@ -23472,15 +23510,15 @@
                             t.has(e.start)
                               ? t.get(e.start).push(e)
                               : t.set(e.start, [e]);
-                          });
+                          }));
                       }),
-                    (t = new Map(Array.from(t).sort((t, e) => t[0] - e[0])));
+                    (t = new Map(Array.from(t).sort((t, e) => t[0] - e[0]))));
                   const r = this.key;
                   let i = null,
                     o = 0;
                   const s = e[Symbol.iterator]();
                   let a = s.next();
-                  t.forEach((t, e) => {
+                  (t.forEach((t, e) => {
                     const n = {
                       maxVStep: Number.MAX_SAFE_INTEGER,
                       minVStep: Number.MIN_SAFE_INTEGER,
@@ -23490,21 +23528,21 @@
                     };
                     this.changeKeySignatureIfNeeded(e);
                     const r = a.value + this.getBarLength();
-                    !a.done &&
+                    (!a.done &&
                       e >= r &&
                       ((a = s.next()),
                       (this.barAccidentals = {}),
                       (n.isBarBeginning = !0)),
                       t.forEach((t) => {
-                        this.analyzePitch(t, e),
+                        (this.analyzePitch(t, e),
                           (n.minVStep = Math.max(t.vSteps, n.minVStep)),
                           (n.maxVStep = Math.min(t.vSteps, n.maxVStep)),
-                          n.notes.push(t);
+                          n.notes.push(t));
                       }),
                       i && (i.restToNextLength = e - o),
                       this.musicBlockMap.set(e, n),
                       (i = n),
-                      (o = e + n.notes[0].length);
+                      (o = e + n.notes[0].length));
                   }),
                     (this.initialRest = {
                       maxVStep: 0,
@@ -23524,7 +23562,7 @@
                         },
                       ],
                     }),
-                    (this.key = r);
+                    (this.key = r));
                 }
                 getQNote(t) {
                   return {
@@ -23555,7 +23593,7 @@
                 }
                 analyzePitch(t, e) {
                   const n = this.getPitchDetails(t.pitch);
-                  n.vSteps in this.barAccidentals
+                  (n.vSteps in this.barAccidentals
                     ? n.accidental === this.barAccidentals[n.vSteps]
                       ? (n.accidental = 0)
                       : (3 === this.barAccidentals[n.vSteps]
@@ -23565,7 +23603,7 @@
                     : (t.tiedFrom && (n.accidental = 0),
                       (this.barAccidentals[n.vSteps] = n.accidental)),
                     (t.vSteps = n.vSteps),
-                    (t.accidental = n.accidental);
+                    (t.accidental = n.accidental));
                 }
                 getPitchDetails(t) {
                   const e = t - 60,
@@ -23592,7 +23630,7 @@
               "use strict";
               n.r(e);
               var r = n(3);
-              n.d(e, "MAX_QUARTER_DIVISION", function () {
+              (n.d(e, "MAX_QUARTER_DIVISION", function () {
                 return r.MAX_QUARTER_DIVISION;
               }),
                 n.d(e, "ScrollType", function () {
@@ -23600,9 +23638,9 @@
                 }),
                 n.d(e, "StaffSVGRender", function () {
                   return r.StaffSVGRender;
-                });
+                }));
             },
-          ]));
+          ])));
       },
       ,
       ,
@@ -23618,7 +23656,7 @@
       ,
       function (t, e, n) {
         "use strict";
-        n.r(e),
+        (n.r(e),
           n.d(e, "aux_inputs", function () {
             return r;
           }),
@@ -23714,7 +23752,7 @@
           }),
           n.d(e, "StaffSVGVisualizer", function () {
             return F;
-          });
+          }));
         var r = n(36),
           i = n(18),
           o = n(1),
@@ -23727,7 +23765,7 @@
         class p {}
         class f {
           constructor(t, e = 1) {
-            (this.clicksPerQuarter = 1),
+            ((this.clicksPerQuarter = 1),
               (this.muted = !1),
               (this.loClick = new h.MembraneSynth({
                 pitchDecay: 0.008,
@@ -23744,7 +23782,7 @@
               (this.step = -1),
               this.reset(),
               (this.callbackObject = t),
-              (this.clicksPerQuarter = e);
+              (this.clicksPerQuarter = e));
           }
           isTicking() {
             return this.ticking;
@@ -23756,41 +23794,41 @@
             return h.immediate() - this.startedAt;
           }
           start(t = 120) {
-            this.reset(),
+            (this.reset(),
               (this.ticking = !0),
               this.callbackObject.click ||
                 (this.callbackObject.click = () => {}),
               this.callbackObject.quarter ||
                 (this.callbackObject.quarter = () => {}),
-              this.callbackObject.bar || (this.callbackObject.bar = () => {});
+              this.callbackObject.bar || (this.callbackObject.bar = () => {}));
             let e = 0;
             const n = 4 * this.clicksPerQuarter;
-            h.Transport.scheduleRepeat((t) => {
+            (h.Transport.scheduleRepeat((t) => {
               this.startedAt || (this.startedAt = t);
               const r = t - this.startedAt;
               this.step++;
               const i = this.step % n,
                 o = Math.floor(i / this.clicksPerQuarter),
                 s = i % this.clicksPerQuarter;
-              this.callbackObject.click(r, i),
+              (this.callbackObject.click(r, i),
                 0 === s && this.callbackObject.quarter(r, o),
                 this.muted ||
                   (0 === i
                     ? this.hiClick.triggerAttack(this.hiClickNote, t, 0.1)
                     : this.loClick.triggerAttack(this.loClickNote, t, 0.1)),
-                0 === i && (this.callbackObject.bar(r, e), e++);
+                0 === i && (this.callbackObject.bar(r, e), e++));
             }, n + "n"),
               (h.Transport.bpm.value = t),
-              h.Transport.start();
+              h.Transport.start());
           }
           stop() {
-            (this.ticking = !1), h.Transport.cancel(), h.Transport.stop();
+            ((this.ticking = !1), h.Transport.cancel(), h.Transport.stop());
           }
           reset() {
-            (this.muted = !1),
+            ((this.muted = !1),
               (this.ticking = !1),
               (this.step = -1),
-              (this.startedAt = null);
+              (this.startedAt = null));
           }
         }
         var m = n(46),
@@ -23798,17 +23836,17 @@
           g = n(2);
         class S extends Error {
           constructor(t) {
-            super(t), Object.setPrototypeOf(this, new.target.prototype);
+            (super(t), Object.setPrototypeOf(this, new.target.prototype));
           }
         }
         function y(t) {
           const e = new m.Midi(t),
             n = g.a.create();
-          (n.ticksPerQuarter = e.header.ppq),
+          ((n.ticksPerQuarter = e.header.ppq),
             (n.sourceInfo = g.a.SourceInfo.create({
               parser: g.a.SourceInfo.Parser.TONEJS_MIDI_CONVERT,
               encodingType: g.a.SourceInfo.EncodingType.MIDI,
-            }));
+            })));
           for (const t of e.header.timeSignatures)
             n.timeSignatures.push(
               g.a.TimeSignature.create({
@@ -23833,7 +23871,7 @@
             for (const e of t.notes) {
               const i = e.time,
                 s = i + e.duration;
-              n.notes.push(
+              (n.notes.push(
                 g.a.Note.create({
                   instrument: r,
                   program: t.instrument.number,
@@ -23844,7 +23882,7 @@
                   isDrum: t.instrument.percussion,
                 }),
               ),
-                s > n.totalTime && (n.totalTime = s);
+                s > n.totalTime && (n.totalTime = s));
             }
           }
           return n;
@@ -23864,15 +23902,15 @@
             tracks: [],
           });
           const n = Array.from(t.tempos || []);
-          0 === n.length &&
+          (0 === n.length &&
             n.push({ time: 0, qpm: o.DEFAULT_QUARTERS_PER_MINUTE }),
-            n.sort((t, e) => t.time - e.time);
+            n.sort((t, e) => t.time - e.time));
           for (const t of n)
-            e.header.tempos.push({
+            (e.header.tempos.push({
               ticks: e.header.secondsToTicks(t.time),
               bpm: t.qpm,
             }),
-              e.header.update();
+              e.header.update());
           if (t.timeSignatures && 0 !== t.timeSignatures.length)
             for (const n of t.timeSignatures)
               e.header.timeSignatures.push({
@@ -23888,18 +23926,18 @@
               n = void 0 === e.program ? o.DEFAULT_PROGRAM : e.program,
               i = !!e.isDrum,
               s = JSON.stringify([t, n, i]);
-            r.has(s) || r.set(s, []), r.get(s).push(e);
+            (r.has(s) || r.set(s, []), r.get(s).push(e));
           }
           return (
             r.forEach((t, n) => {
               const [r, i] = JSON.parse(n).slice(1),
                 s = e.addTrack();
-              (s.channel = i
+              ((s.channel = i
                 ? o.DRUM_CHANNEL
                 : o.NON_DRUM_CHANNELS[
                     (e.tracks.length - 1) % o.NON_DRUM_CHANNELS.length
                   ]),
-                (s.instrument.number = r);
+                (s.instrument.number = r));
               for (const e of t) {
                 const t =
                   void 0 === e.velocity ? o.DEFAULT_VELOCITY : e.velocity;
@@ -23927,7 +23965,7 @@
         function P(t) {
           return new Promise((e, n) => {
             const r = new FileReader();
-            (r.onload = (t) => {
+            ((r.onload = (t) => {
               try {
                 const t = y(r.result);
                 e(t);
@@ -23936,7 +23974,7 @@
               }
             }),
               (r.onerror = (t) => n(t)),
-              r.readAsArrayBuffer(t);
+              r.readAsArrayBuffer(t));
           });
         }
         function v(t) {
@@ -23944,24 +23982,24 @@
         }
         class N {
           constructor(t) {
-            (this.FADE_SECONDS = 0.1),
+            ((this.FADE_SECONDS = 0.1),
               (this.baseURL = t),
               (this.buffers = new h.Buffers([])),
               (this.sourceMap = new Map()),
-              (this.initialized = !1);
+              (this.initialized = !1));
           }
           async initialize() {
             await Object(d.a)(this.baseURL + "/instrument.json")
               .then((t) => t.json())
               .then((t) => {
-                (this.name = t.name),
+                ((this.name = t.name),
                   (this.minPitch = t.minPitch),
                   (this.maxPitch = t.maxPitch),
                   (this.durationSeconds = t.durationSeconds),
                   (this.releaseSeconds = t.releaseSeconds),
                   (this.percussive = t.percussive),
                   (this.velocities = t.velocities),
-                  (this.initialized = !0);
+                  (this.initialized = !0));
               });
           }
           sampleInfoToName(t) {
@@ -24027,36 +24065,36 @@
               !this.percussive && r < this.durationSeconds)
             ) {
               const t = new h.BufferSource(o).connect(i);
-              s.stop(n + r + this.FADE_SECONDS),
+              (s.stop(n + r + this.FADE_SECONDS),
                 t.start(
                   n + r,
                   this.durationSeconds,
                   void 0,
                   1,
                   this.FADE_SECONDS,
-                );
+                ));
             }
           }
           playNoteDown(t, e, n) {
             const r = this.getBuffer(t, e),
               i = new h.BufferSource(r).connect(n);
-            i.start(0, 0, void 0, 1, 0),
+            (i.start(0, 0, void 0, 1, 0),
               this.sourceMap.has(t) &&
                 this.sourceMap
                   .get(t)
                   .stop(h.now() + this.FADE_SECONDS, this.FADE_SECONDS),
-              this.sourceMap.set(t, i);
+              this.sourceMap.set(t, i));
           }
           playNoteUp(t, e, n) {
             if (!this.sourceMap.has(t)) return;
             const r = this.getBuffer(t, e);
-            new h.BufferSource(r)
+            (new h.BufferSource(r)
               .connect(n)
               .start(0, this.durationSeconds, void 0, 1, this.FADE_SECONDS),
               this.sourceMap
                 .get(t)
                 .stop(h.now() + this.FADE_SECONDS, this.FADE_SECONDS),
-              this.sourceMap.delete(t);
+              this.sourceMap.delete(t));
           }
           getBuffer(t, e) {
             if (!this.initialized)
@@ -24080,9 +24118,9 @@
         }
         class T {
           constructor(t) {
-            (this.baseURL = t),
+            ((this.baseURL = t),
               (this.instruments = new Map()),
-              (this.initialized = !1);
+              (this.initialized = !1));
           }
           async initialize() {
             await Object(d.a)(this.baseURL + "/soundfont.json")
@@ -24099,8 +24137,8 @@
           async loadSamples(t) {
             this.initialized || (await this.initialize());
             const e = new Map();
-            t.forEach((t) => {
-              (t.isDrum = t.isDrum || !1), (t.program = t.program || 0);
+            (t.forEach((t) => {
+              ((t.isDrum = t.isDrum || !1), (t.program = t.program || 0));
               const n = t.isDrum ? "drums" : t.program,
                 r = { pitch: t.pitch, velocity: t.velocity };
               e.has(n)
@@ -24116,7 +24154,7 @@
                 Array.from(e.keys()).map((t) =>
                   this.instruments.get(t).loadSamples(e.get(t)),
                 ),
-              );
+              ));
           }
           playNote(t, e, n, r, i = 0, o = !1, s) {
             const u = o ? "drums" : i;
@@ -24164,13 +24202,13 @@
         class I {}
         class M {
           constructor(t = !1, e) {
-            (this.playClick = t),
+            ((this.playClick = t),
               (this.callbackObject = e),
-              (this.desiredQPM = void 0);
+              (this.desiredQPM = void 0));
           }
           setTempo(t) {
-            (this.desiredQPM = t),
-              "started" === h.Transport.state && (h.Transport.bpm.value = t);
+            ((this.desiredQPM = t),
+              "started" === h.Transport.state && (h.Transport.bpm.value = t));
           }
           makeClickSequence(t) {
             const e = l.clone(t),
@@ -24185,7 +24223,7 @@
               };
               e.notes.push(n);
             }
-            return e.notes.sort(O), e;
+            return (e.notes.sort(O), e);
           }
           resumeContext() {
             h.context.resume();
@@ -24240,21 +24278,21 @@
               "started" !== h.Transport.state && h.Transport.start(),
               new Promise((e) => {
                 this.scheduledStop = h.Transport.schedule(() => {
-                  this.stop(),
+                  (this.stop(),
                     e(),
-                    this.callbackObject && this.callbackObject.stop();
+                    this.callbackObject && this.callbackObject.stop());
                 }, "+" + t.totalTime);
               })
             );
           }
           stop() {
-            this.isPlaying() &&
+            (this.isPlaying() &&
               (this.currentPart.stop(),
               h.Transport.stop(),
               (this.currentPart = null)),
               h.Transport.clear(this.scheduledStop),
               (this.scheduledStop = void 0),
-              (this.desiredQPM = void 0);
+              (this.desiredQPM = void 0));
           }
           pause() {
             if (!this.isPlaying())
@@ -24284,7 +24322,7 @@
         }
         class A {
           constructor() {
-            (this.DRUM_PITCH_TO_CLASS = new Map()),
+            ((this.DRUM_PITCH_TO_CLASS = new Map()),
               (this.kick = new h.MembraneSynth().toMaster()),
               (this.tomLow = new h.MembraneSynth({
                 pitchDecay: 0.008,
@@ -24357,16 +24395,16 @@
                 (t, e = 1) => this.ride.triggerAttack(t, 0.5, e),
                 (t, e = 0.5) => this.loClick.triggerAttack("G5", t, e),
                 (t, e = 0.5) => this.hiClick.triggerAttack("C6", t, e),
-              ]);
+              ]));
             for (let t = 0; t < s.DEFAULT_DRUM_PITCH_CLASSES.length; ++t)
               s.DEFAULT_DRUM_PITCH_CLASSES[t].forEach((e) => {
                 this.DRUM_PITCH_TO_CLASS.set(e, t);
               });
-            this.DRUM_PITCH_TO_CLASS.set(o.LO_CLICK_PITCH, o.LO_CLICK_CLASS),
-              this.DRUM_PITCH_TO_CLASS.set(o.HI_CLICK_PITCH, o.HI_CLICK_CLASS);
+            (this.DRUM_PITCH_TO_CLASS.set(o.LO_CLICK_PITCH, o.LO_CLICK_CLASS),
+              this.DRUM_PITCH_TO_CLASS.set(o.HI_CLICK_PITCH, o.HI_CLICK_CLASS));
           }
           static getInstance() {
-            return A.instance || (A.instance = new A()), A.instance;
+            return (A.instance || (A.instance = new A()), A.instance);
           }
           playNote(t, e, n) {
             this.pitchPlayers[this.DRUM_PITCH_TO_CLASS.get(t)](e, n);
@@ -24374,13 +24412,13 @@
         }
         class k extends M {
           constructor() {
-            super(...arguments),
+            (super(...arguments),
               (this.drumKit = A.getInstance()),
               (this.bassSynth = new h.Synth({
                 volume: 5,
                 oscillator: { type: "triangle" },
               }).toMaster()),
-              (this.polySynth = new h.PolySynth(10).toMaster());
+              (this.polySynth = new h.PolySynth(10).toMaster()));
           }
           playNote(t, e) {
             const n = e.hasOwnProperty("velocity")
@@ -24407,11 +24445,11 @@
         k.tone = h;
         class q extends M {
           constructor(t, e = h.Master, n, r, i) {
-            super(!1, i),
+            (super(!1, i),
               (this.soundFont = new T(t)),
               (this.output = e),
               (this.programOutputs = n),
-              (this.drumOutputs = r);
+              (this.drumOutputs = r));
           }
           async loadSamples(t) {
             await this.soundFont.loadSamples(
@@ -24491,22 +24529,22 @@
         }
         class _ extends M {
           constructor(t) {
-            super(!1, t),
+            (super(!1, t),
               (this.outputs = []),
               (this.outputChannel = 0),
               (this.availableOutputs = []),
               (this.NOTE_ON = 144),
-              (this.NOTE_OFF = 128);
+              (this.NOTE_OFF = 128));
           }
           async requestMIDIAccess() {
             return globalThis.navigator.requestMIDIAccess
               ? new Promise((t, e) => {
                   globalThis.navigator.requestMIDIAccess().then(
                     (e) => {
-                      e.addEventListener("statechange", (t) =>
+                      (e.addEventListener("statechange", (t) =>
                         this.initOutputs(e),
                       ),
-                        t(this.initOutputs(e));
+                        t(this.initOutputs(e)));
                     },
                     (t) => console.log("Something went wrong", e(t)),
                   );
@@ -24526,8 +24564,8 @@
               o = [this.NOTE_OFF + this.outputChannel, e.pitch, n],
               s = this.outputs ? this.outputs : this.availableOutputs;
             for (let t = 0; t < s.length; t++)
-              this.sendMessageToOutput(s[t], i),
-                this.sendMessageToOutput(s[t], o, d.d.now() + r);
+              (this.sendMessageToOutput(s[t], i),
+                this.sendMessageToOutput(s[t], o, d.d.now() + r));
           }
           sendMessageToOutput(t, e, n) {
             t && t.send(e, n);
@@ -24548,7 +24586,7 @@
         class x {}
         class C {
           constructor(t = {}, e) {
-            (this.notes = []),
+            ((this.notes = []),
               (this.midiInputs = []),
               (this.loClick = new h.MembraneSynth({
                 pitchDecay: 0.008,
@@ -24566,7 +24604,7 @@
               }),
               (this.callbackObject = e),
               (this.recording = !1),
-              (this.onNotes = new Map());
+              (this.onNotes = new Map()));
           }
           async initialize() {
             await globalThis.navigator.requestMIDIAccess().then(
@@ -24584,8 +24622,8 @@
             return this.recording;
           }
           setTempo(t) {
-            (this.config.qpm = t),
-              "started" === h.Transport.state && (h.Transport.bpm.value = t);
+            ((this.config.qpm = t),
+              "started" === h.Transport.state && (h.Transport.bpm.value = t));
           }
           enablePlayClick(t) {
             this.config.playClick = t;
@@ -24596,13 +24634,13 @@
           initClickLoop() {
             let t = 0;
             this.clickLoop = new h.Loop((e) => {
-              t % 4 == 0
+              (t % 4 == 0
                 ? this.loClick.triggerAttack("G5", e)
                 : this.hiClick.triggerAttack("C6", e),
                 t++,
                 this.config.playCountIn &&
                   4 === t &&
-                  (h.Transport.stop(), this.clickLoop.stop());
+                  (h.Transport.stop(), this.clickLoop.stop()));
             }, "4n");
           }
           getMIDIInputs() {
@@ -24689,26 +24727,26 @@
           }
           noteOn(t, e, n) {
             const r = new g.a.Note();
-            (r.pitch = t),
+            ((r.pitch = t),
               (r.startTime = (n - this.firstNoteTimestamp) / 1e3),
               (r.velocity = e),
-              this.onNotes.set(t, r);
+              this.onNotes.set(t, r));
           }
           noteOff(t, e) {
             const n = this.onNotes.get(t);
-            n &&
+            (n &&
               ((n.endTime = (e - this.firstNoteTimestamp) / 1e3),
               this.notes.push(n)),
-              this.onNotes.delete(t);
+              this.onNotes.delete(t));
           }
         }
         var z = n(55);
         class D {
           constructor(t, e = {}) {
-            (this.noteSequence = t),
+            ((this.noteSequence = t),
               (this.sequenceIsQuantized = l.isQuantizedSequence(
                 this.noteSequence,
-              ));
+              )));
             if (
               ((this.config = {
                 noteHeight: e.noteHeight || 6,
@@ -24727,23 +24765,23 @@
                 : 7;
             }
             const n = this.getSize();
-            (this.width = n.width), (this.height = n.height);
+            ((this.width = n.width), (this.height = n.height));
           }
           updateMinMaxPitches(t = !1) {
             if (!this.config.minPitch || !this.config.maxPitch) {
-              void 0 === this.config.minPitch &&
+              (void 0 === this.config.minPitch &&
                 (this.config.minPitch = o.MAX_MIDI_PITCH),
                 void 0 === this.config.maxPitch &&
-                  (this.config.maxPitch = o.MIN_MIDI_PITCH);
+                  (this.config.maxPitch = o.MIN_MIDI_PITCH));
               for (const t of this.noteSequence.notes)
-                (this.config.minPitch = Math.min(
+                ((this.config.minPitch = Math.min(
                   t.pitch,
                   this.config.minPitch,
                 )),
                   (this.config.maxPitch = Math.max(
                     t.pitch,
                     this.config.maxPitch,
-                  ));
+                  )));
               t || ((this.config.minPitch -= 2), (this.config.maxPitch += 2));
             }
           }
@@ -24808,17 +24846,17 @@
         }
         class j extends D {
           constructor(t, e, n = {}) {
-            super(t, n),
+            (super(t, n),
               (this.ctx = e.getContext("2d")),
-              (this.parentElement = e.parentElement);
+              (this.parentElement = e.parentElement));
             const r = globalThis.devicePixelRatio || 1;
-            this.ctx &&
+            (this.ctx &&
               ((this.ctx.canvas.width = r * this.width),
               (this.ctx.canvas.height = r * this.height),
               (e.style.width = this.width + "px"),
               (e.style.height = this.height + "px"),
               this.ctx.scale(r, r)),
-              this.redraw();
+              this.redraw());
           }
           redraw(t, e) {
             let n;
@@ -24832,9 +24870,10 @@
                 u = `rgba(${
                   a ? this.config.activeNoteRGB : this.config.noteRGB
                 },\n  ${s})`;
-              this.redrawNote(i.x, i.y, i.w, i.h, u), a && r === t && (n = i.x);
+              (this.redrawNote(i.x, i.y, i.w, i.h, u),
+                a && r === t && (n = i.x));
             }
-            return this.scrollIntoViewIfNeeded(e, n), n;
+            return (this.scrollIntoViewIfNeeded(e, n), n);
           }
           clear() {
             this.ctx.clearRect(
@@ -24848,28 +24887,28 @@
             this.redraw();
           }
           redrawNote(t, e, n, r, i) {
-            (this.ctx.fillStyle = i),
+            ((this.ctx.fillStyle = i),
               this.ctx.fillRect(
                 Math.round(t),
                 Math.round(e),
                 Math.round(n),
                 Math.round(r),
-              );
+              ));
           }
         }
         class L extends j {
           constructor(t, e, n = {}) {
-            super(t, e, n),
+            (super(t, e, n),
               a.log(
                 "mm.Visualizer is deprecated, and will be removed in a future          version. Please use mm.PianoRollCanvasVisualizer instead",
                 "mm.Visualizer",
                 5,
-              );
+              ));
           }
         }
         class R extends D {
           constructor(t, e = {}) {
-            super(t, e), (this.drawn = !1);
+            (super(t, e), (this.drawn = !1));
           }
           redraw(t, e) {
             if ((this.drawn || this.draw(), !t)) return null;
@@ -24879,14 +24918,14 @@
               const r = this.noteSequence.notes[e];
               if (!(t && this.isPaintingActiveNote(r, t))) continue;
               const i = this.svg.querySelector(`rect[data-index="${e}"]`);
-              this.fillActiveRect(i, r),
-                r === t && (n = parseFloat(i.getAttribute("x")));
+              (this.fillActiveRect(i, r),
+                r === t && (n = parseFloat(i.getAttribute("x"))));
             }
-            return this.scrollIntoViewIfNeeded(e, n), n;
+            return (this.scrollIntoViewIfNeeded(e, n), n);
           }
           fillActiveRect(t, e) {
-            t.setAttribute("fill", this.getNoteFillColor(e, !0)),
-              t.classList.add("active");
+            (t.setAttribute("fill", this.getNoteFillColor(e, !0)),
+              t.classList.add("active"));
           }
           unfillActiveRect(t) {
             const e = t.querySelectorAll("rect.active");
@@ -24898,7 +24937,7 @@
                   ],
                   !1,
                 );
-              n.setAttribute("fill", r), n.classList.remove("active");
+              (n.setAttribute("fill", r), n.classList.remove("active"));
             }
           }
           draw() {
@@ -24935,7 +24974,7 @@
               "http://www.w3.org/2000/svg",
               "rect",
             );
-            a.classList.add("note"),
+            (a.classList.add("note"),
               a.setAttribute("fill", i),
               a.setAttribute("x", "" + Math.round(t)),
               a.setAttribute("y", "" + Math.round(e)),
@@ -24947,10 +24986,10 @@
               s.forEach(([t, e]) => {
                 a.style.setProperty(t, e);
               }),
-              this.svg.appendChild(a);
+              this.svg.appendChild(a));
           }
           clear() {
-            (this.svg.innerHTML = ""), (this.drawn = !1);
+            ((this.svg.innerHTML = ""), (this.drawn = !1));
           }
           clearActiveNotes() {
             this.unfillActiveRect(this.svg);
@@ -24962,14 +25001,14 @@
               throw new Error(
                 "This visualizer requires an <svg> element to display the visualization",
               );
-            (this.svg = e), (this.parentElement = e.parentElement);
+            ((this.svg = e), (this.parentElement = e.parentElement));
             const r = this.getSize();
-            (this.width = r.width),
+            ((this.width = r.width),
               (this.height = r.height),
               (this.svg.style.width = this.width + "px"),
               (this.svg.style.height = this.height + "px"),
               this.clear(),
-              this.draw();
+              this.draw());
           }
         }
         class U extends R {
@@ -24986,15 +25025,15 @@
               throw new Error(
                 "This visualizer requires a <div> element to display the visualization",
               );
-            (this.config.whiteNoteWidth = n.whiteNoteWidth || 20),
+            ((this.config.whiteNoteWidth = n.whiteNoteWidth || 20),
               (this.config.blackNoteWidth =
                 n.blackNoteWidth || (2 * this.config.whiteNoteWidth) / 3),
               (this.config.whiteNoteHeight = n.whiteNoteHeight || 70),
               (this.config.blackNoteHeight = n.blackNoteHeight || 140 / 3),
               (this.config.showOnlyOctavesUsed = n.showOnlyOctavesUsed),
-              this.setupDOM(e);
+              this.setupDOM(e));
             const r = this.getSize();
-            (this.width = r.width),
+            ((this.width = r.width),
               (this.height = r.height),
               (this.svg.style.width = this.width + "px"),
               (this.svg.style.height = this.height + "px"),
@@ -25005,13 +25044,13 @@
               (this.parentElement.scrollTop = this.parentElement.scrollHeight),
               this.clear(),
               this.drawPiano(),
-              this.draw();
+              this.draw());
           }
           setupDOM(t) {
-            (this.parentElement = globalThis.document.createElement("div")),
-              this.parentElement.classList.add("waterfall-notes-container");
+            ((this.parentElement = globalThis.document.createElement("div")),
+              this.parentElement.classList.add("waterfall-notes-container"));
             const e = Math.max(t.getBoundingClientRect().height, 200);
-            (this.parentElement.style.paddingTop =
+            ((this.parentElement.style.paddingTop =
               e - this.config.whiteNoteHeight + "px"),
               (this.parentElement.style.height =
                 e - this.config.whiteNoteHeight + "px"),
@@ -25031,13 +25070,13 @@
               this.parentElement.appendChild(this.svg),
               (t.innerHTML = ""),
               t.appendChild(this.parentElement),
-              t.appendChild(this.svgPiano);
+              t.appendChild(this.svgPiano));
           }
           redraw(t, e) {
             if ((this.drawn || this.draw(), !t)) return null;
-            this.clearActiveNotes(),
+            (this.clearActiveNotes(),
               (this.parentElement.style.paddingTop =
-                this.parentElement.style.height);
+                this.parentElement.style.height));
             for (let e = 0; e < this.noteSequence.notes.length; e++) {
               const n = this.noteSequence.notes[e];
               if (!(t && this.isPaintingActiveNote(n, t))) continue;
@@ -25066,12 +25105,12 @@
                 n = !1;
               for (let t = 1; t < 7; t++) {
                 const r = this.LOW_C + this.NOTES_PER_OCTAVE * t;
-                !e &&
+                (!e &&
                   r > this.config.minPitch &&
                   ((this.firstDrawnOctave = t - 1), (e = !0)),
                   !n &&
                     r > this.config.maxPitch &&
-                    ((this.lastDrawnOctave = t - 1), (n = !0));
+                    ((this.lastDrawnOctave = t - 1), (n = !0)));
               }
               t =
                 (this.lastDrawnOctave - this.firstDrawnOctave + 1) *
@@ -25132,9 +25171,9 @@
                 (n = 2 * this.config.whiteNoteWidth));
             for (let t = this.firstDrawnOctave; t <= this.lastDrawnOctave; t++)
               for (let t = 0; t < this.NOTES_PER_OCTAVE; t++)
-                -1 === e.indexOf(t) &&
+                (-1 === e.indexOf(t) &&
                   (this.drawWhiteKey(r, n), (n += this.config.whiteNoteWidth)),
-                  r++;
+                  r++);
             this.config.showOnlyOctavesUsed
               ? ((r =
                   this.firstDrawnOctave * this.NOTES_PER_OCTAVE + this.LOW_C),
@@ -25146,10 +25185,10 @@
                 (n = this.config.whiteNoteWidth));
             for (let i = this.firstDrawnOctave; i <= this.lastDrawnOctave; i++)
               for (let i = 0; i < this.NOTES_PER_OCTAVE; i++)
-                -1 !== e.indexOf(i)
+                (-1 !== e.indexOf(i)
                   ? this.drawBlackKey(r, n + t)
                   : (n += this.config.whiteNoteWidth),
-                  r++;
+                  r++);
           }
           drawWhiteKey(t, e) {
             const n = globalThis.document.createElementNS(
@@ -25196,20 +25235,20 @@
             const t = this.svgPiano.querySelectorAll("rect.active");
             for (let e = 0; e < t.length; ++e) {
               const n = t[e];
-              n.setAttribute("fill", n.getAttribute("original-fill")),
-                n.classList.remove("active");
+              (n.setAttribute("fill", n.getAttribute("original-fill")),
+                n.classList.remove("active"));
             }
           }
         }
         var G;
         !(function (t) {
-          (t[(t.PAGE = 0)] = "PAGE"),
+          ((t[(t.PAGE = 0)] = "PAGE"),
             (t[(t.NOTE = 1)] = "NOTE"),
-            (t[(t.BAR = 2)] = "BAR");
+            (t[(t.BAR = 2)] = "BAR"));
         })(G || (G = {}));
         class F extends D {
           constructor(t, e, n = {}) {
-            super(t, n),
+            (super(t, n),
               (void 0 === n.pixelsPerTimeStep || n.pixelsPerTimeStep <= 0) &&
                 (this.config.pixelsPerTimeStep = 0),
               (this.instruments = n.instruments || []),
@@ -25228,7 +25267,7 @@
               )),
               (this.drawnNotes = t.notes.length),
               this.clear(),
-              this.redraw();
+              this.redraw());
           }
           clear() {
             this.render.clear();
@@ -25316,7 +25355,7 @@
       ,
       function (t, e) {
         function n(t) {
-          for (var e, n = new r(t), i = []; !n.eof(); ) {
+          for (var e, n = new r(t), i = []; !n.eof();) {
             var o = s();
             i.push(o);
           }
@@ -25330,12 +25369,12 @@
                 if (240 == r) {
                   t.type = "sysEx";
                   o = n.readVarInt();
-                  return (t.data = n.readBytes(o)), t;
+                  return ((t.data = n.readBytes(o)), t);
                 }
                 if (247 == r) {
                   t.type = "endSysEx";
                   o = n.readVarInt();
-                  return (t.data = n.readBytes(o)), t;
+                  return ((t.data = n.readBytes(o)), t);
                 }
                 throw "Unrecognised MIDI event type byte: " + r;
               }
@@ -25348,35 +25387,43 @@
                     throw (
                       "Expected length for sequenceNumber event is 2, got " + o
                     );
-                  return (t.number = n.readUInt16()), t;
+                  return ((t.number = n.readUInt16()), t);
                 case 1:
-                  return (t.type = "text"), (t.text = n.readString(o)), t;
+                  return ((t.type = "text"), (t.text = n.readString(o)), t);
                 case 2:
                   return (
-                    (t.type = "copyrightNotice"), (t.text = n.readString(o)), t
+                    (t.type = "copyrightNotice"),
+                    (t.text = n.readString(o)),
+                    t
                   );
                 case 3:
-                  return (t.type = "trackName"), (t.text = n.readString(o)), t;
+                  return (
+                    (t.type = "trackName"),
+                    (t.text = n.readString(o)),
+                    t
+                  );
                 case 4:
                   return (
-                    (t.type = "instrumentName"), (t.text = n.readString(o)), t
+                    (t.type = "instrumentName"),
+                    (t.text = n.readString(o)),
+                    t
                   );
                 case 5:
-                  return (t.type = "lyrics"), (t.text = n.readString(o)), t;
+                  return ((t.type = "lyrics"), (t.text = n.readString(o)), t);
                 case 6:
-                  return (t.type = "marker"), (t.text = n.readString(o)), t;
+                  return ((t.type = "marker"), (t.text = n.readString(o)), t);
                 case 7:
-                  return (t.type = "cuePoint"), (t.text = n.readString(o)), t;
+                  return ((t.type = "cuePoint"), (t.text = n.readString(o)), t);
                 case 32:
                   if (((t.type = "channelPrefix"), 1 != o))
                     throw (
                       "Expected length for channelPrefix event is 1, got " + o
                     );
-                  return (t.channel = n.readUInt8()), t;
+                  return ((t.channel = n.readUInt8()), t);
                 case 33:
                   if (((t.type = "portPrefix"), 1 != o))
                     throw "Expected length for portPrefix event is 1, got " + o;
-                  return (t.port = n.readUInt8()), t;
+                  return ((t.port = n.readUInt8()), t);
                 case 47:
                   if (((t.type = "endOfTrack"), 0 != o))
                     throw "Expected length for endOfTrack event is 0, got " + o;
@@ -25384,7 +25431,7 @@
                 case 81:
                   if (((t.type = "setTempo"), 3 != o))
                     throw "Expected length for setTempo event is 3, got " + o;
-                  return (t.microsecondsPerBeat = n.readUInt24()), t;
+                  return ((t.microsecondsPerBeat = n.readUInt24()), t);
                 case 84:
                   if (((t.type = "smpteOffset"), 5 != o))
                     throw (
@@ -25417,10 +25464,12 @@
                     throw (
                       "Expected length for keySignature event is 2, got " + o
                     );
-                  return (t.key = n.readInt8()), (t.scale = n.readUInt8()), t;
+                  return ((t.key = n.readInt8()), (t.scale = n.readUInt8()), t);
                 case 127:
                   return (
-                    (t.type = "sequencerSpecific"), (t.data = n.readBytes(o)), t
+                    (t.type = "sequencerSpecific"),
+                    (t.data = n.readBytes(o)),
+                    t
                   );
                 default:
                   return (
@@ -25435,8 +25484,8 @@
               if (0 == (128 & r)) {
                 if (null === e)
                   throw "Running status byte encountered before status byte";
-                (a = r), (r = e), (t.running = !0);
-              } else (a = n.readUInt8()), (e = r);
+                ((a = r), (r = e), (t.running = !0));
+              } else ((a = n.readUInt8()), (e = r));
               var u = r >> 4;
               switch (((t.channel = 15 & r), u)) {
                 case 8:
@@ -25470,9 +25519,9 @@
                     t
                   );
                 case 12:
-                  return (t.type = "programChange"), (t.programNumber = a), t;
+                  return ((t.type = "programChange"), (t.programNumber = a), t);
                 case 13:
-                  return (t.type = "channelAftertouch"), (t.amount = a), t;
+                  return ((t.type = "channelAftertouch"), (t.amount = a), t);
                 case 14:
                   return (
                     (t.type = "pitchBend"),
@@ -25486,16 +25535,16 @@
           }
         }
         function r(t) {
-          (this.buffer = t),
+          ((this.buffer = t),
             (this.bufferLen = this.buffer.length),
-            (this.pos = 0);
+            (this.pos = 0));
         }
-        (r.prototype.eof = function () {
+        ((r.prototype.eof = function () {
           return this.pos >= this.bufferLen;
         }),
           (r.prototype.readUInt8 = function () {
             var t = this.buffer[this.pos];
-            return (this.pos += 1), t;
+            return ((this.pos += 1), t);
           }),
           (r.prototype.readInt8 = function () {
             var t = this.readUInt8();
@@ -25529,17 +25578,17 @@
           }),
           (r.prototype.readBytes = function (t) {
             var e = this.buffer.slice(this.pos, this.pos + t);
-            return (this.pos += t), e;
+            return ((this.pos += t), e);
           }),
           (r.prototype.readString = function (t) {
             var e = this.readBytes(t);
             return String.fromCharCode.apply(null, e);
           }),
           (r.prototype.readVarInt = function () {
-            for (var t = 0; !this.eof(); ) {
+            for (var t = 0; !this.eof();) {
               var e = this.readUInt8();
               if (!(128 & e)) return t + e;
-              (t += 127 & e), (t <<= 7);
+              ((t += 127 & e), (t <<= 7));
             }
             return t;
           }),
@@ -25578,7 +25627,7 @@
               s.push(c);
             }
             return { header: o, tracks: s };
-          });
+          }));
       },
       function (t, e) {
         function n(t, e, n) {
@@ -25587,8 +25636,8 @@
             a = e.length,
             u = null;
           for (o = 0; o < a; o++)
-            (!1 !== n.running && (n.running || e[o].running)) || (u = null),
-              (u = r(s, e[o], u, n.useByte9ForNoteOff));
+            ((!1 !== n.running && (n.running || e[o].running)) || (u = null),
+              (u = r(s, e[o], u, n.useByte9ForNoteOff)));
           t.writeChunk("MTrk", s.buffer);
         }
         function r(t, e, n, r) {
@@ -25599,106 +25648,106 @@
             u = null;
           switch ((t.writeVarInt(o), i)) {
             case "sequenceNumber":
-              t.writeUInt8(255),
+              (t.writeUInt8(255),
                 t.writeUInt8(0),
                 t.writeVarInt(2),
-                t.writeUInt16(e.number);
+                t.writeUInt16(e.number));
               break;
             case "text":
-              t.writeUInt8(255),
+              (t.writeUInt8(255),
                 t.writeUInt8(1),
                 t.writeVarInt(s.length),
-                t.writeString(s);
+                t.writeString(s));
               break;
             case "copyrightNotice":
-              t.writeUInt8(255),
+              (t.writeUInt8(255),
                 t.writeUInt8(2),
                 t.writeVarInt(s.length),
-                t.writeString(s);
+                t.writeString(s));
               break;
             case "trackName":
-              t.writeUInt8(255),
+              (t.writeUInt8(255),
                 t.writeUInt8(3),
                 t.writeVarInt(s.length),
-                t.writeString(s);
+                t.writeString(s));
               break;
             case "instrumentName":
-              t.writeUInt8(255),
+              (t.writeUInt8(255),
                 t.writeUInt8(4),
                 t.writeVarInt(s.length),
-                t.writeString(s);
+                t.writeString(s));
               break;
             case "lyrics":
-              t.writeUInt8(255),
+              (t.writeUInt8(255),
                 t.writeUInt8(5),
                 t.writeVarInt(s.length),
-                t.writeString(s);
+                t.writeString(s));
               break;
             case "marker":
-              t.writeUInt8(255),
+              (t.writeUInt8(255),
                 t.writeUInt8(6),
                 t.writeVarInt(s.length),
-                t.writeString(s);
+                t.writeString(s));
               break;
             case "cuePoint":
-              t.writeUInt8(255),
+              (t.writeUInt8(255),
                 t.writeUInt8(7),
                 t.writeVarInt(s.length),
-                t.writeString(s);
+                t.writeString(s));
               break;
             case "channelPrefix":
-              t.writeUInt8(255),
+              (t.writeUInt8(255),
                 t.writeUInt8(32),
                 t.writeVarInt(1),
-                t.writeUInt8(e.channel);
+                t.writeUInt8(e.channel));
               break;
             case "portPrefix":
-              t.writeUInt8(255),
+              (t.writeUInt8(255),
                 t.writeUInt8(33),
                 t.writeVarInt(1),
-                t.writeUInt8(e.port);
+                t.writeUInt8(e.port));
               break;
             case "endOfTrack":
-              t.writeUInt8(255), t.writeUInt8(47), t.writeVarInt(0);
+              (t.writeUInt8(255), t.writeUInt8(47), t.writeVarInt(0));
               break;
             case "setTempo":
-              t.writeUInt8(255),
+              (t.writeUInt8(255),
                 t.writeUInt8(81),
                 t.writeVarInt(3),
-                t.writeUInt24(e.microsecondsPerBeat);
+                t.writeUInt24(e.microsecondsPerBeat));
               break;
             case "smpteOffset":
-              t.writeUInt8(255), t.writeUInt8(84), t.writeVarInt(5);
+              (t.writeUInt8(255), t.writeUInt8(84), t.writeVarInt(5));
               var c =
                 (31 & e.hour) | { 24: 0, 25: 32, 29: 64, 30: 96 }[e.frameRate];
-              t.writeUInt8(c),
+              (t.writeUInt8(c),
                 t.writeUInt8(e.min),
                 t.writeUInt8(e.sec),
                 t.writeUInt8(e.frame),
-                t.writeUInt8(e.subFrame);
+                t.writeUInt8(e.subFrame));
               break;
             case "timeSignature":
-              t.writeUInt8(255),
+              (t.writeUInt8(255),
                 t.writeUInt8(88),
                 t.writeVarInt(4),
-                t.writeUInt8(e.numerator);
+                t.writeUInt8(e.numerator));
               var l = 255 & Math.floor(Math.log(e.denominator) / Math.LN2);
-              t.writeUInt8(l),
+              (t.writeUInt8(l),
                 t.writeUInt8(e.metronome),
-                t.writeUInt8(e.thirtyseconds || 8);
+                t.writeUInt8(e.thirtyseconds || 8));
               break;
             case "keySignature":
-              t.writeUInt8(255),
+              (t.writeUInt8(255),
                 t.writeUInt8(89),
                 t.writeVarInt(2),
                 t.writeInt8(e.key),
-                t.writeUInt8(e.scale);
+                t.writeUInt8(e.scale));
               break;
             case "sequencerSpecific":
-              t.writeUInt8(255),
+              (t.writeUInt8(255),
                 t.writeUInt8(127),
                 t.writeVarInt(a.length),
-                t.writeBytes(a);
+                t.writeBytes(a));
               break;
             case "unknownMeta":
               null != e.metatypeByte &&
@@ -25708,47 +25757,47 @@
                 t.writeBytes(a));
               break;
             case "sysEx":
-              t.writeUInt8(240), t.writeVarInt(a.length), t.writeBytes(a);
+              (t.writeUInt8(240), t.writeVarInt(a.length), t.writeBytes(a));
               break;
             case "endSysEx":
-              t.writeUInt8(247), t.writeVarInt(a.length), t.writeBytes(a);
+              (t.writeUInt8(247), t.writeVarInt(a.length), t.writeBytes(a));
               break;
             case "noteOff":
-              (u =
+              ((u =
                 ((!1 !== r && e.byte9) || (r && 0 == e.velocity) ? 144 : 128) |
                 e.channel) !== n && t.writeUInt8(u),
                 t.writeUInt8(e.noteNumber),
-                t.writeUInt8(e.velocity);
+                t.writeUInt8(e.velocity));
               break;
             case "noteOn":
-              (u = 144 | e.channel) !== n && t.writeUInt8(u),
+              ((u = 144 | e.channel) !== n && t.writeUInt8(u),
                 t.writeUInt8(e.noteNumber),
-                t.writeUInt8(e.velocity);
+                t.writeUInt8(e.velocity));
               break;
             case "noteAftertouch":
-              (u = 160 | e.channel) !== n && t.writeUInt8(u),
+              ((u = 160 | e.channel) !== n && t.writeUInt8(u),
                 t.writeUInt8(e.noteNumber),
-                t.writeUInt8(e.amount);
+                t.writeUInt8(e.amount));
               break;
             case "controller":
-              (u = 176 | e.channel) !== n && t.writeUInt8(u),
+              ((u = 176 | e.channel) !== n && t.writeUInt8(u),
                 t.writeUInt8(e.controllerType),
-                t.writeUInt8(e.value);
+                t.writeUInt8(e.value));
               break;
             case "programChange":
-              (u = 192 | e.channel) !== n && t.writeUInt8(u),
-                t.writeUInt8(e.programNumber);
+              ((u = 192 | e.channel) !== n && t.writeUInt8(u),
+                t.writeUInt8(e.programNumber));
               break;
             case "channelAftertouch":
-              (u = 208 | e.channel) !== n && t.writeUInt8(u),
-                t.writeUInt8(e.amount);
+              ((u = 208 | e.channel) !== n && t.writeUInt8(u),
+                t.writeUInt8(e.amount));
               break;
             case "pitchBend":
               (u = 224 | e.channel) !== n && t.writeUInt8(u);
               var h = 8192 + e.value,
                 p = 127 & h,
                 f = (h >> 7) & 127;
-              t.writeUInt8(p), t.writeUInt8(f);
+              (t.writeUInt8(p), t.writeUInt8(f));
               break;
             default:
               throw "Unrecognized event type: " + i;
@@ -25758,21 +25807,21 @@
         function i() {
           this.buffer = [];
         }
-        (i.prototype.writeUInt8 = function (t) {
+        ((i.prototype.writeUInt8 = function (t) {
           this.buffer.push(255 & t);
         }),
           (i.prototype.writeInt8 = i.prototype.writeUInt8),
           (i.prototype.writeUInt16 = function (t) {
             var e = (t >> 8) & 255,
               n = 255 & t;
-            this.writeUInt8(e), this.writeUInt8(n);
+            (this.writeUInt8(e), this.writeUInt8(n));
           }),
           (i.prototype.writeInt16 = i.prototype.writeUInt16),
           (i.prototype.writeUInt24 = function (t) {
             var e = (t >> 16) & 255,
               n = (t >> 8) & 255,
               r = 255 & t;
-            this.writeUInt8(e), this.writeUInt8(n), this.writeUInt8(r);
+            (this.writeUInt8(e), this.writeUInt8(n), this.writeUInt8(r));
           }),
           (i.prototype.writeInt24 = i.prototype.writeUInt24),
           (i.prototype.writeUInt32 = function (t) {
@@ -25780,10 +25829,10 @@
               n = (t >> 16) & 255,
               r = (t >> 8) & 255,
               i = 255 & t;
-            this.writeUInt8(e),
+            (this.writeUInt8(e),
               this.writeUInt8(n),
               this.writeUInt8(r),
-              this.writeUInt8(i);
+              this.writeUInt8(i));
           }),
           (i.prototype.writeInt32 = i.prototype.writeUInt32),
           (i.prototype.writeBytes = function (t) {
@@ -25802,15 +25851,17 @@
             else {
               var e = t,
                 n = [];
-              for (n.push(127 & e), e >>= 7; e; ) {
+              for (n.push(127 & e), e >>= 7; e;) {
                 var r = (127 & e) | 128;
-                n.push(r), (e >>= 7);
+                (n.push(r), (e >>= 7));
               }
               this.writeBytes(n.reverse());
             }
           }),
           (i.prototype.writeChunk = function (t, e) {
-            this.writeString(t), this.writeUInt32(e.length), this.writeBytes(e);
+            (this.writeString(t),
+              this.writeUInt32(e.length),
+              this.writeBytes(e));
           }),
           (t.exports = function (t, e) {
             if ("object" != typeof t) throw "Invalid MIDI data";
@@ -25832,10 +25883,10 @@
                         (255 & e.ticksPerFrame))
                     : e.ticksPerBeat && (o = 32767 & e.ticksPerBeat);
                 var s = new i();
-                s.writeUInt16(r),
+                (s.writeUInt16(r),
                   s.writeUInt16(n),
                   s.writeUInt16(o),
-                  t.writeChunk("MThd", s.buffer);
+                  t.writeChunk("MThd", s.buffer));
               })(u, o, a),
                 r = 0;
               r < a;
@@ -25843,7 +25894,7 @@
             )
               n(u, s[r], e);
             return u.buffer;
-          });
+          }));
       },
       function (t, e, n) {
         "use strict";
@@ -26036,9 +26087,9 @@
               var e = 0;
               return (
                 t.forEach(function (t) {
-                  (t.deltaTime = t.absoluteTime - e),
+                  ((t.deltaTime = t.absoluteTime - e),
                     (e = t.absoluteTime),
-                    delete t.absoluteTime;
+                    delete t.absoluteTime);
                 }),
                 t.push({ deltaTime: 0, meta: !0, type: "endOfTrack" }),
                 t
@@ -26071,7 +26122,7 @@
             return n;
           })(t, [], e);
         }
-        (t.exports = function (t) {
+        ((t.exports = function (t) {
           if (!Array.isArray(t))
             throw new TypeError("Expected value to be an array");
           return r(t);
@@ -26082,7 +26133,7 @@
               throw new TypeError("Expected value to be an array");
             return i(t, e);
           }),
-          (t.exports.fromDepth = i);
+          (t.exports.fromDepth = i));
       },
       function (t, e, n) {
         "use strict";
@@ -26117,9 +26168,9 @@
         var r = new WeakMap(),
           i = (function () {
             function t(t, e) {
-              r.set(this, e),
+              (r.set(this, e),
                 (this.ticks = t.absoluteTime),
-                (this.value = t.value);
+                (this.value = t.value));
             }
             return (
               Object.defineProperty(t.prototype, "time", {
@@ -26206,7 +26257,7 @@
       },
       function (t, e, n) {
         "use strict";
-        Object.defineProperty(e, "__esModule", { value: !0 }),
+        (Object.defineProperty(e, "__esModule", { value: !0 }),
           (e.instrumentByPatchID = [
             "acoustic grand piano",
             "bright acoustic piano",
@@ -26365,7 +26416,7 @@
             40: "brush kit",
             48: "orchestra kit",
             56: "sound fx kit",
-          });
+          }));
       },
       function (t, e, n) {
         "use strict";
@@ -26436,12 +26487,12 @@
           a = new WeakMap(),
           u = (function () {
             function t(t, e, n) {
-              a.set(this, n),
+              (a.set(this, n),
                 (this.midi = t.midi),
                 (this.velocity = t.velocity),
                 (this.noteOffVelocity = e.velocity),
                 (this.ticks = t.ticks),
-                (this.durationTicks = e.ticks - t.ticks);
+                (this.durationTicks = e.ticks - t.ticks));
             }
             return (
               Object.defineProperty(t.prototype, "name", {
@@ -26594,7 +26645,7 @@
       t = !1;
     }
     function a() {
-      globalThis.document.addEventListener("mousemove", c),
+      (globalThis.document.addEventListener("mousemove", c),
         globalThis.document.addEventListener("mousedown", c),
         globalThis.document.addEventListener("mouseup", c),
         globalThis.document.addEventListener("pointermove", c),
@@ -26602,7 +26653,7 @@
         globalThis.document.addEventListener("pointerup", c),
         globalThis.document.addEventListener("touchmove", c),
         globalThis.document.addEventListener("touchstart", c),
-        globalThis.document.addEventListener("touchend", c);
+        globalThis.document.addEventListener("touchend", c));
     }
     function c(e) {
       (e.target.nodeName && "html" === e.target.nodeName.toLowerCase()) ||
@@ -26617,7 +26668,7 @@
         globalThis.document.removeEventListener("touchstart", c),
         globalThis.document.removeEventListener("touchend", c));
     }
-    globalThis.document.addEventListener(
+    (globalThis.document.addEventListener(
       "keydown",
       function (n) {
         n.metaKey ||
@@ -26681,7 +26732,7 @@
           globalThis.document.documentElement.setAttribute(
             "data-js-focus-visible",
             "",
-          ));
+          )));
   }
   if ("undefined" != typeof window && "undefined" != typeof document) {
     var t;
@@ -26773,10 +26824,10 @@
   var a = ["piano-roll", "waterfall", "staff"];
   class o extends HTMLElement {
     constructor() {
-      super(...arguments),
+      (super(...arguments),
         (this.domInitialized = !1),
         (this.ns = null),
-        (this._config = {});
+        (this._config = {}));
     }
     static get observedAttributes() {
       return ["src", "type"];
@@ -26814,20 +26865,24 @@
               "http://www.w3.org/2000/svg",
               "svg",
             );
-            t.wrapper.appendChild(i),
-              (t.visualizer = new e.PianoRollSVGVisualizer(t.ns, i, t._config));
+            (t.wrapper.appendChild(i),
+              (t.visualizer = new e.PianoRollSVGVisualizer(
+                t.ns,
+                i,
+                t._config,
+              )));
           } else if ("waterfall" === t.type)
-            t.wrapper.classList.add("waterfall-visualizer"),
+            (t.wrapper.classList.add("waterfall-visualizer"),
               (t.visualizer = new e.WaterfallSVGVisualizer(
                 t.ns,
                 t.wrapper,
                 t._config,
-              ));
+              )));
           else if ("staff" === t.type) {
             t.wrapper.classList.add("staff-visualizer");
             var n = globalThis.document.createElement("div");
-            t.wrapper.appendChild(n),
-              (t.visualizer = new e.StaffSVGVisualizer(t.ns, n, t._config));
+            (t.wrapper.appendChild(n),
+              (t.visualizer = new e.StaffSVGVisualizer(t.ns, n, t._config)));
           }
       })();
     }
@@ -26841,19 +26896,19 @@
       return this.ns;
     }
     set noteSequence(t) {
-      (this.ns = t), this.removeAttribute("src"), this.initVisualizer();
+      ((this.ns = t), this.removeAttribute("src"), this.initVisualizer());
     }
     get src() {
       return this.getAttribute("src");
     }
     set src(t) {
-      (this.ns = null),
+      ((this.ns = null),
         this.setOrRemoveAttribute("src", t),
-        this.initVisualizer();
+        this.initVisualizer());
     }
     get type() {
       var t = this.getAttribute("type");
-      return a.indexOf(t) < 0 && (t = "piano-roll"), t;
+      return (a.indexOf(t) < 0 && (t = "piano-roll"), t);
     }
     set type(t) {
       if (null != t && a.indexOf(t) < 0)
@@ -26868,7 +26923,7 @@
       return this._config;
     }
     set config(t) {
-      (this._config = t), this.initVisualizer();
+      ((this._config = t), this.initVisualizer());
     }
     setOrRemoveAttribute(t, e) {
       null == e ? this.removeAttribute(t) : this.setAttribute(t, e);
@@ -26878,7 +26933,7 @@
     u = null;
   class c extends HTMLElement {
     constructor() {
-      super(),
+      (super(),
         (this.domInitialized = !1),
         (this.needInitNs = !1),
         (this.visualizerListeners = new Map()),
@@ -26891,7 +26946,7 @@
         (this.currentTimeLabel =
           this.controlPanel.querySelector(".current-time")),
         (this.totalTimeLabel = this.controlPanel.querySelector(".total-time")),
-        (this.seekBar = this.controlPanel.querySelector(".seek-bar"));
+        (this.seekBar = this.controlPanel.querySelector(".seek-bar")));
     }
     static get observedAttributes() {
       return ["sound-font", "src", "visualizer"];
@@ -26900,7 +26955,7 @@
       if (!this.domInitialized) {
         this.domInitialized = !0;
         var t = globalThis.applyFocusVisiblePolyfill;
-        null != t && t(this.shadowRoot),
+        (null != t && t(this.shadowRoot),
           this.playButton.addEventListener("click", () => {
             this.player.isPlaying() ? this.stop() : this.start();
           }),
@@ -26911,14 +26966,14 @@
           }),
           this.seekBar.addEventListener("change", () => {
             var t = this.currentTime;
-            (this.currentTimeLabel.textContent = r(t)),
+            ((this.currentTimeLabel.textContent = r(t)),
               this.player &&
                 this.player.isPlaying() &&
                 (this.player.seekTo(t),
                 "paused" === this.player.getPlayState() &&
-                  this.player.resume());
+                  this.player.resume()));
           }),
-          this.initPlayerNow();
+          this.initPlayerNow());
       }
     }
     attributeChangedCallback(t, e, i) {
@@ -26936,13 +26991,13 @@
       }
     }
     initPlayer(t = !0) {
-      (this.needInitNs = this.needInitNs || t),
+      ((this.needInitNs = this.needInitNs || t),
         null == this.initTimeout &&
           (this.stop(),
           this.freeze(),
           (this.initTimeout = globalThis.setTimeout(() =>
             this.initPlayerNow(this.needInitNs),
-          )));
+          ))));
     }
     initPlayerNow(t = !0) {
       var i = this;
@@ -26957,13 +27012,14 @@
             !(n = i.ns))
           )
             return (
-              (i.seekBar.max = "0"), void (i.totalTimeLabel.textContent = r(0))
+              (i.seekBar.max = "0"),
+              void (i.totalTimeLabel.textContent = r(0))
             );
-          (i.seekBar.max = String(n.totalTime)),
-            (i.totalTimeLabel.textContent = r(n.totalTime));
+          ((i.seekBar.max = String(n.totalTime)),
+            (i.totalTimeLabel.textContent = r(n.totalTime)));
           var s = i.soundFont,
             a = { run: (t) => i.ns === n && i.noteCallback(t), stop: () => {} };
-          null === s
+          (null === s
             ? (i.player = new e.Player(!1, a))
             : ("" === s &&
                 (s =
@@ -26971,7 +27027,7 @@
               (i.player = new e.SoundFontPlayer(s, void 0, void 0, void 0, a)),
               yield i.player.loadSamples(n)),
             i.ns === n &&
-              (i.unfreeze(), i.dispatchEvent(new CustomEvent("load")));
+              (i.unfreeze(), i.dispatchEvent(new CustomEvent("load"))));
         }
       })();
     }
@@ -26980,16 +27036,16 @@
       n(function* () {
         if (t.player)
           if ("stopped" == t.player.getPlayState()) {
-            u && u.playing && u.stop(),
+            (u && u.playing && u.stop(),
               (u = t),
               (t._playing = !0),
               t.controlPanel.classList.remove("stopped"),
-              t.controlPanel.classList.add("playing");
+              t.controlPanel.classList.add("playing"));
             try {
               var e = t.player.start(t.ns);
-              t.dispatchEvent(new CustomEvent("start")),
+              (t.dispatchEvent(new CustomEvent("start")),
                 yield e,
-                t.handleStop(!0);
+                t.handleStop(!0));
             } catch (e) {
               throw (t.handleStop(), e);
             }
@@ -26997,8 +27053,8 @@
       })();
     }
     stop() {
-      this.player && this.player.isPlaying() && this.player.stop(),
-        this.handleStop(!1);
+      (this.player && this.player.isPlaying() && this.player.stop(),
+        this.handleStop(!1));
     }
     addVisualizer(t) {
       var e = {
@@ -27027,14 +27083,14 @@
         (this.currentTimeLabel.textContent = r(t.startTime)));
     }
     handleStop(t = !1) {
-      t && (this.currentTime = this.duration),
+      (t && (this.currentTime = this.duration),
         this.controlPanel.classList.remove("playing"),
         this.controlPanel.classList.add("stopped"),
         this._playing &&
           ((this._playing = !1),
           this.dispatchEvent(
             new CustomEvent("stop", { detail: { finished: t } }),
-          ));
+          )));
     }
     setVisualizerSelector(t) {
       for (var e of this.visualizerListeners.values())
@@ -27049,26 +27105,28 @@
               );
     }
     freeze() {
-      (this.playButton.disabled = !0),
+      ((this.playButton.disabled = !0),
         (this.seekBar.disabled = !0),
-        this.controlPanel.classList.add("frozen");
+        this.controlPanel.classList.add("frozen"));
     }
     unfreeze() {
-      this.controlPanel.classList.remove("frozen"),
+      (this.controlPanel.classList.remove("frozen"),
         (this.playButton.disabled = !1),
-        (this.seekBar.disabled = !1);
+        (this.seekBar.disabled = !1));
     }
     get noteSequence() {
       return this.ns;
     }
     set noteSequence(t) {
-      (this.ns = t), this.removeAttribute("src"), this.initPlayer();
+      ((this.ns = t), this.removeAttribute("src"), this.initPlayer());
     }
     get src() {
       return this.getAttribute("src");
     }
     set src(t) {
-      (this.ns = null), this.setOrRemoveAttribute("src", t), this.initPlayer();
+      ((this.ns = null),
+        this.setOrRemoveAttribute("src", t),
+        this.initPlayer());
     }
     get soundFont() {
       return this.getAttribute("sound-font");
@@ -27080,9 +27138,9 @@
       return parseFloat(this.seekBar.value);
     }
     set currentTime(t) {
-      (this.seekBar.value = String(t)),
+      ((this.seekBar.value = String(t)),
         (this.currentTimeLabel.textContent = r(this.currentTime)),
-        this.player && this.player.isPlaying() && this.player.seekTo(t);
+        this.player && this.player.isPlaying() && this.player.seekTo(t));
     }
     get duration() {
       return parseFloat(this.seekBar.max);
@@ -27094,9 +27152,9 @@
       null == e ? this.removeAttribute(t) : this.setAttribute(t, e);
     }
   }
-  customElements.define("midi-player", c),
+  (customElements.define("midi-player", c),
     customElements.define("midi-visualizer", o),
     (t.PlayerElement = c),
     (t.VisualizerElement = o),
-    Object.defineProperty(t, "__esModule", { value: !0 });
+    Object.defineProperty(t, "__esModule", { value: !0 }));
 });

@@ -513,42 +513,50 @@ export class IcsRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
           const tile = this.tileParts(event);
           return html`
             <li class="row" role="listitem">
-              ${tile
-                ? html`<span class="tile" aria-hidden="true">
-                    <span class="month">${tile.month}</span>
-                    <span class="date">${tile.date}</span>
-                    <span class="weekday">${tile.weekday}</span>
-                  </span>`
-                : nothing}
+              ${
+                tile
+                  ? html`<span class="tile" aria-hidden="true">
+                      <span class="month">${tile.month}</span>
+                      <span class="date">${tile.date}</span>
+                      <span class="weekday">${tile.weekday}</span>
+                    </span>`
+                  : nothing
+              }
               <span class="meta">
                 <span class="title">${event.title}</span>
-                ${event.start
-                  ? html`<span class="line"
-                      ><simple-icon-lite
-                        icon="device:access-time"
-                        aria-hidden="true"
-                      ></simple-icon-lite
-                      ><span>${this.whenLabel(event)}</span></span
-                    >`
-                  : nothing}
-                ${event.location
-                  ? html`<span class="line"
-                      ><simple-icon-lite
-                        icon="maps:place"
-                        aria-hidden="true"
-                      ></simple-icon-lite
-                      ><span>${event.location}</span></span
-                    >`
-                  : nothing}
-                ${event.recurring
-                  ? html`<span class="line"
-                      ><simple-icon-lite
-                        icon="av:repeat"
-                        aria-hidden="true"
-                      ></simple-icon-lite
-                      ><span>${this.t.repeats}</span></span
-                    >`
-                  : nothing}
+                ${
+                  event.start
+                    ? html`<span class="line"
+                        ><simple-icon-lite
+                          icon="device:access-time"
+                          aria-hidden="true"
+                        ></simple-icon-lite
+                        ><span>${this.whenLabel(event)}</span></span
+                      >`
+                    : nothing
+                }
+                ${
+                  event.location
+                    ? html`<span class="line"
+                        ><simple-icon-lite
+                          icon="maps:place"
+                          aria-hidden="true"
+                        ></simple-icon-lite
+                        ><span>${event.location}</span></span
+                      >`
+                    : nothing
+                }
+                ${
+                  event.recurring
+                    ? html`<span class="line"
+                        ><simple-icon-lite
+                          icon="av:repeat"
+                          aria-hidden="true"
+                        ></simple-icon-lite
+                        ><span>${this.t.repeats}</span></span
+                      >`
+                    : nothing
+                }
               </span>
             </li>
           `;
@@ -592,11 +600,13 @@ export class IcsRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
         sort
       >
         <table>
-          ${this.headingText
-            ? html`<caption>
-                ${this.headingText}
-              </caption>`
-            : nothing}
+          ${
+            this.headingText
+              ? html`<caption>
+                  ${this.headingText}
+                </caption>`
+              : nothing
+          }
           <thead>
             <tr>
               <th>${this.t.event}</th>
@@ -724,9 +734,11 @@ export class IcsRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
             : nothing,
         })}
         <div class="ddd-block-body ${isRows ? "flush" : ""}">${body}</div>
-        ${showsEvents
-          ? html`<div class="ddd-block-footer">${this.footerText}</div>`
-          : nothing}
+        ${
+          showsEvents
+            ? html`<div class="ddd-block-footer">${this.footerText}</div>`
+            : nothing
+        }
       </div>
     `;
   }

@@ -108,13 +108,13 @@
       "order": 0,
       "src": "page-flag.motion.json",
       "file": "lib/page-flag.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/page-flag.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {
