@@ -65,5 +65,10 @@
   "deleteAction": "Eliminar",
   "replaceTitle": "Reemplazar en páginas",
   "removeMatchesTitle": "Quitar todas las coincidencias",
-  "removeAction": "Quitar"
+  "removeAction": "Quitar",
+  "laActivitiesColumn": "Actividades",
+  "laActivitiesCount": "{count} elementos rastreables",
+  "laActivitiesOne": "1 elemento rastreable",
+  "laActivitiesNone": "Ningún elemento rastreable",
+  "laActivitiesCounting": "Contando elementos rastreables"
 }

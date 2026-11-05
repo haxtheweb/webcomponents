@@ -65,5 +65,10 @@
   "deleteAction": "Sil",
   "replaceTitle": "Sayfalarda değiştir",
   "removeMatchesTitle": "Tüm eşleşmeleri kaldır",
-  "removeAction": "Kaldır"
+  "removeAction": "Kaldır",
+  "laActivitiesColumn": "Etkinlikler",
+  "laActivitiesCount": "{count} izlenebilir öğe",
+  "laActivitiesOne": "1 izlenebilir öğe",
+  "laActivitiesNone": "İzlenebilir öğe yok",
+  "laActivitiesCounting": "İzlenebilir öğeler sayılıyor"
 }

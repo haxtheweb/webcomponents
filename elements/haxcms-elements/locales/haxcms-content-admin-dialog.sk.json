@@ -65,5 +65,10 @@
   "deleteAction": "Odstrániť",
   "replaceTitle": "Nahradenie na stránkach",
   "removeMatchesTitle": "Odstrániť všetky zhody",
-  "removeAction": "Odstrániť"
+  "removeAction": "Odstrániť",
+  "laActivitiesColumn": "Aktivity",
+  "laActivitiesCount": "Sledovateľné prvky: {count}",
+  "laActivitiesOne": "1 sledovateľný prvok",
+  "laActivitiesNone": "Žiadne sledovateľné prvky",
+  "laActivitiesCounting": "Počítanie sledovateľných prvkov"
 }

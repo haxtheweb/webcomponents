@@ -65,5 +65,10 @@
   "deleteAction": "Șterge",
   "replaceTitle": "Înlocuire în pagini",
   "removeMatchesTitle": "Elimină toate potrivirile",
-  "removeAction": "Elimină"
+  "removeAction": "Elimină",
+  "laActivitiesColumn": "Activități",
+  "laActivitiesCount": "{count} elemente urmăribile",
+  "laActivitiesOne": "1 element urmăribil",
+  "laActivitiesNone": "Niciun element urmăribil",
+  "laActivitiesCounting": "Se numără elementele urmăribile"
 }

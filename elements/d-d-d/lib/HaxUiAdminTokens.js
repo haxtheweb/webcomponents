@@ -115,6 +115,22 @@ export const HaxUiAdminTokens = [
         var(--hax-ui-danger) 10%,
         transparent
       );
+      /* "this throws work away", as a texture rather than a color, so it
+         still reads in greyscale and with red/green color vision: the
+         diagonal hatch outline-designer draws on rows pending delete.
+         -hatch goes on an unfilled surface, -hatch-on-fill on top of a
+         solid --hax-ui-danger fill. Checked by
+         scripts/vision-pairs-check.mjs (haxtheweb/issues#3219). */
+      --hax-ui-danger-hatch: repeating-linear-gradient(
+        -45deg,
+        color-mix(in srgb, var(--hax-ui-danger) 22%, transparent) 0 4px,
+        transparent 4px 8px
+      );
+      --hax-ui-danger-hatch-on-fill: repeating-linear-gradient(
+        -45deg,
+        light-dark(rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.3)) 0 4px,
+        transparent 4px 8px
+      );
       --hax-ui-success: light-dark(
         var(--ddd-theme-default-opportunityGreen, #008755),
         var(--ddd-theme-default-creekLight, #cfeceb)

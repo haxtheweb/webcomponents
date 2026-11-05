@@ -65,5 +65,10 @@
   "deleteAction": "Usuń",
   "replaceTitle": "Zamień na stronach",
   "removeMatchesTitle": "Usuń wszystkie dopasowania",
-  "removeAction": "Usuń"
+  "removeAction": "Usuń",
+  "laActivitiesColumn": "Aktywności",
+  "laActivitiesCount": "Elementy śledzone: {count}",
+  "laActivitiesOne": "1 element śledzony",
+  "laActivitiesNone": "Brak elementów śledzonych",
+  "laActivitiesCounting": "Liczenie elementów śledzonych"
 }

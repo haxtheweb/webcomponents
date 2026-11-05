@@ -65,5 +65,10 @@
   "deleteAction": "Scrios",
   "replaceTitle": "Ionadaigh i leathanaigh",
   "removeMatchesTitle": "Bain gach meaitseáil",
-  "removeAction": "Bain"
+  "removeAction": "Bain",
+  "laActivitiesColumn": "Gníomhaíochtaí",
+  "laActivitiesCount": "{count} eilimint inrianaithe",
+  "laActivitiesOne": "1 eilimint inrianaithe",
+  "laActivitiesNone": "Gan aon eilimint inrianaithe",
+  "laActivitiesCounting": "Eilimintí inrianaithe á gcomhaireamh"
 }

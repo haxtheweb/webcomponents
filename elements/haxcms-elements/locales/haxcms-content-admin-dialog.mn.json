@@ -65,5 +65,10 @@
   "deleteAction": "Устгах",
   "replaceTitle": "Хуудсуудад солих",
   "removeMatchesTitle": "Бүх тохирлыг хасах",
-  "removeAction": "Хасах"
+  "removeAction": "Хасах",
+  "laActivitiesColumn": "Үйл ажиллагаа",
+  "laActivitiesCount": "Хянах боломжтой {count} элемент",
+  "laActivitiesOne": "Хянах боломжтой 1 элемент",
+  "laActivitiesNone": "Хянах боломжтой элемент алга",
+  "laActivitiesCounting": "Хянах боломжтой элементүүдийг тоолж байна"
 }

@@ -65,5 +65,10 @@
   "deleteAction": "O‘chirish",
   "replaceTitle": "Sahifalarda almashtirish",
   "removeMatchesTitle": "Barcha mosliklarni olib tashlash",
-  "removeAction": "Olib tashlash"
+  "removeAction": "Olib tashlash",
+  "laActivitiesColumn": "Faoliyatlar",
+  "laActivitiesCount": "{count} ta kuzatiladigan element",
+  "laActivitiesOne": "1 ta kuzatiladigan element",
+  "laActivitiesNone": "Kuzatiladigan elementlar yo‘q",
+  "laActivitiesCounting": "Kuzatiladigan elementlar sanalmoqda"
 }

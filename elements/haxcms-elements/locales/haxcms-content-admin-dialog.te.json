@@ -65,5 +65,10 @@
   "deleteAction": "తొలగించు",
   "replaceTitle": "పేజీలలో భర్తీ చేయండి",
   "removeMatchesTitle": "అన్ని సరిపోలికలను తీసివేయండి",
-  "removeAction": "తీసివేయండి"
+  "removeAction": "తీసివేయండి",
+  "laActivitiesColumn": "కార్యకలాపాలు",
+  "laActivitiesCount": "{count} ట్రాక్ చేయదగిన అంశాలు",
+  "laActivitiesOne": "1 ట్రాక్ చేయదగిన అంశం",
+  "laActivitiesNone": "ట్రాక్ చేయదగిన అంశాలు లేవు",
+  "laActivitiesCounting": "ట్రాక్ చేయదగిన అంశాలను లెక్కిస్తోంది"
 }

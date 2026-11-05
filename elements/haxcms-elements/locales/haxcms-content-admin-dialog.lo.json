@@ -65,5 +65,10 @@
   "deleteAction": "ລຶບ",
   "replaceTitle": "ແທນທີ່ໃນໜ້າ",
   "removeMatchesTitle": "ລຶບອອກທຸກລາຍການທີ່ກົງກັນ",
-  "removeAction": "ລຶບອອກ"
+  "removeAction": "ລຶບອອກ",
+  "laActivitiesColumn": "ກິດຈະກຳ",
+  "laActivitiesCount": "ອົງປະກອບທີ່ຕິດຕາມໄດ້ {count} ອັນ",
+  "laActivitiesOne": "ອົງປະກອບທີ່ຕິດຕາມໄດ້ 1 ອັນ",
+  "laActivitiesNone": "ບໍ່ມີອົງປະກອບທີ່ຕິດຕາມໄດ້",
+  "laActivitiesCounting": "ກຳລັງນັບອົງປະກອບທີ່ຕິດຕາມໄດ້"
 }

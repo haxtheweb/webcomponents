@@ -260,81 +260,53 @@ async function mapLimit(list, limit, fn) {
 }
 
 /**
- * Fetch, analyze, return results.
- * @param {Object} opts
- * @param {"site"|"branch"} [opts.scope] whole site, or rootId and below
- * @param {string} [opts.rootId] item id for the "branch" scope
- * @param {Object} [opts.manifest] site.json; default the site store's
- * @param {Object} [opts.spec] rules; default insights-spec.json
- * @param {function} [opts.onProgress]
- * @param {AbortSignal} [opts.signal]
- * @param {function} [opts.fetchImpl] authenticated fetch for site API
- *   routes; default siteApiFetch
- * @param {function} [opts.publicFetch] fetch for public files; default fetch
- * @param {string} [opts.baseUrl] see resolveSiteUrls()
- * @param {string} [opts.siteApiBasePath] see resolveSiteUrls()
- * @param {boolean} [opts.publicChecks] fetch robots/llms/page (default true)
- * @param {number} [opts.now] ms clock for ages (default Date.now())
- * @param {"auto"|"worker"|"main"} [opts.mode] see runInsights()
- * @param {number} [opts.concurrency] per-page requests at once (default 4)
+ * The pages a scan covers: the whole outline, or rootId and below.
+ * @param {Object} manifest site.json
+ * @param {"site"|"branch"} [scope]
+ * @param {string} [rootId] item id for the "branch" scope
+ * @returns {{items: Array, byId: Object, targetItems: Array}}
  */
-export async function loadInsights(opts = {}) {
-  const scope = opts.scope === "branch" ? "branch" : "site";
-  const progress =
-    typeof opts.onProgress === "function" ? opts.onProgress : () => {};
-  const signal = opts.signal || null;
-  const apiFetch = opts.fetchImpl || siteApiFetch;
-  const publicFetch = opts.publicFetch || globalThis.fetch.bind(globalThis);
-  const concurrency = opts.concurrency || 4;
-
-  progress({ phase: "spec", done: 0, total: 1, message: "Loading rules" });
-  const spec = opts.spec || (await loadInsightsSpec());
-  const manifest = plain(opts.manifest || (await storeManifest()));
-  const urls = resolveSiteUrls(opts);
+export function resolveInsightsTargets(manifest, scope, rootId) {
   const items = orderedItems(manifest);
   const byId = {};
   items.forEach((it) => {
     byId[it.id] = it;
   });
-
   let targetItems = items;
   if (scope === "branch") {
-    if (!opts.rootId || !byId[opts.rootId]) {
+    if (!rootId || !byId[rootId]) {
       throw new Error("Insights: rootId must name a page in site.json");
     }
-    targetItems = branchItems(manifest, opts.rootId);
+    targetItems = branchItems(manifest, rootId);
   }
+  return { items, byId, targetItems };
+}
 
-  // public, same-origin files; run while the page HTML downloads
-  const firstVisible = targetItems.find((it) => {
-    const md = it.metadata || {};
-    return md.published !== false && md.hideInMenu !== true && it.slug;
-  });
-  const publicInit = { credentials: "omit", signal };
-  const extrasPromise =
-    opts.publicChecks === false
-      ? Promise.resolve({})
-      : Promise.all([
-          getText(publicFetch, `${urls.origin}/robots.txt`, publicInit),
-          getText(publicFetch, `${urls.siteBase}llms.txt`, publicInit),
-          firstVisible
-            ? getText(
-                publicFetch,
-                new URL(firstVisible.slug, urls.siteBase).href,
-                publicInit,
-              )
-            : Promise.resolve({ found: false }),
-        ]).then(([robots, llms, page]) => ({
-          robots,
-          llms,
-          noJs: {
-            found: page.found,
-            url: page.url,
-            html: page.text || "",
-            pageId: firstVisible ? firstVisible.id : null,
-          },
-        }));
-
+/**
+ * Page HTML for a scan, with the editor's JWT (step 3 above): one export
+ * request for the whole site, or one content request per page for a branch.
+ * Shared by loadInsights() and anything else that reads page bodies the way
+ * Insights does (the Learning activity report).
+ * @param {Object} o
+ * @param {"site"|"branch"} o.scope
+ * @param {Array} o.targetItems from resolveInsightsTargets()
+ * @param {Object} o.byId from resolveInsightsTargets()
+ * @param {{apiBase: string}} o.urls from resolveSiteUrls()
+ * @param {function} [o.fetchImpl] default siteApiFetch
+ * @param {AbortSignal} [o.signal]
+ * @param {function} [o.onProgress]
+ * @param {number} [o.concurrency] default 4
+ * @returns {Promise<Array<{html: string, item: Object}>>}
+ */
+export async function fetchInsightsPages(o) {
+  const scope = o.scope === "branch" ? "branch" : "site";
+  const progress = typeof o.onProgress === "function" ? o.onProgress : () => {};
+  const signal = o.signal || null;
+  const apiFetch = o.fetchImpl || siteApiFetch;
+  const concurrency = o.concurrency || 4;
+  const urls = o.urls;
+  const byId = o.byId || {};
+  const targetItems = o.targetItems || [];
   let pages = [];
   if (scope === "site") {
     progress({
@@ -390,6 +362,115 @@ export async function loadInsights(opts = {}) {
       };
     });
   }
+  return pages;
+}
+
+/**
+ * Page HTML only, no analyzer: site.json (store's unless passed), the target
+ * pages and their bodies, through the same requests as loadInsights().
+ * @param {Object} opts scope, rootId, manifest, fetchImpl, signal,
+ *   onProgress, concurrency, baseUrl, siteApiBasePath (see loadInsights)
+ * @returns {Promise<{pages: Array, manifest: Object, urls: Object,
+ *   items: Array, targetItems: Array}>}
+ */
+export async function loadInsightsPages(opts = {}) {
+  const scope = opts.scope === "branch" ? "branch" : "site";
+  const manifest = plain(opts.manifest || (await storeManifest()));
+  const urls = resolveSiteUrls(opts);
+  const { items, byId, targetItems } = resolveInsightsTargets(
+    manifest,
+    scope,
+    opts.rootId,
+  );
+  const pages = await fetchInsightsPages({
+    scope,
+    targetItems,
+    byId,
+    urls,
+    fetchImpl: opts.fetchImpl,
+    signal: opts.signal,
+    onProgress: opts.onProgress,
+    concurrency: opts.concurrency,
+  });
+  return { pages, manifest, urls, items, targetItems };
+}
+
+/**
+ * Fetch, analyze, return results.
+ * @param {Object} opts
+ * @param {"site"|"branch"} [opts.scope] whole site, or rootId and below
+ * @param {string} [opts.rootId] item id for the "branch" scope
+ * @param {Object} [opts.manifest] site.json; default the site store's
+ * @param {Object} [opts.spec] rules; default insights-spec.json
+ * @param {function} [opts.onProgress]
+ * @param {AbortSignal} [opts.signal]
+ * @param {function} [opts.fetchImpl] authenticated fetch for site API
+ *   routes; default siteApiFetch
+ * @param {function} [opts.publicFetch] fetch for public files; default fetch
+ * @param {string} [opts.baseUrl] see resolveSiteUrls()
+ * @param {string} [opts.siteApiBasePath] see resolveSiteUrls()
+ * @param {boolean} [opts.publicChecks] fetch robots/llms/page (default true)
+ * @param {number} [opts.now] ms clock for ages (default Date.now())
+ * @param {"auto"|"worker"|"main"} [opts.mode] see runInsights()
+ * @param {number} [opts.concurrency] per-page requests at once (default 4)
+ */
+export async function loadInsights(opts = {}) {
+  const scope = opts.scope === "branch" ? "branch" : "site";
+  const progress =
+    typeof opts.onProgress === "function" ? opts.onProgress : () => {};
+  const signal = opts.signal || null;
+  const publicFetch = opts.publicFetch || globalThis.fetch.bind(globalThis);
+
+  progress({ phase: "spec", done: 0, total: 1, message: "Loading rules" });
+  const spec = opts.spec || (await loadInsightsSpec());
+  const manifest = plain(opts.manifest || (await storeManifest()));
+  const urls = resolveSiteUrls(opts);
+  const { byId, targetItems } = resolveInsightsTargets(
+    manifest,
+    scope,
+    opts.rootId,
+  );
+
+  // public, same-origin files; run while the page HTML downloads
+  const firstVisible = targetItems.find((it) => {
+    const md = it.metadata || {};
+    return md.published !== false && md.hideInMenu !== true && it.slug;
+  });
+  const publicInit = { credentials: "omit", signal };
+  const extrasPromise =
+    opts.publicChecks === false
+      ? Promise.resolve({})
+      : Promise.all([
+          getText(publicFetch, `${urls.origin}/robots.txt`, publicInit),
+          getText(publicFetch, `${urls.siteBase}llms.txt`, publicInit),
+          firstVisible
+            ? getText(
+                publicFetch,
+                new URL(firstVisible.slug, urls.siteBase).href,
+                publicInit,
+              )
+            : Promise.resolve({ found: false }),
+        ]).then(([robots, llms, page]) => ({
+          robots,
+          llms,
+          noJs: {
+            found: page.found,
+            url: page.url,
+            html: page.text || "",
+            pageId: firstVisible ? firstVisible.id : null,
+          },
+        }));
+
+  const pages = await fetchInsightsPages({
+    scope,
+    targetItems,
+    byId,
+    urls,
+    fetchImpl: opts.fetchImpl,
+    signal,
+    onProgress: progress,
+    concurrency: opts.concurrency,
+  });
 
   const extras = await extrasPromise;
   const results = await runInsights({

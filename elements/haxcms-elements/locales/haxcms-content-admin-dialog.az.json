@@ -65,5 +65,10 @@
   "deleteAction": "Sil",
   "replaceTitle": "Səhifələrdə əvəz et",
   "removeMatchesTitle": "Bütün uyğunluqları sil",
-  "removeAction": "Sil"
+  "removeAction": "Sil",
+  "laActivitiesColumn": "Fəaliyyətlər",
+  "laActivitiesCount": "{count} izlənə bilən element",
+  "laActivitiesOne": "1 izlənə bilən element",
+  "laActivitiesNone": "İzlənə bilən element yoxdur",
+  "laActivitiesCounting": "İzlənə bilən elementlər sayılır"
 }

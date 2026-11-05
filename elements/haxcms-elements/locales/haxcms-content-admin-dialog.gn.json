@@ -65,5 +65,10 @@
   "deleteAction": "Mboguete",
   "replaceTitle": "Emyengovia kuatiaroguépe",
   "removeMatchesTitle": "Embogue opaite ojojoguáva",
-  "removeAction": "Embogue"
+  "removeAction": "Embogue",
+  "laActivitiesColumn": "Tembiapokuéra",
+  "laActivitiesCount": "{count} mba'e ikatúva oñemoñe'ẽ",
+  "laActivitiesOne": "1 mba'e ikatúva oñemoñe'ẽ",
+  "laActivitiesNone": "Ndaipóri mba'e ikatúva oñemoñe'ẽ",
+  "laActivitiesCounting": "Ojepapa mba'e ikatúva oñemoñe'ẽ"
 }

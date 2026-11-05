@@ -52,7 +52,7 @@ describe("QuestionElement learner data", () => {
     el.displayedAnswers.forEach((a) => {
       a.userGuess = a.label === "Mickey" ? true : "";
     });
-    el.checkAnswer();
+    await el.checkAnswer();
     await settle([el]);
     expect(events.length).to.equal(1);
     const d = events[0];
@@ -97,7 +97,7 @@ describe("QuestionElement learner data", () => {
     el.displayedAnswers.forEach((a) => {
       a.userGuess = a.label === "Mickey" ? true : "";
     });
-    el.checkAnswer();
+    await el.checkAnswer();
     await settle([el]);
     expect(events[1].statement.result.completion).to.equal(true);
   });

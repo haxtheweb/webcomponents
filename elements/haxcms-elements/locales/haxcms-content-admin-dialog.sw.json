@@ -65,5 +65,10 @@
   "deleteAction": "Futa",
   "replaceTitle": "Badilisha katika kurasa",
   "removeMatchesTitle": "Ondoa yote yanayolingana",
-  "removeAction": "Ondoa"
+  "removeAction": "Ondoa",
+  "laActivitiesColumn": "Shughuli",
+  "laActivitiesCount": "Vipengele {count} vinavyofuatiliwa",
+  "laActivitiesOne": "Kipengele 1 kinachofuatiliwa",
+  "laActivitiesNone": "Hakuna vipengele vinavyofuatiliwa",
+  "laActivitiesCounting": "Inahesabu vipengele vinavyofuatiliwa"
 }

@@ -65,5 +65,10 @@
   "deleteAction": "Eliminar",
   "replaceTitle": "Substituír nas páxinas",
   "removeMatchesTitle": "Quitar todas as coincidencias",
-  "removeAction": "Quitar"
+  "removeAction": "Quitar",
+  "laActivitiesColumn": "Actividades",
+  "laActivitiesCount": "{count} elementos rastrexables",
+  "laActivitiesOne": "1 elemento rastrexable",
+  "laActivitiesNone": "Ningún elemento rastrexable",
+  "laActivitiesCounting": "Contando elementos rastrexables"
 }

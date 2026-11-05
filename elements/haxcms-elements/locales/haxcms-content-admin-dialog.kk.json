@@ -65,5 +65,10 @@
   "deleteAction": "Жою",
   "replaceTitle": "Беттерде ауыстыру",
   "removeMatchesTitle": "Барлық сәйкестікті жою",
-  "removeAction": "Жою"
+  "removeAction": "Жою",
+  "laActivitiesColumn": "Тапсырмалар",
+  "laActivitiesCount": "{count} бақыланатын элемент",
+  "laActivitiesOne": "1 бақыланатын элемент",
+  "laActivitiesNone": "Бақыланатын элементтер жоқ",
+  "laActivitiesCounting": "Бақыланатын элементтер саналуда"
 }

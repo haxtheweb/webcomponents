@@ -37,7 +37,7 @@ async function check(el, pick) {
   const h = (e) => events.push(e.detail);
   el.addEventListener("user-engagement", h);
   pick(el);
-  el.checkAnswer();
+  await el.checkAnswer();
   await settle([el]);
   el.removeEventListener("user-engagement", h);
   expect(events.length).to.equal(1);
@@ -317,5 +317,37 @@ describe("activity id order: id > authored resource > fingerprint", () => {
     );
     await settle([named]);
     expect(legacyActivityId(named)).to.equal(activityId(named));
+  });
+});
+
+describe("checkAnswer timing", () => {
+  it("resolves once the check has run, with or without a view transition", async () => {
+    const el = await fixture(
+      html`<multiple-choice question="Pick">
+        <input value="A" data-correct="true" /><input value="B" />
+      </multiple-choice>`,
+    );
+    await settle([el]);
+    const events = [];
+    el.addEventListener("user-engagement", (e) => events.push(e.detail));
+    el.displayedAnswers[0].userGuess = true;
+    const done = el.checkAnswer();
+    expect(done).to.be.instanceOf(Promise);
+    await done;
+    // the statement is out by the time the promise resolves, even when the
+    // browser runs the check inside a view transition a frame later
+    expect(events.length).to.equal(1);
+  });
+
+  it("resolves at once when attempts are spent", async () => {
+    const el = await fixture(
+      html`<multiple-choice question="Pick" max-attempts="1">
+        <input value="A" data-correct="true" /><input value="B" />
+      </multiple-choice>`,
+    );
+    await settle([el]);
+    el.attempts = 1;
+    await el.checkAnswer();
+    expect(el.showAnswer).to.equal(false);
   });
 });

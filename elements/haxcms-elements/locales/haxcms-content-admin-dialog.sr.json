@@ -65,5 +65,10 @@
   "deleteAction": "Обриши",
   "replaceTitle": "Замена у страницама",
   "removeMatchesTitle": "Уклони сва подударања",
-  "removeAction": "Уклони"
+  "removeAction": "Уклони",
+  "laActivitiesColumn": "Активности",
+  "laActivitiesCount": "Елемената који се могу пратити: {count}",
+  "laActivitiesOne": "1 елемент који се може пратити",
+  "laActivitiesNone": "Нема елемената који се могу пратити",
+  "laActivitiesCounting": "Бројање елемената који се могу пратити"
 }

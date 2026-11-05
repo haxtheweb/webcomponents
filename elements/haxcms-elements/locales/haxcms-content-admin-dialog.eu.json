@@ -65,5 +65,10 @@
   "deleteAction": "Ezabatu",
   "replaceTitle": "Ordeztu orrietan",
   "removeMatchesTitle": "Kendu bat-etortze guztiak",
-  "removeAction": "Kendu"
+  "removeAction": "Kendu",
+  "laActivitiesColumn": "Jarduerak",
+  "laActivitiesCount": "Jarraipena egin daitekeen {count} elementu",
+  "laActivitiesOne": "Jarraipena egin daitekeen elementu 1",
+  "laActivitiesNone": "Ez dago jarraipena egin daitekeen elementurik",
+  "laActivitiesCounting": "Jarraipena egin daitekeen elementuak zenbatzen"
 }

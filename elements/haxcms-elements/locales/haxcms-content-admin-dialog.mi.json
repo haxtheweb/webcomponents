@@ -65,5 +65,10 @@
   "deleteAction": "Muku",
   "replaceTitle": "Whakakapi i ngā whārangi",
   "removeMatchesTitle": "Tango ngā ōritenga katoa",
-  "removeAction": "Tango"
+  "removeAction": "Tango",
+  "laActivitiesColumn": "Ngā ngohe",
+  "laActivitiesCount": "{count} ngā huānga ka taea te aroturuki",
+  "laActivitiesOne": "1 huānga ka taea te aroturuki",
+  "laActivitiesNone": "Kāore he huānga ka taea te aroturuki",
+  "laActivitiesCounting": "E tatau ana i ngā huānga ka taea te aroturuki"
 }

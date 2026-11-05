@@ -1,0 +1,182 @@
+{
+  "$comment": "Opposing UI action pairs checked by scripts/vision-pairs-check.mjs. Each member's fill and the shared background are a DDD or HAX UI token name (resolved from elements/d-d-d/lib for light and dark), a literal hex, or the word background for an unfilled (outlined / text) button. cues lists what tells the pair apart besides color: outline, pattern, label, strike, position (a switch knob), weight (bold type); icon is recorded but not counted, since a 16px glyph is not readable at a glance. See haxtheweb/issues for the color vision tracking issue. evidence lists source snippets that must still exist for a declared non-color cue to count (file + text), so removing a hatch or underline later turns the pair into a fail instead of a silent cue.",
+  "pairs": [
+    {
+      "id": "editor-toolbar-save-cancel",
+      "where": "elements/haxcms-elements/lib/core/haxcms-site-editor-ui.js (#editbutton in edit mode vs #cancelbutton)",
+      "background": {
+        "light": "#ffffff",
+        "dark": "#000000"
+      },
+      "accept": {
+        "label": "Save",
+        "fill": {
+          "light": "--ddd-theme-default-nittanyNavy",
+          "dark": "--ddd-theme-default-linkLight"
+        },
+        "cues": ["icon"]
+      },
+      "reject": {
+        "label": "Cancel",
+        "fill": "background",
+        "cues": ["outline", "pattern", "icon"]
+      },
+      "evidence": [
+        {
+          "file": "elements/haxcms-elements/lib/core/haxcms-site-editor-ui.js",
+          "text": "repeating-linear-gradient"
+        }
+      ]
+    },
+    {
+      "id": "site-admin-save-discard",
+      "where": "elements/haxcms-elements/lib/core/admin/haxcms-site-admin.js (.hax-ui-btn.primary.save vs .ghost.discard)",
+      "background": "--hax-ui-surface",
+      "accept": {
+        "label": "Save",
+        "fill": "--hax-ui-primary",
+        "cues": ["label"]
+      },
+      "reject": {
+        "label": "Discard",
+        "fill": "background",
+        "cues": ["label"]
+      }
+    },
+    {
+      "id": "site-admin-leave-prompt",
+      "where": "elements/haxcms-elements/lib/core/admin/haxcms-site-admin.js (.save-leave vs .discard-leave)",
+      "background": "--hax-ui-surface",
+      "accept": {
+        "label": "Save and leave",
+        "fill": "--hax-ui-primary",
+        "cues": ["label"]
+      },
+      "reject": {
+        "label": "Discard and leave",
+        "fill": "background",
+        "cues": ["outline", "label"]
+      }
+    },
+    {
+      "id": "outline-designer-pending-delete-row",
+      "where": "elements/outline-designer/outline-designer.js (li.item[data-about-to-delete] vs a plain row)",
+      "background": "--hax-ui-surface",
+      "accept": {
+        "label": "Row",
+        "fill": "background",
+        "cues": []
+      },
+      "reject": {
+        "label": "Row marked for delete",
+        "fill": "--hax-ui-danger-soft",
+        "cues": ["pattern", "strike", "label"]
+      },
+      "evidence": [
+        {
+          "file": "elements/outline-designer/outline-designer.js",
+          "text": "repeating-linear-gradient"
+        }
+      ]
+    },
+    {
+      "id": "admin-confirm-destructive",
+      "where": "elements/haxcms-elements/lib/core/admin/haxcms-admin-confirm.js and ui/hax-confirm-dialog.js (.hax-ui-btn.danger-fill ok vs .ghost cancel)",
+      "background": "--hax-ui-surface",
+      "accept": {
+        "label": "Delete (confirm)",
+        "fill": "--hax-ui-danger",
+        "cues": ["label"]
+      },
+      "reject": {
+        "label": "Cancel",
+        "fill": "background",
+        "cues": ["label"]
+      }
+    },
+    {
+      "id": "admin-primary-vs-danger-fill",
+      "where": "elements/d-d-d/lib/HaxUiAdminControls.js (.hax-ui-btn.primary vs .hax-ui-btn.danger-fill, e.g. site admin bulk actions)",
+      "background": "--hax-ui-surface",
+      "accept": {
+        "label": "Primary",
+        "fill": "--hax-ui-primary",
+        "cues": ["label"]
+      },
+      "reject": {
+        "label": "Danger (final commit)",
+        "fill": "--hax-ui-danger",
+        "cues": ["pattern", "label"]
+      },
+      "evidence": [
+        {
+          "file": "elements/d-d-d/lib/HaxUiAdminControls.js",
+          "text": "background-image: var(--hax-ui-danger-hatch-on-fill)"
+        }
+      ]
+    },
+    {
+      "id": "admin-switch-on-off",
+      "where": "elements/d-d-d/lib/HaxUiAdminControls.js (.hax-ui-switch[aria-checked] true vs false)",
+      "background": "--hax-ui-surface",
+      "accept": {
+        "label": "On",
+        "fill": "--hax-ui-accent-strong",
+        "cues": ["position"]
+      },
+      "reject": {
+        "label": "Off",
+        "fill": "--hax-ui-text-muted",
+        "cues": []
+      },
+      "evidence": [
+        {
+          "file": "elements/d-d-d/lib/HaxUiAdminControls.js",
+          "text": ".hax-ui-switch[aria-checked=\"true\"]::after"
+        }
+      ]
+    },
+    {
+      "id": "admin-segment-pressed",
+      "where": "elements/d-d-d/lib/HaxUiAdminControls.js (.hax-ui-seg button[aria-pressed=true], e.g. Compact / Default / Roomy)",
+      "background": "--hax-ui-surface",
+      "accept": {
+        "label": "Pressed",
+        "fill": "--hax-ui-accent-soft",
+        "cues": ["weight", "outline"]
+      },
+      "reject": {
+        "label": "Not pressed",
+        "fill": "background",
+        "cues": []
+      },
+      "evidence": [
+        {
+          "file": "elements/d-d-d/lib/HaxUiAdminControls.js",
+          "text": "box-shadow: inset 0 -3px 0 var(--hax-ui-accent-strong)"
+        }
+      ]
+    },
+    {
+      "id": "admin-chip-pressed",
+      "where": "elements/d-d-d/lib/HaxUiAdminControls.js (.hax-ui-chip[aria-pressed=true] vs false)",
+      "background": "--hax-ui-surface",
+      "accept": {
+        "label": "Pressed",
+        "fill": "--hax-ui-accent-soft",
+        "cues": ["weight", "outline"]
+      },
+      "reject": {
+        "label": "Not pressed",
+        "fill": "background",
+        "cues": []
+      },
+      "evidence": [
+        {
+          "file": "elements/d-d-d/lib/HaxUiAdminControls.js",
+          "text": "border-color: var(--hax-ui-accent-strong)"
+        }
+      ]
+    }
+  ]
+}

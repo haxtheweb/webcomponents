@@ -65,5 +65,10 @@
   "deleteAction": "Dzēst",
   "replaceTitle": "Aizstāt lapās",
   "removeMatchesTitle": "Noņemt visas atbilstības",
-  "removeAction": "Noņemt"
+  "removeAction": "Noņemt",
+  "laActivitiesColumn": "Aktivitātes",
+  "laActivitiesCount": "Izsekojamo elementu skaits: {count}",
+  "laActivitiesOne": "1 izsekojams elements",
+  "laActivitiesNone": "Nav izsekojamu elementu",
+  "laActivitiesCounting": "Skaita izsekojamos elementus"
 }

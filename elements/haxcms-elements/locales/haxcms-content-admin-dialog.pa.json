@@ -65,5 +65,10 @@
   "deleteAction": "ਮਿਟਾਓ",
   "replaceTitle": "ਪੰਨਿਆਂ ਵਿੱਚ ਬਦਲੋ",
   "removeMatchesTitle": "ਸਾਰੇ ਮੇਲ ਹਟਾਓ",
-  "removeAction": "ਹਟਾਓ"
+  "removeAction": "ਹਟਾਓ",
+  "laActivitiesColumn": "ਗਤੀਵਿਧੀਆਂ",
+  "laActivitiesCount": "{count} ਟਰੈਕ ਕਰਨ ਯੋਗ ਤੱਤ",
+  "laActivitiesOne": "1 ਟਰੈਕ ਕਰਨ ਯੋਗ ਤੱਤ",
+  "laActivitiesNone": "ਕੋਈ ਟਰੈਕ ਕਰਨ ਯੋਗ ਤੱਤ ਨਹੀਂ",
+  "laActivitiesCounting": "ਟਰੈਕ ਕਰਨ ਯੋਗ ਤੱਤ ਗਿਣੇ ਜਾ ਰਹੇ ਹਨ"
 }

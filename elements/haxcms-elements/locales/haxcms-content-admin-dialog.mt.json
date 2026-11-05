@@ -65,5 +65,10 @@
   "deleteAction": "Ħassar",
   "replaceTitle": "Ibdel fil-paġni",
   "removeMatchesTitle": "Neħħi t-tqabbiliet kollha",
-  "removeAction": "Neħħi"
+  "removeAction": "Neħħi",
+  "laActivitiesColumn": "Attivitajiet",
+  "laActivitiesCount": "{count} elementi traċċabbli",
+  "laActivitiesOne": "Element traċċabbli wieħed",
+  "laActivitiesNone": "L-ebda element traċċabbli",
+  "laActivitiesCounting": "Qed jiġu magħduda l-elementi traċċabbli"
 }

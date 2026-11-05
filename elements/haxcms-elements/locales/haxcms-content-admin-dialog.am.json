@@ -65,5 +65,10 @@
   "deleteAction": "ሰርዝ",
   "replaceTitle": "በገጾች ውስጥ ተካ",
   "removeMatchesTitle": "ሁሉንም ተዛማጆች አስወግድ",
-  "removeAction": "አስወግድ"
+  "removeAction": "አስወግድ",
+  "laActivitiesColumn": "እንቅስቃሴዎች",
+  "laActivitiesCount": "{count} ሊከታተሉ የሚችሉ ክፍሎች",
+  "laActivitiesOne": "1 ሊከታተል የሚችል ክፍል",
+  "laActivitiesNone": "ሊከታተሉ የሚችሉ ክፍሎች የሉም",
+  "laActivitiesCounting": "ሊከታተሉ የሚችሉ ክፍሎችን በመቁጠር ላይ"
 }

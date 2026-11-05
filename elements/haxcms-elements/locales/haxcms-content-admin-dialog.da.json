@@ -65,5 +65,10 @@
   "deleteAction": "Slet",
   "replaceTitle": "Erstat på sider",
   "removeMatchesTitle": "Fjern alle forekomster",
-  "removeAction": "Fjern"
+  "removeAction": "Fjern",
+  "laActivitiesColumn": "Aktiviteter",
+  "laActivitiesCount": "{count} sporbare elementer",
+  "laActivitiesOne": "1 sporbart element",
+  "laActivitiesNone": "Ingen sporbare elementer",
+  "laActivitiesCounting": "Tæller sporbare elementer"
 }

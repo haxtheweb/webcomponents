@@ -65,5 +65,10 @@
   "deleteAction": "මකන්න",
   "replaceTitle": "පිටුවල ප්‍රතිස්ථාපනය කරන්න",
   "removeMatchesTitle": "සියලු ගැළපීම් ඉවත් කරන්න",
-  "removeAction": "ඉවත් කරන්න"
+  "removeAction": "ඉවත් කරන්න",
+  "laActivitiesColumn": "ක්‍රියාකාරකම්",
+  "laActivitiesCount": "ලුහුබැඳිය හැකි මූලද්‍රව්‍ය {count}",
+  "laActivitiesOne": "ලුහුබැඳිය හැකි මූලද්‍රව්‍ය 1",
+  "laActivitiesNone": "ලුහුබැඳිය හැකි මූලද්‍රව්‍ය නැත",
+  "laActivitiesCounting": "ලුහුබැඳිය හැකි මූලද්‍රව්‍ය ගණන් කරමින්"
 }

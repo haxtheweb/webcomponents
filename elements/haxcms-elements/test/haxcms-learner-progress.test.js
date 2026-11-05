@@ -181,7 +181,7 @@ describe("HAXcms learner progress", () => {
     q.displayedAnswers.forEach((a) => {
       a.userGuess = a.label === "Light" ? true : "";
     });
-    q.checkAnswer();
+    await q.checkAnswer();
     await flush(80);
     const act = UserScaffoldInstance.readActivity("lp-site", activityId(q));
     expect(act.count).to.equal(2);

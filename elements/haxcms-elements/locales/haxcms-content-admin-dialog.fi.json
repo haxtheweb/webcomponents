@@ -65,5 +65,10 @@
   "deleteAction": "Poista",
   "replaceTitle": "Korvaa sivuilla",
   "removeMatchesTitle": "Poista kaikki osumat",
-  "removeAction": "Poista"
+  "removeAction": "Poista",
+  "laActivitiesColumn": "Tehtävät",
+  "laActivitiesCount": "{count} seurattavaa elementtiä",
+  "laActivitiesOne": "1 seurattava elementti",
+  "laActivitiesNone": "Ei seurattavia elementtejä",
+  "laActivitiesCounting": "Lasketaan seurattavia elementtejä"
 }

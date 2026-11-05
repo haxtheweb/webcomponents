@@ -65,5 +65,10 @@
   "deleteAction": "Pozmak",
   "replaceTitle": "Sahypalarda çalyşmak",
   "removeMatchesTitle": "Ähli gabat gelmeleri aýyr",
-  "removeAction": "Aýyr"
+  "removeAction": "Aýyr",
+  "laActivitiesColumn": "Işjeňlikler",
+  "laActivitiesCount": "{count} yzarlanyp bilinýän element",
+  "laActivitiesOne": "1 yzarlanyp bilinýän element",
+  "laActivitiesNone": "Yzarlanyp bilinýän element ýok",
+  "laActivitiesCounting": "Yzarlanyp bilinýän elementler sanalýar"
 }

@@ -65,5 +65,10 @@
   "deleteAction": "Өчүрүү",
   "replaceTitle": "Барактарда алмаштыруу",
   "removeMatchesTitle": "Бардык дал келүүлөрдү өчүрүү",
-  "removeAction": "Өчүрүү"
+  "removeAction": "Өчүрүү",
+  "laActivitiesColumn": "Тапшырмалар",
+  "laActivitiesCount": "{count} көзөмөлдөнүүчү элемент",
+  "laActivitiesOne": "1 көзөмөлдөнүүчү элемент",
+  "laActivitiesNone": "Көзөмөлдөнүүчү элементтер жок",
+  "laActivitiesCounting": "Көзөмөлдөнүүчү элементтер саналууда"
 }

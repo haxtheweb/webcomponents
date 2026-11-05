@@ -65,5 +65,10 @@
   "deleteAction": "Haqi",
   "replaceTitle": "Fuulota keessatti bakka buusi",
   "removeMatchesTitle": "Walsimoota hunda balleessi",
-  "removeAction": "Balleessi"
+  "removeAction": "Balleessi",
+  "laActivitiesColumn": "Sochiiwwan",
+  "laActivitiesCount": "Wantoota hordofamuu danda'an {count}",
+  "laActivitiesOne": "Wantoota hordofamuu danda'an 1",
+  "laActivitiesNone": "Wantoonni hordofamuu danda'an hin jiran",
+  "laActivitiesCounting": "Wantoota hordofamuu danda'an lakkaa'aa jira"
 }

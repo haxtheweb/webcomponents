@@ -65,5 +65,10 @@
   "deleteAction": "წაშლა",
   "replaceTitle": "ჩანაცვლება გვერდებში",
   "removeMatchesTitle": "ყველა დამთხვევის წაშლა",
-  "removeAction": "წაშლა"
+  "removeAction": "წაშლა",
+  "laActivitiesColumn": "აქტივობები",
+  "laActivitiesCount": "{count} თვალყურის სადევნებელი ელემენტი",
+  "laActivitiesOne": "1 თვალყურის სადევნებელი ელემენტი",
+  "laActivitiesNone": "თვალყურის სადევნებელი ელემენტები არ არის",
+  "laActivitiesCounting": "თვალყურის სადევნებელი ელემენტების დათვლა"
 }

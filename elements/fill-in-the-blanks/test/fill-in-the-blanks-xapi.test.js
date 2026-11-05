@@ -37,7 +37,7 @@ describe("fill-in-the-blanks xAPI", () => {
     inputs[2].value = "breakfast";
     const events = [];
     el.addEventListener("user-engagement", (e) => events.push(e.detail));
-    el.checkAnswer();
+    await el.checkAnswer();
     await flush(120);
     expect(events.length).to.equal(1);
     const s = events[0].statement;

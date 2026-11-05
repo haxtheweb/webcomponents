@@ -65,5 +65,10 @@
   "deleteAction": "Διαγραφή",
   "replaceTitle": "Αντικατάσταση στις σελίδες",
   "removeMatchesTitle": "Αφαίρεση όλων των αντιστοιχιών",
-  "removeAction": "Αφαίρεση"
+  "removeAction": "Αφαίρεση",
+  "laActivitiesColumn": "Δραστηριότητες",
+  "laActivitiesCount": "{count} ανιχνεύσιμα στοιχεία",
+  "laActivitiesOne": "1 ανιχνεύσιμο στοιχείο",
+  "laActivitiesNone": "Κανένα ανιχνεύσιμο στοιχείο",
+  "laActivitiesCounting": "Καταμέτρηση ανιχνεύσιμων στοιχείων"
 }

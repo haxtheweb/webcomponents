@@ -65,5 +65,10 @@
   "deleteAction": "מחיקה",
   "replaceTitle": "החלפה בדפים",
   "removeMatchesTitle": "הסרת כל ההתאמות",
-  "removeAction": "הסרה"
+  "removeAction": "הסרה",
+  "laActivitiesColumn": "פעילויות",
+  "laActivitiesCount": "{count} רכיבים הניתנים למעקב",
+  "laActivitiesOne": "רכיב אחד הניתן למעקב",
+  "laActivitiesNone": "אין רכיבים הניתנים למעקב",
+  "laActivitiesCounting": "סופר רכיבים הניתנים למעקב"
 }

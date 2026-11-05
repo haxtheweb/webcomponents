@@ -88,6 +88,16 @@ const CONFIG = {
       args: ["scripts/html-template-check.mjs"],
       blocking: false,
     },
+    {
+      // Accept / dismiss pairs (save vs cancel, keep vs delete, on vs off)
+      // must stay tellable apart in greyscale and with color vision
+      // deficiencies: by luminance, or by a non-color cue still in the
+      // source. Pairs live in scripts/vision-pairs.json; add yours when you
+      // add one. Blocking: nothing is baselined, so a fail is new.
+      // haxtheweb/issues#3219
+      label: "Color vision action pairs",
+      args: ["scripts/vision-pairs-check.mjs", "--strict", "--quiet"],
+    },
   ],
 };
 

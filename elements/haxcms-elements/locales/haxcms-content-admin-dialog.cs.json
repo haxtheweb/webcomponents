@@ -65,5 +65,10 @@
   "deleteAction": "Smazat",
   "replaceTitle": "Nahradit na stránkách",
   "removeMatchesTitle": "Odebrat všechny shody",
-  "removeAction": "Odebrat"
+  "removeAction": "Odebrat",
+  "laActivitiesColumn": "Aktivity",
+  "laActivitiesCount": "Sledovatelné prvky: {count}",
+  "laActivitiesOne": "1 sledovatelný prvek",
+  "laActivitiesNone": "Žádné sledovatelné prvky",
+  "laActivitiesCounting": "Počítání sledovatelných prvků"
 }

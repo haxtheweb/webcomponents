@@ -89,6 +89,7 @@ Rules:
 | `--hax-ui-selected`                    | accent-strong 18%               | accent-strong 18% | Selected rows, current rail item              |
 | `--hax-ui-on-accent`                   | white                           | potentialMidnight | Text on an accent fill                        |
 | `--hax-ui-danger` / `-soft`            | original87Pink                  | discoveryCoral    | Destructive actions, rows marked for deletion |
+| `--hax-ui-danger-hatch` / `-on-fill`   | danger 22% stripes / black 20%  | danger 22% / white 30% | The diagonal hatch on danger buttons and rows pending delete, so they read apart without colour |
 | `--hax-ui-success`                     | opportunityGreen                | creekLight        | Success pills and saved state                 |
 | `--hax-ui-focus`                       | link                            | keystoneYellow    | Focus rings                                   |
 | `--hax-ui-drop`, `--hax-ui-landed`     | accent-strong, 24%              |                   | Drag-and-drop targets, landing highlight      |
@@ -198,8 +199,8 @@ A `form` section may also report a selection and bulk actions (Structure): the b
 
 ### Controls
 
-- **Buttons** are 32px with words beside icons. One primary per bar. Secondary is outlined, ghost has no border, danger is an outline for a step that opens a confirm and a fill only for the final commit. An icon-only button carries `aria-label` and a tooltip.
-- **Segmented controls** switch a view or mode, using `aria-pressed`; the pressed segment is `--hax-ui-accent-soft` and bold.
+- **Buttons** are 32px with words beside icons. One primary per bar. Secondary is outlined, ghost has no border, danger is an outline for a step that opens a confirm and a fill only for the final commit; both carry the danger hatch, because primary and danger fills are under 3:1 apart by luminance and look alike in greyscale. An icon-only button carries `aria-label` and a tooltip.
+- **Segmented controls** switch a view or mode, using `aria-pressed`; the pressed segment is `--hax-ui-accent-soft`, bold and underlined with a 3px `--hax-ui-accent-strong` bar (the wash alone disappears in greyscale).
 - **Segmented controls** that span their container share the width equally (`.hax-ui-seg.fill`); a long one may wrap (`.wrap`).
 - **Filter chips**: dashed and muted when unset ("+ Tags"), solid with an accent wash when set ("Status: Draft ×").
 - **Toggle chips** (`.hax-ui-chip[aria-pressed]`) turn one filter on or off: solid, accent border and wash when pressed, with an optional muted count (`.n`).
@@ -276,6 +277,7 @@ Icons that describe content rather than admin chrome stay what they are: block i
 - The rail is a `nav` with `aria-current` on the open section. The action bar status is a live region. The leave prompt is an `alertdialog`.
 - Closing the dialog returns focus to what opened it.
 - Status is never colour alone: changed fields have a dot and a count, pills have words.
+- Opposing actions and states (save vs discard, keep vs delete, on vs off, pressed vs not) read apart in greyscale and with colour vision deficiencies: by 3:1 luminance, or by fill weight (filled, outlined, text), the danger hatch, a bar, border or knob position. Declare each pair in `scripts/vision-pairs.json` with `evidence` for its cue; `yarn lint:vision` checks them and runs in `yarn precheck` ([haxtheweb/issues#3219](https://github.com/haxtheweb/issues/issues/3219)).
 
 ## Checklist for an admin surface
 
@@ -283,5 +285,5 @@ Icons that describe content rather than admin chrome stay what they are: block i
 2. Spread `HaxUiAdminStyles` from `@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js`, use its control classes and `HaxUiAdminIcons`, and style the rest with `--hax-ui-*` only.
 3. In site or system admin, build a section for the shell: no titlebar, no Save button, report unsaved changes. Put things in the eight areas above: finding in the toolbar, data-changing actions in the action bar, the focused item in the detail panel, a selector column and item menu on any list people act on in bulk.
 4. Reuse the controls, rows, field rows and action bar modes above before inventing anything. Use `hax:admin-*` icons (see Admin icons) and add any missing one to the hax iconset.
-5. Check light, dark and forced colours, keyboard-only use, and widths down to 360px.
+5. Check light, dark and forced colours, greyscale and colour vision (`yarn lint:vision`, `yarn vision:gallery`), keyboard-only use, and widths down to 360px.
 6. Run `hax-pattern-library-audit` on the element; it grades the `contract-admin-*` internal contracts.

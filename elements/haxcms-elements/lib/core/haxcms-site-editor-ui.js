@@ -69,6 +69,7 @@ const ADMIN_ROUTE_QUERY_PATHS = {
   "reports-links": "admin-reports-links",
   "reports-media": "admin-reports-media",
   "reports-instructional": "admin-reports-instructional",
+  "reports-learning": "admin-reports-learning",
   "reports-freshness": "admin-reports-freshness",
   "reports-metadata": "admin-reports-metadata",
   "reports-components": "admin-reports-components",
@@ -162,14 +163,47 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           color: white; /* Ensure text is visible on blue background */
         }
 
+        /* Save vs Cancel must read apart without color (greyscale screens,
+           red/green color vision). skyBlue and discoveryCoral have the
+           same luminance, so both turned the same grey. Save is now the
+           filled, high-contrast primary and Cancel is an outlined, hatched
+           danger button: fill weight says which is primary and the hatch
+           (outline-designer's pending-delete pattern) says it throws work
+           away. Checked by scripts/vision-pairs-check.mjs. */
+        :host([edit-mode]) #editbutton {
+          background-color: var(--ddd-theme-default-nittanyNavy);
+          color: var(--ddd-theme-default-white);
+        }
+        :host([edit-mode][dark-mode]) #editbutton {
+          background-color: var(--ddd-theme-default-linkLight);
+          color: var(--ddd-theme-default-potentialMidnight);
+        }
+
         #cancelbutton {
-          background-color: var(--ddd-theme-default-discoveryCoral);
-          color: white; /* Ensure text is visible on blue background */
+          --haxcms-editor-cancel-color: var(--ddd-theme-default-original87Pink);
+          --simple-toolbar-button-border-color: var(
+            --haxcms-editor-cancel-color
+          );
+          color: var(--haxcms-editor-cancel-color);
+          background-color: transparent;
+          background-image: repeating-linear-gradient(
+            -45deg,
+            color-mix(
+                in srgb,
+                var(--haxcms-editor-cancel-color) 22%,
+                transparent
+              )
+              0 4px,
+            transparent 4px 8px
+          );
+        }
+        :host([dark-mode]) #cancelbutton {
+          --haxcms-editor-cancel-color: var(--ddd-theme-default-discoveryCoral);
         }
 
         #cancelbutton::part(button):hover,
         #cancelbutton::part(button):focus {
-          border-color: var(--ddd-theme-default-discoveryCoral);
+          border-color: var(--haxcms-editor-cancel-color);
         }
 
         :host([dark-mode]) #cancelbutton::part(button):hover,
@@ -6814,6 +6848,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       case "reports-links":
       case "reports-media":
       case "reports-instructional":
+      case "reports-learning":
       case "reports-freshness":
       case "reports-metadata":
       case "reports-components":
@@ -7817,6 +7852,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       "reports-links": `${this.t.dashboard} › Links`,
       "reports-media": `${this.t.dashboard} › Media`,
       "reports-instructional": `${this.t.dashboard} › Instructional`,
+      "reports-learning": `${this.t.dashboard} › Learning activity`,
       "reports-freshness": `${this.t.dashboard} › Freshness`,
       "reports-metadata": `${this.t.dashboard} › Metadata`,
       "reports-components": `${this.t.dashboard} › Components`,
@@ -7927,6 +7963,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       case "reports-links":
       case "reports-media":
       case "reports-instructional":
+      case "reports-learning":
       case "reports-freshness":
       case "reports-metadata":
       case "reports-components": {

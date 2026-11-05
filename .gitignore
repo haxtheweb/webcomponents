@@ -39,3 +39,6 @@ elements/d-d-d/design-system/dist/
 # python bytecode caches (Scorecard Binary-Artifacts)
 __pycache__/
 *.py[cod]
+
+# color vision screenshot output (scripts/vision-gallery.mjs)
+vision-gallery/

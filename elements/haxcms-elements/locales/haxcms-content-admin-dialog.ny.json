@@ -65,5 +65,10 @@
   "deleteAction": "Fufutani",
   "replaceTitle": "Sinthanitsani m'masamba",
   "removeMatchesTitle": "Chotsani zonse zofanana",
-  "removeAction": "Chotsani"
+  "removeAction": "Chotsani",
+  "laActivitiesColumn": "Ntchito",
+  "laActivitiesCount": "Zinthu {count} zotsatirika",
+  "laActivitiesOne": "Chinthu 1 chotsatirika",
+  "laActivitiesNone": "Palibe zinthu zotsatirika",
+  "laActivitiesCounting": "Kuwerenga zinthu zotsatirika"
 }
