@@ -148,23 +148,25 @@ class VideoPlayer extends IntersectionObserverMixin(
   render() {
     return html` <meta property="oer:name" content="${this.mediaTitle}" />
       <meta property="oer:uri" content="${this.source}" />
-      ${this.audioDescriptionSource && this.audioDescriptionEnabled
-        ? html`
-            <audio
-              id="audio-description"
-              src="${this.audioDescriptionSource}"
-              crossorigin="${this.crossorigin || "anonymous"}"
-              style="display: none;"
-            ></audio>
-          `
-        : ``}
+      ${
+        this.audioDescriptionSource && this.audioDescriptionEnabled
+          ? html`
+              <audio
+                id="audio-description"
+                src="${this.audioDescriptionSource}"
+                crossorigin="${this.crossorigin || "anonymous"}"
+                style="display: none;"
+              ></audio>
+            `
+          : ``
+      }
       <div
         class="ddd-block"
         part="frame"
         role="group"
-        aria-label="${this._frameLabel}${this.mediaTitle
-          ? `: ${this.mediaTitle}`
-          : ""}"
+        aria-label="${this._frameLabel}${
+          this.mediaTitle ? `: ${this.mediaTitle}` : ""
+        }"
       >
         ${renderDDDBlockHeader({
           icon: this.audioOnly ? "av:equalizer" : "av:play-arrow",
@@ -173,96 +175,109 @@ class VideoPlayer extends IntersectionObserverMixin(
           part: "frame-header",
         })}
         <div class="ddd-block-body">
-          ${this.elementVisible
-            ? html`${!this.isA11yMedia
-                ? html` <div
-                      class="responsive-video-container"
-                      .lang="${this.lang || "en"}"
-                    >
-                      ${this.sandboxed
-                        ? html``
-                        : html` <webview
-                            resource="${this.schemaResourceID}-video"
-                            .src="${(this.sourceData &&
-                              this.sourceData[0] &&
-                              this.sourceData[0].src) ||
-                            undefined}"
-                            .width="${this.width || undefined}"
-                            .height="${this.height || undefined}"
-                            frameborder="0"
+          ${
+            this.elementVisible
+              ? html`${
+                  !this.isA11yMedia
+                    ? html` <div
+                          class="responsive-video-container"
+                          .lang="${this.lang || "en"}"
+                        >
+                          ${
+                            this.sandboxed
+                              ? html``
+                              : html` <webview
+                                  resource="${this.schemaResourceID}-video"
+                                  .src="${
+                                    (this.sourceData &&
+                                      this.sourceData[0] &&
+                                      this.sourceData[0].src) ||
+                                    undefined
+                                  }"
+                                  .width="${this.width || undefined}"
+                                  .height="${this.height || undefined}"
+                                  frameborder="0"
+                                >
+                                </webview>`
+                          }
+                          ${
+                            !(!this.sandboxed && this.iframed)
+                              ? html``
+                              : html`
+                                  <iframe
+                                    loading="lazy"
+                                    resource="${this.schemaResourceID}-video"
+                                    title="${
+                                      this.mediaTitle || "Embedded video player"
+                                    }"
+                                    src="${ifDefined(
+                                      (this.sourceData &&
+                                        this.sourceData[0] &&
+                                        this.sourceData[0].src) ||
+                                        undefined,
+                                    )}"
+                                    width="${this.width}"
+                                    height="${this.height}"
+                                    frameborder="0"
+                                    allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+                                    referrerpolicy="strict-origin-when-cross-origin"
+                                    ?credentialless="${this.__embedCredentialless}"
+                                  ></iframe>
+                                `
+                          }
+                        </div>
+                        <div
+                          id="videocaption"
+                          class="video-caption"
+                          ?has-caption="${this.__hasCaption}"
+                          @slotchange="${this._captionSlotChange}"
+                        >
+                          <span class="media-type print-only"
+                            >(${this.t.embeddedMedia})</span
                           >
-                          </webview>`}
-                      ${!(!this.sandboxed && this.iframed)
-                        ? html``
-                        : html`
-                            <iframe
-                              loading="lazy"
-                              resource="${this.schemaResourceID}-video"
-                              title="${this.mediaTitle ||
-                              "Embedded video player"}"
-                              src="${ifDefined(
-                                (this.sourceData &&
-                                  this.sourceData[0] &&
-                                  this.sourceData[0].src) ||
-                                  undefined,
-                              )}"
-                              width="${this.width}"
-                              height="${this.height}"
-                              frameborder="0"
-                              allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
-                              referrerpolicy="strict-origin-when-cross-origin"
-                              ?credentialless="${this.__embedCredentialless}"
-                            ></iframe>
-                          `}
-                    </div>
-                    <div
-                      id="videocaption"
-                      class="video-caption"
-                      ?has-caption="${this.__hasCaption}"
-                      @slotchange="${this._captionSlotChange}"
-                    >
-                      <span class="media-type print-only"
-                        >(${this.t.embeddedMedia})</span
-                      >
-                      <slot name="caption"></slot>
-                    </div>
-                    <slot hidden></slot>`
-                : html` <a11y-media-player
-                      accent-color="${this.accentColor}"
-                      ?audio-only="${this.audioOnly}"
-                      ?dark="${this.dark}"
-                      ?dark-transcript="${this.darkTranscript}"
-                      ?disable-interactive="${this.disableInteractive}"
-                      ?hide-timestamps="${this.hideTimestamps}"
-                      ?hide-transcript="${this.hideTranscript}"
-                      ?hide-youtube-link="${this.hideYoutubeLink}"
-                      id="${this.playerId}"
-                      @play="${this.playEvent}"
-                      @restart="${this.restartEvent}"
-                      @pause="${this.pauseEvent}"
-                      @audio-description-toggle="${this
-                        ._handleAudioDescriptionToggle}"
-                      lang="${this.lang || "en"}"
-                      ?learning-mode="${this.learningMode}"
-                      ?linkable="${this.linkable}"
-                      preload="metadata"
-                      media-title="${this.mediaTitle || ""}"
-                      .sources=${this.sourceProperties}
-                      ?stand-alone="${this.standAlone}"
-                      sticky-corner="${this.stickyCorner || "none"}"
-                      thumbnail-src="${this.thumbnailSrc}"
-                      .tracks=${this.trackProperties}
-                      .crossorigin=${this.crossorigin || "anonymous"}
-                      .width=${this.width}
-                      .height=${this.height}
-                      youtube-id="${this.youtubeId}"
-                      audio-description-source="${this.audioDescriptionSource}"
-                      ?audio-description-enabled="${this
-                        .audioDescriptionEnabled}"
-                    >
-                    </a11y-media-player
-                    ><slot hidden></slot>`}`
-            : ``}
+                          <slot name="caption"></slot>
+                        </div>
+                        <slot hidden></slot>`
+                    : html` <a11y-media-player
+                          accent-color="${this.accentColor}"
+                          ?audio-only="${this.audioOnly}"
+                          ?dark="${this.dark}"
+                          ?dark-transcript="${this.darkTranscript}"
+                          ?disable-interactive="${this.disableInteractive}"
+                          ?hide-timestamps="${this.hideTimestamps}"
+                          ?hide-transcript="${this.hideTranscript}"
+                          ?hide-youtube-link="${this.hideYoutubeLink}"
+                          id="${this.playerId}"
+                          @play="${this.playEvent}"
+                          @restart="${this.restartEvent}"
+                          @pause="${this.pauseEvent}"
+                          @audio-description-toggle="${
+                            this._handleAudioDescriptionToggle
+                          }"
+                          lang="${this.lang || "en"}"
+                          ?learning-mode="${this.learningMode}"
+                          ?linkable="${this.linkable}"
+                          preload="metadata"
+                          media-title="${this.mediaTitle || ""}"
+                          .sources=${this.sourceProperties}
+                          ?stand-alone="${this.standAlone}"
+                          sticky-corner="${this.stickyCorner || "none"}"
+                          thumbnail-src="${this.thumbnailSrc}"
+                          .tracks=${this.trackProperties}
+                          .crossorigin=${this.crossorigin || "anonymous"}
+                          .width=${this.width}
+                          .height=${this.height}
+                          youtube-id="${this.youtubeId}"
+                          audio-description-source="${this.audioDescriptionSource}"
+                          ?audio-description-enabled="${
+                            this.audioDescriptionEnabled
+                          }"
+                        >
+                        </a11y-media-player
+                        ><slot hidden></slot>`
+                }`
+              : ``
+          }
         </div>
       </div>`;
   }
@@ -778,11 +793,15 @@ class VideoPlayer extends IntersectionObserverMixin(
     return {
       tag: "video-player",
       event: "user-engagement",
-      verbs: ["completed"],
+      verbs: ["attempted", "progressed", "completed"],
       objectType: "http://adlnet.gov/expapi/activities/media",
-      result: ["completion"],
+      result: [
+        "completion",
+        "duration",
+        "extensions.https://w3id.org/xapi/video/extensions/progress",
+      ],
       countsTowardCompletion: true,
-      done: "played to the end",
+      done: "95% of the media actually watched (seeking ahead does not count)",
     };
   }
   /**

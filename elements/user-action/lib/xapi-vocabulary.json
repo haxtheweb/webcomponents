@@ -2,21 +2,29 @@
   "a11y-media-player": {
     "tag": "a11y-media-player",
     "event": "user-engagement",
-    "verbs": ["completed"],
+    "verbs": ["attempted", "progressed", "completed"],
     "objectType": "http://adlnet.gov/expapi/activities/media",
-    "result": ["completion"],
+    "result": [
+      "completion",
+      "duration",
+      "extensions.https://w3id.org/xapi/video/extensions/progress"
+    ],
     "countsTowardCompletion": true,
-    "done": "played to the end",
+    "done": "95% of the media actually watched (seeking ahead does not count)",
     "source": "elements/a11y-media-player/a11y-media-player.js"
   },
   "audio-player": {
     "tag": "audio-player",
     "event": "user-engagement",
-    "verbs": ["completed"],
+    "verbs": ["attempted", "progressed", "completed"],
     "objectType": "http://adlnet.gov/expapi/activities/media",
-    "result": ["completion"],
+    "result": [
+      "completion",
+      "duration",
+      "extensions.https://w3id.org/xapi/video/extensions/progress"
+    ],
     "countsTowardCompletion": true,
-    "done": "played to the end",
+    "done": "95% of the media actually watched (seeking ahead does not count)",
     "source": "elements/audio-player/audio-player.js"
   },
   "bullet-check-list": {
@@ -302,11 +310,15 @@
   "video-player": {
     "tag": "video-player",
     "event": "user-engagement",
-    "verbs": ["completed"],
+    "verbs": ["attempted", "progressed", "completed"],
     "objectType": "http://adlnet.gov/expapi/activities/media",
-    "result": ["completion"],
+    "result": [
+      "completion",
+      "duration",
+      "extensions.https://w3id.org/xapi/video/extensions/progress"
+    ],
     "countsTowardCompletion": true,
-    "done": "played to the end",
+    "done": "95% of the media actually watched (seeking ahead does not count)",
     "source": "elements/video-player/video-player.js"
   },
   "vocab-term": {
