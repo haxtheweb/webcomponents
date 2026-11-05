@@ -9,6 +9,12 @@ import { DDDBlockStyles } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 import { DDDReadingListStyles } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { sanitizeHTMLString } from "@haxtheweb/utils/utils.js";
+import {
+  activityId,
+  buildStatement,
+  XAPI_ACTIVITY_TYPES,
+  XAPI_EXTENSIONS,
+} from "@haxtheweb/user-action/lib/xapi.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 
@@ -30,9 +36,26 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
   static get tag() {
     return "slide-deck";
   }
+  /**
+   * xAPI statements this element sends (see scripts/generate-xapi-vocabulary.mjs).
+   * Three at most per visit however long the deck is.
+   */
+  static get xapiVocabulary() {
+    return {
+      tag: "slide-deck",
+      event: "user-engagement",
+      verbs: ["attempted", "progressed", "completed"],
+      objectType: "http://adlnet.gov/expapi/activities/interaction",
+      result: ["completion", "score"],
+      countsTowardCompletion: false,
+      done: "never required; completed once every slide has been shown",
+    };
+  }
 
   constructor() {
     super();
+    this._haxstate = false;
+    this._resetSeen();
     this.source = null;
     this.deckId = null;
     this.slide = 1;
@@ -114,10 +137,23 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
     if (changedProperties.has("source") && this.source) {
       this.loadDeck();
     }
+    if (changedProperties.has("deck")) {
+      // a new deck is a new activity
+      this._resetSeen();
+    }
     if (changedProperties.has("slide") && this.deck) {
       this._message = null;
       this._syncHash();
       this.paintCurrentSlide();
+    }
+    if (
+      this.deck &&
+      this.mode === "slide" &&
+      (changedProperties.has("slide") ||
+        changedProperties.has("deck") ||
+        changedProperties.has("mode"))
+    ) {
+      this._trackSeen();
     }
     if (changedProperties.has("mode") && this.mode === "slide") {
       this.paintCurrentSlide();
@@ -681,7 +717,107 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
     return {
       gizmoRegistration: "haxgizmoRegistration",
       processFileUpload: "haxprocessFileUpload",
+      editModeChanged: "haxeditModeChanged",
+      activeElementChanged: "haxactiveElementChanged",
     };
+  }
+  /**
+   * @see haxHooks: authors paging through a deck while editing are not
+   * learners
+   */
+  haxactiveElementChanged(el, val) {
+    if (val) {
+      this._haxstate = val;
+    }
+  }
+  haxeditModeChanged(val) {
+    this._haxstate = val;
+  }
+
+  /**
+   * Learner data: forget which slides were shown (new deck, new visit)
+   */
+  _resetSeen() {
+    this._seen = new Set();
+    this._seenSent = {};
+  }
+
+  /**
+   * Learner data: the slide on screen in slide mode counts as shown (the
+   * grid shows thumbnails, which is not going through the deck). Sends at
+   * most three statements per visit however long the deck is: attempted
+   * once a learner moves on to a second slide, progressed once half the
+   * slides were shown, completed once every slide was. Decks of one slide
+   * have nothing to go through and send nothing.
+   */
+  _trackSeen() {
+    const total = this.slides.length;
+    if (this._haxstate || total < 2 || !this.slide) {
+      return;
+    }
+    this._seen.add(this.slide);
+    const seen = this._seen.size;
+    const sent = this._seenSent;
+    if (seen < 2) {
+      return;
+    }
+    if (!sent.attempted) {
+      sent.attempted = true;
+      this._announceSlides("attempted", seen, total);
+    }
+    if (!sent.progressed && seen / total >= 0.5) {
+      sent.progressed = true;
+      this._announceSlides("progressed", seen, total);
+    }
+    if (!sent.completed && seen >= total) {
+      sent.completed = true;
+      this._announceSlides("completed", seen, total);
+    }
+  }
+
+  _announceSlides(verb, seen, total) {
+    const name =
+      String(
+        (this.deck && this.deck.title) || this.getAttribute("title") || "",
+      ).trim() || "Slide deck";
+    const result =
+      verb === "attempted"
+        ? undefined
+        : {
+            completion: verb === "completed",
+            score: { raw: seen, min: 0, max: total },
+          };
+    const detail = {
+      activityDisplay: verb,
+      objectName: name.slice(0, 120),
+      statement: buildStatement({
+        verb,
+        object: {
+          id: activityId(
+            this,
+            `slide-deck\u0001${this.source || ""}\u0001${this.deckId || ""}`,
+          ),
+          name: name.slice(0, 120),
+          type: XAPI_ACTIVITY_TYPES.interactionGeneric,
+        },
+        result,
+        context: {
+          extensions: { [XAPI_EXTENSIONS.element]: SlideDeck.tag },
+        },
+      }),
+    };
+    if (result) {
+      detail.resultCompletion = result.completion;
+      detail.resultScore = seen / total;
+    }
+    this.dispatchEvent(
+      new CustomEvent("user-engagement", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail,
+      }),
+    );
   }
 
   /**

@@ -219,6 +219,16 @@
     "done": "answered correctly or out of attempts",
     "source": "elements/multiple-choice/lib/short-answer-question.js"
   },
+  "slide-deck": {
+    "tag": "slide-deck",
+    "event": "user-engagement",
+    "verbs": ["attempted", "progressed", "completed"],
+    "objectType": "http://adlnet.gov/expapi/activities/interaction",
+    "result": ["completion", "score"],
+    "countsTowardCompletion": false,
+    "done": "never required; completed once every slide has been shown",
+    "source": "elements/slide-deck/slide-deck.js"
+  },
   "sorting-question": {
     "tag": "sorting-question",
     "event": "user-engagement",

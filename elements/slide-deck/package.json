@@ -31,6 +31,7 @@
     "@haxtheweb/d-d-d": "^26.0.0",
     "@haxtheweb/i18n-manager": "^26.0.0",
     "@haxtheweb/simple-icon": "^26.0.0",
+    "@haxtheweb/user-action": "^26.8.0",
     "@haxtheweb/utils": "^26.0.0"
   },
   "devDependencies": {
