@@ -16,6 +16,16 @@
         "description": "Teks alternatif kanggo gambar."
       },
       {
+        "property": "mediaTitle",
+        "title": "Irah-irahan",
+        "description": "Irah-irahan sing ditampilake ing ndhuwur GIF."
+      },
+      {
+        "slot": "caption",
+        "title": "Katrangan",
+        "description": "Katrangan sing ditampilake ing ngisor GIF."
+      },
+      {
         "property": "longdesc",
         "title": "Katrangan Dawa",
         "description": "Katrangan dawa babagan GIF kanggo aksesibilitas."

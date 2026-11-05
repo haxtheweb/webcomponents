@@ -21,7 +21,7 @@
   "import": "@haxtheweb/a11y-gif-player/a11y-gif-player.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/a11y-gif-player/a11y-gif-player.js",
   "install": "npm i @haxtheweb/a11y-gif-player",
-  "demoHtml": "<a11y-gif-player alt=\"It's Always Sunny in Philadelphia Pepe Silvia Meme with GIFs\" src=\"https://media0.giphy.com/media/zHaPZZvl6cVHi/giphy.gif\" longdesc=\"Pepe Silvia scene from It's Always Sunny in Philadelphia. The GIF's don't stop.\" elementVisible></a11y-gif-player>",
+  "demoHtml": "<a11y-gif-player alt=\"It's Always Sunny in Philadelphia Pepe Silvia Meme with GIFs\" src=\"https://media0.giphy.com/media/zHaPZZvl6cVHi/giphy.gif\" longdesc=\"Pepe Silvia scene from It's Always Sunny in Philadelphia. The GIF's don't stop.\" elementVisible media-title=\"The GIFs don't stop\">\n  <span slot=\"caption\">Pepe Silvia scene from It&#39;s Always Sunny in Philadelphia.</span>\n</a11y-gif-player>",
   "attributes": [
     {
       "name": "alt",
@@ -32,6 +32,18 @@
       "hax": {
         "title": "Alt Text",
         "input": "alt",
+        "options": null
+      }
+    },
+    {
+      "name": "media-title",
+      "property": "mediaTitle",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Visible title shown in the block header. Falls back to alt.",
+      "hax": {
+        "title": "Title",
+        "input": "textfield",
         "options": null
       }
     },
@@ -88,7 +100,9 @@
       }
     }
   ],
-  "slots": [],
+  "slots": [
+    "caption"
+  ],
   "events": [],
   "hax": {
     "canScale": true,
@@ -124,7 +138,8 @@
         }
       ],
       "meta": {
-        "author": "HAXTheWeb core team"
+        "author": "HAXTheWeb core team",
+        "anchorLabel": "mediaTitle"
       }
     },
     "settings": {
@@ -148,6 +163,19 @@
           "inputMethod": "alt",
           "icon": "accessibility",
           "required": true
+        },
+        {
+          "property": "mediaTitle",
+          "title": "Title",
+          "description": "Title shown above the GIF.",
+          "inputMethod": "textfield",
+          "validationType": "text"
+        },
+        {
+          "slot": "caption",
+          "title": "Caption",
+          "description": "Caption shown below the GIF.",
+          "inputMethod": "textfield"
         },
         {
           "property": "longdesc",
@@ -177,7 +205,8 @@
         "__playing",
         "__gif-loaded",
         "element-visible",
-        "t"
+        "t",
+        "__has-caption"
       ]
     },
     "demoSchema": [
@@ -187,12 +216,14 @@
           "alt": "It's Always Sunny in Philadelphia Pepe Silvia Meme with GIFs",
           "src": "https://media0.giphy.com/media/zHaPZZvl6cVHi/giphy.gif",
           "longdesc": "Pepe Silvia scene from It's Always Sunny in Philadelphia. The GIF's don't stop.",
-          "elementVisible": true
-        }
+          "elementVisible": true,
+          "mediaTitle": "The GIFs don't stop"
+        },
+        "content": "<span slot=\"caption\">Pepe Silvia scene from It&#39;s Always Sunny in Philadelphia.</span>"
       }
     ]
   },
-  "surfaceHash": "ca333fc1e611",
+  "surfaceHash": "f45bcc5ae51c",
   "walkthroughs": [
     {
       "id": "",

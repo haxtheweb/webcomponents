@@ -16,6 +16,16 @@
         "description": "Tekst alternatywny obrazu."
       },
       {
+        "property": "mediaTitle",
+        "title": "Tytuł",
+        "description": "Tytuł wyświetlany nad GIF-em."
+      },
+      {
+        "slot": "caption",
+        "title": "Podpis",
+        "description": "Podpis wyświetlany pod GIF-em."
+      },
+      {
         "property": "longdesc",
         "title": "Długi opis",
         "description": "Długi opis GIF-a na potrzeby dostępności."

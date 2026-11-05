@@ -16,6 +16,16 @@
         "description": "රූපය සඳහා විකල්ප පෙළ."
       },
       {
+        "property": "mediaTitle",
+        "title": "මාතෘකාව",
+        "description": "GIF එකට ඉහළින් පෙන්වන මාතෘකාව."
+      },
+      {
+        "slot": "caption",
+        "title": "ශීර්ෂ පාඨය",
+        "description": "GIF එකට පහළින් පෙන්වන ශීර්ෂ පාඨය."
+      },
+      {
         "property": "longdesc",
         "title": "දීර්ඝ විස්තරය",
         "description": "ප්‍රවේශ්‍යතාව සඳහා GIF හි දීර්ඝ විස්තරය."

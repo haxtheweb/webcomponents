@@ -16,6 +16,16 @@
         "description": "Alternativur tekstur til myndina."
       },
       {
+        "property": "mediaTitle",
+        "title": "Heiti",
+        "description": "Heiti víst omanfyri GIF-myndina."
+      },
+      {
+        "slot": "caption",
+        "title": "Myndatekstur",
+        "description": "Myndatekstur víst niðanfyri GIF-myndina."
+      },
+      {
         "property": "longdesc",
         "title": "Long lýsing",
         "description": "Long lýsing av GIF-myndini fyri atkomuleika."

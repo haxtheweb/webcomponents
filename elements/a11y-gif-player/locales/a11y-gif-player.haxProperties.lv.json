@@ -16,6 +16,16 @@
         "description": "Attēla alternatīvais teksts."
       },
       {
+        "property": "mediaTitle",
+        "title": "Virsraksts",
+        "description": "Virsraksts, kas tiek rādīts virs GIF."
+      },
+      {
+        "slot": "caption",
+        "title": "Paraksts",
+        "description": "Paraksts, kas tiek rādīts zem GIF."
+      },
+      {
         "property": "longdesc",
         "title": "Garais apraksts",
         "description": "Garš GIF apraksts piekļūstamībai."

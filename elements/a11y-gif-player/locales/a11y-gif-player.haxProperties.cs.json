@@ -16,6 +16,16 @@
         "description": "Alternativní text obrázku."
       },
       {
+        "property": "mediaTitle",
+        "title": "Název",
+        "description": "Název zobrazený nad GIFem."
+      },
+      {
+        "slot": "caption",
+        "title": "Popisek",
+        "description": "Popisek zobrazený pod GIFem."
+      },
+      {
         "property": "longdesc",
         "title": "Dlouhý popis",
         "description": "Dlouhý popis GIFu pro přístupnost."

@@ -16,6 +16,16 @@
         "description": "图像的替代文本。"
       },
       {
+        "property": "mediaTitle",
+        "title": "标题",
+        "description": "显示在 GIF 上方的标题。"
+      },
+      {
+        "slot": "caption",
+        "title": "说明文字",
+        "description": "显示在 GIF 下方的说明文字。"
+      },
+      {
         "property": "longdesc",
         "title": "详细描述",
         "description": "用于无障碍访问的 GIF 详细描述。"

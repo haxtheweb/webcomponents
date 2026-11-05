@@ -16,6 +16,16 @@
         "description": "Ọ̀rọ̀ àfirọ́pò fún àwòrán náà."
       },
       {
+        "property": "mediaTitle",
+        "title": "Àkọlé",
+        "description": "Àkọlé tí a fihàn lókè GIF."
+      },
+      {
+        "slot": "caption",
+        "title": "Àpèjúwe",
+        "description": "Àpèjúwe tí a fihàn nísàlẹ̀ GIF."
+      },
+      {
         "property": "longdesc",
         "title": "Àpèjúwe gígùn",
         "description": "Àpèjúwe gígùn GIF náà fún ìráyèsí."

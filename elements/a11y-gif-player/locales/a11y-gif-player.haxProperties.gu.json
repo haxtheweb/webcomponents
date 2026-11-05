@@ -16,6 +16,16 @@
         "description": "છબી માટેનું વૈકલ્પિક લખાણ."
       },
       {
+        "property": "mediaTitle",
+        "title": "શીર્ષક",
+        "description": "GIF ની ઉપર દર્શાવેલ શીર્ષક."
+      },
+      {
+        "slot": "caption",
+        "title": "કૅપ્શન",
+        "description": "GIF ની નીચે દર્શાવેલ કૅપ્શન."
+      },
+      {
         "property": "longdesc",
         "title": "લાંબું વર્ણન",
         "description": "સુલભતા માટે GIF નું લાંબું વર્ણન."

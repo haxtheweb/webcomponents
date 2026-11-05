@@ -16,6 +16,16 @@
         "description": "تصویر لئی متبادل متن۔"
       },
       {
+        "property": "mediaTitle",
+        "title": "سرناواں",
+        "description": "GIF دے اُتے وکھایا جان والا سرناواں۔"
+      },
+      {
+        "slot": "caption",
+        "title": "کیپشن",
+        "description": "GIF دے تھلے وکھایا جان والا کیپشن۔"
+      },
+      {
         "property": "longdesc",
         "title": "لمی وضاحت",
         "description": "رسائی لئی GIF دی لمی وضاحت۔"

@@ -16,6 +16,16 @@
         "description": "Зургийн орлуулах текст."
       },
       {
+        "property": "mediaTitle",
+        "title": "Гарчиг",
+        "description": "GIF-ийн дээр харагдах гарчиг."
+      },
+      {
+        "slot": "caption",
+        "title": "Тайлбар",
+        "description": "GIF-ийн доор харагдах тайлбар."
+      },
+      {
         "property": "longdesc",
         "title": "Дэлгэрэнгүй тайлбар",
         "description": "Хүртээмжид зориулсан GIF-ийн дэлгэрэнгүй тайлбар."

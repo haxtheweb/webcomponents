@@ -16,6 +16,16 @@
         "description": "Moñe'ẽrã mokõiha ta'ãngape g̃uarã."
       },
       {
+        "property": "mediaTitle",
+        "title": "Téra",
+        "description": "Téra ojehechaukáva GIF ári."
+      },
+      {
+        "slot": "caption",
+        "title": "Jehaipy",
+        "description": "Jehaipy ojehechaukáva GIF guýpe."
+      },
+      {
         "property": "longdesc",
         "title": "Ñemombe'u puku",
         "description": "GIF ñemombe'u puku opavavépe g̃uarã."

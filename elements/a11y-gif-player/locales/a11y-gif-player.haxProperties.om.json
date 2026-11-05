@@ -16,6 +16,16 @@
         "description": "Barreeffama bakka bu'aa suuraa."
       },
       {
+        "property": "mediaTitle",
+        "title": "Mata-duree",
+        "description": "Mata-duree GIF irratti agarsiifamu."
+      },
+      {
+        "slot": "caption",
+        "title": "Ibsa",
+        "description": "Ibsa GIF jalatti agarsiifamu."
+      },
+      {
         "property": "longdesc",
         "title": "Ibsa Dheeraa",
         "description": "Ibsa dheeraa GIF dhaqqabummaaf."

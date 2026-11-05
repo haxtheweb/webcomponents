@@ -16,6 +16,16 @@
         "description": "ข้อความแสดงแทนสำหรับรูปภาพ"
       },
       {
+        "property": "mediaTitle",
+        "title": "ชื่อเรื่อง",
+        "description": "ชื่อเรื่องที่แสดงเหนือ GIF"
+      },
+      {
+        "slot": "caption",
+        "title": "คำบรรยาย",
+        "description": "คำบรรยายที่แสดงใต้ GIF"
+      },
+      {
         "property": "longdesc",
         "title": "คำอธิบายแบบยาว",
         "description": "คำอธิบายแบบยาวของ GIF เพื่อการเข้าถึง"

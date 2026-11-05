@@ -16,6 +16,16 @@
         "description": "Ederede ọzọ maka onyonyo ahụ."
       },
       {
+        "property": "mediaTitle",
+        "title": "Aha",
+        "description": "Aha egosiri n'elu GIF ahụ."
+      },
+      {
+        "slot": "caption",
+        "title": "Nkọwa",
+        "description": "Nkọwa egosiri n'okpuru GIF ahụ."
+      },
+      {
         "property": "longdesc",
         "title": "Nkọwa Ogologo",
         "description": "Nkọwa ogologo nke GIF ahụ maka ịdị mfe ịnweta."

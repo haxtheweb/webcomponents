@@ -16,6 +16,16 @@
         "description": "Irudiaren testu alternatiboa."
       },
       {
+        "property": "mediaTitle",
+        "title": "Izenburua",
+        "description": "GIFaren gainean erakusten den izenburua."
+      },
+      {
+        "slot": "caption",
+        "title": "Irudi-oina",
+        "description": "GIFaren azpian erakusten den irudi-oina."
+      },
+      {
         "property": "longdesc",
         "title": "Deskribapen luzea",
         "description": "GIFaren deskribapen luzea, irisgarritasunerako."

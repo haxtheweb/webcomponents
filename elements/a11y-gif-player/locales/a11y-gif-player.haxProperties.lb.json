@@ -16,6 +16,16 @@
         "description": "Alternativen Text fir d'Bild."
       },
       {
+        "property": "mediaTitle",
+        "title": "Titel",
+        "description": "Titel, deen iwwer dem GIF ugewise gëtt."
+      },
+      {
+        "slot": "caption",
+        "title": "Beschrëftung",
+        "description": "Beschrëftung, déi ënner dem GIF ugewise gëtt."
+      },
+      {
         "property": "longdesc",
         "title": "Laang Beschreiwung",
         "description": "Laang Beschreiwung vum GIF fir d'Accessibilitéit."

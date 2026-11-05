@@ -16,6 +16,16 @@
         "description": "Mawu ena ofotokoza chithunzi."
       },
       {
+        "property": "mediaTitle",
+        "title": "Mutu",
+        "description": "Mutu wowonetsedwa pamwamba pa GIF."
+      },
+      {
+        "slot": "caption",
+        "title": "Mawu ofotokozera",
+        "description": "Mawu ofotokozera owonetsedwa pansi pa GIF."
+      },
+      {
         "property": "longdesc",
         "title": "Kufotokoza Kwatali",
         "description": "Kufotokoza kwatali kwa GIF kuti aliyense athe kuigwiritsa ntchito."

@@ -16,6 +16,16 @@
         "description": "ছবির বিকল্প টেক্সট।"
       },
       {
+        "property": "mediaTitle",
+        "title": "শিরোনাম",
+        "description": "GIF-এর উপরে দেখানো শিরোনাম।"
+      },
+      {
+        "slot": "caption",
+        "title": "ক্যাপশন",
+        "description": "GIF-এর নিচে দেখানো ক্যাপশন।"
+      },
+      {
         "property": "longdesc",
         "title": "দীর্ঘ বিবরণ",
         "description": "অ্যাক্সেসযোগ্যতার জন্য GIF-এর দীর্ঘ বিবরণ।"

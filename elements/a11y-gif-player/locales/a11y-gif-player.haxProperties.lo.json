@@ -16,6 +16,16 @@
         "description": "ຂໍ້ຄວາມທົດແທນສຳລັບຮູບພາບ."
       },
       {
+        "property": "mediaTitle",
+        "title": "ຫົວຂໍ້",
+        "description": "ຫົວຂໍ້ທີ່ສະແດງຢູ່ເທິງ GIF."
+      },
+      {
+        "slot": "caption",
+        "title": "ຄຳບັນຍາຍ",
+        "description": "ຄຳບັນຍາຍທີ່ສະແດງຢູ່ລຸ່ມ GIF."
+      },
+      {
         "property": "longdesc",
         "title": "ຄຳອະທິບາຍແບບຍາວ",
         "description": "ຄຳອະທິບາຍແບບຍາວຂອງ GIF ເພື່ອການເຂົ້າເຖິງ."

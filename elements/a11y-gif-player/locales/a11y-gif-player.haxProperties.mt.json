@@ -16,6 +16,16 @@
         "description": "Test alternattiv għall-immaġni."
       },
       {
+        "property": "mediaTitle",
+        "title": "Titlu",
+        "description": "Titlu muri fuq il-GIF."
+      },
+      {
+        "slot": "caption",
+        "title": "Didaskalija",
+        "description": "Didaskalija murija taħt il-GIF."
+      },
+      {
         "property": "longdesc",
         "title": "Deskrizzjoni twila",
         "description": "Deskrizzjoni twila tal-GIF għall-aċċessibbiltà."

@@ -16,6 +16,16 @@
         "description": "Rubutun madadi na hoton."
       },
       {
+        "property": "mediaTitle",
+        "title": "Take",
+        "description": "Taken da ake nunawa sama da GIF."
+      },
+      {
+        "slot": "caption",
+        "title": "Bayani",
+        "description": "Bayanin da ake nunawa ƙasa da GIF."
+      },
+      {
         "property": "longdesc",
         "title": "Dogon Bayani",
         "description": "Dogon bayanin GIF ɗin don sauƙin isa."

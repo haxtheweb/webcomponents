@@ -16,6 +16,16 @@
         "description": "Матни алтернативӣ барои тасвир."
       },
       {
+        "property": "mediaTitle",
+        "title": "Сарлавҳа",
+        "description": "Сарлавҳае, ки дар болои GIF нишон дода мешавад."
+      },
+      {
+        "slot": "caption",
+        "title": "Тавзеҳ",
+        "description": "Тавзеҳе, ки дар зери GIF нишон дода мешавад."
+      },
+      {
         "property": "longdesc",
         "title": "Тавсифи муфассал",
         "description": "Тавсифи муфассали GIF барои дастрасӣ."

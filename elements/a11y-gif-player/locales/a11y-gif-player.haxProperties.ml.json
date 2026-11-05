@@ -16,6 +16,16 @@
         "description": "ചിത്രത്തിനുള്ള പകരം വാചകം."
       },
       {
+        "property": "mediaTitle",
+        "title": "ശീർഷകം",
+        "description": "GIF-ന് മുകളിൽ കാണിക്കുന്ന ശീർഷകം."
+      },
+      {
+        "slot": "caption",
+        "title": "അടിക്കുറിപ്പ്",
+        "description": "GIF-ന് താഴെ കാണിക്കുന്ന അടിക്കുറിപ്പ്."
+      },
+      {
         "property": "longdesc",
         "title": "ദീർഘ വിവരണം",
         "description": "പ്രാപ്യതയ്ക്കായി GIF-ന്റെ ദീർഘ വിവരണം."

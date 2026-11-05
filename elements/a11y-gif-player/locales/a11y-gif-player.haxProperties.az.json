@@ -16,6 +16,16 @@
         "description": "Şəkil üçün alternativ mətn."
       },
       {
+        "property": "mediaTitle",
+        "title": "Başlıq",
+        "description": "GIF-in üstündə göstərilən başlıq."
+      },
+      {
+        "slot": "caption",
+        "title": "Alt yazı",
+        "description": "GIF-in altında göstərilən alt yazı."
+      },
+      {
         "property": "longdesc",
         "title": "Ətraflı təsvir",
         "description": "Əlçatanlıq üçün GIF-in ətraflı təsviri."

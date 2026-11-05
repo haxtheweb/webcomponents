@@ -16,6 +16,16 @@
         "description": "प्रतिमेसाठी पर्यायी मजकूर."
       },
       {
+        "property": "mediaTitle",
+        "title": "शीर्षक",
+        "description": "GIF च्या वर दाखवलेले शीर्षक."
+      },
+      {
+        "slot": "caption",
+        "title": "मथळा",
+        "description": "GIF च्या खाली दाखवलेला मथळा."
+      },
+      {
         "property": "longdesc",
         "title": "दीर्घ वर्णन",
         "description": "सुलभतेसाठी GIF चे दीर्घ वर्णन."

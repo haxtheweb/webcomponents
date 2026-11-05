@@ -1,6 +1,5 @@
 {
   "canScale": true,
-
   "canEditSource": true,
   "gizmo": {
     "title": "GIF",
@@ -33,7 +32,8 @@
       }
     ],
     "meta": {
-      "author": "HAXTheWeb core team"
+      "author": "HAXTheWeb core team",
+      "anchorLabel": "mediaTitle"
     }
   },
   "settings": {
@@ -59,6 +59,19 @@
         "required": true
       },
       {
+        "property": "mediaTitle",
+        "title": "Title",
+        "description": "Title shown above the GIF.",
+        "inputMethod": "textfield",
+        "validationType": "text"
+      },
+      {
+        "slot": "caption",
+        "title": "Caption",
+        "description": "Caption shown below the GIF.",
+        "inputMethod": "textfield"
+      },
+      {
         "property": "longdesc",
         "title": "Long Description",
         "description": "Long description of the GIF for accessibility.",
@@ -82,7 +95,13 @@
     ]
   },
   "saveOptions": {
-    "unsetAttributes": ["__playing", "__gif-loaded", "element-visible", "t"]
+    "unsetAttributes": [
+      "__playing",
+      "__gif-loaded",
+      "element-visible",
+      "t",
+      "__has-caption"
+    ]
   },
   "demoSchema": [
     {
@@ -91,8 +110,10 @@
         "alt": "It's Always Sunny in Philadelphia Pepe Silvia Meme with GIFs",
         "src": "https://media0.giphy.com/media/zHaPZZvl6cVHi/giphy.gif",
         "longdesc": "Pepe Silvia scene from It's Always Sunny in Philadelphia. The GIF's don't stop.",
-        "elementVisible": true
-      }
+        "elementVisible": true,
+        "mediaTitle": "The GIFs don't stop"
+      },
+      "content": "<span slot=\"caption\">Pepe Silvia scene from It&#39;s Always Sunny in Philadelphia.</span>"
     }
   ]
 }

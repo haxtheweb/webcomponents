@@ -16,6 +16,16 @@
         "description": "Nivîsa alternatîf ji bo wêneyê."
       },
       {
+        "property": "mediaTitle",
+        "title": "Sernav",
+        "description": "Sernavê ku li jorê GIF-ê tê nîşandan."
+      },
+      {
+        "slot": "caption",
+        "title": "Binnivîs",
+        "description": "Binnivîsa ku li jêrê GIF-ê tê nîşandan."
+      },
+      {
         "property": "longdesc",
         "title": "Danasîna Dirêj",
         "description": "Danasîna dirêj a GIF-ê ji bo gihîştbariyê."

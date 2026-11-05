@@ -16,6 +16,16 @@
         "description": "تصوير لاءِ متبادل متن."
       },
       {
+        "property": "mediaTitle",
+        "title": "عنوان",
+        "description": "GIF جي مٿان ڏيکاريل عنوان."
+      },
+      {
+        "slot": "caption",
+        "title": "ڪيپشن",
+        "description": "GIF جي هيٺان ڏيکاريل ڪيپشن."
+      },
+      {
         "property": "longdesc",
         "title": "تفصيلي وضاحت",
         "description": "رسائي لاءِ GIF جي تفصيلي وضاحت."

@@ -16,6 +16,16 @@
         "description": "Téacs malartach don íomhá."
       },
       {
+        "property": "mediaTitle",
+        "title": "Teideal",
+        "description": "Teideal a thaispeántar os cionn an GIF."
+      },
+      {
+        "slot": "caption",
+        "title": "Fotheideal",
+        "description": "Fotheideal a thaispeántar faoin GIF."
+      },
+      {
         "property": "longdesc",
         "title": "Cur Síos Fada",
         "description": "Cur síos fada ar an GIF ar mhaithe le hinrochtaineacht."

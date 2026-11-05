@@ -16,6 +16,16 @@
         "description": "Texte alternatif de l'image."
       },
       {
+        "property": "mediaTitle",
+        "title": "Titre",
+        "description": "Titre affiché au-dessus du GIF."
+      },
+      {
+        "slot": "caption",
+        "title": "Légende",
+        "description": "Légende affichée sous le GIF."
+      },
+      {
         "property": "longdesc",
         "title": "Description longue",
         "description": "Description longue du GIF pour l'accessibilité."

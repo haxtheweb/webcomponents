@@ -16,6 +16,16 @@
         "description": "이미지의 대체 텍스트입니다."
       },
       {
+        "property": "mediaTitle",
+        "title": "제목",
+        "description": "GIF 위에 표시되는 제목입니다."
+      },
+      {
+        "slot": "caption",
+        "title": "캡션",
+        "description": "GIF 아래에 표시되는 캡션입니다."
+      },
+      {
         "property": "longdesc",
         "title": "상세 설명",
         "description": "접근성을 위한 GIF의 상세 설명입니다."

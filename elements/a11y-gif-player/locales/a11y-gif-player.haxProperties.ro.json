@@ -16,6 +16,16 @@
         "description": "Text alternativ pentru imagine."
       },
       {
+        "property": "mediaTitle",
+        "title": "Titlu",
+        "description": "Titlu afișat deasupra GIF-ului."
+      },
+      {
+        "slot": "caption",
+        "title": "Legendă",
+        "description": "Legendă afișată sub GIF."
+      },
+      {
         "property": "longdesc",
         "title": "Descriere lungă",
         "description": "Descriere lungă a GIF-ului pentru accesibilitate."

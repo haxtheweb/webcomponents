@@ -16,6 +16,16 @@
         "description": "Văn bản thay thế cho hình ảnh."
       },
       {
+        "property": "mediaTitle",
+        "title": "Tiêu đề",
+        "description": "Tiêu đề hiển thị phía trên GIF."
+      },
+      {
+        "slot": "caption",
+        "title": "Chú thích",
+        "description": "Chú thích hiển thị phía dưới GIF."
+      },
+      {
         "property": "longdesc",
         "title": "Mô tả chi tiết",
         "description": "Mô tả chi tiết về ảnh GIF để hỗ trợ khả năng tiếp cận."

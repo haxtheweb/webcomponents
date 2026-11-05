@@ -16,6 +16,16 @@
         "description": "Альтернативный текст для изображения."
       },
       {
+        "property": "mediaTitle",
+        "title": "Заголовок",
+        "description": "Заголовок, отображаемый над GIF."
+      },
+      {
+        "slot": "caption",
+        "title": "Подпись",
+        "description": "Подпись, отображаемая под GIF."
+      },
+      {
         "property": "longdesc",
         "title": "Подробное описание",
         "description": "Подробное описание GIF для обеспечения доступности."

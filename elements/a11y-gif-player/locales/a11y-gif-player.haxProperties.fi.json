@@ -16,6 +16,16 @@
         "description": "Kuvan vaihtoehtoinen teksti."
       },
       {
+        "property": "mediaTitle",
+        "title": "Otsikko",
+        "description": "GIF-kuvan yläpuolella näytettävä otsikko."
+      },
+      {
+        "slot": "caption",
+        "title": "Kuvateksti",
+        "description": "GIF-kuvan alapuolella näytettävä kuvateksti."
+      },
+      {
         "property": "longdesc",
         "title": "Pitkä kuvaus",
         "description": "GIF-kuvan pitkä kuvaus saavutettavuutta varten."

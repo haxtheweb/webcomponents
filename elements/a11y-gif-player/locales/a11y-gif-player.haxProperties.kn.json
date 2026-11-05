@@ -16,6 +16,16 @@
         "description": "ಚಿತ್ರದ ಪರ್ಯಾಯ ಪಠ್ಯ."
       },
       {
+        "property": "mediaTitle",
+        "title": "ಶೀರ್ಷಿಕೆ",
+        "description": "GIF ಮೇಲೆ ತೋರಿಸಲಾಗುವ ಶೀರ್ಷಿಕೆ."
+      },
+      {
+        "slot": "caption",
+        "title": "ಅಡಿಬರಹ",
+        "description": "GIF ಕೆಳಗೆ ತೋರಿಸಲಾಗುವ ಅಡಿಬರಹ."
+      },
+      {
         "property": "longdesc",
         "title": "ದೀರ್ಘ ವಿವರಣೆ",
         "description": "ಪ್ರವೇಶಯೋಗ್ಯತೆಗಾಗಿ GIF ನ ದೀರ್ಘ ವಿವರಣೆ."

@@ -16,6 +16,16 @@
         "description": "Qoraal beddel u ah sawirka."
       },
       {
+        "property": "mediaTitle",
+        "title": "Cinwaan",
+        "description": "Cinwaanka lagu muujiyo GIF-ka korkiisa."
+      },
+      {
+        "slot": "caption",
+        "title": "Sharraxaad",
+        "description": "Sharraxaadda lagu muujiyo GIF-ka hoostiisa."
+      },
+      {
         "property": "longdesc",
         "title": "Sharaxaad Dheer",
         "description": "Sharaxaad dheer oo GIF-ka si qof walba u fahmo."

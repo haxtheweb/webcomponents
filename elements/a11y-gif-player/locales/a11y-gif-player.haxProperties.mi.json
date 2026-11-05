@@ -16,6 +16,16 @@
         "description": "Kupu kē mō te whakaahua."
       },
       {
+        "property": "mediaTitle",
+        "title": "Taitara",
+        "description": "Te taitara ka whakaaturia ki runga ake i te GIF."
+      },
+      {
+        "slot": "caption",
+        "title": "Tapanga",
+        "description": "Te tapanga ka whakaaturia ki raro i te GIF."
+      },
+      {
         "property": "longdesc",
         "title": "Whakaahuatanga Roa",
         "description": "He whakaahuatanga roa o te GIF hei āwhina i te hunga hauā."

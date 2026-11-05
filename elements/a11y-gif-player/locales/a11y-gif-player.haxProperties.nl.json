@@ -16,6 +16,16 @@
         "description": "Alternatieve tekst voor de afbeelding."
       },
       {
+        "property": "mediaTitle",
+        "title": "Titel",
+        "description": "Titel die boven de GIF wordt weergegeven."
+      },
+      {
+        "slot": "caption",
+        "title": "Bijschrift",
+        "description": "Bijschrift dat onder de GIF wordt weergegeven."
+      },
+      {
         "property": "longdesc",
         "title": "Lange beschrijving",
         "description": "Lange beschrijving van de GIF voor toegankelijkheid."

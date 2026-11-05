@@ -16,6 +16,16 @@
         "description": "Сүрөт үчүн альтернативдик текст."
       },
       {
+        "property": "mediaTitle",
+        "title": "Аталыш",
+        "description": "GIF үстүндө көрсөтүлүүчү аталыш."
+      },
+      {
+        "slot": "caption",
+        "title": "Түшүндүрмө",
+        "description": "GIF астында көрсөтүлүүчү түшүндүрмө."
+      },
+      {
         "property": "longdesc",
         "title": "Толук сүрөттөмө",
         "description": "Жеткиликтүүлүк үчүн GIF файлынын толук сүрөттөмөсү."

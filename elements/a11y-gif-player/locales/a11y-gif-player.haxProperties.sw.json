@@ -16,6 +16,16 @@
         "description": "Maandishi mbadala ya picha."
       },
       {
+        "property": "mediaTitle",
+        "title": "Kichwa",
+        "description": "Kichwa kinachoonyeshwa juu ya GIF."
+      },
+      {
+        "slot": "caption",
+        "title": "Maelezo",
+        "description": "Maelezo yanayoonyeshwa chini ya GIF."
+      },
+      {
         "property": "longdesc",
         "title": "Maelezo Marefu",
         "description": "Maelezo marefu ya GIF kwa ajili ya ufikivu."

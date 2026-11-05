@@ -16,6 +16,16 @@
         "description": "نص بديل للصورة."
       },
       {
+        "property": "mediaTitle",
+        "title": "العنوان",
+        "description": "العنوان المعروض أعلى صورة GIF."
+      },
+      {
+        "slot": "caption",
+        "title": "التسمية التوضيحية",
+        "description": "التسمية التوضيحية المعروضة أسفل صورة GIF."
+      },
+      {
         "property": "longdesc",
         "title": "الوصف المطوَّل",
         "description": "وصف مطوَّل لصورة GIF لإمكانية الوصول."
