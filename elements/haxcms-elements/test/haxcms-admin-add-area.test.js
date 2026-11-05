@@ -120,7 +120,11 @@ describe("haxcms-site-admin draws a section's add area", () => {
     const calls = [];
     shell.allowRoute = () => true;
     shell.route = "content";
-    await waitUntil(() => shell._sectionEl, "section element created");
+    // the section is lazy-imported; the 1s waitUntil default is too tight on
+    // a busy runner
+    await waitUntil(() => shell._sectionEl, "section element created", {
+      timeout: 5000,
+    });
     shell._sectionEl.addFiles = (detail) => calls.push(["add", detail]);
     shell._sectionEl.browseFiles = () => calls.push(["browse"]);
     shell._onSectionState({

@@ -1,4 +1,4 @@
-import { fixture, expect, html } from "@open-wc/testing";
+import { fixture, expect, html, waitUntil } from "@open-wc/testing";
 import "../sorting-question.js";
 import { SortingQuestion } from "../sorting-question.js";
 
@@ -117,8 +117,14 @@ describe("sorting-question behavior", () => {
     expect(toasts.length).to.equal(1);
     expect(toasts[0].detail.accentColor).to.equal("green");
     expect(toasts[0].detail.hat).to.equal("party");
+    // popped is set after a dynamic import of confetti-container resolves, so
+    // wait for it rather than trusting the fixed flush above to be long enough
     const confetti = el.shadowRoot.querySelector("#confetti");
-    expect(confetti.hasAttribute("popped")).to.equal(true);
+    await waitUntil(
+      () => confetti.hasAttribute("popped"),
+      "confetti popped after the confetti-container import",
+      { timeout: 5000 },
+    );
   });
 
   it("checkAnswerCallback reports partial correctness on a wrong order", async () => {

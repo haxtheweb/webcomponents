@@ -880,7 +880,11 @@ describe("rpg-character", () => {
       expect(hrefs(el).length).to.equal(baseline);
     });
 
-    it("every listed option has an art file", async () => {
+    it("every listed option has an art file", async function () {
+      // ~375 requests to the dev server; on a contended runner even the
+      // parallel version can pass the 10s suite default, so this one IO-bound
+      // check gets its own budget (it still fails fast on a missing file)
+      this.timeout(30000);
       const files = [
         ...hatList.map((h) => `hat/${h}`),
         ...maskList.map((m) => `mask/${m}`),
@@ -902,11 +906,16 @@ describe("rpg-character", () => {
         "base/shavedR",
         ...[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => `scalp/${n}`),
       ];
-      for (const file of files) {
-        const url = new URL(`../lib/${file}.svg`, import.meta.url).href;
-        const response = await fetch(url);
-        expect(response.ok, file).to.be.true;
-      }
+      // check every file at once (HEAD, no body) instead of one fetch at a
+      // time: the serial loop grew with the wardrobe and ran past the timeout
+      const results = await Promise.all(
+        files.map(async (file) => {
+          const url = new URL(`../lib/${file}.svg`, import.meta.url).href;
+          const response = await fetch(url, { method: "HEAD" });
+          return response.ok ? null : file;
+        }),
+      );
+      expect(results.filter((file) => file !== null)).to.deep.equal([]);
     });
   });
 

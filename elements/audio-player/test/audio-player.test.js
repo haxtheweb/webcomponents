@@ -1,5 +1,11 @@
-import { fixture, expect, html } from "@open-wc/testing";
+import { fixture, expect, html, waitUntil } from "@open-wc/testing";
 import "../audio-player.js";
+
+// a real audio file served by the test runner, so no test waits on the network
+const localAudio = new URL(
+  "../../a11y-media-player/demo/samples/bueller.mp3",
+  import.meta.url,
+).href;
 
 describe("audio-player test", function () {
   // this suite runs dozens of sequential a11y audits (boolean/crossorigin/
@@ -9,11 +15,21 @@ describe("audio-player test", function () {
   // throws "Axe is already running" on the next shadowDom.to.be.accessible()
   // call. Give the suite real headroom (see training-theme/haxor-slevin).
   this.timeout(10000);
+  // if one test still times out, its axe.run() keeps going; wait for it so
+  // the next test's audit does not fail with "Axe is already running" and a
+  // single slow test cannot take the rest of the file down with it
+  afterEach(async () => {
+    await waitUntil(
+      () => !(globalThis.axe && globalThis.axe._running),
+      "previous axe audit finished",
+      { timeout: 15000 },
+    );
+  });
   let element;
   beforeEach(async () => {
     element = await fixture(html`
       <audio-player
-        source="https://archive.org/download/tvtunes_4710/Jonny%20Quest.mp3"
+        source="${localAudio}"
         media-title="Test Audio"
         accent-color="blue"
       ></audio-player>
@@ -100,46 +116,46 @@ describe("audio-player test", function () {
         await expect(testElement).shadowDom.to.be.accessible();
       });
 
-      it("should handle boolean properties", async () => {
-        const booleanProps = [
-          "learningMode",
-          "hideYoutubeLink",
-          "linkable",
-          "allowBackgroundPlay",
-          "darkTranscript",
-          "disableInteractive",
-          "hideTimestamps",
-          "hideTranscript",
-        ];
-
-        for (const prop of booleanProps) {
+      // one test per property (instead of 16 audits in a single test) so each
+      // audit pair gets its own timeout budget and a failure names the property
+      const booleanProps = [
+        "learningMode",
+        "hideYoutubeLink",
+        "linkable",
+        "allowBackgroundPlay",
+        "darkTranscript",
+        "disableInteractive",
+        "hideTimestamps",
+        "hideTranscript",
+      ];
+      for (const prop of booleanProps) {
+        it(`should handle boolean property ${prop}`, async () => {
           if (
-            testElement.hasOwnProperty(prop) ||
-            prop in testElement.constructor.properties
+            !testElement.hasOwnProperty(prop) &&
+            !(prop in testElement.constructor.properties)
           ) {
-            testElement[prop] = true;
-            await testElement.updateComplete;
-            expect(testElement[prop]).to.equal(true);
-            await expect(testElement).shadowDom.to.be.accessible();
-
-            testElement[prop] = false;
-            await testElement.updateComplete;
-            expect(testElement[prop]).to.equal(false);
-            await expect(testElement).shadowDom.to.be.accessible();
+            return;
           }
-        }
-      });
+          testElement[prop] = true;
+          await testElement.updateComplete;
+          expect(testElement[prop]).to.equal(true);
+          await expect(testElement).shadowDom.to.be.accessible();
 
-      it("should handle crossorigin property", async () => {
-        const crossOriginValues = ["", "anonymous", "use-credentials"];
+          testElement[prop] = false;
+          await testElement.updateComplete;
+          expect(testElement[prop]).to.equal(false);
+          await expect(testElement).shadowDom.to.be.accessible();
+        });
+      }
 
-        for (const value of crossOriginValues) {
+      for (const value of ["", "anonymous", "use-credentials"]) {
+        it(`should handle crossorigin property "${value}"`, async () => {
           testElement.crossorigin = value;
           await testElement.updateComplete;
           expect(testElement.crossorigin).to.equal(value);
           await expect(testElement).shadowDom.to.be.accessible();
-        }
-      });
+        });
+      }
 
       it("should handle lang property", async () => {
         testElement.lang = "en-US";
@@ -164,7 +180,7 @@ describe("audio-player test", function () {
     it("should handle audio sources correctly", async () => {
       const testElement = await fixture(html`
         <audio-player
-          source="https://archive.org/download/tvtunes_4710/Jonny%20Quest.mp3"
+          source="${localAudio}"
           media-title="Audio Test"
         ></audio-player>
       `);

@@ -48,7 +48,22 @@ jobs:
         # "Executable doesn't exist ... chromium_headless_shell-NNNN".
         run: yarn playwright install --with-deps chromium
       - name: Test all elements
+        # Quiet reporter: progress ticks, then every failure grouped at the
+        # end of this step's log instead of buried among ~13k passing tests.
+        # The same failures land in test-failures.json (artifact below) so
+        # runs can be compared to tell a flake from a real failure.
+        env:
+          WTR_REPORTER: failures
+          WTR_FAILURES_JSON: test-failures.json
         run: yarn test:all
+      - name: Upload test failures
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: test-failures-node-${{ matrix.node-version }}
+          path: test-failures.json
+          if-no-files-found: ignore
+          retention-days: 30
       - name: Prettier format check
         # Advisory only, like ESLint: formatting drift should never stop the
         # tests from running. The unquoted glob only reaches one directory

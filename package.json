@@ -60,6 +60,7 @@
     "design-system:sync": "node elements/d-d-d/design-system/sync.js",
     "test": "lerna run test --concurrency=1",
     "test:all": "web-test-runner \"elements/*/test/*.test.js\" --node-resolve --root-dir . --playwright --browsers chromium --static-logging",
+    "test:all:failures": "WTR_REPORTER=failures yarn test:all",
     "test:all:firefox": "web-test-runner \"elements/*/test/*.test.js\" --node-resolve --root-dir . --playwright --browsers firefox --static-logging",
     "test:all:webkit": "web-test-runner \"elements/*/test/*.test.js\" --node-resolve --root-dir . --playwright --browsers webkit --static-logging",
     "build": "lerna run build && yarn run build-gallery",

@@ -10,6 +10,19 @@ import { LoadingHelper } from "../lib/LoadingHelper.js";
 import { PerformanceDetect } from "../lib/PerformanceDetect.js";
 import { I18NManagerStore } from "@haxtheweb/i18n-manager/i18n-manager.js";
 
+// replace-tag picks "Loading..." or "Click to load" from DeviceDetails, which
+// reads the real machine (cores, memory, battery, Chrome's effectiveType
+// estimate). A busy CI runner can look like a poor connection and flip the
+// element into its slow-device path, so the element suites pin a capable
+// device. The PerformanceDetect suites below still exercise the real signals.
+const realBadDevice = DeviceDetails.badDevice;
+before(() => {
+  DeviceDetails.badDevice = async () => false;
+});
+after(() => {
+  DeviceDetails.badDevice = realBadDevice;
+});
+
 describe("replace-tag basic construction", () => {
   it("passes the a11y audit", async () => {
     const el = await fixture(
@@ -282,18 +295,32 @@ describe("LoadingHelper mixin", () => {
 });
 
 describe("PerformanceDetect singleton", () => {
+  // use the real detection here, not the capable-device pin above
+  let pinned;
+  before(() => {
+    pinned = DeviceDetails.badDevice;
+    DeviceDetails.badDevice = realBadDevice;
+  });
+  after(() => {
+    DeviceDetails.badDevice = pinned;
+  });
+
   it("provides DeviceDetails singleton", () => {
     expect(DeviceDetails).to.exist;
     expect(DeviceDetails.tagName.toLowerCase()).to.equal("performance-detect");
   });
 
   it("has default details object with all false values", () => {
-    expect(DeviceDetails.details).to.exist;
-    expect(DeviceDetails.details.lowMemory).to.equal(false);
-    expect(DeviceDetails.details.lowProcessor).to.equal(false);
-    expect(DeviceDetails.details.lowBattery).to.equal(false);
-    expect(DeviceDetails.details.poorConnection).to.equal(false);
-    expect(DeviceDetails.details.dataSaver).to.equal(false);
+    // the singleton's details reflect whatever machine runs the tests once
+    // updateDetails resolves, so check the defaults on a fresh instance,
+    // which are set synchronously in the constructor
+    const fresh = globalThis.document.createElement("performance-detect");
+    expect(fresh.details).to.exist;
+    expect(fresh.details.lowMemory).to.equal(false);
+    expect(fresh.details.lowProcessor).to.equal(false);
+    expect(fresh.details.lowBattery).to.equal(false);
+    expect(fresh.details.poorConnection).to.equal(false);
+    expect(fresh.details.dataSaver).to.equal(false);
   });
 
   it("badDevice returns a boolean", async () => {
