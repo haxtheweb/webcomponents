@@ -1,5 +1,12 @@
 import path from 'node:path';
 import { xapiConformancePlugin } from './scripts/lib/xapi-conformance.mjs';
+import { failuresReporter } from './scripts/wtr-failures-reporter.mjs';
+
+// WTR_REPORTER=failures swaps the default per-file output for a quiet one that
+// prints only progress ticks and then every failure grouped at the end
+// (yarn test:all:failures). Unset, the runner's default reporter is unchanged.
+const quietReporters =
+  process.env.WTR_REPORTER === 'failures' ? { reporters: [failuresReporter()] } : {};
 
 // When tests are launched from an element directory (cd elements/<name> &&
 // yarn test), scope coverage collection to that element's own sources.
@@ -16,6 +23,7 @@ const isElementDir =
   relativeToRoot.split(path.sep)[0] === 'elements';
 
 export default {
+    ...quietReporters,
     concurrency: 5,
     // mocha defaults to a 2s timeout per test. Many tests await several axe
     // audits back to back (see the a11y-* and accent-card suites), and on a
