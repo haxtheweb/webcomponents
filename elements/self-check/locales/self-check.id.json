@@ -2,5 +2,10 @@
   "revealAnswer": "Tampilkan Jawaban",
   "close": "Tutup",
   "moreInformation": "Informasi lebih lanjut",
-  "hideAnswer": "Sembunyikan jawaban"
+  "hideAnswer": "Sembunyikan jawaban",
+  "directions": "Petunjuk",
+  "showDirections": "Tampilkan petunjuk",
+  "hideDirections": "Sembunyikan petunjuk",
+  "selfCheckDirections": "Pikirkan jawaban Anda terlebih dahulu, lalu tampilkan jawaban untuk membandingkan.",
+  "answerRevealed": "Jawaban ditampilkan"
 }

@@ -2,5 +2,10 @@
   "revealAnswer": "Onyesha jibu",
   "close": "Funga",
   "moreInformation": "Maelezo zaidi",
-  "hideAnswer": "Ficha jibu"
+  "hideAnswer": "Ficha jibu",
+  "directions": "Maelekezo",
+  "showDirections": "Onyesha maelekezo",
+  "hideDirections": "Ficha maelekezo",
+  "selfCheckDirections": "Fikiria jibu lako kwanza, kisha onyesha jibu ili ulinganishe.",
+  "answerRevealed": "Jibu limeonyeshwa"
 }

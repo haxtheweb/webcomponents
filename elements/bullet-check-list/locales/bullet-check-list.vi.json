@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Danh sách kiểm tra · {done} trên {total}"
+  "progress": "Đã hoàn thành {done} trên {total}",
+  "currentStep": "Bước hiện tại",
+  "checklist": "Danh sách kiểm tra",
+  "blockLabel": "Danh sách kiểm tra · {done} trên {total}",
+  "directions": "Hướng dẫn",
+  "showDirections": "Hiện hướng dẫn",
+  "hideDirections": "Ẩn hướng dẫn",
+  "checklistDirections": "Đánh dấu từng mục khi bạn hoàn thành. Các dấu tích của bạn được lưu lại để bạn có thể tiếp tục từ chỗ đã dừng.",
+  "orderedDirections": "Thực hiện các bước theo thứ tự và đánh dấu từng bước khi bạn hoàn thành. Các dấu tích của bạn được lưu lại để bạn có thể tiếp tục từ chỗ đã dừng.",
+  "complete": "Hoàn thành"
 }

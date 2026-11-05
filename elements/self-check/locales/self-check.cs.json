@@ -2,5 +2,10 @@
   "revealAnswer": "Zobrazit odpověď",
   "close": "Zavřít",
   "moreInformation": "Další informace",
-  "hideAnswer": "Skrýt odpověď"
+  "hideAnswer": "Skrýt odpověď",
+  "directions": "Pokyny",
+  "showDirections": "Zobrazit pokyny",
+  "hideDirections": "Skrýt pokyny",
+  "selfCheckDirections": "Nejprve si promyslete svou odpověď, pak si zobrazte odpověď a porovnejte.",
+  "answerRevealed": "Odpověď zobrazena"
 }

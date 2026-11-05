@@ -2,5 +2,10 @@
   "revealAnswer": "เฉลยคำตอบ",
   "close": "ปิด",
   "moreInformation": "ข้อมูลเพิ่มเติม",
-  "hideAnswer": "ซ่อนคำตอบ"
+  "hideAnswer": "ซ่อนคำตอบ",
+  "directions": "คำชี้แจง",
+  "showDirections": "แสดงคำชี้แจง",
+  "hideDirections": "ซ่อนคำชี้แจง",
+  "selfCheckDirections": "ลองคิดคำตอบของคุณก่อน แล้วจึงเฉลยคำตอบเพื่อเปรียบเทียบ",
+  "answerRevealed": "เฉลยคำตอบแล้ว"
 }

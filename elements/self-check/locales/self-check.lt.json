@@ -2,5 +2,10 @@
   "revealAnswer": "Rodyti atsakymą",
   "close": "Uždaryti",
   "moreInformation": "Daugiau informacijos",
-  "hideAnswer": "Slėpti atsakymą"
+  "hideAnswer": "Slėpti atsakymą",
+  "directions": "Nurodymai",
+  "showDirections": "Rodyti nurodymus",
+  "hideDirections": "Slėpti nurodymus",
+  "selfCheckDirections": "Pirmiausia apgalvokite savo atsakymą, tada parodykite atsakymą ir palyginkite.",
+  "answerRevealed": "Atsakymas parodytas"
 }

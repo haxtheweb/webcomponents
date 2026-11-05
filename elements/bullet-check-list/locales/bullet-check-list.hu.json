@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Ellenőrzőlista · {done} / {total}"
+  "progress": "{done} / {total} kész",
+  "currentStep": "Aktuális lépés",
+  "checklist": "Ellenőrzőlista",
+  "blockLabel": "Ellenőrzőlista · {done} / {total}",
+  "directions": "Útmutató",
+  "showDirections": "Útmutató megjelenítése",
+  "hideDirections": "Útmutató elrejtése",
+  "checklistDirections": "Pipáld ki az egyes elemeket, amint végzel velük. A pipáid mentésre kerülnek, így ott folytathatod, ahol abbahagytad.",
+  "orderedDirections": "Haladj végig a lépéseken sorrendben, és pipáld ki mindegyiket, amint végzel vele. A pipáid mentésre kerülnek, így ott folytathatod, ahol abbahagytad.",
+  "complete": "Kész"
 }

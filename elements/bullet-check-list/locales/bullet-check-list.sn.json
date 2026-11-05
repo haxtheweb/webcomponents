@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Rondedzero yekutarisa · {done} pa{total}"
+  "progress": "{done} pa{total} zvapera",
+  "currentStep": "Nhanho iripo",
+  "checklist": "Rondedzero yekutarisa",
+  "blockLabel": "Rondedzero yekutarisa · {done} pa{total}",
+  "directions": "Mirairo",
+  "showDirections": "Ratidza mirayiridzo",
+  "hideDirections": "Vanza mirayiridzo",
+  "checklistDirections": "Maka chinhu chimwe nechimwe paunongochipedza. Mamaki ako anochengetwa kuti ugone kuenderera kubva pawakamira.",
+  "orderedDirections": "Tevedza nhanho nekurongeka uye maka imwe neimwe paunongoipedza. Mamaki ako anochengetwa kuti ugone kuenderera kubva pawakamira.",
+  "complete": "Zvapera"
 }

@@ -2,5 +2,10 @@
   "revealAnswer": "Kutichiyta rikuchiy",
   "close": "Wichqay",
   "moreInformation": "Astawan willakuy",
-  "hideAnswer": "Kutichiyta pakay"
+  "hideAnswer": "Kutichiyta pakay",
+  "directions": "Pusaykuna",
+  "showDirections": "Kamachiykunata rikuchiy",
+  "hideDirections": "Kamachiykunata pakay",
+  "selfCheckDirections": "Ñawpaqta kutichiyniykita yuyaykuy, chaymanta kutichiyta rikuchiy tupachinaykipaq.",
+  "answerRevealed": "Kutichiy rikuchisqa"
 }

@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Lista di cuntrollu · {done} di {total}"
+  "progress": "{done} di {total} compii",
+  "currentStep": "Passu attuale",
+  "checklist": "Lista di cuntrollu",
+  "blockLabel": "Lista di cuntrollu · {done} di {total}",
+  "directions": "Indicazioni",
+  "showDirections": "Mustrà l'istruzzioni",
+  "hideDirections": "Piattà l'istruzzioni",
+  "checklistDirections": "Marca ogni elementu quandu u finisci. I to segni sò cunservati per pudè ripiglià induve tù ti sì firmatu.",
+  "orderedDirections": "Seguita i passi in ordine è marca ognunu quandu u finisci. I to segni sò cunservati per pudè ripiglià induve tù ti sì firmatu.",
+  "complete": "Compiu"
 }

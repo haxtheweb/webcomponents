@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Kontrol listesi · {done} / {total}"
+  "progress": "{done} / {total} tamamlandı",
+  "currentStep": "Geçerli adım",
+  "checklist": "Kontrol listesi",
+  "blockLabel": "Kontrol listesi · {done} / {total}",
+  "directions": "Yönergeler",
+  "showDirections": "Yönergeleri göster",
+  "hideDirections": "Yönergeleri gizle",
+  "checklistDirections": "Her maddeyi bitirdikçe işaretleyin. İşaretleriniz saklanır, böylece kaldığınız yerden devam edebilirsiniz.",
+  "orderedDirections": "Adımları sırayla izleyin ve her birini bitirdikçe işaretleyin. İşaretleriniz saklanır, böylece kaldığınız yerden devam edebilirsiniz.",
+  "complete": "Tamamlandı"
 }

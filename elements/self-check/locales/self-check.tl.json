@@ -2,5 +2,10 @@
   "revealAnswer": "Ipakita ang Sagot",
   "close": "Isara",
   "moreInformation": "Karagdagang impormasyon",
-  "hideAnswer": "Itago ang sagot"
+  "hideAnswer": "Itago ang sagot",
+  "directions": "Mga Direksyon",
+  "showDirections": "Ipakita ang mga direksyon",
+  "hideDirections": "Itago ang mga direksyon",
+  "selfCheckDirections": "Isipin muna ang iyong sagot, pagkatapos ay ipakita ang sagot para maihambing.",
+  "answerRevealed": "Ipinakita ang sagot"
 }

@@ -1,3 +1,12 @@
 {
-  "blockLabel": "ማረጋገጫ ዝርዝር · {done} ከ {total}"
+  "progress": "{done} ከ {total} ተጠናቋል",
+  "currentStep": "የአሁኑ ደረጃ",
+  "checklist": "ማረጋገጫ ዝርዝር",
+  "blockLabel": "ማረጋገጫ ዝርዝር · {done} ከ {total}",
+  "directions": "መመሪያዎች",
+  "showDirections": "መመሪያዎችን አሳይ",
+  "hideDirections": "መመሪያዎችን ደብቅ",
+  "checklistDirections": "እያንዳንዱን ንጥል ሲጨርሱ ምልክት ያድርጉበት። ካቆሙበት እንዲቀጥሉ ምልክቶችዎ ይቀመጣሉ።",
+  "orderedDirections": "ደረጃዎቹን በቅደም ተከተል ይከተሉ፤ እያንዳንዱን ሲጨርሱ ምልክት ያድርጉበት። ካቆሙበት እንዲቀጥሉ ምልክቶችዎ ይቀመጣሉ።",
+  "complete": "ተጠናቋል"
 }

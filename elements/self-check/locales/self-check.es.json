@@ -2,5 +2,10 @@
   "revealAnswer": "Revelar respuesta",
   "close": "Cerca",
   "moreInformation": "Más detalles",
-  "hideAnswer": "Ocultar respuesta"
+  "hideAnswer": "Ocultar respuesta",
+  "directions": "Instrucciones",
+  "showDirections": "Mostrar instrucciones",
+  "hideDirections": "Ocultar instrucciones",
+  "selfCheckDirections": "Piensa primero tu respuesta y luego revela la respuesta para comparar.",
+  "answerRevealed": "Respuesta revelada"
 }

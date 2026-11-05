@@ -2,5 +2,10 @@
   "revealAnswer": "Whakaatu Whakautu",
   "close": "Kati",
   "moreInformation": "Ētahi atu mōhiohio",
-  "hideAnswer": "Huna i te whakautu"
+  "hideAnswer": "Huna i te whakautu",
+  "directions": "Ngā tohutohu",
+  "showDirections": "Whakaatu tohutohu",
+  "hideDirections": "Huna i ngā tohutohu",
+  "selfCheckDirections": "Whakaarohia tō whakautu i te tuatahi, kātahi ka whakaatu i te whakautu hei whakatairite.",
+  "answerRevealed": "Kua whakaaturia te whakautu"
 }

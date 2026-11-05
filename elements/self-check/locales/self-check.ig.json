@@ -2,5 +2,10 @@
   "revealAnswer": "Gosi azịza",
   "close": "Mechie",
   "moreInformation": "Ozi ndị ọzọ",
-  "hideAnswer": "Zoo azịza"
+  "hideAnswer": "Zoo azịza",
+  "directions": "Ntuziaka",
+  "showDirections": "Gosi ntụziaka",
+  "hideDirections": "Zoo ntụziaka",
+  "selfCheckDirections": "Buru ụzọ chee azịza gị, wee gosi azịza ka i jiri tụnyere ya.",
+  "answerRevealed": "Egosila azịza"
 }

@@ -2,5 +2,10 @@
   "revealAnswer": "جواب وکھاؤ",
   "close": "بند کرو",
   "moreInformation": "ہور معلومات",
-  "hideAnswer": "جواب لکاؤ"
+  "hideAnswer": "جواب لکاؤ",
+  "directions": "ہدایتاں",
+  "showDirections": "ہدایتاں ویکھو",
+  "hideDirections": "ہدایتاں لکاؤ",
+  "selfCheckDirections": "پہلاں اپنے جواب بارے سوچو، فیر موازنہ کرن لئی جواب وکھاؤ۔",
+  "answerRevealed": "جواب وکھا دتا گیا"
 }

@@ -2,5 +2,10 @@
   "revealAnswer": "Veza impendulo",
   "close": "Vala",
   "moreInformation": "Ulwazi olwengeziwe",
-  "hideAnswer": "Fihla impendulo"
+  "hideAnswer": "Fihla impendulo",
+  "directions": "Iziqondiso",
+  "showDirections": "Bonisa iziqondiso",
+  "hideDirections": "Fihla iziqondiso",
+  "selfCheckDirections": "Qala ucabange ngempendulo yakho, bese uveza impendulo ukuze uqhathanise.",
+  "answerRevealed": "Impendulo ivezwe"
 }

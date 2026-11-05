@@ -2,5 +2,10 @@
   "revealAnswer": "Cevabı göster",
   "close": "Kapat",
   "moreInformation": "Daha fazla bilgi",
-  "hideAnswer": "Yanıtı gizle"
+  "hideAnswer": "Yanıtı gizle",
+  "directions": "Yönergeler",
+  "showDirections": "Yönergeleri göster",
+  "hideDirections": "Yönergeleri gizle",
+  "selfCheckDirections": "Önce cevabınızı düşünün, ardından karşılaştırmak için cevabı gösterin.",
+  "answerRevealed": "Cevap gösterildi"
 }

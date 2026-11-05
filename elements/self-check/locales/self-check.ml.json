@@ -2,5 +2,10 @@
   "revealAnswer": "ഉത്തരം കാണിക്കുക",
   "close": "അടയ്ക്കുക",
   "moreInformation": "കൂടുതൽ വിവരങ്ങൾ",
-  "hideAnswer": "ഉത്തരം മറയ്ക്കുക"
+  "hideAnswer": "ഉത്തരം മറയ്ക്കുക",
+  "directions": "നിർദ്ദേശങ്ങൾ",
+  "showDirections": "നിർദ്ദേശങ്ങൾ കാണിക്കുക",
+  "hideDirections": "നിർദ്ദേശങ്ങൾ മറയ്ക്കുക",
+  "selfCheckDirections": "ആദ്യം നിങ്ങളുടെ ഉത്തരം ആലോചിക്കുക, തുടർന്ന് താരതമ്യം ചെയ്യാൻ ഉത്തരം കാണിക്കുക.",
+  "answerRevealed": "ഉത്തരം കാണിച്ചു"
 }

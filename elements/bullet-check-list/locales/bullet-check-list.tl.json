@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Checklist · {done} sa {total}"
+  "progress": "{done} sa {total} ang kumpleto",
+  "currentStep": "Kasalukuyang hakbang",
+  "checklist": "Checklist",
+  "blockLabel": "Checklist · {done} sa {total}",
+  "directions": "Mga Direksyon",
+  "showDirections": "Ipakita ang mga direksyon",
+  "hideDirections": "Itago ang mga direksyon",
+  "checklistDirections": "Lagyan ng tsek ang bawat item kapag natapos mo ito. Nananatili ang iyong mga tsek para maipagpatuloy mo kung saan ka huminto.",
+  "orderedDirections": "Sundin ang mga hakbang nang sunud-sunod at lagyan ng tsek ang bawat isa kapag natapos mo ito. Nananatili ang iyong mga tsek para maipagpatuloy mo kung saan ka huminto.",
+  "complete": "Kumpleto"
 }

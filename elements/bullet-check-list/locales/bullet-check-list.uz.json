@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Tekshiruv roʻyxati · {done} / {total}"
+  "progress": "{total} tadan {done} tasi bajarildi",
+  "currentStep": "Joriy qadam",
+  "checklist": "Tekshiruv roʻyxati",
+  "blockLabel": "Tekshiruv roʻyxati · {done} / {total}",
+  "directions": "Koʻrsatmalar",
+  "showDirections": "Ko‘rsatmalarni ko‘rsatish",
+  "hideDirections": "Ko‘rsatmalarni yashirish",
+  "checklistDirections": "Har bir bandni tugatganingizda belgilang. Belgilaringiz saqlanadi, shuning uchun to‘xtagan joyingizdan davom ettirishingiz mumkin.",
+  "orderedDirections": "Qadamlarni tartib bilan bajaring va har birini tugatganingizda belgilang. Belgilaringiz saqlanadi, shuning uchun to‘xtagan joyingizdan davom ettirishingiz mumkin.",
+  "complete": "Bajarildi"
 }

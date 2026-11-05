@@ -2,5 +2,10 @@
   "revealAnswer": "Shfaq përgjigjen",
   "close": "Mbyll",
   "moreInformation": "Më shumë informacion",
-  "hideAnswer": "Fshih përgjigjen"
+  "hideAnswer": "Fshih përgjigjen",
+  "directions": "Udhëzimet",
+  "showDirections": "Shfaq udhëzimet",
+  "hideDirections": "Fshih udhëzimet",
+  "selfCheckDirections": "Mendo fillimisht përgjigjen tënde, pastaj shfaq përgjigjen për ta krahasuar.",
+  "answerRevealed": "Përgjigjja u shfaq"
 }

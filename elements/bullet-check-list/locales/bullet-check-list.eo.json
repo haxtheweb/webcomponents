@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Kontrolalisto · {done} el {total}"
+  "progress": "{done} el {total} kompletaj",
+  "currentStep": "Nuna paŝo",
+  "checklist": "Kontrolalisto",
+  "blockLabel": "Kontrolalisto · {done} el {total}",
+  "directions": "Instrukcioj",
+  "showDirections": "Montri la instrukciojn",
+  "hideDirections": "Kaŝi la instrukciojn",
+  "checklistDirections": "Marku ĉiun eron kiam vi finas ĝin. Viaj markoj estas konservataj, por ke vi povu daŭrigi de kie vi haltis.",
+  "orderedDirections": "Plenumu la paŝojn laŭorde kaj marku ĉiun kiam vi finas ĝin. Viaj markoj estas konservataj, por ke vi povu daŭrigi de kie vi haltis.",
+  "complete": "Kompleta"
 }

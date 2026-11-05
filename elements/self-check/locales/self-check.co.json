@@ -2,5 +2,10 @@
   "revealAnswer": "Palisà a risposta",
   "close": "Chjode",
   "moreInformation": "Più infurmazioni",
-  "hideAnswer": "Piattà a risposta"
+  "hideAnswer": "Piattà a risposta",
+  "directions": "Indicazioni",
+  "showDirections": "Mustrà l'istruzzioni",
+  "hideDirections": "Piattà l'istruzzioni",
+  "selfCheckDirections": "Pensa prima à a to risposta, po palisà a risposta per paragunà.",
+  "answerRevealed": "Risposta palisata"
 }

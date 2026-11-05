@@ -2,5 +2,10 @@
   "revealAnswer": "Vís svar",
   "close": "Lat aftur",
   "moreInformation": "Meira kunning",
-  "hideAnswer": "Fjal svar"
+  "hideAnswer": "Fjal svar",
+  "directions": "Leiðbeiningar",
+  "showDirections": "Vís vegleiðing",
+  "hideDirections": "Fjal vegleiðing",
+  "selfCheckDirections": "Hugsa fyrst um títt svar, vís so svarið fyri at samanbera.",
+  "answerRevealed": "Svarið víst"
 }

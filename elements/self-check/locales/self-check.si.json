@@ -2,5 +2,10 @@
   "revealAnswer": "පිළිතුර හෙළි කරන්න",
   "close": "වසන්න",
   "moreInformation": "වැඩි විස්තර",
-  "hideAnswer": "පිළිතුර සඟවන්න"
+  "hideAnswer": "පිළිතුර සඟවන්න",
+  "directions": "උපදෙස්",
+  "showDirections": "උපදෙස් පෙන්වන්න",
+  "hideDirections": "උපදෙස් සඟවන්න",
+  "selfCheckDirections": "පළමුව ඔබේ පිළිතුර ගැන සිතන්න, ඉන්පසු සංසන්දනය කිරීමට පිළිතුර හෙළි කරන්න.",
+  "answerRevealed": "පිළිතුර හෙළි කරන ලදී"
 }

@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Yoxlama siyahısı · {done} / {total}"
+  "progress": "{done} / {total} tamamlandı",
+  "currentStep": "Cari addım",
+  "checklist": "Yoxlama siyahısı",
+  "blockLabel": "Yoxlama siyahısı · {done} / {total}",
+  "directions": "Təlimatlar",
+  "showDirections": "Təlimatları göstər",
+  "hideDirections": "Təlimatları gizlət",
+  "checklistDirections": "Hər bəndi bitirdikcə işarələyin. İşarələriniz saxlanılır ki, qaldığınız yerdən davam edə biləsiniz.",
+  "orderedDirections": "Addımları ardıcıllıqla yerinə yetirin və hər birini bitirdikcə işarələyin. İşarələriniz saxlanılır ki, qaldığınız yerdən davam edə biləsiniz.",
+  "complete": "Tamamlandı"
 }

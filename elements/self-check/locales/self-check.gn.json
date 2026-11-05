@@ -2,5 +2,10 @@
   "revealAnswer": "Hechauka mbohovái",
   "close": "Mboty",
   "moreInformation": "Maranduve",
-  "hideAnswer": "Emokañy mbohovái"
+  "hideAnswer": "Emokañy mbohovái",
+  "directions": "Mbo'e",
+  "showDirections": "Ehechauka tapykuéra",
+  "hideDirections": "Emokañy tapykuéra",
+  "selfCheckDirections": "Epensa raẽ ne mbohovái rehe, upéi ehechauka mbohovái rembojoja hag̃ua.",
+  "answerRevealed": "Mbohovái ojehechaukáma"
 }

@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Uhlu lokuhlola · {done} kwangu-{total}"
+  "progress": "{done} kwangu-{total} kuqediwe",
+  "currentStep": "Isinyathelo samanje",
+  "checklist": "Uhlu lokuhlola",
+  "blockLabel": "Uhlu lokuhlola · {done} kwangu-{total}",
+  "directions": "Iziqondiso",
+  "showDirections": "Bonisa iziqondiso",
+  "hideDirections": "Fihla iziqondiso",
+  "checklistDirections": "Maka into ngayinye uma uyiqeda. Amamaki akho ayagcinwa ukuze uqhubeke lapho ugcine khona.",
+  "orderedDirections": "Landela izinyathelo ngokulandelana futhi umake ngasinye uma usiqeda. Amamaki akho ayagcinwa ukuze uqhubeke lapho ugcine khona.",
+  "complete": "Kuqediwe"
 }

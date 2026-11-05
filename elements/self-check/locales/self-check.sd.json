@@ -2,5 +2,10 @@
   "revealAnswer": "جواب ڏيکاريو",
   "close": "بند ڪريو",
   "moreInformation": "وڌيڪ معلومات",
-  "hideAnswer": "جواب لڪايو"
+  "hideAnswer": "جواب لڪايو",
+  "directions": "هدايتون",
+  "showDirections": "هدايتون ڏيکاريو",
+  "hideDirections": "هدايتون لڪايو",
+  "selfCheckDirections": "پهريان پنهنجي جواب بابت سوچيو، پوءِ ڀيٽ ڪرڻ لاءِ جواب ڏيکاريو.",
+  "answerRevealed": "جواب ڏيکاريو ويو"
 }

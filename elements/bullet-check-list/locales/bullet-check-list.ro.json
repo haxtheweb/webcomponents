@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Listă de verificare · {done} din {total}"
+  "progress": "{done} din {total} finalizate",
+  "currentStep": "Pasul curent",
+  "checklist": "Listă de verificare",
+  "blockLabel": "Listă de verificare · {done} din {total}",
+  "directions": "Instrucțiuni",
+  "showDirections": "Afișează instrucțiunile",
+  "hideDirections": "Ascunde instrucțiunile",
+  "checklistDirections": "Bifează fiecare element pe măsură ce îl termini. Bifele tale sunt păstrate, ca să poți continua de unde ai rămas.",
+  "orderedDirections": "Parcurge pașii în ordine și bifează-l pe fiecare pe măsură ce îl termini. Bifele tale sunt păstrate, ca să poți continua de unde ai rămas.",
+  "complete": "Finalizat"
 }

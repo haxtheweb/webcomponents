@@ -2,5 +2,10 @@
   "revealAnswer": "Жоопту көрсөтүү",
   "close": "Жабуу",
   "moreInformation": "Кошумча маалымат",
-  "hideAnswer": "Жоопту жашыруу"
+  "hideAnswer": "Жоопту жашыруу",
+  "directions": "Көрсөтмөлөр",
+  "showDirections": "Көрсөтмөлөрдү көрсөтүү",
+  "hideDirections": "Көрсөтмөлөрдү жашыруу",
+  "selfCheckDirections": "Адегенде жообуңузду ойлонуп көрүңүз, андан кийин салыштыруу үчүн жоопту көрсөтүңүз.",
+  "answerRevealed": "Жооп көрсөтүлдү"
 }

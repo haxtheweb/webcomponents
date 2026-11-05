@@ -2,5 +2,10 @@
   "revealAnswer": "גלה תשובה",
   "close": "קרוב",
   "moreInformation": "מידע נוסף",
-  "hideAnswer": "הסתרת התשובה"
+  "hideAnswer": "הסתרת התשובה",
+  "directions": "הוראות",
+  "showDirections": "הצגת ההנחיות",
+  "hideDirections": "הסתרת ההנחיות",
+  "selfCheckDirections": "חשבו קודם על התשובה שלכם, ואז גלו את התשובה כדי להשוות.",
+  "answerRevealed": "התשובה נחשפה"
 }

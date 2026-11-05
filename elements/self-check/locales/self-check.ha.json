@@ -2,5 +2,10 @@
   "revealAnswer": "Bayyana amsa",
   "close": "Rufe",
   "moreInformation": "Ƙarin bayani",
-  "hideAnswer": "Ɓoye amsa"
+  "hideAnswer": "Ɓoye amsa",
+  "directions": "Umarni",
+  "showDirections": "Nuna umarni",
+  "hideDirections": "Ɓoye umarni",
+  "selfCheckDirections": "Ka fara tunanin amsarka, sannan ka bayyana amsa don kwatantawa.",
+  "answerRevealed": "An bayyana amsa"
 }

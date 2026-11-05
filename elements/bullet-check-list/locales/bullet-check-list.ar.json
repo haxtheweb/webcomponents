@@ -1,3 +1,12 @@
 {
-  "blockLabel": "قائمة التحقق · {done} من {total}"
+  "progress": "اكتمل {done} من {total}",
+  "currentStep": "الخطوة الحالية",
+  "checklist": "قائمة التحقق",
+  "blockLabel": "قائمة التحقق · {done} من {total}",
+  "directions": "التعليمات",
+  "showDirections": "عرض التعليمات",
+  "hideDirections": "إخفاء التعليمات",
+  "checklistDirections": "ضع علامة على كل عنصر عند إنهائه. يتم حفظ علاماتك لتتمكن من المتابعة من حيث توقفت.",
+  "orderedDirections": "اتبع الخطوات بالترتيب وضع علامة على كل خطوة عند إنهائها. يتم حفظ علاماتك لتتمكن من المتابعة من حيث توقفت.",
+  "complete": "مكتمل"
 }

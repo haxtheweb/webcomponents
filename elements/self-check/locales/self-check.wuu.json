@@ -2,5 +2,10 @@
   "revealAnswer": "显示答案",
   "close": "关脱",
   "moreInformation": "更多信息",
-  "hideAnswer": "隐藏答案"
+  "hideAnswer": "隐藏答案",
+  "directions": "说明",
+  "showDirections": "显示说明",
+  "hideDirections": "隐藏说明",
+  "selfCheckDirections": "先想想侬个答案，再显示答案来比一比。",
+  "answerRevealed": "答案已经显示"
 }

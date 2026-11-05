@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Kontrolní seznam · {done} z {total}"
+  "progress": "Dokončeno {done} z {total}",
+  "currentStep": "Aktuální krok",
+  "checklist": "Kontrolní seznam",
+  "blockLabel": "Kontrolní seznam · {done} z {total}",
+  "directions": "Pokyny",
+  "showDirections": "Zobrazit pokyny",
+  "hideDirections": "Skrýt pokyny",
+  "checklistDirections": "Odškrtněte každou položku, jakmile ji dokončíte. Vaše zaškrtnutí se ukládají, takže můžete pokračovat tam, kde jste skončili.",
+  "orderedDirections": "Projděte kroky popořadě a odškrtněte každý, jakmile ho dokončíte. Vaše zaškrtnutí se ukládají, takže můžete pokračovat tam, kde jste skončili.",
+  "complete": "Dokončeno"
 }

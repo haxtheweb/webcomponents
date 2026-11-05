@@ -2,5 +2,10 @@
   "revealAnswer": "Жауапты көрсету",
   "close": "Жабу",
   "moreInformation": "Қосымша ақпарат",
-  "hideAnswer": "Жауапты жасыру"
+  "hideAnswer": "Жауапты жасыру",
+  "directions": "Нұсқаулар",
+  "showDirections": "Нұсқауларды көрсету",
+  "hideDirections": "Нұсқауларды жасыру",
+  "selfCheckDirections": "Алдымен жауабыңызды ойлаңыз, содан кейін салыстыру үшін жауапты көрсетіңіз.",
+  "answerRevealed": "Жауап көрсетілді"
 }
