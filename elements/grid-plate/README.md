@@ -40,6 +40,7 @@ import '@haxtheweb/grid-plate/grid-plate.js';
 | `2-1-1` | 3 | Wide, narrow, narrow (50/25/25) |
 | `1-2-1` | 3 | Narrow, wide, narrow (25/50/25) |
 | `1-1-2` | 3 | Narrow, narrow, wide (25/25/50) |
+| `2-1-2` | 3 | Wide, narrow, wide (40/20/40) |
 | `1-1-1-1` | 4 | Equal width (25 each) |
 
 Legacy layout names are still accepted and map to the keys above: `12`→`1`, `6/6`→`1-1`, `8/4`→`2-1`, `4/8`→`1-2`, `4/4/4`→`1-1-1`, `3/3/3/3`→`1-1-1-1`.
