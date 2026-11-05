@@ -1,7 +1,6 @@
 import {
   activityId,
   buildStatement,
-  responseText,
   statementFromEngagement,
   XAPI_ACTIVITY_TYPES,
   XAPI_EXTENSIONS,
@@ -12,28 +11,27 @@ import {
 // Hover, focus, mouse and key up/down events still fire for the page but
 // carry no statement, so they never flood a learning record store.
 export const XAPI_RECORDED_TRACKS = ["visibility", "click", "keypress"];
-// how long after a user-engagement statement from an element a
-// question-element-state from the same element is treated as the same check
-const SAME_CHECK_MS = 2000;
 
 /**
  * Broker user actions in a normalized way which is abstracted from xAPI
  * but yet mirrors much of that structure and data needs.
  *
- * Normalization: listen() (once per page) turns every `user-engagement`,
- * `question-element-state` and `learner-progress-import` event that reaches
- * the window into one xAPI statement (see ./xapi.js) and hands it to every
- * subscriber registered with subscribe(fn). Events that already carry
- * `detail.statement` keep it; older or third party events are converted from
- * their loose fields. A question-element-state that follows a statement from
- * the same element (the same answer check) is not sent twice.
+ * Normalization: listen() (once per page) turns every `user-engagement`
+ * and `learner-progress-import` event that reaches the window into one xAPI
+ * statement (see ./xapi.js) and hands it to every subscriber registered
+ * with subscribe(fn). Events that already carry `detail.statement` keep it;
+ * older or third party events are converted from their loose fields, and
+ * events marked `xapi: false` are not learner records.
+ *
+ * `question-element-state` is not a learner record source: every question
+ * element sends its own answered statement on user-engagement, and the state
+ * event (still fired for question-stack and page logic) only repeated it.
  * Subscribers get ({ statement, element, eventName, detail, imported }).
  */
 export class UserActionBroker {
   constructor() {
     this._subscribers = new Set();
     this._listening = null;
-    this._lastFromElement = new WeakMap();
   }
   /**
    * Register a function called with each normalized statement. Returns a
@@ -58,11 +56,6 @@ export class UserActionBroker {
     target.addEventListener(
       "user-engagement",
       (e) => this._handle("user-engagement", e),
-      opts,
-    );
-    target.addEventListener(
-      "question-element-state",
-      (e) => this._handle("question-element-state", e),
       opts,
     );
     target.addEventListener(
@@ -107,47 +100,14 @@ export class UserActionBroker {
     });
   }
   /**
-   * One xAPI statement for an event detail, or null when it duplicates one
-   * already sent (a question-element-state for the same answer check).
-   * @param {string} eventName
+   * One xAPI statement for an event detail, or null when it is not a
+   * learner record.
+   * @param {string} _eventName
    * @param {Object} detail
    * @param {HTMLElement} [element]
    */
-  normalize(eventName, detail, element) {
+  normalize(_eventName, detail, element) {
     const d = detail && typeof detail === "object" ? detail : {};
-    const now = Date.now();
-    if (eventName === "question-element-state") {
-      const last = element ? this._lastFromElement.get(element) : null;
-      if (last && now - last < SAME_CHECK_MS) {
-        return null;
-      }
-      const max = Number(d.maxAttempts) || 0;
-      const attempts = Number(d.attempts) || 0;
-      return buildStatement({
-        verb: "answered",
-        object: {
-          id: element ? activityId(element) : undefined,
-          name: d.question || d.quizName,
-          interactionType: "other",
-        },
-        result: {
-          success: !!d.correct,
-          completion: !!d.correct || (max > 0 && attempts >= max),
-          response: responseText(d.guess),
-          score: { raw: d.correct ? 1 : 0, max: 1, min: 0 },
-          extensions: {
-            [XAPI_EXTENSIONS.attempts]: attempts,
-            [XAPI_EXTENSIONS.maxAttempts]: max,
-          },
-        },
-        context: {
-          extensions: d.tag ? { [XAPI_EXTENSIONS.element]: d.tag } : undefined,
-        },
-      });
-    }
-    if (element) {
-      this._lastFromElement.set(element, now);
-    }
     if (d.statement && typeof d.statement === "object" && d.statement.verb) {
       return d.statement;
     }
@@ -157,7 +117,6 @@ export class UserActionBroker {
     }
     return statementFromEngagement(d, element);
   }
-  /**
   /**
    * See if this is a valid event
    */
