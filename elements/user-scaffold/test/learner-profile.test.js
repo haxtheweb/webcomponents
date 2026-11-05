@@ -137,6 +137,16 @@ describe("user-scaffold learner profile", () => {
     expect(site.pages.p1.activities).to.deep.equal(["q1"]);
   });
 
+  it("never records an activity id that would reach Object.prototype", () => {
+    for (const bad of ["__proto__", "constructor", "prototype"]) {
+      expect(
+        us.recordStatement(SITE, answered(bad, true), { page: "p1" }),
+      ).to.equal(null);
+    }
+    expect({}.responseText).to.equal(undefined);
+    expect({}.count).to.equal(undefined);
+  });
+
   it("ignores an import for an activity that already has data", () => {
     us.recordStatement(SITE, answered("q1", true), { page: "p1" });
     expect(

@@ -4,8 +4,8 @@ import { autorun, toJS } from "mobx";
 import {
   localStorageGet,
   localStorageSet,
-  safeNavigateHref,
-} from "@haxtheweb/utils/utils.js";
+} from "@haxtheweb/utils/lib/storage.js";
+import { safeNavigateHref } from "@haxtheweb/utils/lib/sanitize.js";
 
 const HAXCMSRememberRoute = function (SuperClass) {
   return class extends HAXCMSI18NMixin(SuperClass) {

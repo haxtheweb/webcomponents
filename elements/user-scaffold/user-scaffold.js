@@ -2,7 +2,7 @@
  * Copyright 2023
  * @license , see License.md for full text.
  */
-import { validURL } from "@haxtheweb/utils/utils.js";
+import { validURL } from "@haxtheweb/utils/lib/url.js";
 import {
   LocalStorageMemoryAdapter,
   IndexedDBStatementAdapter,
@@ -598,6 +598,15 @@ export class UserScaffold extends HTMLElement {
     }
     const siteRec = this._site(site);
     const id = statement.object.id;
+    // activity ids key a plain object; never let one reach its prototype
+    if (
+      typeof id !== "string" ||
+      id === "__proto__" ||
+      id === "constructor" ||
+      id === "prototype"
+    ) {
+      return null;
+    }
     if (meta.legacyId) {
       this._migrateActivity(siteRec, meta.legacyId, id);
     }

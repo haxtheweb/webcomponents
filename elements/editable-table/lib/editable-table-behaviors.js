@@ -6,7 +6,7 @@ import { css } from "lit";
 import {
   sanitizeHTMLForImport,
   sanitizeHTMLString,
-} from "@haxtheweb/utils/utils.js";
+} from "@haxtheweb/utils/lib/sanitize.js";
 /**
  * `editable-table-behaviors`
  * A set of common behaviors for editable-table web components.
@@ -796,14 +796,13 @@ export const displayBehaviors = function (SuperClass) {
       const data = this.getTableCSV();
       let copied = false;
       try {
-        /* eslint-disable baseline-js/use-baseline -- writeText works in Chrome, Firefox and Safari; failure is caught; textarea fallback below */
         if (
           globalThis.navigator &&
           globalThis.navigator.clipboard &&
           globalThis.navigator.clipboard.writeText
         ) {
           await globalThis.navigator.clipboard.writeText(data);
-          /* eslint-enable baseline-js/use-baseline */
+
           copied = true;
         }
       } catch {
