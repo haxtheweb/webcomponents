@@ -1,6 +1,7 @@
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { DDDBlockStyles } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
+import { DDDStatusTokens } from "@haxtheweb/d-d-d/lib/DDDStatusTokens.js";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-toast/simple-toast.js";
@@ -8,10 +9,31 @@ import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "./lib/flash-card-answer-box.js";
 import "./lib/flash-card-prompt-img.js";
+import {
+  activityId,
+  buildStatement,
+  XAPI_EXTENSIONS,
+} from "@haxtheweb/user-action/lib/xapi.js";
 
 export class FlashCard extends I18NMixin(SchemaBehaviors(DDD)) {
   static get tag() {
     return "flash-card";
+  }
+
+  /**
+   * xAPI statements this element sends (see scripts/generate-xapi-vocabulary.mjs)
+   */
+  static get xapiVocabulary() {
+    return {
+      tag: "flash-card",
+      event: "user-engagement",
+      verbs: ["answered"],
+      objectType: "http://adlnet.gov/expapi/activities/cmi.interaction",
+      interactionType: "fill-in",
+      result: ["success", "completion", "response", "score"],
+      countsTowardCompletion: true,
+      done: "answered correctly",
+    };
   }
 
   // HTMLElement life-cycle, built in; use this for setting defaults
@@ -68,6 +90,7 @@ export class FlashCard extends I18NMixin(SchemaBehaviors(DDD)) {
     return [
       super.styles,
       DDDBlockStyles,
+      DDDStatusTokens,
       css`
         /* the host is the block frame (same treatment as the shared
            .ddd-block): 1px rounded frame on the page colour, then the
@@ -87,7 +110,7 @@ export class FlashCard extends I18NMixin(SchemaBehaviors(DDD)) {
           min-height: 155px;
           padding: 0;
           margin: var(--ddd-spacing-4);
-          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
+          transition: border-color var(--ddd-duration-normal) ease-in-out;
           /* the frame sits on the page colour (no grey slab in dark mode) */
           background-color: transparent;
           color: light-dark(
@@ -110,41 +133,14 @@ export class FlashCard extends I18NMixin(SchemaBehaviors(DDD)) {
           padding: var(--ddd-spacing-4);
         }
 
-        /* Status-based styling for correct/incorrect feedback */
+        /* the result shows in the footer action bar and on the image, like
+           the other question types; the frame only takes the status line */
         :host([status="correct"]) {
-          outline: 3px solid var(--ddd-theme-default-opportunityGreen);
-          outline-offset: -3px;
-          animation: correctPulse var(--ddd-duration-slow, 0.6s) ease-in-out;
+          border-color: var(--ddd-status-correct-signal);
         }
-
         :host([status="incorrect"]) {
-          outline: 3px dotted var(--ddd-theme-default-wonderPurple);
-          outline-offset: -3px;
-          animation: incorrectShake var(--ddd-duration-normal, 0.3s) ease-in-out;
-        }
-
-        /* Animations for feedback */
-        @keyframes correctPulse {
-          0%,
-          100% {
-            transform: scale(1);
-          }
-          50% {
-            transform: scale(1.02);
-          }
-        }
-
-        @keyframes incorrectShake {
-          0%,
-          100% {
-            transform: translateX(0);
-          }
-          25% {
-            transform: translateX(-5px);
-          }
-          75% {
-            transform: translateX(5px);
-          }
+          border-color: var(--ddd-status-incorrect-signal);
+          border-style: var(--ddd-status-incorrect-line);
         }
 
         p {
@@ -159,12 +155,16 @@ export class FlashCard extends I18NMixin(SchemaBehaviors(DDD)) {
           display: flex;
           flex-direction: column;
           align-items: center;
-          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
         }
 
         flash-card-image-prompt {
           align-self: center;
           margin-bottom: var(--ddd-spacing-4);
+        }
+        /* an author picked DDD primary colours the header chip */
+        :host([data-primary]) {
+          --ddd-block-chip-background: var(--ddd-theme-primary);
+          --ddd-block-chip-color: var(--ddd-theme-bgContrast, white);
         }
 
         flash-card-answer-box {
@@ -178,6 +178,52 @@ export class FlashCard extends I18NMixin(SchemaBehaviors(DDD)) {
   statusChanged(e) {
     this.status = e.detail;
     this.provideFeedback();
+    if (this.status === "correct" || this.status === "incorrect") {
+      this._announceAnswer(e);
+    }
+  }
+
+  // learner data for a checked card (user-engagement with an xAPI statement)
+  _announceAnswer(e) {
+    const box = e && e.target;
+    const correct = this.status === "correct";
+    const response = box && box.userAnswer ? String(box.userAnswer) : "";
+    this.dispatchEvent(
+      new CustomEvent("user-engagement", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: {
+          activityDisplay: "answered",
+          objectName: this.textContent.trim().slice(0, 120),
+          resultSuccess: correct,
+          statement: buildStatement({
+            verb: "answered",
+            object: {
+              id: activityId(this),
+              name: this.textContent.trim().slice(0, 120),
+              interactionType: "fill-in",
+            },
+            result: {
+              success: correct,
+              completion: correct,
+              response,
+              score: { raw: correct ? 1 : 0, max: 1, min: 0 },
+            },
+            context: {
+              extensions: { [XAPI_EXTENSIONS.element]: "flash-card" },
+            },
+          }),
+        },
+      }),
+    );
+  }
+
+  /**
+   * Author content that identifies this card for its xAPI activity id
+   */
+  xapiFingerprint() {
+    return this.textContent.trim();
   }
 
   // Provide visual and audio feedback similar to QuestionElement

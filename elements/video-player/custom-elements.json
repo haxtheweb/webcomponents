@@ -41,6 +41,18 @@
               "readonly": true
             },
             {
+              "kind": "field",
+              "name": "xapiVocabulary",
+              "static": true,
+              "description": "xAPI statements this element sends (see scripts/generate-xapi-vocabulary.mjs)",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "xapiFingerprint",
+              "description": "Media source identifies this player for its xAPI activity id"
+            },
+            {
               "kind": "method",
               "name": "querySelectorAll",
               "parameters": [
@@ -351,6 +363,10 @@
               "kind": "method",
               "name": "_loadAudioDescriptionPreference",
               "description": "Load audio description preference from localStorage"
+            },
+            {
+              "kind": "method",
+              "name": "_learnerProfile"
             },
             {
               "kind": "method",

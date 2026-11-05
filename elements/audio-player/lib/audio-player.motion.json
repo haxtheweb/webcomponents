@@ -147,12 +147,12 @@
           "desc": "Title"
         },
         {
-          "name": "accent-color",
-          "desc": "Select the accent color for the…"
-        },
-        {
           "name": "track",
           "desc": "Closed captions"
+        },
+        {
+          "name": "thumbnail-src",
+          "desc": "Thumbnail image"
         }
       ],
       "active": [
@@ -193,7 +193,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "accent-color=\"blue\""
+      "s": "track=\"photo.jpg\""
     },
     {
       "type": "text",
@@ -201,7 +201,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "track=\"photo.jpg\""
+      "s": "thumbnail-src=\"photo.jpg\""
     },
     {
       "type": "text",
@@ -309,8 +309,8 @@
       "py": 408,
       "ex": 616,
       "ey": 460,
-      "label": "accent-color",
-      "sub": "any color",
+      "label": "track",
+      "sub": "upload or link",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -321,7 +321,7 @@
       "py": 408,
       "ex": 796,
       "ey": 460,
-      "label": "track",
+      "label": "thumbnail-src",
       "sub": "upload or link",
       "dir": 1,
       "in": 12.6,
@@ -344,8 +344,8 @@
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set accent color",
-      "text": "Select the accent color for the player. The URL for the captions file."
+      "title": "Set closed captions",
+      "text": "The URL for the captions file. Optional. The URL for a thumbnail/poster image."
     },
     {
       "t": 14.8,
@@ -359,7 +359,7 @@
     "line": "This can present video in a highly accessible manner regard…",
     "code": "<audio-player></audio-player>"
   },
-  "surfaceHash": "6e6375459e04",
+  "surfaceHash": "cada5d4c9b4c",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

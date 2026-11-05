@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "Sidan är opublicerad"
+  "pageIsUnpublished": "Sidan är opublicerad",
+  "progressDone": "Klart",
+  "progressInProgress": "Pågår",
+  "progressVisited": "Besökt"
 }

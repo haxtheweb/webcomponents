@@ -9,6 +9,68 @@ class TrueFalseQuestion extends QuestionElement {
   static get tag() {
     return "true-false-question";
   }
+  /**
+   * xAPI statements this element sends (see scripts/generate-xapi-vocabulary.mjs)
+   */
+  static get xapiVocabulary() {
+    return {
+      tag: "true-false-question",
+      event: "user-engagement",
+      verbs: ["answered"],
+      objectType: "http://adlnet.gov/expapi/activities/cmi.interaction",
+      interactionType: "true-false",
+      definition: ["name", "interactionType", "correctResponsesPattern"],
+      response: "true or false",
+      result: [
+        "success",
+        "completion",
+        "response",
+        "score",
+        "extensions.attempts",
+        "extensions.max-attempts",
+      ],
+      countsTowardCompletion: true,
+      done: "answered correctly or out of attempts",
+    };
+  }
+  // xAPI true-false: the first authored option is "true", the second "false"
+  // (the same convention _tfanswer uses); response and pattern are the spec
+  // literals, so there are no components
+  _xapiLiteral(option) {
+    const order =
+      option && typeof option.order === "number"
+        ? option.order
+        : (this.answers || []).findIndex(
+            (a) => a && option && a.label === option.label,
+          );
+    return order === 0 ? "true" : order === 1 ? "false" : "";
+  }
+  xapiDefinition() {
+    const correct = (this.answers || []).find((a) => a && a.correct === true);
+    const literal = this._xapiLiteral(correct);
+    return literal ? { correctResponsesPattern: [literal] } : {};
+  }
+  learnerResponse() {
+    const guess = this.getGuess();
+    return Array.isArray(guess) && guess.length === 1
+      ? this._xapiLiteral(guess[0])
+      : "";
+  }
+  // "true" / "false" (an older saved label still works)
+  restoreLearnerResponse(response) {
+    if (response !== "true" && response !== "false") {
+      return super.restoreLearnerResponse(response);
+    }
+    let matched = 0;
+    (this.displayedAnswers || []).forEach((a) => {
+      const pick = this._xapiLiteral(a) === response;
+      a.userGuess = pick ? true : "";
+      if (pick) {
+        matched++;
+      }
+    });
+    return matched > 0;
+  }
   constructor() {
     super();
     this.t = {

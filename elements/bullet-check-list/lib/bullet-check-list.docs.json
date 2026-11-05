@@ -99,12 +99,17 @@
   "slots": [],
   "events": [
     "bullet-check-list-changed",
+    "learner-progress-import",
+    "learner-progress-request",
     "user-engagement"
   ],
   "hax": {
     "type": "element",
     "canScale": true,
     "canEditSource": true,
+    "designSystem": {
+      "primary": true
+    },
     "gizmo": {
       "title": "Bullet check list",
       "description": "A list of checkboxes. Readers tick items off and their progress is remembered on their own device.",
@@ -217,7 +222,7 @@
       }
     ]
   },
-  "surfaceHash": "4aa5d87f11fb",
+  "surfaceHash": "2e1b807bd078",
   "walkthroughs": [
     {
       "id": "",

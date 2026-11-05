@@ -1,4 +1,5 @@
 import path from 'node:path';
+import { xapiConformancePlugin } from './scripts/lib/xapi-conformance.mjs';
 
 // When tests are launched from an element directory (cd elements/<name> &&
 // yarn test), scope coverage collection to that element's own sources.
@@ -32,6 +33,10 @@ export default {
       },
     },
     nodeResolve: true,
+    // executeServerCommand('xapi-validate', statement) from
+    // @web/test-runner-commands: checks an xAPI statement against the
+    // xAPI 1.0.3 statement schema (scripts/lib/xapi-conformance.mjs)
+    plugins: [xapiConformancePlugin()],
     // in a monorepo you need to set set the root dir to resolve modules
     rootDir: '../../',
     // @web/test-runner-coverage-v8 doesn't know how to resolve the

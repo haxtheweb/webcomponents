@@ -69,6 +69,12 @@ const CONFIG = {
       args: ["elements/d-d-d/design-system/build-tokens.js", "--check"],
     },
     {
+      // elements/user-action/lib/xapi-vocabulary.{json,js} must match the
+      // static xapiVocabulary getters on the elements that send statements
+      label: "xAPI vocabulary is up to date",
+      args: ["scripts/generate-xapi-vocabulary.mjs", "--check"],
+    },
+    {
       // CSS in css`` templates that browsers would silently drop. Advisory,
       // like ESLint: known cases live in scripts/css-template-check.baseline.json
       label: "CSS template syntax",

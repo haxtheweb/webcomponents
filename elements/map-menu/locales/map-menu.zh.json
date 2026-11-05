@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "页面未发布"
+  "pageIsUnpublished": "页面未发布",
+  "progressDone": "已完成",
+  "progressInProgress": "进行中",
+  "progressVisited": "已访问"
 }

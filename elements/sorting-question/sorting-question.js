@@ -1,6 +1,9 @@
 // dependencies / things imported
 import { html, css, nothing } from "lit";
-import { QuestionElement } from "@haxtheweb/multiple-choice/lib/QuestionElement.js";
+import {
+  QuestionElement,
+  choiceResponse,
+} from "@haxtheweb/multiple-choice/lib/QuestionElement.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import "@haxtheweb/simple-toast/simple-toast.js";
@@ -11,6 +14,73 @@ export class SortingQuestion extends QuestionElement {
   // a convention I enjoy so you can change the tag name in 1 place
   static get tag() {
     return "sorting-question";
+  }
+  /**
+   * xAPI statements this element sends (see scripts/generate-xapi-vocabulary.mjs)
+   */
+  static get xapiVocabulary() {
+    return {
+      tag: "sorting-question",
+      event: "user-engagement",
+      verbs: ["answered"],
+      objectType: "http://adlnet.gov/expapi/activities/cmi.interaction",
+      interactionType: "sequencing",
+      definition: [
+        "name",
+        "interactionType",
+        "choices",
+        "correctResponsesPattern",
+      ],
+      response: "choice ids in the learner's order joined by [,]",
+      result: [
+        "success",
+        "completion",
+        "response",
+        "score",
+        "extensions.attempts",
+        "extensions.max-attempts",
+      ],
+      countsTowardCompletion: true,
+      done: "answered correctly or out of attempts",
+    };
+  }
+  // xAPI sequencing: the options are the choices; the authored order is
+  // the correct order
+  xapiDefinition() {
+    const components = this.xapiComponents();
+    return components.length
+      ? {
+          choices: components.map(({ id, description }) => ({
+            id,
+            description,
+          })),
+          correctResponsesPattern: [
+            choiceResponse(components.map((c) => c.id)),
+          ],
+        }
+      : {};
+  }
+  // choice ids in the order the learner left the options in (options are
+  // read off the UI and matched to the authored ones by their text)
+  learnerResponse() {
+    const options = this.getOptions();
+    if (!options) {
+      return "";
+    }
+    const free = this.xapiComponents();
+    const norm = (s) =>
+      String(s || "")
+        .replace(/\s+/g, " ")
+        .trim();
+    const ids = Array.from(options).map((o) => {
+      const text = norm(o.innerText || o.textContent);
+      const i = free.findIndex((c) => norm(c.description) === norm(text));
+      return i > -1 ? free.splice(i, 1)[0].id : "";
+    });
+    return ids.every(Boolean) ? choiceResponse(ids) : "";
+  }
+  learnerScore() {
+    return { raw: this.numberCorrect, max: this.answers.length };
   }
 
   // get the options directly off the UI. This will help in providing them in the correct order as well
@@ -192,18 +262,14 @@ export class SortingQuestion extends QuestionElement {
               },
             }),
           );
-          // start of data passing, this is a prototype atm
-          let eventData = {
-            activityDisplay: "answered",
-            objectName: this.quizName,
-            resultSuccess: gotRight,
-          };
+          // learner data, once per check: checkAnswerCallback already
+          // counted this attempt
           this.dispatchEvent(
             new CustomEvent("user-engagement", {
               bubbles: true,
               composed: true,
               cancelable: false,
-              detail: eventData,
+              detail: this.engagementDetail(gotRight, this.attempts),
             }),
           );
         } else {

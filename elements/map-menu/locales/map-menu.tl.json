@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "Hindi naka-publish ang pahina"
+  "pageIsUnpublished": "Hindi naka-publish ang pahina",
+  "progressDone": "Tapos na",
+  "progressInProgress": "Isinasagawa",
+  "progressVisited": "Napuntahan na"
 }

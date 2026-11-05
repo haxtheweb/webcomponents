@@ -136,6 +136,7 @@ class MapMenuSubmenu extends LitElement {
     this.active = false;
     this.label = "";
     this.status = "";
+    this.progress = "";
     this.itemtitle = "";
     this.locked = false;
     this.published = true;
@@ -217,6 +218,7 @@ class MapMenuSubmenu extends LitElement {
           ?hide-in-menu="${this.hideInMenu}"
           ?locked="${this.locked}"
           status="${this.status}"
+          progress="${this.progress}"
         ></map-menu-header>
         <slot></slot>
       </a11y-collapse>
@@ -304,6 +306,14 @@ class MapMenuSubmenu extends LitElement {
         type: Boolean,
       },
       status: {
+        type: String,
+        reflect: true,
+      },
+      /**
+       * Learner progress mark: done, in-progress, visited or not-started.
+       * Empty (the default) shows no mark.
+       */
+      progress: {
         type: String,
         reflect: true,
       },

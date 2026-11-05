@@ -89,6 +89,10 @@
     "type": "grid",
     "canScale": true,
     "canEditSource": true,
+    "designSystem": {
+      "primary": false,
+      "accent": false
+    },
     "gizmo": {
       "title": "Stop Note",
       "description": "A message to alert readers to specific directions.",

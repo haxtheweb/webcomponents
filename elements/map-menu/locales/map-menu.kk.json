@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "Бет жарияланбаған"
+  "pageIsUnpublished": "Бет жарияланбаған",
+  "progressDone": "Аяқталды",
+  "progressInProgress": "Орындалуда",
+  "progressVisited": "Қаралды"
 }

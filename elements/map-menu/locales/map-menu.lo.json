@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "ໜ້ານີ້ຍັງບໍ່ໄດ້ເຜີຍແຜ່"
+  "pageIsUnpublished": "ໜ້ານີ້ຍັງບໍ່ໄດ້ເຜີຍແຜ່",
+  "progressDone": "ສຳເລັດແລ້ວ",
+  "progressInProgress": "ກຳລັງດຳເນີນການ",
+  "progressVisited": "ເຂົ້າເບິ່ງແລ້ວ"
 }

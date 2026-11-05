@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "Sivua ei ole julkaistu"
+  "pageIsUnpublished": "Sivua ei ole julkaistu",
+  "progressDone": "Valmis",
+  "progressInProgress": "Kesken",
+  "progressVisited": "Vierailtu"
 }

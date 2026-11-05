@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "Síðan er óbirt"
+  "pageIsUnpublished": "Síðan er óbirt",
+  "progressDone": "Lokið",
+  "progressInProgress": "Í vinnslu",
+  "progressVisited": "Heimsótt"
 }

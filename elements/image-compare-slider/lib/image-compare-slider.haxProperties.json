@@ -1,6 +1,9 @@
 {
   "canScale": false,
   "canEditSource": true,
+  "designSystem": {
+    "primary": true
+  },
   "gizmo": {
     "title": "Image compare",
     "description": "Swipe one image over another for comparison.",

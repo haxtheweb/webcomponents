@@ -98,11 +98,15 @@
     "front"
   ],
   "events": [
-    "playaudio"
+    "playaudio",
+    "user-engagement"
   ],
   "hax": {
     "canScale": false,
     "canEditSource": true,
+    "designSystem": {
+      "primary": true
+    },
     "gizmo": {
       "title": "Flash card",
       "description": "Practice concepts with front-and-back flash cards.",
@@ -171,7 +175,7 @@
       }
     ]
   },
-  "surfaceHash": "fc461f9d262f",
+  "surfaceHash": "447f10f3585a",
   "walkthroughs": [
     {
       "id": "",

@@ -10,6 +10,35 @@ class MultipleChoice extends QuestionElement {
   static get tag() {
     return "multiple-choice";
   }
+  /**
+   * xAPI statements this element sends (see scripts/generate-xapi-vocabulary.mjs)
+   */
+  static get xapiVocabulary() {
+    return {
+      tag: "multiple-choice",
+      event: "user-engagement",
+      verbs: ["answered"],
+      objectType: "http://adlnet.gov/expapi/activities/cmi.interaction",
+      interactionType: "choice",
+      definition: [
+        "name",
+        "interactionType",
+        "choices",
+        "correctResponsesPattern",
+      ],
+      response: "ids of the selected choices joined by [,]",
+      result: [
+        "success",
+        "completion",
+        "response",
+        "score",
+        "extensions.attempts",
+        "extensions.max-attempts",
+      ],
+      countsTowardCompletion: true,
+      done: "answered correctly or out of attempts",
+    };
+  }
   constructor() {
     super();
     this.t = {

@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "Trang chưa được xuất bản"
+  "pageIsUnpublished": "Trang chưa được xuất bản",
+  "progressDone": "Hoàn thành",
+  "progressInProgress": "Đang thực hiện",
+  "progressVisited": "Đã xem"
 }

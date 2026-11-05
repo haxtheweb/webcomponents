@@ -13,7 +13,7 @@
             "text": "array"
           },
           "default": "[\"stop\", \"warning\", \"success\", \"info\"]",
-          "description": "`bullet-check-list`\n`A GitHub style list of checkboxes whose state is remembered on this machine`\n\nStorage key scheme (localStorage):\n  bullet-check-list:v1:<location.pathname>:<id>[:<n>]\n- <id> is the `storage-id` attribute when set, otherwise a deterministic\n  fingerprint (FNV-1a hash) of the title plus the item labels.\n- <n> is only appended when more than one list on the same page resolves to\n  the same <id>; it is the zero based document order among those lists and\n  is omitted for the first one so keys stay stable if a duplicate is added.\n- HAX generates and saves a random `storage-id` the first time the element\n  is edited, so authored lists keep their key when labels are re-worded.\nValue: JSON {\"v\":1,\"checked\":[\"<item label>\", ...]}"
+          "description": "`bullet-check-list`\n`A GitHub style list of checkboxes whose state is remembered on this machine`\n\nStorage key scheme (localStorage):\n  bullet-check-list:v1:<location.pathname>:<id>[:<n>]\n- <id> is the `storage-id` attribute when set, otherwise a deterministic\n  fingerprint (FNV-1a hash) of the title plus the item labels.\n- <n> is only appended when more than one list on the same page resolves to\n  the same <id>; it is the zero based document order among those lists and\n  is omitted for the first one so keys stay stable if a duplicate is added.\n- HAX generates and saves a random `storage-id` the first time the element\n  is edited, so authored lists keep their key when labels are re-worded.\nValue: JSON {\"v\":1,\"checked\":[\"<item label>\", ...]}\n\nLearner progress: every tick also goes out as an xAPI statement\n(user-engagement detail.statement; progressed, then completed when all\nare ticked) that the learner profile keeps. Ticks saved under the key\nabove before that existed are announced once with a\n`learner-progress-import` event so the profile picks them up. The key is\nstill written and read for backwards compatibility; when it is empty the\nlist asks the profile (`learner-progress-request`) for its ticks."
         },
         {
           "kind": "function",
@@ -34,6 +34,18 @@
               "name": "tag",
               "static": true,
               "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "xapiVocabulary",
+              "static": true,
+              "description": "xAPI statements this element sends (see scripts/generate-xapi-vocabulary.mjs)",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "xapiFingerprint",
+              "description": "Author content that identifies this list for its xAPI activity id"
             },
             {
               "kind": "field",
@@ -76,6 +88,34 @@
             {
               "kind": "method",
               "name": "_loadState"
+            },
+            {
+              "kind": "method",
+              "name": "_syncProgress",
+              "parameters": [
+                {
+                  "name": "key"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_statement",
+              "parameters": [
+                {
+                  "name": "verb"
+                },
+                {
+                  "name": "done"
+                },
+                {
+                  "name": "total"
+                },
+                {
+                  "name": "imported",
+                  "default": "false"
+                }
+              ]
             },
             {
               "kind": "method",
@@ -254,6 +294,12 @@
             }
           ],
           "events": [
+            {
+              "name": "learner-progress-import",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
             {
               "name": "user-engagement",
               "type": {

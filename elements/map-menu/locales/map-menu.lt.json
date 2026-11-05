@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "Puslapis nepaskelbtas"
+  "pageIsUnpublished": "Puslapis nepaskelbtas",
+  "progressDone": "Atlikta",
+  "progressInProgress": "Vykdoma",
+  "progressVisited": "Aplankyta"
 }

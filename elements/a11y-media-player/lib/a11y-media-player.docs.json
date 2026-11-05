@@ -426,11 +426,12 @@
     "transcript-downloaded",
     "transcript-printed",
     "transcript-toggle",
+    "user-engagement",
     "volume-changed",
     null
   ],
   "hax": {},
-  "surfaceHash": "77667da3d298",
+  "surfaceHash": "467c0282070c",
   "walkthroughs": [
     {
       "id": "",

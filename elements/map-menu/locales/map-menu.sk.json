@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "Stránka nie je zverejnená"
+  "pageIsUnpublished": "Stránka nie je zverejnená",
+  "progressDone": "Hotovo",
+  "progressInProgress": "Prebieha",
+  "progressVisited": "Navštívené"
 }

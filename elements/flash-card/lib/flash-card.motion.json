@@ -411,7 +411,7 @@
     "line": "Practice concepts with front-and-back flash cards.",
     "code": "<flash-card></flash-card>"
   },
-  "surfaceHash": "b71705789a94",
+  "surfaceHash": "2be735ca004f",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

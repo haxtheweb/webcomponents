@@ -3,7 +3,10 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css } from "lit";
-import { QuestionElement } from "@haxtheweb/multiple-choice/lib/QuestionElement.js";
+import {
+  QuestionElement,
+  matchingResponse,
+} from "@haxtheweb/multiple-choice/lib/QuestionElement.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 
 /**
@@ -18,6 +21,85 @@ class MatchingQuestion extends QuestionElement {
    */
   static get tag() {
     return "matching-question";
+  }
+  /**
+   * xAPI statements this element sends (see scripts/generate-xapi-vocabulary.mjs)
+   */
+  static get xapiVocabulary() {
+    return {
+      tag: "matching-question",
+      event: "user-engagement",
+      verbs: ["answered"],
+      objectType: "http://adlnet.gov/expapi/activities/cmi.interaction",
+      interactionType: "matching",
+      definition: [
+        "name",
+        "interactionType",
+        "source",
+        "target",
+        "correctResponsesPattern",
+      ],
+      response: "source[.]target id pairs joined by [,]",
+      result: [
+        "success",
+        "completion",
+        "response",
+        "score",
+        "extensions.attempts",
+        "extensions.max-attempts",
+      ],
+      countsTowardCompletion: true,
+      done: "answered correctly or out of attempts",
+    };
+  }
+  // xAPI matching: the items to place are the source, the rows they are
+  // placed in the target (with match-target, targets can be placed too).
+  // Pairs are "sourceId[.]targetId" joined by "[,]"; the pattern pairs each
+  // item with the target it was authored under.
+  _xapiMatching() {
+    const answers = this.answers || [];
+    const sources = answers.filter((a) => !a.target || this.matchTarget);
+    const targets = answers.filter((a) => a.target);
+    return {
+      sources,
+      targets,
+      source: this.xapiComponents(sources),
+      target: this.xapiComponents(targets),
+    };
+  }
+  xapiDefinition() {
+    const m = this._xapiMatching();
+    const out = {
+      source: m.source.map(({ id, description }) => ({ id, description })),
+      target: m.target.map(({ id, description }) => ({ id, description })),
+    };
+    const targetOf = (order) => m.target.find((c) => c.answer.order === order);
+    const pairs = m.source
+      .filter((c) => typeof c.answer.match === "number")
+      .map((c) => [c.id, targetOf(c.answer.match)])
+      .filter((p) => p[1])
+      .map((p) => [p[0], p[1].id]);
+    if (pairs.length) {
+      out.correctResponsesPattern = [matchingResponse(pairs)];
+    }
+    return out;
+  }
+  learnerResponse() {
+    const m = this._xapiMatching();
+    const placed = this.matchAnswers || [];
+    const pairs = m.source
+      .map((c) => {
+        const guess = placed.find(
+          (p) => this.xapiComponentId(p, m.source) === c.id,
+        );
+        const target =
+          guess && typeof guess.guess === "number"
+            ? m.target.find((t) => t.answer.order === guess.guess)
+            : null;
+        return target ? [c.id, target.id] : null;
+      })
+      .filter(Boolean);
+    return matchingResponse(pairs);
   }
 
   static get styles() {
@@ -117,7 +199,9 @@ class MatchingQuestion extends QuestionElement {
           );
         }
 
-        .tag-option {
+        /* :host lifts this over the shared ":host button" reset, whose grey
+           never followed dark mode */
+        :host .tag-option {
           font-size: var(--ddd-font-size-s);
           height: fit-content;
           display: inline-block;

@@ -420,6 +420,12 @@ class SimpleModal extends I18NMixin(LitElement) {
           z-index: var(--simple-modal-z-index, 1) !important;
           padding: 0;
         }
+        /* web-dialog animates open and closed on its own; honor reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+          web-dialog {
+            --dialog-animation-duration: 0ms;
+          }
+        }
         web-dialog::part(dialog) {
           background-color: var(
             --simple-modal-content-container-background,

@@ -13,6 +13,14 @@ import {
   renderDDDBlockHeader,
 } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 import { gameChromeStyles } from "./lib/game-chrome.js";
+import {
+  activityId,
+  buildStatement,
+  responseText,
+  xapiDuration,
+  XAPI_ACTIVITY_TYPES,
+  XAPI_EXTENSIONS,
+} from "@haxtheweb/user-action/lib/xapi.js";
 
 const KEYS = {
   ArrowLeft: "l",
@@ -484,24 +492,74 @@ export class MicroGameBase extends I18NMixin(
    * them. activityDisplay is the verb: attempted, experienced, answered,
    * progressed or completed. Anything in extra rides along as detail fields
    * (objectDetail, resultSuccess, resultScore, resultResponse, attempt, ...).
+   * The detail also carries `statement`, the same data as an xAPI
+   * statement about the game (the concept involved is the object
+   * description); only completed finishes the game for page progress.
    */
   emitProgress(verb, extra) {
+    const detail = {
+      activityDisplay: verb,
+      objectName: this.gameName,
+      objectId: this.gameId || "",
+      game: this.tagName.toLowerCase(),
+      schemaType: this.typeof,
+      timestamp: Date.now(),
+      ...(extra || {}),
+    };
+    detail.statement = this.progressStatement(verb, detail);
     this.dispatchEvent(
       new CustomEvent("user-engagement", {
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: {
-          activityDisplay: verb,
-          objectName: this.gameName,
-          objectId: this.gameId || "",
-          game: this.tagName.toLowerCase(),
-          schemaType: this.typeof,
-          timestamp: Date.now(),
-          ...(extra || {}),
-        },
+        detail,
       }),
     );
+  }
+
+  /**
+   * Author content that identifies this game for its xAPI activity id
+   */
+  xapiFingerprint() {
+    return this.gameId || this.gameName;
+  }
+
+  /**
+   * xAPI statement for a progress detail
+   */
+  progressStatement(verb, d) {
+    const result = {};
+    if (typeof d.resultSuccess === "boolean") {
+      result.success = d.resultSuccess;
+    }
+    if (verb === "completed" || typeof d.resultCompletion === "boolean") {
+      result.completion = verb === "completed" || d.resultCompletion;
+    }
+    if (d.resultResponse != null) {
+      result.response = responseText(d.resultResponse);
+    }
+    if (typeof d.resultScore === "number") {
+      result.score = { raw: d.resultScore, max: 1, min: 0 };
+    }
+    if (d.resultDuration != null) {
+      result.duration = xapiDuration(d.resultDuration);
+    }
+    if (d.attempt != null) {
+      result.extensions = { [XAPI_EXTENSIONS.attempts]: d.attempt };
+    }
+    return buildStatement({
+      verb,
+      object: {
+        id: activityId(this),
+        name: this.gameName,
+        description: d.objectDetail,
+        type: XAPI_ACTIVITY_TYPES.simulation,
+      },
+      result,
+      context: {
+        extensions: { [XAPI_EXTENSIONS.element]: this.tagName.toLowerCase() },
+      },
+    });
   }
 
   /**
@@ -685,44 +743,38 @@ export class MicroGameBase extends I18NMixin(
         <p class="fin-stats">${o.stats || ""}</p>
         ${o.body || ""}
         <slot name="finish" @slotchange="${this._onFinishSlot}">
-          ${
-            showPrompt
-              ? html`
-                  <p class="fin-lead">
-                    ${this.finishLead || this.t.finishLeadDefault}
-                  </p>
-                  <div class="code">
-                    <pre><code id="prompt">${this.prompt}</code></pre>
-                  </div>
-                `
-              : ""
-          }
+          ${showPrompt
+            ? html`
+                <p class="fin-lead">
+                  ${this.finishLead || this.t.finishLeadDefault}
+                </p>
+                <div class="code">
+                  <pre><code id="prompt">${this.prompt}</code></pre>
+                </div>
+              `
+            : ""}
         </slot>
         <div class="row">
-          ${
-            showPrompt
-              ? html`<button
-                  class="btn"
-                  type="button"
-                  @click="${this.copyPrompt}"
-                >
-                  ${this._copied === "ok" ? this.t.copied : this.t.copy}
-                </button>`
-              : ""
-          }
+          ${showPrompt
+            ? html`<button
+                class="btn"
+                type="button"
+                @click="${this.copyPrompt}"
+              >
+                ${this._copied === "ok" ? this.t.copied : this.t.copy}
+              </button>`
+            : ""}
           <slot name="finish-actions"></slot>
           <button class="btn alt" type="button" @click="${this._reset}">
             ${this.t.playAgain}
           </button>
         </div>
         <p class="status" role="status">
-          ${
-            this._copied === "ok"
-              ? this.t.copyNote
-              : this._copied === "fail"
-                ? this.t.copyFail
-                : ""
-          }
+          ${this._copied === "ok"
+            ? this.t.copyNote
+            : this._copied === "fail"
+              ? this.t.copyFail
+              : ""}
         </p>
       </section>
     `;
@@ -782,11 +834,9 @@ export class MicroGameBase extends I18NMixin(
       <div class="overlay" @click="${this.gameStart}">
         <p class="ov-title">${title}</p>
         <p class="ov-sub">${sub}</p>
-        ${
-          this.editMode || this.isEmpty
-            ? ""
-            : html`<button class="btn big" type="button">${action}</button>`
-        }
+        ${this.editMode || this.isEmpty
+          ? ""
+          : html`<button class="btn big" type="button">${action}</button>`}
       </div>
     `;
   }

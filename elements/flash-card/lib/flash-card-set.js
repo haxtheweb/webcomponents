@@ -241,6 +241,12 @@ export class FlashCardSet extends I18NMixin(DDD) {
         #content {
           position: relative;
         }
+        @media (prefers-reduced-motion: reduce) {
+          .visible,
+          .hidden {
+            transition: none;
+          }
+        }
       `,
     ];
   }

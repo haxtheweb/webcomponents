@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "הדף אינו מפורסם"
+  "pageIsUnpublished": "הדף אינו מפורסם",
+  "progressDone": "הושלם",
+  "progressInProgress": "בתהליך",
+  "progressVisited": "ביקרת"
 }

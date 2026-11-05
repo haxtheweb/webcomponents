@@ -302,6 +302,17 @@
             },
             {
               "kind": "field",
+              "name": "progress",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "Learner progress marks by item id: { <id>: \"done\" | \"in-progress\" |\n\"visited\" | \"not-started\" }. Empty (the default) shows no marks.",
+              "default": "null",
+              "attribute": "progress"
+            },
+            {
+              "kind": "field",
               "name": "schemaMap",
               "privacy": "public",
               "type": {
@@ -457,6 +468,15 @@
               "fieldName": "autoScroll"
             },
             {
+              "name": "progress",
+              "type": {
+                "text": "null"
+              },
+              "description": "Learner progress marks by item id: { <id>: \"done\" | \"in-progress\" |\n\"visited\" | \"not-started\" }. Empty (the default) shows no marks.",
+              "default": "null",
+              "fieldName": "progress"
+            },
+            {
               "name": "active-indicator",
               "type": {
                 "text": "boolean"
@@ -507,6 +527,15 @@
           "description": "",
           "name": "MapMenuBuilder",
           "members": [
+            {
+              "kind": "method",
+              "name": "progressOf",
+              "parameters": [
+                {
+                  "name": "item"
+                }
+              ]
+            },
             {
               "kind": "method",
               "name": "hideInMenuStatus",
@@ -612,6 +641,17 @@
             },
             {
               "kind": "field",
+              "name": "progress",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "Learner progress by item id: { <id>: \"done\" | \"in-progress\" |\n\"visited\" | \"not-started\" }. Empty shows no marks.",
+              "default": "null",
+              "attribute": "progress"
+            },
+            {
+              "kind": "field",
               "name": "selected",
               "privacy": "public",
               "type": {
@@ -675,6 +715,15 @@
               },
               "default": "false",
               "fieldName": "isHorizontal"
+            },
+            {
+              "name": "progress",
+              "type": {
+                "text": "null"
+              },
+              "description": "Learner progress by item id: { <id>: \"done\" | \"in-progress\" |\n\"visited\" | \"not-started\" }. Empty shows no marks.",
+              "default": "null",
+              "fieldName": "progress"
             }
           ],
           "superclass": {
@@ -948,11 +997,23 @@
             },
             {
               "kind": "field",
+              "name": "progress",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Learner progress mark: done, in-progress, visited or not-started.\nEmpty (the default) shows no mark.",
+              "default": "\"\"",
+              "attribute": "progress",
+              "reflects": true
+            },
+            {
+              "kind": "field",
               "name": "t",
               "type": {
                 "text": "object"
               },
-              "default": "{ pageIsUnpublished: \"Page is unpublished\", }"
+              "default": "{ pageIsUnpublished: \"Page is unpublished\", ...MapMenuProgressStrings, }"
             },
             {
               "kind": "field",
@@ -1118,6 +1179,15 @@
               },
               "default": "\"\"",
               "fieldName": "status"
+            },
+            {
+              "name": "progress",
+              "type": {
+                "text": "string"
+              },
+              "description": "Learner progress mark: done, in-progress, visited or not-started.\nEmpty (the default) shows no mark.",
+              "default": "\"\"",
+              "fieldName": "progress"
             },
             {
               "name": "selected",
@@ -1340,11 +1410,23 @@
             },
             {
               "kind": "field",
+              "name": "progress",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Learner progress mark: done, in-progress, visited or not-started.\nEmpty (the default) shows no mark.",
+              "default": "\"\"",
+              "attribute": "progress",
+              "reflects": true
+            },
+            {
+              "kind": "field",
               "name": "t",
               "type": {
                 "text": "object"
               },
-              "default": "{ pageIsUnpublished: \"Page is unpublished\", }"
+              "default": "{ pageIsUnpublished: \"Page is unpublished\", ...MapMenuProgressStrings, }"
             },
             {
               "kind": "field",
@@ -1490,6 +1572,15 @@
               },
               "default": "\"\"",
               "fieldName": "status"
+            },
+            {
+              "name": "progress",
+              "type": {
+                "text": "string"
+              },
+              "description": "Learner progress mark: done, in-progress, visited or not-started.\nEmpty (the default) shows no mark.",
+              "default": "\"\"",
+              "fieldName": "progress"
             }
           ],
           "mixins": [
@@ -1519,6 +1610,114 @@
           "declaration": {
             "name": "MapMenuItem",
             "module": "lib/map-menu-item.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/map-menu-progress.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "MAP_MENU_PROGRESS_STATES",
+          "type": {
+            "text": "array"
+          },
+          "default": "[ \"done\", \"in-progress\", \"visited\", \"not-started\", ]",
+          "description": "Learner progress marks for menu items. `progress` is one of\n\"done\", \"in-progress\", \"visited\" or \"not-started\"; anything else draws\nnothing, so menus without progress data look exactly as before. Each mark\nis a ring with a glyph (check, half, dot, empty) plus spoken text after the\ntitle, so state never relies on colour alone."
+        },
+        {
+          "kind": "variable",
+          "name": "MapMenuProgressStrings",
+          "type": {
+            "text": "object"
+          },
+          "default": "{ progressDone: \"Done\", progressInProgress: \"In progress\", progressVisited: \"Visited\", }"
+        },
+        {
+          "kind": "variable",
+          "name": "mapMenuProgressStyles",
+          "default": "css` .progress-mark { --map-menu-progress-done: light-dark( var(--ddd-theme-default-opportunityGreen, #008755), var(--ddd-theme-default-futureLime, #99cc00) ); --map-menu-progress-partial: light-dark( var(--ddd-theme-default-inventOrange, #e98300), var(--ddd-theme-default-keystoneYellow, #ffd100) ); --map-menu-progress-visited: light-dark( var(--ddd-theme-default-slateGray, #314d64), var(--ddd-theme-default-limestoneGray, #a2aaad) ); --map-menu-progress-empty: light-dark( var(--ddd-theme-default-limestoneGray, #a2aaad), var(--ddd-theme-default-slateGray, #314d64) ); box-sizing: border-box; flex: none; display: inline-flex; align-items: center; justify-content: center; width: var(--map-menu-progress-size, 18px); height: var(--map-menu-progress-size, 18px); margin: 0 var(--ddd-spacing-2, 8px) 0 0; border-radius: var(--ddd-radius-circle, 100%); border-width: var(--ddd-border-size-sm, 2px); border-style: solid; border-color: var(--map-menu-progress-empty); align-self: center; line-height: 1; font-size: 11px; font-weight: var(--ddd-font-weight-bold, 700); } .progress-mark[data-progress=\"done\"] { border-color: var(--map-menu-progress-done); color: var(--map-menu-progress-done); } .progress-mark[data-progress=\"in-progress\"] { border-color: var(--map-menu-progress-partial); background: linear-gradient( 90deg, var(--map-menu-progress-partial) 50%, transparent 50% ); } .progress-mark[data-progress=\"visited\"] { border-color: var(--map-menu-progress-visited); } .progress-mark[data-progress=\"visited\"]::after { content: \"\"; width: 6px; height: 6px; border-radius: var(--ddd-radius-circle, 100%); background-color: var(--map-menu-progress-visited); } .progress-mark simple-icon-lite { --simple-icon-height: 12px; --simple-icon-width: 12px; margin: 0; } .progress-sr { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; } @media (forced-colors: active) { .progress-mark, .progress-mark[data-progress] { border-color: CanvasText; color: CanvasText; } .progress-mark[data-progress=\"in-progress\"] { background: linear-gradient(90deg, CanvasText 50%, transparent 50%); } .progress-mark[data-progress=\"visited\"]::after { background-color: CanvasText; } } `"
+        },
+        {
+          "kind": "function",
+          "name": "hasProgressMark",
+          "parameters": [
+            {
+              "name": "progress"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "renderProgressMark",
+          "parameters": [
+            {
+              "name": "progress"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "renderProgressLabel",
+          "parameters": [
+            {
+              "name": "progress"
+            },
+            {
+              "name": "t"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "MAP_MENU_PROGRESS_STATES",
+          "declaration": {
+            "name": "MAP_MENU_PROGRESS_STATES",
+            "module": "lib/map-menu-progress.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "MapMenuProgressStrings",
+          "declaration": {
+            "name": "MapMenuProgressStrings",
+            "module": "lib/map-menu-progress.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "mapMenuProgressStyles",
+          "declaration": {
+            "name": "mapMenuProgressStyles",
+            "module": "lib/map-menu-progress.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "hasProgressMark",
+          "declaration": {
+            "name": "hasProgressMark",
+            "module": "lib/map-menu-progress.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "renderProgressMark",
+          "declaration": {
+            "name": "renderProgressMark",
+            "module": "lib/map-menu-progress.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "renderProgressLabel",
+          "declaration": {
+            "name": "renderProgressLabel",
+            "module": "lib/map-menu-progress.js"
           }
         }
       ]
@@ -1724,6 +1923,18 @@
               },
               "default": "\"\"",
               "attribute": "status",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "progress",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Learner progress mark: done, in-progress, visited or not-started.\nEmpty (the default) shows no mark.",
+              "default": "\"\"",
+              "attribute": "progress",
               "reflects": true
             },
             {
@@ -1992,6 +2203,15 @@
               },
               "default": "\"\"",
               "fieldName": "status"
+            },
+            {
+              "name": "progress",
+              "type": {
+                "text": "string"
+              },
+              "description": "Learner progress mark: done, in-progress, visited or not-started.\nEmpty (the default) shows no mark.",
+              "default": "\"\"",
+              "fieldName": "progress"
             }
           ],
           "superclass": {

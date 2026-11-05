@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "Strona nie jest opublikowana"
+  "pageIsUnpublished": "Strona nie jest opublikowana",
+  "progressDone": "Ukończono",
+  "progressInProgress": "W trakcie",
+  "progressVisited": "Odwiedzono"
 }

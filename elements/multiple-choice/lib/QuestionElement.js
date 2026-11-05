@@ -15,6 +15,31 @@ import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import "@haxtheweb/simple-toast/simple-toast.js";
 import "@haxtheweb/grid-plate/grid-plate.js";
+import {
+  activityId,
+  buildStatement,
+  choiceResponse,
+  interactionComponents,
+  legacyActivityId,
+  responseText,
+  XAPI_EXTENSIONS,
+  XAPI_ITEM_DELIMITER,
+} from "@haxtheweb/user-action/lib/xapi.js";
+
+// the xAPI response encoders question types use, so every question package
+// gets them through the base class it already depends on
+export {
+  choiceResponse,
+  fillInItem,
+  fillInResponse,
+  fillInText,
+  matchingResponse,
+  XAPI_ITEM_DELIMITER,
+} from "@haxtheweb/user-action/lib/xapi.js";
+
+// what an authored option says, for its xAPI component id and description
+const optionText = (a) =>
+  a ? String(a.label || a.alt || a.image || a.text || "") : "";
 
 // automatic stacks: questions that sit right next to each other (adjacent
 // element siblings in the same container, or the same grid-plate column)
@@ -69,13 +94,32 @@ const watchQuestionStackParent = (parent) => {
  * first question starts open and the rest collapsed, unless the author set
  * `collapsed`. Opening one closes the others in the run. A correct answer
  * collapses the question after a short pause and opens the next unanswered
- * question in the run. Nothing about a visitor's progress is stored.
+ * question in the run. The element itself stores nothing about a visitor.
+ *
+ * Learner progress: after every check the element announces the result as
+ * an xAPI statement (user-engagement detail.statement, see
+ * @haxtheweb/user-action/lib/xapi.js). When the page loads it asks, with a
+ * window `learner-progress-request` event, whether a listener (the HAXcms
+ * learner progress helper) has a saved result for it; with one, the stack
+ * shows the saved status pill, keeps the attempts used and opens at the first
+ * question not done yet. multiple-choice, true-false-question and
+ * short-answer-question also put the learner's previous answer back. With no
+ * listener on the page nothing changes.
  *
  * @fires question-element-state - bubbling, composed; after every answer
  *   check. detail: { tag, question, quizName, status ("correct" or
  *   "incorrect"), correct, attempts, maxAttempts, guess }. Meant for a course
  *   level user data object to listen for; the element stores nothing.
- * @fires user-engagement - prototype engagement data after a check
+ * @fires user-engagement - after a check. detail: { activityDisplay
+ *   ("answered"), objectName, resultSuccess, statement (xAPI) }
+ * @fires learner-progress-request - on window when the visitor view loads.
+ *   detail: { activityId, tag, record, legacyActivityId } where a listener
+ *   sets record; legacyActivityId (only when it differs) is the id earlier
+ *   versions keyed this question by, for a one time move of saved data.
+ *
+ * xAPI form (1.0.3 interaction activities): result.response holds component
+ * ids and object.definition holds the components (choices, source, target)
+ * and correctResponsesPattern; see xapiDefinition() / learnerResponse().
  */
 export class QuestionElement extends SchemaBehaviors(
   I18NMixin(DDDSuper(LitElement)),
@@ -101,8 +145,26 @@ export class QuestionElement extends SchemaBehaviors(
     super.connectedCallback();
     this._stackParent = this.parentNode;
     watchQuestionStackParent(this._stackParent);
+    if (!this._progressListeners) {
+      this._progressListeners = new AbortController();
+      const opts = { signal: this._progressListeners.signal };
+      globalThis.addEventListener(
+        "learner-progress-ready",
+        () => this._requestLearnerProgress(),
+        opts,
+      );
+      globalThis.addEventListener(
+        "learner-progress-cleared",
+        () => this._clearLearnerProgress(),
+        opts,
+      );
+    }
   }
   disconnectedCallback() {
+    if (this._progressListeners) {
+      this._progressListeners.abort();
+      this._progressListeners = null;
+    }
     if (this._completionTimer) {
       clearTimeout(this._completionTimer);
       this._completionTimer = null;
@@ -496,7 +558,9 @@ export class QuestionElement extends SchemaBehaviors(
       .slice(run.indexOf(this) + 1)
       .find(
         (el) =>
-          !el._haxstate && !(el.showAnswer && el._shellStatus() === "correct"),
+          !el._haxstate &&
+          !(el.showAnswer && el._shellStatus() === "correct") &&
+          !(el._restored && el._restored.done),
       );
     if (next) {
       run.forEach((el) => {
@@ -577,22 +641,289 @@ export class QuestionElement extends SchemaBehaviors(
         },
       }),
     );
-    // start of data passing, this is a prototype atm
-    let eventData = {
-      activityDisplay: "answered",
-      objectName: this.quizName,
-      resultSuccess: correctness,
-    };
+    // learner data: the loose fields plus an xAPI statement for this check
     this.dispatchEvent(
       new CustomEvent("user-engagement", {
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: eventData,
+        detail: this.engagementDetail(correctness, this.attempts + 1),
       }),
     );
     // add to the attempts but AFTER everything runs so we can process if no more attempts exist
     this.attempts++;
+  }
+
+  /**
+   * What this question writes into xAPI object definitions; subclasses get
+   * it from their static xapiVocabulary
+   */
+  xapiInteractionType() {
+    const v = this.constructor.xapiVocabulary;
+    return (v && v.interactionType) || "other";
+  }
+  /**
+   * Author content that identifies this question when it has no id; used
+   * for its xAPI activity id
+   */
+  xapiFingerprint() {
+    return `${this.question || ""}\u0001${this.quizName || ""}`;
+  }
+  /**
+   * The authored options as xAPI interaction components, in authored order:
+   * [{ id, description, answer }] (see componentIds in
+   * @haxtheweb/user-action/lib/xapi.js: ids come from the option text, so
+   * shuffling keeps them and rewording changes them)
+   * @param {Array} [list] options (default: this.answers)
+   */
+  xapiComponents(list) {
+    const answers = Array.isArray(list) ? list : this.answers || [];
+    return interactionComponents(answers.map(optionText)).map((c, i) => ({
+      ...c,
+      answer: answers[i],
+    }));
+  }
+  /**
+   * Component id of an option (a displayed, selected or copied answer):
+   * matched by its authored position, else by its text; "" when unknown
+   */
+  xapiComponentId(option, components) {
+    const list = components || this.xapiComponents();
+    if (!option) {
+      return "";
+    }
+    let found = null;
+    if (typeof option.order === "number") {
+      found = list.find((c) => c.answer && c.answer.order === option.order);
+    }
+    if (!found) {
+      const text = optionText(option);
+      found = list.find((c) => optionText(c.answer) === text);
+    }
+    return found ? found.id : "";
+  }
+  /**
+   * xAPI object definition parts for this interaction:
+   * { choices | source | target: [{ id, description }],
+   *   correctResponsesPattern: [string] }. Default (choice): every authored
+   * option a choice, the pattern the ids of the options marked correct.
+   */
+  xapiDefinition() {
+    const components = this.xapiComponents();
+    const out = {
+      choices: components.map(({ id, description }) => ({ id, description })),
+    };
+    const correct = components
+      .filter((c) => c.answer && c.answer.correct === true)
+      .map((c) => c.id);
+    if (correct.length) {
+      out.correctResponsesPattern = [choiceResponse(correct)];
+    }
+    return out;
+  }
+  /**
+   * The learner's current answer as xAPI result.response. Choice types: the
+   * component ids of the selected options, in authored order, joined by
+   * "[,]" (the text lives in object.definition.choices).
+   */
+  learnerResponse() {
+    const guess = this.getGuess();
+    if (this.guessDataValue === "display" && Array.isArray(guess)) {
+      const components = this.xapiComponents();
+      const picked = new Set(
+        guess.map((a) => this.xapiComponentId(a, components)),
+      );
+      return choiceResponse(
+        components.filter((c) => picked.has(c.id)).map((c) => c.id),
+      );
+    }
+    return responseText(guess);
+  }
+  /**
+   * Score of the current answer: { raw, max }
+   */
+  learnerScore(correct) {
+    return { raw: correct ? 1 : 0, max: 1 };
+  }
+  /**
+   * user-engagement detail for an answer check: the fields this event has
+   * always carried plus `statement`, an xAPI statement (verb answered).
+   * @param {boolean} correct
+   * @param {number} attempt which attempt this is (1 based)
+   */
+  engagementDetail(correct, attempt) {
+    const max = Number(this.maxAttempts) || 0;
+    const statement = buildStatement({
+      verb: "answered",
+      object: {
+        id: activityId(this),
+        name: this.question || this.quizName,
+        interactionType: this.xapiInteractionType(),
+        ...this.xapiDefinition(),
+      },
+      result: {
+        success: !!correct,
+        completion: !!correct || (max > 0 && attempt >= max),
+        response: this.learnerResponse(),
+        score: { min: 0, ...this.learnerScore(correct) },
+        extensions: {
+          [XAPI_EXTENSIONS.attempts]: attempt,
+          [XAPI_EXTENSIONS.maxAttempts]: max,
+        },
+      },
+      context: {
+        extensions: {
+          [XAPI_EXTENSIONS.element]: this.tagName.toLowerCase(),
+        },
+      },
+    });
+    return {
+      activityDisplay: "answered",
+      objectName: this.quizName,
+      resultSuccess: !!correct,
+      statement,
+    };
+  }
+
+  // types whose previous answer can be put back without side effects
+  _canRestoreGuess() {
+    return (
+      this.guessDataValue === "display" &&
+      ["multiple-choice", "true-false-question"].includes(
+        this.tagName.toLowerCase(),
+      )
+    );
+  }
+  // put the learner's saved answer back; false when this type can not.
+  // response: component ids joined by "[,]" (ids no longer in the question
+  // are ignored). A response saved before ids were used held option labels;
+  // those still match when no id does.
+  restoreLearnerResponse(response) {
+    if (!this._canRestoreGuess() || typeof response !== "string") {
+      return false;
+    }
+    const tokens = response.split(XAPI_ITEM_DELIMITER);
+    const components = this.xapiComponents();
+    const byId = components.filter((c) => tokens.includes(c.id));
+    const on = (a) =>
+      byId.length
+        ? byId.some((c) => c.id === this.xapiComponentId(a, components))
+        : tokens.includes(a.label);
+    let matched = 0;
+    (this.displayedAnswers || []).forEach((a) => {
+      const pick = on(a);
+      a.userGuess = pick ? true : "";
+      if (pick) {
+        matched++;
+      }
+    });
+    return matched > 0;
+  }
+  // ask a learner progress listener for what this visitor did before
+  _requestLearnerProgress() {
+    if (!this.isConnected || this._haxstate || this.edit) {
+      return;
+    }
+    const detail = {
+      activityId: activityId(this),
+      tag: this.tagName.toLowerCase(),
+      record: null,
+    };
+    // where earlier versions saved this question (content fingerprint),
+    // so the listener can move that record to activityId once
+    const legacy = legacyActivityId(this);
+    if (legacy !== detail.activityId) {
+      detail.legacyActivityId = legacy;
+    }
+    globalThis.dispatchEvent(
+      new CustomEvent("learner-progress-request", { detail }),
+    );
+    this._progressChecked = true;
+    if (detail.record && typeof detail.record === "object") {
+      this._applyLearnerRecord(detail.record);
+    } else {
+      this._resumeStack();
+    }
+  }
+  _applyLearnerRecord(record) {
+    this._restored = record;
+    const attempts = Number(record.attempts) || 0;
+    if (attempts > this.attempts) {
+      this.attempts = attempts;
+      this._restoredAttempts = attempts;
+    }
+    if (
+      !this.showAnswer &&
+      record.response &&
+      (record.status === "correct" || record.status === "incorrect") &&
+      this.restoreLearnerResponse(record.response)
+    ) {
+      this._restoredGuess = true;
+      this.showAnswer = true;
+    }
+    this.requestUpdate();
+    this._resumeStack();
+  }
+  _clearLearnerProgress() {
+    this._restored = null;
+    this._dropRestored();
+    this.requestUpdate();
+  }
+  // take back an answer and attempt count put back from saved progress
+  _dropRestored() {
+    if (this._restoredGuess) {
+      this._restoredGuess = false;
+      this.showAnswer = false;
+      this.forgetLearnerResponse();
+    }
+    if (this._restoredAttempts && this.attempts === this._restoredAttempts) {
+      this.attempts = 0;
+    }
+    this._restoredAttempts = 0;
+  }
+  // undo restoreLearnerResponse
+  forgetLearnerResponse() {
+    (this.displayedAnswers || []).forEach((a) => {
+      a.userGuess = "";
+    });
+  }
+  // a question the learner already finished (now or on an earlier visit)
+  _learnerDone() {
+    if (this.showAnswer && this._shellStatus() === "correct") {
+      return true;
+    }
+    return Boolean(this._restored && this._restored.done);
+  }
+  // status for the collapsed row pill, falling back to the saved result
+  _pillStatus(status) {
+    if (status !== "ready") {
+      return status;
+    }
+    const r = this._restored;
+    if (r && (r.status === "correct" || r.status === "incorrect")) {
+      return r.status;
+    }
+    return status;
+  }
+  // returning visitor: once every question of the stack has asked for its
+  // saved result, open the first one not done and close the rest
+  _resumeStack() {
+    if (!this._inStack || this._haxstate || !this.isConnected) {
+      return;
+    }
+    const run = this._stackRun();
+    if (
+      !run.every((el) => el._progressChecked) ||
+      !run.some((el) => el._restored)
+    ) {
+      return;
+    }
+    const target = run.find((el) => !el._learnerDone());
+    run.forEach((el) => {
+      if (!el._haxstate) {
+        el.collapsed = el !== target;
+      }
+    });
   }
 
   /**
@@ -1626,6 +1957,10 @@ export class QuestionElement extends SchemaBehaviors(
     // (Lit change-in-update warning) while keeping post-createElement timing
     queueMicrotask(() => {
       this.loadLightDomData();
+      // answers settle over a couple of updates; ask for saved progress after
+      setTimeout(() => {
+        this.updateComplete.then(() => this._requestLearnerProgress());
+      }, 0);
     });
   }
 
@@ -1865,7 +2200,11 @@ export class QuestionElement extends SchemaBehaviors(
               >${this.question}</span
             >
           </span>
-          ${expanded ? nothing : this.renderStackStatus(status)}
+          ${
+            expanded
+              ? nothing
+              : this.renderStackStatus(this._pillStatus(status))
+          }
           <simple-icon-lite
             class="shell-chevron"
             icon="${expanded ? "icons:expand-less" : "icons:expand-more"}"
@@ -2434,6 +2773,10 @@ export class QuestionElement extends SchemaBehaviors(
 
   haxeditModeChanged(value) {
     this._haxstate = value;
+    // a restored visitor answer or attempt count never reaches authoring
+    if (value) {
+      this._dropRestored();
+    }
     if (this.collapsible || this._inStack) {
       // editing starts from the collapsed state the author set, never one a
       // visitor left behind, and shows the full authoring view

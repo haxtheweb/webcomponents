@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "Sayfa yayımlanmamış"
+  "pageIsUnpublished": "Sayfa yayımlanmamış",
+  "progressDone": "Tamamlandı",
+  "progressInProgress": "Devam ediyor",
+  "progressVisited": "Ziyaret edildi"
 }

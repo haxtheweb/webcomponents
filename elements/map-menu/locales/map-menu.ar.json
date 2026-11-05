@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "الصفحة غير منشورة"
+  "pageIsUnpublished": "الصفحة غير منشورة",
+  "progressDone": "تم",
+  "progressInProgress": "قيد التقدم",
+  "progressVisited": "تمت الزيارة"
 }

@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "Η σελίδα δεν έχει δημοσιευτεί"
+  "pageIsUnpublished": "Η σελίδα δεν έχει δημοσιευτεί",
+  "progressDone": "Ολοκληρώθηκε",
+  "progressInProgress": "Σε εξέλιξη",
+  "progressVisited": "Επισκέφθηκε"
 }

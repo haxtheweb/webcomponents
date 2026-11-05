@@ -11,8 +11,16 @@
           "name": "UserScaffoldInstance"
         },
         {
+          "kind": "variable",
+          "name": "USER_PROFILE_VERSION",
+          "type": {
+            "text": "number"
+          },
+          "default": "1"
+        },
+        {
           "kind": "class",
-          "description": "`user-scaffold`\n`memory and context to establish and maintain appropriate user scaffolding`",
+          "description": "`user-scaffold`\n`memory and context to establish and maintain appropriate user scaffolding`\n\nLearner profile: long-term memory holds ONE profile for the person using\nthis browser (readProfile()), shaped as\n  { v, preferences: { darkMode, soundStatus, audioDescription: {<src>: bool} },\n    session: { firstVisit, lastVisit, visits, lastLogin },\n    sites: { <siteKey>: { url, title, actor, firstVisit, lastVisit,\n      pages: { <pageId>: { title, url, firstVisit, lastVisit, visits,\n        activities: [activityId], trackable, trackableByTag } },\n      activities: { <activityId>: { page, tag, name, verb, verbs, count,\n        first, last, trackable, done, status, success, attempts,\n        maxAttempts, score, response } },\n      counts: { byElement: { <tag>: { <verb>: n } }, byVerb: { <verb>: n } },\n      statementCount } } }\nEvery xAPI statement recorded is also appended to the statements list\n(IndexedDB by default, see lib/user-scaffold-storage.js). Nothing here is\nsent anywhere; the actor of each site is a random per-device account.",
           "name": "UserScaffold",
           "members": [
             {
@@ -132,6 +140,303 @@
             },
             {
               "kind": "method",
+              "name": "_saveLongTerm"
+            },
+            {
+              "kind": "method",
+              "name": "setMemoryAdapter",
+              "parameters": [
+                {
+                  "name": "adapter"
+                }
+              ],
+              "description": "Swap where long-term memory is kept (see lib/user-scaffold-storage.js).\nReloads long-term memory from the new adapter."
+            },
+            {
+              "kind": "method",
+              "name": "setStatementAdapter",
+              "parameters": [
+                {
+                  "name": "adapter"
+                }
+              ],
+              "description": "Swap where the statements list is kept (memory, IndexedDB, later the\nHAXcms server or an LRS)"
+            },
+            {
+              "kind": "field",
+              "name": "statementAdapter",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_profile"
+            },
+            {
+              "kind": "method",
+              "name": "readProfile",
+              "description": "Plain copy of the learner profile"
+            },
+            {
+              "kind": "method",
+              "name": "readPreference",
+              "parameters": [
+                {
+                  "name": "key"
+                },
+                {
+                  "name": "fallback",
+                  "default": "null"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "writePreference",
+              "parameters": [
+                {
+                  "name": "key"
+                },
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "recordSession",
+              "parameters": [
+                {
+                  "name": "{ login = false }",
+                  "default": "{}"
+                }
+              ],
+              "description": "Note a visit (and a sign in when login is true)"
+            },
+            {
+              "kind": "method",
+              "name": "readSite",
+              "parameters": [
+                {
+                  "name": "site"
+                }
+              ],
+              "description": "The record kept for one site"
+            },
+            {
+              "kind": "method",
+              "name": "_site",
+              "parameters": [
+                {
+                  "name": "site"
+                },
+                {
+                  "name": "info",
+                  "default": "{}"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "siteActor",
+              "parameters": [
+                {
+                  "name": "site"
+                },
+                {
+                  "name": "info",
+                  "default": "{}"
+                }
+              ],
+              "description": "Pseudonymous xAPI actor for a site: a random account kept on this\ndevice, never a name or email."
+            },
+            {
+              "kind": "method",
+              "name": "_page",
+              "parameters": [
+                {
+                  "name": "siteRec"
+                },
+                {
+                  "name": "page"
+                },
+                {
+                  "name": "info",
+                  "default": "{}"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "recordPageVisit",
+              "parameters": [
+                {
+                  "name": "site"
+                },
+                {
+                  "name": "page"
+                },
+                {
+                  "name": "info",
+                  "default": "{}"
+                }
+              ],
+              "description": "Note that a page of a site was opened"
+            },
+            {
+              "kind": "method",
+              "name": "setPageTrackable",
+              "parameters": [
+                {
+                  "name": "site"
+                },
+                {
+                  "name": "page"
+                },
+                {
+                  "name": "count"
+                },
+                {
+                  "name": "byTag",
+                  "default": "{}"
+                }
+              ],
+              "description": "How many trackable elements a page holds, overall and per tag"
+            },
+            {
+              "kind": "method",
+              "name": "recordStatement",
+              "parameters": [
+                {
+                  "name": "site",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "statement",
+                  "description": "xAPI statement",
+                  "type": {
+                    "text": "Object"
+                  }
+                },
+                {
+                  "name": "meta",
+                  "default": "{}",
+                  "description": "{ page, tag, trackable, imported, pageTitle }",
+                  "type": {
+                    "text": "Object"
+                  }
+                }
+              ],
+              "description": "Record one xAPI statement for a site. Updates the activity summary,\ncounts and the page it belongs to, and appends the statement to the\nstatements list. Returns the activity summary, or null when skipped\n(already recorded, or an import for an activity that already has data)."
+            },
+            {
+              "kind": "method",
+              "name": "readActivity",
+              "parameters": [
+                {
+                  "name": "site"
+                },
+                {
+                  "name": "activityId"
+                }
+              ],
+              "description": "Summary for one activity of a site, or null"
+            },
+            {
+              "kind": "method",
+              "name": "pageStatus",
+              "parameters": [
+                {
+                  "name": "site"
+                },
+                {
+                  "name": "page"
+                }
+              ],
+              "description": "Status of a page: \"done\" when every trackable activity the learner\nengaged with on it is done, \"in-progress\" when some are not,\n\"visited\" when opened with nothing engaged, \"not-started\" otherwise."
+            },
+            {
+              "kind": "method",
+              "name": "pageProgress",
+              "parameters": [
+                {
+                  "name": "site"
+                },
+                {
+                  "name": "page"
+                }
+              ],
+              "description": "{ status, engaged, done, trackable } for a page"
+            },
+            {
+              "kind": "method",
+              "name": "siteProgress",
+              "parameters": [
+                {
+                  "name": "site"
+                },
+                {
+                  "name": "pages"
+                }
+              ],
+              "description": "{ done, total, byPage } for a site; pages limits it to those page ids\n(the site outline), otherwise every page the profile knows"
+            },
+            {
+              "kind": "method",
+              "name": "importLegacyPreferences",
+              "parameters": [
+                {
+                  "name": "storage",
+                  "default": "globalThis.localStorage"
+                }
+              ],
+              "description": "Copy preferences that elements kept under their own localStorage keys\ninto the profile, once per key. The old keys are left in place and stay\nreadable. Covered: video-player-ad-<source> (audio description per\nvideo), app-hax-darkMode, app-hax-soundStatus."
+            },
+            {
+              "kind": "method",
+              "name": "summarize",
+              "parameters": [
+                {
+                  "name": "{ site, outline, scope = \"all\", pageId, groupBy = \"page\" }",
+                  "default": "{}"
+                },
+                {
+                  "name": "o",
+                  "type": {
+                    "text": "@param {string} o.site site key\n   * @param {Array} [o.outline] [{ id, parent, title, tags }] (tags: array or\n   *   comma separated string); without it, page / verb / element grouping\n   *   and the \"all\" / \"page\" scopes still work\n   * @param {string} [o.scope] \"page\" | \"parent\" (the page's parent and every\n   *   page below it) | \"branch\" (the page and every page below it) |\n   *   \"children\" (only the pages below it) | \"all\" (default)\n   * @param {string} [o.pageId] outline item id the scope is relative to\n   * @param {string} [o.groupBy] \"page\" (default) | \"tag\" | \"section\" (top\n   *   level ancestor) | \"verb\" | \"element\"\n   * "
+                  }
+                }
+              ],
+              "description": "Counts for dashboards and insights, grouped one way, over a scope of\nthe site outline. Page tags, sections and ancestors are resolved at read\ntime from the outline given (the site manifest items), so the profile\nnever goes stale when an author retags or moves a page.",
+              "return": {
+                "type": {
+                  "text": "{ scope, pageId, groupBy, pages: string[], groups: Object,\n   *   totals: Object }"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "statements",
+              "parameters": [
+                {
+                  "name": "site"
+                }
+              ],
+              "description": "Statements recorded for a site (async)"
+            },
+            {
+              "kind": "method",
+              "name": "clearSite",
+              "parameters": [
+                {
+                  "name": "site"
+                }
+              ],
+              "description": "Forget everything recorded for a site on this device"
+            },
+            {
+              "kind": "method",
               "name": "isBase64",
               "parameters": [
                 {
@@ -160,6 +465,21 @@
                 "text": "object"
               },
               "default": "{ interactionDelay: 0, interactionCount: 0, }"
+            },
+            {
+              "kind": "field",
+              "name": "_memoryAdapter",
+              "default": "new LocalStorageMemoryAdapter()"
+            },
+            {
+              "kind": "field",
+              "name": "_statementAdapter",
+              "default": "new IndexedDBStatementAdapter()"
+            },
+            {
+              "kind": "field",
+              "name": "_seenStatements",
+              "default": "new Set()"
             },
             {
               "kind": "field",
@@ -208,6 +528,14 @@
         },
         {
           "kind": "js",
+          "name": "USER_PROFILE_VERSION",
+          "declaration": {
+            "name": "USER_PROFILE_VERSION",
+            "module": "user-scaffold.js"
+          }
+        },
+        {
+          "kind": "js",
           "name": "UserScaffold",
           "declaration": {
             "name": "UserScaffold",
@@ -219,6 +547,368 @@
           "declaration": {
             "name": "UserScaffold",
             "module": "user-scaffold.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/user-scaffold-storage.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "LT_MEMORY_KEY",
+          "type": {
+            "text": "string"
+          },
+          "default": "\"user-scaffold-ltMemory\""
+        },
+        {
+          "kind": "class",
+          "description": "Long-term memory in localStorage (the original behaviour)",
+          "name": "LocalStorageMemoryAdapter",
+          "members": [
+            {
+              "kind": "method",
+              "name": "load"
+            },
+            {
+              "kind": "method",
+              "name": "save",
+              "parameters": [
+                {
+                  "name": "obj"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "clear"
+            },
+            {
+              "kind": "field",
+              "name": "key",
+              "default": "key"
+            }
+          ]
+        },
+        {
+          "kind": "class",
+          "description": "Long-term memory that lasts only for this page (tests, private mode)",
+          "name": "MemoryMemoryAdapter",
+          "members": [
+            {
+              "kind": "method",
+              "name": "load"
+            },
+            {
+              "kind": "method",
+              "name": "save",
+              "parameters": [
+                {
+                  "name": "obj"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "clear"
+            },
+            {
+              "kind": "field",
+              "name": "data"
+            }
+          ]
+        },
+        {
+          "kind": "class",
+          "description": "Statements kept in memory only",
+          "name": "MemoryStatementAdapter",
+          "members": [
+            {
+              "kind": "method",
+              "name": "add",
+              "parameters": [
+                {
+                  "name": "site"
+                },
+                {
+                  "name": "statement"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "list",
+              "parameters": [
+                {
+                  "name": "site"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "clear",
+              "parameters": [
+                {
+                  "name": "site"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "sites",
+              "default": "new Map()"
+            }
+          ]
+        },
+        {
+          "kind": "variable",
+          "name": "STATEMENT_DB",
+          "type": {
+            "text": "string"
+          },
+          "default": "\"user-scaffold-statements\""
+        },
+        {
+          "kind": "variable",
+          "name": "STATEMENT_DB_VERSION",
+          "type": {
+            "text": "number"
+          },
+          "default": "1"
+        },
+        {
+          "kind": "class",
+          "description": "Statements in IndexedDB. Records: { id, site, v: 1, stored, statement }.\nFalls back to memory when IndexedDB is missing or blocked.",
+          "name": "IndexedDBStatementAdapter",
+          "members": [
+            {
+              "kind": "method",
+              "name": "_open"
+            },
+            {
+              "kind": "method",
+              "name": "_tx",
+              "parameters": [
+                {
+                  "name": "mode"
+                },
+                {
+                  "name": "fn"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "add",
+              "parameters": [
+                {
+                  "name": "site"
+                },
+                {
+                  "name": "statement"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "list",
+              "parameters": [
+                {
+                  "name": "site"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "clear",
+              "parameters": [
+                {
+                  "name": "site"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "dbName"
+            },
+            {
+              "kind": "field",
+              "name": "indexedDB"
+            },
+            {
+              "kind": "field",
+              "name": "_db",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "_fallback",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            }
+          ]
+        },
+        {
+          "kind": "class",
+          "description": "Stub: statements sent to the HAXcms backend for a signed-in learner.\nNot part of this release; the endpoint will be added to haxcms-nodejs and\nhaxcms-php with identical OpenAPI specs.",
+          "name": "HAXcmsServerStatementAdapter",
+          "members": [
+            {
+              "kind": "method",
+              "name": "add",
+              "parameters": [
+                {
+                  "name": "_site"
+                },
+                {
+                  "name": "_statement"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "list",
+              "parameters": [
+                {
+                  "name": "_site"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "clear",
+              "parameters": [
+                {
+                  "name": "_site"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "endpoint"
+            }
+          ]
+        },
+        {
+          "kind": "class",
+          "description": "Stub: statements sent to an owner configured xAPI Learning Record Store\n(POST {endpoint}/statements, X-Experience-API-Version: 1.0.3). Only for\nsigned-in learners, never automatic.",
+          "name": "LRSStatementAdapter",
+          "members": [
+            {
+              "kind": "method",
+              "name": "add",
+              "parameters": [
+                {
+                  "name": "_site"
+                },
+                {
+                  "name": "_statement"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "list",
+              "parameters": [
+                {
+                  "name": "_site"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "clear",
+              "parameters": [
+                {
+                  "name": "_site"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "endpoint"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "LT_MEMORY_KEY",
+          "declaration": {
+            "name": "LT_MEMORY_KEY",
+            "module": "lib/user-scaffold-storage.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "LocalStorageMemoryAdapter",
+          "declaration": {
+            "name": "LocalStorageMemoryAdapter",
+            "module": "lib/user-scaffold-storage.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "MemoryMemoryAdapter",
+          "declaration": {
+            "name": "MemoryMemoryAdapter",
+            "module": "lib/user-scaffold-storage.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "MemoryStatementAdapter",
+          "declaration": {
+            "name": "MemoryStatementAdapter",
+            "module": "lib/user-scaffold-storage.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "STATEMENT_DB",
+          "declaration": {
+            "name": "STATEMENT_DB",
+            "module": "lib/user-scaffold-storage.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "STATEMENT_DB_VERSION",
+          "declaration": {
+            "name": "STATEMENT_DB_VERSION",
+            "module": "lib/user-scaffold-storage.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "IndexedDBStatementAdapter",
+          "declaration": {
+            "name": "IndexedDBStatementAdapter",
+            "module": "lib/user-scaffold-storage.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "HAXcmsServerStatementAdapter",
+          "declaration": {
+            "name": "HAXcmsServerStatementAdapter",
+            "module": "lib/user-scaffold-storage.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "LRSStatementAdapter",
+          "declaration": {
+            "name": "LRSStatementAdapter",
+            "module": "lib/user-scaffold-storage.js"
           }
         }
       ]

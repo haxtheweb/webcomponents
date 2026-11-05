@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "صفحه منتشر نشده است"
+  "pageIsUnpublished": "صفحه منتشر نشده است",
+  "progressDone": "انجام شد",
+  "progressInProgress": "در حال انجام",
+  "progressVisited": "بازدید شده"
 }

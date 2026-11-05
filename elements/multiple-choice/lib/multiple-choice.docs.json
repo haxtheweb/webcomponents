@@ -229,6 +229,7 @@
   "slots": [],
   "events": [
     "eventName",
+    "learner-progress-request",
     "question-element-state",
     "user-engagement"
   ],
@@ -390,7 +391,7 @@
       }
     ]
   },
-  "surfaceHash": "00a5b5a6537b",
+  "surfaceHash": "869e1c4fcd07",
   "walkthroughs": [
     {
       "id": "",

@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "Саҳифа нашр нашудааст"
+  "pageIsUnpublished": "Саҳифа нашр нашудааст",
+  "progressDone": "Иҷро шуд",
+  "progressInProgress": "Дар ҷараён",
+  "progressVisited": "Дидан шуд"
 }

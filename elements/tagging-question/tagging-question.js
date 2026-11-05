@@ -3,7 +3,10 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css } from "lit";
-import { QuestionElement } from "@haxtheweb/multiple-choice/lib/QuestionElement.js";
+import {
+  QuestionElement,
+  choiceResponse,
+} from "@haxtheweb/multiple-choice/lib/QuestionElement.js";
 import "@haxtheweb/d-d-d/d-d-d.js";
 
 /**
@@ -15,6 +18,52 @@ import "@haxtheweb/d-d-d/d-d-d.js";
 class TaggingQuestion extends QuestionElement {
   static get tag() {
     return "tagging-question";
+  }
+  /**
+   * xAPI statements this element sends (see scripts/generate-xapi-vocabulary.mjs)
+   */
+  static get xapiVocabulary() {
+    return {
+      tag: "tagging-question",
+      event: "user-engagement",
+      verbs: ["answered"],
+      objectType: "http://adlnet.gov/expapi/activities/cmi.interaction",
+      interactionType: "choice",
+      definition: [
+        "name",
+        "interactionType",
+        "choices",
+        "correctResponsesPattern",
+      ],
+      response: "ids of the tags applied joined by [,]",
+      result: [
+        "success",
+        "completion",
+        "response",
+        "score",
+        "extensions.attempts",
+        "extensions.max-attempts",
+      ],
+      countsTowardCompletion: true,
+      done: "answered correctly or out of attempts",
+    };
+  }
+  // xAPI: tagging is sent as "choice", the closest conformant type. The
+  // learner picks the subset of tags that apply to one prompt, which is a
+  // multiple answer choice; "matching" would need source / target pairs and
+  // there is only one target here. choices = the tags, response = the ids of
+  // the tags applied (in authored order), pattern = the ids of the correct
+  // tags (the base xapiDefinition).
+  learnerResponse() {
+    const components = this.xapiComponents();
+    const picked = new Set(
+      (this.selectedAnswers || []).map((a) =>
+        this.xapiComponentId(a, components),
+      ),
+    );
+    return choiceResponse(
+      components.filter((c) => picked.has(c.id)).map((c) => c.id),
+    );
   }
 
   constructor() {

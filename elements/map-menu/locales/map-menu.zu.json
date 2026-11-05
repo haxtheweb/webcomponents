@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "Ikhasi alishicilelwe"
+  "pageIsUnpublished": "Ikhasi alishicilelwe",
+  "progressDone": "Kuqediwe",
+  "progressInProgress": "Kuyaqhubeka",
+  "progressVisited": "Kuvakashiwe"
 }

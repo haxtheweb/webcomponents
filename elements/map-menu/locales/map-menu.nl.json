@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "Pagina is niet gepubliceerd"
+  "pageIsUnpublished": "Pagina is niet gepubliceerd",
+  "progressDone": "Voltooid",
+  "progressInProgress": "Bezig",
+  "progressVisited": "Bezocht"
 }

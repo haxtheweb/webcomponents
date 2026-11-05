@@ -6,11 +6,93 @@
 // dependencies / things imported
 import { html, css, nothing } from "lit";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
-import { QuestionElement } from "@haxtheweb/multiple-choice/lib/QuestionElement.js";
+import {
+  QuestionElement,
+  choiceResponse,
+} from "@haxtheweb/multiple-choice/lib/QuestionElement.js";
 
 export class MarkTheWords extends QuestionElement {
   static get tag() {
     return "mark-the-words";
+  }
+  /**
+   * xAPI statements this element sends (see scripts/generate-xapi-vocabulary.mjs)
+   */
+  static get xapiVocabulary() {
+    return {
+      tag: "mark-the-words",
+      event: "user-engagement",
+      verbs: ["answered"],
+      objectType: "http://adlnet.gov/expapi/activities/cmi.interaction",
+      interactionType: "choice",
+      definition: [
+        "name",
+        "interactionType",
+        "choices",
+        "correctResponsesPattern",
+      ],
+      response: "ids of the words marked joined by [,]",
+      result: [
+        "success",
+        "completion",
+        "response",
+        "score",
+        "extensions.attempts",
+        "extensions.max-attempts",
+      ],
+      countsTowardCompletion: true,
+      done: "answered correctly or out of attempts",
+    };
+  }
+  // xAPI: marking words is sent as "choice", the closest conformant type:
+  // the learner selects a subset of the passage's words. A word is picked by
+  // its text (selectWord toggles the first word with that text), so each
+  // distinct word, in passage order, is one choice; response = the ids of
+  // the words marked.
+  _xapiWords() {
+    const seen = new Set();
+    const words = [];
+    (this.wordList || []).forEach((w) => {
+      if (w && w.text && !seen.has(w.text)) {
+        seen.add(w.text);
+        words.push({ label: w.text, word: w });
+      }
+    });
+    return this.xapiComponents(words);
+  }
+  // the pattern is only sent when it is unambiguous: every correct answer
+  // (compared without case, as isCorrect does) is exactly one word
+  xapiDefinition() {
+    const components = this._xapiWords();
+    const out = {
+      choices: components.map(({ id, description }) => ({ id, description })),
+    };
+    const correct = Array.from(
+      new Set(
+        (this.displayedAnswers || [])
+          .filter((a) => a && a.correct && a.label)
+          .map((a) => String(a.label).toLowerCase()),
+      ),
+    );
+    const ids = correct.map((label) =>
+      components.filter((c) => c.answer.label.toLowerCase() === label),
+    );
+    if (correct.length && ids.every((list) => list.length === 1)) {
+      const wanted = new Set(ids.map((list) => list[0].id));
+      out.correctResponsesPattern = [
+        choiceResponse(
+          components.filter((c) => wanted.has(c.id)).map((c) => c.id),
+        ),
+      ];
+    }
+    return out;
+  }
+  learnerResponse() {
+    return choiceResponse(
+      this._xapiWords()
+        .filter((c) => c.answer.word.selected)
+        .map((c) => c.id),
+    );
   }
 
   constructor() {

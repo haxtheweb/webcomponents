@@ -1,3 +1,6 @@
 {
-  "pageIsUnpublished": "Faqja nuk është publikuar"
+  "pageIsUnpublished": "Faqja nuk është publikuar",
+  "progressDone": "Përfunduar",
+  "progressInProgress": "Në vazhdim",
+  "progressVisited": "Vizituar"
 }
