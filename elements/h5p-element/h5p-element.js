@@ -25,6 +25,7 @@ import {
   toggleDDDBlockFullscreen,
   listenDDDBlockFullscreen,
 } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
+import { H5PXapiBridge } from "./lib/h5p-xapi-bridge.js";
 /**
  * `h5p-element`
  * @element h5p-element
@@ -341,6 +342,7 @@ class H5PElement extends I18NMixin(LitElement) {
       }
       this._player = player;
       this.status = "ready";
+      this.xapiBridge.attachTo(container);
       this.dispatchEvent(
         new CustomEvent("h5p-package-loaded", {
           bubbles: true,
@@ -374,6 +376,9 @@ class H5PElement extends I18NMixin(LitElement) {
   }
 
   _disposePlayer() {
+    if (this._xapiBridge) {
+      this._xapiBridge.detach();
+    }
     if (this._player) {
       this._player.dispose();
       this._player = null;
@@ -436,6 +441,33 @@ class H5PElement extends I18NMixin(LitElement) {
    */
   static get tag() {
     return "h5p-element";
+  }
+
+  /**
+   * xAPI statements this element sends (see scripts/generate-xapi-vocabulary.mjs).
+   * H5P content sends many statements of its own; only top level attempted,
+   * answered and completed pass, capped per minute (lib/h5p-xapi-bridge.js).
+   */
+  static get xapiVocabulary() {
+    return {
+      tag: "h5p-element",
+      event: "user-engagement",
+      verbs: ["attempted", "answered", "completed"],
+      objectType: "http://adlnet.gov/expapi/activities/interaction",
+      result: ["success", "completion", "response", "score", "duration"],
+      countsTowardCompletion: false,
+      done: "never required; not every H5P content type reports completion",
+    };
+  }
+
+  /**
+   * Learner data: forwards the content's own top level xAPI results
+   */
+  get xapiBridge() {
+    if (!this._xapiBridge) {
+      this._xapiBridge = new H5PXapiBridge(this);
+    }
+    return this._xapiBridge;
   }
 
   // life cycle
@@ -588,6 +620,7 @@ class H5PElement extends I18NMixin(LitElement) {
       icon: displayOptions.icon,
       id: "h5p-iframe-" + id,
     });
+    this.xapiBridge.attachTo(container);
     return true;
   }
   connectedCallback() {
@@ -611,6 +644,9 @@ class H5PElement extends I18NMixin(LitElement) {
       this._visibilityObserver.disconnect();
     }
     this._disposePlayer();
+    if (this._xapiBridge) {
+      this._xapiBridge.detach();
+    }
     if (this._objectUrl) {
       URL.revokeObjectURL(this._objectUrl);
       this._objectUrl = null;
