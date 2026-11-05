@@ -2417,6 +2417,16 @@
       "tags": []
     },
     {
+      "tag": "haxcms-learning-activity-report",
+      "title": "Haxcms Learning Activity Report",
+      "description": "The Learning activity report of site Insights: what on the selected pages can send learner statements (xAPI), counted from page content against the generated xAPI vocabulary. Works with no learner data; learner results stay an empty state until a server or LRS adapter exists. Self-contained so it...",
+      "package": "@haxtheweb/haxcms-elements",
+      "import": "@haxtheweb/haxcms-elements/lib/core/insights/learning-activity-report.js",
+      "type": "element",
+      "haxCapable": true,
+      "tags": []
+    },
+    {
       "tag": "haxcms-outline-editor-dialog",
       "title": "",
       "description": "Dialog for presenting an editable outline",
@@ -3687,6 +3697,16 @@
       "import": "@haxtheweb/mutation-observer-import-mixin/mutation-observer-import-mixin.js",
       "type": "element",
       "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "my-learning",
+      "title": "My learning",
+      "description": "What the visitor has done on this site, from the learner profile on this device A dashboard of the learner profile kept by user-scaffold on this device (nothing is sent anywhere): summary tiles (pages done, activities done, first-try accuracy, visits); a radar card of what the content is about (C...",
+      "package": "@haxtheweb/haxcms-elements",
+      "import": "@haxtheweb/haxcms-elements/lib/ui-components/progress/my-learning.js",
+      "type": "element",
+      "haxCapable": true,
       "tags": []
     },
     {
@@ -5558,7 +5578,7 @@
     {
       "tag": "site-menu",
       "title": "",
-      "description": "Menu hierarchy",
+      "description": "Menu hierarchy Learner progress: once the visitor has engaged with a trackable activity on the site (questions, checklists, games, media), each page gets a mark (done, in progress, visited, not started; spoken after the title) and the menu shows \"N of M pages done\" above it. Vertical menus only;...",
       "package": "@haxtheweb/haxcms-elements",
       "import": "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu.js",
       "type": "element",
@@ -5606,6 +5626,16 @@
       "tags": []
     },
     {
+      "tag": "site-page-progress",
+      "title": "",
+      "description": "How many of the trackable activities on this page the visitor has done Shows \"2 of 4 activities done\" with a progress bar, only on pages that hold trackable activities (questions, checklists, games, media) and never while editing. Reads the learner profile kept on this device.",
+      "package": "@haxtheweb/haxcms-elements",
+      "import": "@haxtheweb/haxcms-elements/lib/ui-components/progress/site-page-progress.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
       "tag": "site-print-button",
       "title": "",
       "description": "Dynamic print button to request and generate what to print",
@@ -5621,6 +5651,16 @@
       "description": "Route for switching to print mode using the haxcms-print-theme Usage: x/print?page=some-page-slug",
       "package": "@haxtheweb/haxcms-elements",
       "import": "@haxtheweb/haxcms-elements/lib/ui-components/routes/site-print-route.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "site-progress-clear",
+      "title": "",
+      "description": "Says where learner progress is kept and lets the visitor clear it \"Your progress is saved on this device only. Clear my progress\". Shown once the site has progress or the page has trackable activities, never while editing. Clearing removes this site's learner profile data and statements on this d...",
+      "package": "@haxtheweb/haxcms-elements",
+      "import": "@haxtheweb/haxcms-elements/lib/ui-components/progress/site-progress-clear.js",
       "type": "element",
       "haxCapable": false,
       "tags": []
@@ -6154,7 +6194,7 @@
     {
       "tag": "user-scaffold",
       "title": "",
-      "description": "memory and context to establish and maintain appropriate user scaffolding",
+      "description": "memory and context to establish and maintain appropriate user scaffolding Learner profile: long-term memory holds ONE profile for the person using this browser (readProfile()), shaped as { v, preferences: { darkMode, soundStatus, audioDescription: {<src>: bool} }, session: { firstVisit, lastVisit...",
       "package": "@haxtheweb/user-scaffold",
       "import": "@haxtheweb/user-scaffold/user-scaffold.js",
       "type": "element",
