@@ -237,6 +237,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         this.__pageContentOwner = resolvedActiveItem.id;
       }
       this._activeItemContentChanged(this.__pageContent, resolvedActiveItem);
+      this._flushAfterFirstContent();
     }
     // punt, we didn't find anything
     else if (
@@ -308,11 +309,22 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     const requestedItemId =
       requestedItem && requestedItem.id ? requestedItem.id : null;
     let url = `${this.outlineLocation}${requestedLocation}`;
-    if (this._timeStamp) {
+    // a revalidation found newer site.json; make sure this page body is
+    // newer too instead of trusting an HTTP-cached copy
+    let fetchOptions = {};
+    let pageStamp = this._timeStamp;
+    if (this.__freshNextPage) {
+      this.__freshNextPage = false;
+      fetchOptions = { cache: "no-store" };
+      if (!pageStamp) {
+        pageStamp = Date.now();
+      }
+    }
+    if (pageStamp) {
       if (url.indexOf("?") !== -1) {
-        url += `&${this._timeStamp}`;
+        url += `&${pageStamp}`;
       } else {
-        url += `?${this._timeStamp}`;
+        url += `?${pageStamp}`;
       }
     }
     if (requestedLocation === "hax-internal-route.html") {
@@ -320,7 +332,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       this.loading = false;
       this._runPendingPageLoad(requestedLocation, requestedItemId);
     } else {
-      await fetch(url)
+      await fetch(url, fetchOptions)
         .then((response) => {
           if (response.ok) {
             return response.text();
@@ -380,15 +392,22 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
             url += `?${this._timeStamp}`;
           }
         }
+        // no-cache revalidates with the server, so an HTTP-cached copy is
+        // never used unchecked; the very first request (no timestamp)
+        // matches a <link rel="preload"> of the same URL in the page shell
         let headers = { cache: "no-cache" };
         await fetch(url, headers)
           .then((response) => {
             if (response.ok) {
-              return response.json();
+              return response.text();
             }
           })
-          .then((data) => {
-            this._updateManifest(data);
+          .then((text) => {
+            if (typeof text === "string") {
+              this.__manifestText = text;
+              this._updateManifest(JSON.parse(text));
+              this._scheduleManifestRevalidation();
+            }
             this.loading = false;
           })
           .catch((err) => {
@@ -396,6 +415,148 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           });
       }
     }
+  }
+  /**
+   * Once, after first paint and when the browser is idle, ask the server for
+   * site.json again with no caching at all. The first load may have been
+   * served from a preload or an intermediate cache; if the server copy is
+   * different, apply it and refetch the active page fresh. Logged-in users
+   * already refetch with a fresh timestamp when login is detected, so
+   * editing always starts from the latest copy.
+   */
+  _scheduleManifestRevalidation() {
+    if (this.__manifestRevalidationScheduled) {
+      return;
+    }
+    this.__manifestRevalidationScheduled = true;
+    this._afterFirstContent(() => this._revalidateManifest(), 5000);
+  }
+  async _revalidateManifest() {
+    // logged in: the login autorun already forced a fresh timestamped load
+    if (!this.file || this.isLoggedIn || this._timeStamp) {
+      return false;
+    }
+    let url = `${this.outlineLocation}${this.file}`;
+    url += url.indexOf("?") !== -1 ? `&${Date.now()}` : `?${Date.now()}`;
+    try {
+      const response = await fetch(url, { cache: "no-store" });
+      if (!response.ok) {
+        return false;
+      }
+      const text = await response.text();
+      // a login or editor save may have landed while we waited
+      if (this.isLoggedIn || this._timeStamp || text === this.__manifestText) {
+        return false;
+      }
+      const data = JSON.parse(text);
+      this.__manifestText = text;
+      this.__freshNextPage = true;
+      this._updateManifest(data);
+      this.loadPageData();
+      return true;
+    } catch (err) {
+      // the copy on screen stays; this check is best-effort
+      console.warn(err);
+      return false;
+    }
+  }
+  /**
+   * Run work only after the first page body is on screen, then when the
+   * browser is idle (capped by `timeout`), so it never competes with the
+   * requests and rendering of first paint. A 10 second cap covers pages
+   * that never render a body (404s, internal routes, errors).
+   */
+  _afterFirstContent(callback, timeout = 5000) {
+    const run = () => whenIdle(callback, { timeout, fallbackDelay: 500 });
+    if (this.__firstContentDone) {
+      run();
+      return;
+    }
+    if (!this.__afterFirstContentQueue) {
+      this.__afterFirstContentQueue = [];
+      setTimeout(() => this._flushAfterFirstContent(), 10000);
+    }
+    this.__afterFirstContentQueue.push(run);
+  }
+  _flushAfterFirstContent() {
+    if (this.__firstContentDone) {
+      return;
+    }
+    this.__firstContentDone = true;
+    const queue = this.__afterFirstContentQueue || [];
+    this.__afterFirstContentQueue = [];
+    // one more frame so the new body has painted before idle work starts
+    globalThis.requestAnimationFrame(() => queue.forEach((run) => run()));
+  }
+  /**
+   * The toast (and the RPG character it draws) is not needed for first
+   * paint. Load it the first time anything asks for a toast, or when the
+   * browser is idle, then hand it whatever was asked for in the meantime.
+   */
+  _installLazyToast() {
+    if (globalThis.HAXCMSToast && globalThis.HAXCMSToast.instance) {
+      return;
+    }
+    const queued = [];
+    let loading = null;
+    const events = ["haxcms-toast-show", "haxcms-toast-hide"];
+    const capture = (e) => {
+      if (globalThis.HAXCMSToast && globalThis.HAXCMSToast.instance) {
+        return;
+      }
+      // nothing is showing yet, so a hide (the router sends one on every
+      // route change) only matters if it follows a queued show
+      if (e.type === "haxcms-toast-hide" && queued.length === 0) {
+        return;
+      }
+      queued.push(e);
+      load();
+    };
+    const load = () => {
+      if (!loading) {
+        loading = import("./haxcms-toast.js")
+          .then((mod) => {
+            events.forEach((name) =>
+              globalThis.removeEventListener(name, capture),
+            );
+            const toast = mod.HAXCMSToastInstance;
+            queued.forEach((e) => {
+              if (e.type === "haxcms-toast-show") {
+                toast.showSimpleToast(e);
+              } else {
+                toast.hideSimpleToast(e);
+              }
+            });
+            queued.length = 0;
+          })
+          .catch((error) => {
+            console.warn(error);
+          });
+      }
+      return loading;
+    };
+    events.forEach((name) =>
+      globalThis.addEventListener(name, capture, {
+        signal: this.windowControllers.signal,
+      }),
+    );
+    this._afterFirstContent(load, 8000);
+  }
+  /**
+   * A published (or 11ty) site with no connection settings never gets an
+   * editor, so the editor builder and the site API registry it pulls in
+   * are skipped there.
+   */
+  _needsEditorBuilder() {
+    const context = HAXcmsStore.getApplicationContext();
+    if (!["published", "11ty"].includes(context)) {
+      return true;
+    }
+    return (
+      globalThis.appSettings &&
+      typeof globalThis.appSettings === "object" &&
+      Object.keys(globalThis.appSettings).length > 0
+    );
   }
   /**
    * life cycle willUpdate — handle theme/manifest derivation + notify events
@@ -472,6 +633,23 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         loadPage = true;
       }
     });
+    // the first timestamped load after login is the copy edits start from:
+    // site.json first, then the page body (a page load asked for while
+    // site.json is in flight is only queued), and the editor UI waits on it
+    if (
+      this.__resolveFreshManifest &&
+      this.isLoggedIn &&
+      this._timeStamp &&
+      changedProperties.has("_timeStamp") &&
+      this.__ready
+    ) {
+      const resolve = this.__resolveFreshManifest;
+      this.__resolveFreshManifest = null;
+      this.loadJOSData()
+        .then(() => this.loadPageData())
+        .then(resolve, resolve);
+      return;
+    }
     if (loadOutline && this.__ready) {
       this.loadJOSData();
     }
@@ -765,7 +943,17 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       ).href.replace("/haxcms.es.json", "/"),
       // Remove locales array to rely on manifest-based detection
     });
-    this._timeStamp = Math.floor(Date.now() / 1000);
+    // first load uses the URL exactly as the page shell gives it so a
+    // <link rel="preload"> of site.json / the active page is reused;
+    // freshness comes from no-cache + the idle revalidation, and logged-in
+    // users get a timestamped reload as soon as login is detected
+    this._timeStamp = "";
+    // resolves once a logged-in user has a fresh (timestamped) site.json and
+    // page; the editor builder waits on it before showing the editor UI.
+    // Capped so a slow or failed request never keeps the editor away.
+    this.freshManifestReady = new Promise((resolve) => {
+      this.__resolveFreshManifest = resolve;
+    });
     this.disableFeatures = "";
     this.isLoggedIn = false;
     this.__disposer = [];
@@ -911,36 +1099,32 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         detail: this,
       }),
     );
+    // toast loads on first use or on idle, never on the first-paint path
+    this._installLazyToast();
     // dyanmcially import the editor builder which figures out if we should have one
-    // prettier-ignore
-    import(
-      "@haxtheweb/haxcms-elements/lib/core/haxcms-editor-builder.js"
-    )
-      .then((_response) => {
-        import("./haxcms-toast.js");
-
-        this.editorBuilder = globalThis.document.createElement("haxcms-editor-builder");
-        // attach editor builder after we've appended to the screen
-        if (this.parentNode) {
-          this.parentNode.insertBefore(this.editorBuilder, this);
-        }
-        else {
-          globalThis.document.body.appendChild(this.editorBuilder);
-        }
-        // get fresh data if not published / demo which is a form of published
-        if (
-          HAXcmsStore.getApplicationContext() !==
-          "published"
-        ) {
-          this._timeStamp = Math.floor(Date.now() / 1000);
-        } else {
-          this._timeStamp = "";
-        }
-      })
-      .catch((error) => {
-        /* Error handling */
-        console.warn(error);
-      });
+    if (this._needsEditorBuilder()) {
+      // prettier-ignore
+      import(
+        "@haxtheweb/haxcms-elements/lib/core/haxcms-editor-builder.js"
+      )
+        .then((_response) => {
+          this.editorBuilder = globalThis.document.createElement("haxcms-editor-builder");
+          // attach editor builder after we've appended to the screen
+          if (this.parentNode) {
+            this.parentNode.insertBefore(this.editorBuilder, this);
+          }
+          else {
+            globalThis.document.body.appendChild(this.editorBuilder);
+          }
+          // freshness for every context comes from the idle revalidation
+          // (and, once logged in, the timestamped reload); no unconditional
+          // second download of site.json and the page here
+        })
+        .catch((error) => {
+          /* Error handling */
+          console.warn(error);
+        });
+    }
     globalThis.dispatchEvent(new Event("resize"));
     // haxtheweb/issues#3104: public, read-only WebMCP tools for browser
     // agents. Only loaded where the browser supports WebMCP; the module
@@ -1097,10 +1281,13 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     // execute 1st match
     let match = myRegexp.exec(html);
     while (match != null) {
-      let tag = match[1].replace("<", "").replace(">", "");
+      let tag = match[1].replace(/[<>]/g, "");
       if (tag.indexOf(" ")) {
         tag = tag.split(" ")[0];
       }
+      // a tag name only holds name characters, never quotes or markup, and
+      // it is written into an attribute below
+      tag = tag.replace(/[^\w.-]/g, "");
       // replace the matching custom element tag name with replace-tag
       // unless it's in the exclusion list (see replaceTagExcludedTags)
       if (

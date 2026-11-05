@@ -208,7 +208,26 @@ class HAXCMSEditorBuilder extends HTMLElement {
       reveal();
     }
   }
-  editorLoaded(_e) {
+  /**
+   * Resolves once the site builder has a fresh copy of site.json and the
+   * page for the logged-in user (or after a short cap), so the editor never
+   * starts from a cached or preloaded copy.
+   */
+  _freshManifestReady() {
+    const builder =
+      globalThis.HAXCMS.requestAvailability().storePieces.siteBuilder;
+    if (!builder || !builder.freshManifestReady) {
+      return Promise.resolve();
+    }
+    return Promise.race([
+      builder.freshManifestReady,
+      new Promise((resolve) => setTimeout(resolve, 8000)),
+    ]);
+  }
+  editorLoaded(e) {
+    this._freshManifestReady().then(() => this._editorLoaded(e));
+  }
+  _editorLoaded(_e) {
     this._dedupeEditorUIElements();
     if (
       (!store.cmsSiteEditor.haxCmsSiteEditorUIElement ||
