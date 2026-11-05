@@ -65,5 +65,10 @@
   "deleteAction": "ลบ",
   "replaceTitle": "แทนที่ในหน้า",
   "removeMatchesTitle": "นำรายการที่ตรงกันทั้งหมดออก",
-  "removeAction": "นำออก"
+  "removeAction": "นำออก",
+  "laActivitiesColumn": "กิจกรรม",
+  "laActivitiesCount": "องค์ประกอบที่ติดตามได้ {count} รายการ",
+  "laActivitiesOne": "องค์ประกอบที่ติดตามได้ 1 รายการ",
+  "laActivitiesNone": "ไม่มีองค์ประกอบที่ติดตามได้",
+  "laActivitiesCounting": "กำลังนับองค์ประกอบที่ติดตามได้"
 }

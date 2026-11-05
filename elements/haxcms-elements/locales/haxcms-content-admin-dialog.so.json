@@ -65,5 +65,10 @@
   "deleteAction": "Tirtir",
   "replaceTitle": "Ku beddel bogagga",
   "removeMatchesTitle": "Ka saar dhammaan isku-midka",
-  "removeAction": "Ka saar"
+  "removeAction": "Ka saar",
+  "laActivitiesColumn": "Hawlo",
+  "laActivitiesCount": "{count} curiye oo la raadraaci karo",
+  "laActivitiesOne": "1 curiye oo la raadraaci karo",
+  "laActivitiesNone": "Ma jiraan curiyeyaal la raadraaci karo",
+  "laActivitiesCounting": "Waa la tirinayaa curiyeyaasha la raadraaci karo"
 }

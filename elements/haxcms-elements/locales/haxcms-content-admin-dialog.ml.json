@@ -65,5 +65,10 @@
   "deleteAction": "ഇല്ലാതാക്കുക",
   "replaceTitle": "പേജുകളിൽ മാറ്റിസ്ഥാപിക്കുക",
   "removeMatchesTitle": "എല്ലാ പൊരുത്തങ്ങളും നീക്കം ചെയ്യുക",
-  "removeAction": "നീക്കം ചെയ്യുക"
+  "removeAction": "നീക്കം ചെയ്യുക",
+  "laActivitiesColumn": "പ്രവർത്തനങ്ങൾ",
+  "laActivitiesCount": "{count} ട്രാക്ക് ചെയ്യാവുന്ന ഘടകങ്ങൾ",
+  "laActivitiesOne": "1 ട്രാക്ക് ചെയ്യാവുന്ന ഘടകം",
+  "laActivitiesNone": "ട്രാക്ക് ചെയ്യാവുന്ന ഘടകങ്ങളില്ല",
+  "laActivitiesCounting": "ട്രാക്ക് ചെയ്യാവുന്ന ഘടകങ്ങൾ എണ്ണുന്നു"
 }

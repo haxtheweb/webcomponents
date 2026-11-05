@@ -64,7 +64,9 @@ export const SITE_ADMIN_SECTIONS = [
     // "insights" is the compatibility platform feature key for Reports
     capability: "insights",
     shell: true,
-    // Insights: nine screens computed in the browser; each is a route
+    // Insights: nine screens computed in the browser; each is a route.
+    // Learning activity (after Instructional) is drawn by its own element,
+    // haxcms-learning-activity-report, inside the same section.
     tag: "haxcms-site-reports",
     load: () => import("../insights/haxcms-site-reports.js"),
     footer: "none",
@@ -103,6 +105,13 @@ export const SITE_ADMIN_SECTIONS = [
         descriptionKey: "reportsInstructionalDescription",
         icon: HaxUiAdminIcons.instructional,
         route: "reports-instructional",
+      },
+      {
+        key: "learning",
+        labelKey: "reportsLearning",
+        descriptionKey: "reportsLearningDescription",
+        icon: HaxUiAdminIcons.check,
+        route: "reports-learning",
       },
       {
         key: "freshness",

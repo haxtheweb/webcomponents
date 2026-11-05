@@ -65,5 +65,10 @@
   "deleteAction": "مٹاؤ",
   "replaceTitle": "صفحیاں وچ بدلو",
   "removeMatchesTitle": "سارے میل ہٹاؤ",
-  "removeAction": "ہٹاؤ"
+  "removeAction": "ہٹاؤ",
+  "laActivitiesColumn": "سرگرمیاں",
+  "laActivitiesCount": "{count} ٹریک ہون والے عناصر",
+  "laActivitiesOne": "1 ٹریک ہون والا عنصر",
+  "laActivitiesNone": "کوئی ٹریک ہون والا عنصر نئیں",
+  "laActivitiesCounting": "ٹریک ہون والے عناصر گنے جا رہے نیں"
 }

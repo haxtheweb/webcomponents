@@ -65,5 +65,10 @@
   "deleteAction": "Supprimer",
   "replaceTitle": "Remplacer dans les pages",
   "removeMatchesTitle": "Supprimer toutes les occurrences",
-  "removeAction": "Supprimer"
+  "removeAction": "Supprimer",
+  "laActivitiesColumn": "Activités",
+  "laActivitiesCount": "{count} éléments suivis",
+  "laActivitiesOne": "1 élément suivi",
+  "laActivitiesNone": "Aucun élément suivi",
+  "laActivitiesCounting": "Comptage des éléments suivis"
 }

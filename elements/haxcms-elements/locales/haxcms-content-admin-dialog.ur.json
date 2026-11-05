@@ -65,5 +65,10 @@
   "deleteAction": "حذف کریں",
   "replaceTitle": "صفحات میں تبدیل کریں",
   "removeMatchesTitle": "تمام مماثلتیں ہٹائیں",
-  "removeAction": "ہٹائیں"
+  "removeAction": "ہٹائیں",
+  "laActivitiesColumn": "سرگرمیاں",
+  "laActivitiesCount": "{count} قابلِ ٹریک عناصر",
+  "laActivitiesOne": "1 قابلِ ٹریک عنصر",
+  "laActivitiesNone": "کوئی قابلِ ٹریک عنصر نہیں",
+  "laActivitiesCounting": "قابلِ ٹریک عناصر گنے جا رہے ہیں"
 }

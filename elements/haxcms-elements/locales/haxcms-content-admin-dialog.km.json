@@ -65,5 +65,10 @@
   "deleteAction": "លុប",
   "replaceTitle": "ជំនួសក្នុងទំព័រ",
   "removeMatchesTitle": "ដកចេញការផ្គូផ្គងទាំងអស់",
-  "removeAction": "ដកចេញ"
+  "removeAction": "ដកចេញ",
+  "laActivitiesColumn": "សកម្មភាព",
+  "laActivitiesCount": "ធាតុដែលអាចតាមដានបាន {count}",
+  "laActivitiesOne": "ធាតុដែលអាចតាមដានបាន 1",
+  "laActivitiesNone": "គ្មានធាតុដែលអាចតាមដានបាន",
+  "laActivitiesCounting": "កំពុងរាប់ធាតុដែលអាចតាមដានបាន"
 }

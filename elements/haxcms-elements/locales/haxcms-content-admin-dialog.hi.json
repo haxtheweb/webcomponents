@@ -65,5 +65,10 @@
   "deleteAction": "हटाएँ",
   "replaceTitle": "पेजों में बदलें",
   "removeMatchesTitle": "सभी मिलान हटाएँ",
-  "removeAction": "हटाएँ"
+  "removeAction": "हटाएँ",
+  "laActivitiesColumn": "गतिविधियाँ",
+  "laActivitiesCount": "{count} ट्रैक करने योग्य तत्व",
+  "laActivitiesOne": "1 ट्रैक करने योग्य तत्व",
+  "laActivitiesNone": "कोई ट्रैक करने योग्य तत्व नहीं",
+  "laActivitiesCounting": "ट्रैक करने योग्य तत्व गिने जा रहे हैं"
 }

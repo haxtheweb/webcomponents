@@ -65,5 +65,10 @@
   "deleteAction": "Cima",
   "replaceTitle": "Tshintsha kumaphepha",
   "removeMatchesTitle": "Susa zonke ezihambelanayo",
-  "removeAction": "Susa"
+  "removeAction": "Susa",
+  "laActivitiesColumn": "Imisebenzi",
+  "laActivitiesCount": "Izinto ezinokulandelelwa ezi-{count}",
+  "laActivitiesOne": "Into enye enokulandelelwa",
+  "laActivitiesNone": "Akukho zinto zinokulandelelwa",
+  "laActivitiesCounting": "Kubalwa izinto ezinokulandelelwa"
 }

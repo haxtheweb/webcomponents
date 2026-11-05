@@ -65,5 +65,10 @@
   "deleteAction": "Törlés",
   "replaceTitle": "Csere az oldalakon",
   "removeMatchesTitle": "Összes találat eltávolítása",
-  "removeAction": "Eltávolítás"
+  "removeAction": "Eltávolítás",
+  "laActivitiesColumn": "Tevékenységek",
+  "laActivitiesCount": "{count} követhető elem",
+  "laActivitiesOne": "1 követhető elem",
+  "laActivitiesNone": "Nincsenek követhető elemek",
+  "laActivitiesCounting": "Követhető elemek számlálása"
 }

@@ -65,5 +65,10 @@
   "deleteAction": "אויסמעקן",
   "replaceTitle": "פֿאַרבײַטן אין זײַטן",
   "removeMatchesTitle": "נעם אַוועק אַלע צופּאַסונגען",
-  "removeAction": "נעם אַוועק"
+  "removeAction": "נעם אַוועק",
+  "laActivitiesColumn": "אַקטיוויטעטן",
+  "laActivitiesCount": "{count} נאָכשפּורבאַרע עלעמענטן",
+  "laActivitiesOne": "1 נאָכשפּורבאַר עלעמענט",
+  "laActivitiesNone": "קיין נאָכשפּורבאַרע עלעמענטן",
+  "laActivitiesCounting": "ציילט נאָכשפּורבאַרע עלעמענטן"
 }

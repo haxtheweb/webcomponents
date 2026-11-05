@@ -65,5 +65,10 @@
   "deleteAction": "Verwijderen",
   "replaceTitle": "Vervangen in pagina's",
   "removeMatchesTitle": "Alle overeenkomsten verwijderen",
-  "removeAction": "Verwijderen"
+  "removeAction": "Verwijderen",
+  "laActivitiesColumn": "Activiteiten",
+  "laActivitiesCount": "{count} volgbare elementen",
+  "laActivitiesOne": "1 volgbaar element",
+  "laActivitiesNone": "Geen volgbare elementen",
+  "laActivitiesCounting": "Volgbare elementen tellen"
 }

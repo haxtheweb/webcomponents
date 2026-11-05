@@ -65,5 +65,10 @@
   "deleteAction": "Delete",
   "replaceTitle": "Replace in pages",
   "removeMatchesTitle": "Remove all matches",
-  "removeAction": "Remove"
+  "removeAction": "Remove",
+  "laActivitiesColumn": "Activities",
+  "laActivitiesCount": "{count} trackable elements",
+  "laActivitiesOne": "1 trackable element",
+  "laActivitiesNone": "No trackable elements",
+  "laActivitiesCounting": "Counting trackable elements"
 }

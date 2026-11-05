@@ -65,5 +65,10 @@
   "deleteAction": "Kustuta",
   "replaceTitle": "Asenda lehtedel",
   "removeMatchesTitle": "Eemalda kõik vasted",
-  "removeAction": "Eemalda"
+  "removeAction": "Eemalda",
+  "laActivitiesColumn": "Tegevused",
+  "laActivitiesCount": "{count} jälgitavat elementi",
+  "laActivitiesOne": "1 jälgitav element",
+  "laActivitiesNone": "Jälgitavaid elemente pole",
+  "laActivitiesCounting": "Jälgitavate elementide loendamine"
 }

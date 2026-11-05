@@ -65,5 +65,10 @@
   "deleteAction": "Busak",
   "replaceTitle": "Ganti ing kaca",
   "removeMatchesTitle": "Busak kabeh sing cocog",
-  "removeAction": "Busak"
+  "removeAction": "Busak",
+  "laActivitiesColumn": "Kagiyatan",
+  "laActivitiesCount": "{count} unsur sing bisa dilacak",
+  "laActivitiesOne": "1 unsur sing bisa dilacak",
+  "laActivitiesNone": "Ora ana unsur sing bisa dilacak",
+  "laActivitiesCounting": "Ngetung unsur sing bisa dilacak"
 }

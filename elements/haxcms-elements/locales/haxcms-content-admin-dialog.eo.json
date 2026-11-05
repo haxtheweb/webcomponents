@@ -65,5 +65,10 @@
   "deleteAction": "Forigi",
   "replaceTitle": "Anstataŭigi en paĝoj",
   "removeMatchesTitle": "Forigi ĉiujn kongruojn",
-  "removeAction": "Forigi"
+  "removeAction": "Forigi",
+  "laActivitiesColumn": "Aktivaĵoj",
+  "laActivitiesCount": "{count} spureblaj elementoj",
+  "laActivitiesOne": "1 spurebla elemento",
+  "laActivitiesNone": "Neniuj spureblaj elementoj",
+  "laActivitiesCounting": "Kalkulado de spureblaj elementoj"
 }

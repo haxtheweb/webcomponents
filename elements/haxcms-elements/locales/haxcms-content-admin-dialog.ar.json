@@ -65,5 +65,10 @@
   "deleteAction": "حذف",
   "replaceTitle": "استبدال في الصفحات",
   "removeMatchesTitle": "إزالة كل التطابقات",
-  "removeAction": "إزالة"
+  "removeAction": "إزالة",
+  "laActivitiesColumn": "الأنشطة",
+  "laActivitiesCount": "{count} من العناصر القابلة للتتبّع",
+  "laActivitiesOne": "عنصر واحد قابل للتتبّع",
+  "laActivitiesNone": "لا توجد عناصر قابلة للتتبّع",
+  "laActivitiesCounting": "جارٍ عدّ العناصر القابلة للتتبّع"
 }

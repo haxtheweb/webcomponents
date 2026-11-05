@@ -65,5 +65,10 @@
   "deleteAction": "Dzima",
   "replaceTitle": "Tsiva mumapeji",
   "removeMatchesTitle": "Bvisa zvese zvinoenderana",
-  "removeAction": "Bvisa"
+  "removeAction": "Bvisa",
+  "laActivitiesColumn": "Mabasa",
+  "laActivitiesCount": "Zvinhu {count} zvinoteverwa",
+  "laActivitiesOne": "Chinhu 1 chinoteverwa",
+  "laActivitiesNone": "Hapana zvinhu zvinoteverwa",
+  "laActivitiesCounting": "Kuverenga zvinhu zvinoteverwa"
 }

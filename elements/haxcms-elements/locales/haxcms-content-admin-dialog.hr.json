@@ -65,5 +65,10 @@
   "deleteAction": "Izbriši",
   "replaceTitle": "Zamjena na stranicama",
   "removeMatchesTitle": "Ukloni sva podudaranja",
-  "removeAction": "Ukloni"
+  "removeAction": "Ukloni",
+  "laActivitiesColumn": "Aktivnosti",
+  "laActivitiesCount": "Elemenata koje je moguće pratiti: {count}",
+  "laActivitiesOne": "1 element koji je moguće pratiti",
+  "laActivitiesNone": "Nema elemenata koje je moguće pratiti",
+  "laActivitiesCounting": "Brojanje elemenata koje je moguće pratiti"
 }

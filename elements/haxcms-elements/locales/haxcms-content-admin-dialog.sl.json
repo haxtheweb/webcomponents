@@ -65,5 +65,10 @@
   "deleteAction": "Izbriši",
   "replaceTitle": "Zamenjava na straneh",
   "removeMatchesTitle": "Odstrani vsa ujemanja",
-  "removeAction": "Odstrani"
+  "removeAction": "Odstrani",
+  "laActivitiesColumn": "Dejavnosti",
+  "laActivitiesCount": "Sledljivi elementi: {count}",
+  "laActivitiesOne": "1 sledljiv element",
+  "laActivitiesNone": "Ni sledljivih elementov",
+  "laActivitiesCounting": "Štetje sledljivih elementov"
 }

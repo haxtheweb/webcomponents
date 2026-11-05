@@ -65,5 +65,10 @@
   "deleteAction": "ဖျက်ရန်",
   "replaceTitle": "စာမျက်နှာများတွင် အစားထိုးရန်",
   "removeMatchesTitle": "ကိုက်ညီမှုအားလုံး ဖယ်ရှားရန်",
-  "removeAction": "ဖယ်ရှားရန်"
+  "removeAction": "ဖယ်ရှားရန်",
+  "laActivitiesColumn": "လှုပ်ရှားမှုများ",
+  "laActivitiesCount": "ခြေရာခံနိုင်သော ဒြပ်စင် {count} ခု",
+  "laActivitiesOne": "ခြေရာခံနိုင်သော ဒြပ်စင် 1 ခု",
+  "laActivitiesNone": "ခြေရာခံနိုင်သော ဒြပ်စင် မရှိပါ",
+  "laActivitiesCounting": "ခြေရာခံနိုင်သော ဒြပ်စင်များကို ရေတွက်နေသည်"
 }

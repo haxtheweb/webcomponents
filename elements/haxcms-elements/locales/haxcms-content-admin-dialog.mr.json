@@ -65,5 +65,10 @@
   "deleteAction": "हटवा",
   "replaceTitle": "पानांमध्ये बदला",
   "removeMatchesTitle": "सर्व जुळण्या काढा",
-  "removeAction": "काढा"
+  "removeAction": "काढा",
+  "laActivitiesColumn": "क्रिया",
+  "laActivitiesCount": "{count} ट्रॅक करता येणारे घटक",
+  "laActivitiesOne": "1 ट्रॅक करता येणारा घटक",
+  "laActivitiesNone": "ट्रॅक करता येणारे घटक नाहीत",
+  "laActivitiesCounting": "ट्रॅक करता येणारे घटक मोजले जात आहेत"
 }

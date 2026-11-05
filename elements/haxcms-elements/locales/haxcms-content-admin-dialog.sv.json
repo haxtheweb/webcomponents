@@ -65,5 +65,10 @@
   "deleteAction": "Ta bort",
   "replaceTitle": "Ersätt på sidor",
   "removeMatchesTitle": "Ta bort alla träffar",
-  "removeAction": "Ta bort"
+  "removeAction": "Ta bort",
+  "laActivitiesColumn": "Aktiviteter",
+  "laActivitiesCount": "{count} spårbara element",
+  "laActivitiesOne": "1 spårbart element",
+  "laActivitiesNone": "Inga spårbara element",
+  "laActivitiesCounting": "Räknar spårbara element"
 }

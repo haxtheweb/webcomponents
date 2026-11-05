@@ -65,5 +65,10 @@
   "deleteAction": "Wiskje",
   "replaceTitle": "Ferfange yn siden",
   "removeMatchesTitle": "Alle oerienkomsten fuortsmite",
-  "removeAction": "Fuortsmite"
+  "removeAction": "Fuortsmite",
+  "laActivitiesColumn": "Aktiviteiten",
+  "laActivitiesCount": "{count} folchbere eleminten",
+  "laActivitiesOne": "1 folchber elemint",
+  "laActivitiesNone": "Gjin folchbere eleminten",
+  "laActivitiesCounting": "Folchbere eleminten wurde teld"
 }

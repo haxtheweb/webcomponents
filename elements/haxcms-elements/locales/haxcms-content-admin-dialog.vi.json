@@ -65,5 +65,10 @@
   "deleteAction": "Xóa",
   "replaceTitle": "Thay thế trong các trang",
   "removeMatchesTitle": "Xóa tất cả kết quả khớp",
-  "removeAction": "Xóa"
+  "removeAction": "Xóa",
+  "laActivitiesColumn": "Hoạt động",
+  "laActivitiesCount": "{count} phần tử có thể theo dõi",
+  "laActivitiesOne": "1 phần tử có thể theo dõi",
+  "laActivitiesNone": "Không có phần tử có thể theo dõi",
+  "laActivitiesCounting": "Đang đếm phần tử có thể theo dõi"
 }

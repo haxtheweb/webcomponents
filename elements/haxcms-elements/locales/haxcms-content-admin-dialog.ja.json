@@ -65,5 +65,10 @@
   "deleteAction": "削除",
   "replaceTitle": "ページ内で置換",
   "removeMatchesTitle": "一致をすべて削除",
-  "removeAction": "削除"
+  "removeAction": "削除",
+  "laActivitiesColumn": "アクティビティ",
+  "laActivitiesCount": "追跡可能な要素 {count} 件",
+  "laActivitiesOne": "追跡可能な要素 1 件",
+  "laActivitiesNone": "追跡可能な要素なし",
+  "laActivitiesCounting": "追跡可能な要素を数えています"
 }

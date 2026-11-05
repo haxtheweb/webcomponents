@@ -65,5 +65,10 @@
   "deleteAction": "Избриши",
   "replaceTitle": "Замена во страници",
   "removeMatchesTitle": "Отстрани ги сите совпаѓања",
-  "removeAction": "Отстрани"
+  "removeAction": "Отстрани",
+  "laActivitiesColumn": "Активности",
+  "laActivitiesCount": "{count} елементи што може да се следат",
+  "laActivitiesOne": "1 елемент што може да се следи",
+  "laActivitiesNone": "Нема елементи што може да се следат",
+  "laActivitiesCounting": "Се бројат елементите што може да се следат"
 }

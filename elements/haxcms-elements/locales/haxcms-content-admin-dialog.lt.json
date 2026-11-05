@@ -65,5 +65,10 @@
   "deleteAction": "Ištrinti",
   "replaceTitle": "Pakeitimas puslapiuose",
   "removeMatchesTitle": "Pašalinti visus atitikmenis",
-  "removeAction": "Pašalinti"
+  "removeAction": "Pašalinti",
+  "laActivitiesColumn": "Veiklos",
+  "laActivitiesCount": "Sekamų elementų: {count}",
+  "laActivitiesOne": "1 sekamas elementas",
+  "laActivitiesNone": "Sekamų elementų nėra",
+  "laActivitiesCounting": "Skaičiuojami sekami elementai"
 }

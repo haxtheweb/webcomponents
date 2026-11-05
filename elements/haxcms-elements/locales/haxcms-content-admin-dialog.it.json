@@ -65,5 +65,10 @@
   "deleteAction": "Elimina",
   "replaceTitle": "Sostituisci nelle pagine",
   "removeMatchesTitle": "Rimuovi tutte le corrispondenze",
-  "removeAction": "Rimuovi"
+  "removeAction": "Rimuovi",
+  "laActivitiesColumn": "Attività",
+  "laActivitiesCount": "{count} elementi tracciabili",
+  "laActivitiesOne": "1 elemento tracciabile",
+  "laActivitiesNone": "Nessun elemento tracciabile",
+  "laActivitiesCounting": "Conteggio degli elementi tracciabili"
 }

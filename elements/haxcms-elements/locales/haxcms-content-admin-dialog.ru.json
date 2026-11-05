@@ -65,5 +65,10 @@
   "deleteAction": "Удалить",
   "replaceTitle": "Замена на страницах",
   "removeMatchesTitle": "Удалить все совпадения",
-  "removeAction": "Удалить"
+  "removeAction": "Удалить",
+  "laActivitiesColumn": "Задания",
+  "laActivitiesCount": "Отслеживаемых элементов: {count}",
+  "laActivitiesOne": "1 отслеживаемый элемент",
+  "laActivitiesNone": "Нет отслеживаемых элементов",
+  "laActivitiesCounting": "Подсчёт отслеживаемых элементов"
 }

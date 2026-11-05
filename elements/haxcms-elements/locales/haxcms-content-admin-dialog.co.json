@@ -65,5 +65,10 @@
   "deleteAction": "Squassà",
   "replaceTitle": "Rimpiazzà in e pagine",
   "removeMatchesTitle": "Caccià tutte e currispundenze",
-  "removeAction": "Caccià"
+  "removeAction": "Caccià",
+  "laActivitiesColumn": "Attività",
+  "laActivitiesCount": "{count} elementi tracciabili",
+  "laActivitiesOne": "1 elementu tracciabile",
+  "laActivitiesNone": "Nisun elementu tracciabile",
+  "laActivitiesCounting": "Contu di l'elementi tracciabili"
 }

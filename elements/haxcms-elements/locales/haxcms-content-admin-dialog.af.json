@@ -65,5 +65,10 @@
   "deleteAction": "Skrap",
   "replaceTitle": "Vervang in bladsye",
   "removeMatchesTitle": "Verwyder alle passings",
-  "removeAction": "Verwyder"
+  "removeAction": "Verwyder",
+  "laActivitiesColumn": "Aktiwiteite",
+  "laActivitiesCount": "{count} naspeurbare elemente",
+  "laActivitiesOne": "1 naspeurbare element",
+  "laActivitiesNone": "Geen naspeurbare elemente nie",
+  "laActivitiesCounting": "Tel naspeurbare elemente"
 }

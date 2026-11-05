@@ -65,5 +65,10 @@
   "deleteAction": "Susa",
   "replaceTitle": "Shintsha emakhasini",
   "removeMatchesTitle": "Susa konke okufanayo",
-  "removeAction": "Susa"
+  "removeAction": "Susa",
+  "laActivitiesColumn": "Imisebenzi",
+  "laActivitiesCount": "Izinto ezingalandelelwa ezingu-{count}",
+  "laActivitiesOne": "Into eyodwa engalandelelwa",
+  "laActivitiesNone": "Azikho izinto ezingalandelelwa",
+  "laActivitiesCounting": "Kubalwa izinto ezingalandelelwa"
 }

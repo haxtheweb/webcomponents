@@ -65,5 +65,10 @@
   "deleteAction": "Изтриване",
   "replaceTitle": "Замяна в страниците",
   "removeMatchesTitle": "Премахване на всички съвпадения",
-  "removeAction": "Премахване"
+  "removeAction": "Премахване",
+  "laActivitiesColumn": "Дейности",
+  "laActivitiesCount": "{count} проследяеми елемента",
+  "laActivitiesOne": "1 проследяем елемент",
+  "laActivitiesNone": "Няма проследяеми елементи",
+  "laActivitiesCounting": "Преброяване на проследяемите елементи"
 }

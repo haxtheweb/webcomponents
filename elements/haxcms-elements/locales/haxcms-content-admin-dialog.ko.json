@@ -65,5 +65,10 @@
   "deleteAction": "삭제",
   "replaceTitle": "페이지에서 바꾸기",
   "removeMatchesTitle": "일치 항목 모두 제거",
-  "removeAction": "제거"
+  "removeAction": "제거",
+  "laActivitiesColumn": "활동",
+  "laActivitiesCount": "추적 가능한 요소 {count}개",
+  "laActivitiesOne": "추적 가능한 요소 1개",
+  "laActivitiesNone": "추적 가능한 요소 없음",
+  "laActivitiesCounting": "추적 가능한 요소 세는 중"
 }

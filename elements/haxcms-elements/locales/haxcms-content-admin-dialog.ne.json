@@ -65,5 +65,10 @@
   "deleteAction": "मेटाउनुहोस्",
   "replaceTitle": "पेजहरूमा प्रतिस्थापन गर्नुहोस्",
   "removeMatchesTitle": "सबै मिल्दा परिणामहरू हटाउनुहोस्",
-  "removeAction": "हटाउनुहोस्"
+  "removeAction": "हटाउनुहोस्",
+  "laActivitiesColumn": "गतिविधिहरू",
+  "laActivitiesCount": "{count} ट्र्याक गर्न सकिने तत्वहरू",
+  "laActivitiesOne": "1 ट्र्याक गर्न सकिने तत्व",
+  "laActivitiesNone": "ट्र्याक गर्न सकिने तत्वहरू छैनन्",
+  "laActivitiesCounting": "ट्र्याक गर्न सकिने तत्वहरू गन्दै"
 }

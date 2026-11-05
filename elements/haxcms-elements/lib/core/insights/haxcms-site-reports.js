@@ -33,6 +33,15 @@ const SECTION_SCREENS = {
   components: () => import("./sections/insights-components.js"),
 };
 
+/**
+ * Screens that draw from their own scan rather than the analyzer results
+ * (each its own element, loaded when first shown). They take the same
+ * scope; Rescan rescans them too.
+ */
+const OWN_SCREENS = {
+  learning: () => import("./learning-activity-report.js"),
+};
+
 const DENSITY_KEY = "haxcms-site-reports-density";
 const DENSITIES = ["compact", "default", "roomy"];
 
@@ -147,6 +156,15 @@ class HAXCMSSiteReports extends HaxcmsAdminSectionMixin(I18NMixin(LitElement)) {
 
   async _loadScreen() {
     this._screenReady = false;
+    if (this._isOwnScreen()) {
+      try {
+        await OWN_SCREENS[this.section]();
+        this._screenReady = true;
+      } catch {
+        this._error = this.t.noScreen;
+      }
+      return;
+    }
     const id =
       INSIGHTS_SECTIONS.indexOf(this.section) !== -1
         ? this.section
@@ -167,7 +185,36 @@ class HAXCMSSiteReports extends HaxcmsAdminSectionMixin(I18NMixin(LitElement)) {
       : "site";
   }
 
+  _isOwnScreen() {
+    return Object.prototype.hasOwnProperty.call(OWN_SCREENS, this.section);
+  }
+
+  /** the page id an own screen reports on ("" for the whole site) */
+  _ownScreenRoot() {
+    return this._scope === "branch" ? this.selectedReportId || "" : "";
+  }
+
+  _renderOwnScreen() {
+    if (!this._screenReady) {
+      return nothing;
+    }
+    if (this.section === "learning") {
+      return html`<haxcms-learning-activity-report
+        root-id="${this._ownScreenRoot()}"
+      ></haxcms-learning-activity-report>`;
+    }
+    return nothing;
+  }
+
   async _scan(force) {
+    if (force && this._isOwnScreen() && this.shadowRoot) {
+      const own = this.shadowRoot.querySelector(
+        "haxcms-learning-activity-report",
+      );
+      if (own && own.hasUpdated) {
+        own.refresh(true);
+      }
+    }
     const key = this._cacheKey();
     if (!force && scanCache.key === key && scanCache.results) {
       this._results = scanCache.results;
@@ -293,6 +340,7 @@ class HAXCMSSiteReports extends HaxcmsAdminSectionMixin(I18NMixin(LitElement)) {
     if (!slug) {
       return;
     }
+    e.detail.handled = true;
     globalThis.dispatchEvent(
       new CustomEvent("simple-modal-hide", {
         bubbles: true,
@@ -510,7 +558,7 @@ class HAXCMSSiteReports extends HaxcmsAdminSectionMixin(I18NMixin(LitElement)) {
           type="button"
           class="btn export"
           title="${this.t.exportCsv}"
-          ?disabled="${!this._results}"
+          ?disabled="${!this._results || this._isOwnScreen()}"
           @click="${this._exportCsv}"
         >
           <simple-icon-lite
@@ -569,6 +617,9 @@ class HAXCMSSiteReports extends HaxcmsAdminSectionMixin(I18NMixin(LitElement)) {
   }
 
   _renderScreen() {
+    if (this._isOwnScreen()) {
+      return this._renderOwnScreen();
+    }
     if (
       this._status === "loading" ||
       (!this._results && this._status !== "error")

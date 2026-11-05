@@ -65,5 +65,10 @@
   "deleteAction": "Fshi",
   "replaceTitle": "Zëvendëso në faqe",
   "removeMatchesTitle": "Hiq të gjitha përputhjet",
-  "removeAction": "Hiq"
+  "removeAction": "Hiq",
+  "laActivitiesColumn": "Veprimtari",
+  "laActivitiesCount": "{count} elemente të gjurmueshme",
+  "laActivitiesOne": "1 element i gjurmueshëm",
+  "laActivitiesNone": "Asnjë element i gjurmueshëm",
+  "laActivitiesCounting": "Po numërohen elementet e gjurmueshme"
 }

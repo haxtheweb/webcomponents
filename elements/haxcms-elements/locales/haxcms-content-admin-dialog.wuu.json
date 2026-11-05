@@ -65,5 +65,10 @@
   "deleteAction": "删除",
   "replaceTitle": "勒页面里替换",
   "removeMatchesTitle": "移脱所有匹配",
-  "removeAction": "移脱"
+  "removeAction": "移脱",
+  "laActivitiesColumn": "活动",
+  "laActivitiesCount": "{count} 个可追踪元素",
+  "laActivitiesOne": "1 个可追踪元素",
+  "laActivitiesNone": "呒没可追踪元素",
+  "laActivitiesCounting": "正在数可追踪元素"
 }

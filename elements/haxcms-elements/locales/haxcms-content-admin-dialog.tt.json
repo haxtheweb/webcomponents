@@ -65,5 +65,10 @@
   "deleteAction": "Бетерү",
   "replaceTitle": "Битләрдә алыштыру",
   "removeMatchesTitle": "Барлык туры килүләрне алу",
-  "removeAction": "Алу"
+  "removeAction": "Алу",
+  "laActivitiesColumn": "Биремнәр",
+  "laActivitiesCount": "{count} күзәтелә торган элемент",
+  "laActivitiesOne": "1 күзәтелә торган элемент",
+  "laActivitiesNone": "Күзәтелә торган элементлар юк",
+  "laActivitiesCounting": "Күзәтелә торган элементлар санала"
 }

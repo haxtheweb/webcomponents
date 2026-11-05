@@ -65,5 +65,10 @@
   "deleteAction": "કાઢી નાખો",
   "replaceTitle": "પેજમાં બદલો",
   "removeMatchesTitle": "બધા મેળ દૂર કરો",
-  "removeAction": "દૂર કરો"
+  "removeAction": "દૂર કરો",
+  "laActivitiesColumn": "પ્રવૃત્તિઓ",
+  "laActivitiesCount": "{count} ટ્રેક કરી શકાય તેવા ઘટકો",
+  "laActivitiesOne": "1 ટ્રેક કરી શકાય તેવો ઘટક",
+  "laActivitiesNone": "કોઈ ટ્રેક કરી શકાય તેવા ઘટકો નથી",
+  "laActivitiesCounting": "ટ્રેક કરી શકાય તેવા ઘટકો ગણાઈ રહ્યા છે"
 }

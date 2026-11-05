@@ -65,5 +65,10 @@
   "deleteAction": "நீக்கு",
   "replaceTitle": "பக்கங்களில் மாற்றியமை",
   "removeMatchesTitle": "அனைத்துப் பொருத்தங்களையும் அகற்று",
-  "removeAction": "அகற்று"
+  "removeAction": "அகற்று",
+  "laActivitiesColumn": "செயல்பாடுகள்",
+  "laActivitiesCount": "{count} கண்காணிக்கக்கூடிய கூறுகள்",
+  "laActivitiesOne": "1 கண்காணிக்கக்கூடிய கூறு",
+  "laActivitiesNone": "கண்காணிக்கக்கூடிய கூறுகள் இல்லை",
+  "laActivitiesCounting": "கண்காணிக்கக்கூடிய கூறுகளை எண்ணுகிறது"
 }

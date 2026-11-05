@@ -65,5 +65,10 @@
   "deleteAction": "Qulluchiy",
   "replaceTitle": "P'anqakunapi rantinchay",
   "removeMatchesTitle": "Llapan tupaqkunata hurquy",
-  "removeAction": "Hurquy"
+  "removeAction": "Hurquy",
+  "laActivitiesColumn": "Rurayninkuna",
+  "laActivitiesCount": "{count} qatipay atina elementokuna",
+  "laActivitiesOne": "1 qatipay atina elemento",
+  "laActivitiesNone": "Mana qatipay atina elementokuna kanchu",
+  "laActivitiesCounting": "Qatipay atina elementokunata yupachkan"
 }

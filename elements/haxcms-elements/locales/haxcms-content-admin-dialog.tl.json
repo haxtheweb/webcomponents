@@ -65,5 +65,10 @@
   "deleteAction": "Burahin",
   "replaceTitle": "Palitan sa mga pahina",
   "removeMatchesTitle": "Alisin ang lahat ng tugma",
-  "removeAction": "Alisin"
+  "removeAction": "Alisin",
+  "laActivitiesColumn": "Mga aktibidad",
+  "laActivitiesCount": "{count} elementong nasusubaybayan",
+  "laActivitiesOne": "1 elementong nasusubaybayan",
+  "laActivitiesNone": "Walang elementong nasusubaybayan",
+  "laActivitiesCounting": "Binibilang ang mga elementong nasusubaybayan"
 }

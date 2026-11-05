@@ -65,5 +65,10 @@
   "deleteAction": "ړنګول",
   "replaceTitle": "په پاڼو کې ځای پر ځای کول",
   "removeMatchesTitle": "ټولې موندنې لرې کول",
-  "removeAction": "لرې کول"
+  "removeAction": "لرې کول",
+  "laActivitiesColumn": "فعالیتونه",
+  "laActivitiesCount": "{count} تعقیبېدونکي عناصر",
+  "laActivitiesOne": "۱ تعقیبېدونکی عنصر",
+  "laActivitiesNone": "هېڅ تعقیبېدونکی عنصر نشته",
+  "laActivitiesCounting": "تعقیبېدونکي عناصر شمېرل کېږي"
 }
