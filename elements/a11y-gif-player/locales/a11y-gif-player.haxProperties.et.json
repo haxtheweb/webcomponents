@@ -16,6 +16,16 @@
         "description": "Pildi alternatiivtekst."
       },
       {
+        "property": "mediaTitle",
+        "title": "Pealkiri",
+        "description": "GIF-i kohal kuvatav pealkiri."
+      },
+      {
+        "slot": "caption",
+        "title": "Pildiallkiri",
+        "description": "GIF-i all kuvatav pildiallkiri."
+      },
+      {
         "property": "longdesc",
         "title": "Pikk kirjeldus",
         "description": "GIF-i pikk kirjeldus ligipääsetavuse jaoks."

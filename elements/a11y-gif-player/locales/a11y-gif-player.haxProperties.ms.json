@@ -16,6 +16,16 @@
         "description": "Teks alternatif untuk imej."
       },
       {
+        "property": "mediaTitle",
+        "title": "Tajuk",
+        "description": "Tajuk yang dipaparkan di atas GIF."
+      },
+      {
+        "slot": "caption",
+        "title": "Kapsyen",
+        "description": "Kapsyen yang dipaparkan di bawah GIF."
+      },
+      {
         "property": "longdesc",
         "title": "Penerangan Panjang",
         "description": "Penerangan panjang GIF untuk kebolehcapaian."

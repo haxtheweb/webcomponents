@@ -16,6 +16,16 @@
         "description": "படத்திற்கான மாற்று உரை."
       },
       {
+        "property": "mediaTitle",
+        "title": "தலைப்பு",
+        "description": "GIF-க்கு மேலே காட்டப்படும் தலைப்பு."
+      },
+      {
+        "slot": "caption",
+        "title": "விளக்கவுரை",
+        "description": "GIF-க்குக் கீழே காட்டப்படும் விளக்கவுரை."
+      },
+      {
         "property": "longdesc",
         "title": "நீண்ட விளக்கம்",
         "description": "அணுகல்தன்மைக்காக GIF-இன் நீண்ட விளக்கம்."

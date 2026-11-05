@@ -16,6 +16,16 @@
         "description": "Teksti alternativ për imazhin."
       },
       {
+        "property": "mediaTitle",
+        "title": "Titulli",
+        "description": "Titulli që shfaqet mbi GIF."
+      },
+      {
+        "slot": "caption",
+        "title": "Përshkrimi",
+        "description": "Përshkrimi që shfaqet poshtë GIF-it."
+      },
+      {
         "property": "longdesc",
         "title": "Përshkrimi i gjatë",
         "description": "Përshkrim i gjatë i GIF-it për aksesueshmëri."

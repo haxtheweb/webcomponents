@@ -16,6 +16,16 @@
         "description": "ပုံအတွက် အစားထိုး စာသား။"
       },
       {
+        "property": "mediaTitle",
+        "title": "ခေါင်းစဉ်",
+        "description": "GIF ၏ အပေါ်တွင် ပြသသော ခေါင်းစဉ်။"
+      },
+      {
+        "slot": "caption",
+        "title": "စာတန်း",
+        "description": "GIF ၏ အောက်တွင် ပြသသော စာတန်း။"
+      },
+      {
         "property": "longdesc",
         "title": "အသေးစိတ် ဖော်ပြချက်",
         "description": "အသုံးပြုရလွယ်ကူစေရန် GIF ၏ အသေးစိတ် ဖော်ပြချက်။"

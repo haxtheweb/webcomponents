@@ -16,6 +16,16 @@
         "description": "Alternatyvusis vaizdo tekstas."
       },
       {
+        "property": "mediaTitle",
+        "title": "Pavadinimas",
+        "description": "Pavadinimas, rodomas virš GIF."
+      },
+      {
+        "slot": "caption",
+        "title": "Paaiškinimas",
+        "description": "Paaiškinimas, rodomas po GIF."
+      },
+      {
         "property": "longdesc",
         "title": "Išsamus aprašymas",
         "description": "Išsamus GIF aprašymas prieinamumui užtikrinti."

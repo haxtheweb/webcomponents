@@ -16,6 +16,16 @@
         "description": "Alternativa teksto por la bildo."
       },
       {
+        "property": "mediaTitle",
+        "title": "Titolo",
+        "description": "Titolo montrata super la GIF."
+      },
+      {
+        "slot": "caption",
+        "title": "Bildoteksto",
+        "description": "Bildoteksto montrata sub la GIF."
+      },
+      {
         "property": "longdesc",
         "title": "Longa priskribo",
         "description": "Longa priskribo de la GIF por alirebleco."

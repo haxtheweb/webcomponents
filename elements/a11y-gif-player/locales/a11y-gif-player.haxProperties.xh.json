@@ -16,6 +16,16 @@
         "description": "Umbhalo ongenayo womfanekiso."
       },
       {
+        "property": "mediaTitle",
+        "title": "Isihloko",
+        "description": "Isihloko esiboniswa ngaphezu kwe-GIF."
+      },
+      {
+        "slot": "caption",
+        "title": "Inkcazelo",
+        "description": "Inkcazelo eboniswa ngaphantsi kwe-GIF."
+      },
+      {
         "property": "longdesc",
         "title": "Inkcazelo Ende",
         "description": "Inkcazelo ende ye-GIF yokufikeleleka."

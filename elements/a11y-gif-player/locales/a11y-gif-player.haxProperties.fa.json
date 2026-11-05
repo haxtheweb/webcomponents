@@ -16,6 +16,16 @@
         "description": "متن جایگزین تصویر."
       },
       {
+        "property": "mediaTitle",
+        "title": "عنوان",
+        "description": "عنوانی که بالای GIF نمایش داده می‌شود."
+      },
+      {
+        "slot": "caption",
+        "title": "زیرنویس",
+        "description": "زیرنویسی که زیر GIF نمایش داده می‌شود."
+      },
+      {
         "property": "longdesc",
         "title": "توضیح مفصل",
         "description": "توضیح مفصل GIF برای دسترس‌پذیری."

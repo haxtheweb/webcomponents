@@ -16,6 +16,16 @@
         "description": "Testu alternativu per l'imagine."
       },
       {
+        "property": "mediaTitle",
+        "title": "Titulu",
+        "description": "Titulu affissatu sopra à u GIF."
+      },
+      {
+        "slot": "caption",
+        "title": "Legenda",
+        "description": "Legenda affissata sottu à u GIF."
+      },
+      {
         "property": "longdesc",
         "title": "Discrizzione longa",
         "description": "Discrizzione longa di u GIF per l'accessibilità."

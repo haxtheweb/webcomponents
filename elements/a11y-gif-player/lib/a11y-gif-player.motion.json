@@ -68,12 +68,32 @@
     {
       "type": "cursor",
       "keys": [
-        [0.8, 300, 360],
-        [1.4, 240, 248],
-        [2.5, 720, 340]
+        [
+          0.8,
+          300,
+          360
+        ],
+        [
+          1.4,
+          240,
+          248
+        ],
+        [
+          2.5,
+          720,
+          340
+        ]
       ],
-      "show": [[0.8, 3.2]],
-      "clicks": [1.5, 2.6]
+      "show": [
+        [
+          0.8,
+          3.2
+        ]
+      ],
+      "clicks": [
+        1.5,
+        2.6
+      ]
     },
     {
       "type": "box",
@@ -83,7 +103,10 @@
       "h": 225,
       "v": "hug",
       "r": 6,
-      "pop": [2.6, 0.6]
+      "pop": [
+        2.6,
+        0.6
+      ]
     },
     {
       "type": "glyph",
@@ -122,7 +145,7 @@
     },
     {
       "type": "text",
-      "s": "GIF",
+      "s": "The GIFs don't stop",
       "x": 524,
       "y": 486,
       "c": "cdd",
@@ -147,20 +170,35 @@
           "desc": "Alt Text"
         },
         {
-          "name": "longdesc",
-          "desc": "Long Description"
+          "name": "media-title",
+          "desc": "Title"
         },
         {
-          "name": "src-without-animation",
-          "desc": "Still Image"
+          "name": "longdesc",
+          "desc": "Long Description"
         }
       ],
       "active": [
-        [5, 0],
-        [7.4, 1],
-        [10, 2],
-        [12.4, 3],
-        [14.8, 0]
+        [
+          5,
+          0
+        ],
+        [
+          7.4,
+          1
+        ],
+        [
+          10,
+          2
+        ],
+        [
+          12.4,
+          3
+        ],
+        [
+          14.8,
+          0
+        ]
       ]
     },
     {
@@ -193,7 +231,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "longdesc=\"Pepe Silvia scene from…\""
+      "s": "media-title=\"The GIFs don't stop\""
     },
     {
       "type": "text",
@@ -201,7 +239,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "src-without-animation=\"photo.jpg\""
+      "s": "longdesc=\"Pepe Silvia scene from…\""
     },
     {
       "type": "text",
@@ -309,8 +347,8 @@
       "py": 494,
       "ex": 616,
       "ey": 546,
-      "label": "longdesc",
-      "sub": "\"Pepe Silvia scene from It's…",
+      "label": "media-title",
+      "sub": "\"The GIFs don't stop\"",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -321,8 +359,8 @@
       "py": 494,
       "ex": 796,
       "ey": 546,
-      "label": "src-without-animati…",
-      "sub": "upload or link",
+      "label": "longdesc",
+      "sub": "\"Pepe Silvia scene from It's…",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -344,8 +382,8 @@
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set long description",
-      "text": "Long description of the GIF for accessibility."
+      "title": "Set title and long description",
+      "text": "Title shown above the GIF. Long description of the GIF for accessibility."
     },
     {
       "t": 14.8,
@@ -359,7 +397,7 @@
     "line": "Make animated GIFs accessible.",
     "code": "<a11y-gif-player></a11y-gif-player>"
   },
-  "surfaceHash": "ca333fc1e611",
+  "surfaceHash": "f45bcc5ae51c",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

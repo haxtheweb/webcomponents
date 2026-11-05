@@ -16,6 +16,16 @@
         "description": "Alternatibong teksto para sa larawan."
       },
       {
+        "property": "mediaTitle",
+        "title": "Pamagat",
+        "description": "Pamagat na ipinapakita sa itaas ng GIF."
+      },
+      {
+        "slot": "caption",
+        "title": "Caption",
+        "description": "Caption na ipinapakita sa ibaba ng GIF."
+      },
+      {
         "property": "longdesc",
         "title": "Mahabang Paglalarawan",
         "description": "Mahabang paglalarawan ng GIF para sa accessibility."

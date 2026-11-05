@@ -16,6 +16,16 @@
         "description": "Рәсем өчен альтернатив текст."
       },
       {
+        "property": "mediaTitle",
+        "title": "Исем",
+        "description": "GIF өстендә күрсәтелә торган исем."
+      },
+      {
+        "slot": "caption",
+        "title": "Аңлатма",
+        "description": "GIF астында күрсәтелә торган аңлатма."
+      },
+      {
         "property": "longdesc",
         "title": "Озын тасвирлама",
         "description": "Үтемлелек өчен GIF-ның озын тасвирламасы."

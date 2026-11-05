@@ -86,8 +86,17 @@
             },
             {
               "kind": "method",
-              "name": "_updateFromSlot",
-              "description": "when slot changes update with animated gif"
+              "name": "_captionSlotChange",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Tracks whether anything is slotted into the caption slot so the caption\nrow only takes space when it has content."
+            },
+            {
+              "kind": "method",
+              "name": "_updateFromSlot"
             },
             {
               "kind": "field",
@@ -133,6 +142,28 @@
               "description": "whether GIF is playing",
               "default": "false",
               "attribute": "__playing"
+            },
+            {
+              "kind": "field",
+              "name": "mediaTitle",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Visible title shown in the block header. Falls back to alt.",
+              "default": "\"\"",
+              "attribute": "media-title",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "__hasCaption",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "__hasCaption"
             },
             {
               "kind": "field",
@@ -200,6 +231,23 @@
               },
               "description": "Alt text of gif",
               "fieldName": "alt"
+            },
+            {
+              "name": "media-title",
+              "type": {
+                "text": "string"
+              },
+              "description": "Visible title shown in the block header. Falls back to alt.",
+              "default": "\"\"",
+              "fieldName": "mediaTitle"
+            },
+            {
+              "name": "__hasCaption",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "__hasCaption"
             },
             {
               "name": "disabled",

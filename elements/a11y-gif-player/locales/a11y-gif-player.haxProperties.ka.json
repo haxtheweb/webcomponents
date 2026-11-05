@@ -16,6 +16,16 @@
         "description": "სურათის ალტერნატიული ტექსტი."
       },
       {
+        "property": "mediaTitle",
+        "title": "სათაური",
+        "description": "GIF-ის ზემოთ ნაჩვენები სათაური."
+      },
+      {
+        "slot": "caption",
+        "title": "წარწერა",
+        "description": "GIF-ის ქვემოთ ნაჩვენები წარწერა."
+      },
+      {
         "property": "longdesc",
         "title": "ვრცელი აღწერა",
         "description": "GIF-ის ვრცელი აღწერა ხელმისაწვდომობისთვის."

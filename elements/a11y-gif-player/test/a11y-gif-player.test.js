@@ -338,3 +338,93 @@ describe("a11y-gif-player hax integration", () => {
     ).to.be.true;
   });
 });
+
+// haxtheweb/issues#3124: a visible title and caption, like video-player
+describe("a11y-gif-player title and caption", () => {
+  it("falls back to alt in the header when no title is set", async () => {
+    const el = await playerFixture(
+      html`<a11y-gif-player
+        src="${DATA_URL}"
+        src-without-animation="${STATIC_URL}"
+        alt="An animated gif"
+      ></a11y-gif-player>`,
+    );
+    const title = el.shadowRoot.querySelector(".ddd-block-title");
+    expect(title.textContent.trim()).to.equal("An animated gif");
+    // alt is already the image's name, so the header copy stays hidden
+    expect(title.getAttribute("aria-hidden")).to.equal("true");
+    expect(el.shadowRoot.querySelector("#caption").hasAttribute("has-caption"))
+      .to.be.false;
+  });
+
+  it("shows media-title in the header and names the frame with it", async () => {
+    const el = await playerFixture(
+      html`<a11y-gif-player
+        src="${DATA_URL}"
+        src-without-animation="${STATIC_URL}"
+        alt="Map of China changing over time"
+        media-title="Timelapse of Chinese empires"
+      ></a11y-gif-player>`,
+    );
+    const title = el.shadowRoot.querySelector(".ddd-block-title");
+    expect(title.textContent.trim()).to.equal("Timelapse of Chinese empires");
+    expect(title.hasAttribute("aria-hidden")).to.be.false;
+    const frame = el.shadowRoot.querySelector(".ddd-block");
+    expect(frame.getAttribute("role")).to.equal("group");
+    expect(frame.getAttribute("aria-label")).to.contain(
+      "Timelapse of Chinese empires",
+    );
+    // alt stays on the image, untouched
+    expect(el.shadowRoot.querySelector("#gif").getAttribute("alt")).to.equal(
+      "Map of China changing over time",
+    );
+  });
+
+  it("renders a slotted caption below the gif", async () => {
+    const el = await playerFixture(
+      html`<a11y-gif-player
+        src="${DATA_URL}"
+        src-without-animation="${STATIC_URL}"
+        alt="A gif"
+        ><span slot="caption"
+          >Dynasties from 221 BCE to 1912</span
+        ></a11y-gif-player
+      >`,
+    );
+    await poll(() =>
+      el.shadowRoot.querySelector("#caption").hasAttribute("has-caption"),
+    );
+    const caption = el.shadowRoot.querySelector("#caption");
+    expect(caption.hasAttribute("has-caption")).to.be.true;
+    const container = el.shadowRoot.querySelector("#container");
+    // DOCUMENT_POSITION_FOLLOWING: the caption comes after the gif
+    expect(container.compareDocumentPosition(caption) & 4).to.equal(4);
+  });
+
+  it("does not adopt an image inside the caption as the still", async () => {
+    const el = await playerFixture(
+      html`<a11y-gif-player
+        src="${DATA_URL}"
+        src-without-animation="${STATIC_URL}"
+        ><span slot="caption"
+          ><img src="${DATA_URL}?t=icon" alt="icon" /> credit</span
+        ></a11y-gif-player
+      >`,
+    );
+    expect(el.srcWithoutAnimation).to.equal(STATIC_URL);
+    expect(el.alt).to.not.equal("icon");
+  });
+
+  it("is accessible with a title and caption", async () => {
+    const el = await playerFixture(
+      html`<a11y-gif-player
+        src="${DATA_URL}"
+        src-without-animation="${STATIC_URL}"
+        alt="A gif"
+        media-title="A title"
+        ><span slot="caption">A caption</span></a11y-gif-player
+      >`,
+    );
+    await expect(el).shadowDom.to.be.accessible();
+  });
+});

@@ -16,6 +16,16 @@
         "description": "Görselin alternatif metni."
       },
       {
+        "property": "mediaTitle",
+        "title": "Başlık",
+        "description": "GIF'in üstünde gösterilen başlık."
+      },
+      {
+        "slot": "caption",
+        "title": "Altyazı",
+        "description": "GIF'in altında gösterilen altyazı."
+      },
+      {
         "property": "longdesc",
         "title": "Uzun Açıklama",
         "description": "Erişilebilirlik için GIF'in uzun açıklaması."

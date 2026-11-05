@@ -16,6 +16,16 @@
         "description": "Testun amgen ar gyfer y ddelwedd."
       },
       {
+        "property": "mediaTitle",
+        "title": "Teitl",
+        "description": "Teitl a ddangosir uwchben y GIF."
+      },
+      {
+        "slot": "caption",
+        "title": "Capsiwn",
+        "description": "Capsiwn a ddangosir o dan y GIF."
+      },
+      {
         "property": "longdesc",
         "title": "Disgrifiad Hir",
         "description": "Disgrifiad hir o'r GIF er hygyrchedd."

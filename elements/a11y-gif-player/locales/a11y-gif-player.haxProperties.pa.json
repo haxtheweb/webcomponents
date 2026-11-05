@@ -16,6 +16,16 @@
         "description": "ਚਿੱਤਰ ਲਈ ਵਿਕਲਪਿਕ ਲਿਖਤ।"
       },
       {
+        "property": "mediaTitle",
+        "title": "ਸਿਰਲੇਖ",
+        "description": "GIF ਦੇ ਉੱਪਰ ਦਿਖਾਇਆ ਜਾਂਦਾ ਸਿਰਲੇਖ।"
+      },
+      {
+        "slot": "caption",
+        "title": "ਕੈਪਸ਼ਨ",
+        "description": "GIF ਦੇ ਹੇਠਾਂ ਦਿਖਾਇਆ ਜਾਂਦਾ ਕੈਪਸ਼ਨ।"
+      },
+      {
         "property": "longdesc",
         "title": "ਲੰਮਾ ਵੇਰਵਾ",
         "description": "ਪਹੁੰਚਯੋਗਤਾ ਲਈ GIF ਦਾ ਲੰਮਾ ਵੇਰਵਾ।"

@@ -16,6 +16,16 @@
         "description": "చిత్రం కోసం ప్రత్యామ్నాయ వచనం."
       },
       {
+        "property": "mediaTitle",
+        "title": "శీర్షిక",
+        "description": "GIF పైన చూపబడే శీర్షిక."
+      },
+      {
+        "slot": "caption",
+        "title": "క్యాప్షన్",
+        "description": "GIF కింద చూపబడే క్యాప్షన్."
+      },
+      {
         "property": "longdesc",
         "title": "దీర్ఘ వివరణ",
         "description": "ప్రాప్యత కోసం GIF యొక్క దీర్ఘ వివరణ."

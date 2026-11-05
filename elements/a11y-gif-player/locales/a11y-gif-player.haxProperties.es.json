@@ -16,6 +16,16 @@
         "description": "Texto alternativo de la imagen."
       },
       {
+        "property": "mediaTitle",
+        "title": "Título",
+        "description": "Título que se muestra encima del GIF."
+      },
+      {
+        "slot": "caption",
+        "title": "Pie de foto",
+        "description": "Pie de foto que se muestra debajo del GIF."
+      },
+      {
         "property": "longdesc",
         "title": "Descripción larga",
         "description": "Descripción larga del GIF para la accesibilidad."

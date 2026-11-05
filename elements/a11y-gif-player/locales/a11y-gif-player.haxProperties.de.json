@@ -16,6 +16,16 @@
         "description": "Alternativtext für das Bild."
       },
       {
+        "property": "mediaTitle",
+        "title": "Titel",
+        "description": "Titel, der über dem GIF angezeigt wird."
+      },
+      {
+        "slot": "caption",
+        "title": "Bildunterschrift",
+        "description": "Bildunterschrift, die unter dem GIF angezeigt wird."
+      },
+      {
         "property": "longdesc",
         "title": "Lange Beschreibung",
         "description": "Lange Beschreibung des GIFs für die Barrierefreiheit."

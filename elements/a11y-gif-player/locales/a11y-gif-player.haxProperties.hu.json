@@ -16,6 +16,16 @@
         "description": "A kép helyettesítő szövege."
       },
       {
+        "property": "mediaTitle",
+        "title": "Cím",
+        "description": "A GIF felett megjelenő cím."
+      },
+      {
+        "slot": "caption",
+        "title": "Képaláírás",
+        "description": "A GIF alatt megjelenő képaláírás."
+      },
+      {
         "property": "longdesc",
         "title": "Hosszú leírás",
         "description": "A GIF hosszú leírása az akadálymentesség érdekében."

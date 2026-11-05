@@ -16,6 +16,16 @@
         "description": "Суреттің балама мәтіні."
       },
       {
+        "property": "mediaTitle",
+        "title": "Тақырып",
+        "description": "GIF үстінде көрсетілетін тақырып."
+      },
+      {
+        "slot": "caption",
+        "title": "Сипаттама",
+        "description": "GIF астында көрсетілетін сипаттама."
+      },
+      {
         "property": "longdesc",
         "title": "Толық сипаттама",
         "description": "Қолжетімділік үшін GIF-тің толық сипаттамасы."

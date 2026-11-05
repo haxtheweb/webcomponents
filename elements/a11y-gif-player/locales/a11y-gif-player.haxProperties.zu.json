@@ -16,6 +16,16 @@
         "description": "Umbhalo ongenye wesithombe."
       },
       {
+        "property": "mediaTitle",
+        "title": "Isihloko",
+        "description": "Isihloko esiboniswa ngenhla kwe-GIF."
+      },
+      {
+        "slot": "caption",
+        "title": "Incazelo",
+        "description": "Incazelo eboniswa ngezansi kwe-GIF."
+      },
+      {
         "property": "longdesc",
         "title": "Incazelo Ende",
         "description": "Incazelo ende ye-GIF yokufinyeleleka."

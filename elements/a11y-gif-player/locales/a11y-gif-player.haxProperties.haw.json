@@ -16,6 +16,16 @@
         "description": "Kikokikona pani no ke kiʻi."
       },
       {
+        "property": "mediaTitle",
+        "title": "Poʻo inoa",
+        "description": "Poʻo inoa i hōʻike ʻia ma luna o ka GIF."
+      },
+      {
+        "slot": "caption",
+        "title": "Wehewehe",
+        "description": "Wehewehe i hōʻike ʻia ma lalo o ka GIF."
+      },
+      {
         "property": "longdesc",
         "title": "Wehewehe Lōʻihi",
         "description": "He wehewehe lōʻihi o ka GIF no ka hiki ke komo."

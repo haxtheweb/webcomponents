@@ -16,6 +16,16 @@
         "description": "טקסט חלופי לתמונה."
       },
       {
+        "property": "mediaTitle",
+        "title": "כותרת",
+        "description": "כותרת המוצגת מעל ה-GIF."
+      },
+      {
+        "slot": "caption",
+        "title": "כיתוב",
+        "description": "כיתוב המוצג מתחת ל-GIF."
+      },
+      {
         "property": "longdesc",
         "title": "תיאור מורחב",
         "description": "תיאור מורחב של ה-GIF לצורכי נגישות."

@@ -16,6 +16,16 @@
         "description": "Surat üçin alternatiw tekst."
       },
       {
+        "property": "mediaTitle",
+        "title": "Sözbaşy",
+        "description": "GIF-iň üstünde görkezilýän sözbaşy."
+      },
+      {
+        "slot": "caption",
+        "title": "Düşündiriş",
+        "description": "GIF-iň aşagynda görkezilýän düşündiriş."
+      },
+      {
         "property": "longdesc",
         "title": "Giňişleýin düşündiriş",
         "description": "Elýeterlilik üçin GIF-iň giňişleýin düşündirişi."

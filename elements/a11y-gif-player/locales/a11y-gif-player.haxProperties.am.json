@@ -16,6 +16,16 @@
         "description": "ለምስሉ አማራጭ ጽሑፍ።"
       },
       {
+        "property": "mediaTitle",
+        "title": "ርዕስ",
+        "description": "ከGIF በላይ የሚታይ ርዕስ።"
+      },
+      {
+        "slot": "caption",
+        "title": "መግለጫ ጽሑፍ",
+        "description": "ከGIF በታች የሚታይ መግለጫ ጽሑፍ።"
+      },
+      {
         "property": "longdesc",
         "title": "ረጅም መግለጫ",
         "description": "ለተደራሽነት የGIFው ረጅም መግለጫ።"

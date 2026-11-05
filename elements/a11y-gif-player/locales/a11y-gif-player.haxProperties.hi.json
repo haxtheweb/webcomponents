@@ -16,6 +16,16 @@
         "description": "छवि के लिए वैकल्पिक टेक्स्ट।"
       },
       {
+        "property": "mediaTitle",
+        "title": "शीर्षक",
+        "description": "GIF के ऊपर दिखाया जाने वाला शीर्षक।"
+      },
+      {
+        "slot": "caption",
+        "title": "कैप्शन",
+        "description": "GIF के नीचे दिखाया जाने वाला कैप्शन।"
+      },
+      {
         "property": "longdesc",
         "title": "विस्तृत विवरण",
         "description": "सुलभता के लिए GIF का विस्तृत विवरण।"

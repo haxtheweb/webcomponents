@@ -16,6 +16,16 @@
         "description": "Εναλλακτικό κείμενο για την εικόνα."
       },
       {
+        "property": "mediaTitle",
+        "title": "Τίτλος",
+        "description": "Τίτλος που εμφανίζεται πάνω από το GIF."
+      },
+      {
+        "slot": "caption",
+        "title": "Λεζάντα",
+        "description": "Λεζάντα που εμφανίζεται κάτω από το GIF."
+      },
+      {
         "property": "longdesc",
         "title": "Εκτενής περιγραφή",
         "description": "Εκτενής περιγραφή του GIF για προσβασιμότητα."

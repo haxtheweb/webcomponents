@@ -16,6 +16,16 @@
         "description": "तस्बिरको वैकल्पिक पाठ।"
       },
       {
+        "property": "mediaTitle",
+        "title": "शीर्षक",
+        "description": "GIF माथि देखाइने शीर्षक।"
+      },
+      {
+        "slot": "caption",
+        "title": "क्याप्सन",
+        "description": "GIF तल देखाइने क्याप्सन।"
+      },
+      {
         "property": "longdesc",
         "title": "लामो विवरण",
         "description": "पहुँचयोग्यताका लागि GIF को लामो विवरण।"

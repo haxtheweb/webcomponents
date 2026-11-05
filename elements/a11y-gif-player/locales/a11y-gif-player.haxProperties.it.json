@@ -16,6 +16,16 @@
         "description": "Testo alternativo per l'immagine."
       },
       {
+        "property": "mediaTitle",
+        "title": "Titolo",
+        "description": "Titolo mostrato sopra la GIF."
+      },
+      {
+        "slot": "caption",
+        "title": "Didascalia",
+        "description": "Didascalia mostrata sotto la GIF."
+      },
+      {
         "property": "longdesc",
         "title": "Descrizione estesa",
         "description": "Descrizione estesa della GIF per l'accessibilità."

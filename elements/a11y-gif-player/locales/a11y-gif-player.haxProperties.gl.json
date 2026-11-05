@@ -16,6 +16,16 @@
         "description": "Texto alternativo para a imaxe."
       },
       {
+        "property": "mediaTitle",
+        "title": "Título",
+        "description": "Título que se amosa enriba do GIF."
+      },
+      {
+        "slot": "caption",
+        "title": "Lenda",
+        "description": "Lenda que se amosa debaixo do GIF."
+      },
+      {
         "property": "longdesc",
         "title": "Descrición longa",
         "description": "Descrición longa do GIF para a accesibilidade."

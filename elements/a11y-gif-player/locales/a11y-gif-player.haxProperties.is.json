@@ -16,6 +16,16 @@
         "description": "Annar texti fyrir myndina."
       },
       {
+        "property": "mediaTitle",
+        "title": "Titill",
+        "description": "Titill sem birtist fyrir ofan GIF-myndina."
+      },
+      {
+        "slot": "caption",
+        "title": "Myndatexti",
+        "description": "Myndatexti sem birtist fyrir neðan GIF-myndina."
+      },
+      {
         "property": "longdesc",
         "title": "Löng lýsing",
         "description": "Löng lýsing á GIF-myndinni til að auka aðgengi."

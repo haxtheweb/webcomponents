@@ -16,6 +16,16 @@
         "description": "Պատկերի այլընտրանքային տեքստը։"
       },
       {
+        "property": "mediaTitle",
+        "title": "Վերնագիր",
+        "description": "GIF-ի վերևում ցուցադրվող վերնագիր։"
+      },
+      {
+        "slot": "caption",
+        "title": "Ստորագրություն",
+        "description": "GIF-ի ներքևում ցուցադրվող ստորագրություն։"
+      },
+      {
         "property": "longdesc",
         "title": "Երկար նկարագրություն",
         "description": "GIF-ի երկար նկարագրություն մատչելիության համար։"

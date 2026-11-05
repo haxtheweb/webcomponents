@@ -16,6 +16,16 @@
         "description": "អត្ថបទជំនួសសម្រាប់រូបភាព។"
       },
       {
+        "property": "mediaTitle",
+        "title": "ចំណងជើង",
+        "description": "ចំណងជើងដែលបង្ហាញនៅខាងលើ GIF។"
+      },
+      {
+        "slot": "caption",
+        "title": "ពាក្យពណ៌នា",
+        "description": "ពាក្យពណ៌នាដែលបង្ហាញនៅខាងក្រោម GIF។"
+      },
+      {
         "property": "longdesc",
         "title": "ការពិពណ៌នាវែង",
         "description": "ការពិពណ៌នាវែងនៃ GIF សម្រាប់ភាពងាយស្រួលចូលប្រើ។"

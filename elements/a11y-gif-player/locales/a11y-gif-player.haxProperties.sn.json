@@ -16,6 +16,16 @@
         "description": "Mavara anotsiva mufananidzo."
       },
       {
+        "property": "mediaTitle",
+        "title": "Musoro",
+        "description": "Musoro unoratidzwa pamusoro peGIF."
+      },
+      {
+        "slot": "caption",
+        "title": "Tsananguro",
+        "description": "Tsananguro inoratidzwa pazasi peGIF."
+      },
+      {
         "property": "longdesc",
         "title": "Tsananguro Yakareba",
         "description": "Tsananguro yakareba yeGIF yekuwanikwa nevose."

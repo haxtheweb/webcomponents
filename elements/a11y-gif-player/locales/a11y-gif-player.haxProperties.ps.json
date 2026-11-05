@@ -16,6 +16,16 @@
         "description": "د انځور لپاره بدیل متن."
       },
       {
+        "property": "mediaTitle",
+        "title": "سرلیک",
+        "description": "هغه سرلیک چې د GIF پورته ښودل کېږي."
+      },
+      {
+        "slot": "caption",
+        "title": "تشریح",
+        "description": "هغه تشریح چې د GIF لاندې ښودل کېږي."
+      },
+      {
         "property": "longdesc",
         "title": "اوږده تشریح",
         "description": "د لاسرسي لپاره د GIF اوږده تشریح."

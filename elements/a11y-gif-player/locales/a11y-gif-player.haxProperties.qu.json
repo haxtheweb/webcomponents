@@ -16,6 +16,16 @@
         "description": "Rikch'apaq hukniray qillqa."
       },
       {
+        "property": "mediaTitle",
+        "title": "Titulu",
+        "description": "GIF hanaqninpi rikuchisqa titulu."
+      },
+      {
+        "slot": "caption",
+        "title": "Sut'inchay",
+        "description": "GIF uranpi rikuchisqa sut'inchay."
+      },
+      {
         "property": "longdesc",
         "title": "Suni willakuy",
         "description": "GIFmanta suni willakuy, llapanpaq aypanalla kananpaq."

@@ -16,6 +16,16 @@
         "description": "Rasm uchun muqobil matn."
       },
       {
+        "property": "mediaTitle",
+        "title": "Sarlavha",
+        "description": "GIF ustida ko‘rsatiladigan sarlavha."
+      },
+      {
+        "slot": "caption",
+        "title": "Izoh",
+        "description": "GIF ostida ko‘rsatiladigan izoh."
+      },
+      {
         "property": "longdesc",
         "title": "Batafsil tavsif",
         "description": "Qulaylik uchun GIF-ning batafsil tavsifi."

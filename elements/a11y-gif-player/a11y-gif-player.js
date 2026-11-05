@@ -2,7 +2,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { LitElement, html, css, nothing } from "lit";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
@@ -46,6 +46,8 @@ class A11yGifPlayer extends I18NMixin(
     this.__gifLoaded = false;
     this.disabled = false;
     this.__playing = false;
+    this.mediaTitle = "";
+    this.__hasCaption = false;
     this._updateFromSlot();
     this.t = {
       toggleAnimation: "Toggle animation",
@@ -160,6 +162,17 @@ class A11yGifPlayer extends I18NMixin(
             )
           );
         }
+        /* visible title and caption, the same pattern video-player uses:
+           the block header carries the title, the caption row sits below
+           the gif and only renders when something is slotted into it */
+        .gif-caption {
+          margin: 0;
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-2) 0;
+          font-style: italic;
+        }
+        .gif-caption:not([has-caption]) {
+          display: none;
+        }
         #longdesc {
           position: absolute;
           left: 2px;
@@ -174,7 +187,17 @@ class A11yGifPlayer extends I18NMixin(
     this.__gifLoaded = true;
   }
   render() {
-    return html`<div class="ddd-block" part="frame">
+    // the visible title is authored; alt is the fallback so content made
+    // before media-title existed renders exactly as it did
+    const title = this.mediaTitle || this.alt;
+    return html`<div
+      class="ddd-block"
+      part="frame"
+      role="group"
+      aria-label="${this.t.animatedGif}${
+        this.mediaTitle ? `: ${this.mediaTitle}` : ""
+      }"
+    >
       <div class="ddd-block-header" part="frame-header">
         <span class="ddd-block-chip" aria-hidden="true"
           ><simple-icon-lite icon="icons:gif"></simple-icon-lite
@@ -184,9 +207,11 @@ class A11yGifPlayer extends I18NMixin(
             >${this.t.image} · ${this.t.animatedGif}</span
           >
           ${
-            this.alt
-              ? html`<span class="ddd-block-title" aria-hidden="true"
-                  >${this.alt}</span
+            title
+              ? html`<span
+                  class="ddd-block-title"
+                  aria-hidden="${this.mediaTitle ? nothing : "true"}"
+                  >${title}</span
                 >`
               : ``
           }
@@ -255,6 +280,15 @@ class A11yGifPlayer extends I18NMixin(
                     <div slot="details">${this.longdesc}</div>
                   </a11y-details>
                 </div>
+                <div
+                  id="caption"
+                  class="gif-caption"
+                  part="caption"
+                  ?has-caption="${this.__hasCaption}"
+                  @slotchange="${this._captionSlotChange}"
+                >
+                  <slot name="caption"></slot>
+                </div>
               `
             : ``
         }
@@ -278,6 +312,17 @@ class A11yGifPlayer extends I18NMixin(
        */
       alt: {
         type: String,
+      },
+      /**
+       * Visible title shown in the block header. Falls back to alt.
+       */
+      mediaTitle: {
+        type: String,
+        attribute: "media-title",
+        reflect: true,
+      },
+      __hasCaption: {
+        type: Boolean,
       },
       /**
        * Whether button is disabled
@@ -464,10 +509,29 @@ class A11yGifPlayer extends I18NMixin(
   /**
    * when slot changes update with animated gif
    */
+  /**
+   * Tracks whether anything is slotted into the caption slot so the caption
+   * row only takes space when it has content.
+   */
+  _captionSlotChange(e) {
+    const slot = e.target;
+    this.__hasCaption = !!(
+      slot &&
+      slot.assignedNodes &&
+      slot
+        .assignedNodes({ flatten: true })
+        .some(
+          (n) =>
+            n.nodeType === 1 ||
+            (n.nodeType === 3 && n.textContent.trim() !== ""),
+        )
+    );
+  }
   _updateFromSlot() {
     // ensures ssr works
     if (this.querySelector) {
-      let img = this.querySelector("img");
+      // images inside the caption are content, not the gif's still
+      let img = this.querySelector(":scope > img, :scope > :not([slot]) img");
       if (img) {
         let src = img.src || null;
         let alt = img.alt || null;
@@ -475,7 +539,9 @@ class A11yGifPlayer extends I18NMixin(
         if (alt) this.alt = alt;
       }
       // support simple-img tag since it can auto-convert gif to static!
-      img = this.querySelector("simple-img");
+      img = this.querySelector(
+        ":scope > simple-img, :scope > :not([slot]) simple-img",
+      );
       if (img) {
         let src = img.srcconverted || null;
         let alt = img.alt || null;

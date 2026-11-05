@@ -16,6 +16,16 @@
         "description": "画像の代替テキスト。"
       },
       {
+        "property": "mediaTitle",
+        "title": "タイトル",
+        "description": "GIFの上に表示されるタイトル。"
+      },
+      {
+        "slot": "caption",
+        "title": "キャプション",
+        "description": "GIFの下に表示されるキャプション。"
+      },
+      {
         "property": "longdesc",
         "title": "詳細説明",
         "description": "アクセシビリティのためのGIFの詳細説明。"

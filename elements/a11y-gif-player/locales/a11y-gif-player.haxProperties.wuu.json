@@ -16,6 +16,16 @@
         "description": "图片个替代文字。"
       },
       {
+        "property": "mediaTitle",
+        "title": "标题",
+        "description": "显示辣GIF上头个标题。"
+      },
+      {
+        "slot": "caption",
+        "title": "说明文字",
+        "description": "显示辣GIF下头个说明文字。"
+      },
+      {
         "property": "longdesc",
         "title": "长描述",
         "description": "GIF 个长描述，用于无障碍。"

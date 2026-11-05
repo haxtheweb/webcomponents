@@ -16,6 +16,16 @@
         "description": "Alternativni tekst za sliku."
       },
       {
+        "property": "mediaTitle",
+        "title": "Naslov",
+        "description": "Naslov prikazan iznad GIF-a."
+      },
+      {
+        "slot": "caption",
+        "title": "Natpis",
+        "description": "Natpis prikazan ispod GIF-a."
+      },
+      {
         "property": "longdesc",
         "title": "Dugi opis",
         "description": "Dugi opis GIF-a radi pristupačnosti."
