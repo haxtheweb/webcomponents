@@ -1,3 +1,6 @@
 {
-  "tokenSetOrder": ["ddd.tokens", "ddd.dark.tokens"]
+  "tokenSetOrder": [
+    "ddd.tokens",
+    "ddd.dark.tokens"
+  ]
 }
