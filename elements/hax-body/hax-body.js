@@ -3448,6 +3448,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           case "2-1-1":
           case "1-2-1":
           case "1-1-2":
+          case "2-1-2":
             node.layout = "1-1-1-1";
             changed = true;
             break;
@@ -3510,6 +3511,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           case "1-2-1":
           case "1-1-2":
             node.layout = "1-2";
+            changed = true;
+            break;
+          case "2-1-2":
+            node.layout = "1-1";
             changed = true;
             break;
         }
