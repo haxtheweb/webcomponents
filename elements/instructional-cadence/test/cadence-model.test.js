@@ -1,52 +1,48 @@
 import { expect } from "@open-wc/testing";
 import {
   CADENCE_WEIGHTS,
+  CADENCE_PARTS,
   pageWeight,
+  isRest,
   median,
-  buildLessons,
+  buildPhrases,
   lessonShape,
   analyzeCadence,
   cadenceToAlphaTex,
 } from "../lib/cadence-model.js";
+import { sampleItems, sampleRows } from "./larch060-sample.js";
 
-// a lesson shaped the way a well paced course plays: short setup, a middle
-// that moves, a peak, a lighter follow-up and a recap
-const wellPaced = [2, 1, 2, 3, 2, 5, 2, 3, 3];
+const beat = (weight, rest, leaf) => ({
+  weight,
+  rest: !!rest,
+  leaf: leaf !== false,
+});
 
-function course(lessonsRows) {
-  const items = [];
-  const rows = [];
-  lessonsRows.forEach((pages, l) => {
-    pages.forEach((row, p) => {
-      const id = `l${l}p${p}`;
-      items.push({
-        id,
-        title: `Lesson ${l} page ${p}`,
-        parent: p === 0 ? null : `l${l}p0`,
-        order: p,
-      });
-      rows.push(Object.assign({ id }, row));
-    });
-  });
-  return { items, rows };
+function lessonByTitle(analysis, start) {
+  return analysis.lessons.find((l) => l.title.indexOf(start) === 0);
 }
 
-describe("cadence-model", () => {
-  it("weights video as an activity, not by duration", () => {
+describe("cadence-model weights and rests", () => {
+  it("counts a video once as an activity, not by length or tag count", () => {
     expect(pageWeight({ videos: 1 })).to.equal(CADENCE_WEIGHTS.video);
-    expect(pageWeight({ videos: 1, videoLength: 9000 })).to.equal(
-      CADENCE_WEIGHTS.video,
-    );
+    expect(pageWeight({ videos: 2 })).to.equal(CADENCE_WEIGHTS.video);
   });
 
-  it("sums the content report fields", () => {
-    const w = pageWeight({ readTime: 3, images: 2, selfChecks: 1, h5p: 1 });
-    expect(w).to.be.closeTo(3 + 0.8 + 0.6 + 1, 0.0001);
+  it("reads words as reading minutes and adds media", () => {
+    const w = pageWeight({ words: 400, images: 2, embeds: 1 });
+    expect(w).to.be.closeTo(2 + 0.8 + 1, 0.0001);
   });
 
   it("ignores missing or bad values", () => {
     expect(pageWeight(null)).to.equal(0);
-    expect(pageWeight({ readTime: "abc", images: -2 })).to.equal(0);
+    expect(pageWeight({ words: "abc", images: -2 })).to.equal(0);
+  });
+
+  it("treats a blank page as a rest", () => {
+    expect(isRest({ words: 0 })).to.equal(true);
+    expect(isRest({ words: 8 })).to.equal(true);
+    expect(isRest({ words: 8, videos: 1 })).to.equal(false);
+    expect(isRest({ words: 200 })).to.equal(false);
   });
 
   it("computes medians", () => {
@@ -54,19 +50,43 @@ describe("cadence-model", () => {
     expect(median([1, 2, 3, 4])).to.equal(2.5);
     expect(median([])).to.equal(0);
   });
+});
 
-  it("groups parents whose children are all leaves into lessons", () => {
-    const items = [
-      { id: "m", parent: null, title: "Module", order: 0 },
-      { id: "l1", parent: "m", title: "Lesson 1", order: 0 },
-      { id: "a", parent: "l1", title: "A", order: 1 },
-      { id: "b", parent: "l1", title: "B", order: 0 },
-      { id: "solo", parent: null, title: "Solo page", order: 1 },
-    ];
-    const lessons = buildLessons(items);
-    expect(lessons.length).to.equal(1);
-    expect(lessons[0].id).to.equal("l1");
-    expect(lessons[0].pages.map((p) => p.id)).to.deep.equal(["l1", "b", "a"]);
+describe("cadence-model phrases", () => {
+  it("finds lessons two levels deep, segments included", () => {
+    const { depth, phrases } = buildPhrases(sampleItems);
+    expect(depth).to.equal(1);
+    const lessons = phrases.filter((p) => p.kind === "lesson");
+    expect(lessons.map((l) => l.title)).to.deep.equal([
+      "Orientation",
+      "Lesson 1: Ancient Egypt and Mesopotamia",
+      "Lesson 2: Ancient Greece",
+      "Lesson 19: American Park Movement",
+      'Lesson 35: "Urbanized" video by Gary Hustwit (2012)',
+    ]);
+    // lesson page, intro, outline, three segments of three, study guide
+    expect(lessons[1].pages.length).to.equal(13);
+  });
+
+  it("puts module pages, reviews and quizzes in interludes", () => {
+    const { phrases } = buildPhrases(sampleItems);
+    const interludes = phrases.filter((p) => p.kind === "interlude");
+    const titles = interludes.map((p) => p.pages.map((n) => n.item.title));
+    expect(titles).to.deep.include([
+      "Complete the Module 1 Review",
+      "Complete the Module 1 Quiz",
+    ]);
+  });
+
+  it("honours an explicit lesson depth", () => {
+    const { phrases } = buildPhrases(sampleItems, 2);
+    const first = phrases.find((p) => p.kind === "lesson" && p.pages.length);
+    expect(first.title).to.equal("Orientation");
+    expect(
+      phrases.some(
+        (p) => p.title === "1.1 The Beginning: Neolithic Revolution",
+      ),
+    ).to.equal(true);
   });
 
   it("treats items whose parent is filtered out as roots", () => {
@@ -74,71 +94,110 @@ describe("cadence-model", () => {
       { id: "l1", parent: "gone", title: "Lesson 1", order: 0 },
       { id: "a", parent: "l1", title: "A", order: 0 },
     ];
-    expect(buildLessons(items).map((l) => l.id)).to.deep.equal(["l1"]);
-  });
-
-  it("finds all five parts in a well paced lesson", () => {
-    const shape = lessonShape(wellPaced);
-    expect(shape.score).to.equal(5);
-    expect(shape.roles[0]).to.equal("setup");
-    expect(shape.roles[shape.peak]).to.equal("peak");
-    expect(shape.roles[wellPaced.length - 1]).to.equal("recap");
-  });
-
-  it("flags a front-loaded lesson", () => {
-    const shape = lessonShape([9, 12, 7, 0.2]);
-    expect(shape.checks.setup).to.equal(false);
-    expect(shape.checks.recap).to.equal(false);
-    expect(shape.score).to.be.below(3);
-  });
-
-  it("treats an empty page in the middle as a break in the dance", () => {
-    const shape = lessonShape([2, 1, 0, 2, 5, 2, 3]);
-    expect(shape.checks.dance).to.equal(false);
-  });
-
-  it("does not penalize light pages that keep the shape", () => {
-    const shape = lessonShape([1, 0.5, 1, 0.6, 2, 0.6, 1]);
-    expect(shape.checks.setup).to.equal(true);
-    expect(shape.checks.follow).to.equal(true);
-  });
-
-  it("scores a course and counts empty beats", () => {
-    const good = wellPaced.map((readTime) => ({ readTime }));
-    const bad = [{ readTime: 9 }, { readTime: 0 }, { readTime: 12 }];
-    const { items, rows } = course([good, bad]);
-    const result = analyzeCadence(items, rows);
-    expect(result.lessons.length).to.equal(2);
-    expect(result.lessons[0].score).to.equal(5);
-    expect(result.emptyBeats).to.equal(1);
-    expect(result.flow).to.be.below(100);
-  });
-
-  it("resolves the recap to the home note only when the recap passes", () => {
-    const { items, rows } = course([
-      wellPaced.map((readTime) => ({ readTime })),
-    ]);
-    const lesson = analyzeCadence(items, rows).lessons[0];
-    const last = lesson.beats[lesson.beats.length - 1].pitches;
-    expect(last[last.length - 1]).to.equal(5);
-  });
-
-  it("writes one bar per lesson with an N/4 time signature", () => {
-    const { items, rows } = course([
-      wellPaced.map((readTime) => ({ readTime })),
-    ]);
-    const tex = cadenceToAlphaTex(
-      analyzeCadence(items, rows),
-      'A "quoted" title',
+    const lessons = buildPhrases(items).phrases.filter(
+      (p) => p.kind === "lesson",
     );
-    expect(tex).to.contain("\\ts 9 4");
-    expect(tex).to.contain("\\tuning piano");
-    expect(tex).to.contain("\\instrument piano");
-    expect(tex).to.not.contain('"quoted"');
-    expect(tex.trim().endsWith("|")).to.equal(true);
+    expect(lessons.map((l) => l.id)).to.deep.equal(["l1"]);
+  });
+});
+
+describe("cadence-model lesson shape", () => {
+  it("finds all five parts in a well paced lesson", () => {
+    const shape = lessonShape([
+      beat(0, true, false),
+      beat(1.2),
+      beat(0.4),
+      beat(0, true, false),
+      beat(1),
+      beat(3.2),
+      beat(0, true, false),
+      beat(1),
+      beat(3.2),
+      beat(0.9),
+      beat(3.2),
+      beat(0.7),
+    ]);
+    expect(shape.score).to.equal(CADENCE_PARTS.length);
+    expect(shape.cadence).to.equal("authentic");
   });
 
-  it("writes nothing when there are no lessons", () => {
+  it("flags a top-heavy lesson", () => {
+    const shape = lessonShape([beat(9), beat(12), beat(7), beat(0.2, true)]);
+    expect(shape.checks.anacrusis).to.equal(false);
+    expect(shape.checks.cadence).to.equal(false);
+    expect(shape.cadence).to.equal("half");
+  });
+
+  it("stops the development at a blank content page", () => {
+    const shape = lessonShape([
+      beat(1),
+      beat(0.5),
+      beat(0, true, true),
+      beat(1.5),
+      beat(5),
+      beat(1),
+      beat(1),
+    ]);
+    expect(shape.checks.development).to.equal(false);
+  });
+
+  it("lets a blank page that leads to pages below it breathe", () => {
+    const shape = lessonShape([
+      beat(1),
+      beat(0.4),
+      beat(0, true, false),
+      beat(1.5),
+      beat(5),
+      beat(1),
+      beat(1),
+    ]);
+    expect(shape.checks.development).to.equal(true);
+  });
+
+  it("leaves a lesson that ends on its climax open", () => {
+    const shape = lessonShape([beat(1), beat(0.5), beat(1.5), beat(5)]);
+    expect(shape.checks.cadence).to.equal(false);
+  });
+});
+
+describe("cadence-model on LARCH 060", () => {
+  const analysis = analyzeCadence(sampleItems, sampleRows);
+
+  it("scores the evenly built lessons fully", () => {
+    expect(lessonByTitle(analysis, "Orientation").score).to.equal(5);
+    expect(lessonByTitle(analysis, "Lesson 2").score).to.equal(5);
+  });
+
+  it("hears the video placed before its preview in Lesson 19", () => {
+    const lesson = lessonByTitle(analysis, "Lesson 19");
+    expect(lesson.checks.decrescendo).to.equal(false);
+    expect(analysis.blankPages.map((b) => b.slug)).to.include("node/76");
+  });
+
+  it("hears Lesson 35 open on its video", () => {
+    const lesson = lessonByTitle(analysis, "Lesson 35");
+    expect(lesson.checks.anacrusis).to.equal(false);
+  });
+
+  it("plays segment and lesson title pages as rests", () => {
+    const lesson = lessonByTitle(analysis, "Lesson 1");
+    expect(lesson.beats[0].rest).to.equal(true);
+    expect(lesson.beats[3].rest).to.equal(true);
+    expect(lesson.beats[3].leaf).to.equal(false);
+  });
+
+  it("writes one bar per phrase with its title and an N/4 meter", () => {
+    const tex = cadenceToAlphaTex(analysis, 'LARCH "060"');
+    expect(tex).to.contain("\\ts 13 4");
+    expect(tex).to.contain(
+      '\\section "Lesson 1: Ancient Egypt and Mesopotamia"',
+    );
+    expect(tex).to.contain("\\instrument piano");
+    expect(tex).to.not.contain('"060"');
+    expect(tex).to.contain(":4 r");
+  });
+
+  it("writes nothing when there is nothing to play", () => {
     expect(cadenceToAlphaTex(analyzeCadence([], []))).to.equal("");
   });
 });

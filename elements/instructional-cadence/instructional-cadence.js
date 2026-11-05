@@ -13,17 +13,20 @@ import {
 
 /**
  * `instructional-cadence`
- * Renders a course's pacing as music: one measure per lesson, one beat per
- * page. Each lesson is checked for a five-part shape (setup, dance, peak,
- * follow-up, recap) and the result is engraved and played with
- * `sheet-music`. Built for the HAXcms Site Insights stats dashboard
+ * Renders a course's pacing as music. Each lesson is a phrase, written as one
+ * bar with a beat per page; blank pages are rests. Each lesson is checked
+ * for a five-part shape named with the music terms it borrows (anacrusis,
+ * development, climax, decrescendo, cadence) and the course is engraved and
+ * played with `sheet-music`. Built for the HAXcms Reports cadence screen
  * (haxtheweb/issues#3045).
  *
- * Data in, no fetching: pass the JSON Outline Schema items and the Site
- * Insights `content` report rows.
+ * Data in, no fetching: pass the JSON Outline Schema items and one row per
+ * page with its word, image, video and embed counts.
  *
  * @demo demo/index.html
  * @element instructional-cadence
+ * @fires cadence-open-page - { id, slug } before following a page link;
+ *   call preventDefault() on it to handle the navigation yourself
  */
 export class InstructionalCadence extends DDDSuper(I18NMixin(LitElement)) {
   static get tag() {
@@ -36,28 +39,49 @@ export class InstructionalCadence extends DDDSuper(I18NMixin(LitElement)) {
     this.rows = [];
     this.courseTitle = "";
     this.basePath = "";
+    this.lessonDepth = -1;
     this.hideScore = false;
+    this.hideStats = false;
     this._analysis = null;
     this._tex = "";
     this.t = this.t || {};
     this.t = {
       ...this.t,
       heading: "Instructional cadence",
-      flow: "Flow",
-      lessonsResolve: "Lessons resolve",
-      emptyBeats: "Empty pages",
-      pages: "pages",
-      noLessons:
-        "No lessons found. A lesson is a page whose child pages have no children of their own.",
       summary:
-        "Each lesson is one measure and each page is one beat. A well paced lesson has a short setup, a middle that moves, a peak, a lighter follow-up and a recap.",
-      setup: "Setup",
-      dance: "Dance",
-      peak: "Peak",
-      follow: "Follow-up",
-      recap: "Recap",
+        "Each lesson is a phrase: one bar, a beat per page, and a rest for each blank page. A well paced lesson opens lightly, develops, reaches one clear climax, eases off and closes.",
+      flow: "Flow",
+      flowNote: "five-part shape across lessons",
+      cadences: "Lessons that close",
+      cadencesNote: "end on an authentic cadence",
+      rests: "Rests",
+      restsNote: "blank pages",
+      blankPages: "Blank lesson pages",
+      blankNote: "pages with no children and no content",
+      partsLegend: "What each part means",
+      lessons: "Lessons",
+      interlude: "Interlude",
+      pages: "pages",
+      noLessons: "No lessons found in this part of the site.",
+      anacrusis: "Anacrusis",
+      anacrusisHelp:
+        "Opens lightly: the first page with content weighs well under the climax.",
+      development: "Development",
+      developmentHelp:
+        "The middle moves up and down on the way to the climax, with no blank pages.",
+      climax: "Climax",
+      climaxHelp:
+        "One clear high point, a quarter heavier than the lesson's typical page, past the first third.",
+      decrescendo: "Decrescendo",
+      decrescendoHelp: "The page after the climax eases off.",
+      cadence: "Cadence",
+      cadenceHelp:
+        "Closes on a page with content after the climax. Ending on a blank page or on the climax leaves it open (a half cadence).",
+      authentic: "authentic cadence",
+      half: "half cadence",
       present: "present",
-      missing: "missing, open the page behind it",
+      missing: "missing; open the page to look",
+      beatsLabel: "{n} pages, {rests} rests, climax on page {climax}",
       score: "Score",
     };
   }
@@ -67,14 +91,18 @@ export class InstructionalCadence extends DDDSuper(I18NMixin(LitElement)) {
       ...super.properties,
       /** JSON Outline Schema items ({id, parent, title, slug, order}) */
       items: { type: Array },
-      /** Site Insights content report rows (contentData) */
+      /** one row per page: {id, words, images, videos, embeds} */
       rows: { type: Array },
       /** Title used on the engraved score */
       courseTitle: { type: String, attribute: "course-title" },
       /** Prefix for page links, e.g. the site's base path */
       basePath: { type: String, attribute: "base-path" },
-      /** Skip rendering the sheet-music score (summary only) */
+      /** Outline level that holds the lessons; -1 finds it from the outline */
+      lessonDepth: { type: Number, attribute: "lesson-depth" },
+      /** Skip rendering the sheet-music score */
       hideScore: { type: Boolean, attribute: "hide-score", reflect: true },
+      /** Skip the summary numbers (when the host shows its own) */
+      hideStats: { type: Boolean, attribute: "hide-stats", reflect: true },
       _analysis: { type: Object, state: true },
     };
   }
@@ -196,6 +224,60 @@ export class InstructionalCadence extends DDDSuper(I18NMixin(LitElement)) {
           outline: var(--ddd-border-sm);
           outline-offset: var(--ddd-spacing-1);
         }
+        a {
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+        }
+        .beats {
+          display: flex;
+          align-items: flex-end;
+          gap: var(--ddd-spacing-1);
+          height: var(--ddd-spacing-8);
+        }
+        .beat {
+          flex: 0 0 var(--ddd-spacing-2);
+          height: calc(var(--beat-h, 0) * var(--ddd-spacing-8));
+          border-radius: var(--ddd-radius-xs);
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneGray),
+            var(--ddd-theme-default-slateGray)
+          );
+        }
+        .beat.climax {
+          background-color: light-dark(
+            var(--ddd-theme-default-beaverBlue),
+            var(--ddd-theme-default-skyBlue)
+          );
+        }
+        .beat.rest {
+          height: var(--ddd-spacing-1);
+          background-color: var(--ddd-theme-default-potential0);
+          border: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneGray),
+            var(--ddd-theme-default-slateGray)
+          );
+        }
+        .legend {
+          font-size: var(--ddd-font-size-4xs);
+        }
+        .legend dl {
+          display: grid;
+          gap: var(--ddd-spacing-1);
+          margin: var(--ddd-spacing-2) var(--ddd-spacing-0);
+        }
+        .legend dt {
+          font-weight: var(--ddd-font-weight-bold);
+        }
+        .legend dd {
+          margin: var(--ddd-spacing-0);
+        }
+        ol.lessons > li.interlude {
+          font-size: var(--ddd-font-size-4xs);
+          border-bottom-style: dashed;
+        }
         .visually-hidden {
           position: absolute;
           width: 1px;
@@ -216,8 +298,14 @@ export class InstructionalCadence extends DDDSuper(I18NMixin(LitElement)) {
     if (super.willUpdate) {
       super.willUpdate(changedProperties);
     }
-    if (changedProperties.has("items") || changedProperties.has("rows")) {
-      this._analysis = analyzeCadence(this.items, this.rows);
+    if (
+      changedProperties.has("items") ||
+      changedProperties.has("rows") ||
+      changedProperties.has("lessonDepth")
+    ) {
+      this._analysis = analyzeCadence(this.items, this.rows, {
+        depth: this.lessonDepth,
+      });
     }
   }
 
@@ -328,22 +416,31 @@ export class InstructionalCadence extends DDDSuper(I18NMixin(LitElement)) {
 
   _beatForPart(lesson, part) {
     const beats = lesson.beats;
-    const peak = lesson.roles.indexOf("peak");
+    const find = (role) => beats.findIndex((b) => b.role === role);
+    const climax = lesson.climax > -1 ? lesson.climax : 0;
     switch (part) {
-      case "setup":
-        return beats[0];
-      case "recap":
-        return beats[beats.length - 1];
-      case "peak":
-        return peak > -1 ? beats[peak] : beats[Math.floor(beats.length / 2)];
-      case "follow":
-        return peak > -1 && peak + 1 < beats.length
-          ? beats[peak + 1]
-          : beats[beats.length - 1];
-      default: {
-        const empty = beats.find((b, i) => i > 0 && b.empty);
-        return empty || beats[Math.min(1, beats.length - 1)];
+      case "anacrusis": {
+        const i = find("anacrusis");
+        return beats[i > -1 ? i : 0];
       }
+      case "development": {
+        const blank = beats.findIndex(
+          (b, i) => i > 0 && i < climax && b.rest && b.leaf,
+        );
+        if (blank > -1) {
+          return beats[blank];
+        }
+        const i = find("development");
+        return beats[i > -1 ? i : Math.min(1, beats.length - 1)];
+      }
+      case "climax":
+        return beats[climax];
+      case "decrescendo": {
+        const i = find("decrescendo");
+        return beats[i > -1 ? i : climax];
+      }
+      default:
+        return beats[beats.length - 1];
     }
   }
 
@@ -351,33 +448,122 @@ export class InstructionalCadence extends DDDSuper(I18NMixin(LitElement)) {
     if (!beat || !beat.slug) {
       return "";
     }
+    if (/^https?:\/\//.test(beat.slug)) {
+      return beat.slug;
+    }
     return `${this.basePath || ""}${beat.slug}`;
+  }
+
+  /**
+   * Let a host (the Reports dialog) take over navigation; otherwise the link
+   * is followed as usual.
+   */
+  _openPage(e, beat) {
+    const evt = new CustomEvent("cadence-open-page", {
+      bubbles: true,
+      composed: true,
+      cancelable: true,
+      detail: { id: beat.id, slug: beat.slug },
+    });
+    this.dispatchEvent(evt);
+    if (evt.defaultPrevented) {
+      e.preventDefault();
+    }
+  }
+
+  _pageLink(beat, label, ariaLabel) {
+    const href = this._pageHref(beat);
+    if (!href) {
+      return html`${label}`;
+    }
+    return html`<a
+      href="${href}"
+      title="${beat.title}"
+      aria-label="${ariaLabel || label}"
+      @click="${(e) => this._openPage(e, beat)}"
+      >${label}</a
+    >`;
   }
 
   _renderPart(lesson, part) {
     const label = this.t[part];
     if (lesson.checks[part]) {
-      return html`<li class="pass">
+      return html`<li class="pass" title="${this.t[`${part}Help`]}">
         <span aria-hidden="true">✓</span> ${label}
         <span class="visually-hidden">${this.t.present}</span>
       </li>`;
     }
     const beat = this._beatForPart(lesson, part);
-    const href = this._pageHref(beat);
-    return html`<li class="miss">
+    return html`<li class="miss" title="${this.t[`${part}Help`]}">
       <span aria-hidden="true">·</span>
-      ${
-        href
-          ? html`<a
-              href="${href}"
-              title="${beat.title}"
-              aria-label="${label}: ${this.t.missing} (${beat.title})"
-              >${label}</a
-            >`
-          : html`${label}
-              <span class="visually-hidden">${this.t.missing}</span>`
-      }
+      ${this._pageLink(
+        beat,
+        label,
+        `${label}: ${this.t.missing} (${beat ? beat.title : ""})`,
+      )}
     </li>`;
+  }
+
+  _renderBeats(phrase) {
+    const max = Math.max(1, ...phrase.beats.map((b) => b.ratio));
+    const rests = phrase.beats.filter((b) => b.rest).length;
+    const label = this.t.beatsLabel
+      .replace("{n}", () => phrase.beats.length)
+      .replace("{rests}", () => rests)
+      .replace("{climax}", () => phrase.climax + 1);
+    return html`<div
+      class="beats"
+      role="img"
+      aria-label="${phrase.kind === "lesson" ? label : ""}"
+    >
+      ${phrase.beats.map(
+        (b, i) =>
+          html`<span
+            class="beat ${b.rest ? "rest" : ""} ${
+              i === phrase.climax ? "climax" : ""
+            }"
+            style="--beat-h: ${b.rest ? 0 : Math.max(0.08, b.ratio / max)}"
+            title="${b.title}"
+          ></span>`,
+      )}
+    </div>`;
+  }
+
+  /** blank content pages, each with the phrase it sits in */
+  _blankBeats(a) {
+    const out = [];
+    a.lessons.forEach((phrase) => {
+      phrase.beats.forEach((beat) => {
+        if (beat.rest && beat.leaf) {
+          out.push({ phrase: phrase.title, beat });
+        }
+      });
+    });
+    return out;
+  }
+
+  _renderStats(a, lessons) {
+    if (this.hideStats) {
+      return "";
+    }
+    return html`<dl class="stats">
+      <div>
+        <dt>${this.t.flow}</dt>
+        <dd>${a.flow}%</dd>
+      </div>
+      <div>
+        <dt>${this.t.cadences}</dt>
+        <dd>${a.resolves}/${lessons.length}</dd>
+      </div>
+      <div>
+        <dt>${this.t.rests}</dt>
+        <dd>${a.rests}</dd>
+      </div>
+      <div>
+        <dt>${this.t.blankPages}</dt>
+        <dd>${a.blankPages.length}</dd>
+      </div>
+    </dl>`;
   }
 
   render() {
@@ -391,44 +577,74 @@ export class InstructionalCadence extends DDDSuper(I18NMixin(LitElement)) {
           lessons.length === 0
             ? html`<p>${this.t.noLessons}</p>`
             : html`
-                <dl class="stats">
-                  <div>
-                    <dt>${this.t.flow}</dt>
-                    <dd>${a.flow}%</dd>
-                  </div>
-                  <div>
-                    <dt>${this.t.lessonsResolve}</dt>
-                    <dd>${a.resolves}/${lessons.length}</dd>
-                  </div>
-                  <div>
-                    <dt>${this.t.emptyBeats}</dt>
-                    <dd>${a.emptyBeats}</dd>
-                  </div>
-                </dl>
-                <ol class="lessons">
-                  ${lessons.map(
-                    (lesson) => html`
-                      <li>
-                        <div class="lesson-head">
-                          <h4>${lesson.title}</h4>
-                          <span
-                            >${this.t.flow}
-                            ${lesson.score}/${CADENCE_PARTS.length} ·
-                            ${lesson.beats.length} ${this.t.pages}</span
-                          >
-                        </div>
-                        <ul class="parts">
-                          ${CADENCE_PARTS.map((part) =>
-                            this._renderPart(lesson, part),
-                          )}
-                        </ul>
-                      </li>
-                    `,
+                ${this._renderStats(a, lessons)}
+                <div class="score" ?hidden="${this.hideScore}"></div>
+                <details class="legend">
+                  <summary>${this.t.partsLegend}</summary>
+                  <dl>
+                    ${CADENCE_PARTS.map(
+                      (part) =>
+                        html`<div>
+                          <dt>${this.t[part]}</dt>
+                          <dd>${this.t[`${part}Help`]}</dd>
+                        </div>`,
+                    )}
+                  </dl>
+                </details>
+                ${
+                  a.blankPages.length
+                    ? html`<p class="blank">
+                        ${this.t.blankPages}:
+                        ${this._blankBeats(a).map(
+                          (item, i) =>
+                            html`${i ? ", " : ""}${this._pageLink(
+                              item.beat,
+                              `${item.phrase} › ${item.beat.title}`,
+                            )}`,
+                        )}
+                      </p>`
+                    : ""
+                }
+                <ol class="lessons" aria-label="${this.t.lessons}">
+                  ${a.phrases.map((phrase) =>
+                    phrase.kind === "lesson"
+                      ? html`<li>
+                          <div class="lesson-head">
+                            <h4>
+                              ${this._pageLink(phrase.beats[0], phrase.title)}
+                            </h4>
+                            <span
+                              >${this.t.flow}
+                              ${phrase.score}/${CADENCE_PARTS.length} ·
+                              ${phrase.beats.length} ${this.t.pages} ·
+                              ${this.t[phrase.cadence]}</span
+                            >
+                          </div>
+                          ${this._renderBeats(phrase)}
+                          <ul class="parts">
+                            ${CADENCE_PARTS.map((part) =>
+                              this._renderPart(phrase, part),
+                            )}
+                          </ul>
+                        </li>`
+                      : html`<li class="interlude">
+                          <div class="lesson-head">
+                            <span>${this.t.interlude}</span>
+                            <span
+                              >${phrase.beats.map(
+                                (b, i) =>
+                                  html`${i ? " · " : ""}${this._pageLink(
+                                    b,
+                                    b.title,
+                                  )}`,
+                              )}</span
+                            >
+                          </div>
+                        </li>`,
                   )}
                 </ol>
               `
         }
-        <div class="score" ?hidden="${this.hideScore}"></div>
       </div>
     `;
   }

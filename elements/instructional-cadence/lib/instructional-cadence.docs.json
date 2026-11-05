@@ -27,7 +27,7 @@
       "property": "rows",
       "type": "array",
       "default": "[]",
-      "description": "Site Insights content report rows (contentData)",
+      "description": "one row per page: {id, words, images, videos, embeds}",
       "hax": null
     },
     {
@@ -47,18 +47,36 @@
       "hax": null
     },
     {
+      "name": "lesson-depth",
+      "property": "lessonDepth",
+      "type": "number",
+      "default": "-1",
+      "description": "Outline level that holds the lessons; -1 finds it from the outline",
+      "hax": null
+    },
+    {
       "name": "hide-score",
       "property": "hideScore",
       "type": "boolean",
       "default": "false",
-      "description": "Skip rendering the sheet-music score (summary only)",
+      "description": "Skip rendering the sheet-music score",
+      "hax": null
+    },
+    {
+      "name": "hide-stats",
+      "property": "hideStats",
+      "type": "boolean",
+      "default": "false",
+      "description": "Skip the summary numbers (when the host shows its own)",
       "hax": null
     }
   ],
   "slots": [],
-  "events": [],
+  "events": [
+    "cadence-open-page"
+  ],
   "hax": {},
-  "surfaceHash": "e7e0321bacd5",
+  "surfaceHash": "5f01be94f899",
   "walkthroughs": [],
   "videos": [],
   "motion": {

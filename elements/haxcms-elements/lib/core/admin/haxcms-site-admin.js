@@ -206,6 +206,9 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
       reportsLearning: "Learning activity",
       reportsLearningDescription:
         "Which elements can record learner progress, page by page.",
+      reportsCadence: "Cadence",
+      reportsCadenceDescription:
+        "Listen to the course: each lesson as a phrase, and where its pacing breaks.",
       reportsFreshness: "Freshness",
       reportsFreshnessDescription:
         "When pages were last edited and what may be out of date.",

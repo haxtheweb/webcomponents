@@ -1,21 +1,6 @@
-import { html, fixture, expect } from "@open-wc/testing";
+import { html, fixture, expect, oneEvent } from "@open-wc/testing";
 import "../instructional-cadence.js";
-
-const items = [
-  { id: "l", parent: null, title: "Lesson 1", slug: "lesson-1", order: 0 },
-  { id: "a", parent: "l", title: "Outline", slug: "outline", order: 0 },
-  { id: "b", parent: "l", title: "Preview", slug: "preview", order: 1 },
-  { id: "c", parent: "l", title: "Video", slug: "video", order: 2 },
-  { id: "d", parent: "l", title: "Activity", slug: "activity", order: 3 },
-  { id: "e", parent: "l", title: "Lecture", slug: "lecture", order: 4 },
-  { id: "f", parent: "l", title: "Discussion", slug: "discussion", order: 5 },
-  { id: "g", parent: "l", title: "Practice", slug: "practice", order: 6 },
-  { id: "h", parent: "l", title: "Study Guide", slug: "study-guide", order: 7 },
-];
-const rows = [2, 1, 2, 3, 2, 5, 2, 3, 3].map((readTime, i) => ({
-  id: items[i].id,
-  readTime,
-}));
+import { sampleItems, sampleRows } from "./larch060-sample.js";
 
 describe("InstructionalCadence test", () => {
   let element;
@@ -23,9 +8,9 @@ describe("InstructionalCadence test", () => {
     element = await fixture(html`
       <instructional-cadence
         hide-score
-        .items="${items}"
-        .rows="${rows}"
-        course-title="Test course"
+        .items="${sampleItems}"
+        .rows="${sampleRows}"
+        course-title="LARCH 060"
       ></instructional-cadence>
     `);
   });
@@ -34,22 +19,44 @@ describe("InstructionalCadence test", () => {
     expect(element).to.exist;
   });
 
-  it("scores lessons from items and rows", async () => {
-    const lessons = element.shadowRoot.querySelectorAll("ol.lessons > li");
-    expect(lessons.length).to.equal(1);
-    expect(
-      element.shadowRoot.querySelectorAll("ul.parts li.pass").length,
-    ).to.equal(5);
+  it("lists lessons and interludes in reading order", async () => {
+    const lessons = element.shadowRoot.querySelectorAll(
+      "ol.lessons > li:not(.interlude)",
+    );
+    const interludes = element.shadowRoot.querySelectorAll(
+      "ol.lessons > li.interlude",
+    );
+    expect(lessons.length).to.equal(5);
+    expect(interludes.length).to.be.above(0);
+  });
+
+  it("draws a beat per page with rests", async () => {
+    const strip = element.shadowRoot.querySelectorAll(".beats")[1];
+    expect(strip.querySelectorAll(".beat").length).to.equal(13);
+    expect(strip.querySelectorAll(".beat.rest").length).to.equal(4);
+    expect(strip.querySelectorAll(".beat.climax").length).to.equal(1);
   });
 
   it("links a missing part to the page behind it", async () => {
-    element.rows = rows.map((r) =>
-      r.id === "h" ? { id: "h", readTime: 0 } : r,
-    );
-    await element.updateComplete;
+    const links = element.shadowRoot.querySelectorAll("ul.parts li.miss a");
+    expect(links.length).to.be.above(0);
+  });
+
+  it("lets a host take over page links", async () => {
     const link = element.shadowRoot.querySelector("ul.parts li.miss a");
-    expect(link).to.exist;
-    expect(link.getAttribute("href")).to.equal("study-guide");
+    element.addEventListener("cadence-open-page", (e) => e.preventDefault());
+    setTimeout(() => link.click());
+    const e = await oneEvent(element, "cadence-open-page");
+    expect(e.detail.slug).to.be.a("string");
+  });
+
+  it("re-groups lessons when the depth changes", async () => {
+    element.lessonDepth = 2;
+    await element.updateComplete;
+    const lessons = element.shadowRoot.querySelectorAll(
+      "ol.lessons > li:not(.interlude)",
+    );
+    expect(lessons.length).to.be.above(5);
   });
 
   it("shows an empty state without lessons", async () => {

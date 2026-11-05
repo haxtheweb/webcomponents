@@ -1177,87 +1177,12 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         selectedReportId,
       );
       if (loadedFromV1) {
-        if (normalizedActiveTab === "overview") {
-          this._loadCadenceRows(selectedReportId);
-        }
         return;
       }
     } catch {
       // intentionally empty
     }
     this.loading = false;
-  }
-  /**
-   * Instructional cadence (haxtheweb/issues#3045) scores lesson pacing from
-   * the content report rows. Loaded alongside the overview so the stats tab
-   * can show it without replacing the overview data.
-   */
-  async _loadCadenceRows(selectedReportId) {
-    this._cadenceRows = [];
-    try {
-      await import("@haxtheweb/instructional-cadence/instructional-cadence.js");
-      await waitForHAXCMSSiteApiRegistryReady();
-      if (
-        !MicroFrontendRegistry ||
-        typeof MicroFrontendRegistry.has !== "function" ||
-        !MicroFrontendRegistry.has("@site/getReportByName")
-      ) {
-        return;
-      }
-      const params = { report: "content" };
-      if (selectedReportId !== "") {
-        params["filter.ancestor"] = selectedReportId;
-      }
-      const response = await MicroFrontendRegistry.call(
-        "@site/getReportByName",
-        params,
-        null,
-        this,
-      );
-      const status = this._responseStatusCode(response);
-      if (
-        (status === 0 || status === 200) &&
-        response &&
-        response.data &&
-        typeof response.data === "object" &&
-        this._normalizeLegacyReportTabId(this.activeTab) === "overview" &&
-        this.selectedReportId === selectedReportId
-      ) {
-        const payload = this._normalizeReportPayloadData(response.data);
-        this._cadenceRows = Array.isArray(payload.contentData)
-          ? payload.contentData
-          : [];
-      }
-    } catch {
-      this._cadenceRows = [];
-    }
-  }
-  _renderCadence() {
-    if (
-      this._normalizeLegacyReportTabId(this.activeTab) !== "overview" ||
-      !Array.isArray(this._cadenceRows) ||
-      this._cadenceRows.length === 0
-    ) {
-      return "";
-    }
-    const rowIds = {};
-    this._cadenceRows.forEach((row) => {
-      if (row && row.id != null) {
-        rowIds[String(row.id)] = true;
-      }
-    });
-    // only score pages the report covered, so a filtered subtree is not
-    // read as a course full of empty pages
-    const items = store
-      .getManifestItems(true)
-      .filter((item) => rowIds[String(item.id)]);
-    const courseTitle =
-      store.manifest && store.manifest.title ? store.manifest.title : "";
-    return html`<instructional-cadence
-      .items="${items}"
-      .rows="${this._cadenceRows}"
-      course-title="${courseTitle}"
-    ></instructional-cadence>`;
   }
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -1954,7 +1879,6 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                     </div>
                   `
             }
-            ${this.loading ? "" : this._renderCadence()}
           </section>
         </div>
       </div>
@@ -2084,7 +2008,6 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     this.reportTabs = this._defaultReportTabs();
     this.activeTab = "overview";
     this.loading = false;
-    this._cadenceRows = [];
   }
   static get properties() {
     return {
@@ -2113,7 +2036,6 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         reflect: true,
       },
       loading: { type: Boolean, reflect: true },
-      _cadenceRows: { type: Array, state: true },
     };
   }
   pageSelector() {
