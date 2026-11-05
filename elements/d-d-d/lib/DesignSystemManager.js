@@ -245,7 +245,7 @@ export class DesignSystem extends LitElement {
         globalThis.document.head.appendChild(oldStyleSafariBs);
       }
       if (newSystem.fonts) {
-        newSystem.fonts.forEach((font) => {
+        mergeGoogleFontsURLs(newSystem.fonts).forEach((font) => {
           const link = globalThis.document.createElement("link");
           link.setAttribute("href", font);
           link.setAttribute("rel", "stylesheet");
@@ -259,6 +259,69 @@ export class DesignSystem extends LitElement {
       }
     }
   }
+}
+
+/**
+ * Google Fonts serves any number of families from one css2 request, so
+ * several css2 URLs with the same display value become one stylesheet (one
+ * request instead of one per family). Anything else is kept as given.
+ * @param {Array<String>} fonts stylesheet URLs
+ * @returns {Array<String>} the URLs to load
+ */
+export function mergeGoogleFontsURLs(fonts) {
+  const list = Array.isArray(fonts) ? fonts : [];
+  const groups = {};
+  const out = [];
+  list.forEach((font) => {
+    let url = null;
+    try {
+      url = new URL(font);
+    } catch {
+      url = null;
+    }
+    if (
+      url &&
+      url.protocol === "https:" &&
+      url.hostname === "fonts.googleapis.com" &&
+      url.pathname === "/css2" &&
+      url.searchParams.getAll("family").length > 0 &&
+      Array.from(url.searchParams.keys()).every(
+        (key) => key === "family" || key === "display",
+      )
+    ) {
+      const display = url.searchParams.get("display") || "";
+      if (!groups[display]) {
+        groups[display] = { families: [], index: out.length };
+        out.push(null);
+      }
+      url.searchParams.getAll("family").forEach((family) => {
+        if (!groups[display].families.includes(family)) {
+          groups[display].families.push(family);
+        }
+      });
+    } else {
+      out.push(font);
+    }
+  });
+  // the css2 syntax (Roboto+Slab:wght@300;400) reads best unescaped
+  const encode = (value) =>
+    encodeURIComponent(value)
+      .replace(/%20/g, "+")
+      .replace(/%3A/gi, ":")
+      .replace(/%3B/gi, ";")
+      .replace(/%2C/gi, ",")
+      .replace(/%40/gi, "@");
+  Object.keys(groups).forEach((display) => {
+    const params = groups[display].families.map(
+      (family) => `family=${encode(family)}`,
+    );
+    if (display) {
+      params.push(`display=${encode(display)}`);
+    }
+    out[groups[display].index] =
+      "https://fonts.googleapis.com/css2?" + params.join("&");
+  });
+  return out;
 }
 
 globalThis.customElements.define(DesignSystem.tag, DesignSystem);

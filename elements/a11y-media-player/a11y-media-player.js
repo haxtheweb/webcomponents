@@ -27,6 +27,7 @@ import "./lib/a11y-media-button.js";
 import "./lib/a11y-media-transcript-cue.js";
 import "./lib/a11y-media-youtube.js";
 import { removeThroughLast } from "@haxtheweb/utils/lib/safe-html.js";
+import { whenIdle } from "@haxtheweb/utils/lib/idle.js";
 
 /**
   * `a11y-media-player`
@@ -979,13 +980,15 @@ class A11yMediaPlayer extends SchemaBehaviors(
             <a11y-media-play-button
               id="playbutton"
               action="${this.__playing ? "pause" : "play"}"
-              label="${this.__playing
-                ? this.t && this.t.pauseLabel
-                  ? this.t.pauseLabel
-                  : "Pause"
-                : this.t && this.t.playLabel
-                  ? this.t.playLabel
-                  : "Play"}"
+              label="${
+                this.__playing
+                  ? this.t && this.t.pauseLabel
+                    ? this.t.pauseLabel
+                    : "Pause"
+                  : this.t && this.t.playLabel
+                    ? this.t.playLabel
+                    : "Play"
+              }"
               @button-click="${this.togglePlay}"
               ?audio-only="${this.audioOnly}"
               ?disabled="${this.audioNoThumb}"
@@ -995,40 +998,53 @@ class A11yMediaPlayer extends SchemaBehaviors(
             <div id="html5">
               <slot></slot>
             </div>
-            ${this.videoId && this.__playerReady
-              ? html`
-                  <a11y-media-youtube
-                    id="youtube-${this.id}"
-                    class="${this.__currentTime > 0.3 || this.__seeking
-                      ? ``
-                      : `hidden`}"
-                    lang="${this.mediaLang}"
-                    preload="${this.preload}"
-                    video-id="${this.videoId}"
-                    playback-rate="${this.playbackRate}"
-                    @timeupdate="${this._handleTimeUpdate}"
-                    @ended="${this._handleMediaEnded}"
-                  >
-                  </a11y-media-youtube>
-                `
-              : ``}
-            ${Object.keys(this.captionCues || []).length === 0 ||
-            !this.showCustomCaptions
-              ? html``
-              : html`
-                  <div id="cc-custom" aria-live="polite" class="screen-only">
-                    <div id="cc-text">
-                      ${!this.captionCues
-                        ? ``
-                        : Object.keys(this.captionCues).map(
-                            (key) =>
-                              html`${this.captionCues[key].text
-                                ? this.captionCues[key].text
-                                : ""}`,
-                          )}
+            ${
+              this.videoId && this.__playerReady && this.__youtubeWanted
+                ? html`
+                    <a11y-media-youtube
+                      id="youtube-${this.id}"
+                      ?autoplay="${this.__youtubePlayOnLoad}"
+                      .volume="${this.volume}"
+                      .muted="${this.muted}"
+                      class="${
+                        this.__currentTime > 0.3 || this.__seeking
+                          ? ``
+                          : `hidden`
+                      }"
+                      lang="${this.mediaLang}"
+                      preload="${this.preload}"
+                      video-id="${this.videoId}"
+                      playback-rate="${this.playbackRate}"
+                      @timeupdate="${this._handleTimeUpdate}"
+                      @ended="${this._handleMediaEnded}"
+                    >
+                    </a11y-media-youtube>
+                  `
+                : ``
+            }
+            ${
+              Object.keys(this.captionCues || []).length === 0 ||
+              !this.showCustomCaptions
+                ? html``
+                : html`
+                    <div id="cc-custom" aria-live="polite" class="screen-only">
+                      <div id="cc-text">
+                        ${
+                          !this.captionCues
+                            ? ``
+                            : Object.keys(this.captionCues).map(
+                                (key) =>
+                                  html`${
+                                    this.captionCues[key].text
+                                      ? this.captionCues[key].text
+                                      : ""
+                                  }`,
+                              )
+                        }
+                      </div>
                     </div>
-                  </div>
-                `}
+                  `
+            }
           </div>
         </div>
         <div id="progresslabel" class="sr-only">${this.t.seekSliderLabel}</div>
@@ -1082,8 +1098,9 @@ class A11yMediaPlayer extends SchemaBehaviors(
               class="hide-flex hide-full-xs"
               icon="av:fast-forward"
               label="${this.t.forwardLabel}"
-              ?disabled="${this.disableSeek ||
-              this.currentTime >= this.duration}"
+              ?disabled="${
+                this.disableSeek || this.currentTime >= this.duration
+              }"
               ?hidden="${this.disableSeek}"
               @click="${(_e) => {
                 this.forward();
@@ -1096,9 +1113,11 @@ class A11yMediaPlayer extends SchemaBehaviors(
               icon="av:replay"
               label="${this.t.restartLabel}"
               ?disabled="${this.disableSeek}"
-              ?hidden="${this.responsiveSize === "xs" ||
-              this.responsiveSize === "sm" ||
-              this.disableSeek}"
+              ?hidden="${
+                this.responsiveSize === "xs" ||
+                this.responsiveSize === "sm" ||
+                this.disableSeek
+              }"
               @click="${this.restart}"
             ></a11y-media-button>
             <div
@@ -1158,10 +1177,12 @@ class A11yMediaPlayer extends SchemaBehaviors(
               icon="description"
               label="${this.t.transcriptLabel}"
               ?disabled="${!this.hasCaptions || this.learningMode}"
-              ?hidden="${!this.hasCaptions ||
-              this.standAlone ||
-              (this.height && this.responsiveSize.indexOf("s") > -1) ||
-              this.learningMode}"
+              ?hidden="${
+                !this.hasCaptions ||
+                this.standAlone ||
+                (this.height && this.responsiveSize.indexOf("s") > -1) ||
+                this.learningMode
+              }"
               ?toggle="${this.transcriptTrackKey > -1}"
               @click="${(_e) => this.toggleTranscript()}"
             >
@@ -1196,17 +1217,19 @@ class A11yMediaPlayer extends SchemaBehaviors(
               label="${this.t.settingsLabel}"
               @click="${(_e) => this.toggleSettings()}"
             ></a11y-media-button>
-            ${this.isYoutube
-              ? html` <a11y-media-button
-                  accent-color="${this.accentColor}"
-                  ?dark="${this.dark}"
-                  class="hide-sticky"
-                  icon="mdi-social:youtube"
-                  label="${this.t.openOnYouTube}"
-                  ?hidden="${this.learningMode || this.hideYoutubeLink}"
-                  @click="${this.goToYoutube}"
-                ></a11y-media-button>`
-              : ``}
+            ${
+              this.isYoutube
+                ? html` <a11y-media-button
+                    accent-color="${this.accentColor}"
+                    ?dark="${this.dark}"
+                    class="hide-sticky"
+                    icon="mdi-social:youtube"
+                    label="${this.t.openOnYouTube}"
+                    ?hidden="${this.learningMode || this.hideYoutubeLink}"
+                    @click="${this.goToYoutube}"
+                  ></a11y-media-button>`
+                : ``
+            }
           </div>
           <absolute-position-behavior
             id="settings"
@@ -1330,13 +1353,15 @@ class A11yMediaPlayer extends SchemaBehaviors(
         </div>
         <div class="print-only media-caption">${this.printCaption}</div>
       </div>
-      ${this.poster
-        ? html`<img
-            id="print-thumbnail"
-            aria-hidden="true"
-            src="${this.poster}"
-          />`
-        : ``}
+      ${
+        this.poster
+          ? html`<img
+              id="print-thumbnail"
+              aria-hidden="true"
+              src="${this.poster}"
+            />`
+          : ``
+      }
       <div
         id="transcript-section"
         ?hidden="${this.standAlone || !this.hasCaptions}"
@@ -1403,47 +1428,55 @@ class A11yMediaPlayer extends SchemaBehaviors(
             <a id="transcript-desc" class="sr-only" href="#bottom">
               ${this.t.transcriptSkip}
             </a>
-            ${this.transcriptCues.length > 0
-              ? html`
-                  <div class="transcript-from-track">
-                    ${this.transcriptCues.map((cue, _index) => {
-                      return html`
-                        <a11y-media-transcript-cue
-                          controls="html5"
-                          end="${this._getHHMMSS(
-                            cue.endTime,
-                            this.media.duration,
-                          )}"
-                          lang="${cue.track.language}"
-                          role="button"
-                          start="${this._getHHMMSS(
-                            cue.startTime,
-                            this.media.duration,
-                          )}"
-                          tabindex="${this.disableInteractive ||
-                          this.disableSeek ||
-                          this.duration === 0
-                            ? -1
-                            : 0}"
-                          @click="${(_e) => this._handleCueSeek(cue)}"
-                          @keydown="${(e) => this._handleCueKeydown(e, cue)}"
-                          @active-changed="${this._setActiveCue}"
-                          ?active="${cue.track.activeCues &&
-                          cue.track.activeCues[0] === cue}"
-                          ?disabled="${this.disableInteractive ||
-                          this.disableSeek ||
-                          this.duration === 0}"
-                          ?hide-timestamps="${this.hideTimestamps}"
-                        >
-                          <span class="searchable">${cue.text}</span>
-                        </a11y-media-transcript-cue>
-                      `;
-                    })}
-                  </div>
-                `
-              : html` <div id="loading" class="transcript-from-track">
-                  ${this.status}
-                </div>`}
+            ${
+              this.transcriptCues.length > 0
+                ? html`
+                    <div class="transcript-from-track">
+                      ${this.transcriptCues.map((cue, _index) => {
+                        return html`
+                          <a11y-media-transcript-cue
+                            controls="html5"
+                            end="${this._getHHMMSS(
+                              cue.endTime,
+                              this.media.duration,
+                            )}"
+                            lang="${cue.track.language}"
+                            role="button"
+                            start="${this._getHHMMSS(
+                              cue.startTime,
+                              this.media.duration,
+                            )}"
+                            tabindex="${
+                              this.disableInteractive ||
+                              this.disableSeek ||
+                              this.duration === 0
+                                ? -1
+                                : 0
+                            }"
+                            @click="${(_e) => this._handleCueSeek(cue)}"
+                            @keydown="${(e) => this._handleCueKeydown(e, cue)}"
+                            @active-changed="${this._setActiveCue}"
+                            ?active="${
+                              cue.track.activeCues &&
+                              cue.track.activeCues[0] === cue
+                            }"
+                            ?disabled="${
+                              this.disableInteractive ||
+                              this.disableSeek ||
+                              this.duration === 0
+                            }"
+                            ?hide-timestamps="${this.hideTimestamps}"
+                          >
+                            <span class="searchable">${cue.text}</span>
+                          </a11y-media-transcript-cue>
+                        `;
+                      })}
+                    </div>
+                  `
+                : html` <div id="loading" class="transcript-from-track">
+                    ${this.status}
+                  </div>`
+            }
           </div>
         </div>
       </div>
@@ -1460,6 +1493,8 @@ class A11yMediaPlayer extends SchemaBehaviors(
        */
       typeof: { type: String, reflect: true },
       __playerReady: { type: Boolean },
+      __youtubeWanted: { type: Boolean },
+      __youtubePlayOnLoad: { type: Boolean },
       /**
        * Allow this media to play concurrently with other a11y-media-players?
        * Default is to pause this a11y-media-player when other a11y-media-player starts playing.
@@ -1892,6 +1927,11 @@ class A11yMediaPlayer extends SchemaBehaviors(
     globalThis.ResponsiveUtility.requestAvailability();
     globalThis.A11yMediaStateManager.requestAvailability();
     this.__playerReady = false;
+    // the YouTube player (its API script and embed iframe) is created when
+    // the browser is idle after this player is ready, or right away when
+    // someone presses play; until then the thumbnail and play button show
+    this.__youtubeWanted = false;
+    this.__youtubePlayOnLoad = false;
     this.audioOnly = false;
     this.autoplay = false;
     this.allowConcurrent = false;
@@ -2788,6 +2828,12 @@ class A11yMediaPlayer extends SchemaBehaviors(
    */
   play() {
     this.__playing = true;
+    if (this.isYoutube && !this.youtube) {
+      // nothing to play yet: create the YouTube player and start it once
+      // it is ready
+      this.__youtubePlayOnLoad = true;
+      this.__youtubeWanted = true;
+    }
     if (this.media && this.media.play) this.media.play();
     /**
      * Fires when media plays
@@ -3806,6 +3852,14 @@ class A11yMediaPlayer extends SchemaBehaviors(
       }),
     );
     this.__playerReady = true;
+    if (!this.__youtubeWanted) {
+      whenIdle(
+        () => {
+          this.__youtubeWanted = true;
+        },
+        { timeout: 4000, fallbackDelay: 1500 },
+      );
+    }
   }
   /**
    * on a cue.onenter event scrolls the first active cue to position

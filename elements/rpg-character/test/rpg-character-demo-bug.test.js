@@ -1,4 +1,20 @@
-import { fixture, expect, html } from "@open-wc/testing";
+import { fixture as baseFixture, expect, html } from "@open-wc/testing";
+
+// rpg-character draws its art once it is on or near the screen; wait for
+// that first in-view render so tests see the drawn character
+const fixture = async (template) => {
+  const el = await baseFixture(template);
+  if (el && el.scrollIntoView) {
+    el.scrollIntoView();
+  }
+  for (let i = 0; i < 100 && el && el.__inView === false; i++) {
+    await new Promise((r) => requestAnimationFrame(r));
+  }
+  if (el && el.updateComplete) {
+    await el.updateComplete;
+  }
+  return el;
+};
 
 import "../rpg-character.js";
 
