@@ -57,5 +57,12 @@
   "expandAll": "Extinde tot",
   "displayMode1": "Modul 1",
   "displayMode2": "Modul 2",
-  "twoWindows": "Două ferestre"
+  "twoWindows": "Două ferestre",
+  "notGraded": "Nenotat",
+  "gradeValue": "{score} din {points}",
+  "studentPosition": "Student {current} / {total}",
+  "rosterCaption": "Studenți: {students} · Teme: {assignments}",
+  "gridInstructions": "Tastele săgeți se deplasează între note, Enter deschide notarea",
+  "totalScore": "Scor total",
+  "lockTotalScore": "Blochează scorul total"
 }

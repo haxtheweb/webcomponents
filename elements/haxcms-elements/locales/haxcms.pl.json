@@ -10,7 +10,6 @@
   "selectPage": "Wybierz stronę",
   "siteDashboard": "Pulpit witryn",
   "cancel": "Anuluj",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Niezapisane zmiany zostaną utracone po wybraniu OK, czy jesteś pewny?",
   "editDetails": "Edytuj szczegóły",
   "add": "Dodaj",
   "source": "Źródło",
@@ -645,5 +644,15 @@
   "contents": "Spis treści",
   "continue": "Dalej",
   "noResultsFor": "Brak wyników dla „{search}”",
+  "duplicatePageTitle": "Duplikuj stronę",
+  "duplicateAction": "Duplikuj",
+  "newPageTitle": "Tytuł",
+  "importFromUrlTitle": "Importuj z adresu URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Odrzucić zmiany w strukturze?",
+  "outlineSaveTitle": "Zapisać zmiany w strukturze?",
+  "discardChanges": "Odrzuć zmiany",
+  "keepEditing": "Kontynuuj edycję",
+  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Niezapisane zmiany zostaną utracone po wybraniu OK, czy jesteś pewny?",
   "myLearning": "Moja nauka"
 }

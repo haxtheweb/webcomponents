@@ -60,5 +60,10 @@
   "pageUnit": "halaman",
   "pagesUnit": "halaman",
   "replacementUnit": "gantian",
-  "replacementsUnit": "gantian"
+  "replacementsUnit": "gantian",
+  "deletePagesTitle": "Padam halaman",
+  "deleteAction": "Padam",
+  "replaceTitle": "Ganti dalam halaman",
+  "removeMatchesTitle": "Alih keluar semua padanan",
+  "removeAction": "Alih keluar"
 }

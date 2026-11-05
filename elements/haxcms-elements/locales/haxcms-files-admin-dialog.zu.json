@@ -75,5 +75,11 @@
   "selectFile": "Khetha i-{name}",
   "copyPath": "Kopisha indlela",
   "pathCopied": "Indlela ikopishiwe",
-  "embedInPage": "Shumeka ekhasini"
+  "embedInPage": "Shumeka ekhasini",
+  "deleteFilesTitle": "Susa amafayela",
+  "renameFilesTitle": "Qamba kabusha amafayela",
+  "replaceOriginalsTitle": "Shintsha amafayela okuqala",
+  "newName": "Igama elisha",
+  "deleteAction": "Susa",
+  "renameAction": "Qamba kabusha"
 }

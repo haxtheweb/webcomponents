@@ -9,6 +9,7 @@ import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminIcons.js";
+import { adminConfirm } from "./admin/haxcms-admin-confirm.js";
 /**
  * `haxcms-outline-editor-dialog`
  * `Dialog for presenting an editable outline`
@@ -57,52 +58,6 @@ class HAXCMSOutlineEditorDialog extends HaxcmsAdminSectionMixin(
             padding: 0 var(--ddd-spacing-3, 12px);
           }
         }
-        :host([in-shell]) button.hax-modal-btn {
-          white-space: nowrap;
-          flex: none;
-        }
-        :host([in-shell]) .buttons {
-          display: flex;
-          justify-content: flex-end;
-          align-items: center;
-          min-height: 56px;
-          padding: var(--ddd-spacing-2, 8px) var(--ddd-spacing-5, 20px);
-          border-top: 1px solid
-            var(
-              --hax-ui-line,
-              light-dark(
-                var(--ddd-theme-default-limestoneLight, #e4e5e7),
-                rgba(255, 255, 255, 0.12)
-              )
-            );
-        }
-        :host([in-shell]) button.hax-modal-btn {
-          height: 32px;
-          padding: 0 var(--ddd-spacing-4, 16px);
-          font-size: 13px;
-          font-weight: var(--ddd-font-weight-bold, 700);
-          border-width: 1px;
-          border-radius: var(--hax-ui-radius, 6px);
-          color: light-dark(
-            var(--ddd-theme-default-white, #ffffff),
-            var(--ddd-theme-default-potentialMidnight, #000321)
-          );
-          background-color: light-dark(
-            var(--ddd-theme-default-nittanyNavy, #001e44),
-            var(--ddd-theme-default-linkLight, #cce9ff)
-          );
-          border-color: transparent;
-        }
-        :host([in-shell]) button.hax-modal-btn:hover,
-        :host([in-shell]) button.hax-modal-btn:focus-visible {
-          background-color: light-dark(
-            var(--ddd-theme-default-beaverBlue, #1e407c),
-            var(--ddd-theme-default-skyLight, #ccf0ff)
-          );
-          outline: var(--hax-ui-focus-width, 2px) solid
-            var(--hax-ui-focus, var(--ddd-theme-default-keystoneYellow));
-          outline-offset: 2px;
-        }
         outline-designer {
           flex: 1 1 auto;
           min-height: 0;
@@ -110,13 +65,20 @@ class HAXCMSOutlineEditorDialog extends HaxcmsAdminSectionMixin(
           margin-bottom: 0;
           overscroll-behavior: contain;
         }
+        /* on its own (outside the site admin dialog): the HAX UI action
+           bar, Save Outline as its primary action at the bottom right */
         .buttons {
           flex: none;
-          padding-top: var(--ddd-spacing-2);
-        }
-        .buttons button {
-          color: black;
-          background-color: white;
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          min-height: 56px;
+          padding: var(--ddd-spacing-2, 8px) var(--ddd-spacing-5, 20px);
+          border-top: 1px solid
+            light-dark(
+              var(--ddd-theme-default-limestoneLight, #e4e5e7),
+              rgba(255, 255, 255, 0.18)
+            );
         }
         simple-icon {
           margin-right: 4px;
@@ -129,25 +91,39 @@ class HAXCMSOutlineEditorDialog extends HaxcmsAdminSectionMixin(
           text-transform: unset;
         }
         button.hax-modal-btn {
-          font-size: var(--ddd-font-size-s);
-          padding: var(--ddd-spacing-3) var(--ddd-spacing-5);
+          height: 32px;
+          padding: 0 var(--ddd-spacing-4, 16px);
           margin: 0;
-          color: white;
-          background-color: var(--ddd-theme-default-skyBlue);
-          border: 2px solid
-            light-dark(
-              var(--ddd-theme-default-nittanyNavy),
-              var(--ddd-theme-default-linkLight)
-            );
-          border-radius: var(--ddd-radius-sm);
+          white-space: nowrap;
           font-family: var(--ddd-font-navigation);
+          font-size: 14px;
+          font-weight: var(--ddd-font-weight-bold, 700);
+          color: light-dark(
+            var(--ddd-theme-default-white, #ffffff),
+            var(--ddd-theme-default-potentialMidnight, #000321)
+          );
+          background-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy, #001e44),
+            var(--ddd-theme-default-linkLight, #cce9ff)
+          );
+          border: 1px solid transparent;
+          border-radius: var(--ddd-radius-xs, 4px);
           cursor: pointer;
-          transition: background-color var(--ddd-duration-normal, 0.3s) ease;
+          transition: background-color var(--ddd-duration-fast, 150ms) ease;
         }
-        button.hax-modal-btn:hover,
-        button.hax-modal-btn:focus {
-          outline: 2px solid var(--ddd-theme-default-keystoneYellow);
-          background-color: var(--ddd-theme-default-nittanyNavy);
+        button.hax-modal-btn:hover {
+          background-color: light-dark(
+            var(--ddd-theme-default-beaverBlue, #1e407c),
+            var(--ddd-theme-default-skyLight, #ccf0ff)
+          );
+        }
+        button.hax-modal-btn:focus-visible {
+          outline: 2px solid
+            light-dark(
+              var(--ddd-theme-default-link, #005fa9),
+              var(--ddd-theme-default-keystoneYellow, #ffd100)
+            );
+          outline-offset: 2px;
         }
       `,
     ];
@@ -174,7 +150,11 @@ class HAXCMSOutlineEditorDialog extends HaxcmsAdminSectionMixin(
         this.inShell
           ? nothing
           : html`<div class="buttons">
-              <button @click="${this._saveTap}" class="hax-modal-btn">
+              <button
+                type="button"
+                @click="${this._saveTap}"
+                class="hax-modal-btn"
+              >
                 ${this.t.save}
               </button>
             </div>`
@@ -209,6 +189,11 @@ class HAXCMSOutlineEditorDialog extends HaxcmsAdminSectionMixin(
         "You have unsaved changes in Site Outline:\n{changes}\nIf you continue, these changes will be lost. Continue?",
       outlineSaveConfirm:
         "Saving will apply these Site Outline changes:\n{changes}\nContinue?",
+      outlineUnsavedTitle: "Discard outline changes?",
+      outlineSaveTitle: "Save outline changes?",
+      discardChanges: "Discard changes",
+      keepEditing: "Keep editing",
+      cancel: "Cancel",
       deleteSelected: "Delete selected",
       outlineNewPages: "{count} new",
       outlineChangedPages: "{count} changed",
@@ -425,22 +410,41 @@ class HAXCMSOutlineEditorDialog extends HaxcmsAdminSectionMixin(
     const summary = this._getItemChangeSummary(outline.items);
     return summary.added > 0 || summary.modified > 0 || summary.deleted > 0;
   }
+  /**
+   * Ask before dropping unsaved outline changes, with the HAX UI confirm.
+   * Resolves true right away when there is nothing to lose. While one ask is
+   * open a second request answers false, so a double click cannot run the
+   * leave twice.
+   * @returns {Promise<boolean>}
+   */
   _confirmDiscardUnsavedOutlineChanges() {
     const outline = this._getOutline();
     if (!outline || !Array.isArray(outline.items)) {
-      return true;
+      return Promise.resolve(true);
     }
     const summary = this._getItemChangeSummary(outline.items);
     const sumChanges = this._formatItemChangeSummary(summary);
     if (sumChanges == "") {
-      return true;
+      return Promise.resolve(true);
     }
-    return globalThis.confirm(
-      this.t.outlineUnsavedChangesConfirm.replace(
-        "{changes}",
-        () => sumChanges,
+    if (this.__askingDiscard) {
+      return Promise.resolve(false);
+    }
+    this.__askingDiscard = true;
+    return adminConfirm({
+      title: this.t.outlineUnsavedTitle,
+      // the summary's last line break would add a blank line before the
+      // question in the dialog
+      message: this.t.outlineUnsavedChangesConfirm.replace("{changes}", () =>
+        sumChanges.replace(/\n$/, ""),
       ),
-    );
+      confirmLabel: this.t.discardChanges,
+      cancelLabel: this.t.keepEditing,
+      danger: true,
+    }).then((ok) => {
+      this.__askingDiscard = false;
+      return ok;
+    });
   }
   /**
    * Whether the outline holds changes Save Outline has not sent. The site
@@ -453,7 +457,7 @@ class HAXCMSOutlineEditorDialog extends HaxcmsAdminSectionMixin(
    * The site admin dialog calls this before leaving Structure (rail,
    * breadcrumb, browser back) while there are unsaved changes; it asks with
    * the same confirm the close button uses.
-   * @returns {boolean} true to leave
+   * @returns {Promise<boolean>} true to leave
    */
   confirmLeave() {
     return this._confirmDiscardUnsavedOutlineChanges();
@@ -492,13 +496,26 @@ class HAXCMSOutlineEditorDialog extends HaxcmsAdminSectionMixin(
     if (this._consumeAllowNextModalClose()) {
       return;
     }
-    if (!this._confirmDiscardUnsavedOutlineChanges()) {
-      e.preventDefault();
-      if (e.stopImmediatePropagation) {
-        e.stopImmediatePropagation();
-      }
-      store.playSound("error");
+    if (!this._hasUnsavedOutlineChanges()) {
+      return;
     }
+    // hold the close, ask, then close again on a yes (the flag lets that
+    // second close through)
+    e.preventDefault();
+    if (e.stopImmediatePropagation) {
+      e.stopImmediatePropagation();
+    }
+    const modal = e.target;
+    this._confirmDiscardUnsavedOutlineChanges().then((ok) => {
+      if (!ok) {
+        store.playSound("error");
+        return;
+      }
+      this.__allowNextModalClose = true;
+      if (modal && typeof modal.close === "function") {
+        modal.close();
+      }
+    });
   }
   _handleSimpleModalBreadcrumbClick(e) {
     // in the site admin dialog the breadcrumb goes through its leave check,
@@ -512,34 +529,84 @@ class HAXCMSOutlineEditorDialog extends HaxcmsAdminSectionMixin(
     if (e.detail.breadcrumb.action !== "site-settings-dashboard") {
       return;
     }
-    if (!this._confirmDiscardUnsavedOutlineChanges()) {
-      e.preventDefault();
-      if (e.stopImmediatePropagation) {
-        e.stopImmediatePropagation();
-      }
-      if (e.stopPropagation) {
-        e.stopPropagation();
-      }
-      store.playSound("error");
+    if (this.__allowNextBreadcrumb) {
+      this.__allowNextBreadcrumb = false;
+      return;
     }
+    if (!this._hasUnsavedOutlineChanges()) {
+      return;
+    }
+    // hold the click, ask, then send the same click again on a yes
+    e.preventDefault();
+    if (e.stopImmediatePropagation) {
+      e.stopImmediatePropagation();
+    }
+    if (e.stopPropagation) {
+      e.stopPropagation();
+    }
+    const modal = e.target;
+    const detail = e.detail;
+    this._confirmDiscardUnsavedOutlineChanges().then((ok) => {
+      if (!ok) {
+        store.playSound("error");
+        return;
+      }
+      this.__allowNextBreadcrumb = true;
+      (modal || globalThis).dispatchEvent(
+        new CustomEvent("simple-modal-breadcrumb-click", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: detail,
+        }),
+      );
+    });
   }
   _outlineNavigateRequested(e) {
     if (!e || !e.detail || !e.detail.href) {
       return;
     }
-    const hasUnsavedChanges = this._hasUnsavedOutlineChanges();
-    if (hasUnsavedChanges && !this._confirmDiscardUnsavedOutlineChanges()) {
-      e.preventDefault();
-      if (e.stopImmediatePropagation) {
-        e.stopImmediatePropagation();
-      }
-      store.playSound("error");
+    if (this.__allowNextNavigate) {
+      this.__allowNextNavigate = false;
       return;
     }
-    if (hasUnsavedChanges) {
+    if (!this._hasUnsavedOutlineChanges()) {
+      return;
+    }
+    // hold the jump, ask, then let the same page link go on a yes
+    e.preventDefault();
+    if (e.stopImmediatePropagation) {
+      e.stopImmediatePropagation();
+    }
+    const outline = e.target;
+    const item = e.detail.item;
+    const href = e.detail.href;
+    this._confirmDiscardUnsavedOutlineChanges().then((ok) => {
+      if (!ok) {
+        store.playSound("error");
+        return;
+      }
       this.__allowNextModalClose = true;
       this._releaseShell();
-    }
+      const index =
+        outline && Array.isArray(outline.items) && item
+          ? outline.items.indexOf(item)
+          : -1;
+      if (index !== -1 && typeof outline.itemOp === "function") {
+        // outline-designer's own goto: hides the modal and follows the link
+        this.__allowNextNavigate = true;
+        outline.itemOp(index, "goto");
+        return;
+      }
+      globalThis.dispatchEvent(
+        new CustomEvent("simple-modal-hide", {
+          bubbles: true,
+          cancelable: true,
+          detail: {},
+        }),
+      );
+      globalThis.location.href = href;
+    });
   }
   /**
    * Save hit, send the message to push up the outline changes.
@@ -558,9 +625,14 @@ class HAXCMSOutlineEditorDialog extends HaxcmsAdminSectionMixin(
     if (sumChanges == "") {
       confirmation = true;
     } else {
-      confirmation = globalThis.confirm(
-        this.t.outlineSaveConfirm.replace("{changes}", () => sumChanges),
-      );
+      confirmation = await adminConfirm({
+        title: this.t.outlineSaveTitle,
+        message: this.t.outlineSaveConfirm.replace("{changes}", () =>
+          sumChanges.replace(/\n$/, ""),
+        ),
+        confirmLabel: this.t.save,
+        cancelLabel: this.t.cancel,
+      });
     }
     if (confirmation) {
       globalThis.dispatchEvent(

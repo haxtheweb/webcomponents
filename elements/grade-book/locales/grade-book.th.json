@@ -60,5 +60,12 @@
   "downloadPDF": "ดาวน์โหลด PDF",
   "displayMode1": "โหมด 1",
   "displayMode2": "โหมด 2",
-  "twoWindows": "สองหน้าต่าง"
+  "twoWindows": "สองหน้าต่าง",
+  "notGraded": "ยังไม่ได้ให้คะแนน",
+  "gradeValue": "{score} จาก {points}",
+  "studentPosition": "นักเรียน {current} / {total}",
+  "rosterCaption": "นักเรียน: {students} · งาน: {assignments}",
+  "gridInstructions": "ใช้ปุ่มลูกศรเลื่อนระหว่างเกรด กด Enter เพื่อเปิดการให้คะแนน",
+  "totalScore": "คะแนนรวม",
+  "lockTotalScore": "ล็อกคะแนนรวม"
 }

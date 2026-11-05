@@ -124,5 +124,13 @@
   "showApiKeyValue": "API কী-এর মান দেখান",
   "noSettingsForPanel": "এই প্যানেলের জন্য এখনো কোনো সেটিং উপলভ্য নেই।",
   "saving": "সংরক্ষণ করা হচ্ছে…",
-  "save": "সংরক্ষণ করুন"
+  "save": "সংরক্ষণ করুন",
+  "dropSkeletonFile": "একটি স্কেলিটন .json ফাইল এখানে ছাড়ুন অথবা",
+  "browseFiles": "ব্রাউজ করুন",
+  "skeletonUploadNote": "আপলোড করা স্কেলিটনের নাম বদলানো বা মুছে ফেলা যায়; মূল স্কেলিটনগুলো শুধু বন্ধ করা যায়।",
+  "skeletonName": "স্কেলিটনের নাম",
+  "renameAction": "নাম বদলান",
+  "deleteSkeletonTitle": "স্কেলিটন মুছুন",
+  "deleteAction": "মুছুন",
+  "cancel": "বাতিল করুন"
 }

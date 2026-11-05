@@ -52,6 +52,8 @@
     "lint:html-templates": "node scripts/html-template-check.mjs",
     "precheck": "node scripts/precheck.mjs",
     "precheck:fix": "node scripts/precheck.mjs --fix",
+    "codeql": "node scripts/codeql-local.mjs",
+    "codeql:install": "node scripts/codeql-local.mjs --install",
     "tokens:ddd": "node elements/d-d-d/design-system/build-tokens.js",
     "design-system:sync": "node elements/d-d-d/design-system/sync.js",
     "test": "lerna run test --concurrency=1",

@@ -10,7 +10,6 @@
   "selectPage": "Бетті таңдау",
   "siteDashboard": "Сайттар тақтасы",
   "cancel": "Бас тарту",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "OK таңдасаңыз сақталмаған өзгерістер жоғалады. Сенімдісіз бе?",
   "editDetails": "Мәліметтерді өңдеу",
   "add": "Қосу",
   "source": "Дереккөз",
@@ -645,5 +644,15 @@
   "contents": "Мазмұны",
   "continue": "Жалғастыру",
   "noResultsFor": "«{search}» бойынша нәтиже табылмады",
+  "duplicatePageTitle": "Беттің көшірмесін жасау",
+  "duplicateAction": "Көшірме жасау",
+  "newPageTitle": "Тақырып",
+  "importFromUrlTitle": "URL арқылы импорттау",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Құрылым өзгерістерінен бас тарту керек пе?",
+  "outlineSaveTitle": "Құрылым өзгерістерін сақтау керек пе?",
+  "discardChanges": "Өзгерістерден бас тарту",
+  "keepEditing": "Өңдеуді жалғастыру",
+  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "OK таңдасаңыз сақталмаған өзгерістер жоғалады. Сенімдісіз бе?",
   "myLearning": "Менің оқуым"
 }

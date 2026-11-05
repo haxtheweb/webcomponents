@@ -75,5 +75,11 @@
   "selectFile": "{name}ን ምረጥ",
   "copyPath": "ዱካ ቅዳ",
   "pathCopied": "ዱካው ተቀድቷል",
-  "embedInPage": "በገጹ ውስጥ ክተት"
+  "embedInPage": "በገጹ ውስጥ ክተት",
+  "deleteFilesTitle": "ፋይሎችን ሰርዝ",
+  "renameFilesTitle": "ፋይሎችን እንደገና ሰይም",
+  "replaceOriginalsTitle": "የመጀመሪያ ፋይሎችን ተካ",
+  "newName": "አዲስ ስም",
+  "deleteAction": "ሰርዝ",
+  "renameAction": "እንደገና ሰይም"
 }

@@ -75,5 +75,11 @@
   "selectFile": "Kies {name}",
   "copyPath": "Kopieer pad",
   "pathCopied": "Pad gekopieer",
-  "embedInPage": "Bed in bladsy in"
+  "embedInPage": "Bed in bladsy in",
+  "deleteFilesTitle": "Skrap lêers",
+  "renameFilesTitle": "Hernoem lêers",
+  "replaceOriginalsTitle": "Vervang oorspronklike lêers",
+  "newName": "Nuwe naam",
+  "deleteAction": "Skrap",
+  "renameAction": "Hernoem"
 }

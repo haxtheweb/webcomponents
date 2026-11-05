@@ -124,5 +124,13 @@
   "showApiKeyValue": "Mostra valore della chiave API",
   "noSettingsForPanel": "Nessuna impostazione ancora disponibile per questo pannello.",
   "saving": "Salvataggio…",
-  "save": "Salva"
+  "save": "Salva",
+  "dropSkeletonFile": "Trascina qui un modello .json oppure",
+  "browseFiles": "Sfoglia",
+  "skeletonUploadNote": "I modelli caricati possono essere rinominati o eliminati; i modelli di base possono solo essere disattivati.",
+  "skeletonName": "Nome modello",
+  "renameAction": "Rinomina",
+  "deleteSkeletonTitle": "Elimina modello",
+  "deleteAction": "Elimina",
+  "cancel": "Annulla"
 }

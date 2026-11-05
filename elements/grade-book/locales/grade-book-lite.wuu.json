@@ -57,5 +57,12 @@
   "expandAll": "全部展开",
   "displayMode1": "模式 1",
   "displayMode2": "模式 2",
-  "twoWindows": "两只窗口"
+  "twoWindows": "两只窗口",
+  "notGraded": "未打分",
+  "gradeValue": "{points}里头{score}",
+  "studentPosition": "学生 {current} / {total}",
+  "rosterCaption": "学生：{students} · 作业：{assignments}",
+  "gridInstructions": "用方向键勒各个成绩之间移动,按 Enter 键打开打分",
+  "totalScore": "总分",
+  "lockTotalScore": "锁定总分"
 }

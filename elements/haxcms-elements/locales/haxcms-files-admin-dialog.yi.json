@@ -75,5 +75,11 @@
   "selectFile": "קלײַב אויס {name}",
   "copyPath": "קאָפּיר דעם וועג",
   "pathCopied": "וועג קאָפּירט",
-  "embedInPage": "אײַנבעטן אין זײַט"
+  "embedInPage": "אײַנבעטן אין זײַט",
+  "deleteFilesTitle": "מעק אויס טעקעס",
+  "renameFilesTitle": "בײַט די נעמען פֿון טעקעס",
+  "replaceOriginalsTitle": "פֿאַרבײַט די אָריגינעלע טעקעס",
+  "newName": "נײַער נאָמען",
+  "deleteAction": "אויסמעקן",
+  "renameAction": "בײַט דעם נאָמען"
 }

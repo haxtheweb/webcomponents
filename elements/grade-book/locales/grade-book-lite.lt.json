@@ -57,5 +57,12 @@
   "expandAll": "Išskleisti viską",
   "displayMode1": "1 režimas",
   "displayMode2": "2 režimas",
-  "twoWindows": "Du langai"
+  "twoWindows": "Du langai",
+  "notGraded": "Neįvertinta",
+  "gradeValue": "{score} iš {points}",
+  "studentPosition": "Studentas {current} / {total}",
+  "rosterCaption": "Studentai: {students} · Užduotys: {assignments}",
+  "gridInstructions": "Rodyklių klavišais judama tarp pažymių, Enter atveria vertinimą",
+  "totalScore": "Bendras balas",
+  "lockTotalScore": "Užrakinti bendrą balą"
 }

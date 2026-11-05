@@ -10,7 +10,6 @@
   "selectPage": "Koho ʻaoʻao",
   "siteDashboard": "Papa kuhikuhi nā wahi",
   "cancel": "Hoʻōle",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "ʻO nā loli i mālama ʻole ʻia e nalowale ana inā koho ʻoe iā OK, hōʻoia ʻoe?",
   "editDetails": "Hoʻoponopono i nā kikoʻī",
   "add": "Hoʻohui",
   "source": "Kumu",
@@ -645,5 +644,15 @@
   "contents": "Nā mea o loko",
   "continue": "Hoʻomau",
   "noResultsFor": "ʻAʻohe hualoaʻa no \"{search}\"",
+  "duplicatePageTitle": "Kope pālua i ka ʻaoʻao",
+  "duplicateAction": "Kope pālua",
+  "newPageTitle": "Poʻo inoa",
+  "importFromUrlTitle": "Lawe mai mai kekahi URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Kāpae i nā loli o ka papa kuhikuhi?",
+  "outlineSaveTitle": "Mālama i nā loli o ka papa kuhikuhi?",
+  "discardChanges": "Kāpae i nā loli",
+  "keepEditing": "Hoʻomau i ka hoʻoponopono",
+  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "ʻO nā loli i mālama ʻole ʻia e nalowale ana inā koho ʻoe iā OK, hōʻoia ʻoe?",
   "myLearning": "Kaʻu aʻo ʻana"
 }

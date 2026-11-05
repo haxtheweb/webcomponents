@@ -124,5 +124,13 @@
   "showApiKeyValue": "Onetsani kiyi ya API",
   "noSettingsForPanel": "Palibe zokonda za gulu ili pakadali pano.",
   "saving": "Ikusunga…",
-  "save": "Sungani"
+  "save": "Sungani",
+  "dropSkeletonFile": "Ikani fayilo ya chigoba .json pano kapena",
+  "browseFiles": "Sakatulani",
+  "skeletonUploadNote": "Zigoba zokwezedwa zitha kusinthidwa dzina kapena kufufutidwa; zigoba zazikulu zitha kuzimitsidwa basi.",
+  "skeletonName": "Dzina la chigoba",
+  "renameAction": "Sinthani dzina",
+  "deleteSkeletonTitle": "Fufutani chigoba",
+  "deleteAction": "Fufutani",
+  "cancel": "Letsani"
 }

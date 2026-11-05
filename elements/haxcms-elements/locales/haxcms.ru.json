@@ -10,7 +10,6 @@
   "selectPage": "Выбрать страницу",
   "siteDashboard": "Панель сайтов",
   "cancel": "Отмена",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Несохраненные изменения будут потеряны при выборе ОК, вы уверены?",
   "editDetails": "Редактировать детали",
   "add": "Добавить",
   "source": "Источник",
@@ -645,5 +644,15 @@
   "contents": "Содержание",
   "continue": "Продолжить",
   "noResultsFor": "По запросу «{search}» ничего не найдено",
+  "duplicatePageTitle": "Дублировать страницу",
+  "duplicateAction": "Дублировать",
+  "newPageTitle": "Название",
+  "importFromUrlTitle": "Импорт по URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Отменить изменения структуры?",
+  "outlineSaveTitle": "Сохранить изменения структуры?",
+  "discardChanges": "Отменить изменения",
+  "keepEditing": "Продолжить редактирование",
+  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Несохраненные изменения будут потеряны при выборе ОК, вы уверены?",
   "myLearning": "Моё обучение"
 }

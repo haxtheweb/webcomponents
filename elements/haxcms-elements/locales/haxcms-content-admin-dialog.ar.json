@@ -60,5 +60,10 @@
   "pageUnit": "صفحة",
   "pagesUnit": "الصفحات",
   "replacementUnit": "استبدال",
-  "replacementsUnit": "استبدالات"
+  "replacementsUnit": "استبدالات",
+  "deletePagesTitle": "حذف الصفحات",
+  "deleteAction": "حذف",
+  "replaceTitle": "استبدال في الصفحات",
+  "removeMatchesTitle": "إزالة كل التطابقات",
+  "removeAction": "إزالة"
 }

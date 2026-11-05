@@ -10,7 +10,6 @@
   "selectPage": "Dewis tudalen",
   "siteDashboard": "Dangosfwrdd safleoedd",
   "cancel": "Canslo",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Bydd newidiadau heb eu cadw yn cael eu colli os byddwch yn dewis Iawn. Ydych chi'n siwr?",
   "editDetails": "Golygu manylion",
   "add": "Ychwanegu",
   "source": "Ffynhonnell",
@@ -645,5 +644,15 @@
   "contents": "Cynnwys",
   "continue": "Parhau",
   "noResultsFor": "Dim canlyniadau ar gyfer \"{search}\"",
+  "duplicatePageTitle": "Dyblygu tudalen",
+  "duplicateAction": "Dyblygu",
+  "newPageTitle": "Teitl",
+  "importFromUrlTitle": "Mewnforio o URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Gwaredu newidiadau i'r amlinelliad?",
+  "outlineSaveTitle": "Cadw newidiadau i'r amlinelliad?",
+  "discardChanges": "Gwaredu newidiadau",
+  "keepEditing": "Parhau i olygu",
+  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Bydd newidiadau heb eu cadw yn cael eu colli os byddwch yn dewis Iawn. Ydych chi'n siwr?",
   "myLearning": "Fy nysgu"
 }

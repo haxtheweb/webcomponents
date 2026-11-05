@@ -124,5 +124,13 @@
   "showApiKeyValue": "API ڪنجي جو قدر ڏيکاريو",
   "noSettingsForPanel": "هن پينل لاءِ اڃا ڪي سيٽنگون موجود ناهن.",
   "saving": "محفوظ ٿي رهيو آهي…",
-  "save": "محفوظ ڪريو"
+  "save": "محفوظ ڪريو",
+  "dropSkeletonFile": "ڍانچي جي .json فائل هتي ڇڏيو يا",
+  "browseFiles": "براؤز ڪريو",
+  "skeletonUploadNote": "اپلوڊ ٿيل ڍانچن جو نالو بدلائي يا ڊليٽ ڪري سگهجي ٿو؛ بنيادي ڍانچا صرف بند ڪري سگهجن ٿا.",
+  "skeletonName": "ڍانچي جو نالو",
+  "renameAction": "نالو بدلايو",
+  "deleteSkeletonTitle": "ڍانچو ڊليٽ ڪريو",
+  "deleteAction": "ڊليٽ ڪريو",
+  "cancel": "منسوخ ڪريو"
 }

@@ -10,7 +10,6 @@
   "selectPage": "پاڼه وټاکئ",
   "siteDashboard": "د ویب پاڼو ډشبورډ",
   "cancel": "لغوه کول",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "ناخوندي شوي بدلونونه به له لاسه ولاړ شي که تاسو OK غوره کړئ. ایا ډاډه یاست؟",
   "editDetails": "تفصیلات سمون وکړئ",
   "add": "اضافه کړئ",
   "source": "سرچینه",
@@ -645,5 +644,15 @@
   "contents": "منځپانګې",
   "continue": "دوام",
   "noResultsFor": "د «{search}» لپاره هېڅ پایله ونه موندل شوه",
+  "duplicatePageTitle": "پاڼه دوه ګونی کول",
+  "duplicateAction": "دوه ګونی کول",
+  "newPageTitle": "سرلیک",
+  "importFromUrlTitle": "له URL څخه راوړل",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "د جوړښت بدلونونه پرېږدئ؟",
+  "outlineSaveTitle": "د جوړښت بدلونونه خوندي کړئ؟",
+  "discardChanges": "بدلونونه پرېښودل",
+  "keepEditing": "سمون ته دوام ورکول",
+  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "ناخوندي شوي بدلونونه به له لاسه ولاړ شي که تاسو OK غوره کړئ. ایا ډاډه یاست؟",
   "myLearning": "زما زده کړه"
 }

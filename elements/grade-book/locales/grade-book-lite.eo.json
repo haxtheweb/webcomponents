@@ -57,5 +57,12 @@
   "expandAll": "Malfaldi ĉiujn",
   "displayMode1": "Reĝimo 1",
   "displayMode2": "Reĝimo 2",
-  "twoWindows": "Du fenestroj"
+  "twoWindows": "Du fenestroj",
+  "notGraded": "Ne taksita",
+  "gradeValue": "{score} el {points}",
+  "studentPosition": "Studento {current} / {total}",
+  "rosterCaption": "Studentoj: {students} · Taskoj: {assignments}",
+  "gridInstructions": "Sagoklavoj movas inter notoj, Enter malfermas taksadon",
+  "totalScore": "Totala poentaro",
+  "lockTotalScore": "Ŝlosi la totalan poentaron"
 }

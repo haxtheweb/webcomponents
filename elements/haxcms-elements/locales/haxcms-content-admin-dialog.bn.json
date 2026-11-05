@@ -60,5 +60,10 @@
   "pageUnit": "পেজ",
   "pagesUnit": "পেজ",
   "replacementUnit": "প্রতিস্থাপন",
-  "replacementsUnit": "প্রতিস্থাপন"
+  "replacementsUnit": "প্রতিস্থাপন",
+  "deletePagesTitle": "পেজ মুছুন",
+  "deleteAction": "মুছুন",
+  "replaceTitle": "পেজে প্রতিস্থাপন করুন",
+  "removeMatchesTitle": "সব মিল সরান",
+  "removeAction": "সরান"
 }

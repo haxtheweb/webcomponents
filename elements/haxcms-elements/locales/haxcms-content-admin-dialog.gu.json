@@ -60,5 +60,10 @@
   "pageUnit": "પેજ",
   "pagesUnit": "પેજ",
   "replacementUnit": "ફેરબદલી",
-  "replacementsUnit": "ફેરબદલીઓ"
+  "replacementsUnit": "ફેરબદલીઓ",
+  "deletePagesTitle": "પેજ કાઢી નાખો",
+  "deleteAction": "કાઢી નાખો",
+  "replaceTitle": "પેજમાં બદલો",
+  "removeMatchesTitle": "બધા મેળ દૂર કરો",
+  "removeAction": "દૂર કરો"
 }

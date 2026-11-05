@@ -60,5 +60,10 @@
   "pageUnit": "sahifa",
   "pagesUnit": "sahifalar",
   "replacementUnit": "ta almashtirish",
-  "replacementsUnit": "ta almashtirish"
+  "replacementsUnit": "ta almashtirish",
+  "deletePagesTitle": "Sahifalarni oʻchirish",
+  "deleteAction": "O‘chirish",
+  "replaceTitle": "Sahifalarda almashtirish",
+  "removeMatchesTitle": "Barcha mosliklarni olib tashlash",
+  "removeAction": "Olib tashlash"
 }

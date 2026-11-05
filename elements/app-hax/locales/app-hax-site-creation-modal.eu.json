@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Gunea ondo sortu da!",
   "newSiteReady": "Zure \"{siteName}\" gune berria erabiltzeko prest dago.",
   "stayHere": "Geratu hemen",
-  "goToSite": "Joan gunera"
+  "goToSite": "Joan gunera",
+  "stepOf": "{step}/{total} urratsa"
 }

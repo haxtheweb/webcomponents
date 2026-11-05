@@ -75,5 +75,11 @@
   "selectFile": "Pilih {name}",
   "copyPath": "Salin laluan",
   "pathCopied": "Laluan disalin",
-  "embedInPage": "Benamkan dalam halaman"
+  "embedInPage": "Benamkan dalam halaman",
+  "deleteFilesTitle": "Padam fail",
+  "renameFilesTitle": "Namakan semula fail",
+  "replaceOriginalsTitle": "Ganti fail asal",
+  "newName": "Nama baharu",
+  "deleteAction": "Padam",
+  "renameAction": "Namakan semula"
 }

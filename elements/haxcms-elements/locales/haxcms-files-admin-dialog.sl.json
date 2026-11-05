@@ -75,5 +75,11 @@
   "selectFile": "Izberi {name}",
   "copyPath": "Kopiraj pot",
   "pathCopied": "Pot kopirana",
-  "embedInPage": "Vdelaj na stran"
+  "embedInPage": "Vdelaj na stran",
+  "deleteFilesTitle": "Izbriši datoteke",
+  "renameFilesTitle": "Preimenuj datoteke",
+  "replaceOriginalsTitle": "Zamenjaj izvirne datoteke",
+  "newName": "Novo ime",
+  "deleteAction": "Izbriši",
+  "renameAction": "Preimenuj"
 }

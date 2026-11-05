@@ -60,5 +60,10 @@
   "pageUnit": "página",
   "pagesUnit": "páginas",
   "replacementUnit": "reemplazo",
-  "replacementsUnit": "reemplazos"
+  "replacementsUnit": "reemplazos",
+  "deletePagesTitle": "Eliminar páginas",
+  "deleteAction": "Eliminar",
+  "replaceTitle": "Reemplazar en páginas",
+  "removeMatchesTitle": "Quitar todas las coincidencias",
+  "removeAction": "Quitar"
 }

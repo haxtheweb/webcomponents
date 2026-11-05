@@ -10,7 +10,6 @@
   "selectPage": "Επιλογή σελίδας",
   "siteDashboard": "Πίνακας ελέγχου ιστότοπων",
   "cancel": "Ακύρωση",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Οι μη αποθηκευμένες αλλαγές θα χαθούν αν επιλέξετε OK. Είστε σίγουροι;",
   "editDetails": "Επεξεργασία λεπτομερειών",
   "add": "Προσθήκη",
   "source": "Πηγή",
@@ -645,5 +644,15 @@
   "contents": "Περιεχόμενα",
   "continue": "Συνέχεια",
   "noResultsFor": "Δεν βρέθηκαν αποτελέσματα για «{search}»",
+  "duplicatePageTitle": "Διπλασιασμός σελίδας",
+  "duplicateAction": "Διπλασιασμός",
+  "newPageTitle": "Τίτλος",
+  "importFromUrlTitle": "Εισαγωγή από URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Απόρριψη αλλαγών διάρθρωσης;",
+  "outlineSaveTitle": "Αποθήκευση αλλαγών διάρθρωσης;",
+  "discardChanges": "Απόρριψη αλλαγών",
+  "keepEditing": "Συνέχεια επεξεργασίας",
+  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Οι μη αποθηκευμένες αλλαγές θα χαθούν αν επιλέξετε OK. Είστε σίγουροι;",
   "myLearning": "Η μάθησή μου"
 }

@@ -10,7 +10,6 @@
   "selectPage": "Изберете страница",
   "siteDashboard": "Табло на сайтовете",
   "cancel": "Отказ",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Незапазените промени ще бъдат загубени, ако изберете OK. Сигурни ли сте?",
   "editDetails": "Редактиране на детайли",
   "add": "Добавяне",
   "source": "Източник",
@@ -645,5 +644,15 @@
   "contents": "Съдържание",
   "continue": "Продължаване",
   "noResultsFor": "Няма намерени резултати за „{search}“",
+  "duplicatePageTitle": "Дублиране на страница",
+  "duplicateAction": "Дублиране",
+  "newPageTitle": "Заглавие",
+  "importFromUrlTitle": "Импортиране от URL адрес",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Отхвърляне на промените в структурата?",
+  "outlineSaveTitle": "Запазване на промените в структурата?",
+  "discardChanges": "Отхвърляне на промените",
+  "keepEditing": "Продължаване на редактирането",
+  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Незапазените промени ще бъдат загубени, ако изберете OK. Сигурни ли сте?",
   "myLearning": "Моето обучение"
 }

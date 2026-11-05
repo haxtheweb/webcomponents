@@ -10,7 +10,6 @@
   "selectPage": "Sahifani tanlang",
   "siteDashboard": "Saytlar boshqaruv paneli",
   "cancel": "Bekor qilish",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "OK tanlasangiz saqlanmagan o'zgarishlar yo'qoladi, ishonchingiz komilmi?",
   "editDetails": "Tafsilotlarni tahrirlash",
   "add": "Qo'shish",
   "source": "Manba",
@@ -645,5 +644,15 @@
   "contents": "Mundarija",
   "continue": "Davom etish",
   "noResultsFor": "\"{search}\" boʻyicha hech narsa topilmadi",
+  "duplicatePageTitle": "Sahifa nusxasini koʻpaytirish",
+  "duplicateAction": "Nusxa ko‘paytirish",
+  "newPageTitle": "Sarlavha",
+  "importFromUrlTitle": "URL manzildan import qilish",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Tuzilma oʻzgarishlari tashlab yuborilsinmi?",
+  "outlineSaveTitle": "Tuzilma oʻzgarishlari saqlansinmi?",
+  "discardChanges": "Oʻzgarishlarni tashlab yuborish",
+  "keepEditing": "Tahrirlashni davom ettirish",
+  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "OK tanlasangiz saqlanmagan o'zgarishlar yo'qoladi, ishonchingiz komilmi?",
   "myLearning": "Mening o‘qishim"
 }

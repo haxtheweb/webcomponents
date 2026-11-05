@@ -75,5 +75,11 @@
   "selectFile": "{name} saýla",
   "copyPath": "Ýoly göçür",
   "pathCopied": "Ýol göçürildi",
-  "embedInPage": "Sahypa ýerleşdir"
+  "embedInPage": "Sahypa ýerleşdir",
+  "deleteFilesTitle": "Faýllary pozmak",
+  "renameFilesTitle": "Faýllaryň adyny üýtget",
+  "replaceOriginalsTitle": "Asyl faýllary çalyşmak",
+  "newName": "Täze at",
+  "deleteAction": "Pozmak",
+  "renameAction": "Adyny üýtget"
 }

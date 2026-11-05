@@ -75,5 +75,11 @@
   "selectFile": "{name}-ta akllay",
   "copyPath": "Ñanta kikinchay",
   "pathCopied": "Ñan kikinchasqa",
-  "embedInPage": "P'anqapi k'askachiy"
+  "embedInPage": "P'anqapi k'askachiy",
+  "deleteFilesTitle": "Willañiqikunata qulluy",
+  "renameFilesTitle": "Willañiqikunap sutinta tikray",
+  "replaceOriginalsTitle": "Ñawpaq willañiqikunata rantinchay",
+  "newName": "Musuq suti",
+  "deleteAction": "Qulluchiy",
+  "renameAction": "Sutita tikray"
 }

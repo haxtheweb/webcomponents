@@ -60,5 +60,10 @@
   "pageUnit": "bladsy",
   "pagesUnit": "bladsye",
   "replacementUnit": "vervanging",
-  "replacementsUnit": "vervangings"
+  "replacementsUnit": "vervangings",
+  "deletePagesTitle": "Vee bladsye uit",
+  "deleteAction": "Skrap",
+  "replaceTitle": "Vervang in bladsye",
+  "removeMatchesTitle": "Verwyder alle passings",
+  "removeAction": "Verwyder"
 }

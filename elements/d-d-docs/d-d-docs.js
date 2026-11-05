@@ -24,7 +24,10 @@ import {
 import {
   ApplicationAttributeData,
   DDDAllStyles,
+  DDDBreadcrumb,
 } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
+import { DDDUtilityClasses } from "@haxtheweb/d-d-d/lib/DDDUtilityClasses.js";
+import "@haxtheweb/d-d-d/lib/d-d-d-sample.js";
 import { DDDBorders } from "@haxtheweb/d-d-d/lib/DDDBorders.js";
 import { DDDMarginPadding } from "@haxtheweb/d-d-d/lib/DDDMarginPadding.js";
 import { DDDFontSizing } from "@haxtheweb/d-d-d/lib/DDDFontSizing.js";
@@ -278,6 +281,8 @@ class DDDocs extends I18NMixin(DDD) {
     return [
       super.styles,
       DDDAllStyles,
+      DDDBreadcrumb,
+      ...DDDUtilityClasses,
       DDDBorders,
       DDDMarginPadding,
       DDDFontSizing,

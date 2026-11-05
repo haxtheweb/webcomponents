@@ -75,5 +75,11 @@
   "selectFile": "{name} selektearje",
   "copyPath": "Paad kopiearje",
   "pathCopied": "Paad kopiearre",
-  "embedInPage": "Ynslute yn side"
+  "embedInPage": "Ynslute yn side",
+  "deleteFilesTitle": "Bestannen wiskje",
+  "renameFilesTitle": "Bestannen omneame",
+  "replaceOriginalsTitle": "Orizjinele bestannen ferfange",
+  "newName": "Nije namme",
+  "deleteAction": "Wiskje",
+  "renameAction": "Omneame"
 }

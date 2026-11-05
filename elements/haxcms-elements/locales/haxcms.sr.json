@@ -10,7 +10,6 @@
   "selectPage": "Изабери страницу",
   "siteDashboard": "Контролна табла сајтова",
   "cancel": "Откажи",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Несачуване измене ће бити изгубљене ако изаберете ОК. Да ли сте сигурни?",
   "editDetails": "Уреди детаље",
   "add": "Додај",
   "source": "Извор",
@@ -645,5 +644,15 @@
   "contents": "Садржај",
   "continue": "Настави",
   "noResultsFor": "Нема резултата за „{search}“",
+  "duplicatePageTitle": "Дуплирај страницу",
+  "duplicateAction": "Дуплирај",
+  "newPageTitle": "Наслов",
+  "importFromUrlTitle": "Увези са URL адресе",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Одбацити измене структуре?",
+  "outlineSaveTitle": "Сачувати измене структуре?",
+  "discardChanges": "Одбаци измене",
+  "keepEditing": "Настави уређивање",
+  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Несачуване измене ће бити изгубљене ако изаберете ОК. Да ли сте сигурни?",
   "myLearning": "Моје учење"
 }

@@ -75,5 +75,11 @@
   "selectFile": "Piliin ang {name}",
   "copyPath": "Kopyahin ang path",
   "pathCopied": "Nakopya ang path",
-  "embedInPage": "I-embed sa pahina"
+  "embedInPage": "I-embed sa pahina",
+  "deleteFilesTitle": "Burahin ang mga file",
+  "renameFilesTitle": "Palitan ang pangalan ng mga file",
+  "replaceOriginalsTitle": "Palitan ang mga orihinal na file",
+  "newName": "Bagong pangalan",
+  "deleteAction": "Burahin",
+  "renameAction": "Palitan ang pangalan"
 }

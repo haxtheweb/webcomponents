@@ -60,5 +60,10 @@
   "pageUnit": "старонка",
   "pagesUnit": "старонкі",
   "replacementUnit": "замена",
-  "replacementsUnit": "замен"
+  "replacementsUnit": "замен",
+  "deletePagesTitle": "Выдаленне старонак",
+  "deleteAction": "Выдаліць",
+  "replaceTitle": "Замена на старонках",
+  "removeMatchesTitle": "Выдаліць усе супадзенні",
+  "removeAction": "Выдаліць"
 }

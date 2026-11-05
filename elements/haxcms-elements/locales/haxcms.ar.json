@@ -10,7 +10,6 @@
   "selectPage": "اختر صفحة",
   "siteDashboard": "لوحة تحكم المواقع",
   "cancel": "إلغاء",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "ستضيع التغييرات غير المحفوظة إذا اخترت موافق، هل أنت متأكد؟",
   "editDetails": "تعديل التفاصيل",
   "add": "إضافة",
   "source": "مصدر",
@@ -645,5 +644,15 @@
   "contents": "المحتويات",
   "continue": "متابعة",
   "noResultsFor": "لم يتم العثور على نتائج لـ \"{search}\"",
+  "duplicatePageTitle": "تكرار الصفحة",
+  "duplicateAction": "تكرار",
+  "newPageTitle": "العنوان",
+  "importFromUrlTitle": "استيراد من عنوان URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "تجاهل تغييرات المخطط؟",
+  "outlineSaveTitle": "حفظ تغييرات المخطط؟",
+  "discardChanges": "تجاهل التغييرات",
+  "keepEditing": "متابعة التحرير",
+  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "ستضيع التغييرات غير المحفوظة إذا اخترت موافق، هل أنت متأكد؟",
   "myLearning": "تعلّمي"
 }

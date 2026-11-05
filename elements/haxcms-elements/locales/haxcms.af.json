@@ -10,7 +10,6 @@
   "selectPage": "Kies bladsy",
   "siteDashboard": "Werf-dashboard",
   "cancel": "Kanselleer",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Ongestoorde veranderinge sal verlore gaan as jy OK kies. Is jy seker?",
   "editDetails": "Bladsybesonderhede",
   "add": "Voeg by",
   "source": "Bron",
@@ -645,5 +644,15 @@
   "contents": "Inhoud",
   "continue": "Gaan voort",
   "noResultsFor": "Geen resultate gevind vir \"{search}\" nie",
+  "duplicatePageTitle": "Dupliseer bladsy",
+  "duplicateAction": "Dupliseer",
+  "newPageTitle": "Titel",
+  "importFromUrlTitle": "Voer in vanaf 'n URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Gooi buitelynveranderinge weg?",
+  "outlineSaveTitle": "Stoor buitelynveranderinge?",
+  "discardChanges": "Gooi veranderinge weg",
+  "keepEditing": "Hou aan redigeer",
+  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Ongestoorde veranderinge sal verlore gaan as jy OK kies. Is jy seker?",
   "myLearning": "My leer"
 }

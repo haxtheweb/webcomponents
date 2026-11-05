@@ -10,7 +10,6 @@
   "selectPage": "පිටුව තෝරන්න",
   "siteDashboard": "අඩවි උපකරණ පුවරුව",
   "cancel": "අවලංගු කරන්න",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "සුරැකි නොකළ වෙනස්කම් OK තෝරා ගත් නම් නැති වී යනු ඇත. ඔබ තහවුරු කරනවාද?",
   "editDetails": "විස්තර සංස්කරණය කරන්න",
   "add": "එක් කරන්න",
   "source": "මූලය",
@@ -645,5 +644,15 @@
   "contents": "අන්තර්ගතය",
   "continue": "ඉදිරියට",
   "noResultsFor": "\"{search}\" සඳහා ප්‍රතිඵල හමු නොවීය",
+  "duplicatePageTitle": "පිටුව අනුපිටපත් කරන්න",
+  "duplicateAction": "අනුපිටපත් කරන්න",
+  "newPageTitle": "මාතෘකාව",
+  "importFromUrlTitle": "URL එකකින් ආයාත කරන්න",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "දළ සටහනේ වෙනස්කම් ඉවතලන්නද?",
+  "outlineSaveTitle": "දළ සටහනේ වෙනස්කම් සුරකින්නද?",
+  "discardChanges": "වෙනස්කම් ඉවතලන්න",
+  "keepEditing": "දිගටම සංස්කරණය කරන්න",
+  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "සුරැකි නොකළ වෙනස්කම් OK තෝරා ගත් නම් නැති වී යනු ඇත. ඔබ තහවුරු කරනවාද?",
   "myLearning": "මගේ ඉගෙනීම"
 }

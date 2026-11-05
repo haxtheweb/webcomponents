@@ -60,5 +60,10 @@
   "pageUnit": "lapa",
   "pagesUnit": "lapas",
   "replacementUnit": "aizstāšana",
-  "replacementsUnit": "aizstāšanas"
+  "replacementsUnit": "aizstāšanas",
+  "deletePagesTitle": "Dzēst lapas",
+  "deleteAction": "Dzēst",
+  "replaceTitle": "Aizstāt lapās",
+  "removeMatchesTitle": "Noņemt visas atbilstības",
+  "removeAction": "Noņemt"
 }

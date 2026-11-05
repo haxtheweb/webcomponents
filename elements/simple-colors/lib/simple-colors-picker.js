@@ -206,10 +206,12 @@ class SimpleColorsPicker extends SimplePickerBehaviors(
   }
 
   willUpdate(changedProperties) {
-    if (super.willUpdate) super.willUpdate(changedProperties);
     // Derive options/hideOptionLabels in willUpdate so reactive sets batch
     // into the current update cycle. Setting them in updated() scheduled a
     // redundant second update (Lit change-in-update warning).
+    // This runs BEFORE super.willUpdate so simple-picker sees the new
+    // options in this cycle's changes and builds its option list from them;
+    // after it, the list stayed empty (blank dropdown, "false" label).
     if (
       changedProperties.has("colors") ||
       changedProperties.has("shades") ||
@@ -220,6 +222,7 @@ class SimpleColorsPicker extends SimplePickerBehaviors(
     if (changedProperties.has("shades")) {
       this.hideOptionLabels = this.shades;
     }
+    if (super.willUpdate) super.willUpdate(changedProperties);
   }
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);

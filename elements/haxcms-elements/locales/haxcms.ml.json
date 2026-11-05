@@ -10,7 +10,6 @@
   "selectPage": "പേജ് തിരഞ്ഞെടുക്കുക",
   "siteDashboard": "സൈറ്റുകളുടെ ഡാഷ്ബോർഡ്",
   "cancel": "റദ്ദാക്കുക",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "OK തിരഞ്ഞെടുത്താൽ സേവ് ചെയ്യാത്ത മാറ്റങ്ങൾ നഷ്ടപ്പെടും. നിങ്ങൾക്ക് ഉറപ്പാണോ?",
   "editDetails": "പേജ് വിശദാംശങ്ങൾ",
   "add": "ചേർക്കുക",
   "source": "ഉറവിടം",
@@ -645,5 +644,15 @@
   "contents": "ഉള്ളടക്കം",
   "continue": "തുടരുക",
   "noResultsFor": "\"{search}\" എന്നതിന് ഫലങ്ങളൊന്നും കണ്ടെത്തിയില്ല",
+  "duplicatePageTitle": "പേജിന്റെ തനിപ്പകർപ്പ്",
+  "duplicateAction": "തനിപ്പകർപ്പ്",
+  "newPageTitle": "ശീർഷകം",
+  "importFromUrlTitle": "ഒരു URL-ൽ നിന്ന് ഇമ്പോർട്ട് ചെയ്യുക",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "ഔട്ട്‌ലൈൻ മാറ്റങ്ങൾ ഉപേക്ഷിക്കണോ?",
+  "outlineSaveTitle": "ഔട്ട്‌ലൈൻ മാറ്റങ്ങൾ സംരക്ഷിക്കണോ?",
+  "discardChanges": "മാറ്റങ്ങൾ ഉപേക്ഷിക്കുക",
+  "keepEditing": "എഡിറ്റിംഗ് തുടരുക",
+  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "OK തിരഞ്ഞെടുത്താൽ സേവ് ചെയ്യാത്ത മാറ്റങ്ങൾ നഷ്ടപ്പെടും. നിങ്ങൾക്ക് ഉറപ്പാണോ?",
   "myLearning": "എന്റെ പഠനം"
 }

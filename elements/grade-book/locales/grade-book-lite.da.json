@@ -57,5 +57,12 @@
   "expandAll": "Udvid alle",
   "displayMode1": "Tilstand 1",
   "displayMode2": "Tilstand 2",
-  "twoWindows": "To vinduer"
+  "twoWindows": "To vinduer",
+  "notGraded": "Ikke bedømt",
+  "gradeValue": "{score} af {points}",
+  "studentPosition": "Elev {current} / {total}",
+  "rosterCaption": "Elever: {students} · Opgaver: {assignments}",
+  "gridInstructions": "Piletasterne flytter mellem karakterer, Enter åbner bedømmelse",
+  "totalScore": "Samlet score",
+  "lockTotalScore": "Lås samlet score"
 }

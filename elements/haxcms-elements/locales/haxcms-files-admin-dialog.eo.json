@@ -75,5 +75,11 @@
   "selectFile": "Elekti {name}",
   "copyPath": "Kopii vojon",
   "pathCopied": "Vojo kopiita",
-  "embedInPage": "Enkorpigi en paĝon"
+  "embedInPage": "Enkorpigi en paĝon",
+  "deleteFilesTitle": "Forigi dosierojn",
+  "renameFilesTitle": "Renomi dosierojn",
+  "replaceOriginalsTitle": "Anstataŭigi originalajn dosierojn",
+  "newName": "Nova nomo",
+  "deleteAction": "Forigi",
+  "renameAction": "Renomi"
 }

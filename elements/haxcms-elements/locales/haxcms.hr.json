@@ -10,7 +10,6 @@
   "selectPage": "Odaberi stranicu",
   "siteDashboard": "Nadzorna ploča web stranica",
   "cancel": "Odustani",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Nespremljene promjene bit će izgubljene ako odaberete OK. Jeste li sigurni?",
   "editDetails": "Uredi detalje",
   "add": "Dodaj",
   "source": "Izvor",
@@ -645,5 +644,15 @@
   "contents": "Sadržaj",
   "continue": "Nastavi",
   "noResultsFor": "Nema rezultata za „{search}”",
+  "duplicatePageTitle": "Dupliciraj stranicu",
+  "duplicateAction": "Dupliciraj",
+  "newPageTitle": "Naslov",
+  "importFromUrlTitle": "Uvezi s URL-a",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Odbaciti promjene strukture?",
+  "outlineSaveTitle": "Spremiti promjene strukture?",
+  "discardChanges": "Odbaci promjene",
+  "keepEditing": "Nastavi uređivati",
+  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Nespremljene promjene bit će izgubljene ako odaberete OK. Jeste li sigurni?",
   "myLearning": "Moje učenje"
 }

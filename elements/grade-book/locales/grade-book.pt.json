@@ -60,5 +60,12 @@
   "downloadPDF": "Baixar PDF",
   "displayMode1": "Modo 1",
   "displayMode2": "Modo 2",
-  "twoWindows": "Duas janelas"
+  "twoWindows": "Duas janelas",
+  "notGraded": "Não avaliado",
+  "gradeValue": "{score} de {points}",
+  "studentPosition": "Aluno {current} / {total}",
+  "rosterCaption": "Alunos: {students} · Atividades: {assignments}",
+  "gridInstructions": "As teclas de seta movem entre as notas, Enter abre a avaliação",
+  "totalScore": "Pontuação total",
+  "lockTotalScore": "Bloquear pontuação total"
 }

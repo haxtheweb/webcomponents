@@ -60,5 +60,10 @@
   "pageUnit": "पेज",
   "pagesUnit": "पेज",
   "replacementUnit": "प्रतिस्थापन",
-  "replacementsUnit": "प्रतिस्थापन"
+  "replacementsUnit": "प्रतिस्थापन",
+  "deletePagesTitle": "पेज हटाएँ",
+  "deleteAction": "हटाएँ",
+  "replaceTitle": "पेजों में बदलें",
+  "removeMatchesTitle": "सभी मिलान हटाएँ",
+  "removeAction": "हटाएँ"
 }

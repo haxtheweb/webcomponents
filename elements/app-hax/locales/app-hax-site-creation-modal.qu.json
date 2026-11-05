@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Tiyana Allinta Rurasqa!",
   "newSiteReady": "Musuq \"{siteName}\" tiyanayki llamk'achinapaq listañam.",
   "stayHere": "Kaypi Qhipay",
-  "goToSite": "Tiyanaman Riy"
+  "goToSite": "Tiyanaman Riy",
+  "stepOf": "Patarana {step}, {total}-manta"
 }

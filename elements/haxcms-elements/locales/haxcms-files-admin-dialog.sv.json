@@ -75,5 +75,11 @@
   "selectFile": "Markera {name}",
   "copyPath": "Kopiera sökväg",
   "pathCopied": "Sökvägen kopierad",
-  "embedInPage": "Bädda in på sidan"
+  "embedInPage": "Bädda in på sidan",
+  "deleteFilesTitle": "Ta bort filer",
+  "renameFilesTitle": "Byt namn på filer",
+  "replaceOriginalsTitle": "Ersätt originalfiler",
+  "newName": "Nytt namn",
+  "deleteAction": "Ta bort",
+  "renameAction": "Byt namn"
 }

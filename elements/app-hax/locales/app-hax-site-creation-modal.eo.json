@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Retejo sukcese kreita!",
   "newSiteReady": "Via nova retejo \"{siteName}\" estas preta por uzo.",
   "stayHere": "Resti ĉi tie",
-  "goToSite": "Iri al retejo"
+  "goToSite": "Iri al retejo",
+  "stepOf": "Paŝo {step} el {total}"
 }

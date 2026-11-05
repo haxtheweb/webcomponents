@@ -60,5 +60,12 @@
   "downloadPDF": "PDF ڈاؤن لوڈ کرو",
   "displayMode1": "موڈ 1",
   "displayMode2": "موڈ 2",
-  "twoWindows": "دو ونڈوز"
+  "twoWindows": "دو ونڈوز",
+  "notGraded": "درجہ نئیں دتا گیا",
+  "gradeValue": "{points} وچوں {score}",
+  "studentPosition": "طالب علم {current} / {total}",
+  "rosterCaption": "طالب علم: {students} · اسائنمنٹس: {assignments}",
+  "gridInstructions": "تیر والیاں کیاں گریڈاں وچ پھردیاں نیں، Enter گریڈنگ کھولدی اے",
+  "totalScore": "کل سکور",
+  "lockTotalScore": "کل سکور لاک کرو"
 }

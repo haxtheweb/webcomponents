@@ -992,16 +992,11 @@ class Store {
 
   // show view only mode toast with exit option
   showViewOnlyModeToast() {
-    // Create exit button
+    // Create exit button; no inline styles, the toast styles slotted
+    // buttons as HAX UI buttons and inline styles would override that
     const exitButton = globalThis.document.createElement("button");
+    exitButton.type = "button";
     exitButton.innerText = this.t.exitViewOnlyMode;
-    exitButton.style.cssText = `
-      background-color: var(--simple-colors-default-theme-blue-7);
-      color: white;
-      border: none;
-      cursor: pointer;
-      border-radius: 0;
-    `;
     exitButton.addEventListener("click", () => {
       // Remove ViewOnlyMode from session
       UserScaffoldInstance.deleteMemory("ViewOnlyMode", "long");

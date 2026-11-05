@@ -10,7 +10,6 @@
   "selectPage": "Họrọ ibe",
   "siteDashboard": "Dashibọọdụ saịtị",
   "cancel": "Kagbuo",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Mgbanwe echekwabaghị ga-efu ma ọ bụrụ na ị họrọ OK. Ị jụrụ ajụjụ?",
   "editDetails": "Dezie nkọwa",
   "add": "Tinye",
   "source": "Isi",
@@ -645,5 +644,15 @@
   "contents": "Ihe ndị dị n'ime",
   "continue": "Gaa n'ihu",
   "noResultsFor": "Ahụghị nsonaazụ maka \"{search}\"",
+  "duplicatePageTitle": "Mepụtaghachi ibe",
+  "duplicateAction": "Mepụtaghachi",
+  "newPageTitle": "Aha",
+  "importFromUrlTitle": "Bubata site na URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Tufuo mgbanwe ndepụta?",
+  "outlineSaveTitle": "Chekwaa mgbanwe ndepụta?",
+  "discardChanges": "Tufuo mgbanwe",
+  "keepEditing": "Gaa n'ihu na-edezi",
+  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Mgbanwe echekwabaghị ga-efu ma ọ bụrụ na ị họrọ OK. Ị jụrụ ajụjụ?",
   "myLearning": "Mmụta m"
 }

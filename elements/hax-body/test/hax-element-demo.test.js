@@ -51,8 +51,9 @@ describe("hax-element-demo", () => {
     await el.updateComplete;
     const desc = el.shadowRoot.querySelector(".description");
     expect(desc).to.exist;
-    expect(desc.textContent).to.contain("...");
-    expect(desc.textContent.length).to.be.lessThan(longDesc.length);
+    // trim: the template puts the text on its own line, and formatting
+    // passes (prettier, the ubiquity build) decide where that line breaks
+    expect(desc.textContent.trim()).to.equal(`${"A".repeat(200)}...`);
   });
 
   it("does not truncate description under 200 chars", async () => {
@@ -60,7 +61,7 @@ describe("hax-element-demo", () => {
     await el.updateComplete;
     const desc = el.shadowRoot.querySelector(".description");
     expect(desc).to.exist;
-    expect(desc.textContent).to.equal("Short desc");
+    expect(desc.textContent.trim()).to.equal("Short desc");
     expect(desc.textContent).to.not.contain("...");
   });
 

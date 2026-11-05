@@ -124,5 +124,13 @@
   "showApiKeyValue": "API-Schlüssel anzeigen",
   "noSettingsForPanel": "Für diesen Bereich sind noch keine Einstellungen verfügbar.",
   "saving": "Wird gespeichert…",
-  "save": "Speichern"
+  "save": "Speichern",
+  "dropSkeletonFile": "Skelett als .json hier ablegen oder",
+  "browseFiles": "Durchsuchen",
+  "skeletonUploadNote": "Hochgeladene Skelette können umbenannt oder gelöscht werden; Kern-Skelette können nur deaktiviert werden.",
+  "skeletonName": "Skelettname",
+  "renameAction": "Umbenennen",
+  "deleteSkeletonTitle": "Skelett löschen",
+  "deleteAction": "Löschen",
+  "cancel": "Abbrechen"
 }

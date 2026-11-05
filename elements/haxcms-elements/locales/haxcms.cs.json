@@ -10,7 +10,6 @@
   "selectPage": "Vybrat stránku",
   "siteDashboard": "Panel webů",
   "cancel": "Zrušit",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Neuložené změny budou ztraceny, pokud vyberete OK. Jste si jistí?",
   "editDetails": "Upravit detaily",
   "add": "Přidat",
   "source": "Zdroj",
@@ -645,5 +644,15 @@
   "contents": "Obsah",
   "continue": "Pokračovat",
   "noResultsFor": "Pro „{search}“ nebyly nalezeny žádné výsledky",
+  "duplicatePageTitle": "Duplikovat stránku",
+  "duplicateAction": "Duplikovat",
+  "newPageTitle": "Název",
+  "importFromUrlTitle": "Importovat z URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Zahodit změny osnovy?",
+  "outlineSaveTitle": "Uložit změny osnovy?",
+  "discardChanges": "Zahodit změny",
+  "keepEditing": "Pokračovat v úpravách",
+  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Neuložené změny budou ztraceny, pokud vyberete OK. Jste si jistí?",
   "myLearning": "Moje učení"
 }

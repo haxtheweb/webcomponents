@@ -10,7 +10,6 @@
   "selectPage": "Selezziunà pagina",
   "siteDashboard": "Pannellu di siti",
   "cancel": "Annullà",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "I cambiamenti micca arregistrati saranu persi s'è voi selezziunate Va Bè. Site sicuru?",
   "editDetails": "Detagli di a pagina",
   "add": "Aghjunghje",
   "source": "Fonte",
@@ -645,5 +644,15 @@
   "contents": "Cuntenuti",
   "continue": "Cuntinuà",
   "noResultsFor": "Nisunu risultatu trovu per \"{search}\"",
+  "duplicatePageTitle": "Duplicà a pagina",
+  "duplicateAction": "Duplicà",
+  "newPageTitle": "Titulu",
+  "importFromUrlTitle": "Impurtà da un URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Scartà i cambiamenti di a struttura?",
+  "outlineSaveTitle": "Salvà i cambiamenti di a struttura?",
+  "discardChanges": "Scartà i cambiamenti",
+  "keepEditing": "Cuntinuà à mudificà",
+  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "I cambiamenti micca arregistrati saranu persi s'è voi selezziunate Va Bè. Site sicuru?",
   "myLearning": "U mo apprendimentu"
 }

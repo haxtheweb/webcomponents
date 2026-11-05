@@ -75,5 +75,11 @@
   "selectFile": "{name} kijelölése",
   "copyPath": "Útvonal másolása",
   "pathCopied": "Útvonal másolva",
-  "embedInPage": "Beágyazás az oldalba"
+  "embedInPage": "Beágyazás az oldalba",
+  "deleteFilesTitle": "Fájlok törlése",
+  "renameFilesTitle": "Fájlok átnevezése",
+  "replaceOriginalsTitle": "Eredeti fájlok cseréje",
+  "newName": "Új név",
+  "deleteAction": "Törlés",
+  "renameAction": "Átnevezés"
 }

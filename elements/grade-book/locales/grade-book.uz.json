@@ -60,5 +60,12 @@
   "downloadPDF": "PDF yuklab olish",
   "displayMode1": "1-rejim",
   "displayMode2": "2-rejim",
-  "twoWindows": "Ikki oyna"
+  "twoWindows": "Ikki oyna",
+  "notGraded": "Baholanmagan",
+  "gradeValue": "{points} dan {score}",
+  "studentPosition": "Talaba {current} / {total}",
+  "rosterCaption": "Talabalar: {students} · Topshiriqlar: {assignments}",
+  "gridInstructions": "Strelka tugmalari baholar orasida o‘tadi, Enter baholashni ochadi",
+  "totalScore": "Umumiy ball",
+  "lockTotalScore": "Umumiy ballni qulflash"
 }

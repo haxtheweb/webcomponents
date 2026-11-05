@@ -10,7 +10,6 @@
   "selectPage": "Seleccionar páxina",
   "siteDashboard": "Panel de sitios",
   "cancel": "Cancelar",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Os cambios non gardados perderanse se seleccionas OK. Estás seguro?",
   "editDetails": "Editar detalles",
   "add": "Engadir",
   "source": "Fonte",
@@ -645,5 +644,15 @@
   "contents": "Contidos",
   "continue": "Continuar",
   "noResultsFor": "Non se atoparon resultados para \"{search}\"",
+  "duplicatePageTitle": "Duplicar páxina",
+  "duplicateAction": "Duplicar",
+  "newPageTitle": "Título",
+  "importFromUrlTitle": "Importar desde un URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Descartar os cambios na estrutura?",
+  "outlineSaveTitle": "Gardar os cambios na estrutura?",
+  "discardChanges": "Descartar cambios",
+  "keepEditing": "Seguir editando",
+  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Os cambios non gardados perderanse se seleccionas OK. Estás seguro?",
   "myLearning": "A miña aprendizaxe"
 }

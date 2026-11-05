@@ -75,5 +75,11 @@
   "selectFile": "{name} seç",
   "copyPath": "Yolu kopyala",
   "pathCopied": "Yol kopyalandı",
-  "embedInPage": "Sayfaya göm"
+  "embedInPage": "Sayfaya göm",
+  "deleteFilesTitle": "Dosyaları sil",
+  "renameFilesTitle": "Dosyaları yeniden adlandır",
+  "replaceOriginalsTitle": "Orijinal dosyaları değiştir",
+  "newName": "Yeni ad",
+  "deleteAction": "Sil",
+  "renameAction": "Yeniden adlandır"
 }

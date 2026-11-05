@@ -75,5 +75,11 @@
   "selectFile": "Hautatu {name}",
   "copyPath": "Kopiatu bidea",
   "pathCopied": "Bidea kopiatu da",
-  "embedInPage": "Kapsulatu orrian"
+  "embedInPage": "Kapsulatu orrian",
+  "deleteFilesTitle": "Ezabatu fitxategiak",
+  "renameFilesTitle": "Aldatu fitxategien izena",
+  "replaceOriginalsTitle": "Ordeztu jatorrizko fitxategiak",
+  "newName": "Izen berria",
+  "deleteAction": "Ezabatu",
+  "renameAction": "Aldatu izena"
 }

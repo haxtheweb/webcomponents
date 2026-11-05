@@ -10,7 +10,6 @@
   "selectPage": "Хуудас сонгох",
   "siteDashboard": "Сайтуудын хяналтын самбар",
   "cancel": "Цуцлах",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "OK сонговол хадгалаагүй өөрчлөлтүүд алдагдах болно. Та итгэлтэй байна уу?",
   "editDetails": "Дэлгэрэнгүйг засах",
   "add": "Нэмэх",
   "source": "Эх сурвалж",
@@ -645,5 +644,15 @@
   "contents": "Агуулга",
   "continue": "Үргэлжлүүлэх",
   "noResultsFor": "\"{search}\"-д үр дүн олдсонгүй",
+  "duplicatePageTitle": "Хуудас хувилах",
+  "duplicateAction": "Хувилах",
+  "newPageTitle": "Гарчиг",
+  "importFromUrlTitle": "URL-аас импортлох",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Бүтцийн өөрчлөлтийг хаях уу?",
+  "outlineSaveTitle": "Бүтцийн өөрчлөлтийг хадгалах уу?",
+  "discardChanges": "Өөрчлөлтийг хаях",
+  "keepEditing": "Засварлалтыг үргэлжлүүлэх",
+  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "OK сонговол хадгалаагүй өөрчлөлтүүд алдагдах болно. Та итгэлтэй байна уу?",
   "myLearning": "Миний суралцахуй"
 }

@@ -75,5 +75,11 @@
   "selectFile": "Velja {name}",
   "copyPath": "Afrita slóð",
   "pathCopied": "Slóð afrituð",
-  "embedInPage": "Ívefja í síðu"
+  "embedInPage": "Ívefja í síðu",
+  "deleteFilesTitle": "Eyða skrám",
+  "renameFilesTitle": "Endurnefna skrár",
+  "replaceOriginalsTitle": "Skipta út upprunalegum skrám",
+  "newName": "Nýtt nafn",
+  "deleteAction": "Eyða",
+  "renameAction": "Endurnefna"
 }

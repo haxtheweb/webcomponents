@@ -124,5 +124,13 @@
   "showApiKeyValue": "API कुंजी मान दिखाएँ",
   "noSettingsForPanel": "इस पैनल के लिए अभी कोई सेटिंग उपलब्ध नहीं है।",
   "saving": "सहेजा जा रहा है…",
-  "save": "सहेजें"
+  "save": "सहेजें",
+  "dropSkeletonFile": "स्केलेटन .json यहाँ छोड़ें या",
+  "browseFiles": "ब्राउज़ करें",
+  "skeletonUploadNote": "अपलोड किए गए स्केलेटन का नाम बदला जा सकता है या उन्हें हटाया जा सकता है; मुख्य स्केलेटन केवल बंद किए जा सकते हैं।",
+  "skeletonName": "स्केलेटन का नाम",
+  "renameAction": "नाम बदलें",
+  "deleteSkeletonTitle": "स्केलेटन हटाएँ",
+  "deleteAction": "हटाएँ",
+  "cancel": "रद्द करें"
 }

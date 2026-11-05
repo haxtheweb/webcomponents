@@ -100,5 +100,6 @@
   "vitepressImportDescription": "Importi VitePress-dokumentaran deponejon en novan HAX-retejon",
   "vitepressImportPrompt": "URL de la VitePress-git-deponejo",
   "quartoImportDescription": "Importi Quarto-dokumentaran deponejon en novan HAX-retejon",
-  "quartoImportPrompt": "URL de la Quarto-git-deponejo"
+  "quartoImportPrompt": "URL de la Quarto-git-deponejo",
+  "cancel": "Nuligi"
 }

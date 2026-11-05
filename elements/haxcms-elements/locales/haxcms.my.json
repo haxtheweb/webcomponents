@@ -10,7 +10,6 @@
   "selectPage": "ပေဇ် ရှေ့ချေ့ပါ",
   "siteDashboard": "ဝက်ဘ်ဆိုက်များ ဒတ်ရှ်ဘုတ်",
   "cancel": "ပွင့်စုပါ",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "အိထေ့ကေး ရှေ့ချေ့နင်ရင် မစက်ံတောင့် အမှတ်တောင့်မှား နေ့ဘာမှာ ပြစ်ပါမလားတောင့်ရှီ။ ပုံ့နောနေ အခွိုမ့်လားဟား?",
   "editDetails": "အမှားအစာင်း အေဒိတ်ပါ",
   "add": "အမှဲ့အခည်းပါ",
   "source": "အမည်းအနှာ",
@@ -645,5 +644,15 @@
   "contents": "မာတိကာ",
   "continue": "ဆက်လုပ်ရန်",
   "noResultsFor": "\"{search}\" အတွက် ရလဒ် မတွေ့ပါ",
+  "duplicatePageTitle": "စာမျက်နှာ ပွားရန်",
+  "duplicateAction": "ပွားရန်",
+  "newPageTitle": "ခေါင်းစဉ်",
+  "importFromUrlTitle": "URL မှ တင်သွင်းရန်",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "ဖွဲ့စည်းပုံ ပြောင်းလဲမှုများကို ပယ်ဖျက်မလား?",
+  "outlineSaveTitle": "ဖွဲ့စည်းပုံ ပြောင်းလဲမှုများကို သိမ်းမလား?",
+  "discardChanges": "ပြောင်းလဲမှုများ ပယ်ဖျက်ရန်",
+  "keepEditing": "ဆက်လက်တည်းဖြတ်ရန်",
+  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "အိထေ့ကေး ရှေ့ချေ့နင်ရင် မစက်ံတောင့် အမှတ်တောင့်မှား နေ့ဘာမှာ ပြစ်ပါမလားတောင့်ရှီ။ ပုံ့နောနေ အခွိုမ့်လားဟား?",
   "myLearning": "ကျွန်ုပ်၏သင်ယူမှု"
 }

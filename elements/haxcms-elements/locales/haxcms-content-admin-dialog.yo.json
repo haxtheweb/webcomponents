@@ -60,5 +60,10 @@
   "pageUnit": "ojú-ìwé",
   "pagesUnit": "ojú-ìwé",
   "replacementUnit": "ìrọ́pò",
-  "replacementsUnit": "ìrọ́pò"
+  "replacementsUnit": "ìrọ́pò",
+  "deletePagesTitle": "Pa àwọn ojú-ìwé rẹ́",
+  "deleteAction": "Pa rẹ́",
+  "replaceTitle": "Rọ́pò nínú àwọn ojú-ìwé",
+  "removeMatchesTitle": "Yọ gbogbo àwọn tó bá mu kúrò",
+  "removeAction": "Yọ kúrò"
 }

@@ -6,6 +6,7 @@ import { HaxUiAdminTokens } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
 import { HaxUiAdminControls } from "@haxtheweb/d-d-d/lib/HaxUiAdminControls.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/rpg-character/rpg-character.js";
+import { loadAvatarCode } from "@haxtheweb/rpg-character/lib/rpg-character-avatar.js";
 import { autorun, toJS } from "mobx";
 import { store } from "./AppHaxStore.js";
 export class AppHaxSiteLogin extends I18NMixin(DDDSuper(LitElement)) {
@@ -344,6 +345,7 @@ export class AppHaxSiteLogin extends I18NMixin(DDDSuper(LitElement)) {
     return html`
       <rpg-character
         seed="${this.username}"
+        code="${loadAvatarCode(this.username)}"
         width="88"
         height="110"
       ></rpg-character>

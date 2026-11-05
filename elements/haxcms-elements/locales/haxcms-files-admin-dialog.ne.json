@@ -75,5 +75,11 @@
   "selectFile": "{name} चयन गर्नुहोस्",
   "copyPath": "पथ प्रतिलिपि गर्नुहोस्",
   "pathCopied": "पथ प्रतिलिपि गरियो",
-  "embedInPage": "पेजमा इम्बेड गर्नुहोस्"
+  "embedInPage": "पेजमा इम्बेड गर्नुहोस्",
+  "deleteFilesTitle": "फाइलहरू मेटाउनुहोस्",
+  "renameFilesTitle": "फाइलहरूको नाम बदल्नुहोस्",
+  "replaceOriginalsTitle": "मूल फाइलहरू प्रतिस्थापन गर्नुहोस्",
+  "newName": "नयाँ नाम",
+  "deleteAction": "मेटाउनुहोस्",
+  "renameAction": "नाम बदल्नुहोस्"
 }

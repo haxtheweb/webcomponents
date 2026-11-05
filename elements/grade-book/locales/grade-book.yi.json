@@ -60,5 +60,12 @@
   "downloadPDF": "אַראָפּלאָדן PDF",
   "displayMode1": "מאָדוס 1",
   "displayMode2": "מאָדוס 2",
-  "twoWindows": "צוויי פֿענצטער"
+  "twoWindows": "צוויי פֿענצטער",
+  "notGraded": "נישט בענאָטעט",
+  "gradeValue": "{score} פֿון {points}",
+  "studentPosition": "תּלמיד {current} / {total}",
+  "rosterCaption": "תּלמידים: {students} · אַסיינמענטס: {assignments}",
+  "gridInstructions": "פֿײַל־קלאַוויעס באַוועגן צווישן גריידס, Enter עפֿנט גרײדינג",
+  "totalScore": "גאַנצער סקאָר",
+  "lockTotalScore": "שליסן דעם גאַנצן סקאָר"
 }

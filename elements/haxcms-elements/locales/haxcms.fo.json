@@ -10,7 +10,6 @@
   "selectPage": "Vel síðu",
   "siteDashboard": "Síðuknappar",
   "cancel": "Avlýs",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Ikkki goymdar broytingar fara burtur, um tú velur OK, er tú vísur?",
   "editDetails": "Rætta smálutir",
   "add": "Legg afturat",
   "source": "Kelda",
@@ -645,5 +644,15 @@
   "contents": "Innihald",
   "continue": "Halt fram",
   "noResultsFor": "Eingi úrslit funnin fyri „{search}“",
+  "duplicatePageTitle": "Tvífalda síðu",
+  "duplicateAction": "Tvífalda",
+  "newPageTitle": "Heiti",
+  "importFromUrlTitle": "Innflyt úr URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Vraka broytingar í yvirlitinum?",
+  "outlineSaveTitle": "Goym broytingar í yvirlitinum?",
+  "discardChanges": "Vraka broytingar",
+  "keepEditing": "Halt fram at rætta",
+  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Ikkki goymdar broytingar fara burtur, um tú velur OK, er tú vísur?",
   "myLearning": "Mítt lærdómur"
 }

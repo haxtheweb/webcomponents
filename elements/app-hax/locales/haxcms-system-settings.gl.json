@@ -124,5 +124,13 @@
   "showApiKeyValue": "Mostrar o valor da clave API",
   "noSettingsForPanel": "Aínda non hai configuración dispoñible para este panel.",
   "saving": "Gardando…",
-  "save": "Gardar"
+  "save": "Gardar",
+  "dropSkeletonFile": "Solta un esqueleto .json ou",
+  "browseFiles": "Examinar",
+  "skeletonUploadNote": "Os esqueletos cargados pódense renomear ou eliminar; os esqueletos básicos só se poden desactivar.",
+  "skeletonName": "Nome do esqueleto",
+  "renameAction": "Renomear",
+  "deleteSkeletonTitle": "Eliminar esqueleto",
+  "deleteAction": "Eliminar",
+  "cancel": "Cancelar"
 }

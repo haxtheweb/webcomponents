@@ -300,10 +300,10 @@ describe("grade-book element", () => {
     it("changeStudent prev/next respect roster bounds", async () => {
       const el = await loadJsonBook();
       const prev = el.shadowRoot.querySelector(
-        "simple-icon-button-lite[icon='arrow-upward']",
+        "button[data-nav='student'][value='prev']",
       );
       const next = el.shadowRoot.querySelector(
-        "simple-icon-button-lite[icon='arrow-downward']",
+        "button[data-nav='student'][value='next']",
       );
       // at student 0 prev is a no-op
       prev.click();
@@ -324,10 +324,10 @@ describe("grade-book element", () => {
     it("changeAssignment prev/next respect assignment bounds", async () => {
       const el = await loadJsonBook();
       const prev = el.shadowRoot.querySelector(
-        "simple-icon-button-lite[icon='arrow-back']",
+        "button[data-nav='assignment'][value='prev']",
       );
       const next = el.shadowRoot.querySelector(
-        "simple-icon-button-lite[icon='arrow-forward']",
+        "button[data-nav='assignment'][value='next']",
       );
       prev.click();
       await flush();
@@ -415,9 +415,22 @@ describe("grade-book element", () => {
       const button = el.shadowRoot.querySelector(
         "#studentgrid tbody td[data-student='0'][data-assignment='0'] button",
       );
-      expect(button.getAttribute("aria-label")).to.equal(
-        "Alice's assignment Assignment 1",
+      // the name keeps the student / assignment and adds the grade; it comes
+      // from the cell content so the visible score and letter are part of it
+      const name = (b) => b.textContent.replace(/\s+/g, " ").trim();
+      expect(name(button)).to.equal(
+        "Alice's assignment Assignment 1, 9 of 10, B",
       );
+      // an empty grade reads as not graded
+      const empty = el.shadowRoot.querySelector(
+        "#studentgrid tbody td[data-student='0'][data-assignment='1'] button",
+      );
+      expect(name(empty)).to.equal(
+        "Alice's assignment Assignment 2, Not graded–",
+      );
+      expect(
+        empty.querySelector(".gb-ungraded").getAttribute("aria-hidden"),
+      ).to.equal("true");
     });
     it("maintainScrollPosition runs without error once a data-active cell exists", async () => {
       const el = await loadJsonBook();
@@ -457,15 +470,11 @@ describe("grade-book element", () => {
     });
     it("toggleSettings opens its popover and closes others", async () => {
       const el = await loadJsonBook();
-      el.shadowRoot
-        .querySelector("simple-icon-button-lite[icon='settings']")
-        .click();
+      el.shadowRoot.querySelector("#settings").click();
       expect(el.hideSettings).to.equal(false);
       expect(el.hideGradeScale).to.equal(true);
       expect(el.hideActiveStudentOverview).to.equal(true);
-      el.shadowRoot
-        .querySelector("simple-icon-button-lite[icon='settings']")
-        .click();
+      el.shadowRoot.querySelector("#settings").click();
       expect(el.hideSettings).to.equal(true);
     });
     it("toggleActiveAssignment opens its popover and closes others", async () => {

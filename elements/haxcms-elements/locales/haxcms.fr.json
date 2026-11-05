@@ -10,7 +10,6 @@
   "selectPage": "Sélectionner une page",
   "siteDashboard": "Tableau de bord des sites",
   "cancel": "Annuler",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Les modifications non enregistrées seront perdues si vous sélectionnez OK, êtes-vous sûr ?",
   "editDetails": "Modifier les détails",
   "add": "Ajouter",
   "source": "Source",
@@ -645,5 +644,15 @@
   "contents": "Sommaire",
   "continue": "Continuer",
   "noResultsFor": "Aucun résultat trouvé pour « {search} »",
+  "duplicatePageTitle": "Dupliquer la page",
+  "duplicateAction": "Dupliquer",
+  "newPageTitle": "Titre",
+  "importFromUrlTitle": "Importer depuis une URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Abandonner les modifications de la structure ?",
+  "outlineSaveTitle": "Enregistrer les modifications de la structure ?",
+  "discardChanges": "Abandonner les modifications",
+  "keepEditing": "Continuer la modification",
+  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Les modifications non enregistrées seront perdues si vous sélectionnez OK, êtes-vous sûr ?",
   "myLearning": "Mon apprentissage"
 }

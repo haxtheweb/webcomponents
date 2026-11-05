@@ -161,17 +161,12 @@
   },
   "elements/grade-book/grade-book.js": {
     "eqeqeq": {
-      "count": 13
-    }
-  },
-  "elements/grade-book/lib/GradeBookUIPieces.js": {
-    "eqeqeq": {
-      "count": 1
+      "count": 4
     }
   },
   "elements/grade-book/lib/grade-book-lite.js": {
     "eqeqeq": {
-      "count": 10
+      "count": 2
     }
   },
   "elements/grade-book/lib/letter-grade-picker.js": {

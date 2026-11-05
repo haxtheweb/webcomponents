@@ -45,27 +45,6 @@
           </script>
         </template>
       </demo-snippet>
-      
-      <h2>Shade Picker</h2>
-      <demo-snippet>
-        <template>
-          <div class="demo">
-            <p>
-              <simple-colors-picker 
-                id="shades" 
-                hide-option-labels 
-                label="CSS Variable Shades"
-                shades>
-              </simple-colors-picker>
-            </p>
-          </div>
-          <script>
-            document.getElementById('shades').addEventListener('change',e => {
-              if(e.detail.value !== null) console.log('color: var(--'+e.detail.value+');');
-            });
-          </script>
-        </template>
-      </demo-snippet>
     </div>
   </body>
 </html>

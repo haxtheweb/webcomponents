@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "سائٹ کامیابی نال بݨ گئی!",
   "newSiteReady": "تہاڈی نویں سائٹ \"{siteName}\" ورتن لئی تیار اے۔",
   "stayHere": "ایتھے رہو",
-  "goToSite": "سائٹ تے جاؤ"
+  "goToSite": "سائٹ تے جاؤ",
+  "stepOf": "{total} وچوں قدم {step}"
 }

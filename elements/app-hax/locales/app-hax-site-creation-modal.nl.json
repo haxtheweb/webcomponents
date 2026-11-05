@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Site succesvol gemaakt!",
   "newSiteReady": "Je nieuwe site \"{siteName}\" is klaar voor gebruik.",
   "stayHere": "Hier blijven",
-  "goToSite": "Ga naar site"
+  "goToSite": "Ga naar site",
+  "stepOf": "Stap {step} van {total}"
 }

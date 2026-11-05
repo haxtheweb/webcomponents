@@ -75,5 +75,11 @@
   "selectFile": "Dooro {name}",
   "copyPath": "Koobi jidka",
   "pathCopied": "Jidka waa la koobiyeeyay",
-  "embedInPage": "Ku dheji bogga"
+  "embedInPage": "Ku dheji bogga",
+  "deleteFilesTitle": "Tirtir faylasha",
+  "renameFilesTitle": "Magac cusub u bixi faylasha",
+  "replaceOriginalsTitle": "Beddel faylasha asalka ah",
+  "newName": "Magac cusub",
+  "deleteAction": "Tirtir",
+  "renameAction": "Magac cusub u bixi"
 }

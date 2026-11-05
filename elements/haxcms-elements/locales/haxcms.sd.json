@@ -10,7 +10,6 @@
   "selectPage": "صفحو چونڊيو",
   "siteDashboard": "سائيٽن جو ڊيش بورڊ",
   "cancel": "منسوخ ڪريو",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "اڻ محفوظ ٿيل تبديليون ضايع ٿي وينديون جيڪڏهن توهان OK چونڊيو. ڇا توهان پڪ آهيو؟",
   "editDetails": "تفصيلات ايڊٽ ڪريو",
   "add": "شامل ڪريو",
   "source": "ذريعو",
@@ -645,5 +644,15 @@
   "contents": "مواد",
   "continue": "جاري رکو",
   "noResultsFor": "\"{search}\" لاءِ ڪو نتيجو نه مليو",
+  "duplicatePageTitle": "صفحي جو نقل ٺاهيو",
+  "duplicateAction": "نقل ٺاهيو",
+  "newPageTitle": "عنوان",
+  "importFromUrlTitle": "URL مان امپورٽ ڪريو",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "خاڪي جون تبديليون رد ڪريو؟",
+  "outlineSaveTitle": "خاڪي جون تبديليون محفوظ ڪريو؟",
+  "discardChanges": "تبديليون رد ڪريو",
+  "keepEditing": "ايڊٽ ڪندا رهو",
+  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "اڻ محفوظ ٿيل تبديليون ضايع ٿي وينديون جيڪڏهن توهان OK چونڊيو. ڇا توهان پڪ آهيو؟",
   "myLearning": "منهنجو سکيا"
 }

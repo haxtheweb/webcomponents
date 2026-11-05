@@ -57,5 +57,12 @@
   "expandAll": "Zabaldu guztiak",
   "displayMode1": "1. modua",
   "displayMode2": "2. modua",
-  "twoWindows": "Bi leiho"
+  "twoWindows": "Bi leiho",
+  "notGraded": "Kalifikatu gabe",
+  "gradeValue": "{points}(e)tik {score}",
+  "studentPosition": "Ikaslea {current} / {total}",
+  "rosterCaption": "Ikasleak: {students} · Zereginak: {assignments}",
+  "gridInstructions": "Gezi-teklek kalifikazioen artean mugitzen dute, Sartu teklak kalifikazioa irekitzen du",
+  "totalScore": "Puntuazio osoa",
+  "lockTotalScore": "Blokeatu puntuazio osoa"
 }

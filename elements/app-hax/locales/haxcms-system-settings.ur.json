@@ -124,5 +124,13 @@
   "showApiKeyValue": "API کلید کی قدر دکھائیں",
   "noSettingsForPanel": "اس پینل کے لیے ابھی کوئی ترتیبات دستیاب نہیں۔",
   "saving": "محفوظ ہو رہا ہے…",
-  "save": "محفوظ کریں"
+  "save": "محفوظ کریں",
+  "dropSkeletonFile": "اسکیلیٹن کی .json فائل یہاں چھوڑیں یا",
+  "browseFiles": "براؤز کریں",
+  "skeletonUploadNote": "اپ لوڈ کیے گئے اسکیلیٹنز کے نام بدلے یا انہیں حذف کیا جا سکتا ہے؛ بنیادی اسکیلیٹنز کو صرف بند کیا جا سکتا ہے۔",
+  "skeletonName": "اسکیلیٹن کا نام",
+  "renameAction": "نام بدلیں",
+  "deleteSkeletonTitle": "اسکیلیٹن حذف کریں",
+  "deleteAction": "حذف کریں",
+  "cancel": "منسوخ کریں"
 }

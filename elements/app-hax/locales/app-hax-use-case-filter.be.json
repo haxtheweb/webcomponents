@@ -100,5 +100,6 @@
   "vitepressImportDescription": "Імпартаваць рэпазіторый дакументацыі VitePress у новы сайт HAX",
   "vitepressImportPrompt": "URL git-рэпазіторыя VitePress",
   "quartoImportDescription": "Імпартаваць рэпазіторый дакументацыі Quarto у новы сайт HAX",
-  "quartoImportPrompt": "URL git-рэпазіторыя Quarto"
+  "quartoImportPrompt": "URL git-рэпазіторыя Quarto",
+  "cancel": "Скасаваць"
 }

@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Site erfollegräich erstallt!",
   "newSiteReady": "Är nei Site „{siteName}“ ass prett.",
   "stayHere": "Hei bleiwen",
-  "goToSite": "Op d'Site goen"
+  "goToSite": "Op d'Site goen",
+  "stepOf": "Schrëtt {step} vun {total}"
 }

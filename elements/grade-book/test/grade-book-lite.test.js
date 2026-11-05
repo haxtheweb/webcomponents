@@ -222,10 +222,10 @@ describe("grade-book-lite element", () => {
   it("changeAssignment prev/next respect assignment bounds", async () => {
     const el = await loadJsonLite();
     const prev = el.shadowRoot.querySelector(
-      "simple-icon-button-lite[icon='arrow-back']",
+      "button[data-nav='assignment'][value='prev']",
     );
     const next = el.shadowRoot.querySelector(
-      "simple-icon-button-lite[icon='arrow-forward']",
+      "button[data-nav='assignment'][value='next']",
     );
     prev.click();
     await flush();

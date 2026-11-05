@@ -10,7 +10,6 @@
   "selectPage": "Sarudza peji",
   "siteDashboard": "Dashboard yesaiti",
   "cancel": "Kanzura",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Shanduko dzisina kuchengetedzwa dzicharasika kana uchisarudza OK, uri chokwadi?",
   "editDetails": "Gadzirisa ruzivo",
   "add": "Wedzera",
   "source": "Sosi",
@@ -645,5 +644,15 @@
   "contents": "Zviri mukati",
   "continue": "Enderera mberi",
   "noResultsFor": "Hapana mhinduro dzawanikwa dze\"{search}\"",
+  "duplicatePageTitle": "Kopa peji",
+  "duplicateAction": "Kopa",
+  "newPageTitle": "Musoro",
+  "importFromUrlTitle": "Unza kubva kuURL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Rasa shanduko dzechimiro?",
+  "outlineSaveTitle": "Chengetedza shanduko dzechimiro?",
+  "discardChanges": "Rasa shanduko",
+  "keepEditing": "Ramba uchigadzirisa",
+  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Shanduko dzisina kuchengetedzwa dzicharasika kana uchisarudza OK, uri chokwadi?",
   "myLearning": "Kudzidza kwangu"
 }

@@ -60,5 +60,10 @@
   "pageUnit": "ʻaoʻao",
   "pagesUnit": "ʻaoʻao",
   "replacementUnit": "pani",
-  "replacementsUnit": "pani"
+  "replacementsUnit": "pani",
+  "deletePagesTitle": "Holoi i nā ʻaoʻao",
+  "deleteAction": "Holoi",
+  "replaceTitle": "Pani ma nā ʻaoʻao",
+  "removeMatchesTitle": "Wehe i nā mea like a pau",
+  "removeAction": "Wehe"
 }

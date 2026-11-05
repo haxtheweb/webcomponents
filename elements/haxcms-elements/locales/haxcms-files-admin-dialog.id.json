@@ -75,5 +75,11 @@
   "selectFile": "Pilih {name}",
   "copyPath": "Salin jalur",
   "pathCopied": "Jalur disalin",
-  "embedInPage": "Sematkan di halaman"
+  "embedInPage": "Sematkan di halaman",
+  "deleteFilesTitle": "Hapus file",
+  "renameFilesTitle": "Ganti nama file",
+  "replaceOriginalsTitle": "Ganti file asli",
+  "newName": "Nama baru",
+  "deleteAction": "Hapus",
+  "renameAction": "Ganti nama"
 }

@@ -2,6 +2,7 @@ import { LitElement, html, css } from "lit";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import { CourseDesignLinkRowStyles } from "./course-design-link-row-styles.js";
 
 export class EbookButton extends I18NMixin(LitElement) {
   static get properties() {
@@ -97,110 +98,16 @@ export class EbookButton extends I18NMixin(LitElement) {
   }
   static get styles() {
     return [
+      CourseDesignLinkRowStyles,
       css`
         :host {
-          display: block;
           --link-color: light-dark(
             var(--ddd-theme-default-nittanyNavy),
             var(--ddd-theme-default-white)
           );
         }
-        /* single link row shared with worksheet-download: icon tile,
-           eyebrow label, bold title and a trailing affordance */
-        #book {
-          box-sizing: border-box;
-          display: flex;
-          align-items: center;
-          gap: var(--ddd-spacing-3);
-          min-height: var(--ddd-spacing-12);
-          padding-block: var(--ddd-spacing-2);
-          padding-inline: var(--ddd-spacing-4) var(--ddd-spacing-3);
-          border: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-slateGray)
-          );
-          border-radius: var(--ddd-radius-md);
-          background-color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-potentialMidnight)
-          );
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
-          font-family: var(--ddd-font-primary);
-          text-decoration: none;
-          text-transform: none;
-          transition: border-color var(--ddd-duration-normal, 0.3s) ease-in-out;
-        }
-        @media (prefers-reduced-motion: reduce) {
-          a {
-            transition: none;
-          }
-        }
-        #book:hover {
-          border-color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-linkLight)
-          );
-          cursor: pointer;
-        }
-        #book:focus-visible {
-          outline: var(--ddd-focus-ring);
-          outline-offset: var(--ddd-focus-offset);
-        }
-        .tile {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          flex: none;
-          width: var(--ddd-icon-sm);
-          height: var(--ddd-icon-sm);
-          border-radius: var(--ddd-radius-sm);
-          background-color: light-dark(
-            var(--ddd-theme-default-skyMaxLight),
-            var(--ddd-theme-default-nittanyNavy)
-          );
-          color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-linkLight)
-          );
-        }
-        .tile simple-icon-lite {
-          /* DDD icon sizing variables size the icon and its svg */
-          --simple-icon-height: var(--ddd-icon-3xs);
-          --simple-icon-width: var(--ddd-icon-3xs);
-        }
-        .text {
-          display: flex;
-          flex-direction: column;
-          flex: 1 1 auto;
-          min-width: 0;
-        }
-        .eyebrow {
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-5xs);
-          font-weight: var(--ddd-font-weight-medium);
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
-          color: light-dark(
-            var(--ddd-theme-default-slateGray),
-            var(--ddd-theme-default-limestoneLight)
-          );
-        }
-        :host(:lang(ar)) .eyebrow,
-        :host(:lang(fa)) .eyebrow,
-        :host(:lang(he)) .eyebrow,
-        :host(:lang(ur)) .eyebrow {
-          letter-spacing: 0;
-        }
         .title {
-          font-size: var(--ddd-font-size-3xs);
-          font-weight: var(--ddd-font-weight-bold);
-          line-height: var(--ddd-lh-140);
           color: var(--link-color);
-          overflow-wrap: anywhere;
         }
         .end {
           flex: none;
@@ -259,6 +166,7 @@ export class EbookButton extends I18NMixin(LitElement) {
       <div id="button-wrapper">
         <a
           id="book"
+          class="link-row"
           property="oer:uri"
           href="${this.link}"
           target="_blank"

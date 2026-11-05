@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Situ creatu cù successu!",
   "newSiteReady": "U vostru novu situ \"{siteName}\" hè prontu à esse adupratu.",
   "stayHere": "Stà quì",
-  "goToSite": "Andà à u situ"
+  "goToSite": "Andà à u situ",
+  "stepOf": "Tappa {step} di {total}"
 }

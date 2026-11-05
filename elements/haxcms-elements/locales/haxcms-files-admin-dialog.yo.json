@@ -75,5 +75,11 @@
   "selectFile": "Yan {name}",
   "copyPath": "Ṣẹ̀dà ipa ọ̀nà",
   "pathCopied": "A ti ṣẹ̀dà ipa ọ̀nà",
-  "embedInPage": "Fi sínú ojú-ìwé"
+  "embedInPage": "Fi sínú ojú-ìwé",
+  "deleteFilesTitle": "Pa àwọn fáìlì rẹ́",
+  "renameFilesTitle": "Yí orúkọ àwọn fáìlì padà",
+  "replaceOriginalsTitle": "Rọ́pò àwọn fáìlì àtilẹ̀wá",
+  "newName": "Orúkọ tuntun",
+  "deleteAction": "Pa rẹ́",
+  "renameAction": "Yí orúkọ padà"
 }

@@ -124,5 +124,13 @@
   "showApiKeyValue": "Näytä API-avaimen arvo",
   "noSettingsForPanel": "Tälle paneelille ei ole vielä asetuksia.",
   "saving": "Tallennetaan…",
-  "save": "Tallenna"
+  "save": "Tallenna",
+  "dropSkeletonFile": "Pudota rungon .json-tiedosto tai",
+  "browseFiles": "Selaa",
+  "skeletonUploadNote": "Ladattuja runkoja voi nimetä uudelleen tai poistaa; ydinrunkoja voi vain poistaa käytöstä.",
+  "skeletonName": "Rungon nimi",
+  "renameAction": "Nimeä uudelleen",
+  "deleteSkeletonTitle": "Poista runko",
+  "deleteAction": "Poista",
+  "cancel": "Peruuta"
 }

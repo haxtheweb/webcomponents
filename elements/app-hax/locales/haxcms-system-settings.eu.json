@@ -124,5 +124,13 @@
   "showApiKeyValue": "Erakutsi API gakoaren balioa",
   "noSettingsForPanel": "Oraindik ez dago ezarpenik panel honetarako.",
   "saving": "Gordetzen…",
-  "save": "Gorde"
+  "save": "Gorde",
+  "dropSkeletonFile": "Jaregin eskeleto .json bat edo",
+  "browseFiles": "Arakatu",
+  "skeletonUploadNote": "Igotako eskeletoei izena alda dakieke edo ezaba daitezke; oinarrizko eskeletoak desaktibatu besterik ezin dira egin.",
+  "skeletonName": "Eskeletoaren izena",
+  "renameAction": "Aldatu izena",
+  "deleteSkeletonTitle": "Ezabatu eskeletoa",
+  "deleteAction": "Ezabatu",
+  "cancel": "Utzi"
 }

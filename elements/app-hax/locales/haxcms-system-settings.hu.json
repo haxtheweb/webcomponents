@@ -124,5 +124,13 @@
   "showApiKeyValue": "API-kulcs értékének megjelenítése",
   "noSettingsForPanel": "Ehhez a panelhez még nincsenek beállítások.",
   "saving": "Mentés…",
-  "save": "Mentés"
+  "save": "Mentés",
+  "dropSkeletonFile": "Húzzon ide egy .json vázat, vagy",
+  "browseFiles": "Tallózás",
+  "skeletonUploadNote": "A feltöltött vázak átnevezhetők vagy törölhetők; az alapvázak csak kikapcsolhatók.",
+  "skeletonName": "Váz neve",
+  "renameAction": "Átnevezés",
+  "deleteSkeletonTitle": "Váz törlése",
+  "deleteAction": "Törlés",
+  "cancel": "Mégse"
 }

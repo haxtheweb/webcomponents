@@ -60,5 +60,10 @@
   "pageUnit": "stránka",
   "pagesUnit": "stránky",
   "replacementUnit": "nahradenie",
-  "replacementsUnit": "nahradení"
+  "replacementsUnit": "nahradení",
+  "deletePagesTitle": "Odstraňovanie stránok",
+  "deleteAction": "Odstrániť",
+  "replaceTitle": "Nahradenie na stránkach",
+  "removeMatchesTitle": "Odstrániť všetky zhody",
+  "removeAction": "Odstrániť"
 }

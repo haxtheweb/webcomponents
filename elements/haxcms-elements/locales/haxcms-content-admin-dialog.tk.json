@@ -60,5 +60,10 @@
   "pageUnit": "sahypa",
   "pagesUnit": "sahypa",
   "replacementUnit": "çalyşma",
-  "replacementsUnit": "çalyşma"
+  "replacementsUnit": "çalyşma",
+  "deletePagesTitle": "Sahypalary pozmak",
+  "deleteAction": "Pozmak",
+  "replaceTitle": "Sahypalarda çalyşmak",
+  "removeMatchesTitle": "Ähli gabat gelmeleri aýyr",
+  "removeAction": "Aýyr"
 }

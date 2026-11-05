@@ -10,7 +10,6 @@
   "selectPage": "Битне сайлагыз",
   "siteDashboard": "Сайтлар тактасы",
   "cancel": "Баш тарту",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "OK сайласагыз, сакланмаган үзгәрешләр югалачак, инде шикләнисезме?",
   "editDetails": "Детальләрне үзгәртү",
   "add": "Өстәү",
   "source": "Чыганак",
@@ -645,5 +644,15 @@
   "contents": "Эчтәлек",
   "continue": "Дәвам итү",
   "noResultsFor": "\"{search}\" буенча нәтиҗәләр табылмады",
+  "duplicatePageTitle": "Битне кабатлау",
+  "duplicateAction": "Кабатлау",
+  "newPageTitle": "Исем",
+  "importFromUrlTitle": "URL адресыннан импортлау",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Структура үзгәрешләрен кире кагаргамы?",
+  "outlineSaveTitle": "Структура үзгәрешләрен сакларгамы?",
+  "discardChanges": "Үзгәрешләрне кире кагу",
+  "keepEditing": "Төзәтүне дәвам итү",
+  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "OK сайласагыз, сакланмаган үзгәрешләр югалачак, инде шикләнисезме?",
   "myLearning": "Минем укуым"
 }

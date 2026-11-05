@@ -100,5 +100,6 @@
   "vitepressImportDescription": "Увезете VitePress-репозиториум со документација во нов HAX-сајт",
   "vitepressImportPrompt": "URL на VitePress git-репозиториумот",
   "quartoImportDescription": "Увезете Quarto-репозиториум со документација во нов HAX-сајт",
-  "quartoImportPrompt": "URL на Quarto git-репозиториумот"
+  "quartoImportPrompt": "URL на Quarto git-репозиториумот",
+  "cancel": "Откажи"
 }

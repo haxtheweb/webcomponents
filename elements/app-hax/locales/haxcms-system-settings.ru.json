@@ -124,5 +124,13 @@
   "showApiKeyValue": "Показать значение ключа API",
   "noSettingsForPanel": "Для этой панели пока нет настроек.",
   "saving": "Сохранение…",
-  "save": "Сохранить"
+  "save": "Сохранить",
+  "dropSkeletonFile": "Перетащите сюда шаблон .json или",
+  "browseFiles": "Обзор",
+  "skeletonUploadNote": "Загруженные шаблоны можно переименовать или удалить; базовые шаблоны можно только отключить.",
+  "skeletonName": "Название шаблона",
+  "renameAction": "Переименовать",
+  "deleteSkeletonTitle": "Удалить шаблон",
+  "deleteAction": "Удалить",
+  "cancel": "Отмена"
 }

@@ -75,5 +75,11 @@
   "selectFile": "Выбрать {name}",
   "copyPath": "Копировать путь",
   "pathCopied": "Путь скопирован",
-  "embedInPage": "Встроить в страницу"
+  "embedInPage": "Встроить в страницу",
+  "deleteFilesTitle": "Удалить файлы",
+  "renameFilesTitle": "Переименовать файлы",
+  "replaceOriginalsTitle": "Заменить исходные файлы",
+  "newName": "Новое имя",
+  "deleteAction": "Удалить",
+  "renameAction": "Переименовать"
 }

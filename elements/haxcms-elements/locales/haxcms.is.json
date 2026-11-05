@@ -10,7 +10,6 @@
   "selectPage": "Veldu síðu",
   "siteDashboard": "Stjórnborð síðna",
   "cancel": "Hætta við",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Vistaðar breytingar munu tapast ef þú velur OK. Ertu viss?",
   "editDetails": "Breyta upplýsingum",
   "add": "Bæta við",
   "source": "Frumkóði",
@@ -645,5 +644,15 @@
   "contents": "Efni",
   "continue": "Halda áfram",
   "noResultsFor": "Engar niðurstöður fundust fyrir \"{search}\"",
+  "duplicatePageTitle": "Tvöfalda síðu",
+  "duplicateAction": "Tvöfalda",
+  "newPageTitle": "Titill",
+  "importFromUrlTitle": "Flytja inn frá vefslóð",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Henda breytingum á efnisskipan?",
+  "outlineSaveTitle": "Vista breytingar á efnisskipan?",
+  "discardChanges": "Henda breytingum",
+  "keepEditing": "Halda áfram að breyta",
+  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Vistaðar breytingar munu tapast ef þú velur OK. Ertu viss?",
   "myLearning": "Námið mitt"
 }

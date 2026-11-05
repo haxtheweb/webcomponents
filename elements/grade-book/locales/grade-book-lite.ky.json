@@ -57,5 +57,12 @@
   "expandAll": "Баарын жаюу",
   "displayMode1": "1-режим",
   "displayMode2": "2-режим",
-  "twoWindows": "Эки терезе"
+  "twoWindows": "Эки терезе",
+  "notGraded": "Бааланган эмес",
+  "gradeValue": "{points} ичинен {score}",
+  "studentPosition": "Студент {current} / {total}",
+  "rosterCaption": "Студенттер: {students} · Тапшырмалар: {assignments}",
+  "gridInstructions": "Жебе баскычтары баалардын ортосунда жылат, Enter баалоону ачат",
+  "totalScore": "Жалпы упай",
+  "lockTotalScore": "Жалпы упайды кулпулоо"
 }

@@ -57,5 +57,12 @@
   "expandAll": "Yandisa zonke",
   "displayMode1": "Imo 1",
   "displayMode2": "Imo 2",
-  "twoWindows": "Iifestile ezimbini"
+  "twoWindows": "Iifestile ezimbini",
+  "notGraded": "Ayikabalwa",
+  "gradeValue": "{score} kwali-{points}",
+  "studentPosition": "Umfundi {current} / {total}",
+  "rosterCaption": "Abafundi: {students} · Imisebenzi: {assignments}",
+  "gridInstructions": "Amaqhosha asemvi ashenxisa phakathi kwamabakala, Enter ivula ukuvelisa amanqaku",
+  "totalScore": "Amanqaku apheleleyo",
+  "lockTotalScore": "Vala amanqaku apheleleyo"
 }

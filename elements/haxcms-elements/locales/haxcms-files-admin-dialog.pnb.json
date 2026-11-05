@@ -75,5 +75,11 @@
   "selectFile": "{name} چݨو",
   "copyPath": "راہ کاپی کرو",
   "pathCopied": "راہ کاپی ہو گیا",
-  "embedInPage": "صفحے وچ ایمبیڈ کرو"
+  "embedInPage": "صفحے وچ ایمبیڈ کرو",
+  "deleteFilesTitle": "فائلاں مٹاؤ",
+  "renameFilesTitle": "فائلاں دے ناں بدلو",
+  "replaceOriginalsTitle": "اصل فائلاں بدلو",
+  "newName": "نواں ناں",
+  "deleteAction": "مٹاؤ",
+  "renameAction": "ناں بدلو"
 }

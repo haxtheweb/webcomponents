@@ -89,6 +89,31 @@ describe("simple-modal behavior", () => {
     el.close();
   });
 
+  it("takes no room for an empty buttons area, and shows it when filled", async () => {
+    const el = await fixture(html`<simple-modal></simple-modal>`);
+    const area = () => el.shadowRoot.querySelector(".buttons");
+    // content only: the empty area is hidden, so its margin cannot push
+    // the dialog into scrolling onto nothing
+    el.show("T", "m", { content: makeContent("<p>Only content</p>") }, null);
+    await settleDialog(el, 30);
+    expect(area().hidden).to.be.true;
+    expect(getComputedStyle(area()).display).to.equal("none");
+    el.close();
+    await settleDialog(el, 30);
+    // with buttons it is shown as before
+    const buttons = makeContent("<button>OK</button>");
+    el.show(
+      "T",
+      "m",
+      { content: makeContent("<p>Content</p>"), buttons },
+      null,
+    );
+    await settleDialog(el, 30);
+    expect(area().hidden).to.be.false;
+    expect(getComputedStyle(area()).display).to.not.equal("none");
+    el.close();
+  });
+
   it("focuses slotted buttons that expose focusInitial", async () => {
     const el = await fixture(html`<simple-modal></simple-modal>`);
     let focused = false;
@@ -312,6 +337,30 @@ describe("simple-modal behavior", () => {
     expect(!!el.shadowRoot.querySelector("nav.breadcrumbs")).to.be.false;
     const title = el.shadowRoot.querySelector("#simple-modal-title");
     expect(title.textContent.includes("T")).to.be.true;
+  });
+
+  it("separates breadcrumbs with a quiet slash", async () => {
+    const el = await fixture(html`<simple-modal></simple-modal>`);
+    el.show(
+      "Site Settings / Structure",
+      "m",
+      { content: makeContent("<p>x</p>") },
+      null,
+      null,
+      null,
+      null,
+      false,
+      true,
+      false,
+      "",
+      [{ label: "Site Settings" }, { label: "Structure" }],
+    );
+    await settleDialog(el, 30);
+    const sep = el.shadowRoot.querySelector(".breadcrumb-separator");
+    expect(sep.textContent.trim()).to.equal("/");
+    expect(sep.getAttribute("aria-hidden")).to.equal("true");
+    expect(Number(getComputedStyle(sep).opacity)).to.be.below(1);
+    el.close();
   });
 
   it("renders icons on clickable breadcrumb buttons", async () => {

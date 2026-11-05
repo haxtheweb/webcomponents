@@ -75,5 +75,11 @@
   "selectFile": "{name} 선택",
   "copyPath": "경로 복사",
   "pathCopied": "경로 복사됨",
-  "embedInPage": "페이지에 임베드"
+  "embedInPage": "페이지에 임베드",
+  "deleteFilesTitle": "파일 삭제",
+  "renameFilesTitle": "파일 이름 바꾸기",
+  "replaceOriginalsTitle": "원본 파일 바꾸기",
+  "newName": "새 이름",
+  "deleteAction": "삭제",
+  "renameAction": "이름 바꾸기"
 }

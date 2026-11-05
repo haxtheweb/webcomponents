@@ -10,7 +10,6 @@
   "selectPage": "Бетти тандоо",
   "siteDashboard": "Сайттар тактасы",
   "cancel": "Жокко чыгаруу",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "OK тандасаңыз сакталбаган өзгөрүүлөр жоголёт. Ишенесизби?",
   "editDetails": "Деталдарды түзөтүү",
   "add": "Кошуу",
   "source": "Булак",
@@ -645,5 +644,15 @@
   "contents": "Мазмуну",
   "continue": "Улантуу",
   "noResultsFor": "\"{search}\" боюнча эч нерсе табылган жок",
+  "duplicatePageTitle": "Барактын көчүрмөсүн түзүү",
+  "duplicateAction": "Көчүрмөсүн түзүү",
+  "newPageTitle": "Аталышы",
+  "importFromUrlTitle": "URL'ден импорттоо",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Структурадагы өзгөртүүлөр ташталсынбы?",
+  "outlineSaveTitle": "Структурадагы өзгөртүүлөр сакталсынбы?",
+  "discardChanges": "Өзгөртүүлөрдү таштоо",
+  "keepEditing": "Түзөтүүнү улантуу",
+  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "OK тандасаңыз сакталбаган өзгөрүүлөр жоголёт. Ишенесизби?",
   "myLearning": "Менин окуум"
 }

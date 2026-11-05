@@ -10,7 +10,6 @@
   "selectPage": "Selecciona pàgina",
   "siteDashboard": "Tauler de llocs",
   "cancel": "Cancel·la",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Els canvis no desats es perdran si selecciones D'ACORD. Estàs segur?",
   "editDetails": "Detalls de la pàgina",
   "add": "Afegeix",
   "source": "Font",
@@ -645,5 +644,15 @@
   "contents": "Continguts",
   "continue": "Continua",
   "noResultsFor": "No s'han trobat resultats per a \"{search}\"",
+  "duplicatePageTitle": "Duplica la pàgina",
+  "duplicateAction": "Duplica",
+  "newPageTitle": "Títol",
+  "importFromUrlTitle": "Importa des d'un URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Voleu descartar els canvis de l'estructura?",
+  "outlineSaveTitle": "Voleu desar els canvis de l'estructura?",
+  "discardChanges": "Descarta els canvis",
+  "keepEditing": "Continua editant",
+  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Els canvis no desats es perdran si selecciones D'ACORD. Estàs segur?",
   "myLearning": "El meu aprenentatge"
 }

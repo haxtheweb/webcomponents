@@ -10,7 +10,6 @@
   "selectPage": "Säit auswielen",
   "siteDashboard": "Säiten-Dashboard",
   "cancel": "Ofbriechen",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Net gespäichert Ännerunge ginn verluer wann dir OK auswielt. Sidd dir sécher?",
   "editDetails": "Detailer änneren",
   "add": "Dobäisetzen",
   "source": "Quell",
@@ -645,5 +644,15 @@
   "contents": "Inhalt",
   "continue": "Weider",
   "noResultsFor": "Keng Resultater fonnt fir „{search}“",
+  "duplicatePageTitle": "Säit duplizéieren",
+  "duplicateAction": "Duplizéieren",
+  "newPageTitle": "Titel",
+  "importFromUrlTitle": "Vun enger URL importéieren",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Ännerunge vun der Struktur verwerfen?",
+  "outlineSaveTitle": "Ännerunge vun der Struktur späicheren?",
+  "discardChanges": "Ännerunge verwerfen",
+  "keepEditing": "Weider beaarbechten",
+  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Net gespäichert Ännerunge ginn verluer wann dir OK auswielt. Sidd dir sécher?",
   "myLearning": "Mäi Léieren"
 }

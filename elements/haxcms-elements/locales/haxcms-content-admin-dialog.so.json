@@ -60,5 +60,10 @@
   "pageUnit": "bog",
   "pagesUnit": "bogag",
   "replacementUnit": "beddel",
-  "replacementsUnit": "beddelaad"
+  "replacementsUnit": "beddelaad",
+  "deletePagesTitle": "Tirtir bogag",
+  "deleteAction": "Tirtir",
+  "replaceTitle": "Ku beddel bogagga",
+  "removeMatchesTitle": "Ka saar dhammaan isku-midka",
+  "removeAction": "Ka saar"
 }

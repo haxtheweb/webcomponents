@@ -75,5 +75,11 @@
   "selectFile": "{name}-ийг сонгох",
   "copyPath": "Зам хуулах",
   "pathCopied": "Замыг хууллаа",
-  "embedInPage": "Хуудсанд суулгах"
+  "embedInPage": "Хуудсанд суулгах",
+  "deleteFilesTitle": "Файл устгах",
+  "renameFilesTitle": "Файлын нэр өөрчлөх",
+  "replaceOriginalsTitle": "Эх файлуудыг солих",
+  "newName": "Шинэ нэр",
+  "deleteAction": "Устгах",
+  "renameAction": "Нэр өөрчлөх"
 }

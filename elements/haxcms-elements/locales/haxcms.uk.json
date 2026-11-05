@@ -10,7 +10,6 @@
   "selectPage": "Вибрати сторінку",
   "siteDashboard": "Панель сайтів",
   "cancel": "Скасувати",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Незбережені зміни будуть втрачені, якщо ви виберете OK. Ви впевнені?",
   "editDetails": "Редагувати деталі",
   "add": "Додати",
   "source": "Джерело",
@@ -645,5 +644,15 @@
   "contents": "Зміст",
   "continue": "Продовжити",
   "noResultsFor": "Нічого не знайдено за запитом «{search}»",
+  "duplicatePageTitle": "Дублювати сторінку",
+  "duplicateAction": "Дублювати",
+  "newPageTitle": "Назва",
+  "importFromUrlTitle": "Імпортувати з URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Відхилити зміни структури?",
+  "outlineSaveTitle": "Зберегти зміни структури?",
+  "discardChanges": "Відхилити зміни",
+  "keepEditing": "Продовжити редагування",
+  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Незбережені зміни будуть втрачені, якщо ви виберете OK. Ви впевнені?",
   "myLearning": "Моє навчання"
 }

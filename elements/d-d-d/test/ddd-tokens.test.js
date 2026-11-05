@@ -2,6 +2,7 @@ import { fixture, expect, html } from "@open-wc/testing";
 
 // Direct imports so istanbul instruments each lib file
 import "../lib/DDDStyles.js";
+import "../lib/d-d-d-sample.js";
 import "../lib/DDDBorders.js";
 import "../lib/DDDFontSizing.js";
 import "../lib/DDDLineHeight.js";
@@ -25,14 +26,16 @@ import {
   DDDPulseEffect,
   DDDAnimations,
   DDDPaletteStyles,
+  DDDBreadcrumb,
+} from "../lib/DDDStyles.js";
+import {
   DDDLetterSpacing,
   DDDBoxShadow,
   DDDBorderRadius,
   DDDBackground,
   DDDFontWeight,
   DDDFontClasses,
-  DDDBreadcrumb,
-} from "../lib/DDDStyles.js";
+} from "../lib/DDDUtilityClasses.js";
 import { DDDBorders } from "../lib/DDDBorders.js";
 import { DDDFontSizing } from "../lib/DDDFontSizing.js";
 import { DDDLineHeight } from "../lib/DDDLineHeight.js";

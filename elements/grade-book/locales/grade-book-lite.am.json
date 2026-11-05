@@ -57,5 +57,12 @@
   "expandAll": "ሁሉንም ዘርጋ",
   "displayMode1": "ሁነታ 1",
   "displayMode2": "ሁነታ 2",
-  "twoWindows": "ሁለት መስኮቶች"
+  "twoWindows": "ሁለት መስኮቶች",
+  "notGraded": "አልተመዘነም",
+  "gradeValue": "{score} ከ{points}",
+  "studentPosition": "ተማሪ {current} / {total}",
+  "rosterCaption": "ተማሪዎች፦ {students} · ምደባዎች፦ {assignments}",
+  "gridInstructions": "የቀስት ቁልፎች በውጤቶች መካከል ይንቀሳቀሳሉ፣ Enter ምዘናውን ይከፍታል",
+  "totalScore": "ጠቅላላ ውጤት",
+  "lockTotalScore": "ጠቅላላ ውጤት ቆልፍ"
 }

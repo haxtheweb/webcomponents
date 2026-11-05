@@ -57,5 +57,12 @@
   "expandAll": "Utvid alle",
   "displayMode1": "Modus 1",
   "displayMode2": "Modus 2",
-  "twoWindows": "To vinduer"
+  "twoWindows": "To vinduer",
+  "notGraded": "Ikke vurdert",
+  "gradeValue": "{score} av {points}",
+  "studentPosition": "Elev {current} / {total}",
+  "rosterCaption": "Elever: {students} · Oppgaver: {assignments}",
+  "gridInstructions": "Piltastene flytter mellom karakterer, Enter åpner vurdering",
+  "totalScore": "Total poengsum",
+  "lockTotalScore": "Lås total poengsum"
 }
