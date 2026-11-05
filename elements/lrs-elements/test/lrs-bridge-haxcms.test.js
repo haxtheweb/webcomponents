@@ -1,32 +1,20 @@
-import { expect } from "@open-wc/testing";
+import { fixture, expect, html } from "@open-wc/testing";
 import sinon from "sinon";
-import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import "../lib/lrs-bridge-haxcms.js";
 import { LrsBridgeHaxcms } from "../lib/lrs-bridge-haxcms.js";
+import { LrsBridge } from "../lib/lrs-bridge.js";
 
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-// a valid location kept on the store for the whole session: the mobx autorun
-// inside each created element reads store.location and a null value would
-// throw inside its microtask (unhandled rejection)
-const BASE_LOCATION = { baseUrl: "https://example.com", pathname: "/base" };
-
 describe("lrs-bridge-haxcms test", () => {
   let sandbox;
-  // eslint-disable-next-line no-unused-vars -- written by the test, never read
   let fetchStub;
-  beforeEach(async () => {
+  beforeEach(() => {
     sandbox = sinon.createSandbox();
     // stub ALL network access; recordStatement posts to an endpoint
     fetchStub = sandbox
       .stub(globalThis, "fetch")
       .resolves({ json: () => Promise.resolve({}) });
-    if (store.location === null) {
-      store.location = BASE_LOCATION;
-    }
-    // let any autorun microtasks from earlier elements settle while the
-    // fetch stub is in place
-    await wait(10);
   });
 
   afterEach(() => {
@@ -42,64 +30,47 @@ describe("lrs-bridge-haxcms test", () => {
   it("is registered alongside lrs-bridge", () => {
     const defined = globalThis.customElements.get("lrs-bridge");
     expect(typeof defined).to.equal("function");
+    expect(new LrsBridgeHaxcms()).to.be.instanceOf(LrsBridge);
   });
 
-  describe("_locationChanged", () => {
-    const makeElement = () => {
-      const el = globalThis.document.createElement("lrs-bridge-haxcms");
-      const recordSpy = sandbox.stub(el, "recordStatement");
-      return { el, recordSpy };
-    };
-
-    it("records a viewed statement for the location", async () => {
-      const { el, recordSpy } = makeElement();
-      // fixed (lib/lrs-bridge-haxcms.js): trimSlash uses the g flag, so it
-      // strips slashes from BOTH the leading and trailing ends
-      el._locationChanged({
-        baseUrl: "https://example.com",
-        pathname: "/course/page/",
-      });
-      expect(recordSpy.called).to.be.true;
-      const detail = recordSpy.firstCall.args[0];
-      expect(detail.verb.id).to.equal("viewed");
-      // both the leading and the trailing slash on the pathname are trimmed
-      expect(detail.object.id).to.equal("https://example.com/course/page");
-      // let the constructor autorun microtask fire against the stub
-      await wait(10);
-    });
-
-    it("trims redundant slashes from bare locations", async () => {
-      const { el, recordSpy } = makeElement();
-      el._locationChanged({ baseUrl: "/", pathname: "/" });
-      expect(recordSpy.called).to.be.true;
-      expect(recordSpy.firstCall.args[0].object.id).to.equal("/");
-      await wait(10);
-    });
-
-    it("handles rootless locations", async () => {
-      const { el, recordSpy } = makeElement();
-      el._locationChanged({ baseUrl: "", pathname: "page" });
-      expect(recordSpy.firstCall.args[0].object.id).to.equal("/page");
-      await wait(10);
-    });
+  it("posts nothing of its own on creation", async () => {
+    const el = globalThis.document.createElement("lrs-bridge-haxcms");
+    el.endpoint = "https://lrs.example.com/graphql";
+    await wait(50);
+    expect(fetchStub.called).to.be.false;
   });
 
-  describe("constructor autorun", () => {
-    it("records the current store location as a viewed statement", async () => {
-      // point the mobx store at a location BEFORE the element exists so the
-      // autorun has a valid value to react to
-      store.location = {
-        baseUrl: "https://example.com",
-        pathname: "/welcome",
-      };
-      const el = globalThis.document.createElement("lrs-bridge-haxcms");
-      const recordSpy = sandbox.stub(el, "recordStatement");
-      // the autorun schedules _locationChanged on a microtask
-      await wait(50);
-      expect(recordSpy.called).to.be.true;
-      const detail = recordSpy.lastCall.args[0];
-      expect(detail.verb.id).to.equal("viewed");
-      expect(detail.object.id).to.equal("https://example.com/welcome");
-    });
+  it("forwards the progress store's page visit statement", async () => {
+    const el = await fixture(
+      html`<lrs-bridge-haxcms
+        endpoint="https://lrs.example.com/graphql"
+      ></lrs-bridge-haxcms>`,
+    );
+    await el.updateComplete;
+    // the shape haxcms-learner-progress sends for a page visit
+    globalThis.dispatchEvent(
+      new CustomEvent("user-engagement", {
+        detail: {
+          activityDisplay: "experienced",
+          statement: {
+            id: "6a1b2c3d-0000-4000-8000-000000000001",
+            verb: { id: "http://adlnet.gov/expapi/verbs/experienced" },
+            object: {
+              id: "https://example.com/welcome",
+              objectType: "Activity",
+              definition: {
+                type: "http://adlnet.gov/expapi/activities/lesson",
+              },
+            },
+          },
+        },
+      }),
+    );
+    await wait(50);
+    expect(fetchStub.calledOnce).to.be.true;
+    const data = JSON.parse(fetchStub.firstCall.args[1].body).variables.data
+      .data;
+    expect(data.verb.id).to.equal("http://adlnet.gov/expapi/verbs/experienced");
+    expect(data.object.id).to.equal("https://example.com/welcome");
   });
 });

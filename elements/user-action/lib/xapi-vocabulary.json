@@ -100,6 +100,23 @@
     "done": "never required; records that the learner moved the slider",
     "source": "elements/image-compare-slider/image-compare-slider.js"
   },
+  "lrs-emitter": {
+    "tag": "lrs-emitter",
+    "event": "user-engagement",
+    "verbs": [
+      "experienced",
+      "interacted",
+      "answered",
+      "progressed",
+      "attempted",
+      "completed"
+    ],
+    "objectType": "http://adlnet.gov/expapi/activities/interaction",
+    "result": [],
+    "countsTowardCompletion": false,
+    "done": "never; records the authored verb when clicked or viewed",
+    "source": "elements/lrs-elements/lib/lrs-emitter.js"
+  },
   "mark-the-words": {
     "tag": "mark-the-words",
     "event": "user-engagement",
