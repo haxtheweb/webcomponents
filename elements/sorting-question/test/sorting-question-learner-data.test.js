@@ -32,7 +32,7 @@ describe("sorting-question learner data", () => {
     globalThis.addEventListener("question-element-state", (e) =>
       states.push(e.detail),
     );
-    el.checkAnswer();
+    await el.checkAnswer();
     await flush(200);
     await el.updateComplete;
     expect(events.length).to.equal(1);
@@ -84,7 +84,7 @@ describe("sorting-question learner data", () => {
     fieldset.insertBefore(options[2], options[0]);
     const events = [];
     el.addEventListener("user-engagement", (e) => events.push(e.detail));
-    el.checkAnswer();
+    await el.checkAnswer();
     await flush(200);
     await el.updateComplete;
     setActorProvider(null);

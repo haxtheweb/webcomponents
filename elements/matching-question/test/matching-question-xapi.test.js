@@ -40,7 +40,7 @@ describe("matching-question xAPI", () => {
     el.displayedAnswers = el.displayedAnswers.filter((a) => a.target);
     const events = [];
     el.addEventListener("user-engagement", (e) => events.push(e.detail));
-    el.checkAnswer();
+    await el.checkAnswer();
     await flush(120);
     expect(events.length).to.equal(1);
     const d = events[0];
