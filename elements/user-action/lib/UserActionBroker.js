@@ -7,6 +7,11 @@ import {
   XAPI_EXTENSIONS,
 } from "./xapi.js";
 
+// user-action tracks whose user-engagement events are learner records:
+// seeing something (visibility) or deliberately using it (click, keypress).
+// Hover, focus, mouse and key up/down events still fire for the page but
+// carry no statement, so they never flood a learning record store.
+export const XAPI_RECORDED_TRACKS = ["visibility", "click", "keypress"];
 // how long after a user-engagement statement from an element a
 // question-element-state from the same element is treated as the same check
 const SAME_CHECK_MS = 2000;
@@ -146,6 +151,10 @@ export class UserActionBroker {
     if (d.statement && typeof d.statement === "object" && d.statement.verb) {
       return d.statement;
     }
+    // the emitter said this event is not a learner record
+    if (d.xapi === false) {
+      return null;
+    }
     return statementFromEngagement(d, element);
   }
   /**
@@ -174,8 +183,16 @@ export class UserActionBroker {
     // instead of mutating the incoming event/object (eventType used to be
     // written directly onto the caller's DOM event).
     const normalized = Object.assign({}, details, { eventType: eventType });
-    // learner data events also carry an xAPI statement (additive)
-    if (eventName === "user-engagement" && context && context.tagName) {
+    // learner data events also carry an xAPI statement (additive); only
+    // seeing or deliberately using something is recorded
+    if (
+      eventName === "user-engagement" &&
+      context &&
+      context.tagName &&
+      !XAPI_RECORDED_TRACKS.includes(eventType)
+    ) {
+      normalized.xapi = false;
+    } else if (eventName === "user-engagement" && context && context.tagName) {
       normalized.statement = buildStatement({
         verb: eventType === "visibility" ? "experienced" : "interacted",
         object: {

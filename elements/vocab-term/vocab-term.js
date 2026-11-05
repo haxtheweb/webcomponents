@@ -399,7 +399,7 @@ class VocabTerm extends SchemaBehaviors(I18NMixin(LitElement)) {
       event: "user-engagement",
       verbs: ["experienced"],
       objectType: "http://adlnet.gov/expapi/activities/interaction",
-      result: ["completion"],
+      result: [],
       countsTowardCompletion: false,
       done: "never required; records that the definition was opened",
     };
@@ -428,7 +428,6 @@ class VocabTerm extends SchemaBehaviors(I18NMixin(LitElement)) {
               description: String(this.information || "").slice(0, 500),
               type: XAPI_ACTIVITY_TYPES.interactionGeneric,
             },
-            result: { completion: true },
             context: {
               extensions: { [XAPI_EXTENSIONS.element]: "vocab-term" },
             },

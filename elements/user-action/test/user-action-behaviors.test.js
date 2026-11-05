@@ -338,4 +338,37 @@ describe("user-action behaviors", () => {
     expect(el.querySelector("pre").textContent).to.contain('"detail": "demo"');
     globalThis.document.removeEventListener("broker-event", handler);
   });
+
+  it("only seeing or deliberately using something is a learner record", async () => {
+    const el = await fixture(html`<user-action></user-action>`);
+    const events = [];
+    const handler = (e) => events.push(e);
+    globalThis.document.addEventListener("user-engagement", handler);
+    ["visibility", "click", "keypress"].forEach((t) =>
+      UABroker.fire("user-engagement", t, {}, el, false),
+    );
+    ["hover", "focusin", "keyup", "mousedown"].forEach((t) =>
+      UABroker.fire("user-engagement", t, {}, el, false),
+    );
+    globalThis.document.removeEventListener("user-engagement", handler);
+    expect(events.length).to.equal(7);
+    const recorded = events.slice(0, 3);
+    const skipped = events.slice(3);
+    expect(recorded[0].detail.statement.verb.id).to.contain("experienced");
+    expect(recorded[1].detail.statement.verb.id).to.contain("interacted");
+    expect(recorded[2].detail.statement.verb.id).to.contain("interacted");
+    skipped.forEach((e) => {
+      expect(e.detail.statement).to.equal(undefined);
+      expect(e.detail.xapi).to.equal(false);
+      // the broker builds no fallback statement for them
+      expect(UABroker.normalize("user-engagement", e.detail, el)).to.equal(
+        null,
+      );
+    });
+    recorded.forEach((e) =>
+      expect(UABroker.normalize("user-engagement", e.detail, el)).to.not.equal(
+        null,
+      ),
+    );
+  });
 });

@@ -65,4 +65,23 @@ describe("ConceptRunnerGame test", () => {
   it("passes the a11y audit", async () => {
     await expect(element).shadowDom.to.be.accessible();
   });
+
+  it("records each item as an answer, right or wrong", async () => {
+    const seen = [];
+    element.addEventListener("user-engagement", (e) => seen.push(e.detail));
+    const good = element._seq.find((i) => i.kind === "good");
+    const bad = element._seq.find((i) => i.kind === "bad");
+    element._resolve(good, "missed");
+    element._resolve(bad, "dodged");
+    expect(seen.length).to.equal(2);
+    seen.forEach((d) => {
+      expect(d.activityDisplay).to.equal("answered");
+      expect(d.statement.verb.id).to.equal(
+        "http://adlnet.gov/expapi/verbs/answered",
+      );
+    });
+    expect(seen[0].statement.result.success).to.equal(false);
+    expect(seen[0].statement.result.response).to.equal("missed");
+    expect(seen[1].statement.result.success).to.equal(true);
+  });
 });

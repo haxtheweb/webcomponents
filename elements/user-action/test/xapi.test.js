@@ -39,12 +39,12 @@ describe("xapi statement builder", () => {
       "completed",
       "experienced",
       "progressed",
-      "passed",
-      "failed",
       "interacted",
     ].forEach((v) => {
       expect(XAPI_VERBS[v]).to.equal(`http://adlnet.gov/expapi/verbs/${v}`);
     });
+    // one meaning per verb: pass and fail live in result.success
+    expect(Object.keys(XAPI_VERBS).length).to.equal(6);
   });
 
   it("builds a full xAPI 1.0.3 statement", () => {
