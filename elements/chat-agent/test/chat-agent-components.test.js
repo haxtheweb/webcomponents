@@ -1,4 +1,4 @@
-import { fixture, expect, html, aTimeout } from "@open-wc/testing";
+import { fixture, expect, html, aTimeout, waitUntil } from "@open-wc/testing";
 import "../chat-agent.js";
 import { ChatStore } from "../lib/chat-agent-store.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
@@ -11,7 +11,21 @@ const initialPromptCharacterLimit = ChatStore.promptCharacterLimit;
 // button interactions, input keyboard navigation, control bar actions with
 // confirm/alert stubs, developer panel, message hats/suggestions, suggestion
 // icon types, interface scroll/resize behavior, and store AI interactions.
+const realRegistryCall = MicroFrontendRegistry.call;
+
 describe("chat-agent sub-components", () => {
+  // any test that sends a free-form prompt (input, suggestions, control
+  // bar) reaches ChatStore.handleInteraction, which made a real
+  // @system/aiChat request; its late failure landed in whichever test was
+  // running then and overwrote the last message / isLoading (the
+  // "resolves AI answers on a 200 response" flake). Default every test to a
+  // request that never settles; tests about responses install their own.
+  beforeEach(() => {
+    MicroFrontendRegistry.call = () => new Promise(() => {});
+  });
+  afterEach(() => {
+    MicroFrontendRegistry.call = realRegistryCall;
+  });
   beforeEach(() => {
     ChatStore.chatLog = [];
     ChatStore.currentSuggestions = [];
@@ -822,7 +836,13 @@ describe("chat-agent sub-components", () => {
         });
       ChatStore.handleInteraction("What is physics?");
       expect(ChatStore.isLoading).to.equal(true);
-      await aTimeout(20);
+      await waitUntil(
+        () => ChatStore.isLoading === false,
+        "request never settled",
+        {
+          timeout: 5000,
+        },
+      );
       expect(ChatStore.isLoading).to.equal(false);
       const last = ChatStore.chatLog[ChatStore.chatLog.length - 1];
       expect(last.author).to.equal("merlin");
@@ -842,7 +862,13 @@ describe("chat-agent sub-components", () => {
       MicroFrontendRegistry.call = () =>
         Promise.resolve({ status: 500, data: { answers: "Partial answer" } });
       ChatStore.handleInteraction("Broken question?");
-      await aTimeout(20);
+      await waitUntil(
+        () => ChatStore.isLoading === false,
+        "request never settled",
+        {
+          timeout: 5000,
+        },
+      );
       expect(ChatStore.isLoading).to.equal(false);
       const last = ChatStore.chatLog[ChatStore.chatLog.length - 1];
       expect(last.author).to.equal("merlin");
@@ -859,7 +885,13 @@ describe("chat-agent sub-components", () => {
       MicroFrontendRegistry.call = () =>
         Promise.resolve({ status: 200, data: null });
       ChatStore.handleInteraction("Null data question?");
-      await aTimeout(20);
+      await waitUntil(
+        () => ChatStore.isLoading === false,
+        "request never settled",
+        {
+          timeout: 5000,
+        },
+      );
       expect(ChatStore.isLoading).to.equal(false);
       const last = ChatStore.chatLog[ChatStore.chatLog.length - 1];
       expect(last.message).to.contain("having trouble connecting");
@@ -877,7 +909,13 @@ describe("chat-agent sub-components", () => {
       const origCall = MicroFrontendRegistry.call;
       MicroFrontendRegistry.call = () => Promise.reject(new Error("boom"));
       ChatStore.handleInteraction("Failing question?");
-      await aTimeout(20);
+      await waitUntil(
+        () => ChatStore.isLoading === false,
+        "request never settled",
+        {
+          timeout: 5000,
+        },
+      );
       expect(ChatStore.isLoading).to.equal(false);
       const last = ChatStore.chatLog[ChatStore.chatLog.length - 1];
       expect(last.message).to.contain("having trouble connecting");

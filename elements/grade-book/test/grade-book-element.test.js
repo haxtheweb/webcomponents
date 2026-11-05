@@ -1,4 +1,4 @@
-import { fixture, expect, html } from "@open-wc/testing";
+import { fixture, expect, html, waitUntil } from "@open-wc/testing";
 import "../grade-book.js";
 import { GradeBook } from "../grade-book.js";
 import { GradeBookStore } from "../lib/grade-book-store.js";
@@ -789,7 +789,16 @@ describe("grade-book element", () => {
       const el = await fixture(html`<grade-book></grade-book>`);
       el.source = "googledocs";
       el.sourceData = "2PACX-fakesheet";
-      await flush(250);
+      // every sheet is fetched and processed in turn; wait for the pipeline
+      // to finish instead of a fixed 250ms sleep that a busy runner overran
+      await waitUntil(
+        () =>
+          el.ready === true &&
+          el.database.gradesDetails &&
+          el.database.gradesDetails.length > 0,
+        "googledocs import never finished",
+        { timeout: 5000 },
+      );
       await el.updateComplete;
       expect(el.ready).to.equal(true);
       expect(el.database.assignments.length).to.equal(3);
@@ -825,7 +834,14 @@ describe("grade-book element", () => {
           detail: { data: raw },
         }),
       );
-      await flush(120);
+      await waitUntil(
+        () =>
+          el.ready === true &&
+          el.database.assignments &&
+          el.database.assignments.length === 3,
+        "filesystem import never finished",
+        { timeout: 5000 },
+      );
       expect(el.ready).to.equal(true);
       expect(el.database.assignments.length).to.equal(3);
       expect(GradeBookStore.database.assignments.length).to.equal(3);

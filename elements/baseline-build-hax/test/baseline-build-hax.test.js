@@ -270,9 +270,7 @@ describe("baseline-build-hax module test", () => {
     it("should load all components in reasonable time", () => {
       // This test verifies that the import completed successfully
       // which means all components loaded without major issues
-      const startTime = performance.now();
-
-      // Test that we can create multiple elements quickly
+      // Test that we can create multiple elements
       // hax-body excluded due to constructor attribute issue (see above)
       const elements = [
         globalThis.document.createElement("media-image"),
@@ -280,15 +278,13 @@ describe("baseline-build-hax module test", () => {
         globalThis.document.createElement("grid-plate"),
       ];
 
-      const endTime = performance.now();
-      const creationTime = endTime - startTime;
-
+      // no wall-clock budget: a 100ms limit on a few createElement calls
+      // measured runner load, not this package, and a slow constructor has
+      // no regression signal here; assert each one upgraded instead
       elements.forEach((element) => {
         expect(element).to.exist;
+        expect(element.constructor).to.not.equal(HTMLElement);
       });
-
-      // Element creation should be fast
-      expect(creationTime).to.be.lessThan(100);
     });
   });
 

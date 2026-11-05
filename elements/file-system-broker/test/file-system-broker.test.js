@@ -391,12 +391,12 @@ describe("FileSystemBroker test", () => {
         folder: "test",
       }));
 
-      const startTime = performance.now();
       element.files = largeFileArray;
-      const endTime = performance.now();
 
-      expect(endTime - startTime).to.be.lessThan(10); // Should be very fast
+      // no wall-clock budget: a property assignment under 10ms measured
+      // runner load (a GC pause alone can exceed it); check the data
       expect(element.files).to.have.lengthOf(1000);
+      expect(element.files[999].name).to.equal("file999.txt");
     });
 
     it("typeToAccept method is performant", () => {
@@ -410,15 +410,17 @@ describe("FileSystemBroker test", () => {
         "unknown",
       ];
 
-      const startTime = performance.now();
-
+      // no wall-clock budget: 1000 lookup calls under 10ms measured runner
+      // load, not the broker; check repeated calls stay consistent instead
+      const first = types.map((type) =>
+        JSON.stringify(element.typeToAccept(type)),
+      );
       for (let i = 0; i < 1000; i++) {
         const type = types[i % types.length];
-        element.typeToAccept(type);
+        expect(JSON.stringify(element.typeToAccept(type))).to.equal(
+          first[i % types.length],
+        );
       }
-
-      const endTime = performance.now();
-      expect(endTime - startTime).to.be.lessThan(10);
     });
   });
 

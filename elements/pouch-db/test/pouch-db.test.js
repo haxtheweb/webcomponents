@@ -462,8 +462,8 @@ describe("pouch-db test", () => {
 
   describe("Performance", () => {
     it("should handle rapid event processing efficiently", () => {
-      const startTime = performance.now();
-
+      // no wall-clock budget: 50 no-op dispatches under 1s measured runner
+      // load, not pouch-db; check every event is handled without throwing
       for (let i = 0; i < 50; i++) {
         const mockEvent = {
           detail: {
@@ -472,11 +472,8 @@ describe("pouch-db test", () => {
           target: { tagName: `TEST-ELEMENT-${i}` },
         };
 
-        element.getDataFunction(mockEvent);
+        expect(() => element.getDataFunction(mockEvent)).to.not.throw();
       }
-
-      const endTime = performance.now();
-      expect(endTime - startTime).to.be.lessThan(1000); // Should complete within 1 second
     });
   });
 

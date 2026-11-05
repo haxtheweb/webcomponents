@@ -1,4 +1,4 @@
-import { fixture, expect, html, aTimeout } from "@open-wc/testing";
+import { fixture, expect, html, aTimeout, waitUntil } from "@open-wc/testing";
 import "../lib/super-daemon-toast.js";
 
 // Behavioral coverage for super-daemon-toast: default render modes, show and
@@ -52,9 +52,17 @@ describe("super-daemon-toast behavior", () => {
     await element.updateComplete;
     const ftt = element.shadowRoot.querySelector("future-terminal-text");
     expect(ftt).to.exist;
-    // the glitch effect swaps a random character each run, so assert the
-    // text was piped through by length instead of exact content
-    expect(ftt.innerText.length).to.equal(element.text.length);
+    // piping the text in starts the glitch effect, which rewrites the content
+    // with random characters (including control characters and spaces, which
+    // innerText collapses) for ~10 frames of glitch-duration ms and then
+    // restores the original. Asserting mid-glitch was flaky (10 vs 11), so
+    // wait for the glitch to finish and check the exact piped text.
+    await waitUntil(
+      () => ftt.innerHTML === element.text,
+      "glitch effect never restored the piped text",
+      { timeout: 5000 },
+    );
+    expect(ftt.textContent).to.equal(element.text);
   });
 
   it("show opens the toast with fade animations", () => {
@@ -146,8 +154,13 @@ describe("super-daemon-toast behavior", () => {
     const slotted = element.querySelector("span");
     expect(slotted === null).to.equal(false);
     expect(slotted.textContent).to.equal("slotted");
-    // awaitingMerlinInput flips on after duration/2
-    await aTimeout(600);
+    // awaitingMerlinInput flips on after a duration/2 (500ms) timer; wait on
+    // the state itself instead of sleeping just past the timer
+    await waitUntil(
+      () => element.awaitingMerlinInput === true,
+      "awaitingMerlinInput never flipped on",
+      { timeout: 5000 },
+    );
     expect(element.awaitingMerlinInput).to.equal(true);
   });
 

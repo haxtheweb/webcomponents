@@ -799,12 +799,11 @@ describe("Utils test", () => {
         largeCsv += `${i},"Name ${i}","Description for item ${i}"\n`;
       }
 
-      const start = performance.now();
+      // no wall-clock budget: 100 rows under 1s measured runner load, not
+      // the parser (too small to show quadratic behavior); check the rows
       const result = CSVtoArray(largeCsv);
-      const end = performance.now();
 
       expect(result).to.have.length(102); // Header + 100 rows + trailing newline
-      expect(end - start).to.be.lessThan(1000); // Should complete within 1 second
     });
 
     it("maintains data integrity through conversions", async () => {
@@ -837,8 +836,8 @@ describe("Utils test", () => {
   // Performance and memory tests
   describe("Performance Tests", () => {
     it("handles repeated localStorage operations efficiently", async () => {
-      const start = performance.now();
-
+      // no wall-clock budget: localStorage speed is the browser's, not ours;
+      // the round trip below is the real check
       for (let i = 0; i < 100; i++) {
         localStorageSet(`key${i}`, { value: i, data: `test${i}` });
       }
@@ -851,9 +850,7 @@ describe("Utils test", () => {
       for (let i = 0; i < 100; i++) {
         localStorageDelete(`key${i}`);
       }
-
-      const end = performance.now();
-      expect(end - start).to.be.lessThan(1000); // Should complete within 1 second
+      expect(localStorageGet("key0")).to.not.be.ok;
     });
 
     it("handles large base64 conversions", async () => {
@@ -861,12 +858,11 @@ describe("Utils test", () => {
       const largeText = "Large test content ".repeat(1000);
       const base64Data = btoa(largeText);
 
-      const start = performance.now();
+      // no wall-clock budget: one 19KB decode under 1s measured runner load,
+      // not b64toBlob; check the decoded size instead
       const blob = b64toBlob(base64Data, "text/plain");
-      const end = performance.now();
 
-      expect(blob.size).to.be.greaterThan(10000);
-      expect(end - start).to.be.lessThan(1000);
+      expect(blob.size).to.equal(largeText.length);
     });
   });
 

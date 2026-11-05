@@ -341,9 +341,17 @@ describe("hax-store methods round 3", () => {
     it("does not backtrack catastrophically on an unterminated attribute-like text", async () => {
       const p = globalThis.document.createElement("p");
       p.textContent = ' data-hax-ray="' + " ".repeat(50000);
-      const start = performance.now();
-      const content = await HAXStore.nodeToContent(p);
-      expect(performance.now() - start).to.be.below(2000);
+      // keeps a time limit because it guards catastrophic (super-linear)
+      // regex backtracking; normal is ~1-3ms, so 2000ms is far above 5x.
+      // Fastest of 3 so one GC pause or busy runner cannot fail it.
+      let best = Infinity;
+      let content = "";
+      for (let run = 0; run < 3; run++) {
+        const start = performance.now();
+        content = await HAXStore.nodeToContent(p);
+        best = Math.min(best, performance.now() - start);
+      }
+      expect(best).to.be.below(2000);
       expect(content).to.contain("data-hax-ray");
     });
 

@@ -1,6 +1,16 @@
 import { fixture, expect, html, waitUntil } from "@open-wc/testing";
 import "../chat-agent.js";
 import { ChatStore } from "../lib/chat-agent-store.js";
+import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
+
+// ChatStore calls the registry instance it imported, not whatever object is
+// on globalThis.MicroFrontendRegistry. These tests used to replace the
+// global with a fresh mock object, which the store never saw, so every
+// "AI" question made a real @system/aiChat request whose timing decided
+// isLoading and the last chat message (the malformed-response, loading
+// state and network-error flakes). Patch .call on the real instance and put
+// the original back after each test.
+const realRegistryCall = MicroFrontendRegistry.call;
 
 // Mock dependencies
 beforeEach(() => {
@@ -19,18 +29,15 @@ beforeEach(() => {
     },
   };
 
-  // Mock MicroFrontendRegistry
-  globalThis.MicroFrontendRegistry = {
-    add: () => {},
-    call: (service, params) => {
-      return Promise.resolve({
-        status: 200,
-        data: {
-          answers: "This is a mock AI response.",
-          question: params.question,
-        },
-      });
-    },
+  // Mock the registry call the store actually uses (see realRegistryCall)
+  MicroFrontendRegistry.call = (service, params) => {
+    return Promise.resolve({
+      status: 200,
+      data: {
+        answers: "This is a mock AI response.",
+        question: params.question,
+      },
+    });
   };
 
   // Mock enableServices
@@ -50,6 +57,7 @@ beforeEach(() => {
 });
 
 afterEach(() => {
+  MicroFrontendRegistry.call = realRegistryCall;
   // Clean up global chat agent store
   if (globalThis.ChatAgentStore && globalThis.ChatAgentStore.instance) {
     if (globalThis.ChatAgentStore.instance.parentNode) {
@@ -273,7 +281,7 @@ describe("chat-agent test", () => {
 
     it("should handle network errors gracefully", async () => {
       // Mock network error
-      globalThis.MicroFrontendRegistry.call = () => {
+      MicroFrontendRegistry.call = () => {
         return Promise.reject(new Error("Network error"));
       };
 
@@ -281,11 +289,12 @@ describe("chat-agent test", () => {
 
       ChatStore.handleInteraction("Network test question");
 
-      // Wait for error handling (poll: a fixed 100ms is too short on a
-      // loaded CI runner)
-      for (let i = 0; i < 100 && ChatStore.isLoading; i++) {
-        await new Promise((resolve) => setTimeout(resolve, 50));
-      }
+      // wait for the error path instead of a fixed delay
+      await waitUntil(
+        () => ChatStore.isLoading === false,
+        "network error never finished loading",
+        { timeout: 5000 },
+      );
 
       expect(ChatStore.isLoading).to.be.false;
       expect(ChatStore.chatLog.length).to.be.greaterThan(initialLogLength);
@@ -586,7 +595,7 @@ describe("chat-agent test", () => {
     });
 
     it("should handle malformed AI responses", async () => {
-      globalThis.MicroFrontendRegistry.call = () => {
+      MicroFrontendRegistry.call = () => {
         return Promise.resolve({
           status: 500,
           data: null,
@@ -597,9 +606,17 @@ describe("chat-agent test", () => {
         ChatStore.handleInteraction("Test malformed response");
       }).to.not.throw();
 
-      await new Promise((resolve) => setTimeout(resolve, 100));
+      // the error path runs once the mocked response settles; wait for it
+      // instead of a fixed 100ms
+      await waitUntil(
+        () => ChatStore.isLoading === false,
+        "malformed response never finished loading",
+        { timeout: 5000 },
+      );
 
       expect(ChatStore.isLoading).to.be.false;
+      const last = ChatStore.chatLog[ChatStore.chatLog.length - 1];
+      expect(last.message).to.include("having trouble connecting");
     });
   });
 
@@ -679,16 +696,17 @@ describe("chat-agent test", () => {
         "Question 5",
       ];
 
-      const startTime = performance.now();
+      const before = ChatStore.chatLog.length;
 
       questions.forEach((question) => {
         ChatStore.handleMessage("testuser", question);
       });
 
-      const endTime = performance.now();
-      const processingTime = endTime - startTime;
-
-      expect(processingTime).to.be.lessThan(100);
+      // no wall-clock budget: pushing five messages under 100ms measured
+      // runner load, not the store; check every message was logged
+      expect(ChatStore.chatLog.length).to.be.at.least(
+        before + questions.length,
+      );
       expect(ChatStore.chatLog.length).to.be.greaterThan(questions.length);
     });
 
