@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Is-Sit Inħoloq b'Suċċess!",
   "newSiteReady": "Is-sit il-ġdid tiegħek \"{siteName}\" lest għall-użu.",
   "stayHere": "Ibqa' Hawn",
-  "goToSite": "Mur fis-Sit"
+  "goToSite": "Mur fis-Sit",
+  "stepOf": "Pass {step} minn {total}"
 }

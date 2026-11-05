@@ -124,5 +124,13 @@
   "showApiKeyValue": "API キーの値を表示",
   "noSettingsForPanel": "このパネルで利用できる設定はまだありません。",
   "saving": "保存中…",
-  "save": "保存"
+  "save": "保存",
+  "dropSkeletonFile": "スケルトンの .json をドロップするか、",
+  "browseFiles": "参照",
+  "skeletonUploadNote": "アップロードしたスケルトンは名前の変更や削除ができます。コアスケルトンは無効にすることしかできません。",
+  "skeletonName": "スケルトン名",
+  "renameAction": "名前を変更",
+  "deleteSkeletonTitle": "スケルトンの削除",
+  "deleteAction": "削除",
+  "cancel": "キャンセル"
 }

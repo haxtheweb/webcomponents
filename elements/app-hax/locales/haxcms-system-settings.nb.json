@@ -124,5 +124,13 @@
   "showApiKeyValue": "Vis API-nøkkelverdi",
   "noSettingsForPanel": "Ingen innstillinger er tilgjengelige for dette panelet ennå.",
   "saving": "Lagrer…",
-  "save": "Lagre"
+  "save": "Lagre",
+  "dropSkeletonFile": "Slipp en skjelett-.json her eller",
+  "browseFiles": "Bla gjennom",
+  "skeletonUploadNote": "Opplastede skjeletter kan gis nytt navn eller slettes; kjerneskjeletter kan bare slås av.",
+  "skeletonName": "Skjelettnavn",
+  "renameAction": "Gi nytt navn",
+  "deleteSkeletonTitle": "Slett skjelett",
+  "deleteAction": "Slett",
+  "cancel": "Avbryt"
 }

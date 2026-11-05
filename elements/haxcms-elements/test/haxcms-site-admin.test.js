@@ -974,6 +974,28 @@ describe("haxcms-site-admin Structure", () => {
     expect(routes).to.deep.equal(["files", "content"]);
   });
 
+  it("waits for a section that answers its leave check with a promise", async () => {
+    const { shell, section, restore } = await fakeSectionShell("structure");
+    restore();
+    let answer = false;
+    section.hasUnsavedChanges = true;
+    section.confirmLeave = () => Promise.resolve(answer);
+    const routes = [];
+    shell.addEventListener("haxcms-site-admin-navigate", (e) =>
+      routes.push(e.detail.route),
+    );
+    // Keep editing: no move
+    expect(shell.requestLeave(() => routes.push("left"))).to.equal(false);
+    await new Promise((r) => setTimeout(r, 0));
+    expect(routes).to.deep.equal([]);
+    // Discard changes: proceed runs once the answer comes back
+    answer = true;
+    expect(shell.requestLeave(() => routes.push("left"))).to.equal(false);
+    expect(routes).to.deep.equal([]);
+    await new Promise((r) => setTimeout(r, 0));
+    expect(routes).to.deep.equal(["left"]);
+  });
+
   it("folds extra bulk actions into More on a narrow screen", async () => {
     const { shell, section, restore } = await fakeSectionShell("files");
     restore();

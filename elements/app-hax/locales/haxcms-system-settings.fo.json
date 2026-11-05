@@ -124,5 +124,13 @@
   "showApiKeyValue": "Vís virði á API-lykli",
   "noSettingsForPanel": "Ongar stillingar tøkar fyri hetta panelið enn.",
   "saving": "Goymir…",
-  "save": "Goym"
+  "save": "Goym",
+  "dropSkeletonFile": "Slepp eini beinagrind .json her ella",
+  "browseFiles": "Leita",
+  "skeletonUploadNote": "Upplagdar beinagrindir kunnu fáa nýtt navn ella verða strikaðar; grundbeinagrindir kunnu bert verða sløktar.",
+  "skeletonName": "Navn á beinagrind",
+  "renameAction": "Gev nýtt navn",
+  "deleteSkeletonTitle": "Strika beinagrind",
+  "deleteAction": "Strika",
+  "cancel": "Angra"
 }

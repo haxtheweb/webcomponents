@@ -60,5 +60,12 @@
   "downloadPDF": "PDF-ta uraqachiy",
   "displayMode1": "Kay 1",
   "displayMode2": "Kay 2",
-  "twoWindows": "Iskay ventanakuna"
+  "twoWindows": "Iskay ventanakuna",
+  "notGraded": "Mana qhawasqa",
+  "gradeValue": "{points}-manta {score}",
+  "studentPosition": "Yachaq {current} / {total}",
+  "rosterCaption": "Yachaqkuna: {students} · Rurakuna: {assignments}",
+  "gridInstructions": "Flecha llavekunawan notakuna ukhupi purinki, Enter nisqawan qhawayta kichan",
+  "totalScore": "Llapan puntaje",
+  "lockTotalScore": "Llapan puntajeta wichqay"
 }

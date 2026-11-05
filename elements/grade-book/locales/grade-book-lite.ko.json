@@ -57,5 +57,12 @@
   "expandAll": "모두 펼치기",
   "displayMode1": "모드 1",
   "displayMode2": "모드 2",
-  "twoWindows": "두 개의 창"
+  "twoWindows": "두 개의 창",
+  "notGraded": "채점 안 됨",
+  "gradeValue": "{points} 중 {score}",
+  "studentPosition": "학생 {current} / {total}",
+  "rosterCaption": "학생: {students} · 과제: {assignments}",
+  "gridInstructions": "화살표 키로 성적 사이를 이동하고 Enter 키로 채점을 엽니다",
+  "totalScore": "총점",
+  "lockTotalScore": "총점 잠금"
 }

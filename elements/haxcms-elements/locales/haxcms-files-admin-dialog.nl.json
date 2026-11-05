@@ -75,5 +75,11 @@
   "selectFile": "{name} selecteren",
   "copyPath": "Pad kopiëren",
   "pathCopied": "Pad gekopieerd",
-  "embedInPage": "Insluiten in pagina"
+  "embedInPage": "Insluiten in pagina",
+  "deleteFilesTitle": "Bestanden verwijderen",
+  "renameFilesTitle": "Bestanden hernoemen",
+  "replaceOriginalsTitle": "Originele bestanden vervangen",
+  "newName": "Nieuwe naam",
+  "deleteAction": "Verwijderen",
+  "renameAction": "Hernoemen"
 }

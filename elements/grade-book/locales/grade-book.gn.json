@@ -60,5 +60,12 @@
   "downloadPDF": "Mboguejy PDF",
   "displayMode1": "Reko 1",
   "displayMode2": "Reko 2",
-  "twoWindows": "Mokõi ovetã"
+  "twoWindows": "Mokõi ovetã",
+  "notGraded": "Nota’ỹ",
+  "gradeValue": "{score} {points} gui",
+  "studentPosition": "Temimbo’e {current} / {total}",
+  "rosterCaption": "Temimbo’e: {students} · Tembiapo: {assignments}",
+  "gridInstructions": "Flecha teclas ndive eguata notakuéra apytépe, Enter ombojuruja ñemoĩ",
+  "totalScore": "Nota papapy",
+  "lockTotalScore": "Emboty nota papapy"
 }

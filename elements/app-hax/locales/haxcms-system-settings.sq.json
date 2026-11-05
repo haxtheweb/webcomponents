@@ -124,5 +124,13 @@
   "showApiKeyValue": "Shfaq vlerën e çelësit API",
   "noSettingsForPanel": "Nuk ka ende cilësime për këtë panel.",
   "saving": "Po ruhet…",
-  "save": "Ruaj"
+  "save": "Ruaj",
+  "dropSkeletonFile": "Lësho këtu një skelet .json ose",
+  "browseFiles": "Shfleto",
+  "skeletonUploadNote": "Skeletet e ngarkuara mund të riemërtohen ose fshihen; skeletet bazë mund vetëm të çaktivizohen.",
+  "skeletonName": "Emri i skeletit",
+  "renameAction": "Riemërto",
+  "deleteSkeletonTitle": "Fshi skeletin",
+  "deleteAction": "Fshi",
+  "cancel": "Anulo"
 }

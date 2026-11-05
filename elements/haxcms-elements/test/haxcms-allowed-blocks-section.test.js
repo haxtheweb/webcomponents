@@ -266,6 +266,35 @@ describe("haxcms-allowed-blocks-ui in haxcms-site-admin", () => {
 });
 
 describe("haxcms-allowed-blocks-ui rows and preview", () => {
+  it("toggles a block from its name or description, not only the switch", async () => {
+    const el = await fixture(
+      html`<haxcms-allowed-blocks-ui in-shell></haxcms-allowed-blocks-ui>`,
+    );
+    await load(el, ["video-player", "accent-card"], true);
+    const row = el.shadowRoot.querySelector(
+      'li.block-row[data-tag="simple-cta"]',
+    );
+    const label = row.querySelector("label.block-meta");
+    const sw = row.querySelector('[role="switch"]');
+    expect(label.getAttribute("for")).to.equal(sw.id);
+    expect(el.allowedBlocks.has("simple-cta")).to.be.false;
+    row.querySelector(".name").click();
+    await el.updateComplete;
+    expect(el.allowedBlocks.has("simple-cta")).to.be.true;
+    row.querySelector(".block-description").click();
+    await el.updateComplete;
+    expect(el.allowedBlocks.has("simple-cta")).to.be.false;
+    // a locked required primitive stays on when its label is clicked
+    const locked = el.shadowRoot.querySelector('li.block-row[data-tag="p"]');
+    locked.querySelector(".name").click();
+    await el.updateComplete;
+    expect(
+      el.shadowRoot
+        .querySelector("#allowed-block-p")
+        .getAttribute("aria-checked"),
+    ).to.equal("true");
+  });
+
   it("lists each block as one row with a count per category", async () => {
     const el = await fixture(
       html`<haxcms-allowed-blocks-ui

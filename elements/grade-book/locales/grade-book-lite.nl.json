@@ -57,5 +57,12 @@
   "expandAll": "Alles uitklappen",
   "displayMode1": "Modus 1",
   "displayMode2": "Modus 2",
-  "twoWindows": "Twee vensters"
+  "twoWindows": "Twee vensters",
+  "notGraded": "Niet beoordeeld",
+  "gradeValue": "{score} van {points}",
+  "studentPosition": "Student {current} / {total}",
+  "rosterCaption": "Studenten: {students} · Opdrachten: {assignments}",
+  "gridInstructions": "Met de pijltjestoetsen ga je tussen cijfers, Enter opent de beoordeling",
+  "totalScore": "Totaalscore",
+  "lockTotalScore": "Totaalscore vergrendelen"
 }

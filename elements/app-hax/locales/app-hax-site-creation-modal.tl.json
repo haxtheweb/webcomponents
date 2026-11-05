@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Matagumpay na Nagawa ang Site!",
   "newSiteReady": "Handa nang gamitin ang iyong bagong site na \"{siteName}\".",
   "stayHere": "Manatili Rito",
-  "goToSite": "Pumunta sa Site"
+  "goToSite": "Pumunta sa Site",
+  "stepOf": "Hakbang {step} ng {total}"
 }

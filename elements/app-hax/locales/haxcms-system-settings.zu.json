@@ -124,5 +124,13 @@
   "showApiKeyValue": "Bonisa inani lokhiye we-API",
   "noSettingsForPanel": "Azikho izilungiselelo ezitholakalayo zale phaneli okwamanje.",
   "saving": "Iyalondoloza…",
-  "save": "Londoloza"
+  "save": "Londoloza",
+  "dropSkeletonFile": "Donsela lapha i-.json yohlaka noma",
+  "browseFiles": "Phequlula",
+  "skeletonUploadNote": "Izinhlaka ezilayishiwe zingaqanjwa kabusha noma zisuswe; izinhlaka eziyinhloko zingavalwa kuphela.",
+  "skeletonName": "Igama lohlaka",
+  "renameAction": "Qamba kabusha",
+  "deleteSkeletonTitle": "Susa uhlaka",
+  "deleteAction": "Susa",
+  "cancel": "Khansela"
 }

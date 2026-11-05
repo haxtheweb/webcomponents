@@ -75,5 +75,11 @@
   "selectFile": "Изабери {name}",
   "copyPath": "Копирај путању",
   "pathCopied": "Путања је копирана",
-  "embedInPage": "Угради у страницу"
+  "embedInPage": "Угради у страницу",
+  "deleteFilesTitle": "Обриши датотеке",
+  "renameFilesTitle": "Преименуј датотеке",
+  "replaceOriginalsTitle": "Замени оригиналне датотеке",
+  "newName": "Ново име",
+  "deleteAction": "Обриши",
+  "renameAction": "Преименуј"
 }

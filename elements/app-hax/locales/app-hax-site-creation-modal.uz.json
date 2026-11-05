@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Sayt muvaffaqiyatli yaratildi!",
   "newSiteReady": "Yangi \"{siteName}\" saytingiz foydalanishga tayyor.",
   "stayHere": "Shu yerda qolish",
-  "goToSite": "Saytga oʻtish"
+  "goToSite": "Saytga oʻtish",
+  "stepOf": "Bosqich {step} / {total}"
 }

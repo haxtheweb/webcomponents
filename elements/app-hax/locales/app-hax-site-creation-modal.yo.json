@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "A Ti Ṣẹ̀dá Ojú Òpó Ní Àṣeyọrí!",
   "newSiteReady": "Ojú òpó tuntun rẹ \"{siteName}\" ti ṣetán fún lílò.",
   "stayHere": "Dúró Síbí",
-  "goToSite": "Lọ sí Ojú Òpó"
+  "goToSite": "Lọ sí Ojú Òpó",
+  "stepOf": "Ìgbésẹ̀ {step} nínú {total}"
 }

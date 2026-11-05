@@ -18,6 +18,11 @@ import {
 } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 import "@haxtheweb/code-editor/code-editor.js";
 import "@haxtheweb/hax-body/lib/hax-upload-field.js";
+import "@haxtheweb/haxcms-elements/lib/core/admin/haxcms-admin-add-area.js";
+import {
+  adminConfirm,
+  adminPrompt,
+} from "@haxtheweb/haxcms-elements/lib/core/admin/haxcms-admin-confirm.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { waitForAppHAXSystemApiRegistryReady } from "../app-hax-system-api-registry.js";
 import "./haxcms-system-allowed-blocks.js";
@@ -89,6 +94,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
   static get properties() {
     return {
       activePanel: { type: String, attribute: "active-panel" },
+      _skeletonUploading: { type: Boolean, state: true },
       panelValues: { type: Object, attribute: false },
       statusMessage: { type: String, attribute: "status-message" },
       statusRows: { type: Array, attribute: false },
@@ -233,6 +239,11 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
       noSkeletonOptions: "No skeleton options were returned.",
       renamePromptUnavailable: "Rename prompt is unavailable.",
       renameSkeleton: "Rename skeleton",
+      cancel: "Cancel",
+      skeletonName: "Skeleton name",
+      renameAction: "Rename",
+      deleteSkeletonTitle: "Delete skeleton",
+      deleteAction: "Delete",
       skeletonNameRequired: "Skeleton name is required.",
       skeletonNameNeedsAlphanumeric:
         "Skeleton name must include letters or numbers.",
@@ -286,6 +297,8 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
       soon: "Soon",
       collapse: "Collapse",
       expand: "Expand",
+      collapseMenu: "Collapse menu",
+      expandMenu: "Expand menu",
       hasUnsavedChanges: "Has unsaved changes",
       checkAgain: "Check again",
       checking: "Checking…",
@@ -320,6 +333,10 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
       noMatches: "Nothing matches this filter.",
       dropSkeletonHelp:
         "Drop a skeleton .json file here to add it. Uploaded skeletons can be renamed or deleted; core skeletons can only be turned off.",
+      dropSkeletonFile: "Drop a skeleton .json or",
+      browseFiles: "Browse",
+      skeletonUploadNote:
+        "Uploaded skeletons can be renamed or deleted; core skeletons can only be turned off.",
       changed: "Changed",
       turnedOn: "{name} on",
       turnedOff: "{name} off",
@@ -388,6 +405,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
     this.__localizationLoaded = false;
     this.__skeletonUploadField = null;
     this.__skeletonUploadNode = null;
+    this._skeletonUploading = false;
     this.__boundSkeletonUploadBefore = this._onSkeletonUploadBefore.bind(this);
     this.__boundSkeletonUploadResponse =
       this._onSkeletonUploadResponse.bind(this);
@@ -470,6 +488,16 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
       ...HaxUiAdminShell,
       css`
         :host {
+          /* the language picker sits in a simple-fields form below this
+             host: size it like the other inputs, as site admin does */
+          --haxcms-language-picker-font-size: var(--hax-ui-admin-font-size);
+          --haxcms-language-picker-option-font-size: var(
+            --hax-ui-admin-font-size
+          );
+          --haxcms-language-picker-input-height: var(--hax-ui-field-height);
+          --haxcms-language-picker-border: 1px solid;
+          --haxcms-language-picker-border-color: var(--hax-ui-line-strong);
+          --haxcms-language-picker-radius: var(--hax-ui-radius);
           display: block;
           box-sizing: border-box;
           /* follow the HAX UI theme switch, not only the OS, so light-dark()
@@ -560,19 +588,9 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
           border-radius: 50%;
           background-color: var(--hax-ui-accent-strong);
         }
-        .rail-foot {
-          margin-top: auto;
-          padding-top: var(--hax-ui-gap-md);
-          border-top: 1px solid var(--hax-ui-line);
-        }
-        .rail-foot .rail-item {
-          color: var(--hax-ui-text-muted);
-          font-size: var(--hax-ui-admin-font-size-xs);
-        }
-        .rail-foot .rail-item:hover {
-          color: var(--hax-ui-text);
-        }
-        .narrow .rail-foot,
+        /* the collapse toggle is the shell's .rail-collapse (top of the
+           rail, like site admin); a narrow dialog is always icons */
+        .narrow .rail-collapse,
         .rail-collapsed .rail-sub,
         .rail-collapsed .rail-badge[data-tone="soon"] {
           display: none;
@@ -744,25 +762,19 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
           color: var(--hax-ui-text-muted);
         }
 
-        /* skeletons */
-        .drop {
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-          gap: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
-          padding: var(--hax-ui-gap-md) 14px;
-          margin-bottom: var(--hax-ui-gap-lg);
-          border: 1px dashed var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius-lg);
-          font-size: 13px;
-          color: var(--hax-ui-text-muted);
+        /* skeletons: the upload field runs the queue; the header's add
+           area is what people see and drop on */
+        .uploader {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          overflow: hidden;
+          clip: rect(0 0 0 0);
+          clip-path: inset(50%);
+          white-space: nowrap;
         }
-        .drop p {
-          flex: 1 1 280px;
-          margin: 0;
-        }
-        .drop hax-upload-field {
-          flex: 1 1 320px;
+        .ph-actions haxcms-admin-add-area {
+          min-width: min(300px, 100%);
         }
         .table {
           width: 100%;
@@ -836,6 +848,8 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
           grid-template-columns: repeat(auto-fill, minmax(176px, 1fr));
           gap: var(--hax-ui-gap-lg);
         }
+        /* the whole card is the label for its checkbox: a click anywhere
+           on it turns the theme on or off */
         .card {
           display: flex;
           flex-direction: column;
@@ -843,9 +857,20 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
           border-radius: var(--hax-ui-radius-lg);
           overflow: hidden;
           background-color: var(--hax-ui-surface);
+          cursor: pointer;
+          transition:
+            border-color var(--hax-ui-duration) var(--hax-ui-easing),
+            background-color var(--hax-ui-duration) var(--hax-ui-easing);
         }
         .card:hover {
           border-color: var(--hax-ui-accent-strong);
+        }
+        .card.on .card-cap {
+          background-color: var(--hax-ui-accent-soft);
+        }
+        .card:focus-within {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
         }
         .card.changed {
           border-color: var(--hax-ui-accent-strong);
@@ -883,14 +908,14 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
           display: flex;
           flex-direction: column;
         }
-        .card-cap label {
+        .card-cap .name {
           font-weight: var(--ddd-font-weight-bold, 700);
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
           cursor: pointer;
         }
-        .card.off .card-cap label {
+        .card.off .card-cap .name {
           font-weight: var(--ddd-font-weight-medium, 500);
           color: var(--hax-ui-text-muted);
         }
@@ -1050,6 +1075,69 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
         disabled: true,
       },
       {
+        key: "media",
+        label: this.t.media,
+        icon: HaxUiAdminIcons.image,
+        group: "advanced",
+        description: this.t.mediaDefaults,
+        intro: this.t.mediaIntro,
+        panelType: "fields",
+        sections: [
+          {
+            key: "media-policy",
+            label: this.t.mediaPolicy,
+            icon: HaxUiAdminIcons.image,
+            description: this.t.mediaPolicySectionDescription,
+            fields: [
+              {
+                property: "jpegQuality",
+                title: this.t.jpegImageQuality,
+                inputMethod: "number",
+                default: 90,
+              },
+              {
+                property: "maxUploadSizeMb",
+                title: this.t.maxUploadSizeMb,
+                inputMethod: "number",
+                default: 25,
+              },
+              {
+                property: "acceptedFormats",
+                title: this.t.acceptedFileFormats,
+                inputMethod: "textarea",
+                default: "jpg,jpeg,png,webp,gif",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        key: "configuration",
+        label: this.t.configuration,
+        icon: HaxUiAdminIcons.details,
+        group: "advanced",
+        description: this.t.systemWideDefaults,
+        intro: this.t.configurationIntro,
+        panelType: "fields",
+        sections: [
+          {
+            key: "localization",
+            label: this.t.localization,
+            icon: HaxUiAdminIcons.language,
+            description: this.t.localizationSectionDescription,
+            fields: [
+              {
+                property: "defaultLanguage",
+                title: this.t.defaultLanguageForNewSites,
+                inputMethod: "haxcms-language-picker",
+                allowCustom: true,
+                default: "en-US",
+              },
+            ],
+          },
+        ],
+      },
+      {
         key: "integrations",
         label: this.t.integrations,
         icon: HaxUiAdminIcons.api,
@@ -1119,69 +1207,6 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
                 helpUrl: "https://console.anthropic.com/settings/keys",
                 inputMethod: "textfield",
                 default: "",
-              },
-            ],
-          },
-        ],
-      },
-      {
-        key: "media",
-        label: this.t.media,
-        icon: HaxUiAdminIcons.image,
-        group: "advanced",
-        description: this.t.mediaDefaults,
-        intro: this.t.mediaIntro,
-        panelType: "fields",
-        sections: [
-          {
-            key: "media-policy",
-            label: this.t.mediaPolicy,
-            icon: HaxUiAdminIcons.image,
-            description: this.t.mediaPolicySectionDescription,
-            fields: [
-              {
-                property: "jpegQuality",
-                title: this.t.jpegImageQuality,
-                inputMethod: "number",
-                default: 90,
-              },
-              {
-                property: "maxUploadSizeMb",
-                title: this.t.maxUploadSizeMb,
-                inputMethod: "number",
-                default: 25,
-              },
-              {
-                property: "acceptedFormats",
-                title: this.t.acceptedFileFormats,
-                inputMethod: "textarea",
-                default: "jpg,jpeg,png,webp,gif",
-              },
-            ],
-          },
-        ],
-      },
-      {
-        key: "configuration",
-        label: this.t.configuration,
-        icon: HaxUiAdminIcons.details,
-        group: "advanced",
-        description: this.t.systemWideDefaults,
-        intro: this.t.configurationIntro,
-        panelType: "fields",
-        sections: [
-          {
-            key: "localization",
-            label: this.t.localization,
-            icon: HaxUiAdminIcons.language,
-            description: this.t.localizationSectionDescription,
-            fields: [
-              {
-                property: "defaultLanguage",
-                title: this.t.defaultLanguageForNewSites,
-                inputMethod: "haxcms-language-picker",
-                allowCustom: true,
-                default: "en-US",
               },
             ],
           },
@@ -1555,7 +1580,29 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
     }
   }
 
+  /**
+   * Files from the header's add area go to the hidden upload field's queue,
+   * the same queue a drop on the old inline zone filled.
+   * @param {CustomEvent} e detail { files, event }
+   */
+  _addSkeletonFiles(e) {
+    const detail = e && e.detail ? e.detail : null;
+    if (!detail || this._skeletonUploading) {
+      return;
+    }
+    this._setupSkeletonUploader();
+    const queue = this.__skeletonUploadNode;
+    if (queue && typeof queue.handleDrop === "function") {
+      queue.handleDrop(
+        detail.event && detail.event.dataTransfer
+          ? detail.event
+          : { dataTransfer: { files: detail.files || [] } },
+      );
+    }
+  }
+
   _onSkeletonUploadBefore(e = null) {
+    this._skeletonUploading = true;
     const payload = this._schemaUploadPayload();
     if (this.__skeletonUploadNode) {
       this.__skeletonUploadNode.target = this._schemaFileUploadTarget();
@@ -1579,6 +1626,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
   }
 
   async _onSkeletonUploadResponse(e = null) {
+    this._skeletonUploading = false;
     const xhr = e && e.detail ? e.detail.xhr : null;
     const status = xhr && typeof xhr.status === "number" ? xhr.status : 0;
     const response = this._parseUploadJsonResponse(xhr);
@@ -1605,6 +1653,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
   }
 
   _onSkeletonUploadReject(e = null) {
+    this._skeletonUploading = false;
     let message = this.t.unableToUploadSkeleton;
     if (
       e &&
@@ -3182,10 +3231,14 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
       typeof option.label === "string" && option.label.trim() !== ""
         ? option.label.trim()
         : currentName;
-    const requestedName = globalThis.prompt(
-      this.t.renameSkeleton,
-      currentDisplayName,
-    );
+    const requestedName = await adminPrompt({
+      title: this.t.renameSkeleton,
+      label: this.t.skeletonName,
+      value: currentDisplayName,
+      required: true,
+      confirmLabel: this.t.renameAction,
+      cancelLabel: this.t.cancel,
+    });
     if (typeof requestedName !== "string") {
       return;
     }
@@ -3249,14 +3302,17 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
     ) {
       return;
     }
-    if (!globalThis || typeof globalThis.confirm !== "function") {
-      this.statusMessage = this.t.deleteConfirmationUnavailable;
-      return;
-    }
     const machineName = this._normalizeMachineName(option.machineName);
-    const shouldDelete = globalThis.confirm(
-      this.t.deleteSkeletonConfirm.replace("{machineName}", () => machineName),
-    );
+    const shouldDelete = await adminConfirm({
+      title: this.t.deleteSkeletonTitle,
+      message: this.t.deleteSkeletonConfirm.replace(
+        "{machineName}",
+        () => machineName,
+      ),
+      confirmLabel: this.t.deleteAction,
+      cancelLabel: this.t.cancel,
+      danger: true,
+    });
     if (!shouldDelete) {
       return;
     }
@@ -3968,8 +4024,31 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
     const advanced = this.panelList.filter(
       (panel) => panel.group === "advanced",
     );
+    const toggleLabel = this._railCollapsed
+      ? this.t.expandMenu
+      : this.t.collapseMenu;
+    // the collapse toggle leads the rail, as in the site admin dialog
     return html`
-      <nav class="rail" aria-label="${this.t.systemSettingsSections}">
+      <nav class="rail" id="rail" aria-label="${this.t.systemSettingsSections}">
+        <button
+          type="button"
+          class="rail-item rail-collapse"
+          aria-expanded="${this._railCollapsed ? "false" : "true"}"
+          aria-controls="rail"
+          aria-label="${toggleLabel}"
+          title="${toggleLabel}"
+          @click="${this._toggleRail}"
+        >
+          <simple-icon-lite
+            icon="${
+              this._railCollapsed
+                ? HaxUiAdminIcons.railExpand
+                : HaxUiAdminIcons.railCollapse
+            }"
+            aria-hidden="true"
+          ></simple-icon-lite>
+          <span class="label" aria-hidden="true">${toggleLabel}</span>
+        </button>
         <ul>
           ${primary.map((panel) => this._renderRailItem(panel))}
         </ul>
@@ -3979,32 +4058,26 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
         <ul>
           ${advanced.map((panel) => this._renderRailItem(panel))}
         </ul>
-        <div class="rail-foot">
-          <button
-            type="button"
-            class="rail-item"
-            aria-expanded="${this._railCollapsed ? "false" : "true"}"
-            title="${this._railCollapsed ? this.t.expand : this.t.collapse}"
-            @click="${this._toggleRail}"
-          >
-            <simple-icon-lite
-              icon="${
-                this._railCollapsed
-                  ? HaxUiAdminIcons.railExpand
-                  : HaxUiAdminIcons.railCollapse
-              }"
-              aria-hidden="true"
-            ></simple-icon-lite>
-            <span class="label"
-              >${this._railCollapsed ? this.t.expand : this.t.collapse}</span
-            >
-          </button>
-        </div>
       </nav>
     `;
   }
 
   _renderHeaderActions(panel) {
+    // the add area sits at the top right of the panel header, where site
+    // admin's Content and Files put theirs
+    if (panel.key === "skeletons" && this._hasSchemaFileOperationEndpoint()) {
+      return html`<div class="ph-actions">
+        <haxcms-admin-add-area
+          class="add"
+          accept=".json,application/json"
+          label="${this.t.dropSkeletonFile}"
+          browse-label="${this.t.browseFiles}"
+          hint="${this.t.dropSkeletonHelp}"
+          ?busy="${this._skeletonUploading}"
+          @admin-add-files="${this._addSkeletonFiles}"
+        ></haxcms-admin-add-area>
+      </div>`;
+    }
     if (panel.key === "status") {
       return html`<div class="ph-actions">
         <button
@@ -4211,23 +4284,26 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
           : nothing
       }
       ${this._renderListTools("skeletons", options, this.t.filterSkeletons)}
-      <div class="drop">
-        ${
-          this._hasSchemaFileOperationEndpoint()
-            ? html`
-                <p>${this.t.dropSkeletonHelp}</p>
-                <hax-upload-field
-                  id="skeleton-upload-field"
-                  hide-source-selector
-                  hide-input
-                  no-camera
-                  no-voice-record
-                  no-screen-record
-                ></hax-upload-field>
-              `
-            : html`<p>${this.t.uploadEndpointUnavailable}</p>`
-        }
-      </div>
+      ${
+        this._hasSchemaFileOperationEndpoint()
+          ? html`
+              <p class="hax-ui-note">${this.t.skeletonUploadNote}</p>
+              <!-- the field that uploads: present for its upload queue,
+                   not shown; the header's add area feeds it -->
+              <hax-upload-field
+                id="skeleton-upload-field"
+                class="uploader"
+                hide-source-selector
+                hide-input
+                no-camera
+                no-voice-record
+                no-screen-record
+                tabindex="-1"
+                aria-hidden="true"
+              ></hax-upload-field>
+            `
+          : html`<p class="hax-ui-note">${this.t.uploadEndpointUnavailable}</p>`
+      }
       ${
         options.length === 0 && !this.loadingSkeletons
           ? html`<p class="hax-ui-empty">${this.t.noSkeletonOptions}</p>`
@@ -4426,8 +4502,11 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
     const inputId = `theme-option-${index}-${option.machineName}`;
     const categories = option.categories || [];
     return html`
-      <div class="card ${checked ? "" : "off"} ${changed ? "changed" : ""}">
-        <div class="shot">
+      <label
+        class="card ${checked ? "on" : "off"} ${changed ? "changed" : ""}"
+        for="${inputId}"
+      >
+        <span class="shot">
           ${
             option.screenshot
               ? html`<img
@@ -4441,17 +4520,18 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
                 />`
               : html`<span>${this.t.noPreview}</span>`
           }
-        </div>
-        <div class="card-cap">
+        </span>
+        <span class="card-cap">
           <input
             id="${inputId}"
             type="checkbox"
+            aria-labelledby="${inputId}-name"
             .checked=${checked}
             @change=${(e) => this._onThemeOptionChanged(option, e)}
           />
           <span class="text">
-            <label for="${inputId}" title="${option.label}"
-              >${option.label}</label
+            <span class="name" id="${inputId}-name" title="${option.label}"
+              >${option.label}</span
             >
             <span class="meta"
               ><span class="mono">${option.machineName}</span>${
@@ -4468,8 +4548,8 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
                 >`
               : nothing
           }
-        </div>
-      </div>
+        </span>
+      </label>
     `;
   }
 

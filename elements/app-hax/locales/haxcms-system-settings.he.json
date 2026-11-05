@@ -124,5 +124,13 @@
   "showApiKeyValue": "הצגת ערך מפתח ה-API",
   "noSettingsForPanel": "עדיין אין הגדרות זמינות לחלונית זו.",
   "saving": "שומר…",
-  "save": "שמירה"
+  "save": "שמירה",
+  "dropSkeletonFile": "יש לשחרר כאן שלד .json או",
+  "browseFiles": "עיון",
+  "skeletonUploadNote": "ניתן לשנות את השם של שלדים שהועלו או למחוק אותם; את שלדי הליבה ניתן רק לכבות.",
+  "skeletonName": "שם השלד",
+  "renameAction": "שינוי שם",
+  "deleteSkeletonTitle": "מחיקת שלד",
+  "deleteAction": "מחיקה",
+  "cancel": "ביטול"
 }

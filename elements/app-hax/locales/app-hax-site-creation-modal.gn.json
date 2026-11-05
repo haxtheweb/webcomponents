@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Tenda Oñemoheñói Porã!",
   "newSiteReady": "Nde tenda pyahu \"{siteName}\" oĩma ojepuru hag̃ua.",
   "stayHere": "Epyta Ko'ápe",
-  "goToSite": "Eho Tendápe"
+  "goToSite": "Eho Tendápe",
+  "stepOf": "Mboguata {step} {total}-gui"
 }

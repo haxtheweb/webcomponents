@@ -100,5 +100,6 @@
   "vitepressImportDescription": "Depoyeke belgeyên VitePress di malpereke nû ya HAX de hawirde bike",
   "vitepressImportPrompt": "URL-ya depoya git a VitePress",
   "quartoImportDescription": "Depoyeke belgeyên Quarto di malpereke nû ya HAX de hawirde bike",
-  "quartoImportPrompt": "URL-ya depoya git a Quarto"
+  "quartoImportPrompt": "URL-ya depoya git a Quarto",
+  "cancel": "Betal bike"
 }

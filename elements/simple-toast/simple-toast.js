@@ -4,6 +4,7 @@
  */
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { DDDStatusTokens } from "@haxtheweb/d-d-d/lib/DDDStatusTokens.js";
 import "./lib/simple-toast-el.js";
 // register globally so we can make sure there is only one
 globalThis.SimpleToast = globalThis.SimpleToast || {};
@@ -33,9 +34,21 @@ class SimpleToast extends DDD {
   static get styles() {
     return [
       super.styles,
+      DDDStatusTokens,
       css`
         :host {
           display: block;
+        }
+        /* answer feedback icons (data-status) take the DDD form-status
+           colours, the same green / purple the questions use; the toast
+           is always dark, so they resolve their dark values */
+        ::slotted([data-status="correct"]) {
+          color-scheme: dark;
+          --simple-icon-color: var(--ddd-status-correct-signal);
+        }
+        ::slotted([data-status="incorrect"]) {
+          color-scheme: dark;
+          --simple-icon-color: var(--ddd-status-incorrect-signal);
         }
 
         :host([hidden]) {

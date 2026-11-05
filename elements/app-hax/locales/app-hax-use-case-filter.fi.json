@@ -100,5 +100,6 @@
   "vitepressImportDescription": "Tuo VitePress-dokumentaatiorepositorio uudeksi HAX-sivustoksi",
   "vitepressImportPrompt": "VitePressin git-repositorion URL",
   "quartoImportDescription": "Tuo Quarto-dokumentaatiorepositorio uudeksi HAX-sivustoksi",
-  "quartoImportPrompt": "Quartoin git-repositorion URL"
+  "quartoImportPrompt": "Quartoin git-repositorion URL",
+  "cancel": "Peruuta"
 }

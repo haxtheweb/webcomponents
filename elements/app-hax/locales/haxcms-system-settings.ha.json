@@ -124,5 +124,13 @@
   "showApiKeyValue": "Nuna ƙimar maɓallin API",
   "noSettingsForPanel": "Babu saituna ga wannan allo tukuna.",
   "saving": "Ana ajiyewa…",
-  "save": "Ajiye"
+  "save": "Ajiye",
+  "dropSkeletonFile": "Jefa kwarangwal .json nan ko",
+  "browseFiles": "Bincika",
+  "skeletonUploadNote": "Ana iya sake sunan kwarangwal da aka loda ko a share su; kwarangwal na asali kashe su kawai za a iya yi.",
+  "skeletonName": "Sunan kwarangwal",
+  "renameAction": "Sake suna",
+  "deleteSkeletonTitle": "Share kwarangwal",
+  "deleteAction": "Share",
+  "cancel": "Soke"
 }

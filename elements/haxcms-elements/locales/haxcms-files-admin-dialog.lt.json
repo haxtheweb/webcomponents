@@ -75,5 +75,11 @@
   "selectFile": "Pasirinkti {name}",
   "copyPath": "Kopijuoti kelią",
   "pathCopied": "Kelias nukopijuotas",
-  "embedInPage": "Įterpti į puslapį"
+  "embedInPage": "Įterpti į puslapį",
+  "deleteFilesTitle": "Ištrinti failus",
+  "renameFilesTitle": "Pervadinti failus",
+  "replaceOriginalsTitle": "Pakeisti originalius failus",
+  "newName": "Naujas pavadinimas",
+  "deleteAction": "Ištrinti",
+  "renameAction": "Pervadinti"
 }

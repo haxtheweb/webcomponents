@@ -124,5 +124,13 @@
   "showApiKeyValue": "Fi iye kọ́kọ́rọ́ API hàn",
   "noSettingsForPanel": "Kò sí ètò kankan fún pánẹ́ẹ̀lì yìí síbẹ̀.",
   "saving": "Ó ń fi pamọ́…",
-  "save": "Fi pamọ́"
+  "save": "Fi pamọ́",
+  "dropSkeletonFile": "Ju fáìlì àwòṣe .json sílẹ̀ níbí tàbí",
+  "browseFiles": "Ṣàwárí",
+  "skeletonUploadNote": "A lè yí orúkọ àwọn àwòṣe tí a gbé sókè padà tàbí pa wọ́n rẹ́; àwọn àwòṣe ìpìlẹ̀ ni a lè dá dúró nìkan.",
+  "skeletonName": "Orúkọ àwòṣe",
+  "renameAction": "Yí orúkọ padà",
+  "deleteSkeletonTitle": "Pa àwòṣe rẹ́",
+  "deleteAction": "Pa rẹ́",
+  "cancel": "Fagilé"
 }

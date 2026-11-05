@@ -57,5 +57,12 @@
   "expandAll": "توسيع الكل",
   "displayMode1": "الوضع 1",
   "displayMode2": "الوضع 2",
-  "twoWindows": "نافذتان"
+  "twoWindows": "نافذتان",
+  "notGraded": "غير مُقيَّم",
+  "gradeValue": "{score} من {points}",
+  "studentPosition": "الطالب {current} / {total}",
+  "rosterCaption": "الطلاب: {students} · الواجبات: {assignments}",
+  "gridInstructions": "تنقّل بين الدرجات بمفاتيح الأسهم، ومفتاح Enter يفتح التقييم",
+  "totalScore": "الدرجة الإجمالية",
+  "lockTotalScore": "قفل الدرجة الإجمالية"
 }

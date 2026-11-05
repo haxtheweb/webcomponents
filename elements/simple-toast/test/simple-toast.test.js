@@ -104,6 +104,24 @@ describe("simple-toast show via event", () => {
     expect(toast.opened).to.equal(true);
   });
 
+  it("colours answer feedback icons with the DDD form-status tokens", async () => {
+    const icon = globalThis.document.createElement("simple-icon-lite");
+    icon.setAttribute("data-status", "incorrect");
+    toast.showSimpleToast({ detail: { text: "Try again", slot: icon } });
+    await toast.updateComplete;
+    const color = getComputedStyle(icon)
+      .getPropertyValue("--simple-icon-color")
+      .trim();
+    // the incorrect signal resolves to DDD purple (light-dark pair), never red
+    expect(color).to.not.equal("");
+    expect(color).to.equal(
+      getComputedStyle(toast)
+        .getPropertyValue("--ddd-status-incorrect-signal")
+        .trim(),
+    );
+    toast.hide();
+  });
+
   it("showSimpleToast works with partial detail", () => {
     toast.showSimpleToast({ detail: { text: "Partial" } });
     expect(toast.text).to.equal("Partial");

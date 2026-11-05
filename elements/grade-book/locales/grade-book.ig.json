@@ -60,5 +60,12 @@
   "downloadPDF": "Budata PDF",
   "displayMode1": "Ọnọdụ 1",
   "displayMode2": "Ọnọdụ 2",
-  "twoWindows": "Windo abụọ"
+  "twoWindows": "Windo abụọ",
+  "notGraded": "Enyeghị akara",
+  "gradeValue": "{score} n'ime {points}",
+  "studentPosition": "Nwa akwụkwọ {current} / {total}",
+  "rosterCaption": "Ụmụ akwụkwọ: {students} · Ọrụ: {assignments}",
+  "gridInstructions": "Ọkụkụ àkụ na-ebugharị n'etiti akara, Enter na-emepe ịnye akara",
+  "totalScore": "Ngụkọta akara",
+  "lockTotalScore": "Mechie ngụkọta akara"
 }

@@ -26,6 +26,7 @@ import {
   renderRowMoreButton,
 } from "./admin/admin-row-menu.js";
 import "./admin/haxcms-admin-add-area.js";
+import { adminConfirm } from "./admin/haxcms-admin-confirm.js";
 import {
   splitAdminAddFiles,
   adminFileType,
@@ -171,6 +172,11 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
       deleteOneConfirm: "Delete “{title}”? This cannot be undone.",
       deleteManyConfirm:
         "Delete {count} selected pages? This cannot be undone.",
+      deletePagesTitle: "Delete pages",
+      deleteAction: "Delete",
+      replaceTitle: "Replace in pages",
+      removeMatchesTitle: "Remove all matches",
+      removeAction: "Remove",
       publishing: "Publishing {done} of {count}…",
       unpublishing: "Unpublishing {done} of {count}…",
       showing: "Showing {done} of {count} in the menu…",
@@ -1890,7 +1896,14 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
       open.length === 1
         ? this._fill(this.t.deleteOneConfirm, { title: open[0].title })
         : this._fill(this.t.deleteManyConfirm, { count: open.length });
-    if (!globalThis.confirm(message)) {
+    const confirmed = await adminConfirm({
+      title: this.t.deletePagesTitle,
+      message,
+      confirmLabel: this.t.deleteAction,
+      cancelLabel: this.t.cancel,
+      danger: true,
+    });
+    if (!confirmed) {
       return;
     }
     let done = 0;
@@ -2396,21 +2409,31 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
     return replaceLength !== 1;
   }
 
-  _applyReplace() {
+  async _applyReplace() {
     if (!this._canRunReplace()) {
       return;
     }
     const searchTerm = this._replaceFindText();
     const replacement = this.replaceValue ? this.replaceValue.trim() : "";
-    const confirmation = globalThis.confirm(this.t.bulkReplaceConfirm);
+    const confirmation = await adminConfirm({
+      title: this.t.replaceTitle,
+      message: this.t.bulkReplaceConfirm,
+      confirmLabel: this.t.replace,
+      cancelLabel: this.t.cancel,
+      danger: true,
+    });
     if (!confirmation) {
       return;
     }
     let emptyReplacementConfirmed = false;
     if (replacement === "") {
-      emptyReplacementConfirmed = globalThis.confirm(
-        this.t.emptyReplacementConfirm,
-      );
+      emptyReplacementConfirmed = await adminConfirm({
+        title: this.t.removeMatchesTitle,
+        message: this.t.emptyReplacementConfirm,
+        confirmLabel: this.t.removeAction,
+        cancelLabel: this.t.cancel,
+        danger: true,
+      });
       if (!emptyReplacementConfirmed) {
         return;
       }

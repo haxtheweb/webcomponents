@@ -124,5 +124,13 @@
   "showApiKeyValue": "Sýna gildi API-lykils",
   "noSettingsForPanel": "Engar stillingar í boði fyrir þetta spjald enn.",
   "saving": "Vista…",
-  "save": "Vista"
+  "save": "Vista",
+  "dropSkeletonFile": "Slepptu sniðmáti .json hér eða",
+  "browseFiles": "Vafra",
+  "skeletonUploadNote": "Hægt er að endurnefna eða eyða upphlöðnum sniðmátum; aðeins er hægt að slökkva á kjarnasniðmátum.",
+  "skeletonName": "Heiti sniðmáts",
+  "renameAction": "Endurnefna",
+  "deleteSkeletonTitle": "Eyða sniðmáti",
+  "deleteAction": "Eyða",
+  "cancel": "Hætta við"
 }

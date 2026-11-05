@@ -124,5 +124,13 @@
   "showApiKeyValue": "API ачкычы кыйммәтен күрсәтү",
   "noSettingsForPanel": "Бу панель өчен әлегә көйләүләр юк.",
   "saving": "Саклана…",
-  "save": "Саклау"
+  "save": "Саклау",
+  "dropSkeletonFile": "Скелет .json файлын монда ташлагыз яки",
+  "browseFiles": "Карап чыгу",
+  "skeletonUploadNote": "Йөкләнгән скелетларның исемен үзгәртергә яки аларны бетерергә була; төп скелетларны бары тик сүндерергә генә була.",
+  "skeletonName": "Скелет исеме",
+  "renameAction": "Исемен үзгәртү",
+  "deleteSkeletonTitle": "Скелетны бетерү",
+  "deleteAction": "Бетерү",
+  "cancel": "Баш тарту"
 }

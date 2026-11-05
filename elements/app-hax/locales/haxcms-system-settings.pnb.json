@@ -124,5 +124,13 @@
   "showApiKeyValue": "API کنجی دی قدر وکھاؤ",
   "noSettingsForPanel": "ایس پینل لئی حالے کوئی ترتیب دستیاب نئیں۔",
   "saving": "محفوظ ہو رہیا اے…",
-  "save": "محفوظ کرو"
+  "save": "محفوظ کرو",
+  "dropSkeletonFile": "سکیلیٹن .json ایتھے سٹو یا",
+  "browseFiles": "براؤز کرو",
+  "skeletonUploadNote": "اپلوڈ کیتے سکیلیٹناں دا ناں بدلیا یا اوہناں نوں مٹایا جا سکدا اے؛ بنیادی سکیلیٹن صرف بند کیتے جا سکدے نیں۔",
+  "skeletonName": "سکیلیٹن دا ناں",
+  "renameAction": "ناں بدلو",
+  "deleteSkeletonTitle": "سکیلیٹن مٹاؤ",
+  "deleteAction": "مٹاؤ",
+  "cancel": "منسوخ کرو"
 }

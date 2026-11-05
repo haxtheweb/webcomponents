@@ -57,5 +57,12 @@
   "expandAll": "Vou alles uit",
   "displayMode1": "Modus 1",
   "displayMode2": "Modus 2",
-  "twoWindows": "Twee vensters"
+  "twoWindows": "Twee vensters",
+  "notGraded": "Nie gegradeer nie",
+  "gradeValue": "{score} van {points}",
+  "studentPosition": "Student {current} / {total}",
+  "rosterCaption": "Studente: {students} · Take: {assignments}",
+  "gridInstructions": "Pyltoetse beweeg tussen punte, Enter maak gradering oop",
+  "totalScore": "Totale telling",
+  "lockTotalScore": "Sluit totale telling"
 }

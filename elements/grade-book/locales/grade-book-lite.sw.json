@@ -57,5 +57,12 @@
   "expandAll": "Panua zote",
   "displayMode1": "Hali 1",
   "displayMode2": "Hali 2",
-  "twoWindows": "Madirisha mawili"
+  "twoWindows": "Madirisha mawili",
+  "notGraded": "Haijapewa alama",
+  "gradeValue": "{score} kati ya {points}",
+  "studentPosition": "Mwanafunzi {current} / {total}",
+  "rosterCaption": "Wanafunzi: {students} · Kazi: {assignments}",
+  "gridInstructions": "Vitufe vya mshale husogeza kati ya alama, Enter hufungua utoaji alama",
+  "totalScore": "Jumla ya alama",
+  "lockTotalScore": "Funga jumla ya alama"
 }

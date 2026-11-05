@@ -75,5 +75,11 @@
   "selectFile": "{name} auswielen",
   "copyPath": "Pad kopéieren",
   "pathCopied": "Pad kopéiert",
-  "embedInPage": "An d'Säit abannen"
+  "embedInPage": "An d'Säit abannen",
+  "deleteFilesTitle": "Fichieren läschen",
+  "renameFilesTitle": "Fichieren ëmbenennen",
+  "replaceOriginalsTitle": "Original-Fichieren ersetzen",
+  "newName": "Neien Numm",
+  "deleteAction": "Läschen",
+  "renameAction": "Ëmbenennen"
 }

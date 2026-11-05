@@ -124,5 +124,13 @@
   "showApiKeyValue": "Tunjukkan nilai kunci API",
   "noSettingsForPanel": "Belum ada tetapan tersedia untuk panel ini.",
   "saving": "Menyimpan…",
-  "save": "Simpan"
+  "save": "Simpan",
+  "dropSkeletonFile": "Lepaskan fail .json rangka di sini atau",
+  "browseFiles": "Semak imbas",
+  "skeletonUploadNote": "Rangka yang dimuat naik boleh dinamakan semula atau dipadam; rangka teras hanya boleh dimatikan.",
+  "skeletonName": "Nama rangka",
+  "renameAction": "Namakan semula",
+  "deleteSkeletonTitle": "Padam rangka",
+  "deleteAction": "Padam",
+  "cancel": "Batal"
 }

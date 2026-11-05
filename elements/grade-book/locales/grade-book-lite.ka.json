@@ -57,5 +57,12 @@
   "expandAll": "ყველას გაშლა",
   "displayMode1": "რეჟიმი 1",
   "displayMode2": "რეჟიმი 2",
-  "twoWindows": "ორი ფანჯარა"
+  "twoWindows": "ორი ფანჯარა",
+  "notGraded": "არ არის შეფასებული",
+  "gradeValue": "{score} {points}-დან",
+  "studentPosition": "სტუდენტი {current} / {total}",
+  "rosterCaption": "სტუდენტები: {students} · დავალებები: {assignments}",
+  "gridInstructions": "ისრიანი ღილაკებით გადაადგილდებით შეფასებებს შორის, Enter ხსნის შეფასებას",
+  "totalScore": "საერთო ქულა",
+  "lockTotalScore": "საერთო ქულის დაბლოკვა"
 }

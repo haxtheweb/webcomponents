@@ -124,5 +124,13 @@
   "showApiKeyValue": "Ցույց տալ API բանալու արժեքը",
   "noSettingsForPanel": "Այս վահանակի համար դեռ կարգավորումներ հասանելի չեն.",
   "saving": "Պահպանվում է…",
-  "save": "Պահպանել"
+  "save": "Պահպանել",
+  "dropSkeletonFile": "Քաշեք այստեղ կմախքի .json ֆայլը կամ",
+  "browseFiles": "Զննել",
+  "skeletonUploadNote": "Վերբեռնված կմախքները կարելի է վերանվանել կամ ջնջել, իսկ հիմնական կմախքները կարելի է միայն անջատել։",
+  "skeletonName": "Կմախքի անունը",
+  "renameAction": "Վերանվանել",
+  "deleteSkeletonTitle": "Ջնջել կմախքը",
+  "deleteAction": "Ջնջել",
+  "cancel": "Չեղարկել"
 }

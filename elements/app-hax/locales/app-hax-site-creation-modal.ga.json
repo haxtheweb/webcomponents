@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Cruthaíodh an Suíomh go Rathúil!",
   "newSiteReady": "Tá do shuíomh nua \"{siteName}\" réidh le húsáid.",
   "stayHere": "Fan Anseo",
-  "goToSite": "Téigh chuig an Suíomh"
+  "goToSite": "Téigh chuig an Suíomh",
+  "stepOf": "Céim {step} as {total}"
 }

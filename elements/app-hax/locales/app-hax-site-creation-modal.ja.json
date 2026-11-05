@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "サイトを作成しました!",
   "newSiteReady": "新しいサイト「{siteName}」を使用する準備ができました。",
   "stayHere": "ここにとどまる",
-  "goToSite": "サイトへ移動"
+  "goToSite": "サイトへ移動",
+  "stepOf": "ステップ {step} / {total}"
 }

@@ -124,5 +124,13 @@
   "showApiKeyValue": "Taispeáin luach na heochrach API",
   "noSettingsForPanel": "Níl socruithe ar fáil don phainéal seo fós.",
   "saving": "Á shábháil…",
-  "save": "Sábháil"
+  "save": "Sábháil",
+  "dropSkeletonFile": "Scaoil creatlach .json anseo nó",
+  "browseFiles": "Brabhsáil",
+  "skeletonUploadNote": "Is féidir creatlacha uaslódáilte a athainmniú nó a scriosadh; ní féidir ach creatlacha croí a mhúchadh.",
+  "skeletonName": "Ainm na creatlaí",
+  "renameAction": "Athainmnigh",
+  "deleteSkeletonTitle": "Scrios creatlach",
+  "deleteAction": "Scrios",
+  "cancel": "Cealaigh"
 }

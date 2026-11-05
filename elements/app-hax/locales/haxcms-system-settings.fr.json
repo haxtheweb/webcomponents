@@ -124,5 +124,13 @@
   "showApiKeyValue": "Afficher la valeur de la clé API",
   "noSettingsForPanel": "Aucun paramètre n'est encore disponible pour ce panneau.",
   "saving": "Enregistrement…",
-  "save": "Enregistrer"
+  "save": "Enregistrer",
+  "dropSkeletonFile": "Déposez un squelette .json ou",
+  "browseFiles": "Parcourir",
+  "skeletonUploadNote": "Les squelettes importés peuvent être renommés ou supprimés ; les squelettes de base peuvent seulement être désactivés.",
+  "skeletonName": "Nom du squelette",
+  "renameAction": "Renommer",
+  "deleteSkeletonTitle": "Supprimer le squelette",
+  "deleteAction": "Supprimer",
+  "cancel": "Annuler"
 }

@@ -1,4 +1,5 @@
 import { html, css } from "lit";
+import { adminPrompt } from "./admin/haxcms-admin-confirm.js";
 import { store } from "./haxcms-site-store.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { autorun, toJS } from "mobx";
@@ -40,6 +41,7 @@ import { SiteView } from "../ui-components/magic/site-view.js";
 import { haxcmsApiMessage } from "./utils/HAXCMSApiMessages.js";
 import { urlHostMatches } from "./utils/urlHost.js";
 import { trimSlashes } from "@haxtheweb/utils/lib/safe-html.js";
+import { settleOnce } from "@haxtheweb/utils/lib/events.js";
 import {
   SITE_ADMIN_MODAL_STYLES,
   SITE_ADMIN_CONFIRM_STYLES,
@@ -1757,7 +1759,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       "haxcms-docx-import-items": "_openImportHierarchyFromEvent",
       "haxcms-outline-import-request": "_selectFileForHierarchyImport",
       "hax-drop-focus-event": "_expandSettingsPanel",
-      "jwt-logged-in": "_jwtLoggedIn",
       popstate: "_adminRoutePopState",
       "simple-modal-breadcrumb-click": "_simpleModalBreadcrumbClick",
       "simple-modal-closed": "_simpleModalClosed",
@@ -1970,6 +1971,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         '"{title}" will be removed from the outline but its content stays on the file system.',
       permanentlyDeleteThisPage: "Permanently delete this page?",
       enterTitleForDuplicatedPage: "Enter title for duplicated page:",
+      duplicatePageTitle: "Duplicate page",
+      duplicateAction: "Duplicate",
+      newPageTitle: "Title",
+      importFromUrlTitle: "Import from a URL",
+      urlLabel: "URL",
       titleCopy: "{title} (copy)",
       importLabel: "Import",
       pasteUrlToImport: "Paste URL to import:",
@@ -2930,8 +2936,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       selectPage: "Select page",
       siteDashboard: "Sites Dashboard",
       cancel: "Cancel",
-      unsavedChangesWillBeLostIfSelectingOkAreYouSure:
-        "Unsaved changes will be lost if you select OK. Are you sure?",
+      unsavedPageChangesWillBeLost:
+        "Your unsaved changes to this page will be lost.",
+      discardChanges: "Discard changes",
+      keepEditing: "Keep editing",
       editDetails: "Page details",
       add: "Add",
       source: "Source",
@@ -3823,25 +3831,34 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
   }
 
+  /**
+   * Log out from the editor menu, then reload once the server has answered
+   * the logout. jwt-login clears the local token first, so reloading on
+   * jwt-logged-in false (as this used to) could cut the logout request off
+   * and leave the refresh cookie alive, logging the user straight back in
+   * (haxtheweb/issues#3209 item 5, already fixed the same way in app-hax).
+   * Falls back to a timed reload if no jwt-login-logout-complete arrives.
+   */
   _logout() {
+    if (this.__logoutReloadPending) {
+      return;
+    }
+    this.__logoutReloadPending = true;
+    settleOnce("jwt-login-logout-complete", 5000, () =>
+      this._reloadAfterLogout(),
+    );
     globalThis.dispatchEvent(
       new CustomEvent("jwt-login-logout", {
         composed: true,
         bubbles: true,
         cancelable: false,
-        detail: true,
+        detail: { redirect: false },
       }),
     );
-    this.__logoutUserAction = true;
   }
-  // only care about logouts
-  _jwtLoggedIn(e) {
-    if (e.detail === false && this.__logoutUserAction) {
-      this.__logoutUserAction = false;
-      setTimeout(() => {
-        globalThis.location.reload();
-      }, 100);
-    }
+  _reloadAfterLogout() {
+    this.__logoutReloadPending = false;
+    globalThis.location.reload();
   }
 
   firstUpdated(changedProperties) {
@@ -6998,7 +7015,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     return key && this.t[key] ? this.t[key] : sectionTitle;
   }
   _siteSettingsTrailTitle(sectionTitle) {
-    return `${this.t.siteSettings} > ${this._sectionLabel(sectionTitle)}`;
+    return `${this.t.siteSettings} / ${this._sectionLabel(sectionTitle)}`;
   }
   _siteSettingsBreadcrumbMeta(
     sectionTitle,
@@ -7288,10 +7305,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   }
   _confirmCancelEditing(e) {
     let confirmDialog = globalThis.document.createElement("hax-confirm-dialog");
-    confirmDialog.message =
-      this.t.unsavedChangesWillBeLostIfSelectingOkAreYouSure;
-    confirmDialog.confirmLabel = this.t.ok;
-    confirmDialog.cancelLabel = this.t.cancel;
+    confirmDialog.message = this.t.unsavedPageChangesWillBeLost;
+    confirmDialog.confirmLabel = this.t.discardChanges;
+    confirmDialog.cancelLabel = this.t.keepEditing;
     confirmDialog.destructive = true;
     confirmDialog.closeOnConfirm = false;
     confirmDialog.confirmCallback = () => this._cancelEditing(e);
@@ -7450,14 +7466,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   /**
    * Duplicate page prompt
    */
-  _duplicatePagePrompt(_e) {
+  async _duplicatePagePrompt(_e) {
     const activeItem = toJS(store.activeItem);
     if (!activeItem || !activeItem.id) return;
 
-    const newTitle = globalThis.prompt(
-      this.t.enterTitleForDuplicatedPage,
-      this.t.titleCopy.replace("{title}", () => activeItem.title),
-    );
+    const newTitle = await adminPrompt({
+      title: this.t.duplicatePageTitle,
+      message: this.t.enterTitleForDuplicatedPage,
+      label: this.t.newPageTitle,
+      value: this.t.titleCopy.replace("{title}", () => activeItem.title),
+      required: true,
+      confirmLabel: this.t.duplicateAction,
+      cancelLabel: this.t.cancel,
+    });
     if (newTitle && newTitle.trim() !== "") {
       store.playSound("click");
       const SuperDaemonInstance =
@@ -8003,9 +8024,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             detail: {},
           }),
         );
-        let urlInput = "";
-        setTimeout(() => {
-          urlInput = globalThis.prompt(this.t.pasteUrlToImport, "");
+        setTimeout(async () => {
+          const urlInput = await adminPrompt({
+            title: this.t.importFromUrlTitle,
+            label: this.t.pasteUrlToImport,
+            placeholder: "https://",
+            required: true,
+            confirmLabel: this.t.importLabel,
+            cancelLabel: this.t.cancel,
+          });
           if (typeof urlInput !== "string" || urlInput.trim() === "") {
             return;
           }

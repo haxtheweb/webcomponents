@@ -1160,7 +1160,7 @@
       "title": "",
       "description": "",
       "package": "@haxtheweb/d-d-d",
-      "import": "@haxtheweb/d-d-d/d-d-d.js",
+      "import": "@haxtheweb/d-d-d/lib/d-d-d-sample.js",
       "type": "element",
       "haxCapable": false,
       "tags": []
@@ -2232,6 +2232,16 @@
       "description": "Area 9 of the admin layout, the add area of the record panels that take new records (Content, Files; Structure only arranges pages): a dashed drop zone at the top right of the page header. Dropping files on it, or choosing them with Browse, fires admin-add-files with { files, event }; the panel t...",
       "package": "@haxtheweb/haxcms-elements",
       "import": "@haxtheweb/haxcms-elements/lib/core/admin/haxcms-admin-add-area.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "haxcms-admin-confirm",
+      "title": "",
+      "description": "The HAX UI confirm and prompt: the in-app replacement for the browser's confirm() and prompt(). It draws the same card as the site admin dialog's leave prompt (title, short message, actions at the bottom right, the safe choice focused) on a native modal <dialog>, so it sits above any open admin d...",
+      "package": "@haxtheweb/haxcms-elements",
+      "import": "@haxtheweb/haxcms-elements/lib/core/admin/haxcms-admin-confirm.js",
       "type": "element",
       "haxCapable": false,
       "tags": []
@@ -5052,6 +5062,16 @@
       "haxCapable": false,
       "tags": [],
       "walkthrough": true
+    },
+    {
+      "tag": "simple-icon-select",
+      "title": "",
+      "description": "A searchable select list of icons where every option shows the icon plus its name (modeled on the Merlin icon program results). Like a native select, the dropdown floats over the page (top layer when supported, position: fixed otherwise) anchored to the field, so it never changes the surrounding...",
+      "package": "@haxtheweb/simple-icon-picker",
+      "import": "@haxtheweb/simple-icon-picker/lib/simple-icon-select.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
     },
     {
       "tag": "simple-iconset",

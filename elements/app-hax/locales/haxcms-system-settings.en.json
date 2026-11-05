@@ -124,5 +124,13 @@
   "showApiKeyValue": "Show API key value",
   "noSettingsForPanel": "No settings available for this panel yet.",
   "saving": "Saving…",
-  "save": "Save"
+  "save": "Save",
+  "dropSkeletonFile": "Drop a skeleton .json or",
+  "browseFiles": "Browse",
+  "skeletonUploadNote": "Uploaded skeletons can be renamed or deleted; core skeletons can only be turned off.",
+  "skeletonName": "Skeleton name",
+  "renameAction": "Rename",
+  "deleteSkeletonTitle": "Delete skeleton",
+  "deleteAction": "Delete",
+  "cancel": "Cancel"
 }

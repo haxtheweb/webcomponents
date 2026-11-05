@@ -100,5 +100,6 @@
   "vitepressImportDescription": "VitePress dokumentációs tároló importálása új HAX webhelybe",
   "vitepressImportPrompt": "A VitePress git-tároló URL-je",
   "quartoImportDescription": "Quarto dokumentációs tároló importálása új HAX webhelybe",
-  "quartoImportPrompt": "A Quarto git-tároló URL-je"
+  "quartoImportPrompt": "A Quarto git-tároló URL-je",
+  "cancel": "Mégse"
 }

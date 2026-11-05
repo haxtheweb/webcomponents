@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "站点创建成功！",
   "newSiteReady": "你的新站点“{siteName}”已可以使用。",
   "stayHere": "留在此处",
-  "goToSite": "前往站点"
+  "goToSite": "前往站点",
+  "stepOf": "第 {step} 步，共 {total} 步"
 }

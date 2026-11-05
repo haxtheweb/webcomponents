@@ -57,5 +57,12 @@
   "expandAll": "ټول پراخ کړئ",
   "displayMode1": "حالت 1",
   "displayMode2": "حالت 2",
-  "twoWindows": "دوه کړکۍ"
+  "twoWindows": "دوه کړکۍ",
+  "notGraded": "درجه نه ده ورکړل شوې",
+  "gradeValue": "{points} څخه {score}",
+  "studentPosition": "زده کوونکی {current} / {total}",
+  "rosterCaption": "زده کوونکي: {students} · دندې: {assignments}",
+  "gridInstructions": "د غشي کیلي د نمرو تر منځ ځي، Enter درجه بندي خلاصوي",
+  "totalScore": "ټوله نمره",
+  "lockTotalScore": "ټوله نمره بند کړئ"
 }

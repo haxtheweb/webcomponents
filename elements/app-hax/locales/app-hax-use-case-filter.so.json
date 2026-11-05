@@ -100,5 +100,6 @@
   "vitepressImportDescription": "Soo deji kayd dukumentiyo VitePress ah una geli goob HAX cusub",
   "vitepressImportPrompt": "URL-ka kaydka git ee VitePress",
   "quartoImportDescription": "Soo deji kayd dukumentiyo Quarto ah una geli goob HAX cusub",
-  "quartoImportPrompt": "URL-ka kaydka git ee Quarto"
+  "quartoImportPrompt": "URL-ka kaydka git ee Quarto",
+  "cancel": "Jooji"
 }

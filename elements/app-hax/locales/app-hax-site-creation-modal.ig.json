@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Emepụtala saịtị nke ọma!",
   "newSiteReady": "Saịtị ọhụrụ gị \"{siteName}\" adịla njikere maka iji.",
   "stayHere": "Nọrọ ebe a",
-  "goToSite": "Gaa na saịtị"
+  "goToSite": "Gaa na saịtị",
+  "stepOf": "Nzọụkwụ {step} n'ime {total}"
 }

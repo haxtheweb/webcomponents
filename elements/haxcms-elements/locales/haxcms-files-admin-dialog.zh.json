@@ -75,5 +75,11 @@
   "selectFile": "选择 {name}",
   "copyPath": "复制路径",
   "pathCopied": "路径已复制",
-  "embedInPage": "嵌入页面"
+  "embedInPage": "嵌入页面",
+  "deleteFilesTitle": "删除文件",
+  "renameFilesTitle": "重命名文件",
+  "replaceOriginalsTitle": "替换原始文件",
+  "newName": "新名称",
+  "deleteAction": "删除",
+  "renameAction": "重命名"
 }

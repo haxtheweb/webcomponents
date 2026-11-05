@@ -124,5 +124,13 @@
   "showApiKeyValue": "Bonisa ixabiso lesitshixo se-API",
   "noSettingsForPanel": "Akukho setingi zikhoyo kule phaneli okwangoku.",
   "saving": "Kuyagcinwa…",
-  "save": "Gcina"
+  "save": "Gcina",
+  "dropSkeletonFile": "Wisa ifayile ye-skeleton .json okanye",
+  "browseFiles": "Khangela",
+  "skeletonUploadNote": "Ii-skeleton ezilayishiweyo zingathiywa ngokutsha okanye zicinywe; ii-skeleton ezingundoqo zinokuvalwa kuphela.",
+  "skeletonName": "Igama le-skeleton",
+  "renameAction": "Thiya ngokutsha",
+  "deleteSkeletonTitle": "Cima i-skeleton",
+  "deleteAction": "Cima",
+  "cancel": "Rhoxisa"
 }

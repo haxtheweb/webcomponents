@@ -124,5 +124,13 @@
   "showApiKeyValue": "API kaliti qiymatini koʻrsatish",
   "noSettingsForPanel": "Bu panel uchun hali sozlamalar mavjud emas.",
   "saving": "Saqlanmoqda…",
-  "save": "Saqlash"
+  "save": "Saqlash",
+  "dropSkeletonFile": "Skelet .json faylini shu yerga tashlang yoki",
+  "browseFiles": "Koʻrib chiqish",
+  "skeletonUploadNote": "Yuklangan skeletlarni qayta nomlash yoki oʻchirish mumkin; asosiy skeletlarni faqat oʻchirib qoʻyish mumkin.",
+  "skeletonName": "Skelet nomi",
+  "renameAction": "Nomini oʻzgartirish",
+  "deleteSkeletonTitle": "Skeletni oʻchirish",
+  "deleteAction": "O‘chirish",
+  "cancel": "Bekor qilish"
 }

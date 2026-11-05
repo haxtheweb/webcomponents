@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Сайт амжилттай үүслээ!",
   "newSiteReady": "Таны шинэ \"{siteName}\" сайт ашиглахад бэлэн боллоо.",
   "stayHere": "Энд үлдэх",
-  "goToSite": "Сайт руу очих"
+  "goToSite": "Сайт руу очих",
+  "stepOf": "Алхам {step}/{total}"
 }

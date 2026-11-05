@@ -75,5 +75,11 @@
   "selectFile": "Përzgjidh {name}",
   "copyPath": "Kopjo shtegun",
   "pathCopied": "Shtegu u kopjua",
-  "embedInPage": "Ngulit në faqe"
+  "embedInPage": "Ngulit në faqe",
+  "deleteFilesTitle": "Fshi skedarët",
+  "renameFilesTitle": "Riemërto skedarët",
+  "replaceOriginalsTitle": "Zëvendëso skedarët origjinalë",
+  "newName": "Emër i ri",
+  "deleteAction": "Fshi",
+  "renameAction": "Riemërto"
 }

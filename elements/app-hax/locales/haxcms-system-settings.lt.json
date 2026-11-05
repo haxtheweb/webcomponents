@@ -124,5 +124,13 @@
   "showApiKeyValue": "Rodyti API rakto reikšmę",
   "noSettingsForPanel": "Šiam skydeliui nustatymų dar nėra.",
   "saving": "Išsaugoma…",
-  "save": "Išsaugoti"
+  "save": "Išsaugoti",
+  "dropSkeletonFile": "Nutempkite karkaso .json failą arba",
+  "browseFiles": "Naršyti",
+  "skeletonUploadNote": "Įkeltus karkasus galima pervadinti arba ištrinti; pagrindinius karkasus galima tik išjungti.",
+  "skeletonName": "Karkaso pavadinimas",
+  "renameAction": "Pervadinti",
+  "deleteSkeletonTitle": "Ištrinti karkasą",
+  "deleteAction": "Ištrinti",
+  "cancel": "Atšaukti"
 }

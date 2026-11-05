@@ -124,5 +124,13 @@
   "showApiKeyValue": "Onyesha thamani ya ufunguo wa API",
   "noSettingsForPanel": "Bado hakuna mipangilio inayopatikana kwa paneli hii.",
   "saving": "Inahifadhi…",
-  "save": "Hifadhi"
+  "save": "Hifadhi",
+  "dropSkeletonFile": "Dondosha faili ya .json ya kiunzi au",
+  "browseFiles": "Vinjari",
+  "skeletonUploadNote": "Viunzi vilivyopakiwa vinaweza kubadilishwa jina au kufutwa; viunzi vya msingi vinaweza tu kuzimwa.",
+  "skeletonName": "Jina la kiunzi",
+  "renameAction": "Badilisha jina",
+  "deleteSkeletonTitle": "Futa kiunzi",
+  "deleteAction": "Futa",
+  "cancel": "Ghairi"
 }

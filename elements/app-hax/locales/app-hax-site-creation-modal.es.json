@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "¡Sitio creado correctamente!",
   "newSiteReady": "Tu nuevo sitio \"{siteName}\" está listo para usar.",
   "stayHere": "Quedarme aquí",
-  "goToSite": "Ir al sitio"
+  "goToSite": "Ir al sitio",
+  "stepOf": "Paso {step} de {total}"
 }

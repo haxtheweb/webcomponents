@@ -124,5 +124,13 @@
   "showApiKeyValue": "Ratidza kukosha kweAPI key",
   "noSettingsForPanel": "Hapana marongerwo aripo epaneru iyi parizvino.",
   "saving": "Kuchengeta…",
-  "save": "Chengeta"
+  "save": "Chengeta",
+  "dropSkeletonFile": "Isa skeleton .json pano kana",
+  "browseFiles": "Tsvaga",
+  "skeletonUploadNote": "Maskeleton akaiswa anogona kutumidzwa mazita matsva kana kudzimwa; maskeleton makuru anogona kumiswa basa chete.",
+  "skeletonName": "Zita reskeleton",
+  "renameAction": "Tumidza zita idzva",
+  "deleteSkeletonTitle": "Dzima skeleton",
+  "deleteAction": "Dzima",
+  "cancel": "Kanzura"
 }

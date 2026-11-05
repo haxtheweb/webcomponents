@@ -75,5 +75,11 @@
   "selectFile": "Tīpako {name}",
   "copyPath": "Tārua ara",
   "pathCopied": "Kua tāruatia te ara",
-  "embedInPage": "Tāmau ki te whārangi"
+  "embedInPage": "Tāmau ki te whārangi",
+  "deleteFilesTitle": "Muku kōnae",
+  "renameFilesTitle": "Whakaingoa anō kōnae",
+  "replaceOriginalsTitle": "Whakakapi i ngā kōnae taketake",
+  "newName": "Ingoa hou",
+  "deleteAction": "Muku",
+  "renameAction": "Whakaingoa anō"
 }

@@ -124,5 +124,13 @@
   "showApiKeyValue": "Vis API-nøglens værdi",
   "noSettingsForPanel": "Der er ingen tilgængelige indstillinger for dette panel endnu.",
   "saving": "Gemmer…",
-  "save": "Gem"
+  "save": "Gem",
+  "dropSkeletonFile": "Slip et skelet som .json eller",
+  "browseFiles": "Gennemse",
+  "skeletonUploadNote": "Uploadede skeletter kan omdøbes eller slettes; kerneskeletter kan kun slås fra.",
+  "skeletonName": "Skeletnavn",
+  "renameAction": "Omdøb",
+  "deleteSkeletonTitle": "Slet skelet",
+  "deleteAction": "Slet",
+  "cancel": "Annuller"
 }

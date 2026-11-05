@@ -75,5 +75,11 @@
   "selectFile": "ເລືອກ {name}",
   "copyPath": "ສຳເນົາເສັ້ນທາງ",
   "pathCopied": "ສຳເນົາເສັ້ນທາງແລ້ວ",
-  "embedInPage": "ຝັງໃນໜ້າ"
+  "embedInPage": "ຝັງໃນໜ້າ",
+  "deleteFilesTitle": "ລຶບໄຟລ໌",
+  "renameFilesTitle": "ປ່ຽນຊື່ໄຟລ໌",
+  "replaceOriginalsTitle": "ແທນທີ່ໄຟລ໌ຕົ້ນສະບັບ",
+  "newName": "ຊື່ໃໝ່",
+  "deleteAction": "ລຶບ",
+  "renameAction": "ປ່ຽນຊື່"
 }

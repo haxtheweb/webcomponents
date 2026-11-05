@@ -57,5 +57,12 @@
   "expandAll": "Hemûyan veke",
   "displayMode1": "Mod 1",
   "displayMode2": "Mod 2",
-  "twoWindows": "Du pencere"
+  "twoWindows": "Du pencere",
+  "notGraded": "Nehatiye nirxandin",
+  "gradeValue": "{score} ji {points}",
+  "studentPosition": "Xwendekar {current} / {total}",
+  "rosterCaption": "Xwendekar: {students} · Peywir: {assignments}",
+  "gridInstructions": "Bişkojkên tîrê di navbera nirxan de digerin, Enter nirxandinê vedike",
+  "totalScore": "Nirxa giştî",
+  "lockTotalScore": "Nirxa giştî qefl bike"
 }

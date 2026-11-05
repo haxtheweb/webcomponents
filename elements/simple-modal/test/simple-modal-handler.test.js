@@ -83,6 +83,30 @@ describe("SimpleModalHandler mixin", () => {
     expect(captured.cancelable).to.be.true;
   });
 
+  it("sends no title icon by default", async () => {
+    await aTimeout(10);
+    let captured = null;
+    element.addEventListener("simple-modal-show", (e) => {
+      captured = e;
+    });
+    element.click();
+    expect(captured.detail.titleIcon).to.equal(null);
+  });
+
+  it("uses the element's modalStyles and modalTitleIcon when set", async () => {
+    await aTimeout(10);
+    const styles = { "--simple-modal-titlebar-height": "48px" };
+    element.modalStyles = styles;
+    element.modalTitleIcon = "image:photo";
+    let captured = null;
+    element.addEventListener("simple-modal-show", (e) => {
+      captured = e;
+    });
+    element.click();
+    expect(captured.detail.styles).to.equal(styles);
+    expect(captured.detail.titleIcon).to.equal("image:photo");
+  });
+
   it("uses empty-string title and null content defaults when unset", async () => {
     await aTimeout(10);
     let captured = null;

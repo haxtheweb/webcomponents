@@ -124,5 +124,13 @@
   "showApiKeyValue": "Wäert vum API-Schlëssel weisen",
   "noSettingsForPanel": "Fir dëse Panel ginn et nach keng Astellungen.",
   "saving": "Gëtt gespäichert…",
-  "save": "Späicheren"
+  "save": "Späicheren",
+  "dropSkeletonFile": "Skelett-.json hei ofleeën oder",
+  "browseFiles": "Duerchsichen",
+  "skeletonUploadNote": "Eropgeluede Skeletter kënnen ëmbenannt oder geläscht ginn; Kär-Skeletter kënnen nëmmen ausgeschalt ginn.",
+  "skeletonName": "Numm vum Skelett",
+  "renameAction": "Ëmbenennen",
+  "deleteSkeletonTitle": "Skelett läschen",
+  "deleteAction": "Läschen",
+  "cancel": "Ofbriechen"
 }

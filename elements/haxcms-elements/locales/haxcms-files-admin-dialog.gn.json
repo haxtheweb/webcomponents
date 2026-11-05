@@ -75,5 +75,11 @@
   "selectFile": "Eiporavo {name}",
   "copyPath": "Emonguatia rape",
   "pathCopied": "Tape oñemonguatia",
-  "embedInPage": "Emoĩ kuatiaroguépe"
+  "embedInPage": "Emoĩ kuatiaroguépe",
+  "deleteFilesTitle": "Emboguete marandurenda",
+  "renameFilesTitle": "Embohéra pyahu marandurenda",
+  "replaceOriginalsTitle": "Emyengovia marandurenda ypyguáva",
+  "newName": "Téra pyahu",
+  "deleteAction": "Mboguete",
+  "renameAction": "Embohéra pyahu"
 }

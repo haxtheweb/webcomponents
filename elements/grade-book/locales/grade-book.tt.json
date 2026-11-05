@@ -60,5 +60,12 @@
   "downloadPDF": "PDF йөкләп алу",
   "displayMode1": "1 нче режим",
   "displayMode2": "2 нче режим",
-  "twoWindows": "Ике тәрәзә"
+  "twoWindows": "Ике тәрәзә",
+  "notGraded": "Бәяләнмәгән",
+  "gradeValue": "{points} эчендә {score}",
+  "studentPosition": "Студент {current} / {total}",
+  "rosterCaption": "Студентлар: {students} · Биремнәр: {assignments}",
+  "gridInstructions": "Угалар төймәләре бәяләр арасында йөри, Enter бәяләүне ача",
+  "totalScore": "Гомуми балл",
+  "lockTotalScore": "Гомуми баллны бикләү"
 }

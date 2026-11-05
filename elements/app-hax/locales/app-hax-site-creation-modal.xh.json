@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "ISayithi Yenziwe Ngempumelelo!",
   "newSiteReady": "Isayithi yakho entsha ethi \"{siteName}\" ilungele ukusetyenziswa.",
   "stayHere": "Hlala Apha",
-  "goToSite": "Yiya kwiSayithi"
+  "goToSite": "Yiya kwiSayithi",
+  "stepOf": "Inyathelo {step} kwa-{total}"
 }

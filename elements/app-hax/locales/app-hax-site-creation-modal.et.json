@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Sait loodi edukalt!",
   "newSiteReady": "Sinu uus sait „{siteName}” on kasutamiseks valmis.",
   "stayHere": "Jää siia",
-  "goToSite": "Mine saidile"
+  "goToSite": "Mine saidile",
+  "stepOf": "Samm {step}/{total}"
 }

@@ -124,5 +124,13 @@
   "showApiKeyValue": "បង្ហាញតម្លៃសោ API",
   "noSettingsForPanel": "មិនទាន់មានការកំណត់សម្រាប់ផ្ទាំងនេះនៅឡើយទេ។",
   "saving": "កំពុងរក្សាទុក…",
-  "save": "រក្សាទុក"
+  "save": "រក្សាទុក",
+  "dropSkeletonFile": "ទម្លាក់គំរូ .json នៅទីនេះ ឬ",
+  "browseFiles": "រុករក",
+  "skeletonUploadNote": "គំរូដែលបានផ្ទុកឡើងអាចប្ដូរឈ្មោះ ឬលុបបាន។ គំរូស្នូលអាចត្រឹមតែបិទប៉ុណ្ណោះ។",
+  "skeletonName": "ឈ្មោះគំរូ",
+  "renameAction": "ប្ដូរឈ្មោះ",
+  "deleteSkeletonTitle": "លុបគំរូ",
+  "deleteAction": "លុប",
+  "cancel": "បោះបង់"
 }

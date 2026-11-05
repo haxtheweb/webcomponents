@@ -100,5 +100,6 @@
   "vitepressImportDescription": "拿 VitePress 文档仓库导入到新个 HAX 网站",
   "vitepressImportPrompt": "VitePress git 仓库个 URL",
   "quartoImportDescription": "拿 Quarto 文档仓库导入到新个 HAX 网站",
-  "quartoImportPrompt": "Quarto git 仓库个 URL"
+  "quartoImportPrompt": "Quarto git 仓库个 URL",
+  "cancel": "取消"
 }

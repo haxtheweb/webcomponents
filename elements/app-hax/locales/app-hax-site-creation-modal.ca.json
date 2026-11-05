@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Lloc creat correctament!",
   "newSiteReady": "El teu lloc nou \"{siteName}\" està a punt per fer-se servir.",
   "stayHere": "Queda't aquí",
-  "goToSite": "Ves al lloc"
+  "goToSite": "Ves al lloc",
+  "stepOf": "Pas {step} de {total}"
 }
