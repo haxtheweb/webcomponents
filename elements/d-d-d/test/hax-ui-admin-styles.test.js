@@ -32,6 +32,11 @@ class HaxUiAdminStylesProbe extends LitElement {
     return html`
       <button class="hax-ui-btn" id="secondary">Cancel</button>
       <button class="hax-ui-btn primary" id="primary">Save</button>
+      <button class="hax-ui-btn danger" id="danger">Delete page</button>
+      <button class="hax-ui-btn danger-fill" id="danger-fill">Delete</button>
+      <button class="hax-ui-btn danger" id="danger-off" disabled>
+        Delete page
+      </button>
       <button class="hax-ui-icon-btn" id="icon" aria-label="Close"></button>
       <input class="hax-ui-input" id="field" aria-label="Title" />
       <input class="hax-ui-input compact" id="compact" aria-label="Search" />
@@ -175,6 +180,25 @@ describe("HaxUiAdminStyles: the one HAX UI admin layer", () => {
       Math.round(b.getBoundingClientRect().width),
     );
     expect(Math.max(...widths) - Math.min(...widths)).to.be.at.most(1);
+  });
+
+  it("danger buttons carry the hatch so they read apart from primary without color", () => {
+    // haxtheweb/issues#3219: primary and danger-fill are under 3:1 apart by
+    // luminance, so the texture is what separates them in greyscale
+    expect(style("danger").backgroundImage).to.include(
+      "repeating-linear-gradient",
+    );
+    expect(style("danger-fill").backgroundImage).to.include(
+      "repeating-linear-gradient",
+    );
+    expect(style("primary").backgroundImage).to.equal("none");
+    expect(style("danger-off").backgroundImage).to.equal("none");
+  });
+
+  it("a pressed segment has an underline bar, not only a wash", () => {
+    const [on, off] = box("seg").querySelectorAll("button");
+    expect(globalThis.getComputedStyle(on).boxShadow).to.include("inset");
+    expect(globalThis.getComputedStyle(off).boxShadow).to.equal("none");
   });
 
   it("a pressed toggle chip takes the accent; an unpressed one is solid", () => {
