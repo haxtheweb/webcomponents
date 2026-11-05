@@ -36,7 +36,7 @@ describe("tagging-question xAPI", () => {
     );
     const events = [];
     el.addEventListener("user-engagement", (e) => events.push(e.detail));
-    el.checkAnswer();
+    await el.checkAnswer();
     await flush(120);
     expect(events.length).to.equal(1);
     const def = events[0].statement.object.definition;

@@ -232,7 +232,12 @@
                   "name": "_e"
                 }
               ],
-              "description": "Verify the answers of the user based on their saying\nthat they want to see how they did.",
+              "description": "Check the learner's answer. Returns a promise that resolves once the\ncheck has run (its user-engagement statement has been sent), which is\na frame later when a view transition animates it. Callers that only\nstart the check, like the button, can ignore it.",
+              "return": {
+                "type": {
+                  "text": "Promise<void>"
+                }
+              },
               "inheritedFrom": {
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"
@@ -306,8 +311,53 @@
             },
             {
               "kind": "method",
+              "name": "xapiComponents",
+              "parameters": [
+                {
+                  "name": "list",
+                  "description": "options (default: this.answers)",
+                  "optional": true,
+                  "type": {
+                    "text": "Array"
+                  }
+                }
+              ],
+              "description": "The authored options as xAPI interaction components, in authored order:\n[{ id, description, answer }] (see componentIds in",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "xapiComponentId",
+              "parameters": [
+                {
+                  "name": "option"
+                },
+                {
+                  "name": "components"
+                }
+              ],
+              "description": "Component id of an option (a displayed, selected or copied answer):\nmatched by its authored position, else by its text; \"\" when unknown",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "xapiDefinition",
+              "description": "xAPI object definition parts for this interaction:\n{ choices | source | target: [{ id, description }],\n  correctResponsesPattern: [string] }. Default (choice): every authored\noption a choice, the pattern the ids of the options marked correct.",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "learnerResponse",
-              "description": "The learner's current answer as text (xAPI result.response)",
+              "description": "The learner's current answer as xAPI result.response. Choice types: the\ncomponent ids of the selected options, in authored order, joined by\n\"[,]\" (the text lives in object.definition.choices).",
               "inheritedFrom": {
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"
@@ -396,6 +446,22 @@
             {
               "kind": "method",
               "name": "_clearLearnerProgress",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_dropRestored",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "forgetLearnerResponse",
               "inheritedFrom": {
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"
@@ -1513,7 +1579,7 @@
               }
             },
             {
-              "description": "on window when the visitor view loads. detail: { activityId, tag, record } where a listener sets record.",
+              "description": "on window when the visitor view loads. detail: { activityId, tag, record, legacyActivityId } where a listener sets record; legacyActivityId (only when it differs) is the id earlier versions keyed this question by, for a one time move of saved data. xAPI form (1.0.3 interaction activities): result.response holds component ids and object.definition holds the components (choices, source, target) and correctResponsesPattern; see xapiDefinition() / learnerResponse().",
               "name": "learner-progress-request",
               "inheritedFrom": {
                 "name": "QuestionElement",
@@ -1647,7 +1713,12 @@
                   "name": "_e"
                 }
               ],
-              "description": "Verify the answers of the user based on their saying\nthat they want to see how they did."
+              "description": "Check the learner's answer. Returns a promise that resolves once the\ncheck has run (its user-engagement statement has been sent), which is\na frame later when a view transition animates it. Callers that only\nstart the check, like the button, can ignore it.",
+              "return": {
+                "type": {
+                  "text": "Promise<void>"
+                }
+              }
             },
             {
               "kind": "method",
@@ -1685,8 +1756,41 @@
             },
             {
               "kind": "method",
+              "name": "xapiComponents",
+              "parameters": [
+                {
+                  "name": "list",
+                  "description": "options (default: this.answers)",
+                  "optional": true,
+                  "type": {
+                    "text": "Array"
+                  }
+                }
+              ],
+              "description": "The authored options as xAPI interaction components, in authored order:\n[{ id, description, answer }] (see componentIds in"
+            },
+            {
+              "kind": "method",
+              "name": "xapiComponentId",
+              "parameters": [
+                {
+                  "name": "option"
+                },
+                {
+                  "name": "components"
+                }
+              ],
+              "description": "Component id of an option (a displayed, selected or copied answer):\nmatched by its authored position, else by its text; \"\" when unknown"
+            },
+            {
+              "kind": "method",
+              "name": "xapiDefinition",
+              "description": "xAPI object definition parts for this interaction:\n{ choices | source | target: [{ id, description }],\n  correctResponsesPattern: [string] }. Default (choice): every authored\noption a choice, the pattern the ids of the options marked correct."
+            },
+            {
+              "kind": "method",
               "name": "learnerResponse",
-              "description": "The learner's current answer as text (xAPI result.response)"
+              "description": "The learner's current answer as xAPI result.response. Choice types: the\ncomponent ids of the selected options, in authored order, joined by\n\"[,]\" (the text lives in object.definition.choices)."
             },
             {
               "kind": "method",
@@ -1747,6 +1851,14 @@
             {
               "kind": "method",
               "name": "_clearLearnerProgress"
+            },
+            {
+              "kind": "method",
+              "name": "_dropRestored"
+            },
+            {
+              "kind": "method",
+              "name": "forgetLearnerResponse"
             },
             {
               "kind": "method",
@@ -2338,7 +2450,7 @@
               "description": "after a check. detail: { activityDisplay (\"answered\"), objectName, resultSuccess, statement (xAPI) }"
             },
             {
-              "description": "on window when the visitor view loads. detail: { activityId, tag, record } where a listener sets record.",
+              "description": "on window when the visitor view loads. detail: { activityId, tag, record, legacyActivityId } where a listener sets record; legacyActivityId (only when it differs) is the id earlier versions keyed this question by, for a one time move of saved data. xAPI form (1.0.3 interaction activities): result.response holds component ids and object.definition holds the components (choices, source, target) and correctResponsesPattern; see xapiDefinition() / learnerResponse().",
               "name": "learner-progress-request"
             }
           ],
@@ -2548,6 +2660,54 @@
       "exports": [
         {
           "kind": "js",
+          "name": "choiceResponse",
+          "declaration": {
+            "name": "choiceResponse",
+            "module": "@haxtheweb/user-action/lib/xapi.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "fillInItem",
+          "declaration": {
+            "name": "fillInItem",
+            "module": "@haxtheweb/user-action/lib/xapi.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "fillInResponse",
+          "declaration": {
+            "name": "fillInResponse",
+            "module": "@haxtheweb/user-action/lib/xapi.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "fillInText",
+          "declaration": {
+            "name": "fillInText",
+            "module": "@haxtheweb/user-action/lib/xapi.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "matchingResponse",
+          "declaration": {
+            "name": "matchingResponse",
+            "module": "@haxtheweb/user-action/lib/xapi.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "XAPI_ITEM_DELIMITER",
+          "declaration": {
+            "name": "XAPI_ITEM_DELIMITER",
+            "module": "@haxtheweb/user-action/lib/xapi.js"
+          }
+        },
+        {
+          "kind": "js",
           "name": "QuestionElement",
           "declaration": {
             "name": "QuestionElement",
@@ -2649,6 +2809,24 @@
             },
             {
               "kind": "method",
+              "name": "xapiDefinition",
+              "description": "xAPI object definition parts for this interaction:\n{ choices | source | target: [{ id, description }],\n  correctResponsesPattern: [string] }. Default (choice): every authored\noption a choice, the pattern the ids of the options marked correct.",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "learnerResponse",
+              "description": "The learner's current answer as xAPI result.response. Choice types: the\ncomponent ids of the selected options, in authored order, joined by\n\"[,]\" (the text lives in object.definition.choices).",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "_canRestoreGuess",
               "inheritedFrom": {
                 "name": "QuestionElement",
@@ -2663,6 +2841,14 @@
                   "name": "response"
                 }
               ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "forgetLearnerResponse",
               "inheritedFrom": {
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"
@@ -2906,7 +3092,12 @@
                   "name": "_e"
                 }
               ],
-              "description": "Verify the answers of the user based on their saying\nthat they want to see how they did.",
+              "description": "Check the learner's answer. Returns a promise that resolves once the\ncheck has run (its user-engagement statement has been sent), which is\na frame later when a view transition animates it. Callers that only\nstart the check, like the button, can ignore it.",
+              "return": {
+                "type": {
+                  "text": "Promise<void>"
+                }
+              },
               "inheritedFrom": {
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"
@@ -2980,8 +3171,35 @@
             },
             {
               "kind": "method",
-              "name": "learnerResponse",
-              "description": "The learner's current answer as text (xAPI result.response)",
+              "name": "xapiComponents",
+              "parameters": [
+                {
+                  "name": "list",
+                  "description": "options (default: this.answers)",
+                  "optional": true,
+                  "type": {
+                    "text": "Array"
+                  }
+                }
+              ],
+              "description": "The authored options as xAPI interaction components, in authored order:\n[{ id, description, answer }] (see componentIds in",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "xapiComponentId",
+              "parameters": [
+                {
+                  "name": "option"
+                },
+                {
+                  "name": "components"
+                }
+              ],
+              "description": "Component id of an option (a displayed, selected or copied answer):\nmatched by its authored position, else by its text; \"\" when unknown",
               "inheritedFrom": {
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"
@@ -3049,6 +3267,14 @@
             {
               "kind": "method",
               "name": "_clearLearnerProgress",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_dropRestored",
               "inheritedFrom": {
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"
@@ -4145,7 +4371,7 @@
               }
             },
             {
-              "description": "on window when the visitor view loads. detail: { activityId, tag, record } where a listener sets record.",
+              "description": "on window when the visitor view loads. detail: { activityId, tag, record, legacyActivityId } where a listener sets record; legacyActivityId (only when it differs) is the id earlier versions keyed this question by, for a one time move of saved data. xAPI form (1.0.3 interaction activities): result.response holds component ids and object.definition holds the components (choices, source, target) and correctResponsesPattern; see xapiDefinition() / learnerResponse().",
               "name": "learner-progress-request",
               "inheritedFrom": {
                 "name": "QuestionElement",
@@ -4194,6 +4420,46 @@
               "static": true,
               "description": "xAPI statements this element sends (see scripts/generate-xapi-vocabulary.mjs)",
               "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_xapiLiteral",
+              "parameters": [
+                {
+                  "name": "option"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "xapiDefinition",
+              "description": "xAPI object definition parts for this interaction:\n{ choices | source | target: [{ id, description }],\n  correctResponsesPattern: [string] }. Default (choice): every authored\noption a choice, the pattern the ids of the options marked correct.",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "learnerResponse",
+              "description": "The learner's current answer as xAPI result.response. Choice types: the\ncomponent ids of the selected options, in authored order, joined by\n\"[,]\" (the text lives in object.definition.choices).",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "restoreLearnerResponse",
+              "parameters": [
+                {
+                  "name": "response"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
             },
             {
               "kind": "field",
@@ -4388,7 +4654,12 @@
                   "name": "_e"
                 }
               ],
-              "description": "Verify the answers of the user based on their saying\nthat they want to see how they did.",
+              "description": "Check the learner's answer. Returns a promise that resolves once the\ncheck has run (its user-engagement statement has been sent), which is\na frame later when a view transition animates it. Callers that only\nstart the check, like the button, can ignore it.",
+              "return": {
+                "type": {
+                  "text": "Promise<void>"
+                }
+              },
               "inheritedFrom": {
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"
@@ -4462,8 +4733,35 @@
             },
             {
               "kind": "method",
-              "name": "learnerResponse",
-              "description": "The learner's current answer as text (xAPI result.response)",
+              "name": "xapiComponents",
+              "parameters": [
+                {
+                  "name": "list",
+                  "description": "options (default: this.answers)",
+                  "optional": true,
+                  "type": {
+                    "text": "Array"
+                  }
+                }
+              ],
+              "description": "The authored options as xAPI interaction components, in authored order:\n[{ id, description, answer }] (see componentIds in",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "xapiComponentId",
+              "parameters": [
+                {
+                  "name": "option"
+                },
+                {
+                  "name": "components"
+                }
+              ],
+              "description": "Component id of an option (a displayed, selected or copied answer):\nmatched by its authored position, else by its text; \"\" when unknown",
               "inheritedFrom": {
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"
@@ -4517,19 +4815,6 @@
             },
             {
               "kind": "method",
-              "name": "restoreLearnerResponse",
-              "parameters": [
-                {
-                  "name": "response"
-                }
-              ],
-              "inheritedFrom": {
-                "name": "QuestionElement",
-                "module": "lib/QuestionElement.js"
-              }
-            },
-            {
-              "kind": "method",
               "name": "_requestLearnerProgress",
               "inheritedFrom": {
                 "name": "QuestionElement",
@@ -4552,6 +4837,22 @@
             {
               "kind": "method",
               "name": "_clearLearnerProgress",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_dropRestored",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "forgetLearnerResponse",
               "inheritedFrom": {
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"
@@ -5684,7 +5985,7 @@
               }
             },
             {
-              "description": "on window when the visitor view loads. detail: { activityId, tag, record } where a listener sets record.",
+              "description": "on window when the visitor view loads. detail: { activityId, tag, record, legacyActivityId } where a listener sets record; legacyActivityId (only when it differs) is the id earlier versions keyed this question by, for a one time move of saved data. xAPI form (1.0.3 interaction activities): result.response holds component ids and object.definition holds the components (choices, source, target) and correctResponsesPattern; see xapiDefinition() / learnerResponse().",
               "name": "learner-progress-request",
               "inheritedFrom": {
                 "name": "QuestionElement",

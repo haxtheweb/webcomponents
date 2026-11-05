@@ -450,11 +450,18 @@ export class QuestionElement extends SchemaBehaviors(
    * Verify the answers of the user based on their saying
    * that they want to see how they did.
    */
+  /**
+   * Check the learner's answer. Returns a promise that resolves once the
+   * check has run (its user-engagement statement has been sent), which is
+   * a frame later when a view transition animates it. Callers that only
+   * start the check, like the button, can ignore it.
+   * @returns {Promise<void>}
+   */
   checkAnswer(_e) {
     // respect the max attempts limit; once the attempts are spent the
     // interaction no longer accepts checks (0 implies unlimited)
     if (this.attemptsExhausted()) {
-      return;
+      return Promise.resolve();
     }
     const reduceMotion =
       globalThis.matchMedia &&
@@ -470,9 +477,16 @@ export class QuestionElement extends SchemaBehaviors(
     ) {
       const transition = globalThis.document.startViewTransition(runCheck);
       transition.ready.catch(() => {});
-    } else {
-      runCheck();
+      // updateCallbackDone settles once runCheck has run; a skipped or
+      // failed transition still runs it, so a rejection is not an error
+      // here. A stand-in transition (polyfill, test) may not have it.
+      const done = transition && transition.updateCallbackDone;
+      return done && typeof done.then === "function"
+        ? done.catch(() => {})
+        : Promise.resolve();
     }
+    runCheck();
+    return Promise.resolve();
   }
 
   // after every check: report the result for a future course data object
