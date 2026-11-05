@@ -94,7 +94,10 @@ describe("lrndesign-imagemap", () => {
     // the figure; aria-label comes from the hotspot's own label
     expect(first.hotspot.getAttribute("role")).to.equal("button");
     expect(first.hotspot.getAttribute("aria-label")).to.equal("Spot A");
-    expect(first.hotspot.getAttribute("aria-controls")).to.equal("figure");
+    // no aria-controls: it cannot reference the shadow root's figure from
+    // the light DOM svg (axe aria-valid-attr-value); aria-expanded instead
+    expect(first.hotspot.hasAttribute("aria-controls")).to.equal(false);
+    expect(first.hotspot.getAttribute("aria-expanded")).to.equal("false");
     expect(getStoredAttr(first.hotspot, "controls")).to.equal(null);
     expect(first.hotspot.classList.contains("hotspot")).to.equal(true);
     // details are cloned into slottable divs
