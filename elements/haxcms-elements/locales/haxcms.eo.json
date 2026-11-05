@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Kaŝi paĝojn sen aktivaĵoj",
   "laSectionCounts": "{pages} kun aktivaĵoj · {count} spureblaj",
   "reportsLearning": "Lerna aktiveco",
-  "reportsLearningDescription": "Kiuj elementoj povas registri la progreson de lernantoj, paĝon post paĝo."
+  "reportsLearningDescription": "Kiuj elementoj povas registri la progreson de lernantoj, paĝon post paĝo.",
+  "myLearning": "Mia lernado"
 }

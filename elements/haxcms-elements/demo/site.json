@@ -4767,6 +4767,226 @@
         "readtime": "1",
         "status": ""
       }
+    },
+    {
+      "id": "item-learning-lab",
+      "indent": 0,
+      "location": "pages/item-learning-lab/index.html",
+      "slug": "learning-activity-lab",
+      "order": 10,
+      "parent": null,
+      "title": "Learning activity lab",
+      "description": "Pages that each record a different kind of learner activity, ending with the My learning dashboard for the branch.",
+      "metadata": {
+        "locked": "",
+        "created": "1762300800",
+        "images": [],
+        "videos": [],
+        "updated": 1762300800,
+        "published": "1",
+        "hideInMenu": "",
+        "readtime": "1",
+        "status": "",
+        "tags": ""
+      }
+    },
+    {
+      "id": "item-learning-lab-choice",
+      "indent": 1,
+      "location": "pages/item-learning-lab-choice/index.html",
+      "slug": "learning-activity-lab/questions-choice",
+      "order": 0,
+      "parent": "item-learning-lab",
+      "title": "Questions: choice",
+      "description": "Multiple choice with one answer and with many, and true or false.",
+      "metadata": {
+        "locked": "",
+        "created": "1762300800",
+        "images": [],
+        "videos": [],
+        "updated": 1762300800,
+        "published": "1",
+        "hideInMenu": "",
+        "readtime": "1",
+        "status": "",
+        "tags": "questions"
+      }
+    },
+    {
+      "id": "item-learning-lab-text",
+      "indent": 1,
+      "location": "pages/item-learning-lab-text/index.html",
+      "slug": "learning-activity-lab/questions-text",
+      "order": 1,
+      "parent": "item-learning-lab",
+      "title": "Questions: text",
+      "description": "Short answer and fill in the blanks.",
+      "metadata": {
+        "locked": "",
+        "created": "1762300800",
+        "images": [],
+        "videos": [],
+        "updated": 1762300800,
+        "published": "1",
+        "hideInMenu": "",
+        "readtime": "1",
+        "status": "",
+        "tags": "questions"
+      }
+    },
+    {
+      "id": "item-learning-lab-ordering",
+      "indent": 1,
+      "location": "pages/item-learning-lab-ordering/index.html",
+      "slug": "learning-activity-lab/questions-ordering-and-matching",
+      "order": 2,
+      "parent": "item-learning-lab",
+      "title": "Questions: ordering and matching",
+      "description": "Sorting, matching, tagging and mark the words.",
+      "metadata": {
+        "locked": "",
+        "created": "1762300800",
+        "images": [],
+        "videos": [],
+        "updated": 1762300800,
+        "published": "1",
+        "hideInMenu": "",
+        "readtime": "1",
+        "status": "",
+        "tags": "questions"
+      }
+    },
+    {
+      "id": "item-learning-lab-stack",
+      "indent": 1,
+      "location": "pages/item-learning-lab-stack/index.html",
+      "slug": "learning-activity-lab/question-stack",
+      "order": 3,
+      "parent": "item-learning-lab",
+      "title": "Question stack",
+      "description": "Four questions next to each other become a stack.",
+      "metadata": {
+        "locked": "",
+        "created": "1762300800",
+        "images": [],
+        "videos": [],
+        "updated": 1762300800,
+        "published": "1",
+        "hideInMenu": "",
+        "readtime": "1",
+        "status": "",
+        "tags": "questions"
+      }
+    },
+    {
+      "id": "item-learning-lab-checklist",
+      "indent": 1,
+      "location": "pages/item-learning-lab-checklist/index.html",
+      "slug": "learning-activity-lab/checklist",
+      "order": 4,
+      "parent": "item-learning-lab",
+      "title": "Checklist",
+      "description": "A checklist that is done when every item is ticked.",
+      "metadata": {
+        "locked": "",
+        "created": "1762300800",
+        "images": [],
+        "videos": [],
+        "updated": 1762300800,
+        "published": "1",
+        "hideInMenu": "",
+        "readtime": "1",
+        "status": "",
+        "tags": "checklists"
+      }
+    },
+    {
+      "id": "item-learning-lab-media",
+      "indent": 1,
+      "location": "pages/item-learning-lab-media/index.html",
+      "slug": "learning-activity-lab/video-and-audio",
+      "order": 5,
+      "parent": "item-learning-lab",
+      "title": "Video and audio",
+      "description": "Media that counts as done once played to the end.",
+      "metadata": {
+        "locked": "",
+        "created": "1762300800",
+        "images": [],
+        "videos": [],
+        "updated": 1762300800,
+        "published": "1",
+        "hideInMenu": "",
+        "readtime": "1",
+        "status": "",
+        "tags": "media"
+      }
+    },
+    {
+      "id": "item-learning-lab-cards",
+      "indent": 1,
+      "location": "pages/item-learning-lab-cards/index.html",
+      "slug": "learning-activity-lab/flash-cards",
+      "order": 6,
+      "parent": "item-learning-lab",
+      "title": "Flash cards",
+      "description": "Flash cards you answer and flip.",
+      "metadata": {
+        "locked": "",
+        "created": "1762300800",
+        "images": [],
+        "videos": [],
+        "updated": 1762300800,
+        "published": "1",
+        "hideInMenu": "",
+        "readtime": "1",
+        "status": "",
+        "tags": "cards"
+      }
+    },
+    {
+      "id": "item-learning-lab-games",
+      "indent": 1,
+      "location": "pages/item-learning-lab-games/index.html",
+      "slug": "learning-activity-lab/games",
+      "order": 7,
+      "parent": "item-learning-lab",
+      "title": "Games",
+      "description": "Three micro games built on micro-game-base.",
+      "metadata": {
+        "locked": "",
+        "created": "1762300800",
+        "images": [],
+        "videos": [],
+        "updated": 1762300800,
+        "published": "1",
+        "hideInMenu": "",
+        "readtime": "1",
+        "status": "",
+        "tags": "games"
+      }
+    },
+    {
+      "id": "item-learning-lab-my-learning",
+      "indent": 1,
+      "location": "pages/item-learning-lab-my-learning/index.html",
+      "slug": "learning-activity-lab/my-learning",
+      "order": 8,
+      "parent": "item-learning-lab",
+      "title": "My learning",
+      "description": "The My learning dashboard for this branch.",
+      "metadata": {
+        "locked": "",
+        "created": "1762300800",
+        "images": [],
+        "videos": [],
+        "updated": 1762300800,
+        "published": "1",
+        "hideInMenu": "",
+        "readtime": "1",
+        "status": "",
+        "tags": ""
+      }
     }
   ],
   "location": null

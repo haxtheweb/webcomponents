@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Piilota sivut ilman tehtäviä",
   "laSectionCounts": "{pages} tehtävillä · {count} seurattavaa",
   "reportsLearning": "Oppimistoiminta",
-  "reportsLearningDescription": "Mitkä elementit voivat tallentaa oppijan edistymisen, sivu kerrallaan."
+  "reportsLearningDescription": "Mitkä elementit voivat tallentaa oppijan edistymisen, sivu kerrallaan.",
+  "myLearning": "Oppimiseni"
 }

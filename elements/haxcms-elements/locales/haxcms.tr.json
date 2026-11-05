@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Etkinlik içermeyen sayfaları gizle",
   "laSectionCounts": "{pages} etkinlikli · {count} izlenebilir",
   "reportsLearning": "Öğrenme etkinliği",
-  "reportsLearningDescription": "Hangi öğelerin öğrenen ilerlemesini sayfa sayfa kaydedebileceği."
+  "reportsLearningDescription": "Hangi öğelerin öğrenen ilerlemesini sayfa sayfa kaydedebileceği.",
+  "myLearning": "Öğrenmem"
 }

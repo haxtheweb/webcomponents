@@ -698,5 +698,6 @@
   "laHidePagesWithout": "ซ่อนหน้าที่ไม่มีกิจกรรม",
   "laSectionCounts": "{pages} หน้ามีกิจกรรม · {count} ติดตามได้",
   "reportsLearning": "กิจกรรมการเรียนรู้",
-  "reportsLearningDescription": "องค์ประกอบใดที่บันทึกความก้าวหน้าของผู้เรียนได้ ทีละหน้า"
+  "reportsLearningDescription": "องค์ประกอบใดที่บันทึกความก้าวหน้าของผู้เรียนได้ ทีละหน้า",
+  "myLearning": "การเรียนรู้ของฉัน"
 }

@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Peida tegevusteta lehed",
   "laSectionCounts": "{pages} tegevustega · {count} jälgitavat",
   "reportsLearning": "Õppetegevus",
-  "reportsLearningDescription": "Millised elemendid saavad õppija edenemist salvestada, leht lehe haaval."
+  "reportsLearningDescription": "Millised elemendid saavad õppija edenemist salvestada, leht lehe haaval.",
+  "myLearning": "Minu õppimine"
 }

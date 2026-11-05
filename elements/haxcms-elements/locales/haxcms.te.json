@@ -698,5 +698,6 @@
   "laHidePagesWithout": "కార్యకలాపాలు లేని పేజీలను దాచు",
   "laSectionCounts": "{pages} కార్యకలాపాలతో · {count} ట్రాక్ చేయదగినవి",
   "reportsLearning": "అభ్యాస కార్యకలాపం",
-  "reportsLearningDescription": "ఏ అంశాలు అభ్యాసకుల పురోగతిని నమోదు చేయగలవు, పేజీ వారీగా."
+  "reportsLearningDescription": "ఏ అంశాలు అభ్యాసకుల పురోగతిని నమోదు చేయగలవు, పేజీ వారీగా.",
+  "myLearning": "నా అభ్యాసం"
 }

@@ -698,5 +698,6 @@
   "laHidePagesWithout": "बिना गतिविधियों वाले पेज छिपाएँ",
   "laSectionCounts": "{pages} गतिविधियों वाले · {count} ट्रैक करने योग्य",
   "reportsLearning": "सीखने की गतिविधि",
-  "reportsLearningDescription": "कौन से तत्व शिक्षार्थी की प्रगति रिकॉर्ड कर सकते हैं, पेज दर पेज।"
+  "reportsLearningDescription": "कौन से तत्व शिक्षार्थी की प्रगति रिकॉर्ड कर सकते हैं, पेज दर पेज।",
+  "myLearning": "मेरी शिक्षा"
 }

@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Ficha kurasa zisizo na shughuli",
   "laSectionCounts": "{pages} zenye shughuli · {count} vinavyofuatiliwa",
   "reportsLearning": "Shughuli za kujifunza",
-  "reportsLearningDescription": "Vipengele vipi vinaweza kurekodi maendeleo ya mwanafunzi, ukurasa kwa ukurasa."
+  "reportsLearningDescription": "Vipengele vipi vinaweza kurekodi maendeleo ya mwanafunzi, ukurasa kwa ukurasa.",
+  "myLearning": "Masomo yangu"
 }

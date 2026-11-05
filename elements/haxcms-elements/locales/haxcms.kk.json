@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Тапсырмасыз беттерді жасыру",
   "laSectionCounts": "{pages} тапсырмалы · {count} бақыланатын",
   "reportsLearning": "Оқу белсенділігі",
-  "reportsLearningDescription": "Қай элементтер білім алушының үлгерімін бет бойынша жаза алады."
+  "reportsLearningDescription": "Қай элементтер білім алушының үлгерімін бет бойынша жаза алады.",
+  "myLearning": "Менің оқуым"
 }

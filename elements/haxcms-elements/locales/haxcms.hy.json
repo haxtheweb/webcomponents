@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Թաքցնել առանց ակտիվությունների էջերը",
   "laSectionCounts": "{pages} ակտիվություններով · {count} հետևելի",
   "reportsLearning": "Ուսումնական ակտիվություն",
-  "reportsLearningDescription": "Որ տարրերը կարող են գրանցել սովորողի առաջընթացը, էջ առ էջ։"
+  "reportsLearningDescription": "Որ տարրերը կարող են գրանցել սովորողի առաջընթացը, էջ առ էջ։",
+  "myLearning": "Իմ ուսումը"
 }

@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Ezkutatu jarduerarik gabeko orriak",
   "laSectionCounts": "{pages} jarduerekin · {count} jarraigarri",
   "reportsLearning": "Ikaskuntza-jarduera",
-  "reportsLearningDescription": "Zein elementuk erregistra dezaketen ikaslearen aurrerapena, orriz orri."
+  "reportsLearningDescription": "Zein elementuk erregistra dezaketen ikaslearen aurrerapena, orriz orri.",
+  "myLearning": "Nire ikaskuntza"
 }

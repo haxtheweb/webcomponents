@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Тапшырмасыз беттерди жашыруу",
   "laSectionCounts": "{pages} тапшырмалуу · {count} көзөмөлдөнүүчү",
   "reportsLearning": "Окуу активдүүлүгү",
-  "reportsLearningDescription": "Кайсы элементтер окуучунун прогрессин бет боюнча жаза алат."
+  "reportsLearningDescription": "Кайсы элементтер окуучунун прогрессин бет боюнча жаза алат.",
+  "myLearning": "Менин окуум"
 }

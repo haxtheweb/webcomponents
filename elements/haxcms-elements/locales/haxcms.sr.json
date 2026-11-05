@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Сакриј странице без активности",
   "laSectionCounts": "{pages} са активностима · {count} за праћење",
   "reportsLearning": "Активност учења",
-  "reportsLearningDescription": "Који елементи могу бележити напредак полазника, страницу по страницу."
+  "reportsLearningDescription": "Који елементи могу бележити напредак полазника, страницу по страницу.",
+  "myLearning": "Моје учење"
 }

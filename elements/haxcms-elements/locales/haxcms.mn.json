@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Үйл ажиллагаагүй хуудсуудыг нуух",
   "laSectionCounts": "{pages} үйл ажиллагаатай · {count} хянах боломжтой",
   "reportsLearning": "Сургалтын идэвх",
-  "reportsLearningDescription": "Аль элементүүд суралцагчийн ахиц дэвшлийг хуудас бүрээр бүртгэж чадах вэ."
+  "reportsLearningDescription": "Аль элементүүд суралцагчийн ахиц дэвшлийг хуудас бүрээр бүртгэж чадах вэ.",
+  "myLearning": "Миний суралцахуй"
 }

@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Seiten ohne Aktivitäten ausblenden",
   "laSectionCounts": "{pages} mit Aktivitäten · {count} erfassbar",
   "reportsLearning": "Lernaktivität",
-  "reportsLearningDescription": "Welche Elemente den Lernfortschritt erfassen können, Seite für Seite."
+  "reportsLearningDescription": "Welche Elemente den Lernfortschritt erfassen können, Seite für Seite.",
+  "myLearning": "Mein Lernen"
 }

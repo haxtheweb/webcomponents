@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Aħbi paġni mingħajr attivitajiet",
   "laSectionCounts": "{pages} b'attivitajiet · {count} traċċabbli",
   "reportsLearning": "Attività ta' tagħlim",
-  "reportsLearningDescription": "Liema elementi jistgħu jirreġistraw il-progress tal-istudent, paġna b'paġna."
+  "reportsLearningDescription": "Liema elementi jistgħu jirreġistraw il-progress tal-istudent, paġna b'paġna.",
+  "myLearning": "It-tagħlim tiegħi"
 }

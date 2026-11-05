@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Fela síður án verkefna",
   "laSectionCounts": "{pages} með verkefnum · {count} rekjanlegar",
   "reportsLearning": "Námsvirkni",
-  "reportsLearningDescription": "Hvaða einingar geta skráð framvindu nemenda, síðu fyrir síðu."
+  "reportsLearningDescription": "Hvaða einingar geta skráð framvindu nemenda, síðu fyrir síðu.",
+  "myLearning": "Námið mitt"
 }

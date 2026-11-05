@@ -698,5 +698,6 @@
   "laHidePagesWithout": "गतिविधि नभएका पृष्ठहरू लुकाउनुहोस्",
   "laSectionCounts": "{pages} गतिविधिसहित · {count} ट्र्याक गर्न सकिने",
   "reportsLearning": "सिकाइ गतिविधि",
-  "reportsLearningDescription": "कुन तत्वहरूले सिकारुको प्रगति रेकर्ड गर्न सक्छन्, पृष्ठ अनुसार।"
+  "reportsLearningDescription": "कुन तत्वहरूले सिकारुको प्रगति रेकर्ड गर्न सक्छन्, पृष्ठ अनुसार।",
+  "myLearning": "मेरो सिकाइ"
 }

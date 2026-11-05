@@ -698,5 +698,6 @@
   "laHidePagesWithout": "بغیر سرگرمیوں والے صفحات چھپائیں",
   "laSectionCounts": "{pages} سرگرمیوں کے ساتھ · {count} قابلِ ٹریک",
   "reportsLearning": "سیکھنے کی سرگرمی",
-  "reportsLearningDescription": "کون سے عناصر سیکھنے والے کی پیش رفت ریکارڈ کر سکتے ہیں، صفحہ بہ صفحہ۔"
+  "reportsLearningDescription": "کون سے عناصر سیکھنے والے کی پیش رفت ریکارڈ کر سکتے ہیں، صفحہ بہ صفحہ۔",
+  "myLearning": "میری تعلیم"
 }

@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Skjul sider uten aktiviteter",
   "laSectionCounts": "{pages} med aktiviteter · {count} sporbare",
   "reportsLearning": "Læringsaktivitet",
-  "reportsLearningDescription": "Hvilke elementer som kan registrere elevens fremgang, side for side."
+  "reportsLearningDescription": "Hvilke elementer som kan registrere elevens fremgang, side for side.",
+  "myLearning": "Min læring"
 }

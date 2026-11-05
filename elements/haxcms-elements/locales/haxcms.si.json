@@ -698,5 +698,6 @@
   "laHidePagesWithout": "ක්‍රියාකාරකම් නැති පිටු සඟවන්න",
   "laSectionCounts": "{pages} ක්‍රියාකාරකම් සහිත · {count} ලුහුබැඳිය හැකි",
   "reportsLearning": "ඉගෙනුම් ක්‍රියාකාරකම",
-  "reportsLearningDescription": "ඉගෙනුම්කරුගේ ප්‍රගතිය වාර්තා කළ හැකි මූලද්‍රව්‍ය, පිටුවෙන් පිටුව."
+  "reportsLearningDescription": "ඉගෙනුම්කරුගේ ප්‍රගතිය වාර්තා කළ හැකි මූලද්‍රව්‍ය, පිටුවෙන් පිටුව.",
+  "myLearning": "මගේ ඉගෙනීම"
 }

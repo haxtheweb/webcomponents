@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Slėpti puslapius be veiklų",
   "laSectionCounts": "Su veiklomis: {pages} · sekamų: {count}",
   "reportsLearning": "Mokymosi veikla",
-  "reportsLearningDescription": "Kurie elementai gali įrašyti besimokančiojo pažangą, puslapis po puslapio."
+  "reportsLearningDescription": "Kurie elementai gali įrašyti besimokančiojo pažangą, puslapis po puslapio.",
+  "myLearning": "Mano mokymasis"
 }

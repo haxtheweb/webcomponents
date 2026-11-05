@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Ascunde paginile fără activități",
   "laSectionCounts": "{pages} cu activități · {count} urmăribile",
   "reportsLearning": "Activitate de învățare",
-  "reportsLearningDescription": "Ce elemente pot înregistra progresul cursantului, pagină cu pagină."
+  "reportsLearningDescription": "Ce elemente pot înregistra progresul cursantului, pagină cu pagină.",
+  "myLearning": "Învățarea mea"
 }

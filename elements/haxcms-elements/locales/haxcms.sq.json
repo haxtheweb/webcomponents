@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Fshih faqet pa veprimtari",
   "laSectionCounts": "{pages} me veprimtari · {count} të gjurmueshme",
   "reportsLearning": "Veprimtari mësimore",
-  "reportsLearningDescription": "Cilat elemente mund të regjistrojnë përparimin e nxënësit, faqe pas faqeje."
+  "reportsLearningDescription": "Cilat elemente mund të regjistrojnë përparimin e nxënësit, faqe pas faqeje.",
+  "myLearning": "Mësimi im"
 }

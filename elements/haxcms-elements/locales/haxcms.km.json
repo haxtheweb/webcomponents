@@ -698,5 +698,6 @@
   "laHidePagesWithout": "លាក់ទំព័រគ្មានសកម្មភាព",
   "laSectionCounts": "{pages} មានសកម្មភាព · {count} អាចតាមដានបាន",
   "reportsLearning": "សកម្មភាពសិក្សា",
-  "reportsLearningDescription": "ធាតុណាខ្លះអាចកត់ត្រាវឌ្ឍនភាពអ្នកសិក្សា តាមទំព័រនីមួយៗ។"
+  "reportsLearningDescription": "ធាតុណាខ្លះអាចកត់ត្រាវឌ្ឍនភាពអ្នកសិក្សា តាមទំព័រនីមួយៗ។",
+  "myLearning": "ការរៀនរបស់ខ្ញុំ"
 }

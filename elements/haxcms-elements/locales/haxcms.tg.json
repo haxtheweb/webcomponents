@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Саҳифаҳои бе фаъолиятро пинҳон кунед",
   "laSectionCounts": "{pages} бо фаъолиятҳо · {count} пайгиришаванда",
   "reportsLearning": "Фаъолияти таълимӣ",
-  "reportsLearningDescription": "Кадом унсурҳо пешрафти омӯзандаро саҳифа ба саҳифа сабт карда метавонанд."
+  "reportsLearningDescription": "Кадом унсурҳо пешрафти омӯзандаро саҳифа ба саҳифа сабт карда метавонанд.",
+  "myLearning": "Омӯзиши ман"
 }

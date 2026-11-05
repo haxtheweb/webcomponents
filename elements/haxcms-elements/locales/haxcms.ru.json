@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Скрыть страницы без заданий",
   "laSectionCounts": "С заданиями: {pages} · отслеживаемых: {count}",
   "reportsLearning": "Учебная активность",
-  "reportsLearningDescription": "Какие элементы могут записывать прогресс учащегося, страница за страницей."
+  "reportsLearningDescription": "Какие элементы могут записывать прогресс учащегося, страница за страницей.",
+  "myLearning": "Моё обучение"
 }

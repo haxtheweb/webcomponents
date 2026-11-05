@@ -698,5 +698,6 @@
   "laHidePagesWithout": "הסתר דפים ללא פעילויות",
   "laSectionCounts": "{pages} עם פעילויות · {count} ניתנים למעקב",
   "reportsLearning": "פעילות למידה",
-  "reportsLearningDescription": "אילו רכיבים יכולים לתעד את התקדמות הלומד, דף אחר דף."
+  "reportsLearningDescription": "אילו רכיבים יכולים לתעד את התקדמות הלומד, דף אחר דף.",
+  "myLearning": "הלמידה שלי"
 }

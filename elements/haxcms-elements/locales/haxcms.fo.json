@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Fjal síður uttan virksemi",
   "laSectionCounts": "{pages} við virksemi · {count} sporbar",
   "reportsLearning": "Lærivirksemi",
-  "reportsLearningDescription": "Hvørjar elementir kunnu skráseta framgongd hjá næmingum, síðu fyri síðu."
+  "reportsLearningDescription": "Hvørjar elementir kunnu skráseta framgongd hjá næmingum, síðu fyri síðu.",
+  "myLearning": "Mítt lærdómur"
 }

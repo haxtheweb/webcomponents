@@ -698,5 +698,6 @@
   "laHidePagesWithout": "隐藏呒没活动个页面",
   "laSectionCounts": "有活动 {pages} · 可追踪 {count}",
   "reportsLearning": "学习活动",
-  "reportsLearningDescription": "逐页显示哪能元素可以记录学习者进度。"
+  "reportsLearningDescription": "逐页显示哪能元素可以记录学习者进度。",
+  "myLearning": "我个学习"
 }

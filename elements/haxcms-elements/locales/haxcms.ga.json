@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Folaigh leathanaigh gan gníomhaíochtaí",
   "laSectionCounts": "{pages} le gníomhaíochtaí · {count} inrianaithe",
   "reportsLearning": "Gníomhaíocht foghlama",
-  "reportsLearningDescription": "Cé na heilimintí atá in ann dul chun cinn foghlaimeoirí a thaifeadadh, leathanach ar leathanach."
+  "reportsLearningDescription": "Cé na heilimintí atá in ann dul chun cinn foghlaimeoirí a thaifeadadh, leathanach ar leathanach.",
+  "myLearning": "Mo chuid foghlama"
 }

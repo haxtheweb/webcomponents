@@ -698,5 +698,6 @@
   "laHidePagesWithout": "ਬਿਨਾਂ ਗਤੀਵਿਧੀਆਂ ਵਾਲੇ ਪੰਨੇ ਲੁਕਾਓ",
   "laSectionCounts": "{pages} ਗਤੀਵਿਧੀਆਂ ਸਮੇਤ · {count} ਟਰੈਕ ਕਰਨ ਯੋਗ",
   "reportsLearning": "ਸਿੱਖਣ ਦੀ ਗਤੀਵਿਧੀ",
-  "reportsLearningDescription": "ਕਿਹੜੇ ਤੱਤ ਸਿੱਖਿਆਰਥੀ ਦੀ ਤਰੱਕੀ ਰਿਕਾਰਡ ਕਰ ਸਕਦੇ ਹਨ, ਪੰਨਾ ਦਰ ਪੰਨਾ।"
+  "reportsLearningDescription": "ਕਿਹੜੇ ਤੱਤ ਸਿੱਖਿਆਰਥੀ ਦੀ ਤਰੱਕੀ ਰਿਕਾਰਡ ਕਰ ਸਕਦੇ ਹਨ, ਪੰਨਾ ਦਰ ਪੰਨਾ।",
+  "myLearning": "ਮੇਰੀ ਸਿਖਲਾਈ"
 }

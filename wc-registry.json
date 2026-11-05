@@ -297,6 +297,7 @@
   "site-menu-content": "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu-content.js",
   "site-menu": "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu.js",
   "site-top-menu": "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-top-menu.js",
+  "my-learning": "@haxtheweb/haxcms-elements/lib/ui-components/progress/my-learning.js",
   "site-query-menu-slice": "@haxtheweb/haxcms-elements/lib/ui-components/query/site-query-menu-slice.js",
   "site-query": "@haxtheweb/haxcms-elements/lib/ui-components/query/site-query.js",
   "site-render-query": "@haxtheweb/haxcms-elements/lib/ui-components/query/site-render-query.js",

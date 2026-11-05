@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Ẩn trang không có hoạt động",
   "laSectionCounts": "{pages} có hoạt động · {count} có thể theo dõi",
   "reportsLearning": "Hoạt động học tập",
-  "reportsLearningDescription": "Những phần tử nào có thể ghi lại tiến độ của người học, theo từng trang."
+  "reportsLearningDescription": "Những phần tử nào có thể ghi lại tiến độ của người học, theo từng trang.",
+  "myLearning": "Việc học của tôi"
 }

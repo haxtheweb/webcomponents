@@ -698,5 +698,6 @@
   "laHidePagesWithout": "إخفاء الصفحات التي لا تحتوي على أنشطة",
   "laSectionCounts": "{pages} تحتوي على أنشطة · {count} قابلة للتتبّع",
   "reportsLearning": "نشاط التعلّم",
-  "reportsLearningDescription": "العناصر التي يمكنها تسجيل تقدّم المتعلّم، صفحة بصفحة."
+  "reportsLearningDescription": "العناصر التي يمكنها تسجيل تقدّم المتعلّم، صفحة بصفحة.",
+  "myLearning": "تعلّمي"
 }

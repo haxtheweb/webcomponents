@@ -698,5 +698,6 @@
   "laHidePagesWithout": "ಚಟುವಟಿಕೆಗಳಿಲ್ಲದ ಪುಟಗಳನ್ನು ಮರೆಮಾಡಿ",
   "laSectionCounts": "{pages} ಚಟುವಟಿಕೆಗಳೊಂದಿಗೆ · {count} ಟ್ರ್ಯಾಕ್ ಮಾಡಬಹುದಾದ",
   "reportsLearning": "ಕಲಿಕೆಯ ಚಟುವಟಿಕೆ",
-  "reportsLearningDescription": "ಯಾವ ಅಂಶಗಳು ಕಲಿಯುವವರ ಪ್ರಗತಿಯನ್ನು ದಾಖಲಿಸಬಲ್ಲವು, ಪುಟದಿಂದ ಪುಟಕ್ಕೆ."
+  "reportsLearningDescription": "ಯಾವ ಅಂಶಗಳು ಕಲಿಯುವವರ ಪ್ರಗತಿಯನ್ನು ದಾಖಲಿಸಬಲ್ಲವು, ಪುಟದಿಂದ ಪುಟಕ್ಕೆ.",
+  "myLearning": "ನನ್ನ ಕಲಿಕೆ"
 }

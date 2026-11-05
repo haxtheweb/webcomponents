@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Bisani masamba opanda ntchito",
   "laSectionCounts": "{pages} okhala ndi ntchito · {count} zotsatirika",
   "reportsLearning": "Ntchito yophunzira",
-  "reportsLearningDescription": "Zinthu zomwe zingalembe kupita patsogolo kwa wophunzira, tsamba ndi tsamba."
+  "reportsLearningDescription": "Zinthu zomwe zingalembe kupita patsogolo kwa wophunzira, tsamba ndi tsamba.",
+  "myLearning": "Kuphunzira Kwanga"
 }

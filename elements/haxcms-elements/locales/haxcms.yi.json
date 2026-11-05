@@ -698,5 +698,6 @@
   "laHidePagesWithout": "באַהאַלט בלעטער אָן אַקטיוויטעטן",
   "laSectionCounts": "{pages} מיט אַקטיוויטעטן · {count} נאָכשפּורבאַר",
   "reportsLearning": "לערן־אַקטיוויטעט",
-  "reportsLearningDescription": "וועלכע עלעמענטן קענען רעקאָרדירן דעם לערנערס פֿאָרשריט, בלאַט נאָך בלאַט."
+  "reportsLearningDescription": "וועלכע עלעמענטן קענען רעקאָרדירן דעם לערנערס פֿאָרשריט, בלאַט נאָך בלאַט.",
+  "myLearning": "מיין לערנען"
 }

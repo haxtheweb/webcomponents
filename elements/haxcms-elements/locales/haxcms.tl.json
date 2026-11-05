@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Itago ang mga pahinang walang aktibidad",
   "laSectionCounts": "{pages} na may aktibidad · {count} nasusubaybayan",
   "reportsLearning": "Aktibidad sa pag-aaral",
-  "reportsLearningDescription": "Aling mga elemento ang makapagtatala ng pag-unlad ng mag-aaral, bawat pahina."
+  "reportsLearningDescription": "Aling mga elemento ang makapagtatala ng pag-unlad ng mag-aaral, bawat pahina.",
+  "myLearning": "Ang aking pag-aaral"
 }

@@ -698,5 +698,6 @@
   "laHidePagesWithout": "እንቅስቃሴ የሌላቸውን ገጾች ደብቅ",
   "laSectionCounts": "{pages} እንቅስቃሴ ያላቸው · {count} ሊከታተሉ የሚችሉ",
   "reportsLearning": "የመማር እንቅስቃሴ",
-  "reportsLearningDescription": "የትኞቹ ክፍሎች የተማሪ እድገትን መመዝገብ እንደሚችሉ፣ ገጽ በገጽ።"
+  "reportsLearningDescription": "የትኞቹ ክፍሎች የተማሪ እድገትን መመዝገብ እንደሚችሉ፣ ገጽ በገጽ።",
+  "myLearning": "የእኔ ትምህርት"
 }

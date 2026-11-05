@@ -698,5 +698,6 @@
   "laHidePagesWithout": "പ്രവർത്തനങ്ങളില്ലാത്ത പേജുകൾ മറയ്ക്കുക",
   "laSectionCounts": "{pages} പ്രവർത്തനങ്ങളോടെ · {count} ട്രാക്ക് ചെയ്യാവുന്നവ",
   "reportsLearning": "പഠന പ്രവർത്തനം",
-  "reportsLearningDescription": "പഠിതാവിന്റെ പുരോഗതി രേഖപ്പെടുത്താൻ കഴിയുന്ന ഘടകങ്ങൾ, പേജ് തിരിച്ച്."
+  "reportsLearningDescription": "പഠിതാവിന്റെ പുരോഗതി രേഖപ്പെടുത്താൻ കഴിയുന്ന ഘടകങ്ങൾ, പേജ് തിരിച്ച്.",
+  "myLearning": "എന്റെ പഠനം"
 }

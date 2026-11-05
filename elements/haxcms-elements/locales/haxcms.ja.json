@@ -698,5 +698,6 @@
   "laHidePagesWithout": "アクティビティのないページを非表示",
   "laSectionCounts": "アクティビティあり {pages} · 追跡可能 {count}",
   "reportsLearning": "学習アクティビティ",
-  "reportsLearningDescription": "学習者の進捗を記録できる要素をページごとに表示します。"
+  "reportsLearningDescription": "学習者の進捗を記録できる要素をページごとに表示します。",
+  "myLearning": "私の学習"
 }

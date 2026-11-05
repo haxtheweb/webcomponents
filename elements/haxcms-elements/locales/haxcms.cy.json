@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Cuddio tudalennau heb weithgareddau",
   "laSectionCounts": "{pages} â gweithgareddau · {count} y gellir eu holrhain",
   "reportsLearning": "Gweithgarwch dysgu",
-  "reportsLearningDescription": "Pa elfennau all gofnodi cynnydd dysgwyr, fesul tudalen."
+  "reportsLearningDescription": "Pa elfennau all gofnodi cynnydd dysgwyr, fesul tudalen.",
+  "myLearning": "Fy nysgu"
 }

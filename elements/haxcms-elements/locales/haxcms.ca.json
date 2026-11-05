@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Amaga les pàgines sense activitats",
   "laSectionCounts": "{pages} amb activitats · {count} rastrejables",
   "reportsLearning": "Activitat d'aprenentatge",
-  "reportsLearningDescription": "Quins elements poden registrar el progrés de l'alumne, pàgina per pàgina."
+  "reportsLearningDescription": "Quins elements poden registrar el progrés de l'alumne, pàgina per pàgina.",
+  "myLearning": "El meu aprenentatge"
 }

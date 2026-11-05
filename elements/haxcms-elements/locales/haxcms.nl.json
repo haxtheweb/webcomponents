@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Pagina's zonder activiteiten verbergen",
   "laSectionCounts": "{pages} met activiteiten · {count} volgbaar",
   "reportsLearning": "Leeractiviteit",
-  "reportsLearningDescription": "Welke elementen de voortgang van leerlingen kunnen vastleggen, pagina voor pagina."
+  "reportsLearningDescription": "Welke elementen de voortgang van leerlingen kunnen vastleggen, pagina voor pagina.",
+  "myLearning": "Mijn leren"
 }

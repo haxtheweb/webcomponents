@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Qari bogagga aan hawlo lahayn",
   "laSectionCounts": "{pages} leh hawlo · {count} la raadraaci karo",
   "reportsLearning": "Hawlaha waxbarashada",
-  "reportsLearningDescription": "Curiyeyaasha diiwaangelin kara horumarka ardayga, bog bog."
+  "reportsLearningDescription": "Curiyeyaasha diiwaangelin kara horumarka ardayga, bog bog.",
+  "myLearning": "Waxbarashadayda"
 }

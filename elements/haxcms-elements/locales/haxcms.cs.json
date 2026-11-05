@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Skrýt stránky bez aktivit",
   "laSectionCounts": "S aktivitami: {pages} · sledovatelné: {count}",
   "reportsLearning": "Studijní aktivita",
-  "reportsLearningDescription": "Které prvky mohou zaznamenávat pokrok studenta, stránku po stránce."
+  "reportsLearningDescription": "Které prvky mohou zaznamenávat pokrok studenta, stránku po stránce.",
+  "myLearning": "Moje učení"
 }

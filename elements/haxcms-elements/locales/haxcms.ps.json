@@ -698,5 +698,6 @@
   "laHidePagesWithout": "بې فعالیته پاڼې پټې کړئ",
   "laSectionCounts": "{pages} د فعالیتونو سره · {count} تعقیبېدونکي",
   "reportsLearning": "د زده کړې فعالیت",
-  "reportsLearningDescription": "کوم عناصر د زده کوونکي پرمختګ ثبتولی شي، پاڼه په پاڼه."
+  "reportsLearningDescription": "کوم عناصر د زده کوونکي پرمختګ ثبتولی شي، پاڼه په پاڼه.",
+  "myLearning": "زما زده کړه"
 }

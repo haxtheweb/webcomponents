@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Delikake kaca tanpa kagiyatan",
   "laSectionCounts": "{pages} kanthi kagiyatan · {count} bisa dilacak",
   "reportsLearning": "Kagiyatan sinau",
-  "reportsLearningDescription": "Unsur endi sing bisa nyathet kemajuan siswa, kaca saben kaca."
+  "reportsLearningDescription": "Unsur endi sing bisa nyathet kemajuan siswa, kaca saben kaca.",
+  "myLearning": "Learning-ku"
 }

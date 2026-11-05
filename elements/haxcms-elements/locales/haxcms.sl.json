@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Skrij strani brez dejavnosti",
   "laSectionCounts": "Z dejavnostmi: {pages} · sledljivih: {count}",
   "reportsLearning": "Učna dejavnost",
-  "reportsLearningDescription": "Kateri elementi lahko beležijo napredek učenca, stran za stranjo."
+  "reportsLearningDescription": "Kateri elementi lahko beležijo napredek učenca, stran za stranjo.",
+  "myLearning": "Moje učenje"
 }

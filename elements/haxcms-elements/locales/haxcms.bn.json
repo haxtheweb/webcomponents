@@ -698,5 +698,6 @@
   "laHidePagesWithout": "কার্যকলাপহীন পৃষ্ঠা লুকান",
   "laSectionCounts": "{pages}টি কার্যকলাপসহ · {count}টি ট্র্যাকযোগ্য",
   "reportsLearning": "শিক্ষণ কার্যকলাপ",
-  "reportsLearningDescription": "কোন উপাদানগুলো শিক্ষার্থীর অগ্রগতি রেকর্ড করতে পারে, পৃষ্ঠা অনুযায়ী।"
+  "reportsLearningDescription": "কোন উপাদানগুলো শিক্ষার্থীর অগ্রগতি রেকর্ড করতে পারে, পৃষ্ঠা অনুযায়ী।",
+  "myLearning": "আমার শেখা"
 }

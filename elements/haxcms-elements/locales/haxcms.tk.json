@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Işjeňliksiz sahypalary gizle",
   "laSectionCounts": "{pages} işjeňlikli · {count} yzarlanýan",
   "reportsLearning": "Öwreniş işjeňligi",
-  "reportsLearningDescription": "Haýsy elementler öwrenijiniň ösüşini sahypa-sahypa ýazyp bilýär."
+  "reportsLearningDescription": "Haýsy elementler öwrenijiniň ösüşini sahypa-sahypa ýazyp bilýär.",
+  "myLearning": "Meniň öwrenişim"
 }

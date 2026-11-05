@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Faoliyatsiz sahifalarni yashirish",
   "laSectionCounts": "{pages} faoliyatli · {count} kuzatiladigan",
   "reportsLearning": "O'quv faolligi",
-  "reportsLearningDescription": "Qaysi elementlar o'quvchi taraqqiyotini sahifama-sahifa qayd eta oladi."
+  "reportsLearningDescription": "Qaysi elementlar o'quvchi taraqqiyotini sahifama-sahifa qayd eta oladi.",
+  "myLearning": "Mening o‘qishim"
 }

@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Versteek bladsye sonder aktiwiteite",
   "laSectionCounts": "{pages} met aktiwiteite · {count} naspeurbaar",
   "reportsLearning": "Leeraktiwiteit",
-  "reportsLearningDescription": "Watter elemente leerdervordering kan aanteken, bladsy vir bladsy."
+  "reportsLearningDescription": "Watter elemente leerdervordering kan aanteken, bladsy vir bladsy.",
+  "myLearning": "My leer"
 }

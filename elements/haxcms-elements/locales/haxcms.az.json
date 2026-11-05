@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Fəaliyyətsiz səhifələri gizlət",
   "laSectionCounts": "{pages} fəaliyyətli · {count} izlənə bilən",
   "reportsLearning": "Öyrənmə fəaliyyəti",
-  "reportsLearningDescription": "Hansı elementlərin öyrənənin irəliləyişini qeyd edə biləcəyi, səhifə-səhifə."
+  "reportsLearningDescription": "Hansı elementlərin öyrənənin irəliləyişini qeyd edə biləcəyi, səhifə-səhifə.",
+  "myLearning": "Mənim öyrənməm"
 }

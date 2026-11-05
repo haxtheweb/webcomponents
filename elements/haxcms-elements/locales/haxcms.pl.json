@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Ukryj strony bez aktywności",
   "laSectionCounts": "Z aktywnościami: {pages} · śledzone: {count}",
   "reportsLearning": "Aktywność edukacyjna",
-  "reportsLearningDescription": "Które elementy mogą rejestrować postępy uczącego się, strona po stronie."
+  "reportsLearningDescription": "Które elementy mogą rejestrować postępy uczącego się, strona po stronie.",
+  "myLearning": "Moja nauka"
 }

@@ -698,5 +698,6 @@
   "laHidePagesWithout": "پنهان کردن صفحات بدون فعالیت",
   "laSectionCounts": "{pages} دارای فعالیت · {count} قابل ردیابی",
   "reportsLearning": "فعالیت یادگیری",
-  "reportsLearningDescription": "کدام عناصر می‌توانند پیشرفت یادگیرنده را ثبت کنند، صفحه به صفحه."
+  "reportsLearningDescription": "کدام عناصر می‌توانند پیشرفت یادگیرنده را ثبت کنند، صفحه به صفحه.",
+  "myLearning": "یادگیری من"
 }

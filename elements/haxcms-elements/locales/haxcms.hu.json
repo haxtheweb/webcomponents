@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Tevékenység nélküli oldalak elrejtése",
   "laSectionCounts": "{pages} tevékenységgel · {count} követhető",
   "reportsLearning": "Tanulási tevékenység",
-  "reportsLearningDescription": "Mely elemek rögzíthetik a tanulói előrehaladást, oldalanként."
+  "reportsLearningDescription": "Mely elemek rögzíthetik a tanulói előrehaladást, oldalanként.",
+  "myLearning": "Tanulásom"
 }

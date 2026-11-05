@@ -698,5 +698,6 @@
   "laHidePagesWithout": "ເຊື່ອງໜ້າທີ່ບໍ່ມີກິດຈະກຳ",
   "laSectionCounts": "{pages} ມີກິດຈະກຳ · {count} ຕິດຕາມໄດ້",
   "reportsLearning": "ກິດຈະກຳການຮຽນ",
-  "reportsLearningDescription": "ອົງປະກອບໃດສາມາດບັນທຶກຄວາມຄືບໜ້າຂອງຜູ້ຮຽນ, ເທື່ອລະໜ້າ."
+  "reportsLearningDescription": "ອົງປະກອບໃດສາມາດບັນທຶກຄວາມຄືບໜ້າຂອງຜູ້ຮຽນ, ເທື່ອລະໜ້າ.",
+  "myLearning": "ການຮຽນຂອງຂ້ອຍ"
 }

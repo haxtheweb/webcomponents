@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Sembunyikan halaman tanpa aktivitas",
   "laSectionCounts": "{pages} dengan aktivitas · {count} dapat dilacak",
   "reportsLearning": "Aktivitas belajar",
-  "reportsLearningDescription": "Elemen mana yang dapat mencatat kemajuan pelajar, halaman demi halaman."
+  "reportsLearningDescription": "Elemen mana yang dapat mencatat kemajuan pelajar, halaman demi halaman.",
+  "myLearning": "Pembelajaran saya"
 }

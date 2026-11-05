@@ -698,5 +698,6 @@
   "laHidePagesWithout": "પ્રવૃત્તિ વગરના પૃષ્ઠો છુપાવો",
   "laSectionCounts": "{pages} પ્રવૃત્તિઓવાળા · {count} ટ્રેક કરી શકાય તેવા",
   "reportsLearning": "શીખવાની પ્રવૃત્તિ",
-  "reportsLearningDescription": "કયા ઘટકો શીખનારની પ્રગતિ નોંધી શકે છે, પૃષ્ઠ દર પૃષ્ઠ."
+  "reportsLearningDescription": "કયા ઘટકો શીખનારની પ્રગતિ નોંધી શકે છે, પૃષ્ઠ દર પૃષ્ઠ.",
+  "myLearning": "મારું શિક્ષણ"
 }

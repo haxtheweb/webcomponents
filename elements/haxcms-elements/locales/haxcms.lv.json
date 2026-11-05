@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Paslēpt lapas bez aktivitātēm",
   "laSectionCounts": "Ar aktivitātēm: {pages} · izsekojami: {count}",
   "reportsLearning": "Mācību aktivitāte",
-  "reportsLearningDescription": "Kuri elementi var reģistrēt izglītojamā progresu, lapu pa lapai."
+  "reportsLearningDescription": "Kuri elementi var reģistrēt izglītojamā progresu, lapu pa lapai.",
+  "myLearning": "Mana mācīšanās"
 }

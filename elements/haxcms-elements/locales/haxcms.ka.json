@@ -698,5 +698,6 @@
   "laHidePagesWithout": "აქტივობების გარეშე გვერდების დამალვა",
   "laSectionCounts": "{pages} აქტივობებით · {count} სადევნებელი",
   "reportsLearning": "სასწავლო აქტივობა",
-  "reportsLearningDescription": "რომელ ელემენტებს შეუძლიათ მოსწავლის პროგრესის ჩაწერა, გვერდ-გვერდ."
+  "reportsLearningDescription": "რომელ ელემენტებს შეუძლიათ მოსწავლის პროგრესის ჩაწერა, გვერდ-გვერდ.",
+  "myLearning": "ჩემი სწავლა"
 }

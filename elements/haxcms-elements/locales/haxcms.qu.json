@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Mana rurayniyuq raphikunata pakay",
   "laSectionCounts": "{pages} rurayniyuq · {count} qatipay atina",
   "reportsLearning": "Yachay ruray",
-  "reportsLearningDescription": "Mayqin elementokunam yachaqpa ñawpaqman purisqanta qillqayta atin, raphimanta raphiman."
+  "reportsLearningDescription": "Mayqin elementokunam yachaqpa ñawpaqman purisqanta qillqayta atin, raphimanta raphiman.",
+  "myLearning": "Yachayniy"
 }

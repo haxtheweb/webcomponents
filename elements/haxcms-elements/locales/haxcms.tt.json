@@ -698,5 +698,6 @@
   "laHidePagesWithout": "Биремнәрсез битләрне яшерү",
   "laSectionCounts": "{pages} биремле · {count} күзәтелә торган",
   "reportsLearning": "Уку активлыгы",
-  "reportsLearningDescription": "Кайсы элементлар укучының алгарышын бит саен яза ала."
+  "reportsLearningDescription": "Кайсы элементлар укучының алгарышын бит саен яза ала.",
+  "myLearning": "Минем укуым"
 }
