@@ -81,6 +81,9 @@ export default {
       <html lang="en">
         <body>
           <script>window.process = { env: { NODE_ENV: "development" } }</script>
+          <!-- queue axe audits so one timed-out audit cannot fail every later
+               a11y test in the file with "Axe is already running" -->
+          <script src="/scripts/test-setup/axe-run-queue.js"></script>
           <script>
             // WebKit reports "ResizeObserver loop completed with undelivered
             // notifications" as a window error; it is benign (a resize caused
