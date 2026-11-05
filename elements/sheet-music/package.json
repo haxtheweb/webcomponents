@@ -1,6 +1,6 @@
 {
   "name": "@haxtheweb/sheet-music",
-  "version": "0.0.0",
+  "version": "26.8.0",
   "description": "Webcomponent sheet-music following hax / open-wc recommendations",
   "license": "Apache-2.0",
   "author": {

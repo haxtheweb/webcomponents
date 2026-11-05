@@ -1,0 +1,73 @@
+{
+  "tag": "instructional-cadence",
+  "folder": "instructional-cadence",
+  "package": "@haxtheweb/instructional-cadence",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "instructional-cadence",
+  "description": "Course pacing as music: one measure per lesson, one beat per page, scored on a five-part lesson shape. For the HAXcms Site Insights dashboard.",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/instructional-cadence/instructional-cadence.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/instructional-cadence/instructional-cadence.js",
+  "install": "npm i @haxtheweb/instructional-cadence",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "items",
+      "property": "items",
+      "type": "array",
+      "default": "[]",
+      "description": "JSON Outline Schema items ({id, parent, title, slug, order})",
+      "hax": null
+    },
+    {
+      "name": "rows",
+      "property": "rows",
+      "type": "array",
+      "default": "[]",
+      "description": "Site Insights content report rows (contentData)",
+      "hax": null
+    },
+    {
+      "name": "course-title",
+      "property": "courseTitle",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Title used on the engraved score",
+      "hax": null
+    },
+    {
+      "name": "base-path",
+      "property": "basePath",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Prefix for page links, e.g. the site's base path",
+      "hax": null
+    },
+    {
+      "name": "hide-score",
+      "property": "hideScore",
+      "type": "boolean",
+      "default": "false",
+      "description": "Skip rendering the sheet-music score (summary only)",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "e7e0321bacd5",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/instructional-cadence",
+    "file": "instructional-cadence.js"
+  }
+}

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>InstructionalCadence: instructional-cadence Demo</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import '../instructional-cadence.js';
+      // sample course shaped like a typical lesson pattern: introduction,
+      // outline, lecture preview + lecture video pairs, study guide
+      const items = [];
+      const rows = [];
+      const add = (title, parent, row) => {
+        const id = `item-${items.length}`;
+        const order = items.filter((i) => i.parent === parent).length;
+        items.push({ id, title, parent, order, slug: id });
+        rows.push(Object.assign({ id }, row));
+        return id;
+      };
+      const mod = add('Module 1', null, { readTime: 1 });
+      [1, 2].forEach((n) => {
+        const lesson = add(`Lesson ${n} Introduction`, mod, { readTime: 2, images: 1 });
+        add('Lesson Outline', lesson, { readTime: 1 });
+        add('Lecture Preview 1', lesson, { readTime: 2, images: 1 });
+        add('Lecture Video 1', lesson, { readTime: 1, videos: 1, selfChecks: 2 });
+        add('Lecture Preview 2', lesson, { readTime: 2, images: 1 });
+        add('Lecture Video 2', lesson, { readTime: 1, videos: 1, selfChecks: 3 });
+        add('Lecture Preview 3', lesson, { readTime: 2 });
+        add('Lecture Video 3', lesson, { readTime: 1, videos: 1, selfChecks: 2 });
+        add('Study Guide', lesson, { readTime: 3, images: 1 });
+      });
+      const frontLoaded = add('Start Here', null, { readTime: 10, images: 3 });
+      add('Syllabus', frontLoaded, { readTime: 13 });
+      add('Policies', frontLoaded, { readTime: 8 });
+      add('Week 2', frontLoaded, { readTime: 0 });
+      const el = document.querySelector('instructional-cadence');
+      el.items = items;
+      el.rows = rows;
+    </script>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>instructional-cadence demo</h3>
+      <instructional-cadence course-title="Sample course"></instructional-cadence>
+    </div>
+  </body>
+</html>
