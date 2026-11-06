@@ -20,6 +20,7 @@ https://github.com/haxtheweb/praw, and is read from there instead of being copie
 - Workflow skills: <https://github.com/haxtheweb/praw/tree/main/skills>; interface skills: <https://github.com/haxtheweb/create/tree/main/src/skills>
 - Machine-readable index: <https://raw.githubusercontent.com/haxtheweb/praw/main/llms.txt>
 - Work queue: <https://github.com/haxtheweb/issues> (`gh issue list --repo haxtheweb/issues`)
+- Prototyping HAXcms itself (whole sites, top bar, edit mode, admin, multipage flows), not a single element: use the [`haxcms-prototype`](https://github.com/haxtheweb/praw/tree/main/skills/haxcms-prototype) skill, which builds on the real system and checks against the haxcms-nodejs UI inventory; single elements stay with `hax-element-demo`
 - CLI options: `hax help`, `hax <command> --help`, or `man hax`
 
 ## Development Environment Setup
