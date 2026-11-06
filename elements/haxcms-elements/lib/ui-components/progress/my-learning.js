@@ -89,9 +89,14 @@ const PAGES_LIMIT = 8;
 const UP_NEXT_LIMIT = 3;
 // width from which the radar and the Pages card sit side by side
 const WIDE_MIN = 720;
-// most pages the Map view draws around their sections at once
-// room each page dot needs on its arc, in percent of the drawing
-const MAP_DOT_SPACING = 4.5;
+// Map view tree: the biggest drawing (px), the outer ring (percent of the
+// drawing from its centre), the least room between two page dots on a ring
+// (px; a crowded section shows as one node instead), and how far crowded
+// dots step in (percent)
+const MAP_MAX_SIZE = 900;
+const MAP_OUTER = 45;
+const MAP_MIN_GAP = 22;
+const MAP_STAGGER = 6;
 
 const visible = (i) =>
   i &&
@@ -284,7 +289,10 @@ const combinedState = (states) => {
  * @param {string[]} [o.path] ids drilled into
  * @returns {{ center: Object, nodes: Object[], path: Object[] }} nodes:
  *   { id, kind (section | page | activity), title, state, done, total,
- *   children: [{ id, title, state }] (sections at the top level) }
+ *   related: [ids in scope] (from the page's metadata.relatedItems),
+ *   children: [{ id, title, state, parent, depth, related }] (sections at
+ *   the top level; parent is the nearest page above it in the section, or
+ *   the section, and depth counts the steps down from the section) }
  */
 export function mapModel({
   items,
@@ -329,6 +337,26 @@ export function mapModel({
     const i = byId.get(id);
     return (r && r.title) || (i && i.title) || id;
   };
+  const inScope = new Set(pages || []);
+  // pages an author marked as related (page-break related-items: a comma
+  // separated list of item ids), kept to the ones in scope
+  const related = (id) => {
+    const i = byId.get(id);
+    const raw = i && i.metadata ? i.metadata.relatedItems : null;
+    const list = Array.isArray(raw)
+      ? raw
+      : typeof raw === "string"
+        ? raw.split(",")
+        : [];
+    const out = [];
+    list.forEach((v) => {
+      const rid = String(v).trim();
+      if (rid && rid !== id && inScope.has(rid) && !out.includes(rid)) {
+        out.push(rid);
+      }
+    });
+    return out;
+  };
   const pageNode = (id) => {
     const r = rows.get(id) || {};
     return {
@@ -338,11 +366,42 @@ export function mapModel({
       state: r.status || "not-started",
       done: r.done || 0,
       total: r.trackable || 0,
+      related: related(id),
     };
+  };
+  // where a page hangs in its section: the nearest page above it that is
+  // also in the section (else the section), and how many steps down it is
+  const placeIn = (section, ids) => {
+    const set = new Set(ids);
+    const up = (id) => {
+      let cur = byId.get(id);
+      let guard = 0;
+      while (cur && cur.parent && guard++ < 50) {
+        if (cur.parent === section || set.has(cur.parent)) {
+          return cur.parent;
+        }
+        cur = byId.get(cur.parent);
+      }
+      return section;
+    };
+    const depth = new Map();
+    const depthOf = (id) => {
+      if (id === section) {
+        return 0;
+      }
+      if (!depth.has(id)) {
+        depth.set(id, 1);
+        const p = up(id);
+        depth.set(id, p === section ? 1 : depthOf(p) + 1);
+      }
+      return depth.get(id);
+    };
+    return (id) => ({ parent: up(id), depth: depthOf(id) });
   };
   const sectionNode = (id) => {
     const list = members.get(id) || [id];
     const states = list.map((pid) => pageNode(pid).state);
+    const where = placeIn(id, list);
     return {
       id,
       kind: "section",
@@ -350,7 +409,10 @@ export function mapModel({
       state: combinedState(states),
       done: states.filter((st) => st === "done").length,
       total: list.length,
-      children: list.filter((pid) => pid !== id).map(pageNode),
+      related: related(id),
+      children: list
+        .filter((pid) => pid !== id)
+        .map((pid) => ({ ...pageNode(pid), ...where(pid) })),
     };
   };
   const activityNodes = (pid) =>
@@ -1051,6 +1113,8 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
     this._mapPath = [];
     this._mapFocus = 0;
     this._mapMessage = "";
+    this._mapRoom = 0;
+    this._mapRelated = true;
     this.t = {
       ...this.t,
       myLearning: "My learning",
@@ -1108,9 +1172,13 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
       mapKeys:
         "Arrow keys move between items, Enter opens one, Escape goes back.",
       mapLegend: "Map key",
+      mapShowRelated: "Show related pages",
+      mapRelatedKey: "Related pages",
+      mapRelatedTo: "Related to: {names}",
       tableName: "Name",
       tableState: "State",
       tableProgress: "Progress",
+      tableRelated: "Related pages",
       accuracy: "First-try accuracy",
       radarFirstTryDone: "{firstTry}% first try · {done}% done",
       radarDone: "{done}% done",
@@ -1255,6 +1323,8 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
       _mapPath: { type: Array, state: true },
       _mapFocus: { type: Number, state: true },
       _mapMessage: { type: String, state: true },
+      _mapRoom: { type: Number, state: true },
+      _mapRelated: { type: Boolean, state: true },
     };
   }
   connectedCallback() {
@@ -1286,6 +1356,12 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
       const wide = w >= WIDE_MIN;
       if (wide !== this._wide) {
         this._wide = wide;
+      }
+      // room for the map drawing inside its card, in 20px steps so a small
+      // resize does not lay the map out again
+      const room = Math.max(240, Math.floor((w - 48) / 20) * 20);
+      if (room !== this._mapRoom) {
+        this._mapRoom = room;
       }
     }
   }
@@ -2527,12 +2603,74 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
           width: 100%;
           height: 100%;
         }
-        .map line {
+        .map line,
+        .map path {
+          fill: none;
           stroke: var(--my-learning-line);
           stroke-width: 0.5;
+          stroke-linecap: round;
         }
-        .map line.twig {
+        .map .twig {
           stroke-width: 0.25;
+        }
+        /* a line takes the state of the node it leads to, so the paths a
+           learner has walked read from the centre out */
+        .map [data-state="done"] {
+          stroke: var(--map-done);
+          stroke-width: 0.5;
+        }
+        .map [data-state="in-progress"] {
+          stroke: var(--map-partial);
+          stroke-width: 0.5;
+        }
+        .map [data-state="visited"] {
+          stroke: var(--map-visited);
+          stroke-width: 0.4;
+        }
+        .map .related {
+          stroke: light-dark(
+            var(--ddd-theme-default-link),
+            var(--ddd-theme-default-linkLight)
+          );
+          stroke-width: 0.3;
+          stroke-dasharray: 1 1;
+        }
+        .map .hi {
+          stroke-width: 0.8;
+        }
+        .map .related.hi {
+          stroke-width: 0.5;
+        }
+        .map-related-toggle {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+          margin: 0 0 var(--ddd-spacing-2);
+          font-size: var(--ddd-font-size-4xs);
+          color: var(--my-learning-muted);
+          cursor: pointer;
+        }
+        .map-related-toggle input {
+          width: var(--ddd-icon-3xs);
+          height: var(--ddd-icon-3xs);
+          margin: 0;
+          accent-color: var(--ddd-theme-default-beaverBlue);
+        }
+        .map-related {
+          margin: var(--ddd-spacing-1) 0 0;
+          font-size: var(--ddd-font-size-4xs);
+          color: var(--my-learning-muted);
+        }
+        .swatch.related {
+          width: var(--ddd-spacing-4);
+          height: 0;
+          border-radius: 0;
+          border-width: var(--ddd-border-size-sm) 0 0;
+          border-style: dashed;
+          border-color: light-dark(
+            var(--ddd-theme-default-link),
+            var(--ddd-theme-default-linkLight)
+          );
         }
         .map-center,
         .map-node {
@@ -2574,6 +2712,9 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
         }
         .map-center[data-state="in-progress"] {
           background-color: var(--map-partial);
+          /* dark text on the orange / yellow: white on inventOrange fails
+             contrast (2.7:1) */
+          color: var(--ddd-theme-default-potentialMidnight);
         }
         .map-center[data-state="visited"],
         .map-center[data-state="not-started"] {
@@ -2624,6 +2765,14 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
         .map-node.ring-2 .dot {
           width: 16px;
           height: 16px;
+        }
+        .map-node.ring-2.branch .dot {
+          width: 24px;
+          height: 24px;
+        }
+        .map-node.ring-2.branch .name {
+          font-weight: var(--ddd-font-weight-medium);
+          max-width: 6rem;
         }
         .map.drilled .map-node .dot {
           width: 36px;
@@ -3134,31 +3283,24 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
   }
   // nodes in keyboard order: each section, then its pages
   /**
-   * Where the Map view draws each node, in keyboard order: a ring node,
-   * then the page dots around it (top level, only for sections whose pages
-   * fit the arc they get; see mapPagesFit). The rings and the drawing grow
-   * with the number of nodes so neighbours keep apart. Labels sit outside
+   * Where the Map view draws each node, in keyboard order: a section, then
+   * its pages as a tree outward from it, one ring per level of the outline
+   * (top level), or a section's pages the same way around it (drilled in),
+   * or a page's activities on one ring. Each node gets a slice of the circle
+   * sized by the pages under it; a section whose pages do not have room at
+   * the width there is (MAP_MIN_GAP) shows as one node. Labels sit outside
    * each node on its own side of the circle.
-   * @returns {{ placed: Object[], lines: Array, size: number }}
+   * @returns {{ placed: Object[], lines: Object[], size: number }} lines:
+   *   { x1, y1, x2, y2, cx?, cy? (a bend), k (spoke | twig | related),
+   *   a, b (the node ids at each end), state (of the node it leads to) }
    */
   _mapLayout(m) {
     const top = !m.path.length;
+    // drilled to activities: a page, or a section with no pages of its own
+    const pageLevel = !top && !m.nodes.some((nd) => nd.kind === "page");
     const n = m.nodes.length;
-    const angle = (i) => (2 * Math.PI * i) / Math.max(n, 1) - Math.PI / 2;
+    const TAU = 2 * Math.PI;
     const pos = (r, a) => [50 + r * Math.cos(a), 50 + r * Math.sin(a)];
-    // the arc each ring node owns, and how many page dots fit on it
-    const span = Math.min(0.9, ((2 * Math.PI) / Math.max(n, 1)) * 0.7);
-    const r2 = 43;
-    const fits = Math.max(1, Math.floor((span * r2) / MAP_DOT_SPACING) + 1);
-    const showKids = (node) =>
-      top &&
-      Array.isArray(node.children) &&
-      node.children.length > 0 &&
-      node.children.length <= fits;
-    const anyKids = m.nodes.some(showKids);
-    const r1 = anyKids
-      ? 25
-      : Math.min(36, Math.max(top ? 28 : 30, 22 + n * 1.2));
     const side = (a) => {
       // above / below only right at the top and bottom, so neighbours
       // there lean apart
@@ -3171,37 +3313,216 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
       }
       return Math.sin(a) < 0 ? "top" : "bottom";
     };
-    const placed = [];
-    const lines = [];
-    let dots = 0;
-    m.nodes.forEach((node, i) => {
-      const a = angle(i);
-      const [x, y] = pos(r1, a);
-      lines.push([50, 50, x, y, "spoke"]);
-      placed.push({ node, x, y, ring: 1, side: side(a) });
-      if (showKids(node)) {
-        const kids = node.children;
-        kids.forEach((c, j) => {
-          const b =
-            kids.length > 1 ? a + span * (j / (kids.length - 1) - 0.5) : a;
-          const [px, py] = pos(r2, b);
-          lines.push([x, y, px, py, "twig"]);
-          placed.push({
-            node: { ...c, section: node.id },
-            x: px,
-            y: py,
-            ring: 2,
-            side: side(b),
-          });
-          dots++;
+    // one ring around the centre, as before: a page's activities, or a
+    // section's pages when they have no room for a tree
+    const ringLayout = () => {
+      const r1 = Math.min(36, Math.max(30, 22 + n * 1.2));
+      const placed = [];
+      const lines = [];
+      m.nodes.forEach((node, i) => {
+        const a = (TAU * i) / Math.max(n, 1) - Math.PI / 2;
+        const [x, y] = pos(r1, a);
+        lines.push({
+          x1: 50,
+          y1: 50,
+          x2: x,
+          y2: y,
+          k: "spoke",
+          b: node.id,
+          state: node.kind === "page" ? node.state : undefined,
         });
-      }
-    });
-    // more around the circle, a bigger drawing (within the container)
-    const size = Math.round(
-      Math.min(760, Math.max(440, 360 + n * 28 + dots * 4)),
-    );
-    return { placed, lines, size };
+        placed.push({ node, x, y, ring: 1, side: side(a) });
+      });
+      const size = Math.round(Math.min(760, Math.max(440, 360 + n * 28)));
+      return { placed, lines, size };
+    };
+    if (pageLevel || !n) {
+      return ringLayout();
+    }
+    // The tree: at the top, you at the centre, sections around you and each
+    // section's pages outward from it, a ring per level of the outline;
+    // drilled into a section, its pages the same way around it. Each node
+    // owns a slice of the circle sized by the pages under it.
+    const groups = top
+      ? m.nodes.map((s) => ({ node: s, kids: s.children || [] }))
+      : [{ node: null, kids: m.nodes }];
+    const kidsOf = (list, pid) => list.filter((c) => c.parent === pid);
+    const weight = (list, id) => {
+      const k = kidsOf(list, id);
+      return k.length ? k.reduce((t, c) => t + weight(list, c.id), 0) : 1;
+    };
+    const room = this._mapRoom || 0;
+    const tryLayout = (show) => {
+      const dots = groups.reduce(
+        (t, g, i) => t + (show[i] ? g.kids.length : 0),
+        0,
+      );
+      // more around the circle, a bigger drawing (within the room there is)
+      const size = Math.round(
+        Math.min(MAP_MAX_SIZE, Math.max(440, 360 + n * 28 + dots * 9)),
+      );
+      const px = room ? Math.min(size, room) : size;
+      const depth = Math.max(
+        1,
+        ...groups.map((g, i) =>
+          show[i] ? Math.max(0, ...g.kids.map((c) => c.depth || 1)) : 0,
+        ),
+      );
+      const anyKids = show.some((s, i) => s && groups[i].kids.length);
+      // the ring for the sections (top) and one per level below
+      const r0 = top
+        ? anyKids
+          ? 16
+          : Math.min(36, Math.max(28, 22 + n * 1.2))
+        : 0;
+      const ring = (d) =>
+        top
+          ? r0 + ((MAP_OUTER - r0) * d) / depth
+          : 14 + ((MAP_OUTER - 14) * d) / depth;
+      const gap = groups.length > 1 ? 0.06 : 0;
+      const weights = groups.map((g, i) =>
+        show[i] && g.kids.length
+          ? weight(g.kids, top ? g.node.id : m.center.id)
+          : 1,
+      );
+      const total = weights.reduce((t, w) => t + w, 0);
+      const placed = [];
+      const lines = [];
+      const fits = [];
+      let start = -Math.PI / 2;
+      groups.forEach((g, i) => {
+        const span = ((TAU - gap * groups.length) * weights[i]) / total;
+        const mid = start + gap / 2 + span / 2;
+        let ok = true;
+        let px0 = 50;
+        let py0 = 50;
+        if (top) {
+          const [x, y] = pos(r0, mid);
+          px0 = x;
+          py0 = y;
+          lines.push({
+            x1: 50,
+            y1: 50,
+            x2: x,
+            y2: y,
+            k: "spoke",
+            b: g.node.id,
+            state: g.node.state,
+          });
+          placed.push({ node: g.node, x, y, ring: 1, side: side(mid) });
+        }
+        if (show[i] && g.kids.length) {
+          const rootId = top ? g.node.id : m.center.id;
+          const at = new Map();
+          // each node takes its share of the parent's slice, in outline order
+          const lay = (pid, from, width) => {
+            const kids = kidsOf(g.kids, pid);
+            const sum = kids.reduce((t, c) => t + weight(g.kids, c.id), 0);
+            let cur = from;
+            kids.forEach((c, j) => {
+              const share = (width * weight(g.kids, c.id)) / sum;
+              const a = cur + share / 2;
+              const leaf = !kidsOf(g.kids, c.id).length;
+              // crowded leaves step in and out so their dots keep apart
+              const arcPx = (share * ring(c.depth || 1) * px) / 100;
+              const stagger = leaf && arcPx < MAP_MIN_GAP && kids.length > 2;
+              const r =
+                ring(c.depth || 1) - (stagger && j % 2 ? MAP_STAGGER : 0);
+              if (
+                arcPx * (stagger ? 2 : 1) <
+                (leaf ? MAP_MIN_GAP : MAP_MIN_GAP * 1.6)
+              ) {
+                ok = false;
+              }
+              at.set(c.id, { a, r, share });
+              lay(c.id, cur, share);
+              cur += share;
+            });
+          };
+          lay(rootId, start + gap / 2, span);
+          // keyboard order stays outline order: the section, then its pages
+          g.kids.forEach((c) => {
+            const p = at.get(c.id);
+            if (!p) {
+              return;
+            }
+            const [x, y] = pos(p.r, p.a);
+            const from = c.parent && at.has(c.parent) ? at.get(c.parent) : null;
+            const [fx, fy] = from ? pos(from.r, from.a) : [px0, py0];
+            // bend toward the child's angle at the parent's ring
+            const [cx, cy] = from
+              ? pos(from.r, p.a)
+              : top
+                ? pos(r0, p.a)
+                : [50, 50];
+            lines.push({
+              x1: fx,
+              y1: fy,
+              cx,
+              cy,
+              x2: x,
+              y2: y,
+              k: "twig",
+              a: c.parent,
+              b: c.id,
+              state: c.state,
+            });
+            placed.push({
+              node: top ? { ...c, section: g.node.id } : c,
+              x,
+              y,
+              ring: 2,
+              branch: kidsOf(g.kids, c.id).length > 0,
+              side: side(p.a),
+            });
+          });
+        }
+        fits.push(ok);
+        start += span + gap;
+      });
+      return { placed, lines, size, fits };
+    };
+    // a section whose pages do not fit its slice shows as one node, as before
+    let show = groups.map((g) => g.kids.length > 0);
+    let out = tryLayout(show);
+    for (
+      let guard = 0;
+      guard < groups.length && out.fits.some((f, i) => show[i] && !f);
+      guard++
+    ) {
+      show = show.map((s, i) => s && out.fits[i]);
+      out = tryLayout(show);
+    }
+    // drilled into a section whose pages have no room for a tree
+    if (!top && !show[0]) {
+      out = ringLayout();
+    }
+    // pages an author marked as related, when both ends are drawn
+    if (this._mapRelated) {
+      const where = new Map(out.placed.map((p) => [p.node.id, p]));
+      const seen = new Set();
+      out.placed.forEach((p) => {
+        (p.node.related || []).forEach((rid) => {
+          const q = where.get(rid);
+          const key = [p.node.id, rid].sort().join("|");
+          if (q && !seen.has(key)) {
+            seen.add(key);
+            out.lines.push({
+              x1: p.x,
+              y1: p.y,
+              cx: (p.x + q.x) / 2 + (50 - (p.x + q.x) / 2) * 0.45,
+              cy: (p.y + q.y) / 2 + (50 - (p.y + q.y) / 2) * 0.45,
+              x2: q.x,
+              y2: q.y,
+              k: "related",
+              a: p.node.id,
+              b: rid,
+            });
+          }
+        });
+      });
+    }
+    return { placed: out.placed, lines: out.lines, size: out.size };
   }
   // nodes in keyboard order (the drawn ones), or every node (all, the table)
   _mapFlat(m, all = false) {
@@ -3269,6 +3590,12 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
     const order = new Map(
       flat.map((f, i) => [`${f.section || ""}|${f.id}`, i]),
     );
+    const focused = flat[this._mapFocus];
+    const focusId = focused ? focused.id : "";
+    const all = this._mapFlat(m, true);
+    const hasRelated =
+      m.center.kind !== "page" &&
+      all.some((f) => Array.isArray(f.related) && f.related.length);
     const stateWord = (st) => this._stateText(st);
     const center = top
       ? html`<span class="map-center you" aria-hidden="true"
@@ -3298,6 +3625,17 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
         </ol>
       </nav>
       <p class="map-keys" id="map-keys">${this.t.mapKeys}</p>
+      ${
+        hasRelated
+          ? html`<label class="map-related-toggle"
+              ><input
+                type="checkbox"
+                .checked="${this._mapRelated}"
+                @change="${(e) => (this._mapRelated = e.target.checked)}"
+              /><span>${this.t.mapShowRelated}</span></label
+            >`
+          : nothing
+      }
       <div
         class="map ${top ? "top" : "drilled"}"
         style="--map-size: ${size}px"
@@ -3308,13 +3646,18 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
         @keydown="${this._onMapKeydown}"
       >
         <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">
-          ${lines.map(
-            ([x1, y1, x2, y2, k]) =>
-              svg`<line class="${k}" x1="${x1.toFixed(2)}" y1="${y1.toFixed(2)}" x2="${x2.toFixed(2)}" y2="${y2.toFixed(2)}"></line>`,
-          )}
+          ${lines.map((l) => {
+            // the lines touching the node with focus stand out
+            const hi = focusId && (l.a === focusId || l.b === focusId);
+            const cls = `${l.k}${hi ? " hi" : ""}`;
+            const st = l.state || "";
+            return l.cx === undefined
+              ? svg`<line class="${cls}" data-state="${st}" x1="${l.x1.toFixed(2)}" y1="${l.y1.toFixed(2)}" x2="${l.x2.toFixed(2)}" y2="${l.y2.toFixed(2)}"></line>`
+              : svg`<path class="${cls}" data-state="${st}" d="M${l.x1.toFixed(2)} ${l.y1.toFixed(2)} Q${l.cx.toFixed(2)} ${l.cy.toFixed(2)} ${l.x2.toFixed(2)} ${l.y2.toFixed(2)}"></path>`;
+          })}
         </svg>
         ${center}
-        ${placed.map(({ node, x, y, ring, side }) => {
+        ${placed.map(({ node, x, y, ring, side, branch }) => {
           const idx = order.get(`${node.section || ""}|${node.id}`);
           const progress = this._mapProgress(node);
           const label = fill(
@@ -3323,17 +3666,18 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
           );
           const glyph =
             node.kind === "activity" ? this._glyphFor(node.tag) : "";
-          // pages in the outer ring are named by their button label only;
-          // long names are cut to two lines (the label has all of it)
+          // leaf pages are named by their button label only; sections and
+          // pages with pages under them (lessons) show their names, cut to
+          // two lines (the label has all of it)
           const name =
-            ring === 2
+            ring === 2 && !branch
               ? nothing
               : html`<span class="name" data-side="${side}" aria-hidden="true"
                   >${node.title}</span
                 >`;
           return html`<button
             type="button"
-            class="map-node ring-${ring}"
+            class="map-node ring-${ring}${branch ? " branch" : ""}"
             data-kind="${node.kind}"
             data-state="${node.state}"
             data-id="${node.id}"
@@ -3359,6 +3703,14 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
               >${stateWord(st)}
             </li>`,
         )}
+        ${
+          hasRelated && this._mapRelated
+            ? html`<li>
+                <span class="swatch related" aria-hidden="true"></span
+                >${this.t.mapRelatedKey}
+              </li>`
+            : nothing
+        }
       </ul>
       <p class="sr-only" role="status" aria-live="polite">
         ${this._mapMessage}
@@ -3374,15 +3726,25 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
               <th scope="col">${this.t.tableName}</th>
               <th scope="col">${this.t.tableState}</th>
               <th scope="col">${this.t.tableProgress}</th>
+              ${
+                hasRelated
+                  ? html`<th scope="col">${this.t.tableRelated}</th>`
+                  : nothing
+              }
             </tr>
           </thead>
           <tbody>
-            ${this._mapFlat(m, true).map(
+            ${all.map(
               (f) =>
                 html`<tr>
                   <th scope="row">${f.title}</th>
                   <td>${stateWord(f.state)}</td>
                   <td>${this._mapProgress(f)}</td>
+                  ${
+                    hasRelated
+                      ? html`<td>${this._relatedNames(all, f)}</td>`
+                      : nothing
+                  }
                 </tr>`,
             )}
           </tbody>
@@ -3417,11 +3779,43 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
     }
     const sel = flat[this._mapFocus];
     const target = sel && sel.kind === "page" ? this._pageTarget(sel.id) : null;
-    return target
+    const names =
+      sel && this._mapRelated
+        ? this._relatedNames(this._mapFlat(m, true), sel)
+        : "";
+    return target || names
       ? html`<div class="map-actions" part="map-actions">
-          ${this.renderGo(target, fill(this.t.goToNamed, { name: sel.title }))}
+          ${
+            target
+              ? this.renderGo(
+                  target,
+                  fill(this.t.goToNamed, { name: sel.title }),
+                )
+              : nothing
+          }
+          ${
+            names
+              ? html`<p class="map-related">
+                  ${fill(this.t.mapRelatedTo, { names })}
+                </p>`
+              : nothing
+          }
         </div>`
       : nothing;
+  }
+  // titles of the pages related to a node, both ways, as one line of text
+  _relatedNames(all, node) {
+    const ids = new Set(Array.isArray(node.related) ? node.related : []);
+    all.forEach((f) => {
+      if (Array.isArray(f.related) && f.related.includes(node.id)) {
+        ids.add(f.id);
+      }
+    });
+    const seen = new Set();
+    return all
+      .filter((f) => ids.has(f.id) && !seen.has(f.id) && seen.add(f.id))
+      .map((f) => f.title)
+      .join(", ");
   }
   renderMapGo(pageId, nd) {
     return html`<li data-id="${nd.id}" data-kind="activity">

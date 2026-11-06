@@ -5,6 +5,7 @@ import {
   activityKeyOfId,
   activityKindOf,
   goToActivity,
+  mapModel,
   MyLearningNavigation,
   outlineInOrder,
   pageListModel,
@@ -893,9 +894,9 @@ describe("my-learning dashboard", () => {
       expect(mapNodes(el).length).to.equal(2);
     });
 
-    it("shows sections only on a big site, every page still in the table", async () => {
+    it("shows sections only when their pages have no room, every page still in the table", async () => {
       const many = [item("big", null, 0, "Big section")];
-      for (let i = 0; i < 60; i++) {
+      for (let i = 0; i < 200; i++) {
         many.push(item(`b${i}`, "big", i, `Page ${i}`));
       }
       store.manifest = { ...JSON.parse(JSON.stringify(MANIFEST)), items: many };
@@ -908,10 +909,132 @@ describe("my-learning dashboard", () => {
       expect(mapNodes(el)[0].tabIndex).to.equal(0);
       expect(
         el.shadowRoot.querySelectorAll(".map ~ details tbody tr").length,
-      ).to.equal(61);
+      ).to.equal(201);
       mapNodes(el)[0].click();
       await el.updateComplete;
-      expect(mapNodes(el).length).to.equal(60);
+      expect(mapNodes(el).length).to.equal(200);
+    });
+
+    it("draws a big section's pages as a tree when they have room", async () => {
+      const many = [item("big", null, 0, "Big section")];
+      for (let i = 0; i < 60; i++) {
+        many.push(item(`b${i}`, "big", i, `Page ${i}`));
+      }
+      store.manifest = { ...JSON.parse(JSON.stringify(MANIFEST)), items: many };
+      store.activeId = "b1";
+      visit("b1");
+      const el = await make(
+        html`<my-learning scope="site" view="map"></my-learning>`,
+      );
+      el._mapRoom = 900;
+      await el.updateComplete;
+      expect(mapNodes(el).length).to.equal(61);
+      // with too little room the same section folds back to one node
+      el._mapRoom = 200;
+      await el.updateComplete;
+      expect(mapNodes(el).map((n) => n.dataset.id)).to.deep.equal(["big"]);
+    });
+
+    it("hangs each page under its own parent, one ring per level", async () => {
+      seed();
+      const el = await make(
+        html`<my-learning scope="site" view="map"></my-learning>`,
+      );
+      const m = el.mapView();
+      const ch1 = m.nodes.find((s) => s.id === "ch1");
+      expect(ch1.children.map((c) => [c.id, c.parent, c.depth])).to.deep.equal([
+        ["p1", "ch1", 1],
+        ["p2", "ch1", 1],
+        ["p2a", "p2", 2],
+      ]);
+      // a page with pages under it is a branch, named on the map
+      const p2 = mapNodes(el).find((n) => n.dataset.id === "p2");
+      expect(p2.classList.contains("branch")).to.equal(true);
+      expect(p2.querySelector(".name").textContent.trim()).to.equal("Energy");
+      const p1 = mapNodes(el).find((n) => n.dataset.id === "p1");
+      expect(p1.classList.contains("branch")).to.equal(false);
+      expect(p1.querySelector(".name")).to.equal(null);
+      // the line to a page carries that page's state
+      const twigs = [...el.shadowRoot.querySelectorAll(".map svg .twig")];
+      expect(twigs.map((t) => t.dataset.state)).to.deep.equal([
+        "done",
+        "in-progress",
+        "not-started",
+        "done",
+      ]);
+      // drilled into the section the tree keeps its levels
+      mapNodes(el)
+        .find((n) => n.dataset.id === "ch1")
+        .click();
+      await el.updateComplete;
+      expect(mapNodes(el).map((n) => n.dataset.id)).to.deep.equal([
+        "p1",
+        "p2",
+        "p2a",
+      ]);
+      expect(el.shadowRoot.querySelectorAll(".map svg .twig").length).to.equal(
+        3,
+      );
+      await expect(el).shadowDom.to.be.accessible();
+    });
+
+    it("draws pages an author marked as related, and can hide them", async () => {
+      seed();
+      const manifest = JSON.parse(JSON.stringify(MANIFEST));
+      manifest.items.find((i) => i.id === "p3").metadata.relatedItems =
+        "p1, p2a,p3,nope,p1";
+      store.manifest = manifest;
+      const el = await make(
+        html`<my-learning scope="site" view="map"></my-learning>`,
+      );
+      const related = () => [
+        ...el.shadowRoot.querySelectorAll(".map svg .related"),
+      ];
+      expect(related().length).to.equal(2);
+      expect(text(el, ".map-legend")).to.contain("Related pages");
+      // in the table, both ways
+      const rows = [
+        ...el.shadowRoot.querySelectorAll(".map ~ details tbody tr"),
+      ].map((tr) => [...tr.children].map((c) => c.textContent.trim()));
+      expect(rows.find((r) => r[0] === "Sound")[3]).to.equal(
+        "Waves 101, Energy deep dive",
+      );
+      expect(rows.find((r) => r[0] === "Waves 101")[3]).to.equal("Sound");
+      // focus a related page: its lines stand out, the names are said
+      const p1 = mapNodes(el).find((n) => n.dataset.id === "p1");
+      p1.focus();
+      await el.updateComplete;
+      expect(
+        el.shadowRoot.querySelectorAll(".map svg .related.hi").length,
+      ).to.equal(1);
+      expect(text(el, ".map-related")).to.equal("Related to: Sound");
+      const box = el.shadowRoot.querySelector(".map-related-toggle input");
+      box.click();
+      await el.updateComplete;
+      expect(related().length).to.equal(0);
+      expect(text(el, ".map-legend")).to.not.contain("Related pages");
+      await expect(el).shadowDom.to.be.accessible();
+    });
+
+    it("keeps related pages to ones in scope, once each, never itself", () => {
+      const items = JSON.parse(JSON.stringify(ITEMS));
+      items.find((i) => i.id === "p1").metadata.relatedItems = [
+        "p3",
+        " p3 ",
+        "p1",
+        "hidden",
+        "",
+      ];
+      const m = mapModel({
+        items,
+        pages: ["ch1", "p1", "p2", "p2a", "ch2", "p3"],
+        root: null,
+        pageRows: [],
+        activitiesByPage: {},
+      });
+      const p1 = m.nodes[0].children.find((c) => c.id === "p1");
+      expect(p1.related).to.deep.equal(["p3"]);
+      expect(m.nodes[1].related).to.deep.equal([]);
     });
 
     it("draws names as text", async () => {
