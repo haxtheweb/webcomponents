@@ -6,6 +6,10 @@ import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import {
+  HaxUiAdminTokens,
+  HaxUiAdminPrimitives,
+} from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
 
 export class AppHaxUserMenu extends I18NMixin(DDDSuper(LitElement)) {
   // a convention I enjoy so you can change the tag name in 1 place
@@ -18,6 +22,9 @@ export class AppHaxUserMenu extends I18NMixin(DDDSuper(LitElement)) {
     this.isOpen = false;
     this.icon = "account-circle";
     this.align = "end";
+    this.label = "";
+    this.shortcut = "";
+    this._groups = { pre: false, main: false, post: false };
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -84,116 +91,102 @@ export class AppHaxUserMenu extends I18NMixin(DDDSuper(LitElement)) {
       /** which edge the menu lines up with: "end" (default, opens leftward
        * from a right-side toggle) or "start" (opens rightward) */
       align: { type: String, reflect: true },
+      /** optional heading at the top of the open menu */
+      label: { type: String },
+      /** optional keyboard shortcut shown next to the heading */
+      shortcut: { type: String },
+      /** which slot groups have content, for the lines between them */
+      _groups: { type: Object, state: true },
     };
   }
 
   static get styles() {
     return [
       super.styles,
+      ...HaxUiAdminTokens,
+      ...HaxUiAdminPrimitives,
       css`
         :host {
-          font-family: var(--ddd-font-primary, sans-serif);
+          font-family: var(--hax-ui-admin-font-family);
           text-align: center;
           display: inline-block;
           margin: 0px;
           padding: 0px;
           position: relative;
         }
-
         .entireComponent {
           height: var(--ddd-spacing-16, 64px);
         }
-
         .menuToggle {
           cursor: pointer;
           height: var(--ddd-spacing-16, 64px);
         }
-
         .user-menu {
           display: none;
         }
-
+        /* a HAX UI popover: surface, line, 8px corners, rows inside */
         .user-menu.open {
           display: block;
-          top: var(--ddd-spacing-16, 64px);
-          right: 0px;
           position: absolute;
-          border: var(--ddd-border-xs, 1px solid)
-            var(--ddd-theme-default-slateGray, #666);
-          background: light-dark(white, black);
-          color: light-dark(black, white);
-          border-radius: none;
-          box-shadow: var(--ddd-boxShadow-lg);
-          min-width: var(--ddd-spacing-30, 200px);
+          top: calc(var(--ddd-spacing-16, 64px) - var(--hax-ui-gap, 4px));
+          right: 0px;
           z-index: 1000;
+          box-sizing: border-box;
+          min-width: var(--app-hax-user-menu-width, 280px);
+          padding: var(--hax-ui-gap-md, 8px);
+          text-align: left;
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-surface);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius-lg);
+          box-shadow: var(--hax-ui-shadow-popover);
           overflow: hidden;
         }
-
         :host([align="start"]) .user-menu.open {
           left: 0px;
           right: auto;
+        }
+        .menu-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: var(--hax-ui-gap-md, 8px);
+          padding: var(--hax-ui-gap, 4px) var(--hax-ui-gap-md, 8px)
+            var(--hax-ui-gap-md, 8px);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          font-weight: var(--ddd-font-weight-bold, 700);
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: var(--hax-ui-text-muted);
+        }
+        .menu-header .hax-ui-kbd {
+          letter-spacing: 0;
+          text-transform: none;
         }
         .user-menu.open ::slotted(*) {
           display: block;
           width: 100%;
           margin: 0;
-          font-size: var(--ddd-font-size-6xs, 12px);
-          text-align: left;
-          font-family: var(--ddd-font-primary, sans-serif);
-          color: light-dark(black, white);
-          background-color: light-dark(white, black);
           text-decoration: none;
         }
-
-        :host([dark]) .user-menu.open ::slotted(*) {
-          color: var(--ddd-theme-default-white, white);
-        }
-
-        .user-menu.open .main-menu ::slotted(*:hover),
-        .user-menu.open .main-menu ::slotted(*:active),
-        .user-menu.open .main-menu ::slotted(*:focus) {
-          background-color: light-dark(
-            var(--ddd-theme-default-limestoneGray, #f5f5f5),
-            var(--ddd-theme-default-coalyGray, #333)
-          );
-        }
-
-        :host([dark]) .user-menu.open .main-menu ::slotted(*:hover),
-        :host([dark]) .user-menu.open .main-menu ::slotted(*:active),
-        :host([dark]) .user-menu.open .main-menu ::slotted(*:focus),
-        body.dark-mode .user-menu.open .main-menu ::slotted(*:hover),
-        body.dark-mode .user-menu.open .main-menu ::slotted(*:active),
-        body.dark-mode .user-menu.open .main-menu ::slotted(*:focus) {
-          color: var(--ddd-theme-default-white, white);
-        }
-
-        .user-menu.open .post-menu ::slotted(*:hover),
-        .user-menu.open .post-menu ::slotted(*:active),
-        .user-menu.open .post-menu ::slotted(*:focus) {
-          background-color: var(--ddd-theme-default-original87Pink, #e4007c);
-        }
-
         .user-menu ::slotted(button) {
           cursor: pointer;
         }
-
+        /* groups are split by a thin line, as in the admin rail */
         .pre-menu,
+        .main-menu,
         .post-menu {
-          border-top: var(--ddd-border-xs, 1px solid)
-            var(--ddd-theme-default-limestoneGray, #f5f5f5);
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
         }
-
-        .pre-menu:first-child,
-        .main-menu:first-child {
-          border-top: none;
+        .group-line {
+          height: 1px;
+          margin: var(--hax-ui-gap-md, 8px) var(--hax-ui-gap, 4px);
+          background-color: var(--hax-ui-line);
         }
-
-        /* Keyboard focus indicators */
-        .user-menu ::slotted(*:focus),
-        .user-menu ::slotted(*[tabindex="0"]:focus) {
-          outline: var(--ddd-border-sm, 2px solid)
-            var(--ddd-theme-default-keystoneYellow, #ffd100);
-          outline-offset: -2px;
+        .group-line[hidden] {
+          display: none;
         }
       `,
     ];
@@ -223,32 +216,72 @@ export class AppHaxUserMenu extends I18NMixin(DDDSuper(LitElement)) {
           class="user-menu ${this.isOpen ? "open" : ""}"
           ?inert="${!this.isOpen}"
         >
+          ${
+            this.label
+              ? html`<div class="menu-header" part="menu-header">
+                  <span>${this.label}</span>
+                  ${
+                    this.shortcut
+                      ? html`<kbd class="hax-ui-kbd" aria-hidden="true"
+                          >${this.shortcut}</kbd
+                        >`
+                      : ""
+                  }
+                </div>`
+              : ""
+          }
           <div
             class="pre-menu"
             role="group"
             aria-label="${this.t.menuControls}"
           >
-            <slot name="pre-menu"></slot>
+            <slot name="pre-menu" @slotchange="${this._groupsChanged}"></slot>
           </div>
+          <div
+            class="group-line"
+            ?hidden="${!(this._groups.pre && this._groups.main)}"
+          ></div>
           <div
             class="main-menu"
             role="group"
             aria-label="${this.t.mainMenuItems}"
           >
-            <slot name="main-menu"></slot>
+            <slot name="main-menu" @slotchange="${this._groupsChanged}"></slot>
           </div>
+          <div
+            class="group-line"
+            ?hidden="${!(
+              this._groups.post &&
+              (this._groups.pre || this._groups.main)
+            )}"
+          ></div>
           <div
             class="post-menu"
             role="group"
             aria-label="${this.t.accountActions}"
           >
-            <slot name="post-menu"></slot>
+            <slot name="post-menu" @slotchange="${this._groupsChanged}"></slot>
           </div>
         </div>
       </div>
     `;
   }
 
+  /**
+   * Track which groups have slotted content so the dividers between
+   * them only show when both sides have something.
+   */
+  _groupsChanged() {
+    const has = (name) => {
+      const slot = this.shadowRoot.querySelector(`slot[name="${name}"]`);
+      return !!(slot && slot.assignedElements({ flatten: true }).length);
+    };
+    this._groups = {
+      pre: has("pre-menu"),
+      main: has("main-menu"),
+      post: has("post-menu"),
+    };
+  }
   /**
    * Handle keyboard navigation for menu toggle
    */

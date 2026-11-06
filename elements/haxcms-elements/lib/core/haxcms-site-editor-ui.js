@@ -165,11 +165,17 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
         /* Merlin's field draws its own HAX UI look and wand; this only
            places it, centered in the 64px bar */
+        /* centered on the same line as the bar's 40px buttons; it sits
+           16px after the hidden #merlin anchor, which is where the open
+           popover draws its own field, so the two line up exactly */
         super-daemon-search.merlin {
           border: none;
           height: var(--ddd-control-height-sm, 40px);
-          margin: var(--ddd-spacing-3) 0 0 0;
+          margin: 0 0 0 calc(var(--ddd-spacing-4, 16px) + 1px);
           --super-daemon-search-width: var(--haxcms-editor-merlin-width);
+        }
+        .toolbar-buttons.center-toolbar-buttons {
+          gap: 0;
         }
 
         :host([dark-mode]) #merlin {
@@ -370,58 +376,76 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         .haxLogo:focus-visible .logo-rest {
           visibility: hidden;
         }
+        /* a HAX UI menu row with a switch, like the dark mode row */
         .soundToggle {
           display: flex;
           align-items: center;
+          gap: var(--hax-ui-gap-md, 8px);
           width: 100%;
           border: none;
           margin: 0;
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
-          font-size: var(--ddd-font-size-6xs, 12px);
+          min-height: var(--hax-ui-row-height-roomy, 40px);
+          padding: 0 var(--hax-ui-gap-md, 8px);
+          border-radius: var(--hax-ui-radius);
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size);
+          font-weight: var(--ddd-font-weight-medium, 500);
           text-align: left;
-          font-family: var(--ddd-font-primary, sans-serif);
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray, #222),
-            var(--ddd-theme-default-white, white)
-          );
+          color: var(--hax-ui-text);
           background: transparent;
           cursor: pointer;
-          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
-          min-height: var(--ddd-spacing-8, 32px);
           box-sizing: border-box;
-          position: relative;
+          transition: background-color var(--hax-ui-duration)
+            var(--hax-ui-easing);
         }
-
         .soundToggle:hover,
-        .soundToggle:active,
-        .soundToggle:focus {
-          background-color: light-dark(
-            var(--ddd-theme-default-limestoneGray, #f5f5f5),
-            var(--ddd-theme-default-coalyGray, #333)
-          );
+        .soundToggle:focus-visible {
+          background-color: var(--hax-ui-hover);
         }
-
-        :host([dark-mode]) .soundToggle:hover,
-        :host([dark-mode]) .soundToggle:active,
-        :host([dark-mode]) .soundToggle:focus,
-        body.dark-mode .soundToggle:hover,
-        body.dark-mode .soundToggle:active,
-        body.dark-mode .soundToggle:focus {
-          color: var(--ddd-theme-default-white, white);
+        .soundToggle:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: -2px;
         }
-
         .soundToggle simple-icon-lite {
-          padding-right: var(--ddd-spacing-2, 8px);
           flex-shrink: 0;
           display: flex;
           align-items: center;
-          --simple-icon-width: var(--ddd-icon-xs, 24px);
-          --simple-icon-height: var(--ddd-icon-xs, 24px);
+          --simple-icon-width: var(--ddd-icon-3xs, 20px);
+          --simple-icon-height: var(--ddd-icon-3xs, 20px);
         }
-
         .sound-label {
           flex: 1;
           text-align: left;
+        }
+        .hax-ui-switch {
+          position: relative;
+          flex: none;
+          width: 36px;
+          height: 20px;
+          border-radius: var(--hax-ui-radius-pill);
+          background-color: var(--hax-ui-line-strong);
+          transition: background-color var(--hax-ui-duration)
+            var(--hax-ui-easing);
+        }
+        .hax-ui-switch .knob {
+          position: absolute;
+          top: 2px;
+          left: 2px;
+          width: 16px;
+          height: 16px;
+          border-radius: 50%;
+          background-color: var(--hax-ui-surface);
+          transition: transform var(--hax-ui-duration) var(--hax-ui-easing);
+        }
+        .soundToggle[aria-pressed="true"] .hax-ui-switch {
+          background-color: var(--hax-ui-primary);
+        }
+        .soundToggle[aria-pressed="true"] .hax-ui-switch .knob {
+          transform: translateX(16px);
+          background-color: var(--hax-ui-on-primary);
+        }
+        #site-menu {
+          --app-hax-user-menu-width: 320px;
         }
 
         :host([edit-mode]) simple-toolbar simple-toolbar-button,
@@ -3038,6 +3062,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       siteMenuStructure: "Structure",
       siteMenuFiles: "Files",
       siteMenuAppearance: "Appearance",
+      siteMenuDashboardDescription:
+        "How this site is doing and what to fix next",
+      siteMenuContentDescription: "Search, filter and replace across pages",
+      siteMenuStructureDescription: "Add, reorder and nest pages",
+      siteMenuFilesDescription: "Uploads and media",
+      siteMenuAppearanceDescription: "Theme, colors and regions",
       about: "About",
       themeSettings: "Theme Settings",
       seoSettings: "SEO Settings",
@@ -3325,26 +3355,32 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       {
         route: "reports",
         label: this.t.siteMenuDashboard,
+        description: this.t.siteMenuDashboardDescription,
         icon: HaxUiAdminIcons.reports,
       },
       {
         route: "content",
         label: this.t.siteMenuContent,
+        description: this.t.siteMenuContentDescription,
         icon: HaxUiAdminIcons.content,
       },
       {
         route: "structure",
         label: this.t.siteMenuStructure,
+        description: this.t.siteMenuStructureDescription,
+        shortcut: "Ctrl⇧5",
         icon: HaxUiAdminIcons.structure,
       },
       {
         route: "files",
         label: this.t.siteMenuFiles,
+        description: this.t.siteMenuFilesDescription,
         icon: HaxUiAdminIcons.files,
       },
       {
         route: "appearance",
         label: this.t.siteMenuAppearance,
+        description: this.t.siteMenuAppearanceDescription,
         icon: HaxUiAdminIcons.appearance,
       },
     ].filter((item) => this._adminRouteAllowed(item.route));
@@ -3477,6 +3513,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             id="user-menu"
             part="app-hax-user-menu"
             align="start"
+            label="${this.userName}"
+            shortcut="Ctrl⇧7"
             data-menu="user"
             ?is-open="${this.userMenuOpen}"
             @is-open-changed="${this._userMenuOpenChanged}"
@@ -3539,6 +3577,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                   aria-hidden="true"
                 ></simple-icon-lite>
                 <span class="sound-label">${this.t.soundEffects}</span>
+                <span class="hax-ui-switch" aria-hidden="true"
+                  ><span class="knob"></span
+                ></span>
               </button>
             </div>
             <slot
@@ -3580,6 +3621,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               slot="post-menu"
               part="logoutbtn"
               class="logout"
+              icon="icons:exit-to-app"
               label="${this.t.logOut}"
               @click=${this._logout}
             ></app-hax-user-menu-button>
@@ -3592,6 +3634,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               class="site-menu"
               part="site-menu"
               align="start"
+              label="${this.t.siteSettings}"
+              shortcut="Ctrl⇧6"
               data-menu="site"
               ?hidden="${this.editMode}"
               ?is-open="${this.siteMenuOpen}"
@@ -3620,6 +3664,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     data-route="${item.route}"
                     icon="${item.icon}"
                     label="${item.label}"
+                    description="${item.description}"
+                    shortcut="${item.shortcut || ""}"
                     @click="${this._siteMenuItemTap}"
                   ></app-hax-user-menu-button>`,
               )}
@@ -3639,6 +3685,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                   ></haxcms-button-add>`
                 : ``
             }
+            <span
+              class="topbar-divider"
+              aria-hidden="true"
+              ?hidden="${this.editMode}"
+            ></span>
             <simple-toolbar-button
               id="exportbtn"
               role="menuitem"
@@ -3875,6 +3926,77 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   }
 
   /**
+   * Positions of the left group's buttons that are showing, by id.
+   */
+  _topbarButtonRects() {
+    const rects = {};
+    const group =
+      this.shadowRoot && this.shadowRoot.querySelector(".left-toolbar-buttons");
+    if (!group) {
+      return rects;
+    }
+    Array.from(group.children).forEach((el) => {
+      if (el.id && !el.hidden) {
+        const r = el.getBoundingClientRect();
+        if (r.width > 0) {
+          rects[el.id] = r.left;
+        }
+      }
+    });
+    return rects;
+  }
+  /**
+   * Switching between view and edit mode slides the bar over instead of
+   * swapping it: buttons in both modes (Edit becoming Save) glide from
+   * their old spot to the new one, and the ones that just appeared slide
+   * in after them, one after another. Nothing moves with reduced motion.
+   */
+  _animateModeSwitch(before) {
+    if (
+      !globalThis.matchMedia ||
+      globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return;
+    }
+    const group = this.shadowRoot.querySelector(".left-toolbar-buttons");
+    if (!group || !group.animate) {
+      return;
+    }
+    const after = this._topbarButtonRects();
+    let appeared = 0;
+    Array.from(group.children).forEach((el) => {
+      if (!el.id || after[el.id] === undefined || !el.animate) {
+        return;
+      }
+      if (before[el.id] !== undefined) {
+        const dx = before[el.id] - after[el.id];
+        if (Math.abs(dx) > 1) {
+          el.animate(
+            [
+              { transform: `translateX(${dx}px)` },
+              { transform: "translateX(0)" },
+            ],
+            { duration: 300, easing: "cubic-bezier(0.2, 0, 0, 1)" },
+          );
+        }
+      } else {
+        el.animate(
+          [
+            { opacity: 0, transform: "translateX(-16px)" },
+            { opacity: 1, transform: "translateX(0)" },
+          ],
+          {
+            duration: 240,
+            delay: 30 * appeared,
+            easing: "cubic-bezier(0.2, 0, 0, 1)",
+            fill: "backwards",
+          },
+        );
+        appeared++;
+      }
+    });
+  }
+  /**
    * Line toasts up under Merlin: haxcms-toast reads --haxcms-toast-left /
    * --haxcms-toast-right from body. Measured, so it follows Merlin when the
    * bar's groups change width (edit mode, smaller screens).
@@ -3889,10 +4011,26 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (!rect || rect.width === 0) {
       bodyStyle.removeProperty("--haxcms-toast-left");
       bodyStyle.removeProperty("--haxcms-toast-right");
+      if (SuperDaemonInstance && SuperDaemonInstance.style) {
+        SuperDaemonInstance.style.removeProperty("--super-daemon-search-width");
+        SuperDaemonInstance.style.removeProperty("--super-daemon-width");
+      }
       return;
     }
     bodyStyle.setProperty("--haxcms-toast-left", `${Math.round(rect.left)}px`);
     bodyStyle.setProperty("--haxcms-toast-right", "auto");
+    // the open Merlin popover draws its own field; keep it the same width
+    // as the top bar field so it covers it exactly instead of overhanging
+    if (SuperDaemonInstance && SuperDaemonInstance.style) {
+      SuperDaemonInstance.style.setProperty(
+        "--super-daemon-search-width",
+        `${Math.round(rect.width)}px`,
+      );
+      SuperDaemonInstance.style.setProperty(
+        "--super-daemon-width",
+        `${Math.round(rect.width)}px`,
+      );
+    }
   }
 
   rpgStartWalk() {
@@ -5864,6 +6002,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (super.willUpdate) {
       super.willUpdate(changedProperties);
     }
+    // remember where the bar's buttons sit before a mode switch so the
+    // ones that stay can slide to their new place (see _animateModeSwitch)
+    if (
+      changedProperties.has("editMode") &&
+      changedProperties.get("editMode") !== undefined &&
+      this.shadowRoot
+    ) {
+      this.__modeSwitchRects = this._topbarButtonRects();
+    }
     // Derive reactive display state in willUpdate so it batches into the
     // current update cycle. Setting rpgHat / __editIcon / __editText in
     // updated() scheduled a redundant second update (Lit change-in-update
@@ -5908,6 +6055,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       changedProperties.has("responsiveSize")
     ) {
       this._syncToastAnchor();
+    }
+    if (changedProperties.has("editMode") && this.__modeSwitchRects) {
+      this._animateModeSwitch(this.__modeSwitchRects);
+      this.__modeSwitchRects = null;
     }
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "editMode") {
