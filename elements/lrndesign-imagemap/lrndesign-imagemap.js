@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit";
+import { sanitizedSvgFromMarkup } from "./lib/lrndesign-imagemap-sanitize.js";
 
 /**
  * `lrndesign-imagemap`
@@ -169,10 +170,13 @@ class LrndesignImagemap extends LitElement {
    * Convert from svg text to an array in the table function
    */
   _getSVGHandler(data) {
-    let loader = globalThis.document.createElement("div");
     let hotspots = [];
-    loader.innerHTML = data;
-    let svg = loader.querySelector("svg");
+    // security: parse inertly and strip script-capable parts before the svg
+    // reaches the page (was loader.innerHTML = data)
+    let svg = sanitizedSvgFromMarkup(data);
+    if (!svg) {
+      return;
+    }
 
     svg.slot = "svg";
     this.prepend(svg);

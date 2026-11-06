@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit";
+import { sanitizedSvgFromMarkup } from "./lrndesign-imagemap-sanitize.js";
 /**
  * `lrndesign-imagemap-hotspot`
  * creates an accessible image map
@@ -84,9 +85,11 @@ class LrndesignImagemapHotspot extends LitElement {
   }
 
   loadSvg(svg, hotspots) {
-    let div = globalThis.document.createElement("div");
-    div.innerHTML = svg;
-    let slot = div.children[0];
+    // security: same inert parse + sanitize as the parent element
+    let slot = sanitizedSvgFromMarkup(svg);
+    if (!slot) {
+      return;
+    }
     slot.slot = "svg";
     // the print svg sits in light DOM while these labels live in the
     // shadow root, so a cross-boundary IDREF would never resolve; label
@@ -101,7 +104,6 @@ class LrndesignImagemapHotspot extends LitElement {
     });
 
     this.appendChild(slot);
-    div.remove();
   }
 
   setParentHeading(parent) {

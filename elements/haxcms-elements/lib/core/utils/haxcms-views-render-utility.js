@@ -4,7 +4,12 @@
  */
 import { html, css } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
-import { sanitizeHTMLString } from "@haxtheweb/utils/utils.js";
+import {
+  sanitizeHTMLString,
+  sanitizeEmbeddableURL,
+  isEventHandlerAttribute,
+  isURLAttribute,
+} from "@haxtheweb/utils/utils.js";
 import { urlHostMatches } from "./urlHost.js";
 
 /**
@@ -227,6 +232,32 @@ export const attributeValue = (value) => {
     .trim();
 };
 
+// attributes that can load script or markup no matter what value they hold
+const BLOCKED_RECORD_ATTRIBUTES = ["srcdoc", "is"];
+
+/**
+ * security: record data in site-view can come from a remote JSON feed, so an
+ * attribute name is only accepted when it is a plain lowercase name. Anything
+ * else (quotes, spaces, ">", "=") could break out of the tag being built, and
+ * on* names / srcdoc would run script.
+ * @param {string} name attribute name from a record
+ * @returns {string} normalized safe name, or "" to drop the attribute
+ */
+export const safeRecordAttributeName = (name) => {
+  const key = safeString(name).trim().toLowerCase();
+  if (!/^[a-z][a-z0-9-]*$/.test(key)) {
+    return "";
+  }
+  // handler names never contain "-", so custom names like one-line survive
+  if (/^on[a-z]+$/.test(key) || isEventHandlerAttribute(key)) {
+    return "";
+  }
+  if (BLOCKED_RECORD_ATTRIBUTES.includes(key)) {
+    return "";
+  }
+  return key;
+};
+
 export const attributeStringFromProperties = (properties) => {
   if (
     !properties ||
@@ -238,11 +269,16 @@ export const attributeStringFromProperties = (properties) => {
   const keys = Object.keys(properties);
   let output = "";
   for (let i = 0; i < keys.length; i++) {
-    const key = safeString(keys[i]).trim();
+    const key = safeRecordAttributeName(keys[i]);
     if (!key) {
       continue;
     }
-    const normalizedValue = attributeValue(properties[key]);
+    let rawValue = properties[keys[i]];
+    // security: URL-bearing attributes only keep http(s) / relative values
+    if (isURLAttribute(key) && typeof rawValue === "string") {
+      rawValue = sanitizeEmbeddableURL(rawValue, "");
+    }
+    const normalizedValue = attributeValue(rawValue);
     if (!normalizedValue) {
       continue;
     }
@@ -269,12 +305,13 @@ export const renderRecordElementPreview = (record) => {
   const content =
     schema && typeof schema.content === "string" ? schema.content : "";
   const attributeString = attributeStringFromProperties(properties);
-  // security (F3/JS-XSS-001): sanitize raw record slot HTML before unsafeHTML;
-  // tag/attribute validation above is retained, only the slotted body is sanitized.
-  const safeContent = sanitizeHTMLString(content);
-  const elementMarkup = `<${tag}${attributeString}>${safeContent}</${tag}>`;
+  // security (F3/JS-XSS-001): attribute names and URL values are filtered in
+  // attributeStringFromProperties; the whole element (not only the slotted
+  // body) then goes through the shared sanitizer before reaching unsafeHTML,
+  // because records can come from a remote feed.
+  const elementMarkup = `<${tag}${attributeString}>${content}</${tag}>`;
   return html`<div class="record-element-preview">
-    ${unsafeHTML(elementMarkup)}
+    ${unsafeHTML(sanitizeHTMLString(elementMarkup))}
   </div>`;
 };
 
