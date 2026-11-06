@@ -1,4 +1,5 @@
-import { LitElement, html, css } from "lit";
+import { html, css } from "lit";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { sanitizedSvgFromMarkup } from "./lrndesign-imagemap-sanitize.js";
 /**
  * `lrndesign-imagemap-hotspot`
@@ -6,15 +7,26 @@ import { sanitizedSvgFromMarkup } from "./lrndesign-imagemap-sanitize.js";
  * @demo demo/index.html
  * @element lrndesign-imagemap-hotspot
  */
-class LrndesignImagemapHotspot extends LitElement {
+class LrndesignImagemapHotspot extends DDD {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
     return [
+      super.styles,
       css`
         :host {
           display: none;
+          font-family: var(--ddd-font-primary);
+        }
+        .hotspot-print {
+          margin: 0 0 var(--ddd-spacing-6);
+          break-inside: avoid;
+        }
+        #sub-heading h2 {
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-xs);
+          margin: 0 0 var(--ddd-spacing-2);
         }
         @media print {
           :host {

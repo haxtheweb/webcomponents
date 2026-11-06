@@ -131,6 +131,16 @@ export const XAPI_VOCABULARY = {
     done: "never required; records that the learner moved the slider",
     source: "elements/image-compare-slider/image-compare-slider.js",
   },
+  "lrndesign-imagemap": {
+    tag: "lrndesign-imagemap",
+    event: "user-engagement",
+    verbs: ["progressed", "completed"],
+    objectType: "http://adlnet.gov/expapi/activities/interaction",
+    result: ["completion", "score"],
+    countsTowardCompletion: false,
+    done: "never required; completed once every hotspot has been opened",
+    source: "elements/lrndesign-imagemap/lrndesign-imagemap.js",
+  },
   "lrs-emitter": {
     tag: "lrs-emitter",
     event: "user-engagement",
