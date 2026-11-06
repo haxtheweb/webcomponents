@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "Užklausa per didelė.",
   "INPUT_TOO_LARGE": "Įvestis per didelė (daugiausia {maxBytes} baitų).",
   "FILE_RATE_LIMITED": "Šioje svetainėje per daug failų operacijų. Bandykite dar kartą po {retryAfter}.",
+  "LINK_CHECK_RATE_LIMITED": "Šioje svetainėje per daug nuorodų patikrinimų. Bandykite dar kartą po {retryAfter}.",
   "SITE_NAME_INVALID": "Svetainių pavadinimuose galima naudoti tik raides, skaičius, brūkšnelius ir pabraukimo brūkšnius.",
   "USER_NAME_INVALID": "Naudotojų varduose galima naudoti tik raides, skaičius, brūkšnelius ir pabraukimo brūkšnius.",
   "SITE_NAME_REQUIRED": "Būtinas svetainės pavadinimas.",

@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "Yêu cầu quá lớn.",
   "INPUT_TOO_LARGE": "Dữ liệu đầu vào quá lớn (tối đa {maxBytes} byte).",
   "FILE_RATE_LIMITED": "Có quá nhiều thao tác với tệp trên trang web này. Hãy thử lại sau {retryAfter}.",
+  "LINK_CHECK_RATE_LIMITED": "Có quá nhiều lần kiểm tra liên kết trên trang web này. Hãy thử lại sau {retryAfter}.",
   "SITE_NAME_INVALID": "Tên trang web chỉ được dùng chữ cái, chữ số, dấu gạch ngang và dấu gạch dưới.",
   "USER_NAME_INVALID": "Tên người dùng chỉ được dùng chữ cái, chữ số, dấu gạch ngang và dấu gạch dưới.",
   "SITE_NAME_REQUIRED": "Cần có tên trang web.",

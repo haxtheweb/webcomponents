@@ -5,6 +5,11 @@
 import { LitElement, html, css, nothing } from "lit";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { InsightsStyles } from "../insights-styles.js";
+import {
+  linkCheckAvailable,
+  linkStatusSummary,
+  onLinkStatusChange,
+} from "../insights-link-status.js";
 
 const SEVERITY_TONE = { error: "danger", warning: "warning", info: "accent" };
 
@@ -41,6 +46,8 @@ class InsightsOverview extends I18NMixin(LitElement) {
       results: { type: Object, attribute: false },
       density: { type: String, reflect: true },
       _allFindings: { state: true },
+      _canCheck: { state: true },
+      _statusTick: { state: true },
     };
   }
 
@@ -49,6 +56,9 @@ class InsightsOverview extends I18NMixin(LitElement) {
     this.results = null;
     this.density = "default";
     this._allFindings = false;
+    this._canCheck = false;
+    this._statusTick = 0;
+    this.__unsubscribe = null;
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -96,6 +106,11 @@ class InsightsOverview extends I18NMixin(LitElement) {
       noneToCheck: "Nothing to check",
       outsideLinksResolve: "Outside links resolve",
       outsideLinksHow: "Share of outside links that answer",
+      outsideLinksAnswer: "outside links answer",
+      notCheckedYet: "Not checked yet",
+      ofChecked: "of {n} checked",
+      ofCheckedOne: "of 1 checked",
+      checkInLinks: "Check in Links",
       wherePagesLive: "Where the {n} pages live",
       wherePagesLiveOne: "Where the 1 page lives",
       foldersHint: "Pages per top-level URL folder",
@@ -231,6 +246,49 @@ class InsightsOverview extends I18NMixin(LitElement) {
     return this._f(this.t.hoursMinutes, { h: Math.floor(m / 60), m: m % 60 });
   }
 
+  connectedCallback() {
+    super.connectedCallback();
+    this.__unsubscribe = onLinkStatusChange(() => {
+      this._statusTick = this._statusTick + 1;
+    });
+    linkCheckAvailable().then((ok) => {
+      this._canCheck = ok;
+    });
+  }
+
+  disconnectedCallback() {
+    if (this.__unsubscribe) {
+      this.__unsubscribe();
+      this.__unsubscribe = null;
+    }
+    super.disconnectedCallback();
+  }
+
+  /**
+   * Outside link answers for this scan (checked on the Links screen), or
+   * null when this site cannot check links. `score` is the share that
+   * answered, or null before any check. Links with no definite answer
+   * (skipped, or "check by hand": the site refused an automated check) are
+   * left out of the score.
+   */
+  _outsideStatus() {
+    if (!this._canCheck) {
+      return null;
+    }
+    const links = this.results && this.results.links;
+    const urls =
+      links && links.outsideLinks && Array.isArray(links.outsideLinks.urls)
+        ? links.outsideLinks.urls
+        : [];
+    const summary = linkStatusSummary(urls.map((u) => u.href));
+    const total = summary.checked - summary.skipped - summary.check;
+    const passed = summary.ok + summary.redirected;
+    summary.passed = passed;
+    summary.scored = total;
+    summary.score = total > 0 ? Math.round((passed / total) * 100) : null;
+    return summary;
+  }
+
   _navigate(section) {
     const route = section === "overview" ? "reports" : `reports-${section}`;
     this.dispatchEvent(
@@ -270,6 +328,7 @@ class InsightsOverview extends I18NMixin(LitElement) {
     const s = o.stats || {};
     const nav = (this.results.nav && this.results.nav.freshness) || {};
     const soon = o.brokenOutsideLinks || {};
+    const outside = this._outsideStatus();
     const tiles = [
       {
         l: this.t.pages,
@@ -324,15 +383,38 @@ class InsightsOverview extends I18NMixin(LitElement) {
             <span class="l">${k.n}</span>
           </div>`,
       )}
-      <div class="kpi soon-tile" data-tone="soon">
-        <span class="l">${this.t.brokenOutsideLinks}</span>
-        <span class="v"
-          ><span class="hax-ui-pill" data-tone="soon"
-            >${this.t.comingSoon}</span
-          ></span
-        >
-        <span class="l">${soon.needs || ""}</span>
-      </div>
+      ${
+        outside
+          ? html`<div
+              class="kpi broken-tile"
+              data-tone="${outside.broken ? "danger" : ""}"
+            >
+              <span class="l">${this.t.brokenOutsideLinks}</span>
+              <span class="v"
+                >${outside.checked ? this._n(outside.broken) : "–"}</span
+              >
+              <span class="l"
+                >${
+                  outside.checked
+                    ? this._p(
+                        outside.checked,
+                        this.t.ofCheckedOne,
+                        this.t.ofChecked,
+                      )
+                    : this.t.notCheckedYet
+                }</span
+              >
+            </div>`
+          : html`<div class="kpi soon-tile" data-tone="soon">
+              <span class="l">${this.t.brokenOutsideLinks}</span>
+              <span class="v"
+                ><span class="hax-ui-pill" data-tone="soon"
+                  >${this.t.comingSoon}</span
+                ></span
+              >
+              <span class="l">${soon.needs || ""}</span>
+            </div>`
+      }
     </section>`;
   }
 
@@ -420,16 +502,28 @@ class InsightsOverview extends I18NMixin(LitElement) {
     const checks = h.checks || [];
     const outside = h.outsideLinks || {};
     const th = this.results.thresholds || {};
-    const noScore = h.score === null || h.score === undefined;
+    const live = this._outsideStatus();
+    // once outside links are checked they count toward the average too
+    let score = h.score;
+    if (live && live.score !== null) {
+      const scored = checks.filter(
+        (c) => c.score !== null && c.score !== undefined,
+      );
+      score = Math.round(
+        (scored.reduce((n, c) => n + c.score, 0) + live.score) /
+          (scored.length + 1),
+      );
+    }
+    const noScore = score === null || score === undefined;
     const scoreLabel = noScore
       ? this.t.noScore
-      : this._f(this.t.healthScore, { n: h.score });
+      : this._f(this.t.healthScore, { n: score });
     return html`<section aria-labelledby="site-health">
       <h3 class="block" id="site-health">
         ${this.t.siteHealth}
         <span
           class="hax-ui-pill health-score"
-          data-tone="${scoreTone(h.score, th)}"
+          data-tone="${scoreTone(score, th)}"
           title="${noScore ? this.t.noScoreLabel : ""}"
           >${scoreLabel}${
             noScore
@@ -474,19 +568,70 @@ class InsightsOverview extends I18NMixin(LitElement) {
               </div>
             </li>`,
         )}
-        <li class="soon-row">
-          <span class="t"
-            >${this.t.outsideLinksResolve}<span class="d"
-              >${this.t.outsideLinksHow}</span
-            ></span
-          >
-          <span class="hax-ui-pill" data-tone="soon" title="${outside.needs}"
-            >${this.t.comingSoon}</span
-          >
-          <span class="sr-only">${outside.needs}</span>
-        </li>
+        ${
+          live
+            ? this._renderOutsideRow(live, th)
+            : html`<li class="soon-row">
+                <span class="t"
+                  >${this.t.outsideLinksResolve}<span class="d"
+                    >${this.t.outsideLinksHow}</span
+                  ></span
+                >
+                <span
+                  class="hax-ui-pill"
+                  data-tone="soon"
+                  title="${outside.needs}"
+                  >${this.t.comingSoon}</span
+                >
+                <span class="sr-only">${outside.needs}</span>
+              </li>`
+        }
       </ul>
     </section>`;
+  }
+
+  _renderOutsideRow(live, th) {
+    if (live.score === null) {
+      return html`<li class="outside-row" data-check="outsideLinks">
+        <span class="t"
+          >${this.t.outsideLinksResolve}<span class="d"
+            >${live.total ? this.t.notCheckedYet : this.t.noneToCheck}</span
+          ></span
+        >
+        ${
+          live.total
+            ? html`<button
+                type="button"
+                class="sbtn check-in-links"
+                @click="${() => this._navigate("links")}"
+              >
+                ${this.t.checkInLinks}
+              </button>`
+            : nothing
+        }
+      </li>`;
+    }
+    return html`<li class="outside-row" data-check="outsideLinks">
+      <div class="score">
+        <span class="t"
+          >${this.t.outsideLinksResolve}<span class="d"
+            >${this._f(this.t.passedOf, {
+              passed: this._n(live.passed),
+              total: this._n(live.scored),
+              how: this.t.outsideLinksAnswer,
+            })}</span
+          ></span
+        >
+        <span class="track" aria-hidden="true"
+          ><span
+            class="fill"
+            data-tone="${scoreTone(live.score, th)}"
+            style="width: ${Math.max(live.score, 2)}%"
+          ></span
+        ></span>
+        <span class="num">${live.score}%</span>
+      </div>
+    </li>`;
   }
 
   _renderFolders(o) {

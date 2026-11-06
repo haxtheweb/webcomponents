@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "リクエストが大きすぎます。",
   "INPUT_TOO_LARGE": "入力が大きすぎます（最大 {maxBytes} バイト）。",
   "FILE_RATE_LIMITED": "このサイトでのファイル操作が多すぎます。{retryAfter}後にもう一度お試しください。",
+  "LINK_CHECK_RATE_LIMITED": "このサイトでのリンクチェックが多すぎます。{retryAfter}後にもう一度お試しください。",
   "SITE_NAME_INVALID": "サイト名には英数字、ハイフン、アンダースコアのみ使用できます。",
   "USER_NAME_INVALID": "ユーザー名には英数字、ハイフン、アンダースコアのみ使用できます。",
   "SITE_NAME_REQUIRED": "サイト名は必須です。",

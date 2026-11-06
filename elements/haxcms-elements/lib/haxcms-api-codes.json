@@ -286,6 +286,13 @@
       ]
     },
     {
+      "code": "LINK_CHECK_RATE_LIMITED",
+      "en": "Too many link checks on this site. Try again in {retryAfter}.",
+      "match": [
+        "link check limit reached: (?<max>\\d+) checks per (?<window>.+?) for this site\\. you can retry in (?<retryAfter>.+?)"
+      ]
+    },
+    {
       "code": "SITE_NAME_INVALID",
       "en": "Site names can only use letters, numbers, hyphens and underscores.",
       "match": ["invalid site name", "sitename must be a valid machine name.*"]

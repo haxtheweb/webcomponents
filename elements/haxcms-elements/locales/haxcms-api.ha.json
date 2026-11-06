@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "Buƙatar ta yi girma da yawa.",
   "INPUT_TOO_LARGE": "Shigarwar ta yi girma da yawa (mafi yawa {maxBytes} bytes).",
   "FILE_RATE_LIMITED": "Ayyukan fayil sun yi yawa a wannan shafin yanar gizo. Sake gwadawa bayan {retryAfter}.",
+  "LINK_CHECK_RATE_LIMITED": "Binciken hanyoyin haɗi sun yi yawa a wannan shafin yanar gizo. Sake gwadawa bayan {retryAfter}.",
   "SITE_NAME_INVALID": "Sunayen shafin yanar gizo za su iya amfani da haruffa, lambobi, alamar hayfin da alamar ƙasan layi kawai.",
   "USER_NAME_INVALID": "Sunayen masu amfani za su iya amfani da haruffa, lambobi, alamar hayfin da alamar ƙasan layi kawai.",
   "SITE_NAME_REQUIRED": "Ana buƙatar sunan shafin yanar gizo.",

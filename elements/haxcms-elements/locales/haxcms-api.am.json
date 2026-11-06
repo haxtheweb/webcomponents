@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "ጥያቄው በጣም ትልቅ ነው።",
   "INPUT_TOO_LARGE": "ግብዓቱ በጣም ትልቅ ነው (ከፍተኛ {maxBytes} ባይት)።",
   "FILE_RATE_LIMITED": "በዚህ ጣቢያ ላይ በጣም ብዙ የፋይል ክዋኔዎች። ከ{retryAfter} በኋላ እንደገና ይሞክሩ።",
+  "LINK_CHECK_RATE_LIMITED": "በዚህ ጣቢያ ላይ በጣም ብዙ የአገናኝ ፍተሻዎች። ከ{retryAfter} በኋላ እንደገና ይሞክሩ።",
   "SITE_NAME_INVALID": "የጣቢያ ስሞች ፊደላትን፣ ቁጥሮችን፣ ሰረዞችን እና የስር መስመሮችን ብቻ መጠቀም ይችላሉ።",
   "USER_NAME_INVALID": "የተጠቃሚ ስሞች ፊደላትን፣ ቁጥሮችን፣ ሰረዞችን እና የስር መስመሮችን ብቻ መጠቀም ይችላሉ።",
   "SITE_NAME_REQUIRED": "የጣቢያ ስም ያስፈልጋል።",

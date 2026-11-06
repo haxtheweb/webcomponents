@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "Pieprasījums ir pārāk liels.",
   "INPUT_TOO_LARGE": "Ievade ir pārāk liela (maksimums {maxBytes} baiti).",
   "FILE_RATE_LIMITED": "Šajā vietnē ir pārāk daudz failu darbību. Mēģiniet vēlreiz pēc {retryAfter}.",
+  "LINK_CHECK_RATE_LIMITED": "Šajā vietnē ir pārāk daudz saišu pārbaužu. Mēģiniet vēlreiz pēc {retryAfter}.",
   "SITE_NAME_INVALID": "Vietņu nosaukumos var izmantot tikai burtus, ciparus, defises un pasvītras.",
   "USER_NAME_INVALID": "Lietotājvārdos var izmantot tikai burtus, ciparus, defises un pasvītras.",
   "SITE_NAME_REQUIRED": "Vietnes nosaukums ir obligāts.",

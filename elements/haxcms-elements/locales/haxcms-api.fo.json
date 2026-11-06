@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "Umbønin er ov stór.",
   "INPUT_TOO_LARGE": "Inntakið er ov stórt (í mesta lagi {maxBytes} být).",
   "FILE_RATE_LIMITED": "Ov nógvar fíluviðgerðir á hesi heimasíðuni. Royn aftur um {retryAfter}.",
+  "LINK_CHECK_RATE_LIMITED": "Ov nógvar leinkjukanningar á hesi heimasíðuni. Royn aftur um {retryAfter}.",
   "SITE_NAME_INVALID": "Heimasíðunøvn kunnu bert innihalda bókstavir, tøl, bindistrikur og undirstrikur.",
   "USER_NAME_INVALID": "Brúkaranøvn kunnu bert innihalda bókstavir, tøl, bindistrikur og undirstrikur.",
   "SITE_NAME_REQUIRED": "Eitt heimasíðunavn krevst.",

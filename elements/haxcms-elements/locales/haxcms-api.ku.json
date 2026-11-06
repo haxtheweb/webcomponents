@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "Daxwaz pir mezin e.",
   "INPUT_TOO_LARGE": "Têketin pir mezin e (herî zêde {maxBytes} bayt).",
   "FILE_RATE_LIMITED": "Li ser vê malperê gelek karên pelan hene. Piştî {retryAfter} dîsa biceribîne.",
+  "LINK_CHECK_RATE_LIMITED": "Li ser vê malperê gelek kontrolên girêdanan hene. Piştî {retryAfter} dîsa biceribîne.",
   "SITE_NAME_INVALID": "Navên malperê tenê dikarin tîp, hejmar, xêzik û binxêzan bi kar bînin.",
   "USER_NAME_INVALID": "Navên bikarhêner tenê dikarin tîp, hejmar, xêzik û binxêzan bi kar bînin.",
   "SITE_NAME_REQUIRED": "Navê malperê pêwîst e.",

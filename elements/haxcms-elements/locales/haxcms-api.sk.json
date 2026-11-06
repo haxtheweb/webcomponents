@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "Požiadavka je príliš veľká.",
   "INPUT_TOO_LARGE": "Vstup je príliš veľký (maximálne {maxBytes} bajtov).",
   "FILE_RATE_LIMITED": "Príliš veľa operácií so súbormi na tejto lokalite. Skúste to znova o {retryAfter}.",
+  "LINK_CHECK_RATE_LIMITED": "Príliš veľa kontrol odkazov na tejto lokalite. Skúste to znova o {retryAfter}.",
   "SITE_NAME_INVALID": "Názov lokality môže obsahovať iba písmená, číslice, spojovníky a podčiarkovníky.",
   "USER_NAME_INVALID": "Používateľské meno môže obsahovať iba písmená, číslice, spojovníky a podčiarkovníky.",
   "SITE_NAME_REQUIRED": "Názov lokality je povinný.",

@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "Tá an t-iarratas rómhór.",
   "INPUT_TOO_LARGE": "Tá an t-ionchur rómhór ({maxBytes} beart ar a mhéad).",
   "FILE_RATE_LIMITED": "An iomarca oibríochtaí comhad ar an suíomh seo. Bain triail eile as i gceann {retryAfter}.",
+  "LINK_CHECK_RATE_LIMITED": "An iomarca seiceálacha naisc ar an suíomh seo. Bain triail eile as i gceann {retryAfter}.",
   "SITE_NAME_INVALID": "Ní féidir ach litreacha, uimhreacha, fleiscíní agus fostrící a úsáid in ainmneacha suíomh.",
   "USER_NAME_INVALID": "Ní féidir ach litreacha, uimhreacha, fleiscíní agus fostrící a úsáid in ainmneacha úsáideora.",
   "SITE_NAME_REQUIRED": "Tá ainm suímh ag teastáil.",

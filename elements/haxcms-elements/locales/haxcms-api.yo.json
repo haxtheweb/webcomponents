@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "Ìbéèrè náà ti tóbi jù.",
   "INPUT_TOO_LARGE": "Ohun tí a fi sí i ti tóbi jù (ó pọ̀ jù lọ báìtì {maxBytes}).",
   "FILE_RATE_LIMITED": "Iṣẹ́ fáìlì ti pọ̀ jù lórí ojú-òpó yìí. Gbìyànjú lẹ́ẹ̀kan sí i lẹ́yìn {retryAfter}.",
+  "LINK_CHECK_RATE_LIMITED": "Àyẹ̀wò ìjápọ̀ ti pọ̀ jù lórí ojú-òpó yìí. Gbìyànjú lẹ́ẹ̀kan sí i lẹ́yìn {retryAfter}.",
   "SITE_NAME_INVALID": "Orúkọ ojú-òpó lè lo lẹ́tà, nọ́ńbà, àmì-ìdápọ̀ àti àmì-ìlà-ìsàlẹ̀ nìkan.",
   "USER_NAME_INVALID": "Orúkọ olùmúlò lè lo lẹ́tà, nọ́ńbà, àmì-ìdápọ̀ àti àmì-ìlà-ìsàlẹ̀ nìkan.",
   "SITE_NAME_REQUIRED": "A nílò orúkọ ojú-òpó.",

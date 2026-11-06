@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "La richiesta è troppo grande.",
   "INPUT_TOO_LARGE": "L'input è troppo grande (massimo {maxBytes} byte).",
   "FILE_RATE_LIMITED": "Troppe operazioni sui file in questo sito. Riprova tra {retryAfter}.",
+  "LINK_CHECK_RATE_LIMITED": "Troppi controlli dei link in questo sito. Riprova tra {retryAfter}.",
   "SITE_NAME_INVALID": "I nomi dei siti possono contenere solo lettere, numeri, trattini e trattini bassi.",
   "USER_NAME_INVALID": "I nomi utente possono contenere solo lettere, numeri, trattini e trattini bassi.",
   "SITE_NAME_REQUIRED": "Il nome del sito è obbligatorio.",

@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "It fersyk is te grut.",
   "INPUT_TOO_LARGE": "De ynfier is te grut (maksimaal {maxBytes} bytes).",
   "FILE_RATE_LIMITED": "Te folle bestânsoperaasjes op dizze webside. Probearje it nochris oer {retryAfter}.",
+  "LINK_CHECK_RATE_LIMITED": "Te folle kontrôles fan keppelings op dizze webside. Probearje it nochris oer {retryAfter}.",
   "SITE_NAME_INVALID": "Websidenammen meie allinnich letters, sifers, keppeltekens en ûnderstreekjes befetsje.",
   "USER_NAME_INVALID": "Brûkersnammen meie allinnich letters, sifers, keppeltekens en ûnderstreekjes befetsje.",
   "SITE_NAME_REQUIRED": "In websidenamme is fereaske.",

@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "Zahtjev je prevelik.",
   "INPUT_TOO_LARGE": "Unos je prevelik (najviše {maxBytes} bajtova).",
   "FILE_RATE_LIMITED": "Previše radnji s datotekama na ovom web-mjestu. Pokušajte ponovno za {retryAfter}.",
+  "LINK_CHECK_RATE_LIMITED": "Previše provjera poveznica na ovom web-mjestu. Pokušajte ponovno za {retryAfter}.",
   "SITE_NAME_INVALID": "Nazivi web-mjesta mogu sadržavati samo slova, brojeve, crtice i podvlake.",
   "USER_NAME_INVALID": "Korisnička imena mogu sadržavati samo slova, brojeve, crtice i podvlake.",
   "SITE_NAME_REQUIRED": "Naziv web-mjesta je obavezan.",

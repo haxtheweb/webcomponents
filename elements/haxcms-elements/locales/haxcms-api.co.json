@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "A dumanda hè troppu grande.",
   "INPUT_TOO_LARGE": "L'entrata hè troppu grande (massimu {maxBytes} ottetti).",
   "FILE_RATE_LIMITED": "Troppu operazioni nant'à i schedarii in stu situ. Ripruvate trà {retryAfter}.",
+  "LINK_CHECK_RATE_LIMITED": "Troppu verificazioni di ligami in stu situ. Ripruvate trà {retryAfter}.",
   "SITE_NAME_INVALID": "I nomi di situ ponu cuntene solu lettere, cifre, trattini è trattini bassi.",
   "USER_NAME_INVALID": "I nomi d'utilizatore ponu cuntene solu lettere, cifre, trattini è trattini bassi.",
   "SITE_NAME_REQUIRED": "Ci vole un nome di situ.",

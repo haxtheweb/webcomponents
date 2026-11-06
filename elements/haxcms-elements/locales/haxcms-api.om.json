@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "Gaaffichi baay'ee guddaa dha.",
   "INPUT_TOO_LARGE": "Galtee baay'ee guddaa dha (yoo baay'ate baayitii {maxBytes}).",
   "FILE_RATE_LIMITED": "Marsariitii kana irratti hojiiwwan faayilii baay'ee raawwatamaniiru. {retryAfter} booda irra deebi'aa yaali.",
+  "LINK_CHECK_RATE_LIMITED": "Marsariitii kana irratti sakatta'iinsi hidhannoo baay'ee raawwatameera. {retryAfter} booda irra deebi'aa yaali.",
   "SITE_NAME_INVALID": "Maqaaleen marsariitii qubee, lakkoofsa, sarara gabaabaa fi sarara jalaa qofa fayyadamuu danda'u.",
   "USER_NAME_INVALID": "Maqaaleen fayyadamaa qubee, lakkoofsa, sarara gabaabaa fi sarara jalaa qofa fayyadamuu danda'u.",
   "SITE_NAME_REQUIRED": "Maqaan marsariitii barbaachisa.",

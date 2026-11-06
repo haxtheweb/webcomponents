@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "Mañakuyqa ancha hatunmi.",
   "INPUT_TOO_LARGE": "Qillqasqaqa ancha hatunmi (aswan achkha {maxBytes} byte).",
   "FILE_RATE_LIMITED": "Kay web sitiopi ancha achkha archivo llamk'aykuna. {retryAfter} qhipaman yapamanta kallpanchakuy.",
+  "LINK_CHECK_RATE_LIMITED": "Kay web sitiopi ancha achkha t'inkikuna qhawaykuna. {retryAfter} qhipaman yapamanta kallpanchakuy.",
   "SITE_NAME_INVALID": "Web sitiopa sutinpiqa qillqakunallata, yupaykunallata, guionkunallata, guion bajokunallatam churayta atikun.",
   "USER_NAME_INVALID": "Ruraqpa sutinpiqa qillqakunallata, yupaykunallata, guionkunallata, guion bajokunallatam churayta atikun.",
   "SITE_NAME_REQUIRED": "Web sitiopa sutinmi necesitakun.",

@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "La sol·licitud és massa gran.",
   "INPUT_TOO_LARGE": "L'entrada és massa gran (màxim {maxBytes} bytes).",
   "FILE_RATE_LIMITED": "Massa operacions amb fitxers en aquest lloc. Torneu-ho a provar d'aquí a {retryAfter}.",
+  "LINK_CHECK_RATE_LIMITED": "Massa comprovacions d'enllaços en aquest lloc. Torneu-ho a provar d'aquí a {retryAfter}.",
   "SITE_NAME_INVALID": "Els noms de lloc només poden contenir lletres, números, guions i guions baixos.",
   "USER_NAME_INVALID": "Els noms d'usuari només poden contenir lletres, números, guions i guions baixos.",
   "SITE_NAME_REQUIRED": "Cal un nom de lloc.",

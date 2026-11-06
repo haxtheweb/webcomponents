@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "Soʻrov juda katta.",
   "INPUT_TOO_LARGE": "Kiritilgan maʼlumot juda katta (koʻpi bilan {maxBytes} bayt).",
   "FILE_RATE_LIMITED": "Bu saytda fayl amallari juda koʻp. {retryAfter} dan keyin qayta urinib koʻring.",
+  "LINK_CHECK_RATE_LIMITED": "Bu saytda havola tekshiruvlari juda koʻp. {retryAfter} dan keyin qayta urinib koʻring.",
   "SITE_NAME_INVALID": "Sayt nomlarida faqat harflar, raqamlar, defis va pastki chiziq ishlatilishi mumkin.",
   "USER_NAME_INVALID": "Foydalanuvchi nomlarida faqat harflar, raqamlar, defis va pastki chiziq ishlatilishi mumkin.",
   "SITE_NAME_REQUIRED": "Sayt nomi kiritilishi shart.",

@@ -83,7 +83,10 @@
  *            leanOnHosts: [{ pageId, slug, title, embeds, videos, worksheets,
  *                            hosts }],
  *            embedHosts: [{ host, count }],
- *            outsideLinks: { total, hosts }, outsideLinkStatus: unavailable },
+ *            outsideLinks: { total, hosts,
+ *                            urls: [{ href, host, pages: [{ pageId, slug,
+ *                                     title }] }] },
+ *            outsideLinkStatus: unavailable },
  *   media: { kpis, videosPerPage: [bucket],
  *            noMedia: [{ pageId, slug, title }],
  *            bySection: [row], mediaIndex: { videos, images }, pages: [row],
@@ -1226,6 +1229,8 @@ export function siteResults(factsList, manifest, spec, options = {}) {
   const tracking = tagSet(spec.links.trackingParams);
   const linkRows = [];
   const outsideHosts = {};
+  // href as written -> { href, host, pages } for the link status check
+  const outsideUrls = {};
   let outsideTotal = 0;
   let unnamedLinks = 0;
   let unnamedPages = 0;
@@ -1292,6 +1297,17 @@ export function siteResults(factsList, manifest, spec, options = {}) {
       if (target.kind === "outside") {
         outsideTotal++;
         outsideHosts[target.host] = (outsideHosts[target.host] || 0) + 1;
+        if (!Object.prototype.hasOwnProperty.call(outsideUrls, link.href)) {
+          outsideUrls[link.href] = {
+            href: link.href,
+            host: target.host,
+            pages: [],
+          };
+        }
+        const usedOn = outsideUrls[link.href].pages;
+        if (!usedOn.some((p) => p.pageId === f.id)) {
+          usedOn.push({ pageId: f.id, slug: f.slug, title: pageLabel(f) });
+        }
         const params = [];
         target.url.searchParams.forEach((v, k) => {
           if (tracking.has(k.toLowerCase())) {
@@ -3162,6 +3178,12 @@ export function siteResults(factsList, manifest, spec, options = {}) {
         hosts: Object.keys(outsideHosts)
           .map((host) => ({ host, count: outsideHosts[host] }))
           .sort((a, b) => b.count - a.count || (a.host < b.host ? -1 : 1)),
+        urls: Object.keys(outsideUrls)
+          .map((href) => outsideUrls[href])
+          .sort(
+            (a, b) =>
+              b.pages.length - a.pages.length || (a.href < b.href ? -1 : 1),
+          ),
       },
       outsideLinkStatus: unavailable(spec, "outsideLinkStatus"),
     },

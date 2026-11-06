@@ -5,6 +5,7 @@ import { HAXCMSI18NMixin } from "./utils/HAXCMSI18NMixin.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
 import { waitForHAXCMSSiteApiRegistryReady } from "./utils/haxcms-site-api-registry.js";
+import { checkLinks, getLinkStatus } from "./insights/insights-link-status.js";
 import "@haxtheweb/editable-table/lib/editable-table-display.js";
 import "@haxtheweb/simple-fields/simple-fields.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
@@ -1673,21 +1674,35 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     }
     return this.t.linkStatusUnknown;
   }
+  // Outside link status comes from this site's own backend
+  // (POST x/api/v1/site/check-links via insights-link-status.js), not the
+  // open-apis linkValidator service (haxtheweb/issues#3167).
   _ensureLinkValidationData(linkData) {
     if (!linkData || typeof linkData !== "object") {
       return;
     }
-    Object.keys(linkData).forEach((key) => {
-      if (!this.linkResponseData[key]) {
-        this.linkResponseData[key] = {
-          ok: "loading",
-        };
-        MicroFrontendRegistry.call(
-          "@core/linkValidator",
-          { links: key },
-          this.__linkValidationHandler,
-        );
-      }
+    const pending = Object.keys(linkData).filter(
+      (key) => !this.linkResponseData[key],
+    );
+    if (!pending.length) {
+      return;
+    }
+    pending.forEach((key) => {
+      this.linkResponseData[key] = { ok: "loading" };
+    });
+    checkLinks(pending).then(() => {
+      const data = {};
+      pending.forEach((key) => {
+        const row = getLinkStatus(key);
+        data[key] = !row
+          ? {}
+          : row.state === "ok" || row.state === "redirected"
+            ? { ok: true, status: row.status }
+            : row.state === "broken"
+              ? { ok: false, status: row.status }
+              : {};
+      });
+      this.linkValidationResponse({ data: data });
     });
   }
   _toCellValue(value) {
@@ -1887,8 +1902,9 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
   // response is key'ed object by link and response data
   linkValidationResponse(e) {
     if (e && e.data) {
-      let keys = Object.keys(e.data);
-      this.linkResponseData[keys[0]] = e.data[keys[0]];
+      Object.keys(e.data).forEach((key) => {
+        this.linkResponseData[key] = e.data[key];
+      });
       // basic debounce so we only update every 500ms if we had a lot of links
       clearTimeout(this.__interval);
       this.__interval = setTimeout(() => {
@@ -1905,7 +1921,6 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     this.linkResponseData = {};
     this.__descriptorTabsLoaded = false;
     this.__loadingReportTabs = false;
-    this.__linkValidationHandler = this.linkValidationResponse.bind(this);
     this.t = this.t || {};
     this.t = {
       ...this.t,
