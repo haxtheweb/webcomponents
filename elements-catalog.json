@@ -1898,9 +1898,9 @@
     {
       "tag": "hax-confirm-dialog",
       "title": "",
-      "description": "",
-      "package": "@haxtheweb/haxcms-elements",
-      "import": "@haxtheweb/haxcms-elements/lib/core/ui/hax-confirm-dialog.js",
+      "description": "The HAX UI confirm card's body: a muted message and the HAX UI buttons (cancel plain and focused first, confirm primary, or a danger fill when destructive). Open it in a simple-modal with HaxUiDialogConfirm. It lives in d-d-d with the rest of the HAX UI layer so hax-body's dialogs and HAXcms's sh...",
+      "package": "@haxtheweb/d-d-d",
+      "import": "@haxtheweb/d-d-d/lib/hax-confirm-dialog.js",
       "type": "element",
       "haxCapable": false,
       "tags": []
@@ -2914,6 +2914,16 @@
       "tags": []
     },
     {
+      "tag": "insights-cadence",
+      "title": "",
+      "description": "Cadence screen of Reports (Insights): the course's pacing as music, one phrase per lesson and a beat per page, to review and listen to. Draws from the same scan as the other screens (results.content.pages) and the site outline; the scoring lives in instructional-cadence's model. See haxtheweb/iss...",
+      "package": "@haxtheweb/haxcms-elements",
+      "import": "@haxtheweb/haxcms-elements/lib/core/insights/sections/insights-cadence.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
       "tag": "insights-components",
       "title": "",
       "description": "Reports screen: which elements the pages are built from, counted by tag name. Key numbers, HAX elements and plain HTML used (count and pages), markup flags worth a look (each opens the pages it is about), and elements that fit gaps found elsewhere.",
@@ -2956,7 +2966,7 @@
     {
       "tag": "insights-links",
       "title": "",
-      "description": "Link health screen of Reports (Insights): link findings with a severity filter, the pages and hosts the site leans on, and outside links. Outside link status needs a server fetch, so it shows as Coming soon.",
+      "description": "Link health screen of Reports (Insights): link findings with a severity filter, the pages and hosts the site leans on, and outside links. Outside link status comes from this site's own server (insights-link-status.js); where there is no server (a published or static copy) it shows what it needs i...",
       "package": "@haxtheweb/haxcms-elements",
       "import": "@haxtheweb/haxcms-elements/lib/core/insights/sections/insights-links.js",
       "type": "element",
@@ -2989,6 +2999,16 @@
       "description": "Overview screen of Reports (Insights): site health and its checks, the key numbers, what to fix next, and where the pages live. A finding about one page opens that page; a finding about several pages (or the whole site) opens its screen. See haxtheweb/issues#3180. Reports screen",
       "package": "@haxtheweb/haxcms-elements",
       "import": "@haxtheweb/haxcms-elements/lib/core/insights/sections/insights-overview.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "instructional-cadence",
+      "title": "",
+      "description": "Renders a course's pacing as music. Each lesson is a phrase, written as one bar with a beat per page; blank pages are rests. Each lesson is checked for a five-part shape named with the music terms it borrows (anacrusis, development, climax, decrescendo, cadence) and the course is engraved and pla...",
+      "package": "@haxtheweb/instructional-cadence",
+      "import": "@haxtheweb/instructional-cadence/instructional-cadence.js",
       "type": "element",
       "haxCapable": false,
       "tags": []
@@ -4189,6 +4209,25 @@
       "type": "element",
       "haxCapable": true,
       "tags": ["Visualization", "Metrics", "Data"],
+      "walkthrough": true
+    },
+    {
+      "tag": "reading-analysis",
+      "title": "Reading Analysis",
+      "description": "Learners stick labelled flags beside the sentences, paragraphs or figures of an authored reading that are evidence for each label, or select the one passage that best answers a question. Authored content is the default slot (any HTML). The answer key lives in light dom inputs like every QuestionE...",
+      "package": "@haxtheweb/reading-analysis",
+      "import": "@haxtheweb/reading-analysis/reading-analysis.js",
+      "type": "grid",
+      "haxCapable": true,
+      "tags": [
+        "Instructional",
+        "reading",
+        "evidence",
+        "annotate",
+        "activity",
+        "knowledge check",
+        "assessment"
+      ],
       "walkthrough": true
     },
     {
