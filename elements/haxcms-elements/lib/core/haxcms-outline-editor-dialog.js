@@ -166,6 +166,11 @@ class HAXCMSOutlineEditorDialog extends HaxcmsAdminSectionMixin(
     this.__disposer = [];
     this.__windowAbortController = null;
     this.__allowNextModalClose = false;
+    // fingerprint of the items in flight from Save Outline, and of the items
+    // a save confirmed; see _isSavedOutlineState
+    this.__pendingSaveKey = null;
+    this.__savedItemsKey = null;
+    this._onAdminSaveResult = this._onAdminSaveResult.bind(this);
     this.manifestItems = [];
     this.viewMode = false;
     this.inShell = false;
@@ -299,6 +304,11 @@ class HAXCMSOutlineEditorDialog extends HaxcmsAdminSectionMixin(
       this._handleSimpleModalBreadcrumbClick,
       { capture: true, signal: this.__windowAbortController.signal },
     );
+    globalThis.addEventListener(
+      "haxcms-admin-save-result",
+      this._onAdminSaveResult,
+      { signal: this.__windowAbortController.signal },
+    );
     this.__disposer.push(
       autorun(() => {
         // guard: the manifest may not be loaded yet (null / no items), and
@@ -309,6 +319,9 @@ class HAXCMSOutlineEditorDialog extends HaxcmsAdminSectionMixin(
             : null;
         Promise.resolve().then(() => {
           if (_mobx_val_0) {
+            // fresh items from the manifest carry no change flags, so a
+            // saved fingerprint has nothing left to stand in for
+            this.__savedItemsKey = null;
             this.manifestItems = [..._mobx_val_0];
           }
           this.updateComplete.then(() => {
@@ -350,6 +363,46 @@ class HAXCMSOutlineEditorDialog extends HaxcmsAdminSectionMixin(
       return this.shadowRoot.querySelector("#outline");
     }
     return null;
+  }
+  _outlineItemsKey(items) {
+    if (!Array.isArray(items)) {
+      return null;
+    }
+    try {
+      return JSON.stringify(items);
+    } catch {
+      return null;
+    }
+  }
+  /**
+   * After Save Outline succeeds the items keep their new/modified/delete
+   * flags until the store manifest refresh replaces them, a few hundred ms
+   * or more later. Leave checks in that window (e.g. the route re-sync the
+   * editor runs when the active page's slug changed) would see changes that
+   * are already saved and ask to discard them. While the outline still holds
+   * exactly what the successful save sent, it has nothing unsaved.
+   */
+  _isSavedOutlineState(items) {
+    if (!this.__savedItemsKey) {
+      return false;
+    }
+    return this._outlineItemsKey(items) === this.__savedItemsKey;
+  }
+  _onAdminSaveResult(e) {
+    const detail = e && e.detail ? e.detail : null;
+    if (
+      !detail ||
+      detail.operation !== "@site/updateSiteOutline" ||
+      this.__pendingSaveKey === null
+    ) {
+      return;
+    }
+    // only a confirmed save stands in for the manifest; a failed one leaves
+    // every change unsaved and the shell's error state untouched
+    if (detail.ok) {
+      this.__savedItemsKey = this.__pendingSaveKey;
+    }
+    this.__pendingSaveKey = null;
   }
   _getItemChangeSummary(items = []) {
     let deleted = 0;
@@ -407,6 +460,9 @@ class HAXCMSOutlineEditorDialog extends HaxcmsAdminSectionMixin(
     if (!outline || !Array.isArray(outline.items)) {
       return false;
     }
+    if (this._isSavedOutlineState(outline.items)) {
+      return false;
+    }
     const summary = this._getItemChangeSummary(outline.items);
     return summary.added > 0 || summary.modified > 0 || summary.deleted > 0;
   }
@@ -420,6 +476,9 @@ class HAXCMSOutlineEditorDialog extends HaxcmsAdminSectionMixin(
   _confirmDiscardUnsavedOutlineChanges() {
     const outline = this._getOutline();
     if (!outline || !Array.isArray(outline.items)) {
+      return Promise.resolve(true);
+    }
+    if (this._isSavedOutlineState(outline.items)) {
       return Promise.resolve(true);
     }
     const summary = this._getItemChangeSummary(outline.items);
@@ -635,6 +694,8 @@ class HAXCMSOutlineEditorDialog extends HaxcmsAdminSectionMixin(
       });
     }
     if (confirmation) {
+      this.__savedItemsKey = null;
+      this.__pendingSaveKey = this._outlineItemsKey(outline.items);
       globalThis.dispatchEvent(
         new CustomEvent("haxcms-save-outline", {
           bubbles: true,
@@ -680,7 +741,9 @@ class HAXCMSOutlineEditorDialog extends HaxcmsAdminSectionMixin(
     if (!outline) {
       return;
     }
-    const summary = this._getItemChangeSummary(outline.items);
+    const summary = this._isSavedOutlineState(outline.items)
+      ? { added: 0, modified: 0, deleted: 0 }
+      : this._getItemChangeSummary(outline.items);
     const changes = [];
     if (summary.added) {
       changes.push(

@@ -613,4 +613,153 @@ describe("Structure in the site admin dialog saves like the other panels", () =>
       globalThis.removeEventListener("haxcms-save-outline", onSave);
     }
   });
+
+  // a save that changes the active page's slug makes the editor re-sync the
+  // route (replaceState + popstate) before the manifest refresh lands; the
+  // leave check that runs then must not ask to discard what was just saved
+  async function openStructure() {
+    await import("../lib/core/admin/haxcms-site-admin.js");
+    const shell = await fixture(
+      html`<haxcms-site-admin
+        style="--simple-modal-height: 720px"
+      ></haxcms-site-admin>`,
+    );
+    shell.allowRoute = () => true;
+    shell.route = "structure";
+    await waitUntil(() => shell._sectionEl, "outline dialog created");
+    const dialog = shell._sectionEl;
+    await dialog.updateComplete;
+    await waitUntil(
+      () => dialog.shadowRoot.querySelector("#outline"),
+      "outline rendered",
+    );
+    const outline = dialog.shadowRoot.querySelector("#outline");
+    await outline.updateComplete;
+    return { shell, dialog, outline };
+  }
+
+  async function saveWith(shell, ok) {
+    const onSave = () =>
+      setTimeout(
+        () =>
+          globalThis.dispatchEvent(
+            new CustomEvent("haxcms-admin-save-result", {
+              detail: { operation: "@site/updateSiteOutline", ok: ok },
+            }),
+          ),
+        50,
+      );
+    globalThis.addEventListener("haxcms-save-outline", onSave);
+    try {
+      shell.shadowRoot.querySelector(".ftr .save").click();
+      await waitUntil(
+        () => shell._status === (ok ? "saved" : "error"),
+        ok ? "Saved shown" : "save failure shown",
+      );
+    } finally {
+      globalThis.removeEventListener("haxcms-save-outline", onSave);
+    }
+  }
+
+  it("does not ask to discard a saved outline before the manifest refreshes", async () => {
+    const { shell, dialog, outline } = await openStructure();
+    outline.items[0].title = "A renamed";
+    outline.items[0].modified = true;
+    outline.requestUpdate();
+    await waitUntil(() => shell._canSave, "Save enabled");
+    await saveWith(shell, true);
+    // the items still carry their change flags: no manifest refresh yet
+    expect(outline.items[0].modified).to.be.true;
+    let asked = 0;
+    globalThis.confirm = () => {
+      asked++;
+      return false;
+    };
+    expect(dialog.hasUnsavedChanges).to.be.false;
+    expect(await dialog.confirmLeave()).to.be.true;
+    let left = false;
+    shell.requestLeave(() => {
+      left = true;
+    });
+    await new Promise((r) => setTimeout(r, 30));
+    expect(left).to.be.true;
+    expect(shell._leave).to.equal(null);
+    expect(asked).to.equal(0);
+    await outline.updateComplete;
+    await new Promise((r) => setTimeout(r, 30));
+    expect(shell._status).to.equal("saved");
+  });
+
+  it("still treats an edit made after a successful save as unsaved", async () => {
+    const { shell, dialog, outline } = await openStructure();
+    outline.items[0].title = "A renamed";
+    outline.items[0].modified = true;
+    outline.requestUpdate();
+    await waitUntil(() => shell._canSave, "Save enabled");
+    await saveWith(shell, true);
+    outline.items[1].title = "B renamed";
+    outline.items[1].modified = true;
+    outline.requestUpdate();
+    await waitUntil(() => shell._status === "dirty", "new edit shown");
+    expect(dialog.hasUnsavedChanges).to.be.true;
+    let asked = 0;
+    globalThis.confirm = () => {
+      asked++;
+      return false;
+    };
+    expect(await dialog.confirmLeave()).to.be.false;
+    expect(asked).to.equal(1);
+  });
+
+  it("keeps the changes unsaved and the error shown when the save fails", async () => {
+    const { shell, dialog, outline } = await openStructure();
+    outline.items[0].title = "A renamed";
+    outline.items[0].modified = true;
+    outline.requestUpdate();
+    await waitUntil(() => shell._canSave, "Save enabled");
+    await saveWith(shell, false);
+    await outline.updateComplete;
+    await new Promise((r) => setTimeout(r, 30));
+    expect(shell._status).to.equal("error");
+    expect(dialog.hasUnsavedChanges).to.be.true;
+    let left = false;
+    shell.requestLeave(() => {
+      left = true;
+    });
+    await new Promise((r) => setTimeout(r, 30));
+    expect(left).to.be.false;
+    expect(shell._leave).to.not.equal(null);
+  });
+
+  it("hands back to the manifest once its refresh lands", async () => {
+    const { shell, dialog, outline } = await openStructure();
+    outline.items[0].title = "A renamed";
+    outline.items[0].modified = true;
+    outline.requestUpdate();
+    await waitUntil(() => shell._canSave, "Save enabled");
+    await saveWith(shell, true);
+    expect(dialog.__savedItemsKey).to.not.equal(null);
+    store.manifest = {
+      items: [
+        {
+          id: "a",
+          title: "A renamed",
+          parent: null,
+          indent: 0,
+          order: 0,
+          metadata: {},
+        },
+        store.manifest.items[1],
+      ],
+    };
+    await waitUntil(
+      () => dialog.__savedItemsKey === null,
+      "saved state dropped after the manifest refresh",
+    );
+    await waitUntil(
+      () => outline.items.length && !outline.items[0].modified,
+      "outline reloaded from the manifest",
+    );
+    expect(dialog.hasUnsavedChanges).to.be.false;
+  });
 });
