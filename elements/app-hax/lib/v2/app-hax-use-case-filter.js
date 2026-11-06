@@ -1171,20 +1171,6 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
             <div role="listitem">
               <app-hax-use-case
                 .source=${""}
-                .title=${this.t.moreTemplates}
-                .description=${this.t.browseAllTemplateStarters}
-                .iconImage=${[
-                  { icon: "icons:add", tooltip: this.t.moreTemplatesTooltip },
-                ]}
-                ?dark="${this.dark}"
-                @click=${() =>
-                  this.scrollToGroup("from-template-heading", "skeleton")}
-              ></app-hax-use-case>
-            </div>
-
-            <div role="listitem">
-              <app-hax-use-case
-                .source=${""}
                 .title=${this.t.fromScratch}
                 .description=${this.t.startFromBlankSiteWithTheme}
                 .iconImage=${[
@@ -1213,6 +1199,20 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
                 ?dark="${this.dark}"
                 @click=${() =>
                   this.scrollToGroup("from-existing-heading", "import")}
+              ></app-hax-use-case>
+            </div>
+
+            <div role="listitem">
+              <app-hax-use-case
+                .source=${""}
+                .title=${this.t.moreTemplates}
+                .description=${this.t.browseAllTemplateStarters}
+                .iconImage=${[
+                  { icon: "icons:add", tooltip: this.t.moreTemplatesTooltip },
+                ]}
+                ?dark="${this.dark}"
+                @click=${() =>
+                  this.scrollToGroup("from-template-heading", "skeleton")}
               ></app-hax-use-case>
             </div>
           </div>
