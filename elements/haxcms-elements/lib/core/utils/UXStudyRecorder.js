@@ -73,7 +73,7 @@ const safeStorage = {
     try {
       const raw = globalThis.sessionStorage.getItem(STORAGE_KEY);
       return raw ? JSON.parse(raw) : null;
-    } catch (e) {
+    } catch {
       return null;
     }
   },
@@ -81,14 +81,14 @@ const safeStorage = {
     try {
       globalThis.sessionStorage.setItem(STORAGE_KEY, JSON.stringify(value));
       return true;
-    } catch (e) {
+    } catch {
       return false;
     }
   },
   clear() {
     try {
       globalThis.sessionStorage.removeItem(STORAGE_KEY);
-    } catch (e) {
+    } catch {
       // intentionally empty
     }
   },
@@ -239,7 +239,7 @@ const describe = (el, composed) => {
   let style = null;
   try {
     style = globalThis.getComputedStyle(el);
-  } catch (e) {
+  } catch {
     style = null;
   }
   return {
@@ -439,7 +439,7 @@ export class UXStudyRecorder {
       const mq = (query) => {
         try {
           return globalThis.matchMedia(query).matches;
-        } catch (e) {
+        } catch {
           return false;
         }
       };
@@ -459,7 +459,6 @@ export class UXStudyRecorder {
           userAgent: globalThis.navigator.userAgent,
           language: globalThis.navigator.language,
           viewport: { w: globalThis.innerWidth, h: globalThis.innerHeight },
-          dpr: globalThis.devicePixelRatio || 1,
           pointer: mq("(pointer: coarse)") ? "coarse" : "fine",
           reducedMotion: mq("(prefers-reduced-motion: reduce)"),
           colorScheme: mq("(prefers-color-scheme: dark)") ? "dark" : "light",
@@ -544,7 +543,7 @@ export class UXStudyRecorder {
       a.click();
       a.remove();
       setTimeout(() => globalThis.URL.revokeObjectURL(url), 1000);
-    } catch (e) {
+    } catch {
       // intentionally empty
     }
     return { session: finished, fileName: name };
@@ -784,7 +783,7 @@ export class UXStudyRecorder {
     let controls = [];
     try {
       controls = collectVisibleControls();
-    } catch (e) {
+    } catch {
       controls = [];
     }
     this.session.snapshots.push({

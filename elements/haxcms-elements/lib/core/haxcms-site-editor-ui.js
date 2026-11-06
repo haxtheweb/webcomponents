@@ -5532,7 +5532,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     let pending = false;
     try {
       pending = !!globalThis.sessionStorage.getItem("haxcms-ux-study-session");
-    } catch (e) {
+    } catch {
       pending = false;
     }
     if (pending) {
