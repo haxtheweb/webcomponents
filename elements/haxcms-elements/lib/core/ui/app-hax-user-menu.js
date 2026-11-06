@@ -17,6 +17,7 @@ export class AppHaxUserMenu extends I18NMixin(DDDSuper(LitElement)) {
     super();
     this.isOpen = false;
     this.icon = "account-circle";
+    this.align = "end";
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -80,6 +81,9 @@ export class AppHaxUserMenu extends I18NMixin(DDDSuper(LitElement)) {
     return {
       isOpen: { type: Boolean, reflect: true, attribute: "is-open" },
       icon: { type: String, reflect: true },
+      /** which edge the menu lines up with: "end" (default, opens leftward
+       * from a right-side toggle) or "start" (opens rightward) */
+      align: { type: String, reflect: true },
     };
   }
 
@@ -125,6 +129,10 @@ export class AppHaxUserMenu extends I18NMixin(DDDSuper(LitElement)) {
           overflow: hidden;
         }
 
+        :host([align="start"]) .user-menu.open {
+          left: 0px;
+          right: auto;
+        }
         .user-menu.open ::slotted(*) {
           display: block;
           width: 100%;
