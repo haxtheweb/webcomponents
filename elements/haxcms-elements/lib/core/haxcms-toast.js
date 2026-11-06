@@ -119,8 +119,9 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
       DDDStatusTokens,
       css`
         :host {
-          /* where it sits: under the top bar on the right, or a sheet at
-             the bottom of a phone */
+          /* where it sits: under the top bar on the right (or under
+             Merlin when the site editor asks), or a sheet at the bottom
+             of a phone */
           --haxcms-toast-gap: var(--hax-ui-gap-lg, 12px);
           --simple-toast-z-index: 100000004;
           position: fixed;
@@ -129,7 +130,8 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
             calc(var(--top-bar-height, 64px) + var(--haxcms-toast-gap))
           );
           right: var(--haxcms-toast-right, var(--haxcms-toast-gap));
-          left: auto;
+          /* the site editor sets these to drop the toast from under Merlin */
+          left: var(--haxcms-toast-left, auto);
           bottom: auto;
           z-index: var(--simple-toast-z-index);
           width: min(420px, calc(100vw - 2 * var(--haxcms-toast-gap)));

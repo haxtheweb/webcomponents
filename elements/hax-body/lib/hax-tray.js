@@ -311,7 +311,7 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
           cursor: col-resize;
         }
         #resize .resize-visual {
-          background-color: black;
+          background-color: var(--ddd-theme-default-coalyGray);
           height: 100%;
           width: 6px;
         }
@@ -456,8 +456,9 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
         #haxcancelbutton::part(dropdown-icon) {
           display: none;
         }
+        /* same Coaly gray as the HAXcms editor top bar it sits under */
         .tray-detail-titlebar {
-          background-color: black;
+          background-color: var(--ddd-theme-default-coalyGray);
         }
         .tray-detail-titlebar .tray-detail-titlebar-label {
           display: inline-flex;
