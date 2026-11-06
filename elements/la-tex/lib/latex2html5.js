@@ -44215,7 +44215,10 @@
                 func: m[5],
                 value: safeValue
                   ? eval(
-                      "var x = " +
+                      // prelude shadows every allowed variable name so none
+                      // can resolve to a global function (e.g. alert / open)
+                      _latex2jsUtils.mathVariablePrelude(this.variables) +
+                        "var x = " +
                         Number(nx1) +
                         ";var y = " +
                         Number(ny1) +
