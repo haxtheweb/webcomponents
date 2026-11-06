@@ -10,6 +10,20 @@ import {
 } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 import { DDDChartStyles } from "@haxtheweb/d-d-d/lib/DDDChart.js";
 import { DDDTableStyles } from "@haxtheweb/d-d-d/lib/DDDTable.js";
+import {
+  DDDNodeStyles,
+  dddNodeShapeInset,
+  renderDDDNode,
+} from "@haxtheweb/d-d-d/lib/DDDNodeShapes.js";
+import { DDDConnectorStyles } from "@haxtheweb/d-d-d/lib/DDDConnector.js";
+import {
+  DDDViewport,
+  DDDViewportStyles,
+  renderDDDZoomControls,
+} from "@haxtheweb/d-d-d/lib/DDDViewport.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminIcons.js";
 import {
@@ -17,7 +31,10 @@ import {
   renderProgressMark,
 } from "@haxtheweb/map-menu/lib/map-menu-progress.js";
 import { autorun, toJS } from "mobx";
-import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import {
+  store,
+  iconFromPageType,
+} from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import {
   LearnerProgress,
   PAGE_ELEMENT,
@@ -89,14 +106,30 @@ const PAGES_LIMIT = 8;
 const UP_NEXT_LIMIT = 3;
 // width from which the radar and the Pages card sit side by side
 const WIDE_MIN = 720;
-// Map view tree: the biggest drawing (px), the outer ring (percent of the
-// drawing from its centre), the least room between two page dots on a ring
-// (px; a crowded section shows as one node instead), and how far crowded
-// dots step in (percent)
-const MAP_MAX_SIZE = 900;
-const MAP_OUTER = 45;
-const MAP_MIN_GAP = 22;
-const MAP_STAGGER = 6;
+// Map view tree, in svg units: the ring the sections sit on, the step out
+// to each level of the outline below them, the least room between two
+// neighbouring pages (the rings spread out until they have it), how far
+// every other crowded page steps out, the room around the drawing, and the
+// radius of the centre, a section, a lesson, a page and an activity
+const MAP_RING = 140;
+const MAP_STEP = 120;
+const MAP_GAP = 44;
+const MAP_STAGGER = 52;
+const MAP_MARGIN = 96;
+// the smallest drawing, so names keep one size from level to level
+const MAP_MIN_EXTENT = 460;
+const MAP_CENTER = 80;
+const MAP_SECTION = 28;
+const MAP_LESSON = 22;
+const MAP_PAGE = 17;
+const MAP_ACTIVITY = 24;
+// numbers in svg path data, two decimals
+const r2 = (v) => Math.round(v * 100) / 100;
+// a name cut to fit beside a node; the full name is in its label and title
+const clip = (text, max) => {
+  const t = String(text == null ? "" : text);
+  return t.length > max ? `${t.slice(0, max - 1).trimEnd()}…` : t;
+};
 
 const visible = (i) =>
   i &&
@@ -275,8 +308,10 @@ const combinedState = (states) => {
 /**
  * What the Map view draws at one level of drilling in.
  *   path []            you at the centre, sections around you, each
- *                      section's pages around it
+ *                      section's pages as a tree outward from it
  *   path [section]     the section at the centre, its pages around it
+ *   path [..., lesson] a page with pages under it at the centre, those
+ *                      pages around it (center.branch is true)
  *   path [..., page]   the page at the centre, its activities around it
  * Sections are the top level items of the scope (the children of the
  * scope root; the root itself is a section of its own).
@@ -425,18 +460,34 @@ export function mapModel({
       done: a.done ? 1 : 0,
       total: 1,
     }));
+  // whether an item sits somewhere under another one in the outline
+  const isUnder = (id, pid) => {
+    let cur = byId.get(id);
+    let guard = 0;
+    while (cur && cur.parent && guard++ < 50) {
+      if (cur.parent === pid) {
+        return true;
+      }
+      cur = byId.get(cur.parent);
+    }
+    return false;
+  };
   // follow the path as far as it is valid
   const trail = [];
   let where = null;
+  let section = null;
   for (const id of Array.isArray(path) ? path : []) {
+    const inSection =
+      section && section.children.find((c) => c.id === id) && section;
     if (!where && members.has(id)) {
       where = sectionNode(id);
+      section = where;
     } else if (
       where &&
-      where.kind === "section" &&
-      where.children.some((c) => c.id === id)
+      inSection &&
+      (where.kind === "section" || isUnder(id, where.id))
     ) {
-      where = pageNode(id);
+      where = inSection.children.find((c) => c.id === id);
     } else if (!where && (pages || []).includes(id)) {
       where = pageNode(id);
     } else {
@@ -453,6 +504,26 @@ export function mapModel({
   }
   if (where.kind === "section" && where.children.length) {
     return { center: where, nodes: where.children, path: trail };
+  }
+  // a page with pages under it (a lesson): those pages, a level up
+  if (where.kind === "page" && section) {
+    const base = where.depth || 0;
+    const under = section.children
+      .filter((c) => isUnder(c.id, where.id))
+      .map((c) => ({ ...c, depth: c.depth - base }));
+    if (under.length) {
+      const states = [where.state, ...under.map((c) => c.state)];
+      return {
+        center: {
+          ...where,
+          branch: true,
+          done: states.filter((st) => st === "done").length,
+          total: states.length,
+        },
+        nodes: under,
+        path: trail,
+      };
+    }
   }
   const nodes = activityNodes(where.id);
   return {
@@ -1113,7 +1184,12 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
     this._mapPath = [];
     this._mapFocus = 0;
     this._mapMessage = "";
-    this._mapRoom = 0;
+    this._mapPicked = false;
+    // pan and zoom for the Map view (attached when the map renders)
+    this._mapViewport = new DDDViewport(this, {
+      target: () =>
+        this.shadowRoot ? this.shadowRoot.querySelector(".map-svg") : null,
+    });
     this._mapRelated = true;
     this.t = {
       ...this.t,
@@ -1173,6 +1249,13 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
         "Arrow keys move between items, Enter opens one, Escape goes back.",
       mapLegend: "Map key",
       mapShowRelated: "Show related pages",
+      mapOutlineKey: "Part of",
+      mapNothingTracked:
+        "Nothing on this page is tracked, so it shows as visited, not done.",
+      zoom: "Zoom",
+      zoomIn: "Zoom in",
+      zoomOut: "Zoom out",
+      zoomFit: "Fit the whole map",
       mapRelatedKey: "Related pages",
       mapRelatedTo: "Related to: {names}",
       tableName: "Name",
@@ -1323,7 +1406,7 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
       _mapPath: { type: Array, state: true },
       _mapFocus: { type: Number, state: true },
       _mapMessage: { type: String, state: true },
-      _mapRoom: { type: Number, state: true },
+      _mapPicked: { type: Boolean, state: true },
       _mapRelated: { type: Boolean, state: true },
     };
   }
@@ -1357,12 +1440,6 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
       if (wide !== this._wide) {
         this._wide = wide;
       }
-      // room for the map drawing inside its card, in 20px steps so a small
-      // resize does not lay the map out again
-      const room = Math.max(240, Math.floor((w - 48) / 20) * 20);
-      if (room !== this._mapRoom) {
-        this._mapRoom = room;
-      }
     }
   }
   firstUpdated(changed) {
@@ -1383,6 +1460,26 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
     );
     clearTimeout(this.__refreshTimer);
     super.disconnectedCallback();
+  }
+  updated(changed) {
+    if (super.updated) {
+      super.updated(changed);
+    }
+    // the Map view pans and zooms its svg; a new drawing (another level, or
+    // the view coming back) starts fitted to everything on it
+    const svgEl = this.shadowRoot.querySelector(".map-svg");
+    if (!svgEl) {
+      this._mapViewport.detach();
+      return;
+    }
+    const fit = this._mapFit;
+    const key = fit ? `${fit.x} ${fit.y} ${fit.width} ${fit.height}` : "";
+    if (svgEl !== this._mapViewport.svg || key !== this.__mapFitKey) {
+      this.__mapFitKey = key;
+      this._mapViewport.options.fit = fit ? { ...fit } : null;
+      this._mapViewport.attach(svgEl);
+      this._mapViewport.fit();
+    }
   }
   willUpdate(changed) {
     if (super.willUpdate) {
@@ -1896,6 +1993,9 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
       DDDBlockStyles,
       DDDChartStyles,
       DDDTableStyles,
+      DDDNodeStyles,
+      DDDConnectorStyles,
+      DDDViewportStyles,
       mapMenuProgressStyles,
       css`
         :host {
@@ -2576,8 +2676,8 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
           font-size: var(--ddd-font-size-4xs);
           color: var(--my-learning-muted);
         }
-        .map-legend,
-        .map {
+        .map-wrap,
+        .map-legend {
           --map-done: var(--my-learning-done);
           --map-partial: var(--my-learning-partial);
           --map-visited: light-dark(
@@ -2589,63 +2689,268 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
             var(--ddd-theme-default-white),
             var(--ddd-theme-default-potentialMidnight)
           );
+          --map-ink-on: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+        }
+        /* the drawing, with the details, up next and key beside it */
+        .map-wrap {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr);
+          gap: var(--ddd-spacing-4);
+          align-items: start;
+        }
+        @container (min-width: 820px) {
+          .map-wrap {
+            grid-template-columns: minmax(0, 1fr) minmax(240px, 300px);
+          }
         }
         .map {
-          position: relative;
           width: 100%;
-          max-width: var(--map-size, 560px);
           aspect-ratio: 1;
+          max-height: 78vh;
           margin-inline: auto;
+          border-radius: var(--ddd-radius-md);
+          background: radial-gradient(
+              closest-side,
+              light-dark(
+                var(--ddd-theme-default-limestoneMaxLight),
+                var(--ddd-theme-default-coalyGray)
+              ),
+              transparent
+            )
+            center / 100% 100% no-repeat;
         }
-        .map svg {
-          position: absolute;
-          inset: 0;
-          width: 100%;
-          height: 100%;
-        }
-        .map line,
-        .map path {
+        .map-line {
           fill: none;
-          stroke: var(--my-learning-line);
-          stroke-width: 0.5;
           stroke-linecap: round;
-        }
-        .map .twig {
-          stroke-width: 0.25;
+          transition: opacity var(--ddd-duration-normal) ease-in-out;
         }
         /* a line takes the state of the node it leads to, so the paths a
            learner has walked read from the centre out */
-        .map [data-state="done"] {
-          stroke: var(--map-done);
-          stroke-width: 0.5;
+        .map-line.outline {
+          --ddd-connector-color: var(--my-learning-line);
+          --ddd-connector-opacity: 1;
         }
-        .map [data-state="in-progress"] {
-          stroke: var(--map-partial);
-          stroke-width: 0.5;
+        .map-line.outline[data-state="done"] {
+          --ddd-connector-color: var(--map-done);
         }
-        .map [data-state="visited"] {
-          stroke: var(--map-visited);
-          stroke-width: 0.4;
+        .map-line.outline[data-state="in-progress"] {
+          --ddd-connector-color: var(--map-partial);
         }
-        .map .related {
-          stroke: light-dark(
+        .map-line.outline[data-state="visited"] {
+          --ddd-connector-color: var(--map-visited);
+        }
+        .map-wrap .related {
+          --ddd-connector-color: light-dark(
             var(--ddd-theme-default-link),
             var(--ddd-theme-default-linkLight)
           );
-          stroke-width: 0.3;
-          stroke-dasharray: 1 1;
         }
-        .map .hi {
-          stroke-width: 0.8;
+        .map-node,
+        .map-node:focus-visible {
+          outline: none;
+          transition: opacity var(--ddd-duration-normal) ease-in-out;
         }
-        .map .related.hi {
-          stroke-width: 0.5;
+        .map-node[data-dimmed],
+        .map-line[data-dimmed] {
+          opacity: 0.28;
+        }
+        .map-node[data-state="done"] {
+          --ddd-node-fill: var(--map-done);
+          --ddd-node-stroke: var(--map-done);
+          --map-icon: var(--map-ink-on);
+        }
+        .map-node[data-state="in-progress"] {
+          --ddd-node-fill: var(--map-partial);
+          --ddd-node-stroke: var(--map-partial);
+          --map-icon: var(--ddd-theme-default-potentialMidnight);
+        }
+        .map-node[data-state="visited"] {
+          --ddd-node-fill: var(--map-visited);
+          --ddd-node-stroke: var(--map-visited);
+          --map-icon: light-dark(
+            var(--ddd-theme-default-potentialMidnight),
+            var(--ddd-theme-default-white)
+          );
+        }
+        .map-node[data-state="not-started"] {
+          --ddd-node-fill: var(--map-surface);
+          --ddd-node-stroke: var(--map-empty);
+          --map-icon: var(--map-empty);
+        }
+        .map-node simple-icon-lite {
+          display: block;
+          width: 100%;
+          height: 100%;
+          --simple-icon-width: 100%;
+          --simple-icon-height: 100%;
+          --simple-icon-color: var(--map-icon);
+          color: var(--map-icon);
+          pointer-events: none;
+        }
+        .map-node:focus-visible .ddd-node-frame,
+        .map-node[data-active] .ddd-node-frame {
+          stroke: var(--ddd-theme-default-keystoneYellow);
+          stroke-width: var(--ddd-border-size-md);
+        }
+        .map-badge circle {
+          fill: var(--map-surface);
+          stroke: var(--map-done);
+          stroke-width: var(--ddd-border-size-sm);
+        }
+        .map-badge[data-state="done"] circle {
+          fill: var(--map-done);
+          stroke: var(--map-surface);
+        }
+        .map-badge[data-state="done"] path {
+          fill: none;
+          stroke: var(--map-ink-on);
+          stroke-width: var(--ddd-border-size-md);
+          stroke-linecap: round;
+          stroke-linejoin: round;
+        }
+        .map-badge[data-state="in-progress"] circle {
+          stroke: var(--map-partial);
+        }
+        .map-badge[data-state="in-progress"] path {
+          fill: var(--map-partial);
+        }
+        .map-label {
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-medium);
+          fill: var(--my-learning-heading);
+          text-anchor: middle;
+          paint-order: stroke;
+          stroke: var(--map-surface);
+          stroke-width: var(--ddd-border-size-md);
+          stroke-linejoin: round;
+          pointer-events: none;
+          opacity: 0;
+          transition: opacity var(--ddd-duration-normal) ease-in-out;
+        }
+        /* sections and lessons are named; pages show their name on hover,
+           focus, when picked or next to the picked one */
+        .map-node[data-named] .map-label,
+        .map-node[data-near] .map-label,
+        .map-node[data-active] .map-label,
+        .map-node:hover .map-label,
+        .map-node:focus-visible .map-label {
+          opacity: 1;
+        }
+        .map-node[data-kind="section"] .map-label {
+          font-weight: var(--ddd-font-weight-bold);
+          font-size: var(--ddd-font-size-3xs);
+        }
+        .map-center circle {
+          fill: var(--ddd-chart-1);
+        }
+        .map-center[data-state="done"] circle {
+          fill: var(--map-done);
+        }
+        .map-center[data-state="in-progress"] circle {
+          fill: var(--map-partial);
+        }
+        .map-center[data-state="visited"] circle,
+        .map-center[data-state="not-started"] circle {
+          fill: var(--map-surface);
+          stroke: var(--map-empty);
+          stroke-width: var(--ddd-border-size-sm);
+        }
+        .map-center text {
+          text-anchor: middle;
+          font-family: var(--ddd-font-primary);
+          fill: var(--map-ink-on);
+        }
+        /* dark text on the orange / yellow: white on inventOrange fails
+           contrast (2.7:1) */
+        .map-center[data-state="in-progress"] text {
+          fill: var(--ddd-theme-default-potentialMidnight);
+        }
+        .map-center[data-state="visited"] text,
+        .map-center[data-state="not-started"] text {
+          fill: var(--my-learning-heading);
+        }
+        .map-center-title {
+          font-size: var(--ddd-font-size-xxs);
+          font-weight: var(--ddd-font-weight-bold);
+        }
+        .map-center-sub {
+          font-size: var(--ddd-font-size-4xs);
+        }
+        .map-side {
+          display: flex;
+          flex-direction: column;
+          gap: var(--ddd-spacing-3);
+          min-width: 0;
+        }
+        .map-card {
+          display: flex;
+          flex-direction: column;
+          gap: var(--ddd-spacing-2);
+          margin: 0;
+          padding: var(--ddd-spacing-3);
+          border: var(--ddd-border-xs);
+          border-color: var(--my-learning-line);
+          border-radius: var(--ddd-radius-md);
+          max-width: none;
+        }
+        .map-card h4 {
+          margin: 0;
+        }
+        .map-card .up-next {
+          margin: 0;
+        }
+        .map-where,
+        .map-state,
+        .map-note,
+        .map-related {
+          margin: 0;
+          font-size: var(--ddd-font-size-4xs);
+          color: var(--my-learning-muted);
+        }
+        .map-state {
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+          color: var(--my-learning-heading);
+        }
+        .map-title {
+          margin: 0;
+          font-size: var(--ddd-font-size-xxs);
+          font-weight: var(--ddd-font-weight-bold);
+          color: var(--my-learning-heading);
+          line-height: var(--ddd-lh-120);
+          overflow-wrap: anywhere;
+        }
+        .map-acts {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          gap: var(--ddd-spacing-1);
+          font-size: var(--ddd-font-size-4xs);
+        }
+        .map-acts li {
+          display: grid;
+          grid-template-columns: var(--ddd-spacing-4) minmax(0, 1fr) auto;
+          gap: var(--ddd-spacing-2);
+          align-items: center;
+          margin: 0;
+          padding: 0;
+          font-size: inherit;
+        }
+        .map-acts .glyph,
+        .map-acts .num {
+          color: var(--my-learning-muted);
         }
         .map-related-toggle {
           display: inline-flex;
           align-items: center;
           gap: var(--ddd-spacing-2);
-          margin: 0 0 var(--ddd-spacing-2);
           font-size: var(--ddd-font-size-4xs);
           color: var(--my-learning-muted);
           cursor: pointer;
@@ -2656,195 +2961,11 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
           margin: 0;
           accent-color: var(--ddd-theme-default-beaverBlue);
         }
-        .map-related {
-          margin: var(--ddd-spacing-1) 0 0;
-          font-size: var(--ddd-font-size-4xs);
-          color: var(--my-learning-muted);
-        }
-        .swatch.related {
-          width: var(--ddd-spacing-4);
-          height: 0;
-          border-radius: 0;
-          border-width: var(--ddd-border-size-sm) 0 0;
-          border-style: dashed;
-          border-color: light-dark(
-            var(--ddd-theme-default-link),
-            var(--ddd-theme-default-linkLight)
-          );
-        }
-        .map-center,
-        .map-node {
-          position: absolute;
-          transform: translate(-50%, -50%);
-        }
-        .map-center {
-          left: 50%;
-          top: 50%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          width: clamp(96px, 24%, 150px);
-          height: clamp(96px, 24%, 150px);
-          border-radius: var(--ddd-radius-circle);
-          background-color: var(--ddd-chart-1);
-          color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-potentialMidnight)
-          );
-          font-weight: var(--ddd-font-weight-bold);
-          font-size: var(--ddd-font-size-4xs);
-          text-align: center;
-          padding: var(--ddd-spacing-1);
-          box-sizing: border-box;
-          overflow: hidden;
-        }
-        .map-center-title {
-          display: -webkit-box;
-          -webkit-box-orient: vertical;
-          -webkit-line-clamp: 2;
-          line-clamp: 2;
-          overflow: hidden;
-          max-width: 100%;
-        }
-        .map-center[data-state="done"] {
-          background-color: var(--map-done);
-        }
-        .map-center[data-state="in-progress"] {
-          background-color: var(--map-partial);
-          /* dark text on the orange / yellow: white on inventOrange fails
-             contrast (2.7:1) */
-          color: var(--ddd-theme-default-potentialMidnight);
-        }
-        .map-center[data-state="visited"],
-        .map-center[data-state="not-started"] {
-          background-color: var(--map-surface);
-          color: inherit;
-          border: var(--ddd-border-sm);
-          border-color: var(--map-empty);
-        }
-        .map-center-sub {
-          font-size: 0.85em;
-          font-weight: var(--ddd-font-weight-regular);
-        }
-        .map-node {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: var(--ddd-spacing-1);
-          min-width: 24px;
-          min-height: 24px;
-          margin: 0;
-          padding: 0;
-          border: 0;
-          background: transparent;
-          color: inherit;
-          font: inherit;
-          cursor: pointer;
-        }
-        .map-node[data-kind="activity"] {
-          cursor: default;
-        }
-        .map-node .dot {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          box-sizing: border-box;
-          width: 44px;
-          height: 44px;
-          border-radius: var(--ddd-radius-circle);
-          border: var(--ddd-border-sm);
-          border-color: var(--map-empty);
-          background-color: var(--map-surface);
-          font-weight: var(--ddd-font-weight-bold);
-          color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-potentialMidnight)
-          );
-        }
-        .map-node.ring-2 .dot {
-          width: 16px;
-          height: 16px;
-        }
-        .map-node.ring-2.branch .dot {
-          width: 24px;
-          height: 24px;
-        }
-        .map-node.ring-2.branch .name {
-          font-weight: var(--ddd-font-weight-medium);
-          max-width: 6rem;
-        }
-        .map.drilled .map-node .dot {
-          width: 36px;
-          height: 36px;
-        }
-        .map-node[data-state="done"] .dot,
-        .swatch[data-state="done"] {
-          background-color: var(--map-done);
-          border-color: var(--map-done);
-        }
-        .map-node[data-state="in-progress"] .dot,
-        .swatch[data-state="in-progress"] {
-          background-color: var(--map-partial);
-          border-color: var(--map-partial);
-        }
-        .map-node[data-state="visited"] .dot,
-        .swatch[data-state="visited"] {
-          background-color: var(--map-visited);
-          border-color: var(--map-visited);
-        }
-        .map-node[data-state="not-started"] .dot {
-          color: inherit;
-        }
-        .map-node .name {
-          position: absolute;
-          left: 50%;
-          transform: translateX(-50%);
-          width: max-content;
-          max-width: 8rem;
-          display: -webkit-box;
-          -webkit-box-orient: vertical;
-          -webkit-line-clamp: 2;
-          line-clamp: 2;
-          overflow: hidden;
-          font-size: var(--ddd-font-size-4xs);
-          font-weight: var(--ddd-font-weight-bold);
-          line-height: var(--ddd-lh-120);
-          text-align: center;
-          color: var(--my-learning-heading);
-          padding: 0 var(--ddd-spacing-1);
-          border-radius: var(--ddd-radius-xs);
-          background-color: light-dark(
-            rgb(255 255 255 / 0.85),
-            rgb(0 3 33 / 0.85)
-          );
-        }
-        .map-node .name[data-side="right"],
-        .map-node .name[data-side="left"] {
-          top: 50%;
-          transform: translateY(-50%);
-        }
-        .map-node .name[data-side="right"] {
-          left: calc(100% + 4px);
-          text-align: start;
-        }
-        .map-node .name[data-side="left"] {
-          left: auto;
-          right: calc(100% + 4px);
-          text-align: end;
-        }
-        .map-node .name[data-side="top"] {
-          bottom: calc(100% + 2px);
-        }
-        .map-node .name[data-side="bottom"] {
-          top: calc(100% + 2px);
-        }
         .map-legend {
           display: flex;
-          flex-direction: row;
-          flex-wrap: wrap;
-          gap: var(--ddd-spacing-3);
-          margin: var(--ddd-spacing-3) 0 0;
+          flex-direction: column;
+          gap: var(--ddd-spacing-2);
+          margin: 0;
           padding: 0;
           list-style: none;
           font-size: var(--ddd-font-size-4xs);
@@ -2856,26 +2977,45 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
           font-size: inherit;
           display: inline-flex;
           align-items: center;
-          gap: var(--ddd-spacing-1);
+          gap: var(--ddd-spacing-2);
+        }
+        .map-legend .ddd-connector-sample {
+          width: var(--ddd-spacing-8);
+          height: var(--ddd-spacing-2);
+          flex: none;
         }
         .swatch {
           display: inline-block;
+          flex: none;
           box-sizing: border-box;
-          width: 12px;
-          height: 12px;
-          border-radius: var(--ddd-radius-circle);
+          width: var(--ddd-spacing-3);
+          height: var(--ddd-spacing-3);
+          border-radius: var(--ddd-radius-xs);
           border: var(--ddd-border-sm);
           border-color: var(--map-empty);
+        }
+        .swatch[data-state="done"] {
+          background-color: var(--map-done);
+          border-color: var(--map-done);
+        }
+        .swatch[data-state="in-progress"] {
+          background-color: var(--map-partial);
+          border-color: var(--map-partial);
+        }
+        .swatch[data-state="visited"] {
+          background-color: var(--map-visited);
+          border-color: var(--map-visited);
         }
         .map-none {
           text-align: center;
           font-size: var(--ddd-font-size-4xs);
         }
         @media (forced-colors: active) {
-          .map-node .dot,
-          .map-center,
+          .ddd-node-frame,
+          .map-center circle,
           .swatch {
             forced-color-adjust: none;
+            stroke: CanvasText;
             border-color: CanvasText;
           }
         }
@@ -3237,11 +3377,12 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
     });
   }
   _mapProgress(n) {
-    if (n.kind === "activity") {
+    // nothing to count on an activity, or on a page with nothing tracked
+    if (n.kind === "activity" || (n.kind === "page" && !n.branch && !n.total)) {
       return "";
     }
     const tpl =
-      n.kind === "section" && n.children && n.children.length
+      (n.kind === "section" && n.children && n.children.length) || n.branch
         ? this.t.mapPagesDone
         : this.t.mapActivitiesDone;
     return fill(tpl, { done: n.done, total: n.total });
@@ -3258,6 +3399,7 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
     }
     this._mapPath = [...base, node.id];
     this._mapFocus = 0;
+    this._mapPicked = false;
     this._mapMessage = fill(this.t.mapShowing, { name: node.title });
     this._focusMapNode();
   }
@@ -3274,6 +3416,7 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
     const flat = this._mapFlat(next);
     const at = flat.findIndex((n) => n.id === left.id);
     this._mapFocus = at > -1 ? at : 0;
+    this._mapPicked = at > -1;
     const where = next.path.length
       ? next.path[next.path.length - 1].title
       : this.t.mapYou;
@@ -3281,237 +3424,239 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
     this._focusMapNode();
     return true;
   }
-  // nodes in keyboard order: each section, then its pages
+  // the icon a node shows: the page's own icon, else its page type's, else
+  // what it is (a section, a lesson, an activity, a page)
+  _mapIcon(node) {
+    if (node.kind === "activity") {
+      return (
+        {
+          questions: "lrn:quiz",
+          cards: "lrn:quiz",
+          checklists: "icons:check-box",
+          videos: "av:play-arrow",
+          audio: "av:volume-up",
+          games: "hax:ticket",
+        }[activityKindOf(node.tag)] || "hax:ticket"
+      );
+    }
+    const item = this._mapItems ? this._mapItems.get(node.id) : null;
+    const meta = item && item.metadata ? item.metadata : {};
+    if (typeof meta.icon === "string" && meta.icon) {
+      return meta.icon;
+    }
+    const byType = meta.pageType ? iconFromPageType(meta.pageType) : "";
+    if (byType) {
+      return byType;
+    }
+    if (node.kind === "section") {
+      return "hax:unit";
+    }
+    return node.branch ? "hax:lesson" : "lrn:page";
+  }
   /**
-   * Where the Map view draws each node, in keyboard order: a section, then
-   * its pages as a tree outward from it, one ring per level of the outline
-   * (top level), or a section's pages the same way around it (drilled in),
-   * or a page's activities on one ring. Each node gets a slice of the circle
-   * sized by the pages under it; a section whose pages do not have room at
-   * the width there is (MAP_MIN_GAP) shows as one node. Labels sit outside
-   * each node on its own side of the circle.
-   * @returns {{ placed: Object[], lines: Object[], size: number }} lines:
-   *   { x1, y1, x2, y2, cx?, cy? (a bend), k (spoke | twig | related),
-   *   a, b (the node ids at each end), state (of the node it leads to) }
+   * Where the Map view draws each node, in svg units around the centre
+   * (0, 0), in keyboard order: at the top, every section and then its pages
+   * as a tree outward from it, one ring per level of the outline; drilled
+   * into a section or a lesson, its pages the same way around it; drilled
+   * into a page, its activities on one ring. Each node gets a slice of the
+   * circle sized by the pages under it, and the rings spread out until
+   * neighbouring pages keep apart, so everything is always drawn and the
+   * viewport zooms in for detail.
+   * @returns {{ placed: Object[], lines: Object[], box: Object }} placed:
+   *   { node, x, y, r (radius), shape, branch }; lines: { x1, y1, x2, y2,
+   *   cx?, cy? (a bend), k (outline | related), a, b (ids), state }
    */
   _mapLayout(m) {
     const top = !m.path.length;
-    // drilled to activities: a page, or a section with no pages of its own
-    const pageLevel = !top && !m.nodes.some((nd) => nd.kind === "page");
-    const n = m.nodes.length;
+    const nodes = m.nodes;
+    const n = nodes.length;
     const TAU = 2 * Math.PI;
-    const pos = (r, a) => [50 + r * Math.cos(a), 50 + r * Math.sin(a)];
-    const side = (a) => {
-      // above / below only right at the top and bottom, so neighbours
-      // there lean apart
-      const c = Math.cos(a);
-      if (c > 0.2) {
-        return "right";
-      }
-      if (c < -0.2) {
-        return "left";
-      }
-      return Math.sin(a) < 0 ? "top" : "bottom";
+    const pos = (r, a) => [r * Math.cos(a), r * Math.sin(a)];
+    const placed = [];
+    const lines = [];
+    const square = (e) => {
+      const ext = Math.max(e, MAP_MIN_EXTENT);
+      return { x: -ext, y: -ext, width: 2 * ext, height: 2 * ext };
     };
-    // one ring around the centre, as before: a page's activities, or a
-    // section's pages when they have no room for a tree
-    const ringLayout = () => {
-      const r1 = Math.min(36, Math.max(30, 22 + n * 1.2));
-      const placed = [];
-      const lines = [];
-      m.nodes.forEach((node, i) => {
+    // a page's activities: one ring around it
+    if (!top && !nodes.some((nd) => nd.kind === "page")) {
+      const r = Math.max(MAP_RING, (n * MAP_ACTIVITY * 3) / TAU);
+      nodes.forEach((nd, i) => {
         const a = (TAU * i) / Math.max(n, 1) - Math.PI / 2;
-        const [x, y] = pos(r1, a);
+        const [x, y] = pos(r, a);
         lines.push({
-          x1: 50,
-          y1: 50,
+          x1: 0,
+          y1: 0,
           x2: x,
           y2: y,
-          k: "spoke",
-          b: node.id,
-          state: node.kind === "page" ? node.state : undefined,
+          k: "outline",
+          b: nd.id,
+          state: nd.state,
         });
-        placed.push({ node, x, y, ring: 1, side: side(a) });
+        placed.push({ node: nd, x, y, r: MAP_ACTIVITY, shape: "circle" });
       });
-      const size = Math.round(Math.min(760, Math.max(440, 360 + n * 28)));
-      return { placed, lines, size };
-    };
-    if (pageLevel || !n) {
-      return ringLayout();
+      return { placed, lines, box: square(r + MAP_MARGIN) };
     }
-    // The tree: at the top, you at the centre, sections around you and each
-    // section's pages outward from it, a ring per level of the outline;
-    // drilled into a section, its pages the same way around it. Each node
-    // owns a slice of the circle sized by the pages under it.
     const groups = top
-      ? m.nodes.map((s) => ({ node: s, kids: s.children || [] }))
-      : [{ node: null, kids: m.nodes }];
+      ? nodes.map((s) => ({ node: s, kids: s.children || [] }))
+      : [{ node: null, kids: nodes }];
+    const rootOf = (g) => (g.node ? g.node.id : m.center.id);
     const kidsOf = (list, pid) => list.filter((c) => c.parent === pid);
+    const weights = new Map();
     const weight = (list, id) => {
-      const k = kidsOf(list, id);
-      return k.length ? k.reduce((t, c) => t + weight(list, c.id), 0) : 1;
+      if (!weights.has(id)) {
+        const k = kidsOf(list, id);
+        weights.set(
+          id,
+          k.length ? k.reduce((t, c) => t + weight(list, c.id), 0) : 1,
+        );
+      }
+      return weights.get(id);
     };
-    const room = this._mapRoom || 0;
-    const tryLayout = (show) => {
-      const dots = groups.reduce(
-        (t, g, i) => t + (show[i] ? g.kids.length : 0),
-        0,
-      );
-      // more around the circle, a bigger drawing (within the room there is)
-      const size = Math.round(
-        Math.min(MAP_MAX_SIZE, Math.max(440, 360 + n * 28 + dots * 9)),
-      );
-      const px = room ? Math.min(size, room) : size;
-      const depth = Math.max(
-        1,
-        ...groups.map((g, i) =>
-          show[i] ? Math.max(0, ...g.kids.map((c) => c.depth || 1)) : 0,
-        ),
-      );
-      const anyKids = show.some((s, i) => s && groups[i].kids.length);
-      // the ring for the sections (top) and one per level below
-      const r0 = top
-        ? anyKids
-          ? 16
-          : Math.min(36, Math.max(28, 22 + n * 1.2))
-        : 0;
-      const ring = (d) =>
-        top
-          ? r0 + ((MAP_OUTER - r0) * d) / depth
-          : 14 + ((MAP_OUTER - 14) * d) / depth;
-      const gap = groups.length > 1 ? 0.06 : 0;
-      const weights = groups.map((g, i) =>
-        show[i] && g.kids.length
-          ? weight(g.kids, top ? g.node.id : m.center.id)
-          : 1,
-      );
-      const total = weights.reduce((t, w) => t + w, 0);
-      const placed = [];
-      const lines = [];
-      const fits = [];
-      let start = -Math.PI / 2;
-      groups.forEach((g, i) => {
-        const span = ((TAU - gap * groups.length) * weights[i]) / total;
-        const mid = start + gap / 2 + span / 2;
-        let ok = true;
-        let px0 = 50;
-        let py0 = 50;
-        if (top) {
-          const [x, y] = pos(r0, mid);
-          px0 = x;
-          py0 = y;
-          lines.push({
-            x1: 50,
-            y1: 50,
-            x2: x,
-            y2: y,
-            k: "spoke",
-            b: g.node.id,
-            state: g.node.state,
-          });
-          placed.push({ node: g.node, x, y, ring: 1, side: side(mid) });
+    // the ring for each level: at the top the sections sit on MAP_RING and
+    // each level steps out from there; drilled in, the first level clears
+    // the centre
+    const ringAt = (d) =>
+      top
+        ? MAP_RING + MAP_STEP * d
+        : MAP_CENTER + MAP_RING - MAP_STEP / 2 + MAP_STEP * (d - 1);
+    const gap = groups.length > 1 ? 0.05 : 0;
+    const gw = groups.map((g) => Math.max(1, weight(g.kids, rootOf(g))));
+    const gTotal = gw.reduce((t, w) => t + w, 0);
+    const span = (i) => ((TAU - gap * groups.length) * gw[i]) / gTotal;
+    // spread the rings until the most crowded leaves keep MAP_GAP apart
+    // (every other one steps out, so half that along the ring will do)
+    let spread = 1;
+    groups.forEach((g, i) => {
+      const lay = (pid, width, d) => {
+        const kids = kidsOf(g.kids, pid);
+        const sum = kids.reduce((t, c) => t + weight(g.kids, c.id), 0);
+        kids.forEach((c) => {
+          const share = (width * weight(g.kids, c.id)) / sum;
+          const r = ringAt(d);
+          const room = share * r * (kids.length > 2 ? 2 : 1);
+          if (room > 0 && room < MAP_GAP) {
+            spread = Math.max(spread, MAP_GAP / room);
+          }
+          lay(c.id, share, d + 1);
+        });
+      };
+      lay(rootOf(g), span(i), 1);
+    });
+    spread = Math.min(spread, 4);
+    const ring = (d) => ringAt(d) * spread;
+    let far = top ? MAP_RING : 0;
+    let start = -Math.PI / 2;
+    groups.forEach((g, i) => {
+      const width = span(i);
+      const mid = start + gap / 2 + width / 2;
+      let hub = [0, 0];
+      if (g.node) {
+        hub = pos(MAP_RING, mid);
+        lines.push({
+          x1: 0,
+          y1: 0,
+          x2: hub[0],
+          y2: hub[1],
+          k: "outline",
+          b: g.node.id,
+          state: g.node.state,
+        });
+        placed.push({
+          node: g.node,
+          x: hub[0],
+          y: hub[1],
+          r: MAP_SECTION,
+          shape: "circle",
+        });
+      }
+      const at = new Map();
+      const lay = (pid, from, w) => {
+        const kids = kidsOf(g.kids, pid);
+        const sum = kids.reduce((t, c) => t + weight(g.kids, c.id), 0);
+        let cur = from;
+        kids.forEach((c, j) => {
+          const share = (w * weight(g.kids, c.id)) / sum;
+          const a = cur + share / 2;
+          const leaf = !kidsOf(g.kids, c.id).length;
+          const base = ring(c.depth || 1);
+          const crowded = leaf && kids.length > 2 && share * base < MAP_GAP;
+          at.set(c.id, { a, r: base + (crowded && j % 2 ? MAP_STAGGER : 0) });
+          lay(c.id, cur, share);
+          cur += share;
+        });
+      };
+      lay(rootOf(g), start + gap / 2, width);
+      g.kids.forEach((c) => {
+        const p = at.get(c.id);
+        if (!p) {
+          return;
         }
-        if (show[i] && g.kids.length) {
-          const rootId = top ? g.node.id : m.center.id;
-          const at = new Map();
-          // each node takes its share of the parent's slice, in outline order
-          const lay = (pid, from, width) => {
-            const kids = kidsOf(g.kids, pid);
-            const sum = kids.reduce((t, c) => t + weight(g.kids, c.id), 0);
-            let cur = from;
-            kids.forEach((c, j) => {
-              const share = (width * weight(g.kids, c.id)) / sum;
-              const a = cur + share / 2;
-              const leaf = !kidsOf(g.kids, c.id).length;
-              // crowded leaves step in and out so their dots keep apart
-              const arcPx = (share * ring(c.depth || 1) * px) / 100;
-              const stagger = leaf && arcPx < MAP_MIN_GAP && kids.length > 2;
-              const r =
-                ring(c.depth || 1) - (stagger && j % 2 ? MAP_STAGGER : 0);
-              if (
-                arcPx * (stagger ? 2 : 1) <
-                (leaf ? MAP_MIN_GAP : MAP_MIN_GAP * 1.6)
-              ) {
-                ok = false;
-              }
-              at.set(c.id, { a, r, share });
-              lay(c.id, cur, share);
-              cur += share;
+        const [x, y] = pos(p.r, p.a);
+        far = Math.max(far, p.r);
+        const from = at.get(c.parent);
+        const [fx, fy] = from ? pos(from.r, from.a) : hub;
+        // bend toward the child's angle at the parent's ring
+        const [cx, cy] = from
+          ? pos(from.r, p.a)
+          : g.node
+            ? pos(MAP_RING, p.a)
+            : [x / 2, y / 2];
+        lines.push({
+          x1: fx,
+          y1: fy,
+          cx,
+          cy,
+          x2: x,
+          y2: y,
+          k: "outline",
+          a: c.parent,
+          b: c.id,
+          state: c.state,
+        });
+        const branch = kidsOf(g.kids, c.id).length > 0;
+        // a lesson counts the pages in it (itself and every page under it)
+        let counts = {};
+        if (branch) {
+          const states = [c.state];
+          const walk = (pid) =>
+            kidsOf(g.kids, pid).forEach((k) => {
+              states.push(k.state);
+              walk(k.id);
             });
+          walk(c.id);
+          counts = {
+            done: states.filter((st) => st === "done").length,
+            total: states.length,
           };
-          lay(rootId, start + gap / 2, span);
-          // keyboard order stays outline order: the section, then its pages
-          g.kids.forEach((c) => {
-            const p = at.get(c.id);
-            if (!p) {
-              return;
-            }
-            const [x, y] = pos(p.r, p.a);
-            const from = c.parent && at.has(c.parent) ? at.get(c.parent) : null;
-            const [fx, fy] = from ? pos(from.r, from.a) : [px0, py0];
-            // bend toward the child's angle at the parent's ring
-            const [cx, cy] = from
-              ? pos(from.r, p.a)
-              : top
-                ? pos(r0, p.a)
-                : [50, 50];
-            lines.push({
-              x1: fx,
-              y1: fy,
-              cx,
-              cy,
-              x2: x,
-              y2: y,
-              k: "twig",
-              a: c.parent,
-              b: c.id,
-              state: c.state,
-            });
-            placed.push({
-              node: top ? { ...c, section: g.node.id } : c,
-              x,
-              y,
-              ring: 2,
-              branch: kidsOf(g.kids, c.id).length > 0,
-              side: side(p.a),
-            });
-          });
         }
-        fits.push(ok);
-        start += span + gap;
+        const node = { ...c, branch, ...counts };
+        placed.push({
+          node: g.node ? { ...node, section: g.node.id } : node,
+          x,
+          y,
+          r: branch ? MAP_LESSON : MAP_PAGE,
+          shape: branch ? "circle" : "tile",
+          branch,
+        });
       });
-      return { placed, lines, size, fits };
-    };
-    // a section whose pages do not fit its slice shows as one node, as before
-    let show = groups.map((g) => g.kids.length > 0);
-    let out = tryLayout(show);
-    for (
-      let guard = 0;
-      guard < groups.length && out.fits.some((f, i) => show[i] && !f);
-      guard++
-    ) {
-      show = show.map((s, i) => s && out.fits[i]);
-      out = tryLayout(show);
-    }
-    // drilled into a section whose pages have no room for a tree
-    if (!top && !show[0]) {
-      out = ringLayout();
-    }
+      start += width + gap;
+    });
     // pages an author marked as related, when both ends are drawn
     if (this._mapRelated) {
-      const where = new Map(out.placed.map((p) => [p.node.id, p]));
+      const where = new Map(placed.map((p) => [p.node.id, p]));
       const seen = new Set();
-      out.placed.forEach((p) => {
+      placed.forEach((p) => {
         (p.node.related || []).forEach((rid) => {
           const q = where.get(rid);
           const key = [p.node.id, rid].sort().join("|");
           if (q && !seen.has(key)) {
             seen.add(key);
-            out.lines.push({
+            lines.push({
               x1: p.x,
               y1: p.y,
-              cx: (p.x + q.x) / 2 + (50 - (p.x + q.x) / 2) * 0.45,
-              cy: (p.y + q.y) / 2 + (50 - (p.y + q.y) / 2) * 0.45,
+              cx: (p.x + q.x) * 0.3,
+              cy: (p.y + q.y) * 0.3,
               x2: q.x,
               y2: q.y,
               k: "related",
@@ -3522,7 +3667,7 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
         });
       });
     }
-    return { placed: out.placed, lines: out.lines, size: out.size };
+    return { placed, lines, box: square(far + MAP_MARGIN) };
   }
   // nodes in keyboard order (the drawn ones), or every node (all, the table)
   _mapFlat(m, all = false) {
@@ -3547,6 +3692,17 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
       }
     });
   }
+  // a click picks a node (its details show beside the map); a second click
+  // on the picked node, or Enter, opens it
+  _mapPick(node, idx) {
+    if (idx === this._mapFocus && this._mapPicked) {
+      this._mapDrill(node);
+      return;
+    }
+    this._mapFocus = idx;
+    this._mapPicked = true;
+    this._focusMapNode();
+  }
   _onMapKeydown(e) {
     const nodes = [...this.shadowRoot.querySelectorAll(".map-node")];
     const at = nodes.indexOf(e.target);
@@ -3558,6 +3714,14 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
       return;
     }
     if (at < 0 || !nodes.length) {
+      return;
+    }
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      const flat = this._mapFlat(this.mapView());
+      if (flat[at]) {
+        this._mapDrill(flat[at]);
+      }
       return;
     }
     const step = {
@@ -3576,41 +3740,70 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
     }
     if (next > -1) {
       e.preventDefault();
+      e.stopPropagation();
       this._mapFocus = next;
+      this._mapPicked = true;
       nodes[next].focus();
     }
+  }
+  // the ids next to a node: its parent, its pages and its related pages
+  _mapNear(lines, id) {
+    const near = new Set([id]);
+    lines.forEach((l) => {
+      if (l.a === id) {
+        near.add(l.b);
+      }
+      if (l.b === id && l.a) {
+        near.add(l.a);
+      }
+    });
+    return near;
   }
   renderMap(data, title) {
     const m = this.mapView(data);
     const top = !m.path.length;
     const n = m.nodes.length;
-    const { placed, lines, size } = this._mapLayout(m);
+    this._mapItems = new Map((data.items || []).map((i) => [i.id, i]));
+    const { placed, lines, box } = this._mapLayout(m);
     const flat = placed.map((p) => p.node);
-    // keyboard order is the order of flat
-    const order = new Map(
-      flat.map((f, i) => [`${f.section || ""}|${f.id}`, i]),
-    );
     const focused = flat[this._mapFocus];
     const focusId = focused ? focused.id : "";
     const all = this._mapFlat(m, true);
     const hasRelated =
-      m.center.kind !== "page" &&
-      all.some((f) => Array.isArray(f.related) && f.related.length);
+      m.center.kind !== "page" || m.center.branch
+        ? all.some((f) => Array.isArray(f.related) && f.related.length)
+        : false;
+    // a picked page dims what is not next to it, so its links read
+    const near =
+      this._mapPicked && focused && focused.kind === "page"
+        ? this._mapNear(lines, focusId)
+        : null;
     const stateWord = (st) => this._stateText(st);
-    const center = top
-      ? html`<span class="map-center you" aria-hidden="true"
-          >${this.t.mapYou}</span
-        >`
-      : html`<span class="map-center" data-state="${m.center.state}"
-          ><span class="map-center-title">${m.center.title}</span
-          ><span class="map-center-sub"
-            >${this._mapProgress(m.center)}</span
-          ></span
-        >`;
+    const viewBox = `${box.x} ${box.y} ${box.width} ${box.height}`;
+    this._mapFit = box;
+    const pagesDone = (data.pageRows || []).filter(
+      (r) => r.status === "done",
+    ).length;
     const crumbs = [
       { title: this.t.mapYou, at: 0 },
       ...m.path.map((p, i) => ({ title: p.title, at: i + 1 })),
     ];
+    const center = top
+      ? svg`<g class="map-center you" aria-hidden="true">
+          <circle r="${MAP_CENTER}"></circle>
+          <text class="map-center-title" y="-4">${this.t.mapYou}</text>
+          <text class="map-center-sub" y="18">${fill(this.t.mapPagesDone, {
+            done: pagesDone,
+            total: (data.pageRows || []).length,
+          })}</text>
+        </g>`
+      : svg`<g class="map-center" data-state="${m.center.state}" aria-hidden="true">
+          <circle r="${MAP_CENTER}"></circle>
+          <text class="map-center-title" y="-4">${clip(m.center.title, 18)}</text>
+          <text class="map-center-sub" y="18">${
+            this._mapProgress(m.center) || stateWord(m.center.state)
+          }</text>
+        </g>`;
     return html`<nav class="map-path" aria-label="${this.t.mapPath}">
         <ol>
           ${crumbs.map((c, i) =>
@@ -3625,93 +3818,162 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
         </ol>
       </nav>
       <p class="map-keys" id="map-keys">${this.t.mapKeys}</p>
-      ${
-        hasRelated
-          ? html`<label class="map-related-toggle"
-              ><input
-                type="checkbox"
-                .checked="${this._mapRelated}"
-                @change="${(e) => (this._mapRelated = e.target.checked)}"
-              /><span>${this.t.mapShowRelated}</span></label
-            >`
-          : nothing
-      }
-      <div
-        class="map ${top ? "top" : "drilled"}"
-        style="--map-size: ${size}px"
-        part="map"
-        role="group"
-        aria-labelledby="chart-title"
-        aria-describedby="map-keys"
-        @keydown="${this._onMapKeydown}"
-      >
-        <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">
-          ${lines.map((l) => {
-            // the lines touching the node with focus stand out
-            const hi = focusId && (l.a === focusId || l.b === focusId);
-            const cls = `${l.k}${hi ? " hi" : ""}`;
-            const st = l.state || "";
-            return l.cx === undefined
-              ? svg`<line class="${cls}" data-state="${st}" x1="${l.x1.toFixed(2)}" y1="${l.y1.toFixed(2)}" x2="${l.x2.toFixed(2)}" y2="${l.y2.toFixed(2)}"></line>`
-              : svg`<path class="${cls}" data-state="${st}" d="M${l.x1.toFixed(2)} ${l.y1.toFixed(2)} Q${l.cx.toFixed(2)} ${l.cy.toFixed(2)} ${l.x2.toFixed(2)} ${l.y2.toFixed(2)}"></path>`;
-          })}
-        </svg>
-        ${center}
-        ${placed.map(({ node, x, y, ring, side, branch }) => {
-          const idx = order.get(`${node.section || ""}|${node.id}`);
-          const progress = this._mapProgress(node);
-          const label = fill(
-            progress ? this.t.mapNodeLabel : this.t.mapNodeLabelShort,
-            { name: node.title, state: stateWord(node.state), progress },
-          );
-          const glyph =
-            node.kind === "activity" ? this._glyphFor(node.tag) : "";
-          // leaf pages are named by their button label only; sections and
-          // pages with pages under them (lessons) show their names, cut to
-          // two lines (the label has all of it)
-          const name =
-            ring === 2 && !branch
-              ? nothing
-              : html`<span class="name" data-side="${side}" aria-hidden="true"
-                  >${node.title}</span
-                >`;
-          return html`<button
-            type="button"
-            class="map-node ring-${ring}${branch ? " branch" : ""}"
-            data-kind="${node.kind}"
-            data-state="${node.state}"
-            data-id="${node.id}"
-            style="left: ${x.toFixed(2)}%; top: ${y.toFixed(2)}%"
-            tabindex="${idx === this._mapFocus ? "0" : "-1"}"
-            aria-label="${label}"
-            title="${node.title}"
-            @click="${() => this._mapDrill(node)}"
-            @focus="${() => (this._mapFocus = idx)}"
+      <div class="map-wrap">
+        <div class="map ddd-viewport ${top ? "top" : "drilled"}" part="map">
+          <svg
+            class="map-svg"
+            viewBox="${viewBox}"
+            tabindex="0"
+            role="group"
+            aria-labelledby="chart-title"
+            aria-describedby="map-keys"
+            data-dim="${near ? "true" : "false"}"
+            @keydown="${this._onMapKeydown}"
           >
-            <span class="dot" aria-hidden="true">${glyph}</span>
-            ${name}
-          </button>`;
-        })}
+            ${lines.map((l) => {
+              const hi = focusId && (l.a === focusId || l.b === focusId);
+              const keep = !near || (near.has(l.b) && (!l.a || near.has(l.a)));
+              const d =
+                l.cx === undefined
+                  ? `M${r2(l.x1)} ${r2(l.y1)} L${r2(l.x2)} ${r2(l.y2)}`
+                  : `M${r2(l.x1)} ${r2(l.y1)} Q${r2(l.cx)} ${r2(l.cy)} ${r2(l.x2)} ${r2(l.y2)}`;
+              return svg`<path
+                class="ddd-connector map-line ${l.k}${hi ? " hi" : ""} ddd-motion-draw-in"
+                data-kind="${l.k === "related" ? "contract" : hi ? "emphasis" : "relationship"}"
+                data-state="${l.state || ""}"
+                ?data-dimmed="${!keep}"
+                pathLength="1"
+                d="${d}"
+              ></path>`;
+            })}
+            ${center}
+            ${placed.map(({ node, x, y, r, shape }, idx) => {
+              const progress = this._mapProgress(node);
+              const label = fill(
+                progress ? this.t.mapNodeLabel : this.t.mapNodeLabelShort,
+                { name: node.title, state: stateWord(node.state), progress },
+              );
+              const inset = dddNodeShapeInset(shape, r * 2, r * 2, {
+                x: -r,
+                y: -r,
+                scale: 0.62,
+              });
+              const named = node.kind === "section" || node.branch || !top;
+              const dim = near && !near.has(node.id);
+              return svg`<g
+                class="ddd-node map-node"
+                data-kind="${node.kind}"
+                data-state="${node.state}"
+                data-id="${node.id}"
+                ?data-branch="${node.branch}"
+                ?data-active="${idx === this._mapFocus && this._mapPicked}"
+                ?data-named="${named}"
+                ?data-near="${near && near.has(node.id)}"
+                ?data-dimmed="${dim}"
+                transform="translate(${r2(x)} ${r2(y)})"
+                tabindex="${idx === this._mapFocus ? "0" : "-1"}"
+                role="button"
+                aria-label="${label}"
+                @click="${() => this._mapPick(node, idx)}"
+                @focus="${() => {
+                  this._mapFocus = idx;
+                }}"
+              >
+                <title>${node.title}</title>
+                <g transform="translate(${-r} ${-r})">${renderDDDNode({
+                  shape,
+                  width: r * 2,
+                  height: r * 2,
+                  icon: svg`<foreignObject x="${inset.x + r}" y="${inset.y + r}" width="${inset.width}" height="${inset.height}"><simple-icon-lite icon="${this._mapIcon(node)}" aria-hidden="true"></simple-icon-lite></foreignObject>`,
+                })}</g>
+                ${this._mapBadge(node.state, r)}
+                <text class="map-label" y="${r + 16}">${clip(node.title, 26)}</text>
+              </g>`;
+            })}
+          </svg>
+          ${renderDDDZoomControls({
+            onZoomIn: () => this._mapViewport.zoomIn(),
+            onZoomOut: () => this._mapViewport.zoomOut(),
+            onFit: () => this._mapViewport.fit(),
+            labels: {
+              group: this.t.zoom,
+              zoomIn: this.t.zoomIn,
+              zoomOut: this.t.zoomOut,
+              fit: this.t.zoomFit,
+            },
+          })}
+        </div>
+        <div class="map-side">
+          ${this.renderMapActions(m, flat, all)}
+          ${
+            m.center.kind === "page" && !m.center.branch
+              ? nothing
+              : html`<div class="map-card map-next">
+                  ${this.renderUpNext(data, "map-up-next-title")}
+                </div>`
+          }
+          <div class="map-card map-key-card">
+            <h4 id="map-key-title">${this.t.mapLegend}</h4>
+            <ul class="map-legend" aria-labelledby="map-key-title">
+              ${MY_LEARNING_STATES.map(
+                (st) =>
+                  html`<li>
+                    <span
+                      class="swatch"
+                      data-state="${st}"
+                      aria-hidden="true"
+                    ></span
+                    >${stateWord(st)}
+                  </li>`,
+              )}
+              <li>
+                <svg
+                  class="ddd-connector-sample"
+                  viewBox="0 0 32 8"
+                  aria-hidden="true"
+                >
+                  <path
+                    class="ddd-connector"
+                    data-kind="relationship"
+                    d="M2 4 H30"
+                  ></path>
+                </svg>
+                ${this.t.mapOutlineKey}
+              </li>
+              ${
+                hasRelated && this._mapRelated
+                  ? html`<li>
+                      <svg
+                        class="ddd-connector-sample"
+                        viewBox="0 0 32 8"
+                        aria-hidden="true"
+                      >
+                        <path
+                          class="ddd-connector related"
+                          data-kind="contract"
+                          d="M2 4 H30"
+                        ></path>
+                      </svg>
+                      ${this.t.mapRelatedKey}
+                    </li>`
+                  : nothing
+              }
+            </ul>
+            ${
+              hasRelated
+                ? html`<label class="map-related-toggle"
+                    ><input
+                      type="checkbox"
+                      .checked="${this._mapRelated}"
+                      @change="${(e) => (this._mapRelated = e.target.checked)}"
+                    /><span>${this.t.mapShowRelated}</span></label
+                  >`
+                : nothing
+            }
+          </div>
+        </div>
       </div>
       ${n ? nothing : html`<p class="map-none">${this.t.mapNoActivities}</p>`}
-      ${this.renderMapActions(m, flat)}
-      <ul class="map-legend" aria-label="${this.t.mapLegend}">
-        ${MY_LEARNING_STATES.map(
-          (st) =>
-            html`<li>
-              <span class="swatch" data-state="${st}" aria-hidden="true"></span
-              >${stateWord(st)}
-            </li>`,
-        )}
-        ${
-          hasRelated && this._mapRelated
-            ? html`<li>
-                <span class="swatch related" aria-hidden="true"></span
-                >${this.t.mapRelatedKey}
-              </li>`
-            : nothing
-        }
-      </ul>
       <p class="sr-only" role="status" aria-live="polite">
         ${this._mapMessage}
       </p>
@@ -3751,14 +4013,31 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
         </table>
       </details>`;
   }
+  // the same marks the site menu uses: a check when done, half when started
+  _mapBadge(state, r) {
+    if (state !== "done" && state !== "in-progress") {
+      return nothing;
+    }
+    const x = r * 0.72;
+    const y = r * 0.72;
+    return state === "done"
+      ? svg`<g class="map-badge" data-state="done" aria-hidden="true">
+          <circle cx="${x}" cy="${y}" r="9"></circle>
+          <path d="M${x - 4.5} ${y} l3 3 l6 -6.5"></path>
+        </g>`
+      : svg`<g class="map-badge" data-state="in-progress" aria-hidden="true">
+          <circle cx="${x}" cy="${y}" r="9"></circle>
+          <path d="M${x} ${y - 6} A6 6 0 0 1 ${x} ${y + 6} Z"></path>
+        </g>`;
+  }
   /**
-   * Where the map can take you: drilled into a page, "Go to this page" and
-   * "Go to this activity" for each activity not done yet; elsewhere "Go to"
-   * the page node that has focus
+   * Beside the map: drilled into a page, "Go to this page" and "Go to this
+   * activity" for each activity not done yet; elsewhere the node with focus,
+   * its state, what is on it, related pages and "Go to" its page
    */
-  renderMapActions(m, flat) {
+  renderMapActions(m, flat, all) {
     const center = m.center;
-    if (center.kind === "page") {
+    if (center.kind === "page" && !center.branch) {
       const todo = m.nodes.filter(
         (nd) => nd.kind === "activity" && nd.state !== "done",
       );
@@ -3767,7 +4046,7 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
         this.t.goToPage,
         fill(this.t.goToPageNamed, { name: center.title }),
       );
-      return html`<div class="map-actions" part="map-actions">
+      return html`<div class="map-card map-actions" part="map-actions">
         <ul class="map-go">
           <li data-id="${center.id}" data-kind="page">
             <span class="glyph" aria-hidden="true">›</span>
@@ -3778,30 +4057,76 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
       </div>`;
     }
     const sel = flat[this._mapFocus];
-    const target = sel && sel.kind === "page" ? this._pageTarget(sel.id) : null;
-    const names =
-      sel && this._mapRelated
-        ? this._relatedNames(this._mapFlat(m, true), sel)
-        : "";
-    return target || names
-      ? html`<div class="map-actions" part="map-actions">
-          ${
-            target
-              ? this.renderGo(
-                  target,
-                  fill(this.t.goToNamed, { name: sel.title }),
-                )
-              : nothing
-          }
-          ${
-            names
-              ? html`<p class="map-related">
-                  ${fill(this.t.mapRelatedTo, { names })}
-                </p>`
-              : nothing
-          }
-        </div>`
-      : nothing;
+    if (!sel) {
+      return nothing;
+    }
+    const target = sel.kind === "page" ? this._pageTarget(sel.id) : null;
+    const names = this._mapRelated
+      ? this._relatedNames(all || this._mapFlat(m, true), sel)
+      : "";
+    const parent = sel.parent
+      ? (all || []).find((f) => f.id === sel.parent)
+      : null;
+    const where =
+      (parent && parent.title) ||
+      (sel.section && (all || []).find((f) => f.id === sel.section)
+        ? (all || []).find((f) => f.id === sel.section).title
+        : m.path.length
+          ? m.path[m.path.length - 1].title
+          : this.t.mapYou);
+    const acts =
+      sel.kind === "page" && this._data
+        ? this._data.activitiesByPage[sel.id] || []
+        : [];
+    const progress = this._mapProgress(sel);
+    return html`<div class="map-card map-actions map-detail" part="map-actions">
+      <p class="map-where">${where}</p>
+      <h4 class="map-title">${sel.title}</h4>
+      <p class="map-state">
+        <span class="swatch" data-state="${sel.state}" aria-hidden="true"></span
+        >${this._stateText(sel.state)}${progress ? ` · ${progress}` : ""}
+      </p>
+      ${
+        acts.length
+          ? html`<ul class="map-acts map-go">
+              ${acts.map((a) => {
+                const name = a.name || elementTitle(a.tag);
+                return html`<li data-id="${a.id}" data-kind="activity">
+                  <span class="glyph" aria-hidden="true"
+                    >${this._glyphFor(a.tag)}</span
+                  >
+                  <span class="name">${name}</span>
+                  ${
+                    a.done
+                      ? html`<span class="num"
+                          >${this._stateText("done")}</span
+                        >`
+                      : this.renderGo(
+                          this._activityTarget(sel.id, a),
+                          this.t.goToActivity,
+                          fill(this.t.goToActivityNamed, { name }),
+                        )
+                  }
+                </li>`;
+              })}
+            </ul>`
+          : sel.kind === "page" && !sel.branch && !sel.total
+            ? html`<p class="map-note">${this.t.mapNothingTracked}</p>`
+            : nothing
+      }
+      ${
+        target
+          ? this.renderGo(target, fill(this.t.goToNamed, { name: sel.title }))
+          : nothing
+      }
+      ${
+        names
+          ? html`<p class="map-related">
+              ${fill(this.t.mapRelatedTo, { names })}
+            </p>`
+          : nothing
+      }
+    </div>`;
   }
   // titles of the pages related to a node, both ways, as one line of text
   _relatedNames(all, node) {
@@ -4062,7 +4387,8 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
     return html`<div class="panel pages-card" part="pages">
       <h3 id="pages-title">${this.t.pagesHeading}</h3>
       <p class="meta">${summary}</p>
-      ${list} ${toggle} ${this.renderUpNext(data)}
+      ${list} ${toggle}
+      ${data.view === "map" ? nothing : this.renderUpNext(data)}
     </div>`;
   }
   // one section of "Show all": open when the learner started a page in it
@@ -4152,14 +4478,14 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
     }
     return out.slice(0, UP_NEXT_LIMIT);
   }
-  renderUpNext(data) {
+  renderUpNext(data, id = "up-next-title") {
     const list = this.upNext(data);
     if (!list.length) {
       return nothing;
     }
     const rows = new Map(data.pageRows.map((r) => [r.id, r]));
-    return html`<h4 id="up-next-title">${this.t.upNext}</h4>
-      <ul class="up-next" aria-labelledby="up-next-title">
+    return html`<h4 id="${id}">${this.t.upNext}</h4>
+      <ul class="up-next" aria-labelledby="${id}">
         ${list.map((u) => {
           const row = rows.get(u.page) || {};
           if (u.kind === "activity") {

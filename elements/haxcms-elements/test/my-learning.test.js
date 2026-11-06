@@ -761,22 +761,42 @@ describe("my-learning dashboard", () => {
 
   describe("map view", () => {
     const mapNodes = (el) => [...el.shadowRoot.querySelectorAll(".map-node")];
+    const byId = (el, id) => mapNodes(el).find((n) => n.dataset.id === id);
     const crumbs = (el) =>
       [...el.shadowRoot.querySelectorAll(".map-path li")].map((li) =>
         li.textContent.trim(),
       );
-    const press = (node, key) =>
+    const press = (node, key) => {
+      const evt = new KeyboardEvent("keydown", {
+        key,
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+      });
+      node.dispatchEvent(evt);
+      return evt;
+    };
+    // svg nodes have no click(); a click event is what a pointer sends
+    const pick = (node) =>
       node.dispatchEvent(
-        new KeyboardEvent("keydown", { key, bubbles: true, composed: true }),
+        new MouseEvent("click", { bubbles: true, composed: true }),
+      );
+    const settle = async (el) => {
+      await el.updateComplete;
+      await flush();
+    };
+    const rows = (el) =>
+      [...el.shadowRoot.querySelectorAll(".map-wrap ~ details tbody tr")].map(
+        (tr) => [...tr.children].map((c) => c.textContent.trim()),
       );
 
-    it("puts you at the centre, sections then their pages around you", async () => {
+    it("puts you at the centre with your pages done, and the whole outline around you", async () => {
       seed();
       const el = await make(
         html`<my-learning scope="site" view="map"></my-learning>`,
       );
       expect(el._data.view).to.equal("map");
-      expect(text(el, ".map-center")).to.equal("You");
+      expect(text(el, ".map-center")).to.equal("You 2 of 6 pages done");
       const nodes = mapNodes(el);
       expect(nodes.map((n) => n.dataset.id)).to.deep.equal([
         "ch1",
@@ -786,30 +806,64 @@ describe("my-learning dashboard", () => {
         "ch2",
         "p3",
       ]);
-      expect(nodes.every((n) => n.tagName === "BUTTON")).to.equal(true);
-      const byId = (id) => nodes.find((n) => n.dataset.id === id);
-      expect(byId("p1").dataset.state).to.equal("done");
-      expect(byId("p2").dataset.state).to.equal("in-progress");
-      expect(byId("p2a").dataset.state).to.equal("not-started");
-      expect(byId("ch1").dataset.state).to.equal("in-progress");
-      expect(byId("ch1").getAttribute("aria-label")).to.equal(
+      expect(nodes.every((n) => n.getAttribute("role") === "button")).to.equal(
+        true,
+      );
+      expect(byId(el, "p1").dataset.state).to.equal("done");
+      expect(byId(el, "p2").dataset.state).to.equal("in-progress");
+      expect(byId(el, "p2a").dataset.state).to.equal("not-started");
+      expect(byId(el, "ch1").dataset.state).to.equal("in-progress");
+      expect(byId(el, "ch1").getAttribute("aria-label")).to.equal(
         "Chapter 1, In progress, 1 of 4 pages done",
       );
-      expect(byId("p3").getAttribute("aria-label")).to.equal(
+      expect(byId(el, "p3").getAttribute("aria-label")).to.equal(
         "Sound, Done, 1 of 1 activities done",
       );
-      // one tab stop, the legend in words, the table with every node
-      expect(nodes.filter((n) => n.tabIndex === 0).length).to.equal(1);
-      expect(text(el, ".map-legend")).to.equal(
-        "Done In progress Visited Not started",
-      );
+      // each node shows what it is, and done or started as a mark on it
+      const icon = (id) =>
+        byId(el, id).querySelector("simple-icon-lite").getAttribute("icon");
+      expect(icon("ch1")).to.equal("hax:unit");
+      expect(icon("p2")).to.equal("hax:lesson");
+      expect(icon("p1")).to.equal("lrn:page");
       expect(
-        el.shadowRoot.querySelectorAll(".map ~ details tbody tr").length,
-      ).to.equal(6);
+        byId(el, "p1").querySelector('.map-badge[data-state="done"]'),
+      ).to.not.equal(null);
+      expect(
+        byId(el, "p2").querySelector('.map-badge[data-state="in-progress"]'),
+      ).to.not.equal(null);
+      expect(byId(el, "p2a").querySelector(".map-badge")).to.equal(null);
+      // beside it: the node with focus, up next and the key
+      expect(text(el, ".map-detail .map-title")).to.equal("Chapter 1");
+      expect(el.shadowRoot.querySelector(".map-next .up-next")).to.not.equal(
+        null,
+      );
+      expect(text(el, ".map-legend")).to.equal(
+        "Done In progress Visited Not started Part of",
+      );
+      // the Pages card leaves up next to the map
+      expect(el.shadowRoot.querySelectorAll(".up-next").length).to.equal(1);
+      // one tab stop among the nodes, every node in the table
+      expect(nodes.filter((n) => n.tabIndex === 0).length).to.equal(1);
+      expect(rows(el).length).to.equal(6);
       await expect(el).shadowDom.to.be.accessible();
     });
 
-    it("moves with arrow keys, drills in with Enter and out with Escape", async () => {
+    it("uses the page's own icon, else its page type's", async () => {
+      seed();
+      const manifest = JSON.parse(JSON.stringify(MANIFEST));
+      manifest.items.find((i) => i.id === "p1").metadata.icon = "lrn:write";
+      manifest.items.find((i) => i.id === "p3").metadata.pageType = "project";
+      store.manifest = manifest;
+      const el = await make(
+        html`<my-learning scope="site" view="map"></my-learning>`,
+      );
+      const icon = (id) =>
+        byId(el, id).querySelector("simple-icon-lite").getAttribute("icon");
+      expect(icon("p1")).to.equal("lrn:write");
+      expect(icon("p3")).to.equal("hax:bulletin-board");
+    });
+
+    it("moves with arrow keys, opens with Enter and steps back with Escape", async () => {
       seed();
       const el = await make(
         html`<my-learning scope="site" view="map"></my-learning>`,
@@ -823,10 +877,8 @@ describe("my-learning dashboard", () => {
       expect(el.shadowRoot.activeElement.dataset.id).to.equal("p3");
       press(el.shadowRoot.activeElement, "Home");
       expect(el.shadowRoot.activeElement.dataset.id).to.equal("ch1");
-      // Enter on a button is a click: drill into the section
-      el.shadowRoot.activeElement.click();
-      await el.updateComplete;
-      await flush();
+      press(el.shadowRoot.activeElement, "Enter");
+      await settle(el);
       expect(text(el, ".map-center-title")).to.equal("Chapter 1");
       expect(mapNodes(el).map((n) => n.dataset.id)).to.deep.equal([
         "p1",
@@ -840,61 +892,64 @@ describe("my-learning dashboard", () => {
       ).to.equal("Chapter 1");
       expect(text(el, '.chart [role="status"]')).to.equal("Showing Chapter 1");
       // into a page: its activities
-      mapNodes(el)[0].click();
-      await el.updateComplete;
+      press(mapNodes(el)[0], "Enter");
+      await settle(el);
       nodes = mapNodes(el);
       expect(nodes.map((n) => n.dataset.kind)).to.deep.equal([
         "activity",
         "activity",
       ]);
-      expect(nodes.map((n) => n.title)).to.deep.equal([
-        "q1",
-        "Wave on a slinky",
-      ]);
+      expect(
+        nodes.map((n) => n.querySelector("title").textContent),
+      ).to.deep.equal(["q1", "Wave on a slinky"]);
       expect(text(el, ".map-center")).to.contain("Waves 101");
       expect(text(el, ".map-center")).to.contain("2 of 2 activities done");
       // Escape steps out one level, focus on the page we came from
-      const evt = new KeyboardEvent("keydown", {
-        key: "Escape",
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-      });
-      el.shadowRoot.activeElement.dispatchEvent(evt);
+      const evt = press(el.shadowRoot.activeElement, "Escape");
       expect(evt.defaultPrevented).to.equal(true);
-      await el.updateComplete;
-      await flush();
+      await settle(el);
       expect(text(el, ".map-center-title")).to.equal("Chapter 1");
       expect(el.shadowRoot.activeElement.dataset.id).to.equal("p1");
       // the breadcrumb steps all the way out
       el.shadowRoot.querySelector(".map-path button").click();
-      await el.updateComplete;
-      expect(text(el, ".map-center")).to.equal("You");
+      await settle(el);
+      expect(text(el, ".map-center")).to.contain("You");
       // at the top Escape is left for the dialog
-      const top = new KeyboardEvent("keydown", {
-        key: "Escape",
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-      });
-      mapNodes(el)[0].dispatchEvent(top);
-      expect(top.defaultPrevented).to.equal(false);
+      expect(press(mapNodes(el)[0], "Escape").defaultPrevented).to.equal(false);
     });
 
-    it("drills from a page in the outer ring straight to its activities", async () => {
+    it("picks a node with a click and opens it with a second one", async () => {
       seed();
       const el = await make(
         html`<my-learning scope="site" view="map"></my-learning>`,
       );
-      mapNodes(el)
-        .find((n) => n.dataset.id === "p2")
-        .click();
-      await el.updateComplete;
+      pick(byId(el, "p2"));
+      await settle(el);
+      expect(byId(el, "p2").hasAttribute("data-active")).to.equal(true);
+      expect(text(el, ".map-detail .map-where")).to.equal("Chapter 1");
+      expect(text(el, ".map-detail .map-title")).to.equal("Energy");
+      // a picked page lifts its neighbours and dims the rest
+      expect(byId(el, "p2a").hasAttribute("data-near")).to.equal(true);
+      expect(byId(el, "p3").hasAttribute("data-dimmed")).to.equal(true);
+      // a page with pages under it opens to those pages
+      pick(byId(el, "p2"));
+      await settle(el);
       expect(crumbs(el)).to.deep.equal(["You", "Chapter 1", "Energy"]);
-      expect(mapNodes(el).length).to.equal(2);
+      expect(mapNodes(el).map((n) => n.dataset.id)).to.deep.equal(["p2a"]);
+      expect(text(el, ".map-center")).to.contain("0 of 2 pages done");
+      // and a page with nothing under it to its activities (none yet)
+      press(mapNodes(el)[0], "Enter");
+      await settle(el);
+      expect(crumbs(el)).to.deep.equal([
+        "You",
+        "Chapter 1",
+        "Energy",
+        "Energy deep dive",
+      ]);
+      expect(text(el, ".map-none")).to.equal("Nothing to do on this page yet.");
     });
 
-    it("shows sections only when their pages have no room, every page still in the table", async () => {
+    it("draws a big site whole, and zooms and fits", async () => {
       const many = [item("big", null, 0, "Big section")];
       for (let i = 0; i < 200; i++) {
         many.push(item(`b${i}`, "big", i, `Page ${i}`));
@@ -905,34 +960,25 @@ describe("my-learning dashboard", () => {
       const el = await make(
         html`<my-learning scope="site" view="map"></my-learning>`,
       );
-      expect(mapNodes(el).map((n) => n.dataset.id)).to.deep.equal(["big"]);
-      expect(mapNodes(el)[0].tabIndex).to.equal(0);
-      expect(
-        el.shadowRoot.querySelectorAll(".map ~ details tbody tr").length,
-      ).to.equal(201);
-      mapNodes(el)[0].click();
-      await el.updateComplete;
-      expect(mapNodes(el).length).to.equal(200);
-    });
-
-    it("draws a big section's pages as a tree when they have room", async () => {
-      const many = [item("big", null, 0, "Big section")];
-      for (let i = 0; i < 60; i++) {
-        many.push(item(`b${i}`, "big", i, `Page ${i}`));
-      }
-      store.manifest = { ...JSON.parse(JSON.stringify(MANIFEST)), items: many };
-      store.activeId = "b1";
-      visit("b1");
-      const el = await make(
-        html`<my-learning scope="site" view="map"></my-learning>`,
-      );
-      el._mapRoom = 900;
-      await el.updateComplete;
-      expect(mapNodes(el).length).to.equal(61);
-      // with too little room the same section folds back to one node
-      el._mapRoom = 200;
-      await el.updateComplete;
-      expect(mapNodes(el).map((n) => n.dataset.id)).to.deep.equal(["big"]);
+      expect(mapNodes(el).length).to.equal(201);
+      expect(rows(el).length).to.equal(201);
+      const svgEl = el.shadowRoot.querySelector(".map-svg");
+      const width = () => Number(svgEl.getAttribute("viewBox").split(" ")[2]);
+      const fitted = width();
+      // the rings spread out so 200 pages keep apart
+      expect(fitted).to.be.greaterThan(2 * 460);
+      const buttons = [
+        ...el.shadowRoot.querySelectorAll(".ddd-viewport-controls button"),
+      ];
+      expect(buttons.map((b) => b.getAttribute("aria-label"))).to.deep.equal([
+        "Zoom in",
+        "Zoom out",
+        "Fit the whole map",
+      ]);
+      buttons[0].click();
+      expect(width()).to.be.lessThan(fitted);
+      buttons[2].click();
+      expect(width()).to.equal(fitted);
     });
 
     it("hangs each page under its own parent, one ring per level", async () => {
@@ -947,35 +993,51 @@ describe("my-learning dashboard", () => {
         ["p2", "ch1", 1],
         ["p2a", "p2", 2],
       ]);
-      // a page with pages under it is a branch, named on the map
-      const p2 = mapNodes(el).find((n) => n.dataset.id === "p2");
-      expect(p2.classList.contains("branch")).to.equal(true);
-      expect(p2.querySelector(".name").textContent.trim()).to.equal("Energy");
-      const p1 = mapNodes(el).find((n) => n.dataset.id === "p1");
-      expect(p1.classList.contains("branch")).to.equal(false);
-      expect(p1.querySelector(".name")).to.equal(null);
-      // the line to a page carries that page's state
-      const twigs = [...el.shadowRoot.querySelectorAll(".map svg .twig")];
-      expect(twigs.map((t) => t.dataset.state)).to.deep.equal([
+      // a page with pages under it is a branch: named, counting its pages
+      const p2 = byId(el, "p2");
+      expect(p2.hasAttribute("data-branch")).to.equal(true);
+      expect(p2.hasAttribute("data-named")).to.equal(true);
+      expect(p2.getAttribute("aria-label")).to.equal(
+        "Energy, In progress, 0 of 2 pages done",
+      );
+      expect(byId(el, "p1").hasAttribute("data-named")).to.equal(false);
+      // each line takes the state of the node it leads to
+      const lines = [
+        ...el.shadowRoot.querySelectorAll(".map-svg .map-line.outline"),
+      ];
+      expect(lines.map((t) => t.dataset.state)).to.deep.equal([
+        "in-progress",
         "done",
         "in-progress",
         "not-started",
+        "in-progress",
         "done",
       ]);
       // drilled into the section the tree keeps its levels
-      mapNodes(el)
-        .find((n) => n.dataset.id === "ch1")
-        .click();
-      await el.updateComplete;
+      press(byId(el, "ch1"), "Enter");
+      await settle(el);
       expect(mapNodes(el).map((n) => n.dataset.id)).to.deep.equal([
         "p1",
         "p2",
         "p2a",
       ]);
-      expect(el.shadowRoot.querySelectorAll(".map svg .twig").length).to.equal(
-        3,
-      );
+      expect(
+        el.shadowRoot.querySelectorAll(".map-svg .map-line.outline").length,
+      ).to.equal(3);
       await expect(el).shadowDom.to.be.accessible();
+    });
+
+    it("says when nothing on a page is tracked", async () => {
+      visit("p1");
+      const el = await make(
+        html`<my-learning scope="site" view="map"></my-learning>`,
+      );
+      pick(byId(el, "p1"));
+      await settle(el);
+      expect(text(el, ".map-detail .map-state")).to.equal("Visited");
+      expect(text(el, ".map-detail .map-note")).to.equal(
+        "Nothing on this page is tracked, so it shows as visited, not done.",
+      );
     });
 
     it("draws pages an author marked as related, and can hide them", async () => {
@@ -988,29 +1050,25 @@ describe("my-learning dashboard", () => {
         html`<my-learning scope="site" view="map"></my-learning>`,
       );
       const related = () => [
-        ...el.shadowRoot.querySelectorAll(".map svg .related"),
+        ...el.shadowRoot.querySelectorAll(".map-svg .related"),
       ];
       expect(related().length).to.equal(2);
       expect(text(el, ".map-legend")).to.contain("Related pages");
       // in the table, both ways
-      const rows = [
-        ...el.shadowRoot.querySelectorAll(".map ~ details tbody tr"),
-      ].map((tr) => [...tr.children].map((c) => c.textContent.trim()));
-      expect(rows.find((r) => r[0] === "Sound")[3]).to.equal(
+      expect(rows(el).find((r) => r[0] === "Sound")[3]).to.equal(
         "Waves 101, Energy deep dive",
       );
-      expect(rows.find((r) => r[0] === "Waves 101")[3]).to.equal("Sound");
-      // focus a related page: its lines stand out, the names are said
-      const p1 = mapNodes(el).find((n) => n.dataset.id === "p1");
-      p1.focus();
-      await el.updateComplete;
+      expect(rows(el).find((r) => r[0] === "Waves 101")[3]).to.equal("Sound");
+      // pick a related page: its lines stand out, the names are said
+      pick(byId(el, "p1"));
+      await settle(el);
       expect(
-        el.shadowRoot.querySelectorAll(".map svg .related.hi").length,
+        el.shadowRoot.querySelectorAll(".map-svg .related.hi").length,
       ).to.equal(1);
       expect(text(el, ".map-related")).to.equal("Related to: Sound");
-      const box = el.shadowRoot.querySelector(".map-related-toggle input");
-      box.click();
-      await el.updateComplete;
+      expect(byId(el, "p3").hasAttribute("data-near")).to.equal(true);
+      el.shadowRoot.querySelector(".map-related-toggle input").click();
+      await settle(el);
       expect(related().length).to.equal(0);
       expect(text(el, ".map-legend")).to.not.contain("Related pages");
       await expect(el).shadowDom.to.be.accessible();
@@ -1050,12 +1108,13 @@ describe("my-learning dashboard", () => {
       const el = await make(
         html`<my-learning scope="site" view="map"></my-learning>`,
       );
-      mapNodes(el)[0].click();
-      await el.updateComplete;
+      expect(mapNodes(el)[0].querySelector("title").textContent).to.equal(evil);
+      press(mapNodes(el)[0], "Enter");
+      await settle(el);
       expect(el.shadowRoot.querySelector("img")).to.equal(null);
       expect(globalThis.__mlMap).to.equal(undefined);
-      expect(text(el, ".map-center")).to.contain(evil);
-      expect(mapNodes(el)[0].getAttribute("title")).to.equal(evil);
+      expect(text(el, ".map-center")).to.contain("<img");
+      expect(mapNodes(el)[0].querySelector("title").textContent).to.equal(evil);
     });
   });
 
@@ -1634,36 +1693,31 @@ describe("my-learning dashboard", () => {
       const el = await make(
         html`<my-learning scope="site" view="map"></my-learning>`,
       );
-      // a page node with focus offers its page
+      // a picked page offers its page, and each activity not done yet
       const node = [...el.shadowRoot.querySelectorAll(".map-node")].find(
         (n) => n.dataset.id === "p2",
       );
-      node.focus();
-      await el.updateComplete;
-      let go = el.shadowRoot.querySelector(".map-actions a.go");
-      expect(go.textContent.trim()).to.equal("Go to “Energy”");
-      expect(go.getAttribute("href")).to.equal(`${base}p2`);
-      node.click();
+      node.dispatchEvent(
+        new MouseEvent("click", { bubbles: true, composed: true }),
+      );
       await el.updateComplete;
       const links = [...el.shadowRoot.querySelectorAll(".map-actions a.go")];
       expect(links.map((a) => a.textContent.trim())).to.deep.equal([
-        "Go to this page",
         "Go to this activity",
+        "Go to “Energy”",
       ]);
-      expect(links[0].getAttribute("aria-label")).to.equal(
-        "Go to this page: Energy",
-      );
-      // only the activity not done yet
+      expect(links[1].getAttribute("href")).to.equal(`${base}p2`);
       expect(
-        [...el.shadowRoot.querySelectorAll(".map-go li")].map(
+        [...el.shadowRoot.querySelectorAll(".map-actions .map-go li")].map(
           (li) => li.dataset.id,
         ),
-      ).to.deep.equal(["p2", `${base}p2#lab-todo`]);
-      expect(links[1].getAttribute("aria-label")).to.equal(
+      ).to.deep.equal([`${base}p2#lab-done`, `${base}p2#lab-todo`]);
+      expect(links[0].getAttribute("aria-label")).to.equal(
         "Go to this activity: Still to do",
       );
       links.forEach((a) => expect(sameSite(a.href)).to.equal(true));
-      expect(links[1].getAttribute("href")).to.equal(`${base}p2#lab-todo`);
+      expect(links[0].getAttribute("href")).to.equal(`${base}p2#lab-todo`);
+      const activityLink = links[0];
       // following it: the dialog closes, the page opens, the activity shows
       const target = document.createElement("x-ml-quiz");
       target.id = "lab-todo";
@@ -1677,7 +1731,7 @@ describe("my-learning dashboard", () => {
       let hidden = 0;
       const onHide = () => hidden++;
       globalThis.addEventListener("simple-modal-hide", onHide);
-      links[1].click();
+      activityLink.click();
       const found = await el.lastNavigation;
       globalThis.removeEventListener("simple-modal-hide", onHide);
       expect(hidden).to.equal(1);
