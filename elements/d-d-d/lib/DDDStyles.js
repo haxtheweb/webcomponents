@@ -2688,13 +2688,22 @@ export const DDDPulseEffect = css`
     --ddd-animation-pulse-color: var(--ddd-primary-25-rgb);
   }
 
+  /* two pulses, then it rests: an animated box-shadow repaints every frame,
+     so an endless pulse kept the main thread busy for as long as the page
+     was open, and motion that starts on its own must stop within five
+     seconds (WCAG 2.2.2) */
   :host([data-pulse]) {
     --ddd-animation-pulse-size: var(--ddd-spacing-4);
     animation-delay: 2.8s;
     animation-name: pulse;
     animation-duration: 2s;
-    animation-iteration-count: infinite;
+    animation-iteration-count: 2;
     z-index: 10000;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    :host([data-pulse]) {
+      animation: none;
+    }
   }
   :host([data-pulse="1"]) {
     --ddd-animation-pulse-size: var(--ddd-spacing-6);
