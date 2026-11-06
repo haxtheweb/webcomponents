@@ -509,3 +509,35 @@ describe('Test Desktop Responsiveness', () => {
       expect(hidden).to.equal(true);
     })
 }) */
+
+describe("simple-tooltip hidden box", () => {
+  it("collapses to a 1px box while hidden, even with a custom width", async () => {
+    const el = await fixture(html`
+      <simple-tooltip style="--simple-tooltip-width: 200px"
+        >a long enough tooltip string</simple-tooltip
+      >
+    `);
+    await el.updateComplete;
+    const box = el.shadowRoot.querySelector("#tooltip");
+    expect(box.classList.contains("hidden")).to.equal(true);
+    const style = globalThis.getComputedStyle(box);
+    expect(style.width).to.equal("1px");
+    expect(style.height).to.equal("1px");
+    expect(style.paddingTop).to.equal("0px");
+    expect(style.paddingLeft).to.equal("0px");
+  });
+
+  it("restores the tooltip width and padding once shown", async () => {
+    const el = await fixture(html`
+      <simple-tooltip style="--simple-tooltip-width: 200px"
+        >a long enough tooltip string</simple-tooltip
+      >
+    `);
+    await el.updateComplete;
+    const box = el.shadowRoot.querySelector("#tooltip");
+    box.classList.remove("hidden");
+    const style = globalThis.getComputedStyle(box);
+    expect(style.width).to.equal("200px");
+    expect(style.paddingTop).to.equal("8px");
+  });
+});
