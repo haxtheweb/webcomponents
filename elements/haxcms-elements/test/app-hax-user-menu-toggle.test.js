@@ -73,6 +73,10 @@ describe("app-hax-user-menu-toggle avatars", () => {
       ></app-hax-user-menu-toggle>`,
     );
     await settled(el);
+    // rpg-character draws its art once it is on screen (next frame or so)
+    for (let i = 0; i < 100 && character(el).__inView === false; i++) {
+      await new Promise((r) => requestAnimationFrame(r));
+    }
     await settled(character(el));
     const hrefs = Array.from(
       character(el).shadowRoot.querySelectorAll("image"),

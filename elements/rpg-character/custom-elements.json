@@ -141,6 +141,15 @@
             },
             {
               "kind": "method",
+              "name": "__confirmInView",
+              "description": "While a page is still being built a character can look on screen for a\nmoment before the content above it renders and pushes it down. Check\nagain once the browser is idle (layout has settled) before drawing."
+            },
+            {
+              "kind": "method",
+              "name": "__stopInViewObserver"
+            },
+            {
+              "kind": "method",
               "name": "_slot",
               "parameters": [
                 {
@@ -215,11 +224,20 @@
               ]
             },
             {
+              "kind": "method",
+              "name": "_syncDemoListener",
+              "description": "Demo mode randomizes the character on click. The wrapper is drawn again\nonce the character comes into view, so the listener follows whichever\nwrapper is current."
+            },
+            {
               "kind": "field",
               "name": "haxProperties",
               "static": true,
               "description": "haxProperties integration via file reference",
               "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "__inView"
             },
             {
               "kind": "field",

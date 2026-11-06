@@ -41,6 +41,7 @@ import "./lib/a11y-media-button.js";
 import "./lib/a11y-media-transcript-cue.js";
 import "./lib/a11y-media-youtube.js";
 import { removeThroughLast } from "@haxtheweb/utils/lib/safe-html.js";
+import { whenIdle } from "@haxtheweb/utils/lib/idle.js";
 
 /**
   * `a11y-media-player`
@@ -1012,10 +1013,13 @@ class A11yMediaPlayer extends SchemaBehaviors(
               <slot></slot>
             </div>
             ${
-              this.videoId && this.__playerReady
+              this.videoId && this.__playerReady && this.__youtubeWanted
                 ? html`
                     <a11y-media-youtube
                       id="youtube-${this.id}"
+                      ?autoplay="${this.__youtubePlayOnLoad}"
+                      .volume="${this.volume}"
+                      .muted="${this.muted}"
                       class="${
                         this.__currentTime > 0.3 || this.__seeking
                           ? ``
@@ -1503,6 +1507,8 @@ class A11yMediaPlayer extends SchemaBehaviors(
        */
       typeof: { type: String, reflect: true },
       __playerReady: { type: Boolean },
+      __youtubeWanted: { type: Boolean },
+      __youtubePlayOnLoad: { type: Boolean },
       /**
        * Allow this media to play concurrently with other a11y-media-players?
        * Default is to pause this a11y-media-player when other a11y-media-player starts playing.
@@ -1939,6 +1945,11 @@ class A11yMediaPlayer extends SchemaBehaviors(
     globalThis.ResponsiveUtility.requestAvailability();
     globalThis.A11yMediaStateManager.requestAvailability();
     this.__playerReady = false;
+    // the YouTube player (its API script and embed iframe) is created when
+    // the browser is idle after this player is ready, or right away when
+    // someone presses play; until then the thumbnail and play button show
+    this.__youtubeWanted = false;
+    this.__youtubePlayOnLoad = false;
     this.audioOnly = false;
     this.autoplay = false;
     this.allowConcurrent = false;
@@ -2843,6 +2854,12 @@ class A11yMediaPlayer extends SchemaBehaviors(
    */
   play() {
     this.__playing = true;
+    if (this.isYoutube && !this.youtube) {
+      // nothing to play yet: create the YouTube player and start it once
+      // it is ready
+      this.__youtubePlayOnLoad = true;
+      this.__youtubeWanted = true;
+    }
     if (this.media && this.media.play) this.media.play();
     /**
      * Fires when media plays
@@ -3954,6 +3971,14 @@ class A11yMediaPlayer extends SchemaBehaviors(
       }),
     );
     this.__playerReady = true;
+    if (!this.__youtubeWanted) {
+      whenIdle(
+        () => {
+          this.__youtubeWanted = true;
+        },
+        { timeout: 4000, fallbackDelay: 1500 },
+      );
+    }
   }
   /**
    * on a cue.onenter event scrolls the first active cue to position

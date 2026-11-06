@@ -46,6 +46,16 @@ class VideoPlayer extends IntersectionObserverMixin(
           margin: var(--ddd-spacing-4) 0;
         }
 
+        /* holds the player's space until it scrolls into view and renders,
+           so the content below does not jump down when it does */
+        .video-placeholder {
+          aspect-ratio: 16 / 9;
+          width: 100%;
+        }
+        .video-placeholder.audio {
+          aspect-ratio: auto;
+          min-height: var(--ddd-spacing-12);
+        }
         .video-caption {
           font-style: italic;
           margin: 0;
@@ -276,7 +286,10 @@ class VideoPlayer extends IntersectionObserverMixin(
                         </a11y-media-player
                         ><slot hidden></slot>`
                 }`
-              : ``
+              : html`<div
+                  class="video-placeholder ${this.audioOnly ? "audio" : ""}"
+                  aria-hidden="true"
+                ></div>`
           }
         </div>
       </div>`;
