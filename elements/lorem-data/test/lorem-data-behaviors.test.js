@@ -729,6 +729,26 @@ describe("lorem-data behaviors lib (direct instance)", () => {
     expect(lib.words.includes("")).to.be.false;
   });
 
+  it("sentences and phrases built from the last word stay well formed", () => {
+    // the randomType / randomPhrase flakes (' laoreet pellentesque.' and
+    // titleCase reading undefined) came from words ending in "" whenever
+    // Math.random landed near 1 (fixed in lorem-data-behaviors.js words).
+    // Pin Math.random to the top of its range so that exact path runs on
+    // every run instead of roughly one run in a few hundred.
+    const original = Math.random;
+    Math.random = () => 0.999999;
+    try {
+      const last = lib.words[lib.words.length - 1];
+      expect(lib.randomWord()).to.equal(last);
+      expect(lib.randomSentence(2, 4)).to.match(/^[A-Z].+[.?!]$/);
+      const phrase = lib.randomPhrase(2, 3, true, false);
+      expect(phrase).to.match(/^[A-Z]/);
+      expect(phrase.split(" ").every((w) => w.length > 0)).to.equal(true);
+    } finally {
+      Math.random = original;
+    }
+  });
+
   it("randomPhrase and randomPassage are lib-only generators", () => {
     const phrase = lib.randomPhrase(1, 1, false, false);
     expect(phrase).to.match(/^[a-z]/);

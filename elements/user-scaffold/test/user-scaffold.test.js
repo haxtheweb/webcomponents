@@ -349,9 +349,16 @@ describe("UserScaffold user action handlers", () => {
         files: [],
       },
     };
-    const start = performance.now();
-    element.userPasteAction(fakeEvent);
-    expect(performance.now() - start).to.be.below(1000);
+    // keeps a time limit because it guards catastrophic regex backtracking
+    // on an unterminated style; normal is <1ms, so 1000ms is far above 5x.
+    // Fastest of 3 so one GC pause or busy runner cannot fail it.
+    let best = Infinity;
+    for (let run = 0; run < 3; run++) {
+      const start = performance.now();
+      element.userPasteAction(fakeEvent);
+      best = Math.min(best, performance.now() - start);
+    }
+    expect(best).to.be.below(1000);
   });
 
   it("userPasteAction cleans empty span tags", () => {

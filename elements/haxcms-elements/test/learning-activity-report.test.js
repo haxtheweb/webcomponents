@@ -1,4 +1,4 @@
-import { fixture, expect, html } from "@open-wc/testing";
+import { fixture, expect, html, waitUntil } from "@open-wc/testing";
 import { store } from "../lib/core/haxcms-site-store.js";
 import { XAPI_VOCABULARY } from "@haxtheweb/user-action/lib/xapi-vocabulary.js";
 import {
@@ -616,11 +616,15 @@ describe("learning activity: Reports screen", () => {
     const el = await fixture(
       html`<haxcms-site-reports section="learning"></haxcms-site-reports>`,
     );
-    await flush(200);
-    await el.updateComplete;
     const rep = () =>
       el.shadowRoot.querySelector("haxcms-learning-activity-report");
-    expect(rep()).to.not.equal(null);
+    // the report is lazy-imported for its route; a fixed 200ms flush lost the
+    // race on a busy runner, so wait for it to be stamped and upgraded
+    await waitUntil(
+      () => rep() && rep().shadowRoot,
+      "learning activity report rendered for its route",
+      { timeout: 5000 },
+    );
     expect(rep().rootId).to.equal("");
     await rep().__scan;
     await rep().updateComplete;
@@ -634,13 +638,15 @@ describe("learning activity: Reports screen", () => {
     const scope = el.shadowRoot.querySelector("#scope");
     scope.value = "branch";
     scope.dispatchEvent(new Event("change"));
-    await flush(50);
-    await el.updateComplete;
-    expect(rep().rootId).to.equal("p2");
+    await waitUntil(
+      () => rep() && rep().rootId === "p2",
+      "report follows the branch scope",
+      { timeout: 5000 },
+    );
     // other screens still render from the analyzer
     el.section = "media";
-    await flush(50);
-    await el.updateComplete;
-    expect(rep()).to.equal(null);
+    await waitUntil(() => rep() === null, "learning report removed for media", {
+      timeout: 5000,
+    });
   });
 });

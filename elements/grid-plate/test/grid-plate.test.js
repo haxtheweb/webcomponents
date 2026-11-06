@@ -191,16 +191,19 @@ describe("GridPlate test", () => {
     const layouts = ["1", "1-1", "2-1", "1-2", "1-1-1", "1-1-1-1"];
     const sizes = ["xs", "sm", "md", "lg", "xl"];
 
-    const startTime = performance.now();
-
+    // no wall-clock budget: 30 pure lookups under 50ms measured runner
+    // load, not grid-plate; check every combination yields widths instead
     for (const layout of layouts) {
       for (const size of sizes) {
-        element._getColumnWidths(size, layout, element.layouts, false);
+        const widths = element._getColumnWidths(
+          size,
+          layout,
+          element.layouts,
+          false,
+        );
+        expect(widths, `${layout} @ ${size}`).to.exist;
       }
     }
-
-    const endTime = performance.now();
-    expect(endTime - startTime).to.be.lessThan(50); // Should be fast
   });
 });
 

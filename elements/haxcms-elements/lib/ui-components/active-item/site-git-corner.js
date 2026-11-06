@@ -4,6 +4,10 @@ import { autorun, toJS } from "mobx";
 import { varGet } from "@haxtheweb/utils/lib/object-path.js";
 import { HAXCMSThemeParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
 import { HAXCMSI18NMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSI18NMixin.js";
+// render() always stamps a <simple-tooltip>; without this import it only
+// upgraded when some sibling (site-print-button, site-modal) happened to load
+// it first, and until then the tooltip text rendered as visible plain text
+import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 
 class SiteGitCorner extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
   static get tag() {

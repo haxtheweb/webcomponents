@@ -1,9 +1,39 @@
-import { fixture, expect, html } from "@open-wc/testing";
+import { fixture, expect, html, waitUntil } from "@open-wc/testing";
 import { OutlinePlayer } from "../outline-player.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 
 // helpers for driving matchMedia / scrollTo / SimpleModal without real
 // platform dependencies; originals are always saved and restored
+
+// outline-player lazy-imports its chrome (menu, breadcrumb, modal, print
+// button, git corner, ...) from the constructor. Until those modules land the
+// children are undefined and render their light-DOM text raw, so an audit or
+// assertion that runs mid-load sees a half-built tree. Wait for every child
+// the theme stamps to be defined and rendered.
+const LAZY_CHILDREN = [
+  "site-breadcrumb",
+  "site-menu",
+  "site-menu-button",
+  "site-print-button",
+  "site-title",
+  "site-active-title",
+  "site-git-corner",
+  "site-modal",
+  "simple-tooltip",
+];
+const settle = async (el) => {
+  await Promise.all(
+    LAZY_CHILDREN.map((tag) => globalThis.customElements.whenDefined(tag)),
+  );
+  await el.updateComplete;
+  const pending = [];
+  el.shadowRoot.querySelectorAll("*").forEach((child) => {
+    if (child.updateComplete) {
+      pending.push(child.updateComplete);
+    }
+  });
+  await Promise.all(pending);
+};
 
 describe("outline-player", () => {
   let element;
@@ -64,6 +94,10 @@ describe("outline-player", () => {
     element = await fixture(
       html`<outline-player title="test-title"></outline-player>`,
     );
+    // flaked in CI (color-contrast on site-git-corner's "See page source"):
+    // the audit ran while simple-tooltip was still undefined, so the tooltip
+    // text showed as raw page text. Audit the settled theme instead.
+    await settle(element);
     await expect(element).shadowDom.to.be.accessible({
       // the menu toggle mirrors aria-controls onto its inner button, but the
       // #drawer target lives in the host shadow root, so axe cannot resolve
@@ -177,8 +211,7 @@ describe("outline-player", () => {
 
   it("clicking the menu toggle host handler toggles state", async () => {
     element = await fixture(html`<outline-player></outline-player>`);
-    await element.updateComplete;
-    await new Promise((r) => setTimeout(r, 50));
+    await settle(element);
     const toggle = element.shadowRoot.querySelector(".menu-toggle");
     toggle.click();
     await element.updateComplete;
@@ -188,9 +221,9 @@ describe("outline-player", () => {
 
   it("mirrors aria-expanded onto the inner menu toggle button", async () => {
     element = await fixture(html`<outline-player></outline-player>`);
-    await element.updateComplete;
-    await new Promise((r) => setTimeout(r, 50));
+    await settle(element);
     const toggle = element.shadowRoot.querySelector(".menu-toggle");
+    await toggle.updateComplete;
     const inner = toggle.shadowRoot.querySelector("button");
     expect(inner).to.exist;
     // fixed (outline-player.js firstUpdated): the initial sync now also
@@ -306,9 +339,13 @@ describe("outline-player", () => {
 
   it("store activeId drives the element activeId through autorun", async () => {
     element = await fixture(html`<outline-player></outline-player>`);
-    await new Promise((r) => setTimeout(r, 50));
+    await element.updateComplete;
     store.activeId = "store-driven-item";
-    await new Promise((r) => setTimeout(r, 50));
+    await waitUntil(
+      () => element.activeId === "store-driven-item",
+      "store activeId never reached the element",
+      { timeout: 5000 },
+    );
     expect(element.activeId).to.equal("store-driven-item");
   });
 
@@ -320,7 +357,16 @@ describe("outline-player", () => {
     globalThis.document.body.appendChild(siteBuilder);
     try {
       store.editMode = true;
-      await new Promise((r) => setTimeout(r, 150));
+      await waitUntil(
+        () =>
+          element.hasAttribute("edit-mode") &&
+          element.shadowRoot
+            .querySelector("site-print-button")
+            .getAttribute("part") === "print-btn edit-mode-active",
+        "edit mode never reached the theme",
+        { timeout: 5000 },
+      );
+      await element.updateComplete;
       expect(element.hasAttribute("edit-mode")).to.equal(true);
       // edit mode hides the default slot and re-pads the content container
       const slotEl = element.shadowRoot.querySelector("#slot");
@@ -340,7 +386,14 @@ describe("outline-player", () => {
       siteBuilder.remove();
     }
     // back on a published page only the theme-declared part remains
-    await new Promise((r) => setTimeout(r, 150));
+    await waitUntil(
+      () =>
+        element.shadowRoot
+          .querySelector("site-print-button")
+          .getAttribute("part") === "print-btn",
+      "edit-mode-active part was never removed",
+      { timeout: 5000 },
+    );
     const printBtn = element.shadowRoot.querySelector("site-print-button");
     expect(printBtn.getAttribute("part")).to.equal("print-btn");
   });
@@ -359,8 +412,11 @@ describe("outline-player", () => {
     };
     try {
       element.siteModalClick();
-      // site-search is dynamically imported, then the focus chain runs
-      await new Promise((r) => setTimeout(r, 300));
+      // site-search is dynamically imported, then the focus chain runs;
+      // a fixed 300ms sleep lost that race on a loaded runner
+      await waitUntil(() => focused.length > 0, "search field never focused", {
+        timeout: 5000,
+      });
       expect(focused.length).to.equal(1);
     } finally {
       globalThis.SimpleModal = originalSimpleModal;

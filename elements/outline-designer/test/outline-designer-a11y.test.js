@@ -1,4 +1,4 @@
-import { fixture, expect, html } from "@open-wc/testing";
+import { fixture, expect, html, waitUntil } from "@open-wc/testing";
 import "../outline-designer.js";
 
 // accessibility of the outline: axe audits with a real outline in each
@@ -343,14 +343,32 @@ describe("outline-designer accessibility", () => {
     it("keeps focus on a page as it moves and when the menu closes", async () => {
       pageLi(element, "p2").focus();
       keydown(pageLi(element, "p2"), "ArrowUp", { altKey: true });
-      await settle(element);
+      // the move runs through a queued, async chain (sync, re-render, then
+      // focus restore); a fixed 60ms settle lost that race on a loaded CI
+      // runner (activeElement still null). Wait until the page has really
+      // moved above Page One and focus is back on it.
+      const order = () => rows(element).map((li) => li.dataset.itemId);
+      await waitUntil(
+        () =>
+          order().indexOf("p2") > -1 &&
+          order().indexOf("p2") < order().indexOf("p1") &&
+          activeId(element) === "p2",
+        "moved page did not keep focus",
+        { timeout: 5000 },
+      );
       expect(activeId(element)).to.equal("p2");
       keydown(pageLi(element, "p2"), "F10", { shiftKey: true });
-      await settle(element);
       const menu = pageLi(element, "p2").querySelector(".actions-menu");
+      await waitUntil(() => menu.open === true, "actions menu never opened", {
+        timeout: 5000,
+      });
       expect(menu.open).to.equal(true);
       menu.close();
-      await settle(element);
+      await waitUntil(
+        () => activeId(element) === "p2",
+        "focus did not return to the page when the menu closed",
+        { timeout: 5000 },
+      );
       expect(activeId(element)).to.equal("p2");
     });
 
