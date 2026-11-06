@@ -103,6 +103,14 @@ class HAXCMSLearnerProgress {
       "learner-progress-request",
       this._requestHandler,
     );
+    // count the page's activities the moment its content is on the page, so
+    // the page progress bar renders in the same frame as the content instead
+    // of appearing a moment later and pushing the content down
+    this._bodyHandler = () => this.scanPage();
+    globalThis.addEventListener(
+      "json-outline-schema-active-body-changed",
+      this._bodyHandler,
+    );
     this._disposers.push(
       autorun(() => {
         const id = store.activeId;
@@ -158,6 +166,13 @@ class HAXCMSLearnerProgress {
         "learner-progress-request",
         this._requestHandler,
       );
+    }
+    if (this._bodyHandler) {
+      globalThis.removeEventListener(
+        "json-outline-schema-active-body-changed",
+        this._bodyHandler,
+      );
+      this._bodyHandler = null;
     }
     setActorProvider(null);
     this.started = false;
@@ -280,6 +295,14 @@ class HAXCMSLearnerProgress {
       const tag = el.tagName.toLowerCase();
       byTag[tag] = (byTag[tag] || 0) + 1;
       count++;
+    });
+    // an activity still waiting to load is a replace-tag that will become it
+    scope.querySelectorAll("replace-tag[with]").forEach((el) => {
+      const tag = String(el.getAttribute("with")).toLowerCase();
+      if (XAPI_TRACKABLE_TAGS.includes(tag)) {
+        byTag[tag] = (byTag[tag] || 0) + 1;
+        count++;
+      }
     });
     this.profile.setPageTrackable(key, page, count, byTag);
     return { count, byTag };

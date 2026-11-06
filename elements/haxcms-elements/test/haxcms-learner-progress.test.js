@@ -342,4 +342,30 @@ describe("HAXcms learner progress", () => {
       el.shadowRoot.querySelector('[role="status"]').textContent.trim(),
     ).to.equal("Your progress on this site was cleared.");
   });
+
+  it("counts activities still waiting in a replace-tag", async () => {
+    host.innerHTML = `<replace-tag with="multiple-choice"></replace-tag><replace-tag with="meme-maker"></replace-tag><multiple-choice></multiple-choice>`;
+    expect(LearnerProgress.scanPage(host)).to.deep.equal({
+      count: 2,
+      byTag: { "multiple-choice": 2 },
+    });
+  });
+
+  it("counts the page as soon as its content is inserted", async () => {
+    const savedTheme = store.themeElement;
+    store.themeElement = host;
+    try {
+      host.innerHTML = `<multiple-choice></multiple-choice>`;
+      // the site builder announces the page body; the count is there at once,
+      // not after the debounce, so the progress bar renders with the content
+      globalThis.dispatchEvent(
+        new CustomEvent("json-outline-schema-active-body-changed", {
+          detail: host.innerHTML,
+        }),
+      );
+      expect(LearnerProgress.pageProgress().trackable).to.equal(1);
+    } finally {
+      store.themeElement = savedTheme;
+    }
+  });
 });
