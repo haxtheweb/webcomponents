@@ -70,7 +70,8 @@ export const SITE_ADMIN_SECTIONS = [
     shell: true,
     // Insights: nine screens computed in the browser; each is a route.
     // Learning activity (after Instructional) is drawn by its own element,
-    // haxcms-learning-activity-report, inside the same section.
+    // haxcms-learning-activity-report, inside the same section. Cadence
+    // reads the same scan and plays the course as music (issues#3045).
     tag: "haxcms-site-reports",
     load: () => import("../insights/haxcms-site-reports.js"),
     footer: "none",
@@ -116,6 +117,13 @@ export const SITE_ADMIN_SECTIONS = [
         descriptionKey: "reportsLearningDescription",
         icon: HaxUiAdminIcons.check,
         route: "reports-learning",
+      },
+      {
+        key: "cadence",
+        labelKey: "reportsCadence",
+        descriptionKey: "reportsCadenceDescription",
+        icon: HaxUiAdminIcons.instructional,
+        route: "reports-cadence",
       },
       {
         key: "freshness",

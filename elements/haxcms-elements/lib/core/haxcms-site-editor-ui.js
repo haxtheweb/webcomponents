@@ -70,6 +70,7 @@ const ADMIN_ROUTE_QUERY_PATHS = {
   "reports-media": "admin-reports-media",
   "reports-instructional": "admin-reports-instructional",
   "reports-learning": "admin-reports-learning",
+  "reports-cadence": "admin-reports-cadence",
   "reports-freshness": "admin-reports-freshness",
   "reports-metadata": "admin-reports-metadata",
   "reports-components": "admin-reports-components",
@@ -6849,6 +6850,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       case "reports-media":
       case "reports-instructional":
       case "reports-learning":
+      case "reports-cadence":
       case "reports-freshness":
       case "reports-metadata":
       case "reports-components":
@@ -7853,6 +7855,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       "reports-media": `${this.t.dashboard} › Media`,
       "reports-instructional": `${this.t.dashboard} › Instructional`,
       "reports-learning": `${this.t.dashboard} › Learning activity`,
+      "reports-cadence": `${this.t.dashboard} › Cadence`,
       "reports-freshness": `${this.t.dashboard} › Freshness`,
       "reports-metadata": `${this.t.dashboard} › Metadata`,
       "reports-components": `${this.t.dashboard} › Components`,
@@ -7964,6 +7967,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       case "reports-media":
       case "reports-instructional":
       case "reports-learning":
+      case "reports-cadence":
       case "reports-freshness":
       case "reports-metadata":
       case "reports-components": {
