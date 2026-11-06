@@ -198,11 +198,18 @@ class MemeMaker extends LitElement {
    * to place in the slot of this tag for RSS, bots and legacy formats
    */
   haxprogressiveEnhancement(_el) {
+    // width / height let a page that shows this copy before meme-maker loads
+    // hold the image's space, so the text below it doesn't jump on load
+    const img = this.shadowRoot && this.shadowRoot.querySelector("img");
+    const size =
+      img && img.naturalWidth && img.naturalHeight
+        ? ` width="${img.naturalWidth}" height="${img.naturalHeight}"`
+        : "";
     return `
     ${this.topText ? `<div>${this.topText}</div>` : ""}
       <img src="${this.imageUrl}" alt="${
         this.alt
-      }" preload="lazy" aria-describedby="${this.describedBy || ""}"/>
+      }"${size} loading="lazy" aria-describedby="${this.describedBy || ""}"/>
     ${this.bottomText ? `<div>${this.bottomText}</div>` : ""}`;
   }
   /**

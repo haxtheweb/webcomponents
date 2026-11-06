@@ -196,4 +196,47 @@ describe("haxcms-site-builder boot", () => {
     expect(toast).to.not.equal(null);
     expect(toast.text).to.equal("queued hello");
   });
+
+  it("content waits for the theme to be defined and rendered", async () => {
+    const proto = Builder().prototype;
+    const tag = "late-theme-" + Date.now();
+    const theme = document.createElement(tag);
+    let ready = false;
+    proto._whenThemeReady(theme).then(() => {
+      ready = true;
+    });
+    await new Promise((r) => setTimeout(r, 40));
+    expect(ready).to.equal(false);
+    let rendered;
+    customElements.define(
+      tag,
+      class extends HTMLElement {
+        constructor() {
+          super();
+          this.updateComplete = new Promise((r) => {
+            rendered = r;
+          });
+        }
+      },
+    );
+    customElements.upgrade(theme);
+    await new Promise((r) => setTimeout(r, 40));
+    // defined, but not drawn yet
+    expect(ready).to.equal(false);
+    rendered(true);
+    for (let i = 0; i < 20 && !ready; i++) {
+      await new Promise((r) => setTimeout(r, 10));
+    }
+    expect(ready).to.equal(true);
+  });
+
+  it("content without a theme goes in on the next task", async () => {
+    const proto = Builder().prototype;
+    let ready = false;
+    proto._whenThemeReady(null).then(() => {
+      ready = true;
+    });
+    await new Promise((r) => setTimeout(r, 30));
+    expect(ready).to.equal(true);
+  });
 });
