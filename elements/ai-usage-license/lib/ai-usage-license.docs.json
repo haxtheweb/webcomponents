@@ -181,13 +181,13 @@
       "order": 0,
       "src": "ai-usage-license.motion.json",
       "file": "lib/ai-usage-license.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/ai-usage-license.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

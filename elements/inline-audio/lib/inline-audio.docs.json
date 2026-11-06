@@ -166,13 +166,13 @@
       "order": 0,
       "src": "inline-audio.motion.json",
       "file": "lib/inline-audio.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/inline-audio.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

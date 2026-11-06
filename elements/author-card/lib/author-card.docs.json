@@ -244,13 +244,13 @@
       "order": 0,
       "src": "author-card.motion.json",
       "file": "lib/author-card.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/author-card.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

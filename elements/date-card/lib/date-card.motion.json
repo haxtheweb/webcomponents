@@ -370,7 +370,7 @@
     "line": "Display a calendar date with details.",
     "code": "<date-card></date-card>"
   },
-  "surfaceHash": "77b2caa5bdbe",
+  "surfaceHash": "0b45924a3f91",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

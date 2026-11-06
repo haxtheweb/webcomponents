@@ -208,13 +208,13 @@
       "order": 0,
       "src": "ics-render.motion.json",
       "file": "lib/ics-render.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/ics-render.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

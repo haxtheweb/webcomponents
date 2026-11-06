@@ -320,7 +320,7 @@
     "line": "Play audio inline to supplement page content.",
     "code": "<inline-audio></inline-audio>"
   },
-  "surfaceHash": "c5331894b056",
+  "surfaceHash": "e65b166099c7",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

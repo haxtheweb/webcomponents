@@ -333,7 +333,7 @@
     "line": "Embed Discord communities from a share URL.",
     "code": "<discord-embed></discord-embed>"
   },
-  "surfaceHash": "455a35c475d1",
+  "surfaceHash": "636a76b0927f",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

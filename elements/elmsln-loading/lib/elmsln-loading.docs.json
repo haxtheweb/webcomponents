@@ -58,13 +58,13 @@
       "order": 0,
       "src": "elmsln-loading.motion.json",
       "file": "lib/elmsln-loading.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/elmsln-loading.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

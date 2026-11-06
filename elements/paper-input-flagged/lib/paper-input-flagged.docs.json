@@ -108,13 +108,13 @@
       "order": 0,
       "src": "paper-input-flagged.motion.json",
       "file": "lib/paper-input-flagged.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/paper-input-flagged.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

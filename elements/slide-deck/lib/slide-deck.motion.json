@@ -320,7 +320,7 @@
     "line": "Present an imported PowerPoint deck slide by slide, with sp…",
     "code": "<slide-deck source=\"files/decks/my-talk/deck.json\"></slide-deck>"
   },
-  "surfaceHash": "4d85df943caa",
+  "surfaceHash": "8abb76772eb8",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

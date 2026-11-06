@@ -142,13 +142,13 @@
       "order": 0,
       "src": "un-sdg.motion.json",
       "file": "lib/un-sdg.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/un-sdg.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

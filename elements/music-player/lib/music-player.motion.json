@@ -320,7 +320,7 @@
     "line": "Play MIDI in context with visualization.",
     "code": "<music-player></music-player>"
   },
-  "surfaceHash": "1f20891c8f88",
+  "surfaceHash": "4762c9bb1a2a",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

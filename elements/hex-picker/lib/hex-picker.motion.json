@@ -295,7 +295,7 @@
     "line": "Hexcode color picker",
     "code": "<hex-picker org=\"haxtheweb\" repo=\"webcomponents\"></hex-picker>"
   },
-  "surfaceHash": "aed5b3a48c6a",
+  "surfaceHash": "62bbbd34e7e6",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

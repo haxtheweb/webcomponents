@@ -245,13 +245,13 @@
       "order": 0,
       "src": "grade-book.motion.json",
       "file": "lib/grade-book.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/grade-book.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

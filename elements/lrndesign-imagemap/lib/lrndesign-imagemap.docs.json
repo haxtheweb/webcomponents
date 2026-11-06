@@ -74,7 +74,9 @@
     "desc",
     "heading"
   ],
-  "events": [],
+  "events": [
+    "user-engagement"
+  ],
   "hax": {
     "api": "1",
     "type": "element",
@@ -127,7 +129,7 @@
       }
     ]
   },
-  "surfaceHash": "95439233561f",
+  "surfaceHash": "1bc18f3880d9",
   "walkthroughs": [
     {
       "id": "",

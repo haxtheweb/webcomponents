@@ -153,7 +153,8 @@
     "a11y-collapse-toggle",
     "collapse",
     "expand",
-    "toggle"
+    "toggle",
+    "user-engagement"
   ],
   "hax": {
     "canScale": false,
@@ -243,7 +244,7 @@
       }
     ]
   },
-  "surfaceHash": "f6b96261160f",
+  "surfaceHash": "b9ec8cdc6dd6",
   "walkthroughs": [
     {
       "id": "",

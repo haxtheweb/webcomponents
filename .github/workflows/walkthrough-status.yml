@@ -38,8 +38,20 @@ jobs:
         with:
           node-version: 24
 
+      # surface hashes cover each element's attributes and events as its
+      # custom elements manifest reports them; many packages gitignore that
+      # file, so the extractor builds it in memory with the analyzer. Only
+      # the analyzer is installed (same pinned version as every element),
+      # outside the checkout, so hashes match a local run after a build.
+      - name: Install custom elements manifest analyzer
+        run: |
+          npm install --prefix "$RUNNER_TEMP/cem" --no-save --no-package-lock \
+            --ignore-scripts --no-audit --no-fund \
+            @custom-elements-manifest/analyzer@0.11.0
+
       - name: Check walkthroughs
         env:
+          CEM_ANALYZER_DIR: ${{ runner.temp }}/cem
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}

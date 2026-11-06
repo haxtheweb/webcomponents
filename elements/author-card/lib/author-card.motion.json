@@ -367,7 +367,7 @@
     "line": "Display author information with photo, bio, and social link…",
     "code": "<author-card></author-card>"
   },
-  "surfaceHash": "4bb0ae3066e5",
+  "surfaceHash": "54ae17a7430f",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

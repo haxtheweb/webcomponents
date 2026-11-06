@@ -42,13 +42,13 @@
       "order": 0,
       "src": "linkedin-embed.motion.json",
       "file": "lib/linkedin-embed.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/linkedin-embed.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

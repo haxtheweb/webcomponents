@@ -97,13 +97,13 @@
       "order": 0,
       "src": "la-tex.motion.json",
       "file": "lib/la-tex.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/la-tex.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

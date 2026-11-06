@@ -120,13 +120,13 @@
       "order": 0,
       "src": "hex-picker.motion.json",
       "file": "lib/hex-picker.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/hex-picker.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

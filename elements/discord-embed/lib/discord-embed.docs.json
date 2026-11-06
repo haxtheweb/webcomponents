@@ -126,13 +126,13 @@
       "order": 0,
       "src": "discord-embed.motion.json",
       "file": "lib/discord-embed.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/discord-embed.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {
