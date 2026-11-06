@@ -6166,10 +6166,21 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     if (typeof props === typeof undefined || !props.saveOptions.wipeSlot) {
       // get content that is in the slots
       let slotnodes = node.childNodes;
+      // the progressiveEnhancement hook below writes a fresh fallback copy,
+      // so an earlier saved copy (marked data-prog-fallback) is left out;
+      // keeping it added one more copy on every save
+      const skipOldFallback = this.testHook(node, "progressiveEnhancement");
       // ensure there's something inside of this
       if (slotnodes.length > 0) {
         // loop through everything found in the slotted area and put it back in
         for (let j = 0, len2 = slotnodes.length; j < len2; j++) {
+          if (
+            skipOldFallback &&
+            slotnodes[j].nodeType === 1 &&
+            slotnodes[j].hasAttribute("data-prog-fallback")
+          ) {
+            continue;
+          }
           if (typeof slotnodes[j].tagName !== typeof undefined) {
             // if we're a custom element, keep digging, otherwise a simple
             // self append is fine unless template tag cause it's a special
