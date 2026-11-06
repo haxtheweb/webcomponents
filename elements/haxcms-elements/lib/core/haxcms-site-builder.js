@@ -1305,6 +1305,33 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     return html;
   }
   /**
+   * Resolves once the theme element is defined and has rendered once, so the
+   * page content goes straight into its final layout. Capped so a theme that
+   * fails to load never keeps the content away. The short delay keeps the
+   * old "insert on the next task" timing when the theme is already there.
+   * @param {HTMLElement} themeElement
+   * @returns {Promise<void>}
+   */
+  _whenThemeReady(themeElement) {
+    const nextTask = () => new Promise((resolve) => setTimeout(resolve, 5));
+    if (!themeElement || !themeElement.localName) {
+      return nextTask();
+    }
+    const tag = themeElement.localName;
+    const cap = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+    const defined = globalThis.customElements.get(tag)
+      ? Promise.resolve()
+      : Promise.race([globalThis.customElements.whenDefined(tag), cap(5000)]);
+    return defined
+      .then(() => {
+        const rendered = themeElement.updateComplete;
+        if (rendered && typeof rendered.then === "function") {
+          return Promise.race([rendered, cap(1000)]);
+        }
+      })
+      .then(nextTask, nextTask);
+  }
+  /**
    * React to content being loaded from a page.
    */
   async _activeItemContentChanged(newValue, activeItem) {
@@ -1414,12 +1441,30 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       htmlcontent = encapScript(htmlcontent);
       wipeSlot(store.themeElement, "*");
       store.activeItemContent = htmlcontent;
-      // insert the content as quickly as possible, then work on the dynamic imports
-      setTimeout(() => {
-        // the theme can be torn down before this deferred insert runs; there
-        // is nothing to insert into then, and the rest of this callback is
-        // about that theme's content, so stop here (this used to throw)
-        if (!store.themeElement) {
+      // insert the content as quickly as possible, then work on the dynamic
+      // imports. The theme must be defined (and rendered once) first: content
+      // placed into a theme that is still loading is laid out in the fallback
+      // box, then jumps into the theme's own layout, which is the largest
+      // layout shift of a first load.
+      const insertTheme = store.themeElement;
+      // tells the theme's own fallback insert (HAXCMSThemeWiring) that this
+      // content is on its way, so it doesn't put it in first: that copy skips
+      // the replace-tag pass and the active-body-changed event
+      if (insertTheme) {
+        insertTheme.__haxcmsContentPending = true;
+      }
+      this._whenThemeReady(insertTheme).then(() => {
+        if (insertTheme) {
+          insertTheme.__haxcmsContentPending = false;
+        }
+        // the theme can be torn down (or swapped) before this deferred insert
+        // runs; there is nothing to insert into then, and the rest of this
+        // callback is about that theme's content, so stop here
+        if (!store.themeElement || store.themeElement !== insertTheme) {
+          return;
+        }
+        // a newer page took over while the theme was loading
+        if (store.activeItemContent !== htmlcontent) {
           return;
         }
         if (store.themeElement.childNodes.length === 0) {
@@ -1474,7 +1519,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           // extra setTimeout(0) hop (manual process() contract unchanged).
           globalThis.WCAutoload.process();
         }
-      }, 5);
+      });
     }
   }
 

@@ -222,6 +222,34 @@ describe("meme-maker test", () => {
       expect(result).to.include("test.jpg");
     });
 
+    it("progressive enhancement sizes the image once it has loaded", async () => {
+      // 4x2 transparent png, so no network is needed
+      const canvas = globalThis.document.createElement("canvas");
+      canvas.width = 4;
+      canvas.height = 2;
+      const src = canvas.toDataURL("image/png");
+      const el = await fixture(
+        html`<meme-maker image-url="${src}" alt="tiny"></meme-maker>`,
+      );
+      const img = el.shadowRoot.querySelector("img");
+      // the shadow img is lazy; load it eagerly for the test
+      img.loading = "eager";
+      if (!img.complete || !img.naturalWidth) {
+        await new Promise((resolve) => img.addEventListener("load", resolve));
+      }
+      const result = el.haxprogressiveEnhancement();
+      expect(result).to.include('width="4" height="2"');
+      expect(result).to.include('loading="lazy"');
+      expect(result).to.not.include("preload=");
+    });
+
+    it("progressive enhancement leaves out a size it does not know", async () => {
+      const el = await fixture(
+        html`<meme-maker image-url="not-loaded.jpg" alt="x"></meme-maker>`,
+      );
+      expect(el.haxprogressiveEnhancement()).to.not.include("width=");
+    });
+
     it("registers i18n element on gizmoRegistration", async () => {
       let eventFired = false;
       const handler = (e) => {

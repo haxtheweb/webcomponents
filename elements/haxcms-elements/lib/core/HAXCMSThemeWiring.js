@@ -194,7 +194,9 @@ const HAXCMSTheme = function (SuperClass) {
       }
       // edge case, we just swapped theme faster then content loaded... lol
       setTimeout(() => {
-        if (this.childNodes.length === 0) {
+        // the site builder is inserting this page itself once the theme is
+        // ready; only fill in when nothing is on its way
+        if (this.childNodes.length === 0 && !this.__haxcmsContentPending) {
           let frag = document
             .createRange()
             .createContextualFragment(store.activeItemContent);
