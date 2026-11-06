@@ -5,6 +5,15 @@
 import { LitElement, html, css, nothing } from "lit";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { InsightsStyles } from "../insights-styles.js";
+import {
+  LINK_STATES,
+  checkLinks,
+  getLinkStatus,
+  linkCheckAvailable,
+  linkCheckRunning,
+  linkStatusSummary,
+  onLinkStatusChange,
+} from "../insights-link-status.js";
 
 const LIMIT = 50;
 const FILTERS = ["all", "errors", "warnings", "info"];
@@ -15,7 +24,9 @@ const TONE_OF = { error: "danger", warning: "warning", info: "accent" };
  * `insights-links`
  * Link health screen of Reports (Insights): link findings with a severity
  * filter, the pages and hosts the site leans on, and outside links.
- * Outside link status needs a server fetch, so it shows as Coming soon.
+ * Outside link status comes from this site's own server
+ * (insights-link-status.js); where there is no server (a published or static
+ * copy) it shows what it needs instead.
  *
  * @element insights-links
  * @fires insights-open-page - { slug } to visit a page
@@ -31,6 +42,10 @@ class InsightsLinks extends I18NMixin(LitElement) {
       density: { type: String, reflect: true },
       _filter: { state: true },
       _expanded: { state: true },
+      _canCheck: { state: true },
+      _checkProgress: { state: true },
+      _checkError: { state: true },
+      _statusTick: { state: true },
     };
   }
 
@@ -40,6 +55,11 @@ class InsightsLinks extends I18NMixin(LitElement) {
     this.density = "default";
     this._filter = "all";
     this._expanded = {};
+    this._canCheck = false;
+    this._checkProgress = null;
+    this._checkError = "";
+    this._statusTick = 0;
+    this.__unsubscribe = null;
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -115,11 +135,133 @@ class InsightsLinks extends I18NMixin(LitElement) {
       statusRedirects: "Redirect chains and http to https upgrades",
       statusWeekly: "Weekly re-check and newly broken alerts",
       checkOutside: "Check outside links",
+      checkAgain: "Check again",
+      notCheckedYet: "Not checked yet",
+      ofChecked: "of {n} checked",
+      ofCheckedOne: "of 1 checked",
+      statusIntro:
+        "This site's server asks each outside link for its status. Only links in these pages are checked, and nothing else is sent anywhere.",
+      checking: "Checking {done} of {total}…",
+      checkedAll: "Checked {n} outside links",
+      checkedAllOne: "Checked 1 outside link",
+      stateBroken: "Broken",
+      stateCheck: "Check by hand",
+      stateRedirected: "Redirected",
+      stateOk: "OK",
+      stateSkipped: "Not checked",
+      reasonHttp: "HTTP {status}",
+      reasonRefused: "Refused an automated check (HTTP {status})",
+      reasonTimeout: "Took too long to answer",
+      reasonDns: "No such host",
+      reasonConnection: "Could not connect",
+      reasonTls: "Certificate problem",
+      reasonRedirects: "Too many redirects",
+      reasonInvalid: "Not a valid address",
+      reasonPrivate: "Private address, not checked",
+      reasonNotInSite: "Not in these pages",
+      reasonDeferred: "Not reached yet",
+      movedTo: "Now at {url}",
+      morePages: "+{n} more",
+      problemsTitle: "Links to fix",
+      problemsHint: "Broken, check by hand and redirected",
+      problemsCaption: "Outside links that need attention",
+      result: "Result",
+      noProblems: "Every checked outside link answered.",
+      noOutsideToCheck: "No outside links to check.",
     };
     this.registerLocalization({
       context: this,
       localesPath: new URL("../../../../locales/", import.meta.url).href,
     });
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.__unsubscribe = onLinkStatusChange(() => {
+      this._statusTick = this._statusTick + 1;
+    });
+    linkCheckAvailable().then((ok) => {
+      this._canCheck = ok;
+    });
+  }
+
+  disconnectedCallback() {
+    if (this.__unsubscribe) {
+      this.__unsubscribe();
+      this.__unsubscribe = null;
+    }
+    super.disconnectedCallback();
+  }
+
+  /** outside links in this scan: [{ href, host, pages }] */
+  _outsideUrls() {
+    const links = this.results && this.results.links;
+    return links && links.outsideLinks && Array.isArray(links.outsideLinks.urls)
+      ? links.outsideLinks.urls
+      : [];
+  }
+
+  async _checkOutside() {
+    const hrefs = this._outsideUrls().map((u) => u.href);
+    const summary = linkStatusSummary(hrefs);
+    this._checkError = "";
+    this._checkProgress = { done: 0, total: hrefs.length };
+    const outcome = await checkLinks(hrefs, {
+      force: summary.unchecked === 0,
+      onProgress: (p) => {
+        this._checkProgress = p;
+      },
+    });
+    this._checkProgress = null;
+    this._checkError = outcome && outcome.error ? outcome.error : "";
+  }
+
+  _stateLabel(state) {
+    switch (state) {
+      case "broken":
+        return this.t.stateBroken;
+      case "check":
+        return this.t.stateCheck;
+      case "redirected":
+        return this.t.stateRedirected;
+      case "ok":
+        return this.t.stateOk;
+      default:
+        return this.t.stateSkipped;
+    }
+  }
+
+  _reasonLabel(row) {
+    const status =
+      row.status === null || row.status === undefined ? "" : row.status;
+    switch (row.reason) {
+      case "http":
+        return this.t.reasonHttp.replace("{status}", () => status);
+      case "refused":
+        return this.t.reasonRefused.replace("{status}", () => status);
+      case "timeout":
+        return this.t.reasonTimeout;
+      case "dns":
+        return this.t.reasonDns;
+      case "connection":
+        return this.t.reasonConnection;
+      case "tls":
+        return this.t.reasonTls;
+      case "redirects":
+        return this.t.reasonRedirects;
+      case "invalid":
+        return this.t.reasonInvalid;
+      case "private":
+        return this.t.reasonPrivate;
+      case "not-in-site":
+        return this.t.reasonNotInSite;
+      case "deferred":
+        return this.t.reasonDeferred;
+      default:
+        return row.finalUrl
+          ? this.t.movedTo.replace("{url}", () => row.finalUrl)
+          : "";
+    }
   }
 
   static get styles() {
@@ -165,8 +307,60 @@ class InsightsLinks extends I18NMixin(LitElement) {
         .soon-panel li .t {
           flex: 1;
         }
-        .soon-panel .d {
+        .soon-panel .d,
+        .soon-list .d,
+        .problems .d {
           display: block;
+        }
+        .soon-list {
+          list-style: none;
+          margin: var(--hax-ui-gap-md) 0 0;
+          padding: 0;
+        }
+        .soon-list li {
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+        }
+        .soon-list li .t {
+          flex: 1;
+        }
+        .status-bar {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+        }
+        .check-error {
+          margin: var(--hax-ui-gap-md) 0 0;
+        }
+        .state-counts {
+          list-style: none;
+          display: flex;
+          flex-wrap: wrap;
+          gap: var(--hax-ui-gap-md);
+          margin: var(--hax-ui-gap-md) 0;
+          padding: 0;
+        }
+        .state-counts li {
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap);
+        }
+        /* the "Links to fix" sub-heading reads like h3.block, a size down */
+        h4.sub {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          margin: var(--hax-ui-gap-md) 0;
+          font-size: var(--hax-ui-admin-font-size);
+          font-weight: var(--ddd-font-weight-bold, 700);
+        }
+        h4.sub .hint {
+          font-weight: var(--ddd-font-weight-regular, 400);
+          color: var(--hax-ui-text-muted);
+          font-size: var(--hax-ui-admin-font-size-xs);
         }
       `,
     ];
@@ -327,16 +521,41 @@ class InsightsLinks extends I18NMixin(LitElement) {
         k.pathauto === false ? this.t.autoNamingOffNote : this.t.autoNamingNote,
         k.pathauto === false ? "warning" : "",
       )}
-      <div class="kpi soon-kpi" data-tone="soon" title="${soonNeeds}">
-        <span class="l">${this.t.brokenOutside}</span>
-        <span class="v"
-          ><span class="hax-ui-pill" data-tone="soon"
-            >${this.t.comingSoon}</span
-          ></span
-        >
-        <span class="l">${soonNeeds}</span>
-      </div>
+      ${
+        this._canCheck
+          ? this._brokenKpi()
+          : html`<div
+              class="kpi soon-kpi"
+              data-tone="soon"
+              title="${soonNeeds}"
+            >
+              <span class="l">${this.t.brokenOutside}</span>
+              <span class="v"
+                ><span class="hax-ui-pill" data-tone="soon"
+                  >${this.t.comingSoon}</span
+                ></span
+              >
+              <span class="l">${soonNeeds}</span>
+            </div>`
+      }
     </section>`;
+  }
+
+  _brokenKpi() {
+    const summary = linkStatusSummary(this._outsideUrls().map((u) => u.href));
+    if (!summary.checked) {
+      return this._kpi(this.t.brokenOutside, "–", this.t.notCheckedYet, "");
+    }
+    return html`<div
+      class="kpi broken-kpi"
+      data-tone="${summary.broken ? "danger" : ""}"
+    >
+      <span class="l">${this.t.brokenOutside}</span>
+      <span class="v">${summary.broken}</span>
+      <span class="l"
+        >${this._plural(summary.checked, this.t.ofCheckedOne, this.t.ofChecked)}</span
+      >
+    </div>`;
   }
 
   _renderFindings(links) {
@@ -535,6 +754,178 @@ class InsightsLinks extends I18NMixin(LitElement) {
   }
 
   _renderStatus(links) {
+    return this._canCheck
+      ? this._renderStatusLive(links)
+      : this._renderStatusSoon(links);
+  }
+
+  _renderStatusLive() {
+    const urls = this._outsideUrls();
+    const summary = linkStatusSummary(urls.map((u) => u.href));
+    const busy = !!this._checkProgress || linkCheckRunning();
+    const p = this._checkProgress;
+    const schedNeeds = this._needs("schedules", null);
+    const problems = urls
+      .map((u) => ({ url: u, row: getLinkStatus(u.href) }))
+      .filter(
+        (x) =>
+          x.row &&
+          (x.row.state === "broken" ||
+            x.row.state === "check" ||
+            x.row.state === "redirected" ||
+            (x.row.state === "skipped" && x.row.reason === "private")),
+      )
+      .sort(
+        (a, b) =>
+          LINK_STATES.indexOf(a.row.state) - LINK_STATES.indexOf(b.row.state) ||
+          b.url.pages.length - a.url.pages.length,
+      );
+    return html`<section
+      class="link-status"
+      aria-busy="${busy ? "true" : "false"}"
+    >
+      <h3 class="block">${this.t.linkStatus}</h3>
+      <p class="help">${this.t.statusIntro}</p>
+      <div class="status-bar">
+        <button
+          type="button"
+          class="sbtn check-outside"
+          ?disabled="${busy || !urls.length}"
+          @click="${this._checkOutside}"
+        >
+          ${summary.checked && !summary.unchecked ? this.t.checkAgain : this.t.checkOutside}
+        </button>
+        <span class="status-text" role="status" aria-live="polite"
+          >${
+            busy && p
+              ? this.t.checking
+                  .replace("{done}", () => p.done)
+                  .replace("{total}", () => p.total)
+              : summary.checked
+                ? this._plural(
+                    summary.checked,
+                    this.t.checkedAllOne,
+                    this.t.checkedAll,
+                  )
+                : !urls.length
+                  ? this.t.noOutsideToCheck
+                  : ""
+          }</span
+        >
+      </div>
+      ${
+        this._checkError
+          ? html`<p
+              class="hax-ui-message check-error"
+              data-tone="danger"
+              role="alert"
+            >
+              ${this._checkError}
+            </p>`
+          : nothing
+      }
+      ${
+        summary.checked
+          ? html`<ul class="state-counts" aria-label="${this.t.linkStatus}">
+              ${LINK_STATES.map(
+                (state) =>
+                  html`<li data-state="${state}">
+                    <span
+                      class="hax-ui-pill"
+                      data-tone="${
+                        state === "broken"
+                          ? "danger"
+                          : state === "check" || state === "redirected"
+                            ? "warning"
+                            : state === "ok"
+                              ? "success"
+                              : ""
+                      }"
+                      >${summary[state]}</span
+                    >
+                    ${this._stateLabel(state)}
+                  </li>`,
+              )}
+            </ul>`
+          : nothing
+      }
+      ${summary.checked ? this._renderProblems(problems) : nothing}
+      ${
+        schedNeeds
+          ? html`<ul class="soon-list">
+              <li>
+                <span class="t"
+                  >${this.t.statusWeekly}<span class="d"
+                    >${schedNeeds}</span
+                  ></span
+                ><span class="hax-ui-pill" data-tone="soon"
+                  >${this.t.comingSoon}</span
+                >
+              </li>
+            </ul>`
+          : nothing
+      }
+    </section>`;
+  }
+
+  _renderProblems(problems) {
+    if (!problems.length) {
+      return html`<div class="hax-ui-empty empty no-problems">
+        ${this.t.noProblems}
+      </div>`;
+    }
+    return html`<h4 class="sub">
+        ${this.t.problemsTitle}<span class="hint">${this.t.problemsHint}</span>
+      </h4>
+      <div class="tbl-wrap">
+        <table class="problems" aria-label="${this.t.problemsCaption}">
+          <thead>
+            <tr>
+              <th scope="col">${this.t.link}</th>
+              <th scope="col">${this.t.result}</th>
+              <th scope="col">${this.t.where}</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${this._limited("problems", problems).map((x) => {
+              const first = x.url.pages[0];
+              const more = x.url.pages.length - 1;
+              return html`<tr data-state="${x.row.state}">
+                <td><code>${x.url.href}</code></td>
+                <td>
+                  <span
+                    class="hax-ui-pill"
+                    data-tone="${x.row.state === "broken" ? "danger" : "warning"}"
+                    >${this._stateLabel(x.row.state)}</span
+                  >
+                  <span class="d">${this._reasonLabel(x.row)}</span>
+                </td>
+                <td class="where">
+                  ${
+                    first
+                      ? html`<div class="where-cell">
+                          <span
+                            >${first.title}${
+                              more > 0
+                                ? html` <span class="muted"
+                                    >${this._fmt(this.t.morePages, more)}</span
+                                  >`
+                                : nothing
+                            }</span
+                          >${this._openBtn(first.slug, first.title)}
+                        </div>`
+                      : nothing
+                  }
+                </td>
+              </tr>`;
+            })}
+          </tbody>
+        </table>
+      </div>
+      ${this._moreBtn("problems", problems)}`;
+  }
+
+  _renderStatusSoon(links) {
     const needs = this._needs("outsideLinkStatus", links.outsideLinkStatus);
     const schedNeeds = this._needs("schedules", null);
     return html`<section class="link-status">

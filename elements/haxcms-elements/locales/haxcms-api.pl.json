@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "Żądanie jest zbyt duże.",
   "INPUT_TOO_LARGE": "Dane wejściowe są zbyt duże (maksymalnie {maxBytes} bajtów).",
   "FILE_RATE_LIMITED": "Zbyt wiele operacji na plikach w tej witrynie. Spróbuj ponownie za {retryAfter}.",
+  "LINK_CHECK_RATE_LIMITED": "Zbyt wiele sprawdzeń linków w tej witrynie. Spróbuj ponownie za {retryAfter}.",
   "SITE_NAME_INVALID": "Nazwa witryny może zawierać tylko litery, cyfry, łączniki i podkreślenia.",
   "USER_NAME_INVALID": "Nazwa użytkownika może zawierać tylko litery, cyfry, łączniki i podkreślenia.",
   "SITE_NAME_REQUIRED": "Nazwa witryny jest wymagana.",

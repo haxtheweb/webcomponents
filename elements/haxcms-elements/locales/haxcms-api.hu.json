@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "A kérés túl nagy.",
   "INPUT_TOO_LARGE": "A bemenet túl nagy (legfeljebb {maxBytes} bájt).",
   "FILE_RATE_LIMITED": "Túl sok fájlművelet ezen a webhelyen. Próbálja újra ennyi idő múlva: {retryAfter}.",
+  "LINK_CHECK_RATE_LIMITED": "Túl sok hivatkozás-ellenőrzés ezen a webhelyen. Próbálja újra ennyi idő múlva: {retryAfter}.",
   "SITE_NAME_INVALID": "A webhelynév csak betűket, számokat, kötőjeleket és aláhúzásjeleket tartalmazhat.",
   "USER_NAME_INVALID": "A felhasználónév csak betűket, számokat, kötőjeleket és aláhúzásjeleket tartalmazhat.",
   "SITE_NAME_REQUIRED": "A webhelynév megadása kötelező.",

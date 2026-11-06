@@ -5,6 +5,12 @@
 import { LitElement, html, css, nothing } from "lit";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { InsightsStyles } from "../insights-styles.js";
+import {
+  cachedEditHistory,
+  editHistoryAvailable,
+  loadEditHistory,
+  recentlySavedPages,
+} from "../insights-edit-history.js";
 
 const LIMIT = 50;
 
@@ -41,7 +47,9 @@ function formatDay(iso) {
  * (coloured by the spec's age bands), pages likely to change each term
  * (term words or dates in the title or text, with the matched words), bulk
  * saves and every page's dates.
- * Edit history and reminders need the server and show as Coming soon.
+ * Edit history comes from the site's git history through the page
+ * revisions endpoint (insights-edit-history.js); where there is no server it
+ * shows what it needs. Reminders need scheduled scans and show as Coming soon.
  *
  * @element insights-freshness
  * @fires insights-open-page - { slug } to visit a page
@@ -56,6 +64,9 @@ class InsightsFreshness extends I18NMixin(LitElement) {
       results: { attribute: false },
       density: { type: String, reflect: true },
       _expanded: { state: true },
+      _canHistory: { state: true },
+      _history: { state: true },
+      _historyLoading: { state: true },
     };
   }
 
@@ -64,6 +75,9 @@ class InsightsFreshness extends I18NMixin(LitElement) {
     this.results = null;
     this.density = "default";
     this._expanded = {};
+    this._canHistory = false;
+    this._history = null;
+    this._historyLoading = false;
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -134,6 +148,25 @@ class InsightsFreshness extends I18NMixin(LitElement) {
       editHistoryTitle: "Edit history",
       editHistoryText:
         "Who changed what and when comes from the site's history.",
+      editHistoryHint: "Latest changes to the {n} most recently saved pages",
+      editHistoryHintOne: "Latest changes to the most recently saved page",
+      loadHistory: "Show recent changes",
+      loadingHistory: "Reading the site's history…",
+      reloadHistory: "Reload",
+      historyCaption: "Recent changes, newest first",
+      historyWhen: "When",
+      historyChange: "Change",
+      historyWho: "Who",
+      historyPages: "Pages",
+      historyKindContent: "Content",
+      historyKindStructure: "Structure",
+      historyNone: "No saved changes in the site's history for these pages.",
+      historyNoPages: "No page has a saved date yet.",
+      historyFailed: "History for {n} pages could not be read.",
+      historyFailedOne: "History for 1 page could not be read.",
+      viewRevisions: "View revisions",
+      viewRevisionsOf: "View revisions of {title}",
+      morePages: "+{n} more",
       remindersTitle: "Reminders",
       remindersText: "Reminders for pages not touched in {days} days.",
       remindersTextYear: "Reminders for pages not touched in a year.",
@@ -228,6 +261,27 @@ class InsightsFreshness extends I18NMixin(LitElement) {
           flex-direction: column;
           gap: var(--hax-ui-gap);
         }
+        .edit-history h3 {
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          flex-wrap: wrap;
+        }
+        .edit-history .grow {
+          flex: 1;
+        }
+        .history .muted {
+          color: var(--hax-ui-text-muted);
+        }
+        .history .nowrap {
+          white-space: nowrap;
+        }
+        .history .page-cell {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: var(--hax-ui-gap-md);
+        }
         .soon-panel {
           display: flex;
           gap: var(--hax-ui-gap-md);
@@ -286,6 +340,65 @@ class InsightsFreshness extends I18NMixin(LitElement) {
     </button>`;
   }
 
+  connectedCallback() {
+    super.connectedCallback();
+    editHistoryAvailable().then((ok) => {
+      this._canHistory = ok;
+      if (ok) {
+        const sec = this._sec();
+        this._history = cachedEditHistory(
+          recentlySavedPages(sec ? sec.pages : []),
+        );
+      }
+    });
+  }
+
+  async _loadHistory() {
+    const sec = this._sec();
+    const pages = recentlySavedPages(sec ? sec.pages : []);
+    this._historyLoading = true;
+    try {
+      this._history = await loadEditHistory(pages);
+    } finally {
+      this._historyLoading = false;
+    }
+  }
+
+  _openRevisions(page, target) {
+    if (!page || !page.pageId) {
+      return;
+    }
+    globalThis.dispatchEvent(
+      new CustomEvent("haxcms-open-page-revisions", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          nodeId: page.pageId,
+          nodeTitle: page.title || "",
+          source: "insights-freshness",
+          invokedBy: target || null,
+        },
+      }),
+    );
+  }
+
+  _when(entry) {
+    if (!entry.timestamp) {
+      return entry.date || "";
+    }
+    try {
+      return new Date(entry.timestamp * 1000).toLocaleString(
+        globalThis.document && globalThis.document.documentElement.lang
+          ? globalThis.document.documentElement.lang
+          : undefined,
+        { dateStyle: "medium", timeStyle: "short" },
+      );
+    } catch {
+      return entry.date || "";
+    }
+  }
+
   _toggle(key) {
     this._expanded = { ...this._expanded, [key]: !this._expanded[key] };
   }
@@ -336,7 +449,9 @@ class InsightsFreshness extends I18NMixin(LitElement) {
         ${this._renderTimeline(sec)} ${this._renderAges(sec)}
       </div>
       ${this._renderTerm(sec)} ${this._renderBulk(sec)}
-      ${this._renderPages(sec)} ${this._renderSoon()}
+      ${this._renderPages(sec)}
+      ${this._canHistory ? this._renderHistory(sec) : nothing}
+      ${this._renderSoon()}
     </div>`;
   }
 
@@ -678,6 +793,129 @@ class InsightsFreshness extends I18NMixin(LitElement) {
     </section>`;
   }
 
+  _renderHistory(sec) {
+    const pages = recentlySavedPages(sec.pages);
+    const h = this._history;
+    const entries = h ? h.entries : [];
+    return html`<section
+      class="edit-history"
+      aria-busy="${this._historyLoading ? "true" : "false"}"
+    >
+      <h3 class="block">
+        ${this.t.editHistoryTitle}<span class="hint"
+          >${this._p(pages.length, this.t.editHistoryHintOne, this.t.editHistoryHint)}</span
+        >
+        <span class="grow"></span>
+        ${
+          pages.length
+            ? html`<button
+                type="button"
+                class="sbtn load-history"
+                ?disabled="${this._historyLoading}"
+                @click="${this._loadHistory}"
+              >
+                ${h ? this.t.reloadHistory : this.t.loadHistory}
+              </button>`
+            : nothing
+        }
+      </h3>
+      <p class="help" role="status" aria-live="polite">
+        ${
+          !pages.length
+            ? this.t.historyNoPages
+            : this._historyLoading
+              ? this.t.loadingHistory
+              : h && h.failed
+                ? this._p(
+                    h.failed,
+                    this.t.historyFailedOne,
+                    this.t.historyFailed,
+                  )
+                : this.t.editHistoryText
+        }
+      </p>
+      ${
+        h && !entries.length && !this._historyLoading
+          ? html`<p class="hax-ui-empty empty">${this.t.historyNone}</p>`
+          : nothing
+      }
+      ${
+        entries.length
+          ? html`<div class="tbl-wrap">
+                <table class="history" aria-label="${this.t.historyCaption}">
+                  <thead>
+                    <tr>
+                      <th scope="col">${this.t.historyWhen}</th>
+                      <th scope="col">${this.t.historyChange}</th>
+                      <th scope="col">${this.t.historyWho}</th>
+                      <th scope="col">${this.t.historyPages}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${this._limit("history", entries).map((e) => {
+                      const first = e.pages[0];
+                      const more = e.pages.length - 1;
+                      return html`<tr data-hash="${e.shortHash}">
+                        <td class="nowrap">${this._when(e)}</td>
+                        <td>
+                          ${e.summary}
+                          ${e.kinds.map(
+                            (k) =>
+                              html` <span class="hax-ui-pill" data-tone="muted"
+                                >${
+                                  k === "structure"
+                                    ? this.t.historyKindStructure
+                                    : this.t.historyKindContent
+                                }</span
+                              >`,
+                          )}
+                        </td>
+                        <td>${e.author}</td>
+                        <td>
+                          ${
+                            first
+                              ? html`<span class="page-cell"
+                                  ><span
+                                    >${first.title}${
+                                      more > 0
+                                        ? html` <span class="muted"
+                                            >${this.t.morePages.replace(
+                                              "{n}",
+                                              () => more,
+                                            )}</span
+                                          >`
+                                        : nothing
+                                    }</span
+                                  ><button
+                                    type="button"
+                                    class="sbtn view-revisions"
+                                    aria-label="${this.t.viewRevisionsOf.replace(
+                                      "{title}",
+                                      () => first.title,
+                                    )}"
+                                    @click="${(ev) =>
+                                      this._openRevisions(
+                                        first,
+                                        ev.currentTarget,
+                                      )}"
+                                  >
+                                    ${this.t.viewRevisions}
+                                  </button></span
+                                >`
+                              : nothing
+                          }
+                        </td>
+                      </tr>`;
+                    })}
+                  </tbody>
+                </table>
+              </div>
+              ${this._moreBtn("history", entries)}`
+          : nothing
+      }
+    </section>`;
+  }
+
   _renderSoon() {
     const history = this._needs("editHistory");
     const reminders = this._needs("reminders");
@@ -688,11 +926,15 @@ class InsightsFreshness extends I18NMixin(LitElement) {
     >
       <span class="hax-ui-pill" data-tone="soon">${this.t.comingSoon}</span>
       <div class="soon-text">
-        <p>
-          <strong>${this.t.editHistoryTitle}.</strong>
-          ${this.t.editHistoryText}
-          <span class="needs-history">${history}.</span>
-        </p>
+        ${
+          this._canHistory
+            ? nothing
+            : html`<p>
+                <strong>${this.t.editHistoryTitle}.</strong>
+                ${this.t.editHistoryText}
+                <span class="needs-history">${history}.</span>
+              </p>`
+        }
         <p>
           <strong>${this.t.remindersTitle}.</strong>
           ${

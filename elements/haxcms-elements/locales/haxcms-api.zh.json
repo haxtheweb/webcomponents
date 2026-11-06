@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "请求过大。",
   "INPUT_TOO_LARGE": "输入内容过大（最多 {maxBytes} 字节）。",
   "FILE_RATE_LIMITED": "此站点上的文件操作过多。请在 {retryAfter} 后重试。",
+  "LINK_CHECK_RATE_LIMITED": "此站点上的链接检查过多。请在 {retryAfter} 后重试。",
   "SITE_NAME_INVALID": "站点名称只能包含字母、数字、连字符和下划线。",
   "USER_NAME_INVALID": "用户名只能包含字母、数字、连字符和下划线。",
   "SITE_NAME_REQUIRED": "必须提供站点名称。",

@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "Permintaan terlalu besar.",
   "INPUT_TOO_LARGE": "Input terlalu besar (maksimum {maxBytes} byte).",
   "FILE_RATE_LIMITED": "Terlalu banyak operasi file di situs ini. Coba lagi dalam {retryAfter}.",
+  "LINK_CHECK_RATE_LIMITED": "Terlalu banyak pemeriksaan tautan di situs ini. Coba lagi dalam {retryAfter}.",
   "SITE_NAME_INVALID": "Nama situs hanya boleh berisi huruf, angka, tanda hubung, dan garis bawah.",
   "USER_NAME_INVALID": "Nama pengguna hanya boleh berisi huruf, angka, tanda hubung, dan garis bawah.",
   "SITE_NAME_REQUIRED": "Nama situs wajib diisi.",

@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "A solicitude é demasiado grande.",
   "INPUT_TOO_LARGE": "A entrada é demasiado grande (máximo {maxBytes} bytes).",
   "FILE_RATE_LIMITED": "Demasiadas operacións con ficheiros neste sitio. Téntao de novo dentro de {retryAfter}.",
+  "LINK_CHECK_RATE_LIMITED": "Demasiadas comprobacións de ligazóns neste sitio. Téntao de novo dentro de {retryAfter}.",
   "SITE_NAME_INVALID": "Os nomes de sitio só poden conter letras, números, guións e guións baixos.",
   "USER_NAME_INVALID": "Os nomes de usuario só poden conter letras, números, guións e guións baixos.",
   "SITE_NAME_REQUIRED": "É necesario un nome de sitio.",

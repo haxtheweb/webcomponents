@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "La requête est trop volumineuse.",
   "INPUT_TOO_LARGE": "Les données saisies sont trop volumineuses (maximum {maxBytes} octets).",
   "FILE_RATE_LIMITED": "Trop d'opérations sur les fichiers de ce site. Réessayez dans {retryAfter}.",
+  "LINK_CHECK_RATE_LIMITED": "Trop de vérifications de liens sur ce site. Réessayez dans {retryAfter}.",
   "SITE_NAME_INVALID": "Les noms de site ne peuvent contenir que des lettres, des chiffres, des traits d'union et des traits de soulignement.",
   "USER_NAME_INVALID": "Les noms d'utilisateur ne peuvent contenir que des lettres, des chiffres, des traits d'union et des traits de soulignement.",
   "SITE_NAME_REQUIRED": "Un nom de site est requis.",

@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "Zahteva je prevelika.",
   "INPUT_TOO_LARGE": "Vnos je prevelik (največ {maxBytes} bajtov).",
   "FILE_RATE_LIMITED": "Preveč operacij z datotekami na tem spletnem mestu. Poskusite znova čez {retryAfter}.",
+  "LINK_CHECK_RATE_LIMITED": "Preveč preverjanj povezav na tem spletnem mestu. Poskusite znova čez {retryAfter}.",
   "SITE_NAME_INVALID": "Imena spletnih mest lahko vsebujejo le črke, številke, vezaje in podčrtaje.",
   "USER_NAME_INVALID": "Uporabniška imena lahko vsebujejo le črke, številke, vezaje in podčrtaje.",
   "SITE_NAME_REQUIRED": "Ime spletnega mesta je obvezno.",

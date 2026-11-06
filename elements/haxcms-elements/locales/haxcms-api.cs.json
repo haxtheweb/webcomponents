@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "Požadavek je příliš velký.",
   "INPUT_TOO_LARGE": "Vstup je příliš velký (maximálně {maxBytes} bajtů).",
   "FILE_RATE_LIMITED": "Příliš mnoho operací se soubory na tomto webu. Zkuste to znovu za {retryAfter}.",
+  "LINK_CHECK_RATE_LIMITED": "Příliš mnoho kontrol odkazů na tomto webu. Zkuste to znovu za {retryAfter}.",
   "SITE_NAME_INVALID": "Názvy webů mohou obsahovat pouze písmena, číslice, pomlčky a podtržítka.",
   "USER_NAME_INVALID": "Uživatelská jména mohou obsahovat pouze písmena, číslice, pomlčky a podtržítka.",
   "SITE_NAME_REQUIRED": "Název webu je povinný.",

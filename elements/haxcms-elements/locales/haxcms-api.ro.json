@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "Solicitarea este prea mare.",
   "INPUT_TOO_LARGE": "Datele introduse sunt prea mari (maximum {maxBytes} octeți).",
   "FILE_RATE_LIMITED": "Prea multe operațiuni cu fișiere pe acest site. Încercați din nou peste {retryAfter}.",
+  "LINK_CHECK_RATE_LIMITED": "Prea multe verificări de linkuri pe acest site. Încercați din nou peste {retryAfter}.",
   "SITE_NAME_INVALID": "Numele site-urilor pot conține doar litere, cifre, cratime și caractere de subliniere.",
   "USER_NAME_INVALID": "Numele de utilizator pot conține doar litere, cifre, cratime și caractere de subliniere.",
   "SITE_NAME_REQUIRED": "Numele site-ului este obligatoriu.",

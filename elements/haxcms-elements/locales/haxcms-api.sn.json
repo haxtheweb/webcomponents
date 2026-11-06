@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "Chikumbiro chakakura zvakanyanya.",
   "INPUT_TOO_LARGE": "Zvamaisa zvakakura zvakanyanya (zvakanyanya mabyte {maxBytes}).",
   "FILE_RATE_LIMITED": "Mabasa emafaira akawandisa pasaiti iyi. Edzai zvakare mushure me {retryAfter}.",
+  "LINK_CHECK_RATE_LIMITED": "Kuongorora zvinongedzo kwawandisa pasaiti iyi. Edzai zvakare mushure me {retryAfter}.",
   "SITE_NAME_INVALID": "Mazita esaiti anogona kushandisa mavara, nhamba, mahaifeni nemaandasikoro chete.",
   "USER_NAME_INVALID": "Mazita evashandisi anogona kushandisa mavara, nhamba, mahaifeni nemaandasikoro chete.",
   "SITE_NAME_REQUIRED": "Zita resaiti rinodiwa.",

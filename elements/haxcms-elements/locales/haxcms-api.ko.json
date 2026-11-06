@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "요청이 너무 큽니다.",
   "INPUT_TOO_LARGE": "입력이 너무 큽니다(최대 {maxBytes}바이트).",
   "FILE_RATE_LIMITED": "이 사이트에서 파일 작업이 너무 많습니다. {retryAfter} 후에 다시 시도하세요.",
+  "LINK_CHECK_RATE_LIMITED": "이 사이트에서 링크 확인이 너무 많습니다. {retryAfter} 후에 다시 시도하세요.",
   "SITE_NAME_INVALID": "사이트 이름에는 문자, 숫자, 하이픈, 밑줄만 사용할 수 있습니다.",
   "USER_NAME_INVALID": "사용자 이름에는 문자, 숫자, 하이픈, 밑줄만 사용할 수 있습니다.",
   "SITE_NAME_REQUIRED": "사이트 이름이 필요합니다.",
