@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Orodha ya ukaguzi · {done} kati ya {total}"
+  "progress": "{done} kati ya {total} zimekamilika",
+  "currentStep": "Hatua ya sasa",
+  "checklist": "Orodha ya ukaguzi",
+  "blockLabel": "Orodha ya ukaguzi · {done} kati ya {total}",
+  "directions": "Maelekezo",
+  "showDirections": "Onyesha maelekezo",
+  "hideDirections": "Ficha maelekezo",
+  "checklistDirections": "Weka alama kwenye kila kipengee unapokimaliza. Alama zako huhifadhiwa ili uweze kuendelea pale ulipoishia.",
+  "orderedDirections": "Fuata hatua kwa mpangilio na weka alama kwenye kila moja unapoimaliza. Alama zako huhifadhiwa ili uweze kuendelea pale ulipoishia.",
+  "complete": "Imekamilika"
 }

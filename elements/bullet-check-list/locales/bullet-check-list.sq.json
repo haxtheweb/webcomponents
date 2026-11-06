@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Lista e kontrollit · {done} nga {total}"
+  "progress": "{done} nga {total} të përfunduara",
+  "currentStep": "Hapi aktual",
+  "checklist": "Lista e kontrollit",
+  "blockLabel": "Lista e kontrollit · {done} nga {total}",
+  "directions": "Udhëzimet",
+  "showDirections": "Shfaq udhëzimet",
+  "hideDirections": "Fshih udhëzimet",
+  "checklistDirections": "Shëno çdo element sapo ta përfundosh. Shënimet e tua ruhen që të vazhdosh nga aty ku e le.",
+  "orderedDirections": "Ndiq hapat me radhë dhe shëno secilin sapo ta përfundosh. Shënimet e tua ruhen që të vazhdosh nga aty ku e le.",
+  "complete": "Përfunduar"
 }

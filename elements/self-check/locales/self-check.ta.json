@@ -2,5 +2,10 @@
   "revealAnswer": "பதிலைக் காட்டு",
   "close": "மூடு",
   "moreInformation": "மேலும் தகவல்",
-  "hideAnswer": "பதிலை மறை"
+  "hideAnswer": "பதிலை மறை",
+  "directions": "வழிமுறைகள்",
+  "showDirections": "வழிமுறைகளைக் காட்டு",
+  "hideDirections": "வழிமுறைகளை மறை",
+  "selfCheckDirections": "முதலில் உங்கள் பதிலை யோசியுங்கள், பிறகு ஒப்பிட்டுப் பார்க்க பதிலைக் காட்டுங்கள்.",
+  "answerRevealed": "பதில் காட்டப்பட்டது"
 }

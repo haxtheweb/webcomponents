@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Kontrolelys · {done} van {total}"
+  "progress": "{done} van {total} voltooi",
+  "currentStep": "Huidige stap",
+  "checklist": "Kontrolelys",
+  "blockLabel": "Kontrolelys · {done} van {total}",
+  "directions": "Aanwysings",
+  "showDirections": "Wys instruksies",
+  "hideDirections": "Versteek instruksies",
+  "checklistDirections": "Merk elke item af soos jy dit voltooi. Jou merke word gestoor sodat jy kan voortgaan waar jy opgehou het.",
+  "orderedDirections": "Werk die stappe in volgorde deur en merk elkeen af soos jy dit voltooi. Jou merke word gestoor sodat jy kan voortgaan waar jy opgehou het.",
+  "complete": "Voltooi"
 }

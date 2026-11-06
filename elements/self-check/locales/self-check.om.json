@@ -2,5 +2,10 @@
   "revealAnswer": "Deebii agarsiisi",
   "close": "Cufi",
   "moreInformation": "Odeeffannoo dabalataa",
-  "hideAnswer": "Deebii dhoksi"
+  "hideAnswer": "Deebii dhoksi",
+  "directions": "Qajeelfama",
+  "showDirections": "Qajeelfama agarsiisi",
+  "hideDirections": "Qajeelfama dhoksi",
+  "selfCheckDirections": "Dura deebii kee yaadi, sana booda wal bira qabuuf deebii agarsiisi.",
+  "answerRevealed": "Deebiin agarsiifameera"
 }

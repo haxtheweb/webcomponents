@@ -2,5 +2,10 @@
   "revealAnswer": "Antwurd sjen litte",
   "close": "Slute",
   "moreInformation": "Mear ynformaasje",
-  "hideAnswer": "Antwurd ferbergje"
+  "hideAnswer": "Antwurd ferbergje",
+  "directions": "Ynstruksjes",
+  "showDirections": "Oanwizings toane",
+  "hideDirections": "Oanwizings ferbergje",
+  "selfCheckDirections": "Tink earst oer dyn antwurd, lit dan it antwurd sjen om te fergelykjen.",
+  "answerRevealed": "Antwurd sjen litten"
 }

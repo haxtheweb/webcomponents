@@ -2,5 +2,10 @@
   "revealAnswer": "Onetsani yankho",
   "close": "Tsekani",
   "moreInformation": "Zambiri",
-  "hideAnswer": "Bisani yankho"
+  "hideAnswer": "Bisani yankho",
+  "directions": "Malangizo",
+  "showDirections": "Onetsani malangizo",
+  "hideDirections": "Bisani malangizo",
+  "selfCheckDirections": "Ganizani kaye za yankho lanu, kenako onetsani yankho kuti mufananitse.",
+  "answerRevealed": "Yankho laonetsedwa"
 }

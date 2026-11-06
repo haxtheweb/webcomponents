@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Ñemoĩmbaha rysýi · {done} / {total}"
+  "progress": "{done} / {total} opáma",
+  "currentStep": "Jeku'e ko'ágãgua",
+  "checklist": "Ñemoĩmbaha rysýi",
+  "blockLabel": "Ñemoĩmbaha rysýi · {done} / {total}",
+  "directions": "Mbo'e",
+  "showDirections": "Ehechauka tapykuéra",
+  "hideDirections": "Emokañy tapykuéra",
+  "checklistDirections": "Emarka peteĩteĩ mba'e remohu'ãvo. Ne marka oñeñongatu ikatu hag̃uáicha resegi repytahágui.",
+  "orderedDirections": "Ejapo umi jeku'e ijatýpe ha emarka peteĩteĩ remohu'ãvo. Ne marka oñeñongatu ikatu hag̃uáicha resegi repytahágui.",
+  "complete": "Opáma"
 }

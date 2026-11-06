@@ -2,5 +2,10 @@
   "revealAnswer": "Sýna svar",
   "close": "Loka",
   "moreInformation": "Nánari upplýsingar",
-  "hideAnswer": "Fela svar"
+  "hideAnswer": "Fela svar",
+  "directions": "Leiðbeiningar",
+  "showDirections": "Sýna leiðbeiningar",
+  "hideDirections": "Fela leiðbeiningar",
+  "selfCheckDirections": "Hugsaðu fyrst um svarið þitt og sýndu svo svarið til að bera saman.",
+  "answerRevealed": "Svar sýnt"
 }

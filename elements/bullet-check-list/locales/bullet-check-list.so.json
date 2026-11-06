@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Liiska hubinta · {done} ee {total}"
+  "progress": "{done} ee {total} waa dhammaystiran",
+  "currentStep": "Tallaabada hadda",
+  "checklist": "Liiska hubinta",
+  "blockLabel": "Liiska hubinta · {done} ee {total}",
+  "directions": "Tilmaamo",
+  "showDirections": "Muuji tilmaamaha",
+  "hideDirections": "Qari tilmaamaha",
+  "checklistDirections": "Calaamadee shay kasta markaad dhammayso. Calaamadahaaga waa la kaydiyaa si aad uga sii wadato meeshii aad ku hakatay.",
+  "orderedDirections": "U mar tallaabooyinka si habaysan oo calaamadee mid kasta markaad dhammayso. Calaamadahaaga waa la kaydiyaa si aad uga sii wadato meeshii aad ku hakatay.",
+  "complete": "Dhammaystiran"
 }

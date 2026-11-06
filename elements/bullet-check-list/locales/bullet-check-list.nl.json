@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Checklist · {done} van {total}"
+  "progress": "{done} van {total} voltooid",
+  "currentStep": "Huidige stap",
+  "checklist": "Checklist",
+  "blockLabel": "Checklist · {done} van {total}",
+  "directions": "Instructies",
+  "showDirections": "Aanwijzingen tonen",
+  "hideDirections": "Aanwijzingen verbergen",
+  "checklistDirections": "Vink elk item aan zodra je het af hebt. Je vinkjes worden bewaard, zodat je verder kunt gaan waar je gebleven was.",
+  "orderedDirections": "Doorloop de stappen op volgorde en vink elke stap aan zodra je die af hebt. Je vinkjes worden bewaard, zodat je verder kunt gaan waar je gebleven was.",
+  "complete": "Voltooid"
 }

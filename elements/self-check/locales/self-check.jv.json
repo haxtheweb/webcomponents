@@ -2,5 +2,10 @@
   "revealAnswer": "Tampilake Wangsulan",
   "close": "Tutup",
   "moreInformation": "Informasi luwih akèh",
-  "hideAnswer": "Singidake wangsulan"
+  "hideAnswer": "Singidake wangsulan",
+  "directions": "Pituduh",
+  "showDirections": "Tampilake pituduh",
+  "hideDirections": "Singidake pituduh",
+  "selfCheckDirections": "Pikirna wangsulanmu dhisik, banjur tampilake wangsulan kanggo mbandhingake.",
+  "answerRevealed": "Wangsulan ditampilake"
 }

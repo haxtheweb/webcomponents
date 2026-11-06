@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Barlag sanawy · {done} / {total}"
+  "progress": "{done} / {total} tamamlandy",
+  "currentStep": "Häzirki ädim",
+  "checklist": "Barlag sanawy",
+  "blockLabel": "Barlag sanawy · {done} / {total}",
+  "directions": "Görkezmeler",
+  "showDirections": "Görkezmeleri görkez",
+  "hideDirections": "Görkezmeleri gizle",
+  "checklistDirections": "Her bir bendi tamamlanyňyzda belläň. Bellikleriňiz saklanýar, şonuň üçin galan ýeriňizden dowam edip bilersiňiz.",
+  "orderedDirections": "Ädimleri tertip boýunça ýerine ýetiriň we her birini tamamlanyňyzda belläň. Bellikleriňiz saklanýar, şonuň üçin galan ýeriňizden dowam edip bilersiňiz.",
+  "complete": "Tamamlandy"
 }

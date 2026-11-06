@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Seicliosta · {done} as {total}"
+  "progress": "{done} as {total} críochnaithe",
+  "currentStep": "Céim reatha",
+  "checklist": "Seicliosta",
+  "blockLabel": "Seicliosta · {done} as {total}",
+  "directions": "Treoracha",
+  "showDirections": "Taispeáin na treoracha",
+  "hideDirections": "Folaigh na treoracha",
+  "checklistDirections": "Cuir tic le gach mír de réir mar a chríochnaíonn tú í. Coinnítear do thicanna ionas gur féidir leat leanúint ar aghaidh ón áit ar stop tú.",
+  "orderedDirections": "Oibrigh trí na céimeanna in ord agus cuir tic le gach ceann de réir mar a chríochnaíonn tú é. Coinnítear do thicanna ionas gur féidir leat leanúint ar aghaidh ón áit ar stop tú.",
+  "complete": "Críochnaithe"
 }

@@ -2,5 +2,10 @@
   "revealAnswer": "መልሱን አሳይ",
   "close": "ዝጋ",
   "moreInformation": "ተጨማሪ መረጃ",
-  "hideAnswer": "መልሱን ደብቅ"
+  "hideAnswer": "መልሱን ደብቅ",
+  "directions": "መመሪያዎች",
+  "showDirections": "መመሪያዎችን አሳይ",
+  "hideDirections": "መመሪያዎችን ደብቅ",
+  "selfCheckDirections": "መጀመሪያ መልስዎን ያስቡ፣ ከዚያም ለማነጻጸር መልሱን ያሳዩ።",
+  "answerRevealed": "መልሱ ታይቷል"
 }

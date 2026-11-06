@@ -2,5 +2,10 @@
   "revealAnswer": "ځواب ښکاره کړئ",
   "close": "بندول",
   "moreInformation": "نور معلومات",
-  "hideAnswer": "ځواب پټ کړئ"
+  "hideAnswer": "ځواب پټ کړئ",
+  "directions": "لارښوونې",
+  "showDirections": "لارښوونې وښایاست",
+  "hideDirections": "لارښوونې پټې کړئ",
+  "selfCheckDirections": "لومړی د خپل ځواب په اړه فکر وکړئ، بیا د پرتلې لپاره ځواب ښکاره کړئ.",
+  "answerRevealed": "ځواب ښکاره شو"
 }

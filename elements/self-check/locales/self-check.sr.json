@@ -2,5 +2,10 @@
   "revealAnswer": "Прикажи одговор",
   "close": "Затвори",
   "moreInformation": "Више информација",
-  "hideAnswer": "Сакриј одговор"
+  "hideAnswer": "Сакриј одговор",
+  "directions": "Упутства",
+  "showDirections": "Прикажи упутства",
+  "hideDirections": "Сакриј упутства",
+  "selfCheckDirections": "Прво смислите свој одговор, а затим прикажите одговор да бисте упоредили.",
+  "answerRevealed": "Одговор је приказан"
 }

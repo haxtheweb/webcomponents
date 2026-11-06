@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Lista ta' verifika · {done} minn {total}"
+  "progress": "{done} minn {total} lesti",
+  "currentStep": "Pass attwali",
+  "checklist": "Lista ta' verifika",
+  "blockLabel": "Lista ta' verifika · {done} minn {total}",
+  "directions": "Struzzjonijiet",
+  "showDirections": "Uri d-direzzjonijiet",
+  "hideDirections": "Aħbi d-direzzjonijiet",
+  "checklistDirections": "Immarka kull oġġett hekk kif tlestih. Il-marki tiegħek jinżammu biex tkun tista' tkompli minn fejn waqaft.",
+  "orderedDirections": "Imxi mal-passi bl-ordni u mmarka kull wieħed hekk kif tlestih. Il-marki tiegħek jinżammu biex tkun tista' tkompli minn fejn waqaft.",
+  "complete": "Lest"
 }

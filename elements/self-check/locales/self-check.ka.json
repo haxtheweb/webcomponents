@@ -2,5 +2,10 @@
   "revealAnswer": "პასუხის ჩვენება",
   "close": "დახურვა",
   "moreInformation": "მეტი ინფორმაცია",
-  "hideAnswer": "პასუხის დამალვა"
+  "hideAnswer": "პასუხის დამალვა",
+  "directions": "ინსტრუქცია",
+  "showDirections": "ინსტრუქციის ჩვენება",
+  "hideDirections": "ინსტრუქციის დამალვა",
+  "selfCheckDirections": "ჯერ მოიფიქრეთ თქვენი პასუხი, შემდეგ აჩვენეთ პასუხი შესადარებლად.",
+  "answerRevealed": "პასუხი ნაჩვენებია"
 }

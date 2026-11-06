@@ -1,8 +1,11 @@
 import { fixture, expect, html } from "@open-wc/testing";
+import { executeServerCommand } from "@web/test-runner-commands";
 import "../bullet-check-list.js";
 import {
   XAPI_VERBS,
   XAPI_EXTENSIONS,
+  deviceActor,
+  setActorProvider,
 } from "@haxtheweb/user-action/lib/xapi.js";
 
 const flush = (ms = 20) => new Promise((r) => setTimeout(r, ms));
@@ -17,6 +20,34 @@ const key = (id) =>
 describe("bullet-check-list learner data", () => {
   beforeEach(clear);
   afterEach(clear);
+
+  it("every statement passes the xAPI 1.0.3 conformance check", async () => {
+    setActorProvider(() =>
+      deviceActor(
+        "4b9f1c1e-0000-4000-8000-0000000000b2",
+        "https://example.org/",
+      ),
+    );
+    try {
+      const el = await fixture(
+        html`<bullet-check-list
+          title="Steps"
+          storage-id="ld-conf"
+          .items="${[{ label: "A" }, { label: "B" }]}"
+        ></bullet-check-list>`,
+      );
+      const seen = [];
+      el.addEventListener("user-engagement", (e) => seen.push(e.detail));
+      el.shadowRoot.querySelectorAll("input").forEach((i) => i.click());
+      expect(seen.length).to.equal(3);
+      for (const d of seen) {
+        const r = await executeServerCommand("xapi-validate", d.statement);
+        expect(r.errors).to.deep.equal([]);
+      }
+    } finally {
+      setActorProvider(null);
+    }
+  });
 
   it("ticks carry xAPI statements: progressed, then completed", async () => {
     const el = await fixture(

@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Lista kontrolna · {done} z {total}"
+  "progress": "Ukończono {done} z {total}",
+  "currentStep": "Bieżący krok",
+  "checklist": "Lista kontrolna",
+  "blockLabel": "Lista kontrolna · {done} z {total}",
+  "directions": "Instrukcje",
+  "showDirections": "Pokaż instrukcję",
+  "hideDirections": "Ukryj instrukcję",
+  "checklistDirections": "Zaznacz każdy punkt, gdy go ukończysz. Twoje zaznaczenia są zapisywane, więc możesz wrócić do miejsca, w którym skończyłeś.",
+  "orderedDirections": "Wykonuj kroki po kolei i zaznacz każdy, gdy go ukończysz. Twoje zaznaczenia są zapisywane, więc możesz wrócić do miejsca, w którym skończyłeś.",
+  "complete": "Ukończono"
 }

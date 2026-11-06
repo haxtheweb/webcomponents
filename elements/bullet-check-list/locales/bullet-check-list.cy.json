@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Rhestr wirio · {done} o {total}"
+  "progress": "{done} o {total} wedi'u cwblhau",
+  "currentStep": "Cam presennol",
+  "checklist": "Rhestr wirio",
+  "blockLabel": "Rhestr wirio · {done} o {total}",
+  "directions": "Cyfarwyddiadau",
+  "showDirections": "Dangos y cyfarwyddiadau",
+  "hideDirections": "Cuddio'r cyfarwyddiadau",
+  "checklistDirections": "Ticiwch bob eitem wrth i chi ei gorffen. Caiff eich ticiau eu cadw fel y gallwch ailgychwyn lle gwnaethoch adael.",
+  "orderedDirections": "Gweithiwch drwy'r camau yn eu trefn a thiciwch bob un wrth i chi ei orffen. Caiff eich ticiau eu cadw fel y gallwch ailgychwyn lle gwnaethoch adael.",
+  "complete": "Wedi'i gwblhau"
 }

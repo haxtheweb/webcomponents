@@ -2,5 +2,10 @@
   "revealAnswer": "Hiện đáp án",
   "close": "Đóng",
   "moreInformation": "Thêm thông tin",
-  "hideAnswer": "Ẩn đáp án"
+  "hideAnswer": "Ẩn đáp án",
+  "directions": "Hướng dẫn",
+  "showDirections": "Hiện hướng dẫn",
+  "hideDirections": "Ẩn hướng dẫn",
+  "selfCheckDirections": "Hãy nghĩ ra câu trả lời của bạn trước, rồi hiện đáp án để so sánh.",
+  "answerRevealed": "Đã hiện đáp án"
 }

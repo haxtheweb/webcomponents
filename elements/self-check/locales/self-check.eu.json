@@ -2,5 +2,10 @@
   "revealAnswer": "Erakutsi erantzuna",
   "close": "Itxi",
   "moreInformation": "Informazio gehiago",
-  "hideAnswer": "Ezkutatu erantzuna"
+  "hideAnswer": "Ezkutatu erantzuna",
+  "directions": "Jarraibideak",
+  "showDirections": "Erakutsi argibideak",
+  "hideDirections": "Ezkutatu argibideak",
+  "selfCheckDirections": "Pentsatu lehenik zure erantzuna, eta gero erakutsi erantzuna alderatzeko.",
+  "answerRevealed": "Erantzuna erakutsita"
 }

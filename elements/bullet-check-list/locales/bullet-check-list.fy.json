@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Kontrôlelist · {done} fan {total}"
+  "progress": "{done} fan {total} klear",
+  "currentStep": "Aktuele stap",
+  "checklist": "Kontrôlelist",
+  "blockLabel": "Kontrôlelist · {done} fan {total}",
+  "directions": "Ynstruksjes",
+  "showDirections": "Oanwizings toane",
+  "hideDirections": "Oanwizings ferbergje",
+  "checklistDirections": "Finkje elk item ôf as it klear is. Dyn finkjes wurde bewarre, sadat do fierder gean kinst wêr'tsto bleaun wiest.",
+  "orderedDirections": "Wurkje de stappen yn folchoarder troch en finkje elk ôf as it klear is. Dyn finkjes wurde bewarre, sadat do fierder gean kinst wêr'tsto bleaun wiest.",
+  "complete": "Klear"
 }

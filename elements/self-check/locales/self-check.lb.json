@@ -2,5 +2,10 @@
   "revealAnswer": "Äntwert weisen",
   "close": "Zoumaachen",
   "moreInformation": "Méi Informatiounen",
-  "hideAnswer": "Äntwert verstoppen"
+  "hideAnswer": "Äntwert verstoppen",
+  "directions": "Uweisungen",
+  "showDirections": "Instruktioune weisen",
+  "hideDirections": "Instruktiounen verstoppen",
+  "selfCheckDirections": "Iwwerleet Iech fir d'éischt Är Äntwert, a weist dann d'Äntwert fir ze vergläichen.",
+  "answerRevealed": "Äntwert gewisen"
 }

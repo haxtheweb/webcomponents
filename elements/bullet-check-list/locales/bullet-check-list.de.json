@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Checkliste · {done} von {total}"
+  "progress": "{done} von {total} abgeschlossen",
+  "currentStep": "Aktueller Schritt",
+  "checklist": "Checkliste",
+  "blockLabel": "Checkliste · {done} von {total}",
+  "directions": "Anleitung",
+  "showDirections": "Anleitung anzeigen",
+  "hideDirections": "Anleitung ausblenden",
+  "checklistDirections": "Hake jeden Punkt ab, sobald du ihn erledigt hast. Deine Häkchen werden gespeichert, damit du dort weitermachen kannst, wo du aufgehört hast.",
+  "orderedDirections": "Arbeite die Schritte der Reihe nach durch und hake jeden ab, sobald du ihn erledigt hast. Deine Häkchen werden gespeichert, damit du dort weitermachen kannst, wo du aufgehört hast.",
+  "complete": "Abgeschlossen"
 }

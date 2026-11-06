@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Eftirlit · {done} av {total}"
+  "progress": "{done} av {total} liðug",
+  "currentStep": "Núverandi stig",
+  "checklist": "Eftirlit",
+  "blockLabel": "Eftirlit · {done} av {total}",
+  "directions": "Leiðbeiningar",
+  "showDirections": "Vís vegleiðing",
+  "hideDirections": "Fjal vegleiðing",
+  "checklistDirections": "Set kross við hvørt punkt, so hvørt sum tað er gjørt. Krossarnir verða goymdir, so tú kanst halda fram har tú slept.",
+  "orderedDirections": "Far ígjøgnum stigini í røð og set kross við hvørt, so hvørt sum tað er gjørt. Krossarnir verða goymdir, so tú kanst halda fram har tú slept.",
+  "complete": "Liðugt"
 }

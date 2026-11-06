@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Checklista · {done} av {total}"
+  "progress": "{done} av {total} klara",
+  "currentStep": "Aktuellt steg",
+  "checklist": "Checklista",
+  "blockLabel": "Checklista · {done} av {total}",
+  "directions": "Instruktioner",
+  "showDirections": "Visa anvisningar",
+  "hideDirections": "Dölj anvisningar",
+  "checklistDirections": "Bocka av varje punkt när du är klar med den. Dina bockar sparas så att du kan fortsätta där du slutade.",
+  "orderedDirections": "Gå igenom stegen i ordning och bocka av vart och ett när du är klar med det. Dina bockar sparas så att du kan fortsätta där du slutade.",
+  "complete": "Klart"
 }

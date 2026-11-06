@@ -2,5 +2,10 @@
   "revealAnswer": "答えを明らかにする",
   "close": "閉じる",
   "moreInformation": "詳細",
-  "hideAnswer": "答えを隠す"
+  "hideAnswer": "答えを隠す",
+  "directions": "説明",
+  "showDirections": "説明を表示",
+  "hideDirections": "説明を隠す",
+  "selfCheckDirections": "まず自分の答えを考えてから、答えを表示して比べてみましょう。",
+  "answerRevealed": "答えを表示しました"
 }

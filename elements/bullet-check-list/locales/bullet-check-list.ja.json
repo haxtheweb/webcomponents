@@ -1,3 +1,12 @@
 {
-  "blockLabel": "チェックリスト · {done} / {total}"
+  "progress": "{total} 件中 {done} 件完了",
+  "currentStep": "現在のステップ",
+  "checklist": "チェックリスト",
+  "blockLabel": "チェックリスト · {done} / {total}",
+  "directions": "説明",
+  "showDirections": "説明を表示",
+  "hideDirections": "説明を隠す",
+  "checklistDirections": "終わった項目にチェックを入れましょう。チェックは保存されるので、中断したところから再開できます。",
+  "orderedDirections": "手順を順番に進め、終わったものからチェックを入れましょう。チェックは保存されるので、中断したところから再開できます。",
+  "complete": "完了"
 }

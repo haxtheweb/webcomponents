@@ -2,5 +2,10 @@
   "revealAnswer": "ਜਵਾਬ ਦਿਖਾਓ",
   "close": "ਬੰਦ ਕਰੋ",
   "moreInformation": "ਹੋਰ ਜਾਣਕਾਰੀ",
-  "hideAnswer": "ਜਵਾਬ ਲੁਕਾਓ"
+  "hideAnswer": "ਜਵਾਬ ਲੁਕਾਓ",
+  "directions": "ਹਦਾਇਤਾਂ",
+  "showDirections": "ਨਿਰਦੇਸ਼ ਦਿਖਾਓ",
+  "hideDirections": "ਨਿਰਦੇਸ਼ ਲੁਕਾਓ",
+  "selfCheckDirections": "ਪਹਿਲਾਂ ਆਪਣੇ ਜਵਾਬ ਬਾਰੇ ਸੋਚੋ, ਫਿਰ ਤੁਲਨਾ ਕਰਨ ਲਈ ਜਵਾਬ ਦਿਖਾਓ।",
+  "answerRevealed": "ਜਵਾਬ ਦਿਖਾਇਆ ਗਿਆ"
 }

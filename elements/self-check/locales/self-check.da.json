@@ -2,5 +2,10 @@
   "revealAnswer": "Vis svar",
   "close": "Luk",
   "moreInformation": "Flere oplysninger",
-  "hideAnswer": "Skjul svar"
+  "hideAnswer": "Skjul svar",
+  "directions": "Vejledning",
+  "showDirections": "Vis vejledning",
+  "hideDirections": "Skjul vejledning",
+  "selfCheckDirections": "Tænk først over dit svar, og vis derefter svaret for at sammenligne.",
+  "answerRevealed": "Svar vist"
 }

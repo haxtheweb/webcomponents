@@ -2,5 +2,10 @@
   "revealAnswer": "Antwort anzeigen",
   "close": "Schließen",
   "moreInformation": "Weitere Informationen",
-  "hideAnswer": "Antwort ausblenden"
+  "hideAnswer": "Antwort ausblenden",
+  "directions": "Anleitung",
+  "showDirections": "Anleitung anzeigen",
+  "hideDirections": "Anleitung ausblenden",
+  "selfCheckDirections": "Überlege dir zuerst deine Antwort und zeige dann die Antwort zum Vergleichen an.",
+  "answerRevealed": "Antwort angezeigt"
 }

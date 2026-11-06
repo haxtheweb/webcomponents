@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Lista de verificación · {done} de {total}"
+  "progress": "{done} de {total} completados",
+  "currentStep": "Paso actual",
+  "checklist": "Lista de verificación",
+  "blockLabel": "Lista de verificación · {done} de {total}",
+  "directions": "Instrucciones",
+  "showDirections": "Mostrar instrucciones",
+  "hideDirections": "Ocultar instrucciones",
+  "checklistDirections": "Marca cada elemento a medida que lo termines. Tus marcas se guardan para que puedas continuar donde lo dejaste.",
+  "orderedDirections": "Sigue los pasos en orden y marca cada uno a medida que lo termines. Tus marcas se guardan para que puedas continuar donde lo dejaste.",
+  "complete": "Completado"
 }

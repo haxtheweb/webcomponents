@@ -2,5 +2,10 @@
   "revealAnswer": "Bersivê nîşan bide",
   "close": "Bigire",
   "moreInformation": "Agahiyên zêdetir",
-  "hideAnswer": "Bersivê veşêre"
+  "hideAnswer": "Bersivê veşêre",
+  "directions": "Rêber",
+  "showDirections": "Rêwerzan nîşan bide",
+  "hideDirections": "Rêwerzan veşêre",
+  "selfCheckDirections": "Pêşî li ser bersiva xwe bifikire, paşê bersivê nîşan bide da ku bidî ber hev.",
+  "answerRevealed": "Bersiv hat nîşandan"
 }

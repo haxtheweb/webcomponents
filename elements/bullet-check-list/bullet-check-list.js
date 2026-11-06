@@ -7,6 +7,7 @@ import {
   DDDBlockStyles,
   renderDDDBlockHeader,
 } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
+import { DDDStatusTokens } from "@haxtheweb/d-d-d/lib/DDDStatusTokens.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import {
@@ -108,6 +109,7 @@ class BulletCheckList extends SchemaBehaviors(I18NMixin(DDD)) {
   static get styles() {
     return [
       super.styles,
+      DDDStatusTokens,
       DDDBlockStyles,
       css`
         :host {
@@ -350,8 +352,49 @@ class BulletCheckList extends SchemaBehaviors(I18NMixin(DDD)) {
           letter-spacing: 0.04em;
           text-transform: uppercase;
         }
+        /* directions strip under the header, as on quiz questions */
+        .directions {
+          padding-block: var(--ddd-spacing-3);
+          padding-inline: var(--ddd-spacing-4);
+          border-bottom: var(--ddd-border-xs);
+          border-color: var(--bcl-line);
+          font-size: var(--ddd-font-size-4xs);
+          line-height: var(--ddd-lh-150);
+        }
+        .directions p {
+          margin: 0;
+        }
+        /* the footer is the action bar: status on the left, meter right */
         .ddd-block-footer {
           justify-content: space-between;
+          background-color: var(--ddd-status-answered-bg);
+        }
+        .ddd-block[data-complete] .ddd-block-footer {
+          border-top: var(--ddd-border-size-md) var(--ddd-status-correct-line)
+            var(--ddd-status-correct-signal);
+        }
+        .status {
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+          min-height: var(--ddd-icon-xxs);
+        }
+        .status-chip {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          flex: none;
+          width: var(--ddd-icon-xxs);
+          height: var(--ddd-icon-xxs);
+          border-radius: var(--ddd-radius-circle);
+          background-color: var(--ddd-status-correct-signal);
+          color: var(--ddd-status-default-bg);
+          --simple-icon-color: currentColor;
+          --simple-icon-width: var(--ddd-icon-4xs);
+          --simple-icon-height: var(--ddd-icon-4xs);
+        }
+        .status-word {
+          color: var(--ddd-status-correct-ink);
         }
         .progress {
           margin: 0;
@@ -419,7 +462,17 @@ class BulletCheckList extends SchemaBehaviors(I18NMixin(DDD)) {
       currentStep: "Current step",
       checklist: "Checklist",
       blockLabel: "Checklist · {done} of {total}",
+      directions: "Directions",
+      showDirections: "Show directions",
+      hideDirections: "Hide directions",
+      checklistDirections:
+        "Tick each item as you finish it. Your ticks are kept so you can pick up where you left off.",
+      orderedDirections:
+        "Work through the steps in order and tick each one as you finish it. Your ticks are kept so you can pick up where you left off.",
+      complete: "Complete",
     };
+    // directions start closed, as they do on quiz questions
+    this._directionsOpen = false;
     this.registerLocalization({
       context: this,
       basePath: import.meta.url,
@@ -747,8 +800,9 @@ class BulletCheckList extends SchemaBehaviors(I18NMixin(DDD)) {
         </label>
       </li>`;
     });
+    const complete = items.length > 0 && done === items.length;
     return html`
-      <div class="ddd-block">
+      <div class="ddd-block" ?data-complete="${complete}">
         ${renderDDDBlockHeader({
           chip: html`<simple-icon
             icon="hax:clipboard-pulse"
@@ -760,7 +814,38 @@ class BulletCheckList extends SchemaBehaviors(I18NMixin(DDD)) {
             .replace("{total}", items.length),
           title: this.title ? html`<span id="title">${this.title}</span>` : "",
           titleTag: "h3",
+          actions: html`<button
+            class="ddd-block-action"
+            id="directions-toggle"
+            aria-controls="directions"
+            aria-expanded="${this._directionsOpen ? "true" : "false"}"
+            aria-label="${
+              this._directionsOpen
+                ? this.t.hideDirections
+                : this.t.showDirections
+            }"
+            title="${this.t.directions}"
+            @click="${this._toggleDirections}"
+          >
+            <simple-icon-lite
+              icon="icons:info-outline"
+              aria-hidden="true"
+            ></simple-icon-lite>
+          </button>`,
         })}
+        <div
+          id="directions"
+          class="directions"
+          ?hidden="${!this._directionsOpen}"
+        >
+          <p>
+            <span class="sr-only">${this.t.directions}: </span>${
+              this.ordered
+                ? this.t.orderedDirections
+                : this.t.checklistDirections
+            }
+          </p>
+        </div>
         <div class="ddd-block-body">
           <div
             role="group"
@@ -779,17 +864,37 @@ class BulletCheckList extends SchemaBehaviors(I18NMixin(DDD)) {
           </div>
         </div>
         <div class="ddd-block-footer">
-          <p class="progress" role="status">
-            ${this.t.progress
-              .replace("{done}", done)
-              .replace("{total}", items.length)}
-          </p>
+          <div class="status">
+            ${
+              complete
+                ? html`<span class="status-chip" aria-hidden="true"
+                    ><simple-icon-lite icon="icons:check"></simple-icon-lite
+                  ></span>`
+                : nothing
+            }
+            <p class="progress" role="status">
+              ${
+                complete
+                  ? html`<strong class="status-word"
+                      >${this.t.complete}</strong
+                    >`
+                  : this.t.progress
+                      .replace("{done}", done)
+                      .replace("{total}", items.length)
+              }
+            </p>
+          </div>
           <span class="meter" aria-hidden="true"
             ><span style="width: ${pct}%"></span
           ></span>
         </div>
       </div>
     `;
+  }
+
+  _toggleDirections() {
+    this._directionsOpen = !this._directionsOpen;
+    this.requestUpdate();
   }
 
   /**

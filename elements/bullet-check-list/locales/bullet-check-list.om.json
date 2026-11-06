@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Tarree mirkaneessaa · {done} kan {total}"
+  "progress": "{done} kan {total} xumurameera",
+  "currentStep": "Tarkaanfii ammaa",
+  "checklist": "Tarree mirkaneessaa",
+  "blockLabel": "Tarree mirkaneessaa · {done} kan {total}",
+  "directions": "Qajeelfama",
+  "showDirections": "Qajeelfama agarsiisi",
+  "hideDirections": "Qajeelfama dhoksi",
+  "checklistDirections": "Wanta tokkoon tokkoon yeroo xumurtu mallatteessi. Mallattooleen kee ni olkaa'amu, kanaaf bakka dhaabde irraa itti fufuu dandeessa.",
+  "orderedDirections": "Tarkaanfiiwwan tartiibaan raawwadhuu tokkoon tokkoon isaanii yeroo xumurtu mallatteessi. Mallattooleen kee ni olkaa'amu, kanaaf bakka dhaabde irraa itti fufuu dandeessa.",
+  "complete": "Xumurameera"
 }

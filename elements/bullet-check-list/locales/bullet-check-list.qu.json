@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Chaskiy qillqa · {done} / {total}"
+  "progress": "{done} / {total} tukusqa",
+  "currentStep": "Kunan puriy",
+  "checklist": "Chaskiy qillqa",
+  "blockLabel": "Chaskiy qillqa · {done} / {total}",
+  "directions": "Pusaykuna",
+  "showDirections": "Kamachiykunata rikuchiy",
+  "hideDirections": "Kamachiykunata pakay",
+  "checklistDirections": "Sapa imatapas tukuspa marcay. Marcasqaykikunaqa waqaychasqam kanqa, saqisqayki chiqanmanta qatipanaykipaq.",
+  "orderedDirections": "Purikunata ñiqinman hina ruray, sapakamatataq tukuspa marcay. Marcasqaykikunaqa waqaychasqam kanqa, saqisqayki chiqanmanta qatipanaykipaq.",
+  "complete": "Tukusqa"
 }

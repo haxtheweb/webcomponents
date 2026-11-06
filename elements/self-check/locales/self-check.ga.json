@@ -2,5 +2,10 @@
   "revealAnswer": "Nocht an freagra",
   "close": "Dún",
   "moreInformation": "Tuilleadh eolais",
-  "hideAnswer": "Folaigh an freagra"
+  "hideAnswer": "Folaigh an freagra",
+  "directions": "Treoracha",
+  "showDirections": "Taispeáin na treoracha",
+  "hideDirections": "Folaigh na treoracha",
+  "selfCheckDirections": "Smaoinigh ar do fhreagra ar dtús, ansin nocht an freagra chun iad a chur i gcomparáid.",
+  "answerRevealed": "Freagra nochta"
 }

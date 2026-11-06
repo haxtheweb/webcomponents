@@ -2,5 +2,10 @@
   "revealAnswer": "Válasz megjelenítése",
   "close": "Bezárás",
   "moreInformation": "További információ",
-  "hideAnswer": "Válasz elrejtése"
+  "hideAnswer": "Válasz elrejtése",
+  "directions": "Útmutató",
+  "showDirections": "Útmutató megjelenítése",
+  "hideDirections": "Útmutató elrejtése",
+  "selfCheckDirections": "Először gondold végig a válaszodat, majd jelenítsd meg a választ, és hasonlítsd össze.",
+  "answerRevealed": "Válasz megjelenítve"
 }

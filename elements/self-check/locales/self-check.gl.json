@@ -2,5 +2,10 @@
   "revealAnswer": "Amosar resposta",
   "close": "Pechar",
   "moreInformation": "Máis información",
-  "hideAnswer": "Ocultar a resposta"
+  "hideAnswer": "Ocultar a resposta",
+  "directions": "Instrucións",
+  "showDirections": "Mostrar as instrucións",
+  "hideDirections": "Ocultar as instrucións",
+  "selfCheckDirections": "Pensa primeiro na túa resposta e despois amosa a resposta para comparar.",
+  "answerRevealed": "Resposta amosada"
 }

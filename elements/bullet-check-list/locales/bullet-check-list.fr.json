@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Liste de contrôle · {done} sur {total}"
+  "progress": "{done} sur {total} terminés",
+  "currentStep": "Étape en cours",
+  "checklist": "Liste de contrôle",
+  "blockLabel": "Liste de contrôle · {done} sur {total}",
+  "directions": "Consignes",
+  "showDirections": "Afficher les consignes",
+  "hideDirections": "Masquer les consignes",
+  "checklistDirections": "Cochez chaque élément une fois terminé. Vos coches sont enregistrées pour que vous puissiez reprendre là où vous vous êtes arrêté.",
+  "orderedDirections": "Suivez les étapes dans l'ordre et cochez chacune une fois terminée. Vos coches sont enregistrées pour que vous puissiez reprendre là où vous vous êtes arrêté.",
+  "complete": "Terminé"
 }

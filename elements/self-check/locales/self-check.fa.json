@@ -2,5 +2,10 @@
   "revealAnswer": "نمایش پاسخ",
   "close": "بستن",
   "moreInformation": "اطلاعات بیشتر",
-  "hideAnswer": "پنهان کردن پاسخ"
+  "hideAnswer": "پنهان کردن پاسخ",
+  "directions": "دستورالعمل",
+  "showDirections": "نمایش راهنما",
+  "hideDirections": "پنهان کردن راهنما",
+  "selfCheckDirections": "ابتدا به پاسخ خود فکر کنید، سپس پاسخ را نمایش دهید تا مقایسه کنید.",
+  "answerRevealed": "پاسخ نمایش داده شد"
 }

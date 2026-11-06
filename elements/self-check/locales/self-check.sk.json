@@ -2,5 +2,10 @@
   "revealAnswer": "Odhaliť odpoveď",
   "close": "Zavrieť",
   "moreInformation": "Viac informácií",
-  "hideAnswer": "Skryť odpoveď"
+  "hideAnswer": "Skryť odpoveď",
+  "directions": "Pokyny",
+  "showDirections": "Zobraziť pokyny",
+  "hideDirections": "Skryť pokyny",
+  "selfCheckDirections": "Najprv si premyslite svoju odpoveď, potom odhaľte odpoveď a porovnajte.",
+  "answerRevealed": "Odpoveď odhalená"
 }

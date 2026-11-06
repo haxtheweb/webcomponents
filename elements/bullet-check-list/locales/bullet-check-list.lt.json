@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Kontrolinis sąrašas · {done} iš {total}"
+  "progress": "Atlikta {done} iš {total}",
+  "currentStep": "Dabartinis veiksmas",
+  "checklist": "Kontrolinis sąrašas",
+  "blockLabel": "Kontrolinis sąrašas · {done} iš {total}",
+  "directions": "Nurodymai",
+  "showDirections": "Rodyti nurodymus",
+  "hideDirections": "Slėpti nurodymus",
+  "checklistDirections": "Pažymėkite kiekvieną punktą, kai jį atliksite. Jūsų žymės išsaugomos, todėl galėsite tęsti nuo ten, kur sustojote.",
+  "orderedDirections": "Atlikite veiksmus iš eilės ir pažymėkite kiekvieną, kai jį atliksite. Jūsų žymės išsaugomos, todėl galėsite tęsti nuo ten, kur sustojote.",
+  "complete": "Baigta"
 }

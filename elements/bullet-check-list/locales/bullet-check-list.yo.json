@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Àtòkọ àyẹ̀wò · {done} nínú {total}"
+  "progress": "{done} nínú {total} ti parí",
+  "currentStep": "Ìgbésẹ̀ lọ́wọ́lọ́wọ́",
+  "checklist": "Àtòkọ àyẹ̀wò",
+  "blockLabel": "Àtòkọ àyẹ̀wò · {done} nínú {total}",
+  "directions": "Ìtọ́sọ́nà",
+  "showDirections": "Fi ìtọ́sọ́nà hàn",
+  "hideDirections": "Fi ìtọ́sọ́nà pamọ́",
+  "checklistDirections": "Sàmì sí nǹkan kọ̀ọ̀kan bí o ṣe ń parí rẹ̀. A ń tọ́jú àwọn àmì rẹ kí o lè tẹ̀síwájú láti ibi tí o dúró sí.",
+  "orderedDirections": "Tẹ̀lé àwọn ìgbésẹ̀ ní ìtẹ̀léra kí o sì sàmì sí ọ̀kọ̀ọ̀kan bí o ṣe ń parí rẹ̀. A ń tọ́jú àwọn àmì rẹ kí o lè tẹ̀síwájú láti ibi tí o dúró sí.",
+  "complete": "Ó ti parí"
 }

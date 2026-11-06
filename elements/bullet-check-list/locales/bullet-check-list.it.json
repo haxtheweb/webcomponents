@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Lista di controllo · {done} di {total}"
+  "progress": "{done} di {total} completati",
+  "currentStep": "Passaggio corrente",
+  "checklist": "Lista di controllo",
+  "blockLabel": "Lista di controllo · {done} di {total}",
+  "directions": "Istruzioni",
+  "showDirections": "Mostra le istruzioni",
+  "hideDirections": "Nascondi le istruzioni",
+  "checklistDirections": "Spunta ogni voce quando la completi. Le tue spunte vengono salvate, così puoi riprendere da dove avevi lasciato.",
+  "orderedDirections": "Segui i passaggi in ordine e spunta ciascuno quando lo completi. Le tue spunte vengono salvate, così puoi riprendere da dove avevi lasciato.",
+  "complete": "Completato"
 }

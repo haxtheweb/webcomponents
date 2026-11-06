@@ -2,5 +2,10 @@
   "revealAnswer": "Datgelu'r ateb",
   "close": "Cau",
   "moreInformation": "Rhagor o wybodaeth",
-  "hideAnswer": "Cuddio'r ateb"
+  "hideAnswer": "Cuddio'r ateb",
+  "directions": "Cyfarwyddiadau",
+  "showDirections": "Dangos y cyfarwyddiadau",
+  "hideDirections": "Cuddio'r cyfarwyddiadau",
+  "selfCheckDirections": "Meddyliwch am eich ateb yn gyntaf, yna datgelwch yr ateb i gymharu.",
+  "answerRevealed": "Ateb wedi'i ddatgelu"
 }

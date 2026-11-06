@@ -2,5 +2,10 @@
   "revealAnswer": "Javobni ko‘rsatish",
   "close": "Yopish",
   "moreInformation": "Qo‘shimcha ma’lumot",
-  "hideAnswer": "Javobni yashirish"
+  "hideAnswer": "Javobni yashirish",
+  "directions": "Koʻrsatmalar",
+  "showDirections": "Ko‘rsatmalarni ko‘rsatish",
+  "hideDirections": "Ko‘rsatmalarni yashirish",
+  "selfCheckDirections": "Avval javobingiz haqida o‘ylab ko‘ring, so‘ngra solishtirish uchun javobni ko‘rsating.",
+  "answerRevealed": "Javob ko‘rsatildi"
 }

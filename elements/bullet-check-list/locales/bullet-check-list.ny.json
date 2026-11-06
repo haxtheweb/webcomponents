@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Mndandanda wowunika · {done} pa {total}"
+  "progress": "{done} pa {total} zatha",
+  "currentStep": "Sitepe yapano",
+  "checklist": "Mndandanda wowunika",
+  "blockLabel": "Mndandanda wowunika · {done} pa {total}",
+  "directions": "Malangizo",
+  "showDirections": "Onetsani malangizo",
+  "hideDirections": "Bisani malangizo",
+  "checklistDirections": "Chongani chinthu chilichonse mukachimaliza. Zochonga zanu zimasungidwa kuti mupitirize pomwe munasiyira.",
+  "orderedDirections": "Tsatirani masitepe motsatizana ndipo chongani lililonse mukalimaliza. Zochonga zanu zimasungidwa kuti mupitirize pomwe munasiyira.",
+  "complete": "Zatha"
 }
