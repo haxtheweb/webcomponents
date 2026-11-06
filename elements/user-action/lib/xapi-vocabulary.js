@@ -101,6 +101,16 @@ export const XAPI_VOCABULARY = {
     done: "answered correctly",
     source: "elements/flash-card/flash-card.js",
   },
+  "h5p-element": {
+    tag: "h5p-element",
+    event: "user-engagement",
+    verbs: ["attempted", "answered", "completed"],
+    objectType: "http://adlnet.gov/expapi/activities/interaction",
+    result: ["success", "completion", "response", "score", "duration"],
+    countsTowardCompletion: false,
+    done: "never required; not every H5P content type reports completion",
+    source: "elements/h5p-element/h5p-element.js",
+  },
   "image-compare-slider": {
     tag: "image-compare-slider",
     event: "user-engagement",
