@@ -35,6 +35,8 @@ describe("vocab-term xAPI", () => {
     const s = events[0].statement;
     expect(s.verb.id).to.equal("http://adlnet.gov/expapi/verbs/experienced");
     expect(Object.values(s.object.definition.name)[0]).to.equal("Coffee");
+    // opening a definition never completes anything
+    expect(s.result).to.equal(undefined);
     const r = await executeServerCommand("xapi-validate", s);
     expect(r.errors).to.deep.equal([]);
   });

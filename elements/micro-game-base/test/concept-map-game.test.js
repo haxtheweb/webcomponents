@@ -137,4 +137,21 @@ describe("ConceptMapGame test", () => {
   it("passes the a11y audit", async () => {
     await expect(element).shadowDom.to.be.accessible();
   });
+
+  it("records each concept found as one step of the map", async () => {
+    const seen = [];
+    element.addEventListener("user-engagement", (e) => seen.push(e.detail));
+    NODES.forEach((n, i) => element._visit(i));
+    const steps = seen.filter((d) => d.activityDisplay === "progressed");
+    expect(steps.length).to.equal(NODES.length);
+    const first = steps[0].statement;
+    expect(first.verb.id).to.equal("http://adlnet.gov/expapi/verbs/progressed");
+    expect(first.result.success).to.equal(true);
+    expect(first.result.completion).to.equal(false);
+    expect(steps[NODES.length - 1].statement.result.completion).to.equal(true);
+    expect(seen.some((d) => d.activityDisplay === "experienced")).to.equal(
+      false,
+    );
+    expect(seen[seen.length - 1].activityDisplay).to.equal("completed");
+  });
 });

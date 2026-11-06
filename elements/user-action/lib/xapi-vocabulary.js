@@ -35,7 +35,7 @@ export const XAPI_VOCABULARY = {
   "concept-map-game": {
     tag: "concept-map-game",
     event: "user-engagement",
-    verbs: ["attempted", "experienced", "completed"],
+    verbs: ["attempted", "progressed", "completed"],
     objectType: "http://adlnet.gov/expapi/activities/simulation",
     result: ["success", "completion", "response", "score", "duration"],
     countsTowardCompletion: true,
@@ -55,7 +55,7 @@ export const XAPI_VOCABULARY = {
   "concept-runner-game": {
     tag: "concept-runner-game",
     event: "user-engagement",
-    verbs: ["attempted", "experienced", "completed"],
+    verbs: ["attempted", "answered", "completed"],
     objectType: "http://adlnet.gov/expapi/activities/simulation",
     result: ["success", "completion", "response", "score", "duration"],
     countsTowardCompletion: true,
@@ -299,7 +299,7 @@ export const XAPI_VOCABULARY = {
     objectType: "http://adlnet.gov/expapi/activities/interaction",
     result: [],
     countsTowardCompletion: false,
-    done: "never; records that something was seen or used",
+    done: "never; records that something was seen (visibility) or used (click, keypress)",
     source: "elements/user-action/user-action.js",
   },
   "video-player": {
@@ -317,7 +317,7 @@ export const XAPI_VOCABULARY = {
     event: "user-engagement",
     verbs: ["experienced"],
     objectType: "http://adlnet.gov/expapi/activities/interaction",
-    result: ["completion"],
+    result: [],
     countsTowardCompletion: false,
     done: "never required; records that the definition was opened",
     source: "elements/vocab-term/vocab-term.js",

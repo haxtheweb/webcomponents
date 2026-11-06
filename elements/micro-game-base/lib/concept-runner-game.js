@@ -51,7 +51,7 @@ export class ConceptRunnerGame extends MicroGameBase {
     return {
       tag: "concept-runner-game",
       event: "user-engagement",
-      verbs: ["attempted", "experienced", "completed"],
+      verbs: ["attempted", "answered", "completed"],
       objectType: "http://adlnet.gov/expapi/activities/simulation",
       result: ["success", "completion", "response", "score", "duration"],
       countsTowardCompletion: true,
@@ -435,7 +435,9 @@ export class ConceptRunnerGame extends MicroGameBase {
       outcome: outcome,
       success: good,
     });
-    this.emitProgress("experienced", {
+    // each item is a judged response (collected / dodged right, hit / missed
+    // wrong), so it is answered like a concept-quest question
+    this.emitProgress("answered", {
       objectDetail: it.label,
       resultSuccess: good,
       resultResponse: outcome,

@@ -32,7 +32,7 @@ class UserAction extends HTMLElement {
       objectType: "http://adlnet.gov/expapi/activities/interaction",
       result: [],
       countsTowardCompletion: false,
-      done: "never; records that something was seen or used",
+      done: "never; records that something was seen (visibility) or used (click, keypress)",
     };
   }
   /**

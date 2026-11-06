@@ -30,8 +30,10 @@
  * Without a provider the statement has no actor and the listener adds one.
  *
  * @typedef {Object} UserEngagementDetail
- * @property {string} activityDisplay verb the element performed, for example
- *   answered, attempted, completed, experienced, progressed, interacted
+ * @property {string} activityDisplay verb the element performed: answered,
+ *   attempted, completed, experienced, progressed or interacted
+ * @property {boolean} [xapi] false when the event is not a learner record
+ *   (no statement is built for it)
  * @property {string} [objectName] human name of the activity (quiz name,
  *   checklist title, game name)
  * @property {string} [objectId] author supplied id of the activity, when any
@@ -58,7 +60,15 @@
 export const XAPI_VERSION = "1.0.3";
 
 /**
- * ADL verb IRIs used by HAX elements
+ * ADL verb IRIs used by HAX elements. Each has one meaning:
+ *   experienced  saw or opened something; no judgment, no progress
+ *   interacted   manipulated something with no right answer
+ *   answered     gave a response (judged or not, see result.success)
+ *   progressed   finished one step of a multi-part activity
+ *   attempted    began an attempt
+ *   completed    finished the whole activity
+ * Pass and fail are result.success on the answered / completed statement;
+ * statements imported from elsewhere may still use other ADL verbs.
  */
 export const XAPI_VERBS = {
   answered: "http://adlnet.gov/expapi/verbs/answered",
@@ -66,8 +76,6 @@ export const XAPI_VERBS = {
   completed: "http://adlnet.gov/expapi/verbs/completed",
   experienced: "http://adlnet.gov/expapi/verbs/experienced",
   progressed: "http://adlnet.gov/expapi/verbs/progressed",
-  passed: "http://adlnet.gov/expapi/verbs/passed",
-  failed: "http://adlnet.gov/expapi/verbs/failed",
   interacted: "http://adlnet.gov/expapi/verbs/interacted",
 };
 
