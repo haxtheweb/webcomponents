@@ -16,6 +16,7 @@ import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-
 import { waitForAppHAXSystemApiRegistryReady } from "@haxtheweb/app-hax/lib/v2/app-hax-system-api-registry.js";
 import { haxcmsApiMessage } from "./HAXCMSApiMessages.js";
 import { siteApiFetch } from "./site-api-auth-fetch.js";
+import { HaxUiDialogFrame } from "@haxtheweb/d-d-d/lib/HaxUiDialogFrame.js";
 
 // English defaults for messages these helpers show. They run with `this`
 // bound to haxcms-site-editor-ui, so translations come from its (haxcms
@@ -497,10 +498,8 @@ export async function _exportSiteAsSkeleton(
     const modalStyles =
       options && options.platformSettings
         ? {
-            "--simple-modal-titlebar-background": "black",
-            "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
-            "--simple-modal-background":
-              "light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray))",
+            // platform settings is admin: the HAX UI dialog frame
+            ...HaxUiDialogFrame,
             "--simple-modal-width": "80vw",
             "--simple-modal-max-width": "80vw",
             "--simple-modal-min-width": "300px",
@@ -508,8 +507,6 @@ export async function _exportSiteAsSkeleton(
             "--simple-modal-height": "80vh",
             "--simple-modal-max-height": "80vh",
             "--simple-modal-min-height": "400px",
-            "--simple-modal-titlebar-height": "80px",
-            "--simple-modal-border-radius": "var(--ddd-radius-md)",
           }
         : {
             "--simple-modal-titlebar-background": "transparent",

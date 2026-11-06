@@ -253,7 +253,21 @@ export const HaxUiSingletons = [
       z-index: 100000001 !important;
       position: fixed;
     }
-    simple-modal[mode="hax-ui"]::part(titlebar),
+    /* the editor's dialogs (app picker, view source, cancel) wear the HAX
+       UI dialog frame, the look of every admin modal; their titlebar and
+       surface come from the frame's custom properties, which each dialog
+       passes to the modal (see @haxtheweb/d-d-d/lib/HaxUiDialogFrame.js).
+       Only the title font is set here; the close button is simple-modal's own,
+       as in the admin dialogs. */
+    simple-modal[mode="hax-ui"]::part(title) {
+      font-family: var(--hax-ui-font-family);
+      margin: 0 var(--hax-ui-spacing-sm) 0 0;
+      padding: 0;
+    }
+    /* the cancel prompt is the confirm card: its buttons close it */
+    simple-modal[mode="hax-ui"]#hax-cancel::part(close) {
+      display: none;
+    }
     simple-popover-manager[mode="hax"]::part(simple-popover-heading),
     simple-popover-manager[mode="hax"] h1[slot="heading"] {
       color: var(--hax-ui-background-color);
@@ -261,7 +275,6 @@ export const HaxUiSingletons = [
       padding: var(--hax-ui-spacing-sm) var(--hax-ui-spacing);
       margin: 0;
     }
-    simple-modal[mode="hax-ui"]::part(close),
     simple-popover-manager[mode="hax"] #close {
       color: var(--hax-ui-background-color);
       background-color: var(--hax-ui-color-accent);
@@ -272,14 +285,11 @@ export const HaxUiSingletons = [
       height: 24px;
       padding: 0;
     }
-    simple-modal[mode="hax-ui"]:focus-within::part(close),
-    simple-modal[mode="hax-ui"]:hover::part(close),
     simple-popover-manager[mode="hax"] #close:focus,
     simple-popover-manager[mode="hax"] #close:hover {
       background-color: var(--hax-ui-color-accent-secondary);
       --simple-icon-button-border: 0px solid transparent;
     }
-    simple-modal[mode="hax-ui"]::part(title),
     simple-popover-manager[mode="hax"] h1 {
       font-family: var(--hax-ui-font-family);
       font-size: var(--hax-ui-font-size);
@@ -295,28 +305,24 @@ export const HaxUiSingletons = [
       margin: 0 0 var(--hax-ui-spacing-lg);
     }
     simple-modal[mode="hax-ui"]::part(content),
-    simple-modal[mode="hax-ui"]::part(custom),
-    simple-popover-manager[mode="hax"]::part(simple-popover-body) {
+    simple-modal[mode="hax-ui"]::part(custom) {
       font-size: var(--hax-ui-font-size);
-      color: var(--hax-ui-color);
-      background-color: var(--hax-ui-background-color);
     }
     simple-modal[mode="hax-ui"]::part(content) {
       padding: 0 var(--hax-ui-spacing);
     }
+    simple-modal[mode="hax-ui"]#hax-cancel::part(content),
     simple-modal[mode="hax-ui"]::part(custom) {
       padding: 0;
     }
     simple-popover-manager[mode="hax"]::part(simple-popover-body) {
+      font-size: var(--hax-ui-font-size);
+      color: var(--hax-ui-color);
+      background-color: var(--hax-ui-background-color);
       padding: var(--hax-ui-spacing);
     }
-    simple-modal[mode="hax-ui"]::part(buttons),
     simple-popover-manager[mode="hax"]::part(simple-popover-nav) {
       background-color: var(--hax-ui-background-color);
-    }
-    #hax-cancel-no,
-    #hax-cancel-yes {
-      flex: 1 1 auto;
     }
     simple-popover-manager[mode="hax"]
       simple-icon-button-lite[slot="nav"]::part(button) {
@@ -590,6 +596,12 @@ export {
   HaxUiAdminStyles,
   HaxUiAdminShell,
   HaxUiAdminIcons,
+  HaxUiDialogTitlebar,
+  HaxUiDialogSurface,
+  HaxUiDialogFrame,
+  HaxUiDialogConfirm,
+  HaxUiDialogTitlebarStyles,
+  haxUiDialogVars,
 } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 
 /**

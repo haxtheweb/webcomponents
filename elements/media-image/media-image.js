@@ -7,6 +7,7 @@ import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js
 import { SimpleModalHandler } from "@haxtheweb/simple-modal/lib/simple-modal-handler.js";
 import "@haxtheweb/figure-label/figure-label.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { HaxUiDialogFrame } from "@haxtheweb/d-d-d/lib/HaxUiDialogFrame.js";
 /**
  * `media-image`
  * `A simple image presentaiton with minor documented options`
@@ -642,33 +643,14 @@ class MediaImage extends SchemaBehaviors(DDD) {
 globalThis.customElements.define(MediaImage.tag, MediaImage);
 
 /**
- * The image pop up uses the same dialog frame as the rest of HAX's modals:
- * a 48px dark titlebar with an icon and 16px bold title, a white /
- * coalyGray surface and 8px corners, in light and dark. Values are DDD
- * tokens with the --hax-ui-* titlebar pair in front, so a page that defines
- * the HAX UI tokens wins and a visitor's page needs nothing beyond DDD.
+ * The image pop up uses the HAX UI dialog frame, the same as the rest of
+ * HAX's modals. The frame puts the --hax-ui-* tokens first with DDD behind
+ * them, so a page that defines the HAX UI tokens wins and a visitor's page
+ * needs nothing beyond DDD, which media-image loads.
  */
 const MEDIA_IMAGE_MODAL_STYLES = Object.freeze({
-  "--simple-modal-titlebar-background":
-    "var(--hax-ui-titlebar, light-dark(var(--ddd-theme-default-coalyGray, #262626), var(--ddd-theme-default-potentialMidnight, #001e44)))",
-  "--simple-modal-titlebar-color":
-    "var(--hax-ui-on-titlebar, var(--ddd-theme-default-white, #ffffff))",
-  "--simple-modal-titlebar-height": "var(--hax-ui-titlebar-height, 48px)",
-  "--simple-modal-titlebar-mobile-height":
-    "var(--hax-ui-titlebar-height, 48px)",
-  "--simple-modal-titlebar-padding": "0 var(--ddd-spacing-3, 12px) 0 16px",
-  "--simple-modal-titlebar-font-size": "16px",
-  "--simple-modal-titlebar-font-weight": "var(--ddd-font-weight-bold, 700)",
-  "--simple-modal-title-icon-size": "18px",
-  "--simple-modal-title-text-offset": "0",
-  "--simple-modal-titlebar-icon-height": "20px",
-  "--simple-modal-titlebar-icon-width": "20px",
-  "--simple-modal-content-container-background":
-    "light-dark(var(--ddd-theme-default-white, #ffffff), var(--ddd-theme-default-coalyGray, #262626))",
-  "--simple-modal-content-container-color":
-    "light-dark(var(--ddd-theme-default-coalyGray, #262626), var(--ddd-theme-default-white, #ffffff))",
+  ...HaxUiDialogFrame,
   "--simple-modal-content-padding": "var(--ddd-spacing-3, 12px)",
-  "--simple-modal-border-radius": "var(--ddd-radius-sm, 8px)",
   "--simple-modal-min-width": "50vw",
   "--simple-modal-min-height": "50vh",
   "--simple-modal-max-width": "calc(100vw - 32px)",

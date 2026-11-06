@@ -11,7 +11,8 @@
  * This file is the one entry point for the layer. Its pieces live next to
  * it, split by what elements import, so a page loads only what it uses:
  * HaxUiAdminTokens.js (Tokens, Scheme, Primitives), HaxUiAdminIcons.js,
- * HaxUiAdminControls.js (Controls, SimpleFields) and HaxUiAdminShell.js.
+ * HaxUiAdminControls.js (Controls, SimpleFields), HaxUiAdminShell.js and
+ * HaxUiDialogFrame.js (the one modal frame).
  * This file re-exports all of them plus the combined HaxUiAdminStyles, so
  * existing imports keep working. The layer lives in d-d-d so every
  * admin element can import it, including packages hax-body depends on
@@ -38,6 +39,14 @@ export {
 };
 export { HaxUiAdminIcons } from "./HaxUiAdminIcons.js";
 export { HaxUiAdminShell } from "./HaxUiAdminShell.js";
+export {
+  HaxUiDialogTitlebar,
+  HaxUiDialogSurface,
+  HaxUiDialogFrame,
+  HaxUiDialogConfirm,
+  HaxUiDialogTitlebarStyles,
+  haxUiDialogVars,
+} from "./HaxUiDialogFrame.js";
 
 /**
  * Everything an admin surface needs, in order: tokens, scheme, primitives,

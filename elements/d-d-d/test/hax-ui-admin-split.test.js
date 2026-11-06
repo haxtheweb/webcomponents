@@ -4,6 +4,7 @@ import * as tokensModule from "../lib/HaxUiAdminTokens.js";
 import * as iconsModule from "../lib/HaxUiAdminIcons.js";
 import * as controlsModule from "../lib/HaxUiAdminControls.js";
 import * as shellModule from "../lib/HaxUiAdminShell.js";
+import * as dialogModule from "../lib/HaxUiDialogFrame.js";
 
 // where each piece of the HAX UI admin layer lives; HaxUiAdminStyles.js
 // re-exports all of them so every existing import keeps working
@@ -15,6 +16,12 @@ const HOME = {
   HaxUiAdminControls: controlsModule,
   HaxUiAdminSimpleFields: controlsModule,
   HaxUiAdminShell: shellModule,
+  HaxUiDialogTitlebar: dialogModule,
+  HaxUiDialogSurface: dialogModule,
+  HaxUiDialogFrame: dialogModule,
+  HaxUiDialogConfirm: dialogModule,
+  HaxUiDialogTitlebarStyles: dialogModule,
+  haxUiDialogVars: dialogModule,
 };
 
 const cssText = (list) => list.map((sheet) => sheet.cssText).join("\n");
