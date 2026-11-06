@@ -114,6 +114,38 @@ describe("simple-modal behavior", () => {
     el.close();
   });
 
+  it("treats the empty <div> a template sends as no buttons", async () => {
+    const el = await fixture(html`<simple-modal></simple-modal>`);
+    const area = () => el.shadowRoot.querySelector(".buttons");
+    const empty = globalThis.document.createElement("div");
+    el.show(
+      "T",
+      "m",
+      { content: makeContent("<p>Content</p>"), buttons: empty },
+      null,
+    );
+    await settleDialog(el, 30);
+    expect(area().hidden).to.be.true;
+    el.close();
+  });
+
+  it("sizes the title from the titlebar font size, with or without an icon", async () => {
+    const el = await fixture(html`<simple-modal></simple-modal>`);
+    const title = () => el.shadowRoot.querySelector("#simple-modal-title");
+    el.show(
+      "T",
+      "m",
+      { content: makeContent("<p>Content</p>") },
+      null,
+      null,
+      null,
+      { "--simple-modal-titlebar-font-size": "15px" },
+    );
+    await settleDialog(el, 30);
+    expect(getComputedStyle(title()).fontSize).to.equal("15px");
+    el.close();
+  });
+
   it("focuses slotted buttons that expose focusInitial", async () => {
     const el = await fixture(html`<simple-modal></simple-modal>`);
     let focused = false;

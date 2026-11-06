@@ -132,6 +132,9 @@ class SimpleModal extends I18NMixin(LitElement) {
         }
         #simple-modal-title {
           margin: 0;
+          /* the titlebar size applies with or without a title icon; unset,
+             the heading keeps the browser's h3 size as before */
+          font-size: var(--simple-modal-titlebar-font-size, 1.17em);
           display: inline-flex;
           align-items: center;
           gap: var(--ddd-spacing-2);
@@ -480,9 +483,16 @@ class SimpleModal extends I18NMixin(LitElement) {
       slot && typeof slot.assignedNodes === "function"
         ? slot.assignedNodes({ flatten: true })
         : [];
+    // simple-modal-template sends an empty <div> for a slot it has nothing
+    // for; that is not a button, so it takes no room
     this._hasButtons = nodes.some(
       (node) =>
-        node.nodeType === 1 ||
+        (node.nodeType === 1 &&
+          !(
+            node.tagName === "DIV" &&
+            node.childElementCount === 0 &&
+            node.textContent.trim() === ""
+          )) ||
         (node.nodeType === 3 && node.textContent.trim() !== ""),
     );
   }

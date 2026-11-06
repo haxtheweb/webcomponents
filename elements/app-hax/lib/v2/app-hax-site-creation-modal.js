@@ -1,6 +1,7 @@
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { HaxUiAdminTokens } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
+import { HaxUiDialogTitlebarStyles } from "@haxtheweb/d-d-d/lib/HaxUiDialogFrame.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "web-dialog/index.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
@@ -114,6 +115,7 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
     return [
       super.styles,
       ...HaxUiAdminTokens,
+      ...HaxUiDialogTitlebarStyles,
       css`
         /* HAX UI admin layer: the same titlebar, surface, field and action
            bar as the site admin dialog, so it follows dark mode */
@@ -141,57 +143,6 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
           box-shadow: var(--hax-ui-shadow-popover);
           padding: 0;
           overflow: hidden;
-        }
-
-        .modal-header {
-          height: var(--hax-ui-titlebar-height);
-          padding: 0 var(--hax-ui-gap-lg) 0 var(--ddd-spacing-4, 16px);
-          display: flex;
-          align-items: center;
-          gap: var(--hax-ui-gap-md);
-          background: var(--hax-ui-titlebar);
-          color: var(--hax-ui-on-titlebar);
-        }
-
-        .modal-title {
-          flex: 1;
-          font-size: var(--ddd-font-size-4xs, 16px);
-          font-weight: var(--ddd-font-weight-bold, 700);
-          margin: 0;
-        }
-
-        .close-button {
-          width: var(--hax-ui-row-height);
-          height: var(--hax-ui-row-height);
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          background: transparent;
-          border: none;
-          color: inherit;
-          cursor: pointer;
-          padding: 0;
-          border-radius: var(--hax-ui-radius);
-          --simple-icon-width: var(--hax-ui-icon);
-          --simple-icon-height: var(--hax-ui-icon);
-          transition: background-color var(--hax-ui-duration)
-            var(--hax-ui-easing);
-        }
-
-        .close-button:hover:not(:disabled),
-        .close-button:focus-visible {
-          background: rgba(255, 255, 255, 0.12);
-        }
-
-        .close-button:focus-visible {
-          outline: var(--hax-ui-focus-width) solid
-            var(--ddd-theme-default-keystoneYellow, #ffd100);
-          outline-offset: -2px;
-        }
-
-        .close-button:disabled {
-          opacity: 0.5;
-          cursor: not-allowed;
         }
 
         .modal-content {
@@ -1429,8 +1380,8 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
         @open="${this._onDialogOpened}"
         @close="${this.handleModalClosed}"
       >
-        <div class="modal-header">
-          <h2 class="modal-title">
+        <div class="modal-header hax-ui-dialog-titlebar">
+          <h2 class="modal-title hax-ui-dialog-title">
             ${
               this.currentStep === 1
                 ? this.t.createNewSite
@@ -1440,7 +1391,7 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
             }
           </h2>
           <button
-            class="close-button"
+            class="close-button hax-ui-dialog-close"
             @click="${this.closeModal}"
             ?disabled="${this.isCreating}"
             aria-label="${this.t.closeModal}"

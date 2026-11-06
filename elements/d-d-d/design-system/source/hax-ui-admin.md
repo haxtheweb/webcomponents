@@ -23,7 +23,7 @@ An admin element can render content (a preview, a thumbnail of a block). The pre
 
 ## How it works
 
-The layer's entry point is `@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js`, which re-exports every piece. The pieces live in small modules beside it, so an element that needs only part of the layer imports just that part: `HaxUiAdminTokens.js` (`HaxUiAdminTokens`, `HaxUiAdminScheme`, `HaxUiAdminPrimitives`), `HaxUiAdminIcons.js`, `HaxUiAdminControls.js` (`HaxUiAdminControls`, `HaxUiAdminSimpleFields`) and `HaxUiAdminShell.js`. Anything a visitor can load, such as the toast, imports the small modules. The layer lives in d-d-d so every admin element can use it, including packages that hax-body depends on (super-daemon, simple-modal, rpg-character, simple-fields). `@haxtheweb/hax-body/lib/hax-ui-styles.js` re-exports it, so existing imports keep working.
+The layer's entry point is `@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js`, which re-exports every piece. The pieces live in small modules beside it, so an element that needs only part of the layer imports just that part: `HaxUiAdminTokens.js` (`HaxUiAdminTokens`, `HaxUiAdminScheme`, `HaxUiAdminPrimitives`), `HaxUiAdminIcons.js`, `HaxUiAdminControls.js` (`HaxUiAdminControls`, `HaxUiAdminSimpleFields`), `HaxUiAdminShell.js` and `HaxUiDialogFrame.js` (the modal frame, below). Anything a visitor can load, such as the toast, imports the small modules. The layer lives in d-d-d so every admin element can use it, including packages that hax-body depends on (super-daemon, simple-modal, rpg-character, simple-fields). `@haxtheweb/hax-body/lib/hax-ui-styles.js` re-exports it, so existing imports keep working.
 
 - **`HaxUiAdminTokens`** sets the `--hax-ui-*` custom properties on `:host`. Each one maps to a DDD primitive as a `light-dark()` pair. Surface, text and accent defer to the editor's HAX UI theme (`--hax-ui-background-color`, `--hax-ui-color`, `--hax-ui-color-accent`), so the editor's light and dark switch still applies.
 - **`HaxUiAdminScheme`** applies the HAX UI theme's `color-scheme` to the host, so `light-dark()` agrees with the tokens.
@@ -175,6 +175,24 @@ A section that is not finished says so where people look first: `status: "beta"`
 The admin dialog takes nearly the whole screen. The margin around it grows from 0 on a phone to 32px on a wide screen (`clamp(0px, 2vw - 8px, 32px)` each side), up to 1680px wide, and its corners round from square to 8px the same way. A phone gets the full screen; a desktop keeps a thin frame of the page behind it. `SITE_ADMIN_MODAL_SIZE` in `site-admin-sections.js` holds these values for every admin modal.
 
 On narrow screens, sections keep their controls to one row: the page header shrinks to a title and one line of help, a selection bar keeps its first action and puts the rest under More, and a section that scrolls inside itself (Structure) folds its toolbar into an Options menu.
+
+### Dialog frame
+
+Every HAX modal wears one frame: a 48px titlebar (`--hax-ui-titlebar`, coalyGray in light and potentialMidnight in dark) with a 16px bold title and a 32px close button with a 20px icon, on a white / coalyGray surface with 8px corners. Site admin, system settings, Merlin, site creation, the login prompt, platform settings, the image pop up and the editor's own dialogs (app picker, view source) all use it. `HaxUiDialogFrame.js` is the only place these values live; an opener keeps only its size, z-index and padding.
+
+| Export                      | Use it for                                                                                                         |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `HaxUiDialogFrame`          | A `simple-modal`: spread it into `styles` in the `simple-modal-show` detail, then add the dialog's size            |
+| `HaxUiDialogTitlebar`       | The titlebar alone (`SITE_ADMIN_TITLEBAR_STYLES` is this map)                                                      |
+| `HaxUiDialogConfirm`        | The confirm card (discard changes, delete): no dark bar, the question as a bold heading, with `hax-confirm-dialog` |
+| `haxUiDialogVars(map)`      | A `simple-modal-template`: put it in the element's styles; the template passes the values to the modal             |
+| `HaxUiDialogTitlebarStyles` | A `web-dialog` that draws its own bar: `.hax-ui-dialog-titlebar`, `.hax-ui-dialog-title`, `.hax-ui-dialog-close`   |
+
+Each value puts the `--hax-ui-*` token first with its DDD value behind it, because a modal sits outside the shadow roots that define the tokens.
+
+Every "are you sure" uses the confirm card: `hax-confirm-dialog` (in `@haxtheweb/d-d-d/lib/hax-confirm-dialog.js`) in a modal opened with `HaxUiDialogConfirm`. The safe choice is plain and focused first; the destructive one is a danger fill. HAXcms's discard and delete prompts and the editor's cancel prompt are all this card.
+
+Theme modals that a visitor sees (`site-modal`, `img-view-modal`, a theme's own colors) follow the site's theme, not this frame.
 
 ### Section rail
 

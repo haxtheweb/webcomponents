@@ -1,6 +1,10 @@
 import { LitElement, html, css } from "lit";
 import "@haxtheweb/simple-modal/lib/simple-modal-template.js";
 import "./hax-picker.js";
+import {
+  HaxUiDialogFrame,
+  haxUiDialogVars,
+} from "@haxtheweb/d-d-d/lib/HaxUiDialogFrame.js";
 import { HaxComponentStyles } from "./hax-ui-styles.js";
 /**
  * `hax-app-picker`
@@ -10,6 +14,8 @@ class HaxAppPicker extends LitElement {
   static get styles() {
     return [
       ...HaxComponentStyles,
+      // the HAX UI dialog frame, passed to the modal by the template
+      haxUiDialogVars(HaxUiDialogFrame),
       css`
         :host {
           display: none;

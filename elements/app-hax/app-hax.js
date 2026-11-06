@@ -27,6 +27,7 @@ import { trimSlashes } from "@haxtheweb/utils/lib/safe-html.js";
 import { settleOnce } from "@haxtheweb/utils/lib/events.js";
 import { SITE_ADMIN_MODAL_STYLES } from "@haxtheweb/haxcms-elements/lib/core/admin/site-admin-sections.js";
 import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminIcons.js";
+import { HaxUiDialogFrame } from "@haxtheweb/d-d-d/lib/HaxUiDialogFrame.js";
 
 // toggle store darkmode
 function darkToggle(e) {
@@ -991,32 +992,17 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                 titleIcon: HaxUiAdminIcons.key,
                 elements: { content: p },
                 modal: true,
-                // the admin titlebar and surface, light and dark
+                // the HAX UI dialog frame; only its size is its own
                 styles: {
-                  "--simple-modal-titlebar-background":
-                    "var(--hax-ui-titlebar, light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-potentialMidnight)))",
-                  "--simple-modal-titlebar-color":
-                    "var(--hax-ui-on-titlebar, var(--ddd-theme-default-white))",
-                  "--simple-modal-titlebar-height": "48px",
-                  "--simple-modal-titlebar-mobile-height": "48px",
-                  "--simple-modal-titlebar-padding": "0 12px 0 16px",
-                  "--simple-modal-titlebar-font-size": "16px",
-                  "--simple-modal-titlebar-font-size-mobile": "16px",
-                  "--simple-modal-titlebar-font-weight":
-                    "var(--ddd-font-weight-bold, 700)",
-                  "--simple-modal-title-align": "start",
-                  "--simple-modal-content-container-background":
-                    "light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray))",
+                  ...HaxUiDialogFrame,
                   "--simple-modal-content-padding": "0",
                   "--simple-modal-width": "90vw",
                   "--simple-modal-max-width": "420px",
                   "--simple-modal-min-width": "300px",
                   "--simple-modal-z-index": "10000",
-                  "--simple-modal-backdrop-background": "rgba(0, 3, 33, 0.6)",
                   "--simple-modal-height": "auto",
                   "--simple-modal-min-height": "0",
                   "--simple-modal-max-height": "80vh",
-                  "--simple-modal-border-radius": "var(--ddd-radius-sm, 8px)",
                 },
               },
             }),

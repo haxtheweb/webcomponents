@@ -12,6 +12,10 @@
  * preview still open through their own openers in haxcms-site-editor-ui.
  */
 import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminIcons.js";
+import {
+  HaxUiDialogTitlebar,
+  HaxUiDialogConfirm,
+} from "@haxtheweb/d-d-d/lib/HaxUiDialogFrame.js";
 
 /**
  * @typedef {Object} SiteAdminSection
@@ -616,36 +620,12 @@ export function siteAdminRouteView(resolved) {
 }
 
 /**
- * Shared simple-modal styles for the one admin dialog, so no opener carries
- * its own copy. Values are DDD tokens; the titlebar uses the proposed
- * --hax-ui-titlebar pair (coalyGray / potentialMidnight) written as DDD.
- */
-/**
  * The admin titlebar on its own: the same look for dialogs that are not in
  * the shell yet (Structure, its import step, Revisions), so every admin
- * screen's breadcrumb sits at the same size and spacing.
+ * screen's breadcrumb sits at the same size and spacing. It is the HAX UI
+ * dialog frame's titlebar (@haxtheweb/d-d-d/lib/HaxUiDialogFrame.js).
  */
-export const SITE_ADMIN_TITLEBAR_STYLES = Object.freeze({
-  // the HAX UI titlebar tokens, with their values as fallbacks since the
-  // modal sits outside the shadow roots that define them
-  "--simple-modal-titlebar-background":
-    "var(--hax-ui-titlebar, light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-potentialMidnight)))",
-  "--simple-modal-titlebar-color":
-    "var(--hax-ui-on-titlebar, var(--ddd-theme-default-white))",
-  "--simple-modal-titlebar-height": "var(--hax-ui-titlebar-height, 48px)",
-  // the same on a phone: the shell sizes its body from this height
-  "--simple-modal-titlebar-mobile-height":
-    "var(--hax-ui-titlebar-height, 48px)",
-  "--simple-modal-titlebar-padding": "0 var(--ddd-spacing-3, 12px) 0 16px",
-  "--simple-modal-titlebar-font-size": "16px",
-  "--simple-modal-titlebar-font-weight": "var(--ddd-font-weight-bold, 700)",
-  "--simple-modal-title-icon-size": "18px",
-  "--simple-modal-breadcrumb-gap": "6px",
-  "--simple-modal-breadcrumb-icon-gap": "6px",
-  "--simple-modal-title-text-offset": "0",
-  "--simple-modal-titlebar-icon-height": "20px",
-  "--simple-modal-titlebar-icon-width": "20px",
-});
+export const SITE_ADMIN_TITLEBAR_STYLES = HaxUiDialogTitlebar;
 
 /**
  * The admin dialog takes nearly the whole screen: the margin around it
@@ -675,32 +655,7 @@ export const SITE_ADMIN_MODAL_STYLES = Object.freeze({
 
 /**
  * A confirm (discard changes, delete this page) as the admin's leave
- * prompt draws it: a 460px surface panel with its question as a bold
- * heading inside, no dark titlebar. The modal keeps its title, so the
- * dialog keeps its accessible name; hax-confirm-dialog draws the message
- * and the HAX UI buttons.
+ * prompt draws it: the HAX UI dialog frame's confirm card. Open it with a
+ * hax-confirm-dialog as the content.
  */
-export const SITE_ADMIN_CONFIRM_STYLES = Object.freeze({
-  "--simple-modal-titlebar-background":
-    "light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray))",
-  "--simple-modal-titlebar-color":
-    "light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-white))",
-  "--simple-modal-titlebar-height": "auto",
-  "--simple-modal-titlebar-mobile-height": "auto",
-  "--simple-modal-titlebar-padding": "16px 16px 0",
-  "--simple-modal-titlebar-font-size": "15px",
-  "--simple-modal-titlebar-font-size-mobile": "15px",
-  "--simple-modal-titlebar-font-weight": "var(--ddd-font-weight-bold, 700)",
-  "--simple-modal-title-text-offset": "0",
-  "--simple-modal-title-align": "start",
-  "--simple-modal-content-container-background":
-    "light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray))",
-  "--simple-modal-content-padding": "0",
-  "--simple-modal-width": "460px",
-  "--simple-modal-max-width": "calc(100vw - 32px)",
-  "--simple-modal-min-width": "300px",
-  "--simple-modal-height": "auto",
-  "--simple-modal-min-height": "0",
-  "--simple-modal-border-radius": "var(--ddd-radius-sm, 8px)",
-  "--simple-modal-z-index": "100000000",
-});
+export const SITE_ADMIN_CONFIRM_STYLES = HaxUiDialogConfirm;
