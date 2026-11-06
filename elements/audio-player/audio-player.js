@@ -32,11 +32,15 @@ class AudioPlayer extends VideoPlayer {
     return {
       tag: "audio-player",
       event: "user-engagement",
-      verbs: ["completed"],
+      verbs: ["attempted", "progressed", "completed"],
       objectType: "http://adlnet.gov/expapi/activities/media",
-      result: ["completion"],
+      result: [
+        "completion",
+        "duration",
+        "extensions.https://w3id.org/xapi/video/extensions/progress",
+      ],
       countsTowardCompletion: true,
-      done: "played to the end",
+      done: "95% of the media actually watched (seeking ahead does not count)",
     };
   }
   // haxProperty definition
