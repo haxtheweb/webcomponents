@@ -2,48 +2,27 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { autorun, toJS } from "mobx";
-import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { LrsBridge } from "./lrs-bridge.js";
 
 /**
  * `lrs-bridge-haxcms`
- * `Adds HAXcms event listeners for our LRS.`
+ * `LRS bridge for HAXcms sites.`
+ *
+ * HAXcms records each page visit itself: the progress store
+ * (haxcms-learner-progress) sends an experienced statement for the page as a
+ * lesson, with the site as its grouping, through the same user-engagement
+ * pipeline every element uses. The base bridge forwards those along with
+ * everything else, so this bridge no longer posts its own page view (it was
+ * a non-xAPI "viewed" verb and duplicated the progress store's statement).
  * @demo demo/index.html
  */
 class LrsBridgeHaxcms extends LrsBridge {
-  constructor() {
-    super();
-    autorun(() => {
-      const _mobx_val_0 = toJS(store.location);
-      Promise.resolve().then(() => {
-        this._locationChanged(_mobx_val_0);
-      });
-    });
-  }
-
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
     return "lrs-bridge-haxcms";
-  }
-
-  _locationChanged(location) {
-    // trim slash from begining and end
-    const trimSlash = (string) => string.replace(/(^\/|\/$)/g, "");
-    const url = `${trimSlash(location.baseUrl)}/${trimSlash(
-      location.pathname,
-    )}`;
-    this.recordStatement({
-      verb: {
-        id: "viewed",
-      },
-      object: {
-        id: url,
-      },
-    });
   }
 }
 globalThis.customElements.define(LrsBridgeHaxcms.tag, LrsBridgeHaxcms);

@@ -69,7 +69,11 @@ describe("lrs-bridge test", () => {
       element.recordStatement({ verb: { id: "viewed" } });
       await wait(50);
       const body = JSON.parse(fetchStub.firstCall.args[1].body);
-      expect(body.variables.data.data.actor.name).to.equal("Bob Learner");
+      // a conformant xAPI Agent: pseudonymous account, never a name
+      expect(body.variables.data.data.actor.objectType).to.equal("Agent");
+      expect(body.variables.data.data.actor.account.name).to.equal(
+        "Bob Learner",
+      );
     });
 
     it("swallows synchronous fetch errors", async () => {
@@ -120,60 +124,65 @@ describe("lrs-bridge test", () => {
     });
   });
 
-  describe("lrs-emitter event handling", () => {
-    it("records statements from lrs-emitter events once configured", async () => {
-      const recordSpy = sandbox.spy(element, "recordStatement");
-      element.dispatchEvent(
-        new CustomEvent("lrs-emitter", {
+  describe("one learner data pipeline", () => {
+    const engage = (target, statement) =>
+      target.dispatchEvent(
+        new CustomEvent("user-engagement", {
           bubbles: true,
-          detail: { verb: { id: "viewed" } },
+          composed: true,
+          detail: { activityDisplay: "experienced", statement },
         }),
       );
+    const STATEMENT = {
+      id: "6a1b2c3d-0000-4000-8000-000000000000",
+      verb: { id: "http://adlnet.gov/expapi/verbs/experienced" },
+      object: { id: "https://example.com/course", objectType: "Activity" },
+    };
+
+    it("forwards statements from anywhere on the page once configured", async () => {
+      const recordSpy = sandbox.spy(element, "recordStatement");
+      engage(globalThis.document.body, STATEMENT);
       await wait(50);
-      // fixed (lib/lrs-bridge.js): the bridge enables recording once it is
-      // actually configured with an endpoint, so lrs-emitter events are
-      // forwarded to the learning record store instead of always ignored
-      expect(recordSpy.called).to.be.true;
+      expect(recordSpy.calledOnce).to.be.true;
       expect(fetchStub.calledOnce).to.be.true;
+      const data = JSON.parse(fetchStub.firstCall.args[1].body).variables.data
+        .data;
+      expect(data.verb.id).to.equal(STATEMENT.verb.id);
+      expect(data.object.id).to.equal("https://example.com/course");
+      expect(data.actor.account.name).to.match(/^[0-9a-f-]{36}$/);
     });
 
-    it("ignores lrs-emitter events while no endpoint is configured", async () => {
+    it("keeps an actor the statement already has", async () => {
+      const actor = {
+        objectType: "Agent",
+        account: { homePage: "https://example.com", name: "site-learner" },
+      };
+      engage(element, { ...STATEMENT, actor });
+      await wait(50);
+      const data = JSON.parse(fetchStub.firstCall.args[1].body).variables.data
+        .data;
+      expect(data.actor).to.deep.equal(actor);
+    });
+
+    it("ignores statements while no endpoint is configured", async () => {
+      element.remove();
       const el = await fixture(html`<lrs-bridge></lrs-bridge>`);
       const recordSpy = sandbox.spy(el, "recordStatement");
-      el.dispatchEvent(
-        new CustomEvent("lrs-emitter", {
-          bubbles: true,
-          detail: { verb: { id: "viewed" } },
-        }),
-      );
+      engage(el, STATEMENT);
       await wait(50);
       expect(recordSpy.called).to.be.false;
       expect(fetchStub.called).to.be.false;
     });
 
-    it("records the verb and object detail from the event", async () => {
-      element.dispatchEvent(
-        new CustomEvent("lrs-emitter", {
-          bubbles: true,
-          detail: { verb: { id: "experienced" }, object: { id: "/course" } },
-        }),
-      );
+    it("stops forwarding once removed from the page", async () => {
+      element.remove();
+      engage(globalThis.document.body, STATEMENT);
       await wait(50);
-      expect(fetchStub.calledOnce).to.be.true;
-      // fixed (lib/lrs-bridge.js): the handler passes the event DETAIL into
-      // recordStatement instead of the raw CustomEvent, so verb and object
-      // survive into the recorded statement data (the raw event's detail
-      // getter was invisible to Object.assign and the verb was lost)
-      const body = JSON.parse(fetchStub.firstCall.args[1].body);
-      const keys = Object.keys(body.variables.data.data);
-      expect(keys).to.include("actor");
-      expect(keys).to.include("verb");
-      expect(keys).to.include("object");
-      expect(body.variables.data.data.verb.id).to.equal("experienced");
-      expect(body.variables.data.data.object.id).to.equal("/course");
+      expect(fetchStub.called).to.be.false;
     });
 
-    it("records statements end to end from a nested lrs-emitter click", async () => {
+    it("records a nested lrs-emitter click as an xAPI statement", async () => {
+      element.remove();
       const el = await fixture(html`
         <lrs-bridge endpoint="https://lrs.example.com/graphql">
           <lrs-emitter verb="clicked" object="demo-button"></lrs-emitter>
@@ -184,12 +193,18 @@ describe("lrs-bridge test", () => {
       await emitter.updateComplete;
       emitter.click();
       await wait(50);
+      // one statement, not one per pipeline
       expect(fetchStub.calledOnce).to.be.true;
-      const body = JSON.parse(fetchStub.firstCall.args[1].body);
-      expect(body.variables.data.data.verb).to.equal("clicked");
-      expect(body.variables.data.data.object).to.equal("demo-button");
-      // the very first statement already carries the generated GUID actor
-      expect(body.variables.data.data.actor.name).to.match(/^[0-9a-f-]{36}$/);
+      const data = JSON.parse(fetchStub.firstCall.args[1].body).variables.data
+        .data;
+      expect(data.verb.id).to.equal(
+        "http://adlnet.gov/expapi/verbs/interacted",
+      );
+      expect(Object.values(data.object.definition.name)[0]).to.equal(
+        "demo-button",
+      );
+      expect(data.version).to.equal("1.0.3");
+      expect(data.actor.account.name).to.match(/^[0-9a-f-]{36}$/);
     });
   });
 });

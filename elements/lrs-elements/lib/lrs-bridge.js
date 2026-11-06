@@ -4,10 +4,19 @@
  */
 import { LitElement } from "lit";
 import { localStorageSet, localStorageGet } from "@haxtheweb/utils/utils.js";
+import { UABroker } from "@haxtheweb/user-action/lib/UserActionBroker.js";
+import { deviceActor } from "@haxtheweb/user-action/lib/xapi.js";
 
 /**
  * `lrs-bridge`
- * `LRS element that captures lrn-emitter events and forwards them to the learnig record store.`
+ * `Forwards HAX learner statements to a learning record store.`
+ *
+ * Every HAX element that reports learner data fires `user-engagement`; the
+ * user-action broker turns each one into an xAPI statement. Once it has an
+ * endpoint, the bridge subscribes to the broker and posts every statement on
+ * the page (quizzes, media, games, checklists, lrs-emitter, HAXcms page
+ * visits), so there is one pipeline instead of a separate lrs-emitter path.
+ * A statement without an actor gets this device's pseudonymous account.
  * @demo demo/index.html
  */
 class LrsBridge extends LitElement {
@@ -22,7 +31,30 @@ class LrsBridge extends LitElement {
   constructor() {
     super();
     this.endpoint = "";
-    this.addEventListener("lrs-emitter", this._lrsEmitterHander.bind(this));
+    this._enableProperties = false;
+    this._unsubscribe = null;
+  }
+
+  connectedCallback() {
+    if (super.connectedCallback) {
+      super.connectedCallback();
+    }
+    UABroker.listen();
+    if (!this._unsubscribe) {
+      this._unsubscribe = UABroker.subscribe((record) =>
+        this._brokerStatement(record),
+      );
+    }
+  }
+
+  disconnectedCallback() {
+    if (this._unsubscribe) {
+      this._unsubscribe();
+      this._unsubscribe = null;
+    }
+    if (super.disconnectedCallback) {
+      super.disconnectedCallback();
+    }
   }
 
   /**
@@ -42,12 +74,16 @@ class LrsBridge extends LitElement {
     this._enableProperties = !!this.endpoint;
   }
 
-  _lrsEmitterHander(e) {
-    if (this._enableProperties && e.detail) {
-      // read the detail fields explicitly; passing the raw CustomEvent into
-      // recordStatement would drop verb/object since those live on the
-      // event prototype as getters, not own enumerable properties
-      this.recordStatement(e.detail);
+  /**
+   * Whether a statement from the broker is sent; subclasses can narrow it
+   */
+  shouldRecord(statement) {
+    return !!(statement && statement.verb);
+  }
+
+  _brokerStatement({ statement } = {}) {
+    if (this._enableProperties && this.shouldRecord(statement)) {
+      this.recordStatement(statement);
     }
   }
 
@@ -70,9 +106,10 @@ class LrsBridge extends LitElement {
               data: Object.assign(
                 {},
                 {
-                  actor: {
-                    name: this.getUserName(),
-                  },
+                  actor: deviceActor(
+                    this.getUserName(),
+                    globalThis.location.origin,
+                  ),
                 },
                 options,
               ),
