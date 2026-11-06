@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Leesanalyse",
+    "description": "Leerlingen plaatsen vlaggetjes bij de zinnen, alinea's of afbeeldingen in een tekst die bewijs zijn voor elk label, of selecteren de passage die een vraag het best beantwoordt."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Vraag",
+        "description": "Wat leerlingen in de tekst moeten vinden."
+      },
+      {
+        "property": "mode",
+        "title": "Activiteit",
+        "description": "Bewijs markeren: leerlingen plakken elk vlaggetje naast het bewijs ervoor. Eén selecteren: leerlingen kiezen de ene passage die de vraag het best beantwoordt."
+      },
+      {
+        "property": "unit",
+        "title": "Leerlingen selecteren",
+        "description": "Waar een leerling in de tekst naar wijst. Afbeeldingen kunnen altijd worden geselecteerd."
+      },
+      {
+        "property": "answers",
+        "title": "Vlaggetjes",
+        "description": "De labels die leerlingen plaatsen. Gebruik Antwoorden markeren in het blokmenu om te kiezen waar elk label hoort."
+      },
+      {
+        "slot": "",
+        "title": "Leestekst",
+        "description": "De tekst waarin leerlingen werken. Alle HTML: koppen, alinea's, lijsten en afbeeldingen."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Beoordelingsformaat",
+        "description": "OER Schema: beoordelingsformaat voor deze toets (bijv. punten, letter, percentage, voltooiing)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Leerdoel",
+        "description": "OER Schema: leerdoel dat bij deze toets hoort."
+      },
+      {
+        "property": "forCourse",
+        "title": "Cursus",
+        "description": "OER Schema: cursus waarvoor deze toets bedoeld is."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Pogingen",
+        "description": "Hoe vaak een leerling kan controleren. 0 betekent onbeperkt."
+      },
+      {
+        "property": "collapsible",
+        "title": "Inklapbaar",
+        "description": "Toon deze vraag als een rij die open- en dichtgaat. Als je er een opent, sluiten de andere inklapbare vragen ernaast."
+      },
+      {
+        "property": "collapsed",
+        "title": "Begin ingeklapt",
+        "description": "Begin bij inklapbaar als een gesloten rij die alleen de vraag en de status toont."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Naam van de quiz",
+        "description": "Quiznaam die wordt doorgegeven in xAPI-omgevingen om dit item te identificeren"
+      }
+    ]
+  }
+}

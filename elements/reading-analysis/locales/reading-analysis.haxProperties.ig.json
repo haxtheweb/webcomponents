@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Nyocha ihe agụrụ",
+    "description": "Ndị na-amụ ihe na-etinye ọkọlọtọ n'ahịrịokwu, paragraf ma ọ bụ onyonyo n'ihe a na-agụ nke bụ ihe akaebe maka akara ọ bụla, ma ọ bụ họrọ akụkụ nke kacha zaa ajụjụ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Ajụjụ",
+        "description": "Ihe a gwara ndị na-amụ ihe ka ha chọta n'ihe a na-agụ."
+      },
+      {
+        "property": "mode",
+        "title": "Ọrụ",
+        "description": "Kaa ihe akaebe: ndị na-amụ ihe na-amado ọkọlọtọ ọ bụla n'akụkụ ihe akaebe ya. Họrọ otu: ndị na-amụ ihe na-ahọrọ naanị otu akụkụ kacha zaa ajụjụ."
+      },
+      {
+        "property": "unit",
+        "title": "Ndị na-amụ ihe na-ahọrọ",
+        "description": "Ihe onye na-amụ ihe na-atụ aka na ya n'ihe a na-agụ. Enwere ike ịhọrọ onyonyo mgbe niile."
+      },
+      {
+        "property": "answers",
+        "title": "Ọkọlọtọ",
+        "description": "Akara ndị na-amụ ihe na-etinye. Jiri Kaa azịza na menu ngọngọ ka ịhọrọ ebe nke ọ bụla kwesịrị."
+      },
+      {
+        "slot": "",
+        "title": "Ihe a na-agụ",
+        "description": "Ihe a na-agụ nke ndị na-amụ ihe na-arụ ọrụ na ya. HTML ọ bụla: isiokwu, paragraf, ndepụta na onyonyo."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Usoro akara",
+        "description": "OER Schema: usoro akara maka nyocha a (dịka akara, mkpụrụedemede, pasentị, mmecha)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ebumnuche mmụta",
+        "description": "OER Schema: ebumnuche mmụta jikọtara na nyocha a."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kọọsị",
+        "description": "OER Schema: kọọsị e mere nyocha a maka ya."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Mgbalị",
+        "description": "Ugboro ole onye na-amụ ihe nwere ike ịlele. 0 pụtara na-enweghị njedebe."
+      },
+      {
+        "property": "collapsible",
+        "title": "Nwere ike ịdaba",
+        "description": "Gosi ajụjụ a dị ka ahịrị na-emeghe ma na-emechi. Imeghe otu na-emechi ajụjụ ndị ọzọ nwere ike ịdaba dị n'akụkụ ya."
+      },
+      {
+        "property": "collapsed",
+        "title": "Malite ka ọ daba",
+        "description": "Mgbe ọ nwere ike ịdaba, ọ na-amalite dị ka ahịrị emechiri nke na-egosi naanị ajụjụ na ọnọdụ ya."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Aha ule",
+        "description": "Aha ule e zigara maka iji na gburugburu xAPI iji mata ihe a"
+      }
+    ]
+  }
+}

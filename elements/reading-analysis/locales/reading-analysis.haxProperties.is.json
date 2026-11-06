@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Lesgreining",
+    "description": "Nemendur merkja setningar, efnisgreinar eða myndir í texta sem eru sönnun fyrir hverjum merkimiða, eða velja þann kafla sem svarar spurningu best."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Spurning",
+        "description": "Hvað nemendur eiga að finna í textanum."
+      },
+      {
+        "property": "mode",
+        "title": "Verkefni",
+        "description": "Merkja sannanir: nemendur festa hvert flagg við sönnunina fyrir því. Velja eitt: nemendur velja þann eina kafla sem svarar spurningunni best."
+      },
+      {
+        "property": "unit",
+        "title": "Nemendur velja",
+        "description": "Hvað nemandi bendir á í textanum. Alltaf er hægt að velja myndir."
+      },
+      {
+        "property": "answers",
+        "title": "Flögg",
+        "description": "Merkimiðarnir sem nemendur setja. Notaðu Merkja svör í valmynd kubbsins til að velja hvar hver og einn á heima."
+      },
+      {
+        "slot": "",
+        "title": "Lestexti",
+        "description": "Textinn sem nemendur vinna með. Hvaða HTML sem er: fyrirsagnir, efnisgreinar, listar og myndir."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Einkunnasnið",
+        "description": "OER Schema: einkunnasnið fyrir þetta mat (t.d. stig, bókstafur, prósenta, lokið)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Námsmarkmið",
+        "description": "OER Schema: námsmarkmið tengt þessu mati."
+      },
+      {
+        "property": "forCourse",
+        "title": "Námskeið",
+        "description": "OER Schema: námskeiðið sem þetta mat er ætlað."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Tilraunir",
+        "description": "Hversu oft nemandi getur athugað. 0 þýðir ótakmarkað."
+      },
+      {
+        "property": "collapsible",
+        "title": "Fellanlegt",
+        "description": "Sýna þessa spurningu sem línu sem opnast og lokast. Þegar ein er opnuð lokast hinar fellanlegu spurningarnar við hliðina."
+      },
+      {
+        "property": "collapsed",
+        "title": "Byrja samanfellt",
+        "description": "Þegar það er fellanlegt byrjar það sem lokuð lína sem sýnir aðeins spurninguna og stöðu hennar."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Heiti prófs",
+        "description": "Heiti prófs sem sent er inn til notkunar í xAPI-umhverfum til að auðkenna þetta atriði"
+      }
+    ]
+  }
+}

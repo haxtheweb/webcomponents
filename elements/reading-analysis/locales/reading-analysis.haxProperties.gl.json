@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Análise de lectura",
+    "description": "O alumnado coloca bandeiriñas nas oracións, parágrafos ou figuras dunha lectura que son evidencia de cada etiqueta, ou selecciona o fragmento que mellor responde a unha pregunta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pregunta",
+        "description": "O que se lle pide ao alumnado que atope na lectura."
+      },
+      {
+        "property": "mode",
+        "title": "Actividade",
+        "description": "Marcar evidencias: o alumnado pega cada bandeiriña xunto á súa evidencia. Seleccionar un: o alumnado escolle o único fragmento que mellor responde á pregunta."
+      },
+      {
+        "property": "unit",
+        "title": "O alumnado selecciona",
+        "description": "O que un estudante sinala na lectura. As figuras sempre se poden seleccionar."
+      },
+      {
+        "property": "answers",
+        "title": "Bandeiriñas",
+        "description": "As etiquetas que coloca o alumnado. Usa Marcar respostas no menú do bloque para escoller onde vai cada unha."
+      },
+      {
+        "slot": "",
+        "title": "Lectura",
+        "description": "A lectura coa que traballa o alumnado. Calquera HTML: títulos, parágrafos, listas e figuras."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Formato de cualificación",
+        "description": "OER Schema: formato de cualificación desta avaliación (p. ex. puntos, letra, porcentaxe, completado)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Obxectivo de aprendizaxe",
+        "description": "OER Schema: obxectivo de aprendizaxe asociado a esta avaliación."
+      },
+      {
+        "property": "forCourse",
+        "title": "Curso",
+        "description": "OER Schema: curso ao que se destina esta avaliación."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Intentos",
+        "description": "Cantas veces pode comprobar un estudante. 0 significa ilimitado."
+      },
+      {
+        "property": "collapsible",
+        "title": "Despregable",
+        "description": "Amosa esta pregunta como unha fila que se abre e se pecha. Ao abrir unha, péchanse as outras preguntas despregables que ten ao lado."
+      },
+      {
+        "property": "collapsed",
+        "title": "Comezar pregado",
+        "description": "Cando é despregable, comeza como unha fila pechada que só amosa a pregunta e o seu estado."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nome do cuestionario",
+        "description": "Nome do cuestionario que se pasa para usar en contornos baseados en xAPI e identificar este elemento"
+      }
+    ]
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Analîza xwendinê",
+    "description": "Fêrxwaz hevok, paragraf an wêneyên di xwendinê de ku delîla her etîketê ne bi alayan nîşan dikin, an jî beşa ku herî baş bersiva pirsê dide hildibijêrin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pirs",
+        "description": "Ji fêrxwazan tê xwestin ku di xwendinê de çi bibînin."
+      },
+      {
+        "property": "mode",
+        "title": "Çalakî",
+        "description": "Delîlan bi ala nîşan bike: fêrxwaz her alayê li kêleka delîla wê dizeliqînin. Yekê hilbijêre: fêrxwaz tenê beşa ku herî baş bersiva pirsê dide hildibijêrin."
+      },
+      {
+        "property": "unit",
+        "title": "Fêrxwaz hildibijêrin",
+        "description": "Fêrxwaz di xwendinê de çi nîşan dide. Wêne her dem dikarin werin hilbijartin."
+      },
+      {
+        "property": "answers",
+        "title": "Ala",
+        "description": "Etîketên ku fêrxwaz datînin. Ji bo hilbijartina cihê her yekê, di menuya blokê de Bersivan nîşan bike bi kar bîne."
+      },
+      {
+        "slot": "",
+        "title": "Xwendin",
+        "description": "Xwendina ku fêrxwaz tê de dixebitin. Her HTML: sernav, paragraf, lîste û wêne."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Formata nirxandinê",
+        "description": "OER Schema: formata nirxandinê ji bo vê nirxandinê (mînak xal, tîp, ji sedî, temamkirin)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Armanca fêrbûnê",
+        "description": "OER Schema: armanca fêrbûnê ya bi vê nirxandinê ve girêdayî."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurs",
+        "description": "OER Schema: kursa ku ev nirxandin jê re hatiye amadekirin."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Hewldan",
+        "description": "Fêrxwazek çend caran dikare kontrol bike. 0 tê wateya bêsînor."
+      },
+      {
+        "property": "collapsible",
+        "title": "Dikare bê civandin",
+        "description": "Vê pirsê wekî rêzeyek ku vedibe û digire nîşan bide. Vekirina yekê pirsên din ên civandinê yên li kêleka wê digire."
+      },
+      {
+        "property": "collapsed",
+        "title": "Civandî dest pê bike",
+        "description": "Dema ku civandinê be, wekî rêzeyeke girtî dest pê dike ku tenê pirs û rewşa wê nîşan dide."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Navê quizê",
+        "description": "Navê quizê ku ji bo naskirina vê hêmanê di hawîrdorên bi xAPI de tê bikaranîn"
+      }
+    ]
+  }
+}

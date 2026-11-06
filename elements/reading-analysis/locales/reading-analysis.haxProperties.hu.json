@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Szövegelemzés",
+    "description": "A tanulók zászlókat tűznek a szöveg azon mondataihoz, bekezdéseihez vagy ábráihoz, amelyek bizonyítékok az egyes címkékre, vagy kijelölik azt a részt, amely a legjobban válaszol egy kérdésre."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Kérdés",
+        "description": "Mit kell a tanulóknak megtalálniuk a szövegben."
+      },
+      {
+        "property": "mode",
+        "title": "Tevékenység",
+        "description": "Bizonyítékok megjelölése: a tanulók minden zászlót a hozzá tartozó bizonyíték mellé ragasztanak. Egy kiválasztása: a tanulók azt az egy részt választják, amely a legjobban válaszol a kérdésre."
+      },
+      {
+        "property": "unit",
+        "title": "A tanulók kijelölik",
+        "description": "Amire a tanuló rámutat a szövegben. Az ábrák mindig kijelölhetők."
+      },
+      {
+        "property": "answers",
+        "title": "Zászlók",
+        "description": "A tanulók által elhelyezett címkék. A blokk menüjében a Válaszok megjelölése paranccsal választhatod ki, hová tartoznak az egyes címkék."
+      },
+      {
+        "slot": "",
+        "title": "Szöveg",
+        "description": "A szöveg, amelyben a tanulók dolgoznak. Bármilyen HTML: címsorok, bekezdések, listák és ábrák."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Értékelési formátum",
+        "description": "OER Schema: az értékelés pontozási formátuma (pl. pont, érdemjegy, százalék, teljesítés)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Tanulási cél",
+        "description": "OER Schema: az értékeléshez kapcsolódó tanulási cél."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurzus",
+        "description": "OER Schema: a kurzus, amelyhez az értékelés készült."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Próbálkozások",
+        "description": "Hányszor ellenőrizhet a tanuló. A 0 korlátlant jelent."
+      },
+      {
+        "property": "collapsible",
+        "title": "Összecsukható",
+        "description": "Jelenítse meg ezt a kérdést megnyíló és bezáródó sorként. Az egyik megnyitása bezárja a mellette lévő többi összecsukható kérdést."
+      },
+      {
+        "property": "collapsed",
+        "title": "Összecsukva induljon",
+        "description": "Összecsukható esetén zárt sorként indul, amely csak a kérdést és az állapotát mutatja."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "A kvíz neve",
+        "description": "A kvíz neve, amely xAPI-alapú környezetekben az elem azonosítására szolgál"
+      }
+    ]
+  }
+}

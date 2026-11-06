@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Lasīšanas analīze",
+    "description": "Izglītojamie ar karodziņiem atzīmē teikumus, rindkopas vai attēlus tekstā, kas ir katras etiķetes pierādījums, vai atlasa fragmentu, kas vislabāk atbild uz jautājumu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Jautājums",
+        "description": "Ko izglītojamajiem jāatrod tekstā."
+      },
+      {
+        "property": "mode",
+        "title": "Aktivitāte",
+        "description": "Atzīmēt pierādījumus: izglītojamie pielīmē katru karodziņu blakus tā pierādījumam. Atlasīt vienu: izglītojamie izvēlas vienīgo fragmentu, kas vislabāk atbild uz jautājumu."
+      },
+      {
+        "property": "unit",
+        "title": "Izglītojamie atlasa",
+        "description": "Uz ko izglītojamais norāda tekstā. Attēlus vienmēr var atlasīt."
+      },
+      {
+        "property": "answers",
+        "title": "Karodziņi",
+        "description": "Etiķetes, ko izglītojamie novieto. Bloka izvēlnē izmantojiet “Atzīmēt atbildes”, lai izvēlētos, kur jāliek katra."
+      },
+      {
+        "slot": "",
+        "title": "Teksts",
+        "description": "Teksts, ar kuru strādā izglītojamie. Jebkāds HTML: virsraksti, rindkopas, saraksti un attēli."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Vērtēšanas formāts",
+        "description": "OER Schema: šī vērtējuma formāts (piem., punkti, burts, procenti, izpilde)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Mācību mērķis",
+        "description": "OER Schema: ar šo vērtējumu saistītais mācību mērķis."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurss",
+        "description": "OER Schema: kurss, kuram paredzēts šis vērtējums."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Mēģinājumi",
+        "description": "Cik reizes izglītojamais var pārbaudīt. 0 nozīmē neierobežoti."
+      },
+      {
+        "property": "collapsible",
+        "title": "Salokāms",
+        "description": "Rādīt šo jautājumu kā rindu, kas atveras un aizveras. Atverot vienu, tiek aizvērti pārējie blakus esošie salokāmie jautājumi."
+      },
+      {
+        "property": "collapsed",
+        "title": "Sākt salocītu",
+        "description": "Kad ir salokāms, sākt kā aizvērtu rindu, kurā redzams tikai jautājums un tā statuss."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Testa nosaukums",
+        "description": "Testa nosaukums, ko nodod xAPI vidēm šī elementa identificēšanai"
+      }
+    ]
+  }
+}

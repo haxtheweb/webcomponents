@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Analisis bacaan",
+    "description": "Pelajar menandai kalimat, paragraf, atau gambar dalam bacaan yang menjadi bukti untuk setiap label, atau memilih bagian yang paling tepat menjawab pertanyaan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pertanyaan",
+        "description": "Apa yang diminta untuk ditemukan pelajar dalam bacaan."
+      },
+      {
+        "property": "mode",
+        "title": "Aktivitas",
+        "description": "Tandai bukti: pelajar menempelkan setiap bendera di samping buktinya. Pilih satu: pelajar memilih satu bagian yang paling tepat menjawab pertanyaan."
+      },
+      {
+        "property": "unit",
+        "title": "Pelajar memilih",
+        "description": "Apa yang ditunjuk pelajar dalam bacaan. Gambar selalu dapat dipilih."
+      },
+      {
+        "property": "answers",
+        "title": "Bendera",
+        "description": "Label yang ditempatkan pelajar. Gunakan Tandai jawaban di menu blok untuk memilih tempat masing-masing."
+      },
+      {
+        "slot": "",
+        "title": "Bacaan",
+        "description": "Bacaan tempat pelajar bekerja. HTML apa pun: judul, paragraf, daftar, dan gambar."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format penilaian",
+        "description": "OER Schema: format penilaian untuk asesmen ini (mis. poin, huruf, persen, penyelesaian)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Tujuan pembelajaran",
+        "description": "OER Schema: tujuan pembelajaran yang terkait dengan asesmen ini."
+      },
+      {
+        "property": "forCourse",
+        "title": "Mata kuliah",
+        "description": "OER Schema: mata kuliah yang dituju oleh asesmen ini."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Percobaan",
+        "description": "Berapa kali pelajar dapat memeriksa. 0 berarti tidak terbatas."
+      },
+      {
+        "property": "collapsible",
+        "title": "Dapat diciutkan",
+        "description": "Tampilkan pertanyaan ini sebagai baris yang dapat dibuka dan ditutup. Membuka satu pertanyaan akan menutup pertanyaan lain yang dapat diciutkan di sebelahnya."
+      },
+      {
+        "property": "collapsed",
+        "title": "Mulai dalam keadaan diciutkan",
+        "description": "Jika dapat diciutkan, mulai sebagai baris tertutup yang hanya menampilkan pertanyaan dan statusnya."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nama kuis",
+        "description": "Nama kuis yang diteruskan untuk digunakan di lingkungan berbasis xAPI guna mengidentifikasi item ini"
+      }
+    ]
+  }
+}

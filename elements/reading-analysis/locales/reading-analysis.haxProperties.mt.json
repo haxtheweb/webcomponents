@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Analiżi tal-qari",
+    "description": "L-istudenti jimmarkaw b'bandiera s-sentenzi, il-paragrafi jew il-figuri fit-test li huma evidenza għal kull tikketta, jew jagħżlu l-silta li l-aħjar twieġeb mistoqsija."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Mistoqsija",
+        "description": "X'qed jintalbu jsibu l-istudenti fit-test."
+      },
+      {
+        "property": "mode",
+        "title": "Attività",
+        "description": "Immarka l-evidenza: l-istudenti jwaħħlu kull bandiera ħdejn l-evidenza tagħha. Agħżel waħda: l-istudenti jagħżlu l-unika silta li l-aħjar twieġeb il-mistoqsija."
+      },
+      {
+        "property": "unit",
+        "title": "L-istudenti jagħżlu",
+        "description": "Fuq xiex jipponta l-istudent fit-test. Il-figuri dejjem jistgħu jintgħażlu."
+      },
+      {
+        "property": "answers",
+        "title": "Bnadar",
+        "description": "It-tikketti li jpoġġu l-istudenti. Uża Immarka t-tweġibiet fil-menu tal-blokk biex tagħżel fejn tmur kull waħda."
+      },
+      {
+        "slot": "",
+        "title": "Test tal-qari",
+        "description": "It-test li fih jaħdmu l-istudenti. Kwalunkwe HTML: intestaturi, paragrafi, listi u figuri."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format tal-gradi",
+        "description": "OER Schema: format tal-gradi għal din il-valutazzjoni (eż. punti, ittra, perċentwal, tlestija)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Għan tat-tagħlim",
+        "description": "OER Schema: għan tat-tagħlim assoċjat ma' din il-valutazzjoni."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kors",
+        "description": "OER Schema: il-kors li għalih hija maħsuba din il-valutazzjoni."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Tentattivi",
+        "description": "Kemm-il darba student jista' jiċċekkja. 0 tfisser mingħajr limitu."
+      },
+      {
+        "property": "collapsible",
+        "title": "Jista' jintwa",
+        "description": "Uri din il-mistoqsija bħala ringiela li tinfetaħ u tingħalaq. Meta tiftaħ waħda, tingħalaq il-mistoqsijiet l-oħra li jistgħu jintwew ħdejha."
+      },
+      {
+        "property": "collapsed",
+        "title": "Ibda mitwi",
+        "description": "Meta jista' jintwi, ibda bħala ringiela magħluqa li turi biss il-mistoqsija u l-istatus tagħha."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Isem il-kwizz",
+        "description": "Isem il-kwizz mgħoddi għall-użu f'ambjenti mmexxija minn xAPI għall-identifikazzjoni ta' dan l-oġġett"
+      }
+    ]
+  }
+}

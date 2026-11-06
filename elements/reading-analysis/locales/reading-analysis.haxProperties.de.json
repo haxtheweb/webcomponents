@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Textanalyse",
+    "description": "Lernende setzen Fähnchen an die Sätze, Absätze oder Abbildungen eines Textes, die Belege für jede Bezeichnung sind, oder wählen die Passage aus, die eine Frage am besten beantwortet."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Frage",
+        "description": "Was die Lernenden im Text finden sollen."
+      },
+      {
+        "property": "mode",
+        "title": "Aktivität",
+        "description": "Belege markieren: Lernende kleben jedes Fähnchen neben den Beleg dafür. Eins auswählen: Lernende wählen die eine Passage, die die Frage am besten beantwortet."
+      },
+      {
+        "property": "unit",
+        "title": "Lernende wählen aus",
+        "description": "Worauf Lernende im Text zeigen. Abbildungen können immer ausgewählt werden."
+      },
+      {
+        "property": "answers",
+        "title": "Fähnchen",
+        "description": "Die Bezeichnungen, die Lernende setzen. Verwende Antworten markieren im Blockmenü, um festzulegen, wo jede hingehört."
+      },
+      {
+        "slot": "",
+        "title": "Text",
+        "description": "Der Text, mit dem Lernende arbeiten. Beliebiges HTML: Überschriften, Absätze, Listen und Abbildungen."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Bewertungsformat",
+        "description": "OER Schema: Bewertungsformat für diese Prüfung (z. B. Punkte, Buchstabe, Prozent, Abschluss)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Lernziel",
+        "description": "OER Schema: Mit dieser Prüfung verknüpftes Lernziel."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurs",
+        "description": "OER Schema: Kurs, für den diese Prüfung vorgesehen ist."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Versuche",
+        "description": "Wie oft Lernende prüfen können. 0 bedeutet unbegrenzt."
+      },
+      {
+        "property": "collapsible",
+        "title": "Einklappbar",
+        "description": "Zeigt diese Frage als Zeile an, die sich öffnen und schließen lässt. Das Öffnen einer Frage schließt die anderen einklappbaren Fragen daneben."
+      },
+      {
+        "property": "collapsed",
+        "title": "Eingeklappt starten",
+        "description": "Wenn einklappbar, wird zunächst eine geschlossene Zeile angezeigt, die nur die Frage und ihren Status enthält."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Name des Quiz",
+        "description": "Quizname, der in xAPI-gesteuerten Umgebungen zur Identifizierung dieses Elements übergeben wird"
+      }
+    ]
+  }
+}

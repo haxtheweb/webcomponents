@@ -1,0 +1,55 @@
+{
+  "name": "@haxtheweb/reading-analysis",
+  "version": "26.8.0",
+  "description": "Learners flag evidence in a reading or select the passage that best answers a question",
+  "license": "Apache-2.0",
+  "author": {
+    "name": "haxtheweb",
+    "url": "https://hax.psu.edu/"
+  },
+  "keywords": [
+    "webcomponents",
+    "lit",
+    "haxtheweb",
+    "html",
+    "reading",
+    "evidence"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/haxtheweb/webcomponents.git"
+  },
+  "type": "module",
+  "main": "reading-analysis.js",
+  "module": "reading-analysis.js",
+  "scripts": {
+    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium --watch",
+    "test": "web-test-runner \"test/**/*.test.js\" --coverage --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium",
+    "start": "yarn run dev",
+    "build": "prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && cem analyze --litelement --exclude \"(public|*.stories.js)\" --globs \"{*,lib/**}.js\" && node ../../scripts/extract-element-docs.mjs --write .",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+    "watch": "gulp dev --gulpfile=gulpfile.cjs",
+    "serve": "web-dev-server -c ../../web-dev-server.config.mjs",
+    "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
+  },
+  "dependencies": {
+    "@haxtheweb/multiple-choice": "^26.8.0",
+    "@haxtheweb/user-action": "^26.8.0",
+    "lit": "3.3.3"
+  },
+  "devDependencies": {
+    "@custom-elements-manifest/analyzer": "0.11.0",
+    "@haxtheweb/deduping-fix": "^26.8.0",
+    "@open-wc/testing": "4.0.0",
+    "@web/dev-server": "0.4.6",
+    "concurrently": "9.2.5"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "hax": {
+    "cli": true
+  },
+  "customElements": "custom-elements.json"
+}

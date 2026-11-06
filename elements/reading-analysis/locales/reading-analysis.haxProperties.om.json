@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Xiinxala dubbisaa",
+    "description": "Barattoonni hima, keeyyata ykn fakkii barreeffama keessaa ragaa mallattoo hundaa ta'an alaabaan mallatteessu, ykn kutaa gaaffii akka gaariitti deebisu filatu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Gaaffii",
+        "description": "Wanta barattoonni barreeffama keessatti akka argatan gaafataman."
+      },
+      {
+        "property": "mode",
+        "title": "Sochii",
+        "description": "Ragaa mallatteessi: barattoonni alaabaa hunda cinaa ragaa isaa maxxansu. Tokko filadhu: barattoonni kutaa tokkicha gaaffii akka gaariitti deebisu filatu."
+      },
+      {
+        "property": "unit",
+        "title": "Barattoonni filatu",
+        "description": "Wanta barataan barreeffama keessatti agarsiisu. Fakkiiwwan yeroo hunda filatamuu danda'u."
+      },
+      {
+        "property": "answers",
+        "title": "Alaabaa",
+        "description": "Mallattoolee barattoonni kaa'an. Iddoo tokkoon tokkoon isaanii itti argamu filachuuf baafata cufaa keessatti Deebii mallatteessi fayyadami."
+      },
+      {
+        "slot": "",
+        "title": "Barreeffama dubbisaa",
+        "description": "Barreeffama barattoonni keessatti hojjetan. HTML kamiyyuu: mataduree, keeyyata, tarree fi fakkiiwwan."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Akkaataa qabxii kennuu",
+        "description": "OER Schema: akkaataa qabxii kennuu madaallii kanaa (fkn. qabxii, qubee, dhibbeentaa, xumuruu)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Kaayyoo barnootaa",
+        "description": "OER Schema: kaayyoo barnootaa madaallii kana wajjin walqabatu."
+      },
+      {
+        "property": "forCourse",
+        "title": "Koorsii",
+        "description": "OER Schema: koorsii madaalliin kun itti yaadame."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Yaalii",
+        "description": "Barataan yeroo meeqa mirkaneessuu danda'a. 0 jechuun daangaa malee jechuudha."
+      },
+      {
+        "property": "collapsible",
+        "title": "Maramuu danda'u",
+        "description": "Gaaffii kana akka sarara banamuu fi cufamu agarsiisi. Tokko banuun gaaffilee maramuu danda'an biroo isa bira jiran ni cufa."
+      },
+      {
+        "property": "collapsed",
+        "title": "Maramee jalqabi",
+        "description": "Yeroo maramuu danda'u, akka sarara cufamee gaaffii fi haala isaa qofa agarsiisu jalqabi."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Maqaa qormaata gabaabaa",
+        "description": "Maqaa qormaata gabaabaa naannoo xAPI tiin oofamu keessatti wanta kana addaan baasuuf darbu"
+      }
+    ]
+  }
+}

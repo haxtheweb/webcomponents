@@ -636,6 +636,7 @@
     "tableau-embed": "@haxtheweb/tableau-embed/tableau-embed.js",
     "matching-question": "@haxtheweb/matching-question/matching-question.js",
     "mark-the-words": "@haxtheweb/mark-the-words/mark-the-words.js",
+    "reading-analysis": "@haxtheweb/reading-analysis/reading-analysis.js",
     "fill-in-the-blanks": "@haxtheweb/fill-in-the-blanks/fill-in-the-blanks.js",
     "haxcms-site-disqus": "@haxtheweb/disqus-embed/lib/haxcms-site-disqus.js",
     "discord-embed": "@haxtheweb/discord-embed/discord-embed.js",

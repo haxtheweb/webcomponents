@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Lesigreining",
+    "description": "Næmingar seta fløgg við setningarnar, stykkini ella myndirnar í einum teksti, sum eru prógv fyri hvørt merki, ella velja tann partin, sum best svarar einum spurningi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Spurningur",
+        "description": "Hvat næmingar verða biðnir um at finna í tekstinum."
+      },
+      {
+        "property": "mode",
+        "title": "Virksemi",
+        "description": "Flagga prógv: næmingar festa hvørt flagg við prógvið fyri tí. Vel eitt: næmingar velja tann eina partin, sum best svarar spurninginum."
+      },
+      {
+        "property": "unit",
+        "title": "Næmingar velja",
+        "description": "Tað, ið ein næmingur peikar á í tekstinum. Myndir kunnu altíð veljast."
+      },
+      {
+        "property": "answers",
+        "title": "Fløgg",
+        "description": "Merkini, sum næmingar seta. Brúka Merk svar í blokkvalmyndini fyri at velja, hvar hvørt hoyrir heima."
+      },
+      {
+        "slot": "",
+        "title": "Tekstur",
+        "description": "Teksturin, sum næmingar arbeiða í. Hvør sum helst HTML: yvirskriftir, stykki, listar og myndir."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Einkunnasnið",
+        "description": "OER Schema: einkunnasnið til hesa metingina (t.d. stig, bókstavur, prosent, fullførd)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Lærumál",
+        "description": "OER Schema: lærumál knýtt at hesi metingini."
+      },
+      {
+        "property": "forCourse",
+        "title": "Skeið",
+        "description": "OER Schema: skeið, sum henda metingin er ætlað til."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Royndir",
+        "description": "Hvussu nógvar ferðir ein næmingur kann kanna. 0 merkir óavmarkað."
+      },
+      {
+        "property": "collapsible",
+        "title": "Fellandi",
+        "description": "Vís hesa spurningin sum eina røð, ið letur seg upp og aftur. Tá ein verður latin upp, verða hinar fellandi spurningarnar við síðuna latnar aftur."
+      },
+      {
+        "property": "collapsed",
+        "title": "Byrja saman fellað",
+        "description": "Tá spurningurin er fellandi, byrjar hann sum ein afturlatin røð, ið bert vísir spurningin og støðu hansara."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Navn á spurnakappingini",
+        "description": "Navn á spurnakappingini, sum verður latið inn til brúks í xAPI-stýrdum umhvørvum at eyðmerkja henda lutin"
+      }
+    ]
+  }
+}

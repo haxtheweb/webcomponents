@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Ñawinchay t'aqwiy",
+    "description": "Yachaqkunaqa ñawinchaypi sapa sutichapaq rikuchiq rimaykunaman, parrafokunaman utaq siq'ikunaman unanchata churanku, utaq tapuyta aswan allinta kutichiq t'aqata akllanku."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Tapukuy",
+        "description": "Yachaqkuna ñawinchaypi ima tarinankupaq."
+      },
+      {
+        "property": "mode",
+        "title": "Ruway",
+        "description": "Rikuchiqta unanchay: yachaqkunaqa sapa unanchata rikuchiqnin waqtanman churanku. Hukta akllay: yachaqkunaqa tapuyta aswan allinta kutichiq huk t'aqallata akllanku."
+      },
+      {
+        "property": "unit",
+        "title": "Yachaqkuna akllanku",
+        "description": "Yachaq ñawinchaypi ima rikuchisqan. Siq'ikunataqa sapa kuti akllanallam."
+      },
+      {
+        "property": "answers",
+        "title": "Unanchakuna",
+        "description": "Yachaqkuna churanku sutichakuna. Bloque menúpi Kutichiykunata unanchay llamk'achiy, sapakama maypi kananta akllanaykipaq."
+      },
+      {
+        "slot": "",
+        "title": "Ñawinchay",
+        "description": "Yachaqkuna llamk'anku ñawinchay. Ima HTML pas: umanchakuna, parrafokuna, sutisqakuna, siq'ikunapas."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Chaninchay laya",
+        "description": "OER Schema: kay chaninchaypa chaninchay layan (kayhina chimpukuna, letra, porcentaje, tukusqa)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Yachana munay",
+        "description": "OER Schema: kay chaninchaywan t'inkisqa yachana munay."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursu",
+        "description": "OER Schema: kay chaninchay mayqin kursupaq kasqan."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Ruwaykachaykuna",
+        "description": "Hayk'a kutitataq yachaq qhawayta atin. 0 mana tukukuqta niyta munan."
+      },
+      {
+        "property": "collapsible",
+        "title": "Pukukuy atiq",
+        "description": "Kay tapukuyta kicharikuq wichq'akuq siq'i hina rikuchiy. Huknta kicharispaqa, ladonpi huk pukukuy atiq tapukuykunaqa wichq'akunku."
+      },
+      {
+        "property": "collapsed",
+        "title": "Pukusqa qallariy",
+        "description": "Pukukuy atiq kaptinqa, tapukuyllata hinaspa kay-kayninta rikuchiq wichq'asqa siq'i hina qallariy."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Tapukuykunapa sutin",
+        "description": "xAPI pachakunapi kay itemta riqsichinapaq apachisqa tapukuy suti"
+      }
+    ]
+  }
+}

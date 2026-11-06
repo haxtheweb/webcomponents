@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "የንባብ ትንተና",
+    "description": "ተማሪዎች ለእያንዳንዱ መለያ ማስረጃ የሆኑትን በንባብ ውስጥ ያሉ ዓረፍተ ነገሮችን፣ አንቀጾችን ወይም ምስሎችን ምልክት ያደርጋሉ፣ ወይም ጥያቄን በተሻለ የሚመልሰውን ክፍል ይመርጣሉ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "ጥያቄ",
+        "description": "ተማሪዎች በንባቡ ውስጥ እንዲያገኙ የሚጠየቁት።"
+      },
+      {
+        "property": "mode",
+        "title": "እንቅስቃሴ",
+        "description": "ማስረጃን ምልክት ማድረግ፦ ተማሪዎች እያንዳንዱን ምልክት ከማስረጃው አጠገብ ይለጥፋሉ። አንዱን መምረጥ፦ ተማሪዎች ጥያቄውን በተሻለ የሚመልሰውን አንድ ክፍል ይመርጣሉ።"
+      },
+      {
+        "property": "unit",
+        "title": "ተማሪዎች የሚመርጡት",
+        "description": "ተማሪ በንባቡ ውስጥ የሚጠቁመው። ምስሎች ሁልጊዜ ሊመረጡ ይችላሉ።"
+      },
+      {
+        "property": "answers",
+        "title": "ምልክቶች",
+        "description": "ተማሪዎች የሚያስቀምጧቸው መለያዎች። እያንዳንዱ የት እንደሚገባ ለመምረጥ በብሎክ ምናሌው ውስጥ መልሶችን ምልክት አድርግ የሚለውን ይጠቀሙ።"
+      },
+      {
+        "slot": "",
+        "title": "ንባብ",
+        "description": "ተማሪዎች የሚሠሩበት ንባብ። ማንኛውም HTML፦ ርዕሶች፣ አንቀጾች፣ ዝርዝሮች እና ምስሎች።"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "የውጤት አሰጣጥ ቅርጸት",
+        "description": "OER Schema፦ ለዚህ ምዘና የውጤት አሰጣጥ ቅርጸት (ለምሳሌ ነጥቦች፣ ፊደል፣ መቶኛ፣ ማጠናቀቅ)።"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "የመማር ዓላማ",
+        "description": "OER Schema፦ ከዚህ ምዘና ጋር የተያያዘ የመማር ዓላማ።"
+      },
+      {
+        "property": "forCourse",
+        "title": "ኮርስ",
+        "description": "OER Schema፦ ይህ ምዘና የታሰበለት ኮርስ።"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "ሙከራዎች",
+        "description": "ተማሪ ስንት ጊዜ ማረጋገጥ እንደሚችል። 0 ገደብ የለሽ ማለት ነው።"
+      },
+      {
+        "property": "collapsible",
+        "title": "ሊሰበሰብ የሚችል",
+        "description": "ይህን ጥያቄ የሚከፈት እና የሚዘጋ ረድፍ አድርገው ያሳዩ። አንዱን መክፈት በአጠገቡ ያሉትን ሌሎች ሊሰበሰቡ የሚችሉ ጥያቄዎች ይዘጋል።"
+      },
+      {
+        "property": "collapsed",
+        "title": "ተሰብስቦ ጀምር",
+        "description": "ሊሰበሰብ በሚችልበት ጊዜ፣ ጥያቄውንና ሁኔታውን ብቻ የሚያሳይ የተዘጋ ረድፍ ሆኖ ይጀምር።"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "የፈተናው ስም",
+        "description": "ይህን ንጥል ለመለየት በxAPI የሚመሩ አካባቢዎች ውስጥ ጥቅም ላይ የሚውል የፈተና ስም"
+      }
+    ]
+  }
+}

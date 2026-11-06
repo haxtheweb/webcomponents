@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Liesanalys",
+    "description": "Léierender markéieren déi Sätz, Paragrafen oder Biller an engem Text mat Fändelen, déi e Beweis fir all Etikett sinn, oder wielen de Passage aus, deen eng Fro am beschten beäntwert."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Fro",
+        "description": "Wat d'Léierender am Text solle fannen."
+      },
+      {
+        "property": "mode",
+        "title": "Aktivitéit",
+        "description": "Beweiser markéieren: Léierender pechen all Fändel nieft de Beweis dofir. Eent auswielen: Léierender wielen deen eenzege Passage, deen d'Fro am beschten beäntwert."
+      },
+      {
+        "property": "unit",
+        "title": "Léierender wielen",
+        "description": "Op wat e Léierenden am Text weist. Biller kënnen ëmmer ausgewielt ginn."
+      },
+      {
+        "property": "answers",
+        "title": "Fändelen",
+        "description": "D'Etiketten, déi Léierender setzen. Benotz Äntwerten markéieren am Blockmenü, fir auszewielen, wou all eenzel hikënnt."
+      },
+      {
+        "slot": "",
+        "title": "Text",
+        "description": "Den Text, an deem d'Léierender schaffen. All HTML: Iwwerschrëften, Paragrafen, Lëschten a Biller."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Bewäertungsformat",
+        "description": "OER Schema: Bewäertungsformat fir dës Bewäertung (z. B. Punkten, Buschtaf, Prozent, Ofschloss)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Léierzil",
+        "description": "OER Schema: Léierzil, dat mat dëser Bewäertung verbonnen ass."
+      },
+      {
+        "property": "forCourse",
+        "title": "Cours",
+        "description": "OER Schema: Cours, fir deen dës Bewäertung geduecht ass."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Versich",
+        "description": "Wéi oft e Léierenden iwwerpréiwe kann. 0 heescht onbegrenzt."
+      },
+      {
+        "property": "collapsible",
+        "title": "Zesummeklappbar",
+        "description": "Weis dës Fro als Zeil, déi sech opmaacht an zougeet. Wann eng opgemaach gëtt, ginn déi aner zesummeklappbar Froen niewendrun zougemaach."
+      },
+      {
+        "property": "collapsed",
+        "title": "Zesummegeklappt starten",
+        "description": "Wann zesummeklappbar, fänkt et als zougemaachten Zeil un, déi nëmmen d'Fro an hire Status weist."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Numm vum Quiz",
+        "description": "Quiznumm, deen an xAPI-gesteierten Ëmfelder fir d'Identifikatioun vun dësem Element weiderginn gëtt"
+      }
+    ]
+  }
+}

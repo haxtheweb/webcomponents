@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Lêsanalyze",
+    "description": "Learlingen sette flaggen by de sinnen, alinea's of figueren yn in tekst dy't bewiis binne foar elk label, of selektearje de passaazje dy't in fraach it bêste beantwurdet."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Fraach",
+        "description": "Wat learlingen yn de tekst fine moatte."
+      },
+      {
+        "property": "mode",
+        "title": "Aktiviteit",
+        "description": "Bewiis markearje: learlingen plakke elke flagge by it bewiis derfoar. Ien selektearje: learlingen kieze de iene passaazje dy't de fraach it bêste beantwurdet."
+      },
+      {
+        "property": "unit",
+        "title": "Learlingen selektearje",
+        "description": "Wêr't in learling yn de tekst nei wiist. Figueren kinne altyd selektearre wurde."
+      },
+      {
+        "property": "answers",
+        "title": "Flaggen",
+        "description": "De labels dy't learlingen pleatse. Brûk Antwurden markearje yn it blokmenu om te kiezen wêr't elk heart."
+      },
+      {
+        "slot": "",
+        "title": "Tekst",
+        "description": "De tekst dêr't learlingen yn wurkje. Elke HTML: koppen, alinea's, listen en figueren."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Beoardielingsformaat",
+        "description": "OER Schema: beoardielingsformaat foar dizze toets (bgl. punten, letter, persintaazje, foltôging)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Leardoel",
+        "description": "OER Schema: leardoel dat by dizze toets heart."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursus",
+        "description": "OER Schema: kursus dêr't dizze toets foar bedoeld is."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Besykjen",
+        "description": "Hoefaak in learling kontrolearje kin. 0 betsjut ûnbeheind."
+      },
+      {
+        "property": "collapsible",
+        "title": "Ynklapber",
+        "description": "Lit dizze fraach sjen as in rige dy't iepen en ticht giet. As jo ien iepenje, geane de oare ynklapbere fragen deniby ticht."
+      },
+      {
+        "property": "collapsed",
+        "title": "Ynklapt starte",
+        "description": "As ynklapber, begjint it as in sletten rige dy't allinne de fraach en de status toant."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Namme fan de kwis",
+        "description": "Kwisnamme dy't trochjûn wurdt foar identifikaasje fan dit item yn xAPI-basearre omjouwings"
+      }
+    ]
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Anàlisi de lectura",
+    "description": "Els estudiants posen banderetes a les frases, paràgrafs o figures d'una lectura que són evidència de cada etiqueta, o seleccionen el fragment que millor respon una pregunta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pregunta",
+        "description": "Què han de trobar els estudiants a la lectura."
+      },
+      {
+        "property": "mode",
+        "title": "Activitat",
+        "description": "Marcar evidències: els estudiants enganxen cada bandereta al costat de la seva evidència. Seleccionar-ne un: els estudiants trien l'únic fragment que millor respon la pregunta."
+      },
+      {
+        "property": "unit",
+        "title": "Els estudiants seleccionen",
+        "description": "Allò que un estudiant assenyala a la lectura. Les figures sempre es poden seleccionar."
+      },
+      {
+        "property": "answers",
+        "title": "Banderetes",
+        "description": "Les etiquetes que col·loquen els estudiants. Fes servir Marca les respostes al menú del bloc per triar on va cadascuna."
+      },
+      {
+        "slot": "",
+        "title": "Lectura",
+        "description": "La lectura amb què treballen els estudiants. Qualsevol HTML: encapçalaments, paràgrafs, llistes i figures."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format de qualificació",
+        "description": "OER Schema: format de qualificació d'aquesta avaluació (p. ex. punts, lletra, percentatge, compleció)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Objectiu d'aprenentatge",
+        "description": "OER Schema: objectiu d'aprenentatge associat a aquesta avaluació."
+      },
+      {
+        "property": "forCourse",
+        "title": "Curs",
+        "description": "OER Schema: curs al qual s'adreça aquesta avaluació."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Intents",
+        "description": "Quantes vegades pot comprovar un estudiant. 0 vol dir sense límit."
+      },
+      {
+        "property": "collapsible",
+        "title": "Plegable",
+        "description": "Mostra aquesta pregunta com una fila que s'obre i es tanca. En obrir-ne una, es tanquen les altres preguntes plegables que tingui al costat."
+      },
+      {
+        "property": "collapsed",
+        "title": "Comença plegat",
+        "description": "Quan és plegable, comença com una fila tancada que només mostra la pregunta i el seu estat."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nom del qüestionari",
+        "description": "Nom del qüestionari que es passa per identificar aquest element en entorns basats en xAPI"
+      }
+    ]
+  }
+}

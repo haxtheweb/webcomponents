@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Okuma analizi",
+    "description": "Öğrenciler bir metindeki her etikete kanıt olan cümlelere, paragraflara veya şekillere bayrak koyar ya da bir soruyu en iyi yanıtlayan bölümü seçer."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Soru",
+        "description": "Öğrencilerden metinde ne bulmaları isteniyor."
+      },
+      {
+        "property": "mode",
+        "title": "Etkinlik",
+        "description": "Kanıtı işaretle: öğrenciler her bayrağı ona ait kanıtın yanına koyar. Birini seç: öğrenciler soruyu en iyi yanıtlayan tek bölümü seçer."
+      },
+      {
+        "property": "unit",
+        "title": "Öğrencilerin seçtiği",
+        "description": "Öğrencinin metinde işaret ettiği şey. Şekiller her zaman seçilebilir."
+      },
+      {
+        "property": "answers",
+        "title": "Bayraklar",
+        "description": "Öğrencilerin yerleştirdiği etiketler. Her birinin nereye ait olduğunu seçmek için blok menüsündeki Cevapları işaretle seçeneğini kullanın."
+      },
+      {
+        "slot": "",
+        "title": "Metin",
+        "description": "Öğrencilerin üzerinde çalıştığı metin. Herhangi bir HTML: başlıklar, paragraflar, listeler ve şekiller."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Notlandırma biçimi",
+        "description": "OER Schema: bu değerlendirmenin notlandırma biçimi (ör. puan, harf, yüzde, tamamlama)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Öğrenme hedefi",
+        "description": "OER Schema: bu değerlendirmeyle ilişkili öğrenme hedefi."
+      },
+      {
+        "property": "forCourse",
+        "title": "Ders",
+        "description": "OER Schema: bu değerlendirmenin amaçlandığı ders."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Denemeler",
+        "description": "Bir öğrencinin kaç kez kontrol edebileceği. 0 sınırsız demektir."
+      },
+      {
+        "property": "collapsible",
+        "title": "Katlanabilir",
+        "description": "Bu soruyu açılıp kapanan bir satır olarak göster. Birini açmak, yanındaki diğer katlanabilir soruları kapatır."
+      },
+      {
+        "property": "collapsed",
+        "title": "Katlanmış başla",
+        "description": "Katlanabilir olduğunda, yalnızca soruyu ve durumunu gösteren kapalı bir satır olarak başla."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Sınavın adı",
+        "description": "Bu öğenin tanımlanması için xAPI tabanlı ortamlarda kullanılan sınav adı"
+      }
+    ]
+  }
+}

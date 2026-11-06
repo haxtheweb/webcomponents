@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Nazarin karatu",
+    "description": "Ɗalibai suna sanya tutoci a kan jumloli, sakin layi ko hotuna a cikin karatu waɗanda shaida ne ga kowace lakabi, ko su zaɓi sashen da ya fi amsa tambaya."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Tambaya",
+        "description": "Abin da ake tambayar ɗalibai su nemo a cikin karatun."
+      },
+      {
+        "property": "mode",
+        "title": "Aiki",
+        "description": "Sanya tuta a shaida: ɗalibai suna manna kowace tuta kusa da shaidarta. Zaɓi ɗaya: ɗalibai suna zaɓar sashe guda da ya fi amsa tambayar."
+      },
+      {
+        "property": "unit",
+        "title": "Ɗalibai suna zaɓa",
+        "description": "Abin da ɗalibi ke nunawa a cikin karatun. Ana iya zaɓar hotuna koyaushe."
+      },
+      {
+        "property": "answers",
+        "title": "Tutoci",
+        "description": "Lakabobin da ɗalibai ke sanyawa. Yi amfani da Yi alamar amsoshi a menu na bulo don zaɓar inda kowanne ya dace."
+      },
+      {
+        "slot": "",
+        "title": "Karatu",
+        "description": "Karatun da ɗalibai ke aiki a ciki. Kowane HTML: kanun labarai, sakin layi, jeri da hotuna."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Tsarin maki",
+        "description": "OER Schema: tsarin maki na wannan tantancewa (misali maki, harafi, kashi, kammalawa)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Manufar koyo",
+        "description": "OER Schema: manufar koyo da ke da alaƙa da wannan tantancewa."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kwas",
+        "description": "OER Schema: kwas ɗin da aka yi wannan tantancewa domin sa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Ƙoƙari",
+        "description": "Sau nawa ɗalibi zai iya dubawa. 0 yana nufin mara iyaka."
+      },
+      {
+        "property": "collapsible",
+        "title": "Mai naɗewa",
+        "description": "Nuna wannan tambayar a matsayin layi da ke buɗewa da rufewa. Buɗe ɗaya yana rufe sauran tambayoyin masu naɗewa da ke kusa da ita."
+      },
+      {
+        "property": "collapsed",
+        "title": "Fara a naɗe",
+        "description": "Idan mai naɗewa ne, zai fara a matsayin layi rufaffe da ke nuna tambayar da matsayinta kawai."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Sunan jarrabawa",
+        "description": "Sunan jarrabawa da ake turawa don amfani a muhallin xAPI don gano wannan abu"
+      }
+    ]
+  }
+}

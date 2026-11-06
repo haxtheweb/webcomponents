@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Matn tahlili",
+    "description": "O‘quvchilar matndagi har bir yorliq uchun dalil bo‘lgan gaplar, xatboshilar yoki rasmlarga bayroqcha qo‘yadi yoki savolga eng yaxshi javob beradigan parchani tanlaydi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Savol",
+        "description": "O‘quvchilar matndan nimani topishi kerak."
+      },
+      {
+        "property": "mode",
+        "title": "Faoliyat",
+        "description": "Dalilni belgilash: o‘quvchilar har bir bayroqchani uning dalili yoniga qo‘yadi. Bittasini tanlash: o‘quvchilar savolga eng yaxshi javob beradigan yagona parchani tanlaydi."
+      },
+      {
+        "property": "unit",
+        "title": "O‘quvchilar tanlaydi",
+        "description": "O‘quvchi matnda nimani ko‘rsatadi. Rasmlarni har doim tanlash mumkin."
+      },
+      {
+        "property": "answers",
+        "title": "Bayroqchalar",
+        "description": "O‘quvchilar qo‘yadigan yorliqlar. Har birining joyini tanlash uchun blok menyusidagi Javoblarni belgilash bandidan foydalaning."
+      },
+      {
+        "slot": "",
+        "title": "Matn",
+        "description": "O‘quvchilar ishlaydigan matn. Istalgan HTML: sarlavhalar, xatboshilar, ro‘yxatlar va rasmlar."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Baholash formati",
+        "description": "OER Schema: ushbu baholash uchun baholash formati (masalan, ball, harf, foiz, bajarilganlik)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Oʻquv maqsadi",
+        "description": "OER Schema: ushbu baholash bilan bogʻliq oʻquv maqsadi."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurs",
+        "description": "OER Schema: ushbu baholash moʻljallangan kurs."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Urinishlar",
+        "description": "O‘quvchi necha marta tekshira oladi. 0 cheksiz degani."
+      },
+      {
+        "property": "collapsible",
+        "title": "Yig‘iladigan",
+        "description": "Bu savolni ochiladigan va yopiladigan qator sifatida ko‘rsating. Bittasini ochish yonidagi boshqa yig‘iladigan savollarni yopadi."
+      },
+      {
+        "property": "collapsed",
+        "title": "Yig‘ilgan holda boshlash",
+        "description": "Yig‘iladigan bo‘lsa, faqat savol va uning holatini ko‘rsatadigan yopiq qator sifatida boshlansin."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Test nomi",
+        "description": "xAPI asosidagi muhitlarda ushbu elementni aniqlash uchun uzatiladigan test nomi"
+      }
+    ]
+  }
+}

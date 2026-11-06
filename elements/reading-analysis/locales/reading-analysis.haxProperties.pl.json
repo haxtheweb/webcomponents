@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Analiza tekstu",
+    "description": "Uczniowie oznaczają flagami zdania, akapity lub ilustracje w tekście, które są dowodem dla każdej etykiety, albo zaznaczają fragment, który najlepiej odpowiada na pytanie."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pytanie",
+        "description": "Co uczniowie mają znaleźć w tekście."
+      },
+      {
+        "property": "mode",
+        "title": "Aktywność",
+        "description": "Oznacz dowody: uczniowie przyklejają każdą flagę obok dowodu na nią. Wybierz jeden: uczniowie wybierają jedyny fragment, który najlepiej odpowiada na pytanie."
+      },
+      {
+        "property": "unit",
+        "title": "Uczniowie zaznaczają",
+        "description": "Na co uczeń wskazuje w tekście. Ilustracje zawsze można zaznaczyć."
+      },
+      {
+        "property": "answers",
+        "title": "Flagi",
+        "description": "Etykiety, które umieszczają uczniowie. Użyj opcji Oznacz odpowiedzi w menu bloku, aby wybrać, gdzie należy każda z nich."
+      },
+      {
+        "slot": "",
+        "title": "Tekst",
+        "description": "Tekst, z którym pracują uczniowie. Dowolny HTML: nagłówki, akapity, listy i ilustracje."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format oceniania",
+        "description": "OER Schema: format oceniania tego sprawdzianu (np. punkty, litera, procent, ukończenie)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Cel uczenia się",
+        "description": "OER Schema: cel uczenia się powiązany z tym sprawdzianem."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurs",
+        "description": "OER Schema: kurs, dla którego przeznaczony jest ten sprawdzian."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Próby",
+        "description": "Ile razy uczeń może sprawdzić odpowiedź. 0 oznacza bez ograniczeń."
+      },
+      {
+        "property": "collapsible",
+        "title": "Zwijane",
+        "description": "Pokaż to pytanie jako wiersz, który się otwiera i zamyka. Otwarcie jednego zamyka sąsiednie pytania zwijane."
+      },
+      {
+        "property": "collapsed",
+        "title": "Zacznij zwinięte",
+        "description": "Gdy pytanie jest zwijane, zacznij od zamkniętego wiersza pokazującego tylko pytanie i jego status."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nazwa quizu",
+        "description": "Nazwa quizu przekazywana do środowisk opartych na xAPI w celu identyfikacji tego elementu"
+      }
+    ]
+  }
+}

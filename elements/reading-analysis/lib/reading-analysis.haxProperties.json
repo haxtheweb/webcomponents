@@ -1,0 +1,163 @@
+{
+  "api": "1",
+  "type": "grid",
+  "editingElement": "core",
+  "hideDefaultSettings": false,
+  "canScale": true,
+  "canEditSource": true,
+  "contentEditable": false,
+  "designSystem": {
+    "primary": true,
+    "accent": true
+  },
+  "gizmo": {
+    "title": "Reading analysis",
+    "description": "Learners flag the sentences, paragraphs or figures in a reading that are evidence for each label, or select the passage that best answers a question.",
+    "icon": "icons:flag",
+    "color": "blue",
+    "tags": [
+      "Instructional",
+      "reading",
+      "evidence",
+      "annotate",
+      "activity",
+      "knowledge check",
+      "assessment"
+    ],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Question",
+        "description": "What learners are asked to find in the reading.",
+        "inputMethod": "textfield",
+        "required": true
+      },
+      {
+        "property": "mode",
+        "title": "Activity",
+        "description": "Flag evidence: learners stick each flag beside the evidence for it. Select one: learners choose the single passage that best answers the question.",
+        "inputMethod": "select",
+        "options": {
+          "flag": "Flag evidence",
+          "one": "Select one"
+        }
+      },
+      {
+        "property": "unit",
+        "title": "Learners select",
+        "description": "What a learner points at in the reading. Figures can always be selected.",
+        "inputMethod": "select",
+        "options": {
+          "sentence": "Sentences",
+          "paragraph": "Paragraphs",
+          "figure": "Figures only"
+        }
+      },
+      {
+        "property": "answers",
+        "title": "Flags",
+        "description": "The labels learners place. Use Mark answers in the block menu to choose where each one belongs.",
+        "inputMethod": "array",
+        "itemLabel": "label",
+        "hideDuplicate": true,
+        "expanded": true,
+        "properties": [
+          {
+            "property": "label",
+            "title": "Flag",
+            "inputMethod": "textfield",
+            "required": true
+          }
+        ]
+      },
+      {
+        "slot": "",
+        "title": "Reading",
+        "description": "The reading learners work in. Any HTML: headings, paragraphs, lists and figures.",
+        "inputMethod": "code-editor"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Grading format",
+        "description": "OER Schema: grading format for this assessment (e.g. points, letter, percent, completion).",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Learning objective",
+        "description": "OER Schema: learning objective associated with this assessment.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "forCourse",
+        "title": "Course",
+        "description": "OER Schema: course this assessment is intended for.",
+        "inputMethod": "textfield"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Attempts",
+        "description": "How many times a learner can check. 0 means unlimited.",
+        "inputMethod": "number"
+      },
+      {
+        "property": "collapsible",
+        "title": "Collapsible",
+        "description": "Show this question as a row that opens and closes. Opening one closes the other collapsible questions beside it.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "collapsed",
+        "title": "Start collapsed",
+        "description": "When collapsible, start as a closed row that shows only the question and its status.",
+        "inputMethod": "boolean"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Name of the quiz",
+        "description": "Quiz name passed in for use in xAPI driven environments for identification of this item",
+        "inputMethod": "textfield"
+      }
+    ]
+  },
+  "saveOptions": {
+    "unsetAttributes": [
+      "edit",
+      "attempts",
+      "answers",
+      "displayed-answers",
+      "t",
+      "show-answer",
+      "_placed",
+      "_picked",
+      "_held",
+      "_marking"
+    ]
+  },
+  "documentation": {
+    "howTo": null,
+    "purpose": null
+  },
+  "demoSchema": [
+    {
+      "tag": "reading-analysis",
+      "properties": {
+        "question": "Which HAX pillars does each paragraph show? A paragraph can show more than one, and the same pillar can show up more than once.",
+        "mode": "flag",
+        "unit": "paragraph",
+        "maxAttempts": 3
+      },
+      "content": "<h3>What makes HAX, HAX?</h3>\n<p>Every HAX block is a standard web component, so a page is plain HTML that any browser can read. The editor checks headings, alternative text and captions while you write, which means pages work with a screen reader from the moment they are made instead of being fixed later.</p>\n<p>A HAX site is a folder of files: a site.json outline, the HTML of each page, and the images and media those pages use. The same folder runs in HAXcms on Node.js or PHP, publishes as static pages, or copies to any web server. Anyone can duplicate a site, switch its theme, or reorganize its outline without rebuilding a thing.</p>\n<p>Elements load only when a page uses them, so pages stay small and quick on older phones and slow connections, which also means less data and less battery. The whole project is Apache-2.0 licensed and built in the open, and new themes, blocks and plugins plug in without touching the core.</p>\n<input value=\"Accessible\" data-targets=\"c-31692fe8\" />\n<input value=\"Extensible\" data-targets=\"c-5e2a2c63\" />\n<input value=\"Free and Open\" data-targets=\"c-a14f01d6,c-5e2a2c63\" />\n<input value=\"Efficient\" data-targets=\"c-5e2a2c63\" />\n<input value=\"Platform Agnostic\" data-targets=\"c-31692fe8,c-a14f01d6\" />\n<input value=\"Remixable\" data-targets=\"c-a14f01d6\" />\n<input value=\"Sustainable\" data-targets=\"c-5e2a2c63\" />"
+    }
+  ]
+}

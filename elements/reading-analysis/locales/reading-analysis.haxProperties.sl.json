@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Analiza besedila",
+    "description": "Učenci z zastavicami označijo povedi, odstavke ali slike v besedilu, ki so dokaz za posamezno oznako, ali izberejo odlomek, ki najbolje odgovarja na vprašanje."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Vprašanje",
+        "description": "Kaj morajo učenci najti v besedilu."
+      },
+      {
+        "property": "mode",
+        "title": "Dejavnost",
+        "description": "Označi dokaze: učenci vsako zastavico postavijo ob dokaz zanjo. Izberi enega: učenci izberejo en odlomek, ki najbolje odgovarja na vprašanje."
+      },
+      {
+        "property": "unit",
+        "title": "Učenci izbirajo",
+        "description": "Na kaj učenec pokaže v besedilu. Slike je vedno mogoče izbrati."
+      },
+      {
+        "property": "answers",
+        "title": "Zastavice",
+        "description": "Oznake, ki jih postavljajo učenci. Z možnostjo Označi odgovore v meniju bloka izberite, kam spada vsaka."
+      },
+      {
+        "slot": "",
+        "title": "Besedilo",
+        "description": "Besedilo, v katerem delajo učenci. Kateri koli HTML: naslovi, odstavki, seznami in slike."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Oblika ocenjevanja",
+        "description": "OER Schema: oblika ocenjevanja za to preverjanje (npr. točke, ocena, odstotki, dokončanje)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Učni cilj",
+        "description": "OER Schema: učni cilj, povezan s tem preverjanjem."
+      },
+      {
+        "property": "forCourse",
+        "title": "Tečaj",
+        "description": "OER Schema: tečaj, za katerega je to preverjanje namenjeno."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Poskusi",
+        "description": "Kolikokrat lahko učenec preveri. 0 pomeni neomejeno."
+      },
+      {
+        "property": "collapsible",
+        "title": "Zložljivo",
+        "description": "Prikaži to vprašanje kot vrstico, ki se odpira in zapira. Ko odprete eno, se druga zložljiva vprašanja ob njej zaprejo."
+      },
+      {
+        "property": "collapsed",
+        "title": "Začni zloženo",
+        "description": "Če je zložljivo, začni kot zaprto vrstico, ki prikazuje samo vprašanje in njegovo stanje."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Ime kviza",
+        "description": "Ime kviza, posredovano za identifikacijo tega elementa v okoljih, ki jih poganja xAPI"
+      }
+    ]
+  }
+}

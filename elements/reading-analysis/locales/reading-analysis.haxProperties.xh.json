@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Uhlalutyo lokufundwayo",
+    "description": "Abafundi babeka iiflegi kwizivakalisi, imihlathi okanye imifanekiso ekufundwayo engubungqina belebheli nganye, okanye bakhethe isicatshulwa esiphendula umbuzo ngokona kulungileyo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Umbuzo",
+        "description": "Oko abafundi bacelwa ukuba bakufumane ekufundwayo."
+      },
+      {
+        "property": "mode",
+        "title": "Umsebenzi",
+        "description": "Phawula ubungqina: abafundi babeka iflegi nganye ecaleni kobungqina bayo. Khetha enye: abafundi bakhetha isicatshulwa esinye esiphendula umbuzo ngokona kulungileyo."
+      },
+      {
+        "property": "unit",
+        "title": "Abafundi bakhetha",
+        "description": "Oko umfundi akwalathayo ekufundwayo. Imifanekiso inokukhethwa ngalo lonke ixesha."
+      },
+      {
+        "property": "answers",
+        "title": "Iiflegi",
+        "description": "Iilebheli ezibekwa ngabafundi. Sebenzisa u-Phawula iimpendulo kwimenyu yebhloko ukukhetha apho nganye ifanele khona."
+      },
+      {
+        "slot": "",
+        "title": "Okufundwayo",
+        "description": "Okufundwayo abasebenza kuko abafundi. Nayiphi na i-HTML: izihloko, imihlathi, uluhlu kunye nemifanekiso."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Ifomathi yokumakisha",
+        "description": "OER Schema: ifomathi yokumakisha yolu vavanyo (umz. amanqaku, unobumba, ipesenti, ukugqitywa)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Injongo yokufunda",
+        "description": "OER Schema: injongo yokufunda enxulumene nolu vavanyo."
+      },
+      {
+        "property": "forCourse",
+        "title": "Ikhosi",
+        "description": "OER Schema: ikhosi olu vavanyo lwenzelwe yona."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Imizamo",
+        "description": "Kangaphi umfundi anokujonga. U-0 uthetha ukuba akukho mda."
+      },
+      {
+        "property": "collapsible",
+        "title": "Iyagobeka",
+        "description": "Bonisa lo mbuzo njengomqolo ovulekayo uvalwe. Ukuvula omnye kuvala eminye imibuzo egobekayo ekufutshane."
+      },
+      {
+        "property": "collapsed",
+        "title": "Qala igoqiwe",
+        "description": "Xa igobeka, qala njengomqolo ovaliweyo obonisa umbuzo kuphela kunye nesimo sawo."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Igama lekwizi",
+        "description": "Igama lekwizi elidluliselwa kwiindawo eziqhutywa yi-xAPI ukuze kuchongwe le nto"
+      }
+    ]
+  }
+}

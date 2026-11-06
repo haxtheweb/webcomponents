@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "읽기 분석",
+    "description": "학습자가 읽기 자료에서 각 라벨의 근거가 되는 문장, 문단 또는 그림에 플래그를 붙이거나, 질문에 가장 잘 답하는 구절을 선택합니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "질문",
+        "description": "학습자가 읽기 자료에서 찾아야 하는 것."
+      },
+      {
+        "property": "mode",
+        "title": "활동",
+        "description": "근거에 플래그 붙이기: 학습자가 각 플래그를 해당 근거 옆에 붙입니다. 하나 선택: 학습자가 질문에 가장 잘 답하는 구절 하나를 고릅니다."
+      },
+      {
+        "property": "unit",
+        "title": "학습자 선택 단위",
+        "description": "학습자가 읽기 자료에서 가리키는 대상. 그림은 언제나 선택할 수 있습니다."
+      },
+      {
+        "property": "answers",
+        "title": "플래그",
+        "description": "학습자가 놓는 라벨. 블록 메뉴의 정답 표시를 사용해 각 라벨이 놓일 위치를 정하세요."
+      },
+      {
+        "slot": "",
+        "title": "읽기 자료",
+        "description": "학습자가 활동하는 읽기 자료. 제목, 문단, 목록, 그림 등 모든 HTML을 사용할 수 있습니다."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "채점 형식",
+        "description": "OER Schema: 이 평가의 채점 형식입니다(예: 점수, 등급, 백분율, 이수 여부)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "학습 목표",
+        "description": "OER Schema: 이 평가와 연결된 학습 목표입니다."
+      },
+      {
+        "property": "forCourse",
+        "title": "강좌",
+        "description": "OER Schema: 이 평가가 대상으로 하는 강좌입니다."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "시도 횟수",
+        "description": "학습자가 확인할 수 있는 횟수. 0은 무제한을 뜻합니다."
+      },
+      {
+        "property": "collapsible",
+        "title": "접을 수 있음",
+        "description": "이 질문을 열고 닫을 수 있는 행으로 표시합니다. 하나를 열면 옆에 있는 다른 접을 수 있는 질문이 닫힙니다."
+      },
+      {
+        "property": "collapsed",
+        "title": "접은 상태로 시작",
+        "description": "접을 수 있는 경우, 질문과 상태만 보여 주는 닫힌 행으로 시작합니다."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "퀴즈 이름",
+        "description": "xAPI 기반 환경에서 이 항목을 식별하는 데 사용되는 퀴즈 이름"
+      }
+    ]
+  }
+}

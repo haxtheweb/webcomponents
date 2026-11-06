@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Analizë leximi",
+    "description": "Nxënësit vendosin shenja pranë fjalive, paragrafëve ose figurave në një tekst që janë prova për çdo etiketë, ose përzgjedhin pjesën që i përgjigjet më mirë një pyetjeje."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pyetja",
+        "description": "Çfarë u kërkohet nxënësve të gjejnë në tekst."
+      },
+      {
+        "property": "mode",
+        "title": "Aktiviteti",
+        "description": "Shëno provat: nxënësit vendosin çdo shenjë pranë provës për të. Përzgjidh një: nxënësit zgjedhin pjesën e vetme që i përgjigjet më mirë pyetjes."
+      },
+      {
+        "property": "unit",
+        "title": "Nxënësit përzgjedhin",
+        "description": "Çfarë tregon nxënësi në tekst. Figurat mund të përzgjidhen gjithmonë."
+      },
+      {
+        "property": "answers",
+        "title": "Shenjat",
+        "description": "Etiketat që vendosin nxënësit. Përdor Shëno përgjigjet në menynë e bllokut për të zgjedhur ku duhet vendosur secila."
+      },
+      {
+        "slot": "",
+        "title": "Teksti",
+        "description": "Teksti në të cilin punojnë nxënësit. Çdo HTML: tituj, paragrafë, lista dhe figura."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Formati i vlerësimit",
+        "description": "OER Schema: formati i vlerësimit për këtë test (p.sh. pikë, shkronjë, përqindje, përfundim)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Objektivi mësimor",
+        "description": "OER Schema: objektivi mësimor i lidhur me këtë vlerësim."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursi",
+        "description": "OER Schema: kursi për të cilin është menduar ky vlerësim."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Përpjekje",
+        "description": "Sa herë mund të kontrollojë një nxënës. 0 do të thotë pa kufi."
+      },
+      {
+        "property": "collapsible",
+        "title": "I palosshëm",
+        "description": "Shfaqe këtë pyetje si një rresht që hapet dhe mbyllet. Hapja e njërës mbyll pyetjet e tjera të palosshme pranë saj."
+      },
+      {
+        "property": "collapsed",
+        "title": "Fillo e palosur",
+        "description": "Kur është i palosshëm, fillo si rresht i mbyllur që tregon vetëm pyetjen dhe statusin e saj."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Emri i kuizit",
+        "description": "Emri i kuizit që përcillet për përdorim në mjedise të drejtuara nga xAPI për identifikimin e këtij elementi"
+      }
+    ]
+  }
+}

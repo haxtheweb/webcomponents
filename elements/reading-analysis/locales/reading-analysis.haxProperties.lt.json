@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Skaitymo analizė",
+    "description": "Besimokantieji vėliavėlėmis pažymi teksto sakinius, pastraipas ar paveikslus, kurie yra kiekvienos etiketės įrodymas, arba pasirenka ištrauką, kuri geriausiai atsako į klausimą."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Klausimas",
+        "description": "Ką besimokantieji turi rasti tekste."
+      },
+      {
+        "property": "mode",
+        "title": "Veikla",
+        "description": "Žymėti įrodymus: besimokantieji priklijuoja kiekvieną vėliavėlę šalia jos įrodymo. Pasirinkti vieną: besimokantieji pasirenka vienintelę ištrauką, kuri geriausiai atsako į klausimą."
+      },
+      {
+        "property": "unit",
+        "title": "Besimokantieji pasirenka",
+        "description": "Ką besimokantysis nurodo tekste. Paveikslus visada galima pasirinkti."
+      },
+      {
+        "property": "answers",
+        "title": "Vėliavėlės",
+        "description": "Etiketės, kurias deda besimokantieji. Bloko meniu naudokite „Pažymėti atsakymus“, kad pasirinktumėte, kur turi būti kiekviena."
+      },
+      {
+        "slot": "",
+        "title": "Tekstas",
+        "description": "Tekstas, su kuriuo dirba besimokantieji. Bet koks HTML: antraštės, pastraipos, sąrašai ir paveikslai."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Vertinimo formatas",
+        "description": "OER Schema: šio vertinimo formatas (pvz., taškai, raidė, procentai, atlikimas)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Mokymosi tikslas",
+        "description": "OER Schema: su šiuo vertinimu susijęs mokymosi tikslas."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursas",
+        "description": "OER Schema: kursas, kuriam skirtas šis vertinimas."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Bandymai",
+        "description": "Kiek kartų besimokantysis gali tikrinti. 0 reiškia neribotai."
+      },
+      {
+        "property": "collapsible",
+        "title": "Sutraukiama",
+        "description": "Rodyti šį klausimą kaip eilutę, kuri atsidaro ir užsidaro. Atidarius vieną, greta esantys kiti sutraukiami klausimai užsidaro."
+      },
+      {
+        "property": "collapsed",
+        "title": "Pradėti sutrauktą",
+        "description": "Kai sutraukiama, pradedama kaip uždara eilutė, rodanti tik klausimą ir jo būseną."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Testo pavadinimas",
+        "description": "Testo pavadinimas, perduodamas xAPI pagrįstoms aplinkoms šiam elementui identifikuoti"
+      }
+    ]
+  }
+}
