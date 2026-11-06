@@ -9,7 +9,7 @@ import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js"
 import { autorun, toJS } from "mobx";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { SimpleIconsetStore } from "@haxtheweb/simple-icon/lib/simple-iconset.js";
-import { editableTableDisplayStyles } from "@haxtheweb/editable-table/lib/editable-table-behaviors.js";
+import { editableTableDisplayStyles } from "@haxtheweb/editable-table/lib/editable-table-styles.js";
 import { copyToClipboard } from "@haxtheweb/utils/lib/clipboard.js";
 import { whenIdle } from "@haxtheweb/utils/lib/idle.js";
 import "@haxtheweb/absolute-position-behavior/lib/absolute-position-state-manager.js";

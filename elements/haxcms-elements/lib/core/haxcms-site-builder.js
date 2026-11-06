@@ -1,15 +1,14 @@
 import { LitElement, html, css } from "lit";
+// deep imports keep the whole utils barrel off the first-paint path
+import { encapScript, findTagsInHTML } from "@haxtheweb/utils/lib/safe-html.js";
+import { wipeSlot } from "@haxtheweb/utils/lib/slot.js";
+import { varExists } from "@haxtheweb/utils/lib/object-path.js";
 import {
-  encapScript,
-  findTagsInHTML,
-  wipeSlot,
-  varExists,
   localStorageSet,
   localStorageGet,
-  nodeToHaxElement,
-  sanitizeURLValue,
-  neutralizeStrayScripts,
-} from "@haxtheweb/utils/utils.js";
+} from "@haxtheweb/utils/lib/storage.js";
+import { sanitizeURLValue } from "@haxtheweb/utils/lib/url.js";
+import { neutralizeStrayScripts } from "@haxtheweb/utils/lib/sanitize.js";
 import { autorun, toJS } from "mobx";
 import { store, HAXcmsStore } from "./haxcms-site-store.js";
 import "./haxcms-site-router.js";
@@ -107,6 +106,8 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     // Test that this is valid HTML and has children
     if (fragment.children) {
       const children = fragment.children;
+      // only needed here (style guide / template parsing), never for first paint
+      const { nodeToHaxElement } = await import("@haxtheweb/utils/utils.js");
       // Loop over the new nodes and convert each to HAXElement
       for (let i = 0; i < children.length; i++) {
         if (typeof children[i].tagName !== typeof undefined) {
@@ -1097,10 +1098,13 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     // execute 1st match
     let match = myRegexp.exec(html);
     while (match != null) {
-      let tag = match[1].replace("<", "").replace(">", "");
+      let tag = match[1].replace(/[<>]/g, "");
       if (tag.indexOf(" ")) {
         tag = tag.split(" ")[0];
       }
+      // a tag name only holds name characters, never quotes or markup, and
+      // it is written into an attribute below
+      tag = tag.replace(/[^\w.-]/g, "");
       // replace the matching custom element tag name with replace-tag
       // unless it's in the exclusion list (see replaceTagExcludedTags)
       if (
