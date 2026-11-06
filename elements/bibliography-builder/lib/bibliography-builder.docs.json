@@ -124,13 +124,13 @@
       "order": 0,
       "src": "bibliography-builder.motion.json",
       "file": "lib/bibliography-builder.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/bibliography-builder.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

@@ -100,13 +100,13 @@
       "order": 0,
       "src": "enhanced-text.motion.json",
       "file": "lib/enhanced-text.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/enhanced-text.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

@@ -77,13 +77,13 @@
       "order": 0,
       "src": "simple-autocomplete.motion.json",
       "file": "lib/simple-autocomplete.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/simple-autocomplete.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

@@ -183,13 +183,13 @@
       "order": 0,
       "src": "flash-card.motion.json",
       "file": "lib/flash-card.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/flash-card.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

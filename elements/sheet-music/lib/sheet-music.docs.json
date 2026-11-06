@@ -2,7 +2,7 @@
   "tag": "sheet-music",
   "folder": "sheet-music",
   "package": "@haxtheweb/sheet-music",
-  "version": "0.0.0",
+  "version": "26.8.0",
   "license": "Apache-2.0",
   "title": "Sheet music",
   "description": "Renders and plays sheet music, guitar tabs, and score notation via alphaTex or MusicXML.",
@@ -190,13 +190,13 @@
       "order": 0,
       "src": "sheet-music.motion.json",
       "file": "lib/sheet-music.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/sheet-music.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

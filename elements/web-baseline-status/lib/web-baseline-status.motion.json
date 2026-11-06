@@ -249,7 +249,7 @@
     "line": "Show the Baseline browser support status of a web platform…",
     "code": "<web-baseline-status></web-baseline-status>"
   },
-  "surfaceHash": "5fca8b42680c",
+  "surfaceHash": "dc1bd145da43",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

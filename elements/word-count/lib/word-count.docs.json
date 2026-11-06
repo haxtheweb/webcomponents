@@ -44,13 +44,13 @@
       "order": 0,
       "src": "word-count.motion.json",
       "file": "lib/word-count.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/word-count.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

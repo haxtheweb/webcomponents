@@ -97,13 +97,13 @@
       "order": 0,
       "src": "web-baseline-status.motion.json",
       "file": "lib/web-baseline-status.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/web-baseline-status.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {
