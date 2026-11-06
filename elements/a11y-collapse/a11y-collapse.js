@@ -4,6 +4,12 @@ import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
+import {
+  activityId,
+  buildStatement,
+  XAPI_ACTIVITY_TYPES,
+  XAPI_EXTENSIONS,
+} from "@haxtheweb/user-action/lib/xapi.js";
 
 class A11yCollapse extends DDD {
   static get styles() {
@@ -192,6 +198,37 @@ class A11yCollapse extends DDD {
   static get tag() {
     return "a11y-collapse";
   }
+  /**
+   * xAPI statements this element sends (see scripts/generate-xapi-vocabulary.mjs)
+   */
+  static get xapiVocabulary() {
+    return {
+      tag: "a11y-collapse",
+      event: "user-engagement",
+      verbs: ["experienced"],
+      objectType: "http://adlnet.gov/expapi/activities/interaction",
+      result: [],
+      countsTowardCompletion: false,
+      done: "never required; records that a learner opened the hidden content",
+    };
+  }
+  /**
+   * HAX: authors opening sections while editing are not learners
+   */
+  haxHooks() {
+    return {
+      editModeChanged: "haxeditModeChanged",
+      activeElementChanged: "haxactiveElementChanged",
+    };
+  }
+  haxactiveElementChanged(el, val) {
+    if (val) {
+      this._haxstate = val;
+    }
+  }
+  haxeditModeChanged(val) {
+    this._haxstate = val;
+  }
 
   static get properties() {
     return {
@@ -297,6 +334,8 @@ class A11yCollapse extends DDD {
     this.__collapsedLabel = "expand";
     this.__collapsedTooltip = "expand";
     this.__hasExpandedOnce = false;
+    this._haxstate = false;
+    this._openSent = false;
   }
   /**
    * haxProperties integration via file reference
@@ -551,6 +590,9 @@ class A11yCollapse extends DDD {
   _onClick() {
     if (!this.disabled) {
       this.toggle();
+      if (this.expanded) {
+        this._announceOpen();
+      }
       this.shadowRoot.querySelector("simple-tooltip").hide();
       /**
        * Fires when clicked.
@@ -566,6 +608,50 @@ class A11yCollapse extends DDD {
         }),
       );
     }
+  }
+  /**
+   * Learner data: a learner opened this section's hidden content. Once per
+   * visit, only from a learner's click (not an author default of expanded),
+   * never while HAX is editing, and only for content on the page itself:
+   * a11y-collapse inside another element's shadow root (editor panels,
+   * menus, admin screens) is interface, not learning material.
+   */
+  _announceOpen() {
+    if (this._openSent || this._haxstate) {
+      return;
+    }
+    const root = this.getRootNode ? this.getRootNode() : null;
+    if (root !== globalThis.document) {
+      return;
+    }
+    this._openSent = true;
+    const slotted = this.querySelector('[slot="heading"]');
+    const name =
+      String(
+        this.heading || (slotted ? slotted.textContent : "") || "",
+      ).trim() || "Collapsed section";
+    this.dispatchEvent(
+      new CustomEvent("user-engagement", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: {
+          activityDisplay: "experienced",
+          objectName: name.slice(0, 120),
+          statement: buildStatement({
+            verb: "experienced",
+            object: {
+              id: activityId(this, `a11y-collapse\u0001${name}`),
+              name: name.slice(0, 120),
+              type: XAPI_ACTIVITY_TYPES.interactionGeneric,
+            },
+            context: {
+              extensions: { [XAPI_EXTENSIONS.element]: A11yCollapse.tag },
+            },
+          }),
+        },
+      }),
+    );
   }
   /**
    *  @deprecated Use  {@link _makeHeadingButton} instead

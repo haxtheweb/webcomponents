@@ -2,6 +2,16 @@
 // What each HAX element can send as xAPI statements. The source of truth is
 // each element's static xapiVocabulary getter.
 export const XAPI_VOCABULARY = {
+  "a11y-collapse": {
+    tag: "a11y-collapse",
+    event: "user-engagement",
+    verbs: ["experienced"],
+    objectType: "http://adlnet.gov/expapi/activities/interaction",
+    result: [],
+    countsTowardCompletion: false,
+    done: "never required; records that a learner opened the hidden content",
+    source: "elements/a11y-collapse/a11y-collapse.js",
+  },
   "a11y-media-player": {
     tag: "a11y-media-player",
     event: "user-engagement",

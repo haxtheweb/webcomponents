@@ -430,7 +430,7 @@
     "line": "Single expandable and collapsible container.",
     "code": "<a11y-collapse heading=\"Heading\" heading-button>"
   },
-  "surfaceHash": "f6b96261160f",
+  "surfaceHash": "b9ec8cdc6dd6",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",
