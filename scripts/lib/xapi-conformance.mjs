@@ -41,7 +41,15 @@ function schemaValidator() {
     const require = createRequire(import.meta.url);
     const AjvModule = require("ajv");
     const Ajv = AjvModule.default || AjvModule;
-    const ajv = new Ajv({ allErrors: true, strict: false });
+    // ajv is not a declared dependency of this repo; whichever major is
+    // hoisted is used (6 today, 8 elsewhere in the tree), and errors are
+    // reported the same way for both (see schemaErrors)
+    const major = parseInt(require("ajv/package.json").version, 10);
+    const ajv = new Ajv(
+      major >= 8
+        ? { allErrors: true, strict: false }
+        : { allErrors: true, jsonPointers: true },
+    );
     validator = ajv.compile(JSON.parse(fs.readFileSync(SCHEMA_PATH, "utf8")));
   }
   return validator;
@@ -192,8 +200,12 @@ export function validateStatement(statement, options = {}) {
   const validate = schemaValidator();
   if (!validate(statement)) {
     (validate.errors || []).forEach((e) => {
+      // ajv 8 reports instancePath and "must ..."; ajv 6 reports dataPath
+      // and "should ..."
+      const at = e.instancePath !== undefined ? e.instancePath : e.dataPath;
+      const message = String(e.message || "").replace(/^should\b/, "must");
       errors.push(
-        `schema ${e.instancePath || "/"} ${e.message}${
+        `schema ${at || "/"} ${message}${
           e.params && e.params.additionalProperty
             ? ` (${e.params.additionalProperty})`
             : ""
