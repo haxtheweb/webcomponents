@@ -96,7 +96,6 @@
     }
   ],
   "slots": [
-    "buttons",
     "content",
     "header"
   ],
@@ -110,7 +109,7 @@
     "simple-toast-hide"
   ],
   "hax": {},
-  "surfaceHash": "c748a9dbb332",
+  "surfaceHash": "1e77e4db2bd9",
   "walkthroughs": [
     {
       "id": "",

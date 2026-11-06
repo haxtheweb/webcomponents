@@ -2,5 +2,10 @@
   "revealAnswer": "Паказаць адказ",
   "close": "Закрыць",
   "moreInformation": "Больш інфармацыі",
-  "hideAnswer": "Схаваць адказ"
+  "hideAnswer": "Схаваць адказ",
+  "directions": "Інструкцыі",
+  "showDirections": "Паказаць інструкцыі",
+  "hideDirections": "Схаваць інструкцыі",
+  "selfCheckDirections": "Спачатку падумайце над адказам, потым пакажыце адказ, каб параўнаць.",
+  "answerRevealed": "Адказ паказаны"
 }

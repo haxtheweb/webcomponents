@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Tekstin analyysi",
+    "description": "Oppijat merkitsevät lipuilla tekstin virkkeet, kappaleet tai kuvat, jotka ovat todisteita kullekin nimikkeelle, tai valitsevat kohdan, joka vastaa kysymykseen parhaiten."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Kysymys",
+        "description": "Mitä oppijoita pyydetään löytämään tekstistä."
+      },
+      {
+        "property": "mode",
+        "title": "Tehtävä",
+        "description": "Merkitse todisteet: oppijat kiinnittävät kunkin lipun sen todisteen viereen. Valitse yksi: oppijat valitsevat sen yhden kohdan, joka vastaa kysymykseen parhaiten."
+      },
+      {
+        "property": "unit",
+        "title": "Oppijat valitsevat",
+        "description": "Mitä oppija osoittaa tekstissä. Kuvia voi aina valita."
+      },
+      {
+        "property": "answers",
+        "title": "Liput",
+        "description": "Nimikkeet, joita oppijat sijoittavat. Valitse lohkovalikon Merkitse vastaukset -toiminnolla, mihin kukin kuuluu."
+      },
+      {
+        "slot": "",
+        "title": "Teksti",
+        "description": "Teksti, jonka parissa oppijat työskentelevät. Mitä tahansa HTML:ää: otsikoita, kappaleita, luetteloita ja kuvia."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Arvostelumuoto",
+        "description": "OER Schema: tämän arvioinnin arvostelumuoto (esim. pisteet, kirjain, prosentti, suoritus)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Oppimistavoite",
+        "description": "OER Schema: tähän arviointiin liittyvä oppimistavoite."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurssi",
+        "description": "OER Schema: kurssi, jolle tämä arviointi on tarkoitettu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Yritykset",
+        "description": "Kuinka monta kertaa oppija voi tarkistaa. 0 tarkoittaa rajoittamatonta."
+      },
+      {
+        "property": "collapsible",
+        "title": "Kutistettava",
+        "description": "Näytä tämä kysymys rivinä, joka avautuu ja sulkeutuu. Yhden avaaminen sulkee viereiset muut kutistettavat kysymykset."
+      },
+      {
+        "property": "collapsed",
+        "title": "Aloita kutistettuna",
+        "description": "Kun kutistettava, kysymys alkaa suljettuna rivinä, jossa näkyy vain kysymys ja sen tila."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Tietovisan nimi",
+        "description": "Tietovisan nimi, jota käytetään xAPI-pohjaisissa ympäristöissä tämän kohteen tunnistamiseen"
+      }
+    ]
+  }
+}

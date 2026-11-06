@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>DDD graph primitives</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import { LitElement, html, css, svg, nothing } from "lit";
+      import { DDDSuper } from "../d-d-d.js";
+      import { DDDBlockStyles } from "../lib/DDDBlock.js";
+      import {
+        DDDConnectorKinds,
+        DDDConnectorStyles,
+      } from "../lib/DDDConnector.js";
+      import {
+        DDDNodeShapeNames,
+        DDDNodeStyles,
+        renderDDDNode,
+      } from "../lib/DDDNodeShapes.js";
+      import {
+        DDDComboboxStyles,
+        DDDToggleGroupStyles,
+      } from "../lib/DDDReaderControls.js";
+      import {
+        DDDLifecycleStates,
+        DDDLifecycleStyles,
+        renderDDDStatusPill,
+      } from "../lib/DDDLifecycle.js";
+      import {
+        DDDViewport,
+        DDDViewportStyles,
+        renderDDDZoomControls,
+      } from "../lib/DDDViewport.js";
+
+      const RESULTS = [
+        { group: "Tools", items: ["HAX CLI", "haxcms-nodejs"] },
+        { group: "Design", items: ["DDD", "simple-icon"] },
+      ];
+
+      class DDDGraphPrimitivesDemo extends DDDSuper(LitElement) {
+        static get properties() {
+          return {
+            shown: { type: Object },
+            query: { type: String },
+            active: { type: String },
+          };
+        }
+        constructor() {
+          super();
+          this.shown = {};
+          DDDConnectorKinds.forEach((k) => (this.shown[k.kind] = true));
+          this.query = "";
+          this.active = "";
+          this.viewport = new DDDViewport(this, {
+            target: () => this.shadowRoot.querySelector(".ddd-viewport svg"),
+            fit: { x: 0, y: 0, width: 640, height: 360 },
+          });
+        }
+        static get styles() {
+          return [
+            super.styles,
+            DDDBlockStyles,
+            DDDConnectorStyles,
+            DDDNodeStyles,
+            DDDComboboxStyles,
+            DDDToggleGroupStyles,
+            DDDLifecycleStyles,
+            DDDViewportStyles,
+            css`
+              :host {
+                display: block;
+                padding: var(--ddd-spacing-4);
+                color-scheme: light dark;
+              }
+              section {
+                margin-block-end: var(--ddd-spacing-6);
+              }
+              .row {
+                display: flex;
+                flex-wrap: wrap;
+                gap: var(--ddd-spacing-3);
+                align-items: center;
+              }
+              .ddd-viewport {
+                height: 360px;
+              }
+            `,
+          ];
+        }
+        firstUpdated() {
+          this.viewport.attach();
+        }
+        toggle(kind) {
+          this.shown = { ...this.shown, [kind]: !this.shown[kind] };
+        }
+        lines() {
+          return DDDConnectorKinds.map(
+            (k, i) => svg`<path
+              class="ddd-connector ${i === 4 ? "ddd-motion-draw-in" : ""} ${i === 2 ? "ddd-motion-flow" : ""}"
+              data-kind="${k.kind}"
+              pathLength="${i === 4 ? 1 : nothing}"
+              ?data-dimmed="${!this.shown[k.kind]}"
+              d="M${60 + i * 110} 80 C ${60 + i * 110} 180, ${110 + i * 110} 180, ${110 + i * 110} 280"
+            ></path>`,
+          );
+        }
+        nodes() {
+          return DDDNodeShapeNames.map(
+            (shape, i) => svg`<g class="ddd-node" tabindex="0"
+              role="img" aria-label="${shape}"
+              transform="translate(${20 + i * 100} 10)">
+              ${renderDDDNode({ shape, width: 72, height: 56, label: shape })}
+            </g>`,
+          );
+        }
+        render() {
+          const q = this.query.toLowerCase();
+          return html`
+            <section>
+              <h2>Connectors and legend toggles</h2>
+              <div class="ddd-toggle-group swatches" role="group" aria-label="Lines">
+                ${DDDConnectorKinds.map(
+                  (k) => html`<button
+                    class="ddd-block-action has-text"
+                    aria-pressed="${this.shown[k.kind] ? "true" : "false"}"
+                    @click="${() => this.toggle(k.kind)}"
+                  >
+                    <svg class="ddd-connector-sample" viewBox="0 0 32 16" aria-hidden="true">
+                      <line class="ddd-connector" data-kind="${k.kind}" x1="0" y1="8" x2="32" y2="8"></line>
+                    </svg>
+                    ${k.kind}
+                  </button>`,
+                )}
+              </div>
+            </section>
+            <section>
+              <h2>Pan and zoom viewport with node shapes</h2>
+              <div class="ddd-block">
+                <div class="ddd-viewport">
+                  <svg viewBox="0 0 640 360" tabindex="0" role="img" aria-label="Node shapes and connectors">
+                    ${this.lines()} ${this.nodes()}
+                  </svg>
+                  ${renderDDDZoomControls({
+                    onZoomIn: () => this.viewport.zoomIn(),
+                    onZoomOut: () => this.viewport.zoomOut(),
+                    onFit: () => this.viewport.fit(),
+                  })}
+                </div>
+              </div>
+            </section>
+            <section>
+              <h2>Lifecycle pills</h2>
+              <div class="row">
+                ${DDDLifecycleStates.map((state) => renderDDDStatusPill({ state }))}
+              </div>
+            </section>
+            <section>
+              <h2>Search combobox</h2>
+              <div class="ddd-combobox" style="max-width: 360px">
+                <label class="ddd-combobox-label" for="q">Find a project</label>
+                <input
+                  class="ddd-combobox-input"
+                  id="q"
+                  type="search"
+                  role="combobox"
+                  aria-expanded="true"
+                  aria-controls="lb"
+                  aria-autocomplete="list"
+                  aria-activedescendant="${this.active || ""}"
+                  .value="${this.query}"
+                  @input="${(e) => (this.query = e.target.value)}"
+                />
+                <div class="ddd-combobox-listbox" id="lb" role="listbox" aria-label="Results">
+                  ${RESULTS.map(
+                    (g, gi) => html`<div class="ddd-combobox-group" role="group" aria-labelledby="g${gi}">
+                      <div class="ddd-combobox-group-label" id="g${gi}" role="presentation">${g.group}</div>
+                      ${g.items
+                        .filter((item) => item.toLowerCase().includes(q))
+                        .map(
+                          (item, ii) => html`<div
+                            class="ddd-combobox-option"
+                            id="o${gi}-${ii}"
+                            role="option"
+                            aria-selected="${this.active === `o${gi}-${ii}` ? "true" : "false"}"
+                            @click="${() => (this.active = `o${gi}-${ii}`)}"
+                          >${item}<span class="ddd-combobox-option-meta">${g.group}</span></div>`,
+                        )}
+                    </div>`,
+                  )}
+                </div>
+              </div>
+            </section>
+          `;
+        }
+      }
+      globalThis.customElements.define("ddd-graph-primitives-demo", DDDGraphPrimitivesDemo);
+    </script>
+  </head>
+  <body>
+    <ddd-graph-primitives-demo></ddd-graph-primitives-demo>
+  </body>
+</html>

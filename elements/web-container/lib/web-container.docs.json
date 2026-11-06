@@ -178,13 +178,13 @@
       "order": 0,
       "src": "web-container.motion.json",
       "file": "lib/web-container.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/web-container.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

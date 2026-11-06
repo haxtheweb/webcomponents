@@ -2,5 +2,10 @@
   "revealAnswer": "సమాధానాన్ని చూపించు",
   "close": "మూసివేయి",
   "moreInformation": "మరింత సమాచారం",
-  "hideAnswer": "సమాధానాన్ని దాచు"
+  "hideAnswer": "సమాధానాన్ని దాచు",
+  "directions": "సూచనలు",
+  "showDirections": "సూచనలను చూపించు",
+  "hideDirections": "సూచనలను దాచు",
+  "selfCheckDirections": "ముందుగా మీ సమాధానం గురించి ఆలోచించండి, తర్వాత పోల్చి చూడటానికి సమాధానాన్ని చూపించండి.",
+  "answerRevealed": "సమాధానం చూపబడింది"
 }

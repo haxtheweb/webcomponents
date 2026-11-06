@@ -106,13 +106,13 @@
       "order": 0,
       "src": "career-timeline.motion.json",
       "file": "lib/career-timeline.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/career-timeline.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

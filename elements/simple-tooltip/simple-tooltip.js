@@ -195,7 +195,9 @@ class SimpleTooltip extends LitElement {
           animation-delay: -30s !important;
         }
 
-        .hidden {
+        /* #tooltip.hidden (not .hidden) so the id-level width/padding/margin
+           on #tooltip above cannot override the 1px visually-hidden box */
+        #tooltip.hidden {
           position: absolute;
           left: -10000px;
           inset-inline-start: -10000px;
@@ -203,6 +205,8 @@ class SimpleTooltip extends LitElement {
           top: auto;
           width: 1px;
           height: 1px;
+          padding: 0;
+          margin: 0;
           overflow: hidden;
         }
       `,

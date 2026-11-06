@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "Päring on liiga suur.",
   "INPUT_TOO_LARGE": "Sisend on liiga suur (kuni {maxBytes} baiti).",
   "FILE_RATE_LIMITED": "Sellel veebisaidil on liiga palju failitoiminguid. Proovige uuesti {retryAfter} pärast.",
+  "LINK_CHECK_RATE_LIMITED": "Sellel veebisaidil on liiga palju lingikontrolle. Proovige uuesti {retryAfter} pärast.",
   "SITE_NAME_INVALID": "Veebisaidi nimes võivad olla ainult tähed, numbrid, sidekriipsud ja allkriipsud.",
   "USER_NAME_INVALID": "Kasutajanimes võivad olla ainult tähed, numbrid, sidekriipsud ja allkriipsud.",
   "SITE_NAME_REQUIRED": "Veebisaidi nimi on nõutav.",

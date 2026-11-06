@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "Masyadong malaki ang kahilingan.",
   "INPUT_TOO_LARGE": "Masyadong malaki ang input (maximum na {maxBytes} byte).",
   "FILE_RATE_LIMITED": "Masyadong maraming operasyon sa file sa site na ito. Subukang muli pagkalipas ng {retryAfter}.",
+  "LINK_CHECK_RATE_LIMITED": "Masyadong maraming pagsusuri ng link sa site na ito. Subukang muli pagkalipas ng {retryAfter}.",
   "SITE_NAME_INVALID": "Mga titik, numero, gitling, at underscore lang ang maaaring gamitin sa pangalan ng site.",
   "USER_NAME_INVALID": "Mga titik, numero, gitling, at underscore lang ang maaaring gamitin sa username.",
   "SITE_NAME_REQUIRED": "Kailangan ang pangalan ng site.",

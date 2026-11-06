@@ -2,5 +2,10 @@
   "revealAnswer": "Fi ìdáhùn hàn",
   "close": "Pa dé",
   "moreInformation": "Ìsọfúnni síi",
-  "hideAnswer": "Fi ìdáhùn pamọ́"
+  "hideAnswer": "Fi ìdáhùn pamọ́",
+  "directions": "Ìtọ́sọ́nà",
+  "showDirections": "Fi ìtọ́sọ́nà hàn",
+  "hideDirections": "Fi ìtọ́sọ́nà pamọ́",
+  "selfCheckDirections": "Kọ́kọ́ ronú nípa ìdáhùn rẹ, lẹ́yìn náà fi ìdáhùn hàn láti fi wé e.",
+  "answerRevealed": "A ti fi ìdáhùn hàn"
 }

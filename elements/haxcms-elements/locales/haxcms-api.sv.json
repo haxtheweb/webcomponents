@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "Begäran är för stor.",
   "INPUT_TOO_LARGE": "Indata är för stora (högst {maxBytes} byte).",
   "FILE_RATE_LIMITED": "För många filåtgärder på den här webbplatsen. Försök igen om {retryAfter}.",
+  "LINK_CHECK_RATE_LIMITED": "För många länkkontroller på den här webbplatsen. Försök igen om {retryAfter}.",
   "SITE_NAME_INVALID": "Webbplatsnamn får bara innehålla bokstäver, siffror, bindestreck och understreck.",
   "USER_NAME_INVALID": "Användarnamn får bara innehålla bokstäver, siffror, bindestreck och understreck.",
   "SITE_NAME_REQUIRED": "Ett webbplatsnamn krävs.",

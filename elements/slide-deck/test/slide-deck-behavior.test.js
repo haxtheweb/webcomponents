@@ -907,6 +907,9 @@ describe("slide-deck behavior", () => {
     expect(element.haxHooks()).to.deep.equal({
       gizmoRegistration: "haxgizmoRegistration",
       processFileUpload: "haxprocessFileUpload",
+      // learner data is not recorded while editing
+      editModeChanged: "haxeditModeChanged",
+      activeElementChanged: "haxactiveElementChanged",
     });
     // gizmoRegistration registers the haxProperties locales with i18n-manager
     const registered = [];

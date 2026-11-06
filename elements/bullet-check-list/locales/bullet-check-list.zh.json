@@ -1,3 +1,12 @@
 {
-  "blockLabel": "检查清单 · {done} / {total}"
+  "progress": "已完成 {done} / {total}",
+  "currentStep": "当前步骤",
+  "checklist": "检查清单",
+  "blockLabel": "检查清单 · {done} / {total}",
+  "directions": "说明",
+  "showDirections": "显示说明",
+  "hideDirections": "隐藏说明",
+  "checklistDirections": "完成每一项后请勾选。你的勾选会被保存，方便你从上次停下的地方继续。",
+  "orderedDirections": "请按顺序完成各个步骤，每完成一步就勾选。你的勾选会被保存，方便你从上次停下的地方继续。",
+  "complete": "已完成"
 }

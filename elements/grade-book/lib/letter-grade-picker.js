@@ -133,22 +133,24 @@ class LetterGradePicker extends LitElement {
             </button>
           `,
         )}
-        ${this.input
-          ? html`
-              <span class="score-wrapper">
-                <simple-fields-field
-                  type="number"
-                  part="simple-fields-field"
-                  min="0"
-                  value="${this.score}"
-                  max="${this.possible}"
-                  @value-changed="${this.scoreUpdated}"
-                  maxlength="10"
-                ></simple-fields-field>
-                / ${this.possible}</span
-              >
-            `
-          : nothing}
+        ${
+          this.input
+            ? html`
+                <span class="score-wrapper">
+                  <simple-fields-field
+                    type="number"
+                    part="simple-fields-field"
+                    min="0"
+                    value="${this.score}"
+                    max="${this.possible}"
+                    @value-changed="${this.scoreUpdated}"
+                    maxlength="10"
+                  ></simple-fields-field>
+                  / ${this.possible}</span
+                >
+              `
+            : nothing
+        }
         <slot name="suffix"></slot>
         ${this.input ? html`` : nothing}
       </div>

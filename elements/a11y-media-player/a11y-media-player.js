@@ -13,9 +13,23 @@ import { normalizeEventPath } from "@haxtheweb/utils/lib/events.js";
 import {
   activityId,
   buildStatement,
+  xapiDuration,
   XAPI_ACTIVITY_TYPES,
   XAPI_EXTENSIONS,
 } from "@haxtheweb/user-action/lib/xapi.js";
+
+// learner data milestones, as the share of the media actually watched.
+// Completion is 95%, not 100%: YouTube often stops reporting time a moment
+// before the very end, so an exact 100% may never be reached.
+export const MEDIA_WATCH_HALF = 0.5;
+export const MEDIA_WATCH_DONE = 0.95;
+// the largest jump in media time still counted as watching; anything bigger
+// is a seek (YouTube reports every 250ms, HTML5 every ~250ms, fast playback
+// at 2x moves about 0.5s between reports)
+const MEDIA_WATCH_MAX_STEP = 3;
+// xAPI video profile extension: share of the media watched, 0 to 1
+export const XAPI_MEDIA_PROGRESS =
+  "https://w3id.org/xapi/video/extensions/progress";
 import "@haxtheweb/absolute-position-behavior/absolute-position-behavior.js";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import "@haxtheweb/simple-search/simple-search.js";
@@ -1903,11 +1917,15 @@ class A11yMediaPlayer extends SchemaBehaviors(
     return {
       tag: "a11y-media-player",
       event: "user-engagement",
-      verbs: ["completed"],
+      verbs: ["attempted", "progressed", "completed"],
       objectType: "http://adlnet.gov/expapi/activities/media",
-      result: ["completion"],
+      result: [
+        "completion",
+        "duration",
+        "extensions.https://w3id.org/xapi/video/extensions/progress",
+      ],
       countsTowardCompletion: true,
-      done: "played to the end",
+      done: "95% of the media actually watched (seeking ahead does not count)",
     };
   }
 
@@ -2023,6 +2041,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
     this.__captionsOption = -1;
     this.__loadedTracks = null;
     this.__playing = false;
+    this._resetWatched();
     this.__settingsOpen = false;
     this.__transcriptOption = -1;
     // global listeners for settings menu ESC and click-away behavior
@@ -2596,6 +2615,13 @@ class A11yMediaPlayer extends SchemaBehaviors(
 
       if (change(["source", "sources"])) {
         this._updateMediaSource();
+      }
+      // new media is a new activity: start counting what is watched again
+      if (
+        change(["source", "sources", "youtubeId"]) &&
+        oldValue !== undefined
+      ) {
+        this._resetWatched();
       }
 
       if (change(["media", "muted"])) this._handleMuteChanged();
@@ -3568,7 +3594,9 @@ class A11yMediaPlayer extends SchemaBehaviors(
    * reaches this branch; for YouTube this provides single-video looping).
    */
   _handleMediaEnded() {
-    this._announceEnded();
+    // reaching the end only completes the media when it was watched; the
+    // last time report before the end is counted first
+    this._trackWatched();
     if (this.loop) {
       this.seek(0);
       this.play();
@@ -3579,18 +3607,91 @@ class A11yMediaPlayer extends SchemaBehaviors(
   }
 
   /**
-   * Learner data: the media was played to the end. Fires user-engagement
-   * (verb completed, with an xAPI statement) once per play-through; the
-   * native and YouTube ended events can both arrive for one ending. When the
-   * player sits inside video-player or audio-player, that element is the
-   * activity.
+   * Learner data: forget what was watched (new media, new visit)
    */
-  _announceEnded() {
-    const now = Date.now();
-    if (this.__endedAt && now - this.__endedAt < 2000) {
+  _resetWatched() {
+    this.__watched = new Set();
+    this.__watchLast = null;
+    this.__watchSent = {};
+  }
+
+  /**
+   * Learner data: count the media time actually watched. Called on every
+   * time report. Only playback that moves forward in small steps counts, so
+   * seeking or scrubbing ahead never adds to it, and each second counts once
+   * however often it is replayed. Sends the milestones when reached.
+   */
+  _trackWatched() {
+    const media = this.media;
+    const raw = media ? Number(media.currentTime) : 0;
+    const t = isFinite(raw) && raw > 0 ? raw : 0;
+    const last = this.__watchLast;
+    this.__watchLast = t;
+    const playing = this.__playing || !!(media && media.paused === false);
+    if (!playing || this.__seeking || last === null) {
       return;
     }
-    this.__endedAt = now;
+    const step = t - last;
+    if (step <= 0 || step > MEDIA_WATCH_MAX_STEP) {
+      return;
+    }
+    for (let sec = Math.floor(last); sec <= Math.floor(t); sec++) {
+      this.__watched.add(sec);
+    }
+    this._checkWatched();
+  }
+
+  /**
+   * Learner data: share of the media watched, 0 to 1, or null when the
+   * duration is not known (still loading, live streams)
+   */
+  get watchedShare() {
+    const d = Number(this.duration);
+    if (!isFinite(d) || d <= 0 || !this.__watched) {
+      return null;
+    }
+    return Math.min(1, this.__watched.size / Math.ceil(d));
+  }
+
+  /**
+   * Learner data: send start, half way and done once each per visit
+   */
+  _checkWatched() {
+    const sent = this.__watchSent;
+    if (!sent.attempted && this.__watched.size) {
+      sent.attempted = true;
+      this._announceMedia("attempted");
+    }
+    const share = this.watchedShare;
+    if (share === null) {
+      return;
+    }
+    if (!sent.progressed && share >= MEDIA_WATCH_HALF) {
+      sent.progressed = true;
+      this._announceMedia("progressed", share);
+    }
+    if (!sent.completed && share >= MEDIA_WATCH_DONE) {
+      sent.completed = true;
+      this._announceEnded();
+    }
+  }
+
+  /**
+   * Learner data: the media was watched (95% or more). Fires
+   * user-engagement (verb completed, with an xAPI statement) once per visit.
+   */
+  _announceEnded() {
+    this._announceMedia("completed", this.watchedShare);
+  }
+
+  /**
+   * Learner data: one user-engagement event with an xAPI statement about
+   * this media. When the player sits inside video-player or audio-player,
+   * that element is the activity.
+   * @param {string} verb attempted, progressed or completed
+   * @param {number|null} [share] share of the media watched, 0 to 1
+   */
+  _announceMedia(verb, share) {
     const root = this.getRootNode ? this.getRootNode() : null;
     const host =
       root &&
@@ -3602,31 +3703,47 @@ class A11yMediaPlayer extends SchemaBehaviors(
     const name = this.mediaTitle || host.getAttribute("title") || tag;
     const fingerprint =
       host.source || host.getAttribute("source") || this.mediaTitle || "";
+    const done = verb === "completed";
+    let result;
+    if (verb !== "attempted") {
+      result = {
+        completion: done,
+        duration: xapiDuration(this.__watched.size * 1000),
+      };
+      if (typeof share === "number") {
+        result.extensions = {
+          [XAPI_MEDIA_PROGRESS]: Math.round(share * 100) / 100,
+        };
+      }
+    }
+    const detail = {
+      activityDisplay: verb,
+      objectName: name,
+      statement: buildStatement({
+        verb,
+        object: {
+          id: activityId(
+            host,
+            typeof host.xapiFingerprint === "function"
+              ? host.xapiFingerprint()
+              : fingerprint,
+          ),
+          name,
+          type: XAPI_ACTIVITY_TYPES.media,
+        },
+        result,
+        context: { extensions: { [XAPI_EXTENSIONS.element]: tag } },
+      }),
+    };
+    if (verb !== "attempted") {
+      detail.resultCompletion = done;
+    }
     this.dispatchEvent(
       new CustomEvent("user-engagement", {
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: {
-          activityDisplay: "completed",
-          objectName: name,
-          resultCompletion: true,
-          statement: buildStatement({
-            verb: "completed",
-            object: {
-              id: activityId(
-                host,
-                typeof host.xapiFingerprint === "function"
-                  ? host.xapiFingerprint()
-                  : fingerprint,
-              ),
-              name,
-              type: XAPI_ACTIVITY_TYPES.media,
-            },
-            result: { completion: true },
-            context: { extensions: { [XAPI_EXTENSIONS.element]: tag } },
-          }),
-        },
+        detail,
       }),
     );
   }
@@ -3712,6 +3829,8 @@ class A11yMediaPlayer extends SchemaBehaviors(
    * handles time updates
    */
   _handleTimeUpdate() {
+    // learner data reads every report, before the paint coalescing below
+    this._trackWatched();
     // Coalesce rapid timeupdate events into a single per-frame read so the
     // progress pin updates aligned to paint instead of once per second.
     if (this.__timeUpdateRaf) return;

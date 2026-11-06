@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "İstek çok büyük.",
   "INPUT_TOO_LARGE": "Girdi çok büyük (en fazla {maxBytes} bayt).",
   "FILE_RATE_LIMITED": "Bu sitede çok fazla dosya işlemi yapıldı. {retryAfter} sonra tekrar deneyin.",
+  "LINK_CHECK_RATE_LIMITED": "Bu sitede çok fazla bağlantı denetimi yapıldı. {retryAfter} sonra tekrar deneyin.",
   "SITE_NAME_INVALID": "Site adları yalnızca harf, rakam, kısa çizgi ve alt çizgi içerebilir.",
   "USER_NAME_INVALID": "Kullanıcı adları yalnızca harf, rakam, kısa çizgi ve alt çizgi içerebilir.",
   "SITE_NAME_REQUIRED": "Site adı gerekli.",

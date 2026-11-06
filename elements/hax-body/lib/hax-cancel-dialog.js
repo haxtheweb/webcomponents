@@ -1,27 +1,51 @@
 import { LitElement, html, css } from "lit";
 import "@haxtheweb/simple-modal/lib/simple-modal-template.js";
+import "@haxtheweb/d-d-d/lib/hax-confirm-dialog.js";
+import {
+  HaxUiDialogConfirm,
+  haxUiDialogVars,
+} from "@haxtheweb/d-d-d/lib/HaxUiDialogFrame.js";
 import { HaxComponentStyles } from "./hax-ui-styles.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 /**
  * `hax-cancel-dialog`
  * @element hax-cancel-dialog
- * `Export dialog with all export options and settings provided.`
+ * `Asks before the tray's cancel throws away unsaved changes.`
+ *
+ * It is the same confirm card as the site admin's discard prompt (the HAX
+ * UI dialog frame's HaxUiDialogConfirm with a hax-confirm-dialog): the
+ * question as a bold heading, a muted message, "No" focused first and
+ * "Yes" as a danger fill. hax-store still opens it from the tray's cancel
+ * button through #dialog and still hears simple-modal-confirmed with that
+ * button as invokedBy, so nothing that listens for hax-cancel changes.
  */
 class HaxCancelDialog extends I18NMixin(LitElement) {
   static get styles() {
     return [
       ...HaxComponentStyles,
+      haxUiDialogVars(HaxUiDialogConfirm),
       css`
         :host {
           display: none;
           --simple-modal-resize: none;
-          --simple-modal-width: 200px;
-          --simple-modal-height: auto;
           margin: 0;
           padding: 0;
         }
       `,
     ];
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    this.windowControllers = new AbortController();
+    globalThis.addEventListener(
+      "hax-confirm-dialog-confirm",
+      this._confirmed.bind(this),
+      { signal: this.windowControllers.signal },
+    );
+  }
+  disconnectedCallback() {
+    this.windowControllers.abort();
+    super.disconnectedCallback();
   }
   render() {
     return html`
@@ -31,26 +55,41 @@ class HaxCancelDialog extends I18NMixin(LitElement) {
         id="dialog"
         .title="${this.t.cancelTitle}"
       >
-        <div slot="content">${this.t.cancelWithoutSaving}</div>
-        <hax-toolbar id="hax-cancel-buttons" always-expanded slot="buttons">
-          <hax-tray-button
-            id="hax-cancel-no"
-            label="${this.t.cancelNo}"
-            dialog-dismiss
-            show-text-label
-          >
-          </hax-tray-button>
-          <hax-tray-button
-            id="hax-cancel-yes"
-            dialog-confirm
-            @click="${(e) => console.log(e)}"
-            label="${this.t.cancelYes}"
-            show-text-label
-          >
-          </hax-tray-button>
-        </hax-toolbar>
+        <hax-confirm-dialog
+          slot="content"
+          id="hax-cancel-confirm"
+          destructive
+          message="${this.t.cancelWithoutSaving}"
+          confirm-label="${this.t.cancelYes}"
+          cancel-label="${this.t.cancelNo}"
+        ></hax-confirm-dialog>
       </simple-modal-template>
     `;
+  }
+  /**
+   * The modal holds a copy of the card, so its "Yes" is told apart by id.
+   * Answer the way simple-modal's dialog-confirm did, with the modal's
+   * invokedBy, before the card closes the modal.
+   */
+  _confirmed(e) {
+    const card = e.composedPath()[0];
+    if (!card || card.id !== "hax-cancel-confirm") {
+      return;
+    }
+    const modal = globalThis.SimpleModal
+      ? globalThis.SimpleModal.requestAvailability()
+      : null;
+    (modal || globalThis).dispatchEvent(
+      new CustomEvent("simple-modal-confirmed", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          opened: false,
+          invokedBy: modal ? modal.invokedBy : null,
+        },
+      }),
+    );
   }
   static get tag() {
     return "hax-cancel-dialog";
@@ -77,20 +116,21 @@ class HaxCancelDialog extends I18NMixin(LitElement) {
     );
   }
   /**
-   * Focus the initial action button when the dialog becomes visible.
+   * Focus the safe choice ("No") when the dialog becomes visible.
    */
   focusInitial() {
     if (!this.shadowRoot) {
       return;
     }
-    const noButton = this.shadowRoot.querySelector("#hax-cancel-no");
-    if (noButton && typeof noButton.focus === "function") {
-      noButton.focus();
+    const card = this.shadowRoot.querySelector("#hax-cancel-confirm");
+    if (card && typeof card.focusInitial === "function") {
+      card.focusInitial();
     }
   }
 
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.t = {
       cancelTitle: "Confirm Cancel",
       cancelWithoutSaving:

@@ -2,5 +2,10 @@
   "revealAnswer": "ສະແດງຄຳຕອບ",
   "close": "ປິດ",
   "moreInformation": "ຂໍ້ມູນເພີ່ມເຕີມ",
-  "hideAnswer": "ເຊື່ອງຄຳຕອບ"
+  "hideAnswer": "ເຊື່ອງຄຳຕອບ",
+  "directions": "ຄຳແນະນຳ",
+  "showDirections": "ສະແດງຄຳແນະນຳ",
+  "hideDirections": "ເຊື່ອງຄຳແນະນຳ",
+  "selfCheckDirections": "ຄິດຫາຄຳຕອບຂອງທ່ານກ່ອນ, ແລ້ວສະແດງຄຳຕອບເພື່ອປຽບທຽບ.",
+  "answerRevealed": "ສະແດງຄຳຕອບແລ້ວ"
 }

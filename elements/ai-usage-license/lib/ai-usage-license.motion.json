@@ -320,7 +320,7 @@
     "line": "Display an AI Usage License (AIUL) badge for your work",
     "code": "<ai-usage-license license=\"CD\" modifier=\"IM\"></ai-usage-license>"
   },
-  "surfaceHash": "1a79b511bead",
+  "surfaceHash": "ebbf21465cfc",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

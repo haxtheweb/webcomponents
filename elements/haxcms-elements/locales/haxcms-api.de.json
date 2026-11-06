@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "Die Anfrage ist zu groß.",
   "INPUT_TOO_LARGE": "Die Eingabe ist zu groß (maximal {maxBytes} Byte).",
   "FILE_RATE_LIMITED": "Zu viele Dateivorgänge auf dieser Website. Versuchen Sie es in {retryAfter} erneut.",
+  "LINK_CHECK_RATE_LIMITED": "Zu viele Linkprüfungen auf dieser Website. Versuchen Sie es in {retryAfter} erneut.",
   "SITE_NAME_INVALID": "Website-Namen dürfen nur Buchstaben, Zahlen, Bindestriche und Unterstriche enthalten.",
   "USER_NAME_INVALID": "Benutzernamen dürfen nur Buchstaben, Zahlen, Bindestriche und Unterstriche enthalten.",
   "SITE_NAME_REQUIRED": "Ein Website-Name ist erforderlich.",

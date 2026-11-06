@@ -341,10 +341,54 @@ describe("hax-store methods round 3", () => {
     it("does not backtrack catastrophically on an unterminated attribute-like text", async () => {
       const p = globalThis.document.createElement("p");
       p.textContent = ' data-hax-ray="' + " ".repeat(50000);
-      const start = performance.now();
-      const content = await HAXStore.nodeToContent(p);
-      expect(performance.now() - start).to.be.below(2000);
+      // keeps a time limit because it guards catastrophic (super-linear)
+      // regex backtracking; normal is ~1-3ms, so 2000ms is far above 5x.
+      // Fastest of 3 so one GC pause or busy runner cannot fail it.
+      let best = Infinity;
+      let content = "";
+      for (let run = 0; run < 3; run++) {
+        const start = performance.now();
+        content = await HAXStore.nodeToContent(p);
+        best = Math.min(best, performance.now() - start);
+      }
+      expect(best).to.be.below(2000);
       expect(content).to.contain("data-hax-ray");
+    });
+
+    it("writes one fresh fallback copy instead of adding to the saved one", async () => {
+      if (!globalThis.customElements.get("prog-fallback-tester")) {
+        globalThis.customElements.define(
+          "prog-fallback-tester",
+          class extends HTMLElement {
+            haxHooks() {
+              return { progressiveEnhancement: "haxprogressiveEnhancement" };
+            }
+            haxprogressiveEnhancement() {
+              return '<div slot="fallback" data-prog-fallback><p>fresh</p></div>';
+            }
+          },
+        );
+      }
+      HAXStore.validTagList = [
+        ...HAXStore.validTagList,
+        "prog-fallback-tester",
+      ];
+      const el = globalThis.document.createElement("prog-fallback-tester");
+      // what a page saved earlier carries: authored content plus last save's copy
+      el.innerHTML =
+        '<span slot="label">kept</span><div slot="fallback" data-prog-fallback><p>stale</p></div>';
+      const content = await HAXStore.nodeToContent(el);
+      expect(content).to.contain("kept");
+      expect(content).to.contain("fresh");
+      expect(content).to.not.contain("stale");
+      expect(content.split("data-prog-fallback").length - 1).to.equal(1);
+    });
+
+    it("keeps data-prog-fallback children of elements without the hook", async () => {
+      const div = globalThis.document.createElement("div");
+      div.innerHTML = "<span data-prog-fallback>authored</span>";
+      const content = await HAXStore.nodeToContent(div);
+      expect(content).to.contain("authored");
     });
 
     it("handles self-closing void tags", async () => {

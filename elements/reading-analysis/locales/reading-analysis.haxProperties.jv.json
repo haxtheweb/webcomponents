@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Analisis wacan",
+    "description": "Siswa nandhani ukara, paragraf utawa gambar ing wacan sing dadi bukti kanggo saben label, utawa milih bagéan sing paling pas mangsuli pitakonan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pitakonan",
+        "description": "Apa sing kudu digoléki siswa ing wacan."
+      },
+      {
+        "property": "mode",
+        "title": "Kegiatan",
+        "description": "Tandhani bukti: siswa nempelaké saben gendéra ing sandhingé buktiné. Pilih siji: siswa milih siji bagéan sing paling pas mangsuli pitakonan."
+      },
+      {
+        "property": "unit",
+        "title": "Siswa milih",
+        "description": "Apa sing dituduhaké siswa ing wacan. Gambar tansah bisa dipilih."
+      },
+      {
+        "property": "answers",
+        "title": "Gendéra",
+        "description": "Label sing dipasang siswa. Gunakaké Tandhani wangsulan ing menu blok kanggo milih panggonané saben label."
+      },
+      {
+        "slot": "",
+        "title": "Wacan",
+        "description": "Wacan sing digarap siswa. HTML apa waé: irah-irahan, paragraf, dhaptar lan gambar."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format biji",
+        "description": "OER Schema: format biji kanggo penilaian iki (contone poin, huruf, persen, rampung)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Tujuan sinau",
+        "description": "OER Schema: tujuan sinau sing ana gandhengane karo penilaian iki."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursus",
+        "description": "OER Schema: kursus sing dituju penilaian iki."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Upaya",
+        "description": "Kaping pira siswa bisa mriksa. 0 tegesé ora winates."
+      },
+      {
+        "property": "collapsible",
+        "title": "Bisa diciutake",
+        "description": "Tampilna pitakonan iki minangka baris sing bisa dibuka lan ditutup. Mbuka siji bakal nutup pitakonan liyane sing bisa diciutake ing sacedhake."
+      },
+      {
+        "property": "collapsed",
+        "title": "Wiwiti kanthi diciutake",
+        "description": "Yen bisa diciutake, diwiwiti minangka baris tertutup sing mung nuduhake pitakonan lan statuse."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Jeneng kuis",
+        "description": "Jeneng kuis sing dikirim kanggo digunakake ing lingkungan adhedhasar xAPI kanggo ngenali item iki"
+      }
+    ]
+  }
+}

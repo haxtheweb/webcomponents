@@ -320,7 +320,7 @@
     "line": "Wrapper for Spotify player embeds.",
     "code": "<spotify-embed></spotify-embed>"
   },
-  "surfaceHash": "24c5b3b18605",
+  "surfaceHash": "191935072dd1",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

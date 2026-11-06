@@ -2,5 +2,10 @@
   "revealAnswer": "Vis svar",
   "close": "Lukk",
   "moreInformation": "Mer informasjon",
-  "hideAnswer": "Skjul svaret"
+  "hideAnswer": "Skjul svaret",
+  "directions": "Instruksjoner",
+  "showDirections": "Vis veiledning",
+  "hideDirections": "Skjul veiledning",
+  "selfCheckDirections": "Tenk på svaret ditt først, og vis deretter svaret for å sammenligne.",
+  "answerRevealed": "Svaret vises"
 }

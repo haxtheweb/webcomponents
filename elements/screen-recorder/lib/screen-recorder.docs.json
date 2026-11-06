@@ -128,13 +128,13 @@
       "order": 0,
       "src": "screen-recorder.motion.json",
       "file": "lib/screen-recorder.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/screen-recorder.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

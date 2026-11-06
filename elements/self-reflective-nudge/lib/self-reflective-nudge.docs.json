@@ -199,13 +199,13 @@
       "order": 0,
       "src": "self-reflective-nudge.motion.json",
       "file": "lib/self-reflective-nudge.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/self-reflective-nudge.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

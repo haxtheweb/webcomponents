@@ -15,6 +15,7 @@ import {
   HaxUiAdminScheme,
 } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
 import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminIcons.js";
+import { HaxUiDialogTitlebarStyles } from "@haxtheweb/d-d-d/lib/HaxUiDialogFrame.js";
 import {
   MerlinDarkScheme,
   MerlinWandStyles,
@@ -685,6 +686,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
       styles,
       ...HaxUiAdminTokens,
       ...HaxUiAdminScheme,
+      ...HaxUiDialogTitlebarStyles,
       MerlinDarkScheme,
       MerlinWandStyles,
       css`
@@ -731,49 +733,17 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
           flex: 1 1 auto;
           min-height: 0;
         }
+        /* the HAX UI dialog frame titlebar (.hax-ui-dialog-*), with the
+           wand, the shortcut hint and a little room before close */
         .titlebar {
-          flex: none;
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          height: var(--hax-ui-titlebar-height);
-          padding: 0 var(--ddd-spacing-3, 12px) 0 var(--ddd-spacing-4, 16px);
-          font-family: var(--hax-ui-admin-font-family);
-          color: var(--hax-ui-on-titlebar);
-          background-color: var(--hax-ui-titlebar);
           --merlin-wand-size: 18px;
         }
-        .titlebar h2 {
-          margin: 0;
-          font-size: 16px;
-          font-weight: var(--ddd-font-weight-bold, 700);
-        }
         .titlebar .keys {
-          margin-left: auto;
           font-size: var(--hax-ui-admin-font-size-xs, 12px);
           color: var(--ddd-theme-default-white65, rgba(255, 255, 255, 0.75));
         }
         #cancel {
-          all: unset;
-          box-sizing: border-box;
-          cursor: pointer;
-          display: grid;
-          place-items: center;
-          width: 32px;
-          height: 32px;
           margin-left: var(--hax-ui-gap-md, 8px);
-          border-radius: var(--hax-ui-radius, 4px);
-          color: inherit;
-          --simple-icon-width: 20px;
-          --simple-icon-height: 20px;
-        }
-        #cancel:hover {
-          background-color: rgba(255, 255, 255, 0.12);
-        }
-        #cancel:focus-visible {
-          outline: var(--hax-ui-focus-width, 2px) solid
-            var(--ddd-theme-default-keystoneYellow, #ffd100);
-          outline-offset: -2px;
         }
         @media screen and (max-width: 768px) {
           web-dialog::part(dialog) {
@@ -1363,15 +1333,16 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
               @close="${this.close}"
               @focusout="${this.focusout}"
             >
-              <div class="titlebar" part="titlebar">
+              <div class="titlebar hax-ui-dialog-titlebar" part="titlebar">
                 ${merlinWand()}
-                <h2>${this.t.merlin}</h2>
+                <h2 class="hax-ui-dialog-title">${this.t.merlin}</h2>
                 <span class="keys" aria-hidden="true"
                   >${this.key1} + ${this.key2}</span
                 >
                 <button
                   type="button"
                   id="cancel"
+                  class="hax-ui-dialog-close"
                   aria-label="${this.t.closeMerlin}"
                   title="${this.t.closeMerlin}"
                   @click="${this.close}"

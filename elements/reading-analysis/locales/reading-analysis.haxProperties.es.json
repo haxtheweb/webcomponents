@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Análisis de lectura",
+    "description": "Los estudiantes colocan banderitas en las oraciones, párrafos o figuras de una lectura que son evidencia de cada etiqueta, o seleccionan el fragmento que mejor responde a una pregunta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pregunta",
+        "description": "Lo que se pide a los estudiantes que encuentren en la lectura."
+      },
+      {
+        "property": "mode",
+        "title": "Actividad",
+        "description": "Marcar evidencias: los estudiantes pegan cada banderita junto a su evidencia. Seleccionar uno: los estudiantes eligen el único fragmento que mejor responde a la pregunta."
+      },
+      {
+        "property": "unit",
+        "title": "Los estudiantes seleccionan",
+        "description": "Lo que un estudiante señala en la lectura. Las figuras siempre se pueden seleccionar."
+      },
+      {
+        "property": "answers",
+        "title": "Banderitas",
+        "description": "Las etiquetas que colocan los estudiantes. Usa Marcar respuestas en el menú del bloque para elegir dónde va cada una."
+      },
+      {
+        "slot": "",
+        "title": "Lectura",
+        "description": "La lectura con la que trabajan los estudiantes. Cualquier HTML: encabezados, párrafos, listas y figuras."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Formato de calificación",
+        "description": "OER Schema: formato de calificación de esta evaluación (p. ej., puntos, letra, porcentaje, finalización)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Objetivo de aprendizaje",
+        "description": "OER Schema: objetivo de aprendizaje asociado a esta evaluación."
+      },
+      {
+        "property": "forCourse",
+        "title": "Curso",
+        "description": "OER Schema: curso al que está destinada esta evaluación."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Intentos",
+        "description": "Cuántas veces puede comprobar un estudiante. 0 significa ilimitado."
+      },
+      {
+        "property": "collapsible",
+        "title": "Plegable",
+        "description": "Muestra esta pregunta como una fila que se abre y se cierra. Al abrir una, se cierran las demás preguntas plegables que tiene al lado."
+      },
+      {
+        "property": "collapsed",
+        "title": "Iniciar plegado",
+        "description": "Si es plegable, comienza como una fila cerrada que solo muestra la pregunta y su estado."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nombre del cuestionario",
+        "description": "Nombre del cuestionario que se usa en entornos basados en xAPI para identificar este elemento"
+      }
+    ]
+  }
+}

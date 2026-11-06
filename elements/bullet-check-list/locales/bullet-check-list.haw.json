@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Papa nānā · {done} o {total}"
+  "progress": "Ua pau {done} o {total}",
+  "currentStep": "Pae o kēia manawa",
+  "checklist": "Papa nānā",
+  "blockLabel": "Papa nānā · {done} o {total}",
+  "directions": "Nā kuhikuhi",
+  "showDirections": "E hōʻike i nā kuhikuhi",
+  "hideDirections": "E peʻe i nā kuhikuhi",
+  "checklistDirections": "E kaha i kēlā me kēia mea i kou hoʻopau ʻana. Mālama ʻia kāu mau kaha i hiki iā ʻoe ke hoʻomau ma kahi āu i hoʻōki ai.",
+  "orderedDirections": "E hana i nā pae ma ke kaʻina a e kaha i kēlā me kēia i kou hoʻopau ʻana. Mālama ʻia kāu mau kaha i hiki iā ʻoe ke hoʻomau ma kahi āu i hoʻōki ai.",
+  "complete": "Pau"
 }

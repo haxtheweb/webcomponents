@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Ndepụta nlele · {done} n'ime {total}"
+  "progress": "{done} n'ime {total} emechala",
+  "currentStep": "Usoro ugbu a",
+  "checklist": "Ndepụta nlele",
+  "blockLabel": "Ndepụta nlele · {done} n'ime {total}",
+  "directions": "Ntuziaka",
+  "showDirections": "Gosi ntụziaka",
+  "hideDirections": "Zoo ntụziaka",
+  "checklistDirections": "Kaa akara n'ihe ọ bụla ka ị na-emecha ya. A na-echekwa akara gị ka i nwee ike ịga n'ihu ebe ị kwụsịrị.",
+  "orderedDirections": "Soro usoro ndị a n'usoro ma kaa akara n'nke ọ bụla ka ị na-emecha ya. A na-echekwa akara gị ka i nwee ike ịga n'ihu ebe ị kwụsịrị.",
+  "complete": "Emechala"
 }

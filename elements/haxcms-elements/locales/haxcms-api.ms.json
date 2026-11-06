@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "Permintaan terlalu besar.",
   "INPUT_TOO_LARGE": "Input terlalu besar (maksimum {maxBytes} bait).",
   "FILE_RATE_LIMITED": "Terlalu banyak operasi fail pada tapak ini. Cuba lagi dalam {retryAfter}.",
+  "LINK_CHECK_RATE_LIMITED": "Terlalu banyak semakan pautan pada tapak ini. Cuba lagi dalam {retryAfter}.",
   "SITE_NAME_INVALID": "Nama tapak hanya boleh menggunakan huruf, nombor, sempang dan garis bawah.",
   "USER_NAME_INVALID": "Nama pengguna hanya boleh menggunakan huruf, nombor, sempang dan garis bawah.",
   "SITE_NAME_REQUIRED": "Nama tapak diperlukan.",

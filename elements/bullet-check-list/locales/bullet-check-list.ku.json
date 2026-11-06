@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Lîsteya kontrolê · {done} ji {total}"
+  "progress": "{done} ji {total} qediyan",
+  "currentStep": "Gava niha",
+  "checklist": "Lîsteya kontrolê",
+  "blockLabel": "Lîsteya kontrolê · {done} ji {total}",
+  "directions": "Rêber",
+  "showDirections": "Rêwerzan nîşan bide",
+  "hideDirections": "Rêwerzan veşêre",
+  "checklistDirections": "Her babetekê dema ku te qedand nîşan bike. Nîşanên te têne tomarkirin da ku tu karibî ji cihê ku lê mayî berdewam bikî.",
+  "orderedDirections": "Gavan bi rêzê bike û her yekê dema ku te qedand nîşan bike. Nîşanên te têne tomarkirin da ku tu karibî ji cihê ku lê mayî berdewam bikî.",
+  "complete": "Qediya"
 }

@@ -38,6 +38,11 @@ jobs:
             ${{ runner.os }}-node-${{ matrix.node-version }}-yarn-
       - name: Install
         run: yarn install --frozen-lockfile
+      # node --test suites for the repo scripts (xAPI conformance and
+      # vocabulary, docs extractor, template checks); fast, and never run
+      # in CI before, which let a broken conformance test go unnoticed
+      - name: Script tests
+        run: yarn test:scripts
       - name: Stylelint check
         run: npx stylelint **/*.css
       - name: Install Playwright Chromium

@@ -2,5 +2,10 @@
   "revealAnswer": "Uri t-Tweġiba",
   "close": "Agħlaq",
   "moreInformation": "Aktar informazzjoni",
-  "hideAnswer": "Aħbi t-tweġiba"
+  "hideAnswer": "Aħbi t-tweġiba",
+  "directions": "Struzzjonijiet",
+  "showDirections": "Uri d-direzzjonijiet",
+  "hideDirections": "Aħbi d-direzzjonijiet",
+  "selfCheckDirections": "Aħseb l-ewwel fit-tweġiba tiegħek, imbagħad uri t-tweġiba biex tqabbel.",
+  "answerRevealed": "It-tweġiba ntweriet"
 }

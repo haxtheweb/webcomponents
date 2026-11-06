@@ -44026,16 +44026,21 @@
               var x; // get env
 
               var expression = "";
-              Object.entries(this.variables || {}).forEach(function (_ref) {
-                var _ref2 = (0, _slicedToArray2["default"])(_ref, 2),
-                  name = _ref2[0],
-                  val = _ref2[1];
+              var safePlot = _latex2jsUtils.isSafeMathExpression(
+                m[4],
+                this.variables,
+              );
+              if (safePlot) {
+                expression =
+                  _latex2jsUtils.mathVariablePrelude(this.variables) +
+                  "with (Math){" +
+                  m[4] +
+                  "}";
+              } else {
+                _latex2jsUtils.warnUnsafeMathExpression(m[4]);
+              }
 
-                expression += "var " + name + " = " + val + ";";
-              });
-              expression += "with (Math){" + m[4] + "}";
-
-              for (x = startX; x <= endX; x += 0.005) {
+              for (x = startX; safePlot && x <= endX; x += 0.005) {
                 data.push(_latex2jsUtils.X.call(this, x)); // data.push(Y.call(this, Math.cos(x/2)));
 
                 data.push(_latex2jsUtils.Y.call(this, eval(expression)));
@@ -44194,15 +44199,34 @@
 
               var ny1 = _latex2jsUtils.Yinv.call(this, coords[1]);
 
-              var expx1 = "var x = " + nx1 + ";";
-              var expy1 = "var y = " + ny1 + ";"; // return X.call(this, eval(expy1 + expx1 + xExp));
+              var expx1 = "var x = " + Number(nx1) + ";";
+              var expy1 = "var y = " + Number(ny1) + ";"; // return X.call(this, eval(expy1 + expx1 + xExp));
 
+              var safeValue =
+                _latex2jsUtils.isSafeMathVariableName(m[2]) &&
+                _latex2jsUtils.isSafeMathExpression(m[5], this.variables);
+              if (!safeValue) {
+                _latex2jsUtils.warnUnsafeMathExpression(m[5]);
+              }
               var obj = {
                 name: m[2],
                 x: _latex2jsUtils.X.call(this, m[3]),
                 y: _latex2jsUtils.Y.call(this, m[4]),
                 func: m[5],
-                value: eval(expx1 + expy1 + m[5]),
+                value: safeValue
+                  ? eval(
+                      // prelude shadows every allowed variable name so none
+                      // can resolve to a global function (e.g. alert / open)
+                      _latex2jsUtils.mathVariablePrelude(this.variables) +
+                        "var x = " +
+                        Number(nx1) +
+                        ";var y = " +
+                        Number(ny1) +
+                        ";with (Math){" +
+                        m[5] +
+                        "}",
+                    )
+                  : NaN,
               };
               return obj;
             },
@@ -44217,6 +44241,24 @@
               var dots = l.dots;
               var xExp = m[7];
               var yExp = m[8];
+              var xExp2 = m[9];
+              var yExp2 = m[10];
+              var userlineVariables = this.variables;
+              var safeUserExp = function safeUserExp(exp) {
+                if (!exp) return exp;
+                var inner = exp.replace(/^\{/, "").replace(/\}$/, "");
+                if (
+                  !_latex2jsUtils.isSafeMathExpression(inner, userlineVariables)
+                ) {
+                  _latex2jsUtils.warnUnsafeMathExpression(inner);
+                  return "NaN";
+                }
+                return exp;
+              };
+              xExp = safeUserExp(xExp);
+              yExp = safeUserExp(yExp);
+              xExp2 = safeUserExp(xExp2);
+              yExp2 = safeUserExp(yExp2);
               if (xExp)
                 xExp =
                   "with (Math){" +
@@ -44227,8 +44269,6 @@
                   "with (Math){" +
                   yExp.replace(/^\{/, "").replace(/\}$/, "") +
                   "}";
-              var xExp2 = m[9];
-              var yExp2 = m[10];
               if (xExp2)
                 xExp2 =
                   "with (Math){" +
@@ -44239,14 +44279,9 @@
                   "with (Math){" +
                   yExp2.replace(/^\{/, "").replace(/\}$/, "") +
                   "}";
-              var expression = "";
-              Object.entries(this.variables || {}).forEach(function (_ref3) {
-                var _ref4 = (0, _slicedToArray2["default"])(_ref3, 2),
-                  name = _ref4[0],
-                  val = _ref4[1];
-
-                expression += "var " + name + " = " + val + ";";
-              });
+              var expression = _latex2jsUtils.mathVariablePrelude(
+                this.variables,
+              );
               var obj = {
                 x1: _latex2jsUtils.X.call(this, m[3]),
                 y1: _latex2jsUtils.Y.call(this, m[4]),
@@ -44261,8 +44296,8 @@
 
                   var ny1 = _latex2jsUtils.Yinv.call(_this2, coords[1]);
 
-                  var expx1 = "var x = " + nx1 + ";";
-                  var expy1 = "var y = " + ny1 + ";";
+                  var expx1 = "var x = " + Number(nx1) + ";";
+                  var expy1 = "var y = " + Number(ny1) + ";";
                   return _latex2jsUtils.X.call(
                     _this2,
                     eval(expression + expy1 + expx1 + xExp),
@@ -44273,8 +44308,8 @@
 
                   var ny2 = _latex2jsUtils.Yinv.call(_this2, coords[1]);
 
-                  var expx2 = "var x = " + nx2 + ";";
-                  var expy2 = "var y = " + ny2 + ";";
+                  var expx2 = "var x = " + Number(nx2) + ";";
+                  var expy2 = "var y = " + Number(ny2) + ";";
                   return _latex2jsUtils.Y.call(
                     _this2,
                     eval(expression + expy2 + expx2 + yExp),
@@ -44285,8 +44320,8 @@
 
                   var ny3 = _latex2jsUtils.Yinv.call(_this2, coords[1]);
 
-                  var expx3 = "var x = " + nx3 + ";";
-                  var expy3 = "var y = " + ny3 + ";";
+                  var expx3 = "var x = " + Number(nx3) + ";";
+                  var expy3 = "var y = " + Number(ny3) + ";";
                   return _latex2jsUtils.X.call(
                     _this2,
                     eval(expression + expy3 + expx3 + xExp2),
@@ -44297,8 +44332,8 @@
 
                   var ny4 = _latex2jsUtils.Yinv.call(_this2, coords[1]);
 
-                  var expx4 = "var x = " + nx4 + ";";
-                  var expy4 = "var y = " + ny4 + ";";
+                  var expx4 = "var x = " + Number(nx4) + ";";
+                  var expy4 = "var y = " + Number(ny4) + ";";
                   return _latex2jsUtils.Y.call(
                     _this2,
                     eval(expression + expy4 + expx4 + yExp2),
@@ -44557,19 +44592,162 @@
 
           exports.parseArrows = parseArrows;
 
-          var evaluate = function evaluate(exp) {
-            var _this = this;
+          // @hack security: every PSTricks expression used to go straight into
+          // eval, so "\\psplot{0}{1}{fetch(...)}" ran arbitrary script for
+          // anyone viewing the page. Expressions are now checked against a
+          // small math grammar (numbers, operators, Math members and declared
+          // variable names) before they are evaluated.
+          var MATH_MEMBER_NAMES = Object.getOwnPropertyNames(Math);
+          var MATH_BUILTIN_VARIABLES = ["x", "y", "t"];
+          var MATH_RESERVED_NAMES = [
+            "arguments",
+            "await",
+            "break",
+            "case",
+            "catch",
+            "class",
+            "const",
+            "constructor",
+            "continue",
+            "debugger",
+            "default",
+            "delete",
+            "do",
+            "else",
+            "enum",
+            "eval",
+            "export",
+            "extends",
+            "false",
+            "finally",
+            "for",
+            "function",
+            "if",
+            "implements",
+            "import",
+            "in",
+            "instanceof",
+            "interface",
+            "let",
+            "new",
+            "null",
+            "package",
+            "private",
+            "protected",
+            "prototype",
+            "public",
+            "return",
+            "static",
+            "super",
+            "switch",
+            "this",
+            "throw",
+            "true",
+            "try",
+            "typeof",
+            "undefined",
+            "var",
+            "void",
+            "while",
+            "with",
+            "yield",
+            "__proto__",
+          ];
+          var MATH_TOKEN =
+            /\s+|\d+(?:\.\d*)?(?:[eE][+-]?\d+)?|\.\d+(?:[eE][+-]?\d+)?|[A-Za-z_][A-Za-z0-9_]*|===|!==|==|!=|<=|>=|&&|\|\||\*\*|[-+*/%^()<>!?:,&|]/y;
+          var MATH_IDENTIFIER = /^[A-Za-z_][A-Za-z0-9_]*$/;
+          var MATH_NUMBER_OR_SPACE = /^[\d.\s]/;
 
+          var isSafeMathVariableName = function isSafeMathVariableName(name) {
+            return (
+              typeof name === "string" &&
+              MATH_IDENTIFIER.test(name) &&
+              MATH_RESERVED_NAMES.indexOf(name) === -1
+            );
+          };
+
+          exports.isSafeMathVariableName = isSafeMathVariableName;
+
+          var isSafeMathExpression = function isSafeMathExpression(
+            exp,
+            variables,
+          ) {
+            if (typeof exp !== "string") {
+              return false;
+            }
+            var allowed = {};
+            MATH_MEMBER_NAMES.forEach(function (name) {
+              allowed[name] = true;
+            });
+            MATH_BUILTIN_VARIABLES.forEach(function (name) {
+              allowed[name] = true;
+            });
+            Object.keys(variables || {}).forEach(function (name) {
+              if (isSafeMathVariableName(name)) {
+                allowed[name] = true;
+              }
+            });
+            var index = 0;
+            while (index < exp.length) {
+              MATH_TOKEN.lastIndex = index;
+              var match = MATH_TOKEN.exec(exp);
+              if (!match || match[0] === "") {
+                return false;
+              }
+              var token = match[0];
+              if (
+                MATH_IDENTIFIER.test(token) &&
+                !MATH_NUMBER_OR_SPACE.test(token) &&
+                !Object.prototype.hasOwnProperty.call(allowed, token)
+              ) {
+                return false;
+              }
+              index += token.length;
+            }
+            return true;
+          };
+
+          exports.isSafeMathExpression = isSafeMathExpression;
+
+          // "var a = 4;var n = 2;" built only from safe names and numeric values
+          var mathVariablePrelude = function mathVariablePrelude(variables) {
+            var prelude = "";
+            Object.keys(variables || {}).forEach(function (name) {
+              if (isSafeMathVariableName(name)) {
+                prelude +=
+                  "var " + name + " = " + Number(variables[name]) + ";";
+              }
+            });
+            return prelude;
+          };
+
+          exports.mathVariablePrelude = mathVariablePrelude;
+
+          var warnUnsafeMathExpression = function warnUnsafeMathExpression(
+            exp,
+          ) {
+            console.warn(
+              "la-tex: skipped an expression that is not plain math",
+              exp,
+            );
+          };
+
+          exports.warnUnsafeMathExpression = warnUnsafeMathExpression;
+
+          var evaluate = function evaluate(exp) {
             var num = Number(exp);
 
             if (isNaN(num)) {
-              var expression = "";
               this.variables = this.variables || {};
-              Object.keys(this.variables).map(function (name) {
-                var val = _this.variables[name];
-                expression += "var " + name + " = " + val + ";";
-              });
-              expression += "with (Math){" + exp + "}";
+              if (!isSafeMathExpression(exp, this.variables)) {
+                warnUnsafeMathExpression(exp);
+                return NaN;
+              }
+              var expression =
+                mathVariablePrelude(this.variables) +
+                "with (Math){" +
+                exp +
+                "}";
               return eval(expression);
             } else {
               return num;

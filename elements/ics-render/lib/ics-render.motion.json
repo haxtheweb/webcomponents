@@ -380,7 +380,7 @@
     "line": "Show the events in a calendar file as date cards, a timelin…",
     "code": "<ics-render calendar-data=\"BEGIN:VCALENDAR"
   },
-  "surfaceHash": "3e3177386a82",
+  "surfaceHash": "5a7eac0b8d64",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

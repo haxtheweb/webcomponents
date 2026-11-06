@@ -230,13 +230,13 @@
       "order": 0,
       "src": "tableau-embed.motion.json",
       "file": "lib/tableau-embed.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/tableau-embed.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

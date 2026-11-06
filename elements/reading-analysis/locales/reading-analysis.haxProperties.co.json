@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Analisi di lettura",
+    "description": "I studienti mettenu bandiere nant'à e frasi, i paragrafi o e figure d'una lettura chì sò prove per ogni etichetta, o selezziunanu u passaghju chì risponde u megliu à una dumanda."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Dumanda",
+        "description": "Ciò chì i studienti devenu truvà in a lettura."
+      },
+      {
+        "property": "mode",
+        "title": "Attività",
+        "description": "Marcà e prove: i studienti appiccicanu ogni bandiera accantu à a so prova. Selezziunà unu: i studienti sceglienu l'unicu passaghju chì risponde u megliu à a dumanda."
+      },
+      {
+        "property": "unit",
+        "title": "I studienti selezziunanu",
+        "description": "Ciò chì un studiente indetta in a lettura. E figure si ponu sempre selezziunà."
+      },
+      {
+        "property": "answers",
+        "title": "Bandiere",
+        "description": "L'etichette chì i studienti ponenu. Aduprate Marcà e risposte in u menu di u bloccu per sceglie induve và ognuna."
+      },
+      {
+        "slot": "",
+        "title": "Lettura",
+        "description": "A lettura induve travaglianu i studienti. Ogni HTML: tituli, paragrafi, liste è figure."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Furmatu di nutazione",
+        "description": "OER Schema: furmatu di nutazione di sta valutazione (per esempiu punti, lettera, percentuale, cumpimentu)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ughjettivu d'amparera",
+        "description": "OER Schema: ughjettivu d'amparera assuciatu à sta valutazione."
+      },
+      {
+        "property": "forCourse",
+        "title": "Corsu",
+        "description": "OER Schema: corsu per u quale hè destinata sta valutazione."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Tentativi",
+        "description": "Quante volte un studiente pò verificà. 0 vole dì senza limite."
+      },
+      {
+        "property": "collapsible",
+        "title": "Pieghevule",
+        "description": "Mostra sta dumanda cum'è una riga chì s'apre è si chjude. Apre una chjude l'altre dumande pieghevuli vicine."
+      },
+      {
+        "property": "collapsed",
+        "title": "Principià piegatu",
+        "description": "Quandu hè pieghevule, principia cum'è una riga chjusa chì mostra solu a dumanda è u so statu."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nome di u quiz",
+        "description": "Nome di u quiz trasmessu per identificà st'elementu in l'ambienti basati nant'à xAPI"
+      }
+    ]
+  }
+}

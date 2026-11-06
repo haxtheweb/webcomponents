@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "Mae'r cais yn rhy fawr.",
   "INPUT_TOO_LARGE": "Mae'r mewnbwn yn rhy fawr (uchafswm {maxBytes} beit).",
   "FILE_RATE_LIMITED": "Gormod o weithrediadau ffeiliau ar y wefan hon. Rhowch gynnig arall arni ymhen {retryAfter}.",
+  "LINK_CHECK_RATE_LIMITED": "Gormod o wiriadau dolenni ar y wefan hon. Rhowch gynnig arall arni ymhen {retryAfter}.",
   "SITE_NAME_INVALID": "Dim ond llythrennau, rhifau, cysylltnodau a thanlinellau y gall enwau gwefannau eu defnyddio.",
   "USER_NAME_INVALID": "Dim ond llythrennau, rhifau, cysylltnodau a thanlinellau y gall enwau defnyddwyr eu defnyddio.",
   "SITE_NAME_REQUIRED": "Mae angen enw gwefan.",

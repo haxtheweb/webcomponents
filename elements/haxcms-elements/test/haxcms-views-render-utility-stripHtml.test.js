@@ -17,8 +17,15 @@ describe("haxcms-views-render-utility stripHtml", () => {
 
 describe("haxcms-views-render-utility stripHtml performance", () => {
   it("handles long runs of '<' in linear time", () => {
-    const start = performance.now();
-    stripHtml("<".repeat(100000));
-    expect(performance.now() - start).to.be.below(1000);
+    // keeps a time limit because it guards quadratic behavior on long
+    // "<" runs; normal is ~1ms, so 1000ms is far above 5x. Fastest of 3 so
+    // one GC pause or busy runner cannot fail it.
+    let best = Infinity;
+    for (let run = 0; run < 3; run++) {
+      const start = performance.now();
+      stripHtml("<".repeat(100000));
+      best = Math.min(best, performance.now() - start);
+    }
+    expect(best).to.be.below(1000);
   });
 });

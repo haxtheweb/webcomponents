@@ -1,3 +1,12 @@
 {
-  "blockLabel": "체크리스트 · {done} / {total}"
+  "progress": "{total}개 중 {done}개 완료",
+  "currentStep": "현재 단계",
+  "checklist": "체크리스트",
+  "blockLabel": "체크리스트 · {done} / {total}",
+  "directions": "안내",
+  "showDirections": "안내 보기",
+  "hideDirections": "안내 숨기기",
+  "checklistDirections": "항목을 마칠 때마다 체크하세요. 체크 표시는 저장되므로 중단한 곳부터 다시 이어갈 수 있습니다.",
+  "orderedDirections": "단계를 순서대로 진행하고 마칠 때마다 체크하세요. 체크 표시는 저장되므로 중단한 곳부터 다시 이어갈 수 있습니다.",
+  "complete": "완료"
 }

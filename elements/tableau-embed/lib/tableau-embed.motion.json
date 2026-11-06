@@ -424,7 +424,7 @@
     "line": "Embed Tableau visualizations from a share URL.",
     "code": "<tableau-embed></tableau-embed>"
   },
-  "surfaceHash": "f79a349c1cbb",
+  "surfaceHash": "832d878c5e6d",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

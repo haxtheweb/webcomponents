@@ -106,7 +106,9 @@
     }
   ],
   "slots": [],
-  "events": [],
+  "events": [
+    "user-engagement"
+  ],
   "hax": {
     "api": "1",
     "canScale": true,
@@ -198,7 +200,7 @@
       }
     ]
   },
-  "surfaceHash": "4e1c6c93f094",
+  "surfaceHash": "8abb76772eb8",
   "walkthroughs": [
     {
       "id": "",
@@ -206,13 +208,13 @@
       "order": 0,
       "src": "slide-deck.motion.json",
       "file": "lib/slide-deck.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/slide-deck.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

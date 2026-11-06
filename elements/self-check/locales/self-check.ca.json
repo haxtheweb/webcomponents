@@ -2,5 +2,10 @@
   "revealAnswer": "Mostra la resposta",
   "close": "Tanca",
   "moreInformation": "Més informació",
-  "hideAnswer": "Amaga la resposta"
+  "hideAnswer": "Amaga la resposta",
+  "directions": "Instruccions",
+  "showDirections": "Mostra les instruccions",
+  "hideDirections": "Amaga les instruccions",
+  "selfCheckDirections": "Pensa primer la teva resposta i després mostra la resposta per comparar-les.",
+  "answerRevealed": "Resposta mostrada"
 }

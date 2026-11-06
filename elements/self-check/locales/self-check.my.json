@@ -2,5 +2,10 @@
   "revealAnswer": "အဖြေ ပြရန်",
   "close": "ပိတ်ရန်",
   "moreInformation": "နောက်ထပ် အချက်အလက်",
-  "hideAnswer": "အဖြေကို ဝှက်ပါ"
+  "hideAnswer": "အဖြေကို ဝှက်ပါ",
+  "directions": "ညွှန်ကြားချက်များ",
+  "showDirections": "ညွှန်ကြားချက်များကို ပြပါ",
+  "hideDirections": "ညွှန်ကြားချက်များကို ဝှက်ပါ",
+  "selfCheckDirections": "သင့်အဖြေကို အရင်စဉ်းစားပါ၊ ထို့နောက် နှိုင်းယှဉ်ရန် အဖြေကို ပြပါ။",
+  "answerRevealed": "အဖြေကို ပြထားသည်"
 }

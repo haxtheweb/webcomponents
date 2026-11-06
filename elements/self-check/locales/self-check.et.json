@@ -2,5 +2,10 @@
   "revealAnswer": "Näita vastust",
   "close": "Sulge",
   "moreInformation": "Lisateave",
-  "hideAnswer": "Peida vastus"
+  "hideAnswer": "Peida vastus",
+  "directions": "Juhised",
+  "showDirections": "Näita juhiseid",
+  "hideDirections": "Peida juhised",
+  "selfCheckDirections": "Mõtle kõigepealt oma vastus läbi, seejärel näita vastust ja võrdle.",
+  "answerRevealed": "Vastus näidatud"
 }

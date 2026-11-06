@@ -39,12 +39,12 @@ describe("xapi statement builder", () => {
       "completed",
       "experienced",
       "progressed",
-      "passed",
-      "failed",
       "interacted",
     ].forEach((v) => {
       expect(XAPI_VERBS[v]).to.equal(`http://adlnet.gov/expapi/verbs/${v}`);
     });
+    // one meaning per verb: pass and fail live in result.success
+    expect(Object.keys(XAPI_VERBS).length).to.equal(6);
   });
 
   it("builds a full xAPI 1.0.3 statement", () => {
@@ -212,7 +212,7 @@ describe("xapi statement builder", () => {
 });
 
 describe("UserActionBroker normalization", () => {
-  it("keeps statements and drops the follow-up question-element-state", () => {
+  it("keeps a statement an event already carries", () => {
     const broker = new UserActionBroker();
     const el = document.createElement("div");
     const statement = buildStatement({
@@ -222,35 +222,24 @@ describe("UserActionBroker normalization", () => {
     expect(broker.normalize("user-engagement", { statement }, el)).to.equal(
       statement,
     );
-    expect(
-      broker.normalize(
-        "question-element-state",
-        { correct: true, attempts: 1, maxAttempts: 0 },
-        el,
-      ),
-    ).to.equal(null);
   });
 
-  it("converts a question-element-state that came alone", () => {
+  it("does not treat question-element-state as a learner record", async () => {
     const broker = new UserActionBroker();
-    const el = document.createElement("my-question");
-    const s = broker.normalize(
-      "question-element-state",
-      {
-        tag: "my-question",
-        question: "Why?",
-        correct: false,
-        attempts: 2,
-        maxAttempts: 2,
-        guess: ["b"],
-      },
-      el,
+    const got = [];
+    broker.listen();
+    const off = broker.subscribe((e) => got.push(e));
+    const el = await fixture(html`<p id="state-only"></p>`);
+    el.dispatchEvent(
+      new CustomEvent("question-element-state", {
+        bubbles: true,
+        composed: true,
+        detail: { correct: true, attempts: 1, maxAttempts: 0 },
+      }),
     );
-    expect(s.verb.id).to.equal(XAPI_VERBS.answered);
-    expect(s.result.success).to.equal(false);
-    expect(s.result.completion).to.equal(true);
-    expect(s.result.response).to.equal("b");
-    expect(s.result.extensions[XAPI_EXTENSIONS.attempts]).to.equal(2);
+    expect(got.length).to.equal(0);
+    off();
+    broker.unlisten();
   });
 
   it("hands window events to subscribers", async () => {

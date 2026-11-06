@@ -207,27 +207,35 @@ class LetterGrade extends LitElement {
     return html`
       <div class="wrap">
         <div class="letter">${this.letter === "/" ? "–" : this.letter}</div>
-        ${this.showScale && this._letterIndex !== null
-          ? html`<div class="score">
-              (${this.score}/${this.total} ${this.pointsSystem})
-            </div>`
-          : ``}
-        ${this.showScale &&
-        this._letterIndex !== null &&
-        this.gradeScale[this._letterIndex]
-          ? html`<div class="range">
-              ${this.gradeScale[this._letterIndex].lowRange}% -
-              ${this.gradeScale[this._letterIndex].highRange}%
-            </div>`
-          : ``}
+        ${
+          this.showScale && this._letterIndex !== null
+            ? html`<div class="score">
+                (${this.score}/${this.total} ${this.pointsSystem})
+              </div>`
+            : ``
+        }
+        ${
+          this.showScale &&
+          this._letterIndex !== null &&
+          this.gradeScale[this._letterIndex]
+            ? html`<div class="range">
+                ${this.gradeScale[this._letterIndex].lowRange}% -
+                ${this.gradeScale[this._letterIndex].highRange}%
+              </div>`
+            : ``
+        }
       </div>
-      ${this.mini
-        ? html`<simple-tooltip position="top"
-            >${this.label}<br />${this.score != null
-              ? html`(${this.score}/${this.total} ${this.pointsSystem})`
-              : ``}</simple-tooltip
-          >`
-        : ``}
+      ${
+        this.mini
+          ? html`<simple-tooltip position="top"
+              >${this.label}<br />${
+                this.score != null
+                  ? html`(${this.score}/${this.total} ${this.pointsSystem})`
+                  : ``
+              }</simple-tooltip
+            >`
+          : ``
+      }
     `;
   }
   static get properties() {

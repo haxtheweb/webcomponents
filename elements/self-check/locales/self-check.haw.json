@@ -2,5 +2,10 @@
   "revealAnswer": "Hōʻike i ka pane",
   "close": "Pani",
   "moreInformation": "ʻIke hou aku",
-  "hideAnswer": "E peʻe i ka pane"
+  "hideAnswer": "E peʻe i ka pane",
+  "directions": "Nā kuhikuhi",
+  "showDirections": "E hōʻike i nā kuhikuhi",
+  "hideDirections": "E peʻe i nā kuhikuhi",
+  "selfCheckDirections": "E noʻonoʻo mua i kāu pane, a laila e hōʻike i ka pane no ka hoʻohālikelike.",
+  "answerRevealed": "Ua hōʻike ʻia ka pane"
 }

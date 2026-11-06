@@ -34,7 +34,7 @@ export class ConceptMapGame extends MicroGameBase {
     return {
       tag: "concept-map-game",
       event: "user-engagement",
-      verbs: ["attempted", "experienced", "completed"],
+      verbs: ["attempted", "progressed", "completed"],
       objectType: "http://adlnet.gov/expapi/activities/simulation",
       result: ["success", "completion", "response", "score", "duration"],
       countsTowardCompletion: true,
@@ -366,7 +366,8 @@ export class ConceptMapGame extends MicroGameBase {
       count: this._found,
       total: this._list.length,
     });
-    this.emitProgress("experienced", {
+    // one concept found is one step of the map, like a checklist tick
+    this.emitProgress("progressed", {
       objectDetail: n.label,
       resultSuccess: true,
       resultCompletion: this._found === this._list.length,

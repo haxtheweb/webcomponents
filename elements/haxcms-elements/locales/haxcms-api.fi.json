@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "Pyyntö on liian suuri.",
   "INPUT_TOO_LARGE": "Syöte on liian suuri (enintään {maxBytes} tavua).",
   "FILE_RATE_LIMITED": "Liian monta tiedostotoimintoa tällä sivustolla. Yritä uudelleen {retryAfter} kuluttua.",
+  "LINK_CHECK_RATE_LIMITED": "Liian monta linkkitarkistusta tällä sivustolla. Yritä uudelleen {retryAfter} kuluttua.",
   "SITE_NAME_INVALID": "Sivustojen nimissä saa käyttää vain kirjaimia, numeroita, yhdysmerkkejä ja alaviivoja.",
   "USER_NAME_INVALID": "Käyttäjätunnuksissa saa käyttää vain kirjaimia, numeroita, yhdysmerkkejä ja alaviivoja.",
   "SITE_NAME_REQUIRED": "Sivuston nimi vaaditaan.",

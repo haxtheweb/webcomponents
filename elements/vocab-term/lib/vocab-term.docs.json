@@ -211,13 +211,13 @@
       "order": 0,
       "src": "vocab-term.motion.json",
       "file": "lib/vocab-term.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/vocab-term.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

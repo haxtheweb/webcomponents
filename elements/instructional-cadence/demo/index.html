@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>InstructionalCadence: instructional-cadence Demo</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import '../instructional-cadence.js';
+      // LARCH 060 (Penn State), all 470 pages, read from the published course
+      import { larchItems, larchRows } from './larch060.js';
+      const el = document.querySelector('instructional-cadence');
+      el.items = larchItems;
+      el.rows = larchRows;
+    </script>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>instructional-cadence demo: LARCH 060</h3>
+      <instructional-cadence
+        course-title="LARCH 060"
+        base-path="https://oer.hax.psu.edu/bto108/sites/larch0060/"
+      ></instructional-cadence>
+    </div>
+  </body>
+</html>

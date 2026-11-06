@@ -424,7 +424,7 @@
     "line": "Radar (spider) chart for maturity models and facet scoring,…",
     "code": "<radar-chart></radar-chart>"
   },
-  "surfaceHash": "e4d5f2ba679b",
+  "surfaceHash": "0bac31ea0cc1",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Gátlisti · {done} af {total}"
+  "progress": "{done} af {total} lokið",
+  "currentStep": "Núverandi skref",
+  "checklist": "Gátlisti",
+  "blockLabel": "Gátlisti · {done} af {total}",
+  "directions": "Leiðbeiningar",
+  "showDirections": "Sýna leiðbeiningar",
+  "hideDirections": "Fela leiðbeiningar",
+  "checklistDirections": "Hakaðu við hvert atriði þegar þú lýkur því. Hökin þín eru vistuð svo þú getir haldið áfram þar sem frá var horfið.",
+  "orderedDirections": "Farðu í gegnum skrefin í röð og hakaðu við hvert þeirra þegar þú lýkur því. Hökin þín eru vistuð svo þú getir haldið áfram þar sem frá var horfið.",
+  "complete": "Lokið"
 }

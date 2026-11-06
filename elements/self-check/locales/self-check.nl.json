@@ -2,5 +2,10 @@
   "revealAnswer": "Antwoord tonen",
   "close": "Sluiten",
   "moreInformation": "Meer informatie",
-  "hideAnswer": "Antwoord verbergen"
+  "hideAnswer": "Antwoord verbergen",
+  "directions": "Instructies",
+  "showDirections": "Aanwijzingen tonen",
+  "hideDirections": "Aanwijzingen verbergen",
+  "selfCheckDirections": "Bedenk eerst je antwoord en toon daarna het antwoord om te vergelijken.",
+  "answerRevealed": "Antwoord getoond"
 }

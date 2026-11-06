@@ -92,56 +92,62 @@ export const UIRenderPieces = function (SuperClass) {
           icon: "icons:assignment",
           label: opts.label,
           title: names.join(" · "),
-          actions: html`${this.renderGradeScaleBtn()}${opts.settings
-            ? this.renderSettingsBtn()
-            : nothing}${this.renderSaveBtn()}`,
+          actions: html`${this.renderGradeScaleBtn()}${
+            opts.settings ? this.renderSettingsBtn() : nothing
+          }${this.renderSaveBtn()}`,
         })}
         <div class="gb-toolbar-nav">
-          ${opts.student
-            ? html`<div
-                class="gb-nav-group"
-                role="group"
-                aria-label="${this.t.activeStudent}"
-              >
-                ${this.renderActiveStudentBtn()}
-                ${student
-                  ? html`<span class="gb-nav-current"
-                      >${this.t.studentPosition
-                        .replace("{current}", () => this.activeStudent + 1)
-                        .replace("{total}", () => roster.length)}
-                      · ${studentDisplayName(student)}</span
-                    >`
-                  : nothing}
-                ${this.renderNavButton(
-                  "student",
-                  "prev",
-                  this.changeStudent,
-                  this.t.previousStudent,
-                  this.t.previous,
-                  "arrow-upward",
-                  0 === this.activeStudent || !this.ready,
-                )}
-                ${this.renderNavButton(
-                  "student",
-                  "next",
-                  this.changeStudent,
-                  this.t.nextStudent,
-                  this.t.next,
-                  "arrow-downward",
-                  (roster.length ? roster.length - 1 : 0) ===
-                    this.activeStudent || !this.ready,
-                )}
-              </div>`
-            : nothing}
+          ${
+            opts.student
+              ? html`<div
+                  class="gb-nav-group"
+                  role="group"
+                  aria-label="${this.t.activeStudent}"
+                >
+                  ${this.renderActiveStudentBtn()}
+                  ${
+                    student
+                      ? html`<span class="gb-nav-current"
+                          >${this.t.studentPosition
+                            .replace("{current}", () => this.activeStudent + 1)
+                            .replace("{total}", () => roster.length)}
+                          · ${studentDisplayName(student)}</span
+                        >`
+                      : nothing
+                  }
+                  ${this.renderNavButton(
+                    "student",
+                    "prev",
+                    this.changeStudent,
+                    this.t.previousStudent,
+                    this.t.previous,
+                    "arrow-upward",
+                    0 === this.activeStudent || !this.ready,
+                  )}
+                  ${this.renderNavButton(
+                    "student",
+                    "next",
+                    this.changeStudent,
+                    this.t.nextStudent,
+                    this.t.next,
+                    "arrow-downward",
+                    (roster.length ? roster.length - 1 : 0) ===
+                      this.activeStudent || !this.ready,
+                  )}
+                </div>`
+              : nothing
+          }
           <div
             class="gb-nav-group"
             role="group"
             aria-label="${this.t.activeAssignment}"
           >
             ${this.renderActiveAssignmentBtn()}
-            ${assignment
-              ? html`<span class="gb-nav-current">${assignment.name}</span>`
-              : nothing}
+            ${
+              assignment
+                ? html`<span class="gb-nav-current">${assignment.name}</span>`
+                : nothing
+            }
             ${this.renderNavButton(
               "assignment",
               "prev",
@@ -208,12 +214,14 @@ export const UIRenderPieces = function (SuperClass) {
           aria-expanded="${this.hideActiveStudentOverview ? "false" : "true"}"
           ?disabled="${!this.ready}"
         >
-          ${student && student.photo
-            ? html`<img src="${student.photo}" alt="" loading="lazy" />`
-            : html`<simple-icon-lite
-                icon="social:person"
-                aria-hidden="true"
-              ></simple-icon-lite>`}
+          ${
+            student && student.photo
+              ? html`<img src="${student.photo}" alt="" loading="lazy" />`
+              : html`<simple-icon-lite
+                  icon="social:person"
+                  aria-hidden="true"
+                ></simple-icon-lite>`
+          }
           <span>${this.t.activeStudent}</span>
         </button>
         <simple-popover
@@ -222,11 +230,13 @@ export const UIRenderPieces = function (SuperClass) {
           auto
         >
           <div>
-            ${student
-              ? html` <grade-book-student-block
-                  .student="${student}"
-                ></grade-book-student-block>`
-              : nothing}
+            ${
+              student
+                ? html` <grade-book-student-block
+                    .student="${student}"
+                  ></grade-book-student-block>`
+                : nothing
+            }
             <div class="active-student-grade-history">
               ${(this.activeStudentSubmissions || []).map(
                 (sRecord) => html`
@@ -237,19 +247,24 @@ export const UIRenderPieces = function (SuperClass) {
                       sRecord.studentScore,
                       sRecord.assignmentPoints,
                     )}"
-                    aria-current="${this.activeAssignment ===
-                    sRecord.assignmentIndex
-                      ? "true"
-                      : nothing}"
-                    class="${this.activeAssignment === sRecord.assignmentIndex
-                      ? `activeAssignment`
-                      : ``}"
+                    aria-current="${
+                      this.activeAssignment === sRecord.assignmentIndex
+                        ? "true"
+                        : nothing
+                    }"
+                    class="${
+                      this.activeAssignment === sRecord.assignmentIndex
+                        ? `activeAssignment`
+                        : ``
+                    }"
                   >
                     <letter-grade
                       mini
-                      label="${sRecord.studentScore === null
-                        ? `${sRecord.assignmentName} · ${this.t.notGraded}`
-                        : sRecord.assignmentName}"
+                      label="${
+                        sRecord.studentScore === null
+                          ? `${sRecord.assignmentName} · ${this.t.notGraded}`
+                          : sRecord.assignmentName
+                      }"
                       .total="${sRecord.assignmentPoints}"
                       .score="${sRecord.studentScore}"
                       .value="${sRecord.assignmentIndex}"
@@ -404,28 +419,32 @@ export const UIRenderPieces = function (SuperClass) {
           for="activeassignmentbtn"
           auto
         >
-          ${this.database &&
-          this.database.assignments &&
-          this.database.assignments[this.activeAssignment]
-            ? html`
-                <h3>
-                  ${this.database.assignments[this.activeAssignment].name}
-                </h3>
-                ${this.t.dueDate}:
-                <relative-time
-                  threshold="PT0S"
-                  .datetime="${this.database.assignments[this.activeAssignment]
-                    ._ISODueDate}"
-                  month="short"
-                  day="numeric"
-                  year="numeric"
-                  hour="numeric"
-                  minute="numeric"
-                  time-zone-name="short"
-                >
-                </relative-time>
-              `
-            : nothing}
+          ${
+            this.database &&
+            this.database.assignments &&
+            this.database.assignments[this.activeAssignment]
+              ? html`
+                  <h3>
+                    ${this.database.assignments[this.activeAssignment].name}
+                  </h3>
+                  ${this.t.dueDate}:
+                  <relative-time
+                    threshold="PT0S"
+                    .datetime="${
+                      this.database.assignments[this.activeAssignment]
+                        ._ISODueDate
+                    }"
+                    month="short"
+                    day="numeric"
+                    year="numeric"
+                    hour="numeric"
+                    minute="numeric"
+                    time-zone-name="short"
+                  >
+                  </relative-time>
+                `
+              : nothing
+          }
         </simple-popover>`;
     }
     // toggle logic for button
@@ -444,14 +463,16 @@ export const UIRenderPieces = function (SuperClass) {
       return html`<div ?hidden="${this.sourceData}" class="source-selection">
           <label for="source">${this.t.selectGradebookSource}..</label>
           <select id="source" @change="${this.selectSource}">
-            ${this.hasFilePicker
-              ? html`<option
-                  value="filesystem"
-                  ?selected="${this.source === "filesystem"}"
-                >
-                  ${this.t.fileSystem}
-                </option>`
-              : nothing}
+            ${
+              this.hasFilePicker
+                ? html`<option
+                    value="filesystem"
+                    ?selected="${this.source === "filesystem"}"
+                  >
+                    ${this.t.fileSystem}
+                  </option>`
+                : nothing
+            }
             <option
               value="googledocs"
               ?selected="${this.source === "googledocs"}"
@@ -469,20 +490,22 @@ export const UIRenderPieces = function (SuperClass) {
           >
             <span class="hide-900">${this.t.loadGradebook}</span>
           </simple-icon-button-lite>
-          ${this.source === "filesystem" && this.prevLocalFileReference
-            ? html`
-                <simple-icon-button-lite
-                  @click="${this.loadFromExistingSource}"
-                  title="${this.t.loadGradebook}"
-                  ?disabled="${this.sourceData}"
-                  icon="folder-shared"
-                >
-                  <span class="hide-900"
-                    >${this.t.load} ${this.prevLocalFileReference.name}</span
+          ${
+            this.source === "filesystem" && this.prevLocalFileReference
+              ? html`
+                  <simple-icon-button-lite
+                    @click="${this.loadFromExistingSource}"
+                    title="${this.t.loadGradebook}"
+                    ?disabled="${this.sourceData}"
+                    icon="folder-shared"
                   >
-                </simple-icon-button-lite>
-              `
-            : nothing}
+                    <span class="hide-900"
+                      >${this.t.load} ${this.prevLocalFileReference.name}</span
+                    >
+                  </simple-icon-button-lite>
+                `
+              : nothing
+          }
           <input
             id="sourcedata"
             aria-label="${this.t.sourceData}"
@@ -498,11 +521,13 @@ export const UIRenderPieces = function (SuperClass) {
             ?hidden="${this.source !== "json"}"
           ></textarea>
         </div>
-        ${this.source === "filesystem" && this.loading
-          ? html`<p class="source-selection">
-              ${this.t.loadingFilePleaseWait}
-            </p>`
-          : nothing}`;
+        ${
+          this.source === "filesystem" && this.loading
+            ? html`<p class="source-selection">
+                ${this.t.loadingFilePleaseWait}
+              </p>`
+            : nothing
+        }`;
     }
 
     // ROSTER GRID
@@ -529,63 +554,69 @@ export const UIRenderPieces = function (SuperClass) {
         @keydown="${this.gridKeydown}"
         ?hidden="${!assignments[this.activeAssignment]}"
       >
-        ${roster.length && assignments.length
-          ? html`
-              <caption>
-                <span class="gb-caption-text"
-                  >${this.t.rosterCaption
-                    .replace("{students}", () => roster.length)
-                    .replace("{assignments}", () => assignments.length)}
-                  · ${this.t.gridInstructions}</span
-                >
-              </caption>
-              <thead class="thead">
-                <tr class="tr thead-tr" part="tr">
-                  <th
-                    scope="col"
-                    class="th th-or-td student-table-label"
-                    data-assignment="-1"
+        ${
+          roster.length && assignments.length
+            ? html`
+                <caption>
+                  <span class="gb-caption-text"
+                    >${this.t.rosterCaption
+                      .replace("{students}", () => roster.length)
+                      .replace("{assignments}", () => assignments.length)}
+                    · ${this.t.gridInstructions}</span
                   >
-                    ${this.t.student} (${parseInt(this.activeStudent + 1)} /
-                    ${roster.length})
-                  </th>
-                  ${assignments.map(
-                    (a, h) =>
-                      html`<th
-                        scope="col"
-                        class="th th-or-td assignment-name"
-                        title="${a.name}"
-                        data-assignment="${h}"
-                      >
-                        ${a.shortName}
-                        <span class="gb-col-points"
-                          >${this.t.outOfPoints.replace(
-                            "{points}",
-                            () => a.points,
-                          )}</span
-                        >
-                      </th>`,
-                  )}
-                </tr>
-              </thead>
-              <tbody class="tbody">
-                ${roster.map(
-                  (s, i) =>
-                    html`<tr
-                      class="tr tbody-tr"
-                      ?data-current="${this.activeStudent === i}"
+                </caption>
+                <thead class="thead">
+                  <tr class="tr thead-tr" part="tr">
+                    <th
+                      scope="col"
+                      class="th th-or-td student-table-label"
+                      data-assignment="-1"
                     >
-                      <th scope="row" class="th th-or-td" data-assignment="-1">
-                        ${this.renderRosterStudent(s)}
-                      </th>
-                      ${assignments.map((a, h) =>
-                        this.renderRosterCell(s, i, a, h, stop, scale),
-                      )}
-                    </tr>`,
-                )}
-              </tbody>
-            `
-          : nothing}
+                      ${this.t.student} (${parseInt(this.activeStudent + 1)} /
+                      ${roster.length})
+                    </th>
+                    ${assignments.map(
+                      (a, h) =>
+                        html`<th
+                          scope="col"
+                          class="th th-or-td assignment-name"
+                          title="${a.name}"
+                          data-assignment="${h}"
+                        >
+                          ${a.shortName}
+                          <span class="gb-col-points"
+                            >${this.t.outOfPoints.replace(
+                              "{points}",
+                              () => a.points,
+                            )}</span
+                          >
+                        </th>`,
+                    )}
+                  </tr>
+                </thead>
+                <tbody class="tbody">
+                  ${roster.map(
+                    (s, i) =>
+                      html`<tr
+                        class="tr tbody-tr"
+                        ?data-current="${this.activeStudent === i}"
+                      >
+                        <th
+                          scope="row"
+                          class="th th-or-td"
+                          data-assignment="-1"
+                        >
+                          ${this.renderRosterStudent(s)}
+                        </th>
+                        ${assignments.map((a, h) =>
+                          this.renderRosterCell(s, i, a, h, stop, scale),
+                        )}
+                      </tr>`,
+                  )}
+                </tbody>
+              `
+            : nothing
+        }
       </table>`;
     }
     // student row header: photo, names and email per the settings
@@ -595,35 +626,45 @@ export const UIRenderPieces = function (SuperClass) {
       const nameShown = settings.fname || settings.surname;
       return html`<div class="user-info">
         <div class="user-left">
-          ${settings.photo
-            ? html`${s.photo
-                ? html`<img
-                    src="${s.photo}"
-                    loading="lazy"
-                    class="user-photo"
-                    alt="${nameShown ? "" : studentDisplayName(s)}"
-                  />`
-                : html`<simple-icon-lite
-                    icon="social:person"
-                    class="user-photo"
-                    aria-hidden="true"
-                  ></simple-icon-lite>`}`
-            : nothing}
+          ${
+            settings.photo
+              ? html`${
+                  s.photo
+                    ? html`<img
+                        src="${s.photo}"
+                        loading="lazy"
+                        class="user-photo"
+                        alt="${nameShown ? "" : studentDisplayName(s)}"
+                      />`
+                    : html`<simple-icon-lite
+                        icon="social:person"
+                        class="user-photo"
+                        aria-hidden="true"
+                      ></simple-icon-lite>`
+                }`
+              : nothing
+          }
         </div>
         <div class="user-right">
-          ${settings.fname
-            ? html`<div class="gb-fname">${s.student}</div>`
-            : nothing}
-          ${settings.surname
-            ? html`<div class="gb-surname">${s.surname}</div>`
-            : nothing}
-          ${settings.email
-            ? html`<div class="gb-email">
-                <a href="mailto:${s.email}" target="_blank" tabindex="-1"
-                  >${s.email}</a
-                >
-              </div>`
-            : nothing}
+          ${
+            settings.fname
+              ? html`<div class="gb-fname">${s.student}</div>`
+              : nothing
+          }
+          ${
+            settings.surname
+              ? html`<div class="gb-surname">${s.surname}</div>`
+              : nothing
+          }
+          ${
+            settings.email
+              ? html`<div class="gb-email">
+                  <a href="mailto:${s.email}" target="_blank" tabindex="-1"
+                    >${s.email}</a
+                  >
+                </div>`
+              : nothing
+          }
         </div>
       </div>`;
     }
@@ -655,15 +696,20 @@ export const UIRenderPieces = function (SuperClass) {
           data-student="${i}"
           data-assignment="${h}"
         >
-          ${graded
-            ? html`<span class="gb-sr-only">${label}, ${before}</span
-                ><span class="gb-score">${score}</span
-                ><span class="gb-sr-only">${after}${letter ? ", " : ""}</span
-                >${letter
-                  ? html`<span class="gb-letter">${letter}</span>`
-                  : nothing}`
-            : html`<span class="gb-sr-only">${label}, ${this.t.notGraded}</span
-                ><span class="gb-ungraded" aria-hidden="true">–</span>`}
+          ${
+            graded
+              ? html`<span class="gb-sr-only">${label}, ${before}</span
+                  ><span class="gb-score">${score}</span
+                  ><span class="gb-sr-only">${after}${letter ? ", " : ""}</span
+                  >${
+                    letter
+                      ? html`<span class="gb-letter">${letter}</span>`
+                      : nothing
+                  }`
+              : html`<span class="gb-sr-only"
+                    >${label}, ${this.t.notGraded}</span
+                  ><span class="gb-ungraded" aria-hidden="true">–</span>`
+          }
         </button>
       </td>`;
     }
@@ -703,18 +749,20 @@ export const UIRenderPieces = function (SuperClass) {
           label="${this.t.totalScore}"
           @value-changed="${this.totalScoreChangedEvent}"
         ></simple-fields-field>
-        ${assignment
-          ? html`<span class="gb-out-of"
-                >${this.t.outOfPoints.replace(
-                  "{points}",
-                  () => assignment.points,
-                )}</span
-              >
-              <letter-grade
-                total="${assignment.points}"
-                .score="${graded ? this.totalScore : null}"
-              ></letter-grade>`
-          : nothing}
+        ${
+          assignment
+            ? html`<span class="gb-out-of"
+                  >${this.t.outOfPoints.replace(
+                    "{points}",
+                    () => assignment.points,
+                  )}</span
+                >
+                <letter-grade
+                  total="${assignment.points}"
+                  .score="${graded ? this.totalScore : null}"
+                ></letter-grade>`
+            : nothing
+        }
       </div>`;
     }
 

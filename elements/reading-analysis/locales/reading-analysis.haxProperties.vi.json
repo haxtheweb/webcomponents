@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Phân tích bài đọc",
+    "description": "Người học cắm cờ vào các câu, đoạn văn hoặc hình trong bài đọc là bằng chứng cho mỗi nhãn, hoặc chọn đoạn trả lời câu hỏi tốt nhất."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Câu hỏi",
+        "description": "Điều người học cần tìm trong bài đọc."
+      },
+      {
+        "property": "mode",
+        "title": "Hoạt động",
+        "description": "Cắm cờ bằng chứng: người học đặt mỗi lá cờ cạnh bằng chứng cho nó. Chọn một: người học chọn đoạn duy nhất trả lời câu hỏi tốt nhất."
+      },
+      {
+        "property": "unit",
+        "title": "Người học chọn",
+        "description": "Thứ người học chỉ vào trong bài đọc. Luôn có thể chọn hình."
+      },
+      {
+        "property": "answers",
+        "title": "Cờ",
+        "description": "Các nhãn người học đặt. Dùng Đánh dấu đáp án trong menu khối để chọn nơi mỗi nhãn thuộc về."
+      },
+      {
+        "slot": "",
+        "title": "Bài đọc",
+        "description": "Bài đọc người học làm việc. Bất kỳ HTML nào: tiêu đề, đoạn văn, danh sách và hình."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Hình thức chấm điểm",
+        "description": "OER Schema: hình thức chấm điểm cho bài đánh giá này (ví dụ: điểm số, điểm chữ, phần trăm, hoàn thành)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Mục tiêu học tập",
+        "description": "OER Schema: mục tiêu học tập gắn với bài đánh giá này."
+      },
+      {
+        "property": "forCourse",
+        "title": "Khóa học",
+        "description": "OER Schema: khóa học mà bài đánh giá này dành cho."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Số lần thử",
+        "description": "Số lần người học có thể kiểm tra. 0 nghĩa là không giới hạn."
+      },
+      {
+        "property": "collapsible",
+        "title": "Có thể thu gọn",
+        "description": "Hiển thị câu hỏi này dưới dạng một hàng có thể mở và đóng. Mở một câu sẽ đóng các câu hỏi thu gọn khác bên cạnh."
+      },
+      {
+        "property": "collapsed",
+        "title": "Bắt đầu ở trạng thái thu gọn",
+        "description": "Khi có thể thu gọn, bắt đầu dưới dạng hàng đóng chỉ hiển thị câu hỏi và trạng thái của nó."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Tên bài kiểm tra",
+        "description": "Tên bài kiểm tra được truyền vào để nhận dạng mục này trong các môi trường dựa trên xAPI"
+      }
+    ]
+  }
+}

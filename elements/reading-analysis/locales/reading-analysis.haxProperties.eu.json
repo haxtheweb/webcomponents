@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Irakurketaren analisia",
+    "description": "Ikasleek banderatxoak jartzen dizkiete etiketa bakoitzaren froga diren testuko esaldi, paragrafo edo irudiei, edo galdera bati ondoen erantzuten dion pasartea hautatzen dute."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Galdera",
+        "description": "Ikasleei testuan aurkitzeko eskatzen zaiena."
+      },
+      {
+        "property": "mode",
+        "title": "Jarduera",
+        "description": "Frogak markatu: ikasleek banderatxo bakoitza bere frogaren ondoan itsasten dute. Bat hautatu: ikasleek galderari ondoen erantzuten dion pasarte bakarra aukeratzen dute."
+      },
+      {
+        "property": "unit",
+        "title": "Ikasleek hautatzen dute",
+        "description": "Ikasleak testuan seinalatzen duena. Irudiak beti hauta daitezke."
+      },
+      {
+        "property": "answers",
+        "title": "Banderatxoak",
+        "description": "Ikasleek jartzen dituzten etiketak. Erabili blokearen menuko Markatu erantzunak bakoitza non doan aukeratzeko."
+      },
+      {
+        "slot": "",
+        "title": "Testua",
+        "description": "Ikasleek lantzen duten testua. Edozein HTML: izenburuak, paragrafoak, zerrendak eta irudiak."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Kalifikazio formatua",
+        "description": "OER Schema: ebaluazio honen kalifikazio formatua (adib. puntuak, letra, ehunekoa, osatzea)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ikaskuntza helburua",
+        "description": "OER Schema: ebaluazio honi lotutako ikaskuntza helburua."
+      },
+      {
+        "property": "forCourse",
+        "title": "Ikastaroa",
+        "description": "OER Schema: ebaluazio hau zein ikastarorako den."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Saiakerak",
+        "description": "Ikasle batek zenbat aldiz egiaztatu dezakeen. 0 mugarik gabe esan nahi du."
+      },
+      {
+        "property": "collapsible",
+        "title": "Tolesgarria",
+        "description": "Erakutsi galdera hau ireki eta ixten den errenkada gisa. Bat irekitzean, ondoko beste galdera tolesgarriak itxi egiten dira."
+      },
+      {
+        "property": "collapsed",
+        "title": "Hasi tolestuta",
+        "description": "Tolesgarria denean, itxitako errenkada gisa hasten da, galdera eta haren egoera soilik erakutsiz."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Galdetegiaren izena",
+        "description": "xAPI bidezko inguruneetan elementu hau identifikatzeko pasatzen den galdetegiaren izena"
+      }
+    ]
+  }
+}

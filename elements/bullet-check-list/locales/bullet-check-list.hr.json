@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Kontrolni popis · {done} od {total}"
+  "progress": "Dovršeno {done} od {total}",
+  "currentStep": "Trenutačni korak",
+  "checklist": "Kontrolni popis",
+  "blockLabel": "Kontrolni popis · {done} od {total}",
+  "directions": "Upute",
+  "showDirections": "Prikaži upute",
+  "hideDirections": "Sakrij upute",
+  "checklistDirections": "Označite svaku stavku kad je završite. Vaše se oznake spremaju kako biste mogli nastaviti ondje gdje ste stali.",
+  "orderedDirections": "Prođite kroz korake redom i označite svaki kad ga završite. Vaše se oznake spremaju kako biste mogli nastaviti ondje gdje ste stali.",
+  "complete": "Dovršeno"
 }

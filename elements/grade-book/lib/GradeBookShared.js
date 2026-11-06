@@ -1062,36 +1062,34 @@ export const GradeBookShared = function (SuperClass) {
         this.shadowRoot.querySelector("#studentgrid [data-active]")
       ) {
         setTimeout(() => {
+          // re-query: the grid can re-render (or the element can be torn
+          // down) between scheduling this and it running, e.g. while a
+          // source import swaps the database, which left [data-active]
+          // null here and threw on getBoundingClientRect
+          const grid = this.shadowRoot
+            ? this.shadowRoot.querySelector("#studentgrid")
+            : null;
+          const active = grid ? grid.querySelector("[data-active]") : null;
+          if (!grid || !active) {
+            return;
+          }
           let offset = 192;
-          let isVisible = isElementInViewport(
-            this.shadowRoot.querySelector("#studentgrid [data-active]"),
-            {
-              top: 0,
-              right: globalThis.innerWidth,
-              bottom:
-                this.shadowRoot
-                  .querySelector("#studentgrid")
-                  .getBoundingClientRect().height + 20,
-              left: offset,
-            },
-          );
+          let isVisible = isElementInViewport(active, {
+            top: 0,
+            right: globalThis.innerWidth,
+            bottom: grid.getBoundingClientRect().height + 20,
+            left: offset,
+          });
           if (GradeBookStore.activeStudent === 0) {
-            this.shadowRoot.querySelector("#studentgrid").scrollTop = 0;
+            grid.scrollTop = 0;
           } else if (!isVisible) {
-            this.shadowRoot.querySelector("#studentgrid").scrollTop =
-              this.shadowRoot.querySelector("#studentgrid [data-active]")
-                .offsetTop -
-              this.shadowRoot.querySelector("#studentgrid").offsetTop;
+            grid.scrollTop = active.offsetTop - grid.offsetTop;
           }
           // left to right
           if (GradeBookStore.activeAssignment === 0) {
-            this.shadowRoot.querySelector("#studentgrid").scrollLeft = 0;
+            grid.scrollLeft = 0;
           } else if (!isVisible) {
-            this.shadowRoot.querySelector("#studentgrid").scrollLeft =
-              this.shadowRoot.querySelector("#studentgrid [data-active]")
-                .offsetLeft -
-              offset -
-              this.shadowRoot.querySelector("#studentgrid").offsetLeft;
+            grid.scrollLeft = active.offsetLeft - offset - grid.offsetLeft;
           }
         }, 0);
       }

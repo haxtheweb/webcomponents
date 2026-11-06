@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Daftar periksa · {done} dari {total}"
+  "progress": "{done} dari {total} selesai",
+  "currentStep": "Langkah saat ini",
+  "checklist": "Daftar periksa",
+  "blockLabel": "Daftar periksa · {done} dari {total}",
+  "directions": "Petunjuk",
+  "showDirections": "Tampilkan petunjuk",
+  "hideDirections": "Sembunyikan petunjuk",
+  "checklistDirections": "Centang setiap item setelah Anda menyelesaikannya. Centang Anda disimpan agar Anda dapat melanjutkan dari bagian terakhir.",
+  "orderedDirections": "Kerjakan langkah-langkahnya secara berurutan dan centang masing-masing setelah Anda menyelesaikannya. Centang Anda disimpan agar Anda dapat melanjutkan dari bagian terakhir.",
+  "complete": "Selesai"
 }

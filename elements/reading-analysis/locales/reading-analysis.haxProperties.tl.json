@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Pagsusuri ng babasahin",
+    "description": "Naglalagay ang mga mag-aaral ng watawat sa mga pangungusap, talata o larawan sa babasahin na ebidensya para sa bawat label, o pinipili ang bahaging pinakamahusay na sumasagot sa isang tanong."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Tanong",
+        "description": "Ang ipinahahanap sa mga mag-aaral sa babasahin."
+      },
+      {
+        "property": "mode",
+        "title": "Gawain",
+        "description": "Lagyan ng watawat ang ebidensya: inilalagay ng mga mag-aaral ang bawat watawat sa tabi ng ebidensya nito. Pumili ng isa: pinipili ng mga mag-aaral ang iisang bahaging pinakamahusay na sumasagot sa tanong."
+      },
+      {
+        "property": "unit",
+        "title": "Pinipili ng mga mag-aaral",
+        "description": "Ang itinuturo ng mag-aaral sa babasahin. Laging mapipili ang mga larawan."
+      },
+      {
+        "property": "answers",
+        "title": "Mga watawat",
+        "description": "Ang mga label na inilalagay ng mga mag-aaral. Gamitin ang Markahan ang mga sagot sa menu ng block para piliin kung saan nababagay ang bawat isa."
+      },
+      {
+        "slot": "",
+        "title": "Babasahin",
+        "description": "Ang babasahing pinagtatrabahuhan ng mga mag-aaral. Anumang HTML: mga heading, talata, listahan at larawan."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format ng pagmamarka",
+        "description": "OER Schema: format ng pagmamarka para sa pagtatasang ito (hal. puntos, letra, porsyento, pagkumpleto)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Layunin sa pagkatuto",
+        "description": "OER Schema: layunin sa pagkatuto na kaugnay ng pagtatasang ito."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurso",
+        "description": "OER Schema: kursong pinaglalaanan ng pagtatasang ito."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Mga pagtatangka",
+        "description": "Ilang beses makakapag-check ang isang mag-aaral. Ang 0 ay nangangahulugang walang limitasyon."
+      },
+      {
+        "property": "collapsible",
+        "title": "Natitiklop",
+        "description": "Ipakita ang tanong na ito bilang hilera na bumubukas at sumasara. Kapag may binuksan, magsasara ang iba pang natitiklop na tanong sa tabi nito."
+      },
+      {
+        "property": "collapsed",
+        "title": "Magsimulang nakatiklop",
+        "description": "Kapag natitiklop, magsimula bilang saradong hilera na nagpapakita lamang ng tanong at ng katayuan nito."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Pangalan ng quiz",
+        "description": "Pangalan ng quiz na ipinapasa para gamitin sa mga environment na pinapatakbo ng xAPI upang matukoy ang item na ito"
+      }
+    ]
+  }
+}

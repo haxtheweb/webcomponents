@@ -437,6 +437,22 @@ describe("insights-analyzer: links", () => {
     expect(results.links.leanOnHosts[0].pageId).to.equal("mole");
   });
 
+  it("lists each outside link once with the pages that use it", () => {
+    const urls = results.links.outsideLinks.urls;
+    expect(urls.map((u) => u.href).sort()).to.deep.equal([
+      "http://canvas.psu.edu/",
+      "https://genchem.science.psu.edu/",
+      "https://odl.science.psu.edu",
+      "https://science.psu.edu",
+      "https://youtu.be/abc?si=XYZ",
+    ]);
+    const canvas = urls.find((u) => u.href === "http://canvas.psu.edu/");
+    expect(canvas.host).to.equal("canvas.psu.edu");
+    expect(canvas.pages.map((p) => p.pageId)).to.deep.equal(["syllabus"]);
+    expect(canvas.pages[0].slug).to.be.a("string");
+    expect(canvas.pages[0].title).to.be.a("string");
+  });
+
   it("treats same-site absolute URLs under the base path as internal", () => {
     const manifest = clone(site.manifest);
     const page = {

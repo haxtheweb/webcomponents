@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "Het verzoek is te groot.",
   "INPUT_TOO_LARGE": "De invoer is te groot (maximaal {maxBytes} bytes).",
   "FILE_RATE_LIMITED": "Te veel bestandsbewerkingen op deze site. Probeer het over {retryAfter} opnieuw.",
+  "LINK_CHECK_RATE_LIMITED": "Te veel linkcontroles op deze site. Probeer het over {retryAfter} opnieuw.",
   "SITE_NAME_INVALID": "Sitenamen mogen alleen letters, cijfers, koppeltekens en underscores bevatten.",
   "USER_NAME_INVALID": "Gebruikersnamen mogen alleen letters, cijfers, koppeltekens en underscores bevatten.",
   "SITE_NAME_REQUIRED": "Een sitenaam is verplicht.",

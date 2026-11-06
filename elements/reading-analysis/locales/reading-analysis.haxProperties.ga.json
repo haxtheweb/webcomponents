@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Anailís léitheoireachta",
+    "description": "Cuireann foghlaimeoirí bratacha ar na habairtí, na hailt nó na figiúirí i dtéacs atá ina bhfianaise do gach lipéad, nó roghnaíonn siad an sliocht is fearr a fhreagraíonn ceist."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Ceist",
+        "description": "An rud a iarrtar ar fhoghlaimeoirí a aimsiú sa téacs."
+      },
+      {
+        "property": "mode",
+        "title": "Gníomhaíocht",
+        "description": "Fianaise a bhratú: greamaíonn foghlaimeoirí gach bratach in aice lena fianaise. Ceann amháin a roghnú: roghnaíonn foghlaimeoirí an t-aon sliocht is fearr a fhreagraíonn an cheist."
+      },
+      {
+        "property": "unit",
+        "title": "Roghnaíonn foghlaimeoirí",
+        "description": "An rud a dtaispeánann foghlaimeoir air sa téacs. Is féidir figiúirí a roghnú i gcónaí."
+      },
+      {
+        "property": "answers",
+        "title": "Bratacha",
+        "description": "Na lipéid a chuireann foghlaimeoirí. Úsáid Marcáil freagraí i roghchlár an bhloic chun a roghnú cá bhfuil gach ceann ag dul."
+      },
+      {
+        "slot": "",
+        "title": "Téacs",
+        "description": "An téacs a n-oibríonn foghlaimeoirí ann. Aon HTML: ceannteidil, ailt, liostaí agus figiúirí."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Formáid ghrádaithe",
+        "description": "OER Schema: formáid ghrádaithe don mheasúnú seo (m.sh. pointí, litir, céatadán, críochnú)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Cuspóir foghlama",
+        "description": "OER Schema: cuspóir foghlama a bhaineann leis an measúnú seo."
+      },
+      {
+        "property": "forCourse",
+        "title": "Cúrsa",
+        "description": "OER Schema: an cúrsa a bhfuil an measúnú seo beartaithe dó."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Iarrachtaí",
+        "description": "Cé mhéad uair is féidir le foghlaimeoir seiceáil. Ciallaíonn 0 gan teorainn."
+      },
+      {
+        "property": "collapsible",
+        "title": "Infhillte",
+        "description": "Taispeáin an cheist seo mar shraith a osclaíonn agus a dhúnann. Má osclaítear ceann amháin, dúntar na ceisteanna infhillte eile in aice leis."
+      },
+      {
+        "property": "collapsed",
+        "title": "Tosaigh fillte",
+        "description": "Nuair atá sé infhillte, tosaíonn sé mar shraith dúnta nach dtaispeánann ach an cheist agus a stádas."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Ainm an tráth na gceist",
+        "description": "Ainm an tráth na gceist a sheoltar isteach le húsáid i dtimpeallachtaí xAPI chun an mhír seo a aithint"
+      }
+    ]
+  }
+}

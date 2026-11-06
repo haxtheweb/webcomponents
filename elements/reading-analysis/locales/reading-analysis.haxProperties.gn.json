@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Moñe'ẽrã jehesa'ỹijo",
+    "description": "Temimbo'ekuéra omoĩ poyvi'i ñe'ẽjoaju, ñe'ẽpehẽ térã ta'anga moñe'ẽrãme ha'éva ñemohendapy peteĩteĩ téra rehegua, térã oiporavo pehẽ ombohováiva porãvéva peteĩ porandúpe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Porandu",
+        "description": "Mba'épa temimbo'ekuéra ojuhuva'erã moñe'ẽrãme."
+      },
+      {
+        "property": "mode",
+        "title": "Tembiapo",
+        "description": "Ñemohendapy jehechauka: temimbo'ekuéra omboja peteĩteĩ poyvi'i iñemohendapy ykére. Eiporavo peteĩ: temimbo'ekuéra oiporavo pe pehẽ peteĩva ombohováiva porãvéva porandúpe."
+      },
+      {
+        "property": "unit",
+        "title": "Temimbo'ekuéra oiporavo",
+        "description": "Mba'épa temimbo'e ohechauka moñe'ẽrãme. Ta'anga ikatu meme oñeporavo."
+      },
+      {
+        "property": "answers",
+        "title": "Poyvi'i",
+        "description": "Téra temimbo'ekuéra omoĩva. Eiporu Ehechauka mbohovái bloque poravorãme eiporavo hag̃ua moõpa oĩva'erã peteĩteĩ."
+      },
+      {
+        "slot": "",
+        "title": "Moñe'ẽrã",
+        "description": "Moñe'ẽrã temimbo'ekuéra omba'apohápe. Oimeraẽ HTML: titulo, ñe'ẽpehẽ, lista ha ta'anga."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Jehechakuaa reko",
+        "description": "OER Schema: jehechakuaa reko ko ñeha'ãme g̃uarã (techapyrã kyta, tai, porcentaje, ñemohu'ã)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ñembo'e jehupytyrã",
+        "description": "OER Schema: ñembo'e jehupytyrã ojoajúva ko ñeha'ã ndive."
+      },
+      {
+        "property": "forCourse",
+        "title": "Mbo'esyry",
+        "description": "OER Schema: mbo'esyry ko ñeha'ã oñembosako'iha."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Ñeha'ã",
+        "description": "Mboy jey temimbo'e ikatu ohecha. 0 he'ise ndaipóri tope."
+      },
+      {
+        "property": "collapsible",
+        "title": "Oñembohýiva",
+        "description": "Eresẽ ko porandu peteĩ rysýi ojeipe'a ha oñemboty ramo. Ojeipe'a vove peteĩ, oñemboty ambue porandu oñembohýiva ijykére."
+      },
+      {
+        "property": "collapsed",
+        "title": "Eñepyrũ mbohýipe",
+        "description": "Oñembohýiva vove, oñepyrũ rysýi tipapáva ramo ohechaukáva añoite porandu ha hembiapo."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Ñeha'ã réra",
+        "description": "Ñeha'ã réra oñembohasáva ojeporu hag̃ua tenda xAPI rehegua ojeikuaa hag̃ua ko mba'e"
+      }
+    ]
+  }
+}

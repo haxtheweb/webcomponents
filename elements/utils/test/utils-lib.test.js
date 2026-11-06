@@ -1496,10 +1496,18 @@ describe("utils stripMSWord direct import", () => {
 // made the old patterns run for seconds to minutes; they must now finish
 // quickly, and the output for ordinary input must be unchanged.
 describe("utils regex hardening", () => {
+  // these keep a time limit because they guard catastrophic regex
+  // backtracking (ReDoS) on hostile input; each input normally takes ~0-5ms,
+  // so the 1000ms ceilings are far above 5x. Report the fastest of 3 runs so
+  // one GC pause or busy runner cannot fail a guard.
   const elapsed = (fn) => {
-    const start = performance.now();
-    fn();
-    return performance.now() - start;
+    let best = Infinity;
+    for (let run = 0; run < 3; run++) {
+      const start = performance.now();
+      fn();
+      best = Math.min(best, performance.now() - start);
+    }
+    return best;
   };
 
   it("stripMSWord removes comments, declarations and attributes as before", () => {

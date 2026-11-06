@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "La peto estas tro granda.",
   "INPUT_TOO_LARGE": "La enigo estas tro granda (maksimume {maxBytes} bajtoj).",
   "FILE_RATE_LIMITED": "Tro da dosieraj operacioj en ĉi tiu retejo. Reprovu post {retryAfter}.",
+  "LINK_CHECK_RATE_LIMITED": "Tro da ligilaj kontroloj en ĉi tiu retejo. Reprovu post {retryAfter}.",
   "SITE_NAME_INVALID": "Retejaj nomoj povas enhavi nur literojn, ciferojn, streketojn kaj substrekojn.",
   "USER_NAME_INVALID": "Uzantonomoj povas enhavi nur literojn, ciferojn, streketojn kaj substrekojn.",
   "SITE_NAME_REQUIRED": "Reteja nomo estas bezonata.",

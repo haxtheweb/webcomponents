@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "Ombi ni kubwa mno.",
   "INPUT_TOO_LARGE": "Ingizo ni kubwa mno (upeo ni baiti {maxBytes}).",
   "FILE_RATE_LIMITED": "Shughuli nyingi mno za faili kwenye tovuti hii. Jaribu tena baada ya {retryAfter}.",
+  "LINK_CHECK_RATE_LIMITED": "Ukaguzi mwingi mno wa viungo kwenye tovuti hii. Jaribu tena baada ya {retryAfter}.",
   "SITE_NAME_INVALID": "Majina ya tovuti yanaweza kutumia herufi, nambari, vistari na mistari ya chini pekee.",
   "USER_NAME_INVALID": "Majina ya watumiaji yanaweza kutumia herufi, nambari, vistari na mistari ya chini pekee.",
   "SITE_NAME_REQUIRED": "Jina la tovuti linahitajika.",

@@ -2,5 +2,10 @@
   "revealAnswer": "Җавапны күрсәтү",
   "close": "Ябу",
   "moreInformation": "Күбрәк мәгълүмат",
-  "hideAnswer": "Җавапны яшерү"
+  "hideAnswer": "Җавапны яшерү",
+  "directions": "Күрсәтмәләр",
+  "showDirections": "Күрсәтмәләрне күрсәтү",
+  "hideDirections": "Күрсәтмәләрне яшерү",
+  "selfCheckDirections": "Башта җавабыгыз турында уйлагыз, аннары чагыштыру өчен җавапны күрсәтегез.",
+  "answerRevealed": "Җавап күрсәтелде"
 }

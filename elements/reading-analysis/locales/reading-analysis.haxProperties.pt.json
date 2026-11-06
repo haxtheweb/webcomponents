@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Análise de leitura",
+    "description": "Os estudantes marcam as frases, parágrafos ou figuras de um texto que servem de evidência para cada rótulo, ou selecionam o trecho que responde melhor a uma pergunta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pergunta",
+        "description": "O que os estudantes devem encontrar no texto."
+      },
+      {
+        "property": "mode",
+        "title": "Atividade",
+        "description": "Marcar evidências: os estudantes colocam cada marcador ao lado da evidência correspondente. Selecionar um: os estudantes escolhem o único trecho que responde melhor à pergunta."
+      },
+      {
+        "property": "unit",
+        "title": "Os estudantes selecionam",
+        "description": "O que o estudante aponta no texto. Figuras sempre podem ser selecionadas."
+      },
+      {
+        "property": "answers",
+        "title": "Marcadores",
+        "description": "Os rótulos que os estudantes colocam. Use Marcar respostas no menu do bloco para escolher onde cada um deve ficar."
+      },
+      {
+        "slot": "",
+        "title": "Texto",
+        "description": "O texto em que os estudantes trabalham. Qualquer HTML: títulos, parágrafos, listas e figuras."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Formato de avaliação",
+        "description": "OER Schema: formato de avaliação desta atividade (ex.: pontos, letra, porcentagem, conclusão)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Objetivo de aprendizagem",
+        "description": "OER Schema: objetivo de aprendizagem associado a esta avaliação."
+      },
+      {
+        "property": "forCourse",
+        "title": "Curso",
+        "description": "OER Schema: curso ao qual esta avaliação se destina."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Tentativas",
+        "description": "Quantas vezes um estudante pode verificar. 0 significa ilimitado."
+      },
+      {
+        "property": "collapsible",
+        "title": "Recolhível",
+        "description": "Mostre esta pergunta como uma linha que abre e fecha. Abrir uma fecha as outras perguntas recolhíveis ao lado."
+      },
+      {
+        "property": "collapsed",
+        "title": "Começar recolhido",
+        "description": "Quando recolhível, começar como uma linha fechada que mostra apenas a pergunta e o seu estado."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nome do questionário",
+        "description": "Nome do questionário repassado para identificar este item em ambientes baseados em xAPI"
+      }
+    ]
+  }
+}

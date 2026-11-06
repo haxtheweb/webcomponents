@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Læseanalyse",
+    "description": "Elever sætter flag ved de sætninger, afsnit eller figurer i en tekst, der er belæg for hver etiket, eller vælger den passage, der bedst besvarer et spørgsmål."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Spørgsmål",
+        "description": "Hvad eleverne skal finde i teksten."
+      },
+      {
+        "property": "mode",
+        "title": "Aktivitet",
+        "description": "Flag belæg: eleverne sætter hvert flag ved belægget for det. Vælg én: eleverne vælger den ene passage, der bedst besvarer spørgsmålet."
+      },
+      {
+        "property": "unit",
+        "title": "Elever vælger",
+        "description": "Hvad en elev peger på i teksten. Figurer kan altid vælges."
+      },
+      {
+        "property": "answers",
+        "title": "Flag",
+        "description": "De etiketter, eleverne placerer. Brug Markér svar i blokmenuen til at vælge, hvor hver enkelt hører hjemme."
+      },
+      {
+        "slot": "",
+        "title": "Tekst",
+        "description": "Teksten, eleverne arbejder i. Enhver HTML: overskrifter, afsnit, lister og figurer."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Bedømmelsesformat",
+        "description": "OER Schema: bedømmelsesformat for denne vurdering (f.eks. point, bogstav, procent, gennemførelse)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Læringsmål",
+        "description": "OER Schema: læringsmål knyttet til denne vurdering."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursus",
+        "description": "OER Schema: kursus, som denne vurdering er beregnet til."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Forsøg",
+        "description": "Hvor mange gange en elev kan tjekke. 0 betyder ubegrænset."
+      },
+      {
+        "property": "collapsible",
+        "title": "Sammenfoldelig",
+        "description": "Vis dette spørgsmål som en række, der kan åbnes og lukkes. Når du åbner en, lukkes de andre sammenfoldelige spørgsmål ved siden af."
+      },
+      {
+        "property": "collapsed",
+        "title": "Start sammenfoldet",
+        "description": "Når det er sammenfoldeligt, starter det som en lukket række, der kun viser spørgsmålet og dets status."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Quizzens navn",
+        "description": "Quiznavn, der videregives til brug i xAPI-drevne miljøer til identifikation af dette element"
+      }
+    ]
+  }
+}

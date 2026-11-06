@@ -2,5 +2,10 @@
   "revealAnswer": "جواب ظاہر کریں",
   "close": "بند کریں",
   "moreInformation": "مزید معلومات",
-  "hideAnswer": "جواب چھپائیں"
+  "hideAnswer": "جواب چھپائیں",
+  "directions": "ہدایات",
+  "showDirections": "ہدایات دکھائیں",
+  "hideDirections": "ہدایات چھپائیں",
+  "selfCheckDirections": "پہلے اپنے جواب کے بارے میں سوچیں، پھر موازنہ کرنے کے لیے جواب ظاہر کریں۔",
+  "answerRevealed": "جواب ظاہر کر دیا گیا"
 }

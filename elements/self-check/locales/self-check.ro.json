@@ -2,5 +2,10 @@
   "revealAnswer": "Arată răspunsul",
   "close": "Închide",
   "moreInformation": "Mai multe informații",
-  "hideAnswer": "Ascunde răspunsul"
+  "hideAnswer": "Ascunde răspunsul",
+  "directions": "Instrucțiuni",
+  "showDirections": "Afișează instrucțiunile",
+  "hideDirections": "Ascunde instrucțiunile",
+  "selfCheckDirections": "Gândește-te mai întâi la răspunsul tău, apoi arată răspunsul pentru a compara.",
+  "answerRevealed": "Răspuns afișat"
 }

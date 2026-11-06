@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "D'Ufro ass ze grouss.",
   "INPUT_TOO_LARGE": "D'Agab ass ze grouss (maximal {maxBytes} Bytes).",
   "FILE_RATE_LIMITED": "Ze vill Dateioperatiounen op dëser Websäit. Probéiert an {retryAfter} nach eng Kéier.",
+  "LINK_CHECK_RATE_LIMITED": "Ze vill Linkkontrollen op dëser Websäit. Probéiert an {retryAfter} nach eng Kéier.",
   "SITE_NAME_INVALID": "Websäitennimm dierfen nëmme Buschtawen, Zuelen, Bindestricher an Ënnerstricher enthalen.",
   "USER_NAME_INVALID": "Benotzernimm dierfen nëmme Buschtawen, Zuelen, Bindestricher an Ënnerstricher enthalen.",
   "SITE_NAME_REQUIRED": "E Websäitennumm ass erfuerderlech.",

@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Tarkistuslista · {done} / {total}"
+  "progress": "{done} / {total} valmiina",
+  "currentStep": "Nykyinen vaihe",
+  "checklist": "Tarkistuslista",
+  "blockLabel": "Tarkistuslista · {done} / {total}",
+  "directions": "Ohjeet",
+  "showDirections": "Näytä ohjeet",
+  "hideDirections": "Piilota ohjeet",
+  "checklistDirections": "Rastita jokainen kohta, kun saat sen valmiiksi. Rastisi tallennetaan, joten voit jatkaa siitä, mihin jäit.",
+  "orderedDirections": "Käy vaiheet läpi järjestyksessä ja rastita jokainen, kun saat sen valmiiksi. Rastisi tallennetaan, joten voit jatkaa siitä, mihin jäit.",
+  "complete": "Valmis"
 }

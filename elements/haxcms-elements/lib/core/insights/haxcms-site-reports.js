@@ -31,7 +31,18 @@ const SECTION_SCREENS = {
   freshness: () => import("./sections/insights-freshness.js"),
   metadata: () => import("./sections/insights-metadata.js"),
   components: () => import("./sections/insights-components.js"),
+  cadence: () => import("./sections/insights-cadence.js"),
 };
+
+/**
+ * Every screen drawn from the analyzer results: the analyzer's sections
+ * plus screens that read those results without a section of their own
+ * (Cadence reads content.pages and the outline). See haxtheweb/issues#3045.
+ */
+const RESULT_SCREENS = INSIGHTS_SECTIONS.concat(["cadence"]);
+
+/** screens with no CSV export */
+const NO_CSV = ["cadence"];
 
 /**
  * Screens that draw from their own scan rather than the analyzer results
@@ -166,9 +177,7 @@ class HAXCMSSiteReports extends HaxcmsAdminSectionMixin(I18NMixin(LitElement)) {
       return;
     }
     const id =
-      INSIGHTS_SECTIONS.indexOf(this.section) !== -1
-        ? this.section
-        : "overview";
+      RESULT_SCREENS.indexOf(this.section) !== -1 ? this.section : "overview";
     const load = SECTION_SCREENS[id];
     try {
       await load();
@@ -558,7 +567,11 @@ class HAXCMSSiteReports extends HaxcmsAdminSectionMixin(I18NMixin(LitElement)) {
           type="button"
           class="btn export"
           title="${this.t.exportCsv}"
-          ?disabled="${!this._results || this._isOwnScreen()}"
+          ?disabled="${
+            !this._results ||
+            this._isOwnScreen() ||
+            NO_CSV.indexOf(this.section) !== -1
+          }"
           @click="${this._exportCsv}"
         >
           <simple-icon-lite
@@ -637,9 +650,7 @@ class HAXCMSSiteReports extends HaxcmsAdminSectionMixin(I18NMixin(LitElement)) {
       return nothing;
     }
     const id =
-      INSIGHTS_SECTIONS.indexOf(this.section) !== -1
-        ? this.section
-        : "overview";
+      RESULT_SCREENS.indexOf(this.section) !== -1 ? this.section : "overview";
     switch (id) {
       case "accessibility":
         return html`<insights-accessibility
@@ -681,6 +692,11 @@ class HAXCMSSiteReports extends HaxcmsAdminSectionMixin(I18NMixin(LitElement)) {
           .results="${this._results}"
           density="${this.density}"
         ></insights-components>`;
+      case "cadence":
+        return html`<insights-cadence
+          .results="${this._results}"
+          density="${this.density}"
+        ></insights-cadence>`;
       default:
         return html`<insights-overview
           .results="${this._results}"

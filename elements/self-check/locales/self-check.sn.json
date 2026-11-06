@@ -2,5 +2,10 @@
   "revealAnswer": "Ratidza Mhinduro",
   "close": "Vhara",
   "moreInformation": "Rumwe ruzivo",
-  "hideAnswer": "Vanza mhinduro"
+  "hideAnswer": "Vanza mhinduro",
+  "directions": "Mirairo",
+  "showDirections": "Ratidza mirayiridzo",
+  "hideDirections": "Vanza mirayiridzo",
+  "selfCheckDirections": "Tanga wafunga mhinduro yako, wozoratidza mhinduro kuti uenzanise.",
+  "answerRevealed": "Mhinduro yaratidzwa"
 }

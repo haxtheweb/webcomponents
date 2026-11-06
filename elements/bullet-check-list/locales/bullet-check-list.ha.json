@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Jerin dubawa · {done} cikin {total}"
+  "progress": "An kammala {done} cikin {total}",
+  "currentStep": "Mataki na yanzu",
+  "checklist": "Jerin dubawa",
+  "blockLabel": "Jerin dubawa · {done} cikin {total}",
+  "directions": "Umarni",
+  "showDirections": "Nuna umarni",
+  "hideDirections": "Ɓoye umarni",
+  "checklistDirections": "Yi alama a kan kowane abu idan ka gama shi. Ana adana alamominka don ka ci gaba daga inda ka tsaya.",
+  "orderedDirections": "Bi matakan bisa tsari kuma ka yi alama a kan kowanne idan ka gama shi. Ana adana alamominka don ka ci gaba daga inda ka tsaya.",
+  "complete": "An kammala"
 }

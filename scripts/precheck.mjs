@@ -20,6 +20,10 @@
  * is not, unless PRECHECK_REQUIRE_CODEQL=1 is set (the Claude Code push hook
  * sets it, so agents always run it).
  *
+ * Merge conflicts: refreshes the base branch and dry-run merges HEAD into it
+ * (git merge-tree), so a branch that will show as conflicting on GitHub fails
+ * here first. Needs git 2.38+; skipped with a note on older git.
+ *
  * Exit code is 0 when every blocking check passes, 1 otherwise.
  */
 
@@ -299,6 +303,76 @@ function prettierStep(targets, ref) {
   }
 }
 
+// Merge-conflict gate. A branch can be clean against a stale local copy of the
+// base and still conflict on GitHub, so refresh the base first, then do a
+// dry-run merge with `git merge-tree --write-tree` (git 2.38+; touches neither
+// the index nor the working tree). Also fails on leftover conflict markers in
+// changed files. This cannot see merges that land after the push; CI's
+// mergeability state still covers that.
+function mergeConflictStep(files) {
+  if (ALL) {
+    return;
+  }
+  console.log("\n▶ Merge conflicts");
+  const markerFiles = files.filter((f) => {
+    let text = "";
+    try {
+      text = fs.readFileSync(path.join(root, f), "utf8");
+    } catch {
+      return false;
+    }
+    return /^(<{7}|>{7})( |$)/m.test(text);
+  });
+  if (markerFiles.length) {
+    console.error("  conflict markers found in:");
+    markerFiles.forEach((f) => console.error(`    ${f}`));
+    failures.push("Merge conflicts (markers)");
+  }
+  const base = findBase();
+  if (!base) {
+    console.log("  skipped: no origin/main or origin/master to compare with");
+    return;
+  }
+  const branch = base.replace(/^origin\//, "");
+  // best effort: offline runs still check against the local copy
+  const fetched = git([
+    "fetch",
+    "--quiet",
+    "origin",
+    `+refs/heads/${branch}:refs/remotes/origin/${branch}`,
+  ]);
+  if (fetched === null) {
+    console.log(`  note: could not refresh ${base}; using the local copy`);
+  }
+  const res = spawnSync(
+    "git",
+    [
+      "merge-tree",
+      "--write-tree",
+      "--name-only",
+      "--no-messages",
+      base,
+      "HEAD",
+    ],
+    { cwd: root, encoding: "utf8" },
+  );
+  if (res.status === 0) {
+    console.log(`  merges cleanly into ${base}`);
+  } else if (res.status === 1) {
+    const conflicted = lines(res.stdout).slice(1);
+    console.error(`  conflicts with ${base} in:`);
+    conflicted.forEach((f) => console.error(`    ${f}`));
+    console.error(
+      `  rebase onto ${base} (or merge it) and resolve, then re-run.`,
+    );
+    failures.push("Merge conflicts");
+  } else {
+    console.log(
+      `  skipped: git merge-tree unavailable (needs git 2.38+): ${(res.stderr || "").trim()}`,
+    );
+  }
+}
+
 // CodeQL security scan of changed element folders (scripts/codeql-local.mjs).
 // Not part of --all: CI already scans the whole repo.
 function codeqlStep() {
@@ -400,6 +474,7 @@ function main() {
     }
   });
 
+  mergeConflictStep(files);
   codeqlStep();
 
   console.log("");

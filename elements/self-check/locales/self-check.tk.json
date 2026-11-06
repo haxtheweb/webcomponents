@@ -2,5 +2,10 @@
   "revealAnswer": "Jogaby görkezmek",
   "close": "Ýapmak",
   "moreInformation": "Goşmaça maglumat",
-  "hideAnswer": "Jogaby gizle"
+  "hideAnswer": "Jogaby gizle",
+  "directions": "Görkezmeler",
+  "showDirections": "Görkezmeleri görkez",
+  "hideDirections": "Görkezmeleri gizle",
+  "selfCheckDirections": "Ilki bilen jogabyňyz barada pikirleniň, soňra deňeşdirmek üçin jogaby görkeziň.",
+  "answerRevealed": "Jogap görkezildi"
 }

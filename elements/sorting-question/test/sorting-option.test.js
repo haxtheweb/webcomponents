@@ -1,4 +1,4 @@
-import { fixture, expect, html } from "@open-wc/testing";
+import { fixture, expect, html, waitUntil } from "@open-wc/testing";
 import { SortingOption } from "../lib/sorting-option.js";
 
 const flush = (ms = 60) => new Promise((r) => setTimeout(r, ms));
@@ -286,7 +286,13 @@ describe("sorting-option (lib/sorting-option.js)", () => {
     expect(options[0].style.backgroundColor).to.include(
       "--ddd-status-answered-bg",
     );
-    await flush(550);
+    // the flash clears on a 500ms timer; wait for it rather than sleeping
+    // just past it
+    await waitUntil(
+      () => options[0].style.backgroundColor === "",
+      "move flash never cleared",
+      { timeout: 5000 },
+    );
     expect(options[0].style.backgroundColor).to.equal("");
   });
 

@@ -1,4 +1,4 @@
-import { fixture, expect, html, aTimeout } from "@open-wc/testing";
+import { fixture, expect, html, waitUntil } from "@open-wc/testing";
 import { emulateMedia } from "@web/test-runner-commands";
 import "../lib/simple-context-menu.js";
 
@@ -21,9 +21,16 @@ describe("simple-context-menu placement", () => {
     el.x = 200;
     el.y = 150;
     el.openMenu(null);
-    // a near-zero transition still needs a frame to land
-    await aTimeout(100);
-    const rect = el.shadowRoot.querySelector("dialog").getBoundingClientRect();
+    // a near-zero transition still needs a frame (or, on a loaded runner,
+    // several) to land; wait for the dialog to leave the corner instead of
+    // a fixed 100ms
+    const dialog = el.shadowRoot.querySelector("dialog");
+    await waitUntil(
+      () => Math.abs(dialog.getBoundingClientRect().left - el.x) < 1,
+      "menu never reached the pointer",
+      { timeout: 5000 },
+    );
+    const rect = dialog.getBoundingClientRect();
     el.close();
     return rect;
   };
@@ -47,11 +54,21 @@ describe("simple-context-menu placement", () => {
     const anchor = host.querySelector("#anchor");
     const el = host.querySelector("simple-context-menu");
     el.openMenu(anchor);
-    await aTimeout(100);
     const a = anchor.getBoundingClientRect();
-    const rect = el.shadowRoot.querySelector("dialog").getBoundingClientRect();
+    const dialog = el.shadowRoot.querySelector("dialog");
+    const wantTop = a.bottom + el.offset;
+    await waitUntil(
+      () => Math.abs(dialog.getBoundingClientRect().top - wantTop) < 1,
+      "menu never landed under its anchor",
+      { timeout: 5000 },
+    );
+    const rect = dialog.getBoundingClientRect();
     el.close();
-    expect(Math.round(rect.left)).to.equal(Math.round(a.left));
-    expect(Math.round(rect.top)).to.equal(Math.round(a.bottom + el.offset));
+    // compare within a pixel, not rounded to whole pixels: the anchor's
+    // bottom can be fractional (font metrics differ per machine), and
+    // rounding each side separately flaked as 116 vs 117 for the same
+    // half-pixel position. Pinned to the corner would be ~100px off.
+    expect(rect.left).to.be.closeTo(a.left, 1);
+    expect(rect.top).to.be.closeTo(wantTop, 1);
   });
 });

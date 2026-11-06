@@ -2,5 +2,10 @@
   "revealAnswer": "Хариултыг харуулах",
   "close": "Хаах",
   "moreInformation": "Дэлгэрэнгүй мэдээлэл",
-  "hideAnswer": "Хариултыг нуух"
+  "hideAnswer": "Хариултыг нуух",
+  "directions": "Заавар",
+  "showDirections": "Зааврыг харуулах",
+  "hideDirections": "Зааврыг нуух",
+  "selfCheckDirections": "Эхлээд өөрийн хариултаа бодоод, дараа нь харьцуулахын тулд хариултыг харуулаарай.",
+  "answerRevealed": "Хариултыг харууллаа"
 }

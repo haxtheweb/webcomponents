@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Egiaztapen-zerrenda · {done} / {total}"
+  "progress": "{done} / {total} osatuta",
+  "currentStep": "Uneko urratsa",
+  "checklist": "Egiaztapen-zerrenda",
+  "blockLabel": "Egiaztapen-zerrenda · {done} / {total}",
+  "directions": "Jarraibideak",
+  "showDirections": "Erakutsi argibideak",
+  "hideDirections": "Ezkutatu argibideak",
+  "checklistDirections": "Markatu elementu bakoitza amaitzen duzun heinean. Zure markak gordetzen dira, utzi zenuen lekutik jarraitu ahal izateko.",
+  "orderedDirections": "Egin urratsak ordenan eta markatu bakoitza amaitzen duzun heinean. Zure markak gordetzen dira, utzi zenuen lekutik jarraitu ahal izateko.",
+  "complete": "Osatuta"
 }

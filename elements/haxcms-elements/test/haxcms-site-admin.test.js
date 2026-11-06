@@ -111,6 +111,7 @@ describe("site admin section registry", () => {
       "reports-media",
       "reports-instructional",
       "reports-learning",
+      "reports-cadence",
       "reports-freshness",
       "reports-metadata",
       "reports-components",
@@ -614,6 +615,7 @@ describe("haxcms-site-admin nested rail", () => {
       "reports-media",
       "reports-instructional",
       "reports-learning",
+      "reports-cadence",
       "reports-freshness",
       "reports-metadata",
       "reports-components",
@@ -645,7 +647,7 @@ describe("haxcms-site-admin nested rail", () => {
     await shell.updateComplete;
     expect(
       root.querySelectorAll("#sub-reports .rail-item.sub").length,
-    ).to.equal(9);
+    ).to.equal(10);
     // remembered for the next dialog
     expect(
       JSON.parse(
@@ -828,7 +830,7 @@ describe("haxcms-site-admin collapsible rail", () => {
     // the open section's parts stay as icons
     expect(
       root.querySelectorAll("#sub-reports .rail-item.sub").length,
-    ).to.equal(9);
+    ).to.equal(10);
     toggle.click();
     await shell.updateComplete;
     expect(root.querySelector(".section").classList.contains("rail-collapsed"))

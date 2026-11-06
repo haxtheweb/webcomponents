@@ -359,7 +359,7 @@
     "line": "Renders and plays sheet music, guitar tabs, and score notat…",
     "code": "<sheet-music audio>"
   },
-  "surfaceHash": "5340d3ed3711",
+  "surfaceHash": "890fda4881b6",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

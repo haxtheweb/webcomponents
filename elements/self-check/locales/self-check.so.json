@@ -2,5 +2,10 @@
   "revealAnswer": "Muuji jawaabta",
   "close": "Xir",
   "moreInformation": "Macluumaad dheeraad ah",
-  "hideAnswer": "Qari jawaabta"
+  "hideAnswer": "Qari jawaabta",
+  "directions": "Tilmaamo",
+  "showDirections": "Muuji tilmaamaha",
+  "hideDirections": "Qari tilmaamaha",
+  "selfCheckDirections": "Marka hore ka fikir jawaabtaada, kadibna muuji jawaabta si aad u barbar dhigto.",
+  "answerRevealed": "Jawaabta waa la muujiyay"
 }

@@ -29,15 +29,111 @@
  * scripts/link-element-tutorial.mjs).
  * Status per element: none | stale | awaiting | reviewed
  *
- * Node built-ins only.
+ * Attributes come from the element's custom-elements.json. Many packages
+ * gitignore that file, so when it is missing the manifest is generated in
+ * memory with the same `cem analyze` settings the element's build uses
+ * (nothing is written). Docs data and surface hashes then come out the same
+ * whether or not a build ran first. Without the analyzer installed it falls
+ * back to reading `static get properties()` (names and types only).
+ *
+ * Node built-ins, plus @custom-elements-manifest/analyzer when installed.
  */
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
+import { createRequire } from "node:module";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const ELEMENTS = path.join(ROOT, "elements");
+
+// the custom elements manifest analyzer, when installed (it is a dev
+// dependency of every element); loaded once, optional. CEM_ANALYZER_DIR
+// points at a folder whose node_modules holds it (CI installs only the
+// analyzer there instead of the whole monorepo).
+const CEM = await (async () => {
+  try {
+    const from = process.env.CEM_ANALYZER_DIR
+      ? path.join(path.resolve(process.env.CEM_ANALYZER_DIR), "noop.js")
+      : fileURLToPath(import.meta.url);
+    const pkgJson = createRequire(from).resolve(
+      "@custom-elements-manifest/analyzer/package.json",
+    );
+    const root = path.dirname(pkgJson);
+    const load = (rel) => import(pathToFileURL(path.join(root, rel)).href);
+    // globby is the analyzer's own dependency, resolved next to it
+    const globbyPath = createRequire(pkgJson).resolve("globby");
+    const [{ create, ts }, helpers, lit, globbyMod] = await Promise.all([
+      load("index.js"),
+      load("src/utils/cli-helpers.js"),
+      load("src/features/framework-plugins/lit/lit.js"),
+      import(pathToFileURL(globbyPath).href),
+    ]);
+    const globby = globbyMod.default || globbyMod;
+    if (typeof create !== "function" || !globby || !globby.sync) return null;
+    const version = JSON.parse(fs.readFileSync(pkgJson, "utf8")).version;
+    return { create, ts, helpers, litPlugin: lit.litPlugin, globby, version };
+  } catch {
+    return null;
+  }
+})();
+
+// the `cem analyze` settings nearly every element's build uses
+const CEM_DEFAULT_GLOBS = ["{*,lib/**}.js"];
+const CEM_DEFAULT_EXCLUDE = ["(public|*.stories.js)"];
+
+/**
+ * --globs / --exclude values from an element's build script, so the
+ * in-memory manifest matches what its own build writes
+ */
+function cemArgs(pkg) {
+  const script = String((pkg && pkg.scripts && pkg.scripts.build) || "");
+  // the cem command runs up to the next && (a glob or exclude can hold a |)
+  const at = script.indexOf("cem analyze");
+  const rest = at === -1 ? "" : script.slice(at + "cem analyze".length);
+  const end = rest.indexOf("&&");
+  const cmd = end === -1 ? rest : rest.slice(0, end);
+  // the value after a flag: quoted ("{*,lib/**}.js") or a bare word
+  const values = (re) => [...cmd.matchAll(re)].map((m) => m[1] || m[2]);
+  const globs = values(/--globs\s+(?:"([^"]*)"|(\S+))/g);
+  const exclude = values(/--exclude\s+(?:"([^"]*)"|(\S+))/g);
+  return {
+    globs: globs.length ? globs : CEM_DEFAULT_GLOBS,
+    exclude: exclude.length ? exclude : CEM_DEFAULT_EXCLUDE,
+    litelement: !cmd || /--litelement\b/.test(cmd),
+  };
+}
+
+/**
+ * The element's manifest, generated in memory the way its build would (no
+ * files are read outside the element folder or written anywhere). Null when
+ * the analyzer is not installed or cannot read the element.
+ */
+function analyzeManifest(dir, pkg) {
+  if (!CEM) return null;
+  try {
+    const { globs, exclude, litelement } = cemArgs(pkg);
+    const patterns = CEM.helpers.mergeGlobsAndExcludes(
+      { globs: [] },
+      {},
+      { globs, exclude },
+    );
+    const files = CEM.globby.sync(patterns, { cwd: dir });
+    if (!files.length) return null;
+    const modules = files.map((rel) =>
+      CEM.ts.createSourceFile(
+        rel,
+        fs.readFileSync(path.join(dir, rel), "utf8"),
+        CEM.ts.ScriptTarget.ES2015,
+        true,
+      ),
+    );
+    const plugins = litelement && CEM.litPlugin ? [...(CEM.litPlugin() || [])] : [];
+    return CEM.create({ modules, plugins, context: { dev: false, thirdPartyCEMs: [] } });
+  } catch {
+    return null;
+  }
+}
 
 const readJson = (p) => {
   try {
@@ -240,7 +336,10 @@ export function extractElementDocs(name, elementsDir = ELEMENTS) {
   } catch (e) {
     hax = {};
   }
-  const cem = readJson(path.join(dir, "custom-elements.json"));
+  // a built manifest when there is one, otherwise the same one in memory
+  const cem =
+    readJson(path.join(dir, "custom-elements.json")) ||
+    analyzeManifest(dir, pkg);
 
   // the class for this tag (the manifest sometimes omits tagName)
   let decl = null;
@@ -381,6 +480,11 @@ function main() {
       "usage: extract-element-docs.mjs --write [element ...]\n       extract-element-docs.mjs <out-dir> [element ...]\n       extract-element-docs.mjs --status [element ...]",
     );
     process.exit(1);
+  }
+  if (!CEM) {
+    console.warn(
+      "warning: @custom-elements-manifest/analyzer not found; elements without a custom-elements.json are read from source (names and types only), so their docs data and surface hashes will differ from a build. Install dependencies or set CEM_ANALYZER_DIR.",
+    );
   }
   const names = rest.length
     ? rest

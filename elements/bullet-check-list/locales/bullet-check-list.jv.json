@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Dhaptar cek · {done} saka {total}"
+  "progress": "{done} saka {total} rampung",
+  "currentStep": "Langkah saiki",
+  "checklist": "Dhaptar cek",
+  "blockLabel": "Dhaptar cek · {done} saka {total}",
+  "directions": "Pituduh",
+  "showDirections": "Tampilake pituduh",
+  "hideDirections": "Singidake pituduh",
+  "checklistDirections": "Centhang saben item sawise sampeyan rampung. Centhangan sampeyan disimpen supaya sampeyan bisa nerusake saka papan pungkasan.",
+  "orderedDirections": "Garap langkah-langkahe kanthi urut lan centhang saben langkah sawise sampeyan rampung. Centhangan sampeyan disimpen supaya sampeyan bisa nerusake saka papan pungkasan.",
+  "complete": "Rampung"
 }

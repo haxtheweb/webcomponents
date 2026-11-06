@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "Anmodningen er for stor.",
   "INPUT_TOO_LARGE": "Inputtet er for stort (maksimalt {maxBytes} byte).",
   "FILE_RATE_LIMITED": "For mange filhandlinger på dette websted. Prøv igen om {retryAfter}.",
+  "LINK_CHECK_RATE_LIMITED": "For mange linkkontroller på dette websted. Prøv igen om {retryAfter}.",
   "SITE_NAME_INVALID": "Webstedsnavne må kun indeholde bogstaver, tal, bindestreger og understregninger.",
   "USER_NAME_INVALID": "Brugernavne må kun indeholde bogstaver, tal, bindestreger og understregninger.",
   "SITE_NAME_REQUIRED": "Der kræves et webstedsnavn.",

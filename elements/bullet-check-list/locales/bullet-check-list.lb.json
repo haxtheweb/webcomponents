@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Kontrollëscht · {done} vun {total}"
+  "progress": "{done} vun {total} fäerdeg",
+  "currentStep": "Aktuelle Schrëtt",
+  "checklist": "Kontrollëscht",
+  "blockLabel": "Kontrollëscht · {done} vun {total}",
+  "directions": "Uweisungen",
+  "showDirections": "Instruktioune weisen",
+  "hideDirections": "Instruktiounen verstoppen",
+  "checklistDirections": "Kräizt all Punkt un, soubal Dir en ofgeschloss hutt. Är Kräizer ginn gespäichert, sou datt Dir do weiderfuere kënnt, wou Dir opgehalen hutt.",
+  "orderedDirections": "Gitt d'Schrëtt an der Rei duerch a kräizt all Schrëtt un, soubal Dir en ofgeschloss hutt. Är Kräizer ginn gespäichert, sou datt Dir do weiderfuere kënnt, wou Dir opgehalen hutt.",
+  "complete": "Fäerdeg"
 }

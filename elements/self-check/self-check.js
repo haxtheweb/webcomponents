@@ -57,7 +57,15 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
       close: "Close",
       hideAnswer: "Hide answer",
       moreInformation: "More information",
+      directions: "Directions",
+      showDirections: "Show directions",
+      hideDirections: "Hide directions",
+      selfCheckDirections:
+        "Think of your answer first, then reveal the answer to compare.",
+      answerRevealed: "Answer revealed",
     };
+    // directions start closed, as they do on quiz questions
+    this._directionsOpen = false;
     this.registerLocalization({
       context: this,
       basePath: import.meta.url,
@@ -127,6 +135,22 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
         #header_wrap {
           padding-inline: var(--ddd-spacing-4);
           border-color: var(--ddd-status-default-signal);
+        }
+        #title {
+          flex: 1 1 auto;
+          min-width: 0;
+        }
+        /* directions strip under the header, as on quiz questions */
+        .directions {
+          padding-block: var(--ddd-spacing-3);
+          padding-inline: var(--ddd-spacing-4);
+          border-bottom: var(--ddd-border-xs);
+          border-color: var(--ddd-status-default-signal);
+          font-size: var(--ddd-font-size-4xs);
+          line-height: var(--ddd-lh-150);
+        }
+        .directions p {
+          margin: 0;
         }
         .heading {
           color: var(
@@ -223,6 +247,35 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
           background-color: var(--ddd-status-answered-bg);
           font-size: inherit;
         }
+        :host([correct]) .action-bar {
+          border-top: var(--ddd-border-size-md) var(--ddd-status-correct-line)
+            var(--ddd-status-correct-signal);
+        }
+        /* status on the left, actions on the right, as on quiz questions */
+        .status {
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+          flex: 1 1 auto;
+          min-height: var(--ddd-icon-xxs);
+          font-size: var(--ddd-font-size-4xs);
+        }
+        .status-chip {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          flex: none;
+          width: var(--ddd-icon-xxs);
+          height: var(--ddd-icon-xxs);
+          border-radius: var(--ddd-radius-circle);
+          background-color: var(--ddd-status-correct-signal);
+          color: var(--ddd-status-default-bg);
+          --simple-icon-width: var(--ddd-icon-4xs);
+          --simple-icon-height: var(--ddd-icon-4xs);
+        }
+        .status-word {
+          color: var(--ddd-status-correct-ink);
+        }
         .action-bar button {
           display: inline-flex;
           align-items: center;
@@ -288,6 +341,36 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
           <div class="ddd-block-label heading" id="title">
             <slot name="heading">${this.title}</slot>
           </div>
+          <span class="ddd-block-actions">
+            <button
+              class="ddd-block-action"
+              id="directions-toggle"
+              aria-controls="directions"
+              aria-expanded="${this._directionsOpen ? "true" : "false"}"
+              aria-label="${
+                this._directionsOpen
+                  ? this.t.hideDirections
+                  : this.t.showDirections
+              }"
+              title="${this.t.directions}"
+              @click="${this._toggleDirections}"
+            >
+              <simple-icon-lite
+                icon="icons:info-outline"
+                aria-hidden="true"
+              ></simple-icon-lite>
+            </button>
+          </span>
+        </div>
+        <div
+          id="directions"
+          class="directions"
+          ?hidden="${!this._directionsOpen}"
+        >
+          <p>
+            <span class="sr-only">${this.t.directions}: </span
+            >${this.t.selfCheckDirections}
+          </p>
         </div>
         <div class="image-wrap">
           ${
@@ -328,6 +411,19 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
           </div>
         </div>
         <div class="ddd-block-footer action-bar">
+          <div class="status" id="status">
+            ${
+              this.correct
+                ? html`<span class="status-chip" aria-hidden="true"
+                      ><simple-icon-lite
+                        icon="icons:check"
+                      ></simple-icon-lite></span
+                    ><strong class="status-word"
+                      >${this.t.answerRevealed}</strong
+                    >`
+                : ``
+            }
+          </div>
           <button
             id="checkBtn"
             class="check-btn"
@@ -488,6 +584,10 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
       this.title = container.textContent.trim();
     }
     return false;
+  }
+  _toggleDirections() {
+    this._directionsOpen = !this._directionsOpen;
+    this.requestUpdate();
   }
   /**
    * Property for toggling "checkbtn".

@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Senarai semak · {done} daripada {total}"
+  "progress": "{done} daripada {total} selesai",
+  "currentStep": "Langkah semasa",
+  "checklist": "Senarai semak",
+  "blockLabel": "Senarai semak · {done} daripada {total}",
+  "directions": "Arahan",
+  "showDirections": "Tunjukkan arahan",
+  "hideDirections": "Sembunyikan arahan",
+  "checklistDirections": "Tandakan setiap item apabila anda selesai. Tanda anda disimpan supaya anda boleh menyambung dari tempat anda berhenti.",
+  "orderedDirections": "Ikuti langkah-langkah mengikut urutan dan tandakan setiap satu apabila anda selesai. Tanda anda disimpan supaya anda boleh menyambung dari tempat anda berhenti.",
+  "complete": "Selesai"
 }

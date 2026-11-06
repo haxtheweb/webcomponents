@@ -1,4 +1,4 @@
-import { fixture, expect, html, waitUntil } from "@open-wc/testing";
+import { fixture, expect, html } from "@open-wc/testing";
 import "../audio-player.js";
 
 // a real audio file served by the test runner, so no test waits on the network
@@ -15,16 +15,8 @@ describe("audio-player test", function () {
   // throws "Axe is already running" on the next shadowDom.to.be.accessible()
   // call. Give the suite real headroom (see training-theme/haxor-slevin).
   this.timeout(10000);
-  // if one test still times out, its axe.run() keeps going; wait for it so
-  // the next test's audit does not fail with "Axe is already running" and a
-  // single slow test cannot take the rest of the file down with it
-  afterEach(async () => {
-    await waitUntil(
-      () => !(globalThis.axe && globalThis.axe._running),
-      "previous axe audit finished",
-      { timeout: 15000 },
-    );
-  });
+  // a timed-out audit no longer cascades into "Axe is already running": the
+  // runner page queues axe.run calls (scripts/test-setup/axe-run-queue.js)
   let element;
   beforeEach(async () => {
     element = await fixture(html`

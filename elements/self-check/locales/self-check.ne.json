@@ -2,5 +2,10 @@
   "revealAnswer": "उत्तर देखाउनुहोस्",
   "close": "बन्द गर्नुहोस्",
   "moreInformation": "थप जानकारी",
-  "hideAnswer": "उत्तर लुकाउनुहोस्"
+  "hideAnswer": "उत्तर लुकाउनुहोस्",
+  "directions": "निर्देशनहरू",
+  "showDirections": "निर्देशन देखाउनुहोस्",
+  "hideDirections": "निर्देशन लुकाउनुहोस्",
+  "selfCheckDirections": "पहिले आफ्नो उत्तरबारे सोच्नुहोस्, त्यसपछि तुलना गर्न उत्तर देखाउनुहोस्।",
+  "answerRevealed": "उत्तर देखाइयो"
 }

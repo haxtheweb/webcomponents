@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"
+    />
+    <title>ReadingAnalysis: reading-analysis Demo</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import "@haxtheweb/demo-snippet/demo-snippet.js";
+      import "../reading-analysis.js";
+    </script>
+    <style>
+      body {
+        background-color: light-dark(white, black);
+        color-scheme: light dark;
+      }
+      demo-snippet * {
+        background-color: light-dark(transparent, black);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Flag the HAX pillars, by paragraph</h3>
+      <demo-snippet>
+        <template>
+          <reading-analysis
+            question="Which HAX pillars does each paragraph show? A paragraph can show more than one, and the same pillar can show up more than once."
+            mode="flag"
+            unit="paragraph"
+            max-attempts="3"
+          >
+            <h3>What makes HAX, HAX?</h3>
+            <p>
+              Every HAX block is a standard web component, so a page is plain
+              HTML that any browser can read. The editor checks headings,
+              alternative text and captions while you write, which means pages
+              work with a screen reader from the moment they are made instead of
+              being fixed later.
+            </p>
+            <p>
+              A HAX site is a folder of files: a site.json outline, the HTML of
+              each page, and the images and media those pages use. The same
+              folder runs in HAXcms on Node.js or PHP, publishes as static
+              pages, or copies to any web server. Anyone can duplicate a site,
+              switch its theme, or reorganize its outline without rebuilding a
+              thing.
+            </p>
+            <p>
+              Elements load only when a page uses them, so pages stay small and
+              quick on older phones and slow connections, which also means less
+              data and less battery. The whole project is Apache-2.0 licensed
+              and built in the open, and new themes, blocks and plugins plug in
+              without touching the core.
+            </p>
+            <input value="Accessible" data-targets="c-31692fe8" />
+            <input value="Extensible" data-targets="c-5e2a2c63" />
+            <input value="Free and Open" data-targets="c-a14f01d6,c-5e2a2c63" />
+            <input value="Efficient" data-targets="c-5e2a2c63" />
+            <input
+              value="Platform Agnostic"
+              data-targets="c-31692fe8,c-a14f01d6"
+            />
+            <input value="Remixable" data-targets="c-a14f01d6" />
+            <input value="Sustainable" data-targets="c-5e2a2c63" />
+            <p slot="hint">
+              Read each paragraph for what HAX does for authors, for learners
+              and for the people who run sites.
+            </p>
+          </reading-analysis>
+        </template>
+      </demo-snippet>
+
+      <h3>Flag the HAX pillars, by sentence</h3>
+      <reading-analysis
+        question="Flag the sentences that show HAX is accessible, remixable or efficient."
+        mode="flag"
+        unit="sentence"
+      >
+        <h3>What makes HAX, HAX?</h3>
+        <p>
+          Every HAX block is a standard web component, so a page is plain HTML
+          that any browser can read. The editor checks headings, alternative
+          text and captions while you write, which means pages work with a
+          screen reader from the moment they are made instead of being fixed
+          later.
+        </p>
+        <p>
+          A HAX site is a folder of files: a site.json outline, the HTML of each
+          page, and the images and media those pages use. The same folder runs
+          in HAXcms on Node.js or PHP, publishes as static pages, or copies to
+          any web server. Anyone can duplicate a site, switch its theme, or
+          reorganize its outline without rebuilding a thing.
+        </p>
+        <p>
+          Elements load only when a page uses them, so pages stay small and
+          quick on older phones and slow connections, which also means less data
+          and less battery. The whole project is Apache-2.0 licensed and built
+          in the open, and new themes, blocks and plugins plug in without
+          touching the core.
+        </p>
+        <input value="Accessible" data-targets="c-fd88267d" />
+        <input value="Remixable" data-targets="c-d51f3da3" />
+        <input value="Efficient" data-targets="c-0a6bb0ea" />
+      </reading-analysis>
+
+      <h3>Select one sentence</h3>
+      <reading-analysis
+        question="Select the sentence that best shows HAX is platform agnostic."
+        mode="one"
+        unit="sentence"
+        max-attempts="2"
+      >
+        <h3>What makes HAX, HAX?</h3>
+        <p>
+          Every HAX block is a standard web component, so a page is plain HTML
+          that any browser can read. The editor checks headings, alternative
+          text and captions while you write, which means pages work with a
+          screen reader from the moment they are made instead of being fixed
+          later.
+        </p>
+        <p>
+          A HAX site is a folder of files: a site.json outline, the HTML of each
+          page, and the images and media those pages use. The same folder runs
+          in HAXcms on Node.js or PHP, publishes as static pages, or copies to
+          any web server. Anyone can duplicate a site, switch its theme, or
+          reorganize its outline without rebuilding a thing.
+        </p>
+        <p>
+          Elements load only when a page uses them, so pages stay small and
+          quick on older phones and slow connections, which also means less data
+          and less battery. The whole project is Apache-2.0 licensed and built
+          in the open, and new themes, blocks and plugins plug in without
+          touching the core.
+        </p>
+        <input data-select-one data-targets="c-bac97ce2" />
+      </reading-analysis>
+    </div>
+  </body>
+</html>

@@ -2,5 +2,10 @@
   "revealAnswer": "Näytä vastaus",
   "close": "Sulje",
   "moreInformation": "Lisätietoja",
-  "hideAnswer": "Piilota vastaus"
+  "hideAnswer": "Piilota vastaus",
+  "directions": "Ohjeet",
+  "showDirections": "Näytä ohjeet",
+  "hideDirections": "Piilota ohjeet",
+  "selfCheckDirections": "Mieti ensin oma vastauksesi ja näytä sitten vastaus vertailua varten.",
+  "answerRevealed": "Vastaus näytetty"
 }

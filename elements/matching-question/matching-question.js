@@ -213,6 +213,10 @@ class MatchingQuestion extends QuestionElement {
             var(--ddd-theme-default-limestoneLight),
             var(--ddd-theme-default-coalyGray)
           );
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
           cursor: pointer;
           user-select: none;
           transition: background-color var(--ddd-duration-normal, 0.3s) ease;

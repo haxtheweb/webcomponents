@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Sjekkliste · {done} av {total}"
+  "progress": "{done} av {total} fullført",
+  "currentStep": "Nåværende trinn",
+  "checklist": "Sjekkliste",
+  "blockLabel": "Sjekkliste · {done} av {total}",
+  "directions": "Instruksjoner",
+  "showDirections": "Vis veiledning",
+  "hideDirections": "Skjul veiledning",
+  "checklistDirections": "Kryss av hvert punkt når du er ferdig med det. Avkrysningene dine lagres, så du kan fortsette der du slapp.",
+  "orderedDirections": "Gå gjennom trinnene i rekkefølge og kryss av hvert trinn når du er ferdig med det. Avkrysningene dine lagres, så du kan fortsette der du slapp.",
+  "complete": "Fullført"
 }

@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Kontrolsaraksts · {done} no {total}"
+  "progress": "Pabeigti {done} no {total}",
+  "currentStep": "Pašreizējais solis",
+  "checklist": "Kontrolsaraksts",
+  "blockLabel": "Kontrolsaraksts · {done} no {total}",
+  "directions": "Norādījumi",
+  "showDirections": "Rādīt norādījumus",
+  "hideDirections": "Paslēpt norādījumus",
+  "checklistDirections": "Atzīmējiet katru punktu, kad to pabeidzat. Jūsu atzīmes tiek saglabātas, lai jūs varētu turpināt no vietas, kur apstājāties.",
+  "orderedDirections": "Izpildiet soļus secībā un atzīmējiet katru, kad to pabeidzat. Jūsu atzīmes tiek saglabātas, lai jūs varētu turpināt no vietas, kur apstājāties.",
+  "complete": "Pabeigts"
 }

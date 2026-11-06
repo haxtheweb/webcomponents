@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "Jerure tuichaiterei.",
   "INPUT_TOO_LARGE": "Mba'e ojehaíva tuichaiterei ({maxBytes} bytes peve).",
   "FILE_RATE_LIMITED": "Heta eterei marandurenda rembiapo ko ñanduti rendápe. Eha'ã jey {retryAfter} rire.",
+  "LINK_CHECK_RATE_LIMITED": "Heta eterei joajuha jehechajey ko ñanduti rendápe. Eha'ã jey {retryAfter} rire.",
   "SITE_NAME_INVALID": "Ñanduti renda réra ikatu oguereko tai, papapy, guioñe ha guión yvygua añoite.",
   "USER_NAME_INVALID": "Puruhára réra ikatu oguereko tai, papapy, guioñe ha guión yvygua añoite.",
   "SITE_NAME_REQUIRED": "Oikotevẽ ñanduti renda réra.",

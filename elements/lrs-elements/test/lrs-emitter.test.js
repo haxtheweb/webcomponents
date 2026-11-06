@@ -1,6 +1,6 @@
 import { fixture, expect, html, oneEvent } from "@open-wc/testing";
 import "../lib/lrs-emitter.js";
-import { LrsEmitter } from "../lib/lrs-emitter.js";
+import { LrsEmitter, lrsEmitterVerb } from "../lib/lrs-emitter.js";
 
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -136,5 +136,42 @@ describe("lrs-emitter test", () => {
     expect(props.gizmo.tags).to.include("xapi");
     expect(props.settings.configure[0].property).to.equal("verb");
     expect(props.settings.configure[0].inputMethod).to.equal("textfield");
+  });
+
+  it("sends the same data as an xAPI statement on user-engagement", async () => {
+    const listener = oneEvent(element, "user-engagement");
+    element.click();
+    const event = await listener;
+    expect(event.composed).to.equal(true);
+    const s = event.detail.statement;
+    // "viewed" is not an xAPI verb; it is read as experienced
+    expect(s.verb.id).to.equal("http://adlnet.gov/expapi/verbs/experienced");
+    expect(s.version).to.equal("1.0.3");
+    expect(Object.values(s.object.definition.name)[0]).to.equal("/page");
+    expect(s.context.platform).to.equal("HAX");
+  });
+
+  it("uses an absolute IRI object as the activity id", async () => {
+    const el = await fixture(html`
+      <lrs-emitter
+        verb="completed"
+        object="https://example.com/module/1"
+      ></lrs-emitter>
+    `);
+    expect(el.xapiStatement().object.id).to.equal(
+      "https://example.com/module/1",
+    );
+  });
+
+  it("maps authored verbs onto the six HAX verbs", () => {
+    expect(lrsEmitterVerb("answered")).to.equal("answered");
+    expect(
+      lrsEmitterVerb("http://adlnet.gov/expapi/verbs/progressed"),
+    ).to.equal("progressed");
+    expect(lrsEmitterVerb("Viewed")).to.equal("experienced");
+    expect(lrsEmitterVerb("clicked")).to.equal("interacted");
+    expect(lrsEmitterVerb("finished")).to.equal("completed");
+    expect(lrsEmitterVerb("bogus")).to.equal("interacted");
+    expect(lrsEmitterVerb("")).to.equal("interacted");
   });
 });

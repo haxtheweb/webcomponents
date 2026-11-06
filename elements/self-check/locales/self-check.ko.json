@@ -2,5 +2,10 @@
   "revealAnswer": "정답 보기",
   "close": "닫기",
   "moreInformation": "추가 정보",
-  "hideAnswer": "정답 숨기기"
+  "hideAnswer": "정답 숨기기",
+  "directions": "안내",
+  "showDirections": "안내 보기",
+  "hideDirections": "안내 숨기기",
+  "selfCheckDirections": "먼저 자신의 답을 생각한 다음, 정답을 보고 비교해 보세요.",
+  "answerRevealed": "정답이 표시됨"
 }

@@ -1,3 +1,12 @@
 {
-  "blockLabel": "Kontrollnimekiri · {done} / {total}"
+  "progress": "{done} / {total} valmis",
+  "currentStep": "Praegune samm",
+  "checklist": "Kontrollnimekiri",
+  "blockLabel": "Kontrollnimekiri · {done} / {total}",
+  "directions": "Juhised",
+  "showDirections": "Näita juhiseid",
+  "hideDirections": "Peida juhised",
+  "checklistDirections": "Märgi iga punkt linnukesega, kui oled selle lõpetanud. Sinu linnukesed salvestatakse, et saaksid jätkata sealt, kus pooleli jäid.",
+  "orderedDirections": "Läbi sammud järjest ja märgi iga samm linnukesega, kui oled selle lõpetanud. Sinu linnukesed salvestatakse, et saaksid jätkata sealt, kus pooleli jäid.",
+  "complete": "Valmis"
 }

@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Analyse de lecture",
+    "description": "Les apprenants placent des drapeaux sur les phrases, paragraphes ou figures d'un texte qui sont des preuves pour chaque étiquette, ou sélectionnent le passage qui répond le mieux à une question."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Question",
+        "description": "Ce que les apprenants doivent trouver dans le texte."
+      },
+      {
+        "property": "mode",
+        "title": "Activité",
+        "description": "Signaler les preuves : les apprenants collent chaque drapeau à côté de sa preuve. Sélectionner un seul : les apprenants choisissent le passage unique qui répond le mieux à la question."
+      },
+      {
+        "property": "unit",
+        "title": "Les apprenants sélectionnent",
+        "description": "Ce qu'un apprenant désigne dans le texte. Les figures peuvent toujours être sélectionnées."
+      },
+      {
+        "property": "answers",
+        "title": "Drapeaux",
+        "description": "Les étiquettes que placent les apprenants. Utilise Marquer les réponses dans le menu du bloc pour choisir où va chacune."
+      },
+      {
+        "slot": "",
+        "title": "Texte",
+        "description": "Le texte sur lequel travaillent les apprenants. Tout HTML : titres, paragraphes, listes et figures."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format de notation",
+        "description": "OER Schema : format de notation de cette évaluation (p. ex. points, lettre, pourcentage, achèvement)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Objectif d'apprentissage",
+        "description": "OER Schema : objectif d'apprentissage associé à cette évaluation."
+      },
+      {
+        "property": "forCourse",
+        "title": "Cours",
+        "description": "OER Schema : cours auquel cette évaluation est destinée."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Tentatives",
+        "description": "Nombre de vérifications possibles pour un apprenant. 0 signifie illimité."
+      },
+      {
+        "property": "collapsible",
+        "title": "Repliable",
+        "description": "Affiche cette question sous forme de ligne qui s'ouvre et se ferme. Ouvrir une question ferme les autres questions repliables voisines."
+      },
+      {
+        "property": "collapsed",
+        "title": "Démarrer replié",
+        "description": "Si repliable, la question démarre sous forme de ligne fermée qui n'affiche que la question et son statut."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nom du quiz",
+        "description": "Nom du quiz transmis pour identifier cet élément dans les environnements basés sur xAPI"
+      }
+    ]
+  }
+}

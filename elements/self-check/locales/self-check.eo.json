@@ -2,5 +2,10 @@
   "revealAnswer": "Montri respondon",
   "close": "Fermi",
   "moreInformation": "Pliaj informoj",
-  "hideAnswer": "Kaŝi la respondon"
+  "hideAnswer": "Kaŝi la respondon",
+  "directions": "Instrukcioj",
+  "showDirections": "Montri la instrukciojn",
+  "hideDirections": "Kaŝi la instrukciojn",
+  "selfCheckDirections": "Unue pensu pri via respondo, poste montru la respondon por kompari.",
+  "answerRevealed": "Respondo montrita"
 }

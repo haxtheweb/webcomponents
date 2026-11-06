@@ -1,22 +1,40 @@
 {
+  "a11y-collapse": {
+    "tag": "a11y-collapse",
+    "event": "user-engagement",
+    "verbs": ["experienced"],
+    "objectType": "http://adlnet.gov/expapi/activities/interaction",
+    "result": [],
+    "countsTowardCompletion": false,
+    "done": "never required; records that a learner opened the hidden content",
+    "source": "elements/a11y-collapse/a11y-collapse.js"
+  },
   "a11y-media-player": {
     "tag": "a11y-media-player",
     "event": "user-engagement",
-    "verbs": ["completed"],
+    "verbs": ["attempted", "progressed", "completed"],
     "objectType": "http://adlnet.gov/expapi/activities/media",
-    "result": ["completion"],
+    "result": [
+      "completion",
+      "duration",
+      "extensions.https://w3id.org/xapi/video/extensions/progress"
+    ],
     "countsTowardCompletion": true,
-    "done": "played to the end",
+    "done": "95% of the media actually watched (seeking ahead does not count)",
     "source": "elements/a11y-media-player/a11y-media-player.js"
   },
   "audio-player": {
     "tag": "audio-player",
     "event": "user-engagement",
-    "verbs": ["completed"],
+    "verbs": ["attempted", "progressed", "completed"],
     "objectType": "http://adlnet.gov/expapi/activities/media",
-    "result": ["completion"],
+    "result": [
+      "completion",
+      "duration",
+      "extensions.https://w3id.org/xapi/video/extensions/progress"
+    ],
     "countsTowardCompletion": true,
-    "done": "played to the end",
+    "done": "95% of the media actually watched (seeking ahead does not count)",
     "source": "elements/audio-player/audio-player.js"
   },
   "bullet-check-list": {
@@ -32,7 +50,7 @@
   "concept-map-game": {
     "tag": "concept-map-game",
     "event": "user-engagement",
-    "verbs": ["attempted", "experienced", "completed"],
+    "verbs": ["attempted", "progressed", "completed"],
     "objectType": "http://adlnet.gov/expapi/activities/simulation",
     "result": ["success", "completion", "response", "score", "duration"],
     "countsTowardCompletion": true,
@@ -52,7 +70,7 @@
   "concept-runner-game": {
     "tag": "concept-runner-game",
     "event": "user-engagement",
-    "verbs": ["attempted", "experienced", "completed"],
+    "verbs": ["attempted", "answered", "completed"],
     "objectType": "http://adlnet.gov/expapi/activities/simulation",
     "result": ["success", "completion", "response", "score", "duration"],
     "countsTowardCompletion": true,
@@ -90,6 +108,16 @@
     "done": "answered correctly",
     "source": "elements/flash-card/flash-card.js"
   },
+  "h5p-element": {
+    "tag": "h5p-element",
+    "event": "user-engagement",
+    "verbs": ["attempted", "answered", "completed"],
+    "objectType": "http://adlnet.gov/expapi/activities/interaction",
+    "result": ["success", "completion", "response", "score", "duration"],
+    "countsTowardCompletion": false,
+    "done": "never required; not every H5P content type reports completion",
+    "source": "elements/h5p-element/h5p-element.js"
+  },
   "image-compare-slider": {
     "tag": "image-compare-slider",
     "event": "user-engagement",
@@ -99,6 +127,33 @@
     "countsTowardCompletion": false,
     "done": "never required; records that the learner moved the slider",
     "source": "elements/image-compare-slider/image-compare-slider.js"
+  },
+  "lrndesign-imagemap": {
+    "tag": "lrndesign-imagemap",
+    "event": "user-engagement",
+    "verbs": ["progressed", "completed"],
+    "objectType": "http://adlnet.gov/expapi/activities/interaction",
+    "result": ["completion", "score"],
+    "countsTowardCompletion": false,
+    "done": "never required; completed once every hotspot has been opened",
+    "source": "elements/lrndesign-imagemap/lrndesign-imagemap.js"
+  },
+  "lrs-emitter": {
+    "tag": "lrs-emitter",
+    "event": "user-engagement",
+    "verbs": [
+      "experienced",
+      "interacted",
+      "answered",
+      "progressed",
+      "attempted",
+      "completed"
+    ],
+    "objectType": "http://adlnet.gov/expapi/activities/interaction",
+    "result": [],
+    "countsTowardCompletion": false,
+    "done": "never; records the authored verb when clicked or viewed",
+    "source": "elements/lrs-elements/lib/lrs-emitter.js"
   },
   "mark-the-words": {
     "tag": "mark-the-words",
@@ -176,6 +231,31 @@
     "done": "answered correctly or out of attempts",
     "source": "elements/multiple-choice/multiple-choice.js"
   },
+  "reading-analysis": {
+    "tag": "reading-analysis",
+    "event": "user-engagement",
+    "verbs": ["answered"],
+    "objectType": "http://adlnet.gov/expapi/activities/cmi.interaction",
+    "interactionType": "choice",
+    "definition": [
+      "name",
+      "interactionType",
+      "choices",
+      "correctResponsesPattern"
+    ],
+    "response": "flag mode: ids of the flag-and-passage pairs placed, joined by [,]; select-one mode: the id of the passage chosen",
+    "result": [
+      "success",
+      "completion",
+      "response",
+      "score",
+      "extensions.attempts",
+      "extensions.max-attempts"
+    ],
+    "countsTowardCompletion": true,
+    "done": "every expected flag placed with no wrong ones (or the right passage selected), or out of attempts",
+    "source": "elements/reading-analysis/reading-analysis.js"
+  },
   "self-check": {
     "tag": "self-check",
     "event": "user-engagement",
@@ -218,6 +298,16 @@
     "countsTowardCompletion": true,
     "done": "answered correctly or out of attempts",
     "source": "elements/multiple-choice/lib/short-answer-question.js"
+  },
+  "slide-deck": {
+    "tag": "slide-deck",
+    "event": "user-engagement",
+    "verbs": ["attempted", "progressed", "completed"],
+    "objectType": "http://adlnet.gov/expapi/activities/interaction",
+    "result": ["completion", "score"],
+    "countsTowardCompletion": false,
+    "done": "never required; completed once every slide has been shown",
+    "source": "elements/slide-deck/slide-deck.js"
   },
   "sorting-question": {
     "tag": "sorting-question",
@@ -296,17 +386,21 @@
     "objectType": "http://adlnet.gov/expapi/activities/interaction",
     "result": [],
     "countsTowardCompletion": false,
-    "done": "never; records that something was seen or used",
+    "done": "never; records that something was seen (visibility) or used (click, keypress)",
     "source": "elements/user-action/user-action.js"
   },
   "video-player": {
     "tag": "video-player",
     "event": "user-engagement",
-    "verbs": ["completed"],
+    "verbs": ["attempted", "progressed", "completed"],
     "objectType": "http://adlnet.gov/expapi/activities/media",
-    "result": ["completion"],
+    "result": [
+      "completion",
+      "duration",
+      "extensions.https://w3id.org/xapi/video/extensions/progress"
+    ],
     "countsTowardCompletion": true,
-    "done": "played to the end",
+    "done": "95% of the media actually watched (seeking ahead does not count)",
     "source": "elements/video-player/video-player.js"
   },
   "vocab-term": {
@@ -314,7 +408,7 @@
     "event": "user-engagement",
     "verbs": ["experienced"],
     "objectType": "http://adlnet.gov/expapi/activities/interaction",
-    "result": ["completion"],
+    "result": [],
     "countsTowardCompletion": false,
     "done": "never required; records that the definition was opened",
     "source": "elements/vocab-term/vocab-term.js"

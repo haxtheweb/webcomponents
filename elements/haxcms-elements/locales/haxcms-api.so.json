@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "Codsigu aad buu u weyn yahay.",
   "INPUT_TOO_LARGE": "Gelintu aad bay u weyn tahay (ugu badnaan {maxBytes} bytes).",
   "FILE_RATE_LIMITED": "Hawlo faylal oo aad u badan ayaa ka socda goobtan. Mar kale isku day {retryAfter} kadib.",
+  "LINK_CHECK_RATE_LIMITED": "Hubinno xiriiro oo aad u badan ayaa ka socda goobtan. Mar kale isku day {retryAfter} kadib.",
   "SITE_NAME_INVALID": "Magacyada goobaha waxay isticmaali karaan oo kaliya xarfo, tirooyin, jiitooyin iyo hoosxariiqyo.",
   "USER_NAME_INVALID": "Magacyada isticmaalayaasha waxay isticmaali karaan oo kaliya xarfo, tirooyin, jiitooyin iyo hoosxariiqyo.",
   "SITE_NAME_REQUIRED": "Magaca goobta waa loo baahan yahay.",

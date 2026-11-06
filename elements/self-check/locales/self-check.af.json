@@ -2,5 +2,10 @@
   "revealAnswer": "Wys antwoord",
   "close": "Maak toe",
   "moreInformation": "Meer inligting",
-  "hideAnswer": "Versteek antwoord"
+  "hideAnswer": "Versteek antwoord",
+  "directions": "Aanwysings",
+  "showDirections": "Wys instruksies",
+  "hideDirections": "Versteek instruksies",
+  "selfCheckDirections": "Dink eers aan jou antwoord en wys dan die antwoord om te vergelyk.",
+  "answerRevealed": "Antwoord gewys"
 }

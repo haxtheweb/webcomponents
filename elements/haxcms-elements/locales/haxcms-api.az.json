@@ -40,6 +40,7 @@
   "REQUEST_TOO_LARGE": "Sorğu çox böyükdür.",
   "INPUT_TOO_LARGE": "Daxil edilən məlumat çox böyükdür (maksimum {maxBytes} bayt).",
   "FILE_RATE_LIMITED": "Bu saytda həddən artıq fayl əməliyyatı. {retryAfter} sonra yenidən cəhd edin.",
+  "LINK_CHECK_RATE_LIMITED": "Bu saytda həddən artıq keçid yoxlaması. {retryAfter} sonra yenidən cəhd edin.",
   "SITE_NAME_INVALID": "Sayt adlarında yalnız hərflər, rəqəmlər, defislər və alt xətlər istifadə oluna bilər.",
   "USER_NAME_INVALID": "İstifadəçi adlarında yalnız hərflər, rəqəmlər, defislər və alt xətlər istifadə oluna bilər.",
   "SITE_NAME_REQUIRED": "Sayt adı tələb olunur.",

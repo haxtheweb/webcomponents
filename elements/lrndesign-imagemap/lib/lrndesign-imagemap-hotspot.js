@@ -1,19 +1,32 @@
-import { LitElement, html, css } from "lit";
+import { html, css } from "lit";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { sanitizedSvgFromMarkup } from "./lrndesign-imagemap-sanitize.js";
 /**
  * `lrndesign-imagemap-hotspot`
  * creates an accessible image map
  * @demo demo/index.html
  * @element lrndesign-imagemap-hotspot
  */
-class LrndesignImagemapHotspot extends LitElement {
+class LrndesignImagemapHotspot extends DDD {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
     return [
+      super.styles,
       css`
         :host {
           display: none;
+          font-family: var(--ddd-font-primary);
+        }
+        .hotspot-print {
+          margin: 0 0 var(--ddd-spacing-6);
+          break-inside: avoid;
+        }
+        #sub-heading h2 {
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-xs);
+          margin: 0 0 var(--ddd-spacing-2);
         }
         @media print {
           :host {
@@ -84,9 +97,11 @@ class LrndesignImagemapHotspot extends LitElement {
   }
 
   loadSvg(svg, hotspots) {
-    let div = globalThis.document.createElement("div");
-    div.innerHTML = svg;
-    let slot = div.children[0];
+    // security: same inert parse + sanitize as the parent element
+    let slot = sanitizedSvgFromMarkup(svg);
+    if (!slot) {
+      return;
+    }
     slot.slot = "svg";
     // the print svg sits in light DOM while these labels live in the
     // shadow root, so a cross-boundary IDREF would never resolve; label
@@ -101,7 +116,6 @@ class LrndesignImagemapHotspot extends LitElement {
     });
 
     this.appendChild(slot);
-    div.remove();
   }
 
   setParentHeading(parent) {

@@ -1,0 +1,74 @@
+{
+  "gizmo": {
+    "title": "Analiza teksta",
+    "description": "Učenici označavaju zastavicama rečenice, pasuse ili slike u tekstu koji su dokaz za svaku oznaku, ili odabiru odlomak koji najbolje odgovara na pitanje."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pitanje",
+        "description": "Šta učenici trebaju pronaći u tekstu."
+      },
+      {
+        "property": "mode",
+        "title": "Aktivnost",
+        "description": "Označi dokaze: učenici lijepe svaku zastavicu pored dokaza za nju. Odaberi jedno: učenici biraju jedini odlomak koji najbolje odgovara na pitanje."
+      },
+      {
+        "property": "unit",
+        "title": "Učenici odabiru",
+        "description": "Ono na šta učenik pokazuje u tekstu. Slike se uvijek mogu odabrati."
+      },
+      {
+        "property": "answers",
+        "title": "Zastavice",
+        "description": "Oznake koje učenici postavljaju. Koristite Označi odgovore u meniju bloka da odaberete gdje svaka pripada."
+      },
+      {
+        "slot": "",
+        "title": "Tekst",
+        "description": "Tekst u kojem učenici rade. Bilo koji HTML: naslovi, pasusi, liste i slike."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format ocjenjivanja",
+        "description": "OER Schema: format ocjenjivanja za ovu procjenu (npr. bodovi, slovna ocjena, postotak, završenost)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ishod učenja",
+        "description": "OER Schema: ishod učenja povezan s ovom procjenom."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurs",
+        "description": "OER Schema: kurs kojem je ova procjena namijenjena."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Pokušaji",
+        "description": "Koliko puta učenik može provjeriti. 0 znači neograničeno."
+      },
+      {
+        "property": "collapsible",
+        "title": "Sklopivo",
+        "description": "Prikaži ovo pitanje kao red koji se otvara i zatvara. Otvaranje jednog zatvara ostala sklopiva pitanja pored njega."
+      },
+      {
+        "property": "collapsed",
+        "title": "Počni sklopljeno",
+        "description": "Kada je sklopivo, počinje kao zatvoren red koji prikazuje samo pitanje i njegov status."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Naziv kviza",
+        "description": "Naziv kviza koji se prosljeđuje za identifikaciju ove stavke u okruženjima zasnovanim na xAPI"
+      }
+    ]
+  }
+}
