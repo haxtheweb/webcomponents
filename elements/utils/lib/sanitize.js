@@ -371,22 +371,42 @@ export function neutralizeStrayScripts(root) {
   }
   return root;
 }
-export function sanitizeHTMLForImport(
+/**
+ * Parse untrusted HTML into a <template> that belongs to a separate, inert
+ * document, then sanitize it. Nothing parsed here runs or loads: the inert
+ * document has no browsing context (no scripts, event handlers, images or
+ * custom element upgrades), and the live page's DOM is never written with
+ * the unsanitized markup. Parsing in a <template> keeps fragment rules, so
+ * table parts like <tr>/<td> survive on their own. Callers append the
+ * sanitized nodes, which adopts them into the page.
+ * @param {String} html raw HTML
+ * @param {Object} opts same options as sanitizeHTMLForImport
+ * @returns {HTMLTemplateElement} template whose content is sanitized
+ */
+function parseSanitizedTemplate(
   html,
   { sanitizeTemplateContents = true, encapsulateScriptTags = true } = {},
 ) {
-  const safeHTML = encapsulateScriptTags
-    ? encapScript(typeof html === "string" ? html : "")
-    : typeof html === "string"
-      ? html
-      : "";
-  const template = globalThis.document.createElement("template");
+  const raw = typeof html === "string" ? html : "";
+  const safeHTML = encapsulateScriptTags ? encapScript(raw) : raw;
+  const inert = globalThis.document.implementation.createHTMLDocument("");
+  const template = inert.createElement("template");
   template.innerHTML = safeHTML;
   if (encapsulateScriptTags) {
     neutralizeStrayScripts(template.content);
   }
   sanitizeNodeTree(template.content, {
     sanitizeTemplateContents: sanitizeTemplateContents,
+  });
+  return template;
+}
+export function sanitizeHTMLForImport(
+  html,
+  { sanitizeTemplateContents = true, encapsulateScriptTags = true } = {},
+) {
+  const template = parseSanitizedTemplate(html, {
+    sanitizeTemplateContents,
+    encapsulateScriptTags,
   });
   return template.content.cloneNode(true);
 }
@@ -403,18 +423,9 @@ export function sanitizeHTMLString(
   html,
   { sanitizeTemplateContents = true, encapsulateScriptTags = true } = {},
 ) {
-  const safeHTML = encapsulateScriptTags
-    ? encapScript(typeof html === "string" ? html : "")
-    : typeof html === "string"
-      ? html
-      : "";
-  const template = globalThis.document.createElement("template");
-  template.innerHTML = safeHTML;
-  if (encapsulateScriptTags) {
-    neutralizeStrayScripts(template.content);
-  }
-  sanitizeNodeTree(template.content, {
-    sanitizeTemplateContents: sanitizeTemplateContents,
+  const template = parseSanitizedTemplate(html, {
+    sanitizeTemplateContents,
+    encapsulateScriptTags,
   });
   // security: return serialized safe HTML for unsafeHTML/innerHTML sinks
   // (prevents stored XSS via onerror/onload event handlers and javascript: URLs)

@@ -57,4 +57,24 @@ describe("utils deep imports", () => {
       "none",
     );
   });
+
+  it("parses untrusted HTML without running or loading it", async () => {
+    globalThis.__sanitizeProbe = 0;
+    const raw = '<img src="data:," onload="globalThis.__sanitizeProbe++">';
+    const frag = sanitize.sanitizeHTMLForImport(raw);
+    const str = sanitize.sanitizeHTMLString(raw);
+    await new Promise((r) => setTimeout(r, 50));
+    expect(globalThis.__sanitizeProbe).to.equal(0);
+    expect(str).to.not.contain("onload");
+    // fragment rules: a lone table cell survives
+    const cell = sanitize.sanitizeHTMLForImport("<td>cell</td>");
+    expect(cell.querySelector("td").textContent).to.equal("cell");
+    // the result can go straight into the page
+    const host = globalThis.document.createElement("div");
+    host.appendChild(frag);
+    expect(host.querySelector("img").ownerDocument).to.equal(
+      globalThis.document,
+    );
+    delete globalThis.__sanitizeProbe;
+  });
 });
