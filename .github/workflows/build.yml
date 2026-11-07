@@ -4,6 +4,11 @@ on:
     branches: [master]
   # No branch filter: stacked PRs (base is another feature branch) must run too.
   pull_request:
+  # Nightly regression run on the default branch (haxtheweb/issues#3262).
+  # A failure shows up as a failed scheduled run; nothing is opened.
+  schedule:
+    - cron: "43 8 * * *" # nightly, 08:43 UTC
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:

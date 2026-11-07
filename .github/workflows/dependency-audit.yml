@@ -4,7 +4,8 @@ name: dependency-audit
 #
 # Runs `yarn audit` against yarn.lock. It needs no `yarn install` (the audit
 # reads the lockfile), so it stays cheap in this large monorepo, and it only
-# runs when dependency manifests change, weekly, or on demand.
+# runs when dependency manifests change, nightly (haxtheweb/issues#3262), or
+# on demand.
 #
 # The step is `continue-on-error`, same pattern as the ESLint step in build.yml:
 # findings are visible in the log and the job summary, but they do not fail the
@@ -28,7 +29,7 @@ on:
       - "elements/*/package.json"
       - .github/workflows/dependency-audit.yml
   schedule:
-    - cron: "17 6 * * 1"
+    - cron: "17 7 * * *" # nightly, 07:17 UTC
   workflow_dispatch:
 permissions:
   contents: read
