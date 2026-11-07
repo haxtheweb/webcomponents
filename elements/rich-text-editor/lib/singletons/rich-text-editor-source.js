@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
+import { sanitizeHTMLString } from "@haxtheweb/utils/lib/sanitize.js";
 
 /**
  * `rich-text-editor-source`
@@ -256,8 +257,11 @@ class RichTextEditorSource extends LitElement {
             ? e.detail.value
             : this.__codeEditorValue || "";
         this.__codeEditorValue = value;
-        this.innerHTML = value;
-        this.__target.innerHTML = value;
+        // security: source-view HTML is author typed; sanitize before it
+        // is written into the live editor target (and this element)
+        const safeValue = sanitizeHTMLString(value);
+        this.innerHTML = safeValue;
+        this.__target.innerHTML = safeValue;
       };
       if (this.__needsUpdate) setTimeout(update.bind(this), 300);
     }
