@@ -656,14 +656,6 @@
       "count": 1
     }
   },
-  "elements/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js": {
-    "haxtheweb-leaks/autorun-in-constructor": {
-      "count": 2
-    },
-    "haxtheweb-leaks/disposer-without-disconnect": {
-      "count": 1
-    }
-  },
   "elements/haxcms-elements/lib/core/utils/HAXCMSUserStylesMenu.js": {
     "eqeqeq": {
       "count": 1
