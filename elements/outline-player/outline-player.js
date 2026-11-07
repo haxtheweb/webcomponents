@@ -417,6 +417,7 @@ class OutlinePlayer extends I18NMixin(
               this.closed ? "closed" : ""
             }"
             id="drawer"
+            ?inert="${!this.opened}"
           >
             <site-menu></site-menu>
           </div>

@@ -483,7 +483,9 @@ class AppHaxTheme extends HAXCMSRememberRoute(
         <a class="skip-link" href="#contentcontainer"
           >${this.t.skipToContent}</a
         >
-        <div class="menu-outline">${this.HAXCMSMobileMenu()}</div>
+        <div class="menu-outline" ?inert="${!this.menuOpen}">
+          ${this.HAXCMSMobileMenu()}
+        </div>
         <div id="body" class="site-body" part="site-body">
           <div id="haxcms-theme-top"></div>
           <div class="site-inner">

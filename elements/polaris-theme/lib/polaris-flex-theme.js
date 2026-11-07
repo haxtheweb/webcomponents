@@ -966,7 +966,7 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
           <div
             class="nav-section"
             id="primary-nav"
-            aria-hidden="${this.__navStuck ? "true" : "false"}"
+            ?inert="${this.__navStuck && !this.editMode}"
           >
             <div class="header-branding">
               ${
