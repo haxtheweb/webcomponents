@@ -16,7 +16,6 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import { HAXCMSThemeParts } from "./utils/HAXCMSThemeParts.js";
 import { HAXCMSI18NMixin } from "./utils/HAXCMSI18NMixin.js";
-import "@haxtheweb/rpg-character/rpg-character.js";
 import "./ui/app-hax-top-bar.js";
 import "./ui/app-hax-user-menu.js";
 import "./ui/app-hax-user-menu-button.js";
@@ -33,7 +32,6 @@ import { HAXCMSKeyboardShortcutsInstance } from "./utils/HAXCMSKeyboardShortcuts
 import "@haxtheweb/simple-modal/simple-modal.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import "./haxcms-site-insights.js"; // Legacy element tag name retained; it now renders Reports UI.
-import "@haxtheweb/simple-fields/lib/simple-fields-form.js";
 import "./haxcms-darkmode-toggle.js";
 import "../ui-components/site/site-remote-content.js";
 import "@haxtheweb/page-flag/page-flag.js";
@@ -7462,47 +7460,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.dispatchEvent(evt);
   }
   /**
-   * Edit title via Merlin program
-   */
-  _editTitlePrompt(_e) {
-    const activeItem = toJS(store.activeItem);
-    if (!activeItem || !activeItem.id) {
-      return;
-    }
-    const currentTitle = activeItem.title || "";
-    const SuperDaemonInstance =
-      globalThis.SuperDaemonManager.requestAvailability();
-    store.playSound("click");
-    SuperDaemonInstance.waveWand([
-      currentTitle, // Pre-fill input with current title
-      "/",
-      {},
-      "edit-title",
-      this.t.renameThisPage,
-    ]);
-  }
-  /**
-   * Edit description via Merlin program
-   */
-  _editDescriptionPrompt(_e) {
-    const activeItem = toJS(store.activeItem);
-    if (!activeItem || !activeItem.id) {
-      return;
-    }
-    const currentDescription = activeItem.description || "";
-    const SuperDaemonInstance =
-      globalThis.SuperDaemonManager.requestAvailability();
-    store.playSound("click");
-    SuperDaemonInstance.waveWand([
-      currentDescription,
-      "/",
-      {},
-      "edit-description",
-      this.t.updatePageDescription,
-      "",
-    ]);
-  }
-  /**
    * Toggle lock status
    */
   _toggleLockStatus(_e) {
@@ -7553,27 +7510,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         this.t.createAPage,
       ]);
     }
-  }
-  /**
-   * Edit slug prompt
-   */
-  _editSlugPrompt(_e) {
-    const activeItem = toJS(store.activeItem);
-    if (!activeItem || !activeItem.id) {
-      return;
-    }
-    const currentSlug = activeItem.slug || "";
-    const SuperDaemonInstance =
-      globalThis.SuperDaemonManager.requestAvailability();
-    store.playSound("click");
-    SuperDaemonInstance.waveWand([
-      currentSlug,
-      "/",
-      {},
-      "edit-slug",
-      this.t.updatePageUrlSlug,
-      "",
-    ]);
   }
   /**
    * Move page program from menu
