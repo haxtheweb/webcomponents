@@ -38,6 +38,13 @@ class ResponsiveUtility extends LitElement {
       xl: e.detail.xl || 1440,
       custom: e.detail.custom || "responsive-width",
     };
+    // one registration per element: a second one replaces the first rather
+    // than stacking another ResizeObserver on the same element
+    if (detail.element) {
+      this.deleteResponiveElementEvent({
+        detail: { element: detail.element },
+      });
+    }
     detail.observer = this._getObserver(detail);
     if (detail.observer && detail.element) {
       detail.observer.observe(detail.element);
@@ -162,6 +169,86 @@ class ResponsiveUtility extends LitElement {
 }
 globalThis.customElements.define(ResponsiveUtility.tag, ResponsiveUtility);
 export { ResponsiveUtility };
+
+// What each element registered with, so it can register again after being
+// moved or re-added. Weak: holds nothing alive on its own.
+const registrations = new WeakMap();
+
+/**
+ * Register an element for responsive sizing (fires `responsive-element`) and
+ * remember the request. Pair with unregisterResponsiveElement in
+ * disconnectedCallback and reregisterResponsiveElement in connectedCallback:
+ * the utility keeps a ResizeObserver on every registered element, and that
+ * observer keeps the element alive until it is unregistered.
+ * @param {object} detail same shape as the `responsive-element` event detail
+ * @param {object} [options]
+ * @param {EventTarget} [options.target] where the event is dispatched
+ *   (default globalThis)
+ * @param {object} [options.eventInit] extra CustomEvent init such as
+ *   bubbles / composed, for elements whose event contract includes them
+ */
+export function registerResponsiveElement(detail, options = {}) {
+  if (!detail || !detail.element) {
+    return;
+  }
+  // removed before a deferred registration ran: remember the request and
+  // register when it is connected again, instead of observing a detached node
+  if (detail.element.isConnected === false) {
+    registrations.set(detail.element, {
+      detail: detail,
+      options: options,
+      active: false,
+    });
+    return;
+  }
+  registrations.set(detail.element, {
+    detail: detail,
+    options: options,
+    active: true,
+  });
+  // make sure the singleton exists and is listening before the event fires
+  globalThis.ResponsiveUtility.requestAvailability();
+  const target = options && options.target ? options.target : globalThis;
+  const eventInit = options && options.eventInit ? options.eventInit : {};
+  target.dispatchEvent(
+    new CustomEvent("responsive-element", { ...eventInit, detail: detail }),
+  );
+}
+/**
+ * Stop observing an element (fires `delete-responsive-element`). Safe to call
+ * for elements that never registered.
+ * @param {HTMLElement} element
+ */
+export function unregisterResponsiveElement(element) {
+  const record = registrations.get(element);
+  if (!record || !record.active) {
+    return;
+  }
+  record.active = false;
+  globalThis.dispatchEvent(
+    new CustomEvent("delete-responsive-element", {
+      detail: { element: element },
+    }),
+  );
+}
+/**
+ * Register again with the remembered request, if the element registered
+ * before and was unregistered since (moved, or removed and re-added).
+ * @param {HTMLElement} element
+ */
+export function reregisterResponsiveElement(element) {
+  const record = registrations.get(element);
+  if (!record || record.active) {
+    return;
+  }
+  registerResponsiveElement(record.detail, record.options);
+}
+globalThis.ResponsiveUtility.registerResponsiveElement =
+  registerResponsiveElement;
+globalThis.ResponsiveUtility.unregisterResponsiveElement =
+  unregisterResponsiveElement;
+globalThis.ResponsiveUtility.reregisterResponsiveElement =
+  reregisterResponsiveElement;
 
 /**
  * Checks to see if there is an instance available, and if not appends one
