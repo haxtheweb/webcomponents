@@ -5,7 +5,11 @@
 import { html, css, nothing } from "lit";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
-import "@haxtheweb/responsive-utility/responsive-utility.js";
+import {
+  registerResponsiveElement,
+  unregisterResponsiveElement,
+  reregisterResponsiveElement,
+} from "@haxtheweb/responsive-utility/responsive-utility.js";
 import { normalizeEventPath } from "@haxtheweb/utils/lib/events.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { DDDBlockStyles } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
@@ -639,6 +643,8 @@ class LrndesignTimeline extends I18NMixin(SchemaBehaviors(SimpleColors)) {
    */
   connectedCallback() {
     if (super.connectedCallback) super.connectedCallback();
+    // moved, or removed and added again: observe it again
+    reregisterResponsiveElement(this);
     // prefers-color-scheme support coordinated with the DDD palette: follow
     // the system scheme unless the content author set dark explicitly; the
     // dark property drives color-scheme so the light-dark() token pairs and
@@ -665,19 +671,15 @@ class LrndesignTimeline extends I18NMixin(SchemaBehaviors(SimpleColors)) {
    */
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
-    globalThis.dispatchEvent(
-      new CustomEvent("responsive-element", {
-        detail: {
-          element: this,
-          attribute: "timeline-size",
-          relativeToParent: true,
-          sm: 600,
-          md: 900,
-          lg: 1200,
-          xl: 1600,
-        },
-      }),
-    );
+    registerResponsiveElement({
+      element: this,
+      attribute: "timeline-size",
+      relativeToParent: true,
+      sm: 600,
+      md: 900,
+      lg: 1200,
+      xl: 1600,
+    });
 
     // defer the light DOM progressive enhancement scan so any reactive
     // events assignment happens outside the update cycle (Lit warns about
@@ -689,6 +691,8 @@ class LrndesignTimeline extends I18NMixin(SchemaBehaviors(SimpleColors)) {
     });
   }
   disconnectedCallback() {
+    // the utility's ResizeObserver keeps a registered element alive
+    unregisterResponsiveElement(this);
     if (this.observer && this.observer.disconnect) this.observer.disconnect();
     if (
       this.__schemeQuery &&

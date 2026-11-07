@@ -1,9 +1,4 @@
 {
-  "elements/a11y-media-player/a11y-media-player.js": {
-    "haxtheweb-leaks/responsive-element-unregister": {
-      "count": 1
-    }
-  },
   "elements/a11y-media-player/lib/a11y-media-play-button.js": {
     "eqeqeq": {
       "count": 1
@@ -358,11 +353,6 @@
   },
   "elements/grade-book/lib/letter-grade.js": {
     "haxtheweb-leaks/autorun-in-constructor": {
-      "count": 1
-    }
-  },
-  "elements/grid-plate/grid-plate.js": {
-    "haxtheweb-leaks/responsive-element-unregister": {
       "count": 1
     }
   },
@@ -960,11 +950,6 @@
       "count": 2
     }
   },
-  "elements/lrndesign-timeline/lrndesign-timeline.js": {
-    "haxtheweb-leaks/responsive-element-unregister": {
-      "count": 1
-    }
-  },
   "elements/lrs-elements/lib/lrs-emitter.js": {
     "eqeqeq": {
       "count": 4
@@ -1124,9 +1109,6 @@
   "elements/responsive-grid/lib/responsive-grid-row.js": {
     "eqeqeq": {
       "count": 1
-    },
-    "haxtheweb-leaks/responsive-element-unregister": {
-      "count": 1
     }
   },
   "elements/responsive-utility/lib/responsive-utility-behaviors.js": {
@@ -1197,16 +1179,6 @@
       "count": 1
     }
   },
-  "elements/simple-fields/lib/simple-fields-array-item.js": {
-    "haxtheweb-leaks/responsive-element-unregister": {
-      "count": 1
-    }
-  },
-  "elements/simple-fields/lib/simple-fields-array.js": {
-    "haxtheweb-leaks/responsive-element-unregister": {
-      "count": 1
-    }
-  },
   "elements/simple-fields/lib/simple-fields-code.js": {
     "eqeqeq": {
       "count": 2
@@ -1230,9 +1202,6 @@
   "elements/simple-fields/lib/simple-fields-upload.js": {
     "eqeqeq": {
       "count": 7
-    },
-    "haxtheweb-leaks/responsive-element-unregister": {
-      "count": 1
     }
   },
   "elements/simple-fields/lib/simple-fields-url-combo-item.js": {
