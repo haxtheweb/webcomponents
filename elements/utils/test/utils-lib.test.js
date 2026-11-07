@@ -965,6 +965,42 @@ describe("utils sanitizeNodeTree", () => {
     // onclick is on the p inside template content, which is not sanitized
     expect(tpl.content.querySelector("p").hasAttribute("onclick")).to.be.true;
   });
+
+  // security: html-block allowscript rides along with authored content
+  describe("html-block allowscript", () => {
+    let saved;
+    beforeEach(() => {
+      saved = globalThis.HAXHtmlBlockAllowScript;
+      delete globalThis.HAXHtmlBlockAllowScript;
+    });
+    afterEach(() => {
+      if (saved === undefined) {
+        delete globalThis.HAXHtmlBlockAllowScript;
+      } else {
+        globalThis.HAXHtmlBlockAllowScript = saved;
+      }
+    });
+    it("strips allowscript unless the platform opted in", () => {
+      const div = document.createElement("div");
+      div.innerHTML =
+        "<html-block allowscript><p>x</p></html-block><div allowscript></div>";
+      sanitizeNodeTree(div);
+      expect(div.querySelectorAll("[allowscript]").length).to.equal(0);
+      expect(div.querySelector("html-block")).to.exist;
+      const direct = document.createElement("html-block");
+      direct.setAttribute("allowscript", "allowscript");
+      sanitizeNodeTree(direct);
+      expect(direct.hasAttribute("allowscript")).to.be.false;
+    });
+    it("keeps allowscript when the platform opted in", () => {
+      globalThis.HAXHtmlBlockAllowScript = true;
+      const div = document.createElement("div");
+      div.innerHTML = "<html-block allowscript><p>x</p></html-block>";
+      sanitizeNodeTree(div);
+      expect(div.querySelector("html-block").hasAttribute("allowscript")).to.be
+        .true;
+    });
+  });
 });
 
 describe("utils sanitizeHTMLString", () => {

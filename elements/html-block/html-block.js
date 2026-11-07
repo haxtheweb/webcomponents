@@ -78,6 +78,32 @@ class HtmlBlock extends HTMLElement {
     this.tag = HtmlBlock.tag;
   }
   /**
+   * security: whether the hosting platform lets html-block run raw script.
+   * The allowscript attribute is authored content (it is saved with the
+   * page), so on its own it must not be enough to run script in front of
+   * every visitor. The platform opts in with
+   * `globalThis.HAXHtmlBlockAllowScript = true` (or
+   * `globalThis.appSettings.htmlBlockAllowScript = true`) before content
+   * loads; without that, allowscript is ignored and content is sanitized.
+   * @returns {boolean}
+   */
+  static get platformAllowsScript() {
+    if (globalThis.HAXHtmlBlockAllowScript === true) {
+      return true;
+    }
+    return !!(
+      globalThis.appSettings &&
+      globalThis.appSettings.htmlBlockAllowScript === true
+    );
+  }
+  /**
+   * allowscript is set by the author AND the platform allows it
+   * @returns {boolean}
+   */
+  get scriptAllowed() {
+    return this.allowscript != null && HtmlBlock.platformAllowsScript;
+  }
+  /**
    * life cycle, element is afixed to the DOM
    */
   connectedCallback() {
@@ -87,7 +113,8 @@ class HtmlBlock extends HTMLElement {
     // Previously this set this.allowscript = false unconditionally, which
     // stripped a parse-time allowscript attribute and force-sanitized the
     // content regardless of author intent.
-    if (this.allowscript == null && this.innerHTML !== "") {
+    // security: the intent only counts when the platform allows script
+    if (!this.scriptAllowed && this.innerHTML !== "") {
       // issues#3102 #3 (security): sanitize any light DOM already present at
       // connect time and capture __rawHTML for it. Previously
       // connectedCallback only armed the MutationObserver, so pre-existing
@@ -118,8 +145,8 @@ class HtmlBlock extends HTMLElement {
     if (!this.__ignoreChange) {
       // issues#3102 #26: the attribute is boolean-ish; presence (even a bare
       // allowscript="") means the author allows script. Sanitize only when
-      // the attribute is absent.
-      if (this.allowscript == null) {
+      // the attribute is absent (or the platform does not allow script).
+      if (!this.scriptAllowed) {
         this.__sanitizeHTML();
       }
     } else {
@@ -146,7 +173,7 @@ class HtmlBlock extends HTMLElement {
       // issues#3102 #26: a bare allowscript attribute parses to the empty
       // string, which is the author saying "allow script"; only removal
       // (newValue == null) triggers sanitization.
-      if (newValue == null) {
+      if (newValue == null || !HtmlBlock.platformAllowsScript) {
         // we should sanitize innerHTML but create a holding pen for the rawHTML first
         this.__sanitizeHTML();
       } else {

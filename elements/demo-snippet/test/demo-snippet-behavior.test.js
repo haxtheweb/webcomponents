@@ -572,3 +572,74 @@ describe("simple-tooltip rendering", () => {
     expect(el.shadowRoot).to.exist;
   });
 });
+
+// security: stamping a template turns its scripts and handlers live
+describe("demo-snippet stamped content sanitizing", () => {
+  afterEach(() => {
+    delete globalThis.__demoSnippetXSS;
+  });
+  it("removes scripts and inline handlers from the stamped demo by default", async () => {
+    const el = await fixture(html`
+      <demo-snippet>
+        <template>
+          <button id="safe-btn" onclick="globalThis.__demoSnippetXSS = 1">
+            Go
+          </button>
+          <a href="javascript:void(0)">x</a>
+          <script>
+            globalThis.__demoSnippetXSS = 2;
+          </script>
+        </template>
+      </demo-snippet>
+    `);
+    await el.updateComplete;
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    expect(el.querySelector("#safe-btn")).to.exist;
+    expect(el.querySelector("#safe-btn").hasAttribute("onclick")).to.equal(
+      false,
+    );
+    expect(el.querySelector("a").hasAttribute("href")).to.equal(false);
+    expect(el.querySelector("script")).to.equal(null);
+    expect(globalThis.__demoSnippetXSS).to.equal(undefined);
+    // the source listing still shows the full template
+    expect(el._markdown).to.contain("<script>");
+  });
+
+  it("stamps scripts untouched when the page opts in with unsafe-scripts", async () => {
+    // scripts parsed from a string (fixture / innerHTML) are flagged
+    // "already started" and never run, unlike scripts the HTML parser
+    // puts in a real page's <template>; build the script node by hand so
+    // the stamped copy executes the way a demo page's would
+    const el = await fixture(
+      html`<demo-snippet unsafe-scripts><template></template></demo-snippet>`,
+    );
+    const template = el.querySelector("template");
+    const span = globalThis.document.createElement("span");
+    span.id = "opted-in";
+    const script = globalThis.document.createElement("script");
+    script.textContent = "globalThis.__demoSnippetXSS = 3;";
+    template.content.appendChild(span);
+    template.content.appendChild(script);
+    el._updateMarkdown();
+    await el.updateComplete;
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    expect(el.querySelector("#opted-in")).to.exist;
+    expect(el.querySelector("script")).to.exist;
+    expect(globalThis.__demoSnippetXSS).to.equal(3);
+  });
+
+  it("does not run template scripts without the opt in", async () => {
+    const el = await fixture(
+      html`<demo-snippet><template></template></demo-snippet>`,
+    );
+    const template = el.querySelector("template");
+    const script = globalThis.document.createElement("script");
+    script.textContent = "globalThis.__demoSnippetXSS = 4;";
+    template.content.appendChild(script);
+    el._updateMarkdown();
+    await el.updateComplete;
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    expect(el.querySelector("script")).to.equal(null);
+    expect(globalThis.__demoSnippetXSS).to.equal(undefined);
+  });
+});
