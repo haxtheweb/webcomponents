@@ -287,8 +287,10 @@ export class ResumeTheme extends DDDSuper(HAXCMSLitElementTheme) {
         .contact-item:focus-within {
           background-color: var(--ddd-theme-default-beaver70);
         }
+        /* the default ring (#005fa9) is 1.8:1 on the navy sidebar */
         .contact-item a:focus-visible {
-          outline: var(--ddd-focus-ring);
+          outline: var(--ddd-border-size-sm) solid
+            var(--ddd-theme-default-white);
           outline-offset: var(--ddd-focus-offset);
         }
 
