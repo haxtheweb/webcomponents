@@ -206,6 +206,7 @@ class SiteMenu extends I18NMixin(HAXCMSThemeParts(LitElement)) {
         .part="map-menu ${this.editMode ? `edit-mode-active` : ``}"
         ?inert="${this.editMode}"
         aria-disabled="${this.editMode ? `true` : `false`}"
+        lazy-children
         .manifest="${this.routerManifest}"
         ?edit-controls="${this.editControls && !this.isFlex}"
         ?is-flex="${this.isFlex}"

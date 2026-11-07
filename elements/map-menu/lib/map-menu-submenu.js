@@ -367,6 +367,14 @@ class MapMenuSubmenu extends LitElement {
         typeof this.activeProgress === "number" && this.activeProgress >= 1,
       );
     }
+    // a lazy child list (map-menu lazy-children) renders the first time we
+    // open; let it check again
+    if (changedProperties.has("opened") && this.opened) {
+      const list = this.querySelector(":scope > map-menu-builder");
+      if (list && list.lazyChildren) {
+        list.requestUpdate();
+      }
+    }
   }
 
   _headerClickHandler(_e) {
