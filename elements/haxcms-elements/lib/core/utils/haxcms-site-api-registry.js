@@ -54,6 +54,7 @@ function getState() {
       readyPromise: null,
       bootstrapping: false,
       bootstrapped: false,
+      deferred: false,
       previousAuthProvider: null,
       providerApplied: false,
     };
@@ -390,6 +391,7 @@ export function configureHAXCMSSiteApiRegistry(appSettings = {}, jwtValue) {
   const hasJwtOverride = arguments.length > 1;
   updateAuth(state, state.appSettings, jwtValue, hasJwtOverride);
   ensureAuthProvider(state);
+  state.deferred = false;
   const siteApiBasePath = deriveSiteApiBasePath(state.appSettings);
   const siteOpenApiPath = getSiteOpenApiPath(
     state.appSettings,
@@ -434,8 +436,61 @@ export function configureHAXCMSSiteApiRegistry(appSettings = {}, jwtValue) {
   return state.readyPromise;
 }
 
+/**
+ * Like configureHAXCMSSiteApiRegistry, but does not download the site OpenAPI
+ * spec yet. Used on the boot path for visitors without a session: most never
+ * call a site operation, and the spec is large. The first
+ * waitForHAXCMSSiteApiRegistryReady() call (or a later configure call, e.g. on
+ * login) runs the bootstrap. Same arguments as configureHAXCMSSiteApiRegistry.
+ */
+export function deferHAXCMSSiteApiRegistry(appSettings = {}, jwtValue) {
+  const state = getState();
+  if (appSettings && typeof appSettings === "object") {
+    state.appSettings = appSettings;
+  } else if (!state.appSettings || typeof state.appSettings !== "object") {
+    state.appSettings = {};
+  }
+  const hasJwtOverride = arguments.length > 1;
+  updateAuth(state, state.appSettings, jwtValue, hasJwtOverride);
+  ensureAuthProvider(state);
+  const siteApiBasePath = deriveSiteApiBasePath(state.appSettings);
+  const siteOpenApiPath = getSiteOpenApiPath(
+    state.appSettings,
+    siteApiBasePath,
+  );
+  if (siteApiBasePath === "" || siteOpenApiPath === "") {
+    state.deferred = false;
+    state.bootstrapping = false;
+    state.bootstrapped = false;
+    state.readyPromise = Promise.resolve(false);
+    return state.readyPromise;
+  }
+  const sameBootstrapTarget =
+    state.siteApiBasePath === siteApiBasePath &&
+    state.siteOpenApiPath === siteOpenApiPath;
+  // already loaded (or loading) for this target: nothing to defer
+  if (
+    sameBootstrapTarget &&
+    (state.bootstrapped === true || state.bootstrapping === true) &&
+    state.readyPromise
+  ) {
+    return state.readyPromise;
+  }
+  state.siteApiBasePath = siteApiBasePath;
+  state.siteOpenApiPath = siteOpenApiPath;
+  state.bootstrapped = false;
+  state.bootstrapping = false;
+  state.readyPromise = null;
+  state.deferred = true;
+  return Promise.resolve(false);
+}
+
 export function waitForHAXCMSSiteApiRegistryReady() {
   const state = getState();
+  // deferred at boot: someone needs the registry now, so load it
+  if (state.deferred === true) {
+    return configureHAXCMSSiteApiRegistry(state.appSettings);
+  }
   if (state.readyPromise && typeof state.readyPromise.then === "function") {
     return state.readyPromise;
   }
