@@ -171,3 +171,35 @@ describe("ChamferTheme behavior", () => {
     expect(fallbackImg.getAttribute("src")).to.equal("assets/banner.jpg");
   });
 });
+
+// below 900px the menu column is an off-screen drawer while closed
+describe("ChamferTheme drawer menu", () => {
+  let element;
+  beforeEach(async () => {
+    element = await fixture(html` <chamfer-theme></chamfer-theme> `);
+    await element.updateComplete;
+  });
+
+  it("keeps the menu toggle outside the column that slides away", () => {
+    const toggle = element.shadowRoot.querySelector("#haxcmsmobilemenubutton");
+    expect(toggle === null).to.equal(false);
+    expect(toggle.closest(".site-menu-col") === null).to.equal(true);
+    expect(toggle.closest(".body-area") === null).to.equal(true);
+  });
+
+  it("makes the closed column inert only in drawer mode", async () => {
+    const col = element.shadowRoot.querySelector(".site-menu-col");
+    element._drawerMode = true;
+    element.menuOpen = false;
+    await element.updateComplete;
+    expect(col.inert).to.equal(true);
+    element.menuOpen = true;
+    await element.updateComplete;
+    expect(col.inert).to.equal(false);
+    // wide layouts keep the column on screen whether or not it is "open"
+    element._drawerMode = false;
+    element.menuOpen = false;
+    await element.updateComplete;
+    expect(col.inert).to.equal(false);
+  });
+});

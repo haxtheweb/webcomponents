@@ -175,7 +175,7 @@ describe("polaris-flex-theme", () => {
       }
     });
 
-    it("reveals the mirror and aria-hides the in-flow nav when stuck", async () => {
+    it("reveals the mirror and makes the in-flow nav inert when stuck", async () => {
       element.__navStuck = true;
       await element.updateComplete;
       const mirror = element.shadowRoot.querySelector(".sticky-nav-mirror");
@@ -183,7 +183,9 @@ describe("polaris-flex-theme", () => {
       expect(mirror.classList.contains("stuck")).to.equal(true);
       expect(getComputedStyle(mirror).visibility).to.equal("visible");
       expect(getComputedStyle(mirror).opacity).to.equal("1");
-      expect(primary.getAttribute("aria-hidden")).to.equal("true");
+      // inert, not aria-hidden: aria-hidden left its links focusable
+      expect(primary.inert).to.equal(true);
+      expect(primary.hasAttribute("aria-hidden")).to.equal(false);
     });
 
     it("hides the mirror and restores the in-flow nav when unstuck", async () => {
@@ -195,7 +197,7 @@ describe("polaris-flex-theme", () => {
       const primary = element.shadowRoot.querySelector("#primary-nav");
       expect(mirror.classList.contains("stuck")).to.equal(false);
       expect(getComputedStyle(mirror).visibility).to.equal("hidden");
-      expect(primary.getAttribute("aria-hidden")).to.equal("false");
+      expect(primary.inert).to.equal(false);
     });
 
     it("suppresses the mirror while in edit mode even if stuck", async () => {
@@ -205,6 +207,9 @@ describe("polaris-flex-theme", () => {
       const mirror = element.shadowRoot.querySelector(".sticky-nav-mirror");
       expect(mirror.classList.contains("stuck")).to.equal(false);
       expect(getComputedStyle(mirror).visibility).to.equal("hidden");
+      // the mirror is not showing, so the in-flow nav must stay usable
+      const primary = element.shadowRoot.querySelector("#primary-nav");
+      expect(primary.inert).to.equal(false);
     });
 
     it("toggles the mobile menu from the mirror hamburger on xs", async () => {

@@ -656,6 +656,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
           class="menu-outline"
           role="navigation"
           aria-label="${this.t.siteMenu}"
+          ?inert="${!this.menuOpen}"
         >
           <div class="site-title" part="site-title">
             ${

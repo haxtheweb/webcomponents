@@ -462,3 +462,17 @@ describe("clean-one edit-mode inert behavior", () => {
     expect(searchBox.getAttribute("aria-disabled")).to.equal("false");
   });
 });
+
+// a closed menu slides off-screen; it must leave the tab order with it
+describe("clean-one closed menu", () => {
+  it("makes the off-screen menu inert only while closed", async () => {
+    const element = await fixture(html` <clean-one></clean-one> `);
+    const nav = element.shadowRoot.querySelector(".menu-outline");
+    element.menuOpen = false;
+    await element.updateComplete;
+    expect(nav.inert).to.equal(true);
+    element.menuOpen = true;
+    await element.updateComplete;
+    expect(nav.inert).to.equal(false);
+  });
+});
