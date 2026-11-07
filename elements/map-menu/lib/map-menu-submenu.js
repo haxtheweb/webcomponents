@@ -225,6 +225,19 @@ class MapMenuSubmenu extends LitElement {
     `;
   }
 
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    // a lazy child list (map-menu lazy-children) renders the first time we
+    // open; let it check again
+    if (changedProperties.has("opened") && this.opened) {
+      const list = this.querySelector(":scope > map-menu-builder");
+      if (list && list.lazyChildren) {
+        list.requestUpdate();
+      }
+    }
+  }
   static get tag() {
     return "map-menu-submenu";
   }
