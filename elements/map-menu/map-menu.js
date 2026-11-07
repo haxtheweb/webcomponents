@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
+import { buildMenuTree } from "./lib/map-menu-tree.js";
 import "@haxtheweb/map-menu/lib/map-menu-builder.js";
 import "@haxtheweb/map-menu/lib/map-menu-container.js";
 import { normalizeEventPath } from "@haxtheweb/utils/lib/events.js";
@@ -482,6 +483,7 @@ class MapMenu extends SchemaBehaviors(LitElement) {
     this.title = "Content outline";
     this.data = null;
     this.items = [];
+    this.lazyChildren = false;
     this.autoScroll = false;
     this.activeIndicator = false;
     this.progress = null;
@@ -513,6 +515,7 @@ class MapMenu extends SchemaBehaviors(LitElement) {
             .items="${this.items}"
             .selected="${this.selected}"
             .progress="${this.progress}"
+            ?lazy-children="${this.lazyChildren}"
           ></map-menu-builder>
         </map-menu-container>
       </div>
@@ -584,6 +587,15 @@ class MapMenu extends SchemaBehaviors(LitElement) {
        */
       progress: {
         type: Object,
+      },
+      /**
+       * Opt-in for large menus: a submenu's children are rendered the first
+       * time it opens (or when it holds the selected item) instead of all at
+       * once. Off by default; nothing changes for menus that don't set it.
+       */
+      lazyChildren: {
+        type: Boolean,
+        attribute: "lazy-children",
       },
       /**
        * Show active indicator animation
@@ -776,8 +788,13 @@ class MapMenu extends SchemaBehaviors(LitElement) {
    * to a nested array for template rendering
    */
   _dataChanged(data) {
-    const items = [];
     if (!data) return;
+    // lazy menus are the large ones: build the tree in one pass
+    if (this.lazyChildren) {
+      this.items = [...buildMenuTree(data)];
+      return;
+    }
+    const items = [];
     // find parents
     data.forEach((element) => {
       // find top level parents
