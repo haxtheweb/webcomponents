@@ -127,6 +127,22 @@ describe("Utils test", () => {
       expect(iframe.hasAttribute("srcdoc")).to.be.false;
     });
 
+    it("haxElementToNode sanitizes content before it reaches a live element", async () => {
+      const node = haxElementToNode({
+        tag: "p",
+        properties: {},
+        content:
+          '<img src="x" onerror="globalThis.__haxElementToNodeXSS = 1"> <a href="javascript:void(0)">x</a> <strong data-keep="1">ok</strong>',
+      });
+      expect(node.querySelector("[onerror]")).to.equal(null);
+      expect(node.querySelector("a").hasAttribute("href")).to.equal(false);
+      expect(node.querySelector("strong").getAttribute("data-keep")).to.equal(
+        "1",
+      );
+      await new Promise((r) => setTimeout(r, 100));
+      expect(globalThis.__haxElementToNodeXSS).to.equal(undefined);
+    });
+
     it("haxElementToNode assigns array / object values to the camelCase property", async () => {
       const node = haxElementToNode({
         tag: "div",
