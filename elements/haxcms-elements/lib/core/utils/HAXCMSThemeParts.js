@@ -7,31 +7,53 @@ const HAXCMSThemeParts = function (SuperClass) {
     constructor() {
       super();
       this.__disposer = this.__disposer ? this.__disposer : [];
-      this.__disposer.push(
-        autorun((_reaction) => {
-          const _mobx_val_0 = toJS(store.editMode);
-          Promise.resolve().then(() => {
-            const editMode = _mobx_val_0;
-            if (this.editMode !== editMode) {
-              this.editMode = editMode;
-            }
-          });
-        }),
-      );
-      this.__disposer.push(
-        autorun((_reaction) => {
-          const _mobx_val_0 = toJS(store.darkMode);
-          Promise.resolve().then(() => {
-            const darkMode = _mobx_val_0;
-            if (this.darkMode !== darkMode) {
-              this.darkMode = darkMode;
-            }
-            if (this.dark !== darkMode) {
-              this.dark = darkMode; // alignment w/ simple colors for reactive content!
-            }
-          });
-        }),
-      );
+      this.__themePartsDisposers = null;
+    }
+    /**
+     * Subscribe to the store while connected. These autoruns used to be
+     * created in the constructor and were never disposed, so every element
+     * using this mixin (HAXCMSButton, haxcms-button-add, site-menu parts...)
+     * stayed reachable from the store after it was removed. Created before
+     * super.connectedCallback() so the first render already has the values.
+     */
+    connectedCallback() {
+      if (!this.__themePartsDisposers) {
+        this.__themePartsDisposers = [
+          autorun((_reaction) => {
+            const _mobx_val_0 = toJS(store.editMode);
+            Promise.resolve().then(() => {
+              const editMode = _mobx_val_0;
+              if (this.editMode !== editMode) {
+                this.editMode = editMode;
+              }
+            });
+          }),
+          autorun((_reaction) => {
+            const _mobx_val_0 = toJS(store.darkMode);
+            Promise.resolve().then(() => {
+              const darkMode = _mobx_val_0;
+              if (this.darkMode !== darkMode) {
+                this.darkMode = darkMode;
+              }
+              if (this.dark !== darkMode) {
+                this.dark = darkMode; // alignment w/ simple colors for reactive content!
+              }
+            });
+          }),
+        ];
+      }
+      if (super.connectedCallback) {
+        super.connectedCallback();
+      }
+    }
+    disconnectedCallback() {
+      if (this.__themePartsDisposers) {
+        this.__themePartsDisposers.forEach((dispose) => dispose());
+        this.__themePartsDisposers = null;
+      }
+      if (super.disconnectedCallback) {
+        super.disconnectedCallback();
+      }
     }
     static get styles() {
       let styles = [];
