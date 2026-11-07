@@ -437,10 +437,14 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     if (!this.file || this.isLoggedIn || this._timeStamp) {
       return false;
     }
-    let url = `${this.outlineLocation}${this.file}`;
-    url += url.indexOf("?") !== -1 ? `&${Date.now()}` : `?${Date.now()}`;
+    // same URL as the first load, revalidated: the browser sends
+    // If-None-Match / If-Modified-Since and an unchanged site.json comes back
+    // as a 304, instead of downloading the whole manifest again (it used to
+    // be no-store + a timestamp: a full second copy on every page load).
+    // no-cache also makes intermediate caches check with the server.
+    const url = `${this.outlineLocation}${this.file}`;
     try {
-      const response = await fetch(url, { cache: "no-store" });
+      const response = await fetch(url, { cache: "no-cache" });
       if (!response.ok) {
         return false;
       }
