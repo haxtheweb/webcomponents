@@ -7,7 +7,7 @@ import {
   localStorageSet,
   localStorageGet,
 } from "@haxtheweb/utils/lib/storage.js";
-import { sanitizeURLValue } from "@haxtheweb/utils/lib/url.js";
+import { buildPageContentHTML } from "./utils/page-content-html.js";
 import { neutralizeStrayScripts } from "@haxtheweb/utils/lib/sanitize.js";
 import { autorun, toJS } from "mobx";
 import { store, HAXcmsStore } from "./haxcms-site-store.js";
@@ -1338,103 +1338,12 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
   async _activeItemContentChanged(newValue, activeItem) {
     let htmlcontent = newValue;
     if (htmlcontent !== null && activeItem && activeItem.metadata) {
-      // Check if page-break should be hidden by platform configuration
-      const pageBreakHidden = store.platformAllows("pageBreak") === false;
-      const setAttrIfValue = (el, name, value) => {
-        if (
-          typeof value !== typeof undefined &&
-          value !== null &&
-          String(value) !== ""
-        ) {
-          el.setAttribute(name, String(value));
-        }
-      };
-      // force a page break w/ the relevant details in code
-      // this allows the UI to be modified
-      // required fields followed by optional fields if defined
-      const wrapper = globalThis.document.createElement("div");
-      const pageBreak = globalThis.document.createElement("page-break");
-      pageBreak.setAttribute("break-type", "site");
-      setAttrIfValue(pageBreak, "title", activeItem.title);
-      setAttrIfValue(pageBreak, "parent", activeItem.parent);
-      setAttrIfValue(pageBreak, "item-id", activeItem.id);
-      setAttrIfValue(pageBreak, "slug", activeItem.slug);
-      setAttrIfValue(pageBreak, "description", activeItem.description);
-      setAttrIfValue(pageBreak, "order", activeItem.order);
-      setAttrIfValue(pageBreak, "page-type", activeItem.metadata.pageType);
-      setAttrIfValue(
-        pageBreak,
-        "tags",
-        Array.isArray(activeItem.metadata.tags)
-          ? activeItem.metadata.tags.join(",")
-          : activeItem.metadata.tags,
-      );
-      setAttrIfValue(
-        pageBreak,
-        "related-items",
-        activeItem.metadata.relatedItems,
-      );
-      setAttrIfValue(pageBreak, "image", activeItem.metadata.image);
-      setAttrIfValue(pageBreak, "icon", activeItem.metadata.icon);
-      setAttrIfValue(
-        pageBreak,
-        "accent-color",
-        activeItem.metadata.accentColor,
-      );
-      if (activeItem.metadata.theme && activeItem.metadata.theme.key) {
-        pageBreak.setAttribute(
-          "developer-theme",
-          activeItem.metadata.theme.key,
-        );
-      }
-      const safeLinkUrl = sanitizeURLValue(activeItem.metadata.linkUrl, "");
-      setAttrIfValue(pageBreak, "link-url", safeLinkUrl);
-      setAttrIfValue(pageBreak, "link-target", activeItem.metadata.linkTarget);
-      if (activeItem.metadata.hideInMenu) {
-        pageBreak.setAttribute("hide-in-menu", "hide-in-menu");
-      }
-      if (activeItem.metadata.locked) {
-        pageBreak.setAttribute("locked", "locked");
-      }
-      if (pageBreakHidden) {
-        pageBreak.setAttribute("platform-hidden", "platform-hidden");
-      }
-      if (activeItem.metadata.published !== false) {
-        pageBreak.setAttribute("published", "published");
-      }
-      if (activeItem.metadata.overridePathauto) {
-        pageBreak.setAttribute("override-pathauto", "override-pathauto");
-      }
-      wrapper.appendChild(pageBreak);
-      const contentFragment = globalThis.document
-        .createRange()
-        .createContextualFragment(htmlcontent);
-      wrapper.appendChild(contentFragment);
-
-      // If this page has a link URL configured and the user is not logged in,
-      // append simple redirect messaging for a better user experience
-      if (safeLinkUrl) {
-        const linkTargetCandidates = ["_self", "_blank", "_parent", "_top"];
-        const linkTarget = linkTargetCandidates.includes(
-          activeItem.metadata.linkTarget,
-        )
-          ? activeItem.metadata.linkTarget
-          : "_self";
-        const linkParagraph = globalThis.document.createElement("p");
-        const link = globalThis.document.createElement("a");
-        link.setAttribute("href", String(safeLinkUrl));
-        link.setAttribute("target", String(linkTarget));
-        link.setAttribute("rel", "noopener noreferrer");
-        link.textContent = String(safeLinkUrl);
-        linkParagraph.appendChild(link);
-        const hintParagraph = globalThis.document.createElement("p");
-        const hint = globalThis.document.createElement("small");
-        hint.textContent = this.t.redirectHint;
-        hintParagraph.appendChild(hint);
-        wrapper.appendChild(linkParagraph);
-        wrapper.appendChild(hintParagraph);
-      }
-      htmlcontent = wrapper.innerHTML;
+      // page-break + content (+ link-out hint), assembled in an inert
+      // document so no element is constructed just to be serialized
+      htmlcontent = buildPageContentHTML(htmlcontent, activeItem, {
+        pageBreakHidden: store.platformAllows("pageBreak") === false,
+        redirectHint: this.t.redirectHint,
+      });
 
       // Previously, style-guide-driven defaults were applied here.
       // That behavior has been removed so page content renders as-is.
