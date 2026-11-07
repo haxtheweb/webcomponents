@@ -2791,32 +2791,32 @@ class A11yMediaPlayer extends SchemaBehaviors(
         "",
         "left=0,top=0,width=552,height=477,toolbar=0,scrollbars=0,status =0",
       );
-    print.document.body.innerHTML = `
-     <h1>${title}</h1>
-     ${Object.keys(cues)
-       .map(
-         (key) =>
-           `<div style="display: table-row;">
-         ${
-           this.hideTimestamps
-             ? ``
-             : `
-             <span style="display: table-cell;
-               font-size: 80%;
-               padding: 0 16px;
-               white-space: nowrap;
-               font-family: var(--ddd-font-mono, monospace);">
-               ${this._getHHMMSS(cues[key].startTime)} - 
-               ${this._getHHMMSS(cues[key].endTime)}:
-             </span>`
-         }
-         <span style="display: table-cell; line-height: 200%;">
-           ${cues[key].text}
-         </span>
-       </div>`,
-       )
-       .join("")}
-     `;
+    // security: cue text and the media title come from the track / page
+    // content, so build the print document with text nodes, not markup
+    const pdoc = print.document;
+    const body = pdoc.body;
+    body.textContent = "";
+    const h1 = pdoc.createElement("h1");
+    h1.textContent = title;
+    body.appendChild(h1);
+    Object.keys(cues).forEach((key) => {
+      const row = pdoc.createElement("div");
+      row.style.display = "table-row";
+      if (!this.hideTimestamps) {
+        const time = pdoc.createElement("span");
+        time.setAttribute(
+          "style",
+          "display: table-cell; font-size: 80%; padding: 0 16px; white-space: nowrap; font-family: var(--ddd-font-mono, monospace);",
+        );
+        time.textContent = `${this._getHHMMSS(cues[key].startTime)} - ${this._getHHMMSS(cues[key].endTime)}:`;
+        row.appendChild(time);
+      }
+      const text = pdoc.createElement("span");
+      text.setAttribute("style", "display: table-cell; line-height: 200%;");
+      text.textContent = cues[key].text;
+      row.appendChild(text);
+      body.appendChild(row);
+    });
     print.document.close();
     print.focus();
     print.print();

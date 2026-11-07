@@ -5,9 +5,8 @@ Entry point for recurring security audits of this repo. One of five HAX repos au
 ## Read order (do this first)
 
 1. `AGENTS.md` — monorepo layout, per-element test commands, build restrictions
-2. `security_best_practices_report.md` — canonical current state (each round rewrites it; a "previously reported — verified fixed" section carries history)
-3. `security_best_practices_report_YYYY-MM-DD.md` — archived rounds
-4. `SECURITY.md` — disclosure policy (private advisory at `haxtheweb/issues`, never public issues)
+2. The open and merged `security/*` pull requests on `haxtheweb/webcomponents` — each audit round lands as one PR per finding, titled `[<element>] ...`, with the finding, the fix and the regression test in the PR description. There is no checked-in report file; the PR list is the canonical record of what was found, what was fixed and what was deferred. The 2026-11 round is https://github.com/haxtheweb/webcomponents/pull/1170 through https://github.com/haxtheweb/webcomponents/pull/1176 (paste path, editor sinks, public render path, html-block `allowscript` / demo-snippet, dynamic import allow-lists, rich-text-editor, hardening sweep)
+3. `SECURITY.md` — disclosure policy (private advisory at `haxtheweb/issues`, never public issues)
 
 ## Scope
 
@@ -36,7 +35,8 @@ Never run a build at the repo root.
 
 ## Reporting convention
 
-- `security_best_practices_report.md` (undated) is canonical — rewrite in place each round, keeping the verified-fixed section
+- One `security/<topic>` branch and PR per finding (never one giant PR); the PR description is the report: finding, sink, fix, regression test, anything deliberately skipped and why
+- Deferred items are listed in the round's final sweep PR so the next round starts from them
 - Cite findings as `elements/<name>/lib/file.js:line` with rule IDs (`JS-XSS-001`, `JS-URL-002`, `JS-MSG-001`, `JS-STORAGE-001`)
 - Mark fixes with inline `security (JS-xxx-00x)` comments
 - Report vulnerabilities via `SECURITY.md` (private advisory), never public issues
