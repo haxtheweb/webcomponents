@@ -373,7 +373,7 @@ class HaxorSlevin extends I18NMixin(
         </div>
         <site-region name="header"></site-region>
       </header>
-      <div class="wrapper">
+      <main class="wrapper">
         <div id="home">
           <h1 class="home-title">${this.title}</h1>
           <site-query
@@ -412,7 +412,7 @@ class HaxorSlevin extends I18NMixin(
           )}
           <site-region name="footerPrimary"></site-region>
         </div>
-        <main class="contentcontainer-wrapper">
+        <div class="contentcontainer-wrapper">
           <article id="contentcontainer">
             <site-region name="contentTop"></site-region>
             <site-git-corner position="right"></site-git-corner>
@@ -546,8 +546,8 @@ class HaxorSlevin extends I18NMixin(
               ></site-share-widget>
             </div>
           </footer>
-        </main>
-      </div>
+        </div>
+      </main>
     `;
   }
   /**

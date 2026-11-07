@@ -105,6 +105,75 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
       <div id="slot"><slot></slot></div>
     </div>`;
   }
+  /**
+   * Skip links (`<a class="skip-link" href="#id">`) point at an id inside
+   * this theme's shadow root. Browsers resolve a fragment against the
+   * document, and HAXcms pages set <base href> to the site root, so left
+   * alone the link either does nothing (focus can't reach into the shadow
+   * root) or, on any page but the home page, hax-router treats it as a
+   * link to the site root and navigates home. Catch the click on the
+   * shadow root, which runs before the router's document listener, and
+   * move focus to the target ourselves. WCAG 2.4.1 Bypass Blocks.
+   */
+  createRenderRoot() {
+    const root = super.createRenderRoot();
+    if (root && root.addEventListener && !this.__skipLinkHandler) {
+      this.__skipLinkHandler = this.__skipLinkClick.bind(this);
+      root.addEventListener("click", this.__skipLinkHandler);
+    }
+    return root;
+  }
+  __skipLinkClick(e) {
+    if (e.defaultPrevented || !this.shadowRoot) {
+      return;
+    }
+    const path = e.composedPath ? e.composedPath() : [e.target];
+    let anchor = null;
+    for (const el of path) {
+      if (el === this.shadowRoot) {
+        break;
+      }
+      if (el && el.classList && el.classList.contains("skip-link")) {
+        anchor = el;
+        break;
+      }
+    }
+    if (!anchor) {
+      return;
+    }
+    const target = this.__skipLinkTarget(anchor.getAttribute("href"));
+    if (!target) {
+      return;
+    }
+    e.preventDefault();
+    if (!target.hasAttribute("tabindex")) {
+      target.setAttribute("tabindex", "-1");
+    }
+    target.focus({ preventScroll: true });
+    target.scrollIntoView({ block: "start" });
+  }
+  /**
+   * The id the link names, when it is rendered and visible; otherwise the
+   * first visible main landmark or content container, so a theme whose
+   * target is hidden in some view (a home listing) still skips somewhere.
+   */
+  __skipLinkTarget(href) {
+    const candidates = [];
+    if (href && href.indexOf("#") === 0 && href.length > 1) {
+      candidates.push(this.shadowRoot.getElementById(href.substring(1)));
+    }
+    candidates.push(
+      this.shadowRoot.querySelector("main"),
+      this.shadowRoot.querySelector('[role="main"]'),
+      this.shadowRoot.getElementById("contentcontainer"),
+    );
+    for (const el of candidates) {
+      if (el && el.getClientRects().length > 0) {
+        return el;
+      }
+    }
+    return null;
+  }
 
   hoverIntentEnter(e) {
     e.target.classList.add("haxcms-copyable");
