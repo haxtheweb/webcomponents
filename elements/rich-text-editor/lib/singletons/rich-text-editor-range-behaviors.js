@@ -7,6 +7,7 @@ import "./rich-text-editor-clipboard.js";
 import "./rich-text-editor-source.js";
 import { isWebKit } from "@haxtheweb/utils/lib/browser.js";
 import { stripHtmlComments } from "../stripHtmlComments.js";
+import { sanitizeHTMLString } from "@haxtheweb/utils/lib/sanitize.js";
 
 export const RichTextEditorRangeBehaviors = function (SuperClass) {
   return class extends SuperClass {
@@ -215,9 +216,13 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
             "[contenteditable=true]:not([disabled]),input:not([disabled]),textarea:not([disabled])",
           );
         if ((target = closest)) {
+          // security: clipboard HTML always goes through the sanitizer
+          // before it is parsed into a live node and inserted at the range;
+          // the sanitize flag only decides whether the <body> unwrap and
+          // the rest of the toolbar's clean up apply too
           div.innerHTML = sanitize
             ? this.sanitizeHTML(pasteContent || this.__clipboard.value)
-            : pasteContent;
+            : sanitizeHTMLString(pasteContent);
           if (range && range.extractContents) {
             range.extractContents();
           }
@@ -692,7 +697,6 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
         if (command != "paste" && command != "wrapRange") {
           globalThis.document.execCommand(command, false, commandVal);
           target.normalize();
-          // eslint-disable-next-line baseline-js/use-baseline -- feature check on navigator.clipboard
         } else if (navigator.clipboard && command == "paste") {
           this.pasteFromClipboard();
         }
