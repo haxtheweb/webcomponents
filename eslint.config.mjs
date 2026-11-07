@@ -4,6 +4,7 @@ import wcPlugin from "eslint-plugin-wc";
 import eslintConfigPrettier from "eslint-config-prettier";
 import baselineJs from "eslint-plugin-baseline-js";
 import globals from "globals";
+import leakPatterns from "./scripts/eslint-rules/leak-patterns.mjs";
 
 /**
  * ESLint 9 flat config for the webcomponents monorepo.
@@ -139,6 +140,21 @@ export default [
       // --prune-suppressions` drops entries that no longer apply.
       eqeqeq: ["error", "always", { null: "ignore" }],
       "no-var": "error",
+    },
+  },
+  {
+    // Memory-leak patterns (haxtheweb/issues#3246, rules and fixes in
+    // scripts/eslint-rules/leak-patterns.mjs). Errors, with every hit that
+    // predates the rules recorded in eslint-suppressions.json, so only new
+    // code is reported; fixing an old one: `npx eslint elements
+    // --prune-suppressions`.
+    files: ["elements/**/*.js"],
+    plugins: { "haxtheweb-leaks": leakPatterns },
+    rules: {
+      "haxtheweb-leaks/autorun-in-constructor": "error",
+      "haxtheweb-leaks/disposer-without-disconnect": "error",
+      "haxtheweb-leaks/responsive-element-unregister": "error",
+      "haxtheweb-leaks/live-document-parse": "error",
     },
   },
   {
