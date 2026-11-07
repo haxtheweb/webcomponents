@@ -1,0 +1,1512 @@
+{
+  "leaks": {
+    "a11y-details": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "a11y-gif-player": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 6
+    },
+    "a11y-media-player": {
+      "reactions": 0,
+      "observed": 3,
+      "i18n": 3
+    },
+    "a11y-tab": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "a11y-tabs": {
+      "reactions": 0,
+      "observed": 3,
+      "i18n": 0
+    },
+    "active-when-visible": {
+      "reactions": 0,
+      "observed": 3,
+      "i18n": 0
+    },
+    "app-hax": {
+      "reactions": 85,
+      "observed": 3,
+      "i18n": 33
+    },
+    "app-hax-backend-api": {
+      "reactions": 6,
+      "observed": 0,
+      "i18n": 0
+    },
+    "app-hax-confirmation-modal": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "app-hax-darkmode-toggle": {
+      "reactions": 3,
+      "observed": 0,
+      "i18n": 0
+    },
+    "app-hax-router": {
+      "reactions": 6,
+      "observed": 0,
+      "i18n": 0
+    },
+    "app-hax-scroll-button": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "app-hax-search-results": {
+      "reactions": 9,
+      "observed": 0,
+      "i18n": 3
+    },
+    "app-hax-simple-hat-progress": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "app-hax-site-bar": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "app-hax-site-creation-modal": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "app-hax-site-details": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "app-hax-site-login": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "app-hax-theme": {
+      "reactions": 0,
+      "observed": 3,
+      "i18n": 21
+    },
+    "app-hax-toast": {
+      "reactions": 6,
+      "observed": 0,
+      "i18n": 3
+    },
+    "app-hax-top-bar": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "app-hax-use-case": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "app-hax-use-case-filter": {
+      "reactions": 24,
+      "observed": 0,
+      "i18n": 21
+    },
+    "app-hax-user-access-modal": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "app-hax-user-menu": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "audio-player": {
+      "reactions": 0,
+      "observed": 3,
+      "i18n": 6
+    },
+    "author-card": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "badge-sticker": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "bibliography-item": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "bootstrap-breadcrumb": {
+      "reactions": 3,
+      "observed": 0,
+      "i18n": 3
+    },
+    "bootstrap-footer": {
+      "reactions": 3,
+      "observed": 0,
+      "i18n": 3
+    },
+    "bootstrap-search": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "bootstrap-theme": {
+      "reactions": 9,
+      "observed": 3,
+      "i18n": 12
+    },
+    "bullet-check-list": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "chamfer-theme": {
+      "reactions": 9,
+      "observed": 3,
+      "i18n": 12
+    },
+    "chat-agent": {
+      "reactions": 24,
+      "observed": 0,
+      "i18n": 54
+    },
+    "chat-button": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "chat-control-bar": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "chat-developer-panel": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "chat-input": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "chat-suggestion": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "citation-element": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "clean-one": {
+      "reactions": 15,
+      "observed": 3,
+      "i18n": 36
+    },
+    "clean-one-search-box": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "clean-portfolio-theme": {
+      "reactions": 0,
+      "observed": 3,
+      "i18n": 9
+    },
+    "clean-two": {
+      "reactions": 21,
+      "observed": 3,
+      "i18n": 18
+    },
+    "cms-hax": {
+      "reactions": 33,
+      "observed": 0,
+      "i18n": 9
+    },
+    "code-editor": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 6
+    },
+    "code-sample": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "collections-theme": {
+      "reactions": 15,
+      "observed": 3,
+      "i18n": 9
+    },
+    "concept-map-game": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "concept-quest-game": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "concept-runner-game": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "course-intro": {
+      "reactions": 9,
+      "observed": 0,
+      "i18n": 0
+    },
+    "course-intro-header": {
+      "reactions": 3,
+      "observed": 0,
+      "i18n": 0
+    },
+    "course-intro-lesson-plans": {
+      "reactions": 3,
+      "observed": 0,
+      "i18n": 0
+    },
+    "course-model": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "csv-render": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "d-d-docs": {
+      "reactions": 0,
+      "observed": 33,
+      "i18n": 924
+    },
+    "ddd-brochure-theme": {
+      "reactions": 9,
+      "observed": 3,
+      "i18n": 3
+    },
+    "demo-snippet": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "discord-embed": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "documentation-player": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "ebook-button": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "editable-table-display": {
+      "reactions": 0,
+      "observed": 3,
+      "i18n": 3
+    },
+    "editable-table-edit": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "editable-table-filter": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "editable-table-sort": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "elmsln-loading": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "example-hax-element": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "example-haxcms-theme": {
+      "reactions": 3,
+      "observed": 3,
+      "i18n": 9
+    },
+    "flash-card": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 6
+    },
+    "flash-card-answer-box": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "full-width-image": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "github-rpg-contributors": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "glossy-portfolio-breadcrumb": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "glossy-portfolio-footer": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "glossy-portfolio-grid": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "glossy-portfolio-header": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "glossy-portfolio-theme": {
+      "reactions": 3,
+      "observed": 3,
+      "i18n": 18
+    },
+    "grade-book": {
+      "reactions": 0,
+      "observed": 3,
+      "i18n": 12
+    },
+    "grade-book-lite": {
+      "reactions": 0,
+      "observed": 3,
+      "i18n": 12
+    },
+    "grade-book-pop-up": {
+      "reactions": 3,
+      "observed": 0,
+      "i18n": 3
+    },
+    "grade-book-student-block": {
+      "reactions": 0,
+      "observed": 3,
+      "i18n": 3
+    },
+    "grade-book-table": {
+      "reactions": 0,
+      "observed": 3,
+      "i18n": 6
+    },
+    "h-a-x": {
+      "reactions": 33,
+      "observed": 0,
+      "i18n": 9
+    },
+    "h5p-element": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 5
+    },
+    "hax-app-installer": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 6
+    },
+    "hax-app-picker": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "hax-app-search": {
+      "reactions": 3,
+      "observed": 0,
+      "i18n": 0
+    },
+    "hax-body": {
+      "reactions": 33,
+      "observed": 0,
+      "i18n": 9
+    },
+    "hax-cancel-dialog": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 6
+    },
+    "hax-confirm-dialog": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "hax-export-dialog": {
+      "reactions": 3,
+      "observed": 0,
+      "i18n": 6
+    },
+    "hax-file-actions": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "hax-gizmo-browser": {
+      "reactions": 9,
+      "observed": 0,
+      "i18n": 3
+    },
+    "hax-map": {
+      "reactions": 6,
+      "observed": 0,
+      "i18n": 3
+    },
+    "hax-palette-picker": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "hax-picker": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "hax-plate-context": {
+      "reactions": 12,
+      "observed": 0,
+      "i18n": 3
+    },
+    "hax-store": {
+      "reactions": 12,
+      "observed": 0,
+      "i18n": 3
+    },
+    "hax-text-editor-toolbar": {
+      "reactions": 6,
+      "observed": 0,
+      "i18n": 3
+    },
+    "hax-tray": {
+      "reactions": 39,
+      "observed": 3,
+      "i18n": 21
+    },
+    "hax-tray-upload": {
+      "reactions": 3,
+      "observed": 3,
+      "i18n": 9
+    },
+    "hax-upload-field": {
+      "reactions": 0,
+      "observed": 3,
+      "i18n": 9
+    },
+    "hax-view-source": {
+      "reactions": 3,
+      "observed": 0,
+      "i18n": 3
+    },
+    "haxcms-about-dialog-ui": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "haxcms-admin-confirm": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "haxcms-allowed-blocks-ui": {
+      "reactions": 6,
+      "observed": 0,
+      "i18n": 3
+    },
+    "haxcms-appearance-admin-dialog": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "haxcms-backend-beaker": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "haxcms-backend-userfs": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "haxcms-blank-theme": {
+      "reactions": 3,
+      "observed": 3,
+      "i18n": 6
+    },
+    "haxcms-button-add": {
+      "reactions": 6,
+      "observed": 0,
+      "i18n": 3
+    },
+    "haxcms-content-admin-dialog": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "haxcms-darkmode-toggle": {
+      "reactions": 3,
+      "observed": 0,
+      "i18n": 3
+    },
+    "haxcms-dev-theme": {
+      "reactions": 33,
+      "observed": 3,
+      "i18n": 26
+    },
+    "haxcms-editor-settings-dialog-ui": {
+      "reactions": 3,
+      "observed": 0,
+      "i18n": 3
+    },
+    "haxcms-files-admin-dialog": {
+      "reactions": 0,
+      "observed": 3,
+      "i18n": 12
+    },
+    "haxcms-language-picker": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "haxcms-learning-activity-report": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "haxcms-outline-editor-dialog": {
+      "reactions": 9,
+      "observed": 0,
+      "i18n": 6
+    },
+    "haxcms-outline-import-dialog": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "haxcms-page-get-started": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "haxcms-page-operations": {
+      "reactions": 6,
+      "observed": 0,
+      "i18n": 3
+    },
+    "haxcms-page-revisions-dialog": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "haxcms-print-theme": {
+      "reactions": 3,
+      "observed": 3,
+      "i18n": 6
+    },
+    "haxcms-seo-admin-dialog": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "haxcms-site-admin": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "haxcms-site-builder": {
+      "reactions": 6,
+      "observed": 0,
+      "i18n": 3
+    },
+    "haxcms-site-dashboard": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "haxcms-site-details-dialog": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "haxcms-site-disqus": {
+      "reactions": 12,
+      "observed": 0,
+      "i18n": 0
+    },
+    "haxcms-site-editor": {
+      "reactions": 33,
+      "observed": 0,
+      "i18n": 12
+    },
+    "haxcms-site-editor-ui": {
+      "reactions": 27,
+      "observed": 3,
+      "i18n": 15
+    },
+    "haxcms-site-import-export-dashboard": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "haxcms-site-platform-ui": {
+      "reactions": 9,
+      "observed": 0,
+      "i18n": 3
+    },
+    "haxcms-site-reports": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "haxcms-site-settings-dashboard": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "haxcms-site-store": {
+      "reactions": 18,
+      "observed": 0,
+      "i18n": 0
+    },
+    "haxcms-slide-theme": {
+      "reactions": 18,
+      "observed": 3,
+      "i18n": 21
+    },
+    "haxcms-system-allowed-blocks": {
+      "reactions": 9,
+      "observed": 0,
+      "i18n": 3
+    },
+    "haxcms-system-settings": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "haxcms-theme-picker": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "haxcms-theme-preview-panel": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 9
+    },
+    "haxcms-toast": {
+      "reactions": 6,
+      "observed": 0,
+      "i18n": 3
+    },
+    "haxcms-views-admin-dialog": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "haxma-theme": {
+      "reactions": 27,
+      "observed": 3,
+      "i18n": 33
+    },
+    "haxor-slevin": {
+      "reactions": 51,
+      "observed": 3,
+      "i18n": 21
+    },
+    "hex-picker": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "ics-render": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "image-compare-slider": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "image-inspector": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "img-view-viewer": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "insights-accessibility": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "insights-cadence": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "insights-components": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "insights-content": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "insights-freshness": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "insights-instructional": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "insights-links": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "insights-media": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "insights-metadata": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "insights-overview": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "journey-menu": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "journey-sidebar-theme": {
+      "reactions": 3,
+      "observed": 3,
+      "i18n": 12
+    },
+    "journey-theme": {
+      "reactions": 0,
+      "observed": 3,
+      "i18n": 3
+    },
+    "journey-topbar-theme": {
+      "reactions": 3,
+      "observed": 3,
+      "i18n": 16
+    },
+    "learn-two-theme": {
+      "reactions": 45,
+      "observed": 3,
+      "i18n": 36
+    },
+    "lesson-highlight": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "lesson-overview": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "letter-grade": {
+      "reactions": 3,
+      "observed": 0,
+      "i18n": 10
+    },
+    "license-element": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "link-card-theme": {
+      "reactions": 0,
+      "observed": 3,
+      "i18n": 3
+    },
+    "linkedin-embed": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "locked-badge": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "lorem-data": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "lrn-h5p": {
+      "reactions": 3,
+      "observed": 0,
+      "i18n": 3
+    },
+    "lrn-table": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 6
+    },
+    "lrndesign-bar": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "lrndesign-line": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "lrndesign-pie": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "lrndesign-timeline": {
+      "reactions": 0,
+      "observed": 3,
+      "i18n": 3
+    },
+    "lunr-search": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "map-menu-header": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "map-menu-item": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "map-menu-submenu": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "matching-question": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "media-quote": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 9
+    },
+    "merit-badge": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 6
+    },
+    "music-player": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "my-learning": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "outline-designer": {
+      "reactions": 9,
+      "observed": 0,
+      "i18n": 3
+    },
+    "outline-player": {
+      "reactions": 27,
+      "observed": 3,
+      "i18n": 27
+    },
+    "page-break": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "page-flag": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "page-flag-comment": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "page-template": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "pdf-browser-viewer": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "polaris-flex-sidebar": {
+      "reactions": 36,
+      "observed": 3,
+      "i18n": 18
+    },
+    "polaris-flex-theme": {
+      "reactions": 27,
+      "observed": 3,
+      "i18n": 18
+    },
+    "polaris-invent-theme": {
+      "reactions": 18,
+      "observed": 3,
+      "i18n": 21
+    },
+    "polaris-mark": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "polaris-story-card": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "polaris-theme": {
+      "reactions": 36,
+      "observed": 3,
+      "i18n": 24
+    },
+    "polaris-tile": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "post-card": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "progress-donut": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "radar-chart": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "responsive-grid-row": {
+      "reactions": 0,
+      "observed": 12,
+      "i18n": 0
+    },
+    "responsive-utility-element": {
+      "reactions": 0,
+      "observed": 3,
+      "i18n": 0
+    },
+    "resume-theme": {
+      "reactions": 0,
+      "observed": 3,
+      "i18n": 3
+    },
+    "rich-text-editor-prompt": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "rich-text-editor-source": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 6
+    },
+    "rpg-character-builder": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "screen-recorder": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "scroll-button": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "self-check": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "sheet-music": {
+      "reactions": 0,
+      "observed": 3,
+      "i18n": 3
+    },
+    "simple-autocomplete": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "simple-autocomplete-text-trigger": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "simple-blog": {
+      "reactions": 12,
+      "observed": 3,
+      "i18n": 9
+    },
+    "simple-blog-footer": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 9
+    },
+    "simple-blog-header": {
+      "reactions": 12,
+      "observed": 0,
+      "i18n": 6
+    },
+    "simple-blog-post": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "simple-camera-snap": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 6
+    },
+    "simple-fields-array": {
+      "reactions": 0,
+      "observed": 3,
+      "i18n": 3
+    },
+    "simple-fields-array-item": {
+      "reactions": 0,
+      "observed": 3,
+      "i18n": 3
+    },
+    "simple-fields-code": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 6
+    },
+    "simple-fields-combo": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "simple-fields-srcset": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "simple-fields-tab": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "simple-fields-tabs": {
+      "reactions": 0,
+      "observed": 3,
+      "i18n": 0
+    },
+    "simple-fields-upload": {
+      "reactions": 0,
+      "observed": 3,
+      "i18n": 9
+    },
+    "simple-fields-url-combo": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "simple-file-upload": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "simple-login-camera": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "simple-modal": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "simple-pager": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "simple-tag-lite": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "site-active-tags": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "site-active-title": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "site-available-themes": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "site-breadcrumb": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "site-children-block": {
+      "reactions": 9,
+      "observed": 0,
+      "i18n": 0
+    },
+    "site-citation": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "site-collection-list": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "site-git-corner": {
+      "reactions": 6,
+      "observed": 0,
+      "i18n": 3
+    },
+    "site-home-route": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "site-menu": {
+      "reactions": 6,
+      "observed": 0,
+      "i18n": 3
+    },
+    "site-menu-button": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "site-menu-content": {
+      "reactions": 12,
+      "observed": 0,
+      "i18n": 3
+    },
+    "site-modal": {
+      "reactions": 6,
+      "observed": 0,
+      "i18n": 3
+    },
+    "site-outline-block": {
+      "reactions": 3,
+      "observed": 0,
+      "i18n": 3
+    },
+    "site-page-progress": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "site-print-button": {
+      "reactions": 6,
+      "observed": 0,
+      "i18n": 3
+    },
+    "site-print-route": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "site-progress-clear": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "site-random-content": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "site-random-route": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "site-recent-content-block": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "site-region": {
+      "reactions": 3,
+      "observed": 0,
+      "i18n": 0
+    },
+    "site-rss-button": {
+      "reactions": 6,
+      "observed": 0,
+      "i18n": 3
+    },
+    "site-search": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 6
+    },
+    "site-search-route": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 9
+    },
+    "site-share-widget": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "site-theme-style-guide-route": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "site-title": {
+      "reactions": 6,
+      "observed": 0,
+      "i18n": 3
+    },
+    "site-top-menu": {
+      "reactions": 3,
+      "observed": 0,
+      "i18n": 3
+    },
+    "site-uuid-link": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "site-view": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "slide-deck": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "sorting-option": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "spacebook-theme": {
+      "reactions": 12,
+      "observed": 3,
+      "i18n": 24
+    },
+    "spotify-embed": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "star-rating": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "super-daemon": {
+      "reactions": 3,
+      "observed": 0,
+      "i18n": 9
+    },
+    "super-daemon-row": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "super-daemon-search": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "super-daemon-toast": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "super-daemon-ui": {
+      "reactions": 3,
+      "observed": 0,
+      "i18n": 6
+    },
+    "tagging-question": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "terrible-best-themes": {
+      "reactions": 6,
+      "observed": 3,
+      "i18n": 18
+    },
+    "terrible-outlet-themes": {
+      "reactions": 12,
+      "observed": 3,
+      "i18n": 15
+    },
+    "terrible-productionz-themes": {
+      "reactions": 6,
+      "observed": 3,
+      "i18n": 12
+    },
+    "terrible-resume-themes": {
+      "reactions": 18,
+      "observed": 3,
+      "i18n": 12
+    },
+    "terrible-themes": {
+      "reactions": 3,
+      "observed": 27,
+      "i18n": 15
+    },
+    "training-button": {
+      "reactions": 9,
+      "observed": 0,
+      "i18n": 0
+    },
+    "training-theme": {
+      "reactions": 12,
+      "observed": 3,
+      "i18n": 12
+    },
+    "twenty-six-theme": {
+      "reactions": 6,
+      "observed": 3,
+      "i18n": 15
+    },
+    "twitter-embed": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "unity-webgl": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "user-scaffold": {
+      "reactions": 3,
+      "observed": 0,
+      "i18n": 0
+    },
+    "vcf-render": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "video-player": {
+      "reactions": 0,
+      "observed": 3,
+      "i18n": 6
+    },
+    "vocab-term": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "web-container": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 9
+    },
+    "wikipedia-query": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 6
+    },
+    "word-count": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "worksheet-download": {
+      "reactions": 0,
+      "observed": 0,
+      "i18n": 3
+    },
+    "wysiwyg-hax": {
+      "reactions": 33,
+      "observed": 0,
+      "i18n": 9
+    }
+  },
+  "skip": {
+    "site-render-query": "hangs the page when created outside a HAXcms site (no store to query)"
+  }
+}
