@@ -202,7 +202,9 @@ class I18NManager extends LitElement {
     // should pull from other namespace if exists
     if (detail.context && detail.namespace) {
       // establish the fallback automatically if we are supplied defaults
-      if (detail.context.t) {
+      // keep the first defaults: a context registering again after a
+      // disconnect may already hold translated text in t
+      if (detail.context.t && !detail.context._t) {
         detail.context._t = { ...detail.context.t };
       }
       let match = this.elements.filter((el) => {
@@ -237,6 +239,13 @@ class I18NManager extends LitElement {
     ) {
       detail = this.detailNormalize(detail);
       this.elements.push(detail);
+      // sweep elements that were registered but never connected, now and then
+      this.__registrationsSincePrune =
+        (this.__registrationsSincePrune || 0) + 1;
+      if (this.__registrationsSincePrune >= 100) {
+        this.__registrationsSincePrune = 0;
+        this.pruneDisconnected();
+      }
 
       // store in this.locales for quick "do we support this" look up
       if (detail && detail.locales) {
@@ -260,6 +269,34 @@ class I18NManager extends LitElement {
         }, 0);
       }
     }
+  }
+  /**
+   * Remove every registration whose context is `context`. I18NMixin calls this
+   * when its element disconnects, so the registry does not keep removed
+   * elements (and everything they reference) alive for the life of the page.
+   * The element registers again when it reconnects.
+   */
+  deregisterLocalization(context) {
+    if (!context) {
+      return;
+    }
+    this.elements = this.elements.filter((e) => e.context !== context);
+  }
+  /**
+   * Drop registrations for I18NMixin elements that are not in the document.
+   * Covers elements that were constructed but never connected, which never
+   * get a disconnectedCallback. They register again if they ever connect.
+   */
+  pruneDisconnected() {
+    this.elements = this.elements.filter(
+      (e) =>
+        !(
+          e.context &&
+          e.context.__i18nMixinManaged === true &&
+          e.context.nodeType === 1 &&
+          !e.context.isConnected
+        ),
+    );
   }
   /**
    * Lazy load the translation manifest only when needed (non-English language)
