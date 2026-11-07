@@ -7,7 +7,10 @@ import {
   localStorageSet,
   localStorageGet,
 } from "@haxtheweb/utils/lib/storage.js";
-import { buildPageContentHTML } from "./utils/page-content-html.js";
+import {
+  buildPageContentHTML,
+  getInertDocument,
+} from "./utils/page-content-html.js";
 import { neutralizeStrayScripts } from "@haxtheweb/utils/lib/sanitize.js";
 import { autorun, toJS } from "mobx";
 import { store, HAXcmsStore } from "./haxcms-site-store.js";
@@ -222,7 +225,10 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
   }
   _updateActiveItemContent(data, activeItem = null) {
     if (data) {
-      let tmp = globalThis.document.createElement("div");
+      // parsed in an inert document: only heading ids are touched here, and
+      // in the live document every custom element in the page would be
+      // constructed (and never connected) just to be serialized again
+      let tmp = getInertDocument().createElement("div");
       tmp.innerHTML = data;
       for (const node of tmp.childNodes) {
         this.nodeNormalizeIDs(node);
