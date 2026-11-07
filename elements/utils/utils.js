@@ -38,6 +38,7 @@ import {
   badIFrameAttributes,
   badJSEventAttributes,
   removeBadJSEventAttributes,
+  sanitizeHTMLString,
 } from "./lib/sanitize.js";
 // moved to lib/sanitize.js and lib/storage.js; same names and behavior
 export * from "./lib/sanitize.js";
@@ -938,7 +939,9 @@ function haxElementToNode(haxSchema) {
     tag = "webview";
   }
   let frag = globalThis.document.createElement(tag);
-  frag.innerHTML = content;
+  // security: content is a string from schema / import / paste; sanitize it
+  // before it reaches a live element so inline handlers never fire
+  frag.innerHTML = sanitizeHTMLString(content);
   // clone the fragment which will force an escalation to full node
   let newNode = frag.cloneNode(true);
 
