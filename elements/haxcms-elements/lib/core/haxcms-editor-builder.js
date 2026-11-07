@@ -3,7 +3,10 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
-import { configureHAXCMSSiteApiRegistry } from "@haxtheweb/haxcms-elements/lib/core/utils/haxcms-site-api-registry.js";
+import {
+  configureHAXCMSSiteApiRegistry,
+  deferHAXCMSSiteApiRegistry,
+} from "@haxtheweb/haxcms-elements/lib/core/utils/haxcms-site-api-registry.js";
 
 /**
  * `haxcms-editor-builder`
@@ -60,7 +63,13 @@ class HAXCMSEditorBuilder extends HTMLElement {
   _syncStoreAppSettings() {
     if (globalThis.appSettings && typeof globalThis.appSettings === "object") {
       store.appSettings = globalThis.appSettings;
-      configureHAXCMSSiteApiRegistry(store.appSettings);
+      // session-driven environments hand us a JWT up front; otherwise wait
+      // until the registry is needed (see deferHAXCMSSiteApiRegistry)
+      if (store.appSettings.jwt) {
+        configureHAXCMSSiteApiRegistry(store.appSettings);
+      } else {
+        deferHAXCMSSiteApiRegistry(store.appSettings);
+      }
     }
   }
   _hasGlobalConnectionSettings() {
