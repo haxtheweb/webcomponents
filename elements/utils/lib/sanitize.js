@@ -155,9 +155,39 @@ export function isEventHandlerAttribute(attributeName) {
  * refresh redirects), script-loading custom elements, and SVG animations
  * that rewrite href (bypasses per-attribute URL checks).
  */
+/**
+ * security: html-block runs its slotted markup as raw script when it carries
+ * `allowscript`, but that attribute travels with the authored content. Only
+ * a platform that opted in (globalThis.HAXHtmlBlockAllowScript or
+ * appSettings.htmlBlockAllowScript, see html-block) may keep it; everywhere
+ * else it is stripped so saved content cannot grant itself script.
+ */
+function platformAllowsHtmlBlockScript() {
+  if (globalThis.HAXHtmlBlockAllowScript === true) {
+    return true;
+  }
+  return !!(
+    globalThis.appSettings &&
+    globalThis.appSettings.htmlBlockAllowScript === true
+  );
+}
+
 export function removeUnsafeElements(root) {
   if (!root || !root.querySelectorAll) {
     return root;
+  }
+  if (!platformAllowsHtmlBlockScript()) {
+    const scripted = root.querySelectorAll("[allowscript]");
+    for (let i = 0; i < scripted.length; i++) {
+      scripted[i].removeAttribute("allowscript");
+    }
+    if (
+      root.removeAttribute &&
+      root.hasAttribute &&
+      root.hasAttribute("allowscript")
+    ) {
+      root.removeAttribute("allowscript");
+    }
   }
   const bad = root.querySelectorAll(
     badContentElements.join(",") + ",set,animate",
