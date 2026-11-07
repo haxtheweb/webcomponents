@@ -123,18 +123,22 @@ export function sanitizeEmbeddableURL(value, fallback = "") {
 
 /**
  * Whether a URL targets a different origin than the current page.
- * Unparseable values are treated as same-origin so the stricter
- * sandbox applies to them.
+ * Only http(s) URLs count: javascript:, about:, data:, blob: and similar
+ * report an opaque ("null") or inherited origin, and a frame loading one
+ * runs with the embedding page's origin (or can, once allow-same-origin is
+ * granted), so they are never treated as cross-origin. Unparseable values
+ * are treated as same-origin too, so the stricter sandbox applies to them.
  */
 export function isCrossOriginURL(value) {
   if (!value || !globalThis.location || !globalThis.location.href) {
     return false;
   }
   try {
-    return (
-      new URL(value, globalThis.location.href).origin !==
-      globalThis.location.origin
-    );
+    const parsed = new URL(value, globalThis.location.href);
+    if (parsed.protocol !== "http:" && parsed.protocol !== "https:") {
+      return false;
+    }
+    return parsed.origin !== globalThis.location.origin;
   } catch {
     return false;
   }
