@@ -1,8 +1,8 @@
 import { css, html, unsafeCSS } from "lit";
 import { SimpleToastEl } from "@haxtheweb/simple-toast/lib/simple-toast-el.js";
 import "@haxtheweb/future-terminal-text/future-terminal-text.js";
-import "@haxtheweb/simple-icon/lib/simple-icons";
-import "@haxtheweb/simple-icon/simple-icon";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 

@@ -3,7 +3,7 @@
  * @license MIT, see License.md for full text.
  */
 import { LitElement, html, css, nothing } from "lit";
-import "@haxtheweb/simple-icon/lib/simple-icon-lite";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
