@@ -10,7 +10,10 @@ import {
   localStorageGet,
   localStorageSet,
 } from "@haxtheweb/utils/lib/storage.js";
-import { neutralizeStrayScripts } from "@haxtheweb/utils/lib/sanitize.js";
+import {
+  neutralizeStrayScripts,
+  sanitizeNodeTree,
+} from "@haxtheweb/utils/lib/sanitize.js";
 import "@haxtheweb/simple-colors-shared-styles/simple-colors-shared-styles.js";
 import "@haxtheweb/anchor-behaviors/anchor-behaviors.js";
 
@@ -201,6 +204,8 @@ const HAXCMSTheme = function (SuperClass) {
             .createContextualFragment(store.activeItemContent);
           // see haxcms-site-builder: scripts in this fragment would run
           neutralizeStrayScripts(frag);
+          // security: same sanitizing pass as the site builder's own insert
+          sanitizeNodeTree(frag);
           this.appendChild(frag);
         }
         this.__styleReapply();
