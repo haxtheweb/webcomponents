@@ -6,7 +6,11 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-menu.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-menu-item.js";
-import "@haxtheweb/responsive-utility/responsive-utility.js";
+import {
+  registerResponsiveElement,
+  unregisterResponsiveElement,
+  reregisterResponsiveElement,
+} from "@haxtheweb/responsive-utility/responsive-utility.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 /**
  * `simple-fields-array-item`
@@ -508,6 +512,8 @@ class SimpleFieldsArrayItem extends I18NMixin(
   }
   connectedCallback() {
     super.connectedCallback();
+    // moved, or removed and added again: observe it again
+    reregisterResponsiveElement(this);
     setTimeout(() => {
       /**
        * Fires when constructed, so that parent radio group can listen for it.
@@ -532,19 +538,15 @@ class SimpleFieldsArrayItem extends I18NMixin(
      * needs the size of parent container to add responsive styling
      * @event responsive-element
      */
-    globalThis.dispatchEvent(
-      new CustomEvent("responsive-element", {
-        detail: {
-          element: this,
-          attribute: "responsive-size",
-          relativeToParent: true,
-          sm: 250,
-          md: 500,
-          lg: 1000,
-          xl: 2000,
-        },
-      }),
-    );
+    registerResponsiveElement({
+      element: this,
+      attribute: "responsive-size",
+      relativeToParent: true,
+      sm: 250,
+      md: 500,
+      lg: 1000,
+      xl: 2000,
+    });
   }
   updated(changedProperties) {
     if (super.updated) {
@@ -602,6 +604,8 @@ class SimpleFieldsArrayItem extends I18NMixin(
    * Let the group know that this is gone.
    */
   disconnectedCallback() {
+    // the utility's ResizeObserver keeps a registered element alive
+    unregisterResponsiveElement(this);
     /**
      * Fires when detatched, so that parent radio group will no longer listen for it.
      *
