@@ -152,19 +152,9 @@ export class UserScaffold extends HTMLElement {
   // these should provide the basis for understanding
   // what the user is attempting to do in an application
   userActionArchitypes() {
-    // always polling to understand if an action is taken
-    this.interactionInterval = setInterval(() => {
-      // limit writes to 12 seconds. Not going to track beyond that
-      if (
-        this.active &&
-        this.readMemory("interactionDelay") <= MEMORYINTERVALPOLLING * 10
-      ) {
-        this.incrementWriteMemory(
-          "interactionDelay",
-          MEMORYINTERVALPOLLING * 2,
-        );
-      }
-    }, MEMORYINTERVALPOLLING);
+    // count idle time (interactionDelay) until the cap, then stop; an
+    // interaction resets the delay to 0 and starts counting again
+    this._scheduleInteractionTick();
     // events
     globalThis.addEventListener("click", this.userMouseAction.bind(this), {
       signal: this.windowControllers.signal,
@@ -187,6 +177,33 @@ export class UserScaffold extends HTMLElement {
     globalThis.addEventListener("storage", this._onStorage.bind(this), {
       signal: this.windowControllers.signal,
     });
+  }
+  /**
+   * One step of the idle counter: same cadence and cap as the old
+   * always-on 300ms interval, but it stops once the cap is reached instead of
+   * waking the page 3 times a second forever. interactionInterval holds the
+   * pending timer id (null when not counting).
+   */
+  _scheduleInteractionTick() {
+    if (this.interactionInterval || this.__interactionStopped) {
+      return;
+    }
+    this.interactionInterval = setTimeout(() => {
+      this.interactionInterval = null;
+      if (!this.active) {
+        // not tracking right now; keep checking so counting resumes
+        this._scheduleInteractionTick();
+        return;
+      }
+      // limit writes; not going to track beyond the cap
+      if (this.readMemory("interactionDelay") <= MEMORYINTERVALPOLLING * 10) {
+        this.incrementWriteMemory(
+          "interactionDelay",
+          MEMORYINTERVALPOLLING * 2,
+        );
+        this._scheduleInteractionTick();
+      }
+    }, MEMORYINTERVALPOLLING);
   }
   _onStorage(e) {
     const adapter = this._memoryAdapter;
@@ -372,6 +389,10 @@ export class UserScaffold extends HTMLElement {
       this._saveLongTerm();
     } else {
       this[prop][key] = value;
+      // an interaction reset the idle counter: start counting again
+      if (key === "interactionDelay" && value <= MEMORYINTERVALPOLLING * 10) {
+        this._scheduleInteractionTick();
+      }
     }
   }
   // remove from memory
@@ -1231,8 +1252,9 @@ export class UserScaffold extends HTMLElement {
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
+    this.__interactionStopped = true;
     if (this.interactionInterval) {
-      clearInterval(this.interactionInterval);
+      clearTimeout(this.interactionInterval);
       this.interactionInterval = null;
     }
     this.windowControllers.abort();
