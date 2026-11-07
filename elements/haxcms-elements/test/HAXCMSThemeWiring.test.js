@@ -518,6 +518,26 @@ describe("HAXCMSThemeWiring class methods", () => {
       expect(el.querySelector("p")).to.not.equal(null);
       expect(el.querySelector("p").textContent).to.equal("from the store");
     });
+    it("sanitizes the page before it is inserted but keeps authored markup", async () => {
+      store.activeItemContent =
+        '<p><img src="x" onerror="globalThis.__wiringXSS = 1"> <a href="javascript:void(0)">x</a></p>' +
+        '<my-element data-keep="1" some-prop="2"><template><script>ok()</script></template></my-element>' +
+        '<iframe src="https://example.org/embed" srcdoc="<b>no</b>"></iframe><base href="https://evil.example/">';
+      const el = await fixture(html`<test-theme-wiring></test-theme-wiring>`);
+      await new Promise((r) => setTimeout(r, 150));
+      expect(globalThis.__wiringXSS).to.equal(undefined);
+      expect(el.querySelector("[onerror]")).to.equal(null);
+      expect(el.querySelector("a").hasAttribute("href")).to.equal(false);
+      expect(el.querySelector("base")).to.equal(null);
+      const custom = el.querySelector("my-element");
+      expect(custom.getAttribute("data-keep")).to.equal("1");
+      expect(custom.getAttribute("some-prop")).to.equal("2");
+      // template contents stay parseable as a code sample
+      expect(custom.querySelector("template")).to.not.equal(null);
+      const iframe = el.querySelector("iframe");
+      expect(iframe.getAttribute("src")).to.equal("https://example.org/embed");
+      expect(iframe.hasAttribute("srcdoc")).to.equal(false);
+    });
     it("leaves the insert to the site builder when it says one is on its way", async () => {
       store.activeItemContent = "<p>from the store</p>";
       const el = document.createElement("test-theme-wiring");
