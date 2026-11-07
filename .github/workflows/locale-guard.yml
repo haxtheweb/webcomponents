@@ -1,0 +1,89 @@
+name: locale-guard
+
+# English-only locale changes on pull requests (haxtheweb/issues#3262).
+#
+# Translations now happen nightly: a scheduled job translates new or changed
+# English strings and updates one rolling PR from the branch
+# chore/nightly-translations. Feature PRs change only English sources:
+# the strings in the element (this.t, haxProperties) and
+# elements/<name>/locales/<namespace>.en.json.
+#
+# This check fails when a pull request adds, changes, renames or deletes any
+# non-English locale file (elements/*/locales/<namespace>.<lang>.json where
+# <lang> is not en). The nightly translation PR from this repository is the
+# one exception.
+#
+# It diffs the PR merge commit against its first parent (the base branch), so
+# only this PR's own changes count. Only commits and trees are fetched, not
+# the 40k+ file tree.
+on:
+  # No branch filter: stacked PRs (base is another feature branch) must run too.
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  locale-guard:
+    name: English-only locale changes
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 2
+          filter: blob:none
+          sparse-checkout: .github
+
+      - name: Only English locale sources may change
+        env:
+          HEAD_REF: ${{ github.head_ref }}
+          SAME_REPO: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
+        run: |
+          set -euo pipefail
+          if [[ "$HEAD_REF" == "chore/nightly-translations" && "$SAME_REPO" == "true" ]]; then
+            echo "Nightly translation PR: non-English locale changes are expected here."
+            exit 0
+          fi
+
+          blocked=()
+          while IFS= read -r file; do
+            [[ "$file" =~ ^elements/[^/]+/locales/[^/]+\.json$ ]] || continue
+            name="${file##*/}"
+            name="${name%.json}"
+            # <namespace>.<lang>.json; a file without a language part is not a translation
+            [[ "$name" == *.* ]] || continue
+            lang="${name##*.}"
+            case "$lang" in
+              en | en-* | en_*) ;;
+              *) blocked+=("$file") ;;
+            esac
+          done < <(git diff --name-only --no-renames HEAD^1 HEAD -- elements)
+
+          if [[ ${#blocked[@]} -eq 0 ]]; then
+            echo "No non-English locale files changed."
+            exit 0
+          fi
+
+          message="Change only English source strings (this.t, haxProperties, locales/*.en.json). Translations are handled nightly in the chore/nightly-translations PR, so revert your changes to the other locale files."
+          {
+            echo "## Non-English locale files changed"
+            echo ""
+            echo "$message"
+            echo ""
+            echo "${#blocked[@]} file(s):"
+            echo ""
+            for file in "${blocked[@]:0:200}"; do
+              echo "- \`$file\`"
+            done
+            if [[ ${#blocked[@]} -gt 200 ]]; then
+              echo "- ...and $(( ${#blocked[@]} - 200 )) more"
+            fi
+            echo ""
+            echo "To drop them from this branch: \`git checkout origin/<base branch> -- <files>\` for changed files, \`git rm <files>\` for new ones."
+          } >> "$GITHUB_STEP_SUMMARY"
+          for file in "${blocked[@]:0:50}"; do
+            echo "::error file=$file,title=Non-English locale file changed::$message"
+          done
+          echo "::error title=Translations are handled nightly::${#blocked[@]} non-English locale file(s) changed. $message"
+          exit 1
