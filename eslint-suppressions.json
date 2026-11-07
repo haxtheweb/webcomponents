@@ -1,4 +1,9 @@
 {
+  "elements/a11y-media-player/a11y-media-player.js": {
+    "haxtheweb-leaks/responsive-element-unregister": {
+      "count": 1
+    }
+  },
   "elements/a11y-media-player/lib/a11y-media-play-button.js": {
     "eqeqeq": {
       "count": 1
@@ -22,11 +27,50 @@
   "elements/app-hax/app-hax.js": {
     "eqeqeq": {
       "count": 3
+    },
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 12
+    }
+  },
+  "elements/app-hax/lib/app-hax-theme.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
+    },
+    "haxtheweb-leaks/disposer-without-disconnect": {
+      "count": 1
+    }
+  },
+  "elements/app-hax/lib/v2/AppHaxBackendAPI.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 2
+    }
+  },
+  "elements/app-hax/lib/v2/AppHaxRouter.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 2
+    }
+  },
+  "elements/app-hax/lib/v2/admin/haxcms-system-allowed-blocks.js": {
+    "haxtheweb-leaks/disposer-without-disconnect": {
+      "count": 1
+    }
+  },
+  "elements/app-hax/lib/v2/app-hax-darkmode-toggle.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
+    }
+  },
+  "elements/app-hax/lib/v2/app-hax-search-results.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 3
     }
   },
   "elements/app-hax/lib/v2/app-hax-use-case-filter.js": {
     "eqeqeq": {
       "count": 1
+    },
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 5
     }
   },
   "elements/app-hax/lib/v2/app-hax-user-access-modal.js": {
@@ -44,8 +88,40 @@
       "count": 2
     }
   },
+  "elements/bootstrap-theme/bootstrap-theme.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
+    }
+  },
+  "elements/bootstrap-theme/lib/BootstrapBreadcrumb.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
+    },
+    "haxtheweb-leaks/disposer-without-disconnect": {
+      "count": 1
+    }
+  },
+  "elements/bootstrap-theme/lib/BootstrapFooter.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
+    },
+    "haxtheweb-leaks/disposer-without-disconnect": {
+      "count": 1
+    }
+  },
   "elements/bootstrap-theme/lib/BootstrapUserStylesMenuMixin.js": {
     "eqeqeq": {
+      "count": 1
+    },
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
+    }
+  },
+  "elements/chamfer-theme/chamfer-theme.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
+    },
+    "haxtheweb-leaks/disposer-without-disconnect": {
       "count": 1
     }
   },
@@ -54,9 +130,52 @@
       "count": 3
     }
   },
+  "elements/chat-agent/chat-agent.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 2
+    }
+  },
   "elements/chat-agent/lib/chat-agent-store.js": {
     "eqeqeq": {
       "count": 1
+    },
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
+    }
+  },
+  "elements/chat-agent/lib/chat-button.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 4
+    }
+  },
+  "elements/chat-agent/lib/chat-control-bar.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 3
+    }
+  },
+  "elements/chat-agent/lib/chat-developer-panel.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 4
+    }
+  },
+  "elements/chat-agent/lib/chat-input.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 5
+    }
+  },
+  "elements/chat-agent/lib/chat-interface.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 5
+    }
+  },
+  "elements/chat-agent/lib/chat-message.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 2
+    }
+  },
+  "elements/chat-agent/lib/chat-suggestion.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 2
     }
   },
   "elements/citation-element/citation-element.js": {
@@ -67,16 +186,34 @@
   "elements/clean-one/clean-one.js": {
     "eqeqeq": {
       "count": 5
+    },
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
+    },
+    "haxtheweb-leaks/disposer-without-disconnect": {
+      "count": 1
     }
   },
   "elements/clean-portfolio-theme/clean-portfolio-theme.js": {
     "eqeqeq": {
       "count": 3
+    },
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 9
+    },
+    "haxtheweb-leaks/disposer-without-disconnect": {
+      "count": 1
     }
   },
   "elements/clean-two/clean-two.js": {
     "eqeqeq": {
       "count": 2
+    },
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 2
+    },
+    "haxtheweb-leaks/disposer-without-disconnect": {
+      "count": 1
     }
   },
   "elements/cms-hax/cms-hax.js": {
@@ -104,13 +241,41 @@
       "count": 1
     }
   },
+  "elements/collection-list/lib/collections-theme.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 4
+    },
+    "haxtheweb-leaks/disposer-without-disconnect": {
+      "count": 1
+    }
+  },
   "elements/count-up/count-up.js": {
     "eqeqeq": {
       "count": 2
     }
   },
+  "elements/course-design/lib/course-intro-header.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
+    }
+  },
+  "elements/course-design/lib/course-intro-lesson-plans.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
+    }
+  },
+  "elements/course-design/lib/course-intro.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
+    }
+  },
   "elements/course-design/lib/learning-component.js": {
     "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/course-design/lib/lrn-h5p.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
       "count": 1
     }
   },
@@ -121,6 +286,24 @@
   },
   "elements/csv-render/csv-render.js": {
     "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/d-d-d/lib/ddd-brochure-theme.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
+    },
+    "haxtheweb-leaks/disposer-without-disconnect": {
+      "count": 1
+    }
+  },
+  "elements/disqus-embed/lib/haxcms-site-disqus.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 4
+    }
+  },
+  "elements/editable-table/lib/editable-table-behaviors.js": {
+    "haxtheweb-leaks/live-document-parse": {
       "count": 1
     }
   },
@@ -149,8 +332,18 @@
       "count": 1
     }
   },
+  "elements/example-haxcms-theme/example-haxcms-theme.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
+    }
+  },
   "elements/full-width-image/full-width-image.js": {
     "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/glossy-portfolio-theme/glossy-portfolio-theme.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
       "count": 1
     }
   },
@@ -159,18 +352,65 @@
       "count": 1
     }
   },
+  "elements/glossy-portfolio-theme/lib/glossy-portfolio-footer.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 2
+    }
+  },
+  "elements/glossy-portfolio-theme/lib/glossy-portfolio-grid.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
+    }
+  },
+  "elements/glossy-portfolio-theme/lib/glossy-portfolio-header.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 2
+    }
+  },
+  "elements/glossy-portfolio-theme/lib/glossy-portfolio-home.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 2
+    }
+  },
   "elements/grade-book/grade-book.js": {
     "eqeqeq": {
       "count": 4
+    },
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 4
+    },
+    "haxtheweb-leaks/disposer-without-disconnect": {
+      "count": 1
     }
   },
   "elements/grade-book/lib/grade-book-lite.js": {
     "eqeqeq": {
       "count": 2
+    },
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 4
+    },
+    "haxtheweb-leaks/disposer-without-disconnect": {
+      "count": 1
+    }
+  },
+  "elements/grade-book/lib/grade-book-pop-up.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
     }
   },
   "elements/grade-book/lib/letter-grade-picker.js": {
     "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/grade-book/lib/letter-grade.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
+    }
+  },
+  "elements/grid-plate/grid-plate.js": {
+    "haxtheweb-leaks/responsive-element-unregister": {
       "count": 1
     }
   },
@@ -192,6 +432,9 @@
   "elements/hax-body/hax-body.js": {
     "eqeqeq": {
       "count": 24
+    },
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 5
     }
   },
   "elements/hax-body/lib/hax-app-picker.js": {
@@ -202,6 +445,14 @@
   "elements/hax-body/lib/hax-app-search.js": {
     "eqeqeq": {
       "count": 6
+    },
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
+    }
+  },
+  "elements/hax-body/lib/hax-context-behaviors.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 2
     }
   },
   "elements/hax-body/lib/hax-context-item-textop.js": {
@@ -217,11 +468,17 @@
   "elements/hax-body/lib/hax-gizmo-browser.js": {
     "eqeqeq": {
       "count": 1
+    },
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 2
     }
   },
   "elements/hax-body/lib/hax-map.js": {
     "eqeqeq": {
       "count": 1
+    },
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 2
     }
   },
   "elements/hax-body/lib/hax-picker.js": {
@@ -237,6 +494,12 @@
   "elements/hax-body/lib/hax-store.js": {
     "eqeqeq": {
       "count": 40
+    },
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 4
+    },
+    "haxtheweb-leaks/live-document-parse": {
+      "count": 2
     }
   },
   "elements/hax-body/lib/hax-tray-button.js": {
@@ -244,9 +507,20 @@
       "count": 1
     }
   },
+  "elements/hax-body/lib/hax-tray-upload.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
+    }
+  },
   "elements/hax-body/lib/hax-tray.js": {
     "eqeqeq": {
       "count": 33
+    },
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 5
+    },
+    "haxtheweb-leaks/live-document-parse": {
+      "count": 1
     }
   },
   "elements/hax-body/lib/hax-upload-field.js": {
@@ -257,35 +531,74 @@
   "elements/hax-body/lib/hax-view-source.js": {
     "eqeqeq": {
       "count": 3
+    },
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
     }
   },
   "elements/haxcms-elements/lib/core/HAXCMSLitElementTheme.js": {
     "eqeqeq": {
       "count": 6
+    },
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 3
+    },
+    "haxtheweb-leaks/disposer-without-disconnect": {
+      "count": 1
     }
   },
   "elements/haxcms-elements/lib/core/HAXCMSThemeWiring.js": {
     "eqeqeq": {
+      "count": 1
+    },
+    "haxtheweb-leaks/disposer-without-disconnect": {
+      "count": 2
+    },
+    "haxtheweb-leaks/live-document-parse": {
+      "count": 1
+    }
+  },
+  "elements/haxcms-elements/lib/core/backends/haxcms-backend-beaker.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
       "count": 1
     }
   },
   "elements/haxcms-elements/lib/core/backends/haxcms-backend-demo.js": {
     "eqeqeq": {
       "count": 1
+    },
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
     }
   },
   "elements/haxcms-elements/lib/core/backends/haxcms-backend-nodejs.js": {
     "eqeqeq": {
       "count": 2
+    },
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
     }
   },
   "elements/haxcms-elements/lib/core/backends/haxcms-backend-php.js": {
     "eqeqeq": {
       "count": 2
+    },
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
+    }
+  },
+  "elements/haxcms-elements/lib/core/backends/haxcms-backend-userfs.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 2
     }
   },
   "elements/haxcms-elements/lib/core/haxcms-appearance-admin-dialog.js": {
     "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/haxcms-elements/lib/core/haxcms-darkmode-toggle.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
       "count": 1
     }
   },
@@ -302,21 +615,36 @@
   "elements/haxcms-elements/lib/core/haxcms-site-builder.js": {
     "eqeqeq": {
       "count": 11
+    },
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 2
+    },
+    "haxtheweb-leaks/live-document-parse": {
+      "count": 4
     }
   },
   "elements/haxcms-elements/lib/core/haxcms-site-dashboard.js": {
     "eqeqeq": {
       "count": 2
+    },
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
     }
   },
   "elements/haxcms-elements/lib/core/haxcms-site-editor-ui.js": {
     "eqeqeq": {
       "count": 16
+    },
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 8
     }
   },
   "elements/haxcms-elements/lib/core/haxcms-site-editor.js": {
     "eqeqeq": {
       "count": 3
+    },
+    "haxtheweb-leaks/disposer-without-disconnect": {
+      "count": 1
     }
   },
   "elements/haxcms-elements/lib/core/haxcms-site-insights.js": {
@@ -324,9 +652,22 @@
       "count": 11
     }
   },
+  "elements/haxcms-elements/lib/core/haxcms-site-router.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
+    }
+  },
   "elements/haxcms-elements/lib/core/haxcms-site-store.js": {
     "eqeqeq": {
       "count": 13
+    },
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 6
+    }
+  },
+  "elements/haxcms-elements/lib/core/haxcms-toast.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 2
     }
   },
   "elements/haxcms-elements/lib/core/haxcms-views-admin-dialog.js": {
@@ -342,20 +683,61 @@
   "elements/haxcms-elements/lib/core/micros/haxcms-page-operations.js": {
     "eqeqeq": {
       "count": 2
+    },
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 2
+    }
+  },
+  "elements/haxcms-elements/lib/core/themes/haxcms-slide-theme.js": {
+    "haxtheweb-leaks/disposer-without-disconnect": {
+      "count": 1
     }
   },
   "elements/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js": {
     "eqeqeq": {
       "count": 2
+    },
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
+    },
+    "haxtheweb-leaks/disposer-without-disconnect": {
+      "count": 1
     }
   },
   "elements/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js": {
     "eqeqeq": {
       "count": 1
+    },
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
+    }
+  },
+  "elements/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 2
+    },
+    "haxtheweb-leaks/disposer-without-disconnect": {
+      "count": 1
     }
   },
   "elements/haxcms-elements/lib/core/utils/HAXCMSUserStylesMenu.js": {
     "eqeqeq": {
+      "count": 1
+    },
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
+    }
+  },
+  "elements/haxcms-elements/lib/core/utils/LTIResizingMixin.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
+    }
+  },
+  "elements/haxcms-elements/lib/development/haxcms-dev-theme.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 2
+    },
+    "haxtheweb-leaks/disposer-without-disconnect": {
       "count": 1
     }
   },
@@ -367,21 +749,46 @@
   "elements/haxcms-elements/lib/ui-components/active-item/site-active-media-banner.js": {
     "eqeqeq": {
       "count": 2
+    },
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 2
     }
   },
   "elements/haxcms-elements/lib/ui-components/active-item/site-active-tags.js": {
     "eqeqeq": {
       "count": 1
+    },
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 2
     }
   },
   "elements/haxcms-elements/lib/ui-components/active-item/site-active-title.js": {
     "eqeqeq": {
       "count": 2
+    },
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 5
     }
   },
   "elements/haxcms-elements/lib/ui-components/active-item/site-git-corner.js": {
     "eqeqeq": {
       "count": 2
+    },
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 2
+    }
+  },
+  "elements/haxcms-elements/lib/ui-components/active-item/site-share-widget.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
+    }
+  },
+  "elements/haxcms-elements/lib/ui-components/blocks/site-children-block.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 3
+    },
+    "haxtheweb-leaks/disposer-without-disconnect": {
+      "count": 1
     }
   },
   "elements/haxcms-elements/lib/ui-components/blocks/site-outline-block.js": {
@@ -392,6 +799,22 @@
   "elements/haxcms-elements/lib/ui-components/blocks/site-recent-content-block.js": {
     "eqeqeq": {
       "count": 2
+    },
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
+    }
+  },
+  "elements/haxcms-elements/lib/ui-components/layout/site-footer.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 3
+    }
+  },
+  "elements/haxcms-elements/lib/ui-components/layout/site-region.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
+    },
+    "haxtheweb-leaks/disposer-without-disconnect": {
+      "count": 1
     }
   },
   "elements/haxcms-elements/lib/ui-components/magic/active-when-visible.js": {
@@ -417,6 +840,22 @@
   "elements/haxcms-elements/lib/ui-components/navigation/site-menu-button.js": {
     "eqeqeq": {
       "count": 3
+    },
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 3
+    }
+  },
+  "elements/haxcms-elements/lib/ui-components/navigation/site-menu-content.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 2
+    },
+    "haxtheweb-leaks/disposer-without-disconnect": {
+      "count": 1
+    }
+  },
+  "elements/haxcms-elements/lib/ui-components/navigation/site-menu.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 4
     }
   },
   "elements/haxcms-elements/lib/ui-components/navigation/site-top-menu.js": {
@@ -434,9 +873,35 @@
       "count": 1
     }
   },
+  "elements/haxcms-elements/lib/ui-components/routes/site-search-route.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
+    }
+  },
+  "elements/haxcms-elements/lib/ui-components/routes/site-tags-route.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
+    }
+  },
+  "elements/haxcms-elements/lib/ui-components/routes/site-theme-style-guide-route.js": {
+    "haxtheweb-leaks/live-document-parse": {
+      "count": 1
+    }
+  },
+  "elements/haxcms-elements/lib/ui-components/site/site-citation.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
+    }
+  },
   "elements/haxcms-elements/lib/ui-components/site/site-random-content.js": {
     "eqeqeq": {
       "count": 2
+    },
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 2
+    },
+    "haxtheweb-leaks/live-document-parse": {
+      "count": 1
     }
   },
   "elements/haxcms-elements/lib/ui-components/site/site-remote-content.js": {
@@ -454,9 +919,30 @@
       "count": 5
     }
   },
+  "elements/haxcms-elements/lib/ui-components/site/site-title.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 3
+    }
+  },
   "elements/haxcms-elements/lib/ui-components/site/site-uuid-link.js": {
     "eqeqeq": {
       "count": 2
+    }
+  },
+  "elements/haxma-theme/haxma-theme.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 3
+    },
+    "haxtheweb-leaks/disposer-without-disconnect": {
+      "count": 1
+    }
+  },
+  "elements/haxor-slevin/haxor-slevin.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 5
+    },
+    "haxtheweb-leaks/disposer-without-disconnect": {
+      "count": 1
     }
   },
   "elements/hexagon-loader/hexagon-loader.js": {
@@ -476,6 +962,24 @@
   },
   "elements/img-pan-zoom/lib/img-loader.js": {
     "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/journey-theme/journey-theme.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 5
+    },
+    "haxtheweb-leaks/disposer-without-disconnect": {
+      "count": 1
+    }
+  },
+  "elements/journey-theme/lib/journey-sidebar-theme.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
+    }
+  },
+  "elements/journey-theme/lib/journey-topbar-theme.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
       "count": 1
     }
   },
@@ -499,9 +1003,22 @@
       "count": 2
     }
   },
+  "elements/link-card-theme/link-card-theme.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
+    },
+    "haxtheweb-leaks/disposer-without-disconnect": {
+      "count": 1
+    }
+  },
   "elements/lorem-data/lib/lorem-data-behaviors.js": {
     "eqeqeq": {
       "count": 2
+    }
+  },
+  "elements/lrndesign-timeline/lrndesign-timeline.js": {
+    "haxtheweb-leaks/responsive-element-unregister": {
+      "count": 1
     }
   },
   "elements/lrs-elements/lib/lrs-emitter.js": {
@@ -557,11 +1074,20 @@
   "elements/outline-designer/outline-designer.js": {
     "eqeqeq": {
       "count": 12
+    },
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 3
+    },
+    "haxtheweb-leaks/live-document-parse": {
+      "count": 5
     }
   },
   "elements/outline-player/outline-player.js": {
     "eqeqeq": {
       "count": 3
+    },
+    "haxtheweb-leaks/disposer-without-disconnect": {
+      "count": 1
     }
   },
   "elements/page-break/lib/page-anchor.js": {
@@ -577,6 +1103,9 @@
   "elements/page-break/page-break.js": {
     "eqeqeq": {
       "count": 3
+    },
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
     }
   },
   "elements/page-contents-menu/page-contents-menu.js": {
@@ -604,9 +1133,33 @@
       "count": 1
     }
   },
+  "elements/polaris-theme/lib/polaris-flex-theme.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 4
+    },
+    "haxtheweb-leaks/disposer-without-disconnect": {
+      "count": 1
+    }
+  },
+  "elements/polaris-theme/lib/polaris-invent-theme.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 4
+    },
+    "haxtheweb-leaks/disposer-without-disconnect": {
+      "count": 1
+    }
+  },
   "elements/polaris-theme/lib/polaris-mark.js": {
     "eqeqeq": {
       "count": 5
+    }
+  },
+  "elements/polaris-theme/polaris-theme.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 5
+    },
+    "haxtheweb-leaks/disposer-without-disconnect": {
+      "count": 1
     }
   },
   "elements/portal-launcher/portal-launcher.js": {
@@ -626,6 +1179,22 @@
   },
   "elements/responsive-grid/lib/responsive-grid-row.js": {
     "eqeqeq": {
+      "count": 1
+    },
+    "haxtheweb-leaks/responsive-element-unregister": {
+      "count": 1
+    }
+  },
+  "elements/responsive-utility/lib/responsive-utility-behaviors.js": {
+    "haxtheweb-leaks/responsive-element-unregister": {
+      "count": 1
+    }
+  },
+  "elements/resume-theme/resume-theme.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 2
+    },
+    "haxtheweb-leaks/disposer-without-disconnect": {
       "count": 1
     }
   },
@@ -679,6 +1248,21 @@
       "count": 1
     }
   },
+  "elements/simple-blog/simple-blog.js": {
+    "haxtheweb-leaks/disposer-without-disconnect": {
+      "count": 1
+    }
+  },
+  "elements/simple-fields/lib/simple-fields-array-item.js": {
+    "haxtheweb-leaks/responsive-element-unregister": {
+      "count": 1
+    }
+  },
+  "elements/simple-fields/lib/simple-fields-array.js": {
+    "haxtheweb-leaks/responsive-element-unregister": {
+      "count": 1
+    }
+  },
   "elements/simple-fields/lib/simple-fields-code.js": {
     "eqeqeq": {
       "count": 2
@@ -686,6 +1270,11 @@
   },
   "elements/simple-fields/lib/simple-fields-form-lite.js": {
     "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/simple-fields/lib/simple-fields-html-block.js": {
+    "haxtheweb-leaks/live-document-parse": {
       "count": 1
     }
   },
@@ -697,6 +1286,9 @@
   "elements/simple-fields/lib/simple-fields-upload.js": {
     "eqeqeq": {
       "count": 7
+    },
+    "haxtheweb-leaks/responsive-element-unregister": {
+      "count": 1
     }
   },
   "elements/simple-fields/lib/simple-fields-url-combo-item.js": {
@@ -784,6 +1376,14 @@
       "count": 3
     }
   },
+  "elements/spacebook-theme/spacebook-theme.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 4
+    },
+    "haxtheweb-leaks/disposer-without-disconnect": {
+      "count": 1
+    }
+  },
   "elements/spotify-embed/spotify-embed.js": {
     "eqeqeq": {
       "count": 1
@@ -797,11 +1397,75 @@
   "elements/super-daemon/lib/super-daemon-ui.js": {
     "eqeqeq": {
       "count": 11
+    },
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
     }
   },
   "elements/super-daemon/super-daemon.js": {
     "eqeqeq": {
       "count": 6
+    }
+  },
+  "elements/terrible-themes/lib/terrible-best-themes.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
+    },
+    "haxtheweb-leaks/disposer-without-disconnect": {
+      "count": 1
+    }
+  },
+  "elements/terrible-themes/lib/terrible-outlet-themes.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
+    },
+    "haxtheweb-leaks/disposer-without-disconnect": {
+      "count": 1
+    }
+  },
+  "elements/terrible-themes/lib/terrible-productionz-themes.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 3
+    },
+    "haxtheweb-leaks/disposer-without-disconnect": {
+      "count": 1
+    }
+  },
+  "elements/terrible-themes/lib/terrible-resume-themes.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
+    },
+    "haxtheweb-leaks/disposer-without-disconnect": {
+      "count": 1
+    }
+  },
+  "elements/terrible-themes/terrible-themes.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
+    },
+    "haxtheweb-leaks/disposer-without-disconnect": {
+      "count": 1
+    }
+  },
+  "elements/training-theme/lib/training-button.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
+    },
+    "haxtheweb-leaks/disposer-without-disconnect": {
+      "count": 1
+    }
+  },
+  "elements/training-theme/training-theme.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 4
+    }
+  },
+  "elements/twenty-six-theme/twenty-six-theme.js": {
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 5
+    },
+    "haxtheweb-leaks/disposer-without-disconnect": {
+      "count": 1
     }
   },
   "elements/twitter-embed/lib/twitter-embed-vanilla.js": {
@@ -822,6 +1486,9 @@
   "elements/user-scaffold/user-scaffold.js": {
     "eqeqeq": {
       "count": 5
+    },
+    "haxtheweb-leaks/autorun-in-constructor": {
+      "count": 1
     }
   },
   "elements/utils/lib/object-path.js": {
@@ -841,6 +1508,9 @@
   },
   "elements/video-player/lib/lecture-player.js": {
     "eqeqeq": {
+      "count": 1
+    },
+    "haxtheweb-leaks/live-document-parse": {
       "count": 1
     }
   },
