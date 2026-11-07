@@ -155,6 +155,12 @@ class AframePlayer extends SchemaBehaviors(LitElement) {
    */
   connectedCallback() {
     super.connectedCallback();
+    // security follow-up: this third-party script is loaded through
+    // ESGlobalBridge without Subresource Integrity. Add an integrity hash
+    // (sha384 of the exact pinned release, computed with
+    // curl URL | openssl dgst -sha384 -binary | openssl base64 -A) once the
+    // bridge accepts one; not added here because aframe.io was unreachable
+    // from the audit sandbox and a guessed hash would break the player.
     let location = "https://aframe.io/releases/0.9.2/aframe.min.js";
     if (typeof TWEEN === "object") this._aframeLoaded.bind(this);
     globalThis.addEventListener(

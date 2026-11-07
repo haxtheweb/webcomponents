@@ -270,6 +270,27 @@ describe("Registry lookup and update", () => {
     );
   });
 
+  it("freezes registered definitions so they cannot be mutated in place", () => {
+    const name = "@test/frozen";
+    MicroFrontendRegistry.add({
+      endpoint: "https://example.com/frozen",
+      name: name,
+    });
+    const svc = MicroFrontendRegistry.get(name);
+    expect(Object.isFrozen(svc)).to.equal(true);
+    expect(() => {
+      svc.endpoint = "https://evil.example/";
+    }).to.throw();
+    expect(MicroFrontendRegistry.get(name).endpoint).to.equal(
+      "https://example.com/frozen",
+    );
+    MicroFrontendRegistry.set(name, {
+      endpoint: "https://example.com/replaced",
+      name: name,
+    });
+    expect(Object.isFrozen(MicroFrontendRegistry.get(name))).to.equal(true);
+  });
+
   it("set is a no-op when name does not exist", () => {
     const result = MicroFrontendRegistry.set("@does/notExist", {
       endpoint: "https://example.com",

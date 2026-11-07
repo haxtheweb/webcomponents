@@ -168,8 +168,15 @@ class LecturePlayer extends I18NMixin(DDDSuper(LitElement)) {
         this.getNextSiblingHTML(header),
       );
       // Scrub the ids from the lecture-anchor elements in the content
-      let contentElement = globalThis.document.createElement("div");
-      contentElement.innerHTML = anchor.getAttribute("data-lecture-content");
+      // security: parse the sibling HTML in an inert document (nothing runs
+      // or loads) and store the sanitized form; the jumbotron sanitizes
+      // again on display, this keeps the attribute value itself clean
+      let contentElement = globalThis.document.implementation
+        .createHTMLDocument("")
+        .createElement("div");
+      contentElement.innerHTML = sanitizeHTMLString(
+        anchor.getAttribute("data-lecture-content") || "",
+      );
       contentElement.querySelectorAll("[data-lecture-slide]").forEach((el) => {
         el.removeAttribute("id");
         el.classList.add("no-pointer-events");

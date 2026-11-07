@@ -158,7 +158,11 @@ export const MicroFrontendRegCapabilities = function (SuperClass) {
         }
 
         if (!this.has(item.name)) {
-          this.list.push(item);
+          // security: once registered, a definition's endpoint / method /
+          // headers cannot be changed in place by later code (for example a
+          // script that walks the registry); replacing it goes through
+          // set(), which is an explicit, auditable API
+          this.list.push(Object.freeze(item));
           return true;
         }
       } else {
@@ -207,7 +211,7 @@ export const MicroFrontendRegCapabilities = function (SuperClass) {
     set(name, item = {}) {
       if (name && this.list.length > 0 && this.has(name)) {
         const index = this.list.findIndex((item) => item.name === name);
-        this.list[index] = item;
+        this.list[index] = Object.freeze(item);
       }
       return null;
     }
