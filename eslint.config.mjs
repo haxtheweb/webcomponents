@@ -96,6 +96,19 @@ export default [
           message:
             "Optional chaining (?.) is banned; this toolchain has issues with it. Use explicit null checks instead.",
         },
+        // Team convention: imports of our own code (@haxtheweb/* packages and
+        // relative paths) must name the exact file, extension included, e.g.
+        // "@haxtheweb/simple-icon/lib/simple-icon-lite.js". Servers that do not
+        // apply Node resolution (HAXcms, static hosts, CDNs) cannot find an
+        // extensionless path, and a bare "@haxtheweb/pkg" relies on package.json
+        // "main". Third-party packages (lit, mobx, ...) are not affected, and
+        // template-literal dynamic imports are not checked.
+        {
+          selector:
+            ":matches(ImportDeclaration, ExportNamedDeclaration, ExportAllDeclaration, ImportExpression)[source.value=/^(@haxtheweb|\\.)(?!.*\\.[A-Za-z0-9]+$)/]",
+          message:
+            "Import @haxtheweb/* and relative modules by their full file path with the .js extension (e.g. @haxtheweb/simple-icon/lib/simple-icon-lite.js), not an extensionless or bare package path.",
+        },
       ],
       // Team convention: prefer globalThis over bare `window` for
       // global-scope JS (e.g. `window.customElements`, `window.dispatchEvent`)
