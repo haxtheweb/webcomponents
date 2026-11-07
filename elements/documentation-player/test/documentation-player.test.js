@@ -606,3 +606,105 @@ describe("DocumentationPlayer topics", () => {
     ).to.equal(0);
   });
 });
+
+// security: the docs JSON is author-uploaded; its import / cdn values must
+// not be able to run a module from an arbitrary origin
+describe("DocumentationPlayer live demo import allow-list", () => {
+  let element;
+  let savedBase;
+  let savedCDN;
+  beforeEach(async () => {
+    savedBase = globalThis.WCGlobalBasePath;
+    savedCDN = globalThis.WCGlobalCDNPath;
+    delete globalThis.WCGlobalBasePath;
+    delete globalThis.WCGlobalCDNPath;
+    element = await fixture(
+      html`<documentation-player></documentation-player>`,
+    );
+    await element.updateComplete;
+  });
+  afterEach(() => {
+    if (savedBase === undefined) {
+      delete globalThis.WCGlobalBasePath;
+    } else {
+      globalThis.WCGlobalBasePath = savedBase;
+    }
+    if (savedCDN === undefined) {
+      delete globalThis.WCGlobalCDNPath;
+    } else {
+      globalThis.WCGlobalCDNPath = savedCDN;
+    }
+  });
+
+  it("allows same-origin, bare and HAX CDN specifiers", () => {
+    const origin = globalThis.location.origin;
+    expect(element._safeImportSpecifier("./lib/thing.js")).to.equal(
+      new URL("./lib/thing.js", globalThis.document.baseURI).href,
+    );
+    expect(element._safeImportSpecifier("/elements/x/x.js")).to.equal(
+      origin + "/elements/x/x.js",
+    );
+    expect(element._safeImportSpecifier(origin + "/a.js")).to.equal(
+      origin + "/a.js",
+    );
+    expect(
+      element._safeImportSpecifier("@haxtheweb/meme-maker/meme-maker.js"),
+    ).to.equal("@haxtheweb/meme-maker/meme-maker.js");
+    expect(
+      element._safeImportSpecifier(
+        "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/x/x.js",
+      ),
+    ).to.equal(
+      "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/x/x.js",
+    );
+    expect(
+      element._safeImportSpecifier(
+        "https://cdn.webcomponents.psu.edu/cdn/build/es6/x.js",
+      ),
+    ).to.equal("https://cdn.webcomponents.psu.edu/cdn/build/es6/x.js");
+  });
+
+  it("refuses cross-origin and non-http specifiers", () => {
+    expect(element._safeImportSpecifier("https://evil.example/x.js")).to.equal(
+      null,
+    );
+    expect(
+      element._safeImportSpecifier("https://cdn.hax.cloud.evil.example/x.js"),
+    ).to.equal(null);
+    expect(element._safeImportSpecifier("//evil.example/x.js")).to.equal(null);
+    expect(
+      element._safeImportSpecifier("data:text/javascript,alert(1)"),
+    ).to.equal(null);
+    expect(element._safeImportSpecifier("javascript:alert(1)")).to.equal(null);
+    expect(element._safeImportSpecifier("")).to.equal(null);
+    expect(element._safeImportSpecifier(null)).to.equal(null);
+  });
+
+  it("trusts the configured component base path", () => {
+    globalThis.WCGlobalBasePath = "https://my-cdn.example/cdn/";
+    expect(
+      element._safeImportSpecifier("https://my-cdn.example/cdn/x.js"),
+    ).to.equal("https://my-cdn.example/cdn/x.js");
+    expect(element._safeImportSpecifier("https://other.example/x.js")).to.equal(
+      null,
+    );
+  });
+
+  it("fails the live demo instead of importing from an unknown origin", async () => {
+    // call _runLive on a stub so the full docs render is not needed
+    const stub = {
+      docs: {
+        tag: "x-y",
+        import: "https://evil.example/x.js",
+        cdn: "https://evil.example/x.js",
+        demoHtml: "<x-y></x-y>",
+      },
+      liveState: "",
+      shadowRoot: element.shadowRoot,
+      _baseForLoads: element._baseForLoads.bind(element),
+      _safeImportSpecifier: element._safeImportSpecifier.bind(element),
+    };
+    await element._runLive.call(stub);
+    expect(stub.liveState).to.equal("fail");
+  });
+});
