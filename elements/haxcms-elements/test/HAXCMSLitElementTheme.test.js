@@ -10,6 +10,20 @@ import { store } from "../lib/core/haxcms-site-store.js";
 class TestHaxcmsLitTheme extends HAXCMSLitElementTheme {}
 customElements.define("test-haxcms-lit-theme", TestHaxcmsLitTheme);
 
+// a theme that renders a skip link the way real themes do
+class TestHaxcmsSkipTheme extends HAXCMSLitElementTheme {
+  render() {
+    return html`<a class="skip-link" href="#maincontent">Skip to content</a>
+      <nav><button>menu</button></nav>
+      <main id="maincontent">
+        <div id="contentcontainer">
+          <div id="slot"><slot></slot></div>
+        </div>
+      </main>`;
+  }
+}
+customElements.define("test-haxcms-skip-theme", TestHaxcmsSkipTheme);
+
 // one microtask + a lit update cycle, enough for the Promise.resolve()-deferred
 // mobx autoruns in the constructor to copy store state onto the element
 const flush = async (el) => {
@@ -136,5 +150,61 @@ describe("HAXCMSLitElementTheme base wiring", () => {
     expect(() => element.disconnectedCallback()).to.not.throw();
     // heading listeners bucket should be cleared by __removeHeadingListeners
     expect(element.__headingNodes.length).to.equal(0);
+  });
+});
+
+describe("HAXCMSLitElementTheme skip link", () => {
+  let element;
+  let docClicks;
+  const docListener = (e) => {
+    docClicks.push(e.defaultPrevented);
+  };
+
+  let savedManifest;
+
+  beforeEach(async () => {
+    savedManifest = store.manifest;
+    store.manifest = {
+      id: "t",
+      title: "T",
+      metadata: { platform: {}, theme: { variables: {} } },
+      items: [],
+    };
+    docClicks = [];
+    globalThis.document.addEventListener("click", docListener);
+    element = await fixture(
+      html`<test-haxcms-skip-theme></test-haxcms-skip-theme>`,
+    );
+    // the theme stays visibility:hidden (unfocusable) until theme-ready
+    await nextFrames();
+    await element.updateComplete;
+  });
+
+  afterEach(() => {
+    store.manifest = savedManifest;
+    globalThis.document.removeEventListener("click", docListener);
+  });
+
+  it("moves focus to the named target inside the shadow root", async () => {
+    const link = element.shadowRoot.querySelector(".skip-link");
+    link.click();
+    const target = element.shadowRoot.querySelector("#maincontent");
+    // compare booleans: a failing DOM-node equality makes chai serialize
+    // the whole tree, which stalls the runner
+    expect(element.shadowRoot.activeElement === target).to.equal(true);
+    expect(target.getAttribute("tabindex")).to.equal("-1");
+  });
+
+  it("prevents the default so hax-router does not treat it as navigation", async () => {
+    element.shadowRoot.querySelector(".skip-link").click();
+    // the router's document listener returns early on defaultPrevented
+    expect(docClicks).to.deep.equal([true]);
+  });
+
+  it("falls back to the visible content container when the target is hidden", async () => {
+    element.shadowRoot.querySelector("#maincontent").id = "renamed";
+    element.shadowRoot.querySelector(".skip-link").click();
+    const active = element.shadowRoot.activeElement;
+    expect(active ? active.tagName : "none").to.equal("MAIN");
   });
 });
