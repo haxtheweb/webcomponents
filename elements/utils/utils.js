@@ -38,6 +38,7 @@ import {
   badIFrameAttributes,
   badJSEventAttributes,
   removeBadJSEventAttributes,
+  sanitizeNodeTree,
 } from "./lib/sanitize.js";
 // moved to lib/sanitize.js and lib/storage.js; same names and behavior
 export * from "./lib/sanitize.js";
@@ -1292,9 +1293,15 @@ export function normalizeClipboardHTML(html) {
   if (!html || typeof html !== "string") {
     return html;
   }
-  const template = globalThis.document.createElement("template");
+  // security: parse in an inert document and sanitize before the DOM walk
+  // below. <template> content is inert, but anything moved from it into a
+  // live element later (serialization, callers) would run inline handlers
+  // and load <img src>, so strip those here, at the first parse.
+  const inert = globalThis.document.implementation.createHTMLDocument("");
+  const template = inert.createElement("template");
   template.innerHTML = html;
   const fragment = template.content;
+  sanitizeNodeTree(fragment);
 
   // Google Docs uses <b> as generic text wrappers.
   // Real bold is indicated by an inline style with font-weight:700.
@@ -1305,7 +1312,7 @@ export function normalizeClipboardHTML(html) {
       style.includes("font-weight:bold")
     ) {
       // Convert real bold to <strong> so stripMSWord can clean styles later
-      const strong = globalThis.document.createElement("strong");
+      const strong = inert.createElement("strong");
       while (b.firstChild) {
         strong.appendChild(b.firstChild);
       }
@@ -1324,7 +1331,7 @@ export function normalizeClipboardHTML(html) {
   fragment
     .querySelectorAll('span[style*="font-weight:700"]')
     .forEach((span) => {
-      const strong = globalThis.document.createElement("strong");
+      const strong = inert.createElement("strong");
       while (span.firstChild) {
         strong.appendChild(span.firstChild);
       }
@@ -1382,10 +1389,9 @@ export function normalizeClipboardHTML(html) {
   }
 
   // Serialize the DocumentFragment back to a string.
-  // DocumentFragment.innerHTML is not standard, so use a temporary element.
-  const wrapper = globalThis.document.createElement("div");
-  wrapper.appendChild(fragment);
-  return wrapper.innerHTML;
+  // DocumentFragment.innerHTML is not standard; the template that owns the
+  // (inert) fragment serializes its content without adopting it into the page.
+  return template.innerHTML;
 }
 
 /**
