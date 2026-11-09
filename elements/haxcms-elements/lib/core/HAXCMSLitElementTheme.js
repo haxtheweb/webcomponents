@@ -46,7 +46,8 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
       autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.editMode);
         Promise.resolve().then(() => {
-          this.editMode = _mobx_val_0;
+          // see HAXCMSTheme._syncEditMode: entering waits for the editor
+          this._syncEditMode(_mobx_val_0);
         });
       }),
     );

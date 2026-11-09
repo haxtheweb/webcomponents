@@ -86,6 +86,54 @@ const HAXCMSTheme = function (SuperClass) {
       return "#000000";
     }
     /**
+     * Reflect store.editMode onto this theme. Leaving edit mode is immediate.
+     * Entering waits until the site editor has rendered the editable copy,
+     * so the viewer content (hidden by :host([edit-mode]) #slot) stays on
+     * screen until the editor can take its place in the same frame, instead
+     * of the page going blank while content imports (haxtheweb/issues#3263).
+     */
+    _syncEditMode(value) {
+      const editor =
+        store.cmsSiteEditor && store.cmsSiteEditor.instance
+          ? store.cmsSiteEditor.instance
+          : null;
+      if (!value) {
+        this.__editModeEntry = null;
+        this.editMode = value;
+        return;
+      }
+      if (this.editMode || this.__editModeEntry) {
+        // already editing, or already waiting for the editor
+        return;
+      }
+      if (
+        !editor ||
+        !editor.isConnected ||
+        typeof editor.whenEditModeReady !== "function"
+      ) {
+        this.editMode = value;
+        return;
+      }
+      const entry = {};
+      this.__editModeEntry = entry;
+      editor.whenEditModeReady().then(async () => {
+        // left edit mode (or started over) while we waited
+        if (this.__editModeEntry !== entry || !store.editMode) {
+          return;
+        }
+        this.__editModeEntry = null;
+        // swapping viewer content for the editor must not move the page
+        const y = globalThis.scrollY;
+        this.editMode = true;
+        if (this.updateComplete) {
+          await this.updateComplete;
+        }
+        if (globalThis.scrollY !== y) {
+          globalThis.scrollTo({ top: y, behavior: "instant" });
+        }
+      });
+    }
+    /**
      * notice edit changed, make sure we fake a resize because of that container flyout
      */
     _editModeChanged(newValue, oldValue) {
@@ -219,7 +267,7 @@ const HAXCMSTheme = function (SuperClass) {
         autorun((_reaction) => {
           const _mobx_val_0 = toJS(store.editMode);
           Promise.resolve().then(() => {
-            this.editMode = _mobx_val_0;
+            this._syncEditMode(_mobx_val_0);
           });
         }),
       );
@@ -473,7 +521,12 @@ class HAXCMSThemeWiring {
    * Global edit state changed
    */
   _globalEditChanged(e) {
-    this.editMode = e.detail;
+    // bound to the theme element; route through its edit-mode gate
+    if (typeof this._syncEditMode === "function") {
+      this._syncEditMode(e.detail);
+    } else {
+      this.editMode = e.detail;
+    }
   }
   /**
    * HAXcms: Active item has been updated

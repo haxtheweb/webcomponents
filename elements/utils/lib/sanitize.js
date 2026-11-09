@@ -150,6 +150,158 @@ export function isEventHandlerAttribute(attributeName) {
   );
 }
 
+// ---------------------------------------------------------------------------
+// Tree walking. Every sanitizer below visits each element exactly once and
+// only looks at that element's own attributes, so sanitizing is linear in the
+// size of the content. The old implementation re-scanned every subtree from
+// every ancestor (roughly nodes x depth x 114 querySelectorAll calls), which
+// is what made entering edit mode on a large page drop frames
+// (haxtheweb/issues#3263). What gets removed is unchanged; see
+// test/sanitize-linear.test.js, which compares against the old walk.
+// ---------------------------------------------------------------------------
+
+/**
+ * Next element after `node` in document order, staying inside `root`.
+ * Template contents are a separate tree and are never entered, matching
+ * querySelectorAll("*").
+ * @param {Element} node current element
+ * @param {Node} root walk root (never returned)
+ * @param {Boolean} skipChildren true to step over node's descendants
+ * @returns {Element|null}
+ */
+function nextElementInTree(node, root, skipChildren) {
+  if (!skipChildren && node.firstElementChild) {
+    return node.firstElementChild;
+  }
+  let current = node;
+  while (current && current !== root) {
+    if (current.nextElementSibling) {
+      return current.nextElementSibling;
+    }
+    current = current.parentNode;
+  }
+  return null;
+}
+
+/**
+ * Call fn on every element below root (not root itself), in document order.
+ * fn may return true to remove that element; its subtree is then skipped.
+ */
+function walkDescendants(root, fn) {
+  if (!root || typeof root.firstElementChild === "undefined") {
+    return;
+  }
+  let node = root.firstElementChild;
+  while (node) {
+    const remove = fn(node) === true;
+    // work out where to go next before any removal unlinks the node
+    const next = nextElementInTree(node, root, remove);
+    if (remove && node.parentNode) {
+      node.parentNode.removeChild(node);
+    }
+    node = next;
+  }
+}
+
+function isElementNode(node) {
+  return !!node && node.nodeType === 1;
+}
+
+function isUnsafeContentElement(el) {
+  const tag = (el.localName || "").toLowerCase();
+  if (badContentElements.includes(tag)) {
+    return true;
+  }
+  // SVG animations that rewrite href bypass per-attribute URL checks
+  if (tag === "set" || tag === "animate") {
+    const target = (el.getAttribute("attributeName") || "")
+      .trim()
+      .toLowerCase();
+    return target === "href" || target === "xlink:href";
+  }
+  return false;
+}
+
+// remove one attribute node; removeAttributeNode also catches odd-cased
+// names set through setAttributeNS that removeAttribute(name) would miss
+function dropAttribute(el, attr) {
+  try {
+    el.removeAttributeNode(attr);
+  } catch {
+    el.removeAttribute(attr.name);
+  }
+}
+
+/**
+ * Remove inline event handler attributes from this one element.
+ */
+function stripEventHandlerAttributes(el) {
+  const attrs = el.attributes;
+  if (!attrs) {
+    return;
+  }
+  for (let j = attrs.length - 1; j >= 0; j--) {
+    const attr = attrs.item(j);
+    if (attr && isEventHandlerAttribute(attr.name)) {
+      dropAttribute(el, attr);
+    }
+  }
+}
+
+function isIframeLikeElement(el) {
+  return (
+    el && el.tagName && ["iframe", "webview"].includes(el.tagName.toLowerCase())
+  );
+}
+
+/**
+ * Remove srcdoc and any non http(s) src from this one iframe / webview.
+ */
+function stripUnsafeIframeAttributes(el) {
+  if (!isIframeLikeElement(el)) {
+    return;
+  }
+  for (let j = 0; j < badIFrameAttributes.length; j++) {
+    el.removeAttribute(badIFrameAttributes[j]);
+  }
+  const src = el.getAttribute("src");
+  const safeSrc = sanitizeEmbeddableURL(src, "");
+  if (safeSrc === "") {
+    el.removeAttribute("src");
+  } else if (safeSrc !== src) {
+    el.setAttribute("src", safeSrc);
+  }
+}
+
+/**
+ * Remove URL attributes carrying javascript: / vbscript: / data: from this
+ * one element.
+ */
+function stripUnsafeURLAttributes(el) {
+  const attrs = el.attributes;
+  if (!attrs) {
+    return;
+  }
+  for (let j = attrs.length - 1; j >= 0; j--) {
+    const attr = attrs.item(j);
+    if (attr && isURLAttribute(attr.name) && hasUnsafeURLProtocol(attr.value)) {
+      dropAttribute(el, attr);
+    }
+  }
+}
+
+/**
+ * Everything the attribute sanitizers do, for one element, in the same order
+ * removeBadJSEventAttributes has always applied them.
+ */
+function sanitizeElementAttributes(el, stripEvents) {
+  if (stripEvents) {
+    stripEventHandlerAttributes(el);
+  }
+  stripUnsafeIframeAttributes(el);
+  stripUnsafeURLAttributes(el);
+}
+
 /**
  * Remove elements that are unsafe in content: base / meta (URL hijack and
  * refresh redirects), script-loading custom elements, and SVG animations
@@ -159,25 +311,24 @@ export function removeUnsafeElements(root) {
   if (!root || !root.querySelectorAll) {
     return root;
   }
-  const bad = root.querySelectorAll(
-    badContentElements.join(",") + ",set,animate",
-  );
-  for (let i = 0; i < bad.length; i++) {
-    const tag = bad[i].tagName.toLowerCase();
-    if (tag === "set" || tag === "animate") {
-      const target = (bad[i].getAttribute("attributeName") || "")
-        .trim()
-        .toLowerCase();
-      if (target !== "href" && target !== "xlink:href") {
-        continue;
-      }
-    }
-    if (bad[i].parentNode) {
-      bad[i].parentNode.removeChild(bad[i]);
-    }
-  }
+  walkDescendants(root, isUnsafeContentElement);
   return root;
 }
+
+const URL_ATTRIBUTE_NAMES = [
+  "src",
+  "srcset",
+  "source",
+  "url",
+  "link-url",
+  "href",
+  "xlink:href",
+  "action",
+  "formaction",
+  "poster",
+  "data",
+  "cite",
+];
 
 export function isURLAttribute(attributeName) {
   if (!attributeName || typeof attributeName !== "string") {
@@ -185,20 +336,8 @@ export function isURLAttribute(attributeName) {
   }
   const name = attributeName.toLowerCase();
   return (
-    [
-      "src",
-      "srcset",
-      "source",
-      "url",
-      "link-url",
-      "href",
-      "xlink:href",
-      "action",
-      "formaction",
-      "poster",
-      "data",
-      "cite",
-    ].includes(name) || /(^|[-_:])(src|source|href|url)$/.test(name)
+    URL_ATTRIBUTE_NAMES.includes(name) ||
+    /(^|[-_:])(src|source|href|url)$/.test(name)
   );
 }
 
@@ -206,107 +345,50 @@ export function removeUnsafeURLAttributes(el) {
   if (!el) {
     return el;
   }
-  let replacements = [];
-  if (el.attributes) {
-    replacements.push(el);
+  if (isElementNode(el)) {
+    stripUnsafeURLAttributes(el);
   }
-  if (el.querySelectorAll) {
-    const nested = el.querySelectorAll("*");
-    for (let i = 0; i < nested.length; i++) {
-      replacements.push(nested[i]);
-    }
-  }
-  for (let i = 0; i < replacements.length; i++) {
-    if (!replacements[i].attributes) {
-      continue;
-    }
-    for (let j = replacements[i].attributes.length - 1; j >= 0; j--) {
-      const attr = replacements[i].attributes.item(j);
-      if (
-        attr &&
-        isURLAttribute(attr.name) &&
-        hasUnsafeURLProtocol(attr.value)
-      ) {
-        replacements[i].removeAttribute(attr.name);
-      }
-    }
-  }
+  walkDescendants(el, stripUnsafeURLAttributes);
   return el;
-}
-
-function isIframeLikeElement(el) {
-  return (
-    el && el.tagName && ["iframe", "webview"].includes(el.tagName.toLowerCase())
-  );
 }
 
 export function removeUnsafeIframeAttributes(el) {
   if (!el) {
     return el;
   }
-  let replacements = [];
-  if (isIframeLikeElement(el)) {
-    replacements.push(el);
-  }
-  if (el.querySelectorAll) {
-    const nested = el.querySelectorAll("iframe, webview");
-    for (let i = 0; i < nested.length; i++) {
-      replacements.push(nested[i]);
+  stripUnsafeIframeAttributes(el);
+  walkDescendants(el, stripUnsafeIframeAttributes);
+  return el;
+}
+
+/**
+ * Remove inline event handlers, unsafe iframe attributes and unsafe URL
+ * attributes from el and everything below it (template contents excluded,
+ * as before). One pass, each element's own attributes checked once.
+ */
+export function removeBadJSEventAttributes(el) {
+  // remove any bad event attributes that might have snuck in
+  if (el) {
+    // event handlers were only ever stripped when called on an element
+    const stripEvents = !!el.attributes;
+    if (isElementNode(el)) {
+      sanitizeElementAttributes(el, stripEvents);
     }
-  }
-  for (let i = 0; i < replacements.length; i++) {
-    for (let j = 0; j < badIFrameAttributes.length; j++) {
-      replacements[i].removeAttribute(badIFrameAttributes[j]);
-    }
-    const src = replacements[i].getAttribute("src");
-    const safeSrc = sanitizeEmbeddableURL(src, "");
-    if (safeSrc === "") {
-      replacements[i].removeAttribute("src");
-    } else if (safeSrc !== src) {
-      replacements[i].setAttribute("src", safeSrc);
-    }
+    walkDescendants(el, (node) => {
+      sanitizeElementAttributes(node, stripEvents);
+    });
   }
   return el;
 }
 
-export function removeBadJSEventAttributes(el) {
-  // remove any bad event attributes that might have snuck in
-  if (el) {
-    if (el.attributes) {
-      // remove any attributes that are not allowed
-      for (let i = 0; i < badJSEventAttributes.length; i++) {
-        el.removeAttribute(badJSEventAttributes[i]);
-        // regex the innerHTML to remove the current attribute
-        let replacement = el.querySelectorAll(`[${badJSEventAttributes[i]}]`);
-        for (let j = 0; j < replacement.length; j++) {
-          replacement[j].removeAttribute(badJSEventAttributes[i]);
-        }
-      }
-      // security: catch any remaining on* handler the browser supports
-      const all = [el];
-      if (el.querySelectorAll) {
-        const nested = el.querySelectorAll("*");
-        for (let i = 0; i < nested.length; i++) {
-          all.push(nested[i]);
-        }
-      }
-      for (let i = 0; i < all.length; i++) {
-        if (!all[i].attributes) {
-          continue;
-        }
-        for (let j = all[i].attributes.length - 1; j >= 0; j--) {
-          const attr = all[i].attributes.item(j);
-          if (attr && isEventHandlerAttribute(attr.name)) {
-            all[i].removeAttribute(attr.name);
-          }
-        }
-      }
-    }
-    removeUnsafeIframeAttributes(el);
-    removeUnsafeURLAttributes(el);
-  }
-  return el;
-}
+/**
+ * Sanitize a parsed tree in place: drop unsafe elements, strip unsafe
+ * attributes from every element, and (by default) do the same inside
+ * <template> contents. One walk over the tree.
+ * @param {Node} root element, fragment or document
+ * @param {Object} opts sanitizeTemplateContents (default true)
+ * @returns {Node} root
+ */
 export function sanitizeNodeTree(
   root,
   { sanitizeTemplateContents = true } = {},
@@ -314,33 +396,30 @@ export function sanitizeNodeTree(
   if (!root) {
     return root;
   }
-  removeUnsafeElements(root);
-  if (root.nodeType === globalThis.Node.ELEMENT_NODE) {
-    removeBadJSEventAttributes(root);
+  const visit = (el) => {
+    sanitizeElementAttributes(el, true);
     if (
       sanitizeTemplateContents &&
-      root.tagName &&
-      root.tagName.toLowerCase() === "template" &&
-      root.content
+      el.tagName &&
+      el.tagName.toLowerCase() === "template" &&
+      el.content
     ) {
-      sanitizeNodeTree(root.content, {
+      sanitizeNodeTree(el.content, {
         sanitizeTemplateContents: sanitizeTemplateContents,
       });
     }
+  };
+  // the root itself is sanitized but never removed
+  if (root.nodeType === globalThis.Node.ELEMENT_NODE) {
+    visit(root);
   }
-  if (root.childNodes && root.childNodes.length > 0) {
-    for (let i = 0; i < root.childNodes.length; i++) {
-      const child = root.childNodes[i];
-      if (
-        child.nodeType === globalThis.Node.ELEMENT_NODE ||
-        child.nodeType === globalThis.Node.DOCUMENT_FRAGMENT_NODE
-      ) {
-        sanitizeNodeTree(child, {
-          sanitizeTemplateContents: sanitizeTemplateContents,
-        });
-      }
+  walkDescendants(root, (el) => {
+    if (isUnsafeContentElement(el)) {
+      return true;
     }
-  }
+    visit(el);
+    return false;
+  });
   return root;
 }
 /**
