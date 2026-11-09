@@ -16,8 +16,10 @@ import {
   statementFromEngagement,
   XAPI_EDUCATIONAL_RECORD_CATEGORY,
   XAPI_EXTENSIONS,
+  XAPI_PROGRESS_EXTENSIONS,
   XAPI_VERBS,
   XAPI_VERSION,
+  XAPI_VIDEO_PROGRESS,
 } from "../lib/xapi.js";
 import { UserActionBroker } from "../lib/UserActionBroker.js";
 import {
@@ -327,5 +329,48 @@ describe("xAPI vocabulary", () => {
   it("knows which elements count toward page completion", () => {
     expect(XAPI_TRACKABLE_TAGS).to.include("multiple-choice");
     expect(XAPI_TRACKABLE_TAGS).to.not.include("user-action");
+  });
+});
+
+describe("xAPI progress extensions", () => {
+  it("names one HAX progress IRI beside the video profile one", () => {
+    expect(XAPI_EXTENSIONS.progress).to.equal(
+      "https://haxtheweb.org/xapi/extensions/progress",
+    );
+    expect(XAPI_VIDEO_PROGRESS).to.equal(
+      "https://w3id.org/xapi/video/extensions/progress",
+    );
+    expect(XAPI_PROGRESS_EXTENSIONS).to.deep.equal([
+      XAPI_EXTENSIONS.progress,
+      XAPI_VIDEO_PROGRESS,
+    ]);
+    // a progress store matches them by this one suffix
+    XAPI_PROGRESS_EXTENSIONS.forEach((iri) =>
+      expect(iri.endsWith("/progress")).to.equal(true),
+    );
+  });
+
+  it("puts reading progress in result.extensions of a valid statement", () => {
+    const s = buildStatement({
+      verb: "progressed",
+      object: { id: "https://s.test/p1", name: "P1" },
+      result: {
+        completion: false,
+        extensions: { [XAPI_EXTENSIONS.progress]: 0.5 },
+      },
+    });
+    expect(s.verb.id).to.equal(XAPI_VERBS.progressed);
+    expect(s.result).to.deep.equal({
+      completion: false,
+      extensions: { [XAPI_EXTENSIONS.progress]: 0.5 },
+    });
+    expect(s.version).to.equal(XAPI_VERSION);
+  });
+
+  it("documents the page reading statements in the vocabulary", () => {
+    expect(XAPI_VOCABULARY["haxcms-page"].source).to.equal(
+      "elements/haxcms-elements/lib/core/haxcms-reading-progress.js",
+    );
+    expect(XAPI_TRACKABLE_TAGS).to.not.include("haxcms-page");
   });
 });

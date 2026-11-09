@@ -823,6 +823,16 @@ class VideoPlayer extends IntersectionObserverMixin(
   xapiFingerprint() {
     return this.source || this.getAttribute("source") || "";
   }
+  /**
+   * Whether this player counts toward its page being done right now. Only
+   * a11y-media-player reports what was watched; a plain iframe / webview
+   * (sandboxed, or a source that is not YouTube or a local file) cannot be
+   * tracked, so it is left out of the page's trackable items.
+   * @returns {boolean}
+   */
+  xapiCountsTowardCompletion() {
+    return this.isA11yMedia;
+  }
   // weird looking but allows for SSR support
   querySelectorAll(query) {
     if (super.query) {

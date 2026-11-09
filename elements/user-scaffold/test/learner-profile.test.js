@@ -39,6 +39,27 @@ const answered = (id, success, attempts = 1, max = 0, done) =>
     },
   });
 
+// the page's own reading activity, as HAXcms learner progress sends it
+const HAX_PROGRESS = "https://haxtheweb.org/xapi/extensions/progress";
+const VIDEO_PROGRESS = "https://w3id.org/xapi/video/extensions/progress";
+const reading = (pageUrl, verb, share) =>
+  st(
+    pageUrl,
+    verb,
+    { completion: verb === "completed", extensions: { [HAX_PROGRESS]: share } },
+    "haxcms-page",
+  );
+const readPage = (us, page, share = 1) =>
+  us.recordStatement(
+    SITE,
+    reading(
+      `https://s.test/${page}`,
+      share >= 1 ? "completed" : "progressed",
+      share,
+    ),
+    { page, tag: "haxcms-page", trackable: false, reading: true },
+  );
+
 function freshScaffold() {
   const el = globalThis.document.createElement("user-scaffold");
   el.setMemoryAdapter(new MemoryMemoryAdapter());
@@ -58,7 +79,15 @@ describe("user-scaffold learner profile", () => {
   it("keeps one versioned profile in long-term memory", () => {
     const p = us.readProfile();
     expect(p.v).to.equal(1);
-    expect(p).to.have.keys(["v", "preferences", "session", "sites"]);
+    expect(p).to.have.keys([
+      "v",
+      "preferences",
+      "session",
+      "sites",
+      "migrations",
+    ]);
+    // a new profile has nothing from before reading was tracked
+    expect(p.migrations.readingProgress).to.be.a("string");
     us.writePreference("darkMode", true);
     us.recordSession({ login: true });
     const again = us.readProfile();
@@ -163,7 +192,7 @@ describe("user-scaffold learner profile", () => {
     ).to.equal(true);
   });
 
-  it("marks a page done only when every trackable activity on it is done", () => {
+  it("marks a page done only when it was read and every trackable activity on it is done", () => {
     expect(us.pageStatus(SITE, "p1")).to.equal("not-started");
     us.recordPageVisit(SITE, "p1", { title: "One" });
     expect(us.pageStatus(SITE, "p1")).to.equal("visited");
@@ -187,10 +216,13 @@ describe("user-scaffold learner profile", () => {
       page: "p1",
       trackable: true,
     });
+    // every activity is done but the page was not read yet
+    expect(us.pageStatus(SITE, "p1")).to.equal("in-progress");
+    readPage(us, "p1");
     expect(us.pageStatus(SITE, "p1")).to.equal("done");
     // two more trackable activities on the page the learner hasn't touched
     us.setPageTrackable(SITE, "p1", 4, { "multiple-choice": 4 });
-    expect(us.pageProgress(SITE, "p1")).to.deep.equal({
+    expect(us.pageProgress(SITE, "p1")).to.deep.include({
       status: "in-progress",
       engaged: 2,
       done: 2,
@@ -433,6 +465,7 @@ describe("user-scaffold across reloads and tabs", () => {
     const a = scaffold();
     a.recordPageVisit(SITE, "p1");
     a.recordStatement(SITE, answered("q1", true), { page: "p1" });
+    readPage(a, "p1");
     a.disconnectedCallback();
     // a new page load reads what the last one saved
     const b = scaffold();
@@ -551,5 +584,289 @@ describe("IndexedDB statement adapter", () => {
     const a = answered("q1", true);
     await db.add("s1", a);
     expect((await db.list("s1")).length).to.equal(1);
+  });
+});
+
+describe("user-scaffold page completion (reading + items)", () => {
+  let us;
+  beforeEach(() => {
+    us = freshScaffold();
+  });
+  afterEach(() => {
+    us.disconnectedCallback();
+  });
+  const media = (id, verb, share) =>
+    st(
+      id,
+      verb,
+      {
+        completion: verb === "completed",
+        extensions: { [VIDEO_PROGRESS]: share },
+      },
+      "video-player",
+    );
+
+  it("keeps the fields consumers read and adds percent and items", () => {
+    const empty = us.pageProgress(SITE, "nope");
+    expect(empty).to.deep.include({
+      status: "not-started",
+      engaged: 0,
+      done: 0,
+      trackable: 0,
+      percent: 0,
+    });
+    expect(empty.items).to.have.length(1);
+    expect(empty.items[0]).to.deep.include({ kind: "reading", done: false });
+    us.recordPageVisit(SITE, "p1", { url: "https://s.test/p1" });
+    const p = us.pageProgress(SITE, "p1");
+    expect(p).to.have.keys([
+      "status",
+      "engaged",
+      "done",
+      "trackable",
+      "percent",
+      "reading",
+      "items",
+      "itemsDone",
+      "itemsTotal",
+    ]);
+    expect(p.status).to.equal("visited");
+    expect(p.reading).to.deep.equal({
+      key: "https://s.test/p1",
+      kind: "reading",
+      tag: "",
+      progress: 0,
+      done: false,
+    });
+  });
+
+  it("averages reading and every item, partial media progress included (83%)", () => {
+    us.recordPageVisit(SITE, "p1");
+    us.setPageTrackable(SITE, "p1", 2, {
+      "multiple-choice": 1,
+      "video-player": 1,
+    });
+    readPage(us, "p1");
+    us.recordStatement(SITE, answered("q1", true), {
+      page: "p1",
+      trackable: true,
+    });
+    us.recordStatement(SITE, media("vid", "attempted"), {
+      page: "p1",
+      tag: "video-player",
+      trackable: true,
+    });
+    us.recordStatement(SITE, media("vid", "progressed", 0.5), {
+      page: "p1",
+      tag: "video-player",
+      trackable: true,
+    });
+    const p = us.pageProgress(SITE, "p1");
+    expect(p.status).to.equal("in-progress");
+    expect(p.percent).to.equal(0.833);
+    expect(p.itemsDone).to.equal(2);
+    expect(p.itemsTotal).to.equal(3);
+    expect(
+      p.items.map(({ key, tag, progress, done }) => [key, tag, progress, done]),
+    ).to.deep.equal([
+      ["https://s.test/p1", "haxcms-page", 1, true],
+      ["q1", "multiple-choice", 1, true],
+      ["vid", "video-player", 0.5, false],
+    ]);
+    // progress never goes back
+    us.recordStatement(SITE, media("vid", "progressed", 0.2), {
+      page: "p1",
+      tag: "video-player",
+      trackable: true,
+    });
+    expect(us.readActivity(SITE, "vid").progress).to.equal(0.5);
+    us.recordStatement(SITE, media("vid", "completed", 0.95), {
+      page: "p1",
+      tag: "video-player",
+      trackable: true,
+    });
+    const after = us.pageProgress(SITE, "p1");
+    expect(after.status).to.equal("done");
+    expect(after.percent).to.equal(1);
+  });
+
+  it("counts items not engaged yet as 0, by tag", () => {
+    us.recordPageVisit(SITE, "p1");
+    us.setPageTrackable(SITE, "p1", 3, {
+      "multiple-choice": 2,
+      "bullet-check-list": 1,
+    });
+    us.recordStatement(SITE, answered("q1", true), {
+      page: "p1",
+      trackable: true,
+    });
+    readPage(us, "p1", 0.5);
+    const p = us.pageProgress(SITE, "p1");
+    expect(p.items.map((i) => [i.key, i.progress])).to.deep.equal([
+      ["https://s.test/p1", 0.5],
+      ["q1", 1],
+      ["multiple-choice#2", 0],
+      ["bullet-check-list#1", 0],
+    ]);
+    expect(p.percent).to.equal(0.375);
+    expect(p.status).to.equal("in-progress");
+  });
+
+  it("a page of text alone is done once read, and counts in the site", () => {
+    us.recordPageVisit(SITE, "p1");
+    us.recordPageVisit(SITE, "p2");
+    expect(us.siteProgress(SITE, ["p1", "p2"]).engaged).to.equal(false);
+    readPage(us, "p1", 0.25);
+    expect(us.pageStatus(SITE, "p1")).to.equal("in-progress");
+    expect(us.siteProgress(SITE, ["p1", "p2"]).engaged).to.equal(true);
+    readPage(us, "p1", 0.75);
+    expect(us.pageProgress(SITE, "p1").percent).to.equal(0.75);
+    readPage(us, "p1");
+    readPage(us, "p2");
+    const site = us.siteProgress(SITE, ["p1", "p2", "p3"]);
+    expect(site).to.deep.include({ done: 2, total: 3, engaged: true });
+    expect(site.byPage).to.deep.equal({
+      p1: "done",
+      p2: "done",
+      p3: "not-started",
+    });
+    expect(site.percentByPage).to.deep.equal({ p1: 1, p2: 1, p3: 0 });
+    expect(site.percent).to.equal(0.667);
+  });
+
+  it("reads progress given as a percentage and ignores junk", () => {
+    us.recordStatement(SITE, media("v1", "progressed", 50), {
+      page: "p1",
+      trackable: true,
+    });
+    expect(us.readActivity(SITE, "v1").progress).to.equal(0.5);
+    us.recordStatement(SITE, media("v2", "progressed", "nope"), {
+      page: "p1",
+      trackable: true,
+    });
+    expect(us.readActivity(SITE, "v2").progress).to.equal(undefined);
+  });
+
+  it("rebuilds reading from stored statements (repair)", () => {
+    const stored = [
+      st("https://s.test/p1", "experienced", {}, "haxcms-page"),
+      reading("https://s.test/p1", "progressed", 0.5),
+      reading("https://s.test/p1", "completed", 1),
+    ];
+    us.repairSite(SITE, stored, {
+      pageOf: () => "p1",
+      trackableOf: (tag) => tag !== "haxcms-page",
+      pageElement: "haxcms-page",
+    });
+    const p = us.pageProgress(SITE, "p1");
+    expect(p.reading.done).to.equal(true);
+    expect(p.status).to.equal("done");
+  });
+});
+
+describe("user-scaffold data saved before reading was tracked", () => {
+  // a profile as the previous version saved it: no migrations, no reading,
+  // no progress
+  const legacy = () => ({
+    profile: {
+      v: 1,
+      preferences: {},
+      session: { visits: 3 },
+      sites: {
+        [SITE]: {
+          url: "https://s.test/",
+          title: "Old",
+          actor: {
+            objectType: "Agent",
+            account: { homePage: "https://s.test/", name: "x" },
+          },
+          pages: {
+            p1: {
+              title: "Done",
+              url: "https://s.test/p1",
+              visits: 2,
+              activities: ["https://s.test/p1", "q1", "q2"],
+              trackable: 2,
+              trackableByTag: { "multiple-choice": 2 },
+            },
+            p2: {
+              title: "Half",
+              visits: 1,
+              activities: ["q3"],
+              trackable: 2,
+              trackableByTag: { "multiple-choice": 2 },
+            },
+            p3: { title: "Text", visits: 1, activities: [] },
+          },
+          activities: {
+            "https://s.test/p1": {
+              page: "p1",
+              tag: "haxcms-page",
+              trackable: false,
+              done: false,
+              count: 2,
+              verbs: { experienced: 2 },
+            },
+            q1: { page: "p1", tag: "multiple-choice", done: true, count: 1 },
+            q2: { page: "p1", tag: "multiple-choice", done: true, count: 1 },
+            q3: { page: "p2", tag: "multiple-choice", done: true, count: 1 },
+          },
+          counts: { byElement: {}, byVerb: {} },
+          statementCount: 4,
+        },
+      },
+    },
+  });
+  const load = (data) => {
+    const el = globalThis.document.createElement("user-scaffold");
+    const mem = new MemoryMemoryAdapter();
+    mem.save(data);
+    el.setMemoryAdapter(mem);
+    el.setStatementAdapter(new MemoryStatementAdapter());
+    return el;
+  };
+
+  it("keeps pages that were done done, and nothing else changes", () => {
+    const us = load(legacy());
+    const site = us.siteProgress(SITE, ["p1", "p2", "p3"]);
+    expect(site.byPage).to.deep.equal({
+      p1: "done",
+      p2: "in-progress",
+      p3: "visited",
+    });
+    expect(site.done).to.equal(1);
+    expect(site.engaged).to.equal(true);
+    const p1 = us.pageProgress(SITE, "p1");
+    expect(p1).to.deep.include({
+      engaged: 2,
+      done: 2,
+      trackable: 2,
+      percent: 1,
+    });
+    expect(p1.reading).to.deep.include({
+      key: "https://s.test/p1",
+      progress: 1,
+      done: true,
+    });
+    // p2: reading 0, one of two done
+    expect(us.pageProgress(SITE, "p2").percent).to.equal(0.333);
+    const saved = us._memoryAdapter.load().profile;
+    expect(saved.migrations.readingProgress).to.be.a("string");
+    expect(saved.sites[SITE].pages.p1.legacyRead).to.equal(true);
+    expect(saved.sites[SITE].pages.p2.legacyRead).to.equal(undefined);
+    expect(saved.sites[SITE].pages.p3.legacyRead).to.equal(undefined);
+    us.disconnectedCallback();
+  });
+
+  it("runs once: later data is not marked read", () => {
+    const us = load(legacy());
+    us.readProfile();
+    us.recordStatement(SITE, answered("q4", true), {
+      page: "p2",
+      trackable: true,
+    });
+    // p2 now has every trackable done, but it was not read
+    expect(us.pageStatus(SITE, "p2")).to.equal("in-progress");
+    us.disconnectedCallback();
   });
 });

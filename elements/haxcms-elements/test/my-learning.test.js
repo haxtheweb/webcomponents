@@ -94,7 +94,25 @@ const record = (page, id, verb, result, tag, extra) =>
   UserScaffoldInstance.recordStatement(
     SITE,
     stmt(id, verb, result, tag, extra),
-    { page, tag, trackable: tag !== "haxcms-page" },
+    {
+      page,
+      tag,
+      trackable: tag !== "haxcms-page",
+      reading: tag === "haxcms-page",
+    },
+  );
+// the learner scrolled through the page (haxtheweb/issues#3269): a page is
+// only done once read
+const read = (page) =>
+  record(
+    page,
+    `page-${page}`,
+    "completed",
+    {
+      completion: true,
+      extensions: { [XAPI_EXTENSIONS.progress]: 1 },
+    },
+    "haxcms-page",
   );
 const answer = (page, id, success, attempts = 1, tag = "multiple-choice") =>
   record(
@@ -208,6 +226,9 @@ describe("my-learning dashboard", () => {
     record("p1", "page-p1", "experienced", {}, "haxcms-page", {
       name: "Waves 101",
     });
+    // p1 and p3 read through (the oldest records of the seed)
+    read("p1");
+    read("p3");
     answer("p1", "q1", true); // right first time
     record("p1", "v1", "completed", { completion: true }, "video-player", {
       name: "Wave on a slinky",
@@ -516,7 +537,9 @@ describe("my-learning dashboard", () => {
     const items = [...el.shadowRoot.querySelectorAll(".recent li")].map((li) =>
       li.textContent.replace(/\s+/g, " ").trim(),
     );
-    expect(items.length).to.equal(7);
+    // 7 plus the two pages read through
+    expect(items.length).to.equal(9);
+    expect(items.join("|")).to.contain("Finished “page-p3”");
     // newest first
     expect(items[0]).to.contain("Finished “g1”");
     expect(items.join("|")).to.contain(
@@ -1159,7 +1182,7 @@ describe("my-learning dashboard", () => {
     expect(blob.type).to.equal("application/json");
     const list = JSON.parse(await blob.text());
     expect(Array.isArray(list)).to.equal(true);
-    expect(list.length).to.equal(7);
+    expect(list.length).to.equal(9);
     list.forEach((s) => {
       expect(s.verb.id).to.match(/^http:\/\/adlnet\.gov\/expapi\/verbs\//);
       expect(s.object.id).to.be.a("string");
@@ -1295,6 +1318,7 @@ describe("my-learning dashboard", () => {
       for (let p = 0; p < 3; p++) {
         visit(`s0p${p}`, 1, { "multiple-choice": 1 });
         answer(`s0p${p}`, `${siteUrl()}s0p${p}#q`, true);
+        read(`s0p${p}`);
         visit(`s1p${p}`, 2, { "multiple-choice": 2 });
         answer(`s1p${p}`, `${siteUrl()}s1p${p}#q`, true);
       }

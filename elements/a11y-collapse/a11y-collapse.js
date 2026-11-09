@@ -207,10 +207,19 @@ class A11yCollapse extends DDD {
       event: "user-engagement",
       verbs: ["experienced"],
       objectType: "http://adlnet.gov/expapi/activities/interaction",
-      result: [],
-      countsTowardCompletion: false,
-      done: "never required; records that a learner opened the hidden content",
+      result: ["completion"],
+      countsTowardCompletion: true,
+      done: "opened by the learner (one already open when the page loads has nothing to open and does not count)",
     };
+  }
+  /**
+   * Whether this section counts toward its page being done right now: it
+   * does while there is something to open. One the author left expanded,
+   * that the learner has not opened themselves, has nothing to open.
+   * @returns {boolean}
+   */
+  xapiCountsTowardCompletion() {
+    return !(this.expanded && !this._openSent);
   }
   /**
    * HAX: authors opening sections while editing are not learners
@@ -610,7 +619,8 @@ class A11yCollapse extends DDD {
     }
   }
   /**
-   * Learner data: a learner opened this section's hidden content. Once per
+   * Learner data: a learner opened this section's hidden content, which is
+   * all there is to do with it (result.completion true: done). Once per
    * visit, only from a learner's click (not an author default of expanded),
    * never while HAX is editing, and only for content on the page itself:
    * a11y-collapse inside another element's shadow root (editor panels,
@@ -638,8 +648,11 @@ class A11yCollapse extends DDD {
         detail: {
           activityDisplay: "experienced",
           objectName: name.slice(0, 120),
+          // opening it is all there is to do: the section is done
+          resultCompletion: true,
           statement: buildStatement({
             verb: "experienced",
+            result: { completion: true },
             object: {
               id: activityId(this, `a11y-collapse\u0001${name}`),
               name: name.slice(0, 120),
