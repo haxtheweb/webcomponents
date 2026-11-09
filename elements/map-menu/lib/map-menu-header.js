@@ -258,7 +258,14 @@ class MapMenuHeader extends I18NMixin(LitElement) {
   // the ring around the icon area of the page open now (keeps the icon and
   // its page type tooltip)
   renderActiveRing() {
-    return html`${renderActiveRing(this.activeProgress, this.icon, "icon")}
+    // without an icon of its own the row's control is the expand chevron:
+    // the ring traces it instead of standing beside it
+    return html`${renderActiveRing(
+      this.activeProgress,
+      this.icon,
+      "icon",
+      !this.icon,
+    )}
     ${
       this.icon && this.iconLabel
         ? html`<simple-tooltip for="icon">${this.iconLabel}</simple-tooltip>`

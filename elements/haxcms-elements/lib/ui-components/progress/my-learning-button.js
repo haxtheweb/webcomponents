@@ -37,8 +37,14 @@ const fill = (str, values) =>
  * page / All pages) as a popover; Escape or Close returns focus here.
  * Hidden while editing.
  *
- * Drop it into a theme's toolbar (clean-one: next to Print / PDF; clean-two:
- * its icon rail with compact). floating pins it bottom-left of the viewport
+ * Drop it into a theme's toolbar (clean-one: right after the menu button;
+ * clean-two and learn-two-theme: their icon rail / sidebar with compact,
+ * before search; training-theme: under its progress card).
+ * Styling hooks: --my-learning-button-width (default auto),
+ * --my-learning-button-background, -color, -border-color, -percent-color
+ * and -shadow, plus the DDD progress ring hooks
+ * (--ddd-component-progress-ring-*) for the ring.
+ * floating pins it bottom-left of the viewport
  * above the content, inside the safe area, for narrow layouts without a
  * toolbar.
  *
@@ -184,22 +190,32 @@ export class MyLearningButton extends I18NMixin(DDDSuper(LitElement)) {
           align-items: center;
           gap: var(--ddd-spacing-2);
           box-sizing: border-box;
+          width: var(--my-learning-button-width, auto);
           height: var(--ddd-control-height-sm);
           margin: 0;
           padding: 0 var(--ddd-spacing-3) 0 var(--ddd-spacing-1);
           border: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-slateGray)
+          border-color: var(
+            --my-learning-button-border-color,
+            light-dark(
+              var(--ddd-theme-default-limestoneLight),
+              var(--ddd-theme-default-slateGray)
+            )
           );
           border-radius: var(--ddd-radius-rounded);
-          background-color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-coalyGray)
+          background-color: var(
+            --my-learning-button-background,
+            light-dark(
+              var(--ddd-theme-default-white),
+              var(--ddd-theme-default-coalyGray)
+            )
           );
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
+          color: var(
+            --my-learning-button-color,
+            light-dark(
+              var(--ddd-theme-default-coalyGray),
+              var(--ddd-theme-default-white)
+            )
           );
           font-family: var(--ddd-font-navigation);
           font-size: var(--ddd-font-size-4xs);
@@ -207,7 +223,7 @@ export class MyLearningButton extends I18NMixin(DDDSuper(LitElement)) {
           line-height: 1;
           white-space: nowrap;
           cursor: pointer;
-          box-shadow: var(--ddd-boxShadow-sm);
+          box-shadow: var(--my-learning-button-shadow, var(--ddd-boxShadow-sm));
           --simple-icon-color: currentColor;
         }
         :host([compact]) #button {
@@ -231,9 +247,12 @@ export class MyLearningButton extends I18NMixin(DDDSuper(LitElement)) {
         }
         .pct {
           font-variant-numeric: tabular-nums;
-          color: light-dark(
-            var(--ddd-theme-default-slateGray),
-            var(--ddd-theme-default-limestoneLight)
+          color: var(
+            --my-learning-button-percent-color,
+            light-dark(
+              var(--ddd-theme-default-slateGray),
+              var(--ddd-theme-default-limestoneLight)
+            )
           );
         }
         :host([compact]) .label,

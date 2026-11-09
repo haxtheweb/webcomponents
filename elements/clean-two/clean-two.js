@@ -672,18 +672,14 @@ class CleanTwo extends LTIResizingMixin(
           padding: 0;
         }
         simple-icon-button,
-        site-rss-button,
-        replace-tag[with="site-rss-button"],
         replace-tag[with="site-print-button"],
         site-print-button {
           color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
         }
-        replace-tag[with="site-rss-button"],
         replace-tag[with="site-print-button"],
         replace-tag[with="site-git-corner"] {
           display: none;
         }
-        site-rss-button,
         site-print-button,
         site-modal {
           --simple-icon-button-background-color: transparent;
@@ -791,6 +787,11 @@ class CleanTwo extends LTIResizingMixin(
                   : ``
               }
               ${this.HAXCMSMobileMenuButton("right")}
+              <my-learning-button
+                compact
+                class="learning-btn"
+                part="my-learning-btn"
+              ></my-learning-button>
               <site-modal
                 @site-modal-click="${this.siteModalClick}"
                 ?disabled="${this.editMode}"
@@ -815,19 +816,7 @@ class CleanTwo extends LTIResizingMixin(
                       part="print-btn"
                     ></replace-tag>`
               }
-              <my-learning-button
-                compact
-                class="learning-btn"
-                part="my-learning-btn"
-              ></my-learning-button>
               ${this.QRCodeButton("right")}
-              <replace-tag
-                with="site-rss-button"
-                type="rss"
-                import-method="view"
-                part="rss-btn"
-                position="right"
-              ></replace-tag>
               <replace-tag
                 with="site-git-corner"
                 size="small"

@@ -35,7 +35,10 @@
  * Custom properties: --ddd-component-progress-ring-size (default
  * --ddd-icon-xs), --ddd-component-progress-ring-color (fill and done disc),
  * --ddd-component-progress-ring-track, --ddd-component-progress-ring-on-color
- * (icon on the done disc), --ddd-component-progress-ring-icon-size.
+ * (icon on the done disc), --ddd-component-progress-ring-icon-size,
+ * --ddd-component-progress-ring-width / -track-width (stroke widths in
+ * viewBox units of 36, default 3) and
+ * --ddd-component-progress-ring-empty-opacity (not started, default 0.45).
  * The burst of celebrateDDDCompletion (DDDBlock.js) plays from the ring.
  */
 import { html, css, nothing } from "lit";
@@ -86,7 +89,7 @@ export const DDDProgressRingStyles = [
           var(--ddd-theme-default-limestoneGray)
         )
       );
-      stroke-width: 3;
+      stroke-width: var(--ddd-component-progress-ring-track-width, 3);
     }
     .ddd-ring-fill {
       fill: none;
@@ -97,13 +100,13 @@ export const DDDProgressRingStyles = [
           var(--ddd-theme-default-skyBlue)
         )
       );
-      stroke-width: 3;
+      stroke-width: var(--ddd-component-progress-ring-width, 3);
       stroke-linecap: round;
       transition: stroke-dasharray var(--ddd-duration-normal, 300ms)
         var(--ddd-timing-ease, ease);
     }
     .ddd-ring[data-state="none"] .ddd-ring-svg {
-      opacity: 0.45;
+      opacity: var(--ddd-component-progress-ring-empty-opacity, 0.45);
     }
     .ddd-ring[data-state="none"] .ddd-ring-fill {
       stroke: none;

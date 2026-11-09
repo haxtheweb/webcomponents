@@ -155,3 +155,136 @@ describe("map-menu active page ring", () => {
     expect(n.a.shadowRoot.querySelector("[data-ddd-celebrate]")).to.equal(null);
   });
 });
+
+// WCAG relative luminance contrast of two computed rgb() colours
+const rgb = (c) =>
+  String(c)
+    .match(/[\d.]+/g)
+    .slice(0, 3)
+    .map(Number);
+const lum = (c) => {
+  const [r, g, b] = rgb(c).map((v) => {
+    const s = v / 255;
+    return s <= 0.03928 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4;
+  });
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+};
+const contrast = (a, b) => {
+  const [hi, lo] = [lum(a), lum(b)].sort((x, y) => y - x);
+  return (hi + 0.05) / (lo + 0.05);
+};
+// the active row colours themes give the menu (clean-one light / dark,
+// clean-two light / dark)
+const ROWS = [
+  ["clean-one light", "#262626", "#bbbbbb"],
+  ["clean-one dark", "#dddddd", "#000000"],
+  ["clean-two light", "#001e44", "#ffffff"],
+  ["clean-two dark", "#ffffff", "#001e44"],
+];
+
+describe("map-menu active ring contrast (WCAG 1.4.11, 3:1)", () => {
+  ROWS.forEach(([name, bg, fg]) => {
+    it(`${name}: track, fill, done disc and its check`, async () => {
+      const mm = await fixture(
+        html`<map-menu
+          style="--map-menu-item-a-active-background-color: ${bg}; --map-menu-item-a-active-color: ${fg};"
+          .manifest="${MANIFEST}"
+          selected="b"
+          .activeProgress="${0.4}"
+        ></map-menu>`,
+      );
+      await flush(80);
+      let n = await nodes(mm);
+      expect(n.b.hasAttribute("active")).to.equal(true);
+      const row = getComputedStyle(
+        n.b.shadowRoot.querySelector("button"),
+      ).backgroundColor;
+      const ring = () => n.b.shadowRoot.querySelector(".active-ring .ddd-ring");
+      const fill = getComputedStyle(
+        ring().querySelector(".ddd-ring-fill"),
+      ).stroke;
+      const track = getComputedStyle(
+        ring().querySelector(".ddd-ring-track"),
+      ).stroke;
+      expect(contrast(fill, row)).to.be.at.least(3);
+      expect(contrast(track, row)).to.be.at.least(3);
+      // progress is not colour alone: a thick arc over a thin track
+      expect(
+        parseFloat(
+          getComputedStyle(ring().querySelector(".ddd-ring-fill")).strokeWidth,
+        ),
+      ).to.be.greaterThan(
+        parseFloat(
+          getComputedStyle(ring().querySelector(".ddd-ring-track")).strokeWidth,
+        ) * 2,
+      );
+      mm.activeProgress = 1;
+      await flush(80);
+      n = await nodes(mm);
+      const disc = getComputedStyle(ring()).backgroundColor;
+      const check = getComputedStyle(
+        ring().querySelector(".ddd-ring-glyph simple-icon-lite"),
+      ).color;
+      expect(contrast(disc, row)).to.be.at.least(3);
+      expect(contrast(check, disc)).to.be.at.least(3);
+    });
+  });
+
+  it("an item with children: the ring traces its expand control", async () => {
+    const mm = await fixture(
+      html`<map-menu
+        style="--map-menu-item-a-active-background-color: #262626; --map-menu-item-a-active-color: #bbbbbb;"
+        .manifest="${MANIFEST}"
+        selected="c"
+        .activeProgress="${0.5}"
+      ></map-menu>`,
+    );
+    await flush(120);
+    const n = await nodes(mm);
+    const ringEl = n.c.shadowRoot.querySelector(".active-ring");
+    expect(ringEl.classList.contains("on-expand")).to.equal(true);
+    let sub = null;
+    mm.shadowRoot
+      .querySelector("map-menu-builder")
+      .querySelectorAll("map-menu-submenu")
+      .forEach((s) => {
+        if (s.id === "c") {
+          sub = s;
+        }
+      });
+    const expand = sub.shadowRoot
+      .querySelector("a11y-collapse")
+      .shadowRoot.querySelector("#expand");
+    const r = ringEl.getBoundingClientRect();
+    const e = expand.getBoundingClientRect();
+    // same centre (within a pixel), ring around it
+    expect(Math.abs(r.x + r.width / 2 - (e.x + e.width / 2))).to.be.below(1.5);
+    expect(Math.abs(r.y + r.height / 2 - (e.y + e.height / 2))).to.be.below(
+      1.5,
+    );
+    expect(r.width).to.be.greaterThan(e.width);
+    // in progress: the chevron sits on the row (no disc of its own) in the
+    // row's text colour, the ring around it
+    expect(sub.hasAttribute("data-active-ring")).to.equal(true);
+    expect(getComputedStyle(expand).backgroundColor).to.equal(
+      "rgba(0, 0, 0, 0)",
+    );
+    expect(
+      contrast(getComputedStyle(expand).color, "rgb(38, 38, 38)"),
+    ).to.be.at.least(3);
+    // the title is not pushed aside by a second control
+    expect(ringEl.querySelector(".ddd-ring-glyph").offsetWidth).to.equal(0);
+    // done: a filled disc with the chevron on it in the row colour
+    mm.activeProgress = 1;
+    await flush(120);
+    expect(sub.hasAttribute("data-active-done")).to.equal(true);
+    const disc = getComputedStyle(expand).backgroundColor;
+    const chevron = getComputedStyle(expand).color;
+    expect(contrast(chevron, disc)).to.be.at.least(3);
+    expect(contrast(disc, "rgb(38, 38, 38)")).to.be.at.least(3);
+    // the chevron stays the control on the disc
+    expect(
+      n.c.shadowRoot.querySelector(".ddd-ring").getAttribute("data-state"),
+    ).to.equal("done");
+  });
+});

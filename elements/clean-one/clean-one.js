@@ -193,7 +193,6 @@ class CleanOne extends LTIResizingMixin(
         }
         simple-icon-button,
         simple-icon-button-lite,
-        site-rss-button,
         site-print-button,
         site-git-corner {
           color: var(--ddd-lightDark-1);
@@ -216,7 +215,7 @@ class CleanOne extends LTIResizingMixin(
           padding: 8px 4px;
           display: inline-flex;
         }
-        /* My learning: in the toolbar row next to Print / PDF; on mobile,
+        /* My learning: in the toolbar row right after the menu button; on mobile,
            where that row is hidden, bottom-left mirroring the page
            navigation cluster (see the max-width md rules) */
         .learning-btn {
@@ -306,8 +305,7 @@ class CleanOne extends LTIResizingMixin(
         .pull-left > simple-icon-button-lite,
         .pull-left > simple-icon-button,
         .pull-right > div > simple-icon-button-lite,
-        .pull-left > site-print-button simple-icon-button-lite,
-        .pull-right > site-rss-button simple-icon-button-lite {
+        .pull-right > site-print-button simple-icon-button-lite {
           padding: 8px;
         }
         #emailbtnwrapper {
@@ -320,6 +318,7 @@ class CleanOne extends LTIResizingMixin(
         }
         @media (prefers-reduced-motion: reduce) {
           #site-search-input,
+          .site-header,
           .site-body,
           .navigation,
           .menu-outline {
@@ -467,6 +466,18 @@ class CleanOne extends LTIResizingMixin(
           .btn-container .btn {
             padding: 0 4px;
           }
+        }
+        /* the toolbar row spans the content area beside the menu (open or
+           closed), so the controls at its right end (PDF, Print, QR) are on
+           screen instead of past the edge of the viewport */
+        .site-header {
+          left: 0;
+          right: 0;
+          width: auto;
+          transition: left var(--ddd-duration-normal, 0.3s) ease-in-out;
+        }
+        :host([menu-open]) .site-header {
+          left: var(--ddd-theme-sidebar-width, 300px);
         }
         @media (max-width: ${bpBelowMd}px) {
           /* hide the top bar (print/PDF/QR/RSS/git controls and the desktop
@@ -814,6 +825,13 @@ class CleanOne extends LTIResizingMixin(
                       ? this.HAXCMSMobileMenuButton()
                       : ``
                   }
+                  <my-learning-button
+                    class="learning-btn"
+                    part="my-learning-btn"
+                  ></my-learning-button>
+                </div>
+                <div class="pull-right">
+                  ${this.PDFPageButton("bottom")}
                   ${
                     MicroFrontendRegistry.has("@system/siteToHtml")
                       ? this.PrintBranchButton("bottom")
@@ -824,19 +842,7 @@ class CleanOne extends LTIResizingMixin(
                           ></site-print-button>
                         `
                   }
-                  ${this.PDFPageButton("bottom")}
-                  <my-learning-button
-                    class="learning-btn"
-                    part="my-learning-btn"
-                  ></my-learning-button>
-                </div>
-                <div class="pull-right">
                   ${this.QRCodeButton()}
-                  <site-rss-button
-                    type="rss"
-                    class="btn js-toolbar-action"
-                    part="rss-btn"
-                  ></site-rss-button>
                   <site-git-corner
                     size="small"
                     part="git-corner-btn"
@@ -972,10 +978,6 @@ class CleanOne extends LTIResizingMixin(
     // prettier-ignore
     import(
        "@haxtheweb/haxcms-elements/lib/ui-components/site/site-print-button.js"
-     );
-    // prettier-ignore
-    import(
-       "@haxtheweb/haxcms-elements/lib/ui-components/site/site-rss-button.js"
      );
     // prettier-ignore
     import(

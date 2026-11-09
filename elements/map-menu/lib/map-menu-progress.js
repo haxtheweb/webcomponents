@@ -45,6 +45,11 @@ export const MapMenuProgressStrings = {
 export const mapMenuActiveRingStyles = [
   DDDProgressRingStyles,
   css`
+    /* the ring is drawn in the active row's own text colour (and the
+       check on the done disc in the row's background), so every part of it
+       has the contrast the theme gives its active text, at least 3:1 in any
+       palette, light or dark. Progress reads as a thick arc over a thin
+       full track, never colour alone. */
     .active-ring {
       display: inline-flex;
       flex: none;
@@ -54,36 +59,49 @@ export const mapMenuActiveRingStyles = [
         calc(-1 * var(--ddd-spacing-2)) 0;
       --ddd-component-progress-ring-color: var(
         --map-menu-progress-ring-color,
-        light-dark(
-          var(--ddd-theme-default-skyBlue),
-          var(--ddd-theme-default-beaverBlue)
+        var(
+          --map-menu-item-a-active-color,
+          var(--map-menu-item-a-color, currentColor)
         )
       );
       --ddd-component-progress-ring-track: var(
         --map-menu-progress-ring-track,
-        light-dark(
-          var(--ddd-theme-default-limestoneLight),
-          var(--ddd-theme-default-limestoneGray)
+        var(
+          --map-menu-item-a-active-color,
+          var(--map-menu-item-a-color, currentColor)
         )
       );
       --ddd-component-progress-ring-on-color: var(
         --map-menu-progress-ring-on-color,
-        light-dark(
-          var(--ddd-theme-default-white),
-          var(--ddd-theme-default-coalyGray)
-        )
+        var(--map-menu-item-a-active-background-color, black)
       );
       --ddd-component-progress-ring-size: var(
         --map-menu-progress-ring-size,
         var(--ddd-icon-xs)
       );
+      --ddd-component-progress-ring-width: 3.5;
+      --ddd-component-progress-ring-track-width: 1.25;
+      --ddd-component-progress-ring-empty-opacity: 1;
     }
-    .active-ring .ddd-ring simple-icon-lite {
+    /* an item with children: the ring traces its expand control (the
+       a11y-collapse chevron, 24px at 4px from the start of the row), so
+       there is one control, not a ring beside a chevron */
+    .active-ring.on-expand {
+      position: absolute;
+      top: 50%;
+      left: var(--map-menu-progress-ring-expand-left, 2px);
       margin: 0;
-      visibility: visible;
-      opacity: 1;
-      --simple-icon-height: var(--ddd-icon-4xs);
-      --simple-icon-width: var(--ddd-icon-4xs);
+      transform: translateY(-50%);
+      pointer-events: none;
+      /* the chevron is 24px: a 28px ring traces it without reaching the
+         title that starts right after it */
+      --ddd-component-progress-ring-size: var(
+        --map-menu-progress-ring-expand-size,
+        28px
+      );
+    }
+    .active-ring.on-expand .ddd-ring-glyph {
+      display: none;
     }
   `,
 ];
@@ -114,8 +132,12 @@ export function activeRingText(activeProgress, t) {
  * The ring around the icon area of the active item (with its icon, or
  * nothing in it when the item has none); id lets an icon tooltip point at it
  */
-export function renderActiveRing(activeProgress, icon, id) {
-  return html`<span class="active-ring" id="${id || "progress-ring"}"
+export function renderActiveRing(activeProgress, icon, id, onExpand) {
+  // around the expand control the chevron stays the glyph (it is the
+  // control); done shows as the filled disc it sits on
+  return html`<span
+    class="active-ring${onExpand ? " on-expand" : ""}"
+    id="${id || "progress-ring"}"
     >${renderDDDProgressRing({
       percent: activeProgress,
       icon: icon || "",
