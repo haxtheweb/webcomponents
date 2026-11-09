@@ -50,8 +50,7 @@ export function fuzzConfig(options) {
   if (!Number.isInteger(defaultSeed)) {
     throw new TypeError("fuzzConfig: defaultSeed must be an integer");
   }
-  const alias = (suffix) =>
-    aliases.map((prefix) => `${prefix}_FUZZ_${suffix}`);
+  const alias = (suffix) => aliases.map((prefix) => `${prefix}_FUZZ_${suffix}`);
 
   const config = { numRuns: defaultRuns, seed: defaultSeed };
 
