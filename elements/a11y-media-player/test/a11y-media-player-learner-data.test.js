@@ -144,6 +144,43 @@ describe("a11y-media-player learner data", () => {
     expect(el.watchedShare).to.equal(0);
   });
 
+  it("a pause at the very end counts as reaching the end", async () => {
+    const { el, seen, watch, at, media } = await player(60);
+    watch(0, 52);
+    // stopped within the last second, no ended event
+    at(59.4);
+    el.__playing = false;
+    media.dispatchEvent(new Event("pause"));
+    expect(verbs(seen)).to.deep.equal(["attempted", "progressed", "completed"]);
+  });
+
+  it("a pause earlier than the last second is not the end", async () => {
+    const { el, seen, watch, media } = await player(60);
+    watch(0, 52);
+    el.__playing = false;
+    media.dispatchEvent(new Event("pause"));
+    expect(verbs(seen)).to.deep.equal(["attempted", "progressed"]);
+  });
+
+  it("the player's ended state completes at 80% even without the last stretch reported", async () => {
+    const { el, seen, watch } = await player(100);
+    watch(0, 30);
+    // unreported stretch (too big a jump to count), then playing on
+    watch(42, 90);
+    el._handleMediaEnded();
+    expect(el.watchedShare).to.be.at.least(MEDIA_WATCH_END_MIN);
+    expect(verbs(seen)).to.deep.equal(["attempted", "progressed", "completed"]);
+  });
+
+  it("the player's ended state below 80% watched does not complete", async () => {
+    const { el, seen, watch } = await player(100);
+    watch(0, 40);
+    watch(70, 98);
+    el._handleMediaEnded();
+    expect(el.watchedShare).to.be.below(MEDIA_WATCH_END_MIN);
+    expect(verbs(seen)).to.not.include("completed");
+  });
+
   it("follows YouTube timing: reports stop just before the end and ended may not come", async () => {
     const yt = await fixture(
       html`<a11y-media-player youtube-id="abc123"></a11y-media-player>`,
@@ -282,5 +319,100 @@ describe("a11y-media-player learner data host", () => {
     amp.addEventListener("user-engagement", (e) => seen.push(e.detail));
     amp._announceMedia("attempted");
     expect(seen[0].statement.object.id).to.not.contain(amp.id);
+  });
+});
+
+describe("a11y-media-player learner data on the YouTube path", () => {
+  // the stubbed IFrame API: time moves when the test says, state changes go
+  // through the player's own onStateChange listener
+  async function ytPlayer(duration) {
+    const yt = await fixture(
+      html`<a11y-media-player youtube-id="abc123"></a11y-media-player>`,
+    );
+    await yt.updateComplete;
+    await waitUntil(
+      () => yt.youtube && yt.youtube.__yt,
+      "youtube child player never initialized",
+      { interval: 20, timeout: 5000 },
+    );
+    const fake = yt.youtube.__yt;
+    fake.durationVal = duration;
+    // the YouTube wrapper only plays once the player reports ready
+    yt.youtube.__video = fake;
+    const seen = [];
+    yt.addEventListener("user-engagement", (e) => seen.push(e.detail));
+    const state = (data) =>
+      (fake.listeners.onStateChange || []).forEach((cb) => cb({ data }));
+    return { yt, fake, seen, state };
+  }
+  const verbsOf = (seen) => seen.map((d) => d.activityDisplay);
+
+  it("tracks watched time from the YouTube wrapper's own time reports", async () => {
+    const { yt, fake, state } = await ytPlayer(8);
+    yt.play();
+    state(1);
+    // advance the YouTube clock; the wrapper polls it every 250ms and
+    // reports timeupdate to the player
+    for (let t = 0.5; t <= 4; t += 0.5) {
+      fake.time = t;
+      await sleep(260);
+    }
+    expect(yt.__watched.size).to.be.at.least(4);
+    yt.pause();
+    state(2);
+  });
+
+  it("YouTube ENDED (state 0) completes a watched video", async () => {
+    const { yt, fake, seen, state } = await ytPlayer(8);
+    yt.play();
+    state(1);
+    for (let t = 0.5; t <= 6; t += 0.5) {
+      fake.time = t;
+      await sleep(260);
+    }
+    // reports stop before the last stretch: nothing completes from them
+    expect(verbsOf(seen)).to.not.include("completed");
+    // then YouTube reports ENDED
+    fake.time = 8;
+    fake.state = 0;
+    state(0);
+    await yt.updateComplete;
+    expect(verbsOf(seen)).to.deep.equal([
+      "attempted",
+      "progressed",
+      "completed",
+    ]);
+    const done = seen[seen.length - 1].statement;
+    expect(done.result.extensions[XAPI_MEDIA_PROGRESS]).to.equal(1);
+  });
+
+  it("YouTube paused at the very end (state 2) completes too", async () => {
+    const { yt, fake, seen, state } = await ytPlayer(8);
+    yt.play();
+    state(1);
+    for (let t = 0.5; t <= 6; t += 0.5) {
+      fake.time = t;
+      await sleep(260);
+    }
+    expect(verbsOf(seen)).to.not.include("completed");
+    fake.time = 7.6;
+    fake.state = 2;
+    yt.__playing = false;
+    state(2);
+    expect(verbsOf(seen)).to.include("completed");
+  });
+
+  it("YouTube seek to the end then ENDED records nothing", async () => {
+    const { yt, fake, seen, state } = await ytPlayer(60);
+    yt.seek(59.5);
+    fake.time = 59.5;
+    yt.__playing = true;
+    yt._trackWatched();
+    fake.time = 60;
+    fake.state = 0;
+    state(0);
+    expect(verbsOf(seen)).to.not.include("completed");
+    expect(verbsOf(seen)).to.not.include("progressed");
+    yt.__playing = false;
   });
 });

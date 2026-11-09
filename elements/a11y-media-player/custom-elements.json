@@ -293,6 +293,17 @@
             },
             {
               "kind": "field",
+              "name": "_seekLocked",
+              "description": "seeking is locked (disable-seek, or learning mode)",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
               "name": "_narrow",
               "description": "whether the player is at a small width (DDD sm and below), where the\ntranscript always sits below and the header keeps only Settings and\nFullscreen",
               "return": {
@@ -1132,6 +1143,30 @@
             },
             {
               "kind": "method",
+              "name": "_completeAtEnd",
+              "description": "Learner data: the player stopped at its end (HTML5 ended, YouTube\nENDED, or a pause / stop within the last second). The seconds after\nthe last time report count when that report was already in the last\nstretch (so playing out the end counts, jumping there does not), then\ncompletion is checked; at least MEDIA_WATCH_END_MIN must be watched."
+            },
+            {
+              "kind": "method",
+              "name": "_handleMediaStopped",
+              "description": "Learner data: the media paused or stopped; at its very end (the last\nsecond) that is the same as reaching the end"
+            },
+            {
+              "kind": "method",
+              "name": "_handleYoutubeState",
+              "parameters": [
+                {
+                  "name": "e",
+                  "description": "mediastatechange from a11y-media-youtube",
+                  "type": {
+                    "text": "CustomEvent"
+                  }
+                }
+              ],
+              "description": "YouTube player state: 2 is paused (0, ended, arrives as an ended\nevent)"
+            },
+            {
+              "kind": "method",
               "name": "_isAtEnd",
               "parameters": [
                 {
@@ -1152,6 +1187,12 @@
             {
               "kind": "method",
               "name": "_trackWatched",
+              "parameters": [
+                {
+                  "name": "stopped",
+                  "default": "false"
+                }
+              ],
               "description": "Learner data: count the media time actually watched. Called on every\ntime report. Only playback that moves forward in small steps counts, so\nseeking or scrubbing ahead never adds to it, and each second counts once\nhowever often it is replayed. Sends the milestones when reached."
             },
             {

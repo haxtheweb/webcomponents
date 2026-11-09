@@ -55,10 +55,31 @@ async function rendered(template) {
   return { el, inner };
 }
 
-// apply a HAX edit the way the editor does (a property set) and let both
-// elements finish rendering
+const camelToDash = (str) =>
+  str.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2").toLowerCase();
+
+/**
+ * Apply a HAX settings form value the way hax-tray does
+ * (__valueChangedEvent): a direct property set only for own properties and
+ * arrays / objects, otherwise the dashed attribute, with true written as
+ * attr="attr" and false / "" removing it. Then let both elements render.
+ */
 async function edit(el, inner, prop, value) {
-  el[prop] = value;
+  const own =
+    Object.prototype.hasOwnProperty.call(el, prop) ||
+    (el.properties &&
+      Object.prototype.hasOwnProperty.call(el.properties, prop)) ||
+    (value != null &&
+      (value.constructor === Array || value.constructor === Object));
+  if (own) {
+    el[prop] = value;
+  } else if (value === true) {
+    el.setAttribute(camelToDash(prop), camelToDash(prop));
+  } else if (value === false || value === "" || value === null) {
+    el.removeAttribute(camelToDash(prop));
+  } else {
+    el.setAttribute(camelToDash(prop), value);
+  }
   await el.updateComplete;
   const player = inner();
   if (player) {
@@ -72,255 +93,364 @@ const cueTexts = (player) =>
     player.shadowRoot.querySelectorAll("a11y-media-transcript-cue"),
   ).map((c) => c.textContent.trim());
 
-describe("video-player HAX settings take effect right away", () => {
-  it("covers every HAX-editable property", () => {
-    const settings =
-      globalThis.customElements.get("video-player").haxProperties.settings;
-    const props = []
-      .concat(settings.configure, settings.advanced, settings.developer)
-      .map((s) => s.property)
-      .filter((p) => p);
-    props.forEach((p) => expect(COVERED, p).to.include(p));
-  });
+const SOURCES = {
+  html5: "https://example.com/v.mp4",
+  youtube: "https://www.youtube.com/watch?v=LrS7dqokTLE",
+};
 
-  it("mediaTitle updates the header title", async () => {
-    const { el, inner } = await rendered(
-      html`<video-player
-        source="https://example.com/v.mp4"
-        media-title="First"
-      ></video-player>`,
-    );
-    await edit(el, inner, "mediaTitle", "Second");
-    expect(
-      inner().shadowRoot.querySelector(".ddd-block-title").textContent.trim(),
-    ).to.equal("Second");
-    expect(
-      el.shadowRoot.querySelector(".ddd-block").getAttribute("aria-label"),
-    ).to.contain("Second");
-  });
+Object.keys(SOURCES).forEach((kind) => {
+  const SRC = SOURCES[kind];
+  const youtube = kind === "youtube";
+  describe(`video-player HAX settings take effect right away (${kind} source)`, () => {
+    it("covers every HAX-editable property", () => {
+      const settings =
+        globalThis.customElements.get("video-player").haxProperties.settings;
+      const props = []
+        .concat(settings.configure, settings.advanced, settings.developer)
+        .map((s) => s.property)
+        .filter((p) => p);
+      props.forEach((p) => expect(COVERED, p).to.include(p));
+    });
 
-  it("accentColor recolors the chip", async () => {
-    const { el, inner } = await rendered(
-      html`<video-player source="https://example.com/v.mp4"></video-player>`,
-    );
-    const chip = () =>
-      getComputedStyle(inner().shadowRoot.querySelector(".ddd-block-chip"))
+    it("mediaTitle updates the header title", async () => {
+      const { el, inner } = await rendered(
+        html`<video-player source="${SRC}" media-title="First"></video-player>`,
+      );
+      await edit(el, inner, "mediaTitle", "Second");
+      expect(
+        inner().shadowRoot.querySelector(".ddd-block-title").textContent.trim(),
+      ).to.equal("Second");
+      expect(
+        el.shadowRoot.querySelector(".ddd-block").getAttribute("aria-label"),
+      ).to.contain("Second");
+    });
+
+    // the seek slider's fill / pin color, resolved inside the slider
+    const seekColor = (player) => {
+      const slider = player.shadowRoot.querySelector("#slider");
+      const probe = globalThis.document.createElement("span");
+      probe.style.color = "var(--simple-range-input-color)";
+      slider.shadowRoot.appendChild(probe);
+      const c = getComputedStyle(probe).color;
+      probe.remove();
+      return c;
+    };
+    const chipColor = (player) =>
+      getComputedStyle(player.shadowRoot.querySelector(".ddd-block-chip"))
         .backgroundColor;
-    const before = chip();
-    await edit(el, inner, "accentColor", "red");
-    expect(inner().getAttribute("accent-color")).to.equal("red");
-    expect(chip()).to.not.equal(before);
-  });
+    // deep purple from DDDAccentStyles (wonderPurple, athertonViolet dark)
+    const purple = () => {
+      const probe = globalThis.document.createElement("span");
+      probe.style.color =
+        "light-dark(var(--ddd-theme-default-wonderPurple), var(--ddd-theme-default-athertonViolet))";
+      globalThis.document.body.appendChild(probe);
+      const c = getComputedStyle(probe).color;
+      probe.remove();
+      return c;
+    };
 
-  it("thumbnailSrc updates the poster", async () => {
-    const { el, inner } = await rendered(
-      html`<video-player
-        source="https://example.com/v.mp4"
-        thumbnail-src="${GIF}"
-      ></video-player>`,
-    );
-    expect(inner().querySelector("video").getAttribute("poster")).to.equal(GIF);
-    await edit(el, inner, "thumbnailSrc", GIF2);
-    expect(inner().querySelector("video").getAttribute("poster")).to.equal(
-      GIF2,
-    );
-    expect(
-      inner().shadowRoot.querySelector("#print-thumbnail").getAttribute("src"),
-    ).to.equal(GIF2);
-  });
+    it("accentColor (deep purple) recolors the chip and the seek bar", async () => {
+      const { el, inner } = await rendered(
+        html`<video-player source="${SRC}"></video-player>`,
+      );
+      const before = chipColor(inner());
+      await edit(el, inner, "accentColor", "deep-purple");
+      expect(inner().getAttribute("accent-color")).to.equal("deep-purple");
+      expect(chipColor(inner())).to.not.equal(before);
+      expect(chipColor(inner())).to.equal(purple());
+      expect(seekColor(inner())).to.equal(purple());
+    });
 
-  it("source switches the media (file to file and file to YouTube)", async () => {
-    const { el, inner } = await rendered(
-      html`<video-player source="https://example.com/a.mp4"></video-player>`,
-    );
-    await edit(el, inner, "source", "https://example.com/b.mp4");
-    expect(
-      inner().querySelector("video source").getAttribute("src"),
-    ).to.contain("b.mp4");
-    await edit(el, inner, "source", "https://www.youtube.com/watch?v=abc123");
-    await waitUntil(
-      () => inner() && inner().youtubeId === "abc123",
-      "youtube source never reached the player",
-    );
-    await edit(el, inner, "source", "https://www.youtube.com/watch?v=xyz789");
-    expect(inner().youtubeId).to.equal("xyz789");
-  });
+    it("accentColor wins over a theme's --video-player-accent-color", async () => {
+      const wrap = await fixture(
+        html`<div style="--video-player-accent-color: rgb(233, 131, 0)">
+          <video-player source="${SRC}"></video-player>
+        </div>`,
+      );
+      const el = wrap.querySelector("video-player");
+      el.elementVisible = true;
+      await el.updateComplete;
+      await sleep(50);
+      const inner = () => el.shadowRoot.querySelector("a11y-media-player");
+      await waitUntil(() => inner(), "player never rendered");
+      await inner().updateComplete;
+      // the theme color is the palette level: chip and seek take it
+      expect(chipColor(inner())).to.equal("rgb(233, 131, 0)");
+      expect(seekColor(inner())).to.equal("rgb(233, 131, 0)");
+      await edit(el, inner, "accentColor", "deep-purple");
+      expect(chipColor(inner())).to.equal(purple());
+      expect(seekColor(inner())).to.equal(purple());
+      // the header buttons stay neutral
+      const action = getComputedStyle(
+        inner().shadowRoot.querySelector("#settings-button"),
+      ).color;
+      expect(action).to.not.equal(purple());
+      expect(action).to.not.equal("rgb(233, 131, 0)");
+    });
 
-  it("tracks load the new transcript and captions", async () => {
-    const { el, inner } = await rendered(
-      html`<video-player
-        source="https://example.com/v.mp4"
-        .tracks=${[{ src: vtt("Alpha"), label: "English", srclang: "en" }]}
-      ></video-player>`,
-    );
-    await waitUntil(
-      () => cueTexts(inner()).includes("Alpha one"),
-      "first track never loaded",
-    );
-    await edit(el, inner, "tracks", [
-      { src: vtt("Beta"), label: "Deutsch", srclang: "de" },
-    ]);
-    await waitUntil(
-      () => cueTexts(inner()).join("|") === "Beta one|Beta two",
-      "the new track never replaced the old one",
-      { timeout: 4000 },
-    );
-    expect(inner().captionsPicker).to.deep.include({ 0: "Deutsch" });
-  });
+    it("thumbnailSrc updates the poster", async () => {
+      const { el, inner } = await rendered(
+        html`<video-player
+          source="${SRC}"
+          thumbnail-src="${GIF}"
+        ></video-player>`,
+      );
+      const shown = () =>
+        youtube
+          ? inner().shadowRoot.querySelector("#player").style.backgroundImage
+          : inner().querySelector("video").getAttribute("poster");
+      expect(shown()).to.contain(GIF);
+      await edit(el, inner, "thumbnailSrc", GIF2);
+      expect(shown()).to.contain(GIF2);
+      expect(
+        inner()
+          .shadowRoot.querySelector("#print-thumbnail")
+          .getAttribute("src"),
+      ).to.equal(GIF2);
+    });
 
-  it("tracks added to a player that had none show the transcript", async () => {
-    const { el, inner } = await rendered(
-      html`<video-player source="https://example.com/v.mp4"></video-player>`,
-    );
-    expect(inner().standAlone).to.equal(true);
-    await edit(el, inner, "tracks", [
-      { src: vtt("Gamma"), label: "English", srclang: "en" },
-    ]);
-    await waitUntil(
-      () => cueTexts(inner()).includes("Gamma one"),
-      "added track never loaded",
-      { timeout: 4000 },
-    );
-    expect(inner().standAlone).to.equal(false);
-  });
+    it("source switches the media", async () => {
+      const { el, inner } = await rendered(
+        html`<video-player source="${SRC}"></video-player>`,
+      );
+      if (!youtube) {
+        await edit(el, inner, "source", "https://example.com/b.mp4");
+        expect(
+          inner().querySelector("video source").getAttribute("src"),
+        ).to.contain("b.mp4");
+      }
+      await edit(el, inner, "source", "https://www.youtube.com/watch?v=abc123");
+      await waitUntil(
+        () => inner() && inner().youtubeId === "abc123",
+        "youtube source never reached the player",
+      );
+      await edit(el, inner, "source", "https://www.youtube.com/watch?v=xyz789");
+      expect(inner().youtubeId).to.equal("xyz789");
+      if (youtube) {
+        // and back to a file
+        await edit(el, inner, "source", "https://example.com/c.mp4");
+        await waitUntil(
+          () => inner() && !inner().youtubeId,
+          "the file source never replaced YouTube",
+          { timeout: 3000 },
+        );
+      }
+    });
 
-  it("hideTranscript shows the transcript with its cues when turned off", async () => {
-    const { el, inner } = await rendered(
-      html`<video-player
-        source="https://example.com/v.mp4"
-        hide-transcript
-        .tracks=${[{ src: vtt("Delta"), label: "English", srclang: "en" }]}
-      ></video-player>`,
-    );
-    await waitUntil(() => inner().cues.length === 2, "cues never loaded");
-    await inner().updateComplete;
-    const section = () =>
-      inner().shadowRoot.querySelector("#transcript-section");
-    expect(section().hidden).to.equal(true);
-    await edit(el, inner, "hideTranscript", false);
-    expect(section().hidden).to.equal(false);
-    expect(cueTexts(inner())).to.deep.equal(["Delta one", "Delta two"]);
-    await edit(el, inner, "hideTranscript", true);
-    expect(section().hidden).to.equal(true);
-  });
+    it("tracks load the new transcript and captions", async () => {
+      const { el, inner } = await rendered(
+        html`<video-player
+          source="${SRC}"
+          .tracks=${[{ src: vtt("Alpha"), label: "English", srclang: "en" }]}
+        ></video-player>`,
+      );
+      await waitUntil(
+        () => cueTexts(inner()).includes("Alpha one"),
+        "first track never loaded",
+      );
+      await edit(el, inner, "tracks", [
+        { src: vtt("Beta"), label: "Deutsch", srclang: "de" },
+      ]);
+      await waitUntil(
+        () => cueTexts(inner()).join("|") === "Beta one|Beta two",
+        "the new track never replaced the old one",
+        { timeout: 4000 },
+      );
+      expect(inner().captionsPicker).to.deep.include({ 0: "Deutsch" });
+    });
 
-  it("hideTimestamps, darkTranscript and disableInteractive update the transcript", async () => {
-    const { el, inner } = await rendered(
-      html`<video-player
-        source="https://example.com/v.mp4"
-        .tracks=${[{ src: vtt("Echo"), label: "English", srclang: "en" }]}
-      ></video-player>`,
-    );
-    await waitUntil(() => cueTexts(inner()).length === 2, "no cues");
-    const cue = () =>
-      inner().shadowRoot.querySelector("a11y-media-transcript-cue");
-    await edit(el, inner, "hideTimestamps", true);
-    expect(cue().hasAttribute("hide-timestamps")).to.equal(true);
-    await edit(el, inner, "hideTimestamps", false);
-    expect(cue().hasAttribute("hide-timestamps")).to.equal(false);
-    await edit(el, inner, "darkTranscript", true);
-    expect(inner().hasAttribute("dark-transcript")).to.equal(true);
-    await edit(el, inner, "disableInteractive", true);
-    expect(cue().hasAttribute("disabled")).to.equal(true);
-    expect(cue().getAttribute("tabindex")).to.equal("-1");
-  });
+    it("tracks added to a player that had none show the transcript", async () => {
+      const { el, inner } = await rendered(
+        html`<video-player source="${SRC}"></video-player>`,
+      );
+      expect(inner().standAlone).to.equal(true);
+      await edit(el, inner, "tracks", [
+        { src: vtt("Gamma"), label: "English", srclang: "en" },
+      ]);
+      await waitUntil(
+        () => cueTexts(inner()).includes("Gamma one"),
+        "added track never loaded",
+        { timeout: 4000 },
+      );
+      expect(inner().standAlone).to.equal(false);
+    });
 
-  it("learningMode locks seeking and the transcript when switched", async () => {
-    const { el, inner } = await rendered(
-      html`<video-player
-        source="https://example.com/v.mp4"
-        .tracks=${[{ src: vtt("Fox"), label: "English", srclang: "en" }]}
-      ></video-player>`,
-    );
-    await edit(el, inner, "learningMode", true);
-    expect(inner().disableSeek).to.equal(true);
-    expect(inner().hideTranscript).to.equal(true);
-    await edit(el, inner, "learningMode", false);
-    expect(inner().disableSeek).to.equal(false);
-  });
+    it("hideTranscript shows the transcript with its cues when turned off", async () => {
+      const { el, inner } = await rendered(
+        html`<video-player
+          source="${SRC}"
+          hide-transcript
+          .tracks=${[{ src: vtt("Delta"), label: "English", srclang: "en" }]}
+        ></video-player>`,
+      );
+      await waitUntil(() => inner().cues.length === 2, "cues never loaded");
+      await inner().updateComplete;
+      const section = () =>
+        inner().shadowRoot.querySelector("#transcript-section");
+      expect(section().hidden).to.equal(true);
+      await edit(el, inner, "hideTranscript", false);
+      expect(section().hidden).to.equal(false);
+      expect(cueTexts(inner())).to.deep.equal(["Delta one", "Delta two"]);
+      await edit(el, inner, "hideTranscript", true);
+      expect(section().hidden).to.equal(true);
+    });
 
-  it("learningMode authored from the start locks seeking too", async () => {
-    const start = await rendered(
-      html`<video-player
-        source="https://example.com/v.mp4"
-        learning-mode
-      ></video-player>`,
-    );
-    expect(start.inner().disableSeek).to.equal(true);
-    expect(start.inner().hideTranscript).to.equal(true);
-  });
+    it("hideTimestamps, darkTranscript and disableInteractive update the transcript", async () => {
+      const { el, inner } = await rendered(
+        html`<video-player
+          source="${SRC}"
+          .tracks=${[{ src: vtt("Echo"), label: "English", srclang: "en" }]}
+        ></video-player>`,
+      );
+      await waitUntil(() => cueTexts(inner()).length === 2, "no cues");
+      const cue = () =>
+        inner().shadowRoot.querySelector("a11y-media-transcript-cue");
+      await edit(el, inner, "hideTimestamps", true);
+      expect(cue().hasAttribute("hide-timestamps")).to.equal(true);
+      await edit(el, inner, "hideTimestamps", false);
+      expect(cue().hasAttribute("hide-timestamps")).to.equal(false);
+      await edit(el, inner, "darkTranscript", true);
+      expect(inner().hasAttribute("dark-transcript")).to.equal(true);
+      await edit(el, inner, "disableInteractive", true);
+      expect(cue().hasAttribute("disabled")).to.equal(true);
+      expect(cue().getAttribute("tabindex")).to.equal("-1");
+    });
 
-  it("linkable and hideYoutubeLink show and hide their header actions", async () => {
-    const { el, inner } = await rendered(
-      html`<video-player
-        source="https://www.youtube.com/watch?v=abc123"
-      ></video-player>`,
-    );
-    const action = (id) => inner().shadowRoot.querySelector(id);
-    expect(action("#header-copy-link").hidden).to.equal(true);
-    await edit(el, inner, "linkable", true);
-    expect(action("#header-copy-link").hidden).to.equal(false);
-    expect(action("#header-youtube").hidden).to.equal(false);
-    await edit(el, inner, "hideYoutubeLink", true);
-    expect(action("#header-youtube").hidden).to.equal(true);
-  });
+    it("learningMode locks seeking and the transcript when switched", async () => {
+      const { el, inner } = await rendered(
+        html`<video-player
+          source="${SRC}"
+          .tracks=${[{ src: vtt("Fox"), label: "English", srclang: "en" }]}
+        ></video-player>`,
+      );
+      await edit(el, inner, "learningMode", true);
+      expect(inner().disableSeek).to.equal(true);
+      expect(inner().hideTranscript).to.equal(true);
+      const bar = Array.from(
+        inner().shadowRoot.querySelectorAll("#controls-left a11y-media-button"),
+      )
+        .filter((b) => !b.hidden)
+        .map((b) => b.getAttribute("label"));
+      expect(bar).to.not.include("Backward");
+      expect(bar).to.not.include("Forward");
+      expect(inner().shadowRoot.querySelector("#slider").disabled).to.equal(
+        true,
+      );
+      await edit(el, inner, "learningMode", false);
+      expect(inner().disableSeek).to.equal(false);
+    });
 
-  it("audioDescriptionSource shows the audio description action", async () => {
-    const { el, inner } = await rendered(
-      html`<video-player source="https://example.com/v.mp4"></video-player>`,
-    );
-    const ad = () =>
-      inner().shadowRoot.querySelector("#header-audio-description");
-    expect(ad().hidden).to.equal(true);
-    await edit(
-      el,
-      inner,
-      "audioDescriptionSource",
-      "https://example.com/a.mp3",
-    );
-    expect(ad().hidden).to.equal(false);
-  });
+    it("learningMode authored from the start locks seeking too", async () => {
+      const start = await rendered(
+        html`<video-player source="${SRC}" learning-mode></video-player>`,
+      );
+      expect(start.inner().disableSeek).to.equal(true);
+      expect(start.inner().hideTranscript).to.equal(true);
+    });
 
-  it("lang and crossorigin reach the player and its media", async () => {
-    const { el, inner } = await rendered(
-      html`<video-player source="https://example.com/v.mp4"></video-player>`,
-    );
-    await edit(el, inner, "lang", "es");
-    expect(inner().getAttribute("lang")).to.equal("es");
-    await edit(el, inner, "crossorigin", "use-credentials");
-    expect(inner().querySelector("video").getAttribute("crossorigin")).to.equal(
-      "use-credentials",
-    );
-  });
+    it("linkable and hideYoutubeLink show and hide their header actions", async () => {
+      const { el, inner } = await rendered(
+        html`<video-player source="${SRC}"></video-player>`,
+      );
+      const action = (id) => inner().shadowRoot.querySelector(id);
+      expect(action("#header-copy-link").hidden).to.equal(true);
+      await edit(el, inner, "linkable", true);
+      expect(action("#header-copy-link").hidden).to.equal(false);
+      if (youtube) {
+        expect(action("#header-youtube").hidden).to.equal(false);
+        await edit(el, inner, "hideYoutubeLink", true);
+        expect(action("#header-youtube").hidden).to.equal(true);
+      } else {
+        // Open on YouTube only exists for YouTube media
+        expect(action("#header-youtube")).to.equal(null);
+      }
+    });
 
-  it("allowBackgroundPlay turns the tab-switch pause off and on", async () => {
-    const { el, inner } = await rendered(
-      html`<video-player source="https://example.com/v.mp4"></video-player>`,
-    );
-    expect(el.__setVisChange).to.equal(true);
-    await edit(el, inner, "allowBackgroundPlay", true);
-    expect(el.__setVisChange).to.equal(false);
-    await edit(el, inner, "allowBackgroundPlay", false);
-    expect(el.__setVisChange).to.equal(true);
-  });
+    it("the owner's combination: learning mode, no YouTube button, share link, deep purple", async () => {
+      const { el, inner } = await rendered(
+        html`<video-player source="${SRC}" media-title="HAX"></video-player>`,
+      );
+      await edit(el, inner, "learningMode", true);
+      await edit(el, inner, "hideYoutubeLink", true);
+      await edit(el, inner, "linkable", true);
+      await edit(el, inner, "hideTimestamps", false);
+      await edit(el, inner, "hideTranscript", false);
+      await edit(el, inner, "accentColor", "deep-purple");
+      const player = inner();
+      const labels = Array.from(
+        player.shadowRoot.querySelectorAll(
+          ".ddd-block-actions .ddd-block-action",
+        ),
+      )
+        .filter((b) => !b.hidden)
+        .map((b) => b.getAttribute("aria-label"));
+      expect(labels).to.include("Copy Media Link");
+      expect(labels).to.not.include("Open on YouTube");
+      expect(chipColor(player)).to.equal(purple());
+      expect(seekColor(player)).to.equal(purple());
+      const bar = Array.from(
+        player.shadowRoot.querySelectorAll("#controls-left a11y-media-button"),
+      )
+        .filter((b) => !b.hidden)
+        .map((b) => b.getAttribute("label"));
+      expect(bar).to.not.include("Backward");
+      expect(bar).to.not.include("Forward");
+    });
 
-  it("startTime and endTime apply to the next play", async () => {
-    const { el, inner } = await rendered(
-      html`<video-player
-        source="https://example.com/v.mp4"
-        start-time="5"
-      ></video-player>`,
-    );
-    const seeks = [];
-    el.seek = (t) => seeks.push(Number(t));
-    el.endTimeTest = () => seeks.push("end");
-    el.playEvent({ detail: { __playing: true } });
-    expect(seeks).to.deep.equal([5, "end"]);
-    el.playEvent({ detail: { __playing: false } });
-    await edit(el, inner, "startTime", 12);
-    await edit(el, inner, "endTime", 20);
-    el.playEvent({ detail: { __playing: true } });
-    expect(seeks).to.deep.equal([5, "end", 12, "end"]);
+    it("audioDescriptionSource shows the audio description action", async () => {
+      const { el, inner } = await rendered(
+        html`<video-player source="${SRC}"></video-player>`,
+      );
+      const ad = () =>
+        inner().shadowRoot.querySelector("#header-audio-description");
+      expect(ad().hidden).to.equal(true);
+      await edit(
+        el,
+        inner,
+        "audioDescriptionSource",
+        "https://example.com/a.mp3",
+      );
+      expect(ad().hidden).to.equal(false);
+    });
+
+    it("lang and crossorigin reach the player and its media", async () => {
+      const { el, inner } = await rendered(
+        html`<video-player source="${SRC}"></video-player>`,
+      );
+      await edit(el, inner, "lang", "es");
+      expect(inner().getAttribute("lang")).to.equal("es");
+      await edit(el, inner, "crossorigin", "use-credentials");
+      expect(
+        inner().querySelector("video").getAttribute("crossorigin"),
+      ).to.equal("use-credentials");
+    });
+
+    it("allowBackgroundPlay turns the tab-switch pause off and on", async () => {
+      const { el, inner } = await rendered(
+        html`<video-player source="${SRC}"></video-player>`,
+      );
+      expect(el.__setVisChange).to.equal(true);
+      await edit(el, inner, "allowBackgroundPlay", true);
+      expect(el.__setVisChange).to.equal(false);
+      await edit(el, inner, "allowBackgroundPlay", false);
+      expect(el.__setVisChange).to.equal(true);
+    });
+
+    it("startTime and endTime apply to the next play", async () => {
+      const { el, inner } = await rendered(
+        html`<video-player source="${SRC}" start-time="5"></video-player>`,
+      );
+      const seeks = [];
+      el.seek = (t) => seeks.push(Number(t));
+      el.endTimeTest = () => seeks.push("end");
+      el.playEvent({ detail: { __playing: true } });
+      expect(seeks).to.deep.equal([5, "end"]);
+      el.playEvent({ detail: { __playing: false } });
+      await edit(el, inner, "startTime", 12);
+      await edit(el, inner, "endTime", 20);
+      el.playEvent({ detail: { __playing: true } });
+      expect(seeks).to.deep.equal([5, "end", 12, "end"]);
+    });
   });
 });
 

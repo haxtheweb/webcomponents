@@ -161,12 +161,39 @@ describe("a11y-media-player block header", () => {
     await el.updateComplete;
     expect(el.audioDescriptionEnabled).to.equal(true);
     expect(ad.getAttribute("aria-pressed")).to.equal("true");
-    // learning mode and hide-youtube-link still hide them
-    el.hideYoutubeLink = true;
+    // learning mode hides Open on YouTube (it leaves the page) but keeps
+    // the share link the author turned on; hide-youtube-link hides it too
     el.learningMode = true;
     await el.updateComplete;
     expect(visibleLabels(headerActions(el))).to.not.include("Open on YouTube");
+    expect(visibleLabels(headerActions(el))).to.include("Copy Media Link");
+    el.learningMode = false;
+    el.hideYoutubeLink = true;
+    await el.updateComplete;
+    expect(visibleLabels(headerActions(el))).to.not.include("Open on YouTube");
+    el.linkable = false;
+    await el.updateComplete;
     expect(visibleLabels(headerActions(el))).to.not.include("Copy Media Link");
+  });
+
+  it("learning mode locks seeking in the control bar, whichever way it is set", async () => {
+    const bar = () =>
+      Array.from(
+        el.shadowRoot.querySelectorAll("#controls-left a11y-media-button"),
+      )
+        .filter((b) => !b.hidden)
+        .map((b) => b.getAttribute("label"));
+    expect(bar()).to.include.members(["Backward", "Forward"]);
+    el.learningMode = true;
+    await el.updateComplete;
+    expect(bar()).to.not.include("Backward");
+    expect(bar()).to.not.include("Forward");
+    expect(el.shadowRoot.querySelector("#slider").disabled).to.equal(true);
+    // even if something resets disable-seek, learning mode keeps the lock
+    el.disableSeek = false;
+    await el.updateComplete;
+    expect(bar()).to.not.include("Forward");
+    expect(el.shadowRoot.querySelector("#slider").disabled).to.equal(true);
   });
 
   it("header toggles report their state", async () => {

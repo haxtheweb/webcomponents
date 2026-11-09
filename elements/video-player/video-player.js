@@ -51,10 +51,13 @@ class VideoPlayer extends IntersectionObserverMixin(
           --ddd-block-chip-background: var(
             --ddd-accent-color,
             var(
-              --ddd-theme-primary,
-              light-dark(
-                var(--ddd-theme-default-beaverBlue),
-                var(--ddd-theme-default-skyBlue)
+              --video-player-accent-color,
+              var(
+                --ddd-theme-primary,
+                light-dark(
+                  var(--ddd-theme-default-beaverBlue),
+                  var(--ddd-theme-default-skyBlue)
+                )
               )
             )
           );
@@ -73,6 +76,7 @@ class VideoPlayer extends IntersectionObserverMixin(
           );
         }
         /* accent-color defaults to grey (SimpleColors): no accent picked */
+        :host(:not([accent-color])),
         :host([accent-color="grey"]),
         :host([accent-color=""]) {
           --ddd-accent-color: initial;
@@ -163,10 +167,13 @@ class VideoPlayer extends IntersectionObserverMixin(
               var(--ddd-theme-default-slateGray)
             )
           );
+          /* a local accent-color wins over the theme: themes that set
+             --video-player-accent-color (or a palette) are the level
+             below it, then the DDD default */
           --a11y-media-accent-color: var(
-            --video-player-accent-color,
+            --ddd-accent-color,
             var(
-              --ddd-accent-color,
+              --video-player-accent-color,
               var(
                 --ddd-theme-primary,
                 light-dark(

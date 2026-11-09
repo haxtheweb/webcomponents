@@ -385,6 +385,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
 
         /* accent-color defaults to grey (SimpleColors), which means no
            accent was picked: fall back to the palette / DDD default */
+        :host(:not([accent-color])),
         :host([accent-color="grey"]),
         :host([accent-color=""]),
         :host([accent-color="undefined"]),
@@ -415,7 +416,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
 
         /* header actions: neutral, round, DDD block action pattern */
         .ddd-block-action {
-          color: var(--a11y-media-hover-color);
+          color: var(--a11y-media-color);
           --simple-icon-width: var(--ddd-icon-3xs);
           --simple-icon-height: var(--ddd-icon-3xs);
         }
@@ -1200,7 +1201,9 @@ class A11yMediaPlayer extends SchemaBehaviors(
       download: noTranscript || this.disablePrintButton,
       print: noTranscript || this.disablePrintButton,
       audioDescription: !this.audioDescriptionSource,
-      copyLink: !this.linkable || this.learningMode,
+      // the share link follows linkable only (learning mode no longer
+      // hides it; it keeps the viewer on the page)
+      copyLink: !this.linkable,
       youtube: !this.isYoutube || this.learningMode || this.hideYoutubeLink,
       fullscreen: !this.fullscreenButton,
     };
@@ -1558,6 +1561,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
                         playback-rate="${this.playbackRate}"
                         @timeupdate="${this._handleTimeUpdate}"
                         @ended="${this._handleMediaEnded}"
+                        @mediastatechange="${this._handleYoutubeState}"
                       >
                       </a11y-media-youtube>
                     `
@@ -1603,7 +1607,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
             @value-changed="${this._handleSliderChanged}"
             @immediate-value-changed="${this._handleSliderDragging}"
             .value="${this.__currentTime}"
-            ?disabled="${this.disableSeek}"
+            ?disabled="${this._seekLocked}"
           >
           </simple-range-input>
           <div id="controls" class="screen-only" controls="innerplayer">
@@ -1623,8 +1627,8 @@ class A11yMediaPlayer extends SchemaBehaviors(
                 icon="av:fast-rewind"
                 label="${this.t.rewindLabel}"
                 tooltip-position="top"
-                ?disabled="${this.disableSeek || this.currentTime <= 0}"
-                ?hidden="${this.disableSeek}"
+                ?disabled="${this._seekLocked || this.currentTime <= 0}"
+                ?hidden="${this._seekLocked}"
                 @click="${(_e) => {
                   this.rewind();
                 }}"
@@ -1637,9 +1641,9 @@ class A11yMediaPlayer extends SchemaBehaviors(
                 label="${this.t.forwardLabel}"
                 tooltip-position="top"
                 ?disabled="${
-                  this.disableSeek || this.currentTime >= this.duration
+                  this._seekLocked || this.currentTime >= this.duration
                 }"
-                ?hidden="${this.disableSeek}"
+                ?hidden="${this._seekLocked}"
                 @click="${(_e) => {
                   this.forward();
                 }}"
@@ -1651,11 +1655,11 @@ class A11yMediaPlayer extends SchemaBehaviors(
                 icon="av:replay"
                 label="${this.t.restartLabel}"
                 tooltip-position="top"
-                ?disabled="${this.disableSeek}"
+                ?disabled="${this._seekLocked}"
                 ?hidden="${
                   this.responsiveSize === "xs" ||
                   this.responsiveSize === "sm" ||
-                  this.disableSeek
+                  this._seekLocked
                 }"
                 @click="${this.restart}"
               ></a11y-media-button>
@@ -1770,7 +1774,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
                               start="${this._cueTime(cue.startTime)}"
                               tabindex="${
                                 this.disableInteractive ||
-                                this.disableSeek ||
+                                this._seekLocked ||
                                 this.duration === 0
                                   ? -1
                                   : 0
@@ -1784,7 +1788,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
                               }"
                               ?disabled="${
                                 this.disableInteractive ||
-                                this.disableSeek ||
+                                this._seekLocked ||
                                 this.duration === 0
                               }"
                               ?hide-timestamps="${this.hideTimestamps}"
@@ -2549,6 +2553,15 @@ class A11yMediaPlayer extends SchemaBehaviors(
       !this.audioNoThumb &&
       this.transcriptLayout === "side"
     );
+  }
+
+  /**
+   * seeking is locked (disable-seek, or learning mode)
+   * @returns {boolean}
+   */
+  get _seekLocked() {
+    // learning mode always locks seeking, whichever way it was set
+    return !!(this.disableSeek || this.learningMode);
   }
 
   /**
@@ -4097,19 +4110,8 @@ class A11yMediaPlayer extends SchemaBehaviors(
     // reaching the end only completes the media when it was watched; the
     // last time report before the end is counted first
     this._trackWatched();
-    // the media ended while playing on into its last stretch: the seconds
-    // after the last time report were played too (the end can arrive
-    // before a report for them does)
-    if (this.__playedToEnd && this.__watched) {
-      const d = Number(this.duration);
-      const from = Math.floor(Number(this.__watchLast) || 0);
-      if (isFinite(d) && d > 0) {
-        for (let sec = from; sec <= Math.ceil(d) - 1; sec++) {
-          this.__watched.add(sec);
-        }
-        this._checkWatched();
-      }
-    }
+    // the player itself reports the end: completes when it was watched
+    this._completeAtEnd();
     if (this.loop) {
       this.seek(0);
       this.play();
@@ -4127,6 +4129,56 @@ class A11yMediaPlayer extends SchemaBehaviors(
     this.__watchLast = null;
     this.__watchSent = {};
     this.__playedToEnd = false;
+    this.__reportedEnd = false;
+  }
+
+  /**
+   * Learner data: the player stopped at its end (HTML5 ended, YouTube
+   * ENDED, or a pause / stop within the last second). The seconds after
+   * the last time report count when that report was already in the last
+   * stretch (so playing out the end counts, jumping there does not), then
+   * completion is checked; at least MEDIA_WATCH_END_MIN must be watched.
+   */
+  _completeAtEnd() {
+    if (!this.__watched) return;
+    const d = Number(this.duration);
+    if (!isFinite(d) || d <= 0) return;
+    const last = Number(this.__watchLast);
+    if (this.__watchLast !== null && isFinite(last) && this._isAtEnd(last)) {
+      for (let sec = Math.floor(last); sec <= Math.ceil(d) - 1; sec++) {
+        this.__watched.add(sec);
+      }
+    }
+    this.__reportedEnd = true;
+    this._checkWatched();
+  }
+
+  /**
+   * Learner data: the media paused or stopped; at its very end (the last
+   * second) that is the same as reaching the end
+   */
+  _handleMediaStopped() {
+    const media = this.media;
+    const t = media ? Number(media.currentTime) : NaN;
+    const d = Number(this.duration);
+    if (!isFinite(t) || !isFinite(d) || d <= 0) return;
+    if (t >= d - MEDIA_END_WINDOW_MIN) {
+      // the last report up to this point counts like any other
+      this._trackWatched(true);
+      this._completeAtEnd();
+    }
+  }
+
+  /**
+   * YouTube player state: 2 is paused (0, ended, arrives as an ended
+   * event)
+   * @param {CustomEvent} e mediastatechange from a11y-media-youtube
+   */
+  _handleYoutubeState(e) {
+    const state = e && e.detail ? e.detail.data : undefined;
+    if (state === 2) {
+      this._handleMediaStopped();
+    }
   }
 
   /**
@@ -4153,13 +4205,15 @@ class A11yMediaPlayer extends SchemaBehaviors(
    * seeking or scrubbing ahead never adds to it, and each second counts once
    * however often it is replayed. Sends the milestones when reached.
    */
-  _trackWatched() {
+  _trackWatched(stopped = false) {
     const media = this.media;
     const raw = media ? Number(media.currentTime) : 0;
     const t = isFinite(raw) && raw > 0 ? raw : 0;
     const last = this.__watchLast;
     this.__watchLast = t;
-    const playing = this.__playing || !!(media && media.paused === false);
+    // stopped: the report that comes with a pause / stop at the end
+    const playing =
+      stopped || this.__playing || !!(media && media.paused === false);
     if (!playing || this.__seeking || last === null) {
       return;
     }
@@ -4217,7 +4271,8 @@ class A11yMediaPlayer extends SchemaBehaviors(
     if (
       !sent.completed &&
       (share >= MEDIA_WATCH_DONE ||
-        (this.__playedToEnd && share >= MEDIA_WATCH_END_MIN))
+        ((this.__playedToEnd || this.__reportedEnd) &&
+          share >= MEDIA_WATCH_END_MIN))
     ) {
       // xAPI order: a completion always follows a progressed statement
       if (!sent.progressed) {
@@ -4516,6 +4571,10 @@ class A11yMediaPlayer extends SchemaBehaviors(
     // end (the last timeupdate sample before the interval clears).
     this.__loadedTracks.addEventListener("ended", (e) => {
       this._handleMediaEnded(e);
+    });
+    // a pause (or stop) at the very end counts as reaching the end
+    this.__loadedTracks.addEventListener("pause", () => {
+      this._handleMediaStopped();
     });
     /**
      * Fires player needs the size of parent container to add responsive styling
