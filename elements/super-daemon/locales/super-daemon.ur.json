@@ -38,5 +38,8 @@
   "details": "تفصیلات",
   "saved": "محفوظ ہو گیا",
   "opensInNewWindow": "نئی ونڈو میں کھلتا ہے",
-  "resultsCount": "{count} نتائج"
+  "resultsCount": "{count} نتائج",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Merlin بند کریں"
 }

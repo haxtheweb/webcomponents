@@ -38,5 +38,8 @@
   "details": "تفصیلاں",
   "saved": "خوندي شو",
   "opensInNewWindow": "په نوې کړکۍ کې پرانیستل کېږي",
-  "resultsCount": "{count} پایلې"
+  "resultsCount": "{count} پایلې",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Merlin بند کړئ"
 }

@@ -38,5 +38,8 @@
   "details": "Մանրամասներ",
   "saved": "Պահված",
   "opensInNewWindow": "Բացվում է նոր պատուհանում",
-  "resultsCount": "{count} արդյունք"
+  "resultsCount": "{count} արդյունք",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Փակել Merlin-ը"
 }

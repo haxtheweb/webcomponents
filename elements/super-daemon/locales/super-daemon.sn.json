@@ -38,5 +38,8 @@
   "details": "Matsanangurwo",
   "saved": "Yakachengetwa",
   "opensInNewWindow": "Inovhura muhwindo idzva",
-  "resultsCount": "Mhedzisiro {count}"
+  "resultsCount": "Mhedzisiro {count}",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Vhara Merlin"
 }

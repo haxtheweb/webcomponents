@@ -287,7 +287,7 @@
       "t": 4.8,
       "out": 9.2,
       "title": "Open Configure",
-      "text": "Configure (Ctrl+Shift+4) shows that block's settings."
+      "text": "Configure (Ctrl+Shift+5) shows that block's settings."
     },
     {
       "t": 9.4,
@@ -305,7 +305,7 @@
   "end": {
     "in": 18.8,
     "line": "Select, configure, done.",
-    "code": "Ctrl+Shift+4"
+    "code": "Ctrl+Shift+5"
   },
   "surfaceHash": "6352c14b1376",
   "review": {

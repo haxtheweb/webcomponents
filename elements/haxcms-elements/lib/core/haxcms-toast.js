@@ -4,6 +4,7 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import {
   HaxUiAdminTokens,
   HaxUiAdminPrimitives,
+  HaxUiDarkChromeDeclarations,
 } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
 import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminIcons.js";
 import { DDDStatusTokens } from "@haxtheweb/d-d-d/lib/DDDStatusTokens.js";
@@ -139,22 +140,8 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
           padding: 0;
           box-sizing: border-box;
           /* HAX UI dark in every theme, the same surface as the top bar
-             it drops from (the hax-ui-styles dark theme values) */
-          color-scheme: dark;
-          --hax-ui-color-scheme: dark;
-          --hax-ui-color: var(--ddd-theme-default-white, #ffffff);
-          --hax-ui-color-focus: var(--ddd-theme-default-white, #ffffff);
-          --hax-ui-color-faded: #c5c3be;
-          --hax-ui-background-color: var(--ddd-theme-default-coalyGray);
-          --hax-ui-background-color-secondary: #111;
-          --hax-ui-background-color-faded: #222;
-          --hax-ui-color-accent: #00c9ff;
-          --hax-ui-color-accent-secondary: #00c9ff;
-          --hax-ui-background-color-accent: #000;
-          --hax-ui-color-danger: #ff8f8f;
-          --hax-ui-color-danger-secondary: #ff2222;
-          --hax-ui-background-color-danger: #000;
-          --hax-ui-border-color: #000;
+             it drops from */
+          ${HaxUiDarkChromeDeclarations}
           font-family: var(--hax-ui-admin-font-family);
           font-size: var(--hax-ui-admin-font-size);
           text-align: left;

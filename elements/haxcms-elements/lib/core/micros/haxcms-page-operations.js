@@ -216,8 +216,6 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
           align-horizontal="left"
           show-text-label
           label="${this.t.siteOutline}"
-          shortcut-label="${this._shortcut("cms-outline").label}"
-          key-shortcuts="${this._shortcut("cms-outline").aria}"
           @click=${this._openSiteOutline}
         ></simple-toolbar-button>
         ${

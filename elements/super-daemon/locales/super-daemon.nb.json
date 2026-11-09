@@ -38,5 +38,8 @@
   "details": "Detaljer",
   "saved": "Lagret",
   "opensInNewWindow": "Åpnes i et nytt vindu",
-  "resultsCount": "{count} resultater"
+  "resultsCount": "{count} resultater",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Lukk Merlin"
 }

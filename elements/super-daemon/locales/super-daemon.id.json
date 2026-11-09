@@ -38,5 +38,8 @@
   "details": "Detail",
   "saved": "Tersimpan",
   "opensInNewWindow": "Terbuka di jendela baru",
-  "resultsCount": "{count} hasil"
+  "resultsCount": "{count} hasil",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Tutup Merlin"
 }

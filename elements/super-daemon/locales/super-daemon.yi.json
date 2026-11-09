@@ -38,5 +38,8 @@
   "details": "פּרטים",
   "saved": "געהיט",
   "opensInNewWindow": "עפֿנט זיך אין אַ נײַעם פֿענצטער",
-  "resultsCount": "{count} רעזולטאַטן"
+  "resultsCount": "{count} רעזולטאַטן",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "פֿאַרמאַך Merlin"
 }

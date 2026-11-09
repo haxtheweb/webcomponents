@@ -38,5 +38,8 @@
   "details": "বিস্তারিত",
   "saved": "সংরক্ষিত",
   "opensInNewWindow": "নতুন উইন্ডোতে খোলে",
-  "resultsCount": "{count}টি ফলাফল"
+  "resultsCount": "{count}টি ফলাফল",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Merlin বন্ধ করুন"
 }

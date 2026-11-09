@@ -38,5 +38,8 @@
   "details": "Detaļas",
   "saved": "Saglabāts",
   "opensInNewWindow": "Atveras jaunā logā",
-  "resultsCount": "Rezultāti: {count}"
+  "resultsCount": "Rezultāti: {count}",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Aizvērt Merlin"
 }

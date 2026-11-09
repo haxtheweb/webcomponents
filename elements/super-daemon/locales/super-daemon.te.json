@@ -38,5 +38,8 @@
   "details": "వివరాలు",
   "saved": "సేవ్ చేయబడింది",
   "opensInNewWindow": "కొత్త విండోలో తెరుచుకుంటుంది",
-  "resultsCount": "{count} ఫలితాలు"
+  "resultsCount": "{count} ఫలితాలు",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Merlin మూసివేయండి"
 }

@@ -23,7 +23,11 @@ import { openCharacterBuilder } from "./ui/app-hax-user-menu-toggle.js";
 import "./ui/hax-confirm-dialog.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminIcons.js";
-import { HaxUiAdminTokens } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
+import {
+  HaxUiAdminTokens,
+  HaxUiDarkChromeDeclarations,
+  HAX_UI_DARK_CHROME,
+} from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
 import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
 import "@haxtheweb/super-daemon/lib/super-daemon-search.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
@@ -93,26 +97,6 @@ const ADMIN_ROUTE_PATHS = new Set(Object.keys(ADMIN_ROUTE_QUERY_PATHS));
  * @demo demo/index.html
  * @microcopy - the mental model for this element
  */
-// HAX UI dark, the same values hax-ui-styles uses for its dark theme. The
-// top bar and the Merlin popover it opens wear it whatever theme is on, so
-// nothing on the bar flips between light and dark.
-const MERLIN_DARK = {
-  "color-scheme": "dark",
-  "--hax-ui-color-scheme": "dark",
-  "--hax-ui-color": "#ffffff",
-  "--hax-ui-color-focus": "#ffffff",
-  "--hax-ui-color-faded": "#c5c3be",
-  "--hax-ui-background-color": "var(--ddd-theme-default-coalyGray, #262626)",
-  "--hax-ui-background-color-secondary": "#111",
-  "--hax-ui-background-color-faded": "#222",
-  "--hax-ui-color-accent": "#00c9ff",
-  "--hax-ui-color-accent-secondary": "#00c9ff",
-  "--hax-ui-background-color-accent": "#000",
-  "--hax-ui-color-danger": "#ff8f8f",
-  "--hax-ui-color-danger-secondary": "#ff2222",
-  "--hax-ui-background-color-danger": "#000",
-  "--hax-ui-border-color": "#000",
-};
 
 class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   HAXCMSI18NMixin(winEventsElement(ResponsiveUtilityBehaviors(DDD))),
@@ -323,20 +307,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           /* the bar and everything in it (menus, Merlin, the edit tools) is
              HAX UI dark whatever theme the page or the HAX UI uses, so
              nothing on it flips between light and dark */
-          --hax-ui-color-scheme: dark;
-          --hax-ui-color: var(--ddd-theme-default-white, #ffffff);
-          --hax-ui-color-focus: var(--ddd-theme-default-white, #ffffff);
-          --hax-ui-color-faded: #c5c3be;
-          --hax-ui-background-color: var(--ddd-theme-default-coalyGray);
-          --hax-ui-background-color-secondary: #111;
-          --hax-ui-background-color-faded: #222;
-          --hax-ui-color-accent: #00c9ff;
-          --hax-ui-color-accent-secondary: #00c9ff;
-          --hax-ui-background-color-accent: #000;
-          --hax-ui-color-danger: #ff8f8f;
-          --hax-ui-color-danger-secondary: #ff2222;
-          --hax-ui-background-color-danger: #000;
-          --hax-ui-border-color: #000;
+          ${HaxUiDarkChromeDeclarations}
           /* your character's frame: the same dark well as Merlin's field */
           --app-hax-user-menu-toggle-background: #111;
           --app-hax-user-menu-toggle-background-hover: #222;
@@ -2152,15 +2123,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       shortcutSavePageAndExitEditMode: "Save page and exit edit mode",
       shortcutEnterEditMode: "Enter edit mode",
       shortcutCancelEditing: "Cancel editing",
-      shortcutViewSourceOrEditPage: "View source (edit) / Edit page (view)",
-      shortcutPageStructureOrPageActions:
-        "Page structure (edit) / Page actions (view)",
-      shortcutBlocksBrowserOrAddPage: "Blocks browser (edit) / Add page (view)",
-      shortcutConfigurePanelOrOutlineActions:
-        "Configure panel (edit) / Site outline actions (view)",
-      shortcutOpenSiteOutlineDesigner: "Open site outline designer",
-      shortcutOpenSiteSettingsMenu: "Open site settings menu",
       shortcutOpenUserMenu: "Open user menu",
+      shortcutViewSourceOrSiteSettings:
+        "View source (edit) / Site settings menu (view)",
+      shortcutPageStructureOrAddPage: "Page structure (edit) / Add page (view)",
+      shortcutBlocksBrowserOrEditPage:
+        "Blocks browser (edit) / Edit page (view)",
+      shortcutConfigurePanelOrPageActions:
+        "Configure panel (edit) / Page actions (view)",
+      shortcutSiteOutlineActions: "Site outline actions",
       shortcutJumpBetweenTextAndTray:
         "Jump between text editing and tray options",
       pageLockedCannotEdit:
@@ -2192,7 +2163,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       platformSettings: "Platform settings",
       selectFileEllipsis: "Select file..",
     };
-    this._configureWasFocused = false; // Track toggle state for Ctrl+Shift+4
+    this._configureWasFocused = false; // Track toggle state for Ctrl+Shift+5
     this.__themePreviewReady = false;
     this.themePreviewOpen = false;
     this.themePreviewCollapsed = false;
@@ -3479,7 +3450,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         route: "structure",
         label: this.t.siteMenuStructure,
         description: this.t.siteMenuStructureDescription,
-        shortcut: "Ctrl⇧5",
         icon: HaxUiAdminIcons.structure,
       },
       {
@@ -3536,6 +3506,16 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     }
     e.preventDefault();
     e.stopPropagation();
+    this._openSiteMenuFromKeyboard();
+  }
+  /**
+   * Open the site settings quick links with the first one focused, the
+   * way ArrowDown on the house and Ctrl+Shift+2 do.
+   */
+  _openSiteMenuFromKeyboard() {
+    if (this.editMode) {
+      return;
+    }
     this.siteMenuOpen = true;
     this.userMenuOpen = false;
     this.updateComplete.then(() => {
@@ -3625,7 +3605,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             part="app-hax-user-menu"
             align="start"
             label="${this.userName}"
-            shortcut="Ctrl⇧7"
+            shortcut="Ctrl⇧1"
             data-menu="user"
             ?is-open="${this.userMenuOpen}"
             @is-open-changed="${this._userMenuOpenChanged}"
@@ -3746,7 +3726,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               part="site-menu"
               align="start"
               label="${this.t.siteSettings}"
-              shortcut="Ctrl⇧6"
+              shortcut="Ctrl⇧2"
               data-menu="site"
               ?hidden="${this.editMode}"
               ?is-open="${this.siteMenuOpen}"
@@ -3766,7 +3746,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 aria-haspopup="true"
                 aria-expanded="${this.siteMenuOpen ? "true" : "false"}"
                 ?disabled="${this.editMode}"
-                label="${this.t.siteSettings} • Ctrl⇧6"
+                label="${this.t.siteSettings} • Ctrl⇧2"
               ></simple-toolbar-button>
               ${this.siteMenuItems.map(
                 (item) =>
@@ -3805,7 +3785,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               id="exportbtn"
               role="menuitem"
               icon="hax:html-code"
-              label="${this.t.viewSource} • Ctrl⇧1"
+              label="${this.t.viewSource} • Ctrl⇧2"
               data-event="view-source"
               class="top-bar-button"
               @click="${this.haxButtonOp}"
@@ -3824,7 +3804,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               icon="editor:format-line-spacing"
               id="content-map"
               class="top-bar-button"
-              label="${this.t.pageOutline} • Ctrl⇧2"
+              label="${this.t.pageOutline} • Ctrl⇧3"
               voice-command="select content outline (menu)"
               @click="${this.haxButtonOp}"
               ?active="${this.trayDetail === "content-map"}"
@@ -3839,7 +3819,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               icon="hax:add-brick"
               id="content-add"
               class="top-bar-button"
-              label="${this.t.addBlock} • Ctrl⇧3"
+              label="${this.t.addBlock} • Ctrl⇧4"
               voice-command="select blocks (menu)"
               ?active="${this.trayDetail === "content-add"}"
               icon-position="${this.getIconPosition(this.responsiveSize)}"
@@ -3852,7 +3832,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               class="top-bar-button"
               @click="${this.haxButtonOp}"
               id="content-edit"
-              label="${this.t.configureBlock} • Ctrl⇧4"
+              label="${this.t.configureBlock} • Ctrl⇧5"
               ?hidden="${!this.editMode}"
               ?disabled="${
                 !this.activeTagName ||
@@ -4114,8 +4094,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     const search = this.shadowRoot.querySelector("#search");
     const sdStyle = SuperDaemonInstance.style;
     const rect = search ? search.getBoundingClientRect() : null;
-    Object.keys(MERLIN_DARK).forEach((name) => {
-      sdStyle.setProperty(name, MERLIN_DARK[name]);
+    Object.keys(HAX_UI_DARK_CHROME).forEach((name) => {
+      sdStyle.setProperty(name, HAX_UI_DARK_CHROME[name]);
     });
     if (!rect || rect.width === 0) {
       sdStyle.removeProperty("--super-daemon-search-width");
@@ -4500,7 +4480,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       ),
       icon: "hax:site-settings",
       tags: ["CMS", "admin", "site", "settings", "operation", "command"],
-      // Links this Merlin option to the Ctrl+Shift+6 binding registered in
+      // Links this Merlin option to the Ctrl+Shift+2 binding registered in
       // _registerKeyboardShortcuts via the shared shortcut registry.
       shortcut: "cms-site-settings",
       value: {
@@ -4819,9 +4799,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           "command",
           "structure",
         ],
-        // Links this Merlin option to the Ctrl+Shift+5 binding registered in
-        // _registerKeyboardShortcuts via the shared shortcut registry.
-        shortcut: "cms-outline",
         value: {
           target: this,
           method: "_outlineButtonTap",
@@ -4931,7 +4908,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         title: this.t.editSiteOutline,
         icon: "hax:site-map",
         tags: ["welcome", "common", "operation"],
-        shortcut: "cms-outline",
         value: {
           target: this,
           method: "executeWelcomeAction",
@@ -6573,7 +6549,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     globalThis.removeEventListener("resize", this.__boundSyncMerlinPopover);
     if (SuperDaemonInstance && SuperDaemonInstance.style) {
       [
-        ...Object.keys(MERLIN_DARK),
+        ...Object.keys(HAX_UI_DARK_CHROME),
         "--super-daemon-search-width",
         "--super-daemon-width",
       ].forEach((name) => SuperDaemonInstance.style.removeProperty(name));
@@ -6859,13 +6835,34 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       context: "edit",
     });
 
-    // Numbered shortcuts - contextual based on edit mode
-    // Ctrl+Shift+1 - View source (edit) OR Edit page (non-edit)
+    // Numbered shortcuts follow the bar, left to right, in both modes:
+    //   view: 1 User menu, 2 Site settings, 3 Add page, 4 Edit,
+    //         5 Page actions, 6 Site outline actions
+    //   edit: 1 User menu, 2 Source, 3 Structure, 4 Blocks, 5 Configure
+    // Ctrl+Shift+1 - User menu (both modes)
     HAXCMSKeyboardShortcutsInstance.register({
+      id: "cms-user-menu",
       key: "1",
       ctrl: true,
       shift: true,
-      callback: (e) => {
+      callback: () => {
+        const userMenuButton = this.shadowRoot.querySelector("#menubtn");
+        if (userMenuButton) {
+          this.toggleMenu();
+        }
+      },
+      condition: () => store.isLoggedIn,
+      description: this.t.shortcutOpenUserMenu,
+      context: "global",
+    });
+
+    // Ctrl+Shift+2 - View source (edit) OR Site settings menu (view)
+    HAXCMSKeyboardShortcutsInstance.register({
+      id: "cms-site-settings",
+      key: "2",
+      ctrl: true,
+      shift: true,
+      callback: () => {
         if (this.editMode) {
           // Edit mode: View source
           if (HAXStore.haxTray) {
@@ -6880,18 +6877,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             }
           }
         } else {
-          // Non-edit mode: Edit page
-          this._editButtonTap(e);
+          // Non-edit mode: the site settings quick links, first one focused
+          this._openSiteMenuFromKeyboard();
         }
       },
       condition: () => store.isLoggedIn,
-      description: this.t.shortcutViewSourceOrEditPage,
+      description: this.t.shortcutViewSourceOrSiteSettings,
       context: "global",
     });
 
-    // Ctrl+Shift+2 - Page structure (edit) OR Page actions (non-edit)
+    // Ctrl+Shift+3 - Page structure (edit) OR Add page (view)
     HAXCMSKeyboardShortcutsInstance.register({
-      key: "2",
+      id: "cms-add-page",
+      key: "3",
       ctrl: true,
       shift: true,
       callback: (_e) => {
@@ -6906,35 +6904,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             }
           }
         } else {
-          // Non-edit mode: Page actions
-          if (store.platformAllows("pageBreak")) {
-            this._triggerPageActionsShortcut();
-          }
-        }
-      },
-      condition: () => store.isLoggedIn,
-      description: this.t.shortcutPageStructureOrPageActions,
-      context: "global",
-    });
-
-    // Ctrl+Shift+3 - Blocks browser (edit) OR Add page (non-edit)
-    HAXCMSKeyboardShortcutsInstance.register({
-      id: "cms-add-page",
-      key: "3",
-      ctrl: true,
-      shift: true,
-      callback: (_e) => {
-        if (this.editMode) {
-          // Edit mode: Blocks browser
-          if (HAXStore.haxTray) {
-            if (HAXStore.haxTray.trayDetail === "content-add") {
-              HAXStore.haxTray.collapsed = !HAXStore.haxTray.collapsed;
-            } else {
-              HAXStore.haxTray.trayDetail = "content-add";
-              HAXStore.haxTray.collapsed = false;
-            }
-          }
-        } else {
           // Non-edit mode: Add page
           if (store.platformAllows("addPage")) {
             const addButton = this.shadowRoot.querySelector("#addpagebutton");
@@ -6945,12 +6914,39 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         }
       },
       condition: () => store.isLoggedIn,
-      description: this.t.shortcutBlocksBrowserOrAddPage,
+      description: this.t.shortcutPageStructureOrAddPage,
       context: "global",
     });
-    // Ctrl+Shift+4 - Configure panel (edit) OR Site outline actions (non-edit)
+
+    // Ctrl+Shift+4 - Blocks browser (edit) OR Edit page (view)
     HAXCMSKeyboardShortcutsInstance.register({
       key: "4",
+      ctrl: true,
+      shift: true,
+      callback: (e) => {
+        if (this.editMode) {
+          // Edit mode: Blocks browser
+          if (HAXStore.haxTray) {
+            if (HAXStore.haxTray.trayDetail === "content-add") {
+              HAXStore.haxTray.collapsed = !HAXStore.haxTray.collapsed;
+            } else {
+              HAXStore.haxTray.trayDetail = "content-add";
+              HAXStore.haxTray.collapsed = false;
+            }
+          }
+        } else if (this.pageAllowed) {
+          // Non-edit mode: Edit page
+          this._editButtonTap(e);
+        }
+      },
+      condition: () => store.isLoggedIn,
+      description: this.t.shortcutBlocksBrowserOrEditPage,
+      context: "global",
+    });
+
+    // Ctrl+Shift+5 - Configure panel (edit) OR Page actions (view)
+    HAXCMSKeyboardShortcutsInstance.register({
+      key: "5",
       ctrl: true,
       shift: true,
       callback: (_e) => {
@@ -6961,65 +6957,29 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             HAXStore.haxTray.collapsed = false;
           }
         } else {
-          // Non-edit mode: Site outline actions
-          if (store.platformAllows("outlineDesigner")) {
-            this._triggerOutlineActionsShortcut();
+          // Non-edit mode: Page actions
+          if (store.platformAllows("pageBreak")) {
+            this._triggerPageActionsShortcut();
           }
         }
       },
       condition: () => store.isLoggedIn,
-      description: this.t.shortcutConfigurePanelOrOutlineActions,
+      description: this.t.shortcutConfigurePanelOrPageActions,
       context: "global",
     });
 
-    // Ctrl+Shift+5 - Outline designer (view mode)
+    // Ctrl+Shift+6 - Site outline actions (view mode)
     HAXCMSKeyboardShortcutsInstance.register({
-      id: "cms-outline",
-      key: "5",
-      ctrl: true,
-      shift: true,
-      callback: (e) => {
-        this._outlineButtonTap(e);
-      },
-      condition: () =>
-        store.isLoggedIn &&
-        !this.editMode &&
-        store.platformAllows("outlineDesigner"),
-      description: this.t.shortcutOpenSiteOutlineDesigner,
-      context: "view",
-    });
-
-    // Ctrl+Shift+6 - Site settings (view mode)
-    HAXCMSKeyboardShortcutsInstance.register({
-      id: "cms-site-settings",
       key: "6",
       ctrl: true,
       shift: true,
       callback: () => {
-        const siteSettingsButton =
-          this.shadowRoot.querySelector("#manifestbtn");
-        if (siteSettingsButton && !siteSettingsButton.disabled) {
-          this._manifestButtonTap({ target: siteSettingsButton });
+        if (store.platformAllows("outlineDesigner")) {
+          this._triggerOutlineActionsShortcut();
         }
       },
       condition: () => store.isLoggedIn && !this.editMode,
-      description: this.t.shortcutOpenSiteSettingsMenu,
-      context: "view",
-    });
-
-    // Ctrl+Shift+7 - User menu (view mode)
-    HAXCMSKeyboardShortcutsInstance.register({
-      key: "7",
-      ctrl: true,
-      shift: true,
-      callback: () => {
-        const userMenuButton = this.shadowRoot.querySelector("#menubtn");
-        if (userMenuButton) {
-          this.toggleMenu();
-        }
-      },
-      condition: () => store.isLoggedIn && !this.editMode,
-      description: this.t.shortcutOpenUserMenu,
+      description: this.t.shortcutSiteOutlineActions,
       context: "view",
     });
 

@@ -38,5 +38,8 @@
   "details": "ਵੇਰਵੇ",
   "saved": "ਸੰਭਾਲਿਆ",
   "opensInNewWindow": "ਨਵੀਂ ਵਿੰਡੋ ਵਿੱਚ ਖੁੱਲ੍ਹਦਾ ਹੈ",
-  "resultsCount": "{count} ਨਤੀਜੇ"
+  "resultsCount": "{count} ਨਤੀਜੇ",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Merlin ਬੰਦ ਕਰੋ"
 }

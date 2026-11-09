@@ -38,5 +38,8 @@
   "details": "Sonraí",
   "saved": "Sábháilte",
   "opensInNewWindow": "Osclaíonn sé i bhfuinneog nua",
-  "resultsCount": "{count} toradh"
+  "resultsCount": "{count} toradh",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Dún Merlin"
 }

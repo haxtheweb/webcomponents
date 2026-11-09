@@ -38,5 +38,8 @@
   "details": "დეტალები",
   "saved": "შენახულია",
   "opensInNewWindow": "იხსნება ახალ ფანჯარაში",
-  "resultsCount": "{count} შედეგი"
+  "resultsCount": "{count} შედეგი",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Merlin-ის დახურვა"
 }

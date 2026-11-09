@@ -63,46 +63,33 @@ options all share a single descriptor shape and source of truth.
 
 ## Available Shortcuts
 
-### General Operations
-
-| Shortcut | Action | Context | Description |
-|----------|--------|---------|-------------|
-| `Ctrl+Shift+E` | Enter Edit Mode | View Mode | Enter edit mode for the current page |
-| `Ctrl+Shift+S` | Save Page | Edit Mode | Save page content and exit edit mode |
-
-### Site Management
-
-| Shortcut | Action | Context | Description |
-|----------|--------|---------|-------------|
-| `Ctrl+Shift+M` | Site Settings | View Mode | Open site settings/manifest dialog |
-| `Ctrl+Shift+O` | Outline Designer | View Mode | Open outline/site structure dialog |
-| `Ctrl+Shift+[` | New Page | View Mode | Create a new page (changed from N to avoid Chrome conflict) |
-
-### Edit Mode Operations
-
-| Shortcut | Action | Context | Description |
-|----------|--------|---------|-------------|
-| `Ctrl+Shift+Z` | Undo | Edit Mode | Undo the last change |
-| `Ctrl+Shift+Y` | Redo | Edit Mode | Redo the last undone change |
-| `Ctrl+Shift+B` | Block Browser | Edit Mode | Open the block/element browser |
-
 ### Numbered Shortcuts
 
-Numbered shortcuts are contextual and prioritize view-mode actions from left to right in the site editor UI:
+The numbers follow the top bar from left to right, in both modes. Ctrl+Shift+1
+is always your user menu (the first thing on the bar); the rest are what sits
+after it in that mode.
+
+| Shortcut | View mode | Edit mode |
+|----------|-----------|-----------|
+| `Ctrl+Shift+1` | User menu | User menu |
+| `Ctrl+Shift+2` | Site settings quick links (first link focused) | View source |
+| `Ctrl+Shift+3` | Add page | Page structure |
+| `Ctrl+Shift+4` | Edit page | Blocks browser |
+| `Ctrl+Shift+5` | Page actions menu | Configure panel |
+| `Ctrl+Shift+6` | Site outline actions menu | (none) |
+
+The outline designer is the Structure link in the site settings quick links
+(Ctrl+Shift+2, then Structure).
+
+### Letter Shortcuts
 
 | Shortcut | Action | Context | Description |
 |----------|--------|---------|-------------|
-| `Ctrl+Shift+1` | Edit page | View Mode | Enter edit mode for the current page |
-| `Ctrl+Shift+2` | Page actions | View Mode | Open page actions menu |
-| `Ctrl+Shift+3` | Create page | View Mode | Open add page flow |
-| `Ctrl+Shift+4` | Site outline actions | View Mode | Open outline actions menu |
-| `Ctrl+Shift+5` | Outline designer | View Mode | Open site outline designer |
-| `Ctrl+Shift+6` | Site settings | View Mode | Open site settings/manifest dialog |
-| `Ctrl+Shift+7` | User menu | View Mode | Open user account menu |
-| `Ctrl+Shift+1` | View Source | Edit Mode | Toggle HTML source view |
-| `Ctrl+Shift+2` | Structure | Edit Mode | Open page structure/content map |
-| `Ctrl+Shift+3` | Blocks | Edit Mode | Open blocks browser |
-| `Ctrl+Shift+4` | Configure | Edit Mode | Open configure panel |
+| `Ctrl+Shift+E` | Enter edit mode | View Mode | Enter edit mode for the current page (same as Ctrl+Shift+4) |
+| `Ctrl+Shift+S` | Save page | Edit Mode | Save page content and exit edit mode |
+| `Ctrl+Shift+/` | Cancel editing | Edit Mode | Leave edit mode without saving |
+| `Ctrl+Shift+'` | Text / tray | Edit Mode | Jump between text editing and the tray |
+| `Ctrl+Shift+Z` | Redo | Edit Mode | Redo the last undone change (Ctrl+Z undoes) |
 
 ## Super Daemon Integration
 
