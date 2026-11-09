@@ -179,11 +179,6 @@
       "count": 1
     }
   },
-  "elements/hal-9000/hal-9000.js": {
-    "eqeqeq": {
-      "count": 5
-    }
-  },
   "elements/hax-body-behaviors/lib/HAXWiring.js": {
     "eqeqeq": {
       "count": 7
