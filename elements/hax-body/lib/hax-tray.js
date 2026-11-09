@@ -8,6 +8,7 @@ import {
   wipeSlot,
   normalizeEventPath,
   localStorageSet,
+  sanitizeHTMLString,
 } from "@haxtheweb/utils/utils.js";
 import {
   HaxSchematizer,
@@ -1650,7 +1651,8 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
       // build a fake tree, then walk the configuration / Settings
       // looking for slot types
       let tmp = globalThis.document.createElement("div");
-      tmp.innerHTML = this.activeHaxElement.content;
+      // security: parse a sanitized copy, this is a live element
+      tmp.innerHTML = sanitizeHTMLString(this.activeHaxElement.content);
       // step through each key
       tmp.childNodes.forEach((el) => {
         // ensure we have a dom node and it isnt empty
@@ -2006,7 +2008,10 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
               // write as HTML so nested elements survive instead of being
               // coerced into a text node the way innerText would.
               else if (prop === "innerHTML") {
-                this.activeNode.innerHTML = settings[key][prop];
+                // security: form value is author-typed HTML, sanitize it
+                this.activeNode.innerHTML = sanitizeHTMLString(
+                  settings[key][prop],
+                );
                 setAhead = true;
               }
               // try and set the pop directly if it is a prop already set
@@ -2099,7 +2104,8 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
                       tmpel.slot =
                         this.__activePropSchema.settings[key][propTmp].slot;
                     }
-                    tmpel.innerHTML = settings[key][prop];
+                    // security: slot values are author-typed HTML
+                    tmpel.innerHTML = sanitizeHTMLString(settings[key][prop]);
                     const cloneIt = tmpel.cloneNode(true);
                     setAhead = true;
                     // inject the slotted content but use text nodes if this is a text element

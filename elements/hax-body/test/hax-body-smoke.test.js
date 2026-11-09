@@ -106,3 +106,23 @@ describe("hax-tray-upload smoke + a11y baseline", () => {
     await expect(el).to.be.accessible();
   });
 });
+
+describe("hax-body haxInsert sanitizing", () => {
+  it("strips inline handlers and javascript: URLs from inserted content", async () => {
+    const el = await fixture(html`<hax-body></hax-body>`);
+    await el.updateComplete;
+    const node = el.haxInsert(
+      "p",
+      '<img src="x" onerror="globalThis.__haxInsertXSS = 1"> <a href="javascript:void(0)">x</a> <strong data-keep="1">ok</strong>',
+      {},
+    );
+    expect(node).to.exist;
+    expect(node.querySelector("[onerror]")).to.equal(null);
+    expect(node.querySelector("a").hasAttribute("href")).to.equal(false);
+    expect(node.querySelector("strong").getAttribute("data-keep")).to.equal(
+      "1",
+    );
+    await new Promise((r) => setTimeout(r, 100));
+    expect(globalThis.__haxInsertXSS).to.equal(undefined);
+  });
+});
