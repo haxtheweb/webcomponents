@@ -3,6 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css, svg } from "lit";
+import { whenIdle } from "@haxtheweb/utils/lib/idle.js";
+// draw the art when the character is this close to the screen (px)
+const IN_VIEW_MARGIN = 400;
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import {
   encodeCharacter,
@@ -367,6 +370,9 @@ class RpgCharacter extends SimpleColors {
    */
   constructor() {
     super();
+    // without IntersectionObserver (server rendering, old browsers) the
+    // art is drawn right away, as before
+    this.__inView = typeof globalThis.IntersectionObserver !== "function";
     this.literalseed = false;
     this.height = 142;
     this.width = 113;
@@ -584,6 +590,84 @@ class RpgCharacter extends SimpleColors {
     }
   }
   /**
+   * The character's art is 7 to 15 separate SVG files. Draw it (and fetch
+   * them) only once the character is on or near the screen; until then the
+   * wrapper keeps its exact size so nothing around it moves.
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    if (this.__inView || this.__inViewObserver) {
+      return;
+    }
+    this.__inViewObserver = new globalThis.IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          this.__confirmInView();
+        }
+      },
+      { rootMargin: `${IN_VIEW_MARGIN}px` },
+    );
+    this.__inViewObserver.observe(this);
+  }
+  /**
+   * While a page is still being built a character can look on screen for a
+   * moment before the content above it renders and pushes it down. Check
+   * again once the browser is idle (layout has settled) before drawing.
+   */
+  __confirmInView() {
+    if (this.__inViewCheck) {
+      return;
+    }
+    // the page is still loading: its layout is not final yet
+    if (
+      globalThis.document.readyState !== "complete" &&
+      globalThis.addEventListener
+    ) {
+      const onLoad = () => {
+        this.__inViewCheck = null;
+        this.__confirmInView();
+      };
+      globalThis.addEventListener("load", onLoad, { once: true });
+      this.__inViewCheck = () => globalThis.removeEventListener("load", onLoad);
+      return;
+    }
+    this.__inViewCheck = whenIdle(
+      () => {
+        this.__inViewCheck = null;
+        if (this.__inView || !this.isConnected) {
+          return;
+        }
+        const box = this.getBoundingClientRect();
+        const height =
+          globalThis.innerHeight ||
+          globalThis.document.documentElement.clientHeight;
+        if (
+          box.bottom >= -IN_VIEW_MARGIN &&
+          box.top <= height + IN_VIEW_MARGIN
+        ) {
+          this.__inView = true;
+          this.__stopInViewObserver();
+          this.requestUpdate();
+        }
+      },
+      { timeout: 1000, fallbackDelay: 100 },
+    );
+  }
+  disconnectedCallback() {
+    this.__stopInViewObserver();
+    super.disconnectedCallback();
+  }
+  __stopInViewObserver() {
+    if (this.__inViewCheck) {
+      this.__inViewCheck();
+      this.__inViewCheck = null;
+    }
+    if (this.__inViewObserver) {
+      this.__inViewObserver.disconnect();
+      this.__inViewObserver = null;
+    }
+  }
+  /**
    * Effective value of a string or boolean slot: an explicit attribute wins,
    * then the character code, otherwise "none" (false for boolean slots).
    */
@@ -663,6 +747,12 @@ class RpgCharacter extends SimpleColors {
    * LitElement render callback
    */
   render() {
+    if (!this.__inView) {
+      return html`<div
+        class="wrapper"
+        style="width: ${this.width}px; height: ${this.height}px;"
+      ></div>`;
+    }
     this.__clipCount = 0;
     const preset = this._preset();
     const hasPreset = Object.keys(presets).includes(preset);
@@ -883,19 +973,30 @@ class RpgCharacter extends SimpleColors {
     </svg>`;
   }
 
+  /**
+   * Demo mode randomizes the character on click. The wrapper is drawn again
+   * once the character comes into view, so the listener follows whichever
+   * wrapper is current.
+   */
+  _syncDemoListener() {
+    const wrapper = this.shadowRoot
+      ? this.shadowRoot.querySelector(".wrapper")
+      : null;
+    if (this.__demoWrapper && (this.__demoWrapper !== wrapper || !this.demo)) {
+      this.__demoWrapper.removeEventListener("click", this._demoClickHandler);
+      this.__demoWrapper = null;
+    }
+    if (this.demo && wrapper && !this.__demoWrapper) {
+      wrapper.addEventListener("click", this._demoClickHandler);
+      this.__demoWrapper = wrapper;
+    }
+  }
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
     }
+    this._syncDemoListener();
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "demo") {
-        const wrapper = this.shadowRoot.querySelector(".wrapper");
-        if (wrapper && this[propName]) {
-          wrapper.addEventListener("click", this._demoClickHandler);
-        } else if (wrapper) {
-          wrapper.removeEventListener("click", this._demoClickHandler);
-        }
-      }
       if (
         (propName === "leg" || propName === "walking") &&
         this.walking &&

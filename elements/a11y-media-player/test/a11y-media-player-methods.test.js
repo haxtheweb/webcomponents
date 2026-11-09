@@ -241,6 +241,10 @@ describe("a11y-media-player playback methods", () => {
       html`<a11y-media-player youtube-id="abc123"></a11y-media-player>`,
     );
     await yt.updateComplete;
+    // the YouTube player is created on idle after the player is ready
+    await waitUntil(() => yt.youtube, "youtube player created", {
+      timeout: 6000,
+    });
     yt.setVolume(150);
     await yt.updateComplete;
     expect(yt.volume).to.equal(100);

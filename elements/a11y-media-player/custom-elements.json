@@ -1148,6 +1148,26 @@
             },
             {
               "kind": "field",
+              "name": "__youtubeWanted",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "__youtubeWanted"
+            },
+            {
+              "kind": "field",
+              "name": "__youtubePlayOnLoad",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "__youtubePlayOnLoad"
+            },
+            {
+              "kind": "field",
               "name": "audioOnly",
               "privacy": "public",
               "type": {
@@ -1901,6 +1921,22 @@
               },
               "default": "false",
               "fieldName": "__playerReady"
+            },
+            {
+              "name": "__youtubeWanted",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "__youtubeWanted"
+            },
+            {
+              "name": "__youtubePlayOnLoad",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "__youtubePlayOnLoad"
             },
             {
               "name": "allow-concurrent",

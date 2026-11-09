@@ -410,7 +410,12 @@ describe("media-image shared toolchain", () => {
       const ddd = DesignSystemManager.systems.ddd;
       DesignSystemManager.applyDesignSystem(ddd, ddd);
       const fonts = globalThis.document.head.querySelectorAll("[data-ds]");
-      expect(fonts).to.have.lengthOf(3);
+      // DDD's three Google Fonts families load through one merged request
+      expect(fonts).to.have.lengthOf(1);
+      const href = fonts[0].getAttribute("href");
+      expect(href).to.contain("family=Roboto:");
+      expect(href).to.contain("family=Roboto+Slab:");
+      expect(href).to.contain("family=Roboto+Condensed:");
     });
 
     it("runs the ddd onload fallback when initial-letter is unsupported", () => {
