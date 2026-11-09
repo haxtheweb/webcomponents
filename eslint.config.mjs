@@ -159,11 +159,14 @@ export default [
   {
     // Web platform compatibility: warn when elements use a JS built-in or Web API
     // that is not Baseline "widely available" (supported in current Chrome,
-    // Firefox and Safari for 30+ months). Warn only: each hit should either be
-    // behind a feature check (typeof / "in" / try-catch) or get a short
-    // `// eslint-disable-next-line baseline-js/use-baseline -- <why>` note, so
-    // the fallback for Firefox/Safari is a deliberate decision. This does not
-    // catch API misuse in a widely supported API (see cross-browser CI for that).
+    // Firefox and Safari for 30+ months). Warn only. The rule does not follow
+    // control flow: a feature check (typeof / "in" / try-catch) makes the code
+    // safe at runtime but does NOT silence the warning (the check itself is
+    // flagged too). A deliberate exception gets a short
+    // `// eslint-disable-next-line baseline-js/use-baseline -- <why>` note, or
+    // an `ignoreFeatures` entry below with its reason, so the fallback for
+    // Firefox/Safari is a deliberate decision. This does not catch API misuse
+    // in a widely supported API (see cross-browser CI for that).
     files: ["elements/**/*.js"],
     plugins: { "baseline-js": baselineJs },
     rules: {
@@ -173,6 +176,14 @@ export default [
           available: "widely",
           includeWebApis: { preset: "auto" },
           includeJsBuiltins: { preset: "auto" },
+          // "window": the only member of this web-features group that is not
+          // widely available is `Window.open`, and only because MDN marks iOS
+          // Safari as a partial implementation (it blocks popups opened with
+          // `_blank` outside a user gesture). open() works in every supported
+          // browser; see BROWSER-SUPPORT-MATRIX.md for how to call it. If a
+          // future data update marks another `Window.*` member as limited,
+          // this ignore hides it too, so revisit it on plugin upgrades.
+          ignoreFeatures: ["window"],
         },
       ],
     },
