@@ -80,7 +80,9 @@
           "shako": "Ngowani yebhendi",
           "flat-top": "Bvudzi rakatsetseka pamusoro",
           "wild-hair": "Bvudzi jena rakasvetuka",
-          "messy-hair": "Bvudzi rakakorobhodzwa rine vanga"
+          "messy-hair": "Bvudzi rakakorobhodzwa rine vanga",
+          "sparkle-selects": "Sparkle Selects (ngowani)",
+          "saber-cats": "Saber Cats (ngowani)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Munhu-mhumhi",
           "horseman": "Mutasvi webhiza asina musoro",
           "mascot": "Maskoti yeshumba",
-          "band": "Bhendi rekufora"
+          "band": "Bhendi rekufora",
+          "sparkle-selects": "Sparkle Selects (kumba)",
+          "b-squad": "Sparkle Selects B Squad (kunze)",
+          "saber-cats": "Saber Cats (kumba)",
+          "saber-cats-away": "Saber Cats (kunze)",
+          "icers": "Icers (kumba)",
+          "icers-away": "Icers (kunze)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Sando yehondo",
           "trumpet": "Hwamanda",
           "jack-o-lantern": "Rambi remanhanga",
-          "wrench": "Sipana"
+          "wrench": "Sipana",
+          "hockey-stick-pink": "Tsvimbo yehokey (pinki)",
+          "hockey-stick-green": "Tsvimbo yehokey (girinhi)",
+          "sparkle-flag": "Sparkle Selects (mureza)"
         }
       },
       {

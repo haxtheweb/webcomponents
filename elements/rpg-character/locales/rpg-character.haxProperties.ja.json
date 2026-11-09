@@ -80,7 +80,9 @@
           "shako": "楽隊のシャコー帽",
           "flat-top": "角刈り",
           "wild-hair": "ぼさぼさの白髪",
-          "messy-hair": "傷のあるぼさぼさ髪"
+          "messy-hair": "傷のあるぼさぼさ髪",
+          "sparkle-selects": "Sparkle Selects（ヘルメット）",
+          "saber-cats": "Saber Cats（ヘルメット）"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "狼男",
           "horseman": "首なし騎士",
           "mascot": "ライオンのマスコット",
-          "band": "マーチングバンド"
+          "band": "マーチングバンド",
+          "sparkle-selects": "Sparkle Selects（ホーム）",
+          "b-squad": "Sparkle Selects B Squad（アウェイ）",
+          "saber-cats": "Saber Cats（ホーム）",
+          "saber-cats-away": "Saber Cats（アウェイ）",
+          "icers": "Icers（ホーム）",
+          "icers-away": "Icers（アウェイ）"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "ウォーハンマー",
           "trumpet": "トランペット",
           "jack-o-lantern": "ジャック・オー・ランタン",
-          "wrench": "レンチ"
+          "wrench": "レンチ",
+          "hockey-stick-pink": "ホッケースティック（ピンク）",
+          "hockey-stick-green": "ホッケースティック（緑）",
+          "sparkle-flag": "Sparkle Selects（旗）"
         }
       },
       {

@@ -80,7 +80,9 @@
           "shako": "Orkessjako",
           "flat-top": "Plat kuifhare",
           "wild-hair": "Wilde wit hare",
-          "messy-hair": "Deurmekaar hare met letsel"
+          "messy-hair": "Deurmekaar hare met letsel",
+          "sparkle-selects": "Sparkle Selects (helm)",
+          "saber-cats": "Saber Cats (helm)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Weerwolf",
           "horseman": "Koplose ruiter",
           "mascot": "Leeumaskot",
-          "band": "Marsjeerorkes"
+          "band": "Marsjeerorkes",
+          "sparkle-selects": "Sparkle Selects (tuis)",
+          "b-squad": "Sparkle Selects B Squad (weg)",
+          "saber-cats": "Saber Cats (tuis)",
+          "saber-cats-away": "Saber Cats (weg)",
+          "icers": "Icers (tuis)",
+          "icers-away": "Icers (weg)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Strydhamer",
           "trumpet": "Trompet",
           "jack-o-lantern": "Pampoenlantern",
-          "wrench": "Moersleutel"
+          "wrench": "Moersleutel",
+          "hockey-stick-pink": "Hokkiestok (pienk)",
+          "hockey-stick-green": "Hokkiestok (groen)",
+          "sparkle-flag": "Sparkle Selects (vlag)"
         }
       },
       {

@@ -193,7 +193,9 @@
           "shako": "Band shako",
           "flat-top": "Flat-top hair",
           "wild-hair": "Wild white hair",
-          "messy-hair": "Messy hair with scar"
+          "messy-hair": "Messy hair with scar",
+          "sparkle-selects": "Sparkle Selects (helmet)",
+          "saber-cats": "Saber Cats (helmet)"
         }
       }
     },
@@ -348,7 +350,13 @@
           "werewolf": "Werewolf",
           "horseman": "Headless horseman",
           "mascot": "Lion mascot",
-          "band": "Marching band"
+          "band": "Marching band",
+          "sparkle-selects": "Sparkle Selects (home)",
+          "b-squad": "Sparkle Selects B Squad (away)",
+          "saber-cats": "Saber Cats (home)",
+          "saber-cats-away": "Saber Cats (away)",
+          "icers": "Icers (home)",
+          "icers-away": "Icers (away)"
         }
       }
     },
@@ -458,7 +466,10 @@
           "war-hammer": "War hammer",
           "trumpet": "Trumpet",
           "jack-o-lantern": "Jack-o'-lantern",
-          "wrench": "Wrench"
+          "wrench": "Wrench",
+          "hockey-stick-pink": "Hockey stick (pink)",
+          "hockey-stick-green": "Hockey stick (green)",
+          "sparkle-flag": "Sparkle Selects (flag)"
         }
       }
     },
@@ -715,7 +726,9 @@
             "shako": "Band shako",
             "flat-top": "Flat-top hair",
             "wild-hair": "Wild white hair",
-            "messy-hair": "Messy hair with scar"
+            "messy-hair": "Messy hair with scar",
+            "sparkle-selects": "Sparkle Selects (helmet)",
+            "saber-cats": "Saber Cats (helmet)"
           }
         },
         {
@@ -789,7 +802,13 @@
             "werewolf": "Werewolf",
             "horseman": "Headless horseman",
             "mascot": "Lion mascot",
-            "band": "Marching band"
+            "band": "Marching band",
+            "sparkle-selects": "Sparkle Selects (home)",
+            "b-squad": "Sparkle Selects B Squad (away)",
+            "saber-cats": "Saber Cats (home)",
+            "saber-cats-away": "Saber Cats (away)",
+            "icers": "Icers (home)",
+            "icers-away": "Icers (away)"
           }
         },
         {
@@ -910,7 +929,10 @@
             "war-hammer": "War hammer",
             "trumpet": "Trumpet",
             "jack-o-lantern": "Jack-o'-lantern",
-            "wrench": "Wrench"
+            "wrench": "Wrench",
+            "hockey-stick-pink": "Hockey stick (pink)",
+            "hockey-stick-green": "Hockey stick (green)",
+            "sparkle-flag": "Sparkle Selects (flag)"
           }
         },
         {
@@ -1016,7 +1038,7 @@
       }
     ]
   },
-  "surfaceHash": "9a9ace64a2c8",
+  "surfaceHash": "20e702d5fe93",
   "walkthroughs": [
     {
       "id": "",
@@ -1024,13 +1046,13 @@
       "order": 0,
       "src": "rpg-character.motion.json",
       "file": "lib/rpg-character.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/rpg-character.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

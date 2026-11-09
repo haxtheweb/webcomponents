@@ -80,7 +80,9 @@
           "shako": "بینڈ کی شاکو ٹوپی",
           "flat-top": "چپٹے بال",
           "wild-hair": "جنگلی سفید بال",
-          "messy-hair": "زخم کے نشان والے بکھرے بال"
+          "messy-hair": "زخم کے نشان والے بکھرے بال",
+          "sparkle-selects": "Sparkle Selects (ہیلمٹ)",
+          "saber-cats": "Saber Cats (ہیلمٹ)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "بھیڑیا انسان",
           "horseman": "بے سر گھڑ سوار",
           "mascot": "شیر میسکوٹ",
-          "band": "مارچنگ بینڈ"
+          "band": "مارچنگ بینڈ",
+          "sparkle-selects": "Sparkle Selects (ہوم)",
+          "b-squad": "Sparkle Selects B Squad (اوے)",
+          "saber-cats": "Saber Cats (ہوم)",
+          "saber-cats-away": "Saber Cats (اوے)",
+          "icers": "Icers (ہوم)",
+          "icers-away": "Icers (اوے)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "جنگی ہتھوڑا",
           "trumpet": "ٹرمپٹ",
           "jack-o-lantern": "کدو کی لالٹین",
-          "wrench": "رنچ"
+          "wrench": "رنچ",
+          "hockey-stick-pink": "ہاکی اسٹک (گلابی)",
+          "hockey-stick-green": "ہاکی اسٹک (سبز)",
+          "sparkle-flag": "Sparkle Selects (جھنڈا)"
         }
       },
       {

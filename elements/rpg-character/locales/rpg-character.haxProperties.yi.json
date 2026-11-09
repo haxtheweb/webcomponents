@@ -80,7 +80,9 @@
           "shako": "קאַפּעליע־שאַקאָ",
           "flat-top": "פֿלאַך־שפּיץ האָר",
           "wild-hair": "ווילדע ווייסע האָר",
-          "messy-hair": "צעשויבערטע האָר מיט אַ שראַם"
+          "messy-hair": "צעשויבערטע האָר מיט אַ שראַם",
+          "sparkle-selects": "Sparkle Selects (העלם)",
+          "saber-cats": "Saber Cats (העלם)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "וואָלקאָלאַק",
           "horseman": "ריטער אָן אַ קאָפּ",
           "mascot": "לייב־מאַסקאָט",
-          "band": "מאַרש־קאַפּעליע"
+          "band": "מאַרש־קאַפּעליע",
+          "sparkle-selects": "Sparkle Selects (היים)",
+          "b-squad": "Sparkle Selects B Squad (אַוועק)",
+          "saber-cats": "Saber Cats (היים)",
+          "saber-cats-away": "Saber Cats (אַוועק)",
+          "icers": "Icers (היים)",
+          "icers-away": "Icers (אַוועק)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "מלחמה־האַמער",
           "trumpet": "טרומייט",
           "jack-o-lantern": "קירבעס־לאַמטערן",
-          "wrench": "מוטער־שליסל"
+          "wrench": "מוטער־שליסל",
+          "hockey-stick-pink": "האָקי־שטעקן (ראָזע)",
+          "hockey-stick-green": "האָקי־שטעקן (גרין)",
+          "sparkle-flag": "Sparkle Selects (פֿאָן)"
         }
       },
       {

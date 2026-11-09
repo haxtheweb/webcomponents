@@ -80,7 +80,9 @@
           "shako": "बैंड शाको",
           "flat-top": "फ़्लैट-टॉप बाल",
           "wild-hair": "बिखरे सफ़ेद बाल",
-          "messy-hair": "निशान वाले बिखरे बाल"
+          "messy-hair": "निशान वाले बिखरे बाल",
+          "sparkle-selects": "Sparkle Selects (हेलमेट)",
+          "saber-cats": "Saber Cats (हेलमेट)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "भेड़िया-मानव",
           "horseman": "बिना सिर का घुड़सवार",
           "mascot": "शेर शुभंकर",
-          "band": "मार्चिंग बैंड"
+          "band": "मार्चिंग बैंड",
+          "sparkle-selects": "Sparkle Selects (घरेलू)",
+          "b-squad": "Sparkle Selects B Squad (बाहरी)",
+          "saber-cats": "Saber Cats (घरेलू)",
+          "saber-cats-away": "Saber Cats (बाहरी)",
+          "icers": "Icers (घरेलू)",
+          "icers-away": "Icers (बाहरी)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "युद्ध हथौड़ा",
           "trumpet": "तुरही",
           "jack-o-lantern": "कद्दू लालटेन",
-          "wrench": "पाना"
+          "wrench": "पाना",
+          "hockey-stick-pink": "हॉकी स्टिक (गुलाबी)",
+          "hockey-stick-green": "हॉकी स्टिक (हरी)",
+          "sparkle-flag": "Sparkle Selects (झंडा)"
         }
       },
       {

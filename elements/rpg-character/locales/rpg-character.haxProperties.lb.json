@@ -80,7 +80,9 @@
           "shako": "Musekskapell-Tschako",
           "flat-top": "Flaach Fraisur",
           "wild-hair": "Wëll wäiss Hoer",
-          "messy-hair": "Verstruwwelt Hoer mat Narb"
+          "messy-hair": "Verstruwwelt Hoer mat Narb",
+          "sparkle-selects": "Sparkle Selects (Helm)",
+          "saber-cats": "Saber Cats (Helm)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Wäerwollef",
           "horseman": "Kapplosen Reider",
           "mascot": "Léiwen-Maskottchen",
-          "band": "Musekskapell"
+          "band": "Musekskapell",
+          "sparkle-selects": "Sparkle Selects (Heem)",
+          "b-squad": "Sparkle Selects B Squad (Auswäerts)",
+          "saber-cats": "Saber Cats (Heem)",
+          "saber-cats-away": "Saber Cats (Auswäerts)",
+          "icers": "Icers (Heem)",
+          "icers-away": "Icers (Auswäerts)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Krichshummer",
           "trumpet": "Trompett",
           "jack-o-lantern": "Kürbislanter",
-          "wrench": "Schrauweschlëssel"
+          "wrench": "Schrauweschlëssel",
+          "hockey-stick-pink": "Hockeyschläger (rosa)",
+          "hockey-stick-green": "Hockeyschläger (gréng)",
+          "sparkle-flag": "Sparkle Selects (Fändel)"
         }
       },
       {

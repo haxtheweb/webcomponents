@@ -80,7 +80,9 @@
           "shako": "乐队高筒帽",
           "flat-top": "平顶头",
           "wild-hair": "乱蓬蓬白头发",
-          "messy-hair": "带疤乱头发"
+          "messy-hair": "带疤乱头发",
+          "sparkle-selects": "Sparkle Selects（头盔）",
+          "saber-cats": "Saber Cats（头盔）"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "狼人",
           "horseman": "无头骑士",
           "mascot": "狮子吉祥物",
-          "band": "行进乐队"
+          "band": "行进乐队",
+          "sparkle-selects": "Sparkle Selects（主场）",
+          "b-squad": "Sparkle Selects B Squad（客场）",
+          "saber-cats": "Saber Cats（主场）",
+          "saber-cats-away": "Saber Cats（客场）",
+          "icers": "Icers（主场）",
+          "icers-away": "Icers（客场）"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "战锤",
           "trumpet": "小号",
           "jack-o-lantern": "南瓜灯",
-          "wrench": "扳手"
+          "wrench": "扳手",
+          "hockey-stick-pink": "冰球杆（粉红）",
+          "hockey-stick-green": "冰球杆（绿）",
+          "sparkle-flag": "Sparkle Selects（旗子）"
         }
       },
       {

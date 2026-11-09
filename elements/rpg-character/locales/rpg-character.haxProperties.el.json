@@ -80,7 +80,9 @@
           "shako": "Πηλίκιο μπάντας",
           "flat-top": "Επίπεδο κούρεμα",
           "wild-hair": "Άγρια λευκά μαλλιά",
-          "messy-hair": "Ανακατεμένα μαλλιά με ουλή"
+          "messy-hair": "Ανακατεμένα μαλλιά με ουλή",
+          "sparkle-selects": "Sparkle Selects (κράνος)",
+          "saber-cats": "Saber Cats (κράνος)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Λυκάνθρωπος",
           "horseman": "Ακέφαλος καβαλάρης",
           "mascot": "Μασκότ λιοντάρι",
-          "band": "Μπάντα παρέλασης"
+          "band": "Μπάντα παρέλασης",
+          "sparkle-selects": "Sparkle Selects (εντός)",
+          "b-squad": "Sparkle Selects B Squad (εκτός)",
+          "saber-cats": "Saber Cats (εντός)",
+          "saber-cats-away": "Saber Cats (εκτός)",
+          "icers": "Icers (εντός)",
+          "icers-away": "Icers (εκτός)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Πολεμικό σφυρί",
           "trumpet": "Τρομπέτα",
           "jack-o-lantern": "Φανάρι κολοκύθας",
-          "wrench": "Γαλλικό κλειδί"
+          "wrench": "Γαλλικό κλειδί",
+          "hockey-stick-pink": "Μπαστούνι χόκεϊ (ροζ)",
+          "hockey-stick-green": "Μπαστούνι χόκεϊ (πράσινο)",
+          "sparkle-flag": "Sparkle Selects (σημαία)"
         }
       },
       {

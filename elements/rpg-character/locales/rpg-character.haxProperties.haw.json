@@ -80,7 +80,9 @@
           "shako": "Pāpale pāna",
           "flat-top": "Lauoho palahalaha",
           "wild-hair": "Lauoho keʻokeʻo ʻāhiu",
-          "messy-hair": "Lauoho ʻāpiʻipiʻi me ka ʻālina"
+          "messy-hair": "Lauoho ʻāpiʻipiʻi me ka ʻālina",
+          "sparkle-selects": "Sparkle Selects (pāpale kila)",
+          "saber-cats": "Saber Cats (pāpale kila)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "ʻĪlio hae kanaka",
           "horseman": "Holo lio poʻo ʻole",
           "mascot": "Hōʻailona liona",
-          "band": "Pāna hele wāwae"
+          "band": "Pāna hele wāwae",
+          "sparkle-selects": "Sparkle Selects (home)",
+          "b-squad": "Sparkle Selects B Squad (kipa)",
+          "saber-cats": "Saber Cats (home)",
+          "saber-cats-away": "Saber Cats (kipa)",
+          "icers": "Icers (home)",
+          "icers-away": "Icers (kipa)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Hāmare kaua",
           "trumpet": "Pū pāna",
           "jack-o-lantern": "Ipukukui pala ʻai",
-          "wrench": "Kī wili"
+          "wrench": "Kī wili",
+          "hockey-stick-pink": "Lāʻau hockey (ʻākala)",
+          "hockey-stick-green": "Lāʻau hockey (ʻōmaʻomaʻo)",
+          "sparkle-flag": "Sparkle Selects (hae)"
         }
       },
       {

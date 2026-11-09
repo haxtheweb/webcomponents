@@ -80,7 +80,9 @@
           "shako": "Orkestr şakosu",
           "flat-top": "Düz kəsimli saç",
           "wild-hair": "Vəhşi ağ saç",
-          "messy-hair": "Çapıqlı dağınıq saç"
+          "messy-hair": "Çapıqlı dağınıq saç",
+          "sparkle-selects": "Sparkle Selects (dəbilqə)",
+          "saber-cats": "Saber Cats (dəbilqə)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Qurdadam",
           "horseman": "Başsız atlı",
           "mascot": "Şir maskotu",
-          "band": "Marş orkestri"
+          "band": "Marş orkestri",
+          "sparkle-selects": "Sparkle Selects (ev)",
+          "b-squad": "Sparkle Selects B Squad (səfər)",
+          "saber-cats": "Saber Cats (ev)",
+          "saber-cats-away": "Saber Cats (səfər)",
+          "icers": "Icers (ev)",
+          "icers-away": "Icers (səfər)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Döyüş çəkici",
           "trumpet": "Truba",
           "jack-o-lantern": "Balqabaq fənəri",
-          "wrench": "Qayka açarı"
+          "wrench": "Qayka açarı",
+          "hockey-stick-pink": "Xokkey çubuğu (çəhrayı)",
+          "hockey-stick-green": "Xokkey çubuğu (yaşıl)",
+          "sparkle-flag": "Sparkle Selects (bayraq)"
         }
       },
       {

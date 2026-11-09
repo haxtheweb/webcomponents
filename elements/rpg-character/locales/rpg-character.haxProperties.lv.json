@@ -80,7 +80,9 @@
           "shako": "Orķestra kivere",
           "flat-top": "Plakans matu griezums",
           "wild-hair": "Izspūruši balti mati",
-          "messy-hair": "Izspūruši mati ar rētu"
+          "messy-hair": "Izspūruši mati ar rētu",
+          "sparkle-selects": "Sparkle Selects (ķivere)",
+          "saber-cats": "Saber Cats (ķivere)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Vilkacis",
           "horseman": "Bezgalvainais jātnieks",
           "mascot": "Lauvas talismans",
-          "band": "Gājienu orķestris"
+          "band": "Gājienu orķestris",
+          "sparkle-selects": "Sparkle Selects (mājas)",
+          "b-squad": "Sparkle Selects B Squad (izbraukuma)",
+          "saber-cats": "Saber Cats (mājas)",
+          "saber-cats-away": "Saber Cats (izbraukuma)",
+          "icers": "Icers (mājas)",
+          "icers-away": "Icers (izbraukuma)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Kara āmurs",
           "trumpet": "Trompete",
           "jack-o-lantern": "Ķirbja laterna",
-          "wrench": "Uzgriežņu atslēga"
+          "wrench": "Uzgriežņu atslēga",
+          "hockey-stick-pink": "Hokeja nūja (rozā)",
+          "hockey-stick-green": "Hokeja nūja (zaļš)",
+          "sparkle-flag": "Sparkle Selects (karogs)"
         }
       },
       {

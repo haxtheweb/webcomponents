@@ -80,7 +80,9 @@
           "shako": "Orkester-shako",
           "flat-top": "Fladtop-frisure",
           "wild-hair": "Vildt hvidt hår",
-          "messy-hair": "Rodet hår med ar"
+          "messy-hair": "Rodet hår med ar",
+          "sparkle-selects": "Sparkle Selects (hjelm)",
+          "saber-cats": "Saber Cats (hjelm)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Varulv",
           "horseman": "Hovedløs rytter",
           "mascot": "Løvemaskot",
-          "band": "Marchorkester"
+          "band": "Marchorkester",
+          "sparkle-selects": "Sparkle Selects (hjemme)",
+          "b-squad": "Sparkle Selects B Squad (ude)",
+          "saber-cats": "Saber Cats (hjemme)",
+          "saber-cats-away": "Saber Cats (ude)",
+          "icers": "Icers (hjemme)",
+          "icers-away": "Icers (ude)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Krigshammer",
           "trumpet": "Trompet",
           "jack-o-lantern": "Græskarlygte",
-          "wrench": "Skruenøgle"
+          "wrench": "Skruenøgle",
+          "hockey-stick-pink": "Hockeystav (lyserød)",
+          "hockey-stick-green": "Hockeystav (grønt)",
+          "sparkle-flag": "Sparkle Selects (flag)"
         }
       },
       {

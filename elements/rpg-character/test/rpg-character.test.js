@@ -87,9 +87,9 @@ describe("rpg-character", () => {
       );
     });
 
-    it("exports hatList with the 56 non-status hats", () => {
+    it("exports hatList with the 58 non-status hats", () => {
       expect(hatList).to.be.an("array");
-      expect(hatList.length).to.equal(56);
+      expect(hatList.length).to.equal(58);
       expect(hatList).to.include("bunny");
       expect(hatList).to.include("cowboy");
       expect(hatList).to.include("party");
@@ -862,6 +862,133 @@ describe("rpg-character", () => {
       const text = el.shadowRoot.querySelector("text.flag-text");
       expect(text).to.exist;
       expect(text.textContent.trim()).to.equal("PSUF");
+    });
+
+    it("hockey team kits render their outfit, helmet, stick and crest", async () => {
+      const kits = [
+        "sparkle-selects",
+        "b-squad",
+        "saber-cats",
+        "saber-cats-away",
+        "icers",
+        "icers-away",
+      ];
+      for (const name of kits) {
+        const el = await fixture(
+          html`<rpg-character seed="btopro" preset="${name}"></rpg-character>`,
+        );
+        await settled(el);
+        const rendered = hrefs(el);
+        [
+          `shirt/${name}`,
+          `pants/${name}`,
+          `hat/${presets[name].hat}`,
+          `item/${presets[name].item}`,
+          "feet/skates",
+          `crest/${presets[name].crest}`,
+        ].forEach(
+          (piece) =>
+            expect(
+              rendered.some((h) => h.endsWith(`/${piece}.svg`)),
+              `${name}: ${piece}`,
+            ).to.be.true,
+        );
+        const back = decodeCharacter(encodeCharacter({ preset: name }));
+        expect(back.preset).to.equal(name);
+      }
+    });
+
+    it("a team crest draws above accessories and below the body outline", async () => {
+      const el = await fixture(
+        html`<rpg-character seed="btopro" preset="icers"></rpg-character>`,
+      );
+      await settled(el);
+      const rendered = hrefs(el);
+      const accessories = rendered.findIndex((h) => /\/accessories\//.test(h));
+      const crest = rendered.findIndex((h) => /\/crest\/icers\.svg$/.test(h));
+      const base = rendered.findIndex((h) => /\/base\/\d/.test(h));
+      expect(crest).to.be.greaterThan(accessories);
+      expect(base).to.be.greaterThan(crest);
+    });
+
+    it("other presets draw no crest", async () => {
+      const el = await fixture(
+        html`<rpg-character seed="btopro" preset="hockey"></rpg-character>`,
+      );
+      await settled(el);
+      expect(hrefs(el).some((h) => /\/crest\//.test(h))).to.be.false;
+    });
+
+    it("team seeds dress the character in their kit", async () => {
+      const el = await fixture(
+        html`<rpg-character seed="aaaa"></rpg-character>`,
+      );
+      await settled(el);
+      let rendered = hrefs(el);
+      expect(rendered.some((h) => /\/shirt\/sparkle-selects\.svg$/.test(h))).to
+        .be.true;
+      expect(rendered.some((h) => /\/crest\/sparkle-selects\.svg$/.test(h))).to
+        .be.true;
+      // the kit is saved in the code
+      expect(decodeCharacter(el.toCode()).preset).to.equal("sparkle-selects");
+      el.seed = "icersaway";
+      await settled(el);
+      rendered = hrefs(el);
+      expect(rendered.some((h) => /\/shirt\/icers-away\.svg$/.test(h))).to.be
+        .true;
+      // an explicit preset wins over the team seed
+      el.preset = "chef";
+      await settled(el);
+      rendered = hrefs(el);
+      expect(rendered.some((h) => /\/shirt\/chef\.svg$/.test(h))).to.be.true;
+      expect(rendered.some((h) => /\/crest\//.test(h))).to.be.false;
+    });
+
+    it("team seeds keep the character the seed makes", async () => {
+      const el = await fixture(
+        html`<rpg-character seed="aaaa"></rpg-character>`,
+      );
+      await settled(el);
+      expect(
+        [el.skin, el.hair, el.accessories, el.shirt].map(Number),
+      ).to.deep.equal([7, 8, 4, 1]);
+    });
+
+    it("a character code is never changed by a team seed", async () => {
+      const code = encodeCharacter({ base: 1, skin: 2, preset: "chef" });
+      const el = await fixture(
+        html`<rpg-character seed="aaaa" code="${code}"></rpg-character>`,
+      );
+      await settled(el);
+      const rendered = hrefs(el);
+      expect(rendered.some((h) => /\/shirt\/chef\.svg$/.test(h))).to.be.true;
+      expect(rendered.some((h) => /sparkle-selects/.test(h))).to.be.false;
+    });
+
+    it("other seeds do not get a team kit", async () => {
+      const el = await fixture(
+        html`<rpg-character seed="btopro"></rpg-character>`,
+      );
+      await settled(el);
+      expect(hrefs(el).some((h) => /\/crest\//.test(h))).to.be.false;
+      expect(decodeCharacter(el.toCode()).preset).to.equal("none");
+    });
+
+    it("the Sparkle flag shows AAAA unless flag-text is set", async () => {
+      const el = await fixture(
+        html`<rpg-character seed="btopro" item="sparkle-flag"></rpg-character>`,
+      );
+      await settled(el);
+      expect(hrefs(el).some((h) => /\/item\/sparkle-flag\.svg$/.test(h))).to.be
+        .true;
+      let text = el.shadowRoot.querySelector("text.flag-text");
+      expect(text.textContent.trim()).to.equal("AAAA");
+      // the default letters are not written into the code
+      expect(decodeCharacter(el.toCode()).flagText).to.equal("");
+      el.flagText = "GO";
+      await settled(el);
+      text = el.shadowRoot.querySelector("text.flag-text");
+      expect(text.textContent.trim()).to.equal("GO");
     });
 
     it("pets draw above the hat so perched and floating pets stay visible", async () => {

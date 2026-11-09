@@ -80,7 +80,9 @@
           "shako": "Umnqwazi webhendi",
           "flat-top": "Iinwele ezisicaba",
           "wild-hair": "Iinwele ezimhlophe zasendle",
-          "messy-hair": "Iinwele ezingacwangciswanga ezinesiva"
+          "messy-hair": "Iinwele ezingacwangciswanga ezinesiva",
+          "sparkle-selects": "Sparkle Selects (isigcina-ntloko)",
+          "saber-cats": "Saber Cats (isigcina-ntloko)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Umntu-ngcuka",
           "horseman": "Umkhweli-hashe ongenantloko",
           "mascot": "Imaskothi yengonyama",
-          "band": "Ibhendi yomngcelele"
+          "band": "Ibhendi yomngcelele",
+          "sparkle-selects": "Sparkle Selects (ekhaya)",
+          "b-squad": "Sparkle Selects B Squad (ngaphandle)",
+          "saber-cats": "Saber Cats (ekhaya)",
+          "saber-cats-away": "Saber Cats (ngaphandle)",
+          "icers": "Icers (ekhaya)",
+          "icers-away": "Icers (ngaphandle)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Isando semfazwe",
           "trumpet": "Ixilongo",
           "jack-o-lantern": "Isibane somthanga",
-          "wrench": "Isipanela"
+          "wrench": "Isipanela",
+          "hockey-stick-pink": "Intonga yehokhi (pinki)",
+          "hockey-stick-green": "Intonga yehokhi (eluhlaza)",
+          "sparkle-flag": "Sparkle Selects (iflegi)"
         }
       },
       {

@@ -80,7 +80,9 @@
           "shako": "Zenekari csákó",
           "flat-top": "Kefefrizura",
           "wild-hair": "Kócos fehér haj",
-          "messy-hair": "Kócos haj sebhellyel"
+          "messy-hair": "Kócos haj sebhellyel",
+          "sparkle-selects": "Sparkle Selects (sisak)",
+          "saber-cats": "Saber Cats (sisak)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Vérfarkas",
           "horseman": "Fej nélküli lovas",
           "mascot": "Oroszlán kabala",
-          "band": "Menetzenekar"
+          "band": "Menetzenekar",
+          "sparkle-selects": "Sparkle Selects (hazai)",
+          "b-squad": "Sparkle Selects B Squad (vendég)",
+          "saber-cats": "Saber Cats (hazai)",
+          "saber-cats-away": "Saber Cats (vendég)",
+          "icers": "Icers (hazai)",
+          "icers-away": "Icers (vendég)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Harci kalapács",
           "trumpet": "Trombita",
           "jack-o-lantern": "Töklámpás",
-          "wrench": "Csavarkulcs"
+          "wrench": "Csavarkulcs",
+          "hockey-stick-pink": "Jégkorongütő (rózsaszín)",
+          "hockey-stick-green": "Jégkorongütő (zöld)",
+          "sparkle-flag": "Sparkle Selects (zászló)"
         }
       },
       {

@@ -80,7 +80,9 @@
           "shako": "หมวกวงโยธวาทิต",
           "flat-top": "ผมทรงแฟลตท็อป",
           "wild-hair": "ผมขาวฟูกระเซิง",
-          "messy-hair": "ผมยุ่งกับรอยแผลเป็น"
+          "messy-hair": "ผมยุ่งกับรอยแผลเป็น",
+          "sparkle-selects": "Sparkle Selects (หมวกกันน็อก)",
+          "saber-cats": "Saber Cats (หมวกกันน็อก)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "มนุษย์หมาป่า",
           "horseman": "นักขี่ม้าไร้หัว",
           "mascot": "มาสคอตสิงโต",
-          "band": "วงโยธวาทิต"
+          "band": "วงโยธวาทิต",
+          "sparkle-selects": "Sparkle Selects (เหย้า)",
+          "b-squad": "Sparkle Selects B Squad (เยือน)",
+          "saber-cats": "Saber Cats (เหย้า)",
+          "saber-cats-away": "Saber Cats (เยือน)",
+          "icers": "Icers (เหย้า)",
+          "icers-away": "Icers (เยือน)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "ค้อนสงคราม",
           "trumpet": "ทรัมเป็ต",
           "jack-o-lantern": "โคมฟักทอง",
-          "wrench": "ประแจ"
+          "wrench": "ประแจ",
+          "hockey-stick-pink": "ไม้ฮอกกี้ (ชมพู)",
+          "hockey-stick-green": "ไม้ฮอกกี้ (สีเขียว)",
+          "sparkle-flag": "Sparkle Selects (ธง)"
         }
       },
       {

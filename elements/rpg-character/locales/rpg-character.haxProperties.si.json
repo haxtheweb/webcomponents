@@ -80,7 +80,9 @@
           "shako": "සංගීත කණ්ඩායම් ෂාකෝ",
           "flat-top": "පැතලි මුදුන් කොණ්ඩය",
           "wild-hair": "වල් සුදු කොණ්ඩය",
-          "messy-hair": "කැළැල සහිත අවුල් කොණ්ඩය"
+          "messy-hair": "කැළැල සහිත අවුල් කොණ්ඩය",
+          "sparkle-selects": "Sparkle Selects (හිස්වැස්ම)",
+          "saber-cats": "Saber Cats (හිස්වැස්ම)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "වෘක මිනිසා",
           "horseman": "හිස නැති අසරුවා",
           "mascot": "සිංහ සංකේතය",
-          "band": "පෙළපාළි සංගීත කණ්ඩායම"
+          "band": "පෙළපාළි සංගීත කණ්ඩායම",
+          "sparkle-selects": "Sparkle Selects (නිවාස)",
+          "b-squad": "Sparkle Selects B Squad (පිටත)",
+          "saber-cats": "Saber Cats (නිවාස)",
+          "saber-cats-away": "Saber Cats (පිටත)",
+          "icers": "Icers (නිවාස)",
+          "icers-away": "Icers (පිටත)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "යුද මිටිය",
           "trumpet": "හොරණෑව",
           "jack-o-lantern": "වට්ටක්කා පහන",
-          "wrench": "ස්පැනරය"
+          "wrench": "ස්පැනරය",
+          "hockey-stick-pink": "හොකී කූරු (රෝස)",
+          "hockey-stick-green": "හොකී කූරු (කොළ)",
+          "sparkle-flag": "Sparkle Selects (කොඩිය)"
         }
       },
       {

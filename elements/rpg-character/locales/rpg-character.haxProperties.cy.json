@@ -80,7 +80,9 @@
           "shako": "Shaco band",
           "flat-top": "Gwallt pen gwastad",
           "wild-hair": "Gwallt gwyn gwyllt",
-          "messy-hair": "Gwallt blêr gyda chraith"
+          "messy-hair": "Gwallt blêr gyda chraith",
+          "sparkle-selects": "Sparkle Selects (helmed)",
+          "saber-cats": "Saber Cats (helmed)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Blaidd-ddyn",
           "horseman": "Marchog di-ben",
           "mascot": "Masgot llew",
-          "band": "Band gorymdeithio"
+          "band": "Band gorymdeithio",
+          "sparkle-selects": "Sparkle Selects (cartref)",
+          "b-squad": "Sparkle Selects B Squad (oddi cartref)",
+          "saber-cats": "Saber Cats (cartref)",
+          "saber-cats-away": "Saber Cats (oddi cartref)",
+          "icers": "Icers (cartref)",
+          "icers-away": "Icers (oddi cartref)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Morthwyl rhyfel",
           "trumpet": "Trwmped",
           "jack-o-lantern": "Lantern bwmpen",
-          "wrench": "Sbaner"
+          "wrench": "Sbaner",
+          "hockey-stick-pink": "Ffon hoci (pinc)",
+          "hockey-stick-green": "Ffon hoci (gwyrdd)",
+          "sparkle-flag": "Sparkle Selects (baner)"
         }
       },
       {

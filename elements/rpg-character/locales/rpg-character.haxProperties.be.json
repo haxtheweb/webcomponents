@@ -80,7 +80,9 @@
           "shako": "Аркестравы ківер",
           "flat-top": "Плоская стрыжка",
           "wild-hair": "Дзікія белыя валасы",
-          "messy-hair": "Растрапаныя валасы са шнарам"
+          "messy-hair": "Растрапаныя валасы са шнарам",
+          "sparkle-selects": "Sparkle Selects (шлем)",
+          "saber-cats": "Saber Cats (шлем)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Ваўкалак",
           "horseman": "Безгаловы вершнік",
           "mascot": "Талісман-леў",
-          "band": "Маршавы аркестр"
+          "band": "Маршавы аркестр",
+          "sparkle-selects": "Sparkle Selects (дома)",
+          "b-squad": "Sparkle Selects B Squad (у гасцях)",
+          "saber-cats": "Saber Cats (дома)",
+          "saber-cats-away": "Saber Cats (у гасцях)",
+          "icers": "Icers (дома)",
+          "icers-away": "Icers (у гасцях)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Баявы молат",
           "trumpet": "Труба",
           "jack-o-lantern": "Гарбузовы ліхтар",
-          "wrench": "Гаечны ключ"
+          "wrench": "Гаечны ключ",
+          "hockey-stick-pink": "Хакейная клюшка (ружовы)",
+          "hockey-stick-green": "Хакейная клюшка (зялёны)",
+          "sparkle-flag": "Sparkle Selects (сцяг)"
         }
       },
       {

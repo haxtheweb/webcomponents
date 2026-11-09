@@ -80,7 +80,9 @@
           "shako": "Pōtae rōpū pūoro",
           "flat-top": "Makawe papatahi",
           "wild-hair": "Makawe mā mōhoao",
-          "messy-hair": "Makawe tītengi me te nawe"
+          "messy-hair": "Makawe tītengi me te nawe",
+          "sparkle-selects": "Sparkle Selects (pōtae mārō)",
+          "saber-cats": "Saber Cats (pōtae mārō)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Wuruhi-tangata",
           "horseman": "Kaieke hōiho kore māhunga",
           "mascot": "Tohu raiona",
-          "band": "Rōpū pūoro hīkoi"
+          "band": "Rōpū pūoro hīkoi",
+          "sparkle-selects": "Sparkle Selects (kāinga)",
+          "b-squad": "Sparkle Selects B Squad (manuhiri)",
+          "saber-cats": "Saber Cats (kāinga)",
+          "saber-cats-away": "Saber Cats (manuhiri)",
+          "icers": "Icers (kāinga)",
+          "icers-away": "Icers (manuhiri)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Hama pakanga",
           "trumpet": "Tētere",
           "jack-o-lantern": "Rama paukena",
-          "wrench": "Pāna"
+          "wrench": "Pāna",
+          "hockey-stick-pink": "Rākau hukī (māwhero)",
+          "hockey-stick-green": "Rākau hukī (kākāriki)",
+          "sparkle-flag": "Sparkle Selects (haki)"
         }
       },
       {

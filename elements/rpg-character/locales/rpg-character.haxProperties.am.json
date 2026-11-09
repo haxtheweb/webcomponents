@@ -80,7 +80,9 @@
           "shako": "የባንድ ሻኮ",
           "flat-top": "ጠፍጣፋ ፀጉር",
           "wild-hair": "የተንጨፈረ ነጭ ፀጉር",
-          "messy-hair": "ጠባሳ ያለው የተመሰቃቀለ ፀጉር"
+          "messy-hair": "ጠባሳ ያለው የተመሰቃቀለ ፀጉር",
+          "sparkle-selects": "Sparkle Selects (ቆብ)",
+          "saber-cats": "Saber Cats (ቆብ)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "የተኩላ ሰው",
           "horseman": "ራስ የሌለው ፈረሰኛ",
           "mascot": "የአንበሳ ማስኮት",
-          "band": "የሰልፍ ባንድ"
+          "band": "የሰልፍ ባንድ",
+          "sparkle-selects": "Sparkle Selects (ቤት)",
+          "b-squad": "Sparkle Selects B Squad (ከሜዳ ውጭ)",
+          "saber-cats": "Saber Cats (ቤት)",
+          "saber-cats-away": "Saber Cats (ከሜዳ ውጭ)",
+          "icers": "Icers (ቤት)",
+          "icers-away": "Icers (ከሜዳ ውጭ)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "የጦር መዶሻ",
           "trumpet": "ጥሩምባ",
           "jack-o-lantern": "የዱባ ፋኖስ",
-          "wrench": "የብሎን መፍቻ"
+          "wrench": "የብሎን መፍቻ",
+          "hockey-stick-pink": "የሆኪ ዱላ (ሮዝ)",
+          "hockey-stick-green": "የሆኪ ዱላ (አረንጓዴ)",
+          "sparkle-flag": "Sparkle Selects (ባንዲራ)"
         }
       },
       {

@@ -80,7 +80,9 @@
           "shako": "Orkestr shakosi",
           "flat-top": "Tekis soch",
           "wild-hair": "Yovvoyi oq soch",
-          "messy-hair": "Chandiqli to'zg'in soch"
+          "messy-hair": "Chandiqli to'zg'in soch",
+          "sparkle-selects": "Sparkle Selects (dubulg'a)",
+          "saber-cats": "Saber Cats (dubulg'a)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Bo'ri-odam",
           "horseman": "Boshsiz chavandoz",
           "mascot": "Sher maskoti",
-          "band": "Marsh orkestri"
+          "band": "Marsh orkestri",
+          "sparkle-selects": "Sparkle Selects (uy)",
+          "b-squad": "Sparkle Selects B Squad (mehmon)",
+          "saber-cats": "Saber Cats (uy)",
+          "saber-cats-away": "Saber Cats (mehmon)",
+          "icers": "Icers (uy)",
+          "icers-away": "Icers (mehmon)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Jang bolg'asi",
           "trumpet": "Truba",
           "jack-o-lantern": "Qovoq chirog'i",
-          "wrench": "Gayka kaliti"
+          "wrench": "Gayka kaliti",
+          "hockey-stick-pink": "Xokkey tayogʻi (pushti)",
+          "hockey-stick-green": "Xokkey tayogʻi (yashil)",
+          "sparkle-flag": "Sparkle Selects (bayroq)"
         }
       },
       {

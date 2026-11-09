@@ -80,7 +80,9 @@
           "shako": "Նվագախմբի շակո",
           "flat-top": "Հարթ սանրվածք",
           "wild-hair": "Խառնված սպիտակ մազեր",
-          "messy-hair": "Խառնված մազեր սպիով"
+          "messy-hair": "Խառնված մազեր սպիով",
+          "sparkle-selects": "Sparkle Selects (սաղավարտ)",
+          "saber-cats": "Saber Cats (սաղավարտ)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Գայլամարդ",
           "horseman": "Անգլուխ ձիավոր",
           "mascot": "Առյուծ թալիսման",
-          "band": "Քայլերթի նվագախումբ"
+          "band": "Քայլերթի նվագախումբ",
+          "sparkle-selects": "Sparkle Selects (տնային)",
+          "b-squad": "Sparkle Selects B Squad (արտագնա)",
+          "saber-cats": "Saber Cats (տնային)",
+          "saber-cats-away": "Saber Cats (արտագնա)",
+          "icers": "Icers (տնային)",
+          "icers-away": "Icers (արտագնա)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Մարտական մուրճ",
           "trumpet": "Շեփոր",
           "jack-o-lantern": "Դդմի լապտեր",
-          "wrench": "Պտուտակաբանալի"
+          "wrench": "Պտուտակաբանալի",
+          "hockey-stick-pink": "Հոկեյի մահակ (վարդագույն)",
+          "hockey-stick-green": "Հոկեյի մահակ (կանաչ)",
+          "sparkle-flag": "Sparkle Selects (դրոշ)"
         }
       },
       {

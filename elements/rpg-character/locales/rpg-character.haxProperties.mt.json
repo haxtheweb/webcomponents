@@ -80,7 +80,9 @@
           "shako": "Shako tal-banda",
           "flat-top": "Xagħar ċatt fuq",
           "wild-hair": "Xagħar abjad selvaġġ",
-          "messy-hair": "Xagħar imħawwad b'ċikatriċi"
+          "messy-hair": "Xagħar imħawwad b'ċikatriċi",
+          "sparkle-selects": "Sparkle Selects (elmu)",
+          "saber-cats": "Saber Cats (elmu)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Lupu mannar",
           "horseman": "Rikkieb mingħajr ras",
           "mascot": "Maskott iljun",
-          "band": "Banda tal-marċ"
+          "band": "Banda tal-marċ",
+          "sparkle-selects": "Sparkle Selects (dar)",
+          "b-squad": "Sparkle Selects B Squad (barra)",
+          "saber-cats": "Saber Cats (dar)",
+          "saber-cats-away": "Saber Cats (barra)",
+          "icers": "Icers (dar)",
+          "icers-away": "Icers (barra)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Martell tal-gwerra",
           "trumpet": "Trumbetta",
           "jack-o-lantern": "Fanal tal-qargħa",
-          "wrench": "Spanner"
+          "wrench": "Spanner",
+          "hockey-stick-pink": "Ħatba tal-hockey (roża)",
+          "hockey-stick-green": "Ħatba tal-hockey (ħadra)",
+          "sparkle-flag": "Sparkle Selects (bandiera)"
         }
       },
       {

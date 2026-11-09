@@ -80,7 +80,9 @@
           "shako": "قبعة الفرقة الموسيقية",
           "flat-top": "شعر مسطّح القمة",
           "wild-hair": "شعر أبيض أشعث",
-          "messy-hair": "شعر فوضوي مع ندبة"
+          "messy-hair": "شعر فوضوي مع ندبة",
+          "sparkle-selects": "Sparkle Selects (خوذة)",
+          "saber-cats": "Saber Cats (خوذة)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "مستذئب",
           "horseman": "الفارس مقطوع الرأس",
           "mascot": "تميمة الأسد",
-          "band": "فرقة استعراضية"
+          "band": "فرقة استعراضية",
+          "sparkle-selects": "Sparkle Selects (داخل الأرض)",
+          "b-squad": "Sparkle Selects B Squad (خارج الأرض)",
+          "saber-cats": "Saber Cats (داخل الأرض)",
+          "saber-cats-away": "Saber Cats (خارج الأرض)",
+          "icers": "Icers (داخل الأرض)",
+          "icers-away": "Icers (خارج الأرض)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "مطرقة حرب",
           "trumpet": "بوق",
           "jack-o-lantern": "فانوس اليقطين",
-          "wrench": "مفتاح ربط"
+          "wrench": "مفتاح ربط",
+          "hockey-stick-pink": "عصا هوكي (وردي)",
+          "hockey-stick-green": "عصا هوكي (أخضر)",
+          "sparkle-flag": "Sparkle Selects (علم)"
         }
       },
       {

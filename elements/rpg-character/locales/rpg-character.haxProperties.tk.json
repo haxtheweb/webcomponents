@@ -80,7 +80,9 @@
           "shako": "Orkestr şakosy",
           "flat-top": "Tekiz saç",
           "wild-hair": "Ýabany ak saç",
-          "messy-hair": "Yzly bulaşyk saç"
+          "messy-hair": "Yzly bulaşyk saç",
+          "sparkle-selects": "Sparkle Selects (kaska)",
+          "saber-cats": "Saber Cats (kaska)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Möjek-adam",
           "horseman": "Kellesiz atly",
           "mascot": "Arslan maskoty",
-          "band": "Ýöriş orkestri"
+          "band": "Ýöriş orkestri",
+          "sparkle-selects": "Sparkle Selects (öý)",
+          "b-squad": "Sparkle Selects B Squad (myhman)",
+          "saber-cats": "Saber Cats (öý)",
+          "saber-cats-away": "Saber Cats (myhman)",
+          "icers": "Icers (öý)",
+          "icers-away": "Icers (myhman)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Söweş çekiji",
           "trumpet": "Truba",
           "jack-o-lantern": "Kädi çyrasy",
-          "wrench": "Gaýka açary"
+          "wrench": "Gaýka açary",
+          "hockey-stick-pink": "Hokkeý taýagy (gülgüne)",
+          "hockey-stick-green": "Hokkeý taýagy (ýaşyl)",
+          "sparkle-flag": "Sparkle Selects (baýdak)"
         }
       },
       {

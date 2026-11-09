@@ -80,7 +80,9 @@
           "shako": "بينڊ شاڪو",
           "flat-top": "سڌي مٿي وارا وار",
           "wild-hair": "جهنگلي اڇا وار",
-          "messy-hair": "زخم جي نشان سان وکريل وار"
+          "messy-hair": "زخم جي نشان سان وکريل وار",
+          "sparkle-selects": "Sparkle Selects (هيلمٽ)",
+          "saber-cats": "Saber Cats (هيلمٽ)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "بگهڙ ماڻهو",
           "horseman": "بنا مٿي گهوڙي سوار",
           "mascot": "شينهن ماسڪوٽ",
-          "band": "مارچنگ بينڊ"
+          "band": "مارچنگ بينڊ",
+          "sparkle-selects": "Sparkle Selects (گهرو)",
+          "b-squad": "Sparkle Selects B Squad (ٻاهريون)",
+          "saber-cats": "Saber Cats (گهرو)",
+          "saber-cats-away": "Saber Cats (ٻاهريون)",
+          "icers": "Icers (گهرو)",
+          "icers-away": "Icers (ٻاهريون)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "جنگي هٿوڙو",
           "trumpet": "ترهي",
           "jack-o-lantern": "ڪدوءَ جي لالٽين",
-          "wrench": "پانو"
+          "wrench": "پانو",
+          "hockey-stick-pink": "هاڪي اسٽڪ (گلابي)",
+          "hockey-stick-green": "هاڪي اسٽڪ (سائي)",
+          "sparkle-flag": "Sparkle Selects (جهنڊو)"
         }
       },
       {

@@ -80,7 +80,9 @@
           "shako": "Shako pancaragam",
           "flat-top": "Rambut rata atas",
           "wild-hair": "Rambut putih liar",
-          "messy-hair": "Rambut kusut berparut"
+          "messy-hair": "Rambut kusut berparut",
+          "sparkle-selects": "Sparkle Selects (topi keledar)",
+          "saber-cats": "Saber Cats (topi keledar)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Serigala jadian",
           "horseman": "Penunggang kuda tanpa kepala",
           "mascot": "Maskot singa",
-          "band": "Pancaragam kawad"
+          "band": "Pancaragam kawad",
+          "sparkle-selects": "Sparkle Selects (tempatan)",
+          "b-squad": "Sparkle Selects B Squad (pelawat)",
+          "saber-cats": "Saber Cats (tempatan)",
+          "saber-cats-away": "Saber Cats (pelawat)",
+          "icers": "Icers (tempatan)",
+          "icers-away": "Icers (pelawat)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Tukul perang",
           "trumpet": "Trompet",
           "jack-o-lantern": "Tanglung labu",
-          "wrench": "Sepana"
+          "wrench": "Sepana",
+          "hockey-stick-pink": "Kayu hoki (merah jambu)",
+          "hockey-stick-green": "Kayu hoki (hijau)",
+          "sparkle-flag": "Sparkle Selects (bendera)"
         }
       },
       {

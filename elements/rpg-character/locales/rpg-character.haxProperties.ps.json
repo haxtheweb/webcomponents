@@ -80,7 +80,9 @@
           "shako": "د بانډ شاکو",
           "flat-top": "هوار سر ویښتان",
           "wild-hair": "وحشي سپین ویښتان",
-          "messy-hair": "د زخم نښې سره ګډوډ ویښتان"
+          "messy-hair": "د زخم نښې سره ګډوډ ویښتان",
+          "sparkle-selects": "Sparkle Selects (خولۍ)",
+          "saber-cats": "Saber Cats (خولۍ)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "لېوه سړی",
           "horseman": "بې سره سپور",
           "mascot": "د زمري ماسکوټ",
-          "band": "مارشي بانډ"
+          "band": "مارشي بانډ",
+          "sparkle-selects": "Sparkle Selects (کور)",
+          "b-squad": "Sparkle Selects B Squad (بهر)",
+          "saber-cats": "Saber Cats (کور)",
+          "saber-cats-away": "Saber Cats (بهر)",
+          "icers": "Icers (کور)",
+          "icers-away": "Icers (بهر)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "جنګي څټک",
           "trumpet": "ترومپټ",
           "jack-o-lantern": "د کدو لالټین",
-          "wrench": "پېچ تاو"
+          "wrench": "پېچ تاو",
+          "hockey-stick-pink": "د هاکۍ ډنډه (ګلابي)",
+          "hockey-stick-green": "د هاکۍ ډنډه (شنه)",
+          "sparkle-flag": "Sparkle Selects (بیرغ)"
         }
       },
       {

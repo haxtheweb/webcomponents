@@ -80,7 +80,9 @@
           "shako": "ব্যান্ডের শাকো টুপি",
           "flat-top": "সমতল চুল",
           "wild-hair": "এলোমেলো সাদা চুল",
-          "messy-hair": "ক্ষতচিহ্নসহ অগোছালো চুল"
+          "messy-hair": "ক্ষতচিহ্নসহ অগোছালো চুল",
+          "sparkle-selects": "Sparkle Selects (হেলমেট)",
+          "saber-cats": "Saber Cats (হেলমেট)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "নেকড়ে-মানব",
           "horseman": "মুণ্ডুহীন ঘোড়সওয়ার",
           "mascot": "সিংহ মাসকট",
-          "band": "মার্চিং ব্যান্ড"
+          "band": "মার্চিং ব্যান্ড",
+          "sparkle-selects": "Sparkle Selects (হোম)",
+          "b-squad": "Sparkle Selects B Squad (অ্যাওয়ে)",
+          "saber-cats": "Saber Cats (হোম)",
+          "saber-cats-away": "Saber Cats (অ্যাওয়ে)",
+          "icers": "Icers (হোম)",
+          "icers-away": "Icers (অ্যাওয়ে)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "যুদ্ধ হাতুড়ি",
           "trumpet": "ট্রাম্পেট",
           "jack-o-lantern": "কুমড়োর লণ্ঠন",
-          "wrench": "রেঞ্চ"
+          "wrench": "রেঞ্চ",
+          "hockey-stick-pink": "হকি স্টিক (গোলাপি)",
+          "hockey-stick-green": "হকি স্টিক (সবুজ)",
+          "sparkle-flag": "Sparkle Selects (পতাকা)"
         }
       },
       {

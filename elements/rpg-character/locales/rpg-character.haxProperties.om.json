@@ -80,7 +80,9 @@
           "shako": "Shaakoo garee muuziqaa",
           "flat-top": "Rifeensa mataa diriiraa",
           "wild-hair": "Rifeensa adii faca'aa",
-          "messy-hair": "Rifeensa faca'aa mallattoo madaa qabu"
+          "messy-hair": "Rifeensa faca'aa mallattoo madaa qabu",
+          "sparkle-selects": "Sparkle Selects (gonfoo)",
+          "saber-cats": "Saber Cats (gonfoo)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Nama-yeeyyii",
           "horseman": "Abbaa farda mataa hin qabne",
           "mascot": "Mallattoo leencaa",
-          "band": "Garee muuziqaa deemsaa"
+          "band": "Garee muuziqaa deemsaa",
+          "sparkle-selects": "Sparkle Selects (mana)",
+          "b-squad": "Sparkle Selects B Squad (alaa)",
+          "saber-cats": "Saber Cats (mana)",
+          "saber-cats-away": "Saber Cats (alaa)",
+          "icers": "Icers (mana)",
+          "icers-away": "Icers (alaa)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Madoosha waraanaa",
           "trumpet": "Xurumbaa",
           "jack-o-lantern": "Ibsaa buqqee",
-          "wrench": "Ispaanara"
+          "wrench": "Ispaanara",
+          "hockey-stick-pink": "Ulee hoogii (diimaa ifaa)",
+          "hockey-stick-green": "Ulee hoogii (magariisa)",
+          "sparkle-flag": "Sparkle Selects (alaabaa)"
         }
       },
       {

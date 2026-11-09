@@ -80,7 +80,9 @@
           "shako": "Оркестровий ківер",
           "flat-top": "Стрижка «майданчик»",
           "wild-hair": "Дике біле волосся",
-          "messy-hair": "Скуйовджене волосся зі шрамом"
+          "messy-hair": "Скуйовджене волосся зі шрамом",
+          "sparkle-selects": "Sparkle Selects (шолом)",
+          "saber-cats": "Saber Cats (шолом)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Перевертень",
           "horseman": "Вершник без голови",
           "mascot": "Талісман-лев",
-          "band": "Марширувальний оркестр"
+          "band": "Марширувальний оркестр",
+          "sparkle-selects": "Sparkle Selects (домашня)",
+          "b-squad": "Sparkle Selects B Squad (виїзна)",
+          "saber-cats": "Saber Cats (домашня)",
+          "saber-cats-away": "Saber Cats (виїзна)",
+          "icers": "Icers (домашня)",
+          "icers-away": "Icers (виїзна)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Бойовий молот",
           "trumpet": "Труба",
           "jack-o-lantern": "Гарбузовий ліхтар",
-          "wrench": "Гайковий ключ"
+          "wrench": "Гайковий ключ",
+          "hockey-stick-pink": "Хокейна ключка (рожевий)",
+          "hockey-stick-green": "Хокейна ключка (зелений)",
+          "sparkle-flag": "Sparkle Selects (прапор)"
         }
       },
       {

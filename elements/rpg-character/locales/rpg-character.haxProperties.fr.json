@@ -80,7 +80,9 @@
           "shako": "Shako de fanfare",
           "flat-top": "Coupe en brosse plate",
           "wild-hair": "Cheveux blancs en bataille",
-          "messy-hair": "Cheveux en désordre avec cicatrice"
+          "messy-hair": "Cheveux en désordre avec cicatrice",
+          "sparkle-selects": "Sparkle Selects (casque)",
+          "saber-cats": "Saber Cats (casque)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Loup-garou",
           "horseman": "Cavalier sans tête",
           "mascot": "Mascotte lion",
-          "band": "Fanfare"
+          "band": "Fanfare",
+          "sparkle-selects": "Sparkle Selects (domicile)",
+          "b-squad": "Sparkle Selects B Squad (extérieur)",
+          "saber-cats": "Saber Cats (domicile)",
+          "saber-cats-away": "Saber Cats (extérieur)",
+          "icers": "Icers (domicile)",
+          "icers-away": "Icers (extérieur)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Marteau de guerre",
           "trumpet": "Trompette",
           "jack-o-lantern": "Citrouille-lanterne",
-          "wrench": "Clé à molette"
+          "wrench": "Clé à molette",
+          "hockey-stick-pink": "Crosse de hockey (rose)",
+          "hockey-stick-green": "Crosse de hockey (verte)",
+          "sparkle-flag": "Sparkle Selects (drapeau)"
         }
       },
       {

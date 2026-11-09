@@ -80,7 +80,9 @@
           "shako": "Lúðrasveitarhúfa",
           "flat-top": "Flöt klipping",
           "wild-hair": "Úfið hvítt hár",
-          "messy-hair": "Úfið hár með ör"
+          "messy-hair": "Úfið hár með ör",
+          "sparkle-selects": "Sparkle Selects (hjálmur)",
+          "saber-cats": "Saber Cats (hjálmur)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Varúlfur",
           "horseman": "Höfuðlausi reiðmaðurinn",
           "mascot": "Ljónslukkudýr",
-          "band": "Lúðrasveit"
+          "band": "Lúðrasveit",
+          "sparkle-selects": "Sparkle Selects (heima)",
+          "b-squad": "Sparkle Selects B Squad (úti)",
+          "saber-cats": "Saber Cats (heima)",
+          "saber-cats-away": "Saber Cats (úti)",
+          "icers": "Icers (heima)",
+          "icers-away": "Icers (úti)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Stríðshamar",
           "trumpet": "Trompet",
           "jack-o-lantern": "Graskerslukt",
-          "wrench": "Skiptilykill"
+          "wrench": "Skiptilykill",
+          "hockey-stick-pink": "Íshokkíkylfa (bleikur)",
+          "hockey-stick-green": "Íshokkíkylfa (grænt)",
+          "sparkle-flag": "Sparkle Selects (fáni)"
         }
       },
       {

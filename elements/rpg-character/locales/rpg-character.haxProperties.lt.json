@@ -80,7 +80,9 @@
           "shako": "Orkestro kiveris",
           "flat-top": "Plokščia šukuosena",
           "wild-hair": "Pasišiaušę balti plaukai",
-          "messy-hair": "Susivėlę plaukai su randu"
+          "messy-hair": "Susivėlę plaukai su randu",
+          "sparkle-selects": "Sparkle Selects (šalmas)",
+          "saber-cats": "Saber Cats (šalmas)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Vilkolakis",
           "horseman": "Begalvis raitelis",
           "mascot": "Liūtas talismanas",
-          "band": "Žygiuojantis orkestras"
+          "band": "Žygiuojantis orkestras",
+          "sparkle-selects": "Sparkle Selects (namų)",
+          "b-squad": "Sparkle Selects B Squad (išvykos)",
+          "saber-cats": "Saber Cats (namų)",
+          "saber-cats-away": "Saber Cats (išvykos)",
+          "icers": "Icers (namų)",
+          "icers-away": "Icers (išvykos)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Karo kūjis",
           "trumpet": "Trimitas",
           "jack-o-lantern": "Moliūgo žibintas",
-          "wrench": "Veržliaraktis"
+          "wrench": "Veržliaraktis",
+          "hockey-stick-pink": "Ledo ritulio lazda (rožinė)",
+          "hockey-stick-green": "Ledo ritulio lazda (žalias)",
+          "sparkle-flag": "Sparkle Selects (vėliava)"
         }
       },
       {

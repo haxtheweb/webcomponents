@@ -80,7 +80,9 @@
           "shako": "బ్యాండ్ షాకో",
           "flat-top": "చదునైన పై జుట్టు",
           "wild-hair": "అడవి తెల్ల జుట్టు",
-          "messy-hair": "మచ్చతో చెదిరిన జుట్టు"
+          "messy-hair": "మచ్చతో చెదిరిన జుట్టు",
+          "sparkle-selects": "Sparkle Selects (హెల్మెట్)",
+          "saber-cats": "Saber Cats (హెల్మెట్)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "తోడేలు మనిషి",
           "horseman": "తల లేని గుర్రపు రౌతు",
           "mascot": "సింహం మస్కట్",
-          "band": "కవాతు బ్యాండ్"
+          "band": "కవాతు బ్యాండ్",
+          "sparkle-selects": "Sparkle Selects (హోమ్)",
+          "b-squad": "Sparkle Selects B Squad (అవే)",
+          "saber-cats": "Saber Cats (హోమ్)",
+          "saber-cats-away": "Saber Cats (అవే)",
+          "icers": "Icers (హోమ్)",
+          "icers-away": "Icers (అవే)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "యుద్ధ సుత్తి",
           "trumpet": "బాకా",
           "jack-o-lantern": "గుమ్మడి లాంతరు",
-          "wrench": "స్పానర్"
+          "wrench": "స్పానర్",
+          "hockey-stick-pink": "హాకీ స్టిక్ (గులాబీ)",
+          "hockey-stick-green": "హాకీ స్టిక్ (ఆకుపచ్చ)",
+          "sparkle-flag": "Sparkle Selects (జెండా)"
         }
       },
       {

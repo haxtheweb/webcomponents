@@ -80,7 +80,9 @@
           "shako": "Shako di banda",
           "flat-top": "Capelli piatti",
           "wild-hair": "Capelli bianchi scapigliati",
-          "messy-hair": "Capelli in disordine cù cicatrice"
+          "messy-hair": "Capelli in disordine cù cicatrice",
+          "sparkle-selects": "Sparkle Selects (cascu)",
+          "saber-cats": "Saber Cats (cascu)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Lupu mannaru",
           "horseman": "Cavaliere senza capu",
           "mascot": "Mascotta leone",
-          "band": "Banda di marchja"
+          "band": "Banda di marchja",
+          "sparkle-selects": "Sparkle Selects (in casa)",
+          "b-squad": "Sparkle Selects B Squad (fora)",
+          "saber-cats": "Saber Cats (in casa)",
+          "saber-cats-away": "Saber Cats (fora)",
+          "icers": "Icers (in casa)",
+          "icers-away": "Icers (fora)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Martellu di guerra",
           "trumpet": "Trumbetta",
           "jack-o-lantern": "Lanterna di zucca",
-          "wrench": "Chjave inglese"
+          "wrench": "Chjave inglese",
+          "hockey-stick-pink": "Mazza d'hockey (rosula)",
+          "hockey-stick-green": "Mazza d'hockey (verde)",
+          "sparkle-flag": "Sparkle Selects (bandiera)"
         }
       },
       {

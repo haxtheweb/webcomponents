@@ -80,7 +80,9 @@
           "shako": "တီးဝိုင်း ရှာကို ဦးထုပ်",
           "flat-top": "ပြားညီ ဆံပင်",
           "wild-hair": "ဖရိုဖရဲ ဆံပင်ဖြူ",
-          "messy-hair": "အမာရွတ်ပါ ဆံပင်ရှုပ်"
+          "messy-hair": "အမာရွတ်ပါ ဆံပင်ရှုပ်",
+          "sparkle-selects": "Sparkle Selects (ဦးထုပ်)",
+          "saber-cats": "Saber Cats (ဦးထုပ်)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "ဝံပုလွေလူ",
           "horseman": "ခေါင်းမဲ့ မြင်းစီးသူ",
           "mascot": "ခြင်္သေ့ အမှတ်တံဆိပ်",
-          "band": "ချီတက် တီးဝိုင်း"
+          "band": "ချီတက် တီးဝိုင်း",
+          "sparkle-selects": "Sparkle Selects (အိမ်ကွင်း)",
+          "b-squad": "Sparkle Selects B Squad (အဝေးကွင်း)",
+          "saber-cats": "Saber Cats (အိမ်ကွင်း)",
+          "saber-cats-away": "Saber Cats (အဝေးကွင်း)",
+          "icers": "Icers (အိမ်ကွင်း)",
+          "icers-away": "Icers (အဝေးကွင်း)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "စစ် တူ",
           "trumpet": "ခရာ",
           "jack-o-lantern": "ဖရုံ မီးအိမ်",
-          "wrench": "ဂွ"
+          "wrench": "ဂွ",
+          "hockey-stick-pink": "ဟော်ကီတုတ် (ပန်းရောင်)",
+          "hockey-stick-green": "ဟော်ကီတုတ် (အစိမ်း)",
+          "sparkle-flag": "Sparkle Selects (အလံ)"
         }
       },
       {

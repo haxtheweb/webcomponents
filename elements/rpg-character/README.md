@@ -16,7 +16,7 @@ import '@haxtheweb/rpg-character/rpg-character.js';
 
 ## Named characters
 
-There are 65 named character types (`preset`): jobs, sports, holidays, monsters and pop-culture archetypes. [`CHARACTERS.md`](./CHARACTERS.md) has the image of all of them and the full list with each one's default pieces and code. `demo/characters.html` shows them live. Regenerate both with `node scripts/roster.mjs` (dev server running) after adding a preset.
+There are 71 named character types (`preset`): jobs, sports, holidays, monsters, pop-culture archetypes and hockey team kits. [`CHARACTERS.md`](./CHARACTERS.md) has the image of all of them and the full list with each one's default pieces and code. `demo/characters.html` shows them live. Regenerate both with `node scripts/roster.mjs` (dev server running) after adding a preset.
 
 ## How many characters are there?
 
@@ -36,7 +36,7 @@ What each factor means:
 - **2·hats − 1**: hats are counted with and without fire, except that fire with no hat draws the coffee hat, which is already counted.
 - **items·offhands + offhands + 1**: standing still holds both hands' items, a wave drops the right-hand item, and a cheer drops both.
 
-With today's options that is 111 × 10 × 21 × 10 × 10 × 165 × 121 × 12 × 11 × 7 × 2 × 4 × 177 = **60,890,117,571,360,000**, about 61 quadrillion different-looking characters. A seed alone gives 66 million of them. Character codes can spell 239,738,895,728,640,000,000 combinations (about 2.4 × 10²⁰), because a code also records choices that end up hidden, such as hair on base 0.
+With today's options that is 111 × 10 × 21 × 10 × 10 × 171 × 125 × 12 × 11 × 7 × 2 × 4 × 189 = **69,610,084,236,000,000**, about 70 quadrillion different-looking characters. A seed alone gives 66 million of them. Character codes can spell 288,805,009,489,920,000,000 combinations (about 2.9 × 10²⁰), because a code also records choices that end up hidden, such as hair on base 0.
 
 `scripts/roster.mjs` recomputes these numbers from the registry into `CHARACTERS.md`, so they grow as options are added.
 
@@ -109,9 +109,21 @@ Every layer is a 113x142 SVG on a 22 x 28 grid of 5px cells with a 1-cell black 
 - `scripts/pixel-art.py` draws pieces as character grids, adds the outline and writes the SVG. `--read` prints existing layers as ASCII so you can line a new piece up with its neighbors.
 - `scripts/preview.mjs` renders a contact sheet of characters with the real element (run `yarn start` first), and fails if any art file 404s.
 
-A preset (`presets` in `rpg-character.js`) names an outfit (`lib/shirt/<preset>.svg` + `lib/pants/<preset>.svg`) and may default any gear slot. It can also set `shaved: true` when its hat is a hairstyle that leaves the top of the head showing.
+A preset (`presets` in `rpg-character.js`) names an outfit (`lib/shirt/<preset>.svg` + `lib/pants/<preset>.svg`) and may default any gear slot. It can also set `shaved: true` when its hat is a hairstyle that leaves the top of the head showing, and `crest: "<name>"` to draw `lib/crest/<name>.svg` on the chest. A crest draws above accessories, so a seed's tie or necklace never covers it, and it may use 1px detail inside the 5px grid.
 
 New options are always appended to the end of their list in `lib/rpg-character-code.js`, never inserted or removed, so saved character codes keep their meaning. Each new option also needs its label in `lib/rpg-character.haxProperties.json` and every `locales/rpg-character.haxProperties.*.json`, plus a test.
+
+## Hockey teams
+
+Three teams have home and away kits. The helmet names the team in both kits and the sweater tells home from away:
+
+| Team | Home | Away | Special seeds |
+| --- | --- | --- | --- |
+| AAAA Sparkle Selects | `sparkle-selects` | `b-squad` | `aaaa`, `bsquad` |
+| Saber Cats | `saber-cats` | `saber-cats-away` | `sabercats`, `sabercatsaway` |
+| Icers | `icers` | `icers-away` | `icers`, `icersaway` |
+
+A special seed (`teamSeeds` in `rpg-character.js`) still makes the character underneath; it only fills in the kit when no `preset` is set and there is no `code`. Fans can carry `item="sparkle-flag"`, a pink pennant that reads AAAA unless `flag-text` says otherwise.
 
 ## Develop / Demo
 Running `npm start` will start a local development server and open your default browser to display it. It will start watching *.js and lib/*.js files for changes automatically for your demo.

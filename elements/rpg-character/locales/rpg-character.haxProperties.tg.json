@@ -80,7 +80,9 @@
           "shako": "Шакои оркестр",
           "flat-top": "Мӯи ҳамвор",
           "wild-hair": "Мӯи сафеди ваҳшӣ",
-          "messy-hair": "Мӯи парешон бо доғи захм"
+          "messy-hair": "Мӯи парешон бо доғи захм",
+          "sparkle-selects": "Sparkle Selects (хӯд)",
+          "saber-cats": "Saber Cats (хӯд)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Гургодам",
           "horseman": "Савори бесар",
           "mascot": "Маскоти шер",
-          "band": "Оркестри марш"
+          "band": "Оркестри марш",
+          "sparkle-selects": "Sparkle Selects (хонагӣ)",
+          "b-squad": "Sparkle Selects B Squad (меҳмонӣ)",
+          "saber-cats": "Saber Cats (хонагӣ)",
+          "saber-cats-away": "Saber Cats (меҳмонӣ)",
+          "icers": "Icers (хонагӣ)",
+          "icers-away": "Icers (меҳмонӣ)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Гурзи ҷангӣ",
           "trumpet": "Карнай",
           "jack-o-lantern": "Чароғи каду",
-          "wrench": "Калиди гайка"
+          "wrench": "Калиди гайка",
+          "hockey-stick-pink": "Чӯбдасти хоккей (гулобӣ)",
+          "hockey-stick-green": "Чӯбдасти хоккей (сабз)",
+          "sparkle-flag": "Sparkle Selects (парчам)"
         }
       },
       {

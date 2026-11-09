@@ -80,7 +80,9 @@
           "shako": "Czako orkiestry",
           "flat-top": "Fryzura flat-top",
           "wild-hair": "Dzikie białe włosy",
-          "messy-hair": "Potargane włosy z blizną"
+          "messy-hair": "Potargane włosy z blizną",
+          "sparkle-selects": "Sparkle Selects (kask)",
+          "saber-cats": "Saber Cats (kask)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Wilkołak",
           "horseman": "Jeździec bez głowy",
           "mascot": "Maskotka lew",
-          "band": "Orkiestra marszowa"
+          "band": "Orkiestra marszowa",
+          "sparkle-selects": "Sparkle Selects (dom)",
+          "b-squad": "Sparkle Selects B Squad (wyjazd)",
+          "saber-cats": "Saber Cats (dom)",
+          "saber-cats-away": "Saber Cats (wyjazd)",
+          "icers": "Icers (dom)",
+          "icers-away": "Icers (wyjazd)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Młot bojowy",
           "trumpet": "Trąbka",
           "jack-o-lantern": "Lampion z dyni",
-          "wrench": "Klucz francuski"
+          "wrench": "Klucz francuski",
+          "hockey-stick-pink": "Kij hokejowy (różowy)",
+          "hockey-stick-green": "Kij hokejowy (zielony)",
+          "sparkle-flag": "Sparkle Selects (flaga)"
         }
       },
       {
