@@ -15,9 +15,12 @@ import {
   badContentElements,
 } from "../utils.js";
 import { hasUnsafeURLProtocol, urlHostMatches } from "../lib/url.js";
+import { fuzzConfig } from "../../../scripts/test-setup/fuzz-config.mjs";
 
-// fixed seed so CI failures reproduce; bump numRuns locally to dig deeper
-const RUNS = { numRuns: 400, seed: 20261102 };
+// fixed seed so CI failures reproduce. `yarn test:fuzz` at the monorepo root
+// hunts on a random seed; HAX_FUZZ_SEED=<seed> HAX_FUZZ_PATH=<path> yarn test
+// replays a reported failure (haxtheweb/issues#3272)
+const RUNS = fuzzConfig({ defaultSeed: 20261102, defaultRuns: 400 });
 
 // ---- hostile HTML soup -----------------------------------------------------
 
