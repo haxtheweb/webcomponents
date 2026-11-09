@@ -35,5 +35,12 @@
   "youTubeStartLoading": "चलाएँ दबाएँ।",
   "youTubeTranscriptLabel": "मीडिया चलने पर प्रतिलेख लोड होगा।",
   "audioDescriptionLabel": "ऑडियो विवरण",
-  "openOnYouTube": "YouTube पर खोलें"
+  "openOnYouTube": "YouTube पर खोलें",
+  "interactiveLabel": "इंटरैक्टिव",
+  "layoutLabel": "लेआउट",
+  "sideLabel": "बगल में",
+  "belowLabel": "नीचे",
+  "leftLabel": "बाईं",
+  "rightLabel": "दाईं",
+  "hideTranscriptLabel": "ट्रांसक्रिप्ट छिपाएँ"
 }

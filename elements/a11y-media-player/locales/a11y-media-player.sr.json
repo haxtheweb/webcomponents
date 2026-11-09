@@ -35,5 +35,12 @@
   "youTubeStartLoading": "",
   "youTubeTranscriptLabel": "",
   "audioDescriptionLabel": "Аудио опис",
-  "openOnYouTube": "Отвори на YouTube-у"
+  "openOnYouTube": "Отвори на YouTube-у",
+  "interactiveLabel": "интерактивно",
+  "layoutLabel": "Распоред",
+  "sideLabel": "Са стране",
+  "belowLabel": "Испод",
+  "leftLabel": "Лево",
+  "rightLabel": "Десно",
+  "hideTranscriptLabel": "Сакриј транскрипт"
 }

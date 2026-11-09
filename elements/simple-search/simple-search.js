@@ -85,6 +85,23 @@ class SimpleSearch extends LitElement {
           );
         }
 
+        /* placeholder mode: the label is visually hidden but still names
+           the field */
+        #input.placeholder-label::part(field-main-inner) {
+          flex: 1 1 auto;
+        }
+        #input.placeholder-label::part(label) {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          margin: -1px;
+          padding: 0;
+          overflow: hidden;
+          clip-path: inset(50%);
+          white-space: nowrap;
+          border: 0;
+        }
+
         #xofy {
           margin: 8px;
         }
@@ -196,7 +213,9 @@ class SimpleSearch extends LitElement {
   render() {
     return html` <simple-fields-field
         id="input"
+        class="${this.placeholder ? "placeholder-label" : ""}"
         label="${this.searchInputLabel}"
+        .placeholder="${this.placeholder || ""}"
         ?inline="${this.inline || this.noLabelFloat}"
         @value-changed="${this._handleChange}"
       >
@@ -282,6 +301,15 @@ class SimpleSearch extends LitElement {
        */
       nextButtonLabel: {
         attribute: "next-button-label",
+        type: String,
+      },
+      /**
+       * optional placeholder for the search field; when set, the label is
+       * only read by assistive tech (it stays the field's accessible name)
+       * and the placeholder is what shows in the empty field
+       */
+      placeholder: {
+        attribute: "placeholder",
         type: String,
       },
       /**

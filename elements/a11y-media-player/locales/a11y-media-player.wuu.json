@@ -35,5 +35,12 @@
   "youTubeStartLoading": "请揿播放。",
   "youTubeTranscriptLabel": "媒体播放之后文字稿会加载。",
   "audioDescriptionLabel": "音频描述",
-  "openOnYouTube": "辣 YouTube 打开"
+  "openOnYouTube": "辣 YouTube 打开",
+  "interactiveLabel": "互动",
+  "layoutLabel": "布局",
+  "sideLabel": "旁边",
+  "belowLabel": "下头",
+  "leftLabel": "左",
+  "rightLabel": "右",
+  "hideTranscriptLabel": "隐藏转录文本"
 }

@@ -35,5 +35,12 @@
   "youTubeStartLoading": "",
   "youTubeTranscriptLabel": "",
   "audioDescriptionLabel": "توصیف صوتی",
-  "openOnYouTube": "باز کردن در YouTube"
+  "openOnYouTube": "باز کردن در YouTube",
+  "interactiveLabel": "تعاملی",
+  "layoutLabel": "چیدمان",
+  "sideLabel": "کنار",
+  "belowLabel": "پایین",
+  "leftLabel": "چپ",
+  "rightLabel": "راست",
+  "hideTranscriptLabel": "پنهان کردن متن پیاده‌سازی‌شده"
 }

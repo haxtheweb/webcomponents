@@ -35,5 +35,12 @@
   "youTubeStartLoading": "Натисніть «Відтворити».",
   "youTubeTranscriptLabel": "Транскрипт завантажиться після початку відтворення.",
   "audioDescriptionLabel": "Аудіоопис",
-  "openOnYouTube": "Відкрити на YouTube"
+  "openOnYouTube": "Відкрити на YouTube",
+  "interactiveLabel": "інтерактивне",
+  "layoutLabel": "Макет",
+  "sideLabel": "Збоку",
+  "belowLabel": "Нижче",
+  "leftLabel": "Ліворуч",
+  "rightLabel": "Праворуч",
+  "hideTranscriptLabel": "Приховати транскрипцію"
 }

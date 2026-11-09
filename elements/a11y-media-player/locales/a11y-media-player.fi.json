@@ -35,5 +35,12 @@
   "youTubeStartLoading": "Paina toista.",
   "youTubeTranscriptLabel": "Litterointi latautuu, kun media alkaa toistua.",
   "audioDescriptionLabel": "Kuvailutulkkaus",
-  "openOnYouTube": "Avaa YouTubessa"
+  "openOnYouTube": "Avaa YouTubessa",
+  "interactiveLabel": "interaktiivinen",
+  "layoutLabel": "Asettelu",
+  "sideLabel": "Vierellä",
+  "belowLabel": "Alapuolelle",
+  "leftLabel": "Vasen",
+  "rightLabel": "Oikea",
+  "hideTranscriptLabel": "Piilota litteraatio"
 }

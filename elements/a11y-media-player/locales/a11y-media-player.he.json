@@ -35,5 +35,12 @@
   "youTubeStartLoading": "לחצו על ניגון.",
   "youTubeTranscriptLabel": "התמליל ייטען לאחר שהמדיה תתחיל להתנגן.",
   "audioDescriptionLabel": "תיאור קולי",
-  "openOnYouTube": "פתיחה ב-YouTube"
+  "openOnYouTube": "פתיחה ב-YouTube",
+  "interactiveLabel": "אינטראקטיבי",
+  "layoutLabel": "פריסה",
+  "sideLabel": "בצד",
+  "belowLabel": "מתחת",
+  "leftLabel": "שמאל",
+  "rightLabel": "ימין",
+  "hideTranscriptLabel": "הסתר תמליל"
 }

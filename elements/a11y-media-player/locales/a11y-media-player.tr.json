@@ -35,5 +35,12 @@
   "youTubeStartLoading": "Oynat'a basın.",
   "youTubeTranscriptLabel": "Transkript, medya oynatılmaya başladığında yüklenecek.",
   "audioDescriptionLabel": "Sesli betimleme",
-  "openOnYouTube": "YouTube'da aç"
+  "openOnYouTube": "YouTube'da aç",
+  "interactiveLabel": "etkileşimli",
+  "layoutLabel": "Düzen",
+  "sideLabel": "Yanda",
+  "belowLabel": "Altına",
+  "leftLabel": "Sol",
+  "rightLabel": "Sağ",
+  "hideTranscriptLabel": "Transkripti gizle"
 }

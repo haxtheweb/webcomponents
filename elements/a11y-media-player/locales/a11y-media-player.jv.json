@@ -35,5 +35,12 @@
   "youTubeStartLoading": "Pencet puter.",
   "youTubeTranscriptLabel": "Transkrip bakal diemot sawisé media diputer.",
   "audioDescriptionLabel": "Deskripsi Audio",
-  "openOnYouTube": "Bukak ing YouTube"
+  "openOnYouTube": "Bukak ing YouTube",
+  "interactiveLabel": "interaktif",
+  "layoutLabel": "Tata letak",
+  "sideLabel": "Sandhing",
+  "belowLabel": "Ngisor",
+  "leftLabel": "Kiwa",
+  "rightLabel": "Tengen",
+  "hideTranscriptLabel": "Dhelikake Transkrip"
 }

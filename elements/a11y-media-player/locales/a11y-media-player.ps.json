@@ -35,5 +35,12 @@
   "youTubeStartLoading": "غږول کېکاږئ.",
   "youTubeTranscriptLabel": "متن به هغه وخت پورته شي چې رسنۍ وغږېږي.",
   "audioDescriptionLabel": "غږيز تشریح",
-  "openOnYouTube": "په YouTube کې پرانیزئ"
+  "openOnYouTube": "په YouTube کې پرانیزئ",
+  "interactiveLabel": "متقابل",
+  "layoutLabel": "ترتیب",
+  "sideLabel": "څنګ ته",
+  "belowLabel": "لاندې",
+  "leftLabel": "کیڼ",
+  "rightLabel": "ښیې",
+  "hideTranscriptLabel": "Transcript پټ کړئ"
 }

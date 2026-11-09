@@ -35,5 +35,12 @@
   "youTubeStartLoading": "Trykk på spill av.",
   "youTubeTranscriptLabel": "Transkripsjonen lastes inn når mediet spilles av.",
   "audioDescriptionLabel": "Synstolking",
-  "openOnYouTube": "Åpne på YouTube"
+  "openOnYouTube": "Åpne på YouTube",
+  "interactiveLabel": "interaktiv",
+  "layoutLabel": "Oppsett",
+  "sideLabel": "Ved siden",
+  "belowLabel": "Under",
+  "leftLabel": "Venstre",
+  "rightLabel": "Høyre",
+  "hideTranscriptLabel": "Skjul transkripsjon"
 }

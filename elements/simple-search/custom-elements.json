@@ -378,6 +378,16 @@
               },
               "description": "displays with label inline",
               "attribute": "inline"
+            },
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "optional placeholder for the search field; when set, the label is\nonly read by assistive tech (it stays the field's accessible name)\nand the placeholder is what shows in the empty field",
+              "attribute": "placeholder"
             }
           ],
           "events": [
@@ -448,6 +458,14 @@
               "description": "label for next result button",
               "default": "\"next result\"",
               "fieldName": "nextButtonLabel"
+            },
+            {
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              },
+              "description": "optional placeholder for the search field; when set, the label is\nonly read by assistive tech (it stays the field's accessible name)\nand the placeholder is what shows in the empty field",
+              "fieldName": "placeholder"
             },
             {
               "name": "no-label-float",

@@ -54,6 +54,16 @@
             },
             {
               "kind": "method",
+              "name": "xapiCountsTowardCompletion",
+              "description": "Whether this player counts toward its page being done right now. Only\na11y-media-player reports what was watched; a plain iframe / webview\n(sandboxed, or a source that is not YouTube or a local file) cannot be\ntracked, so it is left out of the page's trackable items.",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "kind": "method",
               "name": "querySelectorAll",
               "parameters": [
                 {

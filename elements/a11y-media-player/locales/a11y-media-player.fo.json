@@ -35,5 +35,12 @@
   "youTubeStartLoading": "Trýst á spæl.",
   "youTubeTranscriptLabel": "Avskriftin verður innlisin, tá ið miðilin spælir.",
   "audioDescriptionLabel": "Ljóðlýsing",
-  "openOnYouTube": "Opna á YouTube"
+  "openOnYouTube": "Opna á YouTube",
+  "interactiveLabel": "samvirkandi",
+  "layoutLabel": "Uppseting",
+  "sideLabel": "Við síðuna",
+  "belowLabel": "Niðanfyri",
+  "leftLabel": "Vinstru",
+  "rightLabel": "Høgru",
+  "hideTranscriptLabel": "Fjal avskrift"
 }

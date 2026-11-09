@@ -35,5 +35,12 @@
   "youTubeStartLoading": "Пахшро пахш кунед.",
   "youTubeTranscriptLabel": "Транскрипт пас аз оғози пахши медиа бор мешавад.",
   "audioDescriptionLabel": "Тавсифи аудиоӣ",
-  "openOnYouTube": "Дар YouTube кушодан"
+  "openOnYouTube": "Дар YouTube кушодан",
+  "interactiveLabel": "интерактивӣ",
+  "layoutLabel": "Тарҳбандӣ",
+  "sideLabel": "Дар паҳлӯ",
+  "belowLabel": "Дар поён",
+  "leftLabel": "Чап",
+  "rightLabel": "Рост",
+  "hideTranscriptLabel": "Пинҳон кардани матни нутқ"
 }

@@ -35,5 +35,12 @@
   "youTubeStartLoading": "",
   "youTubeTranscriptLabel": "",
   "audioDescriptionLabel": "Zvukový opis",
-  "openOnYouTube": "Otvoriť na YouTube"
+  "openOnYouTube": "Otvoriť na YouTube",
+  "interactiveLabel": "interaktívne",
+  "layoutLabel": "Rozloženie",
+  "sideLabel": "Vedľa",
+  "belowLabel": "Pod",
+  "leftLabel": "Vľavo",
+  "rightLabel": "Vpravo",
+  "hideTranscriptLabel": "Skryť prepis"
 }

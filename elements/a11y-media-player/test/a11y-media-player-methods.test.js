@@ -395,21 +395,17 @@ describe("a11y-media-player control bar interactions", () => {
   });
 
   it("clicking the transcript scroll control flips disableScroll", async () => {
-    const scroll = el.shadowRoot.querySelector("#scroll");
-    scroll.shadowRoot
-      .querySelector("#button")
-      .dispatchEvent(
-        new MouseEvent("click", { bubbles: true, composed: true }),
-      );
+    // Scroll Transcript is a toggle in the settings tray
+    const scroll = el.shadowRoot.querySelector("#settings #scroll");
+    expect(scroll.getAttribute("aria-pressed")).to.equal("true");
+    scroll.click();
     await el.updateComplete;
     expect(el.disableScroll).to.equal(true);
-    scroll.shadowRoot
-      .querySelector("#button")
-      .dispatchEvent(
-        new MouseEvent("click", { bubbles: true, composed: true }),
-      );
+    expect(scroll.getAttribute("aria-pressed")).to.equal("false");
+    scroll.click();
     await el.updateComplete;
     expect(el.disableScroll).to.equal(false);
+    expect(scroll.getAttribute("aria-pressed")).to.equal("true");
   });
 });
 

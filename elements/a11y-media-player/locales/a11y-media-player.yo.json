@@ -35,5 +35,12 @@
   "youTubeStartLoading": "",
   "youTubeTranscriptLabel": "",
   "audioDescriptionLabel": "Àpèjúwe ohùn",
-  "openOnYouTube": "Ṣí i lórí YouTube"
+  "openOnYouTube": "Ṣí i lórí YouTube",
+  "interactiveLabel": "oníbáṣepọ̀",
+  "layoutLabel": "Ìlànà",
+  "sideLabel": "Ẹ̀gbẹ́",
+  "belowLabel": "Nísàlẹ̀",
+  "leftLabel": "Osi",
+  "rightLabel": "Ọtun",
+  "hideTranscriptLabel": "Fi àkọsílẹ̀ pamọ́"
 }

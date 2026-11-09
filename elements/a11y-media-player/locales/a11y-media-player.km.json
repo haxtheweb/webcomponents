@@ -35,5 +35,12 @@
   "youTubeStartLoading": "",
   "youTubeTranscriptLabel": "",
   "audioDescriptionLabel": "ការពិពណ៌នាជាសំឡេង",
-  "openOnYouTube": "បើកនៅលើ YouTube"
+  "openOnYouTube": "បើកនៅលើ YouTube",
+  "interactiveLabel": "អន្តរកម្ម",
+  "layoutLabel": "ប្លង់",
+  "sideLabel": "ចំហៀង",
+  "belowLabel": "ខាងក្រោម",
+  "leftLabel": "ឆ្វេង",
+  "rightLabel": "ស្ដាំ",
+  "hideTranscriptLabel": "លាក់សេចក្តីបកប្រែ"
 }

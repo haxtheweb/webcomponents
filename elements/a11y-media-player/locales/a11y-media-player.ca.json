@@ -35,5 +35,12 @@
   "youTubeStartLoading": "Premeu reprodueix.",
   "youTubeTranscriptLabel": "La transcripció es carregarà quan es reprodueixi el contingut.",
   "audioDescriptionLabel": "Audiodescripció",
-  "openOnYouTube": "Obre a YouTube"
+  "openOnYouTube": "Obre a YouTube",
+  "interactiveLabel": "interactiu",
+  "layoutLabel": "Disposició",
+  "sideLabel": "Al costat",
+  "belowLabel": "A sota",
+  "leftLabel": "Esquerra",
+  "rightLabel": "Dreta",
+  "hideTranscriptLabel": "Ocultar transcripció"
 }

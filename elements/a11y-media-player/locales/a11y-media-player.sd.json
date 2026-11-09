@@ -35,5 +35,12 @@
   "youTubeStartLoading": "هلايو دٻايو.",
   "youTubeTranscriptLabel": "ميڊيا هلڻ کان پوءِ ٽرانسڪرپٽ لوڊ ٿيندو.",
   "audioDescriptionLabel": "آڊيو وضاحت",
-  "openOnYouTube": "YouTube تي کوليو"
+  "openOnYouTube": "YouTube تي کوليو",
+  "interactiveLabel": "انٽرايڪٽو",
+  "layoutLabel": "ترتيب",
+  "sideLabel": "پاسي",
+  "belowLabel": "هيٺ",
+  "leftLabel": "کاٻو",
+  "rightLabel": "ساڄو",
+  "hideTranscriptLabel": "ٽرانسڪرپٽ لڪايو"
 }

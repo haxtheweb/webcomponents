@@ -33,6 +33,9 @@
  *     </div>`;
  *   }
  *
+ * CSS parts: the header is "block-header" (plus o.part), its chip
+ * "block-chip" and its label / title column "block-text".
+ *
  * Parts (see the anatomy): .ddd-block (frame), .ddd-block-header,
  * .ddd-block-chip, .ddd-block-text, .ddd-block-label, .ddd-block-title,
  * .ddd-block-actions, .ddd-block-action (round 40px icon button or link),
@@ -292,7 +295,7 @@ export function renderDDDBlockHeader(o) {
     class="ddd-block-header"
     part="block-header${opts.part ? " " + opts.part : ""}"
   >
-    <span class="ddd-block-chip" aria-hidden="true"
+    <span class="ddd-block-chip" part="block-chip" aria-hidden="true"
       >${
         opts.chip
           ? opts.chip
@@ -301,7 +304,7 @@ export function renderDDDBlockHeader(o) {
             : nothing
       }</span
     >
-    <span class="ddd-block-text" id="${opts.id || nothing}">
+    <span class="ddd-block-text" part="block-text" id="${opts.id || nothing}">
       <span class="ddd-block-label">${opts.label}</span>
       ${title}${opts.after || nothing}
     </span>

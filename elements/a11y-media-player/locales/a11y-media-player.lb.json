@@ -35,5 +35,12 @@
   "youTubeStartLoading": "Dréckt op Ofspillen.",
   "youTubeTranscriptLabel": "Den Transkript gëtt gelueden, soubal d'Medium ofgespillt gëtt.",
   "audioDescriptionLabel": "Audiobeschreiwung",
-  "openOnYouTube": "Op YouTube opmaachen"
+  "openOnYouTube": "Op YouTube opmaachen",
+  "interactiveLabel": "interaktiv",
+  "layoutLabel": "Layout",
+  "sideLabel": "Niewendrun",
+  "belowLabel": "Ënnendrënner",
+  "leftLabel": "Lénks",
+  "rightLabel": "Riets",
+  "hideTranscriptLabel": "Transkript verstoppen"
 }

@@ -35,5 +35,12 @@
   "youTubeStartLoading": "Dinani sewerani.",
   "youTubeTranscriptLabel": "Zolembedwa zidzatsegula media ikayamba kusewera.",
   "audioDescriptionLabel": "Kufotokoza ndi mawu",
-  "openOnYouTube": "Tsegulani pa YouTube"
+  "openOnYouTube": "Tsegulani pa YouTube",
+  "interactiveLabel": "yolumikizana",
+  "layoutLabel": "Kapangidwe",
+  "sideLabel": "Pambali",
+  "belowLabel": "Pansi",
+  "leftLabel": "Kumanzere",
+  "rightLabel": "Kumanja",
+  "hideTranscriptLabel": "Bisani Transcript"
 }

@@ -35,5 +35,12 @@
   "youTubeStartLoading": "Purichiyta ñit'iy.",
   "youTubeTranscriptLabel": "Qillqasqaqa medio purichkaptin cargakunqa.",
   "audioDescriptionLabel": "Uyarina willakuy",
-  "openOnYouTube": "YouTube-pi kichay"
+  "openOnYouTube": "YouTube-pi kichay",
+  "interactiveLabel": "tinkuq",
+  "layoutLabel": "Churay",
+  "sideLabel": "Waqtanpi",
+  "belowLabel": "Uraypi",
+  "leftLabel": "Lluq'i",
+  "rightLabel": "Paña",
+  "hideTranscriptLabel": "Qillqa willañiqita pakay"
 }

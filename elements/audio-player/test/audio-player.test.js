@@ -529,3 +529,63 @@ describe("audio-player test", function () {
     });
   });
 });
+
+describe("audio-player in the DDD player frame", () => {
+  const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+  const player = async (template) => {
+    const el = await fixture(template);
+    el.elementVisible = true;
+    await el.updateComplete;
+    await sleep(100);
+    const inner = el.shadowRoot.querySelector("a11y-media-player");
+    await inner.updateComplete;
+    return inner;
+  };
+
+  it("labels the header as audio and has no screen without a thumbnail", async () => {
+    const inner = await player(
+      html`<audio-player
+        source="${localAudio}"
+        media-title="Test Audio"
+      ></audio-player>`,
+    );
+    expect(inner.audioOnly).to.equal(true);
+    // an unset thumbnail reaches the player as an empty attribute
+    expect(inner.audioNoThumb).to.equal(true);
+    expect(
+      inner.shadowRoot.querySelector(".ddd-block-label").textContent.trim(),
+    ).to.equal("Audio · interactive");
+    expect(
+      inner.shadowRoot
+        .querySelector(".ddd-block-chip simple-icon-lite")
+        .getAttribute("icon"),
+    ).to.equal("av:equalizer");
+    // no picture: no fullscreen, transcript always below
+    expect(
+      inner.shadowRoot.querySelector("#header-fullscreen").hidden,
+    ).to.equal(true);
+    expect(inner.fullFlex).to.equal(false);
+    // play stays in the control bar
+    const play = inner.shadowRoot.querySelector(
+      '#controls a11y-media-button[icon="av:play-arrow"]',
+    );
+    expect(play).to.exist;
+  });
+
+  it("shows a thumbnail in a picture frame when one is given", async () => {
+    const inner = await player(
+      html`<audio-player
+        source="${localAudio}"
+        media-title="Test Audio"
+        thumbnail-src="data:image/gif;base64,R0lGODlhAQABAAAAADs="
+      ></audio-player>`,
+    );
+    expect(inner.audioNoThumb).to.equal(false);
+    expect(inner.playerStyle).to.contain("padding-top:");
+    expect(inner.playerStyle).to.contain("background-image");
+    const box = inner.shadowRoot
+      .querySelector("#player")
+      .getBoundingClientRect();
+    expect(box.height).to.be.above(0);
+  });
+});
