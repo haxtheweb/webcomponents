@@ -1,6 +1,7 @@
 import { expect, fixture, html, waitUntil } from "@open-wc/testing";
 import { LitElement } from "lit";
 import { store } from "../lib/core/haxcms-site-store.js";
+import "../lib/ui-components/navigation/site-menu-button.js";
 import {
   LessonViewMixin,
   lessonRootId,
@@ -15,7 +16,9 @@ import {
 
 class LessonHost extends LessonViewMixin(LitElement) {
   render() {
-    return html`${this.LessonViewButton()}`;
+    return html`${this.LessonViewButton()}
+      <site-menu-button type="prev"></site-menu-button>
+      <site-menu-button type="next"></site-menu-button>`;
   }
 }
 if (!globalThis.customElements.get("lesson-view-test-host")) {
@@ -278,10 +281,6 @@ describe("LessonViewMixin", () => {
     el._lessonViewScrollTo = (target) => {
       scrolledTo.push(target.getAttribute("data-lesson-view-marker"));
     };
-    let leftLesson = false;
-    el._lessonViewGoAfterLesson = () => {
-      leftLesson = true;
-    };
     const click = (type, reading) => {
       el._lessonViewReadingIndex = () => reading;
       const button = document.createElement("site-menu-button");
@@ -301,11 +300,56 @@ describe("LessonViewMixin", () => {
     expect(click("next", 0)).to.equal(true);
     expect(click("prev", 1)).to.equal(true);
     expect(scrolledTo).to.deep.equal(["formal", "layout", "formal"]);
-    // next from the last stacked page leaves the lesson
-    expect(click("next", 1)).to.equal(true);
-    expect(leftLesson).to.equal(true);
+    // next from the last stacked page goes through to the page after the
+    // lesson, which is where its label points
+    expect(click("next", 1)).to.equal(false);
     // previous from the lesson page's own content is the normal previous
     expect(click("prev", -1)).to.equal(false);
+  });
+
+  it("points previous / next at the page a click goes to", async () => {
+    const el = await fixture(
+      html`<lesson-view-test-host
+        ><p>Lesson page body</p></lesson-view-test-host
+      >`,
+    );
+    const prev = el.shadowRoot.querySelector('site-menu-button[type="prev"]');
+    const next = el.shadowRoot.querySelector('site-menu-button[type="next"]');
+    el.toggleLessonView();
+    await waitUntil(
+      () =>
+        el.querySelectorAll(":scope > hgroup[data-lesson-view-marker]")
+          .length === 2,
+    );
+    const at = async (reading) => {
+      el._lessonViewReadingIndex = () => reading;
+      el._lessonViewUpdateNav();
+      await next.updateComplete;
+      await prev.updateComplete;
+    };
+    // on the lesson page's own content: next is the first stacked page
+    await at(-1);
+    expect(next.targetItemId).to.equal("formal");
+    expect(next.label).to.equal("Formal Styles");
+    expect(prev.targetItemId).to.equal(null);
+    // on the first stacked page: previous is the lesson page
+    await at(0);
+    expect(next.targetItemId).to.equal("layout");
+    expect(next.label).to.equal("Layout and Elevation");
+    expect(prev.targetItemId).to.equal("lesson-3");
+    expect(prev.label).to.equal("Lesson 3");
+    // on the last stacked page: next is the page after the lesson, skipping
+    // the lesson's unpublished and link pages
+    await at(1);
+    expect(next.targetItemId).to.equal("lesson-4");
+    expect(next.label).to.equal("lesson-4");
+    expect(next.disabled).to.equal(false);
+    expect(prev.targetItemId).to.equal("formal");
+    // back to page by page hands the buttons back to the outline
+    el.toggleLessonView();
+    await next.updateComplete;
+    expect(next.targetItemId).to.equal(null);
+    expect(prev.targetItemId).to.equal(null);
   });
 
   it("leaves Print page to PrintBranchMixin outside whole-lesson view", async () => {

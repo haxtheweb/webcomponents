@@ -40,9 +40,12 @@ import { HAXCMSI18NMixin } from "./HAXCMSI18NMixin.js";
 
 // a reader's choice, kept for every HAX site they visit, like dark mode
 const STORAGE_KEY = "haxcms-lesson-view";
-// how far below the top of the viewport a page heading counts as "the page
-// being read" when previous / next decide where to go
-const READING_LINE = 96;
+// a page counts as "the page being read" once its heading is above this
+// line: the top third of the viewport, and never less than 96px
+const READING_LINE_MIN = 96;
+// how long the page opened from the menu or a link is kept lined up while
+// content above it (images, embeds) finishes loading and changes height
+const LANDING_SETTLE_MS = 3000;
 // tag names are only ever passed in by theme code, never by content
 const SAFE_TAG = /^[a-z][a-z0-9]*(-[a-z0-9]+)+$/;
 
@@ -225,6 +228,8 @@ export const LessonViewMixin = function (SuperClass) {
       this.__lessonViewDisposers = [];
       this.__lessonViewBodyChanged = this.__lessonViewBodyChanged.bind(this);
       this.__lessonViewNavClick = this.__lessonViewNavClick.bind(this);
+      this.__lessonViewScrolled = this.__lessonViewScrolled.bind(this);
+      this.__lessonViewScrollQueued = false;
       try {
         if (globalThis.localStorage.getItem(STORAGE_KEY) === "whole") {
           this.lessonView = "whole";
@@ -240,6 +245,13 @@ export const LessonViewMixin = function (SuperClass) {
         "json-outline-schema-active-body-changed",
         this.__lessonViewBodyChanged,
       );
+      // themes scroll inside their own containers and scroll does not
+      // bubble, so listen in the capture phase to keep previous / next
+      // naming the page they go to as the reader moves through the lesson
+      globalThis.addEventListener("scroll", this.__lessonViewScrolled, {
+        capture: true,
+        passive: true,
+      });
       // readers only: logged in or editing turns the view off
       this.__lessonViewDisposers.push(
         autorun(() => {
@@ -269,6 +281,9 @@ export const LessonViewMixin = function (SuperClass) {
         "json-outline-schema-active-body-changed",
         this.__lessonViewBodyChanged,
       );
+      globalThis.removeEventListener("scroll", this.__lessonViewScrolled, {
+        capture: true,
+      });
       for (let i = 0; i < this.__lessonViewDisposers.length; i++) {
         this.__lessonViewDisposers[i]();
       }
@@ -444,9 +459,13 @@ export const LessonViewMixin = function (SuperClass) {
      */
     _lessonViewReadingIndex() {
       const markers = this._lessonViewMarkers();
+      const line = Math.max(
+        READING_LINE_MIN,
+        (globalThis.innerHeight || 0) / 3,
+      );
       let current = -1;
       for (let i = 0; i < markers.length; i++) {
-        if (markers[i].getBoundingClientRect().top <= READING_LINE) {
+        if (markers[i].getBoundingClientRect().top <= line) {
           current = i;
         }
       }
@@ -461,6 +480,8 @@ export const LessonViewMixin = function (SuperClass) {
       this.querySelectorAll(":scope > [data-lesson-view]").forEach((node) => {
         node.remove();
       });
+      // previous / next mean the outline's previous / next again
+      this._lessonViewUpdateNav();
     }
 
     async _lessonViewRender() {
@@ -536,18 +557,70 @@ export const LessonViewMixin = function (SuperClass) {
           (m) => m.getAttribute("data-lesson-view-marker") === target,
         );
         if (marker) {
-          this._lessonViewScrollTo(marker);
+          this._lessonViewLand(marker, token);
         }
       }
+      this._lessonViewUpdateNav();
     }
 
-    _lessonViewScrollTo(el) {
-      let smooth = true;
-      try {
-        smooth = !globalThis.matchMedia("(prefers-reduced-motion: reduce)")
-          .matches;
-      } catch {
-        smooth = false;
+    /**
+     * Open the lesson at a page. Content above it (images, embeds) often
+     * finishes loading after the jump and pushes the page down, so keep it
+     * lined up while the content above changes size, until the reader
+     * scrolls, taps or types, or LANDING_SETTLE_MS passes.
+     */
+    _lessonViewLand(marker, token) {
+      this._lessonViewScrollTo(marker, true);
+      if (typeof globalThis.ResizeObserver !== "function") {
+        return;
+      }
+      let done = false;
+      const userEvents = ["wheel", "touchstart", "keydown", "pointerdown"];
+      const observer = new globalThis.ResizeObserver(() => {
+        if (!done && marker.isConnected && token === this.__lessonViewToken) {
+          marker.scrollIntoView({ block: "start" });
+          this._lessonViewUpdateNav();
+        }
+      });
+      const finish = () => {
+        if (done) {
+          return;
+        }
+        done = true;
+        observer.disconnect();
+        userEvents.forEach((name) => {
+          globalThis.removeEventListener(name, finish, { capture: true });
+        });
+      };
+      userEvents.forEach((name) => {
+        globalThis.addEventListener(name, finish, {
+          capture: true,
+          passive: true,
+        });
+      });
+      // everything above the page opened can change its position
+      for (let i = 0; i < this.children.length; i++) {
+        if (this.children[i] === marker) {
+          break;
+        }
+        observer.observe(this.children[i]);
+      }
+      globalThis.setTimeout(finish, LANDING_SETTLE_MS);
+    }
+
+    /**
+     * @param {HTMLElement} el what to bring to the top
+     * @param {boolean} instant jump without animating (opening at a page)
+     */
+    _lessonViewScrollTo(el, instant = false) {
+      let smooth = !instant;
+      if (smooth) {
+        try {
+          smooth = !globalThis.matchMedia("(prefers-reduced-motion: reduce)")
+            .matches;
+        } catch {
+          smooth = false;
+        }
       }
       el.scrollIntoView({
         behavior: smooth ? "smooth" : "auto",
@@ -560,18 +633,93 @@ export const LessonViewMixin = function (SuperClass) {
     }
 
     /**
-     * Previous / next in whole-lesson view move between the stacked pages.
-     * Next from the last page goes to whatever follows the lesson; previous
-     * from the lesson page's own content leaves the default (the page before
-     * the lesson).
+     * Where previous / next go in whole-lesson view, from the page being
+     * read: { prev, next, prevScroll, nextScroll }. prev / next are page ids
+     * (null: leave the button as usual). prevScroll / nextScroll are what to
+     * scroll to on this page, or null when the button leaves the page.
      */
-    __lessonViewNavClick(e) {
+    _lessonViewNavTargets() {
+      const out = {
+        prev: null,
+        next: null,
+        prevScroll: null,
+        nextScroll: null,
+      };
       if (
         !this.lessonViewActive() ||
         toJS(store.activeId) !== this.__lessonViewRoot
       ) {
+        return out;
+      }
+      const markers = this._lessonViewMarkers();
+      if (markers.length === 0) {
+        return out;
+      }
+      const reading = this._lessonViewReadingIndex();
+      if (markers[reading + 1]) {
+        out.nextScroll = markers[reading + 1];
+        out.next = out.nextScroll.getAttribute("data-lesson-view-marker");
+      } else {
+        // from the last page, next goes on to whatever follows the lesson
+        out.next = this._lessonViewAfterLessonId();
+      }
+      if (reading > 0) {
+        out.prevScroll = markers[reading - 1];
+        out.prev = out.prevScroll.getAttribute("data-lesson-view-marker");
+      } else if (reading === 0) {
+        // from the first stacked page, previous is the lesson page itself
+        out.prev = this.__lessonViewRoot;
+        out.prevScroll =
+          this.shadowRoot.querySelector("site-active-title") ||
+          this.shadowRoot.querySelector("#haxcms-theme-top");
+      }
+      return out;
+    }
+
+    /**
+     * Point the theme's previous / next buttons at where they go now, so
+     * their label (and a theme's "Next: page title" text) names the page a
+     * click goes to. Runs when the view changes, after pages are stacked
+     * and as the reader scrolls; outside whole-lesson view it hands the
+     * buttons back to the outline's previous / next.
+     */
+    _lessonViewUpdateNav() {
+      if (!this.shadowRoot) {
         return;
       }
+      const targets = this._lessonViewNavTargets();
+      this.shadowRoot.querySelectorAll("site-menu-button").forEach((button) => {
+        const type = button.type || button.getAttribute("type");
+        let want = null;
+        if (type === "next") {
+          want = targets.next;
+        } else if (type === "prev") {
+          want = targets.prev;
+        }
+        if ((button.targetItemId || null) !== want) {
+          button.targetItemId = want;
+        }
+      });
+    }
+
+    __lessonViewScrolled() {
+      if (this.__lessonViewScrollQueued) {
+        return;
+      }
+      this.__lessonViewScrollQueued = true;
+      globalThis.requestAnimationFrame(() => {
+        this.__lessonViewScrollQueued = false;
+        this._lessonViewUpdateNav();
+      });
+    }
+
+    /**
+     * Previous / next in whole-lesson view scroll between the stacked pages.
+     * When a button leaves the page (next from the last page, previous from
+     * the lesson page's own content) the click goes through as usual, to
+     * the page its label names.
+     */
+    __lessonViewNavClick(e) {
       const path = e.composedPath ? e.composedPath() : [];
       let button = null;
       for (let i = 0; i < path.length; i++) {
@@ -587,39 +735,24 @@ export const LessonViewMixin = function (SuperClass) {
         return;
       }
       const type = button.type || button.getAttribute("type");
-      const markers = this._lessonViewMarkers();
-      if (markers.length === 0) {
-        return;
-      }
-      const reading = this._lessonViewReadingIndex();
-      if (type === "next") {
+      const targets = this._lessonViewNavTargets();
+      const scrollTo =
+        type === "next"
+          ? targets.nextScroll
+          : type === "prev"
+            ? targets.prevScroll
+            : null;
+      if (scrollTo) {
         e.preventDefault();
         e.stopPropagation();
-        if (markers[reading + 1]) {
-          this._lessonViewScrollTo(markers[reading + 1]);
-        } else {
-          this._lessonViewGoAfterLesson();
-        }
-      } else if (type === "prev" && reading >= 0) {
-        e.preventDefault();
-        e.stopPropagation();
-        if (reading > 0) {
-          this._lessonViewScrollTo(markers[reading - 1]);
-        } else {
-          const top =
-            this.shadowRoot.querySelector("site-active-title") ||
-            this.shadowRoot.querySelector("#haxcms-theme-top");
-          if (top) {
-            this._lessonViewScrollTo(top);
-          }
-        }
+        this._lessonViewScrollTo(scrollTo);
       }
     }
 
     /**
      * The page after the lesson's last page in the site's reading order.
      */
-    _lessonViewGoAfterLesson() {
+    _lessonViewAfterLessonId() {
       const manifest = toJS(store.manifest);
       const items = manifest && manifest.items ? manifest.items : [];
       const pages = lessonPages(items, this.__lessonViewRoot);
@@ -634,13 +767,18 @@ export const LessonViewMixin = function (SuperClass) {
         }
       }
       for (let i = index + 1; i > 0 && i < order.length; i++) {
-        if (!inLesson.has(order[i].id)) {
+        // skip the lesson's own pages, including ones not stacked (unpublished
+        // or link pages)
+        if (
+          !inLesson.has(order[i].id) &&
+          order[i].parent !== this.__lessonViewRoot
+        ) {
           // when that page is part of a lesson too, the view stays whole
           // and shows that lesson
-          this._lessonViewGo(order[i].id, false);
-          return;
+          return order[i].id;
         }
       }
+      return null;
     }
 
     HAXCMSGlobalStyleSheetContent() {

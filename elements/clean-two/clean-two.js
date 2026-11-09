@@ -155,7 +155,8 @@ class CleanTwo extends LessonViewMixin(
         }
         .email-btn,
         .print-branch-btn simple-icon-button-lite,
-        .pdf-page-btn simple-icon-button-lite {
+        .pdf-page-btn simple-icon-button-lite,
+        .lesson-view-btn simple-icon-button-lite {
           --simple-icon-button-background-color: transparent;
           --simple-icon-button-focus-background-color: transparent;
           --simple-icon-button-disabled-background-color: transparent;
