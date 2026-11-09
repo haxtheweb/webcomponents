@@ -278,6 +278,16 @@ describe("RichTextEditorRangeBehaviors (via rich-text-editor-toolbar)", () => {
     expect(toolbar.sanitizeHTML("<p>keep</p>")).to.equal("<p>keep</p>");
   });
 
+  it("sanitizeHTML runs the shared sanitizer", () => {
+    const out = toolbar.sanitizeHTML(
+      '<body><p onclick="evil()">x</p><a href="javascript:evil()">y</a><script>evil()</script></body>',
+    );
+    expect(out.includes("onclick")).to.equal(false);
+    expect(out.includes("javascript:")).to.equal(false);
+    expect(out.includes("<script>")).to.equal(false);
+    expect(out.includes("<p>x</p>")).to.equal(true);
+  });
+
   it("_handleCommand runs a plain execCommand", async () => {
     toolbar.setTarget(editor);
     const range = selectContents(editor);
@@ -355,6 +365,30 @@ describe("RichTextEditorRangeBehaviors (via rich-text-editor-toolbar)", () => {
     expect(editor.innerHTML.toLowerCase().includes("<b>pasted</b>")).to.equal(
       true,
     );
+    toolbar.unsetTarget(editor);
+  });
+
+  it("paste strips inline handlers and javascript: URLs", async () => {
+    toolbar.setTarget(editor);
+    const range = selectContents(editor);
+    toolbar.range = range;
+    toolbar.paste(
+      '<img src="x" onerror="globalThis.__rtePasteXSS = 1"> <a href="javascript:void(0)">x</a> <em data-keep="1">ok</em>',
+      range,
+      true,
+    );
+    expect(editor.querySelector("[onerror]")).to.equal(null);
+    expect(editor.querySelector("a").hasAttribute("href")).to.equal(false);
+    expect(editor.querySelector("em").getAttribute("data-keep")).to.equal("1");
+    // the unsanitized flag still goes through the shared sanitizer
+    toolbar.paste(
+      '<b onclick="globalThis.__rtePasteXSS = 2">raw</b>',
+      selectContents(editor),
+      false,
+    );
+    expect(editor.querySelector("[onclick]")).to.equal(null);
+    await new Promise((r) => setTimeout(r, 100));
+    expect(globalThis.__rtePasteXSS).to.equal(undefined);
     toolbar.unsetTarget(editor);
   });
 

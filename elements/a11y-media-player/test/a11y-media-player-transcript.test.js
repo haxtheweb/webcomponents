@@ -196,22 +196,15 @@ describe("a11y-media-player transcript system", () => {
     el.selectTranscriptByKey(0);
     await el.updateComplete;
     const printed = [];
-    let bodyHtml = "";
+    // security: print() builds the document with DOM nodes, so hand it a
+    // real (inert) document and read its serialized body afterwards
+    const printDoc = globalThis.document.implementation.createHTMLDocument("");
+    printDoc.close = () => {
+      printed.push("close");
+    };
     const originalOpen = globalThis.open;
     globalThis.open = () => ({
-      document: {
-        body: {
-          set innerHTML(v) {
-            bodyHtml = v;
-          },
-          get innerHTML() {
-            return bodyHtml;
-          },
-        },
-        close() {
-          printed.push("close");
-        },
-      },
+      document: printDoc,
       focus() {
         printed.push("focus");
       },
@@ -226,6 +219,7 @@ describe("a11y-media-player transcript system", () => {
     el.addEventListener("transcript-printed", (e) => fired.push(e.type));
     el.print();
     globalThis.open = originalOpen;
+    const bodyHtml = printDoc.body.innerHTML;
     expect(fired).to.deep.equal(["transcript-printed"]);
     expect(printed).to.deep.equal([
       "close",
@@ -238,28 +232,52 @@ describe("a11y-media-player transcript system", () => {
     expect(bodyHtml.indexOf("00:01")).to.be.above(-1);
   });
 
-  it("print() omits timestamps when hideTimestamps is set", async () => {
+  it("print() renders cue text and the title as text, never markup", async () => {
+    el.mediaTitle = '<img src=x onerror="globalThis.__printXSS = 1">';
     el.selectTranscriptByKey(0);
     await el.updateComplete;
-    el.hideTimestamps = true;
-    await el.updateComplete;
-    let bodyHtml = "";
+    const cue = el.transcriptTrack.cues[0];
+    const originalText = cue.text;
+    cue.text = '<b onclick="evil()">bold</b> & <script>evil()</script>';
+    const printDoc = globalThis.document.implementation.createHTMLDocument("");
+    printDoc.close = () => {};
     const originalOpen = globalThis.open;
     globalThis.open = () => ({
-      document: {
-        body: {
-          set innerHTML(v) {
-            bodyHtml = v;
-          },
-        },
-        close() {},
-      },
+      document: printDoc,
       focus() {},
       print() {},
       addEventListener() {},
     });
     el.print();
     globalThis.open = originalOpen;
+    cue.text = originalText;
+    expect(printDoc.querySelector("img")).to.equal(null);
+    expect(printDoc.querySelector("b")).to.equal(null);
+    expect(printDoc.querySelector("script")).to.equal(null);
+    expect(printDoc.querySelector("h1").textContent).to.include("<img src=x");
+    // cueToText() drops VTT/HTML tags, so the cue survives only as text
+    expect(printDoc.body.textContent).to.include("bold & evil()");
+    expect(printDoc.body.innerHTML).to.not.include("onclick");
+    expect(globalThis.__printXSS).to.equal(undefined);
+  });
+
+  it("print() omits timestamps when hideTimestamps is set", async () => {
+    el.selectTranscriptByKey(0);
+    await el.updateComplete;
+    el.hideTimestamps = true;
+    await el.updateComplete;
+    const printDoc = globalThis.document.implementation.createHTMLDocument("");
+    printDoc.close = () => {};
+    const originalOpen = globalThis.open;
+    globalThis.open = () => ({
+      document: printDoc,
+      focus() {},
+      print() {},
+      addEventListener() {},
+    });
+    el.print();
+    globalThis.open = originalOpen;
+    const bodyHtml = printDoc.body.innerHTML;
     expect(bodyHtml.indexOf("00:01")).to.equal(-1);
     expect(bodyHtml.indexOf("Second cue")).to.be.above(-1);
   });

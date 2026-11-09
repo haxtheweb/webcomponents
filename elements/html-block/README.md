@@ -14,6 +14,29 @@ import '@haxtheweb/html-block/html-block.js';
 <script type="module" src="https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/html-block/html-block.js"></script>
 ```
 
+## Running script with `allowscript`
+
+By default every html-block sanitizes its content on render: inline event
+handlers (`onclick=...`) are removed, `javascript:` URLs are dropped and
+`<script>` tags are turned into escaped text. Setting the `allowscript`
+attribute asks for the raw markup instead, but because that attribute is
+saved with the page content it is **not** honored on its own. The hosting
+platform has to opt in once, before content loads:
+
+```html
+<script>
+  // only on platforms where every author is trusted to run script for
+  // every visitor (a personal site, a local demo). HAXcms leaves this off.
+  globalThis.HAXHtmlBlockAllowScript = true;
+  // or, through the app settings object HAXcms backends already provide:
+  globalThis.appSettings = { htmlBlockAllowScript: true };
+</script>
+```
+
+Without the opt in, `allowscript` is kept on the element (content round
+trips unchanged) but ignored, and the shared sanitizer in `@haxtheweb/utils`
+removes the attribute from imported / rendered content.
+
 ## Develop / Demo
 Running `npm start` will start a local development server and open your default browser to display it. It will start watching *.js and lib/*.js files for changes automatically for your demo.
 ```bash

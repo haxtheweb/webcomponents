@@ -585,6 +585,28 @@ describe("haxcms-site-editor-ui file drop and DOM helpers", () => {
       expect(() => element._downloadBlob(blob, "test.txt")).to.not.throw();
     });
   });
+
+  describe("insertElementsFromContentBlob", () => {
+    it("sanitizes microservice HTML before inserting it next to the active node", async () => {
+      store.editMode = true;
+      const parent = globalThis.document.createElement("div");
+      const active = globalThis.document.createElement("p");
+      parent.appendChild(active);
+      globalThis.document.body.appendChild(parent);
+      element.activeNode = active;
+      element.insertElementsFromContentBlob(
+        '<p><img src="x" onerror="globalThis.__blobXSS = 1"> <a href="javascript:void(0)">x</a></p><h2 data-keep="1">ok</h2>',
+      );
+      expect(parent.querySelector("[onerror]")).to.equal(null);
+      expect(parent.querySelector("a").hasAttribute("href")).to.equal(false);
+      expect(parent.querySelector("h2").getAttribute("data-keep")).to.equal(
+        "1",
+      );
+      await new Promise((r) => setTimeout(r, 100));
+      expect(globalThis.__blobXSS).to.equal(undefined);
+      parent.remove();
+    });
+  });
 });
 
 describe("haxcms-site-editor-ui _canApplyAdminRoutePath", () => {

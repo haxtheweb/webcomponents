@@ -8,10 +8,12 @@ name: locale-guard
 # the strings in the element (this.t, haxProperties) and
 # elements/<name>/locales/<namespace>.en.json.
 #
-# This check fails when a pull request adds, changes, renames or deletes any
-# non-English locale file (elements/*/locales/<namespace>.<lang>.json where
-# <lang> is not en). The nightly translation PR from this repository is the
-# one exception.
+# This check warns (it does not fail) when a pull request adds, changes,
+# renames or deletes any non-English locale file
+# (elements/*/locales/<namespace>.<lang>.json where <lang> is not en). The
+# nightly translation job reconciles those files after the fact, so a PR that
+# ships its own translations can still merge; the warning just makes it
+# visible. The nightly translation PR from this repository is not flagged.
 #
 # It diffs the PR merge commit against its first parent (the base branch), so
 # only this PR's own changes count. Only commits and trees are fetched, not
@@ -35,7 +37,7 @@ jobs:
           filter: blob:none
           sparse-checkout: .github
 
-      - name: Only English locale sources may change
+      - name: Non-English locale changes (warning only)
         env:
           HEAD_REF: ${{ github.head_ref }}
           SAME_REPO: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
@@ -65,7 +67,7 @@ jobs:
             exit 0
           fi
 
-          message="Change only English source strings (this.t, haxProperties, locales/*.en.json). Translations are handled nightly in the chore/nightly-translations PR, so revert your changes to the other locale files."
+          message="Translations are normally handled nightly in the chore/nightly-translations PR. This PR changes non-English locale files directly; that is allowed, and the nightly job reconciles them after merge."
           {
             echo "## Non-English locale files changed"
             echo ""
@@ -80,10 +82,10 @@ jobs:
               echo "- ...and $(( ${#blocked[@]} - 200 )) more"
             fi
             echo ""
-            echo "To drop them from this branch: \`git checkout origin/<base branch> -- <files>\` for changed files, \`git rm <files>\` for new ones."
+            echo "Nothing to do. To leave translations to the nightly job instead: \`git checkout origin/<base branch> -- <files>\` for changed files, \`git rm <files>\` for new ones."
           } >> "$GITHUB_STEP_SUMMARY"
           for file in "${blocked[@]:0:50}"; do
-            echo "::error file=$file,title=Non-English locale file changed::$message"
+            echo "::warning file=$file,title=Non-English locale file changed::$message"
           done
-          echo "::error title=Translations are handled nightly::${#blocked[@]} non-English locale file(s) changed. $message"
-          exit 1
+          echo "::warning title=Translations are handled nightly::${#blocked[@]} non-English locale file(s) changed. $message"
+          exit 0

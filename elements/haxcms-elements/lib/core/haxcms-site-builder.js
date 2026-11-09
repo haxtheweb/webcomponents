@@ -8,7 +8,10 @@ import {
   localStorageGet,
 } from "@haxtheweb/utils/lib/storage.js";
 import { sanitizeURLValue } from "@haxtheweb/utils/lib/url.js";
-import { neutralizeStrayScripts } from "@haxtheweb/utils/lib/sanitize.js";
+import {
+  neutralizeStrayScripts,
+  sanitizeNodeTree,
+} from "@haxtheweb/utils/lib/sanitize.js";
 import { autorun, toJS } from "mobx";
 import { store, HAXcmsStore } from "./haxcms-site-store.js";
 import "./haxcms-site-router.js";
@@ -222,7 +225,11 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
   }
   _updateActiveItemContent(data, activeItem = null) {
     if (data) {
-      let tmp = globalThis.document.createElement("div");
+      // security: parse page HTML in an inert document (no browsing context)
+      // so nothing in it runs or loads while ids are normalized; the live
+      // insert happens later in _activeItemContentChanged after sanitizing
+      const inert = globalThis.document.implementation.createHTMLDocument("");
+      let tmp = inert.createElement("div");
       tmp.innerHTML = data;
       for (const node of tmp.childNodes) {
         this.nodeNormalizeIDs(node);
@@ -250,19 +257,44 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
   }
   display404Error() {
     if (store.themeElement) {
-      let frag = globalThis.document.createDocumentFragment();
-      let p = globalThis.document.createElement("p");
-      p.innerHTML = `<strong>${store.getInternalRoute()}</strong> ${
-        this.t.couldNotBeLocated
-      }. ${this.t.hereAreSomePossibleRemedies}
-      <ul>
-        <li><a href="x/displays/search?search=${store.getInternalRoute()}">${
-          this.t.useSearchToLocateTheContentYouAreLookingFor
-        }</a></li>
-        <li><a href="./">${this.t.goToTheHomePage}</a></li>
-        <li>${this.t.navigateToAnotherPageInTheMenu}</li>
-      </ul>`;
+      // security: the requested route is attacker controlled (it is the URL
+      // that was not found), so build this with text nodes and encode it for
+      // the search link instead of interpolating it into HTML
+      const route = String(store.getInternalRoute() || "");
+      const doc = globalThis.document;
+      let frag = doc.createDocumentFragment();
+      let p = doc.createElement("p");
+      let strong = doc.createElement("strong");
+      strong.textContent = route;
+      p.appendChild(strong);
+      p.appendChild(
+        doc.createTextNode(
+          ` ${this.t.couldNotBeLocated}. ${this.t.hereAreSomePossibleRemedies}`,
+        ),
+      );
+      let ul = doc.createElement("ul");
+      let searchLi = doc.createElement("li");
+      let searchLink = doc.createElement("a");
+      searchLink.setAttribute(
+        "href",
+        "x/displays/search?search=" + encodeURIComponent(route),
+      );
+      searchLink.textContent =
+        this.t.useSearchToLocateTheContentYouAreLookingFor;
+      searchLi.appendChild(searchLink);
+      ul.appendChild(searchLi);
+      let homeLi = doc.createElement("li");
+      let homeLink = doc.createElement("a");
+      homeLink.setAttribute("href", "./");
+      homeLink.textContent = this.t.goToTheHomePage;
+      homeLi.appendChild(homeLink);
+      ul.appendChild(homeLi);
+      let menuLi = doc.createElement("li");
+      menuLi.textContent = this.t.navigateToAnotherPageInTheMenu;
+      ul.appendChild(menuLi);
+      // the HTML parser closed the <p> before the <ul>; keep that structure
       frag.appendChild(p);
+      frag.appendChild(ul);
       wipeSlot(store.themeElement, "*");
       store.themeElement.appendChild(frag);
       this._setThemeBusyState(false);
@@ -1475,6 +1507,12 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           // createContextualFragment scripts run once connected; encapScript
           // is a string pass, so also drop any script it let through
           neutralizeStrayScripts(frag);
+          // security: strip inline event handlers, javascript: URLs, iframe
+          // srcdoc, <base> and <meta> before this touches the live page. The
+          // editor already runs this same pass on import, so authored content
+          // (custom elements, data attributes, <template> in code-sample,
+          // iframes with http(s) src) renders unchanged.
+          sanitizeNodeTree(frag);
           store.themeElement.appendChild(frag);
           this.dispatchEvent(
             new CustomEvent("json-outline-schema-active-body-changed", {

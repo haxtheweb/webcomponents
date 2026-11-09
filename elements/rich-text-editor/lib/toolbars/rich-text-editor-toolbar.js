@@ -21,6 +21,7 @@ import "@haxtheweb/rich-text-editor/lib/buttons/rich-text-editor-link.js";
 import "@haxtheweb/rich-text-editor/lib/buttons/rich-text-editor-unlink.js";
 import { stripHtmlComments } from "../stripHtmlComments.js";
 import { extractBodyContents } from "@haxtheweb/utils/lib/safe-html.js";
+import { sanitizeHTMLString } from "@haxtheweb/utils/lib/sanitize.js";
 
 globalThis.RichTextEditorToolbars = globalThis.RichTextEditorToolbars || [];
 /**
@@ -1302,7 +1303,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     registerButton(button) {
       if (super.registerButton) super.registerButton(button);
       //firefox doesn't allow for clipboard button
-      // eslint-disable-next-line baseline-js/use-baseline -- feature check on navigator.clipboard
+
       if (button.command === "paste" && !navigator.clipboard) {
         button.remove();
         return;
@@ -1640,13 +1641,20 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @returns {string} filtered html as string
      */
     sanitizeHTML(html = "") {
+      if (typeof html !== "string") {
+        html = html == null ? "" : String(html);
+      }
       // detect a full <body>...</body> wrapper (the old detection used
       // literal dots so it never matched single-line html, and the strip
       // pattern matched a literal "<?body" with no replacement argument,
       // inserting the string "undefined" — issue #3077, bug 27)
       const bodyContents = extractBodyContents(html);
       if (bodyContents !== null) html = bodyContents;
-      return html;
+      // security: this is the gate for pasted / source-edited / command HTML
+      // before it is written into the editable target, so run the shared
+      // sanitizer (inline handlers, javascript: URLs, srcdoc, <base>/<meta>,
+      // stray scripts) and not just the <body> unwrap
+      return sanitizeHTMLString(html);
     }
     /**
      * holds on to edits so cancel willwork

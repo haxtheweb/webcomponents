@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html } from "lit";
+import { sanitizeHTMLString } from "@haxtheweb/utils/lib/sanitize.js";
 
 /**
  * `simple-search-content`
@@ -34,7 +35,10 @@ class SimpleSearchContent extends LitElement {
    */
   _searchContent(searchObject) {
     let html = this.innerHTML;
-    this.innerHTML = searchObject.findMatches(html);
+    // security: findMatches only wraps terms in <simple-search-match>, but
+    // the serialized content is being written back as live markup, so run
+    // it through the shared sanitizer on the way in
+    this.innerHTML = sanitizeHTMLString(searchObject.findMatches(html));
   }
 
   /**
