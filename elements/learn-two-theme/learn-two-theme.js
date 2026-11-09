@@ -541,7 +541,11 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
           aria-expanded="${this.opened}"
           aria-controls="drawer"
         ></simple-icon-button-lite>
-        <div class="drawer ${this.opened ? "opened" : ""}" id="drawer">
+        <div
+          class="drawer ${this.opened ? "opened" : ""}"
+          id="drawer"
+          ?inert="${this._drawerMode && !this.opened}"
+        >
           <simple-icon-button-lite
             id="menubutton2"
             icon="menu"
@@ -618,7 +622,28 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
         type: Boolean,
         reflect: true,
       },
+      _drawerMode: { type: Boolean, state: true },
     };
+  }
+  /**
+   * Below 900px the menu is an off-screen drawer while closed; track
+   * that so the closed drawer can be made inert (out of the tab order and
+   * the accessibility tree). Above it the menu stays visible either way.
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    this.__drawerMQ = globalThis.matchMedia("(max-width: 900px)");
+    this.__drawerMQHandler = (e) => {
+      this._drawerMode = e.matches;
+    };
+    this.__drawerMQ.addEventListener("change", this.__drawerMQHandler);
+    this._drawerMode = this.__drawerMQ.matches;
+  }
+  disconnectedCallback() {
+    if (this.__drawerMQ) {
+      this.__drawerMQ.removeEventListener("change", this.__drawerMQHandler);
+    }
+    super.disconnectedCallback();
   }
   toggleDrawer(_e) {
     this.opened = !this.opened;

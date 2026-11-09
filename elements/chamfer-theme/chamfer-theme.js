@@ -253,17 +253,40 @@ class ChamferTheme extends HAXCMSThemeParts(
           .body-area {
             --chamfer-notch-size: var(--ddd-spacing-4);
           }
+          /*
+           * The toggle lives outside .site-menu-col so it stays on screen
+           * when the column slides away, and outside .body-area because
+           * that area's clip-path would clip it. Fixed keeps it in reach
+           * on scroll and above the open column.
+           */
           #haxcmsmobilemenubutton {
             display: inline-flex;
+            position: fixed;
+            top: var(--ddd-spacing-0);
+            left: var(--ddd-spacing-0);
+            z-index: 21;
+            border-radius: var(--ddd-radius-sm);
+            box-shadow: var(--ddd-boxShadow-sm);
+            background-color: light-dark(
+              var(--ddd-theme-default-limestoneLight),
+              var(--ddd-theme-default-coalyGray)
+            );
           }
           .site-menu-col {
             position: fixed;
+            box-sizing: border-box;
+            padding-top: var(--ddd-spacing-14);
             top: var(--ddd-spacing-0);
             left: var(--ddd-spacing-0);
             bottom: var(--ddd-spacing-0);
             z-index: 20;
             transition: transform var(--ddd-duration-normal, 0.3s) ease-in-out;
             overflow-y: auto;
+          }
+          /* clear the fixed HAX editing bar when logged in */
+          :host([is-logged-in]) #haxcmsmobilemenubutton,
+          :host([is-logged-in]) .site-menu-col {
+            top: var(--ddd-spacing-14);
           }
           :host(:not([menu-open])) .site-menu-col {
             transform: translateX(calc(-1 * var(--chamfer-menu-width)));
@@ -301,9 +324,14 @@ class ChamferTheme extends HAXCMSThemeParts(
             }
           </slot>
         </div>
+        ${this.HAXCMSMobileMenuButton()}
         <div class="body-area" part="body-area">
-          <div class="site-menu-col" part="site-menu">
-            ${this.HAXCMSMobileMenuButton()} ${this.HAXCMSMobileMenu()}
+          <div
+            class="site-menu-col"
+            part="site-menu"
+            ?inert="${this._drawerMode && !this.menuOpen}"
+          >
+            ${this.HAXCMSMobileMenu()}
             <div class="below-menu-region" part="below-menu">
               <site-region name="belowMenu"></site-region>
               <slot name="below-menu"></slot>
@@ -333,7 +361,28 @@ class ChamferTheme extends HAXCMSThemeParts(
       image: { type: String },
       imageAlt: { type: String },
       imageLink: { type: String },
+      _drawerMode: { type: Boolean, state: true },
     };
+  }
+  /**
+   * Below 900px the menu is an off-screen drawer while closed; track
+   * that so the closed drawer can be made inert (out of the tab order and
+   * the accessibility tree). Above it the menu stays visible either way.
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    this.__drawerMQ = globalThis.matchMedia("(max-width: 900px)");
+    this.__drawerMQHandler = (e) => {
+      this._drawerMode = e.matches;
+    };
+    this.__drawerMQ.addEventListener("change", this.__drawerMQHandler);
+    this._drawerMode = this.__drawerMQ.matches;
+  }
+  disconnectedCallback() {
+    if (this.__drawerMQ) {
+      this.__drawerMQ.removeEventListener("change", this.__drawerMQHandler);
+    }
+    super.disconnectedCallback();
   }
 }
 globalThis.customElements.define(ChamferTheme.tag, ChamferTheme);

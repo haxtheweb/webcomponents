@@ -695,7 +695,11 @@ class PolarisInventTheme extends LTIResizingMixin(
                 ></replace-tag>`
           }
           ${this.QRCodeButton("right")}
-          <div class="left-col ddd-font-navigation" part="left-col">
+          <div
+            class="left-col ddd-font-navigation"
+            part="left-col"
+            ?inert="${!this.menuOpen}"
+          >
             ${this.HAXCMSMobileMenu()}
           </div>
         </div>
