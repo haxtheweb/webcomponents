@@ -426,8 +426,12 @@ export function sanitizeNodeTree(
   if (!root) {
     return root;
   }
+  const allowScript = platformAllowsHtmlBlockScript();
   const visit = (el) => {
     sanitizeElementAttributes(el, true);
+    if (!allowScript && el.hasAttribute && el.hasAttribute("allowscript")) {
+      el.removeAttribute("allowscript");
+    }
     if (
       sanitizeTemplateContents &&
       el.tagName &&
