@@ -430,7 +430,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     ) {
       SuperDaemonInstance.voiceSearch = true;
     }
-    SuperDaemonInstance.icon = "hax:wizard-hat";
+    SuperDaemonInstance.icon = "hax:world-traveler-plain";
     SuperDaemonInstance.appendContext("*");
     this._restoreMerlinAllowedCallback();
 

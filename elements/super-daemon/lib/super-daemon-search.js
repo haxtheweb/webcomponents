@@ -16,8 +16,7 @@ import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminIcons.js";
 import {
   MerlinDarkScheme,
   MerlinWandStyles,
-  merlinWand,
-  MERLIN_ICONS,
+  merlinMark,
 } from "./super-daemon-hax-ui.js";
 
 export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
@@ -190,7 +189,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
 
   render() {
     return html`<div class="field merlin-wand-host" part="field">
-      ${MERLIN_ICONS.includes(this.icon) ? merlinWand() : ``}
+      ${merlinMark(this.icon)}
       ${
         this.commandContext != "*"
           ? html`<simple-icon-lite
@@ -477,6 +476,15 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
         :host([mini]:not([wand])) .field .merlin-wand {
           --merlin-wand-size: var(--hax-ui-icon);
         }
+        /* the World Traveler takes the field's ink; his lit parts carry
+           the color */
+        .field .merlin-traveler {
+          --merlin-traveler-size: 24px;
+          color: var(--hax-ui-text);
+        }
+        :host([mini]:not([wand])) .field .merlin-traveler {
+          --merlin-traveler-size: var(--hax-ui-icon);
+        }
         .user-context-icon {
           flex: none;
           display: inline-grid;
@@ -549,6 +557,13 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
         }
         :host([mini]:not([wand])) simple-fields-field::part(option-input) {
           font-size: var(--hax-ui-admin-font-size);
+        }
+        /* the input row fills the field and centers the text on it, so
+           the empty description row under it can't push the text above
+           the field's middle */
+        simple-fields-field::part(field-main) {
+          flex: 0 0 100%;
+          align-items: center;
         }
         simple-fields-field::part(label) {
           opacity: 0;

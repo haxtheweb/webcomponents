@@ -95,6 +95,27 @@ const ADMIN_ROUTE_PATHS = new Set(Object.keys(ADMIN_ROUTE_QUERY_PATHS));
  * @demo demo/index.html
  * @microcopy - the mental model for this element
  */
+// HAX UI dark, the same values hax-ui-styles uses for its dark theme. The
+// top bar and the Merlin popover it opens wear it whatever theme is on, so
+// nothing on the bar flips between light and dark.
+const MERLIN_DARK = {
+  "color-scheme": "dark",
+  "--hax-ui-color-scheme": "dark",
+  "--hax-ui-color": "#ffffff",
+  "--hax-ui-color-focus": "#ffffff",
+  "--hax-ui-color-faded": "#c5c3be",
+  "--hax-ui-background-color": "var(--ddd-theme-default-coalyGray, #262626)",
+  "--hax-ui-background-color-secondary": "#111",
+  "--hax-ui-background-color-faded": "#222",
+  "--hax-ui-color-accent": "#00c9ff",
+  "--hax-ui-color-accent-secondary": "#00c9ff",
+  "--hax-ui-background-color-accent": "#000",
+  "--hax-ui-color-danger": "#ff8f8f",
+  "--hax-ui-color-danger-secondary": "#ff2222",
+  "--hax-ui-background-color-danger": "#000",
+  "--hax-ui-border-color": "#000",
+};
+
 class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   HAXCMSI18NMixin(winEventsElement(ResponsiveUtilityBehaviors(DDD))),
 ) {
@@ -135,6 +156,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         #editbutton {
           visibility: hidden;
           opacity: 0;
+          /* the "start editing" pulse in the bar's own sky, not the page
+             theme's primary, so it reads the same in light and dark */
+          --ddd-animation-pulse-color: 204, 233, 255, 0.55;
         }
 
         :host([page-allowed]) #editbutton,
@@ -169,6 +193,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
            16px after the hidden #merlin anchor, which is where the open
            popover draws its own field, so the two line up exactly */
         super-daemon-search.merlin {
+          /* a darker well than the bar, so the field reads as a field */
+          --hax-ui-background-color: #111;
           border: none;
           height: var(--ddd-control-height-sm, 40px);
           margin: 0 0 0 calc(var(--ddd-spacing-4, 16px) + 1px);
@@ -176,6 +202,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         }
         .toolbar-buttons.center-toolbar-buttons {
           gap: 0;
+        }
+        /* the way back out of Merlin when it fills a phone's bar */
+        #merlinclose {
+          display: none;
+          margin-right: var(--hax-ui-gap-md, 8px);
         }
 
         :host([dark-mode]) #merlin {
@@ -269,7 +300,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         simple-toolbar-button.top-bar-button::part(button):focus-visible,
         simple-toolbar-menu.top-bar-button::part(button):focus-visible,
         haxcms-button-add.top-bar-button::part(button):focus-visible,
-        .haxLogo:focus-visible,
         .mysiteslink:focus-visible {
           outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
           outline-offset: 2px;
@@ -292,6 +322,27 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           /* Coaly gray in both schemes so the bar stands apart from light
              pages and from Potential midnight, the usual dark page ground */
           --bg-color: var(--ddd-theme-default-coalyGray);
+          /* the bar and everything in it (menus, Merlin, the edit tools) is
+             HAX UI dark whatever theme the page or the HAX UI uses, so
+             nothing on it flips between light and dark */
+          --hax-ui-color-scheme: dark;
+          --hax-ui-color: var(--ddd-theme-default-white, #ffffff);
+          --hax-ui-color-focus: var(--ddd-theme-default-white, #ffffff);
+          --hax-ui-color-faded: #c5c3be;
+          --hax-ui-background-color: var(--ddd-theme-default-coalyGray);
+          --hax-ui-background-color-secondary: #111;
+          --hax-ui-background-color-faded: #222;
+          --hax-ui-color-accent: #00c9ff;
+          --hax-ui-color-accent-secondary: #00c9ff;
+          --hax-ui-background-color-accent: #000;
+          --hax-ui-color-danger: #ff8f8f;
+          --hax-ui-color-danger-secondary: #ff2222;
+          --hax-ui-background-color-danger: #000;
+          --hax-ui-border-color: #000;
+          /* your character's frame: the same dark well as Merlin's field */
+          --app-hax-user-menu-toggle-background: #111;
+          --app-hax-user-menu-toggle-background-hover: #222;
+          --app-hax-user-menu-toggle-border-color: var(--hax-ui-line-strong);
           --accent-color: var(--hax-ui-on-titlebar);
           color: var(--hax-ui-on-titlebar);
           font-family: var(--hax-ui-admin-font-family);
@@ -346,35 +397,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           display: inline-flex;
           height: var(--top-bar-height, 64px);
         }
-        /* the World Traveler, the way back to all sites; his bulb lights
-           on hover and focus */
+        /* the HAX mark: the World Traveler, decorative only */
         .haxLogo {
           display: inline-grid;
           place-items: center;
           width: var(--ddd-control-height-sm, 40px);
           height: var(--ddd-control-height-sm, 40px);
-          border-radius: var(--hax-ui-radius-lg);
-          color: var(--hax-ui-on-titlebar);
           --simple-icon-height: var(--ddd-icon-xs, 32px);
           --simple-icon-width: var(--ddd-icon-xs, 32px);
-        }
-        .haxLogo simple-icon-lite {
-          grid-area: 1 / 1;
-        }
-        .haxLogo .logo-lit {
-          visibility: hidden;
-        }
-        .haxLogo:hover,
-        .haxLogo:focus-visible {
-          background-color: var(--hax-ui-hover);
-        }
-        .haxLogo:hover .logo-lit,
-        .haxLogo:focus-visible .logo-lit {
-          visibility: visible;
-        }
-        .haxLogo:hover .logo-rest,
-        .haxLogo:focus-visible .logo-rest {
-          visibility: hidden;
+          pointer-events: none;
         }
         /* a HAX UI menu row with a switch, like the dark mode row */
         .soundToggle {
@@ -649,21 +680,101 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             height: auto;
           }
 
-          /* you and the page tools on the left, Merlin takes the rest; the
-             World Traveler (right) is hidden at this size */
+          /* you and the page tools on the left; Merlin folds to his
+             button on the right and opens across the whole bar. The HAX
+             mark is hidden: Merlin's Traveler is the one mark here */
           :host {
-            --haxcms-editor-merlin-width: 100%;
+            --haxcms-editor-merlin-width: var(--ddd-control-height-sm, 40px);
           }
           app-hax-top-bar::part(top-bar) {
-            grid-template-columns: auto minmax(0, 1fr) 0 !important;
+            grid-template-columns: minmax(0, 1fr) auto 0 !important;
+          }
+          .topbar-left-group {
+            min-width: 0;
           }
           .topbar-center-group {
             padding: 0 var(--hax-ui-gap-md, 8px);
             min-width: 0;
+            justify-content: flex-end;
           }
-          app-hax-top-bar[edit-mode]::part(top-bar) {
-            grid-template-columns: 1fr 1fr !important;
-            overflow: hidden;
+          super-daemon-search.merlin::part(filter) {
+            display: none;
+          }
+          super-daemon-search.merlin::part(field) {
+            justify-content: center;
+            padding: 0;
+            gap: 0;
+            min-width: 0;
+            cursor: pointer;
+          }
+          /* open: the search takes the bar, with a way back */
+          :host([merlin-phone-open]) {
+            --haxcms-editor-merlin-width: 100%;
+          }
+          :host([merlin-phone-open]) app-hax-top-bar::part(top-bar) {
+            grid-template-columns: 0 minmax(0, 1fr) 0 !important;
+          }
+          :host([merlin-phone-open]) .topbar-left-group {
+            visibility: hidden;
+          }
+          :host([merlin-phone-open]) .topbar-center-group {
+            justify-content: flex-start;
+          }
+          :host([merlin-phone-open]) .center-toolbar-buttons {
+            flex: 1 1 auto;
+            min-width: 0;
+          }
+          :host([merlin-phone-open]) #merlinclose {
+            display: inline-flex;
+            margin-right: 0;
+          }
+          /* tuck the hidden popover anchor under the back button so the
+             field (and the popover drawn over it) starts right after it */
+          :host([merlin-phone-open]) #merlin {
+            margin-left: calc(
+              var(--hax-ui-gap-md, 8px) -
+                (
+                  var(--ddd-control-height-sm, 40px) +
+                    var(--ddd-spacing-4, 16px) + 1px
+                )
+            ) !important;
+          }
+          :host([merlin-phone-open]) super-daemon-search.merlin {
+            flex: 1 1 auto;
+            min-width: 0;
+          }
+          :host([merlin-phone-open]) super-daemon-search.merlin::part(filter) {
+            display: flex;
+          }
+          /* edit: the tools swipe sideways; Cancel and Save (and Merlin,
+             in his own column) never move */
+          .left-toolbar-buttons {
+            min-width: 0;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scrollbar-width: none;
+            flex-wrap: nowrap;
+          }
+          .left-toolbar-buttons::-webkit-scrollbar {
+            display: none;
+          }
+          .left-toolbar-buttons > * {
+            flex: none;
+          }
+          :host([edit-mode]) #cancelbutton,
+          :host([edit-mode]) #editbutton {
+            position: sticky;
+            z-index: 1;
+            background-color: var(--ddd-theme-default-coalyGray);
+            box-shadow: 0 0 0 4px var(--ddd-theme-default-coalyGray);
+          }
+          :host([edit-mode]) #editbutton {
+            right: 0;
+          }
+          :host([edit-mode]) #cancelbutton {
+            right: calc(
+              var(--ddd-control-height-sm, 40px) + var(--hax-ui-gap-md, 8px)
+            );
           }
         }
       `,
@@ -3100,6 +3211,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     };
     // falls back to this.t.siteDashboard in render so it can be translated
     this.backText = null;
+    this.merlinPhoneOpen = false;
     this.painting = true;
     this.pageAllowed = false;
     this.editMode = false;
@@ -3593,8 +3705,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               part="mysiteslink"
             >
               <app-hax-user-menu-button
-                icon="hax:world-traveler"
-                label="${this.t.siteDashboard}"
+                icon="hax:world-traveler-plain"
+                label="${this.backText || this.t.siteDashboard}"
                 part="mysitesbtn"
               ></app-hax-user-menu-button>
             </a>
@@ -3844,7 +3956,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         <div slot="center" class="topbar-center-group">
           <div class="toolbar-buttons center-toolbar-buttons" role="group">
             <simple-toolbar-button
-              icon="hax:wand"
+              id="merlinclose"
+              class="top-bar-button"
+              icon="icons:arrow-back"
+              label="${this.t.closeMerlin}"
+              @click="${this._closeMerlin}"
+            ></simple-toolbar-button>
+            <simple-toolbar-button
+              icon="hax:world-traveler-plain"
               label="${this.t.merlin}"
               class="merlin top-bar-button merlin-anchor-button"
               id="merlin"
@@ -3858,14 +3977,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               @dragenter="${this.dragenterEvent}"
               @dragleave="${this.dragleaveEvent}"
               @dragover="${this.dragoverEvent}"
-              icon="hax:wand"
+              icon="hax:world-traveler-plain"
               id="search"
               class="merlin"
-              data-event="${
-                this.responsiveSize === "xs"
-                  ? "super-daemon-modal"
-                  : "super-daemon"
-              }"
+              data-event="super-daemon"
               mini
               wand
               droppable-type="${this.activeType}"
@@ -3878,33 +3993,20 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           <div class="toolbar-buttons right-toolbar-buttons" role="menubar">
             <slot name="haxcms-site-editor-ui-suffix-buttons"></slot>
           </div>
-          <span class="home-btn" ?hidden="${this.editMode}">
-            <a
-              href="${this.backLink}"
+          <span class="home-btn">
+            <!-- the HAX mark: decorative, it says you are in HAX; the way
+                 back to your sites is in the user menu -->
+            <span
               class="haxLogo"
               id="backtosites"
-              title="${this.backText || this.t.siteDashboard}"
               part="hax-logo"
-              ?hidden="${this.editMode}"
+              aria-hidden="true"
             >
               <simple-icon-lite
-                class="logo-rest"
                 icon="hax:world-traveler"
                 no-colorize
               ></simple-icon-lite>
-              <simple-icon-lite
-                class="logo-lit"
-                icon="hax:world-traveler-lit"
-                no-colorize
-              ></simple-icon-lite>
-            </a>
-            <simple-tooltip
-              for="backtosites"
-              position="bottom"
-              ?hidden="${this.editMode}"
-            >
-              ${this.backText || this.t.siteDashboard}</simple-tooltip
-            >
+            </span>
           </span>
         </div>
       </app-hax-top-bar>
@@ -3997,40 +4099,35 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
   }
   /**
-   * Line toasts up under Merlin: haxcms-toast reads --haxcms-toast-left /
-   * --haxcms-toast-right from body. Measured, so it follows Merlin when the
-   * bar's groups change width (edit mode, smaller screens).
+   * The open Merlin popover draws its own field: keep it the same width as
+   * the top bar field so it covers it exactly instead of overhanging, and
+   * HAX UI dark like the bar it opens from. Measured, so it follows Merlin
+   * when the bar's groups change width (edit mode, smaller screens).
    */
-  _syncToastAnchor() {
-    if (!this.shadowRoot || !globalThis.document || !globalThis.document.body) {
+  _syncMerlinPopover() {
+    if (
+      !this.shadowRoot ||
+      !SuperDaemonInstance ||
+      !SuperDaemonInstance.style
+    ) {
       return;
     }
     const search = this.shadowRoot.querySelector("#search");
-    const bodyStyle = globalThis.document.body.style;
+    const sdStyle = SuperDaemonInstance.style;
     const rect = search ? search.getBoundingClientRect() : null;
+    Object.keys(MERLIN_DARK).forEach((name) => {
+      sdStyle.setProperty(name, MERLIN_DARK[name]);
+    });
     if (!rect || rect.width === 0) {
-      bodyStyle.removeProperty("--haxcms-toast-left");
-      bodyStyle.removeProperty("--haxcms-toast-right");
-      if (SuperDaemonInstance && SuperDaemonInstance.style) {
-        SuperDaemonInstance.style.removeProperty("--super-daemon-search-width");
-        SuperDaemonInstance.style.removeProperty("--super-daemon-width");
-      }
+      sdStyle.removeProperty("--super-daemon-search-width");
+      sdStyle.removeProperty("--super-daemon-width");
       return;
     }
-    bodyStyle.setProperty("--haxcms-toast-left", `${Math.round(rect.left)}px`);
-    bodyStyle.setProperty("--haxcms-toast-right", "auto");
-    // the open Merlin popover draws its own field; keep it the same width
-    // as the top bar field so it covers it exactly instead of overhanging
-    if (SuperDaemonInstance && SuperDaemonInstance.style) {
-      SuperDaemonInstance.style.setProperty(
-        "--super-daemon-search-width",
-        `${Math.round(rect.width)}px`,
-      );
-      SuperDaemonInstance.style.setProperty(
-        "--super-daemon-width",
-        `${Math.round(rect.width)}px`,
-      );
-    }
+    sdStyle.setProperty(
+      "--super-daemon-search-width",
+      `${Math.round(rect.width)}px`,
+    );
+    sdStyle.setProperty("--super-daemon-width", `${Math.round(rect.width)}px`);
   }
 
   rpgStartWalk() {
@@ -4146,6 +4243,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   }
   // daemon was told to close so enable the search bar again
   sdCloseEvent(_e) {
+    this.merlinPhoneOpen = false;
     setTimeout(() => {
       // trap helps ensure user expectation of no input but without triggering
       // an input change event which activates things running
@@ -4158,10 +4256,36 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.sdSearch.droppableType = null;
   }
 
+  /**
+   * The way back out of Merlin when it fills a phone's bar.
+   */
+  _closeMerlin() {
+    SuperDaemonInstance.close();
+    this.merlinPhoneOpen = false;
+  }
+
   haxButtonOp(e) {
     let exec = e.target.getAttribute("data-event");
     switch (exec) {
       case "super-daemon":
+        // a phone's bar is too narrow for the field: Merlin is a button
+        // that opens the search across the whole bar first
+        if (
+          this.responsiveSize === "xs" &&
+          e.type === "click" &&
+          !this.merlinPhoneOpen
+        ) {
+          this.merlinPhoneOpen = true;
+          this.updateComplete.then(() => {
+            this._syncMerlinPopover();
+            SuperDaemonInstance.waveWand(
+              ["", "*"],
+              this.shadowRoot.querySelector("#merlin"),
+              null,
+            );
+          });
+          break;
+        }
         if (!this._ignoreReset || e.type === "click") {
           const value = this.sdSearch.value;
           if (e.type === "value-changed") {
@@ -6049,12 +6173,20 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (super.updated) {
       super.updated(changedProperties);
     }
-    // the bar's groups change width with edit mode; keep toasts under Merlin
+    if (
+      changedProperties.has("responsiveSize") &&
+      this.responsiveSize !== "xs" &&
+      this.merlinPhoneOpen
+    ) {
+      this.merlinPhoneOpen = false;
+    }
+    // the bar's groups change width with edit mode; keep Merlin's popover
+    // the same width as its field
     if (
       changedProperties.has("editMode") ||
       changedProperties.has("responsiveSize")
     ) {
-      this._syncToastAnchor();
+      this._syncMerlinPopover();
     }
     if (changedProperties.has("editMode") && this.__modeSwitchRects) {
       this._animateModeSwitch(this.__modeSwitchRects);
@@ -6165,6 +6297,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       backLink: {
         type: String,
       },
+      /**
+       * On a phone, Merlin is open across the whole bar
+       */
+      merlinPhoneOpen: {
+        type: Boolean,
+        reflect: true,
+        attribute: "merlin-phone-open",
+      },
       backText: {
         type: String,
       },
@@ -6251,10 +6391,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   }
   connectedCallback() {
     super.connectedCallback();
-    // toasts drop from under Merlin, lined up with the start of its field
-    this.__boundSyncToastAnchor = this._syncToastAnchor.bind(this);
-    globalThis.addEventListener("resize", this.__boundSyncToastAnchor);
-    this.updateComplete.then(() => this._syncToastAnchor());
+    // Merlin's popover covers its field exactly
+    this.__boundSyncMerlinPopover = this._syncMerlinPopover.bind(this);
+    globalThis.addEventListener("resize", this.__boundSyncMerlinPopover);
+    this.updateComplete.then(() => this._syncMerlinPopover());
 
     // Register keyboard shortcuts
     this._registerKeyboardShortcuts();
@@ -6431,10 +6571,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   disconnectedCallback() {
     // Unregister keyboard shortcuts
     HAXCMSKeyboardShortcutsInstance.disable();
-    globalThis.removeEventListener("resize", this.__boundSyncToastAnchor);
-    if (globalThis.document && globalThis.document.body) {
-      globalThis.document.body.style.removeProperty("--haxcms-toast-left");
-      globalThis.document.body.style.removeProperty("--haxcms-toast-right");
+    globalThis.removeEventListener("resize", this.__boundSyncMerlinPopover);
+    if (SuperDaemonInstance && SuperDaemonInstance.style) {
+      [
+        ...Object.keys(MERLIN_DARK),
+        "--super-daemon-search-width",
+        "--super-daemon-width",
+      ].forEach((name) => SuperDaemonInstance.style.removeProperty(name));
     }
     Object.keys(this.__menuHoverTimers || {}).forEach((key) => {
       clearTimeout(this.__menuHoverTimers[key]);

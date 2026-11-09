@@ -185,9 +185,17 @@ export class AppHaxUserMenuToggle extends DDDSuper(LitElement) {
         rpg-character {
           --simple-toolbar-border-radius: var(--ddd-radius-md);
           border-radius: var(--ddd-radius-md);
-          background-color: var(--simple-colors-default-theme-grey-1);
+          /* a host can set these to keep the frame the same in every
+             theme (the site editor's always-dark top bar does) */
+          background-color: var(
+            --app-hax-user-menu-toggle-background,
+            var(--simple-colors-default-theme-grey-1)
+          );
           border: var(--ddd-border-sm);
-          border-color: var(--ddd-theme-default-limestoneGray);
+          border-color: var(
+            --app-hax-user-menu-toggle-border-color,
+            var(--ddd-theme-default-limestoneGray)
+          );
           padding: 0;
           margin: 0 8px 0 4px;
           height: var(--ddd-spacing-11, 44px);
@@ -197,14 +205,20 @@ export class AppHaxUserMenuToggle extends DDDSuper(LitElement) {
 
         :host([dark]) rpg-character,
         :host([dark-mode]) rpg-character {
-          border-color: var(--ddd-theme-default-white, white);
+          border-color: var(
+            --app-hax-user-menu-toggle-border-color,
+            var(--ddd-theme-default-white, white)
+          );
         }
 
         button:hover rpg-character,
         button:focus rpg-character,
         button:focus-visible rpg-character {
           border-color: var(--ddd-theme-default-skyBlue);
-          background-color: var(--simple-colors-default-theme-grey-3);
+          background-color: var(
+            --app-hax-user-menu-toggle-background-hover,
+            var(--simple-colors-default-theme-grey-3)
+          );
         }
 
         ::slotted(*) {

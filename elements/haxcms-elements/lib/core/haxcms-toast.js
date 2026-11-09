@@ -119,9 +119,8 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
       DDDStatusTokens,
       css`
         :host {
-          /* where it sits: under the top bar on the right (or under
-             Merlin when the site editor asks), or a sheet at the bottom
-             of a phone */
+          /* where it sits: under the top bar on the right; on a phone,
+             under the bar across the width */
           --haxcms-toast-gap: var(--hax-ui-gap-lg, 12px);
           --simple-toast-z-index: 100000004;
           position: fixed;
@@ -130,8 +129,7 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
             calc(var(--top-bar-height, 64px) + var(--haxcms-toast-gap))
           );
           right: var(--haxcms-toast-right, var(--haxcms-toast-gap));
-          /* the site editor sets these to drop the toast from under Merlin */
-          left: var(--haxcms-toast-left, auto);
+          left: auto;
           bottom: auto;
           z-index: var(--simple-toast-z-index);
           width: min(420px, calc(100vw - 2 * var(--haxcms-toast-gap)));
@@ -140,7 +138,23 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
           margin: 0;
           padding: 0;
           box-sizing: border-box;
-          color-scheme: var(--hax-ui-color-scheme, inherit);
+          /* HAX UI dark in every theme, the same surface as the top bar
+             it drops from (the hax-ui-styles dark theme values) */
+          color-scheme: dark;
+          --hax-ui-color-scheme: dark;
+          --hax-ui-color: var(--ddd-theme-default-white, #ffffff);
+          --hax-ui-color-focus: var(--ddd-theme-default-white, #ffffff);
+          --hax-ui-color-faded: #c5c3be;
+          --hax-ui-background-color: var(--ddd-theme-default-coalyGray);
+          --hax-ui-background-color-secondary: #111;
+          --hax-ui-background-color-faded: #222;
+          --hax-ui-color-accent: #00c9ff;
+          --hax-ui-color-accent-secondary: #00c9ff;
+          --hax-ui-background-color-accent: #000;
+          --hax-ui-color-danger: #ff8f8f;
+          --hax-ui-color-danger-secondary: #ff2222;
+          --hax-ui-background-color-danger: #000;
+          --hax-ui-border-color: #000;
           font-family: var(--hax-ui-admin-font-family);
           font-size: var(--hax-ui-admin-font-size);
           text-align: left;
@@ -212,13 +226,8 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
         @media (max-width: 600px) {
           :host {
             --haxcms-toast-gap: var(--hax-ui-gap-md, 8px);
-            --simple-toast-slide-offset-y: 16px;
-            top: auto;
             right: var(--haxcms-toast-gap);
             left: var(--haxcms-toast-gap);
-            bottom: calc(
-              var(--haxcms-toast-gap) + env(safe-area-inset-bottom, 0px)
-            );
             width: auto;
           }
         }
