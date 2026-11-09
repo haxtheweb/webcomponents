@@ -1,6 +1,7 @@
 import path from 'node:path';
 import { xapiConformancePlugin } from './scripts/lib/xapi-conformance.mjs';
 import { failuresReporter } from './scripts/wtr-failures-reporter.mjs';
+import { fuzzEnvScript } from './scripts/test-setup/fuzz-env.mjs';
 
 // WTR_REPORTER=failures swaps the default per-file output for a quiet one that
 // prints only progress ticks and then every failure grouped at the end
@@ -80,7 +81,9 @@ export default {
       `<!DOCTYPE html>
       <html lang="en">
         <body>
-          <script>window.process = { env: { NODE_ENV: "development" } }</script>
+          <!-- HAX_FUZZ_* from the runner's env, read by
+               scripts/test-setup/fuzz-config.mjs (haxtheweb/issues#3272) -->
+          <script>window.process = { env: Object.assign({ NODE_ENV: "development" }, ${fuzzEnvScript(process.env)}) }</script>
           <!-- queue axe audits so one timed-out audit cannot fail every later
                a11y test in the file with "Axe is already running" -->
           <script src="/scripts/test-setup/axe-run-queue.js"></script>
