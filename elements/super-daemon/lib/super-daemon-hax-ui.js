@@ -8,15 +8,6 @@ import { html, css, svg } from "lit";
  */
 
 /**
- * Spoken commands the voice hints show. They are the phrases Merlin
- * listens for (super-daemon.js defaultVoiceCommands), which are English
- * only today, so hints show them as said rather than translated.
- */
-export const SAY_CLOSE_MERLIN = "close merlin";
-export const SAY_STOP_LISTENING = "stop listening";
-export const SAY_DISABLE_SANTA = "disable santa mode";
-
-/**
  * True when this browser can both listen (SpeechRecognition) and speak
  * (speechSynthesis), the two things Merlin's voice mode needs, and
  * listening has not proven unusable in this session (some browsers, like

@@ -67,6 +67,8 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
       active: { type: Boolean, reflect: true },
       striped: { type: Boolean, reflect: true },
       groupLabel: { type: String, attribute: "group-label" },
+      /** Number to say to run this row; shown while Merlin listens */
+      voiceNumber: { type: Number, attribute: "voice-number" },
       detailsInPane: {
         type: Boolean,
         reflect: true,
@@ -153,6 +155,26 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
         button:focus-visible {
           outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
           outline-offset: calc(-1 * var(--hax-ui-focus-width));
+        }
+        /* while Merlin listens, the number to say to run this row */
+        .voice-number {
+          flex: none;
+          display: grid;
+          place-items: center;
+          min-width: 20px;
+          height: 20px;
+          padding: 0 var(--hax-ui-gap);
+          box-sizing: border-box;
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius);
+          font-family: var(--ddd-font-mono, monospace);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          font-variant-numeric: tabular-nums;
+          color: var(--hax-ui-text-muted);
+        }
+        :host([active]) .voice-number {
+          border-color: var(--hax-ui-accent-strong);
+          color: var(--hax-ui-accent-strong);
         }
         /* modal rows: the icon sits in the site admin card tile (.acard .ic) */
         .tile {
@@ -428,6 +450,16 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
         @focusin="${this._focusIn}"
         @focusout="${this._focusOut}"
       >
+        ${
+          this.voiceNumber
+            ? html`<span
+                class="voice-number"
+                part="voice-number"
+                aria-hidden="true"
+                >${this.voiceNumber}</span
+              >`
+            : ``
+        }
         ${
           this.icon || this.image || this.textCharacter
             ? html`<span class="tile" part="tile">
