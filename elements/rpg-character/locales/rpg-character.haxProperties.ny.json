@@ -80,7 +80,9 @@
           "shako": "Chipewa cha gulu loimba",
           "flat-top": "Tsitsi lathyathyathya pamwamba",
           "wild-hair": "Tsitsi loyera lachisokonezo",
-          "messy-hair": "Tsitsi losokonekera ndi chipsera"
+          "messy-hair": "Tsitsi losokonekera ndi chipsera",
+          "sparkle-selects": "Sparkle Selects (chisoti)",
+          "saber-cats": "Saber Cats (chisoti)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Munthu-mmbulu",
           "horseman": "Wokwera kavalo wopanda mutu",
           "mascot": "Chizindikiro cha mkango",
-          "band": "Gulu loimba loyenda"
+          "band": "Gulu loimba loyenda",
+          "sparkle-selects": "Sparkle Selects (kunyumba)",
+          "b-squad": "Sparkle Selects B Squad (kunja)",
+          "saber-cats": "Saber Cats (kunyumba)",
+          "saber-cats-away": "Saber Cats (kunja)",
+          "icers": "Icers (kunyumba)",
+          "icers-away": "Icers (kunja)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Nyundo yankhondo",
           "trumpet": "Lipenga",
           "jack-o-lantern": "Nyali ya dzungu",
-          "wrench": "Sipanala"
+          "wrench": "Sipanala",
+          "hockey-stick-pink": "Ndodo ya hockey (pinki)",
+          "hockey-stick-green": "Ndodo ya hockey (lobiriwira)",
+          "sparkle-flag": "Sparkle Selects (mbendera)"
         }
       },
       {

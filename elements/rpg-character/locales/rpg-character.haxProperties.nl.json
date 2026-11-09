@@ -80,7 +80,9 @@
           "shako": "Fanfaresjako",
           "flat-top": "Flat-top-kapsel",
           "wild-hair": "Wild wit haar",
-          "messy-hair": "Warrig haar met litteken"
+          "messy-hair": "Warrig haar met litteken",
+          "sparkle-selects": "Sparkle Selects (helm)",
+          "saber-cats": "Saber Cats (helm)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Weerwolf",
           "horseman": "Ruiter zonder hoofd",
           "mascot": "Leeuwenmascotte",
-          "band": "Marcherende fanfare"
+          "band": "Marcherende fanfare",
+          "sparkle-selects": "Sparkle Selects (thuis)",
+          "b-squad": "Sparkle Selects B Squad (uit)",
+          "saber-cats": "Saber Cats (thuis)",
+          "saber-cats-away": "Saber Cats (uit)",
+          "icers": "Icers (thuis)",
+          "icers-away": "Icers (uit)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Strijdhamer",
           "trumpet": "Trompet",
           "jack-o-lantern": "Pompoenlantaarn",
-          "wrench": "Moersleutel"
+          "wrench": "Moersleutel",
+          "hockey-stick-pink": "Hockeystick (roze)",
+          "hockey-stick-green": "Hockeystick (groen)",
+          "sparkle-flag": "Sparkle Selects (vlag)"
         }
       },
       {

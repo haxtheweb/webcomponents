@@ -80,7 +80,9 @@
           "shako": "Hular ƙungiyar kiɗa",
           "flat-top": "Gashi mai lebur",
           "wild-hair": "Farin gashi barkatai",
-          "messy-hair": "Gashi barkatai da tabo"
+          "messy-hair": "Gashi barkatai da tabo",
+          "sparkle-selects": "Sparkle Selects (hular kariya)",
+          "saber-cats": "Saber Cats (hular kariya)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Mutum-kerkeci",
           "horseman": "Mahayi marar kai",
           "mascot": "Mascot na zaki",
-          "band": "Ƙungiyar kiɗa mai tafiya"
+          "band": "Ƙungiyar kiɗa mai tafiya",
+          "sparkle-selects": "Sparkle Selects (gida)",
+          "b-squad": "Sparkle Selects B Squad (waje)",
+          "saber-cats": "Saber Cats (gida)",
+          "saber-cats-away": "Saber Cats (waje)",
+          "icers": "Icers (gida)",
+          "icers-away": "Icers (waje)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Gudumar yaƙi",
           "trumpet": "Kakaki",
           "jack-o-lantern": "Fitilar kabewa",
-          "wrench": "Sifana"
+          "wrench": "Sifana",
+          "hockey-stick-pink": "Sandar hockey (ruwan hoda)",
+          "hockey-stick-green": "Sandar hockey (kore)",
+          "sparkle-flag": "Sparkle Selects (tuta)"
         }
       },
       {

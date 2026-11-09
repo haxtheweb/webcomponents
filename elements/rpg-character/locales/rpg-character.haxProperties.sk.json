@@ -80,7 +80,9 @@
           "shako": "Kapelové šako",
           "flat-top": "Plochý zostrih",
           "wild-hair": "Divoké biele vlasy",
-          "messy-hair": "Strapaté vlasy s jazvou"
+          "messy-hair": "Strapaté vlasy s jazvou",
+          "sparkle-selects": "Sparkle Selects (prilba)",
+          "saber-cats": "Saber Cats (prilba)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Vlkolak",
           "horseman": "Bezhlavý jazdec",
           "mascot": "Maskot lev",
-          "band": "Pochodová kapela"
+          "band": "Pochodová kapela",
+          "sparkle-selects": "Sparkle Selects (domáci)",
+          "b-squad": "Sparkle Selects B Squad (vonkajší)",
+          "saber-cats": "Saber Cats (domáci)",
+          "saber-cats-away": "Saber Cats (vonkajší)",
+          "icers": "Icers (domáci)",
+          "icers-away": "Icers (vonkajší)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Bojové kladivo",
           "trumpet": "Trúbka",
           "jack-o-lantern": "Tekvicový lampáš",
-          "wrench": "Francúzsky kľúč"
+          "wrench": "Francúzsky kľúč",
+          "hockey-stick-pink": "Hokejka (ružová)",
+          "hockey-stick-green": "Hokejka (zelený)",
+          "sparkle-flag": "Sparkle Selects (zástava)"
         }
       },
       {

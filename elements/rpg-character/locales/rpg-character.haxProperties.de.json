@@ -80,7 +80,9 @@
           "shako": "Tschako",
           "flat-top": "Flat-Top-Frisur",
           "wild-hair": "Wildes weißes Haar",
-          "messy-hair": "Strubbelhaar mit Narbe"
+          "messy-hair": "Strubbelhaar mit Narbe",
+          "sparkle-selects": "Sparkle Selects (Helm)",
+          "saber-cats": "Saber Cats (Helm)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Werwolf",
           "horseman": "Kopfloser Reiter",
           "mascot": "Löwenmaskottchen",
-          "band": "Spielmannszug"
+          "band": "Spielmannszug",
+          "sparkle-selects": "Sparkle Selects (Heim)",
+          "b-squad": "Sparkle Selects B Squad (Auswärts)",
+          "saber-cats": "Saber Cats (Heim)",
+          "saber-cats-away": "Saber Cats (Auswärts)",
+          "icers": "Icers (Heim)",
+          "icers-away": "Icers (Auswärts)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Kriegshammer",
           "trumpet": "Trompete",
           "jack-o-lantern": "Kürbislaterne",
-          "wrench": "Schraubenschlüssel"
+          "wrench": "Schraubenschlüssel",
+          "hockey-stick-pink": "Hockeyschläger (pink)",
+          "hockey-stick-green": "Hockeyschläger (grün)",
+          "sparkle-flag": "Sparkle Selects (Flagge)"
         }
       },
       {

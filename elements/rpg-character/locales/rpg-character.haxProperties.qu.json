@@ -80,7 +80,9 @@
           "shako": "Banda shako",
           "flat-top": "Pampa umayuq chukcha",
           "wild-hair": "Sallqa yuraq chukcha",
-          "messy-hair": "K'irisapa ch'arpu chukcha"
+          "messy-hair": "K'irisapa ch'arpu chukcha",
+          "sparkle-selects": "Sparkle Selects (uma pakana)",
+          "saber-cats": "Saber Cats (uma pakana)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Lobo-runa",
           "horseman": "Umannaq caballeru",
           "mascot": "León mascota",
-          "band": "Puriq takiq banda"
+          "band": "Puriq takiq banda",
+          "sparkle-selects": "Sparkle Selects (wasi)",
+          "b-squad": "Sparkle Selects B Squad (hawa)",
+          "saber-cats": "Saber Cats (wasi)",
+          "saber-cats-away": "Saber Cats (hawa)",
+          "icers": "Icers (wasi)",
+          "icers-away": "Icers (hawa)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Awqa martillo",
           "trumpet": "Pututu",
           "jack-o-lantern": "Zapallo k'anchana",
-          "wrench": "Llave"
+          "wrench": "Llave",
+          "hockey-stick-pink": "Hockey k'aspi (puka q'illu)",
+          "hockey-stick-green": "Hockey k'aspi (q'umir)",
+          "sparkle-flag": "Sparkle Selects (bandera)"
         }
       },
       {

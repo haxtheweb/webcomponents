@@ -80,7 +80,9 @@
           "shako": "Okpu otu egwu",
           "flat-top": "Ntutu dị larịị",
           "wild-hair": "Ntutu ọcha gbasasịrị agbasa",
-          "messy-hair": "Ntutu gbasasịrị agbasa nwere ọnya"
+          "messy-hair": "Ntutu gbasasịrị agbasa nwere ọnya",
+          "sparkle-selects": "Sparkle Selects (okpu nchekwa)",
+          "saber-cats": "Saber Cats (okpu nchekwa)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Mmadụ-nkịta ọhịa",
           "horseman": "Onye na-agba ịnyịnya na-enweghị isi",
           "mascot": "Akara ọdụm",
-          "band": "Otu egwu na-aga njem"
+          "band": "Otu egwu na-aga njem",
+          "sparkle-selects": "Sparkle Selects (ụlọ)",
+          "b-squad": "Sparkle Selects B Squad (mpụga)",
+          "saber-cats": "Saber Cats (ụlọ)",
+          "saber-cats-away": "Saber Cats (mpụga)",
+          "icers": "Icers (ụlọ)",
+          "icers-away": "Icers (mpụga)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Hama agha",
           "trumpet": "Opi",
           "jack-o-lantern": "Oriọna ugu",
-          "wrench": "Spana"
+          "wrench": "Spana",
+          "hockey-stick-pink": "Osisi hockey (pink)",
+          "hockey-stick-green": "Osisi hockey (akwụkwọ ndụ)",
+          "sparkle-flag": "Sparkle Selects (ọkọlọtọ)"
         }
       },
       {

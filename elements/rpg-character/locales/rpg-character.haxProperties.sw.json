@@ -80,7 +80,9 @@
           "shako": "Kofia ya bendi",
           "flat-top": "Nywele bapa juu",
           "wild-hair": "Nywele nyeupe za porini",
-          "messy-hair": "Nywele timtim zenye kovu"
+          "messy-hair": "Nywele timtim zenye kovu",
+          "sparkle-selects": "Sparkle Selects (kofia ngumu)",
+          "saber-cats": "Saber Cats (kofia ngumu)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Mbwamwitu-mtu",
           "horseman": "Mpanda farasi bila kichwa",
           "mascot": "Maskoti simba",
-          "band": "Bendi ya maandamano"
+          "band": "Bendi ya maandamano",
+          "sparkle-selects": "Sparkle Selects (nyumbani)",
+          "b-squad": "Sparkle Selects B Squad (ugenini)",
+          "saber-cats": "Saber Cats (nyumbani)",
+          "saber-cats-away": "Saber Cats (ugenini)",
+          "icers": "Icers (nyumbani)",
+          "icers-away": "Icers (ugenini)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Nyundo ya vita",
           "trumpet": "Tarumbeta",
           "jack-o-lantern": "Taa ya boga",
-          "wrench": "Spana"
+          "wrench": "Spana",
+          "hockey-stick-pink": "Kijiti cha hoki (waridi)",
+          "hockey-stick-green": "Kijiti cha hoki (kijani)",
+          "sparkle-flag": "Sparkle Selects (bendera)"
         }
       },
       {

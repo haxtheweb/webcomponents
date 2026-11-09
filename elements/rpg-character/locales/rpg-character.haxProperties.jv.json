@@ -80,7 +80,9 @@
           "shako": "Shako drum band",
           "flat-top": "Rambut cepak rata",
           "wild-hair": "Rambut putih awut-awutan",
-          "messy-hair": "Rambut awut-awutan karo tatu"
+          "messy-hair": "Rambut awut-awutan karo tatu",
+          "sparkle-selects": "Sparkle Selects (helm)",
+          "saber-cats": "Saber Cats (helm)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Manungsa asu ajag",
           "horseman": "Penunggang jaran tanpa sirah",
           "mascot": "Maskot singa",
-          "band": "Drum band"
+          "band": "Drum band",
+          "sparkle-selects": "Sparkle Selects (kandang)",
+          "b-squad": "Sparkle Selects B Squad (tandang)",
+          "saber-cats": "Saber Cats (kandang)",
+          "saber-cats-away": "Saber Cats (tandang)",
+          "icers": "Icers (kandang)",
+          "icers-away": "Icers (tandang)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Palu perang",
           "trumpet": "Trompet",
           "jack-o-lantern": "Lentera waluh",
-          "wrench": "Kunci pas"
+          "wrench": "Kunci pas",
+          "hockey-stick-pink": "Tongkat hoki (jambon)",
+          "hockey-stick-green": "Tongkat hoki (ijo)",
+          "sparkle-flag": "Sparkle Selects (gendera)"
         }
       },
       {

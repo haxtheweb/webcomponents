@@ -80,7 +80,9 @@
           "shako": "کلاه شاکوی گروه موسیقی",
           "flat-top": "موی صاف‌سر",
           "wild-hair": "موی سفید ژولیده",
-          "messy-hair": "موی آشفته با جای زخم"
+          "messy-hair": "موی آشفته با جای زخم",
+          "sparkle-selects": "Sparkle Selects (کلاه ایمنی)",
+          "saber-cats": "Saber Cats (کلاه ایمنی)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "گرگینه",
           "horseman": "سوار بی‌سر",
           "mascot": "طلسم شیر",
-          "band": "گروه موسیقی رژه"
+          "band": "گروه موسیقی رژه",
+          "sparkle-selects": "Sparkle Selects (خانگی)",
+          "b-squad": "Sparkle Selects B Squad (مهمان)",
+          "saber-cats": "Saber Cats (خانگی)",
+          "saber-cats-away": "Saber Cats (مهمان)",
+          "icers": "Icers (خانگی)",
+          "icers-away": "Icers (مهمان)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "پتک جنگی",
           "trumpet": "ترومپت",
           "jack-o-lantern": "فانوس کدو",
-          "wrench": "آچار"
+          "wrench": "آچار",
+          "hockey-stick-pink": "چوب هاکی (صورتی)",
+          "hockey-stick-green": "چوب هاکی (سبز)",
+          "sparkle-flag": "Sparkle Selects (پرچم)"
         }
       },
       {

@@ -80,7 +80,9 @@
           "shako": "Koofiyadda kooxda muusikada",
           "flat-top": "Timo dusha ka siman",
           "wild-hair": "Timo cad oo duurjoog ah",
-          "messy-hair": "Timo qasan oo nabar leh"
+          "messy-hair": "Timo qasan oo nabar leh",
+          "sparkle-selects": "Sparkle Selects (koofiyad)",
+          "saber-cats": "Saber Cats (koofiyad)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Yeey-nin",
           "horseman": "Fardoole aan madax lahayn",
           "mascot": "Astaanta libaax",
-          "band": "Kooxda muusikada socodka"
+          "band": "Kooxda muusikada socodka",
+          "sparkle-selects": "Sparkle Selects (guri)",
+          "b-squad": "Sparkle Selects B Squad (dibadda)",
+          "saber-cats": "Saber Cats (guri)",
+          "saber-cats-away": "Saber Cats (dibadda)",
+          "icers": "Icers (guri)",
+          "icers-away": "Icers (dibadda)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Dubbe dagaal",
           "trumpet": "Turumbo",
           "jack-o-lantern": "Laambad bocor",
-          "wrench": "Kiyaawe"
+          "wrench": "Kiyaawe",
+          "hockey-stick-pink": "Ul hockey (casaan khafiif)",
+          "hockey-stick-green": "Ul hockey (cagaar)",
+          "sparkle-flag": "Sparkle Selects (calan)"
         }
       },
       {

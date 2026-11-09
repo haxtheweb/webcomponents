@@ -80,7 +80,9 @@
           "shako": "Godbeniški šako",
           "flat-top": "Ravna frizura na krtačko",
           "wild-hair": "Divji beli lasje",
-          "messy-hair": "Razmršeni lasje z brazgotino"
+          "messy-hair": "Razmršeni lasje z brazgotino",
+          "sparkle-selects": "Sparkle Selects (čelada)",
+          "saber-cats": "Saber Cats (čelada)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Volkodlak",
           "horseman": "Jezdec brez glave",
           "mascot": "Maskota lev",
-          "band": "Korakajoča godba"
+          "band": "Korakajoča godba",
+          "sparkle-selects": "Sparkle Selects (domači)",
+          "b-squad": "Sparkle Selects B Squad (gostujoči)",
+          "saber-cats": "Saber Cats (domači)",
+          "saber-cats-away": "Saber Cats (gostujoči)",
+          "icers": "Icers (domači)",
+          "icers-away": "Icers (gostujoči)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Bojno kladivo",
           "trumpet": "Trobenta",
           "jack-o-lantern": "Bučna svetilka",
-          "wrench": "Francoski ključ"
+          "wrench": "Francoski ključ",
+          "hockey-stick-pink": "Hokejska palica (roza)",
+          "hockey-stick-green": "Hokejska palica (zelen)",
+          "sparkle-flag": "Sparkle Selects (zastava)"
         }
       },
       {

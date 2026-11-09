@@ -80,7 +80,9 @@
           "shako": "બેન્ડ શાકો",
           "flat-top": "સપાટ ટોચના વાળ",
           "wild-hair": "વિખરાયેલા સફેદ વાળ",
-          "messy-hair": "ડાઘવાળા વિખરાયેલા વાળ"
+          "messy-hair": "ડાઘવાળા વિખરાયેલા વાળ",
+          "sparkle-selects": "Sparkle Selects (હેલ્મેટ)",
+          "saber-cats": "Saber Cats (હેલ્મેટ)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "વરુ-માનવ",
           "horseman": "માથા વગરનો ઘોડેસવાર",
           "mascot": "સિંહ માસ્કોટ",
-          "band": "માર્ચિંગ બેન્ડ"
+          "band": "માર્ચિંગ બેન્ડ",
+          "sparkle-selects": "Sparkle Selects (ઘર)",
+          "b-squad": "Sparkle Selects B Squad (બહાર)",
+          "saber-cats": "Saber Cats (ઘર)",
+          "saber-cats-away": "Saber Cats (બહાર)",
+          "icers": "Icers (ઘર)",
+          "icers-away": "Icers (બહાર)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "યુદ્ધ હથોડો",
           "trumpet": "ટ્રમ્પેટ",
           "jack-o-lantern": "કોળાનું ફાનસ",
-          "wrench": "પાનું"
+          "wrench": "પાનું",
+          "hockey-stick-pink": "હૉકી સ્ટિક (ગુલાબી)",
+          "hockey-stick-green": "હૉકી સ્ટિક (લીલી)",
+          "sparkle-flag": "Sparkle Selects (ધ્વજ)"
         }
       },
       {

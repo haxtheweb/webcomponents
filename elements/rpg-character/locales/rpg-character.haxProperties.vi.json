@@ -80,7 +80,9 @@
           "shako": "Mũ ban nhạc",
           "flat-top": "Tóc đầu phẳng",
           "wild-hair": "Tóc trắng dựng ngược",
-          "messy-hair": "Tóc rối có vết sẹo"
+          "messy-hair": "Tóc rối có vết sẹo",
+          "sparkle-selects": "Sparkle Selects (mũ bảo hiểm)",
+          "saber-cats": "Saber Cats (mũ bảo hiểm)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Người sói",
           "horseman": "Kỵ sĩ không đầu",
           "mascot": "Linh vật sư tử",
-          "band": "Đội kèn diễu hành"
+          "band": "Đội kèn diễu hành",
+          "sparkle-selects": "Sparkle Selects (sân nhà)",
+          "b-squad": "Sparkle Selects B Squad (sân khách)",
+          "saber-cats": "Saber Cats (sân nhà)",
+          "saber-cats-away": "Saber Cats (sân khách)",
+          "icers": "Icers (sân nhà)",
+          "icers-away": "Icers (sân khách)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Búa chiến",
           "trumpet": "Kèn trumpet",
           "jack-o-lantern": "Đèn bí ngô",
-          "wrench": "Cờ lê"
+          "wrench": "Cờ lê",
+          "hockey-stick-pink": "Gậy khúc côn cầu (hồng)",
+          "hockey-stick-green": "Gậy khúc côn cầu (xanh lá)",
+          "sparkle-flag": "Sparkle Selects (cờ)"
         }
       },
       {

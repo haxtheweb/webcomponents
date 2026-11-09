@@ -80,7 +80,9 @@
           "shako": "ਬੈਂਡ ਸ਼ਾਕੋ",
           "flat-top": "ਪੱਧਰੇ ਸਿਰ ਵਾਲੇ ਵਾਲ",
           "wild-hair": "ਬੇਤਰਤੀਬੇ ਚਿੱਟੇ ਵਾਲ",
-          "messy-hair": "ਨਿਸ਼ਾਨ ਵਾਲੇ ਖਿੱਲਰੇ ਵਾਲ"
+          "messy-hair": "ਨਿਸ਼ਾਨ ਵਾਲੇ ਖਿੱਲਰੇ ਵਾਲ",
+          "sparkle-selects": "Sparkle Selects (ਹੈਲਮੇਟ)",
+          "saber-cats": "Saber Cats (ਹੈਲਮੇਟ)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "ਬਘਿਆੜ-ਮਨੁੱਖ",
           "horseman": "ਬਿਨਾਂ ਸਿਰ ਦਾ ਘੋੜਸਵਾਰ",
           "mascot": "ਸ਼ੇਰ ਮਾਸਕਟ",
-          "band": "ਮਾਰਚਿੰਗ ਬੈਂਡ"
+          "band": "ਮਾਰਚਿੰਗ ਬੈਂਡ",
+          "sparkle-selects": "Sparkle Selects (ਘਰੇਲੂ)",
+          "b-squad": "Sparkle Selects B Squad (ਬਾਹਰੀ)",
+          "saber-cats": "Saber Cats (ਘਰੇਲੂ)",
+          "saber-cats-away": "Saber Cats (ਬਾਹਰੀ)",
+          "icers": "Icers (ਘਰੇਲੂ)",
+          "icers-away": "Icers (ਬਾਹਰੀ)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "ਜੰਗੀ ਹਥੌੜਾ",
           "trumpet": "ਤੁਰ੍ਹੀ",
           "jack-o-lantern": "ਕੱਦੂ ਦੀ ਲਾਲਟੈਣ",
-          "wrench": "ਪਾਨਾ"
+          "wrench": "ਪਾਨਾ",
+          "hockey-stick-pink": "ਹਾਕੀ ਸਟਿੱਕ (ਗੁਲਾਬੀ)",
+          "hockey-stick-green": "ਹਾਕੀ ਸਟਿੱਕ (ਹਰੀ)",
+          "sparkle-flag": "Sparkle Selects (ਝੰਡਾ)"
         }
       },
       {

@@ -80,7 +80,9 @@
           "shako": "Fìlà ẹgbẹ́ olórin",
           "flat-top": "Irun pẹrẹsẹ lókè",
           "wild-hair": "Irun funfun ẹhànnà",
-          "messy-hair": "Irun rúdurùdu pẹ̀lú àpá"
+          "messy-hair": "Irun rúdurùdu pẹ̀lú àpá",
+          "sparkle-selects": "Sparkle Selects (àṣíborí)",
+          "saber-cats": "Saber Cats (àṣíborí)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Ènìyàn-ìkookò",
           "horseman": "Ẹlẹ́ṣin aláìlórí",
           "mascot": "Àmì kìnnìún",
-          "band": "Ẹgbẹ́ olórin ìrìn"
+          "band": "Ẹgbẹ́ olórin ìrìn",
+          "sparkle-selects": "Sparkle Selects (ilé)",
+          "b-squad": "Sparkle Selects B Squad (ìrìn)",
+          "saber-cats": "Saber Cats (ilé)",
+          "saber-cats-away": "Saber Cats (ìrìn)",
+          "icers": "Icers (ilé)",
+          "icers-away": "Icers (ìrìn)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Òòlù ogun",
           "trumpet": "Kàkàkí",
           "jack-o-lantern": "Àtùpà elégédé",
-          "wrench": "Sípánà"
+          "wrench": "Sípánà",
+          "hockey-stick-pink": "Ọ̀pá hóòkì (pínkì)",
+          "hockey-stick-green": "Ọ̀pá hóòkì (àwọ̀ ewé)",
+          "sparkle-flag": "Sparkle Selects (àsíá)"
         }
       },
       {

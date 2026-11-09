@@ -80,7 +80,9 @@
           "shako": "Banda akãngao",
           "flat-top": "Akãrague ipepisáva",
           "wild-hair": "Akãrague morotĩ isarambíva",
-          "messy-hair": "Akãrague isarambíva ha ñekytĩ rendague"
+          "messy-hair": "Akãrague isarambíva ha ñekytĩ rendague",
+          "sparkle-selects": "Sparkle Selects (akãngao)",
+          "saber-cats": "Saber Cats (akãngao)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Luisõ",
           "horseman": "Kavaju ári akã'ỹva",
           "mascot": "León mascota",
-          "band": "Banda oguatáva"
+          "band": "Banda oguatáva",
+          "sparkle-selects": "Sparkle Selects (óga)",
+          "b-squad": "Sparkle Selects B Squad (mombyry)",
+          "saber-cats": "Saber Cats (óga)",
+          "saber-cats-away": "Saber Cats (mombyry)",
+          "icers": "Icers (óga)",
+          "icers-away": "Icers (mombyry)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Ñorairõ martillo",
           "trumpet": "Trompeta",
           "jack-o-lantern": "Andai tataindy",
-          "wrench": "Llave inglesa"
+          "wrench": "Llave inglesa",
+          "hockey-stick-pink": "Hockey yvyra (pytãngy)",
+          "hockey-stick-green": "Hockey yvyra (hovyũ)",
+          "sparkle-flag": "Sparkle Selects (bandera)"
         }
       },
       {

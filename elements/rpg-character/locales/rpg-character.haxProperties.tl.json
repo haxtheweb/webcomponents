@@ -80,7 +80,9 @@
           "shako": "Shako ng banda",
           "flat-top": "Buhok na flat-top",
           "wild-hair": "Nakatayong puting buhok",
-          "messy-hair": "Magulong buhok na may peklat"
+          "messy-hair": "Magulong buhok na may peklat",
+          "sparkle-selects": "Sparkle Selects (helmet)",
+          "saber-cats": "Saber Cats (helmet)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Taong-lobo",
           "horseman": "Mangangabayong walang ulo",
           "mascot": "Maskot na leon",
-          "band": "Banda ng parada"
+          "band": "Banda ng parada",
+          "sparkle-selects": "Sparkle Selects (home)",
+          "b-squad": "Sparkle Selects B Squad (away)",
+          "saber-cats": "Saber Cats (home)",
+          "saber-cats-away": "Saber Cats (away)",
+          "icers": "Icers (home)",
+          "icers-away": "Icers (away)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Martilyo ng digmaan",
           "trumpet": "Trumpeta",
           "jack-o-lantern": "Parol na kalabasa",
-          "wrench": "Liyabe"
+          "wrench": "Liyabe",
+          "hockey-stick-pink": "Hockey stick (rosas)",
+          "hockey-stick-green": "Hockey stick (berde)",
+          "sparkle-flag": "Sparkle Selects (bandila)"
         }
       },
       {

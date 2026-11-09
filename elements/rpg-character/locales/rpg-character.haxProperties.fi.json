@@ -80,7 +80,9 @@
           "shako": "Soittokunnan šako",
           "flat-top": "Siilitukka",
           "wild-hair": "Villi valkoinen tukka",
-          "messy-hair": "Sotkuinen tukka ja arpi"
+          "messy-hair": "Sotkuinen tukka ja arpi",
+          "sparkle-selects": "Sparkle Selects (kypärä)",
+          "saber-cats": "Saber Cats (kypärä)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Ihmissusi",
           "horseman": "Päätön ratsumies",
           "mascot": "Leijonamaskotti",
-          "band": "Marssiorkesteri"
+          "band": "Marssiorkesteri",
+          "sparkle-selects": "Sparkle Selects (koti)",
+          "b-squad": "Sparkle Selects B Squad (vieras)",
+          "saber-cats": "Saber Cats (koti)",
+          "saber-cats-away": "Saber Cats (vieras)",
+          "icers": "Icers (koti)",
+          "icers-away": "Icers (vieras)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Sotavasara",
           "trumpet": "Trumpetti",
           "jack-o-lantern": "Kurpitsalyhty",
-          "wrench": "Jakoavain"
+          "wrench": "Jakoavain",
+          "hockey-stick-pink": "Jääkiekkomaila (pinkki)",
+          "hockey-stick-green": "Jääkiekkomaila (vihreä)",
+          "sparkle-flag": "Sparkle Selects (lippu)"
         }
       },
       {

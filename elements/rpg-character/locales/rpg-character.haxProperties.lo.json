@@ -80,7 +80,9 @@
           "shako": "ໝວກວົງດົນຕີ",
           "flat-top": "ຜົມຮາບພຽງ",
           "wild-hair": "ຜົມຂາວຍຸ່ງ",
-          "messy-hair": "ຜົມຍຸ່ງມີຮອຍແຜ"
+          "messy-hair": "ຜົມຍຸ່ງມີຮອຍແຜ",
+          "sparkle-selects": "Sparkle Selects (ໝວກກັນກະທົບ)",
+          "saber-cats": "Saber Cats (ໝວກກັນກະທົບ)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "ມະນຸດໝາປ່າ",
           "horseman": "ຄົນຂີ່ມ້າບໍ່ມີຫົວ",
           "mascot": "ມາສະຄອດສິງໂຕ",
-          "band": "ວົງດົນຕີເດີນແຖວ"
+          "band": "ວົງດົນຕີເດີນແຖວ",
+          "sparkle-selects": "Sparkle Selects (ເຮືອນ)",
+          "b-squad": "Sparkle Selects B Squad (ນອກບ້ານ)",
+          "saber-cats": "Saber Cats (ເຮືອນ)",
+          "saber-cats-away": "Saber Cats (ນອກບ້ານ)",
+          "icers": "Icers (ເຮືອນ)",
+          "icers-away": "Icers (ນອກບ້ານ)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "ຄ້ອນສົງຄາມ",
           "trumpet": "ແກ",
           "jack-o-lantern": "ໂຄມໝາກອຶ",
-          "wrench": "ກະແຈປາກຕາຍ"
+          "wrench": "ກະແຈປາກຕາຍ",
+          "hockey-stick-pink": "ໄມ້ຮັອກກີ້ (ສີບົວ)",
+          "hockey-stick-green": "ໄມ້ຮັອກກີ້ (ສີຂຽວ)",
+          "sparkle-flag": "Sparkle Selects (ທຸງ)"
         }
       },
       {

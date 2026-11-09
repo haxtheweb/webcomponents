@@ -80,7 +80,9 @@
           "shako": "Musikkårsshako",
           "flat-top": "Flat-top-frisyr",
           "wild-hair": "Vilt vitt hår",
-          "messy-hair": "Rufsigt hår med ärr"
+          "messy-hair": "Rufsigt hår med ärr",
+          "sparkle-selects": "Sparkle Selects (hjälm)",
+          "saber-cats": "Saber Cats (hjälm)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Varulv",
           "horseman": "Huvudlös ryttare",
           "mascot": "Lejonmaskot",
-          "band": "Musikkår"
+          "band": "Musikkår",
+          "sparkle-selects": "Sparkle Selects (hemma)",
+          "b-squad": "Sparkle Selects B Squad (borta)",
+          "saber-cats": "Saber Cats (hemma)",
+          "saber-cats-away": "Saber Cats (borta)",
+          "icers": "Icers (hemma)",
+          "icers-away": "Icers (borta)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Stridshammare",
           "trumpet": "Trumpet",
           "jack-o-lantern": "Pumpalykta",
-          "wrench": "Skiftnyckel"
+          "wrench": "Skiftnyckel",
+          "hockey-stick-pink": "Hockeyklubba (rosa)",
+          "hockey-stick-green": "Hockeyklubba (grönt)",
+          "sparkle-flag": "Sparkle Selects (flagga)"
         }
       },
       {

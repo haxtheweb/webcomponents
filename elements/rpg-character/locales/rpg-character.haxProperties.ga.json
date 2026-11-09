@@ -80,7 +80,9 @@
           "shako": "Seacó banna",
           "flat-top": "Gruaig bharr cothrom",
           "wild-hair": "Gruaig fhiáin bhán",
-          "messy-hair": "Gruaig aimhréidh le colm"
+          "messy-hair": "Gruaig aimhréidh le colm",
+          "sparkle-selects": "Sparkle Selects (clogad)",
+          "saber-cats": "Saber Cats (clogad)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Conriocht",
           "horseman": "Marcach gan cheann",
           "mascot": "Mascot leoin",
-          "band": "Banna máirseála"
+          "band": "Banna máirseála",
+          "sparkle-selects": "Sparkle Selects (baile)",
+          "b-squad": "Sparkle Selects B Squad (as baile)",
+          "saber-cats": "Saber Cats (baile)",
+          "saber-cats-away": "Saber Cats (as baile)",
+          "icers": "Icers (baile)",
+          "icers-away": "Icers (as baile)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Casúr cogaidh",
           "trumpet": "Trumpa",
           "jack-o-lantern": "Laindéar puimcín",
-          "wrench": "Castaire"
+          "wrench": "Castaire",
+          "hockey-stick-pink": "Maide haca (bándearg)",
+          "hockey-stick-green": "Maide haca (glas)",
+          "sparkle-flag": "Sparkle Selects (bratach)"
         }
       },
       {

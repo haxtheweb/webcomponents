@@ -80,7 +80,9 @@
           "shako": "இசைக்குழு ஷாகோ",
           "flat-top": "தட்டையான மேல் முடி",
           "wild-hair": "காட்டு வெள்ளை முடி",
-          "messy-hair": "தழும்புடன் கலைந்த முடி"
+          "messy-hair": "தழும்புடன் கலைந்த முடி",
+          "sparkle-selects": "Sparkle Selects (தலைக்கவசம்)",
+          "saber-cats": "Saber Cats (தலைக்கவசம்)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "ஓநாய் மனிதன்",
           "horseman": "தலையில்லா குதிரைவீரன்",
           "mascot": "சிங்க சின்னம்",
-          "band": "அணிவகுப்பு இசைக்குழு"
+          "band": "அணிவகுப்பு இசைக்குழு",
+          "sparkle-selects": "Sparkle Selects (உள்ளூர்)",
+          "b-squad": "Sparkle Selects B Squad (வெளியூர்)",
+          "saber-cats": "Saber Cats (உள்ளூர்)",
+          "saber-cats-away": "Saber Cats (வெளியூர்)",
+          "icers": "Icers (உள்ளூர்)",
+          "icers-away": "Icers (வெளியூர்)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "போர்ச் சுத்தியல்",
           "trumpet": "எக்காளம்",
           "jack-o-lantern": "பூசணி விளக்கு",
-          "wrench": "திருகுக் குறடு"
+          "wrench": "திருகுக் குறடு",
+          "hockey-stick-pink": "ஹாக்கி மட்டை (இளஞ்சிவப்பு)",
+          "hockey-stick-green": "ஹாக்கி மட்டை (பச்சை)",
+          "sparkle-flag": "Sparkle Selects (கொடி)"
         }
       },
       {

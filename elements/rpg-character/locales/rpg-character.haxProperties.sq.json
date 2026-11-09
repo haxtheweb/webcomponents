@@ -80,7 +80,9 @@
           "shako": "Shako bande",
           "flat-top": "Flokë të sheshta sipër",
           "wild-hair": "Flokë të bardha të egra",
-          "messy-hair": "Flokë të çrregullta me plagë"
+          "messy-hair": "Flokë të çrregullta me plagë",
+          "sparkle-selects": "Sparkle Selects (helmetë)",
+          "saber-cats": "Saber Cats (helmetë)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Njeri-ujk",
           "horseman": "Kalorës pa kokë",
           "mascot": "Maskotë luani",
-          "band": "Bandë marshimi"
+          "band": "Bandë marshimi",
+          "sparkle-selects": "Sparkle Selects (vendas)",
+          "b-squad": "Sparkle Selects B Squad (mysafir)",
+          "saber-cats": "Saber Cats (vendas)",
+          "saber-cats-away": "Saber Cats (mysafir)",
+          "icers": "Icers (vendas)",
+          "icers-away": "Icers (mysafir)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Çekan lufte",
           "trumpet": "Trombë",
           "jack-o-lantern": "Fener kungulli",
-          "wrench": "Çelës anglez"
+          "wrench": "Çelës anglez",
+          "hockey-stick-pink": "Shkop hokeji (rozë)",
+          "hockey-stick-green": "Shkop hokeji (jeshile)",
+          "sparkle-flag": "Sparkle Selects (flamur)"
         }
       },
       {

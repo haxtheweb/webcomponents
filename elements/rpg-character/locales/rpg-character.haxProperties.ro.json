@@ -80,7 +80,9 @@
           "shako": "Chipiu de fanfară",
           "flat-top": "Tunsoare flat-top",
           "wild-hair": "Păr alb zburlit",
-          "messy-hair": "Păr ciufulit cu cicatrice"
+          "messy-hair": "Păr ciufulit cu cicatrice",
+          "sparkle-selects": "Sparkle Selects (cască)",
+          "saber-cats": "Saber Cats (cască)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Vârcolac",
           "horseman": "Călărețul fără cap",
           "mascot": "Mascotă leu",
-          "band": "Fanfară în marș"
+          "band": "Fanfară în marș",
+          "sparkle-selects": "Sparkle Selects (acasă)",
+          "b-squad": "Sparkle Selects B Squad (deplasare)",
+          "saber-cats": "Saber Cats (acasă)",
+          "saber-cats-away": "Saber Cats (deplasare)",
+          "icers": "Icers (acasă)",
+          "icers-away": "Icers (deplasare)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Ciocan de război",
           "trumpet": "Trompetă",
           "jack-o-lantern": "Felinar din dovleac",
-          "wrench": "Cheie franceză"
+          "wrench": "Cheie franceză",
+          "hockey-stick-pink": "Crosă de hochei (roz)",
+          "hockey-stick-green": "Crosă de hochei (verde)",
+          "sparkle-flag": "Sparkle Selects (steag)"
         }
       },
       {

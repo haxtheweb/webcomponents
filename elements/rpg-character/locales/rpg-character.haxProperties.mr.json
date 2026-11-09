@@ -80,7 +80,9 @@
           "shako": "बँड शाको",
           "flat-top": "सपाट माथ्याचे केस",
           "wild-hair": "रानटी पांढरे केस",
-          "messy-hair": "व्रणासह अस्ताव्यस्त केस"
+          "messy-hair": "व्रणासह अस्ताव्यस्त केस",
+          "sparkle-selects": "Sparkle Selects (हेल्मेट)",
+          "saber-cats": "Saber Cats (हेल्मेट)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "लांडगामानव",
           "horseman": "बिनडोक्याचा घोडेस्वार",
           "mascot": "सिंह शुभंकर",
-          "band": "संचलन बँड"
+          "band": "संचलन बँड",
+          "sparkle-selects": "Sparkle Selects (होम)",
+          "b-squad": "Sparkle Selects B Squad (अवे)",
+          "saber-cats": "Saber Cats (होम)",
+          "saber-cats-away": "Saber Cats (अवे)",
+          "icers": "Icers (होम)",
+          "icers-away": "Icers (अवे)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "युद्ध हातोडा",
           "trumpet": "तुतारी",
           "jack-o-lantern": "भोपळ्याचा कंदील",
-          "wrench": "पाना"
+          "wrench": "पाना",
+          "hockey-stick-pink": "हॉकी स्टिक (गुलाबी)",
+          "hockey-stick-green": "हॉकी स्टिक (हिरवी)",
+          "sparkle-flag": "Sparkle Selects (ध्वज)"
         }
       },
       {

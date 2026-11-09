@@ -80,7 +80,9 @@
           "shako": "악대 샤코 모자",
           "flat-top": "각진 머리",
           "wild-hair": "헝클어진 흰 머리",
-          "messy-hair": "흉터 있는 헝클어진 머리"
+          "messy-hair": "흉터 있는 헝클어진 머리",
+          "sparkle-selects": "Sparkle Selects (헬멧)",
+          "saber-cats": "Saber Cats (헬멧)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "늑대인간",
           "horseman": "목 없는 기사",
           "mascot": "사자 마스코트",
-          "band": "마칭 밴드"
+          "band": "마칭 밴드",
+          "sparkle-selects": "Sparkle Selects (홈)",
+          "b-squad": "Sparkle Selects B Squad (원정)",
+          "saber-cats": "Saber Cats (홈)",
+          "saber-cats-away": "Saber Cats (원정)",
+          "icers": "Icers (홈)",
+          "icers-away": "Icers (원정)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "전투 망치",
           "trumpet": "트럼펫",
           "jack-o-lantern": "잭오랜턴",
-          "wrench": "렌치"
+          "wrench": "렌치",
+          "hockey-stick-pink": "하키 스틱 (분홍)",
+          "hockey-stick-green": "하키 스틱 (초록)",
+          "sparkle-flag": "Sparkle Selects (깃발)"
         }
       },
       {

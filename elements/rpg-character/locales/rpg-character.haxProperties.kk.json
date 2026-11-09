@@ -80,7 +80,9 @@
           "shako": "Оркестр кивері",
           "flat-top": "Тегіс шаш үлгісі",
           "wild-hair": "Ұйпалақ ақ шаш",
-          "messy-hair": "Тыртықты ұйпалақ шаш"
+          "messy-hair": "Тыртықты ұйпалақ шаш",
+          "sparkle-selects": "Sparkle Selects (дулыға)",
+          "saber-cats": "Saber Cats (дулыға)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Қасқыр-адам",
           "horseman": "Бассыз салт атты",
           "mascot": "Арыстан талисманы",
-          "band": "Марш оркестрі"
+          "band": "Марш оркестрі",
+          "sparkle-selects": "Sparkle Selects (үй)",
+          "b-squad": "Sparkle Selects B Squad (қонақ)",
+          "saber-cats": "Saber Cats (үй)",
+          "saber-cats-away": "Saber Cats (қонақ)",
+          "icers": "Icers (үй)",
+          "icers-away": "Icers (қонақ)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Соғыс балғасы",
           "trumpet": "Керней",
           "jack-o-lantern": "Асқабақ шам",
-          "wrench": "Сомын кілт"
+          "wrench": "Сомын кілт",
+          "hockey-stick-pink": "Хоккей таяғы (қызғылт)",
+          "hockey-stick-green": "Хоккей таяғы (жасыл)",
+          "sparkle-flag": "Sparkle Selects (жалау)"
         }
       },
       {

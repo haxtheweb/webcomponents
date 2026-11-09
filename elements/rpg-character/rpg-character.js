@@ -91,6 +91,8 @@ export const hatList = [
   "flat-top",
   "wild-hair",
   "messy-hair",
+  "sparkle-selects",
+  "saber-cats",
 ];
 // what hat="random" picks from: everyday hats, leaving costume and holiday
 // hats to explicit choices and presets
@@ -114,6 +116,8 @@ const costumeHats = [
   "flat-top",
   "wild-hair",
   "messy-hair",
+  "sparkle-selects",
+  "saber-cats",
 ];
 export const randomHatList = hatList.filter((h) => !costumeHats.includes(h));
 // full-head or face masks, drawn between the hair and the hat
@@ -192,7 +196,13 @@ export const itemList = [
   "trumpet",
   "jack-o-lantern",
   "wrench",
+  "hockey-stick-pink",
+  "hockey-stick-green",
+  "sparkle-flag",
 ];
+// flag items: the pennant carries flag-text; a team flag shows its team
+// letters when no text is set
+export const flagItems = { flag: "", "sparkle-flag": "AAAA" };
 // things held in the left hand
 export const offhandList = ["shield", "palette", "proton-pack"];
 // things on or under the feet
@@ -285,6 +295,56 @@ export const presets = {
   horseman: { mask: "shadow", item: "jack-o-lantern" },
   mascot: { mask: "lion" },
   band: { hat: "shako", item: "trumpet" },
+  // hockey team kits, home and away. The helmet names the team in both
+  // kits; the sweater tells home from away. crest is drawn from
+  // lib/crest/<name>.svg above accessories, so a seed's tie never covers it.
+  "sparkle-selects": {
+    hat: "sparkle-selects",
+    item: "hockey-stick-pink",
+    feet: "skates",
+    crest: "sparkle-selects",
+  },
+  "b-squad": {
+    hat: "sparkle-selects",
+    item: "hockey-stick-pink",
+    feet: "skates",
+    crest: "b-squad",
+  },
+  "saber-cats": {
+    hat: "saber-cats",
+    item: "hockey-stick-green",
+    feet: "skates",
+    crest: "saber-cats",
+  },
+  "saber-cats-away": {
+    hat: "saber-cats",
+    item: "hockey-stick-green",
+    feet: "skates",
+    crest: "saber-cats-away",
+  },
+  icers: {
+    hat: "hockey",
+    item: "hockey-stick",
+    feet: "skates",
+    crest: "icers",
+  },
+  "icers-away": {
+    hat: "hockey",
+    item: "hockey-stick",
+    feet: "skates",
+    crest: "icers-away",
+  },
+};
+// Special seeds that dress the character in a team kit. The seed still makes
+// the character underneath; this only fills in the preset when none is
+// chosen and no character code is set.
+export const teamSeeds = {
+  aaaa: "sparkle-selects",
+  bsquad: "b-squad",
+  sabercats: "saber-cats",
+  sabercatsaway: "saber-cats-away",
+  icers: "icers",
+  icersaway: "icers-away",
 };
 
 export const charBuilder = {
@@ -581,6 +641,8 @@ class RpgCharacter extends SimpleColors {
           ? this[slot.name]
           : this._slot(slot.name);
     });
+    // a team seed's kit is part of how the character looks, so keep it
+    character.preset = this._chosenPreset();
     return encodeCharacter(character);
   }
 
@@ -690,6 +752,17 @@ class RpgCharacter extends SimpleColors {
   }
 
   /**
+   * Text on the pennant of a flag item: flag-text when set, otherwise the
+   * flag's own team letters (none for the plain flag).
+   */
+  _pennantText(item) {
+    if (!Object.prototype.hasOwnProperty.call(flagItems, item)) {
+      return "";
+    }
+    return this._flagText() || flagItems[item];
+  }
+
+  /**
    * Gear slots also fall back to the (effective) preset's defaults.
    */
   _gear(slot) {
@@ -727,12 +800,31 @@ class RpgCharacter extends SimpleColors {
   }
 
   /**
+   * The preset this character keeps: an explicit or coded preset, otherwise
+   * a team kit for one of the special team seeds. A character code is a full
+   * description, so a team seed never adds a kit to one.
+   */
+  _chosenPreset() {
+    const chosen = this._slot("preset");
+    if (chosen !== "none") {
+      return chosen;
+    }
+    if (
+      !this._codeCharacter &&
+      Object.prototype.hasOwnProperty.call(teamSeeds, this.seed)
+    ) {
+      return teamSeeds[this.seed];
+    }
+    return "none";
+  }
+
+  /**
    * Effective preset: an explicit or coded preset wins; otherwise the
    * seasonal costume, if any. Seasonal costumes are never written into the
    * code, so a saved character is not stuck in October.
    */
   _preset() {
-    const chosen = this._slot("preset");
+    const chosen = this._chosenPreset();
     if (chosen !== "none") {
       return chosen;
     }
@@ -787,6 +879,12 @@ class RpgCharacter extends SimpleColors {
       import.meta.url,
     ).href;
     const skin = new URL(`./lib/skin/${this.skin}.svg`, import.meta.url).href;
+    // a team kit's chest crest, drawn above accessories
+    const crest =
+      hasPreset && presets[preset].crest
+        ? new URL(`./lib/crest/${presets[preset].crest}.svg`, import.meta.url)
+            .href
+        : "";
     let hatFileName = this._gear("hat");
     // special cases to change hat from the one requested
     if (onFire && hatFileName === "none") {
@@ -832,7 +930,8 @@ class RpgCharacter extends SimpleColors {
         ${this.base === 1 && !shaved ? this.renderPiece(hair) : ``}
         ${this.renderPiece(face)} ${this.renderPiece(faceItem)}
         ${this.renderPiece(shirt, hide)} ${this.renderPiece(pants)}
-        ${this.renderPiece(accessories)} ${this.renderPiece(base, hide)}
+        ${this.renderPiece(accessories)} ${crest ? this.renderPiece(crest) : ``}
+        ${this.renderPiece(base, hide)}
         ${this.leg !== "" ? this.renderPiece(leg) : ``}
         ${
           expression !== "none"
@@ -884,11 +983,7 @@ class RpgCharacter extends SimpleColors {
               )
             : ``
         }
-        ${
-          item === "flag" && holdsItem && this._flagText()
-            ? this.renderFlagText()
-            : ``
-        }
+        ${holdsItem && this._pennantText(item) ? this.renderFlagText(item) : ``}
         ${this._slot("circle") ? this.renderPiece(circle) : ``}
       </div>
       ${
@@ -947,8 +1042,8 @@ class RpgCharacter extends SimpleColors {
    * abbreviation). Drawn in the 113x142 art space so it scales with the
    * character the same way every image layer does.
    */
-  renderFlagText() {
-    const text = this._flagText().substring(0, 4);
+  renderFlagText(item = "flag") {
+    const text = this._pennantText(item).substring(0, 4);
     return svg`
     <svg xmlns="http://www.w3.org/2000/svg" part="rpg-character-item" viewBox="0 0 ${this.width} ${this.height}" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
       <svg viewBox="0 0 113 142" width="${this.width}" height="${this.height}" preserveAspectRatio="xMidYMid meet">

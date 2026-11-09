@@ -80,7 +80,9 @@
           "shako": "Orkestur-shako",
           "flat-top": "Flatt hár",
           "wild-hair": "Vilt hvítt hár",
-          "messy-hair": "Ógreitt hár við ørri"
+          "messy-hair": "Ógreitt hár við ørri",
+          "sparkle-selects": "Sparkle Selects (hjálmur)",
+          "saber-cats": "Saber Cats (hjálmur)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Varúlvur",
           "horseman": "Høvdleysur riddari",
           "mascot": "Leyvumaskot",
-          "band": "Marsjorkestur"
+          "band": "Marsjorkestur",
+          "sparkle-selects": "Sparkle Selects (heima)",
+          "b-squad": "Sparkle Selects B Squad (úti)",
+          "saber-cats": "Saber Cats (heima)",
+          "saber-cats-away": "Saber Cats (úti)",
+          "icers": "Icers (heima)",
+          "icers-away": "Icers (úti)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Bardagahamar",
           "trumpet": "Trompet",
           "jack-o-lantern": "Græskarlykt",
-          "wrench": "Skrúvulykil"
+          "wrench": "Skrúvulykil",
+          "hockey-stick-pink": "Hokkýkølva (ljósareyð)",
+          "hockey-stick-green": "Hokkýkølva (grønt)",
+          "sparkle-flag": "Sparkle Selects (fløgg)"
         }
       },
       {

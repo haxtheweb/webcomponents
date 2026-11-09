@@ -80,7 +80,9 @@
           "shako": "ორკესტრის კივერი",
           "flat-top": "ბრტყელი ვარცხნილობა",
           "wild-hair": "აწეწილი თეთრი თმა",
-          "messy-hair": "აწეწილი თმა ნაიარევით"
+          "messy-hair": "აწეწილი თმა ნაიარევით",
+          "sparkle-selects": "Sparkle Selects (ჩაფხუტი)",
+          "saber-cats": "Saber Cats (ჩაფხუტი)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "მგელკაცი",
           "horseman": "უთავო მხედარი",
           "mascot": "ლომის თილისმა",
-          "band": "მარშის ორკესტრი"
+          "band": "მარშის ორკესტრი",
+          "sparkle-selects": "Sparkle Selects (საშინაო)",
+          "b-squad": "Sparkle Selects B Squad (გასვლითი)",
+          "saber-cats": "Saber Cats (საშინაო)",
+          "saber-cats-away": "Saber Cats (გასვლითი)",
+          "icers": "Icers (საშინაო)",
+          "icers-away": "Icers (გასვლითი)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "საბრძოლო ჩაქუჩი",
           "trumpet": "საყვირი",
           "jack-o-lantern": "გოგრის ფარანი",
-          "wrench": "ქანჩის გასაღები"
+          "wrench": "ქანჩის გასაღები",
+          "hockey-stick-pink": "ჰოკეის ჯოხი (ვარდისფერი)",
+          "hockey-stick-green": "ჰოკეის ჯოხი (მწვანე)",
+          "sparkle-flag": "Sparkle Selects (დროშა)"
         }
       },
       {

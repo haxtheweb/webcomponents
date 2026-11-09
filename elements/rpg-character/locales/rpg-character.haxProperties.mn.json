@@ -80,7 +80,9 @@
           "shako": "Найрал хөгжмийн шако",
           "flat-top": "Хавтгай оройтой үс",
           "wild-hair": "Сэгсгэр цагаан үс",
-          "messy-hair": "Сорвитой замбараагүй үс"
+          "messy-hair": "Сорвитой замбараагүй үс",
+          "sparkle-selects": "Sparkle Selects (дуулга)",
+          "saber-cats": "Saber Cats (дуулга)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Хүн чоно",
           "horseman": "Толгойгүй морьтон",
           "mascot": "Арслан сахиус",
-          "band": "Жагсаалын найрал хөгжим"
+          "band": "Жагсаалын найрал хөгжим",
+          "sparkle-selects": "Sparkle Selects (гэрийн)",
+          "b-squad": "Sparkle Selects B Squad (зочин)",
+          "saber-cats": "Saber Cats (гэрийн)",
+          "saber-cats-away": "Saber Cats (зочин)",
+          "icers": "Icers (гэрийн)",
+          "icers-away": "Icers (зочин)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Байлдааны алх",
           "trumpet": "Бүрээ",
           "jack-o-lantern": "Хулууны дэнлүү",
-          "wrench": "Гаечны түлхүүр"
+          "wrench": "Гаечны түлхүүр",
+          "hockey-stick-pink": "Хоккейн цохиур (ягаан)",
+          "hockey-stick-green": "Хоккейн цохиур (ногоон)",
+          "sparkle-flag": "Sparkle Selects (туг)"
         }
       },
       {

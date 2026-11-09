@@ -80,7 +80,9 @@
           "shako": "មួកក្រុមតន្ត្រី",
           "flat-top": "សក់រាបស្មើ",
           "wild-hair": "សក់សរញ៉េរញ៉ៃ",
-          "messy-hair": "សក់រញ៉េរញ៉ៃមានស្លាកស្នាម"
+          "messy-hair": "សក់រញ៉េរញ៉ៃមានស្លាកស្នាម",
+          "sparkle-selects": "Sparkle Selects (មួកសុវត្ថិភាព)",
+          "saber-cats": "Saber Cats (មួកសុវត្ថិភាព)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "មនុស្សចចក",
           "horseman": "អ្នកជិះសេះគ្មានក្បាល",
           "mascot": "រូបតំណាងសត្វតោ",
-          "band": "ក្រុមតន្ត្រីដង្ហែ"
+          "band": "ក្រុមតន្ត្រីដង្ហែ",
+          "sparkle-selects": "Sparkle Selects (ផ្ទះ)",
+          "b-squad": "Sparkle Selects B Squad (ក្រៅ)",
+          "saber-cats": "Saber Cats (ផ្ទះ)",
+          "saber-cats-away": "Saber Cats (ក្រៅ)",
+          "icers": "Icers (ផ្ទះ)",
+          "icers-away": "Icers (ក្រៅ)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "ញញួរសង្គ្រាម",
           "trumpet": "ត្រែ",
           "jack-o-lantern": "គោមល្ពៅ",
-          "wrench": "ឃ្លេមួលខ្ចៅ"
+          "wrench": "ឃ្លេមួលខ្ចៅ",
+          "hockey-stick-pink": "ដំបងហុកគី (ពណ៌ផ្កាឈូក)",
+          "hockey-stick-green": "ដំបងហុកគី (បៃតង)",
+          "sparkle-flag": "Sparkle Selects (ទង់)"
         }
       },
       {

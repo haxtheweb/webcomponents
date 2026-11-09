@@ -80,7 +80,9 @@
           "shako": "Chacó de banda",
           "flat-top": "Pelo plano",
           "wild-hair": "Pelo branco alborotado",
-          "messy-hair": "Pelo revolto con cicatriz"
+          "messy-hair": "Pelo revolto con cicatriz",
+          "sparkle-selects": "Sparkle Selects (casco)",
+          "saber-cats": "Saber Cats (casco)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Lobishome",
           "horseman": "Cabaleiro sen cabeza",
           "mascot": "Mascota león",
-          "band": "Banda de música"
+          "band": "Banda de música",
+          "sparkle-selects": "Sparkle Selects (local)",
+          "b-squad": "Sparkle Selects B Squad (visitante)",
+          "saber-cats": "Saber Cats (local)",
+          "saber-cats-away": "Saber Cats (visitante)",
+          "icers": "Icers (local)",
+          "icers-away": "Icers (visitante)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Martelo de guerra",
           "trumpet": "Trompeta",
           "jack-o-lantern": "Lanterna de cabaza",
-          "wrench": "Chave inglesa"
+          "wrench": "Chave inglesa",
+          "hockey-stick-pink": "Pau de hóquei (rosa)",
+          "hockey-stick-green": "Pau de hóquei (verde)",
+          "sparkle-flag": "Sparkle Selects (bandeira)"
         }
       },
       {

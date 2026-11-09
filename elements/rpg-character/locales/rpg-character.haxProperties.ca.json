@@ -80,7 +80,9 @@
           "shako": "Xacó de banda",
           "flat-top": "Cabell pla",
           "wild-hair": "Cabell blanc esbullat",
-          "messy-hair": "Cabell despentinat amb cicatriu"
+          "messy-hair": "Cabell despentinat amb cicatriu",
+          "sparkle-selects": "Sparkle Selects (casc)",
+          "saber-cats": "Saber Cats (casc)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Home llop",
           "horseman": "Genet sense cap",
           "mascot": "Mascota lleó",
-          "band": "Banda de música"
+          "band": "Banda de música",
+          "sparkle-selects": "Sparkle Selects (local)",
+          "b-squad": "Sparkle Selects B Squad (visitant)",
+          "saber-cats": "Saber Cats (local)",
+          "saber-cats-away": "Saber Cats (visitant)",
+          "icers": "Icers (local)",
+          "icers-away": "Icers (visitant)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Martell de guerra",
           "trumpet": "Trompeta",
           "jack-o-lantern": "Llanterna de carbassa",
-          "wrench": "Clau anglesa"
+          "wrench": "Clau anglesa",
+          "hockey-stick-pink": "Estic d'hoquei (rosa)",
+          "hockey-stick-green": "Estic d'hoquei (verda)",
+          "sparkle-flag": "Sparkle Selects (bandera)"
         }
       },
       {

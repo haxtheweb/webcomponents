@@ -80,7 +80,9 @@
           "shako": "Banda-xakoa",
           "flat-top": "Ile laua",
           "wild-hair": "Ile zuri basatia",
-          "messy-hair": "Ile nahasia orbainarekin"
+          "messy-hair": "Ile nahasia orbainarekin",
+          "sparkle-selects": "Sparkle Selects (kaskoa)",
+          "saber-cats": "Saber Cats (kaskoa)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Gizotsoa",
           "horseman": "Zaldun burugabea",
           "mascot": "Lehoi maskota",
-          "band": "Martxa-banda"
+          "band": "Martxa-banda",
+          "sparkle-selects": "Sparkle Selects (etxean)",
+          "b-squad": "Sparkle Selects B Squad (kanpoan)",
+          "saber-cats": "Saber Cats (etxean)",
+          "saber-cats-away": "Saber Cats (kanpoan)",
+          "icers": "Icers (etxean)",
+          "icers-away": "Icers (kanpoan)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Gerra mailua",
           "trumpet": "Tronpeta",
           "jack-o-lantern": "Kalabaza-linterna",
-          "wrench": "Giltza ingelesa"
+          "wrench": "Giltza ingelesa",
+          "hockey-stick-pink": "Hockey makila (arrosa)",
+          "hockey-stick-green": "Hockey makila (berdea)",
+          "sparkle-flag": "Sparkle Selects (bandera)"
         }
       },
       {

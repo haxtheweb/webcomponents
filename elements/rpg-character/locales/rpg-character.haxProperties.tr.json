@@ -80,7 +80,9 @@
           "shako": "Bando şakosu",
           "flat-top": "Düz kesim saç",
           "wild-hair": "Vahşi beyaz saç",
-          "messy-hair": "Yara izli dağınık saç"
+          "messy-hair": "Yara izli dağınık saç",
+          "sparkle-selects": "Sparkle Selects (kask)",
+          "saber-cats": "Saber Cats (kask)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Kurt adam",
           "horseman": "Başsız atlı",
           "mascot": "Aslan maskot",
-          "band": "Bando takımı"
+          "band": "Bando takımı",
+          "sparkle-selects": "Sparkle Selects (iç saha)",
+          "b-squad": "Sparkle Selects B Squad (deplasman)",
+          "saber-cats": "Saber Cats (iç saha)",
+          "saber-cats-away": "Saber Cats (deplasman)",
+          "icers": "Icers (iç saha)",
+          "icers-away": "Icers (deplasman)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Savaş çekici",
           "trumpet": "Trompet",
           "jack-o-lantern": "Balkabağı feneri",
-          "wrench": "İngiliz anahtarı"
+          "wrench": "İngiliz anahtarı",
+          "hockey-stick-pink": "Hokey sopası (pembe)",
+          "hockey-stick-green": "Hokey sopası (yeşil)",
+          "sparkle-flag": "Sparkle Selects (bayrak)"
         }
       },
       {

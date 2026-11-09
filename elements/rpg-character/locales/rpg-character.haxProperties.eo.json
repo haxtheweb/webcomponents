@@ -80,7 +80,9 @@
           "shako": "Ŝako de muzikbando",
           "flat-top": "Plata hararo",
           "wild-hair": "Sovaĝa blanka hararo",
-          "messy-hair": "Malorda hararo kun cikatro"
+          "messy-hair": "Malorda hararo kun cikatro",
+          "sparkle-selects": "Sparkle Selects (kasko)",
+          "saber-cats": "Saber Cats (kasko)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Homlupo",
           "horseman": "Senkapa rajdanto",
           "mascot": "Leona maskoto",
-          "band": "Marŝanta muzikbando"
+          "band": "Marŝanta muzikbando",
+          "sparkle-selects": "Sparkle Selects (hejme)",
+          "b-squad": "Sparkle Selects B Squad (fremde)",
+          "saber-cats": "Saber Cats (hejme)",
+          "saber-cats-away": "Saber Cats (fremde)",
+          "icers": "Icers (hejme)",
+          "icers-away": "Icers (fremde)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Milita martelo",
           "trumpet": "Trumpeto",
           "jack-o-lantern": "Kukurba lanterno",
-          "wrench": "Ŝraŭbŝlosilo"
+          "wrench": "Ŝraŭbŝlosilo",
+          "hockey-stick-pink": "Hokeobatilo (rozkolora)",
+          "hockey-stick-green": "Hokeobatilo (verda)",
+          "sparkle-flag": "Sparkle Selects (flago)"
         }
       },
       {

@@ -80,7 +80,9 @@
           "shako": "Şakoya koma muzîkê",
           "flat-top": "Porê rast ê kurt",
           "wild-hair": "Porê spî yê hov",
-          "messy-hair": "Porê tevlihev bi şopa birînê"
+          "messy-hair": "Porê tevlihev bi şopa birînê",
+          "sparkle-selects": "Sparkle Selects (kum)",
+          "saber-cats": "Saber Cats (kum)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "Gurmirov",
           "horseman": "Siwarê bêser",
           "mascot": "Maskota şêr",
-          "band": "Koma muzîkê ya meşê"
+          "band": "Koma muzîkê ya meşê",
+          "sparkle-selects": "Sparkle Selects (mal)",
+          "b-squad": "Sparkle Selects B Squad (derve)",
+          "saber-cats": "Saber Cats (mal)",
+          "saber-cats-away": "Saber Cats (derve)",
+          "icers": "Icers (mal)",
+          "icers-away": "Icers (derve)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "Çakûçê şer",
           "trumpet": "Borî",
           "jack-o-lantern": "Fenera kundir",
-          "wrench": "Mifteya somûnê"
+          "wrench": "Mifteya somûnê",
+          "hockey-stick-pink": "Darê hokeyê (pembe)",
+          "hockey-stick-green": "Darê hokeyê (kesk)",
+          "sparkle-flag": "Sparkle Selects (al)"
         }
       },
       {

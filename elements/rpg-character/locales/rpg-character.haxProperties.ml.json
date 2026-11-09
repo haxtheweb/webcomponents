@@ -80,7 +80,9 @@
           "shako": "ബാൻഡ് ഷാക്കോ",
           "flat-top": "പരന്ന മുകൾഭാഗമുള്ള മുടി",
           "wild-hair": "വെളുത്ത ജടമുടി",
-          "messy-hair": "മുറിപ്പാടുള്ള അലങ്കോലമുടി"
+          "messy-hair": "മുറിപ്പാടുള്ള അലങ്കോലമുടി",
+          "sparkle-selects": "Sparkle Selects (ഹെൽമെറ്റ്)",
+          "saber-cats": "Saber Cats (ഹെൽമെറ്റ്)"
         }
       },
       {
@@ -153,7 +155,13 @@
           "werewolf": "ചെന്നായ്മനുഷ്യൻ",
           "horseman": "തലയില്ലാത്ത കുതിരക്കാരൻ",
           "mascot": "സിംഹ ചിഹ്നം",
-          "band": "മാർച്ചിംഗ് ബാൻഡ്"
+          "band": "മാർച്ചിംഗ് ബാൻഡ്",
+          "sparkle-selects": "Sparkle Selects (ഹോം)",
+          "b-squad": "Sparkle Selects B Squad (എവേ)",
+          "saber-cats": "Saber Cats (ഹോം)",
+          "saber-cats-away": "Saber Cats (എവേ)",
+          "icers": "Icers (ഹോം)",
+          "icers-away": "Icers (എവേ)"
         }
       },
       {
@@ -269,7 +277,10 @@
           "war-hammer": "യുദ്ധ ചുറ്റിക",
           "trumpet": "കാഹളം",
           "jack-o-lantern": "മത്തങ്ങ വിളക്ക്",
-          "wrench": "സ്പാനർ"
+          "wrench": "സ്പാനർ",
+          "hockey-stick-pink": "ഹോക്കി സ്റ്റിക്ക് (പിങ്ക്)",
+          "hockey-stick-green": "ഹോക്കി സ്റ്റിക്ക് (പച്ച)",
+          "sparkle-flag": "Sparkle Selects (പതാക)"
         }
       },
       {
