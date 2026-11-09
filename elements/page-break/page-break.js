@@ -301,11 +301,30 @@ export class PageBreak extends IntersectionObserverMixin(
     if (this._bandLoaded) {
       return;
     }
-    const mod = await loadPageBreakBand();
+    const loading = loadPageBreakBand();
+    this.__bandLoading = loading;
+    const mod = await loading;
+    if (this.__bandLoading === loading) {
+      this.__bandLoading = null;
+    }
     if (mod && !this._bandLoaded) {
       this._bandLoaded = true;
       this.requestUpdate();
     }
+  }
+  /**
+   * updateComplete also covers a band that is still loading, so whoever
+   * waits for this element to finish rendering (HAXcms swapping the viewer
+   * for the editor, haxtheweb/issues#3263) gets it with its band instead of
+   * the band popping in afterwards and pushing the page down
+   */
+  async getUpdateComplete() {
+    let result = await super.getUpdateComplete();
+    if (this.__bandLoading) {
+      await this.__bandLoading;
+      result = await super.getUpdateComplete();
+    }
+    return result;
   }
   /**
    * data-hax-ray is set by HAX on every element while editing; observing it

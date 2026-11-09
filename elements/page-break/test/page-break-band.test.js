@@ -47,6 +47,21 @@ describe("page-break band: visitors", () => {
     expect(el.shadowRoot.adoptedStyleSheets.length).to.equal(1);
   });
 
+  // HAXcms swaps the viewer for the editor once the editable copy reports
+  // updateComplete, so the first band download has to be part of it or the
+  // band pops in after the swap and pushes the page down (issues#3263)
+  it("updateComplete includes the first band download", async () => {
+    const el = await fixture(html`<page-break title="First"></page-break>`);
+    await wait(50);
+    expect(bandRequests().length).to.equal(0);
+    el.haxeditModeChanged(true);
+    await el.updateComplete;
+    expect(bandRow(el)).to.not.equal(null);
+    expect(el.shadowRoot.adoptedStyleSheets.length).to.equal(2);
+    el.haxeditModeChanged(false);
+    await el.updateComplete;
+  });
+
   it("loads the band when HAX edit mode turns on", async () => {
     const el = await fixture(html`<page-break title="Toggle"></page-break>`);
     await wait(100);

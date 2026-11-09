@@ -216,14 +216,20 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     this.__editModeReveal = reveal;
     if (hax) {
       hax.classList.add("haxcms-edit-mode-pending");
+      // not shown yet, so keep it out of focus order and the a11y tree
+      hax.setAttribute("inert", "");
     }
-    // import done: hooks ran and nodes are upgraded; swap on the next frame
-    // so the editable state applied in that frame lands with it
+    // import done: hooks ran and nodes are upgraded. Let the blocks the
+    // visitor can already see finish rendering in the hidden copy, then swap
+    // on the next frame so the editable state applied in that frame lands
+    // with it
     reveal.onReady = () => {
-      requestAnimationFrame(() => {
-        if (this.__editModeReveal === reveal) {
-          this.__finishEditModeReveal();
-        }
+      this.__settleEditableCopy(reveal.body).then(() => {
+        requestAnimationFrame(() => {
+          if (this.__editModeReveal === reveal) {
+            this.__finishEditModeReveal();
+          }
+        });
       });
     };
     if (body && body.addEventListener) {
@@ -239,6 +245,148 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     }, 2000);
     return reveal;
   }
+  /**
+   * Blocks that render lazily (IntersectionObserverMixin, e.g.
+   * video-player) only draw a placeholder until their observer
+   * fires, which takes at least IODelay (100ms) after they are on screen.
+   * The editable copy is hidden until the swap, so without this every such
+   * block the visitor was looking at showed as an empty box (white in light
+   * mode) for a few frames after the swap (haxtheweb/issues#3263).
+   * Any block whose counterpart in the viewer copy is already rendered is
+   * rendered now, while hidden, and the swap waits for it (bounded).
+   * @param {HTMLElement} body the hax-body being revealed
+   * @returns {Promise}
+   */
+  __settleEditableCopy(body) {
+    const viewer = this.appElement;
+    if (!body || !viewer || typeof viewer.querySelectorAll !== "function") {
+      return Promise.resolve();
+    }
+    const waits = [];
+    const seen = {};
+    const nodes = body.querySelectorAll("*");
+    for (let i = 0; i < nodes.length; i++) {
+      const tag = nodes[i].tagName.toLowerCase();
+      if (seen[tag] || !tag.includes("-")) {
+        continue;
+      }
+      seen[tag] = true;
+      const editable = body.querySelectorAll(tag);
+      const viewed = viewer.querySelectorAll(tag);
+      // pair blocks by position; when the copies differ we can't know which
+      // block is which, so leave that tag to its observer
+      if (editable.length !== viewed.length) {
+        continue;
+      }
+      for (let j = 0; j < editable.length; j++) {
+        const el = editable[j];
+        if (
+          el.elementVisible === false &&
+          viewed[j].elementVisible === true &&
+          el.IORemoveOnVisible !== false
+        ) {
+          // same as the observer reaching its limit with IORemoveOnVisible
+          if (el.intersectionObserver) {
+            el.intersectionObserver.disconnect();
+          }
+          el.elementVisible = true;
+          if (el.updateComplete) {
+            waits.push(this.__whenRendered(el, 0));
+          }
+        }
+      }
+    }
+    // top level blocks still rendering (page-break loads its editing band
+    // when edit mode starts and reports it through updateComplete)
+    const blocks = body.children;
+    for (let i = 0; i < blocks.length; i++) {
+      if (blocks[i].updateComplete) {
+        waits.push(blocks[i].updateComplete.catch(() => {}));
+      }
+    }
+    // never hold the viewer on screen for long waiting on one block
+    return Promise.race([
+      Promise.all(waits),
+      new Promise((resolve) => {
+        setTimeout(resolve, 500);
+      }),
+    ]);
+  }
+  /**
+   * Resolves once a Lit element and the Lit elements it rendered (a few
+   * levels into shadow roots, e.g. video-player > a11y-media-player) have
+   * finished updating.
+   */
+  async __whenRendered(el, depth) {
+    try {
+      await el.updateComplete;
+      // media players (a11y-media-player) only lay out and paint their
+      // poster once the media's metadata is in; until then they draw an
+      // empty light box. The viewer copy already loaded it, so this is
+      // normally a cache hit.
+      const media = el.querySelectorAll(":scope > video, :scope > audio");
+      const loads = [];
+      for (let i = 0; i < media.length; i++) {
+        if (media[i].readyState === 0 && media[i].preload !== "none") {
+          loads.push(
+            new Promise((resolve) => {
+              media[i].addEventListener("loadedmetadata", resolve, {
+                once: true,
+              });
+              media[i].addEventListener("error", resolve, { once: true });
+            }),
+          );
+        }
+      }
+      if (loads.length) {
+        await Promise.all(loads);
+      }
+      // the transcript / caption layout (flex-layout) follows the cues, so
+      // wait for caption tracks that are loading as well
+      const tracks = [];
+      for (let i = 0; i < media.length; i++) {
+        const list = media[i].querySelectorAll("track");
+        for (let j = 0; j < list.length; j++) {
+          const track = list[j];
+          if (
+            track.readyState < 2 &&
+            track.track &&
+            track.track.mode !== "disabled"
+          ) {
+            tracks.push(
+              new Promise((resolve) => {
+                track.addEventListener("load", resolve, { once: true });
+                track.addEventListener("error", resolve, { once: true });
+              }),
+            );
+          }
+        }
+      }
+      if (tracks.length) {
+        await Promise.all(tracks);
+      }
+      if (loads.length || tracks.length) {
+        // let the player render what the media / cues changed
+        await new Promise((resolve) => {
+          setTimeout(resolve, 0);
+        });
+        await el.updateComplete;
+      }
+    } catch {
+      return;
+    }
+    if (depth >= 3 || !el.shadowRoot) {
+      return;
+    }
+    const inner = el.shadowRoot.querySelectorAll("*");
+    const waits = [];
+    for (let i = 0; i < inner.length; i++) {
+      if (inner[i].updateComplete) {
+        waits.push(this.__whenRendered(inner[i], depth + 1));
+      }
+    }
+    await Promise.all(waits);
+  }
   __finishEditModeReveal() {
     const reveal = this.__editModeReveal;
     if (!reveal) {
@@ -252,6 +400,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     const hax = this.querySelector("h-a-x");
     if (hax) {
       hax.classList.remove("haxcms-edit-mode-pending");
+      hax.removeAttribute("inert");
     }
     reveal.resolve();
   }
@@ -294,12 +443,17 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
           display: block;
         }
         /* entering edit mode: the editable copy lays out at full width but
-           takes no space and is not painted until it has rendered, then it
-           swaps with the viewer content in one frame */
+           takes no space and is not shown until it has rendered, then it
+           swaps with the viewer content in one frame. Hidden with opacity
+           (not inherited), never visibility: visibility is inherited, so
+           blocks with transition: all (a11y-media-player) would animate
+           hidden -> visible and paint only their empty light background
+           for the first frame after the swap (haxtheweb/issues#3263) */
         haxcms-site-editor[edit-mode] h-a-x.haxcms-edit-mode-pending {
-          visibility: hidden;
+          opacity: 0;
           height: 0;
           overflow: hidden;
+          pointer-events: none;
         }
       </style>
       <h-a-x
