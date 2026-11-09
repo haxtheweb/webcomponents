@@ -2,7 +2,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css, nothing } from "lit";
+import { LitElement, html, css } from "lit";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import "@haxtheweb/map-menu/map-menu.js";
@@ -13,12 +13,16 @@ import { LearnerProgress } from "../../core/haxcms-learner-progress.js";
  * `site-menu`
  * `Menu hierarchy`
  *
- * Learner progress: once the visitor has engaged with a trackable activity
- * on the site (questions, checklists, games, media), each page gets a mark
- * (done, in progress, visited, not started; spoken after the title) and the
- * menu shows "N of M pages done" above it. Vertical menus only; set
- * hide-progress to turn it off. Progress is read from the learner profile on
- * this device (see core/haxcms-learner-progress.js).
+ * Learner progress (haxtheweb/issues#3267): only the item of the page open
+ * now shows a ring around its icon area, filled to that page's percent as
+ * the visitor reads and engages, and a filled disc with a check once the
+ * page is done (it bursts once the first time that happens while it is
+ * open). The percent is the item's hover text and is spoken after its
+ * title. Other items show no mark and there is no pages done summary here;
+ * that moved into My learning (progress/my-learning-button.js). Vertical
+ * menus only, never while editing; set hide-progress to turn it off.
+ * Progress is read from the learner profile on this device (see
+ * core/haxcms-learner-progress.js).
  */
 class SiteMenu extends I18NMixin(HAXCMSThemeParts(LitElement)) {
   /**
@@ -55,28 +59,6 @@ class SiteMenu extends I18NMixin(HAXCMSThemeParts(LitElement)) {
           );
           scrollbar-color: var(--site-menu-scrollbar-color, #252737);
           scrollbar-width: thick;
-        }
-        .progress-summary {
-          display: block;
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-4xs);
-          font-weight: var(--ddd-font-weight-medium);
-          color: var(
-            --site-menu-progress-color,
-            light-dark(
-              var(--ddd-theme-default-slateGray),
-              var(--ddd-theme-default-limestoneLight)
-            )
-          );
-          border-bottom: var(--ddd-border-xs);
-          border-color: var(
-            --site-menu-progress-line,
-            light-dark(
-              var(--ddd-theme-default-limestoneLight),
-              var(--ddd-theme-default-slateGray)
-            )
-          );
         }
         map-menu:not(:defined) {
           display: none;
@@ -126,12 +108,7 @@ class SiteMenu extends I18NMixin(HAXCMSThemeParts(LitElement)) {
     this.isHorizontal = false;
     this.maxDepth = 5;
     this.hideProgress = false;
-    this._progress = null;
-    this._progressSummary = null;
-    this.t = {
-      ...this.t,
-      pagesDone: "{done} of {total} pages done",
-    };
+    this._activePercent = null;
     this.registerLocalization({
       context: this,
       localesPath: new URL("../../../locales/", import.meta.url).href,
@@ -139,15 +116,18 @@ class SiteMenu extends I18NMixin(HAXCMSThemeParts(LitElement)) {
     this.__operationsLoaded = false;
     this.__disposer = [];
     LearnerProgress.start();
-    // learner progress marks, from the profile on this device
+    // percent of the page open now, from the profile on this device; live
+    // as the visitor reads and engages
     this.__disposer.push(
       autorun((_reaction) => {
-        const p = LearnerProgress.siteProgress();
-        Promise.resolve().then(() => {
-          this._progress = p.engaged ? p.byPage : null;
-          this._progressSummary = p.engaged
-            ? { done: p.done, total: p.total }
+        const id = store.activeId;
+        const item = store.activeItem;
+        const percent =
+          id && item && !item._internalRoute
+            ? LearnerProgress.pageProgress(id).percent
             : null;
+        Promise.resolve().then(() => {
+          this._activePercent = typeof percent === "number" ? percent : null;
         });
       }),
     );
@@ -207,29 +187,20 @@ class SiteMenu extends I18NMixin(HAXCMSThemeParts(LitElement)) {
    * LitElement life cycle - render callback
    */
   _showProgress() {
-    if (!this._progress || this.hideProgress) {
+    if (
+      typeof this._activePercent !== "number" ||
+      this.hideProgress ||
+      this.editMode
+    ) {
       return false;
     }
     return !this.isFlex && !this.isHorizontal;
   }
-  // "N of M pages done" above the menu, once there is progress to show
-  renderProgressSummary(progress) {
-    if (!progress || !this._progressSummary) {
-      return nothing;
-    }
-    const text = this.t.pagesDone
-      .replace("{done}", this._progressSummary.done)
-      .replace("{total}", this._progressSummary.total);
-    return html`<div class="progress-summary" part="progress-summary">
-      ${text}
-    </div>`;
-  }
   render() {
     const progress = this._showProgress();
     return html`
-      ${this.renderProgressSummary(progress)}
       <map-menu
-        .progress="${progress ? this._progress : null}"
+        .activeProgress="${progress ? this._activePercent : null}"
         .part="map-menu ${this.editMode ? `edit-mode-active` : ``}"
         ?inert="${this.editMode}"
         aria-disabled="${this.editMode ? `true` : `false`}"
@@ -326,14 +297,14 @@ class SiteMenu extends I18NMixin(HAXCMSThemeParts(LitElement)) {
         attribute: "track-icon",
       },
       /**
-       * Do not show learner progress marks or the pages done summary
+       * Do not show the learner progress ring on the item of the page open
+       * now
        */
       hideProgress: {
         type: Boolean,
         attribute: "hide-progress",
       },
-      _progress: { type: Object, state: true },
-      _progressSummary: { type: Object, state: true },
+      _activePercent: { type: Number, state: true },
     };
   }
 

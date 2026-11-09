@@ -6,6 +6,12 @@ import {
   mapMenuProgressStyles,
   renderProgressLabel,
   renderProgressMark,
+  mapMenuActiveRingStyles,
+  hasActiveRing,
+  activeRingText,
+  renderActiveRing,
+  renderActiveRingLabel,
+  updateActiveRing,
 } from "./map-menu-progress.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
@@ -16,6 +22,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
   static get styles() {
     return [
       mapMenuProgressStyles,
+      ...mapMenuActiveRingStyles,
       css`
         :host {
           display: block;
@@ -83,6 +90,11 @@ class MapMenuHeader extends I18NMixin(LitElement) {
         }
 
         :host .progress-mark[data-progress] simple-icon-lite {
+          visibility: visible;
+          opacity: 1;
+          margin: 0;
+        }
+        :host .active-ring .ddd-ring simple-icon-lite {
           visibility: visible;
           opacity: 1;
           margin: 0;
@@ -185,43 +197,82 @@ class MapMenuHeader extends I18NMixin(LitElement) {
    * LitElement life cycle - render callback
    */
   render() {
-    return html` <a tabindex="-1" href="${this.url}" title="${this.itemtitle}">
-        <button>
-          ${!this.published
-            ? html`<simple-icon-lite
-                id="unpublished"
-                title="${this.t.pageIsUnpublished}"
-                icon="icons:visibility-off"
-              ></simple-icon-lite>`
-            : ``}
-          ${this.icon
-            ? html`
-                <simple-icon-lite
-                  icon="${this.icon}"
-                  part="icon"
-                  id="icon"
-                ></simple-icon-lite>
-                ${this.iconLabel
-                  ? html`<simple-tooltip for="icon"
-                      >${this.iconLabel}</simple-tooltip
-                    >`
-                  : ``}
-              `
-            : ``}
+    const ring = hasActiveRing(this.activeProgress);
+    return html` <a
+        tabindex="-1"
+        href="${this.url}"
+        title="${this.linkTitle()}"
+      >
+        <button class="${ring && !this.icon ? "ring-no-icon" : ""}">
+          ${
+            !this.published
+              ? html`<simple-icon-lite
+                  id="unpublished"
+                  title="${this.t.pageIsUnpublished}"
+                  icon="icons:visibility-off"
+                ></simple-icon-lite>`
+              : ``
+          }
+          ${
+            ring
+              ? this.renderActiveRing()
+              : this.icon
+                ? html`
+                    <simple-icon-lite
+                      icon="${this.icon}"
+                      part="icon"
+                      id="icon"
+                    ></simple-icon-lite>
+                    ${
+                      this.iconLabel
+                        ? html`<simple-tooltip for="icon"
+                            >${this.iconLabel}</simple-tooltip
+                          >`
+                        : ``
+                    }
+                  `
+                : ``
+          }
           ${renderProgressMark(this.progress)}
-          <div class="title">${this.itemtitle}${this.renderProgress()}</div>
+          <div class="title">${this.renderTitle()}</div>
         </button>
       </a>
-      ${this.editControls && this.active
-        ? html` <div class="ops">
-            <haxcms-page-operations
-              class="op"
-              action-id="${this.id}"
-            ></haxcms-page-operations>
-          </div>`
-        : ``}`;
+      ${
+        this.editControls && this.active
+          ? html` <div class="ops">
+              <haxcms-page-operations
+                class="op"
+                action-id="${this.id}"
+              ></haxcms-page-operations>
+            </div>`
+          : ``
+      }`;
   }
 
+  // hover text of the link: the title, plus the percent of the page open now
+  linkTitle() {
+    return hasActiveRing(this.activeProgress)
+      ? `${this.itemtitle}, ${activeRingText(this.activeProgress, this.t)}`
+      : this.itemtitle;
+  }
+  // the ring around the icon area of the page open now (keeps the icon and
+  // its page type tooltip)
+  renderActiveRing() {
+    return html`${renderActiveRing(this.activeProgress, this.icon, "icon")}
+    ${
+      this.icon && this.iconLabel
+        ? html`<simple-tooltip for="icon">${this.iconLabel}</simple-tooltip>`
+        : ``
+    }`;
+  }
+  // the title, then what is spoken after it
+  renderTitle() {
+    return html`${this.itemtitle}${this.renderProgress()}${this.renderActiveProgress()}`;
+  }
+  // spoken percent of the page open now (", 49% complete")
+  renderActiveProgress() {
+    return renderActiveRingLabel(this.activeProgress, this.t);
+  }
   // spoken progress after the title (", Done"); nothing without progress
   renderProgress() {
     return renderProgressLabel(this.progress, this.t);
@@ -248,6 +299,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
     this.locked = false;
     this.itemtitle = "";
     this.progress = "";
+    this.activeProgress = null;
     this.t = {
       pageIsUnpublished: "Page is unpublished",
       ...MapMenuProgressStrings,
@@ -296,6 +348,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
         this.__selectedChanged(this.selected, this.id);
       }
     });
+    updateActiveRing(this, changedProperties);
   }
   /**
    * LitElement life cycle - properties definition
@@ -368,6 +421,15 @@ class MapMenuHeader extends I18NMixin(LitElement) {
       progress: {
         type: String,
         reflect: true,
+      },
+      /**
+       * Percent (0 to 1) of the page this item opens, set only while it is
+       * the page open now: a ring around the icon area shows it. null (the
+       * default) shows no ring.
+       */
+      activeProgress: {
+        type: Number,
+        attribute: "active-progress",
       },
       selected: {
         type: String,

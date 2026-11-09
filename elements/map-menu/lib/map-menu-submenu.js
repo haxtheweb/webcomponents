@@ -137,6 +137,7 @@ class MapMenuSubmenu extends LitElement {
     this.label = "";
     this.status = "";
     this.progress = "";
+    this.activeProgress = null;
     this.itemtitle = "";
     this.locked = false;
     this.published = true;
@@ -219,6 +220,7 @@ class MapMenuSubmenu extends LitElement {
           ?locked="${this.locked}"
           status="${this.status}"
           progress="${this.progress}"
+          .activeProgress="${this.activeProgress}"
         ></map-menu-header>
         <slot></slot>
       </a11y-collapse>
@@ -316,6 +318,14 @@ class MapMenuSubmenu extends LitElement {
       progress: {
         type: String,
         reflect: true,
+      },
+      /**
+       * Percent (0 to 1) of the page this item opens while it is the page
+       * open now (passed to its header, which draws the ring); else null
+       */
+      activeProgress: {
+        type: Number,
+        attribute: "active-progress",
       },
     };
   }

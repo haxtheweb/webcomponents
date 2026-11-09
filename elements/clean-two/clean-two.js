@@ -22,6 +22,7 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-modal.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu-content.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/progress/my-learning-button.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import {
   DDDReadingSurface,
@@ -433,6 +434,15 @@ class CleanTwo extends LTIResizingMixin(
           margin-left: -60px;
           width: 36px;
         }
+        /* My learning in the icon rail: the ring only, centred on the rail */
+        .header my-learning-button {
+          display: flex;
+          width: var(--ddd-control-height-sm);
+          margin: var(--ddd-spacing-1) 0 var(--ddd-spacing-1) -52px;
+        }
+        .header my-learning-button[hidden] {
+          display: none;
+        }
         .content-wrapper {
           width: -moz-available;
           width: -webkit-fill-available;
@@ -805,6 +815,11 @@ class CleanTwo extends LTIResizingMixin(
                       part="print-btn"
                     ></replace-tag>`
               }
+              <my-learning-button
+                compact
+                class="learning-btn"
+                part="my-learning-btn"
+              ></my-learning-button>
               ${this.QRCodeButton("right")}
               <replace-tag
                 with="site-rss-button"
