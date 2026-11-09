@@ -65,9 +65,6 @@ class A11yMediaPlayButton extends A11yMediaButton {
           stroke: #ffffff;
           fill: #000000;
         }
-        #text {
-          fill: #ffffff;
-        }
         @media print {
           :host,
           #background,
@@ -155,16 +152,6 @@ class A11yMediaPlayButton extends A11yMediaButton {
                       stroke="#ffffff"
                       stroke-width="15px"
                     ></polygon>
-                    <text
-                      id="text"
-                      class="sr-only"
-                      x="50"
-                      y="115"
-                      fill="#ffffff"
-                      font-size="30px"
-                    >
-                      ${this.label}
-                    </text>
                   </g>
                 </svg>
               `

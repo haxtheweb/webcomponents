@@ -44,6 +44,75 @@ import { removeThroughLast } from "@haxtheweb/utils/lib/safe-html.js";
 import { whenIdle } from "@haxtheweb/utils/lib/idle.js";
 
 /**
+ * Plain readable text for a WebVTT cue. Cue text can carry markup such as
+ * voice spans (<v Speaker>...</v>), class spans and timestamp tags, which
+ * must not be shown to the reader. The browser's own cue parser is used when
+ * available; otherwise tags are dropped by a single linear scan and the
+ * common character references are decoded.
+ * @param {object} cue a VTTCue / TextTrackCue, or any object with `text`
+ * @returns {string}
+ */
+export function cueToText(cue) {
+  if (!cue) {
+    return "";
+  }
+  if (typeof cue.getCueAsHTML === "function") {
+    try {
+      const fragment = cue.getCueAsHTML();
+      if (fragment && typeof fragment.textContent === "string") {
+        return fragment.textContent;
+      }
+    } catch {
+      // fall through to the manual scan
+    }
+  }
+  return stripCueTags(typeof cue.text === "string" ? cue.text : "");
+}
+
+/**
+ * Drop WebVTT cue tags and decode the character references WebVTT allows.
+ * @param {string} text raw cue text
+ * @returns {string}
+ */
+export function stripCueTags(text) {
+  let out = "";
+  let inTag = false;
+  for (const ch of String(text)) {
+    if (ch === "<") {
+      inTag = true;
+    } else if (inTag) {
+      if (ch === ">") {
+        inTag = false;
+      }
+    } else {
+      out += ch;
+    }
+  }
+  // decode &amp; last so an encoded entity is never decoded twice
+  return out
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&lrm;/g, "‎")
+    .replace(/&rlm;/g, "‏")
+    .replace(/&amp;/g, "&");
+}
+
+/**
+ * Escape text for insertion into an HTML string.
+ * @param {string} text
+ * @returns {string}
+ */
+function escapeHTML(text) {
+  return String(text)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+/**
   * `a11y-media-player`
   * an accessible video player
   * 
@@ -1048,11 +1117,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
                             ? ``
                             : Object.keys(this.captionCues).map(
                                 (key) =>
-                                  html`${
-                                    this.captionCues[key].text
-                                      ? this.captionCues[key].text
-                                      : ""
-                                  }`,
+                                  html`${cueToText(this.captionCues[key])}`,
                               )
                         }
                       </div>
@@ -1481,7 +1546,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
                             }"
                             ?hide-timestamps="${this.hideTimestamps}"
                           >
-                            <span class="searchable">${cue.text}</span>
+                            <span class="searchable">${cueToText(cue)}</span>
                           </a11y-media-transcript-cue>
                         `;
                       })}
@@ -2753,7 +2818,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
           (key) =>
             `${this._getHHMMSS(cues[key].startTime)} - ${this._getHHMMSS(
               cues[key].endTime,
-            )}: \t${cues[key].text.replace(/[\n\r\s*]/g, " ")}\n`,
+            )}: \t${cueToText(cues[key]).replace(/[\n\r\s*]/g, " ")}\n`,
         )
         .join("");
     a.setAttribute(
@@ -2803,7 +2868,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
         "left=0,top=0,width=552,height=477,toolbar=0,scrollbars=0,status =0",
       );
     print.document.body.innerHTML = `
-     <h1>${title}</h1>
+     <h1>${escapeHTML(title)}</h1>
      ${Object.keys(cues)
        .map(
          (key) =>
@@ -2822,7 +2887,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
              </span>`
          }
          <span style="display: table-cell; line-height: 200%;">
-           ${cues[key].text}
+           ${escapeHTML(cueToText(cues[key]))}
          </span>
        </div>`,
        )
