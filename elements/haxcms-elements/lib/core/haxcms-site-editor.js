@@ -132,6 +132,14 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
         const _mobx_val_1 = toJS(HAXStore.activeHaxBody);
         const _mobx_val_2 = toJS(store.activeItemContent);
         Promise.resolve().then(() => {
+          const entering = _mobx_val_0 && !this.editMode;
+          // keep the viewer content on screen until the editable copy has
+          // rendered; must start before editMode flips h-a-x to visible
+          if (entering && _mobx_val_1) {
+            this.__startEditModeReveal();
+          } else if (!_mobx_val_0) {
+            this.__finishEditModeReveal();
+          }
           this.editMode = _mobx_val_0;
           // force import on editMode enabled
           if (this.editMode && _mobx_val_1) {
@@ -171,6 +179,82 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
       }),
     );
   }
+  /**
+   * Resolves once the editable copy of the page has rendered after edit mode
+   * was turned on, so a theme can hide its viewer content in the same frame
+   * the editor appears instead of showing an empty page while content is
+   * imported (haxtheweb/issues#3263). Resolves right away when no import is
+   * on its way.
+   * @returns {Promise}
+   */
+  whenEditModeReady() {
+    if (!this.__editModeReveal) {
+      const body = HAXStore.activeHaxBody;
+      const importing =
+        body && body._contentState && body._contentState.getState("importing");
+      // our store autorun has not run yet (it will import), or an import
+      // is already running
+      if (body && store.editMode && (!this.editMode || importing)) {
+        this.__startEditModeReveal();
+      } else {
+        return Promise.resolve();
+      }
+    }
+    return this.__editModeReveal.promise;
+  }
+  __startEditModeReveal() {
+    if (this.__editModeReveal) {
+      return this.__editModeReveal;
+    }
+    const body = HAXStore.activeHaxBody;
+    const hax = this.querySelector("h-a-x");
+    let resolve;
+    const promise = new Promise((r) => {
+      resolve = r;
+    });
+    const reveal = { promise: promise, resolve: resolve, body: body };
+    this.__editModeReveal = reveal;
+    if (hax) {
+      hax.classList.add("haxcms-edit-mode-pending");
+    }
+    // import done: hooks ran and nodes are upgraded; swap on the next frame
+    // so the editable state applied in that frame lands with it
+    reveal.onReady = () => {
+      requestAnimationFrame(() => {
+        if (this.__editModeReveal === reveal) {
+          this.__finishEditModeReveal();
+        }
+      });
+    };
+    if (body && body.addEventListener) {
+      body.addEventListener("hax-body-content-ready", reveal.onReady, {
+        once: true,
+      });
+    }
+    // never leave someone looking at the viewer if an import fails or stalls
+    reveal.timer = setTimeout(() => {
+      if (this.__editModeReveal === reveal) {
+        this.__finishEditModeReveal();
+      }
+    }, 2000);
+    return reveal;
+  }
+  __finishEditModeReveal() {
+    const reveal = this.__editModeReveal;
+    if (!reveal) {
+      return;
+    }
+    this.__editModeReveal = null;
+    clearTimeout(reveal.timer);
+    if (reveal.body && reveal.body.removeEventListener) {
+      reveal.body.removeEventListener("hax-body-content-ready", reveal.onReady);
+    }
+    const hax = this.querySelector("h-a-x");
+    if (hax) {
+      hax.classList.remove("haxcms-edit-mode-pending");
+    }
+    reveal.resolve();
+  }
   __disposeDisposers() {
     if (this.__disposer && this.__disposer.length > 0) {
       for (let i in this.__disposer) {
@@ -208,6 +292,14 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
         }
         haxcms-site-editor[edit-mode] h-a-x {
           display: block;
+        }
+        /* entering edit mode: the editable copy lays out at full width but
+           takes no space and is not painted until it has rendered, then it
+           swaps with the viewer content in one frame */
+        haxcms-site-editor[edit-mode] h-a-x.haxcms-edit-mode-pending {
+          visibility: hidden;
+          height: 0;
+          overflow: hidden;
         }
       </style>
       <h-a-x
@@ -1401,6 +1493,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
       clearTimeout(this.__autoEditSafetyTimer);
       this.__autoEditSafetyTimer = null;
     }
+    this.__finishEditModeReveal();
     this.__disposeDisposers();
     super.disconnectedCallback();
   }

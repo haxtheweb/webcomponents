@@ -3160,8 +3160,15 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     });
     // spacing niceness for output readability
     content = content.replace(/&nbsp;/gm, " ");
-    // remove HAX specific classes / scoping classes
-    if (this.parentNode.tagName) {
+    // remove HAX specific classes / scoping classes. Every pattern below
+    // contains "style-scope" or "x-scope" (legacy shady CSS scoping), so when
+    // neither appears there is nothing to strip and the per-tag RegExp loop
+    // (3 full-string passes per valid tag) is skipped entirely
+    if (
+      this.parentNode.tagName &&
+      (content.indexOf("style-scope") !== -1 ||
+        content.indexOf("x-scope") !== -1)
+    ) {
       let parentTag = this.parentNode.tagName.toLowerCase();
       let string = "style-scope " + parentTag + " x-scope";
       let re = new RegExp(string, "g");
@@ -4633,7 +4640,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       this.__editTransitionScrollTimer = setTimeout(() => {
         this.__editTransitionScroll = false;
       }, 600);
-      this._applyContentEditable(newValue);
+      if (!this.__importAppliesEditMode(newValue)) {
+        this._applyContentEditable(newValue);
+      }
       if (newValue) {
         // If content is currently being imported and there are no children yet,
         // avoid injecting a placeholder paragraph. importContent will append
@@ -4803,8 +4812,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       children = this.shadowRoot.querySelector("#body").children;
     }
     // see if anyone cares about editMode changing; some link based things do
-    for (let i = 0; i < children.length; i++) {
-      await HAXStore.runHook(children[i], "editModeChanged", [newValue]);
+    if (!this.__importAppliesEditMode(newValue)) {
+      for (let i = 0; i < children.length; i++) {
+        await HAXStore.runHook(children[i], "editModeChanged", [newValue]);
+      }
     }
     // apply our specialized mutation observer or remove it
     if (newValue) {
@@ -4854,6 +4865,20 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         this._observer.disconnect();
       }
     }
+  }
+
+  /**
+   * True when edit mode is turning on while importContent is still running.
+   * The import's completion applies editable state and runs the
+   * editModeChanged hooks on every imported child once it lands, so doing
+   * it here as well only repeated the same work on the same nodes.
+   */
+  __importAppliesEditMode(newValue) {
+    return !!(
+      newValue &&
+      this._contentState &&
+      this._contentState.getState("importing")
+    );
   }
 
   /**
@@ -5413,11 +5438,97 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       return;
     }
     let grandKids = layoutNode.querySelectorAll("*");
+    let valid = [];
     for (let j = 0; j < grandKids.length; j++) {
       if (this._validElementTest(grandKids[j], true)) {
-        await this.__applyNodeEditableStateWhenReady(grandKids[j], status);
+        valid.push(grandKids[j]);
       }
     }
+    await this.__applyEditableStateInBatches(valid, (node, titles) =>
+      this.__applyNodeEditableState(node, status, titles),
+    );
+  }
+  /**
+   * Resolves on the next animation frame. Every caller waiting in the same
+   * frame shares one requestAnimationFrame instead of queueing one each.
+   */
+  __nextFrame() {
+    if (!this.__nextFramePromise) {
+      this.__nextFramePromise = new Promise((resolve) => {
+        requestAnimationFrame(() => {
+          this.__nextFramePromise = null;
+          resolve();
+        });
+      });
+    }
+    return this.__nextFramePromise;
+  }
+  /**
+   * Wait for a custom element tag to be defined, plus one frame so its
+   * shadowRoot is ready. Primitives resolve right away.
+   */
+  async __whenUpgraded(tagName) {
+    if (tagName.includes("-")) {
+      try {
+        await customElements.whenDefined(tagName);
+        // Extra frame to ensure shadowRoot is ready
+        await this.__nextFrame();
+      } catch {
+        // Element not registered, proceed anyway
+      }
+    }
+  }
+  /**
+   * tag -> HAX-ray label (gizmo title) lookup, built from the live gizmo list
+   * in one pass. Replaces a toJS() deep copy of the whole gizmo list per node.
+   */
+  __gizmoTitleMap() {
+    const titles = new Map();
+    const list = HAXStore.gizmoList;
+    if (list && list.length) {
+      for (let i = 0; i < list.length; i++) {
+        const gizmo = list[i];
+        // first match wins, like the findIndex this replaces
+        if (gizmo && !titles.has(gizmo.tag)) {
+          titles.set(gizmo.tag, gizmo.title);
+        }
+      }
+    }
+    return titles;
+  }
+  /**
+   * Apply editable state to many nodes at once. Primitives are applied right
+   * away; custom elements wait once per tag for their definition and share a
+   * single frame, instead of a serial whenDefined + requestAnimationFrame per
+   * node (which made entering edit mode cost a frame per block).
+   * @param {Array} nodes elements to apply to
+   * @param {Function} apply (node, titles) per-node work, may return a promise
+   */
+  async __applyEditableStateInBatches(nodes, apply) {
+    const tasks = [];
+    const groups = new Map();
+    const titles = this.__gizmoTitleMap();
+    for (let i = 0; i < nodes.length; i++) {
+      const tagName = nodes[i].tagName.toLowerCase();
+      if (tagName.includes("-")) {
+        if (!groups.has(tagName)) {
+          groups.set(tagName, []);
+        }
+        groups.get(tagName).push(nodes[i]);
+      } else {
+        tasks.push(apply(nodes[i], titles));
+      }
+    }
+    groups.forEach((group, tagName) => {
+      tasks.push(
+        this.__whenUpgraded(tagName).then(() => {
+          // labels can be translated while we wait, so read them fresh
+          const fresh = this.__gizmoTitleMap();
+          return Promise.all(group.map((node) => apply(node, fresh)));
+        }),
+      );
+    });
+    await Promise.all(tasks);
   }
   /**
    * Walk everything we find and either enable or disable editable state.
@@ -5435,38 +5546,41 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     if (children.length === 0) {
       children = target.children;
     }
+    const valid = [];
+    const tasks = [];
     for (let i = 0; i < children.length; i++) {
       // sanity check for being a valid element / not a "hax" element
       if (this._validElementTest(children[i], true)) {
-        // For custom elements (like grid-plate), wait for them to upgrade
-        // before applying drag/drop state that depends on shadowRoot
-        const tagName = children[i].tagName.toLowerCase();
-        if (tagName.includes("-")) {
-          try {
-            await customElements.whenDefined(tagName);
-            // Extra frame to ensure shadowRoot is ready
-            await new Promise((resolve) => requestAnimationFrame(resolve));
-          } catch {
-            // Element not registered, proceed anyway
-          }
-        }
-
+        valid.push(children[i]);
+      }
+      // a grid plate that is not itself editable still needs its children
+      // made editable
+      else if (HAXStore.isGridPlateElement(children[i])) {
+        tasks.push(this.__rehydrateLayoutDescendants(children[i], status));
+      }
+    }
+    // custom elements (like grid-plate) wait for their upgrade before
+    // drag/drop state that depends on shadowRoot is applied; one wait per
+    // tag and one shared frame rather than one per element
+    tasks.push(
+      this.__applyEditableStateInBatches(valid, (child, titles) => {
         // correctly add or remove listeners
         if (
           !status ||
-          (children[i].getAttribute("contenteditable") !== true &&
-            children[i].getAttribute("contenteditable") !== "true" &&
-            children[i].getAttribute("contenteditable") !== "contenteditable")
+          (child.getAttribute("contenteditable") !== true &&
+            child.getAttribute("contenteditable") !== "true" &&
+            child.getAttribute("contenteditable") !== "contenteditable")
         ) {
-          this.__applyNodeEditableState(children[i], status);
+          this.__applyNodeEditableState(child, status, titles);
         }
-      }
-      // now test for this being a grid plate element which implies
-      // we need to ensure this is applied deep into its children
-      if (HAXStore.isGridPlateElement(children[i])) {
-        await this.__rehydrateLayoutDescendants(children[i], status);
-      }
-    }
+        // now test for this being a grid plate element which implies
+        // we need to ensure this is applied deep into its children
+        if (HAXStore.isGridPlateElement(child)) {
+          return this.__rehydrateLayoutDescendants(child, status);
+        }
+      }),
+    );
+    await Promise.all(tasks);
   }
   __layoutDropEvent(e, node) {
     [...node.querySelectorAll(".active")].forEach((el) => {
@@ -5683,22 +5797,13 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    */
   async __applyNodeEditableStateWhenReady(node, status = true) {
     // For custom elements, wait for them to be defined and upgraded
-    const tagName = node.tagName.toLowerCase();
-    if (tagName.includes("-")) {
-      try {
-        await customElements.whenDefined(tagName);
-        // Extra frame to ensure shadowRoot is initialized
-        await new Promise((resolve) => requestAnimationFrame(resolve));
-      } catch {
-        // Element not registered, proceed anyway
-      }
-    }
+    await this.__whenUpgraded(node.tagName.toLowerCase());
     this.__applyNodeEditableState(node, status);
   }
   /**
    * Apply the node editable state correctly so we can do drag and drop / editing uniformly
    */
-  __applyNodeEditableState(node, status = true) {
+  __applyNodeEditableState(node, status = true, titles = null) {
     let listenerMethod;
     // sanity check a dom node
     if (!node.tagName) {
@@ -5706,14 +5811,13 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
     // create the hax-ray x ray googles thing
     let haxRay = node.tagName.replace("-", " ").toLowerCase();
-    let gizmoList = toJS(HAXStore.gizmoList) || [];
-    let i = gizmoList.findIndex((j) => {
-      if (j) {
-        return j.tag === node.tagName.toLowerCase();
-      }
-    });
-    if (i !== -1) {
-      haxRay = gizmoList[i].title;
+    // batch callers hand in a tag -> title map built once for the batch
+    if (!titles) {
+      titles = this.__gizmoTitleMap();
+    }
+    const tag = node.tagName.toLowerCase();
+    if (titles.has(tag)) {
+      haxRay = titles.get(tag);
     }
     if (node.tagName !== "PAGE-BREAK") {
       // force images to NOT be draggable as we will manage D&D
