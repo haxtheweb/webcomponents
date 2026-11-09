@@ -13,6 +13,10 @@
  *   yarn codeql:install    download the CodeQL CLI bundle (one time, ~1GB unpacked)
  *   node scripts/codeql-local.mjs --check-cli   exit 0 when the CLI is available
  *
+ * Memory: CodeQL's default Java heap is too small for larger scans and fails with
+ * "ran out of Java heap". The scan passes --ram (60% of this machine's memory,
+ * 2048-8192 MB); set CODEQL_RAM=<megabytes> to override.
+ *
  * CLI lookup order: $CODEQL_CLI, `codeql` on PATH, then the bundle that
  * `yarn codeql:install` puts in $XDG_CACHE_HOME/haxtheweb/codeql (default
  * ~/.cache/haxtheweb/codeql).
@@ -126,6 +130,36 @@ function changedFiles() {
   );
 }
 
+// What to put in the CodeQL config's `paths`: each changed element's whole
+// folder, other files' own folder, and a root-level file by itself. Scanning
+// "." for a root file (package.json scripts, web-test-runner.config.mjs) would
+// build a database of the entire monorepo.
+export function scanTargets(changed) {
+  return [
+    ...new Set(
+      changed.map((f) => {
+        const m = f.match(/^elements\/[^/]+/);
+        if (m) {
+          return m[0];
+        }
+        const dir = path.posix.dirname(f);
+        return dir === "." ? f : dir;
+      }),
+    ),
+  ];
+}
+
+// --ram for CodeQL, in MB: CODEQL_RAM if set, otherwise 60% of total memory
+// clamped to 2048-8192.
+export function ramMegabytes(env = process.env, totalBytes = os.totalmem()) {
+  const asked = Number(env.CODEQL_RAM);
+  if (Number.isInteger(asked) && asked > 0) {
+    return asked;
+  }
+  const sixty = Math.floor((totalBytes / 1024 / 1024) * 0.6);
+  return Math.min(8192, Math.max(2048, sixty));
+}
+
 // paths-ignore entries from the repo's CodeQL config, so the local scan skips
 // exactly what CI skips (tests, demos, vendored libraries).
 function ignoredPaths() {
@@ -136,15 +170,8 @@ function ignoredPaths() {
 
 function scan(codeql) {
   const changed = changedFiles();
-  // one folder per element; files outside elements/ scan their own folder
-  const dirs = [
-    ...new Set(
-      changed.map((f) => {
-        const m = f.match(/^elements\/[^/]+/);
-        return m ? m[0] : path.dirname(f) || ".";
-      }),
-    ),
-  ];
+  const dirs = scanTargets(changed);
+  const ram = `--ram=${ramMegabytes()}`;
   if (!dirs.length) {
     console.log("codeql: no changed JS/HTML files, nothing to scan.");
     return 0;
@@ -174,6 +201,7 @@ function scan(codeql) {
       `--source-root=${root}`,
       `--codescanning-config=${cfg}`,
       "--overwrite",
+      ram,
       "--quiet",
     ]);
     if (res.status !== 0) {
@@ -188,6 +216,7 @@ function scan(codeql) {
       SUITE,
       "--format=sarif-latest",
       `--output=${sarif}`,
+      ram,
       "--quiet",
     ]);
     if (res.status !== 0) {
@@ -243,4 +272,10 @@ function main() {
   return scan(codeql);
 }
 
-process.exitCode = main();
+// run only as a script, so tests can import the helpers above
+if (
+  process.argv[1] &&
+  path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)
+) {
+  process.exitCode = main();
+}
