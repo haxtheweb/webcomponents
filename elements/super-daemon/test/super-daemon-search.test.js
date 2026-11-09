@@ -71,27 +71,99 @@ describe("super-daemon-search behavior", () => {
     expect(badge.textContent.trim()).to.equal("Search NASA");
   });
 
-  it("renders the voice button when voice search is on", async () => {
-    const el = await fixture(
-      html`<super-daemon-search voice-search></super-daemon-search>`,
+  // the voice control needs listening and speaking in the browser; pin
+  // both so these run the same in every test browser
+  const withSpeech = async (recognition, fn) => {
+    const names = ["SpeechRecognition", "webkitSpeechRecognition"];
+    const prior = names.map((name) =>
+      Object.getOwnPropertyDescriptor(globalThis, name),
     );
-    const btn = el.shadowRoot.querySelector("simple-icon-button-lite");
-    expect(btn).to.exist;
-    // admin icon family (HaxUiAdminIcons.voice)
-    expect(btn.getAttribute("icon")).to.equal("hax:admin-voice");
-    expect(btn.getAttribute("title")).to.equal("Voice search");
+    const synth = Object.getOwnPropertyDescriptor(
+      globalThis,
+      "speechSynthesis",
+    );
+    names.forEach((name) =>
+      Object.defineProperty(globalThis, name, {
+        value: recognition,
+        configurable: true,
+        writable: true,
+      }),
+    );
+    if (typeof globalThis.speechSynthesis === "undefined") {
+      Object.defineProperty(globalThis, "speechSynthesis", {
+        value: {},
+        configurable: true,
+        writable: true,
+      });
+    }
+    try {
+      await fn();
+    } finally {
+      names.forEach((name, i) => {
+        if (prior[i]) {
+          Object.defineProperty(globalThis, name, prior[i]);
+        } else {
+          delete globalThis[name];
+        }
+      });
+      if (synth) {
+        Object.defineProperty(globalThis, "speechSynthesis", synth);
+      } else {
+        delete globalThis.speechSynthesis;
+      }
+    }
+  };
+
+  it("renders the voice button when voice search is on", async () => {
+    await withSpeech(
+      function FakeRecognition() {},
+      async () => {
+        const el = await fixture(
+          html`<super-daemon-search voice-search></super-daemon-search>`,
+        );
+        const btn = el.shadowRoot.querySelector("button.voice");
+        expect(btn).to.exist;
+        expect(btn.getAttribute("aria-pressed")).to.equal("false");
+        expect(btn.getAttribute("title")).to.equal("Voice search");
+        // admin icon family (HaxUiAdminIcons.voice)
+        expect(
+          btn.querySelector("simple-icon-lite").getAttribute("icon"),
+        ).to.equal("hax:admin-voice");
+      },
+    );
   });
 
-  it("shows the listening icon and class while listening", async () => {
-    const el = await fixture(
-      html`<super-daemon-search
-        voice-search
-        listening-for-input
-      ></super-daemon-search>`,
+  it("hides the voice button when the browser cannot listen", async () => {
+    await withSpeech(undefined, async () => {
+      const el = await fixture(
+        html`<super-daemon-search voice-search></super-daemon-search>`,
+      );
+      expect(el.shadowRoot.querySelector("button.voice")).to.be.null;
+    });
+  });
+
+  it("shows the meter, label and pressed state while listening", async () => {
+    await withSpeech(
+      function FakeRecognition() {},
+      async () => {
+        const el = await fixture(
+          html`<super-daemon-search
+            voice-search
+            listening-for-input
+          ></super-daemon-search>`,
+        );
+        const btn = el.shadowRoot.querySelector("button.voice");
+        expect(btn.className).to.contain("listening");
+        expect(btn.getAttribute("aria-pressed")).to.equal("true");
+        expect(btn.querySelector(".meter")).to.exist;
+        expect(btn.querySelector(".voice-label").textContent).to.equal(
+          "Listening",
+        );
+        expect(
+          el.shadowRoot.querySelector("#inputfilter").placeholder,
+        ).to.equal("Listening..");
+      },
     );
-    const btn = el.shadowRoot.querySelector("simple-icon-button-lite");
-    expect(btn.getAttribute("icon")).to.equal("hax:loading");
-    expect(btn.className).to.contain("listening");
   });
 
   it("voiceSearchClick stops listening when already listening", async () => {
