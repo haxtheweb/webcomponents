@@ -151,6 +151,14 @@ export const PrintBranchMixin = function (SuperClass) {
         }
       `;
     }
+    /**
+     * The page whose branch "Print page" prints: the active page, unless a
+     * mixin applied outside this one says otherwise (LessonViewMixin prints
+     * the whole lesson in whole-lesson view).
+     */
+    printBranchRootId() {
+      return toJS(store.activeId);
+    }
     async printBranchOfSite(_e) {
       this.__printBranchLoading = true;
       try {
@@ -163,7 +171,7 @@ export const PrintBranchMixin = function (SuperClass) {
             globalThis.__appCDN.startsWith("https://"))
             ? globalThis.__appCDN
             : "";
-        const ancestor = toJS(store.activeId);
+        const ancestor = this.printBranchRootId();
         const url = new URL("./x/api/v1/site/export/html", base);
         if (magic) {
           url.searchParams.set("magic", magic);

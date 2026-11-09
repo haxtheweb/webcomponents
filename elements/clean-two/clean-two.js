@@ -7,6 +7,7 @@ import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCM
 import { HAXCMSRememberRoute } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js";
 import { HAXCMSThemeParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
 import { PrintBranchMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/PrintBranchMixin.js";
+import { LessonViewMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LessonViewMixin.js";
 import { PDFPageMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/PDFPageMixin.js";
 import { QRCodeMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/QRCodeMixin.js";
 import { HAXCMSMobileMenuMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js";
@@ -40,14 +41,16 @@ import {
  * @demo demo/index.html
  * @element clean-two
  */
-class CleanTwo extends LTIResizingMixin(
-  HAXCMSOperationButtons(
-    HAXCMSRememberRoute(
-      PDFPageMixin(
-        PrintBranchMixin(
-          QRCodeMixin(
-            HAXCMSThemeParts(
-              HAXCMSMobileMenuMixin(DDDSuper(HAXCMSLitElementTheme)),
+class CleanTwo extends LessonViewMixin(
+  LTIResizingMixin(
+    HAXCMSOperationButtons(
+      HAXCMSRememberRoute(
+        PDFPageMixin(
+          PrintBranchMixin(
+            QRCodeMixin(
+              HAXCMSThemeParts(
+                HAXCMSMobileMenuMixin(DDDSuper(HAXCMSLitElementTheme)),
+              ),
             ),
           ),
         ),
@@ -793,7 +796,7 @@ class CleanTwo extends LTIResizingMixin(
               >
                 <site-search></site-search>
               </site-modal>
-              ${this.PDFPageButton()}
+              ${this.PDFPageButton()} ${this.LessonViewButton()}
               ${
                 MicroFrontendRegistry.has("@system/siteToHtml")
                   ? html`${this.PrintSiteButton()}${this.PrintBranchButton()}`

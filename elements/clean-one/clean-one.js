@@ -22,6 +22,7 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.
 import "@haxtheweb/haxcms-elements/lib/ui-components/progress/site-page-progress.js";
 import "./lib/clean-one-search-box.js";
 import { PrintBranchMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/PrintBranchMixin.js";
+import { LessonViewMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LessonViewMixin.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { PDFPageMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/PDFPageMixin.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
@@ -56,13 +57,15 @@ const bpBelowXl = unsafeCSS(DDDBreakpoints.xl - 1);
  * 4 = Boring Blue Gray
  * 5 = Monotone (default)
  */
-class CleanOne extends LTIResizingMixin(
-  PrintBranchMixin(
-    PDFPageMixin(
-      QRCodeMixin(
-        HAXCMSThemeParts(
-          HAXCMSMobileMenuMixin(
-            HAXCMSRememberRoute(DDDSuper(HAXCMSLitElementTheme)),
+class CleanOne extends LessonViewMixin(
+  LTIResizingMixin(
+    PrintBranchMixin(
+      PDFPageMixin(
+        QRCodeMixin(
+          HAXCMSThemeParts(
+            HAXCMSMobileMenuMixin(
+              HAXCMSRememberRoute(DDDSuper(HAXCMSLitElementTheme)),
+            ),
           ),
         ),
       ),
@@ -534,7 +537,8 @@ class CleanOne extends LTIResizingMixin(
           }
           /* menu open/close button relocated into the bottom tray on mobile;
              same circular treatment as the prev/next arrows above */
-          footer #haxcmsmobilemenubutton {
+          footer #haxcmsmobilemenubutton,
+          footer #lesson-view-btn {
             pointer-events: auto;
             margin: 0;
             width: 44px;
@@ -795,6 +799,11 @@ class CleanOne extends LTIResizingMixin(
                         `
                   }
                   ${this.PDFPageButton("bottom")}
+                  ${
+                    !["xs", "sm"].includes(this.responsiveSize)
+                      ? this.LessonViewButton("bottom")
+                      : ``
+                  }
                 </div>
                 <div class="pull-right">
                   ${this.QRCodeButton()}
@@ -852,6 +861,11 @@ class CleanOne extends LTIResizingMixin(
           </div>
           <footer>
             <nav aria-label="${this.t.pageNavigation}">
+              ${
+                ["xs", "sm"].includes(this.responsiveSize)
+                  ? this.LessonViewButton("top")
+                  : ``
+              }
               <site-menu-button
                 type="prev"
                 position="right"

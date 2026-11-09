@@ -167,6 +167,10 @@
           ],
           "mixins": [
             {
+              "name": "LessonViewMixin",
+              "package": "@haxtheweb/haxcms-elements/lib/core/utils/LessonViewMixin.js"
+            },
+            {
               "name": "LTIResizingMixin",
               "package": "@haxtheweb/haxcms-elements/lib/core/utils/LTIResizingMixin.js"
             },
