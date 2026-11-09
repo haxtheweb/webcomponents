@@ -307,9 +307,39 @@ function sanitizeElementAttributes(el, stripEvents) {
  * refresh redirects), script-loading custom elements, and SVG animations
  * that rewrite href (bypasses per-attribute URL checks).
  */
+/**
+ * security: html-block runs its slotted markup as raw script when it carries
+ * `allowscript`, but that attribute travels with the authored content. Only
+ * a platform that opted in (globalThis.HAXHtmlBlockAllowScript or
+ * appSettings.htmlBlockAllowScript, see html-block) may keep it; everywhere
+ * else it is stripped so saved content cannot grant itself script.
+ */
+function platformAllowsHtmlBlockScript() {
+  if (globalThis.HAXHtmlBlockAllowScript === true) {
+    return true;
+  }
+  return !!(
+    globalThis.appSettings &&
+    globalThis.appSettings.htmlBlockAllowScript === true
+  );
+}
+
 export function removeUnsafeElements(root) {
   if (!root || !root.querySelectorAll) {
     return root;
+  }
+  if (!platformAllowsHtmlBlockScript()) {
+    const scripted = root.querySelectorAll("[allowscript]");
+    for (let i = 0; i < scripted.length; i++) {
+      scripted[i].removeAttribute("allowscript");
+    }
+    if (
+      root.removeAttribute &&
+      root.hasAttribute &&
+      root.hasAttribute("allowscript")
+    ) {
+      root.removeAttribute("allowscript");
+    }
   }
   walkDescendants(root, isUnsafeContentElement);
   return root;
@@ -396,8 +426,12 @@ export function sanitizeNodeTree(
   if (!root) {
     return root;
   }
+  const allowScript = platformAllowsHtmlBlockScript();
   const visit = (el) => {
     sanitizeElementAttributes(el, true);
+    if (!allowScript && el.hasAttribute && el.hasAttribute("allowscript")) {
+      el.removeAttribute("allowscript");
+    }
     if (
       sanitizeTemplateContents &&
       el.tagName &&

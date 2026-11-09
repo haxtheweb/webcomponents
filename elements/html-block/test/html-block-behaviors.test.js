@@ -9,6 +9,20 @@ const settle = (ms = 100) => new Promise((r) => setTimeout(r, ms));
 // sanitization, allowscript toggling, haxProperties schema, and the
 // html getter template.
 describe("html-block behaviors", () => {
+  // these cover the author-facing allowscript behavior, which only applies
+  // once the hosting platform opts in (see the platform gate suite below)
+  let savedFlag;
+  before(() => {
+    savedFlag = globalThis.HAXHtmlBlockAllowScript;
+    globalThis.HAXHtmlBlockAllowScript = true;
+  });
+  after(() => {
+    if (savedFlag === undefined) {
+      delete globalThis.HAXHtmlBlockAllowScript;
+    } else {
+      globalThis.HAXHtmlBlockAllowScript = savedFlag;
+    }
+  });
   it("registers the custom element and sets instance tag", async () => {
     expect(globalThis.customElements.get("html-block")).to.exist;
     expect(HtmlBlock.tag).to.equal("html-block");
@@ -213,5 +227,81 @@ describe("html-block behaviors", () => {
     await settle();
     // html-block has no shadow DOM; audit the light DOM it renders
     await expect(el).to.be.accessible();
+  });
+});
+
+// security: allowscript is authored content (it is saved with the page), so
+// it only takes effect when the hosting platform opted in
+describe("html-block allowscript platform gate", () => {
+  let savedFlag;
+  let savedSettings;
+  beforeEach(() => {
+    savedFlag = globalThis.HAXHtmlBlockAllowScript;
+    savedSettings = globalThis.appSettings;
+    delete globalThis.HAXHtmlBlockAllowScript;
+    delete globalThis.appSettings;
+  });
+  afterEach(() => {
+    if (savedFlag === undefined) {
+      delete globalThis.HAXHtmlBlockAllowScript;
+    } else {
+      globalThis.HAXHtmlBlockAllowScript = savedFlag;
+    }
+    if (savedSettings === undefined) {
+      delete globalThis.appSettings;
+    } else {
+      globalThis.appSettings = savedSettings;
+    }
+  });
+
+  it("reports the platform default as not allowing script", () => {
+    expect(HtmlBlock.platformAllowsScript).to.equal(false);
+    globalThis.HAXHtmlBlockAllowScript = true;
+    expect(HtmlBlock.platformAllowsScript).to.equal(true);
+    delete globalThis.HAXHtmlBlockAllowScript;
+    globalThis.appSettings = { htmlBlockAllowScript: true };
+    expect(HtmlBlock.platformAllowsScript).to.equal(true);
+  });
+
+  it("sanitizes parse-time allowscript content when the platform has not opted in", async () => {
+    const el = await fixture(
+      html`<html-block allowscript>
+        <p onclick="evil()">gated</p>
+        <script>
+          alert(6);
+        </script>
+      </html-block>`,
+    );
+    await settle();
+    // the author's attribute is kept (content round trips unchanged)
+    expect(el.hasAttribute("allowscript")).to.equal(true);
+    expect(el.scriptAllowed).to.equal(false);
+    expect(el.querySelector("script")).to.equal(null);
+    expect(el.querySelector("p").getAttribute("onclick")).to.equal(null);
+    expect(el.innerHTML).to.contain("&lt;script&gt;");
+  });
+
+  it("ignores allowscript being toggled on when the platform has not opted in", async () => {
+    const el = await fixture(html`<html-block></html-block>`);
+    await settle();
+    el.innerHTML = '<p onclick="evil()">toggle</p>';
+    await settle();
+    el.setAttribute("allowscript", "allowscript");
+    await settle();
+    expect(el.querySelector("p").getAttribute("onclick")).to.equal(null);
+  });
+
+  it("honors allowscript once the platform opts in", async () => {
+    globalThis.HAXHtmlBlockAllowScript = true;
+    const el = await fixture(
+      html`<html-block allowscript>
+        <script>
+          alert(7);
+        </script>
+      </html-block>`,
+    );
+    await settle();
+    expect(el.scriptAllowed).to.equal(true);
+    expect(el.querySelector("script")).to.exist;
   });
 });
