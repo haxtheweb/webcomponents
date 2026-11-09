@@ -89,9 +89,12 @@ describe("a11y-media-play-button", () => {
     const svg = el.shadowRoot.querySelector("#svg");
     expect(svg).to.exist;
     expect(el.shadowRoot.querySelector("#arrow")).to.exist;
-    expect(el.shadowRoot.querySelector("#text").textContent.trim()).to.equal(
-      "Play",
-    );
+    // the label is the button's accessible name only; no visible svg text
+    // is drawn over the arrow
+    expect(el.shadowRoot.querySelector("#text")).to.not.exist;
+    expect(
+      el.shadowRoot.querySelector("#button").getAttribute("aria-label"),
+    ).to.equal("Play");
   });
 
   it("renders the youtube logo with a youtube id", async () => {

@@ -1,6 +1,6 @@
 import { fixture, expect, html, waitUntil } from "@open-wc/testing";
 
-import "../a11y-media-player.js";
+import { cueToText, stripCueTags } from "../a11y-media-player.js";
 import { installOfflineYouTubeStubs } from "./offline-stubs.js";
 
 // keep every youtube / thumbnail request off the real network (see helper)
@@ -262,6 +262,70 @@ describe("a11y-media-player transcript system", () => {
     globalThis.open = originalOpen;
     expect(bodyHtml.indexOf("00:01")).to.equal(-1);
     expect(bodyHtml.indexOf("Second cue")).to.be.above(-1);
+  });
+});
+
+describe("a11y-media-player cue markup", () => {
+  it("stripCueTags drops voice, class and timestamp tags", () => {
+    expect(
+      stripCueTags("<v ->This is for all the Annas in the world.</v>"),
+    ).to.equal("This is for all the Annas in the world.");
+    expect(stripCueTags("<v Bob>Hi</v> <c.loud>there</c>")).to.equal(
+      "Hi there",
+    );
+    expect(stripCueTags("a <00:00:01.000>b")).to.equal("a b");
+  });
+
+  it("stripCueTags decodes references once, ampersand last", () => {
+    expect(stripCueTags("Tom &amp; Jerry &lt;3")).to.equal("Tom & Jerry <3");
+    expect(stripCueTags("&amp;lt;")).to.equal("&lt;");
+  });
+
+  it("cueToText uses the browser cue parser for VTTCue objects", () => {
+    const cue = new VTTCue(0, 3, "<v ->Hello &amp; welcome</v>");
+    expect(cueToText(cue)).to.equal("Hello & welcome");
+    expect(cueToText({ text: "<v Ann>plain</v>" })).to.equal("plain");
+    expect(cueToText({})).to.equal("");
+    expect(cueToText(null)).to.equal("");
+  });
+
+  it("transcript, download and print show text without voice tags", async () => {
+    const el = await fixture(
+      html`<a11y-media-player><video></video></a11y-media-player>`,
+    );
+    await el.updateComplete;
+    const media = el.querySelector("video");
+    el.__preloadedDuration = 60;
+    const track = media.addTextTrack("subtitles", "English", "en");
+    track.addCue(new VTTCue(0, 3, "<v ->This is for all the Annas</v>"));
+    await waitUntil(() => el.cues.length === 1, "cue never collected", {
+      interval: 20,
+      timeout: 5000,
+    });
+    el.selectTranscriptByKey(0);
+    await el.updateComplete;
+    const cue = el.shadowRoot.querySelector("a11y-media-transcript-cue");
+    expect(cue.textContent.trim()).to.equal("This is for all the Annas");
+    let bodyHtml = "";
+    const originalOpen = globalThis.open;
+    globalThis.open = () => ({
+      document: {
+        body: {
+          set innerHTML(v) {
+            bodyHtml = v;
+          },
+        },
+        close() {},
+      },
+      focus() {},
+      print() {},
+      addEventListener() {},
+    });
+    el.print();
+    globalThis.open = originalOpen;
+    expect(bodyHtml.indexOf("This is for all the Annas")).to.be.above(-1);
+    expect(bodyHtml.indexOf("&lt;v")).to.equal(-1);
+    expect(bodyHtml.indexOf("<v ")).to.equal(-1);
   });
 });
 
