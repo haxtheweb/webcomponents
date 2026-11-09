@@ -41,5 +41,13 @@
   "resultsCount": "{count} results",
   "superDaemon": "Super Daemon",
   "merlin": "Merlin",
-  "closeMerlin": "Close Merlin"
+  "closeMerlin": "Close Merlin",
+  "listeningState": "Listening",
+  "speakingState": "Speaking",
+  "santaModeState": "Santa mode",
+  "dismiss": "Dismiss",
+  "stopListening": "Stop listening",
+  "turnOffSantaMode": "Turn off Santa mode",
+  "sayACommand": "Say a command, or",
+  "toStopSay": "To stop, say"
 }
