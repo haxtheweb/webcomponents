@@ -321,6 +321,11 @@
               ]
             },
             {
+              "kind": "method",
+              "name": "_syncBackgroundPlay",
+              "description": "pause when the tab is hidden unless background play is allowed; runs\nwhenever allowBackgroundPlay changes, not only on the first render, so\nthe HAX setting applies right away"
+            },
+            {
               "kind": "field",
               "name": "currentTime",
               "description": "mapping down into the shadowRoot element bc these are common things to want to know",

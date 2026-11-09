@@ -34,6 +34,14 @@ export const MEDIA_WATCH_DONE = 0.95;
 // is a seek (YouTube reports every 250ms, HTML5 every ~250ms, fast playback
 // at 2x moves about 0.5s between reports)
 const MEDIA_WATCH_MAX_STEP = 3;
+// playing on into the end of the media completes it once at least this
+// share was actually watched (a few seconds can go unreported: background
+// tabs, stalls, YouTube stopping its reports just before the end); seeking
+// to the end and letting it run out does not reach it
+export const MEDIA_WATCH_END_MIN = 0.8;
+// the end of the media: its last 5%, at least 1 and at most 3 seconds
+const MEDIA_END_WINDOW_MIN = 1;
+const MEDIA_END_WINDOW_MAX = 3;
 // xAPI video profile extension: share of the media watched, 0 to 1
 export const XAPI_MEDIA_PROGRESS =
   "https://w3id.org/xapi/video/extensions/progress";
@@ -689,8 +697,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
           --primary-text-color: var(--a11y-media-settings-menu-color);
         }
 
-        #controls-left,
-        #controls-right {
+        #controls-left {
           display: flex;
           align-items: center;
           gap: var(--ddd-spacing-1);
@@ -1192,49 +1199,103 @@ class A11yMediaPlayer extends SchemaBehaviors(
         this.learningMode,
       download: noTranscript || this.disablePrintButton,
       print: noTranscript || this.disablePrintButton,
+      audioDescription: !this.audioDescriptionSource,
+      copyLink: !this.linkable || this.learningMode,
+      youtube: !this.isYoutube || this.learningMode || this.hideYoutubeLink,
       fullscreen: !this.fullscreenButton,
     };
   }
 
   /**
+   * The actions that sit in the header at desktop widths and move to the
+   * top of the settings tray at small widths, in order
+   */
+  get _movableActions() {
+    const s = this._actionState;
+    const actions = [
+      {
+        key: "cc",
+        action: "captions",
+        icon: "av:closed-caption",
+        label: this.t.captionsLabel,
+        pressed: this.captionsTrackKey > -1,
+        hidden: s.cc,
+        onClick: () => this.toggleCC(),
+      },
+      {
+        key: "transcript",
+        action: "transcript",
+        icon: "description",
+        label: this.t.transcriptLabel,
+        pressed: !this.hideTranscript,
+        controls: "transcript-section",
+        hidden: s.transcript,
+        onClick: () => this.toggleTranscript(),
+      },
+      {
+        key: "download",
+        action: "download",
+        icon: "icons:file-download",
+        label: this.t.downloadLabel,
+        hidden: s.download,
+        onClick: () => this.download(),
+      },
+      {
+        key: "print",
+        action: "print",
+        icon: "print",
+        label: this.t.printLabel,
+        hidden: s.print,
+        onClick: () => this.print(),
+      },
+      {
+        key: "audio-description",
+        action: "audio-description",
+        icon: "av:audio-descriptive-track",
+        label: this.t.audioDescriptionLabel,
+        pressed: !!this.audioDescriptionEnabled,
+        hidden: s.audioDescription,
+        disabled: s.audioDescription,
+        onClick: () => this._handleAudioDescriptionButtonClick(),
+      },
+      {
+        key: "copy-link",
+        action: "copy-link",
+        icon: "link",
+        label: this.t.copyLinkLabel,
+        hidden: s.copyLink,
+        disabled: s.copyLink,
+        onClick: () => this._handleCopyLink(),
+      },
+      {
+        key: "youtube",
+        action: "youtube",
+        icon: "mdi-social:youtube",
+        label: this.t.openOnYouTube,
+        hidden: s.youtube,
+        onClick: () => this.goToYoutube(),
+      },
+    ];
+    // Open on YouTube only exists for YouTube media, as before
+    return actions.filter((a) => a.key !== "youtube" || this.isYoutube);
+  }
+
+  /**
    * Header actions, left to right: Closed Captions, Transcript, Download
-   * Transcript, Print Transcript, Settings, Fullscreen. At small widths
-   * only Settings and Fullscreen stay here; the rest move into the tray.
+   * Transcript, Print Transcript, Audio Description, Copy Media Link, Open
+   * on YouTube (each only when it applies), Settings, Fullscreen. At small
+   * widths only Settings and Fullscreen stay here; the rest move into the
+   * top of the settings tray.
    */
   _renderHeaderActions() {
     const s = this._actionState;
-    return html`${this._renderHeaderAction({
-      id: "header-cc",
-      action: "captions",
-      icon: "av:closed-caption",
-      label: this.t.captionsLabel,
-      pressed: this.captionsTrackKey > -1,
-      hidden: s.cc || s.narrow,
-      onClick: () => this.toggleCC(),
-    })}${this._renderHeaderAction({
-      id: "header-transcript",
-      action: "transcript",
-      icon: "description",
-      label: this.t.transcriptLabel,
-      pressed: !this.hideTranscript,
-      controls: "transcript-section",
-      hidden: s.transcript || s.narrow,
-      onClick: () => this.toggleTranscript(),
-    })}${this._renderHeaderAction({
-      id: "header-download",
-      action: "download",
-      icon: "icons:file-download",
-      label: this.t.downloadLabel,
-      hidden: s.download || s.narrow,
-      onClick: () => this.download(),
-    })}${this._renderHeaderAction({
-      id: "header-print",
-      action: "print",
-      icon: "print",
-      label: this.t.printLabel,
-      hidden: s.print || s.narrow,
-      onClick: () => this.print(),
-    })}${this._renderHeaderAction({
+    return html`${this._movableActions.map((a) =>
+      this._renderHeaderAction({
+        ...a,
+        id: `header-${a.key}`,
+        hidden: a.hidden || s.narrow,
+      }),
+    )}${this._renderHeaderAction({
       id: "settings-button",
       action: "settings",
       icon: "settings",
@@ -1283,42 +1344,11 @@ class A11yMediaPlayer extends SchemaBehaviors(
     >
       <div
         class="tray-group tray-actions"
-        ?hidden="${!s.narrow || (s.cc && s.transcript && s.download && s.print)}"
+        ?hidden="${!s.narrow || this._movableActions.every((a) => a.hidden)}"
       >
-        ${this._renderTrayButton({
-          id: "tray-cc",
-          action: "captions",
-          icon: "av:closed-caption",
-          label: this.t.captionsLabel,
-          pressed: this.captionsTrackKey > -1,
-          hidden: s.cc,
-          onClick: () => this.toggleCC(),
-        })}
-        ${this._renderTrayButton({
-          id: "tray-transcript",
-          action: "transcript",
-          icon: "description",
-          label: this.t.transcriptLabel,
-          pressed: !this.hideTranscript,
-          hidden: s.transcript,
-          onClick: () => this.toggleTranscript(),
-        })}
-        ${this._renderTrayButton({
-          id: "tray-download",
-          action: "download",
-          icon: "icons:file-download",
-          label: this.t.downloadLabel,
-          hidden: s.download,
-          onClick: () => this.download(),
-        })}
-        ${this._renderTrayButton({
-          id: "tray-print",
-          action: "print",
-          icon: "print",
-          label: this.t.printLabel,
-          hidden: s.print,
-          onClick: () => this.print(),
-        })}
+        ${this._movableActions.map((a) =>
+          this._renderTrayButton({ ...a, id: `tray-${a.key}` }),
+        )}
       </div>
       <div
         class="tray-group tray-layout"
@@ -1663,44 +1693,6 @@ class A11yMediaPlayer extends SchemaBehaviors(
               <span aria-live="polite" class="play-status control-bar">
                 <span id="statbar">${this.status}</span>
               </span>
-            </div>
-            <div id="controls-right">
-              <a11y-media-button
-                accent-color="${this.accentColor}"
-                ?dark="${this.dark}"
-                icon="av:audio-descriptive-track"
-                label="${this.t.audioDescriptionLabel}"
-                tooltip-position="top"
-                ?disabled="${!this.audioDescriptionSource}"
-                ?hidden="${!this.audioDescriptionSource}"
-                ?toggle="${this.audioDescriptionEnabled}"
-                @click="${this._handleAudioDescriptionButtonClick}"
-              ></a11y-media-button>
-              <a11y-media-button
-                accent-color="${this.accentColor}"
-                ?dark="${this.dark}"
-                class="hide-full-sm"
-                icon="link"
-                label="${this.t.copyLinkLabel}"
-                tooltip-position="top"
-                ?disabled="${!this.linkable || this.learningMode}"
-                ?hidden="${!this.linkable || this.learningMode}"
-                @click="${this._handleCopyLink}"
-              ></a11y-media-button>
-              ${
-                this.isYoutube
-                  ? html` <a11y-media-button
-                      accent-color="${this.accentColor}"
-                      ?dark="${this.dark}"
-                      class="hide-sticky"
-                      icon="mdi-social:youtube"
-                      label="${this.t.openOnYouTube}"
-                      tooltip-position="top"
-                      ?hidden="${this.learningMode || this.hideYoutubeLink}"
-                      @click="${this.goToYoutube}"
-                    ></a11y-media-button>`
-                  : ``
-              }
             </div>
           </div>
           <div
@@ -2257,7 +2249,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
         "extensions.https://w3id.org/xapi/video/extensions/progress",
       ],
       countsTowardCompletion: true,
-      done: "95% of the media actually watched (seeking ahead does not count)",
+      done: "95% of the media actually watched, or played on into the end after watching 80% (seeking ahead does not count)",
     };
   }
 
@@ -2992,7 +2984,13 @@ class A11yMediaPlayer extends SchemaBehaviors(
     // updated() because they depend on this.loadedTracks (assigned in
     // firstUpdated); running them pre-render would throw on the first update.
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "learningMode" && typeof oldValue !== "undefined") {
+      // learning mode locks seeking and the transcript; it also applies
+      // when the player is created with it on (HAX content saved with it),
+      // not only when it is switched later
+      if (
+        propName === "learningMode" &&
+        (typeof oldValue !== "undefined" || this.learningMode)
+      ) {
         this.disableSeek = this[propName];
         this.hideTranscript = this[propName];
       }
@@ -3012,6 +3010,19 @@ class A11yMediaPlayer extends SchemaBehaviors(
         this.loadedTracks
       ) {
         this._captionsChanged();
+      }
+      // showing the transcript (hide-transcript turned off in HAX, or the
+      // Transcript toggle) needs a track; pick the captions / default one
+      // so it never sits on the loading message
+      if (
+        propName === "hideTranscript" &&
+        !this.hideTranscript &&
+        !this.transcriptTrack &&
+        this.loadedTracks &&
+        this.loadedTracks.textTracks &&
+        this.loadedTracks.textTracks.length > 0
+      ) {
+        this.transcriptTrack = this.captionsTrack || this._getTrack();
       }
       if (propName === "id" && this.id === null) {
         this.id = "a11y-media-player" + Date.now();
@@ -3043,12 +3054,31 @@ class A11yMediaPlayer extends SchemaBehaviors(
       if (change(["source", "sources"])) {
         this._updateMediaSource();
       }
-      // new media is a new activity: start counting what is watched again
-      if (
-        change(["source", "sources", "youtubeId"]) &&
-        oldValue !== undefined
-      ) {
-        this._resetWatched();
+      // new media is a new activity: start counting what is watched again.
+      // Only when the media really changed: a wrapper (video-player) passes
+      // a new sources array on every render, and resetting on that wiped
+      // what was watched each time the wrapper re-rendered (play / pause).
+      if (change(["source", "sources", "youtubeId"])) {
+        const key = this._mediaKey();
+        if (this.__mediaKey !== undefined && key !== this.__mediaKey) {
+          this._resetWatched();
+        }
+        this.__mediaKey = key;
+      }
+      // text tracks given as a property (video-player tracks / track) are
+      // kept in step with the media element when they change
+      if (change(["tracks"]) && this.__loadedTracks) {
+        this._syncTracks();
+      }
+      if (change(["crossorigin"]) && this.__loadedTracks && this.crossorigin) {
+        if (
+          this.__loadedTracks.getAttribute("crossorigin") !== this.crossorigin
+        ) {
+          this.__loadedTracks.setAttribute("crossorigin", this.crossorigin);
+          if (!this.__playing && this.__loadedTracks.load) {
+            this.__loadedTracks.load();
+          }
+        }
       }
 
       if (change(["media", "muted"])) this._handleMuteChanged();
@@ -3086,10 +3116,10 @@ class A11yMediaPlayer extends SchemaBehaviors(
         if (mediaChange("loop")) this._setAttribute("loop", this.loop, media);
         if (mediaChange("playbackRate"))
           this._setAttribute("playbackRate", this.playbackRate, media);
-        if (mediaChange("isYoutube"))
+        if (mediaChange("isYoutube") || change(["thumbnailSrc"]))
           this._setAttribute(
             "poster",
-            !this.isYoutube ? this.thumbnailSrc : false,
+            !this.isYoutube && this._hasThumbnail ? this.thumbnailSrc : false,
             this.__loadedTracks,
           );
         if (
@@ -3564,11 +3594,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
     primary.style.maxWidth = "100%";
 
     /* handle deprecated tracks */
-    (this.tracks || []).forEach((track) => {
-      let node = globalThis.document.createElement("track");
-      Object.keys(track).forEach((key) => node.setAttribute(key, track[key]));
-      primary.appendChild(node);
-    });
+    this._appendTracks(primary);
 
     /* handle deprecated sources */
     (this.sources || []).forEach((source) => {
@@ -3585,6 +3611,54 @@ class A11yMediaPlayer extends SchemaBehaviors(
     // media actually stays at 0, so play() restarts from the beginning.
     primary.load();
     return primary;
+  }
+
+  /**
+   * adds a <track> to the media element for each entry of the tracks
+   * property, marked so they can be replaced when tracks changes
+   * @param {object} media HTML audio or video element
+   */
+  _appendTracks(media) {
+    (this.tracks || []).forEach((track) => {
+      let node = globalThis.document.createElement("track");
+      Object.keys(track || {}).forEach((key) =>
+        node.setAttribute(key, track[key]),
+      );
+      node.setAttribute("data-a11y-media-track", "");
+      media.appendChild(node);
+    });
+    this.__syncedTracks = JSON.stringify(this.tracks || []);
+  }
+
+  /**
+   * replaces the tracks added from the tracks property when it changes
+   * (a HAX edit of video-player tracks / track), so the captions and
+   * transcript show the new files right away
+   */
+  _syncTracks() {
+    const media = this.__loadedTracks;
+    const next = JSON.stringify(this.tracks || []);
+    if (!media || next === this.__syncedTracks) return;
+    media
+      .querySelectorAll("track[data-a11y-media-track]")
+      .forEach((node) => node.remove());
+    // the replaced tracks were the selected ones; the first new track takes
+    // over (see _onAddTrack)
+    this.captionsTrack = null;
+    this.transcriptTrack = null;
+    this.__cues = [];
+    this._appendTracks(media);
+  }
+
+  /**
+   * what identifies the media being played, for learner data
+   * @returns {string}
+   */
+  _mediaKey() {
+    const srcs = (Array.isArray(this.sources) ? this.sources : []).map(
+      (s) => (s && s.src) || "",
+    );
+    return [this.youtubeId || "", this.source || ""].concat(srcs).join("|");
   }
 
   _updateMediaSource() {
@@ -4023,6 +4097,19 @@ class A11yMediaPlayer extends SchemaBehaviors(
     // reaching the end only completes the media when it was watched; the
     // last time report before the end is counted first
     this._trackWatched();
+    // the media ended while playing on into its last stretch: the seconds
+    // after the last time report were played too (the end can arrive
+    // before a report for them does)
+    if (this.__playedToEnd && this.__watched) {
+      const d = Number(this.duration);
+      const from = Math.floor(Number(this.__watchLast) || 0);
+      if (isFinite(d) && d > 0) {
+        for (let sec = from; sec <= Math.ceil(d) - 1; sec++) {
+          this.__watched.add(sec);
+        }
+        this._checkWatched();
+      }
+    }
     if (this.loop) {
       this.seek(0);
       this.play();
@@ -4039,6 +4126,25 @@ class A11yMediaPlayer extends SchemaBehaviors(
     this.__watched = new Set();
     this.__watchLast = null;
     this.__watchSent = {};
+    this.__playedToEnd = false;
+  }
+
+  /**
+   * Learner data: whether a time is in the last stretch of the media (its
+   * last 5%, between 1 and 3 seconds)
+   * @param {number} t time in seconds
+   * @returns {boolean}
+   */
+  _isAtEnd(t) {
+    const d = Number(this.duration);
+    if (!isFinite(d) || d <= 0) {
+      return false;
+    }
+    const window = Math.max(
+      MEDIA_END_WINDOW_MIN,
+      Math.min(MEDIA_END_WINDOW_MAX, d * 0.05),
+    );
+    return t >= d - window;
   }
 
   /**
@@ -4063,6 +4169,18 @@ class A11yMediaPlayer extends SchemaBehaviors(
     }
     for (let sec = Math.floor(last); sec <= Math.floor(t); sec++) {
       this.__watched.add(sec);
+    }
+    // playback ran on into the end: the final (partial) seconds count even
+    // when no report arrives for them
+    if (this._isAtEnd(t)) {
+      this.__playedToEnd = true;
+      const d = Number(this.duration);
+      // within the last second: the final partial second is played too
+      if (t >= d - MEDIA_END_WINDOW_MIN) {
+        for (let sec = Math.floor(t); sec <= Math.ceil(d) - 1; sec++) {
+          this.__watched.add(sec);
+        }
+      }
     }
     this._checkWatched();
   }
@@ -4096,18 +4214,30 @@ class A11yMediaPlayer extends SchemaBehaviors(
       sent.progressed = true;
       this._announceMedia("progressed", share);
     }
-    if (!sent.completed && share >= MEDIA_WATCH_DONE) {
+    if (
+      !sent.completed &&
+      (share >= MEDIA_WATCH_DONE ||
+        (this.__playedToEnd && share >= MEDIA_WATCH_END_MIN))
+    ) {
+      // xAPI order: a completion always follows a progressed statement
+      if (!sent.progressed) {
+        sent.progressed = true;
+        this._announceMedia("progressed", share);
+      }
       sent.completed = true;
       this._announceEnded();
     }
   }
 
   /**
-   * Learner data: the media was watched (95% or more). Fires
-   * user-engagement (verb completed, with an xAPI statement) once per visit.
+   * Learner data: the media was watched (95% or more, or played on into
+   * the end after watching at least 80%). Fires user-engagement (verb
+   * completed, with an xAPI statement and progress 1) once per visit.
    */
   _announceEnded() {
-    this._announceMedia("completed", this.watchedShare);
+    // completed is the whole media: progress 1 (the duration in the
+    // statement still says how much was actually watched)
+    this._announceMedia("completed", 1);
   }
 
   /**
@@ -4329,6 +4459,11 @@ class A11yMediaPlayer extends SchemaBehaviors(
    */
   _onAddTrack(track) {
     if (this.captionsTrack === null) this.captionsTrack = track;
+    // a track that replaced the old ones (tracks changed) also becomes the
+    // transcript while the transcript is showing
+    if (this.transcriptTrack === null && !this.hideTranscript) {
+      this.transcriptTrack = track;
+    }
     if (track) track.mode = "hidden";
     let loadCueData = setInterval(() => {
       if (track.cues && track.cues.length > 0) {

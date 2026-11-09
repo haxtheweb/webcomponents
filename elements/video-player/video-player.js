@@ -394,6 +394,10 @@ class VideoPlayer extends IntersectionObserverMixin(
       },
       designSystem: {
         card: true,
+        // the player's header, controls and transcript have a fixed
+        // layout, so the editor does not offer text alignment; content
+        // that already has data-text-align still loads and saves as is
+        textAlign: false,
       },
       canEditSource: true,
       gizmo: {
@@ -877,7 +881,7 @@ class VideoPlayer extends IntersectionObserverMixin(
         "extensions.https://w3id.org/xapi/video/extensions/progress",
       ],
       countsTowardCompletion: true,
-      done: "95% of the media actually watched (seeking ahead does not count)",
+      done: "95% of the media actually watched, or played on into the end after watching 80% (seeking ahead does not count)",
     };
   }
   /**
@@ -1016,6 +1020,15 @@ class VideoPlayer extends IntersectionObserverMixin(
   /**
    * life cycle, element is removed from the DOM
    */
+  /**
+   * life cycle, element is (re)added to the DOM (HAX moves blocks around)
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    if (this.hasUpdated) {
+      this._syncBackgroundPlay();
+    }
+  }
   disconnectedCallback() {
     if (this.__setVisChange) {
       this.__setVisChange = false;
@@ -1521,6 +1534,16 @@ class VideoPlayer extends IntersectionObserverMixin(
   }
   updated(changedProperties) {
     super.updated(changedProperties);
+    if (changedProperties.has("allowBackgroundPlay")) {
+      this._syncBackgroundPlay();
+    }
+    // a new start time applies to the next play, even after playing
+    if (
+      changedProperties.has("startTime") &&
+      changedProperties.get("startTime") !== undefined
+    ) {
+      this.__hasPlayed = false;
+    }
     changedProperties.forEach((oldValue, propName) => {
       // Setup audio description sync when enabled changes
       if (
@@ -1589,28 +1612,25 @@ class VideoPlayer extends IntersectionObserverMixin(
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    changedProperties.forEach((oldValue, propName) => {
-      if (
-        propName === "allowBackgroundPlay" &&
-        this[propName] &&
-        this.__setVisChange
-      ) {
-        this.__setVisChange = false;
-        this.windowControllers.abort();
-      } else if (
-        propName === "allowBackgroundPlay" &&
-        !this[propName] &&
-        !this.__setVisChange
-      ) {
-        this.__setVisChange = true;
-        this.windowControllers = new AbortController();
-        globalThis.document.addEventListener(
-          "visibilitychange",
-          this._visChange.bind(this),
-          { signal: this.windowControllers.signal },
-        );
-      }
-    });
+  }
+  /**
+   * pause when the tab is hidden unless background play is allowed; runs
+   * whenever allowBackgroundPlay changes, not only on the first render, so
+   * the HAX setting applies right away
+   */
+  _syncBackgroundPlay() {
+    if (this.allowBackgroundPlay && this.__setVisChange) {
+      this.__setVisChange = false;
+      this.windowControllers.abort();
+    } else if (!this.allowBackgroundPlay && !this.__setVisChange) {
+      this.__setVisChange = true;
+      this.windowControllers = new AbortController();
+      globalThis.document.addEventListener(
+        "visibilitychange",
+        this._visChange.bind(this),
+        { signal: this.windowControllers.signal },
+      );
+    }
   }
   /**
    * mapping down into the shadowRoot element bc these are common things to want to know

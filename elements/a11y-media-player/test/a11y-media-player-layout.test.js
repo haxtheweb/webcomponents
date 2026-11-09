@@ -87,6 +87,8 @@ describe("a11y-media-player block header", () => {
       "Transcript",
       "Download Transcript",
       "Print Transcript",
+      "Audio Description",
+      "Copy Media Link",
       "Settings",
       "Fullscreen",
     ]);
@@ -95,6 +97,8 @@ describe("a11y-media-player block header", () => {
       "transcript",
       "download",
       "print",
+      "audio-description",
+      "copy-link",
       "settings",
       "fullscreen",
     ]);
@@ -103,7 +107,8 @@ describe("a11y-media-player block header", () => {
       expect(b.tagName).to.equal("BUTTON");
       expect(b.getAttribute("title")).to.equal(b.getAttribute("aria-label"));
     });
-    // at a desktop width all but (maybe) Fullscreen are shown
+    // at a desktop width all but (maybe) Fullscreen are shown; audio
+    // description and the media link only when they apply
     expect(visibleLabels(buttons).slice(0, 5)).to.deep.equal([
       "Closed Captions",
       "Transcript",
@@ -111,6 +116,57 @@ describe("a11y-media-player block header", () => {
       "Print Transcript",
       "Settings",
     ]);
+  });
+
+  it("audio description, copy media link and Open on YouTube are header actions before Settings", async () => {
+    el.audioDescriptionSource = "data:audio/mp3,";
+    el.linkable = true;
+    el.youtubeId = "abc123";
+    await el.updateComplete;
+    const labels = visibleLabels(headerActions(el));
+    expect(labels).to.include.ordered.members([
+      "Closed Captions",
+      "Transcript",
+      "Download Transcript",
+      "Print Transcript",
+      "Audio Description",
+      "Copy Media Link",
+      "Open on YouTube",
+      "Settings",
+    ]);
+    // nothing is left in the bottom right corner of the control bar
+    expect(el.shadowRoot.querySelector("#controls-right")).to.equal(null);
+    expect(
+      el.shadowRoot.querySelector('#controls [icon="mdi-social:youtube"]'),
+    ).to.equal(null);
+    expect(el.shadowRoot.querySelector('#controls [icon="link"]')).to.equal(
+      null,
+    );
+    expect(
+      el.shadowRoot.querySelector(
+        '#controls [icon="av:audio-descriptive-track"]',
+      ),
+    ).to.equal(null);
+    // the actions still do what they did
+    const opened = [];
+    el.goToYoutube = () => opened.push("youtube");
+    el._handleCopyLink = () => opened.push("link");
+    el.shadowRoot.querySelector("#header-youtube").click();
+    el.shadowRoot.querySelector("#header-copy-link").click();
+    expect(opened).to.deep.equal(["youtube", "link"]);
+    const ad = el.shadowRoot.querySelector("#header-audio-description");
+    expect(ad.getAttribute("aria-pressed")).to.equal("false");
+    el.togglePlay = () => {};
+    ad.click();
+    await el.updateComplete;
+    expect(el.audioDescriptionEnabled).to.equal(true);
+    expect(ad.getAttribute("aria-pressed")).to.equal("true");
+    // learning mode and hide-youtube-link still hide them
+    el.hideYoutubeLink = true;
+    el.learningMode = true;
+    await el.updateComplete;
+    expect(visibleLabels(headerActions(el))).to.not.include("Open on YouTube");
+    expect(visibleLabels(headerActions(el))).to.not.include("Copy Media Link");
   });
 
   it("header toggles report their state", async () => {
@@ -470,6 +526,25 @@ describe("a11y-media-player at small widths", () => {
       "Download Transcript",
       "Print Transcript",
     ]);
+    // the other header actions move there too when they apply
+    el.audioDescriptionSource = "data:audio/mp3,";
+    el.linkable = true;
+    el.youtubeId = "abc123";
+    await el.updateComplete;
+    expect(
+      Array.from(actions.querySelectorAll("button.seg"))
+        .filter((b) => !b.hidden)
+        .map((b) => b.textContent.trim()),
+    ).to.deep.equal([
+      "Closed Captions",
+      "Transcript",
+      "Download Transcript",
+      "Print Transcript",
+      "Audio Description",
+      "Copy Media Link",
+      "Open on YouTube",
+    ]);
+    expect(visibleLabels(headerActions(el))[0]).to.equal("Settings");
     buttons[0].click();
     await el.updateComplete;
     expect(el.cc).to.equal(true);

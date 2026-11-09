@@ -24,6 +24,14 @@
         },
         {
           "kind": "variable",
+          "name": "MEDIA_WATCH_END_MIN",
+          "type": {
+            "text": "number"
+          },
+          "default": "0.8"
+        },
+        {
+          "kind": "variable",
           "name": "XAPI_MEDIA_PROGRESS",
           "type": {
             "text": "string"
@@ -112,9 +120,15 @@
               "readonly": true
             },
             {
+              "kind": "field",
+              "name": "_movableActions",
+              "description": "The actions that sit in the header at desktop widths and move to the\ntop of the settings tray at small widths, in order",
+              "readonly": true
+            },
+            {
               "kind": "method",
               "name": "_renderHeaderActions",
-              "description": "Header actions, left to right: Closed Captions, Transcript, Download\nTranscript, Print Transcript, Settings, Fullscreen. At small widths\nonly Settings and Fullscreen stay here; the rest move into the tray."
+              "description": "Header actions, left to right: Closed Captions, Transcript, Download\nTranscript, Print Transcript, Audio Description, Copy Media Link, Open\non YouTube (each only when it applies), Settings, Fullscreen. At small\nwidths only Settings and Fullscreen stay here; the rest move into the\ntop of the settings tray."
             },
             {
               "kind": "method",
@@ -801,6 +815,35 @@
             },
             {
               "kind": "method",
+              "name": "_appendTracks",
+              "parameters": [
+                {
+                  "name": "media",
+                  "description": "HTML audio or video element",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "adds a <track> to the media element for each entry of the tracks\nproperty, marked so they can be replaced when tracks changes"
+            },
+            {
+              "kind": "method",
+              "name": "_syncTracks",
+              "description": "replaces the tracks added from the tracks property when it changes\n(a HAX edit of video-player tracks / track), so the captions and\ntranscript show the new files right away"
+            },
+            {
+              "kind": "method",
+              "name": "_mediaKey",
+              "description": "what identifies the media being played, for learner data",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
               "name": "_updateMediaSource"
             },
             {
@@ -1089,6 +1132,25 @@
             },
             {
               "kind": "method",
+              "name": "_isAtEnd",
+              "parameters": [
+                {
+                  "name": "t",
+                  "description": "time in seconds",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "Learner data: whether a time is in the last stretch of the media (its\nlast 5%, between 1 and 3 seconds)",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "kind": "method",
               "name": "_trackWatched",
               "description": "Learner data: count the media time actually watched. Called on every\ntime report. Only playback that moves forward in small steps counts, so\nseeking or scrubbing ahead never adds to it, and each second counts once\nhowever often it is replayed. Sends the milestones when reached."
             },
@@ -1106,7 +1168,7 @@
             {
               "kind": "method",
               "name": "_announceEnded",
-              "description": "Learner data: the media was watched (95% or more). Fires\nuser-engagement (verb completed, with an xAPI statement) once per visit."
+              "description": "Learner data: the media was watched (95% or more, or played on into\nthe end after watching at least 80%). Fires user-engagement (verb\ncompleted, with an xAPI statement and progress 1) once per visit."
             },
             {
               "kind": "method",
@@ -2823,6 +2885,14 @@
           "name": "MEDIA_WATCH_DONE",
           "declaration": {
             "name": "MEDIA_WATCH_DONE",
+            "module": "a11y-media-player.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "MEDIA_WATCH_END_MIN",
+          "declaration": {
+            "name": "MEDIA_WATCH_END_MIN",
             "module": "a11y-media-player.js"
           }
         },

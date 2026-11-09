@@ -354,7 +354,10 @@ export function registerDDDStyleGuideAuthoring(payload = {}) {
                 right: "Right",
               },
             });
-          } else {
+          } else if (designSystem.textAlign !== false) {
+            // designSystem.textAlign: false opts a block out of the text
+            // alignment setting (e.g. players whose chrome has a fixed
+            // layout); content that already has data-text-align keeps it
             spacingProps.push({
               attribute: "data-text-align",
               title: "Text align",

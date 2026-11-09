@@ -23,7 +23,7 @@ export const XAPI_VOCABULARY = {
       "extensions.https://w3id.org/xapi/video/extensions/progress",
     ],
     countsTowardCompletion: true,
-    done: "95% of the media actually watched (seeking ahead does not count)",
+    done: "95% of the media actually watched, or played on into the end after watching 80% (seeking ahead does not count)",
     source: "elements/a11y-media-player/a11y-media-player.js",
   },
   "audio-player": {
@@ -37,7 +37,7 @@ export const XAPI_VOCABULARY = {
       "extensions.https://w3id.org/xapi/video/extensions/progress",
     ],
     countsTowardCompletion: true,
-    done: "95% of the media actually watched (seeking ahead does not count)",
+    done: "95% of the media actually watched, or played on into the end after watching 80% (seeking ahead does not count)",
     source: "elements/audio-player/audio-player.js",
   },
   "bullet-check-list": {
@@ -418,7 +418,7 @@ export const XAPI_VOCABULARY = {
       "extensions.https://w3id.org/xapi/video/extensions/progress",
     ],
     countsTowardCompletion: true,
-    done: "95% of the media actually watched (seeking ahead does not count)",
+    done: "95% of the media actually watched, or played on into the end after watching 80% (seeking ahead does not count)",
     source: "elements/video-player/video-player.js",
   },
   "vocab-term": {

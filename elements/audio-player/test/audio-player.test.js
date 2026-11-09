@@ -589,3 +589,46 @@ describe("audio-player in the DDD player frame", () => {
     expect(box.height).to.be.above(0);
   });
 });
+
+describe("audio-player HAX settings", () => {
+  it("does not offer text alignment (same player as video-player)", () => {
+    const props = globalThis.customElements.get("audio-player").haxProperties;
+    expect(props.designSystem.textAlign).to.equal(false);
+  });
+
+  it("a new caption file (track) shows right away", async () => {
+    const vtt = (text) =>
+      "data:text/vtt;charset=utf-8," +
+      encodeURIComponent(
+        `WEBVTT\n\n00:00:00.000 --> 00:00:01.000\n${text} one\n\n00:00:01.000 --> 00:00:02.000\n${text} two\n`,
+      );
+    const el = await fixture(
+      html`<audio-player
+        source="${localAudio}"
+        media-title="Test Audio"
+        track="${vtt("Kilo")}"
+      ></audio-player>`,
+    );
+    el.elementVisible = true;
+    await el.updateComplete;
+    const inner = () => el.shadowRoot.querySelector("a11y-media-player");
+    const texts = () =>
+      Array.from(
+        inner().shadowRoot.querySelectorAll("a11y-media-transcript-cue"),
+      ).map((c) => c.textContent.trim());
+    const wait = async (fn) => {
+      for (let i = 0; i < 80 && !fn(); i++) {
+        await new Promise((r) => setTimeout(r, 50));
+      }
+      return fn();
+    };
+    expect(await wait(() => inner() && texts().includes("Kilo one"))).to.equal(
+      true,
+    );
+    el.track = vtt("Lima");
+    await el.updateComplete;
+    expect(
+      await wait(() => texts().join("|") === "Lima one|Lima two"),
+    ).to.equal(true);
+  });
+});
