@@ -85,6 +85,31 @@ describe("rich-text-editor-source singleton", () => {
     editor.remove();
   });
 
+  it("_handleSourceChange sanitizes the source view HTML before writing it", async () => {
+    const el = globalThis.RichTextEditorSource.requestAvailability();
+    const editor = await makeEditor("<p>original</p>");
+    const toolbar = await makeToolbar();
+    toolbar.target = editor;
+    el.__toolbar = toolbar;
+    el.__target = editor;
+    el.__needsUpdate = false;
+    el._handleSourceChange({
+      detail: {
+        value:
+          '<p data-keep="1">ok</p><img src="x" onerror="globalThis.__rteSourceXSS = 1"><a href="javascript:void(0)">x</a>',
+      },
+    });
+    await sleep(350);
+    expect(editor.querySelector("[onerror]")).to.equal(null);
+    expect(editor.querySelector("a").hasAttribute("href")).to.equal(false);
+    expect(editor.querySelector("p").getAttribute("data-keep")).to.equal("1");
+    expect(el.querySelector("[onerror]")).to.equal(null);
+    expect(globalThis.__rteSourceXSS).to.equal(undefined);
+    el.__toolbar = undefined;
+    el.__target = undefined;
+    editor.remove();
+  });
+
   it("_handleSourceChange does nothing without a toolbar", async () => {
     const el = globalThis.RichTextEditorSource.requestAvailability();
     el.__toolbar = undefined;
