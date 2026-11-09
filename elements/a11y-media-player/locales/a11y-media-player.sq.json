@@ -35,12 +35,5 @@
   "youTubeStartLoading": "Shtyp luaj.",
   "youTubeTranscriptLabel": "Transkripti do të ngarkohet sapo të luhet media.",
   "audioDescriptionLabel": "Përshkrim audio",
-  "openOnYouTube": "Hap në YouTube",
-  "interactiveLabel": "interaktiv",
-  "layoutLabel": "Paraqitja",
-  "sideLabel": "Anash",
-  "belowLabel": "Poshtë",
-  "leftLabel": "Majtas",
-  "rightLabel": "Djathtas",
-  "hideTranscriptLabel": "Fshihe transkriptin"
+  "openOnYouTube": "Hap në YouTube"
 }

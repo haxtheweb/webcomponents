@@ -35,12 +35,5 @@
   "youTubeStartLoading": "Pritisnite predvajaj.",
   "youTubeTranscriptLabel": "Prepis se bo naložil, ko se medij začne predvajati.",
   "audioDescriptionLabel": "Zvočni opis",
-  "openOnYouTube": "Odpri v YouTube",
-  "interactiveLabel": "interaktivno",
-  "layoutLabel": "Postavitev",
-  "sideLabel": "Ob strani",
-  "belowLabel": "Pod",
-  "leftLabel": "Levo",
-  "rightLabel": "Desno",
-  "hideTranscriptLabel": "Skrij prepis"
+  "openOnYouTube": "Odpri v YouTube"
 }

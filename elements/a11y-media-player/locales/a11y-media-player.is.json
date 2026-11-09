@@ -35,12 +35,5 @@
   "youTubeStartLoading": "",
   "youTubeTranscriptLabel": "",
   "audioDescriptionLabel": "Hljóðlýsing",
-  "openOnYouTube": "Opna á YouTube",
-  "interactiveLabel": "gagnvirkt",
-  "layoutLabel": "Útlit",
-  "sideLabel": "Til hliðar",
-  "belowLabel": "Fyrir neðan",
-  "leftLabel": "Vinstri",
-  "rightLabel": "Hægri",
-  "hideTranscriptLabel": "Fela afritritun"
+  "openOnYouTube": "Opna á YouTube"
 }

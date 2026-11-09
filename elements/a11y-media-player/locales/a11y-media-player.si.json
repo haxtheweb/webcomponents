@@ -35,12 +35,5 @@
   "youTubeStartLoading": "ධාවනය ඔබන්න.",
   "youTubeTranscriptLabel": "මාධ්‍ය ධාවනය වූ පසු පිටපත පූරණය වේ.",
   "audioDescriptionLabel": "ශ්‍රව්‍ය විස්තරය",
-  "openOnYouTube": "YouTube හි විවෘත කරන්න",
-  "interactiveLabel": "අන්තර්ක්‍රියාකාරී",
-  "layoutLabel": "පිරිසැලසුම",
-  "sideLabel": "පැත්තේ",
-  "belowLabel": "පහළින්",
-  "leftLabel": "වම",
-  "rightLabel": "දකුණ",
-  "hideTranscriptLabel": "ප්‍රතිලේඛනය සඟවන්න"
+  "openOnYouTube": "YouTube හි විවෘත කරන්න"
 }

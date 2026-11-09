@@ -35,12 +35,5 @@
   "youTubeStartLoading": "",
   "youTubeTranscriptLabel": "",
   "audioDescriptionLabel": "ఆడియో వివరణ",
-  "openOnYouTube": "YouTubeలో తెరవండి",
-  "interactiveLabel": "ఇంటరాక్టివ్",
-  "layoutLabel": "లేఅవుట్",
-  "sideLabel": "పక్కన",
-  "belowLabel": "కింద",
-  "leftLabel": "ఎడమ",
-  "rightLabel": "కుడి",
-  "hideTranscriptLabel": "ట్రాన్స్‌క్రిప్ట్‌ను దాచు"
+  "openOnYouTube": "YouTubeలో తెరవండి"
 }

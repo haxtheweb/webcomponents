@@ -35,12 +35,5 @@
   "youTubeStartLoading": "പ്ലേ അമർത്തുക.",
   "youTubeTranscriptLabel": "മീഡിയ പ്ലേ ചെയ്തു തുടങ്ങുമ്പോൾ ട്രാൻസ്ക്രിപ്റ്റ് ലോഡ് ആകും.",
   "audioDescriptionLabel": "ഓഡിയോ വിവരണം",
-  "openOnYouTube": "YouTube-ൽ തുറക്കുക",
-  "interactiveLabel": "സംവേദനാത്മകം",
-  "layoutLabel": "ലേഔട്ട്",
-  "sideLabel": "വശത്ത്",
-  "belowLabel": "താഴെ",
-  "leftLabel": "ഇടത്",
-  "rightLabel": "വലത്",
-  "hideTranscriptLabel": "ട്രാൻസ്ക്രിപ്റ്റ് മറയ്ക്കുക"
+  "openOnYouTube": "YouTube-ൽ തുറക്കുക"
 }

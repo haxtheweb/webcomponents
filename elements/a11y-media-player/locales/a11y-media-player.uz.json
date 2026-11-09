@@ -35,12 +35,5 @@
   "youTubeStartLoading": "Ijro tugmasini bosing.",
   "youTubeTranscriptLabel": "Transkript media ijro etilgach yuklanadi.",
   "audioDescriptionLabel": "Audio tavsif",
-  "openOnYouTube": "YouTube’da ochish",
-  "interactiveLabel": "interaktiv",
-  "layoutLabel": "Joylashuv",
-  "sideLabel": "Yonida",
-  "belowLabel": "Pastda",
-  "leftLabel": "Chap",
-  "rightLabel": "O'ng",
-  "hideTranscriptLabel": "Transkriptni yashirish"
+  "openOnYouTube": "YouTube’da ochish"
 }

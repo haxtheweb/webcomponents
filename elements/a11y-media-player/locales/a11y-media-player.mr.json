@@ -35,12 +35,5 @@
   "youTubeStartLoading": "प्ले दाबा.",
   "youTubeTranscriptLabel": "मीडिया प्ले झाल्यावर प्रतिलेख लोड होईल.",
   "audioDescriptionLabel": "ऑडिओ वर्णन",
-  "openOnYouTube": "YouTube वर उघडा",
-  "interactiveLabel": "परस्परसंवादी",
-  "layoutLabel": "मांडणी",
-  "sideLabel": "बाजूला",
-  "belowLabel": "खाली",
-  "leftLabel": "डावे",
-  "rightLabel": "उजवे",
-  "hideTranscriptLabel": "ट्रान्सक्रिप्ट लपवा"
+  "openOnYouTube": "YouTube वर उघडा"
 }

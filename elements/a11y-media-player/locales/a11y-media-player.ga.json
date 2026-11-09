@@ -35,12 +35,5 @@
   "youTubeStartLoading": "",
   "youTubeTranscriptLabel": "",
   "audioDescriptionLabel": "Closcur",
-  "openOnYouTube": "Oscail ar YouTube",
-  "interactiveLabel": "idirghníomhach",
-  "layoutLabel": "Leagan amach",
-  "sideLabel": "Taobh",
-  "belowLabel": "Faoi",
-  "leftLabel": "Clé",
-  "rightLabel": "Deas",
-  "hideTranscriptLabel": "Folaigh an Tras-scríbhinn"
+  "openOnYouTube": "Oscail ar YouTube"
 }

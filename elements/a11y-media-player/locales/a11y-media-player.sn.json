@@ -35,12 +35,5 @@
   "youTubeStartLoading": "Dzvanya tamba.",
   "youTubeTranscriptLabel": "Chinyorwa chicharodha kana midhiya yatanga kutamba.",
   "audioDescriptionLabel": "Tsananguro Yeodhiyo",
-  "openOnYouTube": "Vhura paYouTube",
-  "interactiveLabel": "inodyidzana",
-  "layoutLabel": "Marongerwo",
-  "sideLabel": "Padivi",
-  "belowLabel": "Pazasi",
-  "leftLabel": "Ruboshi",
-  "rightLabel": "Rudyi",
-  "hideTranscriptLabel": "Tsiva transcript"
+  "openOnYouTube": "Vhura paYouTube"
 }

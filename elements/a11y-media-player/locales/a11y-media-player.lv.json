@@ -35,12 +35,5 @@
   "youTubeStartLoading": "",
   "youTubeTranscriptLabel": "",
   "audioDescriptionLabel": "Audioapraksts",
-  "openOnYouTube": "Atvērt YouTube",
-  "interactiveLabel": "interaktīvs",
-  "layoutLabel": "Izkārtojums",
-  "sideLabel": "Blakus",
-  "belowLabel": "Zem",
-  "leftLabel": "Pa kreisi",
-  "rightLabel": "Pa labi",
-  "hideTranscriptLabel": "Slēpt transkripciju"
+  "openOnYouTube": "Atvērt YouTube"
 }

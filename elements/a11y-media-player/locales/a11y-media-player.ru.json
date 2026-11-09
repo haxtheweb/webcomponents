@@ -35,12 +35,5 @@
   "youTubeStartLoading": "Нажмите воспроизведение.",
   "youTubeTranscriptLabel": "Стенограмма загрузится после начала воспроизведения.",
   "audioDescriptionLabel": "Аудиоописание",
-  "openOnYouTube": "Открыть на YouTube",
-  "interactiveLabel": "интерактивное",
-  "layoutLabel": "Макет",
-  "sideLabel": "Сбоку",
-  "belowLabel": "Ниже",
-  "leftLabel": "Слева",
-  "rightLabel": "Справа",
-  "hideTranscriptLabel": "Скрыть расшифровку"
+  "openOnYouTube": "Открыть на YouTube"
 }

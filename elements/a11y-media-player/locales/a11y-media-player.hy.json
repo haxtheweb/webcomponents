@@ -35,12 +35,5 @@
   "youTubeStartLoading": "Սեղմեք նվագարկել։",
   "youTubeTranscriptLabel": "Սղագրությունը կբեռնվի, երբ մեդիան սկսի նվագարկվել։",
   "audioDescriptionLabel": "Աուդիո նկարագրություն",
-  "openOnYouTube": "Բացել YouTube-ում",
-  "interactiveLabel": "ինտերակտիվ",
-  "layoutLabel": "Դասավորություն",
-  "sideLabel": "Կողքին",
-  "belowLabel": "Ներքևում",
-  "leftLabel": "Ձախ",
-  "rightLabel": "Աջ",
-  "hideTranscriptLabel": "Թաքցնել տրանսկրիպցիան"
+  "openOnYouTube": "Բացել YouTube-ում"
 }

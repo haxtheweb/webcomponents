@@ -35,12 +35,5 @@
   "youTubeStartLoading": "Nyomja meg a lejátszást.",
   "youTubeTranscriptLabel": "Az átirat a lejátszás indulásakor töltődik be.",
   "audioDescriptionLabel": "Hangalámondásos leírás",
-  "openOnYouTube": "Megnyitás a YouTube-on",
-  "interactiveLabel": "interaktív",
-  "layoutLabel": "Elrendezés",
-  "sideLabel": "Mellette",
-  "belowLabel": "Alá",
-  "leftLabel": "Bal",
-  "rightLabel": "Jobb",
-  "hideTranscriptLabel": "Átirat elrejtése"
+  "openOnYouTube": "Megnyitás a YouTube-on"
 }

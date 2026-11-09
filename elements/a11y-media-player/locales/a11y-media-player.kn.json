@@ -35,12 +35,5 @@
   "youTubeStartLoading": "ಪ್ಲೇ ಒತ್ತಿರಿ.",
   "youTubeTranscriptLabel": "ಮಾಧ್ಯಮ ಪ್ಲೇ ಆದ ನಂತರ ಪ್ರತಿಲಿಪಿ ಲೋಡ್ ಆಗುತ್ತದೆ.",
   "audioDescriptionLabel": "ಆಡಿಯೋ ವಿವರಣೆ",
-  "openOnYouTube": "YouTube ನಲ್ಲಿ ತೆರೆಯಿರಿ",
-  "interactiveLabel": "ಸಂವಾದಾತ್ಮಕ",
-  "layoutLabel": "ವಿನ್ಯಾಸ",
-  "sideLabel": "ಪಕ್ಕದಲ್ಲಿ",
-  "belowLabel": "ಕೆಳಗೆ",
-  "leftLabel": "ಎಡ",
-  "rightLabel": "ಬಲ",
-  "hideTranscriptLabel": "ಪ್ರತಿಲೇಖನವನ್ನು ಮರೆಮಾಡಿ"
+  "openOnYouTube": "YouTube ನಲ್ಲಿ ತೆರೆಯಿರಿ"
 }

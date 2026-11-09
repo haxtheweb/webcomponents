@@ -35,12 +35,5 @@
   "youTubeStartLoading": "बजाउनुहोस् थिच्नुहोस्।",
   "youTubeTranscriptLabel": "मिडिया बज्न थालेपछि ट्रान्सक्रिप्ट लोड हुनेछ।",
   "audioDescriptionLabel": "अडियो विवरण",
-  "openOnYouTube": "YouTube मा खोल्नुहोस्",
-  "interactiveLabel": "अन्तरक्रियात्मक",
-  "layoutLabel": "लेआउट",
-  "sideLabel": "छेउमा",
-  "belowLabel": "तल",
-  "leftLabel": "बायाँ",
-  "rightLabel": "दायाँ",
-  "hideTranscriptLabel": "ट्रान्सक्रिप्ट लुकाउनुहोस्"
+  "openOnYouTube": "YouTube मा खोल्नुहोस्"
 }

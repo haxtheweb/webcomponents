@@ -35,12 +35,5 @@
   "youTubeStartLoading": "",
   "youTubeTranscriptLabel": "",
   "audioDescriptionLabel": "აუდიოაღწერა",
-  "openOnYouTube": "გახსნა YouTube-ზე",
-  "interactiveLabel": "ინტერაქტიული",
-  "layoutLabel": "განლაგება",
-  "sideLabel": "გვერდით",
-  "belowLabel": "ქვემოთ",
-  "leftLabel": "მარცხენა",
-  "rightLabel": "მარჯვენა",
-  "hideTranscriptLabel": "ტრანსკრიპციის დამალვა"
+  "openOnYouTube": "გახსნა YouTube-ზე"
 }

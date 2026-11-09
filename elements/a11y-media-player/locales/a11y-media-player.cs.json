@@ -35,12 +35,5 @@
   "youTubeStartLoading": "Stiskněte přehrát.",
   "youTubeTranscriptLabel": "Přepis se načte po spuštění přehrávání.",
   "audioDescriptionLabel": "Zvukový popis",
-  "openOnYouTube": "Otevřít na YouTube",
-  "interactiveLabel": "interaktivní",
-  "layoutLabel": "Rozložení",
-  "sideLabel": "Vedle",
-  "belowLabel": "Pod",
-  "leftLabel": "Vlevo",
-  "rightLabel": "Vpravo",
-  "hideTranscriptLabel": "Skrýt přepis"
+  "openOnYouTube": "Otevřít na YouTube"
 }

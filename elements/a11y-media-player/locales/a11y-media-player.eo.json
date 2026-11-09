@@ -35,12 +35,5 @@
   "youTubeStartLoading": "Premu ludi.",
   "youTubeTranscriptLabel": "La transskribo ŝargiĝos kiam la aŭdvidaĵo ekludos.",
   "audioDescriptionLabel": "Aŭda priskribo",
-  "openOnYouTube": "Malfermi en YouTube",
-  "interactiveLabel": "interaga",
-  "layoutLabel": "Aranĝo",
-  "sideLabel": "Flanke",
-  "belowLabel": "Sub",
-  "leftLabel": "Maldekstre",
-  "rightLabel": "Dekstre",
-  "hideTranscriptLabel": "Kaŝi Transkribon"
+  "openOnYouTube": "Malfermi en YouTube"
 }

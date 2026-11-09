@@ -35,12 +35,5 @@
   "youTubeStartLoading": "กดเล่น",
   "youTubeTranscriptLabel": "บทถอดความจะโหลดเมื่อเริ่มเล่นสื่อ",
   "audioDescriptionLabel": "เสียงบรรยายภาพ",
-  "openOnYouTube": "เปิดบน YouTube",
-  "interactiveLabel": "แบบโต้ตอบ",
-  "layoutLabel": "เค้าโครง",
-  "sideLabel": "ด้านข้าง",
-  "belowLabel": "ด้านล่าง",
-  "leftLabel": "ซ้าย",
-  "rightLabel": "ขวา",
-  "hideTranscriptLabel": "ซ่อนการถอดความ"
+  "openOnYouTube": "เปิดบน YouTube"
 }

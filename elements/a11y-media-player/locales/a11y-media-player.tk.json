@@ -35,12 +35,5 @@
   "youTubeStartLoading": "Oýnatmak düwmesine basyň.",
   "youTubeTranscriptLabel": "Transkript media oýnadylanda ýüklener.",
   "audioDescriptionLabel": "Sesli düşündiriş",
-  "openOnYouTube": "YouTube-da aç",
-  "interactiveLabel": "interaktiw",
-  "layoutLabel": "Ýerleşiş",
-  "sideLabel": "Gapdalda",
-  "belowLabel": "Aşakda",
-  "leftLabel": "Çep",
-  "rightLabel": "Sag",
-  "hideTranscriptLabel": "Transkripti gizlemek"
+  "openOnYouTube": "YouTube-da aç"
 }
