@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
+import { sanitizeHTMLString } from "@haxtheweb/utils/lib/sanitize.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
@@ -458,7 +459,10 @@ class SimpleSearch extends LitElement {
     // part of a _handleChange sweep: false keeps the running total and
     // match numbers accumulating across every selected element
     if (selection && selection.innerHTML)
-      selection.innerHTML = this.findMatches(selection.innerHTML, false);
+      // security: the content is re-serialized into live markup
+      selection.innerHTML = sanitizeHTMLString(
+        this.findMatches(selection.innerHTML, false),
+      );
   }
 
   /**

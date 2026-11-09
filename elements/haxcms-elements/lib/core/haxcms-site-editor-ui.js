@@ -8,7 +8,7 @@ import {
   localStorageSet,
   winEventsElement,
   validURL,
-  removeBadJSEventAttributes,
+  sanitizeHTMLForImport,
   KeyboardShortcutManagerInstance,
 } from "@haxtheweb/utils/utils.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
@@ -1640,9 +1640,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       // test for slot on insert attempt
       slot = this.activeNode.getAttribute("slot");
     }
+    // security: content comes back from a microservice / import; parse it in
+    // an inert document and run the full sanitizer (handlers, javascript:
+    // URLs, srcdoc, <base>/<meta>, stray scripts) before anything is adopted
+    // into the live page. The old removeBadJSEventAttributes pass ran after
+    // the live innerHTML write, when <img onerror> had already fired.
     const div = globalThis.document.createElement("div");
-    div.innerHTML = content;
-    removeBadJSEventAttributes(div);
+    div.appendChild(sanitizeHTMLForImport(content));
     const importedChildren = Array.from(div.children);
 
     // ensure we have a parent or we won't be able to insert beyond active and should just append to the bottom

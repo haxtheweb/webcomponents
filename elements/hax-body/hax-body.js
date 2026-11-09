@@ -9,6 +9,7 @@ import {
   KeyboardShortcutManagerInstance,
   removeBadJSEventAttributes,
   sanitizeHTMLForImport,
+  sanitizeHTMLString,
   wipeSlot,
   generateResourceID,
   nodeToHaxElement,
@@ -2868,7 +2869,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // set text forcibly
     //frag.innerText = content;
     // now set html forcibly which would overwrite the other one
-    frag.innerHTML = content;
+    // security: content is a string from an app-store / stax / paste / import
+    // source, sanitize it before it reaches a live element (inline handlers
+    // fire on innerHTML assignment, before removeBadJSEventAttributes below)
+    frag.innerHTML = sanitizeHTMLString(content);
     // clone the fragment which will force an escalation to full node
     const newNode = frag.cloneNode(true);
     // support for properties if they exist

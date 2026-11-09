@@ -21,10 +21,12 @@ import {
   normalizeClipboardHTML,
   normalizeTypography,
   sanitizeHTMLForImport,
+  sanitizeHTMLString,
 } from "@haxtheweb/utils/utils.js";
 import {
   isSameOriginUploadedMarkup,
   iframeSandboxForSource,
+  urlHostMatches,
 } from "@haxtheweb/utils/lib/url.js";
 import {
   replaceLazyRun,
@@ -1742,6 +1744,15 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         let importPath = `${basePath}${items[i]}`;
         // account for external app store reference on import
         if (this.isExternalURLImport(items[i])) {
+          // security: the app store is JSON a site can point anywhere; only
+          // import cross-origin modules from origins we trust (or that the
+          // app store explicitly opted into, see isAllowedExternalImport)
+          if (!this.isAllowedExternalImport(items[i])) {
+            console.warn(
+              `hax-store: refusing to import ${i} from ${items[i]}; external origin is not allow-listed`,
+            );
+            continue;
+          }
           importPath = items[i];
         }
         // we have to import and then respond to it being imported by checking again
@@ -1780,6 +1791,48 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     }
 
     return new URL(url).origin !== location.origin;
+  }
+  /**
+   * External origins that app store autoloader entries may import code
+   * from. The page's own origin is always allowed (see isExternalURLImport);
+   * everything else has to be an https URL on one of these hosts, unless
+   * the app store sets `allowExternalImports: true`.
+   * @returns {Array<string>} host names (subdomains match too)
+   */
+  static get allowedExternalImportHosts() {
+    return ["cdn.hax.cloud", "cdn.webcomponents.psu.edu"];
+  }
+  /**
+   * Is this cross-origin module URL allowed to be imported?
+   * @param {string} string absolute URL
+   * @returns {boolean}
+   */
+  isAllowedExternalImport(string) {
+    if (this.appStore && this.appStore.allowExternalImports === true) {
+      return true;
+    }
+    let url;
+    try {
+      url = new URL(string);
+    } catch {
+      return false;
+    }
+    if (url.protocol !== "https:") {
+      return false;
+    }
+    const hosts = HaxStore.allowedExternalImportHosts;
+    if (globalThis.WCGlobalBasePath) {
+      // the configured CDN for this site is trusted by definition
+      try {
+        const cdn = new URL(globalThis.WCGlobalBasePath, location.href);
+        if (cdn.protocol === "https:") {
+          hosts.push(cdn.hostname);
+        }
+      } catch {
+        // not a URL, same-origin path
+      }
+    }
+    return urlHostMatches(url.href, hosts);
   }
   async _loadActiveDesignSystemIntegrations() {
     if (
@@ -2529,8 +2582,14 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       // quotes so content renders and encodes consistently across platforms
       pasteContent = normalizeTypography(pasteContent);
 
+      // security: never write the raw clipboard markup into a node that
+      // belongs to the live document, even a detached one: the browser
+      // fetches <img src> and fires inline handlers (onerror, onload) the
+      // moment innerHTML is set, and stripMSWord only strips script/style.
+      // Parse in an inert document and sanitize first, then adopt the
+      // already-safe nodes so the structure checks below see the same tree.
       let fragment = globalThis.document.createElement("div");
-      fragment.innerHTML = pasteContent;
+      fragment.appendChild(sanitizeHTMLForImport(pasteContent));
       let haxElements = [];
 
       // Check if we're pasting into the middle of an existing text element (inline paste)
@@ -2589,7 +2648,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           // Skip the rest of the processing and go straight to inline paste handler
         } else {
           pasteContent = `<p>${pasteContent}</p>`;
-          fragment.innerHTML = pasteContent; // Update fragment with wrapped content
+          // Update fragment with wrapped content (sanitized, inert parse)
+          fragment.innerHTML = "";
+          fragment.appendChild(sanitizeHTMLForImport(pasteContent));
         }
       }
 
@@ -2873,8 +2934,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         let sel = this.getSelection();
         // tee up a wrapper so we can walk and put every element in
         let newNodes = globalThis.document.createElement("div");
-        // defined so that we can
-        newNodes.innerHTML = newContent;
+        // security: newContent may still be the (cleaned up) raw clipboard
+        // string on the inline paste branches and these nodes are inserted
+        // straight into the editable range, so sanitize before parsing
+        newNodes.innerHTML = sanitizeHTMLString(newContent);
         if (range && sel) {
           for (let i in newNodes.children) {
             // delete nodes that are empty text elements

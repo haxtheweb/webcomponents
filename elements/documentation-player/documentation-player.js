@@ -6,7 +6,10 @@ import { LitElement, html, css, unsafeCSS } from "lit";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
-import { nodeToHaxElement } from "@haxtheweb/utils/utils.js";
+import {
+  nodeToHaxElement,
+  sanitizeHTMLString,
+} from "@haxtheweb/utils/utils.js";
 import { createScene, MOTION_CSS } from "./lib/motion-core.js";
 
 const REPO_TREE = "https://github.com/haxtheweb/webcomponents/tree/HEAD/";
@@ -1007,17 +1010,106 @@ export class DocumentationPlayer extends DDDSuper(I18NMixin(LitElement)) {
     }
   }
 
+  /**
+   * Origins the docs file may point the live demo's module import at. The
+   * docs JSON is author-uploaded, so a bare `import(d.import)` would run any
+   * script on the web; same-origin paths, the configured component base
+   * (WCGlobalBasePath / WCGlobalCDNPath) and the HAX CDNs are enough.
+   * @returns {Array<string>} host names (subdomains match too)
+   */
+  static get allowedImportHosts() {
+    return ["cdn.hax.cloud", "cdn.webcomponents.psu.edu"];
+  }
+  /**
+   * security: resolve a docs-supplied module specifier and only return it
+   * when it is same-origin or on an allowed host. Bare specifiers like
+   * "@haxtheweb/x/x.js" are left to the import map (they resolve on this
+   * origin or fail); absolute URLs elsewhere are refused.
+   * @param {string} spec import / cdn value from the docs JSON
+   * @returns {string|null} what to import, or null to refuse
+   */
+  _safeImportSpecifier(spec) {
+    if (typeof spec !== "string" || spec.trim() === "") {
+      return null;
+    }
+    spec = spec.trim();
+    if (/^(javascript|data|blob|vbscript):/i.test(spec)) {
+      return null;
+    }
+    // bare specifier (no scheme, not a path): import map / bundler decides
+    if (
+      !/^[a-z][a-z0-9+.-]*:/i.test(spec) &&
+      !spec.startsWith("/") &&
+      !spec.startsWith("./") &&
+      !spec.startsWith("../")
+    ) {
+      return spec;
+    }
+    let url;
+    try {
+      url = new URL(spec, this._baseForLoads());
+    } catch {
+      return null;
+    }
+    if (url.protocol !== "https:" && url.protocol !== "http:") {
+      return null;
+    }
+    if (globalThis.location && url.origin === globalThis.location.origin) {
+      return url.href;
+    }
+    if (url.protocol !== "https:") {
+      return null;
+    }
+    const hosts = DocumentationPlayer.allowedImportHosts.slice();
+    [globalThis.WCGlobalBasePath, globalThis.WCGlobalCDNPath].forEach(
+      (base) => {
+        if (typeof base !== "string" || base === "") {
+          return;
+        }
+        try {
+          const b = new URL(base, this._baseForLoads());
+          if (b.protocol === "https:") {
+            hosts.push(b.hostname);
+          }
+        } catch {
+          // same-origin path; already covered above
+        }
+      },
+    );
+    const host = url.hostname.toLowerCase();
+    return hosts.some(
+      (h) =>
+        typeof h === "string" &&
+        h !== "" &&
+        (host === h.toLowerCase() || host.endsWith("." + h.toLowerCase())),
+    )
+      ? url.href
+      : null;
+  }
+
   async _runLive() {
     const d = this.docs;
     this.liveState = "loading";
     try {
+      const local = this._safeImportSpecifier(d.import);
+      const cdn = this._safeImportSpecifier(d.cdn);
+      if (local === null && cdn === null) {
+        throw new Error("no allowed import for the live demo");
+      }
       try {
-        await import(/* @vite-ignore */ d.import);
+        if (local === null) {
+          throw new Error("skip");
+        }
+        await import(/* @vite-ignore */ local);
       } catch {
-        await import(/* @vite-ignore */ d.cdn);
+        if (cdn === null) {
+          throw new Error("no allowed import for the live demo");
+        }
+        await import(/* @vite-ignore */ cdn);
       }
       const mount = this.shadowRoot.querySelector("#mount");
-      mount.innerHTML = d.demoHtml;
+      // security: demoHtml is from the same uploaded JSON
+      mount.innerHTML = sanitizeHTMLString(d.demoHtml);
       this.liveState = "ok";
     } catch {
       this.liveState = "fail";

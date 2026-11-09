@@ -581,6 +581,32 @@ describe("page-break-outline", () => {
     host.remove();
   });
 
+  it("escapes titles and paths so they render as text, not markup", async () => {
+    const { host } = buildOutlineHost();
+    const pb = globalThis.document.createElement("page-break");
+    pb.path = 'p4" onmouseover="evil()';
+    pb.setAttribute("path", pb.path);
+    pb.parent = "px";
+    pb.title = '<img src=x onerror="globalThis.__outlineXSS = 1">Evil & co';
+    pb.depth = 0;
+    host.appendChild(pb);
+    const outline = await fixture(
+      html`<page-break-outline selector="#outline-host"></page-break-outline>`,
+    );
+    await wait(100);
+    expect(outline.div.querySelector("img")).to.equal(null);
+    expect(outline.div.querySelector("[onmouseover]")).to.equal(null);
+    const anchors = Array.from(outline.div.querySelectorAll("a"));
+    const evil = anchors.find((a) => a.textContent.includes("Evil & co"));
+    expect(evil).to.exist;
+    expect(evil.textContent).to.equal(
+      '<img src=x onerror="globalThis.__outlineXSS = 1">Evil & co',
+    );
+    expect(evil.getAttribute("data-path")).to.equal('p4" onmouseover="evil()');
+    expect(globalThis.__outlineXSS).to.equal(undefined);
+    host.remove();
+  });
+
   it("scrolls the matching break into view when a link is clicked", async () => {
     const scrolled = [];
     const fakeBreak = {

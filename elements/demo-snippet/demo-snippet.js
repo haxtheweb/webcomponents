@@ -9,6 +9,7 @@
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import "@haxtheweb/code-sample/code-sample.js";
+import { sanitizeNodeTree } from "@haxtheweb/utils/lib/sanitize.js";
 
 /**
  * `demo-snippet` is a helper element that displays the source of a code snippet
@@ -30,6 +31,23 @@ import "@haxtheweb/code-sample/code-sample.js";
  *         <demo-snippet>
  *           <template>
  *             <my-element checked>My Element</my-element>
+ *           </template>
+ *         </demo-snippet>
+ *
+ * ### Scripts in the demo
+ *
+ * The stamped demo is sanitized before it enters the page: `<script>` tags
+ * and inline event handlers (onclick=...) in the template are removed, and
+ * javascript: URLs are dropped. Demo pages that need a script to wire the
+ * demo up opt in per snippet with the `unsafe-scripts` attribute. Only set it
+ * on pages you author yourself, never around markup that came from elsewhere.
+ *
+ *         <demo-snippet unsafe-scripts>
+ *           <template>
+ *             <button id="go">Go</button>
+ *             <script>
+ *               document.getElementById("go").onclick = () => alert("hi");
+ *             </script>
  *           </template>
  *         </demo-snippet>
  *
@@ -204,6 +222,17 @@ class DemoSnippet extends DDDSuper(LitElement) {
     if (!template.hasAttribute("is") && isNewSnippet) {
       // Create a document fragment from the template content
       const fragment = document.importNode(template.content, true);
+      // security: the template is page markup, but stamping turns its scripts
+      // and inline handlers live. Strip them unless the page author opted in
+      // with unsafe-scripts (removeUnsafeElements etc. via sanitizeNodeTree,
+      // plus any <script> that is not nested in a further <template>).
+      if (!this.hasAttribute("unsafe-scripts")) {
+        sanitizeNodeTree(fragment);
+        const scripts = fragment.querySelectorAll("script");
+        for (let i = 0; i < scripts.length; i++) {
+          scripts[i].remove();
+        }
+      }
 
       // Clear any previously stamped demo content to avoid duplicates
       if (this._stampedNodes) {
