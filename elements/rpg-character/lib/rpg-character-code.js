@@ -106,6 +106,7 @@ export const codeSlots = [
       "saber-cats-away",
       "icers",
       "icers-away",
+      "future-traveler",
     ],
   },
   {
@@ -175,6 +176,7 @@ export const codeSlots = [
       "messy-hair",
       "sparkle-selects",
       "saber-cats",
+      "future-traveler",
     ],
   },
   {

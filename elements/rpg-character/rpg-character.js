@@ -93,6 +93,7 @@ export const hatList = [
   "messy-hair",
   "sparkle-selects",
   "saber-cats",
+  "future-traveler",
 ];
 // what hat="random" picks from: everyday hats, leaving costume and holiday
 // hats to explicit choices and presets
@@ -118,6 +119,7 @@ const costumeHats = [
   "messy-hair",
   "sparkle-selects",
   "saber-cats",
+  "future-traveler",
 ];
 export const randomHatList = hatList.filter((h) => !costumeHats.includes(h));
 // full-head or face masks, drawn between the hair and the hat
@@ -334,6 +336,9 @@ export const presets = {
     feet: "skates",
     crest: "icers-away",
   },
+  // the HAX World Traveler as a character: red HAX helmet with an idea bulb
+  // and big goggles, Beaver blue coat over a cyan shirt
+  "future-traveler": { hat: "future-traveler" },
 };
 // Special seeds that dress the character in a team kit. The seed still makes
 // the character underneath; this only fills in the preset when none is
