@@ -5,6 +5,7 @@
 > - Before writing a new element, search the existing ones: `hax wc --search <words>` or `elements-catalog.json` (tag, title, description, package, import path, HAX type, tags). Prefer composing existing elements.
 > - Create new elements only with `hax webcomponent <name> --y --no-i` (the global `hax`, never `npx hax`), and run `hax audit` in the element folder before you finish. Never pass `--no-docs` here: every element's build must end with `node ../../scripts/extract-element-docs.mjs --write .` so its `lib/<tag>.docs.json` ships for `<documentation-player>`. After changing an element's properties, HAX settings, slots or events, run `yarn run build` in its folder and commit the refreshed docs data.
 > - Never run the ubiquity script and never run a build at the top of this monorepo.
+> - Change English strings only; never commit non-English locale files (translations are nightly). See [Internationalization (i18n)](#internationalization-i18n).
 
 This file provides comprehensive instructions for AI coding agents working within the HAX ecosystem. HAX (Headless Authoring eXperience) is a comprehensive web development ecosystem that enables rapid creation of accessible, performant web components and static sites. Follow these guidelines to set up, develop, test, and contribute effectively to HAX projects.
 
@@ -55,7 +56,7 @@ Before starting any work, check the unified issue queue:
   ```bash
   hax webcomponent my-element --y
   ```
-  - Creates a LitElement-based web component with DDD design system and i18n support.
+  - Creates a LitElement-based web component with DDD design system and i18n support (commit only its English locale files; see Internationalization below).
   - In a monorepo, places the component in the correct location and inherits settings.
 - **Create a new HAXsite**:
   ```bash
@@ -125,8 +126,11 @@ Before starting any work, check the unified issue queue:
 - **CSS Classes**: Follow BEM methodology when not using DDD tokens
 
 ### Internationalization (i18n)
-- Use provided i18n wiring for web components (automatically included with `hax webcomponent`)
-- Support multiple languages from the start
+- Use the provided i18n wiring for web components (automatically included with `hax webcomponent`): put user-facing strings in `this.t` and HAX editor labels in `lib/<tag>.haxProperties.json`, never hard-coded in templates.
+- **Feature PRs change English source strings only**: `this.t`, `lib/*.haxProperties.json`, and `locales/*.en.json`. Never add, edit, rename or delete any other locale file (`elements/*/locales/<namespace>.<lang>.json`, including `<tag>.haxProperties.<lang>.json`), even when the `hax-i18n-translate` skill or a scaffold suggests it.
+- The `locale-guard` check ([`.github/workflows/locale-guard.yml`](.github/workflows/locale-guard.yml)) fails any PR that touches a non-English locale file. If it fails, revert those files and keep only the English changes.
+- Translations happen nightly: a scheduled job translates new or changed English strings, and stubs and translates new elements, in one rolling PR from the `chore/nightly-translations` branch ([haxtheweb/issues#3262](https://github.com/haxtheweb/issues/issues/3262)).
+- New elements made with `hax webcomponent` must not include non-English locale files. Delete any the scaffold created before committing.
 
 ## Build System & Testing
 

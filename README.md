@@ -98,7 +98,7 @@ Watch and Learn more about HAX here:
 cd elements/ELEMENTNAME
 yarn start
 ```
-Edit files in `lib/`, `src/`, `locales/` and `demo/` in order to modify the element to contribute back to us via PR.
+Edit files in `lib/`, `src/`, `locales/` and `demo/` in order to modify the element to contribute back to us via PR. In `locales/`, change only the English (`*.en.json`) files; other languages are translated nightly in the `chore/nightly-translations` PR, and the `locale-guard` check blocks PRs that change them.
 ## Scripts
 
 - `hax webcomponent my-element --y`
