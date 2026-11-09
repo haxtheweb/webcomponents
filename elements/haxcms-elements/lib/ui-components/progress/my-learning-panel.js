@@ -19,10 +19,13 @@ import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { autorun, toJS } from "mobx";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import {
-  store,
-  iconFromPageType,
-} from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+  LearnerOutlineStyles,
+  followLearnerOutlineRow,
+  learnerOutlineModel,
+  renderLearnerOutline,
+} from "@haxtheweb/haxcms-elements/lib/ui-components/progress/learner-outline-progress.js";
 import { LearnerProgress } from "@haxtheweb/haxcms-elements/lib/core/haxcms-learner-progress.js";
 import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
 import {
@@ -399,7 +402,7 @@ export class MyLearningPanel extends I18NMixin(DDDSuper(LitElement)) {
     this._page = null;
     this._site = null;
     this._rows = [];
-    this._outline = [];
+    this._outline = null;
     this._pageTitle = "";
     this.t = {
       ...this.t,
@@ -410,6 +413,8 @@ export class MyLearningPanel extends I18NMixin(DDDSuper(LitElement)) {
       pageSummary: "{percent}% · {done} of {total} done",
       pagesDone: "{done} of {total} pages done",
       pagesCount: "{count} pages",
+      percentComplete: "{percent}% complete",
+      complete: "Complete",
       percent: "{percent}%",
       goTo: "Go to {name}",
       openMyLearning: "Open My learning",
@@ -454,7 +459,7 @@ export class MyLearningPanel extends I18NMixin(DDDSuper(LitElement)) {
       _page: { type: Object, state: true },
       _site: { type: Object, state: true },
       _rows: { type: Array, state: true },
-      _outline: { type: Array, state: true },
+      _outline: { type: Object, state: true },
       _pageTitle: { type: String, state: true },
     };
   }
@@ -546,52 +551,14 @@ export class MyLearningPanel extends I18NMixin(DDDSuper(LitElement)) {
       })
       .map((x) => x.r);
   }
-  // top level outline items with their page percent (the average over the
-  // pages they hold that count)
+  // All pages: the top of the outline (shared with the My learning
+  // dashboard, see learner-outline-progress.js)
   _outlineRows(manifest, site) {
     const items =
       manifest && Array.isArray(manifest.items) ? manifest.items : [];
-    const visible = (i) =>
-      i &&
-      i.id &&
-      !(
-        i.metadata &&
-        (i.metadata.hideInMenu || i.metadata.published === false)
-      );
-    const counted = new Set(LearnerProgress.pageIds());
-    const byPage = site && site.percentByPage ? site.percentByPage : {};
-    const kids = {};
-    items.forEach((i) => {
-      if (i && i.parent) {
-        (kids[i.parent] = kids[i.parent] || []).push(i);
-      }
+    return learnerOutlineModel(items, site, {
+      pageIds: LearnerProgress.pageIds(),
     });
-    const subtree = (item, out, depth) => {
-      out.push(item);
-      if (depth < 50) {
-        (kids[item.id] || []).forEach((c) => subtree(c, out, depth + 1));
-      }
-      return out;
-    };
-    return items
-      .filter((i) => visible(i) && !i.parent)
-      .map((i) => {
-        const pages = subtree(i, [], 0).filter((p) => counted.has(p.id));
-        const sum = pages.reduce((t, p) => t + (Number(byPage[p.id]) || 0), 0);
-        const hasKids = (kids[i.id] || []).some(visible);
-        const meta = i.metadata || {};
-        return {
-          id: i.id,
-          title: i.title || "",
-          count: pages.length,
-          hasKids,
-          icon:
-            meta.icon ||
-            (meta.pageType ? iconFromPageType(meta.pageType) : "") ||
-            (hasKids ? "icons:folder-open" : "icons:description"),
-          percent: pages.length ? sum / pages.length : 0,
-        };
-      });
   }
   _statusText(kind, item, rec) {
     const p = dddProgressPercent(item.progress);
@@ -637,6 +604,7 @@ export class MyLearningPanel extends I18NMixin(DDDSuper(LitElement)) {
       super.styles,
       DDDBlockStyles,
       ...DDDProgressRingStyles,
+      ...LearnerOutlineStyles,
       css`
         :host {
           display: block;
@@ -878,10 +846,8 @@ export class MyLearningPanel extends I18NMixin(DDDSuper(LitElement)) {
   }
   render() {
     const page = this._page || { percent: 0, itemsDone: 0, itemsTotal: 0 };
-    const site = this._site || { percent: 0, done: 0, total: 0 };
     const t = this.t;
     const pagePct = dddProgressPercent(page.percent);
-    const sitePct = dddProgressPercent(site.percent);
     const pageTab = this.tab !== "site";
     const hasGo = this._rows.some((r) => !r.done && r.el);
     return html`<section
@@ -968,27 +934,20 @@ export class MyLearningPanel extends I18NMixin(DDDSuper(LitElement)) {
         role="tabpanel"
         id="pane-site"
         aria-labelledby="tab-site"
-        tabindex="0"
+        tabindex="${
+          this._outline &&
+          this._outline.rows &&
+          this._outline.rows.some((r) => r.url)
+            ? nothing
+            : "0"
+        }"
         ?hidden="${pageTab}"
       >
-        <div class="lp-summary">
-          ${renderDDDProgressRing({
-            percent: site.percent,
-            glyph: html`<span>${fill(t.percent, { percent: sitePct })}</span>`,
-          })}
-          <span class="lp-text">
-            <span class="lp-name">${t.allPages}</span>
-            <span class="lp-kind"
-              >${fill(t.pagesDone, {
-                done: site.done || 0,
-                total: site.total || 0,
-              })}</span
-            >
-          </span>
-        </div>
-        <ol class="lp-list" part="site-items">
-          ${this._outline.map((o) => this.renderOutlineRow(o))}
-        </ol>
+        ${renderLearnerOutline(this._outline, {
+          t: this.t,
+          part: "site-items",
+          onGo: (e, row) => this._goPage(e, row),
+        })}
       </div>
       <div class="ddd-block-footer lp-foot">
         <p>${t.savedOnDevice}</p>
@@ -1044,23 +1003,9 @@ export class MyLearningPanel extends I18NMixin(DDDSuper(LitElement)) {
       ${inner}
     </li>`;
   }
-  renderOutlineRow(o) {
-    const pct = fill(this.t.percent, {
-      percent: dddProgressPercent(o.percent),
-    });
-    return html`<li class="lp-row" data-id="${o.id}">
-      ${renderDDDProgressRing({ percent: o.percent, icon: o.icon })}
-      <span class="lp-text"
-        ><span class="lp-name">${o.title}</span>${
-          o.hasKids
-            ? html`<span class="lp-kind"
-                >${fill(this.t.pagesCount, { count: o.count })}</span
-              >`
-            : nothing
-        }</span
-      >
-      <span class="lp-status">${pct}</span>
-    </li>`;
+  // a row of All pages: close the panel, then open that page
+  _goPage(e, row) {
+    return followLearnerOutlineRow(e, row, () => this.close(false));
   }
   /**
    * Move focus into the panel: the selected tab

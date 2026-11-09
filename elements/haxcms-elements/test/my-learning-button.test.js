@@ -403,17 +403,17 @@ describe("My learning button and panel", () => {
     const root = panelOf(el).shadowRoot;
     const sp = LearnerProgress.siteProgress();
     expect(sp.total).to.equal(5);
-    const summary = root.querySelector("#pane-site .lp-summary");
+    const summary = root.querySelector("#pane-site .lop-summary");
     expect(summary.textContent).to.include(`${sp.done} of 5 pages done`);
     expect(summary.querySelector(".ddd-ring").textContent).to.include(
       `${Math.round(sp.percent * 100)}%`,
     );
-    const rows = root.querySelectorAll("#pane-site .lp-list > li");
+    const rows = root.querySelectorAll("#pane-site .lop-list > li");
     // top level, visible: Introduction, Lesson 1, Unit 1
     expect(
       Array.from(rows).map((r) => r.getAttribute("data-id")),
     ).to.deep.equal(["p1", "p2", "u1"]);
-    expect(rows[0].querySelector(".lp-status").textContent).to.equal("100%");
+    expect(rows[0].querySelector(".lop-pct").textContent).to.equal("100%");
     expect(
       rows[0].querySelector(".ddd-ring simple-icon-lite").getAttribute("icon"),
     ).to.equal("icons:check");
@@ -423,8 +423,12 @@ describe("My learning button and panel", () => {
     expect(
       rows[2].querySelector(".ddd-ring simple-icon-lite").getAttribute("icon"),
     ).to.equal("icons:folder-open");
-    expect(rows[2].querySelector(".lp-kind").textContent).to.equal("3 pages");
-    expect(rows[2].querySelector(".lp-status").textContent).to.equal("0%");
+    expect(rows[2].querySelector(".lop-meta").textContent).to.equal("3 pages");
+    expect(rows[2].querySelector(".lop-pct").textContent).to.equal("0%");
+    // rows are links to their page, percent in the name and hover text
+    const go = rows[2].querySelector("a.lop-go");
+    expect(go.getAttribute("title")).to.equal("Unit 1, 0% complete");
+    expect(go.querySelector(".lop-sr").textContent).to.equal(", 0% complete");
   });
 
   it("Open My learning opens the full dialog for the whole site", async () => {

@@ -7,7 +7,7 @@
  * (the active page in the site menu, the My learning button, the rows of
  * the My learning panel):
  *
- *   not started   faint track, nothing filled       data-state="none"
+ *   not started   thin track, nothing filled        data-state="none"
  *   in progress   ring filled to the percent        data-state="progress"
  *   almost done   75% or more, nearly closed ring   data-state="almost"
  *   done          filled disc with a check          data-state="done"
@@ -37,8 +37,12 @@
  * --ddd-component-progress-ring-track, --ddd-component-progress-ring-on-color
  * (icon on the done disc), --ddd-component-progress-ring-icon-size,
  * --ddd-component-progress-ring-width / -track-width (stroke widths in
- * viewBox units of 36, default 3) and
- * --ddd-component-progress-ring-empty-opacity (not started, default 0.45).
+ * viewBox units of 36, default 3.5 and 1.25: progress is a thick arc over a
+ * thin full track, so it never relies on colour) and
+ * --ddd-component-progress-ring-empty-opacity (not started, default 1).
+ * Default colours keep 3:1 or more (WCAG 1.4.11) against white / coalyGray
+ * surfaces: track slateGray / limestoneGray, fill and done disc beaverBlue /
+ * skyBlue, check white / coalyGray.
  * The burst of celebrateDDDCompletion (DDDBlock.js) plays from the ring.
  */
 import { html, css, nothing } from "lit";
@@ -85,11 +89,11 @@ export const DDDProgressRingStyles = [
       stroke: var(
         --ddd-component-progress-ring-track,
         light-dark(
-          var(--ddd-theme-default-limestoneLight),
+          var(--ddd-theme-default-slateGray),
           var(--ddd-theme-default-limestoneGray)
         )
       );
-      stroke-width: var(--ddd-component-progress-ring-track-width, 3);
+      stroke-width: var(--ddd-component-progress-ring-track-width, 1.25);
     }
     .ddd-ring-fill {
       fill: none;
@@ -100,13 +104,13 @@ export const DDDProgressRingStyles = [
           var(--ddd-theme-default-skyBlue)
         )
       );
-      stroke-width: var(--ddd-component-progress-ring-width, 3);
+      stroke-width: var(--ddd-component-progress-ring-width, 3.5);
       stroke-linecap: round;
       transition: stroke-dasharray var(--ddd-duration-normal, 300ms)
         var(--ddd-timing-ease, ease);
     }
     .ddd-ring[data-state="none"] .ddd-ring-svg {
-      opacity: var(--ddd-component-progress-ring-empty-opacity, 0.45);
+      opacity: var(--ddd-component-progress-ring-empty-opacity, 1);
     }
     .ddd-ring[data-state="none"] .ddd-ring-fill {
       stroke: none;

@@ -30,5 +30,7 @@
   "correct": "Correct",
   "incorrect": "Incorrect",
   "answered": "Answered",
-  "done": "Done"
+  "done": "Done",
+  "percentComplete": "{percent}% complete",
+  "complete": "Complete"
 }
