@@ -38,5 +38,8 @@
   "details": "വിശദാംശങ്ങൾ",
   "saved": "സംരക്ഷിച്ചു",
   "opensInNewWindow": "പുതിയ വിൻഡോയിൽ തുറക്കുന്നു",
-  "resultsCount": "{count} ഫലങ്ങൾ"
+  "resultsCount": "{count} ഫലങ്ങൾ",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Merlin അടയ്ക്കുക"
 }

@@ -38,5 +38,8 @@
   "details": "รายละเอียด",
   "saved": "บันทึกแล้ว",
   "opensInNewWindow": "เปิดในหน้าต่างใหม่",
-  "resultsCount": "{count} ผลลัพธ์"
+  "resultsCount": "{count} ผลลัพธ์",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "ปิด Merlin"
 }

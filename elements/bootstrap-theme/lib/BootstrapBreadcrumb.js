@@ -3,7 +3,7 @@
  * @license MIT, see License.md for full text.
  */
 import { LitElement, html, css, nothing } from "lit";
-import "@haxtheweb/simple-icon/lib/simple-icon-lite";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
@@ -269,8 +269,10 @@ class BootstrapBreadcrumb extends I18NMixin(LitElement) {
   _resolveBootstrapStylesheetPath() {
     const packageURL = decodeURIComponent(import.meta.url);
     if (packageURL.indexOf("/node_modules/@haxtheweb/") !== -1) {
-      return new URL("../../bootstrap/dist/css/bootstrap.min.css", packageURL)
-        .href;
+      return new URL(
+        "../../../bootstrap/dist/css/bootstrap.min.css",
+        packageURL,
+      ).href;
     }
     return new URL(
       "../../../node_modules/bootstrap/dist/css/bootstrap.min.css",

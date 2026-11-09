@@ -1,0 +1,127 @@
+name: license-check
+
+# Dependency license gate and weekly sweep (haxtheweb/issues#3262).
+#
+# Policy: .github/license-policy.json, applied by scripts/license-check.mjs.
+# Allowed: MIT, ISC, BSD, Apache-2.0, 0BSD, CC0, Unlicense, Python-2.0,
+# BlueOak. LGPL and MPL fail as "needs review". Everything else (GPL, AGPL,
+# SSPL, BUSL, Commons Clause, unknown) fails. Packages a maintainer accepted
+# are listed under `exceptions` there.
+#
+# - pull_request (only when a manifest or lockfile changes): GitHub's
+#   dependency-review-action compares the PR head with its base and fails on
+#   new dependencies (direct or transitive) under a disallowed license; the
+#   follow-up step also fails on unknown licenses, which the action only
+#   warns about. Vulnerabilities are not checked here (dependency-audit.yml).
+# - weekly (Sunday night UTC) and on demand: sweep the whole dependency tree
+#   from GitHub's dependency graph SBOM for the default branch, and check that
+#   LICENSE.md and package.json are still Apache-2.0. Findings go to the job
+#   summary; the job fails on any problem. Nothing is opened or changed.
+on:
+  # No branch filter: stacked PRs (base is another feature branch) must run too.
+  pull_request:
+    paths:
+      - "**/package.json"
+      - "**/yarn.lock"
+      - "**/package-lock.json"
+      - .github/license-policy.json
+      - scripts/license-check.mjs
+      - .github/workflows/license-check.yml
+  schedule:
+    - cron: "41 23 * * 0" # weekly, Sunday 23:41 UTC
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  pr-gate:
+    name: New dependency licenses
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /.github/license-policy.json
+            /scripts/license-check.mjs
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+      - name: Read license policy
+        id: policy
+        run: |
+          {
+            echo "allow=$(node scripts/license-check.mjs --allow-licenses)"
+            echo "exceptions=$(node scripts/license-check.mjs --exception-purls)"
+          } >> "$GITHUB_OUTPUT"
+      - name: Dependency review (licenses)
+        id: review
+        uses: actions/dependency-review-action@a1d282b36b6f3519aa1f3fc636f609c47dddb294 # v5.0.0
+        with:
+          license-check: true
+          vulnerability-check: false
+          allow-licenses: ${{ steps.policy.outputs.allow }}
+          allow-dependencies-licenses: ${{ steps.policy.outputs.exceptions }}
+      - name: Unknown and needs-review licenses
+        if: always() && steps.policy.outcome == 'success'
+        env:
+          INVALID: ${{ steps.review.outputs.invalid-license-changes }}
+        run: |
+          if [ -z "$INVALID" ]; then INVALID='{}'; fi
+          printf '%s' "$INVALID" > "$RUNNER_TEMP/invalid-licenses.json"
+          node scripts/license-check.mjs --pr "$RUNNER_TEMP/invalid-licenses.json"
+
+  weekly-sweep:
+    name: Dependency license sweep
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /LICENSE.md
+            /package.json
+            /.github/license-policy.json
+            /scripts/license-check.mjs
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+      - name: Sweep the full dependency tree
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api "repos/${GITHUB_REPOSITORY}/dependency-graph/sbom" > "$RUNNER_TEMP/sbom.json"
+          node scripts/license-check.mjs --sweep "$RUNNER_TEMP/sbom.json"
+      - name: Project license is still Apache-2.0
+        if: always()
+        run: |
+          status=0
+          {
+            echo "### Project license"
+            echo
+          } >> "$GITHUB_STEP_SUMMARY"
+          if grep -q "Apache License" LICENSE.md && grep -q "Version 2.0, January 2004" LICENSE.md; then
+            echo "- LICENSE.md: Apache License 2.0" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "- LICENSE.md: **not the Apache License 2.0 text**" >> "$GITHUB_STEP_SUMMARY"
+            echo "::error file=LICENSE.md,title=Project license::LICENSE.md is no longer the Apache License 2.0"
+            status=1
+          fi
+          declared=$(jq -r '.license' package.json)
+          if [ "$declared" = "Apache-2.0" ]; then
+            echo "- package.json license: Apache-2.0" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "- package.json license: **${declared}**" >> "$GITHUB_STEP_SUMMARY"
+            echo "::error file=package.json,title=Project license::package.json license is ${declared}, expected Apache-2.0"
+            status=1
+          fi
+          exit "$status"

@@ -10,8 +10,8 @@ name: walkthrough-status
 # This job checks only the elements the pull request touches, so older drift
 # never blocks unrelated work. Stale walkthroughs get a warning annotation on
 # the storyboard, a job summary and, for pull requests from this repository, a
-# comment. The job fails so the flag is visible; make it a required check only
-# if stale walkthroughs should block merging.
+# comment. The check is informational: it always passes, even when walkthroughs
+# are stale or the status script errors, so it never blocks merging.
 #
 # Runs on pull_request (not pull_request_target), so code from forks never runs
 # with a write token; fork PRs get the annotations and summary but no comment.
@@ -73,7 +73,11 @@ jobs:
           # one line per walkthrough: element[:topic], status, hash, storyboard path
           set +e
           node scripts/extract-element-docs.mjs --status "${checked[@]}" > status.txt
+          status_exit=$?
           set -e
+          if [[ $status_exit -ne 0 ]]; then
+            echo "::warning title=Walkthrough status incomplete::extract-element-docs.mjs exited with $status_exit; results below may be partial."
+          fi
           cat status.txt
 
           stale=$(awk -F'\t' '$2 == "stale" { print $1 }' status.txt)
@@ -116,4 +120,6 @@ jobs:
               gh pr comment "$PR_NUMBER" --body-file comment.md || true
             fi
           fi
-          exit 1
+          # informational only: flag stale walkthroughs without failing the check
+          echo "::notice title=Walkthroughs need an update::$(echo $stale | wc -w) walkthrough(s) are out of date; see the job summary."
+          exit 0

@@ -19,7 +19,7 @@ import { HaxUiDialogTitlebarStyles } from "@haxtheweb/d-d-d/lib/HaxUiDialogFrame
 import {
   MerlinDarkScheme,
   MerlinWandStyles,
-  merlinWand,
+  merlinMark,
 } from "./lib/super-daemon-hax-ui.js";
 import { SuperDaemonToastInstance } from "./lib/super-daemon-toast.js";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
@@ -1334,7 +1334,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
               @focusout="${this.focusout}"
             >
               <div class="titlebar hax-ui-dialog-titlebar" part="titlebar">
-                ${merlinWand()}
+                ${merlinMark(this.icon) || merlinMark("hax:wand")}
                 <h2 class="hax-ui-dialog-title">${this.t.merlin}</h2>
                 <span class="keys" aria-hidden="true"
                   >${this.key1} + ${this.key2}</span

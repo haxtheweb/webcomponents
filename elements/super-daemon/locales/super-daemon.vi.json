@@ -38,5 +38,8 @@
   "details": "Chi tiết",
   "saved": "Đã lưu",
   "opensInNewWindow": "Mở trong cửa sổ mới",
-  "resultsCount": "{count} kết quả"
+  "resultsCount": "{count} kết quả",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Đóng Merlin"
 }

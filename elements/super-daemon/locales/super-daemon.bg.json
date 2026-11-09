@@ -38,5 +38,8 @@
   "details": "Детайли",
   "saved": "Запазено",
   "opensInNewWindow": "Отваря се в нов прозорец",
-  "resultsCount": "{count} резултата"
+  "resultsCount": "{count} резултата",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Затваряне на Merlin"
 }

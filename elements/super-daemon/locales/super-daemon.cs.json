@@ -38,5 +38,8 @@
   "details": "Detaily",
   "saved": "Uloženo",
   "opensInNewWindow": "Otevře se v novém okně",
-  "resultsCount": "Výsledků: {count}"
+  "resultsCount": "Výsledků: {count}",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Zavřít Merlin"
 }

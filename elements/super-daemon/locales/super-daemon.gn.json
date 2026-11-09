@@ -38,5 +38,8 @@
   "details": "Detalles",
   "saved": "Oñeñongatu",
   "opensInNewWindow": "Ojejuruja ovetã pyahúpe",
-  "resultsCount": "{count} jehuvy"
+  "resultsCount": "{count} jehuvy",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Mboty Merlin"
 }

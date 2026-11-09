@@ -38,5 +38,8 @@
   "details": "Tsatanetsatane",
   "saved": "Yasungidwa",
   "opensInNewWindow": "Imatseguka pa zenera latsopano",
-  "resultsCount": "Zotsatira {count}"
+  "resultsCount": "Zotsatira {count}",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Tsekani Merlin"
 }

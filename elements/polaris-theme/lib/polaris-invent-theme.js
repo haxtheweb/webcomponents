@@ -337,7 +337,41 @@ class PolarisInventTheme extends LTIResizingMixin(
           font-size: 18px;
           font-weight: 800;
           line-height: 1.625;
-          color: white;
+          color: inherit;
+        }
+        /*
+         * Pick black or white from the background the palette gives each
+         * surface: white when the background's relative luminance is below
+         * 0.179 (where both reach the same contrast), black otherwise.
+         * White on the default inventOrange buttons was 2.7:1 and the
+         * limestone icons on the skyBlue bar 2.5:1 (WCAG 1.4.3, 1.4.11).
+         * Browsers without relative color syntax keep the colors above.
+         */
+        @supports (color: color(from red xyz-d65 x y z)) {
+          site-menu-button {
+            --polaris-invent-button-text: color(
+              from
+                var(
+                  --ddd-palette-color-7,
+                  var(--ddd-theme-default-inventOrange)
+                )
+                xyz-d65 calc(clamp(0, (0.179 - y) * 1000, 1) * 0.9505)
+                calc(clamp(0, (0.179 - y) * 1000, 1))
+                calc(clamp(0, (0.179 - y) * 1000, 1) * 1.089)
+            );
+            --site-menu-button-icon-fill-color: var(
+              --polaris-invent-button-text
+            );
+            color: var(--polaris-invent-button-text);
+          }
+          .nav {
+            color: color(
+              from var(--ddd-palette-color-1) xyz-d65
+                calc(clamp(0, (0.179 - y) * 1000, 1) * 0.9505)
+                calc(clamp(0, (0.179 - y) * 1000, 1))
+                calc(clamp(0, (0.179 - y) * 1000, 1) * 1.089)
+            );
+          }
         }
         site-menu-button div .bottom {
           font-size: 18px;
@@ -661,7 +695,11 @@ class PolarisInventTheme extends LTIResizingMixin(
                 ></replace-tag>`
           }
           ${this.QRCodeButton("right")}
-          <div class="left-col ddd-font-navigation" part="left-col">
+          <div
+            class="left-col ddd-font-navigation"
+            part="left-col"
+            ?inert="${!this.menuOpen}"
+          >
             ${this.HAXCMSMobileMenu()}
           </div>
         </div>

@@ -38,5 +38,8 @@
   "details": "အသေးအစိတ်",
   "saved": "သိမ်းဆည်းပြီး",
   "opensInNewWindow": "ဝင်းဒိုးအသစ်တွင် ဖွင့်သည်",
-  "resultsCount": "ရလဒ် {count} ခု"
+  "resultsCount": "ရလဒ် {count} ခု",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Merlin ကို ပိတ်ရန်"
 }

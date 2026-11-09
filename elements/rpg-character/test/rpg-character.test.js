@@ -87,9 +87,9 @@ describe("rpg-character", () => {
       );
     });
 
-    it("exports hatList with the 58 non-status hats", () => {
+    it("exports hatList with the 59 non-status hats", () => {
       expect(hatList).to.be.an("array");
-      expect(hatList.length).to.equal(58);
+      expect(hatList.length).to.equal(59);
       expect(hatList).to.include("bunny");
       expect(hatList).to.include("cowboy");
       expect(hatList).to.include("party");
@@ -792,6 +792,32 @@ describe("rpg-character", () => {
       expect(rendered.some((h) => /\/scalp\/\d\.svg$/.test(h))).to.be.true;
       expect(rendered.some((h) => /\/hatColor\//.test(h))).to.be.false;
       expect(el.shaved).to.be.false;
+    });
+
+    it("the future traveler preset wears the HAX helmet and his coat", async () => {
+      const el = await fixture(
+        html`<rpg-character
+          seed="btopro"
+          preset="future-traveler"
+        ></rpg-character>`,
+      );
+      await settled(el);
+      el.leg = "";
+      await settled(el);
+      const rendered = hrefs(el);
+      expect(rendered.some((h) => /\/hat\/future-traveler\.svg$/.test(h))).to.be
+        .true;
+      expect(rendered.some((h) => /\/shirt\/future-traveler\.svg$/.test(h))).to
+        .be.true;
+      expect(rendered.some((h) => /\/pants\/future-traveler\.svg$/.test(h))).to
+        .be.true;
+      // a costume hat: hat="random" never picks it
+      expect(randomHatList).to.not.include("future-traveler");
+      const copy = await fixture(
+        html`<rpg-character code="${el.toCode()}"></rpg-character>`,
+      );
+      await settled(copy);
+      expect(hrefs(copy)).to.deep.equal(rendered);
     });
 
     it("an unknown preset falls back to the seed outfit", async () => {

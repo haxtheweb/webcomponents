@@ -38,5 +38,8 @@
   "details": "ລາຍລະອຽດ",
   "saved": "ບັນທຶກແລ້ວ",
   "opensInNewWindow": "ເປີດໃນໜ້າຕ່າງໃໝ່",
-  "resultsCount": "{count} ຜົນລັບ"
+  "resultsCount": "{count} ຜົນລັບ",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "ປິດ Merlin"
 }

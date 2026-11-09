@@ -38,5 +38,8 @@
   "details": "विवरण",
   "saved": "सेभ भयो",
   "opensInNewWindow": "नयाँ विन्डोमा खुल्छ",
-  "resultsCount": "{count} नतिजाहरू"
+  "resultsCount": "{count} नतिजाहरू",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Merlin बन्द गर्नुहोस्"
 }

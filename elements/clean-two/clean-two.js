@@ -761,7 +761,9 @@ class CleanTwo extends LTIResizingMixin(
         <a class="skip-link" href="#contentcontainer"
           >${this.t.skipToContent}</a
         >
-        <div class="left-col" part="left-col">${this.HAXCMSMobileMenu()}</div>
+        <div class="left-col" part="left-col" ?inert="${!this.menuOpen}">
+          ${this.HAXCMSMobileMenu()}
+        </div>
         <div class="content-wrapper">
           <div class="content">
             <div id="haxcms-theme-top"></div>

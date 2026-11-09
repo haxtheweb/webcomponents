@@ -38,5 +38,8 @@
   "details": "Faahfaahin",
   "saved": "La keydiyay",
   "opensInNewWindow": "Wuxuu ka furmaa daaqad cusub",
-  "resultsCount": "{count} natiijo"
+  "resultsCount": "{count} natiijo",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Xir Merlin"
 }

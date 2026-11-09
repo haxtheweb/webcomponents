@@ -846,7 +846,11 @@ export class HaxmaTheme extends I18NMixin(
         </header>
 
         <!-- Mobile Navigation -->
-        <nav class="mobile-nav" aria-label="${this.t.mobile}">
+        <nav
+          class="mobile-nav"
+          aria-label="${this.t.mobile}"
+          ?inert="${!this.mobileNavOpen}"
+        >
           <button
             class="mobile-close-btn"
             @click="${this.closeMobileNav}"

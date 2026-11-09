@@ -38,5 +38,8 @@
   "details": "Ayrıntılar",
   "saved": "Kaydedildi",
   "opensInNewWindow": "Yeni pencerede açılır",
-  "resultsCount": "{count} sonuç"
+  "resultsCount": "{count} sonuç",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Merlin'i kapat"
 }

@@ -16,7 +16,7 @@ import '@haxtheweb/rpg-character/rpg-character.js';
 
 ## Named characters
 
-There are 71 named character types (`preset`): jobs, sports, holidays, monsters, pop-culture archetypes and hockey team kits. [`CHARACTERS.md`](./CHARACTERS.md) has the image of all of them and the full list with each one's default pieces and code. `demo/characters.html` shows them live. Regenerate both with `node scripts/roster.mjs` (dev server running) after adding a preset.
+There are 72 named character types (`preset`): jobs, sports, holidays, monsters, pop-culture archetypes, hockey team kits and the Future Traveler (`future-traveler`), the HAX World Traveler as a character: red HAX helmet with an idea bulb and big goggles. [`CHARACTERS.md`](./CHARACTERS.md) has the image of all of them and the full list with each one's default pieces and code. `demo/characters.html` shows them live. Regenerate both with `node scripts/roster.mjs` (dev server running) after adding a preset.
 
 ## How many characters are there?
 
@@ -36,7 +36,7 @@ What each factor means:
 - **2·hats − 1**: hats are counted with and without fire, except that fire with no hat draws the coffee hat, which is already counted.
 - **items·offhands + offhands + 1**: standing still holds both hands' items, a wave drops the right-hand item, and a cheer drops both.
 
-With today's options that is 111 × 10 × 21 × 10 × 10 × 171 × 125 × 12 × 11 × 7 × 2 × 4 × 189 = **69,610,084,236,000,000**, about 70 quadrillion different-looking characters. A seed alone gives 66 million of them. Character codes can spell 288,805,009,489,920,000,000 combinations (about 2.9 × 10²⁰), because a code also records choices that end up hidden, such as hair on base 0.
+With today's options that is 111 × 10 × 21 × 10 × 10 × 172 × 127 × 12 × 11 × 7 × 2 × 4 × 189 = **71,137,435,324,032,000**, about 71 quadrillion different-looking characters. A seed alone gives 66 million of them. Character codes can spell 297,391,443,148,800,000,000 combinations (about 3.0 × 10²⁰), because a code also records choices that end up hidden, such as hair on base 0.
 
 `scripts/roster.mjs` recomputes these numbers from the registry into `CHARACTERS.md`, so they grow as options are added.
 

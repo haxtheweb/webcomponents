@@ -38,5 +38,8 @@
   "details": "Detalhes",
   "saved": "Salvo",
   "opensInNewWindow": "Abre em uma nova janela",
-  "resultsCount": "{count} resultados"
+  "resultsCount": "{count} resultados",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Fechar Merlin"
 }

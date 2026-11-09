@@ -1,7 +1,7 @@
 // dependencies / things imported
 import { html, css } from "lit";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-button-lite";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { HaxUiAdminTokens } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";

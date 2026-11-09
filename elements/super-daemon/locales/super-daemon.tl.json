@@ -38,5 +38,8 @@
   "details": "Detalye",
   "saved": "Na-save",
   "opensInNewWindow": "Bubukas sa bagong window",
-  "resultsCount": "{count} resulta"
+  "resultsCount": "{count} resulta",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Isara ang Merlin"
 }

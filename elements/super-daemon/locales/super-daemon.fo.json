@@ -38,5 +38,8 @@
   "details": "Lýsingar",
   "saved": "Goymt",
   "opensInNewWindow": "Opnast í nýggjum glugga",
-  "resultsCount": "{count} úrslit"
+  "resultsCount": "{count} úrslit",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Lat Merlin aftur"
 }

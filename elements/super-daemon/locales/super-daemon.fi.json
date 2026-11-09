@@ -38,5 +38,8 @@
   "details": "Yksityiskohdat",
   "saved": "Tallennettu",
   "opensInNewWindow": "Avautuu uuteen ikkunaan",
-  "resultsCount": "{count} tulosta"
+  "resultsCount": "{count} tulosta",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Sulje Merlin"
 }

@@ -279,11 +279,13 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
           height: calc(100vh - 64px);
           max-height: calc(100vh - 64px);
           z-index: var(--hax-ui-focus-z-index);
+          /* slide + fade on transform and opacity only so the edit-mode
+             toggle never animates a layout property (haxtheweb/issues#3263) */
           transition:
-            height var(--ddd-duration-slow, 0.6s) ease-in-out,
-            width var(--ddd-duration-slow, 0.6s) ease-in-out,
-            opacity var(--ddd-duration-slow, 0.6s) ease-in-out,
-            visibility var(--ddd-duration-slow, 0.6s) ease-in-out;
+            transform var(--ddd-duration-slow, 0.6s)
+              var(--ddd-timing-ease, ease-in-out),
+            opacity var(--ddd-duration-slow, 0.6s)
+              var(--ddd-timing-ease, ease-in-out);
         }
         :host([collapsed]) #resize {
           display: none;
@@ -311,22 +313,24 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
           cursor: col-resize;
         }
         #resize .resize-visual {
-          background-color: black;
+          background-color: var(--ddd-theme-default-coalyGray);
           height: 100%;
           width: 6px;
         }
         :host(:hover) .wrapper {
           overflow: visible;
         }
+        /* parked just off its edge while not editing; edit mode drops the
+           transform so it rests at left / right 0 exactly as before */
         :host([element-align="left"]) .wrapper {
-          left: -1000px;
+          left: 0px;
           flex-direction: row;
-          transition: left var(--ddd-duration-slow, 0.6s) ease-in-out;
+          transform: translateX(-100%);
         }
         :host([element-align="right"]) .wrapper {
-          right: -1000px;
+          right: 0px;
           flex-direction: row;
-          transition: right var(--ddd-duration-slow, 0.6s) ease-in-out;
+          transform: translateX(100%);
         }
         :host([tray-detail="view-source"]) .detail {
           width: 50vw;
@@ -346,10 +350,12 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
         }
         :host([edit-mode][element-align="left"]) .wrapper {
           left: 0px;
+          transform: none;
         }
         :host([edit-mode][element-align="right"]) .wrapper {
           right: 0px;
           flex-direction: row-reverse;
+          transform: none;
         }
 
         :host([edit-mode]) .wrapper.full-panel {
@@ -456,8 +462,9 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
         #haxcancelbutton::part(dropdown-icon) {
           display: none;
         }
+        /* same Coaly gray as the HAXcms editor top bar it sits under */
         .tray-detail-titlebar {
-          background-color: black;
+          background-color: var(--ddd-theme-default-coalyGray);
         }
         .tray-detail-titlebar .tray-detail-titlebar-label {
           display: inline-flex;
@@ -615,10 +622,14 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
           }
           .wrapper {
             width: unset;
-            top: -1000px;
+            top: 0px;
             left: 0px;
             right: 0px;
             flex-direction: column;
+          }
+          /* on small screens the tray drops in from the top */
+          :host([element-align]) .wrapper {
+            transform: translateY(-100%);
           }
           :host([edit-mode]) .wrapper {
             top: 0;
@@ -628,7 +639,7 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
             height: var(--hax-tray-menubar-min-height);
           }
           :host([element-align="left"]) .wrapper {
-            left: -1000px;
+            left: 0px;
             flex-direction: column;
           }
           #menubar {
@@ -675,6 +686,13 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
         @media screen and (max-width: 600px) {
           :host([edit-mode]) .hide-small {
             display: none;
+          }
+        }
+        /* reduced motion: no slide, the tray just fades in place */
+        @media (prefers-reduced-motion: reduce) {
+          .wrapper {
+            transition: opacity var(--ddd-duration-fast, 0.15s)
+              var(--ddd-timing-linear, linear);
           }
         }
       `,

@@ -132,7 +132,8 @@ export class SpacebookTheme extends HAXCMSThemeParts(
              through DDD tokens (limestone family, SimpleColors neutral ramp
              and coalyGray) with the original Tailwind hex kept as the
              fallback when the design system vars are not loaded. The
-             mapping preserves the light-to-dark order of the scale. */
+             SimpleColors grey ramp runs grey-1 (#fff) to grey-12 (#000), so
+             each slot maps to the ramp step closest to its Tailwind hex. */
           --spacebook-theme-bg-white: var(--ddd-theme-default-white);
           --spacebook-theme-bg-gray-50: var(--ddd-theme-default-white, #f9fafb);
           --spacebook-theme-bg-gray-100: var(
@@ -148,11 +149,11 @@ export class SpacebookTheme extends HAXCMSThemeParts(
             #1f2937
           );
           --spacebook-theme-bg-gray-900: var(
-            --simple-colors-default-theme-grey-2,
+            --simple-colors-default-theme-grey-11,
             #111827
           );
           --spacebook-theme-text-gray-300: var(
-            --simple-colors-default-theme-grey-10,
+            --simple-colors-default-theme-grey-4,
             #d1d5db
           );
           --spacebook-theme-text-gray-400: var(
@@ -160,15 +161,15 @@ export class SpacebookTheme extends HAXCMSThemeParts(
             #9ca3af
           );
           --spacebook-theme-text-gray-500: var(
-            --simple-colors-default-theme-grey-6,
+            --simple-colors-default-theme-grey-7,
             #6b7280
           );
           --spacebook-theme-text-gray-600: var(
-            --simple-colors-default-theme-grey-5,
+            --simple-colors-default-theme-grey-8,
             #4b5563
           );
           --spacebook-theme-text-gray-700: var(
-            --simple-colors-default-theme-grey-4,
+            --simple-colors-default-theme-grey-9,
             #374151
           );
           --spacebook-theme-text-gray-800: var(
@@ -176,7 +177,7 @@ export class SpacebookTheme extends HAXCMSThemeParts(
             #1f2937
           );
           --spacebook-theme-text-gray-900: var(
-            --simple-colors-default-theme-grey-2,
+            --simple-colors-default-theme-grey-11,
             #111827
           );
           --spacebook-theme-border-gray-100: var(
@@ -188,7 +189,7 @@ export class SpacebookTheme extends HAXCMSThemeParts(
             #e5e7eb
           );
           --spacebook-theme-border-gray-700: var(
-            --simple-colors-default-theme-grey-5,
+            --simple-colors-default-theme-grey-8,
             #4b5563
           );
           --spacebook-theme-border-gray-800: var(
@@ -336,7 +337,8 @@ export class SpacebookTheme extends HAXCMSThemeParts(
           color: var(--spacebook-theme-text-gray-800, #1f2937);
         }
 
-        :host([dark-mode]) .site-title-link {
+        :host([dark-mode]) .site-title-link,
+        :host([dark-mode]) .site-title {
           color: var(--spacebook-theme-text-gray-300);
         }
 
@@ -731,7 +733,7 @@ export class SpacebookTheme extends HAXCMSThemeParts(
         }
 
         :host([dark-mode]) .article-header h1 {
-          color: var(--spacebook-theme-text-gray-500);
+          color: var(--spacebook-theme-text-gray-300);
         }
 
         .article-content {
