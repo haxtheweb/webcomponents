@@ -343,6 +343,14 @@ describe("HAXcms learner progress", () => {
     ).to.equal("Your progress on this site was cleared.");
   });
 
+  it("counts a player authored inside video-player once", async () => {
+    host.innerHTML = `<video-player source="a.mp3"><a11y-media-player id="a11y-media-player1"></a11y-media-player></video-player><a11y-media-player></a11y-media-player>`;
+    expect(LearnerProgress.scanPage(host)).to.deep.equal({
+      count: 2,
+      byTag: { "video-player": 1, "a11y-media-player": 1 },
+    });
+  });
+
   it("counts activities still waiting in a replace-tag", async () => {
     host.innerHTML = `<replace-tag with="multiple-choice"></replace-tag><replace-tag with="meme-maker"></replace-tag><multiple-choice></multiple-choice>`;
     expect(LearnerProgress.scanPage(host)).to.deep.equal({

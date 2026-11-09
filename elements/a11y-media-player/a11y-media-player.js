@@ -2657,8 +2657,11 @@ class A11yMediaPlayer extends SchemaBehaviors(
       ) {
         this._captionsChanged();
       }
-      if (propName === "id" && this.id === null)
+      if (propName === "id" && this.id === null) {
         this.id = "a11y-media-player" + Date.now();
+        // generated per page load, so it must not key learner data
+        this._xapiGeneratedId = this.id;
+      }
     });
   }
   updated(changedProperties) {
@@ -3757,13 +3760,17 @@ class A11yMediaPlayer extends SchemaBehaviors(
    * @param {number|null} [share] share of the media watched, 0 to 1
    */
   _announceMedia(verb, share) {
+    const wrappers = ["video-player", "audio-player"];
     const root = this.getRootNode ? this.getRootNode() : null;
+    const parent = this.parentElement;
+    // rendered by the wrapper (shadow) or authored inside it (legacy light
+    // DOM markup): either way the wrapper is the activity on the page
     const host =
-      root &&
-      root.host &&
-      ["video-player", "audio-player"].includes(root.host.tagName.toLowerCase())
+      root && root.host && wrappers.includes(root.host.tagName.toLowerCase())
         ? root.host
-        : this;
+        : parent && wrappers.includes(parent.tagName.toLowerCase())
+          ? parent
+          : this;
     const tag = host.tagName.toLowerCase();
     const name = this.mediaTitle || host.getAttribute("title") || tag;
     const fingerprint =

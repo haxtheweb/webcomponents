@@ -45,6 +45,9 @@ import {
   XAPI_TRACKABLE_TAGS,
 } from "@haxtheweb/user-action/lib/xapi-vocabulary.js";
 
+// wrappers that report learner data for a player authored inside them
+const MEDIA_WRAPPERS = "video-player, audio-player";
+
 export const PAGE_ELEMENT = "haxcms-page";
 
 const elementOf = (statement) => {
@@ -88,6 +91,14 @@ class HAXCMSLearnerProgress {
    */
   start() {
     if (this.started) {
+      return;
+    }
+    // the scaffold is created on document.body; when this module loaded
+    // before the body existed, ask again instead of failing for the visit
+    if (!this.profile) {
+      this.profile = globalThis.UserScaffold.requestAvailability();
+    }
+    if (!this.profile) {
       return;
     }
     this.started = true;
@@ -292,6 +303,11 @@ class HAXCMSLearnerProgress {
     const byTag = {};
     let count = 0;
     scope.querySelectorAll(XAPI_TRACKABLE_TAGS.join(",")).forEach((el) => {
+      // a player authored inside video-player / audio-player (legacy
+      // markup) reports as that wrapper, so it is one activity, not two
+      if (el.parentElement && el.parentElement.closest(MEDIA_WRAPPERS)) {
+        return;
+      }
       const tag = el.tagName.toLowerCase();
       byTag[tag] = (byTag[tag] || 0) + 1;
       count++;
