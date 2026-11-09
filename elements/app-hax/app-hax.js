@@ -27,6 +27,7 @@ import { trimSlashes } from "@haxtheweb/utils/lib/safe-html.js";
 import { settleOnce } from "@haxtheweb/utils/lib/events.js";
 import { SITE_ADMIN_MODAL_STYLES } from "@haxtheweb/haxcms-elements/lib/core/admin/site-admin-sections.js";
 import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminIcons.js";
+import { HaxUiAdminTokens } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
 import { HaxUiDialogFrame } from "@haxtheweb/d-d-d/lib/HaxUiDialogFrame.js";
 
 // toggle store darkmode
@@ -429,7 +430,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     ) {
       SuperDaemonInstance.voiceSearch = true;
     }
-    SuperDaemonInstance.icon = "hax:wizard-hat";
+    SuperDaemonInstance.icon = "hax:world-traveler-plain";
     SuperDaemonInstance.appendContext("*");
     this._restoreMerlinAllowedCallback();
 
@@ -1015,6 +1016,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
   static get styles() {
     return [
       super.styles,
+      ...HaxUiAdminTokens,
       css`
         :host {
           overflow: visible;
@@ -1104,54 +1106,71 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           padding: 0;
           width: 100%;
         }
+        /* a HAX UI menu row with a switch, the same as the HAXcms editor */
         .soundToggle {
           display: flex;
           align-items: center;
+          gap: var(--hax-ui-gap-md, 8px);
           width: 100%;
           border: none;
           margin: 0;
-          padding: var(--ddd-spacing-2, 8px) var(--ddd-spacing-3, 12px);
-          font-size: var(--ddd-font-size-6xs, 12px);
+          min-height: var(--hax-ui-row-height-roomy, 40px);
+          padding: 0 var(--hax-ui-gap-md, 8px);
+          border-radius: var(--hax-ui-radius);
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size);
+          font-weight: var(--ddd-font-weight-medium, 500);
           text-align: left;
-          font-family: var(--ddd-font-primary, sans-serif);
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray, #222),
-            var(--ddd-theme-default-white, white)
-          );
+          color: var(--hax-ui-text);
           background: transparent;
           cursor: pointer;
-          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
-          min-height: var(--ddd-spacing-8, 32px);
           box-sizing: border-box;
-          position: relative;
+          transition: background-color var(--hax-ui-duration)
+            var(--hax-ui-easing);
         }
         .soundToggle:hover,
-        .soundToggle:active,
-        .soundToggle:focus {
-          background-color: light-dark(
-            var(--ddd-theme-default-limestoneGray, #f5f5f5),
-            var(--ddd-theme-default-coalyGray, #333)
-          );
+        .soundToggle:focus-visible {
+          background-color: var(--hax-ui-hover);
         }
-        :host([dark]) .soundToggle:hover,
-        :host([dark]) .soundToggle:active,
-        :host([dark]) .soundToggle:focus,
-        body.dark-mode .soundToggle:hover,
-        body.dark-mode .soundToggle:active,
-        body.dark-mode .soundToggle:focus {
-          color: var(--ddd-theme-default-white, white);
+        .soundToggle:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: -2px;
         }
         .soundToggle simple-icon-lite {
-          padding-right: var(--ddd-spacing-2, 8px);
           flex-shrink: 0;
           display: flex;
           align-items: center;
-          --simple-icon-width: var(--ddd-icon-xs, 24px);
-          --simple-icon-height: var(--ddd-icon-xs, 24px);
+          --simple-icon-width: var(--ddd-icon-3xs, 20px);
+          --simple-icon-height: var(--ddd-icon-3xs, 20px);
         }
         .sound-label {
           flex: 1;
           text-align: left;
+        }
+        .hax-ui-switch {
+          position: relative;
+          flex: none;
+          width: 36px;
+          height: 20px;
+          border-radius: var(--hax-ui-radius-pill);
+          background-color: var(--hax-ui-line-strong);
+        }
+        .hax-ui-switch .knob {
+          position: absolute;
+          top: 2px;
+          left: 2px;
+          width: 16px;
+          height: 16px;
+          border-radius: 50%;
+          background-color: var(--hax-ui-surface);
+          transition: transform var(--hax-ui-duration) var(--hax-ui-easing);
+        }
+        .soundToggle[aria-pressed="true"] .hax-ui-switch {
+          background-color: var(--hax-ui-primary);
+        }
+        .soundToggle[aria-pressed="true"] .hax-ui-switch .knob {
+          transform: translateX(16px);
+          background-color: var(--hax-ui-on-primary);
         }
 
         div[slot="center"] {
@@ -2410,6 +2429,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                     aria-hidden="true"
                   ></simple-icon-lite>
                   <span class="sound-label">${this.t.soundEffects}</span>
+                  <span class="hax-ui-switch" aria-hidden="true"
+                    ><span class="knob"></span
+                  ></span>
                 </button>
               </div>
               ${
