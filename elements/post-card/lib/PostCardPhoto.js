@@ -1,5 +1,5 @@
 import { html, css } from "lit";
-import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 
 const tape = new URL("./assets/postcard-tape.png", import.meta.url).href;
 const PostCardPhotoShadow = new URL(
