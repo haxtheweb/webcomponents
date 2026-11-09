@@ -34,7 +34,7 @@ import {
   localStorageSet,
   localStorageGet,
   localStorageDelete,
-} from "@haxtheweb/utils/utils.js";
+} from "@haxtheweb/utils/lib/storage.js";
 
 export const LT_MEMORY_KEY = "user-scaffold-ltMemory";
 

@@ -5,13 +5,12 @@
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import { LearnerProgress } from "./haxcms-learner-progress.js";
+import { varExists, varGet } from "@haxtheweb/utils/lib/object-path.js";
 import {
-  varExists,
-  varGet,
   localStorageGet,
   localStorageSet,
-  neutralizeStrayScripts,
-} from "@haxtheweb/utils/utils.js";
+} from "@haxtheweb/utils/lib/storage.js";
+import { neutralizeStrayScripts } from "@haxtheweb/utils/lib/sanitize.js";
 import "@haxtheweb/simple-colors-shared-styles/simple-colors-shared-styles.js";
 import "@haxtheweb/anchor-behaviors/anchor-behaviors.js";
 
@@ -194,7 +193,9 @@ const HAXCMSTheme = function (SuperClass) {
       }
       // edge case, we just swapped theme faster then content loaded... lol
       setTimeout(() => {
-        if (this.childNodes.length === 0) {
+        // the site builder is inserting this page itself once the theme is
+        // ready; only fill in when nothing is on its way
+        if (this.childNodes.length === 0 && !this.__haxcmsContentPending) {
           let frag = document
             .createRange()
             .createContextualFragment(store.activeItemContent);

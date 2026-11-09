@@ -502,4 +502,30 @@ describe("HAXCMSThemeWiring class methods", () => {
       expect(received).to.equal(true);
     });
   });
+
+  describe("first content insert", () => {
+    let saved;
+    beforeEach(() => {
+      saved = store.activeItemContent;
+    });
+    afterEach(() => {
+      store.activeItemContent = saved;
+    });
+    it("fills an empty theme with the page when nothing else is inserting it", async () => {
+      store.activeItemContent = "<p>from the store</p>";
+      const el = await fixture(html`<test-theme-wiring></test-theme-wiring>`);
+      await new Promise((r) => setTimeout(r, 80));
+      expect(el.querySelector("p")).to.not.equal(null);
+      expect(el.querySelector("p").textContent).to.equal("from the store");
+    });
+    it("leaves the insert to the site builder when it says one is on its way", async () => {
+      store.activeItemContent = "<p>from the store</p>";
+      const el = document.createElement("test-theme-wiring");
+      el.__haxcmsContentPending = true;
+      const host = await fixture(html`<div></div>`);
+      host.appendChild(el);
+      await new Promise((r) => setTimeout(r, 80));
+      expect(el.childNodes.length).to.equal(0);
+    });
+  });
 });

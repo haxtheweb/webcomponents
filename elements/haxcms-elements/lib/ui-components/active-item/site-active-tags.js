@@ -6,7 +6,14 @@ import { LitElement, html, css } from "lit";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import "@haxtheweb/simple-fields/lib/simple-tags.js";
+// simple-tags is only loaded once a page actually has tags (see updated)
+let simpleTagsImport = null;
+function loadSimpleTags() {
+  if (!simpleTagsImport) {
+    simpleTagsImport = import("@haxtheweb/simple-fields/lib/simple-tags.js");
+  }
+  return simpleTagsImport;
+}
 
 /**
  * `site-active-tags`
@@ -153,6 +160,9 @@ class SiteActiveTags extends I18NMixin(LitElement) {
    * LitElement life cycle - property changed
    */
   updated(changedProperties) {
+    if (changedProperties.has("tags") && this.tagList.length > 0) {
+      loadSimpleTags();
+    }
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "editMode" && oldValue !== undefined) {
         if (this.editMode) {

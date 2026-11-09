@@ -569,3 +569,21 @@ export function findTagAttrValue(content, tag, attr) {
     pos = gt + 1;
   }
 }
+
+/**
+ * Encapsulate script types in an HTML blob
+ */
+export function encapScript(html) {
+  // ensure this is a string to then do replacements on, rare but possible w/ null
+  if (html && typeof html.replace === "function") {
+    // linear-time (non regex-backtracking) implementation, see lib/safe-html.js
+    html = encapsulateScriptsAndStyles(html);
+  }
+  return html;
+}
+/**
+ * Find custom elements in HTML
+ */
+export function findTagsInHTML(html) {
+  return findClosingCustomTags(html);
+}

@@ -6,7 +6,8 @@ import {
   toJS,
   configure,
 } from "mobx";
-import { varExists, varGet, localStorageGet } from "@haxtheweb/utils/utils.js";
+import { varExists, varGet } from "@haxtheweb/utils/lib/object-path.js";
+import { localStorageGet } from "@haxtheweb/utils/lib/storage.js";
 import { JsonOutlineSchema } from "@haxtheweb/json-outline-schema/json-outline-schema.js";
 import { DeviceDetails } from "@haxtheweb/replace-tag/lib/PerformanceDetect.js";
 import { SimpleIconsetStore } from "@haxtheweb/simple-icon/lib/simple-iconset.js";

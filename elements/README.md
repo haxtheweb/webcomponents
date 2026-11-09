@@ -3,7 +3,7 @@
 <!-- GENERATED FILE: do not edit by hand. Run `yarn run elements-readme` -->
 <!-- Descriptions come from each element's package.json; edit them there. -->
 
-Every element in this monorepo (227 packages). Browse them live with `yarn gallery`, or open an element's folder for its own README.
+Every element in this monorepo (229 packages). Browse them live with `yarn gallery`, or open an element's folder for its own README.
 
 | Element | Description | Package | Demo |
 | --- | --- | --- | --- |
@@ -102,6 +102,7 @@ Every element in this monorepo (227 packages). Browse them live with `yarn galle
 | [img-pan-zoom](./img-pan-zoom/) | Image viewer with pan and zoom, including Deep Zoom image support | `@haxtheweb/img-pan-zoom` | [demo](./img-pan-zoom/demo/) |
 | [img-view-modal](./img-view-modal/) | Slider that allows comparison of two images | `@haxtheweb/img-view-modal` | [demo](./img-view-modal/demo/) |
 | [inline-audio](./inline-audio/) | audio that enhances the experience but is not required by being selectable inline with text content | `@haxtheweb/inline-audio` | [demo](./inline-audio/demo/) |
+| [instructional-cadence](./instructional-cadence/) | Course pacing as music: one measure per lesson, one beat per page, scored on a five-part lesson shape. For the HAXcms Site Insights dashboard. | `@haxtheweb/instructional-cadence` | [demo](./instructional-cadence/demo/) |
 | [intersection-element](./intersection-element/) | VanillaJS Intersection element / capabilities to mix into other elements | `@haxtheweb/intersection-element` |  |
 | [journey-theme](./journey-theme/) | Webcomponent journey-theme following hax / open-wc recommendations | `@haxtheweb/journey-theme` | [demo](./journey-theme/demo/) |
 | [json-outline-schema](./json-outline-schema/) | JS based state management helper for the json outline schema spec | `@haxtheweb/json-outline-schema` |  |
@@ -164,6 +165,7 @@ Every element in this monorepo (227 packages). Browse them live with `yarn galle
 | [q-r](./q-r/) | Generates a QR code from a URL or text | `@haxtheweb/q-r` | [demo](./q-r/demo/) |
 | [radar-chart](./radar-chart/) | Webcomponent radar-chart following hax / open-wc recommendations | `@haxtheweb/radar-chart` | [demo](./radar-chart/demo/) |
 | [radio-behaviors](./radio-behaviors/) | Provides state management when only one child can be selected at a time. | `@haxtheweb/radio-behaviors` |  |
+| [reading-analysis](./reading-analysis/) | Learners flag evidence in a reading or select the passage that best answers a question | `@haxtheweb/reading-analysis` | [demo](./reading-analysis/demo/) |
 | [relative-heading](./relative-heading/) | Heading whose level is set relative to its parent heading | `@haxtheweb/relative-heading` | [demo](./relative-heading/demo/) |
 | [replace-tag](./replace-tag/) | Loading helpers and css | `@haxtheweb/replace-tag` | [demo](./replace-tag/demo/) |
 | [responsive-grid](./responsive-grid/) | Responsive grid layout for rows and columns of content | `@haxtheweb/responsive-grid` | [demo](./responsive-grid/demo/) |
