@@ -104,7 +104,27 @@ export const XAPI_EXTENSIONS = {
   maxAttempts: "https://haxtheweb.org/xapi/extensions/max-attempts",
   element: "https://haxtheweb.org/xapi/extensions/element",
   imported: "https://haxtheweb.org/xapi/extensions/imported",
+  // how far through an activity the learner is, a number from 0 to 1 (page
+  // reading: the share of the page content scrolled through). Media keep
+  // the xAPI video profile IRI (XAPI_VIDEO_PROGRESS), which means "share of
+  // the media consumed" and so is not used for anything else.
+  progress: "https://haxtheweb.org/xapi/extensions/progress",
 };
+
+/**
+ * xAPI video profile result extension: share of the media consumed, 0 to 1
+ */
+export const XAPI_VIDEO_PROGRESS =
+  "https://w3id.org/xapi/video/extensions/progress";
+
+/**
+ * Result extensions a progress store reads as "how far through, 0 to 1".
+ * Both IRIs end in "/progress", so a store can match on that one suffix.
+ */
+export const XAPI_PROGRESS_EXTENSIONS = [
+  XAPI_EXTENSIONS.progress,
+  XAPI_VIDEO_PROGRESS,
+];
 
 export const XAPI_PLATFORM = "HAX";
 

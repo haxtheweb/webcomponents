@@ -272,6 +272,32 @@ describe("video-player isA11yMedia getter", () => {
   });
 });
 
+describe("video-player xapiCountsTowardCompletion", () => {
+  it("counts toward the page when a11y-media-player plays it", async () => {
+    const el = await fixture(
+      html`<video-player source="files/clip.mp4"></video-player>`,
+    );
+    expect(el.xapiCountsTowardCompletion()).to.equal(true);
+  });
+
+  it("is left out of the page when it renders a plain iframe", async () => {
+    const el = await fixture(
+      html`<video-player source="https://vimeo.com/76979871"></video-player>`,
+    );
+    expect(el.isA11yMedia).to.equal(false);
+    expect(el.xapiCountsTowardCompletion()).to.equal(false);
+  });
+
+  it("is left out when sandboxed (webview), whatever the source", async () => {
+    const el = await fixture(
+      html`<video-player source="https://vimeo.com/76979871"></video-player>`,
+    );
+    Object.defineProperty(el, "sandboxed", { get: () => true });
+    el.sourceType = "youtube";
+    expect(el.xapiCountsTowardCompletion()).to.equal(false);
+  });
+});
+
 describe("video-player playerId getter", () => {
   let el;
   beforeEach(async () => {

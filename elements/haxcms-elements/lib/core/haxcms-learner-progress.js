@@ -22,17 +22,33 @@
  * - Preferences: mirrors the site's dark mode and sound status into the
  *   profile and imports legacy preference keys once.
  *
- * Page done rule: a page is done when every trackable activity the learner
- * engaged with on it is done (see UserScaffold.pageProgress). Site progress
- * is done pages / pages in the outline.
+ * - Reading: how far the learner scrolled through the page content is
+ *   tracked (haxcms-reading-progress.js) and sent as xAPI about the page
+ *   activity the visit used: progressed with the HAX progress extension as
+ *   the share read crosses 25 / 50 / 75 % (and when the visit ends part
+ *   way), completed once the end of the content was seen. Never while
+ *   editing, and not again on a page already read.
+ * - Elements that cannot be tracked as authored leave themselves out of the
+ *   count: an upgraded element whose xapiCountsTowardCompletion() returns
+ *   false (video-player showing a plain iframe) is not a trackable item. The
+ *   page is counted again once elements still loading upgrade, and when
+ *   trackable elements are added to the content (a replace-tag swapping).
+ *
+ * Page done rule: a page is done when it was read and every trackable
+ * activity on it is done; its percent is the average progress of those
+ * items, partial progress included (see UserScaffold.pageProgress). Site
+ * progress is done pages / pages in the outline, percent the average of the
+ * page percents.
  */
 import { autorun, toJS } from "mobx";
 import { store } from "./haxcms-site-store.js";
+import { HAXCMSReadingProgress } from "./haxcms-reading-progress.js";
 import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
 import { UABroker } from "@haxtheweb/user-action/lib/UserActionBroker.js";
 import {
   buildStatement,
   describeResponse,
+  xapiDuration,
   languageMap,
   legacyActivityId,
   setActorProvider,
@@ -65,6 +81,11 @@ class HAXCMSLearnerProgress {
     this.profile = UserScaffoldInstance;
     this._disposers = [];
     this._scanTimer = null;
+    this._waiting = new WeakSet();
+    this.reading = new HAXCMSReadingProgress({
+      report: (verb, share, page) => this._reportReading(verb, share, page),
+      enabled: () => !store.editMode,
+    });
   }
   /**
    * Key of this site in the learner profile: the manifest id, else its url
@@ -114,6 +135,9 @@ class HAXCMSLearnerProgress {
       "learner-progress-request",
       this._requestHandler,
     );
+    // the learner leaves the site part way through a page
+    this._leaveHandler = () => this.reading.flush();
+    globalThis.addEventListener("pagehide", this._leaveHandler);
     // count the page's activities the moment its content is on the page, so
     // the page progress bar renders in the same frame as the content instead
     // of appearing a moment later and pushing the content down
@@ -138,6 +162,15 @@ class HAXCMSLearnerProgress {
         this._scheduleScan();
       }),
     );
+    // trackable elements added to the content later (a replace-tag
+    // swapping in what it stood for) change the count
+    this._disposers.push(
+      autorun(() => {
+        const theme = store.themeElement;
+        Promise.resolve().then(() => this._watchContent(theme));
+      }),
+    );
+    this._disposers.push(() => this._watchContent(null));
     this._disposers.push(
       autorun(() => {
         const dark = store.darkMode;
@@ -167,6 +200,11 @@ class HAXCMSLearnerProgress {
    * Stop listening (tests)
    */
   stop() {
+    this.reading.end();
+    if (this._leaveHandler) {
+      globalThis.removeEventListener("pagehide", this._leaveHandler);
+      this._leaveHandler = null;
+    }
     this._disposers.forEach((d) => d());
     this._disposers = [];
     if (this._unsubscribe) {
@@ -185,11 +223,116 @@ class HAXCMSLearnerProgress {
       );
       this._bodyHandler = null;
     }
+    clearTimeout(this._scanTimer);
     setActorProvider(null);
     this.started = false;
   }
+  _watchContent(theme) {
+    if (this._contentObserver) {
+      this._contentObserver.disconnect();
+      this._contentObserver = null;
+    }
+    if (!theme || typeof globalThis.MutationObserver !== "function") {
+      return;
+    }
+    const selector = XAPI_TRACKABLE_TAGS.join(",");
+    this._contentObserver = new globalThis.MutationObserver((records) => {
+      const added = records.some((r) =>
+        Array.from(r.addedNodes).some(
+          (n) =>
+            n.nodeType === 1 &&
+            (n.matches(selector) || Boolean(n.querySelector(selector))),
+        ),
+      );
+      if (added) {
+        this._scheduleScan();
+      }
+    });
+    this._contentObserver.observe(theme, { childList: true, subtree: true });
+  }
+  /**
+   * The element whose box is the content of the page: the theme's content
+   * container, else the theme
+   */
+  contentRegion() {
+    const theme = store.themeElement;
+    if (!theme) {
+      return null;
+    }
+    const c = theme.contentContainer;
+    return c && typeof c.getBoundingClientRect === "function" ? c : theme;
+  }
+  /**
+   * Start tracking how far the page open now is read (default: the active
+   * one), unless it is read already
+   */
+  _beginReading(id, item, url) {
+    const key = this.siteKey;
+    if (!key || !id || store.editMode) {
+      this.reading.end();
+      return;
+    }
+    const pp = this.profile.pageProgress(key, id);
+    if (pp.reading.done) {
+      this.reading.end();
+      return;
+    }
+    this.reading.begin(
+      {
+        id,
+        url: String(url || "")
+          .split("#")[0]
+          .split("?")[0],
+        title: item && item.title ? item.title : "",
+        started: Date.now(),
+      },
+      () => this.contentRegion(),
+    );
+  }
+  /**
+   * A reading statement about the page the tracker was given (the page the
+   * learner was on, even when the visit ended by opening another one)
+   */
+  _reportReading(verb, share, page) {
+    if (!page || !page.url || store.editMode) {
+      return;
+    }
+    const done = verb === "completed";
+    globalThis.dispatchEvent(
+      new CustomEvent("user-engagement", {
+        detail: {
+          activityDisplay: verb,
+          objectName: page.title,
+          objectId: page.url,
+          resultCompletion: done,
+          // the outline item the statement is about (see _onStatement)
+          haxcmsPageId: page.id,
+          statement: buildStatement({
+            verb,
+            object: {
+              id: page.url,
+              name: page.title,
+              type: XAPI_ACTIVITY_TYPES.lesson,
+            },
+            result: {
+              completion: done,
+              duration: xapiDuration(Date.now() - page.started),
+              extensions: { [XAPI_EXTENSIONS.progress]: share },
+            },
+            context: {
+              pageId: page.url,
+              pageName: page.title,
+              siteName: store.siteTitle,
+              extensions: { [XAPI_EXTENSIONS.element]: PAGE_ELEMENT },
+            },
+          }),
+        },
+      }),
+    );
+  }
   _visit(id, item) {
     if (store.editMode) {
+      this.reading.end();
       return;
     }
     const key = this.siteKey;
@@ -228,17 +371,23 @@ class HAXCMSLearnerProgress {
         },
       }),
     );
+    this._beginReading(id, item, url);
     this._scheduleScan();
   }
-  _onStatement({ statement, element, imported }) {
+  _onStatement({ statement, element, imported, detail }) {
     const key = this.siteKey;
-    const page = store.activeId;
-    if (!key || !page || store.editMode) {
-      return;
-    }
     const tag =
       elementOf(statement) ||
       (element && element.tagName ? element.tagName.toLowerCase() : "");
+    // reading reported as a visit ends belongs to the page it was about,
+    // which is no longer the active one
+    const page =
+      tag === PAGE_ELEMENT && detail && typeof detail.haxcmsPageId === "string"
+        ? detail.haxcmsPageId || store.activeId
+        : store.activeId;
+    if (!key || !page || store.editMode) {
+      return;
+    }
     if (!statement.actor) {
       statement.actor = this.profile.siteActor(key, this.siteInfo);
     }
@@ -266,8 +415,10 @@ class HAXCMSLearnerProgress {
       page,
       tag,
       trackable: this.isTrackable(tag),
+      reading: tag === PAGE_ELEMENT,
       imported,
-      pageTitle: store.activeTitle,
+      // never name a page after the one open now when it is another one
+      pageTitle: page === store.activeId ? store.activeTitle : "",
       responseText: describeResponse(statement),
       legacyId,
     });
@@ -302,6 +453,7 @@ class HAXCMSLearnerProgress {
     }
     const byTag = {};
     let count = 0;
+    const loading = [];
     scope.querySelectorAll(XAPI_TRACKABLE_TAGS.join(",")).forEach((el) => {
       // a player authored inside video-player / audio-player (legacy
       // markup) reports as that wrapper, so it is one activity, not two
@@ -309,9 +461,23 @@ class HAXCMSLearnerProgress {
         return;
       }
       const tag = el.tagName.toLowerCase();
+      // until it upgrades it counts; count again once it did, since only
+      // then can it say it cannot be tracked as authored
+      const later = this._upgraded(el, tag);
+      if (later) {
+        loading.push(later);
+      } else if (
+        typeof el.xapiCountsTowardCompletion === "function" &&
+        el.xapiCountsTowardCompletion() === false
+      ) {
+        return;
+      }
       byTag[tag] = (byTag[tag] || 0) + 1;
       count++;
     });
+    if (loading.length) {
+      Promise.all(loading).then(() => this._scheduleScan());
+    }
     // an activity still waiting to load is a replace-tag that will become it
     scope.querySelectorAll("replace-tag[with]").forEach((el) => {
       const tag = String(el.getAttribute("with")).toLowerCase();
@@ -321,7 +487,60 @@ class HAXCMSLearnerProgress {
       }
     });
     this.profile.setPageTrackable(key, page, count, byTag);
+    // the content of the page is in place: reading can be measured
+    if ((!root || root === store.themeElement) && this._contentIsFor(page)) {
+      this.reading.ready();
+    }
     return { count, byTag };
+  }
+  /**
+   * Whether the theme holds the content of page id: something is in it and
+   * the page-break the site builder puts first names that page (when there
+   * is one), so the page before, still on screen while the next one loads,
+   * is never measured as the next one
+   */
+  _contentIsFor(id) {
+    const theme = store.themeElement;
+    if (!theme || !theme.firstElementChild) {
+      return false;
+    }
+    const pb = theme.querySelector(':scope > page-break[break-type="site"]');
+    const shown = pb ? pb.getAttribute("item-id") : null;
+    return !shown || shown === id;
+  }
+  /**
+   * null when el has upgraded and rendered, else a promise for when it has
+   * (once per element, so a rescan does not wait on it twice)
+   */
+  _upgraded(el, tag) {
+    const registry = globalThis.customElements;
+    if (this._waiting.has(el) || !registry) {
+      return null;
+    }
+    let wait = null;
+    if (!registry.get(tag)) {
+      wait = registry.whenDefined(tag).then(() => this._settled(el));
+    } else if (el.updateComplete && el.hasUpdated === false) {
+      wait = this._settled(el);
+    }
+    if (wait) {
+      this._waiting.add(el);
+    }
+    return wait;
+  }
+  // a Lit element finished updating, including updates its first one asked for
+  async _settled(el) {
+    for (let i = 0; i < 5 && el.updateComplete; i++) {
+      let done = true;
+      try {
+        done = await el.updateComplete;
+      } catch {
+        done = true;
+      }
+      if (done !== false) {
+        return;
+      }
+    }
   }
   /**
    * Outline item ids that count as the site's pages
@@ -489,6 +708,16 @@ class HAXCMSLearnerProgress {
         title: item.title,
         site: this.siteInfo,
       });
+      // reading starts over for the page open now; what was read before the
+      // clear is not reported after it
+      this.reading.discard();
+      let url = "";
+      try {
+        url = new URL(item.slug || "", globalThis.document.baseURI).href;
+      } catch {
+        url = "";
+      }
+      this._beginReading(store.activeId, item, url);
       this.scanPage();
     }
   }

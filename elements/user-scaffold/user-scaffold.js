@@ -54,6 +54,22 @@ const verbKeyOf = (statement) => {
     "interacted"
   );
 };
+// result extensions whose IRI ends in "/progress" say how far through an
+// activity the learner is, 0 to 1: the xAPI video profile
+// (https://w3id.org/xapi/video/extensions/progress, media) and HAX
+// (https://haxtheweb.org/xapi/extensions/progress, page reading)
+const PROGRESS_EXTENSION = "progress";
+// a progress value as a share from 0 to 1, or null; a value above 1 is read
+// as a percentage (statements imported from tools that send 0 to 100)
+const progressShare = (value) => {
+  const n = typeof value === "string" ? parseFloat(value) : value;
+  if (typeof n !== "number" || !isFinite(n)) {
+    return null;
+  }
+  const share = n > 1 ? n / 100 : n;
+  return Math.min(1, Math.max(0, share));
+};
+const round3 = (n) => Math.round(n * 1000) / 1000;
 const extensionOf = (obj, suffix) => {
   const ext = obj && obj.extensions ? obj.extensions : {};
   const key = Object.keys(ext).find((k) => k.endsWith(`/${suffix}`));
@@ -79,15 +95,18 @@ const newUuid = () => {
  *     session: { firstVisit, lastVisit, visits, lastLogin },
  *     sites: { <siteKey>: { url, title, actor, firstVisit, lastVisit,
  *       pages: { <pageId>: { title, url, firstVisit, lastVisit, visits,
- *         activities: [activityId], trackable, trackableByTag } },
+ *         activities: [activityId], trackable, trackableByTag, legacyRead
+ *         (done before reading was tracked; counts as read) } },
  *       activities: { <activityId>: { page, tag, name, verb, verbs, count,
- *         first, last, trackable, done, status, success, firstTry (result
- *         of the first answer), attempts,
+ *         first, last, trackable, done, progress (0 to 1, highest progress
+ *         extension sent), reading (the page's own reading activity),
+ *         status, success, firstTry (result of the first answer), attempts,
  *         maxAttempts, score, response (xAPI result.response, component ids
  *         for choice / matching / sequencing), responseText (the same in
  *         plain words, when the recorder resolved it), migratedFrom } },
  *       counts: { byElement: { <tag>: { <verb>: n } }, byVerb: { <verb>: n } },
- *       statementCount } } }
+ *       statementCount } },
+ *     migrations: { <name>: when it ran } }
  * Every xAPI statement recorded is also appended to the statements list
  * (IndexedDB by default, see lib/user-scaffold-storage.js). Nothing here is
  * sent anywhere; the actor of each site is a random per-device account.
@@ -436,10 +455,39 @@ export class UserScaffold extends HTMLElement {
         preferences: {},
         session: {},
         sites: {},
+        // a new profile has nothing recorded before reading was tracked
+        migrations: { readingProgress: new Date().toISOString() },
       };
       p = this.ltMemory[PROFILE_KEY];
+    } else if (!p.migrations || !p.migrations.readingProgress) {
+      this._migrateReading(p);
     }
     return p;
+  }
+  /**
+   * Once per profile recorded before page reading was tracked
+   * (haxtheweb/issues#3269): a page that was done then (every trackable
+   * activity on it done) is marked legacyRead, so it stays done now that a
+   * page also has to be read. Nothing else changes.
+   */
+  _migrateReading(p) {
+    p.migrations = p.migrations || {};
+    Object.values(p.sites || {}).forEach((siteRec) => {
+      if (!siteRec || !siteRec.pages || !siteRec.activities) {
+        return;
+      }
+      Object.values(siteRec.pages).forEach((page) => {
+        const acts = (page.activities || [])
+          .map((id) => siteRec.activities[id])
+          .filter((a) => a && a.trackable !== false);
+        const trackable = Math.max(page.trackable || 0, acts.length);
+        if (acts.length && acts.filter((a) => a.done).length >= trackable) {
+          page.legacyRead = true;
+        }
+      });
+    });
+    p.migrations.readingProgress = new Date().toISOString();
+    this._saveLongTerm();
   }
   /**
    * Plain copy of the learner profile
@@ -581,7 +629,8 @@ export class UserScaffold extends HTMLElement {
    * @param {Object} meta { page, tag, trackable, imported, pageTitle,
    *   responseText (result.response in plain words), legacyId (an older id
    *   of the same activity whose data moves to this one, once), replay
-   *   (rebuilding from stored statements: not deduplicated, not stored) }
+   *   (rebuilding from stored statements: not deduplicated, not stored),
+   *   reading (the statement is about reading the page itself) }
    */
   recordStatement(site, statement, meta = {}) {
     if (!site || !statement || !statement.object || !statement.object.id) {
@@ -644,6 +693,9 @@ export class UserScaffold extends HTMLElement {
       act.interactionType = def.interactionType;
     }
     act.trackable = meta.trackable !== false;
+    if (meta.reading) {
+      act.reading = true;
+    }
     act.verb = verb;
     act.verbs[verb] = (act.verbs[verb] || 0) + 1;
     act.count += 1;
@@ -681,6 +733,11 @@ export class UserScaffold extends HTMLElement {
     }
     if (result.completion === true || DONE_VERBS.includes(verb)) {
       act.done = true;
+    }
+    // how far through, kept at its highest (progress never goes back)
+    const progress = progressShare(extensionOf(result, PROGRESS_EXTENSION));
+    if (progress !== null && progress > (act.progress || 0)) {
+      act.progress = progress;
     }
     if (meta.imported) {
       act.imported = true;
@@ -755,32 +812,117 @@ export class UserScaffold extends HTMLElement {
     return true;
   }
   /**
-   * Status of a page: "done" when every trackable activity the learner
-   * engaged with on it is done, "in-progress" when some are not,
-   * "visited" when opened with nothing engaged, "not-started" otherwise.
+   * Status of a page: "done" when it was read and every trackable activity
+   * on it is done, "in-progress" when some of that is under way,
+   * "visited" when opened with nothing under way, "not-started" otherwise.
    */
   pageStatus(site, page) {
     return this.pageProgress(site, page).status;
   }
   /**
-   * { status, engaged, done, trackable } for a page
+   * Progress of one page (haxtheweb/issues#3269). A page is done when the
+   * learner read it (scrolled through its content: the activity recorded
+   * with meta.reading) and engaged every trackable item on it.
+   * @returns {{ status: string, engaged: number, done: number,
+   *   trackable: number, percent: number, reading: Object, items: Object[],
+   *   itemsDone: number, itemsTotal: number }}
+   *   engaged / done / trackable: trackable elements (as before; reading is
+   *   not one of them), engaged ones, done ones and how many the page holds;
+   *   reading: { key, kind: "reading", tag, progress, done };
+   *   items: reading first, then each trackable item { key (activity id, or
+   *   "<tag>#<n>" for one not engaged yet), kind: "activity", tag, progress,
+   *   done }; an item's progress is 1 when done, else the highest progress
+   *   extension it sent (media 0.5 = half watched), else 0;
+   *   percent: the average progress of all items, 0 to 1
    */
   pageProgress(site, page) {
     const siteRec = this._profile().sites[site];
     const p = siteRec ? siteRec.pages[page] : null;
+    const itemProgress = (a) =>
+      a.done ? 1 : Math.min(1, Math.max(0, Number(a.progress) || 0));
     if (!p) {
-      return { status: "not-started", engaged: 0, done: 0, trackable: 0 };
+      const reading = {
+        key: "",
+        kind: "reading",
+        tag: "",
+        progress: 0,
+        done: false,
+      };
+      return {
+        status: "not-started",
+        engaged: 0,
+        done: 0,
+        trackable: 0,
+        percent: 0,
+        reading,
+        items: [reading],
+        itemsDone: 0,
+        itemsTotal: 1,
+      };
     }
-    const acts = (p.activities || [])
-      .map((id) => siteRec.activities[id])
-      .filter((a) => a && a.trackable !== false);
-    const done = acts.filter((a) => a.done).length;
+    const entries = (p.activities || [])
+      .map((id) => [id, siteRec.activities[id]])
+      .filter(([, a]) => a);
+    const acts = entries.filter(([, a]) => a.trackable !== false && !a.reading);
+    const readEntry = entries.find(([, a]) => a.reading);
+    const readProgress = Math.max(
+      p.legacyRead ? 1 : 0,
+      readEntry ? itemProgress(readEntry[1]) : 0,
+    );
+    const reading = {
+      key: readEntry
+        ? readEntry[0]
+        : String(p.url || "")
+            .split("#")[0]
+            .split("?")[0],
+      kind: "reading",
+      tag: readEntry ? readEntry[1].tag || "" : "",
+      progress: readProgress,
+      done: readProgress >= 1,
+    };
+    const done = acts.filter(([, a]) => a.done).length;
     // done = every trackable activity on the page is done, not only the
     // ones the learner has touched so far
     const trackable = Math.max(p.trackable || 0, acts.length);
+    const items = [
+      reading,
+      ...acts.map(([id, a]) => ({
+        key: id,
+        kind: "activity",
+        tag: a.tag || "",
+        progress: itemProgress(a),
+        done: Boolean(a.done),
+      })),
+    ];
+    // trackable elements on the page not engaged yet, by tag where known
+    let waiting = trackable - acts.length;
+    const byTag = p.trackableByTag || {};
+    const pending = (tag) => {
+      const n = items.filter((i) => i.tag === tag).length + 1;
+      items.push({
+        key: `${tag}#${n}`,
+        kind: "activity",
+        tag,
+        progress: 0,
+        done: false,
+      });
+      waiting--;
+    };
+    Object.keys(byTag).forEach((tag) => {
+      const engagedTag = acts.filter(([, a]) => a.tag === tag).length;
+      for (let i = engagedTag; i < (byTag[tag] || 0) && waiting > 0; i++) {
+        pending(tag);
+      }
+    });
+    while (waiting > 0) {
+      pending("");
+    }
+    const sum = items.reduce((t, i) => t + i.progress, 0);
     let status = "visited";
-    if (acts.length) {
-      status = done >= trackable ? "done" : "in-progress";
+    if (reading.done && done >= trackable) {
+      status = "done";
+    } else if (acts.length || reading.progress > 0) {
+      status = "in-progress";
     } else if (!p.visits) {
       status = "not-started";
     }
@@ -789,11 +931,18 @@ export class UserScaffold extends HTMLElement {
       engaged: acts.length,
       done,
       trackable,
+      percent: round3(sum / items.length),
+      reading,
+      items,
+      itemsDone: items.filter((i) => i.done).length,
+      itemsTotal: items.length,
     };
   }
   /**
-   * { done, total, byPage } for a site; pages limits it to those page ids
-   * (the site outline), otherwise every page the profile knows
+   * { done, total, byPage, engaged, percent, percentByPage } for a site;
+   * pages limits it to those page ids (the site outline), otherwise every
+   * page the profile knows. byPage: status of each page; percent: the
+   * average of the page percents (pageProgress) over those pages, 0 to 1.
    */
   siteProgress(site, pages) {
     const siteRec = this._profile().sites[site];
@@ -803,17 +952,35 @@ export class UserScaffold extends HTMLElement {
         ? Object.keys(siteRec.pages)
         : [];
     const byPage = {};
+    const percentByPage = {};
     let done = 0;
+    let sum = 0;
     ids.forEach((id) => {
-      byPage[id] = this.pageStatus(site, id);
-      if (byPage[id] === "done") {
+      const pp = this.pageProgress(site, id);
+      byPage[id] = pp.status;
+      percentByPage[id] = pp.percent;
+      sum += pp.percent;
+      if (pp.status === "done") {
         done++;
       }
     });
+    // anything that counts toward a page being done: a trackable activity,
+    // or reading under way
     const engaged = siteRec
-      ? Object.values(siteRec.activities).some((a) => a.trackable !== false)
+      ? Object.values(siteRec.activities).some((a) =>
+          a.reading
+            ? a.done || (Number(a.progress) || 0) > 0
+            : a.trackable !== false,
+        )
       : false;
-    return { done, total: ids.length, byPage, engaged };
+    return {
+      done,
+      total: ids.length,
+      byPage,
+      engaged,
+      percent: ids.length ? round3(sum / ids.length) : 0,
+      percentByPage,
+    };
   }
   /**
    * Copy preferences that elements kept under their own localStorage keys
@@ -1154,6 +1321,7 @@ export class UserScaffold extends HTMLElement {
         tag,
         trackable:
           typeof trackableOf === "function" ? Boolean(trackableOf(tag)) : true,
+        reading: Boolean(pageElement) && tag === pageElement,
         replay: true,
       });
       if (done) {
