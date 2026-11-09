@@ -706,6 +706,52 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           color: var(--hax-ui-warning);
           background-color: var(--hax-ui-warning-soft);
         }
+        /* never taller (or wider) than the screen: it scrolls instead */
+        #previewmenu::part(dropdown) {
+          max-width: calc(100vw - 2 * var(--hax-ui-gap-md, 8px));
+          max-height: calc(
+            100vh - var(--top-bar-height, 64px) - var(--hax-ui-gap-md, 8px)
+          );
+          max-height: calc(
+            100dvh - var(--top-bar-height, 64px) - var(--hax-ui-gap-md, 8px)
+          );
+          overflow-y: auto;
+          overscroll-behavior: contain;
+        }
+        /* closes a device view (back to this window), top left of the stage
+           where the flag isn't; drawn like the flag */
+        .preview-stage-close {
+          position: absolute;
+          top: calc(
+            (var(--top-bar-height, 64px) - var(--ddd-control-height-sm, 40px)) /
+              2
+          );
+          left: var(--hax-ui-gap-lg, 12px);
+          display: inline-grid;
+          place-items: center;
+          width: var(--ddd-control-height-sm, 40px);
+          height: var(--ddd-control-height-sm, 40px);
+          margin: 0;
+          padding: 0;
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius-lg);
+          color: var(--ddd-theme-default-white);
+          background-color: var(--ddd-theme-default-coalyGray);
+          box-shadow: var(--hax-ui-shadow-popover);
+          cursor: pointer;
+          color-scheme: dark;
+        }
+        .preview-stage-close:hover {
+          background-color: var(--ddd-theme-default-potentialMidnight);
+        }
+        .preview-stage-close:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
+        }
+        .preview-stage-close simple-icon-lite {
+          --simple-icon-width: var(--ddd-icon-3xs, 20px);
+          --simple-icon-height: var(--ddd-icon-3xs, 20px);
+        }
         /* the device menu is the bar's own popover (app-hax-user-menu);
            these rows sit in its post-menu group like the dark mode and sound
            rows in the user menu */
@@ -862,10 +908,33 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           }
         }
         @media (max-width: 600px) {
-          /* preview is not offered at phone width; a preview already open
-             keeps its flag so it can be closed */
-          :host(:not([preview-mode])) .preview-toolbar-buttons {
+          /* preview sits on the right, after Merlin's button; the device
+             button shows just its icon, and the device menu spans the
+             screen under the bar so it always fits */
+          .preview-device-label {
             display: none;
+          }
+          /* the right group holds only Preview here (the HAX mark is
+             hidden), so drop its gaps and the mark's empty slot: the page
+             tools on the left keep their room */
+          .topbar-right-group {
+            gap: 0;
+            padding-right: var(--hax-ui-gap-md, 8px);
+          }
+          .home-btn {
+            display: none;
+          }
+          /* and the thin group dividers go, so Edit still fits beside you,
+             the house and Add page */
+          .topbar-left-group .topbar-divider {
+            display: none;
+          }
+          #previewmenu::part(dropdown) {
+            position: fixed;
+            top: calc(var(--top-bar-height, 64px) - var(--hax-ui-gap, 4px));
+            left: var(--hax-ui-gap-md, 8px);
+            right: var(--hax-ui-gap-md, 8px);
+            min-width: 0;
           }
           /** hide buttons on a phone bc its too small */
           .haxLogo,
@@ -888,7 +957,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             --haxcms-editor-merlin-width: var(--ddd-control-height-sm, 40px);
           }
           app-hax-top-bar::part(top-bar) {
-            grid-template-columns: minmax(0, 1fr) auto 0 !important;
+            grid-template-columns: minmax(0, 1fr) auto auto !important;
           }
           .topbar-left-group {
             min-width: 0;
@@ -3363,6 +3432,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       previewLinksOff: "Links are off while you preview unsaved edits",
       previewFrameTitle: "Preview of this page",
       previewShownAt: "{device}, shown at {percent}%",
+      previewCloseDevice: "Close {device} view",
       previewDialogOpen: "Close the open dialog to preview the site",
       shortcutPreview: "Preview the site as a visitor sees it",
       siteDashboard: "Sites Dashboard",
@@ -7377,7 +7447,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     icon="${device.icon}"
                     aria-hidden="true"
                   ></simple-icon-lite>
-                  <span>${this.t[device.label]}</span>
+                  <span class="preview-device-label"
+                    >${this.t[device.label]}</span
+                  >
                   <simple-icon-lite
                     icon="icons:arrow-drop-down"
                     aria-hidden="true"
@@ -7509,6 +7581,29 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     const percent = Math.round(scale * 100);
     return html`
       <div class="preview-stage ${full ? "full" : ""}" part="preview-stage">
+        ${
+          this.previewDevice !== "window"
+            ? html`<button
+                type="button"
+                id="previewstageclose"
+                class="preview-stage-close"
+                title="${this.t.previewCloseDevice.replace(
+                  "{device}",
+                  () => this.t[device.label],
+                )}"
+                aria-label="${this.t.previewCloseDevice.replace(
+                  "{device}",
+                  () => this.t[device.label],
+                )}"
+                @click="${this._previewBackToWindow}"
+              >
+                <simple-icon-lite
+                  icon="icons:close"
+                  aria-hidden="true"
+                ></simple-icon-lite>
+              </button>`
+            : ``
+        }
         <div
           class="preview-device ${deviceClass}"
           style=${styleMap({
@@ -7712,15 +7807,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (e.key === "Escape") {
       e.preventDefault();
       e.stopImmediatePropagation();
-      if (this.previewMenuOpen) {
-        this.previewMenuOpen = false;
-        const btn = this.shadowRoot.querySelector("#previewdevicebutton");
-        if (btn) {
-          btn.focus();
-        }
-      } else {
-        this.exitPreview();
-      }
+      this._previewEscape();
       return;
     }
     if (this._isPreviewShortcut(e)) {
@@ -7732,12 +7819,48 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     }
   }
 
+  /**
+   * Esc steps back one level: the device menu closes, then a device view
+   * goes back to this window, then preview closes
+   */
+  _previewEscape() {
+    if (this.previewMenuOpen) {
+      this.previewMenuOpen = false;
+      const btn = this.shadowRoot.querySelector("#previewdevicebutton");
+      if (btn) {
+        btn.focus();
+      }
+    } else if (this.previewDevice !== "window") {
+      this._previewBackToWindow();
+    } else {
+      this.exitPreview();
+    }
+  }
+
   _togglePreviewMenu() {
     this.previewMenuOpen = !this.previewMenuOpen;
   }
 
+  /**
+   * close a device view: back to the preview of this window
+   */
+  _previewBackToWindow() {
+    this._setPreviewDevice("window");
+    this.updateComplete.then(() => {
+      const btn =
+        this.shadowRoot &&
+        this.shadowRoot.querySelector("#previewdevicebutton");
+      if (btn && btn.focus) {
+        btn.focus();
+      }
+    });
+  }
+
   _previewDeviceTap(e) {
-    const id = e.currentTarget.getAttribute("data-device");
+    this._setPreviewDevice(e.currentTarget.getAttribute("data-device"));
+  }
+
+  _setPreviewDevice(id) {
     const wasFramed = this._previewFramed();
     this.previewDevice = previewDevice(id).id;
     if (!previewDevice(this.previewDevice).rotates) {
@@ -7817,7 +7940,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       win.document.addEventListener(
         "keydown",
         (ev) => {
-          if (ev.key === "Escape" || this._isPreviewShortcut(ev)) {
+          if (ev.key === "Escape") {
+            ev.preventDefault();
+            this._previewEscape();
+          } else if (this._isPreviewShortcut(ev)) {
             ev.preventDefault();
             this.exitPreview();
           }

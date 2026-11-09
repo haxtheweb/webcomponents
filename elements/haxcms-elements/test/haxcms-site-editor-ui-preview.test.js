@@ -168,6 +168,42 @@ describe("haxcms-site-editor-ui preview", () => {
     expect(store.previewMode).to.equal(true);
   });
 
+  it("a device view has a close button that goes back to this window", async () => {
+    await element.enterPreview();
+    await element.updateComplete;
+    expect(element.shadowRoot.querySelector("#previewstageclose")).to.equal(
+      null,
+    );
+    element._setPreviewDevice("phone");
+    await element.updateComplete;
+    const close = element.shadowRoot.querySelector("#previewstageclose");
+    expect(close).to.exist;
+    expect(close.getAttribute("aria-label")).to.equal("Close Phone view");
+    close.click();
+    await element.updateComplete;
+    expect(element.previewDevice).to.equal("window");
+    expect(element.previewMode).to.equal(true);
+    expect(store.previewMode).to.equal(true);
+  });
+
+  it("Esc steps back: menu, then device, then preview", async () => {
+    const esc = () =>
+      globalThis.document.dispatchEvent(
+        new KeyboardEvent("keydown", { key: "Escape", bubbles: true }),
+      );
+    await element.enterPreview();
+    element._setPreviewDevice("tablet");
+    element.previewMenuOpen = true;
+    esc();
+    expect(element.previewMenuOpen).to.equal(false);
+    expect(element.previewDevice).to.equal("tablet");
+    esc();
+    expect(element.previewDevice).to.equal("window");
+    expect(element.previewMode).to.equal(true);
+    esc();
+    expect(element.previewMode).to.equal(false);
+  });
+
   it("can't be entered twice at once", async () => {
     const results = await Promise.all([
       element.enterPreview(),
