@@ -45,7 +45,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           display: block;
           position: relative;
         }
-        :host([is-logged-in]) {
+        :host([is-logged-in]:not([preview-mode])) {
           max-height: calc(100vh - 56px);
         }
         :host #slot {
@@ -714,6 +714,14 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         attribute: "is-logged-in",
       },
       /**
+       * logged in, but drawing the site as a visitor sees it
+       */
+      previewMode: {
+        type: Boolean,
+        reflect: true,
+        attribute: "preview-mode",
+      },
+      /**
        * queryParams
        */
       queryParams: {
@@ -989,6 +997,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     });
     this.disableFeatures = "";
     this.isLoggedIn = false;
+    this.previewMode = false;
     this.__disposer = [];
     this.queryParams = {};
     this.loading = false;
@@ -1061,12 +1070,21 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       const _mobx_val_0 = toJS(store.darkMode);
       const _mobx_val_1 = toJS(store.darkMode);
       Promise.resolve().then(() => {
-        localStorageSet("app-hax-darkMode", _mobx_val_0);
+        // preview's light / dark switch is for the preview only; never save it
+        if (!store.previewMode && !store.inPreviewFrame) {
+          localStorageSet("app-hax-darkMode", _mobx_val_0);
+        }
         if (_mobx_val_1) {
           globalThis.document.body.classList.add("dark-mode");
         } else {
           globalThis.document.body.classList.remove("dark-mode");
         }
+      });
+    });
+    autorun(() => {
+      const _mobx_val_0 = toJS(store.previewMode);
+      Promise.resolve().then(() => {
+        this.previewMode = _mobx_val_0;
       });
     });
     autorun(() => {

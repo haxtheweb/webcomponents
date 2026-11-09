@@ -12,7 +12,6 @@ import {
   withSessionRequestTokens,
 } from "@haxtheweb/haxcms-elements/lib/core/utils/session-request-tokens.js";
 import { autorun, toJS } from "mobx";
-import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
 import "@haxtheweb/jwt-login/jwt-login.js";
 /**
  * `haxcms-backend-php`
@@ -302,9 +301,8 @@ class HAXCMSBackendPHP extends LitElement {
    * Import the editor
    */
   dynamicallyImportEditor() {
-    // Check if we're in view-only mode - if so, don't import editor
-    const viewOnlyMode = UserScaffoldInstance.readMemory("ViewOnlyMode");
-    if (viewOnlyMode) {
+    // the preview frame shows the site as a visitor sees it: no editor
+    if (store.inPreviewFrame) {
       return;
     }
 
