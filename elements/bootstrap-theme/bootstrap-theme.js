@@ -13,7 +13,7 @@ import { BootstrapDesignSystemStyles } from "@haxtheweb/bootstrap-theme/lib/Boot
 import { adoptBootstrapStylesheet } from "@haxtheweb/bootstrap-theme/lib/BootstrapStylesheetManager.js";
 import "@haxtheweb/es-global-bridge/es-global-bridge.js";
 import "@haxtheweb/map-menu/map-menu.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-lite";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 // bootstrap elements imports
 import "@haxtheweb/bootstrap-theme/lib/BootstrapBreadcrumb.js";

@@ -38,5 +38,8 @@
   "details": "Detajet",
   "saved": "E ruajtur",
   "opensInNewWindow": "Hapet në dritare të re",
-  "resultsCount": "{count} rezultate"
+  "resultsCount": "{count} rezultate",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Mbyll Merlin"
 }

@@ -12,6 +12,8 @@ const HOME = {
   HaxUiAdminTokens: tokensModule,
   HaxUiAdminScheme: tokensModule,
   HaxUiAdminPrimitives: tokensModule,
+  HAX_UI_DARK_CHROME: tokensModule,
+  HaxUiDarkChromeDeclarations: tokensModule,
   HaxUiAdminIcons: iconsModule,
   HaxUiAdminControls: controlsModule,
   HaxUiAdminSimpleFields: controlsModule,

@@ -195,7 +195,6 @@ Custom property | Description | Default
   * @element a11y-media-player
   * @extends DDD
   * @demo demo/index.html video demo
-  * @demo ./demo/audio.html audio demo
   * @demo ./demo/youtube.html YouTube demo
   */
 class A11yMediaPlayer extends SchemaBehaviors(

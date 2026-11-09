@@ -4,6 +4,7 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import {
   HaxUiAdminTokens,
   HaxUiAdminPrimitives,
+  HaxUiDarkChromeDeclarations,
 } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
 import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminIcons.js";
 import { DDDStatusTokens } from "@haxtheweb/d-d-d/lib/DDDStatusTokens.js";
@@ -119,8 +120,8 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
       DDDStatusTokens,
       css`
         :host {
-          /* where it sits: under the top bar on the right, or a sheet at
-             the bottom of a phone */
+          /* where it sits: under the top bar on the right; on a phone,
+             under the bar across the width */
           --haxcms-toast-gap: var(--hax-ui-gap-lg, 12px);
           --simple-toast-z-index: 100000004;
           position: fixed;
@@ -138,7 +139,9 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
           margin: 0;
           padding: 0;
           box-sizing: border-box;
-          color-scheme: var(--hax-ui-color-scheme, inherit);
+          /* HAX UI dark in every theme, the same surface as the top bar
+             it drops from */
+          ${HaxUiDarkChromeDeclarations}
           font-family: var(--hax-ui-admin-font-family);
           font-size: var(--hax-ui-admin-font-size);
           text-align: left;
@@ -210,13 +213,8 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
         @media (max-width: 600px) {
           :host {
             --haxcms-toast-gap: var(--hax-ui-gap-md, 8px);
-            --simple-toast-slide-offset-y: 16px;
-            top: auto;
             right: var(--haxcms-toast-gap);
             left: var(--haxcms-toast-gap);
-            bottom: calc(
-              var(--haxcms-toast-gap) + env(safe-area-inset-bottom, 0px)
-            );
             width: auto;
           }
         }

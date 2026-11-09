@@ -38,5 +38,8 @@
   "details": "Деталі",
   "saved": "Збережено",
   "opensInNewWindow": "Відкривається в новому вікні",
-  "resultsCount": "Результатів: {count}"
+  "resultsCount": "Результатів: {count}",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Закрити Merlin"
 }

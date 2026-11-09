@@ -82,7 +82,8 @@
           "wild-hair": "Gwallt gwyn gwyllt",
           "messy-hair": "Gwallt blêr gyda chraith",
           "sparkle-selects": "Sparkle Selects (helmed)",
-          "saber-cats": "Saber Cats (helmed)"
+          "saber-cats": "Saber Cats (helmed)",
+          "future-traveler": "Future Traveler (helmed)"
         }
       },
       {
@@ -161,7 +162,8 @@
           "saber-cats": "Saber Cats (cartref)",
           "saber-cats-away": "Saber Cats (oddi cartref)",
           "icers": "Icers (cartref)",
-          "icers-away": "Icers (oddi cartref)"
+          "icers-away": "Icers (oddi cartref)",
+          "future-traveler": "Future Traveler"
         }
       },
       {

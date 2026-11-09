@@ -53,7 +53,7 @@ class HAXCMSSlideTheme extends I18NMixin(
       );
       // prettier-ignore
       import(
-        "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-dot-indicator"
+        "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-dot-indicator.js"
       );
       // prettier-ignore
       import(

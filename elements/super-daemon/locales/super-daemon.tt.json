@@ -38,5 +38,8 @@
   "details": "Детальләр",
   "saved": "Сакланды",
   "opensInNewWindow": "Яңа тәрәзәдә ачыла",
-  "resultsCount": "{count} нәтиҗә"
+  "resultsCount": "{count} нәтиҗә",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Merlin ябу"
 }

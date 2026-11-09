@@ -38,5 +38,8 @@
   "details": "Üksikasjad",
   "saved": "Salvestatud",
   "opensInNewWindow": "Avaneb uues aknas",
-  "resultsCount": "{count} tulemust"
+  "resultsCount": "{count} tulemust",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Sulge Merlin"
 }

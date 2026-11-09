@@ -38,5 +38,8 @@
   "details": "ವಿವರಗಳು",
   "saved": "ಉಳಿಸಲಾಗಿದೆ",
   "opensInNewWindow": "ಹೊಸ ವಿಂಡೋದಲ್ಲಿ ತೆರೆಯುತ್ತದೆ",
-  "resultsCount": "{count} ಫಲಿತಾಂಶಗಳು"
+  "resultsCount": "{count} ಫಲಿತಾಂಶಗಳು",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Merlin ಮುಚ್ಚಿ"
 }

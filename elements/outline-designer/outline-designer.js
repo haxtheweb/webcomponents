@@ -6,7 +6,7 @@ import { LitElement, css, html, nothing } from "lit";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
-import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store";
+import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import {
   HaxUiAdminTokens,
   HaxUiAdminPrimitives,

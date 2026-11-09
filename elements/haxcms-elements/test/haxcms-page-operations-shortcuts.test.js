@@ -9,14 +9,14 @@ describe("haxcms-page-operations shortcuts", () => {
   before(() => {
     realAllows = store.platformAllows;
     store.platformAllows = () => true;
-    if (!KeyboardShortcutManagerInstance.getById("cms-outline")) {
+    if (!KeyboardShortcutManagerInstance.getById("cms-add-page")) {
       KeyboardShortcutManagerInstance.register({
-        id: "cms-outline",
-        key: "5",
+        id: "cms-add-page",
+        key: "3",
         ctrl: true,
         shift: true,
         callback: () => {},
-        description: "Site outline",
+        description: "Add page",
       });
     }
   });
@@ -24,7 +24,20 @@ describe("haxcms-page-operations shortcuts", () => {
     store.platformAllows = realAllows;
   });
 
-  it("shows Merlin's label for Site outline", async () => {
+  it("shows Merlin's label for Add page", async () => {
+    const el = await fixture(
+      html`<haxcms-page-operations></haxcms-page-operations>`,
+    );
+    await el.updateComplete;
+    const addPage = el.shadowRoot.querySelector("haxcms-button-add");
+    const descriptor = KeyboardShortcutManagerInstance.getById("cms-add-page");
+    expect(addPage.getAttribute("shortcut-label")).to.equal(
+      KeyboardShortcutManagerInstance.getLabel(descriptor),
+    );
+    expect(addPage.getAttribute("key-shortcuts")).to.equal("Control+Shift+3");
+  });
+
+  it("Site outline has no shortcut: it lives under Site settings", async () => {
     const el = await fixture(
       html`<haxcms-page-operations></haxcms-page-operations>`,
     );
@@ -32,11 +45,7 @@ describe("haxcms-page-operations shortcuts", () => {
     const outline = [
       ...el.shadowRoot.querySelectorAll("simple-toolbar-button"),
     ].find((b) => b.label === el.t.siteOutline);
-    const descriptor = KeyboardShortcutManagerInstance.getById("cms-outline");
-    expect(outline.getAttribute("shortcut-label")).to.equal(
-      KeyboardShortcutManagerInstance.getLabel(descriptor),
-    );
-    expect(outline.getAttribute("key-shortcuts")).to.equal("Control+Shift+5");
+    expect(!!outline.getAttribute("shortcut-label")).to.equal(false);
   });
 
   it("shows nothing for an action with no registered shortcut", async () => {

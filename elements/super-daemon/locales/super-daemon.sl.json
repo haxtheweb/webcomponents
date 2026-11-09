@@ -38,5 +38,8 @@
   "details": "Podrobnosti",
   "saved": "Shranjeno",
   "opensInNewWindow": "Odpre se v novem oknu",
-  "resultsCount": "Rezultati: {count}"
+  "resultsCount": "Rezultati: {count}",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Zapri Merlin"
 }

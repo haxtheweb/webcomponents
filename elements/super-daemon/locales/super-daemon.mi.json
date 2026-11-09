@@ -38,5 +38,8 @@
   "details": "Ngā taipitopito",
   "saved": "Kua tiakina",
   "opensInNewWindow": "Ka tuwhera i tētahi matapihi hou",
-  "resultsCount": "{count} hua"
+  "resultsCount": "{count} hua",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Kati i a Merlin"
 }

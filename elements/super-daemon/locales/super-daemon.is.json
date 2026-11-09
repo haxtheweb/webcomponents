@@ -38,5 +38,8 @@
   "details": "Upplýsingar",
   "saved": "Vistað",
   "opensInNewWindow": "Opnast í nýjum glugga",
-  "resultsCount": "{count} niðurstöður"
+  "resultsCount": "{count} niðurstöður",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Loka Merlin"
 }

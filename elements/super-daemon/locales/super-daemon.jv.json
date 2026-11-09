@@ -38,5 +38,8 @@
   "details": "Rincian",
   "saved": "Kesimpen",
   "opensInNewWindow": "Mbukak ing jendhela anyar",
-  "resultsCount": "{count} asil"
+  "resultsCount": "{count} asil",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Tutup Merlin"
 }

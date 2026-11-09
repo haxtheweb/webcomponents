@@ -38,5 +38,8 @@
   "details": "Maelezo",
   "saved": "Imehifadhiwa",
   "opensInNewWindow": "Hufunguka katika dirisha jipya",
-  "resultsCount": "Matokeo {count}"
+  "resultsCount": "Matokeo {count}",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Funga Merlin"
 }

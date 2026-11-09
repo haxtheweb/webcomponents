@@ -38,5 +38,8 @@
   "details": "Xehetasunak",
   "saved": "Gordeta",
   "opensInNewWindow": "Leiho berri batean irekitzen da",
-  "resultsCount": "{count} emaitza"
+  "resultsCount": "{count} emaitza",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Itxi Merlin"
 }

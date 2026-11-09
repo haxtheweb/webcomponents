@@ -37,6 +37,10 @@ export {
   HaxUiAdminControls,
   HaxUiAdminSimpleFields,
 };
+export {
+  HAX_UI_DARK_CHROME,
+  HaxUiDarkChromeDeclarations,
+} from "./HaxUiAdminTokens.js";
 export { HaxUiAdminIcons } from "./HaxUiAdminIcons.js";
 export { HaxUiAdminShell } from "./HaxUiAdminShell.js";
 export {

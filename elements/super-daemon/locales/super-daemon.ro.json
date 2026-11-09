@@ -38,5 +38,8 @@
   "details": "Detalii",
   "saved": "Salvat",
   "opensInNewWindow": "Se deschide într-o fereastră nouă",
-  "resultsCount": "Rezultate: {count}"
+  "resultsCount": "Rezultate: {count}",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Închideți Merlin"
 }
