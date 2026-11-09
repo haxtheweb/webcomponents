@@ -223,7 +223,10 @@ class DDDBrochureTheme extends HAXCMSRememberRoute(
 
         .menu .menu-item:hover,
         .menu .menu-item:focus-visible {
-          color: var(--ddd-theme-default-white);
+          color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-nittanyNavy)
+          );
           background-color: light-dark(
             var(--ddd-theme-default-nittanyNavy),
             var(--ddd-theme-default-pughBlue)

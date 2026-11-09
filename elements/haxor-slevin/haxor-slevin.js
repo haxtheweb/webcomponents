@@ -193,7 +193,7 @@ class HaxorSlevin extends I18NMixin(
           background-color: transparent;
           border: none;
           display: inline-flex;
-          color: var(--ddd-theme-default-link);
+          color: var(--ddd-theme-default-white);
           min-width: 100px;
           text-transform: unset;
           margin: 0px var(--ddd-spacing-4);

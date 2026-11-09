@@ -27,6 +27,9 @@ import { autorun, toJS } from "mobx";
  * @element terrible-themes
  */
 const skater = new URL("./assets/SKATER.gif", import.meta.url).href;
+// first frame of SKATER.gif, shown instead of the looping animation when the
+// visitor asks for reduced motion (WCAG 2.2.2 Pause, Stop, Hide)
+const skaterStill = new URL("./assets/SKATER-still.png", import.meta.url).href;
 class TerribleBestThemes extends HAXCMSRememberRoute(
   HAXCMSThemeParts(HAXCMSLitElementTheme),
 ) {
@@ -168,9 +171,9 @@ class TerribleBestThemes extends HAXCMSRememberRoute(
       >
         <tbody>
           <tr valign="top">
-            <td style="background-image:url('${skater}')">
+            <td style="background-image:url('${this._skaterSrc()}')">
               <img
-                src="${skater}"
+                src="${this._skaterSrc()}"
                 width="68"
                 height="72"
                 border="0"
@@ -187,9 +190,9 @@ class TerribleBestThemes extends HAXCMSRememberRoute(
                 </section>
               </main>
             </td>
-            <td style="background-image:url('${skater}')">
+            <td style="background-image:url('${this._skaterSrc()}')">
               <img
-                src="${skater}"
+                src="${this._skaterSrc()}"
                 width="68"
                 height="72"
                 border="0"
@@ -200,7 +203,7 @@ class TerribleBestThemes extends HAXCMSRememberRoute(
             </td>
           </tr>
           <tr>
-            <td style="background-image:url('${skater}')"></td>
+            <td style="background-image:url('${this._skaterSrc()}')"></td>
             <td align="center">
               <site-menu-button
                 type="prev"
@@ -214,7 +217,7 @@ class TerribleBestThemes extends HAXCMSRememberRoute(
               ></site-menu-button>
               <site-menu></site-menu>
             </td>
-            <td style="background-image:url('${skater}')"></td>
+            <td style="background-image:url('${this._skaterSrc()}')"></td>
           </tr>
         </tbody>
       </table>
@@ -235,6 +238,30 @@ class TerribleBestThemes extends HAXCMSRememberRoute(
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
+  }
+  static get properties() {
+    return {
+      ...super.properties,
+      _reducedMotion: { type: Boolean, state: true },
+    };
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    this.__motionMQ = globalThis.matchMedia("(prefers-reduced-motion: reduce)");
+    this.__motionMQHandler = (e) => {
+      this._reducedMotion = e.matches;
+    };
+    this.__motionMQ.addEventListener("change", this.__motionMQHandler);
+    this._reducedMotion = this.__motionMQ.matches;
+  }
+  disconnectedCallback() {
+    if (this.__motionMQ) {
+      this.__motionMQ.removeEventListener("change", this.__motionMQHandler);
+    }
+    super.disconnectedCallback();
+  }
+  _skaterSrc() {
+    return this._reducedMotion ? skaterStill : skater;
   }
 }
 globalThis.customElements.define(TerribleBestThemes.tag, TerribleBestThemes);

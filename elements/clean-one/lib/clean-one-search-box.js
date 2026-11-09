@@ -32,6 +32,12 @@ export class CleanOneSearchBox extends I18NMixin(LitElement) {
           padding: 7px 7px;
           color: light-dark(black, var(--ddd-accent-6, #fff));
         }
+        /* the rule above resets outline for :focus too; give keyboard
+           users a visible indicator back (WCAG 2.4.7) */
+        input:focus-visible {
+          outline: 2px solid currentColor;
+          outline-offset: 2px;
+        }
         input::placeholder {
           color: light-dark(rgba(0, 0, 0, 0.6), rgba(255, 255, 255, 0.7));
         }

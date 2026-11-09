@@ -314,7 +314,7 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
             --learn-two-theme-menu-item-active-item-color,
             light-dark(
               var(--ddd-theme-default-limestoneLight),
-              var(--ddd-theme-default-limestoneGray)
+              var(--ddd-theme-default-slateGray)
             )
           );
           --haxcms-tooltip-color: var(--ddd-theme-default-infoLight);
@@ -323,7 +323,7 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
             --learn-two-theme-menu-item-active-background-color,
             light-dark(
               var(--ddd-theme-default-limestoneLight),
-              var(--ddd-theme-default-limestoneGray)
+              var(--ddd-theme-default-slateGray)
             )
           );
           font-family: var(--ddd-font-navigation);
@@ -363,8 +363,9 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
           z-index: 1;
           --site-menu-button-icon-width: var(--ddd-icon-xl);
           --site-menu-button-icon-height: var(--ddd-icon-xl);
-          --site-menu-button-icon-fill-color: var(
-            --ddd-theme-default-coalyGray
+          --site-menu-button-icon-fill-color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
           );
         }
 
