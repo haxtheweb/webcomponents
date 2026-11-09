@@ -242,6 +242,19 @@ export function authoredResource(element) {
 }
 
 /**
+ * The element id when an author set it. Ids an element generated for itself
+ * during this page load (marked with `_xapiGeneratedId`) change every visit,
+ * so they never key learner data.
+ * @param {HTMLElement} element
+ * @returns {string}
+ */
+function authoredId(element) {
+  return element && element.id && element.id !== element._xapiGeneratedId
+    ? element.id
+    : "";
+}
+
+/**
  * Stable activity id for an element: page URL + "#" + key. The key is, in
  * order:
  *   1. the element id, when the author set one;
@@ -260,7 +273,7 @@ export function activityKey(element, fingerprint) {
   if (!element) {
     return "";
   }
-  if (element.id) {
+  if (authoredId(element)) {
     return String(element.id);
   }
   const resource = authoredResource(element);
@@ -269,7 +282,7 @@ export function activityKey(element, fingerprint) {
     return withPosition(
       element,
       base,
-      (peer) => !peer.id && authoredResource(peer) === resource,
+      (peer) => !authoredId(peer) && authoredResource(peer) === resource,
       "[resource]",
     );
   }
@@ -281,7 +294,7 @@ export function activityKey(element, fingerprint) {
     element,
     base,
     (peer) =>
-      !peer.id &&
+      !authoredId(peer) &&
       !authoredResource(peer) &&
       baseKey(peer, fingerprintOf(peer)) === base,
   );
@@ -309,7 +322,7 @@ export function legacyActivityKey(element, fingerprint) {
   return withPosition(
     element,
     base,
-    (peer) => !peer.id && baseKey(peer, fingerprintOf(peer)) === base,
+    (peer) => !authoredId(peer) && baseKey(peer, fingerprintOf(peer)) === base,
   );
 }
 

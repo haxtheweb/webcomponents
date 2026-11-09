@@ -129,3 +129,40 @@ describe("a11y-media-player learner data", () => {
     expect(seen.map((d) => d.activityDisplay)).to.deep.equal(["attempted"]);
   });
 });
+
+describe("a11y-media-player learner data host", () => {
+  const elementExt = "https://haxtheweb.org/xapi/extensions/element";
+  it("reports as the video-player it is authored inside (legacy markup)", async () => {
+    const wrap = await fixture(html`<div></div>`);
+    // a plain element named video-player stands in for the wrapper so the
+    // legacy light-DOM nesting is tested without loading video-player
+    const vp = document.createElement("video-player");
+    vp.setAttribute("source", "legacy.mp3");
+    const amp = document.createElement("a11y-media-player");
+    amp.id = "a11y-media-player1755519619724";
+    vp.appendChild(amp);
+    wrap.appendChild(vp);
+    await amp.updateComplete;
+    const seen = [];
+    amp.addEventListener("user-engagement", (e) => seen.push(e.detail));
+    amp._announceMedia("attempted");
+    expect(seen.length).to.equal(1);
+    const s = seen[0].statement;
+    expect(s.context.extensions[elementExt]).to.equal("video-player");
+    expect(s.object.id).to.not.contain("a11y-media-player1755519619724");
+  });
+
+  it("keys a standalone player without an authored id by its content", async () => {
+    const amp = await fixture(
+      html`<a11y-media-player media-title="Lecture"
+        ><video></video
+      ></a11y-media-player>`,
+    );
+    await amp.updateComplete;
+    expect(amp.id).to.match(/^a11y-media-player\d+$/);
+    const seen = [];
+    amp.addEventListener("user-engagement", (e) => seen.push(e.detail));
+    amp._announceMedia("attempted");
+    expect(seen[0].statement.object.id).to.not.contain(amp.id);
+  });
+});

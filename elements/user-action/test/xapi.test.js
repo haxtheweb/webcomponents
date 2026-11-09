@@ -138,6 +138,16 @@ describe("xapi statement builder", () => {
     expect(activityId(a)).to.equal(activityId(a));
   });
 
+  it("ignores an id the element generated for itself", () => {
+    const el = document.createElement("span");
+    el.textContent = "generated";
+    el.id = "thing" + 123;
+    el._xapiGeneratedId = el.id;
+    expect(activityKey(el)).to.match(/^span-[0-9a-f]+$/);
+    el.id = "authored";
+    expect(activityKey(el)).to.equal("authored");
+  });
+
   it("keys by id, then authored resource, then content", async () => {
     const el = await fixture(
       html`<div>
