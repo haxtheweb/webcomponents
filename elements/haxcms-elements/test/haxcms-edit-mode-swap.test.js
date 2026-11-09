@@ -2,10 +2,12 @@
 // the theme keeps its viewer content (#slot) on screen and the site editor
 // keeps h-a-x unpainted until hax-body has imported and rendered the editable
 // copy, then both swap together. Leaving edit mode stays immediate.
-import { fixture, expect, html } from "@open-wc/testing";
+import { fixture, expect, html, waitUntil } from "@open-wc/testing";
 import { LitElement } from "lit";
 import "../lib/core/haxcms-site-editor.js";
 import { HAXCMSTheme } from "../lib/core/HAXCMSThemeWiring.js";
+import { HAXCMSThemeParts } from "../lib/core/utils/HAXCMSThemeParts.js";
+import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js";
 import { store } from "../lib/core/haxcms-site-store.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 
@@ -24,6 +26,40 @@ class TestSwapTheme extends HAXCMSTheme(LitElement) {
 }
 customElements.define(TestSwapTheme.tag, TestSwapTheme);
 
+// the way real themes are built (clean-one, clean-two): HAXCMSThemeParts has
+// its own store.editMode autorun next to HAXCMSTheme's
+class TestPartsTheme extends HAXCMSThemeParts(HAXCMSTheme(LitElement)) {
+  static get tag() {
+    return "test-parts-theme";
+  }
+  render() {
+    return html`<div id="slot"><slot></slot></div>`;
+  }
+}
+customElements.define(TestPartsTheme.tag, TestPartsTheme);
+
+// a site part (site-menu, site-title...) that only mixes in HAXCMSThemeParts
+class TestPartsOnly extends HAXCMSThemeParts(LitElement) {
+  static get tag() {
+    return "test-parts-only";
+  }
+}
+customElements.define(TestPartsOnly.tag, TestPartsOnly);
+
+// a block that renders lazily, like video-player
+class TestLazyBlock extends IntersectionObserverMixin(LitElement) {
+  static get tag() {
+    return "test-lazy-block";
+  }
+  render() {
+    return this.elementVisible
+      ? html`<div id="rendered">player</div>
+          <slot></slot>`
+      : html`<div id="placeholder"></div>`;
+  }
+}
+customElements.define(TestLazyBlock.tag, TestLazyBlock);
+
 const microtasks = () => new Promise((r) => setTimeout(r, 0));
 const frame = () => new Promise((r) => requestAnimationFrame(r));
 
@@ -33,6 +69,9 @@ const frame = () => new Promise((r) => requestAnimationFrame(r));
  */
 function fakeBody() {
   const body = document.createElement("div");
+  // off screen so no intersection observer in it fires on its own
+  body.style.position = "fixed";
+  body.style.top = "-10000px";
   body.imports = [];
   body.importing = false;
   body._contentState = {
@@ -154,6 +193,63 @@ describe("theme edit-mode gate (_syncEditMode)", () => {
   });
 });
 
+describe("HAXCMSThemeParts waits for the same edit-mode gate", () => {
+  let saved;
+  beforeEach(() => {
+    saved = {
+      editMode: store.editMode,
+      instance: store.cmsSiteEditor.instance,
+    };
+    store.editMode = false;
+  });
+  afterEach(() => {
+    store.cmsSiteEditor.instance = saved.instance;
+    store.editMode = saved.editMode;
+  });
+
+  it("a theme does not hide its viewer content before the editor is ready", async () => {
+    const theme = await fixture(html`<test-parts-theme></test-parts-theme>`);
+    await microtasks();
+    const editor = fakeEditor();
+    store.cmsSiteEditor.instance = editor;
+    // both autoruns (HAXCMSTheme and HAXCMSThemeParts) see this
+    store.editMode = true;
+    await microtasks();
+    await theme.updateComplete;
+    expect(theme.hasAttribute("edit-mode")).to.equal(false);
+    editor.release();
+    await microtasks();
+    await theme.updateComplete;
+    expect(theme.hasAttribute("edit-mode")).to.equal(true);
+    store.editMode = false;
+    await microtasks();
+    await theme.updateComplete;
+    expect(theme.hasAttribute("edit-mode")).to.equal(false);
+    editor.remove();
+  });
+
+  it("site parts dim in the same step the editor appears", async () => {
+    const part = await fixture(html`<test-parts-only></test-parts-only>`);
+    await microtasks();
+    const editor = fakeEditor();
+    store.cmsSiteEditor.instance = editor;
+    store.editMode = true;
+    await microtasks();
+    await part.updateComplete;
+    expect(part.hasAttribute("edit-mode")).to.equal(false);
+    editor.release();
+    await microtasks();
+    await part.updateComplete;
+    expect(part.hasAttribute("edit-mode")).to.equal(true);
+    // leaving is immediate
+    store.editMode = false;
+    await microtasks();
+    await part.updateComplete;
+    expect(part.hasAttribute("edit-mode")).to.equal(false);
+    editor.remove();
+  });
+});
+
 describe("haxcms-site-editor edit-mode reveal", () => {
   let element;
   let body;
@@ -166,6 +262,14 @@ describe("haxcms-site-editor edit-mode reveal", () => {
     };
     store.editMode = false;
     element = await fixture(html`<haxcms-site-editor></haxcms-site-editor>`);
+    // h-a-x imports its slot into the active body once the app store loads;
+    // let that land before the stand-in body takes over
+    try {
+      await waitUntil(() => HAXStore.appStoreLoaded, "", { timeout: 5000 });
+    } catch {
+      // no app store in this run; nothing will import on its own
+    }
+    await microtasks();
     body = fakeBody();
     HAXStore.activeHaxBody = body;
     await microtasks();
@@ -200,7 +304,11 @@ describe("haxcms-site-editor edit-mode reveal", () => {
     expect(element.editMode).to.equal(true);
     expect(body.imports.length).to.equal(1);
     expect(hax.classList.contains("haxcms-edit-mode-pending")).to.equal(true);
-    expect(getComputedStyle(hax).visibility).to.equal("hidden");
+    // hidden with opacity, never visibility (inherited, so blocks with
+    // transition: all would animate hidden -> visible after the swap)
+    expect(getComputedStyle(hax).opacity).to.equal("0");
+    expect(getComputedStyle(hax).visibility).to.equal("visible");
+    expect(hax.hasAttribute("inert")).to.equal(true);
     expect(hax.getBoundingClientRect().height).to.equal(0);
     expect(ready).to.equal(false);
     // asking again while pending returns the same wait
@@ -216,7 +324,8 @@ describe("haxcms-site-editor edit-mode reveal", () => {
     expect(ready).to.equal(true);
     expect(readyToo).to.equal(true);
     expect(hax.classList.contains("haxcms-edit-mode-pending")).to.equal(false);
-    expect(getComputedStyle(hax).visibility).to.equal("visible");
+    expect(getComputedStyle(hax).opacity).to.equal("1");
+    expect(hax.hasAttribute("inert")).to.equal(false);
     // already editing and not importing: no wait
     let again = false;
     element.whenEditModeReady().then(() => {
@@ -276,5 +385,83 @@ describe("haxcms-site-editor edit-mode reveal", () => {
         .querySelector("h-a-x")
         .classList.contains("haxcms-edit-mode-pending"),
     ).to.equal(false);
+  });
+
+  it("renders blocks the viewer already showed before the swap", async () => {
+    // viewer copy: the theme's light DOM, already scrolled into view
+    const viewer = document.createElement("div");
+    viewer.innerHTML =
+      "<p>a</p><test-lazy-block></test-lazy-block><test-lazy-block></test-lazy-block>";
+    document.body.appendChild(viewer);
+    await microtasks();
+    const shown = viewer.querySelectorAll("test-lazy-block");
+    shown[0].elementVisible = true;
+    element.appElement = viewer;
+    store.editMode = true;
+    let ready = false;
+    element.whenEditModeReady().then(() => {
+      ready = true;
+    });
+    await microtasks();
+    // the editable copy, hidden in h-a-x
+    body.innerHTML =
+      "<p>a</p><test-lazy-block><video preload='metadata'></video></test-lazy-block><test-lazy-block></test-lazy-block>";
+    const blocks = body.querySelectorAll("test-lazy-block");
+    await blocks[0].updateComplete;
+    expect(blocks[0].elementVisible).to.equal(false);
+    body.finishImport();
+    await microtasks();
+    await blocks[0].updateComplete;
+    // rendered while hidden instead of after the swap
+    expect(blocks[0].elementVisible).to.equal(true);
+    expect(blocks[0].shadowRoot.querySelector("#rendered")).to.not.equal(null);
+    expect(blocks[0].intersectionObserver).to.exist;
+    // a block the visitor never scrolled to stays lazy
+    expect(blocks[1].elementVisible).to.equal(false);
+    // the swap holds for the media's metadata, which lays the player out
+    await frame();
+    await frame();
+    expect(ready).to.equal(false);
+    expect(
+      element
+        .querySelector("h-a-x")
+        .classList.contains("haxcms-edit-mode-pending"),
+    ).to.equal(true);
+    blocks[0].querySelector("video").dispatchEvent(new Event("loadedmetadata"));
+    await new Promise((r) => setTimeout(r, 10));
+    await frame();
+    await microtasks();
+    expect(ready).to.equal(true);
+    expect(
+      element
+        .querySelector("h-a-x")
+        .classList.contains("haxcms-edit-mode-pending"),
+    ).to.equal(false);
+    element.appElement = null;
+    viewer.remove();
+  });
+
+  it("does not hold the viewer long for media that never loads", async () => {
+    const viewer = document.createElement("div");
+    viewer.innerHTML = "<test-lazy-block></test-lazy-block>";
+    document.body.appendChild(viewer);
+    await microtasks();
+    viewer.querySelector("test-lazy-block").elementVisible = true;
+    element.appElement = viewer;
+    store.editMode = true;
+    let ready = false;
+    element.whenEditModeReady().then(() => {
+      ready = true;
+    });
+    await microtasks();
+    body.innerHTML =
+      "<test-lazy-block><video preload='metadata'></video></test-lazy-block>";
+    body.finishImport();
+    await new Promise((r) => setTimeout(r, 700));
+    await frame();
+    await microtasks();
+    expect(ready).to.equal(true);
+    element.appElement = null;
+    viewer.remove();
   });
 });

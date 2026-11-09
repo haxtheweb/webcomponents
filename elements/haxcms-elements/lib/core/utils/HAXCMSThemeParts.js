@@ -11,10 +11,7 @@ const HAXCMSThemeParts = function (SuperClass) {
         autorun((_reaction) => {
           const _mobx_val_0 = toJS(store.editMode);
           Promise.resolve().then(() => {
-            const editMode = _mobx_val_0;
-            if (this.editMode !== editMode) {
-              this.editMode = editMode;
-            }
+            this._syncThemePartsEditMode(_mobx_val_0);
           });
         }),
       );
@@ -32,6 +29,41 @@ const HAXCMSThemeParts = function (SuperClass) {
           });
         }),
       );
+    }
+    /**
+     * Reflect store.editMode. Entering edit mode waits for the site editor
+     * to have the editable copy ready, the same gate HAXCMSTheme uses
+     * (_syncEditMode), so a theme does not hide its viewer content and dim
+     * its parts before the editor can take their place; that left the page
+     * empty for several frames (haxtheweb/issues#3263). Leaving is immediate.
+     */
+    _syncThemePartsEditMode(editMode) {
+      // themes route through their own gate
+      if (typeof this._syncEditMode === "function") {
+        this._syncEditMode(editMode);
+        return;
+      }
+      const editor =
+        store.cmsSiteEditor && store.cmsSiteEditor.instance
+          ? store.cmsSiteEditor.instance
+          : null;
+      if (
+        editMode &&
+        !this.editMode &&
+        editor &&
+        editor.isConnected &&
+        typeof editor.whenEditModeReady === "function"
+      ) {
+        editor.whenEditModeReady().then(() => {
+          if (store.editMode && !this.editMode) {
+            this.editMode = true;
+          }
+        });
+        return;
+      }
+      if (this.editMode !== editMode) {
+        this.editMode = editMode;
+      }
     }
     static get styles() {
       let styles = [];
