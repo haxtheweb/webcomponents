@@ -26,6 +26,7 @@ import {
 import {
   isSameOriginUploadedMarkup,
   iframeSandboxForSource,
+  urlHostMatches,
 } from "@haxtheweb/utils/lib/url.js";
 import {
   replaceLazyRun,
@@ -1743,6 +1744,15 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         let importPath = `${basePath}${items[i]}`;
         // account for external app store reference on import
         if (this.isExternalURLImport(items[i])) {
+          // security: the app store is JSON a site can point anywhere; only
+          // import cross-origin modules from origins we trust (or that the
+          // app store explicitly opted into, see isAllowedExternalImport)
+          if (!this.isAllowedExternalImport(items[i])) {
+            console.warn(
+              `hax-store: refusing to import ${i} from ${items[i]}; external origin is not allow-listed`,
+            );
+            continue;
+          }
           importPath = items[i];
         }
         // we have to import and then respond to it being imported by checking again
@@ -1781,6 +1791,48 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     }
 
     return new URL(url).origin !== location.origin;
+  }
+  /**
+   * External origins that app store autoloader entries may import code
+   * from. The page's own origin is always allowed (see isExternalURLImport);
+   * everything else has to be an https URL on one of these hosts, unless
+   * the app store sets `allowExternalImports: true`.
+   * @returns {Array<string>} host names (subdomains match too)
+   */
+  static get allowedExternalImportHosts() {
+    return ["cdn.hax.cloud", "cdn.webcomponents.psu.edu"];
+  }
+  /**
+   * Is this cross-origin module URL allowed to be imported?
+   * @param {string} string absolute URL
+   * @returns {boolean}
+   */
+  isAllowedExternalImport(string) {
+    if (this.appStore && this.appStore.allowExternalImports === true) {
+      return true;
+    }
+    let url;
+    try {
+      url = new URL(string);
+    } catch {
+      return false;
+    }
+    if (url.protocol !== "https:") {
+      return false;
+    }
+    const hosts = HaxStore.allowedExternalImportHosts;
+    if (globalThis.WCGlobalBasePath) {
+      // the configured CDN for this site is trusted by definition
+      try {
+        const cdn = new URL(globalThis.WCGlobalBasePath, location.href);
+        if (cdn.protocol === "https:") {
+          hosts.push(cdn.hostname);
+        }
+      } catch {
+        // not a URL, same-origin path
+      }
+    }
+    return urlHostMatches(url.href, hosts);
   }
   async _loadActiveDesignSystemIntegrations() {
     if (

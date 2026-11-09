@@ -223,13 +223,17 @@ describe("hax-store helpers round 5 (app store + editor command logic)", () => {
       expect(HAXStore.haxAutoloader.querySelector("import-fail-el")).to.exist;
     });
 
-    it("imports an external URL directly when referenced", async () => {
+    it("imports an external URL directly when the app store allows it", async () => {
       const originalWarn = console.warn;
+      const originalAppStore = HAXStore.appStore;
+      const originalAppStoreData = HAXStore.__appStoreData;
       // eslint-disable-next-line no-unused-vars -- written by the test, never read
       let warned = false;
       console.warn = () => {
         warned = true;
       };
+      // security: arbitrary external origins need the explicit opt in
+      HAXStore.appStore = { allowExternalImports: true };
       try {
         await HAXStore._handleDynamicImports(
           { "external-el": "https://example.invalid/el.js" },
@@ -238,6 +242,37 @@ describe("hax-store helpers round 5 (app store + editor command logic)", () => {
         expect(HAXStore.haxAutoloader.querySelector("external-el")).to.exist;
       } finally {
         console.warn = originalWarn;
+        HAXStore.appStore = originalAppStore;
+        // the appStore autorun writes __appStoreData asynchronously
+        await new Promise((r) => setTimeout(r, 0));
+        HAXStore.__appStoreData = originalAppStoreData;
+      }
+    });
+
+    it("refuses an external URL that is not allow-listed", async () => {
+      const originalWarn = console.warn;
+      const originalAppStore = HAXStore.appStore;
+      const originalAppStoreData = HAXStore.__appStoreData;
+      let warned = false;
+      console.warn = () => {
+        warned = true;
+      };
+      HAXStore.appStore = {};
+      try {
+        await HAXStore._handleDynamicImports(
+          { "refused-el": "https://example.invalid/refused.js" },
+          HAXStore.haxAutoloader,
+        );
+        expect(HAXStore.haxAutoloader.querySelector("refused-el")).to.equal(
+          null,
+        );
+        expect(warned).to.equal(true);
+      } finally {
+        console.warn = originalWarn;
+        HAXStore.appStore = originalAppStore;
+        // the appStore autorun writes __appStoreData asynchronously
+        await new Promise((r) => setTimeout(r, 0));
+        HAXStore.__appStoreData = originalAppStoreData;
       }
     });
   });
@@ -342,6 +377,7 @@ describe("hax-store helpers round 5 (app store + editor command logic)", () => {
     });
 
     it("force loads the remote app store when configured by url", () => {
+      HAXStore.__appStoreData = null;
       HAXStore.appStore = { url: "appstore.json" };
       let forced = false;
       HAXStore.forceAppStoreLoad = () => {
