@@ -38,5 +38,8 @@
   "details": "Дэлгэрэнгүй",
   "saved": "Хадгалагдлаа",
   "opensInNewWindow": "Шинэ цонхонд нээгдэнэ",
-  "resultsCount": "{count} үр дүн"
+  "resultsCount": "{count} үр дүн",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Merlin хаах"
 }

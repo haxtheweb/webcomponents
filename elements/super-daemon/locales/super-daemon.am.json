@@ -38,5 +38,8 @@
   "details": "ዝርዝሮች",
   "saved": "ተመዝግቧል",
   "opensInNewWindow": "በአዲስ መስኮት ይከፈታል",
-  "resultsCount": "{count} ውጤቶች"
+  "resultsCount": "{count} ውጤቶች",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Merlin ዝጋ"
 }

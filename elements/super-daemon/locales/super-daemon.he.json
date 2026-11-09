@@ -38,5 +38,8 @@
   "details": "פרטים",
   "saved": "נשמר",
   "opensInNewWindow": "נפתח בחלון חדש",
-  "resultsCount": "{count} תוצאות"
+  "resultsCount": "{count} תוצאות",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "סגור את Merlin"
 }

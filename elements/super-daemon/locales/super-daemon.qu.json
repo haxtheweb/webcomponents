@@ -38,5 +38,8 @@
   "details": "Willakuna",
   "saved": "Waqaychasqa",
   "opensInNewWindow": "Musuq ventanapi kichakun",
-  "resultsCount": "{count} lluqsiykuna"
+  "resultsCount": "{count} lluqsiykuna",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Merlin wisñay"
 }

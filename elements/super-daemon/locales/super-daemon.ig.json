@@ -38,5 +38,8 @@
   "details": "Nkọwa",
   "saved": "Echekwala",
   "opensInNewWindow": "Na-emepe na windo ọhụrụ",
-  "resultsCount": "Nsonaazụ {count}"
+  "resultsCount": "Nsonaazụ {count}",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Mechie Merlin"
 }

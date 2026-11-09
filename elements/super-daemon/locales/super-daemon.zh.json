@@ -38,5 +38,8 @@
   "details": "详情",
   "saved": "已保存",
   "opensInNewWindow": "在新窗口中打开",
-  "resultsCount": "{count} 个结果"
+  "resultsCount": "{count} 个结果",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "关闭 Merlin"
 }

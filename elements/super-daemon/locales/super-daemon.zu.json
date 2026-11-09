@@ -38,5 +38,8 @@
   "details": "Imininingwane",
   "saved": "Kugcinwe",
   "opensInNewWindow": "Kuvuleka ewindini elisha",
-  "resultsCount": "Imiphumela engu-{count}"
+  "resultsCount": "Imiphumela engu-{count}",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Vala i-Merlin"
 }

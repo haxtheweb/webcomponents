@@ -38,5 +38,8 @@
   "details": "Besonderhede",
   "saved": "Gestoor",
   "opensInNewWindow": "Maak in 'n nuwe venster oop",
-  "resultsCount": "{count} resultate"
+  "resultsCount": "{count} resultate",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Maak Merlin toe"
 }

@@ -38,5 +38,8 @@
   "details": "Тафсилот",
   "saved": "Захира шуд",
   "opensInNewWindow": "Дар равзанаи нав кушода мешавад",
-  "resultsCount": "{count} натиҷа"
+  "resultsCount": "{count} натиҷа",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Пӯшидани Merlin"
 }

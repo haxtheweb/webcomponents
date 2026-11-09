@@ -8,7 +8,7 @@
  * with the rest of the layer. Import this file directly when an element
  * needs only this piece, so a page does not download the whole layer.
  */
-import { css } from "lit";
+import { css, unsafeCSS } from "lit";
 
 /**
  * HAX UI admin tokens: the semantic layer admin surfaces (outline designer,
@@ -334,3 +334,39 @@ export const HaxUiAdminScheme = [
     }
   `,
 ];
+
+/**
+ * HAX UI dark chrome: the HAX UI theme tokens pinned to their dark values
+ * (the same values hax-ui-styles uses for its dark theme), plus
+ * color-scheme dark. Surfaces that must look the same in every theme wear
+ * it: the site editor and app-hax top bars, the Merlin popover they open,
+ * and toasts. The menus, fields and avatar frame inside them follow along.
+ * A plain object for setting on an element's style from script.
+ */
+export const HAX_UI_DARK_CHROME = {
+  "color-scheme": "dark",
+  "--hax-ui-color-scheme": "dark",
+  "--hax-ui-color": "var(--ddd-theme-default-white, #ffffff)",
+  "--hax-ui-color-focus": "var(--ddd-theme-default-white, #ffffff)",
+  "--hax-ui-color-faded": "#c5c3be",
+  "--hax-ui-background-color": "var(--ddd-theme-default-coalyGray, #262626)",
+  "--hax-ui-background-color-secondary": "#111",
+  "--hax-ui-background-color-faded": "#222",
+  "--hax-ui-color-accent": "#00c9ff",
+  "--hax-ui-color-accent-secondary": "#00c9ff",
+  "--hax-ui-background-color-accent": "#000",
+  "--hax-ui-color-danger": "#ff8f8f",
+  "--hax-ui-color-danger-secondary": "#ff2222",
+  "--hax-ui-background-color-danger": "#000",
+  "--hax-ui-border-color": "#000",
+};
+
+/**
+ * HAX_UI_DARK_CHROME as declarations, to drop into a rule:
+ * css`app-hax-top-bar { ${HaxUiDarkChromeDeclarations} }`.
+ */
+export const HaxUiDarkChromeDeclarations = unsafeCSS(
+  Object.keys(HAX_UI_DARK_CHROME)
+    .map((name) => `${name}: ${HAX_UI_DARK_CHROME[name]};`)
+    .join("\n"),
+);

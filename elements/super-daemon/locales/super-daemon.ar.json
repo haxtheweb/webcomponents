@@ -38,5 +38,8 @@
   "details": "التفاصيل",
   "saved": "محفوظ",
   "opensInNewWindow": "يُفتح في نافذة جديدة",
-  "resultsCount": "{count} نتيجة"
+  "resultsCount": "{count} نتيجة",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "إغلاق Merlin"
 }

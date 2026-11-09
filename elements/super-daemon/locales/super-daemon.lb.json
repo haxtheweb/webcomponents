@@ -38,5 +38,8 @@
   "details": "Detailer",
   "saved": "Gespäichert",
   "opensInNewWindow": "Mécht an enger neier Fënster op",
-  "resultsCount": "{count} Resultater"
+  "resultsCount": "{count} Resultater",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Merlin zoumaachen"
 }

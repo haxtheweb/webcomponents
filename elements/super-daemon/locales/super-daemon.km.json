@@ -38,5 +38,8 @@
   "details": "ព័ត៌មាន",
   "saved": "បានរក្សាទុក",
   "opensInNewWindow": "បើកក្នុងបង្អួចថ្មី",
-  "resultsCount": "លទ្ធផល {count}"
+  "resultsCount": "លទ្ធផល {count}",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "បិទ Merlin"
 }

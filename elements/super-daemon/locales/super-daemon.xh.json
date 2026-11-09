@@ -38,5 +38,8 @@
   "details": "Iinkcukacha",
   "saved": "Igciniwe",
   "opensInNewWindow": "Ivula kwifestile entsha",
-  "resultsCount": "Iziphumo ezingu-{count}"
+  "resultsCount": "Iziphumo ezingu-{count}",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Vala Merlin"
 }

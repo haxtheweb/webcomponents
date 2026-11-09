@@ -38,5 +38,8 @@
   "details": "Manylion",
   "saved": "Wedi'i gadw",
   "opensInNewWindow": "Yn agor mewn ffenestr newydd",
-  "resultsCount": "{count} canlyniad"
+  "resultsCount": "{count} canlyniad",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Cau Merlin"
 }

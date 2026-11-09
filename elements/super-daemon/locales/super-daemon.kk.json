@@ -38,5 +38,8 @@
   "details": "Ақпарат",
   "saved": "Сақталды",
   "opensInNewWindow": "Жаңа терезеде ашылады",
-  "resultsCount": "{count} нәтиже"
+  "resultsCount": "{count} нәтиже",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Merlin жабу"
 }

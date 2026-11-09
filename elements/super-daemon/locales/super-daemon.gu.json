@@ -38,5 +38,8 @@
   "details": "વિગતો",
   "saved": "સાચવાયું",
   "opensInNewWindow": "નવી વિન્ડોમાં ખુલે છે",
-  "resultsCount": "{count} પરિણામો"
+  "resultsCount": "{count} પરિણામો",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Merlin બંધ કરો"
 }

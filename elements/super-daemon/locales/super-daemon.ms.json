@@ -38,5 +38,8 @@
   "details": "Butiran",
   "saved": "Disimpan",
   "opensInNewWindow": "Dibuka dalam tetingkap baharu",
-  "resultsCount": "{count} hasil"
+  "resultsCount": "{count} hasil",
+  "superDaemon": "Super Daemon",
+  "merlin": "Merlin",
+  "closeMerlin": "Tutup Merlin"
 }
