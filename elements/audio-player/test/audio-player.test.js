@@ -3,7 +3,7 @@ import "../audio-player.js";
 
 // a real audio file served by the test runner, so no test waits on the network
 const localAudio = new URL(
-  "../../a11y-media-player/demo/samples/bueller.mp3",
+  "../../app-hax/lib/assets/sounds/success.mp3",
   import.meta.url,
 ).href;
 
