@@ -3167,6 +3167,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       siteSettings: "Site Settings",
       siteMenu: "Site settings quick links",
       siteMenuDashboard: "Dashboard",
+      closeMerlin: "Close Merlin",
       siteMenuContent: "Content",
       siteMenuStructure: "Structure",
       siteMenuFiles: "Files",
