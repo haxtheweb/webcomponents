@@ -132,8 +132,10 @@ class BootstrapSearch extends I18NMixin(LitElement) {
   _resolveBootstrapStylesheetPath() {
     const packageURL = decodeURIComponent(import.meta.url);
     if (packageURL.indexOf("/node_modules/@haxtheweb/") !== -1) {
-      return new URL("../../bootstrap/dist/css/bootstrap.min.css", packageURL)
-        .href;
+      return new URL(
+        "../../../bootstrap/dist/css/bootstrap.min.css",
+        packageURL,
+      ).href;
     }
     return new URL(
       "../../../node_modules/bootstrap/dist/css/bootstrap.min.css",

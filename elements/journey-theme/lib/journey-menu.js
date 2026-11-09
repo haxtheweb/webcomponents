@@ -199,14 +199,20 @@ export class JourneyMenu extends I18NMixin(LitElement) {
           border: 0;
         }
 
+        /* visibility takes the closed menu's links out of the tab order;
+           it flips after the slide finishes */
         nav {
           transform: translateX(-100%);
-          transition: transform var(--ddd-duration-normal, 0.3s) ease;
+          visibility: hidden;
+          transition:
+            transform var(--ddd-duration-normal, 0.3s) ease,
+            visibility var(--ddd-duration-normal, 0.3s);
           padding-top: 60px;
         }
 
         nav.open {
           transform: translateX(0);
+          visibility: visible;
         }
       }
 

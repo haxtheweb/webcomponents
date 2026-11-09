@@ -26,7 +26,23 @@ describe("a11y-collapse learner data", () => {
     expect(Object.values(s.object.definition.name)[0]).to.equal(
       "What is a cell?",
     );
-    expect(s.result).to.equal(undefined);
+    // opening it is what makes it done
+    expect(s.result).to.deep.equal({ completion: true });
+    expect(seen[0].resultCompletion).to.equal(true);
+  });
+
+  it("counts toward the page while there is something to open", async () => {
+    const closed = await fixture(html`
+      <a11y-collapse heading="Closed"><p>x</p></a11y-collapse>
+    `);
+    expect(closed.xapiCountsTowardCompletion()).to.equal(true);
+    closed._onClick();
+    // opened by the learner: still an item, now done
+    expect(closed.xapiCountsTowardCompletion()).to.equal(true);
+    const open = await fixture(html`
+      <a11y-collapse heading="Open" expanded><p>x</p></a11y-collapse>
+    `);
+    expect(open.xapiCountsTowardCompletion()).to.equal(false);
   });
 
   it("uses a slotted heading as the name", async () => {

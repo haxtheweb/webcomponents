@@ -82,7 +82,8 @@
           "wild-hair": "Pelo blanco alborotado",
           "messy-hair": "Pelo revuelto con cicatriz",
           "sparkle-selects": "Sparkle Selects (casco)",
-          "saber-cats": "Saber Cats (casco)"
+          "saber-cats": "Saber Cats (casco)",
+          "future-traveler": "Future Traveler (casco)"
         }
       },
       {
@@ -161,7 +162,8 @@
           "saber-cats": "Saber Cats (local)",
           "saber-cats-away": "Saber Cats (visitante)",
           "icers": "Icers (local)",
-          "icers-away": "Icers (visitante)"
+          "icers-away": "Icers (visitante)",
+          "future-traveler": "Future Traveler"
         }
       },
       {

@@ -73,6 +73,16 @@ function answer(el, objectKey, success, done) {
   );
 }
 
+// what the reading tracker reports once the end of a page was seen
+function readPage(id) {
+  LearnerProgress._reportReading("completed", 1, {
+    id,
+    url: new URL(id, document.baseURI).href,
+    title: id,
+    started: Date.now(),
+  });
+}
+
 async function goTo(id) {
   store.activeId = id;
   await flush();
@@ -200,18 +210,28 @@ describe("HAXcms learner progress", () => {
     expect(LearnerProgress.pageProgress().status).to.equal("in-progress");
     answer(host, "q1", true, true);
     // one of the two trackable elements is done: the page isn't yet
-    expect(LearnerProgress.pageProgress()).to.deep.equal({
+    expect(LearnerProgress.pageProgress()).to.deep.include({
       status: "in-progress",
       engaged: 1,
       done: 1,
       trackable: 2,
     });
     answer(host, "c1", true, true);
-    expect(LearnerProgress.pageProgress()).to.deep.equal({
+    // every activity done, but the page was not read yet
+    expect(LearnerProgress.pageProgress()).to.deep.include({
+      status: "in-progress",
+      engaged: 2,
+      done: 2,
+      trackable: 2,
+      percent: 0.667,
+    });
+    readPage("p1");
+    expect(LearnerProgress.pageProgress()).to.deep.include({
       status: "done",
       engaged: 2,
       done: 2,
       trackable: 2,
+      percent: 1,
     });
     await goTo("p2");
     const site = LearnerProgress.siteProgress();
@@ -234,6 +254,7 @@ describe("HAXcms learner progress", () => {
 
   it("site menu marks pages with spoken text and shows pages done", async () => {
     answer(host, "q1", true, true);
+    readPage("p1");
     await goTo("p3");
     answer(host, "q3", false, false);
     await goTo("p4");

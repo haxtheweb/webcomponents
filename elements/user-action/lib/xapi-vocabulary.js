@@ -7,9 +7,9 @@ export const XAPI_VOCABULARY = {
     event: "user-engagement",
     verbs: ["experienced"],
     objectType: "http://adlnet.gov/expapi/activities/interaction",
-    result: [],
-    countsTowardCompletion: false,
-    done: "never required; records that a learner opened the hidden content",
+    result: ["completion"],
+    countsTowardCompletion: true,
+    done: "opened by the learner (one already open when the page loads has nothing to open and does not count)",
     source: "elements/a11y-collapse/a11y-collapse.js",
   },
   "a11y-media-player": {
@@ -120,6 +120,20 @@ export const XAPI_VOCABULARY = {
     countsTowardCompletion: false,
     done: "never required; not every H5P content type reports completion",
     source: "elements/h5p-element/h5p-element.js",
+  },
+  "haxcms-page": {
+    tag: "haxcms-page",
+    event: "user-engagement",
+    verbs: ["experienced", "progressed", "completed"],
+    objectType: "http://adlnet.gov/expapi/activities/lesson",
+    result: [
+      "completion",
+      "duration",
+      "extensions.https://haxtheweb.org/xapi/extensions/progress",
+    ],
+    countsTowardCompletion: false,
+    done: "page content scrolled through to its end (each page counts its reading toward being done on its own)",
+    source: "elements/haxcms-elements/lib/core/haxcms-reading-progress.js",
   },
   "image-compare-slider": {
     tag: "image-compare-slider",

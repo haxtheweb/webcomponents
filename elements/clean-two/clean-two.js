@@ -411,6 +411,21 @@ class CleanTwo extends LTIResizingMixin(
         :host([responsive-size="lg"]) main {
           width: 800px;
         }
+        /*
+         * The page navigation and footer share the content column on
+         * desktop: main is centered with auto side margins (and lg pads
+         * it like the base main rule), so the footer gets the same
+         * centering and side padding. Without this the footer sits at the
+         * left edge of .content instead of under the content blocks.
+         */
+        :host([responsive-size="lg"]) footer,
+        :host([responsive-size="xl"]) footer {
+          margin-left: auto;
+          margin-right: auto;
+        }
+        :host([responsive-size="lg"]) footer {
+          padding: 0 var(--ddd-spacing-8);
+        }
 
         .qr-code-btn {
           padding: 8px;
@@ -746,7 +761,9 @@ class CleanTwo extends LTIResizingMixin(
         <a class="skip-link" href="#contentcontainer"
           >${this.t.skipToContent}</a
         >
-        <div class="left-col" part="left-col">${this.HAXCMSMobileMenu()}</div>
+        <div class="left-col" part="left-col" ?inert="${!this.menuOpen}">
+          ${this.HAXCMSMobileMenu()}
+        </div>
         <div class="content-wrapper">
           <div class="content">
             <div id="haxcms-theme-top"></div>
