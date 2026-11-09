@@ -82,6 +82,12 @@ function load_library() {
   };
   let script = globalThis.document.createElement("script");
   script.type = "text/javascript";
+  // security follow-up: pin this with Subresource Integrity
+  // (script.integrity = "sha384-..."; script.crossOrigin = "anonymous").
+  // The hash must be computed from the exact pinned URL above
+  // (curl URL | openssl dgst -sha384 -binary | openssl base64 -A); it was
+  // not added here because the CDN was unreachable from the audit sandbox
+  // and a guessed hash would break MathJax for everyone.
   script.src = src;
   script.async = true;
   script.onerror = function () {

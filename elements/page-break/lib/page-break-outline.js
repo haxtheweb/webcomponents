@@ -1,6 +1,16 @@
 import { pageBreakManager } from "./page-break-manager.js";
 import { normalizeEventPath } from "@haxtheweb/utils/lib/events.js";
 
+/** escape a value for use as text or inside a double quoted attribute */
+function escapeHTML(value) {
+  return String(value == null ? "" : value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 export class PageBreakOutline extends HTMLElement {
   constructor() {
     super();
@@ -120,21 +130,25 @@ export class PageBreakOutline extends HTMLElement {
           }
         }
         let depth = 0;
-        if (
-          i !== 0 &&
-          el.parent &&
-          this.target.querySelector(`page-break[path="${el.parent}"]`)
-        ) {
-          depth =
-            this.target.querySelector(`page-break[path="${el.parent}"]`).depth +
-            1;
+        // a quote in a path would otherwise break (or redirect) the selector
+        const parentEl =
+          i !== 0 && el.parent
+            ? this.target.querySelector(
+                `page-break[path="${CSS.escape(String(el.parent))}"]`,
+              )
+            : null;
+        if (parentEl) {
+          depth = parentEl.depth + 1;
         }
+        // security: path, parent and title are authored page values that
+        // end up in markup, so escape them (the list structure itself is
+        // built from fixed tags)
         html +=
           "<li>" +
           "\n" +
-          `<a href="${this.basePath + el.path}" data-path="${
-            el.path
-          }" data-parent="${el.parent}" data-depth="${depth}">${el.title}</a>` +
+          `<a href="${escapeHTML(this.basePath + el.path)}" data-path="${escapeHTML(
+            el.path,
+          )}" data-parent="${escapeHTML(el.parent)}" data-depth="${Number(depth) || 0}">${escapeHTML(el.title)}</a>` +
           "\n";
         // set back into the element how deep it is; weird I know but the element doesn't
         // know this, the tree builder would though
