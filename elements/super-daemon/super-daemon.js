@@ -1263,14 +1263,21 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
           // inline-token path: close() restores the stripped token, so do
           // nothing here — just fall through to this.close() below.
         } else {
-          this.activeNode.textContent = this.value;
+          // put back what was typed into Merlin; with nothing typed, leave
+          // the empty line alone (wiping it removed its <br>, leaving a
+          // block with no caret position so typing had nowhere to go)
+          if (this.value) {
+            this.activeNode.textContent = this.value;
+          }
           this.activeNode.focus();
           this.activeRange.setStart(this.activeNode, 0);
           this.activeRange.collapse(true);
           this.activeSelection.removeAllRanges();
           this.activeSelection.addRange(this.activeRange);
-          this.activeSelection.selectAllChildren(this.activeNode);
-          this.activeSelection.collapseToEnd();
+          if (this.value) {
+            this.activeSelection.selectAllChildren(this.activeNode);
+            this.activeSelection.collapseToEnd();
+          }
         }
       } catch (e) {
         console.warn(e);
