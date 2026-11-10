@@ -47,10 +47,7 @@ import {
 import { styleMap } from "lit/directives/style-map.js";
 import "@haxtheweb/simple-modal/simple-modal.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
-import "./haxcms-site-insights.js"; // Legacy element tag name retained; it now renders Reports UI.
 import "./haxcms-darkmode-toggle.js";
-import "../ui-components/site/site-remote-content.js";
-import "@haxtheweb/page-flag/page-flag.js";
 import { SiteView } from "../ui-components/magic/site-view.js";
 import { haxcmsApiMessage } from "./utils/HAXCMSApiMessages.js";
 import { urlHostMatches } from "./utils/urlHost.js";
