@@ -150,14 +150,13 @@ describe("insights-accessibility", () => {
     expect(input.value).to.equal(results.accessibility.altRows[i].alt);
   });
 
-  it("Save alt text is a disabled Coming soon control with the needs text", async () => {
+  it("Save alt text is disabled until there is an edit and a backend", async () => {
     const el = await render(results);
     const save = el.shadowRoot.querySelector(".save-alt");
     expect(save.disabled).to.equal(true);
-    expect(save.textContent).to.contain("Coming soon");
-    expect(save.title).to.equal(results.accessibility.bulkAltSave.needs);
+    expect(save.textContent).to.not.contain("Coming soon");
     expect(el.shadowRoot.querySelector(".note").textContent).to.contain(
-      "not saved",
+      "Saving needs this site open on its HAXcms server",
     );
     const yt = el.shadowRoot.querySelector('.kpi[data-tone="soon"]');
     expect(yt.textContent).to.contain(

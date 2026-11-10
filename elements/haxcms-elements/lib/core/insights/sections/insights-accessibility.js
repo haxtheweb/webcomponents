@@ -7,6 +7,11 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { InsightsStyles } from "../insights-styles.js";
 import { altStatus } from "../insights-analyzer.js";
 import { loadInsightsSpec } from "../insights-loader.js";
+import {
+  altSaveAvailable,
+  groupAltEdits,
+  saveAltEdits,
+} from "../insights-alt-save.js";
 
 const LIST_LIMIT = 50;
 const ALT_TONE = { fix: "danger", check: "warning", ok: "success" };
@@ -16,8 +21,10 @@ const STATE_TONE = { fails: "danger", check: "warning", passes: "success" };
  * `insights-accessibility`
  * Accessibility screen of Reports (Insights): WCAG 2.0 AA checks a script
  * can make from stored HTML, heading order, theme contrast and an alt text
- * review table whose status updates as a person types. Edits stay on this
- * screen; saving many pages at once is not available yet.
+ * review table whose status updates as a person types. Save alt text writes
+ * the edits through the site's block operations API, one change per page and
+ * a capped number of pages per click (haxtheweb/issues#3270); on a published
+ * copy with no backend the edits stay on this screen.
  * See haxtheweb/issues#3180.
  *
  * @fires insights-open-page - detail `{ slug }` to visit a page
@@ -42,6 +49,12 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
       _showAllAlt: { state: true },
       _showAllHeadings: { state: true },
       _announce: { state: true },
+      _canSave: { state: true },
+      _confirming: { state: true },
+      _saving: { state: true },
+      _progress: { state: true },
+      _rowState: { state: true },
+      _saveNote: { state: true },
     };
   }
 
@@ -57,6 +70,12 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
     this._showAllAlt = false;
     this._showAllHeadings = false;
     this._announce = "";
+    this._canSave = false;
+    this._confirming = false;
+    this._saving = false;
+    this._progress = null;
+    this._rowState = {};
+    this._saveNote = null;
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -90,8 +109,36 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
         "Type in a field to try a new alt; the status updates as you type",
       discard: "Discard edits",
       saveAlt: "Save alt text",
-      notSaved:
-        "Edits are not saved yet. They stay on this screen until you leave it; Open page fixes one image now in the editor.",
+      saveNotAvailable:
+        "Saving needs this site open on its HAXcms server. Edits stay on this screen; Open page fixes one image in the editor.",
+      saveHint:
+        "Save alt text writes each edited page as its own change, up to {max} pages per click.",
+      confirmSave: "Save {n} alt text changes on {pages} pages?",
+      confirmSaveOne: "Save 1 alt text change on 1 page?",
+      confirmSaveOnePage: "Save {n} alt text changes on 1 page?",
+      confirmCap:
+        "This click saves the first {max} pages; click Save again for the other {rest}.",
+      confirmEditor:
+        "Close these pages in the editor first. A page that changed since this scan is skipped, never overwritten.",
+      saveNow: "Save now",
+      cancel: "Cancel",
+      savingPage: "Saving page {done} of {total}: {title}",
+      savedSummary: "Saved {n} alt text changes on {pages} pages.",
+      savedSummaryOne: "Saved 1 alt text change on 1 page.",
+      savedSummaryOnePage: "Saved {n} alt text changes on 1 page.",
+      notSavedSummary: "{n} not saved; see the rows marked Not saved.",
+      pagesLeftSummary: "{n} more pages have edits; click Save alt text again.",
+      pagesLeftSummaryOne: "1 more page has edits; click Save alt text again.",
+      rateLimited:
+        "Stopped: the site's limit on content changes was reached. Try again in {n} seconds.",
+      savedRow: "Saved",
+      notSavedRow: "Not saved",
+      failStale:
+        "This image changed on the server since the scan. Rescan, then edit it again.",
+      failLocked: "The page is locked.",
+      failRefused: "The server refused this text: {detail}",
+      failMissing: "The page no longer exists.",
+      failError: "Could not save: {detail}",
       altCaption: "Images and their alt text",
       preview: "Preview",
       imageAndPage: "Image and page",
@@ -159,12 +206,22 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
           // without rules, edited rows keep their scanned status
         });
     }
+    altSaveAvailable()
+      .then((ok) => {
+        this._canSave = ok;
+      })
+      .catch(() => {
+        this._canSave = false;
+      });
   }
 
   willUpdate(changed) {
     if (changed.has("results") && changed.get("results") !== undefined) {
       this._edits = {};
       this._pinned = {};
+      this._rowState = {};
+      this._saveNote = null;
+      this._confirming = false;
     }
   }
 
@@ -245,6 +302,40 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
           height: 20px;
           border-radius: var(--hax-ui-radius);
           box-shadow: inset 0 0 0 1px var(--hax-ui-line-strong);
+        }
+        .save-panel {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          margin-bottom: var(--hax-ui-gap-md);
+          padding: var(--hax-ui-gap-md);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius);
+          background-color: var(--hax-ui-surface);
+        }
+        .save-panel p {
+          flex: 1 1 100%;
+          margin: 0;
+        }
+        .save-panel .question {
+          font-weight: var(--ddd-font-weight-bold, 700);
+        }
+        .save-panel .actions {
+          display: flex;
+          gap: var(--hax-ui-gap);
+        }
+        .save-progress {
+          flex: 0 0 160px;
+        }
+        .save-note {
+          margin-bottom: var(--hax-ui-gap-md);
+        }
+        .save-state[data-state="failed"] {
+          color: var(--hax-ui-danger);
+        }
+        .save-state[data-state="saved"] {
+          color: var(--hax-ui-success);
         }
         td.found {
           white-space: normal;
@@ -330,6 +421,11 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
     }
     this._edits = edits;
     this._pinned = Object.assign({}, this._pinned, { [item.i]: true });
+    if (this._rowState[item.i]) {
+      const rowState = Object.assign({}, this._rowState);
+      delete rowState[item.i];
+      this._rowState = rowState;
+    }
     if (this.spec) {
       const next =
         value === orig || (orig === null && value === "")
@@ -476,6 +572,10 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
     const limited = this._showAllAlt ? shown : shown.slice(0, LIST_LIMIT);
     const editedCount = Object.keys(this._edits).length;
     const save = a.bulkAltSave || {};
+    const maxPages =
+      typeof save.maxPagesPerSave === "number" && save.maxPagesPerSave > 0
+        ? save.maxPagesPerSave
+        : 20;
     return html`<section aria-labelledby="alt-title">
       <h3 class="block" id="alt-title">
         ${this.t.altTitle} <span class="hint">${this.t.altHint}</span>
@@ -509,9 +609,11 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
         <button
           type="button"
           class="sbtn discard"
-          ?disabled="${!editedCount}"
+          ?disabled="${!editedCount || this._saving}"
           @click="${() => {
             this._edits = {};
+            this._rowState = {};
+            this._confirming = false;
             this._announce = "";
           }}"
         >
@@ -520,15 +622,21 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
         <button
           type="button"
           class="sbtn save-alt"
-          disabled
-          title="${save.needs || ""}"
-          aria-describedby="save-needs"
+          ?disabled="${!editedCount || !this._canSave || this._saving}"
+          aria-describedby="save-hint"
+          @click="${this._askSave}"
         >
           ${this.t.saveAlt}
-          <span class="hax-ui-pill" data-tone="soon">${this.t.comingSoon}</span>
         </button>
-        <span class="sr-only" id="save-needs">${save.needs || ""}</span>
+        <span class="sr-only" id="save-hint"
+          >${
+            this._canSave
+              ? this._f(this.t.saveHint, { max: maxPages })
+              : this.t.saveNotAvailable
+          }</span
+        >
       </div>
+      ${this._renderSavePanel(items, maxPages)}
       ${
         !items.length
           ? html`<p class="hax-ui-empty empty">${this.t.noImages}</p>`
@@ -569,8 +677,259 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
             </button>`
           : nothing
       }
-      <p class="hax-ui-note note">${this.t.notSaved}</p>
+      <p class="hax-ui-note note">
+        ${
+          this._canSave
+            ? this._f(this.t.saveHint, { max: maxPages })
+            : this.t.saveNotAvailable
+        }
+      </p>
     </section>`;
+  }
+
+  /** edited rows grouped by page, only the ones that differ from storage */
+  _pendingPages() {
+    const a = (this.results && this.results.accessibility) || {};
+    return groupAltEdits(a.altRows || [], this._edits);
+  }
+
+  _askSave() {
+    if (!this._pendingPages().length) {
+      return;
+    }
+    this._confirming = true;
+    this._saveNote = null;
+    this.updateComplete.then(() => {
+      const btn = this.shadowRoot && this.shadowRoot.querySelector(".save-now");
+      if (btn) {
+        btn.focus();
+      }
+    });
+  }
+
+  _cancelSave() {
+    this._confirming = false;
+    this.updateComplete.then(() => {
+      const btn = this.shadowRoot && this.shadowRoot.querySelector(".save-alt");
+      if (btn) {
+        btn.focus();
+      }
+    });
+  }
+
+  async _runSave(maxPages) {
+    const a = (this.results && this.results.accessibility) || {};
+    const rows = a.altRows || [];
+    this._confirming = false;
+    this._saving = true;
+    this._saveNote = null;
+    this._progress = { done: 0, total: 0, title: "" };
+    let outcome = null;
+    try {
+      outcome = await saveAltEdits(rows, this._edits, {
+        spec: this.spec,
+        maxPages: maxPages,
+        onProgress: (p) => {
+          this._progress = p;
+          if (p.title) {
+            this._announce = this._f(this.t.savingPage, {
+              done: p.done + 1,
+              total: p.total,
+              title: p.title,
+            });
+          }
+        },
+      });
+    } catch (e) {
+      outcome = {
+        saved: {},
+        failed: {},
+        pagesSaved: 0,
+        pagesLeft: 0,
+        stopped: null,
+        error: String((e && e.message) || e),
+      };
+    }
+    this._applySaveOutcome(rows, outcome);
+    this._saving = false;
+    this._progress = null;
+  }
+
+  _failText(f) {
+    const detail = f.message || "";
+    switch (f.kind) {
+      case "stale":
+        return this.t.failStale;
+      case "locked":
+        return detail || this.t.failLocked;
+      case "refused":
+        return this._f(this.t.failRefused, { detail: detail });
+      case "missing":
+        return this.t.failMissing;
+      default:
+        return this._f(this.t.failError, { detail: detail || "-" });
+    }
+  }
+
+  _applySaveOutcome(rows, outcome) {
+    const edits = Object.assign({}, this._edits);
+    const rowState = Object.assign({}, this._rowState);
+    const savedRows = Object.keys(outcome.saved);
+    savedRows.forEach((key) => {
+      const i = Number(key);
+      const row = rows[i];
+      const value = outcome.saved[key];
+      if (row) {
+        // the stored alt is now the edit; rescan to refresh other screens
+        row.alt = value;
+        if (this.spec) {
+          const st = altStatus(
+            value,
+            { inLink: row.inLink, file: row.file },
+            this.spec,
+          );
+          row.status = st.status;
+          row.reason = st.reason;
+          row.reasonText = st.text;
+        }
+      }
+      delete edits[i];
+      rowState[i] = { state: "saved", text: this.t.savedRow };
+    });
+    const failedRows = Object.keys(outcome.failed);
+    failedRows.forEach((key) => {
+      rowState[Number(key)] = {
+        state: "failed",
+        text: this._failText(outcome.failed[key]),
+      };
+    });
+    this._edits = edits;
+    this._rowState = rowState;
+    const parts = [];
+    if (savedRows.length) {
+      parts.push(
+        outcome.pagesSaved === 1
+          ? savedRows.length === 1
+            ? this.t.savedSummaryOne
+            : this._f(this.t.savedSummaryOnePage, {
+                n: this._n(savedRows.length),
+              })
+          : this._f(this.t.savedSummary, {
+              n: this._n(savedRows.length),
+              pages: this._n(outcome.pagesSaved),
+            }),
+      );
+    }
+    if (failedRows.length) {
+      parts.push(
+        this._f(this.t.notSavedSummary, { n: this._n(failedRows.length) }),
+      );
+    }
+    if (outcome.error) {
+      parts.push(this._f(this.t.failError, { detail: outcome.error }));
+    }
+    if (outcome.stopped) {
+      parts.push(
+        outcome.stopped.message ||
+          this._f(this.t.rateLimited, { n: outcome.stopped.retryAfter || 60 }),
+      );
+    }
+    if (outcome.pagesLeft > 0 && !outcome.stopped) {
+      parts.push(
+        outcome.pagesLeft === 1
+          ? this.t.pagesLeftSummaryOne
+          : this._f(this.t.pagesLeftSummary, {
+              n: this._n(outcome.pagesLeft),
+            }),
+      );
+    }
+    const tone =
+      failedRows.length || outcome.stopped || outcome.error
+        ? "warning"
+        : "success";
+    this._saveNote = { tone: tone, text: parts.join(" ") };
+    this._announce = this._saveNote.text;
+  }
+
+  _renderSavePanel(items, maxPages) {
+    if (this._saving && this._progress) {
+      const p = this._progress;
+      return html`<div class="save-panel" role="status">
+        <progress
+          class="save-progress"
+          max="${p.total || 1}"
+          .value="${p.done}"
+          aria-label="${this.t.saveAlt}"
+        ></progress>
+        <span
+          >${
+            p.title
+              ? this._f(this.t.savingPage, {
+                  done: p.done + 1,
+                  total: p.total,
+                  title: p.title,
+                })
+              : ""
+          }</span
+        >
+      </div>`;
+    }
+    if (this._confirming) {
+      const pages = this._pendingPages();
+      const n = pages.reduce((sum, page) => sum + page.items.length, 0);
+      const question =
+        pages.length === 1
+          ? n === 1
+            ? this.t.confirmSaveOne
+            : this._f(this.t.confirmSaveOnePage, { n: this._n(n) })
+          : this._f(this.t.confirmSave, {
+              n: this._n(n),
+              pages: this._n(pages.length),
+            });
+      return html`<div
+        class="save-panel confirm"
+        role="group"
+        aria-labelledby="save-question"
+      >
+        <p id="save-question" class="question">${question}</p>
+        ${
+          pages.length > maxPages
+            ? html`<p class="cap">
+                ${this._f(this.t.confirmCap, {
+                  max: maxPages,
+                  rest: this._n(pages.length - maxPages),
+                })}
+              </p>`
+            : nothing
+        }
+        <p class="meta">${this.t.confirmEditor}</p>
+        <div class="actions">
+          <button
+            type="button"
+            class="sbtn save-now"
+            @click="${() => this._runSave(maxPages)}"
+          >
+            ${this.t.saveNow}
+          </button>
+          <button
+            type="button"
+            class="sbtn cancel-save"
+            @click="${this._cancelSave}"
+          >
+            ${this.t.cancel}
+          </button>
+        </div>
+      </div>`;
+    }
+    if (this._saveNote) {
+      return html`<p
+        class="hax-ui-note save-note"
+        data-tone="${this._saveNote.tone}"
+      >
+        ${this._saveNote.text}
+      </p>`;
+    }
+    return nothing;
   }
 
   _renderAltRow(x) {
@@ -587,7 +946,11 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
       file: row.file,
       page: row.pageTitle,
     });
-    return html`<tr data-row="${x.i}" data-status="${x.status}">
+    return html`<tr
+      data-row="${x.i}"
+      data-status="${x.status}"
+      data-save="${this._rowState[x.i] ? this._rowState[x.i].state : ""}"
+    >
       <td>
         <img class="thumb" src="${row.src}" alt="" loading="lazy" />
       </td>
@@ -608,6 +971,7 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
           placeholder="${x.alt === null ? this.t.noAltAttr : this.t.emptyAlt}"
           aria-label="${label}"
           aria-describedby="st-${x.i}"
+          ?disabled="${this._saving}"
           @input="${(e) => this._onAltInput(e, x)}"
           @keydown="${(e) => this._onAltKeydown(e, x)}"
         />
@@ -627,6 +991,20 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
           >${this._altLabel(x.status)}</span
         >
         <span class="meta reason">${x.reason}</span>
+        ${
+          this._rowState[x.i]
+            ? html`<span
+                class="meta save-state"
+                data-state="${this._rowState[x.i].state}"
+                >${
+                  this._rowState[x.i].state === "saved"
+                    ? this.t.savedRow
+                    : html`<strong>${this.t.notSavedRow}:</strong>
+                        ${this._rowState[x.i].text}`
+                }</span
+              >`
+            : nothing
+        }
       </td>
       <td>
         <button
