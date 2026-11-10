@@ -628,7 +628,7 @@
   },
   "elements/haxcms-elements/lib/core/haxcms-site-editor-ui.js": {
     "eqeqeq": {
-      "count": 16
+      "count": 15
     },
     "haxtheweb-leaks/autorun-in-constructor": {
       "count": 8
