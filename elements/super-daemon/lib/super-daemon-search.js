@@ -208,10 +208,6 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
       }
       <simple-fields-field
         id="inputfilter"
-        role="combobox"
-        aria-expanded="false"
-        aria-autocomplete="list"
-        aria-haspopup="listbox"
         ?disabled="${this.disabled}"
         @value-changed="${this.inputfilterChanged}"
         @keydown="${this._inputKeydown}"
@@ -408,6 +404,21 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
 
   fieldFocus(_e) {
     this.focused = true;
+  }
+
+  /**
+   * The text input that really holds focus (inside simple-fields-field).
+   * super-daemon-ui makes it the combobox: role, expanded state and the
+   * highlighted result (aria-activedescendant) all live on this element.
+   *
+   * @readonly
+   */
+  get inputElement() {
+    const field =
+      this.shadowRoot && this.shadowRoot.querySelector("#inputfilter");
+    return field && field.shadowRoot
+      ? field.shadowRoot.querySelector("input")
+      : null;
   }
 
   focusInput() {

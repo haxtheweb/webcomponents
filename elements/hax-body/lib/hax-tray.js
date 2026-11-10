@@ -436,6 +436,9 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
           box-shadow: inset 0 0 4px var(--ddd-theme-default-limestoneGray);
           background-color: var(--ddd-theme-default-limestoneGray);
         }
+        /* collapsed: the panel is also inert (render), so nothing inside
+           it, including children that force visibility: visible, can be
+           reached with Tab or by assistive technology */
         :host([collapsed]) .detail {
           width: 0px;
           overflow: hidden;
@@ -717,7 +720,9 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
       ${this.panelOpsTemplate}
       <div class="wrapper ${this.trayStatus}">
         ${this.hideToolbar ? `` : html`${this.menuToolbarTemplate}`}
-        <div class="detail">${this.trayDetailTemplate}</div>
+        <div class="detail" ?inert="${this.collapsed}">
+          ${this.trayDetailTemplate}
+        </div>
         <div
           class="resize"
           id="resize"
