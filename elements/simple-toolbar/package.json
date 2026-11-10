@@ -43,7 +43,6 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@babel/core": "7.29.7",
     "@haxtheweb/a11y-menu-button": "^26.8.0",
     "@haxtheweb/d-d-d": "^26.8.0",
     "@haxtheweb/radio-behaviors": "^26.8.0",

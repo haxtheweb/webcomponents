@@ -30,7 +30,6 @@
     "test": "web-test-runner \"test/**/*.test.js\" --coverage --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium"
   },
   "dependencies": {
-    "@babel/core": "7.29.7",
     "@haxtheweb/accent-card": "^26.8.0",
     "@haxtheweb/course-design": "^26.8.0",
     "@haxtheweb/utils": "^26.8.0",

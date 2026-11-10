@@ -41,7 +41,6 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@babel/core": "7.29.7",
     "@haxtheweb/a11y-collapse": "^26.8.0",
     "@haxtheweb/a11y-tabs": "^26.8.0",
     "@haxtheweb/absolute-position-behavior": "^26.8.0",
@@ -122,6 +121,7 @@
     "web-social-share": "8.1.0"
   },
   "devDependencies": {
+    "@babel/core": "7.29.7",
     "@custom-elements-manifest/analyzer": "0.11.0",
     "@haxtheweb/deduping-fix": "^26.8.0",
     "@open-wc/testing": "4.0.0",

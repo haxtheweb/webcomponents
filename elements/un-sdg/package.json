@@ -30,7 +30,6 @@
     "test": "web-test-runner \"test/**/*.test.js\" --coverage --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium"
   },
   "dependencies": {
-    "@babel/core": "7.29.7",
     "lit": "3.3.3"
   },
   "devDependencies": {
