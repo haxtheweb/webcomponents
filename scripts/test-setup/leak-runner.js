@@ -565,25 +565,6 @@ function storeGrowth(before, after) {
   return grown;
 }
 
-/*
- * Shared leaks that every element using a common mixin has. They are
- * reported once as advisory (SHARED_LEAKS in scripts/lib/leak-check.mjs)
- * and released here before instances are counted, so `retained` still
- * catches anything else that keeps an element alive.
- */
-function releaseSharedLeaks() {
-  // i18n-manager keeps the registration of every I18NMixin instance
-  const m = globalThis.I18NManagerStore && globalThis.I18NManagerStore.instance;
-  if (m && Array.isArray(m.elements)) {
-    for (let i = m.elements.length - 1; i >= 0; i--) {
-      const ctx = m.elements[i] && m.elements[i].context;
-      if (ctx && ctx.nodeType === 1 && !ctx.isConnected) {
-        m.elements.splice(i, 1);
-      }
-    }
-  }
-}
-
 /* ---------- measuring ---------- */
 
 async function rafPerFrame() {
@@ -672,7 +653,6 @@ async function measureTag(stage, entry) {
   data.stores = storeGrowth(storesBefore, storesAfter);
   storesBefore.clear();
   storesAfter.clear();
-  releaseSharedLeaks();
   await collectGarbage();
   const rafAfter = await rafPerFrame();
 

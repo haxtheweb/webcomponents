@@ -1,5 +1,52 @@
 import { I18NManagerStore } from "../i18n-manager.js";
 export { I18NManagerStore };
+/**
+ * For elements that register with the manager directly instead of through
+ * I18NMixin (which does this on its own): release the manager's
+ * registrations of `context` when it leaves the page, so the registry does
+ * not keep it alive. Call from disconnectedCallback.
+ * @param {HTMLElement} context
+ */
+export function releaseLocalization(context) {
+  if (
+    !context ||
+    !I18NManagerStore ||
+    !I18NManagerStore.deregisterLocalization
+  ) {
+    return;
+  }
+  const details = I18NManagerStore.elements.filter(
+    (e) => e.context === context,
+  );
+  if (details.length) {
+    context.__i18nReleased = details;
+    context.__i18nLangAtDisconnect = I18NManagerStore.lang;
+    I18NManagerStore.deregisterLocalization(context);
+  }
+}
+/**
+ * Register again what releaseLocalization removed, when the element comes
+ * back (the HAX editor moves elements by removing and re-adding them). Call
+ * from connectedCallback. Like I18NMixin, restores the English defaults when
+ * the language went back to English while the element was away.
+ * @param {HTMLElement} context
+ */
+export function restoreLocalization(context) {
+  const details = context && context.__i18nReleased;
+  if (!details || !I18NManagerStore) {
+    return;
+  }
+  context.__i18nReleased = null;
+  const lang = I18NManagerStore.lang || "";
+  if (
+    context._t &&
+    lang !== context.__i18nLangAtDisconnect &&
+    (lang === "en" || lang.startsWith("en-"))
+  ) {
+    context.t = { ...context._t };
+  }
+  details.forEach((detail) => I18NManagerStore.registerLocalization(detail));
+}
 // SuperClass to simplify wiring up and noticing changes to t values
 // this is not required as you can simply use the event system
 // to keep to 0 dependencies but this helps simplify and standardize
