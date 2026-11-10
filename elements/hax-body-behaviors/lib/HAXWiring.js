@@ -350,10 +350,25 @@ export class HAXWiring {
     ) => {
       // support remote loading from a string
       if (typeof props === "string") {
-        props = await fetch(props).then((response) => {
-          if (response && response.json) return response.json();
-          return false;
-        });
+        const url = props;
+        // only parse json from a successful response: a 404 or 500 serves
+        // an html error page, and parsing that throws a misleading
+        // SyntaxError instead of saying the schema request failed
+        props = await fetch(url)
+          .then((response) => {
+            if (!response || !response.json) return false;
+            if (!response.ok) {
+              console.warn(
+                `${tag}: haxProperties request to ${url} failed with HTTP status ${response.status}`,
+              );
+              return false;
+            }
+            return response.json();
+          })
+          .catch((e) => {
+            console.warn(`${tag}: haxProperties request to ${url} failed`, e);
+            return false;
+          });
       }
       // a fetch that resolved without usable json must not fall through
       // to the defaults below: writing props.api on false throws in
