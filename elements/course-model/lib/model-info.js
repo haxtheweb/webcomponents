@@ -50,7 +50,7 @@ class ModelInfo extends LitElement {
         @media screen and (min-width: 320px) {
           .text {
             width: 100%;
-            border-right: none;
+            border-inline-end: none;
             border-bottom: solid 5px var(--ddd-theme-default-inventOrange);
             padding: 0;
         }
@@ -59,8 +59,8 @@ class ModelInfo extends LitElement {
           .text {
              width: 50%;
              border-bottom: none;
-             border-right: solid 5px var(--ddd-theme-default-inventOrange);
-             padding-right: var(--ddd-spacing-6);
+             border-inline-end: solid 5px var(--ddd-theme-default-inventOrange);
+             padding-inline-end: var(--ddd-spacing-6);
           }
         }
 
@@ -84,7 +84,8 @@ class ModelInfo extends LitElement {
         @media screen and (min-width: 920px) {
           .images {
             width: 50%;
-            margin: var(--ddd-spacing-6) 0 0 var(--ddd-spacing-6);
+            margin-block: var(--ddd-spacing-6) 0;
+            margin-inline: var(--ddd-spacing-6) 0;
           }
         }
       `,

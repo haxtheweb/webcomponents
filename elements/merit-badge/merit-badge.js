@@ -49,7 +49,7 @@ class MeritBadge extends I18NMixin(SchemaBehaviors(LitElement)) {
         .container {
           display: flex;
           flex-direction: column;
-          float: left;
+          float: inline-start;
           width: 250px;
           justify-content: center;
           align-items: center;

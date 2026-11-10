@@ -52,10 +52,10 @@ export class ActivityBox extends DDD {
         simple-icon {
           --simple-icon-height: 80px;
           --simple-icon-width: 80px;
-          float: left;
+          float: inline-start;
           position: absolute;
           top: 0px;
-          left: var(--activity-box-icon-left, 0px);
+          inset-inline-start: var(--activity-box-icon-left, 0px);
         }
         .tag {
           padding: var(--activity-box-content-padding, 0px 0px 0px 85px);
@@ -70,7 +70,7 @@ export class ActivityBox extends DDD {
         }
         .tag > span > simple-icon {
           display: inline;
-          left: 0px !important;
+          inset-inline-start: 0px !important;
           --simple-icon-height: 23px;
           --simple-icon-width: 23px;
           --simple-icon-color: var(--elmsln-system-color-dark);
@@ -80,7 +80,7 @@ export class ActivityBox extends DDD {
           line-height: 17px;
         }
         .pullout {
-          padding-left: 48px;
+          padding-inline-start: 48px;
           margin-top: 0;
           font-family: var(--activity-box-content-font-family, inherit);
           font-weight: 400;
@@ -95,7 +95,7 @@ export class ActivityBox extends DDD {
         :host([icon="null"]) .tag,
         :host([icon=""]) .pullout,
         :host([icon=""]) .tag {
-          padding-left: 10px;
+          padding-inline-start: 10px;
         }
       `,
     ];

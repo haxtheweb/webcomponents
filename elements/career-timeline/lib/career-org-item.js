@@ -70,7 +70,7 @@ export class CareerOrgItem extends I18NMixin(DDDSuper(LitElement)) {
 
         .item-container {
           position: relative;
-          padding-left: calc(var(--ddd-icon-md) + var(--ddd-spacing-4));
+          padding-inline-start: calc(var(--ddd-icon-md) + var(--ddd-spacing-4));
         }
 
         .org-info {
@@ -83,7 +83,7 @@ export class CareerOrgItem extends I18NMixin(DDDSuper(LitElement)) {
         }
 
         .org {
-          padding-left: 20px;
+          padding-inline-start: 20px;
           padding-bottom: 20px;
         }
 
@@ -104,7 +104,7 @@ export class CareerOrgItem extends I18NMixin(DDDSuper(LitElement)) {
             padding: 0px;
           }
           .item-container {
-            padding-left: 0px;
+            padding-inline-start: 0px;
           }
         }
       `,
