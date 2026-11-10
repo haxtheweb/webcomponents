@@ -352,12 +352,8 @@ describe("SiteSkeletonGenerator", () => {
       expect(structure[0].order).to.equal(0);
     });
 
-    // BUG: extractSiteStructure writes `order: item.order || i`, so a page
-    // whose order is 0 but is not first in the manifest gets its array index
-    // instead. Child A (order 0) and Child B (order 1) both come out as
-    // order 1, and Grandchild (order 0) comes out as 3, so sibling order in
-    // a site made from the skeleton depends on tie-breaking.
-    it.skip("keeps order 0 for first children that are not first in the manifest", async () => {
+    // an explicit order of 0 is kept even when the page is not first
+    it("keeps order 0 for first children that are not first in the manifest", async () => {
       const structure = await SiteSkeletonGenerator.extractSiteStructure(
         makeManifest().items,
       );
@@ -517,12 +513,7 @@ describe("SiteSkeletonGenerator", () => {
       });
     });
 
-    // BUG: site.settings comes from extractSiteSettings(), which never drops
-    // the created / updated timestamps that cleanSiteSettings() exists to
-    // remove (only extractSiteMetadata() calls it, and only its platform is
-    // used), so the source site's timestamps are copied into every new site
-    // made from the skeleton.
-    it.skip("leaves the source site's timestamps out of site.settings", async () => {
+    it("leaves the source site's timestamps out of site.settings", async () => {
       const skeleton = await SiteSkeletonGenerator.generateFromCurrentSite();
       expect(skeleton.site.settings).to.not.have.property("created");
       expect(skeleton.site.settings).to.not.have.property("updated");
