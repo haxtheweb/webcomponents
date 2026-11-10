@@ -77,7 +77,7 @@ class A11yGifPlayer extends I18NMixin(
         }
         .sr-only {
           position: absolute;
-          left: -9999999px;
+          inset-inline-start: -9999999px;
           top: 0;
           width: 0;
           overflow: hidden;
@@ -121,6 +121,8 @@ class A11yGifPlayer extends I18NMixin(
         button[aria-pressed="true"] {
           opacity: 0;
         }
+        /* physical on purpose: placed over the image, which does not
+           mirror in right-to-left */
         svg {
           position: absolute;
           top: 35%;

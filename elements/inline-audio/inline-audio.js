@@ -126,7 +126,7 @@ class InlineAudio extends I18NMixin(DDD) {
           position: absolute;
           border-radius: var(--ddd-radius-rounded, 100px);
           top: 0;
-          left: 0;
+          inset-inline-start: 0;
           z-index: -1;
         }
 
