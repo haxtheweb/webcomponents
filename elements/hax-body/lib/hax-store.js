@@ -4431,16 +4431,45 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     globalThis.open(link, "_blank");
   }
 
+  /**
+   * The new-issue link (unified haxtheweb/issues queue) for a report, with
+   * the title and body prefilled
+   * @param {string} title
+   * @param {string} tags comma separated labels
+   * @param {string} body
+   * @returns {string}
+   */
+  _haxStoreContributeUrl(title, tags, body) {
+    return `https://github.com/haxtheweb/issues/issues/new?assignees=&labels=${encodeURIComponent(
+      tags || "",
+    )}&template=issue-report.md&title=${encodeURIComponent(
+      title,
+    )}&body=${encodeURIComponent(body)}`;
+  }
+  /**
+   * The new-issue link for a Merlin command request. Synchronous so it can
+   * be a real href (keyboard reachable, never caught by pop-up blocking).
+   * @param {string} tags comma separated labels
+   * @param {string} daemonTerm what was searched in Merlin
+   * @returns {string}
+   */
+  merlinSuggestionUrl(tags, daemonTerm = null) {
+    return this._haxStoreContributeUrl(
+      "[merlin] New command request from HAX daemon",
+      tags,
+      `Location: ${globalThis.location.href}
+Merlin command: ${daemonTerm}
+What did you want merlin to do?
+`,
+    );
+  }
   async _haxStoreContribute(type, tags, daemonTerm = null) {
     const reportType = type || "bug";
     let body = "";
     let title;
     if (reportType == "merlin") {
-      title = `[${reportType}] New command request from HAX daemon`;
-      body = `Location: ${globalThis.location.href}
-Merlin command: ${daemonTerm}
-What did you want merlin to do?
-`;
+      globalThis.open(this.merlinSuggestionUrl(tags, daemonTerm), "_blank");
+      return;
     } else {
       title = `[${reportType}] User report from HAX daemon`;
       /* eslint-disable baseline-js/use-baseline -- Chromium-only fields; each is guarded and omitted or shown as ? when absent */
@@ -4476,12 +4505,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
 `;
       }
     }
-    globalThis.open(
-      `https://github.com/haxtheweb/issues/issues/new?assignees=&labels=${tags}&template=issue-report.md&title=${title}&body=${encodeURIComponent(
-        body,
-      )}`,
-      "_blank",
-    );
+    globalThis.open(this._haxStoreContributeUrl(title, tags, body), "_blank");
   }
 
   /**

@@ -713,21 +713,34 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
       // open and close events
       if (this.key2 == "Shift" && e.shiftKey) {
         // platform specific additional modifier
-        if (this.key1 == "Ctrl" && e.ctrlKey) {
-          this.opened = !this.opened;
-          this.keyHandlerCallback();
-        } else if (this.key1 == "Alt" && e.altKey) {
-          this.opened = !this.opened;
-          this.keyHandlerCallback();
-        } else if (this.key1 == "Meta" && (e.key === "Meta" || e.metaKey)) {
-          this.opened = !this.opened;
-          this.keyHandlerCallback();
+        if (
+          (this.key1 == "Ctrl" && e.ctrlKey) ||
+          (this.key1 == "Alt" && e.altKey) ||
+          (this.key1 == "Meta" && (e.key === "Meta" || e.metaKey))
+        ) {
+          this._toggleFromKeyboard();
         }
       }
       if (e.key == "Escape" && this.opened) {
         this.miniCancel();
       }
     }
+  }
+  /**
+   * The open / close shortcut. Closing goes through close() so every mode
+   * (mini popover or full dialog) is torn down the same way it is from the
+   * close button; only opening runs keyHandlerCallback, which picks the
+   * mode and anchor. Flipping opened alone left a closed full Merlin set up
+   * as a mini popover with no anchor, so the next open drew it in the top
+   * left corner.
+   */
+  _toggleFromKeyboard() {
+    if (this.opened) {
+      this.close();
+      return;
+    }
+    this.opened = true;
+    this.keyHandlerCallback();
   }
   /**
    * LitElement style callback
@@ -944,6 +957,8 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     const ui =
       this.shadowRoot && this.shadowRoot.querySelector("super-daemon-ui");
     if (ui) {
+      // drop any inline line-up so the next open starts from the CSS
+      ui.style.marginTop = "";
       ui.like = "";
       ui.programSearch = "";
       // reset the child command context in the same tick so a pending
@@ -1304,7 +1319,79 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
         });
       }
       this.shadowRoot.querySelector("super-daemon-ui").focusInput();
+      // inline (/ in a text block): once placed, line the field up with
+      // the line that was typed on
+      if (this.mini && !this.wand) {
+        requestAnimationFrame(() => this._alignInlineField());
+      }
     });
+  }
+  /**
+   * Inline mini Merlin (opened with / in an empty text block) is pulled up
+   * over the block so its search field sits where the text was being typed.
+   * A fixed pull-up can't know the block's line height or padding, so it
+   * drew the field above the line; measure the real field and the real line
+   * and move the popover by the difference.
+   */
+  _alignInlineField() {
+    if (!this.opened || !this.mini || this.wand || !this.activeNode) {
+      return;
+    }
+    const ui = this.shadowRoot
+      ? this.shadowRoot.querySelector(
+          "absolute-position-behavior super-daemon-ui",
+        )
+      : null;
+    const search =
+      ui && ui.shadowRoot
+        ? ui.shadowRoot.querySelector("super-daemon-search")
+        : null;
+    const lineCenter = this._inlineLineCenter();
+    if (!ui || !search || lineCenter === null) {
+      return;
+    }
+    const fieldRect = search.getBoundingClientRect();
+    if (!fieldRect.height) {
+      return;
+    }
+    const delta = lineCenter - (fieldRect.top + fieldRect.height / 2);
+    if (Math.abs(delta) < 1) {
+      return;
+    }
+    const current = parseFloat(globalThis.getComputedStyle(ui).marginTop) || 0;
+    ui.style.marginTop = `${Math.round(current + delta)}px`;
+  }
+  /**
+   * Vertical middle of the line the caret is on: the caret's own box when
+   * the browser gives one, else (an empty block has none) the block's first
+   * line from its padding and line height.
+   * @returns {number|null}
+   */
+  _inlineLineCenter() {
+    if (this.activeRange && this.activeRange.getClientRects) {
+      const rects = this.activeRange.getClientRects();
+      if (rects && rects.length && rects[0].height) {
+        return rects[0].top + rects[0].height / 2;
+      }
+    }
+    let el = this.activeNode;
+    if (el && el.nodeType === Node.TEXT_NODE) {
+      el = el.parentElement;
+    }
+    if (!el || !el.getBoundingClientRect) {
+      return null;
+    }
+    const rect = el.getBoundingClientRect();
+    const cs = globalThis.getComputedStyle(el);
+    let lineHeight = parseFloat(cs.lineHeight);
+    if (isNaN(lineHeight)) {
+      lineHeight = (parseFloat(cs.fontSize) || 16) * 1.2;
+    }
+    const top =
+      rect.top +
+      (parseFloat(cs.borderTopWidth) || 0) +
+      (parseFloat(cs.paddingTop) || 0);
+    return top + lineHeight / 2;
   }
   focusout(e) {
     if (e) {

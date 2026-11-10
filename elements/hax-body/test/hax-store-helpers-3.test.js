@@ -77,6 +77,34 @@ describe("hax-store methods round 3", () => {
     });
   });
 
+  describe("merlinSuggestionUrl", () => {
+    it("builds an encoded new-issue link in the unified queue", () => {
+      const url = HAXStore.merlinSuggestionUrl("POP,enhancement", "* zz q&a");
+      expect(
+        url.indexOf("https://github.com/haxtheweb/issues/issues/new?"),
+      ).to.equal(0);
+      expect(url).to.contain("labels=POP%2Cenhancement");
+      expect(url).to.contain(
+        "title=%5Bmerlin%5D%20New%20command%20request%20from%20HAX%20daemon",
+      );
+      expect(decodeURIComponent(url.split("&body=")[1])).to.contain(
+        "Merlin command: * zz q&a",
+      );
+    });
+
+    it("is what the merlin report opens", async () => {
+      const originalOpen = globalThis.open;
+      let opened = null;
+      globalThis.open = (u) => {
+        opened = u;
+        return null;
+      };
+      await HAXStore._haxStoreContribute("merlin", "POP", "cmd");
+      globalThis.open = originalOpen;
+      expect(opened).to.equal(HAXStore.merlinSuggestionUrl("POP", "cmd"));
+    });
+  });
+
   describe("_haxStoreContribute", () => {
     it("does not throw for bug report type", async () => {
       const originalOpen = globalThis.open;

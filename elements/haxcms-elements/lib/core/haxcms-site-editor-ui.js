@@ -2526,20 +2526,21 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       return true;
     };
     // nothing message so we can suggest a link to make a suggestion
-    SuperDaemonInstance.noResultsSlot = () => {
+    // a real link to a prefilled issue in the unified queue, so it works
+    // by click, middle click and keyboard, and pop-up blocking can't eat it
+    SuperDaemonInstance.noResultsSlot = (searchTerm) => {
       return html`<div class="no-results">
           ${this.t.expectingToSeeAnOptionMerlinDidntProvide}
         </div>
         <a
-          @click="${(_e) => {
-            HAXStore._haxStoreContribute(
-              "merlin",
-              "POP,enhancement",
-              SuperDaemonInstance.commandContext +
-                " " +
-                SuperDaemonInstance.value,
-            );
-          }}"
+          href="${HAXStore.merlinSuggestionUrl(
+            "POP,enhancement",
+            SuperDaemonInstance.commandContext +
+              " " +
+              (searchTerm || SuperDaemonInstance.value || ""),
+          )}"
+          target="_blank"
+          rel="noopener noreferrer"
           >${this.t.makeASuggestionToImproveResults}</a
         >`;
     };

@@ -139,6 +139,12 @@ describe("SuperDaemon core behavior", () => {
       : { altKey: true, key: "Alt" };
 
   it("keyHandler toggles opened with Shift+Alt (Shift+Meta where globalThis.safari is defined)", async () => {
+    // only this fixture answers the shortcut: the page's Merlin singleton
+    // also listens, and closing now runs close(), whose global close event
+    // it would answer, so keep it out the way a single Merlin is in an app
+    const singleton = globalThis.SuperDaemonManager.requestAvailability();
+    const singletonAllowed = singleton.allowedCallback;
+    singleton.allowedCallback = () => false;
     globalThis.dispatchEvent(
       new KeyboardEvent("keydown", {
         shiftKey: true,
@@ -156,6 +162,36 @@ describe("SuperDaemon core behavior", () => {
     );
     await element.updateComplete;
     expect(element.opened).to.equal(false);
+    singleton.allowedCallback = singletonAllowed;
+  });
+
+  it("closing with the shortcut runs the full close (no mini left armed)", async () => {
+    const singleton = globalThis.SuperDaemonManager.requestAvailability();
+    const singletonAllowed = singleton.allowedCallback;
+    singleton.allowedCallback = () => false;
+    let closes = 0;
+    const origClose = element.close.bind(element);
+    element.close = (...args) => {
+      closes++;
+      return origClose(...args);
+    };
+    element.opened = true;
+    element.mini = false;
+    await element.updateComplete;
+    element.keyHandlerCallback = () => {
+      element.mini = true;
+      element.wand = true;
+      return true;
+    };
+    globalThis.dispatchEvent(
+      new KeyboardEvent("keydown", { shiftKey: true, ...platformModifier() }),
+    );
+    await element.updateComplete;
+    expect(closes).to.be.at.least(1);
+    expect(element.opened).to.equal(false);
+    expect(element.mini).to.equal(false);
+    expect(element.wand).to.equal(false);
+    singleton.allowedCallback = singletonAllowed;
   });
 
   it("keyHandler Escape closes an open daemon", async () => {
