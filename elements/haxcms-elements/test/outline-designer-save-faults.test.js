@@ -15,6 +15,11 @@
 //   3. Save works again (not stuck on Saving, not disabled)
 //   4. nothing navigates away (no modal hide, no route change, no logout)
 //   5. the next successful save sends the whole intended outline again
+//
+// A save is reported once, with its final outcome: a 401/403 that asks
+// jwt-login for a new token is not a failure yet, the retry's answer is.
+// A request that does not answer within the editor's saveTimeout is aborted
+// and reported as failed.
 import { fixture, expect, html, waitUntil } from "@open-wc/testing";
 import sinon from "sinon";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
@@ -130,6 +135,7 @@ describe("outline-designer Save Outline under injected faults", () => {
         url: String(url),
         method: options.method,
         body: JSON.parse(options.body),
+        signal: options.signal,
       });
       const next = answers.shift();
       if (!next) {
@@ -175,6 +181,9 @@ describe("outline-designer Save Outline under injected faults", () => {
 
     editor = await fixture(html`<haxcms-site-editor></haxcms-site-editor>`);
     editor.jwt = "jwt-before";
+    // well past any answer queued here, well inside the test timeout; tests
+    // about time-outs lower it
+    editor.saveTimeout = 5000;
     await waitUntil(
       () => editor.manifest && editor._siteName() === SITE,
       "editor has the site manifest",
@@ -206,9 +215,18 @@ describe("outline-designer Save Outline under injected faults", () => {
   });
 
   afterEach(async () => {
-    // a successful save shows its toast on a timer; let each one land here,
-    // in its own test, so it cannot show up in the next test's toasts.
+    // a save still in flight (a request that never answers) ends at the
+    // editor's saveTimeout; let it end here, in its own test.
     // Isolation only: a failure here would abort the rest of the suite.
+    if (shell) {
+      await waitUntil(() => shell._status !== "saving", "save settled", {
+        timeout: editor.saveTimeout + 1000,
+      }).catch(() => {});
+    }
+    // a successful save shows its toast on a timer (the editor is a
+    // long-lived singleton in the app, so that timer rightly outlives a
+    // disconnect); let each one land here so it cannot show up in the next
+    // test's toasts
     await waitUntil(() => successToasts().length >= okAnswers).catch(() => {});
     sinon.restore();
     restoreDialogs();
@@ -377,13 +395,23 @@ describe("outline-designer Save Outline under injected faults", () => {
         }),
       ),
     );
+    // jwt-login is not here, so no new token ever arrives
+    editor.saveTimeout = 300;
     await clickSave();
+    await waitUntil(() => refreshes.length === 1, "refresh requested");
+    // waiting for the refreshed retry is not a failure yet
+    expect(shell._status).to.equal("saving");
     await expectFailedSaveKeptEverything(intended);
     expect(refreshes.length).to.equal(1);
     expect(refreshes[0].element.callback).to.equal("refreshRequest");
-    // no refresh answer arrives (jwt-login is not here): the person can
-    // simply save again
+    // the person can simply save again
     await expectRetrySendsEverything(intended);
+    // a token that arrives after the save was reported failed does not
+    // send that old request again
+    const req = refreshes[0].element;
+    req.obj[req.callback]("jwt-late", ...req.params);
+    await tick(50);
+    expect(outlineCalls.length).to.equal(2);
   });
 
   it("403 with a refreshable auth code: refresh is asked for, changes kept", async () => {
@@ -396,6 +424,7 @@ describe("outline-designer Save Outline under injected faults", () => {
         }),
       ),
     );
+    editor.saveTimeout = 300;
     await clickSave();
     await expectFailedSaveKeptEverything(intended);
     expect(refreshes.length).to.equal(1);
@@ -441,14 +470,14 @@ describe("outline-designer Save Outline under injected faults", () => {
     expect(nativeDialogs.alert.called).to.be.false;
   });
 
-  // Known gap (report it in haxtheweb/issues): _requestAdminSave reports the
-  // first, refused attempt as failed and the shell shows "Saving failed";
-  // when the retry with the refreshed token then succeeds, the shell is no
-  // longer in "saving" and drops that ok result. The outline keeps its change
-  // flags until the manifest refresh lands, so for that window the person is
-  // told the save failed (and Save is enabled) although it went through; a
-  // second Save in that window re-sends the new pages and creates them twice.
-  it.skip("a save that succeeds on the refreshed retry is shown as saved", async () => {
+  // haxtheweb/issues#3288: the refused first attempt used to be reported as
+  // failed, the retry's success was then dropped, and a second Save in that
+  // window re-sent the new pages
+  it("a save that succeeds on the refreshed retry is shown as saved", async () => {
+    // lastErrorChanged logs the refused request, and the test runner tags
+    // what it logs (see wire()); the outline's items travel in that request,
+    // so the tag would make them look changed since the save
+    sinon.stub(console, "error");
     const intended = await editOutline();
     answers.push(() =>
       Promise.resolve(
@@ -462,11 +491,102 @@ describe("outline-designer Save Outline under injected faults", () => {
     await clickSave();
     await waitUntil(() => refreshes.length === 1, "refresh requested");
     const req = refreshes[0].element;
+    // still saving while the new token is fetched: never "Saving failed",
+    // and Save cannot send the outline a second time
+    await tick(50);
+    expect(shell._status).to.equal("saving");
+    await shell.updateComplete;
+    expect(saveButton().disabled).to.be.true;
+    expect(shell._save()).to.equal(false);
+    expect(outlineCalls.length).to.equal(1);
     req.obj[req.callback]("jwt-after", ...req.params);
     await waitUntil(() => outlineCalls.length === 2, "retried after refresh");
     await tick(50);
     expect(shell._status).to.equal("saved");
     expect(dialog.hasUnsavedChanges).to.be.false;
+    expect(shell._canSave).to.be.false;
+    expect(shell._save()).to.equal(false);
+    expect(dangerToasts().length).to.equal(0);
+    await waitUntil(() => successToasts().length === 1, "Outline saved!");
+    expect(outlineCalls.length).to.equal(2);
+  });
+
+  it("a refreshed retry that fails is reported once, and Save works again", async () => {
+    const intended = await editOutline();
+    answers.push(() =>
+      Promise.resolve(
+        jsonResponse(401, {
+          status: 401,
+          data: { message: "Invalid token", code: "AUTH_TOKEN_INVALID" },
+        }),
+      ),
+    );
+    answers.push(() =>
+      Promise.resolve(
+        jsonResponse(500, {
+          status: 500,
+          data: { message: "failed to write" },
+        }),
+      ),
+    );
+    await clickSave();
+    await waitUntil(() => refreshes.length === 1, "refresh requested");
+    const req = refreshes[0].element;
+    req.obj[req.callback]("jwt-after", ...req.params);
+    await expectFailedSaveKeptEverything(intended);
+    expect(outlineCalls.length).to.equal(2);
+    expect(dangerToasts().length).to.equal(1);
+    expect(dangerToasts()[0].text).to.contain("failed to write");
+    await expectRetrySendsEverything(intended);
+  });
+
+  it("a refresh that brings no token fails the save without sending it again", async () => {
+    const intended = await editOutline();
+    answers.push(() =>
+      Promise.resolve(
+        jsonResponse(401, {
+          status: 401,
+          data: { message: "Invalid token", code: "AUTH_TOKEN_INVALID" },
+        }),
+      ),
+    );
+    await clickSave();
+    await waitUntil(() => refreshes.length === 1, "refresh requested");
+    const req = refreshes[0].element;
+    req.obj[req.callback](null, ...req.params);
+    await expectFailedSaveKeptEverything(intended);
+    await tick(50);
+    expect(outlineCalls.length).to.equal(1);
+    await expectRetrySendsEverything(intended);
+  });
+
+  it("a failed refresh (jwt-login-refresh-error) fails the waiting save", async () => {
+    const intended = await editOutline();
+    answers.push(() =>
+      Promise.resolve(
+        jsonResponse(401, {
+          status: 401,
+          data: { message: "Invalid token", code: "AUTH_TOKEN_INVALID" },
+        }),
+      ),
+    );
+    await clickSave();
+    await waitUntil(() => refreshes.length === 1, "refresh requested");
+    expect(shell._status).to.equal("saving");
+    // what jwt-login reports when the refresh itself is refused; the editor
+    // then logs out (held by onLogout here)
+    globalThis.dispatchEvent(
+      new CustomEvent("jwt-login-refresh-error", { detail: { value: {} } }),
+    );
+    await waitUntil(() => shell._status === "error", "save failure shown");
+    expect(logouts).to.equal(1);
+    expect(wire(outline.items)).to.deep.equal(intended);
+    expect(dialog.hasUnsavedChanges).to.be.true;
+    // a token arriving late does not send the failed request
+    const req = refreshes[0].element;
+    req.obj[req.callback]("jwt-late", ...req.params);
+    await tick(50);
+    expect(outlineCalls.length).to.equal(1);
   });
 
   it("network failure (fetch rejects): error shown, changes kept", async () => {
@@ -494,6 +614,7 @@ describe("outline-designer Save Outline under injected faults", () => {
 
   it("a request that never answers keeps the changes and stays put", async () => {
     const intended = await editOutline();
+    editor.saveTimeout = 1500;
     answers.push(() => new Promise(() => {}));
     await clickSave();
     await waitUntil(() => shell._status === "saving", "Saving shown");
@@ -512,21 +633,50 @@ describe("outline-designer Save Outline under injected faults", () => {
     expect(outlineCalls.length).to.equal(1);
   });
 
-  // Known gap (report it in haxtheweb/issues): neither saveOutline,
-  // _requestJson nor MicroFrontendRegistry.call puts a timeout or
-  // AbortSignal on the request, so a request that never answers leaves the
-  // shell on "Saving..." with Save and Discard disabled until the page is
-  // reloaded (which drops the unsaved outline). Expected: after a timeout
-  // the save is reported as failed and Save is usable again.
-  it.skip("a request that never answers times out and Save is usable again", async () => {
+  // haxtheweb/issues#3288: without a timeout a request that never answered
+  // left the shell on "Saving..." with Save and Discard disabled until a
+  // reload, which dropped the unsaved outline
+  it("a request that never answers times out and Save is usable again", async () => {
     const intended = await editOutline();
+    editor.saveTimeout = 400;
     answers.push(() => new Promise(() => {}));
     await clickSave();
     await waitUntil(() => shell._status === "saving", "Saving shown");
     await waitUntil(() => shell._status === "error", "timeout reported", {
-      timeout: 60000,
+      timeout: 5000,
     });
     await expectFailedSaveKeptEverything(intended);
+    // the request itself is aborted, not just ignored
+    expect(outlineCalls[0].signal).to.exist;
+    expect(outlineCalls[0].signal.aborted).to.be.true;
+    const danger = dangerToasts();
+    expect(danger.length).to.equal(1);
+    expect(danger[0].text).to.contain("timed out");
+    await expectRetrySendsEverything(intended);
+  });
+
+  it("an answer that arrives after the timeout is not taken as saved", async () => {
+    const intended = await editOutline();
+    editor.saveTimeout = 300;
+    let late;
+    answers.push(
+      () =>
+        new Promise((resolve) => {
+          // not okResponse: this answer must never show a success toast
+          late = () =>
+            resolve(
+              jsonResponse(200, { status: 200, data: { items: intended } }),
+            );
+        }),
+    );
+    await clickSave();
+    await expectFailedSaveKeptEverything(intended);
+    late();
+    await tick(OUTLINE_SAVED_TOAST_DELAY + 100);
+    expect(shell._status).to.equal("error");
+    expect(successToasts().length).to.equal(0);
+    expect(dialog.hasUnsavedChanges).to.be.true;
+    await expectRetrySendsEverything(intended);
   });
 
   it("a double click, or a second Save while one is in flight, sends one request", async () => {
