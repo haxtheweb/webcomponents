@@ -13,7 +13,11 @@ import {
   HaxUiAdminPrimitives,
 } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
 import { HaxUiAdminControls } from "@haxtheweb/d-d-d/lib/HaxUiAdminControls.js";
-import { MerlinDarkScheme } from "./super-daemon-hax-ui.js";
+import {
+  MerlinDarkScheme,
+  SAY_CLOSE_MERLIN,
+  SAY_STOP_LISTENING,
+} from "./super-daemon-hax-ui.js";
 
 export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
   constructor() {
@@ -56,6 +60,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       cheatCodes: "Cheat codes",
       openFullMerlin: "Open full Merlin",
       resultsOfTotal: "{count} of {total} results",
+      stopListening: "Stop listening",
     };
     this.registerLocalization({
       context: this,
@@ -408,6 +413,11 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           display: inline-flex;
           align-items: center;
           gap: var(--hax-ui-gap);
+        }
+        /* spoken commands read as phrases, not keys */
+        .voice-hint .say {
+          border-bottom-width: 1px;
+          font-family: var(--ddd-font-mono, monospace);
         }
         .results-stats {
           margin-left: auto;
@@ -987,6 +997,24 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
               </button>`
             : nothing
         }
+      </div>`;
+    }
+    if (this.listeningForInput) {
+      // while Merlin listens, the hints are things to say
+      return html`<div class="footer listening">
+        <span class="hint voice-hint"
+          ><span class="hax-ui-kbd say">${SAY_CLOSE_MERLIN}</span>
+          ${this.t.close}</span
+        >
+        <span class="hint voice-hint"
+          ><span class="hax-ui-kbd say">${SAY_STOP_LISTENING}</span>
+          ${this.t.stopListening}</span
+        >
+        <span class="results-stats"
+          >${this.t.resultsOfTotal
+            .replace("{count}", () => this.filtered.length)
+            .replace("{total}", () => this.items.length)}</span
+        >
       </div>`;
     }
     return html`<div class="footer">

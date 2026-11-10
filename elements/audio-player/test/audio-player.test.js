@@ -529,3 +529,106 @@ describe("audio-player test", function () {
     });
   });
 });
+
+describe("audio-player in the DDD player frame", () => {
+  const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+  const player = async (template) => {
+    const el = await fixture(template);
+    el.elementVisible = true;
+    await el.updateComplete;
+    await sleep(100);
+    const inner = el.shadowRoot.querySelector("a11y-media-player");
+    await inner.updateComplete;
+    return inner;
+  };
+
+  it("labels the header as audio and has no screen without a thumbnail", async () => {
+    const inner = await player(
+      html`<audio-player
+        source="${localAudio}"
+        media-title="Test Audio"
+      ></audio-player>`,
+    );
+    expect(inner.audioOnly).to.equal(true);
+    // an unset thumbnail reaches the player as an empty attribute
+    expect(inner.audioNoThumb).to.equal(true);
+    expect(
+      inner.shadowRoot.querySelector(".ddd-block-label").textContent.trim(),
+    ).to.equal("Audio · interactive");
+    expect(
+      inner.shadowRoot
+        .querySelector(".ddd-block-chip simple-icon-lite")
+        .getAttribute("icon"),
+    ).to.equal("av:equalizer");
+    // no picture: no fullscreen, transcript always below
+    expect(
+      inner.shadowRoot.querySelector("#header-fullscreen").hidden,
+    ).to.equal(true);
+    expect(inner.fullFlex).to.equal(false);
+    // play stays in the control bar
+    const play = inner.shadowRoot.querySelector(
+      '#controls a11y-media-button[icon="av:play-arrow"]',
+    );
+    expect(play).to.exist;
+  });
+
+  it("shows a thumbnail in a picture frame when one is given", async () => {
+    const inner = await player(
+      html`<audio-player
+        source="${localAudio}"
+        media-title="Test Audio"
+        thumbnail-src="data:image/gif;base64,R0lGODlhAQABAAAAADs="
+      ></audio-player>`,
+    );
+    expect(inner.audioNoThumb).to.equal(false);
+    expect(inner.playerStyle).to.contain("padding-top:");
+    expect(inner.playerStyle).to.contain("background-image");
+    const box = inner.shadowRoot
+      .querySelector("#player")
+      .getBoundingClientRect();
+    expect(box.height).to.be.above(0);
+  });
+});
+
+describe("audio-player HAX settings", () => {
+  it("does not offer text alignment (same player as video-player)", () => {
+    const props = globalThis.customElements.get("audio-player").haxProperties;
+    expect(props.designSystem.textAlign).to.equal(false);
+  });
+
+  it("a new caption file (track) shows right away", async () => {
+    const vtt = (text) =>
+      "data:text/vtt;charset=utf-8," +
+      encodeURIComponent(
+        `WEBVTT\n\n00:00:00.000 --> 00:00:01.000\n${text} one\n\n00:00:01.000 --> 00:00:02.000\n${text} two\n`,
+      );
+    const el = await fixture(
+      html`<audio-player
+        source="${localAudio}"
+        media-title="Test Audio"
+        track="${vtt("Kilo")}"
+      ></audio-player>`,
+    );
+    el.elementVisible = true;
+    await el.updateComplete;
+    const inner = () => el.shadowRoot.querySelector("a11y-media-player");
+    const texts = () =>
+      Array.from(
+        inner().shadowRoot.querySelectorAll("a11y-media-transcript-cue"),
+      ).map((c) => c.textContent.trim());
+    const wait = async (fn) => {
+      for (let i = 0; i < 80 && !fn(); i++) {
+        await new Promise((r) => setTimeout(r, 50));
+      }
+      return fn();
+    };
+    expect(await wait(() => inner() && texts().includes("Kilo one"))).to.equal(
+      true,
+    );
+    el.track = vtt("Lima");
+    await el.updateComplete;
+    expect(
+      await wait(() => texts().join("|") === "Lima one|Lima two"),
+    ).to.equal(true);
+  });
+});

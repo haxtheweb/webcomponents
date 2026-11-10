@@ -118,9 +118,22 @@ class A11yMediaButton extends LitElement {
           padding: 8px;
           line-height: 1;
           border: none;
-          transition: color 0.25s;
+          border-radius: var(--a11y-media-button-border-radius, 0);
+          transition:
+            color 0.25s,
+            background-color 0.25s;
           color: var(--a11y-media-button-color);
           background-color: var(--a11y-media-button-bg-color);
+          cursor: pointer;
+        }
+        #button:focus-visible {
+          outline: var(--ddd-focus-ring, 2px solid currentColor);
+          outline-offset: var(--ddd-focus-offset, 2px);
+        }
+        @media (prefers-reduced-motion: reduce) {
+          #button {
+            transition: none;
+          }
         }
         :host([toggle]) #button {
           color: var(--a11y-media-button-toggle-color);

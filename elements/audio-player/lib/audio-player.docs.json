@@ -23,6 +23,9 @@
   "events": [],
   "hax": {
     "canScale": true,
+    "designSystem": {
+      "textAlign": false
+    },
     "canEditSource": true,
     "gizmo": {
       "title": "Audio",
