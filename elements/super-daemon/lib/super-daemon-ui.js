@@ -13,11 +13,7 @@ import {
   HaxUiAdminPrimitives,
 } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
 import { HaxUiAdminControls } from "@haxtheweb/d-d-d/lib/HaxUiAdminControls.js";
-import {
-  MerlinDarkScheme,
-  SAY_CLOSE_MERLIN,
-  SAY_STOP_LISTENING,
-} from "./super-daemon-hax-ui.js";
+import { MerlinDarkScheme } from "./super-daemon-hax-ui.js";
 
 export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
   constructor() {
@@ -61,6 +57,10 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       openFullMerlin: "Open full Merlin",
       resultsOfTotal: "{count} of {total} results",
       stopListening: "Stop listening",
+      runResult: "Run a result",
+      sayPickResult: "second one",
+      sayCloseMerlin: "close merlin",
+      sayStopListening: "stop listening",
     };
     this.registerLocalization({
       context: this,
@@ -416,6 +416,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
         }
         /* spoken commands read as phrases, not keys */
         .voice-hint .say {
+          white-space: nowrap;
           border-bottom-width: 1px;
           font-family: var(--ddd-font-mono, monospace);
         }
@@ -506,7 +507,8 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     // scheduled a redundant second update (Lit change-in-update warning).
     if (
       changedProperties.has("filtered") &&
-      typeof changedProperties.get("filtered") !== "undefined"
+      typeof changedProperties.get("filtered") !== "undefined" &&
+      !this._sameResults(changedProperties.get("filtered"), this.filtered)
     ) {
       if (this.filtered.length > 0) {
         this.loading = false;
@@ -536,29 +538,16 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "filtered" && typeof oldValue !== "undefined") {
+      if (
+        propName == "filtered" &&
+        typeof oldValue !== "undefined" &&
+        !this._sameResults(oldValue, this.filtered)
+      ) {
         // Announce results count for screen readers
         this._announceResults();
         // Reset the active-descendant DOM state. The selection index
         // properties are reset in willUpdate to avoid a change-in-update.
         this._applyActiveDescendantDom(-1);
-
-        const sdi = globalThis.SuperDaemonManager.requestAvailability();
-        if (sdi.santaMode || this.listeningForInput) {
-          clearTimeout(this._selectTimeout);
-          this._selectTimeout = setTimeout(() => {
-            if (
-              this.filtered.length === 1 ||
-              (this.filtered &&
-                this.filtered[0] &&
-                this.filtered[0].title.toLocaleLowerCase() ===
-                  sdi.value.toLocaleLowerCase())
-            ) {
-              this.shadowRoot.querySelector("super-daemon-row").selected();
-              sdi.listeningForInput = true;
-            }
-          }, 600);
-        }
       }
       if (propName == "items" && this.shadowRoot && !this.mini) {
         // lit-virtualizer can fail to stamp rows the first time it mounts
@@ -638,6 +627,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       tabindex="-1"
       aria-selected="${this._selectedIndex === i}"
       data-row-index="${i}"
+      voice-number="${this.listeningForInput && i < 9 ? i + 1 : nothing}"
       ?striped="${i % 2 !== 0}"
       .value="${item.value || {}}"
       icon="${item.icon}"
@@ -759,6 +749,73 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
         this._previewIndex = index;
       }
     }
+  }
+
+  /**
+   * The filter recomputes on a debounce after the results it already
+   * computed, giving a new list with the same results; that is not a new
+   * search, so the highlight (keyboard or voice) stays.
+   */
+  _sameResults(before, after) {
+    if (!Array.isArray(before) || !Array.isArray(after)) {
+      return false;
+    }
+    if (before.length !== after.length) {
+      return false;
+    }
+    for (let i = 0; i < before.length; i++) {
+      if (before[i] !== after[i]) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  /**
+   * Highlight a result without running it (spoken "did you mean").
+   * @param {number} index
+   */
+  voiceHighlight(index) {
+    if (this.filtered && this.filtered[index]) {
+      this._updateActiveDescendant(index);
+    }
+  }
+
+  /**
+   * Move the highlight by delta results, wrapping (spoken next / back).
+   * @param {number} delta
+   */
+  voiceMove(delta) {
+    const count = this.filtered ? this.filtered.length : 0;
+    if (!count) {
+      return;
+    }
+    const current = this._selectedIndex;
+    const next =
+      current < 0
+        ? delta > 0
+          ? 0
+          : count - 1
+        : (((current + delta) % count) + count) % count;
+    this._updateActiveDescendant(next);
+  }
+
+  /**
+   * Run a result by index (spoken number or "run").
+   * @param {number} index
+   * @returns {boolean} false when there is no such result
+   */
+  voicePick(index) {
+    if (!this.filtered || !this.filtered[index]) {
+      return false;
+    }
+    this._selectAt(index);
+    return true;
+  }
+
+  /** The highlighted result index, or -1 */
+  get voiceSelectedIndex() {
+    return this._selectedIndex;
   }
 
   /**
@@ -1003,11 +1060,15 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       // while Merlin listens, the hints are things to say
       return html`<div class="footer listening">
         <span class="hint voice-hint"
-          ><span class="hax-ui-kbd say">${SAY_CLOSE_MERLIN}</span>
+          ><span class="hax-ui-kbd say">${this.t.sayPickResult}</span>
+          ${this.t.runResult}</span
+        >
+        <span class="hint voice-hint"
+          ><span class="hax-ui-kbd say">${this.t.sayCloseMerlin}</span>
           ${this.t.close}</span
         >
         <span class="hint voice-hint"
-          ><span class="hax-ui-kbd say">${SAY_STOP_LISTENING}</span>
+          ><span class="hax-ui-kbd say">${this.t.sayStopListening}</span>
           ${this.t.stopListening}</span
         >
         <span class="results-stats"
@@ -1102,7 +1163,14 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       if (index >= 0) {
         const virtualizer = this.shadowRoot.querySelector("lit-virtualizer");
         if (virtualizer && typeof virtualizer.scrollToIndex === "function") {
-          virtualizer.scrollToIndex(index, "center");
+          // a virtualizer that has not laid out yet (results just changed,
+          // as after a spoken search) has nothing to scroll; the highlight
+          // still applies and the list starts at the top
+          try {
+            virtualizer.scrollToIndex(index, "center");
+          } catch {
+            // nothing rendered to scroll to yet
+          }
         } else if (
           rows[index] &&
           typeof rows[index].scrollIntoView === "function"

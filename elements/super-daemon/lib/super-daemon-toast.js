@@ -11,12 +11,7 @@ import {
   HaxUiDarkChromeDeclarations,
 } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
 import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminIcons.js";
-import {
-  merlinTraveler,
-  MerlinWandStyles,
-  SAY_STOP_LISTENING,
-  SAY_DISABLE_SANTA,
-} from "./super-daemon-hax-ui.js";
+import { merlinTraveler, MerlinWandStyles } from "./super-daemon-hax-ui.js";
 
 /**
  * The voice state the toast shows, from what callers already send.
@@ -69,6 +64,8 @@ export class SuperDaemonToast extends I18NMixin(SimpleToastEl) {
       turnOffSantaMode: "Turn off Santa mode",
       sayACommand: "Say a command, or",
       toStopSay: "To stop, say",
+      sayStopListening: "stop listening",
+      sayDisableSanta: "disable santa mode",
     };
     this.registerLocalization({
       context: this,
@@ -90,6 +87,10 @@ export class SuperDaemonToast extends I18NMixin(SimpleToastEl) {
     this.walking = false;
     this.voiceState = "message";
     this.santa = false;
+    this.heard = "";
+    this.hint = "";
+    this.hintSay = "";
+    this.sayList = [];
     // drawn once: each draw makes new mask ids
     this._mark = merlinTraveler();
   }
@@ -162,6 +163,7 @@ export class SuperDaemonToast extends I18NMixin(SimpleToastEl) {
             "tile head close"
             "tile message message"
             "tile hint hint"
+            "tile list list"
             "tile actions actions";
           column-gap: var(--hax-ui-gap-lg, 12px);
           padding: var(--hax-ui-gap-lg, 12px) var(--hax-ui-gap-md, 8px)
@@ -243,6 +245,33 @@ export class SuperDaemonToast extends I18NMixin(SimpleToastEl) {
         }
         :host([voice-state="message"]) .message {
           margin: 0;
+        }
+        .say-list {
+          grid-area: list;
+          list-style: none;
+          margin: var(--hax-ui-gap-md, 8px) 0 0;
+          padding: 0;
+          display: grid;
+          gap: var(--hax-ui-gap, 4px);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text-muted);
+        }
+        /* DDD gives authored list items reading type; this is UI text */
+        .say-list li {
+          margin: 0;
+          padding: 0;
+          font-size: var(--hax-ui-admin-font-size-xs);
+          line-height: 1.4;
+          display: flex;
+          align-items: baseline;
+          gap: var(--hax-ui-gap-md, 8px);
+        }
+        .say-list .say {
+          font-family: var(--ddd-font-mono, monospace);
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-sunken);
+          border-radius: var(--hax-ui-radius);
+          padding: 0 var(--hax-ui-gap);
         }
         future-terminal-text {
           display: block;
@@ -483,6 +512,14 @@ export class SuperDaemonToast extends I18NMixin(SimpleToastEl) {
         type: Boolean,
         reflect: true,
       },
+      /** Words heard, live while someone talks, then the final result */
+      heard: { type: String },
+      /** A tip for this moment, shown before hintSay */
+      hint: { type: String },
+      /** The phrase the tip asks for, shown as something to say */
+      hintSay: { type: String, attribute: "hint-say" },
+      /** Phrases to show as a list: [{ say, label }] */
+      sayList: { type: Array, attribute: false },
     };
   }
 
@@ -520,22 +557,57 @@ export class SuperDaemonToast extends I18NMixin(SimpleToastEl) {
     if (this.voiceState !== "listening") {
       return nothing;
     }
+    let lead = this.t.sayACommand;
+    let say = this.t.sayStopListening;
+    if (this.santa) {
+      lead = this.t.toStopSay;
+      say = this.t.sayDisableSanta;
+    }
+    // Merlin can set a tip for this moment ("Upload a file? Say run")
+    if (this.hint) {
+      lead = this.hint;
+      say = this.hintSay;
+    }
     return html`<div class="hint">
-      <span class="meter" aria-hidden="true"
-        ><span></span><span></span><span></span
-      ></span>
+        <span class="meter" aria-hidden="true"
+          ><span></span><span></span><span></span
+        ></span>
+        <span
+          >${lead}
+          ${say ? html`<span class="say">${say}</span>` : nothing}</span
+        >
+      </div>
       ${
-        this.santa
-          ? html`<span
-              >${this.t.toStopSay}
-              <span class="say">${SAY_DISABLE_SANTA}</span></span
-            >`
-          : html`<span
-              >${this.t.sayACommand}
-              <span class="say">${SAY_STOP_LISTENING}</span></span
-            >`
-      }
-    </div>`;
+        this.sayList && this.sayList.length
+          ? html`<ul class="say-list">
+              ${this.sayList.map(
+                (entry) =>
+                  html`<li>
+                    <span class="say">${entry.say}</span>
+                    <span>${entry.label}</span>
+                  </li>`,
+              )}
+            </ul>`
+          : nothing
+      }`;
+  }
+
+  /**
+   * What Merlin heard. While someone is still talking this is the words so
+   * far; it replaces the "Listening.." line, not the toast text.
+   */
+  _renderMessage() {
+    if (this.voiceState === "listening" && this.heard) {
+      return html`<q class="heard">${this.heard}</q>`;
+    }
+    return this.future
+      ? html`<future-terminal-text
+          fadein
+          glitch
+          glitch-max="3"
+          glitch-duration="40"
+        ></future-terminal-text>`
+      : html`${this.text}`;
   }
 
   _renderActions() {
@@ -626,16 +698,7 @@ export class SuperDaemonToast extends I18NMixin(SimpleToastEl) {
         }
         <div class="message">
           <slot name="pre"></slot>
-          ${
-            this.future
-              ? html`<future-terminal-text
-                  fadein
-                  glitch
-                  glitch-max="3"
-                  glitch-duration="40"
-                ></future-terminal-text>`
-              : html`${this.text}`
-          }
+          ${this._renderMessage()}
           <slot></slot>
         </div>
         ${this._renderHint()} ${this._renderActions()}
@@ -736,6 +799,11 @@ export class SuperDaemonToast extends I18NMixin(SimpleToastEl) {
     this.alwaysvisible = e.detail.alwaysvisible
       ? e.detail.alwaysvisible
       : false;
+    // a new message starts without the last one's heard words or tips
+    this.heard = "";
+    this.hint = "";
+    this.hintSay = "";
+    this.sayList = [];
     // Santa mode can flip between two toasts with the same fields, so read
     // it again on every show
     const merlin = this._merlin();

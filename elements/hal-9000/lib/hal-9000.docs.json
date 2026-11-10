@@ -31,6 +31,14 @@
       "hax": null
     },
     {
+      "name": "phrases",
+      "property": "phrases",
+      "type": "array",
+      "default": "[]",
+      "description": "Words and phrases to favor when recognizing speech, such as command names. Used only where the browser supports phrase biasing.",
+      "hax": null
+    },
+    {
       "name": "responds-to",
       "property": "respondsTo",
       "type": "string",
@@ -43,7 +51,7 @@
       "property": "debug",
       "type": "boolean",
       "default": "false",
-      "description": "Debug mode for annyang",
+      "description": "Log what is heard and matched to the console",
       "hax": null
     },
     {
@@ -85,16 +93,24 @@
       "default": "",
       "description": "Language of the speaker",
       "hax": null
+    },
+    {
+      "name": "speaking",
+      "property": "speaking",
+      "type": "boolean",
+      "default": "false",
+      "description": "True while speaking; reflected for styling",
+      "hax": null
     }
   ],
   "slots": [],
   "events": [
-    "hal-9000-online",
+    "name",
     "super-daemon-toast-hide",
     "super-daemon-toast-show"
   ],
   "hax": {},
-  "surfaceHash": "9d9b070c6812",
+  "surfaceHash": "04021f934f17",
   "walkthroughs": [],
   "videos": [],
   "motion": {
