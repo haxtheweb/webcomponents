@@ -41,7 +41,7 @@
     "@open-wc/testing": "4.0.0",
     "@web/dev-server": "0.4.6",
     "concurrently": "9.2.5",
-    "@babel/core": "7.29.7"
+    "@babel/core": "7.29.13"
   },
   "private": false,
   "publishConfig": {
