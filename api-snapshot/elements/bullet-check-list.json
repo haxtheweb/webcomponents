@@ -1,0 +1,46 @@
+{
+  "tag": "bullet-check-list",
+  "package": "@haxtheweb/bullet-check-list",
+  "source": "elements/bullet-check-list/bullet-check-list.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "dark": "dark",
+    "is-safari": "isSafari",
+    "items": "items",
+    "ordered": "ordered",
+    "schemamap": "schemaMap",
+    "status": "status",
+    "storage-id": "storageId",
+    "t": "t",
+    "title": "title",
+    "typeof": "typeof"
+  },
+  "slots": [],
+  "events": [
+    "bullet-check-list-changed",
+    "learner-progress-import",
+    "learner-progress-request",
+    "user-engagement"
+  ],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/bullet-check-list/lib/bullet-check-list.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "items",
+      "items[].checked",
+      "items[].disabled",
+      "items[].label",
+      "ordered",
+      "status",
+      "storageId",
+      "title"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "bullet-check-list"
+    ]
+  }
+}

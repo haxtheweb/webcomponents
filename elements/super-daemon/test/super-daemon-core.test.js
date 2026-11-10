@@ -840,7 +840,9 @@ describe("SuperDaemon core behavior", () => {
     expect(keys.includes("back to top")).to.equal(true);
     expect(keys.includes("(run) program")).to.equal(true);
     expect(keys.includes("developer (mode)")).to.equal(true);
-    expect(keys.includes("*anything")).to.equal(true);
+    // anything else is spoken search through hal-9000-no-match, not a
+    // catch-all command
+    expect(keys.includes("*anything")).to.equal(false);
   });
 
   it("voice scroll commands drive window scrolling", () => {
@@ -1095,5 +1097,62 @@ describe("SuperDaemon core behavior", () => {
     expect(
       el.allItems.filter((i) => i.title === "Reconnect option").length,
     ).to.equal(1);
+  });
+});
+
+describe("SuperDaemon voice availability", () => {
+  it("stops listening, explains, and refreshes the mic when speech is unavailable", async () => {
+    const el = await fixture(html`<super-daemon></super-daemon>`);
+    el.listeningForInput = true;
+    let text = null;
+    const onShow = (e) => (text = e.detail.text);
+    globalThis.addEventListener("super-daemon-toast-show", onShow);
+    let refreshed = false;
+    el._refreshVoiceControls = () => (refreshed = true);
+    try {
+      el._voiceStateChanged("unavailable");
+      expect(el.listeningForInput).to.equal(false);
+      expect(text).to.equal(el.t.voiceUnavailable);
+      expect(refreshed).to.equal(true);
+    } finally {
+      globalThis.removeEventListener("super-daemon-toast-show", onShow);
+    }
+  });
+
+  it("explains a blocked mic without hiding voice", async () => {
+    const el = await fixture(html`<super-daemon></super-daemon>`);
+    el.listeningForInput = true;
+    let text = null;
+    const onShow = (e) => (text = e.detail.text);
+    globalThis.addEventListener("super-daemon-toast-show", onShow);
+    let refreshed = false;
+    el._refreshVoiceControls = () => (refreshed = true);
+    try {
+      el._voiceStateChanged("blocked");
+      expect(el.listeningForInput).to.equal(false);
+      expect(text).to.equal(el.t.voiceMicBlocked);
+      expect(refreshed).to.equal(false);
+      // ordinary states change nothing
+      text = null;
+      el._voiceStateChanged("idle");
+      expect(text).to.equal(null);
+    } finally {
+      globalThis.removeEventListener("super-daemon-toast-show", onShow);
+    }
+  });
+
+  it("listens to hal-9000 once per connection", async () => {
+    const el = await fixture(html`<super-daemon></super-daemon>`);
+    const hal = new EventTarget();
+    let calls = 0;
+    el._voiceStateChanged = () => calls++;
+    el._listenToHal(hal);
+    el._listenToHal(hal);
+    hal.dispatchEvent(
+      new CustomEvent("hal-9000-listening-state", {
+        detail: { state: "unavailable" },
+      }),
+    );
+    expect(calls).to.equal(1);
   });
 });

@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <script>
+      // same shim real HAXcms pages use for libraries that read NODE_ENV
+      globalThis.process = globalThis.process || {
+        env: { NODE_ENV: "production" },
+      };
+    </script>
+    <title>video-player render benchmark</title>
+  </head>
+  <body>
+    <div
+      id="host"
+      style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px"
+    ></div>
+    <script type="module" src="./video-player.bench.js"></script>
+  </body>
+</html>

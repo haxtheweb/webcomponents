@@ -1,0 +1,36 @@
+{
+  "tag": "person-testimonial",
+  "package": "@haxtheweb/person-testimonial",
+  "source": "elements/person-testimonial/person-testimonial.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "dark": "dark",
+    "described-by": "describedBy",
+    "image": "image",
+    "is-safari": "isSafari",
+    "name": "name",
+    "position": "position",
+    "schemamap": "schemaMap",
+    "typeof": "typeof"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/person-testimonial/lib/person-testimonial.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "image",
+      "name",
+      "position"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "person-testimonial"
+    ]
+  }
+}

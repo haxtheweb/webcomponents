@@ -84,6 +84,28 @@ async function tabTo(wanted, stopAt, max = 25) {
 }
 
 /**
+ * Tab forward until a range input (the seek slider is the player's first
+ * slider) holds focus, checking the focus invariants on every stop on the
+ * way. The seek slider is labelled through aria-labelledby, so it is found
+ * by role rather than by label. Fails if `stopAt` is reached first.
+ */
+async function tabToSlider(stopAt, max = 25) {
+  for (let i = 0; i < max; i++) {
+    await press("Tab");
+    const el = expectGoodFocusStop(
+      expect,
+      `Tab toward the seek slider (${i + 1})`,
+      {
+        knownBugs: KNOWN_BUGS,
+      },
+    );
+    if (el.tagName === "INPUT" && el.type === "range") return el;
+    if (stopAt && el === stopAt) break;
+  }
+  throw new Error(`no range input before ${describeEl(stopAt)}`);
+}
+
+/**
  * Register the media keyboard-flow suite.
  * @param {string} name element name for the describe block
  * @param {function} makeFixture async () => { wrapper, host, before, after }
@@ -149,11 +171,12 @@ export function describeMediaKeyboardFlow(name, makeFixture) {
     });
 
     it("the seek slider moves the playhead with arrow keys", async () => {
-      // the seek slider is the first control in the player
-      await press("Tab");
-      const slider = expectGoodFocusStop(expect, "seek slider");
-      expect(slider.tagName).to.equal("INPUT");
-      expect(slider.type).to.equal("range");
+      // the seek slider is the player's first slider; header actions such
+      // as Settings may come before it in the tab order
+      const slider = await tabToSlider(fx.after);
+      // the slider's max follows the media duration through a render, so
+      // wait for the input itself to be seekable before pressing an arrow
+      await waitFor(() => Number(slider.max) > 0, 2000);
       const start = amp.currentTime || 0;
       await press("ArrowRight", 150);
       await waitFor(() => (amp.currentTime || 0) > start, 1500);

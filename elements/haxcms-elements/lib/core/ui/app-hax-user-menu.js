@@ -214,6 +214,7 @@ export class AppHaxUserMenu extends I18NMixin(DDDSuper(LitElement)) {
         <div
           id="user-menu-dropdown"
           class="user-menu ${this.isOpen ? "open" : ""}"
+          part="dropdown"
           ?inert="${!this.isOpen}"
         >
           ${

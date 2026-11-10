@@ -1,0 +1,28 @@
+{
+  "tag": "simple-tags",
+  "package": "@haxtheweb/simple-fields",
+  "source": "elements/simple-fields/lib/simple-tags.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "auto-accent-color": "autoAccentColor",
+    "tags": "tags"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/simple-fields/lib/simple-tags.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "accentColor",
+      "autoAccentColor",
+      "tags"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "simple-tags"
+    ]
+  }
+}

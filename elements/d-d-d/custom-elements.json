@@ -497,6 +497,86 @@
     },
     {
       "kind": "javascript-module",
+      "path": "lib/DDDConnector.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "DDDConnectorKinds",
+          "type": {
+            "text": "array"
+          },
+          "default": "[ { kind: \"relationship\", width: \"sm\", dash: \"none\", period: 0, cap: \"butt\", chart: 1, opacity: \"0.9\", }, { kind: \"contract\", width: \"sm\", dash: \"8 4\", period: 12, cap: \"butt\", chart: 3, opacity: \"1\", }, { kind: \"membership\", width: \"sm\", dash: \"0 6\", period: 6, cap: \"round\", chart: 4, opacity: \"1\", }, { kind: \"credit\", width: \"xs\", dash: \"6 3 1 3\", period: 13, cap: \"butt\", chart: 7, opacity: \"0.85\", }, { kind: \"emphasis\", width: \"lg\", dash: \"none\", period: 0, cap: \"round\", chart: 5, opacity: \"1\", }, ]",
+          "description": "The connector kinds and their defaults, in legend order. width is a DDD\nborder size token name, dash and period are SVG user units, chart is the\nDDDChart slot the colour defaults to."
+        },
+        {
+          "kind": "variable",
+          "name": "DDDConnectorTokens",
+          "default": "css` :host { ${unsafeCSS(tokens)} --ddd-connector-dimmed-opacity: var(--ddd-opacity-40, 0.4); } `"
+        },
+        {
+          "kind": "variable",
+          "name": "DDDConnectorStyles",
+          "type": {
+            "text": "array"
+          },
+          "default": "[ DDDChartStyles, DDDMotionStyles, DDDConnectorTokens, css` .ddd-connector { --ddd-connector-width: var(--ddd-connector-relationship-width); --ddd-connector-dash: var(--ddd-connector-relationship-dash); --ddd-connector-period: var(--ddd-connector-relationship-period); --ddd-connector-cap: var(--ddd-connector-relationship-cap); --ddd-connector-color: var(--ddd-connector-relationship-color); --ddd-connector-opacity: var(--ddd-connector-relationship-opacity); fill: none; stroke: var(--ddd-connector-color); stroke-width: var(--ddd-connector-width); stroke-dasharray: var(--ddd-connector-dash); stroke-linecap: var(--ddd-connector-cap); stroke-linejoin: round; stroke-opacity: var(--ddd-connector-opacity); } ${unsafeCSS(kindRules)} .ddd-connector[data-kind=\"relationship\"].ddd-motion-flow, .ddd-connector[data-kind=\"emphasis\"].ddd-motion-flow, .ddd-connector:not([data-kind]).ddd-motion-flow { --ddd-connector-dash: var(--ddd-motion-flow-dash); --ddd-connector-period: var(--ddd-motion-flow-period); --ddd-connector-cap: round; } .ddd-connector[data-dimmed] { stroke-opacity: var(--ddd-connector-dimmed-opacity); } /* a legend sample: an inline svg line that draws with the same tokens */ .ddd-connector-sample { display: inline-block; vertical-align: middle; width: var(--ddd-icon-xs); height: var(--ddd-icon-4xs); overflow: visible; } `, ]"
+        },
+        {
+          "kind": "function",
+          "name": "measureDDDConnector",
+          "parameters": [
+            {
+              "name": "el",
+              "type": {
+                "text": "SVGGeometryElement"
+              }
+            }
+          ],
+          "description": "Measure an SVG geometry element and store its length in user units as\n--ddd-connector-length, so .ddd-motion-draw-in can run on a line that\nkeeps its dash pattern (no pathLength=\"1\" needed). Returns the length,\nor 0 when the element cannot be measured (not rendered, not SVG).",
+          "return": {
+            "type": {
+              "text": "Number"
+            }
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DDDConnectorKinds",
+          "declaration": {
+            "name": "DDDConnectorKinds",
+            "module": "lib/DDDConnector.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DDDConnectorTokens",
+          "declaration": {
+            "name": "DDDConnectorTokens",
+            "module": "lib/DDDConnector.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DDDConnectorStyles",
+          "declaration": {
+            "name": "DDDConnectorStyles",
+            "module": "lib/DDDConnector.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "measureDDDConnector",
+          "declaration": {
+            "name": "measureDDDConnector",
+            "module": "lib/DDDConnector.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "lib/DDDFontSizing.js",
       "declarations": [
         {
@@ -618,6 +698,85 @@
     },
     {
       "kind": "javascript-module",
+      "path": "lib/DDDLifecycle.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "DDDLifecycleStates",
+          "type": {
+            "text": "array"
+          },
+          "default": "[ \"released\", \"pre-release\", \"planned\", \"legacy\", ]"
+        },
+        {
+          "kind": "variable",
+          "name": "DDDLifecycleTokens",
+          "default": "css` :root, :host { --ddd-lifecycle-released-signal: light-dark( var(--ddd-theme-default-opportunityGreen), var(--ddd-theme-default-futureLime) ); --ddd-lifecycle-released-ink: light-dark( var(--ddd-theme-default-success), var(--ddd-theme-default-futureLime) ); --ddd-lifecycle-released-bg: light-dark( var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray) ); --ddd-lifecycle-released-line: solid; --ddd-lifecycle-pre-release-signal: light-dark( var(--ddd-theme-default-link), var(--ddd-theme-default-skyBlue) ); --ddd-lifecycle-pre-release-ink: light-dark( var(--ddd-theme-default-link), var(--ddd-theme-default-linkLight) ); --ddd-lifecycle-pre-release-bg: light-dark( var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray) ); --ddd-lifecycle-pre-release-line: dashed; --ddd-lifecycle-planned-signal: light-dark( var(--ddd-theme-default-slateGray), var(--ddd-theme-default-limestoneGray) ); --ddd-lifecycle-planned-ink: light-dark( var(--ddd-theme-default-slateGray), var(--ddd-theme-default-limestoneLight) ); --ddd-lifecycle-planned-bg: light-dark( var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray) ); --ddd-lifecycle-planned-line: dotted; --ddd-lifecycle-legacy-signal: light-dark( var(--ddd-theme-default-roarGolden), var(--ddd-theme-default-inventOrange) ); --ddd-lifecycle-legacy-ink: light-dark( var(--ddd-theme-default-warning), var(--ddd-theme-default-roarLight) ); --ddd-lifecycle-legacy-bg: light-dark( var(--ddd-theme-default-roarMaxlight), var(--ddd-theme-default-coalyGray) ); --ddd-lifecycle-legacy-line: double; } `"
+        },
+        {
+          "kind": "variable",
+          "name": "DDDLifecycleStyles",
+          "type": {
+            "text": "array"
+          },
+          "default": "[ DDDLifecycleTokens, css` .ddd-status-pill { --ddd-status-pill-signal: var(--ddd-lifecycle-planned-signal); --ddd-status-pill-ink: var(--ddd-lifecycle-planned-ink); --ddd-status-pill-bg: var(--ddd-lifecycle-planned-bg); --ddd-status-pill-line: var(--ddd-lifecycle-planned-line); display: inline-flex; align-items: center; gap: var(--ddd-spacing-1); box-sizing: border-box; min-height: var(--ddd-icon-xxs); padding-block: var(--ddd-spacing-0); padding-inline: var(--ddd-spacing-2); border-width: var(--ddd-border-size-md); border-style: var(--ddd-status-pill-line); border-color: var(--ddd-status-pill-signal); border-radius: var(--ddd-radius-rounded); background-color: var(--ddd-status-pill-bg); color: var(--ddd-status-pill-ink); font-family: var(--ddd-font-navigation); font-size: var(--ddd-font-size-6xs); font-weight: var(--ddd-font-weight-bold); line-height: var(--ddd-lh-120); white-space: nowrap; vertical-align: middle; --simple-icon-color: currentColor; --simple-icon-width: var(--ddd-icon-4xs); --simple-icon-height: var(--ddd-icon-4xs); } ${unsafeCSS(pillStates)} `, ]"
+        },
+        {
+          "kind": "function",
+          "name": "renderDDDStatusPill",
+          "parameters": [
+            {
+              "name": "o",
+              "type": {
+                "text": "@param {String} o.state one of DDDLifecycleStates\n * @param {*} [o.label] the word to show, translated; defaults to English\n * "
+              }
+            }
+          ],
+          "description": "Render a lifecycle pill. Unknown states render as planned (the most\ncautious reading). The label is always shown.",
+          "return": {
+            "type": {
+              "text": "TemplateResult"
+            }
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DDDLifecycleStates",
+          "declaration": {
+            "name": "DDDLifecycleStates",
+            "module": "lib/DDDLifecycle.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DDDLifecycleTokens",
+          "declaration": {
+            "name": "DDDLifecycleTokens",
+            "module": "lib/DDDLifecycle.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DDDLifecycleStyles",
+          "declaration": {
+            "name": "DDDLifecycleStyles",
+            "module": "lib/DDDLifecycle.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "renderDDDStatusPill",
+          "declaration": {
+            "name": "renderDDDStatusPill",
+            "module": "lib/DDDLifecycle.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "lib/DDDLineHeight.js",
       "declarations": [
         {
@@ -654,6 +813,240 @@
           "declaration": {
             "name": "DDDMarginPadding",
             "module": "lib/DDDMarginPadding.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/DDDMotion.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "DDDMotionTokens",
+          "default": "css` :host { --ddd-motion-draw-in-duration: var(--ddd-duration-slow, 600ms); --ddd-motion-draw-in-timing: var(--ddd-timing-enter, ease-out); --ddd-motion-draw-in-delay: 0ms; --ddd-motion-flow-duration: calc(var(--ddd-duration-slow, 600ms) * 2); --ddd-motion-flow-timing: var(--ddd-timing-linear, linear); --ddd-motion-flow-iterations: 4; --ddd-motion-flow-dash: 0 10; --ddd-motion-flow-period: 10; } `"
+        },
+        {
+          "kind": "variable",
+          "name": "DDDMotionStyles",
+          "type": {
+            "text": "array"
+          },
+          "default": "[ DDDMotionTokens, css` @keyframes ddd-motion-draw-in { from { stroke-dasharray: var(--ddd-connector-length, 1); stroke-dashoffset: var(--ddd-connector-length, 1); } to { stroke-dasharray: var(--ddd-connector-length, 1); stroke-dashoffset: 0; } } @keyframes ddd-motion-flow { from { stroke-dashoffset: 0; } to { stroke-dashoffset: calc(-1 * var(--ddd-connector-period, 10)); } } .ddd-motion-draw-in { animation-name: ddd-motion-draw-in; animation-duration: var(--ddd-motion-draw-in-duration); animation-timing-function: var(--ddd-motion-draw-in-timing); animation-delay: var(--ddd-motion-draw-in-delay); animation-iteration-count: 1; animation-fill-mode: backwards; } .ddd-motion-flow { animation-name: ddd-motion-flow; animation-duration: var(--ddd-motion-flow-duration); animation-timing-function: var(--ddd-motion-flow-timing); animation-iteration-count: var(--ddd-motion-flow-iterations); } .ddd-motion-paused, [data-motion-paused] .ddd-motion-flow, [data-motion-paused].ddd-motion-flow { animation-play-state: paused; } @media (prefers-reduced-motion: reduce) { .ddd-motion-draw-in, .ddd-motion-flow { animation: none; } } `, ]"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DDDMotionTokens",
+          "declaration": {
+            "name": "DDDMotionTokens",
+            "module": "lib/DDDMotion.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DDDMotionStyles",
+          "declaration": {
+            "name": "DDDMotionStyles",
+            "module": "lib/DDDMotion.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/DDDNodeShapes.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "DDDNodeShapeNames",
+          "type": {
+            "text": "array"
+          },
+          "default": "[ \"circle\", \"hexagon\", \"tile\", \"cylinder\", \"stadium\", \"subroutine\", ]"
+        },
+        {
+          "kind": "function",
+          "name": "dddNodeShapePath",
+          "parameters": [
+            {
+              "name": "shape",
+              "description": "one of DDDNodeShapeNames",
+              "type": {
+                "text": "String"
+              }
+            },
+            {
+              "name": "width",
+              "type": {
+                "text": "Number"
+              }
+            },
+            {
+              "name": "height",
+              "type": {
+                "text": "Number"
+              }
+            },
+            {
+              "name": "x",
+              "optional": true,
+              "type": {
+                "text": "Number"
+              }
+            },
+            {
+              "name": "y",
+              "optional": true,
+              "type": {
+                "text": "Number"
+              }
+            }
+          ],
+          "description": "SVG path data for a node frame that fills the box (x, y, width, height).\nUnknown shapes fall back to the tile. The cylinder adds its lid line and\nthe subroutine its inner side lines as extra subpaths, so one path draws\nthe whole frame.",
+          "return": {
+            "type": {
+              "text": "String"
+            }
+          }
+        },
+        {
+          "kind": "function",
+          "name": "dddNodeShapeInset",
+          "parameters": [
+            {
+              "name": "shape",
+              "description": "one of DDDNodeShapeNames",
+              "type": {
+                "text": "String"
+              }
+            },
+            {
+              "name": "width",
+              "type": {
+                "text": "Number"
+              }
+            },
+            {
+              "name": "height",
+              "type": {
+                "text": "Number"
+              }
+            },
+            {
+              "name": "opts",
+              "description": "{ x, y, scale }",
+              "optional": true,
+              "type": {
+                "text": "Object"
+              }
+            }
+          ],
+          "description": "The square icon box inside a node frame: the largest square that fits the\nshape's clear area, scaled down by `scale` (default 0.6) and centred in it.",
+          "return": {
+            "type": {
+              "text": "{x: Number, y: Number, width: Number, height: Number}"
+            }
+          }
+        },
+        {
+          "kind": "function",
+          "name": "dddNodeMonogram",
+          "parameters": [
+            {
+              "name": "label",
+              "type": {
+                "text": "String"
+              }
+            },
+            {
+              "name": "max",
+              "description": "1 or 2",
+              "optional": true,
+              "type": {
+                "text": "Number"
+              }
+            }
+          ],
+          "description": "One or two letters to stand in for a missing icon: the first letter of\nthe first two words of the label, upper cased (\"HAX CLI\" -> \"HC\",\n\"haxcms-nodejs\" -> \"HN\", \"Merlin\" -> \"ME\" when max is 2 and the label is\none word). Returns \"\" when the label has no letter to start from.",
+          "return": {
+            "type": {
+              "text": "String"
+            }
+          }
+        },
+        {
+          "kind": "function",
+          "name": "renderDDDNode",
+          "parameters": [
+            {
+              "name": "o",
+              "type": {
+                "text": "@param {String} [o.shape=\"tile\"]\n * @param {Number} o.width\n * @param {Number} o.height\n * @param {String} [o.label] used for the monogram when o.icon is not set\n * @param {*} [o.icon] svg template drawn in the icon box instead of the\n *   monogram; receives nothing, size it with dddNodeShapeInset()\n * "
+              }
+            }
+          ],
+          "description": "Render a node frame (and a monogram when there is no icon) as an svg\ntemplate, to place inside an svg element or a positioned g.ddd-node.",
+          "return": {
+            "type": {
+              "text": "TemplateResult"
+            }
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "DDDNodeStyles",
+          "default": "css` :host { --ddd-node-fill: light-dark( var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray) ); --ddd-node-stroke: light-dark( var(--ddd-theme-default-slateGray), var(--ddd-theme-default-limestoneGray) ); --ddd-node-stroke-width: var(--ddd-border-size-sm); --ddd-node-ink: light-dark( var(--ddd-theme-default-nittanyNavy), var(--ddd-theme-default-white) ); --ddd-node-active-stroke: light-dark( var(--ddd-theme-default-link), var(--ddd-theme-default-linkLight) ); } .ddd-node-frame { fill: var(--ddd-node-fill); stroke: var(--ddd-node-stroke); stroke-width: var(--ddd-node-stroke-width); stroke-linejoin: round; } .ddd-node-monogram { font-family: var(--ddd-font-navigation); font-weight: var(--ddd-font-weight-bold); text-anchor: middle; dominant-baseline: central; fill: var(--ddd-node-ink); pointer-events: none; } .ddd-node { cursor: pointer; } .ddd-node[data-active] .ddd-node-frame, .ddd-node:focus-visible .ddd-node-frame { stroke: var(--ddd-node-active-stroke); stroke-width: var(--ddd-border-size-md); } .ddd-node:focus-visible { outline: var(--ddd-focus-ring); outline-offset: var(--ddd-focus-offset); } `"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DDDNodeShapeNames",
+          "declaration": {
+            "name": "DDDNodeShapeNames",
+            "module": "lib/DDDNodeShapes.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "dddNodeShapePath",
+          "declaration": {
+            "name": "dddNodeShapePath",
+            "module": "lib/DDDNodeShapes.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "dddNodeShapeInset",
+          "declaration": {
+            "name": "dddNodeShapeInset",
+            "module": "lib/DDDNodeShapes.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "dddNodeMonogram",
+          "declaration": {
+            "name": "dddNodeMonogram",
+            "module": "lib/DDDNodeShapes.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "renderDDDNode",
+          "declaration": {
+            "name": "renderDDDNode",
+            "module": "lib/DDDNodeShapes.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DDDNodeStyles",
+          "declaration": {
+            "name": "DDDNodeStyles",
+            "module": "lib/DDDNodeShapes.js"
           }
         }
       ]
@@ -1060,6 +1453,43 @@
     },
     {
       "kind": "javascript-module",
+      "path": "lib/DDDReaderControls.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "DDDComboboxStyles",
+          "default": "css` :host { --ddd-combobox-max-height: 320px; } .ddd-combobox { position: relative; display: flex; flex-direction: column; gap: var(--ddd-spacing-1); font-family: var(--ddd-font-primary); min-width: 0; } .ddd-combobox-label { font-family: var(--ddd-font-navigation); font-size: var(--ddd-font-size-4xs); font-weight: var(--ddd-font-weight-medium); color: light-dark( var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-white) ); } .ddd-combobox-input { box-sizing: border-box; width: 100%; min-height: var(--ddd-control-height-sm); margin: var(--ddd-spacing-0); padding-block: var(--ddd-spacing-2); padding-inline: var(--ddd-spacing-3); border: var(--ddd-border-size-xs) solid light-dark( var(--ddd-theme-default-slateGray), var(--ddd-theme-default-limestoneGray) ); border-radius: var(--ddd-radius-sm); background-color: light-dark( var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray) ); color: light-dark( var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-white) ); font-family: var(--ddd-font-primary); font-size: var(--ddd-font-size-4xs); line-height: var(--ddd-lh-140); } .ddd-combobox-input::placeholder { color: light-dark( var(--ddd-theme-default-slateGray), var(--ddd-theme-default-limestoneLight) ); opacity: 1; } .ddd-combobox-input:hover { border-color: light-dark( var(--ddd-theme-default-nittanyNavy), var(--ddd-theme-default-linkLight) ); } .ddd-combobox-input:focus-visible { outline: var(--ddd-focus-ring); outline-offset: var(--ddd-focus-offset); } .ddd-combobox-listbox { position: absolute; inset-block-start: 100%; inset-inline: var(--ddd-spacing-0); z-index: var(--ddd-z-dropdown); box-sizing: border-box; max-height: var(--ddd-combobox-max-height); overflow-y: auto; margin-block-start: var(--ddd-spacing-1); padding-block: var(--ddd-spacing-1); border: var(--ddd-border-xs); border-color: light-dark( var(--ddd-theme-default-limestoneLight), var(--ddd-theme-default-slateGray) ); border-radius: var(--ddd-radius-sm); background-color: light-dark( var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray) ); box-shadow: var(--ddd-boxShadow-md); } .ddd-combobox-listbox[hidden] { display: none; } .ddd-combobox-group + .ddd-combobox-group { margin-block-start: var(--ddd-spacing-1); padding-block-start: var(--ddd-spacing-1); border-block-start: var(--ddd-border-xs); border-color: light-dark( var(--ddd-theme-default-limestoneLight), var(--ddd-theme-default-slateGray) ); } .ddd-combobox-group-label { padding-block: var(--ddd-spacing-1); padding-inline: var(--ddd-spacing-3); font-family: var(--ddd-font-navigation); font-size: var(--ddd-font-size-6xs); font-weight: var(--ddd-font-weight-bold); letter-spacing: 0.06em; text-transform: uppercase; color: light-dark( var(--ddd-theme-default-slateGray), var(--ddd-theme-default-limestoneLight) ); } :host(:lang(ar)) .ddd-combobox-group-label, :host(:lang(fa)) .ddd-combobox-group-label, :host(:lang(he)) .ddd-combobox-group-label, :host(:lang(ur)) .ddd-combobox-group-label { letter-spacing: 0; } .ddd-combobox-option { display: flex; align-items: center; gap: var(--ddd-spacing-2); min-height: var(--ddd-control-height-sm); box-sizing: border-box; padding-block: var(--ddd-spacing-1); padding-inline: var(--ddd-spacing-3); border-inline-start: var(--ddd-border-size-md) solid transparent; font-size: var(--ddd-font-size-4xs); line-height: var(--ddd-lh-120); color: light-dark( var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-white) ); cursor: pointer; overflow-wrap: anywhere; } .ddd-combobox-option:hover { background-color: light-dark( var(--ddd-theme-default-limestoneMaxLight), var(--ddd-theme-default-potentialMidnight) ); } .ddd-combobox-option[aria-selected=\"true\"] { border-inline-start-color: light-dark( var(--ddd-theme-default-link), var(--ddd-theme-default-linkLight) ); background-color: light-dark( var(--ddd-theme-default-skyMaxLight), var(--ddd-theme-default-potentialMidnight) ); color: light-dark( var(--ddd-theme-default-nittanyNavy), var(--ddd-theme-default-white) ); font-weight: var(--ddd-font-weight-bold); } .ddd-combobox-option[aria-disabled=\"true\"] { cursor: default; opacity: 0.6; } .ddd-combobox-option-meta { margin-inline-start: auto; font-family: var(--ddd-font-navigation); font-size: var(--ddd-font-size-6xs); font-weight: var(--ddd-font-weight-regular); color: light-dark( var(--ddd-theme-default-slateGray), var(--ddd-theme-default-limestoneLight) ); } .ddd-combobox-empty { padding-block: var(--ddd-spacing-2); padding-inline: var(--ddd-spacing-3); font-size: var(--ddd-font-size-5xs); font-style: italic; color: light-dark( var(--ddd-theme-default-slateGray), var(--ddd-theme-default-limestoneLight) ); } @media (forced-colors: active) { .ddd-combobox-option[aria-selected=\"true\"] { border-inline-start-color: Highlight; outline: var(--ddd-border-size-xs) solid Highlight; } } `"
+        },
+        {
+          "kind": "variable",
+          "name": "DDDToggleGroupStyles",
+          "type": {
+            "text": "array"
+          },
+          "default": "[ DDDBlockStyles, css` :host { --ddd-toggle-swatch-color: currentColor; --ddd-toggle-swatch-line: solid; --ddd-toggle-swatch-width: var(--ddd-border-size-md); } .ddd-toggle-group { display: inline-flex; flex-wrap: wrap; align-items: stretch; max-width: 100%; } .ddd-toggle-group > .ddd-block-action { border-radius: 0; } .ddd-toggle-group > .ddd-block-action + .ddd-block-action { margin-inline-start: calc(-1 * var(--ddd-border-size-xs)); } .ddd-toggle-group > .ddd-block-action:first-child { border-start-start-radius: var(--ddd-radius-rounded); border-end-start-radius: var(--ddd-radius-rounded); } .ddd-toggle-group > .ddd-block-action:last-child { border-start-end-radius: var(--ddd-radius-rounded); border-end-end-radius: var(--ddd-radius-rounded); } /* the hovered, pressed or focused button draws over its neighbours so its whole border shows */ .ddd-toggle-group > .ddd-block-action:hover, .ddd-toggle-group > .ddd-block-action:focus-visible, .ddd-toggle-group > .ddd-block-action[aria-pressed=\"true\"] { position: relative; z-index: 1; } .ddd-toggle-group > .ddd-block-action:focus-visible { z-index: 2; } /* pressed variant for toggles that carry a swatch: accent border, a light tint and bold text, never a fill that hides the swatch */ .ddd-toggle-group.swatches > .ddd-block-action[aria-pressed=\"true\"] { border-color: light-dark( var(--ddd-theme-default-link), var(--ddd-theme-default-linkLight) ); box-shadow: inset 0 0 0 var(--ddd-border-size-xs) light-dark( var(--ddd-theme-default-link), var(--ddd-theme-default-linkLight) ); background-color: light-dark( var(--ddd-theme-default-skyMaxLight), var(--ddd-theme-default-potentialMidnight) ); color: light-dark( var(--ddd-theme-default-nittanyNavy), var(--ddd-theme-default-white) ); font-weight: var(--ddd-font-weight-bold); } .ddd-toggle-swatch { display: inline-block; flex: none; width: var(--ddd-icon-4xs); height: 0; border-block-start: var(--ddd-toggle-swatch-width) var(--ddd-toggle-swatch-line) var(--ddd-toggle-swatch-color); } .ddd-toggle-group.swatches > .ddd-block-action[aria-pressed=\"false\"] .ddd-toggle-swatch { opacity: var(--ddd-opacity-60, 0.6); } @media (forced-colors: active) { .ddd-toggle-group.swatches > .ddd-block-action[aria-pressed=\"true\"] { border-color: Highlight; box-shadow: inset 0 0 0 var(--ddd-border-size-xs) Highlight; } } `, ]"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DDDComboboxStyles",
+          "declaration": {
+            "name": "DDDComboboxStyles",
+            "module": "lib/DDDReaderControls.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DDDToggleGroupStyles",
+          "declaration": {
+            "name": "DDDToggleGroupStyles",
+            "module": "lib/DDDReaderControls.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "lib/DDDReading.js",
       "declarations": [
         {
@@ -1384,7 +1814,7 @@
         {
           "kind": "variable",
           "name": "DDDPulseEffect",
-          "default": "css` /* Apply primary color as pulse effect using CSS variable */ :host([data-primary=\"0\"]) { --ddd-animation-pulse-color: var(--ddd-primary-0-rgb); } :host([data-primary=\"1\"]) { --ddd-animation-pulse-color: var(--ddd-primary-1-rgb); } :host([data-primary=\"2\"]) { --ddd-animation-pulse-color: var(--ddd-primary-2-rgb); } :host([data-primary=\"3\"]) { --ddd-animation-pulse-color: var(--ddd-primary-3-rgb); } :host([data-primary=\"4\"]) { --ddd-animation-pulse-color: var(--ddd-primary-4-rgb); } :host([data-primary=\"5\"]) { --ddd-animation-pulse-color: var(--ddd-primary-5-rgb); } :host([data-primary=\"6\"]) { --ddd-animation-pulse-color: var(--ddd-primary-6-rgb); } :host([data-primary=\"7\"]) { --ddd-animation-pulse-color: var(--ddd-primary-7-rgb); } :host([data-primary=\"8\"]) { --ddd-animation-pulse-color: var(--ddd-primary-8-rgb); } :host([data-primary=\"9\"]) { --ddd-animation-pulse-color: var(--ddd-primary-9-rgb); } :host([data-primary=\"10\"]) { --ddd-animation-pulse-color: var(--ddd-primary-10-rgb); } :host([data-primary=\"11\"]) { --ddd-animation-pulse-color: var(--ddd-primary-11-rgb); } :host([data-primary=\"12\"]) { --ddd-animation-pulse-color: var(--ddd-primary-12-rgb); } :host([data-primary=\"13\"]) { --ddd-animation-pulse-color: var(--ddd-primary-13-rgb); } :host([data-primary=\"14\"]) { --ddd-animation-pulse-color: var(--ddd-primary-14-rgb); } :host([data-primary=\"15\"]) { --ddd-animation-pulse-color: var(--ddd-primary-15-rgb); } :host([data-primary=\"16\"]) { --ddd-animation-pulse-color: var(--ddd-primary-16-rgb); } :host([data-primary=\"17\"]) { --ddd-animation-pulse-color: var(--ddd-primary-17-rgb); } :host([data-primary=\"18\"]) { --ddd-animation-pulse-color: var(--ddd-primary-18-rgb); } :host([data-primary=\"19\"]) { --ddd-animation-pulse-color: var(--ddd-primary-19-rgb); } :host([data-primary=\"20\"]) { --ddd-animation-pulse-color: var(--ddd-primary-20-rgb); } :host([data-primary=\"21\"]) { --ddd-animation-pulse-color: var(--ddd-primary-21-rgb); } :host([data-primary=\"22\"]) { --ddd-animation-pulse-color: var(--ddd-primary-22-rgb); } :host([data-primary=\"23\"]) { --ddd-animation-pulse-color: var(--ddd-primary-23-rgb); } :host([data-primary=\"24\"]) { --ddd-animation-pulse-color: var(--ddd-primary-24-rgb); } :host([data-primary=\"25\"]) { --ddd-animation-pulse-color: var(--ddd-primary-25-rgb); } :host([data-pulse]) { --ddd-animation-pulse-size: var(--ddd-spacing-4); animation-delay: 2.8s; animation-name: pulse; animation-duration: 2s; animation-iteration-count: infinite; z-index: 10000; } :host([data-pulse=\"1\"]) { --ddd-animation-pulse-size: var(--ddd-spacing-6); } :host([data-pulse=\"2\"]) { --ddd-animation-pulse-size: var(--ddd-spacing-10); } :host([data-pulse]:not([data-primary])) { --ddd-animation-pulse-color: var(--ddd-primary-1-rgb); } `"
+          "default": "css` /* Apply primary color as pulse effect using CSS variable */ :host([data-primary=\"0\"]) { --ddd-animation-pulse-color: var(--ddd-primary-0-rgb); } :host([data-primary=\"1\"]) { --ddd-animation-pulse-color: var(--ddd-primary-1-rgb); } :host([data-primary=\"2\"]) { --ddd-animation-pulse-color: var(--ddd-primary-2-rgb); } :host([data-primary=\"3\"]) { --ddd-animation-pulse-color: var(--ddd-primary-3-rgb); } :host([data-primary=\"4\"]) { --ddd-animation-pulse-color: var(--ddd-primary-4-rgb); } :host([data-primary=\"5\"]) { --ddd-animation-pulse-color: var(--ddd-primary-5-rgb); } :host([data-primary=\"6\"]) { --ddd-animation-pulse-color: var(--ddd-primary-6-rgb); } :host([data-primary=\"7\"]) { --ddd-animation-pulse-color: var(--ddd-primary-7-rgb); } :host([data-primary=\"8\"]) { --ddd-animation-pulse-color: var(--ddd-primary-8-rgb); } :host([data-primary=\"9\"]) { --ddd-animation-pulse-color: var(--ddd-primary-9-rgb); } :host([data-primary=\"10\"]) { --ddd-animation-pulse-color: var(--ddd-primary-10-rgb); } :host([data-primary=\"11\"]) { --ddd-animation-pulse-color: var(--ddd-primary-11-rgb); } :host([data-primary=\"12\"]) { --ddd-animation-pulse-color: var(--ddd-primary-12-rgb); } :host([data-primary=\"13\"]) { --ddd-animation-pulse-color: var(--ddd-primary-13-rgb); } :host([data-primary=\"14\"]) { --ddd-animation-pulse-color: var(--ddd-primary-14-rgb); } :host([data-primary=\"15\"]) { --ddd-animation-pulse-color: var(--ddd-primary-15-rgb); } :host([data-primary=\"16\"]) { --ddd-animation-pulse-color: var(--ddd-primary-16-rgb); } :host([data-primary=\"17\"]) { --ddd-animation-pulse-color: var(--ddd-primary-17-rgb); } :host([data-primary=\"18\"]) { --ddd-animation-pulse-color: var(--ddd-primary-18-rgb); } :host([data-primary=\"19\"]) { --ddd-animation-pulse-color: var(--ddd-primary-19-rgb); } :host([data-primary=\"20\"]) { --ddd-animation-pulse-color: var(--ddd-primary-20-rgb); } :host([data-primary=\"21\"]) { --ddd-animation-pulse-color: var(--ddd-primary-21-rgb); } :host([data-primary=\"22\"]) { --ddd-animation-pulse-color: var(--ddd-primary-22-rgb); } :host([data-primary=\"23\"]) { --ddd-animation-pulse-color: var(--ddd-primary-23-rgb); } :host([data-primary=\"24\"]) { --ddd-animation-pulse-color: var(--ddd-primary-24-rgb); } :host([data-primary=\"25\"]) { --ddd-animation-pulse-color: var(--ddd-primary-25-rgb); } /* two pulses, then it rests: an animated box-shadow repaints every frame, so an endless pulse kept the main thread busy for as long as the page was open, and motion that starts on its own must stop within five seconds (WCAG 2.2.2) */ :host([data-pulse]) { --ddd-animation-pulse-size: var(--ddd-spacing-4); animation-delay: 2.8s; animation-name: pulse; animation-duration: 2s; animation-iteration-count: 2; z-index: 10000; } @media (prefers-reduced-motion: reduce) { :host([data-pulse]) { animation: none; } } :host([data-pulse=\"1\"]) { --ddd-animation-pulse-size: var(--ddd-spacing-6); } :host([data-pulse=\"2\"]) { --ddd-animation-pulse-size: var(--ddd-spacing-10); } :host([data-pulse]:not([data-primary])) { --ddd-animation-pulse-color: var(--ddd-primary-1-rgb); } `"
         },
         {
           "kind": "variable",
@@ -1724,6 +2154,331 @@
           "declaration": {
             "name": "DDDUtilityClasses",
             "module": "lib/DDDUtilityClasses.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/DDDViewport.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "DDDViewport",
+          "members": [
+            {
+              "kind": "method",
+              "name": "hostConnected"
+            },
+            {
+              "kind": "method",
+              "name": "hostDisconnected"
+            },
+            {
+              "kind": "method",
+              "name": "_resolveTarget",
+              "parameters": [
+                {
+                  "name": "target"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "attach",
+              "parameters": [
+                {
+                  "name": "target",
+                  "optional": true,
+                  "type": {
+                    "text": "SVGSVGElement"
+                  }
+                }
+              ],
+              "description": "Start handling input on the svg (the target option when none is given).\nSafe to call again; it never adds listeners twice.",
+              "return": {
+                "type": {
+                  "text": "Boolean"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "detach",
+              "description": "stop handling input; the current viewBox stays"
+            },
+            {
+              "kind": "method",
+              "name": "_removeListeners"
+            },
+            {
+              "kind": "method",
+              "name": "_contentBox"
+            },
+            {
+              "kind": "field",
+              "name": "scale",
+              "description": "current zoom relative to the fit box (1 is fitted)",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_toSvg",
+              "parameters": [
+                {
+                  "name": "clientX"
+                },
+                {
+                  "name": "clientY"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_unitsPerPixel"
+            },
+            {
+              "kind": "method",
+              "name": "_apply",
+              "parameters": [
+                {
+                  "name": "notify"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "zoomBy",
+              "parameters": [
+                {
+                  "name": "factor",
+                  "type": {
+                    "text": "Number"
+                  }
+                },
+                {
+                  "name": "point",
+                  "optional": true,
+                  "type": {
+                    "text": "{x: Number, y: Number}"
+                  }
+                }
+              ],
+              "description": "Zoom by a factor (above 1 zooms in) around a point in svg units, the\nmiddle of the view by default. Clamped to minScale and maxScale."
+            },
+            {
+              "kind": "method",
+              "name": "zoomIn"
+            },
+            {
+              "kind": "method",
+              "name": "zoomOut"
+            },
+            {
+              "kind": "method",
+              "name": "panBy",
+              "parameters": [
+                {
+                  "name": "dx",
+                  "type": {
+                    "text": "Number"
+                  }
+                },
+                {
+                  "name": "dy",
+                  "type": {
+                    "text": "Number"
+                  }
+                }
+              ],
+              "description": "Pan by an amount in svg user units."
+            },
+            {
+              "kind": "method",
+              "name": "fit",
+              "description": "go back to the fit box"
+            },
+            {
+              "kind": "method",
+              "name": "setView",
+              "parameters": [
+                {
+                  "name": "box",
+                  "type": {
+                    "text": "{x: Number, y: Number, width: Number, height: Number}"
+                  }
+                }
+              ],
+              "description": "Set the viewBox directly (for example to centre a selected node)."
+            },
+            {
+              "kind": "method",
+              "name": "_down",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_startDrag",
+              "parameters": [
+                {
+                  "name": "pointerId"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_pinchState"
+            },
+            {
+              "kind": "method",
+              "name": "_move",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_up",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_wheel",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_key",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "host"
+            },
+            {
+              "kind": "field",
+              "name": "options",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ target: o.target || null, fit: validBox(o.fit) ? { ...o.fit } : null, minScale: Number(o.minScale) > 0 ? Number(o.minScale) : 0.5, maxScale: Number(o.maxScale) > 0 ? Number(o.maxScale) : 8, step: Number(o.step) > 1 ? Number(o.step) : 1.25, panStep: Number(o.panStep) > 0 ? Number(o.panStep) : 0.1, onChange: typeof o.onChange === \"function\" ? o.onChange : null, }"
+            },
+            {
+              "kind": "field",
+              "name": "svg",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "view",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "_pointers",
+              "default": "new Map()"
+            },
+            {
+              "kind": "field",
+              "name": "_pinch",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "_dragging",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "_abort",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "renderDDDZoomControls",
+          "parameters": [
+            {
+              "name": "o",
+              "type": {
+                "text": "@param {Function} o.onZoomIn\n * @param {Function} o.onZoomOut\n * @param {Function} o.onFit\n * @param {Object} [o.labels] { group, zoomIn, zoomOut, fit }, translated\n * "
+              }
+            }
+          ],
+          "description": "The corner zoom controls: zoom in, zoom out and fit, as .ddd-block-action\nbuttons in a labelled group. Put it inside .ddd-viewport after the svg.",
+          "return": {
+            "type": {
+              "text": "TemplateResult"
+            }
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "DDDViewportStyles",
+          "type": {
+            "text": "array"
+          },
+          "default": "[ DDDBlockStyles, css` .ddd-viewport { position: relative; overflow: hidden; min-height: 0; } .ddd-viewport > svg { display: block; width: 100%; height: 100%; touch-action: none; cursor: grab; user-select: none; } .ddd-viewport > svg[data-panning] { cursor: grabbing; } .ddd-viewport > svg:focus-visible { outline: var(--ddd-focus-ring); outline-offset: calc(-1 * var(--ddd-focus-offset)); } .ddd-viewport-controls { position: absolute; inset-block-end: var(--ddd-spacing-3); inset-inline-end: var(--ddd-spacing-3); z-index: 1; display: flex; flex-direction: column; gap: var(--ddd-spacing-1); } .ddd-viewport-controls .ddd-block-action { background-color: light-dark( var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray) ); box-shadow: var(--ddd-boxShadow-sm); } @media print { .ddd-viewport-controls { display: none; } } `, ]"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DDDViewport",
+          "declaration": {
+            "name": "DDDViewport",
+            "module": "lib/DDDViewport.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "renderDDDZoomControls",
+          "declaration": {
+            "name": "renderDDDZoomControls",
+            "module": "lib/DDDViewport.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DDDViewportStyles",
+          "declaration": {
+            "name": "DDDViewportStyles",
+            "module": "lib/DDDViewport.js"
           }
         }
       ]
@@ -2085,6 +2840,22 @@
         },
         {
           "kind": "js",
+          "name": "HAX_UI_DARK_CHROME",
+          "declaration": {
+            "name": "HAX_UI_DARK_CHROME",
+            "module": "./HaxUiAdminTokens.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "HaxUiDarkChromeDeclarations",
+          "declaration": {
+            "name": "HaxUiDarkChromeDeclarations",
+            "module": "./HaxUiAdminTokens.js"
+          }
+        },
+        {
+          "kind": "js",
           "name": "HaxUiAdminIcons",
           "declaration": {
             "name": "HaxUiAdminIcons",
@@ -2097,6 +2868,54 @@
           "declaration": {
             "name": "HaxUiAdminShell",
             "module": "./HaxUiAdminShell.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "HaxUiDialogTitlebar",
+          "declaration": {
+            "name": "HaxUiDialogTitlebar",
+            "module": "./HaxUiDialogFrame.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "HaxUiDialogSurface",
+          "declaration": {
+            "name": "HaxUiDialogSurface",
+            "module": "./HaxUiDialogFrame.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "HaxUiDialogFrame",
+          "declaration": {
+            "name": "HaxUiDialogFrame",
+            "module": "./HaxUiDialogFrame.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "HaxUiDialogConfirm",
+          "declaration": {
+            "name": "HaxUiDialogConfirm",
+            "module": "./HaxUiDialogFrame.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "HaxUiDialogTitlebarStyles",
+          "declaration": {
+            "name": "HaxUiDialogTitlebarStyles",
+            "module": "./HaxUiDialogFrame.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "haxUiDialogVars",
+          "declaration": {
+            "name": "haxUiDialogVars",
+            "module": "./HaxUiDialogFrame.js"
           }
         },
         {
@@ -2139,6 +2958,20 @@
           },
           "default": "[ css` :host { color-scheme: var(--hax-ui-color-scheme, inherit); } `, ]",
           "description": "Follow the editor's HAX UI theme switch (--hax-ui-color-scheme, set on\nbody by hax-ui-styles) so light-dark() in an admin element agrees with\nthe --hax-ui-* colors; without it the element inherits as before."
+        },
+        {
+          "kind": "variable",
+          "name": "HAX_UI_DARK_CHROME",
+          "type": {
+            "text": "object"
+          },
+          "default": "{ \"color-scheme\": \"dark\", \"--hax-ui-color-scheme\": \"dark\", \"--hax-ui-color\": \"var(--ddd-theme-default-white, #ffffff)\", \"--hax-ui-color-focus\": \"var(--ddd-theme-default-white, #ffffff)\", \"--hax-ui-color-faded\": \"#c5c3be\", \"--hax-ui-background-color\": \"var(--ddd-theme-default-coalyGray, #262626)\", \"--hax-ui-background-color-secondary\": \"#111\", \"--hax-ui-background-color-faded\": \"#222\", \"--hax-ui-color-accent\": \"#00c9ff\", \"--hax-ui-color-accent-secondary\": \"#00c9ff\", \"--hax-ui-background-color-accent\": \"#000\", \"--hax-ui-color-danger\": \"#ff8f8f\", \"--hax-ui-color-danger-secondary\": \"#ff2222\", \"--hax-ui-background-color-danger\": \"#000\", \"--hax-ui-border-color\": \"#000\", }",
+          "description": "HAX UI dark chrome: the HAX UI theme tokens pinned to their dark values\n(the same values hax-ui-styles uses for its dark theme), plus\ncolor-scheme dark. Surfaces that must look the same in every theme wear\nit: the site editor and app-hax top bars, the Merlin popover they open,\nand toasts. The menus, fields and avatar frame inside them follow along.\nA plain object for setting on an element's style from script."
+        },
+        {
+          "kind": "variable",
+          "name": "HaxUiDarkChromeDeclarations",
+          "description": "HAX_UI_DARK_CHROME as declarations, to drop into a rule:\ncss`app-hax-top-bar { ${HaxUiDarkChromeDeclarations} }`."
         }
       ],
       "exports": [
@@ -2165,6 +2998,117 @@
             "name": "HaxUiAdminScheme",
             "module": "lib/HaxUiAdminTokens.js"
           }
+        },
+        {
+          "kind": "js",
+          "name": "HAX_UI_DARK_CHROME",
+          "declaration": {
+            "name": "HAX_UI_DARK_CHROME",
+            "module": "lib/HaxUiAdminTokens.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "HaxUiDarkChromeDeclarations",
+          "declaration": {
+            "name": "HaxUiDarkChromeDeclarations",
+            "module": "lib/HaxUiAdminTokens.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/HaxUiDialogFrame.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "HaxUiDialogTitlebar",
+          "description": "The titlebar: 48px coalyGray / potentialMidnight band, 16px bold title"
+        },
+        {
+          "kind": "variable",
+          "name": "HaxUiDialogSurface",
+          "description": "The surface under the titlebar: white / coalyGray, 8px corners"
+        },
+        {
+          "kind": "variable",
+          "name": "HaxUiDialogFrame",
+          "description": "Titlebar and surface together: what most dialogs spread"
+        },
+        {
+          "kind": "variable",
+          "name": "HaxUiDialogConfirm",
+          "description": "The confirm card, as the admin's leave prompt draws it: a 460px surface\npanel with its question as a bold heading, no dark titlebar. The modal\nkeeps its title, so the dialog keeps its accessible name; put a\nhax-confirm-dialog in it for the message and the buttons."
+        },
+        {
+          "kind": "function",
+          "name": "haxUiDialogVars",
+          "parameters": [
+            {
+              "name": "map"
+            }
+          ],
+          "description": "A style map as a :host rule, for a simple-modal-template: the template\nreads these custom properties off itself when it opens the modal.\nOnly the frame's own maps are passed in, so the text is trusted."
+        },
+        {
+          "kind": "variable",
+          "name": "HaxUiDialogTitlebarStyles",
+          "type": {
+            "text": "array"
+          },
+          "default": "[ css` .hax-ui-dialog-titlebar { flex: none; box-sizing: border-box; display: flex; align-items: center; gap: var(--ddd-spacing-2, 8px); height: var(--hax-ui-titlebar-height, 48px); margin: 0; padding: 0 var(--ddd-spacing-3, 12px) 0 var(--ddd-spacing-4, 16px); font-family: var(--hax-ui-admin-font-family, var(--ddd-font-navigation)); color: var(--hax-ui-on-titlebar, var(--ddd-theme-default-white)); background-color: var( --hax-ui-titlebar, light-dark( var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-potentialMidnight) ) ); } .hax-ui-dialog-title { flex: 1 1 auto; min-width: 0; margin: 0; font-size: 16px; font-weight: var(--ddd-font-weight-bold, 700); line-height: 1.2; } .hax-ui-dialog-close { all: unset; box-sizing: border-box; flex: none; cursor: pointer; display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: var(--hax-ui-radius, var(--ddd-radius-xs, 4px)); color: inherit; --simple-icon-width: 20px; --simple-icon-height: 20px; transition: background-color var(--hax-ui-duration, 150ms) var(--hax-ui-easing, ease); } .hax-ui-dialog-close:hover:not(:disabled), .hax-ui-dialog-close:focus-visible { background-color: rgba(255, 255, 255, 0.12); } .hax-ui-dialog-close:focus-visible { outline: var(--hax-ui-focus-width, 2px) solid var(--ddd-theme-default-keystoneYellow, #ffd100); outline-offset: -2px; } .hax-ui-dialog-close:disabled { opacity: 0.5; cursor: not-allowed; } @media (prefers-reduced-motion: reduce) { .hax-ui-dialog-close { transition: none; } } `, ]",
+          "description": "The same titlebar for a dialog that draws its own (web-dialog): put\n.hax-ui-dialog-titlebar on the bar, .hax-ui-dialog-title on its heading\nand .hax-ui-dialog-close on the close button (with an aria-label)."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "HaxUiDialogTitlebar",
+          "declaration": {
+            "name": "HaxUiDialogTitlebar",
+            "module": "lib/HaxUiDialogFrame.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "HaxUiDialogSurface",
+          "declaration": {
+            "name": "HaxUiDialogSurface",
+            "module": "lib/HaxUiDialogFrame.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "HaxUiDialogFrame",
+          "declaration": {
+            "name": "HaxUiDialogFrame",
+            "module": "lib/HaxUiDialogFrame.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "HaxUiDialogConfirm",
+          "declaration": {
+            "name": "HaxUiDialogConfirm",
+            "module": "lib/HaxUiDialogFrame.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "haxUiDialogVars",
+          "declaration": {
+            "name": "haxUiDialogVars",
+            "module": "lib/HaxUiDialogFrame.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "HaxUiDialogTitlebarStyles",
+          "declaration": {
+            "name": "HaxUiDialogTitlebarStyles",
+            "module": "lib/HaxUiDialogFrame.js"
+          }
         }
       ]
     },
@@ -2177,6 +3121,11 @@
           "description": "",
           "name": "DDDSample",
           "members": [
+            {
+              "kind": "field",
+              "name": "sampleLabel",
+              "readonly": true
+            },
             {
               "kind": "field",
               "name": "tag",
@@ -3012,6 +3961,319 @@
           "declaration": {
             "name": "DddStepsList",
             "module": "lib/ddd-steps-list.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/hax-confirm-dialog.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`hax-confirm-dialog`\nThe HAX UI confirm card's body: a muted message and the HAX UI buttons\n(cancel plain and focused first, confirm primary, or a danger fill when\ndestructive). Open it in a simple-modal with HaxUiDialogConfirm. It\nlives in d-d-d with the rest of the HAX UI layer so hax-body's dialogs\nand HAXcms's share one confirm; the old haxcms-elements path re-exports\nit.",
+          "name": "HAXConfirmDialog",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "DDD",
+                "module": "d-d-d.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_getFocusableElements"
+            },
+            {
+              "kind": "method",
+              "name": "_focusInitialAction"
+            },
+            {
+              "kind": "method",
+              "name": "focusInitial",
+              "description": "Public alias for _focusInitialAction so that simple-modal can delegate\ninitial focus to this component via a consistent interface."
+            },
+            {
+              "kind": "method",
+              "name": "_handleKeydown",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_runCallback",
+              "parameters": [
+                {
+                  "name": "callback"
+                },
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_closeModal"
+            },
+            {
+              "kind": "method",
+              "name": "_cancelTap",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_confirmTap",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "message",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "message"
+            },
+            {
+              "kind": "field",
+              "name": "confirmLabel",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "confirm-label"
+            },
+            {
+              "kind": "field",
+              "name": "cancelLabel",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "cancel-label"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, confirm: \"Confirm\", cancel: \"Cancel\", }"
+            },
+            {
+              "kind": "field",
+              "name": "destructive",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "destructive",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "closeOnConfirm",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "close-on-confirm"
+            },
+            {
+              "kind": "field",
+              "name": "closeOnCancel",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "close-on-cancel"
+            },
+            {
+              "kind": "field",
+              "name": "confirmCallback",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "cancelCallback",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "__focusableSelector",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"button:not([disabled]), [href], input:not([disabled]):not([type='hidden']), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex='-1'])\""
+            },
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "DDD",
+                "module": "d-d-d.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "description": "LitElement style callback",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "DDD",
+                "module": "d-d-d.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "isSafari",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "is-safari",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "DDD",
+                "module": "d-d-d.js"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "hax-confirm-dialog-cancel",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "hax-confirm-dialog-confirm",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "message",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "message"
+            },
+            {
+              "name": "confirm-label",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "confirmLabel"
+            },
+            {
+              "name": "cancel-label",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "cancelLabel"
+            },
+            {
+              "name": "destructive",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "destructive"
+            },
+            {
+              "name": "close-on-confirm",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "closeOnConfirm"
+            },
+            {
+              "name": "close-on-cancel",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "closeOnCancel"
+            },
+            {
+              "name": "is-safari",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "isSafari",
+              "inheritedFrom": {
+                "name": "DDD",
+                "module": "d-d-d.js"
+              }
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "module": "/d-d-d.js"
+          },
+          "tagName": "hax-confirm-dialog",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "HAXConfirmDialog",
+            "module": "lib/hax-confirm-dialog.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "HAXConfirmDialog",
+          "declaration": {
+            "name": "HAXConfirmDialog",
+            "module": "lib/hax-confirm-dialog.js"
           }
         }
       ]

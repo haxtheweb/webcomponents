@@ -1,0 +1,45 @@
+{
+  "tag": "media-quote",
+  "package": "@haxtheweb/media-quote",
+  "source": "elements/media-quote/media-quote.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "alt": "alt",
+    "author": "author",
+    "author-detail": "authorDetail",
+    "caption": "caption",
+    "dark": "dark",
+    "filter": "hasFilter",
+    "is-safari": "isSafari",
+    "quote": "quote",
+    "src": "src",
+    "t": "t"
+  },
+  "slots": [
+    "author",
+    "author-detail",
+    "caption",
+    "quote"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/media-quote/lib/media-quote.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "alt",
+      "src"
+    ],
+    "attributes": [],
+    "slots": [
+      "author",
+      "author-detail",
+      "caption",
+      "quote"
+    ],
+    "demoTags": [
+      "media-quote"
+    ]
+  }
+}

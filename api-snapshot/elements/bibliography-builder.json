@@ -1,0 +1,36 @@
+{
+  "tag": "bibliography-builder",
+  "package": "@haxtheweb/bibliography-builder",
+  "source": "elements/bibliography-builder/bibliography-builder.js",
+  "attributes": {
+    "citation-array": "citationArr",
+    "export-mode": "exportMode",
+    "for-course": "forCourse",
+    "is-safari": "isSafari",
+    "schemamap": "schemaMap",
+    "t": "t",
+    "title": "title"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [
+    "simple-modal-show"
+  ],
+  "cssParts": [
+    "icon"
+  ],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/bibliography-builder/lib/bibliography-builder.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "forCourse"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "bibliography-builder"
+    ]
+  }
+}

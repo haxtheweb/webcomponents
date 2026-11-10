@@ -1,0 +1,49 @@
+{
+  "tag": "a11y-tab",
+  "package": "@haxtheweb/a11y-tabs",
+  "source": "elements/a11y-tabs/lib/a11y-tab.js",
+  "attributes": {
+    "aria-labelledby": "ariaLabelledby",
+    "disabled": "disabled",
+    "flag": "flag",
+    "flag-icon": "flagIcon",
+    "icon": "icon",
+    "id": "id",
+    "inactive": "inactive",
+    "label": "label",
+    "order": "order",
+    "role": "role",
+    "t": "t",
+    "tabindex": "tabindex",
+    "total": "total"
+  },
+  "slots": [
+    "(default)",
+    "label"
+  ],
+  "events": [
+    "a11y-tab-changed"
+  ],
+  "cssParts": [
+    "content",
+    "heading",
+    "icon",
+    "label"
+  ],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/a11y-tabs/lib/a11y-tab.js",
+    "gizmo": true,
+    "properties": [
+      "disabled",
+      "flag",
+      "flagIcon",
+      "icon",
+      "id",
+      "label"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": []
+  }
+}

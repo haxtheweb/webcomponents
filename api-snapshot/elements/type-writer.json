@@ -1,0 +1,34 @@
+{
+  "tag": "type-writer",
+  "package": "@haxtheweb/type-writer",
+  "source": "elements/type-writer/type-writer.js",
+  "attributes": {
+    "cursor-duration": "cursorDuration",
+    "delay": "delay",
+    "element-visible": "elementVisible",
+    "erase-speed": "eraseSpeed",
+    "speed": "speed",
+    "text": "text",
+    "typing": "typing"
+  },
+  "slots": [],
+  "events": [
+    "type-writer-end"
+  ],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/type-writer/type-writer.js",
+    "gizmo": true,
+    "properties": [
+      "cursorDuration",
+      "delay",
+      "speed",
+      "text",
+      "typing"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": []
+  }
+}

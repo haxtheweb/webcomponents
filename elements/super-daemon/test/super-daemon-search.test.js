@@ -142,6 +142,29 @@ describe("super-daemon-search behavior", () => {
     });
   });
 
+  it("hides the voice button once speech proved unavailable", async () => {
+    await withSpeech(
+      function FakeRecognition() {},
+      async () => {
+        globalThis.Hal9000 = globalThis.Hal9000 || {};
+        const prior = globalThis.Hal9000.instance;
+        globalThis.Hal9000.instance = { canListen: false };
+        try {
+          const el = await fixture(
+            html`<super-daemon-search voice-search></super-daemon-search>`,
+          );
+          expect(el.shadowRoot.querySelector("button.voice")).to.be.null;
+          globalThis.Hal9000.instance = { canListen: true };
+          el.requestUpdate();
+          await el.updateComplete;
+          expect(el.shadowRoot.querySelector("button.voice")).to.exist;
+        } finally {
+          globalThis.Hal9000.instance = prior;
+        }
+      },
+    );
+  });
+
   it("shows the meter, label and pressed state while listening", async () => {
     await withSpeech(
       function FakeRecognition() {},

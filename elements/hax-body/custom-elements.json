@@ -775,6 +775,16 @@
             },
             {
               "kind": "method",
+              "name": "__importAppliesEditMode",
+              "parameters": [
+                {
+                  "name": "newValue"
+                }
+              ],
+              "description": "True when edit mode is turning on while importContent is still running.\nThe import's completion applies editable state and runs the\neditModeChanged hooks on every imported child once it lands, so doing\nit here as well only repeated the same work on the same nodes."
+            },
+            {
+              "kind": "method",
               "name": "_connectMutationObserverWhenReady",
               "description": "Connect MutationObserver only when content is stable\nThis prevents spurious DOM corrections during content import"
             },
@@ -840,6 +850,47 @@
                 }
               ],
               "description": "Ensure layout/grid descendants retain HAX editable state and data-hax-* attributes."
+            },
+            {
+              "kind": "method",
+              "name": "__nextFrame",
+              "description": "Resolves on the next animation frame. Every caller waiting in the same\nframe shares one requestAnimationFrame instead of queueing one each."
+            },
+            {
+              "kind": "method",
+              "name": "__whenUpgraded",
+              "parameters": [
+                {
+                  "name": "tagName"
+                }
+              ],
+              "description": "Wait for a custom element tag to be defined, plus one frame so its\nshadowRoot is ready. Primitives resolve right away."
+            },
+            {
+              "kind": "method",
+              "name": "__gizmoTitleMap",
+              "description": "tag -> HAX-ray label (gizmo title) lookup, built from the live gizmo list\nin one pass. Replaces a toJS() deep copy of the whole gizmo list per node."
+            },
+            {
+              "kind": "method",
+              "name": "__applyEditableStateInBatches",
+              "parameters": [
+                {
+                  "name": "nodes",
+                  "description": "elements to apply to",
+                  "type": {
+                    "text": "Array"
+                  }
+                },
+                {
+                  "name": "apply",
+                  "description": "(node, titles) per-node work, may return a promise",
+                  "type": {
+                    "text": "Function"
+                  }
+                }
+              ],
+              "description": "Apply editable state to many nodes at once. Primitives are applied right\naway; custom elements wait once per tag for their definition and share a\nsingle frame, instead of a serial whenDefined + requestAnimationFrame per\nnode (which made entering edit mode cost a frame per block)."
             },
             {
               "kind": "method",
@@ -1010,6 +1061,10 @@
                 {
                   "name": "status",
                   "default": "true"
+                },
+                {
+                  "name": "titles",
+                  "default": "null"
                 }
               ],
               "description": "Apply the node editable state correctly so we can do drag and drop / editing uniformly"
@@ -2241,6 +2296,16 @@
           "name": "HaxCancelDialog",
           "members": [
             {
+              "kind": "method",
+              "name": "_confirmed",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "The modal holds a copy of the card, so its \"Yes\" is told apart by id.\nAnswer the way simple-modal's dialog-confirm did, with the modal's\ninvokedBy, before the card closes the modal."
+            },
+            {
               "kind": "field",
               "name": "tag",
               "static": true,
@@ -2249,7 +2314,12 @@
             {
               "kind": "method",
               "name": "focusInitial",
-              "description": "Focus the initial action button when the dialog becomes visible."
+              "description": "Focus the safe choice (\"No\") when the dialog becomes visible."
+            },
+            {
+              "kind": "field",
+              "name": "windowControllers",
+              "default": "new AbortController()"
             },
             {
               "kind": "field",
@@ -6150,6 +6220,37 @@
               ]
             },
             {
+              "kind": "field",
+              "name": "allowedExternalImportHosts",
+              "static": true,
+              "description": "External origins that app store autoloader entries may import code\nfrom. The page's own origin is always allowed (see isExternalURLImport);\neverything else has to be an https URL on one of these hosts, unless\nthe app store sets `allowExternalImports: true`.",
+              "return": {
+                "type": {
+                  "text": "Array<string>"
+                }
+              },
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "isAllowedExternalImport",
+              "parameters": [
+                {
+                  "name": "string",
+                  "description": "absolute URL",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Is this cross-origin module URL allowed to be imported?",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
               "kind": "method",
               "name": "_loadActiveDesignSystemIntegrations"
             },
@@ -6850,7 +6951,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"hax:wand\""
+              "default": "\"hax:world-traveler-plain\""
             },
             {
               "kind": "field",
@@ -11607,7 +11708,7 @@
           "type": {
             "text": "array"
           },
-          "default": "[ css` body { --simple-fields-field-margin: calc(2 * var(--hax-ui-font-size)); --simple-toolbar-focus-z-index: var(--hax-ui-focus-z-index); --simple-fields-font-family: var(--hax-ui-font-family); --simple-fields-font-size: var(--hax-ui-font-size); --simple-fields-line-height: 135%; --simple-fields-detail-font-size: var(--hax-ui-font-size-sm); --simple-fields-detail-line-height: 120%; --simple-fields-margin: var(--hax-ui-spacing); --simple-fields-background-color: var(--hax-ui-background-color); --simple-fields-color: var(--hax-ui-color); --simple-picker-option-active-color: var(--hax-ui-color); --simple-picker-color-active: var(--hax-ui-color); --simple-picker-color: var(--hax-ui-color); --simple-fields-accent-color: var(--hax-ui-color-accent); --simple-fields-accent-color-light: var(--hax-ui-background-color-faded); --simple-fields-error-color: var(--hax-ui-color-danger-secondary); --simple-fields-button-danger-background-color: var( --hax-ui-color-danger ); --simple-fields-button-danger-focus-color: var( --hax-ui-color-danger-secondary ); --simple-fields-button-danger-background-color: var( --hax-ui-background-color ); --simple-fields-secondary-accent-color: var( --hax-ui-color-accent-secondary ); --simple-fields-border-color: var(--hax-ui-color-faded); --simple-fields-fieldset-border-color: rgba(127, 127, 127, 0.2); --simple-fields-legend-text-transform: capitalize; --simple-fields-legend-font-size: var(--hax-ui-font-size-xs); --simple-fields-meta-font-size: var(--hax-ui-font-size-xs); --simple-fields-meta-line-height: 120%; --simple-fields-meta-opacity: 0.7; --simple-fields-focus-meta-opacity: 1; --simple-fields-button-color: var(--hax-ui-color); --simple-fields-button-background-color: var(--hax-ui-background-color); --simple-fields-button-border-color: var(--hax-ui-border-color); --simple-fields-button-text-transform: capitalize; --simple-fields-border-radius: var(--hax-ui-border-radius); --simple-fields-button-padding-sm: var(--hax-ui-spacing-sm); --simple-fields-button-padding: var(--hax-ui-spacing-sm); --simple-fields-button-toggled-color: var(--hax-ui-color); --simple-fields-button-toggled-background-color: var( --hax-ui-background-color-accent ); --simple-fields-button-toggled-border-color: var(--hax-ui-color-accent); --simple-fields-button-focus-color: var(--hax-ui-color); --simple-fields-button-focus-background-color: var( --hax-ui-background-color-accent ); --simple-fields-button-focus-border-color: var(--hax-ui-color-accent); --simple-fields-button-disabled-color: unset; --simple-fields-button-disabled-background-color: unset; --simple-fields-button-disabled-border-color: unset; --simple-fields-button-disabled-opacity: var( --ddd-state-disabled-opacity, 0.5 ); --hexagon-color: var(--hax-ui-color-accent); } `, ]"
+          "default": "[ css` body { --simple-fields-field-margin: calc(2 * var(--hax-ui-font-size)); --simple-toolbar-focus-z-index: var(--hax-ui-focus-z-index); --simple-fields-font-family: var(--hax-ui-font-family); --simple-fields-font-size: var(--hax-ui-font-size); --simple-fields-line-height: 135%; --simple-fields-detail-font-size: var(--hax-ui-font-size-sm); --simple-fields-detail-line-height: 120%; --simple-fields-margin: var(--hax-ui-spacing); --simple-fields-background-color: var(--hax-ui-background-color); --simple-fields-color: var(--hax-ui-color); --simple-picker-option-active-color: var(--hax-ui-color); --simple-picker-color-active: var(--hax-ui-color); --simple-picker-color: var(--hax-ui-color); --simple-fields-accent-color: var(--hax-ui-color-accent); --simple-fields-accent-color-light: var(--hax-ui-background-color-faded); --simple-fields-error-color: var(--hax-ui-color-danger-secondary); --simple-fields-button-danger-background-color: var( --hax-ui-color-danger ); --simple-fields-button-danger-focus-color: var( --hax-ui-color-danger-secondary ); --simple-fields-button-danger-background-color: var( --hax-ui-background-color ); --simple-fields-secondary-accent-color: var( --hax-ui-color-accent-secondary ); --simple-fields-border-color: var(--hax-ui-color-faded); --simple-fields-fieldset-border-color: rgba(127, 127, 127, 0.2); --simple-fields-legend-text-transform: capitalize; --simple-fields-legend-font-size: var(--hax-ui-font-size-xs); --simple-fields-meta-font-size: var(--hax-ui-font-size-xs); --simple-fields-meta-line-height: 120%; --simple-fields-meta-opacity: 0.7; --simple-fields-button-color: var(--hax-ui-color); --simple-fields-button-background-color: var(--hax-ui-background-color); --simple-fields-button-border-color: var(--hax-ui-border-color); --simple-fields-button-text-transform: capitalize; --simple-fields-border-radius: var(--hax-ui-border-radius); --simple-fields-button-padding-sm: var(--hax-ui-spacing-sm); --simple-fields-button-padding: var(--hax-ui-spacing-sm); --simple-fields-button-toggled-color: var(--hax-ui-color); --simple-fields-button-toggled-background-color: var( --hax-ui-background-color-accent ); --simple-fields-button-toggled-border-color: var(--hax-ui-color-accent); --simple-fields-button-focus-color: var(--hax-ui-color); --simple-fields-button-focus-background-color: var( --hax-ui-background-color-accent ); --simple-fields-button-focus-border-color: var(--hax-ui-color-accent); --simple-fields-button-disabled-color: unset; --simple-fields-button-disabled-background-color: unset; --simple-fields-button-disabled-border-color: unset; --simple-fields-button-disabled-opacity: var( --ddd-state-disabled-opacity, 0.5 ); --hexagon-color: var(--hax-ui-color-accent); } `, ]"
         },
         {
           "kind": "variable",
@@ -11623,7 +11724,7 @@
           "type": {
             "text": "array"
           },
-          "default": "[ css` simple-modal[mode=\"hax-ui\"], simple-popover-manager[mode=\"hax\"] { font-family: var(--hax-ui-font-family); font-size: var(--hax-ui-font-size); --simple-modal-height: 80vh; --simple-modal-width: 80vw; --simple-popover-background-color: light-dark( var(--ddd-primary-4), var(--ddd-accent-6) ); --simple-popover-padding: var(--hax-ui-spacing); --simple-popover-border-color: light-dark( var(--ddd-accent-6), var(--ddd-primary-4) ); --simple-popover-color: light-dark( var(--ddd-accent-6), var(--ddd-primary-4) ); --simple-modal-border-color: var(--hax-ui-color); } rich-text-editor-prompt { z-index: calc(var(--hax-ui-focus-z-index) - 1); } simple-modal[mode=\"hax-ui\"]::part(dialog) { --simple-modal-z-index: 100000001 !important; } simple-modal[opened] { z-index: 100000001 !important; position: fixed; } simple-modal[mode=\"hax-ui\"]::part(titlebar), simple-popover-manager[mode=\"hax\"]::part(simple-popover-heading), simple-popover-manager[mode=\"hax\"] h1[slot=\"heading\"] { color: var(--hax-ui-background-color); background-color: var(--hax-ui-color-accent); padding: var(--hax-ui-spacing-sm) var(--hax-ui-spacing); margin: 0; } simple-modal[mode=\"hax-ui\"]::part(close), simple-popover-manager[mode=\"hax\"] #close { color: var(--hax-ui-background-color); background-color: var(--hax-ui-color-accent); outline: 1px solid var(--hax-ui-color-accent); --simple-icon-button-border: 0px solid transparent; --simple-icon-button-border-radius: var(--hax-ui-border-radius); width: 24px; height: 24px; padding: 0; } simple-modal[mode=\"hax-ui\"]:focus-within::part(close), simple-modal[mode=\"hax-ui\"]:hover::part(close), simple-popover-manager[mode=\"hax\"] #close:focus, simple-popover-manager[mode=\"hax\"] #close:hover { background-color: var(--hax-ui-color-accent-secondary); --simple-icon-button-border: 0px solid transparent; } simple-modal[mode=\"hax-ui\"]::part(title), simple-popover-manager[mode=\"hax\"] h1 { font-family: var(--hax-ui-font-family); font-size: var(--hax-ui-font-size); font-weight: normal; margin: 0 var(--hax-ui-spacing-sm) 0 0; padding: 0; } simple-popover-manager[mode=\"hax\"] h2 { font-family: var(--hax-ui-font-family); font-size: var(--hax-ui-font-size-lg); font-weight: normal; color: var(--hax-ui-color-accent-secondary); margin: 0 0 var(--hax-ui-spacing-lg); } simple-modal[mode=\"hax-ui\"]::part(content), simple-modal[mode=\"hax-ui\"]::part(custom), simple-popover-manager[mode=\"hax\"]::part(simple-popover-body) { font-size: var(--hax-ui-font-size); color: var(--hax-ui-color); background-color: var(--hax-ui-background-color); } simple-modal[mode=\"hax-ui\"]::part(content) { padding: 0 var(--hax-ui-spacing); } simple-modal[mode=\"hax-ui\"]::part(custom) { padding: 0; } simple-popover-manager[mode=\"hax\"]::part(simple-popover-body) { padding: var(--hax-ui-spacing); } simple-modal[mode=\"hax-ui\"]::part(buttons), simple-popover-manager[mode=\"hax\"]::part(simple-popover-nav) { background-color: var(--hax-ui-background-color); } #hax-cancel-no, #hax-cancel-yes { flex: 1 1 auto; } simple-popover-manager[mode=\"hax\"] simple-icon-button-lite[slot=\"nav\"]::part(button) { text-transform: capitalize; font-size: var(--hax-ui-font-size-sm); padding: var(--hax-ui-spacing-sm); color: var(--hax-ui-color); background-color: var(--hax-ui-background-color); border: 1px solid var(--hax-ui-border-color); border-radius: var(--hax-ui-border-radius); background-color: var(--hax-ui-background-color); } simple-popover-manager[mode=\"hax\"] simple-icon-button-lite[slot=\"nav\"]::part(button):hover, simple-popover-manager[mode=\"hax\"] simple-icon-button-lite[slot=\"nav\"]::part(button):focus-within { color: var(--hax-ui-color); background-color: var(--hax-ui-background-color-accent); border-color: var(--hax-ui-color-accent); } simple-popover-manager[mode=\"hax\"] simple-icon-button-lite[slot=\"nav\"][disabled]::part(button) { opacity: var(--ddd-state-disabled-opacity, 0.5); border: 1px solid var(--hax-ui-border-color); } `, ]"
+          "default": "[ css` simple-modal[mode=\"hax-ui\"], simple-popover-manager[mode=\"hax\"] { font-family: var(--hax-ui-font-family); font-size: var(--hax-ui-font-size); --simple-modal-height: 80vh; --simple-modal-width: 80vw; --simple-popover-background-color: light-dark( var(--ddd-primary-4), var(--ddd-accent-6) ); --simple-popover-padding: var(--hax-ui-spacing); --simple-popover-border-color: light-dark( var(--ddd-accent-6), var(--ddd-primary-4) ); --simple-popover-color: light-dark( var(--ddd-accent-6), var(--ddd-primary-4) ); --simple-modal-border-color: var(--hax-ui-color); } rich-text-editor-prompt { z-index: calc(var(--hax-ui-focus-z-index) - 1); } simple-modal[mode=\"hax-ui\"]::part(dialog) { --simple-modal-z-index: 100000001 !important; } simple-modal[opened] { z-index: 100000001 !important; position: fixed; } /* the editor's dialogs (app picker, view source, cancel) wear the HAX UI dialog frame, the look of every admin modal; their titlebar and surface come from the frame's custom properties, which each dialog passes to the modal (see @haxtheweb/d-d-d/lib/HaxUiDialogFrame.js). Only the title font is set here; the close button is simple-modal's own, as in the admin dialogs. */ simple-modal[mode=\"hax-ui\"]::part(title) { font-family: var(--hax-ui-font-family); margin: 0 var(--hax-ui-spacing-sm) 0 0; padding: 0; } /* the cancel prompt is the confirm card: its buttons close it */ simple-modal[mode=\"hax-ui\"]#hax-cancel::part(close) { display: none; } simple-popover-manager[mode=\"hax\"]::part(simple-popover-heading), simple-popover-manager[mode=\"hax\"] h1[slot=\"heading\"] { color: var(--hax-ui-background-color); background-color: var(--hax-ui-color-accent); padding: var(--hax-ui-spacing-sm) var(--hax-ui-spacing); margin: 0; } simple-popover-manager[mode=\"hax\"] #close { color: var(--hax-ui-background-color); background-color: var(--hax-ui-color-accent); outline: 1px solid var(--hax-ui-color-accent); --simple-icon-button-border: 0px solid transparent; --simple-icon-button-border-radius: var(--hax-ui-border-radius); width: 24px; height: 24px; padding: 0; } simple-popover-manager[mode=\"hax\"] #close:focus, simple-popover-manager[mode=\"hax\"] #close:hover { background-color: var(--hax-ui-color-accent-secondary); --simple-icon-button-border: 0px solid transparent; } simple-popover-manager[mode=\"hax\"] h1 { font-family: var(--hax-ui-font-family); font-size: var(--hax-ui-font-size); font-weight: normal; margin: 0 var(--hax-ui-spacing-sm) 0 0; padding: 0; } simple-popover-manager[mode=\"hax\"] h2 { font-family: var(--hax-ui-font-family); font-size: var(--hax-ui-font-size-lg); font-weight: normal; color: var(--hax-ui-color-accent-secondary); margin: 0 0 var(--hax-ui-spacing-lg); } simple-modal[mode=\"hax-ui\"]::part(content), simple-modal[mode=\"hax-ui\"]::part(custom) { font-size: var(--hax-ui-font-size); } simple-modal[mode=\"hax-ui\"]::part(content) { padding: 0 var(--hax-ui-spacing); } simple-modal[mode=\"hax-ui\"]#hax-cancel::part(content), simple-modal[mode=\"hax-ui\"]::part(custom) { padding: 0; } simple-popover-manager[mode=\"hax\"]::part(simple-popover-body) { font-size: var(--hax-ui-font-size); color: var(--hax-ui-color); background-color: var(--hax-ui-background-color); padding: var(--hax-ui-spacing); } simple-popover-manager[mode=\"hax\"]::part(simple-popover-nav) { background-color: var(--hax-ui-background-color); } simple-popover-manager[mode=\"hax\"] simple-icon-button-lite[slot=\"nav\"]::part(button) { text-transform: capitalize; font-size: var(--hax-ui-font-size-sm); padding: var(--hax-ui-spacing-sm); color: var(--hax-ui-color); background-color: var(--hax-ui-background-color); border: 1px solid var(--hax-ui-border-color); border-radius: var(--hax-ui-border-radius); background-color: var(--hax-ui-background-color); } simple-popover-manager[mode=\"hax\"] simple-icon-button-lite[slot=\"nav\"]::part(button):hover, simple-popover-manager[mode=\"hax\"] simple-icon-button-lite[slot=\"nav\"]::part(button):focus-within { color: var(--hax-ui-color); background-color: var(--hax-ui-background-color-accent); border-color: var(--hax-ui-color-accent); } simple-popover-manager[mode=\"hax\"] simple-icon-button-lite[slot=\"nav\"][disabled]::part(button) { opacity: var(--ddd-state-disabled-opacity, 0.5); border: 1px solid var(--hax-ui-border-color); } `, ]"
         },
         {
           "kind": "variable",
@@ -11876,6 +11977,54 @@
           "name": "HaxUiAdminIcons",
           "declaration": {
             "name": "HaxUiAdminIcons",
+            "module": "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "HaxUiDialogTitlebar",
+          "declaration": {
+            "name": "HaxUiDialogTitlebar",
+            "module": "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "HaxUiDialogSurface",
+          "declaration": {
+            "name": "HaxUiDialogSurface",
+            "module": "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "HaxUiDialogFrame",
+          "declaration": {
+            "name": "HaxUiDialogFrame",
+            "module": "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "HaxUiDialogConfirm",
+          "declaration": {
+            "name": "HaxUiDialogConfirm",
+            "module": "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "HaxUiDialogTitlebarStyles",
+          "declaration": {
+            "name": "HaxUiDialogTitlebarStyles",
+            "module": "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "haxUiDialogVars",
+          "declaration": {
+            "name": "haxUiDialogVars",
             "module": "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js"
           }
         },

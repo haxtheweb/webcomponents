@@ -1,0 +1,31 @@
+{
+  "tag": "site-random-content",
+  "package": "@haxtheweb/haxcms-elements",
+  "source": "elements/haxcms-elements/lib/ui-components/site/site-random-content.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "allelements": "allElements",
+    "currentelementindex": "currentElementIndex",
+    "dark": "dark",
+    "edit-mode": "editMode",
+    "is-safari": "isSafari",
+    "loading": "loading",
+    "page": "page",
+    "randomelement": "randomElement",
+    "t": "t"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/haxcms-elements/lib/ui-components/site/site-random-content.js",
+    "gizmo": true,
+    "properties": [
+      "page"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": []
+  }
+}

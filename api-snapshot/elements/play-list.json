@@ -1,0 +1,42 @@
+{
+  "tag": "play-list",
+  "package": "@haxtheweb/play-list",
+  "source": "elements/play-list/play-list.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "aspect-ratio": "aspectRatio",
+    "dark": "dark",
+    "edit": "edit",
+    "is-safari": "isSafari",
+    "items": "items",
+    "loop": "loop",
+    "navigation": "navigation",
+    "orientation": "orientation",
+    "pagination": "pagination",
+    "slide": "slide",
+    "t": "t"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/play-list/lib/play-list.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "aspectRatio",
+      "edit",
+      "navigation",
+      "orientation",
+      "pagination",
+      "slide"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "play-list"
+    ]
+  }
+}

@@ -385,6 +385,9 @@ function validateElementName(name) {
 	const errorMessage = hasError(name);
 	return !errorMessage;
 }
+// build output paths (relative to build/es6/node_modules) that hold AMD /
+// non-ESM vendor bundles and must not contribute tags to wc-registry.json
+const NON_ESM_VENDOR_PREFIXES = ["monaco-editor/min/"];
 gulp.task("wc-autoloader", async () => {
   glob(path.join("./build/es6/node_modules/**/*.js"), (er, files) => {
     let elements = {};
@@ -412,6 +415,13 @@ gulp.task("wc-autoloader", async () => {
           importMatches.push(im[1]);
         }
         importsByFile[fLocation] = importMatches;
+        // Vendored AMD bundles are not ES modules, so nothing can import them
+        // through the registry; any customElements.define in them is the
+        // library's own internal element (Monaco's minified build defines
+        // "connection-observer"). Keep them out of wc-registry.json.
+        if (NON_ESM_VENDOR_PREFIXES.some((prefix) => fLocation.startsWith(prefix))) {
+          return;
+        }
         // This Regex is looking for tags that are defined by string values
         // this will work for customElements.define("local-time",s))
         // This will NOT work for customElements.define(LocalTime.tagName,s))

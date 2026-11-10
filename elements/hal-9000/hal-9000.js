@@ -3,12 +3,26 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement } from "lit";
-import "@haxtheweb/es-global-bridge/es-global-bridge.js";
+import { Hal9000Listener, halIsEcho } from "./lib/hal-9000-listener.js";
 
 /**
  * `hal-9000`
  * @element hal-9000
  * `Robot assistant tag, hopefully not evil`
+ *
+ * Listens for spoken commands and speaks back. Commands use the phrase
+ * syntax `(optional words)`, `:named` and `*splat`, keyed by phrase with a
+ * callback as the value.
+ *
+ * Beyond running commands it reports what it hears, so a page can react
+ * to speech that is not a command:
+ * - `hal-9000-interim` detail { text }: words so far, at most once a frame
+ * - `hal-9000-no-match` detail { alternatives }: a final result no command
+ *   took, best guess first
+ * - `hal-9000-matched` detail { phrase, transcript, params }
+ * - `hal-9000-listening-state` detail { state }: idle, listening, blocked
+ *   (mic permission denied) or unavailable (the browser has the API but
+ *   cannot recognize speech, as in Brave; lasts until the page reloads)
  *
  * @demo demo/index.html
  */
@@ -28,6 +42,13 @@ class Hal9000 extends LitElement {
         type: Object,
       },
       /**
+       * Words and phrases to favor when recognizing speech, such as command
+       * names. Used only where the browser supports phrase biasing.
+       */
+      phrases: {
+        type: Array,
+      },
+      /**
        * The name that HAL 9000 should respond to.
        */
       respondsTo: {
@@ -37,7 +58,7 @@ class Hal9000 extends LitElement {
         reflect: true,
       },
       /**
-       * Debug mode for annyang
+       * Log what is heard and matched to the console
        */
       debug: {
         name: "debug",
@@ -83,6 +104,13 @@ class Hal9000 extends LitElement {
         type: String,
         reflect: true,
       },
+      /**
+       * True while speaking; reflected for styling
+       */
+      speaking: {
+        type: Boolean,
+        reflect: true,
+      },
     };
   }
 
@@ -101,42 +129,85 @@ class Hal9000 extends LitElement {
     this.toast = false;
     this.auto = false;
     this.enabled = false;
+    this.speaking = false;
     this.windowControllers = new AbortController();
     this.commands = {};
+    this.phrases = [];
     this.respondsTo = "(merlin)";
     this.debug = false;
     this.pitch = 0.9;
     this.rate = 0.9;
     this.language = globalThis.navigator.language;
+    this.__text = "";
+    this.__echoUntil = 0;
     // ensure singleton is set
     globalThis.Hal9000 = globalThis.Hal9000 || {};
     globalThis.Hal9000.instance = this;
-    const location = `${
-      new URL("./lib/annyang/annyang.min.js", import.meta.url).href
-    }`;
-    globalThis.addEventListener &&
-      globalThis.addEventListener(
-        "es-bridge-annyang-loaded",
-        this._annyangLoaded.bind(this),
-        { signal: this.windowControllers.signal },
-      );
-    globalThis.ESGlobalBridge.requestAvailability().load("annyang", location);
-    // check for speech synthesis API
-    if (
-      typeof globalThis.speechSynthesis !== "undefined" &&
-      (globalThis.SpeechRecognition ||
-        globalThis.webkitSpeechRecognition ||
-        globalThis.mozSpeechRecognition ||
-        globalThis.msSpeechRecognition ||
-        globalThis.oSpeechRecognition)
-    ) {
-      this.synth = globalThis.speechSynthesis;
-      /*this.voices = this.synth.getVoices();
-      for (var i = 0; i < this.voices.length; i++) {
-        if (this.voices[i].default) {
-          this.defaultVoice = this.voices[i].name;
+    this.listener = new Hal9000Listener({
+      lang: this.language,
+      debug: this.debug,
+      isEcho: (text) => this._isEcho(text),
+      onSpeechStart: () => this._bargeIn(""),
+      onInterim: (text) => {
+        this._bargeIn(text);
+        this._fire("hal-9000-interim", { text: text });
+      },
+      onMatch: (detail) => this._fire("hal-9000-matched", detail),
+      onNoMatch: (alternatives) =>
+        this._fire("hal-9000-no-match", { alternatives: alternatives }),
+      onStateChange: (state) => {
+        // nothing more to listen for here; keep enabled honest
+        if (state === "unavailable" || state === "blocked") {
+          this.enabled = false;
         }
-      }*/
+        this._fire("hal-9000-listening-state", { state: state });
+      },
+    });
+    // check for speech synthesis API
+    if (typeof globalThis.speechSynthesis !== "undefined") {
+      this.synth = globalThis.speechSynthesis;
+    }
+  }
+  /**
+   * The browser can listen: it has SpeechRecognition and it has not
+   * proven unusable in this session
+   */
+  get canListen() {
+    return this.listener.available;
+  }
+  _fire(name, detail) {
+    this.dispatchEvent(
+      new CustomEvent(name, {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: detail,
+      }),
+    );
+  }
+  /**
+   * Our own voice coming back through the speakers is not a command. Holds
+   * for a moment after speech ends, since engines report late.
+   */
+  _isEcho(text) {
+    if (!this.__text) {
+      return false;
+    }
+    if (!this.speaking && Date.now() > this.__echoUntil) {
+      return false;
+    }
+    return halIsEcho(text, this.__text);
+  }
+  /**
+   * Someone started talking over us: stop talking so they can be heard.
+   * Only when what we hear is not our own voice.
+   */
+  _bargeIn(text) {
+    if (!this.speaking || !this.synth) {
+      return;
+    }
+    if (text && !this._isEcho(text)) {
+      this.synth.cancel();
     }
   }
   /**
@@ -146,19 +217,10 @@ class Hal9000 extends LitElement {
     this.addCommands(newValue);
   }
   /**
-   * Just route add commands call to the right place
+   * Replace the commands being listened for
    */
   addCommands(commands) {
-    if (this.annyang) {
-      // ensure we keep registrations to a minimum
-      this.annyang.removeCommands();
-      if (commands["*anything"]) {
-        const anything = commands["*anything"];
-        delete commands["*anything"];
-        commands["*anything"] = anything;
-      }
-      this.annyang.addCommands(commands);
-    }
+    this.listener.setCommands(commands || {});
   }
   /**
    * And the word was good.
@@ -171,17 +233,19 @@ class Hal9000 extends LitElement {
         this.utter.pitch = this.pitch;
         this.utter.rate = this.rate;
         this.utter.lang = this.language;
-        //this.utter.voice = this.defaultVoice;
         if (globalThis.HAXCMS) {
           globalThis.HAXCMS.instance.setCursor("hax:wizard-hat");
           globalThis.HAXCMS.instance.setFavicon("hax:wizard-hat");
         }
-        // THOU SPEAKITH
-        this.synth.speak(this.utter);
-        if (this.toast) {
-          this.setToast(text, alwaysvisible, awaitingInput);
-        }
-        this.utter.onend = (event) => {
+        this.speaking = true;
+        let done = false;
+        const finish = (event) => {
+          if (done) {
+            return;
+          }
+          done = true;
+          this.speaking = false;
+          this.__echoUntil = Date.now() + 1200;
           if (globalThis.HAXCMS) {
             globalThis.HAXCMS.instance.resetCursor();
             globalThis.HAXCMS.instance.resetFavicon();
@@ -198,6 +262,14 @@ class Hal9000 extends LitElement {
           }
           resolve(event);
         };
+        // ends normally, or is cut off (barge-in, cancel): resolve either way
+        this.utter.onend = finish;
+        this.utter.onerror = finish;
+        // THOU SPEAKITH
+        this.synth.speak(this.utter);
+        if (this.toast) {
+          this.setToast(text, alwaysvisible, awaitingInput);
+        }
       } else {
         resolve(false);
       }
@@ -225,41 +297,24 @@ class Hal9000 extends LitElement {
       }),
     );
   }
-  /**
-   * Annyang library has been loaded globally so we can use it
-   */
-  _annyangLoaded() {
-    this.annyang = globalThis.annyang;
-    // Add our commands to annyang
-    if (this.annyang) {
-      this.annyang.addCommands(this.commands);
-      this.annyang.debug(this.debug);
-      // Start listening. You can call this here, or attach this call to an event, button, etc.
-      if (this.auto) {
-        this.annyang.start({
-          autoRestart: true,
-          continuous: true,
-        });
-      } else if (this.enabled) {
-        this.annyang.start();
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    this.listener.setCommands(this.commands || {});
+    this.listener.setPhrases(this.phrases || []);
+    if (this.canListen) {
+      if (this.enabled || this.auto) {
+        this.listener.start({ continuous: this.auto });
       }
       // alert alert we are ready
-      const evt = new CustomEvent("hal-9000-online", {
-        bubbles: true,
-        cancelable: false,
-        detail: true,
-      });
-      this.dispatchEvent(evt);
+      this._fire("hal-9000-online", true);
     }
   }
   /**
    * Change the key name that is responded to
    */
   _respondsToChanged(newValue, oldValue) {
-    // remove all as our voice changed
-    if (this.annyang) {
-      this.annyang.removeCommands();
-    }
     let commands = {};
     for (let i in this.commands) {
       if (i.replace(oldValue, newValue) !== i) {
@@ -283,27 +338,10 @@ class Hal9000 extends LitElement {
    * React to enabled state changing
    */
   _enabledChanged(newValue) {
-    if (this.annyang) {
-      if (newValue) {
-        if (this.auto) {
-          this.annyang.start({
-            autoRestart: true,
-            continuous: true,
-          });
-        } else {
-          this.annyang.start();
-        }
-      } else {
-        this.annyang.abort();
-      }
-    }
-  }
-  /**
-   * debug mode changed
-   */
-  _debugChanged(newValue, _oldValue) {
-    if (this.annyang) {
-      this.annyang.debug(newValue);
+    if (newValue) {
+      this.listener.start({ continuous: this.auto });
+    } else {
+      this.listener.abort();
     }
   }
   /**
@@ -313,19 +351,25 @@ class Hal9000 extends LitElement {
     changedProperties.forEach((oldValue, propName) => {
       // only react to changes away from a defined previous value so the
       // constructor defaults never clobber attribute-set initial values
-      if (propName == "commands" && typeof oldValue !== typeof undefined) {
+      if (propName === "commands" && typeof oldValue !== typeof undefined) {
         this._commandsChanged(this[propName]);
       }
-      if (propName == "respondsTo" && typeof oldValue !== typeof undefined) {
+      if (propName === "phrases" && typeof oldValue !== typeof undefined) {
+        this.listener.setPhrases(this.phrases || []);
+      }
+      if (propName === "respondsTo" && typeof oldValue !== typeof undefined) {
         this._respondsToChanged(this[propName], oldValue);
       }
-      if (propName == "debug" && typeof oldValue !== typeof undefined) {
-        this._debugChanged(this[propName], oldValue);
+      if (propName === "debug") {
+        this.listener.debug = this.debug;
       }
-      if (propName == "auto" && typeof oldValue !== typeof undefined) {
+      if (propName === "language") {
+        this.listener.lang = this.language;
+      }
+      if (propName === "auto" && typeof oldValue !== typeof undefined) {
         this._autoChanged(this[propName], oldValue);
       }
-      if (propName == "enabled" && typeof oldValue !== typeof undefined) {
+      if (propName === "enabled" && typeof oldValue !== typeof undefined) {
         this._enabledChanged(this[propName], oldValue);
       }
     });
@@ -334,6 +378,7 @@ class Hal9000 extends LitElement {
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
+    this.listener.abort();
     this.windowControllers.abort();
     super.disconnectedCallback();
   }

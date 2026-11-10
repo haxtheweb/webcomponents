@@ -1,0 +1,32 @@
+{
+  "tag": "meme-maker",
+  "package": "@haxtheweb/meme-maker",
+  "source": "elements/meme-maker/meme-maker.js",
+  "attributes": {
+    "alt": "alt",
+    "bottom-text": "bottomText",
+    "crossorigin": "crossorigin",
+    "described-by": "describedBy",
+    "image-url": "imageUrl",
+    "top-text": "topText"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/meme-maker/lib/meme-maker.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "alt",
+      "bottomText",
+      "imageUrl",
+      "topText"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "meme-maker"
+    ]
+  }
+}

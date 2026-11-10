@@ -1,0 +1,39 @@
+{
+  "tag": "wikipedia-query",
+  "package": "@haxtheweb/wikipedia-query",
+  "source": "elements/wikipedia-query/wikipedia-query.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "dark": "dark",
+    "element-visible": "elementVisible",
+    "headers": "headers",
+    "hide-title": "hideTitle",
+    "is-safari": "isSafari",
+    "language": "language",
+    "search": "search",
+    "t": "t",
+    "title": "title"
+  },
+  "slots": [],
+  "events": [
+    "hax-register-app"
+  ],
+  "cssParts": [
+    "heading-3"
+  ],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/wikipedia-query/lib/wikipedia-query.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "hideTitle",
+      "language",
+      "search"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "wikipedia-query"
+    ]
+  }
+}

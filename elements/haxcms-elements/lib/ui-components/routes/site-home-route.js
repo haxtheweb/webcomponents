@@ -60,11 +60,11 @@ export class SiteHomeRoute extends HAXCMSI18NMixin(DDD) {
         !homePage._internalRoute &&
         !homePage.slug.startsWith("x/")
       ) {
-        // Verify page is published (if user is not logged in)
+        // Verify page is published (visitors and preview don't see it)
         if (
           homePage.metadata &&
           homePage.metadata.published === false &&
-          !store.isLoggedIn
+          !store.showUnpublished
         ) {
           console.warn(
             "Configured home page is not published, falling back to first page",
@@ -85,9 +85,9 @@ export class SiteHomeRoute extends HAXCMSI18NMixin(DDD) {
       if (!item.slug || item._internalRoute || item.slug.startsWith("x/")) {
         return false;
       }
-      // If user is not logged in, filter out unpublished pages
+      // Visitors (and preview) don't see unpublished pages
       if (
-        !store.isLoggedIn &&
+        !store.showUnpublished &&
         item.metadata &&
         item.metadata.published === false
       ) {

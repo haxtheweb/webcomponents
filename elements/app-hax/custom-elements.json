@@ -505,7 +505,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"hax:wizard-hat\""
+              "default": "\"hax:world-traveler-plain\""
             },
             {
               "kind": "field",

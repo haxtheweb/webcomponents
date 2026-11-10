@@ -1,0 +1,62 @@
+name: api-snapshot
+
+# Blocking: authorable HAX elements keep their front-end API.
+#
+# Content authored with a HAX-capable element must keep working, so an
+# authorable tag never loses or renames an attribute, slot, HAX setting,
+# gizmo, demoSchema tag, event, CSS part or documented CSS custom property
+# that is in api-snapshot/elements/<tag>.json. The check computes the API of
+# the pull request's merge result and compares it with the committed snapshot
+# and with the base branch's snapshot, so regenerating the snapshot cannot hide
+# a removal. Intended breaks are listed in api-snapshot/allowed-removals.json
+# with a reason. Additions only warn (run `yarn api:snapshot`).
+# See CONTRIBUTING.md, "HAX element API snapshot".
+#
+# Runs on pull_request (not pull_request_target): no secrets, read-only token.
+on:
+  pull_request:
+    paths:
+      - "elements/**"
+      - "hax-elements-registry.json"
+      - "api-snapshot/**"
+      - "scripts/api-snapshot.mjs"
+      - ".github/workflows/api-snapshot.yml"
+permissions:
+  contents: read
+jobs:
+  api-snapshot:
+    name: HAX element API snapshot
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      # only the base branch's snapshot files, for the removal comparison
+      - name: Checkout base snapshot
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: .api-snapshot-base
+          persist-credentials: false
+          sparse-checkout: api-snapshot
+
+      - name: Setup node
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+
+      # same pinned analyzer every element builds with; installed alone,
+      # outside the checkout, instead of the whole monorepo
+      - name: Install custom elements manifest analyzer
+        run: |
+          npm install --prefix "$RUNNER_TEMP/cem" --no-save --no-package-lock \
+            --ignore-scripts --no-audit --no-fund \
+            @custom-elements-manifest/analyzer@0.11.0
+
+      - name: Check authorable element API
+        env:
+          CEM_ANALYZER_DIR: ${{ runner.temp }}/cem
+        run: node scripts/api-snapshot.mjs --check --base-dir .api-snapshot-base/api-snapshot/elements

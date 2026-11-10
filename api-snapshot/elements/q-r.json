@@ -1,0 +1,30 @@
+{
+  "tag": "q-r",
+  "package": "@haxtheweb/q-r",
+  "source": "elements/q-r/q-r.js",
+  "attributes": {
+    "data": "data",
+    "format": "format",
+    "margin": "margin",
+    "modulesize": "modulesize",
+    "title": "title"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/q-r/lib/q-r.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "data",
+      "format",
+      "margin",
+      "modulesize",
+      "title"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": []
+  }
+}

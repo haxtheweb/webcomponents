@@ -70,7 +70,8 @@
  *                  params, unavailable? }],
  *     headingErrors: [{ pageId, title, slug, chips }],
  *     contrast: [{ id, fg, bg, ratio, passes }],
- *     errors, youtubeCaptions: unavailable, bulkAltSave: unavailable },
+ *     errors, youtubeCaptions: unavailable,
+ *     bulkAltSave: { maxPagesPerSave } },
  *   content: { kpis, sections: [row], longest: [row], readTime: [bucket],
  *              thin: [{ pageId, slug, title, words, empty, what }],
  *              readability: { bands, median, scored }, pages: [row],
@@ -143,6 +144,8 @@ export const INSIGHTS_SECTIONS = [
 ];
 
 const DAY = 86400;
+/** pages saved per click of Save alt text when the rules file does not say */
+const ALT_SAVE_PAGES = 20;
 
 // ---------------------------------------------------------------- helpers
 
@@ -3128,7 +3131,10 @@ export function siteResults(factsList, manifest, spec, options = {}) {
       contrast,
       errors: accessibilityErrors,
       youtubeCaptions: unavailable(spec, "youtubeCaptions"),
-      bulkAltSave: unavailable(spec, "bulkAltSave"),
+      bulkAltSave: {
+        maxPagesPerSave:
+          getIn(spec, ["bulkAltSave", "maxPagesPerSave"]) || ALT_SAVE_PAGES,
+      },
     },
     content: {
       kpis: {

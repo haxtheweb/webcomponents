@@ -1,0 +1,40 @@
+{
+  "tag": "stop-note",
+  "package": "@haxtheweb/stop-note",
+  "source": "elements/stop-note/stop-note.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "dark": "dark",
+    "icon": "icon",
+    "is-safari": "isSafari",
+    "schemamap": "schemaMap",
+    "status": "status",
+    "t": "t",
+    "title": "title",
+    "typeof": "typeof",
+    "url": "url"
+  },
+  "slots": [
+    "(default)",
+    "message"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/stop-note/lib/stop-note.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "status",
+      "title",
+      "url"
+    ],
+    "attributes": [],
+    "slots": [
+      "message"
+    ],
+    "demoTags": [
+      "stop-note"
+    ]
+  }
+}
