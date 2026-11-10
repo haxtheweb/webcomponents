@@ -6,6 +6,8 @@ import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import {
   DDDBlockStyles,
   renderDDDBlockHeader,
+  renderDDDBlockChip,
+  celebrateDDDCompletion,
 } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 import { DDDStatusTokens } from "@haxtheweb/d-d-d/lib/DDDStatusTokens.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
@@ -477,6 +479,8 @@ export class QuestionElement extends SchemaBehaviors(
     ) {
       const transition = globalThis.document.startViewTransition(runCheck);
       transition.ready.catch(() => {});
+      // the completion burst waits for the transition to finish
+      this.__checkTransition = transition;
       // updateCallbackDone settles once runCheck has run; a skipped or
       // failed transition still runs it, so a rejection is not an error
       // here. A stand-in transition (polyfill, test) may not have it.
@@ -523,6 +527,44 @@ export class QuestionElement extends SchemaBehaviors(
     if (status === "correct" && this._isStackable() && !this.edit) {
       this._scheduleCompletionCollapse();
     }
+    if (status === "correct") {
+      this._celebration = this._celebrateCompletion();
+    }
+  }
+
+  // header chip: done once the learner answered correctly, now or on an
+  // earlier visit (see renderDDDBlockChip)
+  _chipDone() {
+    if (this._shellStatus() === "correct") {
+      return true;
+    }
+    return Boolean(this._restored && this._restored.status === "correct");
+  }
+
+  // the first correct answer bursts the header chip into its check, once;
+  // never for a question already answered correctly on an earlier visit,
+  // never on a wrong answer, never while editing (reduced motion: no burst,
+  // the chip just shows done; see celebrateDDDCompletion)
+  async _celebrateCompletion() {
+    if (
+      this._chipCelebrated ||
+      this._haxstate ||
+      this.edit ||
+      (this._restored && this._restored.status === "correct")
+    ) {
+      return false;
+    }
+    this._chipCelebrated = true;
+    const vt = this.__checkTransition;
+    this.__checkTransition = null;
+    if (vt && vt.finished && typeof vt.finished.then === "function") {
+      await vt.finished.catch(() => {});
+    }
+    await this.updateComplete;
+    const chip =
+      this.shadowRoot &&
+      this.shadowRoot.querySelector(".ddd-block-chip[data-done]");
+    return celebrateDDDCompletion(chip);
   }
 
   // plain copy of the current guess; null when it cannot be copied
@@ -880,6 +922,8 @@ export class QuestionElement extends SchemaBehaviors(
   }
   _clearLearnerProgress() {
     this._restored = null;
+    // progress was cleared: finishing it again is a first time again
+    this._chipCelebrated = false;
     this._dropRestored();
     this.requestUpdate();
   }
@@ -2199,9 +2243,11 @@ export class QuestionElement extends SchemaBehaviors(
           aria-controls="shell-panel"
           @click="${this._toggleCollapsed}"
         >
-          <span class="ddd-block-chip" aria-hidden="true">
-            <simple-icon-lite icon="hax:head-question"></simple-icon-lite>
-          </span>
+          ${renderDDDBlockChip({
+            icon: "hax:head-question",
+            done: this._chipDone(),
+            doneLabel: this.t.correct,
+          })}
           <span class="ddd-block-text">
             <span class="ddd-block-label" id="eyebrow"
               >${this.renderEyebrow()}</span
@@ -2337,6 +2383,10 @@ export class QuestionElement extends SchemaBehaviors(
               : renderDDDBlockHeader({
                   id: "eyebrow",
                   icon: "hax:head-question",
+                  // the feedback region already says it was correct
+                  done: this._chipDone(),
+                  doneLabel: this.t.correct,
+                  speakDone: false,
                   label: this.renderEyebrow(),
                   actions: this.renderHeaderTools(hasRelated),
                 })

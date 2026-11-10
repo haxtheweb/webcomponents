@@ -213,7 +213,8 @@ describe("clean-one print button fallback", () => {
     try {
       el = await fixture(html`<clean-one></clean-one>`);
       await el.updateComplete;
-      expect(el.shadowRoot.querySelector(".pull-left site-print-button")).to
+      // Print sits at the right end of the toolbar row (haxtheweb/issues#3267)
+      expect(el.shadowRoot.querySelector(".pull-right site-print-button")).to
         .exist;
     } finally {
       MicroFrontendRegistry.has = originalHas;

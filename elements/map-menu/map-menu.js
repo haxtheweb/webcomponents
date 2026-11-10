@@ -485,6 +485,7 @@ class MapMenu extends SchemaBehaviors(LitElement) {
     this.autoScroll = false;
     this.activeIndicator = false;
     this.progress = null;
+    this.activeProgress = null;
     // Bind listeners immediately so we don't miss initial active-item updates
     // when selected state is set quickly during first paint.
     this.addEventListener("link-clicked", this.__linkClickedHandler.bind(this));
@@ -513,6 +514,7 @@ class MapMenu extends SchemaBehaviors(LitElement) {
             .items="${this.items}"
             .selected="${this.selected}"
             .progress="${this.progress}"
+            .activeProgress="${this.activeProgress}"
           ></map-menu-builder>
         </map-menu-container>
       </div>
@@ -584,6 +586,16 @@ class MapMenu extends SchemaBehaviors(LitElement) {
        */
       progress: {
         type: Object,
+      },
+      /**
+       * Percent (0 to 1) of the page open now (the selected item): that item
+       * shows a ring around its icon area filled to it, a check once it is
+       * done, and says the percent on hover and to screen readers. null
+       * (the default) shows no ring.
+       */
+      activeProgress: {
+        type: Number,
+        attribute: "active-progress",
       },
       /**
        * Show active indicator animation

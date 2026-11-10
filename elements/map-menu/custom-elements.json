@@ -313,6 +313,17 @@
             },
             {
               "kind": "field",
+              "name": "activeProgress",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "Percent (0 to 1) of the page open now (the selected item): that item\nshows a ring around its icon area filled to it, a check once it is\ndone, and says the percent on hover and to screen readers. null\n(the default) shows no ring.",
+              "default": "null",
+              "attribute": "active-progress"
+            },
+            {
+              "kind": "field",
               "name": "schemaMap",
               "privacy": "public",
               "type": {
@@ -477,6 +488,15 @@
               "fieldName": "progress"
             },
             {
+              "name": "active-progress",
+              "type": {
+                "text": "null"
+              },
+              "description": "Percent (0 to 1) of the page open now (the selected item): that item\nshows a ring around its icon area filled to it, a check once it is\ndone, and says the percent on hover and to screen readers. null\n(the default) shows no ring.",
+              "default": "null",
+              "fieldName": "activeProgress"
+            },
+            {
               "name": "active-indicator",
               "type": {
                 "text": "boolean"
@@ -530,6 +550,15 @@
             {
               "kind": "method",
               "name": "progressOf",
+              "parameters": [
+                {
+                  "name": "item"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "activeProgressOf",
               "parameters": [
                 {
                   "name": "item"
@@ -652,6 +681,17 @@
             },
             {
               "kind": "field",
+              "name": "activeProgress",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "Percent (0 to 1) of the page open now (selected); its item shows a\nprogress ring. null shows none.",
+              "default": "null",
+              "attribute": "active-progress"
+            },
+            {
+              "kind": "field",
               "name": "selected",
               "privacy": "public",
               "type": {
@@ -724,6 +764,15 @@
               "description": "Learner progress by item id: { <id>: \"done\" | \"in-progress\" |\n\"visited\" | \"not-started\" }. Empty shows no marks.",
               "default": "null",
               "fieldName": "progress"
+            },
+            {
+              "name": "active-progress",
+              "type": {
+                "text": "null"
+              },
+              "description": "Percent (0 to 1) of the page open now (selected); its item shows a\nprogress ring. null shows none.",
+              "default": "null",
+              "fieldName": "activeProgress"
             }
           ],
           "superclass": {
@@ -801,6 +850,18 @@
           "description": "",
           "name": "MapMenuHeader",
           "members": [
+            {
+              "kind": "method",
+              "name": "linkTitle"
+            },
+            {
+              "kind": "method",
+              "name": "renderActiveRing"
+            },
+            {
+              "kind": "method",
+              "name": "renderActiveProgress"
+            },
             {
               "kind": "method",
               "name": "renderProgress"
@@ -1013,6 +1074,17 @@
             },
             {
               "kind": "field",
+              "name": "activeProgress",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "Percent (0 to 1) of the page this item opens, set only while it is\nthe page open now: a ring around the icon area shows it. null (the\ndefault) shows no ring.",
+              "default": "null",
+              "attribute": "active-progress"
+            },
+            {
+              "kind": "field",
               "name": "t",
               "type": {
                 "text": "object"
@@ -1194,6 +1266,15 @@
               "fieldName": "progress"
             },
             {
+              "name": "active-progress",
+              "type": {
+                "text": "null"
+              },
+              "description": "Percent (0 to 1) of the page this item opens, set only while it is\nthe page open now: a ring around the icon area shows it. null (the\ndefault) shows no ring.",
+              "default": "null",
+              "fieldName": "activeProgress"
+            },
+            {
               "name": "selected",
               "type": {
                 "text": "string"
@@ -1255,6 +1336,18 @@
           "description": "",
           "name": "MapMenuItem",
           "members": [
+            {
+              "kind": "method",
+              "name": "linkTitle"
+            },
+            {
+              "kind": "method",
+              "name": "renderActiveRing"
+            },
+            {
+              "kind": "method",
+              "name": "renderActiveProgress"
+            },
             {
               "kind": "method",
               "name": "renderProgress"
@@ -1430,6 +1523,17 @@
             },
             {
               "kind": "field",
+              "name": "activeProgress",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "Percent (0 to 1) of the page this item opens, set only while it is\nthe page open now: a ring around the icon area shows it. null (the\ndefault) shows no ring.",
+              "default": "null",
+              "attribute": "active-progress"
+            },
+            {
+              "kind": "field",
               "name": "t",
               "type": {
                 "text": "object"
@@ -1589,6 +1693,15 @@
               "description": "Learner progress mark: done, in-progress, visited or not-started.\nEmpty (the default) shows no mark.",
               "default": "\"\"",
               "fieldName": "progress"
+            },
+            {
+              "name": "active-progress",
+              "type": {
+                "text": "null"
+              },
+              "description": "Percent (0 to 1) of the page this item opens, set only while it is\nthe page open now: a ring around the icon area shows it. null (the\ndefault) shows no ring.",
+              "default": "null",
+              "fieldName": "activeProgress"
             }
           ],
           "mixins": [
@@ -1633,7 +1746,7 @@
             "text": "array"
           },
           "default": "[ \"done\", \"in-progress\", \"visited\", \"not-started\", ]",
-          "description": "Learner progress marks for menu items. `progress` is one of\n\"done\", \"in-progress\", \"visited\" or \"not-started\"; anything else draws\nnothing, so menus without progress data look exactly as before. Each mark\nis a ring with a glyph (check, half, dot, empty) plus spoken text after the\ntitle, so state never relies on colour alone."
+          "description": "Active page ring (haxtheweb/issues#3267): the item of the page open now\n(activeProgress, 0 to 1, set by site-menu) shows a DDD progress ring\naround its icon area, filled to that page's percent and turning into a\nfilled disc with a check once the page is done; the first time it\ncompletes while open the ring bursts once (DDDBlock.js). Its percent is\nthe link's hover text and is spoken after the title. Other items show no\nring. Colours: --map-menu-progress-ring-color, --map-menu-progress-ring-\ntrack, --map-menu-progress-ring-on-color (defaults read on a dark active\nrow in light mode and a light one in dark mode).\n\nLearner progress marks for menu items (the progress property; site-menu\nno longer sets it, it is kept so menus that do still work). `progress` is one of\n\"done\", \"in-progress\", \"visited\" or \"not-started\"; anything else draws\nnothing, so menus without progress data look exactly as before. Each mark\nis a ring with a glyph (check, half, dot, empty) plus spoken text after the\ntitle, so state never relies on colour alone."
         },
         {
           "kind": "variable",
@@ -1641,7 +1754,78 @@
           "type": {
             "text": "object"
           },
-          "default": "{ progressDone: \"Done\", progressInProgress: \"In progress\", progressVisited: \"Visited\", }"
+          "default": "{ progressDone: \"Done\", progressInProgress: \"In progress\", progressVisited: \"Visited\", progressPercentComplete: \"{percent}% complete\", progressComplete: \"Complete\", }"
+        },
+        {
+          "kind": "variable",
+          "name": "mapMenuActiveRingStyles",
+          "type": {
+            "text": "array"
+          },
+          "default": "[ DDDProgressRingStyles, css` .active-ring { display: inline-flex; flex: none; align-self: center; /* the ring is taller than a line of the menu; keep the row height */ margin: calc(-1 * var(--ddd-spacing-2)) var(--ddd-spacing-2) calc(-1 * var(--ddd-spacing-2)) 0; --ddd-component-progress-ring-color: var( --map-menu-progress-ring-color, light-dark( var(--ddd-theme-default-skyBlue), var(--ddd-theme-default-beaverBlue) ) ); --ddd-component-progress-ring-track: var( --map-menu-progress-ring-track, light-dark( var(--ddd-theme-default-limestoneLight), var(--ddd-theme-default-limestoneGray) ) ); --ddd-component-progress-ring-on-color: var( --map-menu-progress-ring-on-color, light-dark( var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray) ) ); --ddd-component-progress-ring-size: var( --map-menu-progress-ring-size, var(--ddd-icon-xs) ); } .active-ring .ddd-ring simple-icon-lite { margin: 0; visibility: visible; opacity: 1; --simple-icon-height: var(--ddd-icon-4xs); --simple-icon-width: var(--ddd-icon-4xs); } `, ]"
+        },
+        {
+          "kind": "function",
+          "name": "hasActiveRing",
+          "parameters": [
+            {
+              "name": "activeProgress"
+            }
+          ],
+          "description": "Whether activeProgress asks for the ring (a number from 0 to 1)"
+        },
+        {
+          "kind": "function",
+          "name": "activeRingText",
+          "parameters": [
+            {
+              "name": "activeProgress"
+            },
+            {
+              "name": "t"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "renderActiveRing",
+          "parameters": [
+            {
+              "name": "activeProgress"
+            },
+            {
+              "name": "icon"
+            },
+            {
+              "name": "id"
+            }
+          ],
+          "description": "The ring around the icon area of the active item (with its icon, or\nnothing in it when the item has none); id lets an icon tooltip point at it"
+        },
+        {
+          "kind": "function",
+          "name": "renderActiveRingLabel",
+          "parameters": [
+            {
+              "name": "activeProgress"
+            },
+            {
+              "name": "t"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "updateActiveRing",
+          "parameters": [
+            {
+              "name": "el"
+            },
+            {
+              "name": "changedProperties"
+            }
+          ],
+          "description": "After an update of a menu item / header: burst the ring the first time\nthe page open now completes (never when it was already done when shown)"
         },
         {
           "kind": "variable",
@@ -1693,6 +1877,54 @@
           "name": "MapMenuProgressStrings",
           "declaration": {
             "name": "MapMenuProgressStrings",
+            "module": "lib/map-menu-progress.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "mapMenuActiveRingStyles",
+          "declaration": {
+            "name": "mapMenuActiveRingStyles",
+            "module": "lib/map-menu-progress.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "hasActiveRing",
+          "declaration": {
+            "name": "hasActiveRing",
+            "module": "lib/map-menu-progress.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "activeRingText",
+          "declaration": {
+            "name": "activeRingText",
+            "module": "lib/map-menu-progress.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "renderActiveRing",
+          "declaration": {
+            "name": "renderActiveRing",
+            "module": "lib/map-menu-progress.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "renderActiveRingLabel",
+          "declaration": {
+            "name": "renderActiveRingLabel",
+            "module": "lib/map-menu-progress.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "updateActiveRing",
+          "declaration": {
+            "name": "updateActiveRing",
             "module": "lib/map-menu-progress.js"
           }
         },
@@ -1944,6 +2176,17 @@
               "default": "\"\"",
               "attribute": "progress",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "activeProgress",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "Percent (0 to 1) of the page this item opens while it is the page\nopen now (passed to its header, which draws the ring); else null",
+              "default": "null",
+              "attribute": "active-progress"
             },
             {
               "kind": "field",
@@ -2220,6 +2463,15 @@
               "description": "Learner progress mark: done, in-progress, visited or not-started.\nEmpty (the default) shows no mark.",
               "default": "\"\"",
               "fieldName": "progress"
+            },
+            {
+              "name": "active-progress",
+              "type": {
+                "text": "null"
+              },
+              "description": "Percent (0 to 1) of the page this item opens while it is the page\nopen now (passed to its header, which draws the ring); else null",
+              "default": "null",
+              "fieldName": "activeProgress"
             }
           ],
           "superclass": {

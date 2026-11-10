@@ -129,5 +129,12 @@
   "cancel": "Cancel",
   "clearedSite": "Your learning data for {site} was cleared.",
   "clearedDevice": "All learning data on this device was cleared.",
-  "thisSite": "this site"
+  "thisSite": "this site",
+  "outlineHeading": "Progress by page",
+  "allPages": "All pages",
+  "outlinePagesDone": "{done} of {total} pages done",
+  "outlinePagesCount": "{count} pages",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% complete",
+  "outlineComplete": "Complete"
 }

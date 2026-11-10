@@ -459,6 +459,7 @@ describe("my-learning dashboard", () => {
         .filter((c) => c !== "status"),
     ).to.deep.equal([
       "tiles",
+      "panel outline-card",
       "row top pair",
       "panel activity",
       "row bottom pair",

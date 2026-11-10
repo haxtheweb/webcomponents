@@ -24,6 +24,7 @@ class MapMenuBuilder extends LitElement {
     this.isNested = false;
     this.isHorizontal = false;
     this.progress = null;
+    this.activeProgress = null;
   }
   /**
    * LitElement life cycle - render
@@ -62,10 +63,12 @@ class MapMenuBuilder extends LitElement {
                               .published="${this.getPublishedStatus(item)}"
                               ?hide-in-menu="${this.hideInMenuStatus(item)}"
                               progress="${this.progressOf(item)}"
+                              .activeProgress="${this.activeProgressOf(item)}"
                             >
                               <map-menu-builder
                                 .items="${item.children}"
                                 .progress="${this.progress}"
+                                .activeProgress="${this.activeProgress}"
                                 ?edit-controls="${this.editControls}"
                                 selected="${this.selected}"
                                 depth-count="${this.depthCount + 1}"
@@ -103,6 +106,7 @@ class MapMenuBuilder extends LitElement {
                                   : ""
                               }"
                               progress="${this.progressOf(item)}"
+                              .activeProgress="${this.activeProgressOf(item)}"
                             ></map-menu-item>
                           `
                     }
@@ -120,6 +124,16 @@ class MapMenuBuilder extends LitElement {
     return this.progress && item && this.progress[item.id]
       ? this.progress[item.id]
       : "";
+  }
+
+  // percent of the page open now, only for its own item; null elsewhere
+  activeProgressOf(item) {
+    return item &&
+      this.selected &&
+      item.id === this.selected &&
+      typeof this.activeProgress === "number"
+      ? this.activeProgress
+      : null;
   }
 
   hideInMenuStatus(item) {
@@ -192,6 +206,14 @@ class MapMenuBuilder extends LitElement {
        */
       progress: {
         type: Object,
+      },
+      /**
+       * Percent (0 to 1) of the page open now (selected); its item shows a
+       * progress ring. null shows none.
+       */
+      activeProgress: {
+        type: Number,
+        attribute: "active-progress",
       },
     };
   }

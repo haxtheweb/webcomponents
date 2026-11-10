@@ -44,12 +44,128 @@
  * Custom properties: --ddd-block-background (frame surface, transparent by
  * default so the block sits on the page colour), --ddd-block-chip-background,
  * --ddd-block-chip-color, --ddd-block-accent (optional top rule colour, shown with data-block-accent on the frame; not data-accent, which DDD already styles).
+ *
+ * Completion (haxtheweb/issues#3267): a block whose activity is done shows
+ * it on its own header chip. Pass done (and doneLabel, spoken and shown on
+ * hover) to renderDDDBlockHeader / renderDDDBlockChip and the chip swaps its
+ * icon for a check box (data-done). The first time the learner finishes it
+ * (never on a revisit, a reload or a wrong answer), call
+ * celebrateDDDCompletion(chip) after the update: a short burst of sparks
+ * radiates from the chip and its icon pops in. With reduced motion nothing
+ * moves; the chip simply shows its done state. DDDCompletionTracker decides
+ * "first time" for values watched over time (a page percent), and
+ * DDDCompletionStyles carries the burst for surfaces that are not blocks
+ * (DDDBlockStyles already includes it).
+ *
+ *   renderDDDBlockHeader({ icon: "av:play-arrow", label, title,
+ *     done: this.watched, doneLabel: this.t.watched });
+ *   // when the learner just finished it
+ *   await this.updateComplete;
+ *   celebrateDDDCompletion(this.shadowRoot.querySelector(".ddd-block-chip"));
  */
 import { html, css, nothing } from "lit";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 
+/**
+ * The completion burst: sparks (renderDDDBurst) that radiate once from the
+ * element celebrateDDDCompletion marks, and the icon inside it popping in.
+ * Colour: --ddd-component-burst-color (sky blue, keystone yellow in dark).
+ * Nothing moves with prefers-reduced-motion.
+ */
+export const DDDCompletionStyles = css`
+  .ddd-burst {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .ddd-burst-spark {
+    --ddd-burst-angle: 0deg;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: var(--ddd-spacing-1);
+    height: var(--ddd-spacing-1);
+    margin: calc(var(--ddd-spacing-1) / -2) 0 0 calc(var(--ddd-spacing-1) / -2);
+    border-radius: var(--ddd-radius-circle);
+    background-color: var(
+      --ddd-component-burst-color,
+      light-dark(
+        var(--ddd-theme-default-skyBlue),
+        var(--ddd-theme-default-keystoneYellow)
+      )
+    );
+    opacity: 0;
+    transform: rotate(var(--ddd-burst-angle));
+  }
+  .ddd-burst-spark:nth-child(2) {
+    --ddd-burst-angle: 45deg;
+  }
+  .ddd-burst-spark:nth-child(3) {
+    --ddd-burst-angle: 90deg;
+  }
+  .ddd-burst-spark:nth-child(4) {
+    --ddd-burst-angle: 135deg;
+  }
+  .ddd-burst-spark:nth-child(5) {
+    --ddd-burst-angle: 180deg;
+  }
+  .ddd-burst-spark:nth-child(6) {
+    --ddd-burst-angle: 225deg;
+  }
+  .ddd-burst-spark:nth-child(7) {
+    --ddd-burst-angle: 270deg;
+  }
+  .ddd-burst-spark:nth-child(8) {
+    --ddd-burst-angle: 315deg;
+  }
+  [data-ddd-celebrate] .ddd-burst-spark {
+    animation: ddd-burst-spark var(--ddd-duration-slow, 600ms)
+      var(--ddd-timing-enter, ease-out) 1;
+  }
+  [data-ddd-celebrate] > simple-icon-lite,
+  [data-ddd-celebrate] .ddd-burst-pop {
+    animation: ddd-burst-pop var(--ddd-duration-normal, 300ms)
+      var(--ddd-timing-enter, ease-out) 1;
+  }
+  @keyframes ddd-burst-spark {
+    0% {
+      opacity: 1;
+      transform: rotate(var(--ddd-burst-angle)) translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: rotate(var(--ddd-burst-angle))
+        translateY(calc(-1 * var(--ddd-spacing-6)));
+    }
+  }
+  @keyframes ddd-burst-pop {
+    0% {
+      transform: scale(0.4);
+    }
+    70% {
+      transform: scale(1.15);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    [data-ddd-celebrate] .ddd-burst-spark,
+    [data-ddd-celebrate] > simple-icon-lite,
+    [data-ddd-celebrate] .ddd-burst-pop {
+      animation: none;
+    }
+  }
+  @media (forced-colors: active) {
+    .ddd-burst-spark {
+      background-color: Highlight;
+    }
+  }
+`;
+
 export const DDDBlockStyles = css`
+  ${DDDCompletionStyles}
   .ddd-block {
     box-sizing: border-box;
     border: var(--ddd-border-xs);
@@ -83,6 +199,7 @@ export const DDDBlockStyles = css`
     border-bottom: none;
   }
   .ddd-block-chip {
+    position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -107,6 +224,23 @@ export const DDDBlockStyles = css`
     --simple-icon-color: currentColor;
     --simple-icon-width: var(--ddd-icon-3xs);
     --simple-icon-height: var(--ddd-icon-3xs);
+  }
+  .ddd-block-chip-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  @media (forced-colors: active) {
+    .ddd-block-chip[data-done] {
+      background-color: CanvasText;
+      color: Canvas;
+    }
   }
   .ddd-block-text {
     display: flex;
@@ -269,6 +403,13 @@ export const DDDBlockStyles = css`
  * @param {*} [o.actions] header actions (buttons / links with class
  *   ddd-block-action)
  * @param {*} [o.after] anything else at the end of the text column
+ * @param {Boolean} [o.done] the activity is done: the chip shows a check box
+ *   (see renderDDDBlockChip)
+ * @param {String} [o.doneIcon] icon for the done chip (icons:check-box)
+ * @param {String} [o.doneLabel] what done means here ("Correct",
+ *   "Watched"): the chip's hover text, and spoken after the label
+ * @param {Boolean} [o.speakDone] false when the block already announces
+ *   its state elsewhere (a feedback region), so the label is not repeated
  * @param {String} [o.part] extra space separated part names for the header,
  *   added after "block-header" so an element can keep a part it already
  *   exposed (e.g. "frame-header")
@@ -295,18 +436,10 @@ export function renderDDDBlockHeader(o) {
     class="ddd-block-header"
     part="block-header${opts.part ? " " + opts.part : ""}"
   >
-    <span class="ddd-block-chip" part="block-chip" aria-hidden="true"
-      >${
-        opts.chip
-          ? opts.chip
-          : opts.icon
-            ? html`<simple-icon-lite icon="${opts.icon}"></simple-icon-lite>`
-            : nothing
-      }</span
-    >
+    ${renderDDDBlockChip(opts)}
     <span class="ddd-block-text" part="block-text" id="${opts.id || nothing}">
-      <span class="ddd-block-label">${opts.label}</span>
-      ${title}${opts.after || nothing}
+      <span class="ddd-block-label">${opts.label}</span
+      >${renderDDDBlockChipLabel(opts)} ${title}${opts.after || nothing}
     </span>
     ${
       opts.actions
@@ -314,6 +447,145 @@ export function renderDDDBlockHeader(o) {
         : nothing
     }
   </div>`;
+}
+
+/**
+ * The header chip on its own (for a header an element builds itself, like a
+ * disclosure row). Done: the icon becomes o.doneIcon (icons:check-box), the
+ * chip gets data-done and o.doneLabel as its hover text, and it holds the
+ * burst celebrateDDDCompletion plays. The chip stays aria-hidden; speak the
+ * state with renderDDDBlockChipLabel next to the block's label.
+ * @param {Object} o same options as renderDDDBlockHeader (icon, chip, done,
+ *   doneIcon, doneLabel)
+ * @returns {TemplateResult}
+ */
+export function renderDDDBlockChip(o) {
+  const opts = o || {};
+  const done = Boolean(opts.done);
+  let glyph = nothing;
+  if (done) {
+    glyph = html`<simple-icon-lite
+      icon="${opts.doneIcon || "icons:check-box"}"
+    ></simple-icon-lite>`;
+  } else if (opts.chip) {
+    glyph = opts.chip;
+  } else if (opts.icon) {
+    glyph = html`<simple-icon-lite icon="${opts.icon}"></simple-icon-lite>`;
+  }
+  return html`<span
+    class="ddd-block-chip"
+    part="block-chip"
+    aria-hidden="true"
+    ?data-done="${done}"
+    title="${done && opts.doneLabel ? opts.doneLabel : nothing}"
+    >${glyph}${done ? renderDDDBurst() : nothing}</span
+  >`;
+}
+
+/**
+ * Visually hidden ", <doneLabel>" for the end of a block label, so the done
+ * state shown by the chip is also spoken; nothing when not done or when
+ * speakDone is false.
+ * @param {Object} o { done, doneLabel, speakDone }
+ * @returns {TemplateResult}
+ */
+export function renderDDDBlockChipLabel(o) {
+  const opts = o || {};
+  return opts.done && opts.doneLabel && opts.speakDone !== false
+    ? html`<span class="ddd-block-chip-label">, ${opts.doneLabel}</span>`
+    : nothing;
+}
+
+/**
+ * The sparks of the completion burst; put them in a positioned element
+ * (the chip, a progress ring) and play them with celebrateDDDCompletion.
+ * @returns {TemplateResult}
+ */
+export function renderDDDBurst() {
+  return html`<span class="ddd-burst" aria-hidden="true"
+    ><span class="ddd-burst-spark"></span><span class="ddd-burst-spark"></span
+    ><span class="ddd-burst-spark"></span><span class="ddd-burst-spark"></span
+    ><span class="ddd-burst-spark"></span><span class="ddd-burst-spark"></span
+    ><span class="ddd-burst-spark"></span><span class="ddd-burst-spark"></span
+  ></span>`;
+}
+
+/**
+ * Whether the visitor asked for reduced motion
+ * @returns {Boolean}
+ */
+export function prefersDDDReducedMotion() {
+  try {
+    return Boolean(
+      globalThis.matchMedia &&
+      globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    );
+  } catch {
+    return false;
+  }
+}
+
+// how long the burst stays marked; longer than the slowest animation in it
+export const DDD_CELEBRATE_MS = 900;
+
+/**
+ * Play the completion burst once on target (a .ddd-block-chip, a progress
+ * ring or anything holding renderDDDBurst): data-ddd-celebrate is set for a
+ * moment and the styles in DDDCompletionStyles animate it. Does nothing,
+ * and returns false, with reduced motion or without a target.
+ * @param {Element} target
+ * @returns {Boolean} true when the burst plays
+ */
+export function celebrateDDDCompletion(target) {
+  if (!target || !target.setAttribute || prefersDDDReducedMotion()) {
+    return false;
+  }
+  target.removeAttribute("data-ddd-celebrate");
+  // restart the animation when it is already playing
+  void target.getBoundingClientRect();
+  target.setAttribute("data-ddd-celebrate", "");
+  clearTimeout(target.__dddCelebrate);
+  target.__dddCelebrate = setTimeout(() => {
+    target.removeAttribute("data-ddd-celebrate");
+  }, DDD_CELEBRATE_MS);
+  return true;
+}
+
+/**
+ * Decides when something watched over time (a page percent, an item) has
+ * just been finished for the first time: update(key, done) is true only
+ * when key was seen not done before and is done now, once per key. The
+ * first value seen for a key never counts, so something already done when
+ * it is shown (a revisit, a reload) does not celebrate.
+ */
+export class DDDCompletionTracker {
+  constructor() {
+    this._seen = new Map();
+    this._played = new Set();
+  }
+  /**
+   * @param {String} key
+   * @param {Boolean} done
+   * @returns {Boolean} true when key just became done for the first time
+   */
+  update(key, done) {
+    const k = String(key);
+    const was = this._seen.has(k) ? this._seen.get(k) : null;
+    this._seen.set(k, Boolean(done));
+    if (was === false && done && !this._played.has(k)) {
+      this._played.add(k);
+      return true;
+    }
+    return false;
+  }
+  /**
+   * Stop watching key (it is no longer shown); the next value seen for it
+   * is a first look again. Keys that already celebrated never do again.
+   * @param {String} key
+   */
+  forget(key) {
+    this._seen.delete(String(key));
+  }
 }
 
 /*

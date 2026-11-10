@@ -8,6 +8,12 @@ import {
   mapMenuProgressStyles,
   renderProgressLabel,
   renderProgressMark,
+  mapMenuActiveRingStyles,
+  hasActiveRing,
+  activeRingText,
+  renderActiveRing,
+  renderActiveRingLabel,
+  updateActiveRing,
 } from "./map-menu-progress.js";
 class MapMenuItem extends I18NMixin(LitElement) {
   /**
@@ -16,6 +22,7 @@ class MapMenuItem extends I18NMixin(LitElement) {
   static get styles() {
     return [
       mapMenuProgressStyles,
+      ...mapMenuActiveRingStyles,
       css`
         :host {
           display: block;
@@ -116,6 +123,10 @@ class MapMenuItem extends I18NMixin(LitElement) {
         :host(:not([icon=""])) button {
           padding: 10px 0 10px 4px;
         }
+        /* the ring of the page open now stands where an icon would */
+        :host(:not([is-nested])) button.ring-no-icon {
+          padding-left: var(--ddd-spacing-4);
+        }
         :host([status="new"]) a::after {
           border-right: 8px solid green;
           content: "";
@@ -162,8 +173,13 @@ class MapMenuItem extends I18NMixin(LitElement) {
    * LitElement life cycle - render callback
    */
   render() {
-    return html` <a tabindex="-1" href="${this.url}" title="${this.itemtitle}">
-        <button>
+    const ring = hasActiveRing(this.activeProgress);
+    return html` <a
+        tabindex="-1"
+        href="${this.url}"
+        title="${this.linkTitle()}"
+      >
+        <button class="${ring && !this.icon ? "ring-no-icon" : ""}">
           ${
             !this.published
               ? html`<simple-icon-lite
@@ -174,24 +190,28 @@ class MapMenuItem extends I18NMixin(LitElement) {
               : ``
           }
           ${
-            this.icon
-              ? html`
-                  <simple-icon-lite
-                    icon="${this.icon}"
-                    id="icon"
-                  ></simple-icon-lite>
-                  ${
-                    this.iconLabel
-                      ? html`<simple-tooltip for="icon"
-                          >${this.iconLabel}</simple-tooltip
-                        >`
-                      : ``
-                  }
-                `
-              : html`<div class="no-icon"></div>`
+            ring
+              ? this.renderActiveRing()
+              : this.icon
+                ? html`
+                    <simple-icon-lite
+                      icon="${this.icon}"
+                      id="icon"
+                    ></simple-icon-lite>
+                    ${
+                      this.iconLabel
+                        ? html`<simple-tooltip for="icon"
+                            >${this.iconLabel}</simple-tooltip
+                          >`
+                        : ``
+                    }
+                  `
+                : html`<div class="no-icon"></div>`
           }
           ${renderProgressMark(this.progress)}
-          <span class="title">${this.itemtitle}${this.renderProgress()}</span>
+          <span class="title"
+            >${this.itemtitle}${this.renderProgress()}${this.renderActiveProgress()}</span
+          >
         </button>
       </a>
       ${
@@ -204,6 +224,26 @@ class MapMenuItem extends I18NMixin(LitElement) {
             </div>`
           : ``
       }`;
+  }
+  // hover text of the link: the title, plus the percent of the page open now
+  linkTitle() {
+    return hasActiveRing(this.activeProgress)
+      ? `${this.itemtitle}, ${activeRingText(this.activeProgress, this.t)}`
+      : this.itemtitle;
+  }
+  // the ring around the icon area of the page open now (keeps the icon and
+  // its page type tooltip)
+  renderActiveRing() {
+    return html`${renderActiveRing(this.activeProgress, this.icon, "icon")}
+    ${
+      this.icon && this.iconLabel
+        ? html`<simple-tooltip for="icon">${this.iconLabel}</simple-tooltip>`
+        : ``
+    }`;
+  }
+  // spoken percent of the page open now (", 49% complete")
+  renderActiveProgress() {
+    return renderActiveRingLabel(this.activeProgress, this.t);
   }
   // spoken progress after the title (", Done"); nothing without progress
   renderProgress() {
@@ -227,6 +267,7 @@ class MapMenuItem extends I18NMixin(LitElement) {
     this.locked = false;
     this.status = "";
     this.progress = "";
+    this.activeProgress = null;
     this.t = {
       pageIsUnpublished: "Page is unpublished",
       ...MapMenuProgressStrings,
@@ -319,6 +360,15 @@ class MapMenuItem extends I18NMixin(LitElement) {
         type: String,
         reflect: true,
       },
+      /**
+       * Percent (0 to 1) of the page this item opens, set only while it is
+       * the page open now: a ring around the icon area shows it. null (the
+       * default) shows no ring.
+       */
+      activeProgress: {
+        type: Number,
+        attribute: "active-progress",
+      },
     };
   }
   /**
@@ -330,6 +380,7 @@ class MapMenuItem extends I18NMixin(LitElement) {
         this.__selectedChanged(this.selected, this.id);
       }
     });
+    updateActiveRing(this, changedProperties);
   }
   __selectedChanged(selected, id) {
     if (selected === id) {
