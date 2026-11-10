@@ -249,3 +249,32 @@ describe("buildPageContentHTML", () => {
     }
   });
 });
+
+describe("haxcms-site-builder _updateActiveItemContent", () => {
+  beforeEach(() => {
+    PageContentProbe.constructed = 0;
+  });
+
+  it("normalizes heading ids without constructing content elements", async () => {
+    await import("../lib/core/haxcms-site-builder.js");
+    const builder = document.createElement("haxcms-site-builder");
+    let captured = null;
+    // stop before rendering: we only check the parse + id normalization
+    builder._activeItemContentChanged = (content) => {
+      captured = content;
+    };
+    builder._flushAfterFirstContent = () => {};
+    builder._updateActiveItemContent(
+      '<h2>Section one</h2><h3 resource="r-1">Two</h3><h4 id="keep">x</h4><page-content-probe></page-content-probe>',
+      { id: "item-x", metadata: {} },
+    );
+    expect(PageContentProbe.constructed).to.equal(0);
+    const holder = document.createElement("template");
+    holder.innerHTML = captured;
+    const [h2, h3, h4] = holder.content.querySelectorAll("h2, h3, h4");
+    expect(h2.id).to.equal("h2-" + builder.hashCode("Section one"));
+    expect(h3.id).to.equal("r-1");
+    expect(h4.id).to.equal("keep");
+    expect(captured).to.contain("<page-content-probe></page-content-probe>");
+  });
+});

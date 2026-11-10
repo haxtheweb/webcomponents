@@ -8,7 +8,7 @@ import { sanitizeURLValue } from "@haxtheweb/utils/lib/url.js";
 // anything they set up in their constructor (MobX autoruns, observers,
 // listeners) was never released and kept them alive for the life of the tab.
 let inertDoc = null;
-function getInertDocument() {
+export function getInertDocument() {
   if (!inertDoc) {
     inertDoc = globalThis.document.implementation.createHTMLDocument("");
   }
