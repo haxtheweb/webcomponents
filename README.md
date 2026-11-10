@@ -154,6 +154,30 @@ yarn test -- -p
 
 Then open the URL that will be printed in the terminal. It looks something like this: `http://localhost:8081/components/@@haxtheweb/haxtheweb/generated-index.html?cli_browser_id=0`.
 
+### Keyboard-flow tests
+
+Automated audits (axe) catch only part of what blocks keyboard users, so the core authoring and learning flows also have scripted keyboard tests. They live next to each element as `test/*keyboard-flow.test.js`, drive real key presses in Chromium (`sendKeys` from `@web/test-runner-commands`), and run as part of the normal, blocking suite (`yarn test:all` and each element's `yarn test`).
+
+The invariant they protect: a keyboard-only user can complete the flow, and at every focus stop
+
+- the focused control shows a visible focus indicator (a computed outline or box-shadow on it or on the host that draws its ring),
+- focus never lands on something hidden, zero-size, off screen, `inert` or inside `aria-hidden`,
+- no positive `tabindex` changes the tab order.
+
+| Flow | Test file |
+| --- | --- |
+| Shared HAX UI dialog (`simple-modal`): focus moves in, Tab/Shift+Tab trapped, Escape closes, focus returns to the opener | `elements/simple-modal/test/simple-modal-keyboard-flow.test.js` |
+| HAXcms editor top bar + hax-tray panels (View source, Page outline, Add block, Configure block) and the shortcut registry (every binding has an action and description, no collisions, every `Ctrl⇧` shortcut shown in the bar is registered) | `elements/haxcms-elements/test/haxcms-editor-keyboard-flow.test.js` |
+| Merlin (`super-daemon`): open with its shortcut, type, arrow to a result, Enter runs it, Escape closes and restores focus | `elements/super-daemon/test/super-daemon-keyboard-flow.test.js` |
+| `outline-designer`: arrow navigation, Alt+arrows move/indent/outdent, Delete marks and restores, row actions menu | `elements/outline-designer/test/outline-designer-keyboard-flow.test.js` |
+| `video-player` / `audio-player`: play/pause, seek, captions, transcript cues, fullscreen, settings | `elements/{video,audio}-player/test/*-keyboard-flow.test.js` (shared flow in `scripts/test-setup/keyboard-flow-media.js`) |
+| Question types: select, submit, result announced, try again | `elements/multiple-choice/test/question-keyboard-flow.test.js` |
+| `a11y-collapse` accordion and `a11y-tabs` | `elements/a11y-collapse/test/`, `elements/a11y-tabs/test/` |
+
+Run one locally from the element folder, e.g. `cd elements/simple-modal && yarn test`. Shared helpers (`press`, `expectGoodFocusStop`, `expectFocusOn`, `positiveTabindexIn`) are in `scripts/test-setup/keyboard-flow.js`.
+
+When a flow finds a real keyboard bug that is not fixed in the same PR, keep the rest of the flow running and record the bug instead of loosening the check: add an `it.skip("KNOWN BUG: ...")` test that asserts the fixed behavior, with a comment naming the file and the cause, and, if other steps of the flow pass through the broken stop, a `knownBugs` entry (`{ match(el), reason }`) passed to `expectGoodFocusStop`. Fixing the bug means un-skipping that test and deleting the entry.
+
 ## Component Gallery
 
 We've replaced [Storybook](https://storybook.js.org/) with our own **Component Gallery** to preview and document our web components. The Component Gallery provides a better integrated experience with HAX design system and build tools.
