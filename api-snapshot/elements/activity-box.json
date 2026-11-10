@@ -8,6 +8,7 @@
     "icon": "icon",
     "is-safari": "isSafari",
     "nocolourize": "nocolourize",
+    "t": "t",
     "tag": "tag"
   },
   "slots": [
