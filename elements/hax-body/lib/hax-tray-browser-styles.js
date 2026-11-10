@@ -18,13 +18,14 @@ export const HaxTrayBrowserStyles = [
       --hax-ui-font-size-sm: var(--hax-ui-admin-font-size-xs);
       --simple-toolbar-button-height: var(--hax-ui-icon);
       --simple-toolbar-button-width: var(--hax-ui-icon);
+      --simple-toolbar-button-label-padding: 0;
     }
     hax-tray-button::part(button) {
       box-sizing: border-box;
       width: 100%;
       min-height: calc(var(--hax-ui-row-height) * 2);
       gap: var(--hax-ui-gap);
-      padding: var(--hax-ui-gap);
+      padding: var(--hax-ui-gap) calc(var(--hax-ui-gap) / 2);
       border: 1px solid transparent;
       border-radius: var(--hax-ui-radius);
       background-color: transparent;
@@ -72,13 +73,13 @@ export const HaxTrayBrowserStyles = [
       /* hax:admin-chevron points right: closed as is, open turned down */
       --a11y-collapse-transform-deg: 90deg;
       --a11y-collapse-transform-rotated-deg: 0deg;
-      border-bottom: 1px solid var(--hax-ui-line);
     }
     a11y-collapse::part(heading-id) {
       flex-direction: row-reverse;
       justify-content: flex-end;
       gap: var(--hax-ui-gap-md);
-      min-height: var(--hax-ui-row-height);
+      /* 32px with its line */
+      min-height: calc(var(--hax-ui-row-height) - 1px);
       padding: 0 var(--hax-ui-gap-lg);
       border-bottom: 1px solid var(--hax-ui-line);
     }
@@ -87,11 +88,15 @@ export const HaxTrayBrowserStyles = [
       margin: 0;
       font-family: var(--ddd-font-primary, sans-serif);
       font-size: var(--hax-ui-admin-font-size);
-      line-height: var(--hax-ui-row-height);
+      line-height: calc(var(--hax-ui-row-height) - 1px);
     }
     a11y-collapse::part(icon) {
       --simple-icon-width: var(--hax-ui-icon);
       --simple-icon-height: var(--hax-ui-icon);
+    }
+    /* an empty list (Recent before anything is added) is just its row */
+    a11y-collapse[disabled] simple-button-grid {
+      display: none;
     }
     a11y-collapse[disabled]::part(heading) {
       font-weight: 400;

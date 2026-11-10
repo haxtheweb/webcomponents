@@ -3834,21 +3834,6 @@
             },
             {
               "kind": "field",
-              "name": "alwaysInlineDescription",
-              "privacy": "public",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Always show the description as subtext under the label, however\nlong, instead of behind the (i) info icon. For forms that keep\nhelp visible, such as the HAX editor tray. Off by default.",
-              "default": "false",
-              "attribute": "always-inline-description",
-              "inheritedFrom": {
-                "name": "SimpleFieldsContainerBehaviors",
-                "module": "lib/simple-fields-container.js"
-              }
-            },
-            {
-              "kind": "field",
               "name": "counter",
               "privacy": "public",
               "type": {
@@ -3857,6 +3842,21 @@
               "description": "a counter text and textareas: \"character\", \"word\" or unset for none",
               "default": "\"none\"",
               "attribute": "counter",
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "infoIcon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Icon for the (i) button that opens a long description.\nAdmin panels can match their own icon set.",
+              "default": "\"icons:info-outline\"",
+              "attribute": "info-icon",
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
@@ -4327,19 +4327,6 @@
               }
             },
             {
-              "name": "always-inline-description",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Always show the description as subtext under the label, however\nlong, instead of behind the (i) info icon. For forms that keep\nhelp visible, such as the HAX editor tray. Off by default.",
-              "default": "false",
-              "fieldName": "alwaysInlineDescription",
-              "inheritedFrom": {
-                "name": "SimpleFieldsContainerBehaviors",
-                "module": "lib/simple-fields-container.js"
-              }
-            },
-            {
               "name": "autovalidate",
               "type": {
                 "text": "boolean"
@@ -4347,6 +4334,19 @@
               "description": "Automatically validate field",
               "default": "false",
               "fieldName": "autovalidate",
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "name": "info-icon",
+              "type": {
+                "text": "string"
+              },
+              "description": "Icon for the (i) button that opens a long description.\nAdmin panels can match their own icon set.",
+              "default": "\"icons:info-outline\"",
+              "fieldName": "infoIcon",
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
@@ -6518,14 +6518,14 @@
             },
             {
               "kind": "field",
-              "name": "alwaysInlineDescription",
+              "name": "infoIcon",
               "privacy": "public",
               "type": {
-                "text": "boolean"
+                "text": "string"
               },
-              "description": "Always show the description as subtext under the label, however\nlong, instead of behind the (i) info icon. For forms that keep\nhelp visible, such as the HAX editor tray. Off by default.",
-              "default": "false",
-              "attribute": "always-inline-description",
+              "description": "Icon for the (i) button that opens a long description.\nAdmin panels can match their own icon set.",
+              "default": "\"icons:info-outline\"",
+              "attribute": "info-icon",
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
@@ -7303,19 +7303,6 @@
               }
             },
             {
-              "name": "always-inline-description",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Always show the description as subtext under the label, however\nlong, instead of behind the (i) info icon. For forms that keep\nhelp visible, such as the HAX editor tray. Off by default.",
-              "default": "false",
-              "fieldName": "alwaysInlineDescription",
-              "inheritedFrom": {
-                "name": "SimpleFieldsContainerBehaviors",
-                "module": "lib/simple-fields-container.js"
-              }
-            },
-            {
               "name": "autovalidate",
               "type": {
                 "text": "boolean"
@@ -7323,6 +7310,19 @@
               "description": "Automatically validate field",
               "default": "false",
               "fieldName": "autovalidate",
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "name": "info-icon",
+              "type": {
+                "text": "string"
+              },
+              "description": "Icon for the (i) button that opens a long description.\nAdmin panels can match their own icon set.",
+              "default": "\"icons:info-outline\"",
+              "fieldName": "infoIcon",
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
@@ -8177,17 +8177,6 @@
             },
             {
               "kind": "field",
-              "name": "alwaysInlineDescription",
-              "privacy": "public",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Always show the description as subtext under the label, however\nlong, instead of behind the (i) info icon. For forms that keep\nhelp visible, such as the HAX editor tray. Off by default.",
-              "default": "false",
-              "attribute": "always-inline-description"
-            },
-            {
-              "kind": "field",
               "name": "counter",
               "privacy": "public",
               "type": {
@@ -8196,6 +8185,17 @@
               "description": "a counter text and textareas: \"character\", \"word\" or unset for none",
               "default": "\"none\"",
               "attribute": "counter"
+            },
+            {
+              "kind": "field",
+              "name": "infoIcon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Icon for the (i) button that opens a long description.\nAdmin panels can match their own icon set.",
+              "default": "\"icons:info-outline\"",
+              "attribute": "info-icon"
             },
             {
               "kind": "field",
@@ -8501,15 +8501,6 @@
           ],
           "attributes": [
             {
-              "name": "always-inline-description",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Always show the description as subtext under the label, however\nlong, instead of behind the (i) info icon. For forms that keep\nhelp visible, such as the HAX editor tray. Off by default.",
-              "default": "false",
-              "fieldName": "alwaysInlineDescription"
-            },
-            {
               "name": "autovalidate",
               "type": {
                 "text": "boolean"
@@ -8517,6 +8508,15 @@
               "description": "Automatically validate field",
               "default": "false",
               "fieldName": "autovalidate"
+            },
+            {
+              "name": "info-icon",
+              "type": {
+                "text": "string"
+              },
+              "description": "Icon for the (i) button that opens a long description.\nAdmin panels can match their own icon set.",
+              "default": "\"icons:info-outline\"",
+              "fieldName": "infoIcon"
             },
             {
               "name": "counter",
@@ -8774,19 +8774,6 @@
           "customElement": true,
           "attributes": [
             {
-              "name": "always-inline-description",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Always show the description as subtext under the label, however\nlong, instead of behind the (i) info icon. For forms that keep\nhelp visible, such as the HAX editor tray. Off by default.",
-              "default": "false",
-              "fieldName": "alwaysInlineDescription",
-              "inheritedFrom": {
-                "name": "SimpleFieldsContainerBehaviors",
-                "module": "lib/simple-fields-container.js"
-              }
-            },
-            {
               "name": "autovalidate",
               "type": {
                 "text": "boolean"
@@ -8794,6 +8781,19 @@
               "description": "Automatically validate field",
               "default": "false",
               "fieldName": "autovalidate",
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "name": "info-icon",
+              "type": {
+                "text": "string"
+              },
+              "description": "Icon for the (i) button that opens a long description.\nAdmin panels can match their own icon set.",
+              "default": "\"icons:info-outline\"",
+              "fieldName": "infoIcon",
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
@@ -9813,21 +9813,6 @@
             },
             {
               "kind": "field",
-              "name": "alwaysInlineDescription",
-              "privacy": "public",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Always show the description as subtext under the label, however\nlong, instead of behind the (i) info icon. For forms that keep\nhelp visible, such as the HAX editor tray. Off by default.",
-              "default": "false",
-              "attribute": "always-inline-description",
-              "inheritedFrom": {
-                "name": "SimpleFieldsContainerBehaviors",
-                "module": "lib/simple-fields-container.js"
-              }
-            },
-            {
-              "kind": "field",
               "name": "counter",
               "privacy": "public",
               "type": {
@@ -9836,6 +9821,21 @@
               "description": "a counter text and textareas: \"character\", \"word\" or unset for none",
               "default": "\"none\"",
               "attribute": "counter",
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "infoIcon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Icon for the (i) button that opens a long description.\nAdmin panels can match their own icon set.",
+              "default": "\"icons:info-outline\"",
+              "attribute": "info-icon",
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
@@ -11444,14 +11444,14 @@
             },
             {
               "kind": "field",
-              "name": "alwaysInlineDescription",
+              "name": "infoIcon",
               "privacy": "public",
               "type": {
-                "text": "boolean"
+                "text": "string"
               },
-              "description": "Always show the description as subtext under the label, however\nlong, instead of behind the (i) info icon. For forms that keep\nhelp visible, such as the HAX editor tray. Off by default.",
-              "default": "false",
-              "attribute": "always-inline-description",
+              "description": "Icon for the (i) button that opens a long description.\nAdmin panels can match their own icon set.",
+              "default": "\"icons:info-outline\"",
+              "attribute": "info-icon",
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
@@ -12045,19 +12045,6 @@
               "fieldName": "wrap"
             },
             {
-              "name": "always-inline-description",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Always show the description as subtext under the label, however\nlong, instead of behind the (i) info icon. For forms that keep\nhelp visible, such as the HAX editor tray. Off by default.",
-              "default": "false",
-              "fieldName": "alwaysInlineDescription",
-              "inheritedFrom": {
-                "name": "SimpleFieldsContainerBehaviors",
-                "module": "lib/simple-fields-container.js"
-              }
-            },
-            {
               "name": "autovalidate",
               "type": {
                 "text": "boolean"
@@ -12065,6 +12052,19 @@
               "description": "Automatically validate field",
               "default": "false",
               "fieldName": "autovalidate",
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "name": "info-icon",
+              "type": {
+                "text": "string"
+              },
+              "description": "Icon for the (i) button that opens a long description.\nAdmin panels can match their own icon set.",
+              "default": "\"icons:info-outline\"",
+              "fieldName": "infoIcon",
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
@@ -12690,19 +12690,6 @@
               }
             },
             {
-              "name": "always-inline-description",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Always show the description as subtext under the label, however\nlong, instead of behind the (i) info icon. For forms that keep\nhelp visible, such as the HAX editor tray. Off by default.",
-              "default": "false",
-              "fieldName": "alwaysInlineDescription",
-              "inheritedFrom": {
-                "name": "SimpleFieldsContainerBehaviors",
-                "module": "lib/simple-fields-container.js"
-              }
-            },
-            {
               "name": "autovalidate",
               "type": {
                 "text": "boolean"
@@ -12710,6 +12697,19 @@
               "description": "Automatically validate field",
               "default": "false",
               "fieldName": "autovalidate",
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "name": "info-icon",
+              "type": {
+                "text": "string"
+              },
+              "description": "Icon for the (i) button that opens a long description.\nAdmin panels can match their own icon set.",
+              "default": "\"icons:info-outline\"",
+              "fieldName": "infoIcon",
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
@@ -14351,14 +14351,14 @@
             },
             {
               "kind": "field",
-              "name": "alwaysInlineDescription",
+              "name": "infoIcon",
               "privacy": "public",
               "type": {
-                "text": "boolean"
+                "text": "string"
               },
-              "description": "Always show the description as subtext under the label, however\nlong, instead of behind the (i) info icon. For forms that keep\nhelp visible, such as the HAX editor tray. Off by default.",
-              "default": "false",
-              "attribute": "always-inline-description",
+              "description": "Icon for the (i) button that opens a long description.\nAdmin panels can match their own icon set.",
+              "default": "\"icons:info-outline\"",
+              "attribute": "info-icon",
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
@@ -18168,14 +18168,14 @@
             },
             {
               "kind": "field",
-              "name": "alwaysInlineDescription",
+              "name": "infoIcon",
               "privacy": "public",
               "type": {
-                "text": "boolean"
+                "text": "string"
               },
-              "description": "Always show the description as subtext under the label, however\nlong, instead of behind the (i) info icon. For forms that keep\nhelp visible, such as the HAX editor tray. Off by default.",
-              "default": "false",
-              "attribute": "always-inline-description",
+              "description": "Icon for the (i) button that opens a long description.\nAdmin panels can match their own icon set.",
+              "default": "\"icons:info-outline\"",
+              "attribute": "info-icon",
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
@@ -18858,19 +18858,6 @@
               }
             },
             {
-              "name": "always-inline-description",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Always show the description as subtext under the label, however\nlong, instead of behind the (i) info icon. For forms that keep\nhelp visible, such as the HAX editor tray. Off by default.",
-              "default": "false",
-              "fieldName": "alwaysInlineDescription",
-              "inheritedFrom": {
-                "name": "SimpleFieldsContainerBehaviors",
-                "module": "lib/simple-fields-container.js"
-              }
-            },
-            {
               "name": "autovalidate",
               "type": {
                 "text": "boolean"
@@ -18878,6 +18865,19 @@
               "description": "Automatically validate field",
               "default": "false",
               "fieldName": "autovalidate",
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "name": "info-icon",
+              "type": {
+                "text": "string"
+              },
+              "description": "Icon for the (i) button that opens a long description.\nAdmin panels can match their own icon set.",
+              "default": "\"icons:info-outline\"",
+              "fieldName": "infoIcon",
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
@@ -19597,6 +19597,17 @@
             },
             {
               "kind": "field",
+              "name": "infoIcon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Icon for the (i) button that opens a long description.\nAdmin panels can match their own icon set.",
+              "default": "\"icons:info-outline\"",
+              "attribute": "info-icon"
+            },
+            {
+              "kind": "field",
               "name": "voice",
               "type": {
                 "text": "null"
@@ -19911,6 +19922,15 @@
             }
           ],
           "attributes": [
+            {
+              "name": "info-icon",
+              "type": {
+                "text": "string"
+              },
+              "description": "Icon for the (i) button that opens a long description.\nAdmin panels can match their own icon set.",
+              "default": "\"icons:info-outline\"",
+              "fieldName": "infoIcon"
+            },
             {
               "name": "accept",
               "type": {
@@ -21989,14 +22009,14 @@
             },
             {
               "kind": "field",
-              "name": "alwaysInlineDescription",
+              "name": "infoIcon",
               "privacy": "public",
               "type": {
-                "text": "boolean"
+                "text": "string"
               },
-              "description": "Always show the description as subtext under the label, however\nlong, instead of behind the (i) info icon. For forms that keep\nhelp visible, such as the HAX editor tray. Off by default.",
-              "default": "false",
-              "attribute": "always-inline-description",
+              "description": "Icon for the (i) button that opens a long description.\nAdmin panels can match their own icon set.",
+              "default": "\"icons:info-outline\"",
+              "attribute": "info-icon",
               "inheritedFrom": {
                 "name": "SimpleFieldsCombo",
                 "module": "lib/simple-fields-combo.js"
@@ -23324,19 +23344,6 @@
               }
             },
             {
-              "name": "always-inline-description",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Always show the description as subtext under the label, however\nlong, instead of behind the (i) info icon. For forms that keep\nhelp visible, such as the HAX editor tray. Off by default.",
-              "default": "false",
-              "fieldName": "alwaysInlineDescription",
-              "inheritedFrom": {
-                "name": "SimpleFieldsCombo",
-                "module": "lib/simple-fields-combo.js"
-              }
-            },
-            {
               "name": "autovalidate",
               "type": {
                 "text": "boolean"
@@ -23344,6 +23351,19 @@
               "description": "Automatically validate field",
               "default": "false",
               "fieldName": "autovalidate",
+              "inheritedFrom": {
+                "name": "SimpleFieldsCombo",
+                "module": "lib/simple-fields-combo.js"
+              }
+            },
+            {
+              "name": "info-icon",
+              "type": {
+                "text": "string"
+              },
+              "description": "Icon for the (i) button that opens a long description.\nAdmin panels can match their own icon set.",
+              "default": "\"icons:info-outline\"",
+              "fieldName": "infoIcon",
               "inheritedFrom": {
                 "name": "SimpleFieldsCombo",
                 "module": "lib/simple-fields-combo.js"

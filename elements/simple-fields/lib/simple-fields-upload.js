@@ -273,6 +273,7 @@ class SimpleFieldsUpload extends I18NMixin(
    */
   constructor() {
     super();
+    this.infoIcon = "icons:info-outline";
     this.voice = null;
     this.t = this.t || {};
     this.t = {
@@ -362,7 +363,7 @@ class SimpleFieldsUpload extends I18NMixin(
           this._hasInfoTooltip
             ? html`<simple-icon-button-lite
                   id="${infoId}"
-                  icon="icons:info-outline"
+                  icon="${this.infoIcon}"
                   label="${
                     this.label ? `${this.label} details` : `Upload details`
                   }"
@@ -462,12 +463,14 @@ class SimpleFieldsUpload extends I18NMixin(
           @upload-before="${this._fileAboutToUpload}"
           @upload-response="${this._fileUploadResponse}"
           part="upload"
+          exportparts="drop-zone"
           ?nodrop="${this.disabled}"
         >
           <button
             ?disabled="${this.disabled}"
             id="add-hidden"
             slot="add-button"
+            part="add-button"
           >
             ${this.t.upload}..
           </button>
@@ -489,6 +492,7 @@ class SimpleFieldsUpload extends I18NMixin(
               type="url"
               auto-validate=""
               part="url"
+              exportparts="label: url-label, field-main: url-main, field-main-inner: url-inner, option-input: url-input"
               ?disabled="${this.disabled}"
               display-as="${
                 this.responsiveSize.indexOf("l") > -1 ? "grid" : ""
@@ -501,7 +505,7 @@ class SimpleFieldsUpload extends I18NMixin(
             >
             </simple-fields-url-combo>
           </div>
-          <div id="upload">
+          <div id="upload" part="source-row">
             <span part="drop-area-text">${this.t.dropMediaHereOr}</span>
             <div class="sources" part="sources">${this.sources}</div>
           </div>
@@ -632,6 +636,14 @@ class SimpleFieldsUpload extends I18NMixin(
   static get properties() {
     return {
       ...super.properties,
+      /**
+       * Icon for the (i) button that opens a long description.
+       * Admin panels can match their own icon set.
+       */
+      infoIcon: {
+        type: String,
+        attribute: "info-icon",
+      },
       /**
        * Hint for expected file type in file upload controls
        */

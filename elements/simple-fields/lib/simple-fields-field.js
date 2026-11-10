@@ -1350,7 +1350,10 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
         >
           ${this._groupedOptionsTemplate(this.sortedOptions || [])}
         </select>
-        <simple-icon-lite icon="arrow-drop-down"></simple-icon-lite>
+        <simple-icon-lite
+          icon="arrow-drop-down"
+          part="select-icon"
+        ></simple-icon-lite>
       `;
     }
 

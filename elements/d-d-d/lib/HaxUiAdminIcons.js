@@ -72,7 +72,6 @@ export const HaxUiAdminIcons = Object.freeze({
   metadata: "hax:admin-metadata",
   more: "hax:admin-more",
   moveDown: "hax:admin-move-down",
-  movePanel: "hax:admin-move-panel",
   moveUp: "hax:admin-move-up",
   page: "hax:admin-page",
   palette: "hax:admin-palette",

@@ -454,18 +454,19 @@ class SimpleIconSelect extends LitElement {
         @click="${this.toggle}"
         @keydown="${this._triggerKeydown}"
       >
-        <span class="tile" aria-hidden="true">
+        <span class="tile" part="tile" aria-hidden="true">
           ${
             this.value
               ? html`<simple-icon-lite icon="${this.value}"></simple-icon-lite>`
               : ``
           }
         </span>
-        <span class="name ${this.value ? "" : "empty"}">
+        <span class="name ${this.value ? "" : "empty"}" part="name">
           ${this.value ? iconFriendlyName(this.value) : this.t.noIcon}
         </span>
         <simple-icon-lite
           class="chevron"
+          part="chevron"
           icon="icons:expand-more"
           aria-hidden="true"
         ></simple-icon-lite>
@@ -551,7 +552,7 @@ class SimpleIconSelect extends LitElement {
         </ul>
         ${
           this.expanded && total === 0
-            ? html`<div class="status" role="status">
+            ? html`<div class="status" part="status" role="status">
                 ${
                   term
                     ? this.t.noIconsFoundFor.replace("{search}", () => term)
@@ -559,7 +560,7 @@ class SimpleIconSelect extends LitElement {
                 }
               </div>`
             : this.expanded && total > this.__limit
-              ? html`<div class="status" aria-hidden="true">
+              ? html`<div class="status" part="status" aria-hidden="true">
                   ${this.t.showingIcons
                     .replace("{shown}", () => Math.min(this.__limit, total))
                     .replace("{total}", () => total)}

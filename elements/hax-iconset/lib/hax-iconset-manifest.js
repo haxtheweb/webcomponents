@@ -145,7 +145,6 @@ export const HaxIconsetManifest = [
       "admin-metadata",
       "admin-more",
       "admin-move-down",
-      "admin-move-panel",
       "admin-move-up",
       "admin-page",
       "admin-palette",

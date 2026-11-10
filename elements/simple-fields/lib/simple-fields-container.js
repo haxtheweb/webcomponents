@@ -181,19 +181,18 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
     static get properties() {
       return {
         /**
-         * Always show the description as subtext under the label, however
-         * long, instead of behind the (i) info icon. For forms that keep
-         * help visible, such as the HAX editor tray. Off by default.
-         */
-        alwaysInlineDescription: {
-          type: Boolean,
-          attribute: "always-inline-description",
-        },
-        /**
          * Automatically validate field
          */
         autovalidate: {
           type: Boolean,
+        },
+        /**
+         * Icon for the (i) button that opens a long description.
+         * Admin panels can match their own icon set.
+         */
+        infoIcon: {
+          type: String,
+          attribute: "info-icon",
         },
         /**
          * a counter text and textareas: "character", "word" or unset for none
@@ -389,8 +388,8 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
     constructor() {
       super();
       this.isSimpleFieldType = true;
-      this.alwaysInlineDescription = false;
       this.counter = "none";
+      this.infoIcon = "icons:info-outline";
       this.autovalidate = false;
       this.disabled = false;
       this.hidden = false;
@@ -751,7 +750,6 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
       // they keep the legacy description in the field-bottom area
       // (issue #2996 Phase 5 revert).
       if (this._isScalableTextField) return false;
-      if (this.alwaysInlineDescription) return !!this.description;
       return (
         !!this.description &&
         this.description.trim().split(/\s+/).filter(Boolean).length <=
@@ -775,7 +773,6 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
       // they keep the legacy description in the field-bottom area
       // (issue #2996 Phase 5 revert).
       if (this._isScalableTextField) return false;
-      if (this.alwaysInlineDescription) return false;
       return (
         !!this.description &&
         this.description.trim().split(/\s+/).filter(Boolean).length >
@@ -813,7 +810,7 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
       return html`
         <simple-icon-button-lite
           id="${infoId}"
-          icon="icons:info-outline"
+          icon="${this.infoIcon}"
           label="${this.label ? `${this.label} details` : `Field details`}"
           part="info-toggle"
           class="info-toggle"

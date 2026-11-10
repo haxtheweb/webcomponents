@@ -65,7 +65,7 @@ class HaxViewSource extends I18NMixin(LitElement) {
           align-items: center;
           gap: var(--hax-ui-gap, 4px);
           margin: 0;
-          padding: var(--hax-ui-gap-md, 8px) var(--hax-ui-gap-lg, 12px);
+          padding: calc(var(--hax-ui-gap, 4px) / 2) var(--hax-ui-gap-lg, 12px);
         }
         hax-tray-button {
           flex: 0 0 auto;

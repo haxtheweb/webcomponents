@@ -129,6 +129,8 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
       },
     };
     this.collapsed = true;
+    // what the add panel browses: "blocks" or "templates"
+    this.addView = "blocks";
     this.locked = false;
     this.activeSchema = [
       {
@@ -490,7 +492,7 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
           padding: 0 var(--hax-ui-gap-md) 0 var(--hax-ui-gap-lg);
           gap: var(--hax-ui-gap-md);
           justify-content: flex-start;
-          background-color: var(--ddd-theme-default-coalyGray);
+          background-color: var(--hax-ui-titlebar);
           color: var(--hax-ui-on-titlebar, var(--ddd-theme-default-white));
           font-family: var(--hax-ui-admin-font-family);
           word-break: normal;
@@ -582,13 +584,12 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
           /* hax:admin-chevron points right: closed as is, open turned down */
           --a11y-collapse-transform-deg: 90deg;
           --a11y-collapse-transform-rotated-deg: 0deg;
-          border-bottom: 1px solid var(--hax-ui-line);
         }
         #settingsform a11y-collapse::part(heading-id) {
           flex-direction: row-reverse;
           justify-content: flex-end;
           gap: var(--hax-ui-gap-md);
-          min-height: var(--hax-ui-row-height);
+          min-height: calc(var(--hax-ui-row-height) - 1px);
           padding: 0 var(--hax-ui-gap-lg);
           border-bottom: 1px solid var(--hax-ui-line);
         }
@@ -601,7 +602,7 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
           margin: 0;
           font-family: var(--ddd-font-primary, sans-serif);
           font-size: var(--hax-ui-admin-font-size);
-          line-height: var(--hax-ui-row-height);
+          line-height: calc(var(--hax-ui-row-height) - 1px);
           color: var(--hax-ui-text);
         }
         #settingsform a11y-collapse a11y-collapse::part(heading-id) {
@@ -624,14 +625,203 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
         hax-gizmo-browser:not(:defined) {
           visibility: hidden;
         }
+        /* Blocks / Templates: a segmented switch that stays under the
+           title bar with the Blocks filter */
+        .add-switch {
+          position: sticky;
+          top: var(--hax-ui-titlebar-height, 48px);
+          z-index: 3;
+          box-sizing: border-box;
+          padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
+          background-color: var(--hax-ui-surface);
+        }
+        /* with Templates showing there is no filter under it, so the
+           switch draws the line */
+        .add-switch.templates {
+          border-bottom: 1px solid var(--hax-ui-line);
+        }
+        .block-add-wrapper {
+          --hax-gizmo-browser-sticky-offset: calc(
+            2 * var(--hax-ui-gap-md) + var(--hax-ui-row-height)
+          );
+          --hax-gizmo-browser-toolbar-padding-top: 0;
+        }
+        .add-switch-group {
+          box-sizing: border-box;
+          display: flex;
+          height: var(--hax-ui-row-height);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius);
+          overflow: hidden;
+        }
+        .add-switch-group button {
+          flex: 1 1 0;
+          margin: 0;
+          padding: 0 var(--hax-ui-gap-md);
+          border: 0;
+          background-color: var(--hax-ui-surface);
+          color: var(--hax-ui-text);
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size);
+          cursor: pointer;
+        }
+        .add-switch-group button + button {
+          border-left: 1px solid var(--hax-ui-line-strong);
+        }
+        .add-switch-group button:hover {
+          background-color: var(--hax-ui-hover);
+        }
+        .add-switch-group button[aria-pressed="true"] {
+          background-color: var(--hax-ui-accent-soft);
+          font-weight: 700;
+          box-shadow: inset 0 calc(-1 * var(--ddd-border-size-md, 2px)) 0
+            var(--hax-ui-accent-strong);
+        }
+        .add-switch-group button:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: calc(-1 * var(--hax-ui-focus-width));
+        }
+        /* upload: a dashed drop box, its name and hint on the left and the
+           sources on the right */
         hax-tray-upload {
-          flex: 0 0 auto;
+          display: block;
+          box-sizing: border-box;
+          margin: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          line-height: 1.3;
           --simple-fields-margin: 0px;
           --simple-fields-margin-small: 0px;
           --simple-file-upload-padding: 0;
-          font-weight: var(--ddd-font-weight-medium);
-          --simple-fields-upload-drop-area-text-size: var(--ddd-font-size-5xs);
-          line-height: 1;
+        }
+        hax-tray-upload::part(fieldset) {
+          position: relative;
+          box-sizing: border-box;
+          min-inline-size: 0;
+          margin: 0;
+          padding: var(--hax-ui-gap-md);
+          border: 1px dashed var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius-lg);
+        }
+        /* the name sits over the hint; the sources center on both lines */
+        hax-tray-upload::part(legend) {
+          position: absolute;
+          top: var(--hax-ui-gap-md);
+          inset-inline-start: var(--hax-ui-gap-md);
+          margin: 0;
+          padding: 0;
+          color: var(--hax-ui-text-muted);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          font-weight: 700;
+          text-transform: capitalize;
+        }
+        hax-tray-upload::part(upload),
+        hax-tray-upload::part(drop-zone),
+        hax-tray-upload::part(source-row) {
+          position: static;
+          margin: 0;
+          padding: 0;
+        }
+        hax-tray-upload::part(source-row) {
+          justify-content: space-between;
+          flex-wrap: nowrap;
+          gap: var(--hax-ui-gap-md);
+          width: 100%;
+        }
+        hax-tray-upload::part(drop-area-text) {
+          flex: 1 1 auto;
+          min-width: 0;
+          padding-top: 1.3em;
+          color: var(--hax-ui-text-muted);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          font-weight: 400;
+          line-height: 1.3;
+        }
+        hax-tray-upload::part(sources) {
+          display: flex;
+          flex: 0 0 auto;
+          gap: var(--hax-ui-gap);
+        }
+        hax-tray-upload::part(merlin),
+        hax-tray-upload::part(browse),
+        hax-tray-upload::part(take-photo),
+        hax-tray-upload::part(record-audio),
+        hax-tray-upload::part(record-screen) {
+          margin: 0;
+          color: var(--hax-ui-text);
+          --simple-toolbar-button-height: var(--hax-ui-icon);
+          --simple-toolbar-button-width: var(--hax-ui-icon);
+          --simple-toolbar-button-min-width: calc(
+            var(--hax-ui-row-height) - 6px
+          );
+          --simple-toolbar-button-padding: calc(
+            (var(--hax-ui-row-height) - 6px - var(--hax-ui-icon)) / 2
+          );
+          --simple-toolbar-button-border-color: var(--hax-ui-line-strong);
+          --simple-toolbar-button-border-radius: var(--hax-ui-radius);
+          --simple-toolbar-button-bg: var(--hax-ui-surface);
+          --simple-toolbar-button-hover-bg: var(--hax-ui-hover);
+          --simple-toolbar-button-hover-border-color: var(--hax-ui-line-strong);
+        }
+        /* phones: the hint on one line, the sources spread below it */
+        @media screen and (max-width: 800px) {
+          /* the wide Upload button comes first, then the name and hint
+             on one line, then the sources */
+          hax-tray-upload::part(add-button) {
+            float: none;
+            box-sizing: border-box;
+            width: 100%;
+            height: var(--hax-ui-row-height);
+            margin: 0 0 var(--hax-ui-gap);
+            border: 1px solid var(--hax-ui-line-strong);
+            border-radius: var(--hax-ui-radius);
+            background-color: var(--hax-ui-surface);
+            color: var(--hax-ui-text);
+            font-family: var(--hax-ui-admin-font-family);
+            font-size: var(--hax-ui-admin-font-size);
+          }
+          hax-tray-upload::part(add-button)::before {
+            content: "";
+            display: inline-block;
+            width: var(--hax-ui-icon);
+            height: var(--hax-ui-icon);
+            margin-inline-end: var(--hax-ui-gap-md);
+            vertical-align: middle;
+            background-color: currentColor;
+            /* hax:admin-upload */
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z'/%3E%3C/svg%3E")
+              center / contain no-repeat;
+          }
+          hax-tray-upload::part(legend) {
+            top: calc(
+              var(--hax-ui-gap-md) + var(--hax-ui-row-height) +
+                var(--hax-ui-gap)
+            );
+          }
+          hax-tray-upload::part(drop-area-text) {
+            padding-top: 0;
+            /* room for the name before the hint on the same line */
+            padding-inline-start: 7.25em;
+          }
+          hax-tray-upload::part(sources) {
+            justify-content: space-between;
+            width: 100%;
+            margin-top: var(--hax-ui-gap);
+          }
+          hax-tray-upload::part(source-row) {
+            flex-wrap: wrap;
+          }
+          hax-tray-upload::part(merlin),
+          hax-tray-upload::part(browse),
+          hax-tray-upload::part(take-photo),
+          hax-tray-upload::part(record-audio),
+          hax-tray-upload::part(record-screen) {
+            --simple-toolbar-button-min-width: calc(
+              var(--hax-ui-row-height) - 2px
+            );
+            --simple-toolbar-button-padding: calc(
+              (var(--hax-ui-row-height) - 2px - var(--hax-ui-icon)) / 2
+            );
+          }
         }
         *[hidden] {
           display: none;
@@ -757,7 +947,8 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
    * Once simple-fields builds the Configure form: give its groups
    * (Configure, Advanced, Developer) the HAX UI admin chevron, pointing
    * right when closed and down when open (the rotation is in the
-   * #settingsform a11y-collapse styles), and keep each field's help visible.
+   * #settingsform a11y-collapse styles), and the admin info icon on
+   * each field's (i) button.
    */
   _haxUiSettingsForm(e) {
     const form = e && e.detail && e.detail.querySelectorAll ? e.detail : null;
@@ -767,12 +958,13 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
     form.querySelectorAll("a11y-collapse").forEach((collapse) => {
       collapse.icon = HaxUiAdminIcons.chevron;
     });
-    // HAX UI keeps help visible: every field shows its description under
-    // its label instead of behind an (i) button
+    // the (i) after each label uses the admin info icon
     form
-      .querySelectorAll("simple-fields-field, simple-fields-container")
+      .querySelectorAll(
+        "simple-fields-field, simple-fields-container, hax-upload-field",
+      )
       .forEach((field) => {
-        field.setAttribute("always-inline-description", "");
+        field.infoIcon = HaxUiAdminIcons.info;
       });
   }
   get trayStatus() {
@@ -895,7 +1087,7 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
         align-horizontal="${this.collapsed ? "left" : "center"}"
         id="haxMenuAlign"
         event-name="toggle-element-align"
-        icon="${HaxUiAdminIcons.movePanel}"
+        icon="arrow-${this.elementAlign === "left" ? "forward" : "back"}"
         label="${
           this.elementAlign == "left" ? this.t.menuRight : this.t.menuLeft
         }"
@@ -1121,17 +1313,39 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
   }
   get contentAddTemplate() {
     let hidden = this.trayDetail !== "content-add";
+    const hasTemplates =
+      HAXStore.platformAllows("pageTemplates") ||
+      HAXStore.platformAllows("blockTemplates");
+    // without templates there is nothing to switch to
+    const view = hasTemplates ? this.addView : "blocks";
     return html`<div class="block-add-wrapper">
-      <hax-tray-upload
-        ?hidden="${hidden || !HAXStore.platformAllows("uploadMedia")}"
-        show-sources
-        compact
-      ></hax-tray-upload>
+      ${
+        hasTemplates
+          ? html`<div class="add-switch ${view}" ?hidden="${hidden}">
+              <div class="add-switch-group" role="group">
+                <button
+                  type="button"
+                  aria-pressed="${view === "blocks" ? "true" : "false"}"
+                  @click="${() => (this.addView = "blocks")}"
+                >
+                  ${this.t.blocks}
+                </button>
+                <button
+                  type="button"
+                  aria-pressed="${view === "templates" ? "true" : "false"}"
+                  @click="${() => (this.addView = "templates")}"
+                >
+                  ${this.t.templates}
+                </button>
+              </div>
+            </div>`
+          : ""
+      }
       ${
         HAXStore.platformAllows("pageTemplates")
           ? html`<hax-stax-browser
               id="pagesbrowser"
-              ?hidden="${hidden}"
+              ?hidden="${hidden || view !== "templates"}"
               label="${this.t.pages}"
               template-type="page"
             ></hax-stax-browser>`
@@ -1141,7 +1355,7 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
         HAXStore.platformAllows("blockTemplates")
           ? html`<hax-stax-browser
               id="staxbrowser"
-              ?hidden="${hidden}"
+              ?hidden="${hidden || view !== "templates"}"
               label="${this.t.templates}"
               template-type="area"
             ></hax-stax-browser>`
@@ -1149,8 +1363,14 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
       }
       <hax-gizmo-browser
         id="gizmobrowser"
-        ?hidden="${hidden}"
-      ></hax-gizmo-browser>
+        ?hidden="${hidden || view !== "blocks"}"
+      >
+        <hax-tray-upload
+          slot="after-filter"
+          ?hidden="${hidden || !HAXStore.platformAllows("uploadMedia")}"
+          show-sources
+        ></hax-tray-upload>
+      </hax-gizmo-browser>
       <hax-app-search ?hidden="${hidden}" id="haxappsearch"></hax-app-search>
     </div>`;
   }
@@ -1412,6 +1632,13 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
         type: String,
         reflect: true,
         attribute: "tray-detail",
+      },
+      /**
+       * What the add panel browses: "blocks" or "templates"
+       */
+      addView: {
+        type: String,
+        attribute: "add-view",
       },
       /**
        * heading of toggled section in tray
