@@ -526,7 +526,7 @@ describe("haxcms-site-store computed getters extended", () => {
     });
   });
 
-  describe("isMobile / viewOnlyMode", () => {
+  describe("isMobile", () => {
     it("isMobile is true when responsiveSize is xs or sm", () => {
       store.responsiveSize = "xs";
       expect(store.isMobile).to.equal(true);
@@ -535,11 +535,79 @@ describe("haxcms-site-store computed getters extended", () => {
       store.responsiveSize = "md";
       expect(store.isMobile).to.equal(false);
     });
+  });
 
-    it("viewOnlyMode reads from UserScaffoldInstance", () => {
-      // viewOnlyMode is computed from UserScaffoldInstance.readMemory
-      // which defaults to falsy when nothing is written
-      expect(store.viewOnlyMode).to.not.be.ok;
+  // preview (haxtheweb/issues#2951): logged in, drawn as a visitor sees it
+  describe("previewMode", () => {
+    let savedPreview;
+    beforeEach(() => {
+      savedPreview = {
+        previewMode: store.previewMode,
+        previewKeepId: store.previewKeepId,
+      };
+      store.jwt = "preview-jwt";
+      store.appSettings = {};
+      store.manifest.items[1].metadata.published = false;
+    });
+    afterEach(() => {
+      store.previewMode = savedPreview.previewMode;
+      store.previewKeepId = savedPreview.previewKeepId;
+    });
+
+    it("is off by default outside the preview frame", () => {
+      expect(store.inPreviewFrame).to.equal(false);
+      expect(store.previewMode).to.equal(false);
+    });
+
+    it("does not change login state", () => {
+      store.previewMode = true;
+      expect(store.isLoggedIn).to.equal(true);
+    });
+
+    it("showUnpublished is true logged in, false while previewing or logged out", () => {
+      store.previewMode = false;
+      expect(store.showUnpublished).to.equal(true);
+      store.previewMode = true;
+      expect(store.showUnpublished).to.equal(false);
+      store.previewMode = false;
+      store.jwt = null;
+      expect(store.showUnpublished).to.equal(false);
+    });
+
+    it("hides unpublished pages from the menu while previewing", () => {
+      store.previewMode = false;
+      expect(store.routerManifest.items.map((i) => i.id)).to.include("page-2");
+      store.previewMode = true;
+      expect(store.routerManifest.items.map((i) => i.id)).to.not.include(
+        "page-2",
+      );
+    });
+
+    it("keeps the parents of the page preview started on", () => {
+      // a published page under an unpublished parent must still resolve
+      store.manifest.items[0].metadata.published = false;
+      store.previewMode = true;
+      store.previewKeepId = "page-1-1";
+      const ids = store.routerManifest.items.map((i) => i.id);
+      expect(ids).to.include("page-1-1");
+      expect(ids).to.include("page-1");
+      // without the keep, both are hidden
+      store.previewKeepId = null;
+      const hidden = store.routerManifest.items.map((i) => i.id);
+      expect(hidden).to.not.include("page-1-1");
+      expect(hidden).to.not.include("page-1");
+    });
+
+    it("keeps the unpublished page preview started on", () => {
+      store.previewMode = true;
+      store.previewKeepId = "page-2";
+      expect(store.routerManifest.items.map((i) => i.id)).to.include("page-2");
+      // the keep only applies while previewing; visitors never see it
+      store.previewMode = false;
+      store.jwt = null;
+      expect(store.routerManifest.items.map((i) => i.id)).to.not.include(
+        "page-2",
+      );
     });
   });
 
@@ -954,11 +1022,10 @@ describe("haxcms-site-store toast, sound, and editor availability", () => {
   });
 
   describe("cmsSiteEditorAvailability", () => {
-    it("returns null in view-only mode", () => {
-      // viewOnlyMode reads from UserScaffoldInstance; ensure it is falsy
-      // and we test the viewOnlyMode branch by checking the default
+    it("creates or returns the editor outside the preview frame", () => {
+      // only a page loaded in the preview frame skips the editor
+      expect(store.inPreviewFrame).to.equal(false);
       const result = store.cmsSiteEditorAvailability();
-      // when not in view-only mode, it creates or returns the instance
       expect(result).to.exist;
     });
   });

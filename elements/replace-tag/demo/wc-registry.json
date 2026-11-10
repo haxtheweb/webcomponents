@@ -611,7 +611,6 @@
   "word-count": "@haxtheweb/word-count/word-count.js",
   "wysiwyg-hax": "@haxtheweb/wysiwyg-hax/wysiwyg-hax.js",
   "lit-virtualizer": "@lit-labs/virtualizer/lit-virtualizer.js",
-  "connection-observer": "monaco-editor/min/vs/editor-BdtEMBbM.js",
   "scrollable-component": "scrollable-component/index.js",
   "web-dialog": "web-dialog/web-dialog.js"
 }

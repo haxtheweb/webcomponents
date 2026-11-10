@@ -7,7 +7,6 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import { generateResourceID } from "@haxtheweb/utils/lib/ids.js";
-import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
 import "@haxtheweb/beaker-broker/beaker-broker.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 
@@ -881,9 +880,8 @@ class HAXCMSBackendBeaker extends I18NMixin(LitElement) {
     if (this.jwt != null && typeof this.jwt === "string" && info.isOwner) {
       let appstore = JSON.parse(await beaker.read("appstore.json"));
 
-      // Check if we're in view-only mode - if so, don't import editor
-      const viewOnlyMode = UserScaffoldInstance.readMemory("ViewOnlyMode");
-      if (!viewOnlyMode) {
+      // the preview frame shows the site as a visitor sees it: no editor
+      if (!store.inPreviewFrame) {
         // attempt to dynamically import the hax cms site editor
         // which will appear to be injecting into the page
         // but because of this approach it should be non-blocking

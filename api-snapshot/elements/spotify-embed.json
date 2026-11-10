@@ -1,0 +1,32 @@
+{
+  "tag": "spotify-embed",
+  "package": "@haxtheweb/spotify-embed",
+  "source": "elements/spotify-embed/spotify-embed.js",
+  "attributes": {
+    "editing": "editing",
+    "size": "size",
+    "source": "source",
+    "t": "t",
+    "theme": "theme"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [
+    "iframe"
+  ],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/spotify-embed/lib/spotify-embed.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "size",
+      "source",
+      "theme"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "spotify-embed"
+    ]
+  }
+}

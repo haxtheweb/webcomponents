@@ -1,0 +1,58 @@
+{
+  "tag": "a11y-tabs",
+  "package": "@haxtheweb/a11y-tabs",
+  "source": "elements/a11y-tabs/a11y-tabs.js",
+  "attributes": {
+    "active-tab": "activeTab",
+    "aria-label": "ariaLabel",
+    "disable-responsive": "disableResponsive",
+    "disabled": "disabled",
+    "full-width": "fullWidth",
+    "hidden": "hidden",
+    "icon-breakpoint": "iconBreakpoint",
+    "id": "id",
+    "layout-breakpoint": "layoutBreakpoint",
+    "lg": "lg",
+    "md": "md",
+    "responsive-size": "responsiveSize",
+    "responsive-width": "responsiveWidth",
+    "show-tooltip": "showTooltip",
+    "sm": "sm",
+    "sticky": "sticky",
+    "xl": "xl"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [
+    "a11y-tabs-active-changed",
+    "responsive-element",
+    "responsive-element-deleted"
+  ],
+  "cssParts": [
+    "content",
+    "flag",
+    "icon",
+    "label",
+    "tablist",
+    "tablist-item",
+    "tooltip"
+  ],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/a11y-tabs/lib/a11y-tabs.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "ariaLabel",
+      "disabled",
+      "hidden",
+      "iconBreakpoint",
+      "id",
+      "layoutBreakpoint",
+      "sticky"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": []
+  }
+}

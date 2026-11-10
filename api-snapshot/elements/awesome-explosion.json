@@ -1,0 +1,43 @@
+{
+  "tag": "awesome-explosion",
+  "package": "@haxtheweb/awesome-explosion",
+  "source": "elements/awesome-explosion/awesome-explosion.js",
+  "attributes": {
+    "color": "color",
+    "disabled": "disabled",
+    "image": "image",
+    "is-safari": "isSafari",
+    "paused": "paused",
+    "playing": "playing",
+    "reset-sound": "resetSound",
+    "size": "size",
+    "sound": "sound",
+    "sound-enabled": "soundEnabled",
+    "state": "state",
+    "stopped": "stopped"
+  },
+  "slots": [],
+  "events": [
+    "awesome-event"
+  ],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/awesome-explosion/lib/awesome-explosion.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "color",
+      "disabled",
+      "image",
+      "resetSound",
+      "size",
+      "sound",
+      "soundEnabled"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "awesome-explosion"
+    ]
+  }
+}

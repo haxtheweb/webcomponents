@@ -7,7 +7,6 @@ import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js"
 import { configureHAXCMSSiteApiRegistry } from "@haxtheweb/haxcms-elements/lib/core/utils/haxcms-site-api-registry.js";
 import { configureHAXCMSDemoSiteApiRegistry } from "@haxtheweb/haxcms-elements/lib/core/utils/haxcms-demo-site-api-registry.js";
 import { autorun, toJS } from "mobx";
-import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
 import "@haxtheweb/jwt-login/jwt-login.js";
 /**
  * `haxcms-backend-demo`
@@ -146,9 +145,8 @@ class HAXCMSBackendDemo extends LitElement {
         }
       }
 
-      // Check if we're in view-only mode - if so, don't import editor
-      const viewOnlyMode = UserScaffoldInstance.readMemory("ViewOnlyMode");
-      if (!viewOnlyMode) {
+      // the preview frame shows the site as a visitor sees it: no editor
+      if (!store.inPreviewFrame) {
         try {
           // prettier-ignore
           import(

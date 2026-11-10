@@ -1,0 +1,39 @@
+{
+  "tag": "learning-component",
+  "package": "@haxtheweb/course-design",
+  "source": "elements/course-design/lib/learning-component.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "dark": "dark",
+    "icon": "icon",
+    "is-safari": "isSafari",
+    "subtitle": "subtitle",
+    "t": "t",
+    "title": "title",
+    "type": "type",
+    "url": "url"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/course-design/lib/learning-component.js",
+    "gizmo": true,
+    "properties": [
+      "accentColor",
+      "icon",
+      "subtitle",
+      "title",
+      "type",
+      "url"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "learning-component"
+    ]
+  }
+}

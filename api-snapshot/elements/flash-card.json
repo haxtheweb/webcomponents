@@ -1,0 +1,47 @@
+{
+  "tag": "flash-card",
+  "package": "@haxtheweb/flash-card",
+  "source": "elements/flash-card/flash-card.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "dark": "dark",
+    "has-learning-objective": "hasLearningObjective",
+    "img-keyword": "imgKeyword",
+    "img-source": "imgSource",
+    "inverted": "inverted",
+    "is-safari": "isSafari",
+    "schemamap": "schemaMap",
+    "status": "status",
+    "t": "t",
+    "type-of-action": "typeOfAction",
+    "typeof": "typeof"
+  },
+  "slots": [
+    "back",
+    "front"
+  ],
+  "events": [
+    "playaudio",
+    "user-engagement"
+  ],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/flash-card/lib/flash-card.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "hasLearningObjective",
+      "imgKeyword",
+      "imgSource",
+      "typeOfAction"
+    ],
+    "attributes": [],
+    "slots": [
+      "back",
+      "front"
+    ],
+    "demoTags": [
+      "flash-card"
+    ]
+  }
+}

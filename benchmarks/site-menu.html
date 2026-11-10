@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <script>
+      // same shim real HAXcms pages use for libraries that read NODE_ENV
+      globalThis.process = globalThis.process || {
+        env: { NODE_ENV: "production" },
+      };
+    </script>
+    <title>site-menu render benchmark</title>
+  </head>
+  <body>
+    <div id="host" style="width: 320px; height: 800px; overflow: auto"></div>
+    <script type="module" src="./site-menu.bench.js"></script>
+  </body>
+</html>

@@ -20,6 +20,16 @@
           "name": "SimpleModal",
           "members": [
             {
+              "kind": "method",
+              "name": "_buttonsSlotChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Show the buttons area only while something is slotted into it."
+            },
+            {
               "kind": "field",
               "name": "tag",
               "static": true,
@@ -199,6 +209,17 @@
             },
             {
               "kind": "field",
+              "name": "_hasButtons",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "something is slotted into the buttons area",
+              "default": "false",
+              "attribute": "_hasButtons"
+            },
+            {
+              "kind": "field",
               "name": "t",
               "type": {
                 "text": "object"
@@ -345,6 +366,15 @@
             }
           ],
           "attributes": [
+            {
+              "name": "_hasButtons",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "something is slotted into the buttons area",
+              "default": "false",
+              "fieldName": "_hasButtons"
+            },
             {
               "name": "title",
               "type": {

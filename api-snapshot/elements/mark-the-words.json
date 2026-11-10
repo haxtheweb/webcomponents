@@ -1,0 +1,77 @@
+{
+  "tag": "mark-the-words",
+  "package": "@haxtheweb/mark-the-words",
+  "source": "elements/mark-the-words/mark-the-words.js",
+  "attributes": {
+    "answers": "answers",
+    "attempts": "attempts",
+    "collapsed": "collapsed",
+    "collapsible": "collapsible",
+    "disabled": "disabled",
+    "displayedanswers": "displayedAnswers",
+    "edit": "edit",
+    "for-course": "forCourse",
+    "grading-format": "gradingFormat",
+    "has-learning-objective": "hasLearningObjective",
+    "hide-buttons": "hideButtons",
+    "is-safari": "isSafari",
+    "max-attempts": "maxAttempts",
+    "media": "media",
+    "missedanswers": "missedAnswers",
+    "numbercorrect": "numberCorrect",
+    "numberguessed": "numberGuessed",
+    "question": "question",
+    "quiz-name": "quizName",
+    "randomize": "randomize",
+    "related-resource": "relatedResource",
+    "schemamap": "schemaMap",
+    "show-answer": "showAnswer",
+    "single-option": "singleOption",
+    "statement": "statement",
+    "t": "t",
+    "typeof": "typeof",
+    "wordlist": "wordList"
+  },
+  "slots": [
+    "content",
+    "evidence",
+    "feedbackCorrect",
+    "feedbackIncorrect",
+    "hint"
+  ],
+  "events": [
+    "eventName",
+    "learner-progress-request",
+    "question-element-state",
+    "user-engagement"
+  ],
+  "cssParts": [
+    "block-header",
+    "image"
+  ],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/mark-the-words/lib/mark-the-words.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "answers",
+      "answers[].correct",
+      "answers[].label",
+      "answers[].selectedFeedback",
+      "answers[].unselectedFeedback",
+      "collapsed",
+      "collapsible",
+      "forCourse",
+      "gradingFormat",
+      "hasLearningObjective",
+      "question",
+      "quizName",
+      "statement"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "mark-the-words"
+    ]
+  }
+}

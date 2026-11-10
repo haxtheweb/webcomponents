@@ -1,0 +1,33 @@
+{
+  "tag": "twitter-embed",
+  "package": "@haxtheweb/twitter-embed",
+  "source": "elements/twitter-embed/twitter-embed.js",
+  "attributes": {
+    "allowpopups": "allowPopups",
+    "data-theme": "dataTheme",
+    "data-width": "dataWidth",
+    "lang": "lang",
+    "no-popups": "noPopups",
+    "t": "t",
+    "tweet": "tweet",
+    "tweet-id": "tweetId"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/twitter-embed/lib/twitter-embed.haxProperties.json",
+    "gizmo": true,
+    "properties": [],
+    "attributes": [
+      "data-theme",
+      "no-popups",
+      "tweet"
+    ],
+    "slots": [],
+    "demoTags": [
+      "twitter-embed"
+    ]
+  }
+}

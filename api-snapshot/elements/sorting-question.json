@@ -1,0 +1,72 @@
+{
+  "tag": "sorting-question",
+  "package": "@haxtheweb/sorting-question",
+  "source": "elements/sorting-question/sorting-question.js",
+  "attributes": {
+    "answers": "answers",
+    "attempts": "attempts",
+    "collapsed": "collapsed",
+    "collapsible": "collapsible",
+    "disabled": "disabled",
+    "displayedanswers": "displayedAnswers",
+    "edit": "edit",
+    "for-course": "forCourse",
+    "grading-format": "gradingFormat",
+    "has-learning-objective": "hasLearningObjective",
+    "hide-buttons": "hideButtons",
+    "is-safari": "isSafari",
+    "max-attempts": "maxAttempts",
+    "media": "media",
+    "numbercorrect": "numberCorrect",
+    "question": "question",
+    "quiz-name": "quizName",
+    "randomize": "randomize",
+    "related-resource": "relatedResource",
+    "schemamap": "schemaMap",
+    "show-answer": "showAnswer",
+    "single-option": "singleOption",
+    "t": "t",
+    "typeof": "typeof"
+  },
+  "slots": [
+    "content",
+    "evidence",
+    "feedbackCorrect",
+    "feedbackIncorrect",
+    "hint"
+  ],
+  "events": [
+    "eventName",
+    "learner-progress-request",
+    "question-element-state",
+    "simple-toast-hide",
+    "user-engagement"
+  ],
+  "cssParts": [
+    "block-header",
+    "image"
+  ],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/sorting-question/lib/sorting-question.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "answers",
+      "answers[].alt",
+      "answers[].image",
+      "answers[].label",
+      "collapsed",
+      "collapsible",
+      "forCourse",
+      "gradingFormat",
+      "hasLearningObjective",
+      "question",
+      "quizName"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "sorting-question"
+    ]
+  }
+}

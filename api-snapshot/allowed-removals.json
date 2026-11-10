@@ -1,0 +1,4 @@
+{
+  "$comment": "Intended breaking changes to authorable HAX elements. Each entry: {\"tag\", \"kind\", \"item\", \"reason\"}; see CONTRIBUTING.md (HAX element API snapshot). Remove entries once their pull request has merged.",
+  "removals": []
+}

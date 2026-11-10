@@ -1,0 +1,27 @@
+{
+  "tag": "web-baseline-status",
+  "package": "@haxtheweb/web-baseline-status",
+  "source": "elements/web-baseline-status/web-baseline-status.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "dark": "dark",
+    "feature-id": "featureId",
+    "is-safari": "isSafari"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/web-baseline-status/lib/web-baseline-status.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "featureId"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "web-baseline-status"
+    ]
+  }
+}

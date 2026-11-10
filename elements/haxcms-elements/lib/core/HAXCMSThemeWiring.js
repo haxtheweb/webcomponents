@@ -197,11 +197,11 @@ const HAXCMSTheme = function (SuperClass) {
             !homeItem._internalRoute &&
             !homeItem.slug.startsWith("x/")
           ) {
-            // Verify page is published (if user is not logged in)
+            // Verify page is published (visitors and preview don't see it)
             if (
               homeItem.metadata &&
               homeItem.metadata.published === false &&
-              !store.isLoggedIn
+              !store.showUnpublished
             ) {
               console.warn(
                 "Configured home page is not published, falling back to first page",
@@ -287,12 +287,15 @@ const HAXCMSTheme = function (SuperClass) {
           });
         }),
       );
-      // logged in so we can visualize things differently as needed
+      // logged in so we can visualize things differently as needed. While
+      // previewing, themes draw as they do for a visitor: is-logged-in is
+      // only what is shown, the store's isLoggedIn still drives data
       this.__disposer.push(
         autorun((_reaction) => {
           const _mobx_val_0 = toJS(store.isLoggedIn);
+          const _mobx_val_1 = toJS(store.previewMode);
           Promise.resolve().then(() => {
-            this.isLoggedIn = _mobx_val_0;
+            this.isLoggedIn = _mobx_val_0 && !_mobx_val_1;
           });
         }),
       );

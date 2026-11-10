@@ -1,0 +1,34 @@
+{
+  "tag": "a11y-details",
+  "package": "@haxtheweb/a11y-details",
+  "source": "elements/a11y-details/a11y-details.js",
+  "attributes": {
+    "close-text": "closeText",
+    "open-text": "openText",
+    "t": "t"
+  },
+  "slots": [
+    "(default)",
+    "details",
+    "summary"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/a11y-details/a11y-details.js",
+    "gizmo": true,
+    "properties": [
+      "closeText",
+      "openText"
+    ],
+    "attributes": [],
+    "slots": [
+      "details",
+      "summary"
+    ],
+    "demoTags": [
+      "a11y-details"
+    ]
+  }
+}

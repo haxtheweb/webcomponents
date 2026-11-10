@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <script>
+      // same shim real HAXcms pages use for libraries that read NODE_ENV
+      globalThis.process = globalThis.process || {
+        env: { NODE_ENV: "production" },
+      };
+    </script>
+    <title>outline-designer render benchmark</title>
+  </head>
+  <body>
+    <div
+      id="host"
+      style="height: 600px; display: flex; flex-direction: column"
+    ></div>
+    <script type="module" src="./outline-designer.bench.js"></script>
+  </body>
+</html>

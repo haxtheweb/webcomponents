@@ -216,6 +216,9 @@ export function describeMediaKeyboardFlow(name, makeFixture) {
       const slider = await tabTo(/^seek slider$/i, fx.after);
       expect(slider.tagName).to.equal("INPUT");
       expect(slider.type).to.equal("range");
+      // the slider's max follows the media duration through a render, so
+      // wait for the input itself to be seekable before pressing an arrow
+      await waitFor(() => Number(slider.max) > 0, 2000);
       const start = amp.currentTime || 0;
       await press("ArrowRight", 150);
       await waitFor(() => (amp.currentTime || 0) > start, 1500);

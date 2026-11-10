@@ -62,6 +62,10 @@ export const HAXCMS_API_MESSAGES_EN = Object.freeze({
   INPUT_TOO_LARGE: "The input is too large (maximum {maxBytes} bytes).",
   FILE_RATE_LIMITED:
     "Too many file operations on this site. Try again in {retryAfter}.",
+  PAGE_LOCKED: "This page is locked. Unlock it to change it.",
+  BLOCK_STALE:
+    "Part of this page changed since it was loaded. Reload it and try again.",
+  BLOCK_REFUSED: "This change can't be applied safely: {detail}",
   LINK_CHECK_RATE_LIMITED:
     "Too many link checks on this site. Try again in {retryAfter}.",
   SITE_NAME_INVALID:

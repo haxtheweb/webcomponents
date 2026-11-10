@@ -31,6 +31,29 @@
             },
             {
               "kind": "field",
+              "name": "platformAllowsScript",
+              "static": true,
+              "description": "security: whether the hosting platform lets html-block run raw script.\nThe allowscript attribute is authored content (it is saved with the\npage), so on its own it must not be enough to run script in front of\nevery visitor. The platform opts in with\n`globalThis.HAXHtmlBlockAllowScript = true` (or\n`globalThis.appSettings.htmlBlockAllowScript = true`) before content\nloads; without that, allowscript is ignored and content is sanitized.",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "scriptAllowed",
+              "description": "allowscript is set by the author AND the platform allows it",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
               "name": "allowscript"
             },
             {

@@ -26,6 +26,10 @@
             },
             {
               "kind": "method",
+              "name": "learnerResponse"
+            },
+            {
+              "kind": "method",
               "name": "renderDirections"
             },
             {

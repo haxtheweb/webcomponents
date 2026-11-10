@@ -1,0 +1,73 @@
+{
+  "tag": "multiple-choice",
+  "package": "@haxtheweb/multiple-choice",
+  "source": "elements/multiple-choice/multiple-choice.js",
+  "attributes": {
+    "answers": "answers",
+    "attempts": "attempts",
+    "collapsed": "collapsed",
+    "collapsible": "collapsible",
+    "disabled": "disabled",
+    "displayedanswers": "displayedAnswers",
+    "edit": "edit",
+    "for-course": "forCourse",
+    "grading-format": "gradingFormat",
+    "has-learning-objective": "hasLearningObjective",
+    "hide-buttons": "hideButtons",
+    "is-safari": "isSafari",
+    "max-attempts": "maxAttempts",
+    "media": "media",
+    "question": "question",
+    "quiz-name": "quizName",
+    "randomize": "randomize",
+    "related-resource": "relatedResource",
+    "schemamap": "schemaMap",
+    "show-answer": "showAnswer",
+    "single-option": "singleOption",
+    "t": "t",
+    "typeof": "typeof"
+  },
+  "slots": [
+    "content",
+    "evidence",
+    "feedbackCorrect",
+    "feedbackIncorrect",
+    "hint"
+  ],
+  "events": [
+    "eventName",
+    "learner-progress-request",
+    "question-element-state",
+    "user-engagement"
+  ],
+  "cssParts": [
+    "block-header",
+    "image"
+  ],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/multiple-choice/lib/multiple-choice.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "answers",
+      "answers[].alt",
+      "answers[].correct",
+      "answers[].image",
+      "answers[].label",
+      "collapsed",
+      "collapsible",
+      "forCourse",
+      "gradingFormat",
+      "hasLearningObjective",
+      "question",
+      "quizName",
+      "randomize",
+      "singleOption"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "multiple-choice"
+    ]
+  }
+}

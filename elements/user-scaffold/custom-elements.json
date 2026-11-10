@@ -20,7 +20,7 @@
         },
         {
           "kind": "class",
-          "description": "`user-scaffold`\n`memory and context to establish and maintain appropriate user scaffolding`\n\nLearner profile: long-term memory holds ONE profile for the person using\nthis browser (readProfile()), shaped as\n  { v, preferences: { darkMode, soundStatus, audioDescription: {<src>: bool} },\n    session: { firstVisit, lastVisit, visits, lastLogin },\n    sites: { <siteKey>: { url, title, actor, firstVisit, lastVisit,\n      pages: { <pageId>: { title, url, firstVisit, lastVisit, visits,\n        activities: [activityId], trackable, trackableByTag } },\n      activities: { <activityId>: { page, tag, name, verb, verbs, count,\n        first, last, trackable, done, status, success, attempts,\n        maxAttempts, score, response } },\n      counts: { byElement: { <tag>: { <verb>: n } }, byVerb: { <verb>: n } },\n      statementCount } } }\nEvery xAPI statement recorded is also appended to the statements list\n(IndexedDB by default, see lib/user-scaffold-storage.js). Nothing here is\nsent anywhere; the actor of each site is a random per-device account.",
+          "description": "`user-scaffold`\n`memory and context to establish and maintain appropriate user scaffolding`\n\nLearner profile: long-term memory holds ONE profile for the person using\nthis browser (readProfile()), shaped as\n  { v, preferences: { darkMode, soundStatus, audioDescription: {<src>: bool} },\n    session: { firstVisit, lastVisit, visits, lastLogin },\n    sites: { <siteKey>: { url, title, actor, firstVisit, lastVisit,\n      pages: { <pageId>: { title, url, firstVisit, lastVisit, visits,\n        activities: [activityId], trackable, trackableByTag, legacyRead\n        (done before reading was tracked; counts as read) } },\n      activities: { <activityId>: { page, tag, name, verb, verbs, count,\n        first, last, trackable, done, progress (0 to 1, highest progress\n        extension sent), reading (the page's own reading activity),\n        status, success, firstTry (result of the first answer), attempts,\n        maxAttempts, score, response (xAPI result.response, component ids\n        for choice / matching / sequencing), responseText (the same in\n        plain words, when the recorder resolved it), migratedFrom } },\n      counts: { byElement: { <tag>: { <verb>: n } }, byVerb: { <verb>: n } },\n      statementCount } },\n    migrations: { <name>: when it ran } }\nEvery xAPI statement recorded is also appended to the statements list\n(IndexedDB by default, see lib/user-scaffold-storage.js). Nothing here is\nsent anywhere; the actor of each site is a random per-device account.",
           "name": "UserScaffold",
           "members": [
             {
@@ -33,6 +33,15 @@
             {
               "kind": "method",
               "name": "userActionArchitypes"
+            },
+            {
+              "kind": "method",
+              "name": "_onStorage",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
             },
             {
               "kind": "method",
@@ -170,6 +179,16 @@
             {
               "kind": "method",
               "name": "_profile"
+            },
+            {
+              "kind": "method",
+              "name": "_migrateReading",
+              "parameters": [
+                {
+                  "name": "p"
+                }
+              ],
+              "description": "Once per profile recorded before page reading was tracked\n(haxtheweb/issues#3269): a page that was done then (every trackable\nactivity on it done) is marked legacyRead, so it stays done now that a\npage also has to be read. Nothing else changes."
             },
             {
               "kind": "method",
@@ -322,7 +341,7 @@
                 {
                   "name": "meta",
                   "default": "{}",
-                  "description": "{ page, tag, trackable, imported, pageTitle }",
+                  "description": "{ page, tag, trackable, imported, pageTitle,\nresponseText (result.response in plain words), legacyId (an older id\nof the same activity whose data moves to this one, once), replay\n(rebuilding from stored statements: not deduplicated, not stored),\nreading (the statement is about reading the page itself) }",
                   "type": {
                     "text": "Object"
                   }
@@ -339,9 +358,28 @@
                 },
                 {
                   "name": "activityId"
+                },
+                {
+                  "name": "legacyId"
                 }
               ],
-              "description": "Summary for one activity of a site, or null"
+              "description": "Summary for one activity of a site, or null. legacyId: the id an older\nversion of the element keyed the same activity by (its content\nfingerprint); when only that one has data it is moved to activityId\nfirst, once."
+            },
+            {
+              "kind": "method",
+              "name": "_migrateActivity",
+              "parameters": [
+                {
+                  "name": "siteRec"
+                },
+                {
+                  "name": "from"
+                },
+                {
+                  "name": "to"
+                }
+              ],
+              "description": "Move what was saved under activity id `from` to `to` (also in the page\nlists), when `to` has nothing yet. Statements already in the statement\nlist keep the object id they were sent with. Returns true when moved."
             },
             {
               "kind": "method",
@@ -354,7 +392,7 @@
                   "name": "page"
                 }
               ],
-              "description": "Status of a page: \"done\" when every trackable activity the learner\nengaged with on it is done, \"in-progress\" when some are not,\n\"visited\" when opened with nothing engaged, \"not-started\" otherwise."
+              "description": "Status of a page: \"done\" when it was read and every trackable activity\non it is done, \"in-progress\" when some of that is under way,\n\"visited\" when opened with nothing under way, \"not-started\" otherwise."
             },
             {
               "kind": "method",
@@ -367,7 +405,12 @@
                   "name": "page"
                 }
               ],
-              "description": "{ status, engaged, done, trackable } for a page"
+              "description": "Progress of one page (haxtheweb/issues#3269). A page is done when the\nlearner read it (scrolled through its content: the activity recorded\nwith meta.reading) and engaged every trackable item on it.",
+              "return": {
+                "type": {
+                  "text": "{ status: string, engaged: number, done: number,\n   *   trackable: number, percent: number, reading: Object, items: Object[],\n   *   itemsDone: number, itemsTotal: number }"
+                }
+              }
             },
             {
               "kind": "method",
@@ -380,7 +423,7 @@
                   "name": "pages"
                 }
               ],
-              "description": "{ done, total, byPage } for a site; pages limits it to those page ids\n(the site outline), otherwise every page the profile knows"
+              "description": "{ done, total, byPage, engaged, percent, percentByPage } for a site;\npages limits it to those page ids (the site outline), otherwise every\npage the profile knows. byPage: status of each page; percent: the\naverage of the page percents (pageProgress) over those pages, 0 to 1."
             },
             {
               "kind": "method",
@@ -398,13 +441,13 @@
               "name": "summarize",
               "parameters": [
                 {
-                  "name": "{ site, outline, scope = \"all\", pageId, groupBy = \"page\" }",
+                  "name": "{\n    site,\n    outline,\n    scope = \"all\",\n    pageId,\n    groupBy = \"page\",\n    pages: only,\n    sectionRoot,\n    kindOf,\n    trackableOnly = false,\n  }",
                   "default": "{}"
                 },
                 {
                   "name": "o",
                   "type": {
-                    "text": "@param {string} o.site site key\n   * @param {Array} [o.outline] [{ id, parent, title, tags }] (tags: array or\n   *   comma separated string); without it, page / verb / element grouping\n   *   and the \"all\" / \"page\" scopes still work\n   * @param {string} [o.scope] \"page\" | \"parent\" (the page's parent and every\n   *   page below it) | \"branch\" (the page and every page below it) |\n   *   \"children\" (only the pages below it) | \"all\" (default)\n   * @param {string} [o.pageId] outline item id the scope is relative to\n   * @param {string} [o.groupBy] \"page\" (default) | \"tag\" | \"section\" (top\n   *   level ancestor) | \"verb\" | \"element\"\n   * "
+                    "text": "@param {string} o.site site key\n   * @param {Array} [o.outline] [{ id, parent, title, tags }] (tags: array or\n   *   comma separated string); without it, page / verb / element grouping\n   *   and the \"all\" / \"page\" scopes still work\n   * @param {string} [o.scope] \"page\" | \"parent\" (the page's parent and every\n   *   page below it) | \"branch\" (the page and every page below it) |\n   *   \"children\" (only the pages below it) | \"all\" (default)\n   * @param {string} [o.pageId] outline item id the scope is relative to\n   * @param {string} [o.groupBy] \"page\" (default) | \"tag\" | \"section\" (top\n   *   level ancestor) | \"verb\" | \"element\" | \"activity\" (o.kindOf)\n   * @param {string[]} [o.pages] explicit page ids to cover, used instead of\n   *   scope / pageId when given\n   * @param {string} [o.sectionRoot] for groupBy \"section\": group under the\n   *   children of this outline item instead of the top level (pages outside\n   *   it keep their top level section; the root itself is its own group)\n   * @param {Function} [o.kindOf] for groupBy \"activity\": (activity, id) =>\n   *   group key, or \"\" to leave the activity out of the groups (it still\n   *   counts in totals); without it activities group by their last verb\n   * @param {boolean} [o.trackableOnly] leave out activities that do not count\n   *   toward a page being done (page visits, user-action)\n   * "
                   }
                 }
               ],
@@ -427,6 +470,41 @@
             },
             {
               "kind": "method",
+              "name": "repairSite",
+              "parameters": [
+                {
+                  "name": "site",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "statements",
+                  "description": "the site's stored statements",
+                  "type": {
+                    "text": "Object[]"
+                  }
+                },
+                {
+                  "name": "{ pageOf, trackableOf, pageElement }",
+                  "default": "{}"
+                },
+                {
+                  "name": "o",
+                  "type": {
+                    "text": "@param {Function} o.pageOf (statement) => outline item id, or \"\"\n   * @param {Function} [o.trackableOf] (tag) => counts toward a page being done\n   * @param {string} [o.pageElement] element tag of page reads (\"haxcms-page\")\n   * "
+                  }
+                }
+              ],
+              "description": "Bring a site's profile record back in line with its stored statements,\nwhich are the source of truth; the profile record is a cache of them\n(it can lose writes, e.g. when an older tab saved long-term memory over\na newer one). Activities the profile does not know, or knows from fewer\nstatements than are stored (stale), are rebuilt by replaying their\nstatements through recordStatement, oldest first, so they come out as\nif recorded live; up to date ones are left alone, so running this again\nchanges nothing. Activities with more history than the stored\nstatements (statements kept only in memory) are kept.\nPage visits are raised to the number of page reads stored.",
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              }
+            },
+            {
+              "kind": "method",
               "name": "clearSite",
               "parameters": [
                 {
@@ -434,6 +512,11 @@
                 }
               ],
               "description": "Forget everything recorded for a site on this device"
+            },
+            {
+              "kind": "method",
+              "name": "clearAll",
+              "description": "Forget the whole learner profile on this device (preferences, session\nand every site) and every statement kept for any site. Other long-term\nmemory keys are kept. The next site visit starts a new profile with new\npseudonymous actors."
             },
             {
               "kind": "method",
@@ -656,6 +739,10 @@
               ]
             },
             {
+              "kind": "method",
+              "name": "clearAll"
+            },
+            {
               "kind": "field",
               "name": "sites",
               "default": "new Map()"
@@ -730,6 +817,10 @@
               ]
             },
             {
+              "kind": "method",
+              "name": "clearAll"
+            },
+            {
               "kind": "field",
               "name": "dbName"
             },
@@ -791,6 +882,10 @@
               ]
             },
             {
+              "kind": "method",
+              "name": "clearAll"
+            },
+            {
               "kind": "field",
               "name": "endpoint"
             }
@@ -830,6 +925,10 @@
                   "name": "_site"
                 }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "clearAll"
             },
             {
               "kind": "field",

@@ -162,10 +162,12 @@ class SiteMenu extends I18NMixin(HAXCMSThemeParts(LitElement)) {
     this.__disposer.push(
       autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.isLoggedIn);
+        const _mobx_val_1 = toJS(store.previewMode);
         Promise.resolve().then(() => {
           // Flex / horizontal site menus (polaris-flex, etc.) must never show
-          // in-menu outline action pencils — they overlap nav labels.
-          this.editControls = !!_mobx_val_0 && !this.isFlex;
+          // in-menu outline action pencils — they overlap nav labels. Preview
+          // hides them too, as a visitor never sees them.
+          this.editControls = !!_mobx_val_0 && !_mobx_val_1 && !this.isFlex;
           // dynamic import if we are logged in and controls are active
           if (this.editControls && !this.__operationsLoaded) {
             this.__operationsLoaded = true;

@@ -1,0 +1,44 @@
+{
+  "tag": "collection-row",
+  "package": "@haxtheweb/collection-list",
+  "source": "elements/collection-list/lib/collection-row.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "alt": "alt",
+    "dark": "dark",
+    "icon": "icon",
+    "image": "image",
+    "is-safari": "isSafari",
+    "line1": "line1",
+    "line2": "line2",
+    "saturate": "saturate",
+    "tags": "tags",
+    "url": "url"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/collection-list/lib/collection-row.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "accentColor",
+      "alt",
+      "icon",
+      "image",
+      "line1",
+      "line2",
+      "saturate",
+      "tags",
+      "url"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "collection-row"
+    ]
+  }
+}

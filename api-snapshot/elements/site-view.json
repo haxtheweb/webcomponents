@@ -1,0 +1,36 @@
+{
+  "tag": "site-view",
+  "package": "@haxtheweb/haxcms-elements",
+  "source": "elements/haxcms-elements/lib/ui-components/magic/site-view.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "break-site-view": "breakSiteView",
+    "dark": "dark",
+    "entity": "entity",
+    "error": "error",
+    "is-safari": "isSafari",
+    "loading": "loading",
+    "renderer": "renderer",
+    "src": "src",
+    "t": "t"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/haxcms-elements/lib/ui-components/magic/site-view.js",
+    "gizmo": true,
+    "properties": [
+      "breakSiteView",
+      "entity",
+      "renderer",
+      "src"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "site-view"
+    ]
+  }
+}

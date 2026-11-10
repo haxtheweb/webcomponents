@@ -1,0 +1,53 @@
+{
+  "tag": "my-learning",
+  "package": "@haxtheweb/haxcms-elements",
+  "source": "elements/haxcms-elements/lib/ui-components/progress/my-learning.js",
+  "attributes": {
+    "chart": "chart",
+    "goal": "goal",
+    "in-dialog": "inDialog",
+    "is-safari": "isSafari",
+    "pages": "pages",
+    "preferences": "preferences",
+    "recent": "recent",
+    "scope": "scope",
+    "t": "t",
+    "tiles": "tiles",
+    "view": "view"
+  },
+  "slots": [],
+  "events": [
+    "learner-progress-cleared",
+    "simple-modal-hide"
+  ],
+  "cssParts": [
+    "activity",
+    "chart",
+    "empty",
+    "map",
+    "map-actions",
+    "pages",
+    "preferences",
+    "radar",
+    "recent",
+    "tiles"
+  ],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/haxcms-elements/lib/ui-components/progress/my-learning.js",
+    "gizmo": true,
+    "properties": [
+      "chart",
+      "goal",
+      "pages",
+      "preferences",
+      "recent",
+      "scope",
+      "tiles",
+      "view"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": []
+  }
+}
