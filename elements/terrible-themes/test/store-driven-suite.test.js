@@ -343,35 +343,37 @@ describe("terrible-resume-themes", () => {
 // Issue 3106: every terrible theme constructor used to reassign
 // this.__disposer = [] right after super(), orphaning the constructor-time
 // autoruns pushed by the class chain (3 from HAXCMSLitElementTheme +
-// 2 from HAXCMSThemeParts + 1 from HAXCMSRememberRoute) so removal never
-// disposed them (zombie autoruns on every removed theme, one per swap).
+// 1 from HAXCMSRememberRoute) so removal never disposed them (zombie
+// autoruns on every removed theme, one per swap). HAXCMSThemeParts no longer
+// creates autoruns in its constructor: it subscribes on connect and disposes
+// its own on disconnect (haxtheweb/issues#3237), so they are not counted here.
 describe("constructor-time autorun disposal (issue 3106)", () => {
   // static templates only: lit does not support bindings in tag names
   const themes = [
-    // 6 chain autoruns plus each theme's own constructor pushes
+    // 4 chain autoruns plus each theme's own constructor pushes
     {
       tag: "terrible-themes",
-      expected: 7,
+      expected: 5,
       template: html`<terrible-themes></terrible-themes>`,
     },
     {
       tag: "terrible-best-themes",
-      expected: 7,
+      expected: 5,
       template: html`<terrible-best-themes></terrible-best-themes>`,
     },
     {
       tag: "terrible-resume-themes",
-      expected: 7,
+      expected: 5,
       template: html`<terrible-resume-themes></terrible-resume-themes>`,
     },
     {
       tag: "terrible-outlet-themes",
-      expected: 7,
+      expected: 5,
       template: html`<terrible-outlet-themes></terrible-outlet-themes>`,
     },
     {
       tag: "terrible-productionz-themes",
-      expected: 9,
+      expected: 7,
       template: html`<terrible-productionz-themes></terrible-productionz-themes>`,
     },
   ];

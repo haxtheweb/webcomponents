@@ -52,6 +52,9 @@
     "lit": "3.3.3",
     "mobx": "6.16.1"
   },
+  "peerDependencies": {
+    "@haxtheweb/haxcms-elements": ">=26.8.0"
+  },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.11.0",
     "@haxtheweb/deduping-fix": "^26.8.0",

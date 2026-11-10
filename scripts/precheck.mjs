@@ -73,6 +73,14 @@ const CONFIG = {
       args: ["elements/d-d-d/design-system/build-tokens.js", "--check"],
     },
     {
+      // Element "dependencies" hold only what shipped code needs at runtime;
+      // build/test tooling goes in devDependencies. Blocking: nothing is
+      // baselined, so a fail is new.
+      label: "Runtime dependencies",
+      args: ["scripts/runtime-deps-check.mjs"],
+      changedFiles: /^elements\/[^/]+\/package\.json$/,
+    },
+    {
       // elements/user-action/lib/xapi-vocabulary.{json,js} must match the
       // static xapiVocabulary getters on the elements that send statements
       label: "xAPI vocabulary is up to date",
@@ -90,6 +98,17 @@ const CONFIG = {
       // than the source reads. Known cases: scripts/html-template-check.baseline.json
       label: "HTML template structure",
       args: ["scripts/html-template-check.mjs"],
+      blocking: false,
+    },
+    {
+      // Dead code knip cannot see: eager imports of tags the file never
+      // renders, _private methods nothing calls, unminified vendor copies
+      // nothing loads. We don't tree shake, so it all ships. Advisory; known
+      // cases: scripts/dead-code-check.baseline.json. Checks the changed
+      // element files only.
+      label: "Dead code",
+      args: ["scripts/dead-code-check.mjs"],
+      changedFiles: /^elements\/.*\.js$/,
       blocking: false,
     },
     {
@@ -470,9 +489,19 @@ function main() {
     );
   }
 
-  CONFIG.checks.forEach(({ label, args, blocking = true }) => {
+  CONFIG.checks.forEach(({ label, args, blocking = true, changedFiles }) => {
     console.log(`\n▶ ${label}`);
-    const res = spawnSync(process.execPath, args, {
+    let runArgs = args;
+    // checks that take a file list get the changed files (whole repo on --all)
+    if (changedFiles && !ALL) {
+      const matching = files.filter((f) => changedFiles.test(f));
+      if (!matching.length) {
+        console.log("  no changed files to check");
+        return;
+      }
+      runArgs = [...args, ...matching];
+    }
+    const res = spawnSync(process.execPath, runArgs, {
       cwd: root,
       stdio: "inherit",
     });

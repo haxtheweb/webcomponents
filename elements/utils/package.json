@@ -29,10 +29,7 @@
     "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium --watch",
     "test": "web-test-runner \"test/**/*.test.js\" --coverage --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium"
   },
-  "dependencies": {
-    "@babel/core": "7.29.7",
-    "lit": "3.3.3"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/preset-env": "7.29.7",
     "@custom-elements-manifest/analyzer": "0.11.0",
@@ -54,7 +51,9 @@
     "@haxtheweb/create": "26.8.1",
     "gulp-sourcemaps": "2.6.5",
     "@web/dev-server-esbuild": "1.0.5",
-    "lint-staged": "15.5.2"
+    "lint-staged": "15.5.2",
+    "@babel/core": "7.29.13",
+    "lit": "3.3.3"
   },
   "gitHead": "245e0cd5ba8ffa15c755a58abc4f60f74a2f876c",
   "customElements": "custom-elements.json"

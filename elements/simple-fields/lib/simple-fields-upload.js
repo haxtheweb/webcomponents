@@ -13,7 +13,11 @@ import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import "@haxtheweb/simple-toolbar/simple-toolbar.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import "./simple-file-upload.js";
-import "@haxtheweb/responsive-utility/responsive-utility.js";
+import {
+  registerResponsiveElement,
+  unregisterResponsiveElement,
+  reregisterResponsiveElement,
+} from "@haxtheweb/responsive-utility/responsive-utility.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 /**
  * `simple-fields-upload` takes in a JSON schema of type array and builds a form,
@@ -763,12 +767,21 @@ class SimpleFieldsUpload extends I18NMixin(
       this.option = this.value ? "url" : "fileupload";
     }
   }
+  disconnectedCallback() {
+    // the utility's ResizeObserver keeps a registered element alive
+    unregisterResponsiveElement(this);
+    super.disconnectedCallback();
+  }
   connectedCallback() {
     super.connectedCallback();
     // Register on first connect (not firstUpdated) so the synchronous
     // responsive-size / responsive-width writes batch into the first update
     // instead of scheduling a redundant second one (Lit change-in-update).
-    if (this.__responsiveRegistered) return;
+    // Moved, or removed and added again: observe it again.
+    if (this.__responsiveRegistered) {
+      reregisterResponsiveElement(this);
+      return;
+    }
     this.__responsiveRegistered = true;
     globalThis.ResponsiveUtility.requestAvailability();
 
@@ -776,19 +789,15 @@ class SimpleFieldsUpload extends I18NMixin(
      * needs the size of parent container to add responsive styling
      * @event responsive-element
      */
-    globalThis.dispatchEvent(
-      new CustomEvent("responsive-element", {
-        detail: {
-          element: this,
-          attribute: "responsive-size",
-          relativeToParent: true,
-          sm: 150,
-          md: 300,
-          lg: 600,
-          xl: 1200,
-        },
-      }),
-    );
+    registerResponsiveElement({
+      element: this,
+      attribute: "responsive-size",
+      relativeToParent: true,
+      sm: 150,
+      md: 300,
+      lg: 600,
+      xl: 1200,
+    });
   }
   /**
    * We got a new photo

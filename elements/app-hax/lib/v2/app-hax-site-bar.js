@@ -750,10 +750,6 @@ export class AppHaxSiteBars extends I18NMixin(SimpleColors) {
     ];
   }
 
-  __clickButton() {
-    this.opened = !this.opened;
-  }
-
   // HTML - specific to Lit
   render() {
     return html`

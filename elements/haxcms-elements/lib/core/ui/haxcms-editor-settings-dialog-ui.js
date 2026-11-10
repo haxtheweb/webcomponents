@@ -349,11 +349,6 @@ class HAXCMSEditorSettingsDialogUI extends HaxcmsAdminSectionMixin(
     this.busy = false;
     return sent;
   }
-
-  /** kept for callers of the old Save tap */
-  _saveEditorSettings() {
-    return this.save();
-  }
 }
 
 globalThis.customElements.define(

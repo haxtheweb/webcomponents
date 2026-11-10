@@ -298,6 +298,9 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
      */
     connectedCallback() {
       super.connectedCallback();
+      // a simple-toolbar that catches register-button claims this button
+      // again (setManagingToolbar) before dispatchEvent returns
+      this.setManagingToolbar(null);
       this.dispatchEvent(
         new CustomEvent("register-button", {
           bubbles: true,
@@ -320,6 +323,30 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
         }),
       );
       super.disconnectedCallback();
+    }
+    /**
+     * Called by the simple-toolbar that registers (or lets go of) this
+     * button, so the inner control knows whether it is part of a roving
+     * tabindex group.
+     *
+     * @param {object|null} toolbar the managing toolbar, or null
+     */
+    setManagingToolbar(toolbar = null) {
+      if (this.__managingToolbar === toolbar) return;
+      this.__managingToolbar = toolbar;
+      if (this.requestUpdate) this.requestUpdate();
+    }
+    /**
+     * tabindex for the inner control. Inside a simple-toolbar only the
+     * current item is a tab stop (roving tabindex, arrow keys move between
+     * items). A button no toolbar manages, such as a question's Check answer
+     * button, and a menu item are ordinary tab stops.
+     *
+     * @readonly
+     */
+    get innerTabindex() {
+      if (this.role === "menuitem" || this.isCurrentItem) return 0;
+      return this.__managingToolbar ? -1 : 0;
     }
     /**
      * sets focus to button
@@ -576,9 +603,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
               @focus="${this._handleFocus}"
               part="button"
               role="radio"
-              tabindex="${
-                this.role === "menuitem" ? 0 : this.isCurrentItem ? 0 : -1
-              }"
+              tabindex="${this.innerTabindex}"
             >
               ${this.buttonInnerTemplate}
             </button>
@@ -602,9 +627,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
                 @blur="${this._handleBlur}"
                 @focus="${this._handleFocus}"
                 part="button"
-                tabindex="${
-                  this.role === "menuitem" ? 0 : this.isCurrentItem ? 0 : -1
-                }"
+                tabindex="${this.innerTabindex}"
               >
                 ${this.buttonInnerTemplate}
               </button>
@@ -626,9 +649,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
                 @blur="${this._handleBlur}"
                 @focus="${this._handleFocus}"
                 part="button"
-                tabindex="${
-                  this.role === "menuitem" ? 0 : this.isCurrentItem ? 0 : -1
-                }"
+                tabindex="${this.innerTabindex}"
               >
                 ${this.buttonInnerTemplate}
               </button>
