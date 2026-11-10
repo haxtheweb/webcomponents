@@ -444,12 +444,11 @@
     "scoreBands": { "danger": 50, "warning": 70 },
     "severityOrder": ["error", "warning", "info"]
   },
-  "bulkAltSave": { "maxPagesPerHour": 20 },
+  "bulkAltSave": { "maxPagesPerSave": 20 },
   "unavailable": {
     "outsideLinkStatus": "Needs server-side link checks",
     "youtubeCaptions": "Needs a server-side YouTube lookup",
     "videoDuration": "Needs a server-side YouTube lookup",
-    "bulkAltSave": "Needs a server-side batch save",
     "mediaIndexRebuild": "Needs a server-side rebuild",
     "savedHistory": "Needs scan results stored on the server",
     "schedules": "Needs scheduled scans",

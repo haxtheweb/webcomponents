@@ -1,0 +1,69 @@
+{
+  "tag": "concept-map-game",
+  "package": "@haxtheweb/micro-game-base",
+  "source": "elements/micro-game-base/lib/concept-map-game.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "dark": "dark",
+    "done": "done",
+    "editmode": "editMode",
+    "element-visible": "elementVisible",
+    "finish-lead": "finishLead",
+    "finish-text": "finishText",
+    "finish-title": "finishTitle",
+    "game-id": "gameId",
+    "game-title": "gameTitle",
+    "hat": "hat",
+    "hub-label": "hubLabel",
+    "is-safari": "isSafari",
+    "nodes": "nodes",
+    "prompt": "prompt",
+    "quest": "quest",
+    "quest-title": "questTitle",
+    "schemamap": "schemaMap",
+    "seed": "seed",
+    "seed-from-user": "seedFromUser",
+    "state": "state",
+    "t": "t",
+    "typeof": "typeof"
+  },
+  "slots": [],
+  "events": [
+    "name",
+    "user-engagement"
+  ],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/micro-game-base/lib/concept-map-game.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "finishLead",
+      "finishText",
+      "finishTitle",
+      "gameId",
+      "gameTitle",
+      "hat",
+      "hubLabel",
+      "nodes",
+      "nodes[].glyph",
+      "nodes[].label",
+      "nodes[].link",
+      "nodes[].text",
+      "nodes[].url",
+      "prompt",
+      "quest",
+      "questTitle",
+      "seed",
+      "seedFromUser"
+    ],
+    "attributes": [],
+    "slots": [
+      "finish",
+      "finish-actions"
+    ],
+    "demoTags": [
+      "concept-map-game"
+    ]
+  }
+}

@@ -19,6 +19,44 @@
               "readonly": true
             },
             {
+              "kind": "field",
+              "name": "canListen",
+              "description": "The browser can listen: it has SpeechRecognition and it has not\nproven unusable in this session",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_fire",
+              "parameters": [
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "detail"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_isEcho",
+              "parameters": [
+                {
+                  "name": "text"
+                }
+              ],
+              "description": "Our own voice coming back through the speakers is not a command. Holds\nfor a moment after speech ends, since engines report late."
+            },
+            {
+              "kind": "method",
+              "name": "_bargeIn",
+              "parameters": [
+                {
+                  "name": "text"
+                }
+              ],
+              "description": "Someone started talking over us: stop talking so they can be heard.\nOnly when what we hear is not our own voice."
+            },
+            {
               "kind": "method",
               "name": "_commandsChanged",
               "parameters": [
@@ -36,7 +74,7 @@
                   "name": "commands"
                 }
               ],
-              "description": "Just route add commands call to the right place"
+              "description": "Replace the commands being listened for"
             },
             {
               "kind": "method",
@@ -76,11 +114,6 @@
             },
             {
               "kind": "method",
-              "name": "_annyangLoaded",
-              "description": "Annyang library has been loaded globally so we can use it"
-            },
-            {
-              "kind": "method",
               "name": "_respondsToChanged",
               "parameters": [
                 {
@@ -111,19 +144,6 @@
                 }
               ],
               "description": "React to enabled state changing"
-            },
-            {
-              "kind": "method",
-              "name": "_debugChanged",
-              "parameters": [
-                {
-                  "name": "newValue"
-                },
-                {
-                  "name": "_oldValue"
-                }
-              ],
-              "description": "debug mode changed"
             },
             {
               "kind": "field",
@@ -162,6 +182,18 @@
             },
             {
               "kind": "field",
+              "name": "speaking",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "True while speaking; reflected for styling",
+              "default": "false",
+              "attribute": "speaking",
+              "reflects": true
+            },
+            {
+              "kind": "field",
               "name": "windowControllers",
               "default": "new AbortController()"
             },
@@ -175,6 +207,17 @@
               "description": "Commands to listen for and take action on",
               "default": "{}",
               "attribute": "commands"
+            },
+            {
+              "kind": "field",
+              "name": "phrases",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "Words and phrases to favor when recognizing speech, such as command\nnames. Used only where the browser supports phrase biasing.",
+              "default": "[]",
+              "attribute": "phrases"
             },
             {
               "kind": "field",
@@ -195,7 +238,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Debug mode for annyang",
+              "description": "Log what is heard and matched to the console",
               "default": "false",
               "attribute": "debug"
             },
@@ -236,6 +279,22 @@
             },
             {
               "kind": "field",
+              "name": "__text",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "__echoUntil",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "field",
               "name": "Hal9000"
             },
             {
@@ -245,7 +304,16 @@
             },
             {
               "kind": "field",
-              "name": "addEventListener"
+              "name": "listener",
+              "default": "new Hal9000Listener({ lang: this.language, debug: this.debug, isEcho: (text) => this._isEcho(text), onSpeechStart: () => this._bargeIn(\"\"), onInterim: (text) => { this._bargeIn(text); this._fire(\"hal-9000-interim\", { text: text }); }, onMatch: (detail) => this._fire(\"hal-9000-matched\", detail), onNoMatch: (alternatives) => this._fire(\"hal-9000-no-match\", { alternatives: alternatives }), onStateChange: (state) => { // nothing more to listen for here; keep enabled honest if (state === \"unavailable\" || state === \"blocked\") { this.enabled = false; } this._fire(\"hal-9000-listening-state\", { state: state }); }, })"
+            }
+          ],
+          "events": [
+            {
+              "name": "name",
+              "type": {
+                "text": "CustomEvent"
+              }
             }
           ],
           "attributes": [
@@ -267,6 +335,15 @@
               "fieldName": "commands"
             },
             {
+              "name": "phrases",
+              "type": {
+                "text": "array"
+              },
+              "description": "Words and phrases to favor when recognizing speech, such as command\nnames. Used only where the browser supports phrase biasing.",
+              "default": "[]",
+              "fieldName": "phrases"
+            },
+            {
               "name": "responds-to",
               "type": {
                 "text": "string"
@@ -280,7 +357,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Debug mode for annyang",
+              "description": "Log what is heard and matched to the console",
               "default": "false",
               "fieldName": "debug"
             },
@@ -327,6 +404,15 @@
               },
               "description": "Language of the speaker",
               "fieldName": "language"
+            },
+            {
+              "name": "speaking",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "True while speaking; reflected for styling",
+              "default": "false",
+              "fieldName": "speaking"
             }
           ],
           "superclass": {
@@ -363,6 +449,515 @@
           "declaration": {
             "name": "HAL9000Instance",
             "module": "hal-9000.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/hal-9000-listener.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "HAL_MAX_BIAS_PHRASES",
+          "type": {
+            "text": "number"
+          },
+          "default": "100",
+          "description": "Most phrases a page hands the engine for biasing."
+        },
+        {
+          "kind": "variable",
+          "name": "HAL_BIAS_BOOST",
+          "type": {
+            "text": "number"
+          },
+          "default": "3",
+          "description": "How strongly biased phrases are preferred (spec range is 0 to 10)."
+        },
+        {
+          "kind": "variable",
+          "name": "HAL_MAX_ALTERNATIVES",
+          "type": {
+            "text": "number"
+          },
+          "default": "5",
+          "description": "Alternatives asked for per result."
+        },
+        {
+          "kind": "variable",
+          "name": "HAL_MAX_NETWORK_FAILURES",
+          "type": {
+            "text": "number"
+          },
+          "default": "3",
+          "description": "Network errors in a row, with nothing heard in between, before speech\ncounts as unavailable here. Some browsers (Brave and other Chromium\nbuilds without a speech service) expose the API but every session fails\nthis way, so retrying forever would only show a mic that never works."
+        },
+        {
+          "kind": "function",
+          "name": "halCommandToRegExp",
+          "parameters": [
+            {
+              "name": "command",
+              "description": "e.g. \"(hey) merlin\", \"select :element\", \"*anything\"",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "description": "Turn a command phrase into an anchored, case-insensitive RegExp, using\nthe same syntax annyang used, so every existing command keeps working.",
+          "return": {
+            "type": {
+              "text": "RegExp"
+            }
+          }
+        },
+        {
+          "kind": "function",
+          "name": "halCleanTranscript",
+          "parameters": [
+            {
+              "name": "text",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "description": "Trim a transcript and drop the edge punctuation some engines add.",
+          "return": {
+            "type": {
+              "text": "string"
+            }
+          }
+        },
+        {
+          "kind": "function",
+          "name": "halIsEcho",
+          "parameters": [
+            {
+              "name": "heard",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "spoken",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "description": "True when what was heard is (most of) what the assistant is saying, so\nits own voice through the speakers is not taken as a command.",
+          "return": {
+            "type": {
+              "text": "boolean"
+            }
+          }
+        },
+        {
+          "kind": "function",
+          "name": "halRecognitionConstructor",
+          "description": "The SpeechRecognition constructor for this browser, or null.",
+          "return": {
+            "type": {
+              "text": "Function|null"
+            }
+          }
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Hal9000Listener",
+          "members": [
+            {
+              "kind": "field",
+              "name": "supported",
+              "description": "The browser has a speech recognition API",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "available",
+              "description": "The API is there and has not proven unusable in this session. Once a\nbrowser shows it cannot reach a speech service, this stays false until\nthe page reloads.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setCommands",
+              "parameters": [
+                {
+                  "name": "commands",
+                  "default": "{}",
+                  "type": {
+                    "text": "Object"
+                  }
+                }
+              ],
+              "description": "Replace all commands. Keys are phrases, values are callbacks; order is\nkept, and any splat-only command (\"*anything\") is tried last."
+            },
+            {
+              "kind": "method",
+              "name": "setPhrases",
+              "parameters": [
+                {
+                  "name": "phrases",
+                  "default": "[]",
+                  "type": {
+                    "text": "Array<string>"
+                  }
+                }
+              ],
+              "description": "Words and phrases to bias recognition toward (command titles, product\nnames). Used only where the browser supports it."
+            },
+            {
+              "kind": "method",
+              "name": "start",
+              "parameters": [
+                {
+                  "name": "options",
+                  "default": "{}",
+                  "optional": true,
+                  "type": {
+                    "text": "@param {boolean} [options.continuous] keep one long session (Santa mode)\n   "
+                  }
+                }
+              ],
+              "description": "Start listening. Restarts on its own after each result until abort()."
+            },
+            {
+              "kind": "method",
+              "name": "abort",
+              "description": "Stop listening and drop any session in progress."
+            },
+            {
+              "kind": "method",
+              "name": "handleAlternatives",
+              "parameters": [
+                {
+                  "name": "alternatives",
+                  "default": "[]",
+                  "description": "best first",
+                  "type": {
+                    "text": "Array<string>"
+                  }
+                }
+              ],
+              "description": "Run a transcript through the commands as if it had been heard. Used by\nthe engine for finals, and by tests.",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_log",
+              "parameters": [
+                {
+                  "name": "args"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_setState",
+              "parameters": [
+                {
+                  "name": "state"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_startSession"
+            },
+            {
+              "kind": "method",
+              "name": "_applyPhrases",
+              "parameters": [
+                {
+                  "name": "rec"
+                }
+              ],
+              "description": "Bias toward known phrases where the engine supports it. Engines that\ndo not support it either lack the field or reject it on start, and\nplain recognition still works."
+            },
+            {
+              "kind": "method",
+              "name": "_preferOnDevice",
+              "parameters": [
+                {
+                  "name": "rec"
+                }
+              ],
+              "description": "Prefer recognition on the device (no audio leaves the machine) when\nthe browser says the language is already installed. Never downloads."
+            },
+            {
+              "kind": "method",
+              "name": "_onResult",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_queueInterim",
+              "parameters": [
+                {
+                  "name": "text"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_onError",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_markUnavailable",
+              "description": "Stop for this session: speech cannot work in this browser"
+            },
+            {
+              "kind": "method",
+              "name": "_onEnd",
+              "parameters": [
+                {
+                  "name": "rec"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "Ctor"
+            },
+            {
+              "kind": "field",
+              "name": "lang"
+            },
+            {
+              "kind": "field",
+              "name": "onInterim"
+            },
+            {
+              "kind": "field",
+              "name": "onSpeechStart"
+            },
+            {
+              "kind": "field",
+              "name": "onMatch"
+            },
+            {
+              "kind": "field",
+              "name": "onNoMatch"
+            },
+            {
+              "kind": "field",
+              "name": "onStateChange"
+            },
+            {
+              "kind": "field",
+              "name": "isEcho"
+            },
+            {
+              "kind": "field",
+              "name": "debug",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "!!options.debug"
+            },
+            {
+              "kind": "field",
+              "name": "commands",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "phrases",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "continuous",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "state",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"idle\""
+            },
+            {
+              "kind": "field",
+              "name": "onDevice",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "_wanted",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "_recognition",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "_restarts",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "_interim",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "_interimQueued",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "_phrasesRejected",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "_onDeviceChecked",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}"
+            },
+            {
+              "kind": "field",
+              "name": "_networkFailures",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "unavailable",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "HAL_MAX_BIAS_PHRASES",
+          "declaration": {
+            "name": "HAL_MAX_BIAS_PHRASES",
+            "module": "lib/hal-9000-listener.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "HAL_BIAS_BOOST",
+          "declaration": {
+            "name": "HAL_BIAS_BOOST",
+            "module": "lib/hal-9000-listener.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "HAL_MAX_ALTERNATIVES",
+          "declaration": {
+            "name": "HAL_MAX_ALTERNATIVES",
+            "module": "lib/hal-9000-listener.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "HAL_MAX_NETWORK_FAILURES",
+          "declaration": {
+            "name": "HAL_MAX_NETWORK_FAILURES",
+            "module": "lib/hal-9000-listener.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "halCommandToRegExp",
+          "declaration": {
+            "name": "halCommandToRegExp",
+            "module": "lib/hal-9000-listener.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "halCleanTranscript",
+          "declaration": {
+            "name": "halCleanTranscript",
+            "module": "lib/hal-9000-listener.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "halIsEcho",
+          "declaration": {
+            "name": "halIsEcho",
+            "module": "lib/hal-9000-listener.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "halRecognitionConstructor",
+          "declaration": {
+            "name": "halRecognitionConstructor",
+            "module": "lib/hal-9000-listener.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Hal9000Listener",
+          "declaration": {
+            "name": "Hal9000Listener",
+            "module": "lib/hal-9000-listener.js"
           }
         }
       ]

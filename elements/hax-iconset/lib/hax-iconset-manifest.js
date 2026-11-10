@@ -311,8 +311,8 @@ export const HaxIconsetManifest = [
       "wand",
       "wizard-hat",
       "wordpress",
-      "world-traveler",
       "world-traveler-plain",
+      "world-traveler",
     ],
   },
   {

@@ -1,0 +1,38 @@
+{
+  "tag": "code-sample",
+  "package": "@haxtheweb/code-sample",
+  "source": "elements/code-sample/code-sample.js",
+  "attributes": {
+    "copy-clipboard-button": "copyClipboardButton",
+    "edit-mode": "editMode",
+    "highlight-end": "highlightEnd",
+    "highlight-start": "highlightStart",
+    "t": "t",
+    "theme": "theme",
+    "type": "type"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "cssParts": [
+    "frame",
+    "frame-header"
+  ],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/code-sample/code-sample.js",
+    "gizmo": true,
+    "properties": [
+      "copyClipboardButton",
+      "highlightEnd",
+      "highlightStart",
+      "type"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "code-sample"
+    ]
+  }
+}

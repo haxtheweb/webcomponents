@@ -110,6 +110,28 @@ describe("super-daemon-toast behavior", () => {
     }
   });
 
+  it("sits top right with the other HAX toasts", async () => {
+    element.opened = true;
+    element.style.animation = "none";
+    await element.updateComplete;
+    const box = element.getBoundingClientRect();
+    expect(box.top).to.be.below(globalThis.innerHeight / 2);
+    expect(globalThis.innerWidth - box.right).to.be.below(40);
+    element.opened = false;
+  });
+
+  it("shows Merlin's words in the card's text colour", async () => {
+    element.future = true;
+    element.text = "How may I help you?";
+    await element.updateComplete;
+    const fx = element.shadowRoot.querySelector("future-terminal-text");
+    const card = getComputedStyle(element).color;
+    await fx.updateComplete;
+    const span = fx.shadowRoot.querySelector("span");
+    expect(getComputedStyle(span).color).to.equal(card);
+    element.future = false;
+  });
+
   it("renders plain text in the message", async () => {
     element.text = "hello";
     await element.updateComplete;

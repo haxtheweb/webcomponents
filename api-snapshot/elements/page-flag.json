@@ -1,0 +1,30 @@
+{
+  "tag": "page-flag",
+  "package": "@haxtheweb/page-flag",
+  "source": "elements/page-flag/page-flag.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "dark": "dark",
+    "label": "label",
+    "opened": "opened",
+    "show": "show"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/page-flag/lib/page-flag.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "label"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "page-flag"
+    ]
+  }
+}

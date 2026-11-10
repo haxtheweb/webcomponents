@@ -229,6 +229,18 @@ yarn start
 - Ensure existing tests still pass: `yarn test`
 - Test in multiple browsers if making significant changes
 
+### i18n layout check (pseudo-locale and RTL)
+
+Invariant: a HAX-capable element keeps a usable layout when its strings get longer (translations run ~30-40% longer than English) and when it sits in a right-to-left language (Arabic, Hebrew, Persian, Urdu). Translation files cannot show this, so the check renders the elements.
+
+- **Which tags**: tags in `hax-elements-registry.json` whose class carries a HAXSchema (`haxProperties` on the class or an ancestor, or a `setHaxProperties(schema, "<tag>")` call), the same set the API snapshot covers. Each is rendered from its first `demoSchema` entry in Chromium in a 360px content column.
+- **Scenarios**: English left-to-right (the control), a pseudo-locale, `dir="rtl" lang="ar"` on the column, and both. The pseudo-locale exists only in memory during the test: `i18n-manager` loads it through its normal path (the translation manifest, then `<namespace>.qps-ploc.json`), answered in the test page from each element's English `this.t` defaults with accents, ~40% padding and `⟦ ⟧` markers. No locale file is written, so the locale guard and the nightly translations never see it.
+- **Checks** (each scenario reports only what differs from the control): `overflow-*` text wider or taller than its box (truncated or spilling; scrollable regions excluded), `outside-*` shadow-DOM parts rendered outside the host box, `rtl-unusable` a control visible in left-to-right that leaves the column in right-to-left, and `rtl-css` physical left/right CSS in `css` templates (`margin-left`, `padding-right`, `left:`, `text-align: left`, `border-left`, `float: right`, asymmetric 4-value `margin`/`padding`) that should be logical (`margin-inline-start`, `inset-inline-start`, `text-align: start`...). Symmetric pairs, `left: 50%` centering and rules scoped with `[dir=rtl]` or `:dir()` are not reported.
+- **Advisory only**: visible shadow-DOM text or `aria-label`/`title`/`placeholder`/`alt` without pseudo markers that is not demo content (a hard-coded string candidate: move it into `this.t`), tags that ignore `dir="rtl"`, and tags that fail to render.
+- **Run locally**: `yarn test:i18n-layout` checks the tags in element folders changed against the base branch (`--base <ref>` to pick another, `--tags a,b` for specific tags, `--all` for every tag). Exit 1 means a new failure. The full run takes about a minute.
+- **Baseline**: `scripts/i18n-layout.baseline.json` records today's failures per tag and check. A failing check is new when the tag has no entry for it (or, for `rtl-css`, more findings than recorded). After fixing or intentionally accepting a result, run `yarn test:i18n-layout:baseline --tags <tag>` and commit the baseline; without `--tags` it re-runs every tag.
+- **CI**: the `i18n-layout` workflow runs on pull requests touching `elements/**`, Chromium only, and blocks on new failures in the elements the pull request changes. Baselined failures in those elements are listed in the job summary so they can be worked down.
+
 ### Lerna
 This monorepo has configuration settings for lerna. Lerna is for the core team, but to bulk run commands against the monorepo consider things like `npx lerna run build` to run build against all elements. This is useful when getting ready to ship.
 
@@ -410,6 +422,56 @@ Note: if your pull request isn't getting enough attention, you can use our [Disc
 ## Testing
 
 Unit tests are ideal but not required to be written for proposed changes and enhancements.
+
+### Render benchmarks
+
+`yarn bench` times first render and a common update of hax-body, video-player, grid-plate, outline-designer, site-menu and simple-icon, comparing your working tree with `origin/master` in the same browser and reporting confidence intervals. It keeps those hot paths from getting slower unnoticed. CI runs it on pull requests labeled `perf` or touching those elements, as an advisory job summary that never fails the build. See [benchmarks/README.md](benchmarks/README.md).
+
+### Mutation testing (outline-designer)
+
+outline-designer's data logic (adding, moving, indenting, outdenting and deleting pages, sibling order, and the items Save Outline sends) changes a whole site in one save, so its tests have to notice a wrong condition or an off-by-one, not just run the code. [Stryker](https://stryker-mutator.io) checks that: it changes that code one small thing at a time (a `<` to `<=`, a `true` to `false`, a removed branch) and runs the outline tests against each change. A change the tests catch is "killed"; one they miss "survives" and points at an untested behavior.
+
+- **Weekly, report only**: `.github/workflows/mutation-outline-designer.yml` runs Sundays (and on demand from the Actions tab). It never fails a build and opens nothing; read the score and surviving mutants in the run's job summary, and the full HTML report in its `mutation-report-outline-designer` artifact.
+- **Locally**: `yarn test:mutation:outline` (under an hour on 2 CPUs), then open `reports/mutation/outline-designer/index.html`, or `node scripts/mutation/summarize.mjs reports/mutation/outline-designer/mutation.json` for the summary. The run writes the instrumented code over `elements/outline-designer/outline-designer.js` and restores it at the end (Stryker `inPlace`; a backup is kept in `.stryker-tmp/` until then), so do not edit that file while it runs.
+- **What it covers**: `scripts/mutation/stryker.outline-designer.config.mjs` lists the line ranges (`mutate`) and the test files. When that code moves, update the ranges in the same PR. Stryker has no web-test-runner plugin, so its command runner starts web-test-runner with `scripts/mutation/wtr-outline-designer.config.mjs`, which passes the active mutant to the browser and leaves out the slow seeded random edits.
+- **Surviving mutants**: kill one by adding a test that asserts the behavior it changed. If a mutant cannot change behavior (an equivalent mutant), leave it; to stop Stryker making it, put `// Stryker disable next-line <Mutator>: <why>` above the line.
+
+### Memory-leak check
+
+Invariant: removing a HAX-capable element from the page releases what it set up. Adding and removing it again and again must not leave growing global listeners, observers, intervals or animation-frame loops behind, must not grow `globalThis` stores, and the removed instances must be garbage-collectable. HAX adds and removes elements constantly (editing, previews, the outline designer, theme switches), so a leak per instance adds up over a session.
+
+- **Which tags**: tags in `hax-elements-registry.json` whose class carries a HAXSchema (`haxProperties` on the class or an ancestor, or a `setHaxProperties(schema, "<tag>")` call), the same set the API snapshot covers. Each is built from its first `demoSchema` entry in Chromium, attached, awaited and removed 2 warm-up times, then 12 measured times (`LEAK_CHECK_CYCLES` to change it).
+- **Checks**: `listeners` on `window`, `document`, `<html>`, `<body>` or a `matchMedia` list still registered; `observers` (`ResizeObserver`, `IntersectionObserver`, `MutationObserver`) still observing and alive after garbage collection; `intervals` never cleared; `raf-loops` (more `requestAnimationFrame` callbacks per frame for every cycle); `global-stores` (an array, map, set, plain-object registry or MobX observer count reachable from `globalThis` that grows); `retained` (removed instances alive after forced garbage collection). Each finding names the `file:line` that added it.
+- **Singletons are fine**: only what grew with at least half of the measured cycles counts. Something created once (one store, a shared audio context, a listener registered once per tag) lands in the warm-up and is never reported.
+- **Run locally**: `yarn test:leaks` checks the tags in element folders changed against the base branch (`--base <ref>` to pick another, `--tags a,b` for specific tags, `--all` for every tag). Exit 1 means a new leak. `yarn test:leaks --self-test` proves the check still finds each kind of leak in a known-leaky fixture and none in a clean one. If the Chromium Playwright downloaded does not match the installed one, point `LEAK_CHECK_CHROMIUM` at a Chromium binary.
+- **Baseline**: `scripts/leak-check.baseline.json` records today's leaks per tag and check. A leak is new when the tag has no entry for that check. Updating it runs every tag twice (batched, then each tag alone in its page) and keeps both results, since what is already loaded changes what a tag leaves behind. In CI a new leak only fails the job when a second run of that tag sees it again. After fixing or intentionally accepting a result, run `yarn test:leaks:baseline --tags <tag>` and commit the baseline; without `--tags` it re-runs every tag.
+- **Fixing a leak**: undo in `disconnectedCallback` what `connectedCallback` / `firstUpdated` set up (remove the listener, `disconnect()` the observer, `clearInterval`, `cancelAnimationFrame`, drop the instance from any global registry), or register with an `AbortController` signal and abort it on disconnect.
+- **CI**: the `leak-check` workflow runs on pull requests touching `elements/**`, Chromium only, and blocks on new leaks in the elements the pull request changes. Baselined leaks in those elements are listed in the job summary so they can be worked down.
+
+### HAX element API snapshot
+
+Invariant: content authored with a HAX-capable element keeps working. An authorable tag never loses or renames an attribute, slot, HAX setting (property, attribute or slot name), gizmo, demoSchema tag, dispatched event, CSS part or documented CSS custom property unless the pull request says so on purpose.
+
+- **Which tags**: custom element tags in `hax-elements-registry.json` whose class carries a HAXSchema (`static get haxProperties()` on the class or an ancestor, or a `setHaxProperties(schema, "<tag>")` call). Registry entries without one (app shells like `app-hax-site-bar`) and native HTML tags are not covered.
+- **Snapshot**: `api-snapshot/elements/<tag>.json`, one file per tag, generated (never edited by hand). Attributes come from the custom elements manifest analyzer run in memory, including inherited and `attribute: "x"` mappings; HAX settings come from the element's haxProperties.
+- **Check locally**: `yarn api:check --base origin/master`. It exits 1 when something snapshotted on the base branch or in the committed snapshot is gone. Additions only warn.
+- **After adding API**: `yarn api:snapshot` and commit the changed `api-snapshot/elements/*.json`, so the new items are protected too.
+- **Intended breaking change**: add an entry to `api-snapshot/allowed-removals.json` in the same pull request, then run `yarn api:snapshot`:
+
+  ```json
+  { "removals": [{ "tag": "video-player", "kind": "attributes", "item": "dark", "reason": "why existing content may break, and the migration" }] }
+  ```
+
+  `kind` is `tag` (the whole element; no `item`) or one of `attributes`, `slots`, `events`, `cssParts`, `cssProperties`, `hax.gizmo`, `hax.properties`, `hax.attributes`, `hax.slots`, `hax.demoTags`. Regenerating the snapshot alone does not pass the check, because CI also compares with the base branch's snapshot. Delete an entry once its pull request has merged.
+- **CI**: the `api-snapshot` workflow runs on pull requests that touch `elements/**`, the registry or the snapshot, and is blocking. `node scripts/api-snapshot.mjs --report` lists skipped registry tags and oddities (HAX settings naming properties the element does not have).
+
+### Unused code report
+
+`yarn knip` runs [knip](https://knip.dev) over every workspace in `elements/` and lists imports of packages that an element's own `package.json` does not declare, dependencies nothing imports, files nothing loads and exports nothing uses. The rule it protects: every package a published element imports is declared in that element's `package.json`, so installing the element from npm brings what it needs. `node scripts/knip-report.mjs` prints the same findings as a short markdown summary, with unlisted dependencies in shipping code (not demos, tests or tooling) first.
+
+CI runs it on pull requests and weekly on Sunday as an advisory job summary; it never fails the build.
+
+Elements are loaded by tag at runtime as well as by import, so [`knip.config.js`](knip.config.js) treats each element's main file, `lib/*.js`, `demo/`, `test/` and every file listed in `wc-registry.json` as entry points. When knip reports something that is in fact loaded another way (by path from a script, a build step or a vendored library), add it to `extraEntries` or `vendored` in `knip.config.js` with a comment saying how it is loaded, rather than deleting it.
 
 ## Security
 

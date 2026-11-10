@@ -2,6 +2,7 @@ import path from 'node:path';
 import { xapiConformancePlugin } from './scripts/lib/xapi-conformance.mjs';
 import { failuresReporter } from './scripts/wtr-failures-reporter.mjs';
 import { fuzzEnvScript } from './scripts/test-setup/fuzz-env.mjs';
+import { mediaRangeMiddleware } from './scripts/test-setup/media-range.mjs';
 
 // WTR_REPORTER=failures swaps the default per-file output for a quiet one that
 // prints only progress ticks and then every failure grouped at the end
@@ -42,6 +43,10 @@ export default {
       },
     },
     nodeResolve: true,
+    // answer HTTP Range requests for audio and video so players can really
+    // seek; without it Chromium pins currentTime at 0 and seek tests flake
+    // (scripts/test-setup/media-range.mjs)
+    middleware: [mediaRangeMiddleware],
     // executeServerCommand('xapi-validate', statement) from
     // @web/test-runner-commands: checks an xAPI statement against the
     // xAPI 1.0.3 statement schema (scripts/lib/xapi-conformance.mjs)

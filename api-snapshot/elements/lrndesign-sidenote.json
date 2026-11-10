@@ -1,0 +1,39 @@
+{
+  "tag": "lrndesign-sidenote",
+  "package": "@haxtheweb/lrndesign-sidenote",
+  "source": "elements/lrndesign-sidenote/lrndesign-sidenote.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "dark": "dark",
+    "icon": "icon",
+    "is-safari": "isSafari",
+    "label": "label",
+    "typeof": "typeof"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "cssParts": [
+    "container"
+  ],
+  "cssProperties": [
+    "--lrndesign-sidenote-container-margin-left",
+    "--lrndesign-sidenote-container-padding",
+    "--lrndesign-sidenote-label-font-size"
+  ],
+  "hax": {
+    "schema": "elements/lrndesign-sidenote/lib/lrndesign-sidenote.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "accentColor",
+      "icon",
+      "label"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "lrndesign-sidenote"
+    ]
+  }
+}

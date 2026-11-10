@@ -2,8 +2,15 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css } from "lit";
+import { html, css, nothing } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import {
+  DDDBlockStyles,
+  renderDDDBlockHeader,
+} from "@haxtheweb/d-d-d/lib/DDDBlock.js";
+import { DDDAccentStyles } from "@haxtheweb/d-d-d/lib/DDDAccent.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { FullscreenBehaviors } from "@haxtheweb/fullscreen-behaviors/fullscreen-behaviors.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
@@ -27,9 +34,19 @@ export const MEDIA_WATCH_DONE = 0.95;
 // is a seek (YouTube reports every 250ms, HTML5 every ~250ms, fast playback
 // at 2x moves about 0.5s between reports)
 const MEDIA_WATCH_MAX_STEP = 3;
+// playing on into the end of the media completes it once at least this
+// share was actually watched (a few seconds can go unreported: background
+// tabs, stalls, YouTube stopping its reports just before the end); seeking
+// to the end and letting it run out does not reach it
+export const MEDIA_WATCH_END_MIN = 0.8;
+// the end of the media: its last 5%, at least 1 and at most 3 seconds
+const MEDIA_END_WINDOW_MIN = 1;
+const MEDIA_END_WINDOW_MAX = 3;
 // xAPI video profile extension: share of the media watched, 0 to 1
 export const XAPI_MEDIA_PROGRESS =
   "https://w3id.org/xapi/video/extensions/progress";
+// learner profile / browser storage key for the viewer's transcript placement
+export const A11Y_MEDIA_LAYOUT_PREFERENCE = "a11y-media-transcript-layout";
 import "@haxtheweb/absolute-position-behavior/absolute-position-behavior.js";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import "@haxtheweb/simple-search/simple-search.js";
@@ -204,74 +221,100 @@ class A11yMediaPlayer extends SchemaBehaviors(
   static get styles() {
     return [
       super.styles,
+      DDDBlockStyles,
+      DDDAccentStyles,
       css`
         :host {
           display: block;
-          overflow: hidden;
-          width: calc(100% - 2px);
+          box-sizing: border-box;
+          overflow: clip;
+          /* a page or HAX alignment setting on a wrapper never centers the
+             header, controls or transcript */
+          text-align: start;
           font-family: var(--ddd-font-navigation);
+          color: var(--a11y-media-color);
+          background-color: var(--a11y-media-bg-color);
+          border: var(--ddd-border-xs);
+          border-color: var(--a11y-media-border-color);
+          border-radius: var(--ddd-radius-md);
           --a11y-media-controls-font-family: var(--ddd-font-navigation);
           --a11y-media-player-height: unset;
+          /* surface and text follow the page color scheme (light-dark) */
           --a11y-media-color: light-dark(
             var(--ddd-theme-default-coalyGray),
             var(--ddd-theme-default-white)
           );
           --a11y-media-bg-color: light-dark(
-            var(--ddd-theme-default-limestoneMaxLight),
-            var(--ddd-theme-default-potentialMidnight)
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-coalyGray)
           );
           --a11y-media-border-color: light-dark(
             var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-coalyGray)
+            var(--ddd-theme-default-slateGray)
           );
           --a11y-media-hover-color: light-dark(
-            var(--ddd-theme-default-black),
+            var(--ddd-theme-default-nittanyNavy),
             var(--ddd-theme-default-white)
           );
           --a11y-media-hover-bg-color: light-dark(
             var(--ddd-theme-default-limestoneMaxLight),
-            var(--ddd-theme-default-potentialMidnight)
+            var(--ddd-theme-default-slateGray)
           );
-          /* accents stay on the SimpleColors hue ramp (the accent-color
-             feature); light-dark adapts the scheme and DDD tokens back it up */
-          --a11y-media-accent-color: light-dark(
+          /* accent cascade: local accent-color (DDDAccentStyles), then the
+             theme palette (data-primary), then the default DDD blue. Only
+             the header chip and the seek fill / pin use it. */
+          --a11y-media-accent-color: var(
+            --ddd-accent-color,
             var(
-              --simple-colors-default-theme-accent-9,
-              var(--ddd-theme-default-black)
-            ),
-            var(
-              --simple-colors-dark-theme-accent-9,
-              var(--ddd-theme-default-limestoneLight)
+              --ddd-theme-primary,
+              light-dark(
+                var(--ddd-theme-default-beaverBlue),
+                var(--ddd-theme-default-skyBlue)
+              )
             )
           );
-          --a11y-media-faded-accent-color: light-dark(
+          --a11y-media-accent-ink: var(
+            --ddd-accent-color-ink,
             var(
-              --simple-colors-default-theme-accent-8,
-              var(--ddd-theme-default-coalyGray)
-            ),
-            var(
-              --simple-colors-dark-theme-accent-8,
-              var(--ddd-theme-default-limestoneGray)
+              --ddd-theme-bgContrast,
+              var(
+                --lowContrast-override,
+                light-dark(
+                  var(--ddd-theme-default-white),
+                  var(--ddd-theme-default-potentialMidnight)
+                )
+              )
             )
           );
+          --a11y-media-faded-accent-color: var(--a11y-media-border-color);
           --a11y-media-disabled-color: light-dark(
             var(--ddd-theme-default-limestoneGray),
-            var(--ddd-theme-default-coalyGray)
+            var(--ddd-theme-default-slateLight)
           );
-          border: 1px solid
-            var(
-              --a11y-media-border-color,
-              var(--ddd-theme-default-limestoneLight)
-            );
+          --a11y-media-pressed-bg-color: light-dark(
+            var(--ddd-theme-default-slateMaxLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          --a11y-media-pressed-border-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-linkLight)
+          );
+          --a11y-media-muted-color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
 
           --a11y-media-settings-menu-color: var(--a11y-media-color);
-          --a11y-media-settings-menu-bg-color: var(--a11y-media-bg-color);
+          --a11y-media-settings-menu-bg-color: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            var(--ddd-theme-default-potentialMidnight)
+          );
           --a11y-media-settings-menu-hover-color: var(--a11y-media-hover-color);
           --a11y-media-settings-menu-hover-bg-color: var(
             --a11y-media-hover-bg-color
           );
-          --simple-fields-accent-color: var(--a11y-media-accent-color);
-          --simple-fields-background-color: var(--a11y-media-bg-color);
+          --simple-fields-accent-color: var(--a11y-media-color);
+          --simple-fields-background-color: transparent;
           --simple-fields-color: var(--a11y-media-color);
           --simple-fields-border-color: var(--a11y-media-border-color);
           --simple-fields-border-color-light: var(
@@ -279,128 +322,83 @@ class A11yMediaPlayer extends SchemaBehaviors(
             var(--a11y-media-border-color)
           );
 
+          /* controls are neutral; they never take the accent */
           --a11y-media-button-color: var(--a11y-media-color);
-          --a11y-media-button-bg-color: var(--a11y-media-bg-color);
-          --a11y-media-button-hover-color: var(--a11y-media-accent-color);
+          --a11y-media-button-bg-color: transparent;
+          --a11y-media-button-hover-color: var(--a11y-media-hover-color);
           --a11y-media-button-hover-bg-color: var(--a11y-media-hover-bg-color);
           --a11y-media-button-disabled-color: var(--a11y-media-disabled-color);
-          --a11y-media-button-toggle-color: var(
-            --a11y-media-faded-accent-color
+          --a11y-media-button-toggle-color: var(--a11y-media-hover-color);
+          --a11y-media-button-toggle-bg-color: var(
+            --a11y-media-pressed-bg-color
           );
+          --a11y-media-button-border-radius: var(--ddd-radius-circle);
 
-          --simple-range-input-bg: var(--a11y-media-accent-color);
+          /* sliders other than the seek slider stay neutral too */
+          --simple-range-input-bg: var(--a11y-media-border-color);
           --simple-range-input-color: var(--a11y-media-color);
-          --simple-range-input-track-height: 4px;
-          --simple-range-input-pin-height: 10px;
+          --simple-range-input-track-height: var(--ddd-spacing-1);
+          --simple-range-input-pin-height: var(--ddd-spacing-4);
+          --simple-range-input-track-border-radius: var(--ddd-radius-rounded);
 
           --simple-toast-color: var(--a11y-media-color);
           --simple-toast-background-color: var(--a11y-media-bg-color);
 
-          --a11y-media-transcript-color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
+          --a11y-media-transcript-color: var(--a11y-media-color);
+          --a11y-media-transcript-bg-color: transparent;
+          --a11y-media-transcript-accent-color: var(--a11y-media-color);
+          --a11y-media-transcript-faded-accent-color: var(
+            --a11y-media-muted-color
           );
-          --a11y-media-transcript-bg-color: light-dark(
+          --a11y-media-transcript-cue-color: var(--a11y-media-color);
+          --a11y-media-transcript-cue-bg-color: transparent;
+          --a11y-media-transcript-active-cue-color: var(
+            --a11y-media-hover-color
+          );
+          --a11y-media-transcript-active-cue-bg-color: light-dark(
+            var(--ddd-theme-default-slateMaxLight),
+            var(--ddd-theme-default-nittanyNavy)
+          );
+          --a11y-media-transcript-focused-cue-color: var(
+            --a11y-media-hover-color
+          );
+          --a11y-media-transcript-focused-cue-bg-color: var(
+            --a11y-media-hover-bg-color
+          );
+          --a11y-media-transcript-match-color: light-dark(
             var(--ddd-theme-default-white),
             var(--ddd-theme-default-potentialMidnight)
           );
-          --a11y-media-transcript-accent-color: light-dark(
-            var(
-              --simple-colors-default-theme-accent-8,
-              var(--ddd-theme-default-coalyGray)
-            ),
-            var(
-              --simple-colors-dark-theme-accent-8,
-              var(--ddd-theme-default-limestoneGray)
-            )
-          );
-          --a11y-media-transcript-faded-accent-color: light-dark(
-            var(
-              --simple-colors-default-theme-accent-10,
-              var(--ddd-theme-default-black)
-            ),
-            var(
-              --simple-colors-dark-theme-accent-10,
-              var(--ddd-theme-default-limestoneLight)
-            )
-          );
-          /* cue colors stay readable regardless of theme until the
-             dark-transcript attribute swaps them below */
-          --a11y-media-transcript-cue-color: var(--ddd-theme-default-black);
-          --a11y-media-transcript-cue-bg-color: var(--ddd-theme-default-white);
-          --a11y-media-transcript-active-cue-color: var(
-            --ddd-theme-default-black
-          );
-          --a11y-media-transcript-active-cue-bg-color: var(
-            --ddd-theme-default-white
-          );
-          --a11y-media-transcript-focused-cue-color: var(
-            --ddd-theme-default-black
-          );
-          --a11y-media-transcript-focused-cue-bg-color: var(
-            --ddd-theme-default-limestoneMaxLight
-          );
-          --a11y-media-transcript-match-color: var(--ddd-theme-default-white);
-          --a11y-media-transcript-match-bg-color: var(
-            --ddd-theme-default-black
+          --a11y-media-transcript-match-bg-color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-limestoneLight)
           );
           --a11y-media-transcript-match-border-color: var(
-            --ddd-theme-default-black
+            --a11y-media-transcript-match-bg-color
           );
-          /* caption text sits on the accent color, so it flips against it */
-          --a11y-media-caption-color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-black)
-          );
+          --a11y-media-caption-color: var(--a11y-media-accent-ink);
+
+          /* the header chip takes the accent (or palette) */
+          --ddd-block-chip-background: var(--a11y-media-accent-color);
+          --ddd-block-chip-color: var(--a11y-media-accent-ink);
         }
 
+        /* accent-color defaults to grey (SimpleColors), which means no
+           accent was picked: fall back to the palette / DDD default */
+        :host(:not([accent-color])),
+        :host([accent-color="grey"]),
+        :host([accent-color=""]),
+        :host([accent-color="undefined"]),
+        :host([accent-color="null"]) {
+          --ddd-accent-color: initial;
+          --ddd-accent-color-ink: initial;
+          --ddd-accent-color-tint: initial;
+          --ddd-block-accent: initial;
+        }
+
+        /* dark: the whole player uses the dark side of every light-dark pair */
         :host([dark]) {
-          border: 1px solid var(--ddd-theme-default-coalyGray);
-          /* the host palette no longer reads SimpleColors grey variables,
-             so the dark attribute re-declares it with DDD dark tokens */
-          --a11y-media-color: var(--ddd-theme-default-white);
-          --a11y-media-bg-color: var(--ddd-theme-default-potentialMidnight);
-          --a11y-media-border-color: var(--ddd-theme-default-coalyGray);
-          --a11y-media-hover-color: var(--ddd-theme-default-white);
-          --a11y-media-hover-bg-color: var(
-            --ddd-theme-default-potentialMidnight
-          );
-          --a11y-media-disabled-color: var(--ddd-theme-default-coalyGray);
-          --a11y-media-caption-color: var(--ddd-theme-default-black);
-          --a11y-media-transcript-color: var(--ddd-theme-default-white);
-          --a11y-media-transcript-bg-color: var(
-            --ddd-theme-default-potentialMidnight
-          );
-        }
-
-        :host([dark-transcript]) {
-          --a11y-media-transcript-color: var(--ddd-theme-default-white);
-          --a11y-media-transcript-bg-color: var(
-            --ddd-theme-default-potentialMidnight
-          );
-          --a11y-media-transcript-cue-color: var(--ddd-theme-default-white);
-          --a11y-media-transcript-cue-bg-color: var(
-            --ddd-theme-default-potentialMidnight
-          );
-          --a11y-media-transcript-active-cue-color: var(
-            --ddd-theme-default-limestoneLight
-          );
-          --a11y-media-transcript-active-cue-bg-color: var(
-            --ddd-theme-default-potentialMidnight
-          );
-          --a11y-media-transcript-match-color: var(--ddd-theme-default-black);
-          --a11y-media-transcript-match-bg-color: var(
-            --ddd-theme-default-limestoneLight
-          );
-          --a11y-media-transcript-match-border-color: var(
-            --ddd-theme-default-white
-          );
-          --a11y-media-transcript-focused-cue-color: var(
-            --ddd-theme-default-white
-          );
-          --a11y-media-transcript-focused-cue-bg-color: var(
-            --ddd-theme-default-coalyGray
-          );
+          color-scheme: dark;
         }
 
         :host *::-webkit-scrollbar {
@@ -410,6 +408,116 @@ class A11yMediaPlayer extends SchemaBehaviors(
         :host([hidden]),
         *[hidden] {
           display: none !important;
+        }
+
+        .ddd-block-header {
+          background-color: var(--a11y-media-bg-color);
+        }
+
+        /* header actions: neutral, round, DDD block action pattern */
+        .ddd-block-action {
+          color: var(--a11y-media-color);
+          --simple-icon-width: var(--ddd-icon-3xs);
+          --simple-icon-height: var(--ddd-icon-3xs);
+        }
+        .ddd-block-action[aria-pressed="true"],
+        .ddd-block-action[aria-expanded="true"] {
+          border-color: var(--a11y-media-pressed-border-color);
+          background-color: var(--a11y-media-pressed-bg-color);
+          color: var(--a11y-media-hover-color);
+        }
+
+        /* settings tray: a panel under the block header */
+        #settings {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: var(--ddd-spacing-3) var(--ddd-spacing-5);
+          padding: var(--ddd-spacing-3) var(--ddd-spacing-4);
+          border-bottom: var(--ddd-border-xs);
+          border-color: var(--a11y-media-border-color);
+          color: var(--a11y-media-settings-menu-color);
+          background-color: var(--a11y-media-settings-menu-bg-color);
+          font-family: var(--a11y-media-controls-font-family);
+        }
+        .tray-group {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: var(--ddd-spacing-1);
+        }
+        .tray-sub {
+          display: inline-flex;
+          flex-wrap: wrap;
+          gap: var(--ddd-spacing-1);
+          margin-inline-start: var(--ddd-spacing-2);
+        }
+        .tray-label {
+          margin-inline-end: var(--ddd-spacing-1);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-bold);
+        }
+        .seg {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-1);
+          box-sizing: border-box;
+          min-height: var(--ddd-spacing-8);
+          margin: 0;
+          padding: 0 var(--ddd-spacing-3);
+          border: var(--ddd-border-xs);
+          border-color: var(--a11y-media-border-color);
+          border-radius: var(--ddd-radius-rounded);
+          background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-coalyGray)
+          );
+          color: var(--a11y-media-color);
+          font-family: var(--a11y-media-controls-font-family);
+          font-size: var(--ddd-font-size-4xs);
+          line-height: var(--ddd-lh-120);
+          cursor: pointer;
+          --simple-icon-width: var(--ddd-icon-4xs);
+          --simple-icon-height: var(--ddd-icon-4xs);
+        }
+        .seg:hover {
+          border-color: var(--a11y-media-pressed-border-color);
+        }
+        .seg[aria-pressed="true"] {
+          border-color: var(--a11y-media-pressed-border-color);
+          background-color: var(--a11y-media-pressed-bg-color);
+          font-weight: var(--ddd-font-weight-bold);
+        }
+        .seg[disabled] {
+          border-style: dashed;
+          cursor: default;
+          opacity: 0.6;
+        }
+        .seg:focus-visible,
+        .bar-btn:focus-visible {
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
+        }
+        #speed {
+          flex: 0 0 calc(var(--ddd-spacing-24) + var(--ddd-spacing-6));
+        }
+        .speed-value {
+          min-width: var(--ddd-spacing-10);
+          font-size: var(--ddd-font-size-4xs);
+          font-variant-numeric: tabular-nums;
+        }
+
+        /* media and transcript: one column (below) or two (side) */
+        #body {
+          display: flex;
+          flex-direction: column;
+        }
+        :host([full-flex]) #body {
+          display: grid;
+          grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+        }
+        :host([full-flex]) #body[data-side="left"] {
+          grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
         }
 
         :host([height]) {
@@ -431,9 +539,8 @@ class A11yMediaPlayer extends SchemaBehaviors(
           padding-top: unset;
         }
 
-        :host,
         #player-section {
-          color: var(--a11y-media-hover-color);
+          color: var(--a11y-media-color);
           background-color: var(--a11y-media-bg-color);
         }
 
@@ -441,7 +548,6 @@ class A11yMediaPlayer extends SchemaBehaviors(
           transition: all var(--ddd-duration-slow, 0.6s) ease-in-out;
         }
 
-        :host,
         #player-section,
         #player,
         #transcript-section,
@@ -450,6 +556,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
           flex-flow: column;
           align-items: stretch;
           align-content: stretch;
+          min-width: 0;
         }
 
         #captionlink:link {
@@ -461,7 +568,6 @@ class A11yMediaPlayer extends SchemaBehaviors(
         #player > *,
         #cc-custom,
         #cc-text,
-        #slider,
         #controls,
         #player-section,
         #transcript-section,
@@ -469,21 +575,11 @@ class A11yMediaPlayer extends SchemaBehaviors(
           width: 100%;
         }
 
-        #transcript-and-controls > * {
-          width: calc(100% - 1px);
-        }
-
-        :host > *,
         #player-and-controls,
         #player,
         #player > *,
         #cc-text {
           flex: 1 1 auto;
-        }
-
-        #controls,
-        #searchbar {
-          flex: 0 0 44px;
         }
 
         #player-and-controls {
@@ -494,8 +590,20 @@ class A11yMediaPlayer extends SchemaBehaviors(
         #player {
           height: 400px;
           position: relative;
+          background-color: var(--ddd-theme-default-potentialMidnight);
           background-size: cover;
           background-position: center;
+        }
+
+        #player-and-controls[audio-no-thumb] #player {
+          background-color: transparent;
+        }
+        /* audio without a picture has no screen: the strip only opens to
+           show captions */
+        #player-and-controls[audio-no-thumb] #player:not(:has(#cc-custom)) {
+          height: 0 !important;
+          min-height: 0;
+          overflow: hidden;
         }
 
         #player > * {
@@ -521,11 +629,25 @@ class A11yMediaPlayer extends SchemaBehaviors(
           opacity: 0;
         }
 
+        /* seek slider: the accent fills the watched part and the pin */
         #slider {
-          flex: 0 0 32px;
-          height: 32px;
-          background-color: var(--a11y-media-bg-color);
-          --simple-range-input-pin-height: 15px;
+          box-sizing: border-box;
+          width: calc(100% - var(--ddd-spacing-6));
+          margin: var(--ddd-spacing-3) var(--ddd-spacing-3) 0;
+          --a11y-media-track-color: var(--a11y-media-border-color);
+          --simple-range-input-color: var(--a11y-media-accent-color);
+          --simple-range-input-bg: linear-gradient(
+            to right,
+            var(--a11y-media-accent-color) 0 var(--a11y-media-seek-pct, 0%),
+            var(--a11y-media-track-color) var(--a11y-media-seek-pct, 0%) 100%
+          );
+        }
+        :host(:dir(rtl)) #slider {
+          --simple-range-input-bg: linear-gradient(
+            to left,
+            var(--a11y-media-accent-color) 0 var(--a11y-media-seek-pct, 0%),
+            var(--a11y-media-track-color) var(--a11y-media-seek-pct, 0%) 100%
+          );
         }
 
         a11y-media-youtube {
@@ -560,12 +682,16 @@ class A11yMediaPlayer extends SchemaBehaviors(
           background-color: transparent;
         }
 
+        /* control bar under the media: play, back, forward, mute, time */
         #controls {
-          display: block;
-          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: var(--ddd-spacing-1);
+          box-sizing: border-box;
           max-width: 100%;
-          height: 44px;
-          max-height: 44px;
+          min-height: var(--ddd-control-height-sm);
+          padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
           position: relative;
           color: var(--a11y-media-color);
           background-color: var(--a11y-media-bg-color);
@@ -573,85 +699,23 @@ class A11yMediaPlayer extends SchemaBehaviors(
         }
 
         #controls-left {
-          position: absolute;
-          left: 0;
-          min-width: 200px;
-        }
-
-        #controls-right {
-          position: absolute;
-          right: 0;
-          top: 0;
-        }
-
-        absolute-position-behavior {
-          background-color: var(--a11y-media-settings-menu-bg-color);
-          color: var(--a11y-media-settings-menu-color);
-          border: 1px solid
-            var(
-              --a11y-media-border-color,
-              var(--ddd-theme-default-limestoneLight)
-            );
-          max-height: 200px;
-          overflow-y: scroll;
-          overflow-x: hidden;
-        }
-
-        absolute-position-behavior::-webkit-scrollbar-track {
-          background-color: var(--a11y-media-settings-menu-bg-color);
-        }
-
-        absolute-position-behavior::-webkit-scrollbar-thumb {
-          background-color: var(--a11y-media-settings-menu-color);
-        }
-
-        absolute-position-behavior .setting {
-          min-height: 42px;
-          padding: 2px 10px;
           display: flex;
-          justify-content: space-between;
           align-items: center;
-        }
-
-        absolute-position-behavior simple-field-field {
-          margin-top: 0 !important;
-          margin-bottom: 0 !important;
-          background-color: var(--a11y-media-settings-menu-bg-color);
-          color: var(--a11y-media-settings-menu-color);
-        }
-
-        .setting-text {
-          margin-right: 1em;
-          font-family: var(--a11y-media-controls-font-family);
-        }
-
-        .setting-control {
-          max-width: 110px;
-        }
-
-        .setting-slider {
-          flex: 0 0 110px;
-          margin-left: -15px;
-          margin-right: -15px;
-        }
-
-        #loop {
-          flex: 0 0 40px;
-        }
-
-        #loop-label {
-          flex: 1 1 auto;
+          gap: var(--ddd-spacing-1);
+          min-width: 0;
         }
 
         .play-status {
           border: none;
           position: relative;
-          font-size: 85%;
+          font-size: var(--ddd-font-size-4xs);
           font-family: var(--a11y-media-controls-font-family);
+          font-variant-numeric: tabular-nums;
+          white-space: nowrap;
         }
 
         .play-status.control-bar {
-          padding: 8px 13px 8px;
+          padding: 0 var(--ddd-spacing-2);
         }
 
         :host([hide-play-status]) .play-status {
@@ -659,20 +723,20 @@ class A11yMediaPlayer extends SchemaBehaviors(
         }
 
         #volume-and-mute {
-          display: inline-block;
+          display: inline-flex;
           position: relative;
         }
 
         #volume {
           position: absolute;
-          left: 30px;
-          top: 0px;
+          left: var(--ddd-spacing-10);
+          top: 0;
           width: 0;
-          height: 40px;
+          height: var(--ddd-control-height-sm);
           overflow: hidden;
           transition: width var(--ddd-duration-slow, 0.6s);
           z-index: 3;
-          border-radius: 4px;
+          border-radius: var(--ddd-radius-rounded);
           background-color: var(--a11y-media-bg-color);
         }
 
@@ -687,23 +751,6 @@ class A11yMediaPlayer extends SchemaBehaviors(
           width: 100px;
         }
 
-        :host([responsive-size="xs"]) #volume:active,
-        :host([responsive-size="xs"]) #volume:focus,
-        :host([responsive-size="xs"]) #volume:hover,
-        :host([responsive-size="xs"]) #volume.focus,
-        :host([responsive-size="xs"]) #volume-and-mute:active #volume,
-        :host([responsive-size="xs"]) #volume-and-mute:focus #volume,
-        :host([responsive-size="xs"]) #volume-and-mute:hover #volume,
-        :host([width]) #volume:active,
-        :host([width]) #volume:focus,
-        :host([width]) #volume:hover,
-        :host([width]) #volume.focus,
-        :host([width]) #volume-and-mute:active #volume,
-        :host([width]) #volume-and-mute:focus #volume,
-        :host([width]) #volume-and-mute:hover #volume {
-          top: 0px;
-        }
-
         #print-thumbnail {
           width: 100%;
           margin: 0;
@@ -715,128 +762,169 @@ class A11yMediaPlayer extends SchemaBehaviors(
           padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
           font-size: var(--ddd-font-size-xs);
           font-weight: bold;
-          color: var(
-            --a11y-media-transcript-color,
-            var(--ddd-theme-default-coalyGray)
-          );
-          background-color: var(
-            --a11y-media-transcript-bg-color,
-            var(--ddd-theme-default-white)
-          );
         }
 
         .media-type {
           font-style: italic;
         }
 
-        #searchbar {
-          display: flex;
-          align-items: stretch;
-          justify-content: space-between;
-          height: 44px;
-          max-height: 44px;
-          min-height: 44px;
-          width: 100%;
-          color: var(--a11y-media-color);
-          background-color: var(--a11y-media-transcript-bg-color);
-          --simple-fields-color: var(--a11y-media-color);
-          --a11y-media-button-bg-color: var(--a11y-media-transcript-bg-color);
-          --a11y-media-button-hover-bg-color: var(
-            --a11y-media-transcript-bg-color
-          );
-          --simple-search-input-background-color: var(
-            --a11y-media-transcript-bg-color
-          );
-          --simple-search-input-text-color: var(--a11y-media-color);
-          --simple-search-input-line-color: var(--a11y-media-accent-color);
-          --simple-search-input-placeholder-color: var(--a11y-media-color);
-          --simple-search-button-color: var(--a11y-media-accent-color);
-          --simple-search-button-hover-color: var(
-            --a11y-media-faded-accent-color
-          );
-          --simple-search-button-bg-color: var(
-            --a11y-media-transcript-bg-color
-          );
-          --simple-search-button-border-color: var(
-            --a11y-media-transcript-bg-color
-          );
-          --simple-search-button-hover-border-color: var(
-            --a11y-media-transcript-bg-color
-          );
-          --simple-search-button-disabled-color: var(
-            --a11y-media-disabled-color
-          );
-          --simple-search-button-disabled-bg-color: var(
-            --a11y-media-transcript-bg-color
-          );
-          --simple-search-button-disabled-border-color: var(
-            --a11y-media-border-color
-          );
-          --simple-search-padding: 0 15px;
-        }
-
-        :host([dark]) #searchbar {
-          background-color: var(--a11y-media-bg-color);
-          --a11y-media-button-bg-color: var(--a11y-media-bg-color);
-          --a11y-media-button-hover-bg-color: var(--a11y-media-bg-color);
-          --simple-search-input-background-color: var(--a11y-media-bg-color);
-          --simple-search-button-bg-color: var(--a11y-media-bg-color);
-          --simple-search-button-border-color: var(--a11y-media-bg-color);
-          --simple-search-button-hover-border-color: var(--a11y-media-bg-color);
-          --simple-search-button-disabled-bg-color: var(--a11y-media-bg-color);
-        }
-
-        #searching {
-          flex-grow: 2;
-        }
-
-        #autoscroll {
-          padding-right: 8px;
-        }
-
-        #scrolling,
-        #printing {
-          display: flex;
-          align-items: center;
-        }
-
+        /* transcript: search row, then the cues */
         #transcript-section {
-          padding: 0 1px 0 0;
+          border-top: var(--ddd-border-xs);
+          border-color: var(--a11y-media-border-color);
+          color: var(--a11y-media-transcript-color);
+          background-color: var(--a11y-media-bg-color);
+        }
+        :host([full-flex]) #transcript-section {
+          /* the media column sets the height; the transcript scrolls */
+          contain: size;
+          min-height: 0;
+          border-top: none;
+          border-inline-start: var(--ddd-border-xs);
+          border-color: var(--a11y-media-border-color);
+        }
+        :host([full-flex]) #body[data-side="left"] #transcript-section {
+          order: -1;
+          border-inline-start: none;
+          border-inline-end: var(--ddd-border-xs);
+          border-color: var(--a11y-media-border-color);
+        }
+        :host([dark-transcript]) #transcript-section {
+          color-scheme: dark;
         }
 
         #transcript-and-controls {
-          flex: 1 0 194px;
+          flex: 1 1 auto;
+          min-height: 0;
+        }
+
+        #searchbar {
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-1);
+          padding: var(--ddd-spacing-2);
+          border-bottom: var(--ddd-border-xs);
+          border-color: var(--a11y-media-border-color);
+          color: var(--a11y-media-color);
+          background-color: var(--a11y-media-transcript-bg-color);
+        }
+
+        #searching {
+          flex: 1 1 auto;
+          min-width: 0;
+        }
+
+        /* the search field: rounded, readable on light and dark */
+        #simplesearch {
+          align-items: center;
+          box-sizing: border-box;
+          min-height: var(--ddd-control-height-sm);
+          padding-inline: var(--ddd-spacing-3) var(--ddd-spacing-1);
+          border: var(--ddd-border-xs);
+          border-color: var(--a11y-media-border-color);
+          border-radius: var(--ddd-radius-rounded);
+          background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+          color: var(--a11y-media-color);
+          --simple-search-input-background-color: transparent;
+          --simple-search-input-text-color: var(--a11y-media-color);
+          --simple-search-input-line-color: transparent;
+          --simple-search-input-placeholder-color: var(
+            --a11y-media-muted-color
+          );
+          --simple-search-button-color: var(--a11y-media-color);
+          --simple-search-button-hover-color: var(--a11y-media-hover-color);
+          --simple-search-button-bg-color: transparent;
+          --simple-search-button-hover-bg-color: var(
+            --a11y-media-hover-bg-color
+          );
+          --simple-search-button-border-color: transparent;
+          --simple-search-button-hover-border-color: transparent;
+          --simple-search-button-disabled-color: var(
+            --a11y-media-disabled-color
+          );
+          --simple-search-button-disabled-bg-color: transparent;
+          --simple-search-button-disabled-border-color: transparent;
+          --simple-fields-border-color: transparent;
+          --simple-fields-border-color-light: transparent;
+          --simple-fields-accent-color: var(--a11y-media-color);
+          --simple-fields-input-max-width: 100%;
+          --simple-fields-font-size: var(--ddd-font-size-4xs);
+          --simple-fields-placeholder-font-style: normal;
+          --simple-fields-placeholder-opacity: 1;
+          --simple-fields-placeholder-focus-opacity: 1;
+          --simple-fields-placeholder-color: var(--a11y-media-muted-color);
+          --simple-fields-placeholder-focus-color: var(
+            --a11y-media-muted-color
+          );
+          --simple-fields-margin: 0;
+          --simple-fields-margin-small: 0;
+        }
+        #simplesearch:focus-within {
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
+        }
+
+        /* round neutral buttons in the transcript search row */
+        .bar-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          flex: none;
+          box-sizing: border-box;
+          width: var(--ddd-control-height-sm);
+          height: var(--ddd-control-height-sm);
+          margin: 0;
+          padding: 0;
+          border: var(--ddd-border-xs);
+          border-color: transparent;
+          border-radius: var(--ddd-radius-circle);
+          background-color: transparent;
+          color: var(--a11y-media-color);
+          cursor: pointer;
+          --simple-icon-width: var(--ddd-icon-3xs);
+          --simple-icon-height: var(--ddd-icon-3xs);
+        }
+        .bar-btn:hover {
+          background-color: var(--a11y-media-hover-bg-color);
+          color: var(--a11y-media-hover-color);
         }
 
         #transcript {
-          flex: 1 0 150px;
-          max-height: var(--a11y-media-transcript-max-height, unset);
-          overflow-y: scroll;
+          flex: 1 1 auto;
+          min-height: 0;
+          max-height: var(
+            --a11y-media-transcript-max-height,
+            calc(var(--ddd-spacing-24) * 2 + var(--ddd-spacing-12))
+          );
+          overflow-y: auto;
           color: var(--a11y-media-transcript-cue-color);
           background-color: var(--a11y-media-transcript-cue-bg-color);
-          border-left: 1px solid var(--a11y-media-transcript-bg-color);
+        }
+        :host([full-flex]) #transcript {
+          max-height: none;
+          flex-basis: 0;
         }
 
         #transcript::-webkit-scrollbar-track {
-          background-color: var(--a11y-media-transcript-cue-bg-color);
+          background-color: var(--a11y-media-bg-color);
         }
 
         #transcript::-webkit-scrollbar-thumb {
-          background-color: var(--a11y-media-transcript-cue-color);
+          background-color: var(--a11y-media-border-color);
         }
 
         .transcript-from-track {
-          display: table;
-          width: calc(100% - 30px);
-          padding: 0 15px 15px;
+          display: block;
+          padding: var(--ddd-spacing-1) 0;
           color: var(--a11y-media-transcript-cue-color);
-          background-color: var(--a11y-media-transcript-cue-bg-color);
-          font-size: var(--a11y-media-transcript-cue-font-size, 14px);
-          line-height: var(--a11y-media-transcript-cue-line-height, 28px);
         }
 
-        .transcript-from-track[hideTimestamps] {
-          display: block;
+        #loading.transcript-from-track {
+          padding: var(--ddd-spacing-3);
+          font-size: var(--ddd-font-size-5xs);
         }
 
         .sr-only {
@@ -857,30 +945,6 @@ class A11yMediaPlayer extends SchemaBehaviors(
           display: none;
         }
         @media screen {
-          :host([full-flex]) {
-            flex-flow: row;
-            padding: 0;
-          }
-
-          :host([full-flex]) #player-section {
-            max-width: 50%;
-            flex: 1 0 auto;
-          }
-
-          :host([full-flex]) #transcript-section {
-            min-width: 50%;
-            flex: 0 1 auto;
-          }
-
-          :host([full-flex]) #transcript {
-            position: absolute;
-            top: 44px;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            overflow-y: scroll;
-          }
-
           #transcript-and-controls {
             position: relative;
           }
@@ -942,8 +1006,9 @@ class A11yMediaPlayer extends SchemaBehaviors(
             bottom: 5px;
           }
 
-          :host([sticky-mode]) .screen-only.media-caption,
-          :host([responsive-size="xs"]) .screen-only.media-caption {
+          /* the block header shows the title, so the caption bar under the
+             controls is kept for print and for styling hooks only */
+          .screen-only.media-caption {
             display: none;
           }
 
@@ -1014,18 +1079,35 @@ class A11yMediaPlayer extends SchemaBehaviors(
           }
         }
 
+        @media (prefers-reduced-motion: reduce) {
+          :host > *,
+          #volume,
+          #cc-custom,
+          #cc-text,
+          a11y-media-youtube {
+            transition: none;
+          }
+        }
+
         @media print {
           :host,
           :host([dark]) {
             outline: 1px solid #aaaaaa;
             background-color: #ffffff;
+            color-scheme: light;
           }
 
           .screen-only,
+          .ddd-block-actions,
+          #settings,
           #searchbar,
           #print-thumbnail:not([src]),
           :host(:not([thumbnail-src])) #player {
             display: none;
+          }
+
+          #body {
+            display: block;
           }
 
           .media-caption {
@@ -1035,6 +1117,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
           }
 
           #transcript {
+            max-height: none;
             padding: 0 15px 5px;
             color: #000;
             background-color: #ffffff;
@@ -1045,516 +1128,683 @@ class A11yMediaPlayer extends SchemaBehaviors(
     ];
   }
 
+  /**
+   * One round header action (DDD block action pattern)
+   * @param {Object} o id, icon, label, onClick, pressed, expanded,
+   *   controls, hidden, disabled
+   */
+  _renderHeaderAction(o) {
+    return html`<button
+      type="button"
+      class="ddd-block-action"
+      id="${o.id}"
+      data-action="${o.action}"
+      aria-label="${o.label}"
+      title="${o.label}"
+      aria-pressed="${
+        typeof o.pressed === "boolean" ? String(o.pressed) : nothing
+      }"
+      aria-expanded="${
+        typeof o.expanded === "boolean" ? String(o.expanded) : nothing
+      }"
+      aria-controls="${o.controls || nothing}"
+      ?hidden="${o.hidden}"
+      ?disabled="${o.disabled}"
+      @click="${o.onClick}"
+    >
+      <simple-icon-lite icon="${o.icon}" aria-hidden="true"></simple-icon-lite>
+    </button>`;
+  }
+
+  /**
+   * One pill button in the settings tray
+   */
+  _renderTrayButton(o) {
+    return html`<button
+      type="button"
+      class="seg"
+      id="${o.id || nothing}"
+      data-action="${o.action || nothing}"
+      data-value="${typeof o.value === "undefined" ? nothing : o.value}"
+      aria-pressed="${
+        typeof o.pressed === "boolean" ? String(o.pressed) : nothing
+      }"
+      ?hidden="${o.hidden}"
+      ?disabled="${o.disabled}"
+      @click="${o.onClick}"
+    >
+      ${
+        o.icon
+          ? html`<simple-icon-lite
+              icon="${o.icon}"
+              aria-hidden="true"
+            ></simple-icon-lite>`
+          : nothing
+      }<span>${o.label}</span>
+    </button>`;
+  }
+
+  /**
+   * Visibility rules shared by the header actions and their tray copies
+   */
+  get _actionState() {
+    const narrow = this._narrow;
+    const noTranscript = !this.hasCaptions || this.learningMode;
+    return {
+      narrow,
+      cc: !this.hasCaptions,
+      transcript:
+        !this.hasCaptions ||
+        this.standAlone ||
+        !!(this.height && narrow) ||
+        this.learningMode,
+      download: noTranscript || this.disablePrintButton,
+      print: noTranscript || this.disablePrintButton,
+      audioDescription: !this.audioDescriptionSource,
+      // the share link follows linkable only (learning mode no longer
+      // hides it; it keeps the viewer on the page)
+      copyLink: !this.linkable,
+      youtube: !this.isYoutube || this.learningMode || this.hideYoutubeLink,
+      fullscreen: !this.fullscreenButton,
+    };
+  }
+
+  /**
+   * The actions that sit in the header at desktop widths and move to the
+   * top of the settings tray at small widths, in order
+   */
+  get _movableActions() {
+    const s = this._actionState;
+    const actions = [
+      {
+        key: "cc",
+        action: "captions",
+        icon: "av:closed-caption",
+        label: this.t.captionsLabel,
+        pressed: this.captionsTrackKey > -1,
+        hidden: s.cc,
+        onClick: () => this.toggleCC(),
+      },
+      {
+        key: "transcript",
+        action: "transcript",
+        icon: "description",
+        label: this.t.transcriptLabel,
+        pressed: !this.hideTranscript,
+        controls: "transcript-section",
+        hidden: s.transcript,
+        onClick: () => this.toggleTranscript(),
+      },
+      {
+        key: "download",
+        action: "download",
+        icon: "icons:file-download",
+        label: this.t.downloadLabel,
+        hidden: s.download,
+        onClick: () => this.download(),
+      },
+      {
+        key: "print",
+        action: "print",
+        icon: "print",
+        label: this.t.printLabel,
+        hidden: s.print,
+        onClick: () => this.print(),
+      },
+      {
+        key: "audio-description",
+        action: "audio-description",
+        icon: "av:audio-descriptive-track",
+        label: this.t.audioDescriptionLabel,
+        pressed: !!this.audioDescriptionEnabled,
+        hidden: s.audioDescription,
+        disabled: s.audioDescription,
+        onClick: () => this._handleAudioDescriptionButtonClick(),
+      },
+      {
+        key: "copy-link",
+        action: "copy-link",
+        icon: "link",
+        label: this.t.copyLinkLabel,
+        hidden: s.copyLink,
+        disabled: s.copyLink,
+        onClick: () => this._handleCopyLink(),
+      },
+      {
+        key: "youtube",
+        action: "youtube",
+        icon: "mdi-social:youtube",
+        label: this.t.openOnYouTube,
+        hidden: s.youtube,
+        onClick: () => this.goToYoutube(),
+      },
+    ];
+    // Open on YouTube only exists for YouTube media, as before
+    return actions.filter((a) => a.key !== "youtube" || this.isYoutube);
+  }
+
+  /**
+   * Header actions, left to right: Closed Captions, Transcript, Download
+   * Transcript, Print Transcript, Audio Description, Copy Media Link, Open
+   * on YouTube (each only when it applies), Settings, Fullscreen. At small
+   * widths only Settings and Fullscreen stay here; the rest move into the
+   * top of the settings tray.
+   */
+  _renderHeaderActions() {
+    const s = this._actionState;
+    return html`${this._movableActions.map((a) =>
+      this._renderHeaderAction({
+        ...a,
+        id: `header-${a.key}`,
+        hidden: a.hidden || s.narrow,
+      }),
+    )}${this._renderHeaderAction({
+      id: "settings-button",
+      action: "settings",
+      icon: "settings",
+      label: this.t.settingsLabel,
+      expanded: !!this.__settingsOpen,
+      controls: "settings",
+      onClick: () => this.toggleSettings(),
+    })}${this._renderHeaderAction({
+      id: "header-fullscreen",
+      action: "fullscreen",
+      icon: "fullscreen",
+      label: this.t.fullscreenLabel,
+      pressed: !!this.fullscreen,
+      hidden: s.fullscreen,
+      onClick: () => this.toggleFullscreen(),
+    })}`;
+  }
+
+  /**
+   * Track keys of the loaded text tracks, without the "Off" (-1) entry
+   */
+  _trackKeys(picker) {
+    return Object.keys(picker || {}).filter((key) => key !== "-1");
+  }
+
+  /**
+   * Settings tray: (small widths: captions, transcript, download, print),
+   * layout, transcript track, captions track, speed, scroll and loop
+   */
+  _renderSettingsTray() {
+    const s = this._actionState;
+    const layoutHidden = !this._layoutChoiceAvailable;
+    const layout = this.transcriptLayout;
+    const side = this.transcriptSide;
+    const transcriptKey = String(this.transcriptTrackKey);
+    const captionsKey = String(this.captionsTrackKey);
+    const transcriptPicker = this.transcriptPicker;
+    const captionsPicker = this.captionsPicker;
+    const speed = Math.round(Number(this.playbackRate || 1) * 100);
+    return html`<div
+      id="settings"
+      class="tray"
+      role="group"
+      aria-label="${this.t.settingsLabel}"
+      ?hidden="${!this.__settingsOpen}"
+    >
+      <div
+        class="tray-group tray-actions"
+        ?hidden="${!s.narrow || this._movableActions.every((a) => a.hidden)}"
+      >
+        ${this._movableActions.map((a) =>
+          this._renderTrayButton({ ...a, id: `tray-${a.key}` }),
+        )}
+      </div>
+      <div
+        class="tray-group tray-layout"
+        role="group"
+        aria-labelledby="tray-layout-label"
+        ?hidden="${layoutHidden}"
+      >
+        <span class="tray-label" id="tray-layout-label"
+          >${this.t.layoutLabel}</span
+        >
+        ${this._renderTrayButton({
+          action: "layout",
+          value: "side",
+          icon: "icons:view-column",
+          label: this.t.sideLabel,
+          pressed: layout === "side",
+          onClick: () => this._setTranscriptLayout("side"),
+        })}
+        ${this._renderTrayButton({
+          action: "layout",
+          value: "below",
+          icon: "icons:view-agenda",
+          label: this.t.belowLabel,
+          pressed: layout === "below",
+          onClick: () => this._setTranscriptLayout("below"),
+        })}
+        <span
+          class="tray-sub"
+          role="group"
+          aria-label="${this.t.sideLabel}"
+          ?hidden="${layout !== "side"}"
+        >
+          ${this._renderTrayButton({
+            action: "side",
+            value: "left",
+            label: this.t.leftLabel,
+            pressed: side === "left",
+            onClick: () => this._setTranscriptLayout("side", "left"),
+          })}
+          ${this._renderTrayButton({
+            action: "side",
+            value: "right",
+            label: this.t.rightLabel,
+            pressed: side === "right",
+            onClick: () => this._setTranscriptLayout("side", "right"),
+          })}
+        </span>
+      </div>
+      <div
+        class="tray-group tray-transcript"
+        role="group"
+        aria-labelledby="tray-transcript-label"
+        ?hidden="${!this.hasCaptions || this.learningMode || this.standAlone}"
+      >
+        <span class="tray-label" id="tray-transcript-label"
+          >${this.t.transcriptLabel}</span
+        >
+        ${this._renderTrayButton({
+          action: "transcript-track",
+          value: "-1",
+          label: this._getTranslation("transcriptOff", "Off"),
+          pressed: transcriptKey === "-1",
+          onClick: () => this.selectTranscriptByKey(-1),
+        })}
+        ${this._trackKeys(transcriptPicker).map((key) =>
+          this._renderTrayButton({
+            action: "transcript-track",
+            value: key,
+            label: transcriptPicker[key],
+            pressed: transcriptKey === key,
+            onClick: () => this.selectTranscriptByKey(key),
+          }),
+        )}
+      </div>
+      <div
+        class="tray-group tray-captions"
+        role="group"
+        aria-labelledby="tray-captions-label"
+        ?hidden="${!this.hasCaptions}"
+      >
+        <span class="tray-label" id="tray-captions-label"
+          >${this.t.captionsLabel}</span
+        >
+        ${this._renderTrayButton({
+          action: "captions-track",
+          value: "-1",
+          label: this.t.captionsOff,
+          pressed: captionsKey === "-1",
+          onClick: () => this.selectCaptionByKey(-1),
+        })}
+        ${this._trackKeys(captionsPicker).map((key) =>
+          this._renderTrayButton({
+            action: "captions-track",
+            value: key,
+            label: captionsPicker[key],
+            pressed: captionsKey === key,
+            onClick: () => this.selectCaptionByKey(key),
+          }),
+        )}
+      </div>
+      <div class="tray-group tray-speed">
+        <span class="tray-label" id="speed-label">${this.t.speedLabel}</span>
+        <simple-range-input
+          id="speed"
+          aria-labelledby="speed-label"
+          label="${this.t.speedLabel}"
+          class="setting-slider setting-control"
+          min="0.5"
+          max="2.5"
+          step="0.25"
+          value="${this.playbackRate}"
+          @value-changed="${this._handleSpeedChanged}"
+        >
+        </simple-range-input>
+        <output class="speed-value" for="speed">${speed}%</output>
+      </div>
+      <div class="tray-group tray-toggles">
+        ${this._renderTrayButton({
+          id: "scroll",
+          action: "scroll",
+          icon: "icons:unfold-more",
+          label: this.t.autoScrollLabel,
+          pressed: !this.disableScroll,
+          hidden: !this.hasCaptions || this.standAlone || this.learningMode,
+          onClick: () => this._transcriptScroll(),
+        })}
+        ${this._renderTrayButton({
+          id: "loop",
+          action: "loop",
+          icon: "av:loop",
+          label: this.t.loopLabel,
+          pressed: !!this.loop,
+          onClick: () => this.toggleLoop(!this.loop),
+        })}
+      </div>
+    </div>`;
+  }
+
   // render function
   render() {
+    const seekPct =
+      this.duration > 0
+        ? Math.max(0, Math.min(100, (this.currentTime / this.duration) * 100))
+        : 0;
     return html` <meta property="oer:name" content="${this.mediaTitle}" />
       <meta property="oer:uri" content="${this.source}" />
       <div class="sr-only" ?hidden="${!this.mediaCaption}">
         ${this.mediaCaption}
       </div>
-      <div id="player-section">
-        <div
-          id="player-and-controls"
-          .style="${this.mediaMaxWidth}"
-          ?audio-no-thumb="${this.audioNoThumb}"
-        >
-          <div id="player" .style="${this.playerStyle}">
-            <a11y-media-play-button
-              id="playbutton"
-              action="${this.__playing ? "pause" : "play"}"
-              label="${
-                this.__playing
-                  ? this.t && this.t.pauseLabel
-                    ? this.t.pauseLabel
-                    : "Pause"
-                  : this.t && this.t.playLabel
-                    ? this.t.playLabel
-                    : "Play"
-              }"
-              @button-click="${this.togglePlay}"
-              ?audio-only="${this.audioOnly}"
-              ?disabled="${this.audioNoThumb}"
-              youtube-id="${this.youtubeId}"
-            >
-            </a11y-media-play-button>
-            <div id="html5">
-              <slot></slot>
-            </div>
-            ${
-              this.videoId && this.__playerReady && this.__youtubeWanted
-                ? html`
-                    <a11y-media-youtube
-                      id="youtube-${this.id}"
-                      ?autoplay="${this.__youtubePlayOnLoad}"
-                      .volume="${this.volume}"
-                      .muted="${this.muted}"
-                      class="${
-                        this.__currentTime > 0.3 || this.__seeking
-                          ? ``
-                          : `hidden`
-                      }"
-                      lang="${this.mediaLang}"
-                      preload="${this.preload}"
-                      video-id="${this.videoId}"
-                      playback-rate="${this.playbackRate}"
-                      @timeupdate="${this._handleTimeUpdate}"
-                      @ended="${this._handleMediaEnded}"
-                    >
-                    </a11y-media-youtube>
-                  `
-                : ``
-            }
-            ${
-              Object.keys(this.captionCues || []).length === 0 ||
-              !this.showCustomCaptions
-                ? html``
-                : html`
-                    <div id="cc-custom" aria-live="polite" class="screen-only">
-                      <div id="cc-text">
-                        ${
-                          !this.captionCues
+      ${renderDDDBlockHeader({
+        icon: this.audioOnly ? "av:equalizer" : "av:play-arrow",
+        label: this._blockLabel,
+        title: this.mediaTitle,
+        part: "media-header",
+        actions: this._renderHeaderActions(),
+      })}
+      ${this._renderSettingsTray()}
+      <div
+        id="body"
+        data-layout="${this._effectiveLayout}"
+        data-side="${this.transcriptSide}"
+      >
+        <div id="player-section">
+          <div
+            id="player-and-controls"
+            .style="${this.mediaMaxWidth}"
+            ?audio-no-thumb="${this.audioNoThumb}"
+          >
+            <div id="player" .style="${this.playerStyle}">
+              <a11y-media-play-button
+                id="playbutton"
+                action="${this.__playing ? "pause" : "play"}"
+                label="${
+                  this.__playing
+                    ? this.t && this.t.pauseLabel
+                      ? this.t.pauseLabel
+                      : "Pause"
+                    : this.t && this.t.playLabel
+                      ? this.t.playLabel
+                      : "Play"
+                }"
+                @button-click="${this.togglePlay}"
+                ?audio-only="${this.audioOnly}"
+                ?disabled="${this.audioNoThumb}"
+                youtube-id="${this.youtubeId}"
+              >
+              </a11y-media-play-button>
+              <div id="html5">
+                <slot></slot>
+              </div>
+              ${
+                this.videoId && this.__playerReady && this.__youtubeWanted
+                  ? html`
+                      <a11y-media-youtube
+                        id="youtube-${this.id}"
+                        ?autoplay="${this.__youtubePlayOnLoad}"
+                        .volume="${this.volume}"
+                        .muted="${this.muted}"
+                        class="${
+                          this.__currentTime > 0.3 || this.__seeking
                             ? ``
-                            : Object.keys(this.captionCues).map(
-                                (key) =>
-                                  html`${cueToText(this.captionCues[key])}`,
-                              )
-                        }
+                            : `hidden`
+                        }"
+                        lang="${this.mediaLang}"
+                        preload="${this.preload}"
+                        video-id="${this.videoId}"
+                        playback-rate="${this.playbackRate}"
+                        @timeupdate="${this._handleTimeUpdate}"
+                        @loadedmetadata="${this._handleMediaLoaded}"
+                        @ended="${this._handleMediaEnded}"
+                        @mediastatechange="${this._handleYoutubeState}"
+                      >
+                      </a11y-media-youtube>
+                    `
+                  : ``
+              }
+              ${
+                Object.keys(this.captionCues || []).length === 0 ||
+                !this.showCustomCaptions
+                  ? html``
+                  : html`
+                      <div
+                        id="cc-custom"
+                        aria-live="polite"
+                        class="screen-only"
+                      >
+                        <div id="cc-text">
+                          ${
+                            !this.captionCues
+                              ? ``
+                              : Object.keys(this.captionCues).map(
+                                  (key) =>
+                                    html`${cueToText(this.captionCues[key])}`,
+                                )
+                          }
+                        </div>
                       </div>
-                    </div>
-                  `
-            }
+                    `
+              }
+            </div>
           </div>
-        </div>
-        <div id="progresslabel" class="sr-only">${this.t.seekSliderLabel}</div>
-        <simple-range-input
-          id="slider"
-          class="screen-only"
-          aria-labelledby="progresslabel"
-          min="0"
-          .max="${this.duration}"
-          step="1"
-          @value-changed="${this._handleSliderChanged}"
-          @immediate-value-changed="${this._handleSliderDragging}"
-          .value="${this.__currentTime}"
-          ?disabled="${this.disableSeek}"
-        >
-        </simple-range-input>
-        <div id="controls" controls="innerplayer">
-          <div id="controls-left">
-            <a11y-media-button
-              accent-color="${this.accentColor}"
-              ?dark="${this.dark}"
-              icon="av:audio-descriptive-track"
-              label="${this.t.audioDescriptionLabel}"
-              ?disabled="${!this.audioDescriptionSource}"
-              ?hidden="${!this.audioDescriptionSource}"
-              ?toggle="${this.audioDescriptionEnabled}"
-              @click="${this._handleAudioDescriptionButtonClick}"
-            ></a11y-media-button>
-            <a11y-media-button
-              accent-color="${this.accentColor}"
-              ?dark="${this.dark}"
-              icon="${this.__playing ? "av:pause" : "av:play-arrow"}"
-              label="${this.__playing ? this.t.pauseLabel : this.t.playLabel}"
-              @click="${this.togglePlay}"
-            ></a11y-media-button>
-            <a11y-media-button
-              accent-color="${this.accentColor}"
-              ?dark="${this.dark}"
-              class="hide-flex hide-full-xs"
-              icon="av:fast-rewind"
-              label="${this.t.rewindLabel}"
-              ?disabled="${this.disableSeek || this.currentTime <= 0}"
-              ?hidden="${this.disableSeek}"
-              @click="${(_e) => {
-                this.rewind();
-              }}"
-            ></a11y-media-button>
-            <a11y-media-button
-              accent-color="${this.accentColor}"
-              ?dark="${this.dark}"
-              class="hide-flex hide-full-xs"
-              icon="av:fast-forward"
-              label="${this.t.forwardLabel}"
-              ?disabled="${
-                this.disableSeek || this.currentTime >= this.duration
-              }"
-              ?hidden="${this.disableSeek}"
-              @click="${(_e) => {
-                this.forward();
-              }}"
-            ></a11y-media-button>
-            <a11y-media-button
-              accent-color="${this.accentColor}"
-              ?dark="${this.dark}"
-              class="hide-flex"
-              icon="av:replay"
-              label="${this.t.restartLabel}"
-              ?disabled="${this.disableSeek}"
-              ?hidden="${
-                this.responsiveSize === "xs" ||
-                this.responsiveSize === "sm" ||
-                this.disableSeek
-              }"
-              @click="${this.restart}"
-            ></a11y-media-button>
-            <div
-              id="volume-and-mute"
-              @focus="${(_e) => (this.__volumeSlider = true)}"
-              @blur="${(_e) => (this.__volumeSlider = false)}"
-            >
+          <div id="progresslabel" class="sr-only">
+            ${this.t.seekSliderLabel}
+          </div>
+          <simple-range-input
+            id="slider"
+            class="screen-only"
+            aria-labelledby="progresslabel"
+            label="${this.t.seekSliderLabel}"
+            min="0"
+            .max="${this.duration}"
+            step="1"
+            style="--a11y-media-seek-pct: ${seekPct}%"
+            @value-changed="${this._handleSliderChanged}"
+            @immediate-value-changed="${this._handleSliderDragging}"
+            .value="${this.__currentTime}"
+            ?disabled="${this._seekLocked}"
+          >
+          </simple-range-input>
+          <div id="controls" class="screen-only" controls="innerplayer">
+            <div id="controls-left">
               <a11y-media-button
                 accent-color="${this.accentColor}"
                 ?dark="${this.dark}"
-                id="mute"
-                icon="${this.muted ? "av:volume-off" : "av:volume-up"}"
-                label="${this.muted ? this.t.unmuteLabel : this.t.muteLabel}"
+                icon="${this.__playing ? "av:pause" : "av:play-arrow"}"
+                label="${this.__playing ? this.t.pauseLabel : this.t.playLabel}"
+                tooltip-position="top"
+                @click="${this.togglePlay}"
+              ></a11y-media-button>
+              <a11y-media-button
+                accent-color="${this.accentColor}"
+                ?dark="${this.dark}"
+                class="hide-full-xs"
+                icon="av:fast-rewind"
+                label="${this.t.rewindLabel}"
+                tooltip-position="top"
+                ?disabled="${this._seekLocked || this.currentTime <= 0}"
+                ?hidden="${this._seekLocked}"
                 @click="${(_e) => {
-                  this.toggleMute();
+                  this.rewind();
                 }}"
               ></a11y-media-button>
-              <simple-range-input
-                id="volume"
+              <a11y-media-button
                 accent-color="${this.accentColor}"
                 ?dark="${this.dark}"
-                aria-labelledby="volume-slider-label"
-                label="${this.t.volumeLabel}"
-                min="0"
-                max="100"
-                pin
-                step="10"
-                value="${this.muted ? 0 : this.volume}"
-                @value-changed="${this._handleVolumeChanged}"
-                ?hidden="${this.responsiveSize === "xs"}"
-              ></simple-range-input>
+                class="hide-full-xs"
+                icon="av:fast-forward"
+                label="${this.t.forwardLabel}"
+                tooltip-position="top"
+                ?disabled="${
+                  this._seekLocked || this.currentTime >= this.duration
+                }"
+                ?hidden="${this._seekLocked}"
+                @click="${(_e) => {
+                  this.forward();
+                }}"
+              ></a11y-media-button>
+              <a11y-media-button
+                accent-color="${this.accentColor}"
+                ?dark="${this.dark}"
+                class="hide-flex"
+                icon="av:replay"
+                label="${this.t.restartLabel}"
+                tooltip-position="top"
+                ?disabled="${this._seekLocked}"
+                ?hidden="${
+                  this.responsiveSize === "xs" ||
+                  this.responsiveSize === "sm" ||
+                  this._seekLocked
+                }"
+                @click="${this.restart}"
+              ></a11y-media-button>
+              <div
+                id="volume-and-mute"
+                @focus="${(_e) => (this.__volumeSlider = true)}"
+                @blur="${(_e) => (this.__volumeSlider = false)}"
+              >
+                <a11y-media-button
+                  accent-color="${this.accentColor}"
+                  ?dark="${this.dark}"
+                  id="mute"
+                  icon="${this.muted ? "av:volume-off" : "av:volume-up"}"
+                  label="${this.muted ? this.t.unmuteLabel : this.t.muteLabel}"
+                  tooltip-position="top"
+                  @click="${(_e) => {
+                    this.toggleMute();
+                  }}"
+                ></a11y-media-button>
+                <simple-range-input
+                  id="volume"
+                  accent-color="${this.accentColor}"
+                  ?dark="${this.dark}"
+                  aria-labelledby="volume-slider-label"
+                  label="${this.t.volumeLabel}"
+                  min="0"
+                  max="100"
+                  pin
+                  step="10"
+                  value="${this.muted ? 0 : this.volume}"
+                  @value-changed="${this._handleVolumeChanged}"
+                  ?hidden="${this.responsiveSize === "xs"}"
+                ></simple-range-input>
+              </div>
+              <span aria-live="polite" class="play-status control-bar">
+                <span id="statbar">${this.status}</span>
+              </span>
             </div>
-            <span
-              aria-live="polite"
-              class="play-status control-bar hide-full-xs"
-            >
-              <span id="statbar">${this.status}</span>
-            </span>
           </div>
-          <div id="controls-right">
-            <a11y-media-button
-              accent-color="${this.accentColor}"
-              ?dark="${this.dark}"
-              icon="av:closed-caption"
-              label="${this.t.captionsLabel}"
-              ?disabled="${!this.hasCaptions}"
-              ?hidden="${!this.hasCaptions}"
-              ?toggle="${this.captionsTrackKey > -1}"
-              @click="${(_e) => this.toggleCC()}"
-            >
-            </a11y-media-button>
-            <a11y-media-button
-              accent-color="${this.accentColor}"
-              ?dark="${this.dark}"
-              class="hide-full-xs"
-              controls="transcript"
-              icon="description"
-              label="${this.t.transcriptLabel}"
-              ?disabled="${!this.hasCaptions || this.learningMode}"
-              ?hidden="${
-                !this.hasCaptions ||
-                this.standAlone ||
-                (this.height && this.responsiveSize.indexOf("s") > -1) ||
-                this.learningMode
-              }"
-              ?toggle="${this.transcriptTrackKey > -1}"
-              @click="${(_e) => this.toggleTranscript()}"
-            >
-            </a11y-media-button>
-            <a11y-media-button
-              accent-color="${this.accentColor}"
-              ?dark="${this.dark}"
-              class="hide-full-sm"
-              icon="link"
-              label="${this.t.copyLinkLabel}"
-              ?disabled="${!this.linkable || this.learningMode}"
-              ?hidden="${!this.linkable || this.learningMode}"
-              @click="${this._handleCopyLink}"
-            ></a11y-media-button>
-            <a11y-media-button
-              accent-color="${this.accentColor}"
-              ?dark="${this.dark}"
-              icon="fullscreen"
-              label="${this.t.fullscreenLabel}"
-              ?hidden="${this.audioNoThumb || !this.fullscreenButton}"
-              ?toggle="${this.fullscreen}"
-              @click="${(_e) => this.toggleFullscreen()}"
-            >
-            </a11y-media-button>
-            <a11y-media-button
-              accent-color="${this.accentColor}"
-              ?dark="${this.dark}"
-              id="settings-button"
-              class="hide-sticky"
-              controls="settings"
-              icon="settings"
-              label="${this.t.settingsLabel}"
-              @click="${(_e) => this.toggleSettings()}"
-            ></a11y-media-button>
-            ${
-              this.isYoutube
-                ? html` <a11y-media-button
-                    accent-color="${this.accentColor}"
-                    ?dark="${this.dark}"
-                    class="hide-sticky"
-                    icon="mdi-social:youtube"
-                    label="${this.t.openOnYouTube}"
-                    ?hidden="${this.learningMode || this.hideYoutubeLink}"
-                    @click="${this.goToYoutube}"
-                  ></a11y-media-button>`
-                : ``
-            }
-          </div>
-          <absolute-position-behavior
-            id="settings"
-            auto
-            fit-to-visible-bounds
-            for="settings-button"
-            offset="10"
-            position-align="end"
-            position="top"
-            ?hidden="${!this.__settingsOpen}"
+          <div
+            aria-hidden="true"
+            class="screen-only media-caption"
+            part="media-caption"
+            ?hidden="${!this.mediaCaption}"
           >
-            <div class="setting" ?hidden="${!this.hasCaptions}">
-              <div class="setting-text">${this.t.captionsLabel}</div>
-              <simple-fields-field
-                id="cc_tracks"
-                class="setting-control"
-                value="${this.captionsTrackKey}"
-                .options="${this.captionsPicker}"
-                ?hidden="${!this.hasCaptions}"
-                ?disabled="${!this.hasCaptions}"
-                @value-changed="${this.selectCaptionByKeyEvent}"
-                type="select"
-              >
-              </simple-fields-field>
-            </div>
-            <div
-              class="setting"
-              ?hidden="${!this.hasCaptions || this.learningMode}"
-            >
-              <div class="setting-text">${this.t.transcriptLabel}</div>
-              <simple-fields-field
-                id="transcript_tracks"
-                class="setting-control"
-                .value="${this.transcriptTrackKey}"
-                .options="${this.transcriptPicker}"
-                ?hidden="${!this.hasCaptions || this.learningMode}"
-                ?disabled="${!this.hasCaptions || this.learningMode}"
-                @value-changed="${this.selectTranscriptByKeyEvent}"
-                type="select"
-              >
-              </simple-fields-field>
-            </div>
-            <div
-              class="setting"
-              ?hidden="${!this.hasCaptions || this.learningMode}"
-            >
-              <div id="print-label" class="setting-text">
-                ${this.t.printLabel}
-              </div>
-              <a11y-media-button
-                accent-color="${this.accentColor}"
-                ?dark="${this.dark}"
-                aria-labelledby="print-label"
-                class="setting-control"
-                icon="print"
-                ?disabled="${this.noPrinting || this.learningMode}"
-                ?hidden="${this.noPrinting || this.learningMode}"
-                @click="${this.print}"
-              >
-              </a11y-media-button>
-            </div>
-            <div
-              class="setting"
-              ?hidden="${!this.hasCaptions || this.learningMode}"
-            >
-              <div id="download-label" class="setting-text">
-                ${this.t.downloadLabel}
-              </div>
-              <a11y-media-button
-                accent-color="${this.accentColor}"
-                ?dark="${this.dark}"
-                aria-labelledby="download-label"
-                class="setting-control"
-                icon="file-download"
-                ?disabled="${this.noPrinting || this.learningMode}"
-                ?hidden="${this.noPrinting || this.learningMode}"
-                @click="${this.download}"
-              >
-              </a11y-media-button>
-            </div>
-            <div class="setting">
-              <div id="loop-label" class="setting-text">
-                ${this.t.loopLabel}
-              </div>
-              <simple-fields-field
-                type="checkbox"
-                id="loop"
-                class="setting-control"
-                aria-labelledby="loop-label"
-                @value-change="${this.toggleLoop}"
-                ?value="${this.loop}"
-              >
-              </simple-fields-field>
-            </div>
-            <div class="setting">
-              <div id="speed-label" class="setting-text">
-                ${this.t.speedLabel}
-              </div>
-              <simple-range-input
-                id="speed"
-                aria-labelledby="speed-label"
-                class="setting-slider setting-control"
-                min="0.5"
-                max="2.5"
-                pin
-                step="0.25"
-                value="${this.playbackRate}"
-                @value-changed="${this._handleSpeedChanged}"
-              >
-              </simple-range-input>
-            </div>
-          </absolute-position-behavior>
-        </div>
-        <div
-          aria-hidden="true"
-          class="screen-only media-caption"
-          part="media-caption"
-          ?hidden="${!this.mediaCaption}"
-        >
-          ${this.mediaCaption}
-        </div>
-        <div class="print-only media-caption">${this.printCaption}</div>
-      </div>
-      ${
-        this.poster
-          ? html`<img
-              id="print-thumbnail"
-              aria-hidden="true"
-              src="${this.poster}"
-            />`
-          : ``
-      }
-      <div
-        id="transcript-section"
-        ?hidden="${this.standAlone || !this.hasCaptions}"
-      >
-        <div id="transcript-and-controls" ?hidden="${this.hideTranscript}">
-          <div id="searchbar">
-            <div id="searching">
-              <simple-search
-                id="simplesearch"
-                controls="transcript"
-                next-button-icon="hardware:keyboard-arrow-down"
-                next-button-label="${this.t.nextResultLabel}"
-                prev-button-icon="hardware:keyboard-arrow-up"
-                prev-button-label="${this.t.prevResultLabel}"
-                search-input-icon="search"
-                search-input-label="${this.t.searchLabel}"
-                selector=".searchable"
-                ?disabled="${this.disableSearch}"
-                ?hidden="${this.disableSearch}"
-              >
-              </simple-search>
-            </div>
-            <div id="scrolling">
-              <a11y-media-button
-                accent-color="${this.accentColor}"
-                ?dark="${this.dark}"
-                id="scroll"
-                controls="transcript"
-                icon="swap-vert"
-                label="${this.t.autoScrollLabel}"
-                ?toggle="${!this.disableScroll}"
-                @click="${(_e) => (this.disableScroll = !this.disableScroll)}"
-              >
-              </a11y-media-button>
-            </div>
-            <div
-              id="printing"
-              ?hidden="${this.disablePrintButton}"
-              ?disabled="${this.disablePrintButton}"
-            >
-              <a11y-media-button
-                accent-color="${this.accentColor}"
-                ?dark="${this.dark}"
-                id="download"
-                controls="transcript"
-                icon="icons:file-download"
-                label="${this.t.downloadLabel}"
-                @click="${this.download}"
-              >
-              </a11y-media-button>
-              <a11y-media-button
-                accent-color="${this.accentColor}"
-                ?dark="${this.dark}"
-                id="print"
-                controls="transcript"
-                icon="print"
-                label="${this.t.printLabel}"
-                @click="${this.print}"
-              >
-              </a11y-media-button>
-            </div>
+            ${this.mediaCaption}
           </div>
-          <div id="transcript" aria-live="polite">
-            <a id="transcript-desc" class="sr-only" href="#bottom">
-              ${this.t.transcriptSkip}
-            </a>
-            ${
-              this.transcriptCues.length > 0
-                ? html`
-                    <div class="transcript-from-track">
-                      ${this.transcriptCues.map((cue, _index) => {
-                        return html`
-                          <a11y-media-transcript-cue
-                            controls="html5"
-                            end="${this._getHHMMSS(
-                              cue.endTime,
-                              this.media.duration,
-                            )}"
-                            lang="${cue.track.language}"
-                            role="button"
-                            start="${this._getHHMMSS(
-                              cue.startTime,
-                              this.media.duration,
-                            )}"
-                            tabindex="${
-                              this.disableInteractive ||
-                              this.disableSeek ||
-                              this.duration === 0
-                                ? -1
-                                : 0
-                            }"
-                            @click="${(_e) => this._handleCueSeek(cue)}"
-                            @keydown="${(e) => this._handleCueKeydown(e, cue)}"
-                            @active-changed="${this._setActiveCue}"
-                            ?active="${
-                              cue.track.activeCues &&
-                              cue.track.activeCues[0] === cue
-                            }"
-                            ?disabled="${
-                              this.disableInteractive ||
-                              this.disableSeek ||
-                              this.duration === 0
-                            }"
-                            ?hide-timestamps="${this.hideTimestamps}"
-                          >
-                            <span class="searchable">${cueToText(cue)}</span>
-                          </a11y-media-transcript-cue>
-                        `;
-                      })}
-                    </div>
-                  `
-                : html` <div id="loading" class="transcript-from-track">
-                    ${this.status}
-                  </div>`
-            }
+          <div class="print-only media-caption">${this.printCaption}</div>
+        </div>
+        ${
+          this.poster
+            ? html`<img
+                id="print-thumbnail"
+                aria-hidden="true"
+                src="${this.poster}"
+              />`
+            : ``
+        }
+        <div
+          id="transcript-section"
+          ?hidden="${this.standAlone || !this.hasCaptions || this.hideTranscript}"
+        >
+          <div id="transcript-and-controls" ?hidden="${this.hideTranscript}">
+            <div id="searchbar">
+              <div id="searching">
+                <simple-search
+                  id="simplesearch"
+                  controls="transcript"
+                  placeholder="${this.t.searchLabel}"
+                  next-button-icon="hardware:keyboard-arrow-down"
+                  next-button-label="${this.t.nextResultLabel}"
+                  prev-button-icon="hardware:keyboard-arrow-up"
+                  prev-button-label="${this.t.prevResultLabel}"
+                  search-input-icon="search"
+                  search-input-label="${this.t.searchLabel}"
+                  selector=".searchable"
+                  ?disabled="${this.disableSearch}"
+                  ?hidden="${this.disableSearch}"
+                >
+                </simple-search>
+              </div>
+              <button
+                type="button"
+                class="bar-btn"
+                id="hide-transcript-button"
+                aria-label="${this.t.hideTranscriptLabel}"
+                title="${this.t.hideTranscriptLabel}"
+                aria-controls="transcript-section"
+                @click="${(_e) => this.toggleTranscript(false)}"
+              >
+                <simple-icon-lite
+                  icon="icons:unfold-less"
+                  aria-hidden="true"
+                ></simple-icon-lite>
+              </button>
+            </div>
+            <div id="transcript" aria-live="polite">
+              <a id="transcript-desc" class="sr-only" href="#bottom">
+                ${this.t.transcriptSkip}
+              </a>
+              ${
+                this.transcriptCues.length > 0
+                  ? html`
+                      <div class="transcript-from-track">
+                        ${this.transcriptCues.map((cue, _index) => {
+                          return html`
+                            <a11y-media-transcript-cue
+                              controls="html5"
+                              end="${this._cueTime(cue.endTime)}"
+                              lang="${cue.track.language}"
+                              role="button"
+                              start="${this._cueTime(cue.startTime)}"
+                              tabindex="${
+                                this.disableInteractive ||
+                                this._seekLocked ||
+                                this.duration === 0
+                                  ? -1
+                                  : 0
+                              }"
+                              @click="${(_e) => this._handleCueSeek(cue)}"
+                              @keydown="${(e) => this._handleCueKeydown(e, cue)}"
+                              @active-changed="${this._setActiveCue}"
+                              ?active="${
+                                cue.track.activeCues &&
+                                cue.track.activeCues[0] === cue
+                              }"
+                              ?disabled="${
+                                this.disableInteractive ||
+                                this._seekLocked ||
+                                this.duration === 0
+                              }"
+                              ?hide-timestamps="${this.hideTimestamps}"
+                            >
+                              <span class="searchable">${cueToText(cue)}</span>
+                            </a11y-media-transcript-cue>
+                          `;
+                        })}
+                      </div>
+                    `
+                  : html` <div id="loading" class="transcript-from-track">
+                      ${this.status}
+                    </div>`
+              }
+            </div>
           </div>
         </div>
       </div>
@@ -1964,6 +2214,21 @@ class A11yMediaPlayer extends SchemaBehaviors(
         attribute: "audio-description-enabled",
         reflect: true,
       },
+      /**
+       * the viewer's transcript placement ("side" or "below"), remembered
+       * per browser; null until the viewer picks one
+       */
+      __transcriptLayout: {
+        type: String,
+        attribute: false,
+      },
+      /**
+       * the viewer's side for the transcript ("left" or "right")
+       */
+      __transcriptSide: {
+        type: String,
+        attribute: false,
+      },
     };
   }
 
@@ -1989,7 +2254,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
         "extensions.https://w3id.org/xapi/video/extensions/progress",
       ],
       countsTowardCompletion: true,
-      done: "95% of the media actually watched (seeking ahead does not count)",
+      done: "95% of the media actually watched, or played on into the end after watching 80% (seeking ahead does not count)",
     };
   }
 
@@ -2073,6 +2338,13 @@ class A11yMediaPlayer extends SchemaBehaviors(
       youTubeTranscriptLabel: "Transcript will load once media plays.",
       openOnYouTube: "Open on YouTube",
       audioDescriptionLabel: "Audio Description",
+      interactiveLabel: "interactive",
+      layoutLabel: "Layout",
+      sideLabel: "Side",
+      belowLabel: "Below",
+      leftLabel: "Left",
+      rightLabel: "Right",
+      hideTranscriptLabel: "Hide transcript",
     };
     this.registerLocalization({
       context: this,
@@ -2108,6 +2380,9 @@ class A11yMediaPlayer extends SchemaBehaviors(
     this._resetWatched();
     this.__settingsOpen = false;
     this.__transcriptOption = -1;
+    this.__transcriptLayout = null;
+    this.__transcriptSide = "right";
+    this._layoutPreferenceHandler = this._onLayoutPreference.bind(this);
     // global listeners for settings menu ESC and click-away behavior
     this._settingsKeydownHandler = this._onSettingsKeydown.bind(this);
     this._settingsClickHandler = this._onSettingsDocumentClick.bind(this);
@@ -2166,9 +2441,20 @@ class A11yMediaPlayer extends SchemaBehaviors(
    * @returns {boolean} Should height of audio/thumbnail area be set to 0?
    */
   get audioNoThumb() {
+    return this.audioOnly && !this._hasThumbnail;
+  }
+
+  /**
+   * whether a real thumbnail was given; wrappers that bind an unset value
+   * pass an empty string (or the text "undefined" / "null")
+   * @returns {boolean}
+   */
+  get _hasThumbnail() {
     return (
-      this.audioOnly &&
-      (this.thumbnailSrc === null || this.thumbnailSrc === undefined)
+      typeof this.thumbnailSrc === "string" &&
+      this.thumbnailSrc.trim() !== "" &&
+      this.thumbnailSrc !== "undefined" &&
+      this.thumbnailSrc !== "null"
     );
   }
 
@@ -2266,8 +2552,84 @@ class A11yMediaPlayer extends SchemaBehaviors(
       !this.standAlone &&
       !this.hideTranscript &&
       !this.audioNoThumb &&
-      !this.stackedLayout
+      this.transcriptLayout === "side"
     );
+  }
+
+  /**
+   * seeking is locked (disable-seek, or learning mode)
+   * @returns {boolean}
+   */
+  get _seekLocked() {
+    // learning mode always locks seeking, whichever way it was set
+    return !!(this.disableSeek || this.learningMode);
+  }
+
+  /**
+   * whether the player is at a small width (DDD sm and below), where the
+   * transcript always sits below and the header keeps only Settings and
+   * Fullscreen
+   * @returns {boolean}
+   */
+  get _narrow() {
+    return this.responsiveSize === "xs" || this.responsiveSize === "sm";
+  }
+
+  /**
+   * where the viewer wants the transcript: "side" or "below". Until the
+   * viewer picks, stacked-layout decides (below) and otherwise side.
+   * @returns {string}
+   */
+  get transcriptLayout() {
+    if (
+      this.__transcriptLayout === "side" ||
+      this.__transcriptLayout === "below"
+    ) {
+      return this.__transcriptLayout;
+    }
+    return this.stackedLayout ? "below" : "side";
+  }
+
+  /**
+   * which side the transcript sits on in the side layout: "left" or "right"
+   * @returns {string}
+   */
+  get transcriptSide() {
+    return this.__transcriptSide === "left" ? "left" : "right";
+  }
+
+  /**
+   * the layout actually shown: small widths and audio without a picture
+   * always put the transcript below
+   * @returns {string}
+   */
+  get _effectiveLayout() {
+    return this.fullFlex ? "side" : "below";
+  }
+
+  /**
+   * whether the Layout choice is offered in the settings tray
+   * @returns {boolean}
+   */
+  get _layoutChoiceAvailable() {
+    return (
+      !this._narrow &&
+      this.hasCaptions &&
+      !this.standAlone &&
+      !this.audioNoThumb &&
+      !this.learningMode
+    );
+  }
+
+  /**
+   * block header label, e.g. "Video · interactive"
+   * @returns {string}
+   */
+  get _blockLabel() {
+    const type = this.audioOnly
+      ? this._getTranslation("audioLabel", "Audio")
+      : this._getTranslation("videoLabel", "Video");
+    return `${type} · ${this._getTranslation("interactiveLabel", "interactive")}`;
   }
 
   /**
@@ -2412,8 +2774,9 @@ class A11yMediaPlayer extends SchemaBehaviors(
    */
   get playerStyle() {
     let height = this.audioNoThumb ? "60px" : "unset",
+      // audio with a thumbnail shows it in the same 16 / 9 frame as video
       paddingTop =
-        this.fullscreen || this.audioNoThumb || this.audioOnly || this.height
+        this.fullscreen || this.audioNoThumb || this.height
           ? `unset`
           : `${100 / this.aspect}%`,
       thumbnail =
@@ -2635,7 +2998,13 @@ class A11yMediaPlayer extends SchemaBehaviors(
     // updated() because they depend on this.loadedTracks (assigned in
     // firstUpdated); running them pre-render would throw on the first update.
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "learningMode" && typeof oldValue !== "undefined") {
+      // learning mode locks seeking and the transcript; it also applies
+      // when the player is created with it on (HAX content saved with it),
+      // not only when it is switched later
+      if (
+        propName === "learningMode" &&
+        (typeof oldValue !== "undefined" || this.learningMode)
+      ) {
         this.disableSeek = this[propName];
         this.hideTranscript = this[propName];
       }
@@ -2655,6 +3024,19 @@ class A11yMediaPlayer extends SchemaBehaviors(
         this.loadedTracks
       ) {
         this._captionsChanged();
+      }
+      // showing the transcript (hide-transcript turned off in HAX, or the
+      // Transcript toggle) needs a track; pick the captions / default one
+      // so it never sits on the loading message
+      if (
+        propName === "hideTranscript" &&
+        !this.hideTranscript &&
+        !this.transcriptTrack &&
+        this.loadedTracks &&
+        this.loadedTracks.textTracks &&
+        this.loadedTracks.textTracks.length > 0
+      ) {
+        this.transcriptTrack = this.captionsTrack || this._getTrack();
       }
       if (propName === "id" && this.id === null) {
         this.id = "a11y-media-player" + Date.now();
@@ -2677,18 +3059,40 @@ class A11yMediaPlayer extends SchemaBehaviors(
           "audioNoThumb",
           "stackedLayout",
           "__cues",
+          "__transcriptLayout",
+          "audioOnly",
+          "thumbnailSrc",
         ]),
         media = this.media ? this.media : this.__loadedTracks;
 
       if (change(["source", "sources"])) {
         this._updateMediaSource();
       }
-      // new media is a new activity: start counting what is watched again
-      if (
-        change(["source", "sources", "youtubeId"]) &&
-        oldValue !== undefined
-      ) {
-        this._resetWatched();
+      // new media is a new activity: start counting what is watched again.
+      // Only when the media really changed: a wrapper (video-player) passes
+      // a new sources array on every render, and resetting on that wiped
+      // what was watched each time the wrapper re-rendered (play / pause).
+      if (change(["source", "sources", "youtubeId"])) {
+        const key = this._mediaKey();
+        if (this.__mediaKey !== undefined && key !== this.__mediaKey) {
+          this._resetWatched();
+        }
+        this.__mediaKey = key;
+      }
+      // text tracks given as a property (video-player tracks / track) are
+      // kept in step with the media element when they change
+      if (change(["tracks"]) && this.__loadedTracks) {
+        this._syncTracks();
+      }
+      if (change(["crossorigin"]) && this.__loadedTracks && this.crossorigin) {
+        if (
+          this.__loadedTracks.getAttribute("crossorigin") !== this.crossorigin
+        ) {
+          this.__loadedTracks.setAttribute("crossorigin", this.crossorigin);
+          if (!this.__playing && this.__loadedTracks.load) {
+            this.__loadedTracks.load();
+          }
+        }
       }
 
       if (change(["media", "muted"])) this._handleMuteChanged();
@@ -2712,10 +3116,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
           "--a11y-media-player-height",
           this.height ? this.height : "unset",
         );
-        this.style.setProperty(
-          "--a11y-media-transcript-max-height",
-          this.height ? "146px" : "unset",
-        );
+        this._setTranscriptMaxHeight();
       }
 
       /* updates media */
@@ -2729,10 +3130,10 @@ class A11yMediaPlayer extends SchemaBehaviors(
         if (mediaChange("loop")) this._setAttribute("loop", this.loop, media);
         if (mediaChange("playbackRate"))
           this._setAttribute("playbackRate", this.playbackRate, media);
-        if (mediaChange("isYoutube"))
+        if (mediaChange("isYoutube") || change(["thumbnailSrc"]))
           this._setAttribute(
             "poster",
-            !this.isYoutube ? this.thumbnailSrc : false,
+            !this.isYoutube && this._hasThumbnail ? this.thumbnailSrc : false,
             this.__loadedTracks,
           );
         if (
@@ -2814,7 +3215,8 @@ class A11yMediaPlayer extends SchemaBehaviors(
           ? `${this.mediaTitle} (${this.t.transcriptLabel})`
           : this.t.transcriptLabel,
       filename = title.replace(/[^\w\d]/g, ""),
-      cues = this.transcriptTrack.cues,
+      track = this.transcriptTrack || this.captionsTrack,
+      cues = track && track.cues ? track.cues : {},
       data = Object.keys(cues)
         .map(
           (key) =>
@@ -2859,7 +3261,8 @@ class A11yMediaPlayer extends SchemaBehaviors(
    * @param {string} the title of the media
    */
   print() {
-    let cues = this.transcriptTrack.cues,
+    let track = this.transcriptTrack || this.captionsTrack,
+      cues = track && track.cues ? track.cues : {},
       title =
         this.mediaTitle && this.mediaTitle.trim() !== ""
           ? `${this.mediaTitle} (${this.t.transcriptLabel})`
@@ -3205,11 +3608,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
     primary.style.maxWidth = "100%";
 
     /* handle deprecated tracks */
-    (this.tracks || []).forEach((track) => {
-      let node = globalThis.document.createElement("track");
-      Object.keys(track).forEach((key) => node.setAttribute(key, track[key]));
-      primary.appendChild(node);
-    });
+    this._appendTracks(primary);
 
     /* handle deprecated sources */
     (this.sources || []).forEach((source) => {
@@ -3226,6 +3625,54 @@ class A11yMediaPlayer extends SchemaBehaviors(
     // media actually stays at 0, so play() restarts from the beginning.
     primary.load();
     return primary;
+  }
+
+  /**
+   * adds a <track> to the media element for each entry of the tracks
+   * property, marked so they can be replaced when tracks changes
+   * @param {object} media HTML audio or video element
+   */
+  _appendTracks(media) {
+    (this.tracks || []).forEach((track) => {
+      let node = globalThis.document.createElement("track");
+      Object.keys(track || {}).forEach((key) =>
+        node.setAttribute(key, track[key]),
+      );
+      node.setAttribute("data-a11y-media-track", "");
+      media.appendChild(node);
+    });
+    this.__syncedTracks = JSON.stringify(this.tracks || []);
+  }
+
+  /**
+   * replaces the tracks added from the tracks property when it changes
+   * (a HAX edit of video-player tracks / track), so the captions and
+   * transcript show the new files right away
+   */
+  _syncTracks() {
+    const media = this.__loadedTracks;
+    const next = JSON.stringify(this.tracks || []);
+    if (!media || next === this.__syncedTracks) return;
+    media
+      .querySelectorAll("track[data-a11y-media-track]")
+      .forEach((node) => node.remove());
+    // the replaced tracks were the selected ones; the first new track takes
+    // over (see _onAddTrack)
+    this.captionsTrack = null;
+    this.transcriptTrack = null;
+    this.__cues = [];
+    this._appendTracks(media);
+  }
+
+  /**
+   * what identifies the media being played, for learner data
+   * @returns {string}
+   */
+  _mediaKey() {
+    const srcs = (Array.isArray(this.sources) ? this.sources : []).map(
+      (s) => (s && s.src) || "",
+    );
+    return [this.youtubeId || "", this.source || ""].concat(srcs).join("|");
   }
 
   _updateMediaSource() {
@@ -3664,6 +4111,8 @@ class A11yMediaPlayer extends SchemaBehaviors(
     // reaching the end only completes the media when it was watched; the
     // last time report before the end is counted first
     this._trackWatched();
+    // the player itself reports the end: completes when it was watched
+    this._completeAtEnd();
     if (this.loop) {
       this.seek(0);
       this.play();
@@ -3680,6 +4129,75 @@ class A11yMediaPlayer extends SchemaBehaviors(
     this.__watched = new Set();
     this.__watchLast = null;
     this.__watchSent = {};
+    this.__playedToEnd = false;
+    this.__reportedEnd = false;
+  }
+
+  /**
+   * Learner data: the player stopped at its end (HTML5 ended, YouTube
+   * ENDED, or a pause / stop within the last second). The seconds after
+   * the last time report count when that report was already in the last
+   * stretch (so playing out the end counts, jumping there does not), then
+   * completion is checked; at least MEDIA_WATCH_END_MIN must be watched.
+   */
+  _completeAtEnd() {
+    if (!this.__watched) return;
+    const d = Number(this.duration);
+    if (!isFinite(d) || d <= 0) return;
+    const last = Number(this.__watchLast);
+    if (this.__watchLast !== null && isFinite(last) && this._isAtEnd(last)) {
+      for (let sec = Math.floor(last); sec <= Math.ceil(d) - 1; sec++) {
+        this.__watched.add(sec);
+      }
+    }
+    this.__reportedEnd = true;
+    this._checkWatched();
+  }
+
+  /**
+   * Learner data: the media paused or stopped; at its very end (the last
+   * second) that is the same as reaching the end
+   */
+  _handleMediaStopped() {
+    const media = this.media;
+    const t = media ? Number(media.currentTime) : NaN;
+    const d = Number(this.duration);
+    if (!isFinite(t) || !isFinite(d) || d <= 0) return;
+    if (t >= d - MEDIA_END_WINDOW_MIN) {
+      // the last report up to this point counts like any other
+      this._trackWatched(true);
+      this._completeAtEnd();
+    }
+  }
+
+  /**
+   * YouTube player state: 2 is paused (0, ended, arrives as an ended
+   * event)
+   * @param {CustomEvent} e mediastatechange from a11y-media-youtube
+   */
+  _handleYoutubeState(e) {
+    const state = e && e.detail ? e.detail.data : undefined;
+    if (state === 2) {
+      this._handleMediaStopped();
+    }
+  }
+
+  /**
+   * Learner data: whether a time is in the last stretch of the media (its
+   * last 5%, between 1 and 3 seconds)
+   * @param {number} t time in seconds
+   * @returns {boolean}
+   */
+  _isAtEnd(t) {
+    const d = Number(this.duration);
+    if (!isFinite(d) || d <= 0) {
+      return false;
+    }
+    const window = Math.max(
+      MEDIA_END_WINDOW_MIN,
+      Math.min(MEDIA_END_WINDOW_MAX, d * 0.05),
+    );
+    return t >= d - window;
   }
 
   /**
@@ -3688,13 +4206,15 @@ class A11yMediaPlayer extends SchemaBehaviors(
    * seeking or scrubbing ahead never adds to it, and each second counts once
    * however often it is replayed. Sends the milestones when reached.
    */
-  _trackWatched() {
+  _trackWatched(stopped = false) {
     const media = this.media;
     const raw = media ? Number(media.currentTime) : 0;
     const t = isFinite(raw) && raw > 0 ? raw : 0;
     const last = this.__watchLast;
     this.__watchLast = t;
-    const playing = this.__playing || !!(media && media.paused === false);
+    // stopped: the report that comes with a pause / stop at the end
+    const playing =
+      stopped || this.__playing || !!(media && media.paused === false);
     if (!playing || this.__seeking || last === null) {
       return;
     }
@@ -3704,6 +4224,18 @@ class A11yMediaPlayer extends SchemaBehaviors(
     }
     for (let sec = Math.floor(last); sec <= Math.floor(t); sec++) {
       this.__watched.add(sec);
+    }
+    // playback ran on into the end: the final (partial) seconds count even
+    // when no report arrives for them
+    if (this._isAtEnd(t)) {
+      this.__playedToEnd = true;
+      const d = Number(this.duration);
+      // within the last second: the final partial second is played too
+      if (t >= d - MEDIA_END_WINDOW_MIN) {
+        for (let sec = Math.floor(t); sec <= Math.ceil(d) - 1; sec++) {
+          this.__watched.add(sec);
+        }
+      }
     }
     this._checkWatched();
   }
@@ -3737,18 +4269,31 @@ class A11yMediaPlayer extends SchemaBehaviors(
       sent.progressed = true;
       this._announceMedia("progressed", share);
     }
-    if (!sent.completed && share >= MEDIA_WATCH_DONE) {
+    if (
+      !sent.completed &&
+      (share >= MEDIA_WATCH_DONE ||
+        ((this.__playedToEnd || this.__reportedEnd) &&
+          share >= MEDIA_WATCH_END_MIN))
+    ) {
+      // xAPI order: a completion always follows a progressed statement
+      if (!sent.progressed) {
+        sent.progressed = true;
+        this._announceMedia("progressed", share);
+      }
       sent.completed = true;
       this._announceEnded();
     }
   }
 
   /**
-   * Learner data: the media was watched (95% or more). Fires
-   * user-engagement (verb completed, with an xAPI statement) once per visit.
+   * Learner data: the media was watched (95% or more, or played on into
+   * the end after watching at least 80%). Fires user-engagement (verb
+   * completed, with an xAPI statement and progress 1) once per visit.
    */
   _announceEnded() {
-    this._announceMedia("completed", this.watchedShare);
+    // completed is the whole media: progress 1 (the duration in the
+    // statement still says how much was actually watched)
+    this._announceMedia("completed", 1);
   }
 
   /**
@@ -3823,6 +4368,12 @@ class A11yMediaPlayer extends SchemaBehaviors(
    * handles media metadata when media is loaded
    */
   _handleMediaLoaded(_e) {
+    // the duration is known now: keep it reactive so the seek slider gets
+    // its range right away (it is not otherwise redrawn until playback)
+    const d = this.media ? Number(this.media.duration) : NaN;
+    if (isFinite(d) && d > 0 && d !== this.__preloadedDuration) {
+      this.__preloadedDuration = d;
+    }
     this._handleTimeUpdate();
     if (!this.youtubeId && this.anchor.target === this) {
       this.seek(
@@ -3847,6 +4398,20 @@ class A11yMediaPlayer extends SchemaBehaviors(
    */
   _handleSpeedChanged(e) {
     let target = normalizeEventPath(e)[0];
+    const value = Number(target.value);
+    // the slider echoes the value it was just given; nothing changed
+    if (
+      value === Number(this.playbackRate) &&
+      this.media &&
+      Number(this.media.playbackRate) === value
+    ) {
+      return;
+    }
+    // keep playbackRate in step so the tray shows the speed and YouTube,
+    // which reads playbackRate, follows it too
+    if (!isNaN(value)) {
+      this.playbackRate = value;
+    }
     this.setPlaybackRate(target.value);
   }
 
@@ -3956,9 +4521,30 @@ class A11yMediaPlayer extends SchemaBehaviors(
    */
   _onAddTrack(track) {
     if (this.captionsTrack === null) this.captionsTrack = track;
+    // a track that replaced the old ones (tracks changed) also becomes the
+    // transcript while the transcript is showing
+    if (this.transcriptTrack === null && !this.hideTranscript) {
+      this.transcriptTrack = track;
+    }
     if (track) track.mode = "hidden";
+    // the <track> element behind this text track, when there is one: its
+    // cues arrive while the file is parsed, so they are read once it has
+    // finished loading (reading at the first cue kept only part of them)
+    const media = this.__loadedTracks;
+    const trackEl =
+      media && media.querySelectorAll
+        ? Array.from(media.querySelectorAll("track")).find(
+            (node) => node.track === track,
+          )
+        : null;
     let loadCueData = setInterval(() => {
-      if (track.cues && track.cues.length > 0) {
+      if (trackEl && trackEl.readyState === 3) {
+        // the file failed to load; there are no cues to read
+        clearInterval(loadCueData);
+        return;
+      }
+      const loaded = !trackEl || trackEl.readyState === 2;
+      if (loaded && track.cues && track.cues.length > 0) {
         clearInterval(loadCueData);
         let cues = Object.keys(track.cues).map((key) => track.cues[key]);
         this._onRemoveTrack(track); //prevents duplicate tracks
@@ -3993,13 +4579,13 @@ class A11yMediaPlayer extends SchemaBehaviors(
     this.__sliderEl = this.shadowRoot
       ? this.shadowRoot.querySelector("#slider")
       : null;
-    this.style.setProperty(
-      "--a11y-media-transcript-max-height",
-      this.height ? "146px" : "unset",
-    );
+    this._setTranscriptMaxHeight();
     this.__loadedTracks = this.getloadedTracks();
     this._handleMediaLoaded();
     this.__loadedTracks.addEventListener("loadedmetadata", (e) =>
+      this._handleMediaLoaded(e),
+    );
+    this.__loadedTracks.addEventListener("durationchange", (e) =>
       this._handleMediaLoaded(e),
     );
     this.__loadedTracks.addEventListener("timeupdate", (e) => {
@@ -4011,6 +4597,10 @@ class A11yMediaPlayer extends SchemaBehaviors(
     // end (the last timeupdate sample before the interval clears).
     this.__loadedTracks.addEventListener("ended", (e) => {
       this._handleMediaEnded(e);
+    });
+    // a pause (or stop) at the very end counts as reaching the end
+    this.__loadedTracks.addEventListener("pause", () => {
+      this._handleMediaStopped();
     });
     /**
      * Fires player needs the size of parent container to add responsive styling
@@ -4075,7 +4665,15 @@ class A11yMediaPlayer extends SchemaBehaviors(
           scrollingTo(element, to, duration - 10);
         }, 10);
       };
-      scrollingTo(cue.parentNode.parentNode, cue.offsetTop - offset, 250);
+      const reduceMotion =
+        globalThis.matchMedia &&
+        globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduceMotion) {
+        // reduced motion: jump to the cue instead of animating there
+        cue.parentNode.parentNode.scrollTop = cue.offsetTop - offset;
+      } else {
+        scrollingTo(cue.parentNode.parentNode, cue.offsetTop - offset, 250);
+      }
     }
   }
 
@@ -4110,13 +4708,37 @@ class A11yMediaPlayer extends SchemaBehaviors(
   }
 
   /**
+   * HH:MM:SS for a transcript cue, padded to the media duration; a duration
+   * that is not known yet never drops the minutes or hours of the cue
+   * @param {number} time cue time in seconds
+   * @returns {string}
+   */
+  _cueTime(time) {
+    const duration = this.media ? Number(this.media.duration) : NaN;
+    return this._getHHMMSS(
+      time,
+      isFinite(duration) ? Math.max(duration, time) : time,
+    );
+  }
+
+  /**
    * Handle ESC key to close settings when open
    */
   _onSettingsKeydown(event) {
     if (!this.__settingsOpen) return;
     let key = event.key || event.code || "";
     if (key === "Escape" || key === "Esc" || event.keyCode === 27) {
+      // focus goes back to the Settings button when it was in the tray
+      const path = event.composedPath ? event.composedPath() : [];
+      const tray = this.shadowRoot
+        ? this.shadowRoot.querySelector("#settings")
+        : null;
+      const inTray = tray && path.includes(tray);
       this.toggleSettings(false);
+      if (inTray) {
+        const button = this.shadowRoot.querySelector("#settings-button");
+        if (button) button.focus();
+      }
       event.stopPropagation();
       event.preventDefault();
     }
@@ -4165,7 +4787,155 @@ class A11yMediaPlayer extends SchemaBehaviors(
     return hh * 3600 + mm * 60 + ss;
   }
 
+  /**
+   * a set height keeps the transcript short; otherwise the layout decides
+   * (it scrolls beside the media, or below it up to a set height)
+   */
+  _setTranscriptMaxHeight() {
+    if (this.height) {
+      this.style.setProperty("--a11y-media-transcript-max-height", "146px");
+    } else {
+      this.style.removeProperty("--a11y-media-transcript-max-height");
+    }
+  }
+
+  /**
+   * the viewer picks where the transcript goes; remembered per browser and
+   * followed by the other players on the page
+   * @param {string} layout "side" or "below"
+   * @param {string} [side] "left" or "right" (side layout)
+   */
+  _setTranscriptLayout(layout, side) {
+    if (layout !== "side" && layout !== "below") return;
+    this.__transcriptLayout = layout;
+    if (side === "left" || side === "right") {
+      this.__transcriptSide = side;
+    }
+    // picking a place for the transcript shows it
+    if (this.hideTranscript && this.hasCaptions && !this.learningMode) {
+      this.toggleTranscript(true);
+    }
+    this._writeLayoutPreference();
+  }
+
+  // user-scaffold singleton when the page has one; never imported here so
+  // a player on its own page does not load it
+  _learnerProfile() {
+    const us = globalThis.UserScaffold;
+    const inst = us && us.instance;
+    return inst &&
+      typeof inst.readPreference === "function" &&
+      typeof inst.writePreference === "function"
+      ? inst
+      : null;
+  }
+
+  /**
+   * reads the viewer's transcript placement: the learner profile first,
+   * then this browser's storage
+   * @returns {object|null} { layout, side }
+   */
+  _readLayoutPreference() {
+    let pref = null;
+    const profile = this._learnerProfile();
+    if (profile) {
+      try {
+        pref = profile.readPreference(A11Y_MEDIA_LAYOUT_PREFERENCE, null);
+      } catch {
+        pref = null;
+      }
+    }
+    if (!pref) {
+      try {
+        const stored = globalThis.localStorage
+          ? globalThis.localStorage.getItem(A11Y_MEDIA_LAYOUT_PREFERENCE)
+          : null;
+        pref = stored ? JSON.parse(stored) : null;
+      } catch {
+        pref = null;
+      }
+    }
+    return pref && typeof pref === "object" ? pref : null;
+  }
+
+  /**
+   * applies a saved { layout, side } placement
+   * @param {object|null} pref
+   */
+  _applyLayoutPreference(pref) {
+    if (!pref) return;
+    if (pref.layout === "side" || pref.layout === "below") {
+      this.__transcriptLayout = pref.layout;
+    }
+    if (pref.side === "left" || pref.side === "right") {
+      this.__transcriptSide = pref.side;
+    }
+  }
+
+  /**
+   * saves the viewer's transcript placement and tells the other players
+   */
+  _writeLayoutPreference() {
+    const pref = {
+      layout: this.transcriptLayout,
+      side: this.transcriptSide,
+    };
+    try {
+      if (globalThis.localStorage) {
+        globalThis.localStorage.setItem(
+          A11Y_MEDIA_LAYOUT_PREFERENCE,
+          JSON.stringify(pref),
+        );
+      }
+    } catch {
+      // storage is blocked or full; the choice just is not remembered
+    }
+    const profile = this._learnerProfile();
+    if (profile) {
+      try {
+        profile.writePreference(A11Y_MEDIA_LAYOUT_PREFERENCE, pref);
+      } catch {
+        // the profile could not save; this browser's storage still has it
+      }
+    }
+    if (globalThis.dispatchEvent) {
+      globalThis.dispatchEvent(
+        new CustomEvent("a11y-media-layout-preference", {
+          detail: { source: this, preference: pref },
+        }),
+      );
+    }
+  }
+
+  /**
+   * another player on the page changed the transcript placement
+   */
+  _onLayoutPreference(e) {
+    if (e && e.detail && e.detail.source !== this) {
+      this._applyLayoutPreference(e.detail.preference);
+    }
+  }
+
+  connectedCallback() {
+    if (super.connectedCallback) {
+      super.connectedCallback();
+    }
+    this._applyLayoutPreference(this._readLayoutPreference());
+    if (globalThis.addEventListener) {
+      globalThis.addEventListener(
+        "a11y-media-layout-preference",
+        this._layoutPreferenceHandler,
+      );
+    }
+  }
+
   disconnectedCallback() {
+    if (globalThis.removeEventListener) {
+      globalThis.removeEventListener(
+        "a11y-media-layout-preference",
+        this._layoutPreferenceHandler,
+      );
+    }
     if (super.disconnectedCallback) {
       super.disconnectedCallback();
     }

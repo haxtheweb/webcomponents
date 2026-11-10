@@ -1,0 +1,27 @@
+{
+  "tag": "figure-label",
+  "package": "@haxtheweb/figure-label",
+  "source": "elements/figure-label/figure-label.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "dark": "dark",
+    "description": "description",
+    "is-safari": "isSafari",
+    "title": "title"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/figure-label/figure-label.js",
+    "gizmo": true,
+    "properties": [
+      "description",
+      "title"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": []
+  }
+}

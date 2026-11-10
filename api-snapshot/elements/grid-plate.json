@@ -1,0 +1,44 @@
+{
+  "tag": "grid-plate",
+  "package": "@haxtheweb/grid-plate",
+  "source": "elements/grid-plate/grid-plate.js",
+  "attributes": {
+    "breakpoint-lg": "breakpointLg",
+    "breakpoint-md": "breakpointMd",
+    "breakpoint-sm": "breakpointSm",
+    "breakpoint-xl": "breakpointXl",
+    "columns": "columns",
+    "data-hax-ray": "dataHaxRay",
+    "disable-responsive": "disableResponsive",
+    "item-margin": "itemMargin",
+    "item-padding": "itemPadding",
+    "layout": "layout",
+    "layouts": "layouts",
+    "ready": "ready",
+    "responsive-size": "responsiveSize"
+  },
+  "slots": [],
+  "events": [
+    "disable-responsive-changed",
+    "responsive-element"
+  ],
+  "cssParts": [
+    "layout-container"
+  ],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/grid-plate/grid-plate.js",
+    "gizmo": true,
+    "properties": [
+      "disableResponsive",
+      "itemMargin",
+      "itemPadding",
+      "layout"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "grid-plate"
+    ]
+  }
+}

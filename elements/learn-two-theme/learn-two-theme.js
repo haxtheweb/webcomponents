@@ -9,6 +9,7 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/progress/my-learning-button.js";
 import { LTIResizingMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LTIResizingMixin.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import {
@@ -141,7 +142,6 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
 
         simple-icon-button:not(:defined),
         site-breadcrumb:not(:defined),
-        site-rss-button:not(:defined),
         site-print-button:not(:defined),
         site-modal:not(:defined),
         site-git-corner:not(:defined),
@@ -175,10 +175,6 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
         :host([responsive-size="sm"]) site-breadcrumb {
           display: none;
         }
-        site-rss-button {
-          color: var(--ddd-theme-default-white);
-        }
-
         site-print-button {
           color: var(--site-print-button-color, var(--ddd-theme-default-white));
           margin: var(--ddd-spacing-1);
@@ -187,9 +183,12 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
           margin: var(--ddd-spacing-1);
           display: inline-flex;
         }
+        /* My learning (ring only, like clean-two's icon rail) before search */
+        my-learning-button {
+          margin: var(--ddd-spacing-1);
+        }
 
         simple-icon-button,
-        site-rss-button,
         site-print-button {
           color: var(--ddd-theme-default-white);
           --simple-icon-fill-color: var(--ddd-theme-default-white);
@@ -487,10 +486,6 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
     );
     // prettier-ignore
     import(
-        "@haxtheweb/haxcms-elements/lib/ui-components/site/site-rss-button.js"
-      );
-    // prettier-ignore
-    import(
         "@haxtheweb/haxcms-elements/lib/ui-components/site/site-print-button.js"
       );
     // prettier-ignore
@@ -560,6 +555,11 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
                 ?disabled="${this.editMode}"
                 part="site-title"
               ></site-title>
+              <my-learning-button
+                compact
+                class="learning-btn"
+                part="my-learning-btn"
+              ></my-learning-button>
               <site-modal
                 @site-modal-click="${this.siteModalClick}"
                 ?disabled="${this.editMode}"
@@ -575,16 +575,6 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
                 position="top"
                 part="print-btn"
               ></site-print-button>
-              <site-rss-button
-                ?disabled="${this.editMode}"
-                type="atom"
-                part="rss-btn"
-              ></site-rss-button>
-              <site-rss-button
-                ?disabled="${this.editMode}"
-                type="rss"
-                part="rss-btn"
-              ></site-rss-button>
             </div>
           </header>
           <nav aria-label="${this.t.siteNavigation}">

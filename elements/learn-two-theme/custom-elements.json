@@ -76,6 +76,15 @@
               "default": "false",
               "attribute": "opened",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "_drawerMode",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "_drawerMode"
             }
           ],
           "attributes": [
@@ -86,6 +95,13 @@
               },
               "default": "false",
               "fieldName": "opened"
+            },
+            {
+              "name": "_drawerMode",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "_drawerMode"
             }
           ],
           "mixins": [

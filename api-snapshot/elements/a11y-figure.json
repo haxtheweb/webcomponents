@@ -1,0 +1,42 @@
+{
+  "tag": "a11y-figure",
+  "package": "@haxtheweb/a11y-figure",
+  "source": "elements/a11y-figure/a11y-figure.js",
+  "attributes": {
+    "close-text": "closeText",
+    "img-alt": "imgAlt",
+    "img-src": "imgSrc",
+    "open-text": "openText",
+    "t": "t"
+  },
+  "slots": [
+    "(default)",
+    "details",
+    "figcaption",
+    "figdetails",
+    "image",
+    "summary"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/a11y-figure/a11y-figure.js",
+    "gizmo": true,
+    "properties": [
+      "closeText",
+      "imgAlt",
+      "imgSrc",
+      "openText"
+    ],
+    "attributes": [],
+    "slots": [
+      "details",
+      "figcaption",
+      "summary"
+    ],
+    "demoTags": [
+      "a11y-figure"
+    ]
+  }
+}

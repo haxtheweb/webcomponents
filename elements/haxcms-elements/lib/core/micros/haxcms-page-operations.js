@@ -86,34 +86,47 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
       localesPath: new URL("../../../locales/", import.meta.url).href,
     });
 
-    // Watch for active item lock state
-    autorun(() => {
-      const _mobx_val_0 = toJS(store.activeItem);
-      Promise.resolve().then(() => {
-        const activeItem = _mobx_val_0;
-        this.isLocked =
-          activeItem && activeItem.metadata && activeItem.metadata.locked
-            ? true
-            : false;
-      });
-    });
-
-    // Keep local editMode in sync with global store state so we can
-    // hide page creation controls while actively editing content
-    autorun(() => {
-      const _mobx_val_0 = toJS(store.editMode);
-      Promise.resolve().then(() => {
-        this.editMode = _mobx_val_0;
-      });
-    });
+    // store subscriptions live only while connected (see connectedCallback)
+    this.__disposer = [];
   }
 
   connectedCallback() {
+    // These autoruns used to be created in the constructor and never stored,
+    // so they could not be disposed: every instance ever made kept reacting
+    // (and cloning store.activeItem) on each navigation for the life of the
+    // tab. Created before super so the first render has the values.
+    if (this.__disposer.length === 0) {
+      // Watch for active item lock state; reads only the flag it needs
+      this.__disposer.push(
+        autorun(() => {
+          const activeItem = store.activeItem;
+          const locked =
+            activeItem && activeItem.metadata && activeItem.metadata.locked
+              ? true
+              : false;
+          Promise.resolve().then(() => {
+            this.isLocked = locked;
+          });
+        }),
+      );
+      // Keep local editMode in sync with global store state so we can
+      // hide page creation controls while actively editing content
+      this.__disposer.push(
+        autorun(() => {
+          const _mobx_val_0 = toJS(store.editMode);
+          Promise.resolve().then(() => {
+            this.editMode = _mobx_val_0;
+          });
+        }),
+      );
+    }
     super.connectedCallback();
     store.pageOperationsElement = this;
   }
 
   disconnectedCallback() {
+    this.__disposer.forEach((dispose) => dispose());
+    this.__disposer = [];
     if (store.pageOperationsElement === this) {
       store.pageOperationsElement = null;
     }

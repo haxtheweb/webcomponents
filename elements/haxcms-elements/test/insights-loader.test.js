@@ -147,7 +147,7 @@ describe("insights-loader: helpers", () => {
     expect(a.content.longPageParagraphs).to.equal(5);
     expect(a.content.thinMaxWords).to.equal(40);
     expect(a.accessibility.alt.maxLength).to.equal(150);
-    expect(a.bulkAltSave.maxPagesPerHour).to.equal(20);
+    expect(a.bulkAltSave.maxPagesPerSave).to.equal(20);
   });
 
   it("splits the backend's whole-site export into pages", async () => {

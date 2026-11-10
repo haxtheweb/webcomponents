@@ -1,0 +1,36 @@
+{
+  "tag": "star-rating",
+  "package": "@haxtheweb/star-rating",
+  "source": "elements/star-rating/star-rating.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "dark": "dark",
+    "interactive": "interactive",
+    "num-stars": "numStars",
+    "possible": "possible",
+    "rubric-scale-mode": "rubricScaleMode",
+    "schemamap": "schemaMap",
+    "score": "score",
+    "t": "t"
+  },
+  "slots": [],
+  "events": [
+    "star-rating-click"
+  ],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/star-rating/star-rating.js",
+    "gizmo": true,
+    "properties": [
+      "interactive",
+      "numStars",
+      "possible",
+      "rubricScaleMode",
+      "score"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": []
+  }
+}

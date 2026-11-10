@@ -7,10 +7,144 @@
       "path": "a11y-media-player.js",
       "declarations": [
         {
+          "kind": "variable",
+          "name": "MEDIA_WATCH_HALF",
+          "type": {
+            "text": "number"
+          },
+          "default": "0.5"
+        },
+        {
+          "kind": "variable",
+          "name": "MEDIA_WATCH_DONE",
+          "type": {
+            "text": "number"
+          },
+          "default": "0.95"
+        },
+        {
+          "kind": "variable",
+          "name": "MEDIA_WATCH_END_MIN",
+          "type": {
+            "text": "number"
+          },
+          "default": "0.8"
+        },
+        {
+          "kind": "variable",
+          "name": "XAPI_MEDIA_PROGRESS",
+          "type": {
+            "text": "string"
+          },
+          "default": "\"https://w3id.org/xapi/video/extensions/progress\""
+        },
+        {
+          "kind": "variable",
+          "name": "A11Y_MEDIA_LAYOUT_PREFERENCE",
+          "type": {
+            "text": "string"
+          },
+          "default": "\"a11y-media-transcript-layout\""
+        },
+        {
+          "kind": "function",
+          "name": "cueToText",
+          "parameters": [
+            {
+              "name": "cue",
+              "description": "a VTTCue / TextTrackCue, or any object with `text`",
+              "type": {
+                "text": "object"
+              }
+            }
+          ],
+          "description": "Plain readable text for a WebVTT cue. Cue text can carry markup such as\nvoice spans (<v Speaker>...</v>), class spans and timestamp tags, which\nmust not be shown to the reader. The browser's own cue parser is used when\navailable; otherwise tags are dropped by a single linear scan and the\ncommon character references are decoded.",
+          "return": {
+            "type": {
+              "text": "string"
+            }
+          }
+        },
+        {
+          "kind": "function",
+          "name": "stripCueTags",
+          "parameters": [
+            {
+              "name": "text",
+              "description": "raw cue text",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "description": "Drop WebVTT cue tags and decode the character references WebVTT allows.",
+          "return": {
+            "type": {
+              "text": "string"
+            }
+          }
+        },
+        {
           "kind": "class",
           "description": "`a11y-media-player`\nan accessible video player\n\n### Styling\n`<a11y-media-player>` provides the following basic custom properties\nfor styling:\n\n#### Basic Styling\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-media-color` | default text color | `light-dark(--ddd-theme-default-coalyGray, --ddd-theme-default-white)`\n`--a11y-media-bg-color` | default background color | `light-dark(--ddd-theme-default-limestoneMaxLight, --ddd-theme-default-potentialMidnight)`\n`--a11y-media-border-color` | default border color | `light-dark(--ddd-theme-default-limestoneLight, --ddd-theme-default-coalyGray)`\n`--a11y-media-hover-color` | text color when hovering | `light-dark(--ddd-theme-default-black, --ddd-theme-default-white)`\n`--a11y-media-hover-bg-color` | background color when hovering | `light-dark(--ddd-theme-default-limestoneMaxLight, --ddd-theme-default-potentialMidnight)`\n`--a11y-media-accent-color` | accent color | `light-dark(--simple-colors-default-theme-accent-9, --simple-colors-dark-theme-accent-9)`\n`--a11y-media-faded-accent-color` | accent color when faded | `light-dark(--simple-colors-default-theme-accent-8, --simple-colors-dark-theme-accent-8)`\n`--a11y-media-disabled-color` | color for disabled items | `light-dark(--ddd-theme-default-limestoneGray, --ddd-theme-default-coalyGray)`\n`--a11y-media-transcript-color` | default text color of transcript | `light-dark(--ddd-theme-default-coalyGray, --ddd-theme-default-white)`\n`--a11y-media-transcript-bg-color` | default background color of transcript | `light-dark(--ddd-theme-default-white, --ddd-theme-default-potentialMidnight)`\n`--a11y-media-transcript-accent-color` | default accent color of transcript | `light-dark(--simple-colors-default-theme-accent-8, --simple-colors-dark-theme-accent-8)`\n`--a11y-media-transcript-faded-accent-color` | accent color of transcript, faded | `light-dark(--simple-colors-default-theme-accent-10, --simple-colors-dark-theme-accent-10)`\n`--a11y-media-transcript-cue-color` | text color of transcript cue | `--ddd-theme-default-black`\n`--a11y-media-transcript-cue-bg-color` | background color of transcript cue  | `--ddd-theme-default-white`\n`--a11y-media-transcript-active-cue-color` | text color of active transcript cue  | `--ddd-theme-default-black`\n`--a11y-media-transcript-active-cue-bg-color` | background color of active transcript cue  | `--ddd-theme-default-white`\n`--a11y-media-transcript-focused-cue-color` | text color of focused transcript cue  | `--ddd-theme-default-black`\n`--a11y-media-transcript-focused-cue-bg-color` | background color of focused transcript cue  | `--ddd-theme-default-limestoneMaxLight`\n`--a11y-media-transcript-match-color` | text color of matched term in transcript search  | `--ddd-theme-default-white`\n`--a11y-media-transcript-match-bg-color` | background color of matched term in transcript search  | `--ddd-theme-default-black`\n`--a11y-media-transcript-match-border-color` | border color of matched term in transcript search  | `--ddd-theme-default-black`\n`--a11y-media-caption-color` | caption text color on the accent | `light-dark(--ddd-theme-default-white, --ddd-theme-default-black)`\n\n#### Controls\nCustom property | Description | Default \n----------------|-------------|----------\n`--a11y-media-scrollbar-width` | default width of scrollbars | `5px`\n`--a11y-media-controls-font-family` | font-family of controls\n\n#### Buttons\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-media-button-color` | button text color | `--a11y-media-color`\n`--a11y-media-button-bg-color` | button background color | `--a11y-media-bg-color`\n`--a11y-media-button-hover-color` | button text color when hovering | `--a11y-media-accent-color`\n`--a11y-media-button-hover-bg-color` | button background color when hovering | `--a11y-media-hover-bg-color`\n`--a11y-media-button-disabled-color` | button text color when disabled | `--a11y-media-disabled-color`\n`--a11y-media-button-toggle-color` | button text color when toggled | `--a11y-media-faded-accent-color`\n\n#### Sliders\nCustom property | Description | Default\n----------------|-------------|----------\n`--simple-range-input-active-color` | slider color when active | `--a11y-media-accent-color`\n`--simple-range-input-secondary-color` | slider color for buffering | `--a11y-media-faded-accent-color`\n`--simple-range-input-pin-color` | slider pin color | `--a11y-media-bg-color`\n`--simple-range-input-pin-start-color` | slider pin color in start position | `--a11y-media-bg-color`\n`--simple-range-input-pin-end-color` | slider pin color in end position | `--a11y-media-bg-color`\n`--simple-range-input-knob-color` | slider knob color | `--a11y-media-accent-color`\n`--simple-range-input-knob-start-color` | slider knob color in start position | `--a11y-media-accent-color`\n`--simple-range-input-knob-end-color` | slider knob color in end position | `--a11y-media-bg-accent-color`\n`--simple-range-input-knob-border-color` | slider knob border color | `--a11y-media-accent-color`\n`--simple-range-input-knob-start-border-color` | slider knob border color in start position | `--a11y-media-bg-color`\n`--simple-range-input-knob-end-border-color` | slider knob border color in end position | `--a11y-media-bg-color`\n\n#### Settings Menu\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-media-settings-menu-color` | settings menu text color | `--a11y-media-color`\n`--a11y-media-settings-menu-bg-color` | settings menu background color | `--a11y-media-bg-color`\n`--a11y-media-settings-menu-hover-color` | settings menu text color when hovering | `--a11y-media-hover-color`\n`--a11y-media-settings-menu-hover-bg-color` | settings menu background color when hovering | `--a11y-media-hover-bg-color`\n\n#### Link Sharing Toast\nCustom property | Description | Default\n----------------|-------------|----------\n`--simple-toast-color` | toast text color | `--a11y-media-color`\n`--simple-toast-background-color` | toast background color | `--a11y-media-bg-color`",
           "name": "A11yMediaPlayer",
           "members": [
+            {
+              "kind": "method",
+              "name": "_renderHeaderAction",
+              "parameters": [
+                {
+                  "name": "o",
+                  "description": "id, icon, label, onClick, pressed, expanded,\ncontrols, hidden, disabled",
+                  "type": {
+                    "text": "Object"
+                  }
+                }
+              ],
+              "description": "One round header action (DDD block action pattern)"
+            },
+            {
+              "kind": "method",
+              "name": "_renderTrayButton",
+              "parameters": [
+                {
+                  "name": "o"
+                }
+              ],
+              "description": "One pill button in the settings tray"
+            },
+            {
+              "kind": "field",
+              "name": "_actionState",
+              "description": "Visibility rules shared by the header actions and their tray copies",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "_movableActions",
+              "description": "The actions that sit in the header at desktop widths and move to the\ntop of the settings tray at small widths, in order",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_renderHeaderActions",
+              "description": "Header actions, left to right: Closed Captions, Transcript, Download\nTranscript, Print Transcript, Audio Description, Copy Media Link, Open\non YouTube (each only when it applies), Settings, Fullscreen. At small\nwidths only Settings and Fullscreen stay here; the rest move into the\ntop of the settings tray."
+            },
+            {
+              "kind": "method",
+              "name": "_trackKeys",
+              "parameters": [
+                {
+                  "name": "picker"
+                }
+              ],
+              "description": "Track keys of the loaded text tracks, without the \"Off\" (-1) entry"
+            },
+            {
+              "kind": "method",
+              "name": "_renderSettingsTray",
+              "description": "Settings tray: (small widths: captions, transcript, download, print),\nlayout, transcript track, captions track, speed, scroll and loop"
+            },
             {
               "kind": "field",
               "name": "tag",
@@ -86,6 +220,17 @@
             },
             {
               "kind": "field",
+              "name": "_hasThumbnail",
+              "description": "whether a real thumbnail was given; wrappers that bind an unset value\npass an empty string (or the text \"undefined\" / \"null\")",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
               "name": "buffered",
               "description": "returns buffered media",
               "readonly": true,
@@ -142,6 +287,83 @@
               "return": {
                 "type": {
                   "text": "boolean"
+                }
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "_seekLocked",
+              "description": "seeking is locked (disable-seek, or learning mode)",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "_narrow",
+              "description": "whether the player is at a small width (DDD sm and below), where the\ntranscript always sits below and the header keeps only Settings and\nFullscreen",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "transcriptLayout",
+              "description": "where the viewer wants the transcript: \"side\" or \"below\". Until the\nviewer picks, stacked-layout decides (below) and otherwise side.",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "transcriptSide",
+              "description": "which side the transcript sits on in the side layout: \"left\" or \"right\"",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "_effectiveLayout",
+              "description": "the layout actually shown: small widths and audio without a picture\nalways put the transcript below",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "_layoutChoiceAvailable",
+              "description": "whether the Layout choice is offered in the settings tray",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "_blockLabel",
+              "description": "block header label, e.g. \"Video · interactive\"",
+              "return": {
+                "type": {
+                  "text": "string"
                 }
               },
               "readonly": true
@@ -604,6 +826,35 @@
             },
             {
               "kind": "method",
+              "name": "_appendTracks",
+              "parameters": [
+                {
+                  "name": "media",
+                  "description": "HTML audio or video element",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "adds a <track> to the media element for each entry of the tracks\nproperty, marked so they can be replaced when tracks changes"
+            },
+            {
+              "kind": "method",
+              "name": "_syncTracks",
+              "description": "replaces the tracks added from the tracks property when it changes\n(a HAX edit of video-player tracks / track), so the captions and\ntranscript show the new files right away"
+            },
+            {
+              "kind": "method",
+              "name": "_mediaKey",
+              "description": "what identifies the media being played, for learner data",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
               "name": "_updateMediaSource"
             },
             {
@@ -887,8 +1138,100 @@
             },
             {
               "kind": "method",
+              "name": "_resetWatched",
+              "description": "Learner data: forget what was watched (new media, new visit)"
+            },
+            {
+              "kind": "method",
+              "name": "_completeAtEnd",
+              "description": "Learner data: the player stopped at its end (HTML5 ended, YouTube\nENDED, or a pause / stop within the last second). The seconds after\nthe last time report count when that report was already in the last\nstretch (so playing out the end counts, jumping there does not), then\ncompletion is checked; at least MEDIA_WATCH_END_MIN must be watched."
+            },
+            {
+              "kind": "method",
+              "name": "_handleMediaStopped",
+              "description": "Learner data: the media paused or stopped; at its very end (the last\nsecond) that is the same as reaching the end"
+            },
+            {
+              "kind": "method",
+              "name": "_handleYoutubeState",
+              "parameters": [
+                {
+                  "name": "e",
+                  "description": "mediastatechange from a11y-media-youtube",
+                  "type": {
+                    "text": "CustomEvent"
+                  }
+                }
+              ],
+              "description": "YouTube player state: 2 is paused (0, ended, arrives as an ended\nevent)"
+            },
+            {
+              "kind": "method",
+              "name": "_isAtEnd",
+              "parameters": [
+                {
+                  "name": "t",
+                  "description": "time in seconds",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "Learner data: whether a time is in the last stretch of the media (its\nlast 5%, between 1 and 3 seconds)",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_trackWatched",
+              "parameters": [
+                {
+                  "name": "stopped",
+                  "default": "false"
+                }
+              ],
+              "description": "Learner data: count the media time actually watched. Called on every\ntime report. Only playback that moves forward in small steps counts, so\nseeking or scrubbing ahead never adds to it, and each second counts once\nhowever often it is replayed. Sends the milestones when reached."
+            },
+            {
+              "kind": "field",
+              "name": "watchedShare",
+              "description": "Learner data: share of the media watched, 0 to 1, or null when the\nduration is not known (still loading, live streams)",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_checkWatched",
+              "description": "Learner data: send start, half way and done once each per visit"
+            },
+            {
+              "kind": "method",
               "name": "_announceEnded",
-              "description": "Learner data: the media was played to the end. Fires user-engagement\n(verb completed, with an xAPI statement) once per play-through; the\nnative and YouTube ended events can both arrive for one ending. When the\nplayer sits inside video-player or audio-player, that element is the\nactivity."
+              "description": "Learner data: the media was watched (95% or more, or played on into\nthe end after watching at least 80%). Fires user-engagement (verb\ncompleted, with an xAPI statement and progress 1) once per visit."
+            },
+            {
+              "kind": "method",
+              "name": "_announceMedia",
+              "parameters": [
+                {
+                  "name": "verb",
+                  "description": "attempted, progressed or completed",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "share",
+                  "description": "share of the media watched, 0 to 1",
+                  "optional": true,
+                  "type": {
+                    "text": "number|null"
+                  }
+                }
+              ],
+              "description": "Learner data: one user-engagement event with an xAPI statement about\nthis media. When the player sits inside video-player or audio-player,\nthat element is the activity."
             },
             {
               "kind": "method",
@@ -1087,6 +1430,25 @@
             },
             {
               "kind": "method",
+              "name": "_cueTime",
+              "parameters": [
+                {
+                  "name": "time",
+                  "description": "cue time in seconds",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "HH:MM:SS for a transcript cue, padded to the media duration; a duration\nthat is not known yet never drops the minutes or hours of the cue",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
               "name": "_onSettingsKeydown",
               "parameters": [
                 {
@@ -1123,6 +1485,75 @@
                   "text": "float"
                 }
               }
+            },
+            {
+              "kind": "method",
+              "name": "_setTranscriptMaxHeight",
+              "description": "a set height keeps the transcript short; otherwise the layout decides\n(it scrolls beside the media, or below it up to a set height)"
+            },
+            {
+              "kind": "method",
+              "name": "_setTranscriptLayout",
+              "parameters": [
+                {
+                  "name": "layout",
+                  "description": "\"side\" or \"below\"",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "side",
+                  "description": "\"left\" or \"right\" (side layout)",
+                  "optional": true,
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "the viewer picks where the transcript goes; remembered per browser and\nfollowed by the other players on the page"
+            },
+            {
+              "kind": "method",
+              "name": "_learnerProfile"
+            },
+            {
+              "kind": "method",
+              "name": "_readLayoutPreference",
+              "description": "reads the viewer's transcript placement: the learner profile first,\nthen this browser's storage",
+              "return": {
+                "type": {
+                  "text": "object|null"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_applyLayoutPreference",
+              "parameters": [
+                {
+                  "name": "pref",
+                  "type": {
+                    "text": "object|null"
+                  }
+                }
+              ],
+              "description": "applies a saved { layout, side } placement"
+            },
+            {
+              "kind": "method",
+              "name": "_writeLayoutPreference",
+              "description": "saves the viewer's transcript placement and tells the other players"
+            },
+            {
+              "kind": "method",
+              "name": "_onLayoutPreference",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "another player on the page changed the transcript placement"
             },
             {
               "kind": "field",
@@ -1373,7 +1804,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ ...this.t, audioLabel: \"Audio\", audioNotSupported: \"HTML5 video is not supported.\", autoScrollLabel: \"Scroll Transcript\", captionsLabel: \"Closed Captions\", captionsOff: \"Off\", downloadLabel: \"Download Transcript\", forwardLabel: \"Forward\", fullscreenLabel: \"Fullscreen\", copyLinkLabel: \"Copy Media Link\", closeLinkLabel: \"Close\", loadingLabel: \"Loading...\", loopLabel: \"Loop Playback\", muteLabel: \"Mute\", nextResultLabel: \"Next\", pauseLabel: \"Pause\", playLabel: \"Play\", prevResultLabel: \"Previous\", printLabel: \"Print Transcript\", restartLabel: \"Restart\", rewindLabel: \"Backward\", searchLabel: \"Search the transcript.\", seekSliderLabel: \"Seek Slider\", settingsLabel: \"Settings\", speedLabel: \"Speed %\", transcriptLabel: \"Transcript\", transcriptLoading: \"Loading the transcript(s)...\", transcriptOff: \"Off\", transcriptSkip: \"Skip to the transcript.\", unmuteLabel: \"Unmute\", videoLabel: \"Video\", videoNotSupported: \"HTML5 video is not supported.\", volumeLabel: \"Volume\", youTubeLoadingLabel: \"Loading...\", youTubeStartLoading: \"Press play.\", youTubeTranscriptLabel: \"Transcript will load once media plays.\", openOnYouTube: \"Open on YouTube\", audioDescriptionLabel: \"Audio Description\", }"
+              "default": "{ ...this.t, audioLabel: \"Audio\", audioNotSupported: \"HTML5 video is not supported.\", autoScrollLabel: \"Scroll Transcript\", captionsLabel: \"Closed Captions\", captionsOff: \"Off\", downloadLabel: \"Download Transcript\", forwardLabel: \"Forward\", fullscreenLabel: \"Fullscreen\", copyLinkLabel: \"Copy Media Link\", closeLinkLabel: \"Close\", loadingLabel: \"Loading...\", loopLabel: \"Loop Playback\", muteLabel: \"Mute\", nextResultLabel: \"Next\", pauseLabel: \"Pause\", playLabel: \"Play\", prevResultLabel: \"Previous\", printLabel: \"Print Transcript\", restartLabel: \"Restart\", rewindLabel: \"Backward\", searchLabel: \"Search the transcript.\", seekSliderLabel: \"Seek Slider\", settingsLabel: \"Settings\", speedLabel: \"Speed %\", transcriptLabel: \"Transcript\", transcriptLoading: \"Loading the transcript(s)...\", transcriptOff: \"Off\", transcriptSkip: \"Skip to the transcript.\", unmuteLabel: \"Unmute\", videoLabel: \"Video\", videoNotSupported: \"HTML5 video is not supported.\", volumeLabel: \"Volume\", youTubeLoadingLabel: \"Loading...\", youTubeStartLoading: \"Press play.\", youTubeTranscriptLabel: \"Transcript will load once media plays.\", openOnYouTube: \"Open on YouTube\", audioDescriptionLabel: \"Audio Description\", interactiveLabel: \"interactive\", layoutLabel: \"Layout\", sideLabel: \"Side\", belowLabel: \"Below\", leftLabel: \"Left\", rightLabel: \"Right\", hideTranscriptLabel: \"Hide transcript\", }"
             },
             {
               "kind": "field",
@@ -1701,6 +2132,30 @@
               "description": "the index of the selected transcript",
               "default": "-1",
               "attribute": "__transcriptOption"
+            },
+            {
+              "kind": "field",
+              "name": "__transcriptLayout",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "the viewer's transcript placement (\"side\" or \"below\"), remembered\nper browser; null until the viewer picks one",
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "__transcriptSide",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "the viewer's side for the transcript (\"left\" or \"right\")",
+              "default": "\"right\""
+            },
+            {
+              "kind": "field",
+              "name": "_layoutPreferenceHandler"
             },
             {
               "kind": "field",
@@ -2451,9 +2906,69 @@
           },
           "tagName": "a11y-media-player",
           "customElement": true
+        },
+        {
+          "kind": "variable",
+          "name": "name"
         }
       ],
       "exports": [
+        {
+          "kind": "js",
+          "name": "MEDIA_WATCH_HALF",
+          "declaration": {
+            "name": "MEDIA_WATCH_HALF",
+            "module": "a11y-media-player.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "MEDIA_WATCH_DONE",
+          "declaration": {
+            "name": "MEDIA_WATCH_DONE",
+            "module": "a11y-media-player.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "MEDIA_WATCH_END_MIN",
+          "declaration": {
+            "name": "MEDIA_WATCH_END_MIN",
+            "module": "a11y-media-player.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "XAPI_MEDIA_PROGRESS",
+          "declaration": {
+            "name": "XAPI_MEDIA_PROGRESS",
+            "module": "a11y-media-player.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "A11Y_MEDIA_LAYOUT_PREFERENCE",
+          "declaration": {
+            "name": "A11Y_MEDIA_LAYOUT_PREFERENCE",
+            "module": "a11y-media-player.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "cueToText",
+          "declaration": {
+            "name": "cueToText",
+            "module": "a11y-media-player.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "stripCueTags",
+          "declaration": {
+            "name": "stripCueTags",
+            "module": "a11y-media-player.js"
+          }
+        },
         {
           "kind": "custom-element-definition",
           "declaration": {
@@ -3316,6 +3831,24 @@
       "path": "lib/a11y-media-transcript-cue.js",
       "declarations": [
         {
+          "kind": "function",
+          "name": "shortCueTime",
+          "parameters": [
+            {
+              "name": "value",
+              "type": {
+                "text": "number|string"
+              }
+            }
+          ],
+          "description": "Short form of a cue start time: \"0s\", \"4s\", \"1m 20s\", \"1h 2m\".\nTakes seconds or an \"HH:MM:SS\" / \"MM:SS\" string (the cue start attribute).",
+          "return": {
+            "type": {
+              "text": "string"
+            }
+          }
+        },
+        {
           "kind": "class",
           "description": "`a11y-media-transcript-cue`\na single cue in a11y-media-transcriptas static text or as an button that controls media.\n\nCustom styles:\n```--a11y-media-transcript-bg-color: background color of the transcript, default is #ffffff\n--a11y-media-transcript-text-color: color of the transcript text, default is #000000```\n  \nCustom styles for focused cue:\n```--a11y-media-transcript-focused-cue-text: color of the focused cue text, default is --a11y-media-transcript-text-color\n--a11y-media-transcript-focused-cue-bg: background color of the focused cue, default is --a11y-media-transcript-bg-color\n--a11y-media-transcript-focused-cue-weight: font-weight of the focused cue, default is bold```\n  \nCustom styles for active cue:\n```--a11y-media-transcript-active-cue-text: color of the active cue text, default is --a11y-media-transcript-text-color\n--a11y-media-transcript-active-cue-bg: background color of the active cue, default is #ccfffd\n--a11y-media-transcript-active-cue-weight: font-weight of the active cue, default is normal```",
           "name": "A11yMediaTranscriptCue",
@@ -3450,6 +3983,14 @@
         }
       ],
       "exports": [
+        {
+          "kind": "js",
+          "name": "shortCueTime",
+          "declaration": {
+            "name": "shortCueTime",
+            "module": "lib/a11y-media-transcript-cue.js"
+          }
+        },
         {
           "kind": "custom-element-definition",
           "declaration": {

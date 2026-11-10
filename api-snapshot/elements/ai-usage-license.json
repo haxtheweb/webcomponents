@@ -1,0 +1,37 @@
+{
+  "tag": "ai-usage-license",
+  "package": "@haxtheweb/ai-usage-license",
+  "source": "elements/ai-usage-license/ai-usage-license.js",
+  "attributes": {
+    "is-safari": "isSafari",
+    "license": "license",
+    "license-description": "licenseDescription",
+    "license-image": "licenseImage",
+    "license-link": "licenseLink",
+    "license-name": "licenseName",
+    "license-tag": "licenseTag",
+    "modifier": "modifier",
+    "schemamap": "schemaMap",
+    "t": "t",
+    "typeof": "typeof",
+    "uri": "uri"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/ai-usage-license/ai-usage-license.js",
+    "gizmo": true,
+    "properties": [
+      "license",
+      "modifier",
+      "uri"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "ai-usage-license"
+    ]
+  }
+}

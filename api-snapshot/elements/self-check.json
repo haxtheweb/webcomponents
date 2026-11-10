@@ -1,0 +1,53 @@
+{
+  "tag": "self-check",
+  "package": "@haxtheweb/self-check",
+  "source": "elements/self-check/self-check.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "alt": "alt",
+    "assessing": "assessing",
+    "correct": "correct",
+    "dark": "dark",
+    "described-by": "describedBy",
+    "element-visible": "elementVisible",
+    "has-learning-objective": "hasLearningObjective",
+    "image": "image",
+    "image-loaded": "imageLoaded",
+    "is-safari": "isSafari",
+    "link": "link",
+    "question": "question",
+    "schemamap": "schemaMap",
+    "t": "t",
+    "title": "title",
+    "typeof": "typeof"
+  },
+  "slots": [
+    "(default)",
+    "heading",
+    "question"
+  ],
+  "events": [
+    "user-engagement"
+  ],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/self-check/lib/self-check.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "alt",
+      "assessing",
+      "hasLearningObjective",
+      "image",
+      "link",
+      "title"
+    ],
+    "attributes": [],
+    "slots": [
+      "question"
+    ],
+    "demoTags": [
+      "self-check"
+    ]
+  }
+}

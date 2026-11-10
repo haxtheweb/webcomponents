@@ -149,6 +149,10 @@
             },
             {
               "kind": "method",
+              "name": "_toggleDirections"
+            },
+            {
+              "kind": "method",
               "name": "haxHooks",
               "description": "Implements haxHooks to tie into life-cycle if hax exists."
             },
@@ -290,7 +294,15 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ progress: \"{done} of {total} complete\", currentStep: \"Current step\", checklist: \"Checklist\", blockLabel: \"Checklist · {done} of {total}\", }"
+              "default": "{ progress: \"{done} of {total} complete\", currentStep: \"Current step\", checklist: \"Checklist\", blockLabel: \"Checklist · {done} of {total}\", directions: \"Directions\", showDirections: \"Show directions\", hideDirections: \"Hide directions\", checklistDirections: \"Tick each item as you finish it. Your ticks are kept so you can pick up where you left off.\", orderedDirections: \"Work through the steps in order and tick each one as you finish it. Your ticks are kept so you can pick up where you left off.\", complete: \"Complete\", }"
+            },
+            {
+              "kind": "field",
+              "name": "_directionsOpen",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
             }
           ],
           "events": [

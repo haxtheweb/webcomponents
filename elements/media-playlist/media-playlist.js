@@ -188,6 +188,15 @@ export class MediaPlaylist extends SchemaBehaviors(
         .player-area > *::part(frame-header) {
           display: none;
         }
+        /* the player header keeps its actions (captions, transcript,
+           settings, fullscreen); the playlist header already names it */
+        .player-area > *::part(media-header-chip),
+        .player-area > *::part(media-header-text) {
+          display: none;
+        }
+        .player-area > *::part(media-header) {
+          justify-content: flex-end;
+        }
 
         /* Hide the default slot that catches non-active children */
         .slot-hidden {

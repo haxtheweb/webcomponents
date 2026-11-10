@@ -395,21 +395,17 @@ describe("a11y-media-player control bar interactions", () => {
   });
 
   it("clicking the transcript scroll control flips disableScroll", async () => {
-    const scroll = el.shadowRoot.querySelector("#scroll");
-    scroll.shadowRoot
-      .querySelector("#button")
-      .dispatchEvent(
-        new MouseEvent("click", { bubbles: true, composed: true }),
-      );
+    // Scroll Transcript is a toggle in the settings tray
+    const scroll = el.shadowRoot.querySelector("#settings #scroll");
+    expect(scroll.getAttribute("aria-pressed")).to.equal("true");
+    scroll.click();
     await el.updateComplete;
     expect(el.disableScroll).to.equal(true);
-    scroll.shadowRoot
-      .querySelector("#button")
-      .dispatchEvent(
-        new MouseEvent("click", { bubbles: true, composed: true }),
-      );
+    expect(scroll.getAttribute("aria-pressed")).to.equal("false");
+    scroll.click();
     await el.updateComplete;
     expect(el.disableScroll).to.equal(false);
+    expect(scroll.getAttribute("aria-pressed")).to.equal("true");
   });
 });
 
@@ -886,10 +882,10 @@ describe("a11y-media-player audio description controls", () => {
   });
 
   it("renders the audio description button only with a source", async () => {
-    const button = el.shadowRoot.querySelector(
-      'a11y-media-button[icon="av:audio-descriptive-track"]',
-    );
+    // Audio Description is a header action (it was in the control bar)
+    const button = el.shadowRoot.querySelector("#header-audio-description");
     expect(button).to.exist;
+    expect(button.getAttribute("aria-label")).to.equal("Audio Description");
     expect(button.hasAttribute("hidden")).to.equal(false);
     el.audioDescriptionSource = "";
     await el.updateComplete;

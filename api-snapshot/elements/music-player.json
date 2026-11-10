@@ -1,0 +1,30 @@
+{
+  "tag": "music-player",
+  "package": "@haxtheweb/music-player",
+  "source": "elements/music-player/music-player.js",
+  "attributes": {
+    "no-visual": "noVisual",
+    "no-waterfall": "noWaterfall",
+    "source": "source",
+    "t": "t",
+    "visualizer": "visualizer"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/music-player/lib/music-player.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "noWaterfall",
+      "source",
+      "visualizer"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "music-player"
+    ]
+  }
+}

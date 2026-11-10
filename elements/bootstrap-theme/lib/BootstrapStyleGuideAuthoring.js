@@ -55,21 +55,29 @@ function getBootstrapConfigureSections(HAXStore, tag, props) {
   }
 
   if (!props.hideDefaultSettings && !inline && props.designSystem !== false) {
-    layoutProps.push(
-      bootstrapSelectField(
-        "data-text-align",
-        "Text align",
-        "Control text alignment",
-        {
-          "": "-- default --",
-          left: "Left",
-          center: "Center",
-          right: "Right",
-          justify: "Justify",
-        },
-        "icons:format-align-left",
-      ),
+    // designSystem.textAlign: false opts a block out of text alignment
+    const textAlign = !(
+      props.designSystem &&
+      typeof props.designSystem === "object" &&
+      props.designSystem.textAlign === false
     );
+    if (textAlign) {
+      layoutProps.push(
+        bootstrapSelectField(
+          "data-text-align",
+          "Text align",
+          "Control text alignment",
+          {
+            "": "-- default --",
+            left: "Left",
+            center: "Center",
+            right: "Right",
+            justify: "Justify",
+          },
+          "icons:format-align-left",
+        ),
+      );
+    }
     if (["media-image", "img"].includes(tag)) {
       layoutProps.push(
         bootstrapSelectField(

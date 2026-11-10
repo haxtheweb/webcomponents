@@ -1,0 +1,33 @@
+{
+  "tag": "cms-entity",
+  "package": "@haxtheweb/cms-hax",
+  "source": "elements/cms-hax/lib/cms-entity.js",
+  "attributes": {
+    "entitydisplaymode": "entityDisplayMode",
+    "entityendpoint": "entityEndPoint",
+    "entityid": "entityId",
+    "entityprefix": "entityPrefix",
+    "entitysuffix": "entitySuffix",
+    "entitytype": "entityType",
+    "hax-edit-mode": "haxEditMode",
+    "loading": "loading"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/cms-hax/lib/cms-entity.js",
+    "gizmo": true,
+    "properties": [
+      "entityDisplayMode",
+      "entityId",
+      "entityType"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": []
+  }
+}

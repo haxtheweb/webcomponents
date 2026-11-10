@@ -267,13 +267,21 @@ export class DDDSample extends DDDSuper(LitElement) {
     }
   }
 
+  // label for the current type / option; empty when either is unset or
+  // unknown (a bare <d-d-d-sample> has no type yet)
+  get sampleLabel() {
+    const options = this.type ? ApplicationAttributeData[this.type] : null;
+    if (!options || options[this.option] == null) {
+      return "";
+    }
+    return options[this.option];
+  }
+
   render() {
     return html`
       <div class="wrapper">
         <span class="sample" id="sample"></span
-        ><span class="label"
-          >${ApplicationAttributeData[this.type][this.option]}<slot></slot
-        ></span>
+        ><span class="label">${this.sampleLabel}<slot></slot></span>
       </div>
       ${
         this.tooltip
@@ -281,7 +289,7 @@ export class DDDSample extends DDDSuper(LitElement) {
               for="sample"
               fit-to-visible-bounds
               position="top"
-              >${ApplicationAttributeData[this.type][this.option]}</simple-tooltip
+              >${this.sampleLabel}</simple-tooltip
             >`
           : ``
       }

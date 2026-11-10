@@ -6,6 +6,43 @@ import { LitElement, html, css } from "lit";
 import "@haxtheweb/simple-search/lib/simple-search-content.js";
 
 /**
+ * Short form of a cue start time: "0s", "4s", "1m 20s", "1h 2m".
+ * Takes seconds or an "HH:MM:SS" / "MM:SS" string (the cue start attribute).
+ * @param {number|string} value
+ * @returns {string} "" when there is no time
+ */
+export function shortCueTime(value) {
+  let secs = 0;
+  if (typeof value === "number") {
+    secs = value;
+  } else {
+    const text = String(value === undefined || value === null ? "" : value);
+    if (text.trim() === "") {
+      return "";
+    }
+    text
+      .trim()
+      .split(":")
+      .forEach((part) => {
+        const n = parseFloat(part);
+        secs = secs * 60 + (isFinite(n) ? n : 0);
+      });
+  }
+  if (!isFinite(secs) || secs < 0) {
+    secs = 0;
+  }
+  secs = Math.floor(secs);
+  const h = Math.floor(secs / 3600);
+  const m = Math.floor((secs % 3600) / 60);
+  const sec = secs % 60;
+  const out = [];
+  if (h) out.push(`${h}h`);
+  if (m) out.push(`${m}m`);
+  if (sec || out.length === 0) out.push(`${sec}s`);
+  return out.join(" ");
+}
+
+/**
  * `a11y-media-transcript-cue`
  * a single cue in a11y-media-transcriptas static text or as an button that controls media.
  * 
@@ -93,10 +130,24 @@ class A11yMediaTranscriptCue extends LitElement {
       css`
         :host {
           cursor: default;
-          display: table-row;
+          display: block;
+          box-sizing: border-box;
           width: 100%;
-          color: var(--a11y-media-transcript-cue-color);
-          background-color: var(--a11y-media-transcript-cue-bg-color);
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+          border-inline-start: var(--ddd-border-size-md) solid transparent;
+          color: var(--a11y-media-transcript-cue-color, inherit);
+          background-color: var(
+            --a11y-media-transcript-cue-bg-color,
+            transparent
+          );
+          font-size: var(
+            --a11y-media-transcript-cue-font-size,
+            var(--ddd-font-size-5xs)
+          );
+          line-height: var(
+            --a11y-media-transcript-cue-line-height,
+            var(--ddd-lh-140)
+          );
           transition:
             color 0.25s,
             background-color 0.25s;
@@ -113,38 +164,67 @@ class A11yMediaTranscriptCue extends LitElement {
           --simple-search-match-border-radius: 4px;
           --simple-search-match-font-weight: normal;
         }
-        :host([hide-timestamps]) {
-          display: inline;
-        }
-        :host(:not([active]):not([disabled]):active),
-        :host(:not([active]):not([disabled]):focus),
-        :host(:not([active]):not([disabled]):hover) {
+        /* the whole cue highlights on hover / focus, and it is one button
+           that seeks to its start */
+        :host(:not([disabled]):hover),
+        :host(:not([disabled]):focus) {
           cursor: pointer;
-          color: var(--a11y-media-transcript-focused-cue-color);
-          background-color: var(--a11y-media-transcript-focused-cue-bg-color);
-          outline: 1px dotted var(--a11y-media-transcript-focused-cue-color);
+          color: var(--a11y-media-transcript-focused-cue-color, inherit);
+          background-color: var(
+            --a11y-media-transcript-focused-cue-bg-color,
+            transparent
+          );
         }
+        :host(:focus-visible) {
+          outline: var(--ddd-focus-ring);
+          outline-offset: calc(-1 * var(--ddd-focus-offset));
+        }
+        /* the active cue: tinted background, an edge in the accent and a
+           heavier weight, so it never relies on colour alone */
         :host([active]) {
-          color: var(--a11y-media-transcript-active-cue-color);
-          background-color: var(--a11y-media-transcript-active-cue-bg-color);
+          color: var(--a11y-media-transcript-active-cue-color, inherit);
+          background-color: var(
+            --a11y-media-transcript-active-cue-bg-color,
+            transparent
+          );
+          border-inline-start-color: var(
+            --a11y-media-transcript-active-cue-border-color,
+            var(--a11y-media-accent-color, currentColor)
+          );
+          font-weight: var(--ddd-font-weight-medium);
         }
         #text {
-          display: table-cell;
+          display: block;
           width: 100%;
-          line-height: 200%;
         }
-        :host([hide-timestamps]) #text {
-          display: inline;
-        }
+        /* start time only, short form, small type above the text */
         #time {
-          display: table-cell;
-          font-size: 80%;
-          padding: 0 16px 0 0;
+          display: block;
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-6xs);
+          font-weight: var(--ddd-font-weight-medium);
+          font-variant-numeric: tabular-nums;
+          line-height: var(--ddd-lh-140);
           white-space: nowrap;
-          font-family: var(--ddd-font-mono, monospace);
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
+        }
+        :host(:not([disabled]):hover) #time,
+        :host([active]) #time {
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-white)
+          );
         }
         :host([hide-timestamps]) #time {
           display: none;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          :host {
+            transition: none;
+          }
         }
         @media print {
           :host,
@@ -161,7 +241,7 @@ class A11yMediaTranscriptCue extends LitElement {
   }
   render() {
     return html`
-      <span id="time"> ${this.start} - ${this.end} </span>
+      <span id="time">${shortCueTime(this.start)}</span>
       <span id="text">
         <slot></slot>
       </span>

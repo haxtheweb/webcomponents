@@ -1,0 +1,70 @@
+{
+  "tag": "concept-runner-game",
+  "package": "@haxtheweb/micro-game-base",
+  "source": "elements/micro-game-base/lib/concept-runner-game.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "dark": "dark",
+    "done": "done",
+    "duration": "duration",
+    "editmode": "editMode",
+    "element-visible": "elementVisible",
+    "finish-lead": "finishLead",
+    "finish-text": "finishText",
+    "finish-title": "finishTitle",
+    "game-id": "gameId",
+    "game-title": "gameTitle",
+    "hat": "hat",
+    "is-safari": "isSafari",
+    "items": "items",
+    "pass-score": "passScore",
+    "prompt": "prompt",
+    "quest": "quest",
+    "quest-title": "questTitle",
+    "schemamap": "schemaMap",
+    "seed": "seed",
+    "seed-from-user": "seedFromUser",
+    "slow": "slow",
+    "state": "state",
+    "t": "t",
+    "typeof": "typeof"
+  },
+  "slots": [],
+  "events": [
+    "name",
+    "user-engagement"
+  ],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/micro-game-base/lib/concept-runner-game.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "duration",
+      "finishLead",
+      "finishText",
+      "finishTitle",
+      "gameId",
+      "gameTitle",
+      "hat",
+      "items",
+      "items[].kind",
+      "items[].label",
+      "items[].text",
+      "passScore",
+      "prompt",
+      "quest",
+      "questTitle",
+      "seed",
+      "seedFromUser"
+    ],
+    "attributes": [],
+    "slots": [
+      "finish",
+      "finish-actions"
+    ],
+    "demoTags": [
+      "concept-runner-game"
+    ]
+  }
+}

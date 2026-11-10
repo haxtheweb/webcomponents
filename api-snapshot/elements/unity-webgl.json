@@ -1,0 +1,34 @@
+{
+  "tag": "unity-webgl",
+  "package": "@haxtheweb/unity-webgl",
+  "source": "elements/unity-webgl/unity-webgl.js",
+  "attributes": {
+    "t": "t"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [
+    "block-header"
+  ],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/unity-webgl/lib/unity-webgl.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "background",
+      "companyname",
+      "compression",
+      "height",
+      "productname",
+      "productversion",
+      "streamingurl",
+      "target",
+      "width"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "unity-webgl"
+    ]
+  }
+}

@@ -57,8 +57,10 @@ describe("haxcms-site-builder boot", () => {
       const changed = await Builder().prototype._revalidateManifest.call(stub);
       expect(changed).to.equal(false);
       expect(f.calls.length).to.equal(1);
-      expect(f.calls[0].options.cache).to.equal("no-store");
-      expect(f.calls[0].url).to.match(/^\.\/site\.json\?abc&\d+$/);
+      // conditional request on the same URL (304 when unchanged), not a
+      // cache-busted full download
+      expect(f.calls[0].options.cache).to.equal("no-cache");
+      expect(f.calls[0].url).to.equal("./site.json?abc");
       expect(stub.updates.length).to.equal(0);
       expect(stub.pageLoads).to.equal(undefined);
     } finally {
@@ -78,6 +80,36 @@ describe("haxcms-site-builder boot", () => {
     } finally {
       f.restore();
     }
+  });
+
+  it("revalidation keeps a file path without a query string as-is", async () => {
+    const stub = builderStub({ file: "site.json" });
+    const f = stubFetch(() => textResponse('{"items":[]}'));
+    try {
+      await Builder().prototype._revalidateManifest.call(stub);
+      expect(f.calls[0].url).to.equal("./site.json");
+      expect(f.calls[0].options.cache).to.equal("no-cache");
+    } finally {
+      f.restore();
+    }
+  });
+
+  it("revalidation of a real file is answered by the HTTP cache when unchanged", async () => {
+    // a real request against the test server: first a normal load, then the
+    // revalidation; the body read back is identical and nothing is applied
+    const file = new URL(
+      "./fixtures/site-json-revalidate.json",
+      import.meta.url,
+    ).href;
+    const first = await (await fetch(file, { cache: "no-cache" })).text();
+    const stub = builderStub({
+      file,
+      outlineLocation: "",
+      __manifestText: first,
+    });
+    const changed = await Builder().prototype._revalidateManifest.call(stub);
+    expect(changed).to.equal(false);
+    expect(stub.updates.length).to.equal(0);
   });
 
   it("revalidation is skipped for logged-in users (they reload with a stamp)", async () => {

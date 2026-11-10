@@ -1,0 +1,51 @@
+{
+  "tag": "page-section",
+  "package": "@haxtheweb/page-section",
+  "source": "elements/page-section/page-section.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "anchor": "anchor",
+    "bg": "bg",
+    "dark": "dark",
+    "filter": "filter",
+    "fold": "fold",
+    "full": "full",
+    "image": "image",
+    "is-safari": "isSafari",
+    "preset": "preset",
+    "scroller": "scroller",
+    "scroller-label": "scrollerLabel"
+  },
+  "slots": [
+    "(default)",
+    "buttons",
+    "entice"
+  ],
+  "events": [],
+  "cssParts": [
+    "content"
+  ],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/page-section/lib/page-section.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "anchor",
+      "bg",
+      "filter",
+      "fold",
+      "full",
+      "image",
+      "preset",
+      "scroller"
+    ],
+    "attributes": [],
+    "slots": [
+      "buttons",
+      "entice"
+    ],
+    "demoTags": [
+      "page-section"
+    ]
+  }
+}

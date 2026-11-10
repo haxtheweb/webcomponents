@@ -1,0 +1,72 @@
+{
+  "tag": "fill-in-the-blanks",
+  "package": "@haxtheweb/fill-in-the-blanks",
+  "source": "elements/fill-in-the-blanks/fill-in-the-blanks.js",
+  "attributes": {
+    "answers": "answers",
+    "attempts": "attempts",
+    "collapsed": "collapsed",
+    "collapsible": "collapsible",
+    "disabled": "disabled",
+    "displayedanswers": "displayedAnswers",
+    "edit": "edit",
+    "for-course": "forCourse",
+    "grading-format": "gradingFormat",
+    "has-learning-objective": "hasLearningObjective",
+    "hide-buttons": "hideButtons",
+    "is-safari": "isSafari",
+    "max-attempts": "maxAttempts",
+    "media": "media",
+    "missedanswers": "missedAnswers",
+    "numbercorrect": "numberCorrect",
+    "numberguessed": "numberGuessed",
+    "question": "question",
+    "quiz-name": "quizName",
+    "randomize": "randomize",
+    "related-resource": "relatedResource",
+    "schemamap": "schemaMap",
+    "show-answer": "showAnswer",
+    "single-option": "singleOption",
+    "statement": "statement",
+    "t": "t",
+    "typeof": "typeof",
+    "wordlist": "wordList"
+  },
+  "slots": [
+    "content",
+    "evidence",
+    "feedbackCorrect",
+    "feedbackIncorrect",
+    "hint"
+  ],
+  "events": [
+    "eventName",
+    "learner-progress-request",
+    "question-element-state",
+    "user-engagement"
+  ],
+  "cssParts": [
+    "block-header",
+    "image"
+  ],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/fill-in-the-blanks/lib/fill-in-the-blanks.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "collapsed",
+      "collapsible",
+      "forCourse",
+      "gradingFormat",
+      "hasLearningObjective",
+      "question",
+      "quizName",
+      "statement"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "fill-in-the-blanks"
+    ]
+  }
+}

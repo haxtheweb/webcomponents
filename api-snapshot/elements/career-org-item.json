@@ -1,0 +1,30 @@
+{
+  "tag": "career-org-item",
+  "package": "@haxtheweb/career-timeline",
+  "source": "elements/career-timeline/lib/career-org-item.js",
+  "attributes": {
+    "is-safari": "isSafari",
+    "location": "location",
+    "organization": "organization",
+    "source": "source",
+    "t": "t"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/career-timeline/lib/career-org-item.js",
+    "gizmo": true,
+    "properties": [
+      "location",
+      "organization",
+      "source"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": []
+  }
+}

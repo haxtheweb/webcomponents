@@ -1,0 +1,39 @@
+{
+  "tag": "a11y-collapse-group",
+  "package": "@haxtheweb/a11y-collapse",
+  "source": "elements/a11y-collapse/lib/a11y-collapse-group.js",
+  "attributes": {
+    "accordion": "accordion",
+    "disabled": "disabled",
+    "expanded": "expanded",
+    "global-options": "globalOptions",
+    "heading": "heading",
+    "heading-button": "headingButton",
+    "hidden": "hidden",
+    "icon": "icon",
+    "icon-expanded": "iconExpanded",
+    "label": "label",
+    "label-expanded": "labelExpanded",
+    "radio": "radio",
+    "tooltip": "tooltip",
+    "tooltip-expanded": "tooltipExpanded"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/a11y-collapse/lib/a11y-collapse-group.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "radio"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "a11y-collapse-group"
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "tag": "lrndesign-timeline",
+  "package": "@haxtheweb/lrndesign-timeline",
+  "source": "elements/lrndesign-timeline/lrndesign-timeline.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "dark": "dark",
+    "events": "events",
+    "hide-block-header": "hideBlockHeader",
+    "schemamap": "schemaMap",
+    "t": "t",
+    "timeline-size": "timelineSize",
+    "timeline-title": "timelineTitle",
+    "title": "title",
+    "typeof": "typeof"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [
+    "responsive-element"
+  ],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/lrndesign-timeline/lrndesign-timeline.js",
+    "gizmo": true,
+    "properties": [
+      "accentColor",
+      "events",
+      "events[].details",
+      "events[].heading",
+      "events[].imagealt",
+      "events[].imagesrc",
+      "timelineTitle"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "lrndesign-timeline"
+    ]
+  }
+}

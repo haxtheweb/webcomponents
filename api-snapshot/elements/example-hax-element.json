@@ -1,0 +1,28 @@
+{
+  "tag": "example-hax-element",
+  "package": "@haxtheweb/example-hax-element",
+  "source": "elements/example-hax-element/example-hax-element.js",
+  "attributes": {
+    "is-safari": "isSafari",
+    "t": "t",
+    "title": "title"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/example-hax-element/lib/example-hax-element.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "title"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "example-hax-element"
+    ]
+  }
+}

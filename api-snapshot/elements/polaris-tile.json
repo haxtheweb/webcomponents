@@ -1,0 +1,36 @@
+{
+  "tag": "polaris-tile",
+  "package": "@haxtheweb/polaris-theme",
+  "source": "elements/polaris-theme/lib/polaris-tile.js",
+  "attributes": {
+    "editmode": "editMode",
+    "image": "image",
+    "line1": "line1",
+    "line2": "line2",
+    "link": "link",
+    "t": "t",
+    "type": "type"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/polaris-theme/lib/polaris-tile.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "image",
+      "line1",
+      "line2",
+      "link",
+      "type"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "polaris-tile"
+    ]
+  }
+}

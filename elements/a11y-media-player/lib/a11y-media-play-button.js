@@ -50,20 +50,49 @@ class A11yMediaPlayButton extends A11yMediaButton {
           opacity: 1;
           transition: opacity var(--ddd-duration-slow, 0.6s);
         }
+        /* the whole picture stays the click target; the visible control is
+           a round button in the middle, with nothing drawn over it */
         #button {
           position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           height: 100%;
           padding: 0;
-          background: var(--a11y-play-button-bg-color);
+          cursor: pointer;
+          background: var(--a11y-play-button-bg-color, transparent);
         }
         #button:focus,
         #button:hover {
-          background: var(--a11y-play-button-focus-bg-color);
-          opacity: var(--ddd-opacity-20, 0.2);
+          background: var(--a11y-play-button-focus-bg-color, transparent);
+        }
+        #svg {
+          width: var(--a11y-play-button-size, var(--ddd-icon-lg, 56px));
+          height: var(--a11y-play-button-size, var(--ddd-icon-lg, 56px));
+          opacity: 0.85;
+          transition: opacity 0.25s;
+        }
+        #button:focus #svg,
+        #button:hover #svg {
+          opacity: 1;
+        }
+        #circle {
+          fill: light-dark(
+            var(--ddd-theme-default-nittanyNavy, #001e44),
+            var(--ddd-theme-default-potentialMidnight, #000321)
+          );
+          stroke: var(--ddd-theme-default-white, #ffffff);
         }
         #arrow {
-          stroke: #ffffff;
-          fill: #000000;
+          fill: var(--ddd-theme-default-white, #ffffff);
+          stroke: none;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          :host,
+          #button,
+          #svg {
+            transition: none;
+          }
         }
         @media print {
           :host,
@@ -107,9 +136,6 @@ class A11yMediaPlayButton extends A11yMediaButton {
                   viewBox="0 0 70 60"
                   preserveAspectRatio="xMidYMid meet"
                   focusable="false"
-                  width="30%"
-                  height="30%"
-                  opacity="0.5"
                 >
                   <g
                     viewBox="0 0 70 60"
@@ -138,21 +164,12 @@ class A11yMediaPlayButton extends A11yMediaButton {
                 <svg
                   id="svg"
                   aria-hidden="true"
+                  focusable="false"
                   xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 200 200"
-                  width="30%"
-                  height="30%"
-                  opacity="0.5"
+                  viewBox="0 0 100 100"
                 >
-                  <g>
-                    <polygon
-                      id="arrow"
-                      points="30,20 30,180 170,100"
-                      fill="#000000"
-                      stroke="#ffffff"
-                      stroke-width="15px"
-                    ></polygon>
-                  </g>
+                  <circle id="circle" cx="50" cy="50" r="46" stroke-width="4" />
+                  <polygon id="arrow" points="40,30 40,70 72,50"></polygon>
                 </svg>
               `
         }

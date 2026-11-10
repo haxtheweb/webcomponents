@@ -1,0 +1,26 @@
+{
+  "tag": "lesson-overview",
+  "package": "@haxtheweb/haxcms-elements",
+  "source": "elements/haxcms-elements/lib/ui-components/lesson-overview/lesson-overview.js",
+  "attributes": {
+    "element-visible": "elementVisible",
+    "t": "t"
+  },
+  "slots": [
+    "(default)",
+    "prefix"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/haxcms-elements/lib/ui-components/lesson-overview/lib/lesson-overview.haxProperties.json",
+    "gizmo": true,
+    "properties": [],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "lesson-overview"
+    ]
+  }
+}

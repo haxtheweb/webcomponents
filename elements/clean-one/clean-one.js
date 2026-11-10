@@ -19,7 +19,7 @@ import "@haxtheweb/scroll-button/scroll-button.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-tags.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
-import "@haxtheweb/haxcms-elements/lib/ui-components/progress/site-page-progress.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/progress/my-learning-button.js";
 import "./lib/clean-one-search-box.js";
 import { PrintBranchMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/PrintBranchMixin.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
@@ -193,7 +193,6 @@ class CleanOne extends LTIResizingMixin(
         }
         simple-icon-button,
         simple-icon-button-lite,
-        site-rss-button,
         site-print-button,
         site-git-corner {
           color: var(--ddd-lightDark-1);
@@ -215,6 +214,15 @@ class CleanOne extends LTIResizingMixin(
         .print-branch-btn {
           padding: 8px 4px;
           display: inline-flex;
+        }
+        /* My learning: in the toolbar row right after the menu button; on mobile,
+           where that row is hidden, bottom-left mirroring the page
+           navigation cluster (see the max-width md rules) */
+        .learning-btn {
+          margin-inline-start: var(--ddd-spacing-1);
+        }
+        footer .learning-btn-mobile {
+          display: none;
         }
         site-breadcrumb {
           min-height: 48px;
@@ -297,8 +305,7 @@ class CleanOne extends LTIResizingMixin(
         .pull-left > simple-icon-button-lite,
         .pull-left > simple-icon-button,
         .pull-right > div > simple-icon-button-lite,
-        .pull-left > site-print-button simple-icon-button-lite,
-        .pull-right > site-rss-button simple-icon-button-lite {
+        .pull-right > site-print-button simple-icon-button-lite {
           padding: 8px;
         }
         #emailbtnwrapper {
@@ -311,6 +318,7 @@ class CleanOne extends LTIResizingMixin(
         }
         @media (prefers-reduced-motion: reduce) {
           #site-search-input,
+          .site-header,
           .site-body,
           .navigation,
           .menu-outline {
@@ -459,6 +467,18 @@ class CleanOne extends LTIResizingMixin(
             padding: 0 4px;
           }
         }
+        /* the toolbar row spans the content area beside the menu (open or
+           closed), so the controls at its right end (PDF, Print, QR) are on
+           screen instead of past the edge of the viewport */
+        .site-header {
+          left: 0;
+          right: 0;
+          width: auto;
+          transition: left var(--ddd-duration-normal, 0.3s) ease-in-out;
+        }
+        :host([menu-open]) .site-header {
+          left: var(--ddd-theme-sidebar-width, 300px);
+        }
         @media (max-width: ${bpBelowMd}px) {
           /* hide the top bar (print/PDF/QR/RSS/git controls and the desktop
              menu button) on mobile; the menu open/close control is relocated
@@ -491,6 +511,26 @@ class CleanOne extends LTIResizingMixin(
           }
           :host([menu-open]) footer {
             left: var(--ddd-theme-sidebar-width, 300px);
+          }
+          footer {
+            padding-bottom: max(
+              var(--ddd-spacing-3),
+              env(safe-area-inset-bottom)
+            );
+            padding-right: max(
+              var(--ddd-spacing-3),
+              env(safe-area-inset-right)
+            );
+          }
+          footer .learning-btn-mobile:not([hidden]) {
+            display: inline-flex;
+            align-self: center;
+            margin-inline-start: max(
+              var(--ddd-spacing-3),
+              env(safe-area-inset-left)
+            );
+            margin-inline-end: auto;
+            pointer-events: auto;
           }
           footer nav {
             display: flex;
@@ -561,6 +601,7 @@ class CleanOne extends LTIResizingMixin(
             color: var(--ddd-lightDark-6);
             margin: 0;
             padding: 0;
+            padding-bottom: env(safe-area-inset-bottom, 0);
           }
         }
         @media (max-width: ${bpBelowLg}px) {
@@ -784,6 +825,13 @@ class CleanOne extends LTIResizingMixin(
                       ? this.HAXCMSMobileMenuButton()
                       : ``
                   }
+                  <my-learning-button
+                    class="learning-btn"
+                    part="my-learning-btn"
+                  ></my-learning-button>
+                </div>
+                <div class="pull-right">
+                  ${this.PDFPageButton("bottom")}
                   ${
                     MicroFrontendRegistry.has("@system/siteToHtml")
                       ? this.PrintBranchButton("bottom")
@@ -794,15 +842,7 @@ class CleanOne extends LTIResizingMixin(
                           ></site-print-button>
                         `
                   }
-                  ${this.PDFPageButton("bottom")}
-                </div>
-                <div class="pull-right">
                   ${this.QRCodeButton()}
-                  <site-rss-button
-                    type="rss"
-                    class="btn js-toolbar-action"
-                    part="rss-btn"
-                  ></site-rss-button>
                   <site-git-corner
                     size="small"
                     part="git-corner-btn"
@@ -827,10 +867,6 @@ class CleanOne extends LTIResizingMixin(
                   auto-accent-color
                   ?hidden="${this.searchTerm != "" ? true : false}"
                 ></site-active-tags>
-                <site-page-progress
-                  part="page-progress"
-                  ?hidden="${this.searchTerm !== ""}"
-                ></site-page-progress>
                 <div class="normal main-section ddd-reading">
                   <site-search
                     hide-input
@@ -851,6 +887,10 @@ class CleanOne extends LTIResizingMixin(
             </main>
           </div>
           <footer>
+            <my-learning-button
+              class="learning-btn-mobile"
+              part="my-learning-btn-mobile"
+            ></my-learning-button>
             <nav aria-label="${this.t.pageNavigation}">
               <site-menu-button
                 type="prev"
@@ -938,10 +978,6 @@ class CleanOne extends LTIResizingMixin(
     // prettier-ignore
     import(
        "@haxtheweb/haxcms-elements/lib/ui-components/site/site-print-button.js"
-     );
-    // prettier-ignore
-    import(
-       "@haxtheweb/haxcms-elements/lib/ui-components/site/site-rss-button.js"
      );
     // prettier-ignore
     import(

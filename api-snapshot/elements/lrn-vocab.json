@@ -1,0 +1,28 @@
+{
+  "tag": "lrn-vocab",
+  "package": "@haxtheweb/lrn-vocab",
+  "source": "elements/lrn-vocab/lrn-vocab.js",
+  "attributes": {
+    "description": "description",
+    "schemamap": "schemaMap",
+    "term": "term",
+    "typeof": "typeof"
+  },
+  "slots": [],
+  "events": [
+    "simple-modal-show"
+  ],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/lrn-vocab/lrn-vocab.js",
+    "gizmo": true,
+    "properties": [
+      "description",
+      "term"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": []
+  }
+}
