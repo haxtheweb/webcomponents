@@ -70,7 +70,7 @@
     ]
   },
   "saveOptions": {
-    "unsetAttributes": ["expanded"]
+    "unsetAttributes": ["expanded", "t"]
   },
   "demoSchema": [
     {
