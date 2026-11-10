@@ -3,7 +3,11 @@ import { CollectionList } from "@haxtheweb/collection-list/collection-list.js";
 import "@haxtheweb/collection-list/lib/collection-item.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/query/site-query.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
-import { I18NManagerStore } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import {
+  I18NManagerStore,
+  releaseLocalization,
+  restoreLocalization,
+} from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 // site-collection-list that automatically renders based on criteria from the sitee.json
 export class SiteCollectionList extends CollectionList {
@@ -33,6 +37,15 @@ export class SiteCollectionList extends CollectionList {
       namespace: "haxcms",
       localesPath: new URL("../../../locales/", import.meta.url).href,
     });
+  }
+  // release the manager's registration while off the page, restore it on return
+  connectedCallback() {
+    super.connectedCallback();
+    restoreLocalization(this);
+  }
+  disconnectedCallback() {
+    releaseLocalization(this);
+    super.disconnectedCallback();
   }
   render() {
     return html`

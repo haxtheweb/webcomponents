@@ -195,6 +195,10 @@ class UnityWebgl extends I18NMixin(HTMLElement) {
    * life cycle, element is afixed to the DOM
    */
   connectedCallback() {
+    // I18NMixin restores its i18n-manager registration here
+    if (super.connectedCallback) {
+      super.connectedCallback();
+    }
     if (globalThis.ShadyCSS) {
       globalThis.ShadyCSS.styleElement(this);
     }
@@ -209,6 +213,10 @@ class UnityWebgl extends I18NMixin(HTMLElement) {
    */
   disconnectedCallback() {
     listenDDDBlockFullscreen(this._fullscreenChanged, false);
+    // I18NMixin releases its i18n-manager registration here
+    if (super.disconnectedCallback) {
+      super.disconnectedCallback();
+    }
   }
   /**
    * Render / rerender the shadowRoot

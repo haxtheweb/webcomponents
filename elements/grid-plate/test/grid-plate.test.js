@@ -620,3 +620,61 @@ describe('Test Desktop Responsiveness', () => {
       expect(hidden).to.equal(true);
     })
 }) */
+
+// grid-plate is in authored content on every site and the HAX editor moves
+// blocks by removing and re-adding them: its columns must follow its width
+// before and after a move (guards the responsive-utility lifecycle work).
+describe("GridPlate responsive width across moves", () => {
+  const resized = () => new Promise((r) => setTimeout(r, 120));
+  // resizing the columns resizes the host inside the same frame; browsers
+  // report that as a benign "ResizeObserver loop" error, which mocha would
+  // count as a failure
+  let savedOnError;
+  beforeEach(() => {
+    savedOnError = globalThis.onerror;
+    globalThis.onerror = function (msg, ...rest) {
+      if (/ResizeObserver loop/.test(String(msg))) {
+        return true;
+      }
+      return savedOnError ? savedOnError.call(this, msg, ...rest) : false;
+    };
+  });
+  afterEach(() => {
+    globalThis.onerror = savedOnError;
+  });
+
+  it("follows container resizes before and after a move", async () => {
+    const wrap = await fixture(
+      html`<div>
+        <div id="first" style="width:1300px">
+          <grid-plate layout="1-1">
+            <p slot="col-1">One</p>
+            <p slot="col-2">Two</p>
+          </grid-plate>
+        </div>
+        <div id="second" style="width:700px"></div>
+      </div>`,
+    );
+    const el = wrap.querySelector("grid-plate");
+    await el.updateComplete;
+    await resized();
+    expect(el.responsiveSize).to.equal("lg");
+
+    wrap.querySelector("#first").style.width = "500px";
+    await resized();
+    expect(el.responsiveSize).to.equal("xs");
+
+    el.remove();
+    wrap.querySelector("#second").appendChild(el);
+    await resized();
+    expect(el.responsiveSize).to.equal("sm");
+
+    wrap.querySelector("#second").style.width = "1000px";
+    await resized();
+    expect(el.responsiveSize).to.equal("md");
+    await el.updateComplete;
+    // two equal columns side by side again at md
+    const cols = el.shadowRoot.querySelectorAll(".column");
+    expect(cols[0].offsetTop).to.equal(cols[1].offsetTop);
+  });
+});

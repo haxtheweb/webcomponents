@@ -67,6 +67,37 @@ export class PostCard extends LitElement {
     }, 0);
   }
   /**
+   * i18n-manager keeps what is registered with it: release this card while
+   * it is off the page and register it again when it comes back (the HAX
+   * editor moves elements by removing and re-adding them). Same as
+   * releaseLocalization / restoreLocalization in i18n-manager's I18NMixin.js,
+   * looked up at runtime so post-card keeps registering without importing
+   * the manager.
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    const manager =
+      globalThis.I18NManagerStore && globalThis.I18NManagerStore.instance;
+    if (this.__i18nReleased && manager) {
+      this.__i18nReleased.forEach((detail) =>
+        manager.registerLocalization(detail),
+      );
+    }
+    this.__i18nReleased = null;
+  }
+  disconnectedCallback() {
+    const manager =
+      globalThis.I18NManagerStore && globalThis.I18NManagerStore.instance;
+    if (manager && manager.deregisterLocalization && manager.elements) {
+      const details = manager.elements.filter((e) => e.context === this);
+      if (details.length) {
+        this.__i18nReleased = details;
+        manager.deregisterLocalization(this);
+      }
+    }
+    super.disconnectedCallback();
+  }
+  /**
    * LitElement / popular convention
    */
   static get properties() {
