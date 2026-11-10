@@ -63,12 +63,20 @@ function textResponse(status, text) {
   });
 }
 
+// successful answers handed out in the current test (see afterEach)
+let okAnswers = 0;
+
 // what a backend answers on success (OpenAPI SiteOutlineResponse)
 function okResponse(items) {
+  okAnswers++;
   return jsonResponse(200, { status: 200, data: { items: items } });
 }
 
 const tick = (ms = 0) => new Promise((r) => setTimeout(r, ms));
+
+// haxcms-site-editor shows "Outline saved!" this long after a save succeeds
+// (_handleOutlineResponse); wait past it before claiming no success was shown
+const OUTLINE_SAVED_TOAST_DELAY = 300;
 
 // items as they go on the wire. The test runner tags objects it has logged
 // with __WTR_CONSTRUCTOR_NAME__; that tag is not part of the outline.
@@ -138,6 +146,7 @@ describe("outline-designer Save Outline under injected faults", () => {
       list: MicroFrontendRegistry.list.slice(),
     };
     outlineCalls = [];
+    okAnswers = 0;
     answers = [];
     toasts = [];
     hides = 0;
@@ -196,7 +205,11 @@ describe("outline-designer Save Outline under injected faults", () => {
     };
   });
 
-  afterEach(() => {
+  afterEach(async () => {
+    // a successful save shows its toast on a timer; let each one land here,
+    // in its own test, so it cannot show up in the next test's toasts.
+    // Isolation only: a failure here would abort the rest of the suite.
+    await waitUntil(() => successToasts().length >= okAnswers).catch(() => {});
     sinon.restore();
     restoreDialogs();
     globalThis.removeEventListener("haxcms-toast-show", onToast);
@@ -297,6 +310,10 @@ describe("outline-designer Save Outline under injected faults", () => {
 
   function dangerToasts() {
     return toasts.filter((t) => t.tone === "danger");
+  }
+
+  function successToasts() {
+    return toasts.filter((t) => t.tone === "success");
   }
 
   it("sends the whole outline as one PATCH when the server is fine", async () => {
@@ -469,7 +486,9 @@ describe("outline-designer Save Outline under injected faults", () => {
     await clickSave();
     await expectFailedSaveKeptEverything(intended);
     expect(dangerToasts().length).to.equal(1);
-    expect(toasts.filter((t) => t.tone === "success").length).to.equal(0);
+    // a success toast would only appear after its delay
+    await tick(OUTLINE_SAVED_TOAST_DELAY + 100);
+    expect(successToasts().length).to.equal(0);
     await expectRetrySendsEverything(intended);
   });
 
