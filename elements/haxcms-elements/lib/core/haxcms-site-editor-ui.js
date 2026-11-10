@@ -51,6 +51,11 @@ import {
   resolveSiteAdminRoute,
   siteAdminRouteCapability,
 } from "./admin/site-admin-sections.js";
+import {
+  handleDockedMerlinRow,
+  isDockedAdminOpen,
+  closeDockedAdmin,
+} from "./admin/docked-admin.js";
 
 const ADMIN_ROUTE_QUERY_PATHS = {
   admin: "admin",
@@ -8517,18 +8522,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
    * holding the one admin dialog.
    */
   _syncAdminDocked() {
-    const modal =
-      globalThis.SimpleModal && globalThis.SimpleModal.instance
-        ? globalThis.SimpleModal.instance
-        : null;
-    const shell = this.__siteAdminShell;
-    const docked = !!(
-      modal &&
-      modal.opened &&
-      modal.docked &&
-      shell &&
-      shell.parentNode === modal
-    );
+    const docked = isDockedAdminOpen(this.__siteAdminShell);
     if (this.adminDocked !== docked) {
       this.adminDocked = docked;
     }
@@ -8603,84 +8597,28 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this._siteAdminGuard(() => this._logout());
   }
   /**
-   * Merlin stays live above the docked admin dialog, so a command picked
-   * there must not drop unsaved admin changes or run while a section holds
-   * its own copy of the site (outline-designer keeps its tree until Save).
-   * - Admin commands (CMS/admin/...) move the dialog to that section; with
-   *   unsaved changes the section asks first.
-   * - Any other command closes the dialog first, asking first when there
-   *   are unsaved changes, then runs.
+   * Merlin stays live above the docked dialog: admin commands (CMS/admin/...)
+   * move it, anything else closes it first, and unsaved changes are asked
+   * about first (docked-admin.js has the rules).
    */
   _merlinRowSelectedWhileDocked(e) {
-    if (!this.adminDocked || this.__merlinReplaying) {
+    if (!this.adminDocked) {
       return;
     }
-    const row = e && e.detail ? e.detail : null;
-    if (!row || !row.eventName) {
-      return;
-    }
-    const path = typeof row.path === "string" ? row.path : "";
-    const adminCommand = path.indexOf("CMS/admin/") === 0;
-    const shell = this.__siteAdminShell;
-    const needsCheck = !!(shell && shell.isConnected && shell.needsLeaveCheck);
-    if (adminCommand && !needsCheck) {
-      return;
-    }
-    e.preventDefault();
-    const eventName = row.eventName;
-    const value = row.value;
-    const isProgram = eventName === "super-daemon-run-program";
-    const run = () => {
-      this.__merlinReplaying = true;
-      try {
-        this.dispatchEvent(
-          new CustomEvent(eventName, {
-            composed: true,
-            bubbles: true,
-            cancelable: true,
-            detail: value,
-          }),
-        );
-      } finally {
-        this.__merlinReplaying = false;
-      }
-      // as a selected row does: a single command closes Merlin, a program
-      // keeps it open for its next step
-      if (!isProgram) {
-        SuperDaemonInstance.close();
-      }
-    };
-    if (!needsCheck) {
-      this._closeDockedAdmin();
-      run();
-      return;
-    }
-    // the leave prompt is in the dialog; Merlin gets out of its way
-    SuperDaemonInstance.close();
-    this._siteAdminGuard(() => {
-      if (adminCommand) {
-        run();
-        return;
-      }
-      this._closeDockedAdmin();
-      // a program asks its next step in Merlin, which is closed now, so it
-      // is picked again rather than run blind
-      if (!isProgram) {
-        run();
-      }
+    handleDockedMerlinRow(e, {
+      host: this,
+      dialog: this.__siteAdminShell,
+      isAdminCommand: (path) => path.indexOf("CMS/admin/") === 0,
+      closeDialog: () => this._closeDockedAdmin(),
+      guard: (proceed) => this._siteAdminGuard(proceed),
+      closeMerlin: () => SuperDaemonInstance.close(),
     });
   }
   _closeDockedAdmin() {
     if (!this.adminDocked) {
       return;
     }
-    globalThis.dispatchEvent(
-      new CustomEvent("simple-modal-hide", {
-        bubbles: true,
-        cancelable: true,
-        detail: {},
-      }),
-    );
+    closeDockedAdmin();
   }
   /**
    * Run `proceed`, first asking the one admin dialog to confirm leaving

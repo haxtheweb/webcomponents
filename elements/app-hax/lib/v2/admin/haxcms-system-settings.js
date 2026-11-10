@@ -3565,24 +3565,68 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
     this._pendingPanel = "";
   }
 
+  /**
+   * True while the open panel has unsaved changes, so whoever would close
+   * or replace this dialog asks first (the dashboard bar does while the
+   * dialog is docked below it). Same contract as haxcms-site-admin.
+   */
+  get needsLeaveCheck() {
+    return this._isPanelDirty(this.activePanel);
+  }
+
+  /**
+   * Run `proceed` once it is safe to leave: right away with nothing
+   * unsaved, otherwise after the person saves or discards in the leave
+   * prompt (Stay cancels). Returns true when it ran right away.
+   */
+  requestLeave(proceed) {
+    if (!this.needsLeaveCheck) {
+      if (typeof proceed === "function") {
+        proceed();
+      }
+      return true;
+    }
+    this.__pendingLeave = typeof proceed === "function" ? proceed : null;
+    // the prompt shows while a panel is pending; the active one means
+    // "leave this dialog" rather than "open another panel"
+    this._pendingPanel = this.activePanel;
+    return false;
+  }
+
   _closeLeavePrompt() {
     this._pendingPanel = "";
+    this.__pendingLeave = null;
+  }
+
+  _takePendingLeave() {
+    const leave = this.__pendingLeave;
+    this.__pendingLeave = null;
+    return leave;
   }
 
   _leaveDiscard() {
     const next = this._pendingPanel;
+    const leave = this._takePendingLeave();
     this._discardPanel(this.activePanel);
     this._pendingPanel = "";
-    if (next) {
+    if (leave) {
+      leave();
+    } else if (next) {
       this._openPanel(next);
     }
   }
 
   async _leaveSave() {
     const next = this._pendingPanel;
+    const leave = this._takePendingLeave();
     this._pendingPanel = "";
     await this._saveActivePanel();
-    if (next && this._saveTone === "saved") {
+    if (this._saveTone !== "saved") {
+      return;
+    }
+    if (leave) {
+      leave();
+    } else if (next) {
       this._openPanel(next);
     }
   }
