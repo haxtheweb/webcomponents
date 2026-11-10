@@ -12,9 +12,9 @@ import globals from "globals";
  * formatting authority (see .prettierrc.json); `eslint-config-prettier` is
  * applied last to disable any ESLint stylistic rules that could conflict.
  *
- * This is an initial, non-blocking rollout (see .github/workflows/build.yml)
- * across 2000+ pre-existing files, so rules here are deliberately limited to
- * correctness + a couple of team-specific conventions rather than a full
+ * ESLint errors fail CI (see .github/workflows/build.yml); warnings do not.
+ * The rules cover 2000+ pre-existing files, so they are deliberately limited
+ * to correctness + a couple of team-specific conventions rather than a full
  * stylistic ruleset. Do not add stylistic/formatting rules here; those
  * belong in Prettier.
  */

@@ -55,8 +55,8 @@ const CONFIG = {
     // eslint.config.mjs only covers elements/**/*.js, and CI runs `eslint elements`.
     scope: ["elements/"],
     allTargets: ["elements"],
-    // CI runs ESLint with continue-on-error, so it is advisory here too.
-    blocking: false,
+    // ESLint errors fail CI (build.yml), so they block here too.
+    blocking: true,
   },
   stylelint: {
     pattern: /\.css$/,
@@ -79,8 +79,8 @@ const CONFIG = {
       args: ["scripts/generate-xapi-vocabulary.mjs", "--check"],
     },
     {
-      // CSS in css`` templates that browsers would silently drop. Advisory,
-      // like ESLint: known cases live in scripts/css-template-check.baseline.json
+      // CSS in css`` templates that browsers would silently drop. Advisory:
+      // known cases live in scripts/css-template-check.baseline.json
       label: "CSS template syntax",
       args: ["scripts/css-template-check.mjs"],
       blocking: false,

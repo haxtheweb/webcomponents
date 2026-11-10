@@ -219,6 +219,11 @@ yarn start
 - CSS is formatted with Stylelint
 - Run `yarn run format` to format all files
 
+**Linting:**
+- `yarn lint` runs ESLint on `elements/`. An ESLint error fails CI; warnings do not. `yarn lint:fix` fixes what it can
+- Existing `==` comparisons are recorded in `eslint-suppressions.json`; new code uses `===`
+- `yarn precheck` lints the files you changed before you push
+
 **Documentation:**
 - Add JSDoc comments to all public methods and properties
 - Update component README files
