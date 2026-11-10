@@ -2,11 +2,12 @@
 // page behind the dialog is inert, and anything on the bar or in Merlin that
 // would leave the dialog asks about unsaved changes first.
 import { fixture, expect, html, aTimeout } from "@open-wc/testing";
-import { sendKeys } from "@web/test-runner-commands";
+import { sendKeys, setViewport } from "@web/test-runner-commands";
 import "web-dialog/index.js";
 import "@haxtheweb/simple-modal/simple-modal.js";
 import { SimpleModalCssVars } from "@haxtheweb/simple-modal/simple-modal.js";
 import "../lib/core/haxcms-site-editor-ui.js";
+import { HaxUiBaseStyles } from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
 import {
   SITE_ADMIN_MODAL_STYLES,
   SITE_ADMIN_MODAL_DOCKED_SIZE,
@@ -369,5 +370,83 @@ describe("keyboard reach with the admin dialog docked", () => {
       expect(inBar()).to.equal(false);
       expect(deepActive()).to.not.equal(pageLink);
     }
+  });
+});
+
+// once the editor loads, hax-body puts HaxUiBaseStyles in the page, and they
+// pin every open simple-modal at a high z-index; the docked bar and its menus
+// must still paint above the dialog, and Merlin above the bar
+describe("stacking with the HAX editor's page styles", () => {
+  let el;
+  let shell;
+  let pageStyles;
+  let daemon;
+
+  beforeEach(async () => {
+    pageStyles = globalThis.document.createElement("style");
+    pageStyles.textContent = HaxUiBaseStyles.map((st) => st.cssText).join("");
+    globalThis.document.head.appendChild(pageStyles);
+    el = await fixture(html`<haxcms-site-editor-ui></haxcms-site-editor-ui>`);
+    await aTimeout(0);
+    shell = makeShell(false);
+    el.__siteAdminShell = shell;
+    // super-daemon's layer as base.css gives it, later in the page than the bar
+    daemon = globalThis.document.createElement("div");
+    daemon.style.cssText =
+      "position:fixed;top:0;left:0;width:40px;height:40px;z-index:100000002";
+    globalThis.document.body.appendChild(daemon);
+  });
+
+  afterEach(async () => {
+    hideModal();
+    await settle();
+    pageStyles.remove();
+    daemon.remove();
+  });
+
+  it("paints the docked bar's user menu above the open dialog", async () => {
+    await setViewport({ width: 1440, height: 900 });
+    // the app clears painting once the site has loaded
+    el.painting = false;
+    showDocked(shell);
+    await settle(400);
+    await el.updateComplete;
+    const modal = globalThis.document.querySelector("simple-modal");
+    const modalZ = Number(getComputedStyle(modal).zIndex);
+    const barZ = Number(getComputedStyle(el).zIndex);
+    expect(modalZ, "hax-ui-styles still pins the open modal").to.be.above(
+      100000000,
+    );
+    expect(barZ).to.be.above(modalZ);
+    // open the real user menu and hit-test inside its dropdown, where it
+    // overlaps the docked dialog
+    const userMenu = el.shadowRoot.querySelector("#user-menu");
+    el.userMenuOpen = true;
+    await el.updateComplete;
+    await userMenu.updateComplete;
+    const drop = userMenu.shadowRoot.querySelector(".user-menu.open");
+    const r = drop.getBoundingClientRect();
+    const x = r.left + r.width / 2;
+    const y = r.bottom - 8;
+    const modalTop = modal.shadowRoot
+      .querySelector("web-dialog")
+      .shadowRoot.querySelector("#dialog")
+      .getBoundingClientRect().top;
+    expect(y, "probe point is over the dialog").to.be.above(modalTop);
+    // booleans, not elements: a failed match on DOM nodes stalls the runner
+    const hitIsBar = globalThis.document.elementFromPoint(x, y) === el;
+    expect(hitIsBar).to.equal(true);
+    el.userMenuOpen = false;
+  });
+
+  it("keeps Merlin above the docked bar", async () => {
+    showDocked(shell);
+    await settle(400);
+    await el.updateComplete;
+    expect(Number(getComputedStyle(daemon).zIndex)).to.be.at.least(
+      Number(getComputedStyle(el).zIndex),
+    );
+    const hitIsDaemon = globalThis.document.elementFromPoint(20, 20) === daemon;
+    expect(hitIsDaemon).to.equal(true);
   });
 });

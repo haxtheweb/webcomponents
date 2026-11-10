@@ -124,10 +124,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         :host([edit-mode]) {
           z-index: 9999;
         }
-        /* the admin dialog is docked below the bar: the bar (and its menus)
-           stays above the dialog, and Merlin stays above the bar */
+        /* the admin dialog is docked below the bar: the bar (and its user
+           and site menus) stays above the dialog, which hax-ui-styles pins
+           at 100000001 once the editor loads. Merlin (super-daemon) shares
+           this layer and comes later in the page, so it stays on top. */
         :host([admin-docked]) {
-          z-index: 100000001;
+          z-index: 100000002;
         }
         :host *[hidden] {
           display: none;
