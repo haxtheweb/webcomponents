@@ -1058,15 +1058,6 @@
         "demo-snippet >> #codeDisplay >> .ddd-block-label": 1
       }
     },
-    "instructional-cadence": {
-      "dark": {
-        "instructional-cadence >> .miss > a[title=\"Lesson Introduction\"]": 2,
-        "instructional-cadence >> .miss > a[title=\"Urbanized\"]": 2,
-        "instructional-cadence >> li > ul > .miss > a": 2,
-        "instructional-cadence >> li > ul > .miss > a[title=\"Lesson Outline\"]": 4,
-        "instructional-cadence >> li > ul > .pass": 80
-      }
-    },
     "jwt-login": {
       "dark": {
         "demo-snippet >> #codeDisplay >> #copyButton": 2,
