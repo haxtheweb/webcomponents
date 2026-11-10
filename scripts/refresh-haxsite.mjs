@@ -184,14 +184,26 @@ function listFiles(dir, base = dir) {
 // Twig.js cannot render every template (service-worker.js uses `constant()`),
 // and the core leaves such a file as the raw template. That is the same thing a
 // normal HAXcms save produces, so we keep parity, but say so out loud.
+// Markdown that shows Twig syntax as documentation (AGENTS.md lists the theme
+// variables as `{{ title }}` and so on) is not a leftover, so code spans and
+// fenced blocks are ignored there.
+function withoutMarkdownCode(text) {
+  return text.replace(/^(```|~~~)[\s\S]*?^\1/gm, "").replace(/`[^`\n]*`/g, "");
+}
 const unrendered = [...managed].filter((rel) => {
   const f = path.join(work, rel);
-  return (
-    fs.existsSync(f) &&
-    fs.statSync(f).isFile() &&
-    /\.(html|json|js|cjs|xml|txt|php|md)$/.test(rel) &&
-    /\{\{|\{%/.test(fs.readFileSync(f, "utf8"))
-  );
+  if (
+    !fs.existsSync(f) ||
+    !fs.statSync(f).isFile() ||
+    !/\.(html|json|js|cjs|xml|txt|php|md)$/.test(rel)
+  ) {
+    return false;
+  }
+  let text = fs.readFileSync(f, "utf8");
+  if (rel.endsWith(".md")) {
+    text = withoutMarkdownCode(text);
+  }
+  return /\{\{|\{%/.test(text);
 });
 
 const added = [];
