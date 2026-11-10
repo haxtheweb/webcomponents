@@ -2390,10 +2390,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       changeSiteSettings: "Change site settings",
       dontShowThisWelcomeAgain: "Don't show this welcome again",
       showGettingStartedTasks: "Show getting started tasks",
-      previewAudienceMode: "Preview audience mode",
-      changePlatformAudienceDescription:
-        "Change platform audience just for the current browsing session",
-      haxLabs: "HAX Labs",
       unlockAllThemes: "Unlock all themes",
       pageDataFormats: "Page data formats",
       switchToAnotherSite: "Switch to another site",
@@ -2401,6 +2397,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       exportThisPage: "Export this page",
       exportThisSite: "Export this site",
       preview: "Preview",
+      visitorAndDevicePreview: "Visitor and Device Preview",
       previewDescription:
         "See this site as a visitor would, on the device you pick, without logging out",
       uxStudy: "UX study recording",
@@ -2488,6 +2485,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       cheatCodesUnlocked:
         "🎮 Cheat codes unlocked! Check Merlin for new programs.",
       failedToUnlockCheatCodes: "🎮 Failed to unlock cheat codes",
+      cheatCodes: "Cheat codes (↑↑↓↓←→←→ B A)",
+      cheatCodesDescription:
+        "Unlock silly extras. Or type up up down down left right left right B A anywhere, even with Merlin open.",
       platformSettings: "Platform settings",
       selectFileEllipsis: "Select file..",
     };
@@ -5389,66 +5389,20 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         },
       },
     });
-    // change platform audience, only load if the site supports platformConfigs
+    // the Konami code, listed with the developer commands so people know
+    // the silly extras exist; running it does what typing the code does
     SuperDaemonInstance.defineOption({
-      i18n: {
-        context: this,
-        title: "previewAudienceMode",
-        "value.name": "previewAudienceMode",
-      },
-      title: this.t.previewAudienceMode,
-      icon: "lrn:people",
-      tags: ["Developer", "skeleton"],
-      eventName: "super-daemon-run-program",
-      path: ">settings/platformAudience",
-      context: [">"],
-      more: html`<span>${this.t.changePlatformAudienceDescription}</span>`,
-      voice: "change audience (temporarily)",
-      value: {
-        name: this.t.previewAudienceMode,
-        context: ">",
-        program: async (input, _values) => {
-          let results = [];
-          // Load in the supported audiences in platformConfig
-          const audienceOptions = {
-            novice: "lrn:book",
-            expert: "lrn:teacher",
-          };
-
-          Object.keys(audienceOptions).forEach((key) => {
-            if (input == "" || key.includes(input.toLowerCase())) {
-              results.push({
-                title: key,
-                icon: audienceOptions[key],
-                tags: ["skeleton"],
-                value: {
-                  target: globalThis.HAXCMS,
-                  method: "setPlatformAudience",
-                  args: [key],
-                },
-                eventName: "super-daemon-element-method",
-                context: [">", ">settings/platformAudience/" + key],
-                path: ">settings/theme/" + key,
-              });
-            }
-          });
-
-          return results;
-        },
-      },
-    });
-
-    SuperDaemonInstance.defineOption({
-      i18n: { context: this, title: "haxLabs" },
-      title: this.t.haxLabs,
-      icon: "hax:hax2022",
-      tags: ["Developer", "labs", "experiments"],
+      i18n: { context: this, title: "cheatCodes" },
+      title: this.t.cheatCodes,
+      icon: "hardware:videogame-asset",
+      tags: ["Developer", "cheat", "konami", "secret", "fun", "silly"],
       eventName: "super-daemon-element-method",
-      path: ">hax/labs",
+      path: ">developer/cheat-codes",
       context: [">"],
+      more: html`<span>${this.t.cheatCodesDescription}</span>`,
       value: {
         target: this,
-        method: "enableLabExperiments",
+        method: "_konamiCodeActivated",
         args: [],
       },
     });
@@ -5535,12 +5489,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         },
       },
     });
+    // not a developer tool: the same Preview as the top bar button, listed
+    // with the everyday actions and showing its Ctrl⇧8 shortcut
     SuperDaemonInstance.defineOption({
-      i18n: { context: this, title: "preview" },
-      title: this.t.preview,
+      i18n: { context: this, title: "visitorAndDevicePreview" },
+      title: this.t.visitorAndDevicePreview,
       icon: "visibility",
+      shortcut: "cms-preview",
       tags: [
-        "Developer",
+        "CMS",
         "view",
         "read-only",
         "preview",
@@ -5556,8 +5513,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         "tablet",
       ],
       eventName: "super-daemon-element-method",
-      path: ">settings/preview",
-      context: [">"],
+      path: "CMS/action/preview",
+      context: ["CMS"],
       more: html`<span>${this.t.previewDescription}</span>`,
       voice: "preview",
       value: {
@@ -6158,13 +6115,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.checkAndTriggerWelcomeProgram();
   }
   // enable lab experiments
-  enableLabExperiments() {
-    // lecture player
-    import("@haxtheweb/video-player/lib/lecture-player.js");
-    // AI chat bot
-    import("@haxtheweb/haxcms-elements/lib/ui-components/magic/site-ai-chat.js");
-  }
-
   unlockAllThemes() {
     store.showAllThemes = true;
     globalThis.dispatchEvent(

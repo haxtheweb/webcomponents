@@ -258,6 +258,13 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     globalThis.addEventListener("keydown", this.keyHandler.bind(this), {
       signal: this.windowControllers.signal,
     });
+    // the Konami code listens in the capture phase: Merlin's own field and
+    // results stop the arrow keys they use for moving through results, so a
+    // bubbling listener never saw them while Merlin had focus
+    globalThis.addEventListener("keydown", this._konamiKeydown.bind(this), {
+      capture: true,
+      signal: this.windowControllers.signal,
+    });
 
     globalThis.addEventListener(
       "super-daemon-define-option",
@@ -704,10 +711,13 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     this.addVoiceCommand(e.detail.command, target, e.detail.callback);
   }
 
-  keyHandler(e) {
-    // Check for Konami Code sequence first (global detection)
-    this.checkKonamiCode(e);
+  _konamiKeydown(e) {
+    if (e && !e.repeat) {
+      this.checkKonamiCode(e);
+    }
+  }
 
+  keyHandler(e) {
     // modifier required to activate
     if (this.allowedCallback()) {
       // open and close events

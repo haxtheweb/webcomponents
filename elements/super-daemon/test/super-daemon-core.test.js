@@ -230,6 +230,37 @@ describe("SuperDaemon core behavior", () => {
     globalThis.removeEventListener("super-daemon-konami-code", handler);
   });
 
+  it("sees the Konami code even when Merlin's field stops the arrow keys", async () => {
+    let fired = 0;
+    const handler = () => fired++;
+    globalThis.addEventListener("super-daemon-konami-code", handler);
+    // stands in for Merlin's input / results, which stop the arrows they
+    // use to move through results
+    const field = await fixture(html`<input />`);
+    field.addEventListener("keydown", (e) => e.stopPropagation());
+    element.konamiProgress = [];
+    [
+      "ArrowUp",
+      "ArrowUp",
+      "ArrowDown",
+      "ArrowDown",
+      "ArrowLeft",
+      "ArrowRight",
+      "ArrowLeft",
+      "ArrowRight",
+      "b",
+      "a",
+    ].forEach((key) => {
+      field.dispatchEvent(
+        new KeyboardEvent("keydown", { key, bubbles: true, composed: true }),
+      );
+    });
+    await aTimeout(50);
+    expect(fired).to.be.at.least(1);
+    expect(element.konamiProgress.length).to.equal(0);
+    globalThis.removeEventListener("super-daemon-konami-code", handler);
+  });
+
   it("resets Konami progress on a wrong key and via resetKonamiCode", () => {
     element.checkKonamiCode(new KeyboardEvent("keydown", { key: "ArrowUp" }));
     expect(element.konamiProgress.length).to.equal(1);

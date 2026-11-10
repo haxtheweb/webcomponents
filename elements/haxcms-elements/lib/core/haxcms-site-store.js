@@ -1757,14 +1757,6 @@ globalThis.HAXCMS = globalThis.HAXCMS || {};
 globalThis.HAXCMS.setTheme = function (theme) {
   globalThis.HAXCMS.instance.store.manifest.metadata.theme.element = theme;
 };
-// developer command to force platform audience to change for testing
-globalThis.HAXCMS.setPlatformAudience = function (audience) {
-  if (!globalThis.HAXCMS.instance.store.manifest.metadata.platform) {
-    globalThis.HAXCMS.instance.store.manifest.metadata.platform = {};
-  }
-  globalThis.HAXCMS.instance.store.manifest.metadata.platform.audience =
-    audience;
-};
 // request if this exists. This helps invoke the element existing in the dom
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through the same modal

@@ -284,6 +284,13 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           content: attr(data-hax-ray);
           opacity: var(--ddd-opacity-20, 0.2);
           transition: var(--ddd-duration-slow, 0.6s) all ease-in-out;
+          /* zero-width inline box: it still sets the empty line's height,
+             but the caret sits at the start of the line with the hint
+             showing past it, instead of after the hint's text */
+          display: inline-block;
+          width: 0;
+          white-space: nowrap;
+          pointer-events: none;
         }
 
         :host([edit-mode])
@@ -4865,8 +4872,15 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     } else {
       // should resolve ALL events at the same time
       this.windowControllers.abort();
+      if (this._emptyObserver) {
+        this._emptyObserver.disconnect();
+        this._emptyObserver = null;
+      }
       if (this._observer) {
         this._observer.disconnect();
+        // cleared so the next edit session connects a fresh one
+        // (_connectMutationObserver skips when one is already set)
+        this._observer = null;
       }
     }
   }
@@ -5352,6 +5366,31 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // Actually connect the observer
     this._observer.observe(this, {
       childList: true,
+      subtree: true,
+    });
+    // Text edits that touch no elements (Merlin cancel restoring what was
+    // typed, an emoji or symbol inserted into an existing text node,
+    // deleting back to nothing) never reach the childList observer, so the
+    // empty flag went stale and the placeholder sat beside real text. A
+    // separate, light observer keeps only that flag in sync, without the
+    // full mutation pass above running on every keystroke.
+    if (this._emptyObserver) {
+      this._emptyObserver.disconnect();
+    }
+    this._emptyObserver = new MutationObserver((mutations) => {
+      const targets = new Set();
+      mutations.forEach((mutation) => {
+        const parent = mutation.target && mutation.target.parentElement;
+        if (parent && parent.tagName) {
+          targets.add(parent);
+        }
+      });
+      for (const target of targets) {
+        this.__isEffectivelyEmptyTextBlock(target);
+      }
+    });
+    this._emptyObserver.observe(this, {
+      characterData: true,
       subtree: true,
     });
   }
