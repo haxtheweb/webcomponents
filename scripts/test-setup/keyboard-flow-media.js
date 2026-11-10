@@ -55,10 +55,27 @@ const KNOWN_BUGS = [
   },
 ];
 
-const label = (el) =>
-  el && el.getAttribute
-    ? el.getAttribute("aria-label") || (el.textContent || "").trim()
-    : "";
+/**
+ * Accessible name of a focus stop: aria-label, then aria-labelledby (looked
+ * up in the stop's own root, e.g. the range input inside
+ * simple-range-input), then its text.
+ */
+const label = (el) => {
+  if (!el || !el.getAttribute) return "";
+  const aria = el.getAttribute("aria-label");
+  if (aria) return aria;
+  const ids = (el.getAttribute("aria-labelledby") || "").split(/\s+/);
+  const root = el.getRootNode ? el.getRootNode() : null;
+  const named = ids
+    .map((id) =>
+      id && root && root.getElementById ? root.getElementById(id) : null,
+    )
+    .filter((node) => node)
+    .map((node) => (node.textContent || "").trim())
+    .join(" ")
+    .trim();
+  return named || (el.textContent || "").trim();
+};
 
 /**
  * Tab forward until the focused control's accessible label matches, checking
@@ -148,10 +165,55 @@ export function describeMediaKeyboardFlow(name, makeFixture) {
       expect(amp.__playing, "Space on Pause stops playback").to.equal(false);
     });
 
+    it("tab order follows the layout: header actions, seek slider, Play, Backward, Forward, Mute, then the transcript", async () => {
+      // Backward is disabled (so not a stop) at 0:00: move off the start
+      amp.seek(Math.min(0.3, amp.duration / 4));
+      await amp.updateComplete;
+      await settle(100);
+      fx.before.focus();
+      // collect the accessible name of every stop through the player
+      const names = [];
+      let guard = 0;
+      while (deepActiveElement() !== fx.after && guard++ < 40) {
+        await press("Tab");
+        const el = expectGoodFocusStop(expect, `${name} order ${guard}`, {
+          knownBugs: KNOWN_BUGS,
+        });
+        names.push(label(el));
+      }
+      const at = (re) => names.findIndex((n) => re.test(n));
+      const order = [
+        /^closed captions$/i,
+        /^transcript$/i,
+        /^settings$/i,
+        /^seek slider$/i,
+        /^play$/i,
+        /^backward$/i,
+        /^forward$/i,
+        /^mute$/i,
+        /search the transcript/i,
+        /^hide transcript$/i,
+        /first cue/i,
+        /second cue/i,
+      ];
+      const found = order.map((re) => at(re));
+      order.forEach((re, i) =>
+        expect(
+          found[i],
+          `${re} is in the tab order (${names.join(" | ")})`,
+        ).to.be.at.least(0),
+      );
+      for (let i = 1; i < found.length; i++) {
+        expect(
+          found[i],
+          `${order[i]} comes after ${order[i - 1]} (${names.join(" | ")})`,
+        ).to.be.greaterThan(found[i - 1]);
+      }
+    });
+
     it("the seek slider moves the playhead with arrow keys", async () => {
-      // the seek slider is the first control in the player
-      await press("Tab");
-      const slider = expectGoodFocusStop(expect, "seek slider");
+      // the seek slider follows the header actions, above Play
+      const slider = await tabTo(/^seek slider$/i, fx.after);
       expect(slider.tagName).to.equal("INPUT");
       expect(slider.type).to.equal("range");
       const start = amp.currentTime || 0;

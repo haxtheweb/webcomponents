@@ -1560,6 +1560,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
                         video-id="${this.videoId}"
                         playback-rate="${this.playbackRate}"
                         @timeupdate="${this._handleTimeUpdate}"
+                        @loadedmetadata="${this._handleMediaLoaded}"
                         @ended="${this._handleMediaEnded}"
                         @mediastatechange="${this._handleYoutubeState}"
                       >
@@ -4367,6 +4368,12 @@ class A11yMediaPlayer extends SchemaBehaviors(
    * handles media metadata when media is loaded
    */
   _handleMediaLoaded(_e) {
+    // the duration is known now: keep it reactive so the seek slider gets
+    // its range right away (it is not otherwise redrawn until playback)
+    const d = this.media ? Number(this.media.duration) : NaN;
+    if (isFinite(d) && d > 0 && d !== this.__preloadedDuration) {
+      this.__preloadedDuration = d;
+    }
     this._handleTimeUpdate();
     if (!this.youtubeId && this.anchor.target === this) {
       this.seek(
@@ -4520,8 +4527,24 @@ class A11yMediaPlayer extends SchemaBehaviors(
       this.transcriptTrack = track;
     }
     if (track) track.mode = "hidden";
+    // the <track> element behind this text track, when there is one: its
+    // cues arrive while the file is parsed, so they are read once it has
+    // finished loading (reading at the first cue kept only part of them)
+    const media = this.__loadedTracks;
+    const trackEl =
+      media && media.querySelectorAll
+        ? Array.from(media.querySelectorAll("track")).find(
+            (node) => node.track === track,
+          )
+        : null;
     let loadCueData = setInterval(() => {
-      if (track.cues && track.cues.length > 0) {
+      if (trackEl && trackEl.readyState === 3) {
+        // the file failed to load; there are no cues to read
+        clearInterval(loadCueData);
+        return;
+      }
+      const loaded = !trackEl || trackEl.readyState === 2;
+      if (loaded && track.cues && track.cues.length > 0) {
         clearInterval(loadCueData);
         let cues = Object.keys(track.cues).map((key) => track.cues[key]);
         this._onRemoveTrack(track); //prevents duplicate tracks
@@ -4560,6 +4583,9 @@ class A11yMediaPlayer extends SchemaBehaviors(
     this.__loadedTracks = this.getloadedTracks();
     this._handleMediaLoaded();
     this.__loadedTracks.addEventListener("loadedmetadata", (e) =>
+      this._handleMediaLoaded(e),
+    );
+    this.__loadedTracks.addEventListener("durationchange", (e) =>
       this._handleMediaLoaded(e),
     );
     this.__loadedTracks.addEventListener("timeupdate", (e) => {
