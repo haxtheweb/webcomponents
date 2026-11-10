@@ -24,7 +24,17 @@
     <h1>bibliography-builder</h1>
     <demo-snippet>
       <template>
-        <bibliography-builder title="References"></bibliography-builder>
+        <bibliography-builder title="Week 4 readings">
+          <bibliography-item publication-date="2025-03-05" url="https://hax.psu.edu/"></bibliography-item>
+          <bibliography-item citation-type="journal" title="Make your own citation" publisher="[Journal name]" publication-date="2024-06-01" volume="12" issue="3" start-page="45" end-page="60"></bibliography-item>
+        </bibliography-builder>
+      </template>
+    </demo-snippet>
+    <demo-snippet>
+      <template>
+        <bibliography-builder title="References">
+          <bibliography-item citation-type="book" title="A book with no edition or pages"></bibliography-item>
+        </bibliography-builder>
       </template>
     </demo-snippet>
   </div>

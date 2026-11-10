@@ -7,8 +7,9 @@ import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
+import { DDDBlockStyles } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 
 /**
  * `bibliography-item`
@@ -72,10 +73,14 @@ export class BibliographyItem extends SchemaBehaviors(
   static get styles() {
     return [
       super.styles,
+      DDDBlockStyles,
       css`
         :host {
           display: block;
-          font-family: var(--ddd-font-navigation);
+          font-family: var(--ddd-font-primary);
+        }
+        :host([hidden]) {
+          display: none;
         }
         :host([data-hax-active]) .wrapper {
           outline: var(
@@ -84,18 +89,29 @@ export class BibliographyItem extends SchemaBehaviors(
           );
         }
         .wrapper {
-          margin: var(--ddd-spacing-2);
-          padding: var(--ddd-spacing-4);
-          border: var(--ddd-border-xs);
           display: flex;
-          justify-content: space-between;
+          align-items: flex-start;
+          gap: var(--ddd-spacing-3);
+          padding-block: var(--ddd-spacing-3);
+          padding-inline: var(--ddd-spacing-4) var(--ddd-spacing-2);
         }
         .italic-section {
           display: inline;
           font-style: italic;
         }
+        /* APA hanging indent */
         .citation {
-          width: 80%;
+          flex: 1 1 auto;
+          min-width: 0;
+          padding-inline-start: var(--ddd-spacing-6);
+          text-indent: calc(-1 * var(--ddd-spacing-6));
+          font-size: var(--ddd-font-size-4xs);
+          line-height: var(--ddd-lh-150);
+          overflow-wrap: anywhere;
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
         }
       `,
     ];
@@ -106,15 +122,16 @@ export class BibliographyItem extends SchemaBehaviors(
     return html` <div class="wrapper" typeof="oer:ReferencedMaterial">
       <meta property="oer:uri" content="${this.url}" />
       <div class="citation">${this.exportAPA()}</div>
-      <div class="copy-button">
-        <simple-icon-button-lite
-          part="icon"
-          class="icon"
-          title="${this.t.copy}"
-          icon="content-copy"
-          @click=${this._copyToClipboard}
-        ></simple-icon-button-lite>
-      </div>
+      <button
+        type="button"
+        class="copy-button ddd-block-action"
+        part="icon"
+        aria-label="${this.t.copy}"
+        title="${this.t.copy}"
+        @click=${this._copyToClipboard}
+      >
+        <simple-icon-lite icon="icons:content-copy"></simple-icon-lite>
+      </button>
     </div>`;
   }
 
@@ -167,11 +184,13 @@ export class BibliographyItem extends SchemaBehaviors(
     return {
       getJournalSource: (format) => {
         if (format === "APA") {
+          // the journal form edits volume / issue; older items saved the
+          // same numbers as parent-ver / child-ver, so fall back to those
+          const volume = this._firstValue(this.volume, this.parentVer);
+          const issue = this._firstValue(this.issue, this.childVer);
           // Issue num only applies if there's a volume num
-          const volumeDetails = this.parentVer
-            ? html`<i>${this.parentVer}</i>${
-                  this.childVer ? html`(${this.childVer})` : ""
-                }`
+          const volumeDetails = volume
+            ? html`<i>${volume}</i>${issue ? html`(${issue})` : ""}`
             : "";
 
           // End page only applies if there's a start page
@@ -188,21 +207,38 @@ export class BibliographyItem extends SchemaBehaviors(
       },
       getBookSource: (format) => {
         if (format === "APA") {
-          // (#th ed., Vol. #, pp. #-#).
-          let editionDetails = "";
-          if (this.parentVer) {
-            // prettier-ignore
-            editionDetails = html`${this.parentVer} ed.${this.childVer ? html`, Vol. ${this.childVer}` : ""}`;
-          }
+          // (#th ed., Vol. #, pp. #-#), leaving out the parts that are
+          // empty so a book without them never prints "(, pp. )"
+          const edition = this._firstValue(this.parentVer);
+          const volume = this._firstValue(this.childVer);
+          const parts = [];
+          if (edition) parts.push(`${edition} ed.`);
+          if (volume) parts.push(`Vol. ${volume}`);
           // End page only applies if there's a start page
-          const pageRange = this.startPage
-            ? html`${this.startPage}${this.endPage ? ` - ${this.endPage}` : ""}`
-            : "";
-
-          return html`(${editionDetails}, pp. ${pageRange})`;
+          if (this._firstValue(this.startPage)) {
+            parts.push(
+              `pp. ${this.startPage}${this.endPage ? ` - ${this.endPage}` : ""}`,
+            );
+          }
+          if (parts.length === 0) return "";
+          return html`(${parts.join(", ")})`;
         }
       },
     };
+  }
+
+  /**
+   * first value that is set (not undefined, null, NaN or blank)
+   * @returns {String} the value as a string, or "" when none is set
+   */
+  _firstValue(...values) {
+    for (const value of values) {
+      if (value === undefined || value === null) continue;
+      if (typeof value === "number" && isNaN(value)) continue;
+      const str = String(value).trim();
+      if (str !== "") return str;
+    }
+    return "";
   }
 
   /**
@@ -287,12 +323,16 @@ export class BibliographyItem extends SchemaBehaviors(
     // the template whitespace below is part of the citation text, which is copied verbatim,
     // so each return keeps prettier-ignore
     switch (this.citationType) {
-      case "journal":
+      case "journal": {
+        const journalSource = this._formatSource().getJournalSource("APA");
         // prettier-ignore
-        return html`${this._formatAuthors()} ${this._formatDate().getPubYear()}. <span property="oer:name">${this.title}</span>. <i>${this.publisher}</i>, ${this._formatSource().getJournalSource("APA")}. ${this.url}`;
-      case "book":
+        return html`${this._formatAuthors()} ${this._formatDate().getPubYear()}. <span property="oer:name">${this.title}</span>. <i>${this.publisher}</i>${journalSource ? html`, ${journalSource}` : ""}. ${this.url}`;
+      }
+      case "book": {
+        const bookSource = this._formatSource().getBookSource("APA");
         // prettier-ignore
-        return html`${this._formatAuthors()} ${this._formatDate().getPubYear()}. <i property="oer:name">${this.title}</i> ${this._formatSource().getBookSource("APA")}. ${this.publisher}. ${this.url}`;
+        return html`${this._formatAuthors()} ${this._formatDate().getPubYear()}. <i property="oer:name">${this.title}</i>${bookSource ? html` ${bookSource}` : ""}. ${this.publisher}. ${this.url}`;
+      }
       case "web":
       default:
         // prettier-ignore
@@ -311,8 +351,11 @@ export class BibliographyItem extends SchemaBehaviors(
           `    year = {${this._formatDate().getPubYear()}},`,
         ];
 
-        if (this.volume) bibtexObj.push(`   volume = {${this.volume}},`);
-        if (this.issue) bibtexObj.push(`   number = {${this.issue}},`);
+        // same volume / issue fallback as the APA journal format
+        const volume = this._firstValue(this.volume, this.parentVer);
+        const issue = this._firstValue(this.issue, this.childVer);
+        if (volume) bibtexObj.push(`    volume = {${volume}},`);
+        if (issue) bibtexObj.push(`    number = {${issue}},`);
         if (this.startPage && this.endPage) {
           bibtexObj.push(`    pages = {${this.startPage}--${this.endPage}},`);
         } else if (this.startPage) {
@@ -596,7 +639,7 @@ export class BibliographyItem extends SchemaBehaviors(
           {
             property: "authors",
             title: "Author(s)",
-            description: "The events in the timeline",
+            description: "People who wrote the item",
             inputMethod: "array",
             itemLabel: "surname",
             properties: [

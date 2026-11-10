@@ -8,8 +8,12 @@ import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-modal/simple-modal.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
+import {
+  DDDBlockStyles,
+  renderDDDBlockHeader,
+} from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 import "./lib/bibliography-item.js";
 
 /**
@@ -38,6 +42,7 @@ export class BibliographyBuilder extends SchemaBehaviors(
       copy: "Copy",
       exportCitationFormat: "Export citation format",
       selectCitationFormatBelow: "Select a citation format below",
+      addCitationToBibliography: "Add citation to bibliography",
     };
     this.registerLocalization({
       context: this,
@@ -67,46 +72,73 @@ export class BibliographyBuilder extends SchemaBehaviors(
   static get styles() {
     return [
       super.styles,
+      DDDBlockStyles,
       css`
         :host {
           display: block;
-          font-family: var(--ddd-font-navigation);
+          font-family: var(--ddd-font-primary);
+          margin-block: var(--ddd-spacing-4);
         }
-        .wrapper {
-          padding: var(--ddd-spacing-4);
-          margin: var(--ddd-spacing-2);
-          border: var(--ddd-border-md);
+        :host([hidden]) {
+          display: none;
         }
-        h3 {
-          margin-top: var(--ddd-spacing-4);
+        .ddd-block-title {
+          margin: var(--ddd-spacing-0);
         }
-        h3 span {
-          font-size: var(--ddd-font-size-s);
-        }
-        .title-card {
-          display: flex;
-          justify-content: space-between;
-        }
-
-        #export-button {
-          align-self: center;
+        /* items sit in the frame as rows split by hairlines */
+        ::slotted(bibliography-item:not(:last-child)) {
+          border-bottom: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
         }
       `,
     ];
   }
 
+  /**
+   * the header title: the authored title, only when it says something
+   * other than the "References" label (no more "References: References")
+   */
+  _headerTitle() {
+    const title = typeof this.title === "string" ? this.title.trim() : "";
+    const label = String(this.t.title || "").trim();
+    if (!title || title.toLowerCase() === label.toLowerCase()) {
+      return "";
+    }
+    return title;
+  }
+
   // Lit render the HTML
   render() {
-    return html` <div class="wrapper" typeof="oer:LearningComponent">
+    return html`<div
+      class="wrapper ddd-block"
+      typeof="oer:LearningComponent"
+      role="group"
+      aria-labelledby="hdr"
+    >
       <meta property="oer:forCourse" content="${this.forCourse}" />
-      <div class="title-card">
-        <h3><span>${this.t.title}:</span> ${this.title}</h3>
-        <button id="export-button" @click=${this._showExportModal}>
-          ${this.t.export}
-        </button>
+      ${renderDDDBlockHeader({
+        id: "hdr",
+        icon: "icons:list",
+        label: this.t.title,
+        title: this._headerTitle(),
+        titleTag: "h3",
+        actions: html`<button
+          id="export-button"
+          type="button"
+          class="ddd-block-action has-text"
+          aria-haspopup="dialog"
+          @click=${this._showExportModal}
+        >
+          <simple-icon-lite icon="icons:file-download"></simple-icon-lite
+          ><span>${this.t.export}</span>
+        </button>`,
+      })}
+      <div class="ddd-block-body">
+        <slot></slot>
       </div>
-
-      <slot></slot>
     </div>`;
   }
 
@@ -145,67 +177,159 @@ export class BibliographyBuilder extends SchemaBehaviors(
   }
 
   // simple-modal is independent from our main lit lifecycle, so we do a custom render
+  // the modal content lives in the light DOM, so every selector is scoped
+  // under .bibliography-export
   renderExport() {
     render(
       html`
         <style>
-          .citation-list {
+          .bibliography-export {
+            display: flex;
+            flex-direction: column;
+            gap: var(--ddd-spacing-3);
+            font-family: var(--ddd-font-primary);
+            color: light-dark(
+              var(--ddd-theme-default-coalyGray),
+              var(--ddd-theme-default-white)
+            );
+          }
+          .bibliography-export .export-drop {
+            display: flex;
+            flex-direction: column;
+            gap: var(--ddd-spacing-1);
+          }
+          .bibliography-export label {
+            font-family: var(--ddd-font-navigation);
+            font-size: var(--ddd-font-size-4xs);
+            font-weight: var(--ddd-font-weight-medium);
+            color: light-dark(
+              var(--ddd-theme-default-slateGray),
+              var(--ddd-theme-default-limestoneLight)
+            );
+          }
+          .bibliography-export select {
+            box-sizing: border-box;
+            height: var(--ddd-control-height-sm);
+            padding: 0 var(--ddd-spacing-3);
+            border: var(--ddd-border-xs);
+            border-color: light-dark(
+              var(--ddd-theme-default-limestoneLight),
+              var(--ddd-theme-default-slateGray)
+            );
+            border-radius: var(--ddd-radius-sm);
+            background-color: light-dark(
+              var(--ddd-theme-default-white),
+              var(--ddd-theme-default-potentialMidnight)
+            );
+            color: light-dark(
+              var(--ddd-theme-default-coalyGray),
+              var(--ddd-theme-default-white)
+            );
+            font-family: var(--ddd-font-primary);
+            font-size: var(--ddd-font-size-4xs);
+            color-scheme: light dark;
+          }
+          .bibliography-export select:focus-visible,
+          .bibliography-export .copy-button:focus-visible {
+            outline: var(--ddd-focus-ring);
+            outline-offset: var(--ddd-focus-offset);
+          }
+          .bibliography-export .citation-list {
             max-height: 40vh;
             overflow-y: auto;
             border: var(--ddd-border-xs);
-            padding: var(--ddd-spacing-2);
-            margin: var(--ddd-spacing-2);
+            border-color: light-dark(
+              var(--ddd-theme-default-limestoneLight),
+              var(--ddd-theme-default-slateGray)
+            );
+            border-radius: var(--ddd-radius-sm);
+            padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+            background-color: light-dark(
+              var(--ddd-theme-default-white),
+              var(--ddd-theme-default-potentialMidnight)
+            );
+            color: light-dark(
+              var(--ddd-theme-default-coalyGray),
+              var(--ddd-theme-default-white)
+            );
+            font-family: var(--ddd-font-navigation);
+            font-size: var(--ddd-font-size-4xs);
+            line-height: var(--ddd-lh-150);
+            overflow-wrap: anywhere;
           }
-          .control-bar {
-            --simple-icon-button-border: var(--ddd-border-xs);
-            --simple-icon-button-border-radius: var(--ddd-radius-xs);
-            --simple-icon-button-focus-border: var(--ddd-border-sm);
-            --simple-icon-button-padding: var(--ddd-spacing-2);
-            --simple-icon-height: var(--ddd-icon-xs);
-            --simple-icon-width: var(--ddd-icon-xs);
+          .bibliography-export .citation-entry + .citation-entry {
+            margin-top: var(--ddd-spacing-3);
+          }
+          .bibliography-export .control-bar {
             display: flex;
-            justify-content: space-between;
-            margin-top: var(--ddd-spacing-4);
+            justify-content: flex-end;
           }
-          simple-icon-button-lite {
-            align-self: center;
-            width: fit-content;
+          .bibliography-export .copy-button {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--ddd-spacing-1);
+            box-sizing: border-box;
+            height: var(--ddd-control-height-sm);
+            margin: var(--ddd-spacing-0);
+            padding: 0 var(--ddd-spacing-3);
+            border: var(--ddd-border-xs);
+            border-color: light-dark(
+              var(--ddd-theme-default-limestoneLight),
+              var(--ddd-theme-default-slateGray)
+            );
+            border-radius: var(--ddd-radius-rounded);
+            background-color: var(--ddd-theme-default-potential0);
+            color: light-dark(
+              var(--ddd-theme-default-nittanyNavy),
+              var(--ddd-theme-default-linkLight)
+            );
+            font-family: var(--ddd-font-navigation);
+            font-size: var(--ddd-font-size-4xs);
+            cursor: pointer;
+            --simple-icon-color: currentColor;
+            --simple-icon-width: var(--ddd-icon-3xs);
+            --simple-icon-height: var(--ddd-icon-3xs);
           }
-          simple-icon-button-lite::part(button) {
-            font-size: var(--ddd-font-size-xxs);
+          .bibliography-export .copy-button:hover {
+            border-color: light-dark(
+              var(--ddd-theme-default-nittanyNavy),
+              var(--ddd-theme-default-linkLight)
+            );
           }
         </style>
-        <div class="citation-list">
-          ${(this.citationArr.length
-            ? this.citationArr
-            : [this.t.selectCitationFormatBelow]
-          ).map(
-            (citation) => html`<div class="citation-entry">${citation}</div>`,
-          )}
-        </div>
-        <div class="control-bar">
-          <div class="copy-button">
-            <simple-icon-button-lite
-              part="icon"
-              class="icon"
-              title="${this.t.copy}"
-              icon="content-copy"
-              @click=${this._copyToClipboard}
-              >${this.t.copy}</simple-icon-button-lite
-            >
-          </div>
+        <div class="bibliography-export">
           <div class="export-drop">
-            <select
-              id="export-dropdown"
-              aria-label="${this.t.exportCitationFormat}"
-              @change=${this._exportHandler}
-            >
+            <label for="export-dropdown">${this.t.exportCitationFormat}</label>
+            <select id="export-dropdown" @change=${this._exportHandler}>
               <option value="Export">${this.t.export}</option>
               <!-- i18n-ignore: citation format names -->
               <option value="APA">APA</option>
               <!-- i18n-ignore: citation format names -->
               <option value="BibTeX">BibTeX</option>
             </select>
+          </div>
+          <div
+            class="citation-list"
+            role="region"
+            aria-label="${this.t.title}"
+            tabindex="0"
+          >
+            ${(this.citationArr.length
+              ? this.citationArr
+              : [this.t.selectCitationFormatBelow]
+            ).map(
+              (citation) => html`<div class="citation-entry">${citation}</div>`,
+            )}
+          </div>
+          <div class="control-bar">
+            <button
+              type="button"
+              class="copy-button"
+              @click=${this._copyToClipboard}
+            >
+              <simple-icon-lite icon="icons:content-copy"></simple-icon-lite
+              ><span>${this.t.copy}</span>
+            </button>
           </div>
         </div>
       `,
@@ -321,7 +445,7 @@ export class BibliographyBuilder extends SchemaBehaviors(
       {
         icon: "icons:add",
         callback: "_addItemHandler",
-        label: "Add citation to bibliography",
+        label: this.t.addCitationToBibliography,
       },
     ];
   }
