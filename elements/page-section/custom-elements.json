@@ -40,6 +40,28 @@
             },
             {
               "kind": "method",
+              "name": "_applyPreset",
+              "parameters": [
+                {
+                  "name": "bg"
+                },
+                {
+                  "name": "image"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "bgColor",
+              "parameters": [
+                {
+                  "name": "bg"
+                }
+              ],
+              "description": "The colour bg paints: a preset background shows through its light /\ndark pair, SimpleColors names (blue, light-blue...) map to the DDD\naccent palette, anything else (hex, rgb, var()) is used as authored."
+            },
+            {
+              "kind": "method",
               "name": "bgStyle",
               "parameters": [
                 {
@@ -156,16 +178,6 @@
             },
             {
               "kind": "field",
-              "name": "scrollerLabel",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"Scroll to reveal content\"",
-              "attribute": "scroller-label"
-            },
-            {
-              "kind": "field",
               "name": "preset",
               "privacy": "public",
               "type": {
@@ -184,6 +196,55 @@
               },
               "default": "null",
               "attribute": "anchor"
+            },
+            {
+              "kind": "field",
+              "name": "__authoredBg",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "__authoredImage",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "__presetBg",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "__presetImage",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ scrollerLabel: \"Scroll to reveal content\", }"
+            },
+            {
+              "kind": "field",
+              "name": "scrollerLabel",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "scroller-label"
             }
           ],
           "attributes": [
@@ -200,7 +261,6 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"Scroll to reveal content\"",
               "fieldName": "scrollerLabel"
             },
             {
@@ -258,6 +318,12 @@
               },
               "default": "null",
               "fieldName": "preset"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
             }
           ],
           "superclass": {

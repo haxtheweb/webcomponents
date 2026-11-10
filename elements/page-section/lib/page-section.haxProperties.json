@@ -28,6 +28,7 @@
           { "value": "custom", "text": "Custom" },
           { "value": "antihero", "text": "Anti-hero" },
           { "value": "antihero-light", "text": "Anti-hero: Light" },
+          { "value": "lines", "text": "Lines" },
           { "value": "video", "text": "Video" }
         ]
       },
