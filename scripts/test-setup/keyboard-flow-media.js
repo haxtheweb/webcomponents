@@ -221,8 +221,14 @@ export function describeMediaKeyboardFlow(name, makeFixture) {
       await waitFor(() => Number(slider.max) > 0, 2000);
       const start = amp.currentTime || 0;
       await press("ArrowRight", 150);
-      await waitFor(() => (amp.currentTime || 0) > start, 1500);
+      // the media element itself must move, not just the player's display:
+      // a refused seek shows the new time until the next timeupdate snaps
+      // it back (the test server answers Range requests so seeks are real)
+      await waitFor(() => media.currentTime > start, 1500);
       expect(amp.currentTime, "ArrowRight seeks forward").to.be.greaterThan(
+        start,
+      );
+      expect(media.currentTime, "the media moved forward").to.be.greaterThan(
         start,
       );
     });
@@ -249,8 +255,11 @@ export function describeMediaKeyboardFlow(name, makeFixture) {
       // the transcript cues are buttons in the tab order
       await tabTo(/second cue/i, fx.after, 40);
       await press("Enter", 150);
-      await waitFor(() => amp.currentTime >= 0.8, 1500);
+      await waitFor(() => media.currentTime >= 0.8, 1500);
       expect(amp.currentTime, "Enter on a cue seeks to it").to.be.at.least(0.8);
+      expect(media.currentTime, "the media moved to the cue").to.be.at.least(
+        0.8,
+      );
     });
 
     it("the fullscreen control is focusable and labelled", async function () {
