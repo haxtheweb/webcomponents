@@ -309,6 +309,33 @@ describe("HAXOptionSampleFactory updatePreviewColorVar", () => {
   });
 });
 
+describe("d-d-d-sample label", () => {
+  it("renders an empty label when no type is set", async () => {
+    const el = await fixture(html`<d-d-d-sample></d-d-d-sample>`);
+    expect(el.sampleLabel).to.equal("");
+    expect(el.shadowRoot.querySelector(".label").textContent.trim()).to.equal(
+      "",
+    );
+  });
+
+  it("renders an empty label for an unknown type", async () => {
+    const el = await fixture(
+      html`<d-d-d-sample type="not-a-type"></d-d-d-sample>`,
+    );
+    expect(el.sampleLabel).to.equal("");
+  });
+
+  it("renders the option label for a known type", async () => {
+    const el = await fixture(
+      html`<d-d-d-sample type="margin" option="s"></d-d-d-sample>`,
+    );
+    expect(el.sampleLabel).to.equal(ApplicationAttributeData.margin.s);
+    expect(el.shadowRoot.querySelector(".label").textContent).to.contain(
+      ApplicationAttributeData.margin.s,
+    );
+  });
+});
+
 describe("DDDStyles CSS exports", () => {
   it("DDDVariables is a CSSResult", () => {
     expect(DDDVariables).to.exist;

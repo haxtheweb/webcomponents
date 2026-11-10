@@ -536,6 +536,17 @@ export function sanitizeHTMLString(
   html,
   { sanitizeTemplateContents = true, encapsulateScriptTags = true } = {},
 ) {
+  // Security (fail closed): sanitizing needs a real HTML parser. Where there
+  // is none, such as Lit server rendering, return nothing rather than the
+  // unsanitized input, so markup only ever reaches a sink after it has been
+  // parsed and cleaned. The browser fills it in when the element renders.
+  if (
+    !globalThis.document ||
+    !globalThis.document.implementation ||
+    typeof globalThis.document.implementation.createHTMLDocument !== "function"
+  ) {
+    return "";
+  }
   const template = parseSanitizedTemplate(html, {
     sanitizeTemplateContents,
     encapsulateScriptTags,
