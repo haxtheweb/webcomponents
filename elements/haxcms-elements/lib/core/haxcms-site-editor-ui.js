@@ -945,8 +945,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           /** hide buttons on a phone bc its too small */
           .haxLogo,
           #exportbtn,
-          #content-map,
-          #outlinebutton {
+          #content-map {
             display: none;
           }
           simple-toolbar {
@@ -9096,14 +9095,16 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       store.playSound("click");
     }
     // Structure is a section of the one admin dialog, so the rail stays
-    // beside outline-designer; the dialog keeps its own Save Outline flow
+    // beside outline-designer; the dialog keeps its own Save Outline flow.
+    // Structure is opened from the house's site settings menu, so closing
+    // the dialog returns focus to the house.
     this._showSiteAdminShell(
       "structure",
       Object.assign({}, routeOptions, {
         invokedBy:
           routeOptions && routeOptions.invokedBy
             ? routeOptions.invokedBy
-            : this.shadowRoot.querySelector("#outlinebutton"),
+            : this.shadowRoot.querySelector("#manifestbtn"),
       }),
     );
   }
@@ -9130,7 +9131,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       invokedBy:
         routeOptions && routeOptions.invokedBy
           ? routeOptions.invokedBy
-          : this.shadowRoot.querySelector("#outlinebutton"),
+          : this.shadowRoot.querySelector("#manifestbtn"),
     });
   }
   _openImportHierarchyFromEvent(e) {
