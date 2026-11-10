@@ -7,9 +7,8 @@ name: dependency-audit
 # runs when dependency manifests change, nightly (haxtheweb/issues#3262), or
 # on demand.
 #
-# The step is `continue-on-error`, same pattern as the ESLint step in build.yml:
-# findings are visible in the log and the job summary, but they do not fail the
-# job. Hundreds of advisories already exist transitively, so a blocking gate
+# The step is `continue-on-error`: findings are visible in the log and the
+# job summary, but they do not fail the job. Hundreds of advisories already exist transitively, so a blocking gate
 # would fail every PR for unrelated reasons. Tightening it (e.g. fail on
 # critical in production dependencies) is a follow-up once the baseline is
 # triaged.
