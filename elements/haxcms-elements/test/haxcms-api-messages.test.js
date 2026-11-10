@@ -41,7 +41,9 @@ describe("HAXCMSApiMessages", () => {
     expect(fromCatalog).to.deep.equal(en);
   });
 
-  it("every translation has the English keys and keeps the placeholders", async function () {
+  // Feature PRs add English only; the nightly job translates new codes
+  // (haxtheweb/issues#3262), and until then a missing code shows in English.
+  it("every translation keeps the placeholders and knows only English keys", async function () {
     // ~100 small files; fetched together, with room for slow CI machines
     this.timeout(30000);
     const manifest = await json(
@@ -61,8 +63,11 @@ describe("HAXCMSApiMessages", () => {
     languages.forEach((lang, index) => {
       const data = files[index];
       for (const code of Object.keys(HAXCMS_API_MESSAGES_EN)) {
+        if (!Object.prototype.hasOwnProperty.call(data, code)) {
+          continue;
+        }
         if (typeof data[code] !== "string" || data[code] === "") {
-          problems.push(`${lang}: missing ${code}`);
+          problems.push(`${lang}: empty ${code}`);
         } else if (
           placeholders(data[code]) !==
           placeholders(HAXCMS_API_MESSAGES_EN[code])

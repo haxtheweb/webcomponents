@@ -66,6 +66,8 @@ export const HAXCMS_API_MESSAGES_EN = Object.freeze({
   BLOCK_STALE:
     "Part of this page changed since it was loaded. Reload it and try again.",
   BLOCK_REFUSED: "This change can't be applied safely: {detail}",
+  BLOCK_RATE_LIMITED:
+    "Too many content changes on this site right now. Try again in {retryAfter} seconds.",
   LINK_CHECK_RATE_LIMITED:
     "Too many link checks on this site. Try again in {retryAfter}.",
   SITE_NAME_INVALID:

@@ -63,7 +63,6 @@ describe("insights-analyzer: shape", () => {
       "outsideLinkStatus",
       "youtubeCaptions",
       "videoDuration",
-      "bulkAltSave",
       "mediaIndexRebuild",
       "savedHistory",
       "schedules",
@@ -79,7 +78,10 @@ describe("insights-analyzer: shape", () => {
     expect(results.media.videoMinutes.available).to.equal(false);
     expect(results.media.rebuildIndex.available).to.equal(false);
     expect(results.accessibility.youtubeCaptions.available).to.equal(false);
-    expect(results.accessibility.bulkAltSave.available).to.equal(false);
+    expect(results.accessibility.bulkAltSave).to.deep.equal({
+      maxPagesPerSave: 20,
+    });
+    expect(results.unavailable.bulkAltSave).to.equal(undefined);
     expect(results.freshness.editHistory.available).to.equal(false);
     expect(results.instructional.thresholds.available).to.equal(false);
     expect(results.overview.health.outsideLinks.available).to.equal(false);

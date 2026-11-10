@@ -303,6 +303,13 @@
       ]
     },
     {
+      "code": "BLOCK_RATE_LIMITED",
+      "en": "Too many content changes on this site right now. Try again in {retryAfter} seconds.",
+      "match": [
+        "block change limit reached: (?<max>\\d+) changes per (?<window>\\d+) seconds for this site\\. you can retry in (?<retryAfter>\\d+) seconds"
+      ]
+    },
+    {
       "code": "LINK_CHECK_RATE_LIMITED",
       "en": "Too many link checks on this site. Try again in {retryAfter}.",
       "match": [
