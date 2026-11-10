@@ -31,12 +31,14 @@ describe("qr-code element", () => {
       format: "png",
       modulesize: 5,
       margin: 4,
+      alt: null,
     });
     expect(QRCodeElement.observedAttributes).to.deep.equal([
       "data",
       "format",
       "modulesize",
       "margin",
+      "alt",
     ]);
   });
 
@@ -186,5 +188,44 @@ describe("qr-code element", () => {
     el.generate();
     globalThis.QRCode.generatePNG = original;
     expect(el.shadowRoot.textContent).to.include("no canvas support!");
+  });
+
+  it("names the code from its alt attribute and marks the code part", async () => {
+    const el = await fixture(
+      html`<qr-code
+        data="https://haxtheweb.org"
+        alt="QR code for HAX"
+      ></qr-code>`,
+    );
+    await waitForQrLibrary();
+    el.generate();
+    const img = el.shadowRoot.querySelector("img");
+    expect(img.getAttribute("alt")).to.equal("QR code for HAX");
+    expect(img.getAttribute("part")).to.equal("code");
+    el.format = "svg";
+    el.generate();
+    const svg = el.shadowRoot.querySelector("svg");
+    expect(svg.getAttribute("role")).to.equal("img");
+    expect(svg.getAttribute("aria-label")).to.equal("QR code for HAX");
+  });
+
+  it("tells a wrapper why it drew nothing", async () => {
+    const el = await fixture(html`<qr-code data="01234567"></qr-code>`);
+    await waitForQrLibrary();
+    const reasons = [];
+    el.addEventListener("qr-code-error", (e) => reasons.push(e.detail.reason));
+    const original = globalThis.QRCode.generatePNG;
+    globalThis.QRCode.generatePNG = () => {
+      throw new Error("no canvas support");
+    };
+    el.generate();
+    globalThis.QRCode.generatePNG = original;
+    el.format = "bmp";
+    el.generate();
+    el.removeAttribute("data");
+    el.generate();
+    expect(reasons).to.include("canvas");
+    expect(reasons).to.include("format");
+    expect(reasons).to.include("data");
   });
 });

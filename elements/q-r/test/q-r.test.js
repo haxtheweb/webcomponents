@@ -67,6 +67,90 @@ describe("q-r element", () => {
   });
 });
 
+describe("q-r figure, link and notes", () => {
+  it("shows the title as a visible link under the code", async () => {
+    const el = await fixture(
+      html`<q-r data="https://google.com/" title="Google link"></q-r>`,
+    );
+    await el.updateComplete;
+    const fig = el.shadowRoot.querySelector("figure.frame");
+    expect(fig).to.exist;
+    expect(fig.querySelector(".tile qr-code")).to.exist;
+    const link = fig.querySelector("figcaption a#link");
+    expect(link.getAttribute("href")).to.equal("https://google.com/");
+    const r = link.getBoundingClientRect();
+    expect(r.width).to.be.greaterThan(1);
+    expect(r.left).to.be.greaterThan(-1);
+    expect(
+      link.querySelector("simple-icon-lite").getAttribute("aria-hidden"),
+    ).to.equal("true");
+  });
+
+  it("names the code from the title, else the data", async () => {
+    const el = await fixture(
+      html`<q-r data="https://google.com/" title="Google link"></q-r>`,
+    );
+    await el.updateComplete;
+    const code = el.shadowRoot.querySelector("qr-code");
+    expect(code.getAttribute("alt")).to.equal("QR code for Google link");
+    el.title = "";
+    await el.updateComplete;
+    expect(code.getAttribute("alt")).to.equal(
+      "QR code for https://google.com/",
+    );
+    expect(el.shadowRoot.querySelector("figcaption")).to.not.exist;
+  });
+
+  it("shows a muted note instead of a code without data", async () => {
+    const el = await fixture(html`<q-r title="Nothing"></q-r>`);
+    await el.updateComplete;
+    expect(el.shadowRoot.querySelector("qr-code")).to.not.exist;
+    const note = el.shadowRoot.querySelector(".note");
+    expect(note.textContent.trim()).to.equal(el.t.noData);
+  });
+
+  it("shows a note for formats qr-code can't draw", async () => {
+    const el = await fixture(html`<q-r data="hello" format="bmp"></q-r>`);
+    await el.updateComplete;
+    expect(el.shadowRoot.querySelector("qr-code")).to.not.exist;
+    expect(el.shadowRoot.querySelector(".note").textContent).to.include("bmp");
+  });
+
+  it("shows a note when the code can't be drawn", async () => {
+    const el = await fixture(html`<q-r data="hello"></q-r>`);
+    await el.updateComplete;
+    const code = el.shadowRoot.querySelector("qr-code");
+    code.dispatchEvent(
+      new CustomEvent("qr-code-error", { detail: { reason: "canvas" } }),
+    );
+    await el.updateComplete;
+    expect(el.shadowRoot.querySelector(".note").textContent.trim()).to.equal(
+      el.t.noCanvas,
+    );
+    // new data tries again
+    el.data = "hello again";
+    await el.updateComplete;
+    expect(el.shadowRoot.querySelector("qr-code")).to.exist;
+  });
+
+  it("never links script urls", async () => {
+    const el = await fixture(
+      html`<q-r data="javascript:alert(1)" title="Bad"></q-r>`,
+    );
+    await el.updateComplete;
+    expect(el.shadowRoot.querySelector("a")).to.not.exist;
+    expect(el.shadowRoot.querySelector("#link").textContent).to.equal("Bad");
+  });
+
+  it("passes the a11y audit with a code and a link", async () => {
+    const el = await fixture(
+      html`<q-r data="https://google.com/" title="Google link"></q-r>`,
+    );
+    await el.updateComplete;
+    await expect(el).shadowDom.to.be.accessible();
+  });
+});
+
 describe("q-r full integration", () => {
   it("renders a generated svg through the bridge-loaded library", async () => {
     const el = await fixture(
