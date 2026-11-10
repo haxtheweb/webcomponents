@@ -128,6 +128,8 @@ export function describeMediaKeyboardFlow(name, makeFixture) {
       await waitFor(() => amp.duration > 0, 4000);
       // captions come from the local keyboard-flow-captions.vtt track
       await waitFor(() => amp.cues && amp.cues.length === 2, 5000);
+      // fail here, not three tests later, if the caption cues did not load
+      expect(amp.cues.length, "both caption cues loaded").to.equal(2);
       await amp.updateComplete;
       await settle(100);
       fx.before.focus();
