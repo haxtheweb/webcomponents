@@ -8,7 +8,6 @@
 
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { store } from "./haxcms-site-store.js";
-import { replaceThrough } from "@haxtheweb/utils/lib/safe-html.js";
 
 // English defaults for cheat code toasts and Merlin speech. These methods are
 // attached to haxcms-site-editor-ui, so translations come from its this.t
@@ -478,11 +477,41 @@ export function defineCheatCodes(editorInstance, SuperDaemonInstance) {
  */
 export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
   /**
+   * The person's avatar: an rpg-character inside the top bar's user menu
+   * toggle (it used to sit straight in the editor's shadow root, which is
+   * why DKMODE and SUMMONZOMBIE stopped finding it)
+   * @returns {{ character: HTMLElement, button: HTMLElement }|null}
+   */
+  editorInstance._cheatAvatar = function () {
+    const root = this.shadowRoot;
+    if (!root) {
+      return null;
+    }
+    const direct = root.querySelector("rpg-character");
+    if (direct) {
+      return { character: direct, button: null };
+    }
+    const toggle = root.querySelector("app-hax-user-menu-toggle");
+    const inner = toggle && toggle.shadowRoot;
+    const character = inner ? inner.querySelector("rpg-character") : null;
+    if (!character) {
+      return null;
+    }
+    return { character: character, button: inner.querySelector("button") };
+  };
+  /**
    * Execute DKMODE cheat - Make RPG character have big head
    */
   editorInstance._executeCheatDKMODE = function () {
-    const rpgCharacter = this.shadowRoot.querySelector("rpg-character");
+    const avatar = this._cheatAvatar();
+    const rpgCharacter = avatar ? avatar.character : null;
     if (rpgCharacter) {
+      // the round avatar button clips its contents; let the big head out
+      if (avatar.button) {
+        avatar.button.style.overflow = "visible";
+      }
+      rpgCharacter.style.position = "relative";
+      rpgCharacter.style.zIndex = "1";
       // Scale up the entire character and add visual effects with inline styles
       rpgCharacter.style.transform = "scale(1.8)";
       rpgCharacter.style.transformOrigin = "center center";
@@ -526,9 +555,15 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
    * Execute SUMMONZOMBIE cheat - Change character to zombie pirate girl
    */
   editorInstance._executeCheatSummonZombie = function () {
-    const rpgCharacter = this.shadowRoot.querySelector("rpg-character");
+    const avatar = this._cheatAvatar();
+    const rpgCharacter = avatar ? avatar.character : null;
     if (rpgCharacter) {
-      // Set to zombie pirate girl seed (zpg is predefined in rpg-character)
+      // Set to zombie pirate girl seed (zpg is predefined in rpg-character).
+      // A saved avatar code wins over the seed, so clear it for this look
+      // (nothing is saved; a reload brings the person's avatar back)
+      rpgCharacter.code = "";
+      rpgCharacter.removeAttribute("code");
+      rpgCharacter.literalseed = false;
       rpgCharacter.seed = "zpg";
 
       // Add spooky visual effects with inline styles
@@ -614,36 +649,31 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
    */
   editorInstance._executeCheatTimeTravel = function () {
     const body = globalThis.document.body;
-    const existingFilter = body.style.filter || "";
-
-    if (existingFilter.includes("sepia")) {
-      // Remove time travel effect
-      body.style.filter = replaceThrough(
-        existingFilter,
-        /sepia\(/g,
-        ")",
-        "",
-      ).trim();
-      HAXStore.toast(_t(editorInstance, "cheatTimeTravelDisabled"));
+    // the page's own filter is kept aside and put back exactly; stripping
+    // only sepia() used to leave the contrast / brightness behind
+    const KEY = "cheatTimeTravelFilter";
+    const restore = (message) => {
+      body.style.filter = body.dataset[KEY] || "";
+      delete body.dataset[KEY];
+      if (message) {
+        HAXStore.toast(_t(editorInstance, message));
+      }
+    };
+    if (typeof body.dataset[KEY] !== "undefined") {
+      restore("cheatTimeTravelDisabled");
     } else {
-      // Add sepia time travel effect
+      const existingFilter = body.style.filter || "";
+      body.dataset[KEY] = existingFilter;
+      // full sepia plus a lift in brightness so it reads on dark themes
+      // too (0.8 sepia on a navy page barely changed anything)
+      body.style.transition = "filter 1s ease-in-out";
       body.style.filter =
-        (existingFilter || "") + " sepia(0.8) contrast(1.2) brightness(0.9)";
-      body.style.transition = "filter 2s ease-in-out";
-
+        `${existingFilter} sepia(1) contrast(1.1) brightness(1.15)`.trim();
       HAXStore.toast(_t(editorInstance, "cheatTimeTravelActivated"));
-
       // Auto-remove after 30 seconds
       setTimeout(() => {
-        const currentFilter = body.style.filter || "";
-        if (currentFilter.includes("sepia")) {
-          body.style.filter = replaceThrough(
-            currentFilter,
-            /sepia\(/g,
-            ")",
-            "",
-          ).trim();
-          HAXStore.toast(_t(editorInstance, "cheatTimeTravelExpired"));
+        if (typeof body.dataset[KEY] !== "undefined") {
+          restore("cheatTimeTravelExpired");
         }
       }, 30000);
     }
@@ -733,8 +763,11 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         width: 100%;
         height: 100%;
         pointer-events: none;
-        z-index: 9998;
+        /* over the page and the HAX UI, under Merlin's toast so what he
+           says stays readable */
+        z-index: 100000000;
         overflow: hidden;
+        background: rgba(0, 0, 0, 0.6);
       `;
 
       // Create more matrix columns for fuller coverage
@@ -749,7 +782,10 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
           font-family: 'Courier New', monospace;
           font-size: 14px;
           animation: matrix-fall ${Math.random() * 3 + 2}s linear infinite;
-          animation-delay: ${Math.random() * 3}s;
+          /* a negative delay starts each column part way down, so the
+             rain is already falling the moment it turns on rather than
+             columns trickling in over a few seconds */
+          animation-delay: -${Math.random() * 3}s;
         `;
 
         // Add random characters with individual backgrounds
@@ -779,11 +815,18 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
               opacity: 0;
             }
           }
+          @media (prefers-reduced-motion: reduce) {
+            #matrix-effect > div {
+              animation: none !important;
+              top: 0 !important;
+            }
+          }
         `;
         globalThis.document.head.appendChild(style);
       }
 
-      globalThis.document.body.appendChild(matrixContainer);
+      // on the root, not body, so a body filter (TIMETRAVEL) can't tint it
+      globalThis.document.documentElement.appendChild(matrixContainer);
       HAXStore.toast(_t(editorInstance, "cheatDarkWebActivated"));
 
       // Auto-remove after 20 seconds

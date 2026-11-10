@@ -1006,8 +1006,15 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
           }),
         );
       }
-      // we have an event, but not a close event
-      if (e && e.type !== "super-daemon-close" && e.type !== "close") {
+      // we have an event, but not a close event (merlinSpeak closes with
+      // keepToast so what Merlin said stays up to be read)
+      if (
+        e &&
+        !e.keepToast &&
+        !this.__speechToastPending &&
+        e.type !== "super-daemon-close" &&
+        e.type !== "close"
+      ) {
         globalThis.dispatchEvent(
           new CustomEvent("super-daemon-toast-hide", {
             bubbles: true,
@@ -1613,9 +1620,56 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
       });
     }, 0);
   }
+  /**
+   * Merlin says something: always as the Merlin speaking toast, so it can
+   * be read with sound off or no speech support, and out loud when voice
+   * is available. A missing hal-9000 (voice off) no longer throws, which
+   * stopped whatever called this (cheat codes included) part way through.
+   */
   merlinSpeak(phrase) {
-    this.hal.speak(phrase, false, false).then((_e) => {
-      this.close();
+    if (!phrase) {
+      return Promise.resolve(false);
+    }
+    const toast = () =>
+      globalThis.dispatchEvent(
+        new CustomEvent("super-daemon-toast-show", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: {
+            text: phrase,
+            future: true,
+            merlin: true,
+            accentColor: "purple",
+            // long enough to read, whether or not it is also spoken
+            duration: Math.min(10000, Math.max(4000, phrase.length * 70)),
+            alwaysvisible: false,
+            awaitingMerlinInput: false,
+          },
+        }),
+      );
+    const canSpeak = !!(this.hal && this.hal.synth);
+    // callers usually close Merlin right after this; a close hides toasts,
+    // so hold that back until the toast is up (next tick)
+    this.__speechToastPending = true;
+    setTimeout(() => {
+      this.__speechToastPending = false;
+      toast();
+    }, 0);
+    if (!canSpeak) {
+      this.close({ keepToast: true });
+      return Promise.resolve(false);
+    }
+    // this method shows the toast itself, so hal-9000 doesn't add its own
+    const halToast = this.hal.toast;
+    this.hal.toast = false;
+    // awaitingInput true: speech ending (instantly, when the voice is
+    // muted) must not take the toast down before it has been read
+    const spoken = this.hal.speak(phrase, false, true);
+    this.hal.toast = halToast;
+    return spoken.then((e) => {
+      this.close({ keepToast: true });
+      return e;
     });
   }
   promptMerlin(_e) {

@@ -820,6 +820,7 @@ describe("SuperDaemon core behavior", () => {
   it("merlinSpeak speaks then closes", async () => {
     let spoke = null;
     element.hal = {
+      synth: {},
       speak: (p) => {
         spoke = p;
         return Promise.resolve();

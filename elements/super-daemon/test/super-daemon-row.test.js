@@ -166,6 +166,20 @@ describe("super-daemon-row behavior", () => {
     expect(chip.getBoundingClientRect().left).to.equal(chipLeft);
   });
 
+  it("draws one glyph per tile: a text character wins over an icon", async () => {
+    const el = await fixture(
+      html`<super-daemon-row
+        title="DDR"
+        icon="av:volume-up"
+        text-character="🎵"
+      ></super-daemon-row>`,
+    );
+    expect(el.shadowRoot.querySelector(".result-icon")).to.equal(null);
+    expect(
+      el.shadowRoot.querySelector(".result-textCharacter").textContent,
+    ).to.equal("\u{1F3B5}");
+  });
+
   it("focus() focuses the inner button", async () => {
     const el = await fixture(
       html`<super-daemon-row title="F"></super-daemon-row>`,
@@ -199,7 +213,8 @@ describe("super-daemon-row behavior", () => {
         .tags="${["a", "b"]}"
       ></super-daemon-row>`,
     );
-    expect(el.shadowRoot.querySelector(".result-icon")).to.exist;
+    // one glyph per tile: the text character stands in for the icon
+    expect(el.shadowRoot.querySelector(".result-icon")).to.be.null;
     expect(el.shadowRoot.querySelector(".result-image")).to.exist;
     expect(
       el.shadowRoot.querySelector(".result-textCharacter").textContent,

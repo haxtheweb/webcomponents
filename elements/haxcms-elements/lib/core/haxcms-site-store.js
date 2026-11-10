@@ -2013,13 +2013,59 @@ class HAXCMSSiteStore extends HTMLElement {
   }
   // set the cursor to something else
   setCursor(icon = null, isIcon = true) {
+    // a newer call (or a reset) wins over a recolor still loading
+    this.__cursorToken = (this.__cursorToken || 0) + 1;
     if (!icon) {
       globalThis.document.body.style.removeProperty("cursor");
     } else {
+      const name = icon;
       if (isIcon) {
         icon = SimpleIconsetStore.getIcon(icon);
       }
       globalThis.document.body.style.cursor = `url("${icon}") 16 16, pointer`;
+      // iconset SVGs draw in black, which vanishes on a dark page: swap in
+      // a copy colored for the current mode, outlined in the opposite
+      // color so it reads over any background
+      if (isIcon && typeof icon === "string") {
+        this.__applyCursorForMode(name, icon, this.__cursorToken);
+      }
+    }
+  }
+  /**
+   * Recolor an iconset cursor for light / dark mode (cached per icon and mode)
+   * @param {string} name icon name, for the cache
+   * @param {string} url the icon's SVG
+   * @param {number} token setCursor call this belongs to
+   */
+  async __applyCursorForMode(name, url, token) {
+    const dark = !!store.darkMode;
+    const key = `${name}|${dark ? "dark" : "light"}`;
+    this.__cursorCache = this.__cursorCache || {};
+    try {
+      if (!this.__cursorCache[key]) {
+        const text = await fetch(url).then((r) => (r.ok ? r.text() : ""));
+        if (!text || text.indexOf("<svg") === -1) {
+          return;
+        }
+        const ink = dark ? "#ffffff" : "#000000";
+        const halo = dark ? "#000000" : "#ffffff";
+        // rebuild the root tag so the added attributes never duplicate
+        // ones the icon already sets (a duplicate makes the SVG invalid)
+        const svg = text.replace(/<svg\b([^>]*)>/, (_m, attrs) => {
+          const kept = attrs.replace(
+            /\s(width|height|style|fill|color|stroke|stroke-width|paint-order)="[^"]*"/g,
+            "",
+          );
+          return `<svg${kept} width="32" height="32" fill="${ink}" color="${ink}" stroke="${halo}" stroke-width="1" paint-order="stroke">`;
+        });
+        this.__cursorCache[key] =
+          `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      }
+      if (token === this.__cursorToken) {
+        globalThis.document.body.style.cursor = `url("${this.__cursorCache[key]}") 16 16, pointer`;
+      }
+    } catch {
+      // keep the plain icon cursor
     }
   }
   /**

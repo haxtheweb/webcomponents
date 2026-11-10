@@ -481,7 +481,10 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
           this.icon || this.image || this.textCharacter
             ? html`<span class="tile" part="tile">
                 ${
-                  this.icon
+                  // one glyph per tile: a text character (an emoji) is the
+                  // more specific choice, so it wins over an icon rather
+                  // than stacking under it
+                  this.icon && !this.textCharacter
                     ? html`<simple-icon-lite
                         icon="${this.icon}"
                         class="result-icon"
