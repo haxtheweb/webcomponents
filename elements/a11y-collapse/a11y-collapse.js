@@ -84,7 +84,7 @@ class A11yCollapse extends I18NMixin(DDD) {
           background: transparent;
           border: 0;
           padding: 0;
-          margin: 0;
+          margin: var(--ddd-spacing-0);
           width: 100%;
           text-align: start;
           color: inherit;

@@ -126,7 +126,7 @@ class LrndesignImagemap extends I18NMixin(DDD) {
           overflow: visible;
         }
         figcaption {
-          margin: 0;
+          margin: var(--ddd-spacing-0);
         }
         /* the label keeps its relative-heading level and reads as the
            block title */
@@ -149,7 +149,7 @@ class LrndesignImagemap extends I18NMixin(DDD) {
           line-height: var(--ddd-lh-150, 1.5);
         }
         #desc ::slotted(*) {
-          margin-top: 0;
+          margin-top: var(--ddd-spacing-0);
         }
         .map {
           position: relative;
