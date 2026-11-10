@@ -33,6 +33,9 @@ export const MERLIN_VOICE_VOCAB_EN = {
   ordinals: "zeroth|first|second|third|fourth|fifth|sixth|seventh|eighth|ninth",
   pickPrefixes: "number|option|item|result|pick|choose|select|the",
   pickSuffix: "one",
+  // what speech engines often write for a spoken number after "option" or
+  // "number": "option to", "number for"
+  numberSoundalikes: "won=1|to=2|too=2|tu=2|tree=3|free=3|for=4|fore=4|ate=8",
   next: "next|down|next one",
   back: "back|previous|up|go back",
   run: "run|go|yes|do it|run it|open it|that one",
@@ -49,10 +52,25 @@ export function merlinVoiceVocab(strings = {}) {
   const src = { ...MERLIN_VOICE_VOCAB_EN, ...strings };
   const vocab = {};
   Object.keys(MERLIN_VOICE_VOCAB_EN).forEach((key) => {
+    if (key === "numberSoundalikes") {
+      return;
+    }
     vocab[key] = merlinWordList(src[key]);
     // a translation that came back empty falls back to English
     if (!vocab[key].length) {
       vocab[key] = merlinWordList(MERLIN_VOICE_VOCAB_EN[key]);
+    }
+  });
+  // "word=number" pairs; a translation that came back empty uses English
+  vocab.numberSoundalikes = {};
+  const pairs = merlinWordList(src.numberSoundalikes).length
+    ? merlinWordList(src.numberSoundalikes)
+    : merlinWordList(MERLIN_VOICE_VOCAB_EN.numberSoundalikes);
+  pairs.forEach((pair) => {
+    const at = pair.indexOf("=");
+    const n = at > 0 ? parseInt(pair.slice(at + 1), 10) : NaN;
+    if (n >= 1) {
+      vocab.numberSoundalikes[pair.slice(0, at).trim()] = n;
     }
   });
   // longest phrases first so "i would like to" wins over "i"
@@ -444,8 +462,10 @@ export function merlinParseVoiceGrammar(text, vocab = DEFAULT_VOCAB) {
   }
   // picking a row by number: strip lead words and a trailing "one"
   let words = clean.split(" ");
+  let prefixed = false;
   while (words.length > 1 && vocab.pickPrefixes.indexOf(words[0]) !== -1) {
     words = words.slice(1);
+    prefixed = true;
   }
   if (words.length === 2 && vocab.pickSuffix.indexOf(words[1]) !== -1) {
     words = words.slice(0, 1);
@@ -455,8 +475,13 @@ export function merlinParseVoiceGrammar(text, vocab = DEFAULT_VOCAB) {
   }
   const word = words[0];
   let n = -1;
-  if (/^\d+$/.test(word)) {
-    n = parseInt(word, 10);
+  // "2", and "2nd" / "3rd" / "2º" / "2e" as engines write ordinals
+  const digits = /^(\d+)[^\d\s]{0,3}$/u.exec(word);
+  if (digits) {
+    n = parseInt(digits[1], 10);
+  } else if (prefixed && vocab.numberSoundalikes[word]) {
+    // only after "option" / "number", so a lone "for" stays a word
+    n = vocab.numberSoundalikes[word];
   } else if (vocab.ordinals.indexOf(word) !== -1) {
     n = vocab.ordinals.indexOf(word);
   } else if (vocab.numbers.indexOf(word) !== -1) {

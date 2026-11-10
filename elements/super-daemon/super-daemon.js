@@ -140,6 +140,8 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
         "zeroth|first|second|third|fourth|fifth|sixth|seventh|eighth|ninth",
       voicePickPrefixes: "number|option|item|result|pick|choose|select|the",
       voicePickSuffix: "one",
+      voiceNumberSoundalikes:
+        "won=1|to=2|too=2|tu=2|tree=3|free=3|for=4|fore=4|ate=8",
       voiceNext: "next|down|next one",
       voiceBack: "back|previous|up|go back",
       voiceRun: "run|go|yes|do it|run it|open it|that one",
@@ -1857,6 +1859,10 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
       ordinals: this.t.voiceOrdinals,
       pickPrefixes: both(this.t.voicePickPrefixes, en.pickPrefixes),
       pickSuffix: both(this.t.voicePickSuffix, en.pickSuffix),
+      numberSoundalikes: both(
+        this.t.voiceNumberSoundalikes,
+        en.numberSoundalikes,
+      ),
       next: both(this.t.voiceNext, en.next),
       back: both(this.t.voiceBack, en.back),
       run: both(this.t.voiceRun, en.run),
@@ -2044,6 +2050,26 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
   }
 
   /**
+   * Words for a running program. They go in the field like typing, and
+   * Merlin keeps listening so the numbered results can be picked by voice.
+   * @param {string} heard
+   * @param {Object} vocab
+   */
+  _voiceProgramInput(heard, vocab) {
+    const ui = this._ui();
+    if (ui) {
+      ui.like = heard;
+      ui.focusInput();
+    }
+    this.playSound("click");
+    this._voiceCard(
+      heard,
+      this.t.voiceShowingMatches,
+      this._voicePickPhrase(vocab),
+    );
+  }
+
+  /**
    * Final words that were not a fixed command. Spoken search, no AI:
    * 1. a navigation phrase ("second one", "next", "run") acts on results
    * 2. otherwise score every alternative against the commands here
@@ -2058,11 +2084,16 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
       return;
     }
     const heard = alternatives[0];
+    const vocab = this._voiceVocabulary();
+    // a program lists its own options and numbers them too: "option 2",
+    // "next" and "run" act on them; anything else is the program's input
     if (this.programName) {
-      this.updateSearchInputViaVoice(heard);
+      if (this.opened && this._voiceGrammar(alternatives, vocab)) {
+        return;
+      }
+      this._voiceProgramInput(heard, vocab);
       return;
     }
-    const vocab = this._voiceVocabulary();
     if (this.opened && this._voiceGrammar(alternatives, vocab)) {
       return;
     }
