@@ -303,8 +303,7 @@ export class FlashCardSet extends I18NMixin(DDD) {
    * haxProperties integration via file reference
    */
   static get haxProperties() {
-    return new URL(`../lib/flash-card.haxProperties.json`, import.meta.url)
-      .href;
+    return new URL(`./${this.tag}.haxProperties.json`, import.meta.url).href;
   }
 }
 

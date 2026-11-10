@@ -67,7 +67,7 @@ class AudioPlayer extends VideoPlayer {
             title: "caption",
             caption: "caption",
             description: "caption",
-            color: "primaryColor",
+            color: "accentColor",
           },
         ],
         meta: {

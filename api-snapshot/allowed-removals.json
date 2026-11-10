@@ -1,4 +1,57 @@
 {
   "$comment": "Intended breaking changes to authorable HAX elements. Each entry: {\"tag\", \"kind\", \"item\", \"reason\"}; see CONTRIBUTING.md (HAX element API snapshot). Remove entries once their pull request has merged.",
-  "removals": []
+  "removals": [
+    {
+      "tag": "flash-card-set",
+      "kind": "hax.properties",
+      "item": "hasLearningObjective",
+      "reason": "setting never had a backing property on flash-card-set (its HAXSchema was flash-card's, loaded wholesale); nothing authored can depend on it. flash-card-set now has its own schema (haxtheweb/issues#3284)"
+    },
+    {
+      "tag": "flash-card-set",
+      "kind": "hax.properties",
+      "item": "imgKeyword",
+      "reason": "setting never had a backing property on flash-card-set (its HAXSchema was flash-card's, loaded wholesale); nothing authored can depend on it. flash-card-set now has its own schema (haxtheweb/issues#3284)"
+    },
+    {
+      "tag": "flash-card-set",
+      "kind": "hax.properties",
+      "item": "imgSource",
+      "reason": "setting never had a backing property on flash-card-set (its HAXSchema was flash-card's, loaded wholesale); nothing authored can depend on it. flash-card-set now has its own schema (haxtheweb/issues#3284)"
+    },
+    {
+      "tag": "flash-card-set",
+      "kind": "hax.properties",
+      "item": "typeOfAction",
+      "reason": "setting never had a backing property on flash-card-set (its HAXSchema was flash-card's, loaded wholesale); nothing authored can depend on it. flash-card-set now has its own schema (haxtheweb/issues#3284)"
+    },
+    {
+      "tag": "flash-card-set",
+      "kind": "hax.slots",
+      "item": "back",
+      "reason": "flash-card-set has no back slot (cards are list items in its default slot); the setting, inherited from flash-card's schema, never worked, so nothing authored can depend on it (haxtheweb/issues#3284)"
+    },
+    {
+      "tag": "flash-card-set",
+      "kind": "hax.slots",
+      "item": "front",
+      "reason": "flash-card-set has no front slot (cards are list items in its default slot); the setting, inherited from flash-card's schema, never worked, so nothing authored can depend on it (haxtheweb/issues#3284)"
+    },
+    {
+      "tag": "flash-card-set",
+      "kind": "hax.demoTags",
+      "item": "flash-card",
+      "reason": "the demoSchema inserted a <flash-card>, not a set; it now inserts a <flash-card-set>. demoSchema only shapes new insertions, not authored content (haxtheweb/issues#3284)"
+    },
+    {
+      "tag": "beaker-broker",
+      "kind": "tag",
+      "reason": "not authorable: its haxProperties is an empty placeholder ({}) with no gizmo, so HAX never offered it; dropped from hax-elements-registry.json. The element and its attributes are unchanged, so any existing markup still works (haxtheweb/issues#3284)"
+    },
+    {
+      "tag": "simple-fields",
+      "kind": "tag",
+      "reason": "not authorable: the form system HAX editors are built from; its haxProperties is an empty placeholder ({}) with no gizmo, so HAX never offered it; dropped from hax-elements-registry.json. The element and its attributes are unchanged (haxtheweb/issues#3284)"
+    }
+  ]
 }

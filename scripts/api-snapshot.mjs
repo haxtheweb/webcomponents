@@ -26,8 +26,14 @@
  *   cssProperties  documented @cssprop custom properties
  *   hax            HAXSchema: settings property/attribute/slot names (array
  *                  sub-fields as "prop[].child"), gizmo present, demoSchema
- *                  tags. Gizmo handles (drag-and-drop mappings) are only
- *                  checked for oddities: they shape insertion, not content.
+ *                  tags. Gizmo handles (drag-and-drop mappings) are not
+ *                  snapshotted: they shape insertion, not content.
+ *
+ * Every HAX setting and every gizmo handle mapping must name something the
+ * element really has (a property, an observed attribute, a slot for handles,
+ * or a DOM property such as innerHTML). A setting or handle that names a
+ * missing property silently does nothing in the editor, so --check fails on
+ * one; --report lists them with the other oddities.
  *
  * usage:
  *   node scripts/api-snapshot.mjs --write          (yarn api:snapshot)
@@ -39,8 +45,9 @@
  *                                                  element does not have
  *
  * --check exits 1 when something in the snapshot (and, with --base, in the
- * base branch's snapshot) is gone and not allowed, or when an allowed
- * removal is still listed in the committed snapshot. Additions only warn.
+ * base branch's snapshot) is gone and not allowed, when an allowed removal
+ * is still listed in the committed snapshot, or when a HAX setting or gizmo
+ * handle names a property the element does not have. Additions only warn.
  *
  * Attributes are read with @custom-elements-manifest/analyzer (the version
  * every element builds with) in memory, never from the committed
@@ -662,6 +669,8 @@ function haxSettingNames(settings) {
 /** the snapshot record of one authorable tag, plus oddities found on the way */
 function extractTag(repo, tag, start) {
   const odd = [];
+  // settings / handles that point at nothing: they never work, so they fail
+  const broken = [];
   const chain = repo.chain(start);
   // attributes: own first, then ancestors; the observed name is lowercase
   const attributes = {};
@@ -751,7 +760,7 @@ function extractTag(repo, tag, start) {
       );
   }
   if (!hax) hax = haxFromSetCall(repo, start.folder, tag);
-  if (!hax) return { record: null, odd };
+  if (!hax) return { record: null, odd, broken };
   if (hax.error) {
     odd.push(`${tag}: ${hax.error}; HAX settings not captured`);
     hax = { schema: {} };
@@ -765,7 +774,8 @@ function extractTag(repo, tag, start) {
     []) {
     if (!h || typeof h.type !== "string") continue;
     for (const k of Object.keys(h)) {
-      if (k !== "type" && typeof h[k] === "string")
+      // hax-store skips "" mappings, and flags like type_exclusive are booleans
+      if (k !== "type" && typeof h[k] === "string" && h[k] !== "")
         handles.push(`${h.type}:${k}=${h[k]}`);
     }
   }
@@ -782,7 +792,7 @@ function extractTag(repo, tag, start) {
       !(top.toLowerCase() in attributes) &&
       !DOM_PROPERTY.test(top)
     )
-      odd.push(
+      broken.push(
         `${tag}: HAX setting property "${p}" is not a property of the element`,
       );
   }
@@ -792,7 +802,7 @@ function extractTag(repo, tag, start) {
       !(a.toLowerCase() in attributes) &&
       !GLOBAL_ATTRIBUTE.test(a)
     )
-      odd.push(
+      broken.push(
         `${tag}: HAX setting attribute "${a}" is not an attribute of the element`,
       );
   }
@@ -806,11 +816,12 @@ function extractTag(repo, tag, start) {
       !DOM_PROPERTY.test(prop) &&
       !GLOBAL_ATTRIBUTE.test(prop)
     )
-      odd.push(
+      broken.push(
         `${tag}: gizmo handle ${h} names a property the element does not have`,
       );
   }
   if (!gizmo) odd.push(`${tag}: HAXSchema has no gizmo`);
+  odd.push(...broken);
 
   const sortedAttrs = {};
   for (const k of Object.keys(attributes).sort())
@@ -833,12 +844,14 @@ function extractTag(repo, tag, start) {
       demoTags: uniqSort(demoTags),
     },
   };
-  return { record, odd };
+  return { record, odd, broken };
 }
 
 /**
  * Snapshot every authorable tag of a repo root.
- * Returns { records: {tag: record}, skipped: [{tag, why}], oddities: [] }
+ * Returns { records: {tag: record}, skipped: [{tag, why}], oddities: [],
+ * broken: [] } where broken holds the HAX settings and gizmo handles that
+ * name a property the element does not have (also listed in oddities).
  */
 export function buildSnapshot(root, cem) {
   const repo = new Repo(root, cem);
@@ -851,21 +864,23 @@ export function buildSnapshot(root, cem) {
   const records = {};
   const skipped = [];
   const oddities = [];
+  const broken = [];
   for (const tag of tags) {
     const start = index.get(tag);
     if (!start) {
       skipped.push({ tag, why: "no class declares this tag" });
       continue;
     }
-    const { record, odd } = extractTag(repo, tag, start);
+    const { record, odd, broken: bad } = extractTag(repo, tag, start);
     oddities.push(...odd);
+    broken.push(...bad);
     if (!record) {
       skipped.push({ tag, why: "no HAXSchema (haxProperties) on the class" });
       continue;
     }
     records[tag] = record;
   }
-  return { records, skipped, oddities };
+  return { records, skipped, oddities, broken };
 }
 
 // ------------------------------------------------------------------ diff
@@ -1064,6 +1079,7 @@ function readSnapshotAtRef(root, ref) {
 /**
  * The gate. Pure apart from its inputs so tests can drive it.
  * baselines: [{label, snapshot}] (committed snapshot, base branch snapshot)
+ * broken: HAX settings / gizmo handles naming a missing property
  * Returns { ok, errors, warnings, notes }
  */
 export function evaluate({
@@ -1072,8 +1088,16 @@ export function evaluate({
   baselines,
   allowed,
   allowedErrors,
+  broken,
 }) {
   const errors = [...(allowedErrors || [])];
+  for (const b of broken || []) {
+    errors.push(
+      `${b}: the editor setting or drag-and-drop mapping does nothing.\n` +
+        `    Point it at the property that holds that value, add the property, or remove it from the HAXSchema\n` +
+        `    (a removed setting needs an ${ALLOWED_FILE} entry; handles are not snapshotted).`,
+    );
+  }
   const warnings = [];
   const notes = [];
   const seen = new Set();
@@ -1194,7 +1218,7 @@ async function main() {
     process.exit(2);
   }
   const t0 = Date.now();
-  const { records, skipped, oddities } = buildSnapshot(ROOT, cem);
+  const { records, skipped, oddities, broken } = buildSnapshot(ROOT, cem);
   const count = Object.keys(records).length;
   const secs = ((Date.now() - t0) / 1000).toFixed(1);
 
@@ -1249,6 +1273,7 @@ async function main() {
     baselines,
     allowed,
     allowedErrors,
+    broken,
   });
   console.log(
     `api-snapshot: checked ${count} authorable HAX tags in ${secs}s${base || baseDir ? ` (base: ${baseDir || base})` : ""}.`,
@@ -1267,7 +1292,7 @@ async function main() {
     lines.push(
       res.ok
         ? `No removals across ${count} authorable tags.`
-        : `**${res.errors.length} breaking change(s).**`,
+        : `**${res.errors.length} error(s): API removals or HAX settings/handles naming a missing property.**`,
     );
     for (const e of res.errors) lines.push(`- ${e.split("\n")[0]}`);
     for (const w of res.warnings) lines.push(`- (warning) ${w}`);
@@ -1275,7 +1300,7 @@ async function main() {
   }
   if (!res.ok) {
     console.error(
-      `\napi-snapshot: ${res.errors.length} breaking change(s) to authored-content API. See docs: CONTRIBUTING.md#hax-element-api-snapshot`,
+      `\napi-snapshot: ${res.errors.length} error(s) (authored-content API removals, or HAX settings/handles naming a missing property). See docs: CONTRIBUTING.md#hax-element-api-snapshot`,
     );
     process.exit(1);
   }

@@ -125,6 +125,14 @@ class ProgressDonut extends LrndesignPie {
       ...super.properties,
 
       /**
+       * Animate the progress on first load (the HAX "Animated" setting).
+       * Uses the animation timing when one is set, otherwise a default
+       * duration; skipped when the viewer prefers reduced motion.
+       */
+      animated: {
+        type: Boolean,
+      },
+      /**
        * Timing for animation or -1 for false
        */
       animation: {
@@ -178,6 +186,7 @@ class ProgressDonut extends LrndesignPie {
   constructor() {
     super();
     super.setProperties();
+    this.animated = false;
     this.animation = -1;
     this.animationDelay = 0;
     this.complete = [];
@@ -209,10 +218,11 @@ class ProgressDonut extends LrndesignPie {
    */
   addAnimation(e) {
     let data = e && e.detail ? e.detail : undefined;
-    if (this.animation > 0 && data && data.type && data.type === "slice") {
+    const duration = this.animationDuration;
+    if (duration > 0 && data && data.type && data.type === "slice") {
       let opacity = 1,
         val = data.value || this.donutTotal / this.donutData.length,
-        dur = (this.animation * val) / this.donutTotal;
+        dur = (duration * val) / this.donutTotal;
       data.element.attr({
         c: opacity,
       });
@@ -261,6 +271,18 @@ class ProgressDonut extends LrndesignPie {
         ),
       );
     }
+  }
+  /**
+   * Total animation time in ms, or -1 for none: the animation timing when
+   * set, otherwise a default when animated is on and motion is welcome.
+   */
+  get animationDuration() {
+    if (this.animation > 0) return this.animation;
+    if (!this.animated) return -1;
+    const reduced =
+      globalThis.matchMedia &&
+      globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    return reduced ? -1 : 1000;
   }
   get donutData() {
     return Array.isArray(this.complete)

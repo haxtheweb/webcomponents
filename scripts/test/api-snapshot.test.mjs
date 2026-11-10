@@ -292,3 +292,76 @@ test("allowed-removals entries need a kind, item and reason", () => {
   assert.match(errors[0], /reason/);
   assert.match(errors[1], /unknown kind "colors"/);
 });
+
+function built(opts) {
+  const root = fixture(opts);
+  try {
+    return buildSnapshot(root, cem);
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+}
+
+test("every HAX setting and gizmo handle must name something the element has", (t) => {
+  if (!cem) return t.skip("@custom-elements-manifest/analyzer not installed");
+  // the fixture's own settings and handles all resolve
+  const ok = built();
+  assert.deepEqual(ok.broken, []);
+  // handles may map to a property, a slot or a DOM property like innerHTML
+  const fine = built({
+    hax: {
+      ...HAX,
+      gizmo: {
+        ...HAX.gizmo,
+        handles: [
+          {
+            type: "video",
+            type_exclusive: true,
+            source: "source",
+            title: "caption",
+            text: "innerHTML",
+            blank: "",
+          },
+        ],
+      },
+    },
+  });
+  assert.deepEqual(fine.broken, []);
+  const bad = built({
+    hax: {
+      ...HAX,
+      gizmo: {
+        ...HAX.gizmo,
+        handles: [{ type: "video", source: "source", color: "primaryColor" }],
+      },
+      settings: {
+        ...HAX.settings,
+        configure: [
+          ...HAX.settings.configure,
+          { property: "animated", title: "Animated", inputMethod: "boolean" },
+        ],
+      },
+    },
+  });
+  assert.equal(bad.broken.length, 2);
+  assert.match(
+    bad.broken.join("\n"),
+    /probe-player: HAX setting property "animated" is not a property/,
+  );
+  assert.match(
+    bad.broken.join("\n"),
+    /probe-player: gizmo handle video:color=primaryColor names a property/,
+  );
+  // the gate fails on them even when the API snapshot itself is unchanged
+  const res = evaluate({
+    current: bad.records,
+    committed: bad.records,
+    baselines: [{ label: "committed", snapshot: bad.records }],
+    allowed: [],
+    allowedErrors: [],
+    broken: bad.broken,
+  });
+  assert.equal(res.ok, false);
+  assert.equal(res.errors.length, 2);
+  assert.match(res.errors.join("\n"), /does nothing/);
+});
