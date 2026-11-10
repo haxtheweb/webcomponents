@@ -32,70 +32,84 @@ class MapMenuBuilder extends LitElement {
     if (this.depthCount <= this.maxDepth) {
       return html`
         <div class="wrapper">
-          ${this.items
-            ? this.items.map(
-                (item) => html`
-                  ${item.children.length > 0 && this.hasVisibleChildren(item)
-                    ? html`
-                        <map-menu-submenu
-                          itemtitle="${item.title}"
-                          id="${item.id}"
-                          url="${item.slug}"
-                          icon="${item.metadata && item.metadata.icon
-                            ? item.metadata.icon
-                            : null}"
-                          icon-label="${item.metadata && item.metadata.pageType
-                            ? item.metadata.pageType
-                            : ""}"
-                          ?edit-controls="${this.editControls}"
-                          selected="${this.selected}"
-                          ?opened="${this.depthCount > 1 && this.isHorizontal}"
-                          ?is-flex="${this.isFlex}"
-                          ?is-nested="${this.depthCount > 1}"
-                          ?is-horizontal="${this.isHorizontal}"
-                          .published="${this.getPublishedStatus(item)}"
-                          ?hide-in-menu="${this.hideInMenuStatus(item)}"
-                          progress="${this.progressOf(item)}"
-                        >
-                          <map-menu-builder
-                            .items="${item.children}"
-                            .progress="${this.progress}"
-                            ?edit-controls="${this.editControls}"
-                            selected="${this.selected}"
-                            depth-count="${this.depthCount + 1}"
-                            max-depth="${this.maxDepth}"
-                            ?is-flex="${this.isFlex}"
-                            ?is-horizontal="${this.isHorizontal}"
-                            ?is-nested="${true}"
-                          ></map-menu-builder>
-                        </map-menu-submenu>
-                      `
-                    : html`
-                        <map-menu-item
-                          ?edit-controls="${this.editControls}"
-                          ?is-nested="${this.depthCount > 1}"
-                          itemtitle="${item.title}"
-                          id="${item.id}"
-                          url="${item.slug}"
-                          icon="${item.metadata && item.metadata.icon
-                            ? item.metadata.icon
-                            : ""}"
-                          icon-label="${item.metadata && item.metadata.pageType
-                            ? item.metadata.pageType
-                            : ""}"
-                          selected="${this.selected}"
-                          .published="${this.getPublishedStatus(item)}"
-                          ?hide-in-menu="${this.hideInMenuStatus(item)}"
-                          ?locked="${item.metadata && item.metadata.locked}"
-                          status="${item.metadata && item.metadata.status
-                            ? item.metadata.status
-                            : ""}"
-                          progress="${this.progressOf(item)}"
-                        ></map-menu-item>
-                      `}
-                `,
-              )
-            : ""}
+          ${
+            this.items
+              ? this.items.map(
+                  (item) => html`
+                    ${
+                      item.children.length > 0 && this.hasVisibleChildren(item)
+                        ? html`
+                            <map-menu-submenu
+                              itemtitle="${item.title}"
+                              id="${item.id}"
+                              url="${item.slug}"
+                              icon="${
+                                item.metadata && item.metadata.icon
+                                  ? item.metadata.icon
+                                  : null
+                              }"
+                              icon-label="${
+                                item.metadata && item.metadata.pageType
+                                  ? item.metadata.pageType
+                                  : ""
+                              }"
+                              ?edit-controls="${this.editControls}"
+                              selected="${this.selected}"
+                              ?opened="${this.depthCount > 1 && this.isHorizontal}"
+                              ?is-flex="${this.isFlex}"
+                              ?is-nested="${this.depthCount > 1}"
+                              ?is-horizontal="${this.isHorizontal}"
+                              .published="${this.getPublishedStatus(item)}"
+                              ?hide-in-menu="${this.hideInMenuStatus(item)}"
+                              progress="${this.progressOf(item)}"
+                            >
+                              <map-menu-builder
+                                .items="${item.children}"
+                                .progress="${this.progress}"
+                                ?edit-controls="${this.editControls}"
+                                selected="${this.selected}"
+                                depth-count="${this.depthCount + 1}"
+                                max-depth="${this.maxDepth}"
+                                ?is-flex="${this.isFlex}"
+                                ?is-horizontal="${this.isHorizontal}"
+                                ?is-nested="${true}"
+                              ></map-menu-builder>
+                            </map-menu-submenu>
+                          `
+                        : html`
+                            <map-menu-item
+                              ?edit-controls="${this.editControls}"
+                              ?is-nested="${this.depthCount > 1}"
+                              itemtitle="${item.title}"
+                              id="${item.id}"
+                              url="${item.slug}"
+                              icon="${
+                                item.metadata && item.metadata.icon
+                                  ? item.metadata.icon
+                                  : ""
+                              }"
+                              icon-label="${
+                                item.metadata && item.metadata.pageType
+                                  ? item.metadata.pageType
+                                  : ""
+                              }"
+                              selected="${this.selected}"
+                              .published="${this.getPublishedStatus(item)}"
+                              ?hide-in-menu="${this.hideInMenuStatus(item)}"
+                              ?locked="${item.metadata && item.metadata.locked}"
+                              status="${
+                                item.metadata && item.metadata.status
+                                  ? item.metadata.status
+                                  : ""
+                              }"
+                              progress="${this.progressOf(item)}"
+                            ></map-menu-item>
+                          `
+                    }
+                  `,
+                )
+              : ""
+          }
         </div>
       `;
     }

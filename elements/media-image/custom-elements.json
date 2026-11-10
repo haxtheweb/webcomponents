@@ -555,6 +555,19 @@
             },
             {
               "kind": "field",
+              "name": "modalStyles",
+              "default": "MEDIA_IMAGE_MODAL_STYLES"
+            },
+            {
+              "kind": "field",
+              "name": "modalTitleIcon",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"image:photo\""
+            },
+            {
+              "kind": "field",
               "name": "source",
               "privacy": "public",
               "type": {

@@ -802,6 +802,10 @@
           "name": "MapMenuHeader",
           "members": [
             {
+              "kind": "method",
+              "name": "renderProgress"
+            },
+            {
               "kind": "field",
               "name": "tag",
               "static": true,
@@ -1251,6 +1255,10 @@
           "description": "",
           "name": "MapMenuItem",
           "members": [
+            {
+              "kind": "method",
+              "name": "renderProgress"
+            },
             {
               "kind": "field",
               "name": "tag",
