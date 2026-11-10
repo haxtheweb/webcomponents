@@ -149,12 +149,14 @@ export class PageBreak extends IntersectionObserverMixin(
     this._bandLoaded = false;
     this._bandStylesAdopted = false;
     this.__disposer = [];
-    // Set up HAXcms store observer for login status
+    // Set up HAXcms store observer for login status. Preview draws the page
+    // as a visitor sees it, so the page actions pencil goes away with it.
     this.__disposer.push(
       autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.isLoggedIn);
+        const _mobx_val_1 = toJS(store.previewMode);
         Promise.resolve().then(() => {
-          this.isLoggedIn = _mobx_val_0;
+          this.isLoggedIn = _mobx_val_0 && !_mobx_val_1;
         });
       }),
     );
