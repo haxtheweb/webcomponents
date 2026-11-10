@@ -96,7 +96,9 @@
     "language-registry-sync": "node scripts/sync-language-registry.js",
     "version-match": "gulp version-match --gulpfile=gulpfile.mjs",
     "license-restore": "node scripts/copy-dep-licenses.js",
-    "depcheck": "depcheck"
+    "depcheck": "depcheck",
+    "knip": "knip --no-exit-code --no-config-hints",
+    "knip:report": "node scripts/knip-report.mjs"
   },
   "dependencies": {
     "@babel/core": "^7.29.7",
@@ -167,6 +169,7 @@
     "http-server": "14.1.1",
     "husky": "7.0.4",
     "jest": "^30.5.1",
+    "knip": "6.44.2",
     "lerna": "^10.1.1",
     "lightningcss": "1.33.0",
     "lint-staged": "^15.5.2",

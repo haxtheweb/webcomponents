@@ -411,6 +411,14 @@ Note: if your pull request isn't getting enough attention, you can use our [Disc
 
 Unit tests are ideal but not required to be written for proposed changes and enhancements.
 
+### Unused code report
+
+`yarn knip` runs [knip](https://knip.dev) over every workspace in `elements/` and lists imports of packages that an element's own `package.json` does not declare, dependencies nothing imports, files nothing loads and exports nothing uses. The rule it protects: every package a published element imports is declared in that element's `package.json`, so installing the element from npm brings what it needs. `node scripts/knip-report.mjs` prints the same findings as a short markdown summary, with unlisted dependencies in shipping code (not demos, tests or tooling) first.
+
+CI runs it on pull requests and weekly on Sunday as an advisory job summary; it never fails the build.
+
+Elements are loaded by tag at runtime as well as by import, so [`knip.config.js`](knip.config.js) treats each element's main file, `lib/*.js`, `demo/`, `test/` and every file listed in `wc-registry.json` as entry points. When knip reports something that is in fact loaded another way (by path from a script, a build step or a vendored library), add it to `extraEntries` or `vendored` in `knip.config.js` with a comment saying how it is loaded, rather than deleting it.
+
 ## Security
 
 If you discover what you deem to be a critical security issue  please reach out on our Discord channel privately to discuss whether this should be resolved in the open prior or if disclosure should happen after a solution has been crafted.
