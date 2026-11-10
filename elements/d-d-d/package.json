@@ -51,6 +51,18 @@
     "@haxtheweb/simple-tooltip": "^26.8.0",
     "lit": "3.3.3"
   },
+  "peerDependencies": {
+    "@haxtheweb/haxcms-elements": ">=26.8.0",
+    "@haxtheweb/simple-modal": ">=26.8.0"
+  },
+  "peerDependenciesMeta": {
+    "@haxtheweb/haxcms-elements": {
+      "optional": true
+    },
+    "@haxtheweb/simple-modal": {
+      "optional": true
+    }
+  },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.11.0",
     "@open-wc/testing": "4.0.0",

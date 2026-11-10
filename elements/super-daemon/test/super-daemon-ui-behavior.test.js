@@ -612,9 +612,16 @@ describe("super-daemon-ui behavior", () => {
   });
 
   it("renders the search with combobox semantics", async () => {
+    // the input that holds focus is the combobox, not the wrapper host
     const search = element.shadowRoot.querySelector("super-daemon-search");
-    expect(search.getAttribute("role")).to.equal("combobox");
-    expect(search.getAttribute("aria-haspopup")).to.equal("listbox");
-    expect(search.getAttribute("aria-controls")).to.equal("results-listbox");
+    expect(search.getAttribute("role")).to.equal(null);
+    await search.updateComplete;
+    await aTimeout(50);
+    const input = search.inputElement;
+    expect(input, "inner input rendered").to.exist;
+    expect(input.getAttribute("role")).to.equal("combobox");
+    expect(input.getAttribute("aria-haspopup")).to.equal("listbox");
+    expect(input.getAttribute("aria-autocomplete")).to.equal("list");
+    expect(input.getAttribute("aria-expanded")).to.be.oneOf(["true", "false"]);
   });
 });

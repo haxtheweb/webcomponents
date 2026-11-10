@@ -1021,6 +1021,10 @@ class VideoPlayer extends IntersectionObserverMixin(
         "/../",
     });
   }
+  /**
+   * watch light DOM source/track children; safe to call repeatedly, so a
+   * move or re-attach never stacks a second observation
+   */
   __observeChildren() {
     if (this.__observingChildren) {
       return;
@@ -1032,18 +1036,20 @@ class VideoPlayer extends IntersectionObserverMixin(
     });
   }
   /**
-   * life cycle, element is (re)added to the DOM (HAX moves blocks around):
-   * watch light DOM source/track children again after a disconnect. This
-   * class had two connectedCallback definitions; only the last one ran, so
-   * the observer was never restarted after a move.
+   * life cycle, element is (re)added to the DOM (HAX moves blocks around)
    */
   connectedCallback() {
     super.connectedCallback();
+    // resume watching child <source>/<track> changes after a move or
+    // re-attach (disconnectedCallback stops it); a no-op when already on
     this.__observeChildren();
     if (this.hasUpdated) {
       this._syncBackgroundPlay();
     }
   }
+  /**
+   * life cycle, element is removed from the DOM
+   */
   disconnectedCallback() {
     if (this.__setVisChange) {
       this.__setVisChange = false;

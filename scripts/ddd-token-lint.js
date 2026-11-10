@@ -15,9 +15,10 @@
  * Override hooks (`--ddd-component-*`, `--ddd-card-*`, `--ddd-button-*`) are
  * set by consumers, so they are never flagged.
  *
- * It also fails on `var(--ddd-border-xs) solid <colour>`: --ddd-border-xs…lg
- * already include width, style and colour, so that declaration is invalid
- * and draws no border. Use --ddd-border-size-* in front of a style.
+ * It also fails on `var(--ddd-border-xs) solid <colour>` (with or without a
+ * fallback inside the var()): --ddd-border-xs…lg already include width,
+ * style and colour, so that declaration is invalid and draws no border or
+ * focus outline. Use --ddd-border-size-* in front of a style.
  *
  * Existing violations live in scripts/ddd-token-lint.baseline.json so CI only
  * fails on new ones. Fix a violation, then run with --update-baseline to drop
@@ -97,10 +98,13 @@ const TEMPLATE_DECL_RE = new RegExp(
 );
 const USE_RE = new RegExp(`var\\(\\s*(${NAME})`, "g");
 // --ddd-border-xs…lg are full shorthands (width solid colour). Following one
-// with a style or colour ("var(--ddd-border-xs) solid navy") makes the whole
-// declaration invalid, so no border renders. Use --ddd-border-size-* there.
+// with a style or colour ("var(--ddd-border-xs) solid navy", or with a
+// fallback: "var(--ddd-border-sm, 2px solid) var(--x)") makes the whole
+// declaration invalid, so no border or focus outline renders. Use
+// --ddd-border-size-* there. The optional fallback allows one level of
+// nested parentheses, matched without backtracking.
 const SHORTHAND_RE =
-  /var\(\s*(--ddd-border-(?:xs|sm|md|lg))\s*\)\s+(?=(?:solid|dashed|dotted|double|groove|ridge|inset|outset|none)\b|var\(|light-dark\(|#[0-9a-fA-F]|rgba?\(|transparent\b|currentColor\b|black\b|white\b)/g;
+  /var\(\s*(--ddd-border-(?:xs|sm|md|lg))\s*(?:,[^()]*(?:\([^()]*\)[^()]*)*)?\)\s+(?=(?:solid|dashed|dotted|double|groove|ridge|inset|outset|none)\b|var\(|light-dark\(|#[0-9a-fA-F]|rgba?\(|transparent\b|currentColor\b|black\b|white\b)/g;
 const shorthand = []; // { token, file, line }
 
 const files = [];

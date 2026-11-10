@@ -13,9 +13,6 @@ import { HAXCMSMobileMenuMixin } from "@haxtheweb/haxcms-elements/lib/core/utils
 import { HAXCMSOperationButtons } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSOperationButtons.js";
 import { varExists, varGet } from "@haxtheweb/utils/lib/object-path.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
-import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
-import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-tags.js";
-import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
 import { autorun, toJS } from "mobx";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";

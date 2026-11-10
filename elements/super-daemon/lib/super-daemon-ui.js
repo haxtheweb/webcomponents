@@ -173,6 +173,17 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       ...HaxUiAdminPrimitives,
       ...HaxUiAdminControls,
       css`
+        .visually-hidden {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          margin: -1px;
+          padding: 0;
+          overflow: hidden;
+          clip: rect(0 0 0 0);
+          white-space: nowrap;
+          border: 0;
+        }
         /* Merlin is admin chrome: HAX UI tokens throughout, so the modal,
            the top bar popover and the mini popover read as the same
            "admin / editing" surface as site admin and outline-designer. */
@@ -537,6 +548,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     if (super.updated) {
       super.updated(changedProperties);
     }
+    this._syncCombobox();
     changedProperties.forEach((oldValue, propName) => {
       if (
         propName == "filtered" &&
@@ -1159,6 +1171,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
         row.active = i === index;
       });
 
+      this._syncCombobox();
       // Scroll the selected item into view (virtualizer or plain mini list)
       if (index >= 0) {
         const virtualizer = this.shadowRoot.querySelector("lit-virtualizer");
@@ -1179,6 +1192,56 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
         }
       }
     });
+  }
+
+  /**
+   * The focused search input is the combobox: it carries the role, whether
+   * results are showing, which listbox it controls and which result is
+   * highlighted. The input and the result rows live in different shadow
+   * roots, so the rows are referenced as elements (ARIA element reflection
+   * allows a reference into an enclosing shadow root); id references cannot
+   * cross that boundary. Browsers without element reflection hear the
+   * highlighted result through the #active-result live region instead.
+   */
+  _syncCombobox() {
+    const search =
+      this.shadowRoot && this.shadowRoot.querySelector("super-daemon-search");
+    const input = search ? search.inputElement : null;
+    if (!input) {
+      // the inner field renders after us the first time; try once more
+      if (search && !this.__comboboxRetry) {
+        this.__comboboxRetry = true;
+        requestAnimationFrame(() => {
+          this.__comboboxRetry = false;
+          if (search.inputElement) this._syncCombobox();
+        });
+      }
+      return;
+    }
+    input.setAttribute("role", "combobox");
+    input.setAttribute("aria-autocomplete", "list");
+    input.setAttribute("aria-haspopup", "listbox");
+    input.setAttribute(
+      "aria-expanded",
+      this.filtered && this.filtered.length > 0 ? "true" : "false",
+    );
+    const listbox = this.shadowRoot.querySelector("#results-listbox");
+    const row =
+      this._selectedIndex >= 0
+        ? this.shadowRoot.querySelector(`#option-${this._selectedIndex}`)
+        : null;
+    if ("ariaActiveDescendantElement" in input) {
+      input.ariaControlsElements = listbox ? [listbox] : null;
+      if (input.ariaActiveDescendantElement !== row) {
+        input.ariaActiveDescendantElement = row;
+      }
+      return;
+    }
+    const status = this.shadowRoot.querySelector("#active-result");
+    const text = row ? row.getAttribute("title") || "" : "";
+    if (status && status.textContent !== text) {
+      status.textContent = text;
+    }
   }
 
   /**
@@ -1538,12 +1601,6 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
   render() {
     return html`
       <super-daemon-search
-        role="combobox"
-        aria-expanded="${this.filtered.length > 0 ? "true" : "false"}"
-        aria-haspopup="listbox"
-        aria-autocomplete="list"
-        aria-controls="results-listbox"
-        aria-activedescendant="${this._activeDescendant || ""}"
         @keydown="${this._inputKeydown}"
         @focused-changed="${this.focusedChanged}"
         @value-changed="${this.inputfilterChanged}"
@@ -1569,6 +1626,13 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
         ?droppable="${this.activeDrag}"
       >
       </super-daemon-search>
+      <div
+        id="active-result"
+        class="visually-hidden"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+      ></div>
       ${this._renderContexts()}
       <div class="body">
         <div

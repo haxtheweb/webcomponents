@@ -40,6 +40,19 @@ class A11yTab extends I18NMixin(LitElement) {
           height: 0;
           overflow: hidden;
         }
+        /* the end-of-tab "Back to tabs" link is a skip link: off screen
+           until it has keyboard focus, then shown in place */
+        .sr-only:focus-within {
+          position: static;
+          display: block;
+          height: auto;
+          overflow: visible;
+          margin: var(--ddd-spacing-2, 8px) 0 0;
+        }
+        .sr-only a:focus {
+          outline: var(--ddd-focus-ring, 2px solid currentColor);
+          outline-offset: var(--ddd-focus-offset, 2px);
+        }
         .label-heading {
           display: flex;
           align-items: center;
