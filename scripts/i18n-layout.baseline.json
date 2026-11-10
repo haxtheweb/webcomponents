@@ -67,9 +67,6 @@
     "course-model": {
       "rtl-css": 5
     },
-    "d-d-docs": {
-      "rtl-css": 1
-    },
     "ddd-steps-list": {
       "rtl-css": 9
     },
@@ -91,9 +88,6 @@
     "github-preview": {
       "rtl-css": 1
     },
-    "grade-book": {
-      "rtl-css": 7
-    },
     "hex-picker": {
       "rtl-css": 1
     },
@@ -105,9 +99,6 @@
     },
     "la-tex": {
       "rtl-css": 1
-    },
-    "license-element": {
-      "rtl-css": 2
     },
     "lrndesign-sidenote": {
       "rtl-css": 1

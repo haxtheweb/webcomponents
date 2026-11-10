@@ -605,7 +605,7 @@ class DDDocs extends I18NMixin(DDD) {
         .pattern-recipe-copy {
           position: absolute;
           top: var(--ddd-spacing-2);
-          right: var(--ddd-spacing-2);
+          inset-inline-end: var(--ddd-spacing-2);
           --simple-icon-height: var(--ddd-icon-xs);
           --simple-icon-width: var(--ddd-icon-xs);
           color: light-dark(

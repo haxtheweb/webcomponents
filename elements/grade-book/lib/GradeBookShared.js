@@ -220,7 +220,7 @@ export const GradeBookSharedStyles = [
     /* the caption box is as wide as the table; keep its text in view */
     #studentgrid .gb-caption-text {
       position: sticky;
-      left: var(--ddd-spacing-3);
+      inset-inline-start: var(--ddd-spacing-3);
       display: inline-block;
       max-width: calc(100vw - var(--ddd-spacing-12));
     }
@@ -292,7 +292,7 @@ export const GradeBookSharedStyles = [
       text-align: center;
     }
     #studentgrid thead th.student-table-label {
-      left: 0;
+      inset-inline-start: 0;
       z-index: 3;
       text-align: start;
       padding-inline: var(--ddd-spacing-3);
@@ -300,7 +300,7 @@ export const GradeBookSharedStyles = [
     }
     #studentgrid tbody th {
       position: sticky;
-      left: 0;
+      inset-inline-start: 0;
       z-index: 1;
       padding: var(--ddd-spacing-1) var(--ddd-spacing-3);
       vertical-align: middle;
@@ -618,7 +618,8 @@ export const GradeBookSharedStyles = [
       padding: var(--ddd-spacing-2);
     }
     .student-feedback-score-heading h3 {
-      margin: 0 0 0 var(--ddd-spacing-2);
+      margin-block: 0;
+      margin-inline: var(--ddd-spacing-2) 0;
       padding: 0;
     }
     .active-submission {
@@ -641,7 +642,7 @@ export const GradeBookSharedStyles = [
     }
     .student-report-score {
       position: absolute;
-      right: 40px;
+      inset-inline-end: 40px;
       margin-top: -20px;
     }
     editable-table-display::part(td),
