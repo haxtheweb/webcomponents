@@ -1806,17 +1806,6 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
       }
     }
   }
-  /**
-   * Convert an object to an array
-   */
-  _toArray(obj) {
-    if (obj == null) {
-      return [];
-    }
-    return Object.keys(obj).map(function (key) {
-      return obj[key];
-    });
-  }
   _isNodeLocked(node) {
     if (!node || !node.getAttribute) {
       return false;

@@ -1542,20 +1542,6 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
     return this._canScale(r);
   }
 
-  async _rj(resp) {
-    try {
-      return await resp.json();
-    } catch {
-      return null;
-    }
-  }
-  _em(resp, d, fb) {
-    // backend message, translated by its code when possible (issues#3157)
-    const apiText = haxcmsApiMessage(d, "");
-    if (apiText) return apiText;
-    if (resp && resp.status) return `${fb} (${resp.status})`;
-    return fb;
-  }
   _nextCacheBustToken() {
     this.__cacheBustCounter += 1;
     return `${Date.now()}-${this.__cacheBustCounter}`;
@@ -1591,14 +1577,6 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
       return `${fallbackMessage} (${status})`;
     }
     return fallbackMessage;
-  }
-  _rowsRenderKey() {
-    return `${this.cacheBustToken}|${this.rows.length}|${this.rows
-      .map(
-        (row) =>
-          `${row.path}:${row.updated || row.dateCreated || ""}:${row.size || 0}`,
-      )
-      .join("|")}`;
   }
 
   async refreshFiles() {

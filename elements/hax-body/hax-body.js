@@ -5423,20 +5423,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   }
   /**
    * Test if this is a HAX element or not
-   */
-  _haxResolvePreviousElement(node) {
-    node = node.previousElementSibling;
-    while (
-      node != null &&
-      typeof node.tagName !== typeof undefined &&
-      node.tagName.substring(0, 4) === "HAX-"
-    ) {
-      node = node.previousElementSibling;
-    }
-    return node;
-  }
-  /**
-   * Test if this is a HAX element or not
    * true means its a valid element for selection
    * We have special support for the hax-logo because it's hax.
    */
@@ -7000,37 +6986,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     this.unsetElementEditMode(oldValue);
   }
   /**
-   * Get position from top and left of the page based on position:relative; being
-   * set in a parent.
-   *
-   * @notice This only works correctly across browsers because hax-body
-   * is position:relative in :host.
-   */
-  _getPosition(element) {
-    let xPosition =
-      element.offsetLeft - element.scrollLeft + element.clientLeft;
-    let yPosition = element.offsetTop - element.scrollTop + element.clientTop;
-    return { x: xPosition, y: yPosition };
-  }
-  /**
    * Handle display and position of the context menu
    */
   _showContextMenu(menu) {
     menu.setAttribute("on-screen", "on-screen");
     menu.classList.add("hax-context-visible", "hax-context-menu-active");
-  }
-  /**
-   * gets context container
-   */
-  _getContextContainer(el) {
-    let parent = !el || !el.parentNode ? undefined : el.parentNode,
-      container =
-        !parent || !parent.nodeType
-          ? undefined
-          : parent.nodeType === 1
-            ? parent
-            : parent.host;
-    return container;
   }
   /**
    * Simple hide / reset of whatever menu it's handed.
