@@ -56,6 +56,18 @@ describe("haxcms-site-editor-ui preview", () => {
     expect(controls.nextElementSibling).to.equal(mark);
   });
 
+  it("Preview is a plain menuitem: its label says the state, so no aria-pressed", async () => {
+    const controls = () =>
+      element.shadowRoot.querySelector(".preview-toolbar-buttons");
+    expect(button().getAttribute("role")).to.equal("menuitem");
+    expect(button().hasAttribute("aria-pressed")).to.equal(false);
+    await expect(controls()).to.be.accessible();
+    await element.enterPreview();
+    await element.updateComplete;
+    expect(button().hasAttribute("aria-pressed")).to.equal(false);
+    await expect(controls()).to.be.accessible();
+  });
+
   it("registers Ctrl⇧8", () => {
     const shortcuts = HAXCMSKeyboardShortcutsInstance.getShortcuts();
     const list = Array.isArray(shortcuts)
