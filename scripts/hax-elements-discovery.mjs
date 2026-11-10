@@ -126,12 +126,21 @@ function generateTitle(elementName) {
 }
 
 /**
- * Check if file contains haxProperties or setHaxProperties
+ * A file defines a HAX schema when it declares haxProperties (a static
+ * getter or field, a method, or an object key) or calls setHaxProperties.
+ * Merely reading another element's `.haxProperties` (editor UI, reports,
+ * builders) or mentioning the word in a comment does not count; matching on
+ * the bare word put such files in the registry with made-up titles.
  */
+const HAX_PROPERTIES_DEFINITION =
+  /static\s+(get\s+)?haxProperties\b|(^|[^.\w])haxProperties\s*\(\s*\)\s*\{|(^|[^.\w])haxProperties\s*[:=](?!=)/m;
+
+function definesHaxProperties(content) {
+  return HAX_PROPERTIES_DEFINITION.test(content);
+}
+
 function hasHaxSchema(content) {
-  return (
-    content.includes("haxProperties") || content.includes("setHaxProperties")
-  );
+  return definesHaxProperties(content) || content.includes("setHaxProperties");
 }
 
 /**
@@ -400,7 +409,7 @@ async function discoverHaxElements() {
           const elementsInFile = new Set();
 
           // Method 1: Look for elements with haxProperties methods
-          if (content.includes("haxProperties")) {
+          if (definesHaxProperties(content)) {
             const elementName = extractElementName(content, file);
             if (elementName && !shouldSkipElement(elementName, file)) {
               const title = extractTitleFromGizmo(content, elementName);
@@ -435,8 +444,9 @@ async function discoverHaxElements() {
     console.log(
       `🎨 Discovered ${elementsFound} elements with HAX schema definitions`,
     );
+    const primitiveCount = Object.keys(htmlPrimitives).length;
     console.log(
-      `📊 Total HAX-capable elements: ${Object.keys(haxElements).length}`,
+      `📊 Total HAX-capable tags: ${Object.keys(haxElements).length} (${elementsFound} elements + ${primitiveCount} HTML primitives)`,
     );
 
     // Sort elements alphabetically by element name

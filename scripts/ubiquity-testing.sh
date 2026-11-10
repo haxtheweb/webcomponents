@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# Run as a yarn (v1) script, this shell inherits yarn's npm_config_argv and
+# npm_config_version_* settings. The npm builds and publishes below do not
+# know them and print an "Unknown env config" warning per name per call, which
+# buries real warnings in the output. npm has no such settings, so drop them.
+for v in $(compgen -e | grep -E '^npm_config_(argv$|version_)'); do
+  unset "$v"
+done
+
 ## STEP 1 RUN BUILD ROUTINE FOR ALL WEBCOMPONENTS
 # run new build routine in webcomponents
 cd ~/haxtheweb/webcomponents

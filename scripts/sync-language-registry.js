@@ -2,7 +2,7 @@
 
 /**
  * Mirror the shared HAXcms JSON files into both backends, the same way
- * scripts/theme-discovery.js mirrors themes.json.
+ * scripts/theme-discovery.mjs mirrors themes.json.
  *
  *   elements/i18n-manager/lib/languages.json
  *     -> ../haxcms-nodejs/src/coreConfig/languages.json
