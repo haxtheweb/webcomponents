@@ -99,9 +99,14 @@
     },
     "haxcms-elements": {
       "motion": {
+        "transition background-color on haxcms-button-add >> button.simple-toolbar-button": 1,
         "transition color on site-menu-button >> simple-icon-lite": 1,
+        "transition opacity on haxcms-button-add >> button.simple-toolbar-button": 1,
         "transition opacity on haxcms-site-builder >> div": 1,
+        "transition outline-color on haxcms-button-add >> button.simple-toolbar-button": 1,
         "transition outline-color on site-menu-button >> button": 1,
+        "transition outline-offset on haxcms-button-add >> button.simple-toolbar-button": 1,
+        "transition outline-width on haxcms-button-add >> button.simple-toolbar-button": 1,
         "transition outline-width on site-menu-button >> button": 1
       }
     },
@@ -149,6 +154,7 @@
         "transition font-size on map-menu >> div": 1,
         "transition font-size on map-menu-header": 1,
         "transition font-size on map-menu-submenu >> a11y-collapse": 1,
+        "transition opacity on map-menu-header": 1,
         "transition outline-color on map-menu-header >> button": 1,
         "transition outline-color on map-menu-item >> button": 1,
         "transition outline-width on map-menu-header >> button": 1,
@@ -249,14 +255,18 @@
       "motion": {
         "transition background-color on simple-fields-combo": 1,
         "transition background-color on simple-fields-field": 1,
+        "transition background-color on simple-fields-url-combo": 1,
         "transition color on simple-fields-combo >> label.label-main": 1,
         "transition color on simple-fields-container >> label.label-main": 1,
         "transition color on simple-fields-field >> label.label-main": 1,
+        "transition color on simple-fields-url-combo >> label.label-main": 1,
         "transition outline-color on simple-fields-combo": 1,
         "transition outline-color on simple-fields-combo >> input.field": 1,
         "transition outline-color on simple-fields-container": 1,
         "transition outline-color on simple-fields-field": 1,
         "transition outline-color on simple-fields-field >> input.field": 1,
+        "transition outline-color on simple-fields-url-combo": 1,
+        "transition outline-color on simple-fields-url-combo >> input.field": 1,
         "transition z-index on simple-fields-array-item": 1
       }
     },
@@ -291,6 +301,7 @@
         "transition border-top-color on simple-toolbar-field >> div.simple-toolbar-button": 1,
         "transition border-top-color on simple-toolbar-more-button >> button.simple-toolbar-button": 1,
         "transition opacity on simple-toolbar-button >> button.simple-toolbar-button": 1,
+        "transition opacity on simple-toolbar-field >> div.simple-toolbar-button": 1,
         "transition opacity on simple-toolbar-more-button >> button.simple-toolbar-button": 1,
         "transition outline-color on simple-toolbar-button >> button.simple-toolbar-button": 1,
         "transition outline-color on simple-toolbar-more-button >> button.simple-toolbar-button": 1,

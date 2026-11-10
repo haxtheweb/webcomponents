@@ -85,7 +85,10 @@ export function pageTargets(folder) {
   const dm = globalThis.__darkMotion;
   const esc = folder.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const re = new RegExp(`/(?:elements|node_modules/@haxtheweb)/${esc}/`);
-  const ours = Object.keys(dm.defs).filter((t) => re.test(dm.defs[t]));
+  // sorted: define order depends on module load timing
+  const ours = Object.keys(dm.defs)
+    .filter((t) => re.test(dm.defs[t]))
+    .sort();
   const all = [];
   const walk = (root) => {
     for (const el of root.querySelectorAll("*")) {
@@ -115,7 +118,7 @@ export function pageTargets(folder) {
     inner.push(...host.querySelectorAll(FOCUSABLE));
     const picked = [host, ...inner.filter(visible).slice(0, 3)];
     for (const el of picked) {
-      if (targets.length < 12 && !targets.includes(el)) {
+      if (targets.length < 60 && !targets.includes(el)) {
         targets.push(el);
       }
     }
