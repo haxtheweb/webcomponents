@@ -108,9 +108,8 @@ jobs:
         env:
           BASE_REF: ${{ steps.scope.outputs.base }}
           # Drive the runner's preinstalled Chrome with its matching
-          # chromedriver; tachometer still installs the chromedriver npm
-          # package on demand, but skips that package's binary download.
-          CHROMEDRIVER_SKIP_DOWNLOAD: "true"
+          # chromedriver. With a driver URL set, run.mjs installs the pinned
+          # tachometer without downloading another driver binary.
           BENCH_WEBDRIVER_URL: http://127.0.0.1:9515
         run: |
           set -euo pipefail

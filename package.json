@@ -190,7 +190,6 @@
     "stylelint": "15.11.0",
     "svgo": "^2.8.4",
     "symlink-dir": "5.2.1",
-    "tachometer": "0.7.2",
     "three": "^0.187.0",
     "trim": "1.0.1",
     "wc-dox": "1.3.5"

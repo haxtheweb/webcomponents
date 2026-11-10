@@ -15,11 +15,16 @@
  *
  * The base ref's elements/ are extracted into benchmarks/work/base/
  * (gitignored; not a dot folder, since the benchmark server will not serve
- * hidden paths) and
- * get their own node_modules made of links: @haxtheweb workspace packages
- * point at the base's elements, everything else at this tree's installed
- * third-party packages. The base runs the benchmark pages from this tree, so
- * both sides run identical benchmark code.
+ * hidden paths) and get their own node_modules made of links: @haxtheweb
+ * workspace packages point at the base's elements, everything else at this
+ * tree's installed third-party packages. The base runs the benchmark pages
+ * from this tree, so both sides run identical benchmark code.
+ *
+ * tachometer is not a devDependency: one of its dependencies
+ * (truncate-utf8-bytes, via sanitize-filename) is WTFPL licensed, which the
+ * repo's license policy does not allow in the lockfile. The first run
+ * installs the pinned versions below into benchmarks/work/tools/ with npm,
+ * outside yarn.lock. A root install of tachometer is used instead if present.
  *
  * Browser settings come from the environment (all optional):
  *   BENCH_CHROME_BINARY   Chrome/Chromium to launch (default: the system one)
@@ -38,6 +43,9 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(here, "..");
 const work = path.join(here, "work");
 const baseDir = path.join(work, "base");
+const tools = path.join(work, "tools");
+const TACHOMETER = "0.7.2";
+const CHROMEDRIVER = "156.0.0";
 
 function parseArgs(argv) {
   const opts = {
@@ -177,6 +185,60 @@ function prepareBase(sha) {
     path.join(root, "node_modules"),
     path.join(baseDir, "node_modules"),
   );
+}
+
+/**
+ * tachometer's CLI, installed on first use (see the header comment). The
+ * chromedriver package goes next to it so tachometer does not install it on
+ * demand inside its own folder; its postinstall fetches a driver matching
+ * the local Chrome, or nothing when an existing driver is used.
+ */
+function tachometer() {
+  const rootCopy = path.join(
+    root,
+    "node_modules",
+    "tachometer",
+    "bin",
+    "tach.js",
+  );
+  if (fs.existsSync(rootCopy)) return rootCopy;
+  const bin = path.join(tools, "node_modules", "tachometer", "bin", "tach.js");
+  const pkg = path.join(tools, "node_modules", "tachometer", "package.json");
+  if (
+    fs.existsSync(pkg) &&
+    JSON.parse(fs.readFileSync(pkg, "utf8")).version === TACHOMETER
+  ) {
+    return bin;
+  }
+  console.log(
+    `bench: installing tachometer@${TACHOMETER} into benchmarks/work/tools (first run)`,
+  );
+  fs.mkdirSync(tools, { recursive: true });
+  const env = { ...process.env };
+  if (env.BENCH_WEBDRIVER_URL) {
+    env.CHROMEDRIVER_SKIP_DOWNLOAD = "true";
+  } else if (env.DETECT_CHROMEDRIVER_VERSION === undefined) {
+    env.DETECT_CHROMEDRIVER_VERSION = "true";
+  }
+  const res = spawnSync(
+    "npm",
+    [
+      "install",
+      "--prefix",
+      tools,
+      "--no-save",
+      "--no-package-lock",
+      "--no-audit",
+      "--no-fund",
+      `tachometer@${TACHOMETER}`,
+      `chromedriver@${CHROMEDRIVER}`,
+    ],
+    { cwd: tools, env, stdio: "inherit", shell: process.platform === "win32" },
+  );
+  if (res.status !== 0 || !fs.existsSync(bin)) {
+    throw new Error("could not install tachometer");
+  }
+  return bin;
 }
 
 function browserConfig() {
@@ -329,7 +391,7 @@ function main() {
     configFile,
     JSON.stringify(tachometerConfig(names, opts), null, 2),
   );
-  const tach = path.join(root, "node_modules", "tachometer", "bin", "tach.js");
+  const tach = tachometer();
   const res = spawnSync(
     process.execPath,
     [tach, "--config", configFile, "--json-file", opts.jsonFile],

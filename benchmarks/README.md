@@ -52,9 +52,13 @@ code.
 Close other heavy work while it runs; 30 samples of all six benchmarks
 against a base takes several minutes.
 
-tachometer drives Chrome through chromedriver and installs the
-`chromedriver` package the first time it needs it. To use a particular
-browser or driver instead:
+The first run installs pinned `tachometer` and `chromedriver` packages into
+`benchmarks/work/tools/` with npm (needs network once). They are not
+devDependencies because one of tachometer's own dependencies,
+`truncate-utf8-bytes` (via `sanitize-filename`), is WTFPL licensed, which
+the repo's license policy does not allow in `yarn.lock`. The chromedriver
+package downloads a driver matching your installed Chrome. To use a
+particular browser or driver instead:
 
 | Variable              | Use                                                                                                                                           |
 | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
