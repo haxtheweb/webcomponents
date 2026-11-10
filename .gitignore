@@ -42,3 +42,6 @@ __pycache__/
 
 # color vision screenshot output (scripts/vision-gallery.mjs)
 vision-gallery/
+
+# render benchmark scratch: base tree, config, results (benchmarks/run.mjs)
+benchmarks/work/

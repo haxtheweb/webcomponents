@@ -81,6 +81,7 @@
     "minify-css-templates": "node scripts/minify-css-templates.mjs build/es6/node_modules/@haxtheweb",
     "test:fuzz": "HAX_FUZZ_SEED=random HAX_FUZZ_RUNS=4000 web-test-runner \"elements/*/test/*-fuzz.test.js\" --node-resolve --root-dir . --playwright --browsers chromium --static-logging",
     "test:scripts": "node --test scripts/test/*.test.mjs",
+    "bench": "node benchmarks/run.mjs",
     "vendor-copy-xterm": "gulp vendor-copy-xterm --gulpfile=gulpfile.mjs",
     "vendor-copy-latex2html5": "gulp vendor-copy-latex2html5 --gulpfile=gulpfile.mjs",
     "wc-autoloader": "gulp wc-autoloader --gulpfile=gulpfile.mjs",
@@ -189,6 +190,7 @@
     "stylelint": "15.11.0",
     "svgo": "^2.8.4",
     "symlink-dir": "5.2.1",
+    "tachometer": "0.7.2",
     "three": "^0.187.0",
     "trim": "1.0.1",
     "wc-dox": "1.3.5"

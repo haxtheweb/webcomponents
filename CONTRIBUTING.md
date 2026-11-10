@@ -411,6 +411,10 @@ Note: if your pull request isn't getting enough attention, you can use our [Disc
 
 Unit tests are ideal but not required to be written for proposed changes and enhancements.
 
+### Render benchmarks
+
+`yarn bench` times first render and a common update of hax-body, video-player, grid-plate, outline-designer, site-menu and simple-icon, comparing your working tree with `origin/master` in the same browser and reporting confidence intervals. It keeps those hot paths from getting slower unnoticed. CI runs it on pull requests labeled `perf` or touching those elements, as an advisory job summary that never fails the build. See [benchmarks/README.md](benchmarks/README.md).
+
 ## Security
 
 If you discover what you deem to be a critical security issue  please reach out on our Discord channel privately to discuss whether this should be resolved in the open prior or if disclosure should happen after a solution has been crafted.

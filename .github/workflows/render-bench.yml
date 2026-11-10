@@ -1,0 +1,179 @@
+name: render-bench
+
+# Lit render benchmarks (benchmarks/, tachometer). ADVISORY: timings on
+# shared runners are noisy, so this never fails a build; the result is a job
+# summary and, for pull requests from this repository, one PR comment that is
+# updated on each push.
+#
+# Runs on pull requests labeled `perf`, on pull requests that touch a
+# benchmarked element or the benchmarks, and on demand. It compares the pull
+# request against its base commit in one tachometer run (same Chrome, samples
+# interleaved at random) and reports 95% confidence intervals.
+#
+# The benchmark job runs the pull request's code with a read-only token; the
+# comment job never checks out or runs that code and only posts the summary
+# text the benchmark job produced. Runs on pull_request (not
+# pull_request_target), so fork PRs get a job summary and no comment.
+on:
+  # No branch filter: stacked PRs (base is another feature branch) must run too.
+  pull_request:
+    types: [opened, synchronize, reopened, labeled]
+  workflow_dispatch:
+    inputs:
+      base:
+        description: "Base ref to compare against"
+        required: false
+        default: "master"
+permissions:
+  contents: read
+concurrency:
+  group: render-bench-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  bench:
+    name: Render benchmarks (advisory)
+    # a label other than perf being added is not a reason to re-run
+    if: github.event.action != 'labeled' || github.event.label.name == 'perf'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    outputs:
+      summary: ${{ steps.bench.outputs.summary }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Decide whether to run
+        id: scope
+        env:
+          EVENT: ${{ github.event_name }}
+          HAS_PERF_LABEL: ${{ contains(github.event.pull_request.labels.*.name, 'perf') }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          DISPATCH_BASE: ${{ github.event.inputs.base }}
+        run: |
+          set -euo pipefail
+          if [[ "$EVENT" == "workflow_dispatch" ]]; then
+            git fetch --no-tags --depth=1 origin "refs/heads/${DISPATCH_BASE}:refs/remotes/origin/${DISPATCH_BASE}"
+            echo "base=origin/${DISPATCH_BASE}" >> "$GITHUB_OUTPUT"
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git fetch --no-tags --depth=1 origin "$BASE_SHA"
+          echo "base=$BASE_SHA" >> "$GITHUB_OUTPUT"
+          if [[ "$HAS_PERF_LABEL" == "true" ]]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          # benchmarked elements (and what site-menu renders through)
+          # (diff to a file first: grep -q exiting early would fail the
+          # pipe under pipefail)
+          git diff --name-only "$BASE_SHA" HEAD > changed.txt
+          if grep -qE '^(benchmarks/|\.github/workflows/render-bench\.yml$|elements/(hax-body|video-player|grid-plate|outline-designer|simple-icon|map-menu)/|elements/haxcms-elements/lib/ui-components/navigation/)' changed.txt; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo "No benchmarked element changed and no perf label: skipping." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Set up Node.js
+        if: steps.scope.outputs.run == 'true'
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+
+      - name: Get yarn cache directory path
+        if: steps.scope.outputs.run == 'true'
+        id: yarn-cache-dir-path
+        run: echo "dir=$(yarn cache dir)" >> "$GITHUB_OUTPUT"
+
+      - name: Cache Yarn
+        if: steps.scope.outputs.run == 'true'
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-node-24-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-24-yarn-
+
+      - name: Install
+        if: steps.scope.outputs.run == 'true'
+        run: yarn install --frozen-lockfile
+
+      - name: Run benchmarks
+        id: bench
+        if: steps.scope.outputs.run == 'true'
+        # advisory: a failed or noisy run never fails the build
+        continue-on-error: true
+        env:
+          BASE_REF: ${{ steps.scope.outputs.base }}
+          # Drive the runner's preinstalled Chrome with its matching
+          # chromedriver; tachometer still installs the chromedriver npm
+          # package on demand, but skips that package's binary download.
+          CHROMEDRIVER_SKIP_DOWNLOAD: "true"
+          BENCH_WEBDRIVER_URL: http://127.0.0.1:9515
+        run: |
+          set -euo pipefail
+          "$CHROMEWEBDRIVER/chromedriver" --port=9515 > chromedriver.log 2>&1 &
+          trap 'kill %1 2>/dev/null || true' EXIT
+          for _ in $(seq 1 50); do
+            curl -fsS http://127.0.0.1:9515/status > /dev/null 2>&1 && break
+            sleep 0.2
+          done
+          yarn bench --base "$BASE_REF" --sample-size 30 \
+            --summary-file bench-summary.md --json-file bench-results.json
+          cat bench-summary.md >> "$GITHUB_STEP_SUMMARY"
+          {
+            echo "summary<<BENCH_SUMMARY_EOF"
+            cat bench-summary.md
+            echo "BENCH_SUMMARY_EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Note a failed run
+        if: steps.scope.outputs.run == 'true' && steps.bench.outcome == 'failure'
+        run: |
+          echo "::warning title=Render benchmarks did not finish::See the Run benchmarks step log. This check is advisory."
+          echo "Render benchmarks did not finish; see the Run benchmarks step log." >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload results
+        if: steps.scope.outputs.run == 'true' && always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: render-bench-results
+          path: |
+            bench-summary.md
+            bench-results.json
+          if-no-files-found: ignore
+          retention-days: 14
+
+  comment:
+    name: Post benchmark summary
+    needs: bench
+    if: >-
+      github.event_name == 'pull_request' &&
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      needs.bench.outputs.summary != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Comment on the pull request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          SUMMARY: ${{ needs.bench.outputs.summary }}
+        run: |
+          set -euo pipefail
+          {
+            echo "<!-- render-bench -->"
+            printf '%s\n' "$SUMMARY"
+          } > comment.md
+          # update our earlier comment instead of adding one per push
+          existing=$(gh api "repos/${GITHUB_REPOSITORY}/issues/${PR_NUMBER}/comments" --paginate \
+            --jq '[.[] | select(.body | contains("<!-- render-bench -->"))][0].id' 2>/dev/null || true)
+          if [[ -n "$existing" && "$existing" != "null" ]]; then
+            gh api -X PATCH "repos/${GITHUB_REPOSITORY}/issues/comments/${existing}" -F body=@comment.md >/dev/null || true
+          else
+            gh pr comment "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --body-file comment.md || true
+          fi
