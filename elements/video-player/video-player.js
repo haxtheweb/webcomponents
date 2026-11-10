@@ -940,10 +940,7 @@ class VideoPlayer extends IntersectionObserverMixin(
     this.source = "";
     this.audioDescriptionSource = "";
     this.audioDescriptionEnabled = false;
-    this.observer.observe(this, {
-      childList: true,
-      subtree: false,
-    });
+    this.__observeChildren();
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -1025,6 +1022,24 @@ class VideoPlayer extends IntersectionObserverMixin(
     });
   }
   /**
+   * life cycle, element is added (again) to the DOM: watch light DOM
+   * source/track children again after a disconnect
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    this.__observeChildren();
+  }
+  __observeChildren() {
+    if (this.__observingChildren) {
+      return;
+    }
+    this.__observingChildren = true;
+    this.observer.observe(this, {
+      childList: true,
+      subtree: false,
+    });
+  }
+  /**
    * life cycle, element is removed from the DOM
    */
   /**
@@ -1053,6 +1068,7 @@ class VideoPlayer extends IntersectionObserverMixin(
       this.__adRateHandler = null;
     }
     if (this.observer && this.observer.disconnect) this.observer.disconnect();
+    this.__observingChildren = false;
     this.__mediaPlayerEl = null;
     super.disconnectedCallback();
   }
@@ -1124,8 +1140,12 @@ class VideoPlayer extends IntersectionObserverMixin(
    * @returns {object}
    */
   get observer() {
-    let callback = () => this.setSourceData();
-    return new MutationObserver(callback);
+    // one observer per element: a new one per access meant disconnect()
+    // ran on a fresh observer and the observing one was never disconnected
+    if (!this.__childObserver) {
+      this.__childObserver = new MutationObserver(() => this.setSourceData());
+    }
+    return this.__childObserver;
   }
 
   /**
