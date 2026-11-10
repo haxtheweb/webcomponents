@@ -33,7 +33,7 @@ class CitationElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
           font-style: italic;
         }
         .license-link img {
-          margin-right: var(--ddd-spacing-2);
+          margin-inline-end: var(--ddd-spacing-2);
         }
         cite {
           display: block;

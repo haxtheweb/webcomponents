@@ -102,6 +102,8 @@ class HexPicker extends I18NMixin(LitElement) {
           width: var(--color-picker-width);
         }
 
+        /* physical on purpose: the swatch sits inside the hex value field,
+           which is left-to-right content */
         .color-square {
           background-color: #000000ff;
           border: 1px dotted

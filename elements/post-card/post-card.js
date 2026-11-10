@@ -194,6 +194,8 @@ export class PostCard extends LitElement {
         grid-template-rows: 150px 1fr;
       }
 
+      /* left/right in this card stay physical on purpose: the text sits on
+         the address lines and stamp area of the postcard artwork */
       .stamp {
         z-index: 3;
         grid-area: 1 / 1 / 1 / 1;

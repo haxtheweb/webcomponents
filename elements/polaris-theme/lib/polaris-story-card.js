@@ -103,7 +103,7 @@ class PolarisStoryCard extends I18NMixin(LitElement) {
         .card-image {
           position: absolute;
           top: 0;
-          left: 0;
+          inset-inline-start: 0;
           width: 100%;
           height: 100%;
           background-position: center;
@@ -123,7 +123,7 @@ class PolarisStoryCard extends I18NMixin(LitElement) {
           background-color: rgba(0, 0, 0, 0.58);
           width: 195px;
           max-width: calc(100% - 3rem);
-          left: 1.5rem;
+          inset-inline-start: 1.5rem;
           /* exact DDD match (24px); line-height 30px has no DDD step */
           font-size: var(--ddd-font-size-s, 1.5rem) !important;
           line-height: 1.875rem !important;
