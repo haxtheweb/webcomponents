@@ -145,12 +145,12 @@ describe("QRCodeMixin", () => {
       left: 740,
       top: 58,
     });
-    // right: grows right from the button's left edge
+    // right: beside the button, to its right, top-aligned (side rail)
     expect(el.QRCodePosition(btn, size, 1280, 800, "right")).to.deep.equal({
-      left: 900,
-      top: 58,
+      left: 948,
+      top: 10,
     });
-    // right runs off the window: flips to grow left
+    // right with no room on the right: beside it on the left
     expect(
       el.QRCodePosition(
         { left: 1200, right: 1240, top: 10, bottom: 50 },
@@ -158,6 +158,21 @@ describe("QRCodeMixin", () => {
         1280,
         800,
         "right",
+      ),
+    ).to.deep.equal({ left: 992, top: 10 });
+    // right + below (top bar): below, growing right from the left edge
+    expect(
+      el.QRCodePosition(btn, size, 1280, 800, "right", "below"),
+    ).to.deep.equal({ left: 900, top: 58 });
+    // right + below runs off the window: flips to grow left
+    expect(
+      el.QRCodePosition(
+        { left: 1200, right: 1240, top: 10, bottom: 50 },
+        size,
+        1280,
+        800,
+        "right",
+        "below",
       ).left,
     ).to.equal(1040);
     // left runs off the window: flips to grow right
@@ -187,6 +202,7 @@ describe("QRCodeMixin", () => {
       390,
       844,
       "right",
+      "below",
     );
     expect(phone.left).to.equal(8);
     expect(phone.top).to.equal(8);

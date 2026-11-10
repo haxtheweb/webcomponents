@@ -12,14 +12,18 @@ const QR_GAP = 8;
 
 /**
  * QRCodeMixin: a "QR code for Current page" button for a theme
- * (this.QRCodeButton() / this.QRCodeButton("right")).
+ * (this.QRCodeButton() / this.QRCodeButton("right") /
+ * this.QRCodeButton("right", "below")).
  *
  * The panel is a native popover, so it renders in the browser's top layer:
  * no theme header, sidebar, overflow or z-index can clip it. It is placed
- * from the button's position, toward the requested side ("left": it grows
- * to the left of the button, "right": to the right), below the button when
- * there is room and above it otherwise, and shifted to stay inside the
- * window. The code sits on its own white tile (black on white, so it scans
+ * from the button's position: "left" opens below the button and grows to
+ * its left; "right" opens beside the button, to its right (for a button in
+ * a side rail), flipping to the left side and then below when there is no
+ * room; a second argument "below" makes "right" open below the button and
+ * grow to its right instead (for a button in a top bar). Below the button
+ * becomes above it when there is no room, and the panel is shifted to stay
+ * inside the window. The code sits on its own white tile (black on white, so it scans
  * in dark mode). Escape, the close button or a click outside close it, and
  * focus returns to the button. Browsers without the popover API get the
  * same panel as a fixed layer.
@@ -213,9 +217,10 @@ const QRCodeMixin = function (SuperClass) {
       ];
     }
 
-    QRCodeButton(direction = "left") {
+    QRCodeButton(direction = "left", placement = null) {
       import("@haxtheweb/q-r/q-r.js");
       this.__qrDirection = direction;
+      this.__qrPlacement = placement;
       return html`
         <div
           id="qrcodebtnwrapper"
@@ -431,19 +436,33 @@ const QRCodeMixin = function (SuperClass) {
         globalThis.innerWidth || 0,
         globalThis.innerHeight || 0,
         this.__qrDirection,
+        this.__qrPlacement,
       );
       panel.style.left = `${pos.left}px`;
       panel.style.top = `${pos.top}px`;
     }
     /**
      * Where the panel goes (viewport px) for a button rect, a panel size, a
-     * window size and a direction ("left" grows left from the button's
-     * right edge, "right" grows right from its left edge).
+     * window size, a direction and an optional placement. "left": below,
+     * growing left from the button's right edge. "right": beside the
+     * button, to its right and top-aligned with it (flips to its left, then
+     * below, when there is no room). "right" with placement "below": below,
+     * growing right from the button's left edge.
      * @returns {Object} { left, top }
      */
-    QRCodePosition(button, panel, vw, vh, direction) {
+    QRCodePosition(button, panel, vw, vh, direction, placement) {
       const w = panel.width;
       const h = panel.height;
+      if (direction === "right" && placement !== "below") {
+        let side = button.right + QR_GAP;
+        if (side + w > vw - QR_GAP) {
+          side = button.left - QR_GAP - w;
+        }
+        if (side >= QR_GAP) {
+          const top = Math.max(QR_GAP, Math.min(button.top, vh - h - QR_GAP));
+          return { left: Math.round(side), top: Math.round(top) };
+        }
+      }
       let left = direction === "right" ? button.left : button.right - w;
       // flip to the other side when the requested one runs off the window
       if (direction === "right" && left + w > vw - QR_GAP) {
