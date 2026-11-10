@@ -77,6 +77,14 @@
       "default": "false",
       "description": "Is active node in view source mode?",
       "hax": null
+    },
+    {
+      "name": "bar-size",
+      "property": "barSize",
+      "type": "string",
+      "default": "\"compact\"",
+      "description": "how much of the block bar shows: \"compact\" (one row, inline formatting on text selection) or \"full\" (every tool, two rows)",
+      "hax": null
     }
   ],
   "slots": [],
@@ -87,7 +95,7 @@
     "place-holder-file-drop"
   ],
   "hax": {},
-  "surfaceHash": "7acfbfcab999",
+  "surfaceHash": "d05476736c31",
   "walkthroughs": [],
   "videos": [],
   "motion": {

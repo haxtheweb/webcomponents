@@ -187,6 +187,8 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       indentButton: "Indent",
       outdentButton: "Outdent",
       alignmentPicker: "Text alignment",
+      moreFormats: "More formats",
+      fewerFormats: "Fewer formats",
     };
     this.registerLocalization({
       context: this,
@@ -202,6 +204,10 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       .HaxTextEditorToolbarConfig.default || [...this.defaultConfig];
     this.config = globalThis.HaxTextEditorToolbarConfig.default;
     this.sticky = false;
+    this.barSize = "full";
+    this._positionSelectionBubble = this._positionSelectionBubble.bind(this);
+    this._handleBubbleToggle = this._handleBubbleToggle.bind(this);
+    this.addEventListener("button-toggled", this._handleBubbleToggle);
     this.__updated = false;
     this.__inList = false;
     this.__hasSelection = false;
@@ -688,6 +694,104 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     return buttonGroups;
   }
 
+  /**
+   * one-row bar: block format, lists, alignment and insert-at-cursor stay
+   * in the bar; inline formatting moves to a bubble that appears only
+   * while text is selected
+   */
+  get compactConfig() {
+    if (HAXStore.isPlatformAudience("novice")) {
+      return this.defaultConfig;
+    }
+    return [
+      this.formatButton,
+      this.listIndentButtonGroup,
+      this.alignmentPicker,
+      this.haxSymbolInsertButtonGroup,
+      this.selectionBubbleGroup,
+    ];
+  }
+  /**
+   * config for the active bar size
+   */
+  get activeConfig() {
+    return this.barSize === "compact" ? this.compactConfig : this.defaultConfig;
+  }
+  /**
+   * compact bar: inline elements that wrap selected text join the bubble's
+   * More formats; ones that insert at the cursor stay in the bar
+   */
+  _compactConfigWithInlineElements(buttons = []) {
+    const needsSelection = (button) => {
+      const element = button.element || {};
+      const gizmo = element.gizmo || {};
+      const meta = gizmo.meta || {};
+      return meta.selectionRequired !== false;
+    };
+    const atCursor = buttons.filter((button) => !needsSelection(button));
+    const onSelection = buttons.filter(needsSelection);
+    const config = [...this.compactConfig];
+    const bubble = config.find(
+      (item) => item && item.subtype === "hax-selection-bubble",
+    );
+    if (bubble && onSelection.length > 0) {
+      const more = bubble.buttons.find(
+        (item) => item && item.subtype === "hax-selection-more",
+      );
+      if (more) more.buttons = [...more.buttons, ...onSelection];
+    }
+    if (atCursor.length > 0) {
+      config.splice(config.indexOf(bubble), 0, {
+        type: "button-group",
+        subtype: "hax-insert-button-group",
+        buttons: atCursor,
+      });
+    }
+    return config;
+  }
+  /**
+   * Bold, Italic, Link and Remove Link up front; the rest of the inline
+   * formats behind More formats
+   */
+  get selectionBubbleGroup() {
+    return {
+      type: "button-group",
+      subtype: "hax-selection-bubble",
+      buttons: [
+        ...this._filterButtonsByTag([
+          this.boldButton,
+          this.italicButton,
+          this.linkButton,
+          this.unlinkButton,
+        ]),
+        this.selectionMoreToggle,
+        {
+          type: "button-group",
+          subtype: "hax-selection-more",
+          buttons: this._filterButtonsByTag([
+            this.underlineButton,
+            this.strikethroughButton,
+            this.markButton,
+            this.abbrButton,
+            this.codeButton,
+            this.subscriptButton,
+            this.superscriptButton,
+            this.removeFormatButton,
+          ]),
+        },
+      ],
+    };
+  }
+  get selectionMoreToggle() {
+    return {
+      type: "simple-toolbar-button",
+      className: "hax-selection-more-toggle",
+      icon: "icons:expand-more",
+      label: this.t.moreFormats,
+      toggles: true,
+    };
+  }
+
   get filteredBlocks() {
     const blocks = this.formatBlocks.filter((block) =>
       this._platformAllowsTag(block.tag),
@@ -742,6 +846,9 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
         if (propName === "range") {
           this._updateContextualVisibility();
         }
+        if (propName === "range" || propName === "barSize") {
+          this._positionSelectionBubble();
+        }
       });
     }
   }
@@ -751,6 +858,11 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     // Assigning config in firstUpdated / updated scheduled a full second
     // rebuild (Lit change-in-update warning).
     if (!this.hasUpdated) {
+      const config = this.updateToolbarElements();
+      if (config) this.config = config;
+    } else if (changedProperties.has("barSize")) {
+      // fewer / all tools: rebuild the buttons for the new layout
+      this.__updated = false;
       const config = this.updateToolbarElements();
       if (config) this.config = config;
     }
@@ -903,10 +1015,13 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       globalThis.HaxTextEditorToolbarConfig.inlineGizmos || {},
     ).map((key) => globalThis.HaxTextEditorToolbarConfig.inlineGizmos[key]);
     buttons = this._filterButtonsByTag(buttons);
+    if (this.barSize === "compact" && !HAXStore.isPlatformAudience("novice")) {
+      return this._compactConfigWithInlineElements(buttons);
+    }
     return buttons.length === 0
-      ? [...(this.defaultConfig || [])]
+      ? [...(this.activeConfig || [])]
       : [
-          ...(this.defaultConfig || []),
+          ...(this.activeConfig || []),
           {
             type: "button-group",
             subtype: "hax-insert-button-group",
@@ -1025,6 +1140,146 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
         }
       });
     }
+  }
+  static get properties() {
+    return {
+      ...super.properties,
+      /**
+       * "compact": block format, lists, alignment and inserts in the bar,
+       * inline formatting in a bubble on text selection;
+       * "full": every button in the bar
+       */
+      barSize: {
+        type: String,
+        attribute: "bar-size",
+        reflect: true,
+      },
+    };
+  }
+
+  disconnectedCallback() {
+    this._listenForBubbleMoves(false);
+    if (super.disconnectedCallback) super.disconnectedCallback();
+  }
+
+  get selectionBubble() {
+    return this.querySelector(".hax-selection-bubble");
+  }
+
+  /**
+   * More formats / Fewer formats in the selection bubble
+   */
+  _handleBubbleToggle(e) {
+    const button = e.detail;
+    const bubble = this.selectionBubble;
+    if (
+      !bubble ||
+      !button ||
+      !button.classList ||
+      !button.classList.contains("hax-selection-more-toggle")
+    ) {
+      return;
+    }
+    if (button.toggled) {
+      bubble.setAttribute("data-more", "");
+      button.label = this.t.fewerFormats;
+    } else {
+      bubble.removeAttribute("data-more");
+      button.label = this.t.moreFormats;
+    }
+    this._positionSelectionBubble();
+  }
+
+  _listenForBubbleMoves(listen) {
+    if (listen && !this.__bubbleListening) {
+      this.__bubbleListening = true;
+      globalThis.addEventListener("scroll", this._positionSelectionBubble, {
+        capture: true,
+        passive: true,
+      });
+      globalThis.addEventListener("resize", this._positionSelectionBubble, {
+        passive: true,
+      });
+    } else if (!listen && this.__bubbleListening) {
+      this.__bubbleListening = false;
+      globalThis.removeEventListener("scroll", this._positionSelectionBubble, {
+        capture: true,
+      });
+      globalThis.removeEventListener("resize", this._positionSelectionBubble);
+    }
+  }
+
+  _hideSelectionBubble(bubble = this.selectionBubble) {
+    if (bubble && bubble.hasAttribute("data-open")) {
+      bubble.removeAttribute("data-open");
+      bubble.removeAttribute("data-more");
+      const toggle = bubble.querySelector(".hax-selection-more-toggle");
+      if (toggle) {
+        toggle.toggled = false;
+        toggle.label = this.t.moreFormats;
+      }
+    }
+    this._listenForBubbleMoves(false);
+  }
+
+  /**
+   * In the compact bar, show the inline formatting bubble just below the
+   * selected text (above it when there is no room below), with its tip
+   * pointing at the middle of the selection.
+   */
+  _positionSelectionBubble() {
+    const bubble = this.selectionBubble;
+    if (!bubble) return;
+    const range = this.range;
+    const hasSelection =
+      this.barSize === "compact" &&
+      range &&
+      !range.collapsed &&
+      this.isRangeInScope &&
+      range.toString().trim() !== "";
+    if (!hasSelection) {
+      // keep the bubble while one of its own buttons or the link prompt
+      // has focus, so a click on it does not make it vanish mid-action
+      if (
+        !this.__promptOpen &&
+        !bubble.contains(globalThis.document.activeElement)
+      ) {
+        this._hideSelectionBubble(bubble);
+      }
+      return;
+    }
+    const rect = range.getBoundingClientRect();
+    if (!rect || (rect.width === 0 && rect.height === 0)) {
+      this._hideSelectionBubble(bubble);
+      return;
+    }
+    bubble.setAttribute("data-open", "");
+    this._listenForBubbleMoves(true);
+    const gap = 10;
+    const edge = 8;
+    const width = bubble.offsetWidth;
+    const height = bubble.offsetHeight;
+    const viewWidth = globalThis.innerWidth;
+    const viewHeight = globalThis.innerHeight;
+    const center = rect.left + rect.width / 2;
+    const left = Math.max(
+      edge,
+      Math.min(center - width / 2, viewWidth - width - edge),
+    );
+    let top = rect.bottom + gap;
+    let tip = "up";
+    if (top + height > viewHeight - edge && rect.top - gap - height > edge) {
+      top = rect.top - gap - height;
+      tip = "down";
+    }
+    const tipX = Math.max(12, Math.min(center - left, width - 12));
+    bubble.style.left = `${Math.round(left)}px`;
+    bubble.style.top = `${Math.round(top)}px`;
+    bubble.style.setProperty(
+      "--hax-selection-bubble-tip-x",
+      `${Math.round(tipX)}px`,
+    );
+    bubble.setAttribute("data-tip", tip);
   }
 }
 globalThis.customElements.define(

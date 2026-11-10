@@ -128,6 +128,16 @@
             },
             {
               "kind": "method",
+              "name": "_handleBarSize",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "the block bar asked to show fewer or all tools; remember the choice\nfor this person in this browser"
+            },
+            {
+              "kind": "method",
               "name": "_toggleNodeLocking",
               "parameters": [
                 {
@@ -1332,6 +1342,18 @@
             },
             {
               "kind": "field",
+              "name": "barSize",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "how much of the block bar shows: \"compact\" (one row, inline\nformatting on text selection) or \"full\" (every tool, two rows)",
+              "default": "\"compact\"",
+              "attribute": "bar-size",
+              "reflects": true
+            },
+            {
+              "kind": "field",
               "name": "editMode",
               "privacy": "public",
               "type": {
@@ -1552,6 +1574,15 @@
               "description": "Is active node in view source mode?",
               "default": "false",
               "fieldName": "viewSourceToggle"
+            },
+            {
+              "name": "bar-size",
+              "type": {
+                "text": "string"
+              },
+              "description": "how much of the block bar shows: \"compact\" (one row, inline\nformatting on text selection) or \"full\" (every tool, two rows)",
+              "default": "\"compact\"",
+              "fieldName": "barSize"
             }
           ],
           "mixins": [
@@ -4838,6 +4869,104 @@
               }
             },
             {
+              "kind": "method",
+              "name": "_dragTemplate",
+              "description": "drag handle with its keyboard menu (move up / down / to a slot)"
+            },
+            {
+              "kind": "method",
+              "name": "_moveTemplate",
+              "description": "Move up and Move down, one click each (also in the drag handle menu)"
+            },
+            {
+              "kind": "method",
+              "name": "_selectLayoutItems",
+              "description": "menu items that select the surrounding layout or one of its slots"
+            },
+            {
+              "kind": "field",
+              "name": "_selectLayoutDisabled",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_selectLayoutTemplate"
+            },
+            {
+              "kind": "method",
+              "name": "_insertTemplate"
+            },
+            {
+              "kind": "field",
+              "name": "_columnOpsDisabled",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_columnTemplate",
+              "parameters": [
+                {
+                  "name": "inMenu",
+                  "default": "false"
+                }
+              ],
+              "description": "Add column / Remove column; in a menu they show their text label"
+            },
+            {
+              "kind": "method",
+              "name": "_layoutMenuTemplate",
+              "description": "Layout menu (compact bar): select the surrounding layout, add or\nremove a column"
+            },
+            {
+              "kind": "method",
+              "name": "_duplicateTemplate",
+              "parameters": [
+                {
+                  "name": "inMenu",
+                  "default": "false"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_removeTemplate",
+              "description": "Remove asks once: the first click turns the button into\nConfirm delete, the second removes the block"
+            },
+            {
+              "kind": "method",
+              "name": "_ceButtonsTemplate",
+              "parameters": [
+                {
+                  "name": "inMenu",
+                  "default": "false"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_advancedTemplate",
+              "parameters": [
+                {
+                  "name": "inMenu",
+                  "default": "false"
+                }
+              ],
+              "description": "Edit Mode, Modify HTML source, Lock content"
+            },
+            {
+              "kind": "method",
+              "name": "_sizeToggleTemplate",
+              "description": "Show all tools / Show fewer tools"
+            },
+            {
+              "kind": "method",
+              "name": "_toggleBarSize"
+            },
+            {
+              "kind": "method",
+              "name": "_removeBlur"
+            },
+            {
               "kind": "field",
               "name": "filteredBlocks",
               "description": "get a list of valid blocks for active node\n(if active node is a slot, some blockes may not be permitted)",
@@ -4978,11 +5107,33 @@
             },
             {
               "kind": "field",
+              "name": "barSize",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "\"compact\" (one row) or \"full\" (every tool)",
+              "default": "\"compact\"",
+              "attribute": "bar-size",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "_confirmRemove",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "_confirmRemove"
+            },
+            {
+              "kind": "field",
               "name": "t",
               "type": {
                 "text": "object"
               },
-              "default": "{ edit: \"Edit\", dragHandle: \"Drag handle\", moveUp: \"Move up\", moveDown: \"Move down\", addColumn: \"Add column\", removeColumn: \"Remove column\", remove: \"Remove\", duplicate: \"Duplicate\", confirmDelete: \"Confirm delete\", changeTo: \"Change to\", editElement: \"Edit Mode\", modifyHTMLSource: \"Modify HTML source\", regions: \"Available regions\", insertItemAbove: \"Insert item above\", insertItemAboveOrBelow: \"Insert item above or below\", insertItemBelow: \"Insert item below\", selectLayout: \"Select Layout Element\", lockContent: \"Lock content\", unlockContent: \"Unlock content\", }"
+              "default": "{ edit: \"Edit\", dragHandle: \"Drag handle\", moveUp: \"Move up\", moveDown: \"Move down\", addColumn: \"Add column\", removeColumn: \"Remove column\", remove: \"Remove\", duplicate: \"Duplicate\", confirmDelete: \"Confirm delete\", changeTo: \"Change to\", editElement: \"Edit Mode\", modifyHTMLSource: \"Modify HTML source\", regions: \"Available regions\", insertItemAbove: \"Insert item above\", insertItemAboveOrBelow: \"Insert item above or below\", insertItemBelow: \"Insert item below\", selectLayout: \"Select Layout Element\", lockContent: \"Lock content\", unlockContent: \"Unlock content\", layout: \"Layout\", more: \"More\", showAllTools: \"Show all tools\", showFewerTools: \"Show fewer tools\", }"
             },
             {
               "kind": "field",
@@ -5292,6 +5443,12 @@
           ],
           "events": [
             {
+              "name": "hax-block-bar-size",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
               "name": "hax-context-item-selected",
               "type": {
                 "text": "CustomEvent"
@@ -5421,6 +5578,23 @@
                 "text": "boolean"
               },
               "fieldName": "isLocked"
+            },
+            {
+              "name": "bar-size",
+              "type": {
+                "text": "string"
+              },
+              "description": "\"compact\" (one row) or \"full\" (every tool)",
+              "default": "\"compact\"",
+              "fieldName": "barSize"
+            },
+            {
+              "name": "_confirmRemove",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "_confirmRemove"
             },
             {
               "name": "activeNode",
@@ -8122,6 +8296,40 @@
             },
             {
               "kind": "field",
+              "name": "compactConfig",
+              "description": "one-row bar: block format, lists, alignment and insert-at-cursor stay\nin the bar; inline formatting moves to a bubble that appears only\nwhile text is selected",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "activeConfig",
+              "description": "config for the active bar size",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_compactConfigWithInlineElements",
+              "parameters": [
+                {
+                  "name": "buttons",
+                  "default": "[]"
+                }
+              ],
+              "description": "compact bar: inline elements that wrap selected text join the bubble's\nMore formats; ones that insert at the cursor stay in the bar"
+            },
+            {
+              "kind": "field",
+              "name": "selectionBubbleGroup",
+              "description": "Bold, Italic, Link and Remove Link up front; the rest of the inline\nformats behind More formats",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "selectionMoreToggle",
+              "readonly": true
+            },
+            {
+              "kind": "field",
               "name": "filteredBlocks",
               "readonly": true
             },
@@ -8288,11 +8496,50 @@
             },
             {
               "kind": "field",
+              "name": "selectionBubble",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_handleBubbleToggle",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "More formats / Fewer formats in the selection bubble"
+            },
+            {
+              "kind": "method",
+              "name": "_listenForBubbleMoves",
+              "parameters": [
+                {
+                  "name": "listen"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_hideSelectionBubble",
+              "parameters": [
+                {
+                  "name": "bubble",
+                  "default": "this.selectionBubble"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_positionSelectionBubble",
+              "description": "In the compact bar, show the inline formatting bubble just below the\nselected text (above it when there is no room below), with its tip\npointing at the middle of the selection."
+            },
+            {
+              "kind": "field",
               "name": "t",
               "type": {
                 "text": "object"
               },
-              "default": "{ undoButton: \"Undo\", redoButton: \"Redo\", formatButton: \"Format\", blockP: \"Paragraph\", blockH1: \"Heading 1\", blockH2: \"Heading 2\", blockH3: \"Heading 3\", blockH4: \"Heading 4\", blockH5: \"Heading 5\", blockH6: \"Heading 6\", blockPre: \"Preformatted\", h1Button: \"Header 1\", h2Button: \"Header 2\", italicButton: \"Italic\", boldButton: \"Bold\", underlineButton: \"Underline\", strikethroughButton: \"Cross out\", codeButton: \"Code\", markButton: \"Highlight\", abbrButton: \"Abbreviation\", removeFormatButton: \"Remove format\", linkButton: \"Link\", unlinkButton: \"Remove Link\", cutButton: \"Cut\", copyButton: \"Copy\", pasteButton: \"Paste Clipboard\", subscriptButton: \"Subscript\", superscriptButton: \"Superscript\", symbolButton: \"Insert Symbol\", emojiButton: \"Insert Emoticon\", imageButton: \"Insert Image\", orderedListButton: \"Numbered list\", unorderedListButton: \"Bulleted list\", blockquoteButton: \"Blockquote\", indentButton: \"Indent\", outdentButton: \"Outdent\", alignmentPicker: \"Text alignment\", }"
+              "default": "{ undoButton: \"Undo\", redoButton: \"Redo\", formatButton: \"Format\", blockP: \"Paragraph\", blockH1: \"Heading 1\", blockH2: \"Heading 2\", blockH3: \"Heading 3\", blockH4: \"Heading 4\", blockH5: \"Heading 5\", blockH6: \"Heading 6\", blockPre: \"Preformatted\", h1Button: \"Header 1\", h2Button: \"Header 2\", italicButton: \"Italic\", boldButton: \"Bold\", underlineButton: \"Underline\", strikethroughButton: \"Cross out\", codeButton: \"Code\", markButton: \"Highlight\", abbrButton: \"Abbreviation\", removeFormatButton: \"Remove format\", linkButton: \"Link\", unlinkButton: \"Remove Link\", cutButton: \"Cut\", copyButton: \"Copy\", pasteButton: \"Paste Clipboard\", subscriptButton: \"Subscript\", superscriptButton: \"Superscript\", symbolButton: \"Insert Symbol\", emojiButton: \"Insert Emoticon\", imageButton: \"Insert Image\", orderedListButton: \"Numbered list\", unorderedListButton: \"Bulleted list\", blockquoteButton: \"Blockquote\", indentButton: \"Indent\", outdentButton: \"Outdent\", alignmentPicker: \"Text alignment\", moreFormats: \"More formats\", fewerFormats: \"Fewer formats\", }"
             },
             {
               "kind": "field",
@@ -8339,6 +8586,18 @@
                 "text": "boolean"
               },
               "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "barSize",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "\"compact\": block format, lists, alignment and inserts in the bar,\ninline formatting in a bubble on text selection;\n\"full\": every button in the bar",
+              "default": "\"full\"",
+              "attribute": "bar-size",
+              "reflects": true
             },
             {
               "kind": "field",
@@ -8572,27 +8831,16 @@
               }
             }
           ],
-          "mixins": [
-            {
-              "name": "RichTextEditorToolbarBehaviors",
-              "package": "@haxtheweb/rich-text-editor/lib/toolbars/rich-text-editor-toolbar.js"
-            },
-            {
-              "name": "I18NMixin",
-              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
-            },
-            {
-              "name": "HaxContextBehaviors",
-              "module": "/lib/hax-context-behaviors.js"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "hax-text-editor-toolbar",
-          "customElement": true,
           "attributes": [
+            {
+              "name": "bar-size",
+              "type": {
+                "text": "string"
+              },
+              "description": "\"compact\": block format, lists, alignment and inserts in the bar,\ninline formatting in a bubble on text selection;\n\"full\": every button in the bar",
+              "default": "\"full\"",
+              "fieldName": "barSize"
+            },
             {
               "name": "activeNode",
               "type": {
@@ -8649,7 +8897,27 @@
                 "module": "lib/hax-context-behaviors.js"
               }
             }
-          ]
+          ],
+          "mixins": [
+            {
+              "name": "RichTextEditorToolbarBehaviors",
+              "package": "@haxtheweb/rich-text-editor/lib/toolbars/rich-text-editor-toolbar.js"
+            },
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            },
+            {
+              "name": "HaxContextBehaviors",
+              "module": "/lib/hax-context-behaviors.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "hax-text-editor-toolbar",
+          "customElement": true
         }
       ],
       "exports": [

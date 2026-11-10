@@ -20,6 +20,7 @@ import {
   normalizeEventPath,
 } from "@haxtheweb/utils/utils.js";
 import { HaxUiBaseStyles } from "./lib/hax-ui-styles.js";
+import { HaxUiAdminTokens } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/absolute-position-behavior/absolute-position-behavior.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
@@ -38,6 +39,8 @@ import { replaceLazyRun } from "@haxtheweb/utils/lib/safe-html.js";
 let gravityScrollTimer = null;
 const maxStep = 25;
 const edgeSize = 200;
+// per-browser memory of how much of the block bar to show
+const HAX_BLOCK_BAR_SIZE_KEY = "hax-block-bar-size";
 
 /**
  * ContentStateManager - Centralized state coordination for content operations
@@ -164,6 +167,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   static get styles() {
     return [
       super.styles,
+      ...HaxUiAdminTokens,
       // inlined sr-only helper (the same rule ships in DDDReset) so the
       // undo status region stays visually hidden without a styles-package
       // import for this single selector
@@ -230,6 +234,121 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           bottom: 0;
           margin-bottom: 10px;
           margin-left: -10px;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 1px;
+          padding: 1px;
+          box-sizing: border-box;
+          font-family: var(--hax-ui-admin-font-family);
+          color: var(--hax-ui-color);
+          background-color: var(--hax-ui-surface);
+          border: 1px solid var(--hax-ui-line);
+          border-radius: var(--hax-ui-radius-lg);
+          box-shadow: var(--hax-ui-shadow-popover);
+        }
+        /* one row: the block tools and the text format picker sit side by
+           side; inline formatting moves to the selection bubble */
+        #topcontextmenu[bar-size="compact"] {
+          flex-direction: row;
+          flex-wrap: wrap;
+          align-items: center;
+        }
+        #topcontextmenu[bar-size="compact"] #textcontextmenu {
+          border-left: 1px solid var(--hax-ui-line);
+          padding-left: 1px;
+        }
+        /* inline formatting bubble: lives in the text toolbar so its
+           buttons keep the toolbar's range and commands, but floats by the
+           selected text with a tip pointing at it */
+        #textcontextmenu > .hax-selection-bubble {
+          display: none;
+        }
+        #textcontextmenu > .hax-selection-bubble[data-open] {
+          display: flex;
+          align-items: center;
+          gap: 1px;
+          position: fixed;
+          z-index: var(--hax-ui-focus-z-index);
+          padding: 1px;
+          background-color: var(--hax-ui-surface);
+          color: var(--hax-ui-color);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius-lg);
+          box-shadow: var(--hax-ui-shadow-popover);
+          animation: hax-selection-bubble-in var(--hax-ui-duration)
+            var(--hax-ui-easing-move);
+        }
+        #textcontextmenu > .hax-selection-bubble[data-open]::before,
+        #textcontextmenu > .hax-selection-bubble[data-open]::after {
+          content: "";
+          position: absolute;
+          left: var(--hax-selection-bubble-tip-x, 50%);
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-color: transparent;
+          pointer-events: none;
+        }
+        #textcontextmenu > .hax-selection-bubble[data-open]::before {
+          margin-left: -9px;
+          border-width: 9px;
+        }
+        #textcontextmenu > .hax-selection-bubble[data-open]::after {
+          margin-left: -8px;
+          border-width: 8px;
+        }
+        #textcontextmenu > .hax-selection-bubble[data-tip="up"]::before {
+          bottom: 100%;
+          border-bottom-color: var(--hax-ui-line-strong);
+        }
+        #textcontextmenu > .hax-selection-bubble[data-tip="up"]::after {
+          bottom: 100%;
+          border-bottom-color: var(--hax-ui-surface);
+        }
+        #textcontextmenu > .hax-selection-bubble[data-tip="down"]::before {
+          top: 100%;
+          border-top-color: var(--hax-ui-line-strong);
+        }
+        #textcontextmenu > .hax-selection-bubble[data-tip="down"]::after {
+          top: 100%;
+          border-top-color: var(--hax-ui-surface);
+        }
+        #textcontextmenu > .hax-selection-bubble > .hax-selection-more {
+          display: none;
+        }
+        #textcontextmenu
+          > .hax-selection-bubble[data-more]
+          > .hax-selection-more {
+          display: flex;
+          border-left: 1px solid var(--hax-ui-line);
+          padding-left: 1px;
+        }
+        #textcontextmenu .hax-selection-more-toggle {
+          transition: transform var(--hax-ui-duration-move)
+            var(--hax-ui-easing-move);
+        }
+        #textcontextmenu
+          > .hax-selection-bubble[data-more]
+          .hax-selection-more-toggle {
+          transform: rotate(180deg);
+        }
+        @keyframes hax-selection-bubble-in {
+          from {
+            opacity: 0;
+            transform: translateY(4px);
+          }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          #textcontextmenu > .hax-selection-bubble[data-open],
+          #textcontextmenu .hax-selection-more-toggle {
+            animation: none;
+            transition: none;
+          }
+        }
+        #topcontextmenu[bar-size="full"] #textcontextmenu {
+          border-top: 1px solid var(--hax-ui-line);
+          padding-top: 1px;
         }
         .hax-context-menu {
           visibility: hidden;
@@ -752,6 +871,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     this.___moveLock = false;
     this.__addAbove = true;
     this.viewSourceToggle = false;
+    this.barSize = "compact";
+    try {
+      if (globalThis.localStorage.getItem(HAX_BLOCK_BAR_SIZE_KEY) === "full") {
+        this.barSize = "full";
+      }
+    } catch {
+      // storage can be unavailable (private mode, blocked site data)
+    }
     this.editMode = false;
     this.haxMover = false;
     this.activeNode = null;
@@ -1066,8 +1193,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         .trayStatus="${this.trayStatus}"
         ?hidden="${!this.activeNode || !this.editMode}"
       >
-        <div id="topcontextmenu" @mouseenter="${this.revealMenuIfHidden}">
+        <div
+          id="topcontextmenu"
+          bar-size="${this.barSize}"
+          @mouseenter="${this.revealMenuIfHidden}"
+          @hax-block-bar-size="${this._handleBarSize}"
+        >
           <hax-plate-context
+            .barSize="${this.barSize}"
             always-expanded
             id="platecontextmenu"
             class="hax-context-menu ignore-activation"
@@ -1083,6 +1216,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               this.activeNode,
             )}"
             .activeNode="${this.activeNode}"
+            .barSize="${this.barSize}"
+            ?always-expanded="${this.barSize === "compact"}"
             show="always"
           >
           </hax-text-editor-toolbar>
@@ -1175,7 +1310,30 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         type: Boolean,
         reflect: true,
       },
+      /**
+       * how much of the block bar shows: "compact" (one row, inline
+       * formatting on text selection) or "full" (every tool, two rows)
+       */
+      barSize: {
+        type: String,
+        reflect: true,
+        attribute: "bar-size",
+      },
     };
+  }
+  /**
+   * the block bar asked to show fewer or all tools; remember the choice
+   * for this person in this browser
+   */
+  _handleBarSize(e) {
+    const size = e.detail && e.detail.size === "full" ? "full" : "compact";
+    this.barSize = size;
+    try {
+      globalThis.localStorage.setItem(HAX_BLOCK_BAR_SIZE_KEY, size);
+    } catch {
+      // storage can be unavailable (private mode, blocked site data)
+    }
+    this.positionContextMenus();
   }
   /**
    * LitElement life cycle - ready
