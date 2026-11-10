@@ -727,23 +727,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             margin: calc(100px + var(--hax-tray-menubar-min-height)) 0 0 0;
           }
         }
-
-        @media screen and (min-color-index: 0) and(-webkit-min-device-pixel-ratio:0) {
-          /*
-            Define here the CSS styles applied only to Safari browsers
-            (any version and any device) via https://solvit.io/bcf61b6
-          */
-          :host([edit-mode][hax-mover]) #bodycontainer ::slotted(*) {
-            outline: var(--hax-body-editable-outline);
-            background-color: var(--hax-body-possible-target-background-color);
-          }
-          :host([edit-mode]) #bodycontainer ::slotted(*.hax-hovered) {
-            background-color: var(
-              --hax-body-target-background-color
-            ) !important;
-            outline: var(--hax-body-active-outline);
-          }
-        }
       `,
     ];
   }
