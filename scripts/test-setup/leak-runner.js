@@ -400,23 +400,32 @@ function demoMarkup(tag, demo) {
   return `<${name}${attrs}>${content}</${name}>`;
 }
 
-/** wait for every Lit element under root (shadow roots included) */
+/**
+ * Wait for every Lit element under root (shadow roots included). Two passes:
+ * the first render often creates the nested elements (players, tabs) that
+ * set up the listeners and registrations this check is about.
+ */
 async function settle(root) {
-  const pending = [];
-  const visit = (node) => {
-    if (node.updateComplete && typeof node.updateComplete.then === "function") {
-      pending.push(node.updateComplete.catch(() => {}));
-    }
-    if (node.shadowRoot) {
-      node.shadowRoot.querySelectorAll("*").forEach(visit);
-    }
-  };
-  visit(root);
-  root.querySelectorAll("*").forEach(visit);
-  await withTimeout(Promise.all(pending), UPDATE_TIMEOUT, "update").catch(
-    () => {},
-  );
-  await nextFrame();
+  for (let pass = 0; pass < 2; pass++) {
+    const pending = [];
+    const visit = (node) => {
+      if (
+        node.updateComplete &&
+        typeof node.updateComplete.then === "function"
+      ) {
+        pending.push(node.updateComplete.catch(() => {}));
+      }
+      if (node.shadowRoot) {
+        node.shadowRoot.querySelectorAll("*").forEach(visit);
+      }
+    };
+    visit(root);
+    root.querySelectorAll("*").forEach(visit);
+    await withTimeout(Promise.all(pending), UPDATE_TIMEOUT, "update").catch(
+      () => {},
+    );
+    await nextFrame();
+  }
 }
 
 /* ---------- global stores ---------- */
