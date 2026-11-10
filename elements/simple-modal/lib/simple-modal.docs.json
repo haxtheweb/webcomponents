@@ -93,6 +93,14 @@
       "default": "[]",
       "description": "Optional breadcrumb metadata for title rendering",
       "hax": null
+    },
+    {
+      "name": "docked",
+      "property": "docked",
+      "type": "boolean",
+      "default": "false",
+      "description": "The dialog sits below chrome that stays usable while it is open (--simple-modal-dock-top). Focus is not trapped in the dialog and aria-modal is false, so whoever opens a docked modal makes the rest of the page inert for as long as it is open.",
+      "hax": null
     }
   ],
   "slots": [
@@ -109,7 +117,7 @@
     "simple-toast-hide"
   ],
   "hax": {},
-  "surfaceHash": "1e77e4db2bd9",
+  "surfaceHash": "157c9b8d0f1f",
   "walkthroughs": [
     {
       "id": "",
@@ -117,13 +125,13 @@
       "order": 0,
       "src": "simple-modal.motion.json",
       "file": "lib/simple-modal.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/simple-modal.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

@@ -44,6 +44,7 @@ const SimpleModalCssVars = [
   "--simple-modal-button-background",
   "--simple-modal-border-radius",
   "--simple-modal-container-padding",
+  "--simple-modal-dock-top",
 ];
 /**
   * `simple-modal`
@@ -89,6 +90,7 @@ const SimpleModalCssVars = [
  --simple-modal-max-height | max-height of modal | unset
 --simple-modal-border-radius | corner radius of the modal | var(--ddd-radius-sm)
 --simple-modal-container-padding | space between the modal and the viewport edge | 5vw 24px
+--simple-modal-dock-top | with the docked attribute, where the dialog and its backdrop start, below chrome that stays live | 0px
   * 
   * @demo demo/index.html demo
   * @demo ./demo/css.html styling simple-modal via CSS
@@ -423,6 +425,11 @@ class SimpleModal extends I18NMixin(LitElement) {
           z-index: var(--simple-modal-z-index, 1) !important;
           padding: 0;
         }
+        /* docked: the dialog starts below chrome that stays live (the
+           HAXcms top bar), so that chrome is never under the backdrop */
+        :host([docked]) web-dialog {
+          top: var(--simple-modal-dock-top, 0px);
+        }
         /* web-dialog animates open and closed on its own; honor reduced motion */
         @media (prefers-reduced-motion: reduce) {
           web-dialog {
@@ -505,7 +512,7 @@ class SimpleModal extends I18NMixin(LitElement) {
       aria-describedby="simple-modal-content"
       aria-label="${this._getAriaLabel(this.title)}"
       aria-labelledby="${this._getAriaLabelledby(this.title)}"
-      aria-modal="true"
+      aria-modal="${this.docked ? "false" : "true"}"
       ?open="${this.opened}"
       @open="${this.open}"
       @close="${this.close}"
@@ -617,6 +624,16 @@ class SimpleModal extends I18NMixin(LitElement) {
       breadcrumbs: {
         type: Array,
       },
+      /**
+       * The dialog sits below chrome that stays usable while it is open
+       * (--simple-modal-dock-top). Focus is not trapped in the dialog and
+       * aria-modal is false, so whoever opens a docked modal makes the rest
+       * of the page inert for as long as it is open.
+       */
+      docked: {
+        type: Boolean,
+        reflect: true,
+      },
     };
   }
 
@@ -654,6 +671,7 @@ class SimpleModal extends I18NMixin(LitElement) {
     this.i18nDefault("closeLabel", "close");
     this.closeIcon = "close";
     this.modal = false;
+    this.docked = false;
   }
   /**
    * LitElement
@@ -665,6 +683,7 @@ class SimpleModal extends I18NMixin(LitElement) {
     import("web-dialog/index.js").then((_e) => {
       setTimeout(() => {
         this._styleBackdrop();
+        this._applyDocked();
       }, 0);
     });
   }
@@ -694,6 +713,35 @@ class SimpleModal extends I18NMixin(LitElement) {
         this._openedChanged(this[propName]);
       }
     });
+    if (changedProperties.has("docked") || changedProperties.has("opened")) {
+      this._applyDocked();
+    }
+  }
+  /**
+   * Docked: web-dialog's backdrop starts at --simple-modal-dock-top too, and
+   * its focus trap stands down so focus can move between the dialog and the
+   * chrome above it. Every step is guarded because web-dialog may not have
+   * upgraded yet.
+   */
+  _applyDocked() {
+    const dialog =
+      this.shadowRoot && this.shadowRoot.querySelector
+        ? this.shadowRoot.querySelector("web-dialog")
+        : null;
+    if (!dialog) {
+      return;
+    }
+    const docked = !!(this.docked && this.opened);
+    const backdrop =
+      dialog.shadowRoot && dialog.shadowRoot.querySelector
+        ? dialog.shadowRoot.querySelector("#backdrop")
+        : null;
+    if (backdrop) {
+      backdrop.style.top = docked ? "var(--simple-modal-dock-top, 0px)" : "";
+    }
+    if (dialog.$dialog) {
+      dialog.$dialog.inactive = docked;
+    }
   }
   /**
    * HTMLElement
@@ -768,6 +816,7 @@ class SimpleModal extends I18NMixin(LitElement) {
         detail.showClose,
         detail.titleIcon,
         detail.breadcrumbs,
+        detail.docked,
       );
       this._queueFocusModalContent();
     } else {
@@ -784,6 +833,7 @@ class SimpleModal extends I18NMixin(LitElement) {
         detail.showClose,
         detail.titleIcon,
         detail.breadcrumbs,
+        detail.docked,
       );
     }
   }
@@ -803,9 +853,11 @@ class SimpleModal extends I18NMixin(LitElement) {
     showClose = false,
     titleIcon = null,
     breadcrumbs = [],
+    docked = false,
   ) {
     this.invokedBy = invokedBy;
     this.modal = modal;
+    this.docked = !!docked;
     this.showClose = showClose;
     this.title = title;
     this.mode = mode;
@@ -872,6 +924,7 @@ class SimpleModal extends I18NMixin(LitElement) {
     this.titleIcon = "";
     this.breadcrumbs = [];
     this.showClose = false;
+    this.docked = false;
     // Override web-dialog's focus restoration so it does not jump back to
     // a contenteditable or tray field before our own invokedBy.focus() wins.
     const wd = this.shadowRoot.querySelector("web-dialog");

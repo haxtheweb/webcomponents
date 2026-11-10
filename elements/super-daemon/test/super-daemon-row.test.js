@@ -81,6 +81,24 @@ describe("super-daemon-row behavior", () => {
     expect(closed).to.equal(true);
   });
 
+  it("a listener that cancels row-selected takes over running the command", async () => {
+    const el = await fixture(
+      html`<super-daemon-row
+        title="Go"
+        event-name="my-event"
+        .value="${{ a: 1 }}"
+      ></super-daemon-row>`,
+    );
+    let named = null;
+    let closed = false;
+    el.addEventListener("super-daemon-row-selected", (e) => e.preventDefault());
+    el.addEventListener("my-event", (e) => (named = e.detail));
+    el.addEventListener("super-daemon-close", () => (closed = true));
+    el.selected();
+    expect(named).to.equal(null);
+    expect(closed).to.equal(false);
+  });
+
   it("selected does not close for run-program events", async () => {
     const el = await fixture(
       html`<super-daemon-row
