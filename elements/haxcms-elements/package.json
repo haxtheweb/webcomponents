@@ -41,7 +41,6 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@babel/core": "7.29.7",
     "@haxtheweb/a11y-collapse": "^26.8.0",
     "@haxtheweb/a11y-tabs": "^26.8.0",
     "@haxtheweb/absolute-position-behavior": "^26.8.0",
@@ -131,7 +130,8 @@
     "gulp-babel": "8.1.0",
     "lerna": "10.1.1",
     "@haxtheweb/create": "26.8.1",
-    "lint-staged": "15.5.2"
+    "lint-staged": "15.5.2",
+    "@babel/core": "7.29.7"
   },
   "private": false,
   "publishConfig": {
