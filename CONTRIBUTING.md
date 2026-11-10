@@ -488,6 +488,16 @@ CI runs it on pull requests and weekly on Sunday as an advisory job summary; it 
 
 Elements are loaded by tag at runtime as well as by import, so [`knip.config.js`](knip.config.js) treats each element's main file, `lib/*.js`, `demo/`, `test/` and every file listed in `wc-registry.json` as entry points. When knip reports something that is in fact loaded another way (by path from a script, a build step or a vendored library), add it to `extraEntries` or `vendored` in `knip.config.js` with a comment saying how it is loaded, rather than deleting it.
 
+### Dead code knip cannot see
+
+We don't tree shake, so every line in a shipped element file reaches every browser that loads it. `yarn lint:dead-code` ([`scripts/dead-code-check.mjs`](scripts/dead-code-check.mjs)) reports three patterns knip has no way to model:
+
+- **Unrendered imports**: `import "./x.js";` of an element whose tag the file never renders or names. Tags that page content uses are defined by the autoloader from `wc-registry.json`, so they need no eager import. Imports of singletons used through `globalThis`, of modules that do work when imported, in files that only re-export, in a base class whose subclasses render the tag, or of a child a sibling file renders are not reported.
+- **Uncalled methods**: a `_private` class method with no reference anywhere in `elements/` (member access, string, template binding or `this[\`_on${x}\`]` dispatch). Public methods are API and are not checked.
+- **Vendor copies**: an unminified vendored `x.js` next to the `x.min.js` that is actually loaded, with nothing referencing it.
+
+`yarn precheck` runs it on the element files you changed, and the knip CI job adds new findings to its summary. It is advisory: known cases live in `scripts/dead-code-check.baseline.json` and only findings missing from it are reported. If something is used in a way the check cannot see, run `yarn lint:dead-code --update-baseline`, commit the baseline and say why in the PR. When you fix a baselined finding, the whole-repo run says so; update the baseline to drop it.
+
 ## Security
 
 If you discover what you deem to be a critical security issue  please reach out on our Discord channel privately to discuss whether this should be resolved in the open prior or if disclosure should happen after a solution has been crafted.

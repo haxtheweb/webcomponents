@@ -130,54 +130,6 @@
       "count": 3
     }
   },
-  "elements/chat-agent/chat-agent.js": {
-    "haxtheweb-leaks/autorun-in-constructor": {
-      "count": 2
-    }
-  },
-  "elements/chat-agent/lib/chat-agent-store.js": {
-    "eqeqeq": {
-      "count": 1
-    },
-    "haxtheweb-leaks/autorun-in-constructor": {
-      "count": 1
-    }
-  },
-  "elements/chat-agent/lib/chat-button.js": {
-    "haxtheweb-leaks/autorun-in-constructor": {
-      "count": 4
-    }
-  },
-  "elements/chat-agent/lib/chat-control-bar.js": {
-    "haxtheweb-leaks/autorun-in-constructor": {
-      "count": 3
-    }
-  },
-  "elements/chat-agent/lib/chat-developer-panel.js": {
-    "haxtheweb-leaks/autorun-in-constructor": {
-      "count": 4
-    }
-  },
-  "elements/chat-agent/lib/chat-input.js": {
-    "haxtheweb-leaks/autorun-in-constructor": {
-      "count": 5
-    }
-  },
-  "elements/chat-agent/lib/chat-interface.js": {
-    "haxtheweb-leaks/autorun-in-constructor": {
-      "count": 5
-    }
-  },
-  "elements/chat-agent/lib/chat-message.js": {
-    "haxtheweb-leaks/autorun-in-constructor": {
-      "count": 2
-    }
-  },
-  "elements/chat-agent/lib/chat-suggestion.js": {
-    "haxtheweb-leaks/autorun-in-constructor": {
-      "count": 2
-    }
-  },
   "elements/citation-element/citation-element.js": {
     "eqeqeq": {
       "count": 1
@@ -628,7 +580,7 @@
   },
   "elements/haxcms-elements/lib/core/haxcms-site-editor-ui.js": {
     "eqeqeq": {
-      "count": 16
+      "count": 15
     },
     "haxtheweb-leaks/autorun-in-constructor": {
       "count": 8
@@ -677,9 +629,6 @@
   },
   "elements/haxcms-elements/lib/core/micros/haxcms-page-operations.js": {
     "eqeqeq": {
-      "count": 2
-    },
-    "haxtheweb-leaks/autorun-in-constructor": {
       "count": 2
     }
   },

@@ -19,8 +19,9 @@
  */
 import fs from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-const root = path.dirname(new URL(import.meta.url).pathname);
+const root = path.dirname(fileURLToPath(import.meta.url));
 
 // generated, vendored or minified files: not ours to trim. Only the ones
 // knip would otherwise report are listed (vendored libraries that are loaded
@@ -40,7 +41,14 @@ const vendored = {
 // imported (node scripts, design token build, theme screenshot automation)
 const extraEntries = {
   "d-d-d": ["design-system/*.js", "design-system/source/bundle/*.js"],
-  "haxcms-elements": ["automation/**/*.js", "*-automation.js"],
+  "haxcms-elements": [
+    "automation/**/*.js",
+    "*-automation.js",
+    // theme-building mixin documented in the README next to QRCodeMixin and
+    // PDFPageMixin; no bundled theme uses it, but custom site themes import
+    // it by path, so it is public API rather than dead code
+    "lib/core/utils/EmailPageMixin.js",
+  ],
 };
 
 // package name -> workspace folder, so registry paths map to files; and

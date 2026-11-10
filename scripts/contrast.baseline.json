@@ -181,12 +181,6 @@
         "demo-snippet[unsafe-scripts=\"\"] >> #codeDisplay >> .ddd-block-label": 2
       }
     },
-    "chat-agent": {
-      "dark": {
-        "demo-snippet >> #codeDisplay >> #copyButton": 1,
-        "demo-snippet >> #codeDisplay >> .ddd-block-label": 1
-      }
-    },
     "citation-element": {
       "dark": {
         ".vertical-section-container.centered > demo-snippet >> #codeDisplay >> #copyButton": 3,

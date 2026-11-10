@@ -44,19 +44,13 @@ describe("shared 'hax' i18n namespace", () => {
     }
   });
 
-  it("translated locales carry exactly the same key set as en.json", async () => {
-    const expected = Object.keys(en).sort();
+  it("translated locales contain no key absent from en.json", async () => {
+    // Feature PRs add English keys only; the nightly translation run fills
+    // the other locales, and a key not translated yet falls back to English.
+    // So a translated locale may lag behind en.json, but must never carry a
+    // key that English lacks.
     // spot-check a spread of languages rather than all 102
     for (const lang of ["es", "fr", "de", "ja", "ar", "zh"]) {
-      const data = await loadLocale(lang);
-      expect(Object.keys(data).sort(), `hax.${lang}.json key set`).to.eql(
-        expected,
-      );
-    }
-  });
-
-  it("translated locales contain no key absent from en.json", async () => {
-    for (const lang of ["es", "fr", "de"]) {
       const data = await loadLocale(lang);
       const orphans = Object.keys(data).filter((k) => !(k in en));
       expect(orphans, `hax.${lang}.json orphan keys`).to.eql([]);

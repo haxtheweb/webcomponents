@@ -1471,23 +1471,6 @@ class HAXCMSSitePlatformUI extends HaxcmsAdminSectionMixin(
     `;
   }
 
-  _renderBlockCheckbox(item) {
-    const isDisabled = HAXStore.requiredPrimitives.has(item.tag) ? true : false;
-    return html`
-      <label class="check">
-        <input
-          type="checkbox"
-          data-tag="${item.tag}"
-          .checked=${!item.platformRestricted}
-          ?disabled=${isDisabled}
-          @change=${this._checkboxChanged}
-        />
-        <simple-icon-lite icon="${item.icon}"></simple-icon-lite>
-        <span>${item.title}</span>
-      </label>
-    `;
-  }
-
   _audienceChanged(e) {
     const value = e && e.target ? e.target.value : "expert";
     this.audience = value;

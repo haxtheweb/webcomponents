@@ -10,7 +10,6 @@ import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { DDDVariables } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
-import "@haxtheweb/bootstrap-theme/lib/BootstrapBreadcrumb.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
 
 import "./lib/glossy-portfolio-card.js";
@@ -18,7 +17,6 @@ import "./lib/glossy-portfolio-header.js";
 import "./lib/glossy-portfolio-footer.js";
 import "./lib/glossy-portfolio-home.js";
 import "./lib/glossy-portfolio-grid.js";
-import "./lib/glossy-portfolio-about.js";
 import "./lib/glossy-portfolio-breadcrumb.js";
 /**
  * @title Glossy Portfolio

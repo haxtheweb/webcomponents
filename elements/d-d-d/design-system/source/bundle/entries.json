@@ -4,7 +4,6 @@
     "global": "DDD",
     "modules": [
       "@haxtheweb/glossy-portfolio-theme/glossy-portfolio-theme.js",
-      "@haxtheweb/chat-agent/chat-agent.js",
       "@haxtheweb/d-d-d/d-d-d.js",
       "@haxtheweb/course-design/course-design.js",
       "@haxtheweb/editable-table/editable-table.js",
