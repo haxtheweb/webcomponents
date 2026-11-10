@@ -81,7 +81,7 @@ describe("SpacebookTheme autorun disposal (issue 3106)", () => {
   it("disposes every autorun on disconnect so removed themes stop reacting", async () => {
     const el = await fixture(html`<spacebook-theme></spacebook-theme>`);
     await el.updateComplete;
-    // 3 HAXCMSLitElementTheme + 2 HAXCMSThemeParts + 4 own constructor
+    // 3 HAXCMSLitElementTheme + 4 own constructor
     // autoruns, plus the connect-time autoruns from the mixin
     expect(el.__disposer.length).to.be.at.least(9);
     el.remove();
