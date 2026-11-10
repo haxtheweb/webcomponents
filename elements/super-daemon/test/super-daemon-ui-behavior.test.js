@@ -82,6 +82,26 @@ describe("super-daemon-ui behavior", () => {
     expect(element.shadowRoot.querySelector(".results-stats")).to.exist;
   });
 
+  it("swaps keyboard hints for spoken commands while listening", async () => {
+    element.loading = false;
+    element.items = [
+      { title: "Alpha", index: "alpha", value: {}, eventName: "e" },
+    ];
+    await element.updateComplete;
+    expect(element.shadowRoot.querySelector(".footer.listening")).to.be.null;
+    element.listeningForInput = true;
+    await element.updateComplete;
+    const footer = element.shadowRoot.querySelector(".footer.listening");
+    expect(footer).to.exist;
+    const said = Array.from(footer.querySelectorAll(".say")).map(
+      (n) => n.textContent,
+    );
+    expect(said).to.deep.equal(["close merlin", "stop listening"]);
+    expect(footer.querySelector(".results-stats")).to.exist;
+    element.listeningForInput = false;
+    await element.updateComplete;
+  });
+
   it("shows type-to-see-results for an empty program", async () => {
     element.loading = false;
     element.programName = "P";
