@@ -14,8 +14,6 @@ import { HAXCMSOperationButtons } from "@haxtheweb/haxcms-elements/lib/core/util
 import { varGet } from "@haxtheweb/utils/lib/object-path.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
-import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-tags.js";
-import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu-button.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { autorun, toJS } from "mobx";
