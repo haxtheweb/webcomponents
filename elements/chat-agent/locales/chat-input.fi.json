@@ -1,7 +1,0 @@
-{
-  "displayPreviousMessageUp": "Näytä aiemmin lähetetty viesti (ylös)",
-  "displayPreviousMessageDown": "Näytä aiemmin lähetetty viesti (alas)",
-  "sendPrompt": "Lähetä kehote",
-  "sendPromptToMerlin": "Lähetä kehote Merlinille",
-  "shortenPrompt": "Lyhennä kehotteesi enintään {limit} merkkiin."
-}

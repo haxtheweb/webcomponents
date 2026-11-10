@@ -143,8 +143,13 @@ function lightningMinified(css) {
  */
 export function minifyTemplate(template) {
   const check = checkCss(template);
-  if (check.errors.length || check.uncheckable) {
+  if (check.errors.length) {
     return { raws: null, reason: "syntax" };
+  }
+  // a warning lands on a line holding a ${} placeholder, so the check cannot
+  // tell a real problem from a stand-in value; not broken, just not provable
+  if (check.uncheckable) {
+    return { raws: null, reason: "uncheckable" };
   }
   const last = template.raw.length - 1;
   const raws = [];

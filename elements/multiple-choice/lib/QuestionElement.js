@@ -298,9 +298,27 @@ export class QuestionElement extends SchemaBehaviors(
         return m && m[1] in parts ? parts[m[1]] : piece;
       });
   }
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
+    }
+    // a reset (Try again) hides the control the learner just used; note
+    // whether focus was inside so updated() can keep them in the question
+    if (
+      changedProperties.has("showAnswer") &&
+      changedProperties.get("showAnswer") === true &&
+      !this.showAnswer
+    ) {
+      this.__keepFocusAfterReset = this.matches(":focus-within");
+    }
+  }
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
+    }
+    if (this.__keepFocusAfterReset) {
+      this.__keepFocusAfterReset = false;
+      this._focusAfterReset();
     }
     changedProperties.forEach((oldValue, propName) => {
       let notifiedProps = ["answers", "displayedAnswers"];
@@ -411,6 +429,58 @@ export class QuestionElement extends SchemaBehaviors(
     });
     const answers = JSON.parse(JSON.stringify(this.answers));
     this.answers = [...answers];
+  }
+
+  /**
+   * After Try again, the button that had focus is hidden or removed. Once the
+   * reset has rendered, move focus to the first answer control (or Check
+   * answer, or the status region) so a keyboard user keeps their place
+   * instead of falling back to the top of the page.
+   */
+  async _focusAfterReset() {
+    await this.updateComplete;
+    await new Promise((resolve) => requestAnimationFrame(resolve));
+    if (!this.isConnected || this.matches(":focus-within")) return;
+    const root = this.shadowRoot;
+    if (!root) return;
+    const body = root.querySelector(".shell-body, .container");
+    const check = root.querySelector("#check");
+    const target =
+      (body && this._firstFocusable(body)) ||
+      (check && !check.disabled && !check.hidden ? check : null) ||
+      root.querySelector("#feedback");
+    if (target) target.focus();
+  }
+
+  /**
+   * First keyboard-focusable element inside `node`, walking into open
+   * shadow roots and slotted content in composed-tree order.
+   */
+  _firstFocusable(node) {
+    const focusable =
+      'input, select, textarea, button, a[href], [tabindex]:not([tabindex="-1"])';
+    const visit = (el) => {
+      if (!el || el.nodeType !== 1) return null;
+      if (el.hidden || el.getAttribute("aria-hidden") === "true") return null;
+      if (el.getClientRects().length === 0 && el.tagName !== "SLOT")
+        return null;
+      if (el.matches(focusable) && !el.disabled && el.tabIndex >= 0) return el;
+      const kids = el.shadowRoot
+        ? el.shadowRoot.children
+        : el.tagName === "SLOT"
+          ? el.assignedElements({ flatten: true })
+          : el.children;
+      for (const kid of kids) {
+        const found = visit(kid);
+        if (found) return found;
+      }
+      return null;
+    };
+    for (const kid of node.children) {
+      const found = visit(kid);
+      if (found) return found;
+    }
+    return null;
   }
 
   /**

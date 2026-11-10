@@ -7,7 +7,7 @@
  * shipped elements unnoticed. This script parses every css`` template with
  * lightningcss and lists what a browser would discard.
  *
- * Advisory, like ESLint here: known, deliberate cases (for example the
+ * Advisory: known, deliberate cases (for example the
  * grid-plate Safari media-query hack) live in
  * scripts/css-template-check.baseline.json, and only problems missing from
  * the baseline are reported as new.

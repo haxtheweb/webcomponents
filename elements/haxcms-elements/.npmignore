@@ -1,2 +1,21 @@
 node_modules
+# Development-only files: nothing that installs this element loads them,
+# so they stay out of the npm package (and the CDNs that mirror it).
+/test/
+/gulpfile.cjs
+/gulpfile.js
+/gulpfile.mjs
+/rollup.config.js
+/web-dev-server.config.mjs
+/web-test-runner.config.mjs
+/.travis.yml
+/.editorconfig
+/.surgeignore
+# theme screenshot tooling (node scripts run by path) and a test helper
+# that sits in lib/ only so other packages' tests can import it
+/automation/
+/theme-screenshot-automation.js
+/full-theme-automation.js
+/lib/core/utils/HAXCMSThemeA11yTestHelpers.js
+# package-specific
 demo/files/

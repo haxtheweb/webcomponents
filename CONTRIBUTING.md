@@ -219,6 +219,11 @@ yarn start
 - CSS is formatted with Stylelint
 - Run `yarn run format` to format all files
 
+**Linting:**
+- `yarn lint` runs ESLint on `elements/`. An ESLint error fails CI; warnings do not. `yarn lint:fix` fixes what it can
+- Existing `==` comparisons are recorded in `eslint-suppressions.json`; new code uses `===`
+- `yarn precheck` lints the files you changed before you push
+
 **Documentation:**
 - Add JSDoc comments to all public methods and properties
 - Update component README files
@@ -240,6 +245,16 @@ Invariant: a HAX-capable element keeps a usable layout when its strings get long
 - **Run locally**: `yarn test:i18n-layout` checks the tags in element folders changed against the base branch (`--base <ref>` to pick another, `--tags a,b` for specific tags, `--all` for every tag). Exit 1 means a new failure. The full run takes about a minute.
 - **Baseline**: `scripts/i18n-layout.baseline.json` records today's failures per tag and check. A failing check is new when the tag has no entry for it (or, for `rtl-css`, more findings than recorded). After fixing or intentionally accepting a result, run `yarn test:i18n-layout:baseline --tags <tag>` and commit the baseline; without `--tags` it re-runs every tag.
 - **CI**: the `i18n-layout` workflow runs on pull requests touching `elements/**`, Chromium only, and blocks on new failures in the elements the pull request changes. Baselined failures in those elements are listed in the job summary so they can be worked down.
+
+### Color contrast check
+
+Invariant: text in an element's demo meets WCAG AA contrast (4.5:1, 3:1 for large text) in light mode and in dark mode.
+
+- **What runs**: the repo's `web-dev-server.config.mjs` serves the repo locally (never a live site). Each element's `demo/index.html` opens in Chromium with `prefers-color-scheme` light, then dark, reduced motion, and every request that leaves the local server blocked. axe-core runs only its `color-contrast` rule, shadow DOM included.
+- **Run locally**: `yarn test:contrast` checks the demos of element folders changed against the base branch (`--base <ref>` to pick another, `--elements a,b` for specific ones, `--all` for every demo, about 7 minutes). Exit 1 means a new failure. Set `CONTRAST_CHROMIUM=<path>` to use a Chromium other than Playwright's.
+- **Baseline**: `scripts/contrast.baseline.json` lists today's failures by element, mode and target (axe's selector path with positions and digits dropped), with a node count. A target missing from it, or more nodes than it lists, is new. A demo with new findings is checked a second time and only what both runs show counts, so a finding that depends on load timing does not fail a build.
+- **Shrink only**: the baseline never grows. After fixing contrast, run `yarn test:contrast --update-baseline --elements <name>` and commit the smaller baseline. `--update-baseline` only removes entries (it runs twice and drops only what neither run shows). `--allow-additions` only adds; it exists to rebuild the baseline, and CI fails a pull request whose baseline grew.
+- **CI**: the `contrast` workflow runs on pull requests touching `elements/**`. It fails if the baseline grew compared with the base branch, then blocks on new failures in the elements the pull request changes. Baselined failures in those elements are listed in the job summary so they can be worked down. Demos that do not load are listed, not failed.
 
 ### Lerna
 This monorepo has configuration settings for lerna. Lerna is for the core team, but to bulk run commands against the monorepo consider things like `npx lerna run build` to run build against all elements. This is useful when getting ready to ship.
@@ -472,6 +487,24 @@ Invariant: content authored with a HAX-capable element keeps working. An authora
 CI runs it on pull requests and weekly on Sunday as an advisory job summary; it never fails the build.
 
 Elements are loaded by tag at runtime as well as by import, so [`knip.config.js`](knip.config.js) treats each element's main file, `lib/*.js`, `demo/`, `test/` and every file listed in `wc-registry.json` as entry points. When knip reports something that is in fact loaded another way (by path from a script, a build step or a vendored library), add it to `extraEntries` or `vendored` in `knip.config.js` with a comment saying how it is loaded, rather than deleting it.
+
+### Dead code knip cannot see
+
+We don't tree shake, so every line in a shipped element file reaches every browser that loads it. `yarn lint:dead-code` ([`scripts/dead-code-check.mjs`](scripts/dead-code-check.mjs)) reports three patterns knip has no way to model:
+
+- **Unrendered imports**: `import "./x.js";` of an element whose tag the file never renders or names. Tags that page content uses are defined by the autoloader from `wc-registry.json`, so they need no eager import. Imports of singletons used through `globalThis`, of modules that do work when imported, in files that only re-export, in a base class whose subclasses render the tag, or of a child a sibling file renders are not reported.
+- **Uncalled methods**: a `_private` class method with no reference anywhere in `elements/` (member access, string, template binding or `this[\`_on${x}\`]` dispatch). Public methods are API and are not checked.
+- **Vendor copies**: an unminified vendored `x.js` next to the `x.min.js` that is actually loaded, with nothing referencing it.
+
+`yarn precheck` runs it on the element files you changed, and the knip CI job adds new findings to its summary. It is advisory: known cases live in `scripts/dead-code-check.baseline.json` and only findings missing from it are reported. If something is used in a way the check cannot see, run `yarn lint:dead-code --update-baseline`, commit the baseline and say why in the PR. When you fix a baselined finding, the whole-repo run says so; update the baseline to drop it.
+
+### Element size report
+
+HAX serves elements as unbundled ES modules, so what a page downloads for a tag is every file in its eager import closure (static `import`, not `import()`), each sent separately. `yarn size-report` ([`scripts/size-report.mjs`](scripts/size-report.mjs)) measures that, as the sum of each file's gzip size, for every package main file and every tag in `wc-registry.json`. Third-party packages like lit are not counted.
+
+On pull requests that change element JavaScript, the `size-report` workflow measures the PR and its base and lists the entries whose download changed in the job summary. It is report only: it never fails and posts no comments. Budgets are deferred until the platform is stable ([haxtheweb/issues#3283](https://github.com/haxtheweb/issues/issues/3283)). When the report shows an element growing, check whether the new code needs to load up front or could be an `import()` when first used.
+
+To compare two checkouts by hand: `yarn size-report --json head.json`, `yarn size-report --root ../other-checkout --json base.json`, then `yarn size-report --compare base.json head.json`.
 
 ## Security
 

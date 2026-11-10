@@ -86,7 +86,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
   // render function
   render() {
     return html`
-      <site-ai-chat></site-ai-chat>
       <haxcms-site-router base-uri="${this.baseURI}"></haxcms-site-router>
       <simple-progress .disabled="${!this.loading}"></simple-progress>
       <div id="slot"><slot></slot></div>
@@ -183,9 +182,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
    */
   _updateManifest(data) {
     this.manifest = { ...data };
-  }
-  _updateLoading(e) {
-    this.loading = e.detail.value;
   }
   hashCode(s) {
     return s.split("").reduce((a, b) => {

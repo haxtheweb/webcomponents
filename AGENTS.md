@@ -186,8 +186,8 @@ The HAX ecosystem uses a sophisticated build pipeline optimized for unbundled Ja
   ```bash
   npm run lint
   ```
-  - Ensures code style compliance before committing
-  - Uses ESLint, Prettier, and Stylelint
+  - Runs ESLint on `elements/`. ESLint errors fail CI (the build workflow), so fix them before you push; warnings do not fail. Existing `==` comparisons are recorded in `eslint-suppressions.json` and do not count
+  - Prettier and Stylelint run in `yarn precheck` and CI; the CI Prettier check is advisory
 
 - **Fix issues automatically**:
   ```bash
@@ -224,8 +224,10 @@ LICENSE
 - **Pre-commit checks**:
   - Run `yarn precheck` before every push or PR. It runs the Prettier, Stylelint, ESLint and DDD token checks CI runs, plus a CodeQL security scan, on the files you changed. Fix everything it reports and re-run until it passes (`yarn precheck:fix` auto-fixes formatting and fixable lint). A Claude Code hook in `.claude/` blocks `git push` and `gh pr create` until it passes.
   - **CodeQL must pass on the first push.** Install the CodeQL CLI once with `yarn codeql:install` (agents: do this at the start of any session that will push). `yarn codeql` scans the element folders you changed with the same query suite and `paths-ignore` as the CodeQL PR check, in about a minute, and reports only alerts in files you changed. Fix every alert it reports by changing the code, not by suppressing it; never use `Math.random()` for ids or anything a rule treats as security-sensitive, and use linear-time regexes and full (not single-pass) sanitization. CI still scans the whole repo and is the source of truth.
+  - **Don't add dead code.** We don't tree shake, so everything in a shipped file reaches the browser. Don't eagerly `import` an element your file never renders (the autoloader defines tags content uses), don't leave `_private` methods nothing calls, and don't ship unminified vendor copies next to the `.min.js` you load. `yarn precheck` runs `yarn lint:dead-code` on your changed files (advisory, baselined); fix what it reports rather than baselining it.
   - Run `npm test` to ensure all tests pass.
-  - Run `npm run lint` to verify code style.
+  - Run `yarn lint` to verify code style. ESLint errors fail CI.
+  - **Element `dependencies` are runtime only.** Babel, Rollup, the dev server and test runner, lerna, lint-staged, the HAX CLI and other build/test tooling go in `devDependencies`; every site that installs the element from npm installs its `dependencies`. `yarn precheck` and CI enforce this (`yarn lint:runtime-deps`).
   - Run `hax audit` for web components to confirm DDD compliance.
 - **Commit Guidelines**:
   - Use clear, descriptive commit messages (e.g., "Add i18n support to my-element").

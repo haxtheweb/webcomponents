@@ -473,18 +473,53 @@ describe("page-break rendering", () => {
     expect(
       menu.querySelector("simple-toolbar-button").hasAttribute("disabled"),
     ).to.equal(true);
-    // hax state swaps the menu for save / cancel buttons (in the band,
-    // which loads on demand the first time editing turns on)
+    // hax state drops the page actions menu; save / cancel live only in
+    // the HAXcms top bar, so the band carries no buttons of its own
     el._haxState = true;
-    await waitUntil(() => el.shadowRoot.querySelector(".save-button"));
     await el.updateComplete;
-    expect(el.shadowRoot.querySelector(".save-button") === null).to.equal(
-      false,
-    );
-    expect(el.shadowRoot.querySelector(".cancel-button") === null).to.equal(
-      false,
-    );
+    expect(el.shadowRoot.querySelector(".save-button")).to.equal(null);
+    expect(el.shadowRoot.querySelector(".cancel-button")).to.equal(null);
     expect(el.shadowRoot.querySelector("#pageactionsbtn")).to.equal(null);
+  });
+
+  it("shows registered shortcuts on the page actions button and Edit page row", async () => {
+    const { KeyboardShortcutManagerInstance } =
+      await import("@haxtheweb/utils/utils.js");
+    const noop = () => {};
+    KeyboardShortcutManagerInstance.register({
+      id: "cms-edit",
+      key: "E",
+      ctrl: true,
+      shift: true,
+      callback: noop,
+      description: "Enter edit mode",
+    });
+    KeyboardShortcutManagerInstance.register({
+      id: "cms-page-actions",
+      key: "5",
+      ctrl: true,
+      shift: true,
+      callback: noop,
+      description: "Page actions",
+    });
+    try {
+      const el = await fixture(html`<page-break title="Keys"></page-break>`);
+      el.isLoggedIn = true;
+      await el.updateComplete;
+      await wait(150);
+      await el.updateComplete;
+      const btn = el.shadowRoot.querySelector("#pageactionsbtn");
+      expect(btn.getAttribute("label")).to.equal(
+        "Page Actions \u2022 Ctrl\u21e75",
+      );
+      const edit = el.shadowRoot.querySelector("#menu simple-toolbar-button");
+      expect(edit.getAttribute("label")).to.equal("Edit page");
+      expect(edit.getAttribute("shortcut-label")).to.equal("Ctrl\u21e7E");
+      expect(edit.getAttribute("key-shortcuts")).to.not.equal("");
+    } finally {
+      KeyboardShortcutManagerInstance.unregister("cms-edit");
+      KeyboardShortcutManagerInstance.unregister("cms-page-actions");
+    }
   });
 
   it("hides platform gated menu items when the platform denies them", async () => {

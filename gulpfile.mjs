@@ -296,6 +296,9 @@ gulp.task(
   "version-match", async () => {
     fs.writeFileSync('./.version', packageVm.version , {encoding:'utf8',flag:'w'});
     console.log(`${packageVm.version} written to .version`);
+    // warn when a sibling package (haxcms-nodejs, create, ...) is already
+    // ahead of this release version; ubiquity-push.sh refuses to release then
+    execSync('node scripts/check-ecosystem-version.mjs', { stdio: 'inherit' });
   }
 );
 gulp.task(
@@ -582,7 +585,7 @@ import { execSync } from 'child_process';
 
 gulp.task("theme-discovery", async () => {
   try {
-    execSync('node scripts/theme-discovery.js', { stdio: 'inherit' });
+    execSync('node scripts/theme-discovery.mjs', { stdio: 'inherit' });
     console.log('✅ Theme discovery completed successfully');
     console.log('');
     console.log('📷 Theme Screenshots:');
@@ -598,7 +601,7 @@ gulp.task("theme-discovery", async () => {
 
 gulp.task("hax-elements-discovery", async () => {
   try {
-    execSync('node scripts/hax-elements-discovery.js', { stdio: 'inherit' });
+    execSync('node scripts/hax-elements-discovery.mjs', { stdio: 'inherit' });
     console.log('✅ HAX elements discovery completed successfully');
   } catch (error) {
     console.error('❌ HAX elements discovery failed:', error.message);
@@ -607,7 +610,7 @@ gulp.task("hax-elements-discovery", async () => {
 
 gulp.task("hax-elements-demo-page", async () => {
   try {
-    execSync('node scripts/hax-elements-demo-page.js', { stdio: 'inherit' });
+    execSync('node scripts/hax-elements-demo-page.mjs', { stdio: 'inherit' });
     console.log('✅ HAX elements demo page generated successfully');
   } catch (error) {
     console.error('❌ HAX elements demo page generation failed:', error.message);

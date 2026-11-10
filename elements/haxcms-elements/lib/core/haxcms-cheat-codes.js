@@ -8,7 +8,6 @@
 
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { store } from "./haxcms-site-store.js";
-import { replaceThrough } from "@haxtheweb/utils/lib/safe-html.js";
 
 // English defaults for cheat code toasts and Merlin speech. These methods are
 // attached to haxcms-site-editor-ui, so translations come from its this.t
@@ -66,12 +65,6 @@ const CHEAT_CODES_T = {
   cheatWindows95Activated: "💻 WINDOWS 95 ACTIVATED! Welcome to the future!",
   cheatWindows95Speak:
     "Welcome to Windows 95! The operating system of tomorrow, today!",
-  cheatEternalDarknessDisabled:
-    "🌙 ETERNAL DARKNESS DISABLED - Sanity restored!",
-  cheatEternalDarknessEndsSpeak: "The nightmare ends... for now.",
-  cheatEternalDarknessSpeak: "This. Can't. Be. Happening.",
-  cheatEternalDarknessActivated:
-    "🌙 ETERNAL DARKNESS - Your sanity slips away...",
   cheatYtmndActivated: "🎵 YTMND ACTIVATED! You're the man now, dog!",
   cheatYtmndSpeak:
     "You're the man now, dog! Welcome to the golden age of internet memes!",
@@ -103,10 +96,12 @@ export function defineCheatCodes(editorInstance, SuperDaemonInstance) {
     icon: "hax:wizard-hat",
     textCharacter: "🍌",
     tags: ["cheat", "character", "dk", "donkey-kong"],
-    context: ["*", "CMS", "HAX"], // Available in all contexts
-    priority: -1000, // High priority to appear near top
+    // developer commands only (the > list), never global search
+    context: [">"],
+    // ultra low: listed after every real developer command
+    priority: 900000,
     eventName: "super-daemon-element-method",
-    path: "cheat/dkmode",
+    path: ">cheat/dkmode",
     value: {
       target: editorInstance,
       method: "_executeCheatDKMODE",
@@ -120,10 +115,12 @@ export function defineCheatCodes(editorInstance, SuperDaemonInstance) {
     icon: "image:rotate-right",
     textCharacter: "✈️",
     tags: ["cheat", "rotate", "starfox", "barrel-roll"],
-    context: ["*", "CMS", "HAX"],
-    priority: -999,
+    // developer commands only (the > list), never global search
+    context: [">"],
+    // ultra low: listed after every real developer command
+    priority: 900001,
     eventName: "super-daemon-element-method",
-    path: "cheat/barrel-roll",
+    path: ">cheat/barrel-roll",
     value: {
       target: editorInstance,
       method: "_executeCheatBarrelRoll",
@@ -137,10 +134,12 @@ export function defineCheatCodes(editorInstance, SuperDaemonInstance) {
     icon: "hax:skull",
     textCharacter: "🧟‍♀️",
     tags: ["cheat", "zombie", "pirate", "character"],
-    context: ["*", "CMS", "HAX"],
-    priority: -998,
+    // developer commands only (the > list), never global search
+    context: [">"],
+    // ultra low: listed after every real developer command
+    priority: 900002,
     eventName: "super-daemon-element-method",
-    path: "cheat/zombie",
+    path: ">cheat/zombie",
     value: {
       target: editorInstance,
       method: "_executeCheatSummonZombie",
@@ -154,10 +153,12 @@ export function defineCheatCodes(editorInstance, SuperDaemonInstance) {
     icon: "av:volume-up",
     textCharacter: "🎵",
     tags: ["cheat", "dance", "sound", "music"],
-    context: ["*", "CMS", "HAX"],
-    priority: -997,
+    // developer commands only (the > list), never global search
+    context: [">"],
+    // ultra low: listed after every real developer command
+    priority: 900003,
     eventName: "super-daemon-element-method",
-    path: "cheat/ddr",
+    path: ">cheat/ddr",
     value: {
       target: editorInstance,
       method: "_executeCheatDDR",
@@ -171,10 +172,12 @@ export function defineCheatCodes(editorInstance, SuperDaemonInstance) {
     icon: "maps:local-mall",
     textCharacter: "🎅",
     tags: ["cheat", "santa", "voice", "christmas"],
-    context: ["*", "CMS", "HAX"],
-    priority: -996,
+    // developer commands only (the > list), never global search
+    context: [">"],
+    // ultra low: listed after every real developer command
+    priority: 900004,
     eventName: "super-daemon-element-method",
-    path: "cheat/santa",
+    path: ">cheat/santa",
     value: {
       target: editorInstance,
       method: "_executeCheatSanta",
@@ -188,10 +191,12 @@ export function defineCheatCodes(editorInstance, SuperDaemonInstance) {
     icon: "device:access-time",
     textCharacter: "⏳",
     tags: ["cheat", "time", "sepia", "vintage"],
-    context: ["*", "CMS", "HAX"],
-    priority: -994,
+    // developer commands only (the > list), never global search
+    context: [">"],
+    // ultra low: listed after every real developer command
+    priority: 900005,
     eventName: "super-daemon-element-method",
-    path: "cheat/timetravel",
+    path: ">cheat/timetravel",
     value: {
       target: editorInstance,
       method: "_executeCheatTimeTravel",
@@ -205,10 +210,12 @@ export function defineCheatCodes(editorInstance, SuperDaemonInstance) {
     icon: "av:volume-up",
     textCharacter: "🔊",
     tags: ["cheat", "sound", "beep", "click"],
-    context: ["*", "CMS", "HAX"],
-    priority: -993,
+    // developer commands only (the > list), never global search
+    context: [">"],
+    // ultra low: listed after every real developer command
+    priority: 900006,
     eventName: "super-daemon-element-method",
-    path: "cheat/beeps",
+    path: ">cheat/beeps",
     value: {
       target: editorInstance,
       method: "_executeCheatBeeps",
@@ -222,10 +229,12 @@ export function defineCheatCodes(editorInstance, SuperDaemonInstance) {
     icon: "hardware:security",
     textCharacter: "🕵️",
     tags: ["cheat", "matrix", "hacker", "dark"],
-    context: ["*", "CMS", "HAX"],
-    priority: -992,
+    // developer commands only (the > list), never global search
+    context: [">"],
+    // ultra low: listed after every real developer command
+    priority: 900007,
     eventName: "super-daemon-element-method",
-    path: "cheat/darkweb",
+    path: ">cheat/darkweb",
     value: {
       target: editorInstance,
       method: "_executeCheatDarkWeb",
@@ -239,10 +248,12 @@ export function defineCheatCodes(editorInstance, SuperDaemonInstance) {
     icon: "av:play-circle-filled",
     textCharacter: "🎤",
     tags: ["cheat", "rick", "roll", "music", "meme"],
-    context: ["*", "CMS", "HAX"],
-    priority: -991,
+    // developer commands only (the > list), never global search
+    context: [">"],
+    // ultra low: listed after every real developer command
+    priority: 900008,
     eventName: "super-daemon-element-method",
-    path: "cheat/rickroll",
+    path: ">cheat/rickroll",
     value: {
       target: editorInstance,
       method: "_executeCheatRickRoll",
@@ -256,10 +267,12 @@ export function defineCheatCodes(editorInstance, SuperDaemonInstance) {
     icon: "pets",
     textCharacter: "🐈",
     tags: ["cheat", "nyan", "cat", "rainbow", "meme"],
-    context: ["*", "CMS", "HAX"],
-    priority: -990,
+    // developer commands only (the > list), never global search
+    context: [">"],
+    // ultra low: listed after every real developer command
+    priority: 900009,
     eventName: "super-daemon-element-method",
-    path: "cheat/nyancat",
+    path: ">cheat/nyancat",
     value: {
       target: editorInstance,
       method: "_executeCheatNyanCat",
@@ -273,10 +286,12 @@ export function defineCheatCodes(editorInstance, SuperDaemonInstance) {
     icon: "social:public",
     textCharacter: "🌍",
     tags: ["cheat", "world", "change", "gandhi", "hax"],
-    context: ["*", "CMS", "HAX"],
-    priority: -989,
+    // developer commands only (the > list), never global search
+    context: [">"],
+    // ultra low: listed after every real developer command
+    priority: 900010,
     eventName: "super-daemon-element-method",
-    path: "cheat/worldchanger",
+    path: ">cheat/worldchanger",
     value: {
       target: editorInstance,
       method: "_executeCheatWorldChanger",
@@ -290,10 +305,12 @@ export function defineCheatCodes(editorInstance, SuperDaemonInstance) {
     icon: "av:music-note",
     textCharacter: "🎵",
     tags: ["cheat", "techno", "music", "party", "effects"],
-    context: ["*", "CMS", "HAX"],
-    priority: -988,
+    // developer commands only (the > list), never global search
+    context: [">"],
+    // ultra low: listed after every real developer command
+    priority: 900011,
     eventName: "super-daemon-element-method",
-    path: "cheat/techno",
+    path: ">cheat/techno",
     value: {
       target: editorInstance,
       method: "_executeCheatTechno",
@@ -307,10 +324,12 @@ export function defineCheatCodes(editorInstance, SuperDaemonInstance) {
     icon: "social:people",
     textCharacter: "🎬",
     tags: ["cheat", "credits", "contributors", "team", "thanks"],
-    context: ["*", "CMS", "HAX"],
-    priority: -987,
+    // developer commands only (the > list), never global search
+    context: [">"],
+    // ultra low: listed after every real developer command
+    priority: 900012,
     eventName: "super-daemon-element-method",
-    path: "cheat/credits",
+    path: ">cheat/credits",
     value: {
       target: editorInstance,
       method: "_executeCheatCredits",
@@ -324,10 +343,12 @@ export function defineCheatCodes(editorInstance, SuperDaemonInstance) {
     icon: "social:mood",
     textCharacter: "🃏",
     tags: ["cheat", "joker", "chaos", "fire", "message"],
-    context: ["*", "CMS", "HAX"],
-    priority: -986,
+    // developer commands only (the > list), never global search
+    context: [">"],
+    // ultra low: listed after every real developer command
+    priority: 900013,
     eventName: "super-daemon-element-method",
-    path: "cheat/joker",
+    path: ">cheat/joker",
     value: {
       target: editorInstance,
       method: "_executeCheatJoker",
@@ -341,10 +362,12 @@ export function defineCheatCodes(editorInstance, SuperDaemonInstance) {
     icon: "pets",
     textCharacter: "🔮",
     tags: ["cheat", "furby", "90s", "popup", "nostalgia"],
-    context: ["*", "CMS", "HAX"],
-    priority: -985,
+    // developer commands only (the > list), never global search
+    context: [">"],
+    // ultra low: listed after every real developer command
+    priority: 900014,
     eventName: "super-daemon-element-method",
-    path: "cheat/furby",
+    path: ">cheat/furby",
     value: {
       target: editorInstance,
       method: "_executeCheatFurby",
@@ -358,10 +381,12 @@ export function defineCheatCodes(editorInstance, SuperDaemonInstance) {
     icon: "hardware:computer",
     textCharacter: "💻",
     tags: ["cheat", "windows", "95", "retro", "desktop", "nostalgia"],
-    context: ["*", "CMS", "HAX"],
-    priority: -984,
+    // developer commands only (the > list), never global search
+    context: [">"],
+    // ultra low: listed after every real developer command
+    priority: 900015,
     eventName: "super-daemon-element-method",
-    path: "cheat/windows95",
+    path: ">cheat/windows95",
     value: {
       target: editorInstance,
       method: "_executeCheatWindows95",
@@ -375,10 +400,12 @@ export function defineCheatCodes(editorInstance, SuperDaemonInstance) {
     icon: "av:music-note",
     textCharacter: "🎵",
     tags: ["cheat", "ytmnd", "meme", "spinning", "retro", "internet"],
-    context: ["*", "CMS", "HAX"],
-    priority: -983,
+    // developer commands only (the > list), never global search
+    context: [">"],
+    // ultra low: listed after every real developer command
+    priority: 900016,
     eventName: "super-daemon-element-method",
-    path: "cheat/ytmnd",
+    path: ">cheat/ytmnd",
     value: {
       target: editorInstance,
       method: "_executeCheatYTMND",
@@ -392,10 +419,12 @@ export function defineCheatCodes(editorInstance, SuperDaemonInstance) {
     icon: "places:all-inclusive",
     textCharacter: "🌈",
     tags: ["cheat", "geocities", "90s", "website", "construction", "retro"],
-    context: ["*", "CMS", "HAX"],
-    priority: -982,
+    // developer commands only (the > list), never global search
+    context: [">"],
+    // ultra low: listed after every real developer command
+    priority: 900017,
     eventName: "super-daemon-element-method",
-    path: "cheat/geocities",
+    path: ">cheat/geocities",
     value: {
       target: editorInstance,
       method: "_executeCheatGeocities",
@@ -409,10 +438,12 @@ export function defineCheatCodes(editorInstance, SuperDaemonInstance) {
     icon: "editor:attach-file",
     textCharacter: "📎",
     tags: ["cheat", "clippy", "microsoft", "assistant", "help", "office"],
-    context: ["*", "CMS", "HAX"],
-    priority: -981,
+    // developer commands only (the > list), never global search
+    context: [">"],
+    // ultra low: listed after every real developer command
+    priority: 900018,
     eventName: "super-daemon-element-method",
-    path: "cheat/clippy",
+    path: ">cheat/clippy",
     value: {
       target: editorInstance,
       method: "_executeCheatClippy",
@@ -438,30 +469,15 @@ export function defineCheatCodes(editorInstance, SuperDaemonInstance) {
       "to the moon and back",
       "childrens book",
     ],
-    context: ["*", "CMS", "HAX"],
-    priority: -980,
+    // developer commands only (the > list), never global search
+    context: [">"],
+    // ultra low: listed after every real developer command
+    priority: 900019,
     eventName: "super-daemon-element-method",
-    path: "cheat/chickenbutt",
+    path: ">cheat/chickenbutt",
     value: {
       target: editorInstance,
       method: "_executeCheatChickenButt",
-      args: [],
-    },
-  });
-
-  // ETERNALDARKNESS - Sanity effects that mess with interface
-  SuperDaemonInstance.defineOption({
-    title: "ETERNALDARKNESS",
-    icon: "image:blur-on",
-    textCharacter: "🌙",
-    tags: ["cheat", "eternal", "darkness", "sanity", "horror", "gamecube"],
-    context: ["*", "CMS", "HAX"],
-    priority: -983,
-    eventName: "super-daemon-element-method",
-    path: "cheat/eternal-darkness",
-    value: {
-      target: editorInstance,
-      method: "_executeCheatEternalDarkness",
       args: [],
     },
   });
@@ -478,11 +494,41 @@ export function defineCheatCodes(editorInstance, SuperDaemonInstance) {
  */
 export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
   /**
+   * The person's avatar: an rpg-character inside the top bar's user menu
+   * toggle (it used to sit straight in the editor's shadow root, which is
+   * why DKMODE and SUMMONZOMBIE stopped finding it)
+   * @returns {{ character: HTMLElement, button: HTMLElement }|null}
+   */
+  editorInstance._cheatAvatar = function () {
+    const root = this.shadowRoot;
+    if (!root) {
+      return null;
+    }
+    const direct = root.querySelector("rpg-character");
+    if (direct) {
+      return { character: direct, button: null };
+    }
+    const toggle = root.querySelector("app-hax-user-menu-toggle");
+    const inner = toggle && toggle.shadowRoot;
+    const character = inner ? inner.querySelector("rpg-character") : null;
+    if (!character) {
+      return null;
+    }
+    return { character: character, button: inner.querySelector("button") };
+  };
+  /**
    * Execute DKMODE cheat - Make RPG character have big head
    */
   editorInstance._executeCheatDKMODE = function () {
-    const rpgCharacter = this.shadowRoot.querySelector("rpg-character");
+    const avatar = this._cheatAvatar();
+    const rpgCharacter = avatar ? avatar.character : null;
     if (rpgCharacter) {
+      // the round avatar button clips its contents; let the big head out
+      if (avatar.button) {
+        avatar.button.style.overflow = "visible";
+      }
+      rpgCharacter.style.position = "relative";
+      rpgCharacter.style.zIndex = "1";
       // Scale up the entire character and add visual effects with inline styles
       rpgCharacter.style.transform = "scale(1.8)";
       rpgCharacter.style.transformOrigin = "center center";
@@ -526,9 +572,15 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
    * Execute SUMMONZOMBIE cheat - Change character to zombie pirate girl
    */
   editorInstance._executeCheatSummonZombie = function () {
-    const rpgCharacter = this.shadowRoot.querySelector("rpg-character");
+    const avatar = this._cheatAvatar();
+    const rpgCharacter = avatar ? avatar.character : null;
     if (rpgCharacter) {
-      // Set to zombie pirate girl seed (zpg is predefined in rpg-character)
+      // Set to zombie pirate girl seed (zpg is predefined in rpg-character).
+      // A saved avatar code wins over the seed, so clear it for this look
+      // (nothing is saved; a reload brings the person's avatar back)
+      rpgCharacter.code = "";
+      rpgCharacter.removeAttribute("code");
+      rpgCharacter.literalseed = false;
       rpgCharacter.seed = "zpg";
 
       // Add spooky visual effects with inline styles
@@ -614,36 +666,31 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
    */
   editorInstance._executeCheatTimeTravel = function () {
     const body = globalThis.document.body;
-    const existingFilter = body.style.filter || "";
-
-    if (existingFilter.includes("sepia")) {
-      // Remove time travel effect
-      body.style.filter = replaceThrough(
-        existingFilter,
-        /sepia\(/g,
-        ")",
-        "",
-      ).trim();
-      HAXStore.toast(_t(editorInstance, "cheatTimeTravelDisabled"));
+    // the page's own filter is kept aside and put back exactly; stripping
+    // only sepia() used to leave the contrast / brightness behind
+    const KEY = "cheatTimeTravelFilter";
+    const restore = (message) => {
+      body.style.filter = body.dataset[KEY] || "";
+      delete body.dataset[KEY];
+      if (message) {
+        HAXStore.toast(_t(editorInstance, message));
+      }
+    };
+    if (typeof body.dataset[KEY] !== "undefined") {
+      restore("cheatTimeTravelDisabled");
     } else {
-      // Add sepia time travel effect
+      const existingFilter = body.style.filter || "";
+      body.dataset[KEY] = existingFilter;
+      // full sepia plus a lift in brightness so it reads on dark themes
+      // too (0.8 sepia on a navy page barely changed anything)
+      body.style.transition = "filter 1s ease-in-out";
       body.style.filter =
-        (existingFilter || "") + " sepia(0.8) contrast(1.2) brightness(0.9)";
-      body.style.transition = "filter 2s ease-in-out";
-
+        `${existingFilter} sepia(1) contrast(1.1) brightness(1.15)`.trim();
       HAXStore.toast(_t(editorInstance, "cheatTimeTravelActivated"));
-
       // Auto-remove after 30 seconds
       setTimeout(() => {
-        const currentFilter = body.style.filter || "";
-        if (currentFilter.includes("sepia")) {
-          body.style.filter = replaceThrough(
-            currentFilter,
-            /sepia\(/g,
-            ")",
-            "",
-          ).trim();
-          HAXStore.toast(_t(editorInstance, "cheatTimeTravelExpired"));
+        if (typeof body.dataset[KEY] !== "undefined") {
+          restore("cheatTimeTravelExpired");
         }
       }, 30000);
     }
@@ -733,8 +780,11 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         width: 100%;
         height: 100%;
         pointer-events: none;
-        z-index: 9998;
+        /* over the page and the HAX UI, under Merlin's toast so what he
+           says stays readable */
+        z-index: 100000000;
         overflow: hidden;
+        background: rgba(0, 0, 0, 0.6);
       `;
 
       // Create more matrix columns for fuller coverage
@@ -749,7 +799,10 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
           font-family: 'Courier New', monospace;
           font-size: 14px;
           animation: matrix-fall ${Math.random() * 3 + 2}s linear infinite;
-          animation-delay: ${Math.random() * 3}s;
+          /* a negative delay starts each column part way down, so the
+             rain is already falling the moment it turns on rather than
+             columns trickling in over a few seconds */
+          animation-delay: -${Math.random() * 3}s;
         `;
 
         // Add random characters with individual backgrounds
@@ -779,11 +832,18 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
               opacity: 0;
             }
           }
+          @media (prefers-reduced-motion: reduce) {
+            #matrix-effect > div {
+              animation: none !important;
+              top: 0 !important;
+            }
+          }
         `;
         globalThis.document.head.appendChild(style);
       }
 
-      globalThis.document.body.appendChild(matrixContainer);
+      // on the root, not body, so a body filter (TIMETRAVEL) can't tint it
+      globalThis.document.documentElement.appendChild(matrixContainer);
       HAXStore.toast(_t(editorInstance, "cheatDarkWebActivated"));
 
       // Auto-remove after 20 seconds
@@ -2084,696 +2144,6 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
     HAXStore.toast(_t(editorInstance, "cheatWindows95Activated"));
     store.playSound("success");
     SuperDaemonInstance.merlinSpeak(_t(editorInstance, "cheatWindows95Speak"));
-    SuperDaemonInstance.close();
-  };
-
-  /**
-   * Execute ETERNALDARKNESS cheat - Sanity effects that mess with interface
-   */
-  editorInstance._executeCheatEternalDarkness = function () {
-    // Check if eternal darkness is already active
-    if (globalThis.eternalDarknessActive) {
-      // Disable all effects
-      globalThis.eternalDarknessActive = false;
-
-      // Remove all eternal darkness elements
-      const sanityMeter = globalThis.document.querySelector("#sanity-meter");
-      if (sanityMeter) sanityMeter.remove();
-
-      const errorModal = globalThis.document.querySelector(
-        ".eternal-darkness-error",
-      );
-      if (errorModal) errorModal.remove();
-
-      const volumeModal = globalThis.document.querySelector(
-        ".eternal-darkness-volume",
-      );
-      if (volumeModal) volumeModal.remove();
-
-      const overlay = globalThis.document.querySelector(
-        ".eternal-darkness-overlay",
-      );
-      if (overlay) overlay.remove();
-
-      // Restore body scale and cursor
-      const body = globalThis.document.body;
-      body.style.transform = "";
-      body.style.transformOrigin = "";
-      body.style.cursor = "";
-      body.style.transition = "";
-
-      // Clear all intervals and event listeners
-      if (globalThis.eternalDarknessCleanup) {
-        globalThis.eternalDarknessCleanup.forEach((cleanup) => cleanup());
-        globalThis.eternalDarknessCleanup = [];
-      }
-
-      // Clear mouse event listeners
-      if (globalThis.eternalDarknessMouseHandler) {
-        globalThis.document.removeEventListener(
-          "mousemove",
-          globalThis.eternalDarknessMouseHandler,
-        );
-        globalThis.eternalDarknessMouseHandler = null;
-      }
-
-      // Clear sanity mouse handler
-      if (globalThis.eternalDarknessSanityHandler) {
-        globalThis.document.removeEventListener(
-          "mousemove",
-          globalThis.eternalDarknessSanityHandler,
-        );
-        globalThis.eternalDarknessSanityHandler = null;
-      }
-
-      // Flash white to indicate deactivation
-      const flash = globalThis.document.createElement("div");
-      flash.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: white;
-        z-index: 10007;
-        pointer-events: none;
-        animation: eternal-flash 0.6s ease-out;
-      `;
-      globalThis.document.body.appendChild(flash);
-
-      setTimeout(() => {
-        flash.remove();
-      }, 500);
-
-      HAXStore.toast(_t(editorInstance, "cheatEternalDarknessDisabled"));
-      SuperDaemonInstance.merlinSpeak(
-        _t(editorInstance, "cheatEternalDarknessEndsSpeak"),
-      );
-      SuperDaemonInstance.close();
-      return;
-    }
-
-    // Activate eternal darkness
-    globalThis.eternalDarknessActive = true;
-    globalThis.eternalDarknessCleanup = globalThis.eternalDarknessCleanup || [];
-
-    const sanityEffects = [
-      "contentDisappear",
-      "fakeError",
-      "volumeMeter",
-      "cursorGlitch",
-      "buttonSwap",
-      "textScramble",
-      "mouseScaleDown",
-      "mouseScaleUp",
-      "zombieInvasion",
-    ];
-
-    // Create persistent sanity meter
-    const sanityMeter = globalThis.document.createElement("div");
-    sanityMeter.id = "sanity-meter";
-    sanityMeter.style.cssText = `
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      width: 200px;
-      height: 30px;
-      background: #333;
-      border: 2px solid #666;
-      border-radius: 15px;
-      overflow: hidden;
-      z-index: 10005;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Courier New', monospace;
-      color: white;
-      font-size: 12px;
-    `;
-
-    const sanityBar = globalThis.document.createElement("div");
-    sanityBar.style.cssText = `
-      position: absolute;
-      left: 0;
-      top: 0;
-      height: 100%;
-      width: 100%;
-      background: linear-gradient(90deg, #ff0000, #ff6600, #ffff00, #00ff00);
-      transition: width 0.3s ease;
-    `;
-
-    const sanityText = globalThis.document.createElement("div");
-    sanityText.textContent = "SANITY";
-    sanityText.style.cssText = `
-      position: relative;
-      z-index: 1;
-      font-weight: bold;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-    `;
-
-    sanityMeter.appendChild(sanityBar);
-    sanityMeter.appendChild(sanityText);
-    globalThis.document.body.appendChild(sanityMeter);
-
-    // Mouse-reactive sanity system
-    let currentSanityLevel = 100;
-    let effectInProgress = false;
-
-    const sanityMouseHandler = (e) => {
-      if (!globalThis.eternalDarknessActive) return;
-
-      // Calculate distance from center of screen
-      const centerX = globalThis.innerWidth / 2;
-      const centerY = globalThis.innerHeight / 2;
-      const distance = Math.sqrt(
-        Math.pow(e.clientX - centerX, 2) + Math.pow(e.clientY - centerY, 2),
-      );
-      const maxDistance = Math.sqrt(centerX * centerX + centerY * centerY);
-
-      // Calculate sanity based on distance from center (closer = more sanity)
-      const distanceRatio = Math.min(1, distance / maxDistance);
-      const targetSanity = Math.max(10, 100 - distanceRatio * 90); // Range: 10-100%
-
-      // Gradually adjust sanity toward target
-      if (currentSanityLevel < targetSanity) {
-        currentSanityLevel = Math.min(targetSanity, currentSanityLevel + 1);
-      } else if (currentSanityLevel > targetSanity) {
-        currentSanityLevel = Math.max(targetSanity, currentSanityLevel - 1);
-      }
-
-      // Update sanity bar
-      const currentSanityBar =
-        globalThis.document.querySelector("#sanity-meter div");
-      if (currentSanityBar) {
-        currentSanityBar.style.width = currentSanityLevel + "%";
-
-        // Change color based on sanity level
-        if (currentSanityLevel < 30) {
-          currentSanityBar.style.background = "#ff0000"; // Red when low
-        } else if (currentSanityLevel < 60) {
-          currentSanityBar.style.background =
-            "linear-gradient(90deg, #ff0000, #ff6600, #ffff00)"; // Red to yellow
-        } else {
-          currentSanityBar.style.background =
-            "linear-gradient(90deg, #ff0000, #ff6600, #ffff00, #00ff00)"; // Full spectrum
-        }
-      }
-
-      // Trigger effect if sanity drops below 30% and no effect in progress
-      if (currentSanityLevel < 30 && !effectInProgress) {
-        effectInProgress = true;
-        const randomEffect =
-          sanityEffects[Math.floor(Math.random() * sanityEffects.length)];
-        executeSanityEffect(randomEffect);
-
-        // Reset effect flag after effect completes (5 seconds + 3 second recovery)
-        setTimeout(() => {
-          effectInProgress = false;
-        }, 8000);
-      }
-    };
-
-    // Set up mouse tracking
-    globalThis.document.addEventListener("mousemove", sanityMouseHandler);
-    globalThis.eternalDarknessSanityHandler = sanityMouseHandler;
-    globalThis.eternalDarknessCleanup.push(() => {
-      globalThis.document.removeEventListener("mousemove", sanityMouseHandler);
-      globalThis.eternalDarknessSanityHandler = null;
-    });
-
-    function executeSanityEffect(effect) {
-      let effectCleanup = null;
-
-      switch (effect) {
-        case "contentDisappear": {
-          const editButtons = globalThis.document.querySelectorAll(
-            '[data-hax-ray="editButton"], button[aria-label*="edit"], .edit-btn',
-          );
-          const originalContent = [];
-
-          editButtons.forEach((btn, index) => {
-            const clickHandler = () => {
-              const pageContent = globalThis.document.querySelector(
-                'page-contents, haxcms-site-body, [data-hax-ray="body"], main',
-              );
-              if (pageContent) {
-                originalContent[index] = pageContent.innerHTML;
-                pageContent.innerHTML =
-                  '<div style="padding: 100px; text-align: center; color: #666; font-style: italic; font-size: 24px;">The content has vanished into the void...</div>';
-              }
-            };
-            btn.addEventListener("click", clickHandler, { once: true });
-          });
-
-          effectCleanup = () => {
-            const pageContent = globalThis.document.querySelector(
-              'page-contents, haxcms-site-body, [data-hax-ray="body"], main',
-            );
-            if (pageContent && originalContent.length > 0) {
-              pageContent.innerHTML =
-                originalContent[0] || pageContent.innerHTML;
-            }
-          };
-          break;
-        }
-
-        case "fakeError": {
-          const errorModal = globalThis.document.createElement("div");
-          errorModal.className = "eternal-darkness-error";
-          errorModal.style.cssText = `
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: #c0c0c0;
-            border: 2px outset #c0c0c0;
-            padding: 20px;
-            z-index: 10006;
-            font-family: 'MS Sans Serif', sans-serif;
-            box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
-            min-width: 300px;
-          `;
-
-          errorModal.innerHTML = `
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
-              <div style="font-size: 24px;">⚠️</div>
-              <div><strong>Cosmic Horror Alert</strong></div>
-            </div>
-            <div style="margin-bottom: 15px;">Your sanity has been compromised by an ancient entity. All data may be corrupted.</div>
-            <div style="text-align: right;">
-              <button style="padding: 4px 12px; background: #e0e0e0; border: 1px outset #c0c0c0; margin-right: 8px;">Save Anyway</button>
-              <button style="padding: 4px 12px; background: #e0e0e0; border: 1px outset #c0c0c0;">Cancel</button>
-            </div>
-          `;
-
-          errorModal.querySelectorAll("button").forEach((btn) => {
-            btn.addEventListener("click", () => {
-              errorModal.remove();
-            });
-          });
-
-          globalThis.document.body.appendChild(errorModal);
-          effectCleanup = () => {
-            if (errorModal.parentNode) errorModal.remove();
-          };
-          break;
-        }
-
-        case "volumeMeter": {
-          const volumeModal = globalThis.document.createElement("div");
-          volumeModal.className = "eternal-darkness-volume";
-          volumeModal.style.cssText = `
-            position: fixed;
-            top: 30%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0,0,0,0.9);
-            color: #ff0000;
-            padding: 25px;
-            border: 2px solid #ff0000;
-            border-radius: 10px;
-            z-index: 10006;
-            font-family: 'Courier New', monospace;
-            text-align: center;
-          `;
-
-          volumeModal.innerHTML = `
-            <div style="font-size: 18px; margin-bottom: 10px;">🔊 VOLUME CORRUPTED</div>
-            <div style="width: 250px; height: 25px; background: #330000; border: 1px solid #ff0000; position: relative; margin: 15px auto;">
-              <div id="fake-volume-bar" style="height: 100%; background: linear-gradient(90deg, #ff0000, #ff6666); width: 0%; transition: width 0.3s;"></div>
-            </div>
-            <div style="margin-top: 15px; font-size: 12px; color: #ff6666;">Unknown entity is manipulating audio levels</div>
-            <div style="margin-top: 10px; font-size: 10px; opacity: 0.7;">This cannot be happening...</div>
-          `;
-
-          globalThis.document.body.appendChild(volumeModal);
-
-          const volumeBar = volumeModal.querySelector("#fake-volume-bar");
-          const volumeInterval = setInterval(() => {
-            const volumeLevel = Math.floor(Math.random() * 100);
-            volumeBar.style.width = volumeLevel + "%";
-          }, 150);
-
-          effectCleanup = () => {
-            clearInterval(volumeInterval);
-            if (volumeModal.parentNode) volumeModal.remove();
-          };
-          globalThis.eternalDarknessCleanup.push(() =>
-            clearInterval(volumeInterval),
-          );
-          break;
-        }
-
-        case "cursorGlitch": {
-          const originalCursor = globalThis.document.body.style.cursor;
-          const cursors = [
-            "wait",
-            "not-allowed",
-            "crosshair",
-            "move",
-            "text",
-            "progress",
-            "grab",
-            "pointer",
-          ];
-          let cursorIndex = 0;
-
-          const cursorInterval = setInterval(() => {
-            globalThis.document.body.style.cursor =
-              cursors[cursorIndex % cursors.length];
-            cursorIndex++;
-          }, 200);
-
-          effectCleanup = () => {
-            clearInterval(cursorInterval);
-            globalThis.document.body.style.cursor = originalCursor;
-          };
-          globalThis.eternalDarknessCleanup.push(() =>
-            clearInterval(cursorInterval),
-          );
-          break;
-        }
-
-        case "zombieInvasion": {
-          const invasionContainer = globalThis.document.createElement("div");
-          invasionContainer.className = "eternal-darkness-invasion";
-          invasionContainer.style.cssText = `
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 10004;
-            overflow: hidden;
-          `;
-
-          // Create multiple zombies that grow over time
-          const zombies = [];
-          for (let i = 0; i < 20; i++) {
-            const zombie = globalThis.document.createElement("div");
-            zombie.textContent = "🧟‍♂️";
-            zombie.style.cssText = `
-              position: absolute;
-              left: ${Math.random() * 100}%;
-              top: ${Math.random() * 100}%;
-              font-size: 20px;
-              transition: font-size 0.6s ease-out;
-              animation: zombie-float ${Math.random() * 3 + 2}s ease-in-out infinite alternate;
-            `;
-            invasionContainer.appendChild(zombie);
-            zombies.push(zombie);
-          }
-
-          // Create giant boss creatures
-          const bosses = [
-            { emoji: "🦂", name: "scorpion" },
-            { emoji: "🦑", name: "squid" },
-            { emoji: "🧙‍♂️", name: "wizard" },
-            { emoji: "💀", name: "skeleton" },
-          ];
-
-          bosses.forEach((boss, index) => {
-            const bossElement = globalThis.document.createElement("div");
-            bossElement.textContent = boss.emoji;
-            bossElement.className = `boss-${boss.name}`;
-            bossElement.style.cssText = `
-              position: absolute;
-              left: ${index * 25 + 10}%;
-              top: ${Math.random() * 50 + 20}%;
-              font-size: 60px;
-              transition: font-size 1s ease-out, transform 0.3s ease-in-out;
-              animation: boss-menace ${Math.random() * 2 + 3}s ease-in-out infinite alternate;
-              filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.7));
-            `;
-            invasionContainer.appendChild(bossElement);
-          });
-
-          // Add invasion animation CSS
-          if (!globalThis.document.getElementById("invasion-animation")) {
-            const style = globalThis.document.createElement("style");
-            style.id = "invasion-animation";
-            style.textContent = `
-              @keyframes zombie-float {
-                0% {
-                  transform: translateY(0px) rotate(0deg);
-                }
-                100% {
-                  transform: translateY(-20px) rotate(5deg);
-                }
-              }
-              @keyframes boss-menace {
-                0% {
-                  transform: scale(1) rotate(-2deg);
-                  filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.7));
-                }
-                100% {
-                  transform: scale(1.1) rotate(2deg);
-                  filter: drop-shadow(0 0 20px rgba(255, 0, 0, 1));
-                }
-              }
-            `;
-            globalThis.document.head.appendChild(style);
-          }
-
-          globalThis.document.body.appendChild(invasionContainer);
-
-          // Grow zombies over time
-          let growthStage = 0;
-          const growthInterval = setInterval(() => {
-            growthStage++;
-            zombies.forEach((zombie) => {
-              const newSize = 20 + growthStage * 8;
-              zombie.style.fontSize = newSize + "px";
-
-              // Add more intense effects as they grow
-              if (growthStage > 5) {
-                zombie.style.filter = "hue-rotate(120deg) saturate(1.5)";
-              }
-              if (growthStage > 8) {
-                zombie.style.textShadow = "0 0 10px #ff0000";
-              }
-            });
-
-            // Grow bosses too
-            const bossElements =
-              invasionContainer.querySelectorAll('[class^="boss-"]');
-            bossElements.forEach((boss) => {
-              const newSize = 60 + growthStage * 10;
-              boss.style.fontSize = newSize + "px";
-
-              if (growthStage > 6) {
-                boss.style.filter =
-                  "drop-shadow(0 0 30px rgba(255, 0, 0, 1)) hue-rotate(30deg)";
-              }
-            });
-
-            // Stop growing after 12 stages
-            if (growthStage >= 12) {
-              clearInterval(growthInterval);
-            }
-          }, 400);
-
-          effectCleanup = () => {
-            clearInterval(growthInterval);
-            if (invasionContainer.parentNode) invasionContainer.remove();
-          };
-          globalThis.eternalDarknessCleanup.push(() =>
-            clearInterval(growthInterval),
-          );
-          break;
-        }
-
-        case "buttonSwap": {
-          const buttons = globalThis.document.querySelectorAll("button");
-          const originalButtonTexts = [];
-
-          buttons.forEach((btn, index) => {
-            if (btn.textContent.trim()) {
-              originalButtonTexts[index] = btn.textContent;
-              btn.textContent = btn.textContent.split("").reverse().join("");
-            }
-          });
-
-          effectCleanup = () => {
-            buttons.forEach((btn, index) => {
-              if (originalButtonTexts[index]) {
-                btn.textContent = originalButtonTexts[index];
-              }
-            });
-          };
-          break;
-        }
-
-        case "textScramble": {
-          const textElements = globalThis.document.querySelectorAll(
-            "p, h1, h2, h3, h4, h5, h6, span, div",
-          );
-          const originalElementTexts = [];
-
-          textElements.forEach((elem, index) => {
-            if (
-              elem.textContent.trim() &&
-              elem.children.length === 0 &&
-              elem.textContent.length < 100
-            ) {
-              originalElementTexts[index] = elem.textContent;
-              const scrambled = elem.textContent
-                .split("")
-                .map(() =>
-                  String.fromCharCode(33 + Math.floor(Math.random() * 94)),
-                )
-                .join("");
-              elem.textContent = scrambled;
-            }
-          });
-
-          effectCleanup = () => {
-            textElements.forEach((elem, index) => {
-              if (originalElementTexts[index]) {
-                elem.textContent = originalElementTexts[index];
-              }
-            });
-          };
-          break;
-        }
-
-        case "mouseScaleDown": {
-          const body = globalThis.document.body;
-          body.style.transformOrigin = "center center";
-          body.style.transition = "transform 0.3s ease-out";
-
-          const mouseDownHandler = (e) => {
-            const centerX = globalThis.innerWidth / 2;
-            const centerY = globalThis.innerHeight / 2;
-            const distance = Math.sqrt(
-              Math.pow(e.clientX - centerX, 2) +
-                Math.pow(e.clientY - centerY, 2),
-            );
-            const maxDistance = Math.sqrt(
-              centerX * centerX + centerY * centerY,
-            );
-            const scaleFactor = Math.max(
-              0.3,
-              1 - (distance / maxDistance) * 0.7,
-            );
-
-            body.style.transform = `scale(${scaleFactor})`;
-          };
-
-          globalThis.document.addEventListener("mousemove", mouseDownHandler);
-          globalThis.eternalDarknessMouseHandler = mouseDownHandler;
-
-          effectCleanup = () => {
-            globalThis.document.removeEventListener(
-              "mousemove",
-              mouseDownHandler,
-            );
-            body.style.transform = "";
-            body.style.transformOrigin = "";
-            body.style.transition = "";
-          };
-          break;
-        }
-
-        case "mouseScaleUp": {
-          const bodyUp = globalThis.document.body;
-          bodyUp.style.transformOrigin = "center center";
-          bodyUp.style.transition = "transform 0.3s ease-out";
-
-          const mouseUpHandler = (e) => {
-            const centerX = globalThis.innerWidth / 2;
-            const centerY = globalThis.innerHeight / 2;
-            const distance = Math.sqrt(
-              Math.pow(e.clientX - centerX, 2) +
-                Math.pow(e.clientY - centerY, 2),
-            );
-            const maxDistance = Math.sqrt(
-              centerX * centerX + centerY * centerY,
-            );
-            const scaleFactor = Math.min(3, 1 + (distance / maxDistance) * 2);
-
-            bodyUp.style.transform = `scale(${scaleFactor})`;
-          };
-
-          globalThis.document.addEventListener("mousemove", mouseUpHandler);
-          globalThis.eternalDarknessMouseHandler = mouseUpHandler;
-
-          effectCleanup = () => {
-            globalThis.document.removeEventListener(
-              "mousemove",
-              mouseUpHandler,
-            );
-            bodyUp.style.transform = "";
-            bodyUp.style.transformOrigin = "";
-            bodyUp.style.transition = "";
-          };
-          break;
-        }
-      }
-
-      // Store cleanup function
-      if (effectCleanup) {
-        globalThis.eternalDarknessCleanup.push(effectCleanup);
-      }
-
-      // After 5 seconds, show restoration sequence but keep effects going
-      setTimeout(() => {
-        if (!globalThis.eternalDarknessActive) return;
-
-        // Don't restore sanity meter automatically - let mouse position control it
-
-        // Screen flash effect
-        const flash = globalThis.document.createElement("div");
-        flash.style.cssText = `
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: white;
-          z-index: 10007;
-          pointer-events: none;
-          animation: eternal-flash 0.6s ease-out;
-        `;
-
-        // Add flash animation CSS
-        if (!globalThis.document.getElementById("eternal-darkness-animation")) {
-          const style = globalThis.document.createElement("style");
-          style.id = "eternal-darkness-animation";
-          style.textContent = `
-            @keyframes eternal-flash {
-              0% { opacity: 0; }
-              25% { opacity: 0.8; }
-              50% { opacity: 1; }
-              75% { opacity: 0.8; }
-              100% { opacity: 0; }
-            }
-          `;
-          globalThis.document.head.appendChild(style);
-        }
-
-        globalThis.document.body.appendChild(flash);
-
-        // Remove flash after animation
-        setTimeout(() => {
-          if (flash.parentNode) flash.remove();
-        }, 800);
-
-        // Play the signature voice line
-        SuperDaemonInstance.merlinSpeak(
-          _t(editorInstance, "cheatEternalDarknessSpeak"),
-        );
-
-        // Cleanup current effect but keep the system active
-        if (effectCleanup) {
-          effectCleanup();
-        }
-      }, 5000);
-    }
-
-    HAXStore.toast(_t(editorInstance, "cheatEternalDarknessActivated"));
-    store.playSound("success");
     SuperDaemonInstance.close();
   };
 

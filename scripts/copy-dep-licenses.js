@@ -213,6 +213,7 @@ function main() {
   let missing = 0;
   const missingNames = [];
   let noLicenseFile = 0;
+  const noLicenseNames = [];
 
   for (const rel of pkgs) {
     const buildPath = path.relative(buildRoot, path.join(builtDir, rel));
@@ -236,6 +237,7 @@ function main() {
 
     if (!attrFiles.length) {
       noLicenseFile++;
+      noLicenseNames.push(rel + (spdx ? " (" + spdx + ")" : ""));
       records.push({
         rel: rel,
         buildPath: buildPath,
@@ -258,6 +260,7 @@ function main() {
 
     if (!text) {
       noLicenseFile++;
+      noLicenseNames.push(rel + (spdx ? " (" + spdx + ")" : ""));
       records.push({
         rel: rel,
         buildPath: buildPath,
@@ -302,7 +305,11 @@ function main() {
   console.log("copy-dep-licenses: scanned " + pkgs.length + " built packages");
   console.log("  consolidated into: " + outFile);
   console.log("  unique license texts: " + textOrder.length);
-  console.log("  packages without a license file: " + noLicenseFile);
+  console.log(
+    "  packages without a license file: " +
+      noLicenseFile +
+      (noLicenseFile > 0 ? " -> " + noLicenseNames.join(", ") : ""),
+  );
   console.log(
     "  missing source package: " +
       missing +

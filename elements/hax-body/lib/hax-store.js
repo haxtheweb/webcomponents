@@ -3850,6 +3850,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.method = "GET";
     this.haxSelectedText = "";
     this.__winEvents = {
+      "super-daemon-close": "_superDaemonClosed",
       "hax-super-daemon-insert-tag": "_superDaemonInsert",
       "hax-register-properties": "_haxStoreRegisterProperties",
       onbeforeunload: "_onBeforeUnload",
@@ -4377,6 +4378,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         SuperDaemonInstance.activeRange,
       );
       globalThis.document.execCommand("insertHTML", false, text);
+      this.__afterInlineInsert(editable || this.activeNode);
       // Mark as inserted so close() does NOT restore the stripped token
       // (the emoji/symbol replaced it). Without this, close() would re-insert
       // ":: " on top of the just-inserted emoji.
@@ -4416,14 +4418,66 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         SuperDaemonInstance.activeRange,
       );
       globalThis.document.execCommand("insertHTML", false, text);
+      this.__afterInlineInsert(editable);
       return;
     }
     setTimeout(() => {
-      if (this.activeNode && this.activeNode.textContent === "") {
-        this.activeNode.textContent = text;
+      const block = this.activeNode;
+      if (block && block.textContent === "") {
+        block.textContent = text;
+        // replacing the contents drops the caret at offset 0, before the
+        // insert; put it after so typing just carries on
+        this.__caretToEnd(block);
       } else {
         globalThis.document.execCommand("insertHTML", false, text);
       }
+      this.__afterInlineInsert(block);
+    }, 0);
+  }
+  /**
+   * After Merlin puts text into a block (an emoji or symbol, or what was
+   * typed coming back on cancel), clear the block's empty-line hint right
+   * away rather than waiting on a mutation observer that may not see it
+   * @param {Element} block
+   */
+  __afterInlineInsert(block) {
+    let el = block;
+    if (el && el.nodeType === globalThis.Node.TEXT_NODE) {
+      el = el.parentElement;
+    }
+    if (
+      el &&
+      this.activeHaxBody &&
+      typeof this.activeHaxBody.__syncDataHaxEmpty === "function"
+    ) {
+      this.activeHaxBody.__syncDataHaxEmpty(el);
+    }
+  }
+  /**
+   * Collapse the selection to the end of a block's contents
+   * @param {Node} node
+   */
+  __caretToEnd(node) {
+    const sel = globalThis.getSelection ? globalThis.getSelection() : null;
+    if (!sel || !node) {
+      return;
+    }
+    const range = globalThis.document.createRange();
+    range.selectNodeContents(node);
+    range.collapse(false);
+    sel.removeAllRanges();
+    sel.addRange(range);
+  }
+
+  /**
+   * Merlin closed (Escape, click away or a result): its cancel may have
+   * put typed text back into the block, so bring the block's empty-line
+   * hint up to date once that has landed
+   */
+  _superDaemonClosed(_e) {
+    const block = this.activeNode;
+    setTimeout(() => {
+      this.__afterInlineInsert(block);
     }, 0);
   }
 
@@ -4431,16 +4485,45 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     globalThis.open(link, "_blank");
   }
 
+  /**
+   * The new-issue link (unified haxtheweb/issues queue) for a report, with
+   * the title and body prefilled
+   * @param {string} title
+   * @param {string} tags comma separated labels
+   * @param {string} body
+   * @returns {string}
+   */
+  _haxStoreContributeUrl(title, tags, body) {
+    return `https://github.com/haxtheweb/issues/issues/new?assignees=&labels=${encodeURIComponent(
+      tags || "",
+    )}&template=issue-report.md&title=${encodeURIComponent(
+      title,
+    )}&body=${encodeURIComponent(body)}`;
+  }
+  /**
+   * The new-issue link for a Merlin command request. Synchronous so it can
+   * be a real href (keyboard reachable, never caught by pop-up blocking).
+   * @param {string} tags comma separated labels
+   * @param {string} daemonTerm what was searched in Merlin
+   * @returns {string}
+   */
+  merlinSuggestionUrl(tags, daemonTerm = null) {
+    return this._haxStoreContributeUrl(
+      "[merlin] New command request from HAX daemon",
+      tags,
+      `Location: ${globalThis.location.href}
+Merlin command: ${daemonTerm}
+What did you want merlin to do?
+`,
+    );
+  }
   async _haxStoreContribute(type, tags, daemonTerm = null) {
     const reportType = type || "bug";
     let body = "";
     let title;
     if (reportType == "merlin") {
-      title = `[${reportType}] New command request from HAX daemon`;
-      body = `Location: ${globalThis.location.href}
-Merlin command: ${daemonTerm}
-What did you want merlin to do?
-`;
+      globalThis.open(this.merlinSuggestionUrl(tags, daemonTerm), "_blank");
+      return;
     } else {
       title = `[${reportType}] User report from HAX daemon`;
       /* eslint-disable baseline-js/use-baseline -- Chromium-only fields; each is guarded and omitted or shown as ? when absent */
@@ -4476,12 +4559,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
 `;
       }
     }
-    globalThis.open(
-      `https://github.com/haxtheweb/issues/issues/new?assignees=&labels=${tags}&template=issue-report.md&title=${title}&body=${encodeURIComponent(
-        body,
-      )}`,
-      "_blank",
-    );
+    globalThis.open(this._haxStoreContributeUrl(title, tags, body), "_blank");
   }
 
   /**

@@ -307,7 +307,7 @@ function main() {
     const next = {};
     for (const k of orderedKeys) {
       if (k in current) next[k] = current[k];
-      else next[k] = isReference ? nextEn[k] : canonical.get(k) ?? nextEn[k];
+      else next[k] = isReference ? nextEn[k] : (canonical.get(k) ?? nextEn[k]);
     }
 
     const removed = Object.keys(current).filter((k) => !(k in next)).length;

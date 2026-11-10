@@ -75,17 +75,19 @@ jobs:
           if-no-files-found: ignore
           retention-days: 30
       - name: Prettier format check
-        # Advisory only, like ESLint: formatting drift should never stop the
-        # tests from running. The unquoted glob only reaches one directory
+        # Advisory only: formatting drift should never stop the tests from
+        # running. The unquoted glob only reaches one directory
         # deep (effectively scripts/), so it was failing builds over build
         # scripts while checking none of elements/. Formatting is enforced
         # where it matters: lint-staged on commit and `yarn precheck` on PRs.
         continue-on-error: true
         run: npx prettier --check **/*.{js,json}
       - name: ESLint
-        # Advisory only: lint runs after the real tests and never fails the
-        # build (findings still show as annotations / in the log).
-        continue-on-error: true
+        # Blocking: an ESLint error fails the build, so lint failures feed the
+        # same fix loop as test failures (haxtheweb/issues#3262). It runs after
+        # the tests so a lint error never hides test results. Warnings stay
+        # warnings and do not fail. Pre-existing `==` comparisons are recorded
+        # in eslint-suppressions.json and do not count as errors.
         run: yarn lint
       - name: Validate component gallery build
         run: yarn build-gallery

@@ -47,10 +47,7 @@ import {
 import { styleMap } from "lit/directives/style-map.js";
 import "@haxtheweb/simple-modal/simple-modal.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
-import "./haxcms-site-insights.js"; // Legacy element tag name retained; it now renders Reports UI.
 import "./haxcms-darkmode-toggle.js";
-import "../ui-components/site/site-remote-content.js";
-import "@haxtheweb/page-flag/page-flag.js";
 import { SiteView } from "../ui-components/magic/site-view.js";
 import { haxcmsApiMessage } from "./utils/HAXCMSApiMessages.js";
 import { urlHostMatches } from "./utils/urlHost.js";
@@ -2299,13 +2296,16 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         "Expecting to see an option Merlin didn't provide?",
       makeASuggestionToImproveResults: "Make a suggestion to improve results",
       createAPage: "Create a page",
-      typePageTitleToCreatePage: "Type page title to create page",
-      createNewPage: "Create New Page",
+      pageTitlePlaceholder: "Page title",
+      createNewPageTypeToName: "Create New Page (type a title to name it)",
       newPageCapitalized: "New Page",
       createTitleWithView: "Create {title} with view",
       createTitle: "Create {title}",
+      createTemplate: "Create {template}",
       createTemplateNamedTitle: "Create {template} named {title}",
-      duplicateAsTitle: "Duplicate as {title}",
+      duplicateCurrentPage: "Duplicate current page",
+      duplicateCurrentPageRenameTo: "Duplicate current page, rename to {title}",
+      copyOfTitle: "{title} (copy)",
       errorMessage: "Error: {error}",
       movePage: "Move Page",
       typeToFilterPages: "Type to filter pages",
@@ -2387,10 +2387,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       changeSiteSettings: "Change site settings",
       dontShowThisWelcomeAgain: "Don't show this welcome again",
       showGettingStartedTasks: "Show getting started tasks",
-      previewAudienceMode: "Preview audience mode",
-      changePlatformAudienceDescription:
-        "Change platform audience just for the current browsing session",
-      haxLabs: "HAX Labs",
       unlockAllThemes: "Unlock all themes",
       pageDataFormats: "Page data formats",
       switchToAnotherSite: "Switch to another site",
@@ -2398,8 +2394,24 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       exportThisPage: "Export this page",
       exportThisSite: "Export this site",
       preview: "Preview",
+      visitorAndDevicePreview: "Visitor and Device Preview",
       previewDescription:
         "See this site as a visitor would, on the device you pick, without logging out",
+      uxStudy: "UX study recording",
+      uxStudyStart: "Start UX study recording",
+      uxStudyStartFor: "Start UX study for {participant}",
+      uxStudyStartDescription:
+        "Type a participant code (no names) before choosing, then use the site as normal",
+      uxStudyMarkAs: "Mark task: {label}",
+      uxStudyMarkHint: "Type a task name to mark it",
+      uxStudyRecording: "Recording UX study",
+      uxStudyMark: "Mark task",
+      uxStudyMarkPrompt: "Task or note",
+      uxStudyStopAndExport: "Stop and export",
+      uxStudyStarted:
+        "UX study recording started. Nothing leaves this browser until you export it.",
+      uxStudyExported: "UX study saved as {file}",
+      uxStudyNotRecording: "No UX study is recording",
       renameThisPage: "Rename this page",
       updatePageDescription: "Update page description",
       updatePageUrlSlug: "Update page URL (slug)",
@@ -2470,6 +2482,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       cheatCodesUnlocked:
         "🎮 Cheat codes unlocked! Check Merlin for new programs.",
       failedToUnlockCheatCodes: "🎮 Failed to unlock cheat codes",
+      cheatCodes: "Cheat codes (↑↑↓↓←→←→ B A)",
+      cheatCodesDescription:
+        "Unlock silly extras. Or type up up down down left right left right B A anywhere, even with Merlin open.",
       platformSettings: "Platform settings",
       selectFileEllipsis: "Select file..",
     };
@@ -2508,20 +2523,21 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       return true;
     };
     // nothing message so we can suggest a link to make a suggestion
-    SuperDaemonInstance.noResultsSlot = () => {
+    // a real link to a prefilled issue in the unified queue, so it works
+    // by click, middle click and keyboard, and pop-up blocking can't eat it
+    SuperDaemonInstance.noResultsSlot = (searchTerm) => {
       return html`<div class="no-results">
           ${this.t.expectingToSeeAnOptionMerlinDidntProvide}
         </div>
         <a
-          @click="${(_e) => {
-            HAXStore._haxStoreContribute(
-              "merlin",
-              "POP,enhancement",
-              SuperDaemonInstance.commandContext +
-                " " +
-                SuperDaemonInstance.value,
-            );
-          }}"
+          href="${HAXStore.merlinSuggestionUrl(
+            "POP,enhancement",
+            SuperDaemonInstance.commandContext +
+              " " +
+              (searchTerm || SuperDaemonInstance.value || ""),
+          )}"
+          target="_blank"
+          rel="noopener noreferrer"
           >${this.t.makeASuggestionToImproveResults}</a
         >`;
     };
@@ -2534,7 +2550,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       i18n: {
         context: this,
         title: "createAPage",
-        "value.placeholder": "typePageTitleToCreatePage",
+        "value.placeholder": "pageTitlePlaceholder",
       },
       title: this.t.createAPage,
       icon: "hax:add-page",
@@ -2550,7 +2566,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       value: {
         name: "create-page",
         machineName: "create-page",
-        placeholder: this.t.typePageTitleToCreatePage,
+        placeholder: this.t.pageTitlePlaceholder,
         program: async (input, values) => {
           // Get reference to site editor UI regardless of how program was accessed
           const siteEditorUI =
@@ -2560,40 +2576,26 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           const templateContent =
             values && values.templateContent ? values.templateContent : null;
 
-          // If no input provided, show default page creation option to match prior UX
-          if (!input || input.trim() === "") {
-            return [
-              {
-                title: this.t.createNewPage,
-                icon: "hax:add-page",
-                tags: ["page", "blank", "create"],
-                value: {
-                  target: siteEditorUI,
-                  method: "createPageWithTitle",
-                  args: [
-                    this.t.newPageCapitalized,
-                    createType,
-                    templateContent,
-                  ],
-                },
-                eventName: "super-daemon-element-method",
-                path: "CMS/action/create/page",
-              },
-            ];
-          }
-
-          const title = input.trim();
-
+          // Every option shows from the start, empty field or not, so the
+          // list never changes shape as you type: typing only names them.
+          // Empty, each option says it takes the title you type; with a
+          // title, each option says what it will be called.
+          const typed = input ? input.trim() : "";
+          const title = typed || this.t.newPageCapitalized;
           try {
             // Get available page templates
             const pageTemplates = await siteEditorUI.getPageTemplates();
             const results = [];
 
-            // Add blank page option first
+            // blank page first
+            let blankTitle = this.t.createNewPageTypeToName;
+            if (typed) {
+              blankTitle = templateContent
+                ? this.t.createTitleWithView.replace("{title}", () => typed)
+                : this.t.createTitle.replace("{title}", () => typed);
+            }
             results.push({
-              title: templateContent
-                ? this.t.createTitleWithView.replace("{title}", () => title)
-                : this.t.createTitle.replace("{title}", () => title),
+              title: blankTitle,
               icon: "hax:add-page",
               tags: ["page", "blank", "create"],
               value: {
@@ -2609,9 +2611,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             if (pageTemplates && pageTemplates.length > 0) {
               pageTemplates.forEach((template, _index) => {
                 results.push({
-                  title: this.t.createTemplateNamedTitle
-                    .replace("{template}", () => template.name)
-                    .replace("{title}", () => title),
+                  title: typed
+                    ? this.t.createTemplateNamedTitle
+                        .replace("{template}", () => template.name)
+                        .replace("{title}", () => typed)
+                    : this.t.createTemplate.replace(
+                        "{template}",
+                        () => template.name,
+                      ),
                   icon: "hax:templates",
                   tags: ["template", "page", "create"],
                   value: {
@@ -2629,16 +2636,29 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               });
             }
 
-            // Add duplicate current page option
+            // duplicate the current page, renamed to the typed title (or
+            // kept as a copy of the current title when nothing is typed)
             if (currentItem) {
               results.push({
-                title: this.t.duplicateAsTitle.replace("{title}", () => title),
+                title: typed
+                  ? this.t.duplicateCurrentPageRenameTo.replace(
+                      "{title}",
+                      () => typed,
+                    )
+                  : this.t.duplicateCurrentPage,
                 icon: "hax:duplicate",
                 tags: ["page", "duplicate", "create"],
                 value: {
                   target: siteEditorUI,
                   method: "createPageWithTitle",
-                  args: [title, "duplicate"],
+                  args: [
+                    typed ||
+                      this.t.copyOfTitle.replace(
+                        "{title}",
+                        () => currentItem.title,
+                      ),
+                    "duplicate",
+                  ],
                 },
                 eventName: "super-daemon-element-method",
                 path: "CMS/action/create/page/duplicate",
@@ -3870,6 +3890,24 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
   }
   /**
+   * Open the user menu with its first item focused, the way Ctrl+Shift+2
+   * opens the site settings quick links.
+   */
+  _openUserMenuFromKeyboard() {
+    this.__userMenuHoverOpened = false;
+    this.userMenuOpen = true;
+    this.siteMenuOpen = false;
+    store.playSound("click");
+    this.updateComplete.then(() => {
+      const menu = this.shadowRoot.querySelector("#user-menu");
+      if (menu && menu.updateComplete) {
+        menu.updateComplete.then(() => {
+          menu._focusFirstItem(menu._getMenuItems());
+        });
+      }
+    });
+  }
+  /**
    * Hover opens a top bar menu (house quick links, user menu) for mouse
    * pointers; leaving closes it after a short grace period so the pointer
    * can travel into the menu. Touch and pen keep using tap.
@@ -4019,11 +4057,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               slot="main-menu"
               name="haxcms-site-editor-ui-main-menu"
             ></slot>
+            <!-- the row's own button is the one tab stop (it follows this
+                 link on click / Enter); the link itself stays out of the
+                 tab order so the item isn't focused twice -->
             <a
               class="mysiteslink"
               href="${this.backLink}"
               slot="main-menu"
               part="mysiteslink"
+              tabindex="-1"
             >
               <app-hax-user-menu-button
                 icon="hax:world-traveler-plain"
@@ -4304,6 +4346,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               data-event="super-daemon"
               mini
               wand
+              show-shortcut
               droppable-type="${this.activeType}"
               ?droppable="${this.activeDrag}"
             >
@@ -4751,6 +4794,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
+    this._resumeUXStudy();
     this.shadowRoot
       .querySelectorAll("[data-super-daemon-path]")
       .forEach((item) => {
@@ -5342,66 +5386,23 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         },
       },
     });
-    // change platform audience, only load if the site supports platformConfigs
+    // the Konami code, listed with the developer commands so people know
+    // the silly extras exist; running it does what typing the code does
     SuperDaemonInstance.defineOption({
-      i18n: {
-        context: this,
-        title: "previewAudienceMode",
-        "value.name": "previewAudienceMode",
-      },
-      title: this.t.previewAudienceMode,
-      icon: "lrn:people",
-      tags: ["Developer", "skeleton"],
-      eventName: "super-daemon-run-program",
-      path: ">settings/platformAudience",
-      context: [">"],
-      more: html`<span>${this.t.changePlatformAudienceDescription}</span>`,
-      voice: "change audience (temporarily)",
-      value: {
-        name: this.t.previewAudienceMode,
-        context: ">",
-        program: async (input, _values) => {
-          let results = [];
-          // Load in the supported audiences in platformConfig
-          const audienceOptions = {
-            novice: "lrn:book",
-            expert: "lrn:teacher",
-          };
-
-          Object.keys(audienceOptions).forEach((key) => {
-            if (input == "" || key.includes(input.toLowerCase())) {
-              results.push({
-                title: key,
-                icon: audienceOptions[key],
-                tags: ["skeleton"],
-                value: {
-                  target: globalThis.HAXCMS,
-                  method: "setPlatformAudience",
-                  args: [key],
-                },
-                eventName: "super-daemon-element-method",
-                context: [">", ">settings/platformAudience/" + key],
-                path: ">settings/theme/" + key,
-              });
-            }
-          });
-
-          return results;
-        },
-      },
-    });
-
-    SuperDaemonInstance.defineOption({
-      i18n: { context: this, title: "haxLabs" },
-      title: this.t.haxLabs,
-      icon: "hax:hax2022",
-      tags: ["Developer", "labs", "experiments"],
+      i18n: { context: this, title: "cheatCodes" },
+      title: this.t.cheatCodes,
+      icon: "hardware:videogame-asset",
+      tags: ["Developer", "cheat", "konami", "secret", "fun", "silly"],
       eventName: "super-daemon-element-method",
-      path: ">hax/labs",
+      path: ">developer/cheat-codes",
       context: [">"],
+      // always the very last developer command; the cheats it unlocks sit
+      // just above it (haxcms-cheat-codes.js)
+      priority: 1000000,
+      more: html`<span>${this.t.cheatCodesDescription}</span>`,
       value: {
         target: this,
-        method: "enableLabExperiments",
+        method: "_konamiCodeActivated",
         args: [],
       },
     });
@@ -5456,11 +5457,47 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       },
     });
     SuperDaemonInstance.defineOption({
-      i18n: { context: this, title: "preview" },
-      title: this.t.preview,
-      icon: "visibility",
+      i18n: {
+        context: this,
+        title: "uxStudy",
+        "value.name": "uxStudy",
+      },
+      title: this.t.uxStudy,
+      icon: "av:fiber-manual-record",
       tags: [
         "Developer",
+        "ux",
+        "study",
+        "usability",
+        "record",
+        "recording",
+        "heatmap",
+        "research",
+      ],
+      eventName: "super-daemon-run-program",
+      path: ">developer/ux-study",
+      context: [">"],
+      voice: "ux study",
+      value: {
+        name: this.t.uxStudy,
+        machineName: "ux-study",
+        context: ">",
+        program: async (input, values) => {
+          const { createUXStudyProgram } =
+            await import("./utils/UXStudyRecorder.js");
+          return await createUXStudyProgram(this)(input, values);
+        },
+      },
+    });
+    // not a developer tool: the same Preview as the top bar button, listed
+    // with the everyday actions and showing its Ctrl⇧8 shortcut
+    SuperDaemonInstance.defineOption({
+      i18n: { context: this, title: "visitorAndDevicePreview" },
+      title: this.t.visitorAndDevicePreview,
+      icon: "visibility",
+      shortcut: "cms-preview",
+      tags: [
+        "CMS",
         "view",
         "read-only",
         "preview",
@@ -5476,8 +5513,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         "tablet",
       ],
       eventName: "super-daemon-element-method",
-      path: ">settings/preview",
-      context: [">"],
+      path: "CMS/action/preview",
+      context: ["CMS"],
       more: html`<span>${this.t.previewDescription}</span>`,
       voice: "preview",
       value: {
@@ -6078,13 +6115,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.checkAndTriggerWelcomeProgram();
   }
   // enable lab experiments
-  enableLabExperiments() {
-    // lecture player
-    import("@haxtheweb/video-player/lib/lecture-player.js");
-    // AI chat bot
-    import("@haxtheweb/haxcms-elements/lib/ui-components/magic/site-ai-chat.js");
-  }
-
   unlockAllThemes() {
     store.showAllThemes = true;
     globalThis.dispatchEvent(
@@ -6223,6 +6253,84 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
   goToLocation(location) {
     globalThis.location = location;
+  }
+  /**
+   * UX study recording (Merlin >developer/ux-study). Closing Merlin uses
+   * _closeMerlin() above, which also resets the phone bar.
+   */
+  _uxStudyStrings() {
+    return {
+      uxStudyRecording: this.t.uxStudyRecording,
+      uxStudyMark: this.t.uxStudyMark,
+      uxStudyMarkPrompt: this.t.uxStudyMarkPrompt,
+      uxStudyStopAndExport: this.t.uxStudyStopAndExport,
+    };
+  }
+  async startUXStudy(participant = "") {
+    const { UXStudyRecorder } = await import("./utils/UXStudyRecorder.js");
+    const manifest = toJS(store.manifest);
+    let siteName = "";
+    let theme = "";
+    if (manifest && manifest.metadata) {
+      if (manifest.metadata.site && manifest.metadata.site.name) {
+        siteName = manifest.metadata.site.name;
+      }
+      if (manifest.metadata.theme && manifest.metadata.theme.element) {
+        theme = manifest.metadata.theme.element;
+      }
+    }
+    UXStudyRecorder.requestAvailability().start({
+      participant: participant,
+      siteName: siteName,
+      theme: theme,
+      t: this._uxStudyStrings(),
+    });
+    this._closeMerlin();
+    HAXStore.toast(this.t.uxStudyStarted, 4000, "fit-bottom");
+  }
+  async markUXStudy(label = "") {
+    const { UXStudyRecorder } = await import("./utils/UXStudyRecorder.js");
+    const recorder = UXStudyRecorder.requestAvailability();
+    if (!recorder.active) {
+      HAXStore.toast(this.t.uxStudyNotRecording, 3000, "fit-bottom");
+      return;
+    }
+    if (label) {
+      recorder.mark(label);
+      this._closeMerlin();
+    }
+  }
+  async stopUXStudy() {
+    const { UXStudyRecorder } = await import("./utils/UXStudyRecorder.js");
+    const result = UXStudyRecorder.requestAvailability().stopAndExport();
+    this._closeMerlin();
+    if (result) {
+      HAXStore.toast(
+        this.t.uxStudyExported.replace("{file}", () => result.fileName),
+        4000,
+        "fit-bottom",
+      );
+    } else {
+      HAXStore.toast(this.t.uxStudyNotRecording, 3000, "fit-bottom");
+    }
+  }
+  /**
+   * A full page reload mid-study resumes the session kept in sessionStorage
+   */
+  async _resumeUXStudy() {
+    let pending = false;
+    try {
+      pending = !!globalThis.sessionStorage.getItem("haxcms-ux-study-session");
+    } catch {
+      pending = false;
+    }
+    if (pending) {
+      const { UXStudyRecorder } = await import("./utils/UXStudyRecorder.js");
+      UXStudyRecorder.requestAvailability().start({
+        resume: true,
+        t: this._uxStudyStrings(),
+      });
+    }
   }
   openPageAsDataFormat(format) {
     const supportedFormats = ["json", "yaml", "md", "xml"];
@@ -7240,10 +7348,24 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       ctrl: true,
       shift: true,
       callback: () => {
-        const userMenuButton = this.shadowRoot.querySelector("#menubtn");
-        if (userMenuButton) {
-          this.toggleMenu();
+        // same focus dynamics as Ctrl+Shift+2: open with the first item
+        // focused so arrows / Tab / Enter work straight away; pressing it
+        // again while open closes it and returns focus to the avatar
+        if (this.userMenuOpen) {
+          this.userMenuOpen = false;
+          const toggle = this.shadowRoot.querySelector(
+            "app-hax-user-menu-toggle",
+          );
+          const toggleButton =
+            toggle && toggle.shadowRoot
+              ? toggle.shadowRoot.querySelector("button")
+              : null;
+          if (toggleButton) {
+            toggleButton.focus();
+          }
+          return;
         }
+        this._openUserMenuFromKeyboard();
       },
       condition: () => store.isLoggedIn,
       description: this.t.shortcutOpenUserMenu,
@@ -7340,6 +7462,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Ctrl+Shift+5 - Configure panel (edit) OR Page actions (view)
     HAXCMSKeyboardShortcutsInstance.register({
+      // the page actions menu (page-break) shows this on its button
+      id: "cms-page-actions",
       key: "5",
       ctrl: true,
       shift: true,
@@ -8955,78 +9079,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.dispatchEvent(evt);
   }
   /**
-   * Toggle lock status
-   */
-  _toggleLockStatus(_e) {
-    const activeItem = toJS(store.activeItem);
-    if (!activeItem || !activeItem.id) return;
-
-    const isLocked = activeItem.metadata && activeItem.metadata.locked;
-    store.playSound("click");
-    globalThis.dispatchEvent(
-      new CustomEvent("haxcms-save-node-details", {
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-        detail: {
-          id: activeItem.id,
-          operation: "setLocked",
-          locked: !isLocked,
-        },
-      }),
-    );
-  }
-  /**
-   * Duplicate page prompt
-   */
-  async _duplicatePagePrompt(_e) {
-    const activeItem = toJS(store.activeItem);
-    if (!activeItem || !activeItem.id) return;
-
-    const newTitle = await adminPrompt({
-      title: this.t.duplicatePageTitle,
-      message: this.t.enterTitleForDuplicatedPage,
-      label: this.t.newPageTitle,
-      value: this.t.titleCopy.replace("{title}", () => activeItem.title),
-      required: true,
-      confirmLabel: this.t.duplicateAction,
-      cancelLabel: this.t.cancel,
-    });
-    if (newTitle && newTitle.trim() !== "") {
-      store.playSound("click");
-      const SuperDaemonInstance =
-        globalThis.SuperDaemonManager.requestAvailability();
-      // Use the create-page program with duplicate option
-      SuperDaemonInstance.waveWand([
-        newTitle,
-        "/",
-        {},
-        "create-page",
-        this.t.createAPage,
-      ]);
-    }
-  }
-  /**
-   * Move page program from menu
-   */
-  _movePageProgramFromMenu(_e) {
-    const item = toJS(store.activeItem);
-    if (!item || !item.id) {
-      return;
-    }
-    const SuperDaemonInstance =
-      globalThis.SuperDaemonManager.requestAvailability();
-    store.playSound("click");
-    SuperDaemonInstance.waveWand([
-      "",
-      "/",
-      { pageId: item.id },
-      "move-page",
-      this.t.movePage,
-      "",
-    ]);
-  }
-  /**
    * Toggle locked status
    */
   _toggleLockedStatus(_e) {
@@ -9046,30 +9098,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           id: item.id,
           operation: "setLocked",
           locked: newStatus,
-        },
-      }),
-    );
-  }
-  /**
-   * Toggle published status
-   */
-  _togglePublishedStatus(_e) {
-    const item = toJS(store.activeItem);
-    if (!item || !item.id) {
-      return;
-    }
-    const currentStatus = item.metadata && item.metadata.published !== false;
-    const newStatus = !currentStatus;
-    store.playSound("click");
-    globalThis.dispatchEvent(
-      new CustomEvent("haxcms-save-node-details", {
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-        detail: {
-          id: item.id,
-          operation: "setPublished",
-          published: newStatus,
         },
       }),
     );
@@ -9444,55 +9472,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     proceed();
     return true;
   }
-  _siteSettingsDashboardAction(e) {
-    const action = e && e.detail ? e.detail.action : null;
-    setTimeout(() => {
-      switch (action) {
-        case "style-guide":
-          this._styleGuideButtonTap(e);
-          break;
-        case "reports":
-          this._reportsButtonTap(e, true);
-          break;
-        case "outline":
-          this._outlineButtonTap(e, true, "Structure");
-          break;
-        case "site-settings":
-          this._openDetailsAdmin(true, "Details");
-          break;
-        case "theme-settings":
-          this._openAppearanceSettings(true, "Appearance");
-          break;
-        case "seo-settings":
-          this._openSeoAdmin(true, "seo");
-          break;
-        case "blocks":
-          this._openAllowedBlocksSettings(true, "Blocks");
-          break;
-        case "editor":
-          this._openEditorSettings(true, "Editor");
-          break;
-        case "about":
-          this._openAboutAdmin(true, this.t.about);
-          break;
-        case "platform":
-          this._openPlatformSettings(true, "Features");
-          break;
-        case "content-admin":
-          this._openContentAdmin(true);
-          break;
-        case "files-admin":
-          this._openFilesAdmin(true);
-          break;
-        case "views-admin":
-          this._openViewsAdmin(true);
-          break;
-        case "import-export":
-          this._openImportExportDashboard(true, "Import / Export");
-          break;
-      }
-    }, 0);
-  }
   _importExportDashboardAction(e) {
     const detail = e && e.detail ? e.detail : {};
     const action = detail && detail.action ? `${detail.action}` : "";
@@ -9777,19 +9756,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   /**
    * Note changes to the outline / structure of the page's items
    */
-  _outlineEditModeChanged(newValue, _oldValue) {
-    this.dispatchEvent(
-      new CustomEvent("haxcms-outline-edit-mode-changed", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: newValue,
-      }),
-    );
-  }
-  /**
-   * Note changes to the outline / structure of the page's items
-   */
   _manifestEditModeChanged(newValue, _oldValue) {
     this.dispatchEvent(
       new CustomEvent("haxcms-manifest-edit-mode-changed", {
@@ -9835,7 +9801,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             SuperDaemonInstance.allItems,
             SuperDaemonInstance.context,
           );
-          SuperDaemonInstance.runProgram("", "*");
+          // cheats live only in the developer (>) commands, so open there
+          // already filtered to them
+          SuperDaemonInstance.runProgram("cheat", ">");
         }, 100);
       } catch (error) {
         console.error("🎮 Failed to load cheat codes:", error);

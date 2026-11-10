@@ -80,8 +80,6 @@ export class PageBreak extends IntersectionObserverMixin(
       unlock: "Unlock",
       publish: "Publish",
       unpublish: "Unpublish",
-      savePage: "Save page",
-      cancel: "Cancel",
       delete: "Delete",
       editTitle: "Edit title",
       editIcon: "Edit Icon",
@@ -288,10 +286,13 @@ export class PageBreak extends IntersectionObserverMixin(
   }
   async _ensureEditingUI() {
     if (!this._editingUILoaded && store.platformAllows("pageBreak")) {
-      await Promise.all([
+      const [, menuModule, utilsModule] = await Promise.all([
         import("@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js"),
         import("@haxtheweb/simple-fields/lib/simple-context-menu.js"),
+        import("@haxtheweb/utils/utils.js"),
       ]);
+      this.__contextMenuShortcut = menuModule.contextMenuShortcut;
+      this.__shortcutManager = utilsModule.KeyboardShortcutManagerInstance;
       this._editingUILoaded = true;
       this.requestUpdate();
     }
@@ -822,6 +823,9 @@ export class PageBreak extends IntersectionObserverMixin(
         ? this.itemId.trim()
         : "";
     const pagePath = pageAnchorId ? `#${pageAnchorId}` : this.slug;
+    // Ctrl⇧5 opens this menu and Ctrl⇧E edits the page (view mode)
+    const actionsShortcut = this._shortcut("cms-page-actions");
+    const editShortcut = this._shortcut("cms-edit");
     return html`
       <a
         href="${pagePath}"
@@ -861,7 +865,12 @@ export class PageBreak extends IntersectionObserverMixin(
                 class="menu-button"
                 icon="icons:create"
                 id="pageactionsbtn"
-                label="${this.t.pageActions}"
+                label="${
+                  actionsShortcut.label
+                    ? `${this.t.pageActions} • ${actionsShortcut.label}`
+                    : this.t.pageActions
+                }"
+                key-shortcuts="${actionsShortcut.aria}"
                 @click="${this._toggleMenu}"
               ></simple-toolbar-button>
               <simple-context-menu id="menu" title="${this.t.pageActions}">
@@ -869,6 +878,8 @@ export class PageBreak extends IntersectionObserverMixin(
                   class="menu-item"
                   icon="hax:page-edit"
                   label="${this.t.editPage}"
+                  shortcut-label="${editShortcut.label}"
+                  key-shortcuts="${editShortcut.aria}"
                   show-text-label
                   @click="${this._editPage}"
                   ?disabled="${this.locked}"
@@ -954,6 +965,21 @@ export class PageBreak extends IntersectionObserverMixin(
       }
     `;
   }
+  /**
+   * The global shortcut registered for a page action (the same one Merlin
+   * lists), shown at the end of its menu row the way the site outline
+   * actions menu does; empty when none is registered or the editing UI
+   * has not loaded yet
+   */
+  _shortcut(id) {
+    if (!this.__contextMenuShortcut || !this.__shortcutManager) {
+      return { label: "", aria: "" };
+    }
+    const descriptor = this.__shortcutManager.getById(id);
+    return this.__contextMenuShortcut(
+      descriptor && descriptor.type !== "markdown" ? descriptor : null,
+    );
+  }
   _toggleMenu(e) {
     e.stopPropagation();
     const menu = this.shadowRoot.querySelector("#menu");
@@ -975,10 +1001,6 @@ export class PageBreak extends IntersectionObserverMixin(
     const menu = this.shadowRoot.querySelector("#menu");
     if (menu) menu.close();
     store.cmsSiteEditor.haxCmsSiteEditorUIElement._editButtonTap();
-  }
-
-  _cancelEdit(e) {
-    store.cmsSiteEditor.haxCmsSiteEditorUIElement._cancelButtonTap(e);
   }
 
   async _editTitle(_e) {
@@ -1204,10 +1226,6 @@ export class PageBreak extends IntersectionObserverMixin(
         },
       }),
     );
-  }
-
-  async _savePage(_e) {
-    store.cmsSiteEditor.haxCmsSiteEditorUIElement._editButtonTap();
   }
 
   _deletePage(_e) {

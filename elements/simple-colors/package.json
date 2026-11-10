@@ -45,6 +45,14 @@
     "@haxtheweb/simple-colors-shared-styles": "^26.8.0",
     "lit": "3.3.3"
   },
+  "peerDependencies": {
+    "@haxtheweb/simple-picker": ">=26.8.0"
+  },
+  "peerDependenciesMeta": {
+    "@haxtheweb/simple-picker": {
+      "optional": true
+    }
+  },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.11.0",
     "@haxtheweb/deduping-fix": "^26.8.0",
