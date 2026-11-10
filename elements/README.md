@@ -37,7 +37,6 @@ Every element in this monorepo (229 packages). Browse them live with `yarn galle
 | [career-timeline](./career-timeline/) | Webcomponent career-timeline following hax / open-wc recommendations | `@haxtheweb/career-timeline` | [demo](./career-timeline/demo/) |
 | [chamfer-theme](./chamfer-theme/) | Fixed-width HAXcms theme with a left navigation column and a chamfered top-left corner on the body area. | `@haxtheweb/chamfer-theme` | [demo](./chamfer-theme/demo/) |
 | [chartist-render](./chartist-render/) | Renders charts with the Chartist library | `@haxtheweb/chartist-render` | [demo](./chartist-render/demo/) |
-| [chat-agent](./chat-agent/) | chatbot agent style chat widget | `@haxtheweb/chat-agent` | [demo](./chat-agent/demo/) |
 | [citation-element](./citation-element/) | A simple way of citing things on the web. | `@haxtheweb/citation-element` | [demo](./citation-element/demo/) |
 | [clean-one](./clean-one/) | Clean HAXcms theme, one. | `@haxtheweb/clean-one` | [demo](./clean-one/demo/) |
 | [clean-portfolio-theme](./clean-portfolio-theme/) | Webcomponent clean-portfolio-theme following hax / open-wc recommendations | `@haxtheweb/clean-portfolio-theme` | [demo](./clean-portfolio-theme/demo/) |

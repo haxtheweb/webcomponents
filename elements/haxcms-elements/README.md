@@ -145,7 +145,6 @@ The following tables list every custom element in the package, grouped by the `l
 |---|---|---|---|
 | `site-view` | — | HAX (Site View) | Dynamic view driven by query/conditions. |
 | `site-collection-list` | — | HAX (Smart Collection) | Smart collection list. |
-| `site-ai-chat` | — | — | AI chat integration. |
 | `active-when-visible` | — | — | Activate content when it scrolls into view. |
 
 ### Lesson overview (`lib/ui-components/lesson-overview/`)

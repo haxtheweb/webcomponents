@@ -1,7 +1,0 @@
-{
-  "displayPreviousMessageUp": "Vis tidligere sendt melding (opp)",
-  "displayPreviousMessageDown": "Vis tidligere sendt melding (ned)",
-  "sendPrompt": "Send ledetekst",
-  "sendPromptToMerlin": "Send ledetekst til Merlin",
-  "shortenPrompt": "Forkort ledeteksten til høyst {limit} tegn."
-}

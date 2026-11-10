@@ -1,7 +1,0 @@
-{
-  "displayPreviousMessageUp": "Бұрын жіберілген хабарды көрсету (жоғары)",
-  "displayPreviousMessageDown": "Бұрын жіберілген хабарды көрсету (төмен)",
-  "sendPrompt": "Сұрауды жіберу",
-  "sendPromptToMerlin": "Сұрауды Merlin-ге жіберу",
-  "shortenPrompt": "Сұрауыңызды {limit} таңбадан аспайтындай қысқартыңыз."
-}
