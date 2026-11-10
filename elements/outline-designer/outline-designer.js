@@ -4145,6 +4145,18 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
   }
 
   /**
+   * Forget the pending undo (and its toast). Call this when the outline is
+   * replaced from outside, e.g. reloaded with saved data: the snapshot
+   * holds the outline as it was before, so an undo would bring back pages
+   * the save already removed, and ids the server never stored.
+   */
+  clearUndo() {
+    clearTimeout(this._undoTimer);
+    this._undoTimer = null;
+    this._undo = null;
+  }
+
+  /**
    * Put the outline back as it was before the last change (the items
    * themselves are restored, so getData() is exactly as it was)
    */
