@@ -294,7 +294,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
       : `${sdi.key1}+${sdi.key2}`;
   }
 
-    suggestPossibleAction(mimeType = false) {
+  suggestPossibleAction(mimeType = false) {
     if (!mimeType) {
       return this.randomOption(this.possibleActions);
     } else {

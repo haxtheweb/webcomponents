@@ -483,9 +483,8 @@ describe("page-break rendering", () => {
   });
 
   it("shows registered shortcuts on the page actions button and Edit page row", async () => {
-    const { KeyboardShortcutManagerInstance } = await import(
-      "@haxtheweb/utils/utils.js"
-    );
+    const { KeyboardShortcutManagerInstance } =
+      await import("@haxtheweb/utils/utils.js");
     const noop = () => {};
     KeyboardShortcutManagerInstance.register({
       id: "cms-edit",
@@ -510,7 +509,9 @@ describe("page-break rendering", () => {
       await wait(150);
       await el.updateComplete;
       const btn = el.shadowRoot.querySelector("#pageactionsbtn");
-      expect(btn.getAttribute("label")).to.equal("Page Actions \u2022 Ctrl\u21e75");
+      expect(btn.getAttribute("label")).to.equal(
+        "Page Actions \u2022 Ctrl\u21e75",
+      );
       const edit = el.shadowRoot.querySelector("#menu simple-toolbar-button");
       expect(edit.getAttribute("label")).to.equal("Edit page");
       expect(edit.getAttribute("shortcut-label")).to.equal("Ctrl\u21e7E");
