@@ -413,7 +413,14 @@ export class AppHaxUserMenu extends I18NMixin(DDDSuper(LitElement)) {
    */
   _collectFocusable(el, results) {
     if (!el || el.nodeType !== Node.ELEMENT_NODE) return;
-    if (el.matches('a, button, [tabindex]:not([tabindex="-1"])')) {
+    // one stop per item: things taken out of the tab order (tabindex=-1,
+    // e.g. a link whose row button already follows it) and disabled
+    // buttons are skipped by arrows, Home and End too
+    if (
+      el.matches(
+        'a[href]:not([tabindex="-1"]), button:not([tabindex="-1"]):not([disabled]), [tabindex]:not([tabindex="-1"])',
+      )
+    ) {
       results.push(el);
     }
     if (el.children) {

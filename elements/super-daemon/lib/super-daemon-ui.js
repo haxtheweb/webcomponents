@@ -1562,6 +1562,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
         ?loading="${this.loading}"
         program-search="${this.programSearch}"
         program-placeholder="${this.programPlaceholder || ""}"
+        ?program-running="${!!this.programName}"
         ?listening-for-input="${this.listeningForInput}"
         command-context="${this.commandContext}"
         droppable-type="${this.activeType}"

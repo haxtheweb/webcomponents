@@ -2299,13 +2299,16 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         "Expecting to see an option Merlin didn't provide?",
       makeASuggestionToImproveResults: "Make a suggestion to improve results",
       createAPage: "Create a page",
-      typePageTitleToCreatePage: "Type page title to create page",
-      createNewPage: "Create New Page",
+      pageTitlePlaceholder: "Page title",
+      createNewPageTypeToName: "Create New Page (type a title to name it)",
       newPageCapitalized: "New Page",
       createTitleWithView: "Create {title} with view",
       createTitle: "Create {title}",
+      createTemplate: "Create {template}",
       createTemplateNamedTitle: "Create {template} named {title}",
-      duplicateAsTitle: "Duplicate as {title}",
+      duplicateCurrentPage: "Duplicate current page",
+      duplicateCurrentPageRenameTo: "Duplicate current page, rename to {title}",
+      copyOfTitle: "{title} (copy)",
       errorMessage: "Error: {error}",
       movePage: "Move Page",
       typeToFilterPages: "Type to filter pages",
@@ -2549,7 +2552,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       i18n: {
         context: this,
         title: "createAPage",
-        "value.placeholder": "typePageTitleToCreatePage",
+        "value.placeholder": "pageTitlePlaceholder",
       },
       title: this.t.createAPage,
       icon: "hax:add-page",
@@ -2565,7 +2568,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       value: {
         name: "create-page",
         machineName: "create-page",
-        placeholder: this.t.typePageTitleToCreatePage,
+        placeholder: this.t.pageTitlePlaceholder,
         program: async (input, values) => {
           // Get reference to site editor UI regardless of how program was accessed
           const siteEditorUI =
@@ -2575,40 +2578,26 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           const templateContent =
             values && values.templateContent ? values.templateContent : null;
 
-          // If no input provided, show default page creation option to match prior UX
-          if (!input || input.trim() === "") {
-            return [
-              {
-                title: this.t.createNewPage,
-                icon: "hax:add-page",
-                tags: ["page", "blank", "create"],
-                value: {
-                  target: siteEditorUI,
-                  method: "createPageWithTitle",
-                  args: [
-                    this.t.newPageCapitalized,
-                    createType,
-                    templateContent,
-                  ],
-                },
-                eventName: "super-daemon-element-method",
-                path: "CMS/action/create/page",
-              },
-            ];
-          }
-
-          const title = input.trim();
-
+          // Every option shows from the start, empty field or not, so the
+          // list never changes shape as you type: typing only names them.
+          // Empty, each option says it takes the title you type; with a
+          // title, each option says what it will be called.
+          const typed = input ? input.trim() : "";
+          const title = typed || this.t.newPageCapitalized;
           try {
             // Get available page templates
             const pageTemplates = await siteEditorUI.getPageTemplates();
             const results = [];
 
-            // Add blank page option first
+            // blank page first
+            let blankTitle = this.t.createNewPageTypeToName;
+            if (typed) {
+              blankTitle = templateContent
+                ? this.t.createTitleWithView.replace("{title}", () => typed)
+                : this.t.createTitle.replace("{title}", () => typed);
+            }
             results.push({
-              title: templateContent
-                ? this.t.createTitleWithView.replace("{title}", () => title)
-                : this.t.createTitle.replace("{title}", () => title),
+              title: blankTitle,
               icon: "hax:add-page",
               tags: ["page", "blank", "create"],
               value: {
@@ -2624,9 +2613,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             if (pageTemplates && pageTemplates.length > 0) {
               pageTemplates.forEach((template, _index) => {
                 results.push({
-                  title: this.t.createTemplateNamedTitle
-                    .replace("{template}", () => template.name)
-                    .replace("{title}", () => title),
+                  title: typed
+                    ? this.t.createTemplateNamedTitle
+                        .replace("{template}", () => template.name)
+                        .replace("{title}", () => typed)
+                    : this.t.createTemplate.replace(
+                        "{template}",
+                        () => template.name,
+                      ),
                   icon: "hax:templates",
                   tags: ["template", "page", "create"],
                   value: {
@@ -2644,16 +2638,29 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               });
             }
 
-            // Add duplicate current page option
+            // duplicate the current page, renamed to the typed title (or
+            // kept as a copy of the current title when nothing is typed)
             if (currentItem) {
               results.push({
-                title: this.t.duplicateAsTitle.replace("{title}", () => title),
+                title: typed
+                  ? this.t.duplicateCurrentPageRenameTo.replace(
+                      "{title}",
+                      () => typed,
+                    )
+                  : this.t.duplicateCurrentPage,
                 icon: "hax:duplicate",
                 tags: ["page", "duplicate", "create"],
                 value: {
                   target: siteEditorUI,
                   method: "createPageWithTitle",
-                  args: [title, "duplicate"],
+                  args: [
+                    typed ||
+                      this.t.copyOfTitle.replace(
+                        "{title}",
+                        () => currentItem.title,
+                      ),
+                    "duplicate",
+                  ],
                 },
                 eventName: "super-daemon-element-method",
                 path: "CMS/action/create/page/duplicate",
@@ -3885,6 +3892,24 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
   }
   /**
+   * Open the user menu with its first item focused, the way Ctrl+Shift+2
+   * opens the site settings quick links.
+   */
+  _openUserMenuFromKeyboard() {
+    this.__userMenuHoverOpened = false;
+    this.userMenuOpen = true;
+    this.siteMenuOpen = false;
+    store.playSound("click");
+    this.updateComplete.then(() => {
+      const menu = this.shadowRoot.querySelector("#user-menu");
+      if (menu && menu.updateComplete) {
+        menu.updateComplete.then(() => {
+          menu._focusFirstItem(menu._getMenuItems());
+        });
+      }
+    });
+  }
+  /**
    * Hover opens a top bar menu (house quick links, user menu) for mouse
    * pointers; leaving closes it after a short grace period so the pointer
    * can travel into the menu. Touch and pen keep using tap.
@@ -4034,11 +4059,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               slot="main-menu"
               name="haxcms-site-editor-ui-main-menu"
             ></slot>
+            <!-- the row's own button is the one tab stop (it follows this
+                 link on click / Enter); the link itself stays out of the
+                 tab order so the item isn't focused twice -->
             <a
               class="mysiteslink"
               href="${this.backLink}"
               slot="main-menu"
               part="mysiteslink"
+              tabindex="-1"
             >
               <app-hax-user-menu-button
                 icon="hax:world-traveler-plain"
@@ -4319,6 +4348,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               data-event="super-daemon"
               mini
               wand
+              show-shortcut
               droppable-type="${this.activeType}"
               ?droppable="${this.activeDrag}"
             >
@@ -7367,10 +7397,24 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       ctrl: true,
       shift: true,
       callback: () => {
-        const userMenuButton = this.shadowRoot.querySelector("#menubtn");
-        if (userMenuButton) {
-          this.toggleMenu();
+        // same focus dynamics as Ctrl+Shift+2: open with the first item
+        // focused so arrows / Tab / Enter work straight away; pressing it
+        // again while open closes it and returns focus to the avatar
+        if (this.userMenuOpen) {
+          this.userMenuOpen = false;
+          const toggle = this.shadowRoot.querySelector(
+            "app-hax-user-menu-toggle",
+          );
+          const toggleButton =
+            toggle && toggle.shadowRoot
+              ? toggle.shadowRoot.querySelector("button")
+              : null;
+          if (toggleButton) {
+            toggleButton.focus();
+          }
+          return;
         }
+        this._openUserMenuFromKeyboard();
       },
       condition: () => store.isLoggedIn,
       description: this.t.shortcutOpenUserMenu,
@@ -7467,6 +7511,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Ctrl+Shift+5 - Configure panel (edit) OR Page actions (view)
     HAXCMSKeyboardShortcutsInstance.register({
+      // the page actions menu (page-break) shows this on its button
+      id: "cms-page-actions",
       key: "5",
       ctrl: true,
       shift: true,
