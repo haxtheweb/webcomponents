@@ -103,21 +103,6 @@ export const HaxLayoutBehaviors = function (SuperClass) {
                 var(--hax-layout-accent-color, #009dc7)
               );
           }
-
-          @media screen and (min-color-index: 0) and(-webkit-min-device-pixel-ratio:0) {
-            :host([data-hax-ray]) ::slotted(*.hax-hovered) {
-              background-color: var(
-                --hax-layout-slotted-active-outline-color,
-                var(--hax-layout-accent-color, #009dc7)
-              ) !important;
-              outline: var(--hax-layout-slotted-active-outline-width, 1px)
-                var(--hax-layout-slotted-active-outline-style, solid)
-                var(
-                  --hax-layout-slotted-active-outline-color,
-                  var(--hax-layout-accent-color, #009dc7)
-                );
-            }
-          }
         `,
       ];
     }
