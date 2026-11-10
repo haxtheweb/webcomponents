@@ -226,11 +226,6 @@
       "count": 1
     }
   },
-  "elements/course-design/lib/lrn-h5p.js": {
-    "haxtheweb-leaks/autorun-in-constructor": {
-      "count": 1
-    }
-  },
   "elements/course-model/course-model.js": {
     "eqeqeq": {
       "count": 8
@@ -728,9 +723,6 @@
     }
   },
   "elements/haxcms-elements/lib/ui-components/blocks/site-children-block.js": {
-    "haxtheweb-leaks/autorun-in-constructor": {
-      "count": 3
-    },
     "haxtheweb-leaks/disposer-without-disconnect": {
       "count": 1
     }
