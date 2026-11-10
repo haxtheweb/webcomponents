@@ -107,3 +107,40 @@ describe("un-sdg behavior", () => {
     await expect(colorMode).shadowDom.to.be.accessible();
   });
 });
+
+describe("un-sdg round 10 fixes", () => {
+  it("names the color-only tile like the image", async () => {
+    const el = await fixture(html`<un-sdg goal="13" color-only></un-sdg>`);
+    await elementUpdated(el);
+    const div = el.shadowRoot.querySelector("div");
+    expect(div.getAttribute("role")).to.equal("img");
+    expect(div.getAttribute("aria-label")).to.equal("Goal 13: Climate Action");
+  });
+  it("builds the label from translated goal names", async () => {
+    const el = await fixture(html`<un-sdg goal="4"></un-sdg>`);
+    await elementUpdated(el);
+    el.t = {
+      ...el.t,
+      goalLabel: "Objetivo {goal}: {name}",
+      goal4: "Educación de calidad",
+    };
+    await elementUpdated(el);
+    expect(el.shadowRoot.querySelector("img").getAttribute("alt")).to.equal(
+      "Objetivo 4: Educación de calidad",
+    );
+  });
+  it("keeps 152px by default and shrinks with a narrow column", async () => {
+    const wide = await fixture(
+      html`<div style="width:400px"><un-sdg goal="1"></un-sdg></div>`,
+    );
+    const a = wide.querySelector("un-sdg").getBoundingClientRect();
+    expect(Math.round(a.width)).to.equal(152);
+    expect(Math.round(a.height)).to.equal(152);
+    const narrow = await fixture(
+      html`<div style="width:100px"><un-sdg goal="1"></un-sdg></div>`,
+    );
+    const b = narrow.querySelector("un-sdg").getBoundingClientRect();
+    expect(Math.round(b.width)).to.equal(100);
+    expect(Math.round(b.height)).to.equal(100);
+  });
+});
