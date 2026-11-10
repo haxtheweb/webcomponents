@@ -198,6 +198,13 @@ export class MediaPlaylist extends SchemaBehaviors(
           justify-content: flex-end;
         }
 
+        /* previous/next chevrons point along the reading direction;
+           simple-icon never mirrors on its own, so flip them in
+           right-to-left */
+        :host(:dir(rtl)) .ddd-block-action simple-icon-lite {
+          transform: scaleX(-1);
+        }
+
         /* Hide the default slot that catches non-active children */
         .slot-hidden {
           display: none;

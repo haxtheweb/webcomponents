@@ -177,6 +177,13 @@ export const GradeBookSharedStyles = [
     .top-controls .ddd-block-action simple-icon-lite {
       flex: none;
     }
+    /* previous/next assignment arrows point along the reading direction;
+       simple-icon never mirrors on its own, so flip them in right-to-left
+       (the up/down student arrows stay as they are) */
+    :host(:dir(rtl)) simple-icon-lite[icon="arrow-back"],
+    :host(:dir(rtl)) simple-icon-lite[icon="arrow-forward"] {
+      transform: scaleX(-1);
+    }
     .ddd-block-action.gb-primary {
       border-color: var(--grade-book-accent);
       background-color: var(--grade-book-accent);
