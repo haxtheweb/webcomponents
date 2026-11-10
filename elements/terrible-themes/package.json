@@ -44,6 +44,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@haxtheweb/haxcms-elements": "^26.8.0",
+    "@haxtheweb/scroll-button": "^26.8.0",
     "@haxtheweb/simple-colors": "^26.8.0",
     "lit": "3.3.3",
     "mobx": "6.16.1"

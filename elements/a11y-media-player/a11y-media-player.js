@@ -935,6 +935,22 @@ class A11yMediaPlayer extends SchemaBehaviors(
           width: 0;
           overflow: hidden;
         }
+        /* skip link: off screen until it has keyboard focus, then shown
+           where it sits so a sighted keyboard user can see what has focus */
+        a.sr-only:focus,
+        a.sr-only:focus-visible {
+          position: static;
+          display: inline-block;
+          width: auto;
+          height: auto;
+          overflow: visible;
+          font-size: var(--ddd-font-size-4xs, 16px);
+          margin: var(--ddd-spacing-1, 4px);
+          padding: var(--ddd-spacing-1, 4px) var(--ddd-spacing-2, 8px);
+          color: var(--a11y-media-color, currentColor);
+          outline: var(--ddd-focus-ring, 2px solid currentColor);
+          outline-offset: var(--ddd-focus-offset, 2px);
+        }
 
         absolute-position-behavior:not(:defined),
         simple-tooltip:not(:defined) {

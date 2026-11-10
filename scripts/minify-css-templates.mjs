@@ -55,6 +55,9 @@ const stats = {
   templates: 0,
   minified: 0,
   skipped: {},
+  // where the problem cases are, so they can be fixed at the source
+  // (an "unchanged" template is already minimal and needs no attention)
+  flagged: [],
   before: 0,
   after: 0,
 };
@@ -72,6 +75,11 @@ for (const dir of dirs) {
       const res = minifyTemplate(t);
       if (!res.raws) {
         stats.skipped[res.reason] = (stats.skipped[res.reason] || 0) + 1;
+        if (res.reason !== "unchanged") {
+          stats.flagged.push(
+            `  ${res.reason}: ${path.relative(process.cwd(), file)}:${t.line}`,
+          );
+        }
         continue;
       }
       stats.minified += 1;
@@ -102,3 +110,6 @@ const skipped = Object.entries(stats.skipped)
 console.log(
   `minify-css-templates${DRY ? " (dry run)" : ""}: ${stats.minified}/${stats.templates} css templates in ${stats.changedFiles} files, ${stats.before - stats.after} bytes saved${skipped ? `; left as is: ${skipped}` : ""}`,
 );
+if (stats.flagged.length) {
+  console.log(stats.flagged.sort().join("\n"));
+}

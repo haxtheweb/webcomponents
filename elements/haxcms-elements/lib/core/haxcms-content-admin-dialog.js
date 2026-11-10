@@ -1505,12 +1505,6 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
       .filter((id, index, all) => checked.has(id) && all.indexOf(id) === index);
   }
 
-  /** matched page ids that are checked, in result order */
-  _checkedMatchIds() {
-    const checked = new Set(this._checkedIds);
-    return this._matchedIds().filter((id) => checked.has(id));
-  }
-
   /** whether a page is checked */
   _isChecked(id) {
     return this._checkedIds.includes(id);

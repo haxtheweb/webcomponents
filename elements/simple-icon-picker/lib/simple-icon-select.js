@@ -240,7 +240,7 @@ class SimpleIconSelect extends LitElement {
           font: inherit;
           color: inherit;
           background-color: var(--simple-icon-select-background-color);
-          border: var(--ddd-border-xs, 1px solid)
+          border: var(--ddd-border-size-xs, 1px) solid
             var(--simple-icon-select-border-color);
           border-radius: var(
             --simple-fields-border-radius,
@@ -254,7 +254,7 @@ class SimpleIconSelect extends LitElement {
         .trigger:focus-visible,
         .search:focus-visible,
         .search:focus {
-          outline: var(--ddd-border-sm, 2px solid)
+          outline: var(--ddd-border-size-sm, 2px) solid
             var(--simple-icon-select-accent-color);
           outline-offset: -2px;
         }
@@ -288,7 +288,7 @@ class SimpleIconSelect extends LitElement {
           overflow: visible;
           color: inherit;
           font: inherit;
-          border: var(--ddd-border-xs, 1px solid)
+          border: var(--ddd-border-size-xs, 1px) solid
             var(--simple-icon-select-border-color);
           border-radius: var(
             --simple-fields-border-radius,
@@ -329,7 +329,7 @@ class SimpleIconSelect extends LitElement {
         }
         li[role="option"].active {
           background-color: var(--simple-icon-select-active-background-color);
-          outline: var(--ddd-border-xs, 1px solid)
+          outline: var(--ddd-border-size-xs, 1px) solid
             var(--simple-icon-select-accent-color);
           outline-offset: -1px;
         }
