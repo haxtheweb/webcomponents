@@ -63,6 +63,8 @@
     "test:all:failures": "WTR_REPORTER=failures yarn test:all",
     "test:all:firefox": "web-test-runner \"elements/*/test/*.test.js\" --node-resolve --root-dir . --playwright --browsers firefox --static-logging",
     "test:all:webkit": "web-test-runner \"elements/*/test/*.test.js\" --node-resolve --root-dir . --playwright --browsers webkit --static-logging",
+    "test:i18n-layout": "node scripts/i18n-layout-check.mjs",
+    "test:i18n-layout:baseline": "node scripts/i18n-layout-check.mjs --update-baseline",
     "build": "lerna run build && yarn run build-gallery",
     "publish": "echo 'NOTICE: You must run `lerna publish` manually'",
     "gallery": "yarn run build-gallery && npx @web/dev-server --open index.html --root-dir .",

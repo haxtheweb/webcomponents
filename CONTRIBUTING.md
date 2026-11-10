@@ -229,6 +229,18 @@ yarn start
 - Ensure existing tests still pass: `yarn test`
 - Test in multiple browsers if making significant changes
 
+### i18n layout check (pseudo-locale and RTL)
+
+Invariant: a HAX-capable element keeps a usable layout when its strings get longer (translations run ~30-40% longer than English) and when it sits in a right-to-left language (Arabic, Hebrew, Persian, Urdu). Translation files cannot show this, so the check renders the elements.
+
+- **Which tags**: tags in `hax-elements-registry.json` whose class carries a HAXSchema (`haxProperties` on the class or an ancestor, or a `setHaxProperties(schema, "<tag>")` call), the same set the API snapshot covers. Each is rendered from its first `demoSchema` entry in Chromium in a 360px content column.
+- **Scenarios**: English left-to-right (the control), a pseudo-locale, `dir="rtl" lang="ar"` on the column, and both. The pseudo-locale exists only in memory during the test: `i18n-manager` loads it through its normal path (the translation manifest, then `<namespace>.qps-ploc.json`), answered in the test page from each element's English `this.t` defaults with accents, ~40% padding and `⟦ ⟧` markers. No locale file is written, so the locale guard and the nightly translations never see it.
+- **Checks** (each scenario reports only what differs from the control): `overflow-*` text wider or taller than its box (truncated or spilling; scrollable regions excluded), `outside-*` shadow-DOM parts rendered outside the host box, `rtl-unusable` a control visible in left-to-right that leaves the column in right-to-left, and `rtl-css` physical left/right CSS in `css` templates (`margin-left`, `padding-right`, `left:`, `text-align: left`, `border-left`, `float: right`, asymmetric 4-value `margin`/`padding`) that should be logical (`margin-inline-start`, `inset-inline-start`, `text-align: start`...). Symmetric pairs, `left: 50%` centering and rules scoped with `[dir=rtl]` or `:dir()` are not reported.
+- **Advisory only**: visible shadow-DOM text or `aria-label`/`title`/`placeholder`/`alt` without pseudo markers that is not demo content (a hard-coded string candidate: move it into `this.t`), tags that ignore `dir="rtl"`, and tags that fail to render.
+- **Run locally**: `yarn test:i18n-layout` checks the tags in element folders changed against the base branch (`--base <ref>` to pick another, `--tags a,b` for specific tags, `--all` for every tag). Exit 1 means a new failure. The full run takes about a minute.
+- **Baseline**: `scripts/i18n-layout.baseline.json` records today's failures per tag and check. A failing check is new when the tag has no entry for it (or, for `rtl-css`, more findings than recorded). After fixing or intentionally accepting a result, run `yarn test:i18n-layout:baseline --tags <tag>` and commit the baseline; without `--tags` it re-runs every tag.
+- **CI**: the `i18n-layout` workflow runs on pull requests touching `elements/**`, Chromium only, and blocks on new failures in the elements the pull request changes. Baselined failures in those elements are listed in the job summary so they can be worked down.
+
 ### Lerna
 This monorepo has configuration settings for lerna. Lerna is for the core team, but to bulk run commands against the monorepo consider things like `npx lerna run build` to run build against all elements. This is useful when getting ready to ship.
 
