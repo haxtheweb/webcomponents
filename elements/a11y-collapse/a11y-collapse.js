@@ -138,12 +138,15 @@ class A11yCollapse extends I18NMixin(DDD) {
             --a11y-collapse-heading-min-height,
             var(--ddd-control-height-md)
           );
-          padding: var(--ddd-spacing-1)
+          padding: var(
+              --a11y-collapse-heading-vertical-padding,
+              var(--ddd-spacing-1)
+            )
             var(
               --a11y-collapse-padding-right,
               var(--a11y-collapse-horizontal-padding, var(--ddd-spacing-2))
             )
-            var(--ddd-spacing-1)
+            var(--a11y-collapse-heading-vertical-padding, var(--ddd-spacing-1))
             var(
               --a11y-collapse-padding-left,
               var(--a11y-collapse-horizontal-padding, var(--ddd-spacing-4))
@@ -185,8 +188,11 @@ class A11yCollapse extends I18NMixin(DDD) {
         #expand {
           flex: none;
           box-sizing: border-box;
-          width: var(--ddd-control-height-sm);
-          height: var(--ddd-control-height-sm);
+          width: var(--a11y-collapse-toggle-size, var(--ddd-control-height-sm));
+          height: var(
+            --a11y-collapse-toggle-size,
+            var(--ddd-control-height-sm)
+          );
           border: var(--ddd-border-xs);
           border-color: var(--a11y-collapse-_line);
           border-radius: var(--ddd-radius-circle);
