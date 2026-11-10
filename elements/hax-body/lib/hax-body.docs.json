@@ -79,11 +79,11 @@
       "hax": null
     },
     {
-      "name": "bar-size",
-      "property": "barSize",
-      "type": "string",
-      "default": "\"compact\"",
-      "description": "how much of the block bar shows: \"compact\" (one row, inline formatting on text selection) or \"full\" (every tool, two rows)",
+      "name": "bar-more",
+      "property": "barMore",
+      "type": "boolean",
+      "default": "false",
+      "description": "More tools is open on the block bar (remembered per browser)",
       "hax": null
     }
   ],
@@ -95,7 +95,7 @@
     "place-holder-file-drop"
   ],
   "hax": {},
-  "surfaceHash": "d05476736c31",
+  "surfaceHash": "67e11313e68e",
   "walkthroughs": [],
   "videos": [],
   "motion": {

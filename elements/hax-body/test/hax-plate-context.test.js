@@ -1,63 +1,128 @@
 import { fixture, expect, html, oneEvent } from "@open-wc/testing";
 import "../lib/hax-plate-context.js";
 
+const bar = (el) => el.shadowRoot;
+
 describe("hax-plate-context block bar", () => {
-  it("shows one row with More and Show all tools by default", async () => {
+  it("shows one row: grip, move, format, insert, layout, remove, More tools", async () => {
     const el = await fixture(html`<hax-plate-context></hax-plate-context>`);
     await el.updateComplete;
-    const root = el.shadowRoot;
-    expect(el.barSize).to.equal("compact");
-    expect(root.querySelector("#moremenu")).to.exist;
-    expect(root.querySelector("#layoutmenu")).to.exist;
-    expect(root.querySelector("#barsize").label).to.equal("Show all tools");
-    // column ops stay reachable inside the Layout menu
-    expect(root.querySelector("#layoutmenu #right")).to.exist;
-  });
-
-  it("shows every tool as a button when all tools are shown", async () => {
-    const el = await fixture(
-      html`<hax-plate-context bar-size="full"></hax-plate-context>`,
+    [
+      "#drag",
+      "#up",
+      "#down",
+      "#chip",
+      "#insert",
+      "#layout",
+      "#remove",
+      "#more",
+    ].forEach((id) => expect(bar(el).querySelector(id), id).to.exist);
+    // More tools is closed by default; its tools wait in the hidden extra
+    expect(bar(el).querySelector("#extra").hidden).to.equal(true);
+    expect(bar(el).querySelector("#more").getAttribute("aria-label")).to.equal(
+      "More tools",
     );
-    await el.updateComplete;
-    const root = el.shadowRoot;
-    expect(root.querySelector("#moremenu")).to.not.exist;
-    expect(root.querySelector("#layoutmenu")).to.not.exist;
-    expect(root.querySelector("#right")).to.exist;
-    expect(root.querySelector("#barsize").label).to.equal("Show fewer tools");
   });
 
-  it("asks hax-body to change the bar size", async () => {
+  it("the drag handle has no menu", async () => {
     const el = await fixture(html`<hax-plate-context></hax-plate-context>`);
     await el.updateComplete;
-    const toggle = el.shadowRoot.querySelector("#barsize");
-    setTimeout(() => toggle.shadowRoot.querySelector("button").click());
-    const e = await oneEvent(el, "hax-block-bar-size");
-    expect(e.detail.size).to.equal("full");
+    const grip = bar(el).querySelector("#drag");
+    expect(grip.hasAttribute("aria-haspopup")).to.equal(false);
+    grip.dispatchEvent(new MouseEvent("mouseover", { bubbles: true }));
+    grip.click();
+    await el.updateComplete;
+    expect(bar(el).querySelector(".pop")).to.not.exist;
+  });
+
+  it("arrow keys on the grip move the block", async () => {
+    const el = await fixture(html`<hax-plate-context></hax-plate-context>`);
+    await el.updateComplete;
+    const grip = bar(el).querySelector("#drag");
+    setTimeout(() =>
+      grip.dispatchEvent(
+        new KeyboardEvent("keydown", { key: "ArrowUp", bubbles: true }),
+      ),
+    );
+    const e = await oneEvent(el, "hax-context-item-selected");
+    expect(e.detail.eventName).to.equal("hax-plate-up");
+  });
+
+  it("Insert asks above or below, then offers the common blocks with Paragraph first", async () => {
+    const el = await fixture(html`<hax-plate-context></hax-plate-context>`);
+    await el.updateComplete;
+    bar(el).querySelector("#insert").click();
+    await el.updateComplete;
+    const where = [...bar(el).querySelectorAll(".pop .mi")];
+    expect(where.map((b) => b.textContent.trim())).to.deep.equal([
+      "Insert item above",
+      "Insert item below",
+    ]);
+    where[1].click();
+    await el.updateComplete;
+    const blocks = [...bar(el).querySelectorAll(".pop .mi")].map((b) =>
+      b.textContent.trim().replace(/\s+/g, " "),
+    );
+    expect(blocks[0]).to.equal("Paragraph");
+    expect(blocks).to.include("Heading");
+    expect(blocks[blocks.length - 1]).to.contain("Blocks…");
+    setTimeout(() => bar(el).querySelector(".pop .mi").click());
+    const e = await oneEvent(el, "hax-context-item-selected");
+    expect(e.detail.eventName).to.equal("insert-block");
+    expect(e.detail.value).to.deep.equal({ tag: "p", above: false });
+  });
+
+  it("Layout offers all twelve grid-plate layouts", async () => {
+    const el = await fixture(html`<hax-plate-context></hax-plate-context>`);
+    await el.updateComplete;
+    bar(el).querySelector("#layout").click();
+    await el.updateComplete;
+    const tiles = [...bar(el).querySelectorAll(".lgrid button")];
+    expect(tiles.length).to.equal(12);
+    expect(tiles[0].getAttribute("aria-label")).to.equal("1: full width");
+    expect(tiles[11].getAttribute("aria-label")).to.equal("4: equal width");
   });
 
   it("asks before removing a block", async () => {
     const el = await fixture(html`<hax-plate-context></hax-plate-context>`);
     await el.updateComplete;
-    const remove = el.shadowRoot.querySelector("#remove");
-    expect(remove.label).to.equal("Remove");
-    expect(remove.eventName).to.equal("hax-plate-delete-arm");
-    remove.shadowRoot.querySelector("button").click();
+    const remove = bar(el).querySelector("#remove");
+    setTimeout(() => remove.click());
+    let e = await oneEvent(el, "hax-context-item-selected");
+    expect(e.detail.eventName).to.equal("hax-plate-delete-arm");
     await el.updateComplete;
-    expect(remove.label).to.equal("Confirm delete");
-    expect(remove.eventName).to.equal("hax-plate-delete");
+    expect(remove.getAttribute("aria-label")).to.equal("Confirm delete");
+    setTimeout(() => remove.click());
+    e = await oneEvent(el, "hax-context-item-selected");
+    expect(e.detail.eventName).to.equal("hax-plate-delete");
   });
 
-  it("uses matching icons for Add column and Remove column", async () => {
-    const el = await fixture(
-      html`<hax-plate-context bar-size="full"></hax-plate-context>`,
-    );
+  it("Escape keeps the block after Remove was pressed once", async () => {
+    const el = await fixture(html`<hax-plate-context></hax-plate-context>`);
     await el.updateComplete;
-    const root = el.shadowRoot;
-    expect(root.querySelector("#right").icon).to.equal(
-      "hax:table-column-plus-after",
+    const remove = bar(el).querySelector("#remove");
+    remove.click();
+    await el.updateComplete;
+    setTimeout(() =>
+      remove.dispatchEvent(
+        new KeyboardEvent("keydown", { key: "Escape", bubbles: true }),
+      ),
     );
-    expect(root.querySelector("#rightremove").icon).to.equal(
-      "hax:table-column-remove",
-    );
+    const e = await oneEvent(el, "hax-context-item-selected");
+    expect(e.detail.eventName).to.equal("hax-plate-delete-disarm");
+    await el.updateComplete;
+    expect(remove.getAttribute("aria-label")).to.equal("Remove");
+  });
+
+  it("More tools asks hax-body to open the rest of the bar", async () => {
+    const el = await fixture(html`<hax-plate-context></hax-plate-context>`);
+    await el.updateComplete;
+    setTimeout(() => bar(el).querySelector("#more").click());
+    const e = await oneEvent(el, "hax-block-bar-more");
+    expect(e.detail.open).to.equal(true);
+    el.moreOpen = true;
+    await el.updateComplete;
+    expect(bar(el).querySelector("#extra").hidden).to.equal(false);
+    expect(bar(el).querySelector("#duplicate")).to.exist;
   });
 });

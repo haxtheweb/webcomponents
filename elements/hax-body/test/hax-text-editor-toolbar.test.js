@@ -141,15 +141,30 @@ describe("hax-text-editor-toolbar compact bar", () => {
     globalThis.HaxTextEditorToolbarConfig.inlineGizmos = originalInlineGizmos;
   });
 
-  it("keeps block format, lists, alignment and inserts in the bar", () => {
+  it("keeps only insert-at-cursor tools and the bubble (format, lists and alignment are in the block bar)", () => {
     HAXStore.platformConfig = makePlatformConfig([]);
     globalThis.HaxTextEditorToolbarConfig.inlineGizmos = {};
     toolbar.__updated = false;
     const config = toolbar.updateToolbarElements();
-    expect(findSubtype(config, "list-indent-button-group")).to.exist;
     expect(findSubtype(config, "hax-symbol-insert-button-group")).to.exist;
+    expect(findSubtype(config, "list-indent-button-group")).to.not.exist;
     expect(findSubtype(config, "basic-formatting-group")).to.not.exist;
     expect(findSubtype(config, "advanced-inline-button-group")).to.not.exist;
+  });
+
+  it("only accepts web, mail, phone and site links", () => {
+    expect(toolbar._safeHref("haxtheweb.org/meme")).to.equal(
+      "https://haxtheweb.org/meme",
+    );
+    expect(toolbar._safeHref("https://haxtheweb.org")).to.equal(
+      "https://haxtheweb.org",
+    );
+    expect(toolbar._safeHref("mailto:a@b.co")).to.equal("mailto:a@b.co");
+    expect(toolbar._safeHref("/about")).to.equal("/about");
+    expect(toolbar._safeHref("#top")).to.equal("#top");
+    expect(toolbar._safeHref("javascript:alert(1)")).to.equal("");
+    expect(toolbar._safeHref("data:text/html,x")).to.equal("");
+    expect(toolbar._safeHref("")).to.equal("");
   });
 
   it("moves inline formatting into the selection bubble", () => {
@@ -164,6 +179,11 @@ describe("hax-text-editor-toolbar compact bar", () => {
       .map((button) => button.command);
     expect(commands).to.include("bold");
     expect(commands).to.include("italic");
+    expect(
+      bubble.buttons.some(
+        (button) => button.className === "hax-selection-link",
+      ),
+    ).to.equal(true);
     const more = findSubtype(bubble.buttons, "hax-selection-more");
     expect(more).to.exist;
     expect(more.buttons.length).to.be.greaterThan(0);

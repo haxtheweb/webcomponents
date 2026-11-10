@@ -4,6 +4,7 @@
  */
 import { LitElement, css } from "lit";
 import { RichTextEditorToolbarBehaviors } from "@haxtheweb/rich-text-editor/lib/toolbars/rich-text-editor-toolbar.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "./hax-text-editor-button.js";
 import { HAXStore } from "./hax-store.js";
 import { HaxContextBehaviors } from "./hax-context-behaviors.js";
@@ -189,6 +190,13 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       alignmentPicker: "Text alignment",
       moreFormats: "More formats",
       fewerFormats: "Fewer formats",
+      addLink: "Add link",
+      editLink: "Edit link",
+      applyLink: "Apply link",
+      updateLink: "Update link",
+      linkAddress: "Link address",
+      linkPlaceholder: "Paste or type a link",
+      cancel: "Cancel",
     };
     this.registerLocalization({
       context: this,
@@ -695,27 +703,28 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
   }
 
   /**
-   * one-row bar: block format, lists, alignment and insert-at-cursor stay
-   * in the bar; inline formatting moves to a bubble that appears only
-   * while text is selected
+   * the block bar's text part: block format, lists and alignment live in
+   * hax-plate-context's format menu, so this toolbar keeps the
+   * insert-at-cursor tools (shown with More tools) and the inline
+   * formatting bubble that appears only while text is selected
    */
   get compactConfig() {
     if (HAXStore.isPlatformAudience("novice")) {
       return this.defaultConfig;
     }
-    return [
-      this.formatButton,
-      this.listIndentButtonGroup,
-      this.alignmentPicker,
-      this.haxSymbolInsertButtonGroup,
-      this.selectionBubbleGroup,
-    ];
+    return [this.haxSymbolInsertButtonGroup, this.selectionBubbleGroup];
+  }
+  /**
+   * the bubble layout applies (not for the novice audience)
+   */
+  get usesBubble() {
+    return this.barSize === "compact" && !HAXStore.isPlatformAudience("novice");
   }
   /**
    * config for the active bar size
    */
   get activeConfig() {
-    return this.barSize === "compact" ? this.compactConfig : this.defaultConfig;
+    return this.usesBubble ? this.compactConfig : this.defaultConfig;
   }
   /**
    * compact bar: inline elements that wrap selected text join the bubble's
@@ -758,12 +767,10 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       type: "button-group",
       subtype: "hax-selection-bubble",
       buttons: [
-        ...this._filterButtonsByTag([
-          this.boldButton,
-          this.italicButton,
-          this.linkButton,
-          this.unlinkButton,
-        ]),
+        ...this._filterButtonsByTag([this.boldButton, this.italicButton]),
+        ...(this._platformAllowsTag("a")
+          ? [this.bubbleLinkButton, this.unlinkButton]
+          : []),
         this.selectionMoreToggle,
         {
           type: "button-group",
@@ -780,6 +787,17 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
           ]),
         },
       ],
+    };
+  }
+  /**
+   * Link in the bubble edits the link in place (see _startLinkEdit)
+   */
+  get bubbleLinkButton() {
+    return {
+      type: "simple-toolbar-button",
+      className: "hax-selection-link",
+      icon: "link",
+      label: this.t.linkButton,
     };
   }
   get selectionMoreToggle() {
@@ -860,7 +878,9 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     if (!this.hasUpdated) {
       const config = this.updateToolbarElements();
       if (config) this.config = config;
-    } else if (changedProperties.has("barSize")) {
+    }
+    this.bubbleMode = this.usesBubble;
+    if (this.hasUpdated && changedProperties.has("barSize")) {
       // fewer / all tools: rebuild the buttons for the new layout
       this.__updated = false;
       const config = this.updateToolbarElements();
@@ -870,6 +890,18 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
+    // the text waiting for a link stays highlighted while its field has
+    // focus; ::highlight() has to be styled where the content lives
+    if (
+      globalThis.document.head &&
+      !globalThis.document.head.querySelector("style[data-hax-link-pending]")
+    ) {
+      const style = globalThis.document.createElement("style");
+      style.setAttribute("data-hax-link-pending", "");
+      style.textContent =
+        "::highlight(hax-link-pending){background-color:color-mix(in srgb, #009cde 28%, transparent);}";
+      globalThis.document.head.appendChild(style);
+    }
     this.__prompt.haxUIElement = true;
     this.__prompt.classList.add("ignore-activation");
     this.addEventListener("keydown", this.trapKeys.bind(this));
@@ -1015,7 +1047,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       globalThis.HaxTextEditorToolbarConfig.inlineGizmos || {},
     ).map((key) => globalThis.HaxTextEditorToolbarConfig.inlineGizmos[key]);
     buttons = this._filterButtonsByTag(buttons);
-    if (this.barSize === "compact" && !HAXStore.isPlatformAudience("novice")) {
+    if (this.usesBubble) {
       return this._compactConfigWithInlineElements(buttons);
     }
     return buttons.length === 0
@@ -1154,11 +1186,20 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
         attribute: "bar-size",
         reflect: true,
       },
+      /**
+       * set when inline formatting is in the selection bubble
+       */
+      bubbleMode: {
+        type: Boolean,
+        attribute: "bubble-mode",
+        reflect: true,
+      },
     };
   }
 
   disconnectedCallback() {
     this._listenForBubbleMoves(false);
+    this._endLinkEdit(false);
     if (super.disconnectedCallback) super.disconnectedCallback();
   }
 
@@ -1172,12 +1213,12 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
   _handleBubbleToggle(e) {
     const button = e.detail;
     const bubble = this.selectionBubble;
-    if (
-      !bubble ||
-      !button ||
-      !button.classList ||
-      !button.classList.contains("hax-selection-more-toggle")
-    ) {
+    if (!bubble || !button || !button.classList) return;
+    if (button.classList.contains("hax-selection-link")) {
+      this._startLinkEdit();
+      return;
+    }
+    if (!button.classList.contains("hax-selection-more-toggle")) {
       return;
     }
     if (button.toggled) {
@@ -1210,6 +1251,8 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
   }
 
   _hideSelectionBubble(bubble = this.selectionBubble) {
+    if (this.__linkEdit) return;
+    this._removeLinkCard(bubble);
     if (bubble && bubble.hasAttribute("data-open")) {
       bubble.removeAttribute("data-open");
       bubble.removeAttribute("data-more");
@@ -1223,32 +1266,69 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
   }
 
   /**
+   * the link the range sits in, inside the block being edited
+   */
+  _linkFromRange(range) {
+    if (!range || !this.target) return null;
+    let node = range.commonAncestorContainer;
+    while (node && node !== this.target) {
+      if (node.nodeType === 1 && node.tagName === "A") return node;
+      node = node.parentNode;
+    }
+    if (!range.collapsed && range.cloneContents) {
+      const frag = range.cloneContents();
+      if (frag.childNodes.length === 1 && frag.firstChild.tagName === "A") {
+        const start = range.startContainer;
+        const el = start.nodeType === 1 ? start : start.parentNode;
+        const a = el && el.closest ? el.closest("a") : null;
+        if (a && this.target.contains(a)) return a;
+      }
+    }
+    return null;
+  }
+
+  /**
    * In the compact bar, show the inline formatting bubble just below the
    * selected text (above it when there is no room below), with its tip
-   * pointing at the middle of the selection.
+   * pointing at the middle of the selection. A caret in a link shows the
+   * link's address with Edit and Remove Link instead.
    */
   _positionSelectionBubble() {
     const bubble = this.selectionBubble;
     if (!bubble) return;
-    const range = this.range;
+    const range = this.__linkEdit ? this.__linkEdit.range : this.range;
+    const inScope = this.__linkEdit || (this.range && this.isRangeInScope);
     const hasSelection =
-      this.barSize === "compact" &&
+      this.usesBubble &&
+      inScope &&
       range &&
       !range.collapsed &&
-      this.isRangeInScope &&
       range.toString().trim() !== "";
-    if (!hasSelection) {
-      // keep the bubble while one of its own buttons or the link prompt
-      // has focus, so a click on it does not make it vanish mid-action
-      if (
-        !this.__promptOpen &&
-        !bubble.contains(globalThis.document.activeElement)
-      ) {
+    const caretLink =
+      this.usesBubble && inScope && range && range.collapsed
+        ? this._linkFromRange(range)
+        : null;
+    if (!hasSelection && !caretLink && !this.__linkEdit) {
+      // keep the bubble while one of its own buttons has focus, so a click
+      // on it does not make it vanish mid-action
+      if (!bubble.contains(globalThis.document.activeElement)) {
         this._hideSelectionBubble(bubble);
       }
       return;
     }
-    const rect = range.getBoundingClientRect();
+    if (!this.__linkEdit) {
+      if (caretLink) {
+        this._showLinkCard(bubble, caretLink);
+      } else {
+        this._removeLinkCard(bubble);
+      }
+      const link = bubble.querySelector(".hax-selection-link");
+      if (link) link.toggled = !!(hasSelection && this._linkFromRange(range));
+    }
+    let rect = range.getBoundingClientRect();
+    if ((!rect || (!rect.width && !rect.height)) && caretLink) {
+      rect = caretLink.getBoundingClientRect();
+    }
     if (!rect || (rect.width === 0 && rect.height === 0)) {
       this._hideSelectionBubble(bubble);
       return;
@@ -1280,6 +1360,249 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       `${Math.round(tipX)}px`,
     );
     bubble.setAttribute("data-tip", tip);
+  }
+
+  // ---------- links in the bubble ----------
+  _bubbleButton(icon, label, onClick) {
+    const b = globalThis.document.createElement("button");
+    b.type = "button";
+    b.className = "hax-bubble-btn";
+    b.setAttribute("aria-label", label);
+    b.title = label;
+    const i = globalThis.document.createElement("simple-icon-lite");
+    i.setAttribute("icon", icon);
+    i.setAttribute("aria-hidden", "true");
+    b.appendChild(i);
+    b.addEventListener("mousedown", (e) => e.preventDefault());
+    b.addEventListener("click", onClick);
+    return b;
+  }
+  /**
+   * a caret in a link: its address (opens in a new tab), Edit link and
+   * Remove Link
+   */
+  _showLinkCard(bubble, link) {
+    let card = bubble.querySelector(".hax-link-card");
+    if (card && card.__link === link) return;
+    this._removeLinkCard(bubble);
+    card = globalThis.document.createElement("div");
+    card.className = "hax-link-card";
+    card.__link = link;
+    const href = link.getAttribute("href") || "";
+    const go = globalThis.document.createElement("a");
+    go.href = this._safeHref(href) || "#";
+    go.target = "_blank";
+    go.rel = "noopener noreferrer";
+    go.textContent = href.replace(/^https?:\/\//, "");
+    go.title = href;
+    card.appendChild(go);
+    card.appendChild(
+      this._bubbleButton("editor:mode-edit", this.t.editLink, () =>
+        this._startLinkEdit(link),
+      ),
+    );
+    card.appendChild(
+      this._bubbleButton("mdextra:unlink", this.t.unlinkButton, () => {
+        this._unwrapLink(link);
+      }),
+    );
+    bubble.setAttribute("data-mode", "link-card");
+    bubble.appendChild(card);
+  }
+  _removeLinkCard(bubble = this.selectionBubble) {
+    if (!bubble) return;
+    const card = bubble.querySelector(".hax-link-card");
+    if (card) card.remove();
+    if (bubble.getAttribute("data-mode") === "link-card") {
+      bubble.removeAttribute("data-mode");
+    }
+  }
+  _unwrapLink(link) {
+    if (!link || !link.parentNode) return;
+    const parent = link.parentNode;
+    while (link.firstChild) parent.insertBefore(link.firstChild, link);
+    link.remove();
+    parent.normalize();
+    this._hideSelectionBubble();
+  }
+  /**
+   * links may be web addresses, mail, phone, in-page anchors or site
+   * paths; anything else (e.g. script URLs) is not accepted
+   */
+  _safeHref(value) {
+    const v = (value || "").trim();
+    if (!v) return "";
+    if (/^(https?:|mailto:|tel:)/i.test(v)) return v;
+    if (/^[#/?.]/.test(v)) return v;
+    if (/^[a-z][a-z0-9+.-]*:/i.test(v)) return "";
+    if (/^[^\s/]+\.[^\s]+$/.test(v)) return `https://${v}`;
+    return "";
+  }
+  /**
+   * Link turns the bubble into a link field in place; the selected text
+   * stays highlighted while the field has focus
+   */
+  _startLinkEdit(existing) {
+    const bubble = this.selectionBubble;
+    const base = this.range ? this.range.cloneRange() : null;
+    if (!bubble || !base) return;
+    const link = existing || this._linkFromRange(base);
+    if (link) base.selectNodeContents(link);
+    if (base.collapsed) return;
+    const from = bubble.offsetWidth;
+    this._removeLinkCard(bubble);
+    this.__linkEdit = { range: base, link: link };
+    this.__promptOpen = true;
+    // progressive enhancement: without the Highlight API the link field
+    // still works, the text just is not tinted
+    /* eslint-disable baseline-js/use-baseline */
+    if (globalThis.CSS && CSS.highlights && globalThis.Highlight) {
+      CSS.highlights.set("hax-link-pending", new globalThis.Highlight(base));
+    }
+    /* eslint-enable baseline-js/use-baseline */
+    const form = globalThis.document.createElement("form");
+    form.className = "hax-link-form";
+    form.setAttribute("aria-label", link ? this.t.editLink : this.t.addLink);
+    const lead = globalThis.document.createElement("simple-icon-lite");
+    lead.setAttribute("icon", "link");
+    lead.setAttribute("aria-hidden", "true");
+    const input = globalThis.document.createElement("input");
+    input.type = "text";
+    input.inputMode = "url";
+    input.placeholder = this.t.linkPlaceholder;
+    input.setAttribute("aria-label", this.t.linkAddress);
+    input.value = link ? link.getAttribute("href") || "" : "";
+    const apply = this._bubbleButton(
+      "icons:check",
+      link ? this.t.updateLink : this.t.applyLink,
+      () => form.requestSubmit(),
+    );
+    apply.classList.add("apply");
+    apply.disabled = !this._safeHref(input.value);
+    const cancel = this._bubbleButton("icons:close", this.t.cancel, () =>
+      this._endLinkEdit(true),
+    );
+    input.addEventListener("input", () => {
+      apply.disabled = !this._safeHref(input.value);
+      input.removeAttribute("aria-invalid");
+    });
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        this._endLinkEdit(true);
+      }
+    });
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const href = this._safeHref(input.value);
+      if (!href) {
+        input.setAttribute("aria-invalid", "true");
+        return;
+      }
+      this._applyLink(href);
+    });
+    form.append(lead, input, apply, cancel);
+    bubble.setAttribute("data-mode", "link-edit");
+    bubble.appendChild(form);
+    this._positionSelectionBubble();
+    if (!this._reducedMotion && bubble.animate) {
+      bubble.animate(
+        [{ width: `${from}px` }, { width: `${bubble.offsetWidth}px` }],
+        { duration: 180, easing: "cubic-bezier(0.2, 0, 0, 1)" },
+      );
+    }
+    setTimeout(() => {
+      input.focus();
+      input.select();
+    }, 0);
+  }
+  get _reducedMotion() {
+    return (
+      !!globalThis.matchMedia &&
+      globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches
+    );
+  }
+  _restoreRange(range) {
+    if (!range || !this.target) return;
+    if (this.target.focus) this.target.focus({ preventScroll: true });
+    const sel = this.getSelection ? this.getSelection() : null;
+    if (sel) {
+      sel.removeAllRanges();
+      sel.addRange(range);
+    }
+  }
+  _applyLink(href) {
+    const edit = this.__linkEdit;
+    if (!edit) return;
+    this._endLinkEdit(false);
+    this._restoreRange(edit.range);
+    let link = edit.link;
+    if (link) {
+      link.setAttribute("href", href);
+    } else {
+      globalThis.document.execCommand("createLink", false, href);
+      const sel = this.getSelection ? this.getSelection() : null;
+      const r = sel && sel.rangeCount ? sel.getRangeAt(0) : null;
+      link = r ? this._linkFromRange(r) : null;
+    }
+    if (link) {
+      // caret after the link shows its address with Edit and Remove Link
+      const after = globalThis.document.createRange();
+      after.selectNodeContents(link);
+      after.collapse(false);
+      this._restoreRange(after);
+      if (!this._reducedMotion && link.animate) {
+        link.animate(
+          [
+            { backgroundColor: "var(--hax-ui-landed)" },
+            { backgroundColor: "transparent" },
+          ],
+          { duration: 900, easing: "ease-out" },
+        );
+      }
+    }
+  }
+  _endLinkEdit(restore) {
+    const edit = this.__linkEdit;
+    this.__linkEdit = null;
+    this.__promptOpen = false;
+    // progressive enhancement: without the Highlight API the link field
+    // still works, the text just is not tinted
+    /* eslint-disable baseline-js/use-baseline */
+    if (globalThis.CSS && CSS.highlights) {
+      CSS.highlights.delete("hax-link-pending");
+    }
+    /* eslint-enable baseline-js/use-baseline */
+    const bubble = this.selectionBubble;
+    if (bubble) {
+      const form = bubble.querySelector(".hax-link-form");
+      if (form) form.remove();
+      if (bubble.getAttribute("data-mode") === "link-edit") {
+        bubble.removeAttribute("data-mode");
+      }
+    }
+    if (restore && edit) {
+      this._restoreRange(edit.range);
+      this._positionSelectionBubble();
+    }
+  }
+  /**
+   * Ctrl / Cmd + K edits the link in place in the bubble layout
+   */
+  _handleShortcutKeys(e, key) {
+    if (
+      this.usesBubble &&
+      e &&
+      (e.ctrlKey || e.metaKey) &&
+      !e.shiftKey &&
+      !e.altKey &&
+      (e.key === "k" || e.key === "K")
+    ) {
+      e.preventDefault();
+      this._startLinkEdit();
+      return;
+    }
+    return super._handleShortcutKeys(e, key);
   }
 }
 globalThis.customElements.define(
