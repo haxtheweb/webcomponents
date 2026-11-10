@@ -226,6 +226,7 @@ LICENSE
   - **CodeQL must pass on the first push.** Install the CodeQL CLI once with `yarn codeql:install` (agents: do this at the start of any session that will push). `yarn codeql` scans the element folders you changed with the same query suite and `paths-ignore` as the CodeQL PR check, in about a minute, and reports only alerts in files you changed. Fix every alert it reports by changing the code, not by suppressing it; never use `Math.random()` for ids or anything a rule treats as security-sensitive, and use linear-time regexes and full (not single-pass) sanitization. CI still scans the whole repo and is the source of truth.
   - Run `npm test` to ensure all tests pass.
   - Run `yarn lint` to verify code style. ESLint errors fail CI.
+  - **Element `dependencies` are runtime only.** Babel, Rollup, the dev server and test runner, lerna, lint-staged, the HAX CLI and other build/test tooling go in `devDependencies`; every site that installs the element from npm installs its `dependencies`. `yarn precheck` and CI enforce this (`yarn lint:runtime-deps`).
   - Run `hax audit` for web components to confirm DDD compliance.
 - **Commit Guidelines**:
   - Use clear, descriptive commit messages (e.g., "Add i18n support to my-element").
