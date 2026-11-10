@@ -1,11 +1,22 @@
-import { html, css } from "lit";
+import { html, css, nothing } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import {
+  DDDBlockStyles,
+  DDDCompletionTracker,
+  celebrateDDDCompletion,
+  renderDDDBlockHeader,
+} from "@haxtheweb/d-d-d/lib/DDDBlock.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { sanitizedSvgFromMarkup } from "./lib/lrndesign-imagemap-sanitize.js";
 import {
   activityId,
   buildStatement,
+  legacyActivityId,
   XAPI_ACTIVITY_TYPES,
   XAPI_EXTENSIONS,
+  XAPI_ITEM_DELIMITER,
 } from "@haxtheweb/user-action/lib/xapi.js";
 
 // ids for svg title / desc nodes that came without one
@@ -27,8 +38,19 @@ lrndesign-imagemap .hotspot[role="button"]:focus-visible {
   outline-offset: var(--ddd-focus-offset, 2px);
 }
 lrndesign-imagemap .hotspot.selected {
-  stroke: var(--ddd-theme-primary, var(--ddd-theme-default-link, #005fa9));
-  stroke-width: var(--ddd-border-size-md, 2px);
+  stroke: var(
+    --ddd-theme-primary,
+    light-dark(
+      var(--ddd-theme-default-beaverBlue, #1e407c),
+      var(--ddd-theme-default-skyBlue, #009cde)
+    )
+  );
+  stroke-width: var(--ddd-border-size-md, 3px);
+  fill: color-mix(
+    in srgb,
+    var(--ddd-theme-primary, var(--ddd-theme-default-beaverBlue, #1e407c)) 12%,
+    transparent
+  );
 }
 @media (prefers-reduced-motion: reduce) {
   lrndesign-imagemap .hotspot[role="button"] {
@@ -44,15 +66,36 @@ lrndesign-imagemap .hotspot.selected {
  *
  * Learner data: opening a hotspot for the first time sends progressed (one
  * step of exploring the map); opening the last unseen one sends completed.
+ * Each statement carries the ids of the hotspots opened so far as its
+ * result.response, so the learner profile can hand them back: on load the
+ * map asks for them (`learner-progress-request`, as questions and
+ * checklists do) and the footer and done chip pick up where the learner
+ * left off.
  *
  * @demo demo/index.html
  */
-class LrndesignImagemap extends DDD {
+class LrndesignImagemap extends I18NMixin(DDD) {
   constructor() {
     super();
     this._haxstate = false;
     this._opened = new Set();
+    this._completion = new DDDCompletionTracker();
+    this._progressChecked = false;
     this._keydown = this._keydown.bind(this);
+    this.t = {
+      ...this.t,
+      imageMap: "Image map",
+      interactive: "Interactive",
+      hotspot: "Hotspot",
+      hotspotPosition: "{n} of {total}",
+      hotspotsExplored: "{n} of {total} hotspots explored",
+      explored: "Explored",
+      close: "Close",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     import("@haxtheweb/relative-heading/relative-heading.js");
     // prettier-ignore
     import(
@@ -63,13 +106,14 @@ class LrndesignImagemap extends DDD {
   static get styles() {
     return [
       super.styles,
+      DDDBlockStyles,
       css`
         :host {
           display: block;
           font-family: var(--ddd-font-primary);
           color: light-dark(
             var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-limestoneGray)
+            var(--ddd-theme-default-white)
           );
           margin: var(--ddd-spacing-4) 0;
         }
@@ -77,102 +121,297 @@ class LrndesignImagemap extends DDD {
           margin: var(--ddd-spacing-0);
           padding: var(--ddd-spacing-0);
         }
-        figcaption {
-          margin: 0 0 var(--ddd-spacing-4);
+        /* the hotspot popover may reach past the frame */
+        figure.ddd-block {
+          overflow: visible;
         }
-        #heading h1,
+        figcaption {
+          margin: 0;
+        }
+        /* the label keeps its relative-heading level and reads as the
+           block title */
+        #heading :is(h1, h2, h3, h4, h5, h6),
         #heading ::slotted(*) {
-          font-family: var(--ddd-font-navigation);
+          margin: 0;
+          font-family: var(--ddd-font-primary);
+          font-size: var(--ddd-font-size-xs);
           font-weight: var(--ddd-font-weight-bold);
-          margin: 0 0 var(--ddd-spacing-2);
+          line-height: var(--ddd-lh-120);
+          overflow-wrap: anywhere;
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-white)
+          );
         }
         #desc {
-          font-size: var(--ddd-font-size-s);
+          padding: var(--ddd-spacing-3) var(--ddd-spacing-4) 0;
+          font-size: var(--ddd-font-size-4xs);
           line-height: var(--ddd-lh-150, 1.5);
+        }
+        #desc ::slotted(*) {
+          margin-top: 0;
+        }
+        .map {
+          position: relative;
+          padding: var(--ddd-spacing-3) var(--ddd-spacing-4)
+            var(--ddd-spacing-4);
         }
         #svg::slotted(svg) {
           display: block;
           max-width: 100%;
           height: auto;
+          border-radius: var(--ddd-radius-sm);
         }
         /* always empty; kept so existing selectors still find it */
         :host #buttons {
           display: none;
         }
 
+        /* the vocab-term popover look */
         simple-popover {
           max-width: var(--lrndesign-imagemap-popover-maxWidth, 525px);
           max-height: var(--lrndesign-imagemap-popover-maxHeight, 300px);
           font-family: var(--ddd-font-primary);
-          font-size: var(--ddd-font-size-s);
-          line-height: var(--ddd-lh-150, 1.5);
-          --simple-popover-padding: var(--ddd-spacing-4);
-          --simple-popover-border-radius: var(--ddd-radius-sm);
+          font-size: var(--ddd-font-size-4xs);
+          line-height: var(--ddd-lh-140, 1.4);
+          --simple-popover-padding: var(--ddd-spacing-3);
+          --simple-popover-border-radius: var(--ddd-radius-md);
+          --simple-popover-border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          --simple-popover-background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-coalyGray)
+          );
+          --simple-popover-color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
           --simple-popover-box-shadow: var(--ddd-boxShadow-sm);
         }
         simple-popover[for=""] {
           display: none;
         }
+        .popover-header {
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+          margin: 0 0 var(--ddd-spacing-1);
+        }
+        .popover-chip {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          flex: none;
+          width: var(--ddd-icon-xxs);
+          height: var(--ddd-icon-xxs);
+          border-radius: var(--ddd-radius-circle);
+          background-color: light-dark(
+            var(--ddd-theme-default-beaverBlue),
+            var(--ddd-theme-default-skyBlue)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+          --simple-icon-color: currentColor;
+          --simple-icon-width: var(--ddd-icon-4xs);
+          --simple-icon-height: var(--ddd-icon-4xs);
+        }
+        .popover-header .ddd-block-label {
+          flex: 1 1 auto;
+        }
+        .popover-header .ddd-block-action {
+          min-width: var(--ddd-icon-xs);
+          height: var(--ddd-icon-xs);
+        }
         simple-popover .sub-heading > *:first-child {
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-xs);
+          font-family: var(--ddd-font-primary);
+          font-size: var(--ddd-font-size-4xs);
           font-weight: var(--ddd-font-weight-bold);
-          margin: 0 0 var(--ddd-spacing-2);
+          margin: 0 0 var(--ddd-spacing-1);
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-white)
+          );
+        }
+        .progress {
+          display: inline-flex;
+          gap: var(--ddd-spacing-1);
+        }
+        .progress span {
+          width: var(--ddd-spacing-5);
+          height: var(--ddd-spacing-1);
+          border-radius: var(--ddd-radius-xs);
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+        }
+        .progress span[data-explored] {
+          background-color: light-dark(
+            var(--ddd-theme-default-beaverBlue),
+            var(--ddd-theme-default-skyBlue)
+          );
+        }
+        .ddd-block-footer {
+          font-family: var(--ddd-font-navigation);
+          font-weight: var(--ddd-font-weight-medium);
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
         }
 
         @media print {
           #svg,
-          simple-popover {
+          simple-popover,
+          .ddd-block-chip,
+          .ddd-block-label,
+          .ddd-block-footer {
             display: none;
+          }
+          .ddd-block,
+          .ddd-block-header {
+            border: none;
           }
         }
       `,
     ];
   }
 
+  /**
+   * How many hotspots there are and how many the learner has opened
+   */
+  get _progress() {
+    const hotspots = this.hotspotDetails || [];
+    const total = hotspots.length;
+    const explored = hotspots.filter((h) => this._opened.has(h.id)).length;
+    return { total, explored, done: total > 0 && explored >= total };
+  }
+  /**
+   * fill {placeholders} in a translated string
+   */
+  _format(str, values) {
+    return Object.keys(values).reduce(
+      (out, key) => out.split(`{${key}}`).join(String(values[key])),
+      String(str || ""),
+    );
+  }
   render() {
+    const { total, explored, done } = this._progress;
+    const active = this.__activeHotspot;
+    const position = active
+      ? (this.hotspotDetails || []).findIndex((h) => h.id === active.id) + 1
+      : 0;
     return html`
-      <figure id="figure">
+      <figure id="figure" class="ddd-block">
         <figcaption>
-          <relative-heading
-            disable-link
-            id="heading"
-            parent="${this.parent || this.subtopicOf}"
-          >
-            ${
-              this.label
-                ? html` <h1>${this.label}</h1> `
-                : html` <slot name="heading"></slot> `
-            }
-          </relative-heading>
+          ${renderDDDBlockHeader({
+            icon: "image:image",
+            label: `${this.t.imageMap} · ${this.t.interactive}`,
+            done,
+            doneLabel: this.t.explored,
+            after: html`<relative-heading
+              disable-link
+              id="heading"
+              parent="${this.parent || this.subtopicOf}"
+            >
+              ${
+                this.label
+                  ? html` <h1>${this.label}</h1> `
+                  : html` <slot name="heading"></slot> `
+              }
+            </relative-heading>`,
+          })}
           <div id="desc"><slot name="desc"></slot></div>
           <slot name="source" hidden></slot>
           <div id="buttons"></div>
         </figcaption>
-        <slot id="svg" name="svg"></slot>
+        <div class="map ddd-block-body">
+          <slot id="svg" name="svg"></slot>
+        </div>
         <simple-popover
           auto
-          ?hidden="${!this.__activeHotspot}"
-          position="${
-            !this.__activeHotspot ? "bottom" : this.__activeHotspot.position
-          }"
-          .for="${!this.__activeHotspot ? undefined : this.__activeHotspot.id}"
+          ?hidden="${!active}"
+          position="${!active ? "bottom" : active.position}"
+          .for="${!active ? undefined : active.id}"
         >
+          <div class="popover-header">
+            <span class="popover-chip" aria-hidden="true"
+              ><simple-icon-lite icon="image:adjust"></simple-icon-lite
+            ></span>
+            <span class="ddd-block-label"
+              >${this.t.hotspot} ·
+              ${this._format(this.t.hotspotPosition, {
+                n: position,
+                total,
+              })}</span
+            >
+            <button
+              class="ddd-block-action close"
+              aria-label="${this.t.close}"
+              title="${this.t.close}"
+              @click="${this._closeClicked}"
+            >
+              <simple-icon-lite icon="close"></simple-icon-lite>
+            </button>
+          </div>
           <relative-heading
             disable-link
             class="sub-heading"
             parent="heading"
-            id="subheading-${
-              !this.__activeHotspot ? undefined : this.__activeHotspot.id
-            }"
+            id="subheading-${!active ? undefined : active.id}"
           >
-            <h2>${!this.__activeHotspot ? "" : this.__activeHotspot.label}</h2>
+            <h2>${!active ? "" : active.label}</h2>
           </relative-heading>
           <slot id="details" name="details"></slot>
         </simple-popover>
+        ${
+          total
+            ? html`<div class="ddd-block-footer">
+                <span class="progress" aria-hidden="true"
+                  >${(this.hotspotDetails || []).map(
+                    (h) =>
+                      html`<span
+                        ?data-explored="${this._opened.has(h.id)}"
+                      ></span>`,
+                  )}</span
+                >
+                <span class="explored" aria-live="polite"
+                  >${this._format(this.t.hotspotsExplored, {
+                    n: explored,
+                    total,
+                  })}</span
+                >
+              </div>`
+            : nothing
+        }
       </figure>
       <slot></slot>
     `;
+  }
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    // the burst plays once, the first time the learner explores the last
+    // hotspot; never for a map already explored when it loads
+    if (this._progressChecked && (this.hotspotDetails || []).length) {
+      if (this._completion.update("map", this._progress.done)) {
+        celebrateDDDCompletion(
+          this.shadowRoot.querySelector(".ddd-block-chip"),
+        );
+      }
+    }
+  }
+  /**
+   * Close button in the popover: same as Escape
+   */
+  _closeClicked() {
+    this.closeHotspot();
+    this.__activeHotspot = undefined;
   }
   static get tag() {
     return "lrndesign-imagemap";
@@ -186,7 +425,7 @@ class LrndesignImagemap extends DDD {
       event: "user-engagement",
       verbs: ["progressed", "completed"],
       objectType: "http://adlnet.gov/expapi/activities/interaction",
-      result: ["completion", "score"],
+      result: ["completion", "score", "response"],
       countsTowardCompletion: false,
       done: "never required; completed once every hotspot has been opened",
     };
@@ -212,10 +451,89 @@ class LrndesignImagemap extends DDD {
     super.connectedCallback();
     this.addEventListener("keydown", this._keydown);
     this._addHotspotStyles();
+    if (!this._progressListeners) {
+      this._progressListeners = new AbortController();
+      const opts = { signal: this._progressListeners.signal };
+      globalThis.addEventListener(
+        "learner-progress-ready",
+        () => this._requestLearnerProgress(),
+        opts,
+      );
+      globalThis.addEventListener(
+        "learner-progress-cleared",
+        () => this._clearLearnerProgress(),
+        opts,
+      );
+    }
   }
   disconnectedCallback() {
     this.removeEventListener("keydown", this._keydown);
+    if (this._progressListeners) {
+      this._progressListeners.abort();
+      this._progressListeners = null;
+    }
     super.disconnectedCallback();
+  }
+  /**
+   * Ask a learner progress listener (the HAXcms learner profile) which
+   * hotspots this visitor opened before, so the footer and done chip
+   * survive a reload. Needs the hotspots, since they are part of the
+   * activity id.
+   */
+  _requestLearnerProgress() {
+    if (
+      !this.isConnected ||
+      this._haxstate ||
+      !(this.hotspotDetails || []).length
+    ) {
+      return;
+    }
+    const fingerprint = this._xapiFingerprint();
+    const detail = {
+      activityId: activityId(this, fingerprint),
+      tag: LrndesignImagemap.tag,
+      record: null,
+    };
+    const legacy = legacyActivityId(this, fingerprint);
+    if (legacy !== detail.activityId) {
+      detail.legacyActivityId = legacy;
+    }
+    globalThis.dispatchEvent(
+      new CustomEvent("learner-progress-request", { detail }),
+    );
+    const record = detail.record;
+    if (record && typeof record === "object") {
+      this._applyLearnerRecord(record);
+    }
+    this._progressChecked = true;
+    this.requestUpdate();
+  }
+  /**
+   * Put back the hotspots a saved record says were opened. The response
+   * lists their ids; a record with no response (sent before ids were
+   * kept) still restores "done" when the map was completed.
+   */
+  _applyLearnerRecord(record) {
+    const ids = (this.hotspotDetails || []).map((h) => h.id);
+    let opened = [];
+    if (typeof record.response === "string" && record.response) {
+      opened = record.response
+        .split(XAPI_ITEM_DELIMITER)
+        .filter((id) => ids.includes(id));
+    } else if (record.done) {
+      opened = ids;
+    }
+    opened.forEach((id) => this._opened.add(id));
+    // what was restored is not a new completion
+    this._completion.forget("map");
+  }
+  /**
+   * The learner cleared their progress: start exploring again
+   */
+  _clearLearnerProgress() {
+    this._opened.clear();
+    this._completion.forget("map");
+    this.requestUpdate();
   }
   /**
    * One light DOM stylesheet for the hotspot shapes in the slotted svg
@@ -373,6 +691,10 @@ class LrndesignImagemap extends DDD {
     this.hotspotDetails.forEach((obj) => {
       obj.print.loadSvg(data, hotspots);
     });
+    this._requestLearnerProgress();
+    // without a learner profile there is nothing to restore; start
+    // watching for completion from here
+    this._progressChecked = true;
   }
   /**
    * Gets / Sets description and label
@@ -472,6 +794,8 @@ class LrndesignImagemap extends DDD {
               result: {
                 completion: done,
                 score: { raw: seen, min: 0, max: total },
+                // which hotspots were opened, read back on the next visit
+                response: [...this._opened].join(XAPI_ITEM_DELIMITER),
               },
               context: {
                 extensions: {
@@ -487,6 +811,7 @@ class LrndesignImagemap extends DDD {
     if (done) {
       send("completed");
     }
+    this.requestUpdate();
   }
   /**
    * Author content that identifies this map for its xAPI activity id
