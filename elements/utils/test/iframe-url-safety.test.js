@@ -94,15 +94,9 @@ describe("iframe / URL safety helpers", () => {
       });
     });
 
-    // BUG: isCrossOriginURL() compares URL.origin, which is the string "null"
-    // for javascript: and about: URLs, so they count as cross-origin and get
-    // "allow-scripts allow-same-origin". A javascript: or about:blank frame
-    // runs with the embedding page's origin, so that combination lets it
-    // reach the parent page. hax-store.js applies this sandbox to iframe
-    // src values taken straight from content (lib/hax-store.js, the
-    // iframeSandboxForSource(frameSrc) call in nodeToContent) without
-    // sanitizing the URL first; iframe-loader sanitizes before calling.
-    it.skip("uses the strict sandbox for javascript: and about: sources", () => {
+    // javascript: / about: frames run as the embedding page, so they never
+    // get allow-same-origin
+    it("uses the strict sandbox for javascript: and about: sources", () => {
       ["javascript:alert(1)", "JavaScript:void(0)", "about:blank"].forEach(
         (src) => {
           expect(iframeSandboxForSource(src), src).to.equal(STRICT);
