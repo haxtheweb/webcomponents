@@ -315,11 +315,9 @@ describe("keyboard flow: HAXcms editor top bar + hax-tray panels", function () {
     throw new Error("user menu toggle not reached");
   });
 
-  // KNOWN BUG: hax-tray.js sets `hax-gizmo-browser { visibility: visible }`,
-  // which overrides `:host([collapsed]) .detail { visibility: hidden }`, so
-  // while the tray is collapsed (width 0, opacity 0) its "Filter Blocks"
-  // input is still in the tab order and focus lands on an invisible field.
-  it.skip("KNOWN BUG: a collapsed tray keeps its controls out of the tab order", async () => {
+  // a collapsed tray is width 0 and invisible; its panel is inert so
+  // nothing in it (such as "Filter Blocks") stays in the tab order
+  it("a collapsed tray keeps its controls out of the tab order", async () => {
     tray.trayDetail = "content-add";
     tray.collapsed = true;
     await tray.updateComplete;
