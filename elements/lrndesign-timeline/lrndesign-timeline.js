@@ -22,6 +22,7 @@ import { DDDBlockStyles } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
  * @lit-html
  * @lit-element
  * @demo demo/index.html
+ * @fires responsive-element - asks responsive-utility to track this element's size (sent on globalThis by registerResponsiveElement)
  */
 class LrndesignTimeline extends I18NMixin(SchemaBehaviors(SimpleColors)) {
   //styles function

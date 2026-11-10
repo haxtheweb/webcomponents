@@ -120,6 +120,7 @@ class GridPlateLayoutOptions {
  * `A grid plate based on a layout that manipulates it.`
  * @demo demo/index.html
  * @element grid-plate
+ * @fires responsive-element - asks responsive-utility to track this element's size (sent on globalThis by registerResponsiveElement)
  */
 class GridPlate extends LitElement {
   /**
