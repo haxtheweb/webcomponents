@@ -598,9 +598,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           display: none;
         }
         .site-menu::part(menuToggle),
-        #user-menu::part(menuToggle) {
+        #user-menu::part(menuToggle),
+        #previewmenu::part(menuToggle) {
           display: flex;
           align-items: center;
+        }
+        /* the device menu's toggle sits on the bar's line like the house:
+           its button centered in the 64px bar, level with Preview */
+        #previewmenu {
+          height: var(--top-bar-height, 64px);
         }
         .site-menu[hidden] {
           display: none;
