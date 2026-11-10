@@ -2,17 +2,40 @@
  * Copyright 2021
  * @license MIT, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { LitElement, html, css, nothing } from "lit";
+import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import {
+  DDDBlockStyles,
+  renderDDDBlockHeader,
+} from "@haxtheweb/d-d-d/lib/DDDBlock.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js";
+
+// fill {key} placeholders in a translated string
+const fill = (str, values) =>
+  String(str).replace(/\{([a-zA-Z]+)\}/g, (m, k) =>
+    Object.prototype.hasOwnProperty.call(values, k) ? String(values[k]) : m,
+  );
+
 /**
  * `github-preview`
  * `A simple element that displays information about a github repository.`
+ *
+ * A DDD block: GitHub chip, "GitHub · Repository" label, "org / repo"
+ * title and an open-on-GitHub header action; the description in the body
+ * (and the README in extended mode); language, stars and forks in the
+ * footer. Fluid up to its column; the --github-preview-* properties still
+ * override the defaults.
+ *
  * @demo demo/index.html
  * @element github-preview
  */
-class GithubPreview extends IntersectionObserverMixin(LitElement) {
+class GithubPreview extends I18NMixin(
+  IntersectionObserverMixin(DDDSuper(LitElement)),
+) {
   static get properties() {
     let props = {};
     if (super.properties) {
@@ -48,6 +71,10 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
       },
       // used for error handling in api calls
       __assetAvailable: {
+        type: Boolean,
+      },
+      // a request really failed (not just still loading)
+      __failed: {
         type: Boolean,
       },
       // allows for an extended card that previews the repository readme
@@ -100,9 +127,12 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
 
   static get styles() {
     return [
+      super.styles,
+      DDDBlockStyles,
       css`
         :host {
-          display: inline-flex;
+          display: block;
+          max-width: 100%;
         }
 
         :host([hidden]) {
@@ -193,91 +223,141 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
           background-color: #000080;
         }
 
-        a {
-          display: inline-flex;
+        .ddd-block {
+          width: var(--github-preview-container-width, 100%);
+          max-width: 100%;
+          padding: var(--github-preview-container-padding, 0);
+          border-radius: var(
+            --github-preview-container-border-radius,
+            var(--ddd-radius-md)
+          );
+          --ddd-block-background: var(--github-preview-bg-color, transparent);
+          color: var(--github-preview-div-text-color, inherit);
+        }
+        .ddd-block[aria-busy="true"] {
+          --ddd-block-chip-background: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            color-mix(
+              in srgb,
+              var(--ddd-theme-default-slateGray) 22%,
+              var(--ddd-theme-default-potentialMidnight)
+            )
+          );
+          --ddd-block-chip-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-white)
+          );
+        }
+        .ddd-block-title {
+          font-size: var(
+            --github-preview-header-font-size,
+            var(--ddd-font-size-xs)
+          );
+        }
+        .ddd-block-title a {
+          color: var(--github-preview-link-text-color, inherit);
           text-decoration: none;
-          color: var(--github-preview-link-text-color, white);
         }
-
-        :host([extended]) .container {
-          width: var(--github-preview-container-width, 800px);
-          padding: var(--github-preview-container-padding, 10px);
+        /* no size jump on hover unless a hover size is set */
+        .ddd-block-title a:hover {
+          text-decoration: underline;
+          font-size: var(--github-preview-header-hover-font-size, inherit);
         }
-
-        .container {
-          background-color: var(--github-preview-bg-color, black);
-          border-radius: var(--github-preview-container-border-radius, 10px);
-          width: var(--github-preview-container-width, 400px);
-          padding: var(--github-preview-container-padding, 5px);
+        .ddd-block-title a:focus-visible {
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
         }
-
-        @media screen and (max-width: 400px) {
-          .container {
-            width: var(--github-preview-container-width, 350px);
-          }
+        .ddd-block-body {
+          padding: var(--ddd-spacing-3) var(--ddd-spacing-4);
         }
-
-        .header-container {
-          display: flex;
-          align-items: center;
+        .description,
+        .message {
+          margin: var(--ddd-spacing-0);
+          font-size: var(--ddd-font-size-4xs);
+          line-height: var(--ddd-lh-150);
+          overflow-wrap: anywhere;
         }
-
-        .header-container div {
-          margin-left: 10px;
-          font-size: var(--github-preview-header-font-size, 22px);
-          font-weight: bold;
+        .skeleton {
+          display: block;
+          height: var(--ddd-spacing-2);
+          width: 80%;
+          border-radius: var(--ddd-radius-sm);
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            color-mix(
+              in srgb,
+              var(--ddd-theme-default-slateGray) 22%,
+              var(--ddd-theme-default-potentialMidnight)
+            )
+          );
         }
-
-        .header-container div a:hover {
-          font-size: var(--github-preview-header-hover-font-size, 24px);
+        .skeleton + .skeleton {
+          width: 55%;
+          margin-top: var(--ddd-spacing-2);
         }
-
-        .stats-container {
-          display: flex;
-          align-items: center;
+        .sr-only {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          margin: -1px;
+          padding: var(--ddd-spacing-0);
+          overflow: hidden;
+          clip: rect(0 0 0 0);
+          white-space: nowrap;
+          border: 0;
         }
-
-        .lang-circle {
-          height: 15px;
-          width: 15px;
-          background-color: grey;
-          border-radius: 50%;
-          margin: 0px 5px 0px 5px;
-        }
-
-        div {
-          color: var(--github-preview-div-text-color, white);
-        }
-
-        .description {
-          padding: 8px 0px 8px 0px;
-        }
-
-        .stats-text {
-          margin: 0px 5px 0px 5px;
-        }
-
-        :host([readme-extended]) .readme-container {
-          overflow-y: scroll;
-        }
-
         .readme-container {
+          margin-top: var(--ddd-spacing-3);
+          padding: var(--ddd-spacing-3);
+          border: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          border-radius: var(--ddd-radius-sm);
           overflow-y: hidden;
           overflow-x: hidden;
           max-height: var(--github-preview-readme-container-max-height, 300px);
         }
-
-        .readme-btn {
-          display: inline-block;
-          padding: 0.3em 2em;
-          border-radius: 2em;
-          box-sizing: border-box;
-          text-align: center;
+        :host([readme-extended]) .readme-container {
+          overflow-y: auto;
         }
-
         .readme-btn-container {
           display: flex;
-          justify-content: center;
+          margin-top: var(--ddd-spacing-3);
+        }
+        .stats-container {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: var(--ddd-spacing-4);
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-4xs);
+          --simple-icon-width: var(--ddd-icon-4xs);
+          --simple-icon-height: var(--ddd-icon-4xs);
+          --simple-icon-color: currentColor;
+        }
+        .stat {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-1);
+        }
+        .lang-circle {
+          height: var(--ddd-spacing-3);
+          width: var(--ddd-spacing-3);
+          flex: none;
+          background-color: var(--ddd-theme-default-limestoneGray);
+          border-radius: var(--ddd-radius-circle);
+          box-shadow: inset 0 0 0 1px
+            color-mix(
+              in srgb,
+              var(--ddd-theme-default-coalyGray) 25%,
+              transparent
+            );
         }
       `,
     ];
@@ -293,7 +373,8 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
       canEditSource: true,
       gizmo: {
         title: "Github Preview",
-        description: "Accessible figure with long description",
+        description:
+          "Preview a GitHub repository: description, language, stars and forks.",
         icon: "mdi-social:github-circle",
         color: "grey",
         tags: ["Other", "git", "code", "github", "repo", "organization"],
@@ -406,92 +487,139 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
     return "github-preview";
   }
 
+  /**
+   * Data arrived and the card can show it
+   */
+  get ready() {
+    return Boolean(this.__assetAvailable && this.elementVisible);
+  }
+
+  _stats() {
+    return html`<div class="ddd-block-footer stats-container">
+      <span class="stat">
+        <span class="lang-circle" part="github-preview-lang-circle"></span>
+        <span class="stats-text">${this.repoLang}</span>
+      </span>
+      <span class="stat">
+        <simple-icon-lite
+          icon="star-border"
+          aria-hidden="true"
+        ></simple-icon-lite>
+        <span class="stats-text">${this.__stars} ${this.t.stars}</span>
+      </span>
+      <span class="stat">
+        <simple-icon-lite
+          icon="communication:call-split"
+          aria-hidden="true"
+        ></simple-icon-lite>
+        <span class="stats-text">${this.__forks} ${this.t.forks}</span>
+      </span>
+    </div>`;
+  }
+
+  _title() {
+    if (this.ready && this.extended) {
+      return html`<a
+          href="${this.url}/${this.org}"
+          target="_blank"
+          rel="noopener noreferrer"
+          @click="${this._clickLink}"
+          >${this.org}</a
+        >
+        /
+        <a
+          href="${this.url}/${this.org}/${this.repo}"
+          target="_blank"
+          rel="noopener noreferrer"
+          @click="${this._clickLink}"
+          >${this.repo}</a
+        >`;
+    }
+    if (!this.org && !this.repo) {
+      return "";
+    }
+    return `${this.org || ""} / ${this.repo || ""}`;
+  }
+
+  _body() {
+    if (this.ready) {
+      return html`<p class="description">${this.__description}</p>
+        ${
+          this.extended
+            ? html`<div
+                  class="readme-container"
+                  tabindex="${this.readmeExtended ? "0" : "-1"}"
+                >
+                  <wc-markdown>
+                    <script type="wc-content">
+                      ${this.__readmeText}
+                    </script>
+                  </wc-markdown>
+                </div>
+                ${
+                  this.readmeExtended
+                    ? nothing
+                    : html`<div class="readme-btn-container">
+                        <button
+                          type="button"
+                          @click=${this.readmeViewMoreHandler}
+                          class="readme-btn ddd-block-action has-text"
+                        >
+                          ${this.viewMoreText}
+                        </button>
+                      </div>`
+                }`
+            : nothing
+        }`;
+    }
+    if (this.__failed) {
+      return html`<p class="message" role="status">${this.notFoundText}</p>`;
+    }
+    return html`<span class="skeleton" aria-hidden="true"></span
+      ><span class="skeleton" aria-hidden="true"></span
+      ><span class="sr-only" role="status">${this.t.loading}</span>`;
+  }
+
   render() {
-    return this.__assetAvailable && this.elementVisible
-      ? this.extended
-        ? html`
-            <div class="container">
-              <div class="header-container">
-                <simple-icon-lite icon="book"></simple-icon-lite>
-                <div>
-                  <a
-                    href="${this.url}/${this.org}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    @click="${this._clickLink}"
-                  >
-                    ${this.org}
-                  </a>
-                  /
-                  <a
-                    href="${this.url}/${this.org}/${this.repo}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    @click="${this._clickLink}"
-                  >
-                    ${this.repo}
-                  </a>
-                </div>
-              </div>
-              <hr />
-              <div>${this.__description}</div>
-              <hr />
-              <div class="readme-container">
-                <wc-markdown>
-                  <script type="wc-content">
-                    ${this.__readmeText}
-                  </script>
-                </wc-markdown>
-              </div>
-              <div class="readme-btn-container">
-                <button @click=${this.readmeViewMoreHandler} class="readme-btn">
-                  ${this.viewMoreText}
-                </button>
-              </div>
-              <div class="stats-container">
-                <span
-                  class="lang-circle"
-                  part="github-preview-lang-circle"
-                ></span>
-                <div class="stats-text">${this.repoLang}</div>
-                <simple-icon-lite icon="star"></simple-icon-lite>
-                <div class="stats-text">${this.__stars}</div>
-                <simple-icon-lite icon="social:share"></simple-icon-lite>
-                <div class="stats-text">${this.__forks}</div>
-              </div>
-            </div>
-          `
-        : html`
-            <a
-              href="${this.url}/${this.org}/${this.repo}"
-              target="_blank"
-              rel="noopener noreferrer"
-              @click="${this._clickLink}"
-            >
-              <div class="container">
-                <div class="header-container">
-                  <simple-icon-lite icon="book"></simple-icon-lite>
-                  <div>${this.repo}</div>
-                </div>
-
-                <div class="description">${this.__description}</div>
-
-                <div class="stats-container">
-                  <span class="lang-circle"></span>
-                  <div class="stats-text">${this.repoLang}</div>
-                  <simple-icon-lite icon="star"></simple-icon-lite>
-                  <div class="stats-text">${this.__stars}</div>
-                  <simple-icon-lite icon="social:share"></simple-icon-lite>
-                  <div class="stats-text">${this.__forks}</div>
-                </div>
-              </div>
-            </a>
-          `
-      : html`
-          <div class="container">
-            <h1>${this.notFoundText}</h1>
-          </div>
-        `;
+    const ready = this.ready;
+    const loading = !ready && !this.__failed;
+    const openLabel = fill(this.t.openOnGitHub, {
+      org: this.org,
+      repo: this.repo,
+    });
+    return html`
+      <div
+        class="ddd-block container"
+        role="group"
+        aria-labelledby="hdr"
+        aria-busy="${loading ? "true" : "false"}"
+      >
+        ${renderDDDBlockHeader({
+          id: "hdr",
+          icon: "mdi-social:github-circle",
+          label: `${this.t.github} · ${this.t.repository}`,
+          title: this._title(),
+          actions:
+            ready && !this.extended
+              ? html`<a
+                  class="ddd-block-action open-link"
+                  href="${this.url}/${this.org}/${this.repo}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="${openLabel}"
+                  title="${openLabel}"
+                  @click="${this._clickLink}"
+                  ><simple-icon-lite
+                    icon="icons:open-in-new"
+                    aria-hidden="true"
+                  ></simple-icon-lite
+                ></a>`
+              : nothing,
+        })}
+        <div class="ddd-block-body">${this._body()}</div>
+        ${ready ? this._stats() : nothing}
+      </div>
+    `;
   }
 
   /**
@@ -505,11 +633,27 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
     this.extended = false;
     this.readMe = "README.md";
     this.branch = "master";
-    this.viewMoreText = "View More";
-    this.notFoundText = "Asset not found";
+    this.__failed = false;
     this.headers = {
       cache: "force-cache",
     };
+    this.t = {
+      github: "GitHub",
+      repository: "Repository",
+      stars: "stars",
+      forks: "forks",
+      loading: "Loading",
+      viewMore: "View More",
+      notFound: "Asset not found",
+      openOnGitHub: "Open {org}/{repo} on GitHub",
+    };
+    this.registerLocalization({
+      context: this,
+      basePath: import.meta.url,
+    });
+    // translated defaults; view-more-text / not-found-text still win
+    this.i18nDefault("viewMoreText", "viewMore");
+    this.i18nDefault("notFoundText", "notFound");
   }
 
   /*
@@ -547,17 +691,22 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
           console.error(error);
         });
     }
+    this.__failed = false;
     fetch(`${apiUrl}/repos/${org}/${repo}`)
       .then((response) => {
         if (response.ok) {
           return response.json();
         }
+        // a real failure (404, rate limit): say so instead of loading on
+        this.__assetAvailable = false;
+        this.__failed = true;
       })
       .then((json) => {
         this.handleResponse(json);
       })
       .catch((_error) => {
         this.__assetAvailable = false;
+        this.__failed = true;
       });
   }
 
@@ -567,7 +716,6 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
    */
   readmeViewMoreHandler(_event) {
     this.readmeExtended = true;
-    this.shadowRoot.querySelector(".readme-btn").remove();
   }
 
   /*
@@ -640,6 +788,7 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
     }
     if (!this.repo || !this.org || !this.url) {
       this.__assetAvailable = false;
+      this.__failed = true;
     }
   }
   /**
@@ -695,7 +844,7 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
           propName === "__readmeText")
       ) {
         this.wcmarkdown = this.shadowRoot.querySelector(
-          "div > div.readme-container > wc-markdown",
+          ".readme-container wc-markdown",
         );
       }
     });

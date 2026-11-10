@@ -8,7 +8,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "`github-preview`\n`A simple element that displays information about a github repository.`",
+          "description": "`github-preview`\n`A simple element that displays information about a github repository.`\n\nA DDD block: GitHub chip, \"GitHub · Repository\" label, \"org / repo\"\ntitle and an open-on-GitHub header action; the description in the body\n(and the README in extended mode); language, stars and forks in the\nfooter. Fluid up to its column; the --github-preview-* properties still\noverride the defaults.",
           "name": "GithubPreview",
           "members": [
             {
@@ -28,6 +28,24 @@
               "static": true,
               "description": "Convention we use",
               "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "ready",
+              "description": "Data arrived and the card can show it",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_stats"
+            },
+            {
+              "kind": "method",
+              "name": "_title"
+            },
+            {
+              "kind": "method",
+              "name": "_body"
             },
             {
               "kind": "method",
@@ -183,23 +201,13 @@
             },
             {
               "kind": "field",
-              "name": "viewMoreText",
+              "name": "__failed",
               "privacy": "public",
               "type": {
-                "text": "string"
+                "text": "boolean"
               },
-              "default": "\"View More\"",
-              "attribute": "view-more-text"
-            },
-            {
-              "kind": "field",
-              "name": "notFoundText",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"Asset not found\"",
-              "attribute": "not-found-text"
+              "default": "false",
+              "attribute": "__failed"
             },
             {
               "kind": "field",
@@ -210,6 +218,14 @@
               },
               "default": "{ cache: \"force-cache\", }",
               "attribute": "headers"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ github: \"GitHub\", repository: \"Repository\", stars: \"stars\", forks: \"forks\", loading: \"Loading\", viewMore: \"View More\", notFound: \"Asset not found\", openOnGitHub: \"Open {org}/{repo} on GitHub\", }"
             },
             {
               "kind": "field",
@@ -287,6 +303,24 @@
             },
             {
               "kind": "field",
+              "name": "viewMoreText",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "view-more-text"
+            },
+            {
+              "kind": "field",
+              "name": "notFoundText",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "not-found-text"
+            },
+            {
+              "kind": "field",
               "name": "__readmeText",
               "privacy": "public",
               "type": {
@@ -346,6 +380,14 @@
               "fieldName": "__assetAvailable"
             },
             {
+              "name": "__failed",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "__failed"
+            },
+            {
               "name": "extended",
               "type": {
                 "text": "boolean"
@@ -373,7 +415,6 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"View More\"",
               "fieldName": "viewMoreText"
             },
             {
@@ -381,7 +422,6 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"Asset not found\"",
               "fieldName": "notFoundText"
             },
             {
@@ -434,8 +474,16 @@
           ],
           "mixins": [
             {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            },
+            {
               "name": "IntersectionObserverMixin",
               "package": "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js"
+            },
+            {
+              "name": "DDDSuper",
+              "package": "@haxtheweb/d-d-d/d-d-d.js"
             }
           ],
           "superclass": {
