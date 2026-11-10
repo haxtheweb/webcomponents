@@ -217,11 +217,11 @@ export class PageFlagComment extends I18NMixin(LitElement) {
           display: block;
         }
         simple-emoji-picker {
-          float: right;
+          float: inline-end;
           width: 40px;
         }
         .emoji {
-          float: right;
+          float: inline-end;
           width: 40px;
           height: 40px;
           font-size: 32px;
@@ -230,10 +230,10 @@ export class PageFlagComment extends I18NMixin(LitElement) {
           display: none;
         }
         :host([reply="1"]) .comment {
-          margin-left: 16px;
+          margin-inline-start: 16px;
         }
         :host([reply="2"]) .comment {
-          margin-left: 32px;
+          margin-inline-start: 32px;
         }
         .comment {
           background-color: light-dark(
@@ -265,7 +265,7 @@ export class PageFlagComment extends I18NMixin(LitElement) {
               var(--ddd-theme-default-black, #000000),
               var(--ddd-theme-default-white, #fff)
             );
-          margin-right: 8px;
+          margin-inline-end: 8px;
         }
         .comment__header__info {
           display: flex;
@@ -301,7 +301,7 @@ export class PageFlagComment extends I18NMixin(LitElement) {
           );
           font-size: var(--ddd-font-size-6xs, 12px);
           cursor: pointer;
-          margin-left: 10px;
+          margin-inline-start: 10px;
         }
       `,
     ];

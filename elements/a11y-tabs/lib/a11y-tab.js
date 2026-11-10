@@ -36,7 +36,7 @@ class A11yTab extends I18NMixin(LitElement) {
         }
         .sr-only {
           position: absolute;
-          left: -99999px;
+          inset-inline-start: -99999px;
           height: 0;
           overflow: hidden;
         }
@@ -66,7 +66,7 @@ class A11yTab extends I18NMixin(LitElement) {
             var(--a11y-tabs-horizontal-border-radius, 2px) 0 0;
         }
         simple-icon-lite {
-          margin-right: 1em;
+          margin-inline-end: 1em;
         }
         @media screen {
           :host {

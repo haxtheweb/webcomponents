@@ -179,8 +179,8 @@ class A11yDetails extends I18NMixin(LitElement) {
         details[open] #details-inner {
           z-index: 9999999999;
           display: block;
-          left: var(--a11y-details-left, unset);
-          right: var(--a11y-details-right, unset);
+          inset-inline-start: var(--a11y-details-left, unset);
+          inset-inline-end: var(--a11y-details-right, unset);
           padding: var(--a11y-details-padding, 0.5em);
           max-height: var(--a11y-details-maxHeight, 400px);
           padding: var(--a11y-details-padding, 0.5em);

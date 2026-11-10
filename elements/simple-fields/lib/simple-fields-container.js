@@ -100,7 +100,7 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
             flex: 1 1 auto;
           }
           #fieldmeta {
-            text-align: right;
+            text-align: end;
           }
           .field,
           ::slotted([slot="field"]) {
@@ -126,7 +126,8 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
           .field-main.inline ::slotted([slot="field"]) {
             min-width: var(--simple-fields-detail-line-height, 22px);
             height: var(--simple-fields-detail-line-height, 22px);
-            margin: 0 var(--simple-fields-margin-small, 8px) 0 0;
+            margin-block: 0;
+            margin-inline: 0 var(--simple-fields-margin-small, 8px);
           }
           .field[disabled],
           :host([readonly]) ::slotted([slot="field"]) {

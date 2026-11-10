@@ -44,7 +44,7 @@ class SimpleFieldsArray extends I18NMixin(
           justify-content: flex-end;
         }
         #add {
-          float: right;
+          float: inline-end;
         }
       `,
     ];

@@ -149,7 +149,7 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
         .random-element blockquote {
           margin: var(--ddd-spacing-3) 0;
           padding: var(--ddd-spacing-3);
-          border-left: var(--ddd-border-size-sm) solid
+          border-inline-start: var(--ddd-border-size-sm) solid
             var(--ddd-theme-default-potentialMidnight);
           background-color: var(--ddd-theme-default-limestoneMaxLight);
           font-style: italic;
@@ -158,7 +158,7 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
         .random-element ul,
         .random-element ol {
           margin: 0 0 var(--ddd-spacing-3) 0;
-          padding-left: var(--ddd-spacing-5);
+          padding-inline-start: var(--ddd-spacing-5);
         }
 
         .no-content {
