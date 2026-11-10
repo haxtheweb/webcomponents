@@ -518,6 +518,49 @@ describe("hax-body helper methods", () => {
     });
   });
 
+  describe("empty flag follows text-only edits", () => {
+    const flush = () => new Promise((r) => setTimeout(r, 0));
+    afterEach(() => {
+      if (el._emptyObserver) {
+        el._emptyObserver.disconnect();
+        el._emptyObserver = null;
+      }
+      if (el._observer) {
+        el._observer.disconnect();
+        el._observer = null;
+      }
+    });
+
+    it("drops and restores data-hax-empty when only a text node changes", async () => {
+      const p = globalThis.document.createElement("p");
+      const text = globalThis.document.createTextNode("");
+      p.appendChild(text);
+      el.appendChild(p);
+      el._connectMutationObserver();
+      el.__syncDataHaxEmpty(p);
+      expect(p.hasAttribute("data-hax-empty")).to.equal(true);
+      // e.g. an emoji inserted, or Merlin cancel putting back what was typed
+      text.data = "stuff";
+      await flush();
+      expect(p.hasAttribute("data-hax-empty")).to.equal(false);
+      // deleting back to nothing shows the hint again
+      text.data = "";
+      await flush();
+      expect(p.hasAttribute("data-hax-empty")).to.equal(true);
+    });
+
+    it("reconnects the observers for a second edit session", () => {
+      el._connectMutationObserver();
+      const first = el._observer;
+      el._observer.disconnect();
+      el._observer = null;
+      el._connectMutationObserver();
+      expect(el._observer).to.exist;
+      expect(el._observer).to.not.equal(first);
+      expect(el._emptyObserver).to.exist;
+    });
+  });
+
   describe("__unwrapTransientEditorStyleSpan", () => {
     it("removes empty span", () => {
       const div = globalThis.document.createElement("div");

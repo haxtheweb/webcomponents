@@ -160,6 +160,44 @@ describe("super-daemon-row behavior", () => {
     expect(el.hasAttribute("active")).to.equal(false);
   });
 
+  it("hover is a wash only: it never marks the row active (Enter runs the active row)", async () => {
+    const el = await fixture(
+      html`<super-daemon-row title="H" shortcut="Ctrl⇧3"></super-daemon-row>`,
+    );
+    const btn = el.shadowRoot.querySelector("button");
+    const enter = el.shadowRoot.querySelector(".enter-icon");
+    const chip = el.shadowRoot.querySelector(".shortcut");
+    const chipLeft = chip.getBoundingClientRect().left;
+    btn.dispatchEvent(new MouseEvent("mouseover", { bubbles: true }));
+    await el.updateComplete;
+    expect(el.hovered).to.equal(true);
+    expect(el.active).to.equal(false);
+    expect(getComputedStyle(enter).visibility).to.equal("hidden");
+    btn.dispatchEvent(new MouseEvent("mouseout", { bubbles: true }));
+    await el.updateComplete;
+    expect(el.hovered).to.equal(false);
+    // keyboard / focus selection shows Enter in place without moving the
+    // shortcut chip
+    el.active = true;
+    await el.updateComplete;
+    expect(getComputedStyle(enter).visibility).to.equal("visible");
+    expect(chip.getBoundingClientRect().left).to.equal(chipLeft);
+  });
+
+  it("draws one glyph per tile: a text character wins over an icon", async () => {
+    const el = await fixture(
+      html`<super-daemon-row
+        title="DDR"
+        icon="av:volume-up"
+        text-character="🎵"
+      ></super-daemon-row>`,
+    );
+    expect(el.shadowRoot.querySelector(".result-icon")).to.equal(null);
+    expect(
+      el.shadowRoot.querySelector(".result-textCharacter").textContent,
+    ).to.equal("\u{1F3B5}");
+  });
+
   it("focus() focuses the inner button", async () => {
     const el = await fixture(
       html`<super-daemon-row title="F"></super-daemon-row>`,
@@ -193,7 +231,8 @@ describe("super-daemon-row behavior", () => {
         .tags="${["a", "b"]}"
       ></super-daemon-row>`,
     );
-    expect(el.shadowRoot.querySelector(".result-icon")).to.exist;
+    // one glyph per tile: the text character stands in for the icon
+    expect(el.shadowRoot.querySelector(".result-icon")).to.be.null;
     expect(el.shadowRoot.querySelector(".result-image")).to.exist;
     expect(
       el.shadowRoot.querySelector(".result-textCharacter").textContent,

@@ -55,8 +55,18 @@
       "reject": {
         "label": "Discard and leave",
         "fill": "background",
-        "cues": ["outline", "label"]
-      }
+        "cues": ["outline", "pattern", "label", "icon"]
+      },
+      "evidence": [
+        {
+          "file": "elements/haxcms-elements/lib/core/admin/haxcms-site-admin.js",
+          "text": "class=\"hax-ui-btn danger discard-leave\""
+        },
+        {
+          "file": "elements/d-d-d/lib/HaxUiAdminControls.js",
+          "text": "background-image: var(--hax-ui-danger-hatch);"
+        }
+      ]
     },
     {
       "id": "outline-designer-pending-delete-row",
