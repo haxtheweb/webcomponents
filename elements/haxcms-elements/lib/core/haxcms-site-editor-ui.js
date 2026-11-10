@@ -7983,78 +7983,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.dispatchEvent(evt);
   }
   /**
-   * Toggle lock status
-   */
-  _toggleLockStatus(_e) {
-    const activeItem = toJS(store.activeItem);
-    if (!activeItem || !activeItem.id) return;
-
-    const isLocked = activeItem.metadata && activeItem.metadata.locked;
-    store.playSound("click");
-    globalThis.dispatchEvent(
-      new CustomEvent("haxcms-save-node-details", {
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-        detail: {
-          id: activeItem.id,
-          operation: "setLocked",
-          locked: !isLocked,
-        },
-      }),
-    );
-  }
-  /**
-   * Duplicate page prompt
-   */
-  async _duplicatePagePrompt(_e) {
-    const activeItem = toJS(store.activeItem);
-    if (!activeItem || !activeItem.id) return;
-
-    const newTitle = await adminPrompt({
-      title: this.t.duplicatePageTitle,
-      message: this.t.enterTitleForDuplicatedPage,
-      label: this.t.newPageTitle,
-      value: this.t.titleCopy.replace("{title}", () => activeItem.title),
-      required: true,
-      confirmLabel: this.t.duplicateAction,
-      cancelLabel: this.t.cancel,
-    });
-    if (newTitle && newTitle.trim() !== "") {
-      store.playSound("click");
-      const SuperDaemonInstance =
-        globalThis.SuperDaemonManager.requestAvailability();
-      // Use the create-page program with duplicate option
-      SuperDaemonInstance.waveWand([
-        newTitle,
-        "/",
-        {},
-        "create-page",
-        this.t.createAPage,
-      ]);
-    }
-  }
-  /**
-   * Move page program from menu
-   */
-  _movePageProgramFromMenu(_e) {
-    const item = toJS(store.activeItem);
-    if (!item || !item.id) {
-      return;
-    }
-    const SuperDaemonInstance =
-      globalThis.SuperDaemonManager.requestAvailability();
-    store.playSound("click");
-    SuperDaemonInstance.waveWand([
-      "",
-      "/",
-      { pageId: item.id },
-      "move-page",
-      this.t.movePage,
-      "",
-    ]);
-  }
-  /**
    * Toggle locked status
    */
   _toggleLockedStatus(_e) {
@@ -8074,30 +8002,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           id: item.id,
           operation: "setLocked",
           locked: newStatus,
-        },
-      }),
-    );
-  }
-  /**
-   * Toggle published status
-   */
-  _togglePublishedStatus(_e) {
-    const item = toJS(store.activeItem);
-    if (!item || !item.id) {
-      return;
-    }
-    const currentStatus = item.metadata && item.metadata.published !== false;
-    const newStatus = !currentStatus;
-    store.playSound("click");
-    globalThis.dispatchEvent(
-      new CustomEvent("haxcms-save-node-details", {
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-        detail: {
-          id: item.id,
-          operation: "setPublished",
-          published: newStatus,
         },
       }),
     );
@@ -8470,55 +8374,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     proceed();
     return true;
   }
-  _siteSettingsDashboardAction(e) {
-    const action = e && e.detail ? e.detail.action : null;
-    setTimeout(() => {
-      switch (action) {
-        case "style-guide":
-          this._styleGuideButtonTap(e);
-          break;
-        case "reports":
-          this._reportsButtonTap(e, true);
-          break;
-        case "outline":
-          this._outlineButtonTap(e, true, "Structure");
-          break;
-        case "site-settings":
-          this._openDetailsAdmin(true, "Details");
-          break;
-        case "theme-settings":
-          this._openAppearanceSettings(true, "Appearance");
-          break;
-        case "seo-settings":
-          this._openSeoAdmin(true, "seo");
-          break;
-        case "blocks":
-          this._openAllowedBlocksSettings(true, "Blocks");
-          break;
-        case "editor":
-          this._openEditorSettings(true, "Editor");
-          break;
-        case "about":
-          this._openAboutAdmin(true, this.t.about);
-          break;
-        case "platform":
-          this._openPlatformSettings(true, "Features");
-          break;
-        case "content-admin":
-          this._openContentAdmin(true);
-          break;
-        case "files-admin":
-          this._openFilesAdmin(true);
-          break;
-        case "views-admin":
-          this._openViewsAdmin(true);
-          break;
-        case "import-export":
-          this._openImportExportDashboard(true, "Import / Export");
-          break;
-      }
-    }, 0);
-  }
   _importExportDashboardAction(e) {
     const detail = e && e.detail ? e.detail : {};
     const action = detail && detail.action ? `${detail.action}` : "";
@@ -8799,19 +8654,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         HAXStore.haxTray.collapsed = !autoOpenTray;
       }
     }
-  }
-  /**
-   * Note changes to the outline / structure of the page's items
-   */
-  _outlineEditModeChanged(newValue, _oldValue) {
-    this.dispatchEvent(
-      new CustomEvent("haxcms-outline-edit-mode-changed", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: newValue,
-      }),
-    );
   }
   /**
    * Note changes to the outline / structure of the page's items

@@ -282,18 +282,6 @@ export class AppHaxUserMenu extends I18NMixin(DDDSuper(LitElement)) {
       post: has("post-menu"),
     };
   }
-  /**
-   * Handle keyboard navigation for menu toggle
-   */
-  _handleMenuToggleKeydown(e) {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      this._toggleMenu();
-    } else if (e.key === "Escape" && this.isOpen) {
-      e.preventDefault();
-      this._closeMenu();
-    }
-  }
 
   /**
    * Handle keyboard navigation within menu

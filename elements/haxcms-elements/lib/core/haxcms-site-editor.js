@@ -1714,16 +1714,6 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     });
   }
 
-  _schemaFormValueChanged(_e) {
-    // @todo figure out why this isn't adding a field in on the fly
-    /*if (e.target.value.theme === "haxcms-custom-theme") {
-      e.target.addField(customTag.property, customTag);
-      e.target.value[customTag.property] = customTag.property;
-    } else {
-      e.target.removeField(customTag.property);
-      delete e.target.value[customTag.property];
-    }*/
-  }
   /**
    * create node event
    */

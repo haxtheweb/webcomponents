@@ -122,13 +122,6 @@ export class HaxRouter {
   }
 
   /**
-   * Get pathname with baseUrl stripped
-   */
-  _getCleanPathname() {
-    return this._cleanPathnameForUrl(globalThis.location);
-  }
-
-  /**
    * Clean a pathname (baseUrl stripped) for a given URL-like object.
    * Lets click resolution match a target URL before it is pushed onto history.
    */
