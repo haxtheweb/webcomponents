@@ -1096,15 +1096,18 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
       let textB = b.title.toUpperCase();
       return textA < textB ? -1 : textA > textB ? 1 : 0;
     });
-    // highest priority if item title is exact match
-    tmpItems.forEach((item) => {
-      if (item.title.toLocaleLowerCase() === this.value.toLocaleLowerCase()) {
-        item.priority = -10000000;
-      }
-    });
-    // then on priority
+    // an exact title match goes first, then priority. Worked out per
+    // sort, not written onto the option: writing it stuck, so an option
+    // once matched exactly (a cheat code, say) stayed at the top forever
+    const value = (this.value || "").toLocaleLowerCase();
+    const rank = (item) =>
+      value !== "" && item.title.toLocaleLowerCase() === value
+        ? -10000000
+        : item.priority;
     return tmpItems.sort((a, b) => {
-      return a.priority < b.priority ? -1 : a.priority > b.priority ? 1 : 0;
+      const pa = rank(a);
+      const pb = rank(b);
+      return pa < pb ? -1 : pa > pb ? 1 : 0;
     });
   }
   /**

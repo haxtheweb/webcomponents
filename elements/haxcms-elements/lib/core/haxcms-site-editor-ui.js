@@ -5399,6 +5399,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       eventName: "super-daemon-element-method",
       path: ">developer/cheat-codes",
       context: [">"],
+      // always the very last developer command; the cheats it unlocks sit
+      // just above it (haxcms-cheat-codes.js)
+      priority: 1000000,
       more: html`<span>${this.t.cheatCodesDescription}</span>`,
       value: {
         target: this,
@@ -9959,7 +9962,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             SuperDaemonInstance.allItems,
             SuperDaemonInstance.context,
           );
-          SuperDaemonInstance.runProgram("", "*");
+          // cheats live only in the developer (>) commands, so open there
+          // already filtered to them
+          SuperDaemonInstance.runProgram("cheat", ">");
         }, 100);
       } catch (error) {
         console.error("🎮 Failed to load cheat codes:", error);

@@ -285,8 +285,14 @@ describe("SuperDaemon core behavior", () => {
     element.value = "mango";
     const filtered2 = element.filterItems(element.allItems, []);
     expect(filtered2[0].title).to.equal("Mango");
-    expect(filtered2[0].priority).to.equal(-10000000);
+    // the boost is for this sort only: the option keeps its own priority,
+    // so it doesn't stay pinned to the top for every later search
+    expect(filtered2[0].priority).to.equal(0);
     element.value = "";
+    const filtered3 = element.filterItems(element.allItems, []);
+    expect(filtered3.map((i) => i.title).join(",")).to.equal(
+      "Apple,Mango,Zebra",
+    );
   });
 
   it("filterItems drops hidden items and honors inline gating", () => {
