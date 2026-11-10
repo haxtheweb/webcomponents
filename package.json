@@ -109,7 +109,8 @@
     "license-restore": "node scripts/copy-dep-licenses.js",
     "depcheck": "depcheck",
     "knip": "knip --no-exit-code --no-config-hints",
-    "knip:report": "node scripts/knip-report.mjs"
+    "knip:report": "node scripts/knip-report.mjs",
+    "size-report": "node scripts/size-report.mjs"
   },
   "dependencies": {
     "@babel/core": "^7.29.7",

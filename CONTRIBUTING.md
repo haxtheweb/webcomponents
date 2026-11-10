@@ -498,6 +498,14 @@ We don't tree shake, so every line in a shipped element file reaches every brows
 
 `yarn precheck` runs it on the element files you changed, and the knip CI job adds new findings to its summary. It is advisory: known cases live in `scripts/dead-code-check.baseline.json` and only findings missing from it are reported. If something is used in a way the check cannot see, run `yarn lint:dead-code --update-baseline`, commit the baseline and say why in the PR. When you fix a baselined finding, the whole-repo run says so; update the baseline to drop it.
 
+### Element size report
+
+HAX serves elements as unbundled ES modules, so what a page downloads for a tag is every file in its eager import closure (static `import`, not `import()`), each sent separately. `yarn size-report` ([`scripts/size-report.mjs`](scripts/size-report.mjs)) measures that, as the sum of each file's gzip size, for every package main file and every tag in `wc-registry.json`. Third-party packages like lit are not counted.
+
+On pull requests that change element JavaScript, the `size-report` workflow measures the PR and its base and lists the entries whose download changed in the job summary. It is report only: it never fails and posts no comments. Budgets are deferred until the platform is stable ([haxtheweb/issues#3283](https://github.com/haxtheweb/issues/issues/3283)). When the report shows an element growing, check whether the new code needs to load up front or could be an `import()` when first used.
+
+To compare two checkouts by hand: `yarn size-report --json head.json`, `yarn size-report --root ../other-checkout --json base.json`, then `yarn size-report --compare base.json head.json`.
+
 ## Security
 
 If you discover what you deem to be a critical security issue  please reach out on our Discord channel privately to discuss whether this should be resolved in the open prior or if disclosure should happen after a solution has been crafted.
