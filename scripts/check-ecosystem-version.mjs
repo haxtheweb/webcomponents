@@ -5,18 +5,18 @@
  * version) with the packages that ubiquity-push.sh tags and publishes with
  * `commit-and-tag-version --release-as <.version>`.
  *
- * When one of those packages is already ahead (say a 26.8.1 hotfix of
- * haxcms-nodejs or create while the elements are still 26.8.0), releasing at
+ * When one of those packages is already at or ahead of it (say a 26.8.1 hotfix
+ * of haxcms-nodejs or create while the elements are 26.8.0 or 26.8.1), releasing at
  * .version would tag backwards and `npm publish` would fail on a version that
- * already exists. Bump the elements first (lerna version) so .version moves
+ * already exists. Run `lerna publish` first so .version moves
  * past every package.
  *
  * Sibling checkouts are found next to this repo (../haxcms-nodejs, ...), the
  * same layout the theme and language-registry syncs use; missing ones are
  * skipped.
  *
- *   node scripts/check-ecosystem-version.mjs           report (exit 0)
- *   node scripts/check-ecosystem-version.mjs --strict  exit 1 when behind
+ *   node scripts/check-ecosystem-version.mjs           warn when a sibling is ahead (exit 0)
+ *   node scripts/check-ecosystem-version.mjs --strict  exit 1 when not past
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -70,17 +70,23 @@ if (!release) {
 const ahead = [];
 for (const name of SIBLINGS) {
   const version = readVersion(path.join(ROOT, "..", name, "package.json"));
-  if (version && compare(version, release) > 0) {
+  // Releasing (--strict) needs .version strictly past every sibling: an equal
+  // version is already published there, so a lerna patch bump from 26.8.0 to
+  // 26.8.1 would still fail its npm publish. Between releases every sibling
+  // equals .version, so the build-time report only flags real drift (ahead).
+  if (version && compare(version, release) >= (STRICT ? 0 : 1)) {
     ahead.push(`${name} ${version}`);
   }
 }
 
 if (ahead.length) {
   console.log(
-    `WARNING: release version ${release} (.version) is behind ${ahead.join(", ")}; ` +
-      "releasing now would tag backwards and npm publish would fail. " +
-      "Bump the elements (lerna version) past these first.",
+    `WARNING: release version ${release} (.version) is ${STRICT ? "not past" : "behind"} ${ahead.join(", ")}; ` +
+      "releasing now would re-tag or tag backwards and npm publish would fail. " +
+      "Run `lerna publish` past these first, then re-run.",
   );
   process.exit(STRICT ? 1 : 0);
 }
-console.log(`check-ecosystem-version: ${release} is not behind any sibling package`);
+console.log(
+  `check-ecosystem-version: ${release} is ${STRICT ? "past every" : "not behind any"} sibling package`,
+);
