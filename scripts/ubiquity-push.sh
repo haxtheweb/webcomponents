@@ -30,6 +30,12 @@ cp ~/haxtheweb/webcomponents/wc-registry-graph.json ~/haxtheweb/webcomponents/el
 # into haxcms-php, so PHP sites get it automatically. The system set goes to both
 # deployment roots explicitly (they are not part of the boilerplate mirror).
 cd ~/haxtheweb/praw
+# praw pins the HAX CLI release its onboarding script and hax-onboarding plugin
+# hook install; both read a .version file (the plugin cache only holds the plugin
+# directory, so it needs its own copy). Write them before the index build, which
+# fails if they are missing, not x.y.z, or disagree.
+cp ~/haxtheweb/webcomponents/.version ~/haxtheweb/praw/.version
+cp ~/haxtheweb/webcomponents/.version ~/haxtheweb/praw/plugins/hax-onboarding/.version
 node scripts/build-agent-skills-index.js
 node scripts/snapshot-agent-skills.js site ~/haxtheweb/haxcms-nodejs/src/boilerplate/site/.well-known/agent-skills
 node scripts/snapshot-agent-skills.js system ~/haxtheweb/haxcms-nodejs/.well-known/agent-skills
@@ -177,6 +183,13 @@ git pull origin master
 git add -A
 git commit -m "ubiquity publish"
 git push --follow-tags origin master
+
+# praw: CLI pin (.version) and the agent-skills index written in STEP 1.5
+cd ~/haxtheweb/praw
+git pull origin main
+git add -A
+git commit -m "ubiquity publish"
+git push origin main
 
 cd ~/haxtheweb/hax11ty/
 git pull origin master
