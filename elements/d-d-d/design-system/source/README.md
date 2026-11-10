@@ -76,6 +76,37 @@ Measured contrast for the scheme pairs: ink on surface is 15.1:1 in both themes.
 - Background motion that plays on its own (a hero video) always gets a visible pause button styled by `--ddd-media-control-*`: 48px navy80 circle, white icon and outline, keystoneYellow focus ring, 16px in from the bottom and end edges. With reduced motion it starts paused.
 - Layers: `--ddd-z-dropdown` 100, `sticky` 200, `overlay` 300, `tooltip` 500, `modal` 10000.
 
+## Meaning channels
+
+If a user has to interpret something to understand it, or a decision has consequences, it never rests on one cue. Consequences means saving permanently, deleting permanently, confirm versus deny, correct versus incorrect. These carry their meaning through all five channels:
+
+1. **Label.** A word the user can read, shown on hover and on focus, not only on hover.
+2. **Colour.** Different enough to tell apart. HAX uses green for correct and purple for incorrect, never red.
+3. **Focus state.** Visible when it is reached by keyboard.
+4. **Texture or pattern.** Still tells it apart in greyscale: a dotted or dashed line, a hatch, a fill weight.
+5. **Icon.** One that is unique to that meaning. Don't reuse it for something else.
+
+Edits that are easy to undo (turning a paragraph into a heading) and controls that only navigate or change how something looks need a clear label, a focus state and contrast. They don't need all five.
+
+Needs all five:
+
+- quiz and question feedback (correct, incorrect, revealed)
+- confirm and deny, accept and cancel actions
+- form validation (required, missing, invalid)
+- status chips (draft, published, locked)
+- outline states (new, deleting, current page)
+- revision diffs (added, removed)
+- chart series and learner progress
+- reading flags and highlights
+
+Doesn't need texture:
+
+- ordinary toolbar buttons
+- navigation links and menus
+- tabs and toggles. Their selected state still needs more than colour: a word, a bar, a fill or a knob position.
+
+The `--ddd-status-*` tokens already carry colour, line style and a word or icon for answer and form states, so use them. Opposing action pairs are checked by `yarn lint:vision` (see HAX UI, Accessibility).
+
 ## Content
 
 HAX is educational. Plain HTML authored in HAX should look designed without classes, so the reset styles `h1`–`h6`, `p`, lists, `blockquote`, `details`/`summary`, `code`, `pre`, `mark`, `abbr`, tables and `dl` directly.
