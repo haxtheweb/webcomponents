@@ -56,6 +56,7 @@
   "voiceOrdinals": "zeroth|first|second|third|fourth|fifth|sixth|seventh|eighth|ninth",
   "voicePickPrefixes": "number|option|item|result|pick|choose|select|the",
   "voicePickSuffix": "one",
+  "voiceNumberSoundalikes": "won=1|to=2|too=2|tu=2|tree=3|free=3|for=4|fore=4|ate=8",
   "voiceNext": "next|down|next one",
   "voiceBack": "back|previous|up|go back",
   "voiceRun": "run|go|yes|do it|run it|open it|that one",

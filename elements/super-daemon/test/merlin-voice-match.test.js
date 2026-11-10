@@ -143,6 +143,11 @@ describe("merlin voice phrases and ranking", () => {
 describe("merlin voice grammar", () => {
   const cases = {
     "second one": { action: "pick", index: 1 },
+    "Option 2": { action: "pick", index: 1 },
+    "option to": { action: "pick", index: 1 },
+    "number for": { action: "pick", index: 3 },
+    "the 2nd one": { action: "pick", index: 1 },
+    "3rd": { action: "pick", index: 2 },
     "number 3": { action: "pick", index: 2 },
     "the third one": { action: "pick", index: 2 },
     "option five": { action: "pick", index: 4 },
@@ -162,6 +167,9 @@ describe("merlin voice grammar", () => {
   });
 
   it("leaves everything else to search", () => {
+    // a soundalike only counts after "option" / "number"
+    expect(merlinParseVoiceGrammar("for")).to.equal(null);
+    expect(merlinParseVoiceGrammar("to")).to.equal(null);
     expect(merlinParseVoiceGrammar("upload a file")).to.equal(null);
     expect(merlinParseVoiceGrammar("zero")).to.equal(null);
     expect(merlinParseVoiceGrammar("")).to.equal(null);

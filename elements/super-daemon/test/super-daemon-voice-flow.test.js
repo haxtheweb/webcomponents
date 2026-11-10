@@ -155,13 +155,55 @@ describe("super-daemon spoken search", () => {
     expect(first).to.equal("second one");
   });
 
-  it("hands the words to a running program", async () => {
-    let input = null;
+  it("puts a running program's words in the field and keeps listening", async () => {
     el.programName = "test-program";
-    el.updateSearchInputViaVoice = (text) => (input = text);
-    await el._voiceHeard(["mars rover"]);
-    expect(input).to.equal("mars rover");
-    el.programName = null;
+    try {
+      await el._voiceHeard(["mars rover"]);
+      expect(el._ui().like).to.equal("mars rover");
+      expect(el.listeningForInput).to.be.true;
+      expect(el.toastInstance.heard).to.equal("mars rover");
+      expect(el.toastInstance.hintSay).to.equal("second one");
+    } finally {
+      el.programName = null;
+    }
+  });
+
+  it("picks a running program's numbered result by voice", async () => {
+    // program results are numbered like any other; saying the number runs
+    // it instead of searching the program for the words
+    el.programName = "test-program";
+    el.programResults = ITEMS.slice();
+    try {
+      await el.updateComplete;
+      await aTimeout(350);
+      const ui = el._ui();
+      const second = ui.filtered[1].eventName;
+      for (const said of ["Option 2", "option to", "the 2nd one"]) {
+        // running a result closes Merlin and ends the program; start again
+        el.programName = "test-program";
+        el.programResults = ITEMS.slice();
+        el.opened = true;
+        el.listeningForInput = true;
+        await el.updateComplete;
+        await aTimeout(350);
+        const done = ran(second);
+        await el._voiceHeard([said]);
+        expect(await done, said).to.be.true;
+        expect(ui.like, said).to.not.equal(said);
+      }
+      el.programName = "test-program";
+      el.programResults = ITEMS.slice();
+      el.opened = true;
+      el.listeningForInput = true;
+      await el.updateComplete;
+      await aTimeout(350);
+      const third = ran(ui.filtered[2].eventName);
+      await el._voiceHeard(["three"]);
+      expect(await third).to.be.true;
+    } finally {
+      el.programName = null;
+      el.programResults = [];
+    }
   });
 
   it("only acts on a clear answer while closed in Santa mode", async () => {

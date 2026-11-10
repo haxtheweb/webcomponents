@@ -103,13 +103,20 @@ export class SuperDaemonToast extends I18NMixin(SimpleToastEl) {
       MerlinWandStyles,
       css`
         :host {
+          /* where it sits: with the other HAX toasts (haxcms-toast), under
+             the top bar on the right; on a phone, under the bar across the
+             width. It drops in from above like they do. */
           --simple-toast-z-index: 100000003;
+          --simple-toast-slide-offset-y: -12px;
           --super-daemon-toast-gap: var(--hax-ui-gap-lg, 12px);
           position: fixed;
-          top: auto;
-          right: auto;
-          left: var(--simple-toast-left, var(--super-daemon-toast-gap));
-          bottom: var(--simple-toast-bottom, var(--super-daemon-toast-gap));
+          top: var(
+            --super-daemon-toast-top,
+            calc(var(--top-bar-height, 64px) + var(--super-daemon-toast-gap))
+          );
+          right: var(--super-daemon-toast-right, var(--super-daemon-toast-gap));
+          left: auto;
+          bottom: auto;
           z-index: var(--simple-toast-z-index, 100000003);
           width: min(400px, calc(100vw - 2 * var(--super-daemon-toast-gap)));
           min-width: 0;
@@ -152,6 +159,7 @@ export class SuperDaemonToast extends I18NMixin(SimpleToastEl) {
           :host {
             --super-daemon-toast-gap: var(--hax-ui-gap-md, 8px);
             right: var(--super-daemon-toast-gap);
+            left: var(--super-daemon-toast-gap);
             width: auto;
           }
         }
@@ -273,7 +281,10 @@ export class SuperDaemonToast extends I18NMixin(SimpleToastEl) {
           border-radius: var(--hax-ui-radius);
           padding: 0 var(--hax-ui-gap);
         }
+        /* Merlin's words read in the card's text colour; the element's own
+           default is a green that fails contrast on the dark card */
         future-terminal-text {
+          --future-terminal-text-color: var(--hax-ui-text);
           display: block;
           min-width: 0;
           max-width: none;
