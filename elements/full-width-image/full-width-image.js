@@ -54,7 +54,7 @@ class FullWidthImage extends I18NMixin(LitElement) {
         #captionToggle {
           position: absolute;
           top: var(--ddd-spacing-3, 12px);
-          right: var(--ddd-spacing-3, 12px);
+          inset-inline-end: var(--ddd-spacing-3, 12px);
           z-index: 2;
           display: inline-flex;
           align-items: center;
@@ -145,7 +145,7 @@ class FullWidthImage extends I18NMixin(LitElement) {
           }
           #captionToggle {
             top: var(--ddd-spacing-2, 8px);
-            right: var(--ddd-spacing-2, 8px);
+            inset-inline-end: var(--ddd-spacing-2, 8px);
           }
           .wrapper {
             padding: var(--ddd-spacing-10, 40px) var(--ddd-spacing-4, 16px)

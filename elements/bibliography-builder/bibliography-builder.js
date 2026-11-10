@@ -325,6 +325,7 @@ export class BibliographyBuilder extends SchemaBehaviors(
             <button
               type="button"
               class="copy-button"
+              part="icon"
               @click=${this._copyToClipboard}
             >
               <simple-icon-lite icon="icons:content-copy"></simple-icon-lite

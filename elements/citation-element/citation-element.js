@@ -104,13 +104,13 @@ class CitationElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
           text-underline-offset: 0.2em;
         }
         .license-link img {
-          margin-right: var(--ddd-spacing-1);
+          margin-inline-end: var(--ddd-spacing-1);
           vertical-align: middle;
         }
         .license-badge {
           display: inline-flex;
           align-items: center;
-          margin-right: var(--ddd-spacing-1);
+          margin-inline-end: var(--ddd-spacing-1);
           padding: 0 var(--ddd-spacing-1);
           border: var(--ddd-border-xs);
           border-color: light-dark(

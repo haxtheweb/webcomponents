@@ -43,9 +43,6 @@
     "career-timeline": {
       "rtl-css": 11
     },
-    "citation-element": {
-      "rtl-css": 1
-    },
     "code-sample": {
       "rtl-css": 5
     },
@@ -88,9 +85,6 @@
     },
     "flash-card-set": {
       "rtl-css": 2
-    },
-    "full-width-image": {
-      "rtl-css": 1
     },
     "github-preview": {
       "rtl-css": 1
