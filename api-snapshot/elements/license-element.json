@@ -1,0 +1,41 @@
+{
+  "tag": "license-element",
+  "package": "@haxtheweb/license-element",
+  "source": "elements/license-element/license-element.js",
+  "attributes": {
+    "creator": "creator",
+    "has-more": "hasMore",
+    "is-safari": "isSafari",
+    "license": "license",
+    "license-image": "licenseImage",
+    "license-link": "licenseLink",
+    "license-name": "licenseName",
+    "more-label": "moreLabel",
+    "more-link": "moreLink",
+    "schemamap": "schemaMap",
+    "source": "source",
+    "t": "t",
+    "title": "title"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/license-element/license-element.js",
+    "gizmo": true,
+    "properties": [
+      "creator",
+      "license",
+      "moreLabel",
+      "moreLink",
+      "source",
+      "title"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "license-element"
+    ]
+  }
+}

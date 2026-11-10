@@ -1,0 +1,42 @@
+{
+  "tag": "lesson-highlight",
+  "package": "@haxtheweb/haxcms-elements",
+  "source": "elements/haxcms-elements/lib/ui-components/lesson-overview/lib/lesson-highlight.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "dark": "dark",
+    "disabled": "disabled",
+    "hidden": "hidden",
+    "icon": "icon",
+    "loaded": "loaded",
+    "loading": "loading",
+    "smart": "smart",
+    "subtitle": "subtitle",
+    "t": "t",
+    "title": "title"
+  },
+  "slots": [
+    "(default)",
+    "title"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/haxcms-elements/lib/ui-components/lesson-overview/lib/lesson-highlight.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "accentColor",
+      "disabled",
+      "icon",
+      "smart"
+    ],
+    "attributes": [],
+    "slots": [
+      "title"
+    ],
+    "demoTags": [
+      "lesson-highlight"
+    ]
+  }
+}

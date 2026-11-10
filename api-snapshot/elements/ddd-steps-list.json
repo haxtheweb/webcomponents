@@ -1,0 +1,25 @@
+{
+  "tag": "ddd-steps-list",
+  "package": "@haxtheweb/d-d-d",
+  "source": "elements/d-d-d/lib/ddd-steps-list.js",
+  "attributes": {
+    "ddd-primary": "dddPrimary",
+    "is-safari": "isSafari"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/d-d-d/lib/ddd-steps-list.haxProperties.json",
+    "gizmo": true,
+    "properties": [],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "ddd-steps-list"
+    ]
+  }
+}

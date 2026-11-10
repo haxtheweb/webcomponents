@@ -1,0 +1,29 @@
+{
+  "tag": "discord-embed",
+  "package": "@haxtheweb/discord-embed",
+  "source": "elements/discord-embed/discord-embed.js",
+  "attributes": {
+    "height": "height",
+    "source": "source",
+    "t": "t",
+    "width": "width"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/discord-embed/lib/discord-embed.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "height",
+      "source",
+      "width"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "discord-embed"
+    ]
+  }
+}

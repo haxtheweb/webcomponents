@@ -1,0 +1,30 @@
+{
+  "tag": "ebook-button",
+  "package": "@haxtheweb/course-design",
+  "source": "elements/course-design/lib/ebook-button.js",
+  "attributes": {
+    "icon": "icon",
+    "link": "link",
+    "t": "t",
+    "title": "title",
+    "typeof": "typeof"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/course-design/lib/ebook-button.js",
+    "gizmo": true,
+    "properties": [
+      "icon",
+      "link",
+      "title"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "ebook-button"
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "tag": "site-collection-list",
+  "package": "@haxtheweb/haxcms-elements",
+  "source": "elements/haxcms-elements/lib/ui-components/magic/site-collection-list.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "break-smart-collection": "breakSmartCollection",
+    "conditions": "conditions",
+    "dark": "dark",
+    "editmode": "editMode",
+    "hide-in-menu": "hideInMenu",
+    "is-safari": "isSafari",
+    "limit": "limit",
+    "page-type": "pageType",
+    "parent": "parent",
+    "published": "published",
+    "related-items": "relatedItems",
+    "responsive-size": "responsiveSize",
+    "results": "results",
+    "sort": "sort",
+    "sortobj": "sortObj",
+    "tags": "tags"
+  },
+  "slots": [],
+  "events": [
+    "results-changed"
+  ],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/haxcms-elements/lib/ui-components/magic/site-collection-list.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "breakSmartCollection",
+      "hideInMenu",
+      "limit",
+      "pageType",
+      "parent",
+      "published",
+      "relatedItems",
+      "sort",
+      "tags"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "site-collection-list"
+    ]
+  }
+}

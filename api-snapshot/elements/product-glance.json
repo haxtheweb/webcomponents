@@ -1,0 +1,34 @@
+{
+  "tag": "product-glance",
+  "package": "@haxtheweb/product-glance",
+  "source": "elements/product-glance/product-glance.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "dark": "dark",
+    "icon": "icon",
+    "subtitle": "subtitle",
+    "title": "title"
+  },
+  "slots": [
+    "subtitle",
+    "title"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/product-glance/lib/product-glance.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "accentColor",
+      "icon",
+      "subtitle",
+      "title"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "product-glance"
+    ]
+  }
+}

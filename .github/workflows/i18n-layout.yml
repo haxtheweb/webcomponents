@@ -1,0 +1,55 @@
+name: i18n-layout
+
+# Blocking for the elements a pull request touches: a HAX-capable element
+# keeps a usable layout with ~40% longer strings (pseudo-locale) and in
+# right-to-left languages (dir="rtl").
+#
+# Each HAX-capable tag in a changed element folder is rendered from its
+# demoSchema in Chromium under English, a pseudo-locale, dir="rtl" and both,
+# and its css`` templates are scanned for physical left/right CSS. Only a
+# check that fails for a tag with no entry for it in
+# scripts/i18n-layout.baseline.json (or more rtl-css findings than the
+# baseline) fails the job; baselined failures are listed as advisory output
+# in the job summary. To accept a result on purpose, run
+# `yarn test:i18n-layout:baseline --tags <tag>` and commit the baseline.
+# See CONTRIBUTING.md, "i18n layout check".
+#
+# Runs on pull_request (not pull_request_target): no secrets, read-only token.
+on:
+  # No branch filter: stacked PRs (base is another feature branch) must run too.
+  pull_request:
+    paths:
+      - "elements/**"
+      - "scripts/i18n-layout*"
+      - "scripts/lib/i18n-layout.mjs"
+      - "scripts/lib/pseudo-locale.mjs"
+      - "scripts/test-setup/i18n-layout*"
+      - ".github/workflows/i18n-layout.yml"
+permissions:
+  contents: read
+jobs:
+  i18n-layout:
+    name: Pseudo-locale and RTL layout
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      # the PR merge commit with its base as first parent, so HEAD^1..HEAD is
+      # exactly this pull request's change
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 2
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          cache: yarn
+      - name: Install
+        run: yarn install --frozen-lockfile
+      - name: Install Playwright Chromium
+        # the Playwright version yarn.lock resolves, so the browser build
+        # matches what the test runner launches
+        run: yarn playwright install --with-deps chromium
+      - name: Pseudo-locale and RTL layout of changed elements
+        run: node scripts/i18n-layout-check.mjs --base HEAD^1

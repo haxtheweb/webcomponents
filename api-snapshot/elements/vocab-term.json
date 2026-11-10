@@ -1,0 +1,43 @@
+{
+  "tag": "vocab-term",
+  "package": "@haxtheweb/vocab-term",
+  "source": "elements/vocab-term/vocab-term.js",
+  "attributes": {
+    "detailsopen": "detailsOpen",
+    "information": "information",
+    "links": "links",
+    "popover-mode": "popoverMode",
+    "schemamap": "schemaMap",
+    "t": "t",
+    "term": "term",
+    "typeof": "typeof"
+  },
+  "slots": [],
+  "events": [
+    "user-engagement"
+  ],
+  "cssParts": [
+    "information",
+    "links",
+    "term"
+  ],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/vocab-term/lib/vocab-term.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "information",
+      "innerHTML",
+      "links",
+      "links[].href",
+      "links[].title",
+      "popoverMode",
+      "term"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "vocab-term"
+    ]
+  }
+}

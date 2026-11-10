@@ -1,0 +1,31 @@
+{
+  "tag": "github-rpg-contributors",
+  "package": "@haxtheweb/github-preview",
+  "source": "elements/github-preview/lib/github-rpg-contributors.js",
+  "attributes": {
+    "contributors": "contributors",
+    "is-safari": "isSafari",
+    "limit": "limit",
+    "org": "org",
+    "repo": "repo",
+    "t": "t"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/github-preview/lib/github-rpg-contributors.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "limit",
+      "org",
+      "repo"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "github-rpg-contributors"
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "tag": "md-block",
+  "package": "@haxtheweb/md-block",
+  "source": "elements/md-block/md-block.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "dark": "dark",
+    "is-safari": "isSafari",
+    "markdown": "markdown",
+    "source": "source"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/md-block/md-block.js",
+    "gizmo": true,
+    "properties": [
+      "markdown",
+      "source"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "md-block"
+    ]
+  }
+}

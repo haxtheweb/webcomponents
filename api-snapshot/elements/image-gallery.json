@@ -1,0 +1,36 @@
+{
+  "tag": "image-gallery",
+  "package": "@haxtheweb/image-gallery",
+  "source": "elements/image-gallery/image-gallery.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "active-index": "activeIndex",
+    "dark": "dark",
+    "edit": "edit",
+    "images": "images",
+    "is-safari": "isSafari",
+    "mode": "mode",
+    "t": "t"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [
+    "simple-modal-show"
+  ],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/image-gallery/lib/image-gallery.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "activeIndex",
+      "mode"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "image-gallery"
+    ]
+  }
+}

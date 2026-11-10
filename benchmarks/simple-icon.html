@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <script>
+      // same shim real HAXcms pages use for libraries that read NODE_ENV
+      globalThis.process = globalThis.process || {
+        env: { NODE_ENV: "production" },
+      };
+    </script>
+    <title>simple-icon render benchmark</title>
+  </head>
+  <body>
+    <div id="host"></div>
+    <script type="module" src="./simple-icon.bench.js"></script>
+  </body>
+</html>

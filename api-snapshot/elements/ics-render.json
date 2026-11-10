@@ -1,0 +1,42 @@
+{
+  "tag": "ics-render",
+  "package": "@haxtheweb/ics-render",
+  "source": "elements/ics-render/ics-render.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "calendar-data": "calendarData",
+    "calendar-name": "calendarName",
+    "caption": "caption",
+    "dark": "dark",
+    "data-source": "dataSource",
+    "debounce-delay": "debounceDelay",
+    "display-as": "displayAs",
+    "element-visible": "elementVisible",
+    "events": "events",
+    "is-safari": "isSafari",
+    "status": "status",
+    "t": "t"
+  },
+  "slots": [],
+  "events": [
+    "ics-render-parsed"
+  ],
+  "cssParts": [
+    "frame"
+  ],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/ics-render/lib/ics-render.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "caption",
+      "dataSource",
+      "displayAs"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "ics-render"
+    ]
+  }
+}

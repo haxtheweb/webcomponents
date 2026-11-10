@@ -1,0 +1,46 @@
+{
+  "tag": "a11y-gif-player",
+  "package": "@haxtheweb/a11y-gif-player",
+  "source": "elements/a11y-gif-player/a11y-gif-player.js",
+  "attributes": {
+    "alt": "alt",
+    "described-by": "describedBy",
+    "disabled": "disabled",
+    "element-visible": "elementVisible",
+    "longdesc": "longdesc",
+    "media-title": "mediaTitle",
+    "schemamap": "schemaMap",
+    "src": "src",
+    "src-without-animation": "srcWithoutAnimation",
+    "t": "t"
+  },
+  "slots": [
+    "(default)",
+    "caption"
+  ],
+  "events": [],
+  "cssParts": [
+    "caption",
+    "frame",
+    "frame-header"
+  ],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/a11y-gif-player/lib/a11y-gif-player.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "alt",
+      "longdesc",
+      "mediaTitle",
+      "src",
+      "srcWithoutAnimation"
+    ],
+    "attributes": [],
+    "slots": [
+      "caption"
+    ],
+    "demoTags": [
+      "a11y-gif-player"
+    ]
+  }
+}

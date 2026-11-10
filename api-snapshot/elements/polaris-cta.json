@@ -1,0 +1,35 @@
+{
+  "tag": "polaris-cta",
+  "package": "@haxtheweb/polaris-theme",
+  "source": "elements/polaris-theme/lib/polaris-cta.js",
+  "attributes": {
+    "editmode": "editMode",
+    "filled": "filled",
+    "link": "link",
+    "outlined": "outlined",
+    "text": "text",
+    "type": "type"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/polaris-theme/lib/polaris-cta.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "filled",
+      "link",
+      "outlined",
+      "text",
+      "type"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "polaris-cta"
+    ]
+  }
+}

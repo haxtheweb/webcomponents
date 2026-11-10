@@ -1,0 +1,38 @@
+{
+  "tag": "sheet-music",
+  "package": "@haxtheweb/sheet-music",
+  "source": "elements/sheet-music/sheet-music.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "audio": "audio",
+    "dark": "dark",
+    "data-hax-active": "dataHaxActive",
+    "element-visible": "elementVisible",
+    "is-safari": "isSafari",
+    "show-display-options": "showDisplayOptions",
+    "show-export": "showExport",
+    "source": "source",
+    "t": "t"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/sheet-music/lib/sheet-music.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "audio",
+      "showDisplayOptions",
+      "showExport",
+      "source"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "sheet-music"
+    ]
+  }
+}
