@@ -36,10 +36,12 @@ export function sentenceRanges(text, lang) {
   if (globalThis.Intl && typeof globalThis.Intl.Segmenter === "function") {
     let seg = null;
     try {
+      // eslint-disable-next-line baseline-js/use-baseline -- feature checked above; a punctuation rule covers browsers without it
       seg = new globalThis.Intl.Segmenter(lang || undefined, {
         granularity: "sentence",
       });
     } catch {
+      // eslint-disable-next-line baseline-js/use-baseline -- feature checked above; a punctuation rule covers browsers without it
       seg = new globalThis.Intl.Segmenter(undefined, {
         granularity: "sentence",
       });
