@@ -16,6 +16,46 @@ export const I18NMixin = function (SuperClass) {
       }
     }
     /**
+     * Registered again on reconnect when the manager let go of this element
+     * (on disconnect, or by pruneDisconnected before it was ever connected).
+     */
+    connectedCallback() {
+      if (super.connectedCallback) {
+        super.connectedCallback();
+      }
+      if (
+        this.__i18nDetail &&
+        I18NManagerStore &&
+        !I18NManagerStore.elements.some((e) => e.context === this)
+      ) {
+        // English after a language change made while we were away: the
+        // manager only pushes non-English text on register, so restore the
+        // defaults here
+        const lang = I18NManagerStore.lang || "";
+        if (
+          this._t &&
+          lang !== this.__i18nLangAtDisconnect &&
+          (lang === "en" || lang.startsWith("en-"))
+        ) {
+          this.t = { ...this._t };
+        }
+        I18NManagerStore.registerLocalization(this.__i18nDetail);
+      }
+    }
+    /**
+     * Let the manager drop this element so its registry does not keep it
+     * alive after removal.
+     */
+    disconnectedCallback() {
+      if (this.__i18nDetail && I18NManagerStore) {
+        this.__i18nLangAtDisconnect = I18NManagerStore.lang;
+        I18NManagerStore.deregisterLocalization(this);
+      }
+      if (super.disconnectedCallback) {
+        super.disconnectedCallback();
+      }
+    }
+    /**
      * Enhanced data reactivity for LitElement if available
      */
     static get properties() {
@@ -187,6 +227,11 @@ export const I18NMixin = function (SuperClass) {
       // this also ensures that things leveraging the Mixin will never miss
       // the singleton being registered
       if (I18NManagerStore) {
+        // remember our own registration so it can be restored on reconnect
+        if (detail.context === this && !this.__i18nDetail) {
+          this.__i18nDetail = detail;
+          this.__i18nMixinManaged = true;
+        }
         I18NManagerStore.registerLocalization(detail);
       }
     }
