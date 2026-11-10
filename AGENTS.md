@@ -227,6 +227,7 @@ LICENSE
   - **Don't add dead code.** We don't tree shake, so everything in a shipped file reaches the browser. Don't eagerly `import` an element your file never renders (the autoloader defines tags content uses), don't leave `_private` methods nothing calls, and don't ship unminified vendor copies next to the `.min.js` you load. `yarn precheck` runs `yarn lint:dead-code` on your changed files (advisory, baselined); fix what it reports rather than baselining it.
   - Run `npm test` to ensure all tests pass.
   - Run `yarn lint` to verify code style. ESLint errors fail CI.
+  - **Element `dependencies` are runtime only.** Babel, Rollup, the dev server and test runner, lerna, lint-staged, the HAX CLI and other build/test tooling go in `devDependencies`; every site that installs the element from npm installs its `dependencies`. `yarn precheck` and CI enforce this (`yarn lint:runtime-deps`).
   - Run `hax audit` for web components to confirm DDD compliance.
 - **Commit Guidelines**:
   - Use clear, descriptive commit messages (e.g., "Add i18n support to my-element").

@@ -73,6 +73,14 @@ const CONFIG = {
       args: ["elements/d-d-d/design-system/build-tokens.js", "--check"],
     },
     {
+      // Element "dependencies" hold only what shipped code needs at runtime;
+      // build/test tooling goes in devDependencies. Blocking: nothing is
+      // baselined, so a fail is new.
+      label: "Runtime dependencies",
+      args: ["scripts/runtime-deps-check.mjs"],
+      changedFiles: /^elements\/[^/]+\/package\.json$/,
+    },
+    {
       // elements/user-action/lib/xapi-vocabulary.{json,js} must match the
       // static xapiVocabulary getters on the elements that send statements
       label: "xAPI vocabulary is up to date",
