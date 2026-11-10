@@ -7532,7 +7532,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           label="${this.previewMode ? this.t.exitPreview : this.t.preview} • Ctrl⇧8"
           voice-command="preview (site)"
           ?active="${this.previewMode}"
-          aria-pressed="${this.previewMode ? "true" : "false"}"
           icon-position="${this.getIconPosition(this.responsiveSize)}"
           @click="${this.togglePreview}"
         ></simple-toolbar-button>
