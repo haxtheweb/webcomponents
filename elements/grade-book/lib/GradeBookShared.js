@@ -171,8 +171,17 @@ export const GradeBookSharedStyles = [
       margin: 0;
       font: inherit;
     }
+    /* the actions shrink and wrap inside the header instead of pushing
+       the settings and save buttons out of the element when labels get
+       longer (translations) or the block is narrow */
+    .top-controls .ddd-block-actions {
+      flex: 0 1 auto;
+      min-width: 0;
+      max-width: 100%;
+    }
     .top-controls .ddd-block-action {
       white-space: nowrap;
+      max-width: 100%;
     }
     .top-controls .ddd-block-action simple-icon-lite {
       flex: none;

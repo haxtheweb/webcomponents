@@ -68,11 +68,7 @@
       "rtl-css": 5
     },
     "d-d-docs": {
-      "outside-pseudo": 9,
-      "outside-pseudo-rtl": 9,
-      "overflow-pseudo": 2,
-      "overflow-pseudo-rtl": 2,
-      "rtl-css": 2
+      "rtl-css": 1
     },
     "ddd-steps-list": {
       "rtl-css": 9
@@ -96,8 +92,6 @@
       "rtl-css": 1
     },
     "grade-book": {
-      "outside-pseudo": 2,
-      "outside-pseudo-rtl": 2,
       "rtl-css": 7
     },
     "hex-picker": {
@@ -113,7 +107,7 @@
       "rtl-css": 1
     },
     "license-element": {
-      "rtl-css": 3
+      "rtl-css": 2
     },
     "lrndesign-sidenote": {
       "rtl-css": 1
@@ -126,10 +120,6 @@
     },
     "media-image": {
       "rtl-css": 6
-    },
-    "media-playlist": {
-      "outside-pseudo": 2,
-      "outside-pseudo-rtl": 2
     },
     "meme-maker": {
       "rtl-css": 2
@@ -166,10 +156,6 @@
     },
     "q-r": {
       "rtl-css": 1
-    },
-    "reading-analysis": {
-      "overflow-pseudo": 1,
-      "overflow-pseudo-rtl": 1
     },
     "retro-card": {
       "rtl-css": 1
