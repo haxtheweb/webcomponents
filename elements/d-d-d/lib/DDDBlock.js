@@ -255,6 +255,8 @@ export const DDDBlockStyles = css`
     letter-spacing: 0.06em;
     text-transform: uppercase;
     line-height: var(--ddd-lh-120);
+    /* a long (translated) word breaks instead of spilling under the actions */
+    overflow-wrap: anywhere;
     color: light-dark(
       var(--ddd-theme-default-slateGray),
       var(--ddd-theme-default-limestoneLight)

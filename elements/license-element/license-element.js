@@ -119,7 +119,7 @@ class LicenseElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
           font-weight: var(--ddd-font-weight-bold);
         }
         .big-license-link img {
-          margin-right: 0 var(--ddd-spacing-2) var(--ddd-spacing-2) 0;
+          margin-inline-end: var(--ddd-spacing-2);
           width: var(--ddd-icon-3xl);
           height: var(--ddd-icon-xs);
           vertical-align: middle;
