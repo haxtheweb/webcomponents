@@ -256,6 +256,17 @@ Invariant: text in an element's demo meets WCAG AA contrast (4.5:1, 3:1 for larg
 - **Shrink only**: the baseline never grows. After fixing contrast, run `yarn test:contrast --update-baseline --elements <name>` and commit the smaller baseline. `--update-baseline` only removes entries (it runs twice and drops only what neither run shows). `--allow-additions` only adds; it exists to rebuild the baseline, and CI fails a pull request whose baseline grew.
 - **CI**: the `contrast` workflow runs on pull requests touching `elements/**`. It fails if the baseline grew compared with the base branch, then blocks on new failures in the elements the pull request changes. Baselined failures in those elements are listed in the job summary so they can be worked down. Demos that do not load are listed, not failed.
 
+### Dark mode and reduced motion check
+
+Invariant: an element responds to dark mode and respects reduced motion. Contrast in dark mode is the color contrast check's job; this one asks whether the element ignores dark mode at all.
+
+- **What runs**: the same local demo runner as the contrast check (`scripts/lib/demo-runner.mjs`). Each changed element's `demo/index.html` opens in Chromium with `prefers-reduced-motion: reduce`, once with `prefers-color-scheme` light and once dark. The element's own tags are the ones defined by a module in its folder.
+- **dark-ignored**: a tag sets colors of its own (background, text color different from what it inherits, borders) and renders exactly the same colors in dark mode, with no `light-dark()`, `prefers-color-scheme` or `color-scheme` in its shadow styles. Use DDD tokens, which switch with the color scheme; if an element is meant to look the same in both schemes, say so with `color-scheme: only light` (or `dark`) in its styles. Tags that only inherit colors follow the page and are not reported.
+- **motion**: a CSS animation, CSS transition or `element.animate()` longer than 10ms runs on the element or inside its shadow root after load, or when its first visible instance (and up to three focusable parts) is hovered and focused. Wrap motion in `@media (prefers-reduced-motion: no-preference)` or use the DDD motion tokens, which drop to near zero under reduced motion.
+- **Run locally**: `yarn test:dark-motion` checks the demos of element folders changed against the base branch (`--base <ref>`, `--elements a,b`, `--all`). Exit 1 means a new failure. Set `DARK_MOTION_CHROMIUM=<path>` to use a Chromium other than Playwright's.
+- **Baseline**: `scripts/dark-motion.baseline.json` lists today's failures per element: `dark-ignored` by tag, `motion` by animation (`transition opacity on my-el >> div.panel`). A demo with new findings is run a second time and only what both runs show counts. It only shrinks: after fixing, run `yarn test:dark-motion --update-baseline --elements <name>` and commit the smaller baseline; `--allow-additions` only adds, and CI fails a pull request whose baseline grew.
+- **CI**: the `dark-motion` workflow runs on pull requests touching `elements/**`, fails if the baseline grew, then blocks on new failures in the elements the pull request changes. Baselined failures are listed in the job summary. Demos that do not load are listed, not failed.
+
 ### Lerna
 This monorepo has configuration settings for lerna. Lerna is for the core team, but to bulk run commands against the monorepo consider things like `npx lerna run build` to run build against all elements. This is useful when getting ready to ship.
 
