@@ -2400,6 +2400,21 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       preview: "Preview",
       previewDescription:
         "See this site as a visitor would, on the device you pick, without logging out",
+      uxStudy: "UX study recording",
+      uxStudyStart: "Start UX study recording",
+      uxStudyStartFor: "Start UX study for {participant}",
+      uxStudyStartDescription:
+        "Type a participant code (no names) before choosing, then use the site as normal",
+      uxStudyMarkAs: "Mark task: {label}",
+      uxStudyMarkHint: "Type a task name to mark it",
+      uxStudyRecording: "Recording UX study",
+      uxStudyMark: "Mark task",
+      uxStudyMarkPrompt: "Task or note",
+      uxStudyStopAndExport: "Stop and export",
+      uxStudyStarted:
+        "UX study recording started. Nothing leaves this browser until you export it.",
+      uxStudyExported: "UX study saved as {file}",
+      uxStudyNotRecording: "No UX study is recording",
       renameThisPage: "Rename this page",
       updatePageDescription: "Update page description",
       updatePageUrlSlug: "Update page URL (slug)",
@@ -4751,6 +4766,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
+    this._resumeUXStudy();
     this.shadowRoot
       .querySelectorAll("[data-super-daemon-path]")
       .forEach((item) => {
@@ -5452,6 +5468,39 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             await import("./utils/PageAsDataProgram.js");
           const pageAsDataProgram = createPageAsDataProgram(this);
           return await pageAsDataProgram(input, values);
+        },
+      },
+    });
+    SuperDaemonInstance.defineOption({
+      i18n: {
+        context: this,
+        title: "uxStudy",
+        "value.name": "uxStudy",
+      },
+      title: this.t.uxStudy,
+      icon: "av:fiber-manual-record",
+      tags: [
+        "Developer",
+        "ux",
+        "study",
+        "usability",
+        "record",
+        "recording",
+        "heatmap",
+        "research",
+      ],
+      eventName: "super-daemon-run-program",
+      path: ">developer/ux-study",
+      context: [">"],
+      voice: "ux study",
+      value: {
+        name: this.t.uxStudy,
+        machineName: "ux-study",
+        context: ">",
+        program: async (input, values) => {
+          const { createUXStudyProgram } =
+            await import("./utils/UXStudyRecorder.js");
+          return await createUXStudyProgram(this)(input, values);
         },
       },
     });
@@ -6223,6 +6272,84 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
   goToLocation(location) {
     globalThis.location = location;
+  }
+  /**
+   * UX study recording (Merlin >developer/ux-study). Closing Merlin uses
+   * _closeMerlin() above, which also resets the phone bar.
+   */
+  _uxStudyStrings() {
+    return {
+      uxStudyRecording: this.t.uxStudyRecording,
+      uxStudyMark: this.t.uxStudyMark,
+      uxStudyMarkPrompt: this.t.uxStudyMarkPrompt,
+      uxStudyStopAndExport: this.t.uxStudyStopAndExport,
+    };
+  }
+  async startUXStudy(participant = "") {
+    const { UXStudyRecorder } = await import("./utils/UXStudyRecorder.js");
+    const manifest = toJS(store.manifest);
+    let siteName = "";
+    let theme = "";
+    if (manifest && manifest.metadata) {
+      if (manifest.metadata.site && manifest.metadata.site.name) {
+        siteName = manifest.metadata.site.name;
+      }
+      if (manifest.metadata.theme && manifest.metadata.theme.element) {
+        theme = manifest.metadata.theme.element;
+      }
+    }
+    UXStudyRecorder.requestAvailability().start({
+      participant: participant,
+      siteName: siteName,
+      theme: theme,
+      t: this._uxStudyStrings(),
+    });
+    this._closeMerlin();
+    HAXStore.toast(this.t.uxStudyStarted, 4000, "fit-bottom");
+  }
+  async markUXStudy(label = "") {
+    const { UXStudyRecorder } = await import("./utils/UXStudyRecorder.js");
+    const recorder = UXStudyRecorder.requestAvailability();
+    if (!recorder.active) {
+      HAXStore.toast(this.t.uxStudyNotRecording, 3000, "fit-bottom");
+      return;
+    }
+    if (label) {
+      recorder.mark(label);
+      this._closeMerlin();
+    }
+  }
+  async stopUXStudy() {
+    const { UXStudyRecorder } = await import("./utils/UXStudyRecorder.js");
+    const result = UXStudyRecorder.requestAvailability().stopAndExport();
+    this._closeMerlin();
+    if (result) {
+      HAXStore.toast(
+        this.t.uxStudyExported.replace("{file}", () => result.fileName),
+        4000,
+        "fit-bottom",
+      );
+    } else {
+      HAXStore.toast(this.t.uxStudyNotRecording, 3000, "fit-bottom");
+    }
+  }
+  /**
+   * A full page reload mid-study resumes the session kept in sessionStorage
+   */
+  async _resumeUXStudy() {
+    let pending = false;
+    try {
+      pending = !!globalThis.sessionStorage.getItem("haxcms-ux-study-session");
+    } catch {
+      pending = false;
+    }
+    if (pending) {
+      const { UXStudyRecorder } = await import("./utils/UXStudyRecorder.js");
+      UXStudyRecorder.requestAvailability().start({
+        resume: true,
+        t: this._uxStudyStrings(),
+      });
+    }
   }
   openPageAsDataFormat(format) {
     const supportedFormats = ["json", "yaml", "md", "xml"];
