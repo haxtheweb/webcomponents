@@ -89,9 +89,9 @@ class LicenseElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
         :host:after {
           content: "License";
           position: relative;
-          float: right;
+          float: inline-end;
           bottom: var(--ddd-spacing-9);
-          right: var(--ddd-spacing-2);
+          inset-inline-end: var(--ddd-spacing-2);
           font-size: var(--ddd-font-size-ms);
           color: var(--ddd-theme-default-slateGray);
           font-style: italic;
