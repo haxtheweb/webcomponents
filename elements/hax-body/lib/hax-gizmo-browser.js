@@ -5,6 +5,7 @@ import { haxElementToNode } from "@haxtheweb/utils/utils.js";
 import { HAXStore } from "./hax-store.js";
 import "./hax-element-demo.js";
 import "./hax-tray-button.js";
+import { HaxTrayBrowserStyles } from "./hax-tray-browser-styles.js";
 import { autorun, toJS } from "mobx";
 import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 import "@haxtheweb/simple-toolbar/lib/simple-button-grid.js";
@@ -19,6 +20,7 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
   static get styles() {
     return [
+      ...HaxTrayBrowserStyles,
       css`
         :host {
           display: flex;
@@ -29,8 +31,10 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
           max-width: 100%;
           min-width: 0;
           box-sizing: border-box;
-          overflow-x: hidden;
-          overflow-y: auto;
+          /* clip, not hidden or auto: the tray scrolls the list, and a
+             scroll container here would stop the filter from sticking */
+          overflow-x: clip;
+          overflow-y: visible;
         }
         :host > * {
           width: 100%;
@@ -41,38 +45,54 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
         simple-popover-selection {
           display: flex;
         }
-        hax-tray-button {
-          flex: auto;
-          font-size: var(--ddd-font-size-6xs, 12px);
-          --hax-ui-font-size-sm: var(--ddd-font-size-6xs, 12px);
-          --simple-toolbar-button-height: var(--ddd-icon-xxs, 24px);
-          --simple-toolbar-button-width: var(--ddd-icon-xxs, 24px);
-        }
+        /* HAX UI: the filter stays at the top of the list while it scrolls */
         .toolbar-inner {
+          position: sticky;
+          /* under the tray title bar, which also sticks */
+          top: var(--hax-ui-titlebar-height, 48px);
+          z-index: 2;
           width: 100%;
           max-width: 100%;
+          box-sizing: border-box;
+          padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
+          background-color: var(--hax-ui-surface);
+          border-bottom: 1px solid var(--hax-ui-line);
         }
-        hax-tray-button::part(button) {
-          font-size: var(--ddd-font-size-6xs, var(--hax-ui-font-size-xs));
+        #inputfilter {
+          margin: 0;
+          padding: 0;
+          --simple-fields-font-size: var(--hax-ui-admin-font-size);
+          --simple-fields-color: var(--hax-ui-text);
+          --simple-fields-input-max-width: 100%;
+          --simple-fields-row-focus-outline-width: var(--hax-ui-focus-width);
+          --simple-fields-row-focus-outline-color: var(--hax-ui-focus);
+          --simple-fields-background-color: var(--hax-ui-surface);
+        }
+        #inputfilter::part(field-main) {
+          gap: var(--hax-ui-gap-md);
+        }
+        #inputfilter::part(label) {
+          flex: 0 0 auto;
+          font-size: var(--hax-ui-admin-font-size);
+          font-weight: 700;
+        }
+        #inputfilter::part(field-main-inner) {
+          flex: 1 1 auto;
+          min-width: 0;
+        }
+        #inputfilter::part(option-input) {
+          box-sizing: border-box;
+          width: 100%;
+          height: var(--hax-ui-row-height);
+          padding: 0 var(--hax-ui-gap-md);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius);
+          background-color: var(--hax-ui-surface);
+          color: var(--hax-ui-text);
         }
         simple-fields-field {
           margin: 0;
-          padding: var(--ddd-spacing-4);
-        }
-        simple-button-grid {
-          --simple-button-grid-margin: var(--ddd-spacing-1);
-        }
-        a11y-collapse {
-          margin: 0;
-          border-top-width: 2px;
-          --a11y-collapse-margin: 0;
-          --a11y-collapse-vertical-padding: var(--ddd-spacing-0);
-          --a11y-collapse-horizontal-padding: var(--ddd-spacing-1);
-          --a11y-collapse-padding-left: 8px;
-        }
-        a11y-collapse::part(heading) {
-          margin: var(--ddd-spacing-2) 0;
-          display: block;
+          padding: 0;
         }
       `,
     ];

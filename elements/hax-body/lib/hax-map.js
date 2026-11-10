@@ -38,70 +38,118 @@ class HaxMap extends I18NMixin(SimpleColors) {
           padding: 0;
           margin: 0;
         }
+        /* HAX UI tree rows, as outline-designer draws them: 32px, the block
+           type in bold, a muted excerpt of its text, and the row's own
+           actions on hover or focus */
         ul li {
           margin: 0;
-          padding: 0;
+          padding: 0 var(--hax-ui-gap-md, 8px) 0 var(--hax-ui-gap-md, 8px);
           display: flex;
-          height: 38px;
+          align-items: center;
+          gap: var(--hax-ui-gap-md, 8px);
+          min-height: var(--hax-ui-row-height, 32px);
+          font-size: var(--hax-ui-admin-font-size, 14px);
+          color: var(--hax-ui-text, var(--hax-ui-color));
+        }
+        ul li:hover,
+        ul li:focus-within {
+          background-color: var(--hax-ui-hover, transparent);
         }
         li hax-toolbar-item {
           display: inline-flex;
+          flex: 0 0 auto;
           max-width: 60%;
-          height: 38px;
-          margin-right: 8px;
+          height: var(--hax-ui-row-height, 32px);
           overflow: hidden;
+          --simple-toolbar-button-height: var(--hax-ui-icon, 16px);
+          --simple-toolbar-button-width: var(--hax-ui-icon, 16px);
         }
+        li hax-toolbar-item::part(button) {
+          gap: var(--hax-ui-gap-md, 8px);
+          padding: 0;
+          border-color: transparent;
+          background-color: transparent;
+          color: var(--hax-ui-text, var(--hax-ui-color));
+          font-size: var(--hax-ui-admin-font-size, 14px);
+          font-weight: 700;
+        }
+        li hax-toolbar-item::part(icon) {
+          color: var(--hax-ui-text-muted, currentColor);
+        }
+        li hax-toolbar-item::part(label) {
+          margin: 0;
+        }
+        li .excerpt {
+          flex: 1 1 auto;
+          min-width: 0;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          color: var(--hax-ui-text-muted, currentColor);
+          cursor: pointer;
+        }
+        /* a row's actions take no room until the row is hovered or has
+           focus, so the excerpt can use the width */
         li simple-icon-button-lite {
-          display: inline-flex;
+          display: none;
+          flex: 0 0 auto;
           opacity: 0;
           visibility: hidden;
-          --simple-icon-width: var(--ddd-icon-4xs, 16px);
-          --simple-icon-height: var(--ddd-icon-4xs, 16px);
-          --simple-icon-button-border-radius: var(--ddd-radius-sm, 6px);
-          --simple-icon-button-padding: 3px;
-          width: 28px;
-          height: 24px;
-          border-radius: var(--ddd-radius-sm, 6px);
-          margin: 0 2px;
-          padding: 2px;
-          color: var(--ddd-theme-default-coalyGray);
-          background-color: var(--ddd-theme-default-white, #ffffff);
-          border: var(--ddd-border-xs, 1px solid);
-          border-color: var(--ddd-theme-default-limestoneGray, #999999);
-          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
+          --simple-icon-width: var(--hax-ui-icon, 16px);
+          --simple-icon-height: var(--hax-ui-icon, 16px);
+          --simple-icon-button-border-radius: var(--hax-ui-radius, 4px);
+          --simple-icon-button-padding: 0;
+          box-sizing: border-box;
+          width: var(--hax-ui-target, 24px);
+          height: var(--hax-ui-target, 24px);
+          border-radius: var(--hax-ui-radius, 4px);
+          margin: 0;
+          padding: 0;
+          color: var(--hax-ui-text, var(--hax-ui-color));
+          background-color: var(
+            --hax-ui-surface,
+            var(--hax-ui-background-color)
+          );
+          border: 1px solid
+            var(--hax-ui-line-strong, var(--hax-ui-border-color));
+          transition:
+            background-color var(--hax-ui-duration, 150ms) ease,
+            opacity var(--hax-ui-duration, 150ms) ease;
         }
         li simple-icon-button-lite:hover,
         li simple-icon-button-lite:focus,
         li simple-icon-button-lite:focus-within {
-          background-color: var(--ddd-theme-default-skyBlue, #0174be);
-          border-color: var(--ddd-theme-default-skyBlue, #0174be);
-          color: var(--ddd-theme-default-white, #ffffff);
+          background-color: var(
+            --hax-ui-hover,
+            var(--hax-ui-background-color-secondary)
+          );
           opacity: 1;
         }
-        li simple-icon-button.del {
-          margin-left: 16px;
+        li simple-icon-button-lite.del {
+          color: var(--hax-ui-danger, var(--hax-ui-color-danger));
+          border-color: var(--hax-ui-danger, var(--hax-ui-color-danger));
         }
         li:hover simple-icon-button-lite,
         li:focus-within simple-icon-button-lite {
+          display: inline-flex;
           visibility: visible;
           opacity: 1;
         }
-        :host([dark]) li simple-icon-button-lite {
-          color: var(--ddd-theme-default-white, #ffffff);
-          background-color: var(--ddd-theme-default-coalyGray, #2f2f2f);
-          border-color: var(--ddd-theme-default-limestoneGray, #7a7a7a);
+        li hax-toolbar-item {
+          max-width: none;
         }
-        :host([dark]) li simple-icon-button-lite:hover,
-        :host([dark]) li simple-icon-button-lite:focus,
-        :host([dark]) li simple-icon-button-lite:focus-within {
-          background-color: var(--ddd-theme-default-skyBlue, #0174be);
-          border-color: var(--ddd-theme-default-skyBlue, #0174be);
-          color: var(--ddd-theme-default-white, #ffffff);
+        li:has(hax-toolbar-item[data-active-item]) {
+          background-color: var(
+            --hax-ui-selected,
+            var(--hax-ui-background-color-accent)
+          );
+          box-shadow: inset var(--ddd-border-size-md, 3px) 0 0
+            var(--hax-ui-accent-strong, var(--hax-ui-color-accent));
         }
-        hax-toolbar-item[data-active-item]::part(button) {
-          color: var(--hax-ui-color);
-          background-color: var(--hax-ui-background-color-accent);
-          border-color: var(--hax-ui-color-accent);
+        @media (prefers-reduced-motion: reduce) {
+          li simple-icon-button-lite {
+            transition: none;
+          }
         }
         li.is-child {
           margin-left: 8px;
@@ -342,6 +390,7 @@ class HaxMap extends I18NMixin(SimpleColors) {
           parent: list[i].parent,
           icon: def.gizmo.icon,
           name: def.gizmo.title,
+          excerpt: this.excerptFor(list[i].node),
         });
       } else {
         if (list[i].tag && list[i].tag.includes("-")) {
@@ -392,6 +441,12 @@ class HaxMap extends I18NMixin(SimpleColors) {
                     show-text-label
                   >
                   </hax-toolbar-item>
+                  <span
+                    class="excerpt"
+                    aria-hidden="true"
+                    @click="${(_e) => this.goToItem(index)}"
+                    >${element.excerpt || ""}</span
+                  >
                   ${
                     element.tag != "page-break"
                       ? html`
@@ -405,20 +460,20 @@ class HaxMap extends I18NMixin(SimpleColors) {
                             title="${this.t.lockUnlock}"
                           ></simple-icon-button-lite>
                           <simple-icon-button-lite
-                            icon="hax:keyboard-arrow-up"
+                            icon="hax:admin-move-up"
                             @click="${(_e) => this.itemOp(index, "up")}"
                             title="${this.t.moveUp}"
                             ?disabled="${this.isLocked(index)}"
                           ></simple-icon-button-lite>
                           <simple-icon-button-lite
-                            icon="hax:keyboard-arrow-down"
+                            icon="hax:admin-move-down"
                             @click="${(_e) => this.itemOp(index, "down")}"
                             title="${this.t.moveDown}"
                             ?disabled="${this.isLocked(index)}"
                           ></simple-icon-button-lite>
                           <simple-icon-button-lite
                             class="del"
-                            icon="delete"
+                            icon="hax:admin-delete"
                             @click="${(_e) => this.itemOp(index, "delete")}"
                             title="${this.t.delete}"
                             ?disabled="${this.isLocked(index)}"
@@ -522,6 +577,22 @@ class HaxMap extends I18NMixin(SimpleColors) {
         this.requestUpdate();
       }, 0);
     }
+  }
+  /**
+   * A short plain-text excerpt of a block, so rows of the same type (three
+   * Headings) can be told apart. Text only, read from the page; a page
+   * break shows its title.
+   */
+  excerptFor(node) {
+    if (!node || !node.getAttribute) {
+      return "";
+    }
+    let text =
+      node.tagName === "PAGE-BREAK"
+        ? node.getAttribute("title") || ""
+        : node.innerText || node.textContent || "";
+    text = text.replace(/\s+/g, " ").trim();
+    return text.length > 80 ? `${text.substring(0, 80)}…` : text;
   }
   indentedElements(elementList) {
     let prev = "h1";

@@ -20,6 +20,8 @@ import {
   HaxComponentStyles,
   HaxTrayDetail,
 } from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
+import { HaxUiAdminTokens } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
+import { HaxUiAdminSidePanelFields } from "@haxtheweb/d-d-d/lib/HaxUiAdminControls.js";
 import "@haxtheweb/simple-fields/simple-fields.js";
 import "@haxtheweb/simple-fields/lib/simple-fields-tab.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
@@ -245,6 +247,8 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
       ...(super.styles || []),
       ...HaxTrayDetail,
       ...HaxComponentStyles,
+      ...HaxUiAdminTokens,
+      ...HaxUiAdminSidePanelFields,
       css`
         :host {
           --simple-fields-detail-font-family: var(--hax-ui-font-family);
@@ -261,9 +265,11 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
           color: var(--hax-ui-color);
         }
 
+        /* HAX UI side panel title bar: icon, title at the left, Move */
         .tray-detail-titlebar-icon {
-          --simple-icon-height: var(--ddd-icon-xs, 32px);
-          --simple-icon-width: var(--ddd-icon-xs, 32px);
+          --simple-icon-height: var(--ddd-icon-4xs, 20px);
+          --simple-icon-width: var(--ddd-icon-4xs, 20px);
+          flex: 0 0 auto;
         }
         .wrapper {
           position: fixed;
@@ -400,15 +406,15 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
         #haxMenuAlign {
           --simple-toolbar-button-width: 18px;
           --simple-toolbar-button-height: 18px;
-          margin: 4px 0px 0px;
-          height: 24px;
-          width: 24px;
+          margin: 0;
+          height: var(--hax-ui-row-height);
+          width: var(--hax-ui-row-height);
         }
         .detail {
           resize: horizontal;
           visibility: visible;
           pointer-events: all;
-          background-color: var(--hax-ui-background-color);
+          background-color: var(--hax-ui-surface);
           max-height: calc(100vh - 64px);
           width: var(
             --hax-tray-element-custom-width,
@@ -450,7 +456,10 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
           padding: 0;
           transition: opacity var(--ddd-duration-normal, 0.3s) ease-in-out;
           opacity: 1;
-          overflow: hidden;
+          /* clip, not hidden: hidden makes this the scroll box for sticky
+             children, so the title bar and the Blocks filter scrolled away
+             with the panel instead of staying at its top */
+          overflow: clip;
         }
         .wrapper:focus #tray-detail,
         .wrapper:focus-within #tray-detail,
@@ -464,11 +473,45 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
           display: none;
         }
         /* same Coaly gray as the HAXcms editor top bar it sits under */
-        .tray-detail-titlebar {
+        #tray-detail {
+          --hax-tray-detail-title-font-size: var(--hax-ui-font-size);
+        }
+        #tray-detail h4.tray-detail-titlebar {
+          box-sizing: border-box;
+          height: var(--hax-ui-titlebar-height, 48px);
+          padding: 0 var(--hax-ui-gap-md) 0 var(--hax-ui-gap-lg);
+          gap: var(--hax-ui-gap-md);
+          justify-content: flex-start;
           background-color: var(--ddd-theme-default-coalyGray);
+          color: var(--hax-ui-on-titlebar, var(--ddd-theme-default-white));
+          font-family: var(--hax-ui-admin-font-family);
+          word-break: normal;
         }
         .tray-detail-titlebar .tray-detail-titlebar-label {
-          display: inline-flex;
+          display: block;
+          flex: 1 1 auto;
+          min-width: 0;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          text-align: start;
+        }
+        .tray-detail-titlebar-actions {
+          flex: 0 0 auto;
+          display: flex;
+        }
+        #haxMenuAlign::part(button) {
+          width: var(--hax-ui-row-height);
+          height: var(--hax-ui-row-height);
+          padding: 0;
+          justify-content: center;
+          border-color: transparent;
+          background-color: transparent;
+          color: var(--hax-ui-on-titlebar, var(--ddd-theme-default-white));
+        }
+        #haxMenuAlign:hover::part(button),
+        #haxMenuAlign:focus-within::part(button) {
+          background-color: rgba(255, 255, 255, 0.12);
         }
         #settingsform {
           margin: 0;
@@ -477,24 +520,18 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
           max-width: 100%;
           min-width: 0;
           box-sizing: border-box;
-          --simple-fields-margin: var(--ddd-spacing-1);
-          --simple-fields-margin-small: var(--ddd-spacing-1);
-          --simple-fields-field-margin: var(--ddd-spacing-2);
-          --simple-fields-detail-line-height: var(--ddd-lh-120);
           --a11y-collapse-padding-top: 0;
           --a11y-collapse-padding-bottom: 0;
           --a11y-collapse-vertical-padding: 0;
           --a11y-collapse-horizontal-padding: 0;
-          --a11y-collapse-heading-font-weight: var(--ddd-font-weight-medium);
-          --a11y-collapse-heading-color: var(
-            --simple-colors-default-theme-accent-12
-          );
           overflow-y: auto;
           overflow-x: hidden;
         }
         .block-add-wrapper {
-          overflow-y: auto;
-          overflow-x: hidden;
+          /* the panel (.detail) scrolls; no scroll box here, so the Blocks
+             filter can stick under the title bar */
+          overflow-y: visible;
+          overflow-x: clip;
           width: 100%;
           max-width: 100%;
           min-width: 0;
@@ -510,7 +547,6 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
           box-sizing: border-box;
         }
         #settingsform simple-fields-tab,
-        #settingsform simple-fields-field,
         #settingsform a11y-collapse,
         #settingsform a11y-collapse-group {
           width: 100%;
@@ -520,38 +556,46 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
           margin: 0;
           padding: 0;
         }
-        #settingsform simple-fields-tab,
-        #settingsform simple-fields-field,
         #settingsform hax-upload-field {
-          padding: var(--ddd-spacing-2);
+          padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
+          border-bottom: 1px solid var(--hax-ui-line);
         }
+        /* groups (Configure, Advanced, Developer) are HAX UI fieldset rows:
+           32px, chevron first, bold label, a line under */
         #settingsform a11y-collapse {
           margin: 0px;
           --a11y-collapse-margin: 0;
-          --a11y-collapse-vertical-padding: var(--ddd-spacing-0);
-          --a11y-collapse-horizontal-padding: var(--ddd-spacing-0);
+          --a11y-collapse-border: none;
+          --a11y-collapse-border-between: none;
+          --a11y-collapse-vertical-padding: 0;
+          --a11y-collapse-horizontal-padding: 0;
+          --a11y-collapse-heading-font-weight: 700;
+          --a11y-collapse-heading-color: var(--hax-ui-text);
+          --a11y-collapse-transform-rotated-deg: -90deg;
+          border-bottom: 1px solid var(--hax-ui-line);
         }
-        /** ensure that nested a11y collapses for settings have padding but top doesn't **/
-        #settingsform a11y-collapse a11y-collapse {
-          --a11y-collapse-vertical-padding: var(--ddd-spacing-0);
-          --a11y-collapse-horizontal-padding: var(--ddd-spacing-2);
+        #settingsform a11y-collapse::part(heading-id) {
+          flex-direction: row-reverse;
+          justify-content: flex-end;
+          gap: var(--hax-ui-gap-md);
+          min-height: var(--hax-ui-row-height);
+          padding: 0 var(--hax-ui-gap-lg);
+          border-bottom: 1px solid var(--hax-ui-line);
+        }
+        #settingsform a11y-collapse::part(icon) {
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
         }
         #settingsform a11y-collapse span[slot="heading"] {
-          --a11y-collapse-heading-color: var(
-            --simple-colors-default-theme-accent-12
-          ) !important;
-          line-height: var(--ddd-spacing-6);
-          min-height: var(--ddd-spacing-6);
           display: block;
-          margin: var(--ddd-spacing-2);
+          margin: 0;
+          font-family: var(--ddd-font-primary, sans-serif);
+          font-size: var(--hax-ui-admin-font-size);
+          line-height: var(--hax-ui-row-height);
+          color: var(--hax-ui-text);
         }
-        #settingsform a11y-collapse a11y-collapse span[slot="heading"] {
-          padding-left: 8px;
-        }
-        #settingsform simple-fields-field::part(label) {
-          font-size: var(--hax-ui-font-size-sm);
-          line-height: var(--ddd-lh-120);
-          font-weight: var(--ddd-font-weight-medium);
+        #settingsform a11y-collapse a11y-collapse::part(heading-id) {
+          padding-inline-start: calc(var(--hax-ui-gap-lg) * 2);
         }
         #settingsform a11y-collapse-group {
           margin: 0;
@@ -1028,6 +1072,7 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
   get contentEditTemplate() {
     return html` <simple-fields
       id="settingsform"
+      class="hax-ui-side-panel"
       ?dark="${this.haxUiTheme == "haxdark"}"
       disable-responsive
       code-theme="${
@@ -1046,6 +1091,7 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
       <hax-tray-upload
         ?hidden="${hidden || !HAXStore.platformAllows("uploadMedia")}"
         show-sources
+        compact
       ></hax-tray-upload>
       ${
         HAXStore.platformAllows("pageTemplates")

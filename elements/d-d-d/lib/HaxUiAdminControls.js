@@ -673,10 +673,157 @@ export const HaxUiAdminSimpleFields = [
     simple-fields.hax-ui-simple-field.compact simple-fields-field {
       min-height: var(--hax-ui-row-height);
     }
+    /* the field above sets --simple-fields-border-color transparent, which
+       the icon picker also reads for its trigger; keep the trigger bordered */
+    simple-fields-field.hax-ui-simple-field simple-icon-select,
+    simple-fields.hax-ui-simple-field simple-icon-select {
+      --simple-icon-select-border-color: var(--hax-ui-line-strong);
+    }
     simple-fields-field.hax-ui-simple-field:focus-within,
     simple-fields.hax-ui-simple-field simple-fields-field:focus-within {
       outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
       outline-offset: 1px;
+    }
+  `,
+];
+
+/**
+ * A settings form in a narrow side panel (the editor tray's Configure
+ * form): put class="hax-ui-side-panel" on the simple-fields form. Each
+ * setting is one row with a label column and the control filling the rest,
+ * rows divided by a line, every text field and select one 32px control,
+ * and pickers (icon, color) bordered the same way. The admin field row
+ * (240px label column, 40px inputs) does not fit a 300px panel, so this is
+ * its compact form. Opt-in: not part of HaxUiAdminStyles.
+ */
+export const HaxUiAdminSidePanelFields = [
+  css`
+    simple-fields.hax-ui-side-panel {
+      --hax-ui-field-label-width-compact: var(--ddd-spacing-28, 112px);
+      --simple-fields-font-family: var(--ddd-font-primary, sans-serif);
+      --simple-fields-font-size: var(--hax-ui-admin-font-size);
+      --simple-fields-detail-font-family: var(--ddd-font-primary, sans-serif);
+      --simple-fields-detail-font-size: var(--hax-ui-admin-font-size-xs);
+      --simple-fields-color: var(--hax-ui-text);
+      --simple-fields-meta-color: var(--hax-ui-text-muted);
+      --simple-fields-accent-color: var(--hax-ui-accent-strong);
+      --simple-fields-border-radius: var(--hax-ui-radius);
+      --simple-fields-border-color: var(--hax-ui-line-strong);
+      --simple-fields-background-color: var(--hax-ui-surface);
+      --simple-fields-input-background-color: var(--hax-ui-surface);
+      --simple-fields-input-border: none;
+      --simple-fields-input-max-width: 100%;
+      --simple-fields-select-max-width: 100%;
+      --simple-fields-number-max-width: 100%;
+      --simple-fields-row-focus-outline-width: var(--hax-ui-focus-width);
+      --simple-fields-row-focus-outline-color: var(--hax-ui-focus);
+      --simple-fields-row-hover-background-color: var(--hax-ui-hover);
+      --simple-fields-placeholder-color: var(--hax-ui-text-muted);
+      --simple-fields-placeholder-opacity: 1;
+      --simple-fields-placeholder-font-style: normal;
+      --simple-fields-select-option-selected-background-color: var(
+        --hax-ui-selected
+      );
+      font-family: var(--ddd-font-primary, sans-serif);
+      font-size: var(--hax-ui-admin-font-size);
+      color: var(--hax-ui-text);
+    }
+    simple-fields.hax-ui-side-panel simple-fields-field,
+    simple-fields.hax-ui-side-panel simple-fields-container {
+      box-sizing: border-box;
+      min-height: calc(var(--hax-ui-row-height) + 2 * var(--hax-ui-gap-md));
+      margin: 0;
+      padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
+      border-bottom: 1px solid var(--hax-ui-line);
+    }
+    simple-fields.hax-ui-side-panel simple-fields-field::part(field-main),
+    simple-fields.hax-ui-side-panel simple-fields-container::part(field-main) {
+      gap: var(--hax-ui-gap-md);
+      align-items: center;
+    }
+    simple-fields.hax-ui-side-panel simple-fields-field::part(label),
+    simple-fields.hax-ui-side-panel simple-fields-container::part(label) {
+      flex: 0 0 var(--hax-ui-field-label-width-compact);
+      min-width: 0;
+      font-size: var(--hax-ui-admin-font-size);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--hax-ui-text);
+    }
+    /* a switch-like setting: its label takes the row, the control sits at
+       the end */
+    simple-fields.hax-ui-side-panel
+      simple-fields-field[type="checkbox"]::part(label) {
+      flex: 1 1 auto;
+    }
+    simple-fields.hax-ui-side-panel simple-fields-field::part(field-main-inner),
+    simple-fields.hax-ui-side-panel simple-fields-container::part(field-inner) {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+    simple-fields.hax-ui-side-panel
+      simple-fields-field[type="checkbox"]::part(field-main-inner) {
+      flex: 0 0 auto;
+    }
+    simple-fields.hax-ui-side-panel simple-fields-field::part(info-toggle),
+    simple-fields.hax-ui-side-panel simple-fields-container::part(info-toggle) {
+      color: var(--hax-ui-text-muted);
+    }
+    /* one control: 32px, one border, one radius */
+    simple-fields.hax-ui-side-panel
+      simple-fields-field:not([type="checkbox"]):not([type="radio"])::part(
+        option-input
+      ),
+    simple-fields.hax-ui-side-panel simple-fields-field::part(select) {
+      box-sizing: border-box;
+      width: 100%;
+      height: var(--hax-ui-row-height);
+      padding: 0 var(--hax-ui-gap-md);
+      border: 1px solid var(--hax-ui-line-strong);
+      border-radius: var(--hax-ui-radius);
+      background-color: var(--hax-ui-surface);
+      color: var(--hax-ui-text);
+      font-size: var(--hax-ui-admin-font-size);
+    }
+    simple-fields.hax-ui-side-panel simple-fields-field::part(select) {
+      padding-inline-end: calc(var(--hax-ui-gap-md) + var(--hax-ui-target));
+    }
+    simple-fields.hax-ui-side-panel simple-fields-field::part(textarea) {
+      box-sizing: border-box;
+      width: 100%;
+      padding: var(--hax-ui-gap-md);
+      border: 1px solid var(--hax-ui-line-strong);
+      border-radius: var(--hax-ui-radius);
+      background-color: var(--hax-ui-surface);
+      color: var(--hax-ui-text);
+    }
+    simple-fields.hax-ui-side-panel
+      simple-fields-field[disabled]::part(option-input),
+    simple-fields.hax-ui-side-panel
+      simple-fields-field[readonly]::part(option-input) {
+      background-color: var(--hax-ui-sunken);
+      color: var(--hax-ui-text-muted);
+      border-color: var(--hax-ui-line);
+    }
+    /* pickers share the control's border and size */
+    simple-fields.hax-ui-side-panel simple-fields-container > [slot="field"] {
+      flex: 1 1 auto;
+      width: 100%;
+      min-width: 0;
+    }
+    simple-fields.hax-ui-side-panel simple-colors-picker {
+      --simple-picker-option-size: var(--ddd-icon-4xs, 20px);
+      --simple-picker-sample-padding: calc(
+        (var(--hax-ui-row-height) - var(--ddd-icon-4xs, 20px) - 2px) / 2
+      );
+      --simple-colors-picker-min-width: 0;
+    }
+    simple-fields.hax-ui-side-panel simple-icon-select {
+      --simple-icon-select-row-size: var(--hax-ui-row-height);
+      --simple-icon-select-border-color: var(--hax-ui-line-strong);
+      --simple-icon-select-background-color: var(--hax-ui-surface);
+      --simple-icon-select-accent-color: var(--hax-ui-accent-strong);
+      --simple-icon-select-active-background-color: var(--hax-ui-selected);
     }
   `,
 ];
