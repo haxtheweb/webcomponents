@@ -502,7 +502,11 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
     if (tag === "ol") return this.t.numberedList;
     const block = this._allFormatBlocks.find((b) => b.tag === tag);
     if (block) return block.label;
-    return this.activeNode ? this.elementLabel(this.activeNode) : "";
+    // with no block selected the chip still needs a name
+    return (
+      (this.activeNode ? this.elementLabel(this.activeNode) : "") ||
+      this.t.format
+    );
   }
   get _siblings() {
     const node = this.activeNode;

@@ -24,6 +24,15 @@ describe("hax-plate-context block bar", () => {
     );
   });
 
+  it("every button has a name with no block selected", async () => {
+    const el = await fixture(html`<hax-plate-context></hax-plate-context>`);
+    await el.updateComplete;
+    [...bar(el).querySelectorAll("button")].forEach((b) => {
+      expect(b.getAttribute("aria-label"), b.id).to.not.equal("");
+    });
+    await expect(el).to.be.accessible();
+  });
+
   it("the drag handle has no menu", async () => {
     const el = await fixture(html`<hax-plate-context></hax-plate-context>`);
     await el.updateComplete;
