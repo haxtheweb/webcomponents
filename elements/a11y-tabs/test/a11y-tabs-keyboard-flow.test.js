@@ -17,21 +17,12 @@ import {
   describeEl,
 } from "../../../scripts/test-setup/keyboard-flow.js";
 
-// KNOWN BUG: every a11y-tab renders an "End of tab. Back to tabs" link
-// (lib/a11y-tab.js render, <span class="sr-only">...<a href="#id">) inside a
-// .sr-only span parked at left:-99999px. The link is in the tab order, so a
-// sighted keyboard user tabs onto something they cannot see. The flows below
-// step over it and the it.skip test asserts the fixed behavior.
-const KNOWN_BUGS = [
-  {
-    match: (el) =>
-      el.tagName === "A" &&
-      el.getRootNode().host &&
-      el.getRootNode().host.tagName === "A11Y-TAB",
-    reason: "a11y-tab back-to-tabs link is focusable but off screen",
-  },
-];
-const isKnownBug = (el) => KNOWN_BUGS.some((bug) => bug.match(el));
+// every a11y-tab ends with an "End of tab. Back to tabs" skip link inside a
+// visually hidden span that is shown while the link has focus
+const isEndOfTabLink = (el) =>
+  el.tagName === "A" &&
+  el.getRootNode().host &&
+  el.getRootNode().host.tagName === "A11Y-TAB";
 
 describe("keyboard flow: a11y-tabs", () => {
   let wrapper;
@@ -81,9 +72,11 @@ describe("keyboard flow: a11y-tabs", () => {
       `Tab goes to the active panel, was ${describeEl(next)}`,
     ).to.equal("in-1");
     await press("Tab");
-    if (isKnownBug(deepActiveElement())) {
-      await press("Tab");
-    }
+    const link = expectGoodFocusStop(expect, "end-of-tab link");
+    expect(isEndOfTabLink(link), "end-of-tab link follows the panel").to.equal(
+      true,
+    );
+    await press("Tab");
     expectFocusOn(expect, after, "hidden panels are skipped");
   });
 
@@ -114,7 +107,7 @@ describe("keyboard flow: a11y-tabs", () => {
     expect(tabs.activeTab).to.equal("t2");
   });
 
-  it.skip("KNOWN BUG: the end-of-tab link is visible when it has focus", async () => {
+  it("the end-of-tab link is visible when it has focus", async () => {
     await press("Tab");
     await press("Tab");
     await press("Tab");

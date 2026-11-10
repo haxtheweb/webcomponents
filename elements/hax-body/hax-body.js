@@ -307,7 +307,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 [data-instructional-action]
               )
           )::before {
-          content: "Type '/' for quick actions";
+          content: var(
+            --hax-body-quick-actions-text,
+            "Type '/' for quick actions"
+          );
           opacity: var(--ddd-opacity-40, 0.4);
         }
 
@@ -724,23 +727,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             margin: calc(100px + var(--hax-tray-menubar-min-height)) 0 0 0;
           }
         }
-
-        @media screen and (min-color-index: 0) and(-webkit-min-device-pixel-ratio:0) {
-          /*
-            Define here the CSS styles applied only to Safari browsers
-            (any version and any device) via https://solvit.io/bcf61b6
-          */
-          :host([edit-mode][hax-mover]) #bodycontainer ::slotted(*) {
-            outline: var(--hax-body-editable-outline);
-            background-color: var(--hax-body-possible-target-background-color);
-          }
-          :host([edit-mode]) #bodycontainer ::slotted(*.hax-hovered) {
-            background-color: var(
-              --hax-body-target-background-color
-            ) !important;
-            outline: var(--hax-body-active-outline);
-          }
-        }
       `,
     ];
   }
@@ -768,6 +754,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     this.t = {
       addContent: "Add Content",
       cantBeTransformed: "Sorry, this can not be transformed!",
+      typeForQuickActions: "Type '/' for quick actions",
     };
     // double key press counter
     this.timesClickedArrowDown = 0;
@@ -1243,6 +1230,26 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
   }
   /**
+   * The empty-paragraph placeholder is drawn by CSS (::before content),
+   * which cannot read this.t, so pass the translated text in through a
+   * custom property that inherits into the slotted paragraphs.
+   */
+  _applyQuickActionsText() {
+    const text = this.t && this.t.typeForQuickActions;
+    if (typeof text !== "string" || text === "") {
+      this.style.removeProperty("--hax-body-quick-actions-text");
+      return;
+    }
+    // Security: the value is always emitted as one quoted CSS string;
+    // backslashes, quotes and line breaks are escaped so translated text
+    // can not close the string or add other declarations.
+    const escaped = text
+      .replace(/\\/g, "\\\\")
+      .replace(/"/g, '\\"')
+      .replace(/[\r\n\f]/g, "\\a ");
+    this.style.setProperty("--hax-body-quick-actions-text", `"${escaped}"`);
+  }
+  /**
    * LitElement life cycle - properties changed callback
    */
   async updated(changedProperties) {
@@ -1250,6 +1257,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       super.updated(changedProperties);
     }
     changedProperties.forEach(async (oldValue, propName) => {
+      if (propName === "t") {
+        this._applyQuickActionsText();
+      }
       if (propName == "editMode" && oldValue !== undefined) {
         // microtask delay to allow store to establish child nodes appropriately
         setTimeout(async () => {
@@ -5396,20 +5406,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   }
   /**
    * Test if this is a HAX element or not
-   */
-  _haxResolvePreviousElement(node) {
-    node = node.previousElementSibling;
-    while (
-      node != null &&
-      typeof node.tagName !== typeof undefined &&
-      node.tagName.substring(0, 4) === "HAX-"
-    ) {
-      node = node.previousElementSibling;
-    }
-    return node;
-  }
-  /**
-   * Test if this is a HAX element or not
    * true means its a valid element for selection
    * We have special support for the hax-logo because it's hax.
    */
@@ -6973,37 +6969,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     this.unsetElementEditMode(oldValue);
   }
   /**
-   * Get position from top and left of the page based on position:relative; being
-   * set in a parent.
-   *
-   * @notice This only works correctly across browsers because hax-body
-   * is position:relative in :host.
-   */
-  _getPosition(element) {
-    let xPosition =
-      element.offsetLeft - element.scrollLeft + element.clientLeft;
-    let yPosition = element.offsetTop - element.scrollTop + element.clientTop;
-    return { x: xPosition, y: yPosition };
-  }
-  /**
    * Handle display and position of the context menu
    */
   _showContextMenu(menu) {
     menu.setAttribute("on-screen", "on-screen");
     menu.classList.add("hax-context-visible", "hax-context-menu-active");
-  }
-  /**
-   * gets context container
-   */
-  _getContextContainer(el) {
-    let parent = !el || !el.parentNode ? undefined : el.parentNode,
-      container =
-        !parent || !parent.nodeType
-          ? undefined
-          : parent.nodeType === 1
-            ? parent
-            : parent.host;
-    return container;
   }
   /**
    * Simple hide / reset of whatever menu it's handed.

@@ -183,9 +183,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
   _updateManifest(data) {
     this.manifest = { ...data };
   }
-  _updateLoading(e) {
-    this.loading = e.detail.value;
-  }
   hashCode(s) {
     return s.split("").reduce((a, b) => {
       a = (a << 5) - a + b.charCodeAt(0);

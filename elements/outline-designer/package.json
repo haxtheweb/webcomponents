@@ -45,6 +45,7 @@
     "@haxtheweb/hax-iconset": "^26.8.0",
     "@haxtheweb/i18n-manager": "^26.8.0",
     "@haxtheweb/json-outline-schema": "^26.8.0",
+    "@haxtheweb/schema-behaviors": "^26.8.0",
     "@haxtheweb/simple-fields": "^26.8.0",
     "@haxtheweb/simple-icon": "^26.8.0",
     "@haxtheweb/simple-popover": "^26.8.0",
@@ -52,6 +53,9 @@
     "@haxtheweb/utils": "^26.8.0",
     "lit": "3.3.3",
     "mobx": "6.16.1"
+  },
+  "peerDependencies": {
+    "@haxtheweb/haxcms-elements": ">=26.8.0"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.11.0",

@@ -1409,7 +1409,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           gap: var(--ddd-spacing-1, 4px);
           padding: var(--ddd-spacing-2, 8px) var(--ddd-spacing-3, 12px);
           border-radius: var(--ddd-radius-sm, 4px);
-          border: var(--ddd-border-xs, 1px solid) transparent;
+          border: var(--ddd-border-size-xs, 1px) solid transparent;
           background: var(--ddd-theme-default-limestoneGray, #f5f5f5);
           color: var(--ddd-theme-default-nittanyNavy, #001e44);
           font-size: var(--ddd-font-size-3xs, 11px);
@@ -1449,7 +1449,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           transform: translateY(-1px);
         }
         .filter-btn:focus {
-          outline: var(--ddd-border-md, 2px solid)
+          outline: var(--ddd-border-size-md, 2px) solid
             var(--ddd-theme-default-keystoneYellow, #ffd100);
           outline-offset: var(--ddd-spacing-1, 2px);
         }
@@ -1527,7 +1527,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           padding: var(--ddd-spacing-1, 4px) var(--ddd-spacing-2, 8px);
           font-size: var(--ddd-font-size-3xs, 11px);
           border-radius: var(--ddd-radius-sm, 4px);
-          border: var(--ddd-border-xs, 1px solid)
+          border: var(--ddd-border-size-xs, 1px) solid
             var(--ddd-theme-default-slateGray, #666);
           background: var(--ddd-theme-default-white, white);
           color: var(--ddd-theme-default-coalyGray, #222);
@@ -1541,14 +1541,14 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           border-color: var(--ddd-theme-default-slateGray, #666);
         }
         .sort-select:focus {
-          outline: var(--ddd-border-md, 2px solid)
+          outline: var(--ddd-border-size-md, 2px) solid
             var(--ddd-theme-default-keystoneYellow, #ffd100);
           outline-offset: var(--ddd-spacing-1, 2px);
         }
         .reset-button {
           margin-top: var(--ddd-spacing-1, 4px);
           background: var(--ddd-theme-default-original87Pink, #e4007c);
-          border: var(--ddd-border-xs, 1px solid) transparent;
+          border: var(--ddd-border-size-xs, 1px) solid transparent;
           color: var(--ddd-theme-default-white, white);
           border-radius: var(--ddd-radius-sm, 4px);
           font-size: var(--ddd-font-size-3xs, 11px);
@@ -1570,7 +1570,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           transform: translateY(-1px);
         }
         .reset-button:focus {
-          outline: var(--ddd-border-md, 2px solid)
+          outline: var(--ddd-border-size-md, 2px) solid
             var(--ddd-theme-default-keystoneYellow, #ffd100);
           outline-offset: var(--ddd-spacing-1, 2px);
         }
