@@ -47,6 +47,12 @@ class HaxorSlevin extends I18NMixin(
       super.styles,
       DDDReadingSurface,
       css`
+        /* reading pass adjustments for this theme */
+        #slot {
+          padding-block-start: var(--ddd-spacing-6);
+        }
+      `,
+      css`
         :host {
           display: block;
           background-color: light-dark(

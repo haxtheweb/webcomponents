@@ -131,7 +131,8 @@ class OutlinePlayer extends I18NMixin(
           display: block;
           margin: 40px;
           padding: 0 16px 16px 16px;
-          flex: none;
+          flex: 1 1 auto;
+          min-width: 0;
           transition: var(--ddd-duration-slow, 0.6s) opacity ease-in-out;
           background-color: light-dark(#ffffff, var(--ddd-primary-4));
           color: inherit;

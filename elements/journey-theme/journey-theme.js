@@ -352,6 +352,15 @@ class JourneyTheme extends HAXCMSLitElementTheme {
       super.styles,
       DDDReadingSurface,
       css`
+        /* reading pass adjustments for this theme */
+        .ddd-reading {
+          --ddd-theme-measure: var(--ddd-content-width-md);
+        }
+        #slot {
+          padding-block-start: var(--ddd-spacing-8);
+        }
+      `,
+      css`
         :host {
           scroll-behavior: auto;
           display: block;
@@ -855,7 +864,9 @@ class JourneyTheme extends HAXCMSLitElementTheme {
         <a class="skip-link" href="#contentcontainer"
           >${this.t.skipToContent}</a
         >
-        <div id="contentcontainer" class="ddd-reading" tabindex="-1"><div id="slot"></div></div>
+        <div id="contentcontainer" class="ddd-reading" tabindex="-1">
+          <div id="slot"></div>
+        </div>
       `;
     }
     return html`

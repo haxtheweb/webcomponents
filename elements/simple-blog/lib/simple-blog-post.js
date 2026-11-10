@@ -17,6 +17,12 @@ class SimpleBlogPost extends SimpleColors {
       super.styles,
       DDDReadingSurface,
       css`
+        /* reading pass adjustments for this theme */
+        #slot {
+          padding-block-start: var(--ddd-spacing-4);
+        }
+      `,
+      css`
         :host {
           display: block;
           min-height: 80vh;

@@ -114,7 +114,20 @@ class JourneyTopbarTheme extends HAXCMSLitElementTheme {
 
   //styles function
   static get styles() {
-    return [super.styles, DDDReadingSurface, JourneyTopbarThemeStyles];
+    return [
+      super.styles,
+      DDDReadingSurface,
+      css`
+        /* reading pass adjustments for this theme */
+        .ddd-reading {
+          --ddd-theme-measure: var(--ddd-content-width-md);
+        }
+        #slot {
+          padding-block-start: var(--ddd-spacing-5);
+        }
+      `,
+      JourneyTopbarThemeStyles,
+    ];
   }
 
   // render function

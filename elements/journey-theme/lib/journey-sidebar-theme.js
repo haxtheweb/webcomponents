@@ -149,7 +149,17 @@ class JourneySidebarTheme extends HAXCMSLitElementTheme {
 
   //styles function
   static get styles() {
-    return [super.styles, DDDReadingSurface, JourneySidebarThemeStyles];
+    return [
+      super.styles,
+      DDDReadingSurface,
+      css`
+        /* reading pass adjustments for this theme */
+        #slot {
+          padding-block-start: var(--ddd-spacing-6);
+        }
+      `,
+      JourneySidebarThemeStyles,
+    ];
   }
 
   render() {

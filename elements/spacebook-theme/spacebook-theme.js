@@ -239,6 +239,12 @@ export class SpacebookTheme extends HAXCMSThemeParts(
       super.styles,
       DDDReadingSurface,
       css`
+        /* reading pass adjustments for this theme */
+        #slot {
+          padding-block-start: var(--ddd-spacing-8);
+        }
+      `,
+      css`
         :host {
           display: block;
           min-height: 100vh;
@@ -1182,7 +1188,11 @@ export class SpacebookTheme extends HAXCMSThemeParts(
                     <!-- Page Content -->
                     <div class="article-content">
                       <!-- Required HAXcms content container -->
-                      <div id="contentcontainer" class="ddd-reading" tabindex="-1">
+                      <div
+                        id="contentcontainer"
+                        class="ddd-reading"
+                        tabindex="-1"
+                      >
                         <div id="slot">
                           <slot></slot>
                         </div>

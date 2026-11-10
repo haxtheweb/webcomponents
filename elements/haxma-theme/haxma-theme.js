@@ -191,6 +191,12 @@ export class HaxmaTheme extends I18NMixin(
       super.styles,
       DDDReadingSurface,
       css`
+        /* reading pass adjustments for this theme */
+        .ddd-reading {
+          --ddd-theme-measure: var(--ddd-content-width-md);
+        }
+      `,
+      css`
         :host {
           display: block;
           min-height: 100vh;

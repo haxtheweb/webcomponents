@@ -27,6 +27,11 @@ class SimpleBlog extends I18NMixin(
     return [
       ...super.HAXCMSGlobalStyleSheetContent(),
       dddReadingProse("simple-blog"),
+      css`
+        simple-blog > :is(p, ul, ol, dl, blockquote) {
+          padding-block-end: 0;
+        }
+      `,
     ];
   }
 
