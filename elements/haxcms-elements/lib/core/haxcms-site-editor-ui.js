@@ -6274,13 +6274,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     globalThis.location = location;
   }
   /**
-   * UX study recording (Merlin >developer/ux-study)
+   * UX study recording (Merlin >developer/ux-study). Closing Merlin uses
+   * _closeMerlin() above, which also resets the phone bar.
    */
-  _closeMerlin() {
-    if (globalThis.SuperDaemonManager) {
-      globalThis.SuperDaemonManager.requestAvailability().close();
-    }
-  }
   _uxStudyStrings() {
     return {
       uxStudyRecording: this.t.uxStudyRecording,
