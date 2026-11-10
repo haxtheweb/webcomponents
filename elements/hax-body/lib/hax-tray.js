@@ -21,6 +21,7 @@ import {
   HaxTrayDetail,
 } from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
 import { HaxUiAdminTokens } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
+import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminIcons.js";
 import { HaxUiAdminSidePanelFields } from "@haxtheweb/d-d-d/lib/HaxUiAdminControls.js";
 import "@haxtheweb/simple-fields/simple-fields.js";
 import "@haxtheweb/simple-fields/lib/simple-fields-tab.js";
@@ -571,7 +572,9 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
           --a11y-collapse-horizontal-padding: 0;
           --a11y-collapse-heading-font-weight: 700;
           --a11y-collapse-heading-color: var(--hax-ui-text);
-          --a11y-collapse-transform-rotated-deg: -90deg;
+          /* hax:admin-chevron points right: closed as is, open turned down */
+          --a11y-collapse-transform-deg: 90deg;
+          --a11y-collapse-transform-rotated-deg: 0deg;
           border-bottom: 1px solid var(--hax-ui-line);
         }
         #settingsform a11y-collapse::part(heading-id) {
@@ -743,6 +746,28 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
       `,
     ];
   }
+  /**
+   * Once simple-fields builds the Configure form: give its groups
+   * (Configure, Advanced, Developer) the HAX UI admin chevron, pointing
+   * right when closed and down when open (the rotation is in the
+   * #settingsform a11y-collapse styles), and keep each field's help visible.
+   */
+  _haxUiSettingsForm(e) {
+    const form = e && e.detail && e.detail.querySelectorAll ? e.detail : null;
+    if (!form) {
+      return;
+    }
+    form.querySelectorAll("a11y-collapse").forEach((collapse) => {
+      collapse.icon = HaxUiAdminIcons.chevron;
+    });
+    // HAX UI keeps help visible: every field shows its description under
+    // its label instead of behind an (i) button
+    form
+      .querySelectorAll("simple-fields-field, simple-fields-container")
+      .forEach((field) => {
+        field.setAttribute("always-inline-description", "");
+      });
+  }
   get trayStatus() {
     let status = this.collapsed
       ? "collapsed"
@@ -861,7 +886,7 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
         align-horizontal="${this.collapsed ? "left" : "center"}"
         id="haxMenuAlign"
         event-name="toggle-element-align"
-        icon="arrow-${this.elementAlign == "left" ? "forward" : "back"}"
+        icon="${HaxUiAdminIcons.movePanel}"
         label="${
           this.elementAlign == "left" ? this.t.menuRight : this.t.menuLeft
         }"
@@ -1407,6 +1432,11 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
       this.shadowRoot
         .querySelector("#settingsform")
         .addEventListener("value-changed", this.__valueChangedEvent.bind(this));
+      // simple-fields builds the groups (Configure, Advanced, Developer);
+      // give each the HAX UI admin chevron once the form is built
+      this.shadowRoot
+        .querySelector("#settingsform")
+        .addEventListener("fields-ready", this._haxUiSettingsForm.bind(this));
       // fire an event that this is a core piece of the system
       this.dispatchEvent(
         new CustomEvent("hax-register-core-piece", {

@@ -168,6 +168,35 @@ describe("simple-fields-container", () => {
     expect(el.hasInfoTooltip).to.equal(false);
   });
 
+  it("always-inline-description is off by default", () => {
+    expect(el.alwaysInlineDescription).to.equal(false);
+  });
+
+  it("always-inline-description shows a long description inline, with no info button", async () => {
+    el.type = "text";
+    el.description =
+      "this is a very long description with many words that exceeds the inline limit";
+    el.setAttribute("always-inline-description", "");
+    await el.updateComplete;
+    expect(el.alwaysInlineDescription).to.equal(true);
+    expect(el.hasInlineDescription).to.equal(true);
+    expect(el.hasInfoTooltip).to.equal(false);
+    expect(el.shadowRoot.querySelector('[part="info-toggle"]')).to.equal(null);
+    const desc = el.shadowRoot.querySelector(
+      '[part="label"] [part="field-desc"]',
+    );
+    expect(desc).to.not.equal(null);
+    expect(desc.textContent.trim()).to.equal(el.description);
+  });
+
+  it("always-inline-description keeps scalable text fields on their own description", () => {
+    el.type = "textarea";
+    el.description = "short desc";
+    el.alwaysInlineDescription = true;
+    expect(el.hasInlineDescription).to.equal(false);
+    expect(el.hasInfoTooltip).to.equal(false);
+  });
+
   it("inlineDescriptionTemplate returns empty when no inline description", () => {
     el.type = "text";
     el.description = "";

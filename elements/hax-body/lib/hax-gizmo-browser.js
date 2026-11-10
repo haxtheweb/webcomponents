@@ -247,6 +247,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                     id="popular"
                     heading="${this.t.popular}"
                     heading-button
+                    icon="hax:admin-chevron"
                     expanded
                     ?disabled="${filteredPopularList.length === 0}"
                   >
@@ -298,6 +299,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                     id="recent"
                     heading="${this.t.recent}"
                     heading-button
+                    icon="hax:admin-chevron"
                     expanded
                     ?disabled="${filteredRecentList.length === 0}"
                   >
@@ -348,6 +350,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                 html` <a11y-collapse
                   heading="${this.ucfirst(tag)}"
                   heading-button
+                  icon="hax:admin-chevron"
                 >
                   <simple-button-grid columns="3" always-expanded part="grid">
                     ${guard(

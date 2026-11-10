@@ -69,6 +69,9 @@ export const HaxTrayBrowserStyles = [
       --a11y-collapse-padding-left: 0;
       --a11y-collapse-heading-font-weight: 700;
       --a11y-collapse-heading-color: var(--hax-ui-text);
+      /* hax:admin-chevron points right: closed as is, open turned down */
+      --a11y-collapse-transform-deg: 90deg;
+      --a11y-collapse-transform-rotated-deg: 0deg;
       border-bottom: 1px solid var(--hax-ui-line);
     }
     a11y-collapse::part(heading-id) {

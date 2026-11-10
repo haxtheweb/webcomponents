@@ -181,6 +181,15 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
     static get properties() {
       return {
         /**
+         * Always show the description as subtext under the label, however
+         * long, instead of behind the (i) info icon. For forms that keep
+         * help visible, such as the HAX editor tray. Off by default.
+         */
+        alwaysInlineDescription: {
+          type: Boolean,
+          attribute: "always-inline-description",
+        },
+        /**
          * Automatically validate field
          */
         autovalidate: {
@@ -380,6 +389,7 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
     constructor() {
       super();
       this.isSimpleFieldType = true;
+      this.alwaysInlineDescription = false;
       this.counter = "none";
       this.autovalidate = false;
       this.disabled = false;
@@ -741,6 +751,7 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
       // they keep the legacy description in the field-bottom area
       // (issue #2996 Phase 5 revert).
       if (this._isScalableTextField) return false;
+      if (this.alwaysInlineDescription) return !!this.description;
       return (
         !!this.description &&
         this.description.trim().split(/\s+/).filter(Boolean).length <=
@@ -764,6 +775,7 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
       // they keep the legacy description in the field-bottom area
       // (issue #2996 Phase 5 revert).
       if (this._isScalableTextField) return false;
+      if (this.alwaysInlineDescription) return false;
       return (
         !!this.description &&
         this.description.trim().split(/\s+/).filter(Boolean).length >

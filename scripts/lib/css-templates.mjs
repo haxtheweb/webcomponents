@@ -176,5 +176,20 @@ export function checkCss(template) {
   } catch (e) {
     report(e.loc, e.message || e);
   }
+  // lightningcss cannot see inside var(). DDD's --ddd-border-xs/sm/md/lg are
+  // whole shorthands (width, style and color), so adding another value after
+  // one, as in var(--ddd-border-xs, 1px solid) var(--color), is invalid once
+  // DDD loads and the browser drops the declaration: no border, no focus
+  // ring. Use var(--ddd-border-size-*) with a style and a color instead.
+  const shorthandPlus =
+    /\b(?:border(?:-[a-z-]+)?|outline)\s*:\s*var\(\s*--ddd-border-(?:xs|sm|md|lg)\b[^;{}()]*\)\s+(?!!important)[^;{}\s][^;{}]*;/g;
+  let match;
+  while ((match = shorthandPlus.exec(template.css)) !== null) {
+    const cssLine = template.css.slice(0, match.index).split("\n").length;
+    report(
+      { line: cssLine },
+      "DDD border shorthand (--ddd-border-xs/sm/md/lg) followed by more values; use var(--ddd-border-size-*) with a style and a color",
+    );
+  }
   return { errors, uncheckable };
 }

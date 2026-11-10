@@ -3834,6 +3834,21 @@
             },
             {
               "kind": "field",
+              "name": "alwaysInlineDescription",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Always show the description as subtext under the label, however\nlong, instead of behind the (i) info icon. For forms that keep\nhelp visible, such as the HAX editor tray. Off by default.",
+              "default": "false",
+              "attribute": "always-inline-description",
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "counter",
               "privacy": "public",
               "type": {
@@ -4306,6 +4321,19 @@
               },
               "description": "Current value of the form control. Submitted with the form as part of a name/value pair.",
               "fieldName": "value",
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "name": "always-inline-description",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Always show the description as subtext under the label, however\nlong, instead of behind the (i) info icon. For forms that keep\nhelp visible, such as the HAX editor tray. Off by default.",
+              "default": "false",
+              "fieldName": "alwaysInlineDescription",
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
@@ -6490,6 +6518,21 @@
             },
             {
               "kind": "field",
+              "name": "alwaysInlineDescription",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Always show the description as subtext under the label, however\nlong, instead of behind the (i) info icon. For forms that keep\nhelp visible, such as the HAX editor tray. Off by default.",
+              "default": "false",
+              "attribute": "always-inline-description",
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "autovalidate",
               "privacy": "public",
               "type": {
@@ -7257,6 +7300,19 @@
               "inheritedFrom": {
                 "name": "SimpleFieldsFieldBehaviors",
                 "module": "lib/simple-fields-field.js"
+              }
+            },
+            {
+              "name": "always-inline-description",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Always show the description as subtext under the label, however\nlong, instead of behind the (i) info icon. For forms that keep\nhelp visible, such as the HAX editor tray. Off by default.",
+              "default": "false",
+              "fieldName": "alwaysInlineDescription",
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
               }
             },
             {
@@ -8121,6 +8177,17 @@
             },
             {
               "kind": "field",
+              "name": "alwaysInlineDescription",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Always show the description as subtext under the label, however\nlong, instead of behind the (i) info icon. For forms that keep\nhelp visible, such as the HAX editor tray. Off by default.",
+              "default": "false",
+              "attribute": "always-inline-description"
+            },
+            {
+              "kind": "field",
               "name": "counter",
               "privacy": "public",
               "type": {
@@ -8434,6 +8501,15 @@
           ],
           "attributes": [
             {
+              "name": "always-inline-description",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Always show the description as subtext under the label, however\nlong, instead of behind the (i) info icon. For forms that keep\nhelp visible, such as the HAX editor tray. Off by default.",
+              "default": "false",
+              "fieldName": "alwaysInlineDescription"
+            },
+            {
               "name": "autovalidate",
               "type": {
                 "text": "boolean"
@@ -8697,6 +8773,19 @@
           "tagName": "simple-fields-container",
           "customElement": true,
           "attributes": [
+            {
+              "name": "always-inline-description",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Always show the description as subtext under the label, however\nlong, instead of behind the (i) info icon. For forms that keep\nhelp visible, such as the HAX editor tray. Off by default.",
+              "default": "false",
+              "fieldName": "alwaysInlineDescription",
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
             {
               "name": "autovalidate",
               "type": {
@@ -9717,6 +9806,21 @@
               "default": "true",
               "attribute": "is-simple-field-type",
               "reflects": true,
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "alwaysInlineDescription",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Always show the description as subtext under the label, however\nlong, instead of behind the (i) info icon. For forms that keep\nhelp visible, such as the HAX editor tray. Off by default.",
+              "default": "false",
+              "attribute": "always-inline-description",
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
@@ -11340,6 +11444,21 @@
             },
             {
               "kind": "field",
+              "name": "alwaysInlineDescription",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Always show the description as subtext under the label, however\nlong, instead of behind the (i) info icon. For forms that keep\nhelp visible, such as the HAX editor tray. Off by default.",
+              "default": "false",
+              "attribute": "always-inline-description",
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "autovalidate",
               "privacy": "public",
               "type": {
@@ -11924,6 +12043,19 @@
               },
               "default": "false",
               "fieldName": "wrap"
+            },
+            {
+              "name": "always-inline-description",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Always show the description as subtext under the label, however\nlong, instead of behind the (i) info icon. For forms that keep\nhelp visible, such as the HAX editor tray. Off by default.",
+              "default": "false",
+              "fieldName": "alwaysInlineDescription",
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
             },
             {
               "name": "autovalidate",
@@ -12555,6 +12687,19 @@
               "inheritedFrom": {
                 "name": "SimpleFieldsFieldBehaviors",
                 "module": "lib/simple-fields-field.js"
+              }
+            },
+            {
+              "name": "always-inline-description",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Always show the description as subtext under the label, however\nlong, instead of behind the (i) info icon. For forms that keep\nhelp visible, such as the HAX editor tray. Off by default.",
+              "default": "false",
+              "fieldName": "alwaysInlineDescription",
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
               }
             },
             {
@@ -14199,6 +14344,21 @@
               "default": "true",
               "attribute": "is-simple-field-type",
               "reflects": true,
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "alwaysInlineDescription",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Always show the description as subtext under the label, however\nlong, instead of behind the (i) info icon. For forms that keep\nhelp visible, such as the HAX editor tray. Off by default.",
+              "default": "false",
+              "attribute": "always-inline-description",
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
@@ -18008,6 +18168,21 @@
             },
             {
               "kind": "field",
+              "name": "alwaysInlineDescription",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Always show the description as subtext under the label, however\nlong, instead of behind the (i) info icon. For forms that keep\nhelp visible, such as the HAX editor tray. Off by default.",
+              "default": "false",
+              "attribute": "always-inline-description",
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "autovalidate",
               "privacy": "public",
               "type": {
@@ -18680,6 +18855,19 @@
               "inheritedFrom": {
                 "name": "SimpleFieldsFieldBehaviors",
                 "module": "lib/simple-fields-field.js"
+              }
+            },
+            {
+              "name": "always-inline-description",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Always show the description as subtext under the label, however\nlong, instead of behind the (i) info icon. For forms that keep\nhelp visible, such as the HAX editor tray. Off by default.",
+              "default": "false",
+              "fieldName": "alwaysInlineDescription",
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
               }
             },
             {
@@ -21801,6 +21989,21 @@
             },
             {
               "kind": "field",
+              "name": "alwaysInlineDescription",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Always show the description as subtext under the label, however\nlong, instead of behind the (i) info icon. For forms that keep\nhelp visible, such as the HAX editor tray. Off by default.",
+              "default": "false",
+              "attribute": "always-inline-description",
+              "inheritedFrom": {
+                "name": "SimpleFieldsCombo",
+                "module": "lib/simple-fields-combo.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "autovalidate",
               "privacy": "public",
               "type": {
@@ -23115,6 +23318,19 @@
               },
               "default": "false",
               "fieldName": "wrap",
+              "inheritedFrom": {
+                "name": "SimpleFieldsCombo",
+                "module": "lib/simple-fields-combo.js"
+              }
+            },
+            {
+              "name": "always-inline-description",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Always show the description as subtext under the label, however\nlong, instead of behind the (i) info icon. For forms that keep\nhelp visible, such as the HAX editor tray. Off by default.",
+              "default": "false",
+              "fieldName": "alwaysInlineDescription",
               "inheritedFrom": {
                 "name": "SimpleFieldsCombo",
                 "module": "lib/simple-fields-combo.js"

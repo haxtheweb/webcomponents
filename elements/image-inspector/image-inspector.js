@@ -106,7 +106,7 @@ class ImageInspector extends I18NMixin(LitElement) {
           align-items: center;
           gap: var(--ddd-spacing-1, 4px);
           padding: var(--ddd-spacing-1, 4px);
-          border: var(--ddd-border-xs, 1px) solid
+          border: var(--ddd-border-size-xs, 1px) solid
             var(
               --image-inspector-border-color,
               light-dark(

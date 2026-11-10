@@ -150,7 +150,7 @@ class HaxViewSource extends I18NMixin(LitElement) {
               </hax-tray-button>
               <hax-tray-button
                 @click="${this.scrubContent}"
-                icon="editor:format-clear"
+                icon="hax:admin-clear-format"
                 label="${this.t.cleanFormatting}"
                 icon-position="left"
                 show-text-label
@@ -161,7 +161,7 @@ class HaxViewSource extends I18NMixin(LitElement) {
                   ? html`
                       <hax-tray-button
                         label="${this.t.prettifyHtml}"
-                        icon="hax:format-textblock"
+                        icon="hax:admin-prettify"
                         @click="${this.prettifyContent}"
                         icon-position="left"
                         show-text-label

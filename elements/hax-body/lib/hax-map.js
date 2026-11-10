@@ -453,8 +453,8 @@ class HaxMap extends I18NMixin(SimpleColors) {
                           <simple-icon-button-lite
                             icon="${
                               this.isLocked(index)
-                                ? "icons:lock"
-                                : "icons:lock-open"
+                                ? "hax:admin-lock"
+                                : "hax:admin-unlock"
                             }"
                             @click="${(_e) => this.itemOp(index, "lock")}"
                             title="${this.t.lockUnlock}"

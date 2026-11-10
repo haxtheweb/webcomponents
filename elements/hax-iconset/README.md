@@ -52,7 +52,9 @@ The `hax:admin-*` glyph paths are taken from Google's
 (filled style, 24px grid), Copyright Google LLC, licensed under the
 [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0), the same
 license as this package. `hax:admin-blocks` reuses the existing `hax:blocks` glyph. `hax:admin-rail-expand` is
-Material's `menu_open` mirrored, so its arrow points the way the rail opens.
+Material's `menu_open` mirrored, so its arrow points the way the rail opens. `hax:admin-lock`, `hax:admin-unlock`, `hax:admin-clear-format` and
+`hax:admin-move-panel` are Material's `lock`, `lock_open`, `format_clear` and
+`swap_horiz`; `hax:admin-prettify` reuses the existing `hax:format-textblock` glyph.
 
 ## License
 

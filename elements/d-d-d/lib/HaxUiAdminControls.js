@@ -754,7 +754,11 @@ export const HaxUiAdminSidePanelFields = [
        the end */
     simple-fields.hax-ui-side-panel
       simple-fields-field[type="checkbox"]::part(label) {
-      flex: 1 1 auto;
+      /* block, not flex: the label's inner text box would otherwise keep
+         the width of its longest help line and run under the checkbox */
+      display: block;
+      flex: 1 1 0%;
+      min-width: 0;
     }
     simple-fields.hax-ui-side-panel simple-fields-field::part(field-main-inner),
     simple-fields.hax-ui-side-panel simple-fields-container::part(field-inner) {
@@ -764,6 +768,35 @@ export const HaxUiAdminSidePanelFields = [
     simple-fields.hax-ui-side-panel
       simple-fields-field[type="checkbox"]::part(field-main-inner) {
       flex: 0 0 auto;
+    }
+    /* help stays visible (always-inline-description): a field stacks its
+       label, one muted help line and the control, so long help does not
+       wrap down a narrow label column; a checkbox keeps its box at the end */
+    simple-fields.hax-ui-side-panel
+      simple-fields-field[always-inline-description]:not(
+        [type="checkbox"]
+      )::part(field-main),
+    simple-fields.hax-ui-side-panel
+      simple-fields-container[always-inline-description]::part(field-main) {
+      flex-direction: column;
+      align-items: stretch;
+      gap: var(--hax-ui-gap);
+    }
+    simple-fields.hax-ui-side-panel
+      simple-fields-field[always-inline-description]:not(
+        [type="checkbox"]
+      )::part(label),
+    simple-fields.hax-ui-side-panel
+      simple-fields-container[always-inline-description]::part(label) {
+      flex: 0 0 auto;
+    }
+    simple-fields.hax-ui-side-panel simple-fields-field::part(field-desc),
+    simple-fields.hax-ui-side-panel simple-fields-container::part(field-desc) {
+      margin: var(--hax-ui-gap) 0 0;
+      font-size: var(--hax-ui-admin-font-size-xs);
+      font-weight: 400;
+      line-height: 1.3;
+      color: var(--hax-ui-text-muted);
     }
     simple-fields.hax-ui-side-panel simple-fields-field::part(info-toggle),
     simple-fields.hax-ui-side-panel simple-fields-container::part(info-toggle) {
