@@ -176,7 +176,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "",
+          "description": "`activity-box`\n`Small styled heading block that sets up an activity`\nA DDD block: the icon is the header chip, the tag is the header title\nunder an \"Activity\" label and the slotted content is the body.\n\nCustom properties (kept from the original element):\n--activity-box-container-padding, --activity-box-container-padding-top,\n--activity-box-container-margin-bottom, --activity-box-content-padding,\n--activity-box-content-font-family, --activity-box-tag-font-weight,\n--activity-box-tag-font-size, --activity-box-icon-left",
           "name": "ActivityBox",
           "members": [
             {
@@ -208,12 +208,18 @@
                   "name": "val"
                 }
               ],
-              "description": "double-check that we are set to inactivate click handlers\nthis is for when activated in a duplicate / adding new content state"
+              "description": "double-check that we are set to inactivate click handlers\nthis is for when activated in a duplicate / adding new content state\nThe tag is edited in place in the header title."
             },
             {
               "kind": "field",
               "name": "haxProperties",
               "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "chipIcon",
+              "description": "The chip icon: the authored icon, or the activity page type icon",
               "readonly": true
             },
             {
@@ -226,6 +232,14 @@
               "default": "\"\"",
               "attribute": "icon",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, activity: \"Activity\", }"
             },
             {
               "kind": "field",
@@ -263,10 +277,18 @@
               "fieldName": "nocolourize"
             }
           ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            }
+          ],
           "superclass": {
             "name": "DDD",
             "package": "@haxtheweb/d-d-d/d-d-d.js"
-          }
+          },
+          "tagName": "activity-box",
+          "customElement": true
         }
       ],
       "exports": [
