@@ -37,20 +37,10 @@ const BROWSER_RESERVED = new Set([
 // than the registry (redo lives on hax-body's undo stack)
 const EDITOR_SURFACE_KEYS = new Set(["Z"]);
 
-// KNOWN BUG: app-hax-user-menu-toggle.js styles its button with
-// `outline: var(--ddd-border-sm, 2px solid) var(--ddd-theme-default-skyBlue)`.
-// --ddd-border-sm is already a full border shorthand (2px solid <color>), so
-// the outline value has two colors, is invalid at computed-value time and the
-// focus ring falls back to none. The flows step over that one stop; the
-// it.skip test below asserts the fixed behavior.
-const KNOWN_BUGS = [
-  {
-    match: (el) =>
-      el.getRootNode().host &&
-      el.getRootNode().host.tagName === "APP-HAX-USER-MENU-TOGGLE",
-    reason: "user menu toggle has no visible focus ring",
-  },
-];
+// the user menu toggle draws its own focus ring (app-hax-user-menu-toggle.js)
+const isUserMenuToggle = (el) =>
+  el.getRootNode().host &&
+  el.getRootNode().host.tagName === "APP-HAX-USER-MENU-TOGGLE";
 
 const label = (el) => {
   if (!el || !el.getAttribute) return "";
@@ -136,13 +126,7 @@ describe("keyboard flow: HAXcms editor top bar + hax-tray panels", function () {
   async function tabTo(wanted, max = 25) {
     for (let i = 0; i < max; i++) {
       await press("Tab");
-      const el = expectGoodFocusStop(
-        expect,
-        `Tab toward ${wanted} (${i + 1})`,
-        {
-          knownBugs: KNOWN_BUGS,
-        },
-      );
+      const el = expectGoodFocusStop(expect, `Tab toward ${wanted} (${i + 1})`);
       if (wanted.test(label(el))) return el;
       if (el === after) break;
     }
@@ -246,9 +230,7 @@ describe("keyboard flow: HAXcms editor top bar + hax-tray panels", function () {
       let reached = null;
       for (let i = 0; i < 25 && !reached; i++) {
         await press("Tab");
-        const el = expectGoodFocusStop(expect, `${detail} Tab ${i + 1}`, {
-          knownBugs: KNOWN_BUGS,
-        });
+        const el = expectGoodFocusStop(expect, `${detail} Tab ${i + 1}`);
         if (
           composedContains(tray, el) &&
           (!needsControl || el.id !== "tray-detail")
@@ -302,12 +284,12 @@ describe("keyboard flow: HAXcms editor top bar + hax-tray panels", function () {
     }
   });
 
-  it.skip("KNOWN BUG: the user menu toggle shows a focus ring", async () => {
+  it("the user menu toggle shows a focus ring", async () => {
     before.focus();
     for (let i = 0; i < 6; i++) {
       await press("Tab");
       const el = deepActiveElement();
-      if (KNOWN_BUGS[0].match(el)) {
+      if (isUserMenuToggle(el)) {
         expectGoodFocusStop(expect, "user menu toggle");
         return;
       }

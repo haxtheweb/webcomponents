@@ -38,24 +38,6 @@ export const keyboardFlowTracks = JSON.stringify([
 ]);
 
 /**
- * Focus stops that fail today on the default branch (see the it.skip test
- * for each). Remove the entry when the bug is fixed.
- */
-const KNOWN_BUGS = [
-  {
-    // a11y-media-player.js renders <a id="transcript-desc" class="sr-only"
-    // href="#bottom"> before the transcript: it is in the tab order but the
-    // .sr-only rule (left:-9999px; width/height 0) has no :focus override,
-    // so focus disappears off screen when a sighted keyboard user reaches it
-    match: (el) =>
-      el.id === "transcript-desc" &&
-      el.getRootNode().host &&
-      el.getRootNode().host.tagName === "A11Y-MEDIA-PLAYER",
-    reason: "transcript skip link is focusable but invisible",
-  },
-];
-
-/**
  * Accessible name of a focus stop: aria-label, then aria-labelledby (looked
  * up in the stop's own root, e.g. the range input inside
  * simple-range-input), then its text.
@@ -85,13 +67,7 @@ const label = (el) => {
 async function tabTo(wanted, stopAt, max = 25) {
   for (let i = 0; i < max; i++) {
     await press("Tab");
-    const el = expectGoodFocusStop(
-      expect,
-      `Tab toward "${wanted}" (${i + 1})`,
-      {
-        knownBugs: KNOWN_BUGS,
-      },
-    );
+    const el = expectGoodFocusStop(expect, `Tab toward "${wanted}" (${i + 1})`);
     if (wanted.test(label(el))) return el;
     if (stopAt && el === stopAt) break;
   }
@@ -144,9 +120,7 @@ export function describeMediaKeyboardFlow(name, makeFixture) {
       let guard = 0;
       while (deepActiveElement() !== fx.after && guard++ < 30) {
         await press("Tab");
-        expectGoodFocusStop(expect, `${name} Tab ${guard}`, {
-          knownBugs: KNOWN_BUGS,
-        });
+        expectGoodFocusStop(expect, `${name} Tab ${guard}`);
       }
       expectFocusOn(expect, fx.after, "Tab leaves the player");
     });
@@ -176,9 +150,7 @@ export function describeMediaKeyboardFlow(name, makeFixture) {
       let guard = 0;
       while (deepActiveElement() !== fx.after && guard++ < 40) {
         await press("Tab");
-        const el = expectGoodFocusStop(expect, `${name} order ${guard}`, {
-          knownBugs: KNOWN_BUGS,
-        });
+        const el = expectGoodFocusStop(expect, `${name} order ${guard}`);
         names.push(label(el));
       }
       const at = (re) => names.findIndex((n) => re.test(n));
@@ -271,7 +243,7 @@ export function describeMediaKeyboardFlow(name, makeFixture) {
       expect(label(deepActiveElement())).to.match(/settings/i);
     });
 
-    it.skip("KNOWN BUG: the transcript skip link becomes visible when it has focus", async () => {
+    it("the transcript skip link becomes visible when it has focus", async () => {
       const link = amp.shadowRoot.querySelector("#transcript-desc");
       link.focus();
       expectFocusOn(expect, link);
