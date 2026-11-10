@@ -11,10 +11,6 @@
       "observers": 2,
       "retained": 1
     },
-    "count-up": {
-      "raf-loops": 1,
-      "retained": 1
-    },
     "course-model": {
       "retained": 1
     },
@@ -47,17 +43,6 @@
     "la-tex": {
       "retained": 1
     },
-    "lesson-highlight": {
-      "global-stores": 1,
-      "retained": 1
-    },
-    "linkedin-embed": {
-      "retained": 1
-    },
-    "lrn-h5p": {
-      "global-stores": 1,
-      "retained": 1
-    },
     "lrn-table": {
       "global-stores": 1
     },
@@ -71,32 +56,9 @@
       "observers": 2,
       "retained": 1
     },
-    "music-player": {
-      "listeners": 14,
-      "retained": 1
-    },
-    "page-flag": {
-      "global-stores": 1,
-      "retained": 1
-    },
-    "pdf-browser-viewer": {
-      "retained": 1
-    },
-    "product-glance": {
-      "global-stores": 1,
-      "retained": 1
-    },
     "progress-donut": {
       "listeners": 1,
       "observers": 1,
-      "retained": 1
-    },
-    "simple-icon": {
-      "global-stores": 1,
-      "retained": 1
-    },
-    "site-children-block": {
-      "global-stores": 1,
       "retained": 1
     },
     "unity-webgl": {

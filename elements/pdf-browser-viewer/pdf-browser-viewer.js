@@ -143,10 +143,18 @@ class PdfBrowserViewer extends I18NMixin(LitElement) {
   connectedCallback() {
     super.connectedCallback();
     listenDDDBlockFullscreen(this._fullscreenChanged, true);
+    this._detached = false;
   }
 
+  /**
+   * Chromium's PDF plugin keeps its <object> alive after removal, and with
+   * it this shadow root and element; drop the <object> while off the page.
+   * Re-adding (a HAX move) renders it again, which a moved plugin does
+   * anyway.
+   */
   disconnectedCallback() {
     listenDDDBlockFullscreen(this._fullscreenChanged, false);
+    this._detached = true;
     super.disconnectedCallback();
   }
 
@@ -202,6 +210,9 @@ class PdfBrowserViewer extends I18NMixin(LitElement) {
   }
 
   renderObject() {
+    if (this._detached) {
+      return nothing;
+    }
     return html`<object
       aria-label="${this.heading || "PDF document"}"
       data="${this.file}"
@@ -390,6 +401,7 @@ class PdfBrowserViewer extends I18NMixin(LitElement) {
         type: String,
       },
       _fullscreen: { type: Boolean, state: true },
+      _detached: { type: Boolean, state: true },
     };
   }
 

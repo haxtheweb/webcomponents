@@ -175,3 +175,31 @@ describe('Test Desktop Responsiveness', () => {
       expect(hidden).to.equal(true);
     })
 }) */
+
+// Chromium's PDF plugin keeps its <object> (and through it the element)
+// alive after removal, so the object is dropped while off the page and
+// rendered again when the element is re-added (a HAX move).
+describe("pdf-browser-viewer across removal and moves", () => {
+  it("drops the <object> when removed and renders it again on reconnect", async () => {
+    const wrap = await fixture(
+      html`<div>
+        <pdf-browser-viewer
+          file="sample.pdf"
+          card
+          heading="Moves"
+        ></pdf-browser-viewer>
+      </div>`,
+    );
+    const el = wrap.querySelector("pdf-browser-viewer");
+    await el.updateComplete;
+    expect(el.shadowRoot.querySelector("object")).to.exist;
+    el.remove();
+    await el.updateComplete;
+    expect(el.shadowRoot.querySelector("object")).to.equal(null);
+    wrap.appendChild(el);
+    await el.updateComplete;
+    const obj = el.shadowRoot.querySelector("object");
+    expect(obj).to.exist;
+    expect(obj.getAttribute("data")).to.equal("sample.pdf");
+  });
+});

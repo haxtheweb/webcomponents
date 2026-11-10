@@ -100,10 +100,22 @@ class SimpleIconset extends LitElement {
     // location will import AFTER (possible microtiming early on)
     // also weird looking by context is either the element asking about
     // itself OR the the iconset state manager checking for hydration
-    if (context !== this && context) {
+    if (context !== this && context && !this.needsHydrated.includes(context)) {
       this.needsHydrated.push(context);
     }
     return null;
+  }
+  /**
+   * Stop waiting on an icon for an element that left the page, so the list
+   * does not keep it alive; it asks again (getIcon) when it comes back.
+   * @param {HTMLElement} context
+   */
+  cancelHydration(context) {
+    for (let i = this.needsHydrated.length - 1; i >= 0; i--) {
+      if (this.needsHydrated[i] === context) {
+        this.needsHydrated.splice(i, 1);
+      }
+    }
   }
 }
 

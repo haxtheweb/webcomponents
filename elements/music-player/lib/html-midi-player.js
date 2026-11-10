@@ -26810,7 +26810,7 @@
   }
   s.innerHTML = "\n<style>\n"
     .concat(
-      ":host {\n  display: inline-block;\n  width: 300px;\n  margin: 3px;\n  vertical-align: bottom;\n  font-family: sans-serif;\n  font-size: 14px;\n}\n\n:focus:not(.focus-visible) {\n  outline: none;\n}\n\n.controls {\n  width: inherit;\n  height: inherit;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  border-radius: 100px;\n  background: #f2f5f6;\n  padding: 0 0.2rem;\n  user-select: none;\n}\n.controls > * {\n  margin: 0.7rem 0.4rem;\n}\n.controls input, .controls button {\n  cursor: pointer;\n}\n.controls input:disabled, .controls button:disabled {\n  cursor: inherit;\n}\n.controls button {\n  text-align: center;\n  background: rgba(204, 204, 204, 0);\n  border: none;\n  width: 32px;\n  height: 32px;\n  border-radius: 100%;\n  transition: background-color 0.25s ease 0s;\n  padding: 0;\n}\n.controls button:not(:disabled):hover {\n  background: rgba(204, 204, 204, 0.3);\n}\n.controls button:active {\n  background: rgba(204, 204, 204, 0.6);\n}\n.controls .seek-bar {\n  flex: 1;\n  min-width: 0;\n  margin-right: 1rem;\n  background: transparent;\n}\n.controls .seek-bar::-moz-range-track {\n  background-color: #555;\n}\n.controls.playing .play-icon, .controls.stopped .stop-icon {\n  display: none;\n}\n.controls.frozen > div, .controls > button:disabled .icon {\n  opacity: 0.5;\n}\n.controls .current-time, .controls .total-time {\n  color: #2c2c2c;\n  opacity: 1;\n}",
+      ":host {\n  display: inline-block;\n  width: 300px;\n  margin: 3px;\n  vertical-align: bottom;\n  font-family: sans-serif;\n  font-size: 14px;\n}\n\n:focus:not(:focus-visible) {\n  outline: none;\n}\n\n.controls {\n  width: inherit;\n  height: inherit;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  border-radius: 100px;\n  background: #f2f5f6;\n  padding: 0 0.2rem;\n  user-select: none;\n}\n.controls > * {\n  margin: 0.7rem 0.4rem;\n}\n.controls input, .controls button {\n  cursor: pointer;\n}\n.controls input:disabled, .controls button:disabled {\n  cursor: inherit;\n}\n.controls button {\n  text-align: center;\n  background: rgba(204, 204, 204, 0);\n  border: none;\n  width: 32px;\n  height: 32px;\n  border-radius: 100%;\n  transition: background-color 0.25s ease 0s;\n  padding: 0;\n}\n.controls button:not(:disabled):hover {\n  background: rgba(204, 204, 204, 0.3);\n}\n.controls button:active {\n  background: rgba(204, 204, 204, 0.6);\n}\n.controls .seek-bar {\n  flex: 1;\n  min-width: 0;\n  margin-right: 1rem;\n  background: transparent;\n}\n.controls .seek-bar::-moz-range-track {\n  background-color: #555;\n}\n.controls.playing .play-icon, .controls.stopped .stop-icon {\n  display: none;\n}\n.controls.frozen > div, .controls > button:disabled .icon {\n  opacity: 0.5;\n}\n.controls .current-time, .controls .total-time {\n  color: #2c2c2c;\n  opacity: 1;\n}",
       '\n</style>\n<div class="controls stopped frozen" part="control-panel">\n  <button class="play" part="play-button" type="button" aria-label="Play" disabled>\n    <img src="',
     )
     .concat(
@@ -26954,8 +26954,18 @@
     connectedCallback() {
       if (!this.domInitialized) {
         this.domInitialized = !0;
+        // HAX: the focus-visible polyfill adds 14 document listeners per
+        // shadow root that are never removed, keeping every player alive;
+        // browsers with native :focus-visible (which the style above uses)
+        // skip it
         var t = globalThis.applyFocusVisiblePolyfill;
-        (null != t && t(this.shadowRoot),
+        (null != t &&
+          !(
+            globalThis.CSS &&
+            globalThis.CSS.supports &&
+            globalThis.CSS.supports("selector(:focus-visible)")
+          ) &&
+          t(this.shadowRoot),
           this.playButton.addEventListener("click", () => {
             this.player.isPlaying() ? this.stop() : this.start();
           }),

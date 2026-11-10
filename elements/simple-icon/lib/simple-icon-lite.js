@@ -165,6 +165,27 @@ export const SimpleIconBehaviors = function (SuperClass) {
       this.shadowRoot.querySelector("filter").setAttribute("id", randomId);
     }
     /**
+     * An icon whose iconset has not registered yet waits in the iconset's
+     * hydration list; leave it when removed and ask again when re-added
+     * (the HAX editor moves elements by removing and re-adding them).
+     */
+    connectedCallback() {
+      if (super.connectedCallback) {
+        super.connectedCallback();
+      }
+      if (this.hasUpdated && this.icon && !this.src) {
+        this.setSrcByIcon(this);
+      }
+    }
+    disconnectedCallback() {
+      if (SimpleIconsetStore && SimpleIconsetStore.cancelHydration) {
+        SimpleIconsetStore.cancelHydration(this);
+      }
+      if (super.disconnectedCallback) {
+        super.disconnectedCallback();
+      }
+    }
+    /**
      * Set the src by the icon property
      */
     setSrcByIcon(context) {

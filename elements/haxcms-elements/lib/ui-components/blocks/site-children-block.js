@@ -80,7 +80,16 @@ class SiteChildrenBlock extends LitElement {
     this.fixedId = false;
     this.activeId = "";
     this.__items = [];
-
+  }
+  /**
+   * Follow the site store while on the page. Autoruns hold this element
+   * from the store, so they are disposed when it leaves and recreated when
+   * it comes back (the HAX editor moves blocks by removing and re-adding
+   * them).
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    this.__disposeStore();
     this.__disposer.push(
       autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.editMode);
@@ -105,6 +114,14 @@ class SiteChildrenBlock extends LitElement {
         });
       }),
     );
+  }
+  disconnectedCallback() {
+    this.__disposeStore();
+    super.disconnectedCallback();
+  }
+  __disposeStore() {
+    this.__disposer.forEach((dispose) => dispose());
+    this.__disposer = [];
   }
 
   static get styles() {
