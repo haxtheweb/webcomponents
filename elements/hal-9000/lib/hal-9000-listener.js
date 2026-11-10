@@ -30,6 +30,13 @@ export const HAL_MAX_BIAS_PHRASES = 100;
 export const HAL_BIAS_BOOST = 3;
 /** Alternatives asked for per result. */
 export const HAL_MAX_ALTERNATIVES = 5;
+/**
+ * Network errors in a row, with nothing heard in between, before speech
+ * counts as unavailable here. Some browsers (Brave and other Chromium
+ * builds without a speech service) expose the API but every session fails
+ * this way, so retrying forever would only show a mic that never works.
+ */
+export const HAL_MAX_NETWORK_FAILURES = 3;
 
 /**
  * Turn a command phrase into an anchored, case-insensitive RegExp, using
@@ -113,7 +120,9 @@ export class Hal9000Listener {
    * @param {Function} [options.onSpeechStart] () when the engine hears speech
    * @param {Function} [options.onMatch] ({ phrase, transcript, params })
    * @param {Function} [options.onNoMatch] (alternatives) nothing matched
-   * @param {Function} [options.onStateChange] (state) idle, listening, blocked
+   * @param {Function} [options.onStateChange] (state) idle, listening,
+   *   blocked (mic permission denied) or unavailable (this browser exposes
+   *   the API but cannot recognize speech)
    * @param {Function} [options.isEcho] (text) => true to ignore a result
    * @param {boolean} [options.debug]
    */
@@ -139,10 +148,22 @@ export class Hal9000Listener {
     this._interimQueued = false;
     this._phrasesRejected = false;
     this._onDeviceChecked = {};
+    this._networkFailures = 0;
+    this.unavailable = false;
   }
 
+  /** The browser has a speech recognition API */
   get supported() {
     return !!this.Ctor;
+  }
+
+  /**
+   * The API is there and has not proven unusable in this session. Once a
+   * browser shows it cannot reach a speech service, this stays false until
+   * the page reloads.
+   */
+  get available() {
+    return this.supported && !this.unavailable;
   }
 
   /**
@@ -197,7 +218,7 @@ export class Hal9000Listener {
    * @param {boolean} [options.continuous] keep one long session (Santa mode)
    */
   start(options = {}) {
-    if (!this.supported) {
+    if (!this.available) {
       return false;
     }
     this.continuous = !!options.continuous;
@@ -365,6 +386,8 @@ export class Hal9000Listener {
   }
 
   _onResult(e) {
+    // the speech service answered, so it works here
+    this._networkFailures = 0;
     let interim = "";
     for (let i = e.resultIndex; i < e.results.length; i++) {
       const result = e.results[i];
@@ -413,7 +436,21 @@ export class Hal9000Listener {
     if (error === "not-allowed" || error === "service-not-allowed") {
       this._wanted = false;
       this._setState("blocked");
+      return;
     }
+    if (error === "network") {
+      this._networkFailures++;
+      if (this._networkFailures >= HAL_MAX_NETWORK_FAILURES) {
+        this._markUnavailable();
+      }
+    }
+  }
+
+  /** Stop for this session: speech cannot work in this browser */
+  _markUnavailable() {
+    this.unavailable = true;
+    this._wanted = false;
+    this._setState("unavailable");
   }
 
   _onEnd(rec) {
@@ -421,7 +458,10 @@ export class Hal9000Listener {
       this._recognition = null;
     }
     if (!this._wanted) {
-      this._setState(this.state === "blocked" ? "blocked" : "idle");
+      // blocked and unavailable stay as they are; anything else is idle
+      if (this.state !== "blocked" && this.state !== "unavailable") {
+        this._setState("idle");
+      }
       return;
     }
     // restart, but give up if the engine keeps ending at once (no mic,

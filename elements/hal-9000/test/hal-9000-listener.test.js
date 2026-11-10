@@ -10,6 +10,7 @@ import {
   halCleanTranscript,
   halIsEcho,
   HAL_MAX_ALTERNATIVES,
+  HAL_MAX_NETWORK_FAILURES,
 } from "../lib/hal-9000-listener.js";
 
 const frame = () => new Promise((resolve) => setTimeout(resolve, 40));
@@ -208,6 +209,46 @@ describe("hal-9000 listener sessions", () => {
     expect(engine.made.length).to.equal(1);
     expect(listener.state).to.equal("blocked");
     expect(states).to.deep.equal(["listening", "blocked"]);
+  });
+
+  it("gives up for the session after repeated network errors", async () => {
+    // Brave and similar: the API is there but every session fails
+    const engine = fakeEngine();
+    const states = [];
+    const listener = listenerWith(engine, {
+      onStateChange: (state) => states.push(state),
+    });
+    listener.start();
+    for (let i = 0; i < HAL_MAX_NETWORK_FAILURES; i++) {
+      await frame();
+      const rec = engine.made[i];
+      rec.onerror({ error: "network" });
+      rec.onend();
+      await new Promise((resolve) => setTimeout(resolve, 280));
+    }
+    expect(engine.made.length).to.equal(HAL_MAX_NETWORK_FAILURES);
+    expect(listener.state).to.equal("unavailable");
+    expect(listener.available).to.be.false;
+    expect(listener.supported).to.be.true;
+    expect(states[states.length - 1]).to.equal("unavailable");
+    // stays off until the page reloads
+    expect(listener.start()).to.be.false;
+    expect(engine.made.length).to.equal(HAL_MAX_NETWORK_FAILURES);
+  });
+
+  it("forgives a network blip once something is heard", async () => {
+    const engine = fakeEngine();
+    const listener = listenerWith(engine);
+    listener.start();
+    await frame();
+    engine.made[0].onerror({ error: "network" });
+    engine.made[0].onerror({ error: "network" });
+    engine.made[0].onresult(resultEvent([{ alternatives: ["hello"] }]));
+    engine.made[0].onerror({ error: "network" });
+    engine.made[0].onerror({ error: "network" });
+    expect(listener.available).to.be.true;
+    expect(listener.state).to.equal("listening");
+    listener.abort();
   });
 
   it("biases toward phrases where the engine supports it", async () => {

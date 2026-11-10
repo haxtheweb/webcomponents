@@ -49,5 +49,7 @@
   "stopListening": "Stop listening",
   "turnOffSantaMode": "Turn off Santa mode",
   "sayACommand": "Say a command, or",
-  "toStopSay": "To stop, say"
+  "toStopSay": "To stop, say",
+  "voiceMicBlocked": "The microphone is blocked. Allow it in your browser to talk to Merlin.",
+  "voiceUnavailable": "Voice isn't available in this browser. You can still type to Merlin."
 }

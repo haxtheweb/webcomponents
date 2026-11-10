@@ -21,6 +21,8 @@ import { Hal9000Listener, halIsEcho } from "./lib/hal-9000-listener.js";
  *   took, best guess first
  * - `hal-9000-matched` detail { phrase, transcript, params }
  * - `hal-9000-listening-state` detail { state }: idle, listening, blocked
+ *   (mic permission denied) or unavailable (the browser has the API but
+ *   cannot recognize speech, as in Brave; lasts until the page reloads)
  *
  * @demo demo/index.html
  */
@@ -153,8 +155,13 @@ class Hal9000 extends LitElement {
       onMatch: (detail) => this._fire("hal-9000-matched", detail),
       onNoMatch: (alternatives) =>
         this._fire("hal-9000-no-match", { alternatives: alternatives }),
-      onStateChange: (state) =>
-        this._fire("hal-9000-listening-state", { state: state }),
+      onStateChange: (state) => {
+        // nothing more to listen for here; keep enabled honest
+        if (state === "unavailable" || state === "blocked") {
+          this.enabled = false;
+        }
+        this._fire("hal-9000-listening-state", { state: state });
+      },
     });
     // check for speech synthesis API
     if (typeof globalThis.speechSynthesis !== "undefined") {
@@ -162,10 +169,11 @@ class Hal9000 extends LitElement {
     }
   }
   /**
-   * The browser can listen (SpeechRecognition)
+   * The browser can listen: it has SpeechRecognition and it has not
+   * proven unusable in this session
    */
   get canListen() {
-    return this.listener.supported;
+    return this.listener.available;
   }
   _fire(name, detail) {
     this.dispatchEvent(

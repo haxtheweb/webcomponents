@@ -120,6 +120,10 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
       developerModeActivated: "developer mode activated",
       merlin: "Merlin",
       closeMerlin: "Close Merlin",
+      voiceMicBlocked:
+        "The microphone is blocked. Allow it in your browser to talk to Merlin.",
+      voiceUnavailable:
+        "Voice isn't available in this browser. You can still type to Merlin.",
     };
     // Konami Code detection
     this.konamiSequence = [
@@ -1604,6 +1608,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
         this.hal = globalThis.Hal9000.requestAvailability();
         this.hal.debug = false; // enable to see all available commands in console
         this.hal.toast = true;
+        this._listenToHal(this.hal);
         this.defaultVoiceCommands();
       });
     } else if (changedProperties.has("voiceSearch") && !this.voiceSearch) {
@@ -1672,6 +1677,71 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     }
     return items;
   }
+  /**
+   * Listen to what hal-9000 reports about the microphone, once per
+   * connection (a reconnect makes a new signal and listens again).
+   * @param {HTMLElement} hal
+   */
+  _listenToHal(hal) {
+    if (!hal || hal.__merlinSignal === this.windowControllers.signal) {
+      return;
+    }
+    hal.__merlinSignal = this.windowControllers.signal;
+    hal.addEventListener(
+      "hal-9000-listening-state",
+      (e) => this._voiceStateChanged(e.detail.state),
+      { signal: this.windowControllers.signal },
+    );
+  }
+
+  /**
+   * The mic was refused, or this browser cannot recognize speech: stop
+   * listening and say why. When speech is unavailable the mic button also
+   * goes away for the rest of the session.
+   * @param {string} state idle, listening, blocked or unavailable
+   */
+  _voiceStateChanged(state) {
+    if (state !== "blocked" && state !== "unavailable") {
+      return;
+    }
+    this.setListeningStatus(false);
+    globalThis.dispatchEvent(
+      new CustomEvent("super-daemon-toast-show", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          text:
+            state === "blocked"
+              ? this.t.voiceMicBlocked
+              : this.t.voiceUnavailable,
+          duration: 6000,
+        },
+      }),
+    );
+    if (state === "unavailable") {
+      this._refreshVoiceControls();
+    }
+  }
+
+  /** Re-render every Merlin search box so the mic button can hide */
+  _refreshVoiceControls() {
+    const roots = [this.shadowRoot];
+    const ui = this.shadowRoot
+      ? this.shadowRoot.querySelector("super-daemon-ui")
+      : null;
+    if (ui && ui.shadowRoot) {
+      roots.push(ui.shadowRoot);
+    }
+    roots.forEach((root) => {
+      if (root) {
+        root.querySelectorAll("super-daemon-search").forEach((search) => {
+          search.requestUpdate();
+        });
+      }
+    });
+  }
+
   reprocessVoiceCommands() {
     if (this.hal && this.voiceSearch && this.items) {
       clearTimeout(this._blockRerunTimeout);

@@ -281,6 +281,22 @@ describe("hal-9000 commands and listening", () => {
     await spoken;
   });
 
+  it("stops listening and reports when speech is unavailable", async () => {
+    const el = await fixture(html`<hal-9000></hal-9000>`);
+    stubListener(el);
+    el.enabled = true;
+    await settle(el);
+    const reported = new Promise((resolve) =>
+      el.addEventListener("hal-9000-listening-state", resolve, { once: true }),
+    );
+    el.listener.unavailable = true;
+    el.listener._setState("unavailable");
+    const event = await reported;
+    expect(event.detail.state).to.equal("unavailable");
+    expect(el.enabled).to.be.false;
+    expect(el.canListen).to.be.false;
+  });
+
   it("stops talking when someone talks over it", async () => {
     const el = await fixture(html`<hal-9000></hal-9000>`);
     let cancelled = 0;

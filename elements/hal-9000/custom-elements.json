@@ -21,7 +21,7 @@
             {
               "kind": "field",
               "name": "canListen",
-              "description": "The browser can listen (SpeechRecognition)",
+              "description": "The browser can listen: it has SpeechRecognition and it has not\nproven unusable in this session",
               "readonly": true
             },
             {
@@ -305,7 +305,7 @@
             {
               "kind": "field",
               "name": "listener",
-              "default": "new Hal9000Listener({ lang: this.language, debug: this.debug, isEcho: (text) => this._isEcho(text), onSpeechStart: () => this._bargeIn(\"\"), onInterim: (text) => { this._bargeIn(text); this._fire(\"hal-9000-interim\", { text: text }); }, onMatch: (detail) => this._fire(\"hal-9000-matched\", detail), onNoMatch: (alternatives) => this._fire(\"hal-9000-no-match\", { alternatives: alternatives }), onStateChange: (state) => this._fire(\"hal-9000-listening-state\", { state: state }), })"
+              "default": "new Hal9000Listener({ lang: this.language, debug: this.debug, isEcho: (text) => this._isEcho(text), onSpeechStart: () => this._bargeIn(\"\"), onInterim: (text) => { this._bargeIn(text); this._fire(\"hal-9000-interim\", { text: text }); }, onMatch: (detail) => this._fire(\"hal-9000-matched\", detail), onNoMatch: (alternatives) => this._fire(\"hal-9000-no-match\", { alternatives: alternatives }), onStateChange: (state) => { // nothing more to listen for here; keep enabled honest if (state === \"unavailable\" || state === \"blocked\") { this.enabled = false; } this._fire(\"hal-9000-listening-state\", { state: state }); }, })"
             }
           ],
           "events": [
@@ -485,6 +485,15 @@
           "description": "Alternatives asked for per result."
         },
         {
+          "kind": "variable",
+          "name": "HAL_MAX_NETWORK_FAILURES",
+          "type": {
+            "text": "number"
+          },
+          "default": "3",
+          "description": "Network errors in a row, with nothing heard in between, before speech\ncounts as unavailable here. Some browsers (Brave and other Chromium\nbuilds without a speech service) expose the API but every session fails\nthis way, so retrying forever would only show a mic that never works."
+        },
+        {
           "kind": "function",
           "name": "halCommandToRegExp",
           "parameters": [
@@ -563,6 +572,13 @@
             {
               "kind": "field",
               "name": "supported",
+              "description": "The browser has a speech recognition API",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "available",
+              "description": "The API is there and has not proven unusable in this session. Once a\nbrowser shows it cannot reach a speech service, this stays false until\nthe page reloads.",
               "readonly": true
             },
             {
@@ -701,6 +717,11 @@
                   "name": "e"
                 }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "_markUnavailable",
+              "description": "Stop for this session: speech cannot work in this browser"
             },
             {
               "kind": "method",
@@ -846,6 +867,22 @@
                 "text": "object"
               },
               "default": "{}"
+            },
+            {
+              "kind": "field",
+              "name": "_networkFailures",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "unavailable",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
             }
           ]
         }
@@ -872,6 +909,14 @@
           "name": "HAL_MAX_ALTERNATIVES",
           "declaration": {
             "name": "HAL_MAX_ALTERNATIVES",
+            "module": "lib/hal-9000-listener.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "HAL_MAX_NETWORK_FAILURES",
+          "declaration": {
+            "name": "HAL_MAX_NETWORK_FAILURES",
             "module": "lib/hal-9000-listener.js"
           }
         },

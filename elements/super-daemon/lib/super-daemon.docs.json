@@ -222,10 +222,11 @@
     "super-daemon-command-context-changed",
     "super-daemon-context-changed",
     "super-daemon-konami-code",
-    "super-daemon-toast-hide"
+    "super-daemon-toast-hide",
+    "super-daemon-toast-show"
   ],
   "hax": {},
-  "surfaceHash": "cac4a585cbff",
+  "surfaceHash": "85a6beee245e",
   "walkthroughs": [],
   "videos": [],
   "motion": {
