@@ -1,0 +1,76 @@
+{
+  "tag": "audio-player",
+  "package": "@haxtheweb/audio-player",
+  "source": "elements/audio-player/audio-player.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "allow-background-play": "allowBackgroundPlay",
+    "audio-description-enabled": "audioDescriptionEnabled",
+    "audio-description-source": "audioDescriptionSource",
+    "crossorigin": "crossorigin",
+    "dark": "dark",
+    "dark-transcript": "darkTranscript",
+    "disable-interactive": "disableInteractive",
+    "element-visible": "elementVisible",
+    "end-time": "endTime",
+    "height": "height",
+    "hide-timestamps": "hideTimestamps",
+    "hide-transcript": "hideTranscript",
+    "hide-youtube-link": "hideYoutubeLink",
+    "id": "id",
+    "is-safari": "isSafari",
+    "lang": "lang",
+    "learning-mode": "learningMode",
+    "linkable": "linkable",
+    "media-title": "mediaTitle",
+    "playing": "playing",
+    "schemamap": "schemaMap",
+    "source": "source",
+    "source-type": "sourceType",
+    "sourcedata": "sourceData",
+    "sources": "sources",
+    "start-time": "startTime",
+    "sticky-corner": "stickyCorner",
+    "t": "t",
+    "thumbnail-src": "thumbnailSrc",
+    "track": "track",
+    "tracks": "tracks",
+    "typeof": "typeof",
+    "width": "width"
+  },
+  "slots": [
+    "(default)",
+    "caption"
+  ],
+  "events": [],
+  "cssParts": [
+    "frame"
+  ],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/audio-player/audio-player.js",
+    "gizmo": true,
+    "properties": [
+      "accentColor",
+      "allowBackgroundPlay",
+      "crossorigin",
+      "darkTranscript",
+      "disableInteractive",
+      "hideTimestamps",
+      "hideTranscript",
+      "hideYoutubeLink",
+      "lang",
+      "learningMode",
+      "linkable",
+      "mediaTitle",
+      "source",
+      "thumbnailSrc",
+      "track"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "audio-player"
+    ]
+  }
+}

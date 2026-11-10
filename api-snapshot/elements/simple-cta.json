@@ -1,0 +1,44 @@
+{
+  "tag": "simple-cta",
+  "package": "@haxtheweb/simple-cta",
+  "source": "elements/simple-cta/simple-cta.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "dark": "dark",
+    "data-pulse": "dataPulse",
+    "disabled": "disabled",
+    "editmode": "editMode",
+    "hide-icon": "hideIcon",
+    "hotline": "hotline",
+    "icon": "icon",
+    "is-safari": "isSafari",
+    "label": "label",
+    "large": "large",
+    "light": "light",
+    "link": "link",
+    "saturate": "saturate"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "cssParts": [
+    "simple-cta-link"
+  ],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/simple-cta/simple-cta.js",
+    "gizmo": true,
+    "properties": [
+      "hideIcon",
+      "icon",
+      "label",
+      "link"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "simple-cta"
+    ]
+  }
+}

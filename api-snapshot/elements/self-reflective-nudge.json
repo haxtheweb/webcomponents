@@ -1,0 +1,43 @@
+{
+  "tag": "self-reflective-nudge",
+  "package": "@haxtheweb/self-reflective-nudge",
+  "source": "elements/self-reflective-nudge/self-reflective-nudge.js",
+  "attributes": {
+    "input": "input",
+    "is-safari": "isSafari",
+    "nudges": "nudges",
+    "prompt": "prompt",
+    "response": "response",
+    "t": "t",
+    "typeof": "typeof"
+  },
+  "slots": [],
+  "events": [
+    "self-reflective-nudge-response",
+    "user-engagement"
+  ],
+  "cssParts": [
+    "fieldset",
+    "link",
+    "nudge"
+  ],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/self-reflective-nudge/lib/self-reflective-nudge.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "input",
+      "nudges",
+      "nudges[].link",
+      "nudges[].maxValue",
+      "nudges[].minValue",
+      "nudges[].nudge",
+      "prompt"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "self-reflective-nudge"
+    ]
+  }
+}

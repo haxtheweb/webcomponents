@@ -1,0 +1,32 @@
+{
+  "tag": "site-children-block",
+  "package": "@haxtheweb/haxcms-elements",
+  "source": "elements/haxcms-elements/lib/ui-components/blocks/site-children-block.js",
+  "attributes": {
+    "activeid": "activeId",
+    "dynamic-methodology": "dynamicMethodology",
+    "edit-mode": "editMode",
+    "end": "end",
+    "fixed-id": "fixedId",
+    "parent": "parent",
+    "start": "start"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/haxcms-elements/lib/ui-components/blocks/site-children-block.js",
+    "gizmo": true,
+    "properties": [
+      "dynamicMethodology",
+      "end",
+      "start"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "site-children-block"
+    ]
+  }
+}

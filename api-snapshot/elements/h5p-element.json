@@ -1,0 +1,32 @@
+{
+  "tag": "h5p-element",
+  "package": "@haxtheweb/h5p-element",
+  "source": "elements/h5p-element/h5p-element.js",
+  "attributes": {
+    "h5plibpath": "h5pLibPath",
+    "source": "source",
+    "t": "t",
+    "typeof": "typeof"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [
+    "h5p-package-error",
+    "h5p-package-loaded"
+  ],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/h5p-element/lib/h5p-element.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "source"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "h5p-element"
+    ]
+  }
+}

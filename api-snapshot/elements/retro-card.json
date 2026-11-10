@@ -1,0 +1,49 @@
+{
+  "tag": "retro-card",
+  "package": "@haxtheweb/retro-card",
+  "source": "elements/retro-card/retro-card.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "dark": "dark",
+    "hover-source": "hoverSource",
+    "hover-state": "hoverState",
+    "media-source": "mediaSource",
+    "nosource": "nosource",
+    "subtitle": "subtitle",
+    "tags": "tags",
+    "title": "title",
+    "url": "url"
+  },
+  "slots": [
+    "(default)",
+    "subtitle",
+    "title"
+  ],
+  "events": [],
+  "cssParts": [
+    "card-tags",
+    "description",
+    "project-tag",
+    "subtitle",
+    "title"
+  ],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/retro-card/retro-card.js",
+    "gizmo": true,
+    "properties": [
+      "accentColor",
+      "hoverSource",
+      "mediaSource",
+      "subtitle",
+      "tags",
+      "title",
+      "url"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "retro-card"
+    ]
+  }
+}

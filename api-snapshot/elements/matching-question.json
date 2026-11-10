@@ -1,0 +1,74 @@
+{
+  "tag": "matching-question",
+  "package": "@haxtheweb/matching-question",
+  "source": "elements/matching-question/matching-question.js",
+  "attributes": {
+    "answers": "answers",
+    "attempts": "attempts",
+    "collapsed": "collapsed",
+    "collapsible": "collapsible",
+    "disabled": "disabled",
+    "displayedanswers": "displayedAnswers",
+    "drag-enter": "dragEnter",
+    "dragging": "dragging",
+    "edit": "edit",
+    "for-course": "forCourse",
+    "grading-format": "gradingFormat",
+    "has-learning-objective": "hasLearningObjective",
+    "hide-buttons": "hideButtons",
+    "is-safari": "isSafari",
+    "match-target": "matchTarget",
+    "matchanswers": "matchAnswers",
+    "max-attempts": "maxAttempts",
+    "media": "media",
+    "question": "question",
+    "quiz-name": "quizName",
+    "randomize": "randomize",
+    "related-resource": "relatedResource",
+    "schemamap": "schemaMap",
+    "show-answer": "showAnswer",
+    "single-option": "singleOption",
+    "t": "t",
+    "typeof": "typeof"
+  },
+  "slots": [
+    "content",
+    "evidence",
+    "feedbackCorrect",
+    "feedbackIncorrect",
+    "hint"
+  ],
+  "events": [
+    "eventName",
+    "learner-progress-request",
+    "question-element-state",
+    "simple-toast-hide",
+    "user-engagement"
+  ],
+  "cssParts": [
+    "block-header",
+    "image"
+  ],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/matching-question/lib/matching-question.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "answers",
+      "answers[].correct",
+      "answers[].label",
+      "collapsed",
+      "collapsible",
+      "forCourse",
+      "gradingFormat",
+      "hasLearningObjective",
+      "question",
+      "quizName"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "matching-question"
+    ]
+  }
+}

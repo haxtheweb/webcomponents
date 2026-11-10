@@ -1,0 +1,73 @@
+{
+  "tag": "reading-analysis",
+  "package": "@haxtheweb/reading-analysis",
+  "source": "elements/reading-analysis/reading-analysis.js",
+  "attributes": {
+    "answers": "answers",
+    "attempts": "attempts",
+    "collapsed": "collapsed",
+    "collapsible": "collapsible",
+    "disabled": "disabled",
+    "displayedanswers": "displayedAnswers",
+    "edit": "edit",
+    "for-course": "forCourse",
+    "grading-format": "gradingFormat",
+    "has-learning-objective": "hasLearningObjective",
+    "hide-buttons": "hideButtons",
+    "is-safari": "isSafari",
+    "max-attempts": "maxAttempts",
+    "media": "media",
+    "mode": "mode",
+    "question": "question",
+    "quiz-name": "quizName",
+    "randomize": "randomize",
+    "related-resource": "relatedResource",
+    "schemamap": "schemaMap",
+    "show-answer": "showAnswer",
+    "single-option": "singleOption",
+    "t": "t",
+    "typeof": "typeof",
+    "unit": "unit"
+  },
+  "slots": [
+    "content",
+    "evidence",
+    "feedbackCorrect",
+    "feedbackIncorrect",
+    "hint"
+  ],
+  "events": [
+    "eventName",
+    "learner-progress-request",
+    "question-element-state",
+    "user-engagement"
+  ],
+  "cssParts": [
+    "block-header",
+    "image"
+  ],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/reading-analysis/lib/reading-analysis.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "answers",
+      "answers[].label",
+      "collapsed",
+      "collapsible",
+      "forCourse",
+      "gradingFormat",
+      "hasLearningObjective",
+      "maxAttempts",
+      "mode",
+      "question",
+      "quizName",
+      "unit"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "reading-analysis"
+    ]
+  }
+}

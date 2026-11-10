@@ -1,0 +1,35 @@
+{
+  "tag": "career-role-item",
+  "package": "@haxtheweb/career-timeline",
+  "source": "elements/career-timeline/lib/career-role-item.js",
+  "attributes": {
+    "end-date": "endDate",
+    "is-safari": "isSafari",
+    "skills": "skills",
+    "start-date": "startDate",
+    "t": "t",
+    "title": "title"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [
+    "start-date-changed"
+  ],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/career-timeline/lib/career-role-item.js",
+    "gizmo": true,
+    "properties": [
+      "endDate",
+      "skills",
+      "skills[].name",
+      "startDate",
+      "title"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": []
+  }
+}

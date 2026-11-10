@@ -1,0 +1,41 @@
+{
+  "tag": "vcf-render",
+  "package": "@haxtheweb/vcf-render",
+  "source": "elements/vcf-render/vcf-render.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "caption": "caption",
+    "contact-data": "contactData",
+    "contacts": "contacts",
+    "dark": "dark",
+    "data-source": "dataSource",
+    "debounce-delay": "debounceDelay",
+    "display-as": "displayAs",
+    "element-visible": "elementVisible",
+    "is-safari": "isSafari",
+    "status": "status",
+    "t": "t"
+  },
+  "slots": [],
+  "events": [
+    "vcf-render-parsed"
+  ],
+  "cssParts": [
+    "frame"
+  ],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/vcf-render/lib/vcf-render.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "caption",
+      "dataSource",
+      "displayAs"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "vcf-render"
+    ]
+  }
+}

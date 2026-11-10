@@ -1,0 +1,36 @@
+{
+  "tag": "flash-card-set",
+  "package": "@haxtheweb/flash-card",
+  "source": "elements/flash-card/lib/flash-card-set.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "dark": "dark",
+    "is-safari": "isSafari",
+    "questions": "questions",
+    "t": "t"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/flash-card/lib/flash-card.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "hasLearningObjective",
+      "imgKeyword",
+      "imgSource",
+      "typeOfAction"
+    ],
+    "attributes": [],
+    "slots": [
+      "back",
+      "front"
+    ],
+    "demoTags": [
+      "flash-card"
+    ]
+  }
+}

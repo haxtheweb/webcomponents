@@ -1,0 +1,39 @@
+{
+  "tag": "post-card",
+  "package": "@haxtheweb/post-card",
+  "source": "elements/post-card/post-card.js",
+  "attributes": {
+    "from": "from",
+    "message": "message",
+    "photo-src": "photoSrc",
+    "post-mark-locations": "postMarkLocations",
+    "stamp-src": "stampSrc",
+    "t": "t",
+    "to": "to"
+  },
+  "slots": [
+    "from",
+    "message",
+    "to"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/post-card/lib/post-card.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "from",
+      "message",
+      "photoSrc",
+      "postMarkLocations",
+      "stampSrc",
+      "to"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "post-card"
+    ]
+  }
+}

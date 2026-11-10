@@ -1,0 +1,39 @@
+{
+  "tag": "polaris-mark",
+  "package": "@haxtheweb/polaris-theme",
+  "source": "elements/polaris-theme/lib/polaris-mark.js",
+  "attributes": {
+    "linex": "linex",
+    "name": "name",
+    "name2": "name2",
+    "name3": "name3",
+    "name3x": "name3x",
+    "svgheight": "svgheight",
+    "svgwidth": "svgwidth",
+    "t": "t",
+    "type": "type",
+    "url": "url",
+    "vert": "vert"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/polaris-theme/lib/polaris-mark.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "name",
+      "name2",
+      "name3",
+      "type",
+      "url",
+      "vert"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "polaris-mark"
+    ]
+  }
+}

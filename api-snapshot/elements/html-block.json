@@ -1,0 +1,22 @@
+{
+  "tag": "html-block",
+  "package": "@haxtheweb/html-block",
+  "source": "elements/html-block/html-block.js",
+  "attributes": {
+    "allowscript": "allowscript"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/html-block/html-block.js",
+    "gizmo": true,
+    "properties": [],
+    "attributes": [],
+    "slots": [],
+    "demoTags": []
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "tag": "documentation-player",
+  "package": "@haxtheweb/documentation-player",
+  "source": "elements/documentation-player/documentation-player.js",
+  "attributes": {
+    "autoplay": "autoplay",
+    "copied": "copied",
+    "demo-href": "demoHref",
+    "docs": "docs",
+    "docs-href": "docsHref",
+    "docs-src": "docsSrc",
+    "image-url": "imageUrl",
+    "is-safari": "isSafari",
+    "label": "label",
+    "livestate": "liveState",
+    "loaderror": "loadError",
+    "motion-src": "motionSrc",
+    "scene": "scene",
+    "t": "t",
+    "tab": "tab",
+    "topic": "topic",
+    "url": "url",
+    "video-src": "videoSrc"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [
+    "documentation-player-copy",
+    "documentation-player-tab",
+    "documentation-player-topic",
+    "hax-insert"
+  ],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/documentation-player/lib/documentation-player.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "autoplay",
+      "demoHref",
+      "docsHref",
+      "docsSrc",
+      "motionSrc",
+      "tab",
+      "topic",
+      "videoSrc"
+    ],
+    "attributes": [
+      "demo-href",
+      "docs-href",
+      "docs-src",
+      "motion-src",
+      "video-src"
+    ],
+    "slots": [],
+    "demoTags": [
+      "documentation-player"
+    ]
+  }
+}

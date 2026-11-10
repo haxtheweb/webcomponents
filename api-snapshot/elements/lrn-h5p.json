@@ -1,0 +1,22 @@
+{
+  "tag": "lrn-h5p",
+  "package": "@haxtheweb/course-design",
+  "source": "elements/course-design/lib/lrn-h5p.js",
+  "attributes": {
+    "t": "t"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/course-design/lib/lrn-h5p.js",
+    "gizmo": true,
+    "properties": [],
+    "attributes": [],
+    "slots": [],
+    "demoTags": []
+  }
+}

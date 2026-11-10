@@ -1,0 +1,45 @@
+{
+  "tag": "event-badge",
+  "package": "@haxtheweb/event-badge",
+  "source": "elements/event-badge/event-badge.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "blackwhite": "blackwhite",
+    "dark": "dark",
+    "image": "image",
+    "knobcolor": "knobcolor",
+    "logo": "logo",
+    "name": "name",
+    "organization": "organization",
+    "position": "position",
+    "sepia": "sepia",
+    "title": "title",
+    "tvcolor": "tvcolor"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/event-badge/lib/event-badge.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "accentColor",
+      "blackwhite",
+      "image",
+      "knobcolor",
+      "logo",
+      "name",
+      "organization",
+      "position",
+      "sepia",
+      "title",
+      "tvcolor"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "event-badge"
+    ]
+  }
+}

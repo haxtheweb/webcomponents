@@ -411,6 +411,23 @@ Note: if your pull request isn't getting enough attention, you can use our [Disc
 
 Unit tests are ideal but not required to be written for proposed changes and enhancements.
 
+### HAX element API snapshot
+
+Invariant: content authored with a HAX-capable element keeps working. An authorable tag never loses or renames an attribute, slot, HAX setting (property, attribute or slot name), gizmo, demoSchema tag, dispatched event, CSS part or documented CSS custom property unless the pull request says so on purpose.
+
+- **Which tags**: custom element tags in `hax-elements-registry.json` whose class carries a HAXSchema (`static get haxProperties()` on the class or an ancestor, or a `setHaxProperties(schema, "<tag>")` call). Registry entries without one (app shells like `app-hax-site-bar`) and native HTML tags are not covered.
+- **Snapshot**: `api-snapshot/elements/<tag>.json`, one file per tag, generated (never edited by hand). Attributes come from the custom elements manifest analyzer run in memory, including inherited and `attribute: "x"` mappings; HAX settings come from the element's haxProperties.
+- **Check locally**: `yarn api:check --base origin/master`. It exits 1 when something snapshotted on the base branch or in the committed snapshot is gone. Additions only warn.
+- **After adding API**: `yarn api:snapshot` and commit the changed `api-snapshot/elements/*.json`, so the new items are protected too.
+- **Intended breaking change**: add an entry to `api-snapshot/allowed-removals.json` in the same pull request, then run `yarn api:snapshot`:
+
+  ```json
+  { "removals": [{ "tag": "video-player", "kind": "attributes", "item": "dark", "reason": "why existing content may break, and the migration" }] }
+  ```
+
+  `kind` is `tag` (the whole element; no `item`) or one of `attributes`, `slots`, `events`, `cssParts`, `cssProperties`, `hax.gizmo`, `hax.properties`, `hax.attributes`, `hax.slots`, `hax.demoTags`. Regenerating the snapshot alone does not pass the check, because CI also compares with the base branch's snapshot. Delete an entry once its pull request has merged.
+- **CI**: the `api-snapshot` workflow runs on pull requests that touch `elements/**`, the registry or the snapshot, and is blocking. `node scripts/api-snapshot.mjs --report` lists skipped registry tags and oddities (HAX settings naming properties the element does not have).
+
 ## Security
 
 If you discover what you deem to be a critical security issue  please reach out on our Discord channel privately to discuss whether this should be resolved in the open prior or if disclosure should happen after a solution has been crafted.

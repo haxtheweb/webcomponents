@@ -1,0 +1,37 @@
+{
+  "tag": "site-remote-content",
+  "package": "@haxtheweb/haxcms-elements",
+  "source": "elements/haxcms-elements/lib/ui-components/site/site-remote-content.js",
+  "attributes": {
+    "breakreference": "breakreference",
+    "element-visible": "elementVisible",
+    "hide-reference": "hideReference",
+    "loading": "loading",
+    "player": "player",
+    "show-title": "showTitle",
+    "siteurl": "siteurl",
+    "t": "t",
+    "uuid": "uuid"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/haxcms-elements/lib/ui-components/site/site-remote-content.js",
+    "gizmo": true,
+    "properties": [
+      "breakreference",
+      "showTitle",
+      "siteurl",
+      "uuid"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "site-remote-content"
+    ]
+  }
+}
