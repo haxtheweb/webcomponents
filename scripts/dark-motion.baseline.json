@@ -17,22 +17,22 @@
     "a11y-menu-button": {
       "motion": {
         "transition background-color on a11y-menu-button-item >> a": 1,
-        "transition font-size on a11y-menu-button >> button#menubutton": 1,
+        "transition font-size on a11y-menu-button >> button": 1,
         "transition font-size on a11y-menu-button-item >> a": 1,
         "transition font-size on a11y-menu-button-item >> button": 1,
-        "transition outline-color on a11y-menu-button >> button#menubutton": 1,
+        "transition outline-color on a11y-menu-button >> button": 1,
         "transition outline-color on a11y-menu-button-item >> a": 1,
         "transition outline-offset on a11y-menu-button-item >> a": 1,
-        "transition outline-width on a11y-menu-button >> button#menubutton": 1,
+        "transition outline-width on a11y-menu-button >> button": 1,
         "transition outline-width on a11y-menu-button-item >> a": 1
       }
     },
     "app-hax": {
       "motion": {
-        "transition border-bottom-color on app-hax-use-case-filter >> input#searchField": 1,
-        "transition border-left-color on app-hax-use-case-filter >> input#searchField": 1,
-        "transition border-right-color on app-hax-use-case-filter >> input#searchField": 1,
-        "transition border-top-color on app-hax-use-case-filter >> input#searchField": 1
+        "transition border-bottom-color on app-hax-use-case-filter >> input": 1,
+        "transition border-left-color on app-hax-use-case-filter >> input": 1,
+        "transition border-right-color on app-hax-use-case-filter >> input": 1,
+        "transition border-top-color on app-hax-use-case-filter >> input": 1
       }
     },
     "bootstrap-theme": {
@@ -94,15 +94,15 @@
         "hax-gizmo-browser": 1
       },
       "motion": {
-        "transition opacity on hax-gizmo-browser >> a11y-collapse#popular": 1
+        "transition opacity on hax-gizmo-browser >> a11y-collapse": 1
       }
     },
     "haxcms-elements": {
       "motion": {
         "transition color on site-menu-button >> simple-icon-lite": 1,
-        "transition opacity on haxcms-site-builder >> div#slot": 1,
-        "transition outline-color on site-menu-button >> button#menulink": 1,
-        "transition outline-width on site-menu-button >> button#menulink": 1
+        "transition opacity on haxcms-site-builder >> div": 1,
+        "transition outline-color on site-menu-button >> button": 1,
+        "transition outline-width on site-menu-button >> button": 1
       }
     },
     "hexagon-loader": {
@@ -115,7 +115,7 @@
     },
     "iframe-loader": {
       "motion": {
-        "transition font-size on iframe-loader >> div#container.loaded": 1
+        "transition font-size on iframe-loader >> div.loaded": 1
       }
     },
     "journey-theme": {
@@ -146,9 +146,9 @@
       "motion": {
         "transition background-color on map-menu-item >> button": 1,
         "transition font-size on map-menu": 1,
-        "transition font-size on map-menu >> div#activeindicator": 1,
+        "transition font-size on map-menu >> div": 1,
         "transition font-size on map-menu-header": 1,
-        "transition font-size on map-menu-submenu >> a11y-collapse#container": 1,
+        "transition font-size on map-menu-submenu >> a11y-collapse": 1,
         "transition outline-color on map-menu-header >> button": 1,
         "transition outline-color on map-menu-item >> button": 1,
         "transition outline-width on map-menu-header >> button": 1,
@@ -249,53 +249,53 @@
       "motion": {
         "transition background-color on simple-fields-combo": 1,
         "transition background-color on simple-fields-field": 1,
-        "transition color on simple-fields-combo >> label#biographical.house.input-label.label-main": 1,
+        "transition color on simple-fields-combo >> label.label-main": 1,
         "transition color on simple-fields-container >> label.label-main": 1,
-        "transition color on simple-fields-field >> label#name.input-label.label-main": 1,
+        "transition color on simple-fields-field >> label.label-main": 1,
         "transition outline-color on simple-fields-combo": 1,
-        "transition outline-color on simple-fields-combo >> input#biographical.house.field": 1,
+        "transition outline-color on simple-fields-combo >> input.field": 1,
         "transition outline-color on simple-fields-container": 1,
         "transition outline-color on simple-fields-field": 1,
-        "transition outline-color on simple-fields-field >> input#name..field": 1,
+        "transition outline-color on simple-fields-field >> input.field": 1,
         "transition z-index on simple-fields-array-item": 1
       }
     },
     "simple-picker": {
       "motion": {
-        "transition font-size on simple-picker >> label#listLabel": 1
+        "transition font-size on simple-picker >> label": 1
       }
     },
     "simple-progress": {
       "motion": {
-        "animation indeterminate-bar on simple-progress >> div#primaryProgress": 1,
-        "animation indeterminate-splitter on simple-progress >> div#primaryProgress": 1
+        "animation indeterminate-bar on simple-progress >> div": 1,
+        "animation indeterminate-splitter on simple-progress >> div": 1
       }
     },
     "simple-search": {
       "motion": {
-        "transition background-color on simple-search >> simple-fields-field#input": 1
+        "transition background-color on simple-search >> simple-fields-field": 1
       }
     },
     "simple-toolbar": {
       "motion": {
-        "transition border-bottom-color on simple-toolbar-button >> button#button.simple-toolbar-button": 1,
-        "transition border-bottom-color on simple-toolbar-field >> div#button.simple-toolbar-button": 1,
-        "transition border-bottom-color on simple-toolbar-more-button >> button#button.simple-toolbar-button": 1,
-        "transition border-left-color on simple-toolbar-button >> button#button.simple-toolbar-button": 1,
-        "transition border-left-color on simple-toolbar-field >> div#button.simple-toolbar-button": 1,
-        "transition border-left-color on simple-toolbar-more-button >> button#button.simple-toolbar-button": 1,
-        "transition border-right-color on simple-toolbar-button >> button#button.simple-toolbar-button": 1,
-        "transition border-right-color on simple-toolbar-field >> div#button.simple-toolbar-button": 1,
-        "transition border-right-color on simple-toolbar-more-button >> button#button.simple-toolbar-button": 1,
-        "transition border-top-color on simple-toolbar-button >> button#button.simple-toolbar-button": 1,
-        "transition border-top-color on simple-toolbar-field >> div#button.simple-toolbar-button": 1,
-        "transition border-top-color on simple-toolbar-more-button >> button#button.simple-toolbar-button": 1,
-        "transition opacity on simple-toolbar-button >> button#button.simple-toolbar-button": 1,
-        "transition opacity on simple-toolbar-more-button >> button#button.simple-toolbar-button": 1,
-        "transition outline-color on simple-toolbar-button >> button#button.simple-toolbar-button": 1,
-        "transition outline-color on simple-toolbar-more-button >> button#button.simple-toolbar-button": 1,
-        "transition outline-width on simple-toolbar-button >> button#button.simple-toolbar-button": 1,
-        "transition outline-width on simple-toolbar-more-button >> button#button.simple-toolbar-button": 1
+        "transition border-bottom-color on simple-toolbar-button >> button.simple-toolbar-button": 1,
+        "transition border-bottom-color on simple-toolbar-field >> div.simple-toolbar-button": 1,
+        "transition border-bottom-color on simple-toolbar-more-button >> button.simple-toolbar-button": 1,
+        "transition border-left-color on simple-toolbar-button >> button.simple-toolbar-button": 1,
+        "transition border-left-color on simple-toolbar-field >> div.simple-toolbar-button": 1,
+        "transition border-left-color on simple-toolbar-more-button >> button.simple-toolbar-button": 1,
+        "transition border-right-color on simple-toolbar-button >> button.simple-toolbar-button": 1,
+        "transition border-right-color on simple-toolbar-field >> div.simple-toolbar-button": 1,
+        "transition border-right-color on simple-toolbar-more-button >> button.simple-toolbar-button": 1,
+        "transition border-top-color on simple-toolbar-button >> button.simple-toolbar-button": 1,
+        "transition border-top-color on simple-toolbar-field >> div.simple-toolbar-button": 1,
+        "transition border-top-color on simple-toolbar-more-button >> button.simple-toolbar-button": 1,
+        "transition opacity on simple-toolbar-button >> button.simple-toolbar-button": 1,
+        "transition opacity on simple-toolbar-more-button >> button.simple-toolbar-button": 1,
+        "transition outline-color on simple-toolbar-button >> button.simple-toolbar-button": 1,
+        "transition outline-color on simple-toolbar-more-button >> button.simple-toolbar-button": 1,
+        "transition outline-width on simple-toolbar-button >> button.simple-toolbar-button": 1,
+        "transition outline-width on simple-toolbar-more-button >> button.simple-toolbar-button": 1
       }
     },
     "sorting-question": {
@@ -323,7 +323,7 @@
     },
     "type-writer": {
       "motion": {
-        "animation flickerAnimation on type-writer >> span#cursor": 1
+        "animation flickerAnimation on type-writer >> span": 1
       }
     },
     "word-count": {

@@ -4,9 +4,9 @@
  *
  * In the page (functions passed to Playwright, so they use only browser
  * globals):
- * - pageInit(): runs before the demo's own scripts. Records the stack of
- *   every customElements.define (so a tag can be traced to the element
- *   folder whose module defined it), every shadow root attached, and every
+ * - pageInit(): runs before the demo's own scripts. Records the module
+ *   that called each customElements.define (so a tag can be traced to the
+ *   element folder that defines it), every shadow root attached, and every
  *   animation seen running, polling document and shadow roots every 40ms so
  *   a short transition or a load animation is caught before it ends.
  * - pageTargets(folder): the folder's own tags and up to a few hover/focus
@@ -22,8 +22,8 @@
  *   their styles. Tags that only inherit colors follow the page and are
  *   not reported.
  * - motionCounts(list): { key: 1 } per animation seen. Keys name the tag
- *   and the animated part by tag, a plain id (generated ids with digits
- *   are dropped) and its first class.
+ *   and the animated part by its tag name and first class; ids are left
+ *   out, since many are generated or come from demo data.
  */
 
 export const MOTION_THRESHOLD_MS = 10;
@@ -37,7 +37,15 @@ export function pageInit() {
     const limit = Error.stackTraceLimit;
     try {
       Error.stackTraceLimit = 60;
-      defs[name] = String(new Error().stack || "");
+      // the module that called define: the first frame in one of our
+      // packages (wrappers such as deduping-fix sit in between)
+      const frames = String(new Error().stack || "").split("\n");
+      defs[name] =
+        frames.find(
+          (f) =>
+            /\/(elements|node_modules\/@haxtheweb)\//.test(f) &&
+            !/deduping-fix/.test(f),
+        ) || "";
     } catch {
       // the record is best effort; the define itself must still run
     } finally {
@@ -249,8 +257,6 @@ export function pageCollect(arg) {
       target === owner
         ? ""
         : ` >> ${target.localName}${
-            target.id && !/\d/.test(target.id) ? `#${target.id}` : ""
-          }${
             target.classList && target.classList[0]
               ? `.${target.classList[0].replace(/\d+/g, "N")}`
               : ""
@@ -282,8 +288,8 @@ export function darkFindings(light, dark) {
 /**
  * { key: 1 } for each animation seen in one run. Presence, not a count:
  * hovering in and out starts a new transition each time, so how many show
- * up depends on timing. (Generated ids are dropped and class digits become
- * N in the page; tag names keep theirs.)
+ * up depends on timing. (Class digits become N in the page; tag names keep
+ * theirs.)
  */
 export function motionCounts(list) {
   const out = {};
