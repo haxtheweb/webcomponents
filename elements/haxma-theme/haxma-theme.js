@@ -3,6 +3,10 @@
  * @license Apache-2.0, see LICENSE for full text.
  */
 import { html, css } from "lit";
+import {
+  DDDReadingSurface,
+  dddReadingProse,
+} from "@haxtheweb/d-d-d/lib/DDDReading.js";
 import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
@@ -116,6 +120,7 @@ export class HaxmaTheme extends I18NMixin(
   HAXCMSGlobalStyleSheetContent() {
     return [
       ...super.HAXCMSGlobalStyleSheetContent(),
+      dddReadingProse("haxma-theme", "start"),
       css`
         :root {
           /* DDD migration: exact / near-exact token remaps. The haxma-primary
@@ -184,6 +189,7 @@ export class HaxmaTheme extends I18NMixin(
   static get styles() {
     return [
       super.styles,
+      DDDReadingSurface,
       css`
         :host {
           display: block;
@@ -888,7 +894,7 @@ export class HaxmaTheme extends I18NMixin(
             <!-- Article Content -->
             <div class="article-content">
               <!-- Required HAXcms content container -->
-              <div id="contentcontainer" tabindex="-1">
+              <div id="contentcontainer" class="ddd-reading" tabindex="-1">
                 <div id="slot">
                   <slot></slot>
                 </div>

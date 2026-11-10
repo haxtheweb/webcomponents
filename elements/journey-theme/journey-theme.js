@@ -3,6 +3,10 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { css, html, nothing } from "lit";
+import {
+  DDDReadingSurface,
+  dddReadingProse,
+} from "@haxtheweb/d-d-d/lib/DDDReading.js";
 import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
@@ -251,6 +255,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
   HAXCMSGlobalStyleSheetContent() {
     return [
       ...super.HAXCMSGlobalStyleSheetContent(),
+      dddReadingProse("journey-theme", "start"),
       css`
         :root {
           color-scheme: light dark;
@@ -345,6 +350,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
       DDDVariables,
       DDDPaletteStyles,
       super.styles,
+      DDDReadingSurface,
       css`
         :host {
           scroll-behavior: auto;
@@ -849,7 +855,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
         <a class="skip-link" href="#contentcontainer"
           >${this.t.skipToContent}</a
         >
-        <div id="contentcontainer" tabindex="-1"><div id="slot"></div></div>
+        <div id="contentcontainer" class="ddd-reading" tabindex="-1"><div id="slot"></div></div>
       `;
     }
     return html`
@@ -1054,7 +1060,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
               : ``
           }
           <!-- this block and names are required for HAX to edit the content of the page. contentcontainer, slot, and wrapping the slot. -->
-          <div id="contentcontainer" tabindex="-1">
+          <div id="contentcontainer" class="ddd-reading" tabindex="-1">
             <div id="slot">
               ${
                 this.location && this.location.route.name !== "home"

@@ -3,6 +3,10 @@
  * @license , see License.md for full text.
  */
 import { html, css } from "lit";
+import {
+  DDDReadingSurface,
+  dddReadingProse,
+} from "@haxtheweb/d-d-d/lib/DDDReading.js";
 import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { HAXCMSRememberRoute } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js";
 import { HAXCMSThemeParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
@@ -120,10 +124,18 @@ class TrainingTheme extends HAXCMSOperationButtons(
   __nextPageLabelChanged(e) {
     this.nextPage = e.detail.value;
   }
+  HAXCMSGlobalStyleSheetContent() {
+    return [
+      ...super.HAXCMSGlobalStyleSheetContent(),
+      dddReadingProse("training-theme", "start"),
+    ];
+  }
+
   // LitElement convention for applying styles JUST to our element
   static get styles() {
     return [
       super.styles,
+      DDDReadingSurface,
       css`
         :host {
           display: block;
@@ -712,7 +724,7 @@ class TrainingTheme extends HAXCMSOperationButtons(
         <main class="main">
           <div class="content-column">
             <site-active-title></site-active-title>
-            <article id="contentcontainer">
+            <article id="contentcontainer" class="ddd-reading">
               <section id="slot">
                 <slot></slot>
               </section>

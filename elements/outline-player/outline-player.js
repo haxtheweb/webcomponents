@@ -1,4 +1,8 @@
 import { html, css } from "lit";
+import {
+  DDDReadingSurface,
+  dddReadingProse,
+} from "@haxtheweb/d-d-d/lib/DDDReading.js";
 import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { SimpleColorsSuper } from "@haxtheweb/simple-colors/simple-colors.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
@@ -29,6 +33,7 @@ class OutlinePlayer extends I18NMixin(
   static get styles() {
     return [
       super.styles,
+      DDDReadingSurface,
       css`
         :host {
           color: light-dark(black, var(--ddd-accent-6));
@@ -291,6 +296,7 @@ class OutlinePlayer extends I18NMixin(
   HAXCMSGlobalStyleSheetContent() {
     return [
       ...super.HAXCMSGlobalStyleSheetContent(),
+      dddReadingProse("outline-player", "start"),
       css`
         body.dark-mode outline-player {
           background-color: var(--outline-player-dark);
@@ -463,7 +469,7 @@ class OutlinePlayer extends I18NMixin(
             <div><slot name="title"></slot></div>
           </header>
           <main>
-            <article id="contentcontainer">
+            <article id="contentcontainer" class="ddd-reading">
               <section id="slot"><slot></slot></section>
             </article>
           </main>
