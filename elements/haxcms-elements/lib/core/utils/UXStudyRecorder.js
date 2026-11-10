@@ -870,7 +870,7 @@ export class HAXCMSUXStudyIndicator extends LitElement {
         gap: var(--ddd-spacing-2, 8px);
         padding: var(--ddd-spacing-1, 4px) var(--ddd-spacing-2, 8px);
         border-radius: var(--ddd-radius-rounded, 100px);
-        border: var(--ddd-border-xs, 1px solid)
+        border: var(--ddd-border-size-xs, 1px) solid
           var(--ddd-theme-default-limestoneGray, #a2aaad);
         background-color: var(--hax-ui-background-color, #fff);
         color: var(--hax-ui-color, #222);
@@ -897,14 +897,14 @@ export class HAXCMSUXStudyIndicator extends LitElement {
         min-height: 32px;
         padding: 0 var(--ddd-spacing-2, 8px);
         border-radius: var(--ddd-radius-sm, 4px);
-        border: var(--ddd-border-xs, 1px solid)
+        border: var(--ddd-border-size-xs, 1px) solid
           var(--ddd-theme-default-limestoneGray, #a2aaad);
         background-color: var(--hax-ui-background-color-secondary, #e8e8e8);
         cursor: pointer;
       }
       button:focus-visible,
       input:focus-visible {
-        outline: var(--ddd-border-sm, 2px solid)
+        outline: var(--ddd-border-size-sm, 2px) solid
           var(--ddd-theme-default-keystoneYellow, #ffd100);
         outline-offset: 2px;
       }
@@ -913,7 +913,7 @@ export class HAXCMSUXStudyIndicator extends LitElement {
         width: 14em;
         padding: 0 var(--ddd-spacing-1, 4px);
         border-radius: var(--ddd-radius-sm, 4px);
-        border: var(--ddd-border-xs, 1px solid)
+        border: var(--ddd-border-size-xs, 1px) solid
           var(--ddd-theme-default-limestoneGray, #a2aaad);
         background-color: var(--hax-ui-background-color, #fff);
       }

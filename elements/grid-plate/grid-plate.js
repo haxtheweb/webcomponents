@@ -294,37 +294,6 @@ class GridPlate extends LitElement {
             var(--hax-contextual-action-hover-color, var(--hax-ui-color-accent));
           margin-top: -8px;
         }
-
-        @media screen and (min-color-index: 0) and(-webkit-min-device-pixel-ratio:0) {
-          :host([data-hax-ray]) div ::slotted(*.active) {
-            background-color: var(
-              --hax-layout-slotted-active-outline-color,
-              var(
-                --hax-layout-accent-color,
-                var(--ddd-drop-zone-outline-color, #009dc7)
-              )
-            ) !important;
-            outline: var(--hax-layout-slotted-active-outline-width, 1px)
-              var(--hax-layout-slotted-active-outline-style, solid)
-              var(
-                --hax-layout-slotted-active-outline-color,
-                var(
-                  --hax-layout-accent-color,
-                  var(--ddd-drop-zone-outline-color, #009dc7)
-                )
-              );
-          }
-          :host .column ::slotted(*) {
-            outline: var(--hax-body-editable-outline);
-            background-color: var(--hax-body-possible-target-background-color);
-          }
-          :host .column ::slotted(*.hax-hovered) {
-            background-color: var(
-              --hax-body-target-background-color
-            ) !important;
-            outline: var(--hax-body-active-outline);
-          }
-        }
       `,
     ];
   }

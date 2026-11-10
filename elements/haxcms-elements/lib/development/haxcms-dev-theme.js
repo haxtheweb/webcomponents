@@ -149,15 +149,6 @@ class HAXCMSDevTheme extends HAXCMSLitElementTheme {
           margin: 0;
           border-radius: 0;
         }
-        site-children-block {
-          --site-children-block-button-active: {
-            background-color: var(
-              --simple-colors-default-theme-blue-grey-7,
-              #37474f
-            );
-            color: #ffffff;
-          };
-        }
       `,
     ];
   }

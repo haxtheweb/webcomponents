@@ -795,16 +795,6 @@
             },
             {
               "kind": "method",
-              "name": "_haxResolvePreviousElement",
-              "parameters": [
-                {
-                  "name": "node"
-                }
-              ],
-              "description": "Test if this is a HAX element or not"
-            },
-            {
-              "kind": "method",
               "name": "_validElementTest",
               "parameters": [
                 {
@@ -1223,16 +1213,6 @@
             },
             {
               "kind": "method",
-              "name": "_getPosition",
-              "parameters": [
-                {
-                  "name": "element"
-                }
-              ],
-              "description": "Get position from top and left of the page based on position:relative; being\nset in a parent."
-            },
-            {
-              "kind": "method",
               "name": "_showContextMenu",
               "parameters": [
                 {
@@ -1240,16 +1220,6 @@
                 }
               ],
               "description": "Handle display and position of the context menu"
-            },
-            {
-              "kind": "method",
-              "name": "_getContextContainer",
-              "parameters": [
-                {
-                  "name": "el"
-                }
-              ],
-              "description": "gets context container"
             },
             {
               "kind": "method",
@@ -11022,16 +10992,6 @@
               "kind": "method",
               "name": "_setupForm",
               "description": "When the preview node is updated, pull schema associated with it"
-            },
-            {
-              "kind": "method",
-              "name": "_toArray",
-              "parameters": [
-                {
-                  "name": "obj"
-                }
-              ],
-              "description": "Convert an object to an array"
             },
             {
               "kind": "method",

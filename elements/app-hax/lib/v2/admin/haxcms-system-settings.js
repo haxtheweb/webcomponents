@@ -1387,107 +1387,8 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
     };
   }
 
-  _appendQueryParams(endpoint = "", params = {}) {
-    const target = typeof endpoint === "string" ? endpoint.trim() : "";
-    if (!target) {
-      return "";
-    }
-    const hashIndex = target.indexOf("#");
-    const baseWithQuery =
-      hashIndex === -1 ? target : target.substring(0, hashIndex);
-    const hash = hashIndex === -1 ? "" : target.substring(hashIndex);
-    const queryIndex = baseWithQuery.indexOf("?");
-    const basePath =
-      queryIndex === -1
-        ? baseWithQuery
-        : baseWithQuery.substring(0, queryIndex);
-    const existingQuery =
-      queryIndex === -1 ? "" : baseWithQuery.substring(queryIndex + 1);
-    const searchParams = new URLSearchParams(existingQuery);
-    const payload =
-      params && typeof params === "object" && !Array.isArray(params)
-        ? params
-        : {};
-    const keys = Object.keys(payload);
-    for (let i = 0; i < keys.length; i++) {
-      const key = keys[i];
-      const value = payload[key];
-      if (typeof value === "undefined" || value === null) {
-        continue;
-      }
-      const normalized = `${value}`.trim();
-      if (!normalized) {
-        continue;
-      }
-      searchParams.set(key, normalized);
-    }
-    const query = searchParams.toString();
-    return `${basePath}${query ? `?${query}` : ""}${hash}`;
-  }
-
   _schemaFileUploadTarget() {
     return this._schemaFileOperationEndpoint();
-  }
-
-  async _schemaFileOperationJson(payload = {}) {
-    const endpoint = this._schemaFileOperationEndpoint();
-    if (!endpoint) {
-      return {
-        ok: false,
-        status: 0,
-        data: null,
-        message: this.t.schemaEndpointUnavailable,
-      };
-    }
-    const body = {};
-    if (payload && typeof payload === "object" && !Array.isArray(payload)) {
-      const keys = Object.keys(payload);
-      for (let i = 0; i < keys.length; i++) {
-        const key = keys[i];
-        body[key] = payload[key];
-      }
-    }
-    const headers = this._schemaOperationHeaders();
-    headers["Content-Type"] = "application/json";
-    let response = null;
-    let data = null;
-    try {
-      response = await fetch(endpoint, {
-        method: "POST",
-        credentials: "include",
-        headers: headers,
-        body: JSON.stringify(body),
-      });
-      try {
-        data = await response.json();
-      } catch {
-        data = null;
-      }
-    } catch {
-      return {
-        ok: false,
-        status: 0,
-        data: null,
-        message: this.t.networkRequestFailed,
-      };
-    }
-    if (response && response.ok) {
-      return {
-        ok: true,
-        status: response.status,
-        data: data,
-        message: "",
-      };
-    }
-    return {
-      ok: false,
-      status: response ? response.status : 0,
-      data: data,
-      message: this._schemaOperationResponseMessage(
-        data,
-        this.t.schemaOperationFailed,
-      ),
-    };
   }
 
   _schemaOperationResponseMessage(response = null, fallback = "") {
@@ -2125,16 +2026,6 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
       return new URL(packagePath, import.meta.url).href;
     }
     return normalized;
-  }
-
-  _integrationFieldByProperty(property = "") {
-    const fields = this._integrationFields();
-    for (let i = 0; i < fields.length; i++) {
-      if (fields[i] && fields[i].property === property) {
-        return fields[i];
-      }
-    }
-    return null;
   }
 
   _integrationInputId(property = "") {
@@ -3148,20 +3039,6 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
       return this.t.unknown;
     }
     return `${value}`;
-  }
-
-  _checkboxFields(options = []) {
-    const fields = [];
-    for (let i = 0; i < options.length; i++) {
-      const option = options[i];
-      fields.push({
-        property: option.property,
-        title: option.label,
-        description: option.description || "",
-        inputMethod: "boolean",
-      });
-    }
-    return fields;
   }
 
   _isSkeletonOptionChecked(option = null) {

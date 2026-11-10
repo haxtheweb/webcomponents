@@ -55,21 +55,15 @@ async function setup(template) {
   };
 }
 
-// KNOWN BUG: "Check answer" and "Try again" are simple-toolbar-buttons
-// rendered outside a simple-toolbar (lib/QuestionElement.js renderButtons).
-// simple-toolbar-button only puts its inner <button> in the tab order when
-// isCurrentItem is true (lib/simple-toolbar-button.js tabindex binding),
-// which only a parent simple-toolbar or a .focus() call sets, so Tab skips
-// both buttons and a keyboard user cannot submit an answer. Until that is
-// fixed the flows below put focus on the button through its own focus()
-// API (what a roving toolbar would do) and then continue with real keys;
-// the it.skip tests assert the Tab reachability that should hold.
-async function focusButton(fx, id) {
+// "Check answer" and "Try again" are simple-toolbar-buttons outside a
+// simple-toolbar, so they are ordinary tab stops (a toolbar would manage them
+// with a roving tabindex instead).
+async function tabToButton(fx, id) {
   const btn = fx.q.shadowRoot.querySelector(`#${id}`);
   await waitFor(() => btn && !btn.disabled && !btn.hidden, 1000);
-  btn.focus();
-  await settle(30);
-  return expectGoodFocusStop(expect, `#${id}`);
+  const wanted = id === "check" ? /check answer/i : /try again/i;
+  fx.before.focus();
+  return tabTo(wanted, fx.after, 30);
 }
 
 async function answerAndCheck(fx, answer) {
@@ -77,7 +71,7 @@ async function answerAndCheck(fx, answer) {
   expect(option.tagName).to.equal("INPUT");
   await press(" ", 60);
   expect(option.checked, `Space selects ${answer}`).to.equal(true);
-  await focusButton(fx, "check");
+  await tabToButton(fx, "check");
   await press("Enter", 300);
   await waitFor(() => fx.q.showAnswer, 2000);
   expect(fx.q.showAnswer, "Enter on Check answer submits").to.equal(true);
@@ -127,33 +121,34 @@ describe("keyboard flow: multiple-choice", () => {
     const status = await answerAndCheck(fx, /^goofy$/i);
     expect(fx.q.isCorrect()).to.equal(false);
     expect(status.textContent).to.include(fx.q.incorrectText);
-    await focusButton(fx, "reset");
+    await tabToButton(fx, "reset");
     await press("Enter", 200);
     expect(fx.q.showAnswer, "Try again clears the result").to.equal(false);
   });
 
-  // KNOWN BUG: Enter on "Try again" hides that button (renderButtons
-  // ?hidden="${!this.edit && !this.showAnswer}") and nothing moves focus, so
-  // focus falls back to <body> and a keyboard user loses their place.
-  it.skip("KNOWN BUG: focus stays inside the question after Try again", async () => {
+  // Enter on "Try again" hides that button, so the question moves focus to
+  // the first answer instead of letting it fall back to <body>
+  it("focus stays inside the question after Try again", async () => {
     await answerAndCheck(fx, /^goofy$/i);
-    await focusButton(fx, "reset");
+    await tabToButton(fx, "reset");
     await press("Enter", 200);
     const active = expectGoodFocusStop(expect, "after Try again");
     expect(active === fx.after, "focus left the question").to.equal(false);
   });
 
-  it.skip("KNOWN BUG: Check answer is reachable with Tab after selecting an answer", async () => {
+  it("Check answer is reachable with Tab after selecting an answer", async () => {
     await tabTo(/^donald$/i, fx.after);
     await press(" ", 60);
     await tabTo(/check answer/i, fx.after);
   });
 
-  it.skip("KNOWN BUG: Try again is reachable with Tab after a result", async () => {
+  it("Try again is reachable with Tab after a result", async () => {
     await tabTo(/^goofy$/i, fx.after);
     await press(" ", 60);
-    fx.q.shadowRoot.querySelector("#check").click();
+    await tabTo(/check answer/i, fx.after);
+    await press("Enter", 300);
     await waitFor(() => fx.q.showAnswer, 2000);
+    expect(fx.q.showAnswer, "Enter on Check answer submits").to.equal(true);
     fx.before.focus();
     await tabTo(/try again/i, fx.after);
   });

@@ -1,5 +1,6 @@
 import path from 'node:path';
 import { xapiConformancePlugin } from './scripts/lib/xapi-conformance.mjs';
+import { axTreePlugin } from './scripts/lib/ax-tree-plugin.mjs';
 import { failuresReporter } from './scripts/wtr-failures-reporter.mjs';
 import { fuzzEnvScript } from './scripts/test-setup/fuzz-env.mjs';
 import { mediaRangeMiddleware } from './scripts/test-setup/media-range.mjs';
@@ -50,7 +51,10 @@ export default {
     // executeServerCommand('xapi-validate', statement) from
     // @web/test-runner-commands: checks an xAPI statement against the
     // xAPI 1.0.3 statement schema (scripts/lib/xapi-conformance.mjs)
-    plugins: [xapiConformancePlugin()],
+    // executeServerCommand('ax-focused'): the focused node and its active
+    // descendant as Chromium's accessibility tree exposes them
+    // (scripts/lib/ax-tree-plugin.mjs)
+    plugins: [xapiConformancePlugin(), axTreePlugin()],
     // in a monorepo you need to set set the root dir to resolve modules
     rootDir: '../../',
     // @web/test-runner-coverage-v8 doesn't know how to resolve the
