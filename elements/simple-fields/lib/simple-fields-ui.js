@@ -110,7 +110,8 @@ export const SimpleFieldsLabelStyles = [
     }
     .inline label,
     .option label {
-      margin: 0 var(--simple-fields-margin-small, 8px) 0 0;
+      margin-block: 0;
+      margin-inline: 0 var(--simple-fields-margin-small, 8px);
       flex: 0 1 var(--simple-fields-label-width, auto);
     }
     .inline label,

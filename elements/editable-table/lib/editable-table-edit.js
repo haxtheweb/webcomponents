@@ -161,7 +161,7 @@ class EditableTableEdit extends I18NMixin(editBehaviors(DDD)) {
             --editable-table-secondary-font-family,
             var(--ddd-font-primary)
           );
-          margin-right: 0.5em;
+          margin-inline-end: 0.5em;
         }
         simple-toolbar {
           width: 100%;
@@ -296,7 +296,7 @@ class EditableTableEdit extends I18NMixin(editBehaviors(DDD)) {
             )
             var(--editable-table-cell-horizontal-padding, var(--ddd-spacing-2));
           border: none !important;
-          margin-right: var(--ddd-spacing-6);
+          margin-inline-end: var(--ddd-spacing-6);
           --rich-text-editor-min-height: 12px;
         }
         rich-text-editor[contenteditable="true"].heightmax {
@@ -310,7 +310,7 @@ class EditableTableEdit extends I18NMixin(editBehaviors(DDD)) {
         }
         td .icon-container {
           position: absolute;
-          right: 0;
+          inset-inline-end: 0;
           top: calc(50% - 12px);
           width: var(--ddd-icon-xxs);
         }
@@ -325,8 +325,10 @@ class EditableTableEdit extends I18NMixin(editBehaviors(DDD)) {
         }
         :host([responsive]) thead th:nth-of-type(3),
         :host([responsive]) .tr td:nth-of-type(2) {
-          border-right-width: calc(var(--editable-table-border-width) + 5px);
-          border-right-style: double;
+          border-inline-end-width: calc(
+            var(--editable-table-border-width) + 5px
+          );
+          border-inline-end-style: double;
         }
         :host(:hover),
         *:hover {

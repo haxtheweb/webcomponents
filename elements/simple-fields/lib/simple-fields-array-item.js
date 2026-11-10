@@ -89,8 +89,12 @@ class SimpleFieldsArrayItem extends I18NMixin(
         #preview {
           flex: 1 0 auto;
           margin: 0;
-          margin-right: calc(0 - var(--simple-fields-margin-small, 8px) / 2);
-          margin-left: calc(50px + var(--simple-fields-margin-small, 8px) / 2);
+          margin-inline-end: calc(
+            0 - var(--simple-fields-margin-small, 8px) / 2
+          );
+          margin-inline-start: calc(
+            50px + var(--simple-fields-margin-small, 8px) / 2
+          );
           max-width: calc(
             100% - 72px - 2 * var(--simple-fields-margin-small, 8px) / 2
           );
@@ -137,17 +141,17 @@ class SimpleFieldsArrayItem extends I18NMixin(
           flex: 0 0 auto;
         }
         #expand {
-          margin-left: calc(var(--simple-fields-margin-small, 8px) / 2);
+          margin-inline-start: calc(var(--simple-fields-margin-small, 8px) / 2);
         }
         #drag-handle {
           position: absolute;
-          left: 2px;
+          inset-inline-start: 2px;
           top: 2px;
           --simple-toolbar-button-white-space: normal !important;
         }
         :host([aria-expanded="true"]) #drag-handle {
           top: var(--simple-fields-margin, 16px);
-          left: var(--simple-fields-margin-small, 8px);
+          inset-inline-start: var(--simple-fields-margin-small, 8px);
         }
         #dropzone {
           height: 0px;
@@ -167,7 +171,7 @@ class SimpleFieldsArrayItem extends I18NMixin(
         }
         :host([dragging]) #preview,
         :host([droppable]) #preview {
-          margin-left: calc(var(--simple-fields-margin-small, 8px) / 2);
+          margin-inline-start: calc(var(--simple-fields-margin-small, 8px) / 2);
         }
         :host([dropzone]) #dropzone {
           background-color: var(
