@@ -483,3 +483,45 @@ describe("super-daemon-search behavior", () => {
     );
   });
 });
+
+describe("super-daemon-search idle shortcut chip", () => {
+  it("shows Merlin's open shortcut only while the top bar field is idle", async () => {
+    const sdi = globalThis.SuperDaemonManager.requestAvailability();
+    const el = await fixture(
+      html`<super-daemon-search mini wand show-shortcut></super-daemon-search>`,
+    );
+    const chip = () => el.shadowRoot.querySelector(".shortcut");
+    expect(chip()).to.exist;
+    expect(chip().textContent.trim()).to.equal(
+      sdi.key2 === "Shift" ? `${sdi.key1}\u21e7` : `${sdi.key1}+${sdi.key2}`,
+    );
+    el.focused = true;
+    await el.updateComplete;
+    expect(chip()).to.be.null;
+    el.focused = false;
+    el.value = "things";
+    await el.updateComplete;
+    expect(chip()).to.be.null;
+    el.value = "";
+    el.programRunning = true;
+    await el.updateComplete;
+    expect(chip()).to.be.null;
+  });
+
+  it("never shows the chip without show-shortcut (the open popover field)", async () => {
+    const el = await fixture(
+      html`<super-daemon-search mini wand></super-daemon-search>`,
+    );
+    expect(el.shadowRoot.querySelector(".shortcut")).to.be.null;
+  });
+
+  it("drops the slash command wand while a program runs", async () => {
+    const el = await fixture(
+      html`<super-daemon-search command-context="/"></super-daemon-search>`,
+    );
+    expect(el.shadowRoot.querySelector(".user-context-icon")).to.exist;
+    el.programRunning = true;
+    await el.updateComplete;
+    expect(el.shadowRoot.querySelector(".user-context-icon")).to.be.null;
+  });
+});

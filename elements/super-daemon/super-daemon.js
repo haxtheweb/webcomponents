@@ -258,6 +258,13 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     globalThis.addEventListener("keydown", this.keyHandler.bind(this), {
       signal: this.windowControllers.signal,
     });
+    // the Konami code listens in the capture phase: Merlin's own field and
+    // results stop the arrow keys they use for moving through results, so a
+    // bubbling listener never saw them while Merlin had focus
+    globalThis.addEventListener("keydown", this._konamiKeydown.bind(this), {
+      capture: true,
+      signal: this.windowControllers.signal,
+    });
 
     globalThis.addEventListener(
       "super-daemon-define-option",
@@ -704,30 +711,46 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     this.addVoiceCommand(e.detail.command, target, e.detail.callback);
   }
 
-  keyHandler(e) {
-    // Check for Konami Code sequence first (global detection)
-    this.checkKonamiCode(e);
+  _konamiKeydown(e) {
+    if (e && !e.repeat) {
+      this.checkKonamiCode(e);
+    }
+  }
 
+  keyHandler(e) {
     // modifier required to activate
     if (this.allowedCallback()) {
       // open and close events
       if (this.key2 == "Shift" && e.shiftKey) {
         // platform specific additional modifier
-        if (this.key1 == "Ctrl" && e.ctrlKey) {
-          this.opened = !this.opened;
-          this.keyHandlerCallback();
-        } else if (this.key1 == "Alt" && e.altKey) {
-          this.opened = !this.opened;
-          this.keyHandlerCallback();
-        } else if (this.key1 == "Meta" && (e.key === "Meta" || e.metaKey)) {
-          this.opened = !this.opened;
-          this.keyHandlerCallback();
+        if (
+          (this.key1 == "Ctrl" && e.ctrlKey) ||
+          (this.key1 == "Alt" && e.altKey) ||
+          (this.key1 == "Meta" && (e.key === "Meta" || e.metaKey))
+        ) {
+          this._toggleFromKeyboard();
         }
       }
       if (e.key == "Escape" && this.opened) {
         this.miniCancel();
       }
     }
+  }
+  /**
+   * The open / close shortcut. Closing goes through close() so every mode
+   * (mini popover or full dialog) is torn down the same way it is from the
+   * close button; only opening runs keyHandlerCallback, which picks the
+   * mode and anchor. Flipping opened alone left a closed full Merlin set up
+   * as a mini popover with no anchor, so the next open drew it in the top
+   * left corner.
+   */
+  _toggleFromKeyboard() {
+    if (this.opened) {
+      this.close();
+      return;
+    }
+    this.opened = true;
+    this.keyHandlerCallback();
   }
   /**
    * LitElement style callback
@@ -944,6 +967,8 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     const ui =
       this.shadowRoot && this.shadowRoot.querySelector("super-daemon-ui");
     if (ui) {
+      // drop any inline line-up so the next open starts from the CSS
+      ui.style.marginTop = "";
       ui.like = "";
       ui.programSearch = "";
       // reset the child command context in the same tick so a pending
@@ -981,8 +1006,15 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
           }),
         );
       }
-      // we have an event, but not a close event
-      if (e && e.type !== "super-daemon-close" && e.type !== "close") {
+      // we have an event, but not a close event (merlinSpeak closes with
+      // keepToast so what Merlin said stays up to be read)
+      if (
+        e &&
+        !e.keepToast &&
+        !this.__speechToastPending &&
+        e.type !== "super-daemon-close" &&
+        e.type !== "close"
+      ) {
         globalThis.dispatchEvent(
           new CustomEvent("super-daemon-toast-hide", {
             bubbles: true,
@@ -1064,15 +1096,18 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
       let textB = b.title.toUpperCase();
       return textA < textB ? -1 : textA > textB ? 1 : 0;
     });
-    // highest priority if item title is exact match
-    tmpItems.forEach((item) => {
-      if (item.title.toLocaleLowerCase() === this.value.toLocaleLowerCase()) {
-        item.priority = -10000000;
-      }
-    });
-    // then on priority
+    // an exact title match goes first, then priority. Worked out per
+    // sort, not written onto the option: writing it stuck, so an option
+    // once matched exactly (a cheat code, say) stayed at the top forever
+    const value = (this.value || "").toLocaleLowerCase();
+    const rank = (item) =>
+      value !== "" && item.title.toLocaleLowerCase() === value
+        ? -10000000
+        : item.priority;
     return tmpItems.sort((a, b) => {
-      return a.priority < b.priority ? -1 : a.priority > b.priority ? 1 : 0;
+      const pa = rank(a);
+      const pb = rank(b);
+      return pa < pb ? -1 : pa > pb ? 1 : 0;
     });
   }
   /**
@@ -1238,14 +1273,21 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
           // inline-token path: close() restores the stripped token, so do
           // nothing here — just fall through to this.close() below.
         } else {
-          this.activeNode.textContent = this.value;
+          // put back what was typed into Merlin; with nothing typed, leave
+          // the empty line alone (wiping it removed its <br>, leaving a
+          // block with no caret position so typing had nowhere to go)
+          if (this.value) {
+            this.activeNode.textContent = this.value;
+          }
           this.activeNode.focus();
           this.activeRange.setStart(this.activeNode, 0);
           this.activeRange.collapse(true);
           this.activeSelection.removeAllRanges();
           this.activeSelection.addRange(this.activeRange);
-          this.activeSelection.selectAllChildren(this.activeNode);
-          this.activeSelection.collapseToEnd();
+          if (this.value) {
+            this.activeSelection.selectAllChildren(this.activeNode);
+            this.activeSelection.collapseToEnd();
+          }
         }
       } catch (e) {
         console.warn(e);
@@ -1304,7 +1346,79 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
         });
       }
       this.shadowRoot.querySelector("super-daemon-ui").focusInput();
+      // inline (/ in a text block): once placed, line the field up with
+      // the line that was typed on
+      if (this.mini && !this.wand) {
+        requestAnimationFrame(() => this._alignInlineField());
+      }
     });
+  }
+  /**
+   * Inline mini Merlin (opened with / in an empty text block) is pulled up
+   * over the block so its search field sits where the text was being typed.
+   * A fixed pull-up can't know the block's line height or padding, so it
+   * drew the field above the line; measure the real field and the real line
+   * and move the popover by the difference.
+   */
+  _alignInlineField() {
+    if (!this.opened || !this.mini || this.wand || !this.activeNode) {
+      return;
+    }
+    const ui = this.shadowRoot
+      ? this.shadowRoot.querySelector(
+          "absolute-position-behavior super-daemon-ui",
+        )
+      : null;
+    const search =
+      ui && ui.shadowRoot
+        ? ui.shadowRoot.querySelector("super-daemon-search")
+        : null;
+    const lineCenter = this._inlineLineCenter();
+    if (!ui || !search || lineCenter === null) {
+      return;
+    }
+    const fieldRect = search.getBoundingClientRect();
+    if (!fieldRect.height) {
+      return;
+    }
+    const delta = lineCenter - (fieldRect.top + fieldRect.height / 2);
+    if (Math.abs(delta) < 1) {
+      return;
+    }
+    const current = parseFloat(globalThis.getComputedStyle(ui).marginTop) || 0;
+    ui.style.marginTop = `${Math.round(current + delta)}px`;
+  }
+  /**
+   * Vertical middle of the line the caret is on: the caret's own box when
+   * the browser gives one, else (an empty block has none) the block's first
+   * line from its padding and line height.
+   * @returns {number|null}
+   */
+  _inlineLineCenter() {
+    if (this.activeRange && this.activeRange.getClientRects) {
+      const rects = this.activeRange.getClientRects();
+      if (rects && rects.length && rects[0].height) {
+        return rects[0].top + rects[0].height / 2;
+      }
+    }
+    let el = this.activeNode;
+    if (el && el.nodeType === Node.TEXT_NODE) {
+      el = el.parentElement;
+    }
+    if (!el || !el.getBoundingClientRect) {
+      return null;
+    }
+    const rect = el.getBoundingClientRect();
+    const cs = globalThis.getComputedStyle(el);
+    let lineHeight = parseFloat(cs.lineHeight);
+    if (isNaN(lineHeight)) {
+      lineHeight = (parseFloat(cs.fontSize) || 16) * 1.2;
+    }
+    const top =
+      rect.top +
+      (parseFloat(cs.borderTopWidth) || 0) +
+      (parseFloat(cs.paddingTop) || 0);
+    return top + lineHeight / 2;
   }
   focusout(e) {
     if (e) {
@@ -1509,9 +1623,56 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
       });
     }, 0);
   }
+  /**
+   * Merlin says something: always as the Merlin speaking toast, so it can
+   * be read with sound off or no speech support, and out loud when voice
+   * is available. A missing hal-9000 (voice off) no longer throws, which
+   * stopped whatever called this (cheat codes included) part way through.
+   */
   merlinSpeak(phrase) {
-    this.hal.speak(phrase, false, false).then((_e) => {
-      this.close();
+    if (!phrase) {
+      return Promise.resolve(false);
+    }
+    const toast = () =>
+      globalThis.dispatchEvent(
+        new CustomEvent("super-daemon-toast-show", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: {
+            text: phrase,
+            future: true,
+            merlin: true,
+            accentColor: "purple",
+            // long enough to read, whether or not it is also spoken
+            duration: Math.min(10000, Math.max(4000, phrase.length * 70)),
+            alwaysvisible: false,
+            awaitingMerlinInput: false,
+          },
+        }),
+      );
+    const canSpeak = !!(this.hal && this.hal.synth);
+    // callers usually close Merlin right after this; a close hides toasts,
+    // so hold that back until the toast is up (next tick)
+    this.__speechToastPending = true;
+    setTimeout(() => {
+      this.__speechToastPending = false;
+      toast();
+    }, 0);
+    if (!canSpeak) {
+      this.close({ keepToast: true });
+      return Promise.resolve(false);
+    }
+    // this method shows the toast itself, so hal-9000 doesn't add its own
+    const halToast = this.hal.toast;
+    this.hal.toast = false;
+    // awaitingInput true: speech ending (instantly, when the voice is
+    // muted) must not take the toast down before it has been read
+    const spoken = this.hal.speak(phrase, false, true);
+    this.hal.toast = halToast;
+    return spoken.then((e) => {
+      this.close({ keepToast: true });
+      return e;
     });
   }
   promptMerlin(_e) {

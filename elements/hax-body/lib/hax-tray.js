@@ -267,6 +267,10 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
         }
         .wrapper {
           position: fixed;
+          /* flex lives on the base state (not only edit mode) so leaving
+             edit mode slides the whole full-height panel away instead of
+             collapsing it to its content height mid-transition */
+          display: flex;
           align-items: stretch;
           flex-direction: row-reverse;
           opacity: 0;
@@ -330,7 +334,8 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
         }
         :host([element-align="right"]) .wrapper {
           right: 0px;
-          flex-direction: row;
+          /* same order as edit mode so the panel does not flip mid-slide */
+          flex-direction: row-reverse;
           transform: translateX(100%);
         }
         :host([tray-detail="view-source"]) .detail {
@@ -347,7 +352,6 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
           opacity: 1;
           visibility: visible;
           pointer-events: all;
-          display: flex;
         }
         :host([edit-mode][element-align="left"]) .wrapper {
           left: 0px;
