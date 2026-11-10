@@ -154,10 +154,37 @@ cd ~/haxtheweb/webcomponents
 node scripts/outline-designer-contract-fixture.mjs --nodejs ~/haxtheweb/haxcms-nodejs --php ~/haxtheweb/haxcms-php || echo "WARNING: outline-designer contract fixture not refreshed"
 
 ## STEP 4 NODEJS IS BOILERPLATE AND CORECONFIG FOR PHP VERSION
-rm -rf ~/haxtheweb/haxcms-php/system/boilerplate
-cp -R ~/haxtheweb/haxcms-nodejs/src/boilerplate ~/haxtheweb/haxcms-php/system/boilerplate
-rm -rf ~/haxtheweb/haxcms-php/system/coreConfig
-cp -R ~/haxtheweb/haxcms-nodejs/src/coreConfig ~/haxtheweb/haxcms-php/system/coreConfig
+# mirror_from_nodejs <haxcms-nodejs dir> <haxcms-php dir>
+# Two guards, because a plain rm -rf + cp -R has bitten us both ways:
+#  1. Only files git would commit in haxcms-nodejs are copied (tracked, plus
+#     new files not ignored). haxcms-nodejs git-ignores the runtime secrets a
+#     local run writes into src/boilerplate/systemsetup (.pk, .rpk, SALT.txt,
+#     .user, .initial-admin-password); a cp -R copied them into haxcms-php,
+#     where `git add -A` committed them to a public repo.
+#  2. Stop if haxcms-php has a file there that haxcms-nodejs does not: the
+#     mirror would delete it (this is how systemsetup/.published-htaccess was
+#     lost). Add the file to haxcms-nodejs first, then rerun.
+mirror_from_nodejs() {
+  local src_rel="$1" dst_rel="$2"
+  local node=~/haxtheweb/haxcms-nodejs php=~/haxtheweb/haxcms-php
+  local node_list php_list extra
+  node_list=$(cd "$node" && git ls-files --cached --others --exclude-standard -- "$src_rel" \
+    | while IFS= read -r f; do [ -e "$f" ] && printf '%s\n' "${f#"$src_rel"/}"; done | sort -u)
+  php_list=$(cd "$php" && git ls-files --cached -- "$dst_rel" \
+    | while IFS= read -r f; do printf '%s\n' "${f#"$dst_rel"/}"; done | sort -u)
+  extra=$(comm -13 <(printf '%s\n' "$node_list") <(printf '%s\n' "$php_list"))
+  if [ -n "$extra" ]; then
+    echo "ERROR: haxcms-php/$dst_rel has files haxcms-nodejs/$src_rel does not."
+    echo "The mirror would delete them. Add them to haxcms-nodejs (it is the source), then rerun:"
+    printf '  %s\n' $extra
+    exit 1
+  fi
+  rm -rf "${php:?}/$dst_rel"
+  mkdir -p "$php/$dst_rel"
+  (cd "$node/$src_rel" && printf '%s\n' "$node_list" | tar -cf - -T -) | tar -xf - -C "$php/$dst_rel"
+}
+mirror_from_nodejs src/boilerplate system/boilerplate
+mirror_from_nodejs src/coreConfig system/coreConfig
 
 # create cli needs wc-reg for validation purposes
 cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/create/src/lib/wc-registry.json
