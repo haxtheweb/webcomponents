@@ -840,7 +840,9 @@ describe("SuperDaemon core behavior", () => {
     expect(keys.includes("back to top")).to.equal(true);
     expect(keys.includes("(run) program")).to.equal(true);
     expect(keys.includes("developer (mode)")).to.equal(true);
-    expect(keys.includes("*anything")).to.equal(true);
+    // anything else is spoken search through hal-9000-no-match, not a
+    // catch-all command
+    expect(keys.includes("*anything")).to.equal(false);
   });
 
   it("voice scroll commands drive window scrolling", () => {

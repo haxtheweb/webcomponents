@@ -96,7 +96,11 @@ describe("super-daemon-ui behavior", () => {
     const said = Array.from(footer.querySelectorAll(".say")).map(
       (n) => n.textContent,
     );
-    expect(said).to.deep.equal(["close merlin", "stop listening"]);
+    expect(said).to.deep.equal([
+      "second one",
+      "close merlin",
+      "stop listening",
+    ]);
     expect(footer.querySelector(".results-stats")).to.exist;
     element.listeningForInput = false;
     await element.updateComplete;
@@ -560,21 +564,51 @@ describe("super-daemon-ui behavior", () => {
     expect(search.shadowRoot.querySelector("#inputfilter")).to.exist;
   });
 
-  it("auto-selects the sole result while listening for input", async () => {
+  it("does not run a sole result just because Merlin is listening", async () => {
+    // spoken search decides what runs (super-daemon _voiceHeard); a list
+    // that happens to have one result waits for "run" or a number
     const el = await fixture(html`<super-daemon-ui mini></super-daemon-ui>`);
     let selected = false;
     el.addEventListener("super-daemon-row-selected", () => (selected = true));
-    const sdi = globalThis.SuperDaemonManager.requestAvailability();
-    sdi.listeningForInput = false;
-    // arm listening BEFORE the filtered change so the auto-select runs
     el.listeningForInput = true;
     el.loading = false;
     el.items = [{ title: "A", index: "a", value: {}, eventName: "e" }];
-    // the 250ms filter debounce re-runs updated(filtered) which re-arms the
-    // 600ms auto-select timeout, so allow ~1000ms total
     await aTimeout(1000);
-    expect(selected).to.equal(true);
-    sdi.listeningForInput = false;
+    expect(selected).to.equal(false);
+  });
+
+  it("numbers rows while listening and moves and runs them by voice", async () => {
+    const el = await fixture(html`<super-daemon-ui></super-daemon-ui>`);
+    el.loading = false;
+    el.items = [
+      { title: "Alpha", index: "alpha", value: {}, eventName: "e1" },
+      { title: "Beta", index: "beta", value: {}, eventName: "e2" },
+      { title: "Gamma", index: "gamma", value: {}, eventName: "e3" },
+    ];
+    el.listeningForInput = true;
+    await aTimeout(400);
+    const rows = el.shadowRoot.querySelectorAll("super-daemon-row");
+    expect(rows[0].voiceNumber).to.equal(1);
+    expect(rows[2].voiceNumber).to.equal(3);
+    expect(
+      rows[1].shadowRoot.querySelector(".voice-number").textContent,
+    ).to.equal("2");
+    el.voiceMove(1);
+    expect(el.voiceSelectedIndex).to.equal(0);
+    el.voiceMove(-1);
+    expect(el.voiceSelectedIndex).to.equal(2);
+    el.voiceHighlight(1);
+    expect(el.voiceSelectedIndex).to.equal(1);
+    let ran = null;
+    globalThis.addEventListener("e2", () => (ran = "beta"), { once: true });
+    expect(el.voicePick(1)).to.equal(true);
+    expect(ran).to.equal("beta");
+    expect(el.voicePick(9)).to.equal(false);
+    el.listeningForInput = false;
+    await el.updateComplete;
+    await aTimeout(50);
+    expect(el.shadowRoot.querySelector("super-daemon-row").voiceNumber).to.not
+      .be.ok;
   });
 
   it("renders the search with combobox semantics", async () => {
