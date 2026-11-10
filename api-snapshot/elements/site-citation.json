@@ -1,0 +1,31 @@
+{
+  "tag": "site-citation",
+  "package": "@haxtheweb/haxcms-elements",
+  "source": "elements/haxcms-elements/lib/ui-components/site/site-citation.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "dark": "dark",
+    "format": "format",
+    "is-safari": "isSafari",
+    "scope": "scope",
+    "t": "t"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [
+    "citation",
+    "wrap"
+  ],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/haxcms-elements/lib/ui-components/site/site-citation.js",
+    "gizmo": true,
+    "properties": [
+      "format",
+      "scope"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": []
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "tag": "cms-token",
+  "package": "@haxtheweb/cms-hax",
+  "source": "elements/cms-hax/lib/cms-token.js",
+  "attributes": {
+    "hax-edit-mode": "haxEditMode",
+    "loading": "loading",
+    "token": "token",
+    "token-data": "tokenData",
+    "tokenendpoint": "tokenEndPoint",
+    "tokenprefix": "tokenPrefix",
+    "tokensuffix": "tokenSuffix"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/cms-hax/lib/cms-token.js",
+    "gizmo": true,
+    "properties": [
+      "token"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": []
+  }
+}

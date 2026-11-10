@@ -1,0 +1,48 @@
+{
+  "tag": "bibliography-item",
+  "package": "@haxtheweb/bibliography-builder",
+  "source": "elements/bibliography-builder/lib/bibliography-item.js",
+  "attributes": {
+    "access-date": "accessDate",
+    "authors": "authors",
+    "child-ver": "childVer",
+    "citation-type": "citationType",
+    "end-page": "endPage",
+    "is-safari": "isSafari",
+    "issue": "issue",
+    "parent-ver": "parentVer",
+    "publication-date": "publicationDate",
+    "publisher": "publisher",
+    "schemamap": "schemaMap",
+    "start-page": "startPage",
+    "t": "t",
+    "title": "title",
+    "url": "url",
+    "volume": "volume"
+  },
+  "slots": [],
+  "events": [
+    "add-citation"
+  ],
+  "cssParts": [
+    "icon"
+  ],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/bibliography-builder/lib/bibliography-item.js",
+    "gizmo": true,
+    "properties": [
+      "authors",
+      "authors[].given",
+      "authors[].surname",
+      "citationType",
+      "publisher",
+      "title"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "bibliography-item"
+    ]
+  }
+}

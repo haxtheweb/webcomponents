@@ -1,0 +1,44 @@
+{
+  "tag": "citation-element",
+  "package": "@haxtheweb/citation-element",
+  "source": "elements/citation-element/citation-element.js",
+  "attributes": {
+    "creator": "creator",
+    "date": "date",
+    "display-method": "displayMethod",
+    "is-safari": "isSafari",
+    "license": "license",
+    "license-image": "licenseImage",
+    "license-link": "licenseLink",
+    "license-name": "licenseName",
+    "related-resource": "relatedResource",
+    "schemamap": "schemaMap",
+    "scope": "scope",
+    "source": "source",
+    "t": "t",
+    "title": "title",
+    "typeof": "typeof"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/citation-element/citation-element.js",
+    "gizmo": true,
+    "properties": [
+      "creator",
+      "date",
+      "license",
+      "scope",
+      "source",
+      "title",
+      "typeof"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "citation-element"
+    ]
+  }
+}

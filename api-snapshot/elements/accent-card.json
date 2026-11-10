@@ -1,0 +1,67 @@
+{
+  "tag": "accent-card",
+  "package": "@haxtheweb/accent-card",
+  "source": "elements/accent-card/accent-card.js",
+  "attributes": {
+    "accent-background": "accentBackground",
+    "accent-color": "accentColor",
+    "accent-heading": "accentHeading",
+    "dark": "dark",
+    "element-visible": "elementVisible",
+    "flat": "flat",
+    "horizontal": "horizontal",
+    "icon-size": "iconSize",
+    "image-align": "imageAlign",
+    "image-alt": "imageAlt",
+    "image-src": "imageSrc",
+    "image-valign": "imageValign",
+    "image-width": "imageWidth",
+    "is-safari": "isSafari",
+    "link": "link",
+    "no-border": "noBorder",
+    "ready": "ready",
+    "t": "t"
+  },
+  "slots": [
+    "content",
+    "corner",
+    "footer",
+    "heading",
+    "image-corner",
+    "subheading"
+  ],
+  "events": [],
+  "cssParts": [
+    "image",
+    "image-wrapper",
+    "link"
+  ],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/accent-card/accent-card.js",
+    "gizmo": true,
+    "properties": [
+      "accentBackground",
+      "accentColor",
+      "accentHeading",
+      "flat",
+      "horizontal",
+      "imageAlign",
+      "imageAlt",
+      "imageSrc",
+      "imageValign",
+      "noBorder"
+    ],
+    "attributes": [],
+    "slots": [
+      "content",
+      "corner",
+      "footer",
+      "heading",
+      "subheading"
+    ],
+    "demoTags": [
+      "accent-card"
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "tag": "un-sdg",
+  "package": "@haxtheweb/un-sdg",
+  "source": "elements/un-sdg/un-sdg.js",
+  "attributes": {
+    "alt": "alt",
+    "color-only": "colorOnly",
+    "fetchpriority": "fetchpriority",
+    "goal": "goal",
+    "loading": "loading",
+    "schemamap": "schemaMap",
+    "typeof": "typeof"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/un-sdg/lib/un-sdg.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "colorOnly",
+      "goal"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "un-sdg"
+    ]
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "tag": "a11y-collapse",
+  "package": "@haxtheweb/a11y-collapse",
+  "source": "elements/a11y-collapse/a11y-collapse.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "accordion": "accordion",
+    "dark": "dark",
+    "disabled": "disabled",
+    "expanded": "expanded",
+    "heading": "heading",
+    "heading-button": "headingButton",
+    "hidden": "hidden",
+    "icon": "icon",
+    "icon-expanded": "iconExpanded",
+    "is-safari": "isSafari",
+    "label": "label",
+    "label-expanded": "labelExpanded",
+    "tooltip": "tooltip",
+    "tooltip-expanded": "tooltipExpanded"
+  },
+  "slots": [
+    "(default)",
+    "content",
+    "heading"
+  ],
+  "events": [
+    "a11y-collapse-attached",
+    "a11y-collapse-click",
+    "a11y-collapse-detached",
+    "a11y-collapse-toggle",
+    "collapse",
+    "expand",
+    "toggle",
+    "user-engagement"
+  ],
+  "cssParts": [
+    "heading",
+    "heading-id",
+    "icon"
+  ],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/a11y-collapse/lib/a11y-collapse.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "expanded",
+      "heading",
+      "headingButton",
+      "icon",
+      "iconExpanded",
+      "tooltip",
+      "tooltipExpanded"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "a11y-collapse"
+    ]
+  }
+}

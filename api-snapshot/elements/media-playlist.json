@@ -1,0 +1,34 @@
+{
+  "tag": "media-playlist",
+  "package": "@haxtheweb/media-playlist",
+  "source": "elements/media-playlist/media-playlist.js",
+  "attributes": {
+    "active-index": "activeIndex",
+    "edit": "edit",
+    "for-course": "forCourse",
+    "is-safari": "isSafari",
+    "mediaitems": "mediaItems",
+    "schemamap": "schemaMap",
+    "t": "t",
+    "typeof": "typeof"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/media-playlist/lib/media-playlist.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "activeIndex",
+      "forCourse"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "media-playlist"
+    ]
+  }
+}

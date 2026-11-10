@@ -1,0 +1,36 @@
+{
+  "tag": "block-quote",
+  "package": "@haxtheweb/course-design",
+  "source": "elements/course-design/lib/block-quote.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "alt": "alt",
+    "citation": "citation",
+    "dark": "dark",
+    "data-text-align": "dataTextAlign",
+    "image": "image",
+    "is-safari": "isSafari",
+    "no-border": "noBorder"
+  },
+  "slots": [
+    "(default)",
+    "quote"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/course-design/lib/block-quote.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "alt",
+      "citation",
+      "image"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "block-quote"
+    ]
+  }
+}

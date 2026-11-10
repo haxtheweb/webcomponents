@@ -1,0 +1,33 @@
+{
+  "tag": "screen-recorder",
+  "package": "@haxtheweb/screen-recorder",
+  "source": "elements/screen-recorder/screen-recorder.js",
+  "attributes": {
+    "downloadurl": "downloadUrl",
+    "error-message": "errorMessage",
+    "includemicrophoneaudio": "includeMicrophoneAudio",
+    "includesystemaudio": "includeSystemAudio",
+    "is-safari": "isSafari",
+    "recording": "recording",
+    "t": "t",
+    "videosrc": "videoSrc"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [
+    "screen-recorder-blob"
+  ],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/screen-recorder/lib/screen-recorder.haxProperties.json",
+    "gizmo": true,
+    "properties": [],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "screen-recorder"
+    ]
+  }
+}

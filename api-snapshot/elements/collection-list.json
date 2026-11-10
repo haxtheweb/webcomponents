@@ -1,0 +1,27 @@
+{
+  "tag": "collection-list",
+  "package": "@haxtheweb/collection-list",
+  "source": "elements/collection-list/collection-list.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "dark": "dark",
+    "is-safari": "isSafari",
+    "responsive-size": "responsiveSize"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/collection-list/lib/collection-list.haxProperties.json",
+    "gizmo": true,
+    "properties": [],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "collection-list"
+    ]
+  }
+}

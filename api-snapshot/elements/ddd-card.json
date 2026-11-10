@@ -1,0 +1,50 @@
+{
+  "tag": "ddd-card",
+  "package": "@haxtheweb/d-d-d",
+  "source": "elements/d-d-d/lib/ddd-card.js",
+  "attributes": {
+    "alt": "alt",
+    "href": "href",
+    "is-safari": "isSafari",
+    "label": "label",
+    "no-arrow": "noArrow",
+    "rel": "rel",
+    "src": "src",
+    "t": "t",
+    "target": "target",
+    "title": "title"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "cssParts": [
+    "a",
+    "button",
+    "button-wrapper",
+    "description",
+    "image",
+    "img",
+    "title"
+  ],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/d-d-d/lib/ddd-card.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "alt",
+      "href",
+      "label",
+      "noArrow",
+      "rel",
+      "src",
+      "target",
+      "title"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "ddd-card"
+    ]
+  }
+}

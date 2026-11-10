@@ -1,0 +1,40 @@
+{
+  "tag": "merit-badge",
+  "package": "@haxtheweb/merit-badge",
+  "source": "elements/merit-badge/merit-badge.js",
+  "attributes": {
+    "badge-color": "badgeColor",
+    "badge-date": "badgeDate",
+    "badge-details": "badgeDetails",
+    "badge-image": "badgeImage",
+    "badge-skills": "badgeSkills",
+    "badge-title": "badgeTitle",
+    "badge-unlocked": "badgeUnlocked",
+    "details-opened": "detailsOpened",
+    "hyper-link": "hyperLink",
+    "schemamap": "schemaMap",
+    "skill": "skill",
+    "skills-opened": "skillsOpened",
+    "t": "t",
+    "typeof": "typeof"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/merit-badge/merit-badge.js",
+    "gizmo": true,
+    "properties": [
+      "badgeDetails",
+      "badgeImage",
+      "badgeSkills",
+      "badgeTitle",
+      "hyperLink",
+      "skill"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": []
+  }
+}

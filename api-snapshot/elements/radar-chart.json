@@ -1,0 +1,42 @@
+{
+  "tag": "radar-chart",
+  "package": "@haxtheweb/radar-chart",
+  "source": "elements/radar-chart/radar-chart.js",
+  "attributes": {
+    "categories": "categories",
+    "compact": "compact",
+    "is-safari": "isSafari",
+    "max-score": "maxScore",
+    "score-label": "scoreLabel",
+    "scores": "scores",
+    "show-legend": "showLegend",
+    "t": "t",
+    "target-label": "targetLabel",
+    "target-scores": "targetScores",
+    "title": "title"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/radar-chart/lib/radar-chart.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "categories",
+      "compact",
+      "maxScore",
+      "scoreLabel",
+      "scores",
+      "showLegend",
+      "targetLabel",
+      "targetScores",
+      "title"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "radar-chart"
+    ]
+  }
+}

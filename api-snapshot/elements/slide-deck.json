@@ -1,0 +1,38 @@
+{
+  "tag": "slide-deck",
+  "package": "@haxtheweb/slide-deck",
+  "source": "elements/slide-deck/slide-deck.js",
+  "attributes": {
+    "deck": "deck",
+    "deck-id": "deckId",
+    "downloadable": "downloadable",
+    "is-safari": "isSafari",
+    "mode": "mode",
+    "presenting": "presenting",
+    "rendered": "rendered",
+    "slide": "slide",
+    "source": "source",
+    "status": "status",
+    "t": "t"
+  },
+  "slots": [],
+  "events": [
+    "user-engagement"
+  ],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/slide-deck/lib/slide-deck.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "deckId",
+      "downloadable",
+      "source"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "slide-deck"
+    ]
+  }
+}
