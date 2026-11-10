@@ -198,3 +198,60 @@ describe("DDD style guide presets for lists in the HAX settings form", () => {
     expect(group.hidden).to.be.true;
   });
 });
+
+describe("DDD text alignment setting opt-out", () => {
+  const store = {
+    elementList: {},
+    __dddStyleGuideAuthoringApplied: false,
+    __dddStyleGuideDefaultSchemaReady: true,
+    isInlineElement: () => false,
+    designSystemHAXProperties: (props) => props,
+  };
+  const wasRegistered = globalThis.__dddStyleGuideAuthoringRegistered;
+  const origHaxStore = globalThis.HaxStore;
+  globalThis.__dddStyleGuideAuthoringRegistered = false;
+  globalThis.HaxStore = { requestAvailability: () => store };
+  try {
+    registerDDDStyleGuideAuthoring({
+      manager: { active: "ddd" },
+      options: { HAXOptionSampleFactory },
+    });
+  } finally {
+    globalThis.__dddStyleGuideAuthoringRegistered = wasRegistered;
+    globalThis.HaxStore = origHaxStore;
+  }
+
+  // every attribute the generated settings form offers, at any depth
+  const attributes = (items) =>
+    (items || []).reduce(
+      (all, item) =>
+        all
+          .concat(item && item.attribute ? [item.attribute] : [])
+          .concat(attributes(item && item.properties)),
+      [],
+    );
+  const form = (designSystem) =>
+    attributes(
+      store.designSystemHAXProperties(
+        {
+          gizmo: {},
+          canScale: { min: 50, step: 25 },
+          designSystem,
+          settings: { configure: [] },
+        },
+        "video-player",
+      ).settings.configure,
+    );
+
+  it("offers text alignment by default", () => {
+    expect(form({ card: true })).to.include("data-text-align");
+  });
+
+  it("leaves text alignment out with designSystem.textAlign false, keeping the rest", () => {
+    const attrs = form({ card: true, textAlign: false });
+    expect(attrs).to.not.include("data-text-align");
+    expect(attrs).to.include("data-width");
+    expect(attrs).to.include("data-padding");
+    expect(attrs).to.include("data-margin");
+  });
+});

@@ -781,3 +781,74 @@ describe("video-player audio description storage", () => {
     expect(el.audioDescriptionEnabled).to.equal(true);
   });
 });
+
+describe("video-player DDD block header", () => {
+  const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+  const visiblePlayer = async (template) => {
+    const el = await fixture(template);
+    el.elementVisible = true;
+    await el.updateComplete;
+    await sleep(50);
+    return el;
+  };
+
+  it("lets a11y-media-player draw the header with the title and actions", async () => {
+    const el = await visiblePlayer(
+      html`<video-player
+        source="https://example.com/v.mp4"
+        media-title="Course Introduction"
+        accent-color="red"
+      ></video-player>`,
+    );
+    // one header only: the player's, inside the same DDD frame
+    expect(el.shadowRoot.querySelector(".ddd-block")).to.exist;
+    expect(el.shadowRoot.querySelector(".ddd-block-header")).to.equal(null);
+    const player = el.shadowRoot.querySelector("a11y-media-player");
+    expect(player.getAttribute("exportparts")).to.contain("media-header");
+    expect(player.getAttribute("accent-color")).to.equal("red");
+    await player.updateComplete;
+    const header = player.shadowRoot.querySelector(".ddd-block-header");
+    expect(
+      header.querySelector(".ddd-block-label").textContent.trim(),
+    ).to.equal("Video · interactive");
+    expect(
+      header.querySelector(".ddd-block-title").textContent.trim(),
+    ).to.equal("Course Introduction");
+    expect(header.querySelector("#settings-button")).to.exist;
+    expect(
+      header.querySelector("#settings-button").getAttribute("aria-label"),
+    ).to.equal("Settings");
+  });
+
+  it("keeps its own header for embeds that are not a11y-media-player", async () => {
+    const el = await visiblePlayer(
+      html`<video-player
+        source="https://vimeo.com/144218562"
+        media-title="Embedded"
+      ></video-player>`,
+    );
+    const header = el.shadowRoot.querySelector(".ddd-block-header");
+    expect(header).to.exist;
+    expect(header.getAttribute("part")).to.contain("frame-header");
+    expect(
+      header.querySelector(".ddd-block-title").textContent.trim(),
+    ).to.equal("Embedded");
+  });
+
+  it("keeps its header while the player waits to scroll into view", async () => {
+    const el = await fixture(
+      html`<video-player
+        source="https://example.com/v.mp4"
+        media-title="Later"
+      ></video-player>`,
+    );
+    el.elementVisible = false;
+    await el.updateComplete;
+    expect(el.shadowRoot.querySelector(".video-placeholder")).to.exist;
+    expect(
+      el.shadowRoot
+        .querySelector(".ddd-block-header .ddd-block-title")
+        .textContent.trim(),
+    ).to.equal("Later");
+  });
+});
