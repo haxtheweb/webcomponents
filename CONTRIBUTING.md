@@ -411,6 +411,15 @@ Note: if your pull request isn't getting enough attention, you can use our [Disc
 
 Unit tests are ideal but not required to be written for proposed changes and enhancements.
 
+### Mutation testing (outline-designer)
+
+outline-designer's data logic (adding, moving, indenting, outdenting and deleting pages, sibling order, and the items Save Outline sends) changes a whole site in one save, so its tests have to notice a wrong condition or an off-by-one, not just run the code. [Stryker](https://stryker-mutator.io) checks that: it changes that code one small thing at a time (a `<` to `<=`, a `true` to `false`, a removed branch) and runs the outline tests against each change. A change the tests catch is "killed"; one they miss "survives" and points at an untested behavior.
+
+- **Weekly, report only**: `.github/workflows/mutation-outline-designer.yml` runs Sundays (and on demand from the Actions tab). It never fails a build and opens nothing; read the score and surviving mutants in the run's job summary, and the full HTML report in its `mutation-report-outline-designer` artifact.
+- **Locally**: `yarn test:mutation:outline` (under an hour on 2 CPUs), then open `reports/mutation/outline-designer/index.html`, or `node scripts/mutation/summarize.mjs reports/mutation/outline-designer/mutation.json` for the summary. The run writes the instrumented code over `elements/outline-designer/outline-designer.js` and restores it at the end (Stryker `inPlace`; a backup is kept in `.stryker-tmp/` until then), so do not edit that file while it runs.
+- **What it covers**: `scripts/mutation/stryker.outline-designer.config.mjs` lists the line ranges (`mutate`) and the test files. When that code moves, update the ranges in the same PR. Stryker has no web-test-runner plugin, so its command runner starts web-test-runner with `scripts/mutation/wtr-outline-designer.config.mjs`, which passes the active mutant to the browser and leaves out the slow seeded random edits.
+- **Surviving mutants**: kill one by adding a test that asserts the behavior it changed. If a mutant cannot change behavior (an equivalent mutant), leave it; to stop Stryker making it, put `// Stryker disable next-line <Mutator>: <why>` above the line.
+
 ## Security
 
 If you discover what you deem to be a critical security issue  please reach out on our Discord channel privately to discuss whether this should be resolved in the open prior or if disclosure should happen after a solution has been crafted.
