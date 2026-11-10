@@ -7,9 +7,6 @@
     "accent-card": {
       "rtl-css": 2
     },
-    "activity-box": {
-      "rtl-css": 5
-    },
     "ai-usage-license": {
       "rtl-css": 3
     },
@@ -17,16 +14,7 @@
       "rtl-css": 2
     },
     "block-quote": {
-      "rtl-css": 5
-    },
-    "career-org-item": {
-      "rtl-css": 11
-    },
-    "career-role-item": {
-      "rtl-css": 8
-    },
-    "career-timeline": {
-      "rtl-css": 11
+      "rtl-css": 2
     },
     "citation-element": {
       "rtl-css": 1
@@ -41,28 +29,16 @@
       "rtl-css": 2
     },
     "concept-map-game": {
-      "rtl-css": 10
-    },
-    "concept-quest-game": {
-      "rtl-css": 12
-    },
-    "concept-runner-game": {
-      "rtl-css": 9
-    },
-    "course-model": {
       "rtl-css": 5
     },
-    "ddd-steps-list": {
-      "rtl-css": 9
+    "concept-quest-game": {
+      "rtl-css": 6
     },
-    "ddd-steps-list-item": {
-      "rtl-css": 7
+    "concept-runner-game": {
+      "rtl-css": 4
     },
     "documentation-player": {
       "rtl-css": 5
-    },
-    "flash-card-set": {
-      "rtl-css": 2
     },
     "full-width-image": {
       "rtl-css": 1
@@ -85,12 +61,6 @@
     "lrndesign-sidenote": {
       "rtl-css": 1
     },
-    "lrndesign-timeline": {
-      "rtl-css": 10
-    },
-    "matching-question": {
-      "rtl-css": 1
-    },
     "media-image": {
       "rtl-css": 6
     },
@@ -98,10 +68,7 @@
       "rtl-css": 2
     },
     "merit-badge": {
-      "rtl-css": 6
-    },
-    "multiple-choice": {
-      "rtl-css": 9
+      "rtl-css": 4
     },
     "page-anchor": {
       "rtl-css": 1
@@ -133,26 +100,14 @@
     "screen-recorder": {
       "rtl-css": 1
     },
-    "self-reflective-nudge": {
-      "rtl-css": 1
-    },
-    "short-answer-question": {
-      "rtl-css": 9
-    },
     "simple-cta": {
       "rtl-css": 1
     },
     "slide-deck": {
       "rtl-css": 1
     },
-    "sorting-question": {
-      "rtl-css": 1
-    },
     "star-rating": {
       "rtl-css": 1
-    },
-    "true-false-question": {
-      "rtl-css": 9
     }
   }
 }
