@@ -186,10 +186,17 @@ class InlineAudio extends I18NMixin(DDD) {
     this.t.pause = "Pause";
     this.t.selectToPlayRelatedAudioClip = "Select to play related audio clip";
     this.t.selectToPauseRelatedAudioClip = "Select to pause related audio clip";
+    this.registerLocalization({
+      context: this,
+      localesPath:
+        new URL("./locales/inline-audio.en.json", import.meta.url).href +
+        "/../",
+    });
     this.source = "";
     this.icon = "av:play-arrow";
-    this.aria = this.t.selectToPlayRelatedAudioClip;
-    this.title = this.t.play;
+    // follow the language until playback (or the author) sets them
+    this.i18nDefault("aria", "selectToPlayRelatedAudioClip");
+    this.i18nDefault("title", "play");
     this.addEventListener("click", this.__clickEvent);
   }
 

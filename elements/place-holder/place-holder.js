@@ -1,4 +1,5 @@
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { html, css } from "lit";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
@@ -12,7 +13,7 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
  * @microcopy - the mental model for this element
  * - placeholder is a grey block on the page which can respond to drag and drop
  */
-class PlaceHolder extends DDD {
+class PlaceHolder extends I18NMixin(DDD) {
   /**
    * LitElement render styles
    */
@@ -215,7 +216,8 @@ class PlaceHolder extends DDD {
     if (
       changedProperties.has("text") ||
       changedProperties.has("type") ||
-      changedProperties.has("dragOver")
+      changedProperties.has("dragOver") ||
+      changedProperties.has("t")
     ) {
       this.calcText = this._getCalcText(this.text, this.type, this.dragOver);
     }
@@ -240,9 +242,9 @@ class PlaceHolder extends DDD {
    */
   _getCalcText(text, type, dragOver) {
     if (dragOver) {
-      return "Drop file to upload";
+      return this.t.dropFileToUpload;
     } else if (text === "") {
-      return "Placeholder for " + type;
+      return this.t.placeholderFor.replace("{type}", () => type);
     } else {
       return text;
     }
@@ -281,7 +283,20 @@ class PlaceHolder extends DDD {
     this.iconFromType = "editor:format-align-left";
     this.type = "text";
     this.dragOver = false;
-    this.directions = "Drag and drop file to replace";
+    this.t = {
+      ...this.t,
+      dragAndDropToReplace: "Drag and drop file to replace",
+      dropFileToUpload: "Drop file to upload",
+      placeholderFor: "Placeholder for {type}",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath:
+        new URL("./locales/place-holder.en.json", import.meta.url).href +
+        "/../",
+    });
+    // translated default; an authored directions value is left alone
+    this.i18nDefault("directions", "dragAndDropToReplace");
     this.addEventListener("dragover", function (e) {
       this.dragOver = true;
       e.preventDefault();
