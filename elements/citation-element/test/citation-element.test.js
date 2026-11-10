@@ -297,6 +297,55 @@ describe("citation-element test", () => {
     });
   });
 
+  describe("Source line", () => {
+    it("renders a decorative quote chip beside the citation", () => {
+      const chip = element.shadowRoot.querySelector(".source-line .chip");
+      expect(chip).to.exist;
+      expect(chip.getAttribute("aria-hidden")).to.equal("true");
+      expect(
+        chip.querySelector("simple-icon-lite").getAttribute("icon"),
+      ).to.equal("editor:format-quote");
+    });
+
+    it("drops the italics from the citation links", () => {
+      element.shadowRoot.querySelectorAll("a").forEach((link) => {
+        expect(getComputedStyle(link).fontStyle).to.equal("normal");
+      });
+    });
+
+    it("shows a text badge instead of a broken licence graphic", async () => {
+      const img = element.shadowRoot.querySelector("img");
+      expect(element._licenseBadgeText()).to.equal("CC BY");
+      img.dispatchEvent(new Event("error"));
+      await element.updateComplete;
+      expect(img.hasAttribute("hidden")).to.be.true;
+      const badge = element.shadowRoot.querySelector(".license-badge");
+      expect(badge).to.exist;
+      expect(badge.textContent).to.equal("CC BY");
+      // a new licence gets a fresh chance to load its graphic
+      element.license = "by-sa";
+      await element.updateComplete;
+      expect(img.hasAttribute("hidden")).to.be.false;
+      expect(element.shadowRoot.querySelector(".license-badge")).to.not.exist;
+    });
+
+    it("shows the badge when a known licence has no graphic", async () => {
+      element.license = "mit";
+      await element.updateComplete;
+      const badge = element.shadowRoot.querySelector(".license-badge");
+      expect(badge).to.exist;
+      expect(badge.textContent).to.equal("MIT");
+    });
+
+    it("shows no badge for a custom licence without a code", async () => {
+      element.license = "";
+      element.licenseImage = "";
+      element.licenseName = "Custom licence";
+      await element.updateComplete;
+      expect(element.shadowRoot.querySelector(".license-badge")).to.not.exist;
+    });
+  });
+
   describe("Display Methods", () => {
     it("shows normally with default display method", async () => {
       const el = await fixture(html`
@@ -317,7 +366,13 @@ describe("citation-element test", () => {
       `);
 
       expect(el.getAttribute("display-method")).to.equal("footnote");
-      // Note: visibility and opacity would be set by CSS, check attribute presence
+      // footnote mode collapses fully instead of leaving a blank gap
+      expect(getComputedStyle(el).display).to.equal("none");
+      expect(el.getBoundingClientRect().height).to.equal(0);
+      // the RDFa metadata is still written
+      expect(el.shadowRoot.querySelector('meta[property="cc:attributionName"]'))
+        .to.exist;
+      expect(el.shadowRoot.querySelector('meta[property="oer:uri"]')).to.exist;
     });
 
     it("applies popup styling when display-method is popup", async () => {

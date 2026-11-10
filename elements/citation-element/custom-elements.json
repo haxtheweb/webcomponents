@@ -13,6 +13,16 @@
           "members": [
             {
               "kind": "method",
+              "name": "_licenseImageError",
+              "description": "the licence graphic failed to load; show the text badge instead of a\nbroken image"
+            },
+            {
+              "kind": "method",
+              "name": "_licenseBadgeText",
+              "description": "short text for the licence badge shown when there is no licence\ngraphic, e.g. \"CC BY\" or \"CC0\"; empty when the licence is unknown"
+            },
+            {
+              "kind": "method",
               "name": "_fillTemplate",
               "parameters": [
                 {
@@ -230,6 +240,16 @@
               },
               "description": "Related resource id used to bind the citation to a sibling or parent.\nCalculated by `_scopeChanged`; declared here so reactive updates and\n`updated()` react to it via Lit.",
               "attribute": "related-resource"
+            },
+            {
+              "kind": "field",
+              "name": "_licenseImageFailed",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "the licence graphic failed to load, so the text badge shows",
+              "attribute": "_licenseImageFailed"
             }
           ],
           "attributes": [
@@ -331,6 +351,14 @@
               },
               "description": "Related resource id used to bind the citation to a sibling or parent.\nCalculated by `_scopeChanged`; declared here so reactive updates and\n`updated()` react to it via Lit.",
               "fieldName": "relatedResource"
+            },
+            {
+              "name": "_licenseImageFailed",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "the licence graphic failed to load, so the text badge shows",
+              "fieldName": "_licenseImageFailed"
             }
           ],
           "mixins": [
