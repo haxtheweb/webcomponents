@@ -50,6 +50,7 @@
     "lint:ddd-tokens": "node scripts/ddd-token-lint.js",
     "lint:css-templates": "node scripts/css-template-check.mjs",
     "lint:html-templates": "node scripts/html-template-check.mjs",
+    "lint:dead-code": "node scripts/dead-code-check.mjs",
     "lint:vision": "node scripts/vision-pairs-check.mjs",
     "vision:gallery": "node scripts/vision-gallery.mjs",
     "precheck": "node scripts/precheck.mjs",

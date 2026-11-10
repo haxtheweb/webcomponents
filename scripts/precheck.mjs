@@ -93,6 +93,17 @@ const CONFIG = {
       blocking: false,
     },
     {
+      // Dead code knip cannot see: eager imports of tags the file never
+      // renders, _private methods nothing calls, unminified vendor copies
+      // nothing loads. We don't tree shake, so it all ships. Advisory; known
+      // cases: scripts/dead-code-check.baseline.json. Checks the changed
+      // element files only.
+      label: "Dead code",
+      args: ["scripts/dead-code-check.mjs"],
+      changedFiles: /^elements\/.*\.js$/,
+      blocking: false,
+    },
+    {
       // Accept / dismiss pairs (save vs cancel, keep vs delete, on vs off)
       // must stay tellable apart in greyscale and with color vision
       // deficiencies: by luminance, or by a non-color cue still in the
@@ -463,9 +474,19 @@ function main() {
     );
   }
 
-  CONFIG.checks.forEach(({ label, args, blocking = true }) => {
+  CONFIG.checks.forEach(({ label, args, blocking = true, changedFiles }) => {
     console.log(`\n▶ ${label}`);
-    const res = spawnSync(process.execPath, args, {
+    let runArgs = args;
+    // checks that take a file list get the changed files (whole repo on --all)
+    if (changedFiles && !ALL) {
+      const matching = files.filter((f) => changedFiles.test(f));
+      if (!matching.length) {
+        console.log("  no changed files to check");
+        return;
+      }
+      runArgs = [...args, ...matching];
+    }
+    const res = spawnSync(process.execPath, runArgs, {
       cwd: root,
       stdio: "inherit",
     });
