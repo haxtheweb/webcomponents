@@ -140,6 +140,7 @@
   "fileTypeNotAllowed": "This field only accepts the following media types:",
   "transformFailed": "Post-upload transform failed; the original file was kept.",
   "cantBeTransformed": "Sorry, this can not be transformed!",
+  "typeForQuickActions": "Type '/' for quick actions",
   "uploadSuccessful": "Upload successful!",
   "cantHandleLinkType": "Sorry, HAX doesn't know how to handle that type of link yet.",
   "pickHowToPresent": "Pick how to present this {type}",

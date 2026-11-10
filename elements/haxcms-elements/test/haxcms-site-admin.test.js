@@ -363,6 +363,76 @@ describe("haxcms-site-admin leaving with unsaved changes", () => {
     expect(details.values["manifest-title"]).to.equal("New title");
   });
 
+  it("traps Tab in the three choices, each with its own icon and texture", async () => {
+    const { shell, details } = await detailsInShell();
+    details._setValue("manifest-title", "New title");
+    await shell.updateComplete;
+    shell.shadowRoot.querySelector('.rail-item[data-route="files"]').click();
+    await shell.updateComplete;
+    const acts = [...shell.shadowRoot.querySelectorAll(".leave .acts button")];
+    expect(acts.map((b) => b.className.split(" ").pop())).to.deep.equal([
+      "stay",
+      "discard-leave",
+      "save-leave",
+    ]);
+    // a label, an icon and a distinct look per choice
+    const icons = acts.map((b) =>
+      b.querySelector("simple-icon-lite").getAttribute("icon"),
+    );
+    expect(new Set(icons).size).to.equal(3);
+    const discard = acts[1];
+    expect(discard.classList.contains("danger")).to.equal(true);
+    expect(getComputedStyle(discard).backgroundImage).to.contain(
+      "repeating-linear-gradient",
+    );
+    const tab = (shiftKey = false) =>
+      shell.dispatchEvent(
+        new KeyboardEvent("keydown", {
+          key: "Tab",
+          shiftKey,
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+        }),
+      );
+    acts[2].focus();
+    tab();
+    expect(shell.shadowRoot.activeElement).to.equal(acts[0]);
+    tab(true);
+    expect(shell.shadowRoot.activeElement).to.equal(acts[2]);
+    tab();
+    tab();
+    expect(shell.shadowRoot.activeElement).to.equal(acts[1]);
+  });
+
+  it("Save / Discard show their shortcuts and Ctrl+Shift+/ discards", async () => {
+    const { shell, details } = await detailsInShell();
+    details._setValue("manifest-title", "New title");
+    await shell.updateComplete;
+    const save = saveButton(shell);
+    const discard = shell.shadowRoot.querySelector(".ftr .discard");
+    expect(save.getAttribute("data-shortcut")).to.equal("Ctrl\u21e7S");
+    expect(save.getAttribute("aria-keyshortcuts")).to.equal("Control+Shift+S");
+    expect(discard.getAttribute("data-shortcut")).to.equal("Ctrl\u21e7/");
+    expect(getComputedStyle(save, "::after").content).to.contain("Ctrl");
+    // the label stays the button's text
+    expect(save.textContent.trim()).to.equal("Save");
+    shell.dispatchEvent(
+      new KeyboardEvent("keydown", {
+        key: "?",
+        code: "Slash",
+        ctrlKey: true,
+        shiftKey: true,
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+      }),
+    );
+    await shell.updateComplete;
+    expect(details.values["manifest-title"]).to.equal("Intro to Biology");
+    expect(shell.hasUnsavedChanges).to.equal(false);
+  });
+
   it("Discard and leave restores the values and goes", async () => {
     const { shell, details } = await detailsInShell();
     details._setValue("manifest-title", "New title");

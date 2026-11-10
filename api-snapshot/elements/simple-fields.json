@@ -1,0 +1,41 @@
+{
+  "tag": "simple-fields",
+  "package": "@haxtheweb/simple-fields",
+  "source": "elements/simple-fields/simple-fields.js",
+  "attributes": {
+    "code-theme": "codeTheme",
+    "disable-responsive": "disableResponsive",
+    "disableautofocus": "disableAutofocus",
+    "elementizer": "elementizer",
+    "error": "error",
+    "fields": "fields",
+    "label": "label",
+    "lang": "language",
+    "resources": "resources",
+    "schema": "schema",
+    "schematizer": "schematizer",
+    "value": "value"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [
+    "active-tabs-changed",
+    "fields-changed",
+    "fields-ready",
+    "schema-changed",
+    "value-changed"
+  ],
+  "cssParts": [
+    "fields-list"
+  ],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/simple-fields/simple-fields.js",
+    "gizmo": false,
+    "properties": [],
+    "attributes": [],
+    "slots": [],
+    "demoTags": []
+  }
+}

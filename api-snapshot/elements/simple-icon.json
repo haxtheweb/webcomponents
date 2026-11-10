@@ -1,0 +1,31 @@
+{
+  "tag": "simple-icon",
+  "package": "@haxtheweb/simple-icon",
+  "source": "elements/simple-icon/simple-icon.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "contrast": "contrast",
+    "dark": "dark",
+    "dir": "dir",
+    "icon": "icon",
+    "no-colorize": "noColorize",
+    "src": "src"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/simple-icon/lib/simple-icon.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "accentColor",
+      "icon"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "simple-icon"
+    ]
+  }
+}

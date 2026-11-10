@@ -252,54 +252,104 @@ describe("HAXcms learner progress", () => {
     ).to.equal(null);
   });
 
-  it("site menu marks pages with spoken text and shows pages done", async () => {
+  it("site menu rings only the page open now, with its percent", async () => {
+    host.innerHTML = `<multiple-choice></multiple-choice><multiple-choice></multiple-choice>`;
+    LearnerProgress.scanPage(host);
     answer(host, "q1", true, true);
-    readPage("p1");
     await goTo("p3");
     answer(host, "q3", false, false);
-    await goTo("p4");
+    await goTo("p1");
     const menu = await fixture(html`<site-menu></site-menu>`);
     await flush(150);
     await menu.updateComplete;
-    const summary = menu.shadowRoot.querySelector(".progress-summary");
-    expect(summary.textContent.trim()).to.equal("1 of 5 pages done");
+    // the old "N of M pages done" summary is gone
+    expect(menu.shadowRoot.querySelector(".progress-summary")).to.equal(null);
     const mm = menu.shadowRoot.querySelector("map-menu");
     await mm.updateComplete;
+    const pp = LearnerProgress.pageProgress("p1");
+    expect(mm.activeProgress).to.equal(pp.percent);
+    expect(pp.percent).to.be.greaterThan(0);
     const items = {};
     mm.shadowRoot.querySelectorAll("map-menu-item").forEach((i) => {
       items[i.id] = i;
     });
     await Promise.all(Object.values(items).map((i) => i.updateComplete));
-    expect(items.p1.getAttribute("progress")).to.equal("done");
-    expect(items.p3.getAttribute("progress")).to.equal("in-progress");
-    expect(items.p4.getAttribute("progress")).to.equal("visited");
-    expect(items.p5.getAttribute("progress")).to.equal("not-started");
+    // no status marks on any item (they are kept only for menus that set them)
+    Object.values(items).forEach((i) => {
+      expect(i.getAttribute("progress") || "").to.equal("");
+      expect(i.shadowRoot.querySelector(".progress-mark")).to.equal(null);
+    });
+    // only the active item has the ring, with the percent spoken and on hover
+    const ring = items.p1.shadowRoot.querySelector(".active-ring .ddd-ring");
+    expect(ring).to.exist;
+    const pct = Math.round(pp.percent * 100);
+    expect(ring.getAttribute("data-shown")).to.equal(String(pct));
     const spoken = (i) =>
       i.shadowRoot
         .querySelector("button")
         .textContent.replace(/\s+/g, " ")
         .trim();
-    expect(spoken(items.p1)).to.equal("Waves 101, Done");
-    expect(spoken(items.p3)).to.equal("Sound, In progress");
-    expect(spoken(items.p4)).to.equal("Light, Visited");
-    expect(spoken(items.p5)).to.equal("Review");
-    // marks never rely on colour alone and are hidden from the name twice
-    const mark = items.p1.shadowRoot.querySelector(".progress-mark");
-    expect(mark.getAttribute("aria-hidden")).to.equal("true");
+    expect(spoken(items.p1)).to.equal(`Waves 101, ${pct}% complete`);
     expect(
-      mark.querySelector("simple-icon-lite").getAttribute("icon"),
-    ).to.equal("icons:check");
-    // hide-progress turns it all off
+      items.p1.shadowRoot.querySelector("a").getAttribute("title"),
+    ).to.equal(`Waves 101, ${pct}% complete`);
+    ["p2", "p3", "p4", "p5"].forEach((id) => {
+      expect(items[id].shadowRoot.querySelector(".active-ring")).to.equal(null);
+    });
+    expect(spoken(items.p3)).to.equal("Sound");
+    // the ring follows the page that is open
+    await goTo("p3");
+    await flush(100);
+    await Promise.all(Object.values(items).map((i) => i.updateComplete));
+    expect(items.p1.shadowRoot.querySelector(".active-ring")).to.equal(null);
+    expect(items.p3.shadowRoot.querySelector(".active-ring")).to.exist;
+    // hide-progress turns it off
     menu.hideProgress = true;
     await menu.updateComplete;
-    expect(menu.shadowRoot.querySelector(".progress-summary")).to.equal(null);
+    await mm.updateComplete;
+    expect(mm.activeProgress).to.equal(null);
   });
 
-  it("site menu shows no marks before any trackable engagement", async () => {
+  it("site menu ring turns into a check when the page is done", async () => {
+    host.innerHTML = `<multiple-choice></multiple-choice>`;
+    LearnerProgress.scanPage(host);
     const menu = await fixture(html`<site-menu></site-menu>`);
     await flush(150);
+    const mm = menu.shadowRoot.querySelector("map-menu");
+    const p1 = () => {
+      let found = null;
+      mm.shadowRoot.querySelectorAll("map-menu-item").forEach((i) => {
+        if (i.id === "p1") {
+          found = i;
+        }
+      });
+      return found;
+    };
+    await p1().updateComplete;
+    expect(
+      p1().shadowRoot.querySelector(".ddd-ring").getAttribute("data-state"),
+    ).to.equal("none");
+    answer(host, "q1", true, true);
+    readPage("p1");
+    await flush(150);
+    await p1().updateComplete;
+    const ring = p1().shadowRoot.querySelector(".ddd-ring");
+    expect(ring.getAttribute("data-state")).to.equal("done");
+    expect(
+      ring.querySelector("simple-icon-lite").getAttribute("icon"),
+    ).to.equal("icons:check");
+  });
+
+  it("site menu shows no ring while editing", async () => {
+    const menu = await fixture(html`<site-menu></site-menu>`);
+    await flush(150);
+    const mm = menu.shadowRoot.querySelector("map-menu");
+    expect(mm.activeProgress).to.equal(0);
+    store.editMode = true;
+    await flush(100);
     await menu.updateComplete;
-    expect(menu.shadowRoot.querySelector(".progress-summary")).to.equal(null);
+    expect(mm.activeProgress).to.equal(null);
+    store.editMode = false;
   });
 
   it("page progress shows activities done with a progressbar", async () => {

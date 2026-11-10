@@ -152,13 +152,14 @@ describe("haxcms-backend-demo", () => {
     expect(el.jwt).to.equal("app-jwt");
   });
 
-  it("firstUpdated skips the editor import in view-only mode", async () => {
+  it("a leftover View Only Mode flag no longer blocks the editor", async () => {
+    // View Only Mode was replaced by preview (haxtheweb/issues#2951)
     UserScaffoldInstance.writeMemory("ViewOnlyMode", true);
     globalThis.appSettings = { login: "/session/login" };
     const el = await fixture(html`<haxcms-backend-demo></haxcms-backend-demo>`);
     await wait(600);
-    // view-only mode short-circuits editor availability entirely
-    expect(store.cmsSiteEditorAvailability()).to.equal(null);
+    expect(store.inPreviewFrame).to.equal(false);
+    expect(store.cmsSiteEditorAvailability()).to.not.equal(null);
     expect(el).to.exist;
   });
 

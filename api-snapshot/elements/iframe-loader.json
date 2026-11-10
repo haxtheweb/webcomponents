@@ -1,0 +1,33 @@
+{
+  "tag": "iframe-loader",
+  "package": "@haxtheweb/iframe-loader",
+  "source": "elements/iframe-loader/iframe-loader.js",
+  "attributes": {
+    "disabled": "disabled",
+    "height": "height",
+    "is-pdf": "isPDF",
+    "loading": "loading",
+    "source": "source",
+    "width": "width"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/iframe-loader/lib/iframe-loader.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "height",
+      "source",
+      "width"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "iframe"
+    ]
+  }
+}

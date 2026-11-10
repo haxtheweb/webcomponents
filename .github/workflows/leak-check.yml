@@ -1,0 +1,60 @@
+name: leak-check
+
+# Blocking for the elements a pull request touches: removing a HAX-capable
+# element releases what it set up.
+#
+# Each HAX-capable tag in a changed element folder is built from its
+# demoSchema in Chromium, attached and removed 2 warm-up times and then 12
+# measured times. Global listeners, observers, intervals and
+# requestAnimationFrame loops left behind, globalThis stores that grow, and
+# removed instances still alive after garbage collection are leaks when they
+# grow with at least half of the measured cycles; singletons never count.
+# Only a leak for a tag with no entry for that check in
+# scripts/leak-check.baseline.json fails the job; baselined leaks are listed
+# as advisory output in the job summary. To accept a result on purpose, run
+# `yarn test:leaks:baseline --tags <tag>` and commit the baseline.
+# See CONTRIBUTING.md, "Memory-leak check".
+#
+# Runs on pull_request (not pull_request_target): no secrets, read-only token.
+on:
+  # No branch filter: stacked PRs (base is another feature branch) must run too.
+  pull_request:
+    paths:
+      - "elements/**"
+      - "scripts/leak-check*"
+      - "scripts/lib/leak-check.mjs"
+      - "scripts/test-setup/leak*"
+      - ".github/workflows/leak-check.yml"
+permissions:
+  contents: read
+jobs:
+  leak-check:
+    name: Memory leaks (attach/detach cycles)
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      # the PR merge commit with its base as first parent, so HEAD^1..HEAD is
+      # exactly this pull request's change
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 2
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          cache: yarn
+      - name: Install
+        run: yarn install --frozen-lockfile
+      - name: Install Playwright Chromium
+        # the Playwright version yarn.lock resolves, so the browser build
+        # matches what the test runner launches
+        run: yarn playwright install --with-deps chromium
+      - name: The check still finds each kind of leak
+        run: node scripts/leak-check.mjs --self-test
+      - name: Memory leaks in changed elements
+        # GitHub-hosted runners have 4 vCPUs: three test pages at a time
+        env:
+          LEAK_CHECK_CONCURRENCY: "3"
+        run: node scripts/leak-check.mjs --base HEAD^1

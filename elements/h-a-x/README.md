@@ -105,7 +105,6 @@ The element also listens for these global events: `hax-store-ready` (wires the s
 - `:host, h-a-x { display: block; }` and `[hidden] { display: none; }`
 - `:host img, h-a-x img { max-width: 100%; }` (with vendor `fill-available` variants)
 - Active outline for `hax-body[edit-mode]` content: `var(--hax-body-active-outline, 2px solid var(--hax-ui-color-focus, #000))`
-- Empty active contenteditable placeholder: `"Type / to add blocks"` at 0.4 opacity
 
 The element also adopts any `document.adoptedStyleSheets` flagged with `sheet.hax === true` into its shadow root (with a `<style data-hax-sheet-fallback>` fallback when constructed-sheet adoption is unsupported).
 

@@ -33,6 +33,8 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
     this.programPlaceholder = null;
     this.mini = false;
     this.wand = false;
+    this.programRunning = false;
+    this.showShortcut = false;
     this.loading = false;
     this.listeningForInput = false;
     this.commandContext = "*";
@@ -80,7 +82,13 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
       mini: { type: Boolean, reflect: true },
       wand: { type: Boolean, reflect: true },
       programName: { type: String, attribute: "program-name" },
+      // a program (e.g. Create a page) owns the field, so the slash command
+      // mode mark has nothing to add and stays out of the way
+      programRunning: { type: Boolean, attribute: "program-running" },
       programPlaceholder: { type: String, attribute: "program-placeholder" },
+      // the top bar field shows Merlin's open shortcut while it sits idle,
+      // the same chip the other top bar actions and menu rows use
+      showShortcut: { type: Boolean, attribute: "show-shortcut" },
       commandContext: { type: String, attribute: "command-context" },
       focused: { type: Boolean, reflect: true },
     };
@@ -193,7 +201,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
     return html`<div class="field merlin-wand-host" part="field">
       ${merlinMark(this.icon)}
       ${
-        this.commandContext != "*"
+        this.commandContext != "*" && !this.programRunning
           ? html`<simple-icon-lite
               title="${this.getActiveTitle(this.commandContext)}"
               icon="${this.getActiveIcon(this.commandContext)}"
@@ -208,10 +216,6 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
       }
       <simple-fields-field
         id="inputfilter"
-        role="combobox"
-        aria-expanded="false"
-        aria-autocomplete="list"
-        aria-haspopup="listbox"
         ?disabled="${this.disabled}"
         @value-changed="${this.inputfilterChanged}"
         @keydown="${this._inputKeydown}"
@@ -224,6 +228,13 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
         autofocus
         part="filter"
       ></simple-fields-field>
+      ${
+        this._idleShortcutLabel()
+          ? html`<kbd class="shortcut" part="shortcut" aria-hidden="true"
+              >${this._idleShortcutLabel()}</kbd
+            >`
+          : ``
+      }
       ${
         this.voiceSearch && merlinVoiceSupported()
           ? html`<button
@@ -250,6 +261,33 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           : ``
       }
     </div>`;
+  }
+
+  /**
+   * Merlin's open shortcut written the way every other HAX shortcut chip is
+   * ("Alt⇧"), shown only while the field is idle: not focused, empty, no
+   * program running, not listening and nothing being dragged over it
+   */
+  _idleShortcutLabel() {
+    if (
+      !this.showShortcut ||
+      this.focused ||
+      this.programRunning ||
+      this.listeningForInput ||
+      this.droppable ||
+      (this.value && this.value !== "")
+    ) {
+      return "";
+    }
+    const sdi =
+      globalThis.SuperDaemonManager &&
+      globalThis.SuperDaemonManager.requestAvailability();
+    if (!sdi || !sdi.key1) {
+      return "";
+    }
+    return sdi.key2 === "Shift"
+      ? `${sdi.key1}\u21e7`
+      : `${sdi.key1}+${sdi.key2}`;
   }
 
   suggestPossibleAction(mimeType = false) {
@@ -410,6 +448,21 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
     this.focused = true;
   }
 
+  /**
+   * The text input that really holds focus (inside simple-fields-field).
+   * super-daemon-ui makes it the combobox: role, expanded state and the
+   * highlighted result (aria-activedescendant) all live on this element.
+   *
+   * @readonly
+   */
+  get inputElement() {
+    const field =
+      this.shadowRoot && this.shadowRoot.querySelector("#inputfilter");
+    return field && field.shadowRoot
+      ? field.shadowRoot.querySelector("input")
+      : null;
+  }
+
   focusInput() {
     setTimeout(() => {
       this.shadowRoot.querySelector("#inputfilter").focus();
@@ -514,6 +567,24 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           background-color: var(--hax-ui-accent-soft);
           --simple-icon-width: 14px;
           --simple-icon-height: 14px;
+        }
+        /* idle shortcut chip, same look as Merlin row and menu chips */
+        .shortcut {
+          flex: none;
+          display: inline-grid;
+          place-items: center;
+          height: 20px;
+          padding: 0 6px;
+          font-family: inherit;
+          font-size: 11px;
+          font-weight: var(--ddd-font-weight-bold, 700);
+          line-height: 1;
+          white-space: nowrap;
+          border-radius: var(--hax-ui-radius);
+          border: 1px solid var(--hax-ui-line-strong);
+          color: var(--hax-ui-text-muted);
+          background-color: var(--hax-ui-surface);
+          pointer-events: none;
         }
         /* a running program is a chip inside the field */
         .program {

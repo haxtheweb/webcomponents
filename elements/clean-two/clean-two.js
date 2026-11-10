@@ -22,6 +22,7 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-modal.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu-content.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/progress/my-learning-button.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import {
   DDDReadingSurface,
@@ -433,6 +434,15 @@ class CleanTwo extends LTIResizingMixin(
           margin-left: -60px;
           width: 36px;
         }
+        /* My learning in the icon rail: the ring only, centred on the rail */
+        .header my-learning-button {
+          display: flex;
+          width: var(--ddd-control-height-sm);
+          margin: var(--ddd-spacing-1) 0 var(--ddd-spacing-1) -52px;
+        }
+        .header my-learning-button[hidden] {
+          display: none;
+        }
         .content-wrapper {
           width: -moz-available;
           width: -webkit-fill-available;
@@ -662,18 +672,14 @@ class CleanTwo extends LTIResizingMixin(
           padding: 0;
         }
         simple-icon-button,
-        site-rss-button,
-        replace-tag[with="site-rss-button"],
         replace-tag[with="site-print-button"],
         site-print-button {
           color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
         }
-        replace-tag[with="site-rss-button"],
         replace-tag[with="site-print-button"],
         replace-tag[with="site-git-corner"] {
           display: none;
         }
-        site-rss-button,
         site-print-button,
         site-modal {
           --simple-icon-button-background-color: transparent;
@@ -781,6 +787,11 @@ class CleanTwo extends LTIResizingMixin(
                   : ``
               }
               ${this.HAXCMSMobileMenuButton("right")}
+              <my-learning-button
+                compact
+                class="learning-btn"
+                part="my-learning-btn"
+              ></my-learning-button>
               <site-modal
                 @site-modal-click="${this.siteModalClick}"
                 ?disabled="${this.editMode}"
@@ -806,13 +817,6 @@ class CleanTwo extends LTIResizingMixin(
                     ></replace-tag>`
               }
               ${this.QRCodeButton("right")}
-              <replace-tag
-                with="site-rss-button"
-                type="rss"
-                import-method="view"
-                part="rss-btn"
-                position="right"
-              ></replace-tag>
               <replace-tag
                 with="site-git-corner"
                 size="small"

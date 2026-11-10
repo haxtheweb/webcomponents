@@ -35,5 +35,12 @@
   "youTubeStartLoading": "Press play.",
   "youTubeTranscriptLabel": "Transcript will load once media plays.",
   "audioDescriptionLabel": "Audio Description",
-  "openOnYouTube": "Open on YouTube"
+  "openOnYouTube": "Open on YouTube",
+  "interactiveLabel": "interactive",
+  "layoutLabel": "Layout",
+  "sideLabel": "Side",
+  "belowLabel": "Below",
+  "leftLabel": "Left",
+  "rightLabel": "Right",
+  "hideTranscriptLabel": "Hide transcript"
 }

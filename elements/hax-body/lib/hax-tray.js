@@ -274,6 +274,10 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
         }
         .wrapper {
           position: fixed;
+          /* flex lives on the base state (not only edit mode) so leaving
+             edit mode slides the whole full-height panel away instead of
+             collapsing it to its content height mid-transition */
+          display: flex;
           align-items: stretch;
           flex-direction: row-reverse;
           opacity: 0;
@@ -337,7 +341,8 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
         }
         :host([element-align="right"]) .wrapper {
           right: 0px;
-          flex-direction: row;
+          /* same order as edit mode so the panel does not flip mid-slide */
+          flex-direction: row-reverse;
           transform: translateX(100%);
         }
         :host([tray-detail="view-source"]) .detail {
@@ -354,7 +359,6 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
           opacity: 1;
           visibility: visible;
           pointer-events: all;
-          display: flex;
         }
         :host([edit-mode][element-align="left"]) .wrapper {
           left: 0px;
@@ -443,6 +447,9 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
           box-shadow: inset 0 0 4px var(--ddd-theme-default-limestoneGray);
           background-color: var(--ddd-theme-default-limestoneGray);
         }
+        /* collapsed: the panel is also inert (render), so nothing inside
+           it, including children that force visibility: visible, can be
+           reached with Tab or by assistive technology */
         :host([collapsed]) .detail {
           width: 0px;
           overflow: hidden;
@@ -786,7 +793,9 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
       ${this.panelOpsTemplate}
       <div class="wrapper ${this.trayStatus}">
         ${this.hideToolbar ? `` : html`${this.menuToolbarTemplate}`}
-        <div class="detail">${this.trayDetailTemplate}</div>
+        <div class="detail" ?inert="${this.collapsed}">
+          ${this.trayDetailTemplate}
+        </div>
         <div
           class="resize"
           id="resize"
@@ -1872,17 +1881,6 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
         }, 0);
       }
     }
-  }
-  /**
-   * Convert an object to an array
-   */
-  _toArray(obj) {
-    if (obj == null) {
-      return [];
-    }
-    return Object.keys(obj).map(function (key) {
-      return obj[key];
-    });
   }
   _isNodeLocked(node) {
     if (!node || !node.getAttribute) {

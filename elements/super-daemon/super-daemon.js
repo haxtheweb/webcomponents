@@ -22,6 +22,15 @@ import {
   merlinMark,
 } from "./lib/super-daemon-hax-ui.js";
 import { SuperDaemonToastInstance } from "./lib/super-daemon-toast.js";
+import {
+  MERLIN_VOICE_VOCAB_EN,
+  merlinVoiceVocab,
+  merlinVoiceEntries,
+  merlinRankVoice,
+  merlinVoiceBand,
+  merlinParseVoiceGrammar,
+  merlinWordList,
+} from "./lib/merlin-voice-match.js";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { KeyboardShortcutManagerInstance } from "@haxtheweb/utils/utils.js";
@@ -65,6 +74,8 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
         reflect: true,
         attribute: "listening-for-input",
       },
+      /** Results chosen by voice ("did you mean"), shown instead of all */
+      voiceRanked: { type: Array, attribute: false },
     };
   }
 
@@ -120,6 +131,48 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
       developerModeActivated: "developer mode activated",
       merlin: "Merlin",
       closeMerlin: "Close Merlin",
+      // spoken search vocabulary: pipe separated, translated per language
+      voiceFillers:
+        "please|can you|could you|would you|will you|i want to|i'd like to|i would like to|let's|let me|go ahead and|um|uh|hey|merlin|ok|okay",
+      voiceStopWords: "a|an|the|to|my|this|for|of|me",
+      voiceNumbers: "zero|one|two|three|four|five|six|seven|eight|nine|ten",
+      voiceOrdinals:
+        "zeroth|first|second|third|fourth|fifth|sixth|seventh|eighth|ninth",
+      voicePickPrefixes: "number|option|item|result|pick|choose|select|the",
+      voicePickSuffix: "one",
+      voiceNumberSoundalikes:
+        "won=1|to=2|too=2|tu=2|tree=3|free=3|for=4|fore=4|ate=8",
+      voiceNext: "next|down|next one",
+      voiceBack: "back|previous|up|go back",
+      voiceRun: "run|go|yes|do it|run it|open it|that one",
+      voiceClear: "clear|start over|reset",
+      voiceCancel: "cancel|never mind|nevermind",
+      voiceHelp: "help|what can i say|what can i do",
+      // spoken commands Merlin always knows, in the user's language
+      sayStopListening: "stop listening",
+      sayCloseMerlin: "close merlin",
+      sayDisableSanta: "disable santa mode",
+      // what the voice card says after hearing something
+      voiceDidYouMean: "{title}? To run it, say",
+      voiceShowingMatches: "Showing matches. To run one, say",
+      voiceNoMatches: "Nothing matched. Try other words, or say",
+      voiceNoSuchResult: "There is no result {number}. Try",
+      voiceYouCanSay: "You can say",
+      voiceMicBlocked:
+        "The microphone is blocked. Allow it in your browser to talk to Merlin.",
+      voiceUnavailable:
+        "Voice isn't available in this browser. You can still type to Merlin.",
+      voiceTipPick: "To run a result, say",
+      voiceTipNext: "To move down the list, say",
+      voiceTipClear: "To start over, say",
+      voiceTipHelp: "To see what you can say, say",
+      voiceRunResult: "Run a result",
+      voiceMoveDown: "Move down",
+      voiceMoveUp: "Move up",
+      voiceRunHighlighted: "Run the highlighted result",
+      voiceStartOver: "Start over",
+      voiceStopListeningLabel: "Stop listening",
+      voiceCloseLabel: "Close Merlin",
     };
     // Konami Code detection
     this.konamiSequence = [
@@ -148,6 +201,9 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     this.activeSelection = null;
     this.wandTarget = null; // consistent wand target to fallback on across app
     this.voiceCommands = {};
+    this.voiceRanked = null;
+    this._voiceEntries = [];
+    this._voiceTip = 0;
     this.programTarget = null;
     this.activeRange = null;
     this.santaMode = false;
@@ -200,6 +256,13 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
       this.windowControllers2 = new AbortController();
     }
     globalThis.addEventListener("keydown", this.keyHandler.bind(this), {
+      signal: this.windowControllers.signal,
+    });
+    // the Konami code listens in the capture phase: Merlin's own field and
+    // results stop the arrow keys they use for moving through results, so a
+    // bubbling listener never saw them while Merlin had focus
+    globalThis.addEventListener("keydown", this._konamiKeydown.bind(this), {
+      capture: true,
       signal: this.windowControllers.signal,
     });
 
@@ -648,30 +711,46 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     this.addVoiceCommand(e.detail.command, target, e.detail.callback);
   }
 
-  keyHandler(e) {
-    // Check for Konami Code sequence first (global detection)
-    this.checkKonamiCode(e);
+  _konamiKeydown(e) {
+    if (e && !e.repeat) {
+      this.checkKonamiCode(e);
+    }
+  }
 
+  keyHandler(e) {
     // modifier required to activate
     if (this.allowedCallback()) {
       // open and close events
       if (this.key2 == "Shift" && e.shiftKey) {
         // platform specific additional modifier
-        if (this.key1 == "Ctrl" && e.ctrlKey) {
-          this.opened = !this.opened;
-          this.keyHandlerCallback();
-        } else if (this.key1 == "Alt" && e.altKey) {
-          this.opened = !this.opened;
-          this.keyHandlerCallback();
-        } else if (this.key1 == "Meta" && (e.key === "Meta" || e.metaKey)) {
-          this.opened = !this.opened;
-          this.keyHandlerCallback();
+        if (
+          (this.key1 == "Ctrl" && e.ctrlKey) ||
+          (this.key1 == "Alt" && e.altKey) ||
+          (this.key1 == "Meta" && (e.key === "Meta" || e.metaKey))
+        ) {
+          this._toggleFromKeyboard();
         }
       }
       if (e.key == "Escape" && this.opened) {
         this.miniCancel();
       }
     }
+  }
+  /**
+   * The open / close shortcut. Closing goes through close() so every mode
+   * (mini popover or full dialog) is torn down the same way it is from the
+   * close button; only opening runs keyHandlerCallback, which picks the
+   * mode and anchor. Flipping opened alone left a closed full Merlin set up
+   * as a mini popover with no anchor, so the next open drew it in the top
+   * left corner.
+   */
+  _toggleFromKeyboard() {
+    if (this.opened) {
+      this.close();
+      return;
+    }
+    this.opened = true;
+    this.keyHandlerCallback();
   }
   /**
    * LitElement style callback
@@ -875,6 +954,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     this._programValues = {};
     this.programSearch = "";
     this.voiceCommands = {};
+    this.voiceRanked = null;
     this.defaultVoiceCommands();
     this.programResults = [];
     this.programName = null;
@@ -887,6 +967,8 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     const ui =
       this.shadowRoot && this.shadowRoot.querySelector("super-daemon-ui");
     if (ui) {
+      // drop any inline line-up so the next open starts from the CSS
+      ui.style.marginTop = "";
       ui.like = "";
       ui.programSearch = "";
       // reset the child command context in the same tick so a pending
@@ -924,8 +1006,15 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
           }),
         );
       }
-      // we have an event, but not a close event
-      if (e && e.type !== "super-daemon-close" && e.type !== "close") {
+      // we have an event, but not a close event (merlinSpeak closes with
+      // keepToast so what Merlin said stays up to be read)
+      if (
+        e &&
+        !e.keepToast &&
+        !this.__speechToastPending &&
+        e.type !== "super-daemon-close" &&
+        e.type !== "close"
+      ) {
         globalThis.dispatchEvent(
           new CustomEvent("super-daemon-toast-hide", {
             bubbles: true,
@@ -1007,15 +1096,18 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
       let textB = b.title.toUpperCase();
       return textA < textB ? -1 : textA > textB ? 1 : 0;
     });
-    // highest priority if item title is exact match
-    tmpItems.forEach((item) => {
-      if (item.title.toLocaleLowerCase() === this.value.toLocaleLowerCase()) {
-        item.priority = -10000000;
-      }
-    });
-    // then on priority
+    // an exact title match goes first, then priority. Worked out per
+    // sort, not written onto the option: writing it stuck, so an option
+    // once matched exactly (a cheat code, say) stayed at the top forever
+    const value = (this.value || "").toLocaleLowerCase();
+    const rank = (item) =>
+      value !== "" && item.title.toLocaleLowerCase() === value
+        ? -10000000
+        : item.priority;
     return tmpItems.sort((a, b) => {
-      return a.priority < b.priority ? -1 : a.priority > b.priority ? 1 : 0;
+      const pa = rank(a);
+      const pb = rank(b);
+      return pa < pb ? -1 : pa > pb ? 1 : 0;
     });
   }
   /**
@@ -1181,14 +1273,21 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
           // inline-token path: close() restores the stripped token, so do
           // nothing here — just fall through to this.close() below.
         } else {
-          this.activeNode.textContent = this.value;
+          // put back what was typed into Merlin; with nothing typed, leave
+          // the empty line alone (wiping it removed its <br>, leaving a
+          // block with no caret position so typing had nowhere to go)
+          if (this.value) {
+            this.activeNode.textContent = this.value;
+          }
           this.activeNode.focus();
           this.activeRange.setStart(this.activeNode, 0);
           this.activeRange.collapse(true);
           this.activeSelection.removeAllRanges();
           this.activeSelection.addRange(this.activeRange);
-          this.activeSelection.selectAllChildren(this.activeNode);
-          this.activeSelection.collapseToEnd();
+          if (this.value) {
+            this.activeSelection.selectAllChildren(this.activeNode);
+            this.activeSelection.collapseToEnd();
+          }
         }
       } catch (e) {
         console.warn(e);
@@ -1247,7 +1346,79 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
         });
       }
       this.shadowRoot.querySelector("super-daemon-ui").focusInput();
+      // inline (/ in a text block): once placed, line the field up with
+      // the line that was typed on
+      if (this.mini && !this.wand) {
+        requestAnimationFrame(() => this._alignInlineField());
+      }
     });
+  }
+  /**
+   * Inline mini Merlin (opened with / in an empty text block) is pulled up
+   * over the block so its search field sits where the text was being typed.
+   * A fixed pull-up can't know the block's line height or padding, so it
+   * drew the field above the line; measure the real field and the real line
+   * and move the popover by the difference.
+   */
+  _alignInlineField() {
+    if (!this.opened || !this.mini || this.wand || !this.activeNode) {
+      return;
+    }
+    const ui = this.shadowRoot
+      ? this.shadowRoot.querySelector(
+          "absolute-position-behavior super-daemon-ui",
+        )
+      : null;
+    const search =
+      ui && ui.shadowRoot
+        ? ui.shadowRoot.querySelector("super-daemon-search")
+        : null;
+    const lineCenter = this._inlineLineCenter();
+    if (!ui || !search || lineCenter === null) {
+      return;
+    }
+    const fieldRect = search.getBoundingClientRect();
+    if (!fieldRect.height) {
+      return;
+    }
+    const delta = lineCenter - (fieldRect.top + fieldRect.height / 2);
+    if (Math.abs(delta) < 1) {
+      return;
+    }
+    const current = parseFloat(globalThis.getComputedStyle(ui).marginTop) || 0;
+    ui.style.marginTop = `${Math.round(current + delta)}px`;
+  }
+  /**
+   * Vertical middle of the line the caret is on: the caret's own box when
+   * the browser gives one, else (an empty block has none) the block's first
+   * line from its padding and line height.
+   * @returns {number|null}
+   */
+  _inlineLineCenter() {
+    if (this.activeRange && this.activeRange.getClientRects) {
+      const rects = this.activeRange.getClientRects();
+      if (rects && rects.length && rects[0].height) {
+        return rects[0].top + rects[0].height / 2;
+      }
+    }
+    let el = this.activeNode;
+    if (el && el.nodeType === Node.TEXT_NODE) {
+      el = el.parentElement;
+    }
+    if (!el || !el.getBoundingClientRect) {
+      return null;
+    }
+    const rect = el.getBoundingClientRect();
+    const cs = globalThis.getComputedStyle(el);
+    let lineHeight = parseFloat(cs.lineHeight);
+    if (isNaN(lineHeight)) {
+      lineHeight = (parseFloat(cs.fontSize) || 16) * 1.2;
+    }
+    const top =
+      rect.top +
+      (parseFloat(cs.borderTopWidth) || 0) +
+      (parseFloat(cs.paddingTop) || 0);
+    return top + lineHeight / 2;
   }
   focusout(e) {
     if (e) {
@@ -1303,7 +1474,10 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
                 like="${this.like}"
                 ?listening-for-input="${this.listeningForInput}"
                 ?voice-search="${this.voiceSearch}"
-                .items="${this.itemsForDisplay(this.items, this.programResults)}"
+                .items="${
+                  this.voiceRanked ||
+                  this.itemsForDisplay(this.items, this.programResults)
+                }"
                 command-context="${this.commandContext}"
                 program-name="${this.programName}"
                 program-placeholder="${this.programPlaceholder || ""}"
@@ -1361,7 +1535,10 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
                 ?voice-search="${this.voiceSearch}"
                 ?listening-for-input="${this.listeningForInput}"
                 @like-changed="${this.likeChanged}"
-                .items="${this.itemsForDisplay(this.items, this.programResults)}"
+                .items="${
+                  this.voiceRanked ||
+                  this.itemsForDisplay(this.items, this.programResults)
+                }"
                 command-context="${this.commandContext}"
                 program-name="${this.programName}"
                 program-placeholder="${this.programPlaceholder || ""}"
@@ -1446,9 +1623,56 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
       });
     }, 0);
   }
+  /**
+   * Merlin says something: always as the Merlin speaking toast, so it can
+   * be read with sound off or no speech support, and out loud when voice
+   * is available. A missing hal-9000 (voice off) no longer throws, which
+   * stopped whatever called this (cheat codes included) part way through.
+   */
   merlinSpeak(phrase) {
-    this.hal.speak(phrase, false, false).then((_e) => {
-      this.close();
+    if (!phrase) {
+      return Promise.resolve(false);
+    }
+    const toast = () =>
+      globalThis.dispatchEvent(
+        new CustomEvent("super-daemon-toast-show", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: {
+            text: phrase,
+            future: true,
+            merlin: true,
+            accentColor: "purple",
+            // long enough to read, whether or not it is also spoken
+            duration: Math.min(10000, Math.max(4000, phrase.length * 70)),
+            alwaysvisible: false,
+            awaitingMerlinInput: false,
+          },
+        }),
+      );
+    const canSpeak = !!(this.hal && this.hal.synth);
+    // callers usually close Merlin right after this; a close hides toasts,
+    // so hold that back until the toast is up (next tick)
+    this.__speechToastPending = true;
+    setTimeout(() => {
+      this.__speechToastPending = false;
+      toast();
+    }, 0);
+    if (!canSpeak) {
+      this.close({ keepToast: true });
+      return Promise.resolve(false);
+    }
+    // this method shows the toast itself, so hal-9000 doesn't add its own
+    const halToast = this.hal.toast;
+    this.hal.toast = false;
+    // awaitingInput true: speech ending (instantly, when the voice is
+    // muted) must not take the toast down before it has been read
+    const spoken = this.hal.speak(phrase, false, true);
+    this.hal.toast = halToast;
+    return spoken.then((e) => {
+      this.close({ keepToast: true });
+      return e;
     });
   }
   promptMerlin(_e) {
@@ -1513,6 +1737,10 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     this.addVoiceCommand(`(hey) marilyn`, this, "promptMerlin"); // common mispronunciation
     this.addVoiceCommand(`stop listening`, this, "stopMerlin");
     this.addVoiceCommand(`close merlin`, this, "closeMerlin");
+    // the same commands in the user's language
+    this.addVoiceCommand(this.t.sayStopListening, this, "stopMerlin");
+    this.addVoiceCommand(this.t.sayCloseMerlin, this, "closeMerlin");
+    this.addVoiceCommand(this.t.sayDisableSanta, this, "belsnickel");
     this.addVoiceCommand(`cancel merlin`, this, "closeMerlin");
     this.addVoiceCommand(`disable santa (mode)`, this, "belsnickel");
     this.addVoiceCommand(`belsnickel`, this, "belsnickel");
@@ -1552,8 +1780,8 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
         detail: { value: ">", label: this.t.developerModeActivated },
       });
     };
-    // LAST priority bc it matches ANYTHING, no idea why I need to wait this tho..
-    this.addVoiceCommand("*anything", this, "updateSearchInputViaVoice");
+    // anything else is spoken search: hal-9000 reports it as a no-match
+    // and _voiceHeard() scores it against the commands
   }
   updated(changedProperties) {
     if (super.updated) {
@@ -1604,6 +1832,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
         this.hal = globalThis.Hal9000.requestAvailability();
         this.hal.debug = false; // enable to see all available commands in console
         this.hal.toast = true;
+        this._listenToHal(this.hal);
         this.defaultVoiceCommands();
       });
     } else if (changedProperties.has("voiceSearch") && !this.voiceSearch) {
@@ -1612,6 +1841,9 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     // align state of voice enabled with hal
     if (changedProperties.has("listeningForInput") && this.hal) {
       this.hal.enabled = this.listeningForInput;
+      if (this.listeningForInput && this.opened) {
+        this._showVoiceTip();
+      }
       if (globalThis.HAXCMS) {
         if (this.listeningForInput) {
           globalThis.HAXCMS.instance.setCursor("hax:loading");
@@ -1672,43 +1904,412 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     }
     return items;
   }
+  /**
+   * Listen to what hal-9000 hears and reports about the microphone, once
+   * per connection (a reconnect makes a new signal and listens again).
+   * @param {HTMLElement} hal
+   */
+  _listenToHal(hal) {
+    if (!hal || hal.__merlinSignal === this.windowControllers.signal) {
+      return;
+    }
+    hal.__merlinSignal = this.windowControllers.signal;
+    hal.addEventListener(
+      "hal-9000-listening-state",
+      (e) => this._voiceStateChanged(e.detail.state),
+      { signal: this.windowControllers.signal },
+    );
+    // what is heard beyond the fixed commands is spoken search
+    hal.addEventListener(
+      "hal-9000-no-match",
+      (e) => this._voiceHeard(e.detail.alternatives),
+      { signal: this.windowControllers.signal },
+    );
+    hal.addEventListener(
+      "hal-9000-interim",
+      (e) => this._voiceInterim(e.detail.text),
+      { signal: this.windowControllers.signal },
+    );
+  }
+
+  /**
+   * The mic was refused, or this browser cannot recognize speech: stop
+   * listening and say why. When speech is unavailable the mic button also
+   * goes away for the rest of the session.
+   * @param {string} state idle, listening, blocked or unavailable
+   */
+  _voiceStateChanged(state) {
+    if (state !== "blocked" && state !== "unavailable") {
+      return;
+    }
+    this.setListeningStatus(false);
+    globalThis.dispatchEvent(
+      new CustomEvent("super-daemon-toast-show", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          text:
+            state === "blocked"
+              ? this.t.voiceMicBlocked
+              : this.t.voiceUnavailable,
+          duration: 6000,
+        },
+      }),
+    );
+    if (state === "unavailable") {
+      this._refreshVoiceControls();
+    }
+  }
+
+  /** Re-render every Merlin search box so the mic button can hide */
+  _refreshVoiceControls() {
+    const roots = [this.shadowRoot];
+    const ui = this.shadowRoot
+      ? this.shadowRoot.querySelector("super-daemon-ui")
+      : null;
+    if (ui && ui.shadowRoot) {
+      roots.push(ui.shadowRoot);
+    }
+    roots.forEach((root) => {
+      if (root) {
+        root.querySelectorAll("super-daemon-search").forEach((search) => {
+          search.requestUpdate();
+        });
+      }
+    });
+  }
+
   reprocessVoiceCommands() {
     if (this.hal && this.voiceSearch && this.items) {
       clearTimeout(this._blockRerunTimeout);
-      this._blockRerunTimeout = setTimeout(async () => {
+      this._blockRerunTimeout = setTimeout(() => {
         this.defaultVoiceCommands();
-        for await (const item of this.items) {
-          if (item.title) {
-            this.voiceCommands[
-              item.voice
-                ? item.voice.toLocaleLowerCase()
-                : item.title.toLocaleLowerCase()
-            ] = (_response) => {
-              this.shadowRoot.querySelector("super-daemon-ui").items = [item];
-              this.value = item.title;
-              this.shadowRoot.querySelector("super-daemon-ui").filtered = [
-                item,
-              ];
-              setTimeout(() => {
-                this.shadowRoot
-                  .querySelector("super-daemon-ui")
-                  .shadowRoot.querySelector("super-daemon-row")
-                  .selected();
-              }, 0);
-              // if program, reset input and prompt for more!
-              if (item.value.program) {
-                this.playSound().then((_e) => {
-                  this.shadowRoot.querySelector("super-daemon-ui").focusInput();
-                });
-              } else {
-                // disable bc we got a hit
-                this.setListeningStatus(false);
-              }
-            };
-          }
-        }
+        const vocab = this._voiceVocabulary();
+        // built once per item list, so each utterance only scores
+        this._voiceEntries = merlinVoiceEntries(this.items, vocab);
         this.hal.commands = { ...this.voiceCommands };
+        // bias recognition toward what can be said here, where supported
+        const phrases = [];
+        this.items.forEach((item) => {
+          if (item.title) {
+            phrases.push(item.title);
+          }
+        });
+        ["next", "back", "run", "clear", "help"].forEach((key) => {
+          phrases.push(...vocab[key]);
+        });
+        this.hal.phrases = phrases;
       }, 10);
+    }
+  }
+
+  /**
+   * The spoken search words in the user's language. Action words keep the
+   * English ones too, since many people say "next" in any language;
+   * numbers and ordinals are positional, so they stay one language.
+   */
+  _voiceVocabulary() {
+    const both = (local, en) =>
+      merlinWordList(local).concat(merlinWordList(en)).join("|");
+    const en = MERLIN_VOICE_VOCAB_EN;
+    return merlinVoiceVocab({
+      fillers: both(this.t.voiceFillers, en.fillers),
+      stopWords: both(this.t.voiceStopWords, en.stopWords),
+      numbers: this.t.voiceNumbers,
+      ordinals: this.t.voiceOrdinals,
+      pickPrefixes: both(this.t.voicePickPrefixes, en.pickPrefixes),
+      pickSuffix: both(this.t.voicePickSuffix, en.pickSuffix),
+      numberSoundalikes: both(
+        this.t.voiceNumberSoundalikes,
+        en.numberSoundalikes,
+      ),
+      next: both(this.t.voiceNext, en.next),
+      back: both(this.t.voiceBack, en.back),
+      run: both(this.t.voiceRun, en.run),
+      clear: both(this.t.voiceClear, en.clear),
+      cancel: both(this.t.voiceCancel, en.cancel),
+      help: both(this.t.voiceHelp, en.help),
+    });
+  }
+
+  _ui() {
+    return this.shadowRoot
+      ? this.shadowRoot.querySelector("super-daemon-ui")
+      : null;
+  }
+
+  /**
+   * Words so far, while someone is still talking. Only the card changes;
+   * results are not filtered until the words are final.
+   * @param {string} text
+   */
+  _voiceInterim(text) {
+    if (this.listeningForInput && this.toastInstance) {
+      this.toastInstance.heard = text;
+    }
+  }
+
+  /**
+   * Update the voice card: what was heard and a tip for what to say next.
+   */
+  _voiceCard(heard, hint, hintSay, sayList) {
+    const toast = this.toastInstance;
+    if (!toast) {
+      return;
+    }
+    toast.heard = heard || "";
+    toast.hint = hint || "";
+    toast.hintSay = hintSay || "";
+    toast.sayList = sayList || [];
+  }
+
+  /** "second one" in the user's language */
+  _voicePickPhrase(vocab) {
+    const ordinal = vocab.ordinals[2] || "2";
+    return vocab.pickSuffix.length
+      ? ordinal + " " + vocab.pickSuffix[0]
+      : ordinal;
+  }
+
+  /**
+   * A different tip each time listening starts, so people learn what
+   * they can say without a manual.
+   */
+  _showVoiceTip() {
+    const vocab = this._voiceVocabulary();
+    const tips = [
+      [this.t.voiceTipPick, this._voicePickPhrase(vocab)],
+      [this.t.voiceTipNext, vocab.next[0]],
+      [this.t.voiceTipClear, vocab.clear[0]],
+      [this.t.voiceTipHelp, vocab.help[0]],
+    ];
+    const tip = tips[this._voiceTip % tips.length];
+    this._voiceTip++;
+    this._voiceCard("", tip[0], tip[1]);
+  }
+
+  /** Everything that can be said right now, for "help" */
+  _voiceHelp(vocab) {
+    const ui = this._ui();
+    const list = [
+      { say: this._voicePickPhrase(vocab), label: this.t.voiceRunResult },
+      { say: vocab.next[0], label: this.t.voiceMoveDown },
+      { say: vocab.back[0], label: this.t.voiceMoveUp },
+      { say: vocab.run[0], label: this.t.voiceRunHighlighted },
+      { say: vocab.clear[0], label: this.t.voiceStartOver },
+      { say: this.t.sayStopListening, label: this.t.voiceStopListeningLabel },
+      { say: this.t.sayCloseMerlin, label: this.t.voiceCloseLabel },
+    ];
+    // and the first few results by name
+    const shown = ui && ui.filtered ? ui.filtered.slice(0, 3) : [];
+    shown.forEach((item) => {
+      list.push({ say: (item.voice || item.title).toLowerCase(), label: "" });
+    });
+    this._voiceCard("", this.t.voiceYouCanSay, "", list);
+  }
+
+  /**
+   * A result ran by voice: stop listening unless it opened a program,
+   * which takes spoken input next.
+   */
+  _voiceAfterRun(item) {
+    if (item && item.value && item.value.program) {
+      this.playSound().then(() => {
+        const ui = this._ui();
+        if (ui) {
+          ui.focusInput();
+        }
+      });
+      return;
+    }
+    this.playSound("success");
+    this.setListeningStatus(false);
+  }
+
+  /** Run the result at an index in what is shown */
+  _voicePickAt(index) {
+    const ui = this._ui();
+    const item = ui && ui.filtered ? ui.filtered[index] : null;
+    if (!item || !ui.voicePick(index)) {
+      return false;
+    }
+    this._voiceAfterRun(item);
+    return true;
+  }
+
+  /**
+   * Run one item: show it alone and select it, as the keyboard would.
+   * @param {Object} item
+   */
+  async _voiceRunItem(item) {
+    this.like = "";
+    this.value = item.title;
+    this.voiceRanked = [item];
+    await this.updateComplete;
+    const ui = this._ui();
+    if (ui) {
+      ui.like = "";
+      await ui.updateComplete;
+      ui.voicePick(0);
+    }
+    this._voiceAfterRun(item);
+  }
+
+  /**
+   * A navigation phrase: pick, next, back, run, clear, cancel, help.
+   * @returns {boolean} true when handled
+   */
+  _voiceGrammar(alternatives, vocab) {
+    const ui = this._ui();
+    for (let a = 0; a < alternatives.length; a++) {
+      const g = merlinParseVoiceGrammar(alternatives[a], vocab);
+      if (!g) {
+        continue;
+      }
+      switch (g.action) {
+        case "pick":
+          if (!this._voicePickAt(g.index)) {
+            this.playSound("error");
+            this._voiceCard(
+              alternatives[a],
+              this.t.voiceNoSuchResult.replace("{number}", g.index + 1),
+              this._voicePickPhrase(vocab),
+            );
+          }
+          return true;
+        case "next":
+        case "back":
+          if (ui) {
+            ui.voiceMove(g.action === "next" ? 1 : -1);
+          }
+          this._voiceCard(alternatives[a], this.t.voiceTipPick, vocab.run[0]);
+          return true;
+        case "run": {
+          const index =
+            ui && ui.voiceSelectedIndex >= 0 ? ui.voiceSelectedIndex : 0;
+          this._voicePickAt(index);
+          return true;
+        }
+        case "clear":
+          this.voiceRanked = null;
+          this.like = "";
+          if (ui) {
+            ui.like = "";
+          }
+          this._showVoiceTip();
+          return true;
+        case "cancel":
+          this.closeMerlin();
+          return true;
+        case "help":
+          this._voiceHelp(vocab);
+          return true;
+      }
+    }
+    return false;
+  }
+
+  /**
+   * Words for a running program. They go in the field like typing, and
+   * Merlin keeps listening so the numbered results can be picked by voice.
+   * @param {string} heard
+   * @param {Object} vocab
+   */
+  _voiceProgramInput(heard, vocab) {
+    const ui = this._ui();
+    if (ui) {
+      ui.like = heard;
+      ui.focusInput();
+    }
+    this.playSound("click");
+    this._voiceCard(
+      heard,
+      this.t.voiceShowingMatches,
+      this._voicePickPhrase(vocab),
+    );
+  }
+
+  /**
+   * Final words that were not a fixed command. Spoken search, no AI:
+   * 1. a navigation phrase ("second one", "next", "run") acts on results
+   * 2. otherwise score every alternative against the commands here
+   *    - high: one clear answer, run it
+   *    - medium: likely answers, show them and ask
+   *    - low: search with the words, so nothing is lost
+   * Inside a program, the words are the program's input.
+   * @param {Array<string>} alternatives best guess first
+   */
+  async _voiceHeard(alternatives) {
+    if (!alternatives || !alternatives.length || !this.listeningForInput) {
+      return;
+    }
+    const heard = alternatives[0];
+    const vocab = this._voiceVocabulary();
+    // a program lists its own options and numbers them too: "option 2",
+    // "next" and "run" act on them; anything else is the program's input
+    if (this.programName) {
+      if (this.opened && this._voiceGrammar(alternatives, vocab)) {
+        return;
+      }
+      this._voiceProgramInput(heard, vocab);
+      return;
+    }
+    if (this.opened && this._voiceGrammar(alternatives, vocab)) {
+      return;
+    }
+    const ranked = merlinRankVoice(alternatives, this._voiceEntries, vocab);
+    const band = merlinVoiceBand(ranked);
+    // closed (Santa mode) only acts on a clear answer
+    if (!this.opened) {
+      if (band === "high") {
+        this._voiceRunItem(ranked[0].item);
+      }
+      return;
+    }
+    if (band === "high") {
+      this._voiceCard(ranked[0].transcript);
+      this._voiceRunItem(ranked[0].item);
+      return;
+    }
+    const ui = this._ui();
+    if (band === "medium") {
+      this.like = "";
+      this.voiceRanked = ranked.slice(0, 5).map((r) => r.item);
+      await this.updateComplete;
+      if (ui) {
+        ui.like = "";
+        await ui.updateComplete;
+        ui.voiceHighlight(0);
+      }
+      this.playSound("click");
+      this._voiceCard(
+        ranked[0].transcript,
+        this.t.voiceDidYouMean.replace("{title}", ranked[0].item.title),
+        vocab.run[0],
+      );
+      return;
+    }
+    // low: the words become the search, and listening carries on
+    this.voiceRanked = null;
+    this.value = heard;
+    this.like = heard;
+    if (ui) {
+      ui.like = heard;
+      await this.updateComplete;
+      await ui.updateComplete;
+    }
+    const count = ui && ui.filtered ? ui.filtered.length : 0;
+    if (count) {
+      this.playSound("click");
+      this._voiceCard(
+        heard,
+        this.t.voiceShowingMatches,
+        this._voicePickPhrase(vocab),
+      );
+    } else {
+      this.playSound("error");
+      this._voiceCard(heard, this.t.voiceNoMatches, vocab.help[0]);
     }
   }
 

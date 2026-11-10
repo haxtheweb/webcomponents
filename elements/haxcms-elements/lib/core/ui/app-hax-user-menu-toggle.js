@@ -178,7 +178,7 @@ export class AppHaxUserMenuToggle extends DDDSuper(LitElement) {
 
         button:focus-visible {
           outline: var(--ddd-border-size-sm, 2px) solid
-            var(--ddd-theme-default-skyBlue);
+            var(--ddd-theme-default-skyBlue, #009cde);
           outline-offset: 2px;
         }
 

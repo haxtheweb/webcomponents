@@ -1392,7 +1392,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           transform: translateY(-1px);
         }
         .filter-btn:focus {
-          outline: var(--ddd-border-size-sm, 2px) solid
+          outline: var(--ddd-border-size-md, 2px) solid
             var(--ddd-theme-default-keystoneYellow, #ffd100);
           outline-offset: var(--ddd-spacing-1, 2px);
         }
@@ -1484,7 +1484,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           border-color: var(--ddd-theme-default-slateGray, #666);
         }
         .sort-select:focus {
-          outline: var(--ddd-border-size-sm, 2px) solid
+          outline: var(--ddd-border-size-md, 2px) solid
             var(--ddd-theme-default-keystoneYellow, #ffd100);
           outline-offset: var(--ddd-spacing-1, 2px);
         }
@@ -1513,7 +1513,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           transform: translateY(-1px);
         }
         .reset-button:focus {
-          outline: var(--ddd-border-size-sm, 2px) solid
+          outline: var(--ddd-border-size-md, 2px) solid
             var(--ddd-theme-default-keystoneYellow, #ffd100);
           outline-offset: var(--ddd-spacing-1, 2px);
         }

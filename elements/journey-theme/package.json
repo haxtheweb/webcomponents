@@ -29,7 +29,6 @@
     "test": "web-test-runner \"test/**/*.test.js\" --coverage --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium"
   },
   "dependencies": {
-    "@babel/core": "7.29.7",
     "@haxtheweb/d-d-d": "^26.8.0",
     "@haxtheweb/haxcms-elements": "^26.8.0",
     "@haxtheweb/i18n-manager": "^26.8.0",
@@ -47,7 +46,8 @@
     "@haxtheweb/deduping-fix": "^26.8.0",
     "@open-wc/testing": "4.0.0",
     "@web/dev-server": "0.4.6",
-    "concurrently": "9.2.5"
+    "concurrently": "9.2.5",
+    "@babel/core": "7.29.7"
   },
   "private": false,
   "publishConfig": {

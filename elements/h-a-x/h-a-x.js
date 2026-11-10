@@ -49,13 +49,6 @@ class HAX extends HTMLElement {
       outline: var(--hax-body-active-outline, 2px solid var(--hax-ui-color-focus, #000)) !important;
       caret-color: var(--hax-ui-caret-color, auto);
     }
-
-  :host([edit-mode])
-    #bodycontainer
-    ::slotted([contenteditable][data-hax-ray][data-hax-active]:empty:not([data-instructional-action]))::before {
-    content: "Type / to add blocks";
-    opacity: 0.4;
-  }
     </style>
     <hax-body>
         <slot></slot>

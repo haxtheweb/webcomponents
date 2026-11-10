@@ -45,7 +45,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           display: block;
           position: relative;
         }
-        :host([is-logged-in]) {
+        :host([is-logged-in]:not([preview-mode])) {
           max-height: calc(100vh - 56px);
         }
         :host #slot {
@@ -86,7 +86,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
   // render function
   render() {
     return html`
-      <site-ai-chat></site-ai-chat>
       <haxcms-site-router base-uri="${this.baseURI}"></haxcms-site-router>
       <simple-progress .disabled="${!this.loading}"></simple-progress>
       <div id="slot"><slot></slot></div>
@@ -183,9 +182,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
    */
   _updateManifest(data) {
     this.manifest = { ...data };
-  }
-  _updateLoading(e) {
-    this.loading = e.detail.value;
   }
   hashCode(s) {
     return s.split("").reduce((a, b) => {
@@ -469,10 +465,14 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     if (!this.file || this.isLoggedIn || this._timeStamp) {
       return false;
     }
-    let url = `${this.outlineLocation}${this.file}`;
-    url += url.indexOf("?") !== -1 ? `&${Date.now()}` : `?${Date.now()}`;
+    // same URL as the first load, revalidated: the browser sends
+    // If-None-Match / If-Modified-Since and an unchanged site.json comes back
+    // as a 304, instead of downloading the whole manifest again (it used to
+    // be no-store + a timestamp: a full second copy on every page load).
+    // no-cache also makes intermediate caches check with the server.
+    const url = `${this.outlineLocation}${this.file}`;
     try {
-      const response = await fetch(url, { cache: "no-store" });
+      const response = await fetch(url, { cache: "no-cache" });
       if (!response.ok) {
         return false;
       }
@@ -712,6 +712,14 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         type: Boolean,
         reflect: true,
         attribute: "is-logged-in",
+      },
+      /**
+       * logged in, but drawing the site as a visitor sees it
+       */
+      previewMode: {
+        type: Boolean,
+        reflect: true,
+        attribute: "preview-mode",
       },
       /**
        * queryParams
@@ -989,6 +997,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     });
     this.disableFeatures = "";
     this.isLoggedIn = false;
+    this.previewMode = false;
     this.__disposer = [];
     this.queryParams = {};
     this.loading = false;
@@ -1061,12 +1070,21 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       const _mobx_val_0 = toJS(store.darkMode);
       const _mobx_val_1 = toJS(store.darkMode);
       Promise.resolve().then(() => {
-        localStorageSet("app-hax-darkMode", _mobx_val_0);
+        // preview's light / dark switch is for the preview only; never save it
+        if (!store.previewMode && !store.inPreviewFrame) {
+          localStorageSet("app-hax-darkMode", _mobx_val_0);
+        }
         if (_mobx_val_1) {
           globalThis.document.body.classList.add("dark-mode");
         } else {
           globalThis.document.body.classList.remove("dark-mode");
         }
+      });
+    });
+    autorun(() => {
+      const _mobx_val_0 = toJS(store.previewMode);
+      Promise.resolve().then(() => {
+        this.previewMode = _mobx_val_0;
       });
     });
     autorun(() => {

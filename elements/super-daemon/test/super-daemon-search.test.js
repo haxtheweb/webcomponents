@@ -142,6 +142,29 @@ describe("super-daemon-search behavior", () => {
     });
   });
 
+  it("hides the voice button once speech proved unavailable", async () => {
+    await withSpeech(
+      function FakeRecognition() {},
+      async () => {
+        globalThis.Hal9000 = globalThis.Hal9000 || {};
+        const prior = globalThis.Hal9000.instance;
+        globalThis.Hal9000.instance = { canListen: false };
+        try {
+          const el = await fixture(
+            html`<super-daemon-search voice-search></super-daemon-search>`,
+          );
+          expect(el.shadowRoot.querySelector("button.voice")).to.be.null;
+          globalThis.Hal9000.instance = { canListen: true };
+          el.requestUpdate();
+          await el.updateComplete;
+          expect(el.shadowRoot.querySelector("button.voice")).to.exist;
+        } finally {
+          globalThis.Hal9000.instance = prior;
+        }
+      },
+    );
+  });
+
   it("shows the meter, label and pressed state while listening", async () => {
     await withSpeech(
       function FakeRecognition() {},
@@ -458,5 +481,47 @@ describe("super-daemon-search behavior", () => {
     expect(element.possibleActions.join(" ").includes("opens Merlin")).to.equal(
       true,
     );
+  });
+});
+
+describe("super-daemon-search idle shortcut chip", () => {
+  it("shows Merlin's open shortcut only while the top bar field is idle", async () => {
+    const sdi = globalThis.SuperDaemonManager.requestAvailability();
+    const el = await fixture(
+      html`<super-daemon-search mini wand show-shortcut></super-daemon-search>`,
+    );
+    const chip = () => el.shadowRoot.querySelector(".shortcut");
+    expect(chip()).to.exist;
+    expect(chip().textContent.trim()).to.equal(
+      sdi.key2 === "Shift" ? `${sdi.key1}\u21e7` : `${sdi.key1}+${sdi.key2}`,
+    );
+    el.focused = true;
+    await el.updateComplete;
+    expect(chip()).to.be.null;
+    el.focused = false;
+    el.value = "things";
+    await el.updateComplete;
+    expect(chip()).to.be.null;
+    el.value = "";
+    el.programRunning = true;
+    await el.updateComplete;
+    expect(chip()).to.be.null;
+  });
+
+  it("never shows the chip without show-shortcut (the open popover field)", async () => {
+    const el = await fixture(
+      html`<super-daemon-search mini wand></super-daemon-search>`,
+    );
+    expect(el.shadowRoot.querySelector(".shortcut")).to.be.null;
+  });
+
+  it("drops the slash command wand while a program runs", async () => {
+    const el = await fixture(
+      html`<super-daemon-search command-context="/"></super-daemon-search>`,
+    );
+    expect(el.shadowRoot.querySelector(".user-context-icon")).to.exist;
+    el.programRunning = true;
+    await el.updateComplete;
+    expect(el.shadowRoot.querySelector(".user-context-icon")).to.be.null;
   });
 });

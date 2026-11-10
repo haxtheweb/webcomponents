@@ -116,6 +116,29 @@ class MapMenuSubmenu extends LitElement {
         :host([is-flex][is-nested]) a11y-collapse::part(icon) {
           display: none;
         }
+        /* the page open now: the progress ring is the border of its expand
+           control, so the chevron drops its own disc and takes the row's
+           text colour (map-menu-header draws the ring around it) */
+        :host([data-active-ring]) a11y-collapse::part(icon) {
+          color: var(
+            --map-menu-item-a-active-color,
+            var(--map-menu-item-a-color, currentColor)
+          );
+          background-color: transparent;
+        }
+        /* the page open now is done: its expand control is the filled disc
+           of the progress ring (see map-menu-header), the chevron drawn in
+           the row background so it keeps the contrast of the active text */
+        :host([data-active-done]) a11y-collapse::part(icon) {
+          color: var(
+            --map-menu-item-a-active-background-color,
+            var(--ddd-theme-default-black, black)
+          );
+          background-color: var(
+            --map-menu-item-a-active-color,
+            var(--map-menu-item-a-color, currentColor)
+          );
+        }
         :host([is-flex][is-nested]) map-menu-header::part(icon) {
           display: none;
         }
@@ -137,6 +160,7 @@ class MapMenuSubmenu extends LitElement {
     this.label = "";
     this.status = "";
     this.progress = "";
+    this.activeProgress = null;
     this.itemtitle = "";
     this.locked = false;
     this.published = true;
@@ -219,6 +243,7 @@ class MapMenuSubmenu extends LitElement {
           ?locked="${this.locked}"
           status="${this.status}"
           progress="${this.progress}"
+          .activeProgress="${this.activeProgress}"
         ></map-menu-header>
         <slot></slot>
       </a11y-collapse>
@@ -317,7 +342,31 @@ class MapMenuSubmenu extends LitElement {
         type: String,
         reflect: true,
       },
+      /**
+       * Percent (0 to 1) of the page this item opens while it is the page
+       * open now (passed to its header, which draws the ring); else null
+       */
+      activeProgress: {
+        type: Number,
+        attribute: "active-progress",
+      },
     };
+  }
+
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    if (changedProperties.has("activeProgress")) {
+      this.toggleAttribute(
+        "data-active-ring",
+        typeof this.activeProgress === "number" && this.activeProgress >= 0,
+      );
+      this.toggleAttribute(
+        "data-active-done",
+        typeof this.activeProgress === "number" && this.activeProgress >= 1,
+      );
+    }
   }
 
   _headerClickHandler(_e) {

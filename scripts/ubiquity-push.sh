@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# Run as a yarn (v1) script, this shell inherits yarn's npm_config_argv and
+# npm_config_version_* settings. The npm builds and publishes below do not
+# know them and print an "Unknown env config" warning per name per call, which
+# buries real warnings in the output. npm has no such settings, so drop them.
+for v in $(compgen -e | grep -E '^npm_config_(argv$|version_)'); do
+  unset "$v"
+done
+
 # deep breath..e
 
 ## STEP 0 publish all current assets
@@ -30,6 +38,12 @@ cp ~/haxtheweb/webcomponents/wc-registry-graph.json ~/haxtheweb/webcomponents/el
 # into haxcms-php, so PHP sites get it automatically. The system set goes to both
 # deployment roots explicitly (they are not part of the boilerplate mirror).
 cd ~/haxtheweb/praw
+# praw pins the HAX CLI release its onboarding script and hax-onboarding plugin
+# hook install; both read a .version file (the plugin cache only holds the plugin
+# directory, so it needs its own copy). Write them before the index build, which
+# fails if they are missing, not x.y.z, or disagree.
+cp ~/haxtheweb/webcomponents/.version ~/haxtheweb/praw/.version
+cp ~/haxtheweb/webcomponents/.version ~/haxtheweb/praw/plugins/hax-onboarding/.version
 node scripts/build-agent-skills-index.js
 node scripts/snapshot-agent-skills.js site ~/haxtheweb/haxcms-nodejs/src/boilerplate/site/.well-known/agent-skills
 node scripts/snapshot-agent-skills.js system ~/haxtheweb/haxcms-nodejs/.well-known/agent-skills
@@ -148,10 +162,37 @@ cd ~/haxtheweb/webcomponents
 node scripts/outline-designer-contract-fixture.mjs --nodejs ~/haxtheweb/haxcms-nodejs --php ~/haxtheweb/haxcms-php || echo "WARNING: outline-designer contract fixture not refreshed"
 
 ## STEP 4 NODEJS IS BOILERPLATE AND CORECONFIG FOR PHP VERSION
-rm -rf ~/haxtheweb/haxcms-php/system/boilerplate
-cp -R ~/haxtheweb/haxcms-nodejs/src/boilerplate ~/haxtheweb/haxcms-php/system/boilerplate
-rm -rf ~/haxtheweb/haxcms-php/system/coreConfig
-cp -R ~/haxtheweb/haxcms-nodejs/src/coreConfig ~/haxtheweb/haxcms-php/system/coreConfig
+# mirror_from_nodejs <haxcms-nodejs dir> <haxcms-php dir>
+# Two guards, because a plain rm -rf + cp -R has bitten us both ways:
+#  1. Only files git would commit in haxcms-nodejs are copied (tracked, plus
+#     new files not ignored). haxcms-nodejs git-ignores the runtime secrets a
+#     local run writes into src/boilerplate/systemsetup (.pk, .rpk, SALT.txt,
+#     .user, .initial-admin-password); a cp -R copied them into haxcms-php,
+#     where `git add -A` committed them to a public repo.
+#  2. Stop if haxcms-php has a file there that haxcms-nodejs does not: the
+#     mirror would delete it (this is how systemsetup/.published-htaccess was
+#     lost). Add the file to haxcms-nodejs first, then rerun.
+mirror_from_nodejs() {
+  local src_rel="$1" dst_rel="$2"
+  local node=~/haxtheweb/haxcms-nodejs php=~/haxtheweb/haxcms-php
+  local node_list php_list extra
+  node_list=$(cd "$node" && git ls-files --cached --others --exclude-standard -- "$src_rel" \
+    | while IFS= read -r f; do [ -e "$f" ] && printf '%s\n' "${f#"$src_rel"/}"; done | sort -u)
+  php_list=$(cd "$php" && git ls-files --cached -- "$dst_rel" \
+    | while IFS= read -r f; do printf '%s\n' "${f#"$dst_rel"/}"; done | sort -u)
+  extra=$(comm -13 <(printf '%s\n' "$node_list") <(printf '%s\n' "$php_list"))
+  if [ -n "$extra" ]; then
+    echo "ERROR: haxcms-php/$dst_rel has files haxcms-nodejs/$src_rel does not."
+    echo "The mirror would delete them. Add them to haxcms-nodejs (it is the source), then rerun:"
+    printf '  %s\n' $extra
+    exit 1
+  fi
+  rm -rf "${php:?}/$dst_rel"
+  mkdir -p "$php/$dst_rel"
+  (cd "$node/$src_rel" && printf '%s\n' "$node_list" | tar -cf - -T -) | tar -xf - -C "$php/$dst_rel"
+}
+mirror_from_nodejs src/boilerplate system/boilerplate
+mirror_from_nodejs src/coreConfig system/coreConfig
 
 # create cli needs wc-reg for validation purposes
 cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/create/src/lib/wc-registry.json
@@ -163,6 +204,10 @@ yarn run build-gallery
 
 
 ## STEP 5 VERSION CONTROL ALL THE THINGS AND TAG
+# stop before tagging anything if a package is already past .version
+# (e.g. a haxcms-nodejs hotfix): --release-as would tag backwards and the
+# npm publishes would fail partway through the run
+node ~/haxtheweb/webcomponents/scripts/check-ecosystem-version.mjs --strict || exit 1
 # read in version from file
 version=$(cat ~/haxtheweb/webcomponents/.version 2>/dev/null || cat ~/haxtheweb/webcomponents/VERSION.txt)
 
@@ -177,6 +222,13 @@ git pull origin master
 git add -A
 git commit -m "ubiquity publish"
 git push --follow-tags origin master
+
+# praw: CLI pin (.version) and the agent-skills index written in STEP 1.5
+cd ~/haxtheweb/praw
+git pull origin main
+git add -A
+git commit -m "ubiquity publish"
+git push origin main
 
 cd ~/haxtheweb/hax11ty/
 git pull origin master

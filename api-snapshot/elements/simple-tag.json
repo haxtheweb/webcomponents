@@ -1,0 +1,47 @@
+{
+  "tag": "simple-tag",
+  "package": "@haxtheweb/simple-fields",
+  "source": "elements/simple-fields/lib/simple-tag.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "auto-accent-color": "autoAccentColor",
+    "cancel-button": "cancelButton",
+    "dark": "dark",
+    "data": "data",
+    "disabled": "disabled",
+    "icon": "icon",
+    "is-safari": "isSafari",
+    "readonly": "readonly",
+    "t": "t",
+    "toggled": "toggled",
+    "toggled-icon": "toggledIcon",
+    "toggles": "toggles",
+    "value": "value"
+  },
+  "slots": [],
+  "events": [
+    "simple-tag-clicked"
+  ],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/simple-fields/lib/simple-tag.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "accentColor",
+      "autoAccentColor",
+      "cancelButton",
+      "disabled",
+      "readonly",
+      "toggled",
+      "toggledIcon",
+      "toggles",
+      "value"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "simple-tag"
+    ]
+  }
+}

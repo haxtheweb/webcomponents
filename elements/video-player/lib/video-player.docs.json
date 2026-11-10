@@ -4,27 +4,15 @@
   "package": "@haxtheweb/video-player",
   "version": "26.8.0",
   "license": "Apache-2.0",
-  "title": "Video",
-  "description": "Accessible video playback across multiple sources.",
-  "icon": "av:play-circle-filled",
-  "tags": [
-    "Media",
-    "youtube",
-    "watch",
-    "vimeo",
-    "twitch",
-    "mp4",
-    "webm",
-    "ogg",
-    "video-player",
-    "a11y",
-    "media-player"
-  ],
-  "haxCapable": true,
+  "title": "video-player",
+  "description": "Accessible video playback across multiple sources",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
   "import": "@haxtheweb/video-player/video-player.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/video-player/video-player.js",
   "install": "npm i @haxtheweb/video-player",
-  "demoHtml": "<video-player source=\"https://www.youtube.com/watch?v=LrS7dqokTLE\" data-width=\"75\" data-margin=\"center\"></video-player>",
+  "demoHtml": "",
   "attributes": [
     {
       "name": "typeof",
@@ -48,11 +36,7 @@
       "type": "string",
       "default": "",
       "description": "Optional accent color for controls, using these colors: `red`, `pink`, `purple`, `deep-purple`, `indigo`, `blue`, `light-blue`, `cyan`, `teal`, `green`, `light-green`, `lime`, `yellow`, `amber`, orange, deep-orange, and brown. Default is null.",
-      "hax": {
-        "title": "Accent color",
-        "input": "colorpicker",
-        "options": null
-      }
+      "hax": null
     },
     {
       "name": "crossorigin",
@@ -60,15 +44,7 @@
       "type": "string",
       "default": "\"anonymous\"",
       "description": "Cross origin flag for transcripts to load",
-      "hax": {
-        "title": "Crossorigin",
-        "input": "select",
-        "options": {
-          "": "",
-          "anonymous": "anonymous",
-          "use-credentials": "use-credentials"
-        }
-      }
+      "hax": null
     },
     {
       "name": "dark",
@@ -84,11 +60,7 @@
       "type": "boolean",
       "default": "false",
       "description": "Use dark theme on transcript? Default is false, even when player is dark.",
-      "hax": {
-        "title": "Dark theme for transcript",
-        "input": "boolean",
-        "options": null
-      }
+      "hax": null
     },
     {
       "name": "disable-interactive",
@@ -96,11 +68,7 @@
       "type": "boolean",
       "default": "false",
       "description": "disable interactive mode that makes transcript clickable",
-      "hax": {
-        "title": "Disable Interactive",
-        "input": "boolean",
-        "options": null
-      }
+      "hax": null
     },
     {
       "name": "height",
@@ -116,11 +84,7 @@
       "type": "boolean",
       "default": "false",
       "description": "show cue's start and end time",
-      "hax": {
-        "title": "Hide timestamps",
-        "input": "boolean",
-        "options": null
-      }
+      "hax": null
     },
     {
       "name": "hide-transcript",
@@ -128,11 +92,7 @@
       "type": "boolean",
       "default": "false",
       "description": "Hide transcript by default",
-      "hax": {
-        "title": "Hide Transcript",
-        "input": "boolean",
-        "options": null
-      }
+      "hax": null
     },
     {
       "name": "id",
@@ -148,11 +108,7 @@
       "type": "boolean",
       "default": "false",
       "description": "Learning mode",
-      "hax": {
-        "title": "Enable learning mode",
-        "input": "boolean",
-        "options": null
-      }
+      "hax": null
     },
     {
       "name": "lang",
@@ -160,11 +116,7 @@
       "type": "string",
       "default": "\"en\"",
       "description": "Language of media",
-      "hax": {
-        "title": "Language",
-        "input": "textfield",
-        "options": null
-      }
+      "hax": null
     },
     {
       "name": "linkable",
@@ -172,11 +124,7 @@
       "type": "boolean",
       "default": "false",
       "description": "Include a share link?",
-      "hax": {
-        "title": "Include a share link?",
-        "input": "boolean",
-        "options": null
-      }
+      "hax": null
     },
     {
       "name": "media-title",
@@ -184,11 +132,7 @@
       "type": "string",
       "default": "",
       "description": "Simple caption for video",
-      "hax": {
-        "title": "Title",
-        "input": "textfield",
-        "options": null
-      }
+      "hax": null
     },
     {
       "name": "hide-youtube-link",
@@ -196,11 +140,7 @@
       "type": "boolean",
       "default": "false",
       "description": "Open on YouTube button",
-      "hax": {
-        "title": "Remove open on YouTube button",
-        "input": "boolean",
-        "options": null
-      }
+      "hax": null
     },
     {
       "name": "source",
@@ -208,11 +148,7 @@
       "type": "string",
       "default": "\"\"",
       "description": "Single sources of video",
-      "hax": {
-        "title": "Source",
-        "input": "haxupload",
-        "options": null
-      }
+      "hax": null
     },
     {
       "name": "sources",
@@ -252,11 +188,7 @@
       "type": "array",
       "default": "[]",
       "description": "Array of text tracks, eg. `[{ \"src\": \"path/to/track.vtt\", \"label\": \"English\", \"srclang\": \"en\", \"kind\": \"subtitles\", }]`",
-      "hax": {
-        "title": "Text tracks",
-        "input": "array",
-        "options": null
-      }
+      "hax": null
     },
     {
       "name": "thumbnail-src",
@@ -264,11 +196,7 @@
       "type": "string",
       "default": "",
       "description": "Source of optional thumbnail image",
-      "hax": {
-        "title": "Poster image",
-        "input": "haxupload",
-        "options": null
-      }
+      "hax": null
     },
     {
       "name": "width",
@@ -292,11 +220,7 @@
       "type": "boolean",
       "default": "false",
       "description": "Option to allow playing while not active tab",
-      "hax": {
-        "title": "Allow background playback",
-        "input": "boolean",
-        "options": null
-      }
+      "hax": null
     },
     {
       "name": "start-time",
@@ -304,11 +228,7 @@
       "type": "null",
       "default": "null",
       "description": "Start time for video",
-      "hax": {
-        "title": "Start time",
-        "input": "number",
-        "options": null
-      }
+      "hax": null
     },
     {
       "name": "end-time",
@@ -316,11 +236,7 @@
       "type": "null",
       "default": "null",
       "description": "End time for video",
-      "hax": {
-        "title": "End time",
-        "input": "number",
-        "options": null
-      }
+      "hax": null
     },
     {
       "name": "audio-description-source",
@@ -328,11 +244,7 @@
       "type": "string",
       "default": "\"\"",
       "description": "URL to audio description track (MP3 file)",
-      "hax": {
-        "title": "Audio Description Track",
-        "input": "haxupload",
-        "options": null
-      }
+      "hax": null
     },
     {
       "name": "audio-description-enabled",
@@ -347,249 +259,8 @@
     "caption"
   ],
   "events": [],
-  "hax": {
-    "canScale": {
-      "min": 50,
-      "step": 25
-    },
-    "designSystem": {
-      "card": true
-    },
-    "canEditSource": true,
-    "gizmo": {
-      "title": "Video",
-      "description": "Accessible video playback across multiple sources.",
-      "icon": "av:play-circle-filled",
-      "color": "red",
-      "tags": [
-        "Media",
-        "youtube",
-        "watch",
-        "vimeo",
-        "twitch",
-        "mp4",
-        "webm",
-        "ogg",
-        "video-player",
-        "a11y",
-        "media-player"
-      ],
-      "handles": [
-        {
-          "type": "video",
-          "type_exclusive": true,
-          "source": "source",
-          "title": "caption",
-          "caption": "caption",
-          "description": "caption",
-          "color": "primaryColor"
-        }
-      ],
-      "meta": {
-        "author": "HAXTheWeb core team",
-        "outlineDesigner": true,
-        "anchorLabel": "mediaTitle"
-      }
-    },
-    "settings": {
-      "configure": [
-        {
-          "property": "source",
-          "title": "Source",
-          "description": "URL for this media.",
-          "inputMethod": "haxupload",
-          "noCamera": true,
-          "noVoiceRecord": true,
-          "noScreenRecord": false,
-          "validationType": "url"
-        },
-        {
-          "property": "mediaTitle",
-          "title": "Title",
-          "description": "Title shown below the video.",
-          "inputMethod": "textfield",
-          "validationType": "text"
-        },
-        {
-          "property": "thumbnailSrc",
-          "title": "Poster image",
-          "description": "Poster image URL.",
-          "inputMethod": "haxupload",
-          "fileActions": true,
-          "noVoiceRecord": true,
-          "noScreenRecord": true,
-          "validationType": "url"
-        }
-      ],
-      "advanced": [
-        {
-          "property": "tracks",
-          "title": "Text tracks",
-          "description": "Closed captions, subtitles, descriptions, and other text tracks for the video.",
-          "inputMethod": "array",
-          "itemLabel": "label",
-          "properties": [
-            {
-              "property": "src",
-              "title": "Track file",
-              "description": "URL for the track file (WebVTT format).",
-              "inputMethod": "haxupload",
-              "noVoiceRecord": true,
-              "noCamera": true,
-              "noScreenRecord": true,
-              "validationType": "url"
-            },
-            {
-              "property": "label",
-              "title": "Label",
-              "description": "Label for the track (e.g., 'English', 'Spanish', 'Audio Description').",
-              "inputMethod": "textfield",
-              "validationType": "text"
-            },
-            {
-              "property": "srclang",
-              "title": "Language code",
-              "description": "Two-letter language code (e.g., 'en', 'es', 'fr').",
-              "inputMethod": "textfield",
-              "validationType": "text"
-            },
-            {
-              "property": "kind",
-              "title": "Track type",
-              "description": "The type of text track.",
-              "inputMethod": "select",
-              "options": {
-                "subtitles": "Subtitles",
-                "captions": "Captions",
-                "descriptions": "Descriptions",
-                "chapters": "Chapters",
-                "metadata": "Metadata"
-              }
-            }
-          ]
-        },
-        {
-          "property": "startTime",
-          "title": "Start time",
-          "description": "Start video at a specific time (seconds).",
-          "inputMethod": "number"
-        },
-        {
-          "property": "endTime",
-          "title": "End time",
-          "description": "End video at a specific time (seconds), requires a start time.",
-          "inputMethod": "number"
-        },
-        {
-          "property": "learningMode",
-          "title": "Enable learning mode",
-          "description": "Disables fast forward and rewind.",
-          "inputMethod": "boolean"
-        },
-        {
-          "property": "hideYoutubeLink",
-          "title": "Remove open on YouTube button",
-          "description": "Removes the button for opening the video on YouTube.",
-          "inputMethod": "boolean"
-        },
-        {
-          "property": "linkable",
-          "title": "Include a share link?",
-          "description": "Provides a link to share the video.",
-          "inputMethod": "boolean"
-        },
-        {
-          "property": "hideTimestamps",
-          "title": "Hide timestamps",
-          "description": "Hide the time stamps on the transcript.",
-          "inputMethod": "boolean"
-        },
-        {
-          "property": "hideTranscript",
-          "title": "Hide Transcript",
-          "description": "Hide transcript by default.",
-          "inputMethod": "boolean"
-        },
-        {
-          "property": "audioDescriptionSource",
-          "title": "Audio Description Track",
-          "description": "URL to an audio description track (MP3 file) that provides narration of visual elements.",
-          "inputMethod": "haxupload",
-          "noCamera": true,
-          "noVoiceRecord": true,
-          "noScreenRecord": true,
-          "validationType": "url"
-        }
-      ],
-      "developer": [
-        {
-          "property": "crossorigin",
-          "title": "Crossorigin",
-          "description": "Indicates whether to use CORS.",
-          "inputMethod": "select",
-          "options": {
-            "": "",
-            "anonymous": "anonymous",
-            "use-credentials": "use-credentials"
-          }
-        },
-        {
-          "property": "allowBackgroundPlay",
-          "title": "Allow background playback",
-          "description": "Keep playing when the browser tab loses focus.",
-          "inputMethod": "boolean"
-        },
-        {
-          "property": "darkTranscript",
-          "title": "Dark theme for transcript",
-          "description": "Enable dark theme for the transcript.",
-          "inputMethod": "boolean"
-        },
-        {
-          "property": "disableInteractive",
-          "title": "Disable Interactive",
-          "description": "Disable interactive mode that makes transcript clickable.",
-          "inputMethod": "boolean"
-        },
-        {
-          "property": "lang",
-          "title": "Language",
-          "description": "Language of the media.",
-          "inputMethod": "textfield",
-          "validationType": "text"
-        },
-        {
-          "property": "accentColor",
-          "title": "Accent color",
-          "description": "(deprecated) Select the accent color for the player.",
-          "inputMethod": "colorpicker"
-        }
-      ]
-    },
-    "saveOptions": {
-      "unsetAttributes": [
-        "__utils",
-        "__stand-alone",
-        "colors",
-        "playing",
-        "__forcePaused",
-        "t",
-        "source-type"
-      ]
-    },
-    "demoSchema": [
-      {
-        "tag": "video-player",
-        "properties": {
-          "source": "https://www.youtube.com/watch?v=LrS7dqokTLE",
-          "data-width": "75",
-          "data-margin": "center"
-        },
-        "content": ""
-      }
-    ]
-  },
-  "surfaceHash": "ab1410e46a31",
+  "hax": {},
+  "surfaceHash": "52d74e2e384e",
   "walkthroughs": [
     {
       "id": "",
@@ -597,13 +268,13 @@
       "order": 0,
       "src": "video-player.motion.json",
       "file": "lib/video-player.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/video-player.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

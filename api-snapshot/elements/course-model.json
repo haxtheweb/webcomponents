@@ -1,0 +1,44 @@
+{
+  "tag": "course-model",
+  "package": "@haxtheweb/course-model",
+  "source": "elements/course-model/course-model.js",
+  "attributes": {
+    "alt": "alt",
+    "poster": "poster",
+    "schemamap": "schemaMap",
+    "src": "src",
+    "t": "t",
+    "title": "title",
+    "typeof": "typeof",
+    "visible": "visible"
+  },
+  "slots": [
+    "(default)",
+    "animation",
+    "check",
+    "detail",
+    "logo"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/course-model/lib/course-model.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "alt",
+      "src",
+      "title"
+    ],
+    "attributes": [],
+    "slots": [
+      "animation",
+      "check",
+      "detail",
+      "logo"
+    ],
+    "demoTags": [
+      "course-model"
+    ]
+  }
+}

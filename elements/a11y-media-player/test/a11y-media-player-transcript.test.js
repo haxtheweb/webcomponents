@@ -411,3 +411,43 @@ describe("a11y-media-player custom captions for youtube and audio", () => {
     expect(el.shadowRoot.querySelector("#cc-custom")).to.not.exist;
   });
 });
+
+describe("a11y-media-player track loading", () => {
+  it("collects every cue of a <track> file, not just the first parsed", async () => {
+    let body = "WEBVTT\n\n";
+    for (let i = 0; i < 50; i++) {
+      const s = String(i).padStart(2, "0");
+      const e = String(i + 1).padStart(2, "0");
+      body += `00:00:${s}.000 --> 00:00:${e}.000\nCue ${i}\n\n`;
+    }
+    const src = "data:text/vtt;charset=utf-8," + encodeURIComponent(body);
+    const el = await fixture(
+      html`<a11y-media-player
+        ><video>
+          <track kind="subtitles" srclang="en" label="English" src="${src}" />
+        </video>
+      </a11y-media-player>`,
+    );
+    await waitUntil(() => el.cues.length > 0, "no cues", {
+      interval: 20,
+      timeout: 5000,
+    });
+    await new Promise((r) => setTimeout(r, 200));
+    expect(el.cues.length).to.equal(50);
+  });
+
+  it("the seek slider gets the media duration as soon as it is known", async () => {
+    const el = await fixture(
+      html`<a11y-media-player><video></video></a11y-media-player>`,
+    );
+    await el.updateComplete;
+    const media = el.querySelector("video");
+    Object.defineProperty(media, "duration", {
+      configurable: true,
+      get: () => 42,
+    });
+    media.dispatchEvent(new Event("loadedmetadata"));
+    await el.updateComplete;
+    expect(el.shadowRoot.querySelector("#slider").max).to.equal(42);
+  });
+});

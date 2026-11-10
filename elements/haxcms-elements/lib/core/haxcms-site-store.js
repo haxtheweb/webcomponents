@@ -12,6 +12,7 @@ import { JsonOutlineSchema } from "@haxtheweb/json-outline-schema/json-outline-s
 import { DeviceDetails } from "@haxtheweb/replace-tag/lib/PerformanceDetect.js";
 import { SimpleIconsetStore } from "@haxtheweb/simple-icon/lib/simple-iconset.js";
 import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
+import { parsePreviewFrameName } from "./utils/HAXCMSPreview.js";
 import { I18NManagerStore } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 configure({ enforceActions: false }); // strict mode off
 function hasStoredSoundPreference() {
@@ -188,6 +189,14 @@ class Store {
         )
       : localStorageGet("app-hax-darkMode");
     this.responsiveSize = "";
+    // preview: an author who is logged in sees the site as a visitor would.
+    // Login state does not change; only what is drawn does. A page loaded in
+    // the preview frame (window name haxcms-preview-frame) starts in preview
+    // and never loads the editor.
+    this.previewMode = this.inPreviewFrame;
+    // the page preview started on: it and its parents stay visible even if
+    // unpublished. The frame gets it from its window name.
+    this.previewKeepId = parsePreviewFrameName(globalThis.name).keepId;
     this.showAllThemes = false;
     this.setupSlots = {
       "haxcms-site-editor-ui-prefix-avatar": [],
@@ -215,9 +224,6 @@ class Store {
       print: "Print page",
       "displays/style-guide": "Theme Style Guide",
       pageNotFound: "Page not found",
-      exitViewOnlyMode: "Exit View Only Mode",
-      viewOnlyModeMessage:
-        "You are now viewing the site as a visitor would see it. All editing tools are hidden.",
     };
     // Store is not an element; register it against the shared haxcms namespace
     I18NManagerStore.registerLocalization({
@@ -273,7 +279,9 @@ class Store {
       responsiveSize: observable, // viewport size bucket from theme responsive utility
       showAllThemes: observable, // reveal hidden/terrible/legacy themes in theme pickers
       isMobile: computed, // derived mobile mode for store consumers
-      viewOnlyMode: computed, // view only mode pref
+      previewMode: observable, // logged in, but drawing the site as a visitor sees it
+      previewKeepId: observable, // page preview started on; stays visible if unpublished
+      showUnpublished: computed, // logged in and not previewing
       soundStatus: observable, // toggle sounds on and off
       appReady: observable, // system is ready via firstUpdated of haxcms-site-builder
       badDevice: observable, // if we have a low performance device
@@ -574,8 +582,8 @@ class Store {
    * Ensure there's a copy of the site-editor globally available
    */
   cmsSiteEditorAvailability() {
-    // Check if we're in view-only mode - if so, don't create editor
-    if (this.viewOnlyMode) {
+    // the preview frame shows the site as a visitor sees it: no editor
+    if (this.inPreviewFrame) {
       return null;
     }
 
@@ -725,10 +733,23 @@ class Store {
           // if it got this far then it should be good.
           return true;
         };
-        // If the user is not logged in then we need to hide unpublished nodes items
-        if (!this.isLoggedIn) {
-          manifestItems = manifestItems.filter((i) =>
-            filterHiddenParentsRecursive(i),
+        // hide unpublished items from visitors, and while previewing. The
+        // page preview started on stays, with its parents, so its route
+        // still resolves and it can still be looked at.
+        if (!this.showUnpublished) {
+          const keep = {};
+          if (this.previewMode && this.previewKeepId) {
+            let current = manifestItems.find(
+              (i) => i.id === this.previewKeepId,
+            );
+            while (current && !keep[current.id]) {
+              keep[current.id] = true;
+              const parentId = current.parent;
+              current = manifestItems.find((i) => i.id === parentId);
+            }
+          }
+          manifestItems = manifestItems.filter(
+            (i) => keep[i.id] || filterHiddenParentsRecursive(i),
           );
         }
       }
@@ -991,32 +1012,20 @@ class Store {
     return { prev: null, next: null };
   }
 
-  // show view only mode toast with exit option
-  showViewOnlyModeToast() {
-    // Create exit button; no inline styles, the toast styles slotted
-    // buttons as HAX UI buttons and inline styles would override that
-    const exitButton = globalThis.document.createElement("button");
-    exitButton.type = "button";
-    exitButton.innerText = this.t.exitViewOnlyMode;
-    exitButton.addEventListener("click", () => {
-      // Remove ViewOnlyMode from session
-      UserScaffoldInstance.deleteMemory("ViewOnlyMode", "long");
-      setTimeout(() => {
-        globalThis.location.reload();
-      }, 300);
-    });
-    // Show toast with button
-    store.toast(this.t.viewOnlyModeMessage, 0, {
-      hat: "coffee",
-      slot: exitButton,
-    });
+  /**
+   * true when this page is the one rendered inside the editor's preview
+   * frame (haxcms-site-editor-ui names that iframe haxcms-preview-frame)
+   */
+  get inPreviewFrame() {
+    return parsePreviewFrameName(globalThis.name).inFrame;
   }
 
-  get viewOnlyMode() {
-    // UserScaffoldInstance does not exist during SSR (no document.body)
-    return UserScaffoldInstance
-      ? UserScaffoldInstance.readMemory("ViewOnlyMode")
-      : null;
+  /**
+   * unpublished pages are shown to logged in authors, but not while they
+   * preview the site as a visitor
+   */
+  get showUnpublished() {
+    return this.isLoggedIn && !this.previewMode;
   }
 
   get isMobile() {
@@ -1024,10 +1033,6 @@ class Store {
   }
 
   get isLoggedIn() {
-    // Check if we're in view-only mode - if so, treat as not logged in
-    if (this.viewOnlyMode) {
-      return false;
-    }
     const hasJWT = this.jwt && this.jwt != "null";
     if (!hasJWT) {
       return false;
@@ -1752,14 +1757,6 @@ globalThis.HAXCMS = globalThis.HAXCMS || {};
 globalThis.HAXCMS.setTheme = function (theme) {
   globalThis.HAXCMS.instance.store.manifest.metadata.theme.element = theme;
 };
-// developer command to force platform audience to change for testing
-globalThis.HAXCMS.setPlatformAudience = function (audience) {
-  if (!globalThis.HAXCMS.instance.store.manifest.metadata.platform) {
-    globalThis.HAXCMS.instance.store.manifest.metadata.platform = {};
-  }
-  globalThis.HAXCMS.instance.store.manifest.metadata.platform.audience =
-    audience;
-};
 // request if this exists. This helps invoke the element existing in the dom
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through the same modal
@@ -1936,13 +1933,14 @@ class HAXCMSSiteStore extends HTMLElement {
         }
       }
     });
-    autorun(() => {
-      setTimeout(() => {
-        if (store.viewOnlyMode) {
-          store.showViewOnlyModeToast();
-        }
-      }, 1000);
-    });
+    // View Only Mode was replaced by preview (haxtheweb/issues#2951); clear
+    // a leftover flag once so nobody is left without an editor or a way out
+    if (
+      UserScaffoldInstance &&
+      UserScaffoldInstance.readMemory("ViewOnlyMode")
+    ) {
+      UserScaffoldInstance.deleteMemory("ViewOnlyMode", "long");
+    }
 
     autorun(() => {
       const siblings = store.siblingsPrevNext;
@@ -2015,13 +2013,59 @@ class HAXCMSSiteStore extends HTMLElement {
   }
   // set the cursor to something else
   setCursor(icon = null, isIcon = true) {
+    // a newer call (or a reset) wins over a recolor still loading
+    this.__cursorToken = (this.__cursorToken || 0) + 1;
     if (!icon) {
       globalThis.document.body.style.removeProperty("cursor");
     } else {
+      const name = icon;
       if (isIcon) {
         icon = SimpleIconsetStore.getIcon(icon);
       }
       globalThis.document.body.style.cursor = `url("${icon}") 16 16, pointer`;
+      // iconset SVGs draw in black, which vanishes on a dark page: swap in
+      // a copy colored for the current mode, outlined in the opposite
+      // color so it reads over any background
+      if (isIcon && typeof icon === "string") {
+        this.__applyCursorForMode(name, icon, this.__cursorToken);
+      }
+    }
+  }
+  /**
+   * Recolor an iconset cursor for light / dark mode (cached per icon and mode)
+   * @param {string} name icon name, for the cache
+   * @param {string} url the icon's SVG
+   * @param {number} token setCursor call this belongs to
+   */
+  async __applyCursorForMode(name, url, token) {
+    const dark = !!store.darkMode;
+    const key = `${name}|${dark ? "dark" : "light"}`;
+    this.__cursorCache = this.__cursorCache || {};
+    try {
+      if (!this.__cursorCache[key]) {
+        const text = await fetch(url).then((r) => (r.ok ? r.text() : ""));
+        if (!text || text.indexOf("<svg") === -1) {
+          return;
+        }
+        const ink = dark ? "#ffffff" : "#000000";
+        const halo = dark ? "#000000" : "#ffffff";
+        // rebuild the root tag so the added attributes never duplicate
+        // ones the icon already sets (a duplicate makes the SVG invalid)
+        const svg = text.replace(/<svg\b([^>]*)>/, (_m, attrs) => {
+          const kept = attrs.replace(
+            /\s(width|height|style|fill|color|stroke|stroke-width|paint-order)="[^"]*"/g,
+            "",
+          );
+          return `<svg${kept} width="32" height="32" fill="${ink}" color="${ink}" stroke="${halo}" stroke-width="1" paint-order="stroke">`;
+        });
+        this.__cursorCache[key] =
+          `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      }
+      if (token === this.__cursorToken) {
+        globalThis.document.body.style.cursor = `url("${this.__cursorCache[key]}") 16 16, pointer`;
+      }
+    } catch {
+      // keep the plain icon cursor
     }
   }
   /**

@@ -251,7 +251,12 @@ class SiteSkeletonGenerator {
         id: uuidMap.get(item.id),
         title: item.title,
         slug: item.slug,
-        order: item.order || i,
+        // keep an explicit order (0 included); only fall back to the
+        // manifest position when the item has none
+        order:
+          item.order !== undefined && item.order !== null && item.order !== ""
+            ? item.order
+            : i,
         parent: item.parent ? uuidMap.get(item.parent) : null,
         indent: item.indent || 0,
         content: content,
@@ -432,7 +437,8 @@ class SiteSkeletonGenerator {
   static extractSiteSettings(manifest) {
     const metadata = manifest.metadata || {};
     const siteData = metadata.site || {};
-    const settings = siteData.settings || {};
+    // instance-specific timestamps never travel into a skeleton
+    const settings = this.cleanSiteSettings(siteData.settings || {});
 
     const extractedSettings = {};
 

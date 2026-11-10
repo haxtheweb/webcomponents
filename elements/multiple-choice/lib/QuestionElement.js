@@ -6,6 +6,8 @@ import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import {
   DDDBlockStyles,
   renderDDDBlockHeader,
+  renderDDDBlockChip,
+  celebrateDDDCompletion,
 } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 import { DDDStatusTokens } from "@haxtheweb/d-d-d/lib/DDDStatusTokens.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
@@ -296,9 +298,27 @@ export class QuestionElement extends SchemaBehaviors(
         return m && m[1] in parts ? parts[m[1]] : piece;
       });
   }
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
+    }
+    // a reset (Try again) hides the control the learner just used; note
+    // whether focus was inside so updated() can keep them in the question
+    if (
+      changedProperties.has("showAnswer") &&
+      changedProperties.get("showAnswer") === true &&
+      !this.showAnswer
+    ) {
+      this.__keepFocusAfterReset = this.matches(":focus-within");
+    }
+  }
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
+    }
+    if (this.__keepFocusAfterReset) {
+      this.__keepFocusAfterReset = false;
+      this._focusAfterReset();
     }
     changedProperties.forEach((oldValue, propName) => {
       let notifiedProps = ["answers", "displayedAnswers"];
@@ -412,6 +432,58 @@ export class QuestionElement extends SchemaBehaviors(
   }
 
   /**
+   * After Try again, the button that had focus is hidden or removed. Once the
+   * reset has rendered, move focus to the first answer control (or Check
+   * answer, or the status region) so a keyboard user keeps their place
+   * instead of falling back to the top of the page.
+   */
+  async _focusAfterReset() {
+    await this.updateComplete;
+    await new Promise((resolve) => requestAnimationFrame(resolve));
+    if (!this.isConnected || this.matches(":focus-within")) return;
+    const root = this.shadowRoot;
+    if (!root) return;
+    const body = root.querySelector(".shell-body, .container");
+    const check = root.querySelector("#check");
+    const target =
+      (body && this._firstFocusable(body)) ||
+      (check && !check.disabled && !check.hidden ? check : null) ||
+      root.querySelector("#feedback");
+    if (target) target.focus();
+  }
+
+  /**
+   * First keyboard-focusable element inside `node`, walking into open
+   * shadow roots and slotted content in composed-tree order.
+   */
+  _firstFocusable(node) {
+    const focusable =
+      'input, select, textarea, button, a[href], [tabindex]:not([tabindex="-1"])';
+    const visit = (el) => {
+      if (!el || el.nodeType !== 1) return null;
+      if (el.hidden || el.getAttribute("aria-hidden") === "true") return null;
+      if (el.getClientRects().length === 0 && el.tagName !== "SLOT")
+        return null;
+      if (el.matches(focusable) && !el.disabled && el.tabIndex >= 0) return el;
+      const kids = el.shadowRoot
+        ? el.shadowRoot.children
+        : el.tagName === "SLOT"
+          ? el.assignedElements({ flatten: true })
+          : el.children;
+      for (const kid of kids) {
+        const found = visit(kid);
+        if (found) return found;
+      }
+      return null;
+    };
+    for (const kid of node.children) {
+      const found = visit(kid);
+      if (found) return found;
+    }
+    return null;
+  }
+
+  /**
    * Return if the current answers are correct
    */
   isCorrect() {
@@ -477,6 +549,8 @@ export class QuestionElement extends SchemaBehaviors(
     ) {
       const transition = globalThis.document.startViewTransition(runCheck);
       transition.ready.catch(() => {});
+      // the completion burst waits for the transition to finish
+      this.__checkTransition = transition;
       // updateCallbackDone settles once runCheck has run; a skipped or
       // failed transition still runs it, so a rejection is not an error
       // here. A stand-in transition (polyfill, test) may not have it.
@@ -523,6 +597,44 @@ export class QuestionElement extends SchemaBehaviors(
     if (status === "correct" && this._isStackable() && !this.edit) {
       this._scheduleCompletionCollapse();
     }
+    if (status === "correct") {
+      this._celebration = this._celebrateCompletion();
+    }
+  }
+
+  // header chip: done once the learner answered correctly, now or on an
+  // earlier visit (see renderDDDBlockChip)
+  _chipDone() {
+    if (this._shellStatus() === "correct") {
+      return true;
+    }
+    return Boolean(this._restored && this._restored.status === "correct");
+  }
+
+  // the first correct answer bursts the header chip into its check, once;
+  // never for a question already answered correctly on an earlier visit,
+  // never on a wrong answer, never while editing (reduced motion: no burst,
+  // the chip just shows done; see celebrateDDDCompletion)
+  async _celebrateCompletion() {
+    if (
+      this._chipCelebrated ||
+      this._haxstate ||
+      this.edit ||
+      (this._restored && this._restored.status === "correct")
+    ) {
+      return false;
+    }
+    this._chipCelebrated = true;
+    const vt = this.__checkTransition;
+    this.__checkTransition = null;
+    if (vt && vt.finished && typeof vt.finished.then === "function") {
+      await vt.finished.catch(() => {});
+    }
+    await this.updateComplete;
+    const chip =
+      this.shadowRoot &&
+      this.shadowRoot.querySelector(".ddd-block-chip[data-done]");
+    return celebrateDDDCompletion(chip);
   }
 
   // plain copy of the current guess; null when it cannot be copied
@@ -880,6 +992,8 @@ export class QuestionElement extends SchemaBehaviors(
   }
   _clearLearnerProgress() {
     this._restored = null;
+    // progress was cleared: finishing it again is a first time again
+    this._chipCelebrated = false;
     this._dropRestored();
     this.requestUpdate();
   }
@@ -2199,9 +2313,11 @@ export class QuestionElement extends SchemaBehaviors(
           aria-controls="shell-panel"
           @click="${this._toggleCollapsed}"
         >
-          <span class="ddd-block-chip" aria-hidden="true">
-            <simple-icon-lite icon="hax:head-question"></simple-icon-lite>
-          </span>
+          ${renderDDDBlockChip({
+            icon: "hax:head-question",
+            done: this._chipDone(),
+            doneLabel: this.t.correct,
+          })}
           <span class="ddd-block-text">
             <span class="ddd-block-label" id="eyebrow"
               >${this.renderEyebrow()}</span
@@ -2337,6 +2453,10 @@ export class QuestionElement extends SchemaBehaviors(
               : renderDDDBlockHeader({
                   id: "eyebrow",
                   icon: "hax:head-question",
+                  // the feedback region already says it was correct
+                  done: this._chipDone(),
+                  doneLabel: this.t.correct,
+                  speakDone: false,
                   label: this.renderEyebrow(),
                   actions: this.renderHeaderTools(hasRelated),
                 })

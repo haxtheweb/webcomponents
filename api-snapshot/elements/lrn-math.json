@@ -1,0 +1,22 @@
+{
+  "tag": "lrn-math",
+  "package": "@haxtheweb/lrn-math",
+  "source": "elements/lrn-math/lrn-math.js",
+  "attributes": {
+    "mathtext": "mathtext"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/lrn-math/lrn-math.js",
+    "gizmo": true,
+    "properties": [
+      "mathtext"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": []
+  }
+}

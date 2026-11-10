@@ -1,0 +1,41 @@
+{
+  "tag": "lrndesign-imagemap",
+  "package": "@haxtheweb/lrndesign-imagemap",
+  "source": "elements/lrndesign-imagemap/lrndesign-imagemap.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "dark": "dark",
+    "hotspot-details": "hotspotDetails",
+    "is-safari": "isSafari",
+    "label": "label",
+    "parent": "parent",
+    "src": "src",
+    "subtopic-of": "subtopicOf"
+  },
+  "slots": [
+    "(default)",
+    "desc",
+    "details",
+    "heading",
+    "source",
+    "svg"
+  ],
+  "events": [
+    "user-engagement"
+  ],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/lrndesign-imagemap/lib/lrndesign-imagemap.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "hotspotDetails",
+      "label"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "lrndesign-imagemap"
+    ]
+  }
+}

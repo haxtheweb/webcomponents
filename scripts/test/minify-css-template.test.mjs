@@ -83,3 +83,10 @@ test("modern syntax passes through", () => {
 test("templates that fail the syntax check are left alone", () => {
   assert.equal(one("css`:host { z-index: var(--a - 1); }`").reason, "syntax");
 });
+
+test("templates whose only warning sits on an expression line are left alone as uncheckable", () => {
+  assert.equal(
+    one("css`:host { z-index: var(--a - ${b}); }`").reason,
+    "uncheckable",
+  );
+});

@@ -1,0 +1,43 @@
+{
+  "tag": "github-preview",
+  "package": "@haxtheweb/github-preview",
+  "source": "elements/github-preview/github-preview.js",
+  "attributes": {
+    "api-url": "apiUrl",
+    "branch": "branch",
+    "element-visible": "elementVisible",
+    "extended": "extended",
+    "headers": "headers",
+    "not-found-text": "notFoundText",
+    "org": "org",
+    "raw-url": "rawUrl",
+    "read-me": "readMe",
+    "readme-extended": "readmeExtended",
+    "repo": "repo",
+    "repo-lang": "repoLang",
+    "url": "url",
+    "view-more-text": "viewMoreText"
+  },
+  "slots": [],
+  "events": [
+    "hax-register-app"
+  ],
+  "cssParts": [
+    "github-preview-lang-circle"
+  ],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/github-preview/github-preview.js",
+    "gizmo": true,
+    "properties": [
+      "extended",
+      "org",
+      "repo"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "github-preview"
+    ]
+  }
+}

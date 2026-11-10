@@ -1,0 +1,32 @@
+{
+  "tag": "lrn-table",
+  "package": "@haxtheweb/lrn-table",
+  "source": "elements/lrn-table/lrn-table.js",
+  "attributes": {
+    "csv-file": "csvFile",
+    "description": "description",
+    "schemamap": "schemaMap",
+    "t": "t",
+    "title": "title"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/lrn-table/lib/lrn-table.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "csvFile",
+      "description",
+      "title"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "lrn-table"
+    ]
+  }
+}

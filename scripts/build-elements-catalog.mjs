@@ -8,7 +8,11 @@
  *   - custom-elements.json  -> tag names, descriptions, module paths
  *   - lib/*.haxProperties.json and *.haxProperties.json -> HAX type
  *     (element / grid), gizmo title, description and tags
- *   - hax-elements-registry.json (root) -> titles of HAX-capable elements
+ *   - hax-elements-registry.json (root) -> titles, and the one source of
+ *     `haxCapable`: an element is HAX-capable when it is authorable in the
+ *     editor, i.e. listed there. Editor internals and tooling also carry HAX
+ *     schemas but are excluded from that registry, so a schema alone is not
+ *     enough (it made this count disagree with hax-elements-discovery).
  *   - package.json -> package name, fallback description
  *   - <name>/<name>.js -> tag fallback for packages without a manifest
  *
@@ -164,7 +168,6 @@ for (const pkgDir of fs.readdirSync(ELEMENTS).sort()) {
     const fileTag = (src.match(/static\s+get\s+tag\(\)\s*\{\s*return\s+['"`]([a-z0-9]+-[a-z0-9-]+)['"`]/) || [])[1];
     if (tagsInFile === 1 && fileTag && byTag.has(fileTag) && /static\s+get\s+haxProperties\s*\(/.test(src)) {
       const entry = byTag.get(fileTag);
-      entry.haxCapable = true;
       if (/\btype:\s*['"]grid['"]/.test(src)) {
         entry.type = 'grid';
       }
@@ -188,7 +191,6 @@ for (const pkgDir of fs.readdirSync(ELEMENTS).sort()) {
     if (!entry) {
       continue;
     }
-    entry.haxCapable = true;
     if (hax.type) {
       entry.type = hax.type;
     }
@@ -214,4 +216,6 @@ const catalog = {
   elements,
 };
 fs.writeFileSync(OUTPUT, JSON.stringify(catalog, null, 2) + '\n');
-console.log(`elements-catalog.json: ${elements.length} elements (${elements.filter((e) => e.haxCapable).length} HAX-capable, ${elements.filter((e) => e.type === 'grid').length} grid)`);
+const registryTotal = Object.keys(registryTitles).length;
+const haxCapable = elements.filter((e) => e.haxCapable).length;
+console.log(`elements-catalog.json: ${elements.length} elements (${haxCapable} HAX-capable, ${elements.filter((e) => e.type === 'grid').length} grid); the other ${registryTotal - haxCapable} of ${registryTotal} hax-elements-registry tags are HTML primitives or defined outside elements/`);

@@ -50,6 +50,10 @@
             },
             {
               "kind": "method",
+              "name": "_toggleDirections"
+            },
+            {
+              "kind": "method",
               "name": "openAnswer",
               "parameters": [
                 {
@@ -198,7 +202,15 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ revealAnswer: \"Reveal Answer\", close: \"Close\", hideAnswer: \"Hide answer\", moreInformation: \"More information\", }"
+              "default": "{ revealAnswer: \"Reveal Answer\", close: \"Close\", hideAnswer: \"Hide answer\", moreInformation: \"More information\", directions: \"Directions\", showDirections: \"Show directions\", hideDirections: \"Hide directions\", selfCheckDirections: \"Think of your answer first, then reveal the answer to compare.\", answerRevealed: \"Answer revealed\", }"
+            },
+            {
+              "kind": "field",
+              "name": "_directionsOpen",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
             },
             {
               "kind": "field",

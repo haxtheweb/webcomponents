@@ -44,11 +44,16 @@ import {
   activityKey,
   describeResponse,
   legacyActivityKey,
-  siteUrl,
   XAPI_EXTENSIONS,
   XAPI_ITEM_DELIMITER,
 } from "@haxtheweb/user-action/lib/xapi.js";
 import { XAPI_VOCABULARY } from "@haxtheweb/user-action/lib/xapi-vocabulary.js";
+import {
+  LearnerOutlineStyles,
+  learnerOutlineModel,
+  renderLearnerOutline,
+  sitePageUrl,
+} from "@haxtheweb/haxcms-elements/lib/ui-components/progress/learner-outline-progress.js";
 import {
   SITE_ADMIN_TITLEBAR_STYLES,
   SITE_ADMIN_MODAL_SIZE,
@@ -818,38 +823,9 @@ export function pageListModel(rows, { limit = PAGES_LIMIT } = {}) {
   };
 }
 
-/**
- * Same-site URL of an outline item, built from its slug in the manifest,
- * optionally with an activity key as the fragment. "" when the slug leads
- * off this site (another origin, outside the site base, not http).
- * @param {Object} item manifest item
- * @param {string} [key] activity key (see activityKey in xapi.js)
- * @returns {string}
- */
-export function sitePageUrl(item, key = "") {
-  if (!item || typeof item.slug !== "string" || !item.slug) {
-    return "";
-  }
-  let url = null;
-  let base = null;
-  try {
-    url = new URL(item.slug, globalThis.document.baseURI);
-    base = new URL(siteUrl());
-  } catch {
-    return "";
-  }
-  if (
-    (url.protocol !== "https:" && url.protocol !== "http:") ||
-    url.origin !== globalThis.location.origin ||
-    url.origin !== base.origin ||
-    url.pathname.indexOf(base.pathname) !== 0
-  ) {
-    return "";
-  }
-  url.search = "";
-  url.hash = key ? encodeURIComponent(String(key)) : "";
-  return url.href;
-}
+// sitePageUrl lives with the All pages view (learner-outline-progress.js)
+// and is exported here as before
+export { sitePageUrl };
 
 /**
  * The activity key in an activity id (page URL + "#" + key), or ""
@@ -1275,6 +1251,13 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
       correct: "Right first time",
       untagged: "Untagged",
       pagesHeading: "Pages",
+      outlineHeading: "Progress by page",
+      allPages: "All pages",
+      outlinePagesDone: "{done} of {total} pages done",
+      outlinePagesCount: "{count} pages",
+      outlinePercent: "{percent}%",
+      outlinePercentComplete: "{percent}% complete",
+      outlineComplete: "Complete",
       pagesSummary:
         "{started} of {total} pages started · {notStarted} not started",
       noPagesYet: "No pages started yet.",
@@ -1744,6 +1727,13 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
           : "done",
       activityGroups,
       pageRows,
+      // All pages: the outline at the top of the scope with each page's
+      // percent (the same view as the My learning panel's All pages tab)
+      outline: learnerOutlineModel(items, LearnerProgress.siteProgress(), {
+        pageIds: LearnerProgress.pageIds(),
+        root: sc.scope === "site" ? null : sc.root,
+        pages: sc.pages,
+      }),
       items,
       byId,
       pages: sc.pages,
@@ -1997,6 +1987,7 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
       DDDConnectorStyles,
       DDDViewportStyles,
       mapMenuProgressStyles,
+      ...LearnerOutlineStyles,
       css`
         :host {
           display: block;
@@ -2113,6 +2104,19 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
           grid-template-columns: minmax(0, 1fr);
           gap: var(--ddd-spacing-4);
           align-items: start;
+        }
+        /* All pages (shared with the My learning panel): the card already
+           pads, so the summary and list do not; two columns when wide */
+        .outline-card .lop-summary {
+          padding: 0 0 var(--ddd-spacing-2);
+        }
+        .outline-card .lop-list {
+          padding: 0;
+        }
+        .body[data-layout="wide"] .outline-card .lop-list {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          column-gap: var(--ddd-spacing-4);
         }
         .body[data-layout="wide"] .row.top.pair {
           grid-template-columns: minmax(260px, 320px) minmax(0, 1fr);
@@ -3189,7 +3193,8 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
             ${recent}${prefs}
           </div>`
         : nothing;
-    return html`${tiles}${top}${activity}${bottom}`;
+    const outline = this.pages ? this.renderOutline(data) : nothing;
+    return html`${tiles}${outline}${top}${activity}${bottom}`;
   }
   renderTiles(data) {
     const t = data.tiles;
@@ -4389,6 +4394,39 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
       <p class="meta">${summary}</p>
       ${list} ${toggle}
       ${data.view === "map" ? nothing : this.renderUpNext(data)}
+    </div>`;
+  }
+  /**
+   * The All pages card: the scope's ring, percent and pages done, then each
+   * outline item at the top of the scope (the site's top level, or the
+   * pages under the section in scope) in its own progress ring with its
+   * percent, as a link to that page. Shared with the My learning panel
+   * (learner-outline-progress.js) so both show the same.
+   */
+  renderOutline(data) {
+    const t = this.t;
+    const title =
+      data.scope === "site" || !data.rootTitle ? t.allPages : data.rootTitle;
+    return html`<div
+      class="panel outline-card"
+      part="outline"
+      role="region"
+      aria-labelledby="outline-title"
+    >
+      <h3 id="outline-title">${t.outlineHeading}</h3>
+      ${renderLearnerOutline(data.outline, {
+        title,
+        part: "outline-items",
+        t: {
+          allPages: t.allPages,
+          pagesDone: t.outlinePagesDone,
+          pagesCount: t.outlinePagesCount,
+          percent: t.outlinePercent,
+          percentComplete: t.outlinePercentComplete,
+          complete: t.outlineComplete,
+        },
+        onGo: (e, row) => this._go(e, { pageId: row.id, url: row.url }),
+      })}
     </div>`;
   }
   // one section of "Show all": open when the learner started a page in it

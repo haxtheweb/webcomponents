@@ -296,6 +296,9 @@ gulp.task(
   "version-match", async () => {
     fs.writeFileSync('./.version', packageVm.version , {encoding:'utf8',flag:'w'});
     console.log(`${packageVm.version} written to .version`);
+    // warn when a sibling package (haxcms-nodejs, create, ...) is already
+    // ahead of this release version; ubiquity-push.sh refuses to release then
+    execSync('node scripts/check-ecosystem-version.mjs', { stdio: 'inherit' });
   }
 );
 gulp.task(
@@ -385,6 +388,9 @@ function validateElementName(name) {
 	const errorMessage = hasError(name);
 	return !errorMessage;
 }
+// build output paths (relative to build/es6/node_modules) that hold AMD /
+// non-ESM vendor bundles and must not contribute tags to wc-registry.json
+const NON_ESM_VENDOR_PREFIXES = ["monaco-editor/min/"];
 gulp.task("wc-autoloader", async () => {
   glob(path.join("./build/es6/node_modules/**/*.js"), (er, files) => {
     let elements = {};
@@ -412,6 +418,13 @@ gulp.task("wc-autoloader", async () => {
           importMatches.push(im[1]);
         }
         importsByFile[fLocation] = importMatches;
+        // Vendored AMD bundles are not ES modules, so nothing can import them
+        // through the registry; any customElements.define in them is the
+        // library's own internal element (Monaco's minified build defines
+        // "connection-observer"). Keep them out of wc-registry.json.
+        if (NON_ESM_VENDOR_PREFIXES.some((prefix) => fLocation.startsWith(prefix))) {
+          return;
+        }
         // This Regex is looking for tags that are defined by string values
         // this will work for customElements.define("local-time",s))
         // This will NOT work for customElements.define(LocalTime.tagName,s))
@@ -572,7 +585,7 @@ import { execSync } from 'child_process';
 
 gulp.task("theme-discovery", async () => {
   try {
-    execSync('node scripts/theme-discovery.js', { stdio: 'inherit' });
+    execSync('node scripts/theme-discovery.mjs', { stdio: 'inherit' });
     console.log('✅ Theme discovery completed successfully');
     console.log('');
     console.log('📷 Theme Screenshots:');
@@ -588,7 +601,7 @@ gulp.task("theme-discovery", async () => {
 
 gulp.task("hax-elements-discovery", async () => {
   try {
-    execSync('node scripts/hax-elements-discovery.js', { stdio: 'inherit' });
+    execSync('node scripts/hax-elements-discovery.mjs', { stdio: 'inherit' });
     console.log('✅ HAX elements discovery completed successfully');
   } catch (error) {
     console.error('❌ HAX elements discovery failed:', error.message);
@@ -597,7 +610,7 @@ gulp.task("hax-elements-discovery", async () => {
 
 gulp.task("hax-elements-demo-page", async () => {
   try {
-    execSync('node scripts/hax-elements-demo-page.js', { stdio: 'inherit' });
+    execSync('node scripts/hax-elements-demo-page.mjs', { stdio: 'inherit' });
     console.log('✅ HAX elements demo page generated successfully');
   } catch (error) {
     console.error('❌ HAX elements demo page generation failed:', error.message);

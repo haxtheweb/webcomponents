@@ -1,0 +1,43 @@
+{
+  "tag": "inline-audio",
+  "package": "@haxtheweb/inline-audio",
+  "source": "elements/inline-audio/inline-audio.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "aria": "aria",
+    "dark": "dark",
+    "icon": "icon",
+    "is-safari": "isSafari",
+    "playing": "playing",
+    "shiny": "shiny",
+    "source": "source",
+    "t": "t",
+    "title": "title"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [
+    "playing-changed"
+  ],
+  "cssParts": [
+    "icon",
+    "progress",
+    "progress-bar"
+  ],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/inline-audio/lib/inline-audio.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "accentColor",
+      "shiny",
+      "source"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "inline-audio"
+    ]
+  }
+}

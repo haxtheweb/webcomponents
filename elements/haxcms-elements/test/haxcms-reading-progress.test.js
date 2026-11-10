@@ -321,13 +321,14 @@ describe("HAXcms learner progress: reading and page completion", () => {
     const site = LearnerProgress.siteProgress();
     expect(site).to.deep.include({ done: 1, total: 3, engaged: true });
     expect(site.percent).to.equal(0.333);
-    // the site menu now shows pages done for a site without activities
+    // the site menu rings the page open now, done once it was read
     const menu = await fixture(html`<site-menu></site-menu>`);
     await flush(150);
     await menu.updateComplete;
-    expect(
-      menu.shadowRoot.querySelector(".progress-summary").textContent.trim(),
-    ).to.equal("1 of 3 pages done");
+    expect(menu.shadowRoot.querySelector(".progress-summary")).to.equal(null);
+    expect(menu.shadowRoot.querySelector("map-menu").activeProgress).to.equal(
+      LearnerProgress.pageProgress().percent,
+    );
     // a page already read is not tracked again
     await goTo("r2");
     await goTo("r1");

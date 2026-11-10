@@ -148,15 +148,6 @@ describe("page-break editor actions", () => {
     expect(sounds).to.deep.equal(["error"]);
   });
 
-  it("delegates cancel to the editor UI", async () => {
-    const el = await fixture(html`<page-break title="Cancel"></page-break>`);
-    const evt = { fake: "event" };
-    el._cancelEdit(evt);
-    expect(editorCalls.length).to.equal(1);
-    expect(editorCalls[0][0]).to.equal("cancel");
-    expect(editorCalls[0][1][0] === evt).to.equal(true);
-  });
-
   it("launches the edit title daemon program", async () => {
     const el = await fixture(
       html`<page-break title="Edit title"></page-break>`,
@@ -333,13 +324,6 @@ describe("page-break editor actions", () => {
       "This page is locked. Unlock it first to change publish status.",
     );
     expect(sounds).to.deep.equal(["error"]);
-  });
-
-  it("saves through the edit button tap", async () => {
-    const el = await fixture(html`<page-break title="Save"></page-break>`);
-    await el._savePage({});
-    expect(editorCalls.length).to.equal(1);
-    expect(editorCalls[0][0]).to.equal("edit");
   });
 
   it("deletes through the editor UI and blocks deletion while locked", async () => {

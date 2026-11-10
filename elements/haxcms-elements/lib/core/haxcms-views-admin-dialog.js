@@ -1081,20 +1081,6 @@ class HAXCMSViewsAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
     return options;
   }
 
-  _manifestPageOptions() {
-    const options = {
-      "": "-- Any --",
-    };
-    const items = this._manifestPageItems();
-    items.forEach((item) => {
-      if (!item || !item.value) {
-        return;
-      }
-      options[item.value] = item.text;
-    });
-    return options;
-  }
-
   async _loadSpecData() {
     this.specLoading = true;
     this.errorMessage = "";
@@ -1608,25 +1594,6 @@ class HAXCMSViewsAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
     }
   }
 
-  _resolveFetchUrl(url = "") {
-    const candidate = this._safeString(url).trim();
-    if (!candidate) {
-      return "";
-    }
-    if (
-      candidate.indexOf("http://") === 0 ||
-      candidate.indexOf("https://") === 0
-    ) {
-      return candidate;
-    }
-    try {
-      const parsed = new URL(candidate, globalThis.location.origin);
-      return parsed.toString();
-    } catch {
-      return candidate;
-    }
-  }
-
   _statusCode(response) {
     if (!response || typeof response !== "object") {
       return 0;
@@ -1810,79 +1777,6 @@ class HAXCMSViewsAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
     }
     this.sortDescending = nextSortDescending;
     this._schedulePreviewRefresh();
-  }
-
-  _onQueryValuesChanged(e) {
-    if (this.__queryValueChangeLock) {
-      return;
-    }
-    let incoming = null;
-    const filtersForm = this.shadowRoot
-      ? this.shadowRoot.querySelector(".filters-form")
-      : null;
-    if (
-      filtersForm &&
-      filtersForm.value &&
-      typeof filtersForm.value === "object" &&
-      !Array.isArray(filtersForm.value)
-    ) {
-      incoming = this._cloneData(filtersForm.value);
-    } else if (
-      e &&
-      e.detail &&
-      e.detail.value &&
-      typeof e.detail.value === "object" &&
-      !Array.isArray(e.detail.value)
-    ) {
-      incoming = this._cloneData(e.detail.value);
-    } else if (
-      e &&
-      e.target &&
-      e.target.value &&
-      typeof e.target.value === "object" &&
-      !Array.isArray(e.target.value)
-    ) {
-      incoming = this._cloneData(e.target.value);
-    }
-    if (incoming && !this._deepEqual(incoming, this.queryValues)) {
-      this.queryValues = incoming;
-    }
-    this._schedulePreviewRefresh();
-  }
-
-  _entityDescription(entityConfig) {
-    if (!entityConfig) {
-      return "";
-    }
-    const pieces = [];
-    if (entityConfig.description) {
-      pieces.push(entityConfig.description);
-    }
-    if (
-      Array.isArray(entityConfig.filterableFields) &&
-      entityConfig.filterableFields.length > 0
-    ) {
-      pieces.push(
-        this.t.filterableFields.replace(
-          "{fields}",
-          () =>
-            `${entityConfig.filterableFields.slice(0, 6).join(", ")}${entityConfig.filterableFields.length > 6 ? "…" : ""}`,
-        ),
-      );
-    }
-    if (
-      Array.isArray(entityConfig.selectableFields) &&
-      entityConfig.selectableFields.length > 0
-    ) {
-      pieces.push(
-        this.t.selectableFields.replace(
-          "{fields}",
-          () =>
-            `${entityConfig.selectableFields.slice(0, 8).join(", ")}${entityConfig.selectableFields.length > 8 ? "…" : ""}`,
-        ),
-      );
-    }
-    return pieces.join(" ");
   }
 
   _refreshPreviewTap() {

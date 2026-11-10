@@ -1,0 +1,30 @@
+{
+  "tag": "full-width-image",
+  "package": "@haxtheweb/full-width-image",
+  "source": "elements/full-width-image/full-width-image.js",
+  "attributes": {
+    "caption": "caption",
+    "caption-hidden": "captionHidden",
+    "source": "source",
+    "t": "t"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/full-width-image/lib/full-width-image.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "caption",
+      "source"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "full-width-image"
+    ]
+  }
+}

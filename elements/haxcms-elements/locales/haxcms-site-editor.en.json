@@ -41,6 +41,7 @@
   "thisPage": "this page",
   "pageSaved": "Page saved!",
   "outlineSaved": "Outline saved!",
+  "saveTimedOut": "Saving timed out: the server did not answer. Your changes are kept here, but the server may still finish saving them.",
   "operationCompleted": "Operation completed!",
   "unableToCompleteOperationStatus": "Unable to complete operation ({status})",
   "normalizedPageSlugs": "Normalized {count} page slugs",

@@ -288,10 +288,149 @@ function getComponentInfo() {
   }
 }
 
+// The gallery boots with the same loading screen as a HAXcms site (a page
+// that builds itself), so reviewing feels like the rest of HAX. Its styles
+// and markup are read from the haxcms-elements demo, which mirrors the
+// haxcms-nodejs site boilerplate, so there is one copy in this repo to keep
+// current. If they cannot be found the gallery simply has no loading screen.
+const LOADER_SOURCE = path.join(
+  ELEMENTS_DIR,
+  "haxcms-elements",
+  "demo",
+  "index.html",
+);
+// Shown until the page is styled: the DDD + HAX UI module has run and the
+// fonts are in (FONT_WAIT_MS at most), or SAFETY_MS whatever happens.
+const GALLERY_LOADER_SCRIPT = `  <script id="loadingscript">
+    (function () {
+      var LOOP_MS = 3600; // one loop of the figure (the ld* keyframes)
+      var BUILT_MS = 2850; // when, in a loop, the page is fully built
+      var FINISH_MS = 400; // ready: the build wraps up in at most this long
+      var MAX_RATE = 8; // by playing faster, but never more than this
+      var HOLD_MS = 100; // then rests on the built page this long
+      var FAST_MS = 1200; // ready this soon: skip the show, fade quickly
+      var FONT_WAIT_MS = 1500;
+      var SAFETY_MS = 8000;
+      var done = false;
+      function finishFigure(figure, next) {
+        var anims = figure.getAnimations({ subtree: true });
+        if (!anims.length) {
+          next();
+          return;
+        }
+        var now = Number(anims[0].currentTime) || 0;
+        var phase = now % LOOP_MS;
+        var left = phase >= BUILT_MS ? 0 : BUILT_MS - phase;
+        var rate = Math.min(Math.max(left / FINISH_MS, 1), MAX_RATE);
+        if (rate > 1) {
+          anims.forEach(function (a) {
+            if (a.updatePlaybackRate) {
+              a.updatePlaybackRate(rate);
+            } else {
+              a.playbackRate = rate;
+            }
+          });
+        }
+        setTimeout(function () {
+          anims.forEach(function (a) {
+            a.currentTime = now - phase + BUILT_MS;
+            a.pause();
+          });
+          setTimeout(next, HOLD_MS);
+        }, left / rate);
+      }
+      function dissolve(el, quick) {
+        el.classList.add('loaded', 'ld-out');
+        if (quick) {
+          el.classList.add('ld-quick');
+        }
+        el.setAttribute('aria-busy', 'false');
+        setTimeout(function () {
+          el.remove();
+        }, quick ? 200 : 350);
+      }
+      function reveal() {
+        if (done) {
+          return;
+        }
+        done = true;
+        var el = document.getElementById('loading');
+        if (!el) {
+          return;
+        }
+        globalThis.requestAnimationFrame(function () {
+          globalThis.requestAnimationFrame(function () {
+            var figure = el.querySelector('.ld-fig');
+            var quick =
+              !figure ||
+              !figure.getAnimations ||
+              document.visibilityState === 'hidden' ||
+              globalThis.performance.now() < FAST_MS ||
+              globalThis.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (quick) {
+              dissolve(el, true);
+            } else {
+              finishFigure(figure, function () {
+                dissolve(el, false);
+              });
+            }
+          });
+        });
+      }
+      function whenStyled() {
+        var fonts = document.fonts && document.fonts.ready;
+        if (!fonts) {
+          reveal();
+          return;
+        }
+        Promise.race([
+          fonts,
+          new Promise(function (resolve) {
+            setTimeout(resolve, FONT_WAIT_MS);
+          }),
+        ]).then(reveal, reveal);
+      }
+      if (globalThis.__galleryStyled) {
+        whenStyled();
+      } else {
+        globalThis.addEventListener('gallery-styled', whenStyled, { once: true });
+      }
+      setTimeout(reveal, SAFETY_MS);
+    })();
+  </script>`;
+
+function galleryLoader() {
+  try {
+    const page = fs.readFileSync(LOADER_SOURCE, "utf8");
+    const styles = page.match(
+      / {2}<style id="loadingstyles">[\s\S]*?<\/style>/,
+    );
+    const markup = page.match(
+      / {2}<section role="alert" id="loading"[\s\S]*?<\/section>/,
+    );
+    if (styles && markup) {
+      return {
+        styles: styles[0] + "\n" + GALLERY_LOADER_SCRIPT,
+        markup: markup[0],
+      };
+    }
+  } catch {
+    // fall through: no loading screen
+  }
+  console.warn("Warning: could not read the HAXcms loading screen");
+  return { styles: "", markup: "" };
+}
+
 function generateHTML(components) {
   const totalComponents = components.length;
   // shortcut to the full system demo, used to review everything working together
   const haxcmsDemo = components.find((c) => c.name === "haxcms-elements");
+  // and to the AppHax dashboard, which boots the same way
+  const appHaxDemo = components.find((c) => c.name === "app-hax");
+  const walkthroughCount = components.filter(
+    (c) => c.motionStatus && c.motionStatus !== "none",
+  ).length;
+  const loader = galleryLoader();
   const componentsData = JSON.stringify(components, null, 2);
 
   return `<!DOCTYPE html>
@@ -300,222 +439,267 @@ function generateHTML(components) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HAX Web Components Gallery</title>
+  <style>
+    /* First paint, before any module loads: follow the system light/dark
+       setting with the HAX UI surface colors so the page never flashes white */
+    :root {
+      color-scheme: light dark;
+      background-color: light-dark(#ffffff, #262626);
+      color: light-dark(#262626, #ffffff);
+    }
+  </style>
+${loader.styles}
   <script type="module">
-    // Import DDD styles and system
+    // DDD plus the HAX UI admin layer (tokens, primitives, controls). The
+    // HAX UI pieces are written for an element's :host, so they are applied
+    // to the page root here; .hax-ui-dark-chrome re-declares the tokens so
+    // the title bar gets the dark chrome every HAX admin top bar wears.
     import { DDDVariables, DDDGlobalStyles, DDDReset, DDDDataAttributes } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
-    import { css, html } from "lit";
-    
-    // Apply DDD styles to the document
+    import { HaxUiAdminTokens, HaxUiAdminPrimitives, HaxUiDarkChromeDeclarations } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
+    import { HaxUiAdminControls } from "@haxtheweb/d-d-d/lib/HaxUiAdminControls.js";
+
+    const toPage = (sheets) => sheets.map((s) => s.cssText.split(':host').join(':root, .hax-ui-dark-chrome')).join('\\n');
     const dddStyles = document.createElement('style');
-    dddStyles.textContent = \`
-      \${DDDVariables.cssText}
-      \${DDDGlobalStyles.cssText}
-      \${DDDReset.cssText}
-      \${DDDDataAttributes.map(attr => attr.cssText).join('')}
-    \`;
-    document.head.appendChild(dddStyles);
+    dddStyles.id = 'gallery-ddd';
+    dddStyles.textContent = [
+      DDDVariables.cssText,
+      DDDGlobalStyles.cssText,
+      DDDReset.cssText,
+      DDDDataAttributes.map((attr) => attr.cssText).join(""),
+      toPage(HaxUiAdminTokens),
+      '.hax-ui-dark-chrome {' + HaxUiDarkChromeDeclarations.cssText + '}',
+      toPage(HaxUiAdminPrimitives),
+      toPage(HaxUiAdminControls),
+    ].join('\\n');
+    // before the gallery's own styles, so its rules win ties
+    document.head.insertBefore(dddStyles, document.getElementById('gallery-styles'));
+    globalThis.__galleryStyled = true;
+    globalThis.dispatchEvent(new CustomEvent('gallery-styled'));
   </script>
   <script type="module" src="./elements/documentation-player/documentation-player.js"></script>
-  <style>
-    /* Gallery styles. DDD tokens only: flat surfaces, hairline rules,
-       small tracked labels and no decorative icons. */
+  <style id="gallery-styles">
+    /* Gallery styles: the HAX UI admin layer (the --hax-ui-* tokens and
+       .hax-ui-* controls from d-d-d), so the gallery reads like the rest of
+       HAX's admin screens. No decorative icons. */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    :root {
-      --gal-ground: light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-potentialMidnight));
-      --gal-text: light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-white));
-      --gal-muted: light-dark(var(--ddd-theme-default-slateGray), var(--ddd-theme-default-limestoneGray));
-      --gal-line: light-dark(var(--ddd-theme-default-limestoneGray), var(--ddd-theme-default-slateGray));
-      --gal-panel: light-dark(var(--ddd-theme-default-limestoneMaxLight), var(--ddd-theme-default-coalyGray));
-      --gal-accent: light-dark(var(--ddd-theme-default-beaverBlue), var(--ddd-theme-default-skyBlue));
-    }
-
     body {
-      font-family: var(--ddd-font-primary);
-      font-size: var(--ddd-font-size-3xs);
-      font-weight: var(--ddd-font-weight-regular);
-      line-height: var(--ddd-lh-150);
-      color: var(--gal-text);
-      background: var(--gal-ground);
+      font-family: var(--hax-ui-admin-font-family, sans-serif);
+      font-size: var(--hax-ui-admin-font-size, 14px);
+      font-weight: var(--ddd-font-weight-regular, 400);
+      line-height: 1.5;
+      color: var(--hax-ui-text);
+      background-color: var(--hax-ui-surface);
       height: 100vh;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
 
-    button {
+    button,
+    select {
       font-family: inherit;
       font-size: inherit;
       color: inherit;
     }
 
     :focus-visible {
-      outline: 2px solid var(--gal-accent);
+      outline: var(--hax-ui-focus-width, 2px) solid var(--hax-ui-focus);
       outline-offset: 2px;
     }
 
-    .gallery-container {
-      display: flex;
-      height: 100vh;
+    /* The gallery is admin chrome: undo DDD's content typography (heading
+       and paragraph margins, bold accent links) that DDD's global styles
+       give every page */
+    .titlebar h1,
+    .sidebar p,
+    .demo-header h2,
+    .demo-header p,
+    .welcome-message p {
+      margin: 0;
+      padding: 0;
     }
 
-    /* Sidebar */
+    body a.hax-ui-btn,
+    body a.hax-ui-btn:any-link {
+      font-weight: var(--ddd-font-weight-medium, 500);
+      text-decoration: none;
+      color: var(--hax-ui-text);
+      background-color: var(--hax-ui-surface);
+    }
+
+    body a.hax-ui-btn:hover {
+      text-decoration: none;
+      background-color: var(--hax-ui-hover);
+    }
+
+    /* Title bar: the dark chrome HAX admin top bars share */
+    .titlebar {
+      flex: none;
+      display: flex;
+      align-items: center;
+      gap: var(--hax-ui-gap-lg);
+      min-height: var(--hax-ui-titlebar-height, 48px);
+      padding: 0 var(--ddd-spacing-4, 16px);
+      color: var(--hax-ui-on-titlebar);
+      background-color: var(--hax-ui-titlebar);
+      z-index: 20;
+    }
+
+    .brand {
+      display: flex;
+      align-items: baseline;
+      gap: var(--hax-ui-gap-md);
+      min-width: 0;
+      flex: 1;
+    }
+
+    .brand-mark {
+      font-weight: var(--ddd-font-weight-black, 900);
+      letter-spacing: 0.04em;
+    }
+
+    .brand h1 {
+      font-family: inherit;
+      font-size: var(--hax-ui-admin-font-size, 14px);
+      font-weight: var(--ddd-font-weight-medium, 500);
+      white-space: nowrap;
+    }
+
+    .brand-stats {
+      font-size: var(--hax-ui-admin-font-size-xs, 12px);
+      color: var(--hax-ui-text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .mobile-title {
+      display: none;
+    }
+
+    .shortcuts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--hax-ui-gap-md);
+    }
+
+    .titlebar .hax-ui-btn {
+      text-decoration: none;
+    }
+
+    #listToggle {
+      display: none;
+    }
+
+    .gallery-container {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+    }
+
+    /* Sidebar: the admin rail, sunken beside the stage */
     .sidebar {
       width: 22rem;
       flex: none;
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      border-right: 1px solid var(--gal-line);
+      background-color: var(--hax-ui-sunken);
+      border-right: 1px solid var(--hax-ui-line);
     }
 
     .sidebar-header {
-      padding: var(--ddd-spacing-5) var(--ddd-spacing-4) var(--ddd-spacing-3);
-      border-bottom: 1px solid var(--gal-line);
-    }
-
-    .eyebrow {
-      font-size: var(--ddd-font-size-4xs);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gal-muted);
-    }
-
-    .sidebar-header h1 {
-      font-family: var(--ddd-font-primary);
-      font-size: var(--ddd-font-size-xs);
-      font-weight: var(--ddd-font-weight-bold);
-      margin: var(--ddd-spacing-1) 0;
-    }
-
-    .stats {
-      font-size: var(--ddd-font-size-4xs);
-      color: var(--gal-muted);
-      margin-bottom: var(--ddd-spacing-4);
+      display: flex;
+      flex-direction: column;
+      gap: var(--hax-ui-gap-md);
+      padding: var(--hax-ui-gap-lg);
+      border-bottom: 1px solid var(--hax-ui-line);
     }
 
     .search-box {
-      width: 100%;
-      padding: var(--ddd-spacing-2) 0;
-      border: 0;
-      border-bottom: 1px solid var(--gal-line);
-      border-radius: 0;
-      background: transparent;
-      color: var(--gal-text);
-      font-family: var(--ddd-font-primary);
-      font-size: var(--ddd-font-size-3xs);
-    }
-
-    .search-box:focus {
-      outline: none;
-      border-bottom-color: var(--gal-accent);
-    }
-
-    .search-box::placeholder {
-      color: var(--gal-muted);
+      background-color: var(--hax-ui-surface);
     }
 
     .filter-buttons {
       display: flex;
-      gap: var(--ddd-spacing-3);
-      margin-top: var(--ddd-spacing-3);
       flex-wrap: wrap;
+      gap: var(--hax-ui-gap);
     }
 
-    .filter-btn {
-      padding: var(--ddd-spacing-1) 0;
-      border: 0;
-      border-bottom: 2px solid transparent;
-      background: none;
-      color: var(--gal-muted);
-      cursor: pointer;
-      font-size: var(--ddd-font-size-4xs);
+    .sidebar .rail-label {
+      padding: var(--hax-ui-gap-lg) var(--hax-ui-gap-lg) var(--hax-ui-gap);
+      font-size: 11px;
+      font-weight: var(--ddd-font-weight-bold, 700);
       letter-spacing: 0.04em;
       text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    .filter-btn:hover {
-      color: var(--gal-text);
-    }
-
-    .filter-btn.active {
-      color: var(--gal-text);
-      border-bottom-color: var(--gal-text);
-      font-weight: var(--ddd-font-weight-bold);
+      color: var(--hax-ui-text-muted);
     }
 
     .component-list {
       flex: 1;
       overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding: 0 var(--hax-ui-gap-md) var(--hax-ui-gap-md);
     }
 
     .component-item {
+      all: unset;
+      box-sizing: border-box;
+      cursor: pointer;
       display: block;
       width: 100%;
-      padding: var(--ddd-spacing-3) var(--ddd-spacing-4);
-      background: transparent;
-      border: 0;
-      border-bottom: 1px solid var(--gal-line);
-      border-radius: 0;
-      cursor: pointer;
-      text-align: left;
+      padding: var(--hax-ui-gap-md);
+      border-radius: var(--hax-ui-radius);
+      color: var(--hax-ui-text);
     }
 
     .component-item:hover {
-      background: var(--gal-panel);
+      background-color: var(--hax-ui-hover);
     }
 
-    .component-item.active {
-      background: var(--gal-panel);
+    .component-item:focus-visible {
+      outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+      outline-offset: calc(-1 * var(--hax-ui-focus-width));
     }
 
-    .component-item.active .component-item-name {
-      color: var(--gal-accent);
+    .component-item[aria-current="page"] {
+      background-color: var(--hax-ui-selected);
+      box-shadow: inset 3px 0 0 var(--hax-ui-accent-strong);
     }
 
     .component-item-name {
-      font-size: var(--ddd-font-size-3xs);
-      font-weight: var(--ddd-font-weight-bold);
+      font-family: var(--ddd-font-mono, monospace);
+      font-size: 13px;
+      font-weight: var(--ddd-font-weight-bold, 700);
       overflow-wrap: anywhere;
     }
 
     .component-item-description {
-      font-size: var(--ddd-font-size-4xs);
-      color: var(--gal-muted);
-      line-height: var(--ddd-lh-140);
-      margin-top: var(--ddd-spacing-1);
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-top: 2px;
+      font-size: var(--hax-ui-admin-font-size-xs);
+      line-height: 1.4;
+      color: var(--hax-ui-text-muted);
     }
 
     .tags {
       display: flex;
       flex-wrap: wrap;
-      gap: var(--ddd-spacing-1);
-      margin-top: var(--ddd-spacing-2);
+      gap: var(--hax-ui-gap);
+      margin-top: var(--hax-ui-gap);
     }
 
-    .tag {
-      font-size: var(--ddd-font-size-4xs);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--gal-muted);
-      border: 1px solid var(--gal-line);
-      padding: 0 var(--ddd-spacing-2);
-    }
-
-    .tag.walk {
-      color: var(--gal-text);
-      border-color: var(--gal-text);
-    }
-
-    .tag.stale {
-      color: var(--gal-accent);
-      border-color: var(--gal-accent);
-    }
-
-    /* Main area */
+    /* Main area: page header, toolbar, then the stage */
     .main-content {
       flex: 1;
       min-width: 0;
@@ -525,45 +709,53 @@ function generateHTML(components) {
     }
 
     .demo-header {
-      padding: var(--ddd-spacing-4) var(--ddd-spacing-5) 0;
-      border-bottom: 1px solid var(--gal-line);
+      display: flex;
+      flex-direction: column;
+      gap: var(--hax-ui-gap-lg);
+      padding: var(--ddd-spacing-4, 16px) var(--ddd-spacing-5, 20px) var(--hax-ui-gap-lg);
+      border-bottom: 1px solid var(--hax-ui-line);
     }
 
     .demo-title {
-      font-family: var(--ddd-font-primary);
-      font-size: var(--ddd-font-size-s);
-      font-weight: var(--ddd-font-weight-bold);
+      font-family: var(--ddd-font-mono, monospace);
+      font-size: 18px;
+      font-weight: var(--ddd-font-weight-bold, 700);
+      line-height: 1.3;
       overflow-wrap: anywhere;
     }
 
-    .demo-description {
-      color: var(--gal-muted);
-      margin: var(--ddd-spacing-1) 0 var(--ddd-spacing-4);
+    .demo-header .demo-description {
+      margin-top: var(--hax-ui-gap);
       max-width: 60rem;
+      color: var(--hax-ui-text-muted);
     }
 
     .snippets {
       display: grid;
       grid-template-columns: auto minmax(0, 1fr) auto;
-      gap: var(--ddd-spacing-2) var(--ddd-spacing-3);
+      gap: var(--hax-ui-gap) var(--hax-ui-gap-md);
       align-items: center;
-      margin-bottom: var(--ddd-spacing-4);
       max-width: 60rem;
     }
 
     .snippet-label {
-      font-size: var(--ddd-font-size-4xs);
-      letter-spacing: 0.1em;
+      font-size: 11px;
+      font-weight: var(--ddd-font-weight-bold, 700);
+      letter-spacing: 0.04em;
       text-transform: uppercase;
-      color: var(--gal-muted);
+      color: var(--hax-ui-text-muted);
     }
 
     .snippet-code {
-      font-family: ui-monospace, Menlo, Consolas, monospace;
-      font-size: var(--ddd-font-size-4xs);
-      padding: var(--ddd-spacing-1) var(--ddd-spacing-3);
-      background: var(--gal-panel);
-      border: 1px solid var(--gal-line);
+      display: flex;
+      align-items: center;
+      height: var(--hax-ui-row-height);
+      padding: 0 var(--hax-ui-gap-md);
+      font-family: var(--ddd-font-mono, monospace);
+      font-size: var(--hax-ui-admin-font-size-xs);
+      border: 1px solid var(--hax-ui-line);
+      border-radius: var(--hax-ui-radius);
+      background-color: var(--hax-ui-sunken);
       overflow-x: auto;
       white-space: nowrap;
     }
@@ -571,101 +763,109 @@ function generateHTML(components) {
     .toolbar {
       display: flex;
       flex-wrap: wrap;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: var(--ddd-spacing-2) var(--ddd-spacing-4);
-    }
-
-    .view-tabs {
-      display: flex;
-      gap: var(--ddd-spacing-1);
-    }
-
-    .view-tab {
-      padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
-      border: 0;
-      border-bottom: 2px solid transparent;
-      background: none;
-      color: var(--gal-muted);
-      cursor: pointer;
-    }
-
-    .view-tab[aria-selected="true"] {
-      color: var(--gal-text);
-      border-bottom-color: var(--gal-text);
-      font-weight: var(--ddd-font-weight-bold);
-    }
-
-    .demo-selector-container {
-      display: flex;
       align-items: center;
-      gap: var(--ddd-spacing-2);
+      justify-content: space-between;
+      gap: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
     }
 
-    .demo-selector-label {
-      font-size: var(--ddd-font-size-4xs);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--gal-muted);
+    .toolbar-start {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--hax-ui-gap-md);
+    }
+
+    /* the view switch is a segmented control; tabs carry aria-selected */
+    .view-tabs button[aria-selected="true"] {
+      font-weight: var(--ddd-font-weight-bold, 700);
+      background-color: var(--hax-ui-accent-soft);
+      box-shadow: inset 0 -3px 0 var(--hax-ui-accent-strong);
     }
 
     .demo-selector {
-      padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
-      border: 1px solid var(--gal-line);
-      border-radius: 0;
-      background: var(--gal-ground);
-      color: var(--gal-text);
-      font-family: inherit;
-      font-size: var(--ddd-font-size-4xs);
+      all: unset;
+      cursor: pointer;
+      max-width: 16rem;
+      font-size: 13px;
+      color: var(--hax-ui-text);
     }
 
     .demo-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: var(--ddd-spacing-2);
-      padding-bottom: var(--ddd-spacing-1);
+      gap: var(--hax-ui-gap-md);
     }
 
-    .btn {
-      padding: var(--ddd-spacing-1) var(--ddd-spacing-3);
-      border: 1px solid var(--gal-line);
-      border-radius: 0;
-      background: var(--gal-ground);
-      color: var(--gal-text);
-      cursor: pointer;
-      font-size: var(--ddd-font-size-4xs);
-      font-family: inherit;
-      line-height: normal;
-      display: inline-block;
+    .demo-actions .hax-ui-btn {
       text-decoration: none;
-    }
-
-    .btn:hover {
-      border-color: var(--gal-text);
-    }
-
-    .shortcut-btn {
-      margin-bottom: var(--ddd-spacing-4);
     }
 
     .stage {
       flex: 1;
       min-height: 0;
       position: relative;
-      background: var(--gal-ground);
+      background-color: var(--hax-ui-surface);
     }
 
     .demo-frame {
       width: 100%;
       height: 100%;
       border: 0;
-      background: var(--gal-ground);
+      background-color: transparent;
+      transition: opacity var(--hax-ui-duration, 150ms) var(--hax-ui-easing, ease);
+    }
+
+    /* while a demo loads it stays hidden under an indeterminate bar, so a
+       half-painted (or white) frame never shows */
+    .stage-progress {
+      position: absolute;
+      inset: 0 0 auto;
+      height: 3px;
+      overflow: hidden;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--hax-ui-duration, 150ms) var(--hax-ui-easing, ease);
+    }
+
+    .stage-progress::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 30%;
+      background-color: var(--hax-ui-accent-strong);
+      animation: stage-progress 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+
+    .stage.is-loading .stage-progress {
+      opacity: 1;
+    }
+
+    .stage.is-loading .demo-frame {
+      opacity: 0;
+    }
+
+    @keyframes stage-progress {
+      0% { left: -30%; }
+      100% { left: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .stage-progress::before {
+        animation: none;
+        left: 0;
+        width: 100%;
+        opacity: 0.6;
+      }
+      .demo-frame {
+        transition: none;
+      }
     }
 
     .docs-pane {
       height: 100%;
       overflow-y: auto;
-      padding: var(--ddd-spacing-5);
+      padding: var(--ddd-spacing-5, 20px);
     }
 
     .docs-pane documentation-player {
@@ -673,137 +873,125 @@ function generateHTML(components) {
     }
 
     .welcome-message {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: grid;
+      place-items: center;
       height: 100%;
-      text-align: center;
-      padding: var(--ddd-spacing-5);
-      color: var(--gal-muted);
+      padding: var(--ddd-spacing-5, 20px);
     }
 
-    .welcome-message h2 {
-      font-size: var(--ddd-font-size-xs);
-      color: var(--gal-text);
-      margin-bottom: var(--ddd-spacing-2);
+    .welcome-message .hax-ui-empty {
+      max-width: 32rem;
     }
 
     .hidden {
       display: none !important;
     }
 
-    .no-results {
-      padding: var(--ddd-spacing-5);
-      color: var(--gal-muted);
+    .sidebar .no-results {
+      margin: var(--hax-ui-gap-lg);
     }
 
     .codepen-form {
       display: none;
     }
 
-    .mobile-bar {
-      display: none;
-    }
-
-    /* Phones: the component list becomes a drawer under a sticky bar, the
+    /* Phones: the component list becomes a drawer under the title bar, the
        page scrolls as one document and the demo gets most of the screen. */
     @media (max-width: 768px) {
       body {
+        display: block;
         height: auto;
         overflow: auto;
       }
 
-      .mobile-bar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: var(--ddd-spacing-3);
+      .titlebar {
         position: sticky;
         top: 0;
-        z-index: 20;
-        padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
-        padding-top: max(var(--ddd-spacing-2), env(safe-area-inset-top, 0px));
-        background: var(--gal-ground);
-        border-bottom: 1px solid var(--gal-line);
+        flex-wrap: wrap;
+        padding: var(--hax-ui-gap-md) var(--ddd-spacing-4, 16px);
+        padding-top: max(var(--hax-ui-gap-md), env(safe-area-inset-top, 0px));
+      }
+
+      .brand-stats,
+      .brand h1 {
+        display: none;
+      }
+
+      .brand {
+        flex: 1;
       }
 
       .mobile-title {
-        font-weight: var(--ddd-font-weight-bold);
+        display: block;
+        font-weight: var(--ddd-font-weight-bold, 700);
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
         min-width: 0;
       }
 
-      .mobile-bar .btn {
+      #listToggle {
+        display: inline-flex;
         flex: none;
-        padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+      }
+
+      #listToggle[hidden] {
+        display: none;
+      }
+
+      .shortcuts {
+        order: 3;
+        width: 100%;
+      }
+
+      .shortcuts .hax-ui-btn {
+        flex: 1;
       }
 
       .gallery-container {
         display: block;
-        height: auto;
       }
 
       .sidebar {
         display: none;
         position: fixed;
-        top: var(--gal-bar, 3rem);
+        top: var(--gal-bar, 6rem);
         left: 0;
         right: 0;
         bottom: 0;
         z-index: 15;
         width: auto;
         border-right: 0;
-        background: var(--gal-ground);
       }
 
       .sidebar.open {
         display: flex;
       }
 
-      .sidebar-header .eyebrow,
-      .sidebar-header h1 {
-        display: none;
-      }
-
-      .sidebar-header {
-        padding: var(--ddd-spacing-3) var(--ddd-spacing-4);
-      }
-
       .component-list {
         padding-bottom: env(safe-area-inset-bottom, 0px);
       }
 
-      .component-item {
-        padding: var(--ddd-spacing-3) var(--ddd-spacing-4);
-      }
-
       .main-content {
         display: block;
-        height: auto;
         overflow: visible;
       }
 
       .demo-header {
-        padding: var(--ddd-spacing-4) var(--ddd-spacing-4) 0;
-      }
-
-      .demo-title {
-        font-size: var(--ddd-font-size-xs);
+        padding: var(--ddd-spacing-4, 16px) var(--ddd-spacing-4, 16px) var(--hax-ui-gap-lg);
       }
 
       .snippets {
         grid-template-columns: minmax(0, 1fr) auto;
-        gap: var(--ddd-spacing-1) var(--ddd-spacing-2);
       }
 
       .snippet-label {
         grid-column: 1 / -1;
-        margin-top: var(--ddd-spacing-1);
+        margin-top: var(--hax-ui-gap);
       }
 
-      .toolbar {
+      .toolbar,
+      .toolbar-start {
         flex-direction: column;
         align-items: stretch;
       }
@@ -816,16 +1004,9 @@ function generateHTML(components) {
         display: none;
       }
 
-      .view-tabs {
-        border-top: 1px solid var(--gal-line);
-      }
-
-      .view-tab {
+      .view-tabs button {
         flex: 1;
-      }
-
-      .stage {
-        min-height: 0;
+        justify-content: center;
       }
 
       .demo-frame {
@@ -835,7 +1016,7 @@ function generateHTML(components) {
       .docs-pane {
         height: auto;
         overflow: visible;
-        padding: var(--ddd-spacing-3) var(--ddd-spacing-2);
+        padding: var(--hax-ui-gap-lg) var(--hax-ui-gap-md);
       }
 
       /* the player repeats title, description and copy buttons, so the
@@ -850,102 +1031,119 @@ function generateHTML(components) {
 
       .welcome-message {
         height: auto;
-        padding: var(--ddd-spacing-10) var(--ddd-spacing-4);
+        padding: var(--ddd-spacing-10, 40px) var(--ddd-spacing-4, 16px);
       }
     }
   </style>
 </head>
 <body>
+${loader.markup}
   <d-d-d></d-d-d>
 
-  <header class="mobile-bar" id="mobileBar">
-    <span class="mobile-title" id="mobileTitle">Component gallery</span>
-    <button class="btn" id="listToggle" aria-expanded="false" aria-controls="sidebar">Components</button>
-  </header>
+  <header class="titlebar hax-ui-dark-chrome" id="mobileBar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">HAX</span>
+      <h1>Component gallery</h1>
+      <span class="brand-stats">${totalComponents} components, ${walkthroughCount} with walkthroughs</span>
+      <span class="mobile-title" id="mobileTitle">Component gallery</span>
+    </div>
+    <button class="hax-ui-btn" id="listToggle" aria-expanded="false" aria-controls="sidebar">Components</button>
+${
+  haxcmsDemo || appHaxDemo
+    ? `    <nav class="shortcuts" aria-label="System demos">
+${
+  haxcmsDemo
+    ? `      <a class="hax-ui-btn" id="haxcmsDemoBtn" href="${haxcmsDemo.demoPath}" target="haxcms-demo" rel="noopener" title="Open the full HAXcms system demo (haxcms-elements) in its own window">Open HAXcms demo</a>
+`
+    : ""
+}${
+        appHaxDemo
+          ? `      <a class="hax-ui-btn" id="appHaxDemoBtn" href="${appHaxDemo.demoPath}" target="_blank" rel="noopener" title="Open the AppHax dashboard demo (app-hax) in a new tab">Open AppHax demo</a>
+`
+          : ""
+      }    </nav>
+`
+    : ""
+}  </header>
 
   <div class="gallery-container">
     <!-- Sidebar with component list -->
-    <aside class="sidebar" id="sidebar">
-      <header class="sidebar-header">
-        <p class="eyebrow">HAX web components</p>
-        <h1>Component gallery</h1>
-        <p class="stats">${totalComponents} components, ${components.filter((c) => c.motionStatus && c.motionStatus !== "none").length} with walkthroughs</p>
-${
-  haxcmsDemo
-    ? `
-        <a class="btn shortcut-btn" id="haxcmsDemoBtn" href="${haxcmsDemo.demoPath}" target="haxcms-demo" rel="noopener" title="Open the full HAXcms system demo (haxcms-elements) in its own window">Open HAXcms demo</a>
-`
-    : ""
-}
-
+    <aside class="sidebar" id="sidebar" aria-label="Components">
+      <div class="sidebar-header">
         <input type="search"
-               class="search-box"
+               class="hax-ui-input compact search-box"
                placeholder="Search components"
                id="searchBox"
                aria-label="Search components">
 
         <div class="filter-buttons" role="group" aria-label="Filter components">
-          <button class="filter-btn active" data-filter="all" title="Show all components">
-            All (${totalComponents})
+          <button class="hax-ui-chip filter-btn" aria-pressed="true" data-filter="all" title="Show all components">
+            All <span class="n">${totalComponents}</span>
           </button>
-          <button class="filter-btn" data-filter="hax" title="Show only HAX-capable components">
-            HAX (${components.filter((c) => c.isHaxCapable).length})
+          <button class="hax-ui-chip filter-btn" aria-pressed="false" data-filter="hax" title="Show only HAX-capable components">
+            HAX <span class="n">${components.filter((c) => c.isHaxCapable).length}</span>
           </button>
-          <button class="filter-btn" data-filter="walkthrough" title="Show components with an animated walkthrough">
-            Walkthrough (${components.filter((c) => c.motionStatus && c.motionStatus !== "none").length})
+          <button class="hax-ui-chip filter-btn" aria-pressed="false" data-filter="walkthrough" title="Show components with an animated walkthrough">
+            Walkthrough <span class="n">${walkthroughCount}</span>
           </button>
-          <button class="filter-btn" data-filter="hax-ecosystem" title="Show HAX ecosystem components">
-            hax-* (${components.filter((c) => c.name.startsWith("hax-")).length})
+          <button class="hax-ui-chip filter-btn" aria-pressed="false" data-filter="hax-ecosystem" title="Show HAX ecosystem components">
+            hax-* <span class="n">${components.filter((c) => c.name.startsWith("hax-")).length}</span>
           </button>
         </div>
-      </header>
+      </div>
 
-      <nav class="component-list" id="componentList" aria-label="Components">
+      <p class="rail-label" id="listLabel" aria-live="polite">${totalComponents} shown</p>
+      <nav class="component-list" id="componentList" aria-labelledby="listLabel">
         <!-- Components will be populated by JavaScript -->
       </nav>
 
-      <p class="no-results hidden" id="noResults">No components found</p>
+      <p class="hax-ui-message no-results hidden" id="noResults">No components found</p>
     </aside>
 
     <!-- Main content area -->
     <main class="main-content">
       <header class="demo-header hidden" id="demoHeader">
-        <h2 class="demo-title" id="demoTitle">Component</h2>
-        <p class="demo-description" id="demoDescription">Select a component to view its demo and documentation</p>
+        <div>
+          <h2 class="demo-title" id="demoTitle">Component</h2>
+          <p class="demo-description" id="demoDescription">Select a component to view its demo and documentation</p>
+        </div>
 
         <div class="snippets">
           <span class="snippet-label">Install</span>
           <code class="snippet-code" id="installationCode">npm install @haxtheweb/example-element</code>
-          <button class="btn" data-copy="installationCode">Copy</button>
+          <button class="hax-ui-btn ghost" data-copy="installationCode">Copy</button>
           <span class="snippet-label">Import</span>
           <code class="snippet-code" id="usageCode">import '@haxtheweb/example-element/example-element.js';</code>
-          <button class="btn" data-copy="usageCode">Copy</button>
+          <button class="hax-ui-btn ghost" data-copy="usageCode">Copy</button>
         </div>
 
         <div class="toolbar">
-          <div class="view-tabs" role="tablist" aria-label="View">
-            <button class="view-tab" role="tab" id="tabDemo" data-view="demo" aria-selected="true">Live demo</button>
-            <button class="view-tab" role="tab" id="tabDocs" data-view="docs" aria-selected="false">Documentation</button>
-          </div>
-          <div class="demo-selector-container hidden" id="demoSelectorContainer">
-            <label class="demo-selector-label" for="demoSelector">Demo</label>
-            <select class="demo-selector" id="demoSelector"></select>
+          <div class="toolbar-start">
+            <div class="hax-ui-seg view-tabs" role="tablist" aria-label="View">
+              <button class="view-tab" role="tab" id="tabDemo" data-view="demo" aria-selected="true">Live demo</button>
+              <button class="view-tab" role="tab" id="tabDocs" data-view="docs" aria-selected="false">Documentation</button>
+            </div>
+            <label class="hax-ui-tool-field demo-selector-container hidden" id="demoSelectorContainer">
+              Demo
+              <select class="demo-selector" id="demoSelector"></select>
+            </label>
           </div>
           <div class="demo-actions">
-            <a class="btn" id="newTabBtn" href="#" target="_blank" rel="noopener">Open in new tab</a>
-            <button class="btn" id="codepenBtn">Try in CodePen</button>
-            <button class="btn" id="fullscreenBtn">Fullscreen</button>
+            <a class="hax-ui-btn" id="newTabBtn" href="#" target="_blank" rel="noopener">Open in new tab</a>
+            <button class="hax-ui-btn" id="codepenBtn">Try in CodePen</button>
+            <button class="hax-ui-btn" id="fullscreenBtn">Fullscreen</button>
           </div>
         </div>
       </header>
 
-      <div class="stage">
+      <div class="stage" id="stage">
         <div class="welcome-message" id="welcomeMessage">
-          <div>
-            <h2>Welcome to the HAX web components gallery</h2>
+          <div class="hax-ui-empty">
+            <strong>Welcome to the HAX web components gallery</strong>
             <p>Choose a component to see its demo, documentation and walkthrough.</p>
           </div>
         </div>
+        <div class="stage-progress" aria-hidden="true"></div>
         <iframe class="demo-frame hidden" id="demoFrame" title="Component demo"></iframe>
         <div class="docs-pane hidden" id="docsPane"></div>
       </div>
@@ -985,6 +1183,23 @@ ${
     const filterBtns = document.querySelectorAll('.filter-btn');
     const docsPane = document.getElementById('docsPane');
     const viewTabs = document.querySelectorAll('.view-tab');
+    const listLabel = document.getElementById('listLabel');
+    const stage = document.getElementById('stage');
+
+    // A demo stays hidden under the stage's progress bar until its page has
+    // loaded, so switching components never flashes a blank (white) frame.
+    let stageTimer = null;
+    function loadDemo(src) {
+      stage.classList.add('is-loading');
+      clearTimeout(stageTimer);
+      stageTimer = setTimeout(() => stage.classList.remove('is-loading'), 8000);
+      demoFrame.src = src;
+      newTabBtn.href = src;
+    }
+    demoFrame.addEventListener('load', () => {
+      clearTimeout(stageTimer);
+      stage.classList.remove('is-loading');
+    });
     let currentView = 'demo';
     let currentTopic = getQueryParam('topic') || '';
 
@@ -1115,6 +1330,7 @@ ${
       filteredComponents = filterComponents();
       componentList.innerHTML = '';
       
+      listLabel.textContent = filteredComponents.length + ' shown';
       if (filteredComponents.length === 0) {
         noResults.classList.remove('hidden');
         return;
@@ -1127,11 +1343,15 @@ ${
         item.className = 'component-item';
         item.dataset.componentName = component.name;
         
+        if (currentComponent && currentComponent.name === component.name) {
+          item.setAttribute('aria-current', 'page');
+        }
+
         const tags = [];
-        if (component.isHaxCapable) tags.push('<span class="tag">HAX</span>');
+        if (component.isHaxCapable) tags.push('<span class="hax-ui-pill" data-tone="accent">HAX</span>');
         if (component.motionStatus && component.motionStatus !== 'none') {
-          tags.push('<span class="tag walk">Walkthrough</span>');
-          if (component.motionStatus === 'stale') tags.push('<span class="tag stale">Needs update</span>');
+          tags.push('<span class="hax-ui-pill" data-tone="info">Walkthrough</span>');
+          if (component.motionStatus === 'stale') tags.push('<span class="hax-ui-pill" data-tone="warning">Needs update</span>');
         }
 
         item.innerHTML = \`
@@ -1157,7 +1377,11 @@ ${
       
       // Update active state
       document.querySelectorAll('.component-item').forEach(item => {
-        item.classList.toggle('active', item.dataset.componentName === component.name);
+        if (item.dataset.componentName === component.name) {
+          item.setAttribute('aria-current', 'page');
+        } else {
+          item.removeAttribute('aria-current');
+        }
       });
       
       // Update header and info
@@ -1175,8 +1399,7 @@ ${
       demoFrame.classList.remove('hidden');
       
       // Load selected demo in iframe
-      demoFrame.src = currentDemoPath;
-      newTabBtn.href = currentDemoPath;
+      loadDemo(currentDemoPath);
       setView(getQueryParam('view') === 'docs' ? 'docs' : 'demo');
 
       // Reflect the current selection in the URL for shareable deep links.
@@ -1194,7 +1417,7 @@ ${
       
       // Update filter button states
       filterBtns.forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.filter === filter);
+        btn.setAttribute('aria-pressed', String(btn.dataset.filter === filter));
       });
       
       renderComponentList();
@@ -1216,8 +1439,7 @@ ${
           return;
         }
         currentDemoPath = demoSelector.value || currentComponent.demoPath;
-        demoFrame.src = currentDemoPath;
-      newTabBtn.href = currentDemoPath;
+        loadDemo(currentDemoPath);
         updateUrlForCurrentDemo();
       });
     }
@@ -1363,8 +1585,7 @@ ${
           if (demoSelector && demoSelector.options.length > 0) {
             demoSelector.value = match.path;
           }
-          demoFrame.src = currentDemoPath;
-      newTabBtn.href = currentDemoPath;
+          loadDemo(currentDemoPath);
           updateUrlForCurrentDemo();
         }
       }

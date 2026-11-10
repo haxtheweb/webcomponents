@@ -1,0 +1,686 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UX Study Viewer</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --uxs-bg: #ffffff;
+        --uxs-bg-2: #f2f2f4;
+        --uxs-fg: #262626;
+        --uxs-muted: #5b5b5b;
+        --uxs-line: #a2aaad;
+        --uxs-accent: #1e407c;
+        --uxs-high: #bc204b;
+        --uxs-medium: #bf8226;
+        --uxs-low: #5b5b5b;
+        /* DDD: purple = incorrect, green = correct */
+        --uxs-dead: #491d70;
+        --uxs-hit: #008255;
+        --uxs-focus: #ffd100;
+        --uxs-font: "Roboto", system-ui, sans-serif;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --uxs-bg: #1d1d1d;
+          --uxs-bg-2: #2a2a2a;
+          --uxs-fg: #eeeeee;
+          --uxs-muted: #c4c4c4;
+          --uxs-line: #6b6b6b;
+          --uxs-accent: #96bee6;
+          --uxs-high: #ff7d9b;
+          --uxs-medium: #f2b45a;
+          --uxs-low: #c4c4c4;
+          --uxs-dead: #c39bf5;
+          --uxs-hit: #4fd1a0;
+        }
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: var(--uxs-font);
+        background: var(--uxs-bg);
+        color: var(--uxs-fg);
+        line-height: 1.5;
+      }
+      header,
+      main {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 16px;
+      }
+      h1 {
+        font-size: 24px;
+        margin: 0 0 4px;
+      }
+      h2 {
+        font-size: 18px;
+        margin: 24px 0 8px;
+      }
+      p.note {
+        color: var(--uxs-muted);
+        margin: 0;
+        font-size: 14px;
+      }
+      .drop {
+        margin-top: 16px;
+        border: 2px dashed var(--uxs-line);
+        border-radius: 8px;
+        padding: 24px;
+        text-align: center;
+      }
+      .drop.over {
+        border-color: var(--uxs-accent);
+        background: var(--uxs-bg-2);
+      }
+      button,
+      select,
+      input[type="range"] {
+        font: inherit;
+      }
+      button,
+      select {
+        min-height: 36px;
+        padding: 0 12px;
+        border-radius: 4px;
+        border: 1px solid var(--uxs-line);
+        background: var(--uxs-bg-2);
+        color: var(--uxs-fg);
+        cursor: pointer;
+      }
+      button:focus-visible,
+      select:focus-visible,
+      input:focus-visible,
+      summary:focus-visible {
+        outline: 2px solid var(--uxs-focus);
+        outline-offset: 2px;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+      }
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 8px;
+        margin-top: 16px;
+      }
+      .stat {
+        background: var(--uxs-bg-2);
+        border-radius: 8px;
+        padding: 12px;
+      }
+      .stat b {
+        display: block;
+        font-size: 24px;
+      }
+      .stat span {
+        font-size: 13px;
+        color: var(--uxs-muted);
+      }
+      .layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+        gap: 24px;
+      }
+      @media (max-width: 900px) {
+        .layout {
+          grid-template-columns: minmax(0, 1fr);
+        }
+      }
+      .finding {
+        border: 1px solid var(--uxs-line);
+        border-inline-start: 6px solid var(--uxs-low);
+        border-radius: 6px;
+        padding: 8px 12px;
+        margin-bottom: 8px;
+        cursor: pointer;
+        background: var(--uxs-bg);
+      }
+      .finding[data-sev="high"] {
+        border-inline-start-color: var(--uxs-high);
+      }
+      .finding[data-sev="medium"] {
+        border-inline-start-color: var(--uxs-medium);
+      }
+      .finding[aria-pressed="true"] {
+        background: var(--uxs-bg-2);
+      }
+      .finding h3 {
+        font-size: 15px;
+        margin: 0;
+      }
+      .finding .meta {
+        font-size: 12px;
+        color: var(--uxs-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+      .finding p {
+        margin: 4px 0 0;
+        font-size: 14px;
+      }
+      .stage-wrap {
+        position: relative;
+        border: 1px solid var(--uxs-line);
+        border-radius: 6px;
+        overflow: hidden;
+        background: var(--uxs-bg-2);
+      }
+      canvas {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      .legend {
+        font-size: 13px;
+        color: var(--uxs-muted);
+        gap: 16px;
+      }
+      .sw {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        vertical-align: middle;
+        margin-inline-end: 4px;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 14px;
+      }
+      th,
+      td {
+        text-align: start;
+        border-bottom: 1px solid var(--uxs-line);
+        padding: 6px 8px;
+      }
+      .scroll-x {
+        overflow-x: auto;
+      }
+      [hidden] {
+        display: none !important;
+      }
+      input[type="range"] {
+        flex: 1;
+        min-width: 160px;
+      }
+      .time {
+        font-variant-numeric: tabular-nums;
+        min-width: 7em;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>UX study viewer</h1>
+      <p class="note">
+        Load one or more <code>ux-study-*.json</code> files exported from Merlin
+        (<code>&gt;developer/ux-study</code>). Everything is processed in this
+        page; nothing is uploaded. Pointer position stands in for attention; it
+        is not eye tracking.
+      </p>
+      <div class="drop" id="drop">
+        <p>Drop session files here, or</p>
+        <label class="row" style="justify-content: center">
+          <input
+            type="file"
+            id="files"
+            accept=".json,application/json"
+            multiple
+          />
+        </label>
+      </div>
+    </header>
+    <main id="results" hidden>
+      <div class="stats" id="stats"></div>
+      <div class="row" style="margin-top: 16px">
+        <button type="button" id="copy-report">Copy report (markdown)</button>
+        <button type="button" id="download-report">Download report</button>
+        <button type="button" id="download-analysis">
+          Download analysis JSON
+        </button>
+      </div>
+      <div class="layout">
+        <section aria-labelledby="findings-h">
+          <h2 id="findings-h">Findings</h2>
+          <p class="note">
+            Select a finding to highlight its control on the stage.
+          </p>
+          <div id="findings" role="list"></div>
+        </section>
+        <section aria-labelledby="stage-h">
+          <h2 id="stage-h">Heatmap and replay</h2>
+          <div class="row">
+            <label
+              >Session
+              <select id="session"></select>
+            </label>
+            <label
+              >Layer
+              <select id="layer">
+                <option value="heat">Attention heatmap (all moves)</option>
+                <option value="replay">Replay</option>
+              </select>
+            </label>
+          </div>
+          <div class="row" id="replay-controls" style="margin-top: 8px" hidden>
+            <button type="button" id="play">Play</button>
+            <select id="speed" aria-label="Playback speed">
+              <option value="1">1x</option>
+              <option value="2">2x</option>
+              <option value="4" selected>4x</option>
+              <option value="8">8x</option>
+            </select>
+            <input
+              type="range"
+              id="scrub"
+              min="0"
+              max="1000"
+              value="0"
+              aria-label="Replay position"
+            />
+            <span class="time" id="clock">0:00</span>
+          </div>
+          <div class="stage-wrap" style="margin-top: 8px">
+            <canvas
+              id="stage"
+              width="1280"
+              height="800"
+              role="img"
+              aria-label="Interface wireframe with attention heatmap"
+            ></canvas>
+          </div>
+          <div class="row legend" style="margin-top: 8px">
+            <span
+              ><span class="sw" style="background: var(--uxs-hit)"></span>click
+              on a control</span
+            >
+            <span
+              ><span class="sw" style="background: var(--uxs-dead)"></span>click
+              that did nothing or just missed</span
+            >
+            <span
+              ><span class="sw" style="background: var(--uxs-high)"></span>rage
+              clicks</span
+            >
+            <span>boxes: controls on screen (latest snapshot)</span>
+          </div>
+          <p class="note" id="stage-note"></p>
+        </section>
+      </div>
+      <h2>Tasks</h2>
+      <div class="scroll-x"><table id="tasks"></table></div>
+    </main>
+    <script type="module">
+      import {
+        analyzeUXStudies,
+        uxStudyReportMarkdown,
+      } from "../lib/core/utils/UXStudyAnalyzer.js";
+
+      const $ = (id) => document.getElementById(id);
+      const css = (name) =>
+        getComputedStyle(document.documentElement)
+          .getPropertyValue(name)
+          .trim();
+      const fmt = (ms) => {
+        if (ms === null || ms === undefined) return "–";
+        const s = Math.round(ms / 1000);
+        return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
+      };
+      const esc = (v) =>
+        String(v === undefined || v === null ? "" : v).replace(
+          /[&<>"']/g,
+          (c) =>
+            ({
+              "&": "&amp;",
+              "<": "&lt;",
+              ">": "&gt;",
+              '"': "&quot;",
+              "'": "&#39;",
+            })[c],
+        );
+
+      let sessions = [];
+      let analysis = null;
+      let selectedFinding = null;
+      let playing = false;
+      let playhead = 0;
+      let lastFrame = 0;
+
+      const load = async (fileList) => {
+        const loaded = [];
+        for (const file of Array.from(fileList)) {
+          try {
+            const data = JSON.parse(await file.text());
+            if (data && data.schema && Array.isArray(data.events))
+              loaded.push(data);
+          } catch (e) {
+            // skip files that aren't sessions
+          }
+        }
+        if (!loaded.length) {
+          $("stage-note").textContent = "";
+          alertNote("No UX study sessions found in those files.");
+          return;
+        }
+        sessions = sessions.concat(loaded);
+        analysis = analyzeUXStudies(sessions);
+        render();
+      };
+      const alertNote = (msg) => {
+        const p = document.createElement("p");
+        p.className = "note";
+        p.setAttribute("role", "alert");
+        p.textContent = msg;
+        $("drop").appendChild(p);
+        setTimeout(() => p.remove(), 5000);
+      };
+
+      const render = () => {
+        $("results").hidden = false;
+        const f = analysis.findings;
+        const stat = (n, l) =>
+          `<div class="stat"><b>${n}</b><span>${l}</span></div>`;
+        $("stats").innerHTML =
+          stat(analysis.participants.length, "participants") +
+          stat(f.filter((x) => x.severity === "high").length, "high findings") +
+          stat(
+            f.filter((x) => x.severity === "medium").length,
+            "medium findings",
+          ) +
+          stat(f.filter((x) => x.severity === "low").length, "low findings") +
+          stat(analysis.tasks.length, "tasks");
+        $("findings").innerHTML = f.length
+          ? f
+              .map(
+                (
+                  x,
+                  i,
+                ) => `<div class="finding" role="listitem" tabindex="0" aria-pressed="false" data-i="${i}" data-sev="${esc(x.severity)}">
+                <div class="meta">${esc(x.id)} · ${esc(x.severity)} · ${esc(x.category)} · ${esc(x.people)} of ${analysis.participants.length}</div>
+                <h3>${esc(x.title)}</h3>
+                <p>${esc(x.evidence)}</p>
+                <p><b>Direction:</b> ${esc(x.recommendation)}</p></div>`,
+              )
+              .join("")
+          : `<p>No issues crossed the thresholds.</p>`;
+        $("session").innerHTML = analysis.sessions
+          .map(
+            (s, i) =>
+              `<option value="${i}">${esc(s.participant)} (${fmt(s.durationMs)})</option>`,
+          )
+          .join("");
+        $("tasks").innerHTML =
+          `<thead><tr><th>Task</th><th>People</th><th>Median time</th><th>To first click</th><th>Pointer travel</th><th>Dead</th><th>Rage</th><th>Hesitations</th><th>Backtracks</th></tr></thead><tbody>` +
+          analysis.tasks
+            .map(
+              (t) =>
+                `<tr><td>${esc(t.label)}</td><td>${t.participants}</td><td>${fmt(t.medianDurationMs)}</td><td>${fmt(t.medianTimeToFirstClickMs)}</td><td>${t.medianPointerTravelPx === null ? "–" : t.medianPointerTravelPx + "px"}</td><td>${t.deadClicks}</td><td>${t.rageClicks}</td><td>${t.hesitations}</td><td>${t.backtracks}</td></tr>`,
+            )
+            .join("") +
+          `</tbody>`;
+        playhead = 0;
+        draw();
+      };
+
+      const current = () => sessions[parseInt($("session").value || "0", 10)];
+      const currentAnalysis = () =>
+        analysis.sessions[parseInt($("session").value || "0", 10)];
+
+      const draw = () => {
+        const session = current();
+        if (!session) return;
+        const canvas = $("stage");
+        const ctx = canvas.getContext("2d");
+        const vp = (session.env && session.env.viewport) || { w: 1280, h: 800 };
+        canvas.width = vp.w;
+        canvas.height = vp.h;
+        const replay = $("layer").value === "replay";
+        $("replay-controls").hidden = !replay;
+        const events = session.events.slice().sort((a, b) => a.t - b.t);
+        const until = replay ? playhead : Infinity;
+        ctx.fillStyle = css("--uxs-bg");
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        // wireframe of the controls on screen at the playhead
+        const snaps = (session.snapshots || []).filter(
+          (s) => s.t <= (replay ? playhead : Infinity),
+        );
+        const snap = snaps.length
+          ? snaps[snaps.length - 1]
+          : (session.snapshots || [])[0];
+        const focusPath =
+          selectedFinding && selectedFinding.control
+            ? selectedFinding.control.path
+            : null;
+        if (snap) {
+          ctx.font = "11px sans-serif";
+          snap.controls.forEach((c) => {
+            const hot = focusPath && c.path === focusPath;
+            ctx.strokeStyle = hot ? css("--uxs-high") : css("--uxs-line");
+            ctx.lineWidth = hot ? 4 : 1;
+            ctx.strokeRect(c.rect.x + 0.5, c.rect.y + 0.5, c.rect.w, c.rect.h);
+            if (c.label && c.rect.w > 40) {
+              ctx.fillStyle = css("--uxs-muted");
+              ctx.fillText(
+                c.label.substring(0, Math.floor(c.rect.w / 6)),
+                c.rect.x + 3,
+                c.rect.y + 12,
+              );
+            }
+          });
+          $("stage-note").textContent =
+            `Wireframe from ${snap.href} at ${fmt(snap.t)}${
+              focusPath && !snap.controls.some((c) => c.path === focusPath)
+                ? ". The selected finding's control is not on screen in this snapshot."
+                : ""
+            }`;
+        }
+        // attention heatmap from pointer samples
+        const moves = events.filter((e) => e.type === "move" && e.t <= until);
+        const heat = document.createElement("canvas");
+        heat.width = canvas.width;
+        heat.height = canvas.height;
+        const h = heat.getContext("2d");
+        const recent = replay
+          ? moves.filter((m) => playhead - m.t < 8000)
+          : moves;
+        recent.forEach((m) => {
+          const g = h.createRadialGradient(m.x, m.y, 0, m.x, m.y, 40);
+          g.addColorStop(0, "rgba(0,0,0,0.25)");
+          g.addColorStop(1, "rgba(0,0,0,0)");
+          h.fillStyle = g;
+          h.fillRect(m.x - 40, m.y - 40, 80, 80);
+        });
+        const img = h.getImageData(0, 0, heat.width, heat.height);
+        for (let i = 0; i < img.data.length; i += 4) {
+          const a = img.data[i + 3] / 255;
+          if (a > 0) {
+            // cool to hot ramp
+            const v = Math.min(1, a * 2.2);
+            img.data[i] = Math.round(255 * Math.min(1, v * 2));
+            img.data[i + 1] = Math.round(
+              255 * Math.max(0, 1 - Math.abs(v - 0.5) * 2),
+            );
+            img.data[i + 2] = Math.round(255 * Math.max(0, 1 - v * 2));
+            img.data[i + 3] = Math.round(70 + 150 * v);
+          }
+        }
+        h.putImageData(img, 0, 0);
+        ctx.drawImage(heat, 0, 0);
+        // replay trail and cursor
+        if (replay && recent.length) {
+          ctx.strokeStyle = css("--uxs-accent");
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          recent
+            .slice(-40)
+            .forEach((m, i) =>
+              i ? ctx.lineTo(m.x, m.y) : ctx.moveTo(m.x, m.y),
+            );
+          ctx.stroke();
+          const last = recent[recent.length - 1];
+          ctx.fillStyle = css("--uxs-fg");
+          ctx.beginPath();
+          ctx.arc(last.x, last.y, 6, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        // clicks
+        const sig = currentAnalysis().signals;
+        const deadSet = new Set(sig.dead.concat(sig.nearMiss).map((d) => d.t));
+        const rageSet = new Set(sig.rage.map((r) => r.t));
+        events
+          .filter(
+            (e) =>
+              e.type === "click" &&
+              e.t <= until &&
+              (!replay || playhead - e.t < 8000),
+          )
+          .forEach((c) => {
+            ctx.fillStyle = rageSet.has(c.t)
+              ? css("--uxs-high")
+              : deadSet.has(c.t)
+                ? css("--uxs-dead")
+                : css("--uxs-hit");
+            ctx.beginPath();
+            ctx.arc(c.x, c.y, rageSet.has(c.t) ? 10 : 6, 0, Math.PI * 2);
+            ctx.fill();
+          });
+        if (replay) {
+          const dur =
+            session.durationMs ||
+            (events.length ? events[events.length - 1].t : 0);
+          $("scrub").value = dur ? Math.round((playhead / dur) * 1000) : 0;
+          const marks = events.filter(
+            (e) => e.type === "mark" && e.t <= playhead,
+          );
+          $("clock").textContent =
+            `${fmt(playhead)} / ${fmt(dur)}${marks.length ? " · " + marks[marks.length - 1].label : ""}`;
+        }
+      };
+
+      const tick = (now) => {
+        if (!playing) return;
+        const session = current();
+        const dur = session.durationMs || 0;
+        playhead = Math.min(
+          dur,
+          playhead + (now - lastFrame) * parseFloat($("speed").value),
+        );
+        lastFrame = now;
+        draw();
+        if (playhead >= dur) {
+          playing = false;
+          $("play").textContent = "Play";
+          return;
+        }
+        requestAnimationFrame(tick);
+      };
+
+      $("files").addEventListener("change", (e) => load(e.target.files));
+      const drop = $("drop");
+      drop.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        drop.classList.add("over");
+      });
+      drop.addEventListener("dragleave", () => drop.classList.remove("over"));
+      drop.addEventListener("drop", (e) => {
+        e.preventDefault();
+        drop.classList.remove("over");
+        load(e.dataTransfer.files);
+      });
+      $("session").addEventListener("change", () => {
+        playhead = 0;
+        draw();
+      });
+      $("layer").addEventListener("change", draw);
+      $("scrub").addEventListener("input", (e) => {
+        const dur = current().durationMs || 0;
+        playhead = (parseInt(e.target.value, 10) / 1000) * dur;
+        draw();
+      });
+      $("play").addEventListener("click", () => {
+        playing = !playing;
+        $("play").textContent = playing ? "Pause" : "Play";
+        if (playing) {
+          if (playhead >= (current().durationMs || 0)) playhead = 0;
+          lastFrame = performance.now();
+          requestAnimationFrame(tick);
+        }
+      });
+      const pick = (el) => {
+        const i = parseInt(el.getAttribute("data-i"), 10);
+        selectedFinding =
+          selectedFinding === analysis.findings[i]
+            ? null
+            : analysis.findings[i];
+        document
+          .querySelectorAll(".finding")
+          .forEach((n) =>
+            n.setAttribute(
+              "aria-pressed",
+              selectedFinding && n === el ? "true" : "false",
+            ),
+          );
+        draw();
+      };
+      $("findings").addEventListener("click", (e) => {
+        const el = e.target.closest(".finding");
+        if (el) pick(el);
+      });
+      $("findings").addEventListener("keydown", (e) => {
+        const el = e.target.closest(".finding");
+        if (el && (e.key === "Enter" || e.key === " ")) {
+          e.preventDefault();
+          pick(el);
+        }
+      });
+      const save = (name, text, type) => {
+        const url = URL.createObjectURL(new Blob([text], { type: type }));
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = name;
+        a.click();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+      };
+      $("copy-report").addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(uxStudyReportMarkdown(analysis));
+          $("copy-report").textContent = "Copied";
+          setTimeout(
+            () => ($("copy-report").textContent = "Copy report (markdown)"),
+            2000,
+          );
+        } catch (e) {
+          save(
+            "ux-study-report.md",
+            uxStudyReportMarkdown(analysis),
+            "text/markdown",
+          );
+        }
+      });
+      $("download-report").addEventListener("click", () =>
+        save(
+          "ux-study-report.md",
+          uxStudyReportMarkdown(analysis),
+          "text/markdown",
+        ),
+      );
+      $("download-analysis").addEventListener("click", () => {
+        const slim = Object.assign({}, analysis, { sessions: undefined });
+        save(
+          "ux-study-analysis.json",
+          JSON.stringify(slim, null, 2),
+          "application/json",
+        );
+      });
+    </script>
+  </body>
+</html>

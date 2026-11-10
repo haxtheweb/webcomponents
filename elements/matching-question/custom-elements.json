@@ -27,6 +27,18 @@
             },
             {
               "kind": "method",
+              "name": "_xapiMatching"
+            },
+            {
+              "kind": "method",
+              "name": "xapiDefinition"
+            },
+            {
+              "kind": "method",
+              "name": "learnerResponse"
+            },
+            {
+              "kind": "method",
               "name": "processInput",
               "parameters": [
                 {

@@ -127,6 +127,14 @@
       "hax": null
     },
     {
+      "name": "active-progress",
+      "property": "activeProgress",
+      "type": "null",
+      "default": "null",
+      "description": "Percent (0 to 1) of the page open now (the selected item): that item shows a ring around its icon area filled to it, a check once it is done, and says the percent on hover and to screen readers. null (the default) shows no ring.",
+      "hax": null
+    },
+    {
       "name": "active-indicator",
       "property": "activeIndicator",
       "type": "boolean",
@@ -142,7 +150,7 @@
     null
   ],
   "hax": {},
-  "surfaceHash": "8ed59da0e91e",
+  "surfaceHash": "7772828d19db",
   "walkthroughs": [
     {
       "id": "",
@@ -150,13 +158,13 @@
       "order": 0,
       "src": "map-menu.motion.json",
       "file": "lib/map-menu.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/map-menu.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

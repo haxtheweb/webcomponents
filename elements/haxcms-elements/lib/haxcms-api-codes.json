@@ -286,6 +286,30 @@
       ]
     },
     {
+      "code": "PAGE_LOCKED",
+      "en": "This page is locked. Unlock it to change it.",
+      "match": ["page \"(?<idOrSlug>.*)\" is locked"]
+    },
+    {
+      "code": "BLOCK_STALE",
+      "en": "Part of this page changed since it was loaded. Reload it and try again.",
+      "match": ["block (?<op>\\d+) no longer matches the stored page"]
+    },
+    {
+      "code": "BLOCK_REFUSED",
+      "en": "This change can't be applied safely: {detail}",
+      "match": [
+        "block (?<op>\\d+) refused \\((?<reason>[\\w-]+)\\): (?<detail>.+)"
+      ]
+    },
+    {
+      "code": "BLOCK_RATE_LIMITED",
+      "en": "Too many content changes on this site right now. Try again in {retryAfter} seconds.",
+      "match": [
+        "block change limit reached: (?<max>\\d+) changes per (?<window>\\d+) seconds for this site\\. you can retry in (?<retryAfter>\\d+) seconds"
+      ]
+    },
+    {
       "code": "LINK_CHECK_RATE_LIMITED",
       "en": "Too many link checks on this site. Try again in {retryAfter}.",
       "match": [

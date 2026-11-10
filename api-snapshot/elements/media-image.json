@@ -1,0 +1,61 @@
+{
+  "tag": "media-image",
+  "package": "@haxtheweb/media-image",
+  "source": "elements/media-image/media-image.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "alt": "alt",
+    "as-md": "asMd",
+    "box": "box",
+    "caption": "caption",
+    "card": "card",
+    "citation": "citation",
+    "dark": "dark",
+    "disable-zoom": "disableZoom",
+    "figure-label-description": "figureLabelDescription",
+    "figure-label-title": "figureLabelTitle",
+    "is-safari": "isSafari",
+    "link": "link",
+    "modaltitle": "modalTitle",
+    "offset": "offset",
+    "round": "round",
+    "schemamap": "schemaMap",
+    "schemaresourceid": "schemaResourceID",
+    "size": "size",
+    "source": "source",
+    "thumbnail": "thumbnail",
+    "typeof": "typeof"
+  },
+  "slots": [
+    "caption",
+    "citation"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/media-image/media-image.js",
+    "gizmo": true,
+    "properties": [
+      "alt",
+      "asMd",
+      "box",
+      "caption",
+      "card",
+      "citation",
+      "disableZoom",
+      "figureLabelDescription",
+      "figureLabelTitle",
+      "link",
+      "offset",
+      "round",
+      "source",
+      "thumbnail"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "media-image"
+    ]
+  }
+}

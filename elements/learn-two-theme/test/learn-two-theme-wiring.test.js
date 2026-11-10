@@ -74,12 +74,13 @@ describe("learn-two-theme basic rendering", () => {
     expect(sr.querySelector("#drawer site-title")).to.exist;
     expect(sr.querySelector("#drawer site-modal")).to.exist;
     expect(sr.querySelector("#drawer site-print-button")).to.exist;
-    expect(
-      sr.querySelectorAll('#drawer site-rss-button[type="atom"]').length,
-    ).to.equal(1);
-    expect(
-      sr.querySelectorAll('#drawer site-rss-button[type="rss"]').length,
-    ).to.equal(1);
+    // RSS buttons were removed from the theme (the feeds themselves stay)
+    expect(sr.querySelectorAll("#drawer site-rss-button").length).to.equal(0);
+    // My learning, ring only, right before search
+    const learning = sr.querySelector("#drawer my-learning-button");
+    expect(learning).to.exist;
+    expect(learning.hasAttribute("compact")).to.equal(true);
+    expect(learning.nextElementSibling.tagName).to.equal("SITE-MODAL");
     expect(sr.querySelector('nav[aria-label="Site navigation"] site-menu')).to
       .exist;
     expect(sr.querySelector(".scrim")).to.exist;
@@ -193,11 +194,6 @@ describe("learn-two-theme edit mode", () => {
     expect(
       el.shadowRoot
         .querySelector("#drawer site-print-button")
-        .hasAttribute("disabled"),
-    ).to.be.true;
-    expect(
-      el.shadowRoot
-        .querySelector("#drawer site-rss-button")
         .hasAttribute("disabled"),
     ).to.be.true;
     // slot content is hidden while editing
