@@ -16,21 +16,13 @@
   "cssParts": [],
   "cssProperties": [],
   "hax": {
-    "schema": "elements/flash-card/lib/flash-card.haxProperties.json",
+    "schema": "elements/flash-card/lib/flash-card-set.haxProperties.json",
     "gizmo": true,
-    "properties": [
-      "hasLearningObjective",
-      "imgKeyword",
-      "imgSource",
-      "typeOfAction"
-    ],
+    "properties": [],
     "attributes": [],
-    "slots": [
-      "back",
-      "front"
-    ],
+    "slots": [],
     "demoTags": [
-      "flash-card"
+      "flash-card-set"
     ]
   }
 }

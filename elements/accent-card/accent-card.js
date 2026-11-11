@@ -436,14 +436,14 @@ class AccentCard extends I18NMixin(IntersectionObserverMixin(DDD)) {
         handles: [
           {
             type: "media",
-            url: "source",
+            url: "imageSrc",
           },
           {
             type: "image",
           },
           {
             type: "text",
-            url: "source",
+            url: "link",
           },
         ],
         meta: {

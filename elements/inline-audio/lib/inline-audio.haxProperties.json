@@ -19,7 +19,7 @@
     "handles": [
       {
         "type": "inline",
-        "text": "term"
+        "text": "innerHTML"
       }
     ],
     "meta": {

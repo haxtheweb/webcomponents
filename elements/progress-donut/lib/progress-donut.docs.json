@@ -18,6 +18,18 @@
   "demoHtml": "",
   "attributes": [
     {
+      "name": "animated",
+      "property": "animated",
+      "type": "boolean",
+      "default": "false",
+      "description": "Animate the progress on first load (the HAX \"Animated\" setting). Uses the animation timing when one is set, otherwise a default duration; skipped when the viewer prefers reduced motion.",
+      "hax": {
+        "title": "Animated",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
       "name": "animation",
       "property": "animation",
       "type": "number",
@@ -173,7 +185,7 @@
       "advanced": []
     }
   },
-  "surfaceHash": "b46fbef9d3d5",
+  "surfaceHash": "7a868fbfa491",
   "walkthroughs": [
     {
       "id": "",
@@ -181,13 +193,13 @@
       "order": 0,
       "src": "progress-donut.motion.json",
       "file": "lib/progress-donut.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/progress-donut.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

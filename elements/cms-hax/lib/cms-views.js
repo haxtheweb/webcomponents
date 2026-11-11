@@ -85,7 +85,6 @@ class CMSViews extends CMSBase {
         handles: [
           {
             type: "cmsviews",
-            views: "views",
           },
         ],
         meta: {
