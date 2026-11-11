@@ -15,6 +15,20 @@ import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js"
 import { parsePreviewFrameName } from "./utils/HAXCMSPreview.js";
 import { I18NManagerStore } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 configure({ enforceActions: false }); // strict mode off
+/**
+ * A JSON Outline Schema item id (or parent) as a string: a whole number
+ * becomes its decimal string (7 -> "7", 0 -> "0"); anything else (null, "",
+ * strings, fractions, numbers past Number.MAX_SAFE_INTEGER) is returned
+ * unchanged. The same rule as JSONOutlineSchema.normalizeOutlineId in
+ * haxcms-nodejs and haxcms-php, which apply it when they load site.json.
+ */
+export function normalizeOutlineId(value) {
+  if (Number.isSafeInteger(value)) {
+    // String(-0) is "0"
+    return String(value);
+  }
+  return value;
+}
 function hasStoredSoundPreference() {
   try {
     return globalThis.localStorage.getItem("app-hax-soundStatus") !== null;
@@ -512,6 +526,17 @@ class Store {
 
     // repair slug not being in earlier builds of json schema
     await manifest.items.forEach((item, index, array) => {
+      // ids and parents are strings everywhere downstream (menus, routing,
+      // outline-designer, the Save Outline payload): a hand-made site.json
+      // can hold whole numbers, which the backends only rewrite on save
+      if (item && typeof item === "object") {
+        if ("id" in item) {
+          item.id = normalizeOutlineId(item.id);
+        }
+        if ("parent" in item) {
+          item.parent = normalizeOutlineId(item.parent);
+        }
+      }
       // if we did not have a slug, generate one off location
       if (!item.slug) {
         array[index].slug = item.location
