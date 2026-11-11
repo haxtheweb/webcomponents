@@ -2371,20 +2371,33 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     }
   }
 
-  _toggleActionsMenu(e, _index) {
+  // A row's menu entries are rendered only once its menu is opened: they
+  // were four fifths of every row's DOM (523 of 652 nodes), so a 1,000-page
+  // outline built ~680,000 nodes for menus nobody opened. The row that
+  // last opened its menu keeps its entries.
+  async _menuReady(listItem) {
+    const id = listItem && listItem.getAttribute("data-item-id");
+    if (id && this._menuRowId !== id) {
+      this._menuRowId = id;
+      await this.updateComplete;
+    }
+    return listItem ? listItem.querySelector(".actions-menu") : null;
+  }
+
+  async _toggleActionsMenu(e, _index) {
     e.stopPropagation();
     const button = e.target.closest("button") || e.target;
     const listItem = button.closest("li");
-    const menu = listItem.querySelector(".actions-menu");
+    const menu = await this._menuReady(listItem);
     if (menu) {
       menu.toggle(button);
     }
   }
 
   // Shift+F10, the context menu key or a right click
-  _openActionsMenu(listItem) {
+  async _openActionsMenu(listItem) {
     if (!listItem) return;
-    const menu = listItem.querySelector(".actions-menu");
+    const menu = await this._menuReady(listItem);
     if (menu && !menu.open) {
       menu.openMenu(listItem.querySelector(".actions-menu-button") || listItem);
     }
@@ -2691,7 +2704,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           title="${this.t.pageActions}"
           @simple-context-menu-closed="${this._onMenuClosed}"
         >
-          ${PAGE_MENU_ITEMS.map((m) => {
+          ${(this._menuRowId === item.id ? PAGE_MENU_ITEMS : []).map((m) => {
             if (m.content && (this.hideContentOps || !item.contents)) {
               return nothing;
             }
@@ -5489,6 +5502,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       _focusId: { state: true },
       _statusText: { state: true },
       _vtActive: { state: true },
+      _menuRowId: { state: true },
       _flashGroup: { state: true },
       _nudgeId: { state: true },
       _undo: { state: true },

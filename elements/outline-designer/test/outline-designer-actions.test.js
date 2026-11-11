@@ -810,8 +810,8 @@ describe("outline-designer item operations", () => {
     expect(element.shadowRoot.querySelector("li.add-row")).to.equal(null);
   });
 
-  it("shows each menu action's keyboard shortcut, as Merlin does", () => {
-    const menu = pageLi(element, "p2").querySelector(".actions-menu");
+  it("shows each menu action's keyboard shortcut, as Merlin does", async () => {
+    const menu = await element._menuReady(pageLi(element, "p2"));
     const shortcut = (value) => {
       const item = menu.querySelector(
         `simple-toolbar-button[value="${value}"]`,

@@ -932,7 +932,7 @@ describe("outline-designer updated branches", () => {
   it("toggles the actions menu open and closed", async () => {
     const li = pageLi(element, "p1");
     const menuButton = li.querySelector(".actions-menu-button");
-    element._toggleActionsMenu(fakeEventFrom(menuButton), 0);
+    await element._toggleActionsMenu(fakeEventFrom(menuButton), 0);
     const menu = li.querySelector(".actions-menu");
     expect(menu.open).to.equal(true);
     // an action through the menu closes it again
@@ -954,7 +954,7 @@ describe("outline-designer updated branches", () => {
     // edit-title on a locked item does nothing
     const lockedLi = pageLi(element, "p3");
     const lockedButton = lockedLi.querySelector(".actions-menu-button");
-    element._toggleActionsMenu(fakeEventFrom(lockedButton), 3);
+    await element._toggleActionsMenu(fakeEventFrom(lockedButton), 3);
     const lockedLabel = lockedLi.querySelector(".label-edit");
     element._handleMenuAction(fakeEventFrom(lockedButton), 3, "edit-title");
     expect(lockedLabel.getAttribute("contenteditable") === null).to.equal(true);
