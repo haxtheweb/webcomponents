@@ -42,6 +42,31 @@ describe("worksheet-download", () => {
     await expect(el).shadowDom.to.be.accessible();
   });
 
+  it("ends the row with a round download icon whose label shows as a tooltip", async () => {
+    const el = await fixture(html`
+      <worksheet-download
+        title="Worksheet 1"
+        link="files/worksheet-1.pdf"
+      ></worksheet-download>
+    `);
+    await el.updateComplete;
+    const link = el.shadowRoot.querySelector("a.link-row");
+    // the old bordered text chip is gone
+    expect(el.shadowRoot.querySelector(".tag")).to.equal(null);
+    const action = link.querySelector(".action");
+    expect(action).to.exist;
+    expect(
+      action.querySelector("simple-icon-lite").getAttribute("icon"),
+    ).to.equal("icons:file-download");
+    const tip = action.querySelector(".tip");
+    expect(tip.textContent.trim()).to.equal("Download");
+    // hidden until hover / focus, but still part of the link name
+    expect(globalThis.getComputedStyle(tip).opacity).to.equal("0");
+    expect(tip.hasAttribute("aria-hidden")).to.be.false;
+    expect(link.textContent).to.include("Download");
+    await expect(el).shadowDom.to.be.accessible();
+  });
+
   it("labels the row with the file type from the link", async () => {
     const el = await fixture(html`
       <worksheet-download

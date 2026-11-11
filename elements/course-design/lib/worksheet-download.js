@@ -128,24 +128,6 @@ export class WorksheetDownload extends I18NMixin(LitElement) {
             var(--ddd-theme-default-white)
           );
         }
-        .tag {
-          flex: none;
-          padding: var(--ddd-spacing-0) var(--ddd-spacing-2);
-          border: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-slateGray)
-          );
-          border-radius: var(--ddd-radius-xs);
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-5xs);
-          font-weight: var(--ddd-font-weight-medium);
-          line-height: var(--ddd-lh-150);
-          color: light-dark(
-            var(--ddd-theme-default-slateGray),
-            var(--ddd-theme-default-limestoneLight)
-          );
-        }
       `,
     ];
   }
@@ -194,7 +176,13 @@ export class WorksheetDownload extends I18NMixin(LitElement) {
             >
             <span class="title">${this.title}</span>
           </span>
-          <span class="tag">${this.t.download}</span>
+          <span class="action"
+            ><simple-icon-lite
+              icon="icons:file-download"
+              aria-hidden="true"
+            ></simple-icon-lite
+            ><span class="tip">${this.t.download}</span></span
+          >
         </a>
       </div>
     `;

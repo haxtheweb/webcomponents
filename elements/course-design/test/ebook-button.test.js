@@ -40,6 +40,31 @@ describe("ebook-button", () => {
     await expect(el).shadowDom.to.be.accessible();
   });
 
+  it("ends the row with an open-in-new action, not a collapse chevron", async () => {
+    const el = await fixture(html`
+      <ebook-button
+        title="Access Ebook"
+        link="https://example.com/ebook"
+      ></ebook-button>
+    `);
+    await el.updateComplete;
+    const link = el.shadowRoot.querySelector("a");
+    expect(link.getAttribute("target")).to.equal(el.target);
+    expect(el.endIcon).to.equal("icons:open-in-new");
+    const action = link.querySelector(".action");
+    expect(
+      action.querySelector("simple-icon-lite").getAttribute("icon"),
+    ).to.equal("icons:open-in-new");
+    expect(
+      el.shadowRoot.querySelector('[icon="icons:chevron-right"]'),
+    ).to.equal(null);
+    // says where the click goes; part of the link name
+    expect(action.querySelector(".tip").textContent.trim()).to.equal(
+      "Opens in a new tab",
+    );
+    expect(link.textContent).to.include("Opens in a new tab");
+  });
+
   it("falls back to the book icon when the icon is cleared", async () => {
     const el = await fixture(html`<ebook-button title="Read"></ebook-button>`);
     el.icon = "";
