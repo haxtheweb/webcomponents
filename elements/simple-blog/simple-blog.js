@@ -1,4 +1,5 @@
 import { html, css } from "lit";
+import { dddReadingProse } from "@haxtheweb/d-d-d/lib/DDDReading.js";
 import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
@@ -22,6 +23,18 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 class SimpleBlog extends I18NMixin(
   SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)),
 ) {
+  HAXCMSGlobalStyleSheetContent() {
+    return [
+      ...super.HAXCMSGlobalStyleSheetContent(),
+      dddReadingProse("simple-blog"),
+      css`
+        simple-blog > :is(p, ul, ol, dl, blockquote) {
+          padding-block-end: 0;
+        }
+      `,
+    ];
+  }
+
   /**
    * LitElement constructable styles enhancement
    */
