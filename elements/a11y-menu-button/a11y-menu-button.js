@@ -69,9 +69,21 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
             padding: var(--a11y-menu-button-vertical-padding, 2px)
               var(--a11y-menu-button-horizontal-padding, 5px);
             text-align: var(--a11y-menu-button-text-align, center);
-            background-color: var(--a11y-menu-button-bg-color, white);
+            background-color: var(
+              --a11y-menu-button-bg-color,
+              light-dark(
+                var(--ddd-theme-default-white, white),
+                var(--ddd-theme-default-potentialMidnight, #000321)
+              )
+            );
             color: var(--a11y-menu-button-color, currentColor);
-            background-color: var(--a11y-menu-button-bg-color, white);
+            background-color: var(
+              --a11y-menu-button-bg-color,
+              light-dark(
+                var(--ddd-theme-default-white, white),
+                var(--ddd-theme-default-potentialMidnight, #000321)
+              )
+            );
             border-radius: var(--a11y-menu-button-border-radius, 0);
             border-left: var(--a11y-menu-button-border-left, unset);
             border-top: var(--a11y-menu-button-border-top, unset);
@@ -96,7 +108,13 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
             );
             background-color: var(
               --a11y-menu-button-focus-bg-color,
-              var(--a11y-menu-button-bg-color, white)
+              var(
+                --a11y-menu-button-bg-color,
+                light-dark(
+                  var(--ddd-theme-default-white, white),
+                  var(--ddd-theme-default-potentialMidnight, #000321)
+                )
+              )
             );
             border-left: var(
               --a11y-menu-button-focus-border-left,
@@ -146,7 +164,13 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
             );
             background-color: var(
               --a11y-menu-button-bg-color,
-              var(--a11y-menu-button-list-bg-color, white)
+              var(
+                --a11y-menu-button-list-bg-color,
+                light-dark(
+                  var(--ddd-theme-default-white, white),
+                  var(--ddd-theme-default-potentialMidnight, #000321)
+                )
+              )
             );
             box-shadow: var(--a11y-menu-button-list-box-shadow, unset);
           }
@@ -954,7 +978,7 @@ Custom property | Description | Default
 --a11y-menu-button-vertical-padding | vertical padding for menu button | 2px
 --a11y-menu-button-horizontal-padding | horizontal padding for menu button | 5px
 --a11y-menu-button-text-align | text alignment for menu button | center
---a11y-menu-button-bg-color | default background color | white
+--a11y-menu-button-bg-color | default background color | `--ddd-theme-default-white` (dark: `--ddd-theme-default-potentialMidnight`)
 --a11y-menu-button-color | default text color | black
 --a11y-menu-button-box-shadow | menu button box-shadow | unset
 --a11y-menu-button-border-radius | menu button border-radius | 0

@@ -6,14 +6,6 @@
         "#example >> aNy-media-transcript-cue[end=\"N:N\"][start=\"N:N\"][lang=\"en\"] > .searchable": 3
       }
     },
-    "a11y-menu-button": {
-      "dark": {
-        "aNy-menu-button-item >> button": 1,
-        "aNy-menu-button-item[href$=\"#top\"] >> a": 1,
-        "aNy-menu-button-item[href=\"../\"] >> a": 1,
-        "span[slot=\"button\"]": 1
-      }
-    },
     "bootstrap-theme": {
       "light": {
         "bootstrap-theme >> #sitemenu >> map-menu >> #item-NaNbNcNd-N-NaNa-NaNa-bootstrapabout >> #item-NaNbNcNd-N-NaNa-NaNa-bootstrapabout >> .title": 1,
@@ -25,41 +17,9 @@
         "bootstrap-theme >> bootstrap-breadcrumb >> .active > span": 1
       }
     },
-    "bullet-check-list": {
-      "dark": {
-        "bullet-check-list[title=\"Themed list\"] >> #title": 1,
-        "bullet-check-list[title=\"Themed list\"] >> .badge": 1,
-        "bullet-check-list[title=\"Themed list\"] >> .ddd-block-label": 1,
-        "bullet-check-list[title=\"Themed list\"] >> li[aria-current=\"false\"] > label > .text": 1,
-        "bullet-check-list[title=\"Themed list\"] >> li[aria-current=\"step\"] > label > .text": 1
-      }
-    },
     "chamfer-theme": {
       "light": {
         "chamfer-theme >> #sitemenu >> map-menu >> #item-NbNcNdNe-N-NbNb-NbNb-chamferhomeN >> .title": 1
-      }
-    },
-    "chartist-render": {
-      "dark": {
-        "#bar-chart > hN": 1,
-        "#bar-chart > p[slot=\"desc\"]": 1,
-        "#bar-chart > table > thead > tr > th[scope=\"col\"]": 4,
-        "#donut-chart > hN": 1,
-        "#line-chart > hN": 1,
-        "#line-chart > p[slot=\"desc\"]": 1,
-        "#pie-chart > hN": 1,
-        "a": 1
-      }
-    },
-    "demo-snippet": {
-      "dark": {
-        "hN": 4
-      }
-    },
-    "editable-table": {
-      "dark": {
-        "a[href$=\"display.html\"]": 1,
-        "a[href=\"index.html\"]": 1
       }
     },
     "example-hax-element": {
@@ -70,16 +30,6 @@
         "example-hax-element[data-accent=\"N\"] > div": 1
       }
     },
-    "flash-card": {
-      "dark": {
-        "flash-card-set >> .ddd-block-label[aria-live=\"polite\"]": 1,
-        "flash-card[back=\"\"] >> .ddd-block-label": 1,
-        "flash-card[img-keyword=\"\"][img-source=\"\"] >> .ddd-block-label": 1,
-        "flash-card[img-keyword=\"samurai\"][img-source=\"\"] >> .ddd-block-label": 1,
-        "flash-card[img-keyword=\"strawberry\"][img-source=\"\"] >> .ddd-block-label": 1,
-        "flash-card[img-keyword=\"undefined\"][img-source=\"\"] >> .ddd-block-label": 1
-      }
-    },
     "future-terminal-text": {
       "dark": {
         "div > future-terminal-text[glitch-duration=\"N\"][glitch=\"\"] >> span": 4,
@@ -88,22 +38,6 @@
         "div > future-terminal-text[glitch=\"\"][fadein=\"\"] >> span": 1,
         "div > future-terminal-text[red=\"\"][fadein=\"\"] >> span": 13,
         "future-terminal-text-lite >> span[part=\"text\"]": 2
-      }
-    },
-    "github-preview": {
-      "dark": {
-        "github-rpg-contributors >> a": 1
-      }
-    },
-    "h5p-element": {
-      "dark": {
-        ".vertical-section-container > hNp-element >> .hNp-el-frame-label": 1
-      }
-    },
-    "hax-body": {
-      "dark": {
-        "h-a-x >> #food-table >> editable-table-display >> .ddd-block-label": 1,
-        "h-a-x >> aNy-gif-player >> .ddd-block-label": 1
       }
     },
     "haxcms-elements": {
