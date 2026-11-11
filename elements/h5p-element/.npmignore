@@ -2,6 +2,10 @@ node_modules
 # Development-only files: nothing that installs this element loads them,
 # so they stay out of the npm package (and the CDNs that mirror it).
 /test/
+# demos and the root index.html that redirects to them: reviewed on the
+# Vercel gallery, never loaded by anything that installs the element
+/demo/
+/index.html
 /gulpfile.cjs
 /gulpfile.js
 /gulpfile.mjs
@@ -11,5 +15,3 @@ node_modules
 /.travis.yml
 /.editorconfig
 /.surgeignore
-# package-specific
-demo/files
