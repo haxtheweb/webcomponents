@@ -199,6 +199,13 @@ class ChamferTheme extends HAXCMSThemeParts(
           --site-menu-item-active-item-color: var(
             --ddd-theme-default-inventOrange
           );
+          /* map-menu's active / hover row falls back to black, which put the
+             light-mode coalyGray text on black; a white row on the
+             limestone column in light mode, black (as before) in dark */
+          --map-menu-item-a-active-background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-black)
+          );
         }
         .below-menu-region {
           padding: var(--ddd-spacing-4);

@@ -51,7 +51,13 @@ const A11yMenuButtonItemBehaviors = function (SuperClass) {
               );
             background-color: var(
               --a11y-menu-button-item-bg-color,
-              var(--a11y-menu-button-bg-color, white)
+              var(
+                --a11y-menu-button-bg-color,
+                light-dark(
+                  var(--ddd-theme-default-white, white),
+                  var(--ddd-theme-default-potentialMidnight, #000321)
+                )
+              )
             );
             border-left: var(--a11y-menu-button-item-border-left, none);
             border-right: var(--a11y-menu-button-item-border-right, none);
