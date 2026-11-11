@@ -51,16 +51,43 @@ describe("BibliographyBuilder test", () => {
   });
 
   describe("rendered structure", () => {
-    it("renders the title card with the i18n heading and title", () => {
-      const h3 = element.shadowRoot.querySelector("h3");
+    it("renders the block header with the label and the title", () => {
+      const header = element.shadowRoot.querySelector(".ddd-block-header");
+      expect(header).to.exist;
+      expect(
+        header.querySelector(".ddd-block-label").textContent.trim(),
+      ).to.equal("References");
+      const h3 = header.querySelector("h3.ddd-block-title");
       expect(h3).to.exist;
-      expect(h3.textContent).to.include("References");
-      expect(h3.textContent).to.include("title");
+      expect(h3.textContent.trim()).to.equal("title");
+      const frame = element.shadowRoot.querySelector(".ddd-block");
+      expect(frame.getAttribute("role")).to.equal("group");
+      expect(frame.getAttribute("aria-labelledby")).to.equal("hdr");
+    });
+
+    it("drops the title line when it repeats the label or is empty", async () => {
+      element.title = "References";
+      await element.updateComplete;
+      expect(element.shadowRoot.querySelector(".ddd-block-title")).to.not.exist;
+      expect(element.shadowRoot.textContent).to.not.include(
+        "References: References",
+      );
+      element.title = "";
+      await element.updateComplete;
+      expect(element.shadowRoot.querySelector(".ddd-block-title")).to.not.exist;
+      element.title = "Week 4 readings";
+      await element.updateComplete;
+      expect(
+        element.shadowRoot.querySelector(".ddd-block-title").textContent.trim(),
+      ).to.equal("Week 4 readings");
     });
 
     it("renders an export button", () => {
       const button = element.shadowRoot.querySelector("#export-button");
       expect(button).to.exist;
+      expect(button.tagName.toLowerCase()).to.equal("button");
+      expect(button.classList.contains("ddd-block-action")).to.be.true;
+      expect(button.classList.contains("has-text")).to.be.true;
       expect(button.textContent.trim()).to.equal("Export");
     });
 
@@ -122,14 +149,24 @@ describe("BibliographyBuilder test", () => {
       expect(element._modalContent === first).to.be.true;
     });
 
-    it("labels the export dropdown for screen readers", async () => {
-      // a11y fix: the export format select had no label, so screen readers
-      // announced it without an accessible name
+    it("labels the export dropdown with a visible label", async () => {
+      // a11y: the export format select has a visible, associated label
       element._showExportModal({ target: null });
       const select = element._modalContent.querySelector("#export-dropdown");
-      expect(select.getAttribute("aria-label")).to.equal(
-        "Export citation format",
+      const label = element._modalContent.querySelector(
+        'label[for="export-dropdown"]',
       );
+      expect(select).to.exist;
+      expect(label).to.exist;
+      expect(label.textContent.trim()).to.equal("Export citation format");
+    });
+
+    it("renders Copy as a named text button", async () => {
+      element._showExportModal({ target: null });
+      const copy = element._modalContent.querySelector("button.copy-button");
+      expect(copy).to.exist;
+      expect(copy.getAttribute("type")).to.equal("button");
+      expect(copy.textContent.trim()).to.equal("Copy");
     });
 
     it("styles modal borders with DDD tokens instead of hardcoded black", async () => {

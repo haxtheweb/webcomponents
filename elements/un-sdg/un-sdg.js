@@ -1,6 +1,14 @@
 import { LitElement, html, css } from "lit";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
-export class UnSdg extends SchemaBehaviors(LitElement) {
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+
+// fill {key} placeholders in a translated string
+const fill = (str, values) =>
+  String(str).replace(/\{([a-zA-Z]+)\}/g, (m, k) =>
+    Object.prototype.hasOwnProperty.call(values, k) ? String(values[k]) : m,
+  );
+
+export class UnSdg extends I18NMixin(SchemaBehaviors(LitElement)) {
   static get tag() {
     return "un-sdg";
   }
@@ -12,6 +20,31 @@ export class UnSdg extends SchemaBehaviors(LitElement) {
     this.colorOnly = false;
     this.loading = "lazy";
     this.fetchpriority = "low";
+    // the official goal names; the tile artwork stays in English
+    this.t = {
+      goalLabel: "Goal {goal}: {name}",
+      goal1: "No Poverty",
+      goal2: "Zero Hunger",
+      goal3: "Good Health and Well-being",
+      goal4: "Quality Education",
+      goal5: "Gender Equality",
+      goal6: "Clean Water and Sanitation",
+      goal7: "Affordable and Clean Energy",
+      goal8: "Decent Work and Economic Growth",
+      goal9: "Industry, Innovation and Infrastructure",
+      goal10: "Reduced Inequalities",
+      goal11: "Sustainable Cities and Communities",
+      goal12: "Responsible Consumption and Production",
+      goal13: "Climate Action",
+      goal14: "Life Below Water",
+      goal15: "Life on Land",
+      goal16: "Peace, Justice and Strong Institutions",
+      goal17: "Partnerships for the Goals",
+    };
+    this.registerLocalization({
+      context: this,
+      basePath: import.meta.url,
+    });
   }
   static get properties() {
     return {
@@ -33,15 +66,27 @@ export class UnSdg extends SchemaBehaviors(LitElement) {
       :host {
         display: inline-block;
         width: 152px;
-        height: 152px;
+        height: auto;
+        max-width: 100%;
+        aspect-ratio: 1 / 1;
+        position: relative;
+        vertical-align: top;
+        /* clip the tile to any border-radius a page gives the element, so
+           the colour reaches the border instead of corners poking past it */
+        overflow: hidden;
       }
       div,
       img {
+        position: absolute;
+        inset: var(--ddd-spacing-0, 0);
+        box-sizing: border-box;
         width: 100%;
         height: 100%;
       }
       img {
-        object-fit: contain;
+        /* the official art is 404 x 405, so cover fills the square box
+           (cropping under a pixel) instead of leaving a gap under the colour */
+        object-fit: cover;
       }
     `;
   }
@@ -52,13 +97,24 @@ export class UnSdg extends SchemaBehaviors(LitElement) {
     // so reactive sets batch into the current update cycle. Setting these
     // in updated() scheduled a redundant second update (Lit change-in-update
     // warning).
-    if (changedProperties.has("goal")) {
+    if (changedProperties.has("goal") || changedProperties.has("t")) {
       if (this.goal >= 1 && this.goal <= 17) {
-        this.alt = `Goal ${this.goal}: ${unSDGGoalData[this.goal - 1].name}`;
+        this.alt = this.goalLabel(this.goal);
       } else {
         this.goal = 1;
       }
     }
+  }
+
+  /**
+   * "Goal 1: No Poverty" in the active language
+   * @param {Number} goal 1 - 17
+   * @returns {String}
+   */
+  goalLabel(goal) {
+    const t = this.t || {};
+    const name = t[`goal${goal}`] || unSDGGoalData[goal - 1].name;
+    return fill(t.goalLabel || "Goal {goal}: {name}", { goal, name });
   }
 
   render() {
@@ -70,6 +126,8 @@ export class UnSdg extends SchemaBehaviors(LitElement) {
             content="${unSDGGoalData[this.goal - 1].name}"
           />
           <div
+            role="img"
+            aria-label="${this.alt}"
             style="background-color: ${unSDGGoalData[this.goal - 1].color};"
           ></div>`;
       } else {

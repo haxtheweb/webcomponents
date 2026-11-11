@@ -2671,13 +2671,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   }
 
   /**
-   * Only true if we are scrolling and part way through an element
-   */
-  elementMidViewport() {
-    const y = this.activeNode.getBoundingClientRect().y;
-    return y < 0 && y > -1 * this.activeNode.offsetHeight + 140;
-  }
-  /**
    * Replace place holder after an event has called for it in the element itself
    */
   replacePlaceholder(e) {
@@ -2694,17 +2687,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       this.replaceElementWorkflow();
     }
   }
-  async canTansformNode(node = null) {
-    return (await this.replaceElementWorkflow(node, true).length) > 0
-      ? true
-      : false;
-  }
-  /**
-   * Whole workflow of replacing something in place contextually.
-   * This can fire for things like events needing this workflow to
-   * invoke whether it's a "convert" event or a "replace placeholder" event
-   */
-  async insertElementWorkflow(_activeNode = null, _testOnly = false) {}
   /**
    * Whole workflow of replacing something in place contextually.
    * This can fire for things like events needing this workflow to
@@ -2802,20 +2784,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     paragraph.setAttribute("data-hax-auto", "data-hax-auto");
     this.appendChild(paragraph);
     this.__applyNodeEditableStateWhenReady(paragraph, this.editMode);
-  }
-  /**
-   *
-   * gets configuration for all of given grid's slots
-   *
-   * @param {object} grid
-   * @returns {array}
-   */
-  getAllSlotConfig(node) {
-    if (!node) return;
-    let grid = this.getParentGrid(node);
-    return !!grid && !!grid.tag
-      ? this.getSlotConfig("", HAXStore.elementList[grid.tag])
-      : undefined;
   }
   /**
    *

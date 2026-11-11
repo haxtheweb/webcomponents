@@ -58,7 +58,35 @@ describe("outline-designer showing what changed", () => {
     await settle(element);
   });
 
+  it("slides a keyboard move without a view transition by default (haxtheweb/issues#3305)", async () => {
+    expect(element.viewTransitions).to.equal(false);
+    const tree = element.shadowRoot.querySelector(".tree-wrap");
+    let started = false;
+    const start = tree.startViewTransition;
+    tree.startViewTransition = function (cb) {
+      started = true;
+      return start ? start.call(this, cb) : cb();
+    };
+    try {
+      keydown(pageLi(element, "p2"), "ArrowDown", { altKey: true });
+      await settle(element, 20);
+      // the rows slide by themselves
+      const moving = [...element.shadowRoot.querySelectorAll("li.item")].some(
+        (li) => li.getAnimations().length > 0,
+      );
+      expect(moving, "rows animate").to.equal(true);
+      await settle(element, 600);
+    } finally {
+      delete tree.startViewTransition;
+    }
+    expect(started).to.equal(false);
+    expect(element._vtActive).to.equal(false);
+    expect(element.items.map((i) => i.id).indexOf("p2")).to.be.greaterThan(1);
+  });
+
   it("slides a keyboard move, highlights its group and offers undo", async () => {
+    // the scoped view transition path, now opt-in
+    element.viewTransitions = true;
     const before = snapshot(element);
     keydown(pageLi(element, "p2"), "ArrowDown", { altKey: true });
     // the transition names the rows while it runs

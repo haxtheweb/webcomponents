@@ -8,9 +8,46 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "`q-r`\n`wrapper for a qr code.`",
+          "description": "`q-r`\n`wrapper for a qr code.`\n\nThe code sits on its own white tile (black on white in either colour\nscheme so phones can scan it) inside a small framed figure, with the\n`title` as a link to `data` under it. The figure is the \"frame\" part and\nthe tile the \"tile\" part, so a surface that already frames it (a theme's\nQR code panel) can drop the frame.",
           "name": "QR",
           "members": [
+            {
+              "kind": "field",
+              "name": "problem",
+              "description": "Why no code can be drawn (\"data\", \"format\", \"canvas\"), or null",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "problemText",
+              "parameters": [
+                {
+                  "name": "problem"
+                }
+              ],
+              "description": "The muted note shown instead of a code"
+            },
+            {
+              "kind": "field",
+              "name": "altText",
+              "description": "Accessible name of the code: \"QR code for {title}\", the data when\nthere is no title",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "safeHref",
+              "description": "href for the title link; script and data URLs are never linked",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_codeError",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
             {
               "kind": "field",
               "name": "tag",
@@ -56,6 +93,24 @@
               "description": "format to output",
               "default": "\"png\"",
               "attribute": "format"
+            },
+            {
+              "kind": "field",
+              "name": "_error",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "_error"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ qrCodeFor: \"QR code for {title}\", noData: \"No data to show as a QR code\", formatNotSupported: \"QR code format {format} is not supported\", noCanvas: \"This browser can't draw the QR code (no canvas support)\", }"
             },
             {
               "kind": "field",
@@ -121,6 +176,20 @@
               "description": "format to output",
               "default": "\"png\"",
               "fieldName": "format"
+            },
+            {
+              "name": "_error",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "_error"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
             }
           ],
           "superclass": {
@@ -193,6 +262,22 @@
             },
             {
               "kind": "method",
+              "name": "_error",
+              "parameters": [
+                {
+                  "name": "reason"
+                }
+              ],
+              "description": "Tell a wrapper (q-r) why no code was drawn, so it can say so in the\nreader's language: \"data\", \"format\" or \"canvas\"."
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "description": "Accessible name of the code: the alt attribute, else the data",
+              "readonly": true
+            },
+            {
+              "kind": "method",
               "name": "generatePNG"
             },
             {
@@ -205,12 +290,29 @@
             },
             {
               "kind": "method",
+              "name": "_label",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ]
+            },
+            {
+              "kind": "method",
               "name": "clear"
             },
             {
               "kind": "field",
               "name": "windowControllers",
               "default": "new AbortController()"
+            }
+          ],
+          "events": [
+            {
+              "name": "qr-code-error",
+              "type": {
+                "text": "CustomEvent"
+              }
             }
           ],
           "superclass": {

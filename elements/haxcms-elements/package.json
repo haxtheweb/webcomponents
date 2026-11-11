@@ -132,13 +132,9 @@
     "@haxtheweb/deduping-fix": "^26.8.0",
     "@open-wc/testing": "4.0.0",
     "@web/dev-server": "0.4.6",
-    "@web/dev-server-esbuild": "^1.0.5",
     "concurrently": "9.2.5",
-    "gulp-babel": "8.1.0",
-    "lerna": "10.1.1",
-    "@haxtheweb/create": "26.8.1",
-    "lint-staged": "15.5.2",
-    "@babel/core": "7.29.13"
+    "sinon": "17.0.1",
+    "web-dialog": "0.0.11"
   },
   "private": false,
   "publishConfig": {

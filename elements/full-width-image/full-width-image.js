@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 /**
@@ -29,15 +29,23 @@ class FullWidthImage extends I18NMixin(LitElement) {
           display: none;
         }
 
+        /* width and positioning are unchanged on purpose: the section keeps
+           its existing break out behaviour, only the caption band, toggle
+           and spacing are styled here */
         #image {
           left: 0;
           right: 0;
           position: relative;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          box-sizing: border-box;
+          min-height: calc(var(--ddd-spacing-25, 100px) * 3);
           background-repeat: no-repeat;
           background-position: center center;
           background-size: cover;
           width: 100%;
-          text-align: center;
+          text-align: start;
         }
 
         /* the caption overlay is dismissible (and re-showable) via the
@@ -45,33 +53,110 @@ class FullWidthImage extends I18NMixin(LitElement) {
            hoverable and persistent per WCAG 1.4.13 */
         #captionToggle {
           position: absolute;
-          top: var(--ddd-spacing-2, 8px);
-          inset-inline-end: var(--ddd-spacing-2, 8px);
+          top: var(--ddd-spacing-3, 12px);
+          inset-inline-end: var(--ddd-spacing-3, 12px);
           z-index: 2;
-          color: #fff;
-          --simple-icon-button-background-color: rgba(0, 0, 0, 0.6);
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          box-sizing: border-box;
+          width: var(--ddd-control-height-sm, 40px);
+          height: var(--ddd-control-height-sm, 40px);
+          margin: var(--ddd-spacing-0, 0);
+          padding: var(--ddd-spacing-0, 0);
+          border: var(--ddd-border-xs, 1px solid);
+          border-color: color-mix(
+            in srgb,
+            var(--ddd-theme-default-white, #fff) 50%,
+            transparent
+          );
+          border-radius: var(--ddd-radius-circle, 50%);
+          background-color: color-mix(
+            in srgb,
+            var(--ddd-theme-default-potentialMidnight, #000321) 60%,
+            transparent
+          );
+          color: var(--ddd-theme-default-white, #fff);
+          cursor: pointer;
+          --simple-icon-color: currentColor;
+          --simple-icon-width: var(--ddd-icon-3xs, 20px);
+          --simple-icon-height: var(--ddd-icon-3xs, 20px);
+          transition: background-color var(--ddd-duration-normal, 0.3s)
+            ease-in-out;
+        }
+        #captionToggle:hover,
+        #captionToggle[aria-pressed="true"] {
+          background-color: color-mix(
+            in srgb,
+            var(--ddd-theme-default-potentialMidnight, #000321) 85%,
+            transparent
+          );
+          border-color: var(--ddd-theme-default-white, #fff);
+        }
+        #captionToggle:focus-visible {
+          outline: var(--ddd-border-sm, 2px solid);
+          outline-color: var(--ddd-theme-default-white, #fff);
+          outline-offset: var(--ddd-spacing-1, 4px);
         }
 
+        /* Nittany Navy scrim behind the caption only, so the image shows */
         .wrapper {
           opacity: 1;
-          background-color: rgba(0, 0, 0, 0.6);
-          padding: var(--ddd-spacing-25, 100px);
-          height: var(--ddd-spacing-25, 100px);
+          padding: var(--ddd-spacing-12, 48px) var(--ddd-spacing-6, 24px)
+            var(--ddd-spacing-5, 20px);
+          background-image: linear-gradient(
+            180deg,
+            transparent,
+            color-mix(
+              in srgb,
+              var(--ddd-theme-default-nittanyNavy, #001e44) 88%,
+              transparent
+            )
+          );
           transition: var(--ddd-duration-normal, 0.3s) all ease-in-out;
+        }
+        .wrapper[hidden] {
+          display: none;
         }
 
         @media (prefers-reduced-motion: reduce) {
-          .wrapper {
+          .wrapper,
+          #captionToggle {
             transition: none;
           }
         }
 
         .caption {
-          padding: var(--ddd-spacing-9, 35px) 0;
-          font-size: var(--full-width-image-font-size, 25px);
-          line-height: var(--ddd-spacing-10, 40px);
-          color: #fff;
-          font-style: italic;
+          font-family: var(--ddd-font-primary, sans-serif);
+          font-size: var(
+            --full-width-image-font-size,
+            var(--ddd-font-size-s, 24px)
+          );
+          font-weight: var(--ddd-font-weight-medium, 500);
+          font-style: normal;
+          line-height: var(--ddd-lh-140, 1.4);
+          color: var(--ddd-theme-default-white, #fff);
+          overflow-wrap: anywhere;
+        }
+
+        @media (max-width: 600px) {
+          #image {
+            min-height: calc(var(--ddd-spacing-25, 100px) * 2.2);
+          }
+          #captionToggle {
+            top: var(--ddd-spacing-2, 8px);
+            inset-inline-end: var(--ddd-spacing-2, 8px);
+          }
+          .wrapper {
+            padding: var(--ddd-spacing-10, 40px) var(--ddd-spacing-4, 16px)
+              var(--ddd-spacing-4, 16px);
+          }
+          .caption {
+            font-size: var(
+              --full-width-image-font-size,
+              var(--ddd-font-size-3xs, 18px)
+            );
+          }
         }
       `,
     ];
@@ -80,16 +165,20 @@ class FullWidthImage extends I18NMixin(LitElement) {
   // render function
   render() {
     return html` <div id="image">
-      <simple-icon-button-lite
+      <button
         id="captionToggle"
-        icon="${
-          this.captionHidden ? "icons:visibility" : "icons:visibility-off"
-        }"
-        toggles
-        ?toggled="${this.captionHidden}"
-        label="${this.t.toggleCaption}"
+        type="button"
+        aria-pressed="${this.captionHidden ? "true" : "false"}"
+        aria-label="${this.t.toggleCaption}"
+        title="${this.t.toggleCaption}"
         @click="${this._toggleCaption}"
-      ></simple-icon-button-lite>
+      >
+        <simple-icon-lite
+          icon="${
+            this.captionHidden ? "icons:visibility" : "icons:visibility-off"
+          }"
+        ></simple-icon-lite>
+      </button>
       <div class="wrapper" id="captionWrapper" ?hidden="${this.captionHidden}">
         <div class="caption">
           ${this.caption}

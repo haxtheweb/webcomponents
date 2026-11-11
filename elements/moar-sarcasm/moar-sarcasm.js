@@ -3,13 +3,15 @@
  * @license Apache-2.0, see License.md for full text.
  */
 
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+
 /**
  * `moar-sarcasm`
  * `Provide a laugh and a good example of VanillaJS for demos`
  * @demo demo/index.html
  * @element moar-sarcasm
  */
-class MoarSarcasm extends HTMLElement {
+class MoarSarcasm extends I18NMixin(HTMLElement) {
   /**
    * This is a convention, not the standard
    */
@@ -30,6 +32,17 @@ class MoarSarcasm extends HTMLElement {
    */
   constructor() {
     super();
+    this.t = {
+      ...this.t,
+      followingIsSarcastic: "the following is sarcastic:",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath:
+        new URL("./locales/moar-sarcasm.en.json", import.meta.url).href +
+        "/../",
+      updateCallback: "_i18nUpdated",
+    });
     // create a template element for processing shadowRoot
     this.template = globalThis.document.createElement("template");
     // create a shadowRoot
@@ -77,18 +90,22 @@ class MoarSarcasm extends HTMLElement {
         }
       </style>
       <span class="sarcastic" aria-hidden="true"></span>
-      <span class="slot">${this.a11y}<slot></slot></span>
+      <span class="slot"><span class="a11y"></span><slot></slot></span>
     `;
   }
   /**
    * life cycle, element is afixed to the DOM
    */
   connectedCallback() {
+    // I18NMixin registers again with the i18n manager when re-attached
+    super.connectedCallback();
     if (globalThis.ShadyCSS) {
       globalThis.ShadyCSS.styleElement(this);
     }
     if (!this.hasAttribute("a11y")) {
-      this.a11y = "the following is sarcastic:";
+      // remember the default so it can follow the language until set
+      this.__a11yDefault = this.t.followingIsSarcastic;
+      this.a11y = this.__a11yDefault;
     }
     // only derive say from the light DOM when it hasn't already been
     // established (e.g. restored from previously saved markup). Otherwise
@@ -115,6 +132,31 @@ class MoarSarcasm extends HTMLElement {
     }
     if (this.shadowRoot && this.template) {
       this.shadowRoot.appendChild(this.template.content.cloneNode(true));
+    }
+    this._renderA11y();
+  }
+  /**
+   * Screen reader prefix, set as text (not markup)
+   */
+  _renderA11y() {
+    const label = this.shadowRoot
+      ? this.shadowRoot.querySelector(".a11y")
+      : null;
+    if (label) {
+      label.textContent = this.a11y || "";
+    }
+  }
+  /**
+   * Translations arrived: a default a11y label (one nobody set) follows them
+   */
+  _i18nUpdated() {
+    if (
+      this.__a11yDefault !== undefined &&
+      this.getAttribute("a11y") === this.__a11yDefault &&
+      this.t.followingIsSarcastic !== this.__a11yDefault
+    ) {
+      this.__a11yDefault = this.t.followingIsSarcastic;
+      this.a11y = this.__a11yDefault;
     }
   }
   /**
@@ -184,7 +226,11 @@ class MoarSarcasm extends HTMLElement {
           }
           break;
         case "a11y":
-          this.render();
+          // update the label only; a full render would empty .sarcastic
+          if (newValue !== this.__a11yDefault) {
+            this.__a11yDefault = undefined;
+          }
+          this._renderA11y();
           break;
       }
     }

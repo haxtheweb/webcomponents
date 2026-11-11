@@ -38,7 +38,6 @@
  * build-environment copies.
  */
 
-/* global require, console */
 const fs = require("fs");
 const path = require("path");
 

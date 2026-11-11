@@ -414,6 +414,16 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
           margin-top: var(--hax-ui-gap-md, var(--ddd-spacing-2, 8px));
         }
         :host([compact]) a11y-collapse.file-info-collapse {
+          /* keep the compact admin row: no 48px block row or 40px toggle */
+          --a11y-collapse-heading-min-height: var(
+            --hax-upload-field-info-height,
+            var(--hax-ui-row-height, 32px)
+          );
+          --a11y-collapse-heading-vertical-padding: 0;
+          --a11y-collapse-toggle-size: var(
+            --hax-upload-field-info-height,
+            var(--hax-ui-row-height, 32px)
+          );
           --a11y-collapse-border: 1px solid;
           --a11y-collapse-border-color: var(
             --hax-ui-line,

@@ -1,4 +1,4 @@
-import { fixture, expect, html } from "@open-wc/testing";
+import { fixture, expect, html, waitUntil } from "@open-wc/testing";
 import "../outline-designer.js";
 import { dispatchTouch, makeTouchEvent } from "./touch-event.js";
 
@@ -67,16 +67,20 @@ describe("outline-designer page actions menu", () => {
       `.actions-menu simple-toolbar-button[value="${value}"]`,
     );
   // open the row's menu with its ⋯ button, then press an item
+  // a row's menu entries are rendered when its menu opens
+  const opened = async (id) => {
+    await waitUntil(() => menuOf(id).open, `menu of ${id} opens`);
+  };
   const choose = async (id, value) => {
     pageLi(element, id).querySelector(".actions-menu-button").click();
-    await element.updateComplete;
-    expect(menuOf(id).open).to.equal(true);
+    await opened(id);
     // simple-toolbar-button overrides click(); press its real button
     menuItem(id, value).shadowRoot.querySelector("button").click();
     await settle(element);
   };
 
-  it("lists every action with a visible label", () => {
+  it("lists every action with a visible label", async () => {
+    await element._menuReady(pageLi(element, "p2"));
     const values = [
       ...pageLi(element, "p2").querySelectorAll(
         ".actions-menu simple-toolbar-button",
@@ -173,6 +177,7 @@ describe("outline-designer page actions menu", () => {
     ).to.equal("true");
     keydown(pageLi(element, "p2").querySelector(".label-edit"), "Escape");
     await settle(element);
+    await element._menuReady(pageLi(element, "p3"));
     expect(menuItem("p3", "edit-title").hasAttribute("disabled")).to.equal(
       true,
     );
@@ -241,8 +246,11 @@ describe("outline-designer page actions menu", () => {
   });
 
   it("offers content structure only for pages with content", async () => {
+    await element._menuReady(pageLi(element, "p2"));
     expect(menuItem("p2", "content") === null).to.equal(false);
+    await element._menuReady(pageLi(element, "p4"));
     expect(menuItem("p4", "content")).to.equal(null);
+    await element._menuReady(pageLi(element, "p2"));
     element.hideContentOps = true;
     await settle(element);
     expect(menuItem("p2", "content")).to.equal(null);
@@ -463,7 +471,7 @@ describe("outline-designer touch", () => {
       cancelable: true,
     });
     label("p4").dispatchEvent(right);
-    await element.updateComplete;
+    await waitUntil(() => menuOf("p4").open, "right click opens the menu");
     expect(menuOf("p4").open).to.equal(true);
     menuOf("p4").close();
     await settle(element);

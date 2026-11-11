@@ -5,7 +5,7 @@
   "version": "26.8.0",
   "license": "Apache-2.0",
   "title": "Github Preview",
-  "description": "Accessible figure with long description",
+  "description": "Preview a GitHub repository: description, language, stars and forks.",
   "icon": "mdi-social:github-circle",
   "tags": [
     "Other",
@@ -85,7 +85,7 @@
       "name": "view-more-text",
       "property": "viewMoreText",
       "type": "string",
-      "default": "\"View More\"",
+      "default": "",
       "description": "",
       "hax": null
     },
@@ -93,7 +93,7 @@
       "name": "not-found-text",
       "property": "notFoundText",
       "type": "string",
-      "default": "\"Asset not found\"",
+      "default": "",
       "description": "",
       "hax": null
     },
@@ -148,7 +148,7 @@
     "canEditSource": true,
     "gizmo": {
       "title": "Github Preview",
-      "description": "Accessible figure with long description",
+      "description": "Preview a GitHub repository: description, language, stars and forks.",
       "icon": "mdi-social:github-circle",
       "color": "grey",
       "tags": [
@@ -206,7 +206,7 @@
       }
     ]
   },
-  "surfaceHash": "9477b49451d3",
+  "surfaceHash": "f39335c65fab",
   "walkthroughs": [
     {
       "id": "",
@@ -214,13 +214,13 @@
       "order": 0,
       "src": "github-preview.motion.json",
       "file": "lib/github-preview.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/github-preview.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

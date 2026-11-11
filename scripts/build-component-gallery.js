@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-/* global require, process, console */
 const fs = require("fs");
 const path = require("path");
 

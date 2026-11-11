@@ -871,7 +871,12 @@ const ChartistRenderSuper = function (SuperClass) {
         .map((node) => node.textContent)
         .join(" ")
         .trim();
-      return label || `${this.type} chart`;
+      if (label) return label;
+      // subclasses with translations (lrndesign-chart) supply
+      // this.t.<type>ChartLabel; plain chartist-render stays English
+      const t = this.t || {};
+      const key = `${this.type}ChartLabel`;
+      return typeof t[key] === "string" ? t[key] : `${this.type} chart`;
     }
 
     /**

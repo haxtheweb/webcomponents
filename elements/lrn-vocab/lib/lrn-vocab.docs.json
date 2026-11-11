@@ -60,6 +60,9 @@
   "hax": {
     "canScale": false,
     "canEditSource": true,
+    "designSystem": {
+      "primary": true
+    },
     "gizmo": {
       "title": "Vocab",
       "description": "Vocabulary term",
@@ -116,6 +119,11 @@
         }
       ],
       "advanced": []
+    },
+    "saveOptions": {
+      "unsetAttributes": [
+        "t"
+      ]
     }
   },
   "surfaceHash": "ce8eef977cf1",

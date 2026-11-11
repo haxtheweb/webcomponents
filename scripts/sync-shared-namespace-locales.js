@@ -48,7 +48,7 @@ function collectJsFiles(dir, acc = []) {
   let entries;
   try {
     entries = fs.readdirSync(dir, { withFileTypes: true });
-  } catch (e) {
+  } catch {
     return acc;
   }
   for (const entry of entries) {

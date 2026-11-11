@@ -55,7 +55,11 @@ const HaxToolbarItemBehaviors = function (SuperClass) {
       };
     }
     /**
-     * template for button, based on whether or not the button toggles
+     * template for button, based on whether or not the button toggles.
+     * The inner button's tabindex comes from innerTabindex: inside a
+     * toolbar (hax-toolbar, simple-button-grid) only the current item is a
+     * tab stop and arrow keys move between items; a button no toolbar
+     * manages (tray menu bar, page outline) is an ordinary tab stop.
      *
      * @readonly
      */
@@ -73,7 +77,7 @@ const HaxToolbarItemBehaviors = function (SuperClass) {
               @mousedown="${this._handleMousedown}"
               role="radio"
               part="button"
-              tabindex="${this.isCurrentItem ? 0 : -1}"
+              tabindex="${this.innerTabindex}"
             >
               ${this.buttonInnerTemplate}
             </button>
@@ -90,7 +94,7 @@ const HaxToolbarItemBehaviors = function (SuperClass) {
                 @keydown="${this._handleKeys}"
                 @mousedown="${this._handleMousedown}"
                 part="button"
-                tabindex="${this.isCurrentItem ? 0 : -1}"
+                tabindex="${this.innerTabindex}"
               >
                 ${this.buttonInnerTemplate}
               </button>
@@ -105,7 +109,7 @@ const HaxToolbarItemBehaviors = function (SuperClass) {
                 @keydown="${this._handleKeys}"
                 @mousedown="${this._handleMousedown}"
                 part="button"
-                tabindex="${this.isCurrentItem ? 0 : -1}"
+                tabindex="${this.innerTabindex}"
               >
                 ${this.buttonInnerTemplate}
               </button>

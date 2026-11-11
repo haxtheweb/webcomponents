@@ -79,12 +79,19 @@ jobs:
       - name: Stylelint check
         run: npx stylelint **/*.css
       - name: Install Playwright Chromium
-        # Use the Playwright resolved by yarn.lock (pulled in by
-        # @web/test-runner-playwright) so the downloaded browser build always
-        # matches what the test runner launches. A hard-coded version here
-        # drifts every time the lockfile bumps Playwright and fails with
-        # "Executable doesn't exist ... chromium_headless_shell-NNNN".
-        run: yarn playwright install --with-deps chromium
+        # the Playwright version yarn.lock resolves (pulled in by
+        # @web/test-runner-playwright), so the browser build matches what the
+        # tests launch; cached per version. A hard-coded version drifts every
+        # time the lockfile bumps Playwright and fails with "Executable
+        # doesn't exist ... chromium_headless_shell-NNNN".
+        # no extra fonts: Chromium runs on the runner image's libraries, so
+        # this job does not depend on the Ubuntu package mirrors
+        # the local path, not the $/ self-repository form: $/ downloads the
+        # whole repo as an action archive, and that extraction fails here
+        uses: ./.github/actions/setup-playwright # zizmor: ignore[self-repository]
+        timeout-minutes: 12
+        with:
+          fonts: "false"
       - name: Test all elements
         # Quiet reporter: progress ticks, then every failure grouped at the
         # end of this step's log instead of buried among ~13k passing tests.

@@ -1,4 +1,9 @@
 {
+  "automate-theme-screenshots.js": {
+    "no-unused-vars": {
+      "count": 2
+    }
+  },
   "elements/a11y-media-player/lib/a11y-media-play-button.js": {
     "eqeqeq": {
       "count": 1
@@ -1418,6 +1423,126 @@
   "elements/wysiwyg-hax/wysiwyg-hax.js": {
     "eqeqeq": {
       "count": 1
+    }
+  },
+  "generate-theme-screenshots-with-server.js": {
+    "no-unused-vars": {
+      "count": 3
+    }
+  },
+  "gulpfile.mjs": {
+    "no-useless-escape": {
+      "count": 3
+    }
+  },
+  "scripts/api-snapshot.mjs": {
+    "no-unused-vars": {
+      "count": 1
+    }
+  },
+  "scripts/build-elements-catalog.mjs": {
+    "no-unused-vars": {
+      "count": 2
+    }
+  },
+  "scripts/check-ecosystem-version.mjs": {
+    "no-unused-vars": {
+      "count": 2
+    }
+  },
+  "scripts/check-element-links.mjs": {
+    "no-unused-vars": {
+      "count": 1
+    }
+  },
+  "scripts/copy-dep-licenses.js": {
+    "no-unused-vars": {
+      "count": 5
+    }
+  },
+  "scripts/ddd-token-lint.js": {
+    "no-unused-vars": {
+      "count": 1
+    }
+  },
+  "scripts/extract-element-docs.mjs": {
+    "no-unused-vars": {
+      "count": 2
+    }
+  },
+  "scripts/gallery-dev-server.js": {
+    "no-unused-vars": {
+      "count": 2
+    }
+  },
+  "scripts/generate-elements-readme.js": {
+    "no-unused-vars": {
+      "count": 1
+    }
+  },
+  "scripts/hax-elements-demo-page.mjs": {
+    "no-unused-vars": {
+      "count": 1
+    }
+  },
+  "scripts/hax-elements-discovery.mjs": {
+    "no-unused-vars": {
+      "count": 1
+    }
+  },
+  "scripts/lib/css-templates.mjs": {
+    "no-unused-vars": {
+      "count": 1
+    }
+  },
+  "scripts/lib/html-templates.mjs": {
+    "no-unused-vars": {
+      "count": 4
+    }
+  },
+  "scripts/lib/minify-css-template.mjs": {
+    "no-unused-vars": {
+      "count": 1
+    }
+  },
+  "scripts/license-header-check.mjs": {
+    "no-irregular-whitespace": {
+      "count": 1
+    }
+  },
+  "scripts/link-element-tutorial.mjs": {
+    "no-irregular-whitespace": {
+      "count": 1
+    }
+  },
+  "scripts/outline-designer-contract-fixture.mjs": {
+    "no-unused-vars": {
+      "count": 2
+    }
+  },
+  "scripts/postinstall.js": {
+    "no-unused-vars": {
+      "count": 4
+    }
+  },
+  "scripts/theme-discovery.mjs": {
+    "no-unused-vars": {
+      "count": 1
+    }
+  },
+  "scripts/ubiquity-manifest.mjs": {
+    "no-unused-vars": {
+      "count": 1
+    }
+  },
+  "scripts/vision-gallery.mjs": {
+    "no-unused-vars": {
+      "count": 1
+    }
+  },
+  "web-test-runner.config.mjs": {
+    "no-useless-escape": {
+      "count": 71
     }
   }
 }

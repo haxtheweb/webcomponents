@@ -1056,10 +1056,12 @@ describe("a11y-collapse tooltip interaction", () => {
     await headingModeEl.updateComplete;
     const headingTooltip =
       headingModeEl.shadowRoot.querySelector("simple-tooltip");
-    expect(headingTooltip.for).to.equal("heading");
-    const headingDiv = headingModeEl.shadowRoot.querySelector("#heading");
-    expect(headingTooltip._target).to.equal(headingDiv);
-    headingDiv.dispatchEvent(new MouseEvent("mouseenter"));
+    // anchored to the round toggle (placed above it), shown from the row
+    expect(headingTooltip.for).to.equal("expand");
+    const toggle = headingModeEl.shadowRoot.querySelector("#expand");
+    expect(headingTooltip._target).to.equal(toggle);
+    const row = headingModeEl.shadowRoot.querySelector("button");
+    row.dispatchEvent(new MouseEvent("mouseenter"));
     expect(headingTooltip._showing).to.be.true;
   });
 });

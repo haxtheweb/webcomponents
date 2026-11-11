@@ -37,7 +37,6 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/absolute-position-behavior": "^26.8.0",
     "@haxtheweb/schema-behaviors": "^26.8.0",
     "@haxtheweb/simple-fields": "^26.8.0",
     "@haxtheweb/utils": "^26.8.0"

@@ -176,7 +176,7 @@ describe("outline-designer page menu design", () => {
     );
     el.items = makeItems();
     await settle(el);
-    const menu = row(el, "p2").querySelector(".actions-menu");
+    const menu = await el._menuReady(row(el, "p2"));
     const del = menu.querySelector('simple-toolbar-button[value="delete"]');
     expect(del.classList.contains("danger")).to.equal(true);
     expect(del.previousElementSibling.tagName).to.equal("HR");

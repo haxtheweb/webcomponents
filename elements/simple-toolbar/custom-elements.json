@@ -4584,6 +4584,27 @@
             },
             {
               "kind": "method",
+              "name": "setManagingToolbar",
+              "parameters": [
+                {
+                  "name": "toolbar",
+                  "default": "null",
+                  "description": "the managing toolbar, or null",
+                  "type": {
+                    "text": "object|null"
+                  }
+                }
+              ],
+              "description": "Called by the simple-toolbar that registers (or lets go of) this\nbutton, so the inner control knows whether it is part of a roving\ntabindex group."
+            },
+            {
+              "kind": "field",
+              "name": "innerTabindex",
+              "description": "tabindex for the inner control. Inside a simple-toolbar only the\ncurrent item is a tab stop (roving tabindex, arrow keys move between\nitems). A button no toolbar manages, such as a question's Check answer\nbutton, and a menu item are ordinary tab stops.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
               "name": "focus",
               "description": "sets focus to button",
               "return": {
@@ -5378,6 +5399,35 @@
               "kind": "field",
               "name": "isToggled",
               "description": "determines if button is toggled",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "SimpleToolbarButtonBehaviors",
+                "module": "lib/simple-toolbar-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "setManagingToolbar",
+              "parameters": [
+                {
+                  "name": "toolbar",
+                  "default": "null",
+                  "description": "the managing toolbar, or null",
+                  "type": {
+                    "text": "object|null"
+                  }
+                }
+              ],
+              "description": "Called by the simple-toolbar that registers (or lets go of) this\nbutton, so the inner control knows whether it is part of a roving\ntabindex group.",
+              "inheritedFrom": {
+                "name": "SimpleToolbarButtonBehaviors",
+                "module": "lib/simple-toolbar-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "innerTabindex",
+              "description": "tabindex for the inner control. Inside a simple-toolbar only the\ncurrent item is a tab stop (roving tabindex, arrow keys move between\nitems). A button no toolbar manages, such as a question's Check answer\nbutton, and a menu item are ordinary tab stops.",
               "readonly": true,
               "inheritedFrom": {
                 "name": "SimpleToolbarButtonBehaviors",
@@ -6251,6 +6301,35 @@
               "kind": "field",
               "name": "isToggled",
               "description": "determines if button is toggled",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "SimpleToolbarButtonBehaviors",
+                "module": "lib/simple-toolbar-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "setManagingToolbar",
+              "parameters": [
+                {
+                  "name": "toolbar",
+                  "default": "null",
+                  "description": "the managing toolbar, or null",
+                  "type": {
+                    "text": "object|null"
+                  }
+                }
+              ],
+              "description": "Called by the simple-toolbar that registers (or lets go of) this\nbutton, so the inner control knows whether it is part of a roving\ntabindex group.",
+              "inheritedFrom": {
+                "name": "SimpleToolbarButtonBehaviors",
+                "module": "lib/simple-toolbar-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "innerTabindex",
+              "description": "tabindex for the inner control. Inside a simple-toolbar only the\ncurrent item is a tab stop (roving tabindex, arrow keys move between\nitems). A button no toolbar manages, such as a question's Check answer\nbutton, and a menu item are ordinary tab stops.",
               "readonly": true,
               "inheritedFrom": {
                 "name": "SimpleToolbarButtonBehaviors",
@@ -7408,6 +7487,35 @@
             },
             {
               "kind": "method",
+              "name": "setManagingToolbar",
+              "parameters": [
+                {
+                  "name": "toolbar",
+                  "default": "null",
+                  "description": "the managing toolbar, or null",
+                  "type": {
+                    "text": "object|null"
+                  }
+                }
+              ],
+              "description": "Called by the simple-toolbar that registers (or lets go of) this\nbutton, so the inner control knows whether it is part of a roving\ntabindex group.",
+              "inheritedFrom": {
+                "name": "SimpleToolbarButtonBehaviors",
+                "module": "lib/simple-toolbar-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "innerTabindex",
+              "description": "tabindex for the inner control. Inside a simple-toolbar only the\ncurrent item is a tab stop (roving tabindex, arrow keys move between\nitems). A button no toolbar manages, such as a question's Check answer\nbutton, and a menu item are ordinary tab stops.",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "SimpleToolbarButtonBehaviors",
+                "module": "lib/simple-toolbar-button.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "focus",
               "description": "sets focus to button",
               "return": {
@@ -8391,6 +8499,35 @@
             },
             {
               "kind": "method",
+              "name": "setManagingToolbar",
+              "parameters": [
+                {
+                  "name": "toolbar",
+                  "default": "null",
+                  "description": "the managing toolbar, or null",
+                  "type": {
+                    "text": "object|null"
+                  }
+                }
+              ],
+              "description": "Called by the simple-toolbar that registers (or lets go of) this\nbutton, so the inner control knows whether it is part of a roving\ntabindex group.",
+              "inheritedFrom": {
+                "name": "SimpleToolbarButtonBehaviors",
+                "module": "lib/simple-toolbar-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "innerTabindex",
+              "description": "tabindex for the inner control. Inside a simple-toolbar only the\ncurrent item is a tab stop (roving tabindex, arrow keys move between\nitems). A button no toolbar manages, such as a question's Check answer\nbutton, and a menu item are ordinary tab stops.",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "SimpleToolbarButtonBehaviors",
+                "module": "lib/simple-toolbar-button.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "focus",
               "description": "sets focus to button",
               "return": {
@@ -9279,6 +9416,35 @@
               "kind": "field",
               "name": "isToggled",
               "description": "determines if button is toggled",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "SimpleToolbarButtonBehaviors",
+                "module": "lib/simple-toolbar-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "setManagingToolbar",
+              "parameters": [
+                {
+                  "name": "toolbar",
+                  "default": "null",
+                  "description": "the managing toolbar, or null",
+                  "type": {
+                    "text": "object|null"
+                  }
+                }
+              ],
+              "description": "Called by the simple-toolbar that registers (or lets go of) this\nbutton, so the inner control knows whether it is part of a roving\ntabindex group.",
+              "inheritedFrom": {
+                "name": "SimpleToolbarButtonBehaviors",
+                "module": "lib/simple-toolbar-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "innerTabindex",
+              "description": "tabindex for the inner control. Inside a simple-toolbar only the\ncurrent item is a tab stop (roving tabindex, arrow keys move between\nitems). A button no toolbar manages, such as a question's Check answer\nbutton, and a menu item are ordinary tab stops.",
               "readonly": true,
               "inheritedFrom": {
                 "name": "SimpleToolbarButtonBehaviors",

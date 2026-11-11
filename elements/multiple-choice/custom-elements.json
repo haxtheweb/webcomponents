@@ -209,6 +209,29 @@
             },
             {
               "kind": "method",
+              "name": "_focusAfterReset",
+              "description": "After Try again, the button that had focus is hidden or removed. Once the\nreset has rendered, move focus to the first answer control (or Check\nanswer, or the status region) so a keyboard user keeps their place\ninstead of falling back to the top of the page.",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_firstFocusable",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ],
+              "description": "First keyboard-focusable element inside `node`, walking into open\nshadow roots and slotted content in composed-tree order.",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "isCorrect",
               "description": "Return if the current answers are correct",
               "inheritedFrom": {
@@ -246,6 +269,22 @@
             {
               "kind": "method",
               "name": "_questionChecked",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_chipDone",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_celebrateCompletion",
               "inheritedFrom": {
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"
@@ -1698,6 +1737,21 @@
             },
             {
               "kind": "method",
+              "name": "_focusAfterReset",
+              "description": "After Try again, the button that had focus is hidden or removed. Once the\nreset has rendered, move focus to the first answer control (or Check\nanswer, or the status region) so a keyboard user keeps their place\ninstead of falling back to the top of the page."
+            },
+            {
+              "kind": "method",
+              "name": "_firstFocusable",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ],
+              "description": "First keyboard-focusable element inside `node`, walking into open\nshadow roots and slotted content in composed-tree order."
+            },
+            {
+              "kind": "method",
               "name": "isCorrect",
               "description": "Return if the current answers are correct"
             },
@@ -1723,6 +1777,14 @@
             {
               "kind": "method",
               "name": "_questionChecked"
+            },
+            {
+              "kind": "method",
+              "name": "_chipDone"
+            },
+            {
+              "kind": "method",
+              "name": "_celebrateCompletion"
             },
             {
               "kind": "method",
@@ -3078,6 +3140,29 @@
             },
             {
               "kind": "method",
+              "name": "_focusAfterReset",
+              "description": "After Try again, the button that had focus is hidden or removed. Once the\nreset has rendered, move focus to the first answer control (or Check\nanswer, or the status region) so a keyboard user keeps their place\ninstead of falling back to the top of the page.",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_firstFocusable",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ],
+              "description": "First keyboard-focusable element inside `node`, walking into open\nshadow roots and slotted content in composed-tree order.",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "makeItRain",
               "inheritedFrom": {
                 "name": "QuestionElement",
@@ -3106,6 +3191,22 @@
             {
               "kind": "method",
               "name": "_questionChecked",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_chipDone",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_celebrateCompletion",
               "inheritedFrom": {
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"
@@ -4631,6 +4732,29 @@
             },
             {
               "kind": "method",
+              "name": "_focusAfterReset",
+              "description": "After Try again, the button that had focus is hidden or removed. Once the\nreset has rendered, move focus to the first answer control (or Check\nanswer, or the status region) so a keyboard user keeps their place\ninstead of falling back to the top of the page.",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_firstFocusable",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ],
+              "description": "First keyboard-focusable element inside `node`, walking into open\nshadow roots and slotted content in composed-tree order.",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "isCorrect",
               "description": "Return if the current answers are correct",
               "inheritedFrom": {
@@ -4668,6 +4792,22 @@
             {
               "kind": "method",
               "name": "_questionChecked",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_chipDone",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_celebrateCompletion",
               "inheritedFrom": {
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"

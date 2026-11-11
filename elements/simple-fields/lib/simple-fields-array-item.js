@@ -148,6 +148,16 @@ class SimpleFieldsArrayItem extends I18NMixin(
           inset-inline-start: 2px;
           top: 2px;
           --simple-toolbar-button-white-space: normal !important;
+          /* the Up / Down menu: a surface that follows the color scheme,
+             so its labels (inherited text colour) stay readable */
+          --simple-toolbar-button-bg: light-dark(
+            var(--ddd-theme-default-white, #ffffff),
+            var(--ddd-theme-default-coalyGray, #262626)
+          );
+          --simple-toolbar-border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight, #e4e5e7),
+            var(--ddd-theme-default-slateGray, #314d64)
+          );
         }
         :host([aria-expanded="true"]) #drag-handle {
           top: var(--simple-fields-margin, 16px);
@@ -176,7 +186,13 @@ class SimpleFieldsArrayItem extends I18NMixin(
         :host([dropzone]) #dropzone {
           background-color: var(
             --simple-fields-button-focus-background-color,
-            var(--simple-fields-accent-color-light, #d9eaff)
+            var(
+              --simple-fields-accent-color-light,
+              light-dark(
+                var(--ddd-theme-default-linkLight, #cce9ff),
+                var(--ddd-theme-default-nittanyNavy, #001e44)
+              )
+            )
           );
           height: 80px;
         }

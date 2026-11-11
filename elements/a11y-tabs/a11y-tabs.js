@@ -22,59 +22,63 @@ Custom property | Description | Default
 ----------------|-------------|----------
 `--a11y-tabs-font-family` | font-family | unset
 `--a11y-tabs-font-size` | font-size | unset
-`--a11y-tabs-border-color` | border | `--ddd-theme-default-limestoneLight` (dark: `--ddd-theme-default-limestoneMaxLight`)
-`--a11y-tabs-color` | text color | #222
-`--a11y-tabs-focus-color` | text color when focused | #000
-`--a11y-tabs-margin` |  | 16px 0
+`--a11y-tabs-border-color` | frame and tab row line | `--ddd-theme-default-limestoneLight` (dark: `--ddd-theme-default-slateGray`)
+`--a11y-tabs-color` | text color | nittanyNavy (dark: white)
+`--a11y-tabs-focus-color` | text color when focused | `--a11y-tabs-color`
+`--a11y-tabs-margin` | margin around the frame | `--ddd-spacing-4` 0
 `--a11y-tabs-width` | total width | 100%
 `--a11y-tabs-height` | total height | unset
 `--a11y-tabs-overflow` | default overflow | auto
 `--a11y-tabs-overflow-x` | overflow of x-axis | `--a11y-tabs-overflow`
 `--a11y-tabs-overflow-y` | overflow of y-axis | `--a11y-tabs-overflow`
-`--a11y-tabs-border-radius` | default border radius | 2px
+`--a11y-tabs-border-radius` | default border radius | `--ddd-radius-md`
 `--a11y-tabs-horizontal-border-radius` | border-radius when horizontal | `--a11y-tabs-border-radius`
 `--a11y-tabs-vertical-border-radius` | border-radius when veritcal | `--a11y-tabs-border-radius`
 `--a11y-tabs-text-decoration` | default text decoration for tab button | none
-`--a11y-tabs-focus-text-decoration` | default text on focus or hover | underline
+`--a11y-tabs-focus-text-decoration` | default text on focus or hover | none
 
 #### Tab Panel
 Custom property | Description | Default
 ----------------|-------------|----------
-`--a11y-tabs-tab-font-family` | font-family | `--a11y-tabs-font-family`
-`--a11y-tabs-tab-font-size` | font-size | `--a11y-tabs-font-size`
-`--a11y-tabs-font-weight` | default font weight | normal
-`--a11y-tabs-selected-font-weight` | font weight of selected tabs | normal
-`--a11y-tabs-focus-font-weight` | font weight of focused/hovered tabs | normal
+`--a11y-tabs-tab-font-family` | font-family | `--a11y-tabs-font-family`, then `--ddd-font-navigation`
+`--a11y-tabs-tab-font-size` | font-size | `--a11y-tabs-font-size`, then `--ddd-font-size-4xs`
+`--a11y-tabs-font-weight` | default font weight | `--ddd-font-weight-medium`
+`--a11y-tabs-selected-font-weight` | font weight of selected tabs | `--ddd-font-weight-bold`
+`--a11y-tabs-focus-font-weight` | font weight of focused/hovered tabs | `--a11y-tabs-font-weight`
 `--a11y-tabs-text-decoration` | default text-decoration | none
-`--a11y-tabs-focus-text-decoration` | text-decoration when focused/hovered | underline
+`--a11y-tabs-focus-text-decoration` | text-decoration when focused/hovered | none
 `--a11y-tabs-selected-text-decoration` | text-decoration when selected | none
-`--a11y-tabs-color` | default text color | #000
+`--a11y-tabs-color` | default text color | nittanyNavy (dark: white)
 `--a11y-tabs-focus-color` | text color of focused/hovered tab | --a11y-tabs-color`
-`--a11y-tabs-faded-color` | text color of disabled items |  #333;
+`--a11y-tabs-faded-color` | text color of unselected tabs | slateGray (dark: limestoneLight)
 `--a11y-tabs-selected-color` | text color of selected tab | `--a11y-tabs-focus-color`
-`--a11y-tabs-background` | background for active tab and tab content | white
-`--a11y-tabs-faded-background` | background inactive tabs | #eee
+`--a11y-tabs-background` | background for active tab | transparent
+`--a11y-tabs-faded-background` | background inactive tabs | transparent
 `--a11y-tabs-horizontal-background` | background for tabs container when horizontal | unset
-`--a11y-tabs-vertical-background` | background for tabs container when vertical | `--a11y-tabs-border-color`
-`--a11y-tabs-horizontal-sticky-background` | background for tabs container when sticky and horizontal | `--a11y-tabs-background`
+`--a11y-tabs-vertical-background` | background for tabs container when vertical | transparent
+`--a11y-tabs-horizontal-sticky-background` | background for tabs container when sticky | `--a11y-tabs-background`, then white (dark: potentialMidnight)
 `--a11y-tabs-justify-tabs` | tab justification | flex-start
 `--a11y-tabs-vertical-justify-tabs` | tab justification when vertical | `--a11y-tabs-justify-tabs`
 `--a11y-tabs-horizontal-justify-tabs` | tab justification when horizontal | `--a11y-tabs-justify-tabs`
 `--a11y-tabs-wrap` | tab wrapping | unset
 `--a11y-tabs-tab-height` | tab height | `--a11y-tabs-height`
-`--a11y-tabs-button-padding` | padding for tabs | 8px
+`--a11y-tabs-button-padding` | padding for tabs | 0 `--ddd-spacing-3` (tabs are at least 44px tall)
 `--a11y-tabs-vertical-button-padding` | padding for tabs when vertical | `--a11y-tabs-button-padding`
 `--a11y-tabs-horizontal-button-padding` | padding for tabs when horizontal | `--a11y-tabs-button-padding`
 `--a11y-tabs-border-accent` | optional thicker border for top of horizontal tabs or left of vertical tabs (ex. 4px solid blue) | unset
 `--a11y-tabs-selected-border-accent` | optional thicker border for top of selected horizontal tab or left of vertical tab | unset
 `--a11y-tabs-selected-focus-accent` | optional thicker border for top of focused/hovered horizontal tab or left of vertical tab | unset
 `--a11y-tabs-selected-disabled-accent` | optional thicker border for top of disabled horizontal tabs or left of vertical tabs | unset
+`--a11y-tabs-disabled-color` | text color of disabled tabs (shown at 60% opacity) | `--a11y-tabs-faded-color`
+`--a11y-tabs-disabled-background` | background of disabled tabs | transparent
+
+The selected tab carries a 3px Beaver Blue rule (Sky Blue in dark), at the bottom when horizontal and on the left when vertical.
 
 #### Content Section
 Custom property | Description | Default
 ----------------|-------------|----------
-`--a11y-tabs-content-padding` | padding for content of tab | 16px
-`--a11y-tabs-content-background` | background color for content of tab | `--a11y-tabs-background`
+`--a11y-tabs-content-padding` | padding for content of tab | `--ddd-spacing-4`
+`--a11y-tabs-content-background` | background color for content of tab | unset
  *
  * @customElement
  * @extends LitElement
@@ -203,139 +207,257 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
   static get A11yTabsThemeStyles() {
     return [
       css`
+        /* DDD: an underline tab row inside one frame. Every --a11y-tabs-*
+           property still overrides; the defaults are DDD tokens with
+           light-dark() so selected tabs stay readable in dark mode */
         :host {
+          color-scheme: light dark;
           font-size: var(--a11y-tabs-font-size, unset);
           font-family: var(--a11y-tabs-font-family, unset);
           --a11y-tabs-focus-color: var(--a11y-tabs-color);
           --a11y-tabs-horizontal-border-radius: var(
             --a11y-tabs-border-radius,
-            2px
+            var(--ddd-radius-md, 12px)
           );
           --a11y-tabs-vertical-border-radius: var(
             --a11y-tabs-border-radius,
-            2px
+            var(--ddd-radius-md, 12px)
           );
           --a11y-tabs-vertical-button-padding: var(
             --a11y-tabs-button-padding,
-            4px
+            0 var(--ddd-spacing-3, 12px)
           );
           --a11y-tabs-horizontal-button-padding: var(
             --a11y-tabs-button-padding,
-            4px
+            0 var(--ddd-spacing-3, 12px)
+          );
+          --a11y-tabs-_line: var(
+            --a11y-tabs-border-color,
+            light-dark(
+              var(--ddd-theme-default-limestoneLight, #e4e5e7),
+              var(--ddd-theme-default-slateGray, #314d64)
+            )
+          );
+          --a11y-tabs-_rule: light-dark(
+            var(--ddd-theme-default-beaverBlue, #1e407c),
+            var(--ddd-theme-default-skyBlue, #009cde)
+          );
+          --a11y-tabs-_ink: light-dark(
+            var(--ddd-theme-default-nittanyNavy, #001e44),
+            var(--ddd-theme-default-white, #ffffff)
+          );
+          --a11y-tabs-_muted: light-dark(
+            var(--ddd-theme-default-slateGray, #314d64),
+            var(--ddd-theme-default-limestoneLight, #e4e5e7)
+          );
+          --a11y-tabs-_tint: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight, #f2f2f4),
+            var(--ddd-theme-default-nittanyNavy, #001e44)
           );
         }
         @media screen {
+          :host {
+            box-sizing: border-box;
+            margin: var(--a11y-tabs-margin, var(--ddd-spacing-4, 16px) 0);
+            border: var(--ddd-border-size-xs, 1px) solid var(--a11y-tabs-_line);
+            border-radius: var(--a11y-tabs-horizontal-border-radius);
+          }
           :host([vertical]) {
-            border-radius: var(--a11y-tabs-vertical-border-radius, 2px);
-            border: 1px solid
-              var(
-                --a11y-tabs-border-color,
-                light-dark(
-                  var(--ddd-theme-default-limestoneLight),
-                  var(--ddd-theme-default-limestoneMaxLight)
-                )
-              );
+            border-radius: var(--a11y-tabs-vertical-border-radius);
           }
 
           #content {
-            border: 1px solid
-              var(
-                --a11y-tabs-border-color,
-                light-dark(
-                  var(--ddd-theme-default-limestoneLight),
-                  var(--ddd-theme-default-limestoneMaxLight)
-                )
-              );
-            padding: var(--a11y-tabs-content-padding, 16px);
+            padding: var(
+              --a11y-tabs-content-padding,
+              var(--ddd-spacing-4, 16px)
+            );
             background-color: var(--a11y-tabs-content-background);
           }
 
           #tabs {
+            gap: var(--ddd-spacing-1, 4px);
+            padding: 0 var(--ddd-spacing-2, 8px);
+            border-bottom: var(--ddd-border-size-xs, 1px) solid
+              var(--a11y-tabs-_line);
+            border-radius: var(--a11y-tabs-horizontal-border-radius)
+              var(--a11y-tabs-horizontal-border-radius) 0 0;
             background-color: var(--a11y-tabs-horizontal-background);
             font-family: var(
               --a11y-tabs-tab-font-family,
-              var(--a11y-tabs-font-family, unset)
+              var(
+                --a11y-tabs-font-family,
+                var(--ddd-font-navigation, sans-serif)
+              )
             );
             font-size: var(
               --a11y-tabs-tab-font-size,
-              var(--a11y-tabs-font-size, unset)
+              var(--a11y-tabs-font-size, var(--ddd-font-size-4xs, 16px))
+            );
+          }
+
+          :host([sticky]) #tabs {
+            background-color: var(
+              --a11y-tabs-horizontal-sticky-background,
+              var(
+                --a11y-tabs-background,
+                light-dark(
+                  var(--ddd-theme-default-white, #ffffff),
+                  var(--ddd-theme-default-potentialMidnight, #000321)
+                )
+              )
             );
           }
 
           :host([vertical]) #tabs {
-            border-inline-start: none;
+            gap: 0;
+            padding: var(--ddd-spacing-2, 8px) 0;
+            border-bottom: none;
+            border-inline-end: var(--ddd-border-size-xs, 1px) solid
+              var(--a11y-tabs-_line);
+            border-radius: 0;
+            border-start-start-radius: var(--a11y-tabs-vertical-border-radius);
+            border-end-start-radius: var(--a11y-tabs-vertical-border-radius);
             background-color: var(--a11y-tabs-vertical-background);
             justify-content: var(--a11y-tabs-vertical-justify-tabs);
           }
 
-          :host([vertical]) #tabs button {
-            padding: var(--a11y-tabs-vertical-button-padding);
-            border-radius: 0;
-          }
-
-          :host([vertical]) #content {
-            border: none;
-          }
-          :host(:not([vertical])) #content {
-            border-radius: var(--a11y-tabs-horizontal-border-radius, 2px);
-          }
-
           #tabs button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--ddd-spacing-2, 8px);
+            box-sizing: border-box;
+            min-height: var(--ddd-spacing-11, 44px);
             text-transform: unset;
-            color: var(--a11y-tabs-faded-color, #333);
-            border: 1px solid var(--a11y-tabs-border-color);
-            background-color: var(--a11y-tabs-faded-background, #f8f8f8);
+            font-family: inherit;
+            font-size: inherit;
+            line-height: var(--ddd-lh-120, 120%);
+            cursor: pointer;
+            color: var(--a11y-tabs-faded-color, var(--a11y-tabs-_muted));
+            border: 0;
+            border-top: var(--ddd-border-size-xs, 1px) solid
+              var(--a11y-tabs-border-accent, transparent);
+            border-bottom: var(--ddd-border-size-md, 3px) solid transparent;
+            margin-bottom: calc(-1 * var(--ddd-border-size-xs, 1px));
+            background-color: var(--a11y-tabs-faded-background, transparent);
             padding: var(--a11y-tabs-horizontal-button-padding);
-            font-weight: var(--a11y-tabs-font-weight, normal);
-            border-radius: var(--a11y-tabs-horizontal-border-radius, 2px)
-              var(--a11y-tabs-horizontal-border-radius, 2px) 0 0;
+            font-weight: var(
+              --a11y-tabs-font-weight,
+              var(--ddd-font-weight-medium, 500)
+            );
+            border-radius: var(--ddd-radius-xs, 4px) var(--ddd-radius-xs, 4px) 0
+              0;
+          }
+
+          #tabs span.label,
+          #tabs .flag-icon {
+            margin-inline-end: 0;
+          }
+
+          /* the flag reads as a small pill after the label */
+          #tabs .flag-type:not([hidden]) {
+            position: static;
+            inset-inline-start: auto;
+            display: inline-flex;
+            align-items: center;
+            height: var(--ddd-spacing-5, 20px);
+            padding: 0 var(--ddd-spacing-2, 8px);
+            border-radius: var(--ddd-radius-rounded, 100px);
+            overflow: visible;
+            background-color: var(--a11y-tabs-_tint);
+            color: var(--a11y-tabs-_muted);
+            font-family: var(--ddd-font-navigation, sans-serif);
+            font-size: var(--ddd-font-size-6xs, 12px);
+            font-weight: var(--ddd-font-weight-bold, 700);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+          }
+          #tabs .flag-type[hidden] {
+            display: none;
+          }
+
+          #tabs simple-icon-lite {
+            --simple-icon-width: var(--ddd-icon-4xs, 16px);
+            --simple-icon-height: var(--ddd-icon-4xs, 16px);
+            flex: none;
+          }
+
+          :host([icons-only]) #tabs simple-icon-lite {
+            --simple-icon-width: var(--ddd-icon-3xs, 20px);
+            --simple-icon-height: var(--ddd-icon-3xs, 20px);
           }
 
           button .label {
             text-decoration: var(--a11y-tabs-text-decoration, none);
           }
 
-          :host(:not([vertical])) #tabs button {
-            border-top-color: var(--a11y-tabs-border-accent);
-          }
-
-          :host(:not([vertical])) #tabs li:not(:first-of-type) button {
-            border-inline-start: none;
-          }
-
           :host([vertical]) #tabs button {
+            justify-content: flex-start;
+            padding: var(--a11y-tabs-vertical-button-padding);
+            margin: 0;
+            border-radius: 0;
             border-top: none;
-            border-inline-start-color: var(--a11y-tabs-border-accent);
+            border-bottom: none;
+            border-inline-start: var(--ddd-border-size-md, 3px) solid
+              var(--a11y-tabs-border-accent, transparent);
+          }
+
+          #tabs button:hover {
+            background-color: var(--a11y-tabs-_tint);
           }
 
           #tabs button:focus,
           #tabs button:hover {
-            color: var(--a11y-tabs-focus-color);
-            font-weight: var(--a11y-tabs-focus-font-weight, normal);
+            color: var(--a11y-tabs-focus-color, var(--a11y-tabs-_ink));
+            font-weight: var(
+              --a11y-tabs-focus-font-weight,
+              var(--a11y-tabs-font-weight, var(--ddd-font-weight-medium, 500))
+            );
+          }
+
+          #tabs button:focus-visible {
+            outline: var(--ddd-focus-ring, 2px solid currentColor);
+            outline-offset: calc(-1 * var(--ddd-focus-offset, 2px));
           }
 
           button:focus .label,
           button:hover .label {
-            text-decoration: var(--a11y-tabs-focus-text-decoration, underline);
+            text-decoration: var(--a11y-tabs-focus-text-decoration, none);
           }
 
           :host(:not([vertical])) #tabs button:focus,
           :host(:not([vertical])) #tabs button:hover {
-            border-top-color: var(--a11y-tabs-focus-border-accent);
+            border-top-color: var(
+              --a11y-tabs-focus-border-accent,
+              var(--a11y-tabs-border-accent, transparent)
+            );
           }
 
           :host([vertical]) #tabs button:focus,
           :host([vertical]) #tabs button:hover {
-            border-inline-start-color: var(--a11y-tabs-focus-border-accent);
+            border-inline-start-color: var(
+              --a11y-tabs-focus-border-accent,
+              var(--a11y-tabs-border-accent, transparent)
+            );
           }
 
           #tabs button[aria-selected="true"] {
-            font-weight: var(--a11y-tabs-selected-font-weight, normal);
+            font-weight: var(
+              --a11y-tabs-selected-font-weight,
+              var(--ddd-font-weight-bold, 700)
+            );
             color: var(
               --a11y-tabs-selected-color,
-              var(--a11y-tabs-focus-color)
+              var(--a11y-tabs-focus-color, var(--a11y-tabs-_ink))
             );
-            background-color: var(--a11y-tabs-background);
+            background-color: var(--a11y-tabs-background, transparent);
+          }
+
+          #tabs button[aria-selected="true"]:hover {
+            background-color: var(
+              --a11y-tabs-background,
+              var(--a11y-tabs-_tint)
+            );
           }
 
           button[aria-selected="true"] .label {
@@ -343,24 +465,34 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
           }
 
           :host(:not([vertical])) #tabs button[aria-selected="true"] {
-            border-bottom-color: var(--a11y-tabs-background);
-            border-top-color: var(--a11y-tabs-selected-border-accent);
+            border-bottom-color: var(--a11y-tabs-_rule);
+            border-top-color: var(
+              --a11y-tabs-selected-border-accent,
+              var(--a11y-tabs-border-accent, transparent)
+            );
           }
 
           :host([vertical]) #tabs button[aria-selected="true"] {
-            border-inline-end-color: var(--a11y-tabs-background);
-            border-inline-start-color: var(--a11y-tabs-selected-border-accent);
+            border-inline-start-color: var(
+              --a11y-tabs-selected-border-accent,
+              var(--a11y-tabs-_rule)
+            );
           }
 
           #tabs button[disabled] {
-            color: var(--a11y-tabs-disabled-color, #999);
-            background-color: var(--a11y-tabs-disabled-background, #eee);
+            cursor: default;
+            opacity: 0.6;
+            color: var(--a11y-tabs-disabled-color, var(--a11y-tabs-_muted));
+            background-color: var(--a11y-tabs-disabled-background, transparent);
           }
 
           #tabs button[disabled]:focus,
           #tabs button[disabled]:hover {
-            color: unset;
-            font-weight: unset;
+            color: var(--a11y-tabs-disabled-color, var(--a11y-tabs-_muted));
+            font-weight: var(
+              --a11y-tabs-font-weight,
+              var(--ddd-font-weight-medium, 500)
+            );
           }
 
           button[disabled]:focus .label,
@@ -369,14 +501,22 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
           }
 
           :host(:not([vertical])) #tabs button[disabled] {
-            border-inline-start-color: var(
+            border-top-color: var(
               --a11y-tabs-disabled-border-accent,
-              unset
+              var(--a11y-tabs-border-accent, transparent)
             );
           }
 
           :host([vertical]) #tabs button[disabled] {
-            border-top-color: var(--a11y-tabs-disabled-border-accent, unset);
+            border-inline-start-color: var(
+              --a11y-tabs-disabled-border-accent,
+              var(--a11y-tabs-border-accent, transparent)
+            );
+          }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          #tabs button {
+            transition: none;
           }
         }
       `,
@@ -795,8 +935,8 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
               : ""
         } tab tab-${tab.id}"
       >
-        ${this._tabIcon(tab, "flagIcon")} ${this._tabLabel(tab)}
-        ${this._tabFlag(tab)} ${this._tabIcon(tab, "icon")}
+        ${this._tabIcon(tab, "flagIcon")} ${this._tabIcon(tab, "icon")}
+        ${this._tabLabel(tab)} ${this._tabFlag(tab)}
       </button>
       ${this.showTooltip ? this._tabTooltip(tab) : ""}
     `;

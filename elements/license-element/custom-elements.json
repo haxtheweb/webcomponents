@@ -81,7 +81,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ ...this.t, licenseGraphic: \"{license} graphic\", workByCreator: \"{title} by {creator}\", workByCreatorLicensed: \"{title} by {creator} is licensed under a {license}.\", permissionsBeyondScope: \"Permissions beyond the scope of this license are available {link}.\", author: \"(author)\", onTheLicensingDetailsPage: \"on the licensing details page\", licenseBy: \"Attribution\", licenseBySa: \"Attribution Share a like\", licenseByNd: \"Attribution No derivatives\", licenseByNc: \"Attribution non-commercial\", licenseByNcSa: \"Attribution non-commercial share a like\", licenseByNcNd: \"Attribution Non-commercial No derivatives\", }"
+              "default": "{ ...this.t, licenseLabel: \"License\", licenseGraphic: \"{license} graphic\", workByCreator: \"{title} by {creator}\", workByCreatorLicensed: \"{title} by {creator} is licensed under a {license}.\", permissionsBeyondScope: \"Permissions beyond the scope of this license are available {link}.\", author: \"(author)\", onTheLicensingDetailsPage: \"on the licensing details page\", licenseBy: \"Attribution\", licenseBySa: \"Attribution Share a like\", licenseByNd: \"Attribution No derivatives\", licenseByNc: \"Attribution non-commercial\", licenseByNcSa: \"Attribution non-commercial share a like\", licenseByNcNd: \"Attribution Non-commercial No derivatives\", }"
             },
             {
               "kind": "field",

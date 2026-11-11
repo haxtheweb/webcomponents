@@ -234,9 +234,11 @@ export class SiteView extends I18NMixin(DDD) {
         },
       });
       if (!response.ok) {
-        throw new Error(
+        const failed = new Error(
           this.t.fetchFailed.replace("{status}", () => response.status),
         );
+        failed.status = response.status;
+        throw failed;
       }
       const payload = await response.json();
       const extracted = extractViewsRecords(payload, { name: this.entity });
@@ -245,7 +247,18 @@ export class SiteView extends I18NMixin(DDD) {
         this.results = records;
       }
     } catch (e) {
-      this.error = e.message || this.t.unableToLoadViewData;
+      // our own messages follow the language until the next fetch resets
+      // them; a browser error message is shown as is
+      if (e && e.status !== undefined) {
+        const status = e.status;
+        this.i18nDefault("error", (t) =>
+          t.fetchFailed.replace("{status}", () => status),
+        );
+      } else if (e && e.message) {
+        this.error = e.message;
+      } else {
+        this.i18nDefault("error", "unableToLoadViewData");
+      }
     } finally {
       this.loading = false;
     }

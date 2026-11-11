@@ -2783,6 +2783,19 @@
               "description": "return the icon location on splitting the string on : for position in the object\nif the icon doesn't exist, it sets a value for future updates in the event\nthat the library for the icon registers AFTER the request to visualize is made"
             },
             {
+              "kind": "method",
+              "name": "cancelHydration",
+              "parameters": [
+                {
+                  "name": "context",
+                  "type": {
+                    "text": "HTMLElement"
+                  }
+                }
+              ],
+              "description": "Stop waiting on an icon for an element that left the page, so the list\ndoes not keep it alive; it asks again (getIcon) when it comes back."
+            },
+            {
               "kind": "field",
               "name": "iconsets",
               "type": {

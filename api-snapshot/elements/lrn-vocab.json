@@ -5,6 +5,7 @@
   "attributes": {
     "description": "description",
     "schemamap": "schemaMap",
+    "t": "t",
     "term": "term",
     "typeof": "typeof"
   },

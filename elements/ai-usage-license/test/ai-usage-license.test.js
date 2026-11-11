@@ -401,3 +401,27 @@ describe("AiUsageLicense HAX integration", () => {
     );
   });
 });
+
+describe("AiUsageLicense label i18n", () => {
+  it("renders the AI Usage License tag as real text from this.t", async () => {
+    resetFetchMode("data");
+    const el = await fixture(html`<ai-usage-license></ai-usage-license>`);
+    el.license = "CD";
+    await settle(el);
+    const label = el.shadowRoot.querySelector(".license-label");
+    expect(label).to.exist;
+    expect(label.textContent).to.equal("AI Usage License");
+    expect(el.shadowRoot.lastElementChild).to.equal(label);
+    expect(getComputedStyle(el, "::after").content).to.equal("none");
+    el.t = {
+      ...el.t,
+      aiUsageLicense: "Licencia de uso de IA",
+      licenseNameLabel: "{license} - Licencia de uso de IA",
+    };
+    await settle(el);
+    expect(label.textContent).to.equal("Licencia de uso de IA");
+    expect(
+      el.shadowRoot.querySelector(".license-badge").getAttribute("aria-label"),
+    ).to.equal("Conceptual Development - Licencia de uso de IA");
+  });
+});

@@ -230,7 +230,8 @@
     },
     "saveOptions": {
       "unsetAttributes": [
-        "expanded"
+        "expanded",
+        "t"
       ]
     },
     "demoSchema": [

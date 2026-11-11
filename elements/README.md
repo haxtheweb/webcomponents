@@ -3,11 +3,10 @@
 <!-- GENERATED FILE: do not edit by hand. Run `yarn run elements-readme` -->
 <!-- Descriptions come from each element's package.json; edit them there. -->
 
-Every element in this monorepo (229 packages). Browse them live with `yarn gallery`, or open an element's folder for its own README.
+Every element in this monorepo (224 packages). Browse them live with `yarn gallery`, or open an element's folder for its own README.
 
 | Element | Description | Package | Demo |
 | --- | --- | --- | --- |
-| [a11y-behaviors](./a11y-behaviors/) | Accessibility behaviors / mix-ins to improve a11y overall | `@haxtheweb/a11y-behaviors` |  |
 | [a11y-carousel](./a11y-carousel/) | Accessible carousel / slideshow with navigation controls | `@haxtheweb/a11y-carousel` | [demo](./a11y-carousel/demo/) |
 | [a11y-collapse](./a11y-collapse/) | Accessible expand / collapse panel with heading and toggle | `@haxtheweb/a11y-collapse` | [demo](./a11y-collapse/demo/) |
 | [a11y-compare-image](./a11y-compare-image/) | Slider that allows comparison of two images | `@haxtheweb/a11y-compare-image` | [demo](./a11y-compare-image/demo/) |
@@ -17,7 +16,6 @@ Every element in this monorepo (229 packages). Browse them live with `yarn galle
 | [a11y-media-player](./a11y-media-player/) | A feature rich, highly accessible video player | `@haxtheweb/a11y-media-player` | [demo](./a11y-media-player/demo/) |
 | [a11y-menu-button](./a11y-menu-button/) | Accessible menu button | `@haxtheweb/a11y-menu-button` | [demo](./a11y-menu-button/demo/) |
 | [a11y-tabs](./a11y-tabs/) | accessible and responsive tabbed interface | `@haxtheweb/a11y-tabs` | [demo](./a11y-tabs/demo/) |
-| [a11y-utils](./a11y-utils/) | a collection of accessibility patterns and styles | `@haxtheweb/a11y-utils` |  |
 | [absolute-position-behavior](./absolute-position-behavior/) | Abstracting the positioning behavior to be resusable in other elements | `@haxtheweb/absolute-position-behavior` | [demo](./absolute-position-behavior/demo/) |
 | [accent-card](./accent-card/) | A card with optional accent color, image and heading styling | `@haxtheweb/accent-card` | [demo](./accent-card/demo/) |
 | [aframe-player](./aframe-player/) | A-frame 3D player in the browser via data binding | `@haxtheweb/aframe-player` | [demo](./aframe-player/demo/) |
@@ -56,7 +54,6 @@ Every element in this monorepo (229 packages). Browse them live with `yarn galle
 | [demo-snippet](./demo-snippet/) | Webcomponent demo-snippet following hax / open-wc recommendations | `@haxtheweb/demo-snippet` | [demo](./demo-snippet/demo/) |
 | [discord-embed](./discord-embed/) | widgetbot.io based embed widget for discord threads and channels | `@haxtheweb/discord-embed` | [demo](./discord-embed/demo/) |
 | [disqus-embed](./disqus-embed/) | Disqus service integration | `@haxtheweb/disqus-embed` | [demo](./disqus-embed/demo/) |
-| [dl-behavior](./dl-behavior/) | Mixin that adds file download helpers to an element | `@haxtheweb/dl-behavior` |  |
 | [documentation-player](./documentation-player/) | Living documentation for a web component: animated walkthrough, video tutorial, demo, docs and schema | `@haxtheweb/documentation-player` | [demo](./documentation-player/demo/) |
 | [dynamic-import-registry](./dynamic-import-registry/) | maintain manage the registration and usage of dynamic imports | `@haxtheweb/dynamic-import-registry` |  |
 | [editable-table](./editable-table/) | A table that's editable | `@haxtheweb/editable-table` | [demo](./editable-table/demo/) |
@@ -203,7 +200,6 @@ Every element in this monorepo (229 packages). Browse them live with `yarn galle
 | [simple-toast](./simple-toast/) | A singular toast / message for conistency | `@haxtheweb/simple-toast` | [demo](./simple-toast/demo/) |
 | [simple-toolbar](./simple-toolbar/) | a customizable toolbar | `@haxtheweb/simple-toolbar` | [demo](./simple-toolbar/demo/) |
 | [simple-tooltip](./simple-tooltip/) | a simple tooltip forked with the same api | `@haxtheweb/simple-tooltip` | [demo](./simple-tooltip/demo/) |
-| [simple-wc](./simple-wc/) | A simple web component wrapper to simplify consistent patterns of element creation | `@haxtheweb/simple-wc` | [demo](./simple-wc/demo/) |
 | [slide-deck](./slide-deck/) | Present an imported PowerPoint deck slide by slide, with speaker notes | `@haxtheweb/slide-deck` | [demo](./slide-deck/demo/) |
 | [social-share-link](./social-share-link/) | a link to share content on social | `@haxtheweb/social-share-link` | [demo](./social-share-link/demo/) |
 | [sorting-question](./sorting-question/) | sorting questions to be in the right order when they are randomized. | `@haxtheweb/sorting-question` | [demo](./sorting-question/demo/) |

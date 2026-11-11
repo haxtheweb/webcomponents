@@ -8,7 +8,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "`lrn-vocab`\nVocabulary term with visual treatment and semantic meaning.",
+          "description": "`lrn-vocab`\nVocabulary term with visual treatment and semantic meaning.\n\nReads like vocab-term inside a sentence: a dotted underline (solid on\nhover, DDD focus ring) that opens the definition in a large modal headed\nby the same Vocabulary chip and label. `--lrn-vocab-border` still works: its\nwidth, style and colour become the underline's (for example\n`--lrn-vocab-border: 2px dashed red`).",
           "name": "LrnVocab",
           "members": [
             {
@@ -47,6 +47,11 @@
             },
             {
               "kind": "method",
+              "name": "renderLabel",
+              "description": "Vocabulary chip and label for the top of the modal (matches vocab-term)"
+            },
+            {
+              "kind": "method",
               "name": "openDialog",
               "parameters": [
                 {
@@ -60,6 +65,14 @@
               "name": "haxProperties",
               "static": true,
               "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, vocabulary: \"Vocabulary\", }"
             },
             {
               "kind": "field",
@@ -124,6 +137,10 @@
             {
               "name": "SchemaBehaviors",
               "package": "@haxtheweb/schema-behaviors/schema-behaviors.js"
+            },
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
             }
           ],
           "superclass": {

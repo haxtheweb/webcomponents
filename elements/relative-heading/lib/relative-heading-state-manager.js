@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 /**
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
@@ -27,7 +28,7 @@ globalThis.RelativeHeadingStateManager.requestAvailability = () => {
  * ` A utility that determines headings relative to their parents.`
  * @element relative-heading-state-manager
  */
-class RelativeHeadingStateManager extends LitElement {
+class RelativeHeadingStateManager extends I18NMixin(LitElement) {
   /**
    * Store the tag name to make it easier to obtain directly.
    */
@@ -85,8 +86,22 @@ class RelativeHeadingStateManager extends LitElement {
   constructor() {
     super();
     this.closeIcon = "close";
-    this.closeLabel = "Close";
-    this.copyMessage = "Copied to Clipboard";
+    this.t = {
+      ...this.t,
+      close: "Close",
+      copiedToClipboard: "Copied to Clipboard",
+    };
+    // shares relative-heading's strings
+    this.registerLocalization({
+      context: this,
+      namespace: "relative-heading",
+      localesPath:
+        new URL("../locales/relative-heading.en.json", import.meta.url).href +
+        "/../",
+    });
+    // translated defaults; a heading's own copyMessage / closeLabel still win
+    this.i18nDefault("closeLabel", "close");
+    this.i18nDefault("copyMessage", "copiedToClipboard");
     this.headings = [];
     this.copyHeading = {};
     this.usesCopyLink = false;

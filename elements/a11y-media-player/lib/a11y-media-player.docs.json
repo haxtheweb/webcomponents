@@ -419,7 +419,6 @@
     "play-toggle",
     "playback-rate-changed",
     "player-sticky",
-    "responsive-element",
     "restart",
     "seek",
     "settings-toggled",
@@ -432,7 +431,7 @@
     null
   ],
   "hax": {},
-  "surfaceHash": "6950550e8b52",
+  "surfaceHash": "942049ac621f",
   "walkthroughs": [
     {
       "id": "",

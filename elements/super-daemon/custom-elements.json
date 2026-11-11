@@ -182,12 +182,26 @@
             },
             {
               "kind": "method",
+              "name": "_konamiKeydown",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
               "name": "keyHandler",
               "parameters": [
                 {
                   "name": "e"
                 }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "_toggleFromKeyboard",
+              "description": "The open / close shortcut. Closing goes through close() so every mode\n(mini popover or full dialog) is torn down the same way it is from the\nclose button; only opening runs keyHandlerCallback, which picks the\nmode and anchor. Flipping opened alone left a closed full Merlin set up\nas a mini popover with no anchor, so the next open drew it in the top\nleft corner."
             },
             {
               "kind": "method",
@@ -292,6 +306,21 @@
             },
             {
               "kind": "method",
+              "name": "_alignInlineField",
+              "description": "Inline mini Merlin (opened with / in an empty text block) is pulled up\nover the block so its search field sits where the text was being typed.\nA fixed pull-up can't know the block's line height or padding, so it\ndrew the field above the line; measure the real field and the real line\nand move the popover by the difference."
+            },
+            {
+              "kind": "method",
+              "name": "_inlineLineCenter",
+              "description": "Vertical middle of the line the caret is on: the caret's own box when\nthe browser gives one, else (an empty block has none) the block's first\nline from its padding and line height.",
+              "return": {
+                "type": {
+                  "text": "number|null"
+                }
+              }
+            },
+            {
+              "kind": "method",
               "name": "focusout",
               "parameters": [
                 {
@@ -347,7 +376,8 @@
                 {
                   "name": "phrase"
                 }
-              ]
+              ],
+              "description": "Merlin says something: always as the Merlin speaking toast, so it can\nbe read with sound off or no speech support, and out loud when voice\nis available. A missing hal-9000 (voice off) no longer throws, which\nstopped whatever called this (cheat codes included) part way through."
             },
             {
               "kind": "method",
@@ -1969,6 +1999,24 @@
             },
             {
               "kind": "method",
+              "name": "_hoverIn",
+              "parameters": [
+                {
+                  "name": "_e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_hoverOut",
+              "parameters": [
+                {
+                  "name": "_e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
               "name": "focus"
             },
             {
@@ -2195,6 +2243,17 @@
             },
             {
               "kind": "field",
+              "name": "hovered",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "hovered",
+              "reflects": true
+            },
+            {
+              "kind": "field",
               "name": "mini",
               "privacy": "public",
               "type": {
@@ -2356,6 +2415,14 @@
               "fieldName": "active"
             },
             {
+              "name": "hovered",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "hovered"
+            },
+            {
               "name": "striped",
               "type": {
                 "text": "boolean"
@@ -2456,6 +2523,11 @@
             },
             {
               "kind": "method",
+              "name": "_idleShortcutLabel",
+              "description": "Merlin's open shortcut written the way every other HAX shortcut chip is\n(\"Alt⇧\"), shown only while the field is idle: not focused, empty, no\nprogram running, not listening and nothing being dragged over it"
+            },
+            {
+              "kind": "method",
               "name": "suggestPossibleAction",
               "parameters": [
                 {
@@ -2509,6 +2581,12 @@
                   "name": "_e"
                 }
               ]
+            },
+            {
+              "kind": "field",
+              "name": "inputElement",
+              "description": "The text input that really holds focus (inside simple-fields-field).\nsuper-daemon-ui makes it the combobox: role, expanded state and the\nhighlighted result (aria-activedescendant) all live on this element.",
+              "readonly": true
             },
             {
               "kind": "method",
@@ -2617,6 +2695,26 @@
               "default": "false",
               "attribute": "wand",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "programRunning",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "program-running"
+            },
+            {
+              "kind": "field",
+              "name": "showShortcut",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "show-shortcut"
             },
             {
               "kind": "field",
@@ -2865,12 +2963,28 @@
               "fieldName": "programName"
             },
             {
+              "name": "program-running",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "programRunning"
+            },
+            {
               "name": "program-placeholder",
               "type": {
                 "text": "null"
               },
               "default": "null",
               "fieldName": "programPlaceholder"
+            },
+            {
+              "name": "show-shortcut",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "showShortcut"
             },
             {
               "name": "command-context",
@@ -3704,6 +3818,11 @@
                 }
               ],
               "description": "Apply active-descendant DOM state (row.active flags + scrolling) after\nrender. Split out from _updateActiveDescendant so updated() can reset\nthe DOM without setting reactive properties inside the update cycle."
+            },
+            {
+              "kind": "method",
+              "name": "_syncCombobox",
+              "description": "The focused search input is the combobox: it carries the role, whether\nresults are showing, which listbox it controls and which result is\nhighlighted. The input and the result rows live in different shadow\nroots, so the rows are referenced as elements (ARIA element reflection\nallows a reference into an enclosing shadow root); id references cannot\ncross that boundary. Browsers without element reflection hear the\nhighlighted result through the #active-result live region instead."
             },
             {
               "kind": "method",

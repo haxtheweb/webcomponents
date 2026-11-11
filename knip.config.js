@@ -42,7 +42,7 @@ const vendored = {
 const extraEntries = {
   "d-d-d": ["design-system/*.js", "design-system/source/bundle/*.js"],
   "haxcms-elements": [
-    "automation/**/*.js",
+    // automation/ is its own workspace (see workspaces below)
     "*-automation.js",
     // theme-building mixin documented in the README next to QRCodeMixin and
     // PDFPageMixin; no bundled theme uses it, but custom site themes import
@@ -119,8 +119,20 @@ const workspaces = {
   ".": {
     entry: ["scripts/**/*.{js,mjs,cjs}", "*.{js,mjs,cjs}"],
     project: ["scripts/**/*.{js,mjs,cjs}", "*.{js,mjs,cjs}"],
-    // loaded by web-test-runner when a script passes --playwright
-    ignoreDependencies: ["@web/test-runner-playwright"],
+    ignoreDependencies: [
+      // loaded by web-test-runner when a script passes --playwright
+      "@web/test-runner-playwright",
+      // knip's Stryker plugin maps testRunner "command" to this package, but
+      // Stryker 10 ships the command runner inside @stryker-mutator/core
+      "@stryker-mutator/command-runner",
+    ],
+  },
+  // the theme screenshot scripts are their own npm project (own
+  // package.json and package-lock.json, installed with npm in that folder),
+  // so puppeteer is declared there, not in haxcms-elements
+  "elements/haxcms-elements/automation": {
+    entry: ["*.js"],
+    project: ["*.js"],
   },
 };
 // shared entry patterns, kept per workspace only where they match a file
@@ -158,6 +170,26 @@ for (const dir of Object.values(workspaceDir)) {
 export default {
   workspaces,
   ignore: generated,
+  // Demos and tests may import any @haxtheweb package in this repo: they
+  // run from the monorepo, where yarn workspaces link every element into
+  // node_modules, and they are not published. Declaring those imports as
+  // devDependencies would add about 230 workspace edges and dependency
+  // cycles through most of the repo (lerna reports ECYCLE and loses its
+  // build order), so unlisted imports are not reported in these folders.
+  // Third-party packages a demo or test uses are still declared (sinon,
+  // mobx, web-dialog); this setting cannot tell the two apart, so check
+  // new third-party imports there by hand. Published files keep the full
+  // check: every package they import must be in that element's
+  // package.json.
+  ignoreIssues: {
+    "elements/*/demo/**": ["unlisted"],
+    "elements/*/test/**": ["unlisted"],
+  },
+  // the outline-designer demo sets <base href> to the haxcms-elements demo
+  // site and loads the element by its root-served path, which only exists
+  // when the repo root is served (as `yarn start` does); relative paths in
+  // that page resolve against the base, not the file
+  ignoreUnresolved: ["/elements/outline-designer/outline-designer.js"],
   // `yarn audit` in a workflow, read as a binary named audit
   ignoreBinaries: ["audit"],
   // demo pages load elements with <script type="module">; read those so
