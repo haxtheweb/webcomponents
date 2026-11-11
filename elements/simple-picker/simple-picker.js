@@ -994,6 +994,16 @@ const SimplePickerBehaviors = function (SuperClass) {
           let listbox = this.shadowRoot.querySelector("#listbox");
           if (listbox) listbox.focus();
         }
+      } else if (e.keyCode === 27 || e.key === "Escape") {
+        // Escape closes an open list without choosing the highlighted option
+        // and puts focus back on the picker. It is used up only then, so a
+        // dialog or tray around the picker does not close as well; with the
+        // list closed it bubbles as before so that dialog can still close.
+        if (this.expanded) {
+          e.preventDefault();
+          e.stopPropagation();
+          this._cancelListbox();
+        }
       } else if (this.expanded && [35, 36, 38, 40].includes(e.keyCode)) {
         e.preventDefault();
         if (e.keyCode === 35) {
@@ -1199,6 +1209,32 @@ const SimplePickerBehaviors = function (SuperClass) {
          */
         this.dispatchEvent(new CustomEvent("collapse", { detail: this }));
       }
+    }
+
+    /**
+     * closes the listbox without changing the value: the active option goes
+     * back to the selected one (so the list reopens on it) and focus returns
+     * to the listbox
+     *
+     * @returns {void}
+     */
+    _cancelListbox() {
+      let options = this.__options || [];
+      for (let i = 0; i < options.length; i++) {
+        for (let j = 0; j < options[i].length; j++) {
+          if (options[i][j] === this.__selectedOption) {
+            this.__activeDesc = `option-${i}-${j}`;
+          }
+        }
+      }
+      this.expanded = false;
+      let listbox = this.shadowRoot.querySelector("#listbox");
+      if (listbox) listbox.focus();
+      /**
+       * fires when listbox is collapsed
+       * @event collapse
+       */
+      this.dispatchEvent(new CustomEvent("collapse", { detail: this }));
     }
 
     /**
