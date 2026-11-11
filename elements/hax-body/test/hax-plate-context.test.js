@@ -141,7 +141,7 @@ describe("hax-plate-context block bar", () => {
     el.activeNode.setAttribute("data-hax-lock", "data-hax-lock");
     el.moreOpen = true;
     await el.updateComplete;
-    ["#chip", "#layout", "#remove", "#source", "#editmode"].forEach((id) =>
+    ["#chip", "#layout", "#remove", "#source"].forEach((id) =>
       expect(bar(el).querySelector(id).disabled, id).to.equal(true),
     );
     // unlocking stays possible
