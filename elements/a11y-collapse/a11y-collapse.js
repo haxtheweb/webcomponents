@@ -12,6 +12,12 @@ import {
   XAPI_EXTENSIONS,
 } from "@haxtheweb/user-action/lib/xapi.js";
 
+/**
+ * @csspart heading-id - the heading row (title and toggle)
+ * @csspart heading - the title, when set with the heading property
+ * @csspart icon - the expand / collapse toggle
+ * @csspart tooltip - the toggle's tooltip
+ */
 class A11yCollapse extends I18NMixin(DDD) {
   static get styles() {
     return [
@@ -788,7 +794,12 @@ class A11yCollapse extends I18NMixin(DDD) {
           </simple-icon-lite>
         </span>
       </button>
-      <simple-tooltip for="expand" position="top" offset="8" manual-mode
+      <simple-tooltip
+        part="tooltip"
+        for="expand"
+        position="top"
+        offset="8"
+        manual-mode
         >${this._localizeLabel(
           this._getExpanded(this.tooltip, this.tooltipExpanded, this.expanded),
         )}</simple-tooltip
@@ -825,7 +836,7 @@ class A11yCollapse extends I18NMixin(DDD) {
           aria-expanded="${this.expanded ? "true" : "false"}"
         >
         </simple-icon-button-lite>
-        <simple-tooltip for="expand" position="top" offset="8"
+        <simple-tooltip part="tooltip" for="expand" position="top" offset="8"
           >${this._localizeLabel(
             this._getExpanded(
               this.tooltip,
