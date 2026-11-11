@@ -69,8 +69,13 @@
               background: white;
             }
 
-            .search-input:focus {
-              outline: none;
+            .search-input:focus-visible {
+              outline: 2px solid
+                light-dark(
+                  var(--ddd-theme-default-link, #005fa9),
+                  var(--ddd-theme-default-linkLight, #cce9ff)
+                );
+              outline-offset: 2px;
               border-color: var(--ddd-theme-default-keystoneYellow);
             }
 

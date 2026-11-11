@@ -71,6 +71,22 @@ class PolarisMark extends I18NMixin(LitElement) {
         svg #stroke-line {
           display: var(--polaris-mark-stroke-line-display, block);
         }
+
+        /* a focus ring that reads on light and dark surfaces; outlines also
+           survive forced colors, where box-shadows and backgrounds vanish */
+        /* the link wraps the mark's svg: an inline-block box gives the
+           focus ring the svg's size */
+        a {
+          display: inline-block;
+        }
+        a:focus-visible {
+          outline: 2px solid
+            light-dark(
+              var(--ddd-theme-default-link, #005fa9),
+              var(--ddd-theme-default-linkLight, #cce9ff)
+            );
+          outline-offset: 2px;
+        }
       `,
     ];
   }

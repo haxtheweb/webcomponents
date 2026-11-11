@@ -153,6 +153,14 @@ class ProductOffering extends IntersectionObserverMixin(DDD) {
             padding-inline-start: 0;
           }
         }
+
+        /* forced colors drops the chip fill, so the icon takes the system
+           text color instead of its hard-coded one */
+        @media (forced-colors: active) {
+          simple-icon {
+            --simple-icon-color: CanvasText;
+          }
+        }
       `,
     ];
   }
