@@ -288,8 +288,11 @@ class A11yTab extends I18NMixin(LitElement) {
    * @returns {object} MutationObserver to unwrap contents
    */
   get observer() {
-    let lc = (_e) => this._labelChanged();
-    return new MutationObserver(lc);
+    // one observer per instance, so disconnectedCallback stops the one that observes
+    if (!this.__observer) {
+      this.__observer = new MutationObserver(() => this._labelChanged());
+    }
+    return this.__observer;
   }
   /**
    * gets x of y string

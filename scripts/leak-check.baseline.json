@@ -71,11 +71,6 @@
       "global-stores": 1,
       "retained": 1
     },
-    "progress-donut": {
-      "listeners": 1,
-      "observers": 1,
-      "retained": 1
-    },
     "simple-icon": {
       "global-stores": 1,
       "retained": 1

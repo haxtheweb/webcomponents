@@ -342,7 +342,20 @@ class A11yDetails extends I18NMixin(LitElement) {
    */
   disconnectedCallback() {
     if (this.observer && this.observer.disconnect) this.observer.disconnect();
+    if (this.detailsObserver && this.detailsObserver.disconnect) {
+      this.detailsObserver.disconnect();
+    }
     super.disconnectedCallback();
+  }
+  /**
+   * life cycle, element is (re)added to the DOM; the HAX editor moves
+   * blocks by removing and re-adding them, so watch the children again
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    if (this.hasUpdated) {
+      this.observer.observe(this, { childList: true, subtree: true });
+    }
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
@@ -385,8 +398,13 @@ class A11yDetails extends I18NMixin(LitElement) {
    * @returns {object}
    */
   get observer() {
-    let callback = (mutationsList) => this._watchChildren(mutationsList);
-    return new MutationObserver(callback);
+    // one observer per instance, so disconnectedCallback stops the one that observes
+    if (!this.__observer) {
+      this.__observer = new MutationObserver((mutationsList) =>
+        this._watchChildren(mutationsList),
+      );
+    }
+    return this.__observer;
   }
 
   /**
@@ -395,8 +413,12 @@ class A11yDetails extends I18NMixin(LitElement) {
    * @returns {object}
    */
   get detailsObserver() {
-    let callback = () => this._updateElement();
-    return new MutationObserver(callback);
+    if (!this.__detailsObserver) {
+      this.__detailsObserver = new MutationObserver(() =>
+        this._updateElement(),
+      );
+    }
+    return this.__detailsObserver;
   }
   /**
    * provides click for keyboard if open property is not supported by browser

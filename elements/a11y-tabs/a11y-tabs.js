@@ -556,8 +556,11 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
    * @returns {object}
    */
   get observer() {
-    let callback = () => this.updateTabs();
-    return new MutationObserver(callback);
+    // one observer per instance, so disconnectedCallback stops the one that observes
+    if (!this.__observer) {
+      this.__observer = new MutationObserver(() => this.updateTabs());
+    }
+    return this.__observer;
   }
 
   /**
