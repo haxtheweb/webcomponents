@@ -87,7 +87,7 @@
     "ubiquity-publish": "bash scripts/ubiquity-push.sh",
     "terser": "gulp terser --gulpfile=gulpfile.mjs",
     "minify-css-templates": "node scripts/minify-css-templates.mjs build/es6/node_modules/@haxtheweb",
-    "test:fuzz": "HAX_FUZZ_SEED=random HAX_FUZZ_RUNS=4000 web-test-runner \"elements/*/test/*-fuzz.test.js\" --node-resolve --root-dir . --playwright --browsers chromium --static-logging",
+    "test:fuzz": "HAX_FUZZ_SEED=${HAX_FUZZ_SEED:-random} HAX_FUZZ_RUNS=${HAX_FUZZ_RUNS:-4000} web-test-runner \"elements/*/test/*-fuzz.test.js\" --node-resolve --root-dir . --playwright --browsers chromium --static-logging",
     "test:scripts": "node --test scripts/test/*.test.mjs",
     "bench": "node benchmarks/run.mjs",
     "test:leaks": "node scripts/leak-check.mjs",
