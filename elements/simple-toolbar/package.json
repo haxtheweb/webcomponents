@@ -61,7 +61,7 @@
     "@haxtheweb/create": "26.8.1",
     "@web/dev-server-esbuild": "1.0.5",
     "lint-staged": "15.5.2",
-    "@babel/core": "7.29.7",
+    "@babel/core": "7.29.13",
     "@open-wc/building-rollup": "3.0.2"
   },
   "private": false,

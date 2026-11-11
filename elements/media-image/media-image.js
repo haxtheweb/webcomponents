@@ -73,6 +73,7 @@ class MediaImage extends SchemaBehaviors(DDD) {
           }
         }
 
+        /* offset="left|right" is an authored physical choice; it stays */
         :host([offset="left"]) {
           float: left;
           margin: var(--media-image-offset-width, 1.5vw);

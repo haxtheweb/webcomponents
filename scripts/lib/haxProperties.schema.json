@@ -1,0 +1,689 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/haxtheweb/hax-schema/main/schema/haxProperties.schema.json",
+  "title": "HAX properties (haxProperties)",
+  "description": "Describes how a web component integrates with the HAX editor: how it is listed (gizmo), which editing form fields it gets (settings), how it is saved (saveOptions) and how it is demoed (demoSchema). Usually shipped as `lib/<tag>.haxProperties.json` and returned by the element's static `haxProperties` getter. Defaults below are the values HAXWiring.setHaxProperties fills in when a key is missing. Translations live in separate overlay files (see haxProperties.locale.schema.json). Unknown keys are rejected so typos are caught; put element-specific data under keys that start with `x-`.",
+  "type": "object",
+  "properties": {
+    "api": {
+      "description": "Schema API version. Only \"1\" exists.",
+      "const": "1",
+      "default": "1"
+    },
+    "type": {
+      "description": "`element` for a normal block; `grid` when the element is a layout container that other blocks are placed inside (its slots become drop targets).",
+      "enum": ["element", "grid"],
+      "default": "element"
+    },
+    "editingElement": {
+      "description": "Who provides the editing UI. `core` (default) means HAX edits the element itself. An object names a custom element HAX wraps around the active element while it is being edited (HAX core uses this for `<table>` -> editable-table and `<iframe>` -> iframe-loader). The wrapper receives the `activeElementChanged` haxHook to sync state in and out.",
+      "default": "core",
+      "oneOf": [
+        {
+          "const": "core"
+        },
+        {
+          "type": "object",
+          "required": ["tag"],
+          "properties": {
+            "tag": {
+              "description": "Custom element tag of the editing wrapper.",
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)+$"
+            },
+            "import": {
+              "description": "Module path (relative to the web component base path) imported before the wrapper is created.",
+              "type": "string"
+            },
+            "callback": {
+              "description": "JS only: function called with the new wrapper element. Cannot be expressed in a .json file."
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "editElement": {
+      "description": "Name of a boolean property on the element that the toolbar's 'Edit Mode' toggle flips (for example `editMode` on editable-table). The toggle is shown only when this is set and is hidden for the `novice` platform audience.",
+      "type": "string",
+      "pattern": "^[a-zA-Z_$][a-zA-Z0-9_$]*$"
+    },
+    "hideDefaultSettings": {
+      "description": "Hide the standard design-system and text-alignment controls HAX adds to every element.",
+      "type": "boolean",
+      "default": false
+    },
+    "canScale": {
+      "description": "Show the width scaler. `true` uses the default 25/50/75/100 steps; an object sets a custom range.",
+      "oneOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "min": {
+              "type": "number"
+            },
+            "max": {
+              "type": "number"
+            },
+            "step": {
+              "type": "number"
+            }
+          },
+          "additionalProperties": false
+        }
+      ],
+      "default": true
+    },
+    "canPosition": {
+      "description": "Legacy: whether the element can be positioned left or center justified. An older setting HAX is moving away from; still present in some elements (for example radar-chart) and in the HAX documentation, so it stays valid.",
+      "type": "boolean",
+      "deprecated": true
+    },
+    "canEditSource": {
+      "description": "Show the inline `view source` button.",
+      "type": "boolean",
+      "default": false
+    },
+    "contentEditable": {
+      "description": "The element's light DOM is directly editable as text inside the editor.",
+      "type": "boolean",
+      "default": false
+    },
+    "designSystem": {
+      "description": "Which design-system form inputs to show. `false` hides them all; an object toggles each one.",
+      "oneOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "primary": {
+              "type": "boolean"
+            },
+            "accent": {
+              "type": "boolean"
+            },
+            "card": {
+              "type": "boolean"
+            },
+            "text": {
+              "type": "boolean"
+            },
+            "font": {
+              "type": "boolean"
+            },
+            "designTreatment": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "editMode": {
+      "description": "Properties applied to slots when the element is in edit mode; merged into each slot's own `editMode` (HaxStore.slotsSchemaFromNode).",
+      "type": "object"
+    },
+    "gizmo": {
+      "description": "How the block appears in the HAX block browser, search and Merlin. Omit (or `false`) for elements that should not be insertable on their own.",
+      "oneOf": [
+        {
+          "const": false
+        },
+        {
+          "$ref": "#/$defs/gizmo"
+        }
+      ]
+    },
+    "settings": {
+      "description": "Editing form fields. Each group is an array of fields; the group decides where the form shows them.",
+      "type": "object",
+      "properties": {
+        "configure": {
+          "description": "Main editing form.",
+          "$ref": "#/$defs/fieldList"
+        },
+        "advanced": {
+          "description": "Collapsed 'advanced' area of the form.",
+          "$ref": "#/$defs/fieldList"
+        },
+        "developer": {
+          "description": "Developer-only area of the form.",
+          "$ref": "#/$defs/fieldList"
+        },
+        "inline": {
+          "description": "Fields for inline (text-level) elements such as `b` or `em` that live inside block elements; users apply them to a text selection, and these fields appear in that selection context.",
+          "$ref": "#/$defs/fieldList"
+        }
+      },
+      "additionalProperties": false
+    },
+    "saveOptions": {
+      "description": "Clean-up applied when the element is serialized to HTML. Must be top level, not inside `settings`.",
+      "type": "object",
+      "properties": {
+        "wipeSlot": {
+          "description": "Remove the element's light DOM on save (for elements that render slot content from data rather than authored content).",
+          "type": "boolean",
+          "default": false
+        },
+        "unsetAttributes": {
+          "description": "Attribute names (HTML / dash-case form, not camelCase) to strip on save.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z_][a-z0-9_:.-]*$"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "patternProperties": {
+        "^x-": {
+          "description": "Extension key for element-specific data HAX does not read. Use this prefix for any custom key so the standard keys can be validated strictly."
+        }
+      }
+    },
+    "documentation": {
+      "description": "Links to help for this element.",
+      "type": "object",
+      "properties": {
+        "howTo": {
+          "type": ["string", "null"]
+        },
+        "purpose": {
+          "type": ["string", "null"]
+        }
+      },
+      "additionalProperties": false,
+      "patternProperties": {
+        "^x-": {
+          "description": "Extension key for element-specific data HAX does not read. Use this prefix for any custom key so the standard keys can be validated strictly."
+        }
+      }
+    },
+    "demoSchema": {
+      "description": "Sample instances. The first entry is what HAX inserts when a user adds the block.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/demo"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "inputMethod": {
+      "description": "Form control to render. Unknown values silently fall back to a text field, so this list is closed. Source of truth: `fieldsConversion.inputMethod` in simple-fields.js plus the additions in hax-body-behaviors/lib/HAXFields.js.",
+      "enum": [
+        "textfield",
+        "textarea",
+        "alt",
+        "url",
+        "number",
+        "slider",
+        "boolean",
+        "select",
+        "radio",
+        "combo",
+        "color",
+        "colorpicker",
+        "iconpicker",
+        "hax-palette-picker",
+        "haxcms-theme-picker",
+        "date-time",
+        "datepicker",
+        "monthpicker",
+        "weekpicker",
+        "timepicker",
+        "fileupload",
+        "haxupload",
+        "screenRecorder",
+        "srcset",
+        "code",
+        "code-editor",
+        "markup",
+        "html-block",
+        "md-block",
+        "array",
+        "object",
+        "fieldset",
+        "tabs",
+        "collapse"
+      ],
+      "default": "textfield"
+    },
+    "fieldList": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/field"
+      }
+    },
+    "field": {
+      "description": "One form field. It maps to exactly one of `property` (JS property), `attribute` (HTML attribute) or `slot` (light DOM; empty string = default slot). Fields without any of the three are dropped by HAXWiring.validateSetting.",
+      "type": "object",
+      "anyOf": [
+        {
+          "required": ["property"]
+        },
+        {
+          "required": ["attribute"]
+        },
+        {
+          "required": ["slot"]
+        }
+      ],
+      "properties": {
+        "property": {
+          "description": "camelCase JS property name.",
+          "type": "string",
+          "minLength": 1
+        },
+        "attribute": {
+          "description": "dash-case HTML attribute name.",
+          "type": "string",
+          "minLength": 1
+        },
+        "slot": {
+          "description": "Slot name; `\"\"` targets the default slot.",
+          "type": "string"
+        },
+        "title": {
+          "description": "Label shown to the user. Defaults to the attribute/property/slot name.",
+          "type": "string"
+        },
+        "description": {
+          "description": "Help text shown under the field.",
+          "type": "string",
+          "default": ""
+        },
+        "inputMethod": {
+          "$ref": "#/$defs/inputMethod"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "required": {
+          "type": "boolean",
+          "default": false
+        },
+        "disabled": {
+          "type": "boolean",
+          "default": false
+        },
+        "hidden": {
+          "type": "boolean"
+        },
+        "validation": {
+          "description": "Regex string (default \".*\") or constraint object.",
+          "type": ["string", "object"]
+        },
+        "validationType": {
+          "description": "Extra validation applied to the value.",
+          "type": "string",
+          "examples": ["", "text", "url"]
+        },
+        "options": {
+          "description": "For select / radio: map of stored value -> label. For iconpicker: array of icon names to offer (passed to simple-icon-picker's `icons`).",
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        },
+        "itemsList": {
+          "description": "For select / radio: ordered list alternative to `options`.",
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "value": {},
+                  "text": {
+                    "type": "string"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "min": {
+          "type": "number"
+        },
+        "max": {
+          "type": "number"
+        },
+        "step": {
+          "type": "number"
+        },
+        "suffix": {
+          "type": "string"
+        },
+        "properties": {
+          "description": "Sub-fields for array / object / fieldset / tabs / collapse.",
+          "$ref": "#/$defs/fieldList"
+        },
+        "itemLabel": {
+          "description": "array: sub-field whose value labels each row.",
+          "type": "string"
+        },
+        "hideReorder": {
+          "type": "boolean"
+        },
+        "hideDuplicate": {
+          "type": "boolean"
+        },
+        "expanded": {
+          "type": "boolean"
+        },
+        "slotWrapper": {
+          "description": "Tag that wraps slot content (default `span`).",
+          "type": "string"
+        },
+        "allowedSlotWrappers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "excludedSlotWrappers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "slotAttributes": {
+          "description": "Attributes added to the slot wrapper.",
+          "type": "object"
+        },
+        "accepts": {
+          "description": "haxupload / fileupload: accepted types (MIME or extension list).",
+          "type": "string"
+        },
+        "fileActions": {
+          "type": "boolean"
+        },
+        "noCamera": {
+          "type": "boolean"
+        },
+        "noVoiceRecord": {
+          "type": "boolean"
+        },
+        "noScreenRecord": {
+          "type": "boolean"
+        },
+        "uploadRequirements": {
+          "type": "object",
+          "properties": {
+            "extensions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "uploadTransform": {
+          "description": "Post-upload conversion via @site/updateFileByUuid.",
+          "type": "object",
+          "required": ["operation", "valueMapping"],
+          "properties": {
+            "operation": {
+              "type": "string"
+            },
+            "valueMapping": {
+              "description": "Dot path into the operation response.",
+              "type": "string"
+            },
+            "fallbackType": {
+              "type": "string"
+            }
+          }
+        },
+        "editMode": {
+          "type": "object"
+        },
+        "type": {
+          "description": "Internal; HAXWiring sets `settings`. Do not author.",
+          "type": "string"
+        }
+      },
+      "unevaluatedProperties": false,
+      "patternProperties": {
+        "^x-": {
+          "description": "Extension key for element-specific data HAX does not read. Use this prefix for any custom key so the standard keys can be validated strictly."
+        }
+      }
+    },
+    "gizmo": {
+      "type": "object",
+      "required": ["title"],
+      "properties": {
+        "title": {
+          "description": "Name in the block browser.",
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "icon": {
+          "description": "`iconset:name`, for example `editor:format-quote`.",
+          "type": "string"
+        },
+        "iconLib": {
+          "description": "Module path of a custom iconset to import (relative to the web component base path).",
+          "type": "string"
+        },
+        "color": {
+          "description": "Simple-colors name used for the block's tile.",
+          "type": "string",
+          "examples": [
+            "purple",
+            "blue",
+            "green",
+            "grey",
+            "orange",
+            "light-blue",
+            "red",
+            "yellow",
+            "indigo",
+            "amber",
+            "blue-grey"
+          ]
+        },
+        "tags": {
+          "description": "Search / filter terms. Put the category first (for example `Layout`, `Media`, `Content`).",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "groups": {
+          "description": "Legacy name for `tags`.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "deprecated": true
+        },
+        "handles": {
+          "description": "Media / data types this element can render when content arrives from a HAX source (search, upload, paste). `type` is the incoming type; every other key maps an incoming field (key) to one of this element's properties (value).",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["type"],
+            "properties": {
+              "type": {
+                "type": "string",
+                "examples": [
+                  "image",
+                  "video",
+                  "link",
+                  "text",
+                  "inline",
+                  "media",
+                  "csv",
+                  "pdf",
+                  "document",
+                  "html"
+                ]
+              },
+              "type_exclusive": {
+                "description": "Only this element should handle the type.",
+                "type": "boolean"
+              }
+            },
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        },
+        "meta": {
+          "description": "Free-form metadata. Keys with editor meaning: `author`, `hidden` (do not list), `inlineOnly` (only offered in inline contexts), `selectionRequired`, `requiresParent`, `outlineDesigner`, `owner`.",
+          "type": "object",
+          "properties": {
+            "author": {
+              "type": "string"
+            },
+            "hidden": {
+              "type": "boolean"
+            },
+            "inlineOnly": {
+              "type": "boolean"
+            },
+            "selectionRequired": {
+              "type": "boolean"
+            },
+            "outlineDesigner": {
+              "type": "boolean"
+            },
+            "owner": {
+              "type": "string"
+            },
+            "requiresParent": {
+              "description": "Same effect as `gizmo.requiresParent` in the HAXcms allowed-blocks UI.",
+              "type": ["boolean", "string"]
+            }
+          }
+        },
+        "requiresChildren": {
+          "description": "Tag(s) this element must contain.",
+          "type": ["boolean", "string", "array"]
+        },
+        "requiresParent": {
+          "description": "Tag this element must be placed inside. Gizmos with `requiresParent` are hidden from the general block browser.",
+          "type": ["boolean", "string", "array"]
+        },
+        "allowedParents": {
+          "description": "Parent tags this block is meant to be placed inside. Declared for documentation only: HAX does not enforce it yet (use `requiresParent` to keep a block out of the general browser).",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "shortcut": {
+          "description": "Keyboard / markdown shortcuts auto-registered by HAXStore.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["type"],
+            "properties": {
+              "type": {
+                "enum": ["markdown", "binding"]
+              },
+              "trigger": {
+                "description": "markdown: text that, followed by a space, inserts the block.",
+                "type": "string"
+              },
+              "key": {
+                "description": "binding: key name.",
+                "type": "string"
+              },
+              "ctrl": {
+                "type": "boolean"
+              },
+              "shift": {
+                "type": "boolean"
+              },
+              "alt": {
+                "type": "boolean"
+              },
+              "meta": {
+                "type": "boolean"
+              },
+              "description": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "tag": {
+          "description": "Filled in by HAX at runtime; do not author.",
+          "type": "string"
+        },
+        "keywords": {
+          "description": "Extra filter terms offered as keyword chips in the block picker.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "patternProperties": {
+        "^x-": {
+          "description": "Extension key for element-specific data HAX does not read. Use this prefix for any custom key so the standard keys can be validated strictly."
+        }
+      }
+    },
+    "demo": {
+      "description": "HAXElementSchema: a tiny VDOM node.",
+      "type": "object",
+      "required": ["tag", "properties"],
+      "properties": {
+        "tag": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$"
+        },
+        "properties": {
+          "description": "Property or attribute values (camelCase keys are written as dash-case attributes).",
+          "type": "object"
+        },
+        "content": {
+          "description": "Light DOM HTML.",
+          "type": "string"
+        },
+        "description": {
+          "description": "Label for this variant when several demos are offered.",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "patternProperties": {
+        "^x-": {
+          "description": "Extension key for element-specific data HAX does not read. Use this prefix for any custom key so the standard keys can be validated strictly."
+        }
+      }
+    }
+  },
+  "patternProperties": {
+    "^x-": {
+      "description": "Extension key for element-specific data HAX does not read. Use this prefix for any custom key so the standard keys can be validated strictly."
+    }
+  }
+}

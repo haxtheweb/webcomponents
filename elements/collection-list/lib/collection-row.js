@@ -157,7 +157,7 @@ class CollectionRow extends DDD {
           flex-wrap: wrap;
           align-items: center;
           gap: var(--ddd-spacing-2);
-          margin-left: var(--ddd-spacing-8);
+          margin-inline-start: var(--ddd-spacing-8);
           --simple-icon-color: var(--collection-row-accent);
           --simple-icon-width: var(--ddd-icon-xs);
           --simple-icon-height: var(--ddd-icon-xs);
@@ -208,7 +208,7 @@ class CollectionRow extends DDD {
 
         @media (max-width: 768px) {
           .footer {
-            margin-left: var(--ddd-spacing-5);
+            margin-inline-start: var(--ddd-spacing-5);
           }
           .wrap {
             display: block;

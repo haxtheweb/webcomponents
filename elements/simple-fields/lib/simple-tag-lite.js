@@ -103,7 +103,7 @@ export const SimpleTagLiteSuper = function (SuperClass) {
           }
           simple-icon-button-lite {
             cursor: pointer;
-            margin-left: var(--simple-fields-tag-margin-left, 4px);
+            margin-inline-start: var(--simple-fields-tag-margin-left, 4px);
             --simple-icon-height: var(--simple-fields-font-size, 16px);
             --simple-icon-width: var(--simple-fields-font-size, 16px);
           }

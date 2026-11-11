@@ -79,11 +79,12 @@ export const KINDS = [
 // events every element fires through shared mixins; not an authored contract
 const IGNORED_EVENTS = new Set(["i18n-manager-register-element"]);
 // attributes any element accepts, so HAX settings naming them are fine
-const GLOBAL_ATTRIBUTE =
+export const GLOBAL_ATTRIBUTE =
   /^(?:id|class|style|title|lang|dir|role|hidden|slot|tabindex|alt|href|src|accesskey|contenteditable|draggable|inert|translate|aria-[a-z-]+|data-[a-z0-9-]+)$/;
 
 // DOM properties HAX may set on any element
-const DOM_PROPERTY = /^(?:innerHTML|innerText|textContent|id|title|lang)$/;
+export const DOM_PROPERTY =
+  /^(?:innerHTML|innerText|textContent|id|title|lang)$/;
 
 // ---------------------------------------------------------------- analyzer
 
@@ -666,7 +667,11 @@ function haxSettingNames(settings) {
   return { props, attrs, slots };
 }
 
-/** the snapshot record of one authorable tag, plus oddities found on the way */
+/**
+ * the snapshot record of one authorable tag, plus oddities found on the way
+ * and the facts behind them (the raw HAXSchema with what the element
+ * declares), which scripts/haxschema-check.mjs validates
+ */
 function extractTag(repo, tag, start) {
   const odd = [];
   // settings / handles that point at nothing: they never work, so they fail
@@ -763,7 +768,7 @@ function extractTag(repo, tag, start) {
   if (!hax) return { record: null, odd, broken };
   if (hax.error) {
     odd.push(`${tag}: ${hax.error}; HAX settings not captured`);
-    hax = { schema: {} };
+    hax = { schema: {}, error: hax.error };
   }
   const schema = hax.schema && typeof hax.schema === "object" ? hax.schema : {};
   const gizmo =
@@ -844,14 +849,37 @@ function extractTag(repo, tag, start) {
       demoTags: uniqSort(demoTags),
     },
   };
-  return { record, odd, broken };
+  // a subclass can render slots from methods its superclass's render()
+  // calls, so the facts list slots from every class in the chain
+  const chainSlots = [...slots];
+  for (const n of nodes) {
+    if (!n) continue;
+    for (const m of n.node.getText(n.sf).matchAll(/<slot\b([^>]*)>/g)) {
+      const nm = m[1].match(/\bname\s*=\s*["']([^"']*)["']/);
+      if (!nm) chainSlots.push("(default)");
+      else if (!nm[1].includes("${")) chainSlots.push(nm[1]);
+    }
+  }
+  const facts = {
+    schema: hax.schema,
+    error: hax.error || null,
+    from: hax.from || null,
+    folder: start.folder,
+    attributes: sortedAttrs,
+    fields: [...fields].sort(),
+    slots: uniqSort(chainSlots),
+    // false when no render template was found to read slots from
+    templateRead: Boolean(tpl),
+  };
+  return { record, odd, broken, facts };
 }
 
 /**
  * Snapshot every authorable tag of a repo root.
  * Returns { records: {tag: record}, skipped: [{tag, why}], oddities: [],
- * broken: [] } where broken holds the HAX settings and gizmo handles that
- * name a property the element does not have (also listed in oddities).
+ * broken: [], facts: {tag: facts} } where broken holds the HAX settings
+ * and gizmo handles that name a property the element does not have (also
+ * listed in oddities).
  */
 export function buildSnapshot(root, cem) {
   const repo = new Repo(root, cem);
@@ -865,22 +893,29 @@ export function buildSnapshot(root, cem) {
   const skipped = [];
   const oddities = [];
   const broken = [];
+  const facts = {};
   for (const tag of tags) {
     const start = index.get(tag);
     if (!start) {
       skipped.push({ tag, why: "no class declares this tag" });
       continue;
     }
-    const { record, odd, broken: bad } = extractTag(repo, tag, start);
+    const {
+      record,
+      odd,
+      broken: bad,
+      facts: f,
+    } = extractTag(repo, tag, start);
     oddities.push(...odd);
     broken.push(...bad);
+    if (f) facts[tag] = f;
     if (!record) {
       skipped.push({ tag, why: "no HAXSchema (haxProperties) on the class" });
       continue;
     }
     records[tag] = record;
   }
-  return { records, skipped, oddities, broken };
+  return { records, skipped, oddities, broken, facts };
 }
 
 // ------------------------------------------------------------------ diff

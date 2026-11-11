@@ -10,6 +10,7 @@
     "drag-over": "dragOver",
     "iconfromtype": "iconFromType",
     "is-safari": "isSafari",
+    "t": "t",
     "text": "text",
     "type": "type"
   },

@@ -89,9 +89,9 @@ class LicenseElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
         :host:after {
           content: "License";
           position: relative;
-          float: right;
+          float: inline-end;
           bottom: var(--ddd-spacing-9);
-          right: var(--ddd-spacing-2);
+          inset-inline-end: var(--ddd-spacing-2);
           font-size: var(--ddd-font-size-ms);
           color: var(--ddd-theme-default-slateGray);
           font-style: italic;
@@ -119,7 +119,7 @@ class LicenseElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
           font-weight: var(--ddd-font-weight-bold);
         }
         .big-license-link img {
-          margin-right: 0 var(--ddd-spacing-2) var(--ddd-spacing-2) 0;
+          margin-inline-end: var(--ddd-spacing-2);
           width: var(--ddd-icon-3xl);
           height: var(--ddd-icon-xs);
           vertical-align: middle;

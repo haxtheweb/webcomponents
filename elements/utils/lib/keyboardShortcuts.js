@@ -274,3 +274,35 @@ globalThis.KeyboardShortcutManager.requestAvailability = () => {
 export const KeyboardShortcutManagerInstance =
   globalThis.KeyboardShortcutManager.requestAvailability();
 export { KeyboardShortcutManager };
+
+/**
+ * Media query for "phone": no keyboard is expected, so shortcut chips and
+ * shortcut suffixes in labels and tooltips are not shown. Phone widths
+ * (below the DDD sm breakpoint, 600px) plus a touch-only phone held in
+ * landscape (short and coarse). Tablets keep their shortcut hints.
+ * CSS media queries cannot read custom properties, so element styles repeat
+ * this same string; keep them in sync with this constant.
+ */
+export const KEYBOARD_SHORTCUTS_HIDDEN_MEDIA =
+  "(max-width: 599px), (pointer: coarse) and (max-height: 599px)";
+
+/**
+ * True when shortcut hints should be hidden (see the media query above)
+ */
+export function keyboardShortcutsHidden() {
+  return !!(
+    globalThis.matchMedia &&
+    globalThis.matchMedia(KEYBOARD_SHORTCUTS_HIDDEN_MEDIA).matches
+  );
+}
+
+/**
+ * A label with its shortcut appended as "Label • Ctrl⇧2", or just the label
+ * on a phone where the shortcut means nothing
+ */
+export function labelWithShortcut(label, shortcut) {
+  if (!shortcut || keyboardShortcutsHidden()) {
+    return label;
+  }
+  return `${label} • ${shortcut}`;
+}

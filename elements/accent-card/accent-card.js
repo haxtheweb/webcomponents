@@ -227,7 +227,7 @@ class AccentCard extends I18NMixin(IntersectionObserverMixin(DDD)) {
           right: 0;
         }
         ::slotted([slot="image-corner"]) {
-          text-align: right;
+          text-align: end;
           color: var(
             --accent-card-background-color,
             var(--ddd-theme-default-white)
@@ -286,7 +286,7 @@ class AccentCard extends I18NMixin(IntersectionObserverMixin(DDD)) {
           align-content: end;
         }
         .footer a {
-          margin-left: var(--ddd-spacing-2);
+          margin-inline-start: var(--ddd-spacing-2);
           display: inline-flex;
           align-items: center;
           gap: var(--ddd-spacing-1);

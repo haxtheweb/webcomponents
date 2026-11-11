@@ -22,6 +22,7 @@ on:
       - "elements/**"
       - "scripts/contrast*"
       - "scripts/lib/contrast.mjs"
+      - "scripts/lib/demo-runner.mjs"
       - "web-dev-server.config.mjs"
       - ".github/workflows/contrast.yml"
 permissions:

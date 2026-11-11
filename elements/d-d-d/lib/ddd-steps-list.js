@@ -42,7 +42,7 @@ export class DddStepsList extends DDDSuper(LitElement) {
 
         .steps-container {
           position: relative;
-          padding-left: calc(var(--ddd-icon-lg) + var(--ddd-spacing-4));
+          padding-inline-start: calc(var(--ddd-icon-lg) + var(--ddd-spacing-4));
         }
 
         @media (max-width: 768px) {
@@ -50,7 +50,7 @@ export class DddStepsList extends DDDSuper(LitElement) {
             padding: 0px;
           }
           .steps-container {
-            padding-left: 0px;
+            padding-inline-start: 0px;
           }
         }
       `,

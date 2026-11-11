@@ -45,7 +45,6 @@ class HaxTextEditorPasteButton extends RichTextEditorButtonBehaviors(
     this.label = "Paste Clipboard";
   }
   async sendCommand(e) {
-    // eslint-disable-next-line baseline-js/use-baseline -- feature checked right here; clipboard.read falls back to readText
     const clipboard = globalThis.navigator && globalThis.navigator.clipboard;
     if (!clipboard) return;
     // navigator.clipboard is not a DataTransfer, so _onPaste cannot call
