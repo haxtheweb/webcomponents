@@ -586,6 +586,13 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           background-color: var(--hax-ui-surface);
           pointer-events: none;
         }
+        /* phone: no keyboard expected, so no shortcut hints (same media as
+           KEYBOARD_SHORTCUTS_HIDDEN_MEDIA in @haxtheweb/utils keyboardShortcuts) */
+        @media (max-width: 599px), (pointer: coarse) and (max-height: 599px) {
+          .shortcut {
+            display: none;
+          }
+        }
         /* a running program is a chip inside the field */
         .program {
           flex: 0 1 auto;
