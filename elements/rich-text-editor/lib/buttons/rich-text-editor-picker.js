@@ -64,6 +64,13 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
             margin-top: 0;
             margin-bottom: 0;
           }
+          /* the listbox is the picker's keyboard control; its ring matches
+             the rest of the HAX UI (sky blue, 3:1 or more on light and dark) */
+          #button::part(input):focus-visible {
+            outline: var(--ddd-border-size-sm, 2px) solid
+              var(--ddd-theme-default-skyBlue, #009cde);
+            outline-offset: -2px;
+          }
           #button.hide-label::part(label) {
             position: absolute;
             left: -999999px;
@@ -92,7 +99,6 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
           @keydown="${this._pickerFocus}"
           .label="${this.currentLabel}"
           @value-changed="${this._pickerChange}"
-          tabindex="0"
           ?title-as-html="${this.titleAsHtml}"
           .value="${this.value}"
         >
@@ -210,7 +216,63 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
      * @param {event} e the button tap event
      */
     _pickerFocus(e) {
+      // Tab and Shift+Tab are never taken: the browser moves focus out of
+      // the picker as it does for every other toolbar button
+      if (e && e.type === "keydown" && (e.key === "Tab" || e.keyCode === 9)) {
+        return;
+      }
+      // with the list open, the arrow keys, Home and End move between its
+      // options, so a surrounding toolbar must not also use them to move to
+      // another toolbar item
+      if (
+        e &&
+        e.type === "keydown" &&
+        this.expanded &&
+        [35, 36, 38, 40].includes(e.keyCode)
+      ) {
+        e.stopPropagation();
+      }
       e.preventDefault();
+    }
+
+    /**
+     * the picker's keyboard control is the simple-picker's listbox, which
+     * is what receives arrow keys and Space; focusing the simple-picker host
+     * instead would leave the picker unable to open from the keyboard
+     */
+    get focusableElement() {
+      let picker = this.picker;
+      if (picker && picker.shadowRoot) {
+        let listbox = picker.shadowRoot.querySelector("#listbox");
+        if (listbox) return listbox;
+      }
+      return picker;
+    }
+
+    updated(changedProperties) {
+      if (super.updated) super.updated(changedProperties);
+      this._syncPickerTabindex();
+    }
+
+    /**
+     * One Tab stop per picker: the simple-picker's listbox (the host is not
+     * focusable). Inside a simple-toolbar only the current item is a stop
+     * (roving tabindex, arrow keys move between items), the same as every
+     * other toolbar button. The listbox's own tabindex is set rather than one
+     * on the host, because changing a host's tabindex while its listbox holds
+     * focus makes the browser drop that focus.
+     */
+    async _syncPickerTabindex() {
+      let picker = this.picker;
+      if (!picker) return;
+      if (!picker.shadowRoot || !picker.shadowRoot.querySelector("#listbox")) {
+        if (picker.updateComplete) await picker.updateComplete;
+        if (!picker.shadowRoot) return;
+      }
+      let listbox = picker.shadowRoot.querySelector("#listbox");
+      if (listbox && listbox.tabIndex !== this.innerTabindex) {
+        listbox.tabIndex = this.innerTabindex;
+      }
     }
 
     /**

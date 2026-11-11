@@ -68,7 +68,6 @@ class RichTextEditorIconPicker extends RichTextEditorPickerBehaviors(
         @keydown="${this._pickerFocus}"
         .label="${this.currentLabel}"
         @mouseover="${this._pickerFocus}"
-        tabindex="0"
         ?toggled="${this.toggled}"
         @value-changed="${this._pickerChange}"
       >

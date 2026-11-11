@@ -984,7 +984,17 @@ const SimplePickerBehaviors = function (SuperClass) {
         //spacebar
         e.preventDefault();
         this._toggleListbox();
-      } else if (this.expanded && [9, 35, 36, 38, 40].includes(e.keyCode)) {
+      } else if (e.keyCode === 9) {
+        // Tab and Shift+Tab always leave the picker. With the list open,
+        // focus is on an option inside it, so close the list (keeping the
+        // value, as on blur) and move focus back to the listbox first; the
+        // browser's own Tab movement then starts from the picker itself.
+        if (this.expanded) {
+          this.expanded = false;
+          let listbox = this.shadowRoot.querySelector("#listbox");
+          if (listbox) listbox.focus();
+        }
+      } else if (this.expanded && [35, 36, 38, 40].includes(e.keyCode)) {
         e.preventDefault();
         if (e.keyCode === 35) {
           //end
@@ -1131,6 +1141,11 @@ const SimplePickerBehaviors = function (SuperClass) {
             }
           }
           if (found) i = (this.__options || []).length;
+        }
+        // no value and no null option: the first option is the one shown, so
+        // it is also the active one (keyboard navigation starts from it)
+        if (this.__activeDesc === null && sel !== null) {
+          this.__activeDesc = "option-0-0";
         }
         if (sel === null) {
           // the value matched no option. Clearing it here runs inside
