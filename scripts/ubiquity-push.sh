@@ -23,6 +23,11 @@ git commit -m "ubiquity publish"
 cd ~/haxtheweb/webcomponents
 # this makes a new build available
 yarn run ubiquity
+# .version now holds the release version (version-match). Stop here, before
+# anything is copied into the sibling repos, unless it is past every package
+# (e.g. a haxcms-nodejs hotfix): --release-as in STEP 5 would tag backwards
+# and the npm publishes would fail partway through. Fix: lerna publish first.
+node scripts/check-ecosystem-version.mjs --strict || exit 1
 
 # normalize internal wc-registry.json copies
 # (gulpfile generates these, but ensure they stay in sync for demos)
@@ -210,10 +215,6 @@ yarn run build-gallery
 
 
 ## STEP 5 VERSION CONTROL ALL THE THINGS AND TAG
-# stop before tagging anything if a package is already past .version
-# (e.g. a haxcms-nodejs hotfix): --release-as would tag backwards and the
-# npm publishes would fail partway through the run
-node ~/haxtheweb/webcomponents/scripts/check-ecosystem-version.mjs --strict || exit 1
 # read in version from file
 version=$(cat ~/haxtheweb/webcomponents/.version 2>/dev/null || cat ~/haxtheweb/webcomponents/VERSION.txt)
 
