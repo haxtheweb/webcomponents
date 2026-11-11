@@ -430,12 +430,16 @@ export const HaxUiAdminControls = [
       font-size: var(--hax-ui-admin-font-size);
       color: var(--hax-ui-text);
     }
+    /* the open list is drawn by the browser: give it and its options the
+       HAX UI text and surface pair, so it reads in light and dark (an
+       unset option takes the dark-scheme text color over a light list) */
     .hax-ui-tool-field select {
       cursor: pointer;
+      background-color: var(--hax-ui-surface);
     }
     .hax-ui-tool-field select option {
-      color: initial;
-      background-color: initial;
+      color: var(--hax-ui-text);
+      background-color: var(--hax-ui-surface);
     }
     .hax-ui-tool-field input::placeholder {
       color: var(--hax-ui-text-muted);
@@ -668,6 +672,11 @@ export const HaxUiAdminSimpleFields = [
       --simple-fields-accent-color: var(--hax-ui-accent-strong);
       --simple-fields-placeholder-color: var(--hax-ui-text-muted);
       --simple-fields-placeholder-opacity: 1;
+      /* a select's open list: the HAX UI text and surface pair */
+      --simple-fields-select-option-background-color: var(--hax-ui-surface);
+      --simple-fields-select-option-selected-background-color: var(
+        --hax-ui-selected
+      );
     }
     simple-fields-field.hax-ui-simple-field.compact,
     simple-fields.hax-ui-simple-field.compact simple-fields-field {
