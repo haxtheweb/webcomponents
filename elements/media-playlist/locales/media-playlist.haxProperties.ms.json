@@ -15,6 +15,12 @@
         "title": "Kursus",
         "description": "Kursus yang menjadi sasaran senarai main ini (pengecam kursus atau URL)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Media",
+        "description": "Video dan audio dalam senarai main. Tidak disunting di sini: rangka halaman menggunakannya untuk mengetahui blok yang boleh dilepaskan ke dalamnya."
+      }
     ]
   }
 }

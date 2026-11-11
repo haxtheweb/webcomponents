@@ -22,6 +22,12 @@
         "title": "Mynegai gweithredol",
         "description": "Mynegai'r ddelwedd weithredol i ddechrau arni ym modd oriel."
       }
+    ],
+    "developer": [
+      {
+        "title": "Delweddau",
+        "description": "Y delweddau yn yr oriel. Ni chânt eu golygu yma: mae amlinelliad y dudalen yn eu defnyddio i wybod pa flociau y gellir eu gollwng i mewn."
+      }
     ]
   }
 }

@@ -15,6 +15,12 @@
         "title": "Isifundo",
         "description": "Isifundo lolu hlu lokudlala olwenzelwe sona (isihlonzi sesifundo noma i-URL)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Imidiya",
+        "description": "Amavidiyo nomsindo osohlwini lokudlala. Akuhlelwa lapha: uhlaka lwekhasi lukusebenzisa ukuze lwazi ukuthi yimaphi amabhulokhi angawiselwa ngaphakathi."
+      }
     ]
   }
 }

@@ -15,6 +15,12 @@
         "title": "Curs",
         "description": "El curs al qual va destinada aquesta llista de reproducció (identificador del curs o URL)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Contingut multimèdia",
+        "description": "Els vídeos i l'àudio de la llista de reproducció. No s'editen aquí: l'esquema de la pàgina els fa servir per saber quins blocs s'hi poden deixar anar."
+      }
     ]
   }
 }

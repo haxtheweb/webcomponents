@@ -22,6 +22,12 @@
         "title": "Indekisi iri kushanda",
         "description": "Indekisi yemufananidzo wekutanga nawo mumamiriro egareri."
       }
+    ],
+    "developer": [
+      {
+        "title": "Mifananidzo",
+        "description": "Mifananidzo iri mugalari. Haigadziriswe pano: rondedzero yepeji inoishandisa kuziva kuti zvidhinha zvipi zvinogona kuiswa mukati."
+      }
     ]
   }
 }

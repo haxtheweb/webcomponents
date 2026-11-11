@@ -22,6 +22,12 @@
         "title": "Indeksi aktiv",
         "description": "Indeksi i imazhit aktiv nga i cili fillohet në modalitetin e galerisë."
       }
+    ],
+    "developer": [
+      {
+        "title": "Imazhe",
+        "description": "Imazhet në galeri. Nuk redaktohet këtu: skica e faqes e përdor për të ditur cilat blloqe mund të lëshohen brenda."
+      }
     ]
   }
 }

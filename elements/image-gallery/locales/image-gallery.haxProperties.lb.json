@@ -22,6 +22,12 @@
         "title": "Aktiven Index",
         "description": "Index vum aktive Bild, mat deem am Galeriemodus ugefaange gëtt."
       }
+    ],
+    "developer": [
+      {
+        "title": "Biller",
+        "description": "D'Biller an der Galerie. Gëtt hei net geännert: d'Säiteniwwersiicht benotzt et fir ze wëssen, wéi eng Blocken do kënnen erafale gelooss ginn."
+      }
     ]
   }
 }

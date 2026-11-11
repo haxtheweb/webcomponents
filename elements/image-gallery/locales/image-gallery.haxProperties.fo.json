@@ -22,6 +22,12 @@
         "title": "Virkið index",
         "description": "Index á virknu myndini at byrja við í myndasavnsstilling."
       }
+    ],
+    "developer": [
+      {
+        "title": "Myndir",
+        "description": "Myndirnar í savninum. Verður ikki rættað her: síðuyvirlitið nýtir tað at vita, hvørjar blokkar kunnu sleppast inn."
+      }
     ]
   }
 }

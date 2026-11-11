@@ -22,6 +22,12 @@
         "title": "Chỉ mục hiện hoạt",
         "description": "Chỉ mục của hình ảnh bắt đầu ở chế độ thư viện ảnh."
       }
+    ],
+    "developer": [
+      {
+        "title": "Hình ảnh",
+        "description": "Hình ảnh trong thư viện. Không chỉnh sửa ở đây: dàn ý trang dùng nó để biết khối nào có thể thả vào bên trong."
+      }
     ]
   }
 }

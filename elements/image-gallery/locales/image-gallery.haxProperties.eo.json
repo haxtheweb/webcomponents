@@ -22,6 +22,12 @@
         "title": "Aktiva indekso",
         "description": "Indekso de la aktiva bildo, ĉe kiu komenci en galeria reĝimo."
       }
+    ],
+    "developer": [
+      {
+        "title": "Bildoj",
+        "description": "La bildoj en la galerio. Ne redaktataj ĉi tie: la konturo de la paĝo uzas ilin por scii kiujn blokojn oni povas faligi enen."
+      }
     ]
   }
 }

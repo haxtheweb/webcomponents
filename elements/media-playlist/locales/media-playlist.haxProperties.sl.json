@@ -15,6 +15,12 @@
         "title": "Predmet",
         "description": "Predmet, za katerega je ta seznam predvajanja namenjen (identifikator ali URL predmeta)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Mediji",
+        "description": "Videoposnetki in zvok na seznamu predvajanja. Tukaj se ne ureja: oris strani to uporablja, da ve, katere bloke je mogoče spustiti vanjo."
+      }
     ]
   }
 }

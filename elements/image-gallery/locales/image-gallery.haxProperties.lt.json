@@ -22,6 +22,12 @@
         "title": "Aktyvus indeksas",
         "description": "Aktyvaus vaizdo, nuo kurio pradedama galerijos režimu, indeksas."
       }
+    ],
+    "developer": [
+      {
+        "title": "Vaizdai",
+        "description": "Galerijos vaizdai. Čia neredaguojama: puslapio struktūra tai naudoja, kad žinotų, kuriuos blokus galima įmesti."
+      }
     ]
   }
 }

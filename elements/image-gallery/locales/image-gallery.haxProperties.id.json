@@ -22,6 +22,12 @@
         "title": "Indeks aktif",
         "description": "Indeks gambar aktif yang menjadi awal dalam mode galeri."
       }
+    ],
+    "developer": [
+      {
+        "title": "Gambar",
+        "description": "Gambar di galeri. Tidak diedit di sini: kerangka halaman menggunakannya untuk mengetahui blok mana yang dapat dijatuhkan ke dalamnya."
+      }
     ]
   }
 }

@@ -15,6 +15,12 @@
         "title": "Kosi",
         "description": "Kosi iyo rondedzero iyi yakagadzirirwa (chiziviso chekosi kana URL)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Midhiya",
+        "description": "Mavhidhiyo neodhiyo zviri munyorwa yekuridza. Haigadziriswe pano: rondedzero yepeji inoishandisa kuziva kuti zvidhinha zvipi zvinogona kuiswa mukati."
+      }
     ]
   }
 }

@@ -22,6 +22,12 @@
         "title": "Aktiv indeks",
         "description": "Indeksen til bildet som skal vises først i gallerimodus."
       }
+    ],
+    "developer": [
+      {
+        "title": "Bilder",
+        "description": "Bildene i galleriet. Redigeres ikke her: sideoversikten bruker dette for å vite hvilke blokker som kan slippes inn."
+      }
     ]
   }
 }

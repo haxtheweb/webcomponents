@@ -15,6 +15,12 @@
         "title": "Cours",
         "description": "Le cours auquel cette playlist est destinée (identifiant ou URL du cours)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Médias",
+        "description": "Les vidéos et l'audio de la playlist. Non modifié ici : le plan de la page s'en sert pour savoir quels blocs peuvent y être déposés."
+      }
     ]
   }
 }

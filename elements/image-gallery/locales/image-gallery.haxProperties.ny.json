@@ -22,6 +22,12 @@
         "title": "Nambala yogwira ntchito",
         "description": "Nambala ya chithunzi choyambira m'njira ya malo a zithunzi."
       }
+    ],
+    "developer": [
+      {
+        "title": "Zithunzi",
+        "description": "Zithunzi zomwe zili mu gallery. Sizisinthidwa apa: ndondomeko ya tsamba imazigwiritsa ntchito kuti idziwe mabuloko omwe angaikidwe mkati."
+      }
     ]
   }
 }

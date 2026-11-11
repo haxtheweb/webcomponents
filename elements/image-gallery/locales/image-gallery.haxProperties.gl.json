@@ -22,6 +22,12 @@
         "title": "Índice activo",
         "description": "Índice da imaxe activa coa que comezar no modo galería."
       }
+    ],
+    "developer": [
+      {
+        "title": "Imaxes",
+        "description": "As imaxes da galería. Non se edita aquí: o esquema da páxina úsao para saber que bloques se poden soltar dentro."
+      }
     ]
   }
 }

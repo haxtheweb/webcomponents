@@ -22,6 +22,12 @@
         "title": "Aktivní index",
         "description": "Index aktivního obrázku, kterým se v režimu galerie začne."
       }
+    ],
+    "developer": [
+      {
+        "title": "Obrázky",
+        "description": "Obrázky v galerii. Zde se neupravují: osnova stránky je používá, aby věděla, které bloky lze vložit."
+      }
     ]
   }
 }

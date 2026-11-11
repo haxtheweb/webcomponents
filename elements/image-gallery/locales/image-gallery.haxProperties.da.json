@@ -22,6 +22,12 @@
         "title": "Aktivt indeks",
         "description": "Indeks for det aktive billede, der startes på i gallerivisning."
       }
+    ],
+    "developer": [
+      {
+        "title": "Billeder",
+        "description": "Billederne i galleriet. Redigeres ikke her: sideoversigten bruger dem til at vide, hvilke blokke der kan slippes ind."
+      }
     ]
   }
 }

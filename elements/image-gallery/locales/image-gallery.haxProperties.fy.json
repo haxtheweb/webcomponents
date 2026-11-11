@@ -22,6 +22,12 @@
         "title": "Aktive yndeks",
         "description": "Yndeks fan de aktive ôfbylding dêr't yn galerymodus mei begûn wurdt."
       }
+    ],
+    "developer": [
+      {
+        "title": "Ofbyldings",
+        "description": "De ôfbyldings yn de galery. Wurdt hjir net bewurke: it side-oersjoch brûkt it om te witten hokker blokken der yn pleatst wurde kinne."
+      }
     ]
   }
 }

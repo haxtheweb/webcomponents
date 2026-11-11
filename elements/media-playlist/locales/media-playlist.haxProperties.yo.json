@@ -15,6 +15,12 @@
         "title": "Kọ́ọ̀sì",
         "description": "Kọ́ọ̀sì tí àkójọ yìí wà fún (ìdánimọ̀ kọ́ọ̀sì tàbí URL)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Mídíà",
+        "description": "Àwọn fídíò àti ohùn inú àtòkọ ìṣeré. A kì í ṣàtúnṣe rẹ̀ níbí: ìlapa ojú-ìwé ń lò ó láti mọ àwọn búlọ́ọ̀kù tí a lè jù sínú rẹ̀."
+      }
     ]
   }
 }

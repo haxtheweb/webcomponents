@@ -15,6 +15,12 @@
         "title": "Cwrs",
         "description": "Y cwrs y mae'r rhestr chwarae hon wedi'i bwriadu ar ei gyfer (dynodydd neu URL y cwrs)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Cyfryngau",
+        "description": "Y fideos a'r sain yn y rhestr chwarae. Ni chânt eu golygu yma: mae amlinelliad y dudalen yn eu defnyddio i wybod pa flociau y gellir eu gollwng i mewn."
+      }
     ]
   }
 }

@@ -22,6 +22,12 @@
         "title": "Indeks aktif",
         "description": "Indeks gambar aktif kanggo wiwitan ing mode galeri."
       }
+    ],
+    "developer": [
+      {
+        "title": "Gambar",
+        "description": "Gambar ing galeri. Ora disunting ing kene: garis gedhe kaca nggunakake iki kanggo ngerti blok endi sing bisa diselehake ing njero."
+      }
     ]
   }
 }

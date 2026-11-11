@@ -22,6 +22,12 @@
         "title": "Indice attivo",
         "description": "Indice dell'immagine attiva da cui partire in modalità galleria."
       }
+    ],
+    "developer": [
+      {
+        "title": "Immagini",
+        "description": "Le immagini nella galleria. Non si modifica qui: la struttura della pagina lo usa per sapere quali blocchi possono esservi rilasciati."
+      }
     ]
   }
 }

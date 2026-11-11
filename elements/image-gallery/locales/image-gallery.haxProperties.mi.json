@@ -22,6 +22,12 @@
         "title": "Taupū hohe",
         "description": "Taupū o te whakaahua hohe hei tīmatanga i te aratau taiwhanga."
       }
+    ],
+    "developer": [
+      {
+        "title": "Ngā whakaahua",
+        "description": "Ngā whakaahua i te taiwhanga. Kāore e whakatikaina ki konei: ka whakamahia e te whakahuahua whārangi kia mōhio ai ko ēhea paraka ka taea te whakataka ki roto."
+      }
     ]
   }
 }
