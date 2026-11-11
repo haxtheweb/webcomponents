@@ -142,12 +142,10 @@ describe("keyboard flow: hax-tray menu bar and panel buttons", function () {
     return rect.left >= 0 && rect.right <= globalThis.innerWidth + 1;
   }
 
-  // start a Tab walk from the button before the tray. hax-body takes Tab
-  // for itself (indent) while a text block holds the selection, so drop
-  // the selection first: this flow is about the tray, not the editing area
+  // start a Tab walk from the button before the tray. A text block keeps
+  // the selection: Tab with focus outside the editing area is not taken
+  // for indenting (see hax-body-keyboard-flow.test.js)
   function startBeforeTray() {
-    const sel = globalThis.getSelection();
-    if (sel) sel.removeAllRanges();
     before.focus();
   }
 
