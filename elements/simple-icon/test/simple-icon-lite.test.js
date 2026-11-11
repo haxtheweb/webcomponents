@@ -578,3 +578,42 @@ describe("simple-icon-lite", () => {
     });
   });
 });
+
+// An icon whose iconset registers late waits in needsHydrated. A removed
+// icon must leave that list (or it stays alive forever); one the HAX editor
+// moves (remove + re-add) must wait again and still hydrate.
+describe("simple-icon-lite hydration list across removal and moves", () => {
+  let saved;
+  beforeEach(() => {
+    saved = [SimpleIconsetStore.iconsets, SimpleIconsetStore.needsHydrated];
+    SimpleIconsetStore.iconsets = { ...SimpleIconsetStore.iconsets };
+    SimpleIconsetStore.needsHydrated = [];
+  });
+  afterEach(() => {
+    [SimpleIconsetStore.iconsets, SimpleIconsetStore.needsHydrated] = saved;
+  });
+  const waiting = (el) =>
+    SimpleIconsetStore.needsHydrated.filter((x) => x === el).length;
+
+  it("waits once, leaves on removal, waits again on reconnect and hydrates", async () => {
+    const wrap = await fixture(
+      html`<div>
+        <test-svg-icon-lite icon="latecomer:star"></test-svg-icon-lite>
+      </div>`,
+    );
+    const el = wrap.querySelector("test-svg-icon-lite");
+    await settle(el);
+    await settle(el);
+    expect(waiting(el)).to.equal(1);
+
+    el.remove();
+    expect(waiting(el)).to.equal(0);
+
+    wrap.appendChild(el);
+    expect(waiting(el)).to.equal(1);
+
+    SimpleIconsetStore.registerIconset("latecomer", "/late/");
+    expect(el.src).to.equal("/late/star.svg");
+    expect(waiting(el)).to.equal(0);
+  });
+});

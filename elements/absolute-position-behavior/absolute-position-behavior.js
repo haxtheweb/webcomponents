@@ -194,6 +194,11 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
      * @returns {void}
      */
     setPosition() {
+      // a detached element is registered when it is connected again
+      // (connectedCallback); registering it now would keep it alive
+      if (!this.isConnected) {
+        return;
+      }
       this.__observe = true;
       globalThis.AbsolutePositionStateManager.requestAvailability().loadElement(
         this,
@@ -216,7 +221,14 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
      * @returns {void}
      */
     updatePosition() {
-      if (!this.hidden && this.auto && this.__observe == false) {
+      // only while on the page: the manager holds what it positions, and an
+      // update that lands after removal must not register the element again
+      if (
+        this.isConnected &&
+        !this.hidden &&
+        this.auto &&
+        this.__observe == false
+      ) {
         globalThis.AbsolutePositionStateManager.requestAvailability().loadElement(
           this,
         );
@@ -225,6 +237,20 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
         globalThis.AbsolutePositionStateManager.requestAvailability().positionElement(
           this,
         );
+      }
+    }
+    /**
+     * life cycle, element is (re)added to the DOM: an auto-positioned
+     * element moved by the HAX editor (removed and re-added) is positioned
+     * again
+     * @returns {void}
+     */
+    connectedCallback() {
+      if (super.connectedCallback) {
+        super.connectedCallback();
+      }
+      if (this.hasUpdated && this.auto && !this.hidden) {
+        this.setPosition();
       }
     }
     /**

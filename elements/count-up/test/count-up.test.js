@@ -587,3 +587,41 @@ describe("count-up DDD look and reduced motion", () => {
     expect(rule.backgroundColor).to.equal("rgb(30, 64, 124)");
   });
 });
+
+// The animation must not keep requesting frames after removal, and a moved
+// count-up (remove + re-add) must still end on its final value.
+describe("count-up animation across removal and moves", () => {
+  it("stops animating when removed and finishes after it is re-added", async () => {
+    const wrap = await fixture(
+      html`<div>
+        <count-up start="0" end="1000" duration="1"></count-up>
+      </div>`,
+    );
+    const el = wrap.querySelector("count-up");
+    await el.updateComplete;
+    el.elementVisible = true;
+    await el.updateComplete;
+    await new Promise((r) => setTimeout(r, 200));
+    const counter = el._countUp;
+    let frames = 0;
+    const count = counter.count;
+    counter.count = (t) => {
+      frames++;
+      return count(t);
+    };
+    el.remove();
+    const stopped = frames;
+    await new Promise((r) => setTimeout(r, 200));
+    expect(frames).to.equal(stopped);
+    expect(counter.frameVal).to.be.below(1000);
+
+    wrap.appendChild(el);
+    el.elementVisible = true;
+    await el.updateComplete;
+    // the count picks up its original timeline and ends on the final value
+    await new Promise((r) => setTimeout(r, 1000));
+    expect(el.shadowRoot.querySelector("#counter").textContent).to.contain(
+      "1,000",
+    );
+  });
+});

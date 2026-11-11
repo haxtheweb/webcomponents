@@ -751,3 +751,49 @@ describe("absolute-position-behavior test", () => {
     });
   });
 });
+
+// The state manager holds every element it positions: a removed element
+// must leave it (even when an update lands after removal), and one the HAX
+// editor moves (remove + re-add) must be positioned again.
+describe("absolute-position-behavior manager registration across moves", () => {
+  const managed = (el) =>
+    globalThis.AbsolutePositionStateManager.requestAvailability().elements.filter(
+      (x) => x === el,
+    ).length;
+
+  it("is released on removal, not re-added by a late update, and managed again after a move", async () => {
+    const wrap = await fixture(
+      html`<div style="position:relative">
+        <div id="anchor">Anchor</div>
+        <absolute-position-behavior for="anchor" auto
+          ><div>Tip</div></absolute-position-behavior
+        >
+      </div>`,
+    );
+    const el = wrap.querySelector("absolute-position-behavior");
+    await el.updateComplete;
+    expect(managed(el)).to.equal(1);
+
+    el.remove();
+    expect(managed(el)).to.equal(0);
+    // a property change after removal (page-flag sets target this way)
+    el.offset = 12;
+    await el.updateComplete;
+    expect(managed(el)).to.equal(0);
+
+    wrap.appendChild(el);
+    expect(managed(el)).to.equal(1);
+    el.remove();
+  });
+
+  it("an element removed before its first update is not registered", async () => {
+    const wrap = await fixture(html`<div><div id="anchor2">A</div></div>`);
+    const el = globalThis.document.createElement("absolute-position-behavior");
+    el.setAttribute("for", "anchor2");
+    el.setAttribute("auto", "");
+    wrap.appendChild(el);
+    el.remove();
+    await el.updateComplete;
+    expect(managed(el)).to.equal(0);
+  });
+});
