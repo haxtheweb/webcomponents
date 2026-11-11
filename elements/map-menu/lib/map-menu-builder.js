@@ -25,12 +25,16 @@ class MapMenuBuilder extends LitElement {
     this.isHorizontal = false;
     this.progress = null;
     this.activeProgress = null;
+    this.lazyChildren = false;
   }
   /**
    * LitElement life cycle - render
    */
   render() {
     if (this.depthCount <= this.maxDepth) {
+      if (!this._shouldRenderItems()) {
+        return html`<div class="wrapper"></div>`;
+      }
       return html`
         <div class="wrapper">
           ${
@@ -76,6 +80,7 @@ class MapMenuBuilder extends LitElement {
                                 ?is-flex="${this.isFlex}"
                                 ?is-horizontal="${this.isHorizontal}"
                                 ?is-nested="${true}"
+                                ?lazy-children="${this.lazyChildren}"
                               ></map-menu-builder>
                             </map-menu-submenu>
                           `
@@ -119,6 +124,41 @@ class MapMenuBuilder extends LitElement {
     }
   }
 
+  /**
+   * lazy-children: a nested list renders once its submenu has opened, or
+   * when the selected item is somewhere inside it (so the active trail is
+   * always in the DOM and can open itself). Once rendered it stays rendered.
+   */
+  _shouldRenderItems() {
+    if (!this.lazyChildren || this.depthCount <= 1 || this.__itemsShown) {
+      return true;
+    }
+    const submenu = this.parentElement;
+    if (
+      this.isHorizontal ||
+      (submenu && submenu.opened) ||
+      this._containsSelected(this.items)
+    ) {
+      this.__itemsShown = true;
+      return true;
+    }
+    return false;
+  }
+  _containsSelected(items) {
+    if (!this.selected || !Array.isArray(items)) {
+      return false;
+    }
+    for (let i = 0; i < items.length; i++) {
+      const item = items[i];
+      if (item.id === this.selected) {
+        return true;
+      }
+      if (item.children && this._containsSelected(item.children)) {
+        return true;
+      }
+    }
+    return false;
+  }
   // learner progress mark for an item; "" when there is no progress data
   progressOf(item) {
     return this.progress && item && this.progress[item.id]
@@ -214,6 +254,13 @@ class MapMenuBuilder extends LitElement {
       activeProgress: {
         type: Number,
         attribute: "active-progress",
+      },
+      /**
+       * Render nested lists only when their submenu opens (see map-menu)
+       */
+      lazyChildren: {
+        type: Boolean,
+        attribute: "lazy-children",
       },
     };
   }

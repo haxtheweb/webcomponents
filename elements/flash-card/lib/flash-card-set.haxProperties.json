@@ -1,0 +1,36 @@
+{
+  "canScale": false,
+  "canEditSource": true,
+  "designSystem": {
+    "primary": true
+  },
+  "gizmo": {
+    "title": "Flash card set",
+    "description": "Practice concepts with a deck of front-and-back flash cards.",
+    "icon": "image:style",
+    "color": "blue",
+    "tags": [
+      "Instructional",
+      "self check",
+      "flash card",
+      "flash cards",
+      "quiz",
+      "educational"
+    ],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [],
+    "advanced": []
+  },
+  "demoSchema": [
+    {
+      "tag": "flash-card-set",
+      "properties": {},
+      "content": "\n<ul>\n  <li>\n    <p slot='front'>What is strawberry in Spanish?</p>\n    <p slot='back'>fresa</p>\n  </li>\n  <li>\n    <p slot='front'>What is food in Spanish?</p>\n    <p slot='back'>comida</p>\n  </li>\n</ul>\n"
+    }
+  ]
+}

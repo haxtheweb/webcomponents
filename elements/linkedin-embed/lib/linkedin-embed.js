@@ -7,6 +7,36 @@ const TRACKING_PARAM = "profile-badge";
 const CALLBACK_NAME = "LIBadgeCallback";
 
 /** Non-zero numeric request id from the platform CSPRNG. */
+/**
+ * Append LinkedIn's JSONP script. Kept outside the element on purpose: a
+ * closure created next to code that uses `this` shares its scope, so the
+ * script's listeners would hold a removed embed until LinkedIn answers.
+ * @param {string} url
+ * @param {{handlers: Object}} manager shared JSONP callback manager
+ * @param {number} uid this request's callback id
+ */
+function loadBadgeScript(url, manager, uid) {
+  const script = globalThis.document.createElement("script");
+  script.src = url;
+  script.async = true;
+  script.defer = true;
+  const cleanup = () => {
+    if (script.parentNode) {
+      script.parentNode.removeChild(script);
+    }
+  };
+  script.addEventListener("load", cleanup, { once: true });
+  script.addEventListener(
+    "error",
+    () => {
+      delete manager.handlers[uid];
+      cleanup();
+    },
+    { once: true },
+  );
+  globalThis.document.body.appendChild(script);
+}
+
 function linkedinRequestUid() {
   const buf = new Uint32Array(1);
   globalThis.crypto.getRandomValues(buf);
@@ -313,30 +343,7 @@ class LinkedinEmbed extends I18NMixin(DDD) {
         this.__renderIframeBadge(badgeHtml, badgeHost);
       }
     };
-    const script = globalThis.document.createElement("script");
-    script.src = url;
-    script.async = true;
-    script.defer = true;
-    script.addEventListener(
-      "load",
-      () => {
-        if (script.parentNode) {
-          script.parentNode.removeChild(script);
-        }
-      },
-      { once: true },
-    );
-    script.addEventListener(
-      "error",
-      () => {
-        this.__removePendingHandler(uid);
-        if (script.parentNode) {
-          script.parentNode.removeChild(script);
-        }
-      },
-      { once: true },
-    );
-    globalThis.document.body.appendChild(script);
+    loadBadgeScript(url, manager, uid);
   }
 
   __buildBadgeUrl(uid) {

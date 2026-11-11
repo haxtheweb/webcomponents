@@ -62,12 +62,6 @@ export class LrnH5p extends I18NMixin(LitElement) {
     this._editing = false;
     this._fullscreen = false;
     this._fullscreenChanged = this._fullscreenChanged.bind(this);
-    this._disposer = autorun(() => {
-      const _mobx_val_0 = toJS(store.editMode);
-      Promise.resolve().then(() => {
-        this._editing = _mobx_val_0;
-      });
-    });
     // remove script tags and work against light dom if there
     if (this.querySelector && this.querySelector("span")) {
       this.querySelector("span").childNodes.forEach((el, _index) => {
@@ -151,9 +145,23 @@ export class LrnH5p extends I18NMixin(LitElement) {
   connectedCallback() {
     super.connectedCallback();
     listenDDDBlockFullscreen(this._fullscreenChanged, true);
+    // follow edit mode while on the page; the autorun holds this element
+    // from the store, so it is disposed on removal and made again on return
+    if (!this._disposer) {
+      this._disposer = autorun(() => {
+        const _mobx_val_0 = toJS(store.editMode);
+        Promise.resolve().then(() => {
+          this._editing = _mobx_val_0;
+        });
+      });
+    }
   }
   disconnectedCallback() {
     listenDDDBlockFullscreen(this._fullscreenChanged, false);
+    if (this._disposer) {
+      this._disposer();
+      this._disposer = null;
+    }
     super.disconnectedCallback();
   }
   /**

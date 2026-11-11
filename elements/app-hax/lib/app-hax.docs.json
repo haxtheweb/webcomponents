@@ -135,6 +135,14 @@
       "hax": null
     },
     {
+      "name": "admin-docked",
+      "property": "adminDocked",
+      "type": "boolean",
+      "default": "false",
+      "description": "System Settings is open, docked below the bar. The bar stays usable; the dashboard behind the dialog is inert.",
+      "hax": null
+    },
+    {
       "name": "base-path",
       "property": "basePath",
       "type": "string",
@@ -159,7 +167,7 @@
     "simple-modal-show"
   ],
   "hax": {},
-  "surfaceHash": "8a4266e35f9c",
+  "surfaceHash": "53cbfea7f267",
   "walkthroughs": [
     {
       "id": "",
@@ -167,7 +175,7 @@
       "order": 0,
       "src": "app-hax.motion.json",
       "file": "lib/app-hax.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     },
     {
       "id": "create-site",
@@ -175,7 +183,7 @@
       "order": 10,
       "src": "app-hax.create-site.motion.json",
       "file": "lib/app-hax.create-site.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     },
     {
       "id": "site-actions",
@@ -183,7 +191,7 @@
       "order": 20,
       "src": "app-hax.site-actions.motion.json",
       "file": "lib/app-hax.site-actions.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     },
     {
       "id": "settings",
@@ -191,13 +199,13 @@
       "order": 30,
       "src": "app-hax.settings.motion.json",
       "file": "lib/app-hax.settings.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/app-hax.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

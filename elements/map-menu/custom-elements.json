@@ -279,6 +279,17 @@
             },
             {
               "kind": "field",
+              "name": "lazyChildren",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Opt-in for large menus: a submenu's children are rendered the first\ntime it opens (or when it holds the selected item) instead of all at\nonce. Off by default; nothing changes for menus that don't set it.",
+              "default": "false",
+              "attribute": "lazy-children"
+            },
+            {
+              "kind": "field",
               "name": "autoScroll",
               "privacy": "public",
               "type": {
@@ -497,6 +508,15 @@
               "fieldName": "activeProgress"
             },
             {
+              "name": "lazy-children",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Opt-in for large menus: a submenu's children are rendered the first\ntime it opens (or when it holds the selected item) instead of all at\nonce. Off by default; nothing changes for menus that don't set it.",
+              "default": "false",
+              "fieldName": "lazyChildren"
+            },
+            {
               "name": "active-indicator",
               "type": {
                 "text": "boolean"
@@ -547,6 +567,20 @@
           "description": "",
           "name": "MapMenuBuilder",
           "members": [
+            {
+              "kind": "method",
+              "name": "_shouldRenderItems",
+              "description": "lazy-children: a nested list renders once its submenu has opened, or\nwhen the selected item is somewhere inside it (so the active trail is\nalways in the DOM and can open itself). Once rendered it stays rendered."
+            },
+            {
+              "kind": "method",
+              "name": "_containsSelected",
+              "parameters": [
+                {
+                  "name": "items"
+                }
+              ]
+            },
             {
               "kind": "method",
               "name": "progressOf",
@@ -692,6 +726,17 @@
             },
             {
               "kind": "field",
+              "name": "lazyChildren",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Render nested lists only when their submenu opens (see map-menu)",
+              "default": "false",
+              "attribute": "lazy-children"
+            },
+            {
+              "kind": "field",
               "name": "selected",
               "privacy": "public",
               "type": {
@@ -773,6 +818,15 @@
               "description": "Percent (0 to 1) of the page open now (selected); its item shows a\nprogress ring. null shows none.",
               "default": "null",
               "fieldName": "activeProgress"
+            },
+            {
+              "name": "lazy-children",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Render nested lists only when their submenu opens (see map-menu)",
+              "default": "false",
+              "fieldName": "lazyChildren"
             }
           ],
           "superclass": {
@@ -857,6 +911,10 @@
             {
               "kind": "method",
               "name": "renderActiveRing"
+            },
+            {
+              "kind": "method",
+              "name": "renderTitle"
             },
             {
               "kind": "method",
@@ -1762,7 +1820,7 @@
           "type": {
             "text": "array"
           },
-          "default": "[ DDDProgressRingStyles, css` .active-ring { display: inline-flex; flex: none; align-self: center; /* the ring is taller than a line of the menu; keep the row height */ margin: calc(-1 * var(--ddd-spacing-2)) var(--ddd-spacing-2) calc(-1 * var(--ddd-spacing-2)) 0; --ddd-component-progress-ring-color: var( --map-menu-progress-ring-color, light-dark( var(--ddd-theme-default-skyBlue), var(--ddd-theme-default-beaverBlue) ) ); --ddd-component-progress-ring-track: var( --map-menu-progress-ring-track, light-dark( var(--ddd-theme-default-limestoneLight), var(--ddd-theme-default-limestoneGray) ) ); --ddd-component-progress-ring-on-color: var( --map-menu-progress-ring-on-color, light-dark( var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray) ) ); --ddd-component-progress-ring-size: var( --map-menu-progress-ring-size, var(--ddd-icon-xs) ); } .active-ring .ddd-ring simple-icon-lite { margin: 0; visibility: visible; opacity: 1; --simple-icon-height: var(--ddd-icon-4xs); --simple-icon-width: var(--ddd-icon-4xs); } `, ]"
+          "default": "[ DDDProgressRingStyles, css` /* the ring is drawn in the active row's own text colour (and the check on the done disc in the row's background), so every part of it has the contrast the theme gives its active text, at least 3:1 in any palette, light or dark. Progress reads as a thick arc over a thin full track, never colour alone. */ .active-ring { display: inline-flex; flex: none; align-self: center; /* the ring is taller than a line of the menu; keep the row height */ margin: calc(-1 * var(--ddd-spacing-2)) var(--ddd-spacing-2) calc(-1 * var(--ddd-spacing-2)) 0; --ddd-component-progress-ring-color: var( --map-menu-progress-ring-color, var( --map-menu-item-a-active-color, var(--map-menu-item-a-color, currentColor) ) ); --ddd-component-progress-ring-track: var( --map-menu-progress-ring-track, var( --map-menu-item-a-active-color, var(--map-menu-item-a-color, currentColor) ) ); --ddd-component-progress-ring-on-color: var( --map-menu-progress-ring-on-color, var(--map-menu-item-a-active-background-color, black) ); --ddd-component-progress-ring-size: var( --map-menu-progress-ring-size, var(--ddd-icon-xs) ); --ddd-component-progress-ring-width: 3.5; --ddd-component-progress-ring-track-width: 1.25; --ddd-component-progress-ring-empty-opacity: 1; } /* an item with children: the ring traces its expand control (the a11y-collapse chevron, 24px at 4px from the start of the row), so there is one control, not a ring beside a chevron */ .active-ring.on-expand { position: absolute; top: 50%; left: var(--map-menu-progress-ring-expand-left, 2px); margin: 0; transform: translateY(-50%); pointer-events: none; /* the chevron is 24px: a 28px ring traces it without reaching the title that starts right after it */ --ddd-component-progress-ring-size: var( --map-menu-progress-ring-expand-size, 28px ); } .active-ring.on-expand .ddd-ring-glyph { display: none; } `, ]"
         },
         {
           "kind": "function",
@@ -1798,6 +1856,9 @@
             },
             {
               "name": "id"
+            },
+            {
+              "name": "onExpand"
             }
           ],
           "description": "The ring around the icon area of the active item (with its icon, or\nnothing in it when the item has none); id lets an icon tooltip point at it"
@@ -2495,6 +2556,41 @@
           "declaration": {
             "name": "MapMenuSubmenu",
             "module": "lib/map-menu-submenu.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/map-menu-tree.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "buildMenuTree",
+          "parameters": [
+            {
+              "name": "data",
+              "description": "flat item list (each item: id, parent, ...)",
+              "type": {
+                "text": "Array"
+              }
+            }
+          ],
+          "description": "Turn a flat JSON Outline Schema item list into the nested tree map-menu\nrenders, in one pass over the data.\n\nSame result as map-menu's original _dataChanged/_setChildren (which ran a\nfull filter of the list for every item): the top level is every item\nwithout a parent, in data order; each item reached from the top gets a\n`children` array of the items whose parent is its id, in data order. Like\nthe original, it sets `children` on the item objects themselves and leaves\nitems that can't be reached from the top level untouched.",
+          "return": {
+            "type": {
+              "text": "Array"
+            }
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "buildMenuTree",
+          "declaration": {
+            "name": "buildMenuTree",
+            "module": "lib/map-menu-tree.js"
           }
         }
       ]

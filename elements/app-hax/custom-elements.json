@@ -255,6 +255,53 @@
             },
             {
               "kind": "method",
+              "name": "_systemSettingsDockTop",
+              "description": "Where the docked dialog starts: the bar's height, since the bar sticks\nto the top of the screen while the dialog is docked."
+            },
+            {
+              "kind": "method",
+              "name": "_queueSyncAdminDocked"
+            },
+            {
+              "kind": "method",
+              "name": "_syncAdminDocked",
+              "description": "adminDocked follows the modal: true only while it is open, docked and\nholding System Settings."
+            },
+            {
+              "kind": "method",
+              "name": "_systemSettingsGuard",
+              "parameters": [
+                {
+                  "name": "proceed"
+                }
+              ],
+              "description": "Run `proceed`, first asking System Settings to confirm leaving when its\nopen panel has unsaved changes and it is docked below the bar."
+            },
+            {
+              "kind": "method",
+              "name": "_openCharacterBuilderGuarded",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_logoutGuarded"
+            },
+            {
+              "kind": "method",
+              "name": "_merlinRowSelectedWhileDocked",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Merlin stays live above the docked dialog: the System Settings command\nmoves it, anything else closes it first, and unsaved changes are asked\nabout first (docked-admin.js has the rules)."
+            },
+            {
+              "kind": "method",
               "name": "_currentSystemSettingsDialog"
             },
             {
@@ -521,6 +568,18 @@
               },
               "default": "false",
               "attribute": "userMenuOpen"
+            },
+            {
+              "kind": "field",
+              "name": "adminDocked",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "System Settings is open, docked below the bar. The bar stays\nusable; the dashboard behind the dialog is inert.",
+              "default": "false",
+              "attribute": "admin-docked",
+              "reflects": true
             },
             {
               "kind": "field",
@@ -824,6 +883,15 @@
                 "text": "boolean"
               },
               "fieldName": "siteReady"
+            },
+            {
+              "name": "admin-docked",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "System Settings is open, docked below the bar. The bar stays\nusable; the dashboard behind the dialog is inert.",
+              "default": "false",
+              "fieldName": "adminDocked"
             },
             {
               "name": "base-path",

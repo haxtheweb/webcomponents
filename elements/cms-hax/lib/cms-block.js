@@ -90,7 +90,6 @@ class CMSBlock extends CMSBase {
         handles: [
           {
             type: "cmsblock",
-            block: "block",
           },
         ],
         meta: {

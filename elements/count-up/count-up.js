@@ -221,6 +221,18 @@ class CountUpElement extends IntersectionObserverMixin(LitElement) {
   }
 
   /**
+   * A count still animating when the element is removed would keep
+   * requesting frames until it finishes. Re-adding it (the HAX editor moves
+   * elements by removing and re-adding them) makes it visible again, which
+   * starts the count again and finishes it.
+   */
+  disconnectedCallback() {
+    if (this._countUp) {
+      globalThis.cancelAnimationFrame(this._countUp.rAF);
+    }
+    super.disconnectedCallback();
+  }
+  /**
    * true when the reader asked the system for reduced motion
    */
   _prefersReducedMotion() {

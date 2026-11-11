@@ -169,7 +169,7 @@
           "type": "image",
           "source": "image",
           "title": "question",
-          "description": "answer"
+          "description": "innerHTML"
         }
       ],
       "meta": {

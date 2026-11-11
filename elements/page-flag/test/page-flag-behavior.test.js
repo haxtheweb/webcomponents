@@ -499,3 +499,50 @@ describe("page-flag toggle button state", () => {
     expect(button.getAttribute("aria-expanded")).to.equal("true");
   });
 });
+
+// The manager's list must not keep removed flags alive, and a flag the HAX
+// editor moves (remove + re-add) must still be shown when a user logs in.
+describe("page-flag manager list across removal and moves", () => {
+  let savedUser;
+  let savedFlags;
+  beforeEach(() => {
+    savedUser = pageFlagManager.activeUser;
+    savedFlags = pageFlagManager.allFlags;
+    pageFlagManager.activeUser = "Bryan";
+    pageFlagManager.allFlags = [];
+  });
+  afterEach(() => {
+    pageFlagManager.activeUser = savedUser;
+    pageFlagManager.allFlags = savedFlags;
+  });
+
+  it("drops removed flags and lists moved flags again", async () => {
+    const root = await fixture(
+      html`<div>
+        <p id="a"></p>
+        <page-flag
+          ><page-flag-comment seed="Bryan">Hi</page-flag-comment></page-flag
+        >
+      </div>`,
+    );
+    const el = root.querySelector("page-flag");
+    expect(pageFlagManager.allFlags.includes(el)).to.equal(true);
+
+    el.remove();
+    expect(pageFlagManager.allFlags.includes(el)).to.equal(false);
+
+    root.querySelector("#a").appendChild(el);
+    expect(pageFlagManager.allFlags.filter((f) => f === el).length).to.equal(1);
+    el.show = false;
+    pageFlagManager.userDataUpdated({ detail: { userName: "Bryan" } });
+    expect(el.show).to.equal(true);
+  });
+
+  it("a flag that removed itself (no user) is not listed and gets no boilerplate comment", async () => {
+    pageFlagManager.activeUser = null;
+    const root = await fixture(html`<div><page-flag></page-flag></div>`);
+    await new Promise((r) => setTimeout(r, 0));
+    expect(pageFlagManager.allFlags.length).to.equal(0);
+    expect(root.querySelector("page-flag")).to.equal(null);
+  });
+});

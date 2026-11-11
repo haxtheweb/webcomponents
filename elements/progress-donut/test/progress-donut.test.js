@@ -342,6 +342,64 @@ describe("progress-donut animation and center content", () => {
     el.dispatchEvent(new CustomEvent("chartist-render-draw"));
     expect(fakeGroup.appended).to.have.lengthOf(2);
   });
+
+  it("the HAX Animated setting animates with a default timing", async () => {
+    // the setting used to name a property the element did not have
+    const el = await fixture(
+      html`<progress-donut animated total="10"></progress-donut>`,
+    );
+    expect(el.animated).to.be.true;
+    el.complete = [2, 8];
+    await el.updateComplete;
+    el.chart = {};
+    const animations = [];
+    const fakeElement = {
+      attr: () => {},
+      animate: (definition) => animations.push({ definition }),
+    };
+    const reduced = globalThis.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    el.dispatchEvent(
+      drawEvent({
+        type: "slice",
+        value: 2,
+        index: 0,
+        element: fakeElement,
+        group: { append() {} },
+      }),
+    );
+    if (reduced) {
+      expect(el.animationDuration).to.equal(-1);
+      expect(animations).to.have.lengthOf(0);
+    } else {
+      expect(el.animationDuration).to.equal(1000);
+      expect(animations).to.have.lengthOf(1);
+      expect(animations[0].definition.opacity.dur).to.equal(200);
+    }
+    // an explicit animation timing still wins
+    el.animation = 500;
+    expect(el.animationDuration).to.equal(500);
+    // off by default
+    el.animation = -1;
+    el.animated = false;
+    expect(el.animationDuration).to.equal(-1);
+  });
+
+  it("skips the Animated default when the viewer prefers reduced motion", async () => {
+    const el = await fixture(
+      html`<progress-donut animated total="10"></progress-donut>`,
+    );
+    const original = globalThis.matchMedia;
+    globalThis.matchMedia = (q) => ({
+      matches: q === "(prefers-reduced-motion: reduce)",
+    });
+    try {
+      expect(el.animationDuration).to.equal(-1);
+    } finally {
+      globalThis.matchMedia = original;
+    }
+  });
 });
 
 describe("A11y/chai axe tests", () => {

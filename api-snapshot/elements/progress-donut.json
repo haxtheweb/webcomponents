@@ -4,6 +4,7 @@
   "source": "elements/progress-donut/progress-donut.js",
   "attributes": {
     "accent-color": "accentColor",
+    "animated": "animated",
     "animation": "animation",
     "animation-delay": "animationDelay",
     "chart-data": "chartData",

@@ -5,7 +5,7 @@ import { fixture, expect, html } from "@open-wc/testing";
 // (mirrors test/simple-modal.test.js).
 import "web-dialog/index.js";
 import "../simple-modal.js";
-import { SimpleModal } from "../simple-modal.js";
+import { SimpleModal, SimpleModalCssVars } from "../simple-modal.js";
 
 // wait for the web-dialog dynamic import + upgrade + open event plumbing
 const settleDialog = async (el, ms = 150) => {
@@ -463,5 +463,90 @@ describe("simple-modal behavior", () => {
     expect(backdrop.style.backgroundColor).to.equal(
       "var(--simple-modal-backdrop-background, var(--ddd-theme-default-potential70))",
     );
+  });
+  it("is aria-modal and traps focus when not docked", async () => {
+    const el = await fixture(html`<simple-modal></simple-modal>`);
+    el.showEvent({
+      detail: {
+        title: "T",
+        elements: { content: makeContent("<button>ok</button>") },
+        modal: true,
+      },
+    });
+    await settleDialog(el);
+    const wd = el.shadowRoot.querySelector("#dialog");
+    expect(el.docked).to.be.false;
+    expect(el.hasAttribute("docked")).to.be.false;
+    expect(wd.getAttribute("aria-modal")).to.equal("true");
+    expect(wd.$dialog.inactive).to.be.false;
+    expect(wd.shadowRoot.querySelector("#backdrop").style.top).to.equal("");
+    el.close();
+  });
+
+  it("docks below live chrome: not aria-modal, no focus trap, backdrop offset", async () => {
+    const el = await fixture(html`<simple-modal></simple-modal>`);
+    el.showEvent({
+      detail: {
+        title: "T",
+        elements: { content: makeContent("<button>ok</button>") },
+        styles: { "--simple-modal-dock-top": "66px" },
+        modal: true,
+        docked: true,
+      },
+    });
+    await settleDialog(el);
+    const wd = el.shadowRoot.querySelector("#dialog");
+    expect(el.docked).to.be.true;
+    expect(el.hasAttribute("docked")).to.be.true;
+    expect(el.style.getPropertyValue("--simple-modal-dock-top")).to.equal(
+      "66px",
+    );
+    expect(wd.getAttribute("aria-modal")).to.equal("false");
+    expect(wd.$dialog.inactive).to.be.true;
+    expect(getComputedStyle(wd).top).to.equal("66px");
+    expect(wd.shadowRoot.querySelector("#backdrop").style.top).to.equal(
+      "var(--simple-modal-dock-top, 0px)",
+    );
+    // content still gets focus when it opens, without the trap
+    expect(globalThis.document.activeElement.textContent).to.equal("ok");
+  });
+
+  it("drops docked when it closes and when the next show is not docked", async () => {
+    const el = await fixture(html`<simple-modal></simple-modal>`);
+    el.showEvent({
+      detail: {
+        title: "T",
+        elements: { content: makeContent("<p>a</p>") },
+        docked: true,
+      },
+    });
+    await settleDialog(el);
+    expect(el.docked).to.be.true;
+    // swapped for a modal that does not dock while open
+    el.showEvent({
+      detail: { title: "U", elements: { content: makeContent("<p>b</p>") } },
+    });
+    await settleDialog(el);
+    const wd = el.shadowRoot.querySelector("#dialog");
+    expect(el.docked).to.be.false;
+    expect(wd.getAttribute("aria-modal")).to.equal("true");
+    expect(wd.$dialog.inactive).to.be.false;
+    el.showEvent({
+      detail: {
+        title: "V",
+        elements: { content: makeContent("<p>c</p>") },
+        docked: true,
+      },
+    });
+    await settleDialog(el);
+    expect(el.docked).to.be.true;
+    el.close();
+    await settleDialog(el);
+    expect(el.docked).to.be.false;
+    expect(wd.shadowRoot.querySelector("#backdrop").style.top).to.equal("");
+  });
+
+  it("lists --simple-modal-dock-top among the variables it reads", () => {
+    expect(SimpleModalCssVars).to.include("--simple-modal-dock-top");
   });
 });

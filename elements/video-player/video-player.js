@@ -433,7 +433,7 @@ class VideoPlayer extends IntersectionObserverMixin(
             title: "caption",
             caption: "caption",
             description: "caption",
-            color: "primaryColor",
+            color: "accentColor",
           },
         ],
         meta: {

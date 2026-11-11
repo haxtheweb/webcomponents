@@ -9,7 +9,8 @@ name: api-snapshot
 # the pull request's merge result and compares it with the committed snapshot
 # and with the base branch's snapshot, so regenerating the snapshot cannot hide
 # a removal. Intended breaks are listed in api-snapshot/allowed-removals.json
-# with a reason. Additions only warn (run `yarn api:snapshot`).
+# with a reason. Additions only warn (run `yarn api:snapshot`). It also fails
+# when a HAX setting or gizmo handle names a property the element lacks.
 # See CONTRIBUTING.md, "HAX element API snapshot".
 #
 # Runs on pull_request (not pull_request_target): no secrets, read-only token.
