@@ -22,10 +22,12 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: Resolve the Playwright version
+    - name: Resolve the Playwright version and Ubuntu release
       id: version
       shell: bash
-      run: echo "version=$(node -p "require('playwright/package.json').version")" >> "$GITHUB_OUTPUT"
+      run: |
+        echo "version=$(node -p "require('playwright/package.json').version")" >> "$GITHUB_OUTPUT"
+        echo "os-release=$(. /etc/os-release && echo "${ID}-${VERSION_ID}")" >> "$GITHUB_OUTPUT"
     - name: Cache Playwright browsers
       uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
       with:
@@ -38,6 +40,15 @@ runs:
       env:
         LOG_FILE: ${{ inputs.log-file }}
       run: bash "$GITHUB_ACTION_PATH/install.sh" browser
+    - name: Cache font packages
+      # the .deb files from the first successful apt install, per runner
+      # image and Playwright version, so later runs install them without
+      # reaching the Ubuntu mirrors
+      if: inputs.fonts == 'true'
+      uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+      with:
+        path: ~/.cache/playwright-font-debs
+        key: ${{ steps.version.outputs.os-release }}-${{ runner.arch }}-playwright-font-debs-${{ steps.version.outputs.version }}
     - name: Install system packages
       shell: bash
       env:

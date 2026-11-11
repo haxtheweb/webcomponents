@@ -4,12 +4,14 @@
 #   install.sh browser   download the Chromium build Playwright launches
 #   install.sh deps      install the apt packages the job needs
 #
-# Environment: FONTS ("true" installs the extra fonts through apt), LOG_FILE
-# (optional file the output is appended to).
+# Environment: FONTS ("true" installs the extra fonts, cached as .deb files
+# in ~/.cache/playwright-font-debs), LOG_FILE (optional file the output is
+# appended to).
 #
 # Each attempt is capped and retried once, so a network outage costs a few
 # minutes and ends in an error that names the cause, instead of apt waiting
-# on DNS until the job times out.
+# on DNS until the job times out. The font packages are installed from
+# DEB_DIR when it has them, so once cached they need no network at all.
 set -uo pipefail
 
 MODE="${1:-}"
@@ -18,6 +20,13 @@ LOG_FILE="${LOG_FILE:-}"
 ATTEMPTS=2
 ATTEMPT_SECONDS=120
 BACKOFF_SECONDS=20
+# apt-get update alone took over two minutes while a mirror was unreachable
+DEPS_ATTEMPT_SECONDS=180
+# matches the path the action caches; only the font jobs use it
+DEB_DIR=""
+if [ "$FONTS" = "true" ]; then
+  DEB_DIR="$HOME/.cache/playwright-font-debs"
+fi
 # the binary itself rather than `yarn playwright`, so `timeout` stops the
 # install and not only a yarn wrapper around it
 PLAYWRIGHT="node_modules/.bin/playwright"
@@ -68,16 +77,60 @@ apt_fail_fast() {
     sudo tee /etc/apt/apt.conf.d/80-ci-fail-fast >/dev/null
 }
 
-install_packages() {
-  apt_fail_fast
-  if ! retry "Install Chromium system packages" "$PLAYWRIGHT" install-deps chromium; then
-    echo "::error title=Playwright system packages::apt could not install the packages Chromium needs. The log above shows whether the Ubuntu mirrors were unreachable (\"Temporary failure resolving\"), which is a GitHub runner network problem; re-run the job once it clears."
-    exit 1
+can_launch() {
+  timeout 60 node -e "require('playwright').chromium.launch().then((b) => b.close()).then(() => process.exit(0), (e) => { console.error(e.message); process.exit(1); });"
+}
+
+# the runner image points apt at a mirror list whose first entry is Azure's
+# Ubuntu mirror; when that name stops resolving, go to the Ubuntu archive
+# directly instead
+use_direct_mirror() {
+  echo "Switching apt from the runner's mirror list to archive.ubuntu.com" | log
+  sudo find /etc/apt -name '*.sources' -o -name '*.list' |
+    xargs -r sudo sed -i 's#mirror+file:/etc/apt/apt-mirrors.txt#http://archive.ubuntu.com/ubuntu/#g'
+}
+
+# .deb files saved from an earlier successful install (the action caches
+# DEB_DIR per runner image and Playwright version), so a mirror outage does
+# not stop the jobs that need the fonts
+install_cached_debs() {
+  [ -n "$DEB_DIR" ] || return 1
+  compgen -G "$DEB_DIR/*.deb" >/dev/null || return 1
+  echo "::group::Install cached system packages"
+  sudo dpkg -i "$DEB_DIR"/*.deb 2>&1 | log
+  local status=${PIPESTATUS[0]}
+  echo "::endgroup::"
+  [ "$status" -eq 0 ] && can_launch 2>&1 | log
+}
+
+save_debs() {
+  [ -n "$DEB_DIR" ] || return 0
+  mkdir -p "$DEB_DIR"
+  if compgen -G "/var/cache/apt/archives/*.deb" >/dev/null; then
+    cp /var/cache/apt/archives/*.deb "$DEB_DIR"/
+    echo "Saved $(find "$DEB_DIR" -name '*.deb' | wc -l) packages for later runs" | log
   fi
 }
 
-can_launch() {
-  timeout 60 node -e "require('playwright').chromium.launch().then((b) => b.close()).then(() => process.exit(0), (e) => { console.error(e.message); process.exit(1); });"
+install_packages() {
+  if install_cached_debs; then
+    echo "Installed the system packages from the cache; apt not needed" | log
+    return 0
+  fi
+  apt_fail_fast
+  ATTEMPT_SECONDS=$DEPS_ATTEMPT_SECONDS
+  if ATTEMPTS=1 retry "Install Chromium system packages" "$PLAYWRIGHT" install-deps chromium; then
+    save_debs
+    return 0
+  fi
+  sleep "$BACKOFF_SECONDS"
+  use_direct_mirror
+  if ATTEMPTS=1 retry "Install Chromium system packages from archive.ubuntu.com" "$PLAYWRIGHT" install-deps chromium; then
+    save_debs
+    return 0
+  fi
+  echo "::error title=Playwright system packages::apt could not install the packages Chromium needs from the runner's mirrors or archive.ubuntu.com. If the log shows \"Temporary failure resolving\", the GitHub runner's network is the problem; re-run the job once it clears. After one successful run the packages are cached and later runs do not need apt."
+  exit 1
 }
 
 case "$MODE" in
