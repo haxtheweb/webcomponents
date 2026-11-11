@@ -81,19 +81,32 @@
       "out": 4.6,
       "rows": [
         {
-          "name": "Dark mode"
-        },
-        {
           "name": "Sound effects"
         },
         {
           "name": "Settings"
         },
         {
+          "name": "Customize character"
+        },
+        {
           "name": "Log out"
         }
       ],
-      "active": [[3.8, 2]]
+      "active": [[3.8, 1]]
+    },
+    {
+      "type": "text",
+      "s": "",
+      "x": 160,
+      "y": 208,
+      "c": "dts",
+      "in": 4.8,
+      "states": [
+        [4.8, "System Settings / Status"],
+        [8, "System Settings / Themes"],
+        [12, "System Settings / Media"]
+      ]
     },
     {
       "type": "box",
@@ -128,16 +141,16 @@
           "name": "Blocks"
         },
         {
-          "name": "Integrations"
-        },
-        {
           "name": "Media"
         },
         {
           "name": "Configuration"
         },
         {
-          "name": "Style guide"
+          "name": "Integrations"
+        },
+        {
+          "name": "Style Guide"
         },
         {
           "name": "JS/CSS"
@@ -146,7 +159,7 @@
       "active": [
         [5.6, 0],
         [8, 2],
-        [12, 5]
+        [12, 4]
       ]
     },
     {
@@ -161,7 +174,7 @@
     },
     {
       "type": "text",
-      "s": "Server, storage and version at a glance",
+      "s": "Runtime and update status",
       "x": 480,
       "y": 270,
       "c": "cdd",
@@ -254,7 +267,7 @@
     },
     {
       "type": "text",
-      "s": "Choose which themes people can pick",
+      "s": "Available themes",
       "x": 480,
       "y": 270,
       "c": "cdd",
@@ -263,7 +276,7 @@
     },
     {
       "type": "text",
-      "s": "Media sources and upload limits for every site",
+      "s": "Media defaults",
       "x": 480,
       "y": 270,
       "c": "cdd",
@@ -286,8 +299,8 @@
           "value": [[13, "50 MB"]]
         },
         {
-          "name": "Allowed sources",
-          "value": [[13.8, "YouTube, Vimeo, Kaltura"]]
+          "name": "JPEG image quality",
+          "value": [[13.8, "85"]]
         }
       ],
       "active": [[13.6, 1]]
@@ -298,33 +311,33 @@
       "t": 0.3,
       "out": 4.6,
       "title": "Open Settings",
-      "text": "The account menu has dark mode, sound effects, Settings and Log out."
+      "text": "The user menu has sound effects, Settings, your character and Log out."
     },
     {
       "t": 4.8,
       "out": 8,
       "title": "System status",
-      "text": "Settings opens on Status: the health of this HAX install."
+      "text": "System Settings opens on Status: the health of this HAX install."
     },
     {
       "t": 8.2,
       "out": 12,
       "title": "Themes, blocks, skeletons",
-      "text": "Decide which themes, blocks and skeletons people can use."
+      "text": "Decide which skeletons, themes and blocks people can use."
     },
     {
       "t": 12.2,
       "out": 18.4,
       "title": "Media and more",
-      "text": "Media, Integrations, Configuration and the style guide apply to every site."
+      "text": "Media, Configuration, Integrations and the Style Guide apply to every site."
     }
   ],
   "end": {
     "in": 18.8,
     "line": "One place to run HAX.",
-    "code": "Settings"
+    "code": "System Settings"
   },
-  "surfaceHash": "8a4266e35f9c",
+  "surfaceHash": "53cbfea7f267",
   "review": {
     "status": "draft",
     "notes": "Hand-written walkthrough. Needs human review before it is marked approved."

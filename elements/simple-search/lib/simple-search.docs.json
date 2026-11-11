@@ -165,13 +165,13 @@
       "order": 0,
       "src": "simple-search.motion.json",
       "file": "lib/simple-search.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/simple-search.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

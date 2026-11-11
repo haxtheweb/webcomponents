@@ -1,277 +1,474 @@
 {
   "version": 1,
   "tag": "a11y-carousel",
-  "duration": 20.5,
   "camera": [],
+  "duration": 22,
   "objects": [
     {
       "type": "text",
-      "s": "import \"@haxtheweb/a11y-carousel/a11y-carousel.js\";",
+      "s": "<a11y-carousel>",
       "x": 80,
-      "y": 150,
-      "c": "cd",
+      "y": 230,
+      "c": "code",
       "in": 0.5,
-      "typed": true,
       "states": [
-        [0.5, "import \"@haxtheweb/a11y-carousel/a11y-carousel.js\";"]
-      ],
-      "typeDur": 1.4
-    },
-    {
-      "type": "box",
-      "x": 520,
-      "y": 180,
-      "w": 400,
-      "h": 270,
-      "v": "hug",
-      "r": 6,
-      "xbox": true,
-      "pop": [1.4, 0.6]
+        [0.5, "<a11y-carousel>"],
+        [15.4, "<a11y-carousel no-prev-next no-buttons>"]
+      ]
     },
     {
       "type": "text",
-      "s": "a11y-carousel",
-      "x": 524,
-      "y": 480,
-      "c": "cdd",
+      "s": "<figure id=\"figure-1\">",
+      "x": 104,
+      "y": 264,
+      "c": "code",
+      "in": 0.75
+    },
+    {
+      "type": "text",
+      "s": "<img src=\"kitten-400x200.jpg\" alt=\"…\">",
+      "x": 128,
+      "y": 298,
+      "c": "code",
+      "in": 1
+    },
+    {
+      "type": "text",
+      "s": "<figcaption>Item 1</figcaption>",
+      "x": 128,
+      "y": 332,
+      "c": "code",
+      "in": 1.25
+    },
+    {
+      "type": "text",
+      "s": "</figure>",
+      "x": 104,
+      "y": 366,
+      "c": "code",
+      "in": 1.5
+    },
+    {
+      "type": "text",
+      "s": "<figure id=\"figure-2\">…</figure>",
+      "x": 104,
+      "y": 400,
+      "c": "code",
+      "in": 1.75
+    },
+    {
+      "type": "text",
+      "s": "<figure id=\"figure-3\">…</figure>",
+      "x": 104,
+      "y": 434,
+      "c": "code",
       "in": 2
     },
     {
-      "type": "panel",
-      "title": "attributes",
-      "x": 80,
-      "y": 214,
-      "w": 330,
-      "rowH": 62,
-      "gap": 12,
-      "in": 2.4,
-      "rows": [
-        {
-          "name": "nextLabel",
-          "desc": "nextLabel"
-        },
-        {
-          "name": "no-prev-next",
-          "desc": "no prev next"
-        },
-        {
-          "name": "no-buttons",
-          "desc": "no buttons"
-        },
-        {
-          "name": "prevLabel",
-          "desc": "prevLabel"
-        }
-      ],
-      "active": [
-        [5, 0],
-        [7.4, 1],
-        [10, 2],
-        [12.4, 3],
-        [14.8, 0]
-      ]
+      "type": "text",
+      "s": "<div slot=\"below\">",
+      "x": 104,
+      "y": 468,
+      "c": "code",
+      "in": 15.6,
+      "d": 0.4
     },
     {
       "type": "text",
-      "x": 1000,
-      "y": 240,
+      "s": "<a11y-carousel-button controls=\"figure-2\">",
+      "x": 128,
+      "y": 502,
       "c": "code",
-      "in": 1.5999999999999999,
-      "s": "<a11y-carousel"
+      "in": 15.8,
+      "d": 0.4
     },
     {
       "type": "text",
-      "x": 1022,
-      "y": 272,
+      "s": "</div>",
+      "x": 104,
+      "y": 536,
       "c": "code",
-      "in": 5,
-      "s": "nextLabel=\"next\""
+      "in": 16,
+      "d": 0.4
     },
     {
       "type": "text",
-      "x": 1022,
-      "y": 304,
-      "c": "code",
-      "in": 7.4,
-      "s": "no-prev-next=\"false\""
-    },
-    {
-      "type": "text",
-      "x": 1022,
-      "y": 336,
-      "c": "code",
-      "in": 10,
-      "s": "no-buttons=\"false\""
-    },
-    {
-      "type": "text",
-      "x": 1022,
-      "y": 368,
-      "c": "code",
-      "in": 12.4,
-      "s": "prevLabel=\"previous\""
-    },
-    {
-      "type": "text",
-      "x": 1000,
-      "y": 272,
-      "c": "code",
-      "in": 1.7,
-      "s": ">",
-      "keys": [
-        [
-          5,
-          {
-            "y": 304
-          },
-          0.4
-        ],
-        [
-          7.4,
-          {
-            "y": 336
-          },
-          0.4
-        ],
-        [
-          10,
-          {
-            "y": 368
-          },
-          0.4
-        ],
-        [
-          12.4,
-          {
-            "y": 400
-          },
-          0.4
-        ]
-      ]
-    },
-    {
-      "type": "text",
-      "x": 1000,
-      "y": 304,
-      "c": "code",
-      "in": 1.7,
       "s": "</a11y-carousel>",
+      "x": 80,
+      "y": 468,
+      "c": "code",
+      "in": 2.25,
+      "out": 15.4,
+      "od": 0.2
+    },
+    {
+      "type": "text",
+      "s": "</a11y-carousel>",
+      "x": 80,
+      "y": 570,
+      "c": "code",
+      "in": 16.2,
+      "d": 0.4
+    },
+    {
+      "type": "box",
+      "x": 800,
+      "y": 170,
+      "w": 640,
+      "h": 420,
+      "v": "thin",
+      "r": 10,
+      "in": 1.4,
+      "d": 0.5
+    },
+    {
+      "type": "box",
+      "x": 920,
+      "y": 240,
+      "w": 400,
+      "h": 200,
+      "v": "hug",
+      "r": 6,
+      "in": 1.9,
+      "xbox": true,
+      "d": 0.35,
+      "out": 6.3,
+      "od": 0.3
+    },
+    {
+      "type": "text",
+      "s": "Item 1",
+      "x": 1120,
+      "y": 500,
+      "c": "cdd",
+      "in": 2,
+      "a": "middle",
+      "out": 6.3,
+      "od": 0.3
+    },
+    {
+      "type": "box",
+      "x": 970,
+      "y": 290,
+      "w": 300,
+      "h": 100,
+      "v": "hug",
+      "r": 6,
+      "in": 6.4,
+      "xbox": true,
+      "d": 0.35,
+      "out": 8.6,
+      "od": 0.3
+    },
+    {
+      "type": "text",
+      "s": "Item 2",
+      "x": 1120,
+      "y": 500,
+      "c": "cdd",
+      "in": 6.5,
+      "a": "middle",
+      "out": 8.6,
+      "od": 0.3
+    },
+    {
+      "type": "box",
+      "x": 960,
+      "y": 220,
+      "w": 320,
+      "h": 240,
+      "v": "hug",
+      "r": 6,
+      "in": 8.7,
+      "xbox": true,
+      "d": 0.35,
+      "out": 11.8,
+      "od": 0.3
+    },
+    {
+      "type": "text",
+      "s": "Item 3",
+      "x": 1120,
+      "y": 500,
+      "c": "cdd",
+      "in": 8.799999999999999,
+      "a": "middle",
+      "out": 11.8,
+      "od": 0.3
+    },
+    {
+      "type": "box",
+      "x": 920,
+      "y": 240,
+      "w": 400,
+      "h": 200,
+      "v": "hug",
+      "r": 6,
+      "in": 11.9,
+      "xbox": true,
+      "d": 0.35,
+      "out": 17.6,
+      "od": 0.3
+    },
+    {
+      "type": "text",
+      "s": "Item 1",
+      "x": 1120,
+      "y": 500,
+      "c": "cdd",
+      "in": 12,
+      "a": "middle",
+      "out": 17.6,
+      "od": 0.3
+    },
+    {
+      "type": "box",
+      "x": 970,
+      "y": 290,
+      "w": 300,
+      "h": 100,
+      "v": "hug",
+      "r": 6,
+      "in": 17.7,
+      "xbox": true,
+      "d": 0.35,
+      "out": null,
+      "od": 0.3
+    },
+    {
+      "type": "text",
+      "s": "Item 2",
+      "x": 1120,
+      "y": 500,
+      "c": "cdd",
+      "in": 17.8,
+      "a": "middle",
+      "out": null,
+      "od": 0.3
+    },
+    {
+      "type": "glyph",
+      "name": "rewind",
+      "x": 840,
+      "y": 340,
+      "s": 26,
+      "in": 2.2,
+      "out": 15.6
+    },
+    {
+      "type": "glyph",
+      "name": "forward",
+      "x": 1400,
+      "y": 340,
+      "s": 26,
+      "in": 2.2,
+      "out": 15.6
+    },
+    {
+      "type": "glyph",
+      "name": "circle",
+      "x": 1080,
+      "y": 548,
+      "s": 16,
+      "in": 2.3,
+      "out": 15.6
+    },
+    {
+      "type": "glyph",
+      "name": "circle",
+      "x": 1120,
+      "y": 548,
+      "s": 16,
+      "in": 2.4,
+      "out": 15.6
+    },
+    {
+      "type": "glyph",
+      "name": "circle",
+      "x": 1160,
+      "y": 548,
+      "s": 16,
+      "in": 2.5,
+      "out": 15.6
+    },
+    {
+      "type": "glyph",
+      "name": "circle",
+      "x": 1080,
+      "y": 548,
+      "s": 10,
+      "in": 2.6,
+      "v": "bold",
+      "out": 15.6,
       "keys": [
         [
-          5,
+          6.6,
           {
-            "y": 336
+            "x": 1120
           },
-          0.4
+          0.3
         ],
         [
-          7.4,
+          8.9,
           {
-            "y": 368
+            "x": 1160
           },
-          0.4
+          0.3
         ],
         [
-          10,
+          12.1,
           {
-            "y": 400
+            "x": 1080
           },
-          0.4
-        ],
-        [
-          12.4,
-          {
-            "y": 432
-          },
-          0.4
+          0.3
         ]
       ]
     },
     {
-      "type": "callout",
-      "px": 590,
-      "py": 488,
-      "ex": 616,
-      "ey": 540,
-      "label": "nextLabel",
-      "sub": "\"next\"",
-      "dir": 1,
-      "in": 5.2,
-      "out": 7.2
+      "type": "box",
+      "x": 830,
+      "y": 532,
+      "w": 76,
+      "h": 36,
+      "v": "hug",
+      "r": 6,
+      "in": 16,
+      "label": "first",
+      "labelMin": 30
+    },
+    {
+      "type": "box",
+      "x": 914,
+      "y": 532,
+      "w": 76,
+      "h": 36,
+      "v": "hug",
+      "r": 6,
+      "in": 16.08,
+      "label": "prev",
+      "labelMin": 30
+    },
+    {
+      "type": "box",
+      "x": 998,
+      "y": 532,
+      "w": 76,
+      "h": 36,
+      "v": "hug",
+      "r": 6,
+      "in": 16.16,
+      "label": "Item 1",
+      "labelMin": 30
+    },
+    {
+      "type": "box",
+      "x": 1082,
+      "y": 532,
+      "w": 76,
+      "h": 36,
+      "v": "hug",
+      "r": 6,
+      "in": 16.24,
+      "label": "Item 2",
+      "labelMin": 30
+    },
+    {
+      "type": "box",
+      "x": 1166,
+      "y": 532,
+      "w": 76,
+      "h": 36,
+      "v": "hug",
+      "r": 6,
+      "in": 16.32,
+      "label": "Item 3",
+      "labelMin": 30
+    },
+    {
+      "type": "box",
+      "x": 1250,
+      "y": 532,
+      "w": 76,
+      "h": 36,
+      "v": "hug",
+      "r": 6,
+      "in": 16.4,
+      "label": "next",
+      "labelMin": 30
+    },
+    {
+      "type": "box",
+      "x": 1334,
+      "y": 532,
+      "w": 76,
+      "h": 36,
+      "v": "hug",
+      "r": 6,
+      "in": 16.48,
+      "label": "last",
+      "labelMin": 30
     },
     {
       "type": "callout",
-      "px": 770,
-      "py": 488,
-      "ex": 796,
-      "ey": 540,
-      "label": "no-prev-next",
-      "sub": "on or off",
-      "dir": 1,
-      "in": 7.6000000000000005,
-      "out": 9.600000000000001
-    },
-    {
-      "type": "callout",
-      "px": 590,
-      "py": 488,
-      "ex": 616,
-      "ey": 540,
-      "label": "no-buttons",
-      "sub": "on or off",
-      "dir": 1,
-      "in": 10.2,
-      "out": 12.2
-    },
-    {
-      "type": "callout",
-      "px": 770,
-      "py": 488,
-      "ex": 796,
-      "ey": 540,
-      "label": "prevLabel",
-      "sub": "\"previous\"",
+      "px": 1120,
+      "py": 566,
+      "ex": 1160,
+      "ey": 640,
+      "label": "one button per figure",
+      "sub": "named for screen readers",
       "dir": 1,
       "in": 12.6,
-      "out": 14.600000000000001
+      "out": 14.8
+    },
+    {
+      "type": "cursor",
+      "keys": [
+        [5.4, 1300, 640],
+        [6, 1400, 340],
+        [8.2, 1400, 340],
+        [10.8, 1200, 620],
+        [11.6, 1080, 548],
+        [16.6, 1100, 640],
+        [17.4, 1120, 550]
+      ],
+      "show": [[5.4, 18.4]],
+      "clicks": [6.2, 8.5, 11.8, 17.6]
     }
   ],
   "beats": [
     {
       "t": 0.3,
-      "out": 4.6,
-      "title": "Import it",
-      "text": "Load the module once; the tag then works anywhere in your HTML."
+      "out": 5.2,
+      "title": "Figures inside, one at a time",
+      "text": "Put figures in the tag; the carousel shows one and hides the rest."
     },
     {
-      "t": 4.8,
-      "out": 9.8,
-      "title": "Set nextlabel and no prev next",
-      "text": "Add a nextLabel attribute to the tag."
+      "t": 5.4,
+      "out": 10.4,
+      "title": "Next and previous",
+      "text": "The arrow buttons step through the figures, wrapping at either end."
     },
     {
-      "t": 10,
-      "out": 14.6,
-      "title": "Set no buttons and prevlabel",
-      "text": "Add the no-buttons attribute to switch it on."
+      "t": 10.6,
+      "out": 14.8,
+      "title": "Jump to any figure",
+      "text": "The row of buttons jumps straight to a figure."
     },
     {
-      "t": 14.8,
-      "out": 17.4,
-      "title": "Use it on a page",
-      "text": "Set attributes in the markup to configure <a11y-carousel>."
+      "t": 15,
+      "out": 19.4,
+      "title": "Bring your own controls",
+      "text": "no-prev-next and no-buttons hide them; buttons in slot below take over."
     }
   ],
   "end": {
-    "in": 17.8,
-    "line": "Accessible carousel / slideshow with navigation controls",
-    "code": ""
+    "in": 19.8,
+    "line": "One figure at a time, controls for everyone.",
+    "code": "<a11y-carousel><figure id=\"figure-1\">…</figure></a11y-carousel>"
   },
   "surfaceHash": "e16e58b46d44",
   "review": {
     "status": "draft",
-    "generator": "draft-element-walkthrough",
-    "sketch": "image",
-    "notes": "Generated from docs data. Check the sketch, wording and which settings are shown."
+    "notes": "Hand-written walkthrough. Needs human review before it is marked approved."
   }
 }

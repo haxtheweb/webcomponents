@@ -256,7 +256,7 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set allownull and icons",
-      "text": "Add the allowNull attribute to switch it on. Add a icons attribute to the tag."
+      "text": "Add the allowNull attribute to switch it on. Add an icons attribute to the tag."
     },
     {
       "t": 10,

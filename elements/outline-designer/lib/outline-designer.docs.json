@@ -202,11 +202,20 @@
   ],
   "hax": {},
   "surfaceHash": "920b3fc071d4",
-  "walkthroughs": [],
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "outline-designer.motion.json",
+      "file": "lib/outline-designer.motion.json",
+      "status": "awaiting"
+    }
+  ],
   "videos": [],
   "motion": {
-    "file": "",
-    "status": "none"
+    "file": "lib/outline-designer.motion.json",
+    "status": "awaiting"
   },
   "video": null,
   "source": {

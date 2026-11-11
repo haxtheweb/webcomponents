@@ -109,7 +109,7 @@
     },
     {
       "type": "text",
-      "s": "From template",
+      "s": "From Template",
       "x": 184,
       "y": 318,
       "c": "rn",
@@ -128,7 +128,7 @@
     },
     {
       "type": "text",
-      "s": "From scratch",
+      "s": "From Scratch",
       "x": 619,
       "y": 318,
       "c": "rn",
@@ -273,19 +273,19 @@
       "gap": 6,
       "rows": [
         {
-          "name": "Dark mode"
-        },
-        {
           "name": "Sound effects"
         },
         {
           "name": "Settings"
         },
         {
+          "name": "Customize character"
+        },
+        {
           "name": "Log out"
         }
       ],
-      "active": [[21.4, 2]],
+      "active": [[21.4, 1]],
       "in": 20.6,
       "out": 24,
       "od": 0.3
@@ -372,7 +372,7 @@
       "t": 19.8,
       "out": 22.6,
       "title": "Your account",
-      "text": "The avatar menu holds dark mode, sound, settings and log out."
+      "text": "The user menu holds sound effects, Settings, your character and Log out."
     }
   ],
   "end": {
@@ -383,7 +383,7 @@
   "tag": "app-hax",
   "title": "Your sites dashboard",
   "order": 0,
-  "surfaceHash": "8a4266e35f9c",
+  "surfaceHash": "53cbfea7f267",
   "review": {
     "status": "draft",
     "notes": "Hand-written walkthrough. Needs human review before it is marked approved."

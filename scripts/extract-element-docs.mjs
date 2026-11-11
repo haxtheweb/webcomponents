@@ -157,7 +157,17 @@ function balanced(src, idx) {
       else if (c === str) str = null;
       continue;
     }
-    if (c === '"' || c === "'" || c === "`") str = c;
+    // comments can hold apostrophes ("the player's header") that would
+    // otherwise open a string and swallow the rest of the object
+    if (c === "/" && src[i + 1] === "/") {
+      const nl = src.indexOf("\n", i);
+      if (nl === -1) break;
+      i = nl;
+    } else if (c === "/" && src[i + 1] === "*") {
+      const close = src.indexOf("*/", i + 2);
+      if (close === -1) break;
+      i = close + 1;
+    } else if (c === '"' || c === "'" || c === "`") str = c;
     else if (c === "{") depth++;
     else if (c === "}" && --depth === 0) return src.slice(start, i + 1);
   }

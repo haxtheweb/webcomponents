@@ -193,13 +193,13 @@
       "order": 0,
       "src": "progress-donut.motion.json",
       "file": "lib/progress-donut.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/progress-donut.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

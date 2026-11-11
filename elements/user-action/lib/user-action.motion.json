@@ -1,0 +1,290 @@
+{
+  "version": 1,
+  "tag": "user-action",
+  "camera": [],
+  "duration": 23.5,
+  "objects": [
+    {
+      "type": "text",
+      "s": "HAX blocks",
+      "x": 80,
+      "y": 200,
+      "c": "vt",
+      "in": 0.4,
+      "out": 4.4
+    },
+    {
+      "type": "box",
+      "x": 80,
+      "y": 214,
+      "w": 330,
+      "h": 62,
+      "v": "obj",
+      "r": 10,
+      "in": 0.5,
+      "out": 4.4
+    },
+    {
+      "type": "text",
+      "s": "User action",
+      "x": 104,
+      "y": 251,
+      "c": "rn",
+      "in": 0.7,
+      "out": 4.4
+    },
+    {
+      "type": "glyph",
+      "name": "plus",
+      "x": 380,
+      "y": 245,
+      "s": 10,
+      "in": 0.8,
+      "out": 4.4
+    },
+    {
+      "type": "box",
+      "x": 196,
+      "y": 232,
+      "w": 150,
+      "h": 36,
+      "v": "slot",
+      "r": 8,
+      "in": 1.5,
+      "d": 0.2,
+      "out": 2.6,
+      "od": 0.2,
+      "keys": [
+        [
+          2.5,
+          {
+            "x": 650,
+            "y": 322
+          },
+          0.9
+        ]
+      ]
+    },
+    {
+      "type": "cursor",
+      "keys": [
+        [0.8, 300, 360],
+        [1.4, 240, 248],
+        [2.5, 720, 340],
+        [16.2, 720, 340],
+        [16.6, 720, 345]
+      ],
+      "show": [
+        [0.8, 3.2],
+        [16, 19]
+      ],
+      "clicks": [1.5, 2.6, 16.6, 17.6]
+    },
+    {
+      "type": "box",
+      "x": 520,
+      "y": 220,
+      "w": 400,
+      "h": 230,
+      "v": "obj",
+      "r": 6,
+      "in": 2.6,
+      "d": 0.5,
+      "label": "user-action",
+      "labelMin": 90
+    },
+    {
+      "type": "box",
+      "x": 570,
+      "y": 290,
+      "w": 300,
+      "h": 110,
+      "v": "hug",
+      "r": 6,
+      "in": 3,
+      "d": 0.4,
+      "label": "Your content",
+      "labelMin": 60
+    },
+    {
+      "type": "panel",
+      "title": "HAX settings",
+      "x": 80,
+      "y": 214,
+      "w": 360,
+      "rowH": 62,
+      "gap": 12,
+      "in": 4.6,
+      "rows": [
+        {
+          "name": "Event to track",
+          "value": [
+            [4.8, "Can see this"],
+            [15.6, "Click this"]
+          ]
+        },
+        {
+          "name": "Track every time",
+          "value": [
+            [4.8, "off"],
+            [16, "on"]
+          ]
+        }
+      ],
+      "active": [
+        [5.2, 0],
+        [15.4, 0],
+        [15.9, 1]
+      ]
+    },
+    {
+      "type": "panel",
+      "title": "",
+      "x": 80,
+      "y": 380,
+      "w": 360,
+      "rowH": 40,
+      "gap": 6,
+      "in": 5.6,
+      "out": 8,
+      "od": 0.3,
+      "rows": [
+        {
+          "name": "Can see this"
+        },
+        {
+          "name": "Click this"
+        },
+        {
+          "name": "Press a key here"
+        },
+        {
+          "name": "Hover over this"
+        }
+      ],
+      "active": [
+        [6.4, 0],
+        [7, 1],
+        [7.6, 2],
+        [8.2, 3]
+      ]
+    },
+    {
+      "type": "box",
+      "x": 980,
+      "y": 220,
+      "w": 520,
+      "h": 330,
+      "v": "well",
+      "r": 10,
+      "in": 10,
+      "d": 0.5
+    },
+    {
+      "type": "text",
+      "s": "user-engagement",
+      "x": 1000,
+      "y": 256,
+      "c": "rn",
+      "in": 10.4
+    },
+    {
+      "type": "text",
+      "s": "",
+      "x": 1000,
+      "y": 300,
+      "c": "code",
+      "in": 10.6,
+      "states": [
+        [10.6, "eventType: \"visibility\""],
+        [16.8, "eventType: \"click\""]
+      ]
+    },
+    {
+      "type": "text",
+      "s": "",
+      "x": 1000,
+      "y": 340,
+      "c": "code",
+      "in": 10.8,
+      "states": [
+        [10.8, "verb: \"experienced\""],
+        [16.8, "verb: \"interacted\""]
+      ]
+    },
+    {
+      "type": "text",
+      "s": "xAPI statement for the page's",
+      "x": 1000,
+      "y": 400,
+      "c": "dts",
+      "in": 11.2
+    },
+    {
+      "type": "text",
+      "s": "progress store (or an LRS)",
+      "x": 1000,
+      "y": 430,
+      "c": "dts",
+      "in": 11.3
+    },
+    {
+      "type": "text",
+      "s": "Seen: half of it scrolls into view",
+      "x": 520,
+      "y": 490,
+      "c": "cdd",
+      "in": 10.4,
+      "out": 14.6
+    },
+    {
+      "type": "text",
+      "s": "",
+      "x": 520,
+      "y": 490,
+      "c": "cdd",
+      "in": 16.8,
+      "states": [
+        [16.8, "Clicked: 1 event"],
+        [17.8, "Clicked again: 2 events"]
+      ],
+      "out": 21
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.3,
+      "out": 4.6,
+      "title": "Add User action",
+      "text": "Find User action in the HAX blocks menu and drop it around your content."
+    },
+    {
+      "t": 4.8,
+      "out": 9.6,
+      "title": "Choose what to track",
+      "text": "Event to track: when it is seen, clicked, typed in or hovered over."
+    },
+    {
+      "t": 9.8,
+      "out": 15,
+      "title": "It reports, it does not store",
+      "text": "When it happens, it fires user-engagement with an xAPI statement."
+    },
+    {
+      "t": 15.2,
+      "out": 21,
+      "title": "Once or every time",
+      "text": "With Track every time on, each click reports; off, only the first does."
+    }
+  ],
+  "end": {
+    "in": 21.2,
+    "line": "Learner data from any block, without code.",
+    "code": "<user-action track=\"click\"></user-action>"
+  },
+  "surfaceHash": "e919d389a60a",
+  "review": {
+    "status": "draft",
+    "notes": "Hand-written walkthrough. Needs human review before it is marked approved."
+  }
+}

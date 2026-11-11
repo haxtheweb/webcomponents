@@ -192,7 +192,7 @@ function captionFor(r, hax) {
   if (r.input === "haxupload") return `Upload a file or paste a link for ${fieldLabel(r)}.`;
   if (r.input === "colorpicker") return `Pick a color for ${fieldLabel(r)}.`;
   if (r.slot !== null) return `${fieldLabel(r)} goes inside the tag as content.`;
-  return hax ? `Fill in the ${fieldLabel(r)} field in the sidebar.` : `Add a ${name} attribute to the tag.`;
+  return hax ? `Fill in the ${fieldLabel(r)} field in the sidebar.` : `Add ${/^[aeiou]/i.test(name) ? "an" : "a"} ${name} attribute to the tag.`;
 }
 
 /** two settings in one sentence when neither has its own description */

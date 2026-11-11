@@ -367,7 +367,7 @@
     "line": "Event badge component.",
     "code": "<event-badge></event-badge>"
   },
-  "surfaceHash": "64a52aea4f26",
+  "surfaceHash": "9273cc39efbe",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

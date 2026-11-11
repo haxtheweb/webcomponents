@@ -222,7 +222,7 @@
     },
     {
       "type": "text",
-      "s": "Site name",
+      "s": "Site Name",
       "x": 360,
       "y": 290,
       "c": "dts",
@@ -308,7 +308,7 @@
     "line": "A new site in four steps.",
     "code": "Create New Site"
   },
-  "surfaceHash": "8a4266e35f9c",
+  "surfaceHash": "53cbfea7f267",
   "review": {
     "status": "draft",
     "notes": "Hand-written walkthrough. Needs human review before it is marked approved."

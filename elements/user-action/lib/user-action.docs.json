@@ -117,11 +117,20 @@
     }
   },
   "surfaceHash": "e919d389a60a",
-  "walkthroughs": [],
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "user-action.motion.json",
+      "file": "lib/user-action.motion.json",
+      "status": "awaiting"
+    }
+  ],
   "videos": [],
   "motion": {
-    "file": "",
-    "status": "none"
+    "file": "lib/user-action.motion.json",
+    "status": "awaiting"
   },
   "video": null,
   "source": {

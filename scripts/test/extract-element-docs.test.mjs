@@ -156,3 +156,41 @@ test("without the analyzer it warns instead of silently thinning the data", () =
   assert.match(r.stderr, /analyzer not found/);
   fs.rmSync(elements, { recursive: true, force: true });
 });
+
+test("comments inside an inline haxProperties do not hide its settings", () => {
+  const elements = fs.mkdtempSync(path.join(os.tmpdir(), "docs-probe-"));
+  const dir = path.join(elements, "docs-probe");
+  fs.mkdirSync(dir, { recursive: true });
+  // an apostrophe in a comment ("the probe's") used to open a string and
+  // swallow the rest of the object, so the element lost its HAX settings
+  const withHax = ELEMENT.replace(
+    "  static get properties() {",
+    `  static get haxProperties() {
+    return {
+      designSystem: {
+        // the probe's layout is fixed, so no alignment
+        textAlign: false,
+      },
+      /* a "block" comment with 'quotes' and { braces } */
+      gizmo: { title: "Docs probe" },
+      settings: {
+        configure: [{ attribute: "label", title: "Label", inputMethod: "textfield" }],
+      },
+    };
+  }
+  static get properties() {`,
+  );
+  fs.writeFileSync(path.join(dir, "docs-probe.js"), withHax);
+  fs.writeFileSync(
+    path.join(dir, "package.json"),
+    JSON.stringify({
+      name: "@haxtheweb/docs-probe",
+      version: "1.0.0",
+      main: "docs-probe.js",
+    }),
+  );
+  const docs = extractElementDocs("docs-probe", elements);
+  assert.equal(docs.hax.gizmo.title, "Docs probe");
+  assert.equal(docs.hax.settings.configure[0].attribute, "label");
+  fs.rmSync(elements, { recursive: true, force: true });
+});
