@@ -6,12 +6,6 @@
         "a11y-details >> summary": 1
       }
     },
-    "a11y-media-player": {
-      "dark-focus": {
-        "a11y-media-button >> button": 1,
-        "a11y-media-player >> button.ddd-block-action": 1
-      }
-    },
     "a11y-menu-button": {
       "target-size": {
         "a11y-menu-button-item >> a": 1,
@@ -32,11 +26,6 @@
         "bullet-check-list >> simple-icon": 1
       }
     },
-    "code-sample": {
-      "dark-focus": {
-        "code-sample >> button.ddd-block-action": 1
-      }
-    },
     "count-up": {
       "reflow-overflow": {
         "count-up": 1
@@ -53,10 +42,6 @@
       }
     },
     "flash-card": {
-      "dark-focus": {
-        "flash-card-answer-box >> input[type=text]": 1,
-        "flash-card-set >> button.ddd-block-action": 1
-      },
       "reflow-overflow": {
         "flash-card": 1,
         "flash-card >> div": 1,
@@ -74,14 +59,8 @@
         "github-rpg-contributors >> a": 1
       }
     },
-    "h5p-element": {
-      "dark-focus": {
-        "h5p-element >> button.hNp-el-frame-open": 1
-      }
-    },
     "haxcms-elements": {
       "dark-focus": {
-        "my-learning-button >> button": 1,
         "site-menu-button >> button": 1
       },
       "forced-focus": {
@@ -94,11 +73,6 @@
       },
       "forced-focus": {
         "haxor-slevin >> a.article-link": 1
-      }
-    },
-    "ics-render": {
-      "dark-focus": {
-        "ics-render >> a.ddd-block-action": 1
       }
     },
     "journey-theme": {
@@ -125,16 +99,6 @@
     "mark-the-words": {
       "forced-focus": {
         "mark-the-words >> button.tag-option": 1
-      }
-    },
-    "matching-question": {
-      "dark-focus": {
-        "matching-question >> button.ddd-block-action": 1
-      }
-    },
-    "media-playlist": {
-      "dark-focus": {
-        "media-playlist >> button.playlist-item": 1
       }
     },
     "meme-maker": {
@@ -169,11 +133,6 @@
         "page-flag": 1
       }
     },
-    "play-list": {
-      "dark-focus": {
-        "play-list >> button.pagination-dot": 1
-      }
-    },
     "polaris-theme": {
       "dark-focus": {
         "polaris-mark >> a": 1
@@ -200,24 +159,9 @@
         "promise-progress >> progress": 1
       }
     },
-    "radar-chart": {
-      "dark-focus": {
-        "radar-chart >> summary": 1
-      }
-    },
     "resume-theme": {
       "reflow-clipped": {
         "resume-theme >> a": 1
-      }
-    },
-    "self-check": {
-      "dark-focus": {
-        "self-check >> button.ddd-block-action": 1
-      }
-    },
-    "simple-pager": {
-      "dark-focus": {
-        "simple-pager >> button.page-btn": 1
       }
     },
     "simple-range-input": {
@@ -226,28 +170,6 @@
       },
       "target-size": {
         "simple-range-input >> input[type=range]": 1
-      }
-    },
-    "slide-deck": {
-      "dark-focus": {
-        "slide-deck >> div.ddd-block": 1
-      }
-    },
-    "tableau-embed": {
-      "dark-focus": {
-        "tableau-embed >> a.ddd-block-action": 1
-      }
-    },
-    "tagging-question": {
-      "dark-focus": {
-        "tagging-question >> button.ddd-block-action": 1,
-        "tagging-question >> button.tag-option": 1
-      }
-    },
-    "vcf-render": {
-      "dark-focus": {
-        "vcf-render >> a.ddd-block-action": 1,
-        "vcf-render >> a.name": 1
       }
     },
     "vocab-term": {
