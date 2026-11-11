@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Aktiviti",
-        "description": "Tandakan bukti: pelajar melekatkan setiap bendera di sebelah buktinya. Pilih satu: pelajar memilih satu petikan yang paling tepat menjawab soalan."
+        "description": "Tandakan bukti: pelajar melekatkan setiap bendera di sebelah buktinya. Pilih satu: pelajar memilih satu petikan yang paling tepat menjawab soalan.",
+        "options": {
+          "flag": "Tandakan bukti",
+          "one": "Pilih satu"
+        }
       },
       {
         "property": "unit",
         "title": "Pelajar memilih",
-        "description": "Perkara yang ditunjuk oleh pelajar dalam bacaan. Rajah sentiasa boleh dipilih."
+        "description": "Perkara yang ditunjuk oleh pelajar dalam bacaan. Rajah sentiasa boleh dipilih.",
+        "options": {
+          "sentence": "Ayat",
+          "paragraph": "Perenggan",
+          "figure": "Rajah sahaja"
+        }
       },
       {
         "property": "answers",

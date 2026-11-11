@@ -2,5 +2,7 @@
   "pageIsUnpublished": "הדף אינו מפורסם",
   "progressDone": "הושלם",
   "progressInProgress": "בתהליך",
-  "progressVisited": "ביקרת"
+  "progressVisited": "ביקרת",
+  "progressPercentComplete": "{percent}% הושלמו",
+  "progressComplete": "הושלם"
 }

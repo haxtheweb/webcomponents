@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "मूल फाइलहरू प्रतिस्थापन गर्नुहोस्",
   "newName": "नयाँ नाम",
   "deleteAction": "मेटाउनुहोस्",
-  "renameAction": "नाम बदल्नुहोस्"
+  "renameAction": "नाम बदल्नुहोस्",
+  "bulkOverwriteConfirm": "{count} फाइलहरू {action} गर्ने? यसले मूल फाइलहरू प्रतिस्थापन गर्छ र फिर्ता गर्न सकिँदैन।",
+  "actionScale": "स्केल",
+  "actionRotate": "रोटेट",
+  "actionTransform": "ट्रान्सफर्म",
+  "actionConvertJpg": "JPG मा रूपान्तरण",
+  "actionCompress": "कम्प्रेस"
 }

@@ -1,0 +1,9 @@
+{
+  "imageMap": "Mappa immagine",
+  "interactive": "Interattivo",
+  "hotspot": "Area attiva",
+  "hotspotPosition": "{n} di {total}",
+  "hotspotsExplored": "{n} di {total} aree attive esplorate",
+  "explored": "Esplorata",
+  "close": "Chiudi"
+}

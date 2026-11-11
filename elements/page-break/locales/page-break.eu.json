@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Orri hau blokeatuta dago. Desblokeatu lehenik argitaratze-egoera aldatzeko.",
   "pageLockedUnlockToDelete": "Orri hau blokeatuta dago. Desblokeatu lehenik ezabatzeko.",
   "pageDetails": "Orrialde xehetasunak",
-  "clickToUnlock": "Egin klik desblokeatzeko"
+  "clickToUnlock": "Egin klik desblokeatzeko",
+  "pageSettings": "Orriaren ezarpenak",
+  "editingPageSettings": "Orriaren ezarpenak editatzen",
+  "published": "Argitaratuta",
+  "draft": "Zirriborroa",
+  "locked": "Blokeatuta",
+  "unlocked": "Desblokeatuta",
+  "noTags": "Etiketarik ez",
+  "oneTag": "Etiketa 1",
+  "tagCount": "{count} etiketa",
+  "enterKey": "Enter"
 }

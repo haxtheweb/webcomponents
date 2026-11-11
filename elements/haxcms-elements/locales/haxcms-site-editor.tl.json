@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Hindi makumpleto ang operasyon ({status})",
   "normalizedPageSlugs": "Na-normalize ang {count} slug ng pahina",
   "createdTitle": "Nagawa ang {title}!",
-  "processing": "Pinoproseso"
+  "processing": "Pinoproseso",
+  "saveTimedOut": "Nag-time out ang pag-save: hindi sumagot ang server. Nananatili rito ang iyong mga pagbabago, ngunit maaaring tapusin pa rin ng server ang pag-save."
 }

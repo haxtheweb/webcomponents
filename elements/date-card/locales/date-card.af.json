@@ -1,0 +1,8 @@
+{
+  "ordinalOne": "ste",
+  "ordinalTwo": "de",
+  "ordinalFew": "de",
+  "ordinalOther": "de",
+  "fromTimeToTime": "van {start} - {end}",
+  "atTime": "om {start}"
+}

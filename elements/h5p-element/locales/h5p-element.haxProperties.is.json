@@ -1,13 +1,20 @@
 {
   "gizmo": {
     "title": "H5P",
-    "description": "H5P-umgjörð til að hlaða og birta .h5p-skrár"
+    "description": "Spilar gagnvirkt H5P-efni úr innhlaðinni .h5p skrá, án þess að H5P-þjónn sé nauðsynlegur"
   },
   "settings": {
     "configure": [
       {
         "slot": "",
-        "description": "H5P iframe-ívefjunarkóði"
+        "description": "Hladdu upp eða tengdu .h5p skrá. Hún er pökkuð upp í vafranum; enginn H5P-þjónn er nauðsynlegur.",
+        "title": "H5P skrá"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Eldri iframe-ísetningarkóði",
+        "description": "Aðeins fyrir eldra efni sem setur H5P iframe inn frá öðrum vef. Hafðu autt þegar .h5p skrá er stillt hér að ofan."
       }
     ]
   }

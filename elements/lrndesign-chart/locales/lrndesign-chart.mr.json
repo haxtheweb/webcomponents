@@ -4,5 +4,8 @@
   "pieChart": "डेटा · पाय चार्ट",
   "showDataTable": "डेटा तक्ता दाखवा",
   "downloadData": "डेटा डाउनलोड करा (.csv)",
-  "series": "मालिका {n}"
+  "series": "मालिका {n}",
+  "barChartLabel": "स्तंभालेख",
+  "lineChartLabel": "रेषालेख",
+  "pieChartLabel": "वर्तुळालेख"
 }

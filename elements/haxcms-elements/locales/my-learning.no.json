@@ -129,5 +129,12 @@
   "cancel": "Avbryt",
   "clearedSite": "Læringsdataene dine for {site} ble tømt.",
   "clearedDevice": "Alle læringsdata på denne enheten ble tømt.",
-  "thisSite": "dette nettstedet"
+  "thisSite": "dette nettstedet",
+  "outlineHeading": "Fremdrift per side",
+  "allPages": "Alle sider",
+  "outlinePagesDone": "{done} av {total} sider fullført",
+  "outlinePagesCount": "{count} sider",
+  "outlinePercent": "{percent} %",
+  "outlinePercentComplete": "{percent} % fullført",
+  "outlineComplete": "Fullført"
 }

@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "An kulle wannan shafi. Buɗe shi tukuna don canza matsayin wallafawa.",
   "pageLockedUnlockToDelete": "An kulle wannan shafi. Buɗe shi tukuna don sharewa.",
   "pageDetails": "Bayanan shafi",
-  "clickToUnlock": "Danna don buɗewa"
+  "clickToUnlock": "Danna don buɗewa",
+  "pageSettings": "Saitunan shafi",
+  "editingPageSettings": "Ana gyara saitunan shafi",
+  "published": "An wallafa",
+  "draft": "Rubutun farko",
+  "locked": "A kulle",
+  "unlocked": "A buɗe",
+  "noTags": "Babu alamomi",
+  "oneTag": "Alama 1",
+  "tagCount": "Alamomi {count}",
+  "enterKey": "Enter"
 }

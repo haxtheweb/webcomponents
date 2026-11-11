@@ -22,6 +22,12 @@
         "title": "Aktívny index",
         "description": "Index aktívneho obrázka, ktorým sa začína v režime galérie."
       }
+    ],
+    "developer": [
+      {
+        "title": "Obrázky",
+        "description": "Obrázky v galérii. Tu sa neupravuje: štruktúra stránky to používa, aby vedela, ktoré bloky do nej možno pustiť."
+      }
     ]
   }
 }

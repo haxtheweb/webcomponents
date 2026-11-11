@@ -44,6 +44,8 @@
     ],
     "attributes": [],
     "slots": [],
-    "demoTags": []
+    "demoTags": [
+      "a11y-tab"
+    ]
   }
 }

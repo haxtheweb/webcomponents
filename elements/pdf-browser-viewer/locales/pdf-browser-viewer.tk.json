@@ -3,5 +3,8 @@
   "openInNewTab": "PDF-i täze goýumda aç",
   "downloadPdf": "PDF-i ýükle",
   "fullScreen": "Doly ekran",
-  "exitFullScreen": "Doly ekrandan çyk"
+  "exitFullScreen": "Doly ekrandan çyk",
+  "notSupported": "Web brauzeriňiz PDF faýllaryny görkezmek üçin sazlanmadyk ýaly. Alada etme, diňe",
+  "notSupportedLink": "PDF faýlyny ýüklemek üçin şu ýere basyň.",
+  "download": "Ýükle"
 }

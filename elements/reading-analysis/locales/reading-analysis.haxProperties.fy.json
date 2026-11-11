@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Aktiviteit",
-        "description": "Bewiis markearje: learlingen plakke elke flagge by it bewiis derfoar. Ien selektearje: learlingen kieze de iene passaazje dy't de fraach it bêste beantwurdet."
+        "description": "Bewiis markearje: learlingen plakke elke flagge by it bewiis derfoar. Ien selektearje: learlingen kieze de iene passaazje dy't de fraach it bêste beantwurdet.",
+        "options": {
+          "flag": "Bewiis markearje",
+          "one": "Ien selektearje"
+        }
       },
       {
         "property": "unit",
         "title": "Learlingen selektearje",
-        "description": "Wêr't in learling yn de tekst nei wiist. Figueren kinne altyd selektearre wurde."
+        "description": "Wêr't in learling yn de tekst nei wiist. Figueren kinne altyd selektearre wurde.",
+        "options": {
+          "sentence": "Sinnen",
+          "paragraph": "Alinea's",
+          "figure": "Allinnich figueren"
+        }
       },
       {
         "property": "answers",

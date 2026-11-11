@@ -19,5 +19,13 @@
   "copyCode": "Kopiatu kodea",
   "copied": "Kopiatu da!",
   "invalidCode": "Hau ez da pertsonaia-kode bat.",
-  "preview": "Pertsonaiaren aurrebista"
+  "preview": "Pertsonaiaren aurrebista",
+  "previous": "Aurreko {name}",
+  "next": "Hurrengo {name}",
+  "variant": "{total}tik {current}",
+  "save": "Gorde",
+  "cancel": "Utzi",
+  "unsavedChanges": "Gorde gabeko aldaketak",
+  "noUnsavedChanges": "Gorde gabeko aldaketarik ez",
+  "codeHelp": "Itsatsi kode bat pertsonaia kargatzeko, edo kopiatu hau edonon erabiltzeko."
 }

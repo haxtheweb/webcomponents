@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "NodeJS-ujo"
+    "title": "NodeJS-ujo",
+    "description": ""
   },
   "settings": {
     "configure": [

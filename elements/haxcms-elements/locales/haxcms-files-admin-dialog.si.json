@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "මුල් ගොනු ප්‍රතිස්ථාපනය කරන්න",
   "newName": "නව නම",
   "deleteAction": "මකන්න",
-  "renameAction": "නැවත නම් කරන්න"
+  "renameAction": "නැවත නම් කරන්න",
+  "bulkOverwriteConfirm": "ගොනු {count} ක් {action} කරන්නද? මෙය මුල් ගොනු ප්‍රතිස්ථාපනය කරන අතර අහෝසි කළ නොහැක.",
+  "actionScale": "පරිමාණය",
+  "actionRotate": "කරකවන්න",
+  "actionTransform": "පරිවර්තනය",
+  "actionConvertJpg": "JPG බවට පරිවර්තනය",
+  "actionCompress": "සම්පීඩනය"
 }

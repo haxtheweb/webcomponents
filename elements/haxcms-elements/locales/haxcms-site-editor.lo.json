@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "ບໍ່ສາມາດດຳເນີນການໃຫ້ສຳເລັດໄດ້ ({status})",
   "normalizedPageSlugs": "ປັບ slug ຂອງ {count} ໜ້າໃຫ້ເປັນມາດຕະຖານແລ້ວ",
   "createdTitle": "ສ້າງ {title} ແລ້ວ!",
-  "processing": "ກຳລັງປະມວນຜົນ"
+  "processing": "ກຳລັງປະມວນຜົນ",
+  "saveTimedOut": "ການບັນທຶກໝົດເວລາ: ເຊີບເວີບໍ່ຕອບສະໜອງ. ການປ່ຽນແປງຂອງທ່ານຖືກເກັບໄວ້ທີ່ນີ້, ແຕ່ເຊີບເວີອາດຍັງບັນທຶກສຳເລັດຢູ່."
 }

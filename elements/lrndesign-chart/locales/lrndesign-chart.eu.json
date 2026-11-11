@@ -4,5 +4,8 @@
   "pieChart": "Datuak · Sektore-grafikoa",
   "showDataTable": "Erakutsi datu-taula",
   "downloadData": "Deskargatu datuak (.csv)",
-  "series": "{n}. seriea"
+  "series": "{n}. seriea",
+  "barChartLabel": "barra-grafikoa",
+  "lineChartLabel": "lerro-grafikoa",
+  "pieChartLabel": "sektore-grafikoa"
 }

@@ -1,5 +1,6 @@
 {
   "simulation": "Whakatauira",
   "fullScreen": "Mata katoa",
-  "exitFullScreen": "Puta i te mata katoa"
+  "exitFullScreen": "Puta i te mata katoa",
+  "player": "Kaiwhakatākaro Unity WebGL"
 }

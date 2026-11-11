@@ -35,5 +35,12 @@
   "youTubeStartLoading": "اضغط على تشغيل.",
   "youTubeTranscriptLabel": "سيتم تحميل النص المكتوب بمجرد تشغيل الوسائط.",
   "audioDescriptionLabel": "الوصف الصوتي",
-  "openOnYouTube": "فتح على YouTube"
+  "openOnYouTube": "فتح على YouTube",
+  "interactiveLabel": "تفاعلي",
+  "layoutLabel": "التخطيط",
+  "sideLabel": "جانب",
+  "belowLabel": "أسفل",
+  "leftLabel": "يسار",
+  "rightLabel": "يمين",
+  "hideTranscriptLabel": "إخفاء النص المكتوب"
 }

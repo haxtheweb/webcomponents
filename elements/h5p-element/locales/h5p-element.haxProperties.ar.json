@@ -1,13 +1,20 @@
 {
   "gizmo": {
     "title": "H5P",
-    "description": "غلاف H5P لتحميل ملفات .h5p وعرضها"
+    "description": "يشغّل محتوى H5P التفاعلي من ملف .h5p مرفوع، دون الحاجة إلى خادم H5P"
   },
   "settings": {
     "configure": [
       {
         "slot": "",
-        "description": "شيفرة تضمين iframe الخاصة بـ H5P"
+        "description": "ارفع ملف .h5p أو اربطه. يتم فك ضغطه في المتصفح؛ ولا حاجة إلى خادم H5P.",
+        "title": "ملف H5P"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "رمز تضمين iframe القديم",
+        "description": "فقط للمحتوى القديم الذي يضمّن iframe من H5P من موقع آخر. اتركه فارغًا عند تعيين ملف .h5p أعلاه."
       }
     ]
   }

@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "点一记或者鼠标停勒浪厢放爆炸声音",
+  "soundDisabled": "爆炸视觉效果（声音关脱了）",
+  "explosionAnimation": "爆炸动画",
+  "explosionAriaLabel": "爆炸动画 {state} {sound}。点一记切换。",
+  "playing": "勒勒放",
+  "stopped": "停脱了",
+  "withSound": "有声音",
+  "muted": "（静音）"
+}

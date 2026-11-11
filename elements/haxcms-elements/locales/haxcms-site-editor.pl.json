@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Nie można wykonać operacji ({status})",
   "normalizedPageSlugs": "Znormalizowano slugi stron: {count}",
   "createdTitle": "Utworzono {title}!",
-  "processing": "Przetwarzanie"
+  "processing": "Przetwarzanie",
+  "saveTimedOut": "Przekroczono czas zapisu: serwer nie odpowiedział. Twoje zmiany są zachowane tutaj, ale serwer może jeszcze dokończyć zapisywanie."
 }

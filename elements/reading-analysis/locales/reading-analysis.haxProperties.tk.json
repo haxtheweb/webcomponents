@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Işjeňlik",
-        "description": "Subutnamany belle: okuwçylar her baýdakjygy onuň subutnamasynyň ýanynda goýýarlar. Birini saýla: okuwçylar soraga iň gowy jogap berýän ýeke-täk bölegi saýlaýarlar."
+        "description": "Subutnamany belle: okuwçylar her baýdakjygy onuň subutnamasynyň ýanynda goýýarlar. Birini saýla: okuwçylar soraga iň gowy jogap berýän ýeke-täk bölegi saýlaýarlar.",
+        "options": {
+          "flag": "Subutnamalary belle",
+          "one": "Birini saýla"
+        }
       },
       {
         "property": "unit",
         "title": "Okuwçylar saýlaýar",
-        "description": "Okuwçynyň tekstde näme görkezýändigi. Suratlary hemişe saýlap bolýar."
+        "description": "Okuwçynyň tekstde näme görkezýändigi. Suratlary hemişe saýlap bolýar.",
+        "options": {
+          "sentence": "Sözlemler",
+          "paragraph": "Abzaslar",
+          "figure": "Diňe suratlar"
+        }
       },
       {
         "property": "answers",

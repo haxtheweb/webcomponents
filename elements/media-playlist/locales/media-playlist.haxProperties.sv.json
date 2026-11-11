@@ -15,6 +15,12 @@
         "title": "Kurs",
         "description": "Kursen som den här spellistan är avsedd för (kursidentifierare eller URL)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Media",
+        "description": "Videorna och ljudet i spellistan. Redigeras inte här: sidöversikten använder det för att veta vilka block som kan släppas i den."
+      }
     ]
   }
 }

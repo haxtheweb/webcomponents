@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Veikla",
-        "description": "Žymėti įrodymus: besimokantieji priklijuoja kiekvieną vėliavėlę šalia jos įrodymo. Pasirinkti vieną: besimokantieji pasirenka vienintelę ištrauką, kuri geriausiai atsako į klausimą."
+        "description": "Žymėti įrodymus: besimokantieji priklijuoja kiekvieną vėliavėlę šalia jos įrodymo. Pasirinkti vieną: besimokantieji pasirenka vienintelę ištrauką, kuri geriausiai atsako į klausimą.",
+        "options": {
+          "flag": "Pažymėti įrodymus",
+          "one": "Pasirinkti vieną"
+        }
       },
       {
         "property": "unit",
         "title": "Besimokantieji pasirenka",
-        "description": "Ką besimokantysis nurodo tekste. Paveikslus visada galima pasirinkti."
+        "description": "Ką besimokantysis nurodo tekste. Paveikslus visada galima pasirinkti.",
+        "options": {
+          "sentence": "Sakiniai",
+          "paragraph": "Pastraipos",
+          "figure": "Tik paveikslai"
+        }
       },
       {
         "property": "answers",

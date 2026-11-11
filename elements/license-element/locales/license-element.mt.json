@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title} minn {creator} huwa liċenzjat taħt {license}.",
   "permissionsBeyondScope": "Permessi lil hinn mill-ambitu ta' din il-liċenzja huma disponibbli {link}.",
   "author": "(awtur)",
-  "onTheLicensingDetailsPage": "fil-paġna tad-dettalji tal-liċenzja"
+  "onTheLicensingDetailsPage": "fil-paġna tad-dettalji tal-liċenzja",
+  "licenseLabel": "Liċenzja"
 }

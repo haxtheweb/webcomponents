@@ -1,4 +1,9 @@
 {
   "audio": "Iaudiyo",
-  "openOnSpotify": "Vula kwi-Spotify kwithebhu entsha"
+  "openOnSpotify": "Vula kwi-Spotify kwithebhu entsha",
+  "embedTitle": "Ukufakwa kwe-Spotify",
+  "trackEmbedTitle": "Ukufakwa kwengoma ye-Spotify",
+  "albumEmbedTitle": "Ukufakwa kwe-albham ye-Spotify",
+  "playlistEmbedTitle": "Ukufakwa koluhlu lokudlala lwe-Spotify",
+  "artistEmbedTitle": "Ukufakwa kwegcisa le-Spotify"
 }

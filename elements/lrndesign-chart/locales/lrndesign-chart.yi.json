@@ -4,5 +4,8 @@
   "pieChart": "דאַטן · קרייַז־דיאַגראַם",
   "showDataTable": "ווײַזן די דאַטן־טאַבעלע",
   "downloadData": "אראפּלאָדן דאַטן (.csv)",
-  "series": "סעריע {n}"
+  "series": "סעריע {n}",
+  "barChartLabel": "סטרײַפֿן־דיאַגראַם",
+  "lineChartLabel": "ליניע־דיאַגראַם",
+  "pieChartLabel": "פּײַ־דיאַגראַם"
 }

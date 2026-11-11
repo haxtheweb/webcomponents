@@ -555,6 +555,8 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
             description:
               "Select the page to draw random content from. The element will randomly display one of the top-level HTML elements from this page.",
             inputMethod: "select",
+            // filled with the site's pages when the editor opens (haxHooks)
+            itemsList: [],
             required: true,
           },
         ],

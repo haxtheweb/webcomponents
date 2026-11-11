@@ -129,5 +129,12 @@
   "cancel": "Rhoxisa",
   "clearedSite": "Idatha yakho yokufunda ye{site} icinyiwe.",
   "clearedDevice": "Yonke idatha yokufunda kwesi sixhobo icinyiwe.",
-  "thisSite": "le sayithi"
+  "thisSite": "le sayithi",
+  "outlineHeading": "Inkqubela ngephepha",
+  "allPages": "Onke amaphepha",
+  "outlinePagesDone": "{done} kwangama-{total} amaphepha agqityiwe",
+  "outlinePagesCount": "amaphepha ama-{count}",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% kugqityiwe",
+  "outlineComplete": "Kugqityiwe"
 }

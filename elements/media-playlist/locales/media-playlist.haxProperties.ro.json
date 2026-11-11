@@ -15,6 +15,12 @@
         "title": "Curs",
         "description": "Cursul căruia îi este destinată această listă de redare (identificatorul sau URL-ul cursului)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Media",
+        "description": "Videoclipurile și sunetul din lista de redare. Nu se editează aici: structura paginii o folosește pentru a ști ce blocuri pot fi plasate în ea."
+      }
     ]
   }
 }

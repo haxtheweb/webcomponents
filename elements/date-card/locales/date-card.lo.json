@@ -1,0 +1,8 @@
+{
+  "ordinalOne": "",
+  "ordinalTwo": "",
+  "ordinalFew": "",
+  "ordinalOther": "",
+  "fromTimeToTime": "ຕັ້ງແຕ່ {start} - {end}",
+  "atTime": "ເວລາ {start}"
+}

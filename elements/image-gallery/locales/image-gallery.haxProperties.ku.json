@@ -22,6 +22,12 @@
         "title": "Endeksa çalak",
         "description": "Endeksa wêneyê çalak ku di moda galeriyê de pê dest pê bike."
       }
+    ],
+    "developer": [
+      {
+        "title": "Wêne",
+        "description": "Wêneyên di galeriyê de. Li vir nayê sererastkirin: xêzkirina rûpelê wê bi kar tîne da ku bizane kîjan blok dikarin têkevin hundir."
+      }
     ]
   }
 }

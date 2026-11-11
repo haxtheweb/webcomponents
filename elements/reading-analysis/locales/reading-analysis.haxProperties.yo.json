@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Iṣẹ́ ṣíṣe",
-        "description": "Fi àsíá sí ẹ̀rí: àwọn akẹ́kọ̀ọ́ máa ń gbé àsíá kọ̀ọ̀kan sí ẹ̀gbẹ́ ẹ̀rí rẹ̀. Yan ọ̀kan: àwọn akẹ́kọ̀ọ́ máa ń yan apá kan ṣoṣo tí ó dáhùn ìbéèrè náà jù lọ."
+        "description": "Fi àsíá sí ẹ̀rí: àwọn akẹ́kọ̀ọ́ máa ń gbé àsíá kọ̀ọ̀kan sí ẹ̀gbẹ́ ẹ̀rí rẹ̀. Yan ọ̀kan: àwọn akẹ́kọ̀ọ́ máa ń yan apá kan ṣoṣo tí ó dáhùn ìbéèrè náà jù lọ.",
+        "options": {
+          "flag": "Sàmì ẹ̀rí",
+          "one": "Yan ọ̀kan"
+        }
       },
       {
         "property": "unit",
         "title": "Ohun tí àwọn akẹ́kọ̀ọ́ ń yàn",
-        "description": "Ohun tí akẹ́kọ̀ọ́ ń tọ́ka sí nínú ìwé kíkà. A lè yan àwọn àwòrán nígbà gbogbo."
+        "description": "Ohun tí akẹ́kọ̀ọ́ ń tọ́ka sí nínú ìwé kíkà. A lè yan àwọn àwòrán nígbà gbogbo.",
+        "options": {
+          "sentence": "Àwọn gbólóhùn",
+          "paragraph": "Àwọn ìpínrọ̀",
+          "figure": "Àwọn àwòrán nìkan"
+        }
       },
       {
         "property": "answers",

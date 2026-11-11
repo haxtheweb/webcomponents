@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "ウェブコンポーネントのドキュメントプレーヤー"
+    "title": "ウェブコンポーネントのドキュメントプレーヤー",
+    "description": ""
   },
   "settings": {
     "configure": [

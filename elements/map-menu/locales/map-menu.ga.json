@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Níl an leathanach foilsithe",
   "progressDone": "Déanta",
   "progressInProgress": "Ar siúl",
-  "progressVisited": "Tugtha cuairt"
+  "progressVisited": "Tugtha cuairt",
+  "progressPercentComplete": "{percent}% críochnaithe",
+  "progressComplete": "Críochnaithe"
 }

@@ -129,5 +129,12 @@
   "cancel": "Jooji",
   "clearedSite": "Xogta waxbarashadaada ee {site} waa la nadiifiyay.",
   "clearedDevice": "Dhammaan xogta waxbarashada qalabkan waa la nadiifiyay.",
-  "thisSite": "goobtan"
+  "thisSite": "goobtan",
+  "outlineHeading": "Horumarka boggaba",
+  "allPages": "Dhammaan boggagga",
+  "outlinePagesDone": "{done} ka mid ah {total} bog ayaa dhammaaday",
+  "outlinePagesCount": "{count} bog",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% dhammaystiran",
+  "outlineComplete": "Dhammaystiran"
 }

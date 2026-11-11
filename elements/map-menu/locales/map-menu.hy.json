@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Էջը հրապարակված չէ",
   "progressDone": "Ավարտված է",
   "progressInProgress": "Ընթացքի մեջ",
-  "progressVisited": "Այցելած"
+  "progressVisited": "Այցելած",
+  "progressPercentComplete": "{percent}% ավարտված",
+  "progressComplete": "Ավարտված"
 }

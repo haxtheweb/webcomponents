@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Cofa okanye shenxisa ukudlala isandi sokugqabhuka",
+  "soundDisabled": "Isiphumo sokugqabhuka esibonwayo (isandi sivaliwe)",
+  "explosionAnimation": "ukuhambisa kokugqabhuka",
+  "explosionAriaLabel": "Ukuhambisa kokugqabhuka {state} {sound}. Cofa ukutshintsha.",
+  "playing": "kuyadlala",
+  "stopped": "kumisiwe",
+  "withSound": "ngesandi",
+  "muted": "(kuthuliswe)"
+}

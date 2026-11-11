@@ -15,6 +15,12 @@
         "title": "Yachay kurso",
         "description": "Kay uyarina sinri maypaq kasqan yachay kurso (kursopa riqsichiynin utaq URL)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Willakuy",
+        "description": "Waqachina siq'ipi videokuna audiokunapas. Kaypi mana allichasqachu: raphip siq'inin kayta llamk'achin yachanapaq mayqin bloquekuna ukhuman churakunman."
+      }
     ]
   }
 }

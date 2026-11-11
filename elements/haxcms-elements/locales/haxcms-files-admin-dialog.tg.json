@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Иваз кардани файлҳои аслӣ",
   "newName": "Номи нав",
   "deleteAction": "Нест кардан",
-  "renameAction": "Тағйири ном"
+  "renameAction": "Тағйири ном",
+  "bulkOverwriteConfirm": "{action} барои {count} файл? Ин файлҳои аслиро иваз мекунад ва онро бозгардонидан мумкин нест.",
+  "actionScale": "Тағйири андоза",
+  "actionRotate": "Гардонидан",
+  "actionTransform": "Табдил додан",
+  "actionConvertJpg": "Табдил ба JPG",
+  "actionCompress": "Фишурдан"
 }

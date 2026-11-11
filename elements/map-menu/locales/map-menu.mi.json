@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Kāore anō te whārangi kia whakaputaina",
   "progressDone": "Kua oti",
   "progressInProgress": "E haere ana",
-  "progressVisited": "Kua toro atu"
+  "progressVisited": "Kua toro atu",
+  "progressPercentComplete": "{percent}% kua oti",
+  "progressComplete": "Kua oti"
 }

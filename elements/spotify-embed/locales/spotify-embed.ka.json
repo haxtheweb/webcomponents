@@ -1,4 +1,9 @@
 {
   "audio": "აუდიო",
-  "openOnSpotify": "გახსენით Spotify ახალ ჩანართში"
+  "openOnSpotify": "გახსენით Spotify ახალ ჩანართში",
+  "embedTitle": "Spotify-ის ჩაშენება",
+  "trackEmbedTitle": "Spotify-ის ტრეკის ჩაშენება",
+  "albumEmbedTitle": "Spotify-ის ალბომის ჩაშენება",
+  "playlistEmbedTitle": "Spotify-ის პლეილისტის ჩაშენება",
+  "artistEmbedTitle": "Spotify-ის შემსრულებლის ჩაშენება"
 }

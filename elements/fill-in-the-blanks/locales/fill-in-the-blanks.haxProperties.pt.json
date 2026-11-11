@@ -37,6 +37,16 @@
         "title": "Nome do questionário",
         "description": "Nome do questionário repassado para identificar este item em ambientes baseados em xAPI"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Recolhível",
+        "description": "Mostra esta pergunta como uma linha que abre e fecha. Abrir uma fecha as outras perguntas recolhíveis ao lado."
+      },
+      {
+        "title": "Iniciar recolhida",
+        "description": "Quando recolhível, começa como uma linha fechada que mostra apenas a pergunta e seu status."
+      }
     ]
   }
 }

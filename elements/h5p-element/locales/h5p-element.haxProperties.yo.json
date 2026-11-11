@@ -1,13 +1,20 @@
 {
   "gizmo": {
     "title": "H5P",
-    "description": "Àpò H5P fún gbígbé wọlé àti fífi àwọn fáìlì .h5p hàn"
+    "description": "Ń ṣe àfihàn àkóónú alájọṣepọ̀ H5P láti inú fáìlì .h5p tí a gbé sókè, láìsí àìní olupin H5P"
   },
   "settings": {
     "configure": [
       {
         "slot": "",
-        "description": "Kóòdù ìfisínú iframe H5P"
+        "description": "Gbé fáìlì .h5p sókè tàbí so ó mọ́. A ṣí i nínú aṣàwákiri; kò nílò olupin H5P kankan.",
+        "title": "Fáìlì H5P"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kóòdù ìfisíbẹ̀ iframe àtijọ́",
+        "description": "Fún àkóónú àtijọ́ tí ó fi iframe H5P láti ojú-òpó mìíràn sínú nìkan. Fi sílẹ̀ ní òfo nígbà tí a bá ti ṣètò fáìlì .h5p lókè."
       }
     ]
   }

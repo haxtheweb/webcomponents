@@ -1,4 +1,9 @@
 {
   "audio": "Âm thanh",
-  "openOnSpotify": "Mở trên Spotify trong tab mới"
+  "openOnSpotify": "Mở trên Spotify trong tab mới",
+  "embedTitle": "Nhúng Spotify",
+  "trackEmbedTitle": "Nhúng bài hát Spotify",
+  "albumEmbedTitle": "Nhúng album Spotify",
+  "playlistEmbedTitle": "Nhúng danh sách phát Spotify",
+  "artistEmbedTitle": "Nhúng nghệ sĩ Spotify"
 }

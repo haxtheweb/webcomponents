@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "NodeJS ကွန်တိန်နာ"
+    "title": "NodeJS ကွန်တိန်နာ",
+    "description": ""
   },
   "settings": {
     "configure": [

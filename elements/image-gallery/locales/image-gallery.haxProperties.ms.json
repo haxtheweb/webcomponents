@@ -22,6 +22,12 @@
         "title": "Indeks aktif",
         "description": "Indeks imej aktif untuk dimulakan dalam mod galeri."
       }
+    ],
+    "developer": [
+      {
+        "title": "Imej",
+        "description": "Imej dalam galeri. Tidak disunting di sini: rangka halaman menggunakannya untuk mengetahui blok yang boleh dilepaskan ke dalamnya."
+      }
     ]
   }
 }

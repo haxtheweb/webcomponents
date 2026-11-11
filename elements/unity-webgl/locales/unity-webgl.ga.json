@@ -1,5 +1,6 @@
 {
   "simulation": "Insamhladh",
   "fullScreen": "Scáileán iomlán",
-  "exitFullScreen": "Scoir den scáileán iomlán"
+  "exitFullScreen": "Scoir den scáileán iomlán",
+  "player": "Seinnteoir Unity WebGL"
 }

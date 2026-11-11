@@ -22,6 +22,12 @@
         "title": "Atọ́ka tí ń ṣiṣẹ́",
         "description": "Atọ́ka àwòrán tí a ó fi bẹ̀rẹ̀ ní ipò àkójọ àwòrán."
       }
+    ],
+    "developer": [
+      {
+        "title": "Àwọn àwòrán",
+        "description": "Àwọn àwòrán inú àkójọ àwòrán. A kì í ṣàtúnṣe rẹ̀ níbí: ìlapa ojú-ìwé ń lò ó láti mọ àwọn búlọ́ọ̀kù tí a lè jù sínú rẹ̀."
+      }
     ]
   }
 }

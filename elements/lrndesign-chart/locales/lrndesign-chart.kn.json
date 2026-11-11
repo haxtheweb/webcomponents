@@ -4,5 +4,8 @@
   "pieChart": "ಡೇಟಾ · ಪೈ ಚಾರ್ಟ್",
   "showDataTable": "ಡೇಟಾ ಕೋಷ್ಟಕ ತೋರಿಸಿ",
   "downloadData": "ಡೇಟಾ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ (.csv)",
-  "series": "ಸರಣಿ {n}"
+  "series": "ಸರಣಿ {n}",
+  "barChartLabel": "ಬಾರ್ ಚಾರ್ಟ್",
+  "lineChartLabel": "ಲೈನ್ ಚಾರ್ಟ್",
+  "pieChartLabel": "ಪೈ ಚಾರ್ಟ್"
 }

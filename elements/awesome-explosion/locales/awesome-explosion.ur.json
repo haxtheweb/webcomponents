@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "دھماکے کی آواز چلانے کے لیے کلک کریں یا ماؤس اوپر لائیں",
+  "soundDisabled": "بصری دھماکے کا اثر (آواز بند)",
+  "explosionAnimation": "دھماکے کی اینیمیشن",
+  "explosionAriaLabel": "دھماکے کی اینیمیشن {state} {sound}۔ تبدیل کرنے کے لیے کلک کریں۔",
+  "playing": "چل رہی ہے",
+  "stopped": "رکی ہوئی ہے",
+  "withSound": "آواز کے ساتھ",
+  "muted": "(خاموش)"
+}

@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title} eftir {creator} er gefið út með leyfinu {license}.",
   "permissionsBeyondScope": "Heimildir umfram gildissvið þessa leyfis eru fáanlegar {link}.",
   "author": "(höfundur)",
-  "onTheLicensingDetailsPage": "á síðu með upplýsingum um leyfið"
+  "onTheLicensingDetailsPage": "á síðu með upplýsingum um leyfið",
+  "licenseLabel": "Leyfi"
 }

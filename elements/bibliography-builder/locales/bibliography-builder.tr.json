@@ -4,5 +4,6 @@
   "exportCitations": "Kaynakçaları Dışa Aktar",
   "copy": "Kopyala",
   "exportCitationFormat": "Kaynakça dışa aktarma biçimi",
-  "selectCitationFormatBelow": "Aşağıdan bir kaynakça biçimi seçin"
+  "selectCitationFormatBelow": "Aşağıdan bir kaynakça biçimi seçin",
+  "addCitationToBibliography": "Kaynakçaya atıf ekle"
 }

@@ -35,5 +35,12 @@
   "youTubeStartLoading": "Cindezela udlale.",
   "youTubeTranscriptLabel": "Umbhalo uzolayisha uma imidiya iqala ukudlala.",
   "audioDescriptionLabel": "Incazelo ezwakalayo",
-  "openOnYouTube": "Vula ku-YouTube"
+  "openOnYouTube": "Vula ku-YouTube",
+  "interactiveLabel": "okusebenzisanayo",
+  "layoutLabel": "Ukuhleleka",
+  "sideLabel": "Eceleni",
+  "belowLabel": "Ngezansi",
+  "leftLabel": "Kwesokunxele",
+  "rightLabel": "Kwesokudla",
+  "hideTranscriptLabel": "Fihla umbhalo oloyiwe"
 }

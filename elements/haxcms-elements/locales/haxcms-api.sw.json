@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Ubadilishaji umeshindwa.",
   "PARAM_REQUIRED": "Thamani inayohitajika haipo: {param}.",
   "INVALID_REQUEST": "Ombi si sahihi.",
-  "PARAM_INVALID": "Thamani si sahihi: {param}."
+  "PARAM_INVALID": "Thamani si sahihi: {param}.",
+  "BLOCK_RATE_LIMITED": "Mabadiliko mengi mno ya maudhui kwenye tovuti hii kwa sasa. Jaribu tena baada ya sekunde {retryAfter}."
 }

@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title} oleh {creator} dilisensikan di bawah {license}.",
   "permissionsBeyondScope": "Izin di luar cakupan lisensi ini tersedia {link}.",
   "author": "(penulis)",
-  "onTheLicensingDetailsPage": "di halaman detail lisensi"
+  "onTheLicensingDetailsPage": "di halaman detail lisensi",
+  "licenseLabel": "Lisensi"
 }

@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Эта страница заблокирована. Сначала разблокируйте её, чтобы изменить статус публикации.",
   "pageLockedUnlockToDelete": "Эта страница заблокирована. Сначала разблокируйте её, чтобы удалить.",
   "pageDetails": "Детали страницы",
-  "clickToUnlock": "Нажмите для разблокировки"
+  "clickToUnlock": "Нажмите для разблокировки",
+  "pageSettings": "Настройки страницы",
+  "editingPageSettings": "Редактирование настроек страницы",
+  "published": "Опубликовано",
+  "draft": "Черновик",
+  "locked": "Заблокировано",
+  "unlocked": "Разблокировано",
+  "noTags": "Нет тегов",
+  "oneTag": "1 тег",
+  "tagCount": "Тегов: {count}",
+  "enterKey": "Enter"
 }

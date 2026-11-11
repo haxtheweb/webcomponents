@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "تبدیلی ناکام ہو گئی۔",
   "PARAM_REQUIRED": "اک ضروری قدر موجود نہیں: {param}۔",
   "INVALID_REQUEST": "غلط درخواست۔",
-  "PARAM_INVALID": "غلط قدر: {param}۔"
+  "PARAM_INVALID": "غلط قدر: {param}۔",
+  "BLOCK_RATE_LIMITED": "ایس ویلے ایس سائٹ تے مواد وچ بہت زیادہ تبدیلیاں ہو چکیاں نیں۔ {retryAfter} سیکنڈ بعد دوبارہ کوشش کرو۔"
 }

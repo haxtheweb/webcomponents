@@ -1,4 +1,9 @@
 {
   "audio": "ສຽງ",
-  "openOnSpotify": "ເປີດໃນ Spotify ໃນແຖບໃໝ່"
+  "openOnSpotify": "ເປີດໃນ Spotify ໃນແຖບໃໝ່",
+  "embedTitle": "ການຝັງ Spotify",
+  "trackEmbedTitle": "ການຝັງເພງ Spotify",
+  "albumEmbedTitle": "ການຝັງອັນລະບັ້ມ Spotify",
+  "playlistEmbedTitle": "ການຝັງເພລຍລິດ Spotify",
+  "artistEmbedTitle": "ການຝັງສິນລະປິນ Spotify"
 }

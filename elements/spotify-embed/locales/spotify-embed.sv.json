@@ -1,4 +1,9 @@
 {
   "audio": "Ljud",
-  "openOnSpotify": "Öppna i Spotify i en ny flik"
+  "openOnSpotify": "Öppna i Spotify i en ny flik",
+  "embedTitle": "Spotify-inbäddning",
+  "trackEmbedTitle": "Spotify-inbäddning av låt",
+  "albumEmbedTitle": "Spotify-inbäddning av album",
+  "playlistEmbedTitle": "Spotify-inbäddning av spellista",
+  "artistEmbedTitle": "Spotify-inbäddning av artist"
 }

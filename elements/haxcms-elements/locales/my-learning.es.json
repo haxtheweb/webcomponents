@@ -129,5 +129,12 @@
   "cancel": "Cancelar",
   "clearedSite": "Se borraron tus datos de aprendizaje de {site}.",
   "clearedDevice": "Se borraron todos los datos de aprendizaje de este dispositivo.",
-  "thisSite": "este sitio"
+  "thisSite": "este sitio",
+  "outlineHeading": "Progreso por página",
+  "allPages": "Todas las páginas",
+  "outlinePagesDone": "{done} de {total} páginas completadas",
+  "outlinePagesCount": "{count} páginas",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% completado",
+  "outlineComplete": "Completado"
 }

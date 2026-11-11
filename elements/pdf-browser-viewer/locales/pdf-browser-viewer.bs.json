@@ -3,5 +3,8 @@
   "openInNewTab": "Otvori PDF u novoj kartici",
   "downloadPdf": "Preuzmi PDF",
   "fullScreen": "Cijeli ekran",
-  "exitFullScreen": "Izađi iz prikaza preko cijelog ekrana"
+  "exitFullScreen": "Izađi iz prikaza preko cijelog ekrana",
+  "notSupported": "Čini se da vaš web preglednik nije podešen za prikaz PDF datoteka. Nema problema, samo",
+  "notSupportedLink": "kliknite ovdje da preuzmete PDF datoteku.",
+  "download": "Preuzmi"
 }

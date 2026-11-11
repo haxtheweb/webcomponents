@@ -19,5 +19,13 @@
   "copyCode": "Kopijuoti kodą",
   "copied": "Nukopijuota!",
   "invalidCode": "Tai nėra veikėjo kodas.",
-  "preview": "Veikėjo peržiūra"
+  "preview": "Veikėjo peržiūra",
+  "previous": "Ankstesnis: {name}",
+  "next": "Kitas: {name}",
+  "variant": "{current} iš {total}",
+  "save": "Išsaugoti",
+  "cancel": "Atšaukti",
+  "unsavedChanges": "Neišsaugoti pakeitimai",
+  "noUnsavedChanges": "Nėra neišsaugotų pakeitimų",
+  "codeHelp": "Įklijuokite kodą, kad įkeltumėte personažą, arba nukopijuokite šį, kad panaudotumėte bet kur."
 }

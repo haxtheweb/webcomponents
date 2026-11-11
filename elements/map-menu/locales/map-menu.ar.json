@@ -2,5 +2,7 @@
   "pageIsUnpublished": "الصفحة غير منشورة",
   "progressDone": "تم",
   "progressInProgress": "قيد التقدم",
-  "progressVisited": "تمت الزيارة"
+  "progressVisited": "تمت الزيارة",
+  "progressPercentComplete": "اكتمل {percent}%",
+  "progressComplete": "مكتمل"
 }

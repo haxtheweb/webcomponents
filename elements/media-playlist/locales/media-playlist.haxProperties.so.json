@@ -15,6 +15,12 @@
         "title": "Koorso",
         "description": "Koorsada liiskan loogu talagalay (aqoonsiga koorsada ama URL)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Warbaahin",
+        "description": "Fiidiyowyada iyo codka liiska ciyaarka. Halkan laguma beddelo: qorshaha boggu wuxuu u isticmaalaa si uu u ogaado baloogyada la dhex dhigi karo."
+      }
     ]
   }
 }

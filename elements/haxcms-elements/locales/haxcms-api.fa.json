@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "تبدیل ناموفق بود.",
   "PARAM_REQUIRED": "یک مقدار الزامی وارد نشده است: {param}.",
   "INVALID_REQUEST": "درخواست نامعتبر است.",
-  "PARAM_INVALID": "مقدار نامعتبر: {param}."
+  "PARAM_INVALID": "مقدار نامعتبر: {param}.",
+  "BLOCK_RATE_LIMITED": "اکنون تغییرات محتوای بسیار زیادی در این سایت انجام می‌شود. {retryAfter} ثانیه دیگر دوباره تلاش کنید."
 }

@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "活动",
-        "description": "标记证据：学习者将每个标记放在其证据旁。单选：学习者选择最能回答问题的唯一段落。"
+        "description": "标记证据：学习者将每个标记放在其证据旁。单选：学习者选择最能回答问题的唯一段落。",
+        "options": {
+          "flag": "标记证据",
+          "one": "选择一项"
+        }
       },
       {
         "property": "unit",
         "title": "学习者选择",
-        "description": "学习者在阅读材料中指向的对象。图片始终可以选择。"
+        "description": "学习者在阅读材料中指向的对象。图片始终可以选择。",
+        "options": {
+          "sentence": "句子",
+          "paragraph": "段落",
+          "figure": "仅图表"
+        }
       },
       {
         "property": "answers",

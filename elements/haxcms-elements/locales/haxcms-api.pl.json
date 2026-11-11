@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Konwersja nie powiodła się.",
   "PARAM_REQUIRED": "Brak wymaganej wartości: {param}.",
   "INVALID_REQUEST": "Nieprawidłowe żądanie.",
-  "PARAM_INVALID": "Nieprawidłowa wartość: {param}."
+  "PARAM_INVALID": "Nieprawidłowa wartość: {param}.",
+  "BLOCK_RATE_LIMITED": "Zbyt wiele zmian treści w tej witrynie w tej chwili. Spróbuj ponownie za {retryAfter} s."
 }

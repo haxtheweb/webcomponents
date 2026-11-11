@@ -117,6 +117,13 @@ class ProgressDonut extends LrndesignPie {
         ],
         advanced: [],
       },
+      demoSchema: [
+        {
+          tag: "progress-donut",
+          properties: {},
+          content: "",
+        },
+      ],
     };
   }
   // properties available to the custom element for data binding

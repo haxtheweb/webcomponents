@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title} vu(n) {creator} ass lizenzéiert ënner enger {license}.",
   "permissionsBeyondScope": "Rechter iwwer de Kader vun dëser Lizenz eraus sinn {link} disponibel.",
   "author": "(Auteur)",
-  "onTheLicensingDetailsPage": "op der Säit mat den Detailer zur Lizenz"
+  "onTheLicensingDetailsPage": "op der Säit mat den Detailer zur Lizenz",
+  "licenseLabel": "Lizenz"
 }

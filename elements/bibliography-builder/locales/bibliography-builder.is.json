@@ -4,5 +4,6 @@
   "exportCitations": "Flytja út tilvitnanir",
   "copy": "Afrita",
   "exportCitationFormat": "Snið tilvitnana við útflutning",
-  "selectCitationFormatBelow": "Veldu snið tilvitnana hér fyrir neðan"
+  "selectCitationFormatBelow": "Veldu snið tilvitnana hér fyrir neðan",
+  "addCitationToBibliography": "Bæta tilvitnun við heimildaskrá"
 }

@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Хөрвүүлэлт амжилтгүй боллоо.",
   "PARAM_REQUIRED": "Шаардлагатай утга дутуу байна: {param}.",
   "INVALID_REQUEST": "Хүсэлт буруу байна.",
-  "PARAM_INVALID": "Буруу утга: {param}."
+  "PARAM_INVALID": "Буруу утга: {param}.",
+  "BLOCK_RATE_LIMITED": "Одоогоор энэ сайтад агуулгын өөрчлөлт хэт их байна. {retryAfter} секундийн дараа дахин оролдоно уу."
 }

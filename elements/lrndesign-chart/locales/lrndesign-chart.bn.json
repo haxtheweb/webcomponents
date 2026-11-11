@@ -4,5 +4,8 @@
   "pieChart": "ডেটা · পাই চার্ট",
   "showDataTable": "ডেটা টেবিল দেখান",
   "downloadData": "ডেটা ডাউনলোড করুন (.csv)",
-  "series": "সিরিজ {n}"
+  "series": "সিরিজ {n}",
+  "barChartLabel": "বার চার্ট",
+  "lineChartLabel": "লাইন চার্ট",
+  "pieChartLabel": "পাই চার্ট"
 }

@@ -37,6 +37,16 @@
         "title": "Igama lekwizi",
         "description": "Igama lekwizi elidluliselwa kwiindawo eziqhutywa yi-xAPI ukuze kuchongwe le nto"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Okusongekayo",
+        "description": "Bonisa lo mbuzo njengomgca ovulekayo novalekayo. Ukuvula omnye kuvala eminye imibuzo esongekayo ekufutshane."
+      },
+      {
+        "title": "Qala kusongiwe",
+        "description": "Xa kusongekayo, qala njengomgca ovaliweyo obonisa umbuzo kunye nemeko yawo kuphela."
+      }
     ]
   }
 }

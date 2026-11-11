@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "点击或悬停以播放爆炸音效",
+  "soundDisabled": "爆炸视觉效果（已禁用声音）",
+  "explosionAnimation": "爆炸动画",
+  "explosionAriaLabel": "爆炸动画 {state} {sound}。点击可切换。",
+  "playing": "播放中",
+  "stopped": "已停止",
+  "withSound": "有声音",
+  "muted": "（静音）"
+}

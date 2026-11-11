@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Бул барак кулпуланган. Жарыялоо абалын өзгөртүү үчүн адегенде кулпусун ачыңыз.",
   "pageLockedUnlockToDelete": "Бул барак кулпуланган. Өчүрүү үчүн адегенде кулпусун ачыңыз.",
   "pageDetails": "Барак чоо-жайы",
-  "clickToUnlock": "Ачуу үчүн басыңыз"
+  "clickToUnlock": "Ачуу үчүн басыңыз",
+  "pageSettings": "Барак жөндөөлөрү",
+  "editingPageSettings": "Барак жөндөөлөрүн түзөтүү",
+  "published": "Жарыяланган",
+  "draft": "Долбоор",
+  "locked": "Кулпуланган",
+  "unlocked": "Кулпусу ачылган",
+  "noTags": "Тегдер жок",
+  "oneTag": "1 тег",
+  "tagCount": "{count} тег",
+  "enterKey": "Enter"
 }

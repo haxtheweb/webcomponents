@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Portlash ovozini ijro etish uchun bosing yoki ustiga olib boring",
+  "soundDisabled": "Portlashning vizual effekti (ovoz o'chirilgan)",
+  "explosionAnimation": "portlash animatsiyasi",
+  "explosionAriaLabel": "Portlash animatsiyasi {state} {sound}. Almashtirish uchun bosing.",
+  "playing": "ijro etilmoqda",
+  "stopped": "to'xtatilgan",
+  "withSound": "ovozli",
+  "muted": "(ovozsiz)"
+}

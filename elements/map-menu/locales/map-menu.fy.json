@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Side is net publisearre",
   "progressDone": "Klear",
   "progressInProgress": "Dwaande",
-  "progressVisited": "Besocht"
+  "progressVisited": "Besocht",
+  "progressPercentComplete": "{percent}% klear",
+  "progressComplete": "Klear"
 }

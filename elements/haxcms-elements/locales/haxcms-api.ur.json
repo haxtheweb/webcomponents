@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "تبدیلی ناکام ہو گئی۔",
   "PARAM_REQUIRED": "ایک لازمی قدر موجود نہیں ہے: {param}۔",
   "INVALID_REQUEST": "غلط درخواست۔",
-  "PARAM_INVALID": "غلط قدر: {param}۔"
+  "PARAM_INVALID": "غلط قدر: {param}۔",
+  "BLOCK_RATE_LIMITED": "اس سائٹ پر اس وقت مواد میں بہت زیادہ تبدیلیاں ہو رہی ہیں۔ {retryAfter} سیکنڈ بعد دوبارہ کوشش کریں۔"
 }

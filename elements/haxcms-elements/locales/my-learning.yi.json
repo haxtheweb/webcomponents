@@ -129,5 +129,12 @@
   "cancel": "אָפּזאָגן",
   "clearedSite": "אײַערע לערן-דאטן פֿאַר {site} זענען אויסגעמעקט געװאָרן.",
   "clearedDevice": "אַלע לערן-דאטן אויף דעם מכשיר זענען אויסגעמעקט געװאָרן.",
-  "thisSite": "דער סײַט"
+  "thisSite": "דער סײַט",
+  "outlineHeading": "פּראָגרעס לויט זײַט",
+  "allPages": "אַלע זײַטן",
+  "outlinePagesDone": "{done} פֿון {total} זײַטן פֿאַרטיק",
+  "outlinePagesCount": "{count} זײַטן",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% פֿאַרטיק",
+  "outlineComplete": "פֿאַרטיק"
 }

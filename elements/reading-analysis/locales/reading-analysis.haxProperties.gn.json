@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Tembiapo",
-        "description": "Ñemohendapy jehechauka: temimbo'ekuéra omboja peteĩteĩ poyvi'i iñemohendapy ykére. Eiporavo peteĩ: temimbo'ekuéra oiporavo pe pehẽ peteĩva ombohováiva porãvéva porandúpe."
+        "description": "Ñemohendapy jehechauka: temimbo'ekuéra omboja peteĩteĩ poyvi'i iñemohendapy ykére. Eiporavo peteĩ: temimbo'ekuéra oiporavo pe pehẽ peteĩva ombohováiva porãvéva porandúpe.",
+        "options": {
+          "flag": "Emoîmba ñemoĩ",
+          "one": "Eiporavo peteĩ"
+        }
       },
       {
         "property": "unit",
         "title": "Temimbo'ekuéra oiporavo",
-        "description": "Mba'épa temimbo'e ohechauka moñe'ẽrãme. Ta'anga ikatu meme oñeporavo."
+        "description": "Mba'épa temimbo'e ohechauka moñe'ẽrãme. Ta'anga ikatu meme oñeporavo.",
+        "options": {
+          "sentence": "Ñe'ẽnguéra",
+          "paragraph": "Párrafo",
+          "figure": "Ta'anga añoite"
+        }
       },
       {
         "property": "answers",

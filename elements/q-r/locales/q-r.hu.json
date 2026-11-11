@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "QR-kód ehhez: {title}",
+  "noData": "Nincs QR-kódként megjeleníthető adat",
+  "formatNotSupported": "A(z) {format} QR-kódformátum nem támogatott",
+  "noCanvas": "Ez a böngésző nem tudja megrajzolni a QR-kódot (nincs canvas-támogatás)"
+}

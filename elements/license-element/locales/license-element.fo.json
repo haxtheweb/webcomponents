@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title} eftir {creator} er loyvisskipað undir {license}.",
   "permissionsBeyondScope": "Loyvi út um umfatanina av hesum loyvinum eru tøk {link}.",
   "author": "(høvundur)",
-  "onTheLicensingDetailsPage": "á síðuni við loyvisupplýsingum"
+  "onTheLicensingDetailsPage": "á síðuni við loyvisupplýsingum",
+  "licenseLabel": "Loyvi"
 }

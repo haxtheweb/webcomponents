@@ -14,7 +14,8 @@
     "is-safari": "isSafari",
     "preset": "preset",
     "scroller": "scroller",
-    "scroller-label": "scrollerLabel"
+    "scroller-label": "scrollerLabel",
+    "t": "t"
   },
   "slots": [
     "(default)",

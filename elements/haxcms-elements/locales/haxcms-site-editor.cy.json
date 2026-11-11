@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Methu cwblhau'r gweithrediad ({status})",
   "normalizedPageSlugs": "Normaleiddiwyd {count} slug tudalen",
   "createdTitle": "Crëwyd {title}!",
-  "processing": "Wrthi'n prosesu"
+  "processing": "Wrthi'n prosesu",
+  "saveTimedOut": "Daeth yr arbed i ben: ni atebodd y gweinydd. Cedwir eich newidiadau yma, ond efallai y bydd y gweinydd yn dal i orffen eu cadw."
 }

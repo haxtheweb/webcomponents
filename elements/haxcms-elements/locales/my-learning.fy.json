@@ -129,5 +129,12 @@
   "cancel": "Annulearje",
   "clearedSite": "Jo learegegevens foar {site} binne wiske.",
   "clearedDevice": "Alle learegegevens op dit apparaat binne wiske.",
-  "thisSite": "dizze side"
+  "thisSite": "dizze side",
+  "outlineHeading": "Foarútgong per side",
+  "allPages": "Alle siden",
+  "outlinePagesDone": "{done} fan {total} siden klear",
+  "outlinePagesCount": "{count} siden",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% klear",
+  "outlineComplete": "Klear"
 }

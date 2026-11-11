@@ -3,5 +3,8 @@
   "openInNewTab": "Huakina te PDF i tētahi ripa hou",
   "downloadPdf": "Tikiake i te PDF",
   "fullScreen": "Mata katoa",
-  "exitFullScreen": "Puta i te mata katoa"
+  "exitFullScreen": "Puta i te mata katoa",
+  "notSupported": "Te āhua nei kāore tō pūtirotiro tukutuku i te whirihora hei whakaatu i ngā kōnae PDF. Kāore he raruraru, me",
+  "notSupportedLink": "pāwhiri ki konei hei tango i te kōnae PDF.",
+  "download": "Tikiake"
 }

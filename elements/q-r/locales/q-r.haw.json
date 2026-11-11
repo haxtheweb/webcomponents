@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "Kumu QR no {title}",
+  "noData": "ʻAʻohe ʻikepili e hōʻike ʻia ma ke ʻano kumu QR",
+  "formatNotSupported": "ʻAʻole kākoʻo ʻia ke ʻano kumu QR {format}",
+  "noCanvas": "ʻAʻole hiki i kēia polokalamu kele ke kaha i ke kumu QR (ʻaʻohe kākoʻo canvas)"
+}

@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "NodeJS բեռնարկղ"
+    "title": "NodeJS բեռնարկղ",
+    "description": ""
   },
   "settings": {
     "configure": [

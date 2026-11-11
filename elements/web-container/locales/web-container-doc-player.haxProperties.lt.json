@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Žiniatinklio komponentų dokumentacijos grotuvas"
+    "title": "Žiniatinklio komponentų dokumentacijos grotuvas",
+    "description": ""
   },
   "settings": {
     "configure": [

@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Hindi naka-publish ang pahina",
   "progressDone": "Tapos na",
   "progressInProgress": "Isinasagawa",
-  "progressVisited": "Napuntahan na"
+  "progressVisited": "Napuntahan na",
+  "progressPercentComplete": "{percent}% kumpleto",
+  "progressComplete": "Kumpleto"
 }

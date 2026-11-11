@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "Kode QR kanggo {title}",
+  "noData": "Ora ana data kanggo ditampilake minangka kode QR",
+  "formatNotSupported": "Format kode QR {format} ora didukung",
+  "noCanvas": "Browser iki ora bisa nggambar kode QR (ora ndhukung canvas)"
+}

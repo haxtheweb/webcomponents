@@ -129,5 +129,12 @@
   "cancel": "ਰੱਦ ਕਰੋ",
   "clearedSite": "{site} ਲਈ ਤੁਹਾਡਾ ਸਿੱਖਣ ਦਾ ਡੇਟਾ ਸਾਫ਼ ਕਰ ਦਿੱਤਾ ਗਿਆ।",
   "clearedDevice": "ਇਸ ਡੀਵਾਈਸ ਉੱਤੇ ਸਾਰਾ ਸਿੱਖਣ ਦਾ ਡੇਟਾ ਸਾਫ਼ ਕਰ ਦਿੱਤਾ ਗਿਆ।",
-  "thisSite": "ਇਹ ਸਾਈਟ"
+  "thisSite": "ਇਹ ਸਾਈਟ",
+  "outlineHeading": "ਪੰਨੇ ਅਨੁਸਾਰ ਤਰੱਕੀ",
+  "allPages": "ਸਾਰੇ ਪੰਨੇ",
+  "outlinePagesDone": "{total} ਵਿੱਚੋਂ {done} ਪੰਨੇ ਪੂਰੇ",
+  "outlinePagesCount": "{count} ਪੰਨੇ",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% ਪੂਰਾ",
+  "outlineComplete": "ਪੂਰਾ"
 }

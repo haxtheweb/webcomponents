@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "ਵੈੱਬ ਕੰਪੋਨੈਂਟ ਦਸਤਾਵੇਜ਼ ਪਲੇਅਰ"
+    "title": "ਵੈੱਬ ਕੰਪੋਨੈਂਟ ਦਸਤਾਵੇਜ਼ ਪਲੇਅਰ",
+    "description": ""
   },
   "settings": {
     "configure": [

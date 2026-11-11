@@ -22,6 +22,12 @@
         "title": "Aktivni indeks",
         "description": "Indeks aktivne slike od koje se počinje u načinu galerije."
       }
+    ],
+    "developer": [
+      {
+        "title": "Slike",
+        "description": "Slike u galeriji. Ne uređuje se ovdje: struktura stranice koristi ovo da zna koji se blokovi mogu ispustiti unutra."
+      }
     ]
   }
 }

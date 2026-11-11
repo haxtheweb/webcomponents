@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "रूपांतरण विफल रहा।",
   "PARAM_REQUIRED": "एक आवश्यक मान मौजूद नहीं है: {param}।",
   "INVALID_REQUEST": "अमान्य अनुरोध।",
-  "PARAM_INVALID": "अमान्य मान: {param}।"
+  "PARAM_INVALID": "अमान्य मान: {param}।",
+  "BLOCK_RATE_LIMITED": "इस साइट पर अभी बहुत अधिक सामग्री परिवर्तन हो रहे हैं। {retryAfter} सेकंड में फिर प्रयास करें।"
 }

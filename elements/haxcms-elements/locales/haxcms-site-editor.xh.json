@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Ayikwazi ukugqiba umsebenzi ({status})",
   "normalizedPageSlugs": "Kwenziwe zaqheleka ii-slug zamaphepha ezi-{count}",
   "createdTitle": "Kwenziwe i-{title}!",
-  "processing": "Kuyaqhutywa"
+  "processing": "Kuyaqhutywa",
+  "saveTimedOut": "Ukugcina kuphelelwe lixesha: iseva ayiphenduli. Utshintsho lwakho lugcinwe apha, kodwa iseva isenokugqiba ukulugcina."
 }

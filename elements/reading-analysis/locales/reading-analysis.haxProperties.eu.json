@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Jarduera",
-        "description": "Frogak markatu: ikasleek banderatxo bakoitza bere frogaren ondoan itsasten dute. Bat hautatu: ikasleek galderari ondoen erantzuten dion pasarte bakarra aukeratzen dute."
+        "description": "Frogak markatu: ikasleek banderatxo bakoitza bere frogaren ondoan itsasten dute. Bat hautatu: ikasleek galderari ondoen erantzuten dion pasarte bakarra aukeratzen dute.",
+        "options": {
+          "flag": "Markatu frogak",
+          "one": "Hautatu bat"
+        }
       },
       {
         "property": "unit",
         "title": "Ikasleek hautatzen dute",
-        "description": "Ikasleak testuan seinalatzen duena. Irudiak beti hauta daitezke."
+        "description": "Ikasleak testuan seinalatzen duena. Irudiak beti hauta daitezke.",
+        "options": {
+          "sentence": "Perpausak",
+          "paragraph": "Paragrafoak",
+          "figure": "Irudiak soilik"
+        }
       },
       {
         "property": "answers",

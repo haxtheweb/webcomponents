@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Siden er ikke publisert",
   "progressDone": "Fullført",
   "progressInProgress": "Pågår",
-  "progressVisited": "Besøkt"
+  "progressVisited": "Besøkt",
+  "progressPercentComplete": "{percent} % fullført",
+  "progressComplete": "Fullført"
 }

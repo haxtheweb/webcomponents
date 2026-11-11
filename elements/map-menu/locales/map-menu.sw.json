@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Ukurasa haujachapishwa",
   "progressDone": "Imekamilika",
   "progressInProgress": "Inaendelea",
-  "progressVisited": "Imetembelewa"
+  "progressVisited": "Imetembelewa",
+  "progressPercentComplete": "{percent}% imekamilika",
+  "progressComplete": "Imekamilika"
 }

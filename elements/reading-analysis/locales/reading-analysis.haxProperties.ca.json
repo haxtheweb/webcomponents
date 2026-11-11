@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Activitat",
-        "description": "Marcar evidències: els estudiants enganxen cada bandereta al costat de la seva evidència. Seleccionar-ne un: els estudiants trien l'únic fragment que millor respon la pregunta."
+        "description": "Marcar evidències: els estudiants enganxen cada bandereta al costat de la seva evidència. Seleccionar-ne un: els estudiants trien l'únic fragment que millor respon la pregunta.",
+        "options": {
+          "flag": "Marca les evidències",
+          "one": "Selecciona'n una"
+        }
       },
       {
         "property": "unit",
         "title": "Els estudiants seleccionen",
-        "description": "Allò que un estudiant assenyala a la lectura. Les figures sempre es poden seleccionar."
+        "description": "Allò que un estudiant assenyala a la lectura. Les figures sempre es poden seleccionar.",
+        "options": {
+          "sentence": "Frases",
+          "paragraph": "Paràgrafs",
+          "figure": "Només figures"
+        }
       },
       {
         "property": "answers",

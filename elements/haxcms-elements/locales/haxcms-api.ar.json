@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "فشل التحويل.",
   "PARAM_REQUIRED": "قيمة مطلوبة مفقودة: {param}.",
   "INVALID_REQUEST": "طلب غير صالح.",
-  "PARAM_INVALID": "قيمة غير صالحة: {param}."
+  "PARAM_INVALID": "قيمة غير صالحة: {param}.",
+  "BLOCK_RATE_LIMITED": "هناك عدد كبير جدًا من تغييرات المحتوى على هذا الموقع حاليًا. حاول مرة أخرى بعد {retryAfter} ثانية."
 }

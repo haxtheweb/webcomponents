@@ -87,6 +87,19 @@ class TypeWriter extends IntersectionObserverMixin(LitElement) {
           -o-animation: flickerAnimation 1s infinite;
           animation: flickerAnimation 1s infinite;
         }
+
+        /* nothing moves with prefers-reduced-motion */
+        @media (prefers-reduced-motion: reduce) {
+          :host,
+          *,
+          *::before,
+          *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            transition-delay: 0ms !important;
+          }
+        }
       `,
     ];
   }
@@ -152,6 +165,13 @@ class TypeWriter extends IntersectionObserverMixin(LitElement) {
       saveOptions: {
         unsetAttributes: ["element-visible"],
       },
+      demoSchema: [
+        {
+          tag: "type-writer",
+          properties: {},
+          content: "",
+        },
+      ],
     };
   }
   // properties available to the custom element for data binding

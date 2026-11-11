@@ -4,5 +4,8 @@
   "pieChart": "Dữ liệu · Biểu đồ tròn",
   "showDataTable": "Hiện bảng dữ liệu",
   "downloadData": "Tải dữ liệu xuống (.csv)",
-  "series": "Chuỗi {n}"
+  "series": "Chuỗi {n}",
+  "barChartLabel": "biểu đồ cột",
+  "lineChartLabel": "biểu đồ đường",
+  "pieChartLabel": "biểu đồ tròn"
 }

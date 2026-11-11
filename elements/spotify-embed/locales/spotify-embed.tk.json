@@ -1,4 +1,9 @@
 {
   "audio": "Audio",
-  "openOnSpotify": "Spotify-da täze goýumda aç"
+  "openOnSpotify": "Spotify-da täze goýumda aç",
+  "embedTitle": "Spotify Embed",
+  "trackEmbedTitle": "Spotify Track Embed",
+  "albumEmbedTitle": "Spotify Album Embed",
+  "playlistEmbedTitle": "Spotify Playlist Embed",
+  "artistEmbedTitle": "Spotify Artist Embed"
 }

@@ -129,5 +129,12 @@
   "cancel": "Avbryt",
   "clearedSite": "Dina lärdata för {site} har rensats.",
   "clearedDevice": "Alla lärdata på den här enheten har rensats.",
-  "thisSite": "den här webbplatsen"
+  "thisSite": "den här webbplatsen",
+  "outlineHeading": "Framsteg per sida",
+  "allPages": "Alla sidor",
+  "outlinePagesDone": "{done} av {total} sidor klara",
+  "outlinePagesCount": "{count} sidor",
+  "outlinePercent": "{percent} %",
+  "outlinePercentComplete": "{percent} % klart",
+  "outlineComplete": "Klart"
 }

@@ -19,5 +19,13 @@
   "copyCode": "Salin kode",
   "copied": "Wis disalin!",
   "invalidCode": "Iku dudu kode karakter.",
-  "preview": "Pratinjau karakter"
+  "preview": "Pratinjau karakter",
+  "previous": "{name} sadurunge",
+  "next": "{name} sabanjure",
+  "variant": "{current} saka {total}",
+  "save": "Simpen",
+  "cancel": "Batal",
+  "unsavedChanges": "Owah-owahan durung disimpen",
+  "noUnsavedChanges": "Ora ana owah-owahan sing durung disimpen",
+  "codeHelp": "Tempelna kode kanggo mbukak karakter, utawa salinen kode iki kanggo digunakake ing ngendi wae."
 }

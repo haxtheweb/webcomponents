@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Kin operaasje net foltôgje ({status})",
   "normalizedPageSlugs": "{count} sideslugs normalisearre",
   "createdTitle": "{title} oanmakke!",
-  "processing": "Ferwurkjen"
+  "processing": "Ferwurkjen",
+  "saveTimedOut": "Bewarjen duorre te lang: de server antwurde net. Jo wizigingen wurde hjir bewarre, mar de server kin se noch ôfmeitsje."
 }

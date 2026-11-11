@@ -37,6 +37,16 @@
         "title": "Tietovisan nimi",
         "description": "Tietovisan nimi, jota käytetään xAPI-pohjaisissa ympäristöissä tämän kohteen tunnistamiseen"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Suljettava",
+        "description": "Näytä tämä kysymys rivinä, joka avautuu ja sulkeutuu. Yhden avaaminen sulkee viereiset suljettavat kysymykset."
+      },
+      {
+        "title": "Aloita suljettuna",
+        "description": "Suljettavana aloittaa suljettuna rivinä, jossa näkyvät vain kysymys ja sen tila."
+      }
     ]
   }
 }

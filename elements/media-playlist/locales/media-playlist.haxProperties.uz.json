@@ -15,6 +15,12 @@
         "title": "Kurs",
         "description": "Ushbu pleylist mo‘ljallangan kurs (kurs identifikatori yoki URL)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Media",
+        "description": "Ijro ro'yxatidagi videolar va audio. Bu yerda tahrirlanmaydi: sahifa tuzilmasi ichiga qaysi bloklarni tashlash mumkinligini bilish uchun undan foydalanadi."
+      }
     ]
   }
 }

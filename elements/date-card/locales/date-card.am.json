@@ -1,0 +1,8 @@
+{
+  "ordinalOne": "ኛ",
+  "ordinalTwo": "ኛ",
+  "ordinalFew": "ኛ",
+  "ordinalOther": "ኛ",
+  "fromTimeToTime": "ከ{start} - {end}",
+  "atTime": "በ{start}"
+}

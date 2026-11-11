@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "QR kods: {title}",
+  "noData": "Nav datu, ko attēlot kā QR kodu",
+  "formatNotSupported": "QR koda formāts {format} netiek atbalstīts",
+  "noCanvas": "Šī pārlūkprogramma nevar uzzīmēt QR kodu (nav canvas atbalsta)"
+}

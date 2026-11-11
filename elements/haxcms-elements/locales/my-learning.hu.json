@@ -129,5 +129,12 @@
   "cancel": "Mégse",
   "clearedSite": "A(z) {site} tanulási adataid törölve lettek.",
   "clearedDevice": "Az eszközön lévő összes tanulási adat törölve lett.",
-  "thisSite": "ez a webhely"
+  "thisSite": "ez a webhely",
+  "outlineHeading": "Haladás oldalanként",
+  "allPages": "Összes oldal",
+  "outlinePagesDone": "{done} / {total} oldal kész",
+  "outlinePagesCount": "{count} oldal",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% kész",
+  "outlineComplete": "Kész"
 }

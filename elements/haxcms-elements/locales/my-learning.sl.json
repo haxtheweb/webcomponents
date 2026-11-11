@@ -129,5 +129,12 @@
   "cancel": "Prekliči",
   "clearedSite": "Vaši podatki o učenju za {site} so bili počiščeni.",
   "clearedDevice": "Vsi podatki o učenju v tej napravi so bili počiščeni.",
-  "thisSite": "to spletno mesto"
+  "thisSite": "to spletno mesto",
+  "outlineHeading": "Napredek po straneh",
+  "allPages": "Vse strani",
+  "outlinePagesDone": "Končanih strani: {done} od {total}",
+  "outlinePagesCount": "Strani: {count}",
+  "outlinePercent": "{percent} %",
+  "outlinePercentComplete": "Dokončano {percent} %",
+  "outlineComplete": "Dokončano"
 }

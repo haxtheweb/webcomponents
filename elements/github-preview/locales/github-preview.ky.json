@@ -1,0 +1,10 @@
+{
+  "github": "GitHub",
+  "repository": "Репозиторий",
+  "stars": "жылдыздар",
+  "forks": "форктор",
+  "loading": "Жүктөлүүдө",
+  "viewMore": "Көбүрөөк көрүү",
+  "assetNotFound": "Ресурс табылган жок",
+  "openOnGitHub": "{org}/{repo} репозиторийин GitHub'та ачуу"
+}

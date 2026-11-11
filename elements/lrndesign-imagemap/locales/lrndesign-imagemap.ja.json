@@ -1,0 +1,9 @@
+{
+  "imageMap": "イメージマップ",
+  "interactive": "インタラクティブ",
+  "hotspot": "ホットスポット",
+  "hotspotPosition": "{n}/{total}",
+  "hotspotsExplored": "{total}個中{n}個のホットスポットを確認済み",
+  "explored": "確認済み",
+  "close": "閉じる"
+}

@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Seinnteoir doiciméad comhpháirte gréasáin"
+    "title": "Seinnteoir doiciméad comhpháirte gréasáin",
+    "description": ""
   },
   "settings": {
     "configure": [

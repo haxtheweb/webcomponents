@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "La konverto malsukcesis.",
   "PARAM_REQUIRED": "Mankas deviga valoro: {param}.",
   "INVALID_REQUEST": "Nevalida peto.",
-  "PARAM_INVALID": "Nevalida valoro: {param}."
+  "PARAM_INVALID": "Nevalida valoro: {param}.",
+  "BLOCK_RATE_LIMITED": "Tro multaj enhavaj ŝanĝoj en ĉi tiu retejo nun. Reprovu post {retryAfter} sekundoj."
 }

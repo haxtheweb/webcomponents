@@ -1,4 +1,9 @@
 {
   "audio": "សំឡេង",
-  "openOnSpotify": "បើកនៅលើ Spotify ក្នុងផ្ទាំងថ្មី"
+  "openOnSpotify": "បើកនៅលើ Spotify ក្នុងផ្ទាំងថ្មី",
+  "embedTitle": "ការបង្កប់ Spotify",
+  "trackEmbedTitle": "ការបង្កប់បទ Spotify",
+  "albumEmbedTitle": "ការបង្កប់អាល់ប៊ុម Spotify",
+  "playlistEmbedTitle": "ការបង្កប់បញ្ជីចាក់ Spotify",
+  "artistEmbedTitle": "ការបង្កប់សិល្បករ Spotify"
 }

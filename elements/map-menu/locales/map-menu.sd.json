@@ -2,5 +2,7 @@
   "pageIsUnpublished": "صفحو شايع ٿيل ناهي",
   "progressDone": "مڪمل",
   "progressInProgress": "جاري",
-  "progressVisited": "ڏسيل"
+  "progressVisited": "ڏسيل",
+  "progressPercentComplete": "{percent}% مڪمل",
+  "progressComplete": "مڪمل"
 }

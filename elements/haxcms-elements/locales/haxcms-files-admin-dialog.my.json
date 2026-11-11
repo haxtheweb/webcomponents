@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "မူရင်းဖိုင်များကို အစားထိုးရန်",
   "newName": "အမည်သစ်",
   "deleteAction": "ဖျက်ရန်",
-  "renameAction": "အမည်ပြောင်းရန်"
+  "renameAction": "အမည်ပြောင်းရန်",
+  "bulkOverwriteConfirm": "ဖိုင် {count} ခုကို {action} မလား။ ၎င်းသည် မူရင်းဖိုင်များကို အစားထိုးမည်ဖြစ်ပြီး ပြန်ဖျက်၍မရပါ။",
+  "actionScale": "အတိုင်းအတာချရန်",
+  "actionRotate": "လှည့်ရန်",
+  "actionTransform": "ပြောင်းလဲရန်",
+  "actionConvertJpg": "JPG သို့ ပြောင်းရန်",
+  "actionCompress": "ချုံ့ရန်"
 }

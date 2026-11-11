@@ -4,5 +4,8 @@
   "pieChart": "Podaci · Kružni grafikon",
   "showDataTable": "Prikaži tablicu podataka",
   "downloadData": "Preuzmi podatke (.csv)",
-  "series": "Serija {n}"
+  "series": "Serija {n}",
+  "barChartLabel": "stupčasti grafikon",
+  "lineChartLabel": "linijski grafikon",
+  "pieChartLabel": "kružni grafikon"
 }

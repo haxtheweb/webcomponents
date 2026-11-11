@@ -3,5 +3,8 @@
   "openInNewTab": "A PDF megnyitása új lapon",
   "downloadPdf": "PDF letöltése",
   "fullScreen": "Teljes képernyő",
-  "exitFullScreen": "Kilépés a teljes képernyőből"
+  "exitFullScreen": "Kilépés a teljes képernyőből",
+  "notSupported": "Úgy tűnik, a böngésződ nincs beállítva PDF-fájlok megjelenítésére. Semmi gond, csak",
+  "notSupportedLink": "kattints ide a PDF-fájl letöltéséhez.",
+  "download": "Letöltés"
 }

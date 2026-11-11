@@ -2,5 +2,7 @@
   "pageIsUnpublished": "صفحہ شائع نہیں ہویا",
   "progressDone": "مکمل",
   "progressInProgress": "جاری",
-  "progressVisited": "ویکھیا گیا"
+  "progressVisited": "ویکھیا گیا",
+  "progressPercentComplete": "{percent}% مکمل",
+  "progressComplete": "مکمل"
 }

@@ -129,5 +129,12 @@
   "cancel": "റദ്ദാക്കുക",
   "clearedSite": "{site} എന്നതിനുള്ള നിങ്ങളുടെ പഠന ഡാറ്റ മായ്ച്ചു.",
   "clearedDevice": "ഈ ഉപകരണത്തിലെ എല്ലാ പഠന ഡാറ്റയും മായ്ച്ചു.",
-  "thisSite": "ഈ സൈറ്റ്"
+  "thisSite": "ഈ സൈറ്റ്",
+  "outlineHeading": "പേജ് അനുസരിച്ചുള്ള പുരോഗതി",
+  "allPages": "എല്ലാ പേജുകളും",
+  "outlinePagesDone": "{total} പേജുകളിൽ {done} പൂർത്തിയായി",
+  "outlinePagesCount": "{count} പേജുകൾ",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% പൂർത്തിയായി",
+  "outlineComplete": "പൂർത്തിയായി"
 }

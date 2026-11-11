@@ -1,13 +1,20 @@
 {
   "gizmo": {
     "title": "H5P",
-    "description": "Pembungkus H5P untuk memuat dan menyajikan file .h5p"
+    "description": "Memutar konten interaktif H5P dari berkas .h5p yang diunggah, tanpa memerlukan server H5P"
   },
   "settings": {
     "configure": [
       {
         "slot": "",
-        "description": "Kode sematan iframe H5P"
+        "description": "Unggah atau tautkan berkas .h5p. Berkas diekstrak di browser; server H5P tidak diperlukan.",
+        "title": "Berkas H5P"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kode sematan iframe lama",
+        "description": "Hanya untuk konten lama yang menyematkan iframe H5P dari situs lain. Biarkan kosong jika berkas .h5p sudah diatur di atas."
       }
     ]
   }

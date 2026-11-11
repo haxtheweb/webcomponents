@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title} af {creator} er licenseret under en {license}.",
   "permissionsBeyondScope": "Tilladelser ud over denne licens' omfang er tilgængelige {link}.",
   "author": "(forfatter)",
-  "onTheLicensingDetailsPage": "på siden med licensdetaljer"
+  "onTheLicensingDetailsPage": "på siden med licensdetaljer",
+  "licenseLabel": "Licens"
 }

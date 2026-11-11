@@ -129,5 +129,12 @@
   "cancel": "Бекор кардан",
   "clearedSite": "Маълумоти омӯзиши шумо барои {site} пок карда шуд.",
   "clearedDevice": "Тамоми маълумоти омӯзиш дар ин дастгоҳ пок карда шуд.",
-  "thisSite": "ин сайт"
+  "thisSite": "ин сайт",
+  "outlineHeading": "Пешрафт аз рӯи саҳифаҳо",
+  "allPages": "Ҳамаи саҳифаҳо",
+  "outlinePagesDone": "{done} аз {total} саҳифа анҷом ёфт",
+  "outlinePagesCount": "{count} саҳифа",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% анҷом ёфт",
+  "outlineComplete": "Анҷом ёфт"
 }

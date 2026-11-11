@@ -4,5 +4,8 @@
   "pieChart": "Dados · Gráfico de pizza",
   "showDataTable": "Mostrar tabela de dados",
   "downloadData": "Baixar dados (.csv)",
-  "series": "Série {n}"
+  "series": "Série {n}",
+  "barChartLabel": "gráfico de barras",
+  "lineChartLabel": "gráfico de linhas",
+  "pieChartLabel": "gráfico de pizza"
 }

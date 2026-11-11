@@ -193,6 +193,13 @@ class CMSToken extends CMSBase {
           "token-end-point",
         ],
       },
+      demoSchema: [
+        {
+          tag: "cms-token",
+          properties: {},
+          content: "",
+        },
+      ],
     };
   }
   postProcessgetHaxJSONSchema(schema) {

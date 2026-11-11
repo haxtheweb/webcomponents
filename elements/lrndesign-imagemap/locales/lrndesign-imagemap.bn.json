@@ -1,0 +1,9 @@
+{
+  "imageMap": "ইমেজ ম্যাপ",
+  "interactive": "ইন্টারেক্টিভ",
+  "hotspot": "হটস্পট",
+  "hotspotPosition": "{total}-এর মধ্যে {n}",
+  "hotspotsExplored": "{total}টির মধ্যে {n}টি হটস্পট দেখা হয়েছে",
+  "explored": "দেখা হয়েছে",
+  "close": "বন্ধ করুন"
+}

@@ -107,6 +107,13 @@ export class LrnH5p extends I18NMixin(LitElement) {
         ],
         advanced: [],
       },
+      demoSchema: [
+        {
+          tag: "lrn-h5p",
+          properties: {},
+          content: "",
+        },
+      ],
     };
   }
   static get styles() {

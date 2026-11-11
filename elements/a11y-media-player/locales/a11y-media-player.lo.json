@@ -35,5 +35,12 @@
   "youTubeStartLoading": "ກົດຫຼິ້ນ.",
   "youTubeTranscriptLabel": "ບົດຖອດຄວາມຈະໂຫຼດເມື່ອສື່ເລີ່ມຫຼິ້ນ.",
   "audioDescriptionLabel": "ຄຳອະທິບາຍດ້ວຍສຽງ",
-  "openOnYouTube": "ເປີດໃນ YouTube"
+  "openOnYouTube": "ເປີດໃນ YouTube",
+  "interactiveLabel": "ແບບໂຕ້ຕອບ",
+  "layoutLabel": "ຮູບແບບການຈັດວາງ",
+  "sideLabel": "ຂ້າງ",
+  "belowLabel": "ດ້ານລຸ່ມ",
+  "leftLabel": "ຊ້າຍ",
+  "rightLabel": "ຂວາ",
+  "hideTranscriptLabel": "ເຊື່ອງຖອດຄວາມ"
 }

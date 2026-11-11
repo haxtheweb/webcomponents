@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Mae'r dudalen hon wedi'i chloi. Datglowch hi yn gyntaf i newid y statws cyhoeddi.",
   "pageLockedUnlockToDelete": "Mae'r dudalen hon wedi'i chloi. Datglowch hi yn gyntaf i'w dileu.",
   "pageDetails": "Manylion tudalen",
-  "clickToUnlock": "Cliciwch i ddatgloi"
+  "clickToUnlock": "Cliciwch i ddatgloi",
+  "pageSettings": "Gosodiadau'r dudalen",
+  "editingPageSettings": "Yn golygu gosodiadau'r dudalen",
+  "published": "Cyhoeddwyd",
+  "draft": "Drafft",
+  "locked": "Wedi'i gloi",
+  "unlocked": "Heb ei gloi",
+  "noTags": "Dim tagiau",
+  "oneTag": "1 tag",
+  "tagCount": "{count} tag",
+  "enterKey": "Enter"
 }

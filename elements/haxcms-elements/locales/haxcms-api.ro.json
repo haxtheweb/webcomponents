@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Conversia a eșuat.",
   "PARAM_REQUIRED": "Lipsește o valoare obligatorie: {param}.",
   "INVALID_REQUEST": "Solicitare nevalidă.",
-  "PARAM_INVALID": "Valoare nevalidă: {param}."
+  "PARAM_INVALID": "Valoare nevalidă: {param}.",
+  "BLOCK_RATE_LIMITED": "Prea multe modificări de conținut pe acest site în acest moment. Încercați din nou peste {retryAfter} secunde."
 }

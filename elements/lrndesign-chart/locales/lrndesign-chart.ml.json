@@ -4,5 +4,8 @@
   "pieChart": "ഡാറ്റ · പൈ ചാർട്ട്",
   "showDataTable": "ഡാറ്റ പട്ടിക കാണിക്കുക",
   "downloadData": "ഡാറ്റ ഡൗൺലോഡ് ചെയ്യുക (.csv)",
-  "series": "സീരീസ് {n}"
+  "series": "സീരീസ് {n}",
+  "barChartLabel": "ബാർ ചാർട്ട്",
+  "lineChartLabel": "ലൈൻ ചാർട്ട്",
+  "pieChartLabel": "പൈ ചാർട്ട്"
 }

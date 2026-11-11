@@ -1,4 +1,9 @@
 {
   "audio": "Garso įrašas",
-  "openOnSpotify": "Atidaryti Spotify naujame skirtuke"
+  "openOnSpotify": "Atidaryti Spotify naujame skirtuke",
+  "embedTitle": "Spotify įterpimas",
+  "trackEmbedTitle": "Spotify takelio įterpimas",
+  "albumEmbedTitle": "Spotify albumo įterpimas",
+  "playlistEmbedTitle": "Spotify grojaraščio įterpimas",
+  "artistEmbedTitle": "Spotify atlikėjo įterpimas"
 }

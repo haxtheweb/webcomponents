@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Shintsha amafayela okuqala",
   "newName": "Igama elisha",
   "deleteAction": "Susa",
-  "renameAction": "Qamba kabusha"
+  "renameAction": "Qamba kabusha",
+  "bulkOverwriteConfirm": "{action} amafayela angu-{count}? Lokhu kuthatha indawo yamafayela okuqala futhi akunakuhlehliswa.",
+  "actionScale": "Shintsha usayizi",
+  "actionRotate": "Zungezisa",
+  "actionTransform": "Guqula",
+  "actionConvertJpg": "Guqulela ku-JPG",
+  "actionCompress": "Cindezela"
 }

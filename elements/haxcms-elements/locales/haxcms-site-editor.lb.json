@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Operatioun kann net ofgeschloss ginn ({status})",
   "normalizedPageSlugs": "{count} Säite-Slugs normaliséiert",
   "createdTitle": "{title} erstallt!",
-  "processing": "Gëtt veraarbecht"
+  "processing": "Gëtt veraarbecht",
+  "saveTimedOut": "Zäitiwwerschreidung beim Späicheren: de Server huet net geäntwert. Är Ännerunge bleiwen hei gespäichert, mee de Server kéint se nach ofschléissen."
 }

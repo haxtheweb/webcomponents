@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Umskipanin miseydnaðist.",
   "PARAM_REQUIRED": "Eitt kravt virði manglar: {param}.",
   "INVALID_REQUEST": "Ógyldug umbøn.",
-  "PARAM_INVALID": "Ógyldugt virði: {param}."
+  "PARAM_INVALID": "Ógyldugt virði: {param}.",
+  "BLOCK_RATE_LIMITED": "Ov nógvar innihaldsbroytingar á hesi heimasíðu í løtuni. Royn aftur um {retryAfter} sekund."
 }

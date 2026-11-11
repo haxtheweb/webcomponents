@@ -23,6 +23,8 @@
     "slots": [
       "parallax_heading"
     ],
-    "demoTags": []
+    "demoTags": [
+      "parallax-image"
+    ]
   }
 }

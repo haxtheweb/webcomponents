@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "Koodii QR {title} dhaaf",
+  "noData": "Akka koodii QR tti agarsiisuuf daataan hin jiru",
+  "formatNotSupported": "Bifti koodii QR {format} hin deggeramu",
+  "noCanvas": "Biraauzarichi koodii QR kaasuu hin danda'u (deeggarsi canvas hin jiru)"
+}

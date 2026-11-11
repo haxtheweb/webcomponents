@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Pahu NodeJS"
+    "title": "Pahu NodeJS",
+    "description": ""
   },
   "settings": {
     "configure": [

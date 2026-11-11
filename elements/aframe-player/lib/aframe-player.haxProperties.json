@@ -75,5 +75,12 @@
       }
     ],
     "advanced": []
-  }
+  },
+  "demoSchema": [
+    {
+      "tag": "aframe-player",
+      "properties": {},
+      "content": ""
+    }
+  ]
 }

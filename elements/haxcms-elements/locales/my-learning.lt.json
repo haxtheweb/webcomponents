@@ -129,5 +129,12 @@
   "cancel": "Atšaukti",
   "clearedSite": "Jūsų mokymosi duomenys svetainei {site} išvalyti.",
   "clearedDevice": "Visi mokymosi duomenys šiame įrenginyje išvalyti.",
-  "thisSite": "ši svetainė"
+  "thisSite": "ši svetainė",
+  "outlineHeading": "Pažanga pagal puslapį",
+  "allPages": "Visi puslapiai",
+  "outlinePagesDone": "Atlikta puslapių: {done} iš {total}",
+  "outlinePagesCount": "Puslapių: {count}",
+  "outlinePercent": "{percent} %",
+  "outlinePercentComplete": "Užbaigta {percent} %",
+  "outlineComplete": "Užbaigta"
 }

@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Veguherandin bi ser neket.",
   "PARAM_REQUIRED": "Nirxeke pêwîst tune ye: {param}.",
   "INVALID_REQUEST": "Daxwaza nederbasdar.",
-  "PARAM_INVALID": "Nirxa nederbasdar: {param}."
+  "PARAM_INVALID": "Nirxa nederbasdar: {param}.",
+  "BLOCK_RATE_LIMITED": "Niha li ser vê malperê gelek guhertinên naverokê hene. Piştî {retryAfter} çirkeyan dîsa biceribîne."
 }

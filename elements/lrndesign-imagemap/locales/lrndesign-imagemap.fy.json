@@ -1,0 +1,9 @@
+{
+  "imageMap": "Ofbyldingskaart",
+  "interactive": "Ynteraktyf",
+  "hotspot": "Aktyf gebiet",
+  "hotspotPosition": "{n} fan {total}",
+  "hotspotsExplored": "{n} fan {total} aktive gebieten ferkend",
+  "explored": "Ferkend",
+  "close": "Slute"
+}

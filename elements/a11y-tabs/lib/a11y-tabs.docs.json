@@ -17,7 +17,7 @@
   "import": "@haxtheweb/a11y-tabs/a11y-tabs.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/a11y-tabs/a11y-tabs.js",
   "install": "npm i @haxtheweb/a11y-tabs",
-  "demoHtml": "",
+  "demoHtml": "<a11y-tabs></a11y-tabs>",
   "attributes": [
     {
       "name": "show-tooltip",
@@ -217,9 +217,16 @@
           "inputMethod": "textfield"
         }
       ]
-    }
+    },
+    "demoSchema": [
+      {
+        "tag": "a11y-tabs",
+        "properties": {},
+        "content": ""
+      }
+    ]
   },
-  "surfaceHash": "2a03815444e5",
+  "surfaceHash": "b3bd76e5b7ac",
   "walkthroughs": [
     {
       "id": "",

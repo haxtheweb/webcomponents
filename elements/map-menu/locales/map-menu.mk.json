@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Страницата не е објавена",
   "progressDone": "Завршено",
   "progressInProgress": "Во тек",
-  "progressVisited": "Посетено"
+  "progressVisited": "Посетено",
+  "progressPercentComplete": "{percent}% завршено",
+  "progressComplete": "Завршено"
 }

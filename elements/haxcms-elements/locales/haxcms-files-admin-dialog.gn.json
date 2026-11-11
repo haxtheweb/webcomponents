@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Emyengovia marandurenda ypyguáva",
   "newName": "Téra pyahu",
   "deleteAction": "Mboguete",
-  "renameAction": "Embohéra pyahu"
+  "renameAction": "Embohéra pyahu",
+  "bulkOverwriteConfirm": "{action} {count} marandurenda? Ko mba'e omoambue marandurenda ypykuépe ha ndojevyivéi.",
+  "actionScale": "Emoambue tuichakue",
+  "actionRotate": "Embojere",
+  "actionTransform": "Emoambue",
+  "actionConvertJpg": "Emoambue JPG-pe",
+  "actionCompress": "Embojepyku"
 }

@@ -1,4 +1,9 @@
 {
   "audio": "Audio",
-  "openOnSpotify": "Atvērt pakalpojumā Spotify jaunā cilnē"
+  "openOnSpotify": "Atvērt pakalpojumā Spotify jaunā cilnē",
+  "embedTitle": "Spotify iegulšana",
+  "trackEmbedTitle": "Spotify ieraksta iegulšana",
+  "albumEmbedTitle": "Spotify albuma iegulšana",
+  "playlistEmbedTitle": "Spotify atskaņošanas saraksta iegulšana",
+  "artistEmbedTitle": "Spotify izpildītāja iegulšana"
 }

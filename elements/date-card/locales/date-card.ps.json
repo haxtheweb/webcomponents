@@ -1,0 +1,8 @@
+{
+  "ordinalOne": "م",
+  "ordinalTwo": "م",
+  "ordinalFew": "م",
+  "ordinalOther": "م",
+  "fromTimeToTime": "له {start} څخه تر {end} پورې",
+  "atTime": "په {start} بجو"
+}

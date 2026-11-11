@@ -1,4 +1,9 @@
 {
   "audio": "Hljóð",
-  "openOnSpotify": "Opna á Spotify í nýjum flipa"
+  "openOnSpotify": "Opna á Spotify í nýjum flipa",
+  "embedTitle": "Spotify-ísetning",
+  "trackEmbedTitle": "Spotify-lagaísetning",
+  "albumEmbedTitle": "Spotify-plötuísetning",
+  "playlistEmbedTitle": "Spotify-lagalistaísetning",
+  "artistEmbedTitle": "Spotify-flytjendaísetning"
 }

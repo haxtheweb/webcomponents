@@ -129,5 +129,12 @@
   "cancel": "انصراف",
   "clearedSite": "داده‌های یادگیری شما برای {site} پاک شد.",
   "clearedDevice": "همه داده‌های یادگیری در این دستگاه پاک شد.",
-  "thisSite": "این سایت"
+  "thisSite": "این سایت",
+  "outlineHeading": "پیشرفت به تفکیک صفحه",
+  "allPages": "همه صفحه‌ها",
+  "outlinePagesDone": "{done} از {total} صفحه انجام شد",
+  "outlinePagesCount": "{count} صفحه",
+  "outlinePercent": "{percent}٪",
+  "outlinePercentComplete": "{percent}٪ تکمیل شده",
+  "outlineComplete": "تکمیل شده"
 }

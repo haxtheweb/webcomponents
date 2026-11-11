@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "అసలు ఫైళ్లను భర్తీ చేయండి",
   "newName": "కొత్త పేరు",
   "deleteAction": "తొలగించు",
-  "renameAction": "పేరు మార్చండి"
+  "renameAction": "పేరు మార్చండి",
+  "bulkOverwriteConfirm": "{count} ఫైళ్లను {action} చేయాలా? ఇది అసలు ఫైళ్లను భర్తీ చేస్తుంది మరియు రద్దు చేయలేరు.",
+  "actionScale": "పరిమాణం మార్చు",
+  "actionRotate": "తిప్పు",
+  "actionTransform": "రూపాంతరం చేయి",
+  "actionConvertJpg": "JPG గా మార్చు",
+  "actionCompress": "కుదించు"
 }

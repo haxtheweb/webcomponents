@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Sochii",
-        "description": "Ragaa mallatteessi: barattoonni alaabaa hunda cinaa ragaa isaa maxxansu. Tokko filadhu: barattoonni kutaa tokkicha gaaffii akka gaariitti deebisu filatu."
+        "description": "Ragaa mallatteessi: barattoonni alaabaa hunda cinaa ragaa isaa maxxansu. Tokko filadhu: barattoonni kutaa tokkicha gaaffii akka gaariitti deebisu filatu.",
+        "options": {
+          "flag": "Ragaa mallatteessi",
+          "one": "Tokko filadhu"
+        }
       },
       {
         "property": "unit",
         "title": "Barattoonni filatu",
-        "description": "Wanta barataan barreeffama keessatti agarsiisu. Fakkiiwwan yeroo hunda filatamuu danda'u."
+        "description": "Wanta barataan barreeffama keessatti agarsiisu. Fakkiiwwan yeroo hunda filatamuu danda'u.",
+        "options": {
+          "sentence": "Himoota",
+          "paragraph": "Keewwata",
+          "figure": "Fakkii qofa"
+        }
       },
       {
         "property": "answers",

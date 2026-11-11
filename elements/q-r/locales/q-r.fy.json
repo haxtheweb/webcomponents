@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "QR-koade foar {title}",
+  "noData": "Gjin gegevens om as QR-koade te toanen",
+  "formatNotSupported": "QR-koadeformaat {format} wurdt net stipe",
+  "noCanvas": "Dizze browser kin de QR-koade net tekenje (gjin canvas-stipe)"
+}

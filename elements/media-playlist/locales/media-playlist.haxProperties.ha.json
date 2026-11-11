@@ -15,6 +15,12 @@
         "title": "Kwas",
         "description": "Kwas ɗin da wannan jerin yake domin shi (mai gano kwas ko URL)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Kafofin watsa labarai",
+        "description": "Bidiyo da sauti a cikin jerin kunnawa. Ba a gyara a nan: tsarin shafi yana amfani da shi don sanin waɗanne tubalan za a iya sauke a ciki."
+      }
     ]
   }
 }

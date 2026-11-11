@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Cynhwysydd NodeJS"
+    "title": "Cynhwysydd NodeJS",
+    "description": ""
   },
   "settings": {
     "configure": [

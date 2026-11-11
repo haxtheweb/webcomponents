@@ -439,13 +439,13 @@
       "order": 0,
       "src": "a11y-media-player.motion.json",
       "file": "lib/a11y-media-player.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/a11y-media-player.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Leli khasi likhiyiwe. Livule kuqala ukuze ushintshe isimo sokushicilela.",
   "pageLockedUnlockToDelete": "Leli khasi likhiyiwe. Livule kuqala ukuze ulisuse.",
   "pageDetails": "Imininingwane yekhasi",
-  "clickToUnlock": "Chofoza ukuvula"
+  "clickToUnlock": "Chofoza ukuvula",
+  "pageSettings": "Izilungiselelo zekhasi",
+  "editingPageSettings": "Kuhlelwa izilungiselelo zekhasi",
+  "published": "Kushicilelwe",
+  "draft": "Okusalungiswa",
+  "locked": "Kukhiyiwe",
+  "unlocked": "Akukhiyiwe",
+  "noTags": "Azikho izethagi",
+  "oneTag": "Ithagi eli-1",
+  "tagCount": "izethagi ezingu-{count}",
+  "enterKey": "Enter"
 }

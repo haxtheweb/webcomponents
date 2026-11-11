@@ -4,5 +4,8 @@
   "pieChart": "ਡਾਟਾ · ਪਾਈ ਚਾਰਟ",
   "showDataTable": "ਡਾਟਾ ਸਾਰਣੀ ਦਿਖਾਓ",
   "downloadData": "ਡਾਟਾ ਡਾਊਨਲੋਡ ਕਰੋ (.csv)",
-  "series": "ਲੜੀ {n}"
+  "series": "ਲੜੀ {n}",
+  "barChartLabel": "ਬਾਰ ਚਾਰਟ",
+  "lineChartLabel": "ਲਾਈਨ ਚਾਰਟ",
+  "pieChartLabel": "ਪਾਈ ਚਾਰਟ"
 }

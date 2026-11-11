@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "לחצו או רחפו כדי להשמיע צליל פיצוץ",
+  "soundDisabled": "אפקט פיצוץ חזותי (הצליל מושבת)",
+  "explosionAnimation": "אנימציית פיצוץ",
+  "explosionAriaLabel": "אנימציית פיצוץ {state} {sound}. לחצו כדי להחליף מצב.",
+  "playing": "מתנגנת",
+  "stopped": "נעצרה",
+  "withSound": "עם צליל",
+  "muted": "(מושתק)"
+}

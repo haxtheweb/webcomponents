@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Faceți clic sau treceți cu mouse-ul pentru a reda sunetul exploziei",
+  "soundDisabled": "Efect vizual de explozie (sunet dezactivat)",
+  "explosionAnimation": "animație de explozie",
+  "explosionAriaLabel": "Animație de explozie {state} {sound}. Faceți clic pentru a comuta.",
+  "playing": "în redare",
+  "stopped": "oprită",
+  "withSound": "cu sunet",
+  "muted": "(fără sunet)"
+}

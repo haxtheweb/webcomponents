@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title} מאת {creator} מוגש בכפוף לרישיון {license}.",
   "permissionsBeyondScope": "הרשאות מעבר להיקף רישיון זה זמינות {link}.",
   "author": "(מחבר)",
-  "onTheLicensingDetailsPage": "בדף פרטי הרישוי"
+  "onTheLicensingDetailsPage": "בדף פרטי הרישוי",
+  "licenseLabel": "רישיון"
 }

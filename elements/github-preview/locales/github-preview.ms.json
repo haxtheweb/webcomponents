@@ -1,0 +1,10 @@
+{
+  "github": "GitHub",
+  "repository": "Repositori",
+  "stars": "bintang",
+  "forks": "fork",
+  "loading": "Memuatkan",
+  "viewMore": "Lihat Lagi",
+  "assetNotFound": "Aset tidak ditemui",
+  "openOnGitHub": "Buka {org}/{repo} di GitHub"
+}

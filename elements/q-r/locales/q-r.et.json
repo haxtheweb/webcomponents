@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "QR-kood: {title}",
+  "noData": "QR-koodina kuvamiseks pole andmeid",
+  "formatNotSupported": "QR-koodi vormingut {format} ei toetata",
+  "noCanvas": "See brauser ei saa QR-koodi joonistada (canvas'e tuge pole)"
+}

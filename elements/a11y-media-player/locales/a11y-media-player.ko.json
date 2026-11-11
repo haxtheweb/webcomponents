@@ -35,5 +35,12 @@
   "youTubeStartLoading": "재생을 누르세요.",
   "youTubeTranscriptLabel": "미디어가 재생되면 스크립트가 로드됩니다.",
   "audioDescriptionLabel": "화면 해설",
-  "openOnYouTube": "YouTube에서 열기"
+  "openOnYouTube": "YouTube에서 열기",
+  "interactiveLabel": "상호작용",
+  "layoutLabel": "레이아웃",
+  "sideLabel": "옆",
+  "belowLabel": "아래",
+  "leftLabel": "왼쪽",
+  "rightLabel": "오른쪽",
+  "hideTranscriptLabel": "스크립트 숨기기"
 }

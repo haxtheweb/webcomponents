@@ -4,5 +4,8 @@
   "pieChart": "Dane · Nexşeya dorhêlî",
   "showDataTable": "Tabloya daneyan nîşan bide",
   "downloadData": "Daneyan dakêşe (.csv)",
-  "series": "Rêze {n}"
+  "series": "Rêze {n}",
+  "barChartLabel": "nexşeya stûnan",
+  "lineChartLabel": "nexşeya xetê",
+  "pieChartLabel": "nexşeya gilover"
 }

@@ -15,6 +15,12 @@
         "title": "Koorsii",
         "description": "Koorsii tarreen taphachiisaa kun itti qophaa'e (eenyummeessaa koorsii ykn URL)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Miidiyaa",
+        "description": "Viidiyoo fi sagalee tarree taphataa keessa jiran. Asitti hin gulaalamu: qindaa'inni fuulaa bulookota keessa buusuun danda'aman beekuuf itti fayyadama."
+      }
     ]
   }
 }

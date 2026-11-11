@@ -1,4 +1,9 @@
 {
   "audio": "ශ්‍රව්‍ය",
-  "openOnSpotify": "නව ටැබයක Spotify හි විවෘත කරන්න"
+  "openOnSpotify": "නව ටැබයක Spotify හි විවෘත කරන්න",
+  "embedTitle": "Spotify කාවැද්දීම",
+  "trackEmbedTitle": "Spotify ගීත කාවැද්දීම",
+  "albumEmbedTitle": "Spotify ඇල්බම කාවැද්දීම",
+  "playlistEmbedTitle": "Spotify ධාවන ලැයිස්තු කාවැද්දීම",
+  "artistEmbedTitle": "Spotify කලාකරු කාවැද්දීම"
 }

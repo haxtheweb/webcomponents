@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Fuulli kun cufameera. Haala maxxansaa jijjiiruuf dura bani.",
   "pageLockedUnlockToDelete": "Fuulli kun cufameera. Haquuf dura bani.",
   "pageDetails": "Bal'ina fuulaa",
-  "clickToUnlock": "Banuuf cuqi"
+  "clickToUnlock": "Banuuf cuqi",
+  "pageSettings": "Qindaa'ina fuulaa",
+  "editingPageSettings": "Qindaa'ina fuulaa gulaalaa jira",
+  "published": "Maxxanfameera",
+  "draft": "Wixinee",
+  "locked": "Cufameera",
+  "unlocked": "Banameera",
+  "noTags": "Mallattoon hin jiru",
+  "oneTag": "Mallattoo 1",
+  "tagCount": "Mallattoowwan {count}",
+  "enterKey": "Enter"
 }

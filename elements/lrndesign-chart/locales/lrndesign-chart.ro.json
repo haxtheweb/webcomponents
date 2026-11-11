@@ -4,5 +4,8 @@
   "pieChart": "Date · Grafic circular",
   "showDataTable": "Afișează tabelul de date",
   "downloadData": "Descarcă datele (.csv)",
-  "series": "Seria {n}"
+  "series": "Seria {n}",
+  "barChartLabel": "grafic cu bare",
+  "lineChartLabel": "grafic liniar",
+  "pieChartLabel": "grafic circular"
 }

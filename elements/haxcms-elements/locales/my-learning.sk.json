@@ -129,5 +129,12 @@
   "cancel": "Zrušiť",
   "clearedSite": "Vaše údaje o učení pre {site} boli vymazané.",
   "clearedDevice": "Všetky údaje o učení v tomto zariadení boli vymazané.",
-  "thisSite": "táto stránka"
+  "thisSite": "táto stránka",
+  "outlineHeading": "Postup podľa stránok",
+  "allPages": "Všetky stránky",
+  "outlinePagesDone": "Hotové stránky: {done} z {total}",
+  "outlinePagesCount": "Stránok: {count}",
+  "outlinePercent": "{percent} %",
+  "outlinePercentComplete": "Dokončené na {percent} %",
+  "outlineComplete": "Dokončené"
 }

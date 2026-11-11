@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Փոխարկումը ձախողվեց։",
   "PARAM_REQUIRED": "Պարտադիր արժեքը բացակայում է՝ {param}։",
   "INVALID_REQUEST": "Անվավեր հարցում։",
-  "PARAM_INVALID": "Անվավեր արժեք՝ {param}։"
+  "PARAM_INVALID": "Անվավեր արժեք՝ {param}։",
+  "BLOCK_RATE_LIMITED": "Այս կայքում հիմա չափազանց շատ բովանդակության փոփոխություններ են։ Փորձեք կրկին {retryAfter} վայրկյանից։"
 }

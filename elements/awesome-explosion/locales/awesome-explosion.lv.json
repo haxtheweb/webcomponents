@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Noklikšķiniet vai virziet kursoru, lai atskaņotu sprādziena skaņu",
+  "soundDisabled": "Vizuāls sprādziena efekts (skaņa izslēgta)",
+  "explosionAnimation": "sprādziena animācija",
+  "explosionAriaLabel": "Sprādziena animācija {state} {sound}. Noklikšķiniet, lai pārslēgtu.",
+  "playing": "atskaņo",
+  "stopped": "apturēta",
+  "withSound": "ar skaņu",
+  "muted": "(izslēgta skaņa)"
+}

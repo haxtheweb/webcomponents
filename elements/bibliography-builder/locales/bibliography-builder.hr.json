@@ -4,5 +4,6 @@
   "exportCitations": "Izvoz citata",
   "copy": "Kopiraj",
   "exportCitationFormat": "Format izvoza citata",
-  "selectCitationFormatBelow": "Odaberite format citata u nastavku"
+  "selectCitationFormatBelow": "Odaberite format citata u nastavku",
+  "addCitationToBibliography": "Dodaj citat u bibliografiju"
 }

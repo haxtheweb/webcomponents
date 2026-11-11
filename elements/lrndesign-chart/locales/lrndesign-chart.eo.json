@@ -4,5 +4,8 @@
   "pieChart": "Datumoj · Cirkla diagramo",
   "showDataTable": "Montri datumtabelon",
   "downloadData": "Elŝuti datumojn (.csv)",
-  "series": "Serio {n}"
+  "series": "Serio {n}",
+  "barChartLabel": "stangodiagramo",
+  "lineChartLabel": "liniodiagramo",
+  "pieChartLabel": "cirkla diagramo"
 }

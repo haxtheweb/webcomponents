@@ -129,5 +129,12 @@
   "cancel": "Nuligi",
   "clearedSite": "Viaj lernaj datumoj por {site} estis vakigitaj.",
   "clearedDevice": "Ĉiuj lernaj datumoj sur ĉi tiu aparato estis vakigitaj.",
-  "thisSite": "ĉi tiu retejo"
+  "thisSite": "ĉi tiu retejo",
+  "outlineHeading": "Progreso laŭ paĝo",
+  "allPages": "Ĉiuj paĝoj",
+  "outlinePagesDone": "{done} el {total} paĝoj finitaj",
+  "outlinePagesCount": "{count} paĝoj",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% kompletigita",
+  "outlineComplete": "Kompletigita"
 }

@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Bu səhifə kilidlidir. Dərc statusunu dəyişmək üçün əvvəlcə onu açın.",
   "pageLockedUnlockToDelete": "Bu səhifə kilidlidir. Silmək üçün əvvəlcə onu açın.",
   "pageDetails": "Səhifə detalları",
-  "clickToUnlock": "Kilidi açmaq üçün klikləyin"
+  "clickToUnlock": "Kilidi açmaq üçün klikləyin",
+  "pageSettings": "Səhifə parametrləri",
+  "editingPageSettings": "Səhifə parametrləri redaktə olunur",
+  "published": "Dərc edilib",
+  "draft": "Qaralama",
+  "locked": "Kilidlənib",
+  "unlocked": "Kilidi açılıb",
+  "noTags": "Teq yoxdur",
+  "oneTag": "1 teq",
+  "tagCount": "{count} teq",
+  "enterKey": "Enter"
 }

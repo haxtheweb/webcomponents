@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Doc player ng web component"
+    "title": "Doc player ng web component",
+    "description": ""
   },
   "settings": {
     "configure": [

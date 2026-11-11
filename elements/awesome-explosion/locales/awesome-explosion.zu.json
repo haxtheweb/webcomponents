@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Chofoza noma ugudluzele ukudlala umsindo wokuqhuma",
+  "soundDisabled": "Umphumela obonakalayo wokuqhuma (umsindo uvaliwe)",
+  "explosionAnimation": "ukuhlola kokuqhuma",
+  "explosionAriaLabel": "Ukuhlola kokuqhuma {state} {sound}. Chofoza ukushintsha.",
+  "playing": "kuyadlala",
+  "stopped": "kumisiwe",
+  "withSound": "ngomsindo",
+  "muted": "(kuthulisiwe)"
+}

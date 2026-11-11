@@ -19,5 +19,13 @@
   "copyCode": "העתק קוד",
   "copied": "הועתק!",
   "invalidCode": "זה אינו קוד דמות.",
-  "preview": "תצוגה מקדימה של הדמות"
+  "preview": "תצוגה מקדימה של הדמות",
+  "previous": "{name} הקודם",
+  "next": "{name} הבא",
+  "variant": "{current} מתוך {total}",
+  "save": "שמור",
+  "cancel": "ביטול",
+  "unsavedChanges": "שינויים שלא נשמרו",
+  "noUnsavedChanges": "אין שינויים שלא נשמרו",
+  "codeHelp": "הדביקו קוד כדי לטעון דמות, או העתיקו את זה כדי להשתמש בו בכל מקום."
 }

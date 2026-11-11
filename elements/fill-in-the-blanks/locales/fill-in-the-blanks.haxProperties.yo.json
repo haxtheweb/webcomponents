@@ -37,6 +37,16 @@
         "title": "Orúkọ ìdánwò kékeré náà",
         "description": "Orúkọ ìdánwò kékeré tí a fi ránṣẹ́ fún lílò ní àwọn àyíká tí xAPI ń darí láti dá ẹyọ yìí mọ̀"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Èyí tí a lè pa dé",
+        "description": "Fi ìbéèrè yìí hàn gẹ́gẹ́ bí ìlà tí ó ṣí tí ó sì pa. Ṣíṣí ọ̀kan yóò pa àwọn ìbéèrè tí a lè pa dé mìíràn tó wà lẹ́gbẹ̀ẹ́ rẹ̀."
+      },
+      {
+        "title": "Bẹ̀rẹ̀ ní pípa dé",
+        "description": "Nígbà tí ó bá ṣeé pa dé, bẹ̀rẹ̀ gẹ́gẹ́ bí ìlà tí a ti pa tí ó fi ìbéèrè àti ipò rẹ̀ nìkan hàn."
+      }
     ]
   }
 }

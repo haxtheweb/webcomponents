@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "عملیات نه شي بشپړېدای ({status})",
   "normalizedPageSlugs": "د {count} پاڼو slugs معیاري شول",
   "createdTitle": "{title} جوړ شو!",
-  "processing": "پروسس کېږي"
+  "processing": "پروسس کېږي",
+  "saveTimedOut": "د خوندي کولو وخت پای ته ورسید: سرور ځواب نه کړ. ستاسو بدلونونه دلته ساتل شوي، خو سرور ممکن لا هم یې خوندي کړي."
 }

@@ -129,5 +129,12 @@
   "cancel": "Batal",
   "clearedSite": "Data pembelajaran anda untuk {site} telah dikosongkan.",
   "clearedDevice": "Semua data pembelajaran pada peranti ini telah dikosongkan.",
-  "thisSite": "tapak ini"
+  "thisSite": "tapak ini",
+  "outlineHeading": "Kemajuan mengikut halaman",
+  "allPages": "Semua halaman",
+  "outlinePagesDone": "{done} daripada {total} halaman selesai",
+  "outlinePagesCount": "{count} halaman",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% selesai",
+  "outlineComplete": "Selesai"
 }

@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "వెబ్ కాంపోనెంట్ డాక్ ప్లేయర్"
+    "title": "వెబ్ కాంపోనెంట్ డాక్ ప్లేయర్",
+    "description": ""
   },
   "settings": {
     "configure": [

@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Danna ko ka sa mai nuni a kai don kunna sautin fashewa",
+  "soundDisabled": "Tasirin fashewa na gani (an kashe sauti)",
+  "explosionAnimation": "motsin fashewa",
+  "explosionAriaLabel": "Motsin fashewa {state} {sound}. Danna don canzawa.",
+  "playing": "ana kunnawa",
+  "stopped": "an tsayar",
+  "withSound": "da sauti",
+  "muted": "(an rufe sauti)"
+}

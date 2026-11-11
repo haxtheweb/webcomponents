@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "মূল ফাইল প্রতিস্থাপন করুন",
   "newName": "নতুন নাম",
   "deleteAction": "মুছুন",
-  "renameAction": "নাম বদলান"
+  "renameAction": "নাম বদলান",
+  "bulkOverwriteConfirm": "{count}টি ফাইলে {action}? এটি মূল ফাইলগুলো প্রতিস্থাপন করে এবং পূর্বাবস্থায় ফেরানো যায় না।",
+  "actionScale": "আকার পরিবর্তন",
+  "actionRotate": "ঘোরান",
+  "actionTransform": "রূপান্তর",
+  "actionConvertJpg": "JPG-তে রূপান্তর",
+  "actionCompress": "সংকুচিত করুন"
 }

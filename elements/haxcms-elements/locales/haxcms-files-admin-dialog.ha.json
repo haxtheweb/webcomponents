@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Maye gurbin fayilolin asali",
   "newName": "Sabon suna",
   "deleteAction": "Share",
-  "renameAction": "Sake suna"
+  "renameAction": "Sake suna",
+  "bulkOverwriteConfirm": "{action} fayiloli {count}? Wannan zai maye gurbin ainihin fayilolin kuma ba za a iya mayar da shi ba.",
+  "actionScale": "Canza girma",
+  "actionRotate": "Juya",
+  "actionTransform": "Sauya siffa",
+  "actionConvertJpg": "Mayar zuwa JPG",
+  "actionCompress": "Matse"
 }

@@ -227,7 +227,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "active-index=\"3\""
+      "s": "active-index=\"0\""
     },
     {
       "type": "text",
@@ -335,7 +335,7 @@
     "line": "A playlist that presents video and audio players in a playe…",
     "code": "<media-playlist>"
   },
-  "surfaceHash": "250e6ce32ea3",
+  "surfaceHash": "e017920c9c11",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

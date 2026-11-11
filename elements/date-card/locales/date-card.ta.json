@@ -1,0 +1,8 @@
+{
+  "ordinalOne": "ஆம்",
+  "ordinalTwo": "ஆம்",
+  "ordinalFew": "ஆம்",
+  "ordinalOther": "ஆம்",
+  "fromTimeToTime": "{start} - {end} வரை",
+  "atTime": "{start} மணிக்கு"
+}

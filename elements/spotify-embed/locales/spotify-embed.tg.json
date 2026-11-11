@@ -1,4 +1,9 @@
 {
   "audio": "Аудио",
-  "openOnSpotify": "Дар Spotify дар варақаи нав кушоед"
+  "openOnSpotify": "Дар Spotify дар варақаи нав кушоед",
+  "embedTitle": "Spotify Embed",
+  "trackEmbedTitle": "Spotify Track Embed",
+  "albumEmbedTitle": "Spotify Album Embed",
+  "playlistEmbedTitle": "Spotify Playlist Embed",
+  "artistEmbedTitle": "Spotify Artist Embed"
 }

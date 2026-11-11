@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Halaman belum diterbitkan",
   "progressDone": "Selesai",
   "progressInProgress": "Sedang berlangsung",
-  "progressVisited": "Dikunjungi"
+  "progressVisited": "Dikunjungi",
+  "progressPercentComplete": "{percent}% selesai",
+  "progressComplete": "Selesai"
 }

@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Isiqukathi se-NodeJS"
+    "title": "Isiqukathi se-NodeJS",
+    "description": ""
   },
   "settings": {
     "configure": [

@@ -1,13 +1,20 @@
 {
   "gizmo": {
     "title": "H5P",
-    "description": "Pambungkus H5P kanggo ngemot lan nampilake berkas .h5p"
+    "description": "Muter konten interaktif H5P saka berkas .h5p sing diunggah, tanpa perlu server H5P"
   },
   "settings": {
     "configure": [
       {
         "slot": "",
-        "description": "Kode sematan iframe H5P"
+        "description": "Unggah utawa tautake berkas .h5p. Dibukak ing browser; ora perlu server H5P.",
+        "title": "Berkas H5P"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kode embed iframe lawas",
+        "description": "Mung kanggo konten lawas sing nyisipake iframe H5P saka situs liya. Kosongna yen berkas .h5p wis disetel ing ndhuwur."
       }
     ]
   }

@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Ntụgharị ahụ adaala.",
   "PARAM_REQUIRED": "Uru achọrọ adịghị: {param}.",
   "INVALID_REQUEST": "Arịrịọ ezighi ezi.",
-  "PARAM_INVALID": "Uru ezighi ezi: {param}."
+  "PARAM_INVALID": "Uru ezighi ezi: {param}.",
+  "BLOCK_RATE_LIMITED": "Mgbanwe ọdịnaya dị ukwuu na saịtị a ugbu a. Nwaa ọzọ n'ime sekọnd {retryAfter}."
 }

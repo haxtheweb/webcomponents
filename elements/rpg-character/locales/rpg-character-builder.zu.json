@@ -19,5 +19,13 @@
   "copyCode": "Kopisha ikhodi",
   "copied": "Kukopishiwe!",
   "invalidCode": "Leli akulona ikhodi lomlingiswa.",
-  "preview": "Ukubuka kuqala komlingiswa"
+  "preview": "Ukubuka kuqala komlingiswa",
+  "previous": "{name} yangaphambilini",
+  "next": "{name} elandelayo",
+  "variant": "{current} kwangu-{total}",
+  "save": "Gcina",
+  "cancel": "Khansela",
+  "unsavedChanges": "Izinguquko ezingagcinwanga",
+  "noUnsavedChanges": "Azikho izinguquko ezingagcinwanga",
+  "codeHelp": "Namathisela ikhodi ukuze ulayishe umlingiswa, noma ukhophe le ukuze uyisebenzise noma yikuphi."
 }

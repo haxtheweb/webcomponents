@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Tidak dapat menyelesaikan operasi ({status})",
   "normalizedPageSlugs": "{count} slug halaman dinormalisasi",
   "createdTitle": "{title} dibuat!",
-  "processing": "Memproses"
+  "processing": "Memproses",
+  "saveTimedOut": "Penyimpanan habis waktu: server tidak merespons. Perubahan Anda tetap disimpan di sini, tetapi server mungkin masih menyelesaikan penyimpanannya."
 }

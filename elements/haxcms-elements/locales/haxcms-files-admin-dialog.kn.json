@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "ಮೂಲ ಫೈಲ್‌ಗಳನ್ನು ಬದಲಾಯಿಸಿ",
   "newName": "ಹೊಸ ಹೆಸರು",
   "deleteAction": "ಅಳಿಸಿ",
-  "renameAction": "ಮರುಹೆಸರಿಸಿ"
+  "renameAction": "ಮರುಹೆಸರಿಸಿ",
+  "bulkOverwriteConfirm": "{action}: {count} ಫೈಲ್‌ಗಳು? ಇದು ಮೂಲ ಫೈಲ್‌ಗಳನ್ನು ಬದಲಾಯಿಸುತ್ತದೆ ಮತ್ತು ರದ್ದುಗೊಳಿಸಲಾಗುವುದಿಲ್ಲ.",
+  "actionScale": "ಮರುಮಾಪನ",
+  "actionRotate": "ತಿರುಗಿಸಿ",
+  "actionTransform": "ರೂಪಾಂತರಿಸಿ",
+  "actionConvertJpg": "JPG ಗೆ ಪರಿವರ್ತಿಸಿ",
+  "actionCompress": "ಸಂಕುಚಿತಗೊಳಿಸಿ"
 }

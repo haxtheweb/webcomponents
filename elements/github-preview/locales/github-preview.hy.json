@@ -1,0 +1,10 @@
+{
+  "github": "GitHub",
+  "repository": "Պահոց",
+  "stars": "աստղ",
+  "forks": "ֆորկ",
+  "loading": "Բեռնվում է",
+  "viewMore": "Տեսնել ավելին",
+  "assetNotFound": "Ռեսուրսը չի գտնվել",
+  "openOnGitHub": "Բացել {org}/{repo}-ը GitHub-ում"
+}

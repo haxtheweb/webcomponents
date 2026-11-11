@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Dönüştürme başarısız oldu.",
   "PARAM_REQUIRED": "Gerekli bir değer eksik: {param}.",
   "INVALID_REQUEST": "Geçersiz istek.",
-  "PARAM_INVALID": "Geçersiz değer: {param}."
+  "PARAM_INVALID": "Geçersiz değer: {param}.",
+  "BLOCK_RATE_LIMITED": "Bu sitede şu anda çok fazla içerik değişikliği yapılıyor. {retryAfter} saniye sonra tekrar deneyin."
 }

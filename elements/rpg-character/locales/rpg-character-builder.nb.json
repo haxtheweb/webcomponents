@@ -19,5 +19,13 @@
   "copyCode": "Kopier kode",
   "copied": "Kopiert!",
   "invalidCode": "Dette er ikke en karakterkode.",
-  "preview": "Forhåndsvisning av karakter"
+  "preview": "Forhåndsvisning av karakter",
+  "previous": "Forrige {name}",
+  "next": "Neste {name}",
+  "variant": "{current} av {total}",
+  "save": "Lagre",
+  "cancel": "Avbryt",
+  "unsavedChanges": "Ulagrede endringer",
+  "noUnsavedChanges": "Ingen ulagrede endringer",
+  "codeHelp": "Lim inn en kode for å laste en karakter, eller kopier denne for å bruke den hvor som helst."
 }

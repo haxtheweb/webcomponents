@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Ersätt originalfiler",
   "newName": "Nytt namn",
   "deleteAction": "Ta bort",
-  "renameAction": "Byt namn"
+  "renameAction": "Byt namn",
+  "bulkOverwriteConfirm": "{action} {count} filer? Detta ersätter originalfilerna och kan inte ångras.",
+  "actionScale": "Skala",
+  "actionRotate": "Rotera",
+  "actionTransform": "Transformera",
+  "actionConvertJpg": "Konvertera till JPG",
+  "actionCompress": "Komprimera"
 }

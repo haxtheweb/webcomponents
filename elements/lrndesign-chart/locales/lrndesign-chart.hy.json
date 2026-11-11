@@ -4,5 +4,8 @@
   "pieChart": "Տվյալներ · Շրջանային գծապատկեր",
   "showDataTable": "Ցույց տալ տվյալների աղյուսակը",
   "downloadData": "Ներբեռնել տվյալները (.csv)",
-  "series": "Շարք {n}"
+  "series": "Շարք {n}",
+  "barChartLabel": "սյունակային գծապատկեր",
+  "lineChartLabel": "գծային գծապատկեր",
+  "pieChartLabel": "շրջանային գծապատկեր"
 }

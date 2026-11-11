@@ -22,6 +22,12 @@
         "title": "Índex actiu",
         "description": "Índex de la imatge activa amb què comença el mode galeria."
       }
+    ],
+    "developer": [
+      {
+        "title": "Imatges",
+        "description": "Les imatges de la galeria. No s'editen aquí: l'esquema de la pàgina les fa servir per saber quins blocs s'hi poden deixar anar."
+      }
     ]
   }
 }

@@ -124,6 +124,13 @@ class CourseDesign extends SchemaBehaviors(LitElement) {
           },
         ],
       },
+      demoSchema: [
+        {
+          tag: "course-design",
+          properties: {},
+          content: "",
+        },
+      ],
     };
   }
 

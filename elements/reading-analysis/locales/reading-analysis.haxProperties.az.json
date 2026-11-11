@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Fəaliyyət",
-        "description": "Sübutları işarələ: öyrənənlər hər bayrağı onun sübutunun yanına yapışdırır. Birini seç: öyrənənlər suala ən yaxşı cavab verən tək hissəni seçir."
+        "description": "Sübutları işarələ: öyrənənlər hər bayrağı onun sübutunun yanına yapışdırır. Birini seç: öyrənənlər suala ən yaxşı cavab verən tək hissəni seçir.",
+        "options": {
+          "flag": "Sübutları işarələ",
+          "one": "Birini seçin"
+        }
       },
       {
         "property": "unit",
         "title": "Öyrənənlər seçir",
-        "description": "Öyrənənin mətndə göstərdiyi hissə. Şəkillər həmişə seçilə bilər."
+        "description": "Öyrənənin mətndə göstərdiyi hissə. Şəkillər həmişə seçilə bilər.",
+        "options": {
+          "sentence": "Cümlələr",
+          "paragraph": "Abzaslar",
+          "figure": "Yalnız fiqurlar"
+        }
       },
       {
         "property": "answers",

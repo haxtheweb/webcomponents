@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "વિસ્ફોટનો અવાજ વગાડવા ક્લિક કરો અથવા ઉપર હોવર કરો",
+  "soundDisabled": "દૃશ્ય વિસ્ફોટ અસર (અવાજ અક્ષમ)",
+  "explosionAnimation": "વિસ્ફોટ એનિમેશન",
+  "explosionAriaLabel": "વિસ્ફોટ એનિમેશન {state} {sound}. ટૉગલ કરવા ક્લિક કરો.",
+  "playing": "વાગી રહ્યું છે",
+  "stopped": "બંધ",
+  "withSound": "અવાજ સાથે",
+  "muted": "(મ્યૂટ)"
+}

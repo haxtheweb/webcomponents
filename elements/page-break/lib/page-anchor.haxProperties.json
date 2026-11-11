@@ -47,5 +47,12 @@
     ],
     "advanced": [],
     "developer": []
-  }
+  },
+  "demoSchema": [
+    {
+      "tag": "page-anchor",
+      "properties": {},
+      "content": ""
+    }
+  ]
 }

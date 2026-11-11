@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Az oldal nincs közzétéve",
   "progressDone": "Kész",
   "progressInProgress": "Folyamatban",
-  "progressVisited": "Meglátogatva"
+  "progressVisited": "Meglátogatva",
+  "progressPercentComplete": "{percent}% kész",
+  "progressComplete": "Kész"
 }

@@ -35,5 +35,12 @@
   "youTubeStartLoading": "Уйнатуга басыгыз.",
   "youTubeTranscriptLabel": "Транскрипт медиа уйнала башлагач йөкләнәчәк.",
   "audioDescriptionLabel": "Аудиотасвирлама",
-  "openOnYouTube": "YouTube'та ачу"
+  "openOnYouTube": "YouTube'та ачу",
+  "interactiveLabel": "интерактив",
+  "layoutLabel": "Урнаштыру",
+  "sideLabel": "Ян",
+  "belowLabel": "Аста",
+  "leftLabel": "Сул",
+  "rightLabel": "Уң",
+  "hideTranscriptLabel": "Транскрипцияне яшерү"
 }

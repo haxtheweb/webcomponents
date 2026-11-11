@@ -8,6 +8,7 @@
     "element-visible": "elementVisible",
     "extended": "extended",
     "headers": "headers",
+    "is-safari": "isSafari",
     "not-found-text": "notFoundText",
     "org": "org",
     "raw-url": "rawUrl",

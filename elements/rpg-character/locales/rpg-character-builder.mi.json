@@ -19,5 +19,13 @@
   "copyCode": "Tāruatia te waehere",
   "copied": "Kua tāruatia!",
   "invalidCode": "Ehara tērā i te waehere kiripuaki.",
-  "preview": "Arokite kiripuaki"
+  "preview": "Arokite kiripuaki",
+  "previous": "{name} o mua",
+  "next": "{name} e whai ake nei",
+  "variant": "{current} o te {total}",
+  "save": "Tiaki",
+  "cancel": "Whakakore",
+  "unsavedChanges": "Ngā whakarerekē kāore anō kia tiakina",
+  "noUnsavedChanges": "Kāore he whakarerekē kāore anō kia tiakina",
+  "codeHelp": "Whakapirihia he waehere hei uta i tētahi kiripuaki, tāruatia rānei tēnei hei whakamahi ki hea noa."
 }

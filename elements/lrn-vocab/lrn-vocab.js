@@ -271,6 +271,13 @@ class LrnVocab extends SchemaBehaviors(I18NMixin(LitElement)) {
       saveOptions: {
         unsetAttributes: ["t"],
       },
+      demoSchema: [
+        {
+          tag: "lrn-vocab",
+          properties: {},
+          content: "",
+        },
+      ],
     };
   }
 }

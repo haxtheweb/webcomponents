@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Tīmekļa komponentu dokumentācijas atskaņotājs"
+    "title": "Tīmekļa komponentu dokumentācijas atskaņotājs",
+    "description": ""
   },
   "settings": {
     "configure": [

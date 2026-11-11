@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Juyawa ta gaza.",
   "PARAM_REQUIRED": "Akwai ƙimar da ake buƙata da ba ta nan: {param}.",
   "INVALID_REQUEST": "Buƙata ba ta da inganci.",
-  "PARAM_INVALID": "Ƙima ba ta da inganci: {param}."
+  "PARAM_INVALID": "Ƙima ba ta da inganci: {param}.",
+  "BLOCK_RATE_LIMITED": "Ana yin sauye-sauyen abun ciki da yawa a wannan shafi yanzu. Sake gwadawa nan da daƙiƙa {retryAfter}."
 }

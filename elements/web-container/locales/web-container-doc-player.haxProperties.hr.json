@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Reproduktor dokumentacije web-komponenti"
+    "title": "Reproduktor dokumentacije web-komponenti",
+    "description": ""
   },
   "settings": {
     "configure": [

@@ -3,5 +3,8 @@
   "openInNewTab": "Ṣí PDF ní táàbù tuntun",
   "downloadPdf": "Gbà PDF sílẹ̀",
   "fullScreen": "Ojú-ìwé kíkún",
-  "exitFullScreen": "Jáde kúrò ní ojú-ìwé kíkún"
+  "exitFullScreen": "Jáde kúrò ní ojú-ìwé kíkún",
+  "notSupported": "Ó dàbí pé a kò ṣètò aṣàwákiri Wẹ́ẹ̀bù rẹ láti fi àwọn fáìlì PDF hàn. Kò burú, kàn",
+  "notSupportedLink": "tẹ̀ ibí láti gba fáìlì PDF náà.",
+  "download": "Gbà sílẹ̀"
 }

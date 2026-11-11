@@ -19,5 +19,13 @@
   "copyCode": "Kopiraj kôd",
   "copied": "Kopirano!",
   "invalidCode": "Ovo nije kôd lika.",
-  "preview": "Pregled lika"
+  "preview": "Pregled lika",
+  "previous": "Prethodni {name}",
+  "next": "Sljedeći {name}",
+  "variant": "{current} od {total}",
+  "save": "Sačuvaj",
+  "cancel": "Otkaži",
+  "unsavedChanges": "Nesačuvane izmjene",
+  "noUnsavedChanges": "Nema nesačuvanih izmjena",
+  "codeHelp": "Zalijepite kod da učitate lik, ili kopirajte ovaj da ga koristite bilo gdje."
 }

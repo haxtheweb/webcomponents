@@ -129,5 +129,12 @@
   "cancel": "Цуцлах",
   "clearedSite": "{site}-ийн суралцахуйн өгөгдөл цэвэрлэгдлээ.",
   "clearedDevice": "Энэ төхөөрөмж дээрх бүх суралцахуйн өгөгдөл цэвэрлэгдлээ.",
-  "thisSite": "энэ сайт"
+  "thisSite": "энэ сайт",
+  "outlineHeading": "Хуудсаар ахиц",
+  "allPages": "Бүх хуудас",
+  "outlinePagesDone": "{total} хуудасны {done} дууссан",
+  "outlinePagesCount": "{count} хуудас",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% гүйцэтгэсэн",
+  "outlineComplete": "Дууссан"
 }

@@ -1,0 +1,8 @@
+{
+  "ordinalOne": "aad",
+  "ordinalTwo": "aad",
+  "ordinalFew": "aad",
+  "ordinalOther": "aad",
+  "fromTimeToTime": "laga bilaabo {start} - {end}",
+  "atTime": "{start}"
+}

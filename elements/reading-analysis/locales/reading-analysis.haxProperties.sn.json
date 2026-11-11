@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Basa",
-        "description": "Isa mureza pahumbowo: vadzidzi vanoisa mureza wega wega padivi pehumbowo hwawo. Sarudza chimwe: vadzidzi vanosarudza chikamu chimwe chete chinopindura mubvunzo zvakanyanya."
+        "description": "Isa mureza pahumbowo: vadzidzi vanoisa mureza wega wega padivi pehumbowo hwawo. Sarudza chimwe: vadzidzi vanosarudza chikamu chimwe chete chinopindura mubvunzo zvakanyanya.",
+        "options": {
+          "flag": "Maka uchapupu",
+          "one": "Sarudza imwe"
+        }
       },
       {
         "property": "unit",
         "title": "Vadzidzi vanosarudza",
-        "description": "Zvinonongedzwa nemudzidzi muzvinyorwa. Mifananidzo inogona kusarudzwa nguva dzose."
+        "description": "Zvinonongedzwa nemudzidzi muzvinyorwa. Mifananidzo inogona kusarudzwa nguva dzose.",
+        "options": {
+          "sentence": "Mitsara",
+          "paragraph": "Ndima",
+          "figure": "Mifananidzo chete"
+        }
       },
       {
         "property": "answers",

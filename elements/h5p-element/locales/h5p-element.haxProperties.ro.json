@@ -1,13 +1,20 @@
 {
   "gizmo": {
     "title": "H5P",
-    "description": "Container H5P pentru încărcarea și prezentarea fișierelor .h5p"
+    "description": "Redă conținut interactiv H5P dintr-un fișier .h5p încărcat, fără server H5P"
   },
   "settings": {
     "configure": [
       {
         "slot": "",
-        "description": "Cod de încorporare iframe H5P"
+        "description": "Încărcați sau legați un fișier .h5p. Este dezarhivat în browser; nu este necesar un server H5P.",
+        "title": "Fișier H5P"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Cod de încorporare iframe vechi",
+        "description": "Doar pentru conținut mai vechi care încorporează un iframe H5P de pe alt site. Lăsați gol când este setat un fișier .h5p mai sus."
       }
     ]
   }

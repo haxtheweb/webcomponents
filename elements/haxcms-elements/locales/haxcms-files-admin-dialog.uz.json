@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Asl fayllarni almashtirish",
   "newName": "Yangi nom",
   "deleteAction": "O‘chirish",
-  "renameAction": "Nomini oʻzgartirish"
+  "renameAction": "Nomini oʻzgartirish",
+  "bulkOverwriteConfirm": "{count} ta faylga \"{action}\" amali qo'llansinmi? Bu asl fayllarni almashtiradi va bekor qilib bo'lmaydi.",
+  "actionScale": "Masshtablash",
+  "actionRotate": "Aylantirish",
+  "actionTransform": "O'zgartirish",
+  "actionConvertJpg": "JPG ga aylantirish",
+  "actionCompress": "Siqish"
 }

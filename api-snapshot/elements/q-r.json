@@ -7,11 +7,17 @@
     "format": "format",
     "margin": "margin",
     "modulesize": "modulesize",
+    "t": "t",
     "title": "title"
   },
   "slots": [],
   "events": [],
-  "cssParts": [],
+  "cssParts": [
+    "caption",
+    "frame",
+    "note",
+    "tile"
+  ],
   "cssProperties": [],
   "hax": {
     "schema": "elements/q-r/lib/q-r.haxProperties.json",
@@ -25,6 +31,8 @@
     ],
     "attributes": [],
     "slots": [],
-    "demoTags": []
+    "demoTags": [
+      "q-r"
+    ]
   }
 }

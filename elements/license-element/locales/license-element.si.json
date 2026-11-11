@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{creator} විසින් රචිත {title} {license} යටතේ බලපත්‍ර ලබා ඇත.",
   "permissionsBeyondScope": "මෙම බලපත්‍රයේ විෂය පථයෙන් ඔබ්බට අවසර {link} ලබා ගත හැක.",
   "author": "(කතෘ)",
-  "onTheLicensingDetailsPage": "බලපත්‍ර විස්තර පිටුවේ"
+  "onTheLicensingDetailsPage": "බලපත්‍ර විස්තර පිටුවේ",
+  "licenseLabel": "බලපත්‍රය"
 }

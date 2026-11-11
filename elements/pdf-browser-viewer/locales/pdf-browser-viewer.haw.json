@@ -3,5 +3,8 @@
   "openInNewTab": "E wehe i ka PDF ma kahi ʻaoʻao hou",
   "downloadPdf": "Hoʻoiho i ka PDF",
   "fullScreen": "ʻAoʻao piha",
-  "exitFullScreen": "Haʻalele i ka ʻaoʻao piha"
+  "exitFullScreen": "Haʻalele i ka ʻaoʻao piha",
+  "notSupported": "Me he mea lā ʻaʻole i hoʻonohonoho ʻia kāu polokalamu kele pūnaewele e hōʻike i nā waihona PDF. ʻAʻohe pilikia, e",
+  "notSupportedLink": "kaomi ma ʻaneʻi e hoʻoiho i ka waihona PDF.",
+  "download": "Hoʻoiho"
 }

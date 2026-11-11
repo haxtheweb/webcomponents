@@ -4,5 +4,8 @@
   "pieChart": "Të dhëna · Grafik qarkor",
   "showDataTable": "Shfaq tabelën e të dhënave",
   "downloadData": "Shkarko të dhënat (.csv)",
-  "series": "Seria {n}"
+  "series": "Seria {n}",
+  "barChartLabel": "grafik me shtylla",
+  "lineChartLabel": "grafik me vija",
+  "pieChartLabel": "grafik rrethor"
 }

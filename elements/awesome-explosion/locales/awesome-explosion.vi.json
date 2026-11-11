@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Nhấp hoặc di chuột để phát âm thanh vụ nổ",
+  "soundDisabled": "Hiệu ứng nổ trực quan (đã tắt âm thanh)",
+  "explosionAnimation": "hoạt ảnh vụ nổ",
+  "explosionAriaLabel": "Hoạt ảnh vụ nổ {state} {sound}. Nhấp để chuyển đổi.",
+  "playing": "đang phát",
+  "stopped": "đã dừng",
+  "withSound": "có âm thanh",
+  "muted": "(đã tắt tiếng)"
+}

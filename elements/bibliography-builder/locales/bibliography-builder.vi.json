@@ -4,5 +4,6 @@
   "exportCitations": "Xuất trích dẫn",
   "copy": "Sao chép",
   "exportCitationFormat": "Định dạng xuất trích dẫn",
-  "selectCitationFormatBelow": "Chọn một định dạng trích dẫn bên dưới"
+  "selectCitationFormatBelow": "Chọn một định dạng trích dẫn bên dưới",
+  "addCitationToBibliography": "Thêm trích dẫn vào danh mục tài liệu tham khảo"
 }

@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Fes clic o passa-hi per sobre per reproduir el so d'explosió",
+  "soundDisabled": "Efecte visual d'explosió (so desactivat)",
+  "explosionAnimation": "animació d'explosió",
+  "explosionAriaLabel": "Animació d'explosió {state} {sound}. Fes clic per alternar.",
+  "playing": "en reproducció",
+  "stopped": "aturada",
+  "withSound": "amb so",
+  "muted": "(silenciat)"
+}

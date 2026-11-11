@@ -23,6 +23,8 @@
     ],
     "attributes": [],
     "slots": [],
-    "demoTags": []
+    "demoTags": [
+      "lrs-emitter"
+    ]
   }
 }

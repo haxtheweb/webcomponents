@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Aizstāt oriģinālos failus",
   "newName": "Jauns nosaukums",
   "deleteAction": "Dzēst",
-  "renameAction": "Pārdēvēt"
+  "renameAction": "Pārdēvēt",
+  "bulkOverwriteConfirm": "{action} {count} failus? Tas aizstās oriģinālos failus, un to nevar atsaukt.",
+  "actionScale": "Mērogot",
+  "actionRotate": "Pagriezt",
+  "actionTransform": "Pārveidot",
+  "actionConvertJpg": "Konvertēt uz JPG",
+  "actionCompress": "Saspiest"
 }

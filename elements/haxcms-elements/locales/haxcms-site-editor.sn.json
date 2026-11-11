@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Hazvigoneke kupedza basa ({status})",
   "normalizedPageSlugs": "Ma slug emapeji {count} aruramiswa",
   "createdTitle": "{title} ragadzirwa!",
-  "processing": "Kushanda"
+  "processing": "Kushanda",
+  "saveTimedOut": "Nguva yekuchengeta yapera: server haina kupindura. Shanduko dzako dzakachengetwa pano, asi server inogona kupedzisa kudzichengeta."
 }

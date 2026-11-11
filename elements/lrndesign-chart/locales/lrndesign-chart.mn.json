@@ -4,5 +4,8 @@
   "pieChart": "Өгөгдөл · Дугуй диаграм",
   "showDataTable": "Өгөгдлийн хүснэгт харуулах",
   "downloadData": "Өгөгдөл татах (.csv)",
-  "series": "Цуваа {n}"
+  "series": "Цуваа {n}",
+  "barChartLabel": "тэгш өнцөгт диаграм",
+  "lineChartLabel": "шугаман диаграм",
+  "pieChartLabel": "бялуун диаграм"
 }

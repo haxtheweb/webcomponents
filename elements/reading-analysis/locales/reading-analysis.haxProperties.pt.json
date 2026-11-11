@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Atividade",
-        "description": "Marcar evidências: os estudantes colocam cada marcador ao lado da evidência correspondente. Selecionar um: os estudantes escolhem o único trecho que responde melhor à pergunta."
+        "description": "Marcar evidências: os estudantes colocam cada marcador ao lado da evidência correspondente. Selecionar um: os estudantes escolhem o único trecho que responde melhor à pergunta.",
+        "options": {
+          "flag": "Sinalizar evidências",
+          "one": "Selecionar um"
+        }
       },
       {
         "property": "unit",
         "title": "Os estudantes selecionam",
-        "description": "O que o estudante aponta no texto. Figuras sempre podem ser selecionadas."
+        "description": "O que o estudante aponta no texto. Figuras sempre podem ser selecionadas.",
+        "options": {
+          "sentence": "Frases",
+          "paragraph": "Parágrafos",
+          "figure": "Somente figuras"
+        }
       },
       {
         "property": "answers",

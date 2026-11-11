@@ -1,0 +1,9 @@
+{
+  "imageMap": "Şəkil xəritəsi",
+  "interactive": "İnteraktiv",
+  "hotspot": "Aktiv nöqtə",
+  "hotspotPosition": "{total} içindən {n}",
+  "hotspotsExplored": "{total} aktiv nöqtədən {n} araşdırıldı",
+  "explored": "Araşdırıldı",
+  "close": "Bağla"
+}

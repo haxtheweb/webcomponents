@@ -15,6 +15,12 @@
         "title": "Ikhosi",
         "description": "Ikhosi olu luhlu lokudlala olwenzelwe yona (isichongi sekhosi okanye i-URL)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Imithombo yeendaba",
+        "description": "Iividiyo nesandi kuluhlu lokudlala. Ayihlelwa apha: isishwankathelo sephepha siyisebenzisela ukwazi ukuba zeziphi iibhloko ezinokuwiselwa ngaphakathi."
+      }
     ]
   }
 }

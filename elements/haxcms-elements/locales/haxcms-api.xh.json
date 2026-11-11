@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Ukuguqula akuphumelelanga.",
   "PARAM_REQUIRED": "Ixabiso elifunekayo alikho: {param}.",
   "INVALID_REQUEST": "Isicelo asisebenzi.",
-  "PARAM_INVALID": "Ixabiso elingasebenziyo: {param}."
+  "PARAM_INVALID": "Ixabiso elingasebenziyo: {param}.",
+  "BLOCK_RATE_LIMITED": "Utshintsho oluninzi kakhulu lomxholo kuso eli sayithi okwangoku. Zama kwakhona kwisithuba seesekhondi ezi-{retryAfter}."
 }

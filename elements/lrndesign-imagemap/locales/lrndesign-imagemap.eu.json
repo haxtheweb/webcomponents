@@ -1,0 +1,9 @@
+{
+  "imageMap": "Irudi-mapa",
+  "interactive": "Interaktiboa",
+  "hotspot": "Gune aktiboa",
+  "hotspotPosition": "{total}tik {n}",
+  "hotspotsExplored": "{total} gune aktibotik {n} arakatuta",
+  "explored": "Arakatuta",
+  "close": "Itxi"
+}

@@ -2,5 +2,7 @@
   "pageIsUnpublished": "ページは非公開です",
   "progressDone": "完了",
   "progressInProgress": "進行中",
-  "progressVisited": "訪問済み"
+  "progressVisited": "訪問済み",
+  "progressPercentComplete": "{percent}%完了",
+  "progressComplete": "完了"
 }

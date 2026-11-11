@@ -3,5 +3,8 @@
   "openInNewTab": "Atidaryti PDF naujame skirtuke",
   "downloadPdf": "Atsisiųsti PDF",
   "fullScreen": "Visas ekranas",
-  "exitFullScreen": "Išeiti iš viso ekrano režimo"
+  "exitFullScreen": "Išeiti iš viso ekrano režimo",
+  "notSupported": "Panašu, kad jūsų naršyklė nesukonfigūruota rodyti PDF failų. Nieko tokio, tiesiog",
+  "notSupportedLink": "spustelėkite čia, kad atsisiųstumėte PDF failą.",
+  "download": "Atsisiųsti"
 }

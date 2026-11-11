@@ -129,5 +129,12 @@
   "cancel": "Soke",
   "clearedSite": "An share bayanan koyonka na {site}.",
   "clearedDevice": "An share dukkan bayanan koyo a wannan na’ura.",
-  "thisSite": "wannan shafin yanar gizo"
+  "thisSite": "wannan shafin yanar gizo",
+  "outlineHeading": "Ci gaba ta shafi",
+  "allPages": "Dukkan shafuka",
+  "outlinePagesDone": "An gama shafuka {done} cikin {total}",
+  "outlinePagesCount": "Shafuka {count}",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% an kammala",
+  "outlineComplete": "An kammala"
 }

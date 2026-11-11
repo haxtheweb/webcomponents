@@ -19,5 +19,13 @@
   "copyCode": "Kopa ikhowudi",
   "copied": "Ikopishiwe!",
   "invalidCode": "Le ayiyondlela yekhowudi yomlinganiswa.",
-  "preview": "Ukubuka kwangaphambili komlinganiswa"
+  "preview": "Ukubuka kwangaphambili komlinganiswa",
+  "previous": "{name} yangaphambili",
+  "next": "{name} elandelayo",
+  "variant": "{current} kwangama-{total}",
+  "save": "Gcina",
+  "cancel": "Rhoxisa",
+  "unsavedChanges": "Utshintsho olungagcinwanga",
+  "noUnsavedChanges": "Akukho tshintsho lungagcinwanga",
+  "codeHelp": "Namathelisa ikhowudi ukulayisha uphawu, okanye ukope le ukuze uyisebenzise naphi na."
 }

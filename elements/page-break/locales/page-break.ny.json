@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Tsamba ili latsekedwa. Litsegulenitu kuti musinthe mkhalidwe wa kufalitsa.",
   "pageLockedUnlockToDelete": "Tsamba ili latsekedwa. Litsegulenitu kuti muchotse.",
   "pageDetails": "Zambiri za tsamba",
-  "clickToUnlock": "Dinani kuti mutsegule"
+  "clickToUnlock": "Dinani kuti mutsegule",
+  "pageSettings": "Zokonda za tsamba",
+  "editingPageSettings": "Mukusintha zokonda za tsamba",
+  "published": "Lofalitsidwa",
+  "draft": "Losamalizidwa",
+  "locked": "Lotsekedwa",
+  "unlocked": "Latsegulidwa",
+  "noTags": "Palibe ma tag",
+  "oneTag": "Tag imodzi",
+  "tagCount": "Ma tag {count}",
+  "enterKey": "Enter"
 }

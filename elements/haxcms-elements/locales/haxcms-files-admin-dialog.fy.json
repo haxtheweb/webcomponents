@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Orizjinele bestannen ferfange",
   "newName": "Nije namme",
   "deleteAction": "Wiskje",
-  "renameAction": "Omneame"
+  "renameAction": "Omneame",
+  "bulkOverwriteConfirm": "{action} {count} bestannen? Dit ferfangt de orizjinele bestannen en kin net ûngedien makke wurde.",
+  "actionScale": "Skalearje",
+  "actionRotate": "Draaie",
+  "actionTransform": "Transformearje",
+  "actionConvertJpg": "Omsette nei JPG",
+  "actionCompress": "Komprimearje"
 }

@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Patlama sesini çalmak için tıklayın veya üzerine gelin",
+  "soundDisabled": "Görsel patlama efekti (ses kapalı)",
+  "explosionAnimation": "patlama animasyonu",
+  "explosionAriaLabel": "Patlama animasyonu {state} {sound}. Değiştirmek için tıklayın.",
+  "playing": "oynatılıyor",
+  "stopped": "durduruldu",
+  "withSound": "sesli",
+  "muted": "(sessiz)"
+}

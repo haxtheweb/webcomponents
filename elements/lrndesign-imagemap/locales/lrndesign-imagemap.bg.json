@@ -1,0 +1,9 @@
+{
+  "imageMap": "Карта на изображение",
+  "interactive": "Интерактивен",
+  "hotspot": "Горещо петно",
+  "hotspotPosition": "{n} от {total}",
+  "hotspotsExplored": "Разгледани {n} от {total} горещи петна",
+  "explored": "Разгледано",
+  "close": "Затваряне"
+}

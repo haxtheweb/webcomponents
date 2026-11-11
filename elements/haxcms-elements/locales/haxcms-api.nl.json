@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "De conversie is mislukt.",
   "PARAM_REQUIRED": "Er ontbreekt een verplichte waarde: {param}.",
   "INVALID_REQUEST": "Ongeldig verzoek.",
-  "PARAM_INVALID": "Ongeldige waarde: {param}."
+  "PARAM_INVALID": "Ongeldige waarde: {param}.",
+  "BLOCK_RATE_LIMITED": "Er zijn momenteel te veel inhoudswijzigingen op deze site. Probeer het over {retryAfter} seconden opnieuw."
 }

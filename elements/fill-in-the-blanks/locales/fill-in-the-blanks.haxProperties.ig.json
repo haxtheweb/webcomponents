@@ -37,6 +37,16 @@
         "title": "Aha ule",
         "description": "Aha ule e zigara maka iji na gburugburu xAPI iji mata ihe a"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Nke a pụrụ ịkpọchi",
+        "description": "Gosi ajụjụ a dị ka ahịrị nke na-emepe ma na-emechi. Imepe otu na-emechi ajụjụ ndị ọzọ a pụrụ ịkpọchi nke dị n'akụkụ ya."
+      },
+      {
+        "title": "Malite ya ka emechiri",
+        "description": "Mgbe a pụrụ ịkpọchi, malite dị ka ahịrị emechiri nke na-egosi naanị ajụjụ na ọnọdụ ya."
+      }
     ]
   }
 }

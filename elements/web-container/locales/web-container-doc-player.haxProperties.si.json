@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "වෙබ් සංරචක ලේඛන වාදකය"
+    "title": "වෙබ් සංරචක ලේඛන වාදකය",
+    "description": ""
   },
   "settings": {
     "configure": [

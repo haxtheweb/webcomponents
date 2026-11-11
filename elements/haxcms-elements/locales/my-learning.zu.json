@@ -129,5 +129,12 @@
   "cancel": "Khansela",
   "clearedSite": "Idatha yakho yokufunda ye-{site} isulwe.",
   "clearedDevice": "Yonke idatha yokufunda kule divayisi isulwe.",
-  "thisSite": "le sayithi"
+  "thisSite": "le sayithi",
+  "outlineHeading": "Inqubekelaphambili ngekhasi",
+  "allPages": "Wonke amakhasi",
+  "outlinePagesDone": "{done} kwangu-{total} amakhasi kuqediwe",
+  "outlinePagesCount": "amakhasi angu-{count}",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% kuqediwe",
+  "outlineComplete": "Kuqediwe"
 }

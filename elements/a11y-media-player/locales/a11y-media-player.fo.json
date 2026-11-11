@@ -35,5 +35,12 @@
   "youTubeStartLoading": "Trýst á spæl.",
   "youTubeTranscriptLabel": "Avskriftin verður innlisin, tá ið miðilin spælir.",
   "audioDescriptionLabel": "Ljóðlýsing",
-  "openOnYouTube": "Opna á YouTube"
+  "openOnYouTube": "Opna á YouTube",
+  "interactiveLabel": "samvirkandi",
+  "layoutLabel": "Uppsetan",
+  "sideLabel": "Á síðuni",
+  "belowLabel": "Niðanfyri",
+  "leftLabel": "Vinstra",
+  "rightLabel": "Høgra",
+  "hideTranscriptLabel": "Fjal uppskrift"
 }

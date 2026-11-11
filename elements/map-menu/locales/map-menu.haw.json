@@ -2,5 +2,7 @@
   "pageIsUnpublished": "ʻAʻole i paʻi ʻia ka ʻaoʻao",
   "progressDone": "Pau",
   "progressInProgress": "E hana ʻia nei",
-  "progressVisited": "Ua kipa ʻia"
+  "progressVisited": "Ua kipa ʻia",
+  "progressPercentComplete": "{percent}% i pau",
+  "progressComplete": "Ua pau"
 }

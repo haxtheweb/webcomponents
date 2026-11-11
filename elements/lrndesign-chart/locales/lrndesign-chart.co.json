@@ -4,5 +4,8 @@
   "pieChart": "Dati · Graficu à torta",
   "showDataTable": "Mostra a tabella di dati",
   "downloadData": "Scaricà i dati (.csv)",
-  "series": "Serie {n}"
+  "series": "Serie {n}",
+  "barChartLabel": "grafiscu à barre",
+  "lineChartLabel": "grafiscu à linea",
+  "pieChartLabel": "grafiscu à settori"
 }

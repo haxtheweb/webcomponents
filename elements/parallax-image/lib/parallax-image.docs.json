@@ -15,7 +15,7 @@
   "import": "@haxtheweb/parallax-image/parallax-image.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/parallax-image/parallax-image.js",
   "install": "npm i @haxtheweb/parallax-image",
-  "demoHtml": "",
+  "demoHtml": "<parallax-image></parallax-image>",
   "attributes": [
     {
       "name": "image-bg",
@@ -84,9 +84,16 @@
         }
       ],
       "advanced": []
-    }
+    },
+    "demoSchema": [
+      {
+        "tag": "parallax-image",
+        "properties": {},
+        "content": ""
+      }
+    ]
   },
-  "surfaceHash": "b2f3453dd171",
+  "surfaceHash": "4f7bd7934ad6",
   "walkthroughs": [
     {
       "id": "",

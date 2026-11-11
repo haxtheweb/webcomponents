@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "පරිවර්තනය අසාර්ථක විය.",
   "PARAM_REQUIRED": "අවශ්‍ය අගයක් නොමැත: {param}.",
   "INVALID_REQUEST": "වලංගු නොවන ඉල්ලීමකි.",
-  "PARAM_INVALID": "වලංගු නොවන අගයකි: {param}."
+  "PARAM_INVALID": "වලංගු නොවන අගයකි: {param}.",
+  "BLOCK_RATE_LIMITED": "මේ මොහොතේ මෙම අඩවියේ අන්තර්ගත වෙනස්කම් ඉතා වැඩිය. තත්පර {retryAfter} කින් නැවත උත්සාහ කරන්න."
 }

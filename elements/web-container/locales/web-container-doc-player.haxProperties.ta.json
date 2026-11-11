@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "வலைக் கூறு ஆவண பிளேயர்"
+    "title": "வலைக் கூறு ஆவண பிளேயர்",
+    "description": ""
   },
   "settings": {
     "configure": [

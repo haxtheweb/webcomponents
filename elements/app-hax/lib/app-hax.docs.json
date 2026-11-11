@@ -175,7 +175,7 @@
       "order": 0,
       "src": "app-hax.motion.json",
       "file": "lib/app-hax.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     },
     {
       "id": "create-site",
@@ -183,7 +183,7 @@
       "order": 10,
       "src": "app-hax.create-site.motion.json",
       "file": "lib/app-hax.create-site.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     },
     {
       "id": "site-actions",
@@ -191,7 +191,7 @@
       "order": 20,
       "src": "app-hax.site-actions.motion.json",
       "file": "lib/app-hax.site-actions.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     },
     {
       "id": "settings",
@@ -199,13 +199,13 @@
       "order": 30,
       "src": "app-hax.settings.motion.json",
       "file": "lib/app-hax.settings.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/app-hax.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

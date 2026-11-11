@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Operaci nelze dokončit ({status})",
   "normalizedPageSlugs": "Normalizované slugy stránek: {count}",
   "createdTitle": "{title} vytvořeno!",
-  "processing": "Zpracovávání"
+  "processing": "Zpracovávání",
+  "saveTimedOut": "Časový limit ukládání vypršel: server neodpověděl. Vaše změny jsou zde zachovány, ale server je může stále dokončit."
 }

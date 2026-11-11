@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title} lolembedwa ndi {creator} lili ndi chilolezo cha {license}.",
   "permissionsBeyondScope": "Zilolezo zopitirira malire a chilolezo ichi zilipo {link}.",
   "author": "(wolemba)",
-  "onTheLicensingDetailsPage": "pa tsamba la zambiri za chilolezo"
+  "onTheLicensingDetailsPage": "pa tsamba la zambiri za chilolezo",
+  "licenseLabel": "Chilolezo"
 }

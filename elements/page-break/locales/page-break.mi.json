@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Kua rakaina tēnei whārangi. Wetekia i te tuatahi hei huri i te tūnga whakaputa.",
   "pageLockedUnlockToDelete": "Kua rakaina tēnei whārangi. Wetekia i te tuatahi hei muku.",
   "pageDetails": "Ngā taipitopito whārangi",
-  "clickToUnlock": "Pāwhiri ki te whakatuwhera"
+  "clickToUnlock": "Pāwhiri ki te whakatuwhera",
+  "pageSettings": "Tautuhinga whārangi",
+  "editingPageSettings": "E whakatika ana i ngā tautuhinga whārangi",
+  "published": "Kua whakaputaina",
+  "draft": "Tauira",
+  "locked": "Kua raka",
+  "unlocked": "Kua wetekina",
+  "noTags": "Kāore he tūtohu",
+  "oneTag": "1 tūtohu",
+  "tagCount": "{count} tūtohu",
+  "enterKey": "Enter"
 }

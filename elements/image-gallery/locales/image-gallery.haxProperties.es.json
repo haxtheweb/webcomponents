@@ -22,6 +22,12 @@
         "title": "Índice activo",
         "description": "Índice de la imagen activa con la que empieza el modo galería."
       }
+    ],
+    "developer": [
+      {
+        "title": "Imágenes",
+        "description": "Las imágenes de la galería. No se editan aquí: el esquema de la página las usa para saber qué bloques se pueden soltar dentro."
+      }
     ]
   }
 }

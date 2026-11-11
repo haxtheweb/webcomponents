@@ -4,5 +4,6 @@
   "exportCitations": "引用文献をエクスポート",
   "copy": "コピー",
   "exportCitationFormat": "引用形式をエクスポート",
-  "selectCitationFormatBelow": "以下から引用形式を選択してください"
+  "selectCitationFormatBelow": "以下から引用形式を選択してください",
+  "addCitationToBibliography": "参考文献に引用を追加"
 }

@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Dokumentationsspelare för webbkomponenter"
+    "title": "Dokumentationsspelare för webbkomponenter",
+    "description": ""
   },
   "settings": {
     "configure": [

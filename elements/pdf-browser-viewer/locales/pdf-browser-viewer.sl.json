@@ -3,5 +3,8 @@
   "openInNewTab": "Odpri PDF v novem zavihku",
   "downloadPdf": "Prenesi PDF",
   "fullScreen": "Celozaslonski način",
-  "exitFullScreen": "Izhod iz celozaslonskega načina"
+  "exitFullScreen": "Izhod iz celozaslonskega načina",
+  "notSupported": "Kaže, da vaš spletni brskalnik ni nastavljen za prikaz datotek PDF. Brez skrbi, samo",
+  "notSupportedLink": "kliknite tukaj, da prenesete datoteko PDF.",
+  "download": "Prenesi"
 }

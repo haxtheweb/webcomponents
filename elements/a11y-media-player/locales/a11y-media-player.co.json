@@ -35,5 +35,12 @@
   "youTubeStartLoading": "Appughjate nant'à leghje.",
   "youTubeTranscriptLabel": "A trascrizzione si caricherà quandu u media sarà lettu.",
   "audioDescriptionLabel": "Discrizzione audio",
-  "openOnYouTube": "Apre in YouTube"
+  "openOnYouTube": "Apre in YouTube",
+  "interactiveLabel": "interattivu",
+  "layoutLabel": "Disposizione",
+  "sideLabel": "À fiancu",
+  "belowLabel": "Sottu",
+  "leftLabel": "Sinistra",
+  "rightLabel": "Diritta",
+  "hideTranscriptLabel": "Piattà a trascrizzione"
 }

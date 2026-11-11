@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Amaly tamamlap bolmady ({status})",
   "normalizedPageSlugs": "{count} sahypa slug-y kadalaşdyryldy",
   "createdTitle": "{title} döredildi!",
-  "processing": "Işlenýär"
+  "processing": "Işlenýär",
+  "saveTimedOut": "Saklamagyň wagty gutardy: serwer jogap bermedi. Üýtgetmeleriňiz şu ýerde saklanýar, ýöne serwer entegem saklamagy tamamlap biler."
 }

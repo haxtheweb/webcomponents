@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Trang này đã bị khóa. Hãy mở khóa trước để thay đổi trạng thái xuất bản.",
   "pageLockedUnlockToDelete": "Trang này đã bị khóa. Hãy mở khóa trước để xóa.",
   "pageDetails": "Chi tiết trang",
-  "clickToUnlock": "Nhấp để mở khóa"
+  "clickToUnlock": "Nhấp để mở khóa",
+  "pageSettings": "Cài đặt trang",
+  "editingPageSettings": "Đang chỉnh sửa cài đặt trang",
+  "published": "Đã xuất bản",
+  "draft": "Bản nháp",
+  "locked": "Đã khóa",
+  "unlocked": "Đã mở khóa",
+  "noTags": "Không có thẻ",
+  "oneTag": "1 thẻ",
+  "tagCount": "{count} thẻ",
+  "enterKey": "Enter"
 }

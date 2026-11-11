@@ -19,5 +19,13 @@
   "copyCode": "Copïo'r cod",
   "copied": "Wedi copïo!",
   "invalidCode": "Nid cod cymeriad yw hwn.",
-  "preview": "Rhagolwg o'r cymeriad"
+  "preview": "Rhagolwg o'r cymeriad",
+  "previous": "{name} blaenorol",
+  "next": "{name} nesaf",
+  "variant": "{current} o {total}",
+  "save": "Cadw",
+  "cancel": "Canslo",
+  "unsavedChanges": "Newidiadau heb eu cadw",
+  "noUnsavedChanges": "Dim newidiadau heb eu cadw",
+  "codeHelp": "Gludwch god i lwytho cymeriad, neu copïwch hwn i'w ddefnyddio yn unrhyw le."
 }

@@ -37,6 +37,16 @@
         "title": "Nom du quiz",
         "description": "Nom du quiz transmis pour identifier cet élément dans les environnements basés sur xAPI"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Repliable",
+        "description": "Affiche cette question sous forme de ligne qui s'ouvre et se ferme. L'ouverture d'une question ferme les autres questions repliables voisines."
+      },
+      {
+        "title": "Commencer replié",
+        "description": "Si repliable, commence sous forme de ligne fermée n'affichant que la question et son statut."
+      }
     ]
   }
 }

@@ -1,4 +1,9 @@
 {
   "audio": "Audio",
-  "openOnSpotify": "Spotify-da yeni tabda aç"
+  "openOnSpotify": "Spotify-da yeni tabda aç",
+  "embedTitle": "Spotify yerləşdirməsi",
+  "trackEmbedTitle": "Spotify trek yerləşdirməsi",
+  "albumEmbedTitle": "Spotify albom yerləşdirməsi",
+  "playlistEmbedTitle": "Spotify pleylist yerləşdirməsi",
+  "artistEmbedTitle": "Spotify ifaçı yerləşdirməsi"
 }

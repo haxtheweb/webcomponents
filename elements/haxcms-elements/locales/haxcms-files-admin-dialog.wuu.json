@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "替换原始文件",
   "newName": "新名字",
   "deleteAction": "删除",
-  "renameAction": "重命名"
+  "renameAction": "重命名",
+  "bulkOverwriteConfirm": "{action} {count} 个文件？迭个会换脱原来额文件，而且伐能撤销。",
+  "actionScale": "缩放",
+  "actionRotate": "旋转",
+  "actionTransform": "变换",
+  "actionConvertJpg": "转成 JPG",
+  "actionCompress": "压缩"
 }

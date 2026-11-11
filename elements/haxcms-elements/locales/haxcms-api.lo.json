@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "ການແປງບໍ່ສຳເລັດ.",
   "PARAM_REQUIRED": "ຂາດຄ່າທີ່ຈຳເປັນ: {param}.",
   "INVALID_REQUEST": "ຄຳຂໍບໍ່ຖືກຕ້ອງ.",
-  "PARAM_INVALID": "ຄ່າບໍ່ຖືກຕ້ອງ: {param}."
+  "PARAM_INVALID": "ຄ່າບໍ່ຖືກຕ້ອງ: {param}.",
+  "BLOCK_RATE_LIMITED": "ມີການປ່ຽນແປງເນື້ອຫາຫຼາຍເກີນໄປໃນເວັບໄຊນີ້ໃນຕອນນີ້. ລອງໃໝ່ໃນອີກ {retryAfter} ວິນາທີ."
 }

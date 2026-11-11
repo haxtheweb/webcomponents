@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Aktiwiteit",
-        "description": "Merk bewyse: leerders plak elke vlaggie langs die bewys daarvoor. Kies een: leerders kies die enkele gedeelte wat die vraag die beste beantwoord."
+        "description": "Merk bewyse: leerders plak elke vlaggie langs die bewys daarvoor. Kies een: leerders kies die enkele gedeelte wat die vraag die beste beantwoord.",
+        "options": {
+          "flag": "Merk bewyse",
+          "one": "Kies een"
+        }
       },
       {
         "property": "unit",
         "title": "Leerders kies",
-        "description": "Waarna 'n leerder in die leesstuk wys. Figure kan altyd gekies word."
+        "description": "Waarna 'n leerder in die leesstuk wys. Figure kan altyd gekies word.",
+        "options": {
+          "sentence": "Sinne",
+          "paragraph": "Paragrawe",
+          "figure": "Slegs figure"
+        }
       },
       {
         "property": "answers",

@@ -1,0 +1,9 @@
+{
+  "imageMap": "Myndkort",
+  "interactive": "Gagnvirkt",
+  "hotspot": "Virkur reitur",
+  "hotspotPosition": "{n} af {total}",
+  "hotspotsExplored": "{n} af {total} virkum reitum kannaðir",
+  "explored": "Kannað",
+  "close": "Loka"
+}

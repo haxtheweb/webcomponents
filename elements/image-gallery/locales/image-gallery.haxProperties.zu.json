@@ -22,6 +22,12 @@
         "title": "Inkomba esebenzayo",
         "description": "Inkomba yesithombe esisebenzayo okuzoqalwa ngaso kumodi yegalari."
       }
+    ],
+    "developer": [
+      {
+        "title": "Izithombe",
+        "description": "Izithombe ezisegalari. Akuhlelwa lapha: uhlaka lwekhasi lukusebenzisa ukuze lwazi ukuthi yimaphi amabhulokhi angawiselwa ngaphakathi."
+      }
     ]
   }
 }

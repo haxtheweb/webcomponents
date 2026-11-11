@@ -1,5 +1,6 @@
 {
   "simulation": "Hermun",
   "fullScreen": "Fullur skjár",
-  "exitFullScreen": "Hætta í fullum skjá"
+  "exitFullScreen": "Hætta í fullum skjá",
+  "player": "Unity WebGL-spilari"
 }

@@ -129,5 +129,12 @@
   "cancel": "Отмена",
   "clearedSite": "Данные вашего обучения для {site} очищены.",
   "clearedDevice": "Все данные обучения на этом устройстве очищены.",
-  "thisSite": "этот сайт"
+  "thisSite": "этот сайт",
+  "outlineHeading": "Прогресс по страницам",
+  "allPages": "Все страницы",
+  "outlinePagesDone": "Пройдено страниц: {done} из {total}",
+  "outlinePagesCount": "Страниц: {count}",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "Выполнено на {percent}%",
+  "outlineComplete": "Завершено"
 }

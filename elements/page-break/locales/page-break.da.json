@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Denne side er låst. Lås den op først for at ændre publiceringsstatus.",
   "pageLockedUnlockToDelete": "Denne side er låst. Lås den op først for at slette.",
   "pageDetails": "Sidedetaljer",
-  "clickToUnlock": "Klik for at låse op"
+  "clickToUnlock": "Klik for at låse op",
+  "pageSettings": "Sideindstillinger",
+  "editingPageSettings": "Redigerer sideindstillinger",
+  "published": "Udgivet",
+  "draft": "Kladde",
+  "locked": "Låst",
+  "unlocked": "Låst op",
+  "noTags": "Ingen tags",
+  "oneTag": "1 tag",
+  "tagCount": "{count} tags",
+  "enterKey": "Enter"
 }

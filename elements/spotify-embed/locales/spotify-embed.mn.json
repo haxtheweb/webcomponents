@@ -1,4 +1,9 @@
 {
   "audio": "Аудио",
-  "openOnSpotify": "Spotify дээр шинэ табд нээх"
+  "openOnSpotify": "Spotify дээр шинэ табд нээх",
+  "embedTitle": "Spotify суулгац",
+  "trackEmbedTitle": "Spotify дууны суулгац",
+  "albumEmbedTitle": "Spotify цомгийн суулгац",
+  "playlistEmbedTitle": "Spotify тоглуулах жагсаалтын суулгац",
+  "artistEmbedTitle": "Spotify уран бүтээлчийн суулгац"
 }

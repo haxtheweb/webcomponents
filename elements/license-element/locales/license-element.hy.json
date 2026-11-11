@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title}, հեղինակ՝ {creator}, լիցենզավորված է {license} լիցենզիայով.",
   "permissionsBeyondScope": "Այս լիցենզիայի շրջանակներից դուրս թույլտվությունները հասանելի են {link}.",
   "author": "(հեղինակ)",
-  "onTheLicensingDetailsPage": "լիցենզավորման մանրամասների էջում"
+  "onTheLicensingDetailsPage": "լիցենզավորման մանրամասների էջում",
+  "licenseLabel": "Արտոնագիր"
 }

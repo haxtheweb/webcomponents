@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "ਅਸਲ ਫ਼ਾਈਲਾਂ ਬਦਲੋ",
   "newName": "ਨਵਾਂ ਨਾਮ",
   "deleteAction": "ਮਿਟਾਓ",
-  "renameAction": "ਨਾਮ ਬਦਲੋ"
+  "renameAction": "ਨਾਮ ਬਦਲੋ",
+  "bulkOverwriteConfirm": "{action} {count} ਫ਼ਾਈਲਾਂ? ਇਹ ਅਸਲ ਫ਼ਾਈਲਾਂ ਨੂੰ ਬਦਲ ਦਿੰਦਾ ਹੈ ਅਤੇ ਵਾਪਸ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ।",
+  "actionScale": "ਸਕੇਲ ਕਰੋ",
+  "actionRotate": "ਘੁੰਮਾਓ",
+  "actionTransform": "ਰੂਪਾਂਤਰ ਕਰੋ",
+  "actionConvertJpg": "JPG ਵਿੱਚ ਬਦਲੋ",
+  "actionCompress": "ਸੰਕੁਚਿਤ ਕਰੋ"
 }

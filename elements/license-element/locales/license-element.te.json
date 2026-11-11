@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{creator} రచించిన {title} {license} కింద లైసెన్స్ పొందింది.",
   "permissionsBeyondScope": "ఈ లైసెన్స్ పరిధికి మించిన అనుమతులు {link} అందుబాటులో ఉన్నాయి.",
   "author": "(రచయిత)",
-  "onTheLicensingDetailsPage": "లైసెన్సింగ్ వివరాల పేజీలో"
+  "onTheLicensingDetailsPage": "లైసెన్సింగ్ వివరాల పేజీలో",
+  "licenseLabel": "లైసెన్స్"
 }

@@ -84,7 +84,7 @@ class DemoSnippet extends DDDSuper(LitElement) {
           overflow: hidden;
           box-shadow: var(--ddd-boxShadow-sm);
           margin: var(--ddd-spacing-10) auto;
-          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
+          transition: box-shadow var(--ddd-duration-normal, 0.3s) ease-in-out;
         }
 
         :host(:hover),
@@ -133,6 +133,19 @@ class DemoSnippet extends DDDSuper(LitElement) {
             var(--ddd-theme-default-white),
             var(--ddd-theme-default-potentialMidnight)
           );
+        }
+
+        /* nothing moves with prefers-reduced-motion */
+        @media (prefers-reduced-motion: reduce) {
+          :host,
+          *,
+          *::before,
+          *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            transition-delay: 0ms !important;
+          }
         }
       `,
     ];

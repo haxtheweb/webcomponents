@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "搿只页面锁牢了。先解锁再改发布状态。",
   "pageLockedUnlockToDelete": "搿只页面锁牢了。先解锁再删除。",
   "pageDetails": "頁面詳情",
-  "clickToUnlock": "點擊解鎖"
+  "clickToUnlock": "點擊解鎖",
+  "pageSettings": "页面设置",
+  "editingPageSettings": "勒勒编辑页面设置",
+  "published": "已发布",
+  "draft": "草稿",
+  "locked": "锁牢了",
+  "unlocked": "呒没锁",
+  "noTags": "呒没标签",
+  "oneTag": "1 个标签",
+  "tagCount": "{count} 个标签",
+  "enterKey": "Enter"
 }

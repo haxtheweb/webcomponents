@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Beddelaaddu way fashilantay.",
   "PARAM_REQUIRED": "Qiime loo baahan yahay ayaa maqan: {param}.",
   "INVALID_REQUEST": "Codsigu ma ansax aha.",
-  "PARAM_INVALID": "Qiime aan ansax ahayn: {param}."
+  "PARAM_INVALID": "Qiime aan ansax ahayn: {param}.",
+  "BLOCK_RATE_LIMITED": "Isbeddello badan oo nuxur ah ayaa hadda ka jira goobtan. Isku day mar kale {retryAfter} ilbiriqsi kadib."
 }

@@ -35,5 +35,12 @@
   "youTubeStartLoading": "Oxut düyməsini basın.",
   "youTubeTranscriptLabel": "Transkript media oxudulduqda yüklənəcək.",
   "audioDescriptionLabel": "Səsli təsvir",
-  "openOnYouTube": "YouTube-da aç"
+  "openOnYouTube": "YouTube-da aç",
+  "interactiveLabel": "interaktiv",
+  "layoutLabel": "Düzən",
+  "sideLabel": "Yan",
+  "belowLabel": "Aşağı",
+  "leftLabel": "Sol",
+  "rightLabel": "Sağ",
+  "hideTranscriptLabel": "Transkripti gizlət"
 }

@@ -1,4 +1,9 @@
 {
   "audio": "Ses",
-  "openOnSpotify": "Spotify'da yeni sekmede aç"
+  "openOnSpotify": "Spotify'da yeni sekmede aç",
+  "embedTitle": "Spotify Gömmesi",
+  "trackEmbedTitle": "Spotify Parça Gömmesi",
+  "albumEmbedTitle": "Spotify Albüm Gömmesi",
+  "playlistEmbedTitle": "Spotify Çalma Listesi Gömmesi",
+  "artistEmbedTitle": "Spotify Sanatçı Gömmesi"
 }

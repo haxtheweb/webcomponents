@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Attività",
-        "description": "Immarka l-evidenza: l-istudenti jwaħħlu kull bandiera ħdejn l-evidenza tagħha. Agħżel waħda: l-istudenti jagħżlu l-unika silta li l-aħjar twieġeb il-mistoqsija."
+        "description": "Immarka l-evidenza: l-istudenti jwaħħlu kull bandiera ħdejn l-evidenza tagħha. Agħżel waħda: l-istudenti jagħżlu l-unika silta li l-aħjar twieġeb il-mistoqsija.",
+        "options": {
+          "flag": "Immarka l-evidenza",
+          "one": "Agħżel waħda"
+        }
       },
       {
         "property": "unit",
         "title": "L-istudenti jagħżlu",
-        "description": "Fuq xiex jipponta l-istudent fit-test. Il-figuri dejjem jistgħu jintgħażlu."
+        "description": "Fuq xiex jipponta l-istudent fit-test. Il-figuri dejjem jistgħu jintgħażlu.",
+        "options": {
+          "sentence": "Sentenzi",
+          "paragraph": "Paragrafi",
+          "figure": "Figuri biss"
+        }
       },
       {
         "property": "answers",

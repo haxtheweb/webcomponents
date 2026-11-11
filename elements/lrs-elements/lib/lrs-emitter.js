@@ -85,6 +85,13 @@ class LrsEmitter extends IntersectionObserverMixin(LitElement) {
         ],
         advanced: [],
       },
+      demoSchema: [
+        {
+          tag: "lrs-emitter",
+          properties: {},
+          content: "",
+        },
+      ],
     };
   }
   // properties available to the custom element for data binding

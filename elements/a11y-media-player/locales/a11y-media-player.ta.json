@@ -35,5 +35,12 @@
   "youTubeStartLoading": "",
   "youTubeTranscriptLabel": "",
   "audioDescriptionLabel": "ஒலி விவரிப்பு",
-  "openOnYouTube": "YouTube இல் திற"
+  "openOnYouTube": "YouTube இல் திற",
+  "interactiveLabel": "ஊடாடும்",
+  "layoutLabel": "தளவமைப்பு",
+  "sideLabel": "பக்கவாட்டு",
+  "belowLabel": "கீழே",
+  "leftLabel": "இடது",
+  "rightLabel": "வலது",
+  "hideTranscriptLabel": "எழுத்துப்படியை மறை"
 }

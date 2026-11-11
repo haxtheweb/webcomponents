@@ -3,5 +3,8 @@
   "openInNewTab": "បើក PDF ក្នុងផ្ទាំងថ្មី",
   "downloadPdf": "ទាញយក PDF",
   "fullScreen": "អេក្រង់ពេញ",
-  "exitFullScreen": "ចាកចេញពីអេក្រង់ពេញ"
+  "exitFullScreen": "ចាកចេញពីអេក្រង់ពេញ",
+  "notSupported": "ហាក់ដូចជាកម្មវិធីរុករករបស់អ្នកមិនបានកំណត់ឱ្យបង្ហាញឯកសារ PDF ទេ។ មិនអីទេ គ្រាន់តែ",
+  "notSupportedLink": "ចុចទីនេះដើម្បីទាញយកឯកសារ PDF។",
+  "download": "ទាញយក"
 }

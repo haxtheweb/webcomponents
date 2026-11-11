@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Klikk ella flyt músina yvir fyri at spæla sprongljóðið",
+  "soundDisabled": "Sjónlig sprongúrslit (ljóð er sløkt)",
+  "explosionAnimation": "sprongsmyndagerð",
+  "explosionAriaLabel": "Sprongsmyndagerð {state} {sound}. Klikk fyri at skifta.",
+  "playing": "spælir",
+  "stopped": "steðgað",
+  "withSound": "við ljóði",
+  "muted": "(ljóðleyst)"
+}

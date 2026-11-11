@@ -1,5 +1,6 @@
 {
   "simulation": "Ukulingisa",
   "fullScreen": "Isikrini esigcwele",
-  "exitFullScreen": "Phuma esikrinini esigcwele"
+  "exitFullScreen": "Phuma esikrinini esigcwele",
+  "player": "Isidlali se-Unity WebGL"
 }

@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Muunnos epäonnistui.",
   "PARAM_REQUIRED": "Pakollinen arvo puuttuu: {param}.",
   "INVALID_REQUEST": "Virheellinen pyyntö.",
-  "PARAM_INVALID": "Virheellinen arvo: {param}."
+  "PARAM_INVALID": "Virheellinen arvo: {param}.",
+  "BLOCK_RATE_LIMITED": "Tällä sivustolla tehdään nyt liian monta sisältömuutosta. Yritä uudelleen {retryAfter} sekunnin kuluttua."
 }

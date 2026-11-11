@@ -4,5 +4,8 @@
   "pieChart": "Donnéeën · Kreesdiagramm",
   "showDataTable": "Donnéeëtabell uweisen",
   "downloadData": "Donnéeën eroflueden (.csv)",
-  "series": "Serie {n}"
+  "series": "Serie {n}",
+  "barChartLabel": "Balkendiagramm",
+  "lineChartLabel": "Linnendiagramm",
+  "pieChartLabel": "Kuchendiagramm"
 }

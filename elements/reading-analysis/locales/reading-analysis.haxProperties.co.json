@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Attività",
-        "description": "Marcà e prove: i studienti appiccicanu ogni bandiera accantu à a so prova. Selezziunà unu: i studienti sceglienu l'unicu passaghju chì risponde u megliu à a dumanda."
+        "description": "Marcà e prove: i studienti appiccicanu ogni bandiera accantu à a so prova. Selezziunà unu: i studienti sceglienu l'unicu passaghju chì risponde u megliu à a dumanda.",
+        "options": {
+          "flag": "Signalà e pruve",
+          "one": "Selezziunà ne una"
+        }
       },
       {
         "property": "unit",
         "title": "I studienti selezziunanu",
-        "description": "Ciò chì un studiente indetta in a lettura. E figure si ponu sempre selezziunà."
+        "description": "Ciò chì un studiente indetta in a lettura. E figure si ponu sempre selezziunà.",
+        "options": {
+          "sentence": "Frasi",
+          "paragraph": "Paragrafi",
+          "figure": "Figure solu"
+        }
       },
       {
         "property": "answers",

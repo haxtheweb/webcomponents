@@ -1,4 +1,9 @@
 {
   "audio": "Audio",
-  "openOnSpotify": "Deschide în Spotify într-o filă nouă"
+  "openOnSpotify": "Deschide în Spotify într-o filă nouă",
+  "embedTitle": "Încorporare Spotify",
+  "trackEmbedTitle": "Încorporare piesă Spotify",
+  "albumEmbedTitle": "Încorporare album Spotify",
+  "playlistEmbedTitle": "Încorporare playlist Spotify",
+  "artistEmbedTitle": "Încorporare artist Spotify"
 }

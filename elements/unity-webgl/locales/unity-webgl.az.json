@@ -1,5 +1,6 @@
 {
   "simulation": "Simulyasiya",
   "fullScreen": "Tam ekran",
-  "exitFullScreen": "Tam ekrandan çıx"
+  "exitFullScreen": "Tam ekrandan çıx",
+  "player": "Unity WebGL pleyeri"
 }

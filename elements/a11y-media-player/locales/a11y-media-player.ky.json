@@ -35,5 +35,12 @@
   "youTubeStartLoading": "Ойнотууну басыңыз.",
   "youTubeTranscriptLabel": "Медиа ойнотулганда транскрипт жүктөлөт.",
   "audioDescriptionLabel": "Аудио сүрөттөмө",
-  "openOnYouTube": "YouTube'да ачуу"
+  "openOnYouTube": "YouTube'да ачуу",
+  "interactiveLabel": "интерактивдүү",
+  "layoutLabel": "Жайгашуу",
+  "sideLabel": "Капталда",
+  "belowLabel": "Төмөндө",
+  "leftLabel": "Сол жакта",
+  "rightLabel": "Оң жакта",
+  "hideTranscriptLabel": "Транскрипцияны жашыруу"
 }

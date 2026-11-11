@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Orria ez dago argitaratuta",
   "progressDone": "Eginda",
   "progressInProgress": "Egiten",
-  "progressVisited": "Bisitatua"
+  "progressVisited": "Bisitatua",
+  "progressPercentComplete": "%{percent} osatuta",
+  "progressComplete": "Osatuta"
 }

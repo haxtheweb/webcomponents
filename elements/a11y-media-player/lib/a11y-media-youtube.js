@@ -666,8 +666,21 @@ class A11yMediaYoutube extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     A11yMediaYoutube.warmConnections();
+    // removed while still waiting for the YouTube API: wait again
+    if (this.__ytDequeued) {
+      this.__ytDequeued = false;
+      if (this.videoId && !this.__yt) this.init();
+    }
   }
   disconnectedCallback() {
+    // a removed element must not stay in the shared queue (it would keep the
+    // element alive and get an iframe built for it after it is gone)
+    const manager = globalThis.A11yMediaYoutubeManager;
+    const queued = manager && manager.queue ? manager.queue.indexOf(this) : -1;
+    if (queued !== -1) {
+      manager.queue.splice(queued, 1);
+      this.__ytDequeued = true;
+    }
     this._removeIframe();
     super.disconnectedCallback();
   }

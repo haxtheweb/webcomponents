@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Kāore e taea te whakaoti i te mahi ({status})",
   "normalizedPageSlugs": "Kua whakaōritea ngā slug whārangi {count}",
   "createdTitle": "Kua waihangatia a {title}!",
-  "processing": "E tukatuka ana"
+  "processing": "E tukatuka ana",
+  "saveTimedOut": "Kua pau te wā tiaki: kīhai te tūmau i whakautu. E puritia ana ō whakarerekē ki konei, engari tērā pea ka oti tonu i te tūmau te tiaki."
 }

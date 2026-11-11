@@ -19,5 +19,13 @@
   "copyCode": "Afrita kóða",
   "copied": "Afritað!",
   "invalidCode": "Þetta er ekki persónukóði.",
-  "preview": "Forskoðun persónu"
+  "preview": "Forskoðun persónu",
+  "previous": "Fyrri {name}",
+  "next": "Næsta {name}",
+  "variant": "{current} af {total}",
+  "save": "Vista",
+  "cancel": "Hætta við",
+  "unsavedChanges": "Óvistaðar breytingar",
+  "noUnsavedChanges": "Engar óvistaðar breytingar",
+  "codeHelp": "Límdu kóða til að hlaða persónu eða afritaðu þennan til að nota hvar sem er."
 }

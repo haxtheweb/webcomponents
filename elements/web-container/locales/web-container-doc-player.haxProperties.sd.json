@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "ويب جزو دستاويز پليئر"
+    "title": "ويب جزو دستاويز پليئر",
+    "description": ""
   },
   "settings": {
     "configure": [

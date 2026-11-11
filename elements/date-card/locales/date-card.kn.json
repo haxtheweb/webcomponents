@@ -1,0 +1,8 @@
+{
+  "ordinalOne": "ನೇ",
+  "ordinalTwo": "ನೇ",
+  "ordinalFew": "ನೇ",
+  "ordinalOther": "ನೇ",
+  "fromTimeToTime": "{start} ರಿಂದ {end} ವರೆಗೆ",
+  "atTime": "{start} ಕ್ಕೆ"
+}

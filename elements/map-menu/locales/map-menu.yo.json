@@ -2,5 +2,7 @@
   "pageIsUnpublished": "A kò tíì ṣàtẹ̀jáde ojú-ìwé yìí",
   "progressDone": "Ti parí",
   "progressInProgress": "Ń lọ lọ́wọ́",
-  "progressVisited": "A ti ṣèbẹ̀wò"
+  "progressVisited": "A ti ṣèbẹ̀wò",
+  "progressPercentComplete": "{percent}% ti parí",
+  "progressComplete": "Ti parí"
 }

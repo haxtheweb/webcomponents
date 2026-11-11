@@ -15,6 +15,12 @@
         "title": "Khóa học",
         "description": "Khóa học mà danh sách phát này dành cho (mã khóa học hoặc URL)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Phương tiện",
+        "description": "Video và âm thanh trong danh sách phát. Không chỉnh sửa ở đây: dàn ý trang dùng nó để biết khối nào có thể thả vào bên trong."
+      }
     ]
   }
 }

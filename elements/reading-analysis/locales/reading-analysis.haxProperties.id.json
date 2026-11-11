@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Aktivitas",
-        "description": "Tandai bukti: pelajar menempelkan setiap bendera di samping buktinya. Pilih satu: pelajar memilih satu bagian yang paling tepat menjawab pertanyaan."
+        "description": "Tandai bukti: pelajar menempelkan setiap bendera di samping buktinya. Pilih satu: pelajar memilih satu bagian yang paling tepat menjawab pertanyaan.",
+        "options": {
+          "flag": "Tandai bukti",
+          "one": "Pilih satu"
+        }
       },
       {
         "property": "unit",
         "title": "Pelajar memilih",
-        "description": "Apa yang ditunjuk pelajar dalam bacaan. Gambar selalu dapat dipilih."
+        "description": "Apa yang ditunjuk pelajar dalam bacaan. Gambar selalu dapat dipilih.",
+        "options": {
+          "sentence": "Kalimat",
+          "paragraph": "Paragraf",
+          "figure": "Hanya gambar"
+        }
       },
       {
         "property": "answers",

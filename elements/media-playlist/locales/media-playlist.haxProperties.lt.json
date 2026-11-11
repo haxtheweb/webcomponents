@@ -15,6 +15,12 @@
         "title": "Kursas",
         "description": "Kursas, kuriam skirtas šis grojaraštis (kurso identifikatorius arba URL)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Medija",
+        "description": "Grojaraščio vaizdo įrašai ir garsas. Čia neredaguojama: puslapio struktūra tai naudoja, kad žinotų, kuriuos blokus galima įmesti."
+      }
     ]
   }
 }

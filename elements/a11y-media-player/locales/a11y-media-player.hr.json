@@ -35,5 +35,12 @@
   "youTubeStartLoading": "",
   "youTubeTranscriptLabel": "",
   "audioDescriptionLabel": "Zvučni opis",
-  "openOnYouTube": "Otvori na YouTubeu"
+  "openOnYouTube": "Otvori na YouTubeu",
+  "interactiveLabel": "interaktivno",
+  "layoutLabel": "Raspored",
+  "sideLabel": "Sa strane",
+  "belowLabel": "Ispod",
+  "leftLabel": "Lijevo",
+  "rightLabel": "Desno",
+  "hideTranscriptLabel": "Sakrij transkript"
 }

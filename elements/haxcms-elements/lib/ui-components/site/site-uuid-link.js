@@ -128,6 +128,13 @@ class SiteUuidLink extends I18NMixin(LitElement) {
           },
         ],
       },
+      demoSchema: [
+        {
+          tag: "site-uuid-link",
+          properties: {},
+          content: "",
+        },
+      ],
     };
   }
   /**

@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Skjalaspælari til vevpartar"
+    "title": "Skjalaspælari til vevpartar",
+    "description": ""
   },
   "settings": {
     "configure": [

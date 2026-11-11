@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "ਕਾਰਵਾਈ ਪੂਰੀ ਨਹੀਂ ਹੋ ਸਕੀ ({status})",
   "normalizedPageSlugs": "{count} ਪੰਨਾ ਸਲੱਗ ਸਧਾਰਨ ਕੀਤੇ",
   "createdTitle": "{title} ਬਣਾਇਆ ਗਿਆ!",
-  "processing": "ਪ੍ਰੋਸੈਸ ਹੋ ਰਿਹਾ ਹੈ"
+  "processing": "ਪ੍ਰੋਸੈਸ ਹੋ ਰਿਹਾ ਹੈ",
+  "saveTimedOut": "ਸੰਭਾਲਣ ਦਾ ਸਮਾਂ ਮੁੱਕ ਗਿਆ: ਸਰਵਰ ਨੇ ਜਵਾਬ ਨਹੀਂ ਦਿੱਤਾ। ਤੁਹਾਡੀਆਂ ਤਬਦੀਲੀਆਂ ਇੱਥੇ ਸੁਰੱਖਿਅਤ ਹਨ, ਪਰ ਸਰਵਰ ਹਾਲੇ ਵੀ ਉਨ੍ਹਾਂ ਨੂੰ ਸੰਭਾਲ ਸਕਦਾ ਹੈ।"
 }

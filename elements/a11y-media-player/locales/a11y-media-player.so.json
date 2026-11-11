@@ -35,5 +35,12 @@
   "youTubeStartLoading": "Riix ciyaar.",
   "youTubeTranscriptLabel": "Qoraalka wuu soo baxayaa marka warbaahintu bilaabato.",
   "audioDescriptionLabel": "Sharaxaad cod ah",
-  "openOnYouTube": "Ka fur YouTube"
+  "openOnYouTube": "Ka fur YouTube",
+  "interactiveLabel": "is-dhexgal ah",
+  "layoutLabel": "Qaabka dhigista",
+  "sideLabel": "Dhinaca",
+  "belowLabel": "Hoostiisa",
+  "leftLabel": "Bidix",
+  "rightLabel": "Midig",
+  "hideTranscriptLabel": "Qari qoraalka"
 }

@@ -15,6 +15,12 @@
         "title": "Cours",
         "description": "De Cours, fir deen dës Playlist geduecht ass (Cours-Identifiant oder URL)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Medien",
+        "description": "D'Videoen an den Audio an der Playlist. Gëtt hei net geännert: d'Säiteniwwersiicht benotzt et fir ze wëssen, wéi eng Blocken do kënnen erafale gelooss ginn."
+      }
     ]
   }
 }

@@ -3,5 +3,8 @@
   "openInNewTab": "Ouvrir le PDF dans un nouvel onglet",
   "downloadPdf": "Télécharger le PDF",
   "fullScreen": "Plein écran",
-  "exitFullScreen": "Quitter le plein écran"
+  "exitFullScreen": "Quitter le plein écran",
+  "notSupported": "Il semble que votre navigateur Web ne soit pas configuré pour afficher les fichiers PDF. Pas de souci, il suffit de",
+  "notSupportedLink": "cliquer ici pour télécharger le fichier PDF.",
+  "download": "Télécharger"
 }

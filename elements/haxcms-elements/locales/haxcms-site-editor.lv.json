@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Nevar pabeigt operāciju ({status})",
   "normalizedPageSlugs": "Normalizēti lapu slug: {count}",
   "createdTitle": "Izveidots {title}!",
-  "processing": "Apstrādā"
+  "processing": "Apstrādā",
+  "saveTimedOut": "Saglabāšanas noildze: serveris neatbildēja. Jūsu izmaiņas tiek glabātas šeit, taču serveris joprojām var pabeigt to saglabāšanu."
 }

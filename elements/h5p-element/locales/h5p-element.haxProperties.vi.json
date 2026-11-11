@@ -1,13 +1,20 @@
 {
   "gizmo": {
     "title": "H5P",
-    "description": "Trình bao bọc H5P để tải và trình bày tệp .h5p"
+    "description": "Phát nội dung tương tác H5P từ tệp .h5p đã tải lên, không cần máy chủ H5P"
   },
   "settings": {
     "configure": [
       {
         "slot": "",
-        "description": "Mã nhúng iframe H5P"
+        "description": "Tải lên hoặc liên kết một tệp .h5p. Tệp được giải nén trong trình duyệt; không cần máy chủ H5P.",
+        "title": "Tệp H5P"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Mã nhúng iframe cũ",
+        "description": "Chỉ dành cho nội dung cũ nhúng iframe H5P từ trang khác. Để trống khi đã đặt tệp .h5p ở trên."
       }
     ]
   }

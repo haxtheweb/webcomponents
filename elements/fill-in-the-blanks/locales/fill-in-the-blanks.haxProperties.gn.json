@@ -37,6 +37,16 @@
         "title": "Ñeha'ã réra",
         "description": "Ñeha'ã réra oñembohasáva ojeporu hag̃ua tenda xAPI rehegua ojeikuaa hag̃ua ko mba'e"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Mbokirirĩ ikatúva",
+        "description": "Ehechauka ko porandu peteĩ tysýi ojeipe'a ha ojejokóva. Embojurúvo peteĩ, ojejokóta ambue porandu mbokirirĩ ikatúva hi'ags̃ýva."
+      },
+      {
+        "title": "Eñepyrũ mbokirirĩme",
+        "description": "Oĩrõ mbokirirĩ ikatúva, oñepyrũ tysýi ojejokóvaramo ohechaukáva añoite porandu ha hembiapo."
+      }
     ]
   }
 }

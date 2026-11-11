@@ -1,4 +1,9 @@
 {
   "audio": "Zvok",
-  "openOnSpotify": "Odpri v Spotifyju v novem zavihku"
+  "openOnSpotify": "Odpri v Spotifyju v novem zavihku",
+  "embedTitle": "Vdelava Spotify",
+  "trackEmbedTitle": "Vdelava skladbe Spotify",
+  "albumEmbedTitle": "Vdelava albuma Spotify",
+  "playlistEmbedTitle": "Vdelava seznama predvajanja Spotify",
+  "artistEmbedTitle": "Vdelava izvajalca Spotify"
 }

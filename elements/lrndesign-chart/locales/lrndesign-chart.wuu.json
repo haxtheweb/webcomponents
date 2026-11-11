@@ -4,5 +4,8 @@
   "pieChart": "数据 · 饼图",
   "showDataTable": "显示数据表格",
   "downloadData": "下载数据 (.csv)",
-  "series": "系列 {n}"
+  "series": "系列 {n}",
+  "barChartLabel": "条形图",
+  "lineChartLabel": "折线图",
+  "pieChartLabel": "饼图"
 }

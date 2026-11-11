@@ -113,15 +113,14 @@ describe("keyboard flow: hax-tray menu bar and panel buttons", function () {
     await waitFor(() => HAXStore.haxTray === tray, 3000);
     HAXStore.editMode = true;
     await waitFor(() => tray.editMode, 2000);
+    await tray.updateComplete;
     await settle(200);
     // the tray slides in (--ddd-duration-slow, 0.6s); its buttons are only
-    // on screen once the slide ends, so a slow runner must not Tab earlier
-    await waitFor(
-      () =>
-        !tray.shadowRoot.getAnimations ||
-        tray.shadowRoot.getAnimations().length === 0,
-      3000,
-    );
+    // on screen once the slide ends, so a slow runner must not Tab earlier.
+    // Wait on where the panel is, not on running animations: a loaded
+    // runner can poll before the transition has even started, find no
+    // animations and Tab into a tray still parked off its edge
+    await waitFor(() => trayInView(), 5000);
     startBeforeTray();
   });
 
@@ -130,6 +129,18 @@ describe("keyboard flow: hax-tray menu bar and panel buttons", function () {
     HAXStore.gizmoList = savedGizmos;
     await settle(50);
   });
+
+  // the tray panel rests fully inside the viewport, its slide finished
+  function trayInView() {
+    const wrapper = tray.shadowRoot.querySelector(".wrapper");
+    if (!wrapper) return false;
+    if (globalThis.getComputedStyle(wrapper).transform !== "none") return false;
+    if (wrapper.getAnimations && wrapper.getAnimations().length > 0) {
+      return false;
+    }
+    const rect = wrapper.getBoundingClientRect();
+    return rect.left >= 0 && rect.right <= globalThis.innerWidth + 1;
+  }
 
   // start a Tab walk from the button before the tray. A text block keeps
   // the selection: Tab with focus outside the editing area is not taken

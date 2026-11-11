@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Þessi síða er læst. Taktu hana úr lás fyrst til að breyta útgáfustöðu.",
   "pageLockedUnlockToDelete": "Þessi síða er læst. Taktu hana úr lás fyrst til að eyða.",
   "pageDetails": "Síðuupplýsingar",
-  "clickToUnlock": "Smelltu til að opna"
+  "clickToUnlock": "Smelltu til að opna",
+  "pageSettings": "Síðustillingar",
+  "editingPageSettings": "Breyti síðustillingum",
+  "published": "Birt",
+  "draft": "Drög",
+  "locked": "Læst",
+  "unlocked": "Ólæst",
+  "noTags": "Engin merki",
+  "oneTag": "1 merki",
+  "tagCount": "{count} merki",
+  "enterKey": "Enter"
 }

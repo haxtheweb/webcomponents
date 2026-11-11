@@ -129,5 +129,12 @@
   "cancel": "Rega",
   "clearedSite": "Data yako yekudzidza ye{site} yabviswa.",
   "clearedDevice": "Data yose yekudzidza pachishandiso ichi yabviswa.",
-  "thisSite": "saiti iyi"
+  "thisSite": "saiti iyi",
+  "outlineHeading": "Budiriro nepeji",
+  "allPages": "Mapeji ose",
+  "outlinePagesDone": "Mapeji {done} kubva pa{total} apera",
+  "outlinePagesCount": "Mapeji {count}",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% yapera",
+  "outlineComplete": "Yapera"
 }

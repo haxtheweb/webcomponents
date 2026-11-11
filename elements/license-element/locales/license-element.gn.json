@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title} ojapova'ekue {creator} oguereko {license} ñemoneĩ.",
   "permissionsBeyondScope": "Ñemoneĩ ohasáva ko ñemoneĩ rembe'y oĩ {link}.",
   "author": "(apohára)",
-  "onTheLicensingDetailsPage": "ñemoneĩ mba'emimi kuatiaroguépe"
+  "onTheLicensingDetailsPage": "ñemoneĩ mba'emimi kuatiaroguépe",
+  "licenseLabel": "Ñemoneĩ"
 }

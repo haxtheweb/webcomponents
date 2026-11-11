@@ -129,5 +129,12 @@
   "cancel": "გაუქმება",
   "clearedSite": "თქვენი სწავლის მონაცემები საიტისთვის {site} გასუფთავდა.",
   "clearedDevice": "ამ მოწყობილობაზე სწავლის ყველა მონაცემი გასუფთავდა.",
-  "thisSite": "ეს საიტი"
+  "thisSite": "ეს საიტი",
+  "outlineHeading": "პროგრესი გვერდების მიხედვით",
+  "allPages": "ყველა გვერდი",
+  "outlinePagesDone": "{total}-დან {done} გვერდი დასრულებულია",
+  "outlinePagesCount": "{count} გვერდი",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% დასრულებულია",
+  "outlineComplete": "დასრულებულია"
 }

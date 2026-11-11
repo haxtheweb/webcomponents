@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Tshintsha iifayile zoqobo",
   "newName": "Igama elitsha",
   "deleteAction": "Cima",
-  "renameAction": "Thiya ngokutsha"
+  "renameAction": "Thiya ngokutsha",
+  "bulkOverwriteConfirm": "{action} iifayile ezingama-{count}? Oku kutshintshe iifayile zokuqala yaye akunakubuyiselwa umva.",
+  "actionScale": "Tshintsha ubungakanani",
+  "actionRotate": "Jikelezisa",
+  "actionTransform": "Guqula",
+  "actionConvertJpg": "Guqulela kwi-JPG",
+  "actionCompress": "Cinezela"
 }

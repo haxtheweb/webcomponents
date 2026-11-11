@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "वेब घटक दस्तावेज़ प्लेयर"
+    "title": "वेब घटक दस्तावेज़ प्लेयर",
+    "description": ""
   },
   "settings": {
     "configure": [

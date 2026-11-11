@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Ibe a akpọchiri. Mepee ya ebe mbụ iji gbanwee ọnọdụ mbipụta.",
   "pageLockedUnlockToDelete": "Ibe a akpọchiri. Mepee ya ebe mbụ iji hichapụ.",
   "pageDetails": "Nkọwa ibe",
-  "clickToUnlock": "Pịa ka ị meghe"
+  "clickToUnlock": "Pịa ka ị meghe",
+  "pageSettings": "Ntọala peeji",
+  "editingPageSettings": "Na-edezi ntọala peeji",
+  "published": "Ebipụtala",
+  "draft": "Ndeputa",
+  "locked": "Akpọchiri",
+  "unlocked": "Emeghere",
+  "noTags": "Enweghị mkpado",
+  "oneTag": "Mkpado 1",
+  "tagCount": "Mkpado {count}",
+  "enterKey": "Enter"
 }

@@ -19,5 +19,13 @@
   "copyCode": "Ikkopja l-kodiċi",
   "copied": "Ikkopjat!",
   "invalidCode": "Dan mhuwiex kodiċi ta' karattru.",
-  "preview": "Previżjoni tal-karattru"
+  "preview": "Previżjoni tal-karattru",
+  "previous": "{name} preċedenti",
+  "next": "{name} li jmiss",
+  "variant": "{current} minn {total}",
+  "save": "Salva",
+  "cancel": "Ikkanċella",
+  "unsavedChanges": "Bidliet mhux salvati",
+  "noUnsavedChanges": "L-ebda bidla mhux salvata",
+  "codeHelp": "Pejstja kodiċi biex tillowdja karattru, jew ikkopja dan biex tużah kullimkien."
 }

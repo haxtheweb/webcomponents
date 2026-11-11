@@ -1,0 +1,8 @@
+{
+  "ordinalOne": "වන",
+  "ordinalTwo": "වන",
+  "ordinalFew": "වන",
+  "ordinalOther": "වන",
+  "fromTimeToTime": "{start} සිට {end} දක්වා",
+  "atTime": "{start} ට"
+}

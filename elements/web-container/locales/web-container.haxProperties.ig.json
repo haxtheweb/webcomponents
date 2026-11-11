@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Igbe NodeJS"
+    "title": "Igbe NodeJS",
+    "description": ""
   },
   "settings": {
     "configure": [

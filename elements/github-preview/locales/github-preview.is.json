@@ -1,0 +1,10 @@
+{
+  "github": "GitHub",
+  "repository": "Hugbúnaðarsafn",
+  "stars": "stjörnur",
+  "forks": "gafflar",
+  "loading": "Hleður",
+  "viewMore": "Sýna meira",
+  "assetNotFound": "Eign fannst ekki",
+  "openOnGitHub": "Opna {org}/{repo} á GitHub"
+}

@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Eikutu térã emoĩ pe mouse ehendu hag̃ua pe ñemoakã aty pu",
+  "soundDisabled": "Ñemoakã aty echaukaha (pu ojejoko)",
+  "explosionAnimation": "ñemoakã aty mongu'e",
+  "explosionAriaLabel": "Ñemoakã aty mongu'e {state} {sound}. Eikutu emoambue hag̃ua.",
+  "playing": "oñepyrũ",
+  "stopped": "opa",
+  "withSound": "pu reheve",
+  "muted": "(pu'ỹre)"
+}

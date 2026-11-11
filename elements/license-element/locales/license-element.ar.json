@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title} بواسطة {creator} مرخّص بموجب {license}.",
   "permissionsBeyondScope": "تتوفر أذونات تتجاوز نطاق هذا الترخيص {link}.",
   "author": "(المؤلف)",
-  "onTheLicensingDetailsPage": "في صفحة تفاصيل الترخيص"
+  "onTheLicensingDetailsPage": "في صفحة تفاصيل الترخيص",
+  "licenseLabel": "الترخيص"
 }

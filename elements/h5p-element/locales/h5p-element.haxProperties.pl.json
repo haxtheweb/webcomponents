@@ -1,13 +1,20 @@
 {
   "gizmo": {
     "title": "H5P",
-    "description": "Nakładka H5P do ładowania i prezentowania plików .h5p"
+    "description": "Odtwarza interaktywne treści H5P z przesłanego pliku .h5p, bez potrzeby serwera H5P"
   },
   "settings": {
     "configure": [
       {
         "slot": "",
-        "description": "Kod osadzenia iframe H5P"
+        "description": "Prześlij lub podlinkuj plik .h5p. Jest rozpakowywany w przeglądarce; serwer H5P nie jest potrzebny.",
+        "title": "Plik H5P"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Starszy kod osadzania iframe",
+        "description": "Tylko dla starszych treści osadzających ramkę iframe H5P z innej witryny. Pozostaw puste, gdy powyżej ustawiono plik .h5p."
       }
     ]
   }

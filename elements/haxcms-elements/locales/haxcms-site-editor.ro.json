@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Nu se poate finaliza operațiunea ({status})",
   "normalizedPageSlugs": "Au fost normalizate {count} slug-uri de pagină",
   "createdTitle": "{title} a fost creat!",
-  "processing": "Se procesează"
+  "processing": "Se procesează",
+  "saveTimedOut": "Salvarea a expirat: serverul nu a răspuns. Modificările dvs. sunt păstrate aici, dar serverul le-ar putea totuși salva."
 }

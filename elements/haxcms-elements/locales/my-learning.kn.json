@@ -129,5 +129,12 @@
   "cancel": "ರದ್ದುಮಾಡಿ",
   "clearedSite": "{site} ಗಾಗಿ ನಿಮ್ಮ ಕಲಿಕೆಯ ಡೇಟಾವನ್ನು ತೆರವುಗೊಳಿಸಲಾಗಿದೆ.",
   "clearedDevice": "ಈ ಸಾಧನದಲ್ಲಿನ ಎಲ್ಲಾ ಕಲಿಕೆಯ ಡೇಟಾವನ್ನು ತೆರವುಗೊಳಿಸಲಾಗಿದೆ.",
-  "thisSite": "ಈ ಸೈಟ್"
+  "thisSite": "ಈ ಸೈಟ್",
+  "outlineHeading": "ಪುಟದ ಪ್ರಕಾರ ಪ್ರಗತಿ",
+  "allPages": "ಎಲ್ಲಾ ಪುಟಗಳು",
+  "outlinePagesDone": "{total} ಪುಟಗಳಲ್ಲಿ {done} ಪೂರ್ಣಗೊಂಡಿದೆ",
+  "outlinePagesCount": "{count} ಪುಟಗಳು",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% ಪೂರ್ಣಗೊಂಡಿದೆ",
+  "outlineComplete": "ಪೂರ್ಣಗೊಂಡಿದೆ"
 }

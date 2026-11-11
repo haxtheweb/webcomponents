@@ -4,5 +4,6 @@
   "exportCitations": "Eksport Petikan",
   "copy": "Salin",
   "exportCitationFormat": "Format petikan eksport",
-  "selectCitationFormatBelow": "Pilih format petikan di bawah"
+  "selectCitationFormatBelow": "Pilih format petikan di bawah",
+  "addCitationToBibliography": "Tambah petikan ke bibliografi"
 }

@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "クリックまたはホバーで爆発音を再生",
+  "soundDisabled": "爆発の視覚効果(音声無効)",
+  "explosionAnimation": "爆発アニメーション",
+  "explosionAriaLabel": "爆発アニメーション {state} {sound}。クリックで切り替え。",
+  "playing": "再生中",
+  "stopped": "停止中",
+  "withSound": "音あり",
+  "muted": "(ミュート)"
+}

@@ -4,5 +4,8 @@
   "pieChart": "डेटा · पाई चार्ट",
   "showDataTable": "डेटा तालिका देखाउनुहोस्",
   "downloadData": "डेटा डाउनलोड गर्नुहोस् (.csv)",
-  "series": "शृङ्खला {n}"
+  "series": "शृङ्खला {n}",
+  "barChartLabel": "बार चार्ट",
+  "lineChartLabel": "लाइन चार्ट",
+  "pieChartLabel": "पाई चार्ट"
 }

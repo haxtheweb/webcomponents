@@ -4,5 +4,8 @@
   "pieChart": "Δεδομένα · Κυκλικό διάγραμμα",
   "showDataTable": "Εμφάνιση πίνακα δεδομένων",
   "downloadData": "Λήψη δεδομένων (.csv)",
-  "series": "Σειρά {n}"
+  "series": "Σειρά {n}",
+  "barChartLabel": "ραβδογράφημα",
+  "lineChartLabel": "γραμμικό διάγραμμα",
+  "pieChartLabel": "κυκλικό διάγραμμα"
 }

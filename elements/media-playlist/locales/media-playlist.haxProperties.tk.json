@@ -15,6 +15,12 @@
         "title": "Kurs",
         "description": "Bu pleý-listiň niýetlenen kursy (kursuň identifikatory ýa-da URL)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Media",
+        "description": "Oýnatma sanawyndaky wideolar we ses. Bu ýerde redaktirlenmeýär: sahypanyň gurluşy içine haýsy bloklaryň taşlanyp bilinjekdigini bilmek üçin ony ulanýar."
+      }
     ]
   }
 }

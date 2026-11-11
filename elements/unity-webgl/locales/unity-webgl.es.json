@@ -1,5 +1,6 @@
 {
   "simulation": "Simulación",
   "fullScreen": "Pantalla completa",
-  "exitFullScreen": "Salir de pantalla completa"
+  "exitFullScreen": "Salir de pantalla completa",
+  "player": "Reproductor Unity WebGL"
 }

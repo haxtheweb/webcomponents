@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Převod se nezdařil.",
   "PARAM_REQUIRED": "Chybí povinná hodnota: {param}.",
   "INVALID_REQUEST": "Neplatný požadavek.",
-  "PARAM_INVALID": "Neplatná hodnota: {param}."
+  "PARAM_INVALID": "Neplatná hodnota: {param}.",
+  "BLOCK_RATE_LIMITED": "Na tomto webu právě probíhá příliš mnoho změn obsahu. Zkuste to znovu za {retryAfter} s."
 }

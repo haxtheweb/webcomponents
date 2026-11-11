@@ -1,0 +1,8 @@
+{
+  "ordinalOne": "-chi",
+  "ordinalTwo": "-chi",
+  "ordinalFew": "-chi",
+  "ordinalOther": "-chi",
+  "fromTimeToTime": "{start} dan {end} gacha",
+  "atTime": "soat {start} da"
+}

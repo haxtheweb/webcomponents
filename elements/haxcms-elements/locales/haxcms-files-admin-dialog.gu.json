@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "મૂળ ફાઇલો બદલો",
   "newName": "નવું નામ",
   "deleteAction": "કાઢી નાખો",
-  "renameAction": "નામ બદલો"
+  "renameAction": "નામ બદલો",
+  "bulkOverwriteConfirm": "{count} ફાઇલો પર {action}? આ મૂળ ફાઇલોને બદલી નાખે છે અને પાછું લઈ શકાતું નથી.",
+  "actionScale": "માપ બદલો",
+  "actionRotate": "ફેરવો",
+  "actionTransform": "રૂપાંતર કરો",
+  "actionConvertJpg": "JPG માં રૂપાંતરિત કરો",
+  "actionCompress": "સંકુચિત કરો"
 }

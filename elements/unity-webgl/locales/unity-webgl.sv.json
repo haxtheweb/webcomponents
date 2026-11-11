@@ -1,5 +1,6 @@
 {
   "simulation": "Simulering",
   "fullScreen": "Helskärm",
-  "exitFullScreen": "Avsluta helskärm"
+  "exitFullScreen": "Avsluta helskärm",
+  "player": "Unity WebGL-spelare"
 }

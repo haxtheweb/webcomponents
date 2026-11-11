@@ -137,12 +137,12 @@
           "desc": "Alt Text"
         },
         {
-          "name": "accent-color",
-          "desc": "Card accent color."
-        },
-        {
           "name": "slot quote",
           "desc": "Quote"
+        },
+        {
+          "name": "slot author",
+          "desc": "Author"
         }
       ],
       "active": [
@@ -179,14 +179,6 @@
     },
     {
       "type": "text",
-      "x": 1022,
-      "y": 336,
-      "c": "code",
-      "in": 10,
-      "s": "accent-color=\"blue\""
-    },
-    {
-      "type": "text",
       "x": 1000,
       "y": 272,
       "c": "code",
@@ -206,15 +198,16 @@
             "y": 336
           },
           0.4
-        ],
-        [
-          10,
-          {
-            "y": 368
-          },
-          0.4
         ]
       ]
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 368,
+      "c": "code",
+      "in": 10,
+      "s": "<p slot=\"quote\">A cute cat stalki…</p>"
     },
     {
       "type": "text",
@@ -222,12 +215,12 @@
       "y": 400,
       "c": "code",
       "in": 12.4,
-      "s": "<p slot=\"quote\">A cute cat stalki…</p>"
+      "s": "<p slot=\"author\">A cute cat stalki…</p>"
     },
     {
       "type": "text",
       "x": 1000,
-      "y": 336,
+      "y": 368,
       "c": "code",
       "in": 2.9,
       "s": "</media-quote>",
@@ -235,19 +228,12 @@
         [
           5,
           {
-            "y": 368
-          },
-          0.4
-        ],
-        [
-          7.4,
-          {
             "y": 400
           },
           0.4
         ],
         [
-          10,
+          7.4,
           {
             "y": 432
           },
@@ -285,8 +271,8 @@
       "py": 428,
       "ex": 616,
       "ey": 480,
-      "label": "accent-color",
-      "sub": "any color",
+      "label": "slot quote",
+      "sub": "\"Quote\"",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -297,8 +283,8 @@
       "py": 428,
       "ex": 796,
       "ey": 480,
-      "label": "slot quote",
-      "sub": "\"Quote\"",
+      "label": "slot author",
+      "sub": "\"Author\"",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -320,8 +306,8 @@
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set accent color and quote",
-      "text": "Card accent color. Quote goes inside the tag as content."
+      "title": "Set quote and author",
+      "text": "Quote goes inside the tag as content. Author goes inside the tag as content."
     },
     {
       "t": 14.8,
@@ -335,7 +321,7 @@
     "line": "Image with a quote, citation, and optional caption.",
     "code": "<media-quote></media-quote>"
   },
-  "surfaceHash": "daa3ffe4a968",
+  "surfaceHash": "cfe1a41c9f36",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

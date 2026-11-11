@@ -4,5 +4,6 @@
   "exportCitations": "Извези цитате",
   "copy": "Копирај",
   "exportCitationFormat": "Формат извоза цитата",
-  "selectCitationFormatBelow": "Изаберите формат цитирања испод"
+  "selectCitationFormatBelow": "Изаберите формат цитирања испод",
+  "addCitationToBibliography": "Додај цитат у библиографију"
 }

@@ -129,5 +129,12 @@
   "cancel": "Ghairi",
   "clearedSite": "Data yako ya kujifunza ya {site} imefutwa.",
   "clearedDevice": "Data yote ya kujifunza kwenye kifaa hiki imefutwa.",
-  "thisSite": "tovuti hii"
+  "thisSite": "tovuti hii",
+  "outlineHeading": "Maendeleo kwa kila ukurasa",
+  "allPages": "Kurasa zote",
+  "outlinePagesDone": "Kurasa {done} kati ya {total} zimekamilika",
+  "outlinePagesCount": "Kurasa {count}",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% imekamilika",
+  "outlineComplete": "Imekamilika"
 }

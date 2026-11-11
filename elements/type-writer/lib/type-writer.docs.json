@@ -18,7 +18,7 @@
   "import": "@haxtheweb/type-writer/type-writer.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/type-writer/type-writer.js",
   "install": "npm i @haxtheweb/type-writer",
-  "demoHtml": "",
+  "demoHtml": "<type-writer></type-writer>",
   "attributes": [
     {
       "name": "delay",
@@ -148,9 +148,16 @@
       "unsetAttributes": [
         "element-visible"
       ]
-    }
+    },
+    "demoSchema": [
+      {
+        "tag": "type-writer",
+        "properties": {},
+        "content": ""
+      }
+    ]
   },
-  "surfaceHash": "1ff7f61ec192",
+  "surfaceHash": "04d77e3c7a9b",
   "walkthroughs": [
     {
       "id": "",

@@ -1,5 +1,6 @@
 {
   "simulation": "ການຈຳລອງ",
   "fullScreen": "ເຕັມຈໍ",
-  "exitFullScreen": "ອອກຈາກໂໝດເຕັມຈໍ"
+  "exitFullScreen": "ອອກຈາກໂໝດເຕັມຈໍ",
+  "player": "ເຄື່ອງຫຼິ້ນ Unity WebGL"
 }

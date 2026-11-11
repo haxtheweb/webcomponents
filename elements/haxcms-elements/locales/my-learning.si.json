@@ -129,5 +129,12 @@
   "cancel": "අවලංගු කරන්න",
   "clearedSite": "{site} සඳහා ඔබේ ඉගෙනුම් දත්ත හිස් කරන ලදී.",
   "clearedDevice": "මෙම උපාංගයේ සියලු ඉගෙනුම් දත්ත හිස් කරන ලදී.",
-  "thisSite": "මෙම අඩවිය"
+  "thisSite": "මෙම අඩවිය",
+  "outlineHeading": "පිටු අනුව ප්‍රගතිය",
+  "allPages": "සියලු පිටු",
+  "outlinePagesDone": "පිටු {total} න් {done} ක් අවසන්",
+  "outlinePagesCount": "පිටු {count}",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% සම්පූර්ණයි",
+  "outlineComplete": "සම්පූර්ණයි"
 }

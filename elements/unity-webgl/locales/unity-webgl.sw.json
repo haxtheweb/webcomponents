@@ -1,5 +1,6 @@
 {
   "simulation": "Uigaji",
   "fullScreen": "Skrini nzima",
-  "exitFullScreen": "Ondoka kwenye skrini nzima"
+  "exitFullScreen": "Ondoka kwenye skrini nzima",
+  "player": "Kicheza Unity WebGL"
 }

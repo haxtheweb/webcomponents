@@ -4,5 +4,8 @@
   "pieChart": "Sonraí · Cairt phíce",
   "showDataTable": "Taispeáin tábla sonraí",
   "downloadData": "Íoslódáil sonraí (.csv)",
-  "series": "Sraith {n}"
+  "series": "Sraith {n}",
+  "barChartLabel": "barrchairt",
+  "lineChartLabel": "cairt líne",
+  "pieChartLabel": "cairt phióg"
 }

@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title}, autor {creator}, on litsentsitud litsentsiga {license}.",
   "permissionsBeyondScope": "Selle litsentsi ulatust ületavad load on saadaval {link}.",
   "author": "(autor)",
-  "onTheLicensingDetailsPage": "litsentsi üksikasjade lehel"
+  "onTheLicensingDetailsPage": "litsentsi üksikasjade lehel",
+  "licenseLabel": "Litsents"
 }

@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Bofya au elea juu ili kucheza sauti ya mlipuko",
+  "soundDisabled": "Athari ya kuona ya mlipuko (sauti imezimwa)",
+  "explosionAnimation": "uhuishaji wa mlipuko",
+  "explosionAriaLabel": "Uhuishaji wa mlipuko {state} {sound}. Bofya ili kubadilisha.",
+  "playing": "inachezwa",
+  "stopped": "imesimamishwa",
+  "withSound": "na sauti",
+  "muted": "(imenyamazishwa)"
+}

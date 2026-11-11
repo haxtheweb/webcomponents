@@ -19,5 +19,13 @@
   "copyCode": "Kodu kopyala",
   "copied": "Kopyalandı!",
   "invalidCode": "Bu personaj kodu deyil.",
-  "preview": "Personajın önbaxışı"
+  "preview": "Personajın önbaxışı",
+  "previous": "Əvvəlki {name}",
+  "next": "Növbəti {name}",
+  "variant": "{total} içindən {current}",
+  "save": "Saxla",
+  "cancel": "Ləğv et",
+  "unsavedChanges": "Saxlanılmamış dəyişikliklər",
+  "noUnsavedChanges": "Saxlanılmamış dəyişiklik yoxdur",
+  "codeHelp": "Personajı yükləmək üçün kod yapışdırın və ya onu hər yerdə istifadə etmək üçün kopyalayın."
 }

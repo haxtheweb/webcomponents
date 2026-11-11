@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Umbreytingin mistókst.",
   "PARAM_REQUIRED": "Nauðsynlegt gildi vantar: {param}.",
   "INVALID_REQUEST": "Ógild beiðni.",
-  "PARAM_INVALID": "Ógilt gildi: {param}."
+  "PARAM_INVALID": "Ógilt gildi: {param}.",
+  "BLOCK_RATE_LIMITED": "Of margar efnisbreytingar á þessum vef núna. Reyndu aftur eftir {retryAfter} sekúndur."
 }

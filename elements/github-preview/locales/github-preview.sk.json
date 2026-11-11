@@ -1,0 +1,10 @@
+{
+  "github": "GitHub",
+  "repository": "Repozitár",
+  "stars": "hviezdičiek",
+  "forks": "forkov",
+  "loading": "Načítava sa",
+  "viewMore": "Zobraziť viac",
+  "assetNotFound": "Zdroj sa nenašiel",
+  "openOnGitHub": "Otvoriť {org}/{repo} na GitHub"
+}

@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Ekki tókst að ljúka aðgerð ({status})",
   "normalizedPageSlugs": "{count} slóðarheiti síðna stöðluð",
   "createdTitle": "{title} búin til!",
-  "processing": "Vinnur"
+  "processing": "Vinnur",
+  "saveTimedOut": "Vistun rann út á tíma: þjónninn svaraði ekki. Breytingarnar þínar eru geymdar hér en þjónninn gæti enn lokið við að vista þær."
 }

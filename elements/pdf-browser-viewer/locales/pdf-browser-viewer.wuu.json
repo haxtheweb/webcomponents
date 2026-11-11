@@ -3,5 +3,8 @@
   "openInNewTab": "在新标签页中打开 PDF",
   "downloadPdf": "下载 PDF",
   "fullScreen": "全屏",
-  "exitFullScreen": "退出全屏"
+  "exitFullScreen": "退出全屏",
+  "notSupported": "侬额浏览器好像呒没设置成显示 PDF 文件。覅紧，只要",
+  "notSupportedLink": "点迭搭下载 PDF 文件。",
+  "download": "下载"
 }

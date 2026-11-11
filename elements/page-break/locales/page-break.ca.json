@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Aquesta pàgina està bloquejada. Desbloqueja-la primer per canviar l'estat de publicació.",
   "pageLockedUnlockToDelete": "Aquesta pàgina està bloquejada. Desbloqueja-la primer per suprimir-la.",
   "pageDetails": "Detalls de la pàgina",
-  "clickToUnlock": "Feu clic per desbloquejar"
+  "clickToUnlock": "Feu clic per desbloquejar",
+  "pageSettings": "Configuració de la pàgina",
+  "editingPageSettings": "Editant la configuració de la pàgina",
+  "published": "Publicada",
+  "draft": "Esborrany",
+  "locked": "Bloquejada",
+  "unlocked": "Desbloquejada",
+  "noTags": "Cap etiqueta",
+  "oneTag": "1 etiqueta",
+  "tagCount": "{count} etiquetes",
+  "enterKey": "Enter"
 }

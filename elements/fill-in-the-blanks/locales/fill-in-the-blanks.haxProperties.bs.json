@@ -37,6 +37,16 @@
         "title": "Naziv kviza",
         "description": "Naziv kviza koji se prosljeđuje za identifikaciju ove stavke u okruženjima zasnovanim na xAPI"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Sklopivo",
+        "description": "Prikaži ovo pitanje kao red koji se otvara i zatvara. Otvaranjem jednog zatvaraju se ostala sklopiva pitanja pored njega."
+      },
+      {
+        "title": "Počni sklopljeno",
+        "description": "Kada je sklopivo, počinje kao zatvoren red koji prikazuje samo pitanje i njegov status."
+      }
     ]
   }
 }

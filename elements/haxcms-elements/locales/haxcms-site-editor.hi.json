@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "ऑपरेशन पूरा नहीं हो सका ({status})",
   "normalizedPageSlugs": "{count} पेज स्लग सामान्य किए गए",
   "createdTitle": "{title} बनाया गया!",
-  "processing": "संसाधित हो रहा है"
+  "processing": "संसाधित हो रहा है",
+  "saveTimedOut": "सहेजने का समय समाप्त: सर्वर ने उत्तर नहीं दिया। आपके बदलाव यहाँ रखे गए हैं, लेकिन सर्वर अब भी उन्हें सहेज सकता है।"
 }

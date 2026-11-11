@@ -4,5 +4,6 @@
   "exportCitations": "خروجی استنادها",
   "copy": "کپی",
   "exportCitationFormat": "قالب خروجی استناد",
-  "selectCitationFormatBelow": "یک قالب استناد را در زیر انتخاب کنید"
+  "selectCitationFormatBelow": "یک قالب استناد را در زیر انتخاب کنید",
+  "addCitationToBibliography": "افزودن ارجاع به کتاب‌نامه"
 }

@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Táto stránka je zamknutá. Ak chcete zmeniť stav publikovania, najprv ju odomknite.",
   "pageLockedUnlockToDelete": "Táto stránka je zamknutá. Ak ju chcete odstrániť, najprv ju odomknite.",
   "pageDetails": "Podrobnosti stránky",
-  "clickToUnlock": "Kliknite pre odomknutie"
+  "clickToUnlock": "Kliknite pre odomknutie",
+  "pageSettings": "Nastavenia stránky",
+  "editingPageSettings": "Úprava nastavení stránky",
+  "published": "Zverejnené",
+  "draft": "Koncept",
+  "locked": "Uzamknuté",
+  "unlocked": "Odomknuté",
+  "noTags": "Žiadne značky",
+  "oneTag": "1 značka",
+  "tagCount": "Počet značiek: {count}",
+  "enterKey": "Enter"
 }

@@ -71,6 +71,10 @@ test("symmetric pairs, centering, logical values and [dir] rules are not reporte
   .b { left: 50%; transform: translateX(-50%); text-align: start; padding: 0 8px; }
   :host([dir="rtl"]) .c { margin-right: 4px; }
   .d:dir(rtl) { padding-left: 2px; }
+  :host([offset="left"]) { float: left; margin-left: 2px; }
+  :host([data-text-align=right]) .e { text-align: right; }
+  /* physical on purpose: drawn over the image, which does not mirror */
+  .f { left: 35%; }
   /* margin-left: 9px */`;
   assert.deepEqual(findPhysicalCss(css), []);
 });

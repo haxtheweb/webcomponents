@@ -4,5 +4,8 @@
   "pieChart": "ဒေတာ · ပိုင်ဇယား",
   "showDataTable": "ဒေတာဇယား ပြရန်",
   "downloadData": "ဒေတာ ဒေါင်းလုဒ်လုပ်ရန် (.csv)",
-  "series": "စီးရီး {n}"
+  "series": "စီးရီး {n}",
+  "barChartLabel": "ဘားပုံစံ ဇယား",
+  "lineChartLabel": "မျဉ်းပုံစံ ဇယား",
+  "pieChartLabel": "ပိုင်းပုံစံ ဇယား"
 }

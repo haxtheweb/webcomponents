@@ -129,5 +129,12 @@
   "cancel": "Ofbriechen",
   "clearedSite": "Deng Léierdonnéeën fir {site} goufe geläscht.",
   "clearedDevice": "All Léierdonnéeën op dësem Apparat goufe geläscht.",
-  "thisSite": "dës Websäit"
+  "thisSite": "dës Websäit",
+  "outlineHeading": "Fortschrëtt pro Säit",
+  "allPages": "All Säiten",
+  "outlinePagesDone": "{done} vun {total} Säiten fäerdeg",
+  "outlinePagesCount": "{count} Säiten",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% fäerdeg",
+  "outlineComplete": "Fäerdeg"
 }

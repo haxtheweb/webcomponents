@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Ĉi tiu paĝo estas ŝlosita. Malŝlosu ĝin unue por ŝanĝi la publikigan staton.",
   "pageLockedUnlockToDelete": "Ĉi tiu paĝo estas ŝlosita. Malŝlosu ĝin unue por forigi.",
   "pageDetails": "Paĝdetaloj",
-  "clickToUnlock": "Klaku por malŝlosi"
+  "clickToUnlock": "Klaku por malŝlosi",
+  "pageSettings": "Paĝaj agordoj",
+  "editingPageSettings": "Redaktado de paĝaj agordoj",
+  "published": "Publikigita",
+  "draft": "Malneto",
+  "locked": "Ŝlosita",
+  "unlocked": "Malŝlosita",
+  "noTags": "Neniuj etikedoj",
+  "oneTag": "1 etikedo",
+  "tagCount": "{count} etikedoj",
+  "enterKey": "Enter"
 }

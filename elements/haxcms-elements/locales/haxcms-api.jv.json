@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Konversi gagal.",
   "PARAM_REQUIRED": "Ana nilai wajib sing ora ana: {param}.",
   "INVALID_REQUEST": "Panjaluk ora valid.",
-  "PARAM_INVALID": "Nilai ora valid: {param}."
+  "PARAM_INVALID": "Nilai ora valid: {param}.",
+  "BLOCK_RATE_LIMITED": "Owah-owahan konten ing situs iki kakehan saiki. Coba maneh ing {retryAfter} detik."
 }

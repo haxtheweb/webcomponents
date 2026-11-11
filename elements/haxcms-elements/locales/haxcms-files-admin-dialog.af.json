@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Vervang oorspronklike lêers",
   "newName": "Nuwe naam",
   "deleteAction": "Skrap",
-  "renameAction": "Hernoem"
+  "renameAction": "Hernoem",
+  "bulkOverwriteConfirm": "{action} {count} lêers? Dit vervang die oorspronklike lêers en kan nie ongedaan gemaak word nie.",
+  "actionScale": "Skaal",
+  "actionRotate": "Roteer",
+  "actionTransform": "Transformeer",
+  "actionConvertJpg": "Skakel om na JPG",
+  "actionCompress": "Komprimeer"
 }

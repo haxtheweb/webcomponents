@@ -4,5 +4,6 @@
   "exportCitations": "Eksportuoti citatas",
   "copy": "Kopijuoti",
   "exportCitationFormat": "Citatų eksportavimo formatas",
-  "selectCitationFormatBelow": "Žemiau pasirinkite citavimo formatą"
+  "selectCitationFormatBelow": "Žemiau pasirinkite citavimo formatą",
+  "addCitationToBibliography": "Pridėti citatą į bibliografiją"
 }

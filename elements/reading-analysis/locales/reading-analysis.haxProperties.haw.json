@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Hana",
-        "description": "Hae i nā hōʻike: hoʻopili nā haumāna i kēlā me kēia hae ma ka ʻaoʻao o kona hōʻike. Koho i hoʻokahi: koho nā haumāna i ka paukū hoʻokahi e pane maikaʻi loa ana i ka nīnau."
+        "description": "Hae i nā hōʻike: hoʻopili nā haumāna i kēlā me kēia hae ma ka ʻaoʻao o kona hōʻike. Koho i hoʻokahi: koho nā haumāna i ka paukū hoʻokahi e pane maikaʻi loa ana i ka nīnau.",
+        "options": {
+          "flag": "Hōʻailona i nā hōʻike",
+          "one": "Koho i kekahi"
+        }
       },
       {
         "property": "unit",
         "title": "Koho nā haumāna",
-        "description": "Ka mea a ka haumāna e kuhikuhi ai ma ka heluhelu. Hiki ke koho mau ʻia nā kiʻi."
+        "description": "Ka mea a ka haumāna e kuhikuhi ai ma ka heluhelu. Hiki ke koho mau ʻia nā kiʻi.",
+        "options": {
+          "sentence": "Nā ʻōlelo",
+          "paragraph": "Nā paukū",
+          "figure": "Nā kiʻi wale nō"
+        }
       },
       {
         "property": "answers",

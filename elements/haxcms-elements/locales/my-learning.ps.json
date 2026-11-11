@@ -129,5 +129,12 @@
   "cancel": "لغوه کړئ",
   "clearedSite": "د {site} لپاره ستاسو د زده کړې معلومات پاک شول.",
   "clearedDevice": "پدې وسیله کې د زده کړې ټول معلومات پاک شول.",
-  "thisSite": "دا سایټ"
+  "thisSite": "دا سایټ",
+  "outlineHeading": "د پاڼې له مخې پرمختګ",
+  "allPages": "ټولې پاڼې",
+  "outlinePagesDone": "له {total} څخه {done} پاڼې بشپړې",
+  "outlinePagesCount": "{count} پاڼې",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% بشپړ",
+  "outlineComplete": "بشپړ"
 }

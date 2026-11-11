@@ -129,5 +129,12 @@
   "cancel": "Bekor qilish",
   "clearedSite": "{site} uchun o‘qish ma’lumotlaringiz tozalandi.",
   "clearedDevice": "Ushbu qurilmadagi barcha o‘qish ma’lumotlari tozalandi.",
-  "thisSite": "ushbu sayt"
+  "thisSite": "ushbu sayt",
+  "outlineHeading": "Sahifalar bo'yicha progress",
+  "allPages": "Barcha sahifalar",
+  "outlinePagesDone": "{total} ta sahifadan {done} tasi bajarildi",
+  "outlinePagesCount": "{count} ta sahifa",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% bajarildi",
+  "outlineComplete": "Bajarildi"
 }

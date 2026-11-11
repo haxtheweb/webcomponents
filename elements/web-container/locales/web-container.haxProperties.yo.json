@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Àpótí NodeJS"
+    "title": "Àpótí NodeJS",
+    "description": ""
   },
   "settings": {
     "configure": [

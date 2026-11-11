@@ -15,6 +15,12 @@
         "title": "Námskeið",
         "description": "Námskeiðið sem þessi spilunarlisti er ætlaður (auðkenni eða URL námskeiðs)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Miðlar",
+        "description": "Myndskeiðin og hljóðið í spilunarlistanum. Ekki breytt hér: yfirlit síðunnar notar þetta til að vita hvaða kubbum má sleppa inn í."
+      }
     ]
   }
 }

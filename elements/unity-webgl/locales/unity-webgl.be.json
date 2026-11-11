@@ -1,5 +1,6 @@
 {
   "simulation": "Мадэляванне",
   "fullScreen": "Поўны экран",
-  "exitFullScreen": "Выйсці з поўнаэкраннага рэжыму"
+  "exitFullScreen": "Выйсці з поўнаэкраннага рэжыму",
+  "player": "Прайгравальнік Unity WebGL"
 }

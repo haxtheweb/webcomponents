@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Lecteur de documentation de composants web"
+    "title": "Lecteur de documentation de composants web",
+    "description": ""
   },
   "settings": {
     "configure": [

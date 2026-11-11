@@ -1,0 +1,9 @@
+{
+  "imageMap": "Bildmapo",
+  "interactive": "Interaga",
+  "hotspot": "Varma punkto",
+  "hotspotPosition": "{n} el {total}",
+  "hotspotsExplored": "{n} el {total} varmaj punktoj esploritaj",
+  "explored": "Esplorita",
+  "close": "Fermi"
+}

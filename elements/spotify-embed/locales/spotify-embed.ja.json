@@ -1,4 +1,9 @@
 {
   "audio": "オーディオ",
-  "openOnSpotify": "Spotifyを新しいタブで開く"
+  "openOnSpotify": "Spotifyを新しいタブで開く",
+  "embedTitle": "Spotify埋め込み",
+  "trackEmbedTitle": "Spotifyトラック埋め込み",
+  "albumEmbedTitle": "Spotifyアルバム埋め込み",
+  "playlistEmbedTitle": "Spotifyプレイリスト埋め込み",
+  "artistEmbedTitle": "Spotifyアーティスト埋め込み"
 }

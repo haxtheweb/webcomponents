@@ -4,5 +4,8 @@
   "pieChart": "දත්ත · වට ප්‍රස්තාරය",
   "showDataTable": "දත්ත වගුව පෙන්වන්න",
   "downloadData": "දත්ත බාගන්න (.csv)",
-  "series": "ශ්‍රේණිය {n}"
+  "series": "ශ්‍රේණිය {n}",
+  "barChartLabel": "තීරු ප්‍රස්තාරය",
+  "lineChartLabel": "රේඛා ප්‍රස්තාරය",
+  "pieChartLabel": "වට ප්‍රස්තාරය"
 }

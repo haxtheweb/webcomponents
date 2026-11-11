@@ -3,5 +3,8 @@
   "openInNewTab": "Отваряне на PDF в нов раздел",
   "downloadPdf": "Изтегляне на PDF",
   "fullScreen": "Цял екран",
-  "exitFullScreen": "Изход от цял екран"
+  "exitFullScreen": "Изход от цял екран",
+  "notSupported": "Изглежда, че уеб браузърът ви не е настроен да показва PDF файлове. Няма проблем, просто",
+  "notSupportedLink": "щракнете тук, за да изтеглите PDF файла.",
+  "download": "Изтегляне"
 }

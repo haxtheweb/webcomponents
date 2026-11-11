@@ -129,5 +129,12 @@
   "cancel": "Жокко чыгаруу",
   "clearedSite": "{site} үчүн окуу маалыматтарыңыз тазаланды.",
   "clearedDevice": "Бул түзмөктөгү бардык окуу маалыматтары тазаланды.",
-  "thisSite": "бул сайт"
+  "thisSite": "бул сайт",
+  "outlineHeading": "Беттер боюнча прогресс",
+  "allPages": "Бардык беттер",
+  "outlinePagesDone": "{total} беттен {done} аяктады",
+  "outlinePagesCount": "{count} бет",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% аяктады",
+  "outlineComplete": "Аяктады"
 }

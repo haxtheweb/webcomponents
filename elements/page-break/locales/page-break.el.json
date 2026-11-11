@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Αυτή η σελίδα είναι κλειδωμένη. Ξεκλειδώστε την πρώτα για να αλλάξετε την κατάσταση δημοσίευσης.",
   "pageLockedUnlockToDelete": "Αυτή η σελίδα είναι κλειδωμένη. Ξεκλειδώστε την πρώτα για να τη διαγράψετε.",
   "pageDetails": "Λεπτομέρειες σελίδας",
-  "clickToUnlock": "Κάντε κλικ για ξεκλείδωμα"
+  "clickToUnlock": "Κάντε κλικ για ξεκλείδωμα",
+  "pageSettings": "Ρυθμίσεις σελίδας",
+  "editingPageSettings": "Επεξεργασία ρυθμίσεων σελίδας",
+  "published": "Δημοσιευμένο",
+  "draft": "Πρόχειρο",
+  "locked": "Κλειδωμένο",
+  "unlocked": "Ξεκλείδωτο",
+  "noTags": "Χωρίς ετικέτες",
+  "oneTag": "1 ετικέτα",
+  "tagCount": "{count} ετικέτες",
+  "enterKey": "Enter"
 }

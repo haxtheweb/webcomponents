@@ -37,6 +37,16 @@
         "title": "Numm vum Quiz",
         "description": "Quiznumm, deen an xAPI-gesteierten Ëmfelder fir d'Identifikatioun vun dësem Element weiderginn gëtt"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Zouklappbar",
+        "description": "Dës Fro als Zeil weisen, déi sech opmécht an zougeet. Wann ee opgemaach gëtt, gi déi aner zouklappbar Froen niewendrun zougemaach."
+      },
+      {
+        "title": "Zougeklappt ufänken",
+        "description": "Wann zouklappbar, mat enger zouer Zeil ufänken, déi nëmmen d'Fro an hire Status weist."
+      }
     ]
   }
 }

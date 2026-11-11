@@ -37,6 +37,16 @@
         "title": "Nome del quiz",
         "description": "Nome del quiz passato per l'identificazione di questo elemento negli ambienti basati su xAPI"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Comprimibile",
+        "description": "Mostra questa domanda come una riga che si apre e si chiude. Aprirne una chiude le altre domande comprimibili accanto."
+      },
+      {
+        "title": "Inizia compressa",
+        "description": "Se comprimibile, inizia come riga chiusa che mostra solo la domanda e il suo stato."
+      }
     ]
   }
 }

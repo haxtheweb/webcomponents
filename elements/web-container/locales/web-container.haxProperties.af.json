@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "NodeJS-houer"
+    "title": "NodeJS-houer",
+    "description": ""
   },
   "settings": {
     "configure": [

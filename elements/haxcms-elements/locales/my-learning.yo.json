@@ -129,5 +129,12 @@
   "cancel": "Fagilé",
   "clearedSite": "A ti pa dátà ẹ̀kọ́ rẹ fún {site} rẹ́.",
   "clearedDevice": "A ti pa gbogbo dátà ẹ̀kọ́ lórí ẹ̀rọ yìí rẹ́.",
-  "thisSite": "ojú-òpó yìí"
+  "thisSite": "ojú-òpó yìí",
+  "outlineHeading": "Ìlọsíwájú ní ojú-ìwé kọ̀ọ̀kan",
+  "allPages": "Gbogbo ojú-ìwé",
+  "outlinePagesDone": "{done} nínú ojú-ìwé {total} ti parí",
+  "outlinePagesCount": "ojú-ìwé {count}",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% ti parí",
+  "outlineComplete": "Ti parí"
 }

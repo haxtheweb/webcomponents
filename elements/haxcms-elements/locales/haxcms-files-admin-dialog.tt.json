@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Оригиналь файлларны алыштыру",
   "newName": "Яңа исем",
   "deleteAction": "Бетерү",
-  "renameAction": "Исемен үзгәртү"
+  "renameAction": "Исемен үзгәртү",
+  "bulkOverwriteConfirm": "{count} файл өчен \"{action}\" гамәле үтәлсенме? Бу оригиналь файлларны алыштыра һәм кире кайтарыла алмый.",
+  "actionScale": "Масштаблау",
+  "actionRotate": "Әйләндерү",
+  "actionTransform": "Үзгәртү",
+  "actionConvertJpg": "JPG-га әйләндерү",
+  "actionCompress": "Кысу"
 }

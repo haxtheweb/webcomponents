@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Web komponent resminama pleýeri"
+    "title": "Web komponent resminama pleýeri",
+    "description": ""
   },
   "settings": {
     "configure": [

@@ -1,0 +1,8 @@
+{
+  "ordinalOne": "º",
+  "ordinalTwo": "º",
+  "ordinalFew": "º",
+  "ordinalOther": "º",
+  "fromTimeToTime": "{start} guive {end} peve",
+  "atTime": "{start} jave"
+}

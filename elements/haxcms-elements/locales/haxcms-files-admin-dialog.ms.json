@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Ganti fail asal",
   "newName": "Nama baharu",
   "deleteAction": "Padam",
-  "renameAction": "Namakan semula"
+  "renameAction": "Namakan semula",
+  "bulkOverwriteConfirm": "{action} {count} fail? Ini menggantikan fail asal dan tidak boleh dibuat asal.",
+  "actionScale": "Skala",
+  "actionRotate": "Putar",
+  "actionTransform": "Ubah bentuk",
+  "actionConvertJpg": "Tukar kepada JPG",
+  "actionCompress": "Mampat"
 }

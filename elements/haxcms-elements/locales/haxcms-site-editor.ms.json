@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Tidak dapat melengkapkan operasi ({status})",
   "normalizedPageSlugs": "{count} slug halaman dinormalkan",
   "createdTitle": "{title} dicipta!",
-  "processing": "Memproses"
+  "processing": "Memproses",
+  "saveTimedOut": "Penyimpanan tamat masa: pelayan tidak menjawab. Perubahan anda disimpan di sini, tetapi pelayan mungkin masih menyiapkan penyimpanannya."
 }

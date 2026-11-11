@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Bu sayfa kilitli. Yayın durumunu değiştirmek için önce kilidini açın.",
   "pageLockedUnlockToDelete": "Bu sayfa kilitli. Silmek için önce kilidini açın.",
   "pageDetails": "Sayfa ayrıntıları",
-  "clickToUnlock": "Kilidi açmak için tıklayın"
+  "clickToUnlock": "Kilidi açmak için tıklayın",
+  "pageSettings": "Sayfa ayarları",
+  "editingPageSettings": "Sayfa ayarları düzenleniyor",
+  "published": "Yayınlandı",
+  "draft": "Taslak",
+  "locked": "Kilitli",
+  "unlocked": "Kilitsiz",
+  "noTags": "Etiket yok",
+  "oneTag": "1 etiket",
+  "tagCount": "{count} etiket",
+  "enterKey": "Enter"
 }

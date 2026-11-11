@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "स्फोटाचा आवाज ऐकण्यासाठी क्लिक करा किंवा पॉइंटर फिरवा",
+  "soundDisabled": "दृश्य स्फोट प्रभाव (आवाज बंद)",
+  "explosionAnimation": "स्फोट अॅनिमेशन",
+  "explosionAriaLabel": "स्फोट अॅनिमेशन {state} {sound}. बदलण्यासाठी क्लिक करा.",
+  "playing": "सुरू आहे",
+  "stopped": "थांबले",
+  "withSound": "आवाजासह",
+  "muted": "(म्यूट)"
+}

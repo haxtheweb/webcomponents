@@ -37,6 +37,16 @@
         "title": "Nome di u quiz",
         "description": "Nome di u quiz trasmessu per identificà st'elementu in l'ambienti basati nant'à xAPI"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Riducibile",
+        "description": "Mostra sta dumanda cum'è una linea chì s'apre è si chjode. Apre una chjode l'altre dumande riducibile accantu."
+      },
+      {
+        "title": "Principià ridottu",
+        "description": "Quandu hè riducibile, principia cum'è una linea chjosa chì mostra solu a dumanda è u so statutu."
+      }
     ]
   }
 }

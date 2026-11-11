@@ -1,4 +1,9 @@
 {
   "audio": "Audio",
-  "openOnSpotify": "Bukak ing Spotify ing tab anyar"
+  "openOnSpotify": "Bukak ing Spotify ing tab anyar",
+  "embedTitle": "Embed Spotify",
+  "trackEmbedTitle": "Embed Trek Spotify",
+  "albumEmbedTitle": "Embed Album Spotify",
+  "playlistEmbedTitle": "Embed Playlist Spotify",
+  "artistEmbedTitle": "Embed Artis Spotify"
 }

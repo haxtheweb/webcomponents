@@ -166,13 +166,13 @@
       "order": 0,
       "src": "map-menu.motion.json",
       "file": "lib/map-menu.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/map-menu.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

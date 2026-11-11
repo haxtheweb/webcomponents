@@ -1,0 +1,8 @@
+{
+  "ordinalOne": "号",
+  "ordinalTwo": "号",
+  "ordinalFew": "号",
+  "ordinalOther": "号",
+  "fromTimeToTime": "从 {start} 到 {end}",
+  "atTime": "勒 {start}"
+}

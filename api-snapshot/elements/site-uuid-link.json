@@ -18,6 +18,8 @@
     ],
     "attributes": [],
     "slots": [],
-    "demoTags": []
+    "demoTags": [
+      "site-uuid-link"
+    ]
   }
 }

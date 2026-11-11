@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "تکمیل عملیات ممکن نشد ({status})",
   "normalizedPageSlugs": "{count} نامک صفحه عادی‌سازی شد",
   "createdTitle": "{title} ایجاد شد!",
-  "processing": "در حال پردازش"
+  "processing": "در حال پردازش",
+  "saveTimedOut": "زمان ذخیره‌سازی به پایان رسید: سرور پاسخ نداد. تغییرات شما اینجا نگه داشته می‌شود، اما ممکن است سرور همچنان ذخیره‌سازی آن‌ها را تمام کند."
 }
