@@ -4,6 +4,7 @@
  */
 import { html, css } from "lit";
 import { RelativeHeadingLite } from "./lib/relative-heading-lite.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/anchor-behaviors/anchor-behaviors.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
@@ -17,7 +18,7 @@ import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
  * @demo demo/rightalign.html Right-Align Links
  * @element relative-heading
  */
-class RelativeHeading extends RelativeHeadingLite {
+class RelativeHeading extends I18NMixin(RelativeHeadingLite) {
   //styles function
   static get styles() {
     return [
@@ -258,7 +259,18 @@ class RelativeHeading extends RelativeHeadingLite {
     this.linkAlignRight = false;
     this.disableLink = false;
     this.linkIcon = "link";
-    this.linkLabel = "Get link";
+    this.t = {
+      ...this.t,
+      getLink: "Get link",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath:
+        new URL("./locales/relative-heading.en.json", import.meta.url).href +
+        "/../",
+    });
+    // translated default; an authored link-label is left alone
+    this.i18nDefault("linkLabel", "getLink");
   }
 
   connectedCallback() {

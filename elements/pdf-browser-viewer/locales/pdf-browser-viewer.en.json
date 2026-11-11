@@ -3,5 +3,8 @@
   "openInNewTab": "Open the PDF in a new tab",
   "downloadPdf": "Download the PDF",
   "fullScreen": "Full screen",
-  "exitFullScreen": "Exit full screen"
+  "exitFullScreen": "Exit full screen",
+  "notSupported": "It appears your Web browser is not configured to display PDF files. No worries, just",
+  "notSupportedLink": "click here to download the PDF file.",
+  "download": "Download"
 }

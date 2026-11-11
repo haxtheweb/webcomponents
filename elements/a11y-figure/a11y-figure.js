@@ -359,8 +359,13 @@ class A11yFigure extends A11yDetails {
    * @returns {object}
    */
   get observer() {
-    let callback = (mutationsList) => this._watchChildren(mutationsList);
-    return new MutationObserver(callback);
+    // one observer per instance, so disconnectedCallback stops the one that observes
+    if (!this.__observer) {
+      this.__observer = new MutationObserver((mutationsList) =>
+        this._watchChildren(mutationsList),
+      );
+    }
+    return this.__observer;
   }
 
   /**
@@ -369,8 +374,16 @@ class A11yFigure extends A11yDetails {
    * @returns {object}
    */
   get figureObserver() {
-    let callback = () => this._updateElement();
-    return new MutationObserver(callback);
+    if (!this.__figureObserver) {
+      this.__figureObserver = new MutationObserver(() => this._updateElement());
+    }
+    return this.__figureObserver;
+  }
+  disconnectedCallback() {
+    if (this.figureObserver && this.figureObserver.disconnect) {
+      this.figureObserver.disconnect();
+    }
+    super.disconnectedCallback();
   }
   /**
    * updates an element based on changes in slot
@@ -443,10 +456,10 @@ class A11yFigure extends A11yDetails {
       });
     } else if (
       this._hasMutations(mutationsList, "removedNodes") &&
-      !this.querySelector("* > figureObserver") &&
-      this.detailsObserver.disconnect
+      !this.querySelector("* > figure") &&
+      this.figureObserver.disconnect
     ) {
-      this.detailsObserver.disconnect();
+      this.figureObserver.disconnect();
     }
   }
 }

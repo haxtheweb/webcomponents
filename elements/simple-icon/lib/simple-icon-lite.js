@@ -21,6 +21,12 @@ export const SimpleIconBehaviors = function (SuperClass) {
             width: var(--simple-icon-width, 24px);
             color: var(--simple-icon-color, currentColor);
           }
+          /* icons are drawn the same in every direction on purpose: most
+             glyphs (media controls, checkmarks, logos, clocks) must not
+             mirror. An element whose arrow means "next in reading order"
+             flips that icon itself, for example
+             :host(:dir(rtl)) simple-icon-lite[icon="arrow-forward"] with
+             transform: scaleX(-1) */
           :host([dir="rtl"]) svg {
             direction: rtl;
           }

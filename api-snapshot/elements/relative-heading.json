@@ -12,7 +12,8 @@
     "link-align-right": "linkAlignRight",
     "linkicon": "linkIcon",
     "linklabel": "linkLabel",
-    "parent": "parent"
+    "parent": "parent",
+    "t": "t"
   },
   "slots": [],
   "events": [],

@@ -857,6 +857,14 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           border-radius: var(--hax-ui-radius);
           background-color: var(--hax-ui-surface);
         }
+        /* phone: no keyboard expected, so no shortcut hints (same media as
+           KEYBOARD_SHORTCUTS_HIDDEN_MEDIA in @haxtheweb/utils keyboardShortcuts) */
+        @media (max-width: 599px), (pointer: coarse) and (max-height: 599px) {
+          .keyboard-help-btn,
+          :host([show-hints]) .footer .hints {
+            display: none;
+          }
+        }
         .more-summary {
           display: none;
           font-size: var(--hax-ui-admin-font-size-xs);
@@ -1696,7 +1704,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           </div>
           <slot name="controls"></slot>
           <simple-toolbar-button
-            class="control options-btn"
+            class="control options-btn keyboard-help-btn"
             icon="hardware:keyboard"
             label="${
               this.showHints ? this.t.hideKeyboardHelp : this.t.showKeyboardHelp
@@ -4142,6 +4150,18 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     this._undoTimer = setTimeout(() => {
       this._undo = null;
     }, UNDO_MS);
+  }
+
+  /**
+   * Forget the pending undo (and its toast). Call this when the outline is
+   * replaced from outside, e.g. reloaded with saved data: the snapshot
+   * holds the outline as it was before, so an undo would bring back pages
+   * the save already removed, and ids the server never stored.
+   */
+  clearUndo() {
+    clearTimeout(this._undoTimer);
+    this._undoTimer = null;
+    this._undo = null;
   }
 
   /**

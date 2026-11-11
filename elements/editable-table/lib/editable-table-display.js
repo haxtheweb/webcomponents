@@ -65,7 +65,7 @@ class EditableTableDisplay extends I18NMixin(
         }
         .offscreen {
           position: absolute;
-          left: -9999px;
+          inset-inline-start: -9999px;
           font-size: 0;
           height: 0;
           width: 0;
@@ -134,7 +134,7 @@ class EditableTableDisplay extends I18NMixin(
           width: calc(var(--simple-picker-option-size) + 6px);
           overflow: visible;
           display: none;
-          margin-right: 0px;
+          margin-inline-end: 0px;
           --simple-picker-border-width: 1px;
           --simple-picker-focus-border-width: 1px;
           --simple-picker-border-color: var(

@@ -5,7 +5,11 @@ import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "./simple-fields-array-item.js";
-import "@haxtheweb/responsive-utility/responsive-utility.js";
+import {
+  registerResponsiveElement,
+  unregisterResponsiveElement,
+  reregisterResponsiveElement,
+} from "@haxtheweb/responsive-utility/responsive-utility.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 /**
  * `simple-fields-array` takes in a JSON schema of type array and builds a form,
@@ -44,7 +48,7 @@ class SimpleFieldsArray extends I18NMixin(
           justify-content: flex-end;
         }
         #add {
-          float: right;
+          float: inline-end;
         }
       `,
     ];
@@ -153,6 +157,16 @@ class SimpleFieldsArray extends I18NMixin(
       localesPath: new URL("../locales/", import.meta.url).href,
     });
   }
+  connectedCallback() {
+    super.connectedCallback();
+    // moved, or removed and added again: observe it again
+    reregisterResponsiveElement(this);
+  }
+  disconnectedCallback() {
+    // the utility's ResizeObserver keeps a registered element alive
+    unregisterResponsiveElement(this);
+    super.disconnectedCallback();
+  }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
     globalThis.ResponsiveUtility.requestAvailability();
@@ -161,19 +175,15 @@ class SimpleFieldsArray extends I18NMixin(
      * needs the size of parent container to add responsive styling
      * @event responsive-element
      */
-    globalThis.dispatchEvent(
-      new CustomEvent("responsive-element", {
-        detail: {
-          element: this,
-          attribute: "responsive-size",
-          relativeToParent: true,
-          sm: 250,
-          md: 500,
-          lg: 1000,
-          xl: 2000,
-        },
-      }),
-    );
+    registerResponsiveElement({
+      element: this,
+      attribute: "responsive-size",
+      relativeToParent: true,
+      sm: 250,
+      md: 500,
+      lg: 1000,
+      xl: 2000,
+    });
   }
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);

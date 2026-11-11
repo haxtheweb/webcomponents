@@ -100,6 +100,7 @@ class BadgeSticker extends I18NMixin(SimpleColors) {
     transform: translate(-50%, -50%);
   }
 
+  /* physical on purpose: these sit on fixed spots of the badge artwork */
   .badgepic {
     max-width: 75px;
     max-height: 75px;
@@ -134,7 +135,7 @@ class BadgeSticker extends I18NMixin(SimpleColors) {
     font: inherit;
   }
   .button i {
-    margin-right: 8px;
+    margin-inline-end: 8px;
   }
   /* popover colors migrate to scheme-safe DDD pairs; duplicated
      box-shadow and border-radius declarations collapse onto tokens */

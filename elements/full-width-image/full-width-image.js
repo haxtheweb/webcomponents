@@ -46,7 +46,7 @@ class FullWidthImage extends I18NMixin(LitElement) {
         #captionToggle {
           position: absolute;
           top: var(--ddd-spacing-2, 8px);
-          right: var(--ddd-spacing-2, 8px);
+          inset-inline-end: var(--ddd-spacing-2, 8px);
           z-index: 2;
           color: #fff;
           --simple-icon-button-background-color: rgba(0, 0, 0, 0.6);

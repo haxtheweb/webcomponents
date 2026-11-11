@@ -415,6 +415,10 @@ class PdfBrowserViewer extends I18NMixin(LitElement) {
       downloadPdf: "Download the PDF",
       fullScreen: "Full screen",
       exitFullScreen: "Exit full screen",
+      notSupported:
+        "It appears your Web browser is not configured to display PDF files. No worries, just",
+      notSupportedLink: "click here to download the PDF file.",
+      download: "Download",
     };
     this.registerLocalization({
       context: this,
@@ -423,13 +427,13 @@ class PdfBrowserViewer extends I18NMixin(LitElement) {
     this._fullscreen = false;
     this._fullscreenChanged = this._fullscreenChanged.bind(this);
     this.file = undefined;
-    this.notSupportedMessage =
-      "It appears your Web browser is not configured to display PDF files. No worries, just";
-    this.notSupportedLinkMessage = "click here to download the PDF file.";
+    // translated defaults; authored values are left alone
+    this.i18nDefault("notSupportedMessage", "notSupported");
+    this.i18nDefault("notSupportedLinkMessage", "notSupportedLink");
     this.height = "400px";
     this.width = "100%";
     this.card = false;
-    this.downloadLabel = "Download";
+    this.i18nDefault("downloadLabel", "download");
     this.elevation = "1";
   }
   /**

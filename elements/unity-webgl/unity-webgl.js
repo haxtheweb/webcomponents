@@ -67,6 +67,7 @@ class UnityWebgl extends I18NMixin(HTMLElement) {
       simulation: "Simulation",
       fullScreen: "Full screen",
       exitFullScreen: "Exit full screen",
+      player: "Unity WebGL player",
     };
     this._fullscreen = false;
     this._fullscreenChanged = this._fullscreenChanged.bind(this);
@@ -125,6 +126,10 @@ class UnityWebgl extends I18NMixin(HTMLElement) {
     const label = this.shadowRoot.querySelector(".ddd-block-label");
     if (label) {
       label.textContent = this._label;
+    }
+    const canvas = this.shadowRoot.querySelector(".ddd-block-body canvas");
+    if (canvas) {
+      canvas.setAttribute("aria-label", this.t.player);
     }
     const button = this.shadowRoot.querySelector(".ddd-block-action");
     if (button) {
@@ -187,7 +192,7 @@ class UnityWebgl extends I18NMixin(HTMLElement) {
         }
       </div>
       <div class="ddd-block-body">
-        <canvas role="img" aria-label="Unity WebGL player" style="width: ${this.width}; height: ${this.height}; background: ${this.background}"></canvas>
+        <canvas role="img" aria-label="${this._escape(this.t.player)}" style="width: ${this.width}; height: ${this.height}; background: ${this.background}"></canvas>
       </div>
     </div>`;
   }
@@ -195,6 +200,10 @@ class UnityWebgl extends I18NMixin(HTMLElement) {
    * life cycle, element is afixed to the DOM
    */
   connectedCallback() {
+    // I18NMixin restores its i18n-manager registration here
+    if (super.connectedCallback) {
+      super.connectedCallback();
+    }
     if (globalThis.ShadyCSS) {
       globalThis.ShadyCSS.styleElement(this);
     }
@@ -209,6 +218,10 @@ class UnityWebgl extends I18NMixin(HTMLElement) {
    */
   disconnectedCallback() {
     listenDDDBlockFullscreen(this._fullscreenChanged, false);
+    // I18NMixin releases its i18n-manager registration here
+    if (super.disconnectedCallback) {
+      super.disconnectedCallback();
+    }
   }
   /**
    * Render / rerender the shadowRoot
