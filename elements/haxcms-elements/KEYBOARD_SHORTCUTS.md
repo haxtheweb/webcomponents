@@ -91,6 +91,23 @@ The outline designer is the Structure link in the site settings quick links
 | `Ctrl+Shift+'` | Text / tray | Edit Mode | Jump between text editing and the tray |
 | `Ctrl+Shift+Z` | Redo | Edit Mode | Redo the last undone change (Ctrl+Z undoes) |
 
+### Tab in the editing area
+
+While the caret is in the page content (`hax-body`), Tab and Shift+Tab
+indent and outdent lists. They are the editor's only while keyboard focus is
+in the editable content: with focus anywhere else (the top bar, the tray, a
+button near the content) they move focus as usual, even if a text block
+still holds the selection.
+
+| Keys | Edit Mode |
+|------|-----------|
+| `Escape`, then `Tab` | Leave the editing area forward (the same escape code editors use) |
+| `Escape`, then `Shift+Tab` | Leave the editing area backward |
+| `Ctrl+Shift+'` | Jump to the tray's options for the active block, and back |
+
+Any other key after Escape gives Tab back to the editor. Tabbing into the
+editing area shows a sky blue focus ring around it; clicking into it does not.
+
 ## Super Daemon Integration
 
 HAXcms keyboard shortcuts are designed to work alongside Super Daemon:
