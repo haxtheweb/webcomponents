@@ -267,6 +267,15 @@
             },
             {
               "kind": "method",
+              "name": "_menuReady",
+              "parameters": [
+                {
+                  "name": "listItem"
+                }
+              ]
+            },
+            {
+              "kind": "method",
               "name": "_toggleActionsMenu",
               "parameters": [
                 {
@@ -1240,6 +1249,16 @@
             },
             {
               "kind": "method",
+              "name": "_topLevelParent",
+              "parameters": [
+                {
+                  "name": "moved"
+                }
+              ],
+              "description": "The parent a page gets when the user moves it to the top level: \"\"\nwhen every other top-level page has \"\" (an older site keeps one form\nin its site.json), otherwise null, the JSON Outline Schema form.\nPages the user did not move keep the parent they came with."
+            },
+            {
+              "kind": "method",
               "name": "_renumber",
               "parameters": [
                 {
@@ -1769,6 +1788,12 @@
                 "text": "object"
               },
               "attribute": "schemaMap"
+            },
+            {
+              "kind": "field",
+              "name": "_menuRowId",
+              "privacy": "public",
+              "attribute": "_menuRowId"
             }
           ],
           "events": [
@@ -2005,6 +2030,10 @@
               },
               "default": "false",
               "fieldName": "_vtActive"
+            },
+            {
+              "name": "_menuRowId",
+              "fieldName": "_menuRowId"
             },
             {
               "name": "_flashGroup",

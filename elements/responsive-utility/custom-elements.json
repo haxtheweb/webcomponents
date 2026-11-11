@@ -80,6 +80,54 @@
             "package": "lit"
           },
           "customElement": true
+        },
+        {
+          "kind": "function",
+          "name": "registerResponsiveElement",
+          "parameters": [
+            {
+              "name": "detail",
+              "description": "same shape as the `responsive-element` event detail",
+              "type": {
+                "text": "object"
+              }
+            },
+            {
+              "name": "options",
+              "default": "{}",
+              "optional": true,
+              "type": {
+                "text": "@param {EventTarget} [options.target] where the event is dispatched\n *   (default globalThis)\n * @param {object} [options.eventInit] extra CustomEvent init such as\n *   bubbles / composed, for elements whose event contract includes them\n "
+              }
+            }
+          ],
+          "description": "Register an element for responsive sizing (fires `responsive-element`) and\nremember the request. Pair with unregisterResponsiveElement in\ndisconnectedCallback and reregisterResponsiveElement in connectedCallback:\nthe utility keeps a ResizeObserver on every registered element, and that\nobserver keeps the element alive until it is unregistered."
+        },
+        {
+          "kind": "function",
+          "name": "unregisterResponsiveElement",
+          "parameters": [
+            {
+              "name": "element",
+              "type": {
+                "text": "HTMLElement"
+              }
+            }
+          ],
+          "description": "Stop observing an element (fires `delete-responsive-element`). Safe to call\nfor elements that never registered."
+        },
+        {
+          "kind": "function",
+          "name": "reregisterResponsiveElement",
+          "parameters": [
+            {
+              "name": "element",
+              "type": {
+                "text": "HTMLElement"
+              }
+            }
+          ],
+          "description": "Register again with the remembered request, if the element registered\nbefore and was unregistered since (moved, or removed and re-added)."
         }
       ],
       "exports": [
@@ -95,6 +143,30 @@
           "name": "ResponsiveUtility",
           "declaration": {
             "name": "ResponsiveUtility",
+            "module": "responsive-utility.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "registerResponsiveElement",
+          "declaration": {
+            "name": "registerResponsiveElement",
+            "module": "responsive-utility.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "unregisterResponsiveElement",
+          "declaration": {
+            "name": "unregisterResponsiveElement",
+            "module": "responsive-utility.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "reregisterResponsiveElement",
+          "declaration": {
+            "name": "reregisterResponsiveElement",
             "module": "responsive-utility.js"
           }
         }

@@ -12,8 +12,11 @@
  * repo locally, never a live site. Each element's demo/index.html is opened in
  * Chromium (Playwright) with prefers-color-scheme light, then dark, reduced
  * motion, and every request that leaves the local server aborted, so the
- * result is the same offline, locally and in CI. axe-core then runs only the
- * color-contrast rule over the page, shadow DOM included.
+ * result is the same offline, locally and in CI. Animations are ended and the
+ * layout must stop changing before measuring (scripts/lib/demo-runner.mjs
+ * waitForSettledRender), so the result does not depend on how fast the
+ * runner is. axe-core then runs only the color-contrast rule over the page,
+ * shadow DOM included.
  *
  * A finding is keyed by element + mode + target, where the target is axe's
  * selector path with positions and digits dropped (scripts/lib/contrast.mjs),
@@ -188,7 +191,10 @@ async function auditDemo(browser, origin, element, mode, axeSource) {
     viewport: { width: 1280, height: 900 },
   });
   try {
-    const page = await openDemo(context, origin, element, PAGE_TIMEOUT);
+    // measured at rest: animations ended, late renders landed
+    const page = await openDemo(context, origin, element, PAGE_TIMEOUT, {
+      settled: true,
+    });
     await page.addScriptTag({ content: axeSource });
     const violations = await page.evaluate(async () => {
       const res = await globalThis.axe.run(document, {

@@ -74,7 +74,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ ...this.t, document: \"Document\", openInNewTab: \"Open the PDF in a new tab\", downloadPdf: \"Download the PDF\", fullScreen: \"Full screen\", exitFullScreen: \"Exit full screen\", }"
+              "default": "{ ...this.t, document: \"Document\", openInNewTab: \"Open the PDF in a new tab\", downloadPdf: \"Download the PDF\", fullScreen: \"Full screen\", exitFullScreen: \"Exit full screen\", notSupported: \"It appears your Web browser is not configured to display PDF files. No worries, just\", notSupportedLink: \"click here to download the PDF file.\", download: \"Download\", }"
             },
             {
               "kind": "field",
@@ -97,28 +97,6 @@
               "default": "undefined",
               "attribute": "file",
               "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "notSupportedMessage",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "description": "The message when browser doesn't support pdf object",
-              "default": "\"It appears your Web browser is not configured to display PDF files. No worries, just\"",
-              "attribute": "not-supported-message"
-            },
-            {
-              "kind": "field",
-              "name": "notSupportedLinkMessage",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "description": "The PDF link message when browser doesn't support pdf object",
-              "default": "\"click here to download the PDF file.\"",
-              "attribute": "not-supported-link-message"
             },
             {
               "kind": "field",
@@ -155,17 +133,6 @@
             },
             {
               "kind": "field",
-              "name": "downloadLabel",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "description": "Download button label.",
-              "default": "\"Download\"",
-              "attribute": "download-label"
-            },
-            {
-              "kind": "field",
               "name": "elevation",
               "privacy": "public",
               "type": {
@@ -177,6 +144,26 @@
             },
             {
               "kind": "field",
+              "name": "notSupportedMessage",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "The message when browser doesn't support pdf object",
+              "attribute": "not-supported-message"
+            },
+            {
+              "kind": "field",
+              "name": "notSupportedLinkMessage",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "The PDF link message when browser doesn't support pdf object",
+              "attribute": "not-supported-link-message"
+            },
+            {
+              "kind": "field",
               "name": "heading",
               "privacy": "public",
               "type": {
@@ -184,6 +171,25 @@
               },
               "description": "The heading for the card variant.",
               "attribute": "heading"
+            },
+            {
+              "kind": "field",
+              "name": "downloadLabel",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Download button label.",
+              "attribute": "download-label"
+            },
+            {
+              "kind": "field",
+              "name": "_detached",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "_detached"
             }
           ],
           "attributes": [
@@ -202,7 +208,6 @@
                 "text": "string"
               },
               "description": "The message when browser doesn't support pdf object",
-              "default": "\"It appears your Web browser is not configured to display PDF files. No worries, just\"",
               "fieldName": "notSupportedMessage"
             },
             {
@@ -211,7 +216,6 @@
                 "text": "string"
               },
               "description": "The PDF link message when browser doesn't support pdf object",
-              "default": "\"click here to download the PDF file.\"",
               "fieldName": "notSupportedLinkMessage"
             },
             {
@@ -255,7 +259,6 @@
                 "text": "string"
               },
               "description": "Download button label.",
-              "default": "\"Download\"",
               "fieldName": "downloadLabel"
             },
             {
@@ -274,6 +277,13 @@
               },
               "default": "false",
               "fieldName": "_fullscreen"
+            },
+            {
+              "name": "_detached",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "_detached"
             }
           ],
           "mixins": [

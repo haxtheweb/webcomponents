@@ -110,12 +110,19 @@
             },
             {
               "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, dragAndDropToReplace: \"Drag and drop file to replace\", dropFileToUpload: \"Drop file to upload\", placeholderFor: \"Placeholder for {type}\", }"
+            },
+            {
+              "kind": "field",
               "name": "directions",
               "privacy": "public",
               "type": {
                 "text": "string"
               },
-              "default": "\"Drag and drop file to replace\"",
               "attribute": "directions"
             },
             {
@@ -161,7 +168,6 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"Drag and drop file to replace\"",
               "fieldName": "directions"
             },
             {
@@ -189,6 +195,12 @@
               "description": "Bind dragging state to a variable so we can apply CSS.",
               "default": "false",
               "fieldName": "dragOver"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
             }
           ],
           "superclass": {

@@ -150,6 +150,14 @@
             },
             {
               "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, clickOrHoverToPlay: \"Click or hover to play explosion sound\", soundDisabled: \"Visual explosion effect (sound disabled)\", explosionAnimation: \"explosion animation\", explosionAriaLabel: \"Explosion animation {state} {sound}. Click to toggle.\", playing: \"playing\", stopped: \"stopped\", withSound: \"with sound\", muted: \"(muted)\", }"
+            },
+            {
+              "kind": "field",
               "name": "state",
               "privacy": "public",
               "type": {
@@ -384,6 +392,10 @@
             }
           ],
           "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            },
             {
               "name": "DDDSuper",
               "package": "@haxtheweb/d-d-d/d-d-d.js"

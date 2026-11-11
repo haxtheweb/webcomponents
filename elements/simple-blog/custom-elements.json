@@ -12,6 +12,10 @@
           "name": "SimpleBlog",
           "members": [
             {
+              "kind": "method",
+              "name": "HAXCMSGlobalStyleSheetContent"
+            },
+            {
               "kind": "field",
               "name": "tag",
               "static": true,
