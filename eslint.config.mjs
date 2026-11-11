@@ -39,6 +39,9 @@ export default [
       // Tests are not linted (they run under web-test-runner).
       "elements/**/test/**",
       "elements/**/*.test.js",
+      // Minified browser loaders at the root (dist/build.js imports them).
+      "build.js",
+      "build-haxcms.js",
       "elements/h5p-element/lib/**",
       "elements/wave-player/lib/**",
       "elements/moment-element/lib/**",
@@ -171,6 +174,29 @@ export default [
     languageOptions: {
       globals: {
         ...globals.node,
+      },
+    },
+  },
+  {
+    // Repository tooling outside elements/: the root scripts/ folder and the
+    // root Node config files. `yarn lint` does not cover them, but the
+    // lint-staged pre-commit hook lints any staged .js, and these run in Node
+    // (CommonJS and ESM), so they need Node globals (require, process,
+    // __dirname, Buffer, console). Browser globals too: Playwright scripts
+    // pass functions that run in the page (document, getComputedStyle) to
+    // page.evaluate().
+    files: [
+      "scripts/**/*.{js,mjs}",
+      "*.config.{js,mjs}",
+      "gulpfile.mjs",
+      "automate-theme-screenshots.js",
+      "generate-theme-screenshots.js",
+      "generate-theme-screenshots-with-server.js",
+    ],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+        ...globals.browser,
       },
     },
   },
