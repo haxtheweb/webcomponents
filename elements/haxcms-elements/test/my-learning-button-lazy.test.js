@@ -21,10 +21,16 @@ const until = async (check, ms = 4000) => {
     await flush(20);
   }
 };
+// the focused element through shadow roots (bounded: a host can report
+// itself as its shadow root's active element)
 const deepActive = () => {
   let a = document.activeElement;
-  while (a && a.shadowRoot && a.shadowRoot.activeElement) {
-    a = a.shadowRoot.activeElement;
+  for (let i = 0; i < 20; i++) {
+    const next = a && a.shadowRoot ? a.shadowRoot.activeElement : null;
+    if (!next || next === a) {
+      break;
+    }
+    a = next;
   }
   return a;
 };
