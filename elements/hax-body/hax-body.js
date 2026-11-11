@@ -295,6 +295,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           flex-wrap: wrap;
           align-items: center;
           padding: 2px;
+          width: max-content;
+          max-width: calc(100vw - 16px);
         }
         #topcontextmenu[more-open] #textcontextmenu[bubble-mode] {
           border-left: 1px solid var(--hax-ui-line);
@@ -384,13 +386,22 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           border-left: 1px solid var(--hax-ui-line);
           padding-left: 1px;
         }
-        #textcontextmenu .hax-selection-more-toggle {
+        /* the extra formats slide out from the toggle one after another,
+           so it is clear what was added */
+        #textcontextmenu
+          > .hax-selection-bubble[data-more]
+          > .hax-selection-more
+          > * {
+          animation: hax-selection-more-in 180ms var(--hax-ui-easing-move) both;
+          animation-delay: calc(var(--hax-more-i, 0) * 18ms);
+        }
+        #textcontextmenu .hax-selection-more-toggle::part(icon) {
           transition: transform var(--hax-ui-duration-move)
             var(--hax-ui-easing-move);
         }
         #textcontextmenu
           > .hax-selection-bubble[data-more]
-          .hax-selection-more-toggle {
+          .hax-selection-more-toggle::part(icon) {
           transform: rotate(180deg);
         }
         /* the bubble and the insert-at-cursor tools use the block bar's
@@ -398,6 +409,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
            pressed and disabled states */
         #textcontextmenu[hidden] {
           display: none;
+        }
+        #textcontextmenu[bubble-mode] {
+          border: 0;
+          outline: 0;
+          background-color: transparent;
         }
         #textcontextmenu[bubble-mode] > .group {
           --simple-toolbar-button-width: var(--hax-ui-icon);
@@ -518,6 +534,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         #textcontextmenu .hax-bubble-btn:focus-visible {
           outline: var(--hax-ui-focus-width, 2px) solid var(--hax-ui-focus);
         }
+        @keyframes hax-selection-more-in {
+          from {
+            opacity: 0;
+            transform: translateX(-8px);
+          }
+        }
         @keyframes hax-selection-bubble-in {
           from {
             opacity: 0;
@@ -526,7 +548,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         @media (prefers-reduced-motion: reduce) {
           #textcontextmenu > .hax-selection-bubble[data-open],
-          #textcontextmenu .hax-selection-more-toggle {
+          #textcontextmenu > .hax-selection-bubble > .hax-selection-more > *,
+          #textcontextmenu .hax-selection-more-toggle::part(icon) {
             animation: none;
             transition: none;
           }
@@ -1411,6 +1434,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       </div>
       <absolute-position-behavior
         id="topcontext"
+        @pointerdown="${this._closeOtherBarPopups}"
         fit-to-visible-bounds
         justify
         position="top"
@@ -1617,6 +1641,64 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         { duration: duration, easing: HAX_MOTION_EASE },
       );
     });
+  }
+  /**
+   * the bar travels with a block that moves (Move up / Move down): it is
+   * placed at the block's new spot before the block starts sliding, slides
+   * there over the same time, and is not re-measured mid-slide (which would
+   * catch the block half way)
+   */
+  _closeOtherBarPopups(e) {
+    // one popup at a time: using another tool on the bar closes an open
+    // inline element prompt (e.g. Icon) unless it is that prompt's button
+    const prompt =
+      globalThis.RichTextEditorPrompt &&
+      globalThis.RichTextEditorPrompt.instance;
+    if (
+      prompt &&
+      prompt.__opened &&
+      prompt.button &&
+      !e.composedPath().includes(prompt.button) &&
+      prompt._cancel
+    ) {
+      prompt._cancel();
+    }
+  }
+  _barGlideStart() {
+    const bar = this.contextMenus && this.contextMenus.parent;
+    if (!bar || !bar.animate || this._reducedMotion) return null;
+    clearTimeout(this.__barGlideTimer);
+    if (this.__barGlide) this.__barGlide.cancel();
+    const locked = this.__barGlideLocked
+      ? this.__barGlideLocked.was
+      : HAXStore._lockContextPosition;
+    this.__barGlideLocked = { was: locked };
+    HAXStore._lockContextPosition = true;
+    if (bar.unsetPosition) bar.unsetPosition();
+    return { bar: bar, from: bar.getBoundingClientRect(), locked: locked };
+  }
+  _barGlideTo(glide, duration = 240) {
+    if (!glide) return;
+    const bar = glide.bar;
+    const manager =
+      globalThis.AbsolutePositionStateManager &&
+      globalThis.AbsolutePositionStateManager.requestAvailability();
+    if (manager) manager.positionElement(bar);
+    const to = bar.getBoundingClientRect();
+    const dx = glide.from.left - to.left,
+      dy = glide.from.top - to.top;
+    if (Math.abs(dx) > 0.5 || Math.abs(dy) > 0.5) {
+      this.__barGlide = bar.animate(
+        [{ transform: `translate(${dx}px, ${dy}px)` }, { transform: "none" }],
+        { duration: duration, easing: HAX_MOTION_EASE },
+      );
+    }
+    this.__barGlideTimer = setTimeout(() => {
+      this.__barGlide = null;
+      HAXStore._lockContextPosition = glide.locked;
+      this.__barGlideLocked = null;
+      if (bar.setPosition) bar.setPosition();
+    }, duration + 20);
   }
   /**
    * a box drawn over a block in the motion layer, in this element's
@@ -5360,7 +5442,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         ) {
           const rects = this._motionCapture(this.activeNode.parentNode);
           const moved = this.activeNode;
+          const glide = this._barGlideStart();
           this.haxMoveGridPlate(moved, -1);
+          this._barGlideTo(glide);
           this._motionPlay(rects);
           this._motionLand(moved);
         }
@@ -5369,7 +5453,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         if (this.activeNode.nextElementSibling) {
           const rects = this._motionCapture(this.activeNode.parentNode);
           const moved = this.activeNode;
+          const glide = this._barGlideStart();
           this.haxMoveGridPlate(moved);
+          this._barGlideTo(glide);
           this._motionPlay(rects);
           this._motionLand(moved);
         }

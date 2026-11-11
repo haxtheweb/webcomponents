@@ -1221,6 +1221,13 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       return;
     }
     if (button.toggled) {
+      // order for the staggered reveal
+      const more = bubble.querySelector(".hax-selection-more");
+      if (more) {
+        Array.from(more.children).forEach((item, i) =>
+          item.style.setProperty("--hax-more-i", i),
+        );
+      }
       bubble.setAttribute("data-more", "");
       button.label = this.t.fewerFormats;
     } else {
@@ -1237,6 +1244,20 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
         capture: true,
         passive: true,
       });
+      // scroll events do not leave a shadow root, and themes often scroll
+      // the page inside one, so listen on every shadow root above the block
+      this.__bubbleScrollRoots = [];
+      let root = this.target && this.target.getRootNode ? this.target : null;
+      while (root && root.getRootNode) {
+        root = root.getRootNode();
+        if (!root || root === globalThis.document || !root.host) break;
+        root.addEventListener("scroll", this._positionSelectionBubble, {
+          capture: true,
+          passive: true,
+        });
+        this.__bubbleScrollRoots.push(root);
+        root = root.host;
+      }
       globalThis.addEventListener("resize", this._positionSelectionBubble, {
         passive: true,
       });
@@ -1245,6 +1266,12 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       globalThis.removeEventListener("scroll", this._positionSelectionBubble, {
         capture: true,
       });
+      (this.__bubbleScrollRoots || []).forEach((root) =>
+        root.removeEventListener("scroll", this._positionSelectionBubble, {
+          capture: true,
+        }),
+      );
+      this.__bubbleScrollRoots = [];
       globalThis.removeEventListener("resize", this._positionSelectionBubble);
     }
   }
@@ -1354,6 +1381,16 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     const tipX = Math.max(12, Math.min(center - left, width - 12));
     bubble.style.left = `${Math.round(left)}px`;
     bubble.style.top = `${Math.round(top)}px`;
+    // position: fixed is relative to the window only when no ancestor makes
+    // its own containing block (a theme's transform, filter or container
+    // query does); measure where it landed and take out the difference
+    const landed = bubble.getBoundingClientRect();
+    const offX = Math.round(landed.left - left);
+    const offY = Math.round(landed.top - top);
+    if (offX || offY) {
+      bubble.style.left = `${Math.round(left - offX)}px`;
+      bubble.style.top = `${Math.round(top - offY)}px`;
+    }
     bubble.style.setProperty(
       "--hax-selection-bubble-tip-x",
       `${Math.round(tipX)}px`,
