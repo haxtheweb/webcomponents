@@ -821,6 +821,13 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
           font-size: var(--hax-ui-admin-font-size-xs, 12px);
           color: var(--ddd-theme-default-white65, rgba(255, 255, 255, 0.75));
         }
+        /* phone: no keyboard expected, so no shortcut hints (same media as
+           KEYBOARD_SHORTCUTS_HIDDEN_MEDIA in @haxtheweb/utils keyboardShortcuts) */
+        @media (max-width: 599px), (pointer: coarse) and (max-height: 599px) {
+          .titlebar .keys {
+            display: none;
+          }
+        }
         #cancel {
           margin-left: var(--hax-ui-gap-md, 8px);
         }

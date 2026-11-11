@@ -15,6 +15,8 @@ export const gameChromeStyles = css`
   :host {
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
+    /* physical on purpose: room for the bottom-right box-shadow offset,
+       which does not mirror in right-to-left */
     padding: 0 var(--ddd-spacing-2) var(--ddd-spacing-2) 0;
     --micro-game-line: light-dark(
       var(--ddd-theme-default-limestoneLight),
@@ -114,7 +116,7 @@ export const gameChromeStyles = css`
   .text,
   .fin-sum,
   .fallback dd {
-    text-align: left;
+    text-align: start;
   }
 
   .fallback {
@@ -162,7 +164,7 @@ export const gameChromeStyles = css`
   }
 
   .hint {
-    margin-left: auto;
+    margin-inline-start: auto;
     font-size: calc(var(--ddd-font-size-4xs) * 0.875);
     color: var(--micro-game-soft);
   }
@@ -330,13 +332,13 @@ export const gameChromeStyles = css`
     padding: var(--ddd-spacing-2);
     border: var(--ddd-border-sm);
     border-color: var(--micro-game-ink);
-    border-left-width: 6px;
+    border-inline-start-width: 6px;
   }
   .rc-list li.ok {
-    border-left-color: var(--cmg-c1);
+    border-inline-start-color: var(--cmg-c1);
   }
   .rc-list li.bad {
-    border-left-color: var(--cmg-c3);
+    border-inline-start-color: var(--cmg-c3);
   }
   .rc-label {
     font-weight: var(--ddd-font-weight-bold);

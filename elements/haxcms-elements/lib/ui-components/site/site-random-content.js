@@ -41,6 +41,11 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
     this.t.noPage = "No page selected";
     this.t.shuffle = "Shuffle content";
     this.t.loading = "Loading content...";
+    // own namespace (locales/{tag}.*.json) on top of the shared haxcms one
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../../locales/", import.meta.url).href,
+    });
 
     this.__disposer = this.__disposer ? this.__disposer : [];
 
@@ -149,7 +154,7 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
         .random-element blockquote {
           margin: var(--ddd-spacing-3) 0;
           padding: var(--ddd-spacing-3);
-          border-left: var(--ddd-border-size-sm) solid
+          border-inline-start: var(--ddd-border-size-sm) solid
             var(--ddd-theme-default-potentialMidnight);
           background-color: var(--ddd-theme-default-limestoneMaxLight);
           font-style: italic;
@@ -158,7 +163,7 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
         .random-element ul,
         .random-element ol {
           margin: 0 0 var(--ddd-spacing-3) 0;
-          padding-left: var(--ddd-spacing-5);
+          padding-inline-start: var(--ddd-spacing-5);
         }
 
         .no-content {

@@ -48,7 +48,7 @@ class A11yCollapse extends DDD {
           padding: 0;
           margin: 0;
           width: 100%;
-          text-align: left;
+          text-align: start;
           font-size: var(--ddd-theme-body-font-size);
           font-family: var(--ddd-font-primary);
         }
@@ -56,14 +56,13 @@ class A11yCollapse extends DDD {
           display: flex;
           justify-content: stretch;
           align-items: center;
-          padding: 0
-            var(
-              --a11y-collapse-padding-right,
+          padding-block: 0;
+          padding-inline: var(
+              --a11y-collapse-padding-left,
               var(--a11y-collapse-horizontal-padding, var(--ddd-spacing-4))
             )
-            0
             var(
-              --a11y-collapse-padding-left,
+              --a11y-collapse-padding-right,
               var(--a11y-collapse-horizontal-padding, var(--ddd-spacing-4))
             );
           font-weight: var(
@@ -84,20 +83,20 @@ class A11yCollapse extends DDD {
           transition: transform var(--ddd-duration-slow, 0.6s) ease-in-out;
         }
         #content {
-          padding: var(
+          padding-block: var(
               --a11y-collapse-padding-top,
               var(--a11y-collapse-vertical-padding, var(--ddd-spacing-4))
             )
             var(
-              --a11y-collapse-padding-right,
+              --a11y-collapse-padding-bottom,
+              var(--a11y-collapse-vertical-padding, var(--ddd-spacing-4))
+            );
+          padding-inline: var(
+              --a11y-collapse-padding-left,
               var(--a11y-collapse-horizontal-padding, var(--ddd-spacing-4))
             )
             var(
-              --a11y-collapse-padding-bottom,
-              var(--a11y-collapse-vertical-padding, var(--ddd-spacing-4))
-            )
-            var(
-              --a11y-collapse-padding-left,
+              --a11y-collapse-padding-right,
               var(--a11y-collapse-horizontal-padding, var(--ddd-spacing-4))
             );
           border-top: var(--a11y-collapse-border, var(--ddd-border-xs));
@@ -114,14 +113,13 @@ class A11yCollapse extends DDD {
             transition: transform var(--ddd-duration-slow, 0.6s) ease-in-out;
           }
           :host #content {
-            padding: 0
-              var(
-                --a11y-collapse-padding-right,
+            padding-block: 0;
+            padding-inline: var(
+                --a11y-collapse-padding-left,
                 var(--a11y-collapse-horizontal-padding, var(--ddd-spacing-4))
               )
-              0
               var(
-                --a11y-collapse-padding-left,
+                --a11y-collapse-padding-right,
                 var(--a11y-collapse-horizontal-padding, var(--ddd-spacing-4))
               );
             border-top: none;
@@ -142,20 +140,20 @@ class A11yCollapse extends DDD {
             overflow-y: var(--a11y-collapse-overflow-y, hidden);
           }
           :host([expanded]) #content {
-            padding: var(
+            padding-block: var(
                 --a11y-collapse-padding-top,
                 var(--a11y-collapse-vertical-padding, var(--ddd-spacing-4))
               )
               var(
-                --a11y-collapse-padding-right,
+                --a11y-collapse-padding-bottom,
+                var(--a11y-collapse-vertical-padding, var(--ddd-spacing-4))
+              );
+            padding-inline: var(
+                --a11y-collapse-padding-left,
                 var(--a11y-collapse-horizontal-padding, var(--ddd-spacing-4))
               )
               var(
-                --a11y-collapse-padding-bottom,
-                var(--a11y-collapse-vertical-padding, var(--ddd-spacing-4))
-              )
-              var(
-                --a11y-collapse-padding-left,
+                --a11y-collapse-padding-right,
                 var(--a11y-collapse-horizontal-padding, var(--ddd-spacing-4))
               );
             border-top: var(--a11y-collapse-border, var(--ddd-border-xs));

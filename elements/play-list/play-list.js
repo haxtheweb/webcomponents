@@ -203,7 +203,7 @@ class PlayList extends I18NMixin(DDD) {
         :host([orientation="vertical"]) .carousel-pagination {
           flex-direction: column;
           position: absolute;
-          right: var(--ddd-spacing-1, 8px);
+          inset-inline-end: var(--ddd-spacing-1, 8px);
           top: 50%;
           transform: translateY(-50%);
           padding: 0;

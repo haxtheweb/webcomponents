@@ -426,3 +426,24 @@ describe("post-card stays a light paper card", () => {
     ).to.equal("rgb(38, 38, 38)");
   });
 });
+
+// i18n-manager keeps what is registered with it: a removed card is released
+// and one the HAX editor moves (remove + re-add) is registered again.
+describe("post-card i18n registration across moves", () => {
+  const registered = (el) =>
+    globalThis.I18NManagerStore.instance.elements.filter(
+      (d) => d.context === el,
+    ).length;
+
+  it("releases on removal and re-registers on reconnect", async () => {
+    // post-card registers through an event, so it needs a manager listening
+    await import("@haxtheweb/i18n-manager/i18n-manager.js");
+    const wrap = await fixture(html`<div><post-card></post-card></div>`);
+    const el = wrap.querySelector("post-card");
+    expect(registered(el)).to.equal(1);
+    el.remove();
+    expect(registered(el)).to.equal(0);
+    wrap.appendChild(el);
+    expect(registered(el)).to.equal(1);
+  });
+});

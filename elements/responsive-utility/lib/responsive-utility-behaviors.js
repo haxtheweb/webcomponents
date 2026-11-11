@@ -96,7 +96,9 @@ export const ResponsiveUtilityBehaviors = (SuperClass) => {
       // before the first update batches those reactive props into it.
       // Registering from firstUpdated set them post-render and scheduled a
       // redundant second update (Lit change-in-update warning). Guarded so
-      // a DOM move (reconnect) does not register a duplicate observer.
+      // a second connect without a disconnect does not register twice;
+      // disconnectedCallback clears the guard, so a moved element registers
+      // again when it comes back.
       if (!this.disableResponsive && !this.__responsiveRegistered) {
         this.__responsiveRegistered = true;
         globalThis.ResponsiveUtility.requestAvailability();
@@ -122,6 +124,17 @@ export const ResponsiveUtilityBehaviors = (SuperClass) => {
      * detached the element
      */
     disconnectedCallback() {
+      // release the utility's entry (and its ResizeObserver) so a removed
+      // element can be collected; connectedCallback registers it again.
+      // Fired on globalThis under the name the utility listens for: the
+      // responsive-element-deleted event below is dispatched from this
+      // detached element, so it never reaches the utility on window.
+      if (this.__responsiveRegistered) {
+        this.__responsiveRegistered = false;
+        globalThis.dispatchEvent(
+          new CustomEvent("delete-responsive-element", { detail: this }),
+        );
+      }
       if (!this.disableResponsive) {
         this.dispatchEvent(
           new CustomEvent("responsive-element-deleted", {

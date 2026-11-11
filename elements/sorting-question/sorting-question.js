@@ -358,7 +358,7 @@ export class SortingQuestion extends QuestionElement {
           margin: 0;
         }
         #check {
-          margin-right: var(--ddd-spacing-4);
+          margin-inline-end: var(--ddd-spacing-4);
         }
         .options {
           margin-bottom: var(--ddd-spacing-6);

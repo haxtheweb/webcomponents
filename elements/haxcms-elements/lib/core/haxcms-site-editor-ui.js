@@ -35,6 +35,10 @@ import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServ
 import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
 import { HAXCMSKeyboardShortcutsInstance } from "./utils/HAXCMSKeyboardShortcuts.js";
 import {
+  KEYBOARD_SHORTCUTS_HIDDEN_MEDIA,
+  labelWithShortcut,
+} from "@haxtheweb/utils/lib/keyboardShortcuts.js";
+import {
   PREVIEW_DEVICES,
   previewFrameName,
   previewFrameSrc,
@@ -970,6 +974,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             justify-content: flex-end;
           }
           super-daemon-search.merlin::part(filter) {
+            display: none;
+          }
+          /* folded to a button there is no room for the Alt⇧ chip */
+          super-daemon-search.merlin::part(shortcut) {
             display: none;
           }
           super-daemon-search.merlin::part(field) {
@@ -4130,7 +4138,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 aria-haspopup="true"
                 aria-expanded="${this.siteMenuOpen ? "true" : "false"}"
                 ?disabled="${this.editMode}"
-                label="${this.t.siteSettings} • Ctrl⇧2"
+                label="${labelWithShortcut(this.t.siteSettings, "Ctrl⇧2")}"
               ></simple-toolbar-button>
               ${this.siteMenuItems.map(
                 (item) =>
@@ -4154,7 +4162,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     class="top-bar-button"
                     align-horizontal="center"
                     icon="hax:add-page"
-                    label="${this.t.addPage} • Ctrl⇧3"
+                    label="${labelWithShortcut(this.t.addPage, "Ctrl⇧3")}"
                     merlin
                     role="menuitem"
                   ></haxcms-button-add>`
@@ -4169,7 +4177,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               id="exportbtn"
               role="menuitem"
               icon="hax:html-code"
-              label="${this.t.viewSource} • Ctrl⇧2"
+              label="${labelWithShortcut(this.t.viewSource, "Ctrl⇧2")}"
               data-event="view-source"
               class="top-bar-button"
               @click="${this.haxButtonOp}"
@@ -4188,7 +4196,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               icon="editor:format-line-spacing"
               id="content-map"
               class="top-bar-button"
-              label="${this.t.pageOutline} • Ctrl⇧3"
+              label="${labelWithShortcut(this.t.pageOutline, "Ctrl⇧3")}"
               voice-command="select content outline (menu)"
               @click="${this.haxButtonOp}"
               ?active="${this.trayDetail === "content-map"}"
@@ -4203,7 +4211,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               icon="hax:add-brick"
               id="content-add"
               class="top-bar-button"
-              label="${this.t.addBlock} • Ctrl⇧4"
+              label="${labelWithShortcut(this.t.addBlock, "Ctrl⇧4")}"
               voice-command="select blocks (menu)"
               ?active="${this.trayDetail === "content-add"}"
               icon-position="${this.getIconPosition(this.responsiveSize)}"
@@ -4216,7 +4224,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               class="top-bar-button"
               @click="${this.haxButtonOp}"
               id="content-edit"
-              label="${this.t.configureBlock} • Ctrl⇧5"
+              label="${labelWithShortcut(this.t.configureBlock, "Ctrl⇧5")}"
               ?hidden="${!this.editMode}"
               ?disabled="${
                 !this.activeTagName ||
@@ -4244,7 +4252,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               icon-position="${this.getIconPosition(this.responsiveSize)}"
               ?disabled="${!this.canUndo}"
               @click="${this.haxButtonOp}"
-              label="${this.t.undo} • Ctrl Z"
+              label="${labelWithShortcut(this.t.undo, "Ctrl Z")}"
               data-event="undo"
               id="undo"
               ?hidden="${!this.editMode}"
@@ -4258,7 +4266,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               @click="${this.haxButtonOp}"
               ?disabled="${!this.canRedo}"
               ?hidden="${!this.editMode}"
-              label="${this.t.redo} • Ctrl⇧Z"
+              label="${labelWithShortcut(this.t.redo, "Ctrl⇧Z")}"
               data-event="redo"
               id="redo"
               voice-command="redo"
@@ -4279,7 +4287,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               ?hidden="${!this.editMode}"
               ?disabled="${!this.editMode}"
               role="menuitem"
-              label="${this.t.cancel} • Ctrl⇧/"
+              label="${labelWithShortcut(this.t.cancel, "Ctrl⇧/")}"
               voice-command="cancel (editing)"
             ></simple-toolbar-button>
             <simple-toolbar-button
@@ -4636,8 +4644,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       case "super-daemon":
         // a phone's bar is too narrow for the field: Merlin is a button
         // that opens the search across the whole bar first
+        // (same query as the CSS that folds the field, so a 600px wide
+        // screen that shows the button also opens across the bar)
         if (
-          this.responsiveSize === "xs" &&
+          (globalThis.matchMedia
+            ? globalThis.matchMedia("(max-width: 600px)").matches
+            : this.responsiveSize === "xs") &&
           e.type === "click" &&
           !this.merlinPhoneOpen
         ) {
@@ -6855,6 +6867,21 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.__boundSyncMerlinPopover = this._syncMerlinPopover.bind(this);
     globalThis.addEventListener("resize", this.__boundSyncMerlinPopover);
     this.updateComplete.then(() => this._syncMerlinPopover());
+    // shortcut suffixes on labels and tooltips are dropped on a phone; redo
+    // them when the viewport crosses that line (rotation, resize)
+    if (globalThis.matchMedia) {
+      this.__shortcutsMedia = globalThis.matchMedia(
+        KEYBOARD_SHORTCUTS_HIDDEN_MEDIA,
+      );
+      this.__boundShortcutsMediaChange = () => {
+        this._updateEditButtonLabel();
+        this.requestUpdate();
+      };
+      this.__shortcutsMedia.addEventListener(
+        "change",
+        this.__boundShortcutsMediaChange,
+      );
+    }
 
     // Register keyboard shortcuts
     this._registerKeyboardShortcuts();
@@ -7074,6 +7101,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       }
     }
     this.__disposer = [];
+    if (this.__shortcutsMedia && this.__boundShortcutsMediaChange) {
+      this.__shortcutsMedia.removeEventListener(
+        "change",
+        this.__boundShortcutsMediaChange,
+      );
+    }
     super.disconnectedCallback();
   }
 
@@ -7082,9 +7115,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
    */
   _updateEditButtonLabel() {
     if (this.editMode) {
-      this.__editText = `${this.t.save} • Ctrl⇧S`;
+      this.__editText = labelWithShortcut(this.t.save, "Ctrl⇧S");
     } else {
-      this.__editText = `${this.t.edit} • Ctrl⇧E`;
+      this.__editText = labelWithShortcut(this.t.edit, "Ctrl⇧E");
     }
   }
   _closeOpenContextMenus(excludeMenu = null, root = globalThis.document) {
@@ -7653,7 +7686,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           class="top-bar-button"
           role="menuitem"
           icon="icons:visibility"
-          label="${this.previewMode ? this.t.exitPreview : this.t.preview} • Ctrl⇧8"
+          label="${labelWithShortcut(this.previewMode ? this.t.exitPreview : this.t.preview, "Ctrl⇧8")}"
           voice-command="preview (site)"
           ?active="${this.previewMode}"
           icon-position="${this.getIconPosition(this.responsiveSize)}"

@@ -1003,6 +1003,8 @@ export class MicroGameBase extends I18NMixin(
           background: var(--micro-game-panel);
           color: var(--micro-game-ink);
         }
+        /* physical on purpose: the d-pad sits over the game board, which
+           does not mirror in right-to-left */
         .dpad {
           position: absolute;
           right: var(--ddd-spacing-2);
