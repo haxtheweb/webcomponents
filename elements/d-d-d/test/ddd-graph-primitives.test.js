@@ -16,15 +16,6 @@ import {
   renderDDDNode,
 } from "../lib/DDDNodeShapes.js";
 import {
-  DDDComboboxStyles,
-  DDDToggleGroupStyles,
-} from "../lib/DDDReaderControls.js";
-import {
-  DDDLifecycleStates,
-  DDDLifecycleStyles,
-  renderDDDStatusPill,
-} from "../lib/DDDLifecycle.js";
-import {
   DDDViewport,
   DDDViewportStyles,
   renderDDDZoomControls,
@@ -38,43 +29,23 @@ const cssOf = (styles) =>
 
 class DDDGraphPrimitivesTester extends LitElement {
   static get styles() {
-    return [
-      DDDConnectorStyles,
-      DDDNodeStyles,
-      DDDComboboxStyles,
-      DDDToggleGroupStyles,
-      DDDLifecycleStyles,
-      DDDViewportStyles,
-    ];
+    return [DDDConnectorStyles, DDDNodeStyles, DDDViewportStyles];
   }
   render() {
     return html`<svg viewBox="0 0 200 100" width="200" height="100">
-        ${DDDConnectorKinds.map(
-          (k) =>
-            svg`<path class="ddd-connector" data-kind="${k.kind}" d="M0 10 H200"></path>`,
-        )}
-        <g class="ddd-node">
-          ${renderDDDNode({
-            shape: "cylinder",
-            width: 60,
-            height: 60,
-            label: "HAX CLI",
-          })}
-        </g>
-      </svg>
-      <div class="ddd-toggle-group swatches" role="group" aria-label="Lines">
-        <button class="ddd-block-action has-text" aria-pressed="true">
-          <span
-            class="ddd-toggle-swatch"
-            style="--ddd-toggle-swatch-color: rgb(10, 20, 30)"
-          ></span
-          >Contract
-        </button>
-        <button class="ddd-block-action has-text" aria-pressed="false">
-          Credit
-        </button>
-      </div>
-      ${renderDDDStatusPill({ state: "legacy" })}`;
+      ${DDDConnectorKinds.map(
+        (k) =>
+          svg`<path class="ddd-connector" data-kind="${k.kind}" d="M0 10 H200"></path>`,
+      )}
+      <g class="ddd-node">
+        ${renderDDDNode({
+          shape: "cylinder",
+          width: 60,
+          height: 60,
+          label: "HAX CLI",
+        })}
+      </g>
+    </svg>`;
   }
 }
 globalThis.customElements.define(
@@ -88,9 +59,6 @@ describe("DDD graph primitives", () => {
       "DDDMotionStyles",
       "DDDConnectorStyles",
       "DDDNodeStyles",
-      "DDDComboboxStyles",
-      "DDDToggleGroupStyles",
-      "DDDLifecycleStyles",
       "DDDViewport",
       "DDDViewportStyles",
     ].forEach((name) => expect(DDDModule[name], name).to.equal(undefined));
@@ -228,85 +196,6 @@ describe("DDDNodeShapes", () => {
     const mono = el.shadowRoot.querySelector(".ddd-node-monogram");
     expect(mono.textContent.trim()).to.equal("HC");
     expect(mono.getAttribute("aria-hidden")).to.equal("true");
-  });
-});
-
-describe("DDDReaderControls", () => {
-  it("styles the combobox parts and its active option", () => {
-    const text = cssOf(DDDComboboxStyles);
-    [
-      ".ddd-combobox-input",
-      ".ddd-combobox-listbox",
-      ".ddd-combobox-group-label",
-      '.ddd-combobox-option[aria-selected="true"]',
-      "var(--ddd-focus-ring)",
-    ].forEach((sel) => expect(text, sel).to.contain(sel));
-  });
-
-  it("keeps a swatch's colour inside a pressed legend toggle", async () => {
-    const el = await fixture(
-      html`<ddd-graph-primitives-tester
-        style="color-scheme: light; --ddd-theme-default-link: rgb(0, 95, 169); --ddd-theme-default-linkLight: rgb(204, 233, 255); --ddd-theme-default-skyMaxLight: rgb(230, 247, 255); --ddd-theme-default-potentialMidnight: rgb(0, 3, 33); --ddd-theme-default-nittanyNavy: rgb(0, 30, 68); --ddd-border-size-xs: 1px; --ddd-border-size-md: 3px"
-      ></ddd-graph-primitives-tester>`,
-    );
-    const pressed = el.shadowRoot.querySelector('[aria-pressed="true"]');
-    const cs = getComputedStyle(pressed);
-    expect(cs.backgroundColor).to.equal("rgb(230, 247, 255)");
-    expect(cs.borderTopColor).to.equal("rgb(0, 95, 169)");
-    const swatch = getComputedStyle(
-      el.shadowRoot.querySelector(".ddd-toggle-swatch"),
-    );
-    expect(swatch.borderTopColor).to.equal("rgb(10, 20, 30)");
-  });
-});
-
-describe("DDDLifecycle", () => {
-  it("names four states with tokens for each", () => {
-    expect(DDDLifecycleStates).to.deep.equal([
-      "released",
-      "pre-release",
-      "planned",
-      "legacy",
-    ]);
-    const text = cssOf(DDDLifecycleStyles);
-    DDDLifecycleStates.forEach((s) => {
-      ["signal", "ink", "bg", "line"].forEach((part) =>
-        expect(text).to.contain(`--ddd-lifecycle-${s}-${part}:`),
-      );
-    });
-  });
-
-  it("gives every state its own line style", () => {
-    const text = cssOf(DDDLifecycleStyles);
-    const lines = DDDLifecycleStates.map((s) => {
-      const m = text.match(new RegExp(`--ddd-lifecycle-${s}-line: (\\w+);`));
-      return m ? m[1] : null;
-    });
-    expect(lines).to.deep.equal(["solid", "dashed", "dotted", "double"]);
-  });
-
-  it("always shows a word, and falls back to planned", async () => {
-    const el = await fixture(
-      html`<div>
-        ${renderDDDStatusPill({ state: "released", label: "Disponible" })}
-        ${renderDDDStatusPill({ state: "nope" })}
-      </div>`,
-    );
-    const pills = el.querySelectorAll(".ddd-status-pill");
-    expect(pills[0].getAttribute("data-lifecycle")).to.equal("released");
-    expect(pills[0].textContent.trim()).to.equal("Disponible");
-    expect(pills[1].getAttribute("data-lifecycle")).to.equal("planned");
-    expect(pills[1].textContent.trim()).to.equal("Planned");
-  });
-
-  it("draws the legacy pill with a double border", async () => {
-    const el = await fixture(
-      html`<ddd-graph-primitives-tester
-        style="--ddd-border-size-md: 3px"
-      ></ddd-graph-primitives-tester>`,
-    );
-    const pill = el.shadowRoot.querySelector(".ddd-status-pill");
-    expect(getComputedStyle(pill).borderTopStyle).to.equal("double");
   });
 });
 

@@ -19,39 +19,21 @@
         renderDDDNode,
       } from "../lib/DDDNodeShapes.js";
       import {
-        DDDComboboxStyles,
-        DDDToggleGroupStyles,
-      } from "../lib/DDDReaderControls.js";
-      import {
-        DDDLifecycleStates,
-        DDDLifecycleStyles,
-        renderDDDStatusPill,
-      } from "../lib/DDDLifecycle.js";
-      import {
         DDDViewport,
         DDDViewportStyles,
         renderDDDZoomControls,
       } from "../lib/DDDViewport.js";
 
-      const RESULTS = [
-        { group: "Tools", items: ["HAX CLI", "haxcms-nodejs"] },
-        { group: "Design", items: ["DDD", "simple-icon"] },
-      ];
-
       class DDDGraphPrimitivesDemo extends DDDSuper(LitElement) {
         static get properties() {
           return {
             shown: { type: Object },
-            query: { type: String },
-            active: { type: String },
           };
         }
         constructor() {
           super();
           this.shown = {};
           DDDConnectorKinds.forEach((k) => (this.shown[k.kind] = true));
-          this.query = "";
-          this.active = "";
           this.viewport = new DDDViewport(this, {
             target: () => this.shadowRoot.querySelector(".ddd-viewport svg"),
             fit: { x: 0, y: 0, width: 640, height: 360 },
@@ -63,9 +45,6 @@
             DDDBlockStyles,
             DDDConnectorStyles,
             DDDNodeStyles,
-            DDDComboboxStyles,
-            DDDToggleGroupStyles,
-            DDDLifecycleStyles,
             DDDViewportStyles,
             css`
               :host {
@@ -75,12 +54,6 @@
               }
               section {
                 margin-block-end: var(--ddd-spacing-6);
-              }
-              .row {
-                display: flex;
-                flex-wrap: wrap;
-                gap: var(--ddd-spacing-3);
-                align-items: center;
               }
               .ddd-viewport {
                 height: 360px;
@@ -115,7 +88,6 @@
           );
         }
         render() {
-          const q = this.query.toLowerCase();
           return html`
             <section>
               <h2>Connectors and legend toggles</h2>
@@ -146,48 +118,6 @@
                     onZoomOut: () => this.viewport.zoomOut(),
                     onFit: () => this.viewport.fit(),
                   })}
-                </div>
-              </div>
-            </section>
-            <section>
-              <h2>Lifecycle pills</h2>
-              <div class="row">
-                ${DDDLifecycleStates.map((state) => renderDDDStatusPill({ state }))}
-              </div>
-            </section>
-            <section>
-              <h2>Search combobox</h2>
-              <div class="ddd-combobox" style="max-width: 360px">
-                <label class="ddd-combobox-label" for="q">Find a project</label>
-                <input
-                  class="ddd-combobox-input"
-                  id="q"
-                  type="search"
-                  role="combobox"
-                  aria-expanded="true"
-                  aria-controls="lb"
-                  aria-autocomplete="list"
-                  aria-activedescendant="${this.active || ""}"
-                  .value="${this.query}"
-                  @input="${(e) => (this.query = e.target.value)}"
-                />
-                <div class="ddd-combobox-listbox" id="lb" role="listbox" aria-label="Results">
-                  ${RESULTS.map(
-                    (g, gi) => html`<div class="ddd-combobox-group" role="group" aria-labelledby="g${gi}">
-                      <div class="ddd-combobox-group-label" id="g${gi}" role="presentation">${g.group}</div>
-                      ${g.items
-                        .filter((item) => item.toLowerCase().includes(q))
-                        .map(
-                          (item, ii) => html`<div
-                            class="ddd-combobox-option"
-                            id="o${gi}-${ii}"
-                            role="option"
-                            aria-selected="${this.active === `o${gi}-${ii}` ? "true" : "false"}"
-                            @click="${() => (this.active = `o${gi}-${ii}`)}"
-                          >${item}<span class="ddd-combobox-option-meta">${g.group}</span></div>`,
-                        )}
-                    </div>`,
-                  )}
                 </div>
               </div>
             </section>
