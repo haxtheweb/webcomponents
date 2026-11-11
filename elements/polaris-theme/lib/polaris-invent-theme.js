@@ -14,7 +14,6 @@ import { QRCodeMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/QRCodeMix
 import { PrintBranchMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/PrintBranchMixin.js";
 import { PDFPageMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/PDFPageMixin.js";
 import "@haxtheweb/scroll-button/scroll-button.js";
-import "@haxtheweb/haxcms-elements/lib/ui-components/site/site-title.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-tags.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu.js";

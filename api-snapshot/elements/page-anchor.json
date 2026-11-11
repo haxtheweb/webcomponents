@@ -1,0 +1,29 @@
+{
+  "tag": "page-anchor",
+  "package": "@haxtheweb/page-break",
+  "source": "elements/page-break/lib/page-anchor.js",
+  "attributes": {
+    "entity-id": "entityId",
+    "is-safari": "isSafari",
+    "target": "target",
+    "value": "value"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/page-break/lib/page-anchor.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "entityId",
+      "target",
+      "value"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": []
+  }
+}

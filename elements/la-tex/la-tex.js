@@ -105,7 +105,8 @@ class LaTex extends I18NMixin(LitElement) {
         }
 
         p.quotation {
-          padding: 0 0 0 15px;
+          padding-block: 0;
+          padding-inline: 15px 0;
           margin: 0 0 20px;
           font-size: 10pt;
         }

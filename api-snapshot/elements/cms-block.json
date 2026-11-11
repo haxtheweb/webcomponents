@@ -1,0 +1,31 @@
+{
+  "tag": "cms-block",
+  "package": "@haxtheweb/cms-hax",
+  "source": "elements/cms-hax/lib/cms-block.js",
+  "attributes": {
+    "blockdelta": "blockDelta",
+    "blockendpoint": "blockEndPoint",
+    "blockmodule": "blockModule",
+    "blockprefix": "blockPrefix",
+    "blocksuffix": "blockSuffix",
+    "hax-edit-mode": "haxEditMode",
+    "loading": "loading"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/cms-hax/lib/cms-block.js",
+    "gizmo": true,
+    "properties": [
+      "blockDelta",
+      "blockModule"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": []
+  }
+}

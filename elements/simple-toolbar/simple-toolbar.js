@@ -448,6 +448,8 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      */
     deregisterButton(button) {
       this.__buttons = this.__buttons.filter((b) => b !== button);
+      if (button.setManagingToolbar && button.__managingToolbar === this)
+        button.setManagingToolbar(null);
       (button.shortcutKeys || "")
         .split(" ")
         .forEach((key) => delete this.shortcutKeys[key]);
@@ -471,6 +473,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
         .split(" ")
         .forEach((key) => (this.shortcutKeys[key] = button));
       if (button.role !== "menuitem") button.isCurrentItem = false;
+      if (button.setManagingToolbar) button.setManagingToolbar(this);
       if (button.addEventListener) {
         button.addEventListener("blur", (_e) =>
           this._handleFocusChange(button),

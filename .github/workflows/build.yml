@@ -12,6 +12,34 @@ on:
 permissions:
   contents: read
 jobs:
+  # Fast lint feedback: the same `yarn lint` as the ESLint step in
+  # build-and-test, on its own so a lint error shows up in about a minute
+  # instead of after the full test run. build-and-test keeps its ESLint step
+  # because that job is the required check that gates merging.
+  lint:
+    name: "ESLint (fast)"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "dir=$(yarn cache dir)" >> "$GITHUB_OUTPUT"
+      - name: Cache Yarn
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-node-24-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-24-yarn-
+      - name: Install
+        run: yarn install --frozen-lockfile
+      - name: ESLint
+        run: yarn lint
   build-and-test:
     name: "${{ matrix.platform }}: node.js ${{ matrix.node-version }}"
     strategy:
@@ -75,17 +103,19 @@ jobs:
           if-no-files-found: ignore
           retention-days: 30
       - name: Prettier format check
-        # Advisory only, like ESLint: formatting drift should never stop the
-        # tests from running. The unquoted glob only reaches one directory
+        # Advisory only: formatting drift should never stop the tests from
+        # running. The unquoted glob only reaches one directory
         # deep (effectively scripts/), so it was failing builds over build
         # scripts while checking none of elements/. Formatting is enforced
         # where it matters: lint-staged on commit and `yarn precheck` on PRs.
         continue-on-error: true
         run: npx prettier --check **/*.{js,json}
       - name: ESLint
-        # Advisory only: lint runs after the real tests and never fails the
-        # build (findings still show as annotations / in the log).
-        continue-on-error: true
+        # Blocking: an ESLint error fails the build, so lint failures feed the
+        # same fix loop as test failures (haxtheweb/issues#3262). It runs after
+        # the tests so a lint error never hides test results. Warnings stay
+        # warnings and do not fail. Pre-existing `==` comparisons are recorded
+        # in eslint-suppressions.json and do not count as errors.
         run: yarn lint
       - name: Validate component gallery build
         run: yarn build-gallery

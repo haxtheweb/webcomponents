@@ -1,0 +1,30 @@
+{
+  "tag": "career-timeline",
+  "package": "@haxtheweb/career-timeline",
+  "source": "elements/career-timeline/career-timeline.js",
+  "attributes": {
+    "is-safari": "isSafari",
+    "schemamap": "schemaMap",
+    "t": "t",
+    "title": "title",
+    "typeof": "typeof"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/career-timeline/lib/career-timeline.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "title"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "career-timeline"
+    ]
+  }
+}

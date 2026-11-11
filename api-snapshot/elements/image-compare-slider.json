@@ -1,0 +1,49 @@
+{
+  "tag": "image-compare-slider",
+  "package": "@haxtheweb/image-compare-slider",
+  "source": "elements/image-compare-slider/image-compare-slider.js",
+  "attributes": {
+    "bottom-alt": "bottomAlt",
+    "bottom-description-id": "bottomDescriptionId",
+    "bottom-src": "bottomSrc",
+    "dark": "dark",
+    "element-visible": "elementVisible",
+    "opacity": "opacity",
+    "position": "position",
+    "schemamap": "schemaMap",
+    "t": "t",
+    "title": "title",
+    "top-alt": "topAlt",
+    "top-description-id": "topDescriptionId",
+    "top-src": "topSrc"
+  },
+  "slots": [
+    "description",
+    "heading"
+  ],
+  "events": [
+    "user-engagement"
+  ],
+  "cssParts": [
+    "frame",
+    "help"
+  ],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/image-compare-slider/lib/image-compare-slider.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "bottomAlt",
+      "bottomSrc",
+      "opacity",
+      "position",
+      "topAlt",
+      "topSrc"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "image-compare-slider"
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "tag": "worksheet-download",
+  "package": "@haxtheweb/course-design",
+  "source": "elements/course-design/lib/worksheet-download.js",
+  "attributes": {
+    "link": "link",
+    "t": "t",
+    "title": "title"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/course-design/lib/worksheet-download.js",
+    "gizmo": true,
+    "properties": [
+      "link",
+      "title"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "worksheet-download"
+    ]
+  }
+}

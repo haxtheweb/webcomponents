@@ -1,7 +1,27 @@
 import { html, css } from "lit";
+import {
+  DDDProgressRingStyles,
+  dddProgressPercent,
+  renderDDDProgressRing,
+} from "@haxtheweb/d-d-d/lib/DDDProgressRing.js";
+import {
+  DDDCompletionTracker,
+  celebrateDDDCompletion,
+} from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 
 /**
- * Learner progress marks for menu items. `progress` is one of
+ * Active page ring (haxtheweb/issues#3267): the item of the page open now
+ * (activeProgress, 0 to 1, set by site-menu) shows a DDD progress ring
+ * around its icon area, filled to that page's percent and turning into a
+ * filled disc with a check once the page is done; the first time it
+ * completes while open the ring bursts once (DDDBlock.js). Its percent is
+ * the link's hover text and is spoken after the title. Other items show no
+ * ring. Colours: --map-menu-progress-ring-color, --map-menu-progress-ring-
+ * track, --map-menu-progress-ring-on-color (defaults read on a dark active
+ * row in light mode and a light one in dark mode).
+ *
+ * Learner progress marks for menu items (the progress property; site-menu
+ * no longer sets it, it is kept so menus that do still work). `progress` is one of
  * "done", "in-progress", "visited" or "not-started"; anything else draws
  * nothing, so menus without progress data look exactly as before. Each mark
  * is a ring with a glyph (check, half, dot, empty) plus spoken text after the
@@ -18,7 +38,149 @@ export const MapMenuProgressStrings = {
   progressDone: "Done",
   progressInProgress: "In progress",
   progressVisited: "Visited",
+  progressPercentComplete: "{percent}% complete",
+  progressComplete: "Complete",
 };
+
+export const mapMenuActiveRingStyles = [
+  DDDProgressRingStyles,
+  css`
+    /* the ring is drawn in the active row's own text colour (and the
+       check on the done disc in the row's background), so every part of it
+       has the contrast the theme gives its active text, at least 3:1 in any
+       palette, light or dark. Progress reads as a thick arc over a thin
+       full track, never colour alone. */
+    .active-ring {
+      display: inline-flex;
+      flex: none;
+      align-self: center;
+      /* the ring is taller than a line of the menu; keep the row height */
+      margin: calc(-1 * var(--ddd-spacing-2)) var(--ddd-spacing-2)
+        calc(-1 * var(--ddd-spacing-2)) 0;
+      --ddd-component-progress-ring-color: var(
+        --map-menu-progress-ring-color,
+        var(
+          --map-menu-item-a-active-color,
+          var(--map-menu-item-a-color, currentColor)
+        )
+      );
+      --ddd-component-progress-ring-track: var(
+        --map-menu-progress-ring-track,
+        var(
+          --map-menu-item-a-active-color,
+          var(--map-menu-item-a-color, currentColor)
+        )
+      );
+      --ddd-component-progress-ring-on-color: var(
+        --map-menu-progress-ring-on-color,
+        var(--map-menu-item-a-active-background-color, black)
+      );
+      --ddd-component-progress-ring-size: var(
+        --map-menu-progress-ring-size,
+        var(--ddd-icon-xs)
+      );
+      --ddd-component-progress-ring-width: 3.5;
+      --ddd-component-progress-ring-track-width: 1.25;
+      --ddd-component-progress-ring-empty-opacity: 1;
+    }
+    /* an item with children: the ring traces its expand control (the
+       a11y-collapse chevron, 24px at 4px from the start of the row), so
+       there is one control, not a ring beside a chevron */
+    .active-ring.on-expand {
+      position: absolute;
+      top: 50%;
+      left: var(--map-menu-progress-ring-expand-left, 2px);
+      margin: 0;
+      transform: translateY(-50%);
+      pointer-events: none;
+      /* the chevron is 24px: a 28px ring traces it without reaching the
+         title that starts right after it */
+      --ddd-component-progress-ring-size: var(
+        --map-menu-progress-ring-expand-size,
+        28px
+      );
+    }
+    .active-ring.on-expand .ddd-ring-glyph {
+      display: none;
+    }
+  `,
+];
+
+/**
+ * Whether activeProgress asks for the ring (a number from 0 to 1)
+ */
+export function hasActiveRing(activeProgress) {
+  return (
+    typeof activeProgress === "number" &&
+    isFinite(activeProgress) &&
+    activeProgress >= 0
+  );
+}
+
+// "49% complete" / "Complete"
+export function activeRingText(activeProgress, t) {
+  if (activeProgress >= 1) {
+    return t.progressComplete;
+  }
+  return String(t.progressPercentComplete).replace(
+    "{percent}",
+    dddProgressPercent(activeProgress),
+  );
+}
+
+/**
+ * The ring around the icon area of the active item (with its icon, or
+ * nothing in it when the item has none); id lets an icon tooltip point at it
+ */
+export function renderActiveRing(activeProgress, icon, id, onExpand) {
+  // around the expand control the chevron stays the glyph (it is the
+  // control); done shows as the filled disc it sits on
+  return html`<span
+    class="active-ring${onExpand ? " on-expand" : ""}"
+    id="${id || "progress-ring"}"
+    >${renderDDDProgressRing({
+      percent: activeProgress,
+      icon: icon || "",
+      burst: true,
+      part: "progress-ring",
+    })}</span
+  >`;
+}
+
+// spoken after the title: ", 49% complete"
+export function renderActiveRingLabel(activeProgress, t) {
+  return hasActiveRing(activeProgress)
+    ? html`<span class="progress-sr"
+        >, ${activeRingText(activeProgress, t)}</span
+      >`
+    : "";
+}
+
+/**
+ * After an update of a menu item / header: burst the ring the first time
+ * the page open now completes (never when it was already done when shown)
+ */
+export function updateActiveRing(el, changedProperties) {
+  if (!changedProperties.has("activeProgress")) {
+    return;
+  }
+  const p = el.activeProgress;
+  const key = el.id || el.url || "";
+  // per item: the first time the page it opens completes while it shows
+  if (!el.__activeCompletion) {
+    el.__activeCompletion = new DDDCompletionTracker();
+  }
+  const tracker = el.__activeCompletion;
+  if (!hasActiveRing(p)) {
+    tracker.forget(key);
+    return;
+  }
+  if (tracker.update(key, p >= 1) && el.shadowRoot) {
+    celebrateDDDCompletion(
+      el.shadowRoot.querySelector(".active-ring .ddd-ring"),
+    );
+  }
+}
 
 export const mapMenuProgressStyles = css`
   .progress-mark {

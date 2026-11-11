@@ -54,6 +54,25 @@ Running `npm start` will start a local development server and open your default 
 $ npm start
 ```
 
+## Testing Save Outline failures
+
+Save Outline sends every bulk change in one request, so a failed save must never cost the person their changes. `elements/haxcms-elements/test/outline-designer-save-faults.test.js` runs the real chain (site admin Structure Save, `haxcms-outline-editor-dialog`, this element's `getData()`, `haxcms-site-editor.saveOutline()`, `MicroFrontendRegistry`) and stubs only `fetch` for the outline endpoint, answering with a 500 (JSON and HTML bodies), 401 and 403, a rejected fetch, a malformed 200, a request that never answers, and a second Save while one is in flight. For each it checks that:
+
+- the person is told in the HAX UI (danger toast and the shell's "Saving failed" line), never with `alert`, `confirm` or `prompt`
+- the outline keeps every change and is not marked saved
+- Save is usable again, and only one request is ever in flight
+- nothing navigates away or logs out
+- the next successful save sends the whole intended outline
+
+It runs with the rest of the suite (blocking in CI). To run just it:
+
+```bash
+cd elements/haxcms-elements
+npx web-test-runner test/outline-designer-save-faults.test.js --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium
+```
+
+A scenario the code does not handle yet stays as an `it.skip` with a comment naming the gap; when the fix lands, turn it into `it`. A new failure mode is a new answer pushed onto `answers` plus the shared invariant checks (`expectFailedSaveKeptEverything`, `expectRetrySendsEverything`).
+
 
 ## Contributing
 

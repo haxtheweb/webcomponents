@@ -1,0 +1,35 @@
+{
+  "tag": "aframe-player",
+  "package": "@haxtheweb/aframe-player",
+  "source": "elements/aframe-player/aframe-player.js",
+  "attributes": {
+    "ar": "ar",
+    "height": "height",
+    "position": "position",
+    "schemamap": "schemaMap",
+    "sky-color": "skyColor",
+    "source": "source",
+    "width": "width",
+    "x": "x",
+    "y": "y",
+    "z": "z"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/aframe-player/lib/aframe-player.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "skyColor",
+      "source",
+      "x",
+      "y",
+      "z"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": []
+  }
+}

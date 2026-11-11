@@ -163,6 +163,13 @@ export class AppHaxUserMenu extends I18NMixin(DDDSuper(LitElement)) {
           letter-spacing: 0;
           text-transform: none;
         }
+        /* phone: no keyboard expected, so no shortcut hints (same media as
+           KEYBOARD_SHORTCUTS_HIDDEN_MEDIA in @haxtheweb/utils keyboardShortcuts) */
+        @media (max-width: 599px), (pointer: coarse) and (max-height: 599px) {
+          .menu-header .hax-ui-kbd {
+            display: none;
+          }
+        }
         .user-menu.open ::slotted(*) {
           display: block;
           width: 100%;
@@ -214,6 +221,7 @@ export class AppHaxUserMenu extends I18NMixin(DDDSuper(LitElement)) {
         <div
           id="user-menu-dropdown"
           class="user-menu ${this.isOpen ? "open" : ""}"
+          part="dropdown"
           ?inert="${!this.isOpen}"
         >
           ${
@@ -281,18 +289,6 @@ export class AppHaxUserMenu extends I18NMixin(DDDSuper(LitElement)) {
       main: has("main-menu"),
       post: has("post-menu"),
     };
-  }
-  /**
-   * Handle keyboard navigation for menu toggle
-   */
-  _handleMenuToggleKeydown(e) {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      this._toggleMenu();
-    } else if (e.key === "Escape" && this.isOpen) {
-      e.preventDefault();
-      this._closeMenu();
-    }
   }
 
   /**
@@ -412,7 +408,14 @@ export class AppHaxUserMenu extends I18NMixin(DDDSuper(LitElement)) {
    */
   _collectFocusable(el, results) {
     if (!el || el.nodeType !== Node.ELEMENT_NODE) return;
-    if (el.matches('a, button, [tabindex]:not([tabindex="-1"])')) {
+    // one stop per item: things taken out of the tab order (tabindex=-1,
+    // e.g. a link whose row button already follows it) and disabled
+    // buttons are skipped by arrows, Home and End too
+    if (
+      el.matches(
+        'a[href]:not([tabindex="-1"]), button:not([tabindex="-1"]):not([disabled]), [tabindex]:not([tabindex="-1"])',
+      )
+    ) {
       results.push(el);
     }
     if (el.children) {

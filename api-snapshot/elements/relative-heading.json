@@ -1,0 +1,40 @@
+{
+  "tag": "relative-heading",
+  "package": "@haxtheweb/relative-heading",
+  "source": "elements/relative-heading/relative-heading.js",
+  "attributes": {
+    "closeicon": "closeIcon",
+    "closelabel": "closeLabel",
+    "copymessage": "copyMessage",
+    "default-level": "defaultLevel",
+    "disable-link": "disableLink",
+    "id": "id",
+    "link-align-right": "linkAlignRight",
+    "linkicon": "linkIcon",
+    "linklabel": "linkLabel",
+    "parent": "parent",
+    "t": "t"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/relative-heading/relative-heading.js",
+    "gizmo": true,
+    "properties": [
+      "closeIcon",
+      "closeLabel",
+      "copyMessage",
+      "defaultLevel",
+      "disableLink",
+      "linkAlignRight",
+      "linkIcon",
+      "linkLabel",
+      "parent"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": []
+  }
+}

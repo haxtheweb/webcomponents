@@ -194,3 +194,28 @@ describe("simple-range-input behavior", () => {
     expect(el.value).to.equal(25);
   });
 });
+
+describe("simple-range-input keyboard focus ring", () => {
+  it("draws a visible outline when reached with Tab", async () => {
+    const { sendKeys } = await import("@web/test-runner-commands");
+    const wrap = await fixture(
+      html`<div>
+        <button id="before">before</button>
+        <simple-range-input
+          label="Volume"
+          min="0"
+          max="10"
+        ></simple-range-input>
+      </div>`,
+    );
+    const range = wrap.querySelector("simple-range-input");
+    await range.updateComplete;
+    wrap.querySelector("#before").focus();
+    await sendKeys({ press: "Tab" });
+    const input = range.shadowRoot.querySelector("input");
+    expect(range.shadowRoot.activeElement).to.equal(input);
+    const cs = getComputedStyle(input);
+    expect(cs.outlineStyle).to.not.equal("none");
+    expect(parseFloat(cs.outlineWidth)).to.be.above(0);
+  });
+});

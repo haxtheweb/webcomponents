@@ -406,6 +406,9 @@ function isOpenApiDocument(payload = null) {
 }
 
 async function callSiteOperation(operationName = "", params = {}) {
+  // the registry may be deferred for visitors without a session; load it
+  // now (resolves false if it can't, and the callers fall back to fetch)
+  await waitForHAXCMSSiteApiRegistryReady();
   if (
     !operationName ||
     !MicroFrontendRegistry ||

@@ -139,7 +139,7 @@ class SiteChildrenBlock extends LitElement {
           font-family: inherit;
           padding: 0;
           margin: 0;
-          text-align: left;
+          text-align: start;
           text-transform: unset;
           min-width: unset;
           width: 100%;
@@ -162,8 +162,8 @@ class SiteChildrenBlock extends LitElement {
         }
         .active {
           background-color: var(--site-children-block-link-active-bg);
-          padding-left: 4px;
-          border-left: var(--site-children-block-active-border-left);
+          padding-inline-start: 4px;
+          border-inline-start: var(--site-children-block-active-border-left);
         }
         .active button {
           font-weight: 700;
@@ -171,7 +171,9 @@ class SiteChildrenBlock extends LitElement {
         }
 
         .top-level .active {
-          padding-left: var(--site-children-block-parent-active-padding);
+          padding-inline-start: var(
+            --site-children-block-parent-active-padding
+          );
         }
         .top-level button {
           font-weight: var(--site-children-block-parent-font-weight);
@@ -195,34 +197,34 @@ class SiteChildrenBlock extends LitElement {
           display: inline-flex;
         }
         .indent-1 {
-          margin-left: calc(var(--site-children-block-indent) * 1);
+          margin-inline-start: calc(var(--site-children-block-indent) * 1);
         }
         .indent-2 {
-          margin-left: calc(var(--site-children-block-indent) * 2);
+          margin-inline-start: calc(var(--site-children-block-indent) * 2);
         }
         .indent-3 {
-          margin-left: calc(var(--site-children-block-indent) * 3);
+          margin-inline-start: calc(var(--site-children-block-indent) * 3);
         }
         .indent-4 {
-          margin-left: calc(var(--site-children-block-indent) * 4);
+          margin-inline-start: calc(var(--site-children-block-indent) * 4);
         }
         .indent-5 {
-          margin-left: calc(var(--site-children-block-indent) * 5);
+          margin-inline-start: calc(var(--site-children-block-indent) * 5);
         }
         .indent-6 {
-          margin-left: calc(var(--site-children-block-indent) * 6);
+          margin-inline-start: calc(var(--site-children-block-indent) * 6);
         }
         .indent-7 {
-          margin-left: calc(var(--site-children-block-indent) * 7);
+          margin-inline-start: calc(var(--site-children-block-indent) * 7);
         }
         .indent-8 {
-          margin-left: calc(var(--site-children-block-indent) * 8);
+          margin-inline-start: calc(var(--site-children-block-indent) * 8);
         }
         .indent-9 {
-          margin-left: calc(var(--site-children-block-indent) * 9);
+          margin-inline-start: calc(var(--site-children-block-indent) * 9);
         }
         .indent-10 {
-          margin-left: calc(var(--site-children-block-indent) * 10);
+          margin-inline-start: calc(var(--site-children-block-indent) * 10);
         }
       `,
     ];

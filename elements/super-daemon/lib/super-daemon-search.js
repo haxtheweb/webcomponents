@@ -4,7 +4,6 @@ import { mimeTypeToName } from "@haxtheweb/utils/utils.js";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
@@ -17,6 +16,7 @@ import {
   MerlinDarkScheme,
   MerlinWandStyles,
   merlinMark,
+  merlinVoiceSupported,
 } from "./super-daemon-hax-ui.js";
 
 export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
@@ -33,6 +33,8 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
     this.programPlaceholder = null;
     this.mini = false;
     this.wand = false;
+    this.programRunning = false;
+    this.showShortcut = false;
     this.loading = false;
     this.listeningForInput = false;
     this.commandContext = "*";
@@ -45,6 +47,8 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
     this.t = {
       ...this.t,
       voiceSearch: "Voice search",
+      listeningState: "Listening",
+      listening: "Listening..",
       filterCommands: "Filter commands",
       commands: "Commands",
       howMayIHelp: "How may I help you?",
@@ -78,7 +82,13 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
       mini: { type: Boolean, reflect: true },
       wand: { type: Boolean, reflect: true },
       programName: { type: String, attribute: "program-name" },
+      // a program (e.g. Create a page) owns the field, so the slash command
+      // mode mark has nothing to add and stays out of the way
+      programRunning: { type: Boolean, attribute: "program-running" },
       programPlaceholder: { type: String, attribute: "program-placeholder" },
+      // the top bar field shows Merlin's open shortcut while it sits idle,
+      // the same chip the other top bar actions and menu rows use
+      showShortcut: { type: Boolean, attribute: "show-shortcut" },
       commandContext: { type: String, attribute: "command-context" },
       focused: { type: Boolean, reflect: true },
     };
@@ -191,7 +201,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
     return html`<div class="field merlin-wand-host" part="field">
       ${merlinMark(this.icon)}
       ${
-        this.commandContext != "*"
+        this.commandContext != "*" && !this.programRunning
           ? html`<simple-icon-lite
               title="${this.getActiveTitle(this.commandContext)}"
               icon="${this.getActiveIcon(this.commandContext)}"
@@ -206,10 +216,6 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
       }
       <simple-fields-field
         id="inputfilter"
-        role="combobox"
-        aria-expanded="false"
-        aria-autocomplete="list"
-        aria-haspopup="listbox"
         ?disabled="${this.disabled}"
         @value-changed="${this.inputfilterChanged}"
         @keydown="${this._inputKeydown}"
@@ -223,20 +229,65 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
         part="filter"
       ></simple-fields-field>
       ${
-        this.voiceSearch
-          ? html`<simple-icon-button-lite
+        this._idleShortcutLabel()
+          ? html`<kbd class="shortcut" part="shortcut" aria-hidden="true"
+              >${this._idleShortcutLabel()}</kbd
+            >`
+          : ``
+      }
+      ${
+        this.voiceSearch && merlinVoiceSupported()
+          ? html`<button
+              type="button"
               class="voice ${this.listeningForInput ? "listening" : ""}"
               @click="${this.voiceSearchClick}"
-              icon="${
-                this.listeningForInput ? "hax:loading" : HaxUiAdminIcons.voice
-              }"
-              ?dark="${this.dark}"
-              title="${this.t.voiceSearch || "Voice search"}"
-              label="${this.t.voiceSearch || "Voice search"}"
-            ></simple-icon-button-lite>`
+              ?disabled="${this.disabled}"
+              aria-pressed="${this.listeningForInput ? "true" : "false"}"
+              title="${this.t.voiceSearch}"
+              aria-label="${this.t.voiceSearch}"
+            >
+              ${
+                this.listeningForInput
+                  ? html`<span class="meter" aria-hidden="true"
+                        ><span></span><span></span><span></span></span
+                      ><span class="voice-label"
+                        >${this.t.listeningState}</span
+                      >`
+                  : html`<simple-icon-lite
+                      icon="${HaxUiAdminIcons.voice}"
+                    ></simple-icon-lite>`
+              }
+            </button>`
           : ``
       }
     </div>`;
+  }
+
+  /**
+   * Merlin's open shortcut written the way every other HAX shortcut chip is
+   * ("Alt⇧"), shown only while the field is idle: not focused, empty, no
+   * program running, not listening and nothing being dragged over it
+   */
+  _idleShortcutLabel() {
+    if (
+      !this.showShortcut ||
+      this.focused ||
+      this.programRunning ||
+      this.listeningForInput ||
+      this.droppable ||
+      (this.value && this.value !== "")
+    ) {
+      return "";
+    }
+    const sdi =
+      globalThis.SuperDaemonManager &&
+      globalThis.SuperDaemonManager.requestAvailability();
+    if (!sdi || !sdi.key1) {
+      return "";
+    }
+    return sdi.key2 === "Shift"
+      ? `${sdi.key1}\u21e7`
+      : `${sdi.key1}+${sdi.key2}`;
   }
 
   suggestPossibleAction(mimeType = false) {
@@ -309,6 +360,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
       );
     }
     if (changedProperties.has("listeningForInput")) {
+      this._updatePlaceholder();
       this.dispatchEvent(
         new CustomEvent("listening-for-input-changed", {
           composed: true,
@@ -370,8 +422,12 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
     const inputField = this.shadowRoot.querySelector("#inputfilter");
     if (!inputField) return;
 
+    // while Merlin listens, say so where the words will land
+    if (this.listeningForInput) {
+      inputField.placeholder = this.t.listening;
+    }
     // Use program-specific placeholder if available
-    if (this.programPlaceholder && this.programPlaceholder.trim() !== "") {
+    else if (this.programPlaceholder && this.programPlaceholder.trim() !== "") {
       inputField.placeholder = this.programPlaceholder;
     }
     // Use droppable type suggestion if in droppable state
@@ -390,6 +446,21 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
 
   fieldFocus(_e) {
     this.focused = true;
+  }
+
+  /**
+   * The text input that really holds focus (inside simple-fields-field).
+   * super-daemon-ui makes it the combobox: role, expanded state and the
+   * highlighted result (aria-activedescendant) all live on this element.
+   *
+   * @readonly
+   */
+  get inputElement() {
+    const field =
+      this.shadowRoot && this.shadowRoot.querySelector("#inputfilter");
+    return field && field.shadowRoot
+      ? field.shadowRoot.querySelector("input")
+      : null;
   }
 
   focusInput() {
@@ -497,6 +568,31 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           --simple-icon-width: 14px;
           --simple-icon-height: 14px;
         }
+        /* idle shortcut chip, same look as Merlin row and menu chips */
+        .shortcut {
+          flex: none;
+          display: inline-grid;
+          place-items: center;
+          height: 20px;
+          padding: 0 6px;
+          font-family: inherit;
+          font-size: 11px;
+          font-weight: var(--ddd-font-weight-bold, 700);
+          line-height: 1;
+          white-space: nowrap;
+          border-radius: var(--hax-ui-radius);
+          border: 1px solid var(--hax-ui-line-strong);
+          color: var(--hax-ui-text-muted);
+          background-color: var(--hax-ui-surface);
+          pointer-events: none;
+        }
+        /* phone: no keyboard expected, so no shortcut hints (same media as
+           KEYBOARD_SHORTCUTS_HIDDEN_MEDIA in @haxtheweb/utils keyboardShortcuts) */
+        @media (max-width: 599px), (pointer: coarse) and (max-height: 599px) {
+          .shortcut {
+            display: none;
+          }
+        }
         /* a running program is a chip inside the field */
         .program {
           flex: 0 1 auto;
@@ -579,27 +675,94 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           outline-offset: 2px;
         }
         .voice {
+          all: unset;
+          box-sizing: border-box;
+          cursor: pointer;
           flex: none;
-          width: 28px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: var(--hax-ui-gap-md);
+          min-width: 28px;
           height: 28px;
+          padding: 0 var(--hax-ui-gap);
           border-radius: var(--hax-ui-radius);
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          font-weight: var(--ddd-font-weight-bold, 700);
           color: var(--hax-ui-text-muted);
           --simple-icon-height: var(--hax-ui-icon);
           --simple-icon-width: var(--hax-ui-icon);
-          --simple-icon-button-border-radius: var(--hax-ui-radius);
           transition:
             color var(--hax-ui-duration) var(--hax-ui-easing),
             background-color var(--hax-ui-duration) var(--hax-ui-easing);
         }
         .voice:hover,
-        .voice:focus {
+        .voice:focus-visible {
           color: var(--hax-ui-text);
           background-color: var(--hax-ui-hover);
         }
+        .voice:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
+        }
+        .voice[disabled] {
+          cursor: default;
+          opacity: 0.5;
+        }
+        /* listening: the button fills with the accent and names the state,
+           and the field takes the accent edge */
         .voice.listening {
+          padding: 0 var(--hax-ui-gap-md);
           color: var(--hax-ui-on-accent);
           background-color: var(--hax-ui-accent-strong);
           box-shadow: 0 0 0 4px var(--hax-ui-selected);
+        }
+        :host([listening-for-input]) .field {
+          border-color: var(--hax-ui-accent-strong);
+          box-shadow: inset 0 0 0 1px var(--hax-ui-accent-strong);
+        }
+        /* activity, not a level reading: the browser speech API gives no
+           audio level, so the bars say the mic is open */
+        .meter {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--hax-ui-gap, 4px);
+          height: 14px;
+        }
+        .meter span {
+          width: 3px;
+          height: 6px;
+          border-radius: var(--ddd-radius-xs, 4px);
+          background-color: currentColor;
+        }
+        .meter span:nth-child(2) {
+          height: 10px;
+        }
+        @media (prefers-reduced-motion: no-preference) {
+          .meter span {
+            animation: super-daemon-search-meter 1s ease-in-out infinite;
+          }
+          .meter span:nth-child(2) {
+            animation-delay: 0.15s;
+          }
+          .meter span:nth-child(3) {
+            animation-delay: 0.3s;
+          }
+        }
+        @keyframes super-daemon-search-meter {
+          0%,
+          100% {
+            transform: scaleY(0.5);
+          }
+          50% {
+            transform: scaleY(1.3);
+          }
+        }
+        @media (forced-colors: active) {
+          .voice.listening {
+            border: 1px solid Highlight;
+          }
         }
 
         /* dropping a file on Merlin */

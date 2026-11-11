@@ -739,6 +739,31 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
       this._stay();
       return;
     }
+    // the leave prompt is a choice of consequence: Tab cycles its three
+    // actions only, never the panel behind it
+    if (e.key === "Tab" && this._leave) {
+      const acts = Array.from(
+        this.shadowRoot.querySelectorAll(".leave .acts button"),
+      ).filter((b) => !b.disabled);
+      if (acts.length) {
+        e.preventDefault();
+        e.stopPropagation();
+        const at = acts.indexOf(this.shadowRoot.activeElement);
+        const next = e.shiftKey
+          ? at <= 0
+            ? acts.length - 1
+            : at - 1
+          : at === -1 || at === acts.length - 1
+            ? 0
+            : at + 1;
+        acts[next].focus();
+      }
+      return;
+    }
+    // while the leave prompt is up the shortcuts below wait for its answer
+    if (this._leave) {
+      return;
+    }
     // Ctrl+Shift+S saves, matching the editor's save shortcut
     if (
       (e.ctrlKey || e.metaKey) &&
@@ -749,7 +774,26 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
       e.preventDefault();
       e.stopPropagation();
       this._save();
+      return;
     }
+    // Ctrl+Shift+/ discards, matching the editor's cancel shortcut
+    if (
+      (e.ctrlKey || e.metaKey) &&
+      e.shiftKey &&
+      (e.key === "/" || e.key === "?" || e.code === "Slash") &&
+      this._canDiscard
+    ) {
+      e.preventDefault();
+      e.stopPropagation();
+      this._discard();
+    }
+  }
+
+  get _canDiscard() {
+    return (
+      (this._status === "dirty" || this._status === "error") &&
+      this._status !== "saving"
+    );
   }
 
   _go(route) {
@@ -1010,6 +1054,27 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
           .pcard {
             min-height: 0;
           }
+        }
+        /* Save / Discard show their shortcuts the way the editor top bar
+           and Merlin do. Drawn from data-shortcut so the button's text and
+           accessible name stay just its label (aria-keyshortcuts carries
+           the keys); the chip takes the button's own ink so it reads on
+           the primary fill and on the ghost button alike */
+        .ftr .hax-ui-btn[data-shortcut]::after {
+          content: attr(data-shortcut);
+          margin-inline-start: var(--hax-ui-gap);
+          padding: 0 var(--hax-ui-gap);
+          line-height: 16px;
+          font-family: var(--ddd-font-mono, monospace);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          font-weight: var(--ddd-font-weight-bold, 700);
+          border: 1px solid currentColor;
+          border-bottom-width: var(--hax-ui-focus-width);
+          border-radius: var(--hax-ui-radius);
+          opacity: 0.8;
+        }
+        .narrow .ftr .hax-ui-btn[data-shortcut]::after {
+          display: none;
         }
         @media (prefers-reduced-motion: reduce) {
           .pcard,
@@ -1757,6 +1822,8 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
           type="button"
           class="hax-ui-btn ghost discard"
           ?disabled="${!canDiscard || busy}"
+          aria-keyshortcuts="Control+Shift+/"
+          data-shortcut="Ctrl⇧/"
           @click="${this._discard}"
         >
           ${this.t.discard}
@@ -1765,6 +1832,8 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
           type="button"
           class="hax-ui-btn ${this._canSave && !busy ? "primary" : ""} save"
           ?disabled="${!this._canSave || busy}"
+          aria-keyshortcuts="Control+Shift+S"
+          data-shortcut="Ctrl⇧S"
           @click="${this._save}"
         >
           ${busy ? this.t.saving : this.t.save}
@@ -1796,18 +1865,29 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
             }
           </p>
           <div class="acts">
+            <!-- a choice of consequence: each answer has its own label,
+                 icon and color, and throwing work away also carries the
+                 danger hatch so it reads apart in greyscale -->
             <button
               type="button"
               class="hax-ui-btn ghost stay"
               @click="${this._stay}"
             >
+              <simple-icon-lite
+                icon="${HaxUiAdminIcons.back}"
+                aria-hidden="true"
+              ></simple-icon-lite>
               ${this.t.stay}
             </button>
             <button
               type="button"
-              class="hax-ui-btn discard-leave"
+              class="hax-ui-btn danger discard-leave"
               @click="${this._discardAndLeave}"
             >
+              <simple-icon-lite
+                icon="${HaxUiAdminIcons.delete}"
+                aria-hidden="true"
+              ></simple-icon-lite>
               ${this.t.discardAndLeave}
             </button>
             <button
@@ -1816,6 +1896,10 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
               ?disabled="${!this._canSave}"
               @click="${this._saveAndLeave}"
             >
+              <simple-icon-lite
+                icon="${HaxUiAdminIcons.check}"
+                aria-hidden="true"
+              ></simple-icon-lite>
               ${this.t.saveAndLeave}
             </button>
           </div>

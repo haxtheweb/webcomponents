@@ -10,7 +10,6 @@ import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js"
 import { autorun, toJS } from "mobx";
 import { varExists, varGet } from "@haxtheweb/utils/lib/object-path.js";
 import "@haxtheweb/anchor-behaviors/anchor-behaviors.js";
-import "@haxtheweb/disqus-embed/lib/haxcms-site-disqus.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
@@ -373,7 +372,7 @@ class HaxorSlevin extends I18NMixin(
         </div>
         <site-region name="header"></site-region>
       </header>
-      <div class="wrapper">
+      <main class="wrapper">
         <div id="home">
           <h1 class="home-title">${this.title}</h1>
           <site-query
@@ -412,7 +411,7 @@ class HaxorSlevin extends I18NMixin(
           )}
           <site-region name="footerPrimary"></site-region>
         </div>
-        <main class="contentcontainer-wrapper">
+        <div class="contentcontainer-wrapper">
           <article id="contentcontainer">
             <site-region name="contentTop"></site-region>
             <site-git-corner position="right"></site-git-corner>
@@ -546,8 +545,8 @@ class HaxorSlevin extends I18NMixin(
               ></site-share-widget>
             </div>
           </footer>
-        </main>
-      </div>
+        </div>
+      </main>
     `;
   }
   /**

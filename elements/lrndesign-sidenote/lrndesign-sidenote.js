@@ -104,7 +104,10 @@ export class LrndesignSidenote extends DDD {
           );
           /* an authored padding still pads the whole box as it always did */
           padding: var(--lrndesign-sidenote-container-padding, 0);
-          margin-left: var(--lrndesign-sidenote-container-margin-left, 0px);
+          margin-inline-start: var(
+            --lrndesign-sidenote-container-margin-left,
+            0px
+          );
         }
         /* an authored accent colour still colours the icon chip */
         :host([accent-color]:not([accent-color="grey"])) #container {

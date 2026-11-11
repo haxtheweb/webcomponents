@@ -1,0 +1,51 @@
+{
+  "tag": "count-up",
+  "package": "@haxtheweb/count-up",
+  "source": "elements/count-up/count-up.js",
+  "attributes": {
+    "decimal": "decimal",
+    "decimalplaces": "decimalplaces",
+    "duration": "duration",
+    "element-visible": "elementVisible",
+    "elementvisible": "elementVisible",
+    "end": "end",
+    "noeasing": "noeasing",
+    "prefixtext": "prefixtext",
+    "ratio": "ratio",
+    "root-margin": "rootMargin",
+    "separator": "separator",
+    "start": "start",
+    "suffixtext": "suffixtext",
+    "thresholds": "thresholds"
+  },
+  "slots": [
+    "prefix",
+    "suffix"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/count-up/lib/count-up.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "decimal",
+      "decimalplaces",
+      "duration",
+      "end",
+      "noeasing",
+      "prefixtext",
+      "separator",
+      "start",
+      "suffixtext"
+    ],
+    "attributes": [],
+    "slots": [
+      "prefix",
+      "suffix"
+    ],
+    "demoTags": [
+      "count-up"
+    ]
+  }
+}

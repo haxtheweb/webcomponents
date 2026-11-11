@@ -1,0 +1,41 @@
+{
+  "tag": "date-card",
+  "package": "@haxtheweb/date-card",
+  "source": "elements/date-card/date-card.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "border-spacing": "borderSpacing",
+    "dark": "dark",
+    "date": "date",
+    "day": "day",
+    "end-time": "endTime",
+    "is-safari": "isSafari",
+    "location": "location",
+    "month": "month",
+    "start-time": "startTime",
+    "title": "title"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/date-card/lib/date-card.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "accentColor",
+      "date",
+      "day",
+      "endTime",
+      "location",
+      "month",
+      "startTime",
+      "title"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "date-card"
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "tag": "la-tex",
+  "package": "@haxtheweb/la-tex",
+  "source": "elements/la-tex/la-tex.js",
+  "attributes": {
+    "hydrated": "hydrated",
+    "initialtext": "initialText",
+    "t": "t"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/la-tex/lib/la-tex.haxProperties.json",
+    "gizmo": true,
+    "properties": [],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "la-tex"
+    ]
+  }
+}

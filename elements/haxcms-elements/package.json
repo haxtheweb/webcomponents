@@ -41,14 +41,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@babel/core": "7.29.7",
     "@haxtheweb/a11y-collapse": "^26.8.0",
     "@haxtheweb/a11y-tabs": "^26.8.0",
     "@haxtheweb/absolute-position-behavior": "^26.8.0",
     "@haxtheweb/accent-card": "^26.8.0",
     "@haxtheweb/anchor-behaviors": "^26.8.0",
     "@haxtheweb/beaker-broker": "^26.8.0",
-    "@haxtheweb/chat-agent": "^26.8.0",
     "@haxtheweb/citation-element": "^26.8.0",
     "@haxtheweb/clean-two": "^26.8.0",
     "@haxtheweb/code-sample": "^26.8.0",
@@ -62,6 +60,7 @@
     "@haxtheweb/future-terminal-text": "^26.8.0",
     "@haxtheweb/git-corner": "^26.8.0",
     "@haxtheweb/github-preview": "^26.8.0",
+    "@haxtheweb/grid-plate": "^26.8.0",
     "@haxtheweb/h-a-x": "^26.8.0",
     "@haxtheweb/hax-body": "^26.8.0",
     "@haxtheweb/hax-body-behaviors": "^26.8.0",
@@ -71,6 +70,7 @@
     "@haxtheweb/html-block": "^26.8.0",
     "@haxtheweb/i18n-manager": "^26.8.0",
     "@haxtheweb/iframe-loader": "^26.8.0",
+    "@haxtheweb/image-gallery": "^26.8.0",
     "@haxtheweb/instructional-cadence": "^26.8.0",
     "@haxtheweb/intersection-element": "^26.8.0",
     "@haxtheweb/json-outline-schema": "^26.8.0",
@@ -81,10 +81,12 @@
     "@haxtheweb/lunr-search": "^26.8.0",
     "@haxtheweb/map-menu": "^26.8.0",
     "@haxtheweb/md-block": "^26.8.0",
+    "@haxtheweb/media-playlist": "^26.8.0",
     "@haxtheweb/micro-frontend-registry": "^26.8.0",
     "@haxtheweb/outline-designer": "^26.8.0",
     "@haxtheweb/page-contents-menu": "^26.8.0",
     "@haxtheweb/page-flag": "^26.8.0",
+    "@haxtheweb/place-holder": "^26.8.0",
     "@haxtheweb/play-list": "^26.8.0",
     "@haxtheweb/portal-launcher": "^26.8.0",
     "@haxtheweb/q-r": "^26.8.0",
@@ -121,6 +123,10 @@
     "mobx": "6.16.1",
     "web-social-share": "8.1.0"
   },
+  "peerDependencies": {
+    "@haxtheweb/app-hax": ">=26.8.0",
+    "@haxtheweb/page-break": ">=26.8.0"
+  },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.11.0",
     "@haxtheweb/deduping-fix": "^26.8.0",
@@ -131,7 +137,8 @@
     "gulp-babel": "8.1.0",
     "lerna": "10.1.1",
     "@haxtheweb/create": "26.8.1",
-    "lint-staged": "15.5.2"
+    "lint-staged": "15.5.2",
+    "@babel/core": "7.29.13"
   },
   "private": false,
   "publishConfig": {

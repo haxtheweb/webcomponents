@@ -407,7 +407,189 @@
             },
             {
               "kind": "method",
+              "name": "_listenToHal",
+              "parameters": [
+                {
+                  "name": "hal",
+                  "type": {
+                    "text": "HTMLElement"
+                  }
+                }
+              ],
+              "description": "Listen to what hal-9000 hears and reports about the microphone, once\nper connection (a reconnect makes a new signal and listens again)."
+            },
+            {
+              "kind": "method",
+              "name": "_voiceStateChanged",
+              "parameters": [
+                {
+                  "name": "state",
+                  "description": "idle, listening, blocked or unavailable",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "The mic was refused, or this browser cannot recognize speech: stop\nlistening and say why. When speech is unavailable the mic button also\ngoes away for the rest of the session."
+            },
+            {
+              "kind": "method",
+              "name": "_refreshVoiceControls",
+              "description": "Re-render every Merlin search box so the mic button can hide"
+            },
+            {
+              "kind": "method",
               "name": "reprocessVoiceCommands"
+            },
+            {
+              "kind": "method",
+              "name": "_voiceVocabulary",
+              "description": "The spoken search words in the user's language. Action words keep the\nEnglish ones too, since many people say \"next\" in any language;\nnumbers and ordinals are positional, so they stay one language."
+            },
+            {
+              "kind": "method",
+              "name": "_ui"
+            },
+            {
+              "kind": "method",
+              "name": "_voiceInterim",
+              "parameters": [
+                {
+                  "name": "text",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Words so far, while someone is still talking. Only the card changes;\nresults are not filtered until the words are final."
+            },
+            {
+              "kind": "method",
+              "name": "_voiceCard",
+              "parameters": [
+                {
+                  "name": "heard"
+                },
+                {
+                  "name": "hint"
+                },
+                {
+                  "name": "hintSay"
+                },
+                {
+                  "name": "sayList"
+                }
+              ],
+              "description": "Update the voice card: what was heard and a tip for what to say next."
+            },
+            {
+              "kind": "method",
+              "name": "_voicePickPhrase",
+              "parameters": [
+                {
+                  "name": "vocab"
+                }
+              ],
+              "description": "\"second one\" in the user's language"
+            },
+            {
+              "kind": "method",
+              "name": "_showVoiceTip",
+              "description": "A different tip each time listening starts, so people learn what\nthey can say without a manual."
+            },
+            {
+              "kind": "method",
+              "name": "_voiceHelp",
+              "parameters": [
+                {
+                  "name": "vocab"
+                }
+              ],
+              "description": "Everything that can be said right now, for \"help\""
+            },
+            {
+              "kind": "method",
+              "name": "_voiceAfterRun",
+              "parameters": [
+                {
+                  "name": "item"
+                }
+              ],
+              "description": "A result ran by voice: stop listening unless it opened a program,\nwhich takes spoken input next."
+            },
+            {
+              "kind": "method",
+              "name": "_voicePickAt",
+              "parameters": [
+                {
+                  "name": "index"
+                }
+              ],
+              "description": "Run the result at an index in what is shown"
+            },
+            {
+              "kind": "method",
+              "name": "_voiceRunItem",
+              "parameters": [
+                {
+                  "name": "item",
+                  "type": {
+                    "text": "Object"
+                  }
+                }
+              ],
+              "description": "Run one item: show it alone and select it, as the keyboard would."
+            },
+            {
+              "kind": "method",
+              "name": "_voiceGrammar",
+              "parameters": [
+                {
+                  "name": "alternatives"
+                },
+                {
+                  "name": "vocab"
+                }
+              ],
+              "description": "A navigation phrase: pick, next, back, run, clear, cancel, help.",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_voiceProgramInput",
+              "parameters": [
+                {
+                  "name": "heard",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "vocab",
+                  "type": {
+                    "text": "Object"
+                  }
+                }
+              ],
+              "description": "Words for a running program. They go in the field like typing, and\nMerlin keeps listening so the numbered results can be picked by voice."
+            },
+            {
+              "kind": "method",
+              "name": "_voiceHeard",
+              "parameters": [
+                {
+                  "name": "alternatives",
+                  "description": "best guess first",
+                  "type": {
+                    "text": "Array<string>"
+                  }
+                }
+              ],
+              "description": "Final words that were not a fixed command. Spoken search, no AI:\n1. a navigation phrase (\"second one\", \"next\", \"run\") acts on results\n2. otherwise score every alternative against the commands here\n   - high: one clear answer, run it\n   - medium: likely answers, show them and ask\n   - low: search with the words, so nothing is lost\nInside a program, the words are the program's input."
             },
             {
               "kind": "method",
@@ -439,7 +621,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ // product name; no locale entries, so it stays \"Super Daemon\" unless a language adds one superDaemon: \"Super Daemon\", toggleSantaMode: \"Toggle Santa Mode\", santaModeDescription: \"He sees you when your sleeping, he knows when your awake, and with this command active he is always listening for input ready to respond. He's.. Santa Merlin. Ho..Ho...Ho.\", santaModeActivated: \"Santa mode activated: Watch what you say\", santaModeDeactivated: \"Santa mode deactivated: Have a nice day believing you are not being watched\", disableSantaModeToStop: \"Please disable Santa mode to stop listening\", imHere: \"I'm here\", yes: \"Yes?\", what: \"What?\", whatCanIDo: \"What can I do for you?\", whatDoYouNeed: \"What do you need?\", howCanIHelp: \"How can I help?\", thanksForStopping: \"thanks for stopping by\", seeYa: \"See ya\", seeYouSoon: \"See you soon\", tillWeMeetAgain: \"Till we meet again\", howMayIHelp: \"How may I help you?\", listening: \"Listening..\", programModeActivated: \"program mode activated\", developerModeActivated: \"developer mode activated\", merlin: \"Merlin\", closeMerlin: \"Close Merlin\", }"
+              "default": "{ // product name; no locale entries, so it stays \"Super Daemon\" unless a language adds one superDaemon: \"Super Daemon\", toggleSantaMode: \"Toggle Santa Mode\", santaModeDescription: \"He sees you when your sleeping, he knows when your awake, and with this command active he is always listening for input ready to respond. He's.. Santa Merlin. Ho..Ho...Ho.\", santaModeActivated: \"Santa mode activated: Watch what you say\", santaModeDeactivated: \"Santa mode deactivated: Have a nice day believing you are not being watched\", disableSantaModeToStop: \"Please disable Santa mode to stop listening\", imHere: \"I'm here\", yes: \"Yes?\", what: \"What?\", whatCanIDo: \"What can I do for you?\", whatDoYouNeed: \"What do you need?\", howCanIHelp: \"How can I help?\", thanksForStopping: \"thanks for stopping by\", seeYa: \"See ya\", seeYouSoon: \"See you soon\", tillWeMeetAgain: \"Till we meet again\", howMayIHelp: \"How may I help you?\", listening: \"Listening..\", programModeActivated: \"program mode activated\", developerModeActivated: \"developer mode activated\", merlin: \"Merlin\", closeMerlin: \"Close Merlin\", // spoken search vocabulary: pipe separated, translated per language voiceFillers: \"please|can you|could you|would you|will you|i want to|i'd like to|i would like to|let's|let me|go ahead and|um|uh|hey|merlin|ok|okay\", voiceStopWords: \"a|an|the|to|my|this|for|of|me\", voiceNumbers: \"zero|one|two|three|four|five|six|seven|eight|nine|ten\", voiceOrdinals: \"zeroth|first|second|third|fourth|fifth|sixth|seventh|eighth|ninth\", voicePickPrefixes: \"number|option|item|result|pick|choose|select|the\", voicePickSuffix: \"one\", voiceNumberSoundalikes: \"won=1|to=2|too=2|tu=2|tree=3|free=3|for=4|fore=4|ate=8\", voiceNext: \"next|down|next one\", voiceBack: \"back|previous|up|go back\", voiceRun: \"run|go|yes|do it|run it|open it|that one\", voiceClear: \"clear|start over|reset\", voiceCancel: \"cancel|never mind|nevermind\", voiceHelp: \"help|what can i say|what can i do\", // spoken commands Merlin always knows, in the user's language sayStopListening: \"stop listening\", sayCloseMerlin: \"close merlin\", sayDisableSanta: \"disable santa mode\", // what the voice card says after hearing something voiceDidYouMean: \"{title}? To run it, say\", voiceShowingMatches: \"Showing matches. To run one, say\", voiceNoMatches: \"Nothing matched. Try other words, or say\", voiceNoSuchResult: \"There is no result {number}. Try\", voiceYouCanSay: \"You can say\", voiceMicBlocked: \"The microphone is blocked. Allow it in your browser to talk to Merlin.\", voiceUnavailable: \"Voice isn't available in this browser. You can still type to Merlin.\", voiceTipPick: \"To run a result, say\", voiceTipNext: \"To move down the list, say\", voiceTipClear: \"To start over, say\", voiceTipHelp: \"To see what you can say, say\", voiceRunResult: \"Run a result\", voiceMoveDown: \"Move down\", voiceMoveUp: \"Move up\", voiceRunHighlighted: \"Run the highlighted result\", voiceStartOver: \"Start over\", voiceStopListeningLabel: \"Stop listening\", voiceCloseLabel: \"Close Merlin\", }"
             },
             {
               "kind": "field",
@@ -495,6 +677,32 @@
               },
               "default": "{}",
               "attribute": "voiceCommands"
+            },
+            {
+              "kind": "field",
+              "name": "voiceRanked",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "Results chosen by voice (\"did you mean\"), shown instead of all",
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "_voiceEntries",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "_voiceTip",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
             },
             {
               "kind": "field",
@@ -1051,8 +1259,509 @@
     },
     {
       "kind": "javascript-module",
+      "path": "lib/merlin-voice-match.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "merlinWordList",
+          "parameters": [
+            {
+              "name": "value"
+            }
+          ],
+          "description": "A pipe separated list (how translated vocab is stored) as an array."
+        },
+        {
+          "kind": "variable",
+          "name": "MERLIN_VOICE_VOCAB_EN",
+          "type": {
+            "text": "object"
+          },
+          "default": "{ fillers: \"please|can you|could you|would you|will you|i want to|i'd like to|i would like to|let's|let me|go ahead and|um|uh|hey|merlin|ok|okay\", stopWords: \"a|an|the|to|my|this|for|of|me\", numbers: \"zero|one|two|three|four|five|six|seven|eight|nine|ten\", ordinals: \"zeroth|first|second|third|fourth|fifth|sixth|seventh|eighth|ninth\", pickPrefixes: \"number|option|item|result|pick|choose|select|the\", pickSuffix: \"one\", // what speech engines often write for a spoken number after \"option\" or // \"number\": \"option to\", \"number for\" numberSoundalikes: \"won=1|to=2|too=2|tu=2|tree=3|free=3|for=4|fore=4|ate=8\", next: \"next|down|next one\", back: \"back|previous|up|go back\", run: \"run|go|yes|do it|run it|open it|that one\", clear: \"clear|start over|reset\", cancel: \"cancel|never mind|nevermind\", help: \"help|what can i say|what can i do\", }",
+          "description": "The English defaults; super-daemon passes translated ones."
+        },
+        {
+          "kind": "function",
+          "name": "merlinVoiceVocab",
+          "parameters": [
+            {
+              "name": "strings",
+              "default": "{}",
+              "description": "keys like MERLIN_VOICE_VOCAB_EN",
+              "type": {
+                "text": "Object"
+              }
+            }
+          ],
+          "description": "Build a ready-to-use vocabulary from pipe separated strings."
+        },
+        {
+          "kind": "function",
+          "name": "merlinCleanText",
+          "parameters": [
+            {
+              "name": "text",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "description": "Lowercase, strip punctuation, collapse spaces. Keeps letters and digits\nin every script.",
+          "return": {
+            "type": {
+              "text": "string"
+            }
+          }
+        },
+        {
+          "kind": "function",
+          "name": "merlinTokens",
+          "parameters": [
+            {
+              "name": "text",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "vocab",
+              "default": "DEFAULT_VOCAB",
+              "optional": true,
+              "type": {
+                "text": "Object"
+              }
+            }
+          ],
+          "description": "The words that carry meaning: cleaned, fillers and stop words removed,\nnumber words turned into digits.",
+          "return": {
+            "type": {
+              "text": "Array<string>"
+            }
+          }
+        },
+        {
+          "kind": "function",
+          "name": "merlinJaroWinkler",
+          "parameters": [
+            {
+              "name": "a",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "b",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "description": "Jaro-Winkler similarity, 0 (nothing alike) to 1 (identical).",
+          "return": {
+            "type": {
+              "text": "number"
+            }
+          }
+        },
+        {
+          "kind": "function",
+          "name": "merlinSoundKey",
+          "parameters": [
+            {
+              "name": "word",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "description": "A Metaphone-style sound key for a Latin-script word, so words that sound\nalike match (\"merlin\" / \"marilyn\", \"phone\" / \"fone\"). Other scripts and\ndigits come back unchanged.",
+          "return": {
+            "type": {
+              "text": "string"
+            }
+          }
+        },
+        {
+          "kind": "function",
+          "name": "merlinWordSimilarity",
+          "parameters": [
+            {
+              "name": "a",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "b",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "description": "How alike two words are, 0 to 1: spelling (Jaro-Winkler) or sound.",
+          "return": {
+            "type": {
+              "text": "number"
+            }
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "MERLIN_WORD_FLOOR",
+          "type": {
+            "text": "number"
+          },
+          "default": "0.8",
+          "description": "Word pairs below this similarity count as not matching at all."
+        },
+        {
+          "kind": "function",
+          "name": "merlinPhraseWords",
+          "parameters": [
+            {
+              "name": "phrase",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "vocab",
+              "default": "DEFAULT_VOCAB",
+              "optional": true,
+              "type": {
+                "text": "Object"
+              }
+            }
+          ],
+          "description": "Parse a command phrase into required and optional words, accepting the\nvoice phrase syntax: \"(toggle) dark mode\" has optional \"toggle\".\nNamed (:x) and splat (*x) params are dropped.",
+          "return": {
+            "type": {
+              "text": "{required: Array<string>, optional: Array<string>}"
+            }
+          }
+        },
+        {
+          "kind": "function",
+          "name": "merlinScoreWords",
+          "parameters": [
+            {
+              "name": "heard",
+              "description": "tokens from merlinTokens",
+              "type": {
+                "text": "Array<string>"
+              }
+            },
+            {
+              "name": "words",
+              "type": {
+                "text": "{required: Array<string>, optional: Array<string>}"
+              }
+            }
+          ],
+          "description": "Score heard words against one phrase, 0 to 1: how much of the phrase was\nsaid (recall) balanced with how much of what was said is the phrase\n(precision).",
+          "return": {
+            "type": {
+              "text": "number"
+            }
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "MERLIN_PHRASE_WEIGHTS",
+          "type": {
+            "text": "object"
+          },
+          "default": "{ title: 1, voice: 1, tag: 0.8 }",
+          "description": "How much a match on each kind of phrase counts."
+        },
+        {
+          "kind": "function",
+          "name": "merlinVoiceEntries",
+          "parameters": [
+            {
+              "name": "items",
+              "default": "[]",
+              "description": "super-daemon items (title, voice, tags)",
+              "type": {
+                "text": "Array<Object>"
+              }
+            },
+            {
+              "name": "vocab",
+              "default": "DEFAULT_VOCAB",
+              "optional": true,
+              "type": {
+                "text": "Object"
+              }
+            }
+          ],
+          "description": "Build the searchable entries for a list of Merlin items once, so each\nutterance only does the scoring.",
+          "return": {
+            "type": {
+              "text": "Array<Object>"
+            }
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "MERLIN_ALTERNATIVE_PENALTY",
+          "type": {
+            "text": "number"
+          },
+          "default": "0.03",
+          "description": "Later alternatives are the engine's lesser guesses; trust them less."
+        },
+        {
+          "kind": "function",
+          "name": "merlinRankVoice",
+          "parameters": [
+            {
+              "name": "alternatives",
+              "description": "best guess first",
+              "type": {
+                "text": "Array<string>"
+              }
+            },
+            {
+              "name": "entries",
+              "description": "from merlinVoiceEntries",
+              "type": {
+                "text": "Array<Object>"
+              }
+            },
+            {
+              "name": "vocab",
+              "default": "DEFAULT_VOCAB",
+              "optional": true,
+              "type": {
+                "text": "Object"
+              }
+            }
+          ],
+          "description": "Rank entries for everything the engine heard.",
+          "return": {
+            "type": {
+              "text": "Array<{item: Object, score: number, transcript: string}>"
+            }
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "MERLIN_BANDS",
+          "type": {
+            "text": "object"
+          },
+          "default": "{ high: 0.9, medium: 0.65, margin: 0.08 }",
+          "description": "Score bands: at or above high runs, at or above medium asks."
+        },
+        {
+          "kind": "function",
+          "name": "merlinVoiceBand",
+          "parameters": [
+            {
+              "name": "ranked",
+              "description": "from merlinRankVoice",
+              "type": {
+                "text": "Array<{score: number}>"
+              }
+            }
+          ],
+          "description": "How sure to be about a ranking.\n- high: one clear winner; run it\n- medium: a likely answer, or several close ones; ask\n- low: nothing close; just search with the words",
+          "return": {
+            "type": {
+              "text": "\"high\"|\"medium\"|\"low\""
+            }
+          }
+        },
+        {
+          "kind": "function",
+          "name": "merlinParseVoiceGrammar",
+          "parameters": [
+            {
+              "name": "text",
+              "description": "one alternative",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "vocab",
+              "default": "DEFAULT_VOCAB",
+              "optional": true,
+              "type": {
+                "text": "Object"
+              }
+            }
+          ],
+          "description": "Read a navigation phrase: \"second one\", \"number 3\", \"next\", \"run\".",
+          "return": {
+            "type": {
+              "text": "null|{action: string, index?: number}"
+            }
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "merlinWordList",
+          "declaration": {
+            "name": "merlinWordList",
+            "module": "lib/merlin-voice-match.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "MERLIN_VOICE_VOCAB_EN",
+          "declaration": {
+            "name": "MERLIN_VOICE_VOCAB_EN",
+            "module": "lib/merlin-voice-match.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "merlinVoiceVocab",
+          "declaration": {
+            "name": "merlinVoiceVocab",
+            "module": "lib/merlin-voice-match.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "merlinCleanText",
+          "declaration": {
+            "name": "merlinCleanText",
+            "module": "lib/merlin-voice-match.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "merlinTokens",
+          "declaration": {
+            "name": "merlinTokens",
+            "module": "lib/merlin-voice-match.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "merlinJaroWinkler",
+          "declaration": {
+            "name": "merlinJaroWinkler",
+            "module": "lib/merlin-voice-match.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "merlinSoundKey",
+          "declaration": {
+            "name": "merlinSoundKey",
+            "module": "lib/merlin-voice-match.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "merlinWordSimilarity",
+          "declaration": {
+            "name": "merlinWordSimilarity",
+            "module": "lib/merlin-voice-match.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "MERLIN_WORD_FLOOR",
+          "declaration": {
+            "name": "MERLIN_WORD_FLOOR",
+            "module": "lib/merlin-voice-match.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "merlinPhraseWords",
+          "declaration": {
+            "name": "merlinPhraseWords",
+            "module": "lib/merlin-voice-match.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "merlinScoreWords",
+          "declaration": {
+            "name": "merlinScoreWords",
+            "module": "lib/merlin-voice-match.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "MERLIN_PHRASE_WEIGHTS",
+          "declaration": {
+            "name": "MERLIN_PHRASE_WEIGHTS",
+            "module": "lib/merlin-voice-match.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "merlinVoiceEntries",
+          "declaration": {
+            "name": "merlinVoiceEntries",
+            "module": "lib/merlin-voice-match.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "MERLIN_ALTERNATIVE_PENALTY",
+          "declaration": {
+            "name": "MERLIN_ALTERNATIVE_PENALTY",
+            "module": "lib/merlin-voice-match.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "merlinRankVoice",
+          "declaration": {
+            "name": "merlinRankVoice",
+            "module": "lib/merlin-voice-match.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "MERLIN_BANDS",
+          "declaration": {
+            "name": "MERLIN_BANDS",
+            "module": "lib/merlin-voice-match.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "merlinVoiceBand",
+          "declaration": {
+            "name": "merlinVoiceBand",
+            "module": "lib/merlin-voice-match.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "merlinParseVoiceGrammar",
+          "declaration": {
+            "name": "merlinParseVoiceGrammar",
+            "module": "lib/merlin-voice-match.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "lib/super-daemon-hax-ui.js",
       "declarations": [
+        {
+          "kind": "function",
+          "name": "merlinVoiceSupported",
+          "description": "True when this browser can both listen (SpeechRecognition) and speak\n(speechSynthesis), the two things Merlin's voice mode needs, and\nlistening has not proven unusable in this session (some browsers, like\nBrave, have the API but no speech service). The voice control is hidden\neverywhere else rather than shown and failing.",
+          "return": {
+            "type": {
+              "text": "boolean"
+            }
+          }
+        },
         {
           "kind": "function",
           "name": "merlinWand",
@@ -1079,8 +1788,54 @@
         },
         {
           "kind": "variable",
+          "name": "TRAVELER_ICONS",
+          "type": {
+            "text": "array"
+          },
+          "default": "[\"hax:world-traveler-plain\"]",
+          "description": "Icon names that mean Merlin wearing the World Traveler: the HAX helmet,\ngoggles and idea bulb, in one ink (currentColor) with see-through\nlenses. A Merlin control given one of these draws him inline so his bulb\nand goggles can light: off at rest, on with hover or focus, glowing\nwhile Merlin listens or works. Same shapes as hax:world-traveler-plain."
+        },
+        {
+          "kind": "function",
+          "name": "merlinTraveler",
+          "parameters": [
+            {
+              "name": "className",
+              "default": "\"\"",
+              "description": "extra class names for the svg",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "description": "Merlin's World Traveler mark, drawn inline. The ink is one mask so the\nlenses, the helmet shine and the gaps between parts stay see-through on\nany surface; the lit parts (halos, bulb, lenses, glints) sit in .lit and\nfade in by state (MerlinWandStyles)."
+        },
+        {
+          "kind": "function",
+          "name": "merlinMark",
+          "parameters": [
+            {
+              "name": "icon",
+              "description": "the control's icon",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "className",
+              "default": "\"\"",
+              "description": "extra class names for the svg",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "description": "Merlin's mark for an icon name: the World Traveler for TRAVELER_ICONS,\nthe wand for MERLIN_ICONS, nothing otherwise."
+        },
+        {
+          "kind": "variable",
           "name": "MerlinWandStyles",
-          "default": "css` .merlin-wand { display: inline-block; flex: none; width: var(--merlin-wand-size, var(--hax-ui-icon, 16px)); height: var(--merlin-wand-size, var(--hax-ui-icon, 16px)); fill: currentColor; overflow: visible; } .merlin-wand .sparkle { transform-box: fill-box; transform-origin: center; transition: filter var(--hax-ui-duration, 150ms) var(--hax-ui-easing, ease); } .merlin-wand .stick { transform-box: view-box; transform-origin: 3px 21px; } .merlin-wand .s2 { --merlin-wand-delay: 250ms; } .merlin-wand .s3 { --merlin-wand-delay: 500ms; } .merlin-wand-host:hover .merlin-wand .sparkle, .merlin-wand-host:focus-within .merlin-wand .sparkle { filter: drop-shadow(0 0 2px currentColor); } @media (prefers-reduced-motion: no-preference) { .merlin-wand-host:hover .merlin-wand .sparkle, .merlin-wand-host:focus-within .merlin-wand .sparkle { animation: merlin-wand-twinkle var(--ddd-duration-slow, 600ms) var(--ddd-timing-ease, cubic-bezier(0.4, 0, 0.2, 1)) var(--merlin-wand-delay, 0ms) 1 both; } .merlin-wand-host:hover .merlin-wand .stick, .merlin-wand-host:focus-within .merlin-wand .stick { animation: merlin-wand-flick var(--ddd-duration-slow, 600ms) var(--hax-ui-easing-move, cubic-bezier(0.2, 0, 0, 1)) 1; } } @keyframes merlin-wand-twinkle { 0% { transform: scale(1) rotate(0deg); opacity: 1; } 35% { transform: scale(0.55) rotate(40deg); opacity: 0.6; } 65% { transform: scale(1.15) rotate(70deg); opacity: 1; } 100% { transform: scale(1) rotate(90deg); opacity: 1; } } @keyframes merlin-wand-flick { 0% { transform: rotate(0deg); } 40% { transform: rotate(-10deg); } 75% { transform: rotate(4deg); } 100% { transform: rotate(0deg); } } `",
+          "default": "css` .merlin-wand { display: inline-block; flex: none; width: var(--merlin-wand-size, var(--hax-ui-icon, 16px)); height: var(--merlin-wand-size, var(--hax-ui-icon, 16px)); fill: currentColor; overflow: visible; } .merlin-wand .sparkle { transform-box: fill-box; transform-origin: center; transition: filter var(--hax-ui-duration, 150ms) var(--hax-ui-easing, ease); } .merlin-wand .stick { transform-box: view-box; transform-origin: 3px 21px; } .merlin-wand .s2 { --merlin-wand-delay: 250ms; } .merlin-wand .s3 { --merlin-wand-delay: 500ms; } .merlin-wand-host:hover .merlin-wand .sparkle, .merlin-wand-host:focus-within .merlin-wand .sparkle { filter: drop-shadow(0 0 2px currentColor); } @media (prefers-reduced-motion: no-preference) { .merlin-wand-host:hover .merlin-wand .sparkle, .merlin-wand-host:focus-within .merlin-wand .sparkle { animation: merlin-wand-twinkle var(--ddd-duration-slow, 600ms) var(--ddd-timing-ease, cubic-bezier(0.4, 0, 0.2, 1)) var(--merlin-wand-delay, 0ms) 1 both; } .merlin-wand-host:hover .merlin-wand .stick, .merlin-wand-host:focus-within .merlin-wand .stick { animation: merlin-wand-flick var(--ddd-duration-slow, 600ms) var(--hax-ui-easing-move, cubic-bezier(0.2, 0, 0, 1)) 1; } } @keyframes merlin-wand-twinkle { 0% { transform: scale(1) rotate(0deg); opacity: 1; } 35% { transform: scale(0.55) rotate(40deg); opacity: 0.6; } 65% { transform: scale(1.15) rotate(70deg); opacity: 1; } 100% { transform: scale(1) rotate(90deg); opacity: 1; } } /* the World Traveler: one ink, lit parts in color. His bulb and goggles light with hover or focus and glow while Merlin listens or works */ .merlin-traveler { display: inline-block; flex: none; width: var( --merlin-traveler-size, var(--merlin-wand-size, var(--hax-ui-icon, 16px)) ); height: var( --merlin-traveler-size, var(--merlin-wand-size, var(--hax-ui-icon, 16px)) ); overflow: visible; } .merlin-traveler .ink { fill: currentColor; } .merlin-traveler .lit { opacity: 0; transition: opacity var(--hax-ui-duration, 150ms) var(--hax-ui-easing, ease); } .merlin-traveler .halo-bulb { fill: var(--ddd-theme-default-keystoneYellow, #ffd100); opacity: 0.45; } .merlin-traveler .halo-lens { fill: #2fd3e0; opacity: 0.4; } .merlin-traveler .rays { fill: none; stroke: var(--ddd-theme-default-keystoneYellow, #ffd100); stroke-width: 1; stroke-linecap: round; } .merlin-traveler .bulb { fill: var(--ddd-theme-default-keystoneYellow, #ffd100); } .merlin-traveler .lens { fill: #7ff0f8; } .merlin-traveler .glint { fill: var(--ddd-theme-default-white, #ffffff); } .merlin-wand-host:hover .merlin-traveler .lit, .merlin-wand-host:focus-within .merlin-traveler .lit, :host([focused]) .merlin-traveler .lit, :host([listening-for-input]) .merlin-traveler .lit, :host([loading]) .merlin-traveler .lit { opacity: 1; } @media (prefers-reduced-motion: no-preference) { :host([listening-for-input]) .merlin-traveler .halo, :host([loading]) .merlin-traveler .halo { animation: merlin-traveler-glow 2.4s ease-in-out infinite; } :host([listening-for-input]) .merlin-traveler .bulb, :host([listening-for-input]) .merlin-traveler .lens, :host([loading]) .merlin-traveler .bulb, :host([loading]) .merlin-traveler .lens { animation: merlin-traveler-pulse 2.4s ease-in-out infinite; } } @keyframes merlin-traveler-glow { 0%, 100% { opacity: 0.25; } 50% { opacity: 0.75; } } @keyframes merlin-traveler-pulse { 0%, 100% { filter: brightness(1); } 50% { filter: brightness(1.35); } } @keyframes merlin-wand-flick { 0% { transform: rotate(0deg); } 40% { transform: rotate(-10deg); } 75% { transform: rotate(4deg); } 100% { transform: rotate(0deg); } } `",
           "description": "Wand motion. Put the class merlin-wand-host on the control (a field or a\nbutton) that holds the wand. On hover or focus the sparkles glow and each\ntwinkles once, in turn, and the stick flicks once. With reduced motion\nonly the glow shows."
         },
         {
@@ -1091,6 +1846,14 @@
         }
       ],
       "exports": [
+        {
+          "kind": "js",
+          "name": "merlinVoiceSupported",
+          "declaration": {
+            "name": "merlinVoiceSupported",
+            "module": "lib/super-daemon-hax-ui.js"
+          }
+        },
         {
           "kind": "js",
           "name": "merlinWand",
@@ -1104,6 +1867,30 @@
           "name": "MERLIN_ICONS",
           "declaration": {
             "name": "MERLIN_ICONS",
+            "module": "lib/super-daemon-hax-ui.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "TRAVELER_ICONS",
+          "declaration": {
+            "name": "TRAVELER_ICONS",
+            "module": "lib/super-daemon-hax-ui.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "merlinTraveler",
+          "declaration": {
+            "name": "merlinTraveler",
+            "module": "lib/super-daemon-hax-ui.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "merlinMark",
+          "declaration": {
+            "name": "merlinMark",
             "module": "lib/super-daemon-hax-ui.js"
           }
         },
@@ -1425,6 +2212,16 @@
               },
               "attribute": "striped",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "voiceNumber",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "Number to say to run this row; shown while Merlin listens",
+              "attribute": "voice-number"
             }
           ],
           "events": [
@@ -1572,6 +2369,14 @@
               },
               "default": "null",
               "fieldName": "groupLabel"
+            },
+            {
+              "name": "voice-number",
+              "type": {
+                "text": "number"
+              },
+              "description": "Number to say to run this row; shown while Merlin listens",
+              "fieldName": "voiceNumber"
             },
             {
               "name": "details-in-pane",
@@ -1901,7 +2706,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ ...this.t, voiceSearch: \"Voice search\", filterCommands: \"Filter commands\", commands: \"Commands\", howMayIHelp: \"How may I help you?\", slashCommandsActive: \"Slash commands active\", developerConsoleActive: \"Developer console active\", }"
+              "default": "{ ...this.t, voiceSearch: \"Voice search\", listeningState: \"Listening\", listening: \"Listening..\", filterCommands: \"Filter commands\", commands: \"Commands\", howMayIHelp: \"How may I help you?\", slashCommandsActive: \"Slash commands active\", developerConsoleActive: \"Developer console active\", }"
             },
             {
               "kind": "field",
@@ -2119,8 +2924,27 @@
       "path": "lib/super-daemon-toast.js",
       "declarations": [
         {
+          "kind": "function",
+          "name": "superDaemonToastVoiceState",
+          "parameters": [
+            {
+              "name": "toast",
+              "description": "the toast (or a detail-shaped object)",
+              "type": {
+                "text": "Object"
+              }
+            }
+          ],
+          "description": "The voice state the toast shows, from what callers already send.\n- listening: Merlin is waiting for speech (awaitingMerlinInput)\n- speaking: Merlin is talking (a merlin toast that is not waiting yet)\n- message: anything else, such as the default \"Saved\"",
+          "return": {
+            "type": {
+              "text": "string"
+            }
+          }
+        },
+        {
           "kind": "class",
-          "description": "",
+          "description": "`super-daemon-toast`\nMerlin's voice card in the HAX UI admin style: the World Traveler mark,\na state pill (Listening, Speaking, Santa mode), the message, a hint of\nwhat can be said, and a way to stop. Sits bottom left, apart from the\nhaxcms-toast that drops from the top bar.\n\nSame API as before: the super-daemon-toast-show / super-daemon-toast-hide\nevents and every detail field (text, duration, merlin, future,\nawaitingMerlinInput, alwaysvisible, slot, eventCallback, accentColor,\nfire, hat, walking, classStyle). Santa mode is read from the Merlin\ninstance, so callers send nothing new.",
           "name": "SuperDaemonToast",
           "members": [
             {
@@ -2137,6 +2961,40 @@
                   "name": "_e"
                 }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "_merlin",
+              "description": "The Merlin instance, when it is on the page. Looked up rather than\nimported to avoid a circular dependency."
+            },
+            {
+              "kind": "method",
+              "name": "_renderPill"
+            },
+            {
+              "kind": "method",
+              "name": "_renderHint"
+            },
+            {
+              "kind": "method",
+              "name": "_renderMessage",
+              "description": "What Merlin heard. While someone is still talking this is the words so\nfar; it replaces the \"Listening..\" line, not the toast text."
+            },
+            {
+              "kind": "method",
+              "name": "_renderActions"
+            },
+            {
+              "kind": "method",
+              "name": "_stopListening"
+            },
+            {
+              "kind": "method",
+              "name": "_turnOffSanta"
+            },
+            {
+              "kind": "method",
+              "name": "_close"
             },
             {
               "kind": "method",
@@ -2162,7 +3020,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ saved: \"Saved\", }"
+              "default": "{ saved: \"Saved\", merlin: \"Merlin\", listeningState: \"Listening\", speakingState: \"Speaking\", santaModeState: \"Santa mode\", dismiss: \"Dismiss\", stopListening: \"Stop listening\", turnOffSantaMode: \"Turn off Santa mode\", sayACommand: \"Say a command, or\", toStopSay: \"To stop, say\", sayStopListening: \"stop listening\", sayDisableSanta: \"disable santa mode\", }"
             },
             {
               "kind": "field",
@@ -2291,11 +3149,83 @@
             },
             {
               "kind": "field",
+              "name": "voiceState",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "listening, speaking or message; worked out from the fields above",
+              "default": "\"message\"",
+              "attribute": "voice-state",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "santa",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Merlin is in Santa mode (always listening)",
+              "default": "false",
+              "attribute": "santa",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "heard",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Words heard, live while someone talks, then the final result",
+              "default": "\"\"",
+              "attribute": "heard"
+            },
+            {
+              "kind": "field",
+              "name": "hint",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "A tip for this moment, shown before hintSay",
+              "default": "\"\"",
+              "attribute": "hint"
+            },
+            {
+              "kind": "field",
+              "name": "hintSay",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "The phrase the tip asks for, shown as something to say",
+              "default": "\"\"",
+              "attribute": "hint-say"
+            },
+            {
+              "kind": "field",
+              "name": "sayList",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "Phrases to show as a list: [{ say, label }]",
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "_mark"
+            },
+            {
+              "kind": "field",
               "name": "darkMode",
               "privacy": "public",
               "type": {
                 "text": "boolean"
               },
+              "description": "Kept for compatibility. The card wears the HAX UI dark chrome in\nevery theme, so this no longer changes how it looks.",
               "attribute": "dark-mode",
               "reflects": true
             },
@@ -2317,6 +3247,7 @@
               "type": {
                 "text": "boolean"
               },
+              "description": "Kept for compatibility. The card wears the HAX UI dark chrome in\nevery theme, so this no longer changes how it looks.",
               "fieldName": "darkMode"
             },
             {
@@ -2410,6 +3341,51 @@
               "description": "Event callback when hide is called",
               "default": "null",
               "fieldName": "eventCallback"
+            },
+            {
+              "name": "voice-state",
+              "type": {
+                "text": "string"
+              },
+              "description": "listening, speaking or message; worked out from the fields above",
+              "default": "\"message\"",
+              "fieldName": "voiceState"
+            },
+            {
+              "name": "santa",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Merlin is in Santa mode (always listening)",
+              "default": "false",
+              "fieldName": "santa"
+            },
+            {
+              "name": "heard",
+              "type": {
+                "text": "string"
+              },
+              "description": "Words heard, live while someone talks, then the final result",
+              "default": "\"\"",
+              "fieldName": "heard"
+            },
+            {
+              "name": "hint",
+              "type": {
+                "text": "string"
+              },
+              "description": "A tip for this moment, shown before hintSay",
+              "default": "\"\"",
+              "fieldName": "hint"
+            },
+            {
+              "name": "hint-say",
+              "type": {
+                "text": "string"
+              },
+              "description": "The phrase the tip asks for, shown as something to say",
+              "default": "\"\"",
+              "fieldName": "hintSay"
             }
           ],
           "mixins": [
@@ -2421,7 +3397,9 @@
           "superclass": {
             "name": "SimpleToastEl",
             "package": "@haxtheweb/simple-toast/lib/simple-toast-el.js"
-          }
+          },
+          "tagName": "super-daemon-toast",
+          "customElement": true
         },
         {
           "kind": "variable",
@@ -2429,6 +3407,14 @@
         }
       ],
       "exports": [
+        {
+          "kind": "js",
+          "name": "superDaemonToastVoiceState",
+          "declaration": {
+            "name": "superDaemonToastVoiceState",
+            "module": "lib/super-daemon-toast.js"
+          }
+        },
         {
           "kind": "js",
           "name": "SuperDaemonToast",
@@ -2557,6 +3543,69 @@
                 }
               ],
               "description": "Hovering a row, or moving focus to it (arrow keys between rows), shows\nit in the details pane."
+            },
+            {
+              "kind": "method",
+              "name": "_sameResults",
+              "parameters": [
+                {
+                  "name": "before"
+                },
+                {
+                  "name": "after"
+                }
+              ],
+              "description": "The filter recomputes on a debounce after the results it already\ncomputed, giving a new list with the same results; that is not a new\nsearch, so the highlight (keyboard or voice) stays."
+            },
+            {
+              "kind": "method",
+              "name": "voiceHighlight",
+              "parameters": [
+                {
+                  "name": "index",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "Highlight a result without running it (spoken \"did you mean\")."
+            },
+            {
+              "kind": "method",
+              "name": "voiceMove",
+              "parameters": [
+                {
+                  "name": "delta",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "Move the highlight by delta results, wrapping (spoken next / back)."
+            },
+            {
+              "kind": "method",
+              "name": "voicePick",
+              "parameters": [
+                {
+                  "name": "index",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "Run a result by index (spoken number or \"run\").",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "voiceSelectedIndex",
+              "description": "The highlighted result index, or -1",
+              "readonly": true
             },
             {
               "kind": "method",
@@ -2828,7 +3877,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ ...this.t, noResultsForThisTerm: this._defaultTextEmpty, typeToSeeResults: \"Type something to see results\", voiceSearch: \"Voice search\", results: \"Results\", resultsCount: \"{count} results\", loadingResults: \"Loading results\", insertBlocks: \"Insert blocks\", findMedia: \"Find media\", submitIdeas: \"Submit your ideas\", dropFilesHere: \"Drop files here\", typeWhatYouWant: \"Type what you want to do\", opensMemoryPalace: \"opens Merlin\", clickToDoAnything: \"Click to do anything!\", details: \"Details\", preview: \"Preview\", insert: \"Insert\", run: \"Run\", open: \"Open\", move: \"Move\", close: \"Close\", all: \"All\", commands: \"Commands\", developer: \"Developer\", searchIn: \"Search in\", typeSlashOrToSwitch: \"Type / or > to switch\", site: \"Site\", editor: \"Editor\", cheatCodes: \"Cheat codes\", openFullMerlin: \"Open full Merlin\", resultsOfTotal: \"{count} of {total} results\", }"
+              "default": "{ ...this.t, noResultsForThisTerm: this._defaultTextEmpty, typeToSeeResults: \"Type something to see results\", voiceSearch: \"Voice search\", results: \"Results\", resultsCount: \"{count} results\", loadingResults: \"Loading results\", insertBlocks: \"Insert blocks\", findMedia: \"Find media\", submitIdeas: \"Submit your ideas\", dropFilesHere: \"Drop files here\", typeWhatYouWant: \"Type what you want to do\", opensMemoryPalace: \"opens Merlin\", clickToDoAnything: \"Click to do anything!\", details: \"Details\", preview: \"Preview\", insert: \"Insert\", run: \"Run\", open: \"Open\", move: \"Move\", close: \"Close\", all: \"All\", commands: \"Commands\", developer: \"Developer\", searchIn: \"Search in\", typeSlashOrToSwitch: \"Type / or > to switch\", site: \"Site\", editor: \"Editor\", cheatCodes: \"Cheat codes\", openFullMerlin: \"Open full Merlin\", resultsOfTotal: \"{count} of {total} results\", stopListening: \"Stop listening\", runResult: \"Run a result\", sayPickResult: \"second one\", sayCloseMerlin: \"close merlin\", sayStopListening: \"stop listening\", }"
             },
             {
               "kind": "field",

@@ -1,0 +1,27 @@
+{
+  "tag": "moar-sarcasm",
+  "package": "@haxtheweb/moar-sarcasm",
+  "source": "elements/moar-sarcasm/moar-sarcasm.js",
+  "attributes": {
+    "a11y": "a11y",
+    "say": "say"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/moar-sarcasm/lib/moar-sarcasm.haxProperties.json",
+    "gizmo": true,
+    "properties": [],
+    "attributes": [
+      "say"
+    ],
+    "slots": [],
+    "demoTags": [
+      "moar-sarcasm"
+    ]
+  }
+}

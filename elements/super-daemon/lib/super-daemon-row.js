@@ -43,6 +43,7 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
       delegatesFocus: true,
     };
     this.active = false;
+    this.hovered = false;
   }
   static get tag() {
     return "super-daemon-row";
@@ -65,8 +66,13 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
       value: { type: Object },
       tags: { type: Array },
       active: { type: Boolean, reflect: true },
+      // mouse over the row: a hover wash only. Active (keyboard / focus)
+      // is the row Enter runs, so only it shows the rail and Enter key.
+      hovered: { type: Boolean, reflect: true },
       striped: { type: Boolean, reflect: true },
       groupLabel: { type: String, attribute: "group-label" },
+      /** Number to say to run this row; shown while Merlin listens */
+      voiceNumber: { type: Number, attribute: "voice-number" },
       detailsInPane: {
         type: Boolean,
         reflect: true,
@@ -146,6 +152,9 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
           min-height: var(--hax-ui-row-height);
           padding: 0 var(--hax-ui-gap-md);
         }
+        :host([hovered]:not([active])) button {
+          background-color: var(--hax-ui-hover);
+        }
         :host([active]) button {
           background-color: var(--hax-ui-selected);
           box-shadow: inset 3px 0 0 var(--hax-ui-accent-strong);
@@ -153,6 +162,26 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
         button:focus-visible {
           outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
           outline-offset: calc(-1 * var(--hax-ui-focus-width));
+        }
+        /* while Merlin listens, the number to say to run this row */
+        .voice-number {
+          flex: none;
+          display: grid;
+          place-items: center;
+          min-width: 20px;
+          height: 20px;
+          padding: 0 var(--hax-ui-gap);
+          box-sizing: border-box;
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius);
+          font-family: var(--ddd-font-mono, monospace);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          font-variant-numeric: tabular-nums;
+          color: var(--hax-ui-text-muted);
+        }
+        :host([active]) .voice-number {
+          border-color: var(--hax-ui-accent-strong);
+          color: var(--hax-ui-accent-strong);
         }
         /* modal rows: the icon sits in the site admin card tile (.acard .ic) */
         .tile {
@@ -260,15 +289,27 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
           --simple-icon-height: 14px;
           color: var(--hax-ui-text-muted);
         }
+        /* the Enter key always holds its slot at the end of the row and
+           only shows on the active row, so moving through results never
+           shifts the shortcut chip or anything else in the row */
         .enter-icon {
           flex: none;
-          display: none;
+          display: inline-flex;
+          visibility: hidden;
           --simple-icon-width: 14px;
           --simple-icon-height: 14px;
           color: var(--hax-ui-accent-strong);
         }
         :host([active]) .enter-icon {
-          display: inline-flex;
+          visibility: visible;
+        }
+        /* phone: no keyboard expected, so no shortcut hints (same media as
+           KEYBOARD_SHORTCUTS_HIDDEN_MEDIA in @haxtheweb/utils keyboardShortcuts) */
+        @media (max-width: 599px), (pointer: coarse) and (max-height: 599px) {
+          .shortcut,
+          .enter-icon {
+            display: none;
+          }
         }
         .more {
           flex: none;
@@ -378,6 +419,12 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
   _focusOut(_e) {
     this.active = false;
   }
+  _hoverIn(_e) {
+    this.hovered = true;
+  }
+  _hoverOut(_e) {
+    this.hovered = false;
+  }
 
   focus() {
     this.shadowRoot.querySelector("button").focus();
@@ -423,16 +470,29 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
         tabindex="-1"
         @click="${this.clickEvent}"
         @keydown="${this.keyEvent}"
-        @mouseover="${this._focusIn}"
-        @mouseout="${this._focusOut}"
+        @mouseover="${this._hoverIn}"
+        @mouseout="${this._hoverOut}"
         @focusin="${this._focusIn}"
         @focusout="${this._focusOut}"
       >
         ${
+          this.voiceNumber
+            ? html`<span
+                class="voice-number"
+                part="voice-number"
+                aria-hidden="true"
+                >${this.voiceNumber}</span
+              >`
+            : ``
+        }
+        ${
           this.icon || this.image || this.textCharacter
             ? html`<span class="tile" part="tile">
                 ${
-                  this.icon
+                  // one glyph per tile: a text character (an emoji) is the
+                  // more specific choice, so it wins over an icon rather
+                  // than stacking under it
+                  this.icon && !this.textCharacter
                     ? html`<simple-icon-lite
                         icon="${this.icon}"
                         class="result-icon"

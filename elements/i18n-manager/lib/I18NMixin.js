@@ -1,5 +1,52 @@
 import { I18NManagerStore } from "../i18n-manager.js";
 export { I18NManagerStore };
+/**
+ * For elements that register with the manager directly instead of through
+ * I18NMixin (which does this on its own): release the manager's
+ * registrations of `context` when it leaves the page, so the registry does
+ * not keep it alive. Call from disconnectedCallback.
+ * @param {HTMLElement} context
+ */
+export function releaseLocalization(context) {
+  if (
+    !context ||
+    !I18NManagerStore ||
+    !I18NManagerStore.deregisterLocalization
+  ) {
+    return;
+  }
+  const details = I18NManagerStore.elements.filter(
+    (e) => e.context === context,
+  );
+  if (details.length) {
+    context.__i18nReleased = details;
+    context.__i18nLangAtDisconnect = I18NManagerStore.lang;
+    I18NManagerStore.deregisterLocalization(context);
+  }
+}
+/**
+ * Register again what releaseLocalization removed, when the element comes
+ * back (the HAX editor moves elements by removing and re-adding them). Call
+ * from connectedCallback. Like I18NMixin, restores the English defaults when
+ * the language went back to English while the element was away.
+ * @param {HTMLElement} context
+ */
+export function restoreLocalization(context) {
+  const details = context && context.__i18nReleased;
+  if (!details || !I18NManagerStore) {
+    return;
+  }
+  context.__i18nReleased = null;
+  const lang = I18NManagerStore.lang || "";
+  if (
+    context._t &&
+    lang !== context.__i18nLangAtDisconnect &&
+    (lang === "en" || lang.startsWith("en-"))
+  ) {
+    context.t = { ...context._t };
+  }
+  details.forEach((detail) => I18NManagerStore.registerLocalization(detail));
+}
 // SuperClass to simplify wiring up and noticing changes to t values
 // this is not required as you can simply use the event system
 // to keep to 0 dependencies but this helps simplify and standardize
@@ -13,6 +60,46 @@ export const I18NMixin = function (SuperClass) {
       super();
       if (!this.t) {
         this.t = {};
+      }
+    }
+    /**
+     * Registered again on reconnect when the manager let go of this element
+     * (on disconnect, or by pruneDisconnected before it was ever connected).
+     */
+    connectedCallback() {
+      if (super.connectedCallback) {
+        super.connectedCallback();
+      }
+      if (
+        this.__i18nDetail &&
+        I18NManagerStore &&
+        !I18NManagerStore.elements.some((e) => e.context === this)
+      ) {
+        // English after a language change made while we were away: the
+        // manager only pushes non-English text on register, so restore the
+        // defaults here
+        const lang = I18NManagerStore.lang || "";
+        if (
+          this._t &&
+          lang !== this.__i18nLangAtDisconnect &&
+          (lang === "en" || lang.startsWith("en-"))
+        ) {
+          this.t = { ...this._t };
+        }
+        I18NManagerStore.registerLocalization(this.__i18nDetail);
+      }
+    }
+    /**
+     * Let the manager drop this element so its registry does not keep it
+     * alive after removal.
+     */
+    disconnectedCallback() {
+      if (this.__i18nDetail && I18NManagerStore) {
+        this.__i18nLangAtDisconnect = I18NManagerStore.lang;
+        I18NManagerStore.deregisterLocalization(this);
+      }
+      if (super.disconnectedCallback) {
+        super.disconnectedCallback();
       }
     }
     /**
@@ -187,6 +274,11 @@ export const I18NMixin = function (SuperClass) {
       // this also ensures that things leveraging the Mixin will never miss
       // the singleton being registered
       if (I18NManagerStore) {
+        // remember our own registration so it can be restored on reconnect
+        if (detail.context === this && !this.__i18nDetail) {
+          this.__i18nDetail = detail;
+          this.__i18nMixinManaged = true;
+        }
         I18NManagerStore.registerLocalization(detail);
       }
     }

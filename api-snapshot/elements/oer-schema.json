@@ -1,0 +1,30 @@
+{
+  "tag": "oer-schema",
+  "package": "@haxtheweb/oer-schema",
+  "source": "elements/oer-schema/oer-schema.js",
+  "attributes": {
+    "oer-property": "oerProperty",
+    "related-resource": "relatedResource",
+    "schemamap": "schemaMap",
+    "text": "text",
+    "typeof": "typeof"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/oer-schema/oer-schema.js",
+    "gizmo": true,
+    "properties": [
+      "oerProperty",
+      "relatedResource",
+      "typeof"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": []
+  }
+}

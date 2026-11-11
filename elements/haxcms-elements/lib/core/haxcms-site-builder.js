@@ -7,7 +7,7 @@ import {
   localStorageSet,
   localStorageGet,
 } from "@haxtheweb/utils/lib/storage.js";
-import { sanitizeURLValue } from "@haxtheweb/utils/lib/url.js";
+import { buildPageContentHTML } from "./utils/page-content-html.js";
 import {
   neutralizeStrayScripts,
   sanitizeNodeTree,
@@ -45,7 +45,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           display: block;
           position: relative;
         }
-        :host([is-logged-in]) {
+        :host([is-logged-in]:not([preview-mode])) {
           max-height: calc(100vh - 56px);
         }
         :host #slot {
@@ -86,7 +86,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
   // render function
   render() {
     return html`
-      <site-ai-chat></site-ai-chat>
       <haxcms-site-router base-uri="${this.baseURI}"></haxcms-site-router>
       <simple-progress .disabled="${!this.loading}"></simple-progress>
       <div id="slot"><slot></slot></div>
@@ -183,9 +182,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
    */
   _updateManifest(data) {
     this.manifest = { ...data };
-  }
-  _updateLoading(e) {
-    this.loading = e.detail.value;
   }
   hashCode(s) {
     return s.split("").reduce((a, b) => {
@@ -469,10 +465,14 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     if (!this.file || this.isLoggedIn || this._timeStamp) {
       return false;
     }
-    let url = `${this.outlineLocation}${this.file}`;
-    url += url.indexOf("?") !== -1 ? `&${Date.now()}` : `?${Date.now()}`;
+    // same URL as the first load, revalidated: the browser sends
+    // If-None-Match / If-Modified-Since and an unchanged site.json comes back
+    // as a 304, instead of downloading the whole manifest again (it used to
+    // be no-store + a timestamp: a full second copy on every page load).
+    // no-cache also makes intermediate caches check with the server.
+    const url = `${this.outlineLocation}${this.file}`;
     try {
-      const response = await fetch(url, { cache: "no-store" });
+      const response = await fetch(url, { cache: "no-cache" });
       if (!response.ok) {
         return false;
       }
@@ -712,6 +712,14 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         type: Boolean,
         reflect: true,
         attribute: "is-logged-in",
+      },
+      /**
+       * logged in, but drawing the site as a visitor sees it
+       */
+      previewMode: {
+        type: Boolean,
+        reflect: true,
+        attribute: "preview-mode",
       },
       /**
        * queryParams
@@ -989,6 +997,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     });
     this.disableFeatures = "";
     this.isLoggedIn = false;
+    this.previewMode = false;
     this.__disposer = [];
     this.queryParams = {};
     this.loading = false;
@@ -1061,12 +1070,21 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       const _mobx_val_0 = toJS(store.darkMode);
       const _mobx_val_1 = toJS(store.darkMode);
       Promise.resolve().then(() => {
-        localStorageSet("app-hax-darkMode", _mobx_val_0);
+        // preview's light / dark switch is for the preview only; never save it
+        if (!store.previewMode && !store.inPreviewFrame) {
+          localStorageSet("app-hax-darkMode", _mobx_val_0);
+        }
         if (_mobx_val_1) {
           globalThis.document.body.classList.add("dark-mode");
         } else {
           globalThis.document.body.classList.remove("dark-mode");
         }
+      });
+    });
+    autorun(() => {
+      const _mobx_val_0 = toJS(store.previewMode);
+      Promise.resolve().then(() => {
+        this.previewMode = _mobx_val_0;
       });
     });
     autorun(() => {
@@ -1370,103 +1388,12 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
   async _activeItemContentChanged(newValue, activeItem) {
     let htmlcontent = newValue;
     if (htmlcontent !== null && activeItem && activeItem.metadata) {
-      // Check if page-break should be hidden by platform configuration
-      const pageBreakHidden = store.platformAllows("pageBreak") === false;
-      const setAttrIfValue = (el, name, value) => {
-        if (
-          typeof value !== typeof undefined &&
-          value !== null &&
-          String(value) !== ""
-        ) {
-          el.setAttribute(name, String(value));
-        }
-      };
-      // force a page break w/ the relevant details in code
-      // this allows the UI to be modified
-      // required fields followed by optional fields if defined
-      const wrapper = globalThis.document.createElement("div");
-      const pageBreak = globalThis.document.createElement("page-break");
-      pageBreak.setAttribute("break-type", "site");
-      setAttrIfValue(pageBreak, "title", activeItem.title);
-      setAttrIfValue(pageBreak, "parent", activeItem.parent);
-      setAttrIfValue(pageBreak, "item-id", activeItem.id);
-      setAttrIfValue(pageBreak, "slug", activeItem.slug);
-      setAttrIfValue(pageBreak, "description", activeItem.description);
-      setAttrIfValue(pageBreak, "order", activeItem.order);
-      setAttrIfValue(pageBreak, "page-type", activeItem.metadata.pageType);
-      setAttrIfValue(
-        pageBreak,
-        "tags",
-        Array.isArray(activeItem.metadata.tags)
-          ? activeItem.metadata.tags.join(",")
-          : activeItem.metadata.tags,
-      );
-      setAttrIfValue(
-        pageBreak,
-        "related-items",
-        activeItem.metadata.relatedItems,
-      );
-      setAttrIfValue(pageBreak, "image", activeItem.metadata.image);
-      setAttrIfValue(pageBreak, "icon", activeItem.metadata.icon);
-      setAttrIfValue(
-        pageBreak,
-        "accent-color",
-        activeItem.metadata.accentColor,
-      );
-      if (activeItem.metadata.theme && activeItem.metadata.theme.key) {
-        pageBreak.setAttribute(
-          "developer-theme",
-          activeItem.metadata.theme.key,
-        );
-      }
-      const safeLinkUrl = sanitizeURLValue(activeItem.metadata.linkUrl, "");
-      setAttrIfValue(pageBreak, "link-url", safeLinkUrl);
-      setAttrIfValue(pageBreak, "link-target", activeItem.metadata.linkTarget);
-      if (activeItem.metadata.hideInMenu) {
-        pageBreak.setAttribute("hide-in-menu", "hide-in-menu");
-      }
-      if (activeItem.metadata.locked) {
-        pageBreak.setAttribute("locked", "locked");
-      }
-      if (pageBreakHidden) {
-        pageBreak.setAttribute("platform-hidden", "platform-hidden");
-      }
-      if (activeItem.metadata.published !== false) {
-        pageBreak.setAttribute("published", "published");
-      }
-      if (activeItem.metadata.overridePathauto) {
-        pageBreak.setAttribute("override-pathauto", "override-pathauto");
-      }
-      wrapper.appendChild(pageBreak);
-      const contentFragment = globalThis.document
-        .createRange()
-        .createContextualFragment(htmlcontent);
-      wrapper.appendChild(contentFragment);
-
-      // If this page has a link URL configured and the user is not logged in,
-      // append simple redirect messaging for a better user experience
-      if (safeLinkUrl) {
-        const linkTargetCandidates = ["_self", "_blank", "_parent", "_top"];
-        const linkTarget = linkTargetCandidates.includes(
-          activeItem.metadata.linkTarget,
-        )
-          ? activeItem.metadata.linkTarget
-          : "_self";
-        const linkParagraph = globalThis.document.createElement("p");
-        const link = globalThis.document.createElement("a");
-        link.setAttribute("href", String(safeLinkUrl));
-        link.setAttribute("target", String(linkTarget));
-        link.setAttribute("rel", "noopener noreferrer");
-        link.textContent = String(safeLinkUrl);
-        linkParagraph.appendChild(link);
-        const hintParagraph = globalThis.document.createElement("p");
-        const hint = globalThis.document.createElement("small");
-        hint.textContent = this.t.redirectHint;
-        hintParagraph.appendChild(hint);
-        wrapper.appendChild(linkParagraph);
-        wrapper.appendChild(hintParagraph);
-      }
-      htmlcontent = wrapper.innerHTML;
+      // page-break + content (+ link-out hint), assembled in an inert
+      // document so no element is constructed just to be serialized
+      htmlcontent = buildPageContentHTML(htmlcontent, activeItem, {
+        pageBreakHidden: store.platformAllows("pageBreak") === false,
+        redirectHint: this.t.redirectHint,
+      });
 
       // Previously, style-guide-driven defaults were applied here.
       // That behavior has been removed so page content renders as-is.

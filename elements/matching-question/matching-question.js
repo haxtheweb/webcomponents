@@ -111,7 +111,7 @@ class MatchingQuestion extends QuestionElement {
         }
 
         simple-icon-button-lite {
-          right: 0;
+          inset-inline-end: 0;
           top: 0;
           display: block;
           position: absolute;

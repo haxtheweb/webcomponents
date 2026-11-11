@@ -162,8 +162,14 @@ describe("a11y-media-transcript-cue", () => {
     el.start = "00:01";
     el.end = "00:05";
     await el.updateComplete;
+    // only the start shows, in short form, above the text
     expect(el.shadowRoot.querySelector("#time").textContent.trim()).to.equal(
-      "00:01 - 00:05",
+      "1s",
+    );
+    el.start = "01:20";
+    await el.updateComplete;
+    expect(el.shadowRoot.querySelector("#time").textContent.trim()).to.equal(
+      "1m 20s",
     );
     // slotted content lives in light DOM, surfaced through the #text slot
     expect(el.shadowRoot.querySelector("#text slot")).to.exist;

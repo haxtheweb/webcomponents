@@ -743,38 +743,44 @@ export class MicroGameBase extends I18NMixin(
         <p class="fin-stats">${o.stats || ""}</p>
         ${o.body || ""}
         <slot name="finish" @slotchange="${this._onFinishSlot}">
-          ${showPrompt
-            ? html`
-                <p class="fin-lead">
-                  ${this.finishLead || this.t.finishLeadDefault}
-                </p>
-                <div class="code">
-                  <pre><code id="prompt">${this.prompt}</code></pre>
-                </div>
-              `
-            : ""}
+          ${
+            showPrompt
+              ? html`
+                  <p class="fin-lead">
+                    ${this.finishLead || this.t.finishLeadDefault}
+                  </p>
+                  <div class="code">
+                    <pre><code id="prompt">${this.prompt}</code></pre>
+                  </div>
+                `
+              : ""
+          }
         </slot>
         <div class="row">
-          ${showPrompt
-            ? html`<button
-                class="btn"
-                type="button"
-                @click="${this.copyPrompt}"
-              >
-                ${this._copied === "ok" ? this.t.copied : this.t.copy}
-              </button>`
-            : ""}
+          ${
+            showPrompt
+              ? html`<button
+                  class="btn"
+                  type="button"
+                  @click="${this.copyPrompt}"
+                >
+                  ${this._copied === "ok" ? this.t.copied : this.t.copy}
+                </button>`
+              : ""
+          }
           <slot name="finish-actions"></slot>
           <button class="btn alt" type="button" @click="${this._reset}">
             ${this.t.playAgain}
           </button>
         </div>
         <p class="status" role="status">
-          ${this._copied === "ok"
-            ? this.t.copyNote
-            : this._copied === "fail"
-              ? this.t.copyFail
-              : ""}
+          ${
+            this._copied === "ok"
+              ? this.t.copyNote
+              : this._copied === "fail"
+                ? this.t.copyFail
+                : ""
+          }
         </p>
       </section>
     `;
@@ -834,9 +840,11 @@ export class MicroGameBase extends I18NMixin(
       <div class="overlay" @click="${this.gameStart}">
         <p class="ov-title">${title}</p>
         <p class="ov-sub">${sub}</p>
-        ${this.editMode || this.isEmpty
-          ? ""
-          : html`<button class="btn big" type="button">${action}</button>`}
+        ${
+          this.editMode || this.isEmpty
+            ? ""
+            : html`<button class="btn big" type="button">${action}</button>`
+        }
       </div>
     `;
   }
@@ -995,6 +1003,8 @@ export class MicroGameBase extends I18NMixin(
           background: var(--micro-game-panel);
           color: var(--micro-game-ink);
         }
+        /* physical on purpose: the d-pad sits over the game board, which
+           does not mirror in right-to-left */
         .dpad {
           position: absolute;
           right: var(--ddd-spacing-2);

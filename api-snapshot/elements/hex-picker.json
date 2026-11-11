@@ -1,0 +1,31 @@
+{
+  "tag": "hex-picker",
+  "package": "@haxtheweb/hex-picker",
+  "source": "elements/hex-picker/hex-picker.js",
+  "attributes": {
+    "disabled": "disabled",
+    "large-display": "largeDisplay",
+    "t": "t",
+    "value": "value"
+  },
+  "slots": [],
+  "events": [
+    "value-changed"
+  ],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/hex-picker/hex-picker.js",
+    "gizmo": true,
+    "properties": [
+      "disabled",
+      "largeDisplay",
+      "value"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "hex-picker"
+    ]
+  }
+}

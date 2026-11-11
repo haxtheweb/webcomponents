@@ -152,7 +152,7 @@ describe("HaxmaTheme autorun disposal (issue 3106)", () => {
   it("disposes every autorun on disconnect so removed themes stop reacting", async () => {
     const el = await fixture(html`<haxma-theme></haxma-theme>`);
     await el.updateComplete;
-    // 3 HAXCMSLitElementTheme + 2 HAXCMSThemeParts + 3 own constructor
+    // 3 HAXCMSLitElementTheme + 3 own constructor
     // autoruns, plus the connect-time autoruns from the mixin
     expect(el.__disposer.length).to.be.at.least(8);
     el.remove();

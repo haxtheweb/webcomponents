@@ -34,12 +34,24 @@ import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-
 import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
 import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
 import { HAXCMSKeyboardShortcutsInstance } from "./utils/HAXCMSKeyboardShortcuts.js";
+import {
+  KEYBOARD_SHORTCUTS_HIDDEN_MEDIA,
+  labelWithShortcut,
+} from "@haxtheweb/utils/lib/keyboardShortcuts.js";
+import {
+  PREVIEW_DEVICES,
+  previewFrameName,
+  previewFrameSrc,
+  previewDevice,
+  previewFrameSize,
+  lockPreviewFrame,
+  waitForPreviewStore,
+  showContentInPreview,
+} from "./utils/HAXCMSPreview.js";
+import { styleMap } from "lit/directives/style-map.js";
 import "@haxtheweb/simple-modal/simple-modal.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
-import "./haxcms-site-insights.js"; // Legacy element tag name retained; it now renders Reports UI.
 import "./haxcms-darkmode-toggle.js";
-import "../ui-components/site/site-remote-content.js";
-import "@haxtheweb/page-flag/page-flag.js";
 import { SiteView } from "../ui-components/magic/site-view.js";
 import { haxcmsApiMessage } from "./utils/HAXCMSApiMessages.js";
 import { urlHostMatches } from "./utils/urlHost.js";
@@ -587,9 +599,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           display: none;
         }
         .site-menu::part(menuToggle),
-        #user-menu::part(menuToggle) {
+        #user-menu::part(menuToggle),
+        #previewmenu::part(menuToggle) {
           display: flex;
           align-items: center;
+        }
+        /* the device menu's toggle sits on the bar's line like the house:
+           its button centered in the 64px bar, level with Preview */
+        #previewmenu {
+          height: var(--top-bar-height, 64px);
         }
         .site-menu[hidden] {
           display: none;
@@ -603,6 +621,268 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         simple-toolbar-menu-item.menu-item-delete simple-toolbar-button:hover {
           color: var(--ddd-theme-default-error);
           background-color: var(--ddd-theme-default-errorLight);
+        }
+
+        /* Preview (haxtheweb/issues#2951): the bar collapses to its right
+           end, a flag in the top right corner holding the device button,
+           Preview and the HAX mark. The page underneath lays out as it does
+           for a visitor: no 64px spacer, no edit affordances. */
+        .preview-toolbar-buttons {
+          position: relative;
+          gap: var(--hax-ui-gap-md, 8px);
+          align-items: center;
+        }
+        :host([preview-mode]) {
+          height: 0;
+        }
+        :host([preview-mode]) app-hax-top-bar {
+          pointer-events: none;
+        }
+        :host([preview-mode]) app-hax-top-bar::part(top-bar) {
+          background-color: transparent;
+          border-bottom-color: transparent;
+        }
+        /* display, not visibility: the Edit button sets its own
+           visibility, which would show through a hidden parent */
+        :host([preview-mode]) .topbar-left-group,
+        :host([preview-mode]) .topbar-center-group,
+        :host([preview-mode]) .right-toolbar-buttons {
+          display: none;
+        }
+        :host([preview-mode]) .topbar-right-group {
+          pointer-events: auto;
+          width: max-content;
+          margin-left: auto;
+          padding-left: var(--hax-ui-gap-lg, 12px);
+          box-sizing: border-box;
+          background-color: var(--ddd-theme-default-coalyGray);
+          border-left: 1px solid var(--hax-ui-line);
+          border-bottom: 1px solid var(--hax-ui-line);
+          border-bottom-left-radius: var(--hax-ui-radius-lg);
+        }
+        /* editing keeps edit mode's accent rule under the flag */
+        :host([preview-mode][edit-mode]) .topbar-right-group {
+          border-bottom: var(--hax-ui-focus-width) solid
+            var(--hax-ui-accent-strong);
+        }
+        .preview-device-button {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-md, 8px);
+          height: var(--ddd-control-height-sm, 40px);
+          margin: 0;
+          padding: 0 var(--hax-ui-gap, 4px) 0 var(--hax-ui-gap-md, 8px);
+          border: none;
+          border-radius: var(--hax-ui-radius-lg);
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size);
+          color: var(--hax-ui-on-titlebar, var(--hax-ui-text));
+          background: transparent;
+          white-space: nowrap;
+          cursor: pointer;
+          transition: background-color var(--hax-ui-duration)
+            var(--hax-ui-easing);
+        }
+        .preview-device-button:hover,
+        .preview-device-button:focus-visible,
+        .preview-device-button[aria-expanded="true"] {
+          background-color: var(--hax-ui-hover);
+        }
+        .preview-device-button:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: -2px;
+        }
+        .preview-device-button simple-icon-lite,
+        .preview-menu-row simple-icon-lite {
+          flex: none;
+          --simple-icon-width: var(--hax-ui-icon, 16px);
+          --simple-icon-height: var(--hax-ui-icon, 16px);
+        }
+        /* .hax-ui-pill[data-tone="warning"] */
+        .preview-chip {
+          display: inline-flex;
+          align-items: center;
+          flex: none;
+          padding: 0 var(--hax-ui-gap-md, 8px);
+          border-radius: var(--hax-ui-radius-pill);
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          font-weight: var(--ddd-font-weight-medium, 500);
+          line-height: 1.5;
+          white-space: nowrap;
+          color: var(--hax-ui-warning);
+          background-color: var(--hax-ui-warning-soft);
+        }
+        /* never taller (or wider) than the screen: it scrolls instead */
+        #previewmenu::part(dropdown) {
+          max-width: calc(100vw - 2 * var(--hax-ui-gap-md, 8px));
+          max-height: calc(
+            100vh - var(--top-bar-height, 64px) - var(--hax-ui-gap-md, 8px)
+          );
+          max-height: calc(
+            100dvh - var(--top-bar-height, 64px) - var(--hax-ui-gap-md, 8px)
+          );
+          overflow-y: auto;
+          overscroll-behavior: contain;
+        }
+        /* closes a device view (back to this window), top left of the stage
+           where the flag isn't; drawn like the flag */
+        .preview-stage-close {
+          position: absolute;
+          top: calc(
+            (var(--top-bar-height, 64px) - var(--ddd-control-height-sm, 40px)) /
+              2
+          );
+          left: var(--hax-ui-gap-lg, 12px);
+          display: inline-grid;
+          place-items: center;
+          width: var(--ddd-control-height-sm, 40px);
+          height: var(--ddd-control-height-sm, 40px);
+          margin: 0;
+          padding: 0;
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius-lg);
+          color: var(--ddd-theme-default-white);
+          background-color: var(--ddd-theme-default-coalyGray);
+          box-shadow: var(--hax-ui-shadow-popover);
+          cursor: pointer;
+          color-scheme: dark;
+        }
+        .preview-stage-close:hover {
+          background-color: var(--ddd-theme-default-potentialMidnight);
+        }
+        .preview-stage-close:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
+        }
+        .preview-stage-close simple-icon-lite {
+          --simple-icon-width: var(--ddd-icon-3xs, 20px);
+          --simple-icon-height: var(--ddd-icon-3xs, 20px);
+        }
+        /* the device menu is the bar's own popover (app-hax-user-menu);
+           these rows sit in its post-menu group like the dark mode and sound
+           rows in the user menu */
+        .preview-menu-row {
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-md, 8px);
+          width: 100%;
+          min-height: var(--hax-ui-row-height-roomy, 40px);
+          margin: 0;
+          padding: 0 var(--hax-ui-gap-md, 8px);
+          box-sizing: border-box;
+          border: none;
+          border-radius: var(--hax-ui-radius);
+          font-family: inherit;
+          font-size: var(--hax-ui-admin-font-size);
+          line-height: 1.25;
+          text-align: left;
+          color: var(--hax-ui-text);
+          background: transparent;
+        }
+        .preview-seg button:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: -2px;
+        }
+        .preview-menu-row .preview-row-label {
+          flex: 1;
+        }
+        .preview-menu-row[data-disabled] {
+          color: var(--hax-ui-text-muted);
+        }
+        /* .hax-ui-seg */
+        .preview-seg {
+          display: inline-flex;
+          flex: none;
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius);
+          overflow: hidden;
+        }
+        .preview-seg button {
+          all: unset;
+          box-sizing: border-box;
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          height: calc(var(--hax-ui-row-height, 32px) - 2px);
+          padding: 0 10px;
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: 13px;
+          color: var(--hax-ui-text);
+        }
+        .preview-seg button + button {
+          border-left: 1px solid var(--hax-ui-line-strong);
+        }
+        .preview-seg button:hover {
+          background-color: var(--hax-ui-hover);
+        }
+        .preview-seg button[aria-pressed="true"] {
+          font-weight: var(--ddd-font-weight-bold, 700);
+          background-color: var(--hax-ui-accent-soft);
+          box-shadow: inset 0 -3px 0 var(--hax-ui-accent-strong);
+        }
+        .preview-seg button[disabled] {
+          cursor: default;
+          color: var(--hax-ui-text-muted);
+          background-color: transparent;
+          box-shadow: none;
+          font-weight: inherit;
+        }
+        /* the stage behind a device frame, or a full window frame while
+           editing; under the flag (the bar is z-index 1000) */
+        .preview-stage {
+          position: fixed;
+          inset: 0;
+          z-index: 999;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: var(--hax-ui-gap-md, 8px);
+          padding: var(--top-bar-height, 64px) var(--ddd-spacing-4, 16px)
+            var(--ddd-spacing-4, 16px);
+          box-sizing: border-box;
+          background-color: var(--hax-ui-sunken, #f2f2f4);
+          color-scheme: light dark;
+        }
+        .preview-stage.full {
+          padding: 0;
+        }
+        .preview-device {
+          position: relative;
+          flex: none;
+          overflow: hidden;
+          box-sizing: content-box;
+          background-color: var(--ddd-theme-default-white);
+          box-shadow: var(--hax-ui-shadow-popover);
+        }
+        .preview-device.bezel {
+          border: var(--ddd-border-size-lg, 4px) solid
+            var(--ddd-theme-default-coalyGray);
+          border-radius: var(--ddd-radius-lg, 16px);
+        }
+        .preview-device.monitor {
+          border: 1px solid var(--ddd-theme-default-coalyGray);
+          border-radius: var(--hax-ui-radius-lg);
+        }
+        .preview-stage.full .preview-device {
+          box-shadow: none;
+        }
+        .preview-device iframe {
+          position: absolute;
+          top: 0;
+          left: 0;
+          /* the frame keeps the device's own size; only transform shrinks it */
+          max-width: none;
+          max-height: none;
+          border: 0;
+          transform-origin: 0 0;
+          background-color: var(--ddd-theme-default-white);
+        }
+        .preview-caption {
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text-muted);
         }
 
         @media screen and (max-width: 800px) {
@@ -635,11 +915,38 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           }
         }
         @media (max-width: 600px) {
+          /* preview sits on the right, after Merlin's button; the device
+             button shows just its icon, and the device menu spans the
+             screen under the bar so it always fits */
+          .preview-device-label {
+            display: none;
+          }
+          /* the right group holds only Preview here (the HAX mark is
+             hidden), so drop its gaps and the mark's empty slot: the page
+             tools on the left keep their room */
+          .topbar-right-group {
+            gap: 0;
+            padding-right: var(--hax-ui-gap-md, 8px);
+          }
+          .home-btn {
+            display: none;
+          }
+          /* and the thin group dividers go, so Edit still fits beside you,
+             the house and Add page */
+          .topbar-left-group .topbar-divider {
+            display: none;
+          }
+          #previewmenu::part(dropdown) {
+            position: fixed;
+            top: calc(var(--top-bar-height, 64px) - var(--hax-ui-gap, 4px));
+            left: var(--hax-ui-gap-md, 8px);
+            right: var(--hax-ui-gap-md, 8px);
+            min-width: 0;
+          }
           /** hide buttons on a phone bc its too small */
           .haxLogo,
           #exportbtn,
-          #content-map,
-          #outlinebutton {
+          #content-map {
             display: none;
           }
           simple-toolbar {
@@ -656,7 +963,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             --haxcms-editor-merlin-width: var(--ddd-control-height-sm, 40px);
           }
           app-hax-top-bar::part(top-bar) {
-            grid-template-columns: minmax(0, 1fr) auto 0 !important;
+            grid-template-columns: minmax(0, 1fr) auto auto !important;
           }
           .topbar-left-group {
             min-width: 0;
@@ -667,6 +974,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             justify-content: flex-end;
           }
           super-daemon-search.merlin::part(filter) {
+            display: none;
+          }
+          /* folded to a button there is no room for the Alt⇧ chip */
+          super-daemon-search.merlin::part(shortcut) {
             display: none;
           }
           super-daemon-search.merlin::part(field) {
@@ -1993,13 +2304,16 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         "Expecting to see an option Merlin didn't provide?",
       makeASuggestionToImproveResults: "Make a suggestion to improve results",
       createAPage: "Create a page",
-      typePageTitleToCreatePage: "Type page title to create page",
-      createNewPage: "Create New Page",
+      pageTitlePlaceholder: "Page title",
+      createNewPageTypeToName: "Create New Page (type a title to name it)",
       newPageCapitalized: "New Page",
       createTitleWithView: "Create {title} with view",
       createTitle: "Create {title}",
+      createTemplate: "Create {template}",
       createTemplateNamedTitle: "Create {template} named {title}",
-      duplicateAsTitle: "Duplicate as {title}",
+      duplicateCurrentPage: "Duplicate current page",
+      duplicateCurrentPageRenameTo: "Duplicate current page, rename to {title}",
+      copyOfTitle: "{title} (copy)",
       errorMessage: "Error: {error}",
       movePage: "Move Page",
       typeToFilterPages: "Type to filter pages",
@@ -2081,19 +2395,31 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       changeSiteSettings: "Change site settings",
       dontShowThisWelcomeAgain: "Don't show this welcome again",
       showGettingStartedTasks: "Show getting started tasks",
-      previewAudienceMode: "Preview audience mode",
-      changePlatformAudienceDescription:
-        "Change platform audience just for the current browsing session",
-      haxLabs: "HAX Labs",
       unlockAllThemes: "Unlock all themes",
       pageDataFormats: "Page data formats",
       switchToAnotherSite: "Switch to another site",
       printOptions: "Print options",
       exportThisPage: "Export this page",
       exportThisSite: "Export this site",
-      viewOnlyMode: "View only mode",
-      viewOnlyModeDescription:
-        "Enable view only mode to hide all editing tools and experience the site as a visitor would see it",
+      preview: "Preview",
+      visitorAndDevicePreview: "Visitor and Device Preview",
+      previewDescription:
+        "See this site as a visitor would, on the device you pick, without logging out",
+      uxStudy: "UX study recording",
+      uxStudyStart: "Start UX study recording",
+      uxStudyStartFor: "Start UX study for {participant}",
+      uxStudyStartDescription:
+        "Type a participant code (no names) before choosing, then use the site as normal",
+      uxStudyMarkAs: "Mark task: {label}",
+      uxStudyMarkHint: "Type a task name to mark it",
+      uxStudyRecording: "Recording UX study",
+      uxStudyMark: "Mark task",
+      uxStudyMarkPrompt: "Task or note",
+      uxStudyStopAndExport: "Stop and export",
+      uxStudyStarted:
+        "UX study recording started. Nothing leaves this browser until you export it.",
+      uxStudyExported: "UX study saved as {file}",
+      uxStudyNotRecording: "No UX study is recording",
       renameThisPage: "Rename this page",
       updatePageDescription: "Update page description",
       updatePageUrlSlug: "Update page URL (slug)",
@@ -2164,6 +2490,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       cheatCodesUnlocked:
         "🎮 Cheat codes unlocked! Check Merlin for new programs.",
       failedToUnlockCheatCodes: "🎮 Failed to unlock cheat codes",
+      cheatCodes: "Cheat codes (↑↑↓↓←→←→ B A)",
+      cheatCodesDescription:
+        "Unlock silly extras. Or type up up down down left right left right B A anywhere, even with Merlin open.",
       platformSettings: "Platform settings",
       selectFileEllipsis: "Select file..",
     };
@@ -2202,20 +2531,21 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       return true;
     };
     // nothing message so we can suggest a link to make a suggestion
-    SuperDaemonInstance.noResultsSlot = () => {
+    // a real link to a prefilled issue in the unified queue, so it works
+    // by click, middle click and keyboard, and pop-up blocking can't eat it
+    SuperDaemonInstance.noResultsSlot = (searchTerm) => {
       return html`<div class="no-results">
           ${this.t.expectingToSeeAnOptionMerlinDidntProvide}
         </div>
         <a
-          @click="${(_e) => {
-            HAXStore._haxStoreContribute(
-              "merlin",
-              "POP,enhancement",
-              SuperDaemonInstance.commandContext +
-                " " +
-                SuperDaemonInstance.value,
-            );
-          }}"
+          href="${HAXStore.merlinSuggestionUrl(
+            "POP,enhancement",
+            SuperDaemonInstance.commandContext +
+              " " +
+              (searchTerm || SuperDaemonInstance.value || ""),
+          )}"
+          target="_blank"
+          rel="noopener noreferrer"
           >${this.t.makeASuggestionToImproveResults}</a
         >`;
     };
@@ -2228,7 +2558,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       i18n: {
         context: this,
         title: "createAPage",
-        "value.placeholder": "typePageTitleToCreatePage",
+        "value.placeholder": "pageTitlePlaceholder",
       },
       title: this.t.createAPage,
       icon: "hax:add-page",
@@ -2244,7 +2574,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       value: {
         name: "create-page",
         machineName: "create-page",
-        placeholder: this.t.typePageTitleToCreatePage,
+        placeholder: this.t.pageTitlePlaceholder,
         program: async (input, values) => {
           // Get reference to site editor UI regardless of how program was accessed
           const siteEditorUI =
@@ -2254,40 +2584,26 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           const templateContent =
             values && values.templateContent ? values.templateContent : null;
 
-          // If no input provided, show default page creation option to match prior UX
-          if (!input || input.trim() === "") {
-            return [
-              {
-                title: this.t.createNewPage,
-                icon: "hax:add-page",
-                tags: ["page", "blank", "create"],
-                value: {
-                  target: siteEditorUI,
-                  method: "createPageWithTitle",
-                  args: [
-                    this.t.newPageCapitalized,
-                    createType,
-                    templateContent,
-                  ],
-                },
-                eventName: "super-daemon-element-method",
-                path: "CMS/action/create/page",
-              },
-            ];
-          }
-
-          const title = input.trim();
-
+          // Every option shows from the start, empty field or not, so the
+          // list never changes shape as you type: typing only names them.
+          // Empty, each option says it takes the title you type; with a
+          // title, each option says what it will be called.
+          const typed = input ? input.trim() : "";
+          const title = typed || this.t.newPageCapitalized;
           try {
             // Get available page templates
             const pageTemplates = await siteEditorUI.getPageTemplates();
             const results = [];
 
-            // Add blank page option first
+            // blank page first
+            let blankTitle = this.t.createNewPageTypeToName;
+            if (typed) {
+              blankTitle = templateContent
+                ? this.t.createTitleWithView.replace("{title}", () => typed)
+                : this.t.createTitle.replace("{title}", () => typed);
+            }
             results.push({
-              title: templateContent
-                ? this.t.createTitleWithView.replace("{title}", () => title)
-                : this.t.createTitle.replace("{title}", () => title),
+              title: blankTitle,
               icon: "hax:add-page",
               tags: ["page", "blank", "create"],
               value: {
@@ -2303,9 +2619,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             if (pageTemplates && pageTemplates.length > 0) {
               pageTemplates.forEach((template, _index) => {
                 results.push({
-                  title: this.t.createTemplateNamedTitle
-                    .replace("{template}", () => template.name)
-                    .replace("{title}", () => title),
+                  title: typed
+                    ? this.t.createTemplateNamedTitle
+                        .replace("{template}", () => template.name)
+                        .replace("{title}", () => typed)
+                    : this.t.createTemplate.replace(
+                        "{template}",
+                        () => template.name,
+                      ),
                   icon: "hax:templates",
                   tags: ["template", "page", "create"],
                   value: {
@@ -2323,16 +2644,29 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               });
             }
 
-            // Add duplicate current page option
+            // duplicate the current page, renamed to the typed title (or
+            // kept as a copy of the current title when nothing is typed)
             if (currentItem) {
               results.push({
-                title: this.t.duplicateAsTitle.replace("{title}", () => title),
+                title: typed
+                  ? this.t.duplicateCurrentPageRenameTo.replace(
+                      "{title}",
+                      () => typed,
+                    )
+                  : this.t.duplicateCurrentPage,
                 icon: "hax:duplicate",
                 tags: ["page", "duplicate", "create"],
                 value: {
                   target: siteEditorUI,
                   method: "createPageWithTitle",
-                  args: [title, "duplicate"],
+                  args: [
+                    typed ||
+                      this.t.copyOfTitle.replace(
+                        "{title}",
+                        () => currentItem.title,
+                      ),
+                    "duplicate",
+                  ],
                 },
                 eventName: "super-daemon-element-method",
                 path: "CMS/action/create/page/duplicate",
@@ -3116,6 +3450,24 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.t = {
       ...this.t,
       selectPage: "Select page",
+      exitPreview: "Exit preview",
+      previewDevice: "Preview device",
+      previewThisWindow: "This window",
+      previewBigScreen: "Big screen",
+      previewDesktop: "Desktop",
+      previewTablet: "Tablet",
+      previewPhone: "Phone",
+      previewOrientation: "Orientation",
+      previewUpright: "Upright",
+      previewSideways: "Sideways",
+      previewDarkMode: "Dark mode (preview only)",
+      previewUnsavedShown: "Unsaved edits shown",
+      previewLinksOff: "Links are off while you preview unsaved edits",
+      previewFrameTitle: "Preview of this page",
+      previewShownAt: "{device}, shown at {percent}%",
+      previewCloseDevice: "Close {device} view",
+      previewDialogOpen: "Close the open dialog to preview the site",
+      shortcutPreview: "Preview the site as a visitor sees it",
       siteDashboard: "Sites Dashboard",
       cancel: "Cancel",
       unsavedPageChangesWillBeLost:
@@ -3193,6 +3545,20 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.manifestEditMode = false;
     this.backLink = "../../";
     this.activeTagName = "";
+    this.previewMode = false;
+    this.previewDevice = "window";
+    this.previewSideways = false;
+    this.previewDark = false;
+    this.previewMenuOpen = false;
+    this.__previewSrc = null;
+    this.__previewContent = null;
+    this.__previewUnsaved = false;
+    this.__previewStartDark = false;
+    this.__previewAbort = null;
+    this.__previewUnlock = null;
+    this.__previewKeepId = null;
+    this.__previewEntering = false;
+    this.__previewActiveNode = null;
     this.activeNode = null;
     this.activeDrag = false;
     this.activeType = null;
@@ -3532,6 +3898,24 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
   }
   /**
+   * Open the user menu with its first item focused, the way Ctrl+Shift+2
+   * opens the site settings quick links.
+   */
+  _openUserMenuFromKeyboard() {
+    this.__userMenuHoverOpened = false;
+    this.userMenuOpen = true;
+    this.siteMenuOpen = false;
+    store.playSound("click");
+    this.updateComplete.then(() => {
+      const menu = this.shadowRoot.querySelector("#user-menu");
+      if (menu && menu.updateComplete) {
+        menu.updateComplete.then(() => {
+          menu._focusFirstItem(menu._getMenuItems());
+        });
+      }
+    });
+  }
+  /**
    * Hover opens a top bar menu (house quick links, user menu) for mouse
    * pointers; leaving closes it after a short grace period so the pointer
    * can travel into the menu. Touch and pen keep using tap.
@@ -3681,11 +4065,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               slot="main-menu"
               name="haxcms-site-editor-ui-main-menu"
             ></slot>
+            <!-- the row's own button is the one tab stop (it follows this
+                 link on click / Enter); the link itself stays out of the
+                 tab order so the item isn't focused twice -->
             <a
               class="mysiteslink"
               href="${this.backLink}"
               slot="main-menu"
               part="mysiteslink"
+              tabindex="-1"
             >
               <app-hax-user-menu-button
                 icon="hax:world-traveler-plain"
@@ -3750,7 +4138,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 aria-haspopup="true"
                 aria-expanded="${this.siteMenuOpen ? "true" : "false"}"
                 ?disabled="${this.editMode}"
-                label="${this.t.siteSettings} • Ctrl⇧2"
+                label="${labelWithShortcut(this.t.siteSettings, "Ctrl⇧2")}"
               ></simple-toolbar-button>
               ${this.siteMenuItems.map(
                 (item) =>
@@ -3774,7 +4162,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     class="top-bar-button"
                     align-horizontal="center"
                     icon="hax:add-page"
-                    label="${this.t.addPage} • Ctrl⇧3"
+                    label="${labelWithShortcut(this.t.addPage, "Ctrl⇧3")}"
                     merlin
                     role="menuitem"
                   ></haxcms-button-add>`
@@ -3789,7 +4177,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               id="exportbtn"
               role="menuitem"
               icon="hax:html-code"
-              label="${this.t.viewSource} • Ctrl⇧2"
+              label="${labelWithShortcut(this.t.viewSource, "Ctrl⇧2")}"
               data-event="view-source"
               class="top-bar-button"
               @click="${this.haxButtonOp}"
@@ -3808,7 +4196,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               icon="editor:format-line-spacing"
               id="content-map"
               class="top-bar-button"
-              label="${this.t.pageOutline} • Ctrl⇧3"
+              label="${labelWithShortcut(this.t.pageOutline, "Ctrl⇧3")}"
               voice-command="select content outline (menu)"
               @click="${this.haxButtonOp}"
               ?active="${this.trayDetail === "content-map"}"
@@ -3823,7 +4211,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               icon="hax:add-brick"
               id="content-add"
               class="top-bar-button"
-              label="${this.t.addBlock} • Ctrl⇧4"
+              label="${labelWithShortcut(this.t.addBlock, "Ctrl⇧4")}"
               voice-command="select blocks (menu)"
               ?active="${this.trayDetail === "content-add"}"
               icon-position="${this.getIconPosition(this.responsiveSize)}"
@@ -3836,7 +4224,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               class="top-bar-button"
               @click="${this.haxButtonOp}"
               id="content-edit"
-              label="${this.t.configureBlock} • Ctrl⇧5"
+              label="${labelWithShortcut(this.t.configureBlock, "Ctrl⇧5")}"
               ?hidden="${!this.editMode}"
               ?disabled="${
                 !this.activeTagName ||
@@ -3864,7 +4252,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               icon-position="${this.getIconPosition(this.responsiveSize)}"
               ?disabled="${!this.canUndo}"
               @click="${this.haxButtonOp}"
-              label="${this.t.undo} • Ctrl Z"
+              label="${labelWithShortcut(this.t.undo, "Ctrl Z")}"
               data-event="undo"
               id="undo"
               ?hidden="${!this.editMode}"
@@ -3878,7 +4266,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               @click="${this.haxButtonOp}"
               ?disabled="${!this.canRedo}"
               ?hidden="${!this.editMode}"
-              label="${this.t.redo} • Ctrl⇧Z"
+              label="${labelWithShortcut(this.t.redo, "Ctrl⇧Z")}"
               data-event="redo"
               id="redo"
               voice-command="redo"
@@ -3899,7 +4287,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               ?hidden="${!this.editMode}"
               ?disabled="${!this.editMode}"
               role="menuitem"
-              label="${this.t.cancel} • Ctrl⇧/"
+              label="${labelWithShortcut(this.t.cancel, "Ctrl⇧/")}"
               voice-command="cancel (editing)"
             ></simple-toolbar-button>
             <simple-toolbar-button
@@ -3966,6 +4354,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               data-event="super-daemon"
               mini
               wand
+              show-shortcut
               droppable-type="${this.activeType}"
               ?droppable="${this.activeDrag}"
             >
@@ -3976,6 +4365,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           <div class="toolbar-buttons right-toolbar-buttons" role="menubar">
             <slot name="haxcms-site-editor-ui-suffix-buttons"></slot>
           </div>
+          ${this._renderPreviewControls()}
           <span class="home-btn">
             <!-- the HAX mark: decorative, it says you are in HAX; the way
                  back to your sites is in the user menu -->
@@ -3993,6 +4383,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           </span>
         </div>
       </app-hax-top-bar>
+      ${this._renderPreviewStage()}
       ${
         this.themePreviewOpen && this.__themePreviewReady
           ? html`<haxcms-theme-preview-panel
@@ -4253,8 +4644,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       case "super-daemon":
         // a phone's bar is too narrow for the field: Merlin is a button
         // that opens the search across the whole bar first
+        // (same query as the CSS that folds the field, so a 600px wide
+        // screen that shows the button also opens across the bar)
         if (
-          this.responsiveSize === "xs" &&
+          (globalThis.matchMedia
+            ? globalThis.matchMedia("(max-width: 600px)").matches
+            : this.responsiveSize === "xs") &&
           e.type === "click" &&
           !this.merlinPhoneOpen
         ) {
@@ -4411,6 +4806,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
+    this._resumeUXStudy();
     this.shadowRoot
       .querySelectorAll("[data-super-daemon-path]")
       .forEach((item) => {
@@ -5002,66 +5398,23 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         },
       },
     });
-    // change platform audience, only load if the site supports platformConfigs
+    // the Konami code, listed with the developer commands so people know
+    // the silly extras exist; running it does what typing the code does
     SuperDaemonInstance.defineOption({
-      i18n: {
-        context: this,
-        title: "previewAudienceMode",
-        "value.name": "previewAudienceMode",
-      },
-      title: this.t.previewAudienceMode,
-      icon: "lrn:people",
-      tags: ["Developer", "skeleton"],
-      eventName: "super-daemon-run-program",
-      path: ">settings/platformAudience",
-      context: [">"],
-      more: html`<span>${this.t.changePlatformAudienceDescription}</span>`,
-      voice: "change audience (temporarily)",
-      value: {
-        name: this.t.previewAudienceMode,
-        context: ">",
-        program: async (input, _values) => {
-          let results = [];
-          // Load in the supported audiences in platformConfig
-          const audienceOptions = {
-            novice: "lrn:book",
-            expert: "lrn:teacher",
-          };
-
-          Object.keys(audienceOptions).forEach((key) => {
-            if (input == "" || key.includes(input.toLowerCase())) {
-              results.push({
-                title: key,
-                icon: audienceOptions[key],
-                tags: ["skeleton"],
-                value: {
-                  target: globalThis.HAXCMS,
-                  method: "setPlatformAudience",
-                  args: [key],
-                },
-                eventName: "super-daemon-element-method",
-                context: [">", ">settings/platformAudience/" + key],
-                path: ">settings/theme/" + key,
-              });
-            }
-          });
-
-          return results;
-        },
-      },
-    });
-
-    SuperDaemonInstance.defineOption({
-      i18n: { context: this, title: "haxLabs" },
-      title: this.t.haxLabs,
-      icon: "hax:hax2022",
-      tags: ["Developer", "labs", "experiments"],
+      i18n: { context: this, title: "cheatCodes" },
+      title: this.t.cheatCodes,
+      icon: "hardware:videogame-asset",
+      tags: ["Developer", "cheat", "konami", "secret", "fun", "silly"],
       eventName: "super-daemon-element-method",
-      path: ">hax/labs",
+      path: ">developer/cheat-codes",
       context: [">"],
+      // always the very last developer command; the cheats it unlocks sit
+      // just above it (haxcms-cheat-codes.js)
+      priority: 1000000,
+      more: html`<span>${this.t.cheatCodesDescription}</span>`,
       value: {
         target: this,
-        method: "enableLabExperiments",
+        method: "_konamiCodeActivated",
         args: [],
       },
     });
@@ -5116,11 +5469,47 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       },
     });
     SuperDaemonInstance.defineOption({
-      i18n: { context: this, title: "viewOnlyMode" },
-      title: this.t.viewOnlyMode,
-      icon: "visibility",
+      i18n: {
+        context: this,
+        title: "uxStudy",
+        "value.name": "uxStudy",
+      },
+      title: this.t.uxStudy,
+      icon: "av:fiber-manual-record",
       tags: [
         "Developer",
+        "ux",
+        "study",
+        "usability",
+        "record",
+        "recording",
+        "heatmap",
+        "research",
+      ],
+      eventName: "super-daemon-run-program",
+      path: ">developer/ux-study",
+      context: [">"],
+      voice: "ux study",
+      value: {
+        name: this.t.uxStudy,
+        machineName: "ux-study",
+        context: ">",
+        program: async (input, values) => {
+          const { createUXStudyProgram } =
+            await import("./utils/UXStudyRecorder.js");
+          return await createUXStudyProgram(this)(input, values);
+        },
+      },
+    });
+    // not a developer tool: the same Preview as the top bar button, listed
+    // with the everyday actions and showing its Ctrl⇧8 shortcut
+    SuperDaemonInstance.defineOption({
+      i18n: { context: this, title: "visitorAndDevicePreview" },
+      title: this.t.visitorAndDevicePreview,
+      icon: "visibility",
+      shortcut: "cms-preview",
+      tags: [
+        "CMS",
         "view",
         "read-only",
         "preview",
@@ -5130,15 +5519,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         "unauthenticated",
         "guest",
         "visitor",
+        "view only",
+        "device",
+        "phone",
+        "tablet",
       ],
       eventName: "super-daemon-element-method",
-      path: ">settings/view-only",
-      context: [">"],
-      more: html`<span>${this.t.viewOnlyModeDescription}</span>`,
-      voice: "view only mode",
+      path: "CMS/action/preview",
+      context: ["CMS"],
+      more: html`<span>${this.t.previewDescription}</span>`,
+      voice: "preview",
       value: {
         target: this,
-        method: "enableViewOnlyMode",
+        method: "enterPreview",
         args: [],
       },
     });
@@ -5734,13 +6127,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.checkAndTriggerWelcomeProgram();
   }
   // enable lab experiments
-  enableLabExperiments() {
-    // lecture player
-    import("@haxtheweb/video-player/lib/lecture-player.js");
-    // AI chat bot
-    import("@haxtheweb/haxcms-elements/lib/ui-components/magic/site-ai-chat.js");
-  }
-
   unlockAllThemes() {
     store.showAllThemes = true;
     globalThis.dispatchEvent(
@@ -5877,22 +6263,86 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     }
   }
 
-  // enable view only mode
-  enableViewOnlyMode() {
-    // Set ViewOnlyMode in UserContext as a session variable
-    UserScaffoldInstance.writeMemory("ViewOnlyMode", true, "long");
-
-    // Show toast notification with exit button
-    store.showViewOnlyModeToast();
-
-    // Refresh the page to apply view only mode
-    setTimeout(() => {
-      globalThis.location.reload();
-    }, 600);
-  }
-
   goToLocation(location) {
     globalThis.location = location;
+  }
+  /**
+   * UX study recording (Merlin >developer/ux-study). Closing Merlin uses
+   * _closeMerlin() above, which also resets the phone bar.
+   */
+  _uxStudyStrings() {
+    return {
+      uxStudyRecording: this.t.uxStudyRecording,
+      uxStudyMark: this.t.uxStudyMark,
+      uxStudyMarkPrompt: this.t.uxStudyMarkPrompt,
+      uxStudyStopAndExport: this.t.uxStudyStopAndExport,
+    };
+  }
+  async startUXStudy(participant = "") {
+    const { UXStudyRecorder } = await import("./utils/UXStudyRecorder.js");
+    const manifest = toJS(store.manifest);
+    let siteName = "";
+    let theme = "";
+    if (manifest && manifest.metadata) {
+      if (manifest.metadata.site && manifest.metadata.site.name) {
+        siteName = manifest.metadata.site.name;
+      }
+      if (manifest.metadata.theme && manifest.metadata.theme.element) {
+        theme = manifest.metadata.theme.element;
+      }
+    }
+    UXStudyRecorder.requestAvailability().start({
+      participant: participant,
+      siteName: siteName,
+      theme: theme,
+      t: this._uxStudyStrings(),
+    });
+    this._closeMerlin();
+    HAXStore.toast(this.t.uxStudyStarted, 4000, "fit-bottom");
+  }
+  async markUXStudy(label = "") {
+    const { UXStudyRecorder } = await import("./utils/UXStudyRecorder.js");
+    const recorder = UXStudyRecorder.requestAvailability();
+    if (!recorder.active) {
+      HAXStore.toast(this.t.uxStudyNotRecording, 3000, "fit-bottom");
+      return;
+    }
+    if (label) {
+      recorder.mark(label);
+      this._closeMerlin();
+    }
+  }
+  async stopUXStudy() {
+    const { UXStudyRecorder } = await import("./utils/UXStudyRecorder.js");
+    const result = UXStudyRecorder.requestAvailability().stopAndExport();
+    this._closeMerlin();
+    if (result) {
+      HAXStore.toast(
+        this.t.uxStudyExported.replace("{file}", () => result.fileName),
+        4000,
+        "fit-bottom",
+      );
+    } else {
+      HAXStore.toast(this.t.uxStudyNotRecording, 3000, "fit-bottom");
+    }
+  }
+  /**
+   * A full page reload mid-study resumes the session kept in sessionStorage
+   */
+  async _resumeUXStudy() {
+    let pending = false;
+    try {
+      pending = !!globalThis.sessionStorage.getItem("haxcms-ux-study-session");
+    } catch {
+      pending = false;
+    }
+    if (pending) {
+      const { UXStudyRecorder } = await import("./utils/UXStudyRecorder.js");
+      UXStudyRecorder.requestAvailability().start({
+        resume: true,
+        t: this._uxStudyStrings(),
+      });
+    }
   }
   openPageAsDataFormat(format) {
     const supportedFormats = ["json", "yaml", "md", "xml"];
@@ -6152,6 +6602,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (super.updated) {
       super.updated(changedProperties);
     }
+    // a preview of edits is only good while those edits are open
+    if (
+      changedProperties.has("editMode") &&
+      changedProperties.get("editMode") !== undefined &&
+      this.previewMode
+    ) {
+      this.exitPreview();
+    }
     if (
       changedProperties.has("responsiveSize") &&
       this.responsiveSize !== "xs" &&
@@ -6239,6 +6697,41 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       },
       activeTagName: {
         type: String,
+      },
+      /**
+       * logged in, drawing the site as a visitor sees it; the bar
+       * collapses to a flag at the top right. store.previewMode follows it
+       * only while the preview is shown in place (see _syncStorePreview)
+       */
+      previewMode: {
+        type: Boolean,
+        reflect: true,
+        attribute: "preview-mode",
+      },
+      /**
+       * device id from PREVIEW_DEVICES the preview is shown on
+       */
+      previewDevice: {
+        type: String,
+        attribute: "preview-device",
+      },
+      /**
+       * tablet / phone turned sideways
+       */
+      previewSideways: {
+        type: Boolean,
+      },
+      /**
+       * light or dark for the preview only; never saved
+       */
+      previewDark: {
+        type: Boolean,
+      },
+      /**
+       * the preview device menu is open
+       */
+      previewMenuOpen: {
+        type: Boolean,
       },
       /**
        * If we can currently undo based on stack position
@@ -6374,6 +6867,21 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.__boundSyncMerlinPopover = this._syncMerlinPopover.bind(this);
     globalThis.addEventListener("resize", this.__boundSyncMerlinPopover);
     this.updateComplete.then(() => this._syncMerlinPopover());
+    // shortcut suffixes on labels and tooltips are dropped on a phone; redo
+    // them when the viewport crosses that line (rotation, resize)
+    if (globalThis.matchMedia) {
+      this.__shortcutsMedia = globalThis.matchMedia(
+        KEYBOARD_SHORTCUTS_HIDDEN_MEDIA,
+      );
+      this.__boundShortcutsMediaChange = () => {
+        this._updateEditButtonLabel();
+        this.requestUpdate();
+      };
+      this.__shortcutsMedia.addEventListener(
+        "change",
+        this.__boundShortcutsMediaChange,
+      );
+    }
 
     // Register keyboard shortcuts
     this._registerKeyboardShortcuts();
@@ -6548,6 +7056,23 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     );
   }
   disconnectedCallback() {
+    if (this.__previewAbort) {
+      this.__previewAbort.abort();
+      this.__previewAbort = null;
+    }
+    if (this.__previewUnlock) {
+      this.__previewUnlock();
+      this.__previewUnlock = null;
+    }
+    // never leave the site drawn in preview without a way out
+    if (this.previewMode) {
+      this.previewMode = false;
+      store.previewMode = false;
+      store.previewKeepId = null;
+      if (store.darkMode !== this.__previewStartDark) {
+        store.darkMode = this.__previewStartDark;
+      }
+    }
     // Unregister keyboard shortcuts
     HAXCMSKeyboardShortcutsInstance.disable();
     globalThis.removeEventListener("resize", this.__boundSyncMerlinPopover);
@@ -6576,6 +7101,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       }
     }
     this.__disposer = [];
+    if (this.__shortcutsMedia && this.__boundShortcutsMediaChange) {
+      this.__shortcutsMedia.removeEventListener(
+        "change",
+        this.__boundShortcutsMediaChange,
+      );
+    }
     super.disconnectedCallback();
   }
 
@@ -6584,9 +7115,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
    */
   _updateEditButtonLabel() {
     if (this.editMode) {
-      this.__editText = `${this.t.save} • Ctrl⇧S`;
+      this.__editText = labelWithShortcut(this.t.save, "Ctrl⇧S");
     } else {
-      this.__editText = `${this.t.edit} • Ctrl⇧E`;
+      this.__editText = labelWithShortcut(this.t.edit, "Ctrl⇧E");
     }
   }
   _closeOpenContextMenus(excludeMenu = null, root = globalThis.document) {
@@ -6850,10 +7381,24 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       ctrl: true,
       shift: true,
       callback: () => {
-        const userMenuButton = this.shadowRoot.querySelector("#menubtn");
-        if (userMenuButton) {
-          this.toggleMenu();
+        // same focus dynamics as Ctrl+Shift+2: open with the first item
+        // focused so arrows / Tab / Enter work straight away; pressing it
+        // again while open closes it and returns focus to the avatar
+        if (this.userMenuOpen) {
+          this.userMenuOpen = false;
+          const toggle = this.shadowRoot.querySelector(
+            "app-hax-user-menu-toggle",
+          );
+          const toggleButton =
+            toggle && toggle.shadowRoot
+              ? toggle.shadowRoot.querySelector("button")
+              : null;
+          if (toggleButton) {
+            toggleButton.focus();
+          }
+          return;
         }
+        this._openUserMenuFromKeyboard();
       },
       condition: () => store.isLoggedIn,
       description: this.t.shortcutOpenUserMenu,
@@ -6950,6 +7495,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Ctrl+Shift+5 - Configure panel (edit) OR Page actions (view)
     HAXCMSKeyboardShortcutsInstance.register({
+      // the page actions menu (page-break) shows this on its button
+      id: "cms-page-actions",
       key: "5",
       ctrl: true,
       shift: true,
@@ -6987,6 +7534,21 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       context: "view",
     });
 
+    // Ctrl+Shift+8 - Preview the site as a visitor sees it. While previewing
+    // the shortcut manager is off and _previewKeydown handles Ctrl⇧8 and Esc
+    HAXCMSKeyboardShortcutsInstance.register({
+      id: "cms-preview",
+      key: "8",
+      ctrl: true,
+      shift: true,
+      callback: () => {
+        this.togglePreview();
+      },
+      condition: () => store.isLoggedIn,
+      description: this.t.shortcutPreview,
+      context: "global",
+    });
+
     // Ctrl+Shift+' - Jump between text editing and tray options
     HAXCMSKeyboardShortcutsInstance.register({
       key: "'",
@@ -7000,6 +7562,573 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       context: "edit",
       allowInInput: true,
     });
+  }
+
+  /**
+   * Preview controls in the bar's right group, just left of the HAX mark:
+   * the Preview button, and while previewing the device button, the device
+   * menu and (while editing) the unsaved edits pill.
+   */
+  _renderPreviewControls() {
+    const device = previewDevice(this.previewDevice);
+    return html`
+      <div
+        class="toolbar-buttons preview-toolbar-buttons"
+        role="menubar"
+        part="preview-controls"
+      >
+        ${
+          this.previewMode && this.editMode && this.__previewUnsaved
+            ? html`<span class="preview-chip"
+                >${this.t.previewUnsavedShown}</span
+              >`
+            : ``
+        }
+        ${
+          this.previewMode
+            ? html`<app-hax-user-menu
+                id="previewmenu"
+                part="preview-menu"
+                align="end"
+                label="${this.t.previewDevice}"
+                data-menu="preview"
+                ?is-open="${this.previewMenuOpen}"
+                @is-open-changed="${this._previewMenuOpenChanged}"
+              >
+                <button
+                  slot="menuButton"
+                  type="button"
+                  id="previewdevicebutton"
+                  class="preview-device-button"
+                  aria-haspopup="true"
+                  aria-expanded="${this.previewMenuOpen ? "true" : "false"}"
+                  aria-label="${this.t.previewDevice}: ${this.t[device.label]}"
+                  @click="${this._togglePreviewMenu}"
+                >
+                  <simple-icon-lite
+                    icon="${device.icon}"
+                    aria-hidden="true"
+                  ></simple-icon-lite>
+                  <span class="preview-device-label"
+                    >${this.t[device.label]}</span
+                  >
+                  <simple-icon-lite
+                    icon="icons:arrow-drop-down"
+                    aria-hidden="true"
+                  ></simple-icon-lite>
+                </button>
+                ${PREVIEW_DEVICES.map(
+                  (d) =>
+                    html`<app-hax-user-menu-button
+                      slot="main-menu"
+                      data-device="${d.id}"
+                      icon="${d.icon}"
+                      label="${this.t[d.label]}"
+                      ?current="${d.id === device.id}"
+                      @click="${this._previewDeviceTap}"
+                    ></app-hax-user-menu-button>`,
+                )}
+                <div
+                  slot="post-menu"
+                  class="preview-menu-row"
+                  ?data-disabled="${!device.rotates}"
+                  role="group"
+                  aria-label="${this.t.previewOrientation}"
+                >
+                  <simple-icon-lite
+                    icon="device:screen-rotation"
+                    aria-hidden="true"
+                  ></simple-icon-lite>
+                  <span class="preview-row-label"
+                    >${this.t.previewOrientation}</span
+                  >
+                  <span class="preview-seg">
+                    <button
+                      type="button"
+                      aria-pressed="${!this.previewSideways ? "true" : "false"}"
+                      ?disabled="${!device.rotates}"
+                      @click="${() => this._setPreviewSideways(false)}"
+                    >
+                      ${this.t.previewUpright}
+                    </button>
+                    <button
+                      type="button"
+                      aria-pressed="${this.previewSideways ? "true" : "false"}"
+                      ?disabled="${!device.rotates}"
+                      @click="${() => this._setPreviewSideways(true)}"
+                    >
+                      ${this.t.previewSideways}
+                    </button>
+                  </span>
+                </div>
+                <button
+                  slot="post-menu"
+                  type="button"
+                  id="previewdarktoggle"
+                  class="soundToggle"
+                  aria-pressed="${this.previewDark ? "true" : "false"}"
+                  @click="${this._togglePreviewDark}"
+                >
+                  <simple-icon-lite
+                    icon="image:brightness-4"
+                    aria-hidden="true"
+                  ></simple-icon-lite>
+                  <span class="sound-label">${this.t.previewDarkMode}</span>
+                  <span class="hax-ui-switch" aria-hidden="true"
+                    ><span class="knob"></span
+                  ></span>
+                </button>
+              </app-hax-user-menu>`
+            : ``
+        }
+        <simple-toolbar-button
+          id="previewbutton"
+          class="top-bar-button"
+          role="menuitem"
+          icon="icons:visibility"
+          label="${labelWithShortcut(this.previewMode ? this.t.exitPreview : this.t.preview, "Ctrl⇧8")}"
+          voice-command="preview (site)"
+          ?active="${this.previewMode}"
+          icon-position="${this.getIconPosition(this.responsiveSize)}"
+          @click="${this.togglePreview}"
+        ></simple-toolbar-button>
+      </div>
+    `;
+  }
+
+  _previewMenuOpenChanged(e) {
+    if (!e || !e.detail || typeof e.detail.value !== "boolean") {
+      return;
+    }
+    if (this.previewMenuOpen !== e.detail.value) {
+      this.previewMenuOpen = e.detail.value;
+    }
+  }
+
+  /**
+   * a frame is used for any device size, and for unsaved edits (the live
+   * editor underneath is never changed by preview)
+   */
+  _previewFramed() {
+    return !!(
+      this.previewMode &&
+      (this.previewDevice !== "window" || this.editMode)
+    );
+  }
+
+  _renderPreviewStage() {
+    if (!this._previewFramed()) {
+      return ``;
+    }
+    if (!this.__previewSrc) {
+      // this page on this origin, without query or hash
+      this.__previewSrc = previewFrameSrc(globalThis.location);
+    }
+    const viewport = {
+      width: globalThis.innerWidth || 1280,
+      height: globalThis.innerHeight || 800,
+    };
+    const device = previewDevice(this.previewDevice);
+    const size = previewFrameSize(this.previewDevice, this.previewSideways, {
+      // room for the flag above and the caption below
+      width: viewport.width - 32,
+      height: viewport.height - 64 - 48,
+    });
+    const full = size.full;
+    const width = full ? viewport.width : size.width;
+    const height = full ? viewport.height : size.height;
+    const scale = full ? 1 : size.scale;
+    const deviceClass = full ? "" : size.rotates ? "bezel" : "monitor";
+    const percent = Math.round(scale * 100);
+    return html`
+      <div class="preview-stage ${full ? "full" : ""}" part="preview-stage">
+        ${
+          this.previewDevice !== "window"
+            ? html`<button
+                type="button"
+                id="previewstageclose"
+                class="preview-stage-close"
+                title="${this.t.previewCloseDevice.replace(
+                  "{device}",
+                  () => this.t[device.label],
+                )}"
+                aria-label="${this.t.previewCloseDevice.replace(
+                  "{device}",
+                  () => this.t[device.label],
+                )}"
+                @click="${this._previewBackToWindow}"
+              >
+                <simple-icon-lite
+                  icon="icons:close"
+                  aria-hidden="true"
+                ></simple-icon-lite>
+              </button>`
+            : ``
+        }
+        <div
+          class="preview-device ${deviceClass}"
+          style=${styleMap({
+            width: Math.round(width * scale) + "px",
+            height: Math.round(height * scale) + "px",
+          })}
+        >
+          <iframe
+            name="${previewFrameName(this.__previewKeepId)}"
+            title="${this.t.previewFrameTitle}"
+            src="${this.__previewSrc}"
+            style=${styleMap({
+              width: width + "px",
+              height: height + "px",
+              transform: "scale(" + scale + ")",
+            })}
+            @load="${this._previewFrameLoaded}"
+          ></iframe>
+        </div>
+        ${
+          full
+            ? ``
+            : html`<span class="preview-caption"
+                >${this.t.previewShownAt
+                  .replace("{device}", () => this.t[device.label])
+                  .replace("{percent}", () => String(percent))}</span
+              >`
+        }
+      </div>
+    `;
+  }
+
+  /**
+   * Preview the site as a visitor sees it, or close preview
+   * (Ctrl⇧8, haxtheweb/issues#2951)
+   */
+  togglePreview() {
+    if (this.previewMode) {
+      this.exitPreview();
+    } else {
+      this.enterPreview();
+    }
+  }
+
+  /**
+   * dialogs (site admin, outline, page settings) can hold unsaved work, so
+   * preview waits until they are closed
+   */
+  _previewBlockedByDialog() {
+    const modal =
+      globalThis.SimpleModal && globalThis.SimpleModal.requestAvailability
+        ? globalThis.SimpleModal.requestAvailability()
+        : null;
+    return !!(modal && modal.opened);
+  }
+
+  /**
+   * store.previewMode drives what the page itself draws (themes, pencils,
+   * the menu). It is on only while the preview is shown in place: a framed
+   * preview (a device size, or unsaved edits) is drawn by the frame's own
+   * store, and the page underneath, including an open edit, is left alone.
+   */
+  _syncStorePreview() {
+    const inPlace = !!(this.previewMode && !this._previewFramed());
+    if (inPlace) {
+      // keep first, so the menu never recomputes without it
+      store.previewKeepId = this.__previewKeepId;
+      store.previewMode = true;
+    } else {
+      store.previewMode = false;
+      store.previewKeepId = null;
+    }
+  }
+
+  async enterPreview() {
+    if (this.previewMode || this.__previewEntering || !store.isLoggedIn) {
+      return false;
+    }
+    if (this._previewBlockedByDialog()) {
+      store.toast(this.t.previewDialogOpen, 3000, { hat: "random" });
+      return false;
+    }
+    this.__previewEntering = true;
+    try {
+      // the page preview started on stays visible, with its parents, even
+      // if it is unpublished
+      const activeItem = toJS(store.activeItem);
+      this.__previewKeepId = activeItem && activeItem.id ? activeItem.id : null;
+      this.__previewStartDark = !!store.darkMode;
+      this.previewDark = this.__previewStartDark;
+      this.previewDevice = "window";
+      this.previewSideways = false;
+      this.previewMenuOpen = false;
+      this.__previewSrc = null;
+      this.__previewContent = null;
+      this.__previewUnsaved = false;
+      this.__previewActiveNode = null;
+      if (this.editMode && HAXStore.activeHaxBody) {
+        // nothing typed can land in the hidden editor while previewing
+        const focused = this._getDeepActiveElement();
+        if (focused && focused.blur) {
+          focused.blur();
+        }
+        this.__previewActiveNode = HAXStore.activeNode;
+        // exactly what Save would send; the editor itself is left alone
+        this.__previewContent = await HAXStore.activeHaxBody.haxToContent();
+        this.__previewUnsaved = this.__previewContent !== this._originalContent;
+      }
+      // while previewing only Esc and Ctrl⇧8 do anything; the rest of the
+      // editor's shortcuts would act on tools that are not on screen
+      HAXCMSKeyboardShortcutsInstance.disable();
+      this.__previewAbort = new AbortController();
+      const signal = this.__previewAbort.signal;
+      globalThis.document.addEventListener(
+        "keydown",
+        (e) => this._previewKeydown(e),
+        { signal, capture: true },
+      );
+      globalThis.addEventListener("resize", () => this.requestUpdate(), {
+        signal,
+      });
+      this.previewMode = true;
+      this._syncStorePreview();
+    } finally {
+      this.__previewEntering = false;
+    }
+    this.updateComplete.then(() => {
+      const btn =
+        this.shadowRoot && this.shadowRoot.querySelector("#previewbutton");
+      if (btn && btn.focus && this.previewMode) {
+        btn.focus();
+      }
+    });
+    return true;
+  }
+
+  exitPreview() {
+    if (!this.previewMode) {
+      return false;
+    }
+    if (this.__previewAbort) {
+      this.__previewAbort.abort();
+      this.__previewAbort = null;
+    }
+    if (this.__previewUnlock) {
+      this.__previewUnlock();
+      this.__previewUnlock = null;
+    }
+    this.previewMenuOpen = false;
+    this.__previewSrc = null;
+    this.__previewContent = null;
+    this.__previewUnsaved = false;
+    this.previewMode = false;
+    this._syncStorePreview();
+    this.__previewKeepId = null;
+    // the preview's light / dark choice was never saved; put back yours
+    if (store.darkMode !== this.__previewStartDark) {
+      store.darkMode = this.__previewStartDark;
+    }
+    // after the keypress that closed preview has finished dispatching
+    setTimeout(() => {
+      if (!this.previewMode && this.isConnected) {
+        HAXCMSKeyboardShortcutsInstance.enable();
+      }
+    }, 0);
+    // back to the block you were on
+    const activeNode = this.__previewActiveNode;
+    this.__previewActiveNode = null;
+    if (
+      this.editMode &&
+      activeNode &&
+      activeNode.isConnected &&
+      HAXStore.activeNode !== activeNode
+    ) {
+      HAXStore.activeNode = activeNode;
+    }
+    this.updateComplete.then(() => {
+      const btn =
+        this.shadowRoot && this.shadowRoot.querySelector("#previewbutton");
+      if (btn && btn.focus) {
+        btn.focus();
+      }
+    });
+    return true;
+  }
+
+  _isPreviewShortcut(e) {
+    return !!(
+      e &&
+      (e.ctrlKey || e.metaKey) &&
+      e.shiftKey &&
+      !e.altKey &&
+      (e.code === "Digit8" || e.code === "Numpad8")
+    );
+  }
+
+  _previewKeydown(e) {
+    if (!this.previewMode) {
+      return;
+    }
+    if (e.key === "Escape") {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      this._previewEscape();
+      return;
+    }
+    if (this._isPreviewShortcut(e)) {
+      // consume it: the shortcut manager comes back on as preview closes
+      // and must not see this same keypress (it would reopen preview)
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      this.exitPreview();
+    }
+  }
+
+  /**
+   * Esc steps back one level: the device menu closes, then a device view
+   * goes back to this window, then preview closes
+   */
+  _previewEscape() {
+    if (this.previewMenuOpen) {
+      this.previewMenuOpen = false;
+      const btn = this.shadowRoot.querySelector("#previewdevicebutton");
+      if (btn) {
+        btn.focus();
+      }
+    } else if (this.previewDevice !== "window") {
+      this._previewBackToWindow();
+    } else {
+      this.exitPreview();
+    }
+  }
+
+  _togglePreviewMenu() {
+    this.previewMenuOpen = !this.previewMenuOpen;
+  }
+
+  /**
+   * close a device view: back to the preview of this window
+   */
+  _previewBackToWindow() {
+    this._setPreviewDevice("window");
+    this.updateComplete.then(() => {
+      const btn =
+        this.shadowRoot &&
+        this.shadowRoot.querySelector("#previewdevicebutton");
+      if (btn && btn.focus) {
+        btn.focus();
+      }
+    });
+  }
+
+  _previewDeviceTap(e) {
+    this._setPreviewDevice(e.currentTarget.getAttribute("data-device"));
+  }
+
+  _setPreviewDevice(id) {
+    const wasFramed = this._previewFramed();
+    this.previewDevice = previewDevice(id).id;
+    if (!previewDevice(this.previewDevice).rotates) {
+      this.previewSideways = false;
+    }
+    if (wasFramed !== this._previewFramed()) {
+      // moving between this window and a frame: what the page draws and
+      // the dark choice follow
+      this.__previewSrc = null;
+      this._syncStorePreview();
+      this._applyPreviewDark();
+    }
+    this.previewMenuOpen = false;
+  }
+
+  _setPreviewSideways(sideways) {
+    if (previewDevice(this.previewDevice).rotates) {
+      this.previewSideways = !!sideways;
+    }
+  }
+
+  _togglePreviewDark() {
+    this.previewDark = !this.previewDark;
+    this._applyPreviewDark();
+  }
+
+  /**
+   * light / dark for what the preview shows: the frame's own store when
+   * framed, otherwise this page (the site builder doesn't save it while
+   * previewing, and exitPreview puts the author's choice back)
+   */
+  _applyPreviewDark() {
+    const frameStore = this._previewFrameStore();
+    if (this._previewFramed()) {
+      if (frameStore) {
+        frameStore.darkMode = this.previewDark;
+      }
+      if (store.darkMode !== this.__previewStartDark) {
+        store.darkMode = this.__previewStartDark;
+      }
+    } else if (store.darkMode !== this.previewDark) {
+      store.darkMode = this.previewDark;
+    }
+  }
+
+  _previewFrameStore() {
+    const frame =
+      this.shadowRoot && this.shadowRoot.querySelector(".preview-stage iframe");
+    try {
+      return frame &&
+        frame.contentWindow &&
+        frame.contentWindow.HAXCMS &&
+        frame.contentWindow.HAXCMS.instance
+        ? frame.contentWindow.HAXCMS.instance.store
+        : null;
+    } catch {
+      return null;
+    }
+  }
+
+  async _previewFrameLoaded(e) {
+    const frame = e.target;
+    let win = null;
+    try {
+      win = frame.contentWindow;
+    } catch {
+      return;
+    }
+    if (!win || !this.previewMode) {
+      return;
+    }
+    if (this.__previewUnlock) {
+      this.__previewUnlock();
+      this.__previewUnlock = null;
+    }
+    try {
+      win.document.addEventListener(
+        "keydown",
+        (ev) => {
+          if (ev.key === "Escape") {
+            ev.preventDefault();
+            this._previewEscape();
+          } else if (this._isPreviewShortcut(ev)) {
+            ev.preventDefault();
+            this.exitPreview();
+          }
+        },
+        true,
+      );
+    } catch {
+      // the frame followed a link off this site; nothing here to wire up
+      return;
+    }
+    // a preview of unsaved edits stays on its page
+    if (this.editMode) {
+      this.__previewUnlock = lockPreviewFrame(win, () => {
+        store.toast(this.t.previewLinksOff, 3000, { hat: "random" });
+      });
+    }
+    const frameStore = await waitForPreviewStore(win);
+    if (!frameStore || !this.previewMode) {
+      return;
+    }
+    frameStore.darkMode = this.previewDark;
+    if (this.editMode && typeof this.__previewContent === "string") {
+      showContentInPreview(win, frameStore, this.__previewContent);
+    }
   }
 
   /**
@@ -7983,78 +9112,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.dispatchEvent(evt);
   }
   /**
-   * Toggle lock status
-   */
-  _toggleLockStatus(_e) {
-    const activeItem = toJS(store.activeItem);
-    if (!activeItem || !activeItem.id) return;
-
-    const isLocked = activeItem.metadata && activeItem.metadata.locked;
-    store.playSound("click");
-    globalThis.dispatchEvent(
-      new CustomEvent("haxcms-save-node-details", {
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-        detail: {
-          id: activeItem.id,
-          operation: "setLocked",
-          locked: !isLocked,
-        },
-      }),
-    );
-  }
-  /**
-   * Duplicate page prompt
-   */
-  async _duplicatePagePrompt(_e) {
-    const activeItem = toJS(store.activeItem);
-    if (!activeItem || !activeItem.id) return;
-
-    const newTitle = await adminPrompt({
-      title: this.t.duplicatePageTitle,
-      message: this.t.enterTitleForDuplicatedPage,
-      label: this.t.newPageTitle,
-      value: this.t.titleCopy.replace("{title}", () => activeItem.title),
-      required: true,
-      confirmLabel: this.t.duplicateAction,
-      cancelLabel: this.t.cancel,
-    });
-    if (newTitle && newTitle.trim() !== "") {
-      store.playSound("click");
-      const SuperDaemonInstance =
-        globalThis.SuperDaemonManager.requestAvailability();
-      // Use the create-page program with duplicate option
-      SuperDaemonInstance.waveWand([
-        newTitle,
-        "/",
-        {},
-        "create-page",
-        this.t.createAPage,
-      ]);
-    }
-  }
-  /**
-   * Move page program from menu
-   */
-  _movePageProgramFromMenu(_e) {
-    const item = toJS(store.activeItem);
-    if (!item || !item.id) {
-      return;
-    }
-    const SuperDaemonInstance =
-      globalThis.SuperDaemonManager.requestAvailability();
-    store.playSound("click");
-    SuperDaemonInstance.waveWand([
-      "",
-      "/",
-      { pageId: item.id },
-      "move-page",
-      this.t.movePage,
-      "",
-    ]);
-  }
-  /**
    * Toggle locked status
    */
   _toggleLockedStatus(_e) {
@@ -8079,30 +9136,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     );
   }
   /**
-   * Toggle published status
-   */
-  _togglePublishedStatus(_e) {
-    const item = toJS(store.activeItem);
-    if (!item || !item.id) {
-      return;
-    }
-    const currentStatus = item.metadata && item.metadata.published !== false;
-    const newStatus = !currentStatus;
-    store.playSound("click");
-    globalThis.dispatchEvent(
-      new CustomEvent("haxcms-save-node-details", {
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-        detail: {
-          id: item.id,
-          operation: "setPublished",
-          published: newStatus,
-        },
-      }),
-    );
-  }
-  /**
    * toggle state on button tap
    */
   _outlineButtonTap(
@@ -8122,14 +9155,16 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       store.playSound("click");
     }
     // Structure is a section of the one admin dialog, so the rail stays
-    // beside outline-designer; the dialog keeps its own Save Outline flow
+    // beside outline-designer; the dialog keeps its own Save Outline flow.
+    // Structure is opened from the house's site settings menu, so closing
+    // the dialog returns focus to the house.
     this._showSiteAdminShell(
       "structure",
       Object.assign({}, routeOptions, {
         invokedBy:
           routeOptions && routeOptions.invokedBy
             ? routeOptions.invokedBy
-            : this.shadowRoot.querySelector("#outlinebutton"),
+            : this.shadowRoot.querySelector("#manifestbtn"),
       }),
     );
   }
@@ -8156,7 +9191,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       invokedBy:
         routeOptions && routeOptions.invokedBy
           ? routeOptions.invokedBy
-          : this.shadowRoot.querySelector("#outlinebutton"),
+          : this.shadowRoot.querySelector("#manifestbtn"),
     });
   }
   _openImportHierarchyFromEvent(e) {
@@ -8470,55 +9505,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     proceed();
     return true;
   }
-  _siteSettingsDashboardAction(e) {
-    const action = e && e.detail ? e.detail.action : null;
-    setTimeout(() => {
-      switch (action) {
-        case "style-guide":
-          this._styleGuideButtonTap(e);
-          break;
-        case "reports":
-          this._reportsButtonTap(e, true);
-          break;
-        case "outline":
-          this._outlineButtonTap(e, true, "Structure");
-          break;
-        case "site-settings":
-          this._openDetailsAdmin(true, "Details");
-          break;
-        case "theme-settings":
-          this._openAppearanceSettings(true, "Appearance");
-          break;
-        case "seo-settings":
-          this._openSeoAdmin(true, "seo");
-          break;
-        case "blocks":
-          this._openAllowedBlocksSettings(true, "Blocks");
-          break;
-        case "editor":
-          this._openEditorSettings(true, "Editor");
-          break;
-        case "about":
-          this._openAboutAdmin(true, this.t.about);
-          break;
-        case "platform":
-          this._openPlatformSettings(true, "Features");
-          break;
-        case "content-admin":
-          this._openContentAdmin(true);
-          break;
-        case "files-admin":
-          this._openFilesAdmin(true);
-          break;
-        case "views-admin":
-          this._openViewsAdmin(true);
-          break;
-        case "import-export":
-          this._openImportExportDashboard(true, "Import / Export");
-          break;
-      }
-    }, 0);
-  }
   _importExportDashboardAction(e) {
     const detail = e && e.detail ? e.detail : {};
     const action = detail && detail.action ? `${detail.action}` : "";
@@ -8803,19 +9789,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   /**
    * Note changes to the outline / structure of the page's items
    */
-  _outlineEditModeChanged(newValue, _oldValue) {
-    this.dispatchEvent(
-      new CustomEvent("haxcms-outline-edit-mode-changed", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: newValue,
-      }),
-    );
-  }
-  /**
-   * Note changes to the outline / structure of the page's items
-   */
   _manifestEditModeChanged(newValue, _oldValue) {
     this.dispatchEvent(
       new CustomEvent("haxcms-manifest-edit-mode-changed", {
@@ -8861,7 +9834,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             SuperDaemonInstance.allItems,
             SuperDaemonInstance.context,
           );
-          SuperDaemonInstance.runProgram("", "*");
+          // cheats live only in the developer (>) commands, so open there
+          // already filtered to them
+          SuperDaemonInstance.runProgram("cheat", ">");
         }, 100);
       } catch (error) {
         console.error("🎮 Failed to load cheat codes:", error);

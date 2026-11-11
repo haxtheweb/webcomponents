@@ -40,6 +40,12 @@ export const JourneySidebarThemeStyles = css`
     font-weight: var(--ddd-font-weight-bold);
     font-family: var(--ddd-font-primary);
   }
+  /* the h1 inside keeps the browser's 2em default unless told otherwise, which
+     doubled the 3xl title and let its lines overlap the content below */
+  site-active-title h1 {
+    font-size: inherit;
+    line-height: var(--ddd-lh-120);
+  }
   site-active-title h2 {
     font-size: var(--ddd-font-size-xl);
     color: var(--text-body);

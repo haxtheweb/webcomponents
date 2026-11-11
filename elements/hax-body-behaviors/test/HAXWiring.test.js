@@ -178,7 +178,7 @@ describe("HAXWiring class", () => {
         configure: [{ property: "title", inputMethod: "textfield" }],
       },
     };
-    globalThis.fetch = async () => ({ json: async () => propsObj });
+    globalThis.fetch = async () => ({ ok: true, json: async () => propsObj });
     await wiring.setHaxProperties(
       "https://example.com/props.json",
       "some-tag",
@@ -209,6 +209,62 @@ describe("HAXWiring class", () => {
     }
     expect(error === null).to.equal(true);
     expect(result).to.equal(false);
+  });
+
+  it("setHaxProperties skips json parsing when the response is not ok", async () => {
+    const warnings = [];
+    console.warn = (...args) => warnings.push(args.join(" "));
+    let jsonCalled = false;
+    globalThis.fetch = async () => ({
+      ok: false,
+      status: 500,
+      json: async () => {
+        jsonCalled = true;
+        throw new SyntaxError("Unexpected token '<'");
+      },
+    });
+    let error = null;
+    let result = "unset";
+    try {
+      result = await wiring.setHaxProperties(
+        "https://example.com/missing.json",
+        "some-tag",
+        globalThis.document,
+        false,
+      );
+    } catch (e) {
+      error = e;
+    }
+    console.warn = originalWarn;
+    expect(error === null).to.equal(true);
+    expect(jsonCalled).to.equal(false);
+    expect(result).to.equal(false);
+    expect(warnings.length).to.equal(1);
+    expect(warnings[0].includes("500")).to.equal(true);
+  });
+
+  it("setHaxProperties returns false when the fetch rejects", async () => {
+    const warnings = [];
+    console.warn = (...args) => warnings.push(args.join(" "));
+    globalThis.fetch = async () => {
+      throw new TypeError("Failed to fetch");
+    };
+    let error = null;
+    let result = "unset";
+    try {
+      result = await wiring.setHaxProperties(
+        "https://example.com/offline.json",
+        "some-tag",
+        globalThis.document,
+        false,
+      );
+    } catch (e) {
+      error = e;
+    }
+    console.warn = originalWarn;
+    expect(error === null).to.equal(true);
+    expect(result).to.equal(false);
+    expect(warnings.length).to.equal(1);
   });
 
   it("setHaxProperties warns when the api version is unknown", async () => {

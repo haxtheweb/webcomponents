@@ -8,6 +8,28 @@ import { html, css, svg } from "lit";
  */
 
 /**
+ * True when this browser can both listen (SpeechRecognition) and speak
+ * (speechSynthesis), the two things Merlin's voice mode needs, and
+ * listening has not proven unusable in this session (some browsers, like
+ * Brave, have the API but no speech service). The voice control is hidden
+ * everywhere else rather than shown and failing.
+ * @returns {boolean}
+ */
+export const merlinVoiceSupported = () => {
+  if (
+    typeof globalThis.speechSynthesis === "undefined" ||
+    !(globalThis.SpeechRecognition || globalThis.webkitSpeechRecognition)
+  ) {
+    return false;
+  }
+  const hal =
+    globalThis.Hal9000 && globalThis.Hal9000.instance
+      ? globalThis.Hal9000.instance
+      : null;
+  return !(hal && hal.canListen === false);
+};
+
+/**
  * Merlin's mark is hax:wand. It is drawn inline, split into the stick and
  * its three sparkles, so the sparkles can twinkle once when the Merlin
  * control is hovered or focused. Same paths as hax:wand in hax-iconset.

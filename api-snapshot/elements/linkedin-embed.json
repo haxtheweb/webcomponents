@@ -1,0 +1,30 @@
+{
+  "tag": "linkedin-embed",
+  "package": "@haxtheweb/linkedin-embed",
+  "source": "elements/linkedin-embed/lib/linkedin-embed.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "dark": "dark",
+    "is-safari": "isSafari",
+    "locale": "locale",
+    "t": "t",
+    "vanityname": "vanityname"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/linkedin-embed/lib/linkedin-embed.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "locale",
+      "vanityname"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "linkedin-embed"
+    ]
+  }
+}

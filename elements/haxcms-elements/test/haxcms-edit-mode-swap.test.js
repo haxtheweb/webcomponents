@@ -95,6 +95,32 @@ function fakeBody() {
   return body;
 }
 
+/**
+ * stand-in for the theme's viewer copy. Which blocks the visitor has seen is
+ * set by each test, so the copy is kept off screen and its blocks' own
+ * observers are stopped: an observer firing mid-test (an on-screen block
+ * turning visible, an off-screen one turning back) made results depend on
+ * timing
+ * @param {string} markup viewer content
+ * @param {Array} seen elementVisible for each test-lazy-block, in order
+ */
+async function fakeViewer(markup, seen) {
+  const viewer = document.createElement("div");
+  viewer.style.position = "fixed";
+  viewer.style.top = "-10000px";
+  viewer.innerHTML = markup;
+  document.body.appendChild(viewer);
+  const blocks = viewer.querySelectorAll("test-lazy-block");
+  for (let i = 0; i < blocks.length; i++) {
+    await blocks[i].updateComplete;
+    if (blocks[i].intersectionObserver) {
+      blocks[i].intersectionObserver.disconnect();
+    }
+    blocks[i].elementVisible = seen[i];
+  }
+  return viewer;
+}
+
 /** stand-in for the site editor as the theme sees it */
 function fakeEditor() {
   const editor = document.createElement("div");
@@ -388,14 +414,12 @@ describe("haxcms-site-editor edit-mode reveal", () => {
   });
 
   it("renders blocks the viewer already showed before the swap", async () => {
-    // viewer copy: the theme's light DOM, already scrolled into view
-    const viewer = document.createElement("div");
-    viewer.innerHTML =
-      "<p>a</p><test-lazy-block></test-lazy-block><test-lazy-block></test-lazy-block>";
-    document.body.appendChild(viewer);
-    await microtasks();
-    const shown = viewer.querySelectorAll("test-lazy-block");
-    shown[0].elementVisible = true;
+    // viewer copy (the theme's light DOM): the visitor saw the first block,
+    // never scrolled to the second
+    const viewer = await fakeViewer(
+      "<p>a</p><test-lazy-block></test-lazy-block><test-lazy-block></test-lazy-block>",
+      [true, false],
+    );
     element.appElement = viewer;
     store.editMode = true;
     let ready = false;
@@ -442,11 +466,9 @@ describe("haxcms-site-editor edit-mode reveal", () => {
   });
 
   it("does not hold the viewer long for media that never loads", async () => {
-    const viewer = document.createElement("div");
-    viewer.innerHTML = "<test-lazy-block></test-lazy-block>";
-    document.body.appendChild(viewer);
-    await microtasks();
-    viewer.querySelector("test-lazy-block").elementVisible = true;
+    const viewer = await fakeViewer("<test-lazy-block></test-lazy-block>", [
+      true,
+    ]);
     element.appElement = viewer;
     store.editMode = true;
     let ready = false;

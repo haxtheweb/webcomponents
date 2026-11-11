@@ -698,22 +698,26 @@ export class ConceptRunnerGame extends MicroGameBase {
         <div class="dialog">
           <span
             class="tag"
-            style="${d
-              ? "--nc:var(" +
-                (d.kind === "good" ? "--rg-good" : "--rg-bad") +
-                ");--tc:var(--cmg-on)"
-              : ""}"
-            >${d
-              ? this._tagText(d.outcome) + ": " + d.label
-              : this.t.guide}</span
+            style="${
+              d
+                ? "--nc:var(" +
+                  (d.kind === "good" ? "--rg-good" : "--rg-bad") +
+                  ");--tc:var(--cmg-on)"
+                : ""
+            }"
+            >${
+              d ? this._tagText(d.outcome) + ": " + d.label : this.t.guide
+            }</span
           >
           <p class="text" aria-hidden="true">
             ${d ? d.text : this.t.guideText}
           </p>
           <p class="sr" aria-live="polite">
-            ${d
-              ? this._tagText(d.outcome) + ": " + d.label + ". " + d.text
-              : this.t.guideText}
+            ${
+              d
+                ? this._tagText(d.outcome) + ": " + d.label + ". " + d.text
+                : this.t.guideText
+            }
           </p>
         </div>
         <details class="fallback">
@@ -781,7 +785,8 @@ export class ConceptRunnerGame extends MicroGameBase {
           top: 30%;
           height: 50%;
           opacity: 0.35;
-          background-image: linear-gradient(
+          background-image:
+            linear-gradient(
               135deg,
               var(--micro-game-soft) 25%,
               transparent 25%
@@ -809,6 +814,8 @@ export class ConceptRunnerGame extends MicroGameBase {
           background-repeat: repeat-x;
           background-position-y: 14px;
         }
+        /* sprites are placed by transform from screen x/y; left stays
+           physical on purpose (the board does not mirror) */
         #player {
           position: absolute;
           left: 0;

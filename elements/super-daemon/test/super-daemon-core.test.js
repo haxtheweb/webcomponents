@@ -139,6 +139,12 @@ describe("SuperDaemon core behavior", () => {
       : { altKey: true, key: "Alt" };
 
   it("keyHandler toggles opened with Shift+Alt (Shift+Meta where globalThis.safari is defined)", async () => {
+    // only this fixture answers the shortcut: the page's Merlin singleton
+    // also listens, and closing now runs close(), whose global close event
+    // it would answer, so keep it out the way a single Merlin is in an app
+    const singleton = globalThis.SuperDaemonManager.requestAvailability();
+    const singletonAllowed = singleton.allowedCallback;
+    singleton.allowedCallback = () => false;
     globalThis.dispatchEvent(
       new KeyboardEvent("keydown", {
         shiftKey: true,
@@ -156,6 +162,36 @@ describe("SuperDaemon core behavior", () => {
     );
     await element.updateComplete;
     expect(element.opened).to.equal(false);
+    singleton.allowedCallback = singletonAllowed;
+  });
+
+  it("closing with the shortcut runs the full close (no mini left armed)", async () => {
+    const singleton = globalThis.SuperDaemonManager.requestAvailability();
+    const singletonAllowed = singleton.allowedCallback;
+    singleton.allowedCallback = () => false;
+    let closes = 0;
+    const origClose = element.close.bind(element);
+    element.close = (...args) => {
+      closes++;
+      return origClose(...args);
+    };
+    element.opened = true;
+    element.mini = false;
+    await element.updateComplete;
+    element.keyHandlerCallback = () => {
+      element.mini = true;
+      element.wand = true;
+      return true;
+    };
+    globalThis.dispatchEvent(
+      new KeyboardEvent("keydown", { shiftKey: true, ...platformModifier() }),
+    );
+    await element.updateComplete;
+    expect(closes).to.be.at.least(1);
+    expect(element.opened).to.equal(false);
+    expect(element.mini).to.equal(false);
+    expect(element.wand).to.equal(false);
+    singleton.allowedCallback = singletonAllowed;
   });
 
   it("keyHandler Escape closes an open daemon", async () => {
@@ -194,6 +230,37 @@ describe("SuperDaemon core behavior", () => {
     globalThis.removeEventListener("super-daemon-konami-code", handler);
   });
 
+  it("sees the Konami code even when Merlin's field stops the arrow keys", async () => {
+    let fired = 0;
+    const handler = () => fired++;
+    globalThis.addEventListener("super-daemon-konami-code", handler);
+    // stands in for Merlin's input / results, which stop the arrows they
+    // use to move through results
+    const field = await fixture(html`<input />`);
+    field.addEventListener("keydown", (e) => e.stopPropagation());
+    element.konamiProgress = [];
+    [
+      "ArrowUp",
+      "ArrowUp",
+      "ArrowDown",
+      "ArrowDown",
+      "ArrowLeft",
+      "ArrowRight",
+      "ArrowLeft",
+      "ArrowRight",
+      "b",
+      "a",
+    ].forEach((key) => {
+      field.dispatchEvent(
+        new KeyboardEvent("keydown", { key, bubbles: true, composed: true }),
+      );
+    });
+    await aTimeout(50);
+    expect(fired).to.be.at.least(1);
+    expect(element.konamiProgress.length).to.equal(0);
+    globalThis.removeEventListener("super-daemon-konami-code", handler);
+  });
+
   it("resets Konami progress on a wrong key and via resetKonamiCode", () => {
     element.checkKonamiCode(new KeyboardEvent("keydown", { key: "ArrowUp" }));
     expect(element.konamiProgress.length).to.equal(1);
@@ -218,8 +285,14 @@ describe("SuperDaemon core behavior", () => {
     element.value = "mango";
     const filtered2 = element.filterItems(element.allItems, []);
     expect(filtered2[0].title).to.equal("Mango");
-    expect(filtered2[0].priority).to.equal(-10000000);
+    // the boost is for this sort only: the option keeps its own priority,
+    // so it doesn't stay pinned to the top for every later search
+    expect(filtered2[0].priority).to.equal(0);
     element.value = "";
+    const filtered3 = element.filterItems(element.allItems, []);
+    expect(filtered3.map((i) => i.title).join(",")).to.equal(
+      "Apple,Mango,Zebra",
+    );
   });
 
   it("filterItems drops hidden items and honors inline gating", () => {
@@ -753,6 +826,7 @@ describe("SuperDaemon core behavior", () => {
   it("merlinSpeak speaks then closes", async () => {
     let spoke = null;
     element.hal = {
+      synth: {},
       speak: (p) => {
         spoke = p;
         return Promise.resolve();
@@ -840,7 +914,9 @@ describe("SuperDaemon core behavior", () => {
     expect(keys.includes("back to top")).to.equal(true);
     expect(keys.includes("(run) program")).to.equal(true);
     expect(keys.includes("developer (mode)")).to.equal(true);
-    expect(keys.includes("*anything")).to.equal(true);
+    // anything else is spoken search through hal-9000-no-match, not a
+    // catch-all command
+    expect(keys.includes("*anything")).to.equal(false);
   });
 
   it("voice scroll commands drive window scrolling", () => {
@@ -1095,5 +1171,62 @@ describe("SuperDaemon core behavior", () => {
     expect(
       el.allItems.filter((i) => i.title === "Reconnect option").length,
     ).to.equal(1);
+  });
+});
+
+describe("SuperDaemon voice availability", () => {
+  it("stops listening, explains, and refreshes the mic when speech is unavailable", async () => {
+    const el = await fixture(html`<super-daemon></super-daemon>`);
+    el.listeningForInput = true;
+    let text = null;
+    const onShow = (e) => (text = e.detail.text);
+    globalThis.addEventListener("super-daemon-toast-show", onShow);
+    let refreshed = false;
+    el._refreshVoiceControls = () => (refreshed = true);
+    try {
+      el._voiceStateChanged("unavailable");
+      expect(el.listeningForInput).to.equal(false);
+      expect(text).to.equal(el.t.voiceUnavailable);
+      expect(refreshed).to.equal(true);
+    } finally {
+      globalThis.removeEventListener("super-daemon-toast-show", onShow);
+    }
+  });
+
+  it("explains a blocked mic without hiding voice", async () => {
+    const el = await fixture(html`<super-daemon></super-daemon>`);
+    el.listeningForInput = true;
+    let text = null;
+    const onShow = (e) => (text = e.detail.text);
+    globalThis.addEventListener("super-daemon-toast-show", onShow);
+    let refreshed = false;
+    el._refreshVoiceControls = () => (refreshed = true);
+    try {
+      el._voiceStateChanged("blocked");
+      expect(el.listeningForInput).to.equal(false);
+      expect(text).to.equal(el.t.voiceMicBlocked);
+      expect(refreshed).to.equal(false);
+      // ordinary states change nothing
+      text = null;
+      el._voiceStateChanged("idle");
+      expect(text).to.equal(null);
+    } finally {
+      globalThis.removeEventListener("super-daemon-toast-show", onShow);
+    }
+  });
+
+  it("listens to hal-9000 once per connection", async () => {
+    const el = await fixture(html`<super-daemon></super-daemon>`);
+    const hal = new EventTarget();
+    let calls = 0;
+    el._voiceStateChanged = () => calls++;
+    el._listenToHal(hal);
+    el._listenToHal(hal);
+    hal.dispatchEvent(
+      new CustomEvent("hal-9000-listening-state", {
+        detail: { state: "unavailable" },
+      }),
+    );
+    expect(calls).to.equal(1);
   });
 });

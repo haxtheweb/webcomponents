@@ -1,0 +1,36 @@
+{
+  "tag": "polaris-story-card",
+  "package": "@haxtheweb/polaris-theme",
+  "source": "elements/polaris-theme/lib/polaris-story-card.js",
+  "attributes": {
+    "background-attachment": "backgroundAttachment",
+    "background-size": "backgroundSize",
+    "editmode": "editMode",
+    "image": "image",
+    "label": "label",
+    "link": "link",
+    "pillar": "pillar",
+    "t": "t"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/polaris-theme/lib/polaris-story-card.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "backgroundAttachment",
+      "backgroundSize",
+      "image",
+      "label",
+      "link",
+      "pillar"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "polaris-story-card"
+    ]
+  }
+}

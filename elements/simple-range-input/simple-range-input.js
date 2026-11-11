@@ -115,6 +115,16 @@ class SimpleRangeInput extends DDD {
         input[type="range"]:focus {
           outline: none;
         }
+        /* keyboard focus draws a visible DDD focus ring around the whole
+           slider (the thumb ring alone is too faint to find) */
+        input[type="range"]:focus-visible {
+          outline: var(
+            --simple-range-input-focus-ring,
+            var(--ddd-focus-ring, 2px solid currentColor)
+          );
+          outline-offset: var(--ddd-focus-offset, 2px);
+          border-radius: var(--ddd-radius-xs, 2px);
+        }
         /* focus ring fallback pairs a dark ring with a light one via
            light-dark() so focus stays visible under a dark color scheme */
         input[type="range"]:focus::-webkit-slider-thumb {

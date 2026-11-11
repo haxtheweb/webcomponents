@@ -216,8 +216,16 @@
       "path": "lib/UserActionBroker.js",
       "declarations": [
         {
+          "kind": "variable",
+          "name": "XAPI_RECORDED_TRACKS",
+          "type": {
+            "text": "array"
+          },
+          "default": "[\"visibility\", \"click\", \"keypress\"]"
+        },
+        {
           "kind": "class",
-          "description": "Broker user actions in a normalized way which is abstracted from xAPI\nbut yet mirrors much of that structure and data needs.\n\nNormalization: listen() (once per page) turns every `user-engagement`,\n`question-element-state` and `learner-progress-import` event that reaches\nthe window into one xAPI statement (see ./xapi.js) and hands it to every\nsubscriber registered with subscribe(fn). Events that already carry\n`detail.statement` keep it; older or third party events are converted from\ntheir loose fields. A question-element-state that follows a statement from\nthe same element (the same answer check) is not sent twice.\nSubscribers get ({ statement, element, eventName, detail, imported }).",
+          "description": "Broker user actions in a normalized way which is abstracted from xAPI\nbut yet mirrors much of that structure and data needs.\n\nNormalization: listen() (once per page) turns every `user-engagement`\nand `learner-progress-import` event that reaches the window into one xAPI\nstatement (see ./xapi.js) and hands it to every subscriber registered\nwith subscribe(fn). Events that already carry `detail.statement` keep it;\nolder or third party events are converted from their loose fields, and\nevents marked `xapi: false` are not learner records.\n\n`question-element-state` is not a learner record source: every question\nelement sends its own answered statement on user-engagement, and the state\nevent (still fired for question-stack and page logic) only repeated it.\nSubscribers get ({ statement, element, eventName, detail, imported }).",
           "name": "UserActionBroker",
           "members": [
             {
@@ -272,7 +280,7 @@
               "name": "normalize",
               "parameters": [
                 {
-                  "name": "eventName",
+                  "name": "_eventName",
                   "type": {
                     "text": "string"
                   }
@@ -291,7 +299,7 @@
                   }
                 }
               ],
-              "description": "One xAPI statement for an event detail, or null when it duplicates one\nalready sent (a question-element-state for the same answer check)."
+              "description": "One xAPI statement for an event detail, or null when it is not a\nlearner record."
             },
             {
               "kind": "method",
@@ -301,7 +309,7 @@
                   "name": "event"
                 }
               ],
-              "description": "/**\n  See if this is a valid event"
+              "description": "See if this is a valid event"
             },
             {
               "kind": "method",
@@ -338,11 +346,6 @@
                 "text": "null"
               },
               "default": "null"
-            },
-            {
-              "kind": "field",
-              "name": "_lastFromElement",
-              "default": "new WeakMap()"
             }
           ]
         },
@@ -353,6 +356,14 @@
         }
       ],
       "exports": [
+        {
+          "kind": "js",
+          "name": "XAPI_RECORDED_TRACKS",
+          "declaration": {
+            "name": "XAPI_RECORDED_TRACKS",
+            "module": "lib/UserActionBroker.js"
+          }
+        },
         {
           "kind": "js",
           "name": "UserActionBroker",
@@ -381,7 +392,7 @@
           "type": {
             "text": "object"
           },
-          "default": "{ \"a11y-media-player\": { tag: \"a11y-media-player\", event: \"user-engagement\", verbs: [\"completed\"], objectType: \"http://adlnet.gov/expapi/activities/media\", result: [\"completion\"], countsTowardCompletion: true, done: \"played to the end\", source: \"elements/a11y-media-player/a11y-media-player.js\", }, \"audio-player\": { tag: \"audio-player\", event: \"user-engagement\", verbs: [\"completed\"], objectType: \"http://adlnet.gov/expapi/activities/media\", result: [\"completion\"], countsTowardCompletion: true, done: \"played to the end\", source: \"elements/audio-player/audio-player.js\", }, \"bullet-check-list\": { tag: \"bullet-check-list\", event: \"user-engagement\", verbs: [\"progressed\", \"completed\"], objectType: \"http://adlnet.gov/expapi/activities/objective\", result: [\"completion\", \"response\", \"score\"], countsTowardCompletion: true, done: \"every item ticked\", source: \"elements/bullet-check-list/bullet-check-list.js\", }, \"concept-map-game\": { tag: \"concept-map-game\", event: \"user-engagement\", verbs: [\"attempted\", \"experienced\", \"completed\"], objectType: \"http://adlnet.gov/expapi/activities/simulation\", result: [\"success\", \"completion\", \"response\", \"score\", \"duration\"], countsTowardCompletion: true, done: \"game completed\", source: \"elements/micro-game-base/lib/concept-map-game.js\", }, \"concept-quest-game\": { tag: \"concept-quest-game\", event: \"user-engagement\", verbs: [\"attempted\", \"answered\", \"completed\"], objectType: \"http://adlnet.gov/expapi/activities/simulation\", result: [\"success\", \"completion\", \"response\", \"score\", \"duration\"], countsTowardCompletion: true, done: \"game completed\", source: \"elements/micro-game-base/lib/concept-quest-game.js\", }, \"concept-runner-game\": { tag: \"concept-runner-game\", event: \"user-engagement\", verbs: [\"attempted\", \"experienced\", \"completed\"], objectType: \"http://adlnet.gov/expapi/activities/simulation\", result: [\"success\", \"completion\", \"response\", \"score\", \"duration\"], countsTowardCompletion: true, done: \"game completed\", source: \"elements/micro-game-base/lib/concept-runner-game.js\", }, \"fill-in-the-blanks\": { tag: \"fill-in-the-blanks\", event: \"user-engagement\", verbs: [\"answered\"], objectType: \"http://adlnet.gov/expapi/activities/cmi.interaction\", interactionType: \"fill-in\", result: [ \"success\", \"completion\", \"response\", \"score\", \"extensions.attempts\", \"extensions.max-attempts\", ], countsTowardCompletion: true, done: \"answered correctly or out of attempts\", source: \"elements/fill-in-the-blanks/fill-in-the-blanks.js\", }, \"flash-card\": { tag: \"flash-card\", event: \"user-engagement\", verbs: [\"answered\"], objectType: \"http://adlnet.gov/expapi/activities/cmi.interaction\", interactionType: \"fill-in\", result: [\"success\", \"completion\", \"response\", \"score\"], countsTowardCompletion: true, done: \"answered correctly\", source: \"elements/flash-card/flash-card.js\", }, \"mark-the-words\": { tag: \"mark-the-words\", event: \"user-engagement\", verbs: [\"answered\"], objectType: \"http://adlnet.gov/expapi/activities/cmi.interaction\", interactionType: \"choice\", result: [ \"success\", \"completion\", \"response\", \"score\", \"extensions.attempts\", \"extensions.max-attempts\", ], countsTowardCompletion: true, done: \"answered correctly or out of attempts\", source: \"elements/mark-the-words/mark-the-words.js\", }, \"matching-question\": { tag: \"matching-question\", event: \"user-engagement\", verbs: [\"answered\"], objectType: \"http://adlnet.gov/expapi/activities/cmi.interaction\", interactionType: \"matching\", result: [ \"success\", \"completion\", \"response\", \"score\", \"extensions.attempts\", \"extensions.max-attempts\", ], countsTowardCompletion: true, done: \"answered correctly or out of attempts\", source: \"elements/matching-question/matching-question.js\", }, \"multiple-choice\": { tag: \"multiple-choice\", event: \"user-engagement\", verbs: [\"answered\"], objectType: \"http://adlnet.gov/expapi/activities/cmi.interaction\", interactionType: \"choice\", result: [ \"success\", \"completion\", \"response\", \"score\", \"extensions.attempts\", \"extensions.max-attempts\", ], countsTowardCompletion: true, done: \"answered correctly or out of attempts\", source: \"elements/multiple-choice/multiple-choice.js\", }, \"short-answer-question\": { tag: \"short-answer-question\", event: \"user-engagement\", verbs: [\"answered\"], objectType: \"http://adlnet.gov/expapi/activities/cmi.interaction\", interactionType: \"fill-in\", result: [ \"success\", \"completion\", \"response\", \"score\", \"extensions.attempts\", \"extensions.max-attempts\", ], countsTowardCompletion: true, done: \"answered correctly or out of attempts\", source: \"elements/multiple-choice/lib/short-answer-question.js\", }, \"sorting-question\": { tag: \"sorting-question\", event: \"user-engagement\", verbs: [\"answered\"], objectType: \"http://adlnet.gov/expapi/activities/cmi.interaction\", interactionType: \"sequencing\", result: [ \"success\", \"completion\", \"response\", \"score\", \"extensions.attempts\", \"extensions.max-attempts\", ], countsTowardCompletion: true, done: \"answered correctly or out of attempts\", source: \"elements/sorting-question/sorting-question.js\", }, \"tagging-question\": { tag: \"tagging-question\", event: \"user-engagement\", verbs: [\"answered\"], objectType: \"http://adlnet.gov/expapi/activities/cmi.interaction\", interactionType: \"matching\", result: [ \"success\", \"completion\", \"response\", \"score\", \"extensions.attempts\", \"extensions.max-attempts\", ], countsTowardCompletion: true, done: \"answered correctly or out of attempts\", source: \"elements/tagging-question/tagging-question.js\", }, \"true-false-question\": { tag: \"true-false-question\", event: \"user-engagement\", verbs: [\"answered\"], objectType: \"http://adlnet.gov/expapi/activities/cmi.interaction\", interactionType: \"true-false\", result: [ \"success\", \"completion\", \"response\", \"score\", \"extensions.attempts\", \"extensions.max-attempts\", ], countsTowardCompletion: true, done: \"answered correctly or out of attempts\", source: \"elements/multiple-choice/lib/true-false-question.js\", }, \"user-action\": { tag: \"user-action\", event: \"user-engagement\", verbs: [\"experienced\", \"interacted\"], objectType: \"http://adlnet.gov/expapi/activities/interaction\", result: [], countsTowardCompletion: false, done: \"never; records that something was seen or used\", source: \"elements/user-action/user-action.js\", }, \"video-player\": { tag: \"video-player\", event: \"user-engagement\", verbs: [\"completed\"], objectType: \"http://adlnet.gov/expapi/activities/media\", result: [\"completion\"], countsTowardCompletion: true, done: \"played to the end\", source: \"elements/video-player/video-player.js\", }, }"
+          "default": "{ \"a11y-collapse\": { tag: \"a11y-collapse\", event: \"user-engagement\", verbs: [\"experienced\"], objectType: \"http://adlnet.gov/expapi/activities/interaction\", result: [\"completion\"], countsTowardCompletion: true, done: \"opened by the learner (one already open when the page loads has nothing to open and does not count)\", source: \"elements/a11y-collapse/a11y-collapse.js\", }, \"a11y-media-player\": { tag: \"a11y-media-player\", event: \"user-engagement\", verbs: [\"attempted\", \"progressed\", \"completed\"], objectType: \"http://adlnet.gov/expapi/activities/media\", result: [ \"completion\", \"duration\", \"extensions.https://w3id.org/xapi/video/extensions/progress\", ], countsTowardCompletion: true, done: \"95% of the media actually watched, or played on into the end after watching 80% (seeking ahead does not count)\", source: \"elements/a11y-media-player/a11y-media-player.js\", }, \"audio-player\": { tag: \"audio-player\", event: \"user-engagement\", verbs: [\"attempted\", \"progressed\", \"completed\"], objectType: \"http://adlnet.gov/expapi/activities/media\", result: [ \"completion\", \"duration\", \"extensions.https://w3id.org/xapi/video/extensions/progress\", ], countsTowardCompletion: true, done: \"95% of the media actually watched, or played on into the end after watching 80% (seeking ahead does not count)\", source: \"elements/audio-player/audio-player.js\", }, \"bullet-check-list\": { tag: \"bullet-check-list\", event: \"user-engagement\", verbs: [\"progressed\", \"completed\"], objectType: \"http://adlnet.gov/expapi/activities/objective\", result: [\"completion\", \"response\", \"score\"], countsTowardCompletion: true, done: \"every item ticked\", source: \"elements/bullet-check-list/bullet-check-list.js\", }, \"concept-map-game\": { tag: \"concept-map-game\", event: \"user-engagement\", verbs: [\"attempted\", \"progressed\", \"completed\"], objectType: \"http://adlnet.gov/expapi/activities/simulation\", result: [\"success\", \"completion\", \"response\", \"score\", \"duration\"], countsTowardCompletion: true, done: \"game completed\", source: \"elements/micro-game-base/lib/concept-map-game.js\", }, \"concept-quest-game\": { tag: \"concept-quest-game\", event: \"user-engagement\", verbs: [\"attempted\", \"answered\", \"completed\"], objectType: \"http://adlnet.gov/expapi/activities/simulation\", result: [\"success\", \"completion\", \"response\", \"score\", \"duration\"], countsTowardCompletion: true, done: \"game completed\", source: \"elements/micro-game-base/lib/concept-quest-game.js\", }, \"concept-runner-game\": { tag: \"concept-runner-game\", event: \"user-engagement\", verbs: [\"attempted\", \"answered\", \"completed\"], objectType: \"http://adlnet.gov/expapi/activities/simulation\", result: [\"success\", \"completion\", \"response\", \"score\", \"duration\"], countsTowardCompletion: true, done: \"game completed\", source: \"elements/micro-game-base/lib/concept-runner-game.js\", }, \"fill-in-the-blanks\": { tag: \"fill-in-the-blanks\", event: \"user-engagement\", verbs: [\"answered\"], objectType: \"http://adlnet.gov/expapi/activities/cmi.interaction\", interactionType: \"fill-in\", definition: [\"name\", \"interactionType\", \"correctResponsesPattern\"], response: \"the text of each blank, in order, joined by [,]\", result: [ \"success\", \"completion\", \"response\", \"score\", \"extensions.attempts\", \"extensions.max-attempts\", ], countsTowardCompletion: true, done: \"answered correctly or out of attempts\", source: \"elements/fill-in-the-blanks/fill-in-the-blanks.js\", }, \"flash-card\": { tag: \"flash-card\", event: \"user-engagement\", verbs: [\"answered\"], objectType: \"http://adlnet.gov/expapi/activities/cmi.interaction\", interactionType: \"fill-in\", result: [\"success\", \"completion\", \"response\", \"score\"], countsTowardCompletion: true, done: \"answered correctly\", source: \"elements/flash-card/flash-card.js\", }, \"h5p-element\": { tag: \"h5p-element\", event: \"user-engagement\", verbs: [\"attempted\", \"answered\", \"completed\"], objectType: \"http://adlnet.gov/expapi/activities/interaction\", result: [\"success\", \"completion\", \"response\", \"score\", \"duration\"], countsTowardCompletion: false, done: \"never required; not every H5P content type reports completion\", source: \"elements/h5p-element/h5p-element.js\", }, \"haxcms-page\": { tag: \"haxcms-page\", event: \"user-engagement\", verbs: [\"experienced\", \"progressed\", \"completed\"], objectType: \"http://adlnet.gov/expapi/activities/lesson\", result: [ \"completion\", \"duration\", \"extensions.https://haxtheweb.org/xapi/extensions/progress\", ], countsTowardCompletion: false, done: \"page content scrolled through to its end (each page counts its reading toward being done on its own)\", source: \"elements/haxcms-elements/lib/core/haxcms-reading-progress.js\", }, \"image-compare-slider\": { tag: \"image-compare-slider\", event: \"user-engagement\", verbs: [\"interacted\"], objectType: \"http://adlnet.gov/expapi/activities/interaction\", result: [], countsTowardCompletion: false, done: \"never required; records that the learner moved the slider\", source: \"elements/image-compare-slider/image-compare-slider.js\", }, \"lrndesign-imagemap\": { tag: \"lrndesign-imagemap\", event: \"user-engagement\", verbs: [\"progressed\", \"completed\"], objectType: \"http://adlnet.gov/expapi/activities/interaction\", result: [\"completion\", \"score\"], countsTowardCompletion: false, done: \"never required; completed once every hotspot has been opened\", source: \"elements/lrndesign-imagemap/lrndesign-imagemap.js\", }, \"lrs-emitter\": { tag: \"lrs-emitter\", event: \"user-engagement\", verbs: [ \"experienced\", \"interacted\", \"answered\", \"progressed\", \"attempted\", \"completed\", ], objectType: \"http://adlnet.gov/expapi/activities/interaction\", result: [], countsTowardCompletion: false, done: \"never; records the authored verb when clicked or viewed\", source: \"elements/lrs-elements/lib/lrs-emitter.js\", }, \"mark-the-words\": { tag: \"mark-the-words\", event: \"user-engagement\", verbs: [\"answered\"], objectType: \"http://adlnet.gov/expapi/activities/cmi.interaction\", interactionType: \"choice\", definition: [ \"name\", \"interactionType\", \"choices\", \"correctResponsesPattern\", ], response: \"ids of the words marked joined by [,]\", result: [ \"success\", \"completion\", \"response\", \"score\", \"extensions.attempts\", \"extensions.max-attempts\", ], countsTowardCompletion: true, done: \"answered correctly or out of attempts\", source: \"elements/mark-the-words/mark-the-words.js\", }, \"matching-question\": { tag: \"matching-question\", event: \"user-engagement\", verbs: [\"answered\"], objectType: \"http://adlnet.gov/expapi/activities/cmi.interaction\", interactionType: \"matching\", definition: [ \"name\", \"interactionType\", \"source\", \"target\", \"correctResponsesPattern\", ], response: \"source[.]target id pairs joined by [,]\", result: [ \"success\", \"completion\", \"response\", \"score\", \"extensions.attempts\", \"extensions.max-attempts\", ], countsTowardCompletion: true, done: \"answered correctly or out of attempts\", source: \"elements/matching-question/matching-question.js\", }, \"multiple-choice\": { tag: \"multiple-choice\", event: \"user-engagement\", verbs: [\"answered\"], objectType: \"http://adlnet.gov/expapi/activities/cmi.interaction\", interactionType: \"choice\", definition: [ \"name\", \"interactionType\", \"choices\", \"correctResponsesPattern\", ], response: \"ids of the selected choices joined by [,]\", result: [ \"success\", \"completion\", \"response\", \"score\", \"extensions.attempts\", \"extensions.max-attempts\", ], countsTowardCompletion: true, done: \"answered correctly or out of attempts\", source: \"elements/multiple-choice/multiple-choice.js\", }, \"reading-analysis\": { tag: \"reading-analysis\", event: \"user-engagement\", verbs: [\"answered\"], objectType: \"http://adlnet.gov/expapi/activities/cmi.interaction\", interactionType: \"choice\", definition: [ \"name\", \"interactionType\", \"choices\", \"correctResponsesPattern\", ], response: \"flag mode: ids of the flag-and-passage pairs placed, joined by [,]; select-one mode: the id of the passage chosen\", result: [ \"success\", \"completion\", \"response\", \"score\", \"extensions.attempts\", \"extensions.max-attempts\", ], countsTowardCompletion: true, done: \"every expected flag placed with no wrong ones (or the right passage selected), or out of attempts\", source: \"elements/reading-analysis/reading-analysis.js\", }, \"self-check\": { tag: \"self-check\", event: \"user-engagement\", verbs: [\"experienced\"], objectType: \"http://adlnet.gov/expapi/activities/interaction\", result: [\"completion\"], countsTowardCompletion: true, done: \"the answer has been revealed\", source: \"elements/self-check/self-check.js\", }, \"self-reflective-nudge\": { tag: \"self-reflective-nudge\", event: \"user-engagement\", verbs: [\"answered\"], objectType: \"http://adlnet.gov/expapi/activities/cmi.interaction\", interactionType: \"likert\", definition: [\"name\", \"interactionType\", \"scale\"], response: \"the id of the scale point chosen (no right answer)\", result: [\"completion\", \"response\"], countsTowardCompletion: true, done: \"a response was chosen\", source: \"elements/self-reflective-nudge/self-reflective-nudge.js\", }, \"short-answer-question\": { tag: \"short-answer-question\", event: \"user-engagement\", verbs: [\"answered\"], objectType: \"http://adlnet.gov/expapi/activities/cmi.interaction\", interactionType: \"fill-in\", definition: [\"name\", \"interactionType\", \"correctResponsesPattern\"], response: \"the text the learner typed\", result: [ \"success\", \"completion\", \"response\", \"score\", \"extensions.attempts\", \"extensions.max-attempts\", ], countsTowardCompletion: true, done: \"answered correctly or out of attempts\", source: \"elements/multiple-choice/lib/short-answer-question.js\", }, \"slide-deck\": { tag: \"slide-deck\", event: \"user-engagement\", verbs: [\"attempted\", \"progressed\", \"completed\"], objectType: \"http://adlnet.gov/expapi/activities/interaction\", result: [\"completion\", \"score\"], countsTowardCompletion: false, done: \"never required; completed once every slide has been shown\", source: \"elements/slide-deck/slide-deck.js\", }, \"sorting-question\": { tag: \"sorting-question\", event: \"user-engagement\", verbs: [\"answered\"], objectType: \"http://adlnet.gov/expapi/activities/cmi.interaction\", interactionType: \"sequencing\", definition: [ \"name\", \"interactionType\", \"choices\", \"correctResponsesPattern\", ], response: \"choice ids in the learner's order joined by [,]\", result: [ \"success\", \"completion\", \"response\", \"score\", \"extensions.attempts\", \"extensions.max-attempts\", ], countsTowardCompletion: true, done: \"answered correctly or out of attempts\", source: \"elements/sorting-question/sorting-question.js\", }, \"tagging-question\": { tag: \"tagging-question\", event: \"user-engagement\", verbs: [\"answered\"], objectType: \"http://adlnet.gov/expapi/activities/cmi.interaction\", interactionType: \"choice\", definition: [ \"name\", \"interactionType\", \"choices\", \"correctResponsesPattern\", ], response: \"ids of the tags applied joined by [,]\", result: [ \"success\", \"completion\", \"response\", \"score\", \"extensions.attempts\", \"extensions.max-attempts\", ], countsTowardCompletion: true, done: \"answered correctly or out of attempts\", source: \"elements/tagging-question/tagging-question.js\", }, \"true-false-question\": { tag: \"true-false-question\", event: \"user-engagement\", verbs: [\"answered\"], objectType: \"http://adlnet.gov/expapi/activities/cmi.interaction\", interactionType: \"true-false\", definition: [\"name\", \"interactionType\", \"correctResponsesPattern\"], response: \"true or false\", result: [ \"success\", \"completion\", \"response\", \"score\", \"extensions.attempts\", \"extensions.max-attempts\", ], countsTowardCompletion: true, done: \"answered correctly or out of attempts\", source: \"elements/multiple-choice/lib/true-false-question.js\", }, \"user-action\": { tag: \"user-action\", event: \"user-engagement\", verbs: [\"experienced\", \"interacted\"], objectType: \"http://adlnet.gov/expapi/activities/interaction\", result: [], countsTowardCompletion: false, done: \"never; records that something was seen (visibility) or used (click, keypress)\", source: \"elements/user-action/user-action.js\", }, \"video-player\": { tag: \"video-player\", event: \"user-engagement\", verbs: [\"attempted\", \"progressed\", \"completed\"], objectType: \"http://adlnet.gov/expapi/activities/media\", result: [ \"completion\", \"duration\", \"extensions.https://w3id.org/xapi/video/extensions/progress\", ], countsTowardCompletion: true, done: \"95% of the media actually watched, or played on into the end after watching 80% (seeking ahead does not count)\", source: \"elements/video-player/video-player.js\", }, \"vocab-term\": { tag: \"vocab-term\", event: \"user-engagement\", verbs: [\"experienced\"], objectType: \"http://adlnet.gov/expapi/activities/interaction\", result: [], countsTowardCompletion: false, done: \"never required; records that the definition was opened\", source: \"elements/vocab-term/vocab-term.js\", }, }"
         },
         {
           "kind": "variable",
@@ -426,8 +437,8 @@
           "type": {
             "text": "object"
           },
-          "default": "{ answered: \"http://adlnet.gov/expapi/verbs/answered\", attempted: \"http://adlnet.gov/expapi/verbs/attempted\", completed: \"http://adlnet.gov/expapi/verbs/completed\", experienced: \"http://adlnet.gov/expapi/verbs/experienced\", progressed: \"http://adlnet.gov/expapi/verbs/progressed\", passed: \"http://adlnet.gov/expapi/verbs/passed\", failed: \"http://adlnet.gov/expapi/verbs/failed\", interacted: \"http://adlnet.gov/expapi/verbs/interacted\", }",
-          "description": "ADL verb IRIs used by HAX elements"
+          "default": "{ answered: \"http://adlnet.gov/expapi/verbs/answered\", attempted: \"http://adlnet.gov/expapi/verbs/attempted\", completed: \"http://adlnet.gov/expapi/verbs/completed\", experienced: \"http://adlnet.gov/expapi/verbs/experienced\", progressed: \"http://adlnet.gov/expapi/verbs/progressed\", interacted: \"http://adlnet.gov/expapi/verbs/interacted\", }",
+          "description": "ADL verb IRIs used by HAX elements. Each has one meaning:\n  experienced  saw or opened something; no judgment, no progress\n  interacted   manipulated something with no right answer\n  answered     gave a response (judged or not, see result.success)\n  progressed   finished one step of a multi-part activity\n  attempted    began an attempt\n  completed    finished the whole activity\nPass and fail are result.success on the answered / completed statement;\nstatements imported from elsewhere may still use other ADL verbs."
         },
         {
           "kind": "variable",
@@ -452,8 +463,26 @@
           "type": {
             "text": "object"
           },
-          "default": "{ educationalRecord: \"https://haxtheweb.org/xapi/extensions/educational-record\", attempts: \"https://haxtheweb.org/xapi/extensions/attempts\", maxAttempts: \"https://haxtheweb.org/xapi/extensions/max-attempts\", element: \"https://haxtheweb.org/xapi/extensions/element\", imported: \"https://haxtheweb.org/xapi/extensions/imported\", }",
+          "default": "{ educationalRecord: \"https://haxtheweb.org/xapi/extensions/educational-record\", attempts: \"https://haxtheweb.org/xapi/extensions/attempts\", maxAttempts: \"https://haxtheweb.org/xapi/extensions/max-attempts\", element: \"https://haxtheweb.org/xapi/extensions/element\", imported: \"https://haxtheweb.org/xapi/extensions/imported\", // how far through an activity the learner is, a number from 0 to 1 (page // reading: the share of the page content scrolled through). Media keep // the xAPI video profile IRI (XAPI_VIDEO_PROGRESS), which means \"share of // the media consumed\" and so is not used for anything else. progress: \"https://haxtheweb.org/xapi/extensions/progress\", }",
           "description": "HAX extension IRIs"
+        },
+        {
+          "kind": "variable",
+          "name": "XAPI_VIDEO_PROGRESS",
+          "type": {
+            "text": "string"
+          },
+          "default": "\"https://w3id.org/xapi/video/extensions/progress\"",
+          "description": "xAPI video profile result extension: share of the media consumed, 0 to 1"
+        },
+        {
+          "kind": "variable",
+          "name": "XAPI_PROGRESS_EXTENSIONS",
+          "type": {
+            "text": "array"
+          },
+          "default": "[ XAPI_EXTENSIONS.progress, XAPI_VIDEO_PROGRESS, ]",
+          "description": "Result extensions a progress store reads as \"how far through, 0 to 1\".\nBoth IRIs end in \"/progress\", so a store can match on that one suffix."
         },
         {
           "kind": "variable",
@@ -462,6 +491,40 @@
             "text": "string"
           },
           "default": "\"HAX\""
+        },
+        {
+          "kind": "variable",
+          "name": "XAPI_INTERACTION_TYPES",
+          "type": {
+            "text": "array"
+          },
+          "default": "[ \"true-false\", \"choice\", \"fill-in\", \"long-fill-in\", \"matching\", \"performance\", \"sequencing\", \"likert\", \"numeric\", \"other\", ]",
+          "description": "xAPI 1.0.3 interaction types (cmi.interaction interactionType)"
+        },
+        {
+          "kind": "variable",
+          "name": "XAPI_COMPONENT_LISTS",
+          "type": {
+            "text": "array"
+          },
+          "default": "[ \"choices\", \"scale\", \"source\", \"target\", \"steps\", ]",
+          "description": "Interaction component lists an object definition can carry"
+        },
+        {
+          "kind": "variable",
+          "name": "XAPI_ITEM_DELIMITER",
+          "type": {
+            "text": "string"
+          },
+          "default": "\"[,]\""
+        },
+        {
+          "kind": "variable",
+          "name": "XAPI_PAIR_DELIMITER",
+          "type": {
+            "text": "string"
+          },
+          "default": "\"[.]\""
         },
         {
           "kind": "function",
@@ -506,6 +569,24 @@
         },
         {
           "kind": "function",
+          "name": "authoredResource",
+          "parameters": [
+            {
+              "name": "element",
+              "type": {
+                "text": "HTMLElement"
+              }
+            }
+          ],
+          "description": "The `resource` attribute an element had in its markup when it connected\n(authored, or saved by HAX), or \"\" when it had none. SchemaBehaviors\n(@haxtheweb/schema-behaviors) records it as `_xapiAuthoredResource` before\nits first update, which is when it generates a random `resource` for\nelements without one; a generated value changes on every page load, so it\nis never used here. Elements without SchemaBehaviors can set\n`_xapiAuthoredResource` themselves (read the attribute in\nconnectedCallback before anything can write it).",
+          "return": {
+            "type": {
+              "text": "string"
+            }
+          }
+        },
+        {
+          "kind": "function",
           "name": "activityKey",
           "parameters": [
             {
@@ -523,12 +604,49 @@
               }
             }
           ],
-          "description": "Stable activity id for an element: page URL + \"#\" + key. The key is the\nelement id when it has one; otherwise its tag plus a hash of what the\nauthor wrote (question, title or the fingerprint given), plus its position\namong same-key elements when more than one on the page would collide.",
+          "description": "Stable activity id for an element: page URL + \"#\" + key. The key is, in\norder:\n  1. the element id, when the author set one;\n  2. the `resource` the element had in its markup (see authoredResource;\n     never one generated during this page load), without its leading \"#\";\n  3. its tag plus a hash of what the author wrote (question, title or the\n     fingerprint given).\n2 and 3 add the element's position among same-key elements (\"-1\", \"-2\")\nwhen more than one on the page would collide (a block duplicated with its\nresource, two identical questions).",
           "return": {
             "type": {
               "text": "string"
             }
           }
+        },
+        {
+          "kind": "function",
+          "name": "legacyActivityKey",
+          "parameters": [
+            {
+              "name": "element",
+              "type": {
+                "text": "HTMLElement"
+              }
+            },
+            {
+              "name": "fingerprint",
+              "optional": true,
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "description": "The key activityKey gave before authored resources were used (element id,\nelse tag + fingerprint hash + position among same-fingerprint elements).\nLets a progress store find, once, what it saved under that key.",
+          "return": {
+            "type": {
+              "text": "string"
+            }
+          }
+        },
+        {
+          "kind": "function",
+          "name": "legacyActivityId",
+          "parameters": [
+            {
+              "name": "element"
+            },
+            {
+              "name": "fingerprint"
+            }
+          ]
         },
         {
           "kind": "function",
@@ -591,7 +709,7 @@
             {
               "name": "parts",
               "type": {
-                "text": "@param {string} parts.verb key of XAPI_VERBS or a full verb IRI\n * @param {Object} parts.object { id, name, description, type,\n *   interactionType, extensions } or an element (then its activityId is used)\n * @param {Object} [parts.result] { success, completion, response, score:\n *   {raw, max, min, scaled}, duration, extensions }\n * @param {Object} [parts.context] { pageId, pageName, siteId, siteName,\n *   language, extensions } merged into the educational record context\n * @param {Object} [parts.actor] defaults to the registered actor provider\n * "
+                "text": "@param {string} parts.verb key of XAPI_VERBS or a full verb IRI\n * @param {Object} parts.object { id, name, description, type,\n *   interactionType, correctResponsesPattern, choices, scale, source, target,\n *   steps, extensions }; component lists are [{ id, description }] with the\n *   description as text (put in a language map here) or a language map\n * @param {Object} [parts.result] { success, completion, response, score:\n *   {raw, max, min, scaled}, duration, extensions }\n * @param {Object} [parts.context] { pageId, pageName, siteId, siteName,\n *   language, extensions } merged into the educational record context\n * @param {Object} [parts.actor] defaults to the registered actor provider\n * "
               }
             }
           ],
@@ -621,6 +739,127 @@
             }
           ],
           "description": "Text form of a learner's answer for result.response. Arrays become the\nxAPI multi value form (items joined by \"[,]\")."
+        },
+        {
+          "kind": "function",
+          "name": "componentId",
+          "parameters": [
+            {
+              "name": "text"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "componentIds",
+          "parameters": [
+            {
+              "name": "texts",
+              "type": {
+                "text": "string[]"
+              }
+            }
+          ],
+          "description": "Ids for a list of component texts, in the same order, unique in the list",
+          "return": {
+            "type": {
+              "text": "string[]"
+            }
+          }
+        },
+        {
+          "kind": "function",
+          "name": "interactionComponents",
+          "parameters": [
+            {
+              "name": "texts",
+              "type": {
+                "text": "string[]"
+              }
+            }
+          ],
+          "description": "Component list for an object definition: [{ id, description }]\n(description stays text; buildStatement makes it a language map)"
+        },
+        {
+          "kind": "function",
+          "name": "choiceResponse",
+          "parameters": [
+            {
+              "name": "ids"
+            }
+          ],
+          "description": "result.response / pattern for choice and sequencing: ids joined by \"[,]\""
+        },
+        {
+          "kind": "function",
+          "name": "matchingResponse",
+          "parameters": [
+            {
+              "name": "pairs"
+            }
+          ],
+          "description": "result.response / pattern for matching: [[sourceId, targetId], ...] as\n\"s[.]t[,]s2[.]t2\""
+        },
+        {
+          "kind": "function",
+          "name": "fillInItem",
+          "parameters": [
+            {
+              "name": "text",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "lang",
+              "optional": true,
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "description": "One fill-in / long-fill-in item of free text. The spec has no escape for\nthe \"[,]\" delimiter, so it (and \"[.]\") is reduced to its middle character.\nA characterstring parameter ({case_matters=...}, {lang=...}) is only\nrecognised at the start of an item, so text that itself starts with \"{\"\ngets the item level {lang=<tag>} parameter the spec defines in front of\nit; readers drop that prefix and read the text after it unchanged."
+        },
+        {
+          "kind": "function",
+          "name": "fillInText",
+          "parameters": [
+            {
+              "name": "item"
+            }
+          ],
+          "description": "Learner text of a fill-in item (fillInItem undone)"
+        },
+        {
+          "kind": "function",
+          "name": "fillInResponse",
+          "parameters": [
+            {
+              "name": "items"
+            },
+            {
+              "name": "lang"
+            }
+          ],
+          "description": "result.response for fill-in / long-fill-in: one item per blank, \"[,]\""
+        },
+        {
+          "kind": "function",
+          "name": "describeResponse",
+          "parameters": [
+            {
+              "name": "statement",
+              "type": {
+                "text": "XAPIStatement"
+              }
+            }
+          ],
+          "description": "The learner's response of a statement in plain words, resolving component\nids through its object definition (for dashboards and \"Recent activity\";\nnever sent anywhere). Ids not in the definition are shown as they are.",
+          "return": {
+            "type": {
+              "text": "string"
+            }
+          }
         },
         {
           "kind": "function",
@@ -687,9 +926,57 @@
         },
         {
           "kind": "js",
+          "name": "XAPI_VIDEO_PROGRESS",
+          "declaration": {
+            "name": "XAPI_VIDEO_PROGRESS",
+            "module": "lib/xapi.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "XAPI_PROGRESS_EXTENSIONS",
+          "declaration": {
+            "name": "XAPI_PROGRESS_EXTENSIONS",
+            "module": "lib/xapi.js"
+          }
+        },
+        {
+          "kind": "js",
           "name": "XAPI_PLATFORM",
           "declaration": {
             "name": "XAPI_PLATFORM",
+            "module": "lib/xapi.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "XAPI_INTERACTION_TYPES",
+          "declaration": {
+            "name": "XAPI_INTERACTION_TYPES",
+            "module": "lib/xapi.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "XAPI_COMPONENT_LISTS",
+          "declaration": {
+            "name": "XAPI_COMPONENT_LISTS",
+            "module": "lib/xapi.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "XAPI_ITEM_DELIMITER",
+          "declaration": {
+            "name": "XAPI_ITEM_DELIMITER",
+            "module": "lib/xapi.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "XAPI_PAIR_DELIMITER",
+          "declaration": {
+            "name": "XAPI_PAIR_DELIMITER",
             "module": "lib/xapi.js"
           }
         },
@@ -743,9 +1030,33 @@
         },
         {
           "kind": "js",
+          "name": "authoredResource",
+          "declaration": {
+            "name": "authoredResource",
+            "module": "lib/xapi.js"
+          }
+        },
+        {
+          "kind": "js",
           "name": "activityKey",
           "declaration": {
             "name": "activityKey",
+            "module": "lib/xapi.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "legacyActivityKey",
+          "declaration": {
+            "name": "legacyActivityKey",
+            "module": "lib/xapi.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "legacyActivityId",
+          "declaration": {
+            "name": "legacyActivityId",
             "module": "lib/xapi.js"
           }
         },
@@ -810,6 +1121,78 @@
           "name": "responseText",
           "declaration": {
             "name": "responseText",
+            "module": "lib/xapi.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "componentId",
+          "declaration": {
+            "name": "componentId",
+            "module": "lib/xapi.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "componentIds",
+          "declaration": {
+            "name": "componentIds",
+            "module": "lib/xapi.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "interactionComponents",
+          "declaration": {
+            "name": "interactionComponents",
+            "module": "lib/xapi.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "choiceResponse",
+          "declaration": {
+            "name": "choiceResponse",
+            "module": "lib/xapi.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "matchingResponse",
+          "declaration": {
+            "name": "matchingResponse",
+            "module": "lib/xapi.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "fillInItem",
+          "declaration": {
+            "name": "fillInItem",
+            "module": "lib/xapi.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "fillInText",
+          "declaration": {
+            "name": "fillInText",
+            "module": "lib/xapi.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "fillInResponse",
+          "declaration": {
+            "name": "fillInResponse",
+            "module": "lib/xapi.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "describeResponse",
+          "declaration": {
+            "name": "describeResponse",
             "module": "lib/xapi.js"
           }
         },

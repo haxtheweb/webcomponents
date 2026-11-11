@@ -82,6 +82,8 @@ class HAXCMSLearnerProgress {
     this._disposers = [];
     this._scanTimer = null;
     this._waiting = new WeakSet();
+    // activity id -> the element on the page open now that sent it
+    this._engaged = new Map();
     this.reading = new HAXCMSReadingProgress({
       report: (verb, share, page) => this._reportReading(verb, share, page),
       enabled: () => !store.editMode,
@@ -336,6 +338,7 @@ class HAXCMSLearnerProgress {
       return;
     }
     const key = this.siteKey;
+    this._engaged.clear();
     let url = "";
     try {
       url = new URL(item.slug || "", globalThis.document.baseURI).href;
@@ -424,7 +427,19 @@ class HAXCMSLearnerProgress {
     });
     if (recorded) {
       this.lastStatement = statement;
+      if (element && element.tagName && statement.object) {
+        this._engaged.set(statement.object.id, element);
+      }
     }
+  }
+  /**
+   * The element on the page open now that sent statements about activity
+   * id during this visit, or null (My learning uses it to take the learner
+   * to an activity)
+   */
+  engagedElement(id) {
+    const el = this._engaged.get(id);
+    return el && el.isConnected ? el : null;
   }
   _onRequest(e) {
     const d = e && e.detail;

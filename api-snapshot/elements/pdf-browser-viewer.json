@@ -1,0 +1,40 @@
+{
+  "tag": "pdf-browser-viewer",
+  "package": "@haxtheweb/pdf-browser-viewer",
+  "source": "elements/pdf-browser-viewer/pdf-browser-viewer.js",
+  "attributes": {
+    "card": "card",
+    "download-label": "downloadLabel",
+    "elevation": "elevation",
+    "file": "file",
+    "heading": "heading",
+    "height": "height",
+    "not-supported-link-message": "notSupportedLinkMessage",
+    "not-supported-message": "notSupportedMessage",
+    "t": "t",
+    "width": "width"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/pdf-browser-viewer/lib/pdf-browser-viewer.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "card",
+      "downloadLabel",
+      "file",
+      "heading",
+      "height",
+      "notSupportedLinkMessage",
+      "notSupportedMessage",
+      "width"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "pdf-browser-viewer"
+    ]
+  }
+}

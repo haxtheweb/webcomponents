@@ -97,6 +97,8 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
       thisPage: "this page",
       pageSaved: "Page saved!",
       outlineSaved: "Outline saved!",
+      saveTimedOut:
+        "Saving timed out: the server did not answer. Your changes are kept here, but the server may still finish saving them.",
       operationCompleted: "Operation completed!",
       unableToCompleteOperationStatus:
         "Unable to complete operation ({status})",
@@ -113,6 +115,13 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     this.__lastContentSearchQuery = "";
     this.__refreshRetryCounts = {};
     this.__maxRefreshRetries = 2;
+    // How long (ms) a site admin save may take before it is reported as
+    // failed: the outline save's request is aborted after this long, and any
+    // admin save waiting on a token refresh gives up after this long. Large
+    // outlines rewrite many files, so this is generous; tests lower it.
+    this.saveTimeout = 60000;
+    // admin saves waiting on a token refresh: request target -> give up
+    this.__refreshWaitingSaves = new Map();
     // recovered-edit snapshot (sessionStorage safety net) once restored
     this.__pendingRestore = null;
     this.method = "POST";
@@ -907,7 +916,15 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
       },
     });
   }
-  async _callSiteOperation(operationName, payload, target) {
+  /**
+   * Call a Site API operation through MicroFrontendRegistry.
+   * With a timeout (ms) the attempt gets an AbortSignal and, if it has not
+   * answered by then, is aborted and reported as a failure (a danger toast;
+   * the caller sees no response). Its late answer, if any, is ignored: the
+   * caller has already been told the attempt failed, so nothing is applied.
+   * The server may still finish the work it received; see saveOutline.
+   */
+  async _callSiteOperation(operationName, payload, target, timeout = 0) {
     await waitForHAXCMSSiteApiRegistryReady();
     if (
       !operationName ||
@@ -921,13 +938,65 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
         response: null,
       };
     }
+    let controller = null;
+    let timer = null;
+    let timedOut = false;
+    let callPayload = payload;
+    if (
+      timeout > 0 &&
+      typeof AbortController === "function" &&
+      payload &&
+      typeof payload === "object" &&
+      !(payload instanceof FormData)
+    ) {
+      controller = new AbortController();
+      // the signal rides on this attempt only; target.body is reused by a
+      // retry after a token refresh and stays as the caller built it
+      callPayload = Object.assign({}, payload, {
+        __fetchOptions: Object.assign({}, payload.__fetchOptions, {
+          signal: controller.signal,
+        }),
+      });
+    }
     try {
-      const response = await MicroFrontendRegistry.call(
+      const call = MicroFrontendRegistry.call(
         operationName,
-        payload,
+        callPayload,
         null,
         null,
       );
+      let response;
+      if (controller) {
+        // the aborted call settles on its own; nothing waits for it
+        Promise.resolve(call).catch(() => {});
+        try {
+          response = await Promise.race([
+            call,
+            new Promise((resolve) => {
+              timer = setTimeout(() => {
+                timedOut = true;
+                controller.abort();
+                resolve(null);
+              }, timeout);
+            }),
+          ]);
+        } finally {
+          clearTimeout(timer);
+        }
+      } else {
+        response = await call;
+      }
+      if (timedOut) {
+        store.toast(this.t.saveTimedOut, 5000, {
+          fire: true,
+          tone: "danger",
+        });
+        store.playSound("error");
+        return {
+          unavailable: false,
+          response: null,
+        };
+      }
       if (this._isSuccessfulResponse(response)) {
         return {
           unavailable: false,
@@ -1132,59 +1201,98 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     headers = {},
     unavailableMessage = "",
     onSuccess = null,
+    timeout = 0,
+    onSettled = null,
   } = {}) {
     const requestTarget = this._buildRequestTarget(
       requestId,
       payload,
       async (target) => {
-        let operationResult = {
-          unavailable: true,
-          response: null,
-        };
-        const normalizedOperationName =
-          operationName && typeof operationName === "string"
-            ? operationName.trim()
-            : "";
-        if (normalizedOperationName !== "") {
-          operationResult = await this._callSiteOperation(
-            normalizedOperationName,
-            target.body,
-            target,
-          );
-        }
-        if (
-          !operationResult.response &&
-          operationResult.unavailable === true &&
-          endpoint &&
-          typeof endpoint === "string"
-        ) {
-          operationResult = await this._callEndpointRequest(
-            endpoint,
-            target.body,
-            target,
-            method,
-          );
-        }
-        let response = operationResult.response;
-        if (!response) {
-          if (operationResult.unavailable && unavailableMessage) {
-            store.toast(unavailableMessage, 3000, {
-              fire: true,
-              tone: "warning",
-            });
-            store.playSound("error");
-          }
+        // a request its caller gave up on (see _requestAdminSave) is never
+        // sent again, not even by a late token refresh
+        if (target.__abandoned) {
           return null;
         }
-        this._clearRefreshRetryCount(target);
-        if (typeof onSuccess === "function") {
-          onSuccess(response, target);
+        // this attempt is the retry a refresh was waiting for, if any
+        target.__refreshPending = false;
+        try {
+          const response = await this._sendRequestTarget(target, {
+            operationName,
+            endpoint,
+            method,
+            unavailableMessage,
+            onSuccess,
+            timeout,
+          });
+          if (typeof onSettled === "function") {
+            onSettled(response, target);
+          }
+          return response;
+        } catch (error) {
+          if (typeof onSettled === "function") {
+            onSettled(null, target);
+          }
+          throw error;
         }
-        return response;
       },
       headers,
     );
     return requestTarget.generateRequest();
+  }
+
+  /**
+   * One attempt of a _requestJson request: the Site API operation, else the
+   * endpoint. Returns the response, or null when it failed (already reported).
+   */
+  async _sendRequestTarget(
+    target,
+    { operationName, endpoint, method, unavailableMessage, onSuccess, timeout },
+  ) {
+    let operationResult = {
+      unavailable: true,
+      response: null,
+    };
+    const normalizedOperationName =
+      operationName && typeof operationName === "string"
+        ? operationName.trim()
+        : "";
+    if (normalizedOperationName !== "") {
+      operationResult = await this._callSiteOperation(
+        normalizedOperationName,
+        target.body,
+        target,
+        timeout,
+      );
+    }
+    if (
+      !operationResult.response &&
+      operationResult.unavailable === true &&
+      endpoint &&
+      typeof endpoint === "string"
+    ) {
+      operationResult = await this._callEndpointRequest(
+        endpoint,
+        target.body,
+        target,
+        method,
+      );
+    }
+    let response = operationResult.response;
+    if (!response) {
+      if (operationResult.unavailable && unavailableMessage) {
+        store.toast(unavailableMessage, 3000, {
+          fire: true,
+          tone: "warning",
+        });
+        store.playSound("error");
+      }
+      return null;
+    }
+    this._clearRefreshRetryCount(target);
+    if (typeof onSuccess === "function") {
+      onSuccess(response, target);
+    }
+    return response;
   }
 
   /**
@@ -1247,6 +1355,11 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
             this._jwtLogout();
             return;
           }
+          // the request is retried once jwt-login has a new token
+          // (refreshRequest); its caller can wait for that retry
+          if (target && typeof target === "object") {
+            target.__refreshPending = true;
+          }
           this.dispatchEvent(
             new CustomEvent("jwt-login-refresh-token", {
               composed: true,
@@ -1289,6 +1402,8 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
       if (retryKey) {
         this._clearRefreshRetryCount(retryKey);
       }
+      // no retry is coming: a save waiting on it has failed
+      this._giveUpRefreshWait(element);
       // refresh returned no usable jwt (malformed success). The reactive
       // refresh-failure path (_tokenRefreshFailed) handles the normal case;
       // toast here too so this rare path isn't a silent kick to the homepage.
@@ -1322,12 +1437,29 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
         Authorization: `Bearer ${this.jwt}`,
       };
     }
+    // a request whose caller already reported it failed is not sent again
+    if (element && element.__abandoned) {
+      return;
+    }
     // again, sanity check on delay
     setTimeout(() => {
       if (element && typeof element.generateRequest === "function") {
         element.generateRequest();
       }
     }, 0);
+  }
+
+  /**
+   * An admin save waiting on a token refresh for this request target stops
+   * waiting: the request is never sent again and the save is reported as
+   * failed. No-op for a target nothing is waiting on.
+   */
+  _giveUpRefreshWait(target) {
+    if (!target || !this.__refreshWaitingSaves.has(target)) {
+      return;
+    }
+    const giveUp = this.__refreshWaitingSaves.get(target);
+    giveUp();
   }
 
   loadingChanged(e) {
@@ -1451,6 +1583,10 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
   // jti denylisting, which is not recommended unless the threat model changes.
   _tokenRefreshFailed(_e) {
     this._clearAllRefreshRetryCounts();
+    // no retry is coming for any request that was waiting on this refresh
+    Array.from(this.__refreshWaitingSaves.keys()).forEach((target) => {
+      this._giveUpRefreshWait(target);
+    });
     // only message + snapshot when we actually had a session to lose,
     // so a login failure (no jwt) doesn't toast "session expired"
     if (this.jwt && this.jwt !== "" && this.jwt !== "null") {
@@ -1714,16 +1850,6 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     });
   }
 
-  _schemaFormValueChanged(_e) {
-    // @todo figure out why this isn't adding a field in on the fly
-    /*if (e.target.value.theme === "haxcms-custom-theme") {
-      e.target.addField(customTag.property, customTag);
-      e.target.value[customTag.property] = customTag.property;
-    } else {
-      e.target.removeField(customTag.property);
-      delete e.target.value[customTag.property];
-    }*/
-  }
   /**
    * create node event
    */
@@ -3089,6 +3215,16 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
         items: e && e.detail ? e.detail : [],
       },
       unavailableMessage: this.t.outlineSaveEndpointUnavailable,
+      // a server that never answers must not leave Structure on Saving with
+      // the unsaved outline only a reload away from being lost: after
+      // saveTimeout the request is aborted and the save reported as failed,
+      // keeping every change. Aborting stops the browser waiting, not the
+      // server: it may still finish writing the outline. The next Save then
+      // sends the same outline again (the client cannot know what landed),
+      // which re-applies it; pages marked new would be created a second time,
+      // as after any failure the server did not report (malformed answer,
+      // dropped connection).
+      timeout: this.saveTimeout,
       onSuccess: (response) => {
         this._handleOutlineResponse({
           detail: {
@@ -3177,32 +3313,85 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
   }
 
   /**
-   * _requestJson for a site admin save: the same request, plus a
-   * haxcms-admin-save-result report (ok when onSuccess runs, which also
-   * covers a retry after a token refresh; failed when the request resolves
-   * empty or throws).
+   * _requestJson for a site admin save: the same request, plus exactly one
+   * haxcms-admin-save-result report with the save's final outcome.
+   * - ok when onSuccess runs (the first attempt, or the retry after a token
+   *   refresh)
+   * - failed when the request resolves empty or throws, unless a token
+   *   refresh is under way: then the retry's outcome is the save's outcome,
+   *   and the shell keeps showing Saving (Save stays disabled, so nothing can
+   *   be sent twice meanwhile)
+   * - failed when the refresh fails, returns no token, or has not come back
+   *   within saveTimeout; that request is then never sent again, so a save
+   *   reported as failed cannot be applied later behind the person's back
+   * options.timeout (ms) also bounds each attempt (see _callSiteOperation).
    */
   _requestAdminSave(options) {
     const operation = options.operationName;
     const onSuccess = options.onSuccess;
+    let reported = false;
+    let waiting = false;
+    let waitTimer = null;
+    let waitTarget = null;
+    const stopWaiting = () => {
+      clearTimeout(waitTimer);
+      waitTimer = null;
+      if (waitTarget) {
+        this.__refreshWaitingSaves.delete(waitTarget);
+      }
+      waiting = false;
+    };
+    const report = (ok) => {
+      stopWaiting();
+      if (reported) {
+        return;
+      }
+      reported = true;
+      this._emitAdminSaveResult(operation, ok);
+    };
+    const giveUp = () => {
+      if (!waitTarget || !waitTarget.__refreshPending) {
+        return;
+      }
+      waitTarget.__abandoned = true;
+      waitTarget.__refreshPending = false;
+      this._clearRefreshRetryCount(waitTarget);
+      report(false);
+    };
     const request = this._requestJson(
       Object.assign({}, options, {
         onSuccess: (response) => {
-          this._emitAdminSaveResult(operation, true);
+          report(true);
           if (typeof onSuccess === "function") {
             onSuccess(response);
           }
+        },
+        onSettled: (response, target) => {
+          if (response) {
+            return;
+          }
+          if (target && target.__refreshPending && !reported) {
+            // wait for the retry, but not forever
+            stopWaiting();
+            waiting = true;
+            waitTarget = target;
+            this.__refreshWaitingSaves.set(target, giveUp);
+            const limit = this.saveTimeout > 0 ? this.saveTimeout : 60000;
+            waitTimer = setTimeout(giveUp, limit);
+            return;
+          }
+          report(false);
         },
       }),
     );
     Promise.resolve(request)
       .then((response) => {
-        if (!response) {
-          this._emitAdminSaveResult(operation, false);
+        if (!response && !waiting) {
+          report(false);
         }
       })
       .catch(() => {
-        this._emitAdminSaveResult(operation, false);
+        report(false);
       });
     return request;
   }

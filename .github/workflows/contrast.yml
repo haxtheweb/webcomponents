@@ -1,0 +1,57 @@
+name: contrast
+
+# Blocking for the elements a pull request touches: text in an element's demo
+# meets WCAG AA color contrast in light and in dark mode.
+#
+# For every element folder the pull request changes, the repo's
+# web-dev-server config serves elements/<name>/demo/index.html locally (never
+# a live site) and axe-core's color-contrast rule runs on it in Chromium with
+# prefers-color-scheme light, then dark. Only a failure missing from
+# scripts/contrast.baseline.json (or more failing nodes than it lists) fails
+# the job; baselined failures are listed as advisory output in the job
+# summary. The baseline only shrinks: the first step fails if this pull
+# request adds entries to it. After fixing contrast, run
+# `yarn test:contrast --update-baseline --elements <name>` and commit the
+# smaller baseline. See CONTRIBUTING.md, "Color contrast check".
+#
+# Runs on pull_request (not pull_request_target): no secrets, read-only token.
+on:
+  # No branch filter: stacked PRs (base is another feature branch) must run too.
+  pull_request:
+    paths:
+      - "elements/**"
+      - "scripts/contrast*"
+      - "scripts/lib/contrast.mjs"
+      - "scripts/lib/demo-runner.mjs"
+      - "web-dev-server.config.mjs"
+      - ".github/workflows/contrast.yml"
+permissions:
+  contents: read
+jobs:
+  contrast:
+    name: Color contrast (light and dark)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      # the PR merge commit with its base as first parent, so HEAD^1..HEAD is
+      # exactly this pull request's change
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 2
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          cache: yarn
+      - name: Install
+        run: yarn install --frozen-lockfile
+      - name: Baseline only shrinks
+        run: node scripts/contrast-check.mjs --check-baseline HEAD^1
+      - name: Install Playwright Chromium
+        # the Playwright version yarn.lock resolves, so the browser build
+        # matches what the check launches
+        run: yarn playwright install --with-deps chromium
+      - name: Color contrast of changed elements
+        run: node scripts/contrast-check.mjs --base HEAD^1

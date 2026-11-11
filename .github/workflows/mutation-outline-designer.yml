@@ -1,0 +1,60 @@
+name: Mutation testing (outline-designer)
+# Weekly Stryker run over outline-designer's outline data logic (moves,
+# indent/outdent, delete, ordering, the Save Outline payload). Report only:
+# the job never fails on a score, opens nothing and pushes nothing; it leaves
+# an HTML report artifact and a job summary. Config:
+# scripts/mutation/stryker.outline-designer.config.mjs
+on:
+  schedule:
+    - cron: "29 10 * * 0" # weekly, Sunday 10:29 UTC
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: mutation-outline-designer
+  cancel-in-progress: true
+jobs:
+  mutation:
+    name: "Stryker: outline-designer (report only)"
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "dir=$(yarn cache dir)" >> "$GITHUB_OUTPUT"
+      - name: Cache Yarn
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-node-24-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-24-yarn-
+      - name: Install
+        run: yarn install --frozen-lockfile
+      - name: Install Playwright Chromium
+        run: yarn playwright install --with-deps chromium
+      - name: Run mutation tests
+        # report only: a low score or a Stryker error never fails the job
+        continue-on-error: true
+        run: yarn test:mutation:outline
+      - name: Job summary
+        if: always()
+        run: node scripts/mutation/summarize.mjs reports/mutation/outline-designer/mutation.json >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload HTML report
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: mutation-report-outline-designer
+          path: reports/mutation/outline-designer/
+          if-no-files-found: warn
+          retention-days: 30

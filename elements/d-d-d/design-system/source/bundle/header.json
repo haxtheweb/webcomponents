@@ -82,7 +82,6 @@
     { "name": "VcfRender" },
     { "name": "WikipediaQuery" },
     { "name": "PageSection" },
-    { "name": "ChatAgent" },
     { "name": "DDDocs" },
     { "name": "DemoSnippet" },
     { "name": "ExampleHaxElement" },

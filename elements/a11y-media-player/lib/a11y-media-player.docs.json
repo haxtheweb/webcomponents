@@ -403,6 +403,7 @@
     "(default)"
   ],
   "events": [
+    "a11y-media-layout-preference",
     "a11y-player",
     "a11y-player-playing",
     "audio-description-toggle",
@@ -431,7 +432,7 @@
     null
   ],
   "hax": {},
-  "surfaceHash": "467c0282070c",
+  "surfaceHash": "6950550e8b52",
   "walkthroughs": [
     {
       "id": "",
@@ -439,13 +440,13 @@
       "order": 0,
       "src": "a11y-media-player.motion.json",
       "file": "lib/a11y-media-player.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/a11y-media-player.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

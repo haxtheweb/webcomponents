@@ -5,7 +5,7 @@
 > - Before writing a new element, search the existing ones: `hax wc --search <words>` or `elements-catalog.json` (tag, title, description, package, import path, HAX type, tags). Prefer composing existing elements.
 > - Create new elements only with `hax webcomponent <name> --y --no-i` (the global `hax`, never `npx hax`), and run `hax audit` in the element folder before you finish. Never pass `--no-docs` here: every element's build must end with `node ../../scripts/extract-element-docs.mjs --write .` so its `lib/<tag>.docs.json` ships for `<documentation-player>`. After changing an element's properties, HAX settings, slots or events, run `yarn run build` in its folder and commit the refreshed docs data.
 > - Never run the ubiquity script and never run a build at the top of this monorepo.
-> - Change English strings only; never commit non-English locale files (translations are nightly). See [Internationalization (i18n)](#internationalization-i18n).
+> - Change English strings only; never commit non-English locale files (translations come in a separate rolling PR). See [Internationalization (i18n)](#internationalization-i18n).
 
 This file provides comprehensive instructions for AI coding agents working within the HAX ecosystem. HAX (Headless Authoring eXperience) is a comprehensive web development ecosystem that enables rapid creation of accessible, performant web components and static sites. Follow these guidelines to set up, develop, test, and contribute effectively to HAX projects.
 
@@ -102,6 +102,7 @@ Before starting any work, check the unified issue queue:
   - Prefer functional programming patterns
   - Use Prettier for consistent formatting
 - **ES Modules**: Use standard ES6 import/export syntax
+- **License header**: every new `.js` source file under `elements/<name>/` starts with the Apache-2.0 header `hax webcomponent` writes (`Copyright <year> <holder>` and `@license Apache-2.0, see License.md for full text.` in a leading `/** */` block). The `license-check` workflow and `yarn precheck` fail a PR that adds a file without it; tests, demos, generated and vendored files are exempt. See CONTRIBUTING.md, "License header on new files".
 - **Modern JavaScript**: Leverage ES2018+ features while maintaining browser compatibility
 - **CSS template literals**: Never write a backtick (`` ` ``) character inside a `css` comment block (or anywhere else in a LitElement `css\`...\`` tagged template), including in prose like "don't" or "it's". A stray backtick terminates the template literal early and breaks the build/parse.
 
@@ -128,8 +129,8 @@ Before starting any work, check the unified issue queue:
 ### Internationalization (i18n)
 - Use the provided i18n wiring for web components (automatically included with `hax webcomponent`): put user-facing strings in `this.t` and HAX editor labels in `lib/<tag>.haxProperties.json`, never hard-coded in templates.
 - **Feature PRs change English source strings only**: `this.t`, `lib/*.haxProperties.json`, and `locales/*.en.json`. Never add, edit, rename or delete any other locale file (`elements/*/locales/<namespace>.<lang>.json`, including `<tag>.haxProperties.<lang>.json`), even when the `hax-i18n-translate` skill or a scaffold suggests it.
-- The `locale-guard` check ([`.github/workflows/locale-guard.yml`](.github/workflows/locale-guard.yml)) fails any PR that touches a non-English locale file. If it fails, revert those files and keep only the English changes.
-- Translations happen nightly: a scheduled job translates new or changed English strings, and stubs and translates new elements, in one rolling PR from the `chore/nightly-translations` branch ([haxtheweb/issues#3262](https://github.com/haxtheweb/issues/issues/3262)).
+- The `locale-guard` check ([`.github/workflows/locale-guard.yml`](.github/workflows/locale-guard.yml)) warns on any PR that touches a non-English locale file (it does not block merging). If it warns on your PR, revert those files and keep only the English changes.
+- Translations arrive in one rolling PR from the `chore/nightly-translations` branch, which translates new or changed English strings and stubs and translates new elements ([haxtheweb/issues#3262](https://github.com/haxtheweb/issues/issues/3262)). That PR comes from an optional AI-assisted scheduled task, not from CI: nothing in CI needs an AI to run, and English-only elements work until they are translated.
 - New elements made with `hax webcomponent` must not include non-English locale files. Delete any the scaffold created before committing.
 
 ## Build System & Testing
@@ -186,8 +187,8 @@ The HAX ecosystem uses a sophisticated build pipeline optimized for unbundled Ja
   ```bash
   npm run lint
   ```
-  - Ensures code style compliance before committing
-  - Uses ESLint, Prettier, and Stylelint
+  - Runs ESLint on `elements/`. ESLint errors fail CI (the build workflow), so fix them before you push; warnings do not fail. Existing `==` comparisons are recorded in `eslint-suppressions.json` and do not count
+  - Prettier and Stylelint run in `yarn precheck` and CI; the CI Prettier check is advisory
 
 - **Fix issues automatically**:
   ```bash
@@ -224,8 +225,10 @@ LICENSE
 - **Pre-commit checks**:
   - Run `yarn precheck` before every push or PR. It runs the Prettier, Stylelint, ESLint and DDD token checks CI runs, plus a CodeQL security scan, on the files you changed. Fix everything it reports and re-run until it passes (`yarn precheck:fix` auto-fixes formatting and fixable lint). A Claude Code hook in `.claude/` blocks `git push` and `gh pr create` until it passes.
   - **CodeQL must pass on the first push.** Install the CodeQL CLI once with `yarn codeql:install` (agents: do this at the start of any session that will push). `yarn codeql` scans the element folders you changed with the same query suite and `paths-ignore` as the CodeQL PR check, in about a minute, and reports only alerts in files you changed. Fix every alert it reports by changing the code, not by suppressing it; never use `Math.random()` for ids or anything a rule treats as security-sensitive, and use linear-time regexes and full (not single-pass) sanitization. CI still scans the whole repo and is the source of truth.
+  - **Don't add dead code.** We don't tree shake, so everything in a shipped file reaches the browser. Don't eagerly `import` an element your file never renders (the autoloader defines tags content uses), don't leave `_private` methods nothing calls, and don't ship unminified vendor copies next to the `.min.js` you load. `yarn precheck` runs `yarn lint:dead-code` on your changed files (advisory, baselined); fix what it reports rather than baselining it.
   - Run `npm test` to ensure all tests pass.
-  - Run `npm run lint` to verify code style.
+  - Run `yarn lint` to verify code style. ESLint errors fail CI.
+  - **Element `dependencies` are runtime only.** Babel, Rollup, the dev server and test runner, lerna, lint-staged, the HAX CLI and other build/test tooling go in `devDependencies`; every site that installs the element from npm installs its `dependencies`. `yarn precheck` and CI enforce this (`yarn lint:runtime-deps`).
   - Run `hax audit` for web components to confirm DDD compliance.
 - **Commit Guidelines**:
   - Use clear, descriptive commit messages (e.g., "Add i18n support to my-element").

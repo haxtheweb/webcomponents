@@ -3396,7 +3396,7 @@
     {
       "tag": "lrs-bridge",
       "title": "",
-      "description": "LRS element that captures lrn-emitter events and forwards them to the learnig record store.",
+      "description": "Forwards HAX learner statements to a learning record store. Every HAX element that reports learner data fires user-engagement; the user-action broker turns each one into an xAPI statement. Once it has an endpoint, the bridge subscribes to the broker and posts every statement on the page (quizzes,...",
       "package": "@haxtheweb/lrs-elements",
       "import": "@haxtheweb/lrs-elements/lib/lrs-bridge.js",
       "type": "element",
@@ -3406,7 +3406,7 @@
     {
       "tag": "lrs-bridge-haxcms",
       "title": "",
-      "description": "Adds HAXcms event listeners for our LRS.",
+      "description": "LRS bridge for HAXcms sites. HAXcms records each page visit itself: the progress store (haxcms-learner-progress) sends an experienced statement for the page as a lesson, with the site as its grouping, through the same user-engagement pipeline every element uses. The base bridge forwards those alo...",
       "package": "@haxtheweb/lrs-elements",
       "import": "@haxtheweb/lrs-elements/lib/lrs-bridge-haxcms.js",
       "type": "element",
@@ -6019,7 +6019,7 @@
     {
       "tag": "super-daemon-toast",
       "title": "",
-      "description": "",
+      "description": "Merlin's voice card in the HAX UI admin style: the World Traveler mark, a state pill (Listening, Speaking, Santa mode), the message, a hint of what can be said, and a way to stop. Sits bottom left, apart from the haxcms-toast that drops from the top bar. Same API as before: the super-daemon-toast...",
       "package": "@haxtheweb/super-daemon",
       "import": "@haxtheweb/super-daemon/lib/super-daemon-toast.js",
       "type": "element",

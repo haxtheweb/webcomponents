@@ -1,9 +1,10 @@
 import { fixture, expect, html, aTimeout, waitUntil } from "@open-wc/testing";
 import "../lib/super-daemon-toast.js";
 
-// Behavioral coverage for super-daemon-toast: default render modes, show and
-// hide state machine (eventCallback, awaitingMerlinInput, alwaysvisible), the
-// global show/hide events, and future-terminal-text text piping.
+// Behavioral coverage for super-daemon-toast: the voice card states
+// (message, speaking, listening, Santa mode), show and hide state machine
+// (eventCallback, awaitingMerlinInput, alwaysvisible), the global show/hide
+// events, and future-terminal-text text piping.
 describe("super-daemon-toast behavior", () => {
   let element;
   beforeEach(async () => {
@@ -26,22 +27,115 @@ describe("super-daemon-toast behavior", () => {
     expect(element.classStyle).to.equal("");
   });
 
-  it("renders the merlin icon by default", () => {
-    expect(element.shadowRoot.querySelector(".merlin")).to.exist;
-    expect(element.shadowRoot.querySelector(".awaiting-input")).to.be.null;
+  it("renders the World Traveler mark in a card", () => {
+    expect(element.shadowRoot.querySelector(".card")).to.exist;
+    expect(element.shadowRoot.querySelector(".tile .merlin-traveler")).to.exist;
+    expect(
+      element.shadowRoot.querySelector(".card").getAttribute("role"),
+    ).to.equal("status");
   });
 
-  it("renders the awaiting input icon when waiting for merlin", async () => {
+  it("a plain message has no Merlin state pill and shows its time", async () => {
+    element.text = "Saved";
+    element.duration = 3000;
+    await element.updateComplete;
+    expect(element.voiceState).to.equal("message");
+    expect(element.shadowRoot.querySelector(".head")).to.be.null;
+    expect(element.shadowRoot.querySelector(".timer")).to.exist;
+  });
+
+  it("shows Speaking while a merlin toast is not yet listening", async () => {
+    element.merlin = true;
+    await element.updateComplete;
+    expect(element.voiceState).to.equal("speaking");
+    expect(element.getAttribute("voice-state")).to.equal("speaking");
+    const pill = element.shadowRoot.querySelector(".hax-ui-pill");
+    expect(pill.textContent).to.contain("Speaking");
+    expect(element.shadowRoot.querySelector(".timer")).to.be.null;
+  });
+
+  it("shows Listening, the activity meter and a spoken hint while awaiting input", async () => {
+    element.merlin = true;
     element.awaitingMerlinInput = true;
     await element.updateComplete;
-    expect(element.shadowRoot.querySelector(".awaiting-input")).to.exist;
-    expect(element.shadowRoot.querySelector(".merlin")).to.be.null;
+    expect(element.voiceState).to.equal("listening");
+    expect(
+      element.shadowRoot.querySelector('.hax-ui-pill[data-tone="listening"]'),
+    ).to.exist;
+    expect(element.shadowRoot.querySelector(".hint .meter")).to.exist;
+    expect(element.shadowRoot.querySelector(".hint .say").textContent).to.equal(
+      "stop listening",
+    );
   });
 
-  it("renders plain text in the bubble", async () => {
+  it("dismissing while listening stops listening and closes", async () => {
+    element.merlin = true;
+    element.awaitingMerlinInput = true;
+    element.opened = true;
+    await element.updateComplete;
+    element.shadowRoot.querySelector(".close").click();
+    await aTimeout(20);
+    expect(element.awaitingMerlinInput).to.equal(false);
+    expect(element.opened).to.equal(false);
+  });
+
+  it("Santa mode is shown, keeps no dismiss button and hints how to stop", async () => {
+    globalThis.SuperDaemonManager = globalThis.SuperDaemonManager || {};
+    const prior = globalThis.SuperDaemonManager.instance;
+    let toggled = false;
+    globalThis.SuperDaemonManager.instance = {
+      santaMode: true,
+      setListeningStatus() {},
+      toggleSantaMode() {
+        toggled = true;
+      },
+    };
+    try {
+      element.merlin = true;
+      element.alwaysvisible = true;
+      element.awaitingMerlinInput = true;
+      await element.updateComplete;
+      expect(element.santa).to.equal(true);
+      expect(element.shadowRoot.querySelector(".close")).to.be.null;
+      expect(
+        element.shadowRoot.querySelector('.hax-ui-pill[data-tone="warning"]'),
+      ).to.exist;
+      expect(
+        element.shadowRoot.querySelector(".hint .say").textContent,
+      ).to.equal("disable santa mode");
+      element.shadowRoot.querySelector(".actions button").click();
+      expect(toggled).to.equal(true);
+    } finally {
+      globalThis.SuperDaemonManager.instance = prior;
+    }
+  });
+
+  it("sits top right with the other HAX toasts", async () => {
+    element.opened = true;
+    element.style.animation = "none";
+    await element.updateComplete;
+    const box = element.getBoundingClientRect();
+    expect(box.top).to.be.below(globalThis.innerHeight / 2);
+    expect(globalThis.innerWidth - box.right).to.be.below(40);
+    element.opened = false;
+  });
+
+  it("shows Merlin's words in the card's text colour", async () => {
+    element.future = true;
+    element.text = "How may I help you?";
+    await element.updateComplete;
+    const fx = element.shadowRoot.querySelector("future-terminal-text");
+    const card = getComputedStyle(element).color;
+    await fx.updateComplete;
+    const span = fx.shadowRoot.querySelector("span");
+    expect(getComputedStyle(span).color).to.equal(card);
+    element.future = false;
+  });
+
+  it("renders plain text in the message", async () => {
     element.text = "hello";
     await element.updateComplete;
-    expect(element.shadowRoot.querySelector(".mid").textContent).to.contain(
+    expect(element.shadowRoot.querySelector(".message").textContent).to.contain(
       "hello",
     );
   });

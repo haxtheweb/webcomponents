@@ -1,0 +1,37 @@
+{
+  "tag": "tableau-embed",
+  "package": "@haxtheweb/tableau-embed",
+  "source": "elements/tableau-embed/tableau-embed.js",
+  "attributes": {
+    "device": "device",
+    "height": "height",
+    "hide-tabs": "hideTabs",
+    "loaded": "loaded",
+    "loading": "loading",
+    "src": "src",
+    "t": "t",
+    "toolbar": "toolbar",
+    "width": "width"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/tableau-embed/lib/tableau-embed.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "device",
+      "height",
+      "hideTabs",
+      "src",
+      "toolbar",
+      "width"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "tableau-embed"
+    ]
+  }
+}

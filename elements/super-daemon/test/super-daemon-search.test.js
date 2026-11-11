@@ -71,27 +71,122 @@ describe("super-daemon-search behavior", () => {
     expect(badge.textContent.trim()).to.equal("Search NASA");
   });
 
-  it("renders the voice button when voice search is on", async () => {
-    const el = await fixture(
-      html`<super-daemon-search voice-search></super-daemon-search>`,
+  // the voice control needs listening and speaking in the browser; pin
+  // both so these run the same in every test browser
+  const withSpeech = async (recognition, fn) => {
+    const names = ["SpeechRecognition", "webkitSpeechRecognition"];
+    const prior = names.map((name) =>
+      Object.getOwnPropertyDescriptor(globalThis, name),
     );
-    const btn = el.shadowRoot.querySelector("simple-icon-button-lite");
-    expect(btn).to.exist;
-    // admin icon family (HaxUiAdminIcons.voice)
-    expect(btn.getAttribute("icon")).to.equal("hax:admin-voice");
-    expect(btn.getAttribute("title")).to.equal("Voice search");
+    const synth = Object.getOwnPropertyDescriptor(
+      globalThis,
+      "speechSynthesis",
+    );
+    names.forEach((name) =>
+      Object.defineProperty(globalThis, name, {
+        value: recognition,
+        configurable: true,
+        writable: true,
+      }),
+    );
+    if (typeof globalThis.speechSynthesis === "undefined") {
+      Object.defineProperty(globalThis, "speechSynthesis", {
+        value: {},
+        configurable: true,
+        writable: true,
+      });
+    }
+    try {
+      await fn();
+    } finally {
+      names.forEach((name, i) => {
+        if (prior[i]) {
+          Object.defineProperty(globalThis, name, prior[i]);
+        } else {
+          delete globalThis[name];
+        }
+      });
+      if (synth) {
+        Object.defineProperty(globalThis, "speechSynthesis", synth);
+      } else {
+        delete globalThis.speechSynthesis;
+      }
+    }
+  };
+
+  it("renders the voice button when voice search is on", async () => {
+    await withSpeech(
+      function FakeRecognition() {},
+      async () => {
+        const el = await fixture(
+          html`<super-daemon-search voice-search></super-daemon-search>`,
+        );
+        const btn = el.shadowRoot.querySelector("button.voice");
+        expect(btn).to.exist;
+        expect(btn.getAttribute("aria-pressed")).to.equal("false");
+        expect(btn.getAttribute("title")).to.equal("Voice search");
+        // admin icon family (HaxUiAdminIcons.voice)
+        expect(
+          btn.querySelector("simple-icon-lite").getAttribute("icon"),
+        ).to.equal("hax:admin-voice");
+      },
+    );
   });
 
-  it("shows the listening icon and class while listening", async () => {
-    const el = await fixture(
-      html`<super-daemon-search
-        voice-search
-        listening-for-input
-      ></super-daemon-search>`,
+  it("hides the voice button when the browser cannot listen", async () => {
+    await withSpeech(undefined, async () => {
+      const el = await fixture(
+        html`<super-daemon-search voice-search></super-daemon-search>`,
+      );
+      expect(el.shadowRoot.querySelector("button.voice")).to.be.null;
+    });
+  });
+
+  it("hides the voice button once speech proved unavailable", async () => {
+    await withSpeech(
+      function FakeRecognition() {},
+      async () => {
+        globalThis.Hal9000 = globalThis.Hal9000 || {};
+        const prior = globalThis.Hal9000.instance;
+        globalThis.Hal9000.instance = { canListen: false };
+        try {
+          const el = await fixture(
+            html`<super-daemon-search voice-search></super-daemon-search>`,
+          );
+          expect(el.shadowRoot.querySelector("button.voice")).to.be.null;
+          globalThis.Hal9000.instance = { canListen: true };
+          el.requestUpdate();
+          await el.updateComplete;
+          expect(el.shadowRoot.querySelector("button.voice")).to.exist;
+        } finally {
+          globalThis.Hal9000.instance = prior;
+        }
+      },
     );
-    const btn = el.shadowRoot.querySelector("simple-icon-button-lite");
-    expect(btn.getAttribute("icon")).to.equal("hax:loading");
-    expect(btn.className).to.contain("listening");
+  });
+
+  it("shows the meter, label and pressed state while listening", async () => {
+    await withSpeech(
+      function FakeRecognition() {},
+      async () => {
+        const el = await fixture(
+          html`<super-daemon-search
+            voice-search
+            listening-for-input
+          ></super-daemon-search>`,
+        );
+        const btn = el.shadowRoot.querySelector("button.voice");
+        expect(btn.className).to.contain("listening");
+        expect(btn.getAttribute("aria-pressed")).to.equal("true");
+        expect(btn.querySelector(".meter")).to.exist;
+        expect(btn.querySelector(".voice-label").textContent).to.equal(
+          "Listening",
+        );
+        expect(
+          el.shadowRoot.querySelector("#inputfilter").placeholder,
+        ).to.equal("Listening..");
+      },
+    );
   });
 
   it("voiceSearchClick stops listening when already listening", async () => {
@@ -386,5 +481,47 @@ describe("super-daemon-search behavior", () => {
     expect(element.possibleActions.join(" ").includes("opens Merlin")).to.equal(
       true,
     );
+  });
+});
+
+describe("super-daemon-search idle shortcut chip", () => {
+  it("shows Merlin's open shortcut only while the top bar field is idle", async () => {
+    const sdi = globalThis.SuperDaemonManager.requestAvailability();
+    const el = await fixture(
+      html`<super-daemon-search mini wand show-shortcut></super-daemon-search>`,
+    );
+    const chip = () => el.shadowRoot.querySelector(".shortcut");
+    expect(chip()).to.exist;
+    expect(chip().textContent.trim()).to.equal(
+      sdi.key2 === "Shift" ? `${sdi.key1}\u21e7` : `${sdi.key1}+${sdi.key2}`,
+    );
+    el.focused = true;
+    await el.updateComplete;
+    expect(chip()).to.be.null;
+    el.focused = false;
+    el.value = "things";
+    await el.updateComplete;
+    expect(chip()).to.be.null;
+    el.value = "";
+    el.programRunning = true;
+    await el.updateComplete;
+    expect(chip()).to.be.null;
+  });
+
+  it("never shows the chip without show-shortcut (the open popover field)", async () => {
+    const el = await fixture(
+      html`<super-daemon-search mini wand></super-daemon-search>`,
+    );
+    expect(el.shadowRoot.querySelector(".shortcut")).to.be.null;
+  });
+
+  it("drops the slash command wand while a program runs", async () => {
+    const el = await fixture(
+      html`<super-daemon-search command-context="/"></super-daemon-search>`,
+    );
+    expect(el.shadowRoot.querySelector(".user-context-icon")).to.exist;
+    el.programRunning = true;
+    await el.updateComplete;
+    expect(el.shadowRoot.querySelector(".user-context-icon")).to.be.null;
   });
 });

@@ -1,0 +1,37 @@
+{
+  "tag": "place-holder",
+  "package": "@haxtheweb/place-holder",
+  "source": "elements/place-holder/place-holder.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "calctext": "calcText",
+    "dark": "dark",
+    "directions": "directions",
+    "drag-over": "dragOver",
+    "iconfromtype": "iconFromType",
+    "is-safari": "isSafari",
+    "t": "t",
+    "text": "text",
+    "type": "type"
+  },
+  "slots": [],
+  "events": [
+    "place-holder-file-drop",
+    "place-holder-replace"
+  ],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/place-holder/place-holder.js",
+    "gizmo": true,
+    "properties": [
+      "text",
+      "type"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "place-holder"
+    ]
+  }
+}

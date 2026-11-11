@@ -1,0 +1,32 @@
+{
+  "tag": "d-d-docs",
+  "package": "@haxtheweb/d-d-docs",
+  "source": "elements/d-d-docs/d-d-docs.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "dark": "dark",
+    "is-safari": "isSafari",
+    "option": "option",
+    "options": "options",
+    "palettepickervalue": "palettePickerValue",
+    "t": "t"
+  },
+  "slots": [],
+  "events": [
+    "hax-insert-content-array"
+  ],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/d-d-docs/d-d-docs.js",
+    "gizmo": true,
+    "properties": [
+      "option"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "d-d-docs"
+    ]
+  }
+}

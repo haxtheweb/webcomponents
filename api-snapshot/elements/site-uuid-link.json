@@ -1,0 +1,23 @@
+{
+  "tag": "site-uuid-link",
+  "package": "@haxtheweb/haxcms-elements",
+  "source": "elements/haxcms-elements/lib/ui-components/site/site-uuid-link.js",
+  "attributes": {
+    "t": "t",
+    "uuid": "uuid"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/haxcms-elements/lib/ui-components/site/site-uuid-link.js",
+    "gizmo": true,
+    "properties": [
+      "uuid"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": []
+  }
+}

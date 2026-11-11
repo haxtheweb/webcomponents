@@ -19,6 +19,7 @@ export class AppHaxUserMenuButton extends DDDSuper(LitElement) {
     super();
     this.icon = "account-circle";
     this.label = "Menu Item";
+    this.current = false;
   }
 
   handleClick(e) {
@@ -38,6 +39,8 @@ export class AppHaxUserMenuButton extends DDDSuper(LitElement) {
       description: { type: String, reflect: true },
       /** optional keyboard shortcut shown at the end of the row */
       shortcut: { type: String },
+      /** the current choice in a pick-one list; the row reads as current */
+      current: { type: Boolean, reflect: true },
     };
   }
 
@@ -126,6 +129,17 @@ export class AppHaxUserMenuButton extends DDDSuper(LitElement) {
         .hax-ui-kbd {
           flex: none;
         }
+        /* phone: no keyboard expected, so no shortcut hints (same media as
+           KEYBOARD_SHORTCUTS_HIDDEN_MEDIA in @haxtheweb/utils keyboardShortcuts) */
+        @media (max-width: 599px), (pointer: coarse) and (max-height: 599px) {
+          .hax-ui-kbd {
+            display: none;
+          }
+        }
+        /* the current choice in a pick-one list (preview's device menu) */
+        :host([current]) .menu-button {
+          background-color: var(--hax-ui-selected);
+        }
         /* Log out and other leaving actions */
         :host(.logout) .menu-button {
           color: var(--hax-ui-danger);
@@ -143,6 +157,7 @@ export class AppHaxUserMenuButton extends DDDSuper(LitElement) {
       <button
         class="menu-button"
         part="menu-button"
+        aria-current="${this.current ? "true" : "false"}"
         @click="${this.handleClick}"
       >
         ${

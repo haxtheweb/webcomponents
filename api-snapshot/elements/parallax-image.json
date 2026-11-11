@@ -1,0 +1,28 @@
+{
+  "tag": "parallax-image",
+  "package": "@haxtheweb/parallax-image",
+  "source": "elements/parallax-image/parallax-image.js",
+  "attributes": {
+    "described-by": "describedBy",
+    "image-bg": "imageBg",
+    "schemamap": "schemaMap"
+  },
+  "slots": [
+    "parallax_heading"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/parallax-image/parallax-image.js",
+    "gizmo": true,
+    "properties": [
+      "imageBg"
+    ],
+    "attributes": [],
+    "slots": [
+      "parallax_heading"
+    ],
+    "demoTags": []
+  }
+}

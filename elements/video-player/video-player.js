@@ -22,6 +22,7 @@ import {
   DDDBlockStyles,
   renderDDDBlockHeader,
 } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
+import { DDDAccentStyles } from "@haxtheweb/d-d-d/lib/DDDAccent.js";
 /**
  * `video-player`
  * `A simple responsive video player with ridiculously powerful backing`
@@ -40,10 +41,51 @@ class VideoPlayer extends IntersectionObserverMixin(
     return [
       super.styles,
       DDDBlockStyles,
+      DDDAccentStyles,
       css`
         :host {
           display: block;
           margin: var(--ddd-spacing-4) 0;
+          /* same accent cascade as a11y-media-player: local accent-color,
+             then the theme palette, then the DDD default */
+          --ddd-block-chip-background: var(
+            --ddd-accent-color,
+            var(
+              --video-player-accent-color,
+              var(
+                --ddd-theme-primary,
+                light-dark(
+                  var(--ddd-theme-default-beaverBlue),
+                  var(--ddd-theme-default-skyBlue)
+                )
+              )
+            )
+          );
+          --ddd-block-chip-color: var(
+            --ddd-accent-color-ink,
+            var(
+              --ddd-theme-bgContrast,
+              var(
+                --lowContrast-override,
+                light-dark(
+                  var(--ddd-theme-default-white),
+                  var(--ddd-theme-default-potentialMidnight)
+                )
+              )
+            )
+          );
+        }
+        /* accent-color defaults to grey (SimpleColors): no accent picked */
+        :host(:not([accent-color])),
+        :host([accent-color="grey"]),
+        :host([accent-color=""]) {
+          --ddd-accent-color: initial;
+          --ddd-accent-color-ink: initial;
+          --ddd-accent-color-tint: initial;
+          --ddd-block-accent: initial;
+        }
+        :host([dark]) {
+          color-scheme: dark;
         }
 
         /* holds the player's space until it scrolls into view and renders,
@@ -83,50 +125,74 @@ class VideoPlayer extends IntersectionObserverMixin(
             display: block;
           }
         }
+        /* the player draws the block header (title and actions), the
+           tray and the controls inside this frame, so it drops its own
+           border; the --video-player-* hooks still reach it */
         a11y-media-player {
-          box-shadow: var(--ddd-boxShadow-lg);
+          border: none;
+          border-radius: 0;
           --a11y-media-color: var(
             --video-player-color,
-            var(--simple-colors-default-theme-accent-11, #111111)
+            light-dark(
+              var(--ddd-theme-default-coalyGray),
+              var(--ddd-theme-default-white)
+            )
           );
-
           --a11y-media-caption-color: var(
             --video-player-caption-color,
-            var(--simple-colors-default-theme-grey-1, #111111)
+            var(--a11y-media-accent-ink)
           );
           --a11y-media-bg-color: var(
             --video-player-bg-color,
-            var(--simple-colors-default-theme-grey-2, #eeeeee)
+            var(--ddd-block-background)
           );
-
           --a11y-media-border-color: var(
             --video-player-border-color,
-            var(--simple-colors-default-theme-accent-3, #dddddd)
+            light-dark(
+              var(--ddd-theme-default-limestoneLight),
+              var(--ddd-theme-default-slateGray)
+            )
           );
-
           --a11y-media-hover-color: var(
             --video-player-hover-color,
-            var(--simple-colors-default-theme-accent-12, #000000)
+            light-dark(
+              var(--ddd-theme-default-nittanyNavy),
+              var(--ddd-theme-default-white)
+            )
           );
-
           --a11y-media-hover-bg-color: var(
             --video-player-hover-bg-color,
-            var(--simple-colors-default-theme-accent-2, #eeeeee)
+            light-dark(
+              var(--ddd-theme-default-limestoneMaxLight),
+              var(--ddd-theme-default-slateGray)
+            )
           );
-
+          /* a local accent-color wins over the theme: themes that set
+             --video-player-accent-color (or a palette) are the level
+             below it, then the DDD default */
           --a11y-media-accent-color: var(
-            --video-player-accent-color,
-            var(--simple-colors-default-theme-accent-9, #333333)
+            --ddd-accent-color,
+            var(
+              --video-player-accent-color,
+              var(
+                --ddd-theme-primary,
+                light-dark(
+                  var(--ddd-theme-default-beaverBlue),
+                  var(--ddd-theme-default-skyBlue)
+                )
+              )
+            )
           );
-
           --a11y-media-faded-accent-color: var(
             --video-player-faded-accent-color,
-            var(--simple-colors-default-theme-accent-8, #444444)
+            var(--a11y-media-border-color)
           );
-
           --a11y-media-disabled-color: var(
             --video-player-disabled-color,
-            var(--simple-colors-default-theme-accent-5, #bbbbbb)
+            light-dark(
+              var(--ddd-theme-default-limestoneGray),
+              var(--ddd-theme-default-slateLight)
+            )
           );
         }
         /* block header shared with the other DDD learning blocks; it sits
@@ -134,13 +200,12 @@ class VideoPlayer extends IntersectionObserverMixin(
         .ddd-block {
           /* the frame owns its surface so the header tokens always sit on
              a known background, even when a HAX design treatment paints
-             the host (e.g. simple-colors flipped by the dark flag) */
+             the host (e.g. simple-colors flipped by the dark flag); in dark
+             mode it is the DDD page grey so the block matches the page */
           --ddd-block-background: light-dark(
             var(--ddd-theme-default-white),
-            var(--ddd-theme-default-potentialMidnight)
+            var(--ddd-theme-default-coalyGray)
           );
-          /* the player keeps its shadow and sticky corner behaviour */
-          overflow: visible;
         }
         /* Kaltura MediaSpace secure embed: force a responsive iframe so the
            share URL paste renders at a sensible, consistent size. A cross-origin
@@ -178,12 +243,16 @@ class VideoPlayer extends IntersectionObserverMixin(
           this.mediaTitle ? `: ${this.mediaTitle}` : ""
         }"
       >
-        ${renderDDDBlockHeader({
-          icon: this.audioOnly ? "av:equalizer" : "av:play-arrow",
-          label: this._frameLabel,
-          title: this.mediaTitle,
-          part: "frame-header",
-        })}
+        ${
+          this.elementVisible && this.isA11yMedia
+            ? ""
+            : renderDDDBlockHeader({
+                icon: this.audioOnly ? "av:equalizer" : "av:play-arrow",
+                label: this._frameLabel,
+                title: this.mediaTitle,
+                part: "frame-header",
+              })
+        }
         <div class="ddd-block-body">
           ${
             this.elementVisible
@@ -258,6 +327,7 @@ class VideoPlayer extends IntersectionObserverMixin(
                           ?hide-transcript="${this.hideTranscript}"
                           ?hide-youtube-link="${this.hideYoutubeLink}"
                           id="${this.playerId}"
+                          exportparts="media-header, block-chip: media-header-chip, block-text: media-header-text"
                           @play="${this.playEvent}"
                           @restart="${this.restartEvent}"
                           @pause="${this.pauseEvent}"
@@ -331,6 +401,10 @@ class VideoPlayer extends IntersectionObserverMixin(
       },
       designSystem: {
         card: true,
+        // the player's header, controls and transcript have a fixed
+        // layout, so the editor does not offer text alignment; content
+        // that already has data-text-align still loads and saves as is
+        textAlign: false,
       },
       canEditSource: true,
       gizmo: {
@@ -814,7 +888,7 @@ class VideoPlayer extends IntersectionObserverMixin(
         "extensions.https://w3id.org/xapi/video/extensions/progress",
       ],
       countsTowardCompletion: true,
-      done: "95% of the media actually watched (seeking ahead does not count)",
+      done: "95% of the media actually watched, or played on into the end after watching 80% (seeking ahead does not count)",
     };
   }
   /**
@@ -866,10 +940,7 @@ class VideoPlayer extends IntersectionObserverMixin(
     this.source = "";
     this.audioDescriptionSource = "";
     this.audioDescriptionEnabled = false;
-    this.observer.observe(this, {
-      childList: true,
-      subtree: false,
-    });
+    this.__observeChildren();
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -951,6 +1022,32 @@ class VideoPlayer extends IntersectionObserverMixin(
     });
   }
   /**
+   * watch light DOM source/track children; safe to call repeatedly, so a
+   * move or re-attach never stacks a second observation
+   */
+  __observeChildren() {
+    if (this.__observingChildren) {
+      return;
+    }
+    this.__observingChildren = true;
+    this.observer.observe(this, {
+      childList: true,
+      subtree: false,
+    });
+  }
+  /**
+   * life cycle, element is (re)added to the DOM (HAX moves blocks around)
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    // resume watching child <source>/<track> changes after a move or
+    // re-attach (disconnectedCallback stops it); a no-op when already on
+    this.__observeChildren();
+    if (this.hasUpdated) {
+      this._syncBackgroundPlay();
+    }
+  }
+  /**
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
@@ -970,6 +1067,7 @@ class VideoPlayer extends IntersectionObserverMixin(
       this.__adRateHandler = null;
     }
     if (this.observer && this.observer.disconnect) this.observer.disconnect();
+    this.__observingChildren = false;
     this.__mediaPlayerEl = null;
     super.disconnectedCallback();
   }
@@ -1041,8 +1139,12 @@ class VideoPlayer extends IntersectionObserverMixin(
    * @returns {object}
    */
   get observer() {
-    let callback = () => this.setSourceData();
-    return new MutationObserver(callback);
+    // one observer per element: a new one per access meant disconnect()
+    // ran on a fresh observer and the observing one was never disconnected
+    if (!this.__childObserver) {
+      this.__childObserver = new MutationObserver(() => this.setSourceData());
+    }
+    return this.__childObserver;
   }
 
   /**
@@ -1458,6 +1560,16 @@ class VideoPlayer extends IntersectionObserverMixin(
   }
   updated(changedProperties) {
     super.updated(changedProperties);
+    if (changedProperties.has("allowBackgroundPlay")) {
+      this._syncBackgroundPlay();
+    }
+    // a new start time applies to the next play, even after playing
+    if (
+      changedProperties.has("startTime") &&
+      changedProperties.get("startTime") !== undefined
+    ) {
+      this.__hasPlayed = false;
+    }
     changedProperties.forEach((oldValue, propName) => {
       // Setup audio description sync when enabled changes
       if (
@@ -1526,28 +1638,25 @@ class VideoPlayer extends IntersectionObserverMixin(
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    changedProperties.forEach((oldValue, propName) => {
-      if (
-        propName === "allowBackgroundPlay" &&
-        this[propName] &&
-        this.__setVisChange
-      ) {
-        this.__setVisChange = false;
-        this.windowControllers.abort();
-      } else if (
-        propName === "allowBackgroundPlay" &&
-        !this[propName] &&
-        !this.__setVisChange
-      ) {
-        this.__setVisChange = true;
-        this.windowControllers = new AbortController();
-        globalThis.document.addEventListener(
-          "visibilitychange",
-          this._visChange.bind(this),
-          { signal: this.windowControllers.signal },
-        );
-      }
-    });
+  }
+  /**
+   * pause when the tab is hidden unless background play is allowed; runs
+   * whenever allowBackgroundPlay changes, not only on the first render, so
+   * the HAX setting applies right away
+   */
+  _syncBackgroundPlay() {
+    if (this.allowBackgroundPlay && this.__setVisChange) {
+      this.__setVisChange = false;
+      this.windowControllers.abort();
+    } else if (!this.allowBackgroundPlay && !this.__setVisChange) {
+      this.__setVisChange = true;
+      this.windowControllers = new AbortController();
+      globalThis.document.addEventListener(
+        "visibilitychange",
+        this._visChange.bind(this),
+        { signal: this.windowControllers.signal },
+      );
+    }
   }
   /**
    * mapping down into the shadowRoot element bc these are common things to want to know

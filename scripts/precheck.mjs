@@ -55,8 +55,8 @@ const CONFIG = {
     // eslint.config.mjs only covers elements/**/*.js, and CI runs `eslint elements`.
     scope: ["elements/"],
     allTargets: ["elements"],
-    // CI runs ESLint with continue-on-error, so it is advisory here too.
-    blocking: false,
+    // ESLint errors fail CI (build.yml), so they block here too.
+    blocking: true,
   },
   stylelint: {
     pattern: /\.css$/,
@@ -73,14 +73,22 @@ const CONFIG = {
       args: ["elements/d-d-d/design-system/build-tokens.js", "--check"],
     },
     {
+      // Element "dependencies" hold only what shipped code needs at runtime;
+      // build/test tooling goes in devDependencies. Blocking: nothing is
+      // baselined, so a fail is new.
+      label: "Runtime dependencies",
+      args: ["scripts/runtime-deps-check.mjs"],
+      changedFiles: /^elements\/[^/]+\/package\.json$/,
+    },
+    {
       // elements/user-action/lib/xapi-vocabulary.{json,js} must match the
       // static xapiVocabulary getters on the elements that send statements
       label: "xAPI vocabulary is up to date",
       args: ["scripts/generate-xapi-vocabulary.mjs", "--check"],
     },
     {
-      // CSS in css`` templates that browsers would silently drop. Advisory,
-      // like ESLint: known cases live in scripts/css-template-check.baseline.json
+      // CSS in css`` templates that browsers would silently drop. Advisory:
+      // known cases live in scripts/css-template-check.baseline.json
       label: "CSS template syntax",
       args: ["scripts/css-template-check.mjs"],
       blocking: false,
@@ -93,6 +101,17 @@ const CONFIG = {
       blocking: false,
     },
     {
+      // Dead code knip cannot see: eager imports of tags the file never
+      // renders, _private methods nothing calls, unminified vendor copies
+      // nothing loads. We don't tree shake, so it all ships. Advisory; known
+      // cases: scripts/dead-code-check.baseline.json. Checks the changed
+      // element files only.
+      label: "Dead code",
+      args: ["scripts/dead-code-check.mjs"],
+      changedFiles: /^elements\/.*\.js$/,
+      blocking: false,
+    },
+    {
       // Accept / dismiss pairs (save vs cancel, keep vs delete, on vs off)
       // must stay tellable apart in greyscale and with color vision
       // deficiencies: by luminance, or by a non-color cue still in the
@@ -101,6 +120,13 @@ const CONFIG = {
       // haxtheweb/issues#3219
       label: "Color vision action pairs",
       args: ["scripts/vision-pairs-check.mjs", "--strict", "--quiet"],
+    },
+    {
+      // .js source files this branch adds under elements/<name>/ start with
+      // the Apache-2.0 header `hax webcomponent` writes; existing files are
+      // never checked. Also run by the license-check workflow on PRs.
+      label: "License header on new element files",
+      args: ["scripts/license-header-check.mjs"],
     },
   ],
 };
@@ -463,9 +489,19 @@ function main() {
     );
   }
 
-  CONFIG.checks.forEach(({ label, args, blocking = true }) => {
+  CONFIG.checks.forEach(({ label, args, blocking = true, changedFiles }) => {
     console.log(`\n▶ ${label}`);
-    const res = spawnSync(process.execPath, args, {
+    let runArgs = args;
+    // checks that take a file list get the changed files (whole repo on --all)
+    if (changedFiles && !ALL) {
+      const matching = files.filter((f) => changedFiles.test(f));
+      if (!matching.length) {
+        console.log("  no changed files to check");
+        return;
+      }
+      runArgs = [...args, ...matching];
+    }
+    const res = spawnSync(process.execPath, runArgs, {
       cwd: root,
       stdio: "inherit",
     });

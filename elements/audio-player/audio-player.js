@@ -40,13 +40,17 @@ class AudioPlayer extends VideoPlayer {
         "extensions.https://w3id.org/xapi/video/extensions/progress",
       ],
       countsTowardCompletion: true,
-      done: "95% of the media actually watched (seeking ahead does not count)",
+      done: "95% of the media actually watched, or played on into the end after watching 80% (seeking ahead does not count)",
     };
   }
   // haxProperty definition
   static get haxProperties() {
     return {
       canScale: true,
+      // same player as video-player: no text alignment setting
+      designSystem: {
+        textAlign: false,
+      },
       canEditSource: true,
       gizmo: {
         title: "Audio",

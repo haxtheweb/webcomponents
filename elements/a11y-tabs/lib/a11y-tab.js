@@ -36,9 +36,22 @@ class A11yTab extends I18NMixin(LitElement) {
         }
         .sr-only {
           position: absolute;
-          left: -99999px;
+          inset-inline-start: -99999px;
           height: 0;
           overflow: hidden;
+        }
+        /* the end-of-tab "Back to tabs" link is a skip link: off screen
+           until it has keyboard focus, then shown in place */
+        .sr-only:focus-within {
+          position: static;
+          display: block;
+          height: auto;
+          overflow: visible;
+          margin: var(--ddd-spacing-2, 8px) 0 0;
+        }
+        .sr-only a:focus {
+          outline: var(--ddd-focus-ring, 2px solid currentColor);
+          outline-offset: var(--ddd-focus-offset, 2px);
         }
         .label-heading {
           display: flex;
@@ -53,7 +66,7 @@ class A11yTab extends I18NMixin(LitElement) {
             var(--a11y-tabs-horizontal-border-radius, 2px) 0 0;
         }
         simple-icon-lite {
-          margin-right: 1em;
+          margin-inline-end: 1em;
         }
         @media screen {
           :host {
@@ -275,8 +288,11 @@ class A11yTab extends I18NMixin(LitElement) {
    * @returns {object} MutationObserver to unwrap contents
    */
   get observer() {
-    let lc = (_e) => this._labelChanged();
-    return new MutationObserver(lc);
+    // one observer per instance, so disconnectedCallback stops the one that observes
+    if (!this.__observer) {
+      this.__observer = new MutationObserver(() => this._labelChanged());
+    }
+    return this.__observer;
   }
   /**
    * gets x of y string

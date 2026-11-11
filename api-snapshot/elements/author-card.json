@@ -1,0 +1,41 @@
+{
+  "tag": "author-card",
+  "package": "@haxtheweb/author-card",
+  "source": "elements/author-card/author-card.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "dark": "dark",
+    "description": "description",
+    "image": "image",
+    "is-safari": "isSafari",
+    "name": "name",
+    "primary-color": "primaryColor",
+    "profile-url": "profileUrl",
+    "social-handle": "socialHandle",
+    "social-link": "socialLink",
+    "t": "t",
+    "title": "title"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/author-card/lib/author-card.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "description",
+      "image",
+      "name",
+      "profileUrl",
+      "socialHandle",
+      "socialLink",
+      "title"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "author-card"
+    ]
+  }
+}

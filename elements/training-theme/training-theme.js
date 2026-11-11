@@ -14,13 +14,12 @@ import { HAXCMSOperationButtons } from "@haxtheweb/haxcms-elements/lib/core/util
 import { varGet } from "@haxtheweb/utils/lib/object-path.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
-import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-tags.js";
-import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu-button.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { autorun, toJS } from "mobx";
 
 import "./lib/training-button.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/progress/my-learning-button.js";
 
 /**
  * @title Training
@@ -268,6 +267,39 @@ class TrainingTheme extends HAXCMSOperationButtons(
           font-size: var(--ddd-font-size-6xs, 12px);
           line-height: var(--ddd-lh-140, 140%);
           color: var(--ddd-theme-default-slateLight, #ccdae6);
+        }
+
+        /* My learning sits under the theme's own progress card: the card
+           counts pages reached in order (this theme's linear course), the
+           button gives this page's percent and opens This page / All pages
+           with what was read, watched and answered */
+        .learning {
+          display: flex;
+          margin: calc(-1 * var(--ddd-spacing-2, 8px))
+            var(--ddd-spacing-5, 20px) var(--ddd-spacing-4, 16px);
+        }
+        /* the button wears the card's own look: translucent on the navy
+           sidebar, light text, the lime of the pages viewed ring for its
+           fill and done disc (navy check on it), a thin light track */
+        .learning my-learning-button {
+          flex: 1 1 auto;
+          --my-learning-button-width: 100%;
+          --my-learning-button-background: rgba(255, 255, 255, 0.055);
+          --my-learning-button-border-color: rgba(255, 255, 255, 0.16);
+          --my-learning-button-color: var(--ddd-theme-default-white, #ffffff);
+          --my-learning-button-percent-color: var(--training-theme-navText);
+          --my-learning-button-shadow: none;
+          --ddd-component-progress-ring-color: var(
+            --training-theme-forestGreenLight
+          );
+          --ddd-component-progress-ring-track: var(--training-theme-navText);
+          --ddd-component-progress-ring-on-color: var(
+            --ddd-theme-default-nittanyNavy,
+            #001e44
+          );
+          --ddd-component-progress-ring-width: 3.5;
+          --ddd-component-progress-ring-track-width: 1.25;
+          --ddd-component-progress-ring-empty-opacity: 1;
         }
 
         /* outline of numbered topic buttons */
@@ -630,6 +662,9 @@ class TrainingTheme extends HAXCMSOperationButtons(
                 `
               : ``
           }
+          <div class="learning">
+            <my-learning-button part="my-learning-btn"></my-learning-button>
+          </div>
           <nav
             id="haxcmsmobilemenunav"
             aria-label="${this.t.trainingTopics}"

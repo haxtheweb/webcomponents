@@ -377,7 +377,8 @@ class CourseModel extends I18NMixin(SchemaBehaviors(LitElement)) {
           height: inherit;
           display: flex;
           align-items: center;
-          padding: 0 0 0 var(--ddd-spacing-4);
+          padding-block: 0;
+          padding-inline: var(--ddd-spacing-4) 0;
         }
 
         @media screen and (min-width: 320px) {

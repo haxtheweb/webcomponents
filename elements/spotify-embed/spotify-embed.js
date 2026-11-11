@@ -25,6 +25,11 @@ class SpotifyEmbed extends I18NMixin(LitElement) {
     this.t = {
       audio: "Audio",
       openOnSpotify: "Open on Spotify in a new tab",
+      embedTitle: "Spotify Embed",
+      trackEmbedTitle: "Spotify Track Embed",
+      albumEmbedTitle: "Spotify Album Embed",
+      playlistEmbedTitle: "Spotify Playlist Embed",
+      artistEmbedTitle: "Spotify Artist Embed",
     };
     this.registerLocalization({
       context: this,
@@ -134,14 +139,15 @@ class SpotifyEmbed extends I18NMixin(LitElement) {
    * Describes the embedded item so the iframe title matches its type
    */
   get _embedTitle() {
-    const labels = {
-      track: "Track",
-      album: "Album",
-      playlist: "Playlist",
-      artist: "Artist",
+    const titles = {
+      track: this.t.trackEmbedTitle,
+      album: this.t.albumEmbedTitle,
+      playlist: this.t.playlistEmbedTitle,
+      artist: this.t.artistEmbedTitle,
     };
-    const label = labels[this.type];
-    return label ? `Spotify ${label} Embed` : "Spotify Embed";
+    return Object.prototype.hasOwnProperty.call(titles, this.type)
+      ? titles[this.type]
+      : this.t.embedTitle;
   }
   /**
    * LitElement life cycle - property changed

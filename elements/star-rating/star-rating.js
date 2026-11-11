@@ -139,7 +139,7 @@ class StarRating extends I18NMixin(SchemaBehaviors(SimpleColors)) {
           outline-offset: var(--ddd-focus-offset, 2px);
         }
         .rating {
-          padding-left: var(--star-rating-padding-left);
+          padding-inline-start: var(--star-rating-padding-left);
           margin: var(--star-rating-margin);
           line-height: var(--star-rating-size, 24px);
           font-family: var(--ddd-font-navigation, sans-serif);

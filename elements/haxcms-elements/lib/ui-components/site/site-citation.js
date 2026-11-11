@@ -49,6 +49,11 @@ export class SiteCitation extends HAXCMSI18NMixin(DDD) {
         "Could not copy. Select the citation text and copy it manually.",
       noData: "No citation information is available yet.",
     };
+    // own namespace (locales/{tag}.*.json) on top of the shared haxcms one
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../../locales/", import.meta.url).href,
+    });
     this.__disposer = this.__disposer ? this.__disposer : [];
     // Only the handful of fields we cite are read inside the autorun, so it
     // re-runs when the manifest or the active page changes, not on every

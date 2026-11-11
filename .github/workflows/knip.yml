@@ -1,0 +1,97 @@
+name: knip
+
+# Unused code and dependency report (knip, configured in knip.config.js),
+# plus scripts/dead-code-check.mjs for the patterns knip cannot see.
+# ADVISORY: findings go to the job summary and never fail the job. The repo
+# has a large backlog, and some "unused" items are loaded by tag at runtime
+# in ways no static tool can see, so this is a report to triage, not a gate.
+#
+# Runs on pull requests that change JavaScript or a manifest, weekly on
+# Sunday alongside the other weekly sweep (license-check.yml), and on demand.
+on:
+  # No branch filter: stacked PRs (base is another feature branch) must run too.
+  pull_request:
+    paths:
+      - "**/*.js"
+      - "**/*.mjs"
+      - "**/*.cjs"
+      - "**/package.json"
+      - "elements/*/demo/**"
+      - wc-registry.json
+      - knip.config.js
+      - scripts/dead-code-check.mjs
+      - scripts/dead-code-check.baseline.json
+      - .github/workflows/knip.yml
+  schedule:
+    - cron: "11 23 * * 0" # weekly, Sunday 23:11 UTC
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: knip-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  knip:
+    name: Unused code report (advisory)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "dir=$(yarn cache dir)" >> "$GITHUB_OUTPUT"
+
+      - name: Cache Yarn
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-node-24-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-24-yarn-
+
+      # knip reads installed packages to tell a package's binaries and
+      # entry files apart; scripts are skipped (no browsers or postinstall
+      # work needed for a static report)
+      - name: Install
+        run: yarn install --frozen-lockfile --ignore-scripts
+
+      - name: Run knip
+        # advisory, see header comment
+        continue-on-error: true
+        run: |
+          set -euo pipefail
+          node scripts/knip-report.mjs --summary-file knip-summary.md --json-file knip-report.json
+          cat knip-summary.md >> "$GITHUB_STEP_SUMMARY"
+
+      # Dead code knip cannot see (unrendered tag imports, uncalled _private
+      # methods, unminified vendor copies). Same advisory treatment: new
+      # findings go to the job summary and never fail the job.
+      - name: Dead code check
+        continue-on-error: true
+        run: |
+          set -uo pipefail
+          node scripts/dead-code-check.mjs --summary-file dead-code-summary.md
+          status=$?
+          cat dead-code-summary.md >> "$GITHUB_STEP_SUMMARY"
+          exit $status
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: knip-report
+          path: |
+            knip-summary.md
+            knip-report.json
+            dead-code-summary.md
+          if-no-files-found: ignore
+          retention-days: 30
