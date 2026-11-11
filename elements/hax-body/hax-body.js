@@ -33,6 +33,7 @@ import "@haxtheweb/image-gallery/image-gallery.js";
 import "@haxtheweb/media-image/media-image.js";
 import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
 import { replaceLazyRun } from "@haxtheweb/utils/lib/safe-html.js";
+import { HaxOutlineMarks } from "./lib/hax-outline-marks.js";
 
 // variables required as part of the gravity drag and scroll
 let gravityScrollTimer = null;
@@ -698,6 +699,88 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             var(--ddd-drop-zone-outline-color) !important;
           outline-offset: var(--ddd-drop-zone-outline-offset);
         }
+        /* the page outline (hax-map) drawn over the content: checked
+           blocks, the hovered branch, a drag and its drop spot */
+        #outlinemarks {
+          --hax-outline-mark: var(
+            --ddd-drop-zone-outline-color,
+            var(--ddd-theme-default-skyBlue, #009dc7)
+          );
+          --hax-outline-danger: var(
+            --ddd-theme-default-original87Pink,
+            #bc204b
+          );
+          position: absolute;
+          inset: 0;
+          z-index: 1;
+          pointer-events: none;
+        }
+        :host(:not([edit-mode])) #outlinemarks {
+          display: none;
+        }
+        #outlinemarks .mark {
+          position: absolute;
+          box-sizing: border-box;
+          border-radius: var(--ddd-radius-xs, 4px);
+        }
+        #outlinemarks .selected,
+        #outlinemarks .flash {
+          background-color: color-mix(
+            in srgb,
+            var(--hax-outline-mark) 18%,
+            transparent
+          );
+          outline: var(--ddd-border-size-sm, 2px) solid var(--hax-outline-mark);
+        }
+        #outlinemarks .tree {
+          background-color: color-mix(
+            in srgb,
+            var(--hax-outline-mark) 8%,
+            transparent
+          );
+        }
+        #outlinemarks .tree-bar {
+          border-radius: var(--ddd-radius-xs, 4px);
+          background-color: var(--hax-outline-mark);
+        }
+        #outlinemarks .moving {
+          background-color: color-mix(
+            in srgb,
+            var(--hax-outline-mark) 12%,
+            transparent
+          );
+          outline: var(--ddd-border-size-sm, 2px) dashed var(--hax-outline-mark);
+        }
+        #outlinemarks .drop,
+        #outlinemarks .drop-into {
+          outline: var(--ddd-drop-zone-outline-width, 2px)
+            var(--ddd-drop-zone-outline-style, dashed)
+            var(--ddd-drop-zone-outline-color, #009dc7);
+          background-color: var(--ddd-drop-zone-background-color, #ccf0ff);
+          animation: hax-drop-pulse 1s ease-in-out infinite;
+        }
+        #outlinemarks .drop-into {
+          background-color: color-mix(
+            in srgb,
+            var(--ddd-drop-zone-background-color, #ccf0ff) 50%,
+            transparent
+          );
+        }
+        #outlinemarks .ghost {
+          outline: var(--ddd-border-size-sm, 2px) solid
+            var(--hax-outline-danger);
+          background: repeating-linear-gradient(
+            -45deg,
+            color-mix(in srgb, var(--hax-outline-danger) 22%, transparent) 0 4px,
+            transparent 4px 8px
+          );
+        }
+        @media (prefers-reduced-motion: reduce) {
+          #outlinemarks .drop,
+          #outlinemarks .drop-into {
+            animation: none;
+          }
+        }
         @keyframes hax-drop-pulse {
           0%,
           100% {
@@ -1020,6 +1103,20 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     this.positionContextMenus();
   }
   /**
+   * What the page outline (hax-map) draws over the content: checked blocks,
+   * the hovered branch, a drag and where it lands. See
+   * lib/hax-outline-marks.js. Null until the body has rendered.
+   */
+  get outlineMarks() {
+    if (!this.__outlineMarks && this.shadowRoot) {
+      const layer = this.shadowRoot.querySelector("#outlinemarks");
+      if (layer) {
+        this.__outlineMarks = new HaxOutlineMarks(this, layer);
+      }
+    }
+    return this.__outlineMarks || null;
+  }
+  /**
    * LitElement render
    */
   render() {
@@ -1032,6 +1129,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       >
         <slot id="body"></slot>
       </div>
+      <div id="outlinemarks" aria-hidden="true"></div>
       <absolute-position-behavior
         id="topcontext"
         fit-to-visible-bounds

@@ -231,33 +231,42 @@ describe("keyboard flow: hax-tray menu bar and panel buttons", function () {
     expect(tray.trayDetail, "Space on Source").to.equal("view-source");
   });
 
-  it("Structure: Tab reaches each block in the page outline and Enter selects it", async () => {
+  it("Structure: the page outline is one Tab stop, arrow keys walk the blocks, Enter selects", async () => {
     await openPanel("content-map");
     const map = tray.shadowRoot.querySelector("hax-map");
-    await waitFor(() => visibleButtons(map).length >= 3, 3000);
-    const items = visibleButtons(map);
-    const first = await tabToOneOf(items);
-    expect(first, "the first outline item is the first stop").to.equal(
-      items[0],
+    const rows = () => [
+      ...map.shadowRoot.querySelectorAll('li[role="treeitem"]'),
+    ];
+    await waitFor(() => rows().length >= 3, 3000);
+    const items = rows();
+    // the outline is a tree (as outline-designer): one row takes Tab, the
+    // arrow keys move between rows (roving tabindex)
+    expect(
+      items.filter((li) => li.tabIndex === 0).length,
+      "one Tab stop in the tree",
+    ).to.equal(1);
+    startBeforeTray();
+    let reached = null;
+    for (let i = 0; i < 40 && !reached; i++) {
+      await press("Tab");
+      expectGoodFocusStop(expect, `Tab toward the outline (${i + 1})`);
+      const el = deepActiveElement();
+      if (items.includes(el)) reached = el;
+      if (el === after) break;
+    }
+    expect(reached === items[0], "Tab lands on the first outline row").to.equal(
+      true,
     );
-    // each outline item is its own Tab stop, in page order (the item's
-    // other controls may sit between them)
+    // ArrowDown walks every row in page order
     for (let i = 1; i < items.length; i++) {
-      let guard = 0;
-      do {
-        await press("Tab");
-        expectGoodFocusStop(expect, `toward outline item ${i}`);
-      } while (focusedHost() !== items[i] && guard++ < 6);
+      await press("ArrowDown");
+      expectGoodFocusStop(expect, `ArrowDown ${i}`);
       expect(
-        focusedHost() === items[i],
-        `Tab reaches ${describeEl(items[i])}, was ${describeEl(deepActiveElement())}`,
+        deepActiveElement() === rows()[i],
+        `ArrowDown reaches row ${i}, was ${describeEl(deepActiveElement())}`,
       ).to.equal(true);
     }
-    // Enter on the focused outline item jumps to (selects) its block
-    const index = parseInt(
-      items[items.length - 1].getAttribute("data-index"),
-      10,
-    );
+    // Enter on the focused row jumps to (selects) its block
     const visited = [];
     map.goToItem = (i) => visited.push(i);
     try {
@@ -265,7 +274,9 @@ describe("keyboard flow: hax-tray menu bar and panel buttons", function () {
     } finally {
       delete map.goToItem;
     }
-    expect(visited, "Enter goes to that block").to.deep.equal([index]);
+    expect(visited, "Enter goes to that block").to.deep.equal([
+      items.length - 1,
+    ]);
   });
 
   for (const key of ["Enter", " "]) {
