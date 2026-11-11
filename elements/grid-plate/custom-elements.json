@@ -216,7 +216,7 @@
                 "text": "number"
               },
               "description": "Custom small breakpoint for the layouts; only updated on attached",
-              "default": "600",
+              "default": "480",
               "attribute": "breakpoint-sm"
             },
             {
@@ -227,7 +227,7 @@
                 "text": "number"
               },
               "description": "Custom medium breakpoint for the layouts; only updated on attached",
-              "default": "900",
+              "default": "640",
               "attribute": "breakpoint-md"
             },
             {
@@ -337,6 +337,10 @@
               "type": {
                 "text": "CustomEvent"
               }
+            },
+            {
+              "description": "asks responsive-utility to track this element's size (sent on globalThis by registerResponsiveElement)",
+              "name": "responsive-element"
             }
           ],
           "attributes": [
@@ -362,7 +366,7 @@
                 "text": "number"
               },
               "description": "Custom small breakpoint for the layouts; only updated on attached",
-              "default": "600",
+              "default": "480",
               "fieldName": "breakpointSm"
             },
             {
@@ -371,7 +375,7 @@
                 "text": "number"
               },
               "description": "Custom medium breakpoint for the layouts; only updated on attached",
-              "default": "900",
+              "default": "640",
               "fieldName": "breakpointMd"
             },
             {

@@ -307,12 +307,16 @@ class GridPlate extends LitElement {
     this.itemMargin = null;
     this.itemPadding = null;
     this.ready = false;
-    // Mirrors DDDBreakpoints (d-d-d/lib/DDDLayout.js). Kept as literals on
-    // purpose: grid-plate ships inside authored content and must not require
-    // the DDD stack. Keep in sync with DDD; overridable per instance via the
+    // These are widths of the grid itself (it measures its own box), not of
+    // the viewport. Content now sits in a readable column (about 65
+    // characters, roughly 640-760px), so the chosen layout shows from 640px
+    // of grid width (md); two columns hold down to 480px (sm) and everything
+    // stacks below that (xs, phones). lg / xl mirror DDDBreakpoints. Kept as
+    // literals on purpose: grid-plate ships inside authored content and must
+    // not require the DDD stack. Overridable per instance via the
     // breakpoint-sm / -md / -lg / -xl attributes.
-    this.breakpointSm = 600;
-    this.breakpointMd = 900;
+    this.breakpointSm = 480;
+    this.breakpointMd = 640;
     this.breakpointLg = 1200;
     this.breakpointXl = 1440;
     this.columns = 4;

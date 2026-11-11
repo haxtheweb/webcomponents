@@ -24,7 +24,7 @@ class MonacoElement extends I18NMixin(LitElement) {
         iframe {
           border: none;
           width: 100%;
-          min-height: 250px;
+          min-height: var(--monaco-element-iframe-floor, 250px);
           height: var(--monaco-element-iframe-min-height, 100%);
           padding: 0;
           margin: 0;

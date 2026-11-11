@@ -768,9 +768,8 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       subtype: "hax-selection-bubble",
       buttons: [
         ...this._filterButtonsByTag([this.boldButton, this.italicButton]),
-        ...(this._platformAllowsTag("a")
-          ? [this.bubbleLinkButton, this.unlinkButton]
-          : []),
+        // Remove Link lives on the link card (caret in a link)
+        ...(this._platformAllowsTag("a") ? [this.bubbleLinkButton] : []),
         this.selectionMoreToggle,
         {
           type: "button-group",

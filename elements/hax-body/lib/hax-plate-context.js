@@ -101,6 +101,9 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       moveToColumn: "Move to column",
       dragHint: "Drag, or use the up and down arrow keys",
       confirmHint: "Click again to remove, Escape to keep",
+      editingHTML: "Editing HTML",
+      applyChanges: "Apply changes",
+      cancel: "Cancel",
       layout1: "1: full width",
       "layout1-1": "2: equal width",
       "layout2-1": "2: wide & narrow",
@@ -233,13 +236,18 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
         #remove:hover:not(:disabled) {
           background-color: var(--hax-ui-danger-soft);
         }
+        #remove:disabled {
+          color: var(--hax-ui-disabled-color);
+        }
+        /* solid fill and white label so Confirm delete reads at a glance;
+           the block itself carries the hatch */
         #remove[data-confirm] {
-          color: var(--hax-ui-on-primary);
+          color: var(--ddd-theme-default-white, #fff);
           background-color: var(--hax-ui-danger);
-          background-image: var(--hax-ui-danger-hatch-on-fill);
           padding: 0 12px 0 8px;
           gap: 6px;
           font-weight: 700;
+          letter-spacing: 0.01em;
         }
         #remove[data-confirm]:hover {
           filter: brightness(1.08);
@@ -418,6 +426,32 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
           font-size: var(--hax-ui-admin-font-size-xs, 12px);
           color: var(--hax-ui-color-faded);
         }
+        .bar.source {
+          gap: 4px;
+          padding-left: 6px;
+        }
+        .srclabel {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          margin-right: 8px;
+          font-weight: 700;
+          --simple-icon-width: var(--hax-ui-icon, 16px);
+          --simple-icon-height: var(--hax-ui-icon, 16px);
+        }
+        .bar.source button {
+          padding: 0 12px 0 8px;
+          border: 1px solid var(--hax-ui-line-strong);
+        }
+        .bar.source button.primary {
+          color: var(--ddd-theme-default-white, #fff);
+          background-color: var(--hax-ui-accent-strong);
+          border-color: var(--hax-ui-accent-strong);
+          font-weight: 700;
+        }
+        .bar.source button.primary:hover {
+          filter: brightness(1.08);
+        }
         @media (prefers-reduced-motion: reduce) {
           .pop,
           #more simple-icon-lite {
@@ -524,6 +558,57 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
   }
 
   // ---------- render ----------
+  /**
+   * while a block's HTML is being edited the bar only offers Apply changes
+   * and Cancel, so it is clear the edit has to be finished first
+   */
+  _sourceTemplate() {
+    return html`
+      <div class="bar source" role="toolbar" aria-label="${this.t.editingHTML}">
+        <span class="srclabel"
+          >${this._ic("icons:code")}${this.t.editingHTML}</span
+        >
+        <button
+          id="srcapply"
+          type="button"
+          class="primary"
+          @click="${(e) =>
+            this._fire(e.currentTarget, "hax-source-view-toggle")}"
+        >
+          ${this._ic("icons:check")}<span>${this.t.applyChanges}</span>
+        </button>
+        <button
+          id="srccancel"
+          type="button"
+          @click="${(e) =>
+            this._fire(e.currentTarget, "hax-source-view-cancel")}"
+        >
+          ${this._ic("icons:close")}<span>${this.t.cancel}</span>
+        </button>
+      </div>
+    `;
+  }
+  /**
+   * draw the eye to the bar (e.g. another block was clicked while the
+   * HTML editor is open)
+   */
+  attention() {
+    const bar = this.shadowRoot && this.shadowRoot.querySelector(".bar");
+    if (!bar || !bar.animate) return;
+    const apply = this.shadowRoot.querySelector("#srcapply");
+    if (apply) apply.focus({ preventScroll: true });
+    if (this._reducedMotion) return;
+    bar.animate(
+      [
+        { transform: "translateX(0)" },
+        { transform: "translateX(-6px)" },
+        { transform: "translateX(5px)" },
+        { transform: "translateX(-3px)" },
+        { transform: "translateX(0)" },
+      ],
+      { duration: 320, easing: "ease-out" },
+    );
+  }
   render() {
     const novice = HAXStore.isPlatformAudience("novice");
     const moveDisabled =
@@ -533,7 +618,11 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       moveDisabled || !sib.prev || sib.prev.tagName === "PAGE-BREAK";
     const downDisabled = moveDisabled || !sib.next;
     const opsDisabled =
-      this.hasActiveEditingElement || this.viewSource || this.disableOps;
+      this.hasActiveEditingElement ||
+      this.viewSource ||
+      this.disableOps ||
+      this.isLocked;
+    if (this.viewSource) return this._sourceTemplate();
     return html`
       <div class="bar" role="toolbar" aria-label="${this._chipLabel}">
         <div class="grp" role="group" aria-label="${this.t.dragHandle}">
@@ -586,7 +675,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
                 ? `${this.t.format}: ${this._chipLabel}`
                 : this._chipLabel
             }"
-            ?disabled="${!this._isText || this.viewSource}"
+            ?disabled="${!this._isText || this.viewSource || this.isLocked}"
             @click="${(e) => this._toggleMenu("format", e.currentTarget)}"
           >
             <span>${this._chipLabel}</span>${
@@ -618,7 +707,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
             aria-expanded="${String(this._menu === "layout")}"
             aria-label="${this.t.layout}"
             data-tip="${this.t.layout}"
-            ?disabled="${this.viewSource || this.disableOps}"
+            ?disabled="${this.viewSource || this.disableOps || this.isLocked}"
             ?hidden="${novice}"
             @click="${(e) => this._toggleMenu("layout", e.currentTarget)}"
           >
@@ -682,7 +771,9 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
                     aria-pressed="${String(!!this.editElementToggled)}"
                     aria-label="${this.t.editElement}"
                     data-tip="${this.t.editElement}"
-                    ?disabled="${this.viewSource || this.disableOps}"
+                    ?disabled="${
+                      this.viewSource || this.disableOps || this.isLocked
+                    }"
                     @click="${(e) =>
                       this._fire(
                         e.currentTarget,
@@ -705,7 +796,10 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               aria-label="${this.t.modifyHTMLSource}"
               data-tip="${this.t.modifyHTMLSource}"
               ?disabled="${
-                !this.sourceView || this.disableOps || this.editElementToggled
+                !this.sourceView ||
+                this.disableOps ||
+                this.isLocked ||
+                this.editElementToggled
               }"
               ?hidden="${novice}"
               @click="${(e) =>
@@ -1197,8 +1291,6 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
     const from = button.offsetWidth;
     this._confirmRemove = true;
     this._fire(button, "hax-plate-delete-arm");
-    clearTimeout(this.__armTimer);
-    this.__armTimer = setTimeout(() => this._disarm(), 4000);
     await this.updateComplete;
     if (!this._reducedMotion) {
       button.animate(

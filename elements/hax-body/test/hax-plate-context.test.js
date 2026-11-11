@@ -134,4 +134,34 @@ describe("hax-plate-context block bar", () => {
     expect(bar(el).querySelector("#extra").hidden).to.equal(false);
     expect(bar(el).querySelector("#duplicate")).to.exist;
   });
+
+  it("a locked block can't change format, layout, source or be removed", async () => {
+    const el = await fixture(html`<hax-plate-context></hax-plate-context>`);
+    el.activeNode = document.createElement("p");
+    el.activeNode.setAttribute("data-hax-lock", "data-hax-lock");
+    el.moreOpen = true;
+    await el.updateComplete;
+    ["#chip", "#layout", "#remove", "#source", "#editmode"].forEach((id) =>
+      expect(bar(el).querySelector(id).disabled, id).to.equal(true),
+    );
+    // unlocking stays possible
+    expect(bar(el).querySelector("#lock").disabled).to.equal(false);
+  });
+
+  it("editing HTML turns the bar into Apply and Cancel", async () => {
+    const el = await fixture(html`<hax-plate-context></hax-plate-context>`);
+    el.viewSource = true;
+    await el.updateComplete;
+    expect(bar(el).querySelector("#chip")).to.not.exist;
+    const apply = bar(el).querySelector("#srcapply");
+    const cancel = bar(el).querySelector("#srccancel");
+    expect(apply.textContent.trim()).to.equal("Apply changes");
+    expect(cancel.textContent.trim()).to.equal("Cancel");
+    setTimeout(() => apply.click());
+    let e = await oneEvent(el, "hax-context-item-selected");
+    expect(e.detail.eventName).to.equal("hax-source-view-toggle");
+    setTimeout(() => cancel.click());
+    e = await oneEvent(el, "hax-context-item-selected");
+    expect(e.detail.eventName).to.equal("hax-source-view-cancel");
+  });
 });
