@@ -125,10 +125,22 @@ export class TrainingButton extends HAXCMSThemeParts(LitElement) {
           );
         }
 
+        /* a locked step reads as muted but its title stays legible (WCAG
+           AA): the text takes a muted color instead of being faded with
+           opacity, and only the index and status dot are faded */
         :host([disabled]) {
-          opacity: var(--ddd-state-disabled-opacity, 0.5);
           cursor: not-allowed;
           pointer-events: none;
+        }
+        :host([disabled]) a.wrapper {
+          color: var(
+            --training-theme-navTextMuted,
+            var(--ddd-theme-default-slateGray, #314d64)
+          );
+        }
+        :host([disabled]) .index,
+        :host([disabled]) .dot {
+          opacity: var(--ddd-state-disabled-opacity, 0.5);
         }
       `,
     ];

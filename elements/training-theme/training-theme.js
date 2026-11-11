@@ -156,6 +156,11 @@ class TrainingTheme extends HAXCMSOperationButtons(
             --ddd-theme-default-slateLight,
             #ccdae6
           );
+          /* locked (not yet reached) steps on the navy sidebar */
+          --training-theme-navTextMuted: var(
+            --ddd-theme-default-limestoneGray,
+            #a2aaad
+          );
           --training-theme-sidebar-width: 300px;
         }
 

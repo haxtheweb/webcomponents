@@ -172,6 +172,10 @@ class TerribleThemes extends HAXCMSRememberRoute(
           line-height: 1.625;
           color: #444444;
         }
+        /* the dark prev/next card is #1a1a1a: the small label stays readable */
+        :host([dark-mode]) site-menu-button div .top {
+          color: var(--ddd-theme-default-limestoneGray, #a2aaad);
+        }
         simple-datetime {
           color: #444444;
         }
