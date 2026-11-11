@@ -694,82 +694,10 @@
         "training-theme >> training-button[title=\"stax\"] >> .index": 1
       }
     },
-    "ics-render": {
-      "dark": {
-        "ics-render[data-source=\"./sample.ics\"] >> .ddd-block-footer": 1,
-        "ics-render[data-source=\"./sample.ics\"] >> .ddd-block-label": 1,
-        "ics-render[data-source=\"./sample.ics\"] >> .row[role=\"listitem\"] > .meta > .line > span": 6,
-        "ics-render[data-source=\"./sample.ics\"] >> .row[role=\"listitem\"] > .tile[aria-hidden=\"true\"] > .weekday": 3,
-        "ics-render[display-as=\"cards\"] >> .ddd-block-footer": 1,
-        "ics-render[display-as=\"cards\"] >> .ddd-block-label": 1,
-        "ics-render[display-as=\"cards\"] >> .row[role=\"listitem\"] > .meta > .line > span": 6,
-        "ics-render[display-as=\"cards\"] >> .row[role=\"listitem\"] > .tile[aria-hidden=\"true\"] > .weekday": 3,
-        "ics-render[display-as=\"list\"] >> .ddd-block-footer": 1,
-        "ics-render[display-as=\"list\"] >> .ddd-block-label": 1,
-        "ics-render[display-as=\"table\"] >> .ddd-block-footer": 1,
-        "ics-render[display-as=\"table\"] >> .ddd-block-label": 1,
-        "ics-render[display-as=\"timeline\"] >> .ddd-block-footer": 1,
-        "ics-render[display-as=\"timeline\"] >> .ddd-block-label": 1
-      }
-    },
-    "lrndesign-sidenote": {
-      "light": {
-        "lrndesign-sidenote[label=\"Dark theme\"] >> #label": 1
-      }
-    },
-    "lunr-search": {
-      "dark": {
-        "a": 1
-      }
-    },
-    "matching-question": {
-      "dark": {
-        "body > matching-question >> .ddd-block-label": 1
-      }
-    },
-    "md-block": {
-      "dark": {
-        "md-block >> .source-error": 1
-      }
-    },
     "outline-designer": {
       "dark": {
         "outline-designer >> .indent-N[aria-posinset=\"N\"][aria-level=\"N\"] > .title > .shown.label[property=\"oer:title\"]": 1,
         "outline-designer >> li[aria-label=\"Intervals: Numeric Size\"] > .title > .shown.label[property=\"oer:title\"]": 1
-      }
-    },
-    "page-break": {
-      "light": {
-        "page-break[item-id=\"bbvcsNwN\"] >> .draft.pb-chip": 1,
-        "page-break[item-id=\"bbvcsNwN\"] >> .pb-chip": 2,
-        "page-break[item-id=\"fNffNf\"] >> .draft.pb-chip": 1,
-        "page-break[item-id=\"fNffNf\"] >> .pb-chip": 2,
-        "page-break[item-id=\"gNhN\"] >> .draft.pb-chip": 1,
-        "page-break[item-id=\"gNhN\"] >> .pb-chip": 2
-      },
-      "dark": {
-        "page-break[item-id=\"bbvcsNwN\"] >> .draft.pb-chip": 1,
-        "page-break[item-id=\"fNffNf\"] >> .draft.pb-chip": 1,
-        "page-break[item-id=\"gNhN\"] >> .draft.pb-chip": 1
-      }
-    },
-    "polaris-theme": {
-      "light": {
-        "polaris-theme >> site-top-menu >> #item-item-aNbNcNdN-eNfN-N-NaNb-NcNdNeNfN > .link-title[itemprop=\"name\"]": 1,
-        "polaris-theme >> site-top-menu >> #item-item-bNcNdNeN-fN-N-NaNb-NcNdNeNfN > .link-title[itemprop=\"name\"]": 1,
-        "polaris-theme >> site-top-menu >> #item-item-eNfN-N-NbN-bdNe-NfN > .link-title[itemprop=\"name\"]": 1,
-        "polaris-theme >> site-top-menu >> #item-item-fN-NaN-NcN-ceNf-N > .link-title[itemprop=\"name\"]": 1
-      },
-      "dark": {
-        "polaris-theme >> site-children-block >> .indent": 1
-      }
-    },
-    "product-offering": {
-      "dark": {
-        "product-offering[title=\"Career services\"] > div[slot=\"description\"]": 1,
-        "product-offering[title=\"Career services\"] >> .underline": 1,
-        "product-offering[title=\"Flexible learning program\"] > div[slot=\"description\"]": 1,
-        "product-offering[title=\"Technical mentor support\"] > div[slot=\"description\"]": 1
       }
     },
     "radar-chart": {
