@@ -25,6 +25,7 @@ on:
       - "scripts/lib/pseudo-locale.mjs"
       - "scripts/test-setup/i18n-layout*"
       - ".github/workflows/i18n-layout.yml"
+      - ".github/actions/setup-playwright/**"
 permissions:
   contents: read
 jobs:
@@ -49,7 +50,14 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: Install Playwright Chromium
         # the Playwright version yarn.lock resolves, so the browser build
-        # matches what the test runner launches
-        run: yarn playwright install --with-deps chromium
+        # matches what the tests launch; cached per version
+        # results depend on how text renders, so this job installs the extra
+        # fonts through apt (retried, time-boxed); see the action for details
+        # the local path, not the $/ self-repository form: $/ downloads the
+        # whole repo as an action archive, and that extraction fails here
+        uses: ./.github/actions/setup-playwright # zizmor: ignore[self-repository]
+        timeout-minutes: 12
+        with:
+          fonts: "true"
       - name: Pseudo-locale and RTL layout of changed elements
         run: node scripts/i18n-layout-check.mjs --base HEAD^1

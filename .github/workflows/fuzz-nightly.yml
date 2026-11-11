@@ -57,10 +57,17 @@ jobs:
           yarn install --frozen-lockfile 2>&1 | tee "$RUNNER_TEMP/install.log"
       - name: Install Playwright Chromium
         id: playwright
-        # the Playwright yarn.lock resolves, as in build.yml
-        run: |
-          set -o pipefail
-          yarn playwright install --with-deps chromium 2>&1 | tee -a "$RUNNER_TEMP/install.log"
+        # the Playwright version yarn.lock resolves, so the browser build
+        # matches what the tests launch; cached per version
+        # no extra fonts: Chromium runs on the runner image's libraries, so
+        # this job does not depend on the Ubuntu package mirrors
+        # the local path, not the $/ self-repository form: $/ downloads the
+        # whole repo as an action archive, and that extraction fails here
+        uses: ./.github/actions/setup-playwright # zizmor: ignore[self-repository]
+        timeout-minutes: 12
+        with:
+          fonts: "false"
+          log-file: ${{ runner.temp }}/install.log
       - name: Fuzz hunt
         id: fuzz
         env:
