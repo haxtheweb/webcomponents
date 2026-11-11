@@ -144,7 +144,13 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
           ::slotted(label:hover),
           ::slotted(label:focus),
           ::slotted(label:focus-within) {
-            color: var(--simple-fields-accent-color, #3f51b5);
+            color: var(
+              --simple-fields-accent-color,
+              light-dark(
+                var(--ddd-theme-default-link, #005fa9),
+                var(--ddd-theme-default-linkLight, #cce9ff)
+              )
+            );
             transition: background-color var(--ddd-duration-normal, 0.3s)
               ease-in-out;
           }
@@ -171,7 +177,13 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
           ::slotted(fieldset[slot="field"]:hover),
           ::slotted(fieldset[slot="field"]:focus),
           ::slotted(fieldset[slot="field"]:focus-within) {
-            color: var(--simple-fields-accent-color, #3f51b5);
+            color: var(
+              --simple-fields-accent-color,
+              light-dark(
+                var(--ddd-theme-default-link, #005fa9),
+                var(--ddd-theme-default-linkLight, #cce9ff)
+              )
+            );
           }
         `,
       ];

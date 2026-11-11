@@ -172,7 +172,13 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             outline: var(--simple-fields-row-focus-outline-width, 1px) solid
               var(
                 --simple-fields-row-focus-outline-color,
-                var(--simple-fields-accent-color, #3f51b5)
+                var(
+                  --simple-fields-accent-color,
+                  light-dark(
+                    var(--ddd-theme-default-link, #005fa9),
+                    var(--ddd-theme-default-linkLight, #cce9ff)
+                  )
+                )
               );
             outline-offset: -1px;
             transition: outline-color var(--ddd-duration-normal, 0.3s)
@@ -347,7 +353,13 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             border-radius: var(--simple-fields-border-radius, 4px);
             padding-block: 0;
             padding-inline: 4px 24px;
-            caret-color: var(--simple-fields-accent-color, #3f51b5);
+            caret-color: var(
+              --simple-fields-accent-color,
+              light-dark(
+                var(--ddd-theme-default-link, #005fa9),
+                var(--ddd-theme-default-linkLight, #cce9ff)
+              )
+            );
             line-height: 1.5;
           }
           :host([type="select"]) .field-main.row-layout simple-icon-lite {
@@ -403,7 +415,13 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             flex: 1 1 auto;
             max-width: var(--simple-fields-input-max-width, 140px);
             padding: 0 4px;
-            caret-color: var(--simple-fields-accent-color, #3f51b5);
+            caret-color: var(
+              --simple-fields-accent-color,
+              light-dark(
+                var(--ddd-theme-default-link, #005fa9),
+                var(--ddd-theme-default-linkLight, #cce9ff)
+              )
+            );
             line-height: 1.5;
           }
           .field-main.row-layout input[type="number"] {
@@ -414,7 +432,13 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             outline: var(--simple-fields-row-focus-outline-width, 1px) solid
               var(
                 --simple-fields-row-focus-outline-color,
-                var(--simple-fields-accent-color, #3f51b5)
+                var(
+                  --simple-fields-accent-color,
+                  light-dark(
+                    var(--ddd-theme-default-link, #005fa9),
+                    var(--ddd-theme-default-linkLight, #cce9ff)
+                  )
+                )
               );
             outline-offset: -1px;
             transition: outline-color var(--ddd-duration-normal, 0.3s)
@@ -427,7 +451,13 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             color: light-dark(white, black) !important;
             background-color: var(
               --simple-fields-row-focus-outline-color,
-              var(--simple-fields-accent-color, #3f51b5)
+              var(
+                --simple-fields-accent-color,
+                light-dark(
+                  var(--ddd-theme-default-link, #005fa9),
+                  var(--ddd-theme-default-linkLight, #cce9ff)
+                )
+              )
             ) !important;
           }
           :host([type="checkbox"]) span,
@@ -536,7 +566,13 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             cursor: not-allowed;
           }
           input[type="range"]:focus::-webkit-slider-thumb {
-            background: var(--simple-fields-accent-color, #3f51b5);
+            background: var(
+              --simple-fields-accent-color,
+              light-dark(
+                var(--ddd-theme-default-link, #005fa9),
+                var(--ddd-theme-default-linkLight, #cce9ff)
+              )
+            );
             transition: all 0.5ms ease-in-out;
           }
           :host([error]) input[type="range"]::-webkit-slider-thumb {
@@ -576,7 +612,13 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             transition: all 0.5ms ease-in-out;
           }
           input[type="range"]:focus::-moz-range-thumb {
-            background: var(--simple-fields-accent-color, #3f51b5);
+            background: var(
+              --simple-fields-accent-color,
+              light-dark(
+                var(--ddd-theme-default-link, #005fa9),
+                var(--ddd-theme-default-linkLight, #cce9ff)
+              )
+            );
             transition: all 0.5ms ease-in-out;
           }
           :host([error]) input[type="range"]::-moz-range-thumb {
@@ -628,7 +670,13 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             cursor: not-allowed;
           }
           input[type="range"]:focus::-ms-thumb {
-            background: var(--simple-fields-accent-color, #3f51b5);
+            background: var(
+              --simple-fields-accent-color,
+              light-dark(
+                var(--ddd-theme-default-link, #005fa9),
+                var(--ddd-theme-default-linkLight, #cce9ff)
+              )
+            );
           }
           :host([error]) input[type="range"]::-ms-thumb {
             background: var(--simple-fields-error-color, #b40000);

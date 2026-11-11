@@ -1445,8 +1445,6 @@
     },
     "simple-fields": {
       "dark": {
-        "#alias >> .label-text > span": 1,
-        "#relationships >> #relationships\\.siblings-button > .label[part=\"tab-label\"]": 1,
         "demo-snippet >> #codeDisplay >> #copyButton": 1,
         "demo-snippet >> #codeDisplay >> .ddd-block-label": 1
       }

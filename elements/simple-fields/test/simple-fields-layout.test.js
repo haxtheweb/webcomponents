@@ -115,6 +115,39 @@ describe("simple-fields-tabs", () => {
     const result = el._tabLabel({ label: "Tab 1", error: true });
     expect(result).to.exist;
   });
+
+  it("selected tab reads like a11y-tabs: bold label, 3px rule, no filled box", async () => {
+    const tabs = await fixture(html`
+      <simple-fields-tabs>
+        <simple-fields-tab id="siblings" label="Siblings"
+          ><p>One</p></simple-fields-tab
+        >
+        <simple-fields-tab id="allies" label="Allies"
+          ><p>Two</p></simple-fields-tab
+        >
+      </simple-fields-tabs>
+    `);
+    await tabs.updateComplete;
+    await aTimeout(50);
+    await tabs.updateComplete;
+    const selected = tabs.shadowRoot.querySelector(
+      '#tabs button[aria-selected="true"]',
+    );
+    const other = tabs.shadowRoot.querySelector("#allies-button");
+    expect(selected).to.exist;
+    expect(other).to.exist;
+    const cs = getComputedStyle(selected);
+    expect(Number(cs.fontWeight)).to.be.at.least(700);
+    expect(cs.borderBottomWidth).to.equal("3px");
+    expect(cs.borderBottomStyle).to.equal("solid");
+    expect(cs.borderBottomColor).to.not.equal("rgba(0, 0, 0, 0)");
+    expect(cs.backgroundColor).to.equal("rgba(0, 0, 0, 0)");
+    // the label colour is the a11y-tabs ink, not the old indigo accent
+    expect(cs.color).to.not.equal("rgb(63, 81, 181)");
+    expect(getComputedStyle(other).borderBottomColor).to.equal(
+      "rgba(0, 0, 0, 0)",
+    );
+  });
 });
 
 describe("simple-fields-tab", () => {

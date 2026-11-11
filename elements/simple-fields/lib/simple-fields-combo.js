@@ -84,12 +84,30 @@ class SimpleFieldsCombo extends I18NMixin(
         }
 
         [role="listbox"].focus [role="option"][aria-selected="true"] {
-          background-color: var(--simple-fields-accent-color-light, #d9eaff);
-          border-color: var(--simple-fields-accent-color, #3f51b5);
+          background-color: var(
+            --simple-fields-accent-color-light,
+            light-dark(
+              var(--ddd-theme-default-linkLight, #cce9ff),
+              var(--ddd-theme-default-nittanyNavy, #001e44)
+            )
+          );
+          border-color: var(
+            --simple-fields-accent-color,
+            light-dark(
+              var(--ddd-theme-default-link, #005fa9),
+              var(--ddd-theme-default-linkLight, #cce9ff)
+            )
+          );
         }
 
         [role="listbox"] li[role="option"]:hover {
-          background-color: var(--simple-fields-accent-color-light, #d9eaff);
+          background-color: var(
+            --simple-fields-accent-color-light,
+            light-dark(
+              var(--ddd-theme-default-linkLight, #cce9ff),
+              var(--ddd-theme-default-nittanyNavy, #001e44)
+            )
+          );
         }
         ::slotted([slot="prefix"]:not(:empty)) {
           margin-right: 0.25em;
