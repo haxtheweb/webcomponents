@@ -35,13 +35,10 @@ class AiUsageLicense extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
           bottom: var(--ddd-spacing-9);
           inset-inline-end: var(--ddd-spacing-2);
           font-size: var(--ddd-font-size-ms);
-          /* the label floats over the transparent host (page background
-             shows through), so pair slateGray with a light equivalent in
-             dark mode; .license-body is a fixed light card and stays as-is */
-          color: light-dark(
-            var(--ddd-theme-default-slateGray),
-            var(--ddd-theme-default-limestoneLight)
-          );
+          /* the label is pulled up into the bottom of .license-body, a
+             fixed light card in both color schemes, so it keeps the card's
+             slateGray text in dark mode too */
+          color: var(--ddd-theme-default-slateGray);
           font-style: italic;
         }
         .license-body {
