@@ -53,7 +53,9 @@ jobs:
         # matches what the tests launch; cached per version
         # results depend on how text renders, so this job installs the extra
         # fonts through apt (retried, time-boxed); see the action for details
-        uses: $/.github/actions/setup-playwright
+        # the local path, not the $/ self-repository form: $/ downloads the
+        # whole repo as an action archive, and that extraction fails here
+        uses: ./.github/actions/setup-playwright # zizmor: ignore[self-repository]
         timeout-minutes: 12
         with:
           fonts: "true"

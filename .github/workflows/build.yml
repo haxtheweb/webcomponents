@@ -86,7 +86,9 @@ jobs:
         # doesn't exist ... chromium_headless_shell-NNNN".
         # no extra fonts: Chromium runs on the runner image's libraries, so
         # this job does not depend on the Ubuntu package mirrors
-        uses: $/.github/actions/setup-playwright
+        # the local path, not the $/ self-repository form: $/ downloads the
+        # whole repo as an action archive, and that extraction fails here
+        uses: ./.github/actions/setup-playwright # zizmor: ignore[self-repository]
         timeout-minutes: 12
         with:
           fonts: "false"
