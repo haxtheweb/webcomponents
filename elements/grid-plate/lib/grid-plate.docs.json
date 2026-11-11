@@ -7,7 +7,11 @@
   "title": "Column layout",
   "description": "Layout material in simple columns",
   "icon": "hax:3-3-3-3",
-  "tags": ["Layout", "content", "grid"],
+  "tags": [
+    "Layout",
+    "content",
+    "grid"
+  ],
   "haxCapable": true,
   "import": "@haxtheweb/grid-plate/grid-plate.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/grid-plate/grid-plate.js",
@@ -148,8 +152,15 @@
       "hax": null
     }
   ],
-  "slots": ["col-1", "col-2", "col-N"],
-  "events": ["disable-responsive-changed", "responsive-element"],
+  "slots": [
+    "col-1",
+    "col-2",
+    "col-N"
+  ],
+  "events": [
+    "disable-responsive-changed",
+    "responsive-element"
+  ],
   "hax": {
     "type": "grid",
     "canScale": true,
@@ -165,7 +176,11 @@
       "description": "Layout material in simple columns",
       "icon": "hax:3-3-3-3",
       "color": "grey",
-      "tags": ["Layout", "content", "grid"],
+      "tags": [
+        "Layout",
+        "content",
+        "grid"
+      ],
       "handles": [],
       "meta": {
         "author": "HAXTheWeb core team",
