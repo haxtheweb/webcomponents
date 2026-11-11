@@ -91,6 +91,7 @@
     "bench": "node benchmarks/run.mjs",
     "test:leaks": "node scripts/leak-check.mjs",
     "test:leaks:baseline": "node scripts/leak-check.mjs --update-baseline",
+    "test:dark-motion": "node scripts/dark-motion-check.mjs",
     "api:snapshot": "node scripts/api-snapshot.mjs --write",
     "api:check": "node scripts/api-snapshot.mjs --check",
     "vendor-copy-xterm": "gulp vendor-copy-xterm --gulpfile=gulpfile.mjs",
