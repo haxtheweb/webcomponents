@@ -183,7 +183,8 @@ class PolarisTheme extends HAXCMSOperationButtons(
           --site-top-menu-bg: var(--polaris-nav-bg-color);
           --site-top-menu-indicator-color: #ffffff;
           --site-top-menu-link-active-color: #ffffff;
-          --site-top-menu-link-color: #ededed;
+          /* white keeps AA contrast on the blue nav bar */
+          --site-top-menu-link-color: var(--ddd-theme-default-white);
           --site-top-menu-link-bg-color-hover: #ffffff;
           --site-top-menu-link-bg-color-hover: #0b4b83;
           clear: both;
@@ -221,6 +222,22 @@ class PolarisTheme extends HAXCMSOperationButtons(
           border-radius: 3px;
           margin-bottom: 40px;
           padding: 40px;
+        }
+        /* the contents list follows the color scheme, so its links stay
+           legible on the dark sidebar too */
+        site-children-block {
+          --site-children-block-link-color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
+          --site-children-block-link-hover-color: light-dark(
+            var(--ddd-theme-default-black),
+            var(--ddd-theme-default-white)
+          );
+          --site-children-block-link-active-color: light-dark(
+            var(--ddd-theme-default-black),
+            var(--ddd-theme-default-white)
+          );
         }
         :host([dark-mode]) aside section {
           background-color: var(--polaris-content-bg-color);
