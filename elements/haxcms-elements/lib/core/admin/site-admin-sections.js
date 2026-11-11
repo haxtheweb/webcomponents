@@ -662,6 +662,35 @@ export const SITE_ADMIN_MODAL_STYLES = Object.freeze({
 });
 
 /**
+ * The one admin dialog docked under the HAXcms top bar: added on top of
+ * SITE_ADMIN_MODAL_STYLES, which stay as they are. The dialog fills the
+ * space below the bar's bottom edge (--simple-modal-dock-top, set when it
+ * opens) with the same gap on every side as the floating dialog, so a phone
+ * still gets every pixel below the bar.
+ */
+export const SITE_ADMIN_MODAL_DOCKED_SIZE = Object.freeze({
+  "--simple-modal-height": `calc(100dvh - var(--simple-modal-dock-top, 64px) - 2 * ${SITE_ADMIN_MODAL_GAP})`,
+  "--simple-modal-max-height":
+    "calc(100dvh - var(--simple-modal-dock-top, 64px))",
+});
+
+/**
+ * Styles for the admin dialog docked below a bar whose bottom edge is at
+ * `dockTop` px.
+ */
+export function siteAdminDockedModalStyles(dockTop) {
+  const top = Number(dockTop);
+  return Object.assign(
+    {},
+    SITE_ADMIN_MODAL_STYLES,
+    SITE_ADMIN_MODAL_DOCKED_SIZE,
+    {
+      "--simple-modal-dock-top": `${top > 0 && Number.isFinite(top) ? Math.round(top) : 64}px`,
+    },
+  );
+}
+
+/**
  * A confirm (discard changes, delete this page) as the admin's leave
  * prompt draws it: the HAX UI dialog frame's confirm card. Open it with a
  * hax-confirm-dialog as the content.
