@@ -12,12 +12,12 @@
  *   its section when it moves: the blocks after it up to the next heading
  *   at its level or higher (or a page break).
  * - A container is a layout (haxProperties type "grid", or grid-plate) that
- *   says which tags it takes: grid-plate columns take anything but another
- *   grid-plate; a slot with allowedSlotWrappers takes those tags; a slot
- *   with a slotWrapper (other than template) takes that tag; a layout with
- *   no slot settings takes the tags in its top level allowedSlotWrappers
- *   (image-gallery: images, media-playlist: video and audio). Blocks move
- *   into, out of and between containers.
+ *   says which tags a slot takes: grid-plate columns take anything but
+ *   another grid-plate; a slot setting with allowedSlotWrappers takes those
+ *   tags; one with a slotWrapper (other than template) takes that tag.
+ *   Layouts mark the slot they hold blocks in with such a setting, hidden
+ *   when it is not for editing (image-gallery: images; media-playlist:
+ *   video and audio). Blocks move into, out of and between containers.
  * - Other children (list items, text inside a card) are shown but move,
  *   lock and delete with their parent.
  * - Page breaks (Page details) and locked blocks do not move on their own;
@@ -120,38 +120,24 @@ export function containerSlots(node, schemaFor) {
   if (!schema || schema.type !== "grid") {
     return null;
   }
-  const declared = settingsSlots(schema);
-  let slots = [];
-  if (declared.length === 0) {
-    if (Array.isArray(schema.allowedSlotWrappers)) {
+  const slots = [];
+  settingsSlots(schema).forEach((prop) => {
+    let allowed = null;
+    if (Array.isArray(prop.allowedSlotWrappers)) {
+      allowed = prop.allowedSlotWrappers;
+    } else if (prop.slotWrapper && prop.slotWrapper !== "template") {
+      allowed = [prop.slotWrapper];
+    }
+    // slots without a rule hold text for the element, not blocks
+    if (allowed) {
       slots.push({
-        slot: "",
-        title: "",
-        allowed: schema.allowedSlotWrappers.map((t) => t.toLowerCase()),
-        excluded: [],
+        slot: prop.slot,
+        title: prop.title || prop.slot,
+        allowed: allowed.map((t) => t.toLowerCase()),
+        excluded: (prop.excludedSlotWrappers || []).map((t) => t.toLowerCase()),
       });
     }
-  } else {
-    declared.forEach((prop) => {
-      let allowed = null;
-      if (Array.isArray(prop.allowedSlotWrappers)) {
-        allowed = prop.allowedSlotWrappers;
-      } else if (prop.slotWrapper && prop.slotWrapper !== "template") {
-        allowed = [prop.slotWrapper];
-      }
-      // slots without a rule hold text for the element, not blocks
-      if (allowed) {
-        slots.push({
-          slot: prop.slot,
-          title: prop.title || prop.slot,
-          allowed: allowed.map((t) => t.toLowerCase()),
-          excluded: (prop.excludedSlotWrappers || []).map((t) =>
-            t.toLowerCase(),
-          ),
-        });
-      }
-    });
-  }
+  });
   return slots.length > 0 ? slots : null;
 }
 

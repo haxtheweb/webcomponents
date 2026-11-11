@@ -13,11 +13,23 @@ import {
 const SCHEMA = {
   "image-gallery": {
     type: "grid",
-    allowedSlotWrappers: ["media-image", "img"],
+    settings: {
+      developer: [
+        { slot: "", hidden: true, allowedSlotWrappers: ["media-image", "img"] },
+      ],
+    },
   },
   "media-playlist": {
     type: "grid",
-    allowedSlotWrappers: ["video-player", "audio-player"],
+    settings: {
+      developer: [
+        {
+          slot: "",
+          hidden: true,
+          allowedSlotWrappers: ["video-player", "audio-player"],
+        },
+      ],
+    },
   },
   "a11y-collapse-group": {
     type: "grid",

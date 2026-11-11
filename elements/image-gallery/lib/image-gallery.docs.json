@@ -77,10 +77,6 @@
     "canScale": false,
     "canEditSource": true,
     "type": "grid",
-    "allowedSlotWrappers": [
-      "media-image",
-      "img"
-    ],
     "contentEditable": true,
     "designSystem": {
       "primary": true,
@@ -127,7 +123,18 @@
           "min": 0
         }
       ],
-      "developer": []
+      "developer": [
+        {
+          "slot": "",
+          "title": "Images",
+          "description": "The images in the gallery. Not edited here: the page outline uses it to know which blocks can be dropped in.",
+          "hidden": true,
+          "allowedSlotWrappers": [
+            "media-image",
+            "img"
+          ]
+        }
+      ]
     },
     "saveOptions": {
       "wipeSlot": false,
@@ -150,7 +157,7 @@
       }
     ]
   },
-  "surfaceHash": "d43aab0fcffb",
+  "surfaceHash": "aabaf2cf59c7",
   "walkthroughs": [
     {
       "id": "",
@@ -158,13 +165,13 @@
       "order": 0,
       "src": "image-gallery.motion.json",
       "file": "lib/image-gallery.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/image-gallery.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {
