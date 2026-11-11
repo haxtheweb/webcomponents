@@ -422,7 +422,7 @@
   "end": {
     "in": 17.8,
     "line": "Progression donut",
-    "code": ""
+    "code": "<progress-donut></progress-donut>"
   },
   "surfaceHash": "6ab97c2168b3",
   "review": {

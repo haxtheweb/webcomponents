@@ -295,7 +295,7 @@
       "t": 10,
       "out": 14.6,
       "title": "Set fit and active layer",
-      "text": "Add the fit attribute to switch it on. Add a active-layer attribute to the tag."
+      "text": "Add the fit attribute to switch it on. Add an active-layer attribute to the tag."
     },
     {
       "t": 14.8,

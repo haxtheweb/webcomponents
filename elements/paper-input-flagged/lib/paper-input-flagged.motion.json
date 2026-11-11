@@ -44,12 +44,7 @@
       "x": 604,
       "y": 288,
       "c": "vt",
-      "in": 1.7999999999999998,
-      "states": [
-        [1.4, "paper-input-flagged"],
-        [5, "label"]
-      ],
-      "typed": true
+      "in": 1.7999999999999998
     },
     {
       "type": "line",
@@ -89,20 +84,20 @@
       "in": 2.4,
       "rows": [
         {
-          "name": "label",
-          "desc": "label"
-        },
-        {
-          "name": "disabled",
-          "desc": "disabled"
-        },
-        {
           "name": "char-counter",
-          "desc": "char counter"
+          "desc": "Forward the character counter f…"
         },
         {
           "name": "icon",
-          "desc": "icon"
+          "desc": "Icon based on status"
+        },
+        {
+          "name": "status",
+          "desc": "Status based on test for flagge…"
+        },
+        {
+          "name": "value",
+          "desc": "value"
         }
       ],
       "active": [
@@ -127,7 +122,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "label=\"label\""
+      "s": "char-counter=\"false\""
     },
     {
       "type": "text",
@@ -135,7 +130,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "disabled"
+      "s": "icon=\"icon\""
     },
     {
       "type": "text",
@@ -143,7 +138,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "char-counter"
+      "s": "status=\"status\""
     },
     {
       "type": "text",
@@ -151,7 +146,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "icon=\"icon\""
+      "s": "value=\"value\""
     },
     {
       "type": "text",
@@ -235,8 +230,8 @@
       "py": 448,
       "ex": 616,
       "ey": 500,
-      "label": "label",
-      "sub": "\"label\"",
+      "label": "char-counter",
+      "sub": "on or off",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -247,8 +242,8 @@
       "py": 448,
       "ex": 796,
       "ey": 500,
-      "label": "disabled",
-      "sub": "on or off",
+      "label": "icon",
+      "sub": "\"icon\"",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -259,8 +254,8 @@
       "py": 448,
       "ex": 616,
       "ey": 500,
-      "label": "char-counter",
-      "sub": "on or off",
+      "label": "status",
+      "sub": "\"status\"",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -271,8 +266,8 @@
       "py": 448,
       "ex": 796,
       "ey": 500,
-      "label": "icon",
-      "sub": "\"icon\"",
+      "label": "value",
+      "sub": "\"value\"",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -288,14 +283,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set label and disabled",
-      "text": "Add a label attribute to the tag. Add the disabled attribute to switch it on."
+      "title": "Set char counter and icon",
+      "text": "Forward the character counter flag to the underlying field."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set char counter and icon",
-      "text": "Add the char-counter attribute to switch it on. Add a icon attribute to the tag."
+      "title": "Set status and value",
+      "text": "Status based on test for flagged words. Add a value attribute to the tag."
     },
     {
       "t": 14.8,

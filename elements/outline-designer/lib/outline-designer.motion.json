@@ -1,0 +1,390 @@
+{
+  "version": 1,
+  "tag": "outline-designer",
+  "camera": [],
+  "duration": 24.5,
+  "objects": [
+    {
+      "type": "box",
+      "x": 100,
+      "y": 170,
+      "w": 940,
+      "h": 600,
+      "v": "thin",
+      "r": 10,
+      "in": 0.3,
+      "d": 0.8
+    },
+    {
+      "type": "text",
+      "s": "",
+      "x": 120,
+      "y": 206,
+      "c": "dts",
+      "in": 0.9,
+      "states": [
+        [0.9, "6 pages"],
+        [7.6, "6 pages · Unsaved: 1 changed"],
+        [11.4, "7 pages · Unsaved: 1 new, 1 changed"],
+        [13.4, "7 pages · Unsaved: 1 new, 1 changed, 1 to delete"]
+      ]
+    },
+    {
+      "type": "box",
+      "x": 120,
+      "y": 230,
+      "w": 900,
+      "h": 50,
+      "v": "hug",
+      "r": 6,
+      "in": 1,
+      "label": "Home",
+      "labelMin": 60,
+      "od": 0.3
+    },
+    {
+      "type": "box",
+      "x": 120,
+      "y": 288,
+      "w": 900,
+      "h": 50,
+      "v": "hug",
+      "r": 6,
+      "in": 1.12,
+      "label": "Unit 1",
+      "labelMin": 60,
+      "od": 0.3
+    },
+    {
+      "type": "box",
+      "x": 164,
+      "y": 346,
+      "w": 856,
+      "h": 50,
+      "v": "hug",
+      "r": 6,
+      "in": 1.24,
+      "label": "Lesson 1",
+      "labelMin": 60,
+      "keys": [
+        [
+          7.4,
+          {
+            "y": 404
+          },
+          0.5
+        ]
+      ],
+      "out": 15.2,
+      "od": 0.3
+    },
+    {
+      "type": "box",
+      "x": 164,
+      "y": 404,
+      "w": 856,
+      "h": 50,
+      "v": "obj",
+      "r": 6,
+      "in": 1.3599999999999999,
+      "label": "Lesson 2",
+      "labelMin": 60,
+      "keys": [
+        [
+          7.4,
+          {
+            "y": 346
+          },
+          0.5
+        ]
+      ],
+      "out": 15.2,
+      "od": 0.3
+    },
+    {
+      "type": "box",
+      "x": 120,
+      "y": 462,
+      "w": 900,
+      "h": 50,
+      "v": "hug",
+      "r": 6,
+      "in": 1.48,
+      "label": "Unit 2",
+      "labelMin": 60,
+      "out": 15.2,
+      "od": 0.3
+    },
+    {
+      "type": "box",
+      "x": 120,
+      "y": 520,
+      "w": 900,
+      "h": 50,
+      "v": "hug",
+      "r": 6,
+      "in": 1.6,
+      "label": "Resources",
+      "labelMin": 60,
+      "keys": [
+        [
+          11.2,
+          {
+            "y": 578
+          },
+          0.4
+        ]
+      ],
+      "out": 15.2,
+      "od": 0.3
+    },
+    {
+      "type": "box",
+      "x": 120,
+      "y": 520,
+      "w": 900,
+      "h": 50,
+      "v": "obj",
+      "r": 6,
+      "in": 11.2,
+      "label": "New page",
+      "labelMin": 60,
+      "out": 15.2,
+      "od": 0.3
+    },
+    {
+      "type": "text",
+      "s": "New",
+      "x": 1000,
+      "y": 552,
+      "c": "dts",
+      "in": 11.4,
+      "a": "end",
+      "out": 15.2,
+      "od": 0.3
+    },
+    {
+      "type": "box",
+      "x": 120,
+      "y": 578,
+      "w": 900,
+      "h": 50,
+      "v": "well",
+      "r": 6,
+      "in": 13.3,
+      "out": 15.2,
+      "od": 0.3,
+      "d": 0.3
+    },
+    {
+      "type": "text",
+      "s": "Resources",
+      "x": 144,
+      "y": 610,
+      "c": "dts",
+      "in": 13.4,
+      "out": 15.2,
+      "od": 0.3
+    },
+    {
+      "type": "text",
+      "s": "Deleting",
+      "x": 1000,
+      "y": 610,
+      "c": "dts",
+      "in": 13.4,
+      "a": "end",
+      "out": 15.2,
+      "od": 0.3
+    },
+    {
+      "type": "text",
+      "s": "Lesson 2 moved up",
+      "x": 120,
+      "y": 750,
+      "c": "cdd",
+      "in": 7.8,
+      "out": 10.2
+    },
+    {
+      "type": "text",
+      "s": "Nothing is saved until you save the outline.",
+      "x": 120,
+      "y": 750,
+      "c": "cdd",
+      "in": 13.6,
+      "out": 15.2
+    },
+    {
+      "type": "keys",
+      "x": 1110,
+      "y": 230,
+      "caps": ["Alt", "↑"],
+      "label": "Alt+arrows: move a page",
+      "in": 5.6,
+      "out": 9.8,
+      "press": [[7.2, 1]]
+    },
+    {
+      "type": "keys",
+      "x": 1110,
+      "y": 230,
+      "caps": ["⌃", "↵"],
+      "label": "Ctrl+Enter: add a page after",
+      "in": 10.4,
+      "out": 12.8,
+      "press": [[11, 1]]
+    },
+    {
+      "type": "keys",
+      "x": 1110,
+      "y": 380,
+      "caps": ["Del"],
+      "label": "delete or restore",
+      "in": 12.8,
+      "out": 15,
+      "press": [[13.2, 0]]
+    },
+    {
+      "type": "glyph",
+      "name": "plus",
+      "x": 990,
+      "y": 313,
+      "s": 12,
+      "in": 15.4
+    },
+    {
+      "type": "box",
+      "x": 164,
+      "y": 346,
+      "w": 856,
+      "h": 44,
+      "v": "well",
+      "r": 6,
+      "in": 16,
+      "label": "Heading: Big ideas",
+      "labelMin": 60,
+      "od": 0.3
+    },
+    {
+      "type": "box",
+      "x": 208,
+      "y": 396,
+      "w": 812,
+      "h": 44,
+      "v": "well",
+      "r": 6,
+      "in": 16.15,
+      "label": "Paragraph",
+      "labelMin": 60,
+      "od": 0.3
+    },
+    {
+      "type": "box",
+      "x": 164,
+      "y": 446,
+      "w": 856,
+      "h": 44,
+      "v": "obj",
+      "r": 6,
+      "in": 16.3,
+      "label": "Heading: Practice",
+      "labelMin": 60,
+      "out": 18.4,
+      "od": 0.3
+    },
+    {
+      "type": "box",
+      "x": 208,
+      "y": 496,
+      "w": 812,
+      "h": 44,
+      "v": "well",
+      "r": 6,
+      "in": 16.45,
+      "label": "Video",
+      "labelMin": 60,
+      "od": 0.3
+    },
+    {
+      "type": "box",
+      "x": 120,
+      "y": 446,
+      "w": 900,
+      "h": 44,
+      "v": "obj",
+      "r": 6,
+      "in": 18.4,
+      "label": "Practice",
+      "labelMin": 60,
+      "d": 0.4
+    },
+    {
+      "type": "text",
+      "s": "New",
+      "x": 1000,
+      "y": 474,
+      "c": "dts",
+      "in": 18.6,
+      "a": "end"
+    },
+    {
+      "type": "callout",
+      "px": 1020,
+      "py": 468,
+      "ex": 1080,
+      "ey": 536,
+      "label": "Promote to page",
+      "sub": "heading becomes a page",
+      "dir": 1,
+      "in": 17.6,
+      "out": 20.4
+    },
+    {
+      "type": "cursor",
+      "keys": [
+        [15, 600, 700],
+        [15.6, 990, 313],
+        [17, 960, 468]
+      ],
+      "show": [[15, 19]],
+      "clicks": [15.7, 17.9]
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.3,
+      "out": 5.2,
+      "title": "Every page as a tree",
+      "text": "Each row is a page; sub-pages sit indented under the page they belong to."
+    },
+    {
+      "t": 5.4,
+      "out": 10.2,
+      "title": "Move from the keyboard",
+      "text": "Alt and the arrow keys move a page up, down, in or out a level."
+    },
+    {
+      "t": 10.4,
+      "out": 15,
+      "title": "Add, duplicate, delete",
+      "text": "Ctrl+Enter adds a page, Ctrl+D duplicates, Delete marks it for deletion."
+    },
+    {
+      "t": 15.2,
+      "out": 20.8,
+      "title": "Open a page's content",
+      "text": "Content structure shows a page's headings and blocks; promote one to a page."
+    }
+  ],
+  "end": {
+    "in": 21.4,
+    "line": "Change the whole outline, then save it once.",
+    "code": "<outline-designer></outline-designer>"
+  },
+  "surfaceHash": "920b3fc071d4",
+  "review": {
+    "status": "draft",
+    "notes": "Hand-written walkthrough. Needs human review before it is marked approved."
+  }
+}

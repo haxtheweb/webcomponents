@@ -227,11 +227,20 @@
   ],
   "hax": {},
   "surfaceHash": "85a6beee245e",
-  "walkthroughs": [],
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "super-daemon.motion.json",
+      "file": "lib/super-daemon.motion.json",
+      "status": "awaiting"
+    }
+  ],
   "videos": [],
   "motion": {
-    "file": "",
-    "status": "none"
+    "file": "lib/super-daemon.motion.json",
+    "status": "awaiting"
   },
   "video": null,
   "source": {

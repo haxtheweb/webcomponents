@@ -184,13 +184,13 @@
       "plain": true,
       "area": [120, 130, 1360, 620],
       "box": [420, 260, 760, 260],
-      "title": "ARCHIVE",
+      "title": "Archive Biology 110?",
       "in": 10,
       "out": 13.6
     },
     {
       "type": "text",
-      "s": "Archived sites leave the list but are kept; you can bring them back.",
+      "s": "Are you sure you want to archive Biology 110?",
       "x": 460,
       "y": 360,
       "c": "cdd",
