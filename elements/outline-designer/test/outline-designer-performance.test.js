@@ -157,6 +157,7 @@ describe("outline-designer on a large outline", () => {
       (i) => i.id === target.getAttribute("data-item-id"),
     );
     // let the tall tree use a view transition, to see what it names
+    el.viewTransitions = true;
     el._vtMaxHeight = () => 1000000;
     let named = -1;
     const start = tree.startViewTransition;
@@ -190,6 +191,8 @@ describe("outline-designer on a large outline", () => {
     await settle(el);
     const tree = el.shadowRoot.querySelector(".tree-wrap");
     expect(tree.offsetHeight).to.be.greaterThan(el._vtMaxHeight());
+    // even with view transitions on, a tall tree slides its rows
+    el.viewTransitions = true;
     let started = false;
     const start = tree.startViewTransition;
     tree.startViewTransition = function (cb) {
