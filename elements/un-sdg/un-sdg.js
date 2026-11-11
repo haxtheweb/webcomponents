@@ -71,6 +71,9 @@ export class UnSdg extends I18NMixin(SchemaBehaviors(LitElement)) {
         aspect-ratio: 1 / 1;
         position: relative;
         vertical-align: top;
+        /* clip the tile to any border-radius a page gives the element, so
+           the colour reaches the border instead of corners poking past it */
+        overflow: hidden;
       }
       div,
       img {
@@ -81,7 +84,9 @@ export class UnSdg extends I18NMixin(SchemaBehaviors(LitElement)) {
         height: 100%;
       }
       img {
-        object-fit: contain;
+        /* the official art is 404 x 405, so cover fills the square box
+           (cropping under a pixel) instead of leaving a gap under the colour */
+        object-fit: cover;
       }
     `;
   }
