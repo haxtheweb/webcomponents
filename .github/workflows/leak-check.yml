@@ -25,6 +25,7 @@ on:
       - "scripts/lib/leak-check.mjs"
       - "scripts/test-setup/leak*"
       - ".github/workflows/leak-check.yml"
+      - ".github/actions/setup-playwright/**"
 permissions:
   contents: read
 jobs:
@@ -49,8 +50,13 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: Install Playwright Chromium
         # the Playwright version yarn.lock resolves, so the browser build
-        # matches what the test runner launches
-        run: yarn playwright install --with-deps chromium
+        # matches what the tests launch; cached per version
+        # no extra fonts: Chromium runs on the runner image's libraries, so
+        # this job does not depend on the Ubuntu package mirrors
+        uses: $/.github/actions/setup-playwright
+        timeout-minutes: 12
+        with:
+          fonts: "false"
       - name: The check still finds each kind of leak
         run: node scripts/leak-check.mjs --self-test
       - name: Memory leaks in changed elements
