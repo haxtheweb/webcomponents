@@ -1275,6 +1275,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     // motion: which input made the last change, and preview overrides
     this.motionProfile = "auto";
     this.reducedMotion = "auto";
+    this.viewTransitions = false;
     this._lastModality = null;
     this._vtActive = false;
     // rows whose title flips with the row instead of sliding on its own
@@ -3607,8 +3608,9 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
    * deleted; what actually changed is worked out afterwards), rows
    * (the change adds or removes rows).
    *
-   * Changes that keep the same rows run as a view transition scoped to
-   * the tree. Chromium aborts a scoped transition when a named row is
+   * Rows slide into place (FLIP). With view-transitions set, changes
+   * that keep the same rows run as a view transition scoped to the tree
+   * instead. Chromium aborts a scoped transition when a named row is
    * added or removed during it ("Prepaint layout check failed"), so
    * changes that add or remove rows animate the rows directly instead,
    * as does any transition the browser skips.
@@ -3641,6 +3643,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     // instead
     const useVT =
       slideOn &&
+      this.viewTransitions &&
       wrap &&
       typeof wrap.startViewTransition === "function" &&
       !rows &&
@@ -5474,6 +5477,15 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
        * auto (follow prefers-reduced-motion), reduce or full
        */
       reducedMotion: { type: String, attribute: "reduced-motion" },
+      /**
+       * Animate moves with a scoped view transition (element
+       * startViewTransition) where the browser has one. Off by default: in
+       * Chromium the tab can lose the transition's snapshot textures
+       * ("non-existent mailbox" in the GPU process) and the renderer dies
+       * mid-move, taking unsaved outline edits with it
+       * (haxtheweb/issues#3305). Moves still slide (FLIP) without it.
+       */
+      viewTransitions: { type: Boolean, attribute: "view-transitions" },
       _focusId: { state: true },
       _statusText: { state: true },
       _vtActive: { state: true },
