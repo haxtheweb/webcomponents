@@ -31,7 +31,11 @@ class FutureTerminalTextLite extends FutureTerminalTextLiteSuper(LitElement) {
           --fade-in-duration: 500ms;
         }
         span {
-          color: var(--future-terminal-text-color, #00504d);
+          /* terminal green, and a light DDD green on dark pages */
+          color: var(
+            --future-terminal-text-color,
+            light-dark(#00504d, var(--ddd-theme-default-futureLime))
+          );
           /* a drop-shadow filter glows without lightening the computed
              text color the way a text-shadow would, which kept contrast
              audits from ever passing on light backgrounds */
@@ -39,7 +43,7 @@ class FutureTerminalTextLite extends FutureTerminalTextLiteSuper(LitElement) {
           animation: flicker var(--flicker-duration) var(--flicker-easing);
         }
         :host([red]) span {
-          color: #8f2423;
+          color: light-dark(#8f2423, var(--ddd-theme-default-discoveryCoral));
           filter: drop-shadow(0 0 4px currentColor);
         }
         :host([fadein]) span {
