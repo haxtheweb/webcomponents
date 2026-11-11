@@ -2666,7 +2666,7 @@
             {
               "kind": "field",
               "name": "buttonTemplate",
-              "description": "template for button, based on whether or not the button toggles",
+              "description": "template for button, based on whether or not the button toggles.\nThe inner button's tabindex comes from innerTabindex: inside a\ntoolbar (hax-toolbar, simple-button-grid) only the current item is a\ntab stop and arrow keys move between items; a button no toolbar\nmanages (tray menu bar, page outline) is an ordinary tab stop.",
               "readonly": true,
               "inheritedFrom": {
                 "name": "HaxToolbarItemBehaviors",
@@ -3140,7 +3140,7 @@
             {
               "kind": "field",
               "name": "buttonTemplate",
-              "description": "template for button, based on whether or not the button toggles",
+              "description": "template for button, based on whether or not the button toggles.\nThe inner button's tabindex comes from innerTabindex: inside a\ntoolbar (hax-toolbar, simple-button-grid) only the current item is a\ntab stop and arrow keys move between items; a button no toolbar\nmanages (tray menu bar, page outline) is an ordinary tab stop.",
               "readonly": true,
               "inheritedFrom": {
                 "name": "HaxToolbarItemBehaviors",
@@ -8807,7 +8807,7 @@
             {
               "kind": "field",
               "name": "buttonTemplate",
-              "description": "template for button, based on whether or not the button toggles",
+              "description": "template for button, based on whether or not the button toggles.\nThe inner button's tabindex comes from innerTabindex: inside a\ntoolbar (hax-toolbar, simple-button-grid) only the current item is a\ntab stop and arrow keys move between items; a button no toolbar\nmanages (tray menu bar, page outline) is an ordinary tab stop.",
               "readonly": true
             },
             {
@@ -9085,7 +9085,7 @@
             {
               "kind": "field",
               "name": "buttonTemplate",
-              "description": "template for button, based on whether or not the button toggles",
+              "description": "template for button, based on whether or not the button toggles.\nThe inner button's tabindex comes from innerTabindex: inside a\ntoolbar (hax-toolbar, simple-button-grid) only the current item is a\ntab stop and arrow keys move between items; a button no toolbar\nmanages (tray menu bar, page outline) is an ordinary tab stop.",
               "readonly": true,
               "inheritedFrom": {
                 "name": "HaxToolbarItemBehaviors",
@@ -9729,7 +9729,7 @@
             {
               "kind": "field",
               "name": "buttonTemplate",
-              "description": "template for button, based on whether or not the button toggles",
+              "description": "template for button, based on whether or not the button toggles.\nThe inner button's tabindex comes from innerTabindex: inside a\ntoolbar (hax-toolbar, simple-button-grid) only the current item is a\ntab stop and arrow keys move between items; a button no toolbar\nmanages (tray menu bar, page outline) is an ordinary tab stop.",
               "readonly": true,
               "inheritedFrom": {
                 "name": "HaxToolbarItemBehaviors",

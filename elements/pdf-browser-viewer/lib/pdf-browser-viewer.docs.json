@@ -36,7 +36,7 @@
       "name": "not-supported-message",
       "property": "notSupportedMessage",
       "type": "string",
-      "default": "\"It appears your Web browser is not configured to display PDF files. No worries, just\"",
+      "default": "",
       "description": "The message when browser doesn't support pdf object",
       "hax": {
         "title": "Not supported message",
@@ -48,7 +48,7 @@
       "name": "not-supported-link-message",
       "property": "notSupportedLinkMessage",
       "type": "string",
-      "default": "\"click here to download the PDF file.\"",
+      "default": "",
       "description": "The PDF link message when browser doesn't support pdf object",
       "hax": {
         "title": "Not supported link message",
@@ -108,7 +108,7 @@
       "name": "download-label",
       "property": "downloadLabel",
       "type": "string",
-      "default": "\"Download\"",
+      "default": "",
       "description": "Download button label.",
       "hax": {
         "title": "Download label",
@@ -227,7 +227,7 @@
       }
     ]
   },
-  "surfaceHash": "d3f3bbb1ad0d",
+  "surfaceHash": "5ae3e1f51608",
   "walkthroughs": [
     {
       "id": "",
@@ -235,13 +235,13 @@
       "order": 0,
       "src": "pdf-browser-viewer.motion.json",
       "file": "lib/pdf-browser-viewer.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/pdf-browser-viewer.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

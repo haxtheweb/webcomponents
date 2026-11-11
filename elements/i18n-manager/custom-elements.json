@@ -65,6 +65,21 @@
             },
             {
               "kind": "method",
+              "name": "deregisterLocalization",
+              "parameters": [
+                {
+                  "name": "context"
+                }
+              ],
+              "description": "Remove every registration whose context is `context`. I18NMixin calls this\nwhen its element disconnects, so the registry does not keep removed\nelements (and everything they reference) alive for the life of the page.\nThe element registers again when it reconnects."
+            },
+            {
+              "kind": "method",
+              "name": "pruneDisconnected",
+              "description": "Drop registrations for I18NMixin elements that are not in the document.\nCovers elements that were constructed but never connected, which never\nget a disconnectedCallback. They register again if they ever connect."
+            },
+            {
+              "kind": "method",
               "name": "loadTranslationManifest",
               "description": "Lazy load the translation manifest only when needed (non-English language)"
             },
@@ -249,6 +264,32 @@
       "path": "lib/I18NMixin.js",
       "declarations": [
         {
+          "kind": "function",
+          "name": "releaseLocalization",
+          "parameters": [
+            {
+              "name": "context",
+              "type": {
+                "text": "HTMLElement"
+              }
+            }
+          ],
+          "description": "For elements that register with the manager directly instead of through\nI18NMixin (which does this on its own): release the manager's\nregistrations of `context` when it leaves the page, so the registry does\nnot keep it alive. Call from disconnectedCallback."
+        },
+        {
+          "kind": "function",
+          "name": "restoreLocalization",
+          "parameters": [
+            {
+              "name": "context",
+              "type": {
+                "text": "HTMLElement"
+              }
+            }
+          ],
+          "description": "Register again what releaseLocalization removed, when the element comes\nback (the HAX editor moves elements by removing and re-adding them). Call\nfrom connectedCallback. Like I18NMixin, restores the English defaults when\nthe language went back to English while the element was away."
+        },
+        {
           "kind": "mixin",
           "description": "",
           "name": "I18NMixin",
@@ -381,6 +422,22 @@
           "name": "I18NManagerStore",
           "declaration": {
             "name": "I18NManagerStore",
+            "module": "lib/I18NMixin.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "releaseLocalization",
+          "declaration": {
+            "name": "releaseLocalization",
+            "module": "lib/I18NMixin.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "restoreLocalization",
+          "declaration": {
+            "name": "restoreLocalization",
             "module": "lib/I18NMixin.js"
           }
         },

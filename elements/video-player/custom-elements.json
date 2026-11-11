@@ -72,6 +72,11 @@
               ]
             },
             {
+              "kind": "method",
+              "name": "__observeChildren",
+              "description": "watch light DOM source/track children; safe to call repeatedly, so a\nmove or re-attach never stacks a second observation"
+            },
+            {
               "kind": "field",
               "name": "iframed",
               "description": "Computes whether uses iframe",
