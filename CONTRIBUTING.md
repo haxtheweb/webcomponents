@@ -283,6 +283,19 @@ Invariant: an element responds to dark mode and respects reduced motion. Contras
 - **Baseline**: `scripts/dark-motion.baseline.json` lists today's failures per element: `dark-ignored` by tag, `motion` by animation (`transition opacity on my-el >> div.panel`: the tag, then the animated part by tag name and first class). A demo with new findings is run a second time and only what both runs show counts. It only shrinks: after fixing, run `yarn test:dark-motion --update-baseline --elements <name>` and commit the smaller baseline; `--allow-additions` only adds, and CI fails a pull request whose baseline grew.
 - **CI**: the `dark-motion` workflow runs on pull requests touching `elements/**`, fails if the baseline grew, then blocks on new failures in the elements the pull request changes. Baselined failures are listed in the job summary. Demos that do not load are listed, not failed.
 
+### Forced colors, reflow and target size check
+
+Invariant: an element stays usable in Windows high contrast (forced colors), keeps a visible focus indicator in forced colors and in dark mode, reflows to 320 CSS px (WCAG 1.4.10), and gives pointer targets 24x24 CSS px or the spacing to match (WCAG 2.5.8 AA).
+
+- **What runs**: the same local demo runner as the contrast and dark mode checks. Each changed element's `demo/index.html` opens in Chromium with `prefers-reduced-motion: reduce` three times: `forced-colors: active` (the black palette), dark mode at 1280px, and 320px wide (1280px at 400% zoom). Only the element's own tags and their shadow parts are judged; slotted demo content is not. The full rules are in the header of `scripts/a11y-modes-check.mjs`.
+- **forced-focus / dark-focus**: up to four focusable parts per tag are focused with `:focus-visible`, and fewer than four pixels around the part change by 3:1. Forced colors removes `box-shadow` and backgrounds, so draw focus rings with `outline` (an `outline: 2px solid transparent` shows in a system color under forced colors). In dark mode, use the DDD focus tokens.
+- **forced-invisible / forced-icon**: a control, or an inline `<svg>` or `*icon*` element, that shows in dark mode disappears (icons: drops under 3:1) under forced colors. Give controls a border, outline or text; give icons `fill: currentColor`, or system colors under `@media (forced-colors: active)`.
+- **reflow-overflow / reflow-clipped / reflow-overlap**: at 320px the page scrolls sideways because of an own part, or own text is cut off by an `overflow: hidden` box or overlaps other text where it does not at 1280px. Tables, code, images, media, maps, editors and other content that needs two dimensions are exempt.
+- **target-size**: an own target under 24x24 CSS px whose 24px circle meets another target or another small target's circle. Inline links in text, browser-sized checkboxes and radios and visually hidden targets are exempt.
+- **Run locally**: `yarn test:a11y-modes` checks the demos of element folders changed against the base branch (`--base <ref>`, `--elements a,b`, `--all`). Exit 1 means a new failure. Set `A11Y_MODES_CHROMIUM=<path>` to use another Chromium.
+- **Baseline**: `scripts/a11y-modes.baseline.json` lists today's failures per element and check, keyed by tag and part (`my-el >> button.close`). A demo with new findings is run a second time and only what both runs show counts. It only shrinks: after fixing, run `yarn test:a11y-modes --update-baseline --elements <name>` and commit the smaller baseline.
+- **CI**: the `a11y-modes` workflow runs on pull requests touching `elements/**`, fails if the baseline grew, then blocks on new failures in the elements the pull request changes.
+
 ### Lerna
 This monorepo has configuration settings for lerna. Lerna is for the core team, but to bulk run commands against the monorepo consider things like `npx lerna run build` to run build against all elements. This is useful when getting ready to ship.
 

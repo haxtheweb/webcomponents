@@ -1,0 +1,73 @@
+name: a11y-modes
+
+# Blocking for the elements a pull request touches: forced colors (Windows
+# high contrast), focus visibility, reflow at 320 CSS px and target size.
+#
+# For every element folder the pull request changes, the repo's
+# web-dev-server config serves elements/<name>/demo/index.html locally (never
+# a live site) and scripts/a11y-modes-check.mjs opens it in Chromium with
+# prefers-reduced-motion: reduce in three contexts: forced-colors: active
+# (black palette), dark mode at 1280 px, and 320 px wide (1280 px at 400%
+# zoom). forced-focus / dark-focus: focusing a control changes no pixel by
+# 3:1. forced-invisible / forced-icon: a control or icon seen in dark mode
+# disappears under forced colors. reflow-overflow / -clipped / -overlap: at
+# 320 px the page scrolls sideways, or text is cut off or overlaps where it
+# does not at 1280 px (tables, code, media and maps are exempt). target-size:
+# a target under 24x24 px without 24 px spacing (WCAG 2.5.8). The script
+# header documents each rule. Only a failure missing from
+# scripts/a11y-modes.baseline.json fails the job; baselined ones are listed
+# in the job summary. The baseline only shrinks: the first step fails if
+# this pull request adds entries to it. See CONTRIBUTING.md, "Forced colors,
+# reflow and target size check".
+#
+# Runs on pull_request (not pull_request_target): no secrets, read-only token.
+on:
+  # No branch filter: stacked PRs (base is another feature branch) must run too.
+  pull_request:
+    paths:
+      - "elements/**"
+      - "scripts/a11y-modes*"
+      - "scripts/lib/a11y-modes.mjs"
+      - "scripts/lib/dark-motion.mjs"
+      - "scripts/lib/demo-runner.mjs"
+      - "scripts/lib/gate-baseline.mjs"
+      - "web-dev-server.config.mjs"
+      - ".github/workflows/a11y-modes.yml"
+      - ".github/actions/setup-playwright/**"
+permissions:
+  contents: read
+jobs:
+  a11y-modes:
+    name: Forced colors, focus, reflow and target size
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      # the PR merge commit with its base as first parent, so HEAD^1..HEAD is
+      # exactly this pull request's change
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 2
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          cache: yarn
+      - name: Install
+        run: yarn install --frozen-lockfile
+      - name: Baseline only shrinks
+        run: node scripts/a11y-modes-check.mjs --check-baseline HEAD^1
+      - name: Install Playwright Chromium
+        # the Playwright version yarn.lock resolves, so the browser build
+        # matches what the tests launch; cached per version
+        # results depend on how text renders, so this job installs the extra
+        # fonts through apt (retried, time-boxed); see the action for details
+        # the local path, not the $/ self-repository form: $/ downloads the
+        # whole repo as an action archive, and that extraction fails here
+        uses: ./.github/actions/setup-playwright # zizmor: ignore[self-repository]
+        timeout-minutes: 12
+        with:
+          fonts: "true"
+      - name: Forced colors, focus, reflow and target size of changed elements
+        run: node scripts/a11y-modes-check.mjs --base HEAD^1
