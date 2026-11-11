@@ -39,7 +39,7 @@ export class PageAnchor extends DDDSuper(LitElement) {
           cursor: pointer;
         }
         simple-icon-lite {
-          margin-right: var(--ddd-spacing-2);
+          margin-inline-end: var(--ddd-spacing-2);
           --simple-icon-height: var(--ddd-icon-xxs);
           --simple-icon-width: var(--ddd-icon-xxs);
         }

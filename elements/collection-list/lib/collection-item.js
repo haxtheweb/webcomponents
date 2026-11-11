@@ -173,7 +173,8 @@ class CollectionItem extends DDD {
           width: var(--ddd-spacing-12);
           height: var(--ddd-spacing-12);
           aspect-ratio: 1;
-          margin: calc(-1 * var(--ddd-spacing-6)) 0 0 var(--ddd-spacing-3);
+          margin-block: calc(-1 * var(--ddd-spacing-6)) 0;
+          margin-inline: var(--ddd-spacing-3) 0;
           position: relative;
           background-color: var(--collection-item-surface);
           border: var(--ddd-border-md);

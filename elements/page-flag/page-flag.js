@@ -62,9 +62,9 @@ class PageFlag extends SimpleColors {
       css`
         :host {
           display: none;
-          float: right;
+          float: inline-end;
           z-index: var(--simple-modal-z-index, 1000);
-          margin-right: -80px;
+          margin-inline-end: -80px;
           position: relative;
         }
         :host([show]) {
@@ -93,11 +93,11 @@ class PageFlag extends SimpleColors {
           position: absolute;
           pointer-events: none;
           width: 0;
-          right: 100%;
+          inset-inline-end: 100%;
         }
         .arrow::before {
           border-color: rgba(255, 255, 255, 0);
-          border-right-color: var(
+          border-inline-end-color: var(
             --simple-colors-default-theme-accent-4,
             #97d4e8
           );
@@ -107,7 +107,7 @@ class PageFlag extends SimpleColors {
         }
         .arrow::after {
           border-color: rgba(255, 255, 255, 0);
-          border-right-color: var(
+          border-inline-end-color: var(
             --simple-colors-default-theme-accent-1,
             #c8e7f1
           );
@@ -130,7 +130,7 @@ class PageFlag extends SimpleColors {
           );
           font-size: var(--ddd-font-size-6xs, 12px);
           width: 300px;
-          margin-left: 160px;
+          margin-inline-start: 160px;
           padding-top: 8px;
         }
       `,

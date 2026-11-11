@@ -129,6 +129,13 @@ export class AppHaxUserMenuButton extends DDDSuper(LitElement) {
         .hax-ui-kbd {
           flex: none;
         }
+        /* phone: no keyboard expected, so no shortcut hints (same media as
+           KEYBOARD_SHORTCUTS_HIDDEN_MEDIA in @haxtheweb/utils keyboardShortcuts) */
+        @media (max-width: 599px), (pointer: coarse) and (max-height: 599px) {
+          .hax-ui-kbd {
+            display: none;
+          }
+        }
         /* the current choice in a pick-one list (preview's device menu) */
         :host([current]) .menu-button {
           background-color: var(--hax-ui-selected);

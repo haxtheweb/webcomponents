@@ -55,7 +55,7 @@ export const editableTableStyles = [
     }
     .offscreen {
       position: absolute;
-      left: -9999px;
+      inset-inline-start: -9999px;
       font-size: 0;
       height: 0;
       width: 0;
@@ -180,7 +180,7 @@ export const editableTableStyles = [
           var(--ddd-theme-default-coalyGray, #262626)
         )
       );
-      text-align: left;
+      text-align: start;
     }
     *[bordered] .th,
     *[bordered] .td {
@@ -247,12 +247,12 @@ export const editableTableStyles = [
     }
     caption,
     .th-or-td {
-      text-align: left;
+      text-align: start;
     }
     *[numeric-styles] .thead-tr .th-or-td[numeric],
     *[numeric-styles] .tfoot-tr .th-or-td[numeric],
     *[numeric-styles] .th-or-td[numeric] .cell {
-      text-align: right;
+      text-align: end;
       --editable-table-cell-justify: flex-end;
     }
     *[numeric-styles] .tfoot-tr .th-or-td[negative],
@@ -314,7 +314,7 @@ export const editableTableDisplayStyles = [
       width: calc(var(--simple-picker-option-size) + 6px);
       overflow: visible;
       display: none;
-      margin-right: 0px;
+      margin-inline-end: 0px;
       --simple-picker-border-width: 1px;
       --simple-picker-focus-border-width: 1px;
       --simple-picker-border-color: var(

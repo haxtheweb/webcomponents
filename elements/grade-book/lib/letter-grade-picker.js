@@ -66,7 +66,7 @@ class LetterGradePicker extends LitElement {
         }
         span.prefix,
         .wrapper ::slotted(*) {
-          margin-right: 10px;
+          margin-inline-end: 10px;
           width: 90px;
           line-height: 38px;
           display: block;
@@ -101,7 +101,8 @@ class LetterGradePicker extends LitElement {
         }
         simple-fields-field {
           width: 64px;
-          margin: 0px -8px 0px 16px;
+          margin-block: 0px;
+          margin-inline: 16px -8px;
           --simple-fields-font-size: 28px;
         }
       `,

@@ -676,10 +676,22 @@ class Store {
       );
     }
     if (manifest && typeof manifest.items !== "undefined") {
+      // O(n): one id -> item map for parents, one parent -> children map,
+      // and a memoized published walk. The previous version ran find()/filter()
+      // over the whole list for every item (O(n^2) or worse: ~97ms at 500
+      // items). Output is identical: same new item objects, a fresh children
+      // array on every item, first match wins for duplicate ids.
+      const sourceById = new Map();
+      for (let n = 0; n < manifest.items.length; n++) {
+        const d = manifest.items[n];
+        if (!sourceById.has(d.id)) {
+          sourceById.set(d.id, d);
+        }
+      }
       let manifestItems = manifest.items.map((i) => {
         let parentLocation = null;
         let parentSlug = null;
-        let parent = manifest.items.find((d) => i.parent === d.id);
+        let parent = sourceById.get(i.parent);
         if (parent) {
           parentLocation = parent.location;
           parentSlug = parent.slug;
@@ -702,9 +714,21 @@ class Store {
       });
 
       // build the children into a hierarchy too
-      manifestItems.forEach((item, _i) => {
-        this._setChildren(item, manifestItems);
-      });
+      const childrenByParent = new Map();
+      for (let n = 0; n < manifestItems.length; n++) {
+        const item = manifestItems[n];
+        let siblings = childrenByParent.get(item.parent);
+        if (!siblings) {
+          siblings = [];
+          childrenByParent.set(item.parent, siblings);
+        }
+        siblings.push(item);
+      }
+      for (let n = 0; n < manifestItems.length; n++) {
+        const item = manifestItems[n];
+        const children = childrenByParent.get(item.id);
+        item.children = children ? children.slice() : [];
+      }
 
       /**
        * Publish Pages Option
@@ -718,38 +742,55 @@ class Store {
       if (
         varGet(manifest, "metadata.site.settings.publishPagesOn", true) === true
       ) {
-        const filterHiddenParentsRecursive = (item) => {
-          // if the item is unpublished then remove it. an item without a
-          // metadata object is not explicitly unpublished, so guard before
-          // reading it (issue #3077, bug 43)
-          if (item.metadata && item.metadata.published === false) {
-            return false;
-          }
-          // if the item has parents, recursively see if any parent is not published
-          const parent = manifestItems.find((i) => i.id === item.parent);
-          if (parent) {
-            return filterHiddenParentsRecursive(parent);
-          }
-          // if it got this far then it should be good.
-          return true;
-        };
         // hide unpublished items from visitors, and while previewing. The
         // page preview started on stays, with its parents, so its route
         // still resolves and it can still be looked at.
         if (!this.showUnpublished) {
-          const keep = {};
-          if (this.previewMode && this.previewKeepId) {
-            let current = manifestItems.find(
-              (i) => i.id === this.previewKeepId,
-            );
-            while (current && !keep[current.id]) {
-              keep[current.id] = true;
-              const parentId = current.parent;
-              current = manifestItems.find((i) => i.id === parentId);
+          const itemById = new Map();
+          for (let n = 0; n < manifestItems.length; n++) {
+            if (!itemById.has(manifestItems[n].id)) {
+              itemById.set(manifestItems[n].id, manifestItems[n]);
             }
           }
+          const keep = {};
+          if (this.previewMode && this.previewKeepId) {
+            let current = itemById.get(this.previewKeepId);
+            while (current && !keep[current.id]) {
+              keep[current.id] = true;
+              current = itemById.get(current.parent);
+            }
+          }
+          const visible = new Map();
+          // an item is shown when it and every ancestor are not explicitly
+          // unpublished. An item without a metadata object is not explicitly
+          // unpublished (issue #3077, bug 43).
+          const isVisible = (item) => {
+            const chain = [];
+            let current = item;
+            let result = true;
+            while (current) {
+              if (visible.has(current)) {
+                result = visible.get(current);
+                break;
+              }
+              if (current.metadata && current.metadata.published === false) {
+                result = false;
+                break;
+              }
+              // a malformed outline where an item is its own ancestor: stop
+              if (chain.indexOf(current) !== -1) {
+                break;
+              }
+              chain.push(current);
+              current = itemById.get(current.parent);
+            }
+            for (let n = 0; n < chain.length; n++) {
+              visible.set(chain[n], result);
+            }
+            return result;
+          };
           manifestItems = manifestItems.filter(
-            (i) => keep[i.id] || filterHiddenParentsRecursive(i),
+            (i) => keep[i.id] || isVisible(i),
           );
         }
       }

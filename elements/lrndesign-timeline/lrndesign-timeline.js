@@ -5,7 +5,11 @@
 import { html, css, nothing } from "lit";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
-import "@haxtheweb/responsive-utility/responsive-utility.js";
+import {
+  registerResponsiveElement,
+  unregisterResponsiveElement,
+  reregisterResponsiveElement,
+} from "@haxtheweb/responsive-utility/responsive-utility.js";
 import { normalizeEventPath } from "@haxtheweb/utils/lib/events.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { DDDBlockStyles } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
@@ -18,6 +22,7 @@ import { DDDBlockStyles } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
  * @lit-html
  * @lit-element
  * @demo demo/index.html
+ * @fires responsive-element - asks responsive-utility to track this element's size (sent on globalThis by registerResponsiveElement)
  */
 class LrndesignTimeline extends I18NMixin(SchemaBehaviors(SimpleColors)) {
   //styles function
@@ -114,7 +119,7 @@ class LrndesignTimeline extends I18NMixin(SchemaBehaviors(SimpleColors)) {
           display: block;
           border-radius: 3px;
           border: 1px solid var(--lrndesign-timeline-border-print);
-          border-left: 3px solid var(--lrndesign-timeline-accent-print);
+          border-inline-start: 3px solid var(--lrndesign-timeline-accent-print);
           background-color: var(--lrndesign-timeline-background-print);
           color: var(--lrndesign-timeline-color-print);
         }
@@ -164,7 +169,8 @@ class LrndesignTimeline extends I18NMixin(SchemaBehaviors(SimpleColors)) {
             color: var(--lrndesign-timeline-color);
             background-color: var(--lrndesign-timeline-background);
             border: 1px solid var(--lrndesign-timeline-border);
-            border-left: 3px solid var(--lrndesign-timeline-accent-border);
+            border-inline-start: 3px solid
+              var(--lrndesign-timeline-accent-border);
           }
 
           h2 {
@@ -216,12 +222,12 @@ class LrndesignTimeline extends I18NMixin(SchemaBehaviors(SimpleColors)) {
             z-index: 200;
             position: absolute;
             top: 42px;
-            right: 30px;
+            inset-inline-end: 30px;
             width: 0;
             padding: 0;
             border-top: 0px solid transparent;
             border-bottom: 0px solid transparent;
-            border-left: 0px solid transparent;
+            border-inline-start: 0px solid transparent;
             transition: all var(--ddd-duration-normal, 0.3s);
           }
 
@@ -229,14 +235,16 @@ class LrndesignTimeline extends I18NMixin(SchemaBehaviors(SimpleColors)) {
             .event[has-media][selected]
             .heading:after {
             top: 7px;
-            right: 0px;
+            inset-inline-end: 0px;
             border-top: 35px solid transparent;
             border-bottom: 35px solid transparent;
-            border-left: 35px solid var(--lrndesign-timeline-header-accent);
+            border-inline-start: 35px solid
+              var(--lrndesign-timeline-header-accent);
           }
 
           :host(:not([timeline-size="xs"])) .heading h2 {
-            margin: 7px 48px 0 20px;
+            margin-block: 7px 0;
+            margin-inline: 20px 48px;
             padding: 0 20px;
             line-height: 50px;
             height: 50px;
@@ -255,7 +263,7 @@ class LrndesignTimeline extends I18NMixin(SchemaBehaviors(SimpleColors)) {
             h2:after {
             content: "";
             position: absolute;
-            left: calc(100% - 48px);
+            inset-inline-start: calc(100% - 48px);
             top: 17px;
             height: 50px;
             opacity: 0;
@@ -277,14 +285,15 @@ class LrndesignTimeline extends I18NMixin(SchemaBehaviors(SimpleColors)) {
             display: flex;
             align-items: center;
             position: absolute;
-            right: 0;
+            inset-inline-end: 0;
             width: 45%;
             height: 300px;
           }
 
           :host(:not([timeline-size="xs"])) .media-outer > div {
             display: flex;
-            padding: 20px 20px 20px 50px;
+            padding-block: 20px;
+            padding-inline: 50px 20px;
             opacity: 0;
             transition: opacity var(--ddd-duration-normal, 0.3s) delay
               var(--ddd-duration-normal, 0.3s);
@@ -639,6 +648,8 @@ class LrndesignTimeline extends I18NMixin(SchemaBehaviors(SimpleColors)) {
    */
   connectedCallback() {
     if (super.connectedCallback) super.connectedCallback();
+    // moved, or removed and added again: observe it again
+    reregisterResponsiveElement(this);
     // prefers-color-scheme support coordinated with the DDD palette: follow
     // the system scheme unless the content author set dark explicitly; the
     // dark property drives color-scheme so the light-dark() token pairs and
@@ -665,19 +676,15 @@ class LrndesignTimeline extends I18NMixin(SchemaBehaviors(SimpleColors)) {
    */
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
-    globalThis.dispatchEvent(
-      new CustomEvent("responsive-element", {
-        detail: {
-          element: this,
-          attribute: "timeline-size",
-          relativeToParent: true,
-          sm: 600,
-          md: 900,
-          lg: 1200,
-          xl: 1600,
-        },
-      }),
-    );
+    registerResponsiveElement({
+      element: this,
+      attribute: "timeline-size",
+      relativeToParent: true,
+      sm: 600,
+      md: 900,
+      lg: 1200,
+      xl: 1600,
+    });
 
     // defer the light DOM progressive enhancement scan so any reactive
     // events assignment happens outside the update cycle (Lit warns about
@@ -689,6 +696,8 @@ class LrndesignTimeline extends I18NMixin(SchemaBehaviors(SimpleColors)) {
     });
   }
   disconnectedCallback() {
+    // the utility's ResizeObserver keeps a registered element alive
+    unregisterResponsiveElement(this);
     if (this.observer && this.observer.disconnect) this.observer.disconnect();
     if (
       this.__schemeQuery &&

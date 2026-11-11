@@ -1360,7 +1360,7 @@ export const viewsRendererStyles = css`
   }
   .table-scroll th,
   .table-scroll td {
-    text-align: left;
+    text-align: start;
     vertical-align: top;
     padding: var(--ddd-spacing-2);
     border-bottom: var(--ddd-border-size-xs) solid
@@ -1415,7 +1415,7 @@ export const viewsRendererStyles = css`
   }
   .result-list {
     margin: 0;
-    padding-left: var(--ddd-spacing-4);
+    padding-inline-start: var(--ddd-spacing-4);
     display: flex;
     flex-direction: column;
     gap: var(--ddd-spacing-3);

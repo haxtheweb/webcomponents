@@ -133,8 +133,8 @@ export class AuthorCard extends DDDSuper(I18NMixin(LitElement)) {
 
         /* Accent color styling */
         :host([accent-color]) .author {
-          border-left: var(--ddd-border-lg);
-          border-left-color: var(--ddd-theme-accent);
+          border-inline-start: var(--ddd-border-lg);
+          border-inline-start-color: var(--ddd-theme-accent);
         }
 
         .inner {

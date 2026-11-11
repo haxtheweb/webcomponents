@@ -728,7 +728,7 @@ export class PageBreak extends IntersectionObserverMixin(
            ships in DDDReset for DDDSuper-based elements */
         .sr-only {
           position: absolute;
-          left: -10000px;
+          inset-inline-start: -10000px;
           inset-inline-start: -10000px;
           inset-inline-end: initial;
           top: auto;
@@ -761,7 +761,7 @@ export class PageBreak extends IntersectionObserverMixin(
         simple-toolbar-button.menu-button {
           position: absolute;
           top: var(--page-break-menu-button-top, -8px);
-          right: var(--page-break-menu-button-right, 0);
+          inset-inline-end: var(--page-break-menu-button-right, 0);
           border: var(--ddd-border-xs);
           border-radius: var(--ddd-radius-circle);
           box-shadow: var(--ddd-boxShadow-sm);

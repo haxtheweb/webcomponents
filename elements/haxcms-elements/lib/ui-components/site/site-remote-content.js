@@ -37,19 +37,20 @@ class SiteRemoteContent extends HAXCMSI18NMixin(
           display: none;
         }
         :host(:not([hide-reference])) #content {
-          border-left: 10px solid #eeeeee;
-          margin-left: -10px;
+          border-inline-start: 10px solid #eeeeee;
+          margin-inline-start: -10px;
         }
         :host([breakreference]) #slot {
           display: block;
         }
         :host([breakreference]) #content {
           display: none;
-          border-left: unset;
-          margin-left: unset;
+          border-inline-start: unset;
+          margin-inline-start: unset;
         }
         :host([loading]) .loading {
-          margin: 8px 0 0 -12px;
+          margin-block: 8px 0;
+          margin-inline: -12px 0;
           font-size: 2px;
           width: 20px;
           height: 20px;
@@ -58,7 +59,8 @@ class SiteRemoteContent extends HAXCMSI18NMixin(
           position: absolute;
         }
         :host([player][loading]) .loading {
-          margin: 8px 0px 0px -12px;
+          margin-block: 8px 0px;
+          margin-inline: -12px 0px;
           font-size: 2px;
           height: 100%;
           --simple-icon-height: 100px;
@@ -68,7 +70,7 @@ class SiteRemoteContent extends HAXCMSI18NMixin(
           justify-content: center;
           position: relative;
           top: 25px;
-          left: 25px;
+          inset-inline-start: 25px;
         }
 
         :host([player][loading]) .loading simple-icon-lite {

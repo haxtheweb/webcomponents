@@ -11,6 +11,7 @@
  *   AshadRathod
  */
 import { LitElement, html, css } from "lit";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 /**
  * `post-card`
  * `sending you mail from afar, or the browser.`
@@ -23,7 +24,7 @@ const postCardLines = new URL(
 ).href;
 const entireCardBg = new URL(`./lib/assets/postcard-bg.jpg`, import.meta.url)
   .href;
-export class PostCard extends LitElement {
+export class PostCard extends I18NMixin(LitElement) {
   static get tag() {
     return "post-card";
   }
@@ -31,6 +32,7 @@ export class PostCard extends LitElement {
   constructor() {
     super();
     this.t = {
+      ...this.t,
       label: "Post Card",
       send: "To",
       receive: "From",
@@ -45,26 +47,52 @@ export class PostCard extends LitElement {
     ).href;
     this.postMarkLocations = "insert - locations - here";
 
-    if (globalThis.dispatchEvent) {
-      globalThis.dispatchEvent(
-        new CustomEvent("i18n-manager-register-element", {
-          detail: {
-            context: this,
-            namespace: "post-card",
-            localesPath:
-              new URL("./locales/post-card.es.json", import.meta.url).href +
-              "/../",
-            updateCallback: "render",
-          },
-        }),
-      );
-    }
+    // through the mixin so the manager is loaded before we register;
+    // the bare register event was lost when nothing on the page had
+    // loaded i18n-manager yet
+    this.registerLocalization({
+      context: this,
+      namespace: "post-card",
+      localesPath:
+        new URL("./locales/post-card.es.json", import.meta.url).href + "/../",
+    });
 
     setTimeout(() => {
       import("./lib/PostCardPhoto.js");
       import("./lib/PostCardStamp.js");
       import("./lib/PostCardPostmark.js");
     }, 0);
+  }
+  /**
+   * i18n-manager keeps what is registered with it: release this card while
+   * it is off the page and register it again when it comes back (the HAX
+   * editor moves elements by removing and re-adding them). Same as
+   * releaseLocalization / restoreLocalization in i18n-manager's I18NMixin.js,
+   * looked up at runtime so post-card keeps registering without importing
+   * the manager.
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    const manager =
+      globalThis.I18NManagerStore && globalThis.I18NManagerStore.instance;
+    if (this.__i18nReleased && manager) {
+      this.__i18nReleased.forEach((detail) =>
+        manager.registerLocalization(detail),
+      );
+    }
+    this.__i18nReleased = null;
+  }
+  disconnectedCallback() {
+    const manager =
+      globalThis.I18NManagerStore && globalThis.I18NManagerStore.instance;
+    if (manager && manager.deregisterLocalization && manager.elements) {
+      const details = manager.elements.filter((e) => e.context === this);
+      if (details.length) {
+        this.__i18nReleased = details;
+        manager.deregisterLocalization(this);
+      }
+    }
+    super.disconnectedCallback();
   }
   /**
    * LitElement / popular convention
@@ -163,6 +191,8 @@ export class PostCard extends LitElement {
         grid-template-rows: 150px 1fr;
       }
 
+      /* left/right in this card stay physical on purpose: the text sits on
+         the address lines and stamp area of the postcard artwork */
       .stamp {
         z-index: 3;
         grid-area: 1 / 1 / 1 / 1;

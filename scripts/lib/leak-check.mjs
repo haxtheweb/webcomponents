@@ -32,14 +32,10 @@ export const CHECKS = {
 };
 // One leak shared by every element built on a common mixin, keyed by the
 // globalThis path that grows. Gating on it would block every new element that
-// uses the mixin, so it is reported once per run as advisory, and the test
-// page releases it before counting retained instances (releaseSharedLeaks in
-// scripts/test-setup/leak-runner.js) so `retained` still sees other causes.
-// Remove an entry once its cause is fixed.
-export const SHARED_LEAKS = {
-  "I18NManagerStore.instance.elements":
-    "i18n-manager keeps the registration (and so the instance) of every I18NMixin element: registerLocalization pushes one entry per instance and nothing removes it on disconnect",
-};
+// uses the mixin, so it is reported once per run as advisory instead. Empty
+// while no such leak is known; add an entry only together with an issue for
+// its cause, and remove it once the cause is fixed.
+export const SHARED_LEAKS = {};
 
 // reported, never gating
 export const ADVISORY_CHECKS = {
