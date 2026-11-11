@@ -371,11 +371,6 @@
             },
             {
               "kind": "method",
-              "name": "elementMidViewport",
-              "description": "Only true if we are scrolling and part way through an element"
-            },
-            {
-              "kind": "method",
               "name": "replacePlaceholder",
               "parameters": [
                 {
@@ -383,31 +378,6 @@
                 }
               ],
               "description": "Replace place holder after an event has called for it in the element itself"
-            },
-            {
-              "kind": "method",
-              "name": "canTansformNode",
-              "parameters": [
-                {
-                  "name": "node",
-                  "default": "null"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "insertElementWorkflow",
-              "parameters": [
-                {
-                  "name": "_activeNode",
-                  "default": "null"
-                },
-                {
-                  "name": "_testOnly",
-                  "default": "false"
-                }
-              ],
-              "description": "Whole workflow of replacing something in place contextually.\nThis can fire for things like events needing this workflow to\ninvoke whether it's a \"convert\" event or a \"replace placeholder\" event"
             },
             {
               "kind": "field",
@@ -429,27 +399,6 @@
               "kind": "method",
               "name": "__ensureTrailingTextAffordance",
               "description": "Ensure that when the last valid child of the body is not a text\nprimitive (eg an image, video, grid-plate, or other non-text\nelement), we append a blank `<p data-hax-auto>` after it so the\nuser has an obvious way to keep typing / adding text content.\nIf left empty, this paragraph is stripped from saved output via\nthe `data-hax-auto` marker (see haxToContent); if the user types\ninto it, it's treated as normal saved paragraph content."
-            },
-            {
-              "kind": "method",
-              "name": "getAllSlotConfig",
-              "parameters": [
-                {
-                  "name": "node"
-                },
-                {
-                  "name": "grid",
-                  "type": {
-                    "text": "object"
-                  }
-                }
-              ],
-              "description": "\ngets configuration for all of given grid's slots",
-              "return": {
-                "type": {
-                  "text": "array"
-                }
-              }
             },
             {
               "kind": "method",
