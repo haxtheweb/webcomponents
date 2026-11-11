@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title}, autor: {creator}, je licencované pod {license}.",
   "permissionsBeyondScope": "Povolenia nad rámec tejto licencie sú dostupné {link}.",
   "author": "(autor)",
-  "onTheLicensingDetailsPage": "na stránke s podrobnosťami o licencii"
+  "onTheLicensingDetailsPage": "na stránke s podrobnosťami o licencii",
+  "licenseLabel": "Licencia"
 }

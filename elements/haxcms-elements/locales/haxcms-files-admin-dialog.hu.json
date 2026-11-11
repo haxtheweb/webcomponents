@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Eredeti fájlok cseréje",
   "newName": "Új név",
   "deleteAction": "Törlés",
-  "renameAction": "Átnevezés"
+  "renameAction": "Átnevezés",
+  "bulkOverwriteConfirm": "{action}: {count} fájl? Ez felülírja az eredeti fájlokat, és nem vonható vissza.",
+  "actionScale": "Átméretezés",
+  "actionRotate": "Forgatás",
+  "actionTransform": "Átalakítás",
+  "actionConvertJpg": "Átalakítás JPG-vé",
+  "actionCompress": "Tömörítés"
 }

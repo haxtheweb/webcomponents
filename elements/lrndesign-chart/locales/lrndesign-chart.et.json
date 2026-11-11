@@ -4,5 +4,8 @@
   "pieChart": "Andmed · Sektordiagramm",
   "showDataTable": "Kuva andmetabel",
   "downloadData": "Laadi andmed alla (.csv)",
-  "series": "Seeria {n}"
+  "series": "Seeria {n}",
+  "barChartLabel": "tulpdiagramm",
+  "lineChartLabel": "joondiagramm",
+  "pieChartLabel": "sektordiagramm"
 }

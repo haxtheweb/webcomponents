@@ -1,0 +1,8 @@
+{
+  "ordinalOne": "લી",
+  "ordinalTwo": "જી",
+  "ordinalFew": "જી",
+  "ordinalOther": "થી",
+  "fromTimeToTime": "{start} થી {end}",
+  "atTime": "{start} વાગ્યે"
+}

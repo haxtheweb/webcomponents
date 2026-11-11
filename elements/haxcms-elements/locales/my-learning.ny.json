@@ -129,5 +129,12 @@
   "cancel": "Siyani",
   "clearedSite": "Deta yanu yophunzirira ya {site} yachotsedwa.",
   "clearedDevice": "Deta yonse yophunzirira pa chipangizochi yachotsedwa.",
-  "thisSite": "tsambali"
+  "thisSite": "tsambali",
+  "outlineHeading": "Kupita patsogolo ndi tsamba",
+  "allPages": "Masamba onse",
+  "outlinePagesDone": "Masamba {done} mwa {total} amalizidwa",
+  "outlinePagesCount": "Masamba {count}",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% yatha",
+  "outlineComplete": "Yatha"
 }

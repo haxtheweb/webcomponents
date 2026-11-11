@@ -1,4 +1,9 @@
 {
   "audio": "Sain",
-  "openOnSpotify": "Agor ar Spotify mewn tab newydd"
+  "openOnSpotify": "Agor ar Spotify mewn tab newydd",
+  "embedTitle": "Mewnosodiad Spotify",
+  "trackEmbedTitle": "Mewnosodiad Trac Spotify",
+  "albumEmbedTitle": "Mewnosodiad Albwm Spotify",
+  "playlistEmbedTitle": "Mewnosodiad Rhestr Chwarae Spotify",
+  "artistEmbedTitle": "Mewnosodiad Artist Spotify"
 }

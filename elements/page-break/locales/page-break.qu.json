@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Kay p'anqa wichq'asqam. Uyarichiy kayninta tikranaykipaq ñawpaqta kichay.",
   "pageLockedUnlockToDelete": "Kay p'anqa wichq'asqam. Qullunaykipaq ñawpaqta kichay.",
   "pageDetails": "P'anqap willakuyninkunata",
-  "clickToUnlock": "Kichanapaq ñit'iy"
+  "clickToUnlock": "Kichanapaq ñit'iy",
+  "pageSettings": "P'anqa kamachikuykuna",
+  "editingPageSettings": "P'anqa kamachikuykunata allichachkan",
+  "published": "Karqachisqa",
+  "draft": "Borrador",
+  "locked": "Llavesqa",
+  "unlocked": "Kichasqa",
+  "noTags": "Mana etiquetakuna",
+  "oneTag": "1 etiqueta",
+  "tagCount": "{count} etiquetakuna",
+  "enterKey": "Enter"
 }

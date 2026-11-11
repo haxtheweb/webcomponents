@@ -1,5 +1,6 @@
 {
   "simulation": "شبیه‌سازی",
   "fullScreen": "تمام‌صفحه",
-  "exitFullScreen": "خروج از تمام‌صفحه"
+  "exitFullScreen": "خروج از تمام‌صفحه",
+  "player": "پخش‌کننده Unity WebGL"
 }

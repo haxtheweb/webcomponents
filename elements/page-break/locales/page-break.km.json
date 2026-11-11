@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "ទំព័រនេះត្រូវបានចាក់សោ។ សូមដោះសោជាមុនសិនដើម្បីប្ដូរស្ថានភាពបោះពុម្ពផ្សាយ។",
   "pageLockedUnlockToDelete": "ទំព័រនេះត្រូវបានចាក់សោ។ សូមដោះសោជាមុនសិនដើម្បីលុប។",
   "pageDetails": "ព័ត៌មានលម្អិតទំព័រ",
-  "clickToUnlock": "ចុចដើម្បីដោះសោ"
+  "clickToUnlock": "ចុចដើម្បីដោះសោ",
+  "pageSettings": "ការកំណត់ទំព័រ",
+  "editingPageSettings": "កំពុងកែការកំណត់ទំព័រ",
+  "published": "បានផ្សព្វផ្សាយ",
+  "draft": "សេចក្តីព្រាង",
+  "locked": "បានចាក់សោ",
+  "unlocked": "បានដោះសោ",
+  "noTags": "គ្មានស្លាក",
+  "oneTag": "1 ស្លាក",
+  "tagCount": "{count} ស្លាក",
+  "enterKey": "Enter"
 }

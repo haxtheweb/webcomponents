@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "Lambar QR ta {title}",
+  "noData": "Babu bayanan da za a nuna a matsayin lambar QR",
+  "formatNotSupported": "Ba a goyi bayan tsarin lambar QR {format} ba",
+  "noCanvas": "Wannan burauza ba za ta iya zana lambar QR ba (babu tallafin canvas)"
+}

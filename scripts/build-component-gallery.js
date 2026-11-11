@@ -624,8 +624,23 @@ ${loader.styles}
       border-bottom: 1px solid var(--hax-ui-line);
     }
 
+    /* search: a simple-fields-field in the shared HAX UI field style,
+       named by its own label (kept for assistive tech, placeholder shown) */
     .search-box {
-      background-color: var(--hax-ui-surface);
+      display: block;
+      width: 100%;
+      --simple-fields-input-max-width: 100%;
+    }
+    .search-box::part(field-main-inner) {
+      flex: 1 1 auto;
+    }
+    .search-box::part(label) {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
     }
 
     .filter-buttons {
@@ -1086,11 +1101,11 @@ ${
     <!-- Sidebar with component list -->
     <aside class="sidebar" id="sidebar" aria-label="Components">
       <div class="sidebar-header">
-        <input type="search"
-               class="hax-ui-input compact search-box"
-               placeholder="Search components"
+        <simple-fields-field class="hax-ui-simple-field compact search-box"
+               type="search"
                id="searchBox"
-               aria-label="Search components">
+               label="Search components"
+               placeholder="Search components"></simple-fields-field>
 
         <div class="filter-buttons" role="group" aria-label="Filter components">
           <button class="hax-ui-chip filter-btn" aria-pressed="true" data-filter="all" title="Show all components">
@@ -1284,7 +1299,7 @@ ${
       }
       
       // Apply search filter if there's a search query
-      const query = searchBox.value.toLowerCase().trim();
+      const query = (searchBox.value || '').toLowerCase().trim();
       if (query) {
         components = components.filter(component => 
           component.name.toLowerCase().includes(query) ||

@@ -4,5 +4,8 @@
   "pieChart": "معلومات · پای چارټ",
   "showDataTable": "د معلوماتو جدول وښایاست",
   "downloadData": "معلومات ډاونلوډ کړئ (.csv)",
-  "series": "لړۍ {n}"
+  "series": "لړۍ {n}",
+  "barChartLabel": "میلې چارټ",
+  "lineChartLabel": "کرښه چارټ",
+  "pieChartLabel": "پای چارټ"
 }

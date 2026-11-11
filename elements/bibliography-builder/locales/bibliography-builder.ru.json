@@ -4,5 +4,6 @@
   "exportCitations": "Экспорт ссылок на источники",
   "copy": "Копировать",
   "exportCitationFormat": "Формат экспорта ссылок",
-  "selectCitationFormatBelow": "Выберите формат ссылок ниже"
+  "selectCitationFormatBelow": "Выберите формат ссылок ниже",
+  "addCitationToBibliography": "Добавить цитату в библиографию"
 }

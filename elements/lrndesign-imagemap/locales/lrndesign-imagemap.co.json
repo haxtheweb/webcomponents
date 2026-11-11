@@ -1,0 +1,9 @@
+{
+  "imageMap": "Mappa d'imagine",
+  "interactive": "Interattivu",
+  "hotspot": "Puntu attivu",
+  "hotspotPosition": "{n} nant'à {total}",
+  "hotspotsExplored": "{n} nant'à {total} punti attivi esplurati",
+  "explored": "Esploratu",
+  "close": "Chjode"
+}

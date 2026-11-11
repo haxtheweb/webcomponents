@@ -1,0 +1,8 @@
+{
+  "ordinalOne": "-i",
+  "ordinalTwo": "-të",
+  "ordinalFew": "-të",
+  "ordinalOther": "-të",
+  "fromTimeToTime": "nga {start} - {end}",
+  "atTime": "në {start}"
+}

@@ -129,5 +129,12 @@
   "cancel": "Anuluj",
   "clearedSite": "Twoje dane o nauce dla witryny {site} zostały wyczyszczone.",
   "clearedDevice": "Wszystkie dane o nauce na tym urządzeniu zostały wyczyszczone.",
-  "thisSite": "ta witryna"
+  "thisSite": "ta witryna",
+  "outlineHeading": "Postęp według stron",
+  "allPages": "Wszystkie strony",
+  "outlinePagesDone": "Ukończono {done} z {total} stron",
+  "outlinePagesCount": "Strony: {count}",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "Ukończono w {percent}%",
+  "outlineComplete": "Ukończono"
 }

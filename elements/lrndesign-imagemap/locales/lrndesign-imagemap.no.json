@@ -1,0 +1,9 @@
+{
+  "imageMap": "Bildekart",
+  "interactive": "Interaktiv",
+  "hotspot": "Hotspot",
+  "hotspotPosition": "{n} av {total}",
+  "hotspotsExplored": "{n} av {total} hotspots utforsket",
+  "explored": "Utforsket",
+  "close": "Lukk"
+}

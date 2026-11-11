@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Penukaran gagal.",
   "PARAM_REQUIRED": "Nilai yang diperlukan tiada: {param}.",
   "INVALID_REQUEST": "Permintaan tidak sah.",
-  "PARAM_INVALID": "Nilai tidak sah: {param}."
+  "PARAM_INVALID": "Nilai tidak sah: {param}.",
+  "BLOCK_RATE_LIMITED": "Terlalu banyak perubahan kandungan pada tapak ini sekarang. Cuba lagi dalam {retryAfter} saat."
 }

@@ -1,0 +1,10 @@
+{
+  "github": "GitHub",
+  "repository": "Repositori",
+  "stars": "estrelles",
+  "forks": "bifurcacions",
+  "loading": "S'està carregant",
+  "viewMore": "Mostra'n més",
+  "assetNotFound": "Recurs no trobat",
+  "openOnGitHub": "Obre {org}/{repo} a GitHub"
+}

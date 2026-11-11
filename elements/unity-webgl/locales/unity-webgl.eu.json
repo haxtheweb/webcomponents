@@ -1,5 +1,6 @@
 {
   "simulation": "Simulazioa",
   "fullScreen": "Pantaila osoa",
-  "exitFullScreen": "Irten pantaila osotik"
+  "exitFullScreen": "Irten pantaila osotik",
+  "player": "Unity WebGL erreproduzitzailea"
 }

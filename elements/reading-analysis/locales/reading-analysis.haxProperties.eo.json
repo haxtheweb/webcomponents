@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Aktivaĵo",
-        "description": "Flagi pruvojn: lernantoj algluas ĉiun flageton apud ĝia pruvo. Elekti unu: lernantoj elektas la solan eltiraĵon kiu plej bone respondas la demandon."
+        "description": "Flagi pruvojn: lernantoj algluas ĉiun flageton apud ĝia pruvo. Elekti unu: lernantoj elektas la solan eltiraĵon kiu plej bone respondas la demandon.",
+        "options": {
+          "flag": "Marki pruvojn",
+          "one": "Elekti unu"
+        }
       },
       {
         "property": "unit",
         "title": "Lernantoj elektas",
-        "description": "Kion lernanto montras en la teksto. Figuroj ĉiam elekteblas."
+        "description": "Kion lernanto montras en la teksto. Figuroj ĉiam elekteblas.",
+        "options": {
+          "sentence": "Frazoj",
+          "paragraph": "Alineoj",
+          "figure": "Nur figuroj"
+        }
       },
       {
         "property": "answers",

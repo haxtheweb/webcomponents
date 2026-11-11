@@ -35,5 +35,12 @@
   "youTubeStartLoading": "Nyomja meg a lejátszást.",
   "youTubeTranscriptLabel": "Az átirat a lejátszás indulásakor töltődik be.",
   "audioDescriptionLabel": "Hangalámondásos leírás",
-  "openOnYouTube": "Megnyitás a YouTube-on"
+  "openOnYouTube": "Megnyitás a YouTube-on",
+  "interactiveLabel": "interaktív",
+  "layoutLabel": "Elrendezés",
+  "sideLabel": "Oldalt",
+  "belowLabel": "Alul",
+  "leftLabel": "Balra",
+  "rightLabel": "Jobbra",
+  "hideTranscriptLabel": "Átirat elrejtése"
 }

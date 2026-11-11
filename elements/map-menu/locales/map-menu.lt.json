@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Puslapis nepaskelbtas",
   "progressDone": "Atlikta",
   "progressInProgress": "Vykdoma",
-  "progressVisited": "Aplankyta"
+  "progressVisited": "Aplankyta",
+  "progressPercentComplete": "Užbaigta {percent} %",
+  "progressComplete": "Užbaigta"
 }

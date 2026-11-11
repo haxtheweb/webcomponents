@@ -3,5 +3,8 @@
   "openInNewTab": "PDF نویں ٹیب وچ کھولو",
   "downloadPdf": "PDF ڈاؤنلوڈ کرو",
   "fullScreen": "پوری سکرین",
-  "exitFullScreen": "پوری سکرین توں باہر نکلو"
+  "exitFullScreen": "پوری سکرین توں باہر نکلو",
+  "notSupported": "لگدا اے تہاڈا ویب براؤزر PDF فائلاں وکھان لئی ترتیب نہیں دتا گیا۔ کوئی گل نہیں، بس",
+  "notSupportedLink": "PDF فائل ڈاؤن لوڈ کرن لئی ایتھے کلک کرو۔",
+  "download": "ڈاؤن لوڈ"
 }

@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "ڌماڪي جو آواز هلائڻ لاءِ ڪلڪ ڪريو يا مائوس رکو",
+  "soundDisabled": "بصري ڌماڪي جو اثر (آواز بند)",
+  "explosionAnimation": "ڌماڪي جي اينيميشن",
+  "explosionAriaLabel": "ڌماڪي جي اينيميشن {state} {sound}. ٽوگل ڪرڻ لاءِ ڪلڪ ڪريو.",
+  "playing": "هلي رهي آهي",
+  "stopped": "بند ٿي وئي",
+  "withSound": "آواز سان",
+  "muted": "(خاموش)"
+}

@@ -4,5 +4,6 @@
   "exportCitations": "Цитаталарды экспорттоо",
   "copy": "Көчүрүү",
   "exportCitationFormat": "Цитата форматын экспорттоо",
-  "selectCitationFormatBelow": "Төмөндөн цитата форматын тандаңыз"
+  "selectCitationFormatBelow": "Төмөндөн цитата форматын тандаңыз",
+  "addCitationToBibliography": "Библиографияга цитата кошуу"
 }

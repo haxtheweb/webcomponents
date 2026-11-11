@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "বিস্ফোরণের শব্দ বাজাতে ক্লিক করুন বা কার্সর রাখুন",
+  "soundDisabled": "দৃশ্যমান বিস্ফোরণ প্রভাব (শব্দ বন্ধ)",
+  "explosionAnimation": "বিস্ফোরণের অ্যানিমেশন",
+  "explosionAriaLabel": "বিস্ফোরণের অ্যানিমেশন {state} {sound}। পরিবর্তন করতে ক্লিক করুন।",
+  "playing": "চলছে",
+  "stopped": "থেমে আছে",
+  "withSound": "শব্দসহ",
+  "muted": "(নিঃশব্দ)"
+}

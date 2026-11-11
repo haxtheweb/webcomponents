@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "A conversión fallou.",
   "PARAM_REQUIRED": "Falta un valor obrigatorio: {param}.",
   "INVALID_REQUEST": "Solicitude non válida.",
-  "PARAM_INVALID": "Valor non válido: {param}."
+  "PARAM_INVALID": "Valor non válido: {param}.",
+  "BLOCK_RATE_LIMITED": "Hai demasiados cambios de contido neste sitio agora mesmo. Téntao de novo en {retryAfter} segundos."
 }

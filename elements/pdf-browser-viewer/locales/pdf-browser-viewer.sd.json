@@ -3,5 +3,8 @@
   "openInNewTab": "PDF نئين ٽيب ۾ کوليو",
   "downloadPdf": "PDF ڊائونلوڊ ڪريو",
   "fullScreen": "پوري اسڪرين",
-  "exitFullScreen": "پوري اسڪرين مان نڪرو"
+  "exitFullScreen": "پوري اسڪرين مان نڪرو",
+  "notSupported": "لڳي ٿو توهان جو ويب برائوزر PDF فائلون ڏيکارڻ لاءِ ترتيب ڏنل ناهي. ڪو مسئلو ناهي، رڳو",
+  "notSupportedLink": "PDF فائل ڊائونلوڊ ڪرڻ لاءِ هتي ڪلڪ ڪريو.",
+  "download": "ڊائونلوڊ ڪريو"
 }

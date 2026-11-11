@@ -1,5 +1,6 @@
 {
   "simulation": "Kwaikwayo",
   "fullScreen": "Cikakken allo",
-  "exitFullScreen": "Fita daga cikakken allo"
+  "exitFullScreen": "Fita daga cikakken allo",
+  "player": "Na'urar kunna Unity WebGL"
 }

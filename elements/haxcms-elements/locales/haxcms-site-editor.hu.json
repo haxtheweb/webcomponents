@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Nem sikerült végrehajtani a műveletet ({status})",
   "normalizedPageSlugs": "{count} oldal slugja normalizálva",
   "createdTitle": "{title} létrehozva!",
-  "processing": "Feldolgozás"
+  "processing": "Feldolgozás",
+  "saveTimedOut": "A mentés időtúllépés miatt megszakadt: a szerver nem válaszolt. A módosításaid itt megmaradnak, de a szerver még befejezheti a mentésüket."
 }

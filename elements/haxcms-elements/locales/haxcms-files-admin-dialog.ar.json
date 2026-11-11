@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "استبدال الملفات الأصلية",
   "newName": "الاسم الجديد",
   "deleteAction": "حذف",
-  "renameAction": "إعادة التسمية"
+  "renameAction": "إعادة التسمية",
+  "bulkOverwriteConfirm": "{action} {count} ملفات؟ سيؤدي هذا إلى استبدال الملفات الأصلية ولا يمكن التراجع عنه.",
+  "actionScale": "تغيير الحجم",
+  "actionRotate": "تدوير",
+  "actionTransform": "تحويل",
+  "actionConvertJpg": "التحويل إلى JPG",
+  "actionCompress": "ضغط"
 }

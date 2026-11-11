@@ -4,5 +4,6 @@
   "exportCitations": "Дәйексөздерді экспорттау",
   "copy": "Көшіру",
   "exportCitationFormat": "Дәйексөз пішімін экспорттау",
-  "selectCitationFormatBelow": "Төменнен дәйексөз пішімін таңдаңыз"
+  "selectCitationFormatBelow": "Төменнен дәйексөз пішімін таңдаңыз",
+  "addCitationToBibliography": "Библиографияға дәйексөз қосу"
 }

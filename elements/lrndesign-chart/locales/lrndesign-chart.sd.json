@@ -4,5 +4,8 @@
   "pieChart": "ڊيٽا · پائي چارٽ",
   "showDataTable": "ڊيٽا جدول ڏيکاريو",
   "downloadData": "ڊيٽا ڊائونلوڊ ڪريو (.csv)",
-  "series": "سلسلو {n}"
+  "series": "سلسلو {n}",
+  "barChartLabel": "بار چارٽ",
+  "lineChartLabel": "لائين چارٽ",
+  "pieChartLabel": "پائي چارٽ"
 }

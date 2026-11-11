@@ -3,5 +3,8 @@
   "openInNewTab": "Apri il PDF in una nuova scheda",
   "downloadPdf": "Scarica il PDF",
   "fullScreen": "Schermo intero",
-  "exitFullScreen": "Esci dallo schermo intero"
+  "exitFullScreen": "Esci dallo schermo intero",
+  "notSupported": "Sembra che il tuo browser web non sia configurato per visualizzare i file PDF. Nessun problema, basta",
+  "notSupportedLink": "fare clic qui per scaricare il file PDF.",
+  "download": "Scarica"
 }

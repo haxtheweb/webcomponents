@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "Koodu QR maka {title}",
+  "noData": "Enweghị data iji gosi dị ka koodu QR",
+  "formatNotSupported": "Ahụghị nkwado maka usoro koodu QR {format}",
+  "noCanvas": "Ihe nchọgharị a enweghị ike ise koodu QR (enweghị nkwado canvas)"
+}

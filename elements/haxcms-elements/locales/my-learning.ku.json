@@ -129,5 +129,12 @@
   "cancel": "Betal bike",
   "clearedSite": "Daneyên fêrbûna te yên ji bo {site} hatin paqijkirin.",
   "clearedDevice": "Hemû daneyên fêrbûnê yên li ser vê cîhazê hatin paqijkirin.",
-  "thisSite": "ev malper"
+  "thisSite": "ev malper",
+  "outlineHeading": "Pêşveçûn li gorî rûpelan",
+  "allPages": "Hemû rûpel",
+  "outlinePagesDone": "{done} ji {total} rûpelan qediya",
+  "outlinePagesCount": "{count} rûpel",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% qediya",
+  "outlineComplete": "Qediya"
 }

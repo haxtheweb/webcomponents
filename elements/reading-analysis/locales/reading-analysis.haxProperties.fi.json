@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Tehtävä",
-        "description": "Merkitse todisteet: oppijat kiinnittävät kunkin lipun sen todisteen viereen. Valitse yksi: oppijat valitsevat sen yhden kohdan, joka vastaa kysymykseen parhaiten."
+        "description": "Merkitse todisteet: oppijat kiinnittävät kunkin lipun sen todisteen viereen. Valitse yksi: oppijat valitsevat sen yhden kohdan, joka vastaa kysymykseen parhaiten.",
+        "options": {
+          "flag": "Merkitse todisteet",
+          "one": "Valitse yksi"
+        }
       },
       {
         "property": "unit",
         "title": "Oppijat valitsevat",
-        "description": "Mitä oppija osoittaa tekstissä. Kuvia voi aina valita."
+        "description": "Mitä oppija osoittaa tekstissä. Kuvia voi aina valita.",
+        "options": {
+          "sentence": "Lauseet",
+          "paragraph": "Kappaleet",
+          "figure": "Vain kuvat"
+        }
       },
       {
         "property": "answers",

@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "د وېب برخې د اسنادو پلیر"
+    "title": "د وېب برخې د اسنادو پلیر",
+    "description": ""
   },
   "settings": {
     "configure": [

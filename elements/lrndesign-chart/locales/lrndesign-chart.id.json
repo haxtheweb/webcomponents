@@ -4,5 +4,8 @@
   "pieChart": "Data · Diagram lingkaran",
   "showDataTable": "Tampilkan tabel data",
   "downloadData": "Unduh data (.csv)",
-  "series": "Seri {n}"
+  "series": "Seri {n}",
+  "barChartLabel": "diagram batang",
+  "lineChartLabel": "diagram garis",
+  "pieChartLabel": "diagram lingkaran"
 }

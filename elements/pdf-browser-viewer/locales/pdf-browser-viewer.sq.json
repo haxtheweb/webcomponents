@@ -3,5 +3,8 @@
   "openInNewTab": "Hape PDF-në në një skedë të re",
   "downloadPdf": "Shkarko PDF-në",
   "fullScreen": "Ekran i plotë",
-  "exitFullScreen": "Dil nga ekrani i plotë"
+  "exitFullScreen": "Dil nga ekrani i plotë",
+  "notSupported": "Duket se shfletuesi yt nuk është konfiguruar për të shfaqur skedarë PDF. Pa merak, thjesht",
+  "notSupportedLink": "kliko këtu për të shkarkuar skedarin PDF.",
+  "download": "Shkarko"
 }

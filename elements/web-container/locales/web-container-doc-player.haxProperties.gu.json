@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "વેબ કમ્પોનન્ટ દસ્તાવેજ પ્લેયર"
+    "title": "વેબ કમ્પોનન્ટ દસ્તાવેજ પ્લેયર",
+    "description": ""
   },
   "settings": {
     "configure": [

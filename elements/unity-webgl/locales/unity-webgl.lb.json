@@ -1,5 +1,6 @@
 {
   "simulation": "Simulatioun",
   "fullScreen": "Vollbild",
-  "exitFullScreen": "Vollbild verloossen"
+  "exitFullScreen": "Vollbild verloossen",
+  "player": "Unity-WebGL-Player"
 }

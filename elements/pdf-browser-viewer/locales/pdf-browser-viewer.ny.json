@@ -3,5 +3,8 @@
   "openInNewTab": "Tsegulani PDF mu tabu yatsopano",
   "downloadPdf": "Tsitsani PDF",
   "fullScreen": "Sikirini yonse",
-  "exitFullScreen": "Tulukani pa sikirini yonse"
+  "exitFullScreen": "Tulukani pa sikirini yonse",
+  "notSupported": "Zikuoneka kuti msakatuli wanu sunakonzedwe kuti uonetse mafayilo a PDF. Palibe vuto, ingodinani",
+  "notSupportedLink": "apa kuti mutsitse fayilo ya PDF.",
+  "download": "Tsitsani"
 }

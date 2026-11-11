@@ -15,6 +15,12 @@
         "title": "Kurss",
         "description": "Kurss, kuram paredzēts šis atskaņošanas saraksts (kursa identifikators vai URL)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Multivide",
+        "description": "Atskaņošanas saraksta video un audio. Šeit netiek rediģēts: lapas struktūra to izmanto, lai zinātu, kurus blokus var tajā nomest."
+      }
     ]
   }
 }

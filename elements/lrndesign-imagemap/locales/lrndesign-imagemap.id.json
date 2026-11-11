@@ -1,0 +1,9 @@
+{
+  "imageMap": "Peta gambar",
+  "interactive": "Interaktif",
+  "hotspot": "Titik aktif",
+  "hotspotPosition": "{n} dari {total}",
+  "hotspotsExplored": "{n} dari {total} titik aktif dijelajahi",
+  "explored": "Dijelajahi",
+  "close": "Tutup"
+}

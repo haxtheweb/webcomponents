@@ -3,5 +3,8 @@
   "openInNewTab": "Öppna PDF:en i en ny flik",
   "downloadPdf": "Ladda ned PDF:en",
   "fullScreen": "Helskärm",
-  "exitFullScreen": "Avsluta helskärm"
+  "exitFullScreen": "Avsluta helskärm",
+  "notSupported": "Det verkar som att din webbläsare inte är konfigurerad för att visa PDF-filer. Ingen fara, bara",
+  "notSupportedLink": "klicka här för att ladda ner PDF-filen.",
+  "download": "Ladda ner"
 }

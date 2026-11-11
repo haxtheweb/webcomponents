@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{creator} による {title} は {license} の下に提供されています。",
   "permissionsBeyondScope": "このライセンスの範囲を超える許可は{link}で確認できます。",
   "author": "(作成者)",
-  "onTheLicensingDetailsPage": "ライセンス詳細ページ"
+  "onTheLicensingDetailsPage": "ライセンス詳細ページ",
+  "licenseLabel": "ライセンス"
 }

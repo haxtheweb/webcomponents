@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Il-paġna mhix ippubblikata",
   "progressDone": "Lest",
   "progressInProgress": "Għaddej",
-  "progressVisited": "Miżjur"
+  "progressVisited": "Miżjur",
+  "progressPercentComplete": "{percent}% komplut",
+  "progressComplete": "Komplut"
 }

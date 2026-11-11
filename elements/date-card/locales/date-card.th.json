@@ -1,0 +1,8 @@
+{
+  "ordinalOne": "",
+  "ordinalTwo": "",
+  "ordinalFew": "",
+  "ordinalOther": "",
+  "fromTimeToTime": "ตั้งแต่ {start} - {end}",
+  "atTime": "เวลา {start}"
+}

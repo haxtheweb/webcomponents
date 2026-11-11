@@ -19,5 +19,13 @@
   "copyCode": "ਕੋਡ ਕਾਪੀ ਕਰੋ",
   "copied": "ਕਾਪੀ ਹੋ ਗਿਆ!",
   "invalidCode": "ਇਹ ਕਿਰਦਾਰ ਕੋਡ ਨਹੀਂ ਹੈ।",
-  "preview": "ਕਿਰਦਾਰ ਝਲਕ"
+  "preview": "ਕਿਰਦਾਰ ਝਲਕ",
+  "previous": "ਪਿਛਲਾ {name}",
+  "next": "ਅਗਲਾ {name}",
+  "variant": "{total} ਵਿੱਚੋਂ {current}",
+  "save": "ਸੰਭਾਲੋ",
+  "cancel": "ਰੱਦ ਕਰੋ",
+  "unsavedChanges": "ਨਾ-ਸੰਭਾਲੀਆਂ ਤਬਦੀਲੀਆਂ",
+  "noUnsavedChanges": "ਕੋਈ ਨਾ-ਸੰਭਾਲੀ ਤਬਦੀਲੀ ਨਹੀਂ",
+  "codeHelp": "ਕਿਰਦਾਰ ਲੋਡ ਕਰਨ ਲਈ ਕੋਡ ਪੇਸਟ ਕਰੋ, ਜਾਂ ਇਸਨੂੰ ਕਿਤੇ ਵੀ ਵਰਤਣ ਲਈ ਕਾਪੀ ਕਰੋ।"
 }

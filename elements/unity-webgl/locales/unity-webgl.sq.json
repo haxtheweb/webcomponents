@@ -1,5 +1,6 @@
 {
   "simulation": "Simulim",
   "fullScreen": "Ekran i plotë",
-  "exitFullScreen": "Dil nga ekrani i plotë"
+  "exitFullScreen": "Dil nga ekrani i plotë",
+  "player": "Lojtari Unity WebGL"
 }

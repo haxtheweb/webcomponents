@@ -1,0 +1,9 @@
+{
+  "imageMap": "Görüntü haritası",
+  "interactive": "Etkileşimli",
+  "hotspot": "Etkin nokta",
+  "hotspotPosition": "{n} / {total}",
+  "hotspotsExplored": "{total} etkin noktanın {n} tanesi keşfedildi",
+  "explored": "Keşfedildi",
+  "close": "Kapat"
+}

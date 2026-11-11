@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Bikirtîne an bi mişkê li ser rawestîne da ku dengê teqînê lê bidî",
+  "soundDisabled": "Bandora dîtbarî ya teqînê (deng girtî ye)",
+  "explosionAnimation": "anîmasyona teqînê",
+  "explosionAriaLabel": "Anîmasyona teqînê {state} {sound}. Ji bo guhertinê bikirtîne.",
+  "playing": "tê lêdan",
+  "stopped": "rawestandî",
+  "withSound": "bi deng",
+  "muted": "(bêdeng)"
+}

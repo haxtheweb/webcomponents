@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Zëvendëso skedarët origjinalë",
   "newName": "Emër i ri",
   "deleteAction": "Fshi",
-  "renameAction": "Riemërto"
+  "renameAction": "Riemërto",
+  "bulkOverwriteConfirm": "{action} {count} skedarë? Kjo zëvendëson skedarët origjinalë dhe nuk mund të zhbëhet.",
+  "actionScale": "Ndrysho përmasat",
+  "actionRotate": "Rrotullo",
+  "actionTransform": "Transformo",
+  "actionConvertJpg": "Konverto në JPG",
+  "actionCompress": "Ngjeshe"
 }

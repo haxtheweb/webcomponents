@@ -1,0 +1,8 @@
+{
+  "ordinalOne": "هين",
+  "ordinalTwo": "هين",
+  "ordinalFew": "هين",
+  "ordinalOther": "هين",
+  "fromTimeToTime": "{start} کان {end} تائين",
+  "atTime": "{start} تي"
+}

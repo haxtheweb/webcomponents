@@ -19,5 +19,13 @@
   "copyCode": "Copia el codi",
   "copied": "Copiat!",
   "invalidCode": "Això no és un codi de personatge.",
-  "preview": "Previsualització del personatge"
+  "preview": "Previsualització del personatge",
+  "previous": "{name} anterior",
+  "next": "{name} següent",
+  "variant": "{current} de {total}",
+  "save": "Desa",
+  "cancel": "Cancel·la",
+  "unsavedChanges": "Canvis sense desar",
+  "noUnsavedChanges": "Cap canvi sense desar",
+  "codeHelp": "Enganxa un codi per carregar un personatge, o copia aquest per fer-lo servir on vulguis."
 }

@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Smelltu eða færðu bendil yfir til að spila sprengingarhljóð",
+  "soundDisabled": "Sjónræn sprengiáhrif (hljóð óvirkt)",
+  "explosionAnimation": "sprengingarhreyfimynd",
+  "explosionAriaLabel": "Sprengingarhreyfimynd {state} {sound}. Smelltu til að víxla.",
+  "playing": "í spilun",
+  "stopped": "stöðvuð",
+  "withSound": "með hljóði",
+  "muted": "(hljóð af)"
+}

@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Wadhah NodeJS"
+    "title": "Wadhah NodeJS",
+    "description": ""
   },
   "settings": {
     "configure": [

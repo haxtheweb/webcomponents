@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "A ti ti ojú-ìwé yìí. Ṣí i ná kí o tó yí ipò ìtẹ̀jáde padà.",
   "pageLockedUnlockToDelete": "A ti ti ojú-ìwé yìí. Ṣí i ná kí o tó pa á rẹ́.",
   "pageDetails": "Àwọn àlàyé ojú ìwé",
-  "clickToUnlock": "Tẹ láti ṣí"
+  "clickToUnlock": "Tẹ láti ṣí",
+  "pageSettings": "Àwọn ètò ojú-ìwé",
+  "editingPageSettings": "Ń ṣàtúnṣe àwọn ètò ojú-ìwé",
+  "published": "A ti tẹ̀ jáde",
+  "draft": "Àtẹ̀jáde ìṣáájú",
+  "locked": "A ti tì í",
+  "unlocked": "A kò tì í",
+  "noTags": "Kò sí àmì",
+  "oneTag": "Àmì 1",
+  "tagCount": "àmì {count}",
+  "enterKey": "Enter"
 }

@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "无法完成操作（{status}）",
   "normalizedPageSlugs": "已规范化 {count} 个页面别名",
   "createdTitle": "已创建 {title}！",
-  "processing": "处理中"
+  "processing": "处理中",
+  "saveTimedOut": "保存超时：服务器没有响应。你的更改保留在此处，但服务器可能仍会完成保存。"
 }

@@ -1,4 +1,9 @@
 {
   "audio": "Zvuk",
-  "openOnSpotify": "Otvori na Spotifyju u novoj kartici"
+  "openOnSpotify": "Otvori na Spotifyju u novoj kartici",
+  "embedTitle": "Spotify ugrađeni sadržaj",
+  "trackEmbedTitle": "Spotify ugrađena skladba",
+  "albumEmbedTitle": "Spotify ugrađeni album",
+  "playlistEmbedTitle": "Spotify ugrađeni popis za reprodukciju",
+  "artistEmbedTitle": "Spotify ugrađeni izvođač"
 }

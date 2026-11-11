@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Veebikomponendi dokumentatsiooni mängija"
+    "title": "Veebikomponendi dokumentatsiooni mängija",
+    "description": ""
   },
   "settings": {
     "configure": [

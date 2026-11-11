@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Konversi gagal.",
   "PARAM_REQUIRED": "Nilai wajib tidak ada: {param}.",
   "INVALID_REQUEST": "Permintaan tidak valid.",
-  "PARAM_INVALID": "Nilai tidak valid: {param}."
+  "PARAM_INVALID": "Nilai tidak valid: {param}.",
+  "BLOCK_RATE_LIMITED": "Terlalu banyak perubahan konten di situs ini saat ini. Coba lagi dalam {retryAfter} detik."
 }

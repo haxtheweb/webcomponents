@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title}, awtory {creator}, {license} boýunça ygtyýarlandyrylan.",
   "permissionsBeyondScope": "Bu ygtyýarnamanyň çäginden daşary rugsatlar {link} elýeterli.",
   "author": "(awtor)",
-  "onTheLicensingDetailsPage": "ygtyýarnama jikme-jiklikleri sahypasynda"
+  "onTheLicensingDetailsPage": "ygtyýarnama jikme-jiklikleri sahypasynda",
+  "licenseLabel": "Lisenziýa"
 }

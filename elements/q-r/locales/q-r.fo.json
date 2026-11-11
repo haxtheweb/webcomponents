@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "QR kota fyri {title}",
+  "noData": "Eingi dáta at vísa sum QR kotu",
+  "formatNotSupported": "QR kotusniðið {format} er ikki stuðlað",
+  "noCanvas": "Hesin kagarin kann ikki teikna QR kotuna (eingin canvas-stuðul)"
+}

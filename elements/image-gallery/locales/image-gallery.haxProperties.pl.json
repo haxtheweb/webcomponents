@@ -22,6 +22,12 @@
         "title": "Aktywny indeks",
         "description": "Indeks obrazu, od którego zaczyna się tryb galerii."
       }
+    ],
+    "developer": [
+      {
+        "title": "Obrazy",
+        "description": "Obrazy w galerii. Nie edytuje się tutaj: struktura strony używa tego, aby wiedzieć, które bloki można do niej upuścić."
+      }
     ]
   }
 }

@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title}, muallif: {creator}, {license} litsenziyasi asosida tarqatiladi.",
   "permissionsBeyondScope": "Ushbu litsenziya doirasidan tashqari ruxsatlar {link} mavjud.",
   "author": "(muallif)",
-  "onTheLicensingDetailsPage": "litsenziya tafsilotlari sahifasida"
+  "onTheLicensingDetailsPage": "litsenziya tafsilotlari sahifasida",
+  "licenseLabel": "Litsenziya"
 }

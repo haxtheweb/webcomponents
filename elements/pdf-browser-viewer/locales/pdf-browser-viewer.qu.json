@@ -3,5 +3,8 @@
   "openInNewTab": "PDFta musuq ñawpa p'anqapi kichay",
   "downloadPdf": "PDF uraykachiy",
   "fullScreen": "Hunt'a pantalla",
-  "exitFullScreen": "Hunt'a pantallamanta lluqsiy"
+  "exitFullScreen": "Hunt'a pantallamanta lluqsiy",
+  "notSupported": "Rikch'akun navegadorniykiqa mana PDF willaykunata rikuchinapaq churasqachu. Ama llakikuychu, kayllata ruway:",
+  "notSupportedLink": "PDF willayta uraykachinapaq kaypi click ruway.",
+  "download": "Uraykachiy"
 }

@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "이 페이지는 잠겨 있습니다. 게시 상태를 변경하려면 먼저 잠금을 해제하세요.",
   "pageLockedUnlockToDelete": "이 페이지는 잠겨 있습니다. 삭제하려면 먼저 잠금을 해제하세요.",
   "pageDetails": "페이지 세부 정보",
-  "clickToUnlock": "잠금 해제하려면 클릭"
+  "clickToUnlock": "잠금 해제하려면 클릭",
+  "pageSettings": "페이지 설정",
+  "editingPageSettings": "페이지 설정 편집 중",
+  "published": "게시됨",
+  "draft": "초안",
+  "locked": "잠김",
+  "unlocked": "잠금 해제됨",
+  "noTags": "태그 없음",
+  "oneTag": "태그 1개",
+  "tagCount": "태그 {count}개",
+  "enterKey": "Enter"
 }

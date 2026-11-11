@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Toimingut ei õnnestunud lõpetada ({status})",
   "normalizedPageSlugs": "Normaliseeriti {count} lehe slugi",
   "createdTitle": "{title} loodud!",
-  "processing": "Töötlemine"
+  "processing": "Töötlemine",
+  "saveTimedOut": "Salvestamine aegus: server ei vastanud. Sinu muudatused säilivad siin, kuid server võib need siiski salvestada."
 }

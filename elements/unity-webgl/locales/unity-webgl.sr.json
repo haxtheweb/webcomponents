@@ -1,5 +1,6 @@
 {
   "simulation": "Симулација",
   "fullScreen": "Цео екран",
-  "exitFullScreen": "Изађи из приказа преко целог екрана"
+  "exitFullScreen": "Изађи из приказа преко целог екрана",
+  "player": "Unity WebGL плејер"
 }

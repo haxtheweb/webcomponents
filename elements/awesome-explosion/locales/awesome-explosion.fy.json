@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Klikje of hâld de oanwizer oer it elemint om it eksploazjegeluid ôf te spyljen",
+  "soundDisabled": "Fisueel eksploazje-effekt (lûd útskeakele)",
+  "explosionAnimation": "eksploazje-animaasje",
+  "explosionAriaLabel": "Eksploazje-animaasje {state} {sound}. Klikje om te wikseljen.",
+  "playing": "spilet",
+  "stopped": "stoppe",
+  "withSound": "mei lûd",
+  "muted": "(dôfstom)"
+}

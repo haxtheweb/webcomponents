@@ -1,0 +1,10 @@
+{
+  "github": "GitHub",
+  "repository": "المستودع",
+  "stars": "نجوم",
+  "forks": "تفرعات",
+  "loading": "جارٍ التحميل",
+  "viewMore": "عرض المزيد",
+  "assetNotFound": "لم يتم العثور على الأصل",
+  "openOnGitHub": "فتح {org}/{repo} على GitHub"
+}

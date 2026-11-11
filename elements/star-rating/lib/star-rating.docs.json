@@ -19,7 +19,7 @@
   "import": "@haxtheweb/star-rating/star-rating.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/star-rating/star-rating.js",
   "install": "npm i @haxtheweb/star-rating",
-  "demoHtml": "",
+  "demoHtml": "<star-rating></star-rating>",
   "attributes": [
     {
       "name": "score",
@@ -139,9 +139,16 @@
           "inputMethod": "boolean"
         }
       ]
-    }
+    },
+    "demoSchema": [
+      {
+        "tag": "star-rating",
+        "properties": {},
+        "content": ""
+      }
+    ]
   },
-  "surfaceHash": "7e300f987715",
+  "surfaceHash": "d8bafb14b0d9",
   "walkthroughs": [
     {
       "id": "",

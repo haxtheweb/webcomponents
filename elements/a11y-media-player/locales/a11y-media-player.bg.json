@@ -35,5 +35,12 @@
   "youTubeStartLoading": "",
   "youTubeTranscriptLabel": "",
   "audioDescriptionLabel": "Аудиоописание",
-  "openOnYouTube": "Отваряне в YouTube"
+  "openOnYouTube": "Отваряне в YouTube",
+  "interactiveLabel": "интерактивен",
+  "layoutLabel": "Оформление",
+  "sideLabel": "Отстрани",
+  "belowLabel": "Отдолу",
+  "leftLabel": "Отляво",
+  "rightLabel": "Отдясно",
+  "hideTranscriptLabel": "Скриване на транскрипцията"
 }

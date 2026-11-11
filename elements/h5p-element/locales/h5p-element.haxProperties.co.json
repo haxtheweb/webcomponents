@@ -1,13 +1,20 @@
 {
   "gizmo": {
     "title": "H5P",
-    "description": "Involucru H5P per caricà è prisentà schedarii .h5p"
+    "description": "Leghje u cuntenutu interattivu H5P da un schedariu .h5p caricatu, senza bisognu di un servitore H5P"
   },
   "settings": {
     "configure": [
       {
         "slot": "",
-        "description": "Codice d'incrustazione iframe H5P"
+        "description": "Caricate o cullegate un schedariu .h5p. Hè sdruttu in u navigatore; un servitore H5P ùn hè micca necessariu.",
+        "title": "Schedariu H5P"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Codice d'integrazione iframe anticu",
+        "description": "Solu per u cuntenutu anticu chì integra un iframe H5P d'un altru situ. Lasciate viotu quandu un schedariu .h5p hè definitu sopra."
       }
     ]
   }

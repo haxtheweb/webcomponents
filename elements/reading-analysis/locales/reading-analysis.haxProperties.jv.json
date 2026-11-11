@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Kegiatan",
-        "description": "Tandhani bukti: siswa nempelaké saben gendéra ing sandhingé buktiné. Pilih siji: siswa milih siji bagéan sing paling pas mangsuli pitakonan."
+        "description": "Tandhani bukti: siswa nempelaké saben gendéra ing sandhingé buktiné. Pilih siji: siswa milih siji bagéan sing paling pas mangsuli pitakonan.",
+        "options": {
+          "flag": "Tandhani bukti",
+          "one": "Pilih siji"
+        }
       },
       {
         "property": "unit",
         "title": "Siswa milih",
-        "description": "Apa sing dituduhaké siswa ing wacan. Gambar tansah bisa dipilih."
+        "description": "Apa sing dituduhaké siswa ing wacan. Gambar tansah bisa dipilih.",
+        "options": {
+          "sentence": "Ukara",
+          "paragraph": "Paragraf",
+          "figure": "Gambar wae"
+        }
       },
       {
         "property": "answers",

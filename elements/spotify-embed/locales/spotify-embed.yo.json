@@ -1,4 +1,9 @@
 {
   "audio": "Ohùn",
-  "openOnSpotify": "Ṣí lórí Spotify ní táàbù tuntun"
+  "openOnSpotify": "Ṣí lórí Spotify ní táàbù tuntun",
+  "embedTitle": "Ìfisíbẹ̀ Spotify",
+  "trackEmbedTitle": "Ìfisíbẹ̀ orin Spotify",
+  "albumEmbedTitle": "Ìfisíbẹ̀ àlùbọ́mù Spotify",
+  "playlistEmbedTitle": "Ìfisíbẹ̀ àtòjọ orin Spotify",
+  "artistEmbedTitle": "Ìfisíbẹ̀ olórin Spotify"
 }

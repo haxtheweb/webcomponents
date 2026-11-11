@@ -129,5 +129,12 @@
   "cancel": "Zrušit",
   "clearedSite": "Vaše data o učení pro {site} byla vymazána.",
   "clearedDevice": "Všechna data o učení v tomto zařízení byla vymazána.",
-  "thisSite": "tento web"
+  "thisSite": "tento web",
+  "outlineHeading": "Postup podle stránek",
+  "allPages": "Všechny stránky",
+  "outlinePagesDone": "Hotovo {done} z {total} stránek",
+  "outlinePagesCount": "Stránek: {count}",
+  "outlinePercent": "{percent} %",
+  "outlinePercentComplete": "Dokončeno {percent} %",
+  "outlineComplete": "Dokončeno"
 }

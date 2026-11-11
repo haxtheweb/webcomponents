@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Klik eller hold musen over for at afspille eksplosionslyd",
+  "soundDisabled": "Visuel eksplosionseffekt (lyd slået fra)",
+  "explosionAnimation": "eksplosionsanimation",
+  "explosionAriaLabel": "Eksplosionsanimation {state} {sound}. Klik for at skifte.",
+  "playing": "afspilles",
+  "stopped": "stoppet",
+  "withSound": "med lyd",
+  "muted": "(lydløs)"
+}

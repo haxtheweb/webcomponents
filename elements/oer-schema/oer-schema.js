@@ -116,7 +116,6 @@ class OerSchemaElement extends SchemaBehaviors(LitElement) {
             property: "typeof",
             title: "Schema typeof",
             inputMethod: "select",
-            allowNull: true,
             options: oerSchema.types,
           },
           {
@@ -124,7 +123,6 @@ class OerSchemaElement extends SchemaBehaviors(LitElement) {
             title: "Schema property",
             description: "The OER Schema property this represents",
             inputMethod: "select",
-            allowNull: true,
             options: {
               name: "name",
               additionalType: "additionalType",
@@ -166,6 +164,13 @@ class OerSchemaElement extends SchemaBehaviors(LitElement) {
       saveOptions: {
         unsetAttributes: ["_oerlink"],
       },
+      demoSchema: [
+        {
+          tag: "oer-schema",
+          properties: {},
+          content: "",
+        },
+      ],
     };
   }
   _generateforComponentLink(_source) {

@@ -1,4 +1,9 @@
 {
   "audio": "آڈیو",
-  "openOnSpotify": "Spotify پر نئے ٹیب میں کھولیں"
+  "openOnSpotify": "Spotify پر نئے ٹیب میں کھولیں",
+  "embedTitle": "Spotify ایمبیڈ",
+  "trackEmbedTitle": "Spotify ٹریک ایمبیڈ",
+  "albumEmbedTitle": "Spotify البم ایمبیڈ",
+  "playlistEmbedTitle": "Spotify پلے لسٹ ایمبیڈ",
+  "artistEmbedTitle": "Spotify فنکار ایمبیڈ"
 }

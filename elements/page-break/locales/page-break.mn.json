@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Энэ хуудас түгжигдсэн байна. Нийтлэх төлөвийг өөрчлөхийн тулд эхлээд түгжээг нээнэ үү.",
   "pageLockedUnlockToDelete": "Энэ хуудас түгжигдсэн байна. Устгахын тулд эхлээд түгжээг нээнэ үү.",
   "pageDetails": "Хуудасны дэлгэрэнгүй",
-  "clickToUnlock": "Нээхийн тулд дарна уу"
+  "clickToUnlock": "Нээхийн тулд дарна уу",
+  "pageSettings": "Хуудасны тохиргоо",
+  "editingPageSettings": "Хуудасны тохиргоог засаж байна",
+  "published": "Нийтлэгдсэн",
+  "draft": "Ноорог",
+  "locked": "Түгжээтэй",
+  "unlocked": "Түгжээгүй",
+  "noTags": "Шошго алга",
+  "oneTag": "1 шошго",
+  "tagCount": "{count} шошго",
+  "enterKey": "Enter"
 }

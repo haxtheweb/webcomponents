@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{creator}-এর {title} একটি {license}-এর অধীনে লাইসেন্সকৃত।",
   "permissionsBeyondScope": "এই লাইসেন্সের পরিধির বাইরের অনুমতি {link} পাওয়া যাবে।",
   "author": "(লেখক)",
-  "onTheLicensingDetailsPage": "লাইসেন্সিং বিবরণ পেজে"
+  "onTheLicensingDetailsPage": "লাইসেন্সিং বিবরণ পেজে",
+  "licenseLabel": "লাইসেন্স"
 }

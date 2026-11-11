@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "آپریشن مکمل نہیں ہو سکا ({status})",
   "normalizedPageSlugs": "{count} صفحات کے سلگز معیاری بنائے گئے",
   "createdTitle": "{title} بن گیا!",
-  "processing": "پروسیس ہو رہا ہے"
+  "processing": "پروسیس ہو رہا ہے",
+  "saveTimedOut": "محفوظ کرنے کا وقت ختم ہو گیا: سرور نے جواب نہیں دیا۔ آپ کی تبدیلیاں یہاں محفوظ ہیں، لیکن سرور اب بھی انہیں محفوظ کر سکتا ہے۔"
 }

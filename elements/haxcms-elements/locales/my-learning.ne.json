@@ -129,5 +129,12 @@
   "cancel": "रद्द गर्नुहोस्",
   "clearedSite": "{site} को लागि तपाईंको सिकाइ डेटा खाली गरियो।",
   "clearedDevice": "यो यन्त्रमा भएको सबै सिकाइ डेटा खाली गरियो।",
-  "thisSite": "यो साइट"
+  "thisSite": "यो साइट",
+  "outlineHeading": "पृष्ठ अनुसार प्रगति",
+  "allPages": "सबै पृष्ठहरू",
+  "outlinePagesDone": "{total} मध्ये {done} पृष्ठ सकियो",
+  "outlinePagesCount": "{count} पृष्ठहरू",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% पूरा",
+  "outlineComplete": "पूरा भयो"
 }

@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "Cód QR do {title}",
+  "noData": "Níl aon sonraí le taispeáint mar chód QR",
+  "formatNotSupported": "Ní thacaítear le formáid chód QR {format}",
+  "noCanvas": "Ní féidir leis an mbrabhsálaí seo an cód QR a tharraingt (gan tacaíocht canbháis)"
+}

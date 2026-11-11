@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "{title}(r)en QR kodea",
+  "noData": "Ez dago QR kode gisa erakusteko daturik",
+  "formatNotSupported": "{format} QR kode formatua ez da onartzen",
+  "noCanvas": "Nabigatzaile honek ezin du QR kodea marraztu (canvas euskarririk ez)"
+}

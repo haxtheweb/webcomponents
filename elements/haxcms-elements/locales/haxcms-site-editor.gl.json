@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Non se pode completar a operación ({status})",
   "normalizedPageSlugs": "Normalizáronse {count} slugs de páxina",
   "createdTitle": "Creouse {title}!",
-  "processing": "Procesando"
+  "processing": "Procesando",
+  "saveTimedOut": "Esgotouse o tempo de gardado: o servidor non respondeu. Os teus cambios consérvanse aquí, pero o servidor aínda pode rematar de gardalos."
 }

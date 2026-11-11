@@ -19,5 +19,13 @@
   "copyCode": "Kodni nusxalash",
   "copied": "Nusxalandi!",
   "invalidCode": "Bu personaj kodi emas.",
-  "preview": "Personajni oldindan ko‘rish"
+  "preview": "Personajni oldindan ko‘rish",
+  "previous": "Oldingi {name}",
+  "next": "Keyingi {name}",
+  "variant": "{total} tadan {current}",
+  "save": "Saqlash",
+  "cancel": "Bekor qilish",
+  "unsavedChanges": "Saqlanmagan o'zgarishlar",
+  "noUnsavedChanges": "Saqlanmagan o'zgarishlar yo'q",
+  "codeHelp": "Qahramonni yuklash uchun kodni joylashtiring yoki uni istalgan joyda ishlatish uchun nusxalang."
 }

@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Diese Seite ist gesperrt. Entsperre sie zuerst, um den Veröffentlichungsstatus zu ändern.",
   "pageLockedUnlockToDelete": "Diese Seite ist gesperrt. Entsperre sie zuerst, um sie zu löschen.",
   "pageDetails": "Seitendetails",
-  "clickToUnlock": "Zum Entsperren klicken"
+  "clickToUnlock": "Zum Entsperren klicken",
+  "pageSettings": "Seiteneinstellungen",
+  "editingPageSettings": "Seiteneinstellungen werden bearbeitet",
+  "published": "Veröffentlicht",
+  "draft": "Entwurf",
+  "locked": "Gesperrt",
+  "unlocked": "Entsperrt",
+  "noTags": "Keine Tags",
+  "oneTag": "1 Tag",
+  "tagCount": "{count} Tags",
+  "enterKey": "Enter"
 }

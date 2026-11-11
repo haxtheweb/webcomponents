@@ -4,5 +4,6 @@
   "exportCitations": "导出引文",
   "copy": "复制",
   "exportCitationFormat": "导出引文格式",
-  "selectCitationFormatBelow": "请在下方选择引文格式"
+  "selectCitationFormatBelow": "请在下方选择引文格式",
+  "addCitationToBibliography": "将引文添加到参考文献"
 }

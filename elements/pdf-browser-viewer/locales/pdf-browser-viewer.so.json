@@ -3,5 +3,8 @@
   "openInNewTab": "Ku fur PDF-ka tab cusub",
   "downloadPdf": "Soo deji PDF-ka",
   "fullScreen": "Shaashad buuxda",
-  "exitFullScreen": "Ka bax shaashad buuxda"
+  "exitFullScreen": "Ka bax shaashad buuxda",
+  "notSupported": "Waxay u muuqataa in browserkaagu aan loo habeynin inuu muujiyo faylasha PDF. Ha welwelin, kaliya",
+  "notSupportedLink": "halkan taabo si aad u soo dejiso faylka PDF.",
+  "download": "Soo deji"
 }

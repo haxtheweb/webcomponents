@@ -15,6 +15,12 @@
         "title": "Kurso",
         "description": "La kurso por kiu ĉi tiu ludlisto estas celita (kursa identigilo aŭ URL)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Aŭdvidaĵoj",
+        "description": "La videoj kaj sonaĵoj en la ludlisto. Ne redaktataj ĉi tie: la konturo de la paĝo uzas ilin por scii kiujn blokojn oni povas faligi enen."
+      }
     ]
   }
 }

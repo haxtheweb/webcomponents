@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title} na{creator} ine rezinesi re{license}.",
   "permissionsBeyondScope": "Mvumo dzinopfuura rezinesi iri dziripo {link}.",
   "author": "(munyori)",
-  "onTheLicensingDetailsPage": "papeji reruzivo rwerezinesi"
+  "onTheLicensingDetailsPage": "papeji reruzivo rwerezinesi",
+  "licenseLabel": "Rezenisi"
 }

@@ -45,6 +45,15 @@
         --outline-designer-lock-visibility: hidden;
       }*/
     </style>
+    <style>
+      /* a known page surface in light and dark, the way a HAX theme provides one */
+      body {
+        background-color: light-dark(
+          var(--ddd-theme-default-white, #ffffff),
+          var(--ddd-theme-default-potentialMidnight, #000321)
+        );
+      }
+    </style>
   </head>
   <body>
     <d-d-d></d-d-d>

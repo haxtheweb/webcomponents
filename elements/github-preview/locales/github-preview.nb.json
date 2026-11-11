@@ -1,0 +1,10 @@
+{
+  "github": "GitHub",
+  "repository": "Repository",
+  "stars": "stjerner",
+  "forks": "forks",
+  "loading": "Laster",
+  "viewMore": "Vis mer",
+  "assetNotFound": "Ressurs ikke funnet",
+  "openOnGitHub": "Åpne {org}/{repo} på GitHub"
+}

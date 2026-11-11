@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "सञ्चालन पूरा गर्न सकिएन ({status})",
   "normalizedPageSlugs": "{count} पेज slug हरू सामान्यीकरण गरियो",
   "createdTitle": "{title} बनाइयो!",
-  "processing": "प्रशोधन हुँदैछ"
+  "processing": "प्रशोधन हुँदैछ",
+  "saveTimedOut": "सुरक्षित गर्दा समय सकियो: सर्भरले जवाफ दिएन। तपाईंका परिवर्तनहरू यहीँ राखिएका छन्, तर सर्भरले अझै सुरक्षित गर्न सक्छ।"
 }

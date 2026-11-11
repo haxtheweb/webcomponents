@@ -1,0 +1,8 @@
+{
+  "ordinalOne": "일",
+  "ordinalTwo": "일",
+  "ordinalFew": "일",
+  "ordinalOther": "일",
+  "fromTimeToTime": "{start} - {end}",
+  "atTime": "{start}에"
+}

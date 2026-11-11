@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Ganti file asli",
   "newName": "Nama baru",
   "deleteAction": "Hapus",
-  "renameAction": "Ganti nama"
+  "renameAction": "Ganti nama",
+  "bulkOverwriteConfirm": "{action} {count} berkas? Tindakan ini menggantikan berkas asli dan tidak dapat dibatalkan.",
+  "actionScale": "Ubah ukuran",
+  "actionRotate": "Putar",
+  "actionTransform": "Transformasi",
+  "actionConvertJpg": "Konversi ke JPG",
+  "actionCompress": "Kompres"
 }

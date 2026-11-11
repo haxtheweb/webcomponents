@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Web component စာတမ်း ပလေယာ"
+    "title": "Web component စာတမ်း ပလေယာ",
+    "description": ""
   },
   "settings": {
     "configure": [

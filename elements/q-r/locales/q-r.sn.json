@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "Kodhi yeQR ye{title}",
+  "noData": "Hapana data yekuratidza sekodhi yeQR",
+  "formatNotSupported": "Chimiro chekodhi yeQR {format} hachitsigirwi",
+  "noCanvas": "Brouzer iyi haikwanise kudhirowa kodhi yeQR (hapana rutsigiro rwecanvas)"
+}

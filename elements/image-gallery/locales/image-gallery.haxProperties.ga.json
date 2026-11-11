@@ -22,6 +22,12 @@
         "title": "Innéacs gníomhach",
         "description": "Innéacs na híomhá gníomhaí le tosú léi i mód gailearaí."
       }
+    ],
+    "developer": [
+      {
+        "title": "Íomhánna",
+        "description": "Na híomhánna sa ghailearaí. Ní chuirtear in eagar anseo é: úsáideann imlíne an leathanaigh é chun a fháil amach cé na bloic is féidir a scaoileadh isteach."
+      }
     ]
   }
 }

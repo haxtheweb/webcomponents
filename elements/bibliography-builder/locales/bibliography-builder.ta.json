@@ -4,5 +4,6 @@
   "exportCitations": "மேற்கோள்களை ஏற்றுமதி செய்",
   "copy": "நகலெடு",
   "exportCitationFormat": "மேற்கோள் வடிவத்தை ஏற்றுமதி செய்",
-  "selectCitationFormatBelow": "கீழே ஒரு மேற்கோள் வடிவத்தைத் தேர்ந்தெடுக்கவும்"
+  "selectCitationFormatBelow": "கீழே ஒரு மேற்கோள் வடிவத்தைத் தேர்ந்தெடுக்கவும்",
+  "addCitationToBibliography": "நூல்பட்டியலில் மேற்கோளைச் சேர்"
 }

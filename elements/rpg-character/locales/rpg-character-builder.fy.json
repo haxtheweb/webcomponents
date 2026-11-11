@@ -19,5 +19,13 @@
   "copyCode": "Koade kopiearje",
   "copied": "Kopiearre!",
   "invalidCode": "Dat is gjin karakterkoade.",
-  "preview": "Karakterfoarbyld"
+  "preview": "Karakterfoarbyld",
+  "previous": "Foarige {name}",
+  "next": "Folgjende {name}",
+  "variant": "{current} fan {total}",
+  "save": "Bewarje",
+  "cancel": "Annulearje",
+  "unsavedChanges": "Net bewarre wizigingen",
+  "noUnsavedChanges": "Gjin net bewarre wizigingen",
+  "codeHelp": "Plak in koade om in personaazje te laden, of kopiearje dizze om him oeral te brûken."
 }

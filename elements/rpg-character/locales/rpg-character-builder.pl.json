@@ -19,5 +19,13 @@
   "copyCode": "Kopiuj kod",
   "copied": "Skopiowano!",
   "invalidCode": "To nie jest kod postaci.",
-  "preview": "Podgląd postaci"
+  "preview": "Podgląd postaci",
+  "previous": "Poprzedni: {name}",
+  "next": "Następny: {name}",
+  "variant": "{current} z {total}",
+  "save": "Zapisz",
+  "cancel": "Anuluj",
+  "unsavedChanges": "Niezapisane zmiany",
+  "noUnsavedChanges": "Brak niezapisanych zmian",
+  "codeHelp": "Wklej kod, aby wczytać postać, lub skopiuj ten, aby użyć go gdziekolwiek."
 }

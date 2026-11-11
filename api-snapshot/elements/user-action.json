@@ -21,6 +21,8 @@
       "track"
     ],
     "slots": [],
-    "demoTags": []
+    "demoTags": [
+      "user-action"
+    ]
   }
 }

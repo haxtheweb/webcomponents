@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "هي صفحو لاڪ ٿيل آهي. اشاعت جي حالت بدلائڻ لاءِ پهريان ان کي کوليو.",
   "pageLockedUnlockToDelete": "هي صفحو لاڪ ٿيل آهي. ختم ڪرڻ لاءِ پهريان ان کي کوليو.",
   "pageDetails": "صفحي جا تفصيل",
-  "clickToUnlock": "کولڻ لاءِ ڪلڪ ڪريو"
+  "clickToUnlock": "کولڻ لاءِ ڪلڪ ڪريو",
+  "pageSettings": "صفحي جون سيٽنگون",
+  "editingPageSettings": "صفحي جون سيٽنگون ايڊٽ ٿي رهيون آهن",
+  "published": "شايع ٿيل",
+  "draft": "مسودو",
+  "locked": "بند ٿيل",
+  "unlocked": "کليل",
+  "noTags": "ڪو ٽيگ ناهي",
+  "oneTag": "1 ٽيگ",
+  "tagCount": "{count} ٽيگ",
+  "enterKey": "Enter"
 }

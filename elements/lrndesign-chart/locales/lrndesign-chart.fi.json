@@ -4,5 +4,8 @@
   "pieChart": "Data · Ympyräkaavio",
   "showDataTable": "Näytä datataulukko",
   "downloadData": "Lataa data (.csv)",
-  "series": "Sarja {n}"
+  "series": "Sarja {n}",
+  "barChartLabel": "pylväskaavio",
+  "lineChartLabel": "viivakaavio",
+  "pieChartLabel": "ympyräkaavio"
 }

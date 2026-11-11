@@ -4,5 +4,8 @@
   "pieChart": "Adatok · Kördiagram",
   "showDataTable": "Adattáblázat megjelenítése",
   "downloadData": "Adatok letöltése (.csv)",
-  "series": "{n}. adatsor"
+  "series": "{n}. adatsor",
+  "barChartLabel": "oszlopdiagram",
+  "lineChartLabel": "vonaldiagram",
+  "pieChartLabel": "kördiagram"
 }

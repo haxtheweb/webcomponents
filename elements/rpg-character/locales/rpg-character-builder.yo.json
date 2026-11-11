@@ -19,5 +19,13 @@
   "copyCode": "Daakọ kóòdù",
   "copied": "A ti daakọ!",
   "invalidCode": "Kì í ṣe kóòdù ohun kikọ.",
-  "preview": "Àyẹ̀wò ohun kikọ"
+  "preview": "Àyẹ̀wò ohun kikọ",
+  "previous": "{name} tó ṣáájú",
+  "next": "{name} tó kàn",
+  "variant": "{current} nínú {total}",
+  "save": "Fi pamọ́",
+  "cancel": "Fagilé",
+  "unsavedChanges": "Àwọn àyípadà tí a kò fi pamọ́",
+  "noUnsavedChanges": "Kò sí àyípadà tí a kò fi pamọ́",
+  "codeHelp": "Lẹ̀ kóòdù láti gbé ẹ̀dá-ìtàn kan wá, tàbí ṣe ẹ̀dà èyí láti lò ó níbikíbi."
 }

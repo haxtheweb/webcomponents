@@ -3,5 +3,8 @@
   "openInNewTab": "নতুন ট্যাবে PDF খুলুন",
   "downloadPdf": "PDF ডাউনলোড করুন",
   "fullScreen": "পূর্ণ পর্দা",
-  "exitFullScreen": "পূর্ণ পর্দা থেকে বের হন"
+  "exitFullScreen": "পূর্ণ পর্দা থেকে বের হন",
+  "notSupported": "মনে হচ্ছে আপনার ওয়েব ব্রাউজার PDF ফাইল দেখানোর জন্য কনফিগার করা নেই। চিন্তা নেই, শুধু",
+  "notSupportedLink": "PDF ফাইলটি ডাউনলোড করতে এখানে ক্লিক করুন।",
+  "download": "ডাউনলোড"
 }

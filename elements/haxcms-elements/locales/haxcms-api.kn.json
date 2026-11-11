@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "ಪರಿವರ್ತನೆ ವಿಫಲವಾಗಿದೆ.",
   "PARAM_REQUIRED": "ಅಗತ್ಯವಿರುವ ಮೌಲ್ಯ ಕಾಣೆಯಾಗಿದೆ: {param}.",
   "INVALID_REQUEST": "ಅಮಾನ್ಯ ವಿನಂತಿ.",
-  "PARAM_INVALID": "ಅಮಾನ್ಯ ಮೌಲ್ಯ: {param}."
+  "PARAM_INVALID": "ಅಮಾನ್ಯ ಮೌಲ್ಯ: {param}.",
+  "BLOCK_RATE_LIMITED": "ಈ ಸೈಟ್‌ನಲ್ಲಿ ಇದೀಗ ತುಂಬಾ ವಿಷಯ ಬದಲಾವಣೆಗಳಾಗಿವೆ. {retryAfter} ಸೆಕೆಂಡುಗಳಲ್ಲಿ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."
 }

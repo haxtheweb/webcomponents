@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Pagina este nepublicată",
   "progressDone": "Finalizat",
   "progressInProgress": "În curs",
-  "progressVisited": "Vizitat"
+  "progressVisited": "Vizitat",
+  "progressPercentComplete": "{percent}% finalizat",
+  "progressComplete": "Finalizat"
 }

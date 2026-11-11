@@ -25,6 +25,8 @@
     ],
     "attributes": [],
     "slots": [],
-    "demoTags": []
+    "demoTags": [
+      "oer-schema"
+    ]
   }
 }

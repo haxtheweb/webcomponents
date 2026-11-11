@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Halaman ini dikunci. Buka kuncinya dahulu untuk menukar status penerbitan.",
   "pageLockedUnlockToDelete": "Halaman ini dikunci. Buka kuncinya dahulu untuk memadam.",
   "pageDetails": "Butiran halaman",
-  "clickToUnlock": "Klik untuk buka kunci"
+  "clickToUnlock": "Klik untuk buka kunci",
+  "pageSettings": "Tetapan halaman",
+  "editingPageSettings": "Menyunting tetapan halaman",
+  "published": "Diterbitkan",
+  "draft": "Draf",
+  "locked": "Dikunci",
+  "unlocked": "Dibuka kunci",
+  "noTags": "Tiada tag",
+  "oneTag": "1 tag",
+  "tagCount": "{count} tag",
+  "enterKey": "Enter"
 }

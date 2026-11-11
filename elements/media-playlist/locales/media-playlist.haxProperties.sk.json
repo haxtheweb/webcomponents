@@ -15,6 +15,12 @@
         "title": "Kurz",
         "description": "Kurz, pre ktorý je tento zoznam určený (identifikátor alebo URL kurzu)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Médiá",
+        "description": "Videá a zvuk v zozname skladieb. Tu sa neupravuje: štruktúra stránky to používa, aby vedela, ktoré bloky do nej možno pustiť."
+      }
     ]
   }
 }

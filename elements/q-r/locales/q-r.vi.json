@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "Mã QR cho {title}",
+  "noData": "Không có dữ liệu để hiển thị dưới dạng mã QR",
+  "formatNotSupported": "Định dạng mã QR {format} không được hỗ trợ",
+  "noCanvas": "Trình duyệt này không thể vẽ mã QR (không hỗ trợ canvas)"
+}

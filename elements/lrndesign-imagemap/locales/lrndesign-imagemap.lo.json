@@ -1,0 +1,9 @@
+{
+  "imageMap": "ແຜນທີ່ຮູບພາບ",
+  "interactive": "ແບບໂຕ້ຕອບ",
+  "hotspot": "ຈຸດຮ້ອນ",
+  "hotspotPosition": "{n} ຈາກ {total}",
+  "hotspotsExplored": "ສຳຫຼວດແລ້ວ {n} ຈາກ {total} ຈຸດຮ້ອນ",
+  "explored": "ສຳຫຼວດແລ້ວ",
+  "close": "ປິດ"
+}

@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Операцията не може да бъде завършена ({status})",
   "normalizedPageSlugs": "Нормализирани са slug на {count} страници",
   "createdTitle": "Създадена е {title}!",
-  "processing": "Обработка"
+  "processing": "Обработка",
+  "saveTimedOut": "Времето за запазване изтече: сървърът не отговори. Промените ви са запазени тук, но сървърът все още може да завърши запазването им."
 }

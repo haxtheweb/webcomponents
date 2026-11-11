@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "مشغّل توثيق مكوّنات الويب"
+    "title": "مشغّل توثيق مكوّنات الويب",
+    "description": ""
   },
   "settings": {
     "configure": [

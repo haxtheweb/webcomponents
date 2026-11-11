@@ -129,5 +129,12 @@
   "cancel": "Anulează",
   "clearedSite": "Datele tale de învățare pentru {site} au fost șterse.",
   "clearedDevice": "Toate datele de învățare de pe acest dispozitiv au fost șterse.",
-  "thisSite": "acest site"
+  "thisSite": "acest site",
+  "outlineHeading": "Progres pe pagini",
+  "allPages": "Toate paginile",
+  "outlinePagesDone": "{done} din {total} pagini finalizate",
+  "outlinePagesCount": "{count} pagini",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% finalizat",
+  "outlineComplete": "Finalizat"
 }

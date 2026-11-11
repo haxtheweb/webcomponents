@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Deze pagina is vergrendeld. Ontgrendel hem eerst om de publicatiestatus te wijzigen.",
   "pageLockedUnlockToDelete": "Deze pagina is vergrendeld. Ontgrendel hem eerst om te verwijderen.",
   "pageDetails": "Paginadetails",
-  "clickToUnlock": "Klik om te ontgrendelen"
+  "clickToUnlock": "Klik om te ontgrendelen",
+  "pageSettings": "Pagina-instellingen",
+  "editingPageSettings": "Pagina-instellingen bewerken",
+  "published": "Gepubliceerd",
+  "draft": "Concept",
+  "locked": "Vergrendeld",
+  "unlocked": "Ontgrendeld",
+  "noTags": "Geen tags",
+  "oneTag": "1 tag",
+  "tagCount": "{count} tags",
+  "enterKey": "Enter"
 }

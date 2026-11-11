@@ -35,5 +35,12 @@
   "youTubeStartLoading": "",
   "youTubeTranscriptLabel": "",
   "audioDescriptionLabel": "Kirjeldustõlge",
-  "openOnYouTube": "Ava YouTube'is"
+  "openOnYouTube": "Ava YouTube'is",
+  "interactiveLabel": "interaktiivne",
+  "layoutLabel": "Paigutus",
+  "sideLabel": "Kõrval",
+  "belowLabel": "All",
+  "leftLabel": "Vasakul",
+  "rightLabel": "Paremal",
+  "hideTranscriptLabel": "Peida transkriptsioon"
 }

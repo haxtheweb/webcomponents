@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Aktivitéit",
-        "description": "Beweiser markéieren: Léierender pechen all Fändel nieft de Beweis dofir. Eent auswielen: Léierender wielen deen eenzege Passage, deen d'Fro am beschten beäntwert."
+        "description": "Beweiser markéieren: Léierender pechen all Fändel nieft de Beweis dofir. Eent auswielen: Léierender wielen deen eenzege Passage, deen d'Fro am beschten beäntwert.",
+        "options": {
+          "flag": "Beweiser markéieren",
+          "one": "Een auswielen"
+        }
       },
       {
         "property": "unit",
         "title": "Léierender wielen",
-        "description": "Op wat e Léierenden am Text weist. Biller kënnen ëmmer ausgewielt ginn."
+        "description": "Op wat e Léierenden am Text weist. Biller kënnen ëmmer ausgewielt ginn.",
+        "options": {
+          "sentence": "Sätz",
+          "paragraph": "Abschnitter",
+          "figure": "Nëmmen Abbildungen"
+        }
       },
       {
         "property": "answers",

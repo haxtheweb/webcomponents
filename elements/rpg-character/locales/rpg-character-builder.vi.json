@@ -19,5 +19,13 @@
   "copyCode": "Sao chép mã",
   "copied": "Đã sao chép!",
   "invalidCode": "Đây không phải mã nhân vật.",
-  "preview": "Xem trước nhân vật"
+  "preview": "Xem trước nhân vật",
+  "previous": "{name} trước",
+  "next": "{name} tiếp theo",
+  "variant": "{current}/{total}",
+  "save": "Lưu",
+  "cancel": "Hủy",
+  "unsavedChanges": "Có thay đổi chưa lưu",
+  "noUnsavedChanges": "Không có thay đổi chưa lưu",
+  "codeHelp": "Dán mã để tải một nhân vật, hoặc sao chép mã này để dùng ở bất cứ đâu."
 }

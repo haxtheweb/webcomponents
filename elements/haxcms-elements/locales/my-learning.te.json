@@ -129,5 +129,12 @@
   "cancel": "రద్దు చేయండి",
   "clearedSite": "{site} కోసం మీ అభ్యాస డేటా తొలగించబడింది.",
   "clearedDevice": "ఈ పరికరంలోని అభ్యాస డేటా మొత్తం తొలగించబడింది.",
-  "thisSite": "ఈ సైట్"
+  "thisSite": "ఈ సైట్",
+  "outlineHeading": "పేజీల వారీగా పురోగతి",
+  "allPages": "అన్ని పేజీలు",
+  "outlinePagesDone": "{total} పేజీలలో {done} పూర్తయ్యాయి",
+  "outlinePagesCount": "{count} పేజీలు",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% పూర్తయింది",
+  "outlineComplete": "పూర్తయింది"
 }

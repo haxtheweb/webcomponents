@@ -327,9 +327,9 @@
   "end": {
     "in": 17.8,
     "line": "outputs the correct heading hierarchy based on parent's hea…",
-    "code": ""
+    "code": "<relative-heading></relative-heading>"
   },
-  "surfaceHash": "8e01d50dd22e",
+  "surfaceHash": "fc6663370866",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

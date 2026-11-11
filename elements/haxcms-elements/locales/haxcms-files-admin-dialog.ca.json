@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Reemplaça els fitxers originals",
   "newName": "Nom nou",
   "deleteAction": "Suprimeix",
-  "renameAction": "Canvia el nom"
+  "renameAction": "Canvia el nom",
+  "bulkOverwriteConfirm": "{action} {count} fitxers? Això substitueix els fitxers originals i no es pot desfer.",
+  "actionScale": "Canvia la mida",
+  "actionRotate": "Gira",
+  "actionTransform": "Transforma",
+  "actionConvertJpg": "Converteix a JPG",
+  "actionCompress": "Comprimeix"
 }

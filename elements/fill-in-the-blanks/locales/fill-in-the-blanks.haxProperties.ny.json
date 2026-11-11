@@ -37,6 +37,16 @@
         "title": "Dzina la mayeso",
         "description": "Dzina la mayeso loperekedwa kuti ligwiritsidwe ntchito m'malo oyendetsedwa ndi xAPI pozindikira chinthuchi"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Yotha kupindika",
+        "description": "Onetsani funso ili ngati mzere womwe umatseguka ndi kutseka. Kutsegula limodzi kumatseka mafunso ena opindika oyandikana nalo."
+      },
+      {
+        "title": "Yambani yopindika",
+        "description": "Ikakhala yopindika, yambani ngati mzere wotsekedwa wosonyeza funso ndi mkhalidwe wake zokha."
+      }
     ]
   }
 }

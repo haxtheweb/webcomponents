@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Mudziyo weNodeJS"
+    "title": "Mudziyo weNodeJS",
+    "description": ""
   },
   "settings": {
     "configure": [

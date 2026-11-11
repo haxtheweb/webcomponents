@@ -1,4 +1,9 @@
 {
   "audio": "Zvuk",
-  "openOnSpotify": "Otvoriť v aplikácii Spotify na novej karte"
+  "openOnSpotify": "Otvoriť v aplikácii Spotify na novej karte",
+  "embedTitle": "Vloženie Spotify",
+  "trackEmbedTitle": "Vloženie skladby Spotify",
+  "albumEmbedTitle": "Vloženie albumu Spotify",
+  "playlistEmbedTitle": "Vloženie zoznamu skladieb Spotify",
+  "artistEmbedTitle": "Vloženie interpreta Spotify"
 }

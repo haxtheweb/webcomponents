@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Klik utawa arahake kursor kanggo muter swara bledosan",
+  "soundDisabled": "Efek visual bledosan (swara dipateni)",
+  "explosionAnimation": "animasi bledosan",
+  "explosionAriaLabel": "Animasi bledosan {state} {sound}. Klik kanggo ngganti.",
+  "playing": "lagi muter",
+  "stopped": "mandheg",
+  "withSound": "nganggo swara",
+  "muted": "(bisu)"
+}

@@ -15,6 +15,12 @@
         "title": "Ikastaroa",
         "description": "Erreprodukzio-zerrenda hau zein ikastarotarako den (ikastaroaren identifikatzailea edo URLa)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Multimedia",
+        "description": "Erreprodukzio-zerrendako bideoak eta audioak. Hemen ez da editatzen: orriaren eskemak blokeak non jaregin daitezkeen jakiteko erabiltzen du."
+      }
     ]
   }
 }

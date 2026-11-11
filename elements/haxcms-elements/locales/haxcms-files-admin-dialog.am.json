@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "የመጀመሪያ ፋይሎችን ተካ",
   "newName": "አዲስ ስም",
   "deleteAction": "ሰርዝ",
-  "renameAction": "እንደገና ሰይም"
+  "renameAction": "እንደገና ሰይም",
+  "bulkOverwriteConfirm": "{count} ፋይሎችን {action}? ይህ ዋና ፋይሎችን ይተካል እና መመለስ አይቻልም።",
+  "actionScale": "መጠን ቀይር",
+  "actionRotate": "አሽከርክር",
+  "actionTransform": "ቀይር",
+  "actionConvertJpg": "ወደ JPG ቀይር",
+  "actionCompress": "ጭመቅ"
 }

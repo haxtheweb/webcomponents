@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Փոխարինել բնօրինակ ֆայլերը",
   "newName": "Նոր անուն",
   "deleteAction": "Ջնջել",
-  "renameAction": "Վերանվանել"
+  "renameAction": "Վերանվանել",
+  "bulkOverwriteConfirm": "{action}՝ {count} ֆայլ։ Սա փոխարինում է բնօրինակ ֆայլերը և հնարավոր չէ չեղարկել։",
+  "actionScale": "Փոխել չափը",
+  "actionRotate": "Պտտել",
+  "actionTransform": "Փոխակերպել",
+  "actionConvertJpg": "Փոխակերպել JPG-ի",
+  "actionCompress": "Սեղմել"
 }

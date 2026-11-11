@@ -22,6 +22,12 @@
         "title": "Fihirisa mai aiki",
         "description": "Fihirisar hoton da za a fara da shi a yanayin tarin hotuna."
       }
+    ],
+    "developer": [
+      {
+        "title": "Hotuna",
+        "description": "Hotunan da ke cikin taskar hotuna. Ba a gyara a nan: tsarin shafi yana amfani da shi don sanin waɗanne tubalan za a iya sauke a ciki."
+      }
     ]
   }
 }

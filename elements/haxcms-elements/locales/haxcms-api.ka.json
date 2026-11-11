@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "კონვერტაცია ვერ შესრულდა.",
   "PARAM_REQUIRED": "აკლია სავალდებულო მნიშვნელობა: {param}.",
   "INVALID_REQUEST": "არასწორი მოთხოვნა.",
-  "PARAM_INVALID": "არასწორი მნიშვნელობა: {param}."
+  "PARAM_INVALID": "არასწორი მნიშვნელობა: {param}.",
+  "BLOCK_RATE_LIMITED": "ამ საიტზე ახლა ძალიან ბევრი კონტენტის ცვლილებაა. სცადეთ თავიდან {retryAfter} წამში."
 }

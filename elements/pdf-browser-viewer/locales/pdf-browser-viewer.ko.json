@@ -3,5 +3,8 @@
   "openInNewTab": "PDF를 새 탭에서 열기",
   "downloadPdf": "PDF 다운로드",
   "fullScreen": "전체 화면",
-  "exitFullScreen": "전체 화면 종료"
+  "exitFullScreen": "전체 화면 종료",
+  "notSupported": "웹 브라우저가 PDF 파일을 표시하도록 설정되어 있지 않은 것 같습니다. 걱정하지 마세요.",
+  "notSupportedLink": "여기를 클릭하여 PDF 파일을 다운로드하세요.",
+  "download": "다운로드"
 }

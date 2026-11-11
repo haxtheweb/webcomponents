@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Kiryar nayê qedandin ({status})",
   "normalizedPageSlugs": "{count} slugên rûpelan hatin normalkirin",
   "createdTitle": "{title} hat afirandin!",
-  "processing": "Tê pêvajokirin"
+  "processing": "Tê pêvajokirin",
+  "saveTimedOut": "Tomarkirin dem derbas bû: server bersiv neda. Guhertinên te li vir têne hiştin, lê dibe ku server hê jî tomarkirinê biqedîne."
 }

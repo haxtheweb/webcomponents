@@ -35,5 +35,12 @@
   "youTubeStartLoading": "Ejopy mboguata.",
   "youTubeTranscriptLabel": "Ñe'ẽ jehaipyre henyhẽta oñemboguata vove.",
   "audioDescriptionLabel": "Myesakã ñe'ẽme",
-  "openOnYouTube": "Embojuruja YouTube-pe"
+  "openOnYouTube": "Embojuruja YouTube-pe",
+  "interactiveLabel": "ojejuhúva joapykuépe",
+  "layoutLabel": "Jehaipyre",
+  "sideLabel": "Hembe",
+  "belowLabel": "Yvýpe",
+  "leftLabel": "Akatúa",
+  "rightLabel": "Paha",
+  "hideTranscriptLabel": "Mbotapykue transcripción"
 }

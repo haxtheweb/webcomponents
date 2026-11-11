@@ -1,0 +1,8 @@
+{
+  "ordinalOne": "",
+  "ordinalTwo": "",
+  "ordinalFew": "",
+  "ordinalOther": "",
+  "fromTimeToTime": "kuanzia {start} - {end}",
+  "atTime": "saa {start}"
+}

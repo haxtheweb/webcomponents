@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Ìyípadà kò yọrí sí rere.",
   "PARAM_REQUIRED": "Iye tí a nílò kò sí: {param}.",
   "INVALID_REQUEST": "Ìbéèrè tí kò tọ́.",
-  "PARAM_INVALID": "Iye tí kò tọ́: {param}."
+  "PARAM_INVALID": "Iye tí kò tọ́: {param}.",
+  "BLOCK_RATE_LIMITED": "Àwọn àyípadà àkóónú pọ̀ jù lórí ojú-òpó yìí báyìí. Gbìyànjú lẹ́ẹ̀kan sí i láàárín ìṣẹ́jú-àáyá {retryAfter}."
 }

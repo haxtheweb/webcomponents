@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title}, tekijä {creator}, on lisensoitu lisenssillä {license}.",
   "permissionsBeyondScope": "Tämän lisenssin ulkopuoliset oikeudet ovat saatavilla {link}.",
   "author": "(tekijä)",
-  "onTheLicensingDetailsPage": "lisenssitietojen sivulla"
+  "onTheLicensingDetailsPage": "lisenssitietojen sivulla",
+  "licenseLabel": "Lisenssi"
 }

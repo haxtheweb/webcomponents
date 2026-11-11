@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Sivua ei ole julkaistu",
   "progressDone": "Valmis",
   "progressInProgress": "Kesken",
-  "progressVisited": "Vierailtu"
+  "progressVisited": "Vierailtu",
+  "progressPercentComplete": "{percent} % valmis",
+  "progressComplete": "Valmis"
 }

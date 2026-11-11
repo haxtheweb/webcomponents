@@ -3,5 +3,8 @@
   "openInNewTab": "PDF-г шинэ табд нээх",
   "downloadPdf": "PDF татах",
   "fullScreen": "Бүтэн дэлгэц",
-  "exitFullScreen": "Бүтэн дэлгэцээс гарах"
+  "exitFullScreen": "Бүтэн дэлгэцээс гарах",
+  "notSupported": "Таны вэб хөтөч PDF файл харуулахаар тохируулагдаагүй бололтой. Санаа зоволтгүй,",
+  "notSupportedLink": "PDF файлыг татахын тулд энд дарна уу.",
+  "download": "Татах"
 }

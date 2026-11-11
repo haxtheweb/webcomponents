@@ -19,5 +19,13 @@
   "copyCode": "Kopyahin ang code",
   "copied": "Nakopya!",
   "invalidCode": "Hindi ito code ng karakter.",
-  "preview": "Preview ng karakter"
+  "preview": "Preview ng karakter",
+  "previous": "Nakaraang {name}",
+  "next": "Susunod na {name}",
+  "variant": "{current} sa {total}",
+  "save": "I-save",
+  "cancel": "Kanselahin",
+  "unsavedChanges": "Mga hindi pa nase-save na pagbabago",
+  "noUnsavedChanges": "Walang hindi pa nase-save na pagbabago",
+  "codeHelp": "Mag-paste ng code para mag-load ng karakter, o kopyahin ang isang ito para magamit kahit saan."
 }

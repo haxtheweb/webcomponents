@@ -15,6 +15,12 @@
         "title": "Corso",
         "description": "Il corso a cui è destinata questa playlist (identificativo o URL del corso)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Media",
+        "description": "I video e l'audio nella playlist. Non si modifica qui: la struttura della pagina lo usa per sapere quali blocchi possono esservi rilasciati."
+      }
     ]
   }
 }

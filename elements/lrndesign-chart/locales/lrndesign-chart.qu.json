@@ -4,5 +4,8 @@
   "pieChart": "Willakuna · Muyu gráfico",
   "showDataTable": "Willakuna tablata rikuchiy",
   "downloadData": "Willakunata uraykachiy (.csv)",
-  "series": "Serie {n}"
+  "series": "Serie {n}",
+  "barChartLabel": "barra siq'i",
+  "lineChartLabel": "siray siq'i",
+  "pieChartLabel": "pastel siq'i"
 }

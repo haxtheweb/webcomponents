@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Klik atau lalukan tetikus untuk memainkan bunyi letupan",
+  "soundDisabled": "Kesan visual letupan (bunyi dilumpuhkan)",
+  "explosionAnimation": "animasi letupan",
+  "explosionAriaLabel": "Animasi letupan {state} {sound}. Klik untuk togol.",
+  "playing": "sedang dimainkan",
+  "stopped": "dihentikan",
+  "withSound": "dengan bunyi",
+  "muted": "(dibisukan)"
+}

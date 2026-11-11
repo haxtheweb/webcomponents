@@ -1,4 +1,9 @@
 {
   "audio": "Аудио",
-  "openOnSpotify": "Отвори на Spotify во нов таб"
+  "openOnSpotify": "Отвори на Spotify во нов таб",
+  "embedTitle": "Spotify вградување",
+  "trackEmbedTitle": "Spotify вградување на песна",
+  "albumEmbedTitle": "Spotify вградување на албум",
+  "playlistEmbedTitle": "Spotify вградување на плејлиста",
+  "artistEmbedTitle": "Spotify вградување на изведувач"
 }

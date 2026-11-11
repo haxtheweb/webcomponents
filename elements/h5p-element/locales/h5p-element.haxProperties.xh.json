@@ -1,13 +1,20 @@
 {
   "gizmo": {
     "title": "H5P",
-    "description": "Isisongeli se-H5P sokulayisha nokubonisa iifayile ze-.h5p"
+    "description": "Idlala umxholo osebenzisanayo we-H5P kwifayile ye-.h5p elayishiweyo, ngaphandle kwemfuneko yeseva ye-H5P"
   },
   "settings": {
     "configure": [
       {
         "slot": "",
-        "description": "Ikhowudi yokufaka i-iframe ye-H5P"
+        "description": "Layisha okanye uqhagamshele ifayile ye-.h5p. Ivulwa kwibrawuza; akukho seva ye-H5P efunekayo.",
+        "title": "Ifayile ye-H5P"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ikhowudi endala yokufakwa ye-iframe",
+        "description": "Ngumxholo omdala kuphela ofaka i-iframe ye-H5P esuka kwenye indawo. Shiya ingenanto xa ifayile ye-.h5p isetwe ngentla."
       }
     ]
   }

@@ -4,5 +4,8 @@
   "pieChart": "Duomenys · Skritulinė diagrama",
   "showDataTable": "Rodyti duomenų lentelę",
   "downloadData": "Atsisiųsti duomenis (.csv)",
-  "series": "{n} serija"
+  "series": "{n} serija",
+  "barChartLabel": "stulpelinė diagrama",
+  "lineChartLabel": "linijinė diagrama",
+  "pieChartLabel": "skritulinė diagrama"
 }

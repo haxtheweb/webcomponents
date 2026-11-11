@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "T'ikrayqa mana atikurqanchu.",
   "PARAM_REQUIRED": "Huk necesitakuq chaninmi pisichkan: {param}.",
   "INVALID_REQUEST": "Mana allin mañakuy.",
-  "PARAM_INVALID": "Mana allin chanin: {param}."
+  "PARAM_INVALID": "Mana allin chanin: {param}.",
+  "BLOCK_RATE_LIMITED": "Kunan kay sitepi achkha yachaykuna tikrakuna kachkan. {retryAfter} sikundu qhepata kutimanta ruway."
 }

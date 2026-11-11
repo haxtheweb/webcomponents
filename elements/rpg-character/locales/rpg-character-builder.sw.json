@@ -19,5 +19,13 @@
   "copyCode": "Nakili msimbo",
   "copied": "Imenakiliwa!",
   "invalidCode": "Huo si msimbo wa mhusika.",
-  "preview": "Hakiki ya mhusika"
+  "preview": "Hakiki ya mhusika",
+  "previous": "{name} iliyotangulia",
+  "next": "{name} inayofuata",
+  "variant": "{current} kati ya {total}",
+  "save": "Hifadhi",
+  "cancel": "Ghairi",
+  "unsavedChanges": "Mabadiliko ambayo hayajahifadhiwa",
+  "noUnsavedChanges": "Hakuna mabadiliko ambayo hayajahifadhiwa",
+  "codeHelp": "Bandika msimbo ili kupakia mhusika, au nakili huu uutumie popote."
 }

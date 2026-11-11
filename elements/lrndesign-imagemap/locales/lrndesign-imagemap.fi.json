@@ -1,0 +1,9 @@
+{
+  "imageMap": "Kuvakartta",
+  "interactive": "Vuorovaikutteinen",
+  "hotspot": "Aktiivinen alue",
+  "hotspotPosition": "{n} / {total}",
+  "hotspotsExplored": "{n} / {total} aktiivista aluetta tutkittu",
+  "explored": "Tutkittu",
+  "close": "Sulje"
+}

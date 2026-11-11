@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "Ikhowudi ye-QR ye-{title}",
+  "noData": "Akukho data yokubonisa njengekhowudi ye-QR",
+  "formatNotSupported": "Ifomathi yekhowudi ye-QR {format} ayixhaswa",
+  "noCanvas": "Le brawuza ayikwazi ukuzoba ikhowudi ye-QR (akukho nkxaso ye-canvas)"
+}

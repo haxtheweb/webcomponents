@@ -3,5 +3,8 @@
   "openInNewTab": "PDF di tabeka nû de veke",
   "downloadPdf": "PDF daxîne",
   "fullScreen": "Dîmenê tevahî",
-  "exitFullScreen": "Ji dîmenê tevahî derkeve"
+  "exitFullScreen": "Ji dîmenê tevahî derkeve",
+  "notSupported": "Xuya ye geroka te ji bo nîşandana pelên PDF nehatiye mîhengkirin. Tiştek nine, tenê",
+  "notSupportedLink": "ji bo daxistina pelê PDF li vir bikirtîne.",
+  "download": "Daxe"
 }

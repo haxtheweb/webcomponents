@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "عمل مڪمل نه ٿي سگهيو ({status})",
   "normalizedPageSlugs": "{count} صفحن جا سلگ معياري ڪيا ويا",
   "createdTitle": "{title} ٺهي ويو!",
-  "processing": "پروسيس ٿي رهيو آهي"
+  "processing": "پروسيس ٿي رهيو آهي",
+  "saveTimedOut": "محفوظ ڪرڻ جو وقت ختم ٿي ويو: سرور جواب نه ڏنو. توهان جون تبديليون هتي رکيل آهن، پر سرور اڃا به انهن کي محفوظ ڪري سگهي ٿو."
 }

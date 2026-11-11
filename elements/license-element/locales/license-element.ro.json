@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title} de {creator} este licențiat sub {license}.",
   "permissionsBeyondScope": "Permisiuni dincolo de scopul acestei licențe sunt disponibile {link}.",
   "author": "(autor)",
-  "onTheLicensingDetailsPage": "pe pagina cu detaliile licenței"
+  "onTheLicensingDetailsPage": "pe pagina cu detaliile licenței",
+  "licenseLabel": "Licență"
 }

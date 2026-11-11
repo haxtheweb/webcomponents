@@ -19,5 +19,13 @@
   "copyCode": "Kopioi koodi",
   "copied": "Kopioitu!",
   "invalidCode": "Tämä ei ole hahmokoodi.",
-  "preview": "Hahmon esikatselu"
+  "preview": "Hahmon esikatselu",
+  "previous": "Edellinen {name}",
+  "next": "Seuraava {name}",
+  "variant": "{current} / {total}",
+  "save": "Tallenna",
+  "cancel": "Peruuta",
+  "unsavedChanges": "Tallentamattomia muutoksia",
+  "noUnsavedChanges": "Ei tallentamattomia muutoksia",
+  "codeHelp": "Liitä koodi ladataksesi hahmon tai kopioi tämä käytettäväksi missä tahansa."
 }

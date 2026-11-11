@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "Kod QR untuk {title}",
+  "noData": "Tiada data untuk ditunjukkan sebagai kod QR",
+  "formatNotSupported": "Format kod QR {format} tidak disokong",
+  "noCanvas": "Pelayar ini tidak dapat melukis kod QR (tiada sokongan canvas)"
+}

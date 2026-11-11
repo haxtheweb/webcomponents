@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title} door {creator} is gelicentieerd onder een {license}.",
   "permissionsBeyondScope": "Toestemming buiten het bereik van deze licentie is {link} beschikbaar.",
   "author": "(auteur)",
-  "onTheLicensingDetailsPage": "op de pagina met licentiegegevens"
+  "onTheLicensingDetailsPage": "op de pagina met licentiegegevens",
+  "licenseLabel": "Licentie"
 }

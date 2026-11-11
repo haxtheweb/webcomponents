@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Бет жарияланбаған",
   "progressDone": "Аяқталды",
   "progressInProgress": "Орындалуда",
-  "progressVisited": "Қаралды"
+  "progressVisited": "Қаралды",
+  "progressPercentComplete": "{percent}% аяқталды",
+  "progressComplete": "Аяқталды"
 }

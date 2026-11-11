@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Pemain dokumen komponen web"
+    "title": "Pemain dokumen komponen web",
+    "description": ""
   },
   "settings": {
     "configure": [

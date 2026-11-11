@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Ionadaigh na bunchomhaid",
   "newName": "Ainm nua",
   "deleteAction": "Scrios",
-  "renameAction": "Athainmnigh"
+  "renameAction": "Athainmnigh",
+  "bulkOverwriteConfirm": "{action} {count} comhad? Cuireann sé seo na comhaid bhunaidh in ionad agus ní féidir é a chealú.",
+  "actionScale": "Scálaigh",
+  "actionRotate": "Rothlaigh",
+  "actionTransform": "Claochlaigh",
+  "actionConvertJpg": "Tiontaigh go JPG",
+  "actionCompress": "Comhbhrúigh"
 }

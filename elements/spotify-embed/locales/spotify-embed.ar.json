@@ -1,4 +1,9 @@
 {
   "audio": "صوت",
-  "openOnSpotify": "افتح على Spotify في علامة تبويب جديدة"
+  "openOnSpotify": "افتح على Spotify في علامة تبويب جديدة",
+  "embedTitle": "تضمين Spotify",
+  "trackEmbedTitle": "تضمين مقطع Spotify",
+  "albumEmbedTitle": "تضمين ألبوم Spotify",
+  "playlistEmbedTitle": "تضمين قائمة تشغيل Spotify",
+  "artistEmbedTitle": "تضمين فنان Spotify"
 }

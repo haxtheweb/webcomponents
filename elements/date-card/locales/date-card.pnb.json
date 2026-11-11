@@ -1,0 +1,8 @@
+{
+  "ordinalOne": "واں",
+  "ordinalTwo": "واں",
+  "ordinalFew": "واں",
+  "ordinalOther": "واں",
+  "fromTimeToTime": "{start} توں {end} تک",
+  "atTime": "{start} وجے"
+}

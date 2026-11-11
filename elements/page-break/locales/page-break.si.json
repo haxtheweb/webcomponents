@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "මෙම පිටුව අගුළු දමා ඇත. ප්‍රකාශන තත්ත්වය වෙනස් කිරීමට පළමුව අගුළු හරින්න.",
   "pageLockedUnlockToDelete": "මෙම පිටුව අගුළු දමා ඇත. මැකීමට පළමුව අගුළු හරින්න.",
   "pageDetails": "පිටුවේ විස්තර",
-  "clickToUnlock": "අගුළු හැරීමට ක්ලික් කරන්න"
+  "clickToUnlock": "අගුළු හැරීමට ක්ලික් කරන්න",
+  "pageSettings": "පිටු සැකසුම්",
+  "editingPageSettings": "පිටු සැකසුම් සංස්කරණය කරමින්",
+  "published": "ප්‍රකාශිතයි",
+  "draft": "කෙටුම්පත",
+  "locked": "අගුළු දමා ඇත",
+  "unlocked": "අගුළු හැර ඇත",
+  "noTags": "ටැග් නැත",
+  "oneTag": "ටැග් 1",
+  "tagCount": "ටැග් {count}",
+  "enterKey": "Enter"
 }

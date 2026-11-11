@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Umsebenzi",
-        "description": "Maka ubufakazi: abafundi babeka ifulegi ngalinye eduze kobufakazi balo. Khetha esisodwa: abafundi bakhetha isiqephu esisodwa esiphendula umbuzo kangcono kakhulu."
+        "description": "Maka ubufakazi: abafundi babeka ifulegi ngalinye eduze kobufakazi balo. Khetha esisodwa: abafundi bakhetha isiqephu esisodwa esiphendula umbuzo kangcono kakhulu.",
+        "options": {
+          "flag": "Phawula ubufakazi",
+          "one": "Khetha eyodwa"
+        }
       },
       {
         "property": "unit",
         "title": "Abafundi bakhetha",
-        "description": "Lokho umfundi akukhombayo ekufundwayo. Izithombe zingakhethwa njalo."
+        "description": "Lokho umfundi akukhombayo ekufundwayo. Izithombe zingakhethwa njalo.",
+        "options": {
+          "sentence": "Imisho",
+          "paragraph": "Izigaba",
+          "figure": "Izibalo kuphela"
+        }
       },
       {
         "property": "answers",

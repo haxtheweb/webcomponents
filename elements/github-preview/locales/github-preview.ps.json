@@ -1,0 +1,10 @@
+{
+  "github": "GitHub",
+  "repository": "ذخیره",
+  "stars": "ستورې",
+  "forks": "فورکونه",
+  "loading": "بارېږي",
+  "viewMore": "نور وګورئ",
+  "assetNotFound": "شتمني ونه موندل شوه",
+  "openOnGitHub": "{org}/{repo} په GitHub کې پرانیزئ"
+}

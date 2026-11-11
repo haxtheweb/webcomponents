@@ -15,6 +15,12 @@
         "title": "Kurs",
         "description": "Der Kurs, für den diese Playlist bestimmt ist (Kurskennung oder URL)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Medien",
+        "description": "Die Videos und Audiodateien in der Wiedergabeliste. Werden hier nicht bearbeitet: Die Seitenstruktur nutzt sie, um zu wissen, welche Blöcke abgelegt werden können."
+      }
     ]
   }
 }

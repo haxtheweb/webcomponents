@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title} ໂດຍ {creator} ໄດ້ຮັບອະນຸຍາດພາຍໃຕ້ {license}.",
   "permissionsBeyondScope": "ການອະນຸຍາດທີ່ເກີນຂອບເຂດຂອງໃບອະນຸຍາດນີ້ມີໃຫ້ {link}.",
   "author": "(ຜູ້ຂຽນ)",
-  "onTheLicensingDetailsPage": "ຢູ່ໜ້າລາຍລະອຽດໃບອະນຸຍາດ"
+  "onTheLicensingDetailsPage": "ຢູ່ໜ້າລາຍລະອຽດໃບອະນຸຍາດ",
+  "licenseLabel": "ໃບອະນຸຍາດ"
 }

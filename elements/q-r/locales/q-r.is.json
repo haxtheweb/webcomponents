@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "QR-kóði fyrir {title}",
+  "noData": "Engin gögn til að sýna sem QR-kóða",
+  "formatNotSupported": "QR-kóðasniðið {format} er ekki stutt",
+  "noCanvas": "Þessi vafri getur ekki teiknað QR-kóðann (enginn canvas-stuðningur)"
+}

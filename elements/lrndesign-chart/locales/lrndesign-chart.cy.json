@@ -4,5 +4,8 @@
   "pieChart": "Data · Siart cylch",
   "showDataTable": "Dangos tabl data",
   "downloadData": "Lawrlwytho data (.csv)",
-  "series": "Cyfres {n}"
+  "series": "Cyfres {n}",
+  "barChartLabel": "siart bar",
+  "lineChartLabel": "siart llinell",
+  "pieChartLabel": "siart cylch"
 }

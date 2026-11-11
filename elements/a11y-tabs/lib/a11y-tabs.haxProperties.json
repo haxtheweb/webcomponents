@@ -1,6 +1,5 @@
 {
   "canScale": false,
-
   "canEditSource": true,
   "gizmo": {
     "title": "Tabs",
@@ -69,5 +68,12 @@
         "inputMethod": "textfield"
       }
     ]
-  }
+  },
+  "demoSchema": [
+    {
+      "tag": "a11y-tabs",
+      "properties": {},
+      "content": ""
+    }
+  ]
 }

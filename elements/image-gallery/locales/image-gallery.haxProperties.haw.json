@@ -22,6 +22,12 @@
         "title": "Kuhi hana",
         "description": "Ka helu kuhi o ke kiʻi e hoʻomaka ai ma ke ʻano hale kiʻi."
       }
+    ],
+    "developer": [
+      {
+        "title": "Nā kiʻi",
+        "description": "Nā kiʻi i loko o ka hale kiʻi. ʻAʻole hoʻoponopono ʻia ma ʻaneʻi: hoʻohana ka hōʻike o ka ʻaoʻao iā ia e ʻike ai i nā poloka hiki ke hoʻokuʻu ʻia i loko."
+      }
     ]
   }
 }

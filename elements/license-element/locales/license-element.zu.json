@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title} ngu-{creator} inelayisensi ye-{license}.",
   "permissionsBeyondScope": "Izimvume ezingaphezu kobubanzi bale layisensi ziyatholakala {link}.",
   "author": "(umbhali)",
-  "onTheLicensingDetailsPage": "ekhasini lemininingwane yelayisensi"
+  "onTheLicensingDetailsPage": "ekhasini lemininingwane yelayisensi",
+  "licenseLabel": "Ilayisense"
 }

@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Ñemoambue ndoikói.",
   "PARAM_REQUIRED": "Ndaipóri peteĩ mba'e tekotevẽva: {param}.",
   "INVALID_REQUEST": "Jerure ndoikói.",
-  "PARAM_INVALID": "Mba'e ndoikóiva: {param}."
+  "PARAM_INVALID": "Mba'e ndoikóiva: {param}.",
+  "BLOCK_RATE_LIMITED": "Hetaiterei marandu ñemoambue ko ñandutípe ko'ágã. Eha'ã jey {retryAfter} sekundo rire."
 }

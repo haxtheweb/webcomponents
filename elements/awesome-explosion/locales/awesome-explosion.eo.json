@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Alklaku aŭ ŝvebu por ludi eksplodan sonon",
+  "soundDisabled": "Vidigita eksploda efekto (sono malŝaltita)",
+  "explosionAnimation": "eksploda animacio",
+  "explosionAriaLabel": "Eksploda animacio {state} {sound}. Alklaku por baskuli.",
+  "playing": "ludiĝas",
+  "stopped": "haltigita",
+  "withSound": "kun sono",
+  "muted": "(silentigita)"
+}

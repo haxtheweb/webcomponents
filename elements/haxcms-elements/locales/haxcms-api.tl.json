@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Nabigo ang conversion.",
   "PARAM_REQUIRED": "Nawawala ang isang kinakailangang value: {param}.",
   "INVALID_REQUEST": "Di-wastong kahilingan.",
-  "PARAM_INVALID": "Di-wastong value: {param}."
+  "PARAM_INVALID": "Di-wastong value: {param}.",
+  "BLOCK_RATE_LIMITED": "Masyadong maraming pagbabago sa nilalaman ng site na ito ngayon. Subukan ulit pagkalipas ng {retryAfter} segundo."
 }

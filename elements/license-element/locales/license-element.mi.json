@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "Ko {title} nā {creator} kua raihanatia i raro i te {license}.",
   "permissionsBeyondScope": "Kei te wātea ngā whakaaetanga i tua atu i te korahi o tēnei raihana {link}.",
   "author": "(kaituhi)",
-  "onTheLicensingDetailsPage": "i te whārangi taipitopito raihana"
+  "onTheLicensingDetailsPage": "i te whārangi taipitopito raihana",
+  "licenseLabel": "Raihana"
 }

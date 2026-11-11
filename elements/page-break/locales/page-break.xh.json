@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Eli phepha litshixiwe. Livule kuqala ukuze utshintshe imeko yokupapasha.",
   "pageLockedUnlockToDelete": "Eli phepha litshixiwe. Livule kuqala ukuze ulicime.",
   "pageDetails": "Iinkcukacha zephepha",
-  "clickToUnlock": "Cofa ukuvula"
+  "clickToUnlock": "Cofa ukuvula",
+  "pageSettings": "Useto lephepha",
+  "editingPageSettings": "Kuhlelwa useto lephepha",
+  "published": "Kupapashiwe",
+  "draft": "Uyilo",
+  "locked": "Kuvalelwe",
+  "unlocked": "Akuvalelwanga",
+  "noTags": "Akukho zitagi",
+  "oneTag": "Itagi e-1",
+  "tagCount": "iitagi ezi-{count}",
+  "enterKey": "Enter"
 }

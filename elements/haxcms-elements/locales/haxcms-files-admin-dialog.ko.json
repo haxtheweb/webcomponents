@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "원본 파일 바꾸기",
   "newName": "새 이름",
   "deleteAction": "삭제",
-  "renameAction": "이름 바꾸기"
+  "renameAction": "이름 바꾸기",
+  "bulkOverwriteConfirm": "파일 {count}개에 {action}을(를) 적용할까요? 원본 파일이 대체되며 되돌릴 수 없습니다.",
+  "actionScale": "크기 조정",
+  "actionRotate": "회전",
+  "actionTransform": "변환",
+  "actionConvertJpg": "JPG로 변환",
+  "actionCompress": "압축"
 }

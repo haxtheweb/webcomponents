@@ -1,13 +1,20 @@
 {
   "gizmo": {
     "title": "H5P",
-    "description": "H5P-kääre .h5p-tiedostojen lataamiseen ja esittämiseen"
+    "description": "Toistaa H5P-vuorovaikutteista sisältöä ladatusta .h5p-tiedostosta ilman H5P-palvelinta"
   },
   "settings": {
     "configure": [
       {
         "slot": "",
-        "description": "H5P-iframe-upotuskoodi"
+        "description": "Lataa tai linkitä .h5p-tiedosto. Se puretaan selaimessa; H5P-palvelinta ei tarvita.",
+        "title": "H5P-tiedosto"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Vanha iframe-upotuskoodi",
+        "description": "Vain vanhalle sisällölle, joka upottaa H5P-iframen toiselta sivustolta. Jätä tyhjäksi, kun .h5p-tiedosto on asetettu yllä."
       }
     ]
   }

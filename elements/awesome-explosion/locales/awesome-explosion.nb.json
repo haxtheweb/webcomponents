@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Klikk eller hold over for å spille av eksplosjonslyd",
+  "soundDisabled": "Visuell eksplosjonseffekt (lyd deaktivert)",
+  "explosionAnimation": "eksplosjonsanimasjon",
+  "explosionAriaLabel": "Eksplosjonsanimasjon {state} {sound}. Klikk for å bytte.",
+  "playing": "spilles av",
+  "stopped": "stoppet",
+  "withSound": "med lyd",
+  "muted": "(dempet)"
+}

@@ -4,5 +4,8 @@
   "pieChart": "Data · Eserese okirikiri",
   "showDataTable": "Gosi tebụl data",
   "downloadData": "Budata data (.csv)",
-  "series": "Usoro {n}"
+  "series": "Usoro {n}",
+  "barChartLabel": "eserese mgbidi",
+  "lineChartLabel": "eserese ahịrị",
+  "pieChartLabel": "eserese okirikiri"
 }

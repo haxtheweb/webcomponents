@@ -3,5 +3,8 @@
   "openInNewTab": "PDF'ны яңа табта ачу",
   "downloadPdf": "PDF'ны йөкләп алу",
   "fullScreen": "Тулы экран",
-  "exitFullScreen": "Тулы экраннан чыгу"
+  "exitFullScreen": "Тулы экраннан чыгу",
+  "notSupported": "Браузерыгыз PDF файлларын күрсәтү өчен көйләнмәгән күренә. Борчылмагыз,",
+  "notSupportedLink": "PDF файлын йөкләп алу өчен монда басыгыз.",
+  "download": "Йөкләп алу"
 }

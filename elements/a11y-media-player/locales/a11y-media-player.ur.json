@@ -35,5 +35,12 @@
   "youTubeStartLoading": "پلے دبائیں۔",
   "youTubeTranscriptLabel": "میڈیا چلنے کے بعد ٹرانسکرپٹ لوڈ ہوگا۔",
   "audioDescriptionLabel": "آڈیو وضاحت",
-  "openOnYouTube": "YouTube پر کھولیں"
+  "openOnYouTube": "YouTube پر کھولیں",
+  "interactiveLabel": "انٹرایکٹو",
+  "layoutLabel": "ترتیب",
+  "sideLabel": "پہلو",
+  "belowLabel": "نیچے",
+  "leftLabel": "بائیں",
+  "rightLabel": "دائیں",
+  "hideTranscriptLabel": "ٹرانسکرپٹ چھپائیں"
 }

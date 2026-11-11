@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Síðan er ikki útgivin",
   "progressDone": "Liðugt",
   "progressInProgress": "Í gerð",
-  "progressVisited": "Vitjað"
+  "progressVisited": "Vitjað",
+  "progressPercentComplete": "{percent}% liðugt",
+  "progressComplete": "Liðugt"
 }

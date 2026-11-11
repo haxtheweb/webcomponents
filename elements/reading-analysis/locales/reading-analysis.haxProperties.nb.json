@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Aktivitet",
-        "description": "Flagg bevis: elevene fester hvert flagg ved beviset for det. Velg ett: elevene velger det ene utdraget som best svarer på spørsmålet."
+        "description": "Flagg bevis: elevene fester hvert flagg ved beviset for det. Velg ett: elevene velger det ene utdraget som best svarer på spørsmålet.",
+        "options": {
+          "flag": "Merk bevis",
+          "one": "Velg én"
+        }
       },
       {
         "property": "unit",
         "title": "Elevene velger",
-        "description": "Hva en elev peker på i teksten. Figurer kan alltid velges."
+        "description": "Hva en elev peker på i teksten. Figurer kan alltid velges.",
+        "options": {
+          "sentence": "Setninger",
+          "paragraph": "Avsnitt",
+          "figure": "Kun figurer"
+        }
       },
       {
         "property": "answers",

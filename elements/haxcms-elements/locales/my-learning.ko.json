@@ -129,5 +129,12 @@
   "cancel": "취소",
   "clearedSite": "{site}의 학습 데이터를 지웠습니다.",
   "clearedDevice": "이 기기의 모든 학습 데이터를 지웠습니다.",
-  "thisSite": "이 사이트"
+  "thisSite": "이 사이트",
+  "outlineHeading": "페이지별 진행률",
+  "allPages": "모든 페이지",
+  "outlinePagesDone": "{total}페이지 중 {done}페이지 완료",
+  "outlinePagesCount": "{count}페이지",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% 완료",
+  "outlineComplete": "완료"
 }

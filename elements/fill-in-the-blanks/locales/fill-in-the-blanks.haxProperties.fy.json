@@ -37,6 +37,16 @@
         "title": "Namme fan de kwis",
         "description": "Kwisnamme dy't trochjûn wurdt foar identifikaasje fan dit item yn xAPI-basearre omjouwings"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Ynklapber",
+        "description": "Lit dizze fraach sjen as in rige dy't iepen- en ticht giet. As der ien iepen giet, geane de oare ynklapbere fragen deniken ticht."
+      },
+      {
+        "title": "Ynklapt starte",
+        "description": "As ynklapber, start as in sletten rige dy't allinnich de fraach en de status toant."
+      }
     ]
   }
 }

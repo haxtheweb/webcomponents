@@ -4,5 +4,8 @@
   "pieChart": "Data · Carta pai",
   "showDataTable": "Tunjukkan jadual data",
   "downloadData": "Muat turun data (.csv)",
-  "series": "Siri {n}"
+  "series": "Siri {n}",
+  "barChartLabel": "carta bar",
+  "lineChartLabel": "carta garis",
+  "pieChartLabel": "carta pai"
 }

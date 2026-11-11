@@ -1,5 +1,6 @@
 {
   "simulation": "Eftirgerð",
   "fullScreen": "Fullur skíggi",
-  "exitFullScreen": "Far úr fullskíggja"
+  "exitFullScreen": "Far úr fullskíggja",
+  "player": "Unity WebGL spælari"
 }

@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "மாற்றம் தோல்வியடைந்தது.",
   "PARAM_REQUIRED": "தேவையான மதிப்பு இல்லை: {param}.",
   "INVALID_REQUEST": "தவறான கோரிக்கை.",
-  "PARAM_INVALID": "தவறான மதிப்பு: {param}."
+  "PARAM_INVALID": "தவறான மதிப்பு: {param}.",
+  "BLOCK_RATE_LIMITED": "இந்தத் தளத்தில் தற்போது அதிகமான உள்ளடக்க மாற்றங்கள் நடக்கின்றன. {retryAfter} விநாடிகளில் மீண்டும் முயலவும்."
 }

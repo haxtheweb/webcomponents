@@ -15,6 +15,12 @@
         "title": "Curso",
         "description": "O curso para o que está pensada esta lista de reprodución (identificador ou URL do curso)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Multimedia",
+        "description": "Os vídeos e o audio da lista de reprodución. Non se edita aquí: o esquema da páxina úsao para saber que bloques se poden soltar dentro."
+      }
     ]
   }
 }

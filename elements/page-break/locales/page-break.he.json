@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "דף זה נעול. בטלו את הנעילה קודם כדי לשנות את מצב הפרסום.",
   "pageLockedUnlockToDelete": "דף זה נעול. בטלו את הנעילה קודם כדי למחוק.",
   "pageDetails": "פרטי עמוד",
-  "clickToUnlock": "לחץ לפתיחת נעילה"
+  "clickToUnlock": "לחץ לפתיחת נעילה",
+  "pageSettings": "הגדרות דף",
+  "editingPageSettings": "עורך את הגדרות הדף",
+  "published": "פורסם",
+  "draft": "טיוטה",
+  "locked": "נעול",
+  "unlocked": "לא נעול",
+  "noTags": "אין תגיות",
+  "oneTag": "תגית אחת",
+  "tagCount": "{count} תגיות",
+  "enterKey": "Enter"
 }

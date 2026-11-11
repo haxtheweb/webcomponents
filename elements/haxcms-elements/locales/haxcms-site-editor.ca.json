@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "No s'ha pogut completar l'operació ({status})",
   "normalizedPageSlugs": "S'han normalitzat {count} slugs de pàgina",
   "createdTitle": "S'ha creat {title}!",
-  "processing": "Processant"
+  "processing": "Processant",
+  "saveTimedOut": "S'ha esgotat el temps en desar: el servidor no ha respost. Els teus canvis es conserven aquí, però el servidor encara els pot acabar de desar."
 }

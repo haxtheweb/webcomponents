@@ -129,5 +129,12 @@
   "cancel": "Չեղարկել",
   "clearedSite": "{site}-ի ձեր ուսումնական տվյալները մաքրվել են։",
   "clearedDevice": "Այս սարքի բոլոր ուսումնական տվյալները մաքրվել են։",
-  "thisSite": "այս կայքը"
+  "thisSite": "այս կայքը",
+  "outlineHeading": "Առաջընթաց ըստ էջերի",
+  "allPages": "Բոլոր էջերը",
+  "outlinePagesDone": "{total} էջից {done}-ն ավարտված է",
+  "outlinePagesCount": "{count} էջ",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% ավարտված",
+  "outlineComplete": "Ավարտված"
 }

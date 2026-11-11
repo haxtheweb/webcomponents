@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "اصلي فایلونه ځای پر ځای کول",
   "newName": "نوی نوم",
   "deleteAction": "ړنګول",
-  "renameAction": "نوم بدلول"
+  "renameAction": "نوم بدلول",
+  "bulkOverwriteConfirm": "{action} {count} فایلونه؟ دا اصلي فایلونه بدلوي او بیرته نشي کېدای.",
+  "actionScale": "اندازه بدل کړئ",
+  "actionRotate": "وګرځوئ",
+  "actionTransform": "بدل کړئ",
+  "actionConvertJpg": "JPG ته واړوئ",
+  "actionCompress": "فشار کړئ"
 }

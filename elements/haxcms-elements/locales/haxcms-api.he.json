@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "ההמרה נכשלה.",
   "PARAM_REQUIRED": "חסר ערך נדרש: {param}.",
   "INVALID_REQUEST": "בקשה לא תקינה.",
-  "PARAM_INVALID": "ערך לא תקין: {param}."
+  "PARAM_INVALID": "ערך לא תקין: {param}.",
+  "BLOCK_RATE_LIMITED": "יותר מדי שינויי תוכן באתר זה כרגע. נסו שוב בעוד {retryAfter} שניות."
 }

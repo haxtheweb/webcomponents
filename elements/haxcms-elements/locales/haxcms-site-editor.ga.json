@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Ní féidir an oibríocht a chríochnú ({status})",
   "normalizedPageSlugs": "Normalaíodh {count} slug leathanaigh",
   "createdTitle": "Cruthaíodh {title}!",
-  "processing": "Á phróiseáil"
+  "processing": "Á phróiseáil",
+  "saveTimedOut": "Sáraíodh an t-am sábhála: níor fhreagair an freastalaí. Coinnítear d'athruithe anseo, ach b'fhéidir go gcríochnóidh an freastalaí iad a shábháil fós."
 }

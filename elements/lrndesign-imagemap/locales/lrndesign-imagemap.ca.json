@@ -1,0 +1,9 @@
+{
+  "imageMap": "Mapa d'imatge",
+  "interactive": "Interactiu",
+  "hotspot": "Punt interactiu",
+  "hotspotPosition": "{n} de {total}",
+  "hotspotsExplored": "{n} de {total} punts interactius explorats",
+  "explored": "Explorat",
+  "close": "Tanca"
+}

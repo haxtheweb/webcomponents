@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Amalni bajarib boʻlmadi ({status})",
   "normalizedPageSlugs": "{count} ta sahifa slugi normallashtirildi",
   "createdTitle": "{title} yaratildi!",
-  "processing": "Qayta ishlanmoqda"
+  "processing": "Qayta ishlanmoqda",
+  "saveTimedOut": "Saqlash vaqti tugadi: server javob bermadi. O'zgarishlaringiz shu yerda saqlanib turibdi, ammo server ularni baribir saqlab bo'lishi mumkin."
 }

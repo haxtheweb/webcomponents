@@ -129,5 +129,12 @@
   "cancel": "取消",
   "clearedSite": "侬{site}个学习数据已经清除。",
   "clearedDevice": "该台设备浪个所有学习数据已经清除。",
-  "thisSite": "该个网站"
+  "thisSite": "该个网站",
+  "outlineHeading": "按页面看进度",
+  "allPages": "所有页面",
+  "outlinePagesDone": "{total} 页里完成了 {done} 页",
+  "outlinePagesCount": "{count} 页",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "完成了 {percent}%",
+  "outlineComplete": "完成"
 }

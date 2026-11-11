@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "คลิกหรือวางเมาส์เพื่อเล่นเสียงระเบิด",
+  "soundDisabled": "เอฟเฟกต์ภาพการระเบิด (ปิดเสียง)",
+  "explosionAnimation": "ภาพเคลื่อนไหวการระเบิด",
+  "explosionAriaLabel": "ภาพเคลื่อนไหวการระเบิด {state} {sound} คลิกเพื่อสลับ",
+  "playing": "กำลังเล่น",
+  "stopped": "หยุดแล้ว",
+  "withSound": "พร้อมเสียง",
+  "muted": "(ปิดเสียง)"
+}

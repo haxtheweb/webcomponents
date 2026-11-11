@@ -1,4 +1,9 @@
 {
   "audio": "Audio",
-  "openOnSpotify": "Apre Spotify in una nova scheda"
+  "openOnSpotify": "Apre Spotify in una nova scheda",
+  "embedTitle": "Integrazione Spotify",
+  "trackEmbedTitle": "Integrazione di traccia Spotify",
+  "albumEmbedTitle": "Integrazione d'album Spotify",
+  "playlistEmbedTitle": "Integrazione di playlist Spotify",
+  "artistEmbedTitle": "Integrazione d'artista Spotify"
 }

@@ -290,7 +290,14 @@ class HaxViewSource extends I18NMixin(LitElement) {
   /**
    * selectBody
    */
-  selectBody(_e) {
+  selectBody(e) {
+    // the copy goes through a hidden textarea that has to take focus; hand
+    // focus back to the Copy HTML button afterwards so keyboard users stay
+    // where they were instead of dropping to <body>
+    const trigger =
+      e && e.currentTarget && typeof e.currentTarget.focus === "function"
+        ? e.currentTarget
+        : null;
     let hiddenarea = this.shadowRoot.querySelector("#hiddentextarea");
     hiddenarea.value = this.shadowRoot.querySelector("#textarea").value || "";
     hiddenarea.removeAttribute("hidden");
@@ -298,6 +305,10 @@ class HaxViewSource extends I18NMixin(LitElement) {
     hiddenarea.select();
     globalThis.document.execCommand("copy");
     hiddenarea.setAttribute("hidden", "hidden");
+    if (trigger) {
+      trigger.focus();
+    }
+    // the toast is a polite live region, so the copy is announced too
     HAXStore.toast(this.t.copiedToClipboard);
     //this.close();
   }

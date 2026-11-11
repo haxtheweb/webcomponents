@@ -15,6 +15,12 @@
         "title": "Kolegij",
         "description": "Kolegij za koji je namijenjen ovaj popis (identifikator kolegija ili URL)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Mediji",
+        "description": "Videozapisi i zvuk na popisu za reprodukciju. Ne uređuje se ovdje: struktura stranice koristi ovo da zna koji se blokovi mogu ispustiti unutra."
+      }
     ]
   }
 }

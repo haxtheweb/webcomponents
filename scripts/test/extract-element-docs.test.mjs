@@ -157,40 +157,28 @@ test("without the analyzer it warns instead of silently thinning the data", () =
   fs.rmSync(elements, { recursive: true, force: true });
 });
 
-test("comments inside an inline haxProperties do not hide its settings", () => {
-  const elements = fs.mkdtempSync(path.join(os.tmpdir(), "docs-probe-"));
-  const dir = path.join(elements, "docs-probe");
-  fs.mkdirSync(dir, { recursive: true });
-  // an apostrophe in a comment ("the probe's") used to open a string and
-  // swallow the rest of the object, so the element lost its HAX settings
-  const withHax = ELEMENT.replace(
-    "  static get properties() {",
+test("an apostrophe in a comment does not hide inline haxProperties", () => {
+  const { elements, dir } = probe();
+  const src = ELEMENT.replace(
+    "  render() {",
     `  static get haxProperties() {
     return {
       designSystem: {
-        // the probe's layout is fixed, so no alignment
+        // the probe's layout is fixed, so no text alignment
         textAlign: false,
       },
-      /* a "block" comment with 'quotes' and { braces } */
-      gizmo: { title: "Docs probe" },
+      /* it's a "probe" */
+      gizmo: { title: "Probe" },
       settings: {
-        configure: [{ attribute: "label", title: "Label", inputMethod: "textfield" }],
+        configure: [{ property: "label", title: "Label", inputMethod: "textfield" }],
       },
     };
   }
-  static get properties() {`,
+  render() {`,
   );
-  fs.writeFileSync(path.join(dir, "docs-probe.js"), withHax);
-  fs.writeFileSync(
-    path.join(dir, "package.json"),
-    JSON.stringify({
-      name: "@haxtheweb/docs-probe",
-      version: "1.0.0",
-      main: "docs-probe.js",
-    }),
-  );
+  fs.writeFileSync(path.join(dir, "docs-probe.js"), src);
   const docs = extractElementDocs("docs-probe", elements);
-  assert.equal(docs.hax.gizmo.title, "Docs probe");
-  assert.equal(docs.hax.settings.configure[0].attribute, "label");
+  assert.equal(docs.hax.gizmo.title, "Probe");
+  assert.equal(docs.hax.settings.configure[0].property, "label");
   fs.rmSync(elements, { recursive: true, force: true });
 });

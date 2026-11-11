@@ -1,5 +1,6 @@
 {
   "simulation": "Simulatsioon",
   "fullScreen": "Täisekraan",
-  "exitFullScreen": "Välju täisekraanilt"
+  "exitFullScreen": "Välju täisekraanilt",
+  "player": "Unity WebGL-i mängija"
 }

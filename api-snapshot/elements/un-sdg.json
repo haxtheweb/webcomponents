@@ -9,6 +9,7 @@
     "goal": "goal",
     "loading": "loading",
     "schemamap": "schemaMap",
+    "t": "t",
     "typeof": "typeof"
   },
   "slots": [],

@@ -37,6 +37,16 @@
         "title": "Nome do cuestionario",
         "description": "Nome do cuestionario que se pasa para usar en contornos baseados en xAPI e identificar este elemento"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Contraíble",
+        "description": "Mostra esta pregunta como unha fila que se abre e se pecha. Ao abrir unha, péchanse as outras preguntas contraíbles que están ao seu carón."
+      },
+      {
+        "title": "Comezar contraída",
+        "description": "Se é contraíble, comeza como unha fila pechada que só mostra a pregunta e o seu estado."
+      }
     ]
   }
 }

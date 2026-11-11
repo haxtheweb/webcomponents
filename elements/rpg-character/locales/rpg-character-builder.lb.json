@@ -19,5 +19,13 @@
   "copyCode": "Code kopéieren",
   "copied": "Kopéiert!",
   "invalidCode": "Dat ass kee Charakterkode.",
-  "preview": "Charakter-Virschau"
+  "preview": "Charakter-Virschau",
+  "previous": "Virdrun {name}",
+  "next": "Nächst {name}",
+  "variant": "{current} vun {total}",
+  "save": "Späicheren",
+  "cancel": "Ofbriechen",
+  "unsavedChanges": "Net gespäichert Ännerungen",
+  "noUnsavedChanges": "Keng net gespäichert Ännerungen",
+  "codeHelp": "Pecht e Code an fir e Charakter ze lueden, oder kopéiert dësen, fir en iwwerall ze benotzen."
 }

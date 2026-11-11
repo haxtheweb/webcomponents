@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Peji harina kuburitswa",
   "progressDone": "Yapera",
   "progressInProgress": "Iri kuenderera",
-  "progressVisited": "Yashanyirwa"
+  "progressVisited": "Yashanyirwa",
+  "progressPercentComplete": "{percent}% yapera",
+  "progressComplete": "Yapera"
 }

@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Operáciu nie je možné dokončiť ({status})",
   "normalizedPageSlugs": "Normalizované slugy stránok: {count}",
   "createdTitle": "Vytvorené: {title}!",
-  "processing": "Spracúva sa"
+  "processing": "Spracúva sa",
+  "saveTimedOut": "Uloženie vypršalo: server neodpovedal. Vaše zmeny sú tu zachované, ale server ich ešte môže dokončiť."
 }

@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "இந்தப் பக்கம் பூட்டப்பட்டுள்ளது. வெளியீட்டு நிலையை மாற்ற முதலில் அதைத் திறக்கவும்.",
   "pageLockedUnlockToDelete": "இந்தப் பக்கம் பூட்டப்பட்டுள்ளது. நீக்க முதலில் அதைத் திறக்கவும்.",
   "pageDetails": "பக்க விவரங்கள்",
-  "clickToUnlock": "திறக்க கிளிக் செய்யவும்"
+  "clickToUnlock": "திறக்க கிளிக் செய்யவும்",
+  "pageSettings": "பக்க அமைப்புகள்",
+  "editingPageSettings": "பக்க அமைப்புகளைத் திருத்துகிறது",
+  "published": "வெளியிடப்பட்டது",
+  "draft": "வரைவு",
+  "locked": "பூட்டப்பட்டது",
+  "unlocked": "திறக்கப்பட்டது",
+  "noTags": "குறிச்சொற்கள் இல்லை",
+  "oneTag": "1 குறிச்சொல்",
+  "tagCount": "{count} குறிச்சொற்கள்",
+  "enterKey": "Enter"
 }

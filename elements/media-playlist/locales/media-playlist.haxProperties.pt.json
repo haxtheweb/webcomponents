@@ -15,6 +15,12 @@
         "title": "Curso",
         "description": "O curso ao qual esta lista de reprodução se destina (identificador ou URL do curso)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Mídia",
+        "description": "Os vídeos e o áudio da playlist. Não é editado aqui: a estrutura da página usa isso para saber quais blocos podem ser soltos nela."
+      }
     ]
   }
 }

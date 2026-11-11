@@ -4,5 +4,6 @@
   "exportCitations": "Exporta les cites",
   "copy": "Copia",
   "exportCitationFormat": "Format d'exportació de les cites",
-  "selectCitationFormatBelow": "Selecciona un format de cita a continuació"
+  "selectCitationFormatBelow": "Selecciona un format de cita a continuació",
+  "addCitationToBibliography": "Afegeix la citació a la bibliografia"
 }

@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Beddel faylasha asalka ah",
   "newName": "Magac cusub",
   "deleteAction": "Tirtir",
-  "renameAction": "Magac cusub u bixi"
+  "renameAction": "Magac cusub u bixi",
+  "bulkOverwriteConfirm": "{action} {count} fayl? Tani waxay beddeshaa faylasha asalka ah lamana celin karo.",
+  "actionScale": "Beddel cabbirka",
+  "actionRotate": "Wareeji",
+  "actionTransform": "Beddel qaabka",
+  "actionConvertJpg": "U beddel JPG",
+  "actionCompress": "Cadaadi"
 }

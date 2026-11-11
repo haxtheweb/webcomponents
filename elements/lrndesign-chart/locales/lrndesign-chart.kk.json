@@ -4,5 +4,8 @@
   "pieChart": "Деректер · Дөңгелек диаграмма",
   "showDataTable": "Деректер кестесін көрсету",
   "downloadData": "Деректерді жүктеп алу (.csv)",
-  "series": "{n}-қатар"
+  "series": "{n}-қатар",
+  "barChartLabel": "бағанды диаграмма",
+  "lineChartLabel": "сызықтық диаграмма",
+  "pieChartLabel": "дөңгелек диаграмма"
 }

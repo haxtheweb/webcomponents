@@ -1,4 +1,9 @@
 {
   "audio": "Аудио",
-  "openOnSpotify": "Spotify колдонмосунда жаңы өтмөктө ачуу"
+  "openOnSpotify": "Spotify колдонмосунда жаңы өтмөктө ачуу",
+  "embedTitle": "Spotify кыстармасы",
+  "trackEmbedTitle": "Spotify трек кыстармасы",
+  "albumEmbedTitle": "Spotify альбом кыстармасы",
+  "playlistEmbedTitle": "Spotify плейлист кыстармасы",
+  "artistEmbedTitle": "Spotify аткаруучу кыстармасы"
 }

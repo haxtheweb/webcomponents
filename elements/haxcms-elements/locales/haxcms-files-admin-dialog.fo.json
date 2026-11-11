@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Skift út upprunafílur",
   "newName": "Nýtt navn",
   "deleteAction": "Strika",
-  "renameAction": "Gev nýtt navn"
+  "renameAction": "Gev nýtt navn",
+  "bulkOverwriteConfirm": "{action} {count} fílur? Hetta skiftir upprunafílurnar út og kann ikki angrast.",
+  "actionScale": "Broyt støddina",
+  "actionRotate": "Sno",
+  "actionTransform": "Umskapa",
+  "actionConvertJpg": "Umvanda til JPG",
+  "actionCompress": "Trýst saman"
 }

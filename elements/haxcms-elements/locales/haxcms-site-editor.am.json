@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "ክዋኔውን ማጠናቀቅ አልተቻለም ({status})",
   "normalizedPageSlugs": "{count} የገጽ slugዎች መደበኛ ሆነዋል",
   "createdTitle": "{title} ተፈጥሯል!",
-  "processing": "በሂደት ላይ"
+  "processing": "በሂደት ላይ",
+  "saveTimedOut": "ማስቀመጥ ጊዜው አልፎበታል፦ አገልጋዩ አልመለሰም። ለውጦችዎ እዚህ ተጠብቀዋል፣ ግን አገልጋዩ አሁንም ማስቀመጡን ሊጨርስ ይችላል።"
 }

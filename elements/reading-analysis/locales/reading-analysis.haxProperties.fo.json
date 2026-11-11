@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Virksemi",
-        "description": "Flagga prógv: næmingar festa hvørt flagg við prógvið fyri tí. Vel eitt: næmingar velja tann eina partin, sum best svarar spurninginum."
+        "description": "Flagga prógv: næmingar festa hvørt flagg við prógvið fyri tí. Vel eitt: næmingar velja tann eina partin, sum best svarar spurninginum.",
+        "options": {
+          "flag": "Merk prógv",
+          "one": "Vel eitt"
+        }
       },
       {
         "property": "unit",
         "title": "Næmingar velja",
-        "description": "Tað, ið ein næmingur peikar á í tekstinum. Myndir kunnu altíð veljast."
+        "description": "Tað, ið ein næmingur peikar á í tekstinum. Myndir kunnu altíð veljast.",
+        "options": {
+          "sentence": "Setningar",
+          "paragraph": "Greinar",
+          "figure": "Bert myndir"
+        }
       },
       {
         "property": "answers",

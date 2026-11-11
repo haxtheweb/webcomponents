@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Плеери ҳуҷҷатҳои ҷузъи веб"
+    "title": "Плеери ҳуҷҷатҳои ҷузъи веб",
+    "description": ""
   },
   "settings": {
     "configure": [

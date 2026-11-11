@@ -129,5 +129,12 @@
   "cancel": "إلغاء",
   "clearedSite": "تم مسح بيانات تعلّمك الخاصة بـ {site}.",
   "clearedDevice": "تم مسح جميع بيانات التعلّم على هذا الجهاز.",
-  "thisSite": "هذا الموقع"
+  "thisSite": "هذا الموقع",
+  "outlineHeading": "التقدم حسب الصفحة",
+  "allPages": "كل الصفحات",
+  "outlinePagesDone": "اكتملت {done} من {total} صفحات",
+  "outlinePagesCount": "{count} صفحات",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "اكتمل {percent}%",
+  "outlineComplete": "مكتمل"
 }

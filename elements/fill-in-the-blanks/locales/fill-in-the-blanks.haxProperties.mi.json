@@ -37,6 +37,16 @@
         "title": "Ingoa o te pātaitai",
         "description": "Ingoa pātaitai ka tukuna atu hei whakamahi i ngā taiao e ārahina ana e xAPI, hei tautuhi i tēnei tūemi"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Taea te whakaiti",
+        "description": "Whakaatu i tēnei pātai hei rārangi ka tuwhera, ka katia. Ina tuwhera tētahi, ka katia ētahi atu pātai taea te whakaiti i tōna taha."
+      },
+      {
+        "title": "Tīmata kua whakaiti",
+        "description": "Mēnā e taea ana te whakaiti, me tīmata hei rārangi kati e whakaatu ana i te pātai me tōna tūnga anake."
+      }
     ]
   }
 }

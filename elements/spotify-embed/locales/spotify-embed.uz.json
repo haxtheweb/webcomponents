@@ -1,4 +1,9 @@
 {
   "audio": "Audio",
-  "openOnSpotify": "Spotify’da yangi yorliqda ochish"
+  "openOnSpotify": "Spotify’da yangi yorliqda ochish",
+  "embedTitle": "Spotify joylamasi",
+  "trackEmbedTitle": "Spotify trek joylamasi",
+  "albumEmbedTitle": "Spotify albom joylamasi",
+  "playlistEmbedTitle": "Spotify pleylist joylamasi",
+  "artistEmbedTitle": "Spotify ijrochi joylamasi"
 }

@@ -282,7 +282,7 @@
     "line": "Learner data from any block, without code.",
     "code": "<user-action track=\"click\"></user-action>"
   },
-  "surfaceHash": "e919d389a60a",
+  "surfaceHash": "6ade127d3c55",
   "review": {
     "status": "draft",
     "notes": "Hand-written walkthrough. Needs human review before it is marked approved."

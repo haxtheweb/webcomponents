@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "נגן תיעוד של רכיב אינטרנט"
+    "title": "נגן תיעוד של רכיב אינטרנט",
+    "description": ""
   },
   "settings": {
     "configure": [

@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title}, szerző: {creator}, licenc: {license}.",
   "permissionsBeyondScope": "A licenc hatályán túli engedélyek elérhetők {link}.",
   "author": "(szerző)",
-  "onTheLicensingDetailsPage": "a licencrészletek oldalán"
+  "onTheLicensingDetailsPage": "a licencrészletek oldalán",
+  "licenseLabel": "Licenc"
 }

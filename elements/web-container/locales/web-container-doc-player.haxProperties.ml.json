@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "വെബ് ഘടക ഡോക് പ്ലെയർ"
+    "title": "വെബ് ഘടക ഡോക് പ്ലെയർ",
+    "description": ""
   },
   "settings": {
     "configure": [

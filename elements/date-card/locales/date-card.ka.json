@@ -1,0 +1,8 @@
+{
+  "ordinalOne": "-ლი",
+  "ordinalTwo": "-ე",
+  "ordinalFew": "-ე",
+  "ordinalOther": "-ე",
+  "fromTimeToTime": "{start}-დან {end}-მდე",
+  "atTime": "{start}-ზე"
+}

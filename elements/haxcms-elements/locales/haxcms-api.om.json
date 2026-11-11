@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Jijjiirraan bifaa hin milkoofne.",
   "PARAM_REQUIRED": "Gatiin barbaachisaan dhabameera: {param}.",
   "INVALID_REQUEST": "Gaaffiin sirrii miti.",
-  "PARAM_INVALID": "Gatii sirrii hin taane: {param}."
+  "PARAM_INVALID": "Gatii sirrii hin taane: {param}.",
+  "BLOCK_RATE_LIMITED": "Yeroo ammaa saayitii kana irratti jijjiirama qabiyyee baay'eedha. Sekoondii {retryAfter} booda irra deebi'i."
 }

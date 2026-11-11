@@ -4,5 +4,8 @@
   "pieChart": "Маълумот · Диаграммаи доиравӣ",
   "showDataTable": "Нишон додани ҷадвали маълумот",
   "downloadData": "Боргирии маълумот (.csv)",
-  "series": "Қатори {n}"
+  "series": "Қатори {n}",
+  "barChartLabel": "диаграммаи сутунӣ",
+  "lineChartLabel": "диаграммаи хатӣ",
+  "pieChartLabel": "диаграммаи доиравӣ"
 }

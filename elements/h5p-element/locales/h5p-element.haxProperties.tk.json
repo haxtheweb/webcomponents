@@ -1,13 +1,20 @@
 {
   "gizmo": {
     "title": "H5P",
-    "description": ".h5p faýllaryny ýüklemek we görkezmek üçin H5P örtügi"
+    "description": "Ýüklenen .h5p faýlyndan H5P interaktiw mazmunyny H5P serwersiz ýaňlandyrýar"
   },
   "settings": {
     "configure": [
       {
         "slot": "",
-        "description": "H5P iframe ýerleşdiriş kody"
+        "description": ".h5p faýlyny ýükläň ýa-da baglanyşdyryň. Ol brauzerde açylýar; H5P serweri gerek däl.",
+        "title": "H5P faýly"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Köne iframe goýma kody",
+        "description": "Diňe başga saýtdan H5P iframe goýýan köne mazmun üçin. Ýokarda .h5p faýly bellenen bolsa, boş goýuň."
       }
     ]
   }

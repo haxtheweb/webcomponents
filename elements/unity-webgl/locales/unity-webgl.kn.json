@@ -1,5 +1,6 @@
 {
   "simulation": "ಸಿಮ್ಯುಲೇಶನ್",
   "fullScreen": "ಪೂರ್ಣ ಪರದೆ",
-  "exitFullScreen": "ಪೂರ್ಣ ಪರದೆಯಿಂದ ನಿರ್ಗಮಿಸಿ"
+  "exitFullScreen": "ಪೂರ್ಣ ಪರದೆಯಿಂದ ನಿರ್ಗಮಿಸಿ",
+  "player": "Unity WebGL ಪ್ಲೇಯರ್"
 }

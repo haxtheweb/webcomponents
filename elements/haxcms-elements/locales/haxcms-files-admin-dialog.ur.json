@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "اصل فائلیں تبدیل کریں",
   "newName": "نیا نام",
   "deleteAction": "حذف کریں",
-  "renameAction": "نام بدلیں"
+  "renameAction": "نام بدلیں",
+  "bulkOverwriteConfirm": "{count} فائلوں پر «{action}» کریں؟ یہ اصل فائلوں کی جگہ لے لے گا اور واپس نہیں ہو سکتا۔",
+  "actionScale": "پیمانہ بدلیں",
+  "actionRotate": "گھمائیں",
+  "actionTransform": "تبدیل کریں",
+  "actionConvertJpg": "JPG میں تبدیل کریں",
+  "actionCompress": "کمپریس کریں"
 }

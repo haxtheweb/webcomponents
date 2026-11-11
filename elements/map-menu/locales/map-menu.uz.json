@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Sahifa nashr etilmagan",
   "progressDone": "Bajarildi",
   "progressInProgress": "Jarayonda",
-  "progressVisited": "Ko‘rilgan"
+  "progressVisited": "Ko‘rilgan",
+  "progressPercentComplete": "{percent}% bajarildi",
+  "progressComplete": "Bajarildi"
 }

@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Ta stran je zaklenjena. Za spremembo stanja objave jo najprej odklenite.",
   "pageLockedUnlockToDelete": "Ta stran je zaklenjena. Za brisanje jo najprej odklenite.",
   "pageDetails": "Podrobnosti strani",
-  "clickToUnlock": "Kliknite za odklenitev"
+  "clickToUnlock": "Kliknite za odklenitev",
+  "pageSettings": "Nastavitve strani",
+  "editingPageSettings": "Urejanje nastavitev strani",
+  "published": "Objavljeno",
+  "draft": "Osnutek",
+  "locked": "Zaklenjeno",
+  "unlocked": "Odklenjeno",
+  "noTags": "Brez oznak",
+  "oneTag": "1 oznaka",
+  "tagCount": "Število oznak: {count}",
+  "enterKey": "Enter"
 }

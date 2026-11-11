@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Не вдалося виконати перетворення.",
   "PARAM_REQUIRED": "Відсутнє обов'язкове значення: {param}.",
   "INVALID_REQUEST": "Недійсний запит.",
-  "PARAM_INVALID": "Недійсне значення: {param}."
+  "PARAM_INVALID": "Недійсне значення: {param}.",
+  "BLOCK_RATE_LIMITED": "Зараз на цьому сайті забагато змін вмісту. Спробуйте ще раз через {retryAfter} с."
 }

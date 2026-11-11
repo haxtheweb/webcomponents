@@ -3,5 +3,8 @@
   "openInNewTab": "PDF'yi yeni sekmede aç",
   "downloadPdf": "PDF'yi indir",
   "fullScreen": "Tam ekran",
-  "exitFullScreen": "Tam ekrandan çık"
+  "exitFullScreen": "Tam ekrandan çık",
+  "notSupported": "Web tarayıcınız PDF dosyalarını görüntüleyecek şekilde yapılandırılmamış görünüyor. Sorun değil,",
+  "notSupportedLink": "PDF dosyasını indirmek için buraya tıklayın.",
+  "download": "İndir"
 }

@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Activité",
-        "description": "Signaler les preuves : les apprenants collent chaque drapeau à côté de sa preuve. Sélectionner un seul : les apprenants choisissent le passage unique qui répond le mieux à la question."
+        "description": "Signaler les preuves : les apprenants collent chaque drapeau à côté de sa preuve. Sélectionner un seul : les apprenants choisissent le passage unique qui répond le mieux à la question.",
+        "options": {
+          "flag": "Signaler les preuves",
+          "one": "Choisir une réponse"
+        }
       },
       {
         "property": "unit",
         "title": "Les apprenants sélectionnent",
-        "description": "Ce qu'un apprenant désigne dans le texte. Les figures peuvent toujours être sélectionnées."
+        "description": "Ce qu'un apprenant désigne dans le texte. Les figures peuvent toujours être sélectionnées.",
+        "options": {
+          "sentence": "Phrases",
+          "paragraph": "Paragraphes",
+          "figure": "Figures uniquement"
+        }
       },
       {
         "property": "answers",

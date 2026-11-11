@@ -139,7 +139,10 @@ export const DDDSuper = function (SuperClass) {
         styles,
         DDDReset,
         css`
+          /* :host too: * only matches inside the shadow root, so a
+             transition on the element itself escaped the stop */
           @media (prefers-reduced-motion: reduce) {
+            :host,
             *,
             *::before,
             *::after {

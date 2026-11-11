@@ -1,4 +1,9 @@
 {
   "audio": "音频",
-  "openOnSpotify": "在新标签页中打开 Spotify"
+  "openOnSpotify": "在新标签页中打开 Spotify",
+  "embedTitle": "Spotify 嵌入",
+  "trackEmbedTitle": "Spotify 曲目嵌入",
+  "albumEmbedTitle": "Spotify 专辑嵌入",
+  "playlistEmbedTitle": "Spotify 播放列表嵌入",
+  "artistEmbedTitle": "Spotify 艺人嵌入"
 }

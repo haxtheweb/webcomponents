@@ -4,5 +4,8 @@
   "pieChart": "Gegevens · Cirkeldiagram",
   "showDataTable": "Gegevenstabel tonen",
   "downloadData": "Gegevens downloaden (.csv)",
-  "series": "Reeks {n}"
+  "series": "Reeks {n}",
+  "barChartLabel": "staafdiagram",
+  "lineChartLabel": "lijndiagram",
+  "pieChartLabel": "cirkeldiagram"
 }

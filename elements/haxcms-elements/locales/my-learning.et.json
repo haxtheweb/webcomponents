@@ -129,5 +129,12 @@
   "cancel": "Tühista",
   "clearedSite": "Sinu õppeandmed saidi {site} kohta tühjendati.",
   "clearedDevice": "Kõik selle seadme õppeandmed tühjendati.",
-  "thisSite": "see sait"
+  "thisSite": "see sait",
+  "outlineHeading": "Edenemine lehtede kaupa",
+  "allPages": "Kõik lehed",
+  "outlinePagesDone": "{done} lehte {total}-st tehtud",
+  "outlinePagesCount": "{count} lehte",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% valmis",
+  "outlineComplete": "Valmis"
 }

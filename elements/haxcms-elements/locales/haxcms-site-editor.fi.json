@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Toimintoa ei voitu suorittaa ({status})",
   "normalizedPageSlugs": "{count} sivun slug normalisoitu",
   "createdTitle": "{title} luotu!",
-  "processing": "Käsitellään"
+  "processing": "Käsitellään",
+  "saveTimedOut": "Tallennus aikakatkaistiin: palvelin ei vastannut. Muutoksesi säilytetään täällä, mutta palvelin voi silti viimeistellä niiden tallentamisen."
 }

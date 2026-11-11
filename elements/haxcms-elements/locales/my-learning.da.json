@@ -129,5 +129,12 @@
   "cancel": "Annullér",
   "clearedSite": "Dine læringsdata for {site} blev ryddet.",
   "clearedDevice": "Alle læringsdata på denne enhed blev ryddet.",
-  "thisSite": "dette websted"
+  "thisSite": "dette websted",
+  "outlineHeading": "Fremskridt pr. side",
+  "allPages": "Alle sider",
+  "outlinePagesDone": "{done} af {total} sider færdige",
+  "outlinePagesCount": "{count} sider",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% gennemført",
+  "outlineComplete": "Gennemført"
 }

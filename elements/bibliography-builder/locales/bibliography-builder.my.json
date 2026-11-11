@@ -4,5 +4,6 @@
   "exportCitations": "ကိုးကားချက်များ ထုတ်ယူရန်",
   "copy": "ကူးယူရန်",
   "exportCitationFormat": "ကိုးကားချက် ဖော်မတ် ထုတ်ယူရန်",
-  "selectCitationFormatBelow": "အောက်တွင် ကိုးကားချက် ဖော်မတ်တစ်ခု ရွေးပါ"
+  "selectCitationFormatBelow": "အောက်တွင် ကိုးကားချက် ဖော်မတ်တစ်ခု ရွေးပါ",
+  "addCitationToBibliography": "ကိုးကားချက်ကို ကျမ်းကိုးစာရင်းသို့ ထည့်ရန်"
 }

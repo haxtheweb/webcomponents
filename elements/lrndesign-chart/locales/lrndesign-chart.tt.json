@@ -4,5 +4,8 @@
   "pieChart": "Мәгълүмат · Түгәрәк диаграмма",
   "showDataTable": "Мәгълүмат таблицасын күрсәтү",
   "downloadData": "Мәгълүматны йөкләп алу (.csv)",
-  "series": "{n} рәт"
+  "series": "{n} рәт",
+  "barChartLabel": "багана диаграммасы",
+  "lineChartLabel": "сызык диаграммасы",
+  "pieChartLabel": "түгәрәк диаграмма"
 }

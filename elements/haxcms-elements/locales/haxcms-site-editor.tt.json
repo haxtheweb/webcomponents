@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Операцияне тәмамлап булмый ({status})",
   "normalizedPageSlugs": "{count} бит slug'ы нормальләштерелде",
   "createdTitle": "{title} ясалды!",
-  "processing": "Эшкәртелә"
+  "processing": "Эшкәртелә",
+  "saveTimedOut": "Саклау вакыты узды: сервер җавап бирмәде. Үзгәртүләрегез монда сакланып тора, ләкин сервер аларны барыбер саклап бетерергә мөмкин."
 }

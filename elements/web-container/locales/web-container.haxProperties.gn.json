@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "NodeJS ryru"
+    "title": "NodeJS ryru",
+    "description": ""
   },
   "settings": {
     "configure": [

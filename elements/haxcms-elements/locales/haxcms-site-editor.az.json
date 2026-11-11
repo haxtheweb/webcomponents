@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Əməliyyatı tamamlamaq mümkün olmadı ({status})",
   "normalizedPageSlugs": "{count} səhifə slug-ı normallaşdırıldı",
   "createdTitle": "{title} yaradıldı!",
-  "processing": "Emal edilir"
+  "processing": "Emal edilir",
+  "saveTimedOut": "Saxlama vaxtı bitdi: server cavab vermədi. Dəyişiklikləriniz burada saxlanılır, lakin server onları hələ də saxlaya bilər."
 }

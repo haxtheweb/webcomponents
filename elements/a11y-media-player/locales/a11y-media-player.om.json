@@ -35,5 +35,12 @@
   "youTubeStartLoading": "Taphachiisi tuqi.",
   "youTubeTranscriptLabel": "Barreeffamni yeroo miidiyaan taphatu fe'ama.",
   "audioDescriptionLabel": "Ibsa sagaleen",
-  "openOnYouTube": "YouTube irratti bani"
+  "openOnYouTube": "YouTube irratti bani",
+  "interactiveLabel": "walquunnamtii kan qabu",
+  "layoutLabel": "Qindaa'ina",
+  "sideLabel": "Cinaa",
+  "belowLabel": "Gadi",
+  "leftLabel": "Bitaa",
+  "rightLabel": "Mirga",
+  "hideTranscriptLabel": "Barreeffama sagalee dhoksi"
 }

@@ -1,5 +1,6 @@
 {
   "simulation": "سیمولیشن",
   "fullScreen": "بشپړ سکرین",
-  "exitFullScreen": "له بشپړ سکرین څخه ووځئ"
+  "exitFullScreen": "له بشپړ سکرین څخه ووځئ",
+  "player": "Unity WebGL پلیر"
 }

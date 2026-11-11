@@ -1946,7 +1946,7 @@
     {
       "tag": "hax-plate-context",
       "title": "",
-      "description": "A context menu that provides common grid plate based authoring options.",
+      "description": "The block bar: one row of block operations above the active block.",
       "package": "@haxtheweb/hax-body",
       "import": "@haxtheweb/hax-body/lib/hax-plate-context.js",
       "type": "element",

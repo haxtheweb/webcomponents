@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Whakakapi i ngā kōnae taketake",
   "newName": "Ingoa hou",
   "deleteAction": "Muku",
-  "renameAction": "Whakaingoa anō"
+  "renameAction": "Whakaingoa anō",
+  "bulkOverwriteConfirm": "{action} {count} ngā kōnae? Ka whakakapia ngā kōnae taketake, ā, kāore e taea te whakakore.",
+  "actionScale": "Whakarahi/Whakaiti",
+  "actionRotate": "Hurihuri",
+  "actionTransform": "Whakarerekē",
+  "actionConvertJpg": "Whakawhitia ki JPG",
+  "actionCompress": "Kōpiri"
 }

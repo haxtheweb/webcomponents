@@ -35,5 +35,12 @@
   "youTubeStartLoading": "Druk speel.",
   "youTubeTranscriptLabel": "Transkripsie sal laai sodra die media speel.",
   "audioDescriptionLabel": "Oudiobeskrywing",
-  "openOnYouTube": "Maak oop op YouTube"
+  "openOnYouTube": "Maak oop op YouTube",
+  "interactiveLabel": "interaktief",
+  "layoutLabel": "Uitleg",
+  "sideLabel": "Sy",
+  "belowLabel": "Onder",
+  "leftLabel": "Links",
+  "rightLabel": "Regs",
+  "hideTranscriptLabel": "Versteek transkripsie"
 }

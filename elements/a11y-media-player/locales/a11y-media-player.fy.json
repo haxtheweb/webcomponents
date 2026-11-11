@@ -35,5 +35,12 @@
   "youTubeStartLoading": "Druk op ôfspylje.",
   "youTubeTranscriptLabel": "De transkripsje wurdt laden sadree't it medium ôfspile wurdt.",
   "audioDescriptionLabel": "Audiobeskriuwing",
-  "openOnYouTube": "Iepenje op YouTube"
+  "openOnYouTube": "Iepenje op YouTube",
+  "interactiveLabel": "ynteraktyf",
+  "layoutLabel": "Yndieling",
+  "sideLabel": "Opsij",
+  "belowLabel": "Ûnder",
+  "leftLabel": "Links",
+  "rightLabel": "Rjochts",
+  "hideTranscriptLabel": "Transkripsje ferstopje"
 }

@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "La conversió ha fallat.",
   "PARAM_REQUIRED": "Falta un valor obligatori: {param}.",
   "INVALID_REQUEST": "Sol·licitud no vàlida.",
-  "PARAM_INVALID": "Valor no vàlid: {param}."
+  "PARAM_INVALID": "Valor no vàlid: {param}.",
+  "BLOCK_RATE_LIMITED": "Hi ha massa canvis de contingut en aquest lloc ara mateix. Torna-ho a provar d'aquí a {retryAfter} segons."
 }

@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "NodeJS konteyneri"
+    "title": "NodeJS konteyneri",
+    "description": ""
   },
   "settings": {
     "configure": [

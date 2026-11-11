@@ -4,5 +4,8 @@
   "pieChart": "Podatki · Tortni grafikon",
   "showDataTable": "Pokaži tabelo podatkov",
   "downloadData": "Prenesi podatke (.csv)",
-  "series": "Serija {n}"
+  "series": "Serija {n}",
+  "barChartLabel": "stolpčni grafikon",
+  "lineChartLabel": "črtni grafikon",
+  "pieChartLabel": "tortni grafikon"
 }

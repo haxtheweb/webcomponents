@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Kusintha mtundu sikunatheke.",
   "PARAM_REQUIRED": "Mtengo wofunikira ukusowa: {param}.",
   "INVALID_REQUEST": "Pempho silolondola.",
-  "PARAM_INVALID": "Mtengo wolakwika: {param}."
+  "PARAM_INVALID": "Mtengo wolakwika: {param}.",
+  "BLOCK_RATE_LIMITED": "Zosintha zambiri kwambiri za zinthu patsamba lino pakadali pano. Yesaninso pakatha masekondi {retryAfter}."
 }

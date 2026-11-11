@@ -1,13 +1,20 @@
 {
   "gizmo": {
     "title": "H5P",
-    "description": ".h5p 파일을 불러와 표시하기 위한 H5P 래퍼"
+    "description": "업로드한 .h5p 파일의 H5P 인터랙티브 콘텐츠를 H5P 서버 없이 재생합니다"
   },
   "settings": {
     "configure": [
       {
         "slot": "",
-        "description": "H5P iframe 삽입 코드"
+        "description": ".h5p 파일을 업로드하거나 링크하세요. 브라우저에서 압축이 풀리며 H5P 서버는 필요하지 않습니다.",
+        "title": "H5P 파일"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "레거시 iframe 임베드 코드",
+        "description": "다른 사이트의 H5P iframe을 임베드하는 이전 콘텐츠 전용입니다. 위에 .h5p 파일을 설정했다면 비워 두세요."
       }
     ]
   }

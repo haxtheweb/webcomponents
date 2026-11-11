@@ -2,5 +2,7 @@
   "pageIsUnpublished": "පිටුව ප්‍රකාශනය කර නැත",
   "progressDone": "සම්පූර්ණයි",
   "progressInProgress": "ප්‍රගතියේ පවතී",
-  "progressVisited": "නරඹා ඇත"
+  "progressVisited": "නරඹා ඇත",
+  "progressPercentComplete": "{percent}% සම්පූර්ණයි",
+  "progressComplete": "සම්පූර්ණයි"
 }

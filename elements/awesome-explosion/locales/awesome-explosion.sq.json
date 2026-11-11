@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Kliko ose kalo kursorin për të luajtur zhurmën e shpërthimit",
+  "soundDisabled": "Efekt vizual shpërthimi (zëri i çaktivizuar)",
+  "explosionAnimation": "animacion shpërthimi",
+  "explosionAriaLabel": "Animacion shpërthimi {state} {sound}. Kliko për ta ndërruar.",
+  "playing": "po luhet",
+  "stopped": "i ndalur",
+  "withSound": "me zë",
+  "muted": "(pa zë)"
+}

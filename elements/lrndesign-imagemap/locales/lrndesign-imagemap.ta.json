@@ -1,0 +1,9 @@
+{
+  "imageMap": "பட வரைபடம்",
+  "interactive": "ஊடாடும்",
+  "hotspot": "ஹாட்ஸ்பாட்",
+  "hotspotPosition": "{total} இல் {n}",
+  "hotspotsExplored": "{total} ஹாட்ஸ்பாட்களில் {n} ஆராயப்பட்டன",
+  "explored": "ஆராயப்பட்டது",
+  "close": "மூடு"
+}

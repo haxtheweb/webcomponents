@@ -4,5 +4,8 @@
   "pieChart": "Data · Dairəvi diaqram",
   "showDataTable": "Data cədvəlini göstər",
   "downloadData": "Datanı yüklə (.csv)",
-  "series": "Seriya {n}"
+  "series": "Seriya {n}",
+  "barChartLabel": "sütunlu diaqram",
+  "lineChartLabel": "xətti diaqram",
+  "pieChartLabel": "dairəvi diaqram"
 }

@@ -4,5 +4,8 @@
   "pieChart": "Veri · Pasta grafik",
   "showDataTable": "Veri tablosunu göster",
   "downloadData": "Verileri indir (.csv)",
-  "series": "Seri {n}"
+  "series": "Seri {n}",
+  "barChartLabel": "çubuk grafik",
+  "lineChartLabel": "çizgi grafik",
+  "pieChartLabel": "pasta grafik"
 }

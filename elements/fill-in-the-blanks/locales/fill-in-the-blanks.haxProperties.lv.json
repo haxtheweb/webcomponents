@@ -37,6 +37,16 @@
         "title": "Testa nosaukums",
         "description": "Testa nosaukums, ko nodod xAPI vidēm šī elementa identificēšanai"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Sakļaujams",
+        "description": "Rādīt šo jautājumu kā rindu, kas atveras un aizveras. Atverot vienu, pārējie blakus esošie sakļaujamie jautājumi aizveras."
+      },
+      {
+        "title": "Sākt sakļautu",
+        "description": "Ja sakļaujams, sākt kā aizvērtu rindu, kurā redzams tikai jautājums un tā statuss."
+      }
     ]
   }
 }

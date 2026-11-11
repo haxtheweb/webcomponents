@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Замінити оригінальні файли",
   "newName": "Нова назва",
   "deleteAction": "Видалити",
-  "renameAction": "Перейменувати"
+  "renameAction": "Перейменувати",
+  "bulkOverwriteConfirm": "{action}: файлів {count}? Це замінить оригінальні файли і не може бути скасовано.",
+  "actionScale": "Змінити розмір",
+  "actionRotate": "Повернути",
+  "actionTransform": "Перетворити",
+  "actionConvertJpg": "Перетворити на JPG",
+  "actionCompress": "Стиснути"
 }

@@ -146,6 +146,13 @@ class FigureLabel extends DDD {
         ],
         advanced: [],
       },
+      demoSchema: [
+        {
+          tag: "figure-label",
+          properties: {},
+          content: "",
+        },
+      ],
     };
   }
   // properties available to the custom element for data binding

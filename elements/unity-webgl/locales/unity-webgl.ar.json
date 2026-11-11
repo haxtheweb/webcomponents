@@ -1,5 +1,6 @@
 {
   "simulation": "محاكاة",
   "fullScreen": "ملء الشاشة",
-  "exitFullScreen": "الخروج من وضع ملء الشاشة"
+  "exitFullScreen": "الخروج من وضع ملء الشاشة",
+  "player": "مشغّل Unity WebGL"
 }

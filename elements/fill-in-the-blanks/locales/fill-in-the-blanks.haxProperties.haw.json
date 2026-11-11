@@ -37,6 +37,16 @@
         "title": "Inoa o ka hōʻike",
         "description": "Inoa hōʻike i hoʻouna ʻia no ka hoʻohana ʻana ma nā kaiapuni xAPI no ka ʻike ʻana i kēia mea"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Hiki ke hoʻopili",
+        "description": "Hōʻike i kēia nīnau ma ke ʻano lālani e wehe a pani ʻia. Ke wehe ʻia kekahi, pani ʻia nā nīnau hiki ke hoʻopili ʻē aʻe ma kona ʻaoʻao."
+      },
+      {
+        "title": "E hoʻomaka me ka hoʻopili ʻia",
+        "description": "Ke hiki ke hoʻopili, e hoʻomaka ma ke ʻano lālani i pani ʻia e hōʻike ana i ka nīnau a me kona kūlana wale nō."
+      }
     ]
   }
 }

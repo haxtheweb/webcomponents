@@ -92,6 +92,19 @@ class SimpleProgress extends HTMLElement {
         transform: scaleX(.75) translateX(125%);
       }
     }
+
+    /* nothing moves with prefers-reduced-motion */
+    @media (prefers-reduced-motion: reduce) {
+      :host,
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        transition-delay: 0ms !important;
+      }
+    }
   </style>
 
   <div id="primaryProgress"></div>`;

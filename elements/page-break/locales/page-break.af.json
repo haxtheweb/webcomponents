@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Hierdie bladsy is gesluit. Ontsluit dit eers om die publikasiestatus te verander.",
   "pageLockedUnlockToDelete": "Hierdie bladsy is gesluit. Ontsluit dit eers om uit te vee.",
   "pageDetails": "Bladsy besonderhede",
-  "clickToUnlock": "Klik om te ontsluit"
+  "clickToUnlock": "Klik om te ontsluit",
+  "pageSettings": "Bladsyinstellings",
+  "editingPageSettings": "Wysig bladsyinstellings",
+  "published": "Gepubliseer",
+  "draft": "Konsep",
+  "locked": "Gesluit",
+  "unlocked": "Oopgesluit",
+  "noTags": "Geen etikette nie",
+  "oneTag": "1 etiket",
+  "tagCount": "{count} etikette",
+  "enterKey": "Enter"
 }

@@ -37,6 +37,16 @@
         "title": "Jeneng kuis",
         "description": "Jeneng kuis sing dikirim kanggo digunakake ing lingkungan adhedhasar xAPI kanggo ngenali item iki"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Bisa dilipat",
+        "description": "Tampilake pitakon iki minangka baris sing bisa dibukak lan ditutup. Mbukak siji bakal nutup pitakon bisa dilipat liyane ing sandhinge."
+      },
+      {
+        "title": "Wiwit kanthi dilipat",
+        "description": "Yen bisa dilipat, wiwit minangka baris sing ditutup lan mung nuduhake pitakon lan statuse."
+      }
     ]
   }
 }

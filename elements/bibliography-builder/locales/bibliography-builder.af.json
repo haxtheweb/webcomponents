@@ -4,5 +4,6 @@
   "exportCitations": "Voer aanhalings uit",
   "copy": "Kopieer",
   "exportCitationFormat": "Uitvoerformaat vir aanhalings",
-  "selectCitationFormatBelow": "Kies 'n aanhalingsformaat hieronder"
+  "selectCitationFormatBelow": "Kies 'n aanhalingsformaat hieronder",
+  "addCitationToBibliography": "Voeg aanhaling by bibliografie"
 }

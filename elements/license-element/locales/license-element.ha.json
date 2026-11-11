@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title} daga {creator} yana da lasisi ƙarƙashin {license}.",
   "permissionsBeyondScope": "Izini fiye da iyakar wannan lasisi suna samuwa {link}.",
   "author": "(marubuci)",
-  "onTheLicensingDetailsPage": "a shafin cikakkun bayanan lasisi"
+  "onTheLicensingDetailsPage": "a shafin cikakkun bayanan lasisi",
+  "licenseLabel": "Lasisi"
 }

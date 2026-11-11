@@ -19,5 +19,13 @@
   "copyCode": "Copier le code",
   "copied": "Copié !",
   "invalidCode": "Ce n'est pas un code de personnage.",
-  "preview": "Aperçu du personnage"
+  "preview": "Aperçu du personnage",
+  "previous": "{name} précédent",
+  "next": "{name} suivant",
+  "variant": "{current} sur {total}",
+  "save": "Enregistrer",
+  "cancel": "Annuler",
+  "unsavedChanges": "Modifications non enregistrées",
+  "noUnsavedChanges": "Aucune modification non enregistrée",
+  "codeHelp": "Collez un code pour charger un personnage, ou copiez celui-ci pour l'utiliser ailleurs."
 }

@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{creator} દ્વારા {title} {license} હેઠળ લાઇસન્સ પ્રાપ્ત છે.",
   "permissionsBeyondScope": "આ લાઇસન્સના અવકાશની બહારની પરવાનગીઓ {link} ઉપલબ્ધ છે.",
   "author": "(લેખક)",
-  "onTheLicensingDetailsPage": "લાઇસન્સિંગ વિગતો પેજ પર"
+  "onTheLicensingDetailsPage": "લાઇસન્સિંગ વિગતો પેજ પર",
+  "licenseLabel": "લાઇસન્સ"
 }

@@ -22,6 +22,12 @@
         "title": "Işjeň indeks",
         "description": "Galereýa tertibinde başlanýan işjeň suratyň indeksi."
       }
+    ],
+    "developer": [
+      {
+        "title": "Suratlar",
+        "description": "Galereýadaky suratlar. Bu ýerde redaktirlenmeýär: sahypanyň gurluşy içine haýsy bloklaryň taşlanyp bilinjekdigini bilmek üçin ony ulanýar."
+      }
     ]
   }
 }

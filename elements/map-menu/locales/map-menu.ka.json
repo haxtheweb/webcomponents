@@ -2,5 +2,7 @@
   "pageIsUnpublished": "გვერდი გამოუქვეყნებელია",
   "progressDone": "დასრულებულია",
   "progressInProgress": "მიმდინარეობს",
-  "progressVisited": "ნანახია"
+  "progressVisited": "ნანახია",
+  "progressPercentComplete": "{percent}% დასრულებულია",
+  "progressComplete": "დასრულებულია"
 }

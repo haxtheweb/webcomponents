@@ -1,4 +1,9 @@
 {
   "audio": "Audio",
-  "openOnSpotify": "Tsegulani pa Spotify mu tabu yatsopano"
+  "openOnSpotify": "Tsegulani pa Spotify mu tabu yatsopano",
+  "embedTitle": "Spotify yoikidwa",
+  "trackEmbedTitle": "Nyimbo ya Spotify yoikidwa",
+  "albumEmbedTitle": "Album ya Spotify yoikidwa",
+  "playlistEmbedTitle": "Playlist ya Spotify yoikidwa",
+  "artistEmbedTitle": "Woyimba wa Spotify woikidwa"
 }

@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Odtwarzacz dokumentacji komponentów webowych"
+    "title": "Odtwarzacz dokumentacji komponentów webowych",
+    "description": ""
   },
   "settings": {
     "configure": [

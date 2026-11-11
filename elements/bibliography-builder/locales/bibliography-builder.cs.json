@@ -4,5 +4,6 @@
   "exportCitations": "Exportovat citace",
   "copy": "Kopírovat",
   "exportCitationFormat": "Formát exportu citací",
-  "selectCitationFormatBelow": "Níže vyberte formát citací"
+  "selectCitationFormatBelow": "Níže vyberte formát citací",
+  "addCitationToBibliography": "Přidat citaci do bibliografie"
 }

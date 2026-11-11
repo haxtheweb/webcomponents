@@ -4,5 +4,6 @@
   "exportCitations": "Zitate exportieren",
   "copy": "Kopieren",
   "exportCitationFormat": "Zitierformat für den Export",
-  "selectCitationFormatBelow": "Wähle unten ein Zitierformat"
+  "selectCitationFormatBelow": "Wähle unten ein Zitierformat",
+  "addCitationToBibliography": "Zitat zum Literaturverzeichnis hinzufügen"
 }

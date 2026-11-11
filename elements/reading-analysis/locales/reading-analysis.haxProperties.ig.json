@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Ọrụ",
-        "description": "Kaa ihe akaebe: ndị na-amụ ihe na-amado ọkọlọtọ ọ bụla n'akụkụ ihe akaebe ya. Họrọ otu: ndị na-amụ ihe na-ahọrọ naanị otu akụkụ kacha zaa ajụjụ."
+        "description": "Kaa ihe akaebe: ndị na-amụ ihe na-amado ọkọlọtọ ọ bụla n'akụkụ ihe akaebe ya. Họrọ otu: ndị na-amụ ihe na-ahọrọ naanị otu akụkụ kacha zaa ajụjụ.",
+        "options": {
+          "flag": "Maakị ihe akaebe",
+          "one": "Họrọ otu"
+        }
       },
       {
         "property": "unit",
         "title": "Ndị na-amụ ihe na-ahọrọ",
-        "description": "Ihe onye na-amụ ihe na-atụ aka na ya n'ihe a na-agụ. Enwere ike ịhọrọ onyonyo mgbe niile."
+        "description": "Ihe onye na-amụ ihe na-atụ aka na ya n'ihe a na-agụ. Enwere ike ịhọrọ onyonyo mgbe niile.",
+        "options": {
+          "sentence": "Ahịrịokwu",
+          "paragraph": "Paragraf",
+          "figure": "Eserese naanị"
+        }
       },
       {
         "property": "answers",

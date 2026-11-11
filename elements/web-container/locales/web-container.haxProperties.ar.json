@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "حاوية NodeJS"
+    "title": "حاوية NodeJS",
+    "description": ""
   },
   "settings": {
     "configure": [

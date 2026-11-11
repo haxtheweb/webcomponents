@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Theip ar an tiontú.",
   "PARAM_REQUIRED": "Tá luach riachtanach ar iarraidh: {param}.",
   "INVALID_REQUEST": "Iarratas neamhbhailí.",
-  "PARAM_INVALID": "Luach neamhbhailí: {param}."
+  "PARAM_INVALID": "Luach neamhbhailí: {param}.",
+  "BLOCK_RATE_LIMITED": "An iomarca athruithe inneachair ar an suíomh seo faoi láthair. Bain triail eile as i gceann {retryAfter} soicind."
 }

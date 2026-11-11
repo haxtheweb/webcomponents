@@ -1,4 +1,9 @@
 {
   "audio": "ኦዲዮ",
-  "openOnSpotify": "በSpotify በአዲስ ትር ክፈት"
+  "openOnSpotify": "በSpotify በአዲስ ትር ክፈት",
+  "embedTitle": "Spotify ማካተቻ",
+  "trackEmbedTitle": "Spotify የትራክ ማካተቻ",
+  "albumEmbedTitle": "Spotify የአልበም ማካተቻ",
+  "playlistEmbedTitle": "Spotify የአጫዋች ዝርዝር ማካተቻ",
+  "artistEmbedTitle": "Spotify የአርቲስት ማካተቻ"
 }

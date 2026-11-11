@@ -3,5 +3,8 @@
   "openInNewTab": "Ava PDF uuel vahelehel",
   "downloadPdf": "Laadi PDF alla",
   "fullScreen": "Täisekraan",
-  "exitFullScreen": "Välju täisekraanilt"
+  "exitFullScreen": "Välju täisekraanilt",
+  "notSupported": "Paistab, et sinu veebibrauser pole seadistatud PDF-faile kuvama. Pole hullu,",
+  "notSupportedLink": "PDF-faili allalaadimiseks klõpsa siin.",
+  "download": "Laadi alla"
 }

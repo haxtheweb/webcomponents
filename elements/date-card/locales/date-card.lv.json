@@ -1,0 +1,8 @@
+{
+  "ordinalOne": ".",
+  "ordinalTwo": ".",
+  "ordinalFew": ".",
+  "ordinalOther": ".",
+  "fromTimeToTime": "no {start} līdz {end}",
+  "atTime": "plkst. {start}"
+}

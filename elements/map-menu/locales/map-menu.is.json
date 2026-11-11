@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Síðan er óbirt",
   "progressDone": "Lokið",
   "progressInProgress": "Í vinnslu",
-  "progressVisited": "Heimsótt"
+  "progressVisited": "Heimsótt",
+  "progressPercentComplete": "{percent}% lokið",
+  "progressComplete": "Lokið"
 }

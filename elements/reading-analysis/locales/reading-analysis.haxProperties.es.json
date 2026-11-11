@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Actividad",
-        "description": "Marcar evidencias: los estudiantes pegan cada banderita junto a su evidencia. Seleccionar uno: los estudiantes eligen el único fragmento que mejor responde a la pregunta."
+        "description": "Marcar evidencias: los estudiantes pegan cada banderita junto a su evidencia. Seleccionar uno: los estudiantes eligen el único fragmento que mejor responde a la pregunta.",
+        "options": {
+          "flag": "Marcar evidencias",
+          "one": "Seleccionar una"
+        }
       },
       {
         "property": "unit",
         "title": "Los estudiantes seleccionan",
-        "description": "Lo que un estudiante señala en la lectura. Las figuras siempre se pueden seleccionar."
+        "description": "Lo que un estudiante señala en la lectura. Las figuras siempre se pueden seleccionar.",
+        "options": {
+          "sentence": "Oraciones",
+          "paragraph": "Párrafos",
+          "figure": "Solo figuras"
+        }
       },
       {
         "property": "answers",

@@ -129,5 +129,12 @@
   "cancel": "رد ڪريو",
   "clearedSite": "{site} لاءِ توهان جو سکيا جو ڊيٽا صاف ڪيو ويو.",
   "clearedDevice": "هن ڊوائيس تي سڀ سکيا جو ڊيٽا صاف ڪيو ويو.",
-  "thisSite": "هيءَ سائيٽ"
+  "thisSite": "هيءَ سائيٽ",
+  "outlineHeading": "صفحي مطابق ترقي",
+  "allPages": "سڀ صفحا",
+  "outlinePagesDone": "{total} مان {done} صفحا مڪمل",
+  "outlinePagesCount": "{count} صفحا",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% مڪمل",
+  "outlineComplete": "مڪمل"
 }

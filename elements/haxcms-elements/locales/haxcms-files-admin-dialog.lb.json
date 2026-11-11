@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Original-Fichieren ersetzen",
   "newName": "Neien Numm",
   "deleteAction": "Läschen",
-  "renameAction": "Ëmbenennen"
+  "renameAction": "Ëmbenennen",
+  "bulkOverwriteConfirm": "{action} {count} Dateien? Dat ersetzt déi Originaldateien a kann net réckgängeg gemaach ginn.",
+  "actionScale": "Skaléieren",
+  "actionRotate": "Dréinen",
+  "actionTransform": "Transforméieren",
+  "actionConvertJpg": "An JPG ëmwandelen",
+  "actionCompress": "Kompriméieren"
 }

@@ -1,4 +1,9 @@
 {
   "audio": "Աուդիո",
-  "openOnSpotify": "Բացել Spotify-ում նոր ներդիրում"
+  "openOnSpotify": "Բացել Spotify-ում նոր ներդիրում",
+  "embedTitle": "Spotify ներդրում",
+  "trackEmbedTitle": "Spotify երգի ներդրում",
+  "albumEmbedTitle": "Spotify ալբոմի ներդրում",
+  "playlistEmbedTitle": "Spotify նվագացանկի ներդրում",
+  "artistEmbedTitle": "Spotify արտիստի ներդրում"
 }

@@ -4,5 +4,8 @@
   "pieChart": "ข้อมูล · แผนภูมิวงกลม",
   "showDataTable": "แสดงตารางข้อมูล",
   "downloadData": "ดาวน์โหลดข้อมูล (.csv)",
-  "series": "ชุดข้อมูล {n}"
+  "series": "ชุดข้อมูล {n}",
+  "barChartLabel": "แผนภูมิแท่ง",
+  "lineChartLabel": "แผนภูมิเส้น",
+  "pieChartLabel": "แผนภูมิวงกลม"
 }

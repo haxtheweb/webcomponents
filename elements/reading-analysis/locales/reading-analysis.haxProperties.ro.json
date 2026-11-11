@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Activitate",
-        "description": "Marcarea dovezilor: cursanții pun fiecare marcaj lângă dovada corespunzătoare. Selectarea unuia: cursanții aleg singurul pasaj care răspunde cel mai bine la întrebare."
+        "description": "Marcarea dovezilor: cursanții pun fiecare marcaj lângă dovada corespunzătoare. Selectarea unuia: cursanții aleg singurul pasaj care răspunde cel mai bine la întrebare.",
+        "options": {
+          "flag": "Marchează dovezile",
+          "one": "Selectați unul"
+        }
       },
       {
         "property": "unit",
         "title": "Cursanții selectează",
-        "description": "Ce indică un cursant în text. Figurile pot fi selectate întotdeauna."
+        "description": "Ce indică un cursant în text. Figurile pot fi selectate întotdeauna.",
+        "options": {
+          "sentence": "Propoziții",
+          "paragraph": "Paragrafe",
+          "figure": "Doar figuri"
+        }
       },
       {
         "property": "answers",

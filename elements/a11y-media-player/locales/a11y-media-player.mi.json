@@ -35,5 +35,12 @@
   "youTubeStartLoading": "Pēhia te purei.",
   "youTubeTranscriptLabel": "Ka uta te tuhinga ina pūrei te pāpāho.",
   "audioDescriptionLabel": "Whakaahuatanga ā-oro",
-  "openOnYouTube": "Whakatuwhera ki YouTube"
+  "openOnYouTube": "Whakatuwhera ki YouTube",
+  "interactiveLabel": "whakawhitiwhiti",
+  "layoutLabel": "Whakatakotoranga",
+  "sideLabel": "Taha",
+  "belowLabel": "Raro",
+  "leftLabel": "Mauī",
+  "rightLabel": "Matau",
+  "hideTranscriptLabel": "Huna tuhinga tauira"
 }

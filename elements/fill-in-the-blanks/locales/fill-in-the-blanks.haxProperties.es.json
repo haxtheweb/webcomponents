@@ -37,6 +37,16 @@
         "title": "Nombre del cuestionario",
         "description": "Nombre del cuestionario que se usa en entornos basados en xAPI para identificar este elemento"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Contraíble",
+        "description": "Muestra esta pregunta como una fila que se abre y se cierra. Al abrir una se cierran las demás preguntas contraíbles que están junto a ella."
+      },
+      {
+        "title": "Iniciar contraída",
+        "description": "Si es contraíble, empieza como una fila cerrada que solo muestra la pregunta y su estado."
+      }
     ]
   }
 }

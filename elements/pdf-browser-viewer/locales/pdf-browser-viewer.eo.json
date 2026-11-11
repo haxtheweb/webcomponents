@@ -3,5 +3,8 @@
   "openInNewTab": "Malfermi la PDF-dosieron en nova langeto",
   "downloadPdf": "Elŝuti la PDF-dosieron",
   "fullScreen": "Plenekrano",
-  "exitFullScreen": "Eliri el plenekrano"
+  "exitFullScreen": "Eliri el plenekrano",
+  "notSupported": "Ŝajnas, ke via retumilo ne estas agordita por montri PDF-dosierojn. Ne zorgu, nur",
+  "notSupportedLink": "alklaku ĉi tie por elŝuti la PDF-dosieron.",
+  "download": "Elŝuti"
 }

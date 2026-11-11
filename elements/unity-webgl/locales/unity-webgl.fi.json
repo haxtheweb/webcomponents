@@ -1,5 +1,6 @@
 {
   "simulation": "Simulaatio",
   "fullScreen": "Koko näyttö",
-  "exitFullScreen": "Poistu koko näytön tilasta"
+  "exitFullScreen": "Poistu koko näytön tilasta",
+  "player": "Unity WebGL -soitin"
 }

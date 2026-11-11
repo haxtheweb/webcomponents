@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Sta pagina hè bluccata. Sbluccatela prima di cambià u statu di publicazione.",
   "pageLockedUnlockToDelete": "Sta pagina hè bluccata. Sbluccatela prima di sguassalla.",
   "pageDetails": "Dettagli di a pagina",
-  "clickToUnlock": "Cliccate per sbluccà"
+  "clickToUnlock": "Cliccate per sbluccà",
+  "pageSettings": "Parametri di a pagina",
+  "editingPageSettings": "Mudificazione di i parametri di a pagina",
+  "published": "Pubblicatu",
+  "draft": "Bozza",
+  "locked": "Bluccatu",
+  "unlocked": "Sbluccatu",
+  "noTags": "Nisuna etichetta",
+  "oneTag": "1 etichetta",
+  "tagCount": "{count} etichette",
+  "enterKey": "Enter"
 }

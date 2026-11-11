@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Dizze side is beskoattele. Untskoattelje him earst om de publikaasjestatus te wizigjen.",
   "pageLockedUnlockToDelete": "Dizze side is beskoattele. Untskoattelje him earst om te wiskjen.",
   "pageDetails": "Side-details",
-  "clickToUnlock": "Klik om te ûntgrinzeljen"
+  "clickToUnlock": "Klik om te ûntgrinzeljen",
+  "pageSettings": "Sideynstellingen",
+  "editingPageSettings": "Sideynstellingen bewurkje",
+  "published": "Publisearre",
+  "draft": "Konsept",
+  "locked": "Beskoattele",
+  "unlocked": "Untskoattele",
+  "noTags": "Gjin tags",
+  "oneTag": "1 tag",
+  "tagCount": "{count} tags",
+  "enterKey": "Enter"
 }

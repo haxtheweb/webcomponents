@@ -4,5 +4,6 @@
   "exportCitations": "Exportă citările",
   "copy": "Copiază",
   "exportCitationFormat": "Formatul de export al citărilor",
-  "selectCitationFormatBelow": "Selectează un format de citare mai jos"
+  "selectCitationFormatBelow": "Selectează un format de citare mai jos",
+  "addCitationToBibliography": "Adaugă citarea în bibliografie"
 }

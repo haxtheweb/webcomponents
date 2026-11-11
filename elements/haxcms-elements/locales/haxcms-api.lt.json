@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Konvertuoti nepavyko.",
   "PARAM_REQUIRED": "Trūksta būtinos reikšmės: {param}.",
   "INVALID_REQUEST": "Netinkama užklausa.",
-  "PARAM_INVALID": "Netinkama reikšmė: {param}."
+  "PARAM_INVALID": "Netinkama reikšmė: {param}.",
+  "BLOCK_RATE_LIMITED": "Šiuo metu šioje svetainėje padaryta per daug turinio pakeitimų. Bandykite dar kartą po {retryAfter} sek."
 }

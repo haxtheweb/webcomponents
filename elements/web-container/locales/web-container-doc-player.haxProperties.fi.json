@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Verkkokomponenttien dokumentaatiosoitin"
+    "title": "Verkkokomponenttien dokumentaatiosoitin",
+    "description": ""
   },
   "settings": {
     "configure": [

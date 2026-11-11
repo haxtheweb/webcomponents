@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "Koodhka QR ee {title}",
+  "noData": "Xog lagu muujiyo sida koodh QR ah ma jirto",
+  "formatNotSupported": "Qaabka koodhka QR {format} lama taageero",
+  "noCanvas": "Browserkani ma sawiri karo koodhka QR (canvas looma taageero)"
+}

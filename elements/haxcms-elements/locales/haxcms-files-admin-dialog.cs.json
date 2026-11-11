@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Nahradit původní soubory",
   "newName": "Nový název",
   "deleteAction": "Smazat",
-  "renameAction": "Přejmenovat"
+  "renameAction": "Přejmenovat",
+  "bulkOverwriteConfirm": "{action} souborů: {count}? Tím se nahradí původní soubory a nelze to vrátit zpět.",
+  "actionScale": "Změnit velikost",
+  "actionRotate": "Otočit",
+  "actionTransform": "Transformovat",
+  "actionConvertJpg": "Převést na JPG",
+  "actionCompress": "Komprimovat"
 }

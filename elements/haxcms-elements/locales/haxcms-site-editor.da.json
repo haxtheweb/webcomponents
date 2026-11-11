@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Kan ikke fuldføre handlingen ({status})",
   "normalizedPageSlugs": "Normaliserede {count} side-slugs",
   "createdTitle": "{title} er oprettet!",
-  "processing": "Behandler"
+  "processing": "Behandler",
+  "saveTimedOut": "Gemningen fik timeout: serveren svarede ikke. Dine ændringer er bevaret her, men serveren er muligvis stadig ved at gemme dem."
 }

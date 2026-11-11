@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "Ua laikini ʻia ʻo {title} na {creator} ma lalo o kahi {license}.",
   "permissionsBeyondScope": "Loaʻa nā ʻae ma waho o ke ākea o kēia laikini {link}.",
   "author": "(mea kākau)",
-  "onTheLicensingDetailsPage": "ma ka ʻaoʻao kikoʻī laikini"
+  "onTheLicensingDetailsPage": "ma ka ʻaoʻao kikoʻī laikini",
+  "licenseLabel": "Laikini"
 }

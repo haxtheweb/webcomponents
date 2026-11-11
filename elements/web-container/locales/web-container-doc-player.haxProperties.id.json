@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Pemutar dokumentasi komponen web"
+    "title": "Pemutar dokumentasi komponen web",
+    "description": ""
   },
   "settings": {
     "configure": [

@@ -37,6 +37,16 @@
         "title": "Maqaa qormaata gabaabaa",
         "description": "Maqaa qormaata gabaabaa naannoo xAPI tiin oofamu keessatti wanta kana addaan baasuuf darbu"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Kan walitti maramu",
+        "description": "Gaaffii kana akka sarara banamuu fi cufamu agarsiisi. Tokko banuun gaaffilee walitti maramoo cinaa jiran cufa."
+      },
+      {
+        "title": "Walitti maramee jalqabi",
+        "description": "Yeroo walitti maramu, akka sarara cufamee gaaffii fi haala isaa qofa agarsiisu jalqabi."
+      }
     ]
   }
 }

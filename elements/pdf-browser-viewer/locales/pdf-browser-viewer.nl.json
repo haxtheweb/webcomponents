@@ -3,5 +3,8 @@
   "openInNewTab": "De PDF openen in een nieuw tabblad",
   "downloadPdf": "De PDF downloaden",
   "fullScreen": "Volledig scherm",
-  "exitFullScreen": "Volledig scherm verlaten"
+  "exitFullScreen": "Volledig scherm verlaten",
+  "notSupported": "Het lijkt erop dat je webbrowser niet is ingesteld om pdf-bestanden weer te geven. Geen zorgen, je kunt gewoon",
+  "notSupportedLink": "klik hier om het PDF-bestand te downloaden.",
+  "download": "Downloaden"
 }

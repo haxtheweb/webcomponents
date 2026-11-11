@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "یہ صفحہ مقفل ہے۔ اشاعت کی حیثیت بدلنے کے لیے پہلے اسے کھولیں۔",
   "pageLockedUnlockToDelete": "یہ صفحہ مقفل ہے۔ حذف کرنے کے لیے پہلے اسے کھولیں۔",
   "pageDetails": "صفحے کی تفصیلات",
-  "clickToUnlock": "کھولنے کے لیے کلک کریں"
+  "clickToUnlock": "کھولنے کے لیے کلک کریں",
+  "pageSettings": "صفحے کی ترتیبات",
+  "editingPageSettings": "صفحے کی ترتیبات میں ترمیم",
+  "published": "شائع شدہ",
+  "draft": "مسودہ",
+  "locked": "مقفل",
+  "unlocked": "غیر مقفل",
+  "noTags": "کوئی ٹیگ نہیں",
+  "oneTag": "1 ٹیگ",
+  "tagCount": "{count} ٹیگز",
+  "enterKey": "Enter"
 }

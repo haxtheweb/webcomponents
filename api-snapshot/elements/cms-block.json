@@ -26,6 +26,8 @@
     ],
     "attributes": [],
     "slots": [],
-    "demoTags": []
+    "demoTags": [
+      "cms-block"
+    ]
   }
 }

@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Ntchito",
-        "description": "Ikani mbendera pa umboni: ophunzira amamata mbendera iliyonse pambali pa umboni wake. Sankhani chimodzi: ophunzira amasankha gawo limodzi lokha lomwe likuyankha bwino kwambiri funsoli."
+        "description": "Ikani mbendera pa umboni: ophunzira amamata mbendera iliyonse pambali pa umboni wake. Sankhani chimodzi: ophunzira amasankha gawo limodzi lokha lomwe likuyankha bwino kwambiri funsoli.",
+        "options": {
+          "flag": "Lembani umboni",
+          "one": "Sankhani chimodzi"
+        }
       },
       {
         "property": "unit",
         "title": "Ophunzira amasankha",
-        "description": "Zomwe wophunzira amaloza m'nkhani. Zithunzi zitha kusankhidwa nthawi zonse."
+        "description": "Zomwe wophunzira amaloza m'nkhani. Zithunzi zitha kusankhidwa nthawi zonse.",
+        "options": {
+          "sentence": "Ziganizo",
+          "paragraph": "Ndime",
+          "figure": "Zithunzi zokha"
+        }
       },
       {
         "property": "answers",

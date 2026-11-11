@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Бұл бет құлыпталған. Жариялау күйін өзгерту үшін алдымен құлпын ашыңыз.",
   "pageLockedUnlockToDelete": "Бұл бет құлыпталған. Жою үшін алдымен құлпын ашыңыз.",
   "pageDetails": "Бет мәліметтері",
-  "clickToUnlock": "Ашу үшін басыңыз"
+  "clickToUnlock": "Ашу үшін басыңыз",
+  "pageSettings": "Бет параметрлері",
+  "editingPageSettings": "Бет параметрлерін өңдеу",
+  "published": "Жарияланған",
+  "draft": "Жоба",
+  "locked": "Құлыпталған",
+  "unlocked": "Құлыптан босатылған",
+  "noTags": "Тегтер жоқ",
+  "oneTag": "1 тег",
+  "tagCount": "{count} тег",
+  "enterKey": "Enter"
 }

@@ -1,13 +1,20 @@
 {
   "gizmo": {
     "title": "H5P",
-    "description": "Wrapper H5P per caricare e presentare file .h5p"
+    "description": "Riproduce contenuti interattivi H5P da un file .h5p caricato, senza bisogno di un server H5P"
   },
   "settings": {
     "configure": [
       {
         "slot": "",
-        "description": "Codice di incorporamento iframe H5P"
+        "description": "Carica o collega un file .h5p. Viene decompresso nel browser; non serve alcun server H5P.",
+        "title": "File H5P"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Codice di incorporamento iframe legacy",
+        "description": "Solo per contenuti meno recenti che incorporano un iframe H5P da un altro sito. Lascia vuoto quando sopra è impostato un file .h5p."
       }
     ]
   }

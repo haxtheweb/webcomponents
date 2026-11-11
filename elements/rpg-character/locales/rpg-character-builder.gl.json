@@ -19,5 +19,13 @@
   "copyCode": "Copiar código",
   "copied": "Copiado!",
   "invalidCode": "Iso non é un código de personaxe.",
-  "preview": "Vista previa do personaxe"
+  "preview": "Vista previa do personaxe",
+  "previous": "{name} anterior",
+  "next": "{name} seguinte",
+  "variant": "{current} de {total}",
+  "save": "Gardar",
+  "cancel": "Cancelar",
+  "unsavedChanges": "Cambios sen gardar",
+  "noUnsavedChanges": "Non hai cambios sen gardar",
+  "codeHelp": "Pega un código para cargar un personaxe ou copia este para usalo en calquera lugar."
 }

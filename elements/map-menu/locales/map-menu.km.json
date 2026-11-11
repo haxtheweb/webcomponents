@@ -2,5 +2,7 @@
   "pageIsUnpublished": "ទំព័រមិនទាន់បានបោះពុម្ពផ្សាយ",
   "progressDone": "បានបញ្ចប់",
   "progressInProgress": "កំពុងដំណើរការ",
-  "progressVisited": "បានចូលមើល"
+  "progressVisited": "បានចូលមើល",
+  "progressPercentComplete": "{percent}% បានបញ្ចប់",
+  "progressComplete": "បានបញ្ចប់"
 }

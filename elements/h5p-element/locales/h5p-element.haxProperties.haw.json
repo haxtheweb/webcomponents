@@ -1,13 +1,20 @@
 {
   "gizmo": {
     "title": "H5P",
-    "description": "He wahī H5P no ka hoʻouka a hōʻike ʻana i nā faila .h5p"
+    "description": "Hoʻokani i ka maʻamau launa pāpā H5P mai kahi waihona .h5p i hoʻouka ʻia, me ka makemake ʻole i kahi kikowaena H5P"
   },
   "settings": {
     "configure": [
       {
         "slot": "",
-        "description": "Pāʻālua hoʻokomo iframe H5P"
+        "description": "E hoʻouka a loulou paha i kahi waihona .h5p. Wehe ʻia ia i loko o ka polokalamu kele; ʻaʻole pono kahi kikowaena H5P.",
+        "title": "Waihona H5P"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ke kumu iframe kahiko",
+        "description": "No ka maʻamau kahiko wale nō e hoʻokomo ana i kahi iframe H5P mai kahi pūnaewele ʻē. E waiho i ka hakahaka inā ua hoʻonohonoho ʻia kahi waihona .h5p ma luna."
       }
     ]
   }

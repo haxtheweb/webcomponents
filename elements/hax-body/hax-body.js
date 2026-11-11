@@ -241,6 +241,15 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           );
           --hax-body-possible-target-background-color: inherit;
         }
+        /* keyboard focus on the editing area (edit mode only, set by
+           __setKeyboardFocusRing). Sky blue as in the rest of HAX UI: about
+           3.1:1 on white and 4.9:1 on coaly gray, so it holds on light and
+           dark pages */
+        :host([edit-mode][data-hax-keyboard-focus]) {
+          outline: var(--ddd-border-size-md, 3px) solid
+            var(--ddd-theme-default-skyBlue, #009cde);
+          outline-offset: var(--ddd-spacing-1, 4px);
+        }
         #topcontext {
           z-index: calc(var(--hax-ui-focus-z-index) - 2);
           min-width: 280px;
@@ -2473,6 +2482,58 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       !!inModal
     );
   }
+  /**
+   * Show / hide the keyboard focus ring on the editing area. The ring is a
+   * private host attribute (never serialized: haxToContent reads children)
+   * because :focus-visible always matches a contenteditable host, mouse
+   * focus included.
+   */
+  __setKeyboardFocusRing(show) {
+    if (show && this.editMode) {
+      this.setAttribute("data-hax-keyboard-focus", "");
+    } else if (this.hasAttribute("data-hax-keyboard-focus")) {
+      this.removeAttribute("data-hax-keyboard-focus");
+    }
+  }
+  /**
+   * True when keyboard focus is inside this body's editable content: the
+   * key event came from this hax-body itself or from a block in its light
+   * DOM (including a block's own shadow DOM, such as a field in a HAX
+   * element). Focus elsewhere on the page, or in hax-body's own UI (the
+   * context menus and text toolbar live in its shadow root), is outside
+   * the editing area, so those keys are not the editor's to take.
+   */
+  _isFocusInEditableContent(e) {
+    let chain = [];
+    if (e && typeof e.composedPath === "function") {
+      chain = e.composedPath();
+    }
+    if (chain.length === 0) {
+      // no event path: walk out from the element that holds focus
+      let active = globalThis.document.activeElement;
+      while (active && active.shadowRoot && active.shadowRoot.activeElement) {
+        active = active.shadowRoot.activeElement;
+      }
+      while (active) {
+        chain.push(active);
+        // a shadow root has no parentNode: step out to its host
+        active = active.parentNode || active.host || null;
+      }
+    }
+    for (let i = 0; i < chain.length; i++) {
+      const node = chain[i];
+      if (node === this) {
+        return true;
+      }
+      if (node === this.shadowRoot) {
+        return false;
+      }
+      if (node && node.nodeType === 1 && node.parentNode === this) {
+        return true;
+      }
+    }
+    return false;
+  }
   _onKeyUp(e) {
     if (
       ["ArrowUp", "ArrowDown"].includes(e.key) &&
@@ -2587,6 +2648,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         this.__dropActiveVisible();
         this.__manageFakeEndCap(false);
         let sel = HAXStore.getSelection();
+        // Escape arms "Escape, then Tab"; any other key (bar the Shift of
+        // Shift+Tab) disarms it
+        if (!["Escape", "Tab", "Shift"].includes(e.key)) {
+          this.__escapeThenTab = false;
+        }
         if (sel.anchorNode != null) {
           switch (e.key) {
             case "Z":
@@ -2609,6 +2675,15 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               }
               break;
             case "Tab":
+              // Tab / Shift+Tab indent only while keyboard focus is in the
+              // editable content. Focus anywhere else (a button before the
+              // tray, a field elsewhere on the page) keeps normal browser
+              // focus movement even though a text block still holds the
+              // selection. Escape, then Tab leaves the editing area.
+              if (this.__escapeThenTab || !this._isFocusInEditableContent(e)) {
+                this.__escapeThenTab = false;
+                break;
+              }
               this._useristyping = true;
               if (HAXStore.isTextElement(this.activeNode)) {
                 if (e.detail.keyboardEvent) {
@@ -2965,6 +3040,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               break;
             case "Escape":
               this._useristyping = true;
+              // the next Tab / Shift+Tab moves focus out of the editing
+              // area instead of indenting (the same escape code editors use)
+              this.__escapeThenTab = this._isFocusInEditableContent(e);
               break;
             case "/": {
               const rng = HAXStore.getRange();
@@ -6099,6 +6177,38 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       globalThis.addEventListener("keyup", this._onKeyUp, {
         signal: this.windowControllers.signal,
       });
+      // keyboard focus ring on the editing area: shown when the body gets
+      // focus from the keyboard (Tab, a shortcut), never from a pointer
+      this.__keyboardModality = false;
+      globalThis.addEventListener(
+        "keydown",
+        () => {
+          this.__keyboardModality = true;
+        },
+        { capture: true, signal: this.windowControllers.signal },
+      );
+      globalThis.addEventListener(
+        "pointerdown",
+        () => {
+          this.__keyboardModality = false;
+          this.__setKeyboardFocusRing(false);
+        },
+        { capture: true, signal: this.windowControllers.signal },
+      );
+      this.addEventListener(
+        "focus",
+        () => {
+          this.__setKeyboardFocusRing(this.__keyboardModality);
+        },
+        { signal: this.windowControllers.signal },
+      );
+      this.addEventListener(
+        "blur",
+        () => {
+          this.__setKeyboardFocusRing(false);
+        },
+        { signal: this.windowControllers.signal },
+      );
       globalThis.addEventListener("resize", this._keepContextVisible, {
         passive: true,
         signal: this.windowControllers.signal,
@@ -6108,6 +6218,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     } else {
       // should resolve ALL events at the same time
       this.windowControllers.abort();
+      this.__setKeyboardFocusRing(false);
       if (this._emptyObserver) {
         this._emptyObserver.disconnect();
         this._emptyObserver = null;

@@ -1,0 +1,9 @@
+{
+  "imageMap": "Myndakort",
+  "interactive": "Samvirkandi",
+  "hotspot": "Virkin blettur",
+  "hotspotPosition": "{n} av {total}",
+  "hotspotsExplored": "{n} av {total} virknum blettum kannaðir",
+  "explored": "Kannað",
+  "close": "Lat aftur"
+}

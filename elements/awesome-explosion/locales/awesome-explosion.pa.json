@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "ਧਮਾਕੇ ਦੀ ਆਵਾਜ਼ ਚਲਾਉਣ ਲਈ ਕਲਿੱਕ ਕਰੋ ਜਾਂ ਹੋਵਰ ਕਰੋ",
+  "soundDisabled": "ਧਮਾਕੇ ਦਾ ਦ੍ਰਿਸ਼ ਪ੍ਰਭਾਵ (ਆਵਾਜ਼ ਬੰਦ)",
+  "explosionAnimation": "ਧਮਾਕੇ ਦਾ ਐਨੀਮੇਸ਼ਨ",
+  "explosionAriaLabel": "ਧਮਾਕੇ ਦਾ ਐਨੀਮੇਸ਼ਨ {state} {sound}। ਬਦਲਣ ਲਈ ਕਲਿੱਕ ਕਰੋ।",
+  "playing": "ਚੱਲ ਰਿਹਾ",
+  "stopped": "ਰੁਕਿਆ ਹੋਇਆ",
+  "withSound": "ਆਵਾਜ਼ ਸਮੇਤ",
+  "muted": "(ਮਿਊਟ)"
+}

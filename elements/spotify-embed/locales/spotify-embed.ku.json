@@ -1,4 +1,9 @@
 {
   "audio": "Deng",
-  "openOnSpotify": "Li ser Spotify di tabeka nû de veke"
+  "openOnSpotify": "Li ser Spotify di tabeka nû de veke",
+  "embedTitle": "Embedkirina Spotify",
+  "trackEmbedTitle": "Embedkirina stranê ya Spotify",
+  "albumEmbedTitle": "Embedkirina albûmê ya Spotify",
+  "playlistEmbedTitle": "Embedkirina lîsteya lêdanê ya Spotify",
+  "artistEmbedTitle": "Embedkirina hunermend ya Spotify"
 }

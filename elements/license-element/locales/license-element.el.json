@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "Το έργο {title} από {creator} διατίθεται με άδεια {license}.",
   "permissionsBeyondScope": "Άδειες πέραν του πεδίου αυτής της άδειας είναι διαθέσιμες {link}.",
   "author": "(συγγραφέας)",
-  "onTheLicensingDetailsPage": "στη σελίδα λεπτομερειών αδειοδότησης"
+  "onTheLicensingDetailsPage": "στη σελίδα λεπτομερειών αδειοδότησης",
+  "licenseLabel": "Άδεια"
 }

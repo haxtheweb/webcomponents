@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "NodeJS Kapsayıcısı"
+    "title": "NodeJS Kapsayıcısı",
+    "description": ""
   },
   "settings": {
     "configure": [

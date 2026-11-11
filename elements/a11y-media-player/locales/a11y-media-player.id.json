@@ -35,5 +35,12 @@
   "youTubeStartLoading": "Tekan putar.",
   "youTubeTranscriptLabel": "Transkrip akan dimuat setelah media diputar.",
   "audioDescriptionLabel": "Deskripsi Audio",
-  "openOnYouTube": "Buka di YouTube"
+  "openOnYouTube": "Buka di YouTube",
+  "interactiveLabel": "interaktif",
+  "layoutLabel": "Tata letak",
+  "sideLabel": "Samping",
+  "belowLabel": "Bawah",
+  "leftLabel": "Kiri",
+  "rightLabel": "Kanan",
+  "hideTranscriptLabel": "Sembunyikan transkrip"
 }

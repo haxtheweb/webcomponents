@@ -1,13 +1,20 @@
 {
   "gizmo": {
     "title": "H5P",
-    "description": ".h5p ፋይሎችን ለመጫን እና ለማቅረብ የH5P መጠቅለያ"
+    "description": "ከተሰቀለ .h5p ፋይል በይነተገናኝ የH5P ይዘትን ያጫውታል፣ የH5P አገልጋይ አያስፈልግም"
   },
   "settings": {
     "configure": [
       {
         "slot": "",
-        "description": "የH5P iframe መክተቻ ኮድ"
+        "description": ".h5p ፋይል ይስቀሉ ወይም ያገናኙ። በአሳሹ ውስጥ ይፈታል፤ የH5P አገልጋይ አያስፈልግም።",
+        "title": "የH5P ፋይል"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "የቆየ iframe ማካተቻ ኮድ",
+        "description": "ከሌላ ጣቢያ የH5P iframe ለሚያካትት የቆየ ይዘት ብቻ። ከላይ .h5p ፋይል ሲዋቀር ባዶ ይተዉት።"
       }
     ]
   }

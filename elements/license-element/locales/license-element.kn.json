@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{creator} ಅವರ {title} ಕೃತಿಯು {license} ಅಡಿಯಲ್ಲಿ ಪರವಾನಗಿ ಪಡೆದಿದೆ.",
   "permissionsBeyondScope": "ಈ ಪರವಾನಗಿಯ ವ್ಯಾಪ್ತಿಯನ್ನು ಮೀರಿದ ಅನುಮತಿಗಳು {link} ಲಭ್ಯವಿವೆ.",
   "author": "(ಲೇಖಕ)",
-  "onTheLicensingDetailsPage": "ಪರವಾನಗಿ ವಿವರಗಳ ಪುಟದಲ್ಲಿ"
+  "onTheLicensingDetailsPage": "ಪರವಾನಗಿ ವಿವರಗಳ ಪುಟದಲ್ಲಿ",
+  "licenseLabel": "ಪರವಾನಗಿ"
 }

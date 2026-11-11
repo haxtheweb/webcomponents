@@ -827,6 +827,7 @@ export class ConceptRunnerGame extends MicroGameBase {
         #player.hurt {
           opacity: 0.45;
         }
+        /* physical on purpose: sprites are placed from screen x/y */
         .item {
           position: absolute;
           left: 0;

@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "Khodi ya QR ya {title}",
+  "noData": "Palibe deta yoti iwonetsedwe ngati khodi ya QR",
+  "formatNotSupported": "Mtundu wa khodi ya QR {format} sukuthandizidwa",
+  "noCanvas": "Msakatuli uyu sungathe kujambula khodi ya QR (palibe thandizo la canvas)"
+}

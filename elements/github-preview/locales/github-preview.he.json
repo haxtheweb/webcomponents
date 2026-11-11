@@ -1,0 +1,10 @@
+{
+  "github": "GitHub",
+  "repository": "מאגר",
+  "stars": "כוכבים",
+  "forks": "פיצולים",
+  "loading": "טוען",
+  "viewMore": "הצג עוד",
+  "assetNotFound": "הנכס לא נמצא",
+  "openOnGitHub": "פתח את {org}/{repo} ב-GitHub"
+}

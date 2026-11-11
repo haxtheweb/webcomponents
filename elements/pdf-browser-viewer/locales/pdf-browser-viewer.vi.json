@@ -3,5 +3,8 @@
   "openInNewTab": "Mở PDF trong tab mới",
   "downloadPdf": "Tải xuống PDF",
   "fullScreen": "Toàn màn hình",
-  "exitFullScreen": "Thoát toàn màn hình"
+  "exitFullScreen": "Thoát toàn màn hình",
+  "notSupported": "Có vẻ trình duyệt web của bạn chưa được cấu hình để hiển thị tệp PDF. Đừng lo, chỉ cần",
+  "notSupportedLink": "nhấp vào đây để tải tệp PDF xuống.",
+  "download": "Tải xuống"
 }

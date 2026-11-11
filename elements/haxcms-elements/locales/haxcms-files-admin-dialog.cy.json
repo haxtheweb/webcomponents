@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Amnewid y ffeiliau gwreiddiol",
   "newName": "Enw newydd",
   "deleteAction": "Dileu",
-  "renameAction": "Ailenwi"
+  "renameAction": "Ailenwi",
+  "bulkOverwriteConfirm": "{action} {count} ffeil? Mae hyn yn disodli'r ffeiliau gwreiddiol ac ni ellir ei ddadwneud.",
+  "actionScale": "Graddio",
+  "actionRotate": "Cylchdroi",
+  "actionTransform": "Trawsnewid",
+  "actionConvertJpg": "Trosi i JPG",
+  "actionCompress": "Cywasgu"
 }

@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title} của {creator} được cấp phép theo {license}.",
   "permissionsBeyondScope": "Các quyền ngoài phạm vi giấy phép này có sẵn {link}.",
   "author": "(tác giả)",
-  "onTheLicensingDetailsPage": "tại trang chi tiết cấp phép"
+  "onTheLicensingDetailsPage": "tại trang chi tiết cấp phép",
+  "licenseLabel": "Giấy phép"
 }

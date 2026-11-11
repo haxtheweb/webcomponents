@@ -573,7 +573,7 @@
         "__stand-alone",
         "colors",
         "playing",
-        "__forcePaused",
+        "__force-paused",
         "t",
         "source-type"
       ]

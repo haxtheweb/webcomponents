@@ -19,5 +19,13 @@
   "copyCode": "Kopii kodon",
   "copied": "Kopiite!",
   "invalidCode": "Tio ne estas rolula kodo.",
-  "preview": "Antaŭvido de la rolulo"
+  "preview": "Antaŭvido de la rolulo",
+  "previous": "Antaŭa {name}",
+  "next": "Sekva {name}",
+  "variant": "{current} el {total}",
+  "save": "Konservi",
+  "cancel": "Nuligi",
+  "unsavedChanges": "Nekonservitaj ŝanĝoj",
+  "noUnsavedChanges": "Neniuj nekonservitaj ŝanĝoj",
+  "codeHelp": "Algluu kodon por ŝargi rolulon, aŭ kopiu ĉi tiun por uzi ĝin ie ajn."
 }

@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "Código QR de {title}",
+  "noData": "No hay datos para mostrar como código QR",
+  "formatNotSupported": "El formato de código QR {format} no es compatible",
+  "noCanvas": "Este navegador no puede dibujar el código QR (sin compatibilidad con canvas)"
+}

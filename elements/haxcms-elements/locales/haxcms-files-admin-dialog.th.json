@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "แทนที่ไฟล์ต้นฉบับ",
   "newName": "ชื่อใหม่",
   "deleteAction": "ลบ",
-  "renameAction": "เปลี่ยนชื่อ"
+  "renameAction": "เปลี่ยนชื่อ",
+  "bulkOverwriteConfirm": "{action} {count} ไฟล์ใช่หรือไม่ การดำเนินการนี้จะแทนที่ไฟล์ต้นฉบับและไม่สามารถย้อนกลับได้",
+  "actionScale": "ปรับขนาด",
+  "actionRotate": "หมุน",
+  "actionTransform": "แปลง",
+  "actionConvertJpg": "แปลงเป็น JPG",
+  "actionCompress": "บีบอัด"
 }

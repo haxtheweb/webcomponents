@@ -4,5 +4,8 @@
   "pieChart": "Ma’lumotlar · Doiraviy diagramma",
   "showDataTable": "Ma’lumotlar jadvalini ko‘rsatish",
   "downloadData": "Ma’lumotlarni yuklab olish (.csv)",
-  "series": "{n}-qator"
+  "series": "{n}-qator",
+  "barChartLabel": "ustunli diagramma",
+  "lineChartLabel": "chiziqli diagramma",
+  "pieChartLabel": "doiraviy diagramma"
 }

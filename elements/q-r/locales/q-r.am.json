@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "የ{title} QR ኮድ",
+  "noData": "እንደ QR ኮድ የሚታይ ውሂብ የለም",
+  "formatNotSupported": "የQR ኮድ ቅርጸት {format} አይደገፍም",
+  "noCanvas": "ይህ አሳሽ የQR ኮዱን መሳል አይችልም (canvas ድጋፍ የለም)"
+}

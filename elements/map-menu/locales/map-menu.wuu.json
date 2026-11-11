@@ -2,5 +2,7 @@
   "pageIsUnpublished": "页面呒没发布",
   "progressDone": "做好了",
   "progressInProgress": "进行中",
-  "progressVisited": "看过了"
+  "progressVisited": "看过了",
+  "progressPercentComplete": "完成了 {percent}%",
+  "progressComplete": "完成"
 }

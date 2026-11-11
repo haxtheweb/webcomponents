@@ -129,5 +129,12 @@
   "cancel": "Kanselleer",
   "clearedSite": "Jou leerdata vir {site} is uitgevee.",
   "clearedDevice": "Alle leerdata op hierdie toestel is uitgevee.",
-  "thisSite": "hierdie werf"
+  "thisSite": "hierdie werf",
+  "outlineHeading": "Vordering per bladsy",
+  "allPages": "Alle bladsye",
+  "outlinePagesDone": "{done} van {total} bladsye klaar",
+  "outlinePagesCount": "{count} bladsye",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% voltooi",
+  "outlineComplete": "Voltooi"
 }

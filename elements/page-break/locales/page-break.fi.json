@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Tämä sivu on lukittu. Avaa lukitus ensin muuttaaksesi julkaisutilaa.",
   "pageLockedUnlockToDelete": "Tämä sivu on lukittu. Avaa lukitus ensin poistaaksesi.",
   "pageDetails": "Sivun tiedot",
-  "clickToUnlock": "Napsauta avataksesi lukituksen"
+  "clickToUnlock": "Napsauta avataksesi lukituksen",
+  "pageSettings": "Sivun asetukset",
+  "editingPageSettings": "Muokataan sivun asetuksia",
+  "published": "Julkaistu",
+  "draft": "Luonnos",
+  "locked": "Lukittu",
+  "unlocked": "Avattu",
+  "noTags": "Ei tunnisteita",
+  "oneTag": "1 tunniste",
+  "tagCount": "{count} tunnistetta",
+  "enterKey": "Enter"
 }

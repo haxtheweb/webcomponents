@@ -1,0 +1,8 @@
+{
+  "ordinalOne": "-",
+  "ordinalTwo": "-",
+  "ordinalFew": "-",
+  "ordinalOther": "-",
+  "fromTimeToTime": "{start} - {end} аралыгында",
+  "atTime": "{start} убактысында"
+}

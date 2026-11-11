@@ -3,5 +3,8 @@
   "openInNewTab": "PDF නව ටැබයක විවෘත කරන්න",
   "downloadPdf": "PDF බාගන්න",
   "fullScreen": "පූර්ණ තිරය",
-  "exitFullScreen": "පූර්ණ තිරයෙන් ඉවත් වන්න"
+  "exitFullScreen": "පූර්ණ තිරයෙන් ඉවත් වන්න",
+  "notSupported": "ඔබේ වෙබ් බ්‍රවුසරය PDF ගොනු පෙන්වීමට වින්‍යාස කර නැති බව පෙනේ. කමක් නැත, හුදෙක්",
+  "notSupportedLink": "PDF ගොනුව බාගැනීමට මෙහි ක්ලික් කරන්න.",
+  "download": "බාගන්න"
 }

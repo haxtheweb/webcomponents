@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "החלפת הקבצים המקוריים",
   "newName": "שם חדש",
   "deleteAction": "מחיקה",
-  "renameAction": "שינוי שם"
+  "renameAction": "שינוי שם",
+  "bulkOverwriteConfirm": "{action} {count} קבצים? פעולה זו מחליפה את הקבצים המקוריים ואי אפשר לבטל אותה.",
+  "actionScale": "שינוי גודל",
+  "actionRotate": "סיבוב",
+  "actionTransform": "שינוי צורה",
+  "actionConvertJpg": "המרה ל-JPG",
+  "actionCompress": "דחיסה"
 }

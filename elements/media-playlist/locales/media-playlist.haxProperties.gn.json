@@ -15,6 +15,12 @@
         "title": "Mbo'esyry",
         "description": "Mbo'esyry ojeguerekóva ko ñembopu rysýi rehe (mbo'esyry ñemoha'ãnga térã URL)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Mba'e'apopyre",
+        "description": "Video ha ñe'ẽpu ñembosarái listape. Ndojehaíri ko'ápe: kuatiarogue ñemohenda oipuru oikuaa hag̃ua mba'e bloque ikatu oñemoĩ ipype."
+      }
     ]
   }
 }

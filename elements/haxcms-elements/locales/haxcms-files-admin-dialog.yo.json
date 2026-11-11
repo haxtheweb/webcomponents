@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Rọ́pò àwọn fáìlì àtilẹ̀wá",
   "newName": "Orúkọ tuntun",
   "deleteAction": "Pa rẹ́",
-  "renameAction": "Yí orúkọ padà"
+  "renameAction": "Yí orúkọ padà",
+  "bulkOverwriteConfirm": "{action} fáìlì {count}? Èyí yóò rọ́pò àwọn fáìlì àtilẹ̀wá, a kò sì lè mú un padà.",
+  "actionScale": "Ṣàtúnṣe ìwọ̀n",
+  "actionRotate": "Yí po",
+  "actionTransform": "Yípadà",
+  "actionConvertJpg": "Yí padà sí JPG",
+  "actionCompress": "Dín kù"
 }

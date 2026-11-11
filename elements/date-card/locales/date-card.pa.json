@@ -1,0 +1,8 @@
+{
+  "ordinalOne": "ਲਾ",
+  "ordinalTwo": "ਵਾਂ",
+  "ordinalFew": "ਵਾਂ",
+  "ordinalOther": "ਵਾਂ",
+  "fromTimeToTime": "{start} ਤੋਂ {end} ਤੱਕ",
+  "atTime": "{start} ਵਜੇ"
+}

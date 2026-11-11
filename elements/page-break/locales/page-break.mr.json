@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "हे पान लॉक केलेले आहे. प्रकाशन स्थिती बदलण्यासाठी आधी अनलॉक करा.",
   "pageLockedUnlockToDelete": "हे पान लॉक केलेले आहे. हटवण्यासाठी आधी अनलॉक करा.",
   "pageDetails": "पानाचे तपशील",
-  "clickToUnlock": "अनलॉक करण्यासाठी क्लिक करा"
+  "clickToUnlock": "अनलॉक करण्यासाठी क्लिक करा",
+  "pageSettings": "पृष्ठ सेटिंग्ज",
+  "editingPageSettings": "पृष्ठ सेटिंग्ज संपादित करत आहे",
+  "published": "प्रकाशित",
+  "draft": "मसुदा",
+  "locked": "लॉक केलेले",
+  "unlocked": "अनलॉक केलेले",
+  "noTags": "टॅग नाहीत",
+  "oneTag": "1 टॅग",
+  "tagCount": "{count} टॅग",
+  "enterKey": "Enter"
 }

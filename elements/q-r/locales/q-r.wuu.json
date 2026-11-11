@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "{title} 额 QR 码",
+  "noData": "呒没数据好显示成 QR 码",
+  "formatNotSupported": "伐支持 QR 码格式 {format}",
+  "noCanvas": "迭个浏览器画伐出 QR 码（伐支持 canvas）"
+}

@@ -129,5 +129,12 @@
   "cancel": "Hủy",
   "clearedSite": "Dữ liệu học tập của bạn cho {site} đã được xóa.",
   "clearedDevice": "Toàn bộ dữ liệu học tập trên thiết bị này đã được xóa.",
-  "thisSite": "trang web này"
+  "thisSite": "trang web này",
+  "outlineHeading": "Tiến độ theo trang",
+  "allPages": "Tất cả các trang",
+  "outlinePagesDone": "Đã xong {done}/{total} trang",
+  "outlinePagesCount": "{count} trang",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "Hoàn thành {percent}%",
+  "outlineComplete": "Hoàn thành"
 }

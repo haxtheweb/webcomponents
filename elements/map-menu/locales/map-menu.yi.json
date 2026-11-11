@@ -2,5 +2,7 @@
   "pageIsUnpublished": "בלאַט איז נישט פֿאַרעפֿנטלעכט",
   "progressDone": "געענדיקט",
   "progressInProgress": "אין פראצעס",
-  "progressVisited": "באזוכט"
+  "progressVisited": "באזוכט",
+  "progressPercentComplete": "{percent}% פֿאַרטיק",
+  "progressComplete": "פֿאַרטיק"
 }

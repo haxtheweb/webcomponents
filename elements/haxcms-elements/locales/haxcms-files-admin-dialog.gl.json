@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Substituír os ficheiros orixinais",
   "newName": "Novo nome",
   "deleteAction": "Eliminar",
-  "renameAction": "Renomear"
+  "renameAction": "Renomear",
+  "bulkOverwriteConfirm": "{action} {count} ficheiros? Isto substitúe os ficheiros orixinais e non se pode desfacer.",
+  "actionScale": "Cambiar escala",
+  "actionRotate": "Xirar",
+  "actionTransform": "Transformar",
+  "actionConvertJpg": "Converter a JPG",
+  "actionCompress": "Comprimir"
 }

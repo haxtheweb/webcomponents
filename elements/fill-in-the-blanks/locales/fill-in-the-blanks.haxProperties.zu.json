@@ -37,6 +37,16 @@
         "title": "Igama lemibuzo",
         "description": "Igama lemibuzo elidluliselwayo ukuze lisetshenziswe ezindaweni eziqhutshwa yi-xAPI ukuhlonza le nto"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Okugoqekayo",
+        "description": "Bonisa lombuzo njengomugqa ovulekayo futhi ovalekayo. Ukuvula owodwa kuvala eminye imibuzo egoqekayo eseduze kwawo."
+      },
+      {
+        "title": "Qala kugoqiwe",
+        "description": "Uma kugoqekayo, qala njengomugqa ovaliwe obonisa umbuzo nesimo sawo kuphela."
+      }
     ]
   }
 }

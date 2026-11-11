@@ -1,4 +1,9 @@
 {
   "audio": "အသံ",
-  "openOnSpotify": "Spotify တွင် တဘ်အသစ်ဖြင့် ဖွင့်ပါ"
+  "openOnSpotify": "Spotify တွင် တဘ်အသစ်ဖြင့် ဖွင့်ပါ",
+  "embedTitle": "Spotify ထည့်သွင်းမှု",
+  "trackEmbedTitle": "Spotify သီချင်း ထည့်သွင်းမှု",
+  "albumEmbedTitle": "Spotify အယ်လ်ဘမ် ထည့်သွင်းမှု",
+  "playlistEmbedTitle": "Spotify ဖွင့်စာရင်း ထည့်သွင်းမှု",
+  "artistEmbedTitle": "Spotify အနုပညာရှင် ထည့်သွင်းမှု"
 }

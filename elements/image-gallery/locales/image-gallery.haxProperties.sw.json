@@ -22,6 +22,12 @@
         "title": "Faharasa amilifu",
         "description": "Faharasa ya picha amilifu ya kuanzia katika hali ya matunzio."
       }
+    ],
+    "developer": [
+      {
+        "title": "Picha",
+        "description": "Picha zilizo kwenye matunzio. Haihaririwi hapa: muhtasari wa ukurasa huitumia kujua vizuizi vipi vinaweza kudondoshwa ndani."
+      }
     ]
   }
 }

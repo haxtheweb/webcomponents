@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title} von {creator} ist lizenziert unter einer {license}.",
   "permissionsBeyondScope": "Über den Umfang dieser Lizenz hinausgehende Berechtigungen sind {link} verfügbar.",
   "author": "(Autor)",
-  "onTheLicensingDetailsPage": "auf der Seite mit den Lizenzdetails"
+  "onTheLicensingDetailsPage": "auf der Seite mit den Lizenzdetails",
+  "licenseLabel": "Lizenz"
 }

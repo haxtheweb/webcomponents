@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Tẹ̀ tàbí fi kọ́ṣọ̀ lé e láti gbọ́ ohùn ìbúgbàmù",
+  "soundDisabled": "Ipa ìbúgbàmù tí a lè rí (ohùn ti di pípa)",
+  "explosionAnimation": "ìgbésẹ̀ ìbúgbàmù",
+  "explosionAriaLabel": "Ìgbésẹ̀ ìbúgbàmù {state} {sound}. Tẹ̀ láti yípadà.",
+  "playing": "ń ṣiṣẹ́",
+  "stopped": "ti dúró",
+  "withSound": "pẹ̀lú ohùn",
+  "muted": "(ohùn ti pa)"
+}

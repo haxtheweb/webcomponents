@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Sinthanitsani mafayilo oyambirira",
   "newName": "Dzina latsopano",
   "deleteAction": "Fufutani",
-  "renameAction": "Sinthani dzina"
+  "renameAction": "Sinthani dzina",
+  "bulkOverwriteConfirm": "{action}: mafayilo {count}? Izi zilowa m'malo mwa mafayilo oyambirira ndipo sizingabwezedwe.",
+  "actionScale": "Sinthani kukula",
+  "actionRotate": "Zungulitsani",
+  "actionTransform": "Sinthani",
+  "actionConvertJpg": "Sinthani kukhala JPG",
+  "actionCompress": "Finyani"
 }

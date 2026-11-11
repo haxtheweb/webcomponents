@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Айландыруу ийгиликсиз болду.",
   "PARAM_REQUIRED": "Милдеттүү маани жок: {param}.",
   "INVALID_REQUEST": "Суроо-талап жараксыз.",
-  "PARAM_INVALID": "Жараксыз маани: {param}."
+  "PARAM_INVALID": "Жараксыз маани: {param}.",
+  "BLOCK_RATE_LIMITED": "Азыр бул сайтта мазмун өтө көп өзгөртүлүүдө. {retryAfter} секундадан кийин кайра аракет кылыңыз."
 }

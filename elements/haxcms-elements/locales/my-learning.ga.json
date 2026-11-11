@@ -129,5 +129,12 @@
   "cancel": "Cealaigh",
   "clearedSite": "Glanadh do shonraí foghlama do {site}.",
   "clearedDevice": "Glanadh na sonraí foghlama ar fad ar an ngléas seo.",
-  "thisSite": "an suíomh seo"
+  "thisSite": "an suíomh seo",
+  "outlineHeading": "Dul chun cinn de réir leathanaigh",
+  "allPages": "Gach leathanach",
+  "outlinePagesDone": "{done} as {total} leathanach déanta",
+  "outlinePagesCount": "{count} leathanach",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% críochnaithe",
+  "outlineComplete": "Críochnaithe"
 }

@@ -37,6 +37,16 @@
         "title": "Nama kuiz",
         "description": "Nama kuiz yang dihantar untuk digunakan dalam persekitaran dipacu xAPI bagi mengenal pasti item ini"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Boleh runtuh",
+        "description": "Paparkan soalan ini sebagai baris yang boleh dibuka dan ditutup. Membuka satu akan menutup soalan boleh runtuh yang lain di sebelahnya."
+      },
+      {
+        "title": "Mula dalam keadaan runtuh",
+        "description": "Apabila boleh runtuh, mulakan sebagai baris tertutup yang hanya menunjukkan soalan dan statusnya."
+      }
     ]
   }
 }

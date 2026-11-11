@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Страница не опубликована",
   "progressDone": "Выполнено",
   "progressInProgress": "В процессе",
-  "progressVisited": "Посещено"
+  "progressVisited": "Посещено",
+  "progressPercentComplete": "Выполнено на {percent}%",
+  "progressComplete": "Завершено"
 }

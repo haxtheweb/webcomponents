@@ -15,6 +15,12 @@
         "title": "Akoranga",
         "description": "Te akoranga mō tēnei rārangi pāho (tohu tautuhi akoranga, URL rānei)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Pāpāho",
+        "description": "Ngā ataata me te oro i te rārangi whakatangi. Kāore e whakatikaina ki konei: ka whakamahia e te whakahuahua whārangi kia mōhio ai ko ēhea paraka ka taea te whakataka ki roto."
+      }
     ]
   }
 }

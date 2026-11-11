@@ -37,6 +37,16 @@
         "title": "Quizets namn",
         "description": "Quiznamn som skickas med för att identifiera objektet i xAPI-drivna miljöer"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Hopfällbar",
+        "description": "Visa frågan som en rad som kan öppnas och stängas. När en öppnas stängs de andra hopfällbara frågorna bredvid."
+      },
+      {
+        "title": "Starta hopfälld",
+        "description": "När den är hopfällbar startar den som en stängd rad som bara visar frågan och dess status."
+      }
     ]
   }
 }

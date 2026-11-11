@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "د {title} لپاره QR کوډ",
+  "noData": "د QR کوډ په توګه د ښودلو لپاره معلومات نشته",
+  "formatNotSupported": "د QR کوډ بڼه {format} نه ملاتړ کېږي",
+  "noCanvas": "دا براوزر نشي کولای QR کوډ رسم کړي (د canvas ملاتړ نشته)"
+}

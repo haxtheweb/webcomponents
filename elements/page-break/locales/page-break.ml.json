@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "ഈ പേജ് ലോക്ക് ചെയ്തിരിക്കുന്നു. പ്രസിദ്ധീകരണ നില മാറ്റാൻ ആദ്യം അൺലോക്ക് ചെയ്യുക.",
   "pageLockedUnlockToDelete": "ഈ പേജ് ലോക്ക് ചെയ്തിരിക്കുന്നു. ഇല്ലാതാക്കാൻ ആദ്യം അൺലോക്ക് ചെയ്യുക.",
   "pageDetails": "പേജ് വിശദാംശങ്ങൾ",
-  "clickToUnlock": "അൺലോക്ക് ചെയ്യാൻ ക്ലിക്ക് ചെയ്യുക"
+  "clickToUnlock": "അൺലോക്ക് ചെയ്യാൻ ക്ലിക്ക് ചെയ്യുക",
+  "pageSettings": "പേജ് ക്രമീകരണങ്ങൾ",
+  "editingPageSettings": "പേജ് ക്രമീകരണങ്ങൾ തിരുത്തുന്നു",
+  "published": "പ്രസിദ്ധീകരിച്ചു",
+  "draft": "ഡ്രാഫ്റ്റ്",
+  "locked": "ലോക്ക് ചെയ്തു",
+  "unlocked": "അൺലോക്ക് ചെയ്തു",
+  "noTags": "ടാഗുകളില്ല",
+  "oneTag": "1 ടാഗ്",
+  "tagCount": "{count} ടാഗുകൾ",
+  "enterKey": "Enter"
 }

@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{creator} ၏ {title} ကို {license} အောက်တွင် လိုင်စင်ပေးထားသည်။",
   "permissionsBeyondScope": "ဤလိုင်စင်၏ နယ်ပယ်ကျော်လွန်သော ခွင့်ပြုချက်များကို {link} ရရှိနိုင်သည်။",
   "author": "(စာရေးသူ)",
-  "onTheLicensingDetailsPage": "လိုင်စင် အသေးစိတ် စာမျက်နှာတွင်"
+  "onTheLicensingDetailsPage": "လိုင်စင် အသေးစိတ် စာမျက်နှာတွင်",
+  "licenseLabel": "လိုင်စင်"
 }

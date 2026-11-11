@@ -129,5 +129,12 @@
   "cancel": "Kanselahin",
   "clearedSite": "Na-clear ang iyong data sa pag-aaral para sa {site}.",
   "clearedDevice": "Na-clear ang lahat ng data sa pag-aaral sa device na ito.",
-  "thisSite": "site na ito"
+  "thisSite": "site na ito",
+  "outlineHeading": "Progreso ayon sa pahina",
+  "allPages": "Lahat ng pahina",
+  "outlinePagesDone": "{done} sa {total} pahina ang tapos na",
+  "outlinePagesCount": "{count} pahina",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% kumpleto",
+  "outlineComplete": "Kumpleto"
 }

@@ -22,6 +22,12 @@
         "title": "Aktivt index",
         "description": "Index för den aktiva bilden att börja på i galleriläge."
       }
+    ],
+    "developer": [
+      {
+        "title": "Bilder",
+        "description": "Bilderna i galleriet. Redigeras inte här: sidöversikten använder det för att veta vilka block som kan släppas i den."
+      }
     ]
   }
 }

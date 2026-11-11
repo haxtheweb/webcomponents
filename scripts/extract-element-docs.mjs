@@ -128,8 +128,13 @@ function analyzeManifest(dir, pkg) {
         true,
       ),
     );
-    const plugins = litelement && CEM.litPlugin ? [...(CEM.litPlugin() || [])] : [];
-    return CEM.create({ modules, plugins, context: { dev: false, thirdPartyCEMs: [] } });
+    const plugins =
+      litelement && CEM.litPlugin ? [...(CEM.litPlugin() || [])] : [];
+    return CEM.create({
+      modules,
+      plugins,
+      context: { dev: false, thirdPartyCEMs: [] },
+    });
   } catch {
     return null;
   }
@@ -157,17 +162,19 @@ function balanced(src, idx) {
       else if (c === str) str = null;
       continue;
     }
-    // comments can hold apostrophes ("the player's header") that would
-    // otherwise open a string and swallow the rest of the object
+    // comments are skipped whole, so an apostrophe in one ("the player's")
+    // never opens a string and swallows the rest of the block
     if (c === "/" && src[i + 1] === "/") {
-      const nl = src.indexOf("\n", i);
-      if (nl === -1) break;
-      i = nl;
-    } else if (c === "/" && src[i + 1] === "*") {
-      const close = src.indexOf("*/", i + 2);
-      if (close === -1) break;
-      i = close + 1;
-    } else if (c === '"' || c === "'" || c === "`") str = c;
+      const end = src.indexOf("\n", i);
+      i = end === -1 ? src.length : end;
+      continue;
+    }
+    if (c === "/" && src[i + 1] === "*") {
+      const end = src.indexOf("*/", i + 2);
+      i = end === -1 ? src.length : end + 1;
+      continue;
+    }
+    if (c === '"' || c === "'" || c === "`") str = c;
     else if (c === "{") depth++;
     else if (c === "}" && --depth === 0) return src.slice(start, i + 1);
   }
@@ -216,7 +223,12 @@ function propertiesFromSource(src) {
   const out = [];
   for (const pm of body.matchAll(/^\s{4,8}(\w+)\s*:\s*\{([^{}]*)\}/gm)) {
     const [, field, spec] = pm;
-    if (field.startsWith("_") || /attribute\s*:\s*false/.test(spec) || /state\s*:\s*true/.test(spec)) continue;
+    if (
+      field.startsWith("_") ||
+      /attribute\s*:\s*false/.test(spec) ||
+      /state\s*:\s*true/.test(spec)
+    )
+      continue;
     const at = spec.match(/attribute\s*:\s*["'`]([\w-]+)["'`]/);
     const ty = spec.match(/type\s*:\s*(\w+)/);
     out.push({
@@ -284,14 +296,20 @@ const humanizeTopic = (id) =>
 function statusOf(scene, hash) {
   if (!scene || scene.surfaceHash !== hash) return "stale";
   const r = scene.review;
-  return r && r.status === "approved" && r.hash === hash ? "reviewed" : "awaiting";
+  return r && r.status === "approved" && r.hash === hash
+    ? "reviewed"
+    : "awaiting";
 }
 
 /** every walkthrough for an element: main one first, then by order and title */
 function walkthroughsOf(dir, name, tag, hash) {
   let files = topicFiles(dir, tag, "motion");
   // older folders may name the main storyboard after the folder
-  if (!files.length && name !== tag && fs.existsSync(path.join(dir, "lib", `${name}.motion.json`))) {
+  if (
+    !files.length &&
+    name !== tag &&
+    fs.existsSync(path.join(dir, "lib", `${name}.motion.json`))
+  ) {
     files = [{ id: "", src: `${name}.motion.json` }];
   }
   return files
@@ -300,7 +318,8 @@ function walkthroughsOf(dir, name, tag, hash) {
       return {
         id,
         title: (scene && scene.title) || humanizeTopic(id),
-        order: scene && typeof scene.order === "number" ? scene.order : id ? 100 : 0,
+        order:
+          scene && typeof scene.order === "number" ? scene.order : id ? 100 : 0,
         src,
         file: `lib/${src}`,
         status: statusOf(scene, hash),
@@ -370,7 +389,11 @@ export function extractElementDocs(name, elementsDir = ELEMENTS) {
   ];
   const byProp = Object.fromEntries(settings.map((s) => [s.property, s]));
 
-  const attributes = ((decl && decl.attributes && decl.attributes.length ? decl.attributes : propertiesFromSource(src)) || [])
+  const attributes = (
+    (decl && decl.attributes && decl.attributes.length
+      ? decl.attributes
+      : propertiesFromSource(src)) || []
+  )
     .filter((a) => !a.name.startsWith("_"))
     .map((a) => ({
       name: a.name,
@@ -483,7 +506,9 @@ function main() {
   // element names, or paths to element folders (". " from an element build)
   const rest = args
     .filter((a) => !a.startsWith("--"))
-    .map((a) => (a === "." || a.includes("/") ? path.basename(path.resolve(a)) : a));
+    .map((a) =>
+      a === "." || a.includes("/") ? path.basename(path.resolve(a)) : a,
+    );
   const outDir = statusMode || writeMode ? "" : rest.shift();
   if (!statusMode && !writeMode && !outDir) {
     console.error(
@@ -525,7 +550,12 @@ function main() {
       }
       if (d.walkthroughs.length)
         for (const w of d.walkthroughs) {
-          rows.push([w.id ? `${name}:${w.id}` : name, w.status, d.surfaceHash, `elements/${name}/${w.file}`]);
+          rows.push([
+            w.id ? `${name}:${w.id}` : name,
+            w.status,
+            d.surfaceHash,
+            `elements/${name}/${w.file}`,
+          ]);
         }
     } catch (e) {
       if (rest.length) console.warn(`skipped ${name}: ${e.message}`);

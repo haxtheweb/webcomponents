@@ -1,5 +1,6 @@
 {
   "simulation": "Simulasi",
   "fullScreen": "Layar kebak",
-  "exitFullScreen": "Metu saka layar kebak"
+  "exitFullScreen": "Metu saka layar kebak",
+  "player": "Pamuter Unity WebGL"
 }

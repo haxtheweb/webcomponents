@@ -84,5 +84,12 @@
         "icon": "editor:bubble-chart"
       }
     ]
-  }
+  },
+  "demoSchema": [
+    {
+      "tag": "q-r",
+      "properties": {},
+      "content": ""
+    }
+  ]
 }

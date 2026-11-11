@@ -37,6 +37,16 @@
         "title": "Jina la jaribio",
         "description": "Jina la jaribio linalopitishwa kwa matumizi katika mazingira yanayoendeshwa na xAPI ili kutambulisha kipengee hiki"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Inayokunjika",
+        "description": "Onyesha swali hili kama safu inayofunguka na kufungwa. Kufungua moja hufunga maswali mengine yanayokunjika yaliyo kando yake."
+      },
+      {
+        "title": "Anza ikiwa imekunjwa",
+        "description": "Inapokunjika, huanza kama safu iliyofungwa inayoonyesha swali na hali yake pekee."
+      }
     ]
   }
 }

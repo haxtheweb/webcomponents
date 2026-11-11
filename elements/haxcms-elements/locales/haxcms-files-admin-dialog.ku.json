@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Pelên orîjînal biguherîne",
   "newName": "Navê nû",
   "deleteAction": "Jê bibe",
-  "renameAction": "Navê biguherîne"
+  "renameAction": "Navê biguherîne",
+  "bulkOverwriteConfirm": "{action}: {count} pel? Ev pelên eslî diguherîne û nayê betalkirin.",
+  "actionScale": "Mezinahiyê biguhere",
+  "actionRotate": "Bizivirîne",
+  "actionTransform": "Veguherîne",
+  "actionConvertJpg": "Veguherîne JPG",
+  "actionCompress": "Bipelçiqîne"
 }

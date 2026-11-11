@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title}, ავტორი: {creator}, ლიცენზირებულია {license}-ით.",
   "permissionsBeyondScope": "ამ ლიცენზიის ფარგლებს მიღმა ნებართვები ხელმისაწვდომია {link}.",
   "author": "(ავტორი)",
-  "onTheLicensingDetailsPage": "ლიცენზირების დეტალების გვერდზე"
+  "onTheLicensingDetailsPage": "ლიცენზირების დეტალების გვერდზე",
+  "licenseLabel": "ლიცენზია"
 }

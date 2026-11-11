@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Aiki",
-        "description": "Sanya tuta a shaida: ɗalibai suna manna kowace tuta kusa da shaidarta. Zaɓi ɗaya: ɗalibai suna zaɓar sashe guda da ya fi amsa tambayar."
+        "description": "Sanya tuta a shaida: ɗalibai suna manna kowace tuta kusa da shaidarta. Zaɓi ɗaya: ɗalibai suna zaɓar sashe guda da ya fi amsa tambayar.",
+        "options": {
+          "flag": "Yi alamar shaida",
+          "one": "Zaɓi ɗaya"
+        }
       },
       {
         "property": "unit",
         "title": "Ɗalibai suna zaɓa",
-        "description": "Abin da ɗalibi ke nunawa a cikin karatun. Ana iya zaɓar hotuna koyaushe."
+        "description": "Abin da ɗalibi ke nunawa a cikin karatun. Ana iya zaɓar hotuna koyaushe.",
+        "options": {
+          "sentence": "Jimloli",
+          "paragraph": "Sakin layi",
+          "figure": "Hotuna kawai"
+        }
       },
       {
         "property": "answers",

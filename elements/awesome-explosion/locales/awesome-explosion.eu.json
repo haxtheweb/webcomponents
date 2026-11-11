@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Egin klik edo jarri kurtsorea gainean leherketaren soinua entzuteko",
+  "soundDisabled": "Leherketaren efektu bisuala (soinua desgaituta)",
+  "explosionAnimation": "leherketaren animazioa",
+  "explosionAriaLabel": "Leherketaren animazioa {state} {sound}. Egin klik aldatzeko.",
+  "playing": "erreproduzitzen",
+  "stopped": "geldituta",
+  "withSound": "soinuarekin",
+  "muted": "(mutu)"
+}

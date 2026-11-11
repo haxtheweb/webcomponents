@@ -237,6 +237,13 @@ class MeritBadge extends I18NMixin(SchemaBehaviors(LitElement)) {
         ],
         advanced: [],
       },
+      demoSchema: [
+        {
+          tag: "merit-badge",
+          properties: {},
+          content: "",
+        },
+      ],
     };
   }
 

@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Halaman ini terkunci. Buka kuncinya terlebih dahulu untuk mengubah status terbit.",
   "pageLockedUnlockToDelete": "Halaman ini terkunci. Buka kuncinya terlebih dahulu untuk menghapus.",
   "pageDetails": "Detail halaman",
-  "clickToUnlock": "Klik untuk membuka kunci"
+  "clickToUnlock": "Klik untuk membuka kunci",
+  "pageSettings": "Pengaturan halaman",
+  "editingPageSettings": "Mengedit pengaturan halaman",
+  "published": "Dipublikasikan",
+  "draft": "Draf",
+  "locked": "Terkunci",
+  "unlocked": "Tidak terkunci",
+  "noTags": "Tanpa tag",
+  "oneTag": "1 tag",
+  "tagCount": "{count} tag",
+  "enterKey": "Enter"
 }

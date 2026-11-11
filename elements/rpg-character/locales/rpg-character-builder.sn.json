@@ -19,5 +19,13 @@
   "copyCode": "Kopa kodhi",
   "copied": "Yakopwa!",
   "invalidCode": "Iyi haisi kodhi yemunhu.",
-  "preview": "Kuona kwemunhu"
+  "preview": "Kuona kwemunhu",
+  "previous": "{name} yapfuura",
+  "next": "{name} inotevera",
+  "variant": "{current} kubva pa{total}",
+  "save": "Chengeta",
+  "cancel": "Kanzura",
+  "unsavedChanges": "Shanduko dzisina kuchengetwa",
+  "noUnsavedChanges": "Hapana shanduko dzisina kuchengetwa",
+  "codeHelp": "Namira kodhi kuti uise munhu, kana kopa iyi kuti uishandise kwose kwose."
 }

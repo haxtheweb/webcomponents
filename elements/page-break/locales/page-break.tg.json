@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Ин саҳифа қулф аст. Барои тағйир додани ҳолати нашр аввал онро кушоед.",
   "pageLockedUnlockToDelete": "Ин саҳифа қулф аст. Барои нест кардан аввал онро кушоед.",
   "pageDetails": "Тафсилоти саҳифа",
-  "clickToUnlock": "Барои кушодан клик кунед"
+  "clickToUnlock": "Барои кушодан клик кунед",
+  "pageSettings": "Танзимоти саҳифа",
+  "editingPageSettings": "Танзимоти саҳифа таҳрир мешавад",
+  "published": "Нашр шуд",
+  "draft": "Пешнавис",
+  "locked": "Қулфшуда",
+  "unlocked": "Қулфкушода",
+  "noTags": "Барчасп нест",
+  "oneTag": "1 барчасп",
+  "tagCount": "{count} барчасп",
+  "enterKey": "Enter"
 }

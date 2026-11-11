@@ -35,5 +35,12 @@
   "youTubeStartLoading": "চালান চাপুন।",
   "youTubeTranscriptLabel": "মিডিয়া চালু হলে ট্রান্সক্রিপ্ট লোড হবে।",
   "audioDescriptionLabel": "অডিও বর্ণনা",
-  "openOnYouTube": "YouTube-এ খুলুন"
+  "openOnYouTube": "YouTube-এ খুলুন",
+  "interactiveLabel": "ইন্টারেক্টিভ",
+  "layoutLabel": "বিন্যাস",
+  "sideLabel": "পাশে",
+  "belowLabel": "নিচে",
+  "leftLabel": "বাম",
+  "rightLabel": "ডান",
+  "hideTranscriptLabel": "ট্রান্সক্রিপ্ট লুকান"
 }

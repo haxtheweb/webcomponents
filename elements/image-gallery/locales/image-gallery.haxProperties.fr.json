@@ -22,6 +22,12 @@
         "title": "Index actif",
         "description": "Index de l'image active par laquelle commencer en mode galerie."
       }
+    ],
+    "developer": [
+      {
+        "title": "Images",
+        "description": "Les images de la galerie. Non modifié ici : le plan de la page s'en sert pour savoir quels blocs peuvent y être déposés."
+      }
     ]
   }
 }

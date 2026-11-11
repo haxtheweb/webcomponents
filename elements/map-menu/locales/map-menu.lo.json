@@ -2,5 +2,7 @@
   "pageIsUnpublished": "ໜ້ານີ້ຍັງບໍ່ໄດ້ເຜີຍແຜ່",
   "progressDone": "ສຳເລັດແລ້ວ",
   "progressInProgress": "ກຳລັງດຳເນີນການ",
-  "progressVisited": "ເຂົ້າເບິ່ງແລ້ວ"
+  "progressVisited": "ເຂົ້າເບິ່ງແລ້ວ",
+  "progressPercentComplete": "ສຳເລັດ {percent}%",
+  "progressComplete": "ສຳເລັດ"
 }

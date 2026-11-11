@@ -1,4 +1,9 @@
 {
   "audio": "Audio",
-  "openOnSpotify": "Buksan sa Spotify sa bagong tab"
+  "openOnSpotify": "Buksan sa Spotify sa bagong tab",
+  "embedTitle": "Spotify Embed",
+  "trackEmbedTitle": "Spotify Track Embed",
+  "albumEmbedTitle": "Spotify Album Embed",
+  "playlistEmbedTitle": "Spotify Playlist Embed",
+  "artistEmbedTitle": "Spotify Artist Embed"
 }

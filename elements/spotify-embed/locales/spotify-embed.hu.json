@@ -1,4 +1,9 @@
 {
   "audio": "Hang",
-  "openOnSpotify": "Megnyitás a Spotifyon új lapon"
+  "openOnSpotify": "Megnyitás a Spotifyon új lapon",
+  "embedTitle": "Spotify beágyazás",
+  "trackEmbedTitle": "Spotify szám beágyazása",
+  "albumEmbedTitle": "Spotify album beágyazása",
+  "playlistEmbedTitle": "Spotify lejátszási lista beágyazása",
+  "artistEmbedTitle": "Spotify előadó beágyazása"
 }

@@ -4,5 +4,6 @@
   "exportCitations": "Ишлэлүүдийг экспортлох",
   "copy": "Хуулах",
   "exportCitationFormat": "Ишлэлийн форматыг экспортлох",
-  "selectCitationFormatBelow": "Доороос ишлэлийн формат сонгоно уу"
+  "selectCitationFormatBelow": "Доороос ишлэлийн формат сонгоно уу",
+  "addCitationToBibliography": "Ном зүйд эшлэл нэмэх"
 }

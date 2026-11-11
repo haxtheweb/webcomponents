@@ -19,5 +19,13 @@
   "copyCode": "コードをコピー",
   "copied": "コピーしました！",
   "invalidCode": "キャラクターコードではありません。",
-  "preview": "キャラクターのプレビュー"
+  "preview": "キャラクターのプレビュー",
+  "previous": "前の{name}",
+  "next": "次の{name}",
+  "variant": "{current}/{total}",
+  "save": "保存",
+  "cancel": "キャンセル",
+  "unsavedChanges": "未保存の変更",
+  "noUnsavedChanges": "未保存の変更なし",
+  "codeHelp": "コードを貼り付けてキャラクターを読み込むか、このコードをコピーしてどこでも使えます。"
 }

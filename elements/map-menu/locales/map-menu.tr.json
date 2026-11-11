@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Sayfa yayımlanmamış",
   "progressDone": "Tamamlandı",
   "progressInProgress": "Devam ediyor",
-  "progressVisited": "Ziyaret edildi"
+  "progressVisited": "Ziyaret edildi",
+  "progressPercentComplete": "%{percent} tamamlandı",
+  "progressComplete": "Tamamlandı"
 }

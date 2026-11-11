@@ -129,5 +129,12 @@
   "cancel": "Ακύρωση",
   "clearedSite": "Τα δεδομένα μάθησής σας για το {site} εκκαθαρίστηκαν.",
   "clearedDevice": "Όλα τα δεδομένα μάθησης σε αυτή τη συσκευή εκκαθαρίστηκαν.",
-  "thisSite": "αυτός ο ιστότοπος"
+  "thisSite": "αυτός ο ιστότοπος",
+  "outlineHeading": "Πρόοδος ανά σελίδα",
+  "allPages": "Όλες οι σελίδες",
+  "outlinePagesDone": "{done} από {total} σελίδες ολοκληρώθηκαν",
+  "outlinePagesCount": "{count} σελίδες",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% ολοκληρώθηκε",
+  "outlineComplete": "Ολοκληρώθηκε"
 }

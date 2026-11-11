@@ -1,4 +1,9 @@
 {
   "audio": "آڊيو",
-  "openOnSpotify": "نئين ٽيب ۾ Spotify تي کوليو"
+  "openOnSpotify": "نئين ٽيب ۾ Spotify تي کوليو",
+  "embedTitle": "Spotify ايمبيڊ",
+  "trackEmbedTitle": "Spotify ٽريڪ ايمبيڊ",
+  "albumEmbedTitle": "Spotify البم ايمبيڊ",
+  "playlistEmbedTitle": "Spotify پلے لسٽ ايمبيڊ",
+  "artistEmbedTitle": "Spotify فنڪار ايمبيڊ"
 }

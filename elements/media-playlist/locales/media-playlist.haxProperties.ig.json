@@ -15,6 +15,12 @@
         "title": "Kọọsụ",
         "description": "Kọọsụ ndepụta a bụ maka ya (njirimara kọọsụ ma ọ bụ URL)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Mgbasa ozi",
+        "description": "Vidiyo na ọdịyo dị na ndepụta egwu. A naghị edezi ya ebe a: nhazi peeji na-eji ya mara ngọngọ ndị enwere ike ịtụnye n'ime ya."
+      }
     ]
   }
 }

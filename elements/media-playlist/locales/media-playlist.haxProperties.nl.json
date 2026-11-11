@@ -15,6 +15,12 @@
         "title": "Cursus",
         "description": "De cursus waarvoor deze afspeellijst bedoeld is (cursus-ID of URL)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Media",
+        "description": "De video's en audio in de afspeellijst. Wordt hier niet bewerkt: het paginaoverzicht gebruikt het om te weten welke blokken erin kunnen worden neergezet."
+      }
     ]
   }
 }

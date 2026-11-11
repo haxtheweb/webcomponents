@@ -120,6 +120,13 @@ class CMSViews extends CMSBase {
           "views-end-point",
         ],
       },
+      demoSchema: [
+        {
+          tag: "cms-views",
+          properties: {},
+          content: "",
+        },
+      ],
     };
   }
   postProcessgetHaxJSONSchema(schema) {

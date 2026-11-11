@@ -3,5 +3,8 @@
   "openInNewTab": "PDF’ni yangi yorliqda ochish",
   "downloadPdf": "PDF’ni yuklab olish",
   "fullScreen": "To‘liq ekran",
-  "exitFullScreen": "To‘liq ekrandan chiqish"
+  "exitFullScreen": "To‘liq ekrandan chiqish",
+  "notSupported": "Veb-brauzeringiz PDF fayllarni ko'rsatish uchun sozlanmaganga o'xshaydi. Xavotir olmang, shunchaki",
+  "notSupportedLink": "PDF faylni yuklab olish uchun shu yerni bosing.",
+  "download": "Yuklab olish"
 }

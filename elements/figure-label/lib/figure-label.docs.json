@@ -20,7 +20,7 @@
   "import": "@haxtheweb/figure-label/figure-label.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/figure-label/figure-label.js",
   "install": "npm i @haxtheweb/figure-label",
-  "demoHtml": "",
+  "demoHtml": "<figure-label></figure-label>",
   "attributes": [
     {
       "name": "title",
@@ -91,9 +91,16 @@
         }
       ],
       "advanced": []
-    }
+    },
+    "demoSchema": [
+      {
+        "tag": "figure-label",
+        "properties": {},
+        "content": ""
+      }
+    ]
   },
-  "surfaceHash": "a9d6c6e81203",
+  "surfaceHash": "0c2c75e22de1",
   "walkthroughs": [
     {
       "id": "",

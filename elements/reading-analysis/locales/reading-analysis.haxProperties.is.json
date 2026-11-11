@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Verkefni",
-        "description": "Merkja sannanir: nemendur festa hvert flagg við sönnunina fyrir því. Velja eitt: nemendur velja þann eina kafla sem svarar spurningunni best."
+        "description": "Merkja sannanir: nemendur festa hvert flagg við sönnunina fyrir því. Velja eitt: nemendur velja þann eina kafla sem svarar spurningunni best.",
+        "options": {
+          "flag": "Merkja sönnunargögn",
+          "one": "Veldu eitt"
+        }
       },
       {
         "property": "unit",
         "title": "Nemendur velja",
-        "description": "Hvað nemandi bendir á í textanum. Alltaf er hægt að velja myndir."
+        "description": "Hvað nemandi bendir á í textanum. Alltaf er hægt að velja myndir.",
+        "options": {
+          "sentence": "Setningar",
+          "paragraph": "Málsgreinar",
+          "figure": "Aðeins myndir"
+        }
       },
       {
         "property": "answers",

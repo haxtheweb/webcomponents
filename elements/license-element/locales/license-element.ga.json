@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "Tá {title} le {creator} ceadúnaithe faoi {license}.",
   "permissionsBeyondScope": "Tá ceadanna lasmuigh de raon feidhme an cheadúnais seo ar fáil {link}.",
   "author": "(údar)",
-  "onTheLicensingDetailsPage": "ar leathanach sonraí an cheadúnaithe"
+  "onTheLicensingDetailsPage": "ar leathanach sonraí an cheadúnaithe",
+  "licenseLabel": "Ceadúnas"
 }

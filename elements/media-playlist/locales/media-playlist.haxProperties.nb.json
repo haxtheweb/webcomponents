@@ -15,6 +15,12 @@
         "title": "Emne",
         "description": "Emnet denne spillelisten er ment for (emneidentifikator eller URL)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Medier",
+        "description": "Videoene og lyden i spillelisten. Redigeres ikke her: sideoversikten bruker dette for å vite hvilke blokker som kan slippes inn."
+      }
     ]
   }
 }

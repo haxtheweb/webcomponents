@@ -1,0 +1,8 @@
+{
+  "ordinalOne": "",
+  "ordinalTwo": "",
+  "ordinalFew": "",
+  "ordinalOther": "",
+  "fromTimeToTime": "מ-{start} עד {end}",
+  "atTime": "ב-{start}"
+}

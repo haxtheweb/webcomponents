@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "די זײַט איז פֿאַרשלאָסן. עפֿן זי קודם צו בײַטן דעם פֿאַרעפֿנטלעכונג־סטאַטוס.",
   "pageLockedUnlockToDelete": "די זײַט איז פֿאַרשלאָסן. עפֿן זי קודם צו אויסמעקן.",
   "pageDetails": "בלאַט פּרטים",
-  "clickToUnlock": "קליק צו אַנלאַק"
+  "clickToUnlock": "קליק צו אַנלאַק",
+  "pageSettings": "זײַט־סעטינגס",
+  "editingPageSettings": "רעדאַקטירט זײַט־סעטינגס",
+  "published": "פּובליקירט",
+  "draft": "אַנטוואָרף",
+  "locked": "פֿאַרשלאָסן",
+  "unlocked": "אָפּגעשלאָסן",
+  "noTags": "קיין טאַגן נישט",
+  "oneTag": "1 טאַג",
+  "tagCount": "{count} טאַגן",
+  "enterKey": "Enter"
 }

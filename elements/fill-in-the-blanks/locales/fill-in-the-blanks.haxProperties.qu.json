@@ -37,6 +37,16 @@
         "title": "Tapukuykunapa sutin",
         "description": "xAPI pachakunapi kay itemta riqsichinapaq apachisqa tapukuy suti"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Pakakuq",
+        "description": "Kay tapuyta kichakuq wichq'akuq siqi hina rikuchiy. Huknin kichakuptinqa, qayllanpi huk pakakuq tapuykuna wichq'akunku."
+      },
+      {
+        "title": "Pakasqa qallariy",
+        "description": "Pakakuq kaptinqa, wichq'asqa siqi hina qallarin, tapuyllata chaymanta imayna kasqanta rikuchispa."
+      }
     ]
   }
 }

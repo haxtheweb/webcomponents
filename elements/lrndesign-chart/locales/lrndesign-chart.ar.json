@@ -4,5 +4,8 @@
   "pieChart": "بيانات · مخطط دائري",
   "showDataTable": "عرض جدول البيانات",
   "downloadData": "تنزيل البيانات (.csv)",
-  "series": "السلسلة {n}"
+  "series": "السلسلة {n}",
+  "barChartLabel": "مخطط شريطي",
+  "lineChartLabel": "مخطط خطي",
+  "pieChartLabel": "مخطط دائري"
 }

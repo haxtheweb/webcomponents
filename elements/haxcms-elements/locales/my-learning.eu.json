@@ -129,5 +129,12 @@
   "cancel": "Utzi",
   "clearedSite": "{site} gunerako zure ikaskuntza-datuak garbitu dira.",
   "clearedDevice": "Gailu honetako ikaskuntza-datu guztiak garbitu dira.",
-  "thisSite": "gune hau"
+  "thisSite": "gune hau",
+  "outlineHeading": "Aurrerapena orriko",
+  "allPages": "Orri guztiak",
+  "outlinePagesDone": "{total} orritik {done} eginda",
+  "outlinePagesCount": "{count} orri",
+  "outlinePercent": "%{percent}",
+  "outlinePercentComplete": "%{percent} osatuta",
+  "outlineComplete": "Osatuta"
 }

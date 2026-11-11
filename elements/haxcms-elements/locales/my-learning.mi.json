@@ -129,5 +129,12 @@
   "cancel": "Whakakore",
   "clearedSite": "Kua whakawāteatia ō raraunga ako mō {site}.",
   "clearedDevice": "Kua whakawāteatia ngā raraunga ako katoa i tēnei pūrere.",
-  "thisSite": "tēnei pae"
+  "thisSite": "tēnei pae",
+  "outlineHeading": "Anga whakamua ia whārangi",
+  "allPages": "Ngā whārangi katoa",
+  "outlinePagesDone": "{done} o te {total} whārangi kua oti",
+  "outlinePagesCount": "{count} whārangi",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% kua oti",
+  "outlineComplete": "Kua oti"
 }

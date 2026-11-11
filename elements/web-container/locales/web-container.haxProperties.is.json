@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "NodeJS-gámur"
+    "title": "NodeJS-gámur",
+    "description": ""
   },
   "settings": {
     "configure": [

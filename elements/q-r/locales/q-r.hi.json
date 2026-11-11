@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "{title} के लिए QR कोड",
+  "noData": "QR कोड के रूप में दिखाने के लिए कोई डेटा नहीं",
+  "formatNotSupported": "QR कोड प्रारूप {format} समर्थित नहीं है",
+  "noCanvas": "यह ब्राउज़र QR कोड नहीं बना सकता (canvas समर्थन नहीं है)"
+}

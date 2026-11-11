@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{creator} دا {title} {license} تحت لائسنس شدہ اے۔",
   "permissionsBeyondScope": "ایس لائسنس توں ودھ اجازتاں {link} دستیاب نیں۔",
   "author": "(لکھاری)",
-  "onTheLicensingDetailsPage": "لائسنس تفصیلاں والے صفحے تے"
+  "onTheLicensingDetailsPage": "لائسنس تفصیلاں والے صفحے تے",
+  "licenseLabel": "لائسنس"
 }

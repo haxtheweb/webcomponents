@@ -22,6 +22,12 @@
         "title": "Index activ",
         "description": "Indexul imaginii active de la care se pornește în modul galerie."
       }
+    ],
+    "developer": [
+      {
+        "title": "Imagini",
+        "description": "Imaginile din galerie. Nu se editează aici: structura paginii o folosește pentru a ști ce blocuri pot fi plasate în ea."
+      }
     ]
   }
 }

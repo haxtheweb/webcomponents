@@ -129,5 +129,12 @@
   "cancel": "Cancel·la",
   "clearedSite": "S’han esborrat les teves dades d’aprenentatge de {site}.",
   "clearedDevice": "S’han esborrat totes les dades d’aprenentatge d’aquest dispositiu.",
-  "thisSite": "aquest lloc"
+  "thisSite": "aquest lloc",
+  "outlineHeading": "Progrés per pàgina",
+  "allPages": "Totes les pàgines",
+  "outlinePagesDone": "{done} de {total} pàgines fetes",
+  "outlinePagesCount": "{count} pàgines",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% completat",
+  "outlineComplete": "Completat"
 }
