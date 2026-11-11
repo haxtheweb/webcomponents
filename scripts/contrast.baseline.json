@@ -6,17 +6,6 @@
         "#example >> aNy-media-transcript-cue[end=\"N:N\"][start=\"N:N\"][lang=\"en\"] > .searchable": 3
       }
     },
-    "bootstrap-theme": {
-      "light": {
-        "bootstrap-theme >> #sitemenu >> map-menu >> #item-NaNbNcNd-N-NaNa-NaNa-bootstrapabout >> #item-NaNbNcNd-N-NaNa-NaNa-bootstrapabout >> .title": 1,
-        "bootstrap-theme >> #sitemenu >> map-menu >> #item-NaNbNcNd-N-NaNa-NaNa-bootstrapcontact >> .title": 1,
-        "bootstrap-theme >> bootstrap-breadcrumb >> .active > span": 1,
-        "bootstrap-theme >> bootstrap-footer >> span": 1
-      },
-      "dark": {
-        "bootstrap-theme >> bootstrap-breadcrumb >> .active > span": 1
-      }
-    },
     "outline-designer": {
       "dark": {
         "outline-designer >> .indent-N[aria-posinset=\"N\"][aria-level=\"N\"] > .title > .shown.label[property=\"oer:title\"]": 1,

@@ -18,20 +18,20 @@ class BootstrapFooter extends I18NMixin(LitElement) {
           margin-bottom: 10px;
           --simple-icon-height: 18px;
           --simple-icon-width: 18px;
-          --simple-icon-color: #007bff;
+          --simple-icon-color: var(--bootstrap-theme-link-color, #0a58ca);
         }
-        .btn-outline-primary {
-          color: #007bff;
-          border-color: #007bff;
+        :host .btn-outline-primary {
+          color: var(--bootstrap-theme-link-color, #0a58ca);
+          border-color: var(--bootstrap-theme-link-color, #0a58ca);
         }
 
-        .btn-outline-primary:active,
-        .btn-outline-primary:focus,
-        .btn-outline-primary:hover {
+        :host .btn-outline-primary:active,
+        :host .btn-outline-primary:focus,
+        :host .btn-outline-primary:hover {
           --simple-icon-color: white;
           color: #fff;
-          background-color: #007bff;
-          border-color: #007bff;
+          background-color: var(--bootstrap-theme-link-color, #0a58ca);
+          border-color: var(--bootstrap-theme-link-color, #0a58ca);
         }
 
         .container {
@@ -56,9 +56,9 @@ class BootstrapFooter extends I18NMixin(LitElement) {
           margin-bottom: 3px;
         }
 
-        a {
+        :host a {
           text-decoration: none;
-          color: #007bff;
+          color: var(--bootstrap-theme-link-color, #0a58ca);
         }
         a:focus-visible {
           outline: 2px solid currentColor;

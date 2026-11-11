@@ -25,10 +25,16 @@ class BootstrapBreadcrumb extends I18NMixin(LitElement) {
           --bootstrap-dark-theme-secondary-background-color: #343a40;
           --simple-icon-height: 18px;
           --simple-icon-width: 18px;
-          --simple-icon-color: #007bff;
+          --simple-icon-color: light-dark(
+            var(--bootstrap-theme-link-color, #0a58ca),
+            var(--bootstrap-theme-link-color-dark, #6ea8fe)
+          );
         }
-        a {
-          color: #007bff;
+        :host a {
+          color: light-dark(
+            var(--bootstrap-theme-link-color, #0a58ca),
+            var(--bootstrap-theme-link-color-dark, #6ea8fe)
+          );
         }
 
         .container {
@@ -46,6 +52,19 @@ class BootstrapBreadcrumb extends I18NMixin(LitElement) {
         .breadcrumb-item {
           padding: 0.5rem 0.75rem;
           color: light-dark(black, white);
+        }
+        /* Bootstrap's own .breadcrumb-item.active gray (#6c757d) is under
+           4.5:1 on both breadcrumb surfaces; use the darker / lighter
+           Bootstrap grays so the current page stays readable */
+        :host .breadcrumb-item.active {
+          color: light-dark(
+            var(--bootstrap-theme-breadcrumb-active-color, #495057),
+            var(--bootstrap-theme-breadcrumb-active-color-dark, #adb5bd)
+          );
+        }
+        :host([color-theme="1"]) .breadcrumb-item.active,
+        :host([color-theme="2"]) .breadcrumb-item.active {
+          color: var(--bootstrap-theme-breadcrumb-active-color-dark, #adb5bd);
         }
 
         simple-icon-lite {
