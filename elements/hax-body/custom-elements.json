@@ -4261,6 +4261,268 @@
     },
     {
       "kind": "javascript-module",
+      "path": "lib/hax-map-tree.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "tagOf",
+          "parameters": [
+            {
+              "name": "node"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "headingLevel",
+          "parameters": [
+            {
+              "name": "node"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "isPageBreak",
+          "parameters": [
+            {
+              "name": "node"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "isLocked",
+          "parameters": [
+            {
+              "name": "node"
+            },
+            {
+              "name": "body"
+            }
+          ],
+          "description": "locked itself, or inside a locked block"
+        },
+        {
+          "kind": "function",
+          "name": "containerSlots",
+          "parameters": [
+            {
+              "name": "node"
+            },
+            {
+              "name": "schemaFor"
+            }
+          ],
+          "description": "The slots a block takes other blocks into, or null when it is not a\ncontainer. Each slot: { slot, title, allowed (tags or null for any),\nexcluded (tags) }."
+        },
+        {
+          "kind": "function",
+          "name": "slotAccepts",
+          "parameters": [
+            {
+              "name": "slot"
+            },
+            {
+              "name": "tag"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "buildRows",
+          "parameters": [
+            {
+              "name": "body"
+            },
+            {
+              "name": "schemaFor"
+            }
+          ],
+          "description": "The outline's rows, in page order. Each row:\n{ node, tag, depth, kind, movable, selectable, level, slots, slot,\n  container (the container a block or column belongs to) }\nkind: \"page\" (page break), \"block\" (moves on its own), \"column\" (a\ncontainer's slot when it has more than one), \"child\" (moves with its\nparent)."
+        },
+        {
+          "kind": "function",
+          "name": "sectionOf",
+          "parameters": [
+            {
+              "name": "node"
+            },
+            {
+              "name": "body"
+            }
+          ],
+          "description": "A top level heading and the blocks after it up to the next heading at\nits level or higher (or a page break); any other block alone."
+        },
+        {
+          "kind": "function",
+          "name": "nodesToMove",
+          "parameters": [
+            {
+              "name": "nodes"
+            },
+            {
+              "name": "body"
+            }
+          ],
+          "description": "What actually moves when these blocks are dragged: headings bring their\nsections (locked blocks in a section go with it, unchanged), blocks\ninside another moving block go with it. A page break or a locked block\ndoes not move on its own. In page order."
+        },
+        {
+          "kind": "function",
+          "name": "dropProblem",
+          "parameters": [
+            {
+              "name": "nodes"
+            },
+            {
+              "name": "target"
+            },
+            {
+              "name": "body"
+            },
+            {
+              "name": "schemaFor"
+            }
+          ],
+          "description": "Can these nodes go to target { parent, slot, before }?\nReturns \"\" when they can, otherwise a reason:\n\"locked\", \"self\", \"page\", \"slot\"."
+        },
+        {
+          "kind": "function",
+          "name": "moveNodes",
+          "parameters": [
+            {
+              "name": "nodes"
+            },
+            {
+              "name": "target"
+            },
+            {
+              "name": "body"
+            },
+            {
+              "name": "schemaFor"
+            }
+          ],
+          "description": "Moves the nodes, in order, to target { parent, slot, before }. Returns\ntrue when it moved them. All DOM changes happen in one task, so the\neditor's undo records one step."
+        },
+        {
+          "kind": "function",
+          "name": "keyboardTarget",
+          "parameters": [
+            {
+              "name": "node"
+            },
+            {
+              "name": "direction"
+            },
+            {
+              "name": "body"
+            }
+          ],
+          "description": "Where a keyboard move (Alt+Up / Alt+Down) of a block lands, or null.\n- A block moves one step past its neighbor in the same parent and slot\n  (past a heading it joins the section above or below).\n- A heading moves with its section, past the previous heading at its\n  level or higher (or above the blocks before the first heading), or\n  past the next such heading's whole section."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "tagOf",
+          "declaration": {
+            "name": "tagOf",
+            "module": "lib/hax-map-tree.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "headingLevel",
+          "declaration": {
+            "name": "headingLevel",
+            "module": "lib/hax-map-tree.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "isPageBreak",
+          "declaration": {
+            "name": "isPageBreak",
+            "module": "lib/hax-map-tree.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "isLocked",
+          "declaration": {
+            "name": "isLocked",
+            "module": "lib/hax-map-tree.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "containerSlots",
+          "declaration": {
+            "name": "containerSlots",
+            "module": "lib/hax-map-tree.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "slotAccepts",
+          "declaration": {
+            "name": "slotAccepts",
+            "module": "lib/hax-map-tree.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "buildRows",
+          "declaration": {
+            "name": "buildRows",
+            "module": "lib/hax-map-tree.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "sectionOf",
+          "declaration": {
+            "name": "sectionOf",
+            "module": "lib/hax-map-tree.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "nodesToMove",
+          "declaration": {
+            "name": "nodesToMove",
+            "module": "lib/hax-map-tree.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "dropProblem",
+          "declaration": {
+            "name": "dropProblem",
+            "module": "lib/hax-map-tree.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "moveNodes",
+          "declaration": {
+            "name": "moveNodes",
+            "module": "lib/hax-map-tree.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "keyboardTarget",
+          "declaration": {
+            "name": "keyboardTarget",
+            "module": "lib/hax-map-tree.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "lib/hax-map.js",
       "declarations": [
         {
@@ -4288,12 +4550,163 @@
             },
             {
               "kind": "method",
+              "name": "_schemaFor",
+              "parameters": [
+                {
+                  "name": "tag"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_nameFor",
+              "parameters": [
+                {
+                  "name": "tag"
+                }
+              ]
+            },
+            {
+              "kind": "method",
               "name": "updateHAXMap",
               "parameters": [
                 {
                   "name": "_e"
                 }
+              ],
+              "description": "Rebuilds the rows from the active hax-body."
+            },
+            {
+              "kind": "field",
+              "name": "_body",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_selectableRows"
+            },
+            {
+              "kind": "method",
+              "name": "_selectedNodes"
+            },
+            {
+              "kind": "method",
+              "name": "_format",
+              "parameters": [
+                {
+                  "name": "template"
+                },
+                {
+                  "name": "values"
+                }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "_rowTemplate",
+              "parameters": [
+                {
+                  "name": "row"
+                },
+                {
+                  "name": "index"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_rowOp",
+              "parameters": [
+                {
+                  "name": "e"
+                },
+                {
+                  "name": "index"
+                },
+                {
+                  "name": "action"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_onRowClick",
+              "parameters": [
+                {
+                  "name": "e"
+                },
+                {
+                  "name": "index"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_onCheck",
+              "parameters": [
+                {
+                  "name": "e"
+                },
+                {
+                  "name": "index"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_toggleRow",
+              "parameters": [
+                {
+                  "name": "index"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_toggleRange",
+              "parameters": [
+                {
+                  "name": "index"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_toggleAll",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "clearSelection"
+            },
+            {
+              "kind": "method",
+              "name": "_setLock",
+              "parameters": [
+                {
+                  "name": "node"
+                },
+                {
+                  "name": "lock"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "lockSelected"
+            },
+            {
+              "kind": "method",
+              "name": "unlockSelected"
+            },
+            {
+              "kind": "method",
+              "name": "deleteSelected",
+              "description": "Deletes the checked blocks that are not locked, in one step that a\nsingle Undo restores."
             },
             {
               "kind": "method",
@@ -4323,7 +4736,21 @@
                 {
                   "name": "action"
                 }
-              ]
+              ],
+              "description": "One row's action: \"lock\" toggles the block's own lock, \"delete\" removes\nit, \"up\" and \"down\" move it as Alt+Up and Alt+Down do."
+            },
+            {
+              "kind": "method",
+              "name": "moveByKeyboard",
+              "parameters": [
+                {
+                  "name": "node"
+                },
+                {
+                  "name": "direction"
+                }
+              ],
+              "description": "Alt+Up / Alt+Down: moves the block (a heading with its section) past\nits neighbor."
             },
             {
               "kind": "method",
@@ -4337,10 +4764,19 @@
             },
             {
               "kind": "method",
-              "name": "indentedElements",
+              "name": "_shortName",
               "parameters": [
                 {
-                  "name": "elementList"
+                  "name": "node"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_whatLabel",
+              "parameters": [
+                {
+                  "name": "nodes"
                 }
               ]
             },
@@ -4355,12 +4791,87 @@
             },
             {
               "kind": "method",
-              "name": "scrollInMap",
+              "name": "_rowElement",
+              "parameters": [
+                {
+                  "name": "index"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_focusRow",
+              "parameters": [
+                {
+                  "name": "index"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_onTreeKey",
               "parameters": [
                 {
                   "name": "e"
                 }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "_onPointerDown",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_startDrag"
+            },
+            {
+              "kind": "method",
+              "name": "_onDragMove",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_onDragEnd",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_onDragKey",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_endDrag"
+            },
+            {
+              "kind": "method",
+              "name": "_findScroller"
+            },
+            {
+              "kind": "method",
+              "name": "_autoScroll"
+            },
+            {
+              "kind": "method",
+              "name": "_updateDropTarget",
+              "description": "Works out where the carried blocks would land under the pointer:\nabove or below a row, into a layout (its row or a column row), or at\nthe end of the page; and whether they can go there."
             },
             {
               "kind": "field",
@@ -4388,6 +4899,65 @@
               "default": "false",
               "attribute": "dark",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "status",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "What the outline last did or would do (read to assistive tech)",
+              "default": "\"\"",
+              "attribute": "status"
+            },
+            {
+              "kind": "field",
+              "name": "focusIndex",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "The row that takes Tab focus",
+              "default": "0",
+              "attribute": "focus-index"
+            },
+            {
+              "kind": "field",
+              "name": "__selected",
+              "default": "new Set()"
+            },
+            {
+              "kind": "field",
+              "name": "__anchor",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "__drag",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "__dropTarget",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "__focusNode",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
             },
             {
               "kind": "field",
@@ -4419,7 +4989,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ lockUnlock: \"Lock / Unlock\", moveUp: \"Move up\", moveDown: \"Move down\", delete: \"Delete\", }"
+              "default": "{ pageOutline: \"Page outline\", selectAll: \"Select all\", select: \"Select\", blockCount: \"{count} blocks\", blockCountOne: \"1 block\", selectedCount: \"{count} selected\", lockSelected: \"Lock selected\", unlockSelected: \"Unlock selected\", deleteSelected: \"Delete selected\", clearSelection: \"Clear selection\", lockedSkipsOne: \"1 locked: Delete skips it\", lockedSkips: \"{count} locked: Delete skips them\", lockUnlock: \"Lock / Unlock\", delete: \"Delete\", dragToReorder: \"Drag to reorder\", column: \"Column\", andOne: \"{name} and 1 block\", andMore: \"{name} and {count} blocks\", moveAbove: \"Move {what} above {target}\", moveBelow: \"Move {what} below {target}\", moveInto: \"Move {what} into {target}\", moveToEnd: \"Move {what} to the end of the page\", moved: \"Moved {what}\", deleted: \"Deleted {count} blocks\", deletedOne: \"Deleted 1 block\", noDropLocked: \"{target} is locked\", noDropSlot: \"{target} does not take {what}\", noDropSelf: \"A block cannot go inside itself\", noDropPage: \"Page details stays first\", }"
             },
             {
               "kind": "field",
@@ -4453,13 +5023,13 @@
           ],
           "events": [
             {
-              "name": "hax-context-item-selected",
+              "name": "hax-toggle-active-node-lock",
               "type": {
                 "text": "CustomEvent"
               }
             },
             {
-              "name": "hax-toggle-active-node-lock",
+              "name": "hax-context-item-selected",
               "type": {
                 "text": "CustomEvent"
               }
@@ -4503,6 +5073,24 @@
                 "text": "object"
               },
               "fieldName": "activeNode"
+            },
+            {
+              "name": "status",
+              "type": {
+                "text": "string"
+              },
+              "description": "What the outline last did or would do (read to assistive tech)",
+              "default": "\"\"",
+              "fieldName": "status"
+            },
+            {
+              "name": "focus-index",
+              "type": {
+                "text": "number"
+              },
+              "description": "The row that takes Tab focus",
+              "default": "0",
+              "fieldName": "focusIndex"
             }
           ],
           "mixins": [

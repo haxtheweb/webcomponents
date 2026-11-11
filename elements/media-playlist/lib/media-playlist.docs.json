@@ -78,6 +78,10 @@
     "canScale": false,
     "canEditSource": true,
     "type": "grid",
+    "allowedSlotWrappers": [
+      "video-player",
+      "audio-player"
+    ],
     "contentEditable": true,
     "designSystem": {
       "accent": true,

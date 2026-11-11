@@ -1,22 +1,33 @@
 import { html, css } from "lit";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
-import "@haxtheweb/hax-body/lib/hax-toolbar-item.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
-import {
-  normalizeEventPath,
-  nodeToHaxElement,
-} from "@haxtheweb/utils/utils.js";
 import { HaxTrayDetailHeadings } from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
+import {
+  buildRows,
+  isLocked,
+  nodesToMove,
+  dropProblem,
+  moveNodes,
+  keyboardTarget,
+} from "@haxtheweb/hax-body/lib/hax-map-tree.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { autorun, toJS } from "mobx";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 
+// how far the pointer travels before a press becomes a drag
+const DRAG_START = 4;
+// how close to the top or bottom of the scrolling panel a drag scrolls it
+const SCROLL_EDGE = 40;
+
 /**
  * `hax-map`
  * @element hax-map
- * `Export dialog with all export options and settings provided.`
+ * The editor tray's page outline (Structure): every block on the page as a
+ * tree row, as outline-designer draws pages. Check rows to lock, unlock or
+ * delete them together; drag rows (or press Alt+Up / Alt+Down) to move
+ * blocks, a heading with its section, into and out of layouts that take
+ * them. The rules live in hax-map-tree.js.
  */
 class HaxMap extends I18NMixin(SimpleColors) {
   /**
@@ -29,163 +40,323 @@ class HaxMap extends I18NMixin(SimpleColors) {
       css`
         :host {
           display: block;
+          font-size: var(--hax-ui-admin-font-size, 14px);
+          color: var(--hax-ui-text, var(--hax-ui-color));
+          --hax-map-select-width: calc(
+            var(--hax-ui-target, 24px) + var(--hax-ui-gap, 4px)
+          );
         }
-        .container {
-          text-align: left;
-        }
-        ul {
-          list-style: none;
-          padding: 0;
-          margin: 0;
-        }
-        /* HAX UI tree rows, as outline-designer draws them: 32px, the block
-           type in bold, a muted excerpt of its text, and the row's own
-           actions on hover or focus */
-        ul li {
-          margin: 0;
-          padding: 0 var(--hax-ui-gap-md, 8px) 0 var(--hax-ui-gap-md, 8px);
+        /* Select all and the count, or the bulk actions for checked rows;
+           stays under the tray title bar */
+        .toolbar {
+          position: sticky;
+          top: var(--hax-ui-titlebar-height, 48px);
+          z-index: 2;
+          box-sizing: border-box;
           display: flex;
           align-items: center;
           gap: var(--hax-ui-gap-md, 8px);
-          min-height: var(--hax-ui-row-height, 32px);
-          font-size: var(--hax-ui-admin-font-size, 14px);
-          color: var(--hax-ui-text, var(--hax-ui-color));
+          height: var(--ddd-spacing-10, 40px);
+          padding: 0 var(--hax-ui-gap-md, 8px) 0 0;
+          border-bottom: 1px solid var(--hax-ui-line);
+          background-color: var(--hax-ui-surface);
         }
-        ul li:hover,
-        ul li:focus-within {
-          background-color: var(--hax-ui-hover, transparent);
+        .toolbar.bulk {
+          background-color: var(--hax-ui-selected);
         }
-        li hax-toolbar-item {
-          display: inline-flex;
+        .selcol {
           flex: 0 0 auto;
-          max-width: 60%;
-          height: var(--hax-ui-row-height, 32px);
-          overflow: hidden;
-          --simple-toolbar-button-height: var(--hax-ui-icon, 16px);
-          --simple-toolbar-button-width: var(--hax-ui-icon, 16px);
+          display: flex;
+          align-items: center;
+          width: var(--hax-map-select-width);
+          margin-left: var(--hax-ui-gap-md, 8px);
         }
-        li hax-toolbar-item::part(button) {
-          gap: var(--hax-ui-gap-md, 8px);
-          padding: 0;
-          border-color: transparent;
-          background-color: transparent;
-          color: var(--hax-ui-text, var(--hax-ui-color));
-          font-size: var(--hax-ui-admin-font-size, 14px);
-          font-weight: 700;
-        }
-        li hax-toolbar-item::part(icon) {
-          color: var(--hax-ui-text-muted, currentColor);
-        }
-        li hax-toolbar-item::part(label) {
+        input[type="checkbox"] {
+          width: var(--hax-ui-icon, 16px);
+          height: var(--hax-ui-icon, 16px);
           margin: 0;
+          accent-color: var(--hax-ui-accent-strong);
+          cursor: pointer;
         }
-        li .excerpt {
+        input[type="checkbox"]:focus-visible {
+          outline: var(--hax-ui-focus-width, 2px) solid var(--hax-ui-focus);
+          outline-offset: 2px;
+        }
+        .count {
           flex: 1 1 auto;
           min-width: 0;
           overflow: hidden;
-          white-space: nowrap;
           text-overflow: ellipsis;
-          color: var(--hax-ui-text-muted, currentColor);
-          cursor: pointer;
+          white-space: nowrap;
+          color: var(--hax-ui-text-muted);
+          font-size: var(--hax-ui-admin-font-size-xs, 12px);
         }
-        /* a row's actions take no room until the row is hovered or has
-           focus, so the excerpt can use the width */
-        li simple-icon-button-lite {
-          display: none;
+        .bulk .count {
+          color: var(--hax-ui-text);
+          font-size: var(--hax-ui-admin-font-size, 14px);
+          font-weight: 700;
+        }
+        .bar-btn {
           flex: 0 0 auto;
-          opacity: 0;
-          visibility: hidden;
-          --simple-icon-width: var(--hax-ui-icon, 16px);
-          --simple-icon-height: var(--hax-ui-icon, 16px);
-          --simple-icon-button-border-radius: var(--hax-ui-radius, 4px);
-          --simple-icon-button-padding: 0;
           box-sizing: border-box;
-          width: var(--hax-ui-target, 24px);
-          height: var(--hax-ui-target, 24px);
-          border-radius: var(--hax-ui-radius, 4px);
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: var(--hax-ui-row-height, 32px);
+          height: var(--hax-ui-row-height, 32px);
           margin: 0;
           padding: 0;
-          color: var(--hax-ui-text, var(--hax-ui-color));
-          background-color: var(
-            --hax-ui-surface,
-            var(--hax-ui-background-color)
-          );
-          border: 1px solid
-            var(--hax-ui-line-strong, var(--hax-ui-border-color));
-          transition:
-            background-color var(--hax-ui-duration, 150ms) ease,
-            opacity var(--hax-ui-duration, 150ms) ease;
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius, 4px);
+          background-color: var(--hax-ui-surface);
+          color: var(--hax-ui-text);
+          cursor: pointer;
+          --simple-icon-width: var(--hax-ui-icon, 16px);
+          --simple-icon-height: var(--hax-ui-icon, 16px);
         }
-        li simple-icon-button-lite:hover,
-        li simple-icon-button-lite:focus,
-        li simple-icon-button-lite:focus-within {
-          background-color: var(
-            --hax-ui-hover,
-            var(--hax-ui-background-color-secondary)
-          );
-          opacity: 1;
+        .bar-btn:hover {
+          background-color: var(--hax-ui-hover);
         }
-        li simple-icon-button-lite.del {
-          color: var(--hax-ui-danger, var(--hax-ui-color-danger));
-          border-color: var(--hax-ui-danger, var(--hax-ui-color-danger));
+        .bar-btn.danger {
+          color: var(--hax-ui-danger);
+          border-color: var(--hax-ui-danger);
         }
-        li:hover simple-icon-button-lite,
-        li:focus-within simple-icon-button-lite {
-          display: inline-flex;
-          visibility: visible;
-          opacity: 1;
+        .bar-btn.ghost {
+          border-color: transparent;
+          background-color: transparent;
         }
-        li hax-toolbar-item {
-          max-width: none;
+        .bar-btn:focus-visible,
+        .row-btn:focus-visible {
+          outline: var(--hax-ui-focus-width, 2px) solid var(--hax-ui-focus);
+          outline-offset: 1px;
         }
-        li:has(hax-toolbar-item[data-active-item]) {
-          background-color: var(
-            --hax-ui-selected,
-            var(--hax-ui-background-color-accent)
-          );
+        .status {
+          display: flex;
+          align-items: center;
+          box-sizing: border-box;
+          min-height: var(--hax-ui-row-height, 32px);
+          padding: var(--hax-ui-gap, 4px) var(--hax-ui-gap-lg, 12px);
+          border-bottom: 1px solid var(--hax-ui-line);
+          background-color: var(--hax-ui-accent-soft);
+          font-size: var(--hax-ui-admin-font-size-xs, 12px);
+          line-height: 1.3;
+        }
+        .status:empty {
+          display: none;
+        }
+        .tree-wrap {
+          position: relative;
+        }
+        ul {
+          list-style: none;
+          margin: 0;
+          padding: var(--hax-ui-gap, 4px) 0;
+        }
+        /* rows as outline-designer draws them: the select column in the
+           left padding, indent guides, type icon, bold type, muted excerpt,
+           then the row's actions on hover or focus */
+        li {
+          position: relative;
+          box-sizing: border-box;
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-md, 8px);
+          height: var(--hax-ui-row-height, 32px);
+          margin: 0;
+          padding: 0 var(--hax-ui-gap-md, 8px) 0
+            calc(var(--hax-ui-gap-md, 8px) + var(--hax-map-select-width));
+          white-space: nowrap;
+          cursor: pointer;
+          user-select: none;
+        }
+        li:hover,
+        li:focus-within {
+          background-color: var(--hax-ui-hover);
+        }
+        li:focus-visible {
+          outline: var(--hax-ui-focus-width, 2px) solid var(--hax-ui-focus);
+          outline-offset: calc(-1 * var(--hax-ui-focus-width, 2px));
+        }
+        li[aria-selected="true"] {
+          background-color: var(--hax-ui-selected);
+        }
+        /* the block selected in the page */
+        li.active {
           box-shadow: inset var(--ddd-border-size-md, 3px) 0 0
-            var(--hax-ui-accent-strong, var(--hax-ui-color-accent));
+            var(--hax-ui-accent-strong);
         }
-        @media (prefers-reduced-motion: reduce) {
-          li simple-icon-button-lite {
-            transition: none;
+        li.dragging {
+          color: var(--hax-ui-text-muted);
+        }
+        li.dragging .sel,
+        li.dragging .guide,
+        li.dragging .type {
+          opacity: var(--ddd-opacity-40, 0.4);
+        }
+        li.drop-into {
+          box-shadow: inset 0 0 0 var(--hax-ui-drop-width, 2px)
+            var(--hax-ui-drop);
+        }
+        .sel {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: var(--hax-ui-gap-md, 8px);
+          display: flex;
+          align-items: center;
+          width: var(--hax-map-select-width);
+        }
+        .guide {
+          flex: 0 0 auto;
+          align-self: stretch;
+          width: var(--hax-ui-gap-md, 8px);
+          margin-right: var(--hax-ui-gap, 4px);
+          border-left: 1px solid var(--hax-ui-line-strong);
+        }
+        li simple-icon-lite {
+          flex: 0 0 auto;
+          --simple-icon-width: var(--hax-ui-icon, 16px);
+          --simple-icon-height: var(--hax-ui-icon, 16px);
+        }
+        .type,
+        .grip,
+        .lockmark {
+          color: var(--hax-ui-text-muted);
+        }
+        .lockmark {
+          --simple-icon-width: calc(var(--hax-ui-icon, 16px) - 2px);
+          --simple-icon-height: calc(var(--hax-ui-icon, 16px) - 2px);
+        }
+        /* a mouse drags the whole row; touch drags by the grip so the
+           panel still scrolls */
+        .grip {
+          display: none;
+          touch-action: none;
+          cursor: grab;
+        }
+        @media (hover: none) and (pointer: coarse) {
+          .grip {
+            display: inline-block;
           }
         }
-        li.is-child {
-          margin-left: 8px;
+        .kind {
+          flex: 0 0 auto;
+          font-weight: 700;
+          text-transform: capitalize;
         }
-
-        li hax-toolbar-item,
-        li.parent-h2 hax-toolbar-item[icon="hax:h2"] {
-          margin-left: 0px;
+        li.column .kind {
+          color: var(--hax-ui-text-muted);
+        }
+        .ex {
+          flex: 1 1 auto;
+          min-width: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          color: var(--hax-ui-text-muted);
+        }
+        .acts {
+          display: none;
+          flex: 0 0 auto;
+          gap: 2px;
+        }
+        li:hover .acts,
+        li:focus-within .acts {
+          display: inline-flex;
+        }
+        .row-btn {
+          box-sizing: border-box;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: var(--hax-ui-target, 24px);
+          height: var(--hax-ui-target, 24px);
+          margin: 0;
+          padding: 0;
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius, 4px);
+          background-color: var(--hax-ui-surface);
+          color: var(--hax-ui-text);
           cursor: pointer;
         }
-        li.parent-h2 hax-toolbar-item,
-        li.parent-h2 + li.is-child hax-toolbar-item,
-        li.parent-h2 + li.is-child ~ li.is-child hax-toolbar-item,
-        li.parent-h3 hax-toolbar-item[icon="hax:h3"] {
-          margin-left: 8px;
+        .row-btn simple-icon-lite {
+          --simple-icon-width: calc(var(--hax-ui-icon, 16px) - 2px);
+          --simple-icon-height: calc(var(--hax-ui-icon, 16px) - 2px);
         }
-        li.parent-h3 hax-toolbar-item,
-        li.parent-h3 + li.is-child hax-toolbar-item,
-        li.parent-h3 + li.is-child ~ li.is-child hax-toolbar-item,
-        li.parent-h4 hax-toolbar-item[icon="hax:h4"] {
-          margin-left: 8px;
+        .row-btn:hover {
+          background-color: var(--hax-ui-hover);
         }
-        li.parent-h4 hax-toolbar-item,
-        li.parent-h4 + li.is-child hax-toolbar-item,
-        li.parent-h4 + li.is-child ~ li.is-child hax-toolbar-item,
-        li.parent-h5 hax-toolbar-item[icon="hax:h5"] {
-          margin-left: 12px;
+        .row-btn.danger {
+          color: var(--hax-ui-danger);
+          border-color: var(--hax-ui-danger);
         }
-        li.parent-h5 hax-toolbar-item,
-        li.parent-h5 + li.is-child hax-toolbar-item,
-        li.parent-h5 + li.is-child ~ li.is-child hax-toolbar-item,
-        li.parent-h6 hax-toolbar-item[icon="hax:h6"],
-        li.parent-h6 hax-toolbar-item,
-        li.parent-h6 + li.is-child hax-toolbar-item,
-        li.parent-h6 + li.is-child ~ li.is-child hax-toolbar-item {
-          margin-left: 12px;
+        .row-btn[disabled] {
+          opacity: var(--ddd-opacity-40, 0.4);
+          cursor: not-allowed;
+        }
+        .dropline {
+          position: absolute;
+          right: var(--hax-ui-gap-md, 8px);
+          height: var(--hax-ui-drop-width, 2px);
+          margin-top: calc(var(--hax-ui-drop-width, 2px) / -2);
+          border-radius: var(--hax-ui-radius, 4px);
+          background-color: var(--hax-ui-drop);
+          pointer-events: none;
+        }
+        .dropline::before {
+          content: "";
+          position: absolute;
+          left: -5px;
+          top: -4px;
+          box-sizing: border-box;
+          width: 10px;
+          height: 10px;
+          border: var(--hax-ui-drop-width, 2px) solid var(--hax-ui-drop);
+          border-radius: var(--hax-ui-radius-pill, 999px);
+          background-color: var(--hax-ui-surface);
+        }
+        .drag-ghost {
+          position: fixed;
+          z-index: 10000;
+          display: inline-flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-md, 8px);
+          max-width: 75%;
+          padding: var(--hax-ui-gap, 4px) var(--hax-ui-gap-md, 8px);
+          border: 1px solid var(--hax-ui-drop);
+          border-radius: var(--hax-ui-radius, 4px);
+          background-color: var(--hax-ui-surface);
+          box-shadow: var(--hax-ui-shadow-popover);
+          color: var(--hax-ui-text);
+          font-weight: 500;
+          white-space: nowrap;
+          pointer-events: none;
+        }
+        .drag-ghost.no-drop {
+          border-color: var(--hax-ui-danger);
+        }
+        .drag-ghost simple-icon-lite {
+          --simple-icon-width: var(--hax-ui-icon, 16px);
+          --simple-icon-height: var(--hax-ui-icon, 16px);
+          color: var(--hax-ui-text-muted);
+        }
+        .drag-ghost .t {
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .drag-ghost .n {
+          font-weight: 400;
+          color: var(--hax-ui-text-muted);
+        }
+        .sr-only {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          margin: -1px;
+          padding: 0;
+          overflow: hidden;
+          clip: rect(0 0 0 0);
+          white-space: nowrap;
+          border: 0;
         }
       `,
     ];
@@ -194,14 +365,49 @@ class HaxMap extends I18NMixin(SimpleColors) {
     super();
     this.elementList = [];
     this.dark = false;
+    this.status = "";
+    this.focusIndex = 0;
+    this.__selected = new Set();
+    this.__anchor = null;
+    this.__drag = null;
+    this.__dropTarget = null;
+    this.__focusNode = null;
     this.__mapMutationObserver = null;
     this.__mapMutationObserverTarget = null;
     this.__mapRefreshDebounce = null;
+    this._onDragMove = this._onDragMove.bind(this);
+    this._onDragEnd = this._onDragEnd.bind(this);
+    this._onDragKey = this._onDragKey.bind(this);
     this.t = {
+      pageOutline: "Page outline",
+      selectAll: "Select all",
+      select: "Select",
+      blockCount: "{count} blocks",
+      blockCountOne: "1 block",
+      selectedCount: "{count} selected",
+      lockSelected: "Lock selected",
+      unlockSelected: "Unlock selected",
+      deleteSelected: "Delete selected",
+      clearSelection: "Clear selection",
+      lockedSkipsOne: "1 locked: Delete skips it",
+      lockedSkips: "{count} locked: Delete skips them",
       lockUnlock: "Lock / Unlock",
-      moveUp: "Move up",
-      moveDown: "Move down",
       delete: "Delete",
+      dragToReorder: "Drag to reorder",
+      column: "Column",
+      andOne: "{name} and 1 block",
+      andMore: "{name} and {count} blocks",
+      moveAbove: "Move {what} above {target}",
+      moveBelow: "Move {what} below {target}",
+      moveInto: "Move {what} into {target}",
+      moveToEnd: "Move {what} to the end of the page",
+      moved: "Moved {what}",
+      deleted: "Deleted {count} blocks",
+      deletedOne: "Deleted 1 block",
+      noDropLocked: "{target} is locked",
+      noDropSlot: "{target} does not take {what}",
+      noDropSelf: "A block cannot go inside itself",
+      noDropPage: "Page details stays first",
     };
     this.registerLocalization({
       context: this,
@@ -234,6 +440,7 @@ class HaxMap extends I18NMixin(SimpleColors) {
   }
   disconnectedCallback() {
     this._disconnectBodyObserver();
+    this._endDrag();
     clearTimeout(this.__mapRefreshDebounce);
     if (super.disconnectedCallback) {
       super.disconnectedCallback();
@@ -246,6 +453,7 @@ class HaxMap extends I18NMixin(SimpleColors) {
     if (changedProperties.has("hidden")) {
       if (this.hidden) {
         this._disconnectBodyObserver();
+        this._endDrag();
       } else {
         this._connectBodyObserver();
         this._scheduleMapRefresh(0);
@@ -298,7 +506,7 @@ class HaxMap extends I18NMixin(SimpleColors) {
         if (
           mutation.type === "attributes" &&
           mutation.attributeName &&
-          ["slot", "data-hax-lock", "class", "id"].includes(
+          ["slot", "data-hax-lock", "class", "id", "layout"].includes(
             mutation.attributeName,
           )
         ) {
@@ -306,7 +514,8 @@ class HaxMap extends I18NMixin(SimpleColors) {
           break;
         }
       }
-      if (shouldRefresh) {
+      // a drag keeps the rows it started with until it ends
+      if (shouldRefresh && !this.__drag) {
         this._scheduleMapRefresh(40);
       }
     });
@@ -315,187 +524,467 @@ class HaxMap extends I18NMixin(SimpleColors) {
       subtree: true,
       characterData: true,
       attributes: true,
-      attributeFilter: ["slot", "data-hax-lock", "class", "id"],
+      attributeFilter: ["slot", "data-hax-lock", "class", "id", "layout"],
     });
   }
-  async updateHAXMap(_e) {
+  _schemaFor(tag) {
+    return HAXStore.haxSchemaFromTag(tag) || {};
+  }
+  _nameFor(tag) {
+    const def = this._schemaFor(tag);
+    if (def && def.gizmo && def.gizmo.title) {
+      return { name: def.gizmo.title, icon: def.gizmo.icon };
+    }
+    return tag && tag.includes("-")
+      ? { name: "Widget", icon: "hax:templates" }
+      : { name: "HTML block", icon: "hax:paragraph" };
+  }
+  /**
+   * Rebuilds the rows from the active hax-body.
+   */
+  updateHAXMap(_e) {
     this._connectBodyObserver();
-    const activeBody = HAXStore.activeHaxBody;
-    if (!activeBody || !activeBody.childNodes) {
+    const body = HAXStore.activeHaxBody;
+    if (!body || !body.children) {
       this.elementList = [];
       return;
     }
-    let list = [];
-    for (let i = 0; i < activeBody.childNodes.length; i++) {
-      const node = activeBody.childNodes[i];
-      if (!node || !node.tagName || node.tagName.toLowerCase() === "br") {
-        continue;
+    const rows = buildRows(body, (tag) => this._schemaFor(tag));
+    this.elementList = rows.map((row) => {
+      if (row.kind === "column") {
+        const index = row.node
+          ? (row.slotInfo && row.slotInfo.title) || row.slot
+          : "";
+        return {
+          ...row,
+          icon: "icons:view-column",
+          name: /^\d+$/.test(index) ? `${this.t.column} ${index}` : index,
+          excerpt: "",
+        };
       }
-      let tmpNode = await nodeToHaxElement(node, null);
-      if (!tmpNode || !tmpNode.tag || tmpNode.tag.toLowerCase() === "br") {
-        continue;
+      const { name, icon } = this._nameFor(row.tag);
+      return { ...row, icon, name, excerpt: this.excerptFor(row.node) };
+    });
+    // checked rows that left the page are no longer checked
+    [...this.__selected].forEach((node) => {
+      if (!body.contains(node)) {
+        this.__selected.delete(node);
       }
-      tmpNode.parent = null;
-      tmpNode.node = node;
-      list.push(tmpNode);
-      if (node.children && node.children.length > 0) {
-        for (let j = 0; j < node.children.length; j++) {
-          if (
-            !node.children[j] ||
-            !node.children[j].tagName ||
-            node.children[j].tagName.toLowerCase() === "br"
-          ) {
-            continue;
-          }
-          let tmpNodeChild = await nodeToHaxElement(node.children[j], null);
-          if (
-            !tmpNodeChild ||
-            !tmpNodeChild.tag ||
-            tmpNodeChild.tag.toLowerCase() === "br"
-          ) {
-            continue;
-          }
-          tmpNodeChild.parent = tmpNode.tag;
-          tmpNodeChild.node = node.children[j];
-          // ignore certain tags we don't need a deep selection of
-          if (
-            ![
-              "br",
-              "span",
-              "strong",
-              "b",
-              "sup",
-              "sub",
-              "i",
-              "em",
-              "div",
-              "strike",
-            ].includes(tmpNodeChild.tag)
-          ) {
-            list.push(tmpNodeChild);
-          }
-        }
+    });
+    if (this.__focusNode) {
+      const index = this.elementList.findIndex(
+        (row) => row.node === this.__focusNode && row.kind !== "column",
+      );
+      if (index > -1) {
+        this.focusIndex = index;
+        this.updateComplete.then(() => this._focusRow(index));
       }
+      this.__focusNode = null;
     }
-    let elements = [];
-    for (let i = 0; i < list.length; i++) {
-      if (!list[i] || !list[i].tag || list[i].tag.toLowerCase() === "br") {
-        continue;
-      }
-      let def = HAXStore.haxSchemaFromTag(list[i].tag);
-      if (def.gizmo) {
-        elements.push({
-          node: list[i].node,
-          tag: list[i].tag,
-          parent: list[i].parent,
-          icon: def.gizmo.icon,
-          name: def.gizmo.title,
-          excerpt: this.excerptFor(list[i].node),
-        });
-      } else {
-        if (list[i].tag && list[i].tag.includes("-")) {
-          elements.push({
-            tag: list[i].tag,
-            parent: list[i].parent,
-            icon: "hax:templates",
-            name: "Widget",
-          });
-        } else {
-          elements.push({
-            tag: list[i].tag,
-            parent: list[i].parent,
-            icon: "hax:paragraph",
-            name: "HTML block",
-          });
-        }
-      }
+    if (this.focusIndex >= this.elementList.length) {
+      this.focusIndex = Math.max(0, this.elementList.length - 1);
     }
-    this.elementList = [...elements];
+    this.requestUpdate();
+  }
+  get _body() {
+    return HAXStore.activeHaxBody;
+  }
+  _selectableRows() {
+    return this.elementList.filter((row) => row.selectable);
+  }
+  _selectedNodes() {
+    return this.elementList
+      .filter((row) => row.selectable && this.__selected.has(row.node))
+      .map((row) => row.node);
+  }
+  _format(template, values) {
+    return Object.keys(values).reduce(
+      (out, key) => out.split(`{${key}}`).join(values[key]),
+      template || "",
+    );
   }
   render() {
-    return html`${
-      this.hidden
-        ? ``
-        : html` <ul>
-            ${this.indentedElements(this.elementList).map((element, index) => {
-              return html`
-                <li
-                  class="${
-                    element.parent ? `parent-${element.parent}` : "no-parent"
-                  } ${
-                    ["h1", "h2", "h3", "h4", "h5", "h6", element.tag].includes(
-                      element.parent,
-                    )
-                      ? ""
-                      : "is-child"
-                  }"
+    if (this.hidden) {
+      return html``;
+    }
+    const selectable = this._selectableRows();
+    const selected = this._selectedNodes();
+    const all = selectable.length > 0 && selected.length === selectable.length;
+    const some = selected.length > 0 && !all;
+    const lockedCount = selected.filter((node) =>
+      isLocked(node, this._body),
+    ).length;
+    let status = this.status;
+    if (!status && selected.length > 0 && lockedCount > 0) {
+      status =
+        lockedCount === 1
+          ? this.t.lockedSkipsOne
+          : this._format(this.t.lockedSkips, { count: lockedCount });
+    }
+    return html`
+      <div class="toolbar ${selected.length > 0 ? "bulk" : ""}">
+        <span class="selcol">
+          <input
+            type="checkbox"
+            aria-label="${this.t.selectAll}"
+            title="${this.t.selectAll}"
+            .checked="${all}"
+            .indeterminate="${some}"
+            ?disabled="${selectable.length === 0}"
+            @change="${this._toggleAll}"
+          />
+        </span>
+        ${
+          selected.length > 0
+            ? html`<span class="count"
+                  >${this._format(this.t.selectedCount, {
+                    count: selected.length,
+                  })}</span
                 >
-                  <hax-toolbar-item
-                    align-horizontal="left"
-                    @click="${(_e) => this.goToItem(index)}"
-                    @dblclick="${(_e) => this.editItem(index)}"
-                    data-index="${index}"
-                    ?data-active-item="${element.node === this.activeNode}"
-                    icon="${element.icon}"
-                    label="${element.name}"
-                    show-text-label
-                  >
-                  </hax-toolbar-item>
-                  <span
-                    class="excerpt"
-                    aria-hidden="true"
-                    @click="${(_e) => this.goToItem(index)}"
-                    >${element.excerpt || ""}</span
-                  >
-                  ${
-                    element.tag != "page-break"
-                      ? html`
-                          <simple-icon-button-lite
-                            icon="${
-                              this.isLocked(index)
-                                ? "hax:admin-lock"
-                                : "hax:admin-unlock"
-                            }"
-                            @click="${(_e) => this.itemOp(index, "lock")}"
-                            title="${this.t.lockUnlock}"
-                          ></simple-icon-button-lite>
-                          <simple-icon-button-lite
-                            icon="hax:admin-move-up"
-                            @click="${(_e) => this.itemOp(index, "up")}"
-                            title="${this.t.moveUp}"
-                            ?disabled="${this.isLocked(index)}"
-                          ></simple-icon-button-lite>
-                          <simple-icon-button-lite
-                            icon="hax:admin-move-down"
-                            @click="${(_e) => this.itemOp(index, "down")}"
-                            title="${this.t.moveDown}"
-                            ?disabled="${this.isLocked(index)}"
-                          ></simple-icon-button-lite>
-                          <simple-icon-button-lite
-                            class="del"
-                            icon="hax:admin-delete"
-                            @click="${(_e) => this.itemOp(index, "delete")}"
-                            title="${this.t.delete}"
-                            ?disabled="${this.isLocked(index)}"
-                          ></simple-icon-button-lite>
-                        `
-                      : ``
-                  }
-                </li>
-              `;
-            })}
-          </ul>`
-    } `;
+                <button
+                  type="button"
+                  class="bar-btn"
+                  aria-label="${this.t.lockSelected}"
+                  title="${this.t.lockSelected}"
+                  @click="${this.lockSelected}"
+                >
+                  <simple-icon-lite icon="hax:admin-lock"></simple-icon-lite>
+                </button>
+                <button
+                  type="button"
+                  class="bar-btn"
+                  aria-label="${this.t.unlockSelected}"
+                  title="${this.t.unlockSelected}"
+                  @click="${this.unlockSelected}"
+                >
+                  <simple-icon-lite icon="hax:admin-unlock"></simple-icon-lite>
+                </button>
+                <button
+                  type="button"
+                  class="bar-btn danger"
+                  aria-label="${this.t.deleteSelected}"
+                  title="${this.t.deleteSelected}"
+                  @click="${this.deleteSelected}"
+                >
+                  <simple-icon-lite icon="hax:admin-delete"></simple-icon-lite>
+                </button>
+                <button
+                  type="button"
+                  class="bar-btn ghost"
+                  aria-label="${this.t.clearSelection}"
+                  title="${this.t.clearSelection}"
+                  @click="${this.clearSelection}"
+                >
+                  <simple-icon-lite icon="hax:admin-close"></simple-icon-lite>
+                </button>`
+            : html`<span class="count"
+                >${
+                  selectable.length === 1
+                    ? this.t.blockCountOne
+                    : this._format(this.t.blockCount, {
+                        count: selectable.length,
+                      })
+                }</span
+              >`
+        }
+      </div>
+      <div class="status" role="status">${status}</div>
+      <div class="tree-wrap">
+        <ul
+          role="tree"
+          aria-label="${this.t.pageOutline}"
+          aria-multiselectable="true"
+          @keydown="${this._onTreeKey}"
+          @pointerdown="${this._onPointerDown}"
+        >
+          ${this.elementList.map((row, index) => this._rowTemplate(row, index))}
+        </ul>
+        ${
+          this.__dropTarget && this.__dropTarget.line
+            ? html`<div
+                class="dropline"
+                style="top: ${this.__dropTarget.line.top}px; left: ${
+                  this.__dropTarget.line.left
+                }px"
+              ></div>`
+            : ``
+        }
+      </div>
+      ${
+        this.__drag && this.__drag.started
+          ? html`<div
+              class="drag-ghost ${
+                this.__dropTarget && this.__dropTarget.problem ? "no-drop" : ""
+              }"
+              style="left: ${this.__drag.x + 12}px; top: ${this.__drag.y + 8}px"
+            >
+              <simple-icon-lite icon="${this.__drag.icon}"></simple-icon-lite>
+              <span class="t">${this.__drag.label}</span>
+              ${
+                this.__drag.more
+                  ? html`<span class="n">+${this.__drag.more}</span>`
+                  : ``
+              }
+            </div>`
+          : ``
+      }
+    `;
+  }
+  _rowTemplate(row, index) {
+    const checked = row.selectable && this.__selected.has(row.node);
+    const locked = row.kind !== "column" && isLocked(row.node, this._body);
+    const ownLock =
+      row.node &&
+      row.node.getAttribute &&
+      row.node.getAttribute("data-hax-lock") != null;
+    const dragging =
+      this.__drag &&
+      this.__drag.started &&
+      this.__drag.nodes.some((n) => n === row.node || n.contains(row.node));
+    const classes = [
+      row.kind,
+      row.node === this.activeNode && row.kind !== "column" ? "active" : "",
+      dragging ? "dragging" : "",
+      this.__dropTarget && this.__dropTarget.intoIndex === index
+        ? "drop-into"
+        : "",
+    ].join(" ");
+    return html`<li
+      role="treeitem"
+      class="${classes}"
+      aria-level="${row.depth + 1}"
+      aria-selected="${row.selectable ? (checked ? "true" : "false") : ""}"
+      tabindex="${index === this.focusIndex ? "0" : "-1"}"
+      data-index="${index}"
+      @click="${(e) => this._onRowClick(e, index)}"
+      @dblclick="${(_e) => this.editItem(index)}"
+      @focus="${(_e) => (this.focusIndex = index)}"
+    >
+      <span class="sel">
+        ${
+          row.selectable
+            ? html`<input
+                type="checkbox"
+                tabindex="-1"
+                aria-label="${this.t.select} ${row.name}"
+                .checked="${checked}"
+                @click="${(e) => this._onCheck(e, index)}"
+              />`
+            : ``
+        }
+      </span>
+      ${Array.from({ length: row.depth }).map(
+        () => html`<span class="guide" aria-hidden="true"></span>`,
+      )}
+      ${
+        row.movable
+          ? html`<simple-icon-lite
+              class="grip"
+              icon="icons:reorder"
+              title="${this.t.dragToReorder}"
+            ></simple-icon-lite>`
+          : ``
+      }
+      <simple-icon-lite
+        class="type"
+        icon="${row.icon}"
+        aria-hidden="true"
+      ></simple-icon-lite>
+      <span class="kind">${row.name}</span>
+      <span class="ex">${row.excerpt || ""}</span>
+      ${
+        locked
+          ? html`<simple-icon-lite
+              class="lockmark"
+              icon="hax:admin-lock"
+              aria-hidden="true"
+            ></simple-icon-lite>`
+          : ``
+      }
+      ${
+        row.kind === "block"
+          ? html`<span class="acts">
+              <button
+                type="button"
+                class="row-btn"
+                tabindex="-1"
+                aria-label="${this.t.lockUnlock}"
+                title="${this.t.lockUnlock}"
+                ?disabled="${locked && !ownLock}"
+                @click="${(e) => this._rowOp(e, index, "lock")}"
+              >
+                <simple-icon-lite
+                  icon="${ownLock ? "hax:admin-lock" : "hax:admin-unlock"}"
+                ></simple-icon-lite>
+              </button>
+              <button
+                type="button"
+                class="row-btn danger"
+                tabindex="-1"
+                aria-label="${this.t.delete}"
+                title="${this.t.delete}"
+                ?disabled="${locked}"
+                @click="${(e) => this._rowOp(e, index, "delete")}"
+              >
+                <simple-icon-lite icon="hax:admin-delete"></simple-icon-lite>
+              </button>
+            </span>`
+          : ``
+      }
+    </li>`;
+  }
+  _rowOp(e, index, action) {
+    e.stopPropagation();
+    this.itemOp(index, action);
+  }
+  _onRowClick(e, index) {
+    if (this.__suppressClick) {
+      this.__suppressClick = false;
+      return;
+    }
+    if (e.shiftKey && this.elementList[index].selectable) {
+      this._toggleRange(index);
+      return;
+    }
+    this.focusIndex = index;
+    if (this.elementList[index].kind !== "column") {
+      this.goToItem(index);
+    }
+  }
+  _onCheck(e, index) {
+    e.stopPropagation();
+    if (e.shiftKey) {
+      e.preventDefault();
+      this._toggleRange(index);
+      return;
+    }
+    this._toggleRow(index);
+  }
+  _toggleRow(index) {
+    const row = this.elementList[index];
+    if (!row || !row.selectable) {
+      return;
+    }
+    if (this.__selected.has(row.node)) {
+      this.__selected.delete(row.node);
+    } else {
+      this.__selected.add(row.node);
+    }
+    this.__anchor = row.node;
+    this.status = "";
+    this.requestUpdate();
+  }
+  // Shift+click: the rows from the last one checked take its state
+  _toggleRange(index) {
+    const anchorIndex = this.elementList.findIndex(
+      (row) => row.node === this.__anchor && row.selectable,
+    );
+    if (anchorIndex === -1) {
+      this._toggleRow(index);
+      return;
+    }
+    const on = this.__selected.has(this.__anchor);
+    const [from, to] =
+      anchorIndex < index ? [anchorIndex, index] : [index, anchorIndex];
+    for (let i = from; i <= to; i++) {
+      const row = this.elementList[i];
+      if (row.selectable) {
+        if (on) {
+          this.__selected.add(row.node);
+        } else {
+          this.__selected.delete(row.node);
+        }
+      }
+    }
+    this.status = "";
+    this.requestUpdate();
+  }
+  _toggleAll(e) {
+    const rows = this._selectableRows();
+    if (e.target.checked) {
+      rows.forEach((row) => this.__selected.add(row.node));
+    } else {
+      this.__selected.clear();
+    }
+    this.status = "";
+    this.requestUpdate();
+  }
+  clearSelection() {
+    this.__selected.clear();
+    this.status = "";
+    this.requestUpdate();
+  }
+  _setLock(node, lock) {
+    if (lock) {
+      node.setAttribute("data-hax-lock", "data-hax-lock");
+    } else {
+      node.removeAttribute("data-hax-lock");
+    }
+    this.dispatchEvent(
+      new CustomEvent("hax-toggle-active-node-lock", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          lock: lock,
+          node: node,
+        },
+      }),
+    );
+  }
+  lockSelected() {
+    this._selectedNodes().forEach((node) => {
+      if (node.getAttribute("data-hax-lock") == null) {
+        this._setLock(node, true);
+      }
+    });
+    this.status = "";
+    this._scheduleMapRefresh(0);
+  }
+  unlockSelected() {
+    this._selectedNodes().forEach((node) => {
+      if (node.getAttribute("data-hax-lock") != null) {
+        this._setLock(node, false);
+      }
+    });
+    this.status = "";
+    this._scheduleMapRefresh(0);
+  }
+  /**
+   * Deletes the checked blocks that are not locked, in one step that a
+   * single Undo restores.
+   */
+  deleteSelected() {
+    const body = this._body;
+    let nodes = this._selectedNodes().filter((node) => !isLocked(node, body));
+    // a block inside another deleted block goes with it
+    nodes = nodes.filter(
+      (node) => !nodes.some((other) => other !== node && other.contains(node)),
+    );
+    nodes.forEach((node) => {
+      this.__selected.delete(node);
+      if (body && typeof body.haxDeleteNode === "function") {
+        body.haxDeleteNode(node);
+      } else {
+        node.remove();
+      }
+    });
+    this.status =
+      nodes.length === 1
+        ? this.t.deletedOne
+        : this._format(this.t.deleted, { count: nodes.length });
+    this._scheduleMapRefresh(0);
   }
   editItem(index) {
-    if (index !== false && this.elementList[index].node) {
+    const row = this.elementList[index];
+    if (row && row.node && row.kind !== "column") {
       this.dispatchEvent(
         new CustomEvent("hax-context-item-selected", {
           bubbles: true,
           cancelable: true,
           composed: true,
           detail: {
-            target: this.elementList[index].node,
+            target: row.node,
             eventName: "content-edit",
             value: true,
           },
@@ -504,79 +993,58 @@ class HaxMap extends I18NMixin(SimpleColors) {
     }
   }
   isLocked(index) {
-    if (index !== false && this.elementList[index].node) {
-      let node = this.elementList[index].node;
-      if (
-        node.getAttribute("data-hax-lock") != null ||
-        (node.parentNode &&
-          node.parentNode.getAttribute("data-hax-lock") != null)
-      ) {
-        return true;
-      } else {
-        return false;
-      }
+    const row = this.elementList[index];
+    if (!row || !row.node) {
+      return undefined;
     }
+    return isLocked(row.node, this._body);
   }
+  /**
+   * One row's action: "lock" toggles the block's own lock, "delete" removes
+   * it, "up" and "down" move it as Alt+Up and Alt+Down do.
+   */
   itemOp(index, action) {
-    if (index !== false && this.elementList[index].node && action) {
-      let node = this.elementList[index].node;
-      // verify this is not locked
-      if (
-        node.getAttribute("data-hax-lock") == null &&
-        node.parentNode &&
-        node.parentNode.getAttribute("data-hax-lock") == null
-      ) {
-        switch (action) {
-          case "lock":
-            node.setAttribute("data-hax-lock", "data-hax-lock");
-            this.dispatchEvent(
-              new CustomEvent("hax-toggle-active-node-lock", {
-                bubbles: true,
-                composed: true,
-                cancelable: true,
-                detail: {
-                  lock: true,
-                  node: node,
-                },
-              }),
-            );
-            break;
-          case "delete":
-            HAXStore.activeHaxBody.haxDeleteNode(node);
-            break;
-          case "down":
-            if (node.nextElementSibling) {
-              HAXStore.activeHaxBody.haxMoveGridPlate(node);
-            }
-            break;
-          case "up":
-            if (
-              node.previousElementSibling &&
-              node.previousElementSibling.tagName !== "PAGE-BREAK"
-            ) {
-              HAXStore.activeHaxBody.haxMoveGridPlate(node, -1);
-            }
-            break;
-        }
-      } else if (action === "lock") {
-        node.removeAttribute("data-hax-lock");
-        this.dispatchEvent(
-          new CustomEvent("hax-toggle-active-node-lock", {
-            bubbles: true,
-            composed: true,
-            cancelable: true,
-            detail: {
-              lock: false,
-              node: node,
-            },
-          }),
-        );
-      }
-      this._scheduleMapRefresh(50);
-      setTimeout(() => {
-        this.requestUpdate();
-      }, 0);
+    const row = this.elementList[index];
+    if (!row || !row.node || row.kind === "column" || !action) {
+      return;
     }
+    const node = row.node;
+    const ownLock = node.getAttribute("data-hax-lock") != null;
+    if (action === "lock") {
+      // a block inside a locked block unlocks with that block
+      if (ownLock || !isLocked(node, this._body)) {
+        this._setLock(node, !ownLock);
+      }
+    } else if (!isLocked(node, this._body)) {
+      if (action === "delete") {
+        this.__selected.delete(node);
+        this._body.haxDeleteNode(node);
+      } else if (action === "up" || action === "down") {
+        this.moveByKeyboard(node, action === "up" ? -1 : 1);
+      }
+    }
+    this._scheduleMapRefresh(50);
+  }
+  /**
+   * Alt+Up / Alt+Down: moves the block (a heading with its section) past
+   * its neighbor.
+   */
+  moveByKeyboard(node, direction) {
+    const body = this._body;
+    const target = keyboardTarget(node, direction, body);
+    if (!target) {
+      return false;
+    }
+    const nodes = nodesToMove([node], body);
+    const moved = moveNodes(nodes, target, body, (tag) => this._schemaFor(tag));
+    if (moved) {
+      this.__focusNode = node;
+      this.status = this._format(this.t.moved, {
+        what: this._whatLabel(nodes),
+      });
+      this._scheduleMapRefresh(0);
+    }
+    return moved;
   }
   /**
    * A short plain-text excerpt of a block, so rows of the same type (three
@@ -594,24 +1062,27 @@ class HaxMap extends I18NMixin(SimpleColors) {
     text = text.replace(/\s+/g, " ").trim();
     return text.length > 80 ? `${text.substring(0, 80)}…` : text;
   }
-  indentedElements(elementList) {
-    let prev = "h1";
-    return elementList.map((element) => {
-      let el = element;
-      if (el.parent === null) {
-        el.parent = prev;
-      }
-      if (["h1", "h2", "h3", "h4", "h5", "h6"].includes(el.tag)) {
-        el.parent = el.tag;
-        prev = el.tag;
-      }
-      return el;
-    });
+  // a block's name in messages: its text, short, or its type
+  _shortName(node) {
+    const text = this.excerptFor(node);
+    if (text) {
+      return text.length > 32 ? `${text.substring(0, 32)}…` : text;
+    }
+    return this._nameFor(node.tagName.toLowerCase()).name;
+  }
+  _whatLabel(nodes) {
+    const name = this._shortName(nodes[0]);
+    if (nodes.length === 1) {
+      return name;
+    }
+    return nodes.length === 2
+      ? this._format(this.t.andOne, { name })
+      : this._format(this.t.andMore, { name, count: nodes.length - 1 });
   }
   goToItem(index) {
-    if (index !== false && this.elementList[index].node) {
-      // find based on index position
-      let activeChild = this.elementList[index].node;
+    const row = this.elementList[index];
+    if (row && row.node && row.kind !== "column") {
+      const activeChild = row.node;
       HAXStore.activeNode = activeChild;
       activeChild.classList.add("blinkfocus");
       if (typeof activeChild.scrollIntoViewIfNeeded === "function") {
@@ -628,9 +1099,392 @@ class HaxMap extends I18NMixin(SimpleColors) {
       }, 500);
     }
   }
-  scrollInMap(e) {
-    let target = normalizeEventPath(e)[0];
-    this.goToItem(target.getAttribute("data-index"));
+  _rowElement(index) {
+    return this.shadowRoot
+      ? this.shadowRoot.querySelector(`li[data-index="${index}"]`)
+      : null;
+  }
+  _focusRow(index) {
+    const li = this._rowElement(index);
+    if (li) {
+      li.focus();
+    }
+  }
+  _onTreeKey(e) {
+    const index = this.focusIndex;
+    const row = this.elementList[index];
+    if (!row) {
+      return;
+    }
+    let handled = true;
+    if (e.altKey && (e.key === "ArrowUp" || e.key === "ArrowDown")) {
+      if (row.movable) {
+        this.moveByKeyboard(row.node, e.key === "ArrowUp" ? -1 : 1);
+      }
+    } else if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      const next = Math.min(
+        this.elementList.length - 1,
+        Math.max(0, index + (e.key === "ArrowDown" ? 1 : -1)),
+      );
+      this.focusIndex = next;
+      this.requestUpdate();
+      this.updateComplete.then(() => this._focusRow(next));
+    } else if (e.key === "Home" || e.key === "End") {
+      const next = e.key === "Home" ? 0 : this.elementList.length - 1;
+      this.focusIndex = next;
+      this.requestUpdate();
+      this.updateComplete.then(() => this._focusRow(next));
+    } else if (e.key === " ") {
+      if (e.shiftKey) {
+        this._toggleRange(index);
+      } else {
+        this._toggleRow(index);
+      }
+    } else if (e.key === "Enter") {
+      this.goToItem(index);
+    } else if (e.key === "Escape" && this.__selected.size > 0) {
+      this.clearSelection();
+    } else {
+      handled = false;
+    }
+    if (handled) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  }
+  /*
+   * Drag and drop, as outline-designer does it: a mouse press on a row
+   * (not its checkbox or buttons) that travels a few pixels becomes a drag;
+   * touch starts from the grip. The rows being carried dim, a ghost
+   * follows the pointer, and a drop line (or a ring for "into") shows
+   * where they land. Escape cancels.
+   */
+  _onPointerDown(e) {
+    if (e.button !== 0 || this.__drag) {
+      return;
+    }
+    const path = e.composedPath();
+    const li = path.find((el) => el.tagName === "LI");
+    if (
+      !li ||
+      path.some((el) => el.tagName === "INPUT" || el.tagName === "BUTTON")
+    ) {
+      return;
+    }
+    const onGrip = path.some(
+      (el) => el.classList && el.classList.contains("grip"),
+    );
+    if (e.pointerType !== "mouse" && !onGrip) {
+      return;
+    }
+    const index = parseInt(li.getAttribute("data-index"), 10);
+    const row = this.elementList[index];
+    if (!row || !row.movable) {
+      return;
+    }
+    this.__drag = {
+      index,
+      startX: e.clientX,
+      startY: e.clientY,
+      x: e.clientX,
+      y: e.clientY,
+      started: false,
+      pointerId: e.pointerId,
+    };
+    if (onGrip) {
+      e.preventDefault();
+    }
+    globalThis.addEventListener("pointermove", this._onDragMove);
+    globalThis.addEventListener("pointerup", this._onDragEnd);
+    globalThis.addEventListener("pointercancel", this._onDragEnd);
+    globalThis.addEventListener("keydown", this._onDragKey, true);
+  }
+  _startDrag() {
+    const drag = this.__drag;
+    const row = this.elementList[drag.index];
+    const body = this._body;
+    // a checked row drags every checked block with it
+    const picked = this.__selected.has(row.node)
+      ? this._selectedNodes()
+      : [row.node];
+    const nodes = nodesToMove(picked, body);
+    if (nodes.length === 0) {
+      this._endDrag();
+      return false;
+    }
+    const first = this.elementList.find((r) => r.node === nodes[0]);
+    drag.nodes = nodes;
+    drag.started = true;
+    drag.icon = first ? first.icon : row.icon;
+    drag.label = this._shortName(nodes[0]);
+    drag.more = nodes.length - 1;
+    drag.what = this._whatLabel(nodes);
+    this.__scroller = this._findScroller();
+    this._autoScroll();
+    return true;
+  }
+  _onDragMove(e) {
+    const drag = this.__drag;
+    if (
+      !drag ||
+      (drag.pointerId !== undefined && e.pointerId !== drag.pointerId)
+    ) {
+      return;
+    }
+    drag.x = e.clientX;
+    drag.y = e.clientY;
+    if (!drag.started) {
+      if (
+        Math.abs(e.clientX - drag.startX) < DRAG_START &&
+        Math.abs(e.clientY - drag.startY) < DRAG_START
+      ) {
+        return;
+      }
+      if (!this._startDrag()) {
+        return;
+      }
+    }
+    e.preventDefault();
+    this._updateDropTarget();
+    this.requestUpdate();
+  }
+  _onDragEnd(e) {
+    const drag = this.__drag;
+    if (!drag) {
+      return;
+    }
+    if (drag.started) {
+      // the click that follows a drag is not a row click
+      this.__suppressClick = true;
+      setTimeout(() => {
+        this.__suppressClick = false;
+      }, 0);
+      const target = this.__dropTarget;
+      if (e.type === "pointerup" && target && target.dest && !target.problem) {
+        const moved = moveNodes(drag.nodes, target.dest, this._body, (tag) =>
+          this._schemaFor(tag),
+        );
+        if (moved) {
+          this.__focusNode = drag.nodes[0];
+          this.status = this._format(this.t.moved, { what: drag.what });
+        }
+      } else {
+        this.status = "";
+      }
+    }
+    this._endDrag();
+    this._scheduleMapRefresh(0);
+  }
+  _onDragKey(e) {
+    if (e.key === "Escape" && this.__drag) {
+      e.preventDefault();
+      e.stopPropagation();
+      this.status = "";
+      this._endDrag();
+    }
+  }
+  _endDrag() {
+    globalThis.removeEventListener("pointermove", this._onDragMove);
+    globalThis.removeEventListener("pointerup", this._onDragEnd);
+    globalThis.removeEventListener("pointercancel", this._onDragEnd);
+    globalThis.removeEventListener("keydown", this._onDragKey, true);
+    cancelAnimationFrame(this.__scrollFrame);
+    this.__drag = null;
+    this.__dropTarget = null;
+    this.requestUpdate();
+  }
+  // the panel that scrolls the outline (the tray), crossing shadow roots
+  _findScroller() {
+    let el = this;
+    while (el) {
+      el =
+        el.assignedSlot ||
+        el.parentElement ||
+        (el.getRootNode && el.getRootNode().host);
+      if (!el || el === globalThis.document.documentElement) {
+        break;
+      }
+      const style = globalThis.getComputedStyle(el);
+      if (
+        /(auto|scroll)/.test(style.overflowY) &&
+        el.scrollHeight > el.clientHeight
+      ) {
+        return el;
+      }
+    }
+    return null;
+  }
+  // near the top or bottom edge of the panel, a drag scrolls it
+  _autoScroll() {
+    const step = () => {
+      const drag = this.__drag;
+      if (!drag || !drag.started) {
+        return;
+      }
+      const scroller = this.__scroller;
+      if (scroller) {
+        const rect = scroller.getBoundingClientRect();
+        let delta = 0;
+        if (drag.y < rect.top + SCROLL_EDGE) {
+          delta = -8;
+        } else if (drag.y > rect.bottom - SCROLL_EDGE) {
+          delta = 8;
+        }
+        if (delta) {
+          scroller.scrollTop += delta;
+          this._updateDropTarget();
+          this.requestUpdate();
+        }
+      }
+      this.__scrollFrame = requestAnimationFrame(step);
+    };
+    this.__scrollFrame = requestAnimationFrame(step);
+  }
+  /**
+   * Works out where the carried blocks would land under the pointer:
+   * above or below a row, into a layout (its row or a column row), or at
+   * the end of the page; and whether they can go there.
+   */
+  _updateDropTarget() {
+    const drag = this.__drag;
+    const body = this._body;
+    const wrap = this.shadowRoot.querySelector(".tree-wrap");
+    const items = [...this.shadowRoot.querySelectorAll("li[data-index]")];
+    if (!wrap || items.length === 0) {
+      return;
+    }
+    const wrapRect = wrap.getBoundingClientRect();
+    const indent = (depth) => {
+      const li = items[0];
+      const styles = globalThis.getComputedStyle(li);
+      const base = parseFloat(styles.paddingLeft) || 0;
+      // a guide is 8px plus its 4px margin
+      return base + depth * 12;
+    };
+    let hit = null;
+    for (const li of items) {
+      const rect = li.getBoundingClientRect();
+      if (drag.y >= rect.top && drag.y < rect.bottom) {
+        hit = { li, rect, index: parseInt(li.getAttribute("data-index"), 10) };
+        break;
+      }
+    }
+    const schemaFor = (tag) => this._schemaFor(tag);
+    let dest = null;
+    let line = null;
+    let intoIndex = -1;
+    let targetName = "";
+    let mode = "";
+    if (!hit) {
+      const last = items[items.length - 1].getBoundingClientRect();
+      if (drag.y >= last.bottom) {
+        dest = { parent: body, slot: "", before: null };
+        line = { top: last.bottom - wrapRect.top, left: indent(0) };
+        mode = "end";
+      }
+    } else {
+      const row = this.elementList[hit.index];
+      const upper = drag.y < hit.rect.top + hit.rect.height / 2;
+      const topLine = hit.rect.top - wrapRect.top;
+      const bottomLine = hit.rect.bottom - wrapRect.top;
+      if (row.kind === "column") {
+        dest = { parent: row.node, slot: row.slot, before: null };
+        intoIndex = hit.index;
+        targetName = row.name;
+        mode = "into";
+      } else if (
+        row.kind === "block" &&
+        row.slots &&
+        row.slots.length === 1 &&
+        drag.y >= hit.rect.top + hit.rect.height / 3
+      ) {
+        dest = { parent: row.node, slot: row.slots[0].slot, before: null };
+        intoIndex = hit.index;
+        targetName = row.name;
+        mode = "into";
+      } else if (row.kind === "block") {
+        // grid-plate rows only take drops above them; columns take "into"
+        const above = upper || (row.slots && row.slots.length > 1);
+        dest = {
+          parent: row.node.parentElement,
+          slot: row.node.getAttribute("slot") || "",
+          before: above ? row.node : row.node.nextElementSibling,
+        };
+        line = { top: above ? topLine : bottomLine, left: indent(row.depth) };
+        targetName = this._shortName(row.node);
+        mode = above ? "above" : "below";
+      } else if (row.kind === "page" && !upper) {
+        dest = { parent: body, slot: "", before: row.node.nextElementSibling };
+        line = { top: bottomLine, left: indent(0) };
+        targetName = row.excerpt || row.name;
+        mode = "below";
+      } else if (row.kind === "child") {
+        // inside a list or a block's own content: below that block
+        let owner = row.node.parentElement;
+        let ownerRow = null;
+        while (owner && owner !== body) {
+          const found = this.elementList.find(
+            (r) => r.node === owner && r.kind === "block",
+          );
+          if (found) {
+            ownerRow = found;
+            break;
+          }
+          owner = owner.parentElement;
+        }
+        if (ownerRow) {
+          dest = {
+            parent: ownerRow.node.parentElement,
+            slot: ownerRow.node.getAttribute("slot") || "",
+            before: ownerRow.node.nextElementSibling,
+          };
+          line = { top: bottomLine, left: indent(ownerRow.depth) };
+          targetName = this._shortName(ownerRow.node);
+          mode = "below";
+        }
+      }
+    }
+    let problem = dest
+      ? dropProblem(drag.nodes, dest, body, schemaFor)
+      : "self";
+    // no change: dropping right where the blocks already are
+    if (
+      !problem &&
+      dest.parent === drag.nodes[0].parentElement &&
+      (dest.before === drag.nodes[0] ||
+        dest.before === drag.nodes[drag.nodes.length - 1].nextElementSibling) &&
+      (dest.slot || "") === (drag.nodes[0].getAttribute("slot") || "")
+    ) {
+      problem = "same";
+    }
+    if (problem) {
+      line = null;
+      intoIndex = -1;
+    }
+    this.__dropTarget = { dest, line, intoIndex, problem };
+    const what = drag.what;
+    const messages = {
+      locked: this._format(this.t.noDropLocked, { target: targetName }),
+      slot: this._format(this.t.noDropSlot, {
+        target: targetName,
+        what: this._nameFor(drag.nodes[0].tagName.toLowerCase()).name,
+      }),
+      self: dest ? this.t.noDropSelf : "",
+      page: this.t.noDropPage,
+      same: "",
+    };
+    if (problem) {
+      this.status = messages[problem] || "";
+    } else if (mode === "into") {
+      this.status = this._format(this.t.moveInto, { what, target: targetName });
+    } else if (mode === "end") {
+      this.status = this._format(this.t.moveToEnd, { what });
+    } else {
+      this.status = this._format(
+        mode === "above" ? this.t.moveAbove : this.t.moveBelow,
+        { what, target: targetName },
+      );
+    }
   }
   static get tag() {
     return "hax-map";
@@ -657,6 +1511,19 @@ class HaxMap extends I18NMixin(SimpleColors) {
       },
       activeNode: {
         type: Object,
+      },
+      /**
+       * What the outline last did or would do (read to assistive tech)
+       */
+      status: {
+        type: String,
+      },
+      /**
+       * The row that takes Tab focus
+       */
+      focusIndex: {
+        type: Number,
+        attribute: "focus-index",
       },
     };
   }

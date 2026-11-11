@@ -77,6 +77,10 @@
     "canScale": false,
     "canEditSource": true,
     "type": "grid",
+    "allowedSlotWrappers": [
+      "media-image",
+      "img"
+    ],
     "contentEditable": true,
     "designSystem": {
       "primary": true,

@@ -406,9 +406,6 @@
     }
   },
   "elements/hax-body/lib/hax-map.js": {
-    "eqeqeq": {
-      "count": 1
-    },
     "haxtheweb-leaks/autorun-in-constructor": {
       "count": 2
     }
