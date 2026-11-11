@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Kan ikke fullføre operasjonen ({status})",
   "normalizedPageSlugs": "Normaliserte {count} side-slugs",
   "createdTitle": "Opprettet {title}!",
-  "processing": "Behandler"
+  "processing": "Behandler",
+  "saveTimedOut": "Lagringen fikk tidsavbrudd: serveren svarte ikke. Endringene dine beholdes her, men serveren kan fortsatt fullføre lagringen."
 }

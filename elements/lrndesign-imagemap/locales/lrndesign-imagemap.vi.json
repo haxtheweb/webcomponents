@@ -1,0 +1,9 @@
+{
+  "imageMap": "Bản đồ hình ảnh",
+  "interactive": "Tương tác",
+  "hotspot": "Điểm nóng",
+  "hotspotPosition": "{n}/{total}",
+  "hotspotsExplored": "Đã khám phá {n}/{total} điểm nóng",
+  "explored": "Đã khám phá",
+  "close": "Đóng"
+}

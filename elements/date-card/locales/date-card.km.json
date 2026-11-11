@@ -1,0 +1,8 @@
+{
+  "ordinalOne": "",
+  "ordinalTwo": "",
+  "ordinalFew": "",
+  "ordinalOther": "",
+  "fromTimeToTime": "ពី {start} - {end}",
+  "atTime": "នៅម៉ោង {start}"
+}

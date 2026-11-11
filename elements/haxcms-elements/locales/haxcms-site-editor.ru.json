@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Не удалось выполнить операцию ({status})",
   "normalizedPageSlugs": "Нормализовано slug страниц: {count}",
   "createdTitle": "Создано: {title}!",
-  "processing": "Обработка"
+  "processing": "Обработка",
+  "saveTimedOut": "Время сохранения истекло: сервер не ответил. Ваши изменения сохранены здесь, но сервер всё ещё может завершить их сохранение."
 }

@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title}, autor: {creator}, licencirano je pod licencom {license}.",
   "permissionsBeyondScope": "Dozvole izvan opsega ove licence dostupne su {link}.",
   "author": "(autor)",
-  "onTheLicensingDetailsPage": "na stranici s detaljima licenciranja"
+  "onTheLicensingDetailsPage": "na stranici s detaljima licenciranja",
+  "licenseLabel": "Licenca"
 }

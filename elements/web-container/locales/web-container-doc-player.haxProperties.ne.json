@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "वेब कम्पोनेन्ट कागजात प्लेयर"
+    "title": "वेब कम्पोनेन्ट कागजात प्लेयर",
+    "description": ""
   },
   "settings": {
     "configure": [

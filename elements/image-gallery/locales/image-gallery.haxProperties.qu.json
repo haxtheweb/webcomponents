@@ -22,6 +22,12 @@
         "title": "Kunan índice",
         "description": "Galería modopi qallarinapaq kunan rikch'apa índicen."
       }
+    ],
+    "developer": [
+      {
+        "title": "Siq'ikuna",
+        "description": "Galeriapi siq'ikuna. Kaypi mana allichasqachu: raphip siq'inin kayta llamk'achin yachanapaq mayqin bloquekuna ukhuman churakunman."
+      }
     ]
   }
 }

@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Predvajalnik dokumentacije spletnih komponent"
+    "title": "Predvajalnik dokumentacije spletnih komponent",
+    "description": ""
   },
   "settings": {
     "configure": [

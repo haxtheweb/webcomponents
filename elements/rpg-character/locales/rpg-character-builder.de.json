@@ -19,5 +19,13 @@
   "copyCode": "Code kopieren",
   "copied": "Kopiert!",
   "invalidCode": "Das ist kein Charakter-Code.",
-  "preview": "Charaktervorschau"
+  "preview": "Charaktervorschau",
+  "previous": "Vorheriges {name}",
+  "next": "Nächstes {name}",
+  "variant": "{current} von {total}",
+  "save": "Speichern",
+  "cancel": "Abbrechen",
+  "unsavedChanges": "Ungespeicherte Änderungen",
+  "noUnsavedChanges": "Keine ungespeicherten Änderungen",
+  "codeHelp": "Füge einen Code ein, um einen Charakter zu laden, oder kopiere diesen, um ihn überall zu verwenden."
 }

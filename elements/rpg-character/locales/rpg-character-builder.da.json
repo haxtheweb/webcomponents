@@ -19,5 +19,13 @@
   "copyCode": "Kopiér kode",
   "copied": "Kopieret!",
   "invalidCode": "Det er ikke en karakterkode.",
-  "preview": "Karakterforhåndsvisning"
+  "preview": "Karakterforhåndsvisning",
+  "previous": "Forrige {name}",
+  "next": "Næste {name}",
+  "variant": "{current} af {total}",
+  "save": "Gem",
+  "cancel": "Annuller",
+  "unsavedChanges": "Ugemte ændringer",
+  "noUnsavedChanges": "Ingen ugemte ændringer",
+  "codeHelp": "Indsæt en kode for at indlæse en figur, eller kopiér denne for at bruge den hvor som helst."
 }

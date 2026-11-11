@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "ویب کمپوننٹ دستاویز پلیئر"
+    "title": "ویب کمپوننٹ دستاویز پلیئر",
+    "description": ""
   },
   "settings": {
     "configure": [

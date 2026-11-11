@@ -4,5 +4,8 @@
   "pieChart": "Daten · Kreisdiagramm",
   "showDataTable": "Datentabelle anzeigen",
   "downloadData": "Daten herunterladen (.csv)",
-  "series": "Reihe {n}"
+  "series": "Reihe {n}",
+  "barChartLabel": "Balkendiagramm",
+  "lineChartLabel": "Liniendiagramm",
+  "pieChartLabel": "Kreisdiagramm"
 }

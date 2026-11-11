@@ -15,6 +15,12 @@
         "title": "Kursi",
         "description": "Kursi për të cilin është menduar kjo listë (identifikuesi i kursit ose URL)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Media",
+        "description": "Videot dhe audioja në listën e luajtjes. Nuk redaktohet këtu: skica e faqes e përdor për të ditur cilat blloqe mund të lëshohen brenda."
+      }
     ]
   }
 }

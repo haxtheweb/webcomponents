@@ -1,4 +1,9 @@
 {
   "audio": "Аудио",
-  "openOnSpotify": "Spotify қолданбасында жаңа қойындыда ашу"
+  "openOnSpotify": "Spotify қолданбасында жаңа қойындыда ашу",
+  "embedTitle": "Spotify ендірмесі",
+  "trackEmbedTitle": "Spotify трек ендірмесі",
+  "albumEmbedTitle": "Spotify альбом ендірмесі",
+  "playlistEmbedTitle": "Spotify плейлист ендірмесі",
+  "artistEmbedTitle": "Spotify орындаушы ендірмесі"
 }

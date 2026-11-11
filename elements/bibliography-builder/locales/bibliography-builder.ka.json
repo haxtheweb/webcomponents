@@ -4,5 +4,6 @@
   "exportCitations": "ციტირებების ექსპორტი",
   "copy": "კოპირება",
   "exportCitationFormat": "ციტირების ფორმატი ექსპორტისთვის",
-  "selectCitationFormatBelow": "აირჩიეთ ციტირების ფორმატი ქვემოთ"
+  "selectCitationFormatBelow": "აირჩიეთ ციტირების ფორმატი ქვემოთ",
+  "addCitationToBibliography": "ციტატის დამატება ბიბლიოგრაფიაში"
 }

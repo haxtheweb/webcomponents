@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Erstat originale filer",
   "newName": "Nyt navn",
   "deleteAction": "Slet",
-  "renameAction": "Omdøb"
+  "renameAction": "Omdøb",
+  "bulkOverwriteConfirm": "{action} {count} filer? Dette erstatter de oprindelige filer og kan ikke fortrydes.",
+  "actionScale": "Skalér",
+  "actionRotate": "Roter",
+  "actionTransform": "Transformér",
+  "actionConvertJpg": "Konvertér til JPG",
+  "actionCompress": "Komprimér"
 }

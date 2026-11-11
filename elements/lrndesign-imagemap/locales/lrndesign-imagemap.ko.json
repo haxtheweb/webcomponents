@@ -1,0 +1,9 @@
+{
+  "imageMap": "이미지 맵",
+  "interactive": "상호작용",
+  "hotspot": "핫스팟",
+  "hotspotPosition": "{total}개 중 {n}번째",
+  "hotspotsExplored": "핫스팟 {total}개 중 {n}개 탐색함",
+  "explored": "탐색함",
+  "close": "닫기"
+}

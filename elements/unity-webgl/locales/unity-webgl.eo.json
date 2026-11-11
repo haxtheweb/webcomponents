@@ -1,5 +1,6 @@
 {
   "simulation": "Simulado",
   "fullScreen": "Plenekrano",
-  "exitFullScreen": "Eliri el plenekrano"
+  "exitFullScreen": "Eliri el plenekrano",
+  "player": "Unity WebGL-ludilo"
 }

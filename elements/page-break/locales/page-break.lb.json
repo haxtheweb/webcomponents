@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Dës Säit ass gespaart. Spaart se fir d'éischt op, fir de Publikatiounsstatus z'änneren.",
   "pageLockedUnlockToDelete": "Dës Säit ass gespaart. Spaart se fir d'éischt op, fir se ze läschen.",
   "pageDetails": "Säitedetailer",
-  "clickToUnlock": "Klickt fir opzemaachen"
+  "clickToUnlock": "Klickt fir opzemaachen",
+  "pageSettings": "Säiteneestellungen",
+  "editingPageSettings": "Säiteneestellunge ginn editéiert",
+  "published": "Publizéiert",
+  "draft": "Entworf",
+  "locked": "Gespaart",
+  "unlocked": "Entspaart",
+  "noTags": "Keng Tags",
+  "oneTag": "1 Tag",
+  "tagCount": "{count} Tags",
+  "enterKey": "Enter"
 }

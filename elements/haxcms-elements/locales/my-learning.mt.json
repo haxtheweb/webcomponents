@@ -129,5 +129,12 @@
   "cancel": "Ikkanċella",
   "clearedSite": "Id-dejta tat-tagħlim tiegħek għal {site} tneħħiet.",
   "clearedDevice": "Id-dejta kollha tat-tagħlim fuq dan l-apparat tneħħiet.",
-  "thisSite": "dan is-sit"
+  "thisSite": "dan is-sit",
+  "outlineHeading": "Progress skont il-paġna",
+  "allPages": "Il-paġni kollha",
+  "outlinePagesDone": "{done} minn {total} paġni lesti",
+  "outlinePagesCount": "{count} paġni",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% komplut",
+  "outlineComplete": "Komplut"
 }

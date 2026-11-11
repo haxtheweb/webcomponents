@@ -22,6 +22,12 @@
         "title": "Aktiewe indeks",
         "description": "Indeks van die aktiewe prent om mee te begin in galerymodus."
       }
+    ],
+    "developer": [
+      {
+        "title": "Beelde",
+        "description": "Die beelde in die galery. Nie hier geredigeer nie: die bladsyoorsig gebruik dit om te weet watter blokke daarin gelaat kan word."
+      }
     ]
   }
 }

@@ -129,5 +129,12 @@
   "cancel": "منسوخ کرو",
   "clearedSite": "{site} لئی تہاڈی پڑھائی دا ڈیٹا صاف کر دتا گیا۔",
   "clearedDevice": "اس ڈیوائس تے ساری پڑھائی دا ڈیٹا صاف کر دتا گیا۔",
-  "thisSite": "اے سائٹ"
+  "thisSite": "اے سائٹ",
+  "outlineHeading": "صفحے مطابق ترقی",
+  "allPages": "سارے صفحے",
+  "outlinePagesDone": "{total} وچوں {done} صفحے مکمل",
+  "outlinePagesCount": "{count} صفحے",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% مکمل",
+  "outlineComplete": "مکمل"
 }

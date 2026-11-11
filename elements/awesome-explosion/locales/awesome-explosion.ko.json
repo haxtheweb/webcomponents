@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "클릭하거나 마우스를 올리면 폭발음이 재생됩니다",
+  "soundDisabled": "폭발 시각 효과(소리 꺼짐)",
+  "explosionAnimation": "폭발 애니메이션",
+  "explosionAriaLabel": "폭발 애니메이션 {state} {sound}. 클릭하여 전환합니다.",
+  "playing": "재생 중",
+  "stopped": "정지됨",
+  "withSound": "소리 포함",
+  "muted": "(음소거)"
+}

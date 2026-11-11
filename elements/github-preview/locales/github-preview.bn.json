@@ -1,0 +1,10 @@
+{
+  "github": "GitHub",
+  "repository": "রিপোজিটরি",
+  "stars": "স্টার",
+  "forks": "ফর্ক",
+  "loading": "লোড হচ্ছে",
+  "viewMore": "আরও দেখুন",
+  "assetNotFound": "অ্যাসেট পাওয়া যায়নি",
+  "openOnGitHub": "GitHub-এ {org}/{repo} খুলুন"
+}

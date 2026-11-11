@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "Ikhodi ye-QR ye-{title}",
+  "noData": "Alukho udaba lokubonisa njengekhodi ye-QR",
+  "formatNotSupported": "Ifomethi yekhodi ye-QR {format} ayisekelwa",
+  "noCanvas": "Lesi siphequluli asikwazi ukudweba ikhodi ye-QR (alukho usekelo lwe-canvas)"
+}

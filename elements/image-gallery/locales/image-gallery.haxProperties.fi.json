@@ -22,6 +22,12 @@
         "title": "Aktiivinen indeksi",
         "description": "Aktiivisen kuvan indeksi, josta galleriatila alkaa."
       }
+    ],
+    "developer": [
+      {
+        "title": "Kuvat",
+        "description": "Gallerian kuvat. Ei muokata täällä: sivun jäsennys käyttää tätä tietääkseen, mitä lohkoja siihen voi pudottaa."
+      }
     ]
   }
 }

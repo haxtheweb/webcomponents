@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Pagina is niet gepubliceerd",
   "progressDone": "Voltooid",
   "progressInProgress": "Bezig",
-  "progressVisited": "Bezocht"
+  "progressVisited": "Bezocht",
+  "progressPercentComplete": "{percent}% voltooid",
+  "progressComplete": "Voltooid"
 }

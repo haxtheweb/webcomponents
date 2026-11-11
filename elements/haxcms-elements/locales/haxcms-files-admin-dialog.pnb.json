@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "اصل فائلاں بدلو",
   "newName": "نواں ناں",
   "deleteAction": "مٹاؤ",
-  "renameAction": "ناں بدلو"
+  "renameAction": "ناں بدلو",
+  "bulkOverwriteConfirm": "{action} {count} فائلاں؟ ایہ اصل فائلاں نوں بدل دیندا اے تے واپس نہیں ہو سکدا۔",
+  "actionScale": "سکیل کرو",
+  "actionRotate": "گھماؤ",
+  "actionTransform": "شکل بدلو",
+  "actionConvertJpg": "JPG وچ بدلو",
+  "actionCompress": "سکیڑو"
 }

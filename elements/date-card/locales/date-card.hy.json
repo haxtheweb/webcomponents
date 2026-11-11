@@ -1,0 +1,8 @@
+{
+  "ordinalOne": "-ին",
+  "ordinalTwo": "-րդ",
+  "ordinalFew": "-րդ",
+  "ordinalOther": "-րդ",
+  "fromTimeToTime": "{start}-ից {end}",
+  "atTime": "{start}-ին"
+}

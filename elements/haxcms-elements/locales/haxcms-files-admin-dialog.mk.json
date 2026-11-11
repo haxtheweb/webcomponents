@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Замени ги оригиналните датотеки",
   "newName": "Ново име",
   "deleteAction": "Избриши",
-  "renameAction": "Преименувај"
+  "renameAction": "Преименувај",
+  "bulkOverwriteConfirm": "{action} {count} датотеки? Ова ги заменува оригиналните датотеки и не може да се врати.",
+  "actionScale": "Промени големина",
+  "actionRotate": "Ротирај",
+  "actionTransform": "Трансформирај",
+  "actionConvertJpg": "Претвори во JPG",
+  "actionCompress": "Компресирај"
 }

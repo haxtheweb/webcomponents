@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title} da {creator} hè sottu à una licenza {license}.",
   "permissionsBeyondScope": "Permessi al di là di u scopu di sta licenza sò dispunibuli {link}.",
   "author": "(autore)",
-  "onTheLicensingDetailsPage": "nant'à a pagina di i dettagli di a licenza"
+  "onTheLicensingDetailsPage": "nant'à a pagina di i dettagli di a licenza",
+  "licenseLabel": "Licenza"
 }

@@ -1,0 +1,9 @@
+{
+  "imageMap": "Карта зображення",
+  "interactive": "Інтерактивний",
+  "hotspot": "Гаряча точка",
+  "hotspotPosition": "{n} із {total}",
+  "hotspotsExplored": "Досліджено {n} із {total} гарячих точок",
+  "explored": "Досліджено",
+  "close": "Закрити"
+}

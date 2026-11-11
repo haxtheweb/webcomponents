@@ -4,5 +4,8 @@
   "pieChart": "Maglumat · Tegelek diagramma",
   "showDataTable": "Maglumat tablisasyny görkez",
   "downloadData": "Maglumatlary ýükle (.csv)",
-  "series": "{n}-nji hatar"
+  "series": "{n}-nji hatar",
+  "barChartLabel": "sütünli diagramma",
+  "lineChartLabel": "çyzykly diagramma",
+  "pieChartLabel": "tegelek diagramma"
 }

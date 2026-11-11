@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Veb-komponent hujjat pleyeri"
+    "title": "Veb-komponent hujjat pleyeri",
+    "description": ""
   },
   "settings": {
     "configure": [

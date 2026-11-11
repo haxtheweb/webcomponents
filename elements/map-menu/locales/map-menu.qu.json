@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Rapiqa mana rikuchisqachu",
   "progressDone": "Tukusqa",
   "progressInProgress": "Rinanpi",
-  "progressVisited": "Watukusqa"
+  "progressVisited": "Watukusqa",
+  "progressPercentComplete": "{percent}% tukusqa",
+  "progressComplete": "Tukusqa"
 }

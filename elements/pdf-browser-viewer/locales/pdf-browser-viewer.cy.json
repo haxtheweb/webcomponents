@@ -3,5 +3,8 @@
   "openInNewTab": "Agor y PDF mewn tab newydd",
   "downloadPdf": "Lawrlwytho'r PDF",
   "fullScreen": "Sgrin lawn",
-  "exitFullScreen": "Gadael sgrin lawn"
+  "exitFullScreen": "Gadael sgrin lawn",
+  "notSupported": "Mae'n ymddangos nad yw eich porwr gwe wedi'i ffurfweddu i ddangos ffeiliau PDF. Dim problem, dim ond",
+  "notSupportedLink": "cliciwch yma i lawrlwytho'r ffeil PDF.",
+  "download": "Lawrlwytho"
 }

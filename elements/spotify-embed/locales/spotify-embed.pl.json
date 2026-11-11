@@ -1,4 +1,9 @@
 {
   "audio": "Dźwięk",
-  "openOnSpotify": "Otwórz w Spotify w nowej karcie"
+  "openOnSpotify": "Otwórz w Spotify w nowej karcie",
+  "embedTitle": "Osadzenie Spotify",
+  "trackEmbedTitle": "Osadzenie utworu Spotify",
+  "albumEmbedTitle": "Osadzenie albumu Spotify",
+  "playlistEmbedTitle": "Osadzenie playlisty Spotify",
+  "artistEmbedTitle": "Osadzenie wykonawcy Spotify"
 }

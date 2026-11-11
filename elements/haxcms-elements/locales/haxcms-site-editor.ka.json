@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "ოპერაციის დასრულება ვერ მოხერხდა ({status})",
   "normalizedPageSlugs": "ნორმალიზებულია გვერდების {count} slug",
   "createdTitle": "შეიქმნა {title}!",
-  "processing": "მუშავდება"
+  "processing": "მუშავდება",
+  "saveTimedOut": "შენახვის დრო ამოიწურა: სერვერმა არ უპასუხა. თქვენი ცვლილებები აქ ინახება, მაგრამ სერვერმა შესაძლოა მაინც დაასრულოს მათი შენახვა."
 }

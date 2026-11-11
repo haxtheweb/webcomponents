@@ -1,0 +1,8 @@
+{
+  "ordinalOne": "טן",
+  "ordinalTwo": "טן",
+  "ordinalFew": "טן",
+  "ordinalOther": "טן",
+  "fromTimeToTime": "פֿון {start} - {end}",
+  "atTime": "אין {start}"
+}

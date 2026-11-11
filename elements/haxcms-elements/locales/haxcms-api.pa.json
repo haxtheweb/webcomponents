@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "ਰੂਪਾਂਤਰਣ ਅਸਫਲ ਰਿਹਾ।",
   "PARAM_REQUIRED": "ਇੱਕ ਲੋੜੀਂਦਾ ਮੁੱਲ ਮੌਜੂਦ ਨਹੀਂ ਹੈ: {param}।",
   "INVALID_REQUEST": "ਅਵੈਧ ਬੇਨਤੀ।",
-  "PARAM_INVALID": "ਅਵੈਧ ਮੁੱਲ: {param}।"
+  "PARAM_INVALID": "ਅਵੈਧ ਮੁੱਲ: {param}।",
+  "BLOCK_RATE_LIMITED": "ਇਸ ਸਮੇਂ ਇਸ ਸਾਈਟ 'ਤੇ ਸਮੱਗਰੀ ਵਿੱਚ ਬਹੁਤ ਜ਼ਿਆਦਾ ਤਬਦੀਲੀਆਂ ਹੋਈਆਂ ਹਨ। {retryAfter} ਸਕਿੰਟਾਂ ਬਾਅਦ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।"
 }

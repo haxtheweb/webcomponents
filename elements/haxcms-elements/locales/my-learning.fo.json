@@ -129,5 +129,12 @@
   "cancel": "Ógilda",
   "clearedSite": "Tínar lærdómsdátur fyri {site} vórðu strikaðar.",
   "clearedDevice": "Allar lærdómsdátur á hesum tólinum vórðu strikaðar.",
-  "thisSite": "hendan síðan"
+  "thisSite": "hendan síðan",
+  "outlineHeading": "Framgongd eftir síðu",
+  "allPages": "Allar síður",
+  "outlinePagesDone": "{done} av {total} síðum liðugar",
+  "outlinePagesCount": "{count} síður",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% liðugt",
+  "outlineComplete": "Liðugt"
 }

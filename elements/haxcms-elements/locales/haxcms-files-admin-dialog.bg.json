@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Замяна на оригиналните файлове",
   "newName": "Ново име",
   "deleteAction": "Изтриване",
-  "renameAction": "Преименуване"
+  "renameAction": "Преименуване",
+  "bulkOverwriteConfirm": "{action} на {count} файла? Това заменя оригиналните файлове и не може да бъде отменено.",
+  "actionScale": "Мащабиране",
+  "actionRotate": "Завъртане",
+  "actionTransform": "Трансформиране",
+  "actionConvertJpg": "Преобразуване в JPG",
+  "actionCompress": "Компресиране"
 }

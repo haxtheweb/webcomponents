@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Ruway",
-        "description": "Rikuchiqta unanchay: yachaqkunaqa sapa unanchata rikuchiqnin waqtanman churanku. Hukta akllay: yachaqkunaqa tapuyta aswan allinta kutichiq huk t'aqallata akllanku."
+        "description": "Rikuchiqta unanchay: yachaqkunaqa sapa unanchata rikuchiqnin waqtanman churanku. Hukta akllay: yachaqkunaqa tapuyta aswan allinta kutichiq huk t'aqallata akllanku.",
+        "options": {
+          "flag": "Pruebakunata unanchay",
+          "one": "Hukta akllay"
+        }
       },
       {
         "property": "unit",
         "title": "Yachaqkuna akllanku",
-        "description": "Yachaq ñawinchaypi ima rikuchisqan. Siq'ikunataqa sapa kuti akllanallam."
+        "description": "Yachaq ñawinchaypi ima rikuchisqan. Siq'ikunataqa sapa kuti akllanallam.",
+        "options": {
+          "sentence": "Rimaykuna",
+          "paragraph": "Parrafokuna",
+          "figure": "Siq'ikunallapuni"
+        }
       },
       {
         "property": "answers",

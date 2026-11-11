@@ -37,6 +37,16 @@
         "title": "Enw'r cwis",
         "description": "Enw'r cwis a drosglwyddir i'w ddefnyddio mewn amgylcheddau a yrrir gan xAPI i adnabod yr eitem hon"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Plygadwy",
+        "description": "Dangos y cwestiwn hwn fel rhes sy'n agor ac yn cau. Mae agor un yn cau'r cwestiynau plygadwy eraill wrth ei ymyl."
+      },
+      {
+        "title": "Dechrau wedi'i blygu",
+        "description": "Pan fydd yn blygadwy, dechrau fel rhes gaeedig sy'n dangos y cwestiwn a'i statws yn unig."
+      }
     ]
   }
 }

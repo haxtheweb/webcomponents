@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "Ang {title} ni {creator} ay lisensyado sa ilalim ng {license}.",
   "permissionsBeyondScope": "Ang mga pahintulot na lampas sa saklaw ng lisensyang ito ay available {link}.",
   "author": "(may-akda)",
-  "onTheLicensingDetailsPage": "sa pahina ng mga detalye ng paglilisensya"
+  "onTheLicensingDetailsPage": "sa pahina ng mga detalye ng paglilisensya",
+  "licenseLabel": "Lisensya"
 }

@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Kan nie bewerking voltooi nie ({status})",
   "normalizedPageSlugs": "{count} bladsy-slugs genormaliseer",
   "createdTitle": "{title} geskep!",
-  "processing": "Verwerk tans"
+  "processing": "Verwerk tans",
+  "saveTimedOut": "Stoor het uitgetel: die bediener het nie geantwoord nie. Jou veranderinge word hier bewaar, maar die bediener kan dit steeds klaar stoor."
 }

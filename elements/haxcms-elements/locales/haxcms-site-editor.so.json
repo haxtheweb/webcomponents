@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Hawlgalka lama dhammaystiri karo ({status})",
   "normalizedPageSlugs": "Waa la caadeeyay {count} slug bog",
   "createdTitle": "Waa la abuuray {title}!",
-  "processing": "Waa la habaynayaa"
+  "processing": "Waa la habaynayaa",
+  "saveTimedOut": "Keydinta waqtigeedii way dhammaatay: server-ku ma uu jawaabin. Isbeddelladaada halkan ayaa lagu hayaa, laakiin server-ku wuu dhammayn karaa keydinta."
 }

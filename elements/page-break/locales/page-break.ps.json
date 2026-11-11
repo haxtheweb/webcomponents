@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "دا پاڼه تړل شوې ده. د خپرېدو حالت د بدلولو لپاره لومړی یې خلاصه کړئ.",
   "pageLockedUnlockToDelete": "دا پاڼه تړل شوې ده. د ړنګولو لپاره لومړی یې خلاصه کړئ.",
   "pageDetails": "د پاڼې توضیحات",
-  "clickToUnlock": "د خلاصولو لپاره کلیک وکړئ"
+  "clickToUnlock": "د خلاصولو لپاره کلیک وکړئ",
+  "pageSettings": "د پاڼې تنظیمات",
+  "editingPageSettings": "د پاڼې تنظیمات سمېږي",
+  "published": "خپره شوې",
+  "draft": "مسوده",
+  "locked": "قفل شوې",
+  "unlocked": "بې قفله",
+  "noTags": "هیڅ ټګ نشته",
+  "oneTag": "1 ټګ",
+  "tagCount": "{count} ټګونه",
+  "enterKey": "Enter"
 }

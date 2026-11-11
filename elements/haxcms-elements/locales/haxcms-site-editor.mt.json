@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "L-operazzjoni ma setgħetx titlesta ({status})",
   "normalizedPageSlugs": "Ġew normalizzati {count} slugs tal-paġni",
   "createdTitle": "{title} inħoloq!",
-  "processing": "Qed jipproċessa"
+  "processing": "Qed jipproċessa",
+  "saveTimedOut": "Is-salvataġġ intemm: is-server ma weġibx. Il-bidliet tiegħek inżammu hawn, imma s-server xorta jista' jispiċċa jsalvahom."
 }

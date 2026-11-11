@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Šis puslapis užrakintas. Kad galėtumėte keisti publikavimo būseną, pirmiausia jį atrakinkite.",
   "pageLockedUnlockToDelete": "Šis puslapis užrakintas. Kad galėtumėte ištrinti, pirmiausia jį atrakinkite.",
   "pageDetails": "Puslapio informacija",
-  "clickToUnlock": "Spustelėkite atrakinti"
+  "clickToUnlock": "Spustelėkite atrakinti",
+  "pageSettings": "Puslapio nustatymai",
+  "editingPageSettings": "Redaguojami puslapio nustatymai",
+  "published": "Paskelbta",
+  "draft": "Juodraštis",
+  "locked": "Užrakinta",
+  "unlocked": "Atrakinta",
+  "noTags": "Nėra žymų",
+  "oneTag": "1 žyma",
+  "tagCount": "Žymų: {count}",
+  "enterKey": "Enter"
 }

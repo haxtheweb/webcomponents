@@ -1,4 +1,9 @@
 {
   "audio": "שמע",
-  "openOnSpotify": "פתיחה ב-Spotify בלשונית חדשה"
+  "openOnSpotify": "פתיחה ב-Spotify בלשונית חדשה",
+  "embedTitle": "הטמעת Spotify",
+  "trackEmbedTitle": "הטמעת שיר של Spotify",
+  "albumEmbedTitle": "הטמעת אלבום של Spotify",
+  "playlistEmbedTitle": "הטמעת פלייליסט של Spotify",
+  "artistEmbedTitle": "הטמעת אמן של Spotify"
 }

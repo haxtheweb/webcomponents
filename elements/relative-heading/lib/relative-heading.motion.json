@@ -85,7 +85,7 @@
       "in": 2.6,
       "states": [
         [2.6, "Relative heading"],
-        [12.4, "linklabel"]
+        [12.4, "linkLabel"]
       ],
       "typed": true
     },
@@ -117,11 +117,11 @@
           "desc": "default-level"
         },
         {
-          "name": "copymessage",
+          "name": "copyMessage",
           "desc": "Overrides default text for copy…"
         },
         {
-          "name": "linklabel",
+          "name": "linkLabel",
           "desc": "Overrides default label copy li…"
         }
       ],
@@ -147,7 +147,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "parent=\"parent\""
+      "s": "parent=\"null\""
     },
     {
       "type": "text",
@@ -163,7 +163,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "copymessage=\"copymessage\""
+      "s": "copyMessage=\"copyMessage\""
     },
     {
       "type": "text",
@@ -171,7 +171,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "linklabel=\"linklabel\""
+      "s": "linkLabel=\"linkLabel\""
     },
     {
       "type": "text",
@@ -256,7 +256,7 @@
       "ex": 616,
       "ey": 430,
       "label": "parent",
-      "sub": "\"parent\"",
+      "sub": "\"null\"",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -279,8 +279,8 @@
       "py": 378,
       "ex": 616,
       "ey": 430,
-      "label": "copymessage",
-      "sub": "\"copymessage\"",
+      "label": "copyMessage",
+      "sub": "\"copyMessage\"",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -291,8 +291,8 @@
       "py": 378,
       "ex": 796,
       "ey": 430,
-      "label": "linklabel",
-      "sub": "\"linklabel\"",
+      "label": "linkLabel",
+      "sub": "\"linkLabel\"",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -329,7 +329,7 @@
     "line": "outputs the correct heading hierarchy based on parent's hea…",
     "code": ""
   },
-  "surfaceHash": "88b0cd819ad8",
+  "surfaceHash": "fc6663370866",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

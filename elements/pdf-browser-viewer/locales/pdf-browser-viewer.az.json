@@ -3,5 +3,8 @@
   "openInNewTab": "PDF-i yeni tabda aç",
   "downloadPdf": "PDF-i yüklə",
   "fullScreen": "Tam ekran",
-  "exitFullScreen": "Tam ekrandan çıx"
+  "exitFullScreen": "Tam ekrandan çıx",
+  "notSupported": "Görünür, veb brauzeriniz PDF fayllarını göstərmək üçün konfiqurasiya olunmayıb. Problem deyil, sadəcə",
+  "notSupportedLink": "PDF faylını yükləmək üçün bura klikləyin.",
+  "download": "Yüklə"
 }

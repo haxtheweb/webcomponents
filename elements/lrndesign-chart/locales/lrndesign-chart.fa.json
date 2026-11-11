@@ -4,5 +4,8 @@
   "pieChart": "داده · نمودار دایره‌ای",
   "showDataTable": "نمایش جدول داده",
   "downloadData": "دانلود داده (.csv)",
-  "series": "سری {n}"
+  "series": "سری {n}",
+  "barChartLabel": "نمودار میله‌ای",
+  "lineChartLabel": "نمودار خطی",
+  "pieChartLabel": "نمودار دایره‌ای"
 }

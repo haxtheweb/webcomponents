@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Chuyển đổi không thành công.",
   "PARAM_REQUIRED": "Thiếu giá trị bắt buộc: {param}.",
   "INVALID_REQUEST": "Yêu cầu không hợp lệ.",
-  "PARAM_INVALID": "Giá trị không hợp lệ: {param}."
+  "PARAM_INVALID": "Giá trị không hợp lệ: {param}.",
+  "BLOCK_RATE_LIMITED": "Hiện có quá nhiều thay đổi nội dung trên trang này. Hãy thử lại sau {retryAfter} giây."
 }

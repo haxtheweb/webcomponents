@@ -129,5 +129,12 @@
   "cancel": "បោះបង់",
   "clearedSite": "ទិន្នន័យការរៀនរបស់អ្នកសម្រាប់ {site} ត្រូវបានសម្អាត។",
   "clearedDevice": "ទិន្នន័យការរៀនទាំងអស់លើឧបករណ៍នេះត្រូវបានសម្អាត។",
-  "thisSite": "គេហទំព័រនេះ"
+  "thisSite": "គេហទំព័រនេះ",
+  "outlineHeading": "វឌ្ឍនភាពតាមទំព័រ",
+  "allPages": "ទំព័រទាំងអស់",
+  "outlinePagesDone": "{done} ក្នុងចំណោម {total} ទំព័របានបញ្ចប់",
+  "outlinePagesCount": "{count} ទំព័រ",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% បានបញ្ចប់",
+  "outlineComplete": "បានបញ្ចប់"
 }

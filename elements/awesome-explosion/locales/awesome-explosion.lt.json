@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Spustelėkite arba užveskite žymeklį, kad paleistumėte sprogimo garsą",
+  "soundDisabled": "Vizualus sprogimo efektas (garsas išjungtas)",
+  "explosionAnimation": "sprogimo animacija",
+  "explosionAriaLabel": "Sprogimo animacija {state} {sound}. Spustelėkite, kad perjungtumėte.",
+  "playing": "groja",
+  "stopped": "sustabdyta",
+  "withSound": "su garsu",
+  "muted": "(nutildyta)"
+}

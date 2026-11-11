@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Badilisha faili asili",
   "newName": "Jina jipya",
   "deleteAction": "Futa",
-  "renameAction": "Badilisha jina"
+  "renameAction": "Badilisha jina",
+  "bulkOverwriteConfirm": "{action} faili {count}? Hii inabadilisha faili asili na haiwezi kutenduliwa.",
+  "actionScale": "Badilisha ukubwa",
+  "actionRotate": "Zungusha",
+  "actionTransform": "Badilisha umbo",
+  "actionConvertJpg": "Geuza kuwa JPG",
+  "actionCompress": "Bana"
 }

@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "অপারেশন সম্পন্ন করা যায়নি ({status})",
   "normalizedPageSlugs": "{count}টি পেজ স্লাগ স্বাভাবিক করা হয়েছে",
   "createdTitle": "{title} তৈরি হয়েছে!",
-  "processing": "প্রসেস হচ্ছে"
+  "processing": "প্রসেস হচ্ছে",
+  "saveTimedOut": "সংরক্ষণের সময় শেষ: সার্ভার সাড়া দেয়নি। আপনার পরিবর্তনগুলো এখানে রাখা আছে, তবে সার্ভার এখনও সেগুলো সংরক্ষণ শেষ করতে পারে।"
 }

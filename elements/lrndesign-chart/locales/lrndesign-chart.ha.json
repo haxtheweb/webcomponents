@@ -4,5 +4,8 @@
   "pieChart": "Bayanai · Zanen da'ira",
   "showDataTable": "Nuna teburin bayanai",
   "downloadData": "Zazzage bayanai (.csv)",
-  "series": "Jeri {n}"
+  "series": "Jeri {n}",
+  "barChartLabel": "taswirar sanduna",
+  "lineChartLabel": "taswirar layi",
+  "pieChartLabel": "taswirar da'ira"
 }

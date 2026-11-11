@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Bogga lama daabicin",
   "progressDone": "La dhammeeyay",
   "progressInProgress": "Socda",
-  "progressVisited": "La booqday"
+  "progressVisited": "La booqday",
+  "progressPercentComplete": "{percent}% dhammaystiran",
+  "progressComplete": "Dhammaystiran"
 }

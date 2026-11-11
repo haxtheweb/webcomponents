@@ -1,0 +1,9 @@
+{
+  "imageMap": "Сурет картасы",
+  "interactive": "Интерактивті",
+  "hotspot": "Белсенді аймақ",
+  "hotspotPosition": "{total} ішінен {n}",
+  "hotspotsExplored": "{total} белсенді аймақтың {n} зерттелді",
+  "explored": "Зерттелді",
+  "close": "Жабу"
+}

@@ -2,5 +2,7 @@
   "pageIsUnpublished": "صفحه منتشر نشده است",
   "progressDone": "انجام شد",
   "progressInProgress": "در حال انجام",
-  "progressVisited": "بازدید شده"
+  "progressVisited": "بازدید شده",
+  "progressPercentComplete": "{percent}٪ تکمیل شده",
+  "progressComplete": "تکمیل شده"
 }

@@ -118,6 +118,10 @@
             },
             "designTreatment": {
               "type": "boolean"
+            },
+            "textAlign": {
+              "type": "boolean",
+              "description": "false opts the block out of the editor's text alignment control (for fixed layouts)."
             }
           },
           "additionalProperties": false

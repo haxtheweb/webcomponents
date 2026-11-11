@@ -1,0 +1,10 @@
+{
+  "github": "GitHub",
+  "repository": "Репозиторій",
+  "stars": "зірок",
+  "forks": "форків",
+  "loading": "Завантаження",
+  "viewMore": "Переглянути більше",
+  "assetNotFound": "Ресурс не знайдено",
+  "openOnGitHub": "Відкрити {org}/{repo} на GitHub"
+}

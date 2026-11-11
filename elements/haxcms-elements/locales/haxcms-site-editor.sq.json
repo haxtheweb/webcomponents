@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Veprimi nuk mund të përfundohet ({status})",
   "normalizedPageSlugs": "U normalizuan {count} slug-e faqesh",
   "createdTitle": "{title} u krijua!",
-  "processing": "Duke u përpunuar"
+  "processing": "Duke u përpunuar",
+  "saveTimedOut": "Ruajtja skadoi: serveri nuk u përgjigj. Ndryshimet e tua ruhen këtu, por serveri mund t'i përfundojë ende ruajtjen."
 }

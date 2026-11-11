@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Çalakî",
-        "description": "Delîlan bi ala nîşan bike: fêrxwaz her alayê li kêleka delîla wê dizeliqînin. Yekê hilbijêre: fêrxwaz tenê beşa ku herî baş bersiva pirsê dide hildibijêrin."
+        "description": "Delîlan bi ala nîşan bike: fêrxwaz her alayê li kêleka delîla wê dizeliqînin. Yekê hilbijêre: fêrxwaz tenê beşa ku herî baş bersiva pirsê dide hildibijêrin.",
+        "options": {
+          "flag": "Delîlan nîşan bike",
+          "one": "Yekê hilbijêre"
+        }
       },
       {
         "property": "unit",
         "title": "Fêrxwaz hildibijêrin",
-        "description": "Fêrxwaz di xwendinê de çi nîşan dide. Wêne her dem dikarin werin hilbijartin."
+        "description": "Fêrxwaz di xwendinê de çi nîşan dide. Wêne her dem dikarin werin hilbijartin.",
+        "options": {
+          "sentence": "Hevok",
+          "paragraph": "Paragraf",
+          "figure": "Tenê wêne"
+        }
       },
       {
         "property": "answers",

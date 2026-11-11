@@ -1,5 +1,6 @@
 {
   "simulation": "Шабеҳсозӣ",
   "fullScreen": "Экрани пурра",
-  "exitFullScreen": "Баромадан аз экрани пурра"
+  "exitFullScreen": "Баромадан аз экрани пурра",
+  "player": "Плеери Unity WebGL"
 }

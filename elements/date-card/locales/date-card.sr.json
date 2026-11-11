@@ -1,0 +1,8 @@
+{
+  "ordinalOne": ".",
+  "ordinalTwo": ".",
+  "ordinalFew": ".",
+  "ordinalOther": ".",
+  "fromTimeToTime": "од {start} до {end}",
+  "atTime": "у {start}"
+}

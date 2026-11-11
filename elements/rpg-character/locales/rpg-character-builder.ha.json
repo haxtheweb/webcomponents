@@ -19,5 +19,13 @@
   "copyCode": "Kwafi lambar",
   "copied": "An kwafa!",
   "invalidCode": "Wannan ba lambar hali ba ce.",
-  "preview": "Samfurin hali"
+  "preview": "Samfurin hali",
+  "previous": "{name} na baya",
+  "next": "{name} na gaba",
+  "variant": "{current} cikin {total}",
+  "save": "Adana",
+  "cancel": "Soke",
+  "unsavedChanges": "Canje-canjen da ba a adana ba",
+  "noUnsavedChanges": "Babu canje-canjen da ba a adana ba",
+  "codeHelp": "Liƙa lamba don lodin hali, ko ka kwafi wannan don amfani da shi a ko'ina."
 }

@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "Mae {title} gan {creator} wedi'i drwyddedu o dan {license}.",
   "permissionsBeyondScope": "Mae caniatâd y tu hwnt i gwmpas y drwydded hon ar gael {link}.",
   "author": "(awdur)",
-  "onTheLicensingDetailsPage": "ar y dudalen manylion trwyddedu"
+  "onTheLicensingDetailsPage": "ar y dudalen manylion trwyddedu",
+  "licenseLabel": "Trwydded"
 }

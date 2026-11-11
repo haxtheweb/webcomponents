@@ -1,0 +1,8 @@
+{
+  "ordinalOne": "লা",
+  "ordinalTwo": "রা",
+  "ordinalFew": "রা",
+  "ordinalOther": "ই",
+  "fromTimeToTime": "{start} থেকে {end}",
+  "atTime": "{start} টায়"
+}

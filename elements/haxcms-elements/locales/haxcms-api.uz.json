@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Konvertatsiya bajarilmadi.",
   "PARAM_REQUIRED": "Majburiy qiymat yetishmayapti: {param}.",
   "INVALID_REQUEST": "Notoʻgʻri soʻrov.",
-  "PARAM_INVALID": "Notoʻgʻri qiymat: {param}."
+  "PARAM_INVALID": "Notoʻgʻri qiymat: {param}.",
+  "BLOCK_RATE_LIMITED": "Hozir bu saytda kontentga juda ko'p o'zgartirish kiritilmoqda. {retryAfter} soniyadan keyin qayta urinib ko'ring."
 }

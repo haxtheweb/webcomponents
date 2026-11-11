@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Заменить исходные файлы",
   "newName": "Новое имя",
   "deleteAction": "Удалить",
-  "renameAction": "Переименовать"
+  "renameAction": "Переименовать",
+  "bulkOverwriteConfirm": "{action}: файлов — {count}? Исходные файлы будут заменены, и это нельзя отменить.",
+  "actionScale": "Масштабировать",
+  "actionRotate": "Повернуть",
+  "actionTransform": "Преобразовать",
+  "actionConvertJpg": "Преобразовать в JPG",
+  "actionCompress": "Сжать"
 }

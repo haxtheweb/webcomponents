@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "See leht on lukus. Avaldamise oleku muutmiseks ava see esmalt.",
   "pageLockedUnlockToDelete": "See leht on lukus. Kustutamiseks ava see esmalt.",
   "pageDetails": "Lehe üksikasjad",
-  "clickToUnlock": "Klõpsake avamiseks"
+  "clickToUnlock": "Klõpsake avamiseks",
+  "pageSettings": "Lehe seaded",
+  "editingPageSettings": "Lehe seadeid muudetakse",
+  "published": "Avaldatud",
+  "draft": "Mustand",
+  "locked": "Lukustatud",
+  "unlocked": "Lukustamata",
+  "noTags": "Silte pole",
+  "oneTag": "1 silt",
+  "tagCount": "{count} silti",
+  "enterKey": "Enter"
 }

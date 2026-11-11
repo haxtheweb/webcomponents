@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Kattintson vagy vigye fölé az egeret a robbanáshang lejátszásához",
+  "soundDisabled": "Vizuális robbanáseffektus (hang kikapcsolva)",
+  "explosionAnimation": "robbanásanimáció",
+  "explosionAriaLabel": "Robbanásanimáció {state} {sound}. Kattintson a váltáshoz.",
+  "playing": "lejátszás",
+  "stopped": "leállítva",
+  "withSound": "hanggal",
+  "muted": "(némítva)"
+}

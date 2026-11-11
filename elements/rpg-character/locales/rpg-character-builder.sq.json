@@ -19,5 +19,13 @@
   "copyCode": "Kopjo kodin",
   "copied": "U kopjua!",
   "invalidCode": "Ky nuk është kod personazhi.",
-  "preview": "Pamja paraprake e personazhit"
+  "preview": "Pamja paraprake e personazhit",
+  "previous": "{name} i mëparshëm",
+  "next": "{name} i radhës",
+  "variant": "{current} nga {total}",
+  "save": "Ruaj",
+  "cancel": "Anulo",
+  "unsavedChanges": "Ndryshime të paruajtura",
+  "noUnsavedChanges": "Nuk ka ndryshime të paruajtura",
+  "codeHelp": "Ngjit një kod për të ngarkuar një personazh, ose kopjo këtë për ta përdorur kudo."
 }

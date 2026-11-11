@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Ordeztu jatorrizko fitxategiak",
   "newName": "Izen berria",
   "deleteAction": "Ezabatu",
-  "renameAction": "Aldatu izena"
+  "renameAction": "Aldatu izena",
+  "bulkOverwriteConfirm": "{action}: {count} fitxategi? Honek jatorrizko fitxategiak ordezkatzen ditu eta ezin da desegin.",
+  "actionScale": "Eskalatu",
+  "actionRotate": "Biratu",
+  "actionTransform": "Eraldatu",
+  "actionConvertJpg": "Bihurtu JPG",
+  "actionCompress": "Konprimitu"
 }

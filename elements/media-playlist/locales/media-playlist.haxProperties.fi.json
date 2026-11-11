@@ -15,6 +15,12 @@
         "title": "Kurssi",
         "description": "Kurssi, jota varten tämä soittolista on (kurssin tunniste tai URL)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Media",
+        "description": "Soittolistan videot ja äänet. Ei muokata täällä: sivun jäsennys käyttää tätä tietääkseen, mitä lohkoja siihen voi pudottaa."
+      }
     ]
   }
 }

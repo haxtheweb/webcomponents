@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Kò ṣeé ṣe láti parí iṣẹ́ náà ({status})",
   "normalizedPageSlugs": "A ti ṣètò slug ojú-ìwé {count}",
   "createdTitle": "A ti ṣẹ̀dá {title}!",
-  "processing": "Ó ń ṣiṣẹ́"
+  "processing": "Ó ń ṣiṣẹ́",
+  "saveTimedOut": "Ìfipamọ́ ti pẹ́ jù: olupin kò dáhùn. A tọ́jú àwọn àyípadà rẹ síbí, ṣùgbọ́n olupin lè parí fífi wọ́n pamọ́ síbẹ̀."
 }

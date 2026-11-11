@@ -1,0 +1,10 @@
+{
+  "github": "GitHub",
+  "repository": "ບ່ອນເກັບໂຄ້ດ",
+  "stars": "ດາວ",
+  "forks": "ຟອກ",
+  "loading": "ກຳລັງໂຫຼດ",
+  "viewMore": "ເບິ່ງເພີ່ມເຕີມ",
+  "assetNotFound": "ບໍ່ພົບຊັບສິນ",
+  "openOnGitHub": "ເປີດ {org}/{repo} ໃນ GitHub"
+}

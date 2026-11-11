@@ -28,5 +28,15 @@
   "agent": "Agent",
   "pageLockedUnlockToEdit": "Naka-lock ang pahinang ito. I-unlock muna ito para ma-edit.",
   "pageLockedUnlockToChangePublishStatus": "Naka-lock ang pahinang ito. I-unlock muna ito para mabago ang status ng pag-publish.",
-  "pageLockedUnlockToDelete": "Naka-lock ang pahinang ito. I-unlock muna ito para mabura."
+  "pageLockedUnlockToDelete": "Naka-lock ang pahinang ito. I-unlock muna ito para mabura.",
+  "pageSettings": "Mga setting ng pahina",
+  "editingPageSettings": "Ineedit ang mga setting ng pahina",
+  "published": "Nailathala",
+  "draft": "Draft",
+  "locked": "Naka-lock",
+  "unlocked": "Naka-unlock",
+  "noTags": "Walang tag",
+  "oneTag": "1 tag",
+  "tagCount": "{count} tag",
+  "enterKey": "Enter"
 }

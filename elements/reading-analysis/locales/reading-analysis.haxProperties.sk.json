@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Aktivita",
-        "description": "Označiť dôkazy: študenti umiestnia každú záložku k dôkazu, ktorý ju podporuje. Vybrať jednu: študenti zvolia jedinú pasáž, ktorá najlepšie odpovedá na otázku."
+        "description": "Označiť dôkazy: študenti umiestnia každú záložku k dôkazu, ktorý ju podporuje. Vybrať jednu: študenti zvolia jedinú pasáž, ktorá najlepšie odpovedá na otázku.",
+        "options": {
+          "flag": "Označiť dôkazy",
+          "one": "Vybrať jedno"
+        }
       },
       {
         "property": "unit",
         "title": "Študenti vyberajú",
-        "description": "Na čo študent v texte ukazuje. Obrázky sa dajú vybrať vždy."
+        "description": "Na čo študent v texte ukazuje. Obrázky sa dajú vybrať vždy.",
+        "options": {
+          "sentence": "Vety",
+          "paragraph": "Odseky",
+          "figure": "Iba obrázky"
+        }
       },
       {
         "property": "answers",

@@ -4,5 +4,6 @@
   "exportCitations": "Εξαγωγή παραπομπών",
   "copy": "Αντιγραφή",
   "exportCitationFormat": "Μορφή εξαγωγής παραπομπών",
-  "selectCitationFormatBelow": "Επιλέξτε μια μορφή παραπομπών παρακάτω"
+  "selectCitationFormatBelow": "Επιλέξτε μια μορφή παραπομπών παρακάτω",
+  "addCitationToBibliography": "Προσθήκη παραπομπής στη βιβλιογραφία"
 }

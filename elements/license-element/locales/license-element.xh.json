@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title} ngu-{creator} inelayisensi phantsi kwe-{license}.",
   "permissionsBeyondScope": "Iimvume ezingaphaya kobubanzi bale layisensi ziyafumaneka {link}.",
   "author": "(umbhali)",
-  "onTheLicensingDetailsPage": "kwiphepha leenkcukacha zelayisensi"
+  "onTheLicensingDetailsPage": "kwiphepha leenkcukacha zelayisensi",
+  "licenseLabel": "Ilayisensi"
 }

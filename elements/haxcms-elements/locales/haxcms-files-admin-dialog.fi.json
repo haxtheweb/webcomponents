@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Korvaa alkuperäiset tiedostot",
   "newName": "Uusi nimi",
   "deleteAction": "Poista",
-  "renameAction": "Nimeä uudelleen"
+  "renameAction": "Nimeä uudelleen",
+  "bulkOverwriteConfirm": "{action}: {count} tiedostoa? Tämä korvaa alkuperäiset tiedostot, eikä sitä voi perua.",
+  "actionScale": "Skaalaa",
+  "actionRotate": "Kierrä",
+  "actionTransform": "Muunna",
+  "actionConvertJpg": "Muunna JPG-muotoon",
+  "actionCompress": "Pakkaa"
 }

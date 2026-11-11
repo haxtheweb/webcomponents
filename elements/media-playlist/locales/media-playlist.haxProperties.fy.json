@@ -15,6 +15,12 @@
         "title": "Kursus",
         "description": "De kursus dêr't dizze ofspyllist foar bedoeld is (kursusidentifikaasje of URL)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Media",
+        "description": "De fideo's en audio yn de ôfspyllist. Wurdt hjir net bewurke: it side-oersjoch brûkt it om te witten hokker blokken der yn pleatst wurde kinne."
+      }
     ]
   }
 }

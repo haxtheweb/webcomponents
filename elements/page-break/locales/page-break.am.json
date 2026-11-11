@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "ይህ ገጽ ተቆልፏል። የህትመት ሁኔታን ለመቀየር መጀመሪያ ይክፈቱት።",
   "pageLockedUnlockToDelete": "ይህ ገጽ ተቆልፏል። ለመሰረዝ መጀመሪያ ይክፈቱት።",
   "pageDetails": "የገጽ ዝርዝሮች",
-  "clickToUnlock": "ለመክፈት ይጫኑ"
+  "clickToUnlock": "ለመክፈት ይጫኑ",
+  "pageSettings": "የገጽ ቅንብሮች",
+  "editingPageSettings": "የገጽ ቅንብሮችን በማርትዕ ላይ",
+  "published": "ታትሟል",
+  "draft": "ረቂቅ",
+  "locked": "ተቆልፏል",
+  "unlocked": "ተከፍቷል",
+  "noTags": "መለያዎች የሉም",
+  "oneTag": "1 መለያ",
+  "tagCount": "{count} መለያዎች",
+  "enterKey": "Enter"
 }

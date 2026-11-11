@@ -15,6 +15,12 @@
         "title": "Kursus",
         "description": "Die kursus waarvoor hierdie speellys bedoel is (kursusidentifiseerder of URL)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Media",
+        "description": "Die video's en klank in die snitlys. Nie hier geredigeer nie: die bladsyoorsig gebruik dit om te weet watter blokke daarin gelaat kan word."
+      }
     ]
   }
 }

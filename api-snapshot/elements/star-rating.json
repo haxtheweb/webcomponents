@@ -31,6 +31,8 @@
     ],
     "attributes": [],
     "slots": [],
-    "demoTags": []
+    "demoTags": [
+      "star-rating"
+    ]
   }
 }

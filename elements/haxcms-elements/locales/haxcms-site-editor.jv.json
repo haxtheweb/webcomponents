@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Ora bisa ngrampungake operasi ({status})",
   "normalizedPageSlugs": "{count} slug kaca dinormalisasi",
   "createdTitle": "{title} digawe!",
-  "processing": "Lagi diproses"
+  "processing": "Lagi diproses",
+  "saveTimedOut": "Panyimpenan kelangan wektu: server ora mangsuli. Owah-owahan sampeyan disimpen ing kene, nanging server isih bisa ngrampungake panyimpenane."
 }

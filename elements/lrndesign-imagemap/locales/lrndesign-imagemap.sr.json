@@ -1,0 +1,9 @@
+{
+  "imageMap": "Мапа слике",
+  "interactive": "Интерактивно",
+  "hotspot": "Врућа тачка",
+  "hotspotPosition": "{n} од {total}",
+  "hotspotsExplored": "{n} од {total} врућих тачака истражено",
+  "explored": "Истражено",
+  "close": "Затвори"
+}

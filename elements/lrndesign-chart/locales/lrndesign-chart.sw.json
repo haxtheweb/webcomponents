@@ -4,5 +4,8 @@
   "pieChart": "Data · Chati ya pai",
   "showDataTable": "Onyesha jedwali la data",
   "downloadData": "Pakua data (.csv)",
-  "series": "Mfululizo {n}"
+  "series": "Mfululizo {n}",
+  "barChartLabel": "chati ya pau",
+  "lineChartLabel": "chati ya mstari",
+  "pieChartLabel": "chati ya duara"
 }

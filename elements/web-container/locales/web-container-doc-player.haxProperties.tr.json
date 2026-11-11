@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Web bileşeni belge oynatıcısı"
+    "title": "Web bileşeni belge oynatıcısı",
+    "description": ""
   },
   "settings": {
     "configure": [

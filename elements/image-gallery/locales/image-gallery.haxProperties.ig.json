@@ -22,6 +22,12 @@
         "title": "Ndekọ nọ n'ọrụ",
         "description": "Ndekọ onyonyo a ga-amalite na ya n'ọnọdụ ụlọ ngosi."
       }
+    ],
+    "developer": [
+      {
+        "title": "Onyonyo",
+        "description": "Onyonyo dị na gallery. A naghị edezi ya ebe a: nhazi peeji na-eji ya mara ngọngọ ndị enwere ike ịtụnye n'ime ya."
+      }
     ]
   }
 }

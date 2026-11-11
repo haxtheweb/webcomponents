@@ -15,6 +15,12 @@
         "title": "Kurso",
         "description": "Ang kursong pinaglalaanan ng playlist na ito (identifier ng kurso o URL)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Media",
+        "description": "Ang mga video at audio sa playlist. Hindi ito ine-edit dito: ginagamit ito ng balangkas ng pahina para malaman kung aling mga block ang puwedeng ihulog sa loob."
+      }
     ]
   }
 }

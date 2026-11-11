@@ -1,5 +1,6 @@
 {
   "simulation": "Simulácia",
   "fullScreen": "Celá obrazovka",
-  "exitFullScreen": "Ukončiť režim celej obrazovky"
+  "exitFullScreen": "Ukončiť režim celej obrazovky",
+  "player": "Prehrávač Unity WebGL"
 }

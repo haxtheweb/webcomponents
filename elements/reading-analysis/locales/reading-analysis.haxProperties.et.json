@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Tegevus",
-        "description": "Tõendite märkimine: õppijad kleebivad iga lipukese selle tõendi kõrvale. Ühe valimine: õppijad valivad ainsa lõigu, mis vastab küsimusele kõige paremini."
+        "description": "Tõendite märkimine: õppijad kleebivad iga lipukese selle tõendi kõrvale. Ühe valimine: õppijad valivad ainsa lõigu, mis vastab küsimusele kõige paremini.",
+        "options": {
+          "flag": "Märgi tõendid",
+          "one": "Vali üks"
+        }
       },
       {
         "property": "unit",
         "title": "Õppijad valivad",
-        "description": "Millele õppija tekstis osutab. Jooniseid saab alati valida."
+        "description": "Millele õppija tekstis osutab. Jooniseid saab alati valida.",
+        "options": {
+          "sentence": "Laused",
+          "paragraph": "Lõigud",
+          "figure": "Ainult joonised"
+        }
       },
       {
         "property": "answers",

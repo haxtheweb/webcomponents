@@ -109,6 +109,7 @@ class BadgeSticker extends I18NMixin(SimpleColors) {
     left: 32%;
   }
 
+  /* physical on purpose: placed on the badge art, which does not mirror */
   .linkicon {
     position: absolute;
     top: 32%;
@@ -116,6 +117,7 @@ class BadgeSticker extends I18NMixin(SimpleColors) {
     height: var(--ddd-icon-3xs, 20px);
     width: var(--ddd-icon-3xs, 20px);
   }
+  /* physical on purpose: placed on the badge art, which does not mirror */
   .detailsicon {
     position: absolute;
     top: 32%;
@@ -123,6 +125,7 @@ class BadgeSticker extends I18NMixin(SimpleColors) {
     height: var(--ddd-icon-3xs, 20px);
     width: var(--ddd-icon-3xs, 20px);
   }
+  /* physical on purpose: placed on the badge art, which does not mirror */
   .button {
     position: absolute;
     top: 33%;

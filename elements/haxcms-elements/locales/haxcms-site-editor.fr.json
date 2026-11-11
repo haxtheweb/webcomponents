@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Impossible de terminer l'opération ({status})",
   "normalizedPageSlugs": "{count} slugs de page normalisés",
   "createdTitle": "{title} créé !",
-  "processing": "Traitement en cours"
+  "processing": "Traitement en cours",
+  "saveTimedOut": "Délai d'enregistrement dépassé : le serveur n'a pas répondu. Vos modifications sont conservées ici, mais le serveur peut encore terminer de les enregistrer."
 }

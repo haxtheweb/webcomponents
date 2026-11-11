@@ -1,0 +1,9 @@
+{
+  "imageMap": "Mapu a chithunzi",
+  "interactive": "Yolumikizana",
+  "hotspot": "Malo okhudzika",
+  "hotspotPosition": "{n} mwa {total}",
+  "hotspotsExplored": "Malo okhudzika {n} mwa {total} afufuzidwa",
+  "explored": "Afufuzidwa",
+  "close": "Tsekani"
+}

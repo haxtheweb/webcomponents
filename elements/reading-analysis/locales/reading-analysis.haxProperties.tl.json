@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Gawain",
-        "description": "Lagyan ng watawat ang ebidensya: inilalagay ng mga mag-aaral ang bawat watawat sa tabi ng ebidensya nito. Pumili ng isa: pinipili ng mga mag-aaral ang iisang bahaging pinakamahusay na sumasagot sa tanong."
+        "description": "Lagyan ng watawat ang ebidensya: inilalagay ng mga mag-aaral ang bawat watawat sa tabi ng ebidensya nito. Pumili ng isa: pinipili ng mga mag-aaral ang iisang bahaging pinakamahusay na sumasagot sa tanong.",
+        "options": {
+          "flag": "Markahan ang ebidensya",
+          "one": "Pumili ng isa"
+        }
       },
       {
         "property": "unit",
         "title": "Pinipili ng mga mag-aaral",
-        "description": "Ang itinuturo ng mag-aaral sa babasahin. Laging mapipili ang mga larawan."
+        "description": "Ang itinuturo ng mag-aaral sa babasahin. Laging mapipili ang mga larawan.",
+        "options": {
+          "sentence": "Mga pangungusap",
+          "paragraph": "Mga talata",
+          "figure": "Mga figure lamang"
+        }
       },
       {
         "property": "answers",

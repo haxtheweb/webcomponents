@@ -4,5 +4,6 @@
   "exportCitations": "تصدير الاستشهادات",
   "copy": "نسخ",
   "exportCitationFormat": "صيغة تصدير الاستشهاد",
-  "selectCitationFormatBelow": "اختر صيغة استشهاد أدناه"
+  "selectCitationFormatBelow": "اختر صيغة استشهاد أدناه",
+  "addCitationToBibliography": "إضافة اقتباس إلى قائمة المراجع"
 }

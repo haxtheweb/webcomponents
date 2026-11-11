@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "NodeJS konteineris"
+    "title": "NodeJS konteineris",
+    "description": ""
   },
   "settings": {
     "configure": [

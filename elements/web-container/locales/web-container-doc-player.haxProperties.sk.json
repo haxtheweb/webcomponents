@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Prehrávač dokumentácie webových komponentov"
+    "title": "Prehrávač dokumentácie webových komponentov",
+    "description": ""
   },
   "settings": {
     "configure": [

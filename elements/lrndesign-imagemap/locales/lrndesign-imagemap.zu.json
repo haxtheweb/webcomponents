@@ -1,0 +1,9 @@
+{
+  "imageMap": "Imephu yesithombe",
+  "interactive": "Okusebenzisanayo",
+  "hotspot": "Indawo eshisayo",
+  "hotspotPosition": "{n} kwangu-{total}",
+  "hotspotsExplored": "{n} kwezindawo ezishisayo ezingu-{total} kuhloliwe",
+  "explored": "Kuhloliwe",
+  "close": "Vala"
+}

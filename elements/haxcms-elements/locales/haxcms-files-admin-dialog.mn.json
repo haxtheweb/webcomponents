@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Эх файлуудыг солих",
   "newName": "Шинэ нэр",
   "deleteAction": "Устгах",
-  "renameAction": "Нэр өөрчлөх"
+  "renameAction": "Нэр өөрчлөх",
+  "bulkOverwriteConfirm": "{count} файлыг {action}? Энэ нь эх файлуудыг орлох бөгөөд буцаах боломжгүй.",
+  "actionScale": "Томруулах/жижигрүүлэх",
+  "actionRotate": "Эргүүлэх",
+  "actionTransform": "Хувиргах",
+  "actionConvertJpg": "JPG болгон хөрвүүлэх",
+  "actionCompress": "Шахах"
 }

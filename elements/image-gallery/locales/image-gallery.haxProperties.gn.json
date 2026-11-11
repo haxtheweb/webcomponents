@@ -22,6 +22,12 @@
         "title": "Papapy hendýva",
         "description": "Ta'ãnga hendýva papapy oñepyrũ hag̃ua ñembyaty rekópe."
       }
+    ],
+    "developer": [
+      {
+        "title": "Ta'anga",
+        "description": "Ta'anga galería-pegua. Ndojehaíri ko'ápe: kuatiarogue ñemohenda oipuru oikuaa hag̃ua mba'e bloque ikatu oñemoĩ ipype."
+      }
     ]
   }
 }

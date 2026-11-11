@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Cliceáil nó cuir an cursóir os cionn chun fuaim an phléasctha a sheinm",
+  "soundDisabled": "Éifeacht amhairc pléasctha (fuaim díchumasaithe)",
+  "explosionAnimation": "beochan pléasctha",
+  "explosionAriaLabel": "Beochan pléasctha {state} {sound}. Cliceáil chun scoránú.",
+  "playing": "ag seinm",
+  "stopped": "stoptha",
+  "withSound": "le fuaim",
+  "muted": "(balbhaithe)"
+}

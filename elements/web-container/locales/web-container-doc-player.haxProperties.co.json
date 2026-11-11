@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Lettore di documentazione di cumpunenti web"
+    "title": "Lettore di documentazione di cumpunenti web",
+    "description": ""
   },
   "settings": {
     "configure": [

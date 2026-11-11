@@ -35,5 +35,12 @@
   "youTubeStartLoading": "",
   "youTubeTranscriptLabel": "",
   "audioDescriptionLabel": "Maelezo ya sauti",
-  "openOnYouTube": "Fungua kwenye YouTube"
+  "openOnYouTube": "Fungua kwenye YouTube",
+  "interactiveLabel": "shirikishi",
+  "layoutLabel": "Mpangilio",
+  "sideLabel": "Pembeni",
+  "belowLabel": "Chini",
+  "leftLabel": "Kushoto",
+  "rightLabel": "Kulia",
+  "hideTranscriptLabel": "Ficha nakala ya maandishi"
 }

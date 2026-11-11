@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Ngohe",
-        "description": "Tohu taunakitanga: ka piri ngā ākonga i ia haki ki te taha o tōna taunakitanga. Kōwhiri kotahi: ka kōwhiri ngā ākonga i te wāhanga kotahi e tino whakautu ana i te pātai."
+        "description": "Tohu taunakitanga: ka piri ngā ākonga i ia haki ki te taha o tōna taunakitanga. Kōwhiri kotahi: ka kōwhiri ngā ākonga i te wāhanga kotahi e tino whakautu ana i te pātai.",
+        "options": {
+          "flag": "Haki taunakitanga",
+          "one": "Kōwhiria tētahi"
+        }
       },
       {
         "property": "unit",
         "title": "Ka kōwhiri ngā ākonga",
-        "description": "Te mea e tohu ana te ākonga i te pānui. Ka taea tonu te kōwhiri whakaahua."
+        "description": "Te mea e tohu ana te ākonga i te pānui. Ka taea tonu te kōwhiri whakaahua.",
+        "options": {
+          "sentence": "Rerenga kōrero",
+          "paragraph": "Rarangi tuhinga",
+          "figure": "Ngā whakaahua anake"
+        }
       },
       {
         "property": "answers",

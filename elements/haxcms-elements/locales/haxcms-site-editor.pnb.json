@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "کارروائی پوری نئیں ہو سکی ({status})",
   "normalizedPageSlugs": "{count} صفحہ slugs اکسار کیتے",
   "createdTitle": "{title} بݨ گیا!",
-  "processing": "پروسیس ہو رہیا اے"
+  "processing": "پروسیس ہو رہیا اے",
+  "saveTimedOut": "محفوظ کرن دا ویلا مک گیا: سرور نے جواب نہیں دتا۔ تہاڈیاں تبدیلیاں ایتھے محفوظ نیں، پر سرور شاید ہالے وی انہاں نوں محفوظ کر لوے۔"
 }

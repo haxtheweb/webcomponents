@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "D'Konvertéierung ass feelgeschloen.",
   "PARAM_REQUIRED": "E néidege Wäert feelt: {param}.",
   "INVALID_REQUEST": "Ongülteg Ufro.",
-  "PARAM_INVALID": "Ongültege Wäert: {param}."
+  "PARAM_INVALID": "Ongültege Wäert: {param}.",
+  "BLOCK_RATE_LIMITED": "Ze vill Inhaltsännerungen op dësem Site momentan. Probéiert et an {retryAfter} Sekonnen nach eng Kéier."
 }

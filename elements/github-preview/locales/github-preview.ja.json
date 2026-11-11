@@ -1,0 +1,10 @@
+{
+  "github": "GitHub",
+  "repository": "リポジトリ",
+  "stars": "スター",
+  "forks": "フォーク",
+  "loading": "読み込み中",
+  "viewMore": "もっと見る",
+  "assetNotFound": "アセットが見つかりません",
+  "openOnGitHub": "{org}/{repo} をGitHubで開く"
+}

@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Dochie faịlụ mbụ",
   "newName": "Aha ọhụrụ",
   "deleteAction": "Hichapụ",
-  "renameAction": "Gụgharịa aha"
+  "renameAction": "Gụgharịa aha",
+  "bulkOverwriteConfirm": "{action} faịlụ {count}? Nke a ga-edochi faịlụ mbụ ma enweghị ike ịmegharị ya.",
+  "actionScale": "Gbanwee nha",
+  "actionRotate": "Tụgharịa",
+  "actionTransform": "Gbanwee",
+  "actionConvertJpg": "Gbanwee gaa JPG",
+  "actionCompress": "Pịkọta"
 }

@@ -129,5 +129,12 @@
   "cancel": "Odustani",
   "clearedSite": "Vaši podaci o učenju za {site} izbrisani su.",
   "clearedDevice": "Svi podaci o učenju na ovom uređaju izbrisani su.",
-  "thisSite": "ovo web-mjesto"
+  "thisSite": "ovo web-mjesto",
+  "outlineHeading": "Napredak po stranicama",
+  "allPages": "Sve stranice",
+  "outlinePagesDone": "{done} od {total} stranica gotovo",
+  "outlinePagesCount": "Stranica: {count}",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% dovršeno",
+  "outlineComplete": "Dovršeno"
 }

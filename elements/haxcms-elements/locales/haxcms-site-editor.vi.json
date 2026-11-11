@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Không thể hoàn tất thao tác ({status})",
   "normalizedPageSlugs": "Đã chuẩn hóa slug của {count} trang",
   "createdTitle": "Đã tạo {title}!",
-  "processing": "Đang xử lý"
+  "processing": "Đang xử lý",
+  "saveTimedOut": "Lưu quá thời gian: máy chủ không phản hồi. Các thay đổi của bạn vẫn được giữ ở đây, nhưng máy chủ có thể vẫn hoàn tất việc lưu."
 }

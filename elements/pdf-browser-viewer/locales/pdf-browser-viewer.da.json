@@ -3,5 +3,8 @@
   "openInNewTab": "Åbn PDF'en i en ny fane",
   "downloadPdf": "Download PDF'en",
   "fullScreen": "Fuld skærm",
-  "exitFullScreen": "Afslut fuld skærm"
+  "exitFullScreen": "Afslut fuld skærm",
+  "notSupported": "Det ser ud til, at din webbrowser ikke er indstillet til at vise PDF-filer. Det er ikke noget problem,",
+  "notSupportedLink": "klik her for at downloade PDF-filen.",
+  "download": "Download"
 }

@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "این صفحه قفل است. برای تغییر وضعیت انتشار ابتدا قفل آن را باز کنید.",
   "pageLockedUnlockToDelete": "این صفحه قفل است. برای حذف ابتدا قفل آن را باز کنید.",
   "pageDetails": "جزئیات صفحه",
-  "clickToUnlock": "برای باز کردن قفل کلیک کنید"
+  "clickToUnlock": "برای باز کردن قفل کلیک کنید",
+  "pageSettings": "تنظیمات صفحه",
+  "editingPageSettings": "ویرایش تنظیمات صفحه",
+  "published": "منتشر شده",
+  "draft": "پیش‌نویس",
+  "locked": "قفل شده",
+  "unlocked": "بدون قفل",
+  "noTags": "بدون برچسب",
+  "oneTag": "۱ برچسب",
+  "tagCount": "{count} برچسب",
+  "enterKey": "Enter"
 }

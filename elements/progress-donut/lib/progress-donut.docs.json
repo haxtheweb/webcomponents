@@ -15,7 +15,7 @@
   "import": "@haxtheweb/progress-donut/progress-donut.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/progress-donut/progress-donut.js",
   "install": "npm i @haxtheweb/progress-donut",
-  "demoHtml": "",
+  "demoHtml": "<progress-donut></progress-donut>",
   "attributes": [
     {
       "name": "animated",
@@ -183,9 +183,16 @@
         }
       ],
       "advanced": []
-    }
+    },
+    "demoSchema": [
+      {
+        "tag": "progress-donut",
+        "properties": {},
+        "content": ""
+      }
+    ]
   },
-  "surfaceHash": "7a868fbfa491",
+  "surfaceHash": "6ab97c2168b3",
   "walkthroughs": [
     {
       "id": "",
@@ -193,13 +200,13 @@
       "order": 0,
       "src": "progress-donut.motion.json",
       "file": "lib/progress-donut.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/progress-donut.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

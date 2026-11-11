@@ -19,5 +19,13 @@
   "copyCode": "ڪوڊ نقل ڪريو",
   "copied": "نقل ٿي ويو!",
   "invalidCode": "هي ڪردار جو ڪوڊ ناهي.",
-  "preview": "ڪردار جي جھلڪ"
+  "preview": "ڪردار جي جھلڪ",
+  "previous": "اڳيون {name}",
+  "next": "ايندڙ {name}",
+  "variant": "{total} مان {current}",
+  "save": "محفوظ ڪريو",
+  "cancel": "رد ڪريو",
+  "unsavedChanges": "اڻ محفوظ تبديليون",
+  "noUnsavedChanges": "ڪي به اڻ محفوظ تبديليون ناهن",
+  "codeHelp": "ڪردار لوڊ ڪرڻ لاءِ ڪوڊ پيسٽ ڪريو، يا هي ڪاپي ڪري ڪٿي به استعمال ڪريو."
 }

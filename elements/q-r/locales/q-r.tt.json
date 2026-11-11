@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "{title} өчен QR код",
+  "noData": "QR код итеп күрсәтү өчен мәгълүмат юк",
+  "formatNotSupported": "{format} QR код форматы хупланмый",
+  "noCanvas": "Бу браузер QR кодны сыза алмый (canvas хуплаулары юк)"
+}

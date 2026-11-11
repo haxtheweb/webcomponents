@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Kliknutím alebo prejdením myšou prehráte zvuk výbuchu",
+  "soundDisabled": "Vizuálny efekt výbuchu (zvuk vypnutý)",
+  "explosionAnimation": "animácia výbuchu",
+  "explosionAriaLabel": "Animácia výbuchu {state} {sound}. Kliknutím prepnete.",
+  "playing": "prehráva sa",
+  "stopped": "zastavená",
+  "withSound": "so zvukom",
+  "muted": "(stlmené)"
+}

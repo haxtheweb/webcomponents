@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Kan bewerking niet voltooien ({status})",
   "normalizedPageSlugs": "{count} paginaslugs genormaliseerd",
   "createdTitle": "{title} gemaakt!",
-  "processing": "Bezig met verwerken"
+  "processing": "Bezig met verwerken",
+  "saveTimedOut": "Opslaan duurde te lang: de server antwoordde niet. Je wijzigingen blijven hier bewaard, maar de server kan het opslaan nog afronden."
 }

@@ -35,5 +35,12 @@
   "youTubeStartLoading": "",
   "youTubeTranscriptLabel": "",
   "audioDescriptionLabel": "Disgrifiad sain",
-  "openOnYouTube": "Agor ar YouTube"
+  "openOnYouTube": "Agor ar YouTube",
+  "interactiveLabel": "rhyngweithiol",
+  "layoutLabel": "Cynllun",
+  "sideLabel": "Ochr",
+  "belowLabel": "Isod",
+  "leftLabel": "Chwith",
+  "rightLabel": "De",
+  "hideTranscriptLabel": "Cuddio'r trawsgrifiad"
 }

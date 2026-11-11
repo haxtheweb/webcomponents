@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Kuatiarogue noñembosarambíri",
   "progressDone": "Opáma",
   "progressInProgress": "Oñemboguatáva",
-  "progressVisited": "Ojeikeva"
+  "progressVisited": "Ojeikeva",
+  "progressPercentComplete": "{percent}% opapyre",
+  "progressComplete": "Opapyre"
 }

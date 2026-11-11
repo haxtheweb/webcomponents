@@ -1,0 +1,9 @@
+{
+  "imageMap": "Hartă de imagine",
+  "interactive": "Interactiv",
+  "hotspot": "Zonă activă",
+  "hotspotPosition": "{n} din {total}",
+  "hotspotsExplored": "{n} din {total} zone active explorate",
+  "explored": "Explorat",
+  "close": "Închide"
+}

@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title}, автор: {creator}, распространяется по лицензии {license}.",
   "permissionsBeyondScope": "Разрешения сверх этой лицензии доступны {link}.",
   "author": "(автор)",
-  "onTheLicensingDetailsPage": "на странице сведений о лицензировании"
+  "onTheLicensingDetailsPage": "на странице сведений о лицензировании",
+  "licenseLabel": "Лицензия"
 }

@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Player de documentação de web component"
+    "title": "Player de documentação de web component",
+    "description": ""
   },
   "settings": {
     "configure": [

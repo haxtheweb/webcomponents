@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "మార్పిడి విఫలమైంది.",
   "PARAM_REQUIRED": "అవసరమైన విలువ లేదు: {param}.",
   "INVALID_REQUEST": "అభ్యర్థన చెల్లదు.",
-  "PARAM_INVALID": "చెల్లని విలువ: {param}."
+  "PARAM_INVALID": "చెల్లని విలువ: {param}.",
+  "BLOCK_RATE_LIMITED": "ఈ సైట్‌లో ప్రస్తుతం చాలా ఎక్కువ కంటెంట్ మార్పులు జరుగుతున్నాయి. {retryAfter} సెకన్లలో మళ్లీ ప్రయత్నించండి."
 }

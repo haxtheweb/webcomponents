@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Klik atau arahkan kursor untuk memutar suara ledakan",
+  "soundDisabled": "Efek visual ledakan (suara dinonaktifkan)",
+  "explosionAnimation": "animasi ledakan",
+  "explosionAriaLabel": "Animasi ledakan {state} {sound}. Klik untuk beralih.",
+  "playing": "diputar",
+  "stopped": "dihentikan",
+  "withSound": "dengan suara",
+  "muted": "(dibisukan)"
+}

@@ -37,6 +37,16 @@
         "title": "Pangalan ng quiz",
         "description": "Pangalan ng quiz na ipinapasa para gamitin sa mga environment na pinapatakbo ng xAPI upang matukoy ang item na ito"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Natitiklop",
+        "description": "Ipakita ang tanong na ito bilang hilera na nagbubukas at nagsasara. Kapag may binuksan, magsasara ang iba pang natitiklop na tanong sa tabi nito."
+      },
+      {
+        "title": "Magsimula na nakatiklop",
+        "description": "Kapag natitiklop, magsimula bilang saradong hilera na nagpapakita lamang ng tanong at ng status nito."
+      }
     ]
   }
 }

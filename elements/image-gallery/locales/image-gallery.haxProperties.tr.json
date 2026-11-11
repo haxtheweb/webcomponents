@@ -22,6 +22,12 @@
         "title": "Etkin dizin",
         "description": "Galeri modunda başlanacak etkin görselin dizini."
       }
+    ],
+    "developer": [
+      {
+        "title": "Görseller",
+        "description": "Galerideki görseller. Burada düzenlenmez: sayfa ana hattı, içine hangi blokların bırakılabileceğini bilmek için bunu kullanır."
+      }
     ]
   }
 }

@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Әрекетті орындау мүмкін емес ({status})",
   "normalizedPageSlugs": "{count} бет slug-ы қалыпқа келтірілді",
   "createdTitle": "{title} жасалды!",
-  "processing": "Өңделуде"
+  "processing": "Өңделуде",
+  "saveTimedOut": "Сақтау уақыты өтіп кетті: сервер жауап бермеді. Өзгерістеріңіз осы жерде сақталған, бірақ сервер оларды әлі де сақтап бітіруі мүмкін."
 }

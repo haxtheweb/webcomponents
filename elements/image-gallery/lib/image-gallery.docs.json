@@ -165,13 +165,13 @@
       "order": 0,
       "src": "image-gallery.motion.json",
       "file": "lib/image-gallery.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/image-gallery.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

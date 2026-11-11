@@ -1,5 +1,6 @@
 {
   "simulation": "ማስመሰያ",
   "fullScreen": "ሙሉ ማያ",
-  "exitFullScreen": "ከሙሉ ማያ ውጣ"
+  "exitFullScreen": "ከሙሉ ማያ ውጣ",
+  "player": "Unity WebGL ማጫወቻ"
 }

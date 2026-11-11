@@ -1,0 +1,9 @@
+{
+  "imageMap": "Attēla karte",
+  "interactive": "Interaktīvs",
+  "hotspot": "Aktīvais punkts",
+  "hotspotPosition": "{n} no {total}",
+  "hotspotsExplored": "Izpētīti {n} no {total} aktīvajiem punktiem",
+  "explored": "Izpētīts",
+  "close": "Aizvērt"
+}

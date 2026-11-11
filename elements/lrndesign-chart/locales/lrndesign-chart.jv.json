@@ -4,5 +4,8 @@
   "pieChart": "Data · Grafik bunder",
   "showDataTable": "Tampilake tabel data",
   "downloadData": "Undhuh data (.csv)",
-  "series": "Seri {n}"
+  "series": "Seri {n}",
+  "barChartLabel": "grafik batang",
+  "lineChartLabel": "grafik garis",
+  "pieChartLabel": "grafik bunder"
 }

@@ -97,6 +97,19 @@ class RelativeHeading extends I18NMixin(RelativeHeadingLite) {
           outline: var(--relative-heading-button-focus-outline);
           opacity: var(--relative-heading-button-focus-opacity, 1);
         }
+
+        /* nothing moves with prefers-reduced-motion */
+        @media (prefers-reduced-motion: reduce) {
+          :host,
+          *,
+          *::before,
+          *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            transition-delay: 0ms !important;
+          }
+        }
       `,
     ];
   }
@@ -188,6 +201,13 @@ class RelativeHeading extends I18NMixin(RelativeHeadingLite) {
           },
         ],
       },
+      demoSchema: [
+        {
+          tag: "relative-heading",
+          properties: {},
+          content: "",
+        },
+      ],
     };
   }
   // properties available to the custom element for data binding

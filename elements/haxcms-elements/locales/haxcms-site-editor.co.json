@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Impussibule di compie l'operazione ({status})",
   "normalizedPageSlugs": "{count} slug di pagina nurmalizati",
   "createdTitle": "{title} creatu!",
-  "processing": "Trattamentu in corsu"
+  "processing": "Trattamentu in corsu",
+  "saveTimedOut": "Tempu scadutu per l'arregistramentu: u servitore ùn hà micca risposu. E vostre mudifiche sò cunservate quì, ma u servitore pò sempre compie d'arregistralle."
 }

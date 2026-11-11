@@ -37,6 +37,16 @@
         "title": "Naam van de quiz",
         "description": "Quiznaam die wordt doorgegeven in xAPI-omgevingen om dit item te identificeren"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Inklapbaar",
+        "description": "Toon deze vraag als een rij die opent en sluit. Als je er een opent, sluiten de andere inklapbare vragen ernaast."
+      },
+      {
+        "title": "Ingeklapt starten",
+        "description": "Bij inklapbaar: begin als een gesloten rij die alleen de vraag en de status toont."
+      }
     ]
   }
 }

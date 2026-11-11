@@ -1,0 +1,9 @@
+{
+  "imageMap": "ផែនទីរូបភាព",
+  "interactive": "អន្តរកម្ម",
+  "hotspot": "ចំណុចអន្តរកម្ម",
+  "hotspotPosition": "{n} ក្នុងចំណោម {total}",
+  "hotspotsExplored": "បានរុករកចំណុចអន្តរកម្ម {n} ក្នុងចំណោម {total}",
+  "explored": "បានរុករក",
+  "close": "បិទ"
+}

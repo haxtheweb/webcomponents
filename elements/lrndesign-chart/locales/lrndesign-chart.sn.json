@@ -4,5 +4,8 @@
   "pieChart": "Data · Chati yepai",
   "showDataTable": "Ratidza tebhura yedata",
   "downloadData": "Dhawunirodha data (.csv)",
-  "series": "Dzimba {n}"
+  "series": "Dzimba {n}",
+  "barChartLabel": "chati yemabhawa",
+  "lineChartLabel": "chati yemitsetse",
+  "pieChartLabel": "chati yedenderedzwa"
 }

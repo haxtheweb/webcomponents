@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Den här sidan är låst. Lås upp den först för att ändra publiceringsstatus.",
   "pageLockedUnlockToDelete": "Den här sidan är låst. Lås upp den först för att radera.",
   "pageDetails": "Siddetaljer",
-  "clickToUnlock": "Klicka för att låsa upp"
+  "clickToUnlock": "Klicka för att låsa upp",
+  "pageSettings": "Sidinställningar",
+  "editingPageSettings": "Redigerar sidinställningar",
+  "published": "Publicerad",
+  "draft": "Utkast",
+  "locked": "Låst",
+  "unlocked": "Upplåst",
+  "noTags": "Inga taggar",
+  "oneTag": "1 tagg",
+  "tagCount": "{count} taggar",
+  "enterKey": "Enter"
 }

@@ -37,6 +37,16 @@
         "title": "Numele testului",
         "description": "Numele testului transmis pentru identificarea acestui element în medii bazate pe xAPI"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Pliabil",
+        "description": "Afișează această întrebare ca un rând care se deschide și se închide. Deschiderea uneia le închide pe celelalte întrebări pliabile de lângă ea."
+      },
+      {
+        "title": "Începe restrâns",
+        "description": "Când este pliabilă, pornește ca rând închis care afișează doar întrebarea și starea ei."
+      }
     ]
   }
 }

@@ -4,5 +4,8 @@
   "pieChart": "Deta · Chati cha pie",
   "showDataTable": "Onetsani tebulo la deta",
   "downloadData": "Tsitsani deta (.csv)",
-  "series": "Mndandanda {n}"
+  "series": "Mndandanda {n}",
+  "barChartLabel": "tchati cha mizati",
+  "lineChartLabel": "tchati cha mzere",
+  "pieChartLabel": "tchati chozungulira"
 }

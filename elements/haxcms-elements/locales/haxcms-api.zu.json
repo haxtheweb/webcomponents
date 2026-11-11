@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Ukuguqula kwehlulekile.",
   "PARAM_REQUIRED": "Inani elidingekayo alikho: {param}.",
   "INVALID_REQUEST": "Isicelo asivumelekile.",
-  "PARAM_INVALID": "Inani elingavumelekile: {param}."
+  "PARAM_INVALID": "Inani elingavumelekile: {param}.",
+  "BLOCK_RATE_LIMITED": "Izinguquko eziningi kakhulu zokuqukethwe kuleli sayithi okwamanje. Zama futhi emizuzwini engu-{retryAfter}."
 }

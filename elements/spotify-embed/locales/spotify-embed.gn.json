@@ -1,4 +1,9 @@
 {
   "audio": "Pu",
-  "openOnSpotify": "Embojepe Spotify-pe tendayke pyahúpe"
+  "openOnSpotify": "Embojepe Spotify-pe tendayke pyahúpe",
+  "embedTitle": "Spotify ñemoĩ",
+  "trackEmbedTitle": "Spotify purahéi ñemoĩ",
+  "albumEmbedTitle": "Spotify álbum ñemoĩ",
+  "playlistEmbedTitle": "Spotify purahéi rysýi ñemoĩ",
+  "artistEmbedTitle": "Spotify purahéiha ñemoĩ"
 }

@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "QR-kode vir {title}",
+  "noData": "Geen data om as QR-kode te wys nie",
+  "formatNotSupported": "QR-kodeformaat {format} word nie ondersteun nie",
+  "noCanvas": "Hierdie blaaier kan nie die QR-kode teken nie (geen canvas-ondersteuning)"
+}

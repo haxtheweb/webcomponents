@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title} troch {creator} is beskikber steld ûnder in {license}.",
   "permissionsBeyondScope": "Tastimmingen bûten it berik fan dizze lisinsje binne beskikber {link}.",
   "author": "(auteur)",
-  "onTheLicensingDetailsPage": "op de side mei lisinsjedetails"
+  "onTheLicensingDetailsPage": "op de side mei lisinsjedetails",
+  "licenseLabel": "Lisinsje"
 }

@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "פֿאַרבײַט די אָריגינעלע טעקעס",
   "newName": "נײַער נאָמען",
   "deleteAction": "אויסמעקן",
-  "renameAction": "בײַט דעם נאָמען"
+  "renameAction": "בײַט דעם נאָמען",
+  "bulkOverwriteConfirm": "{action} {count} טעקעס? דאָס פֿאַרבײַט די אָריגינעלע טעקעס און קען נישט צוריקגערופֿן ווערן.",
+  "actionScale": "ענדער גרייס",
+  "actionRotate": "דרייען",
+  "actionTransform": "טראַנספֿאָרמירן",
+  "actionConvertJpg": "קאָנווערטירן צו JPG",
+  "actionCompress": "קאָמפּרעסירן"
 }

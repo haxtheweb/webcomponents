@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Dzvanya kana kuisa mouse pamusoro kuti uteerere ruzha rwekuputika",
+  "soundDisabled": "Mufananidzo wekuputika (ruzha rwakadzimwa)",
+  "explosionAnimation": "mufananidzo unofamba wekuputika",
+  "explosionAriaLabel": "Mufananidzo unofamba wekuputika {state} {sound}. Dzvanya kuchinja.",
+  "playing": "unoridzwa",
+  "stopped": "wakamiswa",
+  "withSound": "neruzha",
+  "muted": "(runyararo)"
+}

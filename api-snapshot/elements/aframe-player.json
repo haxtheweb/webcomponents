@@ -30,6 +30,8 @@
     ],
     "attributes": [],
     "slots": [],
-    "demoTags": []
+    "demoTags": [
+      "aframe-player"
+    ]
   }
 }

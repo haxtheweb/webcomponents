@@ -129,5 +129,12 @@
   "cancel": "Отказ",
   "clearedSite": "Данните за обучението ви за {site} бяха изчистени.",
   "clearedDevice": "Всички данни за обучението на това устройство бяха изчистени.",
-  "thisSite": "този сайт"
+  "thisSite": "този сайт",
+  "outlineHeading": "Напредък по страници",
+  "allPages": "Всички страници",
+  "outlinePagesDone": "{done} от {total} страници са готови",
+  "outlinePagesCount": "{count} страници",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% завършено",
+  "outlineComplete": "Завършено"
 }

@@ -17,7 +17,7 @@
   "import": "@haxtheweb/course-design/course-design.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/course-design/course-design.js",
   "install": "npm i @haxtheweb/course-design",
-  "demoHtml": "",
+  "demoHtml": "<course-design></course-design>",
   "attributes": [
     {
       "name": "typeof",
@@ -146,9 +146,16 @@
           "inputMethod": "textfield"
         }
       ]
-    }
+    },
+    "demoSchema": [
+      {
+        "tag": "course-design",
+        "properties": {},
+        "content": ""
+      }
+    ]
   },
-  "surfaceHash": "6e8c4327c50f",
+  "surfaceHash": "0ef116a9777e",
   "walkthroughs": [
     {
       "id": "",

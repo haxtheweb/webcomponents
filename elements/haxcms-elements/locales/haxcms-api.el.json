@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Η μετατροπή απέτυχε.",
   "PARAM_REQUIRED": "Λείπει μια απαιτούμενη τιμή: {param}.",
   "INVALID_REQUEST": "Μη έγκυρο αίτημα.",
-  "PARAM_INVALID": "Μη έγκυρη τιμή: {param}."
+  "PARAM_INVALID": "Μη έγκυρη τιμή: {param}.",
+  "BLOCK_RATE_LIMITED": "Πολλές αλλαγές περιεχομένου σε αυτόν τον ιστότοπο αυτή τη στιγμή. Δοκιμάστε ξανά σε {retryAfter} δευτερόλεπτα."
 }

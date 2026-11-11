@@ -1,0 +1,10 @@
+{
+  "github": "GitHub",
+  "repository": "ریپوزٹری",
+  "stars": "ستارے",
+  "forks": "فورک",
+  "loading": "لوڈ ہو رہیا اے",
+  "viewMore": "ہور ویکھو",
+  "assetNotFound": "اثاثہ نہیں لبھیا",
+  "openOnGitHub": "GitHub تے {org}/{repo} کھولو"
+}

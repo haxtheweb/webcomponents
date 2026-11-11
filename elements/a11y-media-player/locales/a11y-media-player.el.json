@@ -35,5 +35,12 @@
   "youTubeStartLoading": "Πατήστε αναπαραγωγή.",
   "youTubeTranscriptLabel": "Η απομαγνητοφώνηση θα φορτωθεί μόλις ξεκινήσει η αναπαραγωγή.",
   "audioDescriptionLabel": "Ακουστική περιγραφή",
-  "openOnYouTube": "Άνοιγμα στο YouTube"
+  "openOnYouTube": "Άνοιγμα στο YouTube",
+  "interactiveLabel": "διαδραστικό",
+  "layoutLabel": "Διάταξη",
+  "sideLabel": "Στο πλάι",
+  "belowLabel": "Από κάτω",
+  "leftLabel": "Αριστερά",
+  "rightLabel": "Δεξιά",
+  "hideTranscriptLabel": "Απόκρυψη απομαγνητοφώνησης"
 }

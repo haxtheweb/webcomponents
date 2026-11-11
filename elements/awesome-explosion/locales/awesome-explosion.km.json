@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "ចុច ឬដាក់ទស្សន៍ទ្រនិចលើ ដើម្បីចាក់សំឡេងផ្ទុះ",
+  "soundDisabled": "បែបផែនផ្ទុះដែលមើលឃើញ (បិទសំឡេង)",
+  "explosionAnimation": "ចលនាផ្ទុះ",
+  "explosionAriaLabel": "ចលនាផ្ទុះ {state} {sound}។ ចុចដើម្បីបិទបើក។",
+  "playing": "កំពុងចាក់",
+  "stopped": "បានបញ្ឈប់",
+  "withSound": "មានសំឡេង",
+  "muted": "(បិទសំឡេង)"
+}

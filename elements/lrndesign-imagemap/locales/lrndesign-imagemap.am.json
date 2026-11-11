@@ -1,0 +1,9 @@
+{
+  "imageMap": "የምስል ካርታ",
+  "interactive": "በይነተገናኝ",
+  "hotspot": "ንቁ ቦታ",
+  "hotspotPosition": "{n} ከ{total}",
+  "hotspotsExplored": "{n} ከ{total} ንቁ ቦታዎች ተዳስሰዋል",
+  "explored": "ተዳሷል",
+  "close": "ዝጋ"
+}

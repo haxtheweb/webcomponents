@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Түрлендіру сәтсіз аяқталды.",
   "PARAM_REQUIRED": "Міндетті мән жоқ: {param}.",
   "INVALID_REQUEST": "Сұрау жарамсыз.",
-  "PARAM_INVALID": "Мән жарамсыз: {param}."
+  "PARAM_INVALID": "Мән жарамсыз: {param}.",
+  "BLOCK_RATE_LIMITED": "Қазір осы сайтта мазмұн тым жиі өзгертілуде. {retryAfter} секундтан кейін қайталап көріңіз."
 }

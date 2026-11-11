@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "அசல் கோப்புகளை மாற்றியமை",
   "newName": "புதிய பெயர்",
   "deleteAction": "நீக்கு",
-  "renameAction": "பெயர் மாற்று"
+  "renameAction": "பெயர் மாற்று",
+  "bulkOverwriteConfirm": "{count} கோப்புகளை {action} செய்யவா? இது அசல் கோப்புகளை மாற்றிவிடும், இதைச் செயல்தவிர்க்க முடியாது.",
+  "actionScale": "அளவை மாற்று",
+  "actionRotate": "சுழற்று",
+  "actionTransform": "உருமாற்று",
+  "actionConvertJpg": "JPG ஆக மாற்று",
+  "actionCompress": "சுருக்கு"
 }

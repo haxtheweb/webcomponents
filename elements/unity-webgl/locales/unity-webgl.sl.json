@@ -1,5 +1,6 @@
 {
   "simulation": "Simulacija",
   "fullScreen": "Celozaslonski način",
-  "exitFullScreen": "Izhod iz celozaslonskega načina"
+  "exitFullScreen": "Izhod iz celozaslonskega načina",
+  "player": "Predvajalnik Unity WebGL"
 }

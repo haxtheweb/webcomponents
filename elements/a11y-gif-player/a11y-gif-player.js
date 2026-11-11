@@ -177,7 +177,7 @@ class A11yGifPlayer extends I18NMixin(
         }
         #longdesc {
           position: absolute;
-          left: 2px;
+          inset-inline-start: 2px;
           bottom: 2px;
           width: calc(100% - 2px);
           font-size: 80%;

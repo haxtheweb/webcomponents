@@ -1,0 +1,10 @@
+{
+  "github": "GitHub",
+  "repository": "ማከማቻ",
+  "stars": "ኮከቦች",
+  "forks": "ቅርንጫፎች",
+  "loading": "በመጫን ላይ",
+  "viewMore": "ተጨማሪ ይመልከቱ",
+  "assetNotFound": "ንብረቱ አልተገኘም",
+  "openOnGitHub": "{org}/{repo}ን በGitHub ላይ ክፈት"
+}

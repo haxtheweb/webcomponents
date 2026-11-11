@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Webkomponens-dokumentáció lejátszó"
+    "title": "Webkomponens-dokumentáció lejátszó",
+    "description": ""
   },
   "settings": {
     "configure": [

@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "تعذّر إكمال العملية ({status})",
   "normalizedPageSlugs": "تم توحيد {count} من المسارات المختصرة للصفحات",
   "createdTitle": "تم إنشاء {title}!",
-  "processing": "جارٍ المعالجة"
+  "processing": "جارٍ المعالجة",
+  "saveTimedOut": "انتهت مهلة الحفظ: لم يستجب الخادم. تغييراتك محفوظة هنا، لكن قد يُكمل الخادم حفظها."
 }

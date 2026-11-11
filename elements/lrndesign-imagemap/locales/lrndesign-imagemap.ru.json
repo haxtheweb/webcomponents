@@ -1,0 +1,9 @@
+{
+  "imageMap": "Интерактивное изображение",
+  "interactive": "Интерактивный",
+  "hotspot": "Активная область",
+  "hotspotPosition": "{n} из {total}",
+  "hotspotsExplored": "Изучено активных областей: {n} из {total}",
+  "explored": "Изучено",
+  "close": "Закрыть"
+}

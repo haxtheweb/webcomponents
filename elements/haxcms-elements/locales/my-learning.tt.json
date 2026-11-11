@@ -129,5 +129,12 @@
   "cancel": "Баш тарту",
   "clearedSite": "{site} өчен уку мәгълүматларыгыз чистартылды.",
   "clearedDevice": "Бу җайланмадагы барлык уку мәгълүматлары чистартылды.",
-  "thisSite": "бу сайт"
+  "thisSite": "бу сайт",
+  "outlineHeading": "Битләр буенча прогресс",
+  "allPages": "Барлык битләр",
+  "outlinePagesDone": "{total} битнең {done}-е үтәлде",
+  "outlinePagesCount": "{count} бит",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% әзер",
+  "outlineComplete": "Әзер"
 }

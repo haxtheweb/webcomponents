@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Bladsy is ongepubliseer",
   "progressDone": "Voltooi",
   "progressInProgress": "Besig",
-  "progressVisited": "Besoek"
+  "progressVisited": "Besoek",
+  "progressPercentComplete": "{percent}% voltooi",
+  "progressComplete": "Voltooi"
 }

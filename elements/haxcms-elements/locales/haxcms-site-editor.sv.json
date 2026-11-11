@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Det gick inte att slutföra åtgärden ({status})",
   "normalizedPageSlugs": "Normaliserade {count} sid-slugs",
   "createdTitle": "{title} skapad!",
-  "processing": "Bearbetar"
+  "processing": "Bearbetar",
+  "saveTimedOut": "Sparandet fick tidsgräns: servern svarade inte. Dina ändringar finns kvar här, men servern kan fortfarande slutföra sparandet."
 }

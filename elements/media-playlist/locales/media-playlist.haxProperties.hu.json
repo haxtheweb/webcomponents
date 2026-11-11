@@ -15,6 +15,12 @@
         "title": "Kurzus",
         "description": "A kurzus, amelyhez ez a lejátszási lista készült (kurzusazonosító vagy URL)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Média",
+        "description": "A lejátszási lista videói és hangjai. Itt nem szerkeszthető: az oldalvázlat ebből tudja, mely blokkok ejthetők bele."
+      }
     ]
   }
 }

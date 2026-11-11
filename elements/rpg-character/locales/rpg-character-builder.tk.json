@@ -19,5 +19,13 @@
   "copyCode": "Kody göçür",
   "copied": "Göçürildi!",
   "invalidCode": "Bu gahryman kody däl.",
-  "preview": "Gahrymanyň deslapky görnüşi"
+  "preview": "Gahrymanyň deslapky görnüşi",
+  "previous": "Öňki {name}",
+  "next": "Indiki {name}",
+  "variant": "{total} içinden {current}",
+  "save": "Sakla",
+  "cancel": "Ýatyr",
+  "unsavedChanges": "Saklanmadyk üýtgetmeler",
+  "noUnsavedChanges": "Saklanmadyk üýtgetme ýok",
+  "codeHelp": "Gahrymany ýüklemek üçin kody ýelmäň ýa-da muny islendik ýerde ulanmak üçin göçüriň."
 }

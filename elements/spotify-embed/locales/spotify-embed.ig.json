@@ -1,4 +1,9 @@
 {
   "audio": "Ụda",
-  "openOnSpotify": "Meghee na Spotify n'ime taabụ ọhụrụ"
+  "openOnSpotify": "Meghee na Spotify n'ime taabụ ọhụrụ",
+  "embedTitle": "Ntinye Spotify",
+  "trackEmbedTitle": "Ntinye Egwu Spotify",
+  "albumEmbedTitle": "Ntinye Album Spotify",
+  "playlistEmbedTitle": "Ntinye Playlist Spotify",
+  "artistEmbedTitle": "Ntinye Onye Egwú Spotify"
 }

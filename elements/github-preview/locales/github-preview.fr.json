@@ -1,0 +1,10 @@
+{
+  "github": "GitHub",
+  "repository": "Dépôt",
+  "stars": "étoiles",
+  "forks": "forks",
+  "loading": "Chargement",
+  "viewMore": "Voir plus",
+  "assetNotFound": "Ressource introuvable",
+  "openOnGitHub": "Ouvrir {org}/{repo} sur GitHub"
+}

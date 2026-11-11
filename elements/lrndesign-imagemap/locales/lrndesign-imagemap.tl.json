@@ -1,0 +1,9 @@
+{
+  "imageMap": "Mapa ng larawan",
+  "interactive": "Interaktibo",
+  "hotspot": "Hotspot",
+  "hotspotPosition": "{n} sa {total}",
+  "hotspotsExplored": "{n} sa {total} hotspot ang nasuri",
+  "explored": "Nasuri",
+  "close": "Isara"
+}

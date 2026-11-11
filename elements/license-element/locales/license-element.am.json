@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title} በ{creator} በ{license} ፈቃድ ተሰጥቶታል።",
   "permissionsBeyondScope": "ከዚህ ፈቃድ ወሰን በላይ የሆኑ ፈቃዶች {link} ይገኛሉ።",
   "author": "(ደራሲ)",
-  "onTheLicensingDetailsPage": "በፈቃድ ዝርዝሮች ገጽ ላይ"
+  "onTheLicensingDetailsPage": "በፈቃድ ዝርዝሮች ገጽ ላይ",
+  "licenseLabel": "ፈቃድ"
 }

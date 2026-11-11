@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Taphataa galmee web component"
+    "title": "Taphataa galmee web component",
+    "description": ""
   },
   "settings": {
     "configure": [

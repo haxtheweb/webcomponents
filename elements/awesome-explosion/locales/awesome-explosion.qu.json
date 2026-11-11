@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Phawariy ruidota uyarichinapaq click utaq hover ruway",
+  "soundDisabled": "Qhawana phawariy ruway (mana ruidowan)",
+  "explosionAnimation": "phawariy animación",
+  "explosionAriaLabel": "Phawariy animación {state} {sound}. Tikranapaq click ruway.",
+  "playing": "purichkan",
+  "stopped": "sayasqa",
+  "withSound": "ruidowan",
+  "muted": "(upallachisqa)"
+}

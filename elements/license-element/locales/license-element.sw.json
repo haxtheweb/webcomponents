@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title} na {creator} imepewa leseni chini ya {license}.",
   "permissionsBeyondScope": "Ruhusa zaidi ya upeo wa leseni hii zinapatikana {link}.",
   "author": "(mwandishi)",
-  "onTheLicensingDetailsPage": "kwenye ukurasa wa maelezo ya leseni"
+  "onTheLicensingDetailsPage": "kwenye ukurasa wa maelezo ya leseni",
+  "licenseLabel": "Leseni"
 }

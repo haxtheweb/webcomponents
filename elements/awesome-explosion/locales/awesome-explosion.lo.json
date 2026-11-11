@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "ກົດ ຫຼື ເອົາເມົ້າຊີ້ເພື່ອຫຼິ້ນສຽງລະເບີດ",
+  "soundDisabled": "ເອັບເຟັກລະເບີດແບບພາບ (ປິດສຽງ)",
+  "explosionAnimation": "ພາບເຄື່ອນໄຫວລະເບີດ",
+  "explosionAriaLabel": "ພາບເຄື່ອນໄຫວລະເບີດ {state} {sound}. ກົດເພື່ອສະຫຼັບ.",
+  "playing": "ກຳລັງຫຼິ້ນ",
+  "stopped": "ຢຸດແລ້ວ",
+  "withSound": "ພ້ອມສຽງ",
+  "muted": "(ປິດສຽງ)"
+}

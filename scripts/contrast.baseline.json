@@ -5,12 +5,6 @@
       "light": {
         "#example >> aNy-media-transcript-cue[end=\"N:N\"][start=\"N:N\"][lang=\"en\"] > .searchable": 3
       }
-    },
-    "outline-designer": {
-      "dark": {
-        "outline-designer >> .indent-N[aria-posinset=\"N\"][aria-level=\"N\"] > .title > .shown.label[property=\"oer:title\"]": 1,
-        "outline-designer >> li[aria-label=\"Intervals: Numeric Size\"] > .title > .shown.label[property=\"oer:title\"]": 1
-      }
     }
   }
 }

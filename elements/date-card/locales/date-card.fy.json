@@ -1,0 +1,8 @@
+{
+  "ordinalOne": "e",
+  "ordinalTwo": "e",
+  "ordinalFew": "e",
+  "ordinalOther": "e",
+  "fromTimeToTime": "fan {start} - {end}",
+  "atTime": "om {start}"
+}

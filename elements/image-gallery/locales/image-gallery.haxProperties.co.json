@@ -22,6 +22,12 @@
         "title": "Indice attivu",
         "description": "Indice di l'imagine attiva di partenza in modu galleria."
       }
+    ],
+    "developer": [
+      {
+        "title": "Imagine",
+        "description": "L'imagine di a galeria. Ùn si mudificanu micca quì: a struttura di a pagina l'adopra per sapè quali blocchi ponu esse lasciati cascà."
+      }
     ]
   }
 }

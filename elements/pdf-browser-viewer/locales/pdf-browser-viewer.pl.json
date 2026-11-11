@@ -3,5 +3,8 @@
   "openInNewTab": "Otwórz plik PDF w nowej karcie",
   "downloadPdf": "Pobierz plik PDF",
   "fullScreen": "Pełny ekran",
-  "exitFullScreen": "Zamknij pełny ekran"
+  "exitFullScreen": "Zamknij pełny ekran",
+  "notSupported": "Wygląda na to, że Twoja przeglądarka nie jest skonfigurowana do wyświetlania plików PDF. Bez obaw, po prostu",
+  "notSupportedLink": "kliknij tutaj, aby pobrać plik PDF.",
+  "download": "Pobierz"
 }

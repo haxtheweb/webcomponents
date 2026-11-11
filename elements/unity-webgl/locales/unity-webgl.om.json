@@ -1,5 +1,6 @@
 {
   "simulation": "Fakkeenyisuu",
   "fullScreen": "Iskiriinii guutuu",
-  "exitFullScreen": "Iskiriinii guutuu keessaa ba'i"
+  "exitFullScreen": "Iskiriinii guutuu keessaa ba'i",
+  "player": "Taphachiisaa Unity WebGL"
 }

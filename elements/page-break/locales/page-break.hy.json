@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Այս էջը կողպված է. Հրապարակման կարգավիճակը փոխելու համար նախ բացեք այն.",
   "pageLockedUnlockToDelete": "Այս էջը կողպված է. Ջնջելու համար նախ բացեք այն.",
   "pageDetails": "Էջի մանրամասները",
-  "clickToUnlock": "Սեղմեք ապակողպելու համար"
+  "clickToUnlock": "Սեղմեք ապակողպելու համար",
+  "pageSettings": "Էջի կարգավորումներ",
+  "editingPageSettings": "Էջի կարգավորումները խմբագրվում են",
+  "published": "Հրապարակված",
+  "draft": "Սևագիր",
+  "locked": "Արգելափակված",
+  "unlocked": "Արգելահանված",
+  "noTags": "Պիտակներ չկան",
+  "oneTag": "1 պիտակ",
+  "tagCount": "{count} պիտակ",
+  "enterKey": "Enter"
 }

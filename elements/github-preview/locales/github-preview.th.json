@@ -1,0 +1,10 @@
+{
+  "github": "GitHub",
+  "repository": "รีโพซิทอรี",
+  "stars": "ดาว",
+  "forks": "ฟอร์ก",
+  "loading": "กำลังโหลด",
+  "viewMore": "ดูเพิ่มเติม",
+  "assetNotFound": "ไม่พบแอสเซต",
+  "openOnGitHub": "เปิด {org}/{repo} บน GitHub"
+}

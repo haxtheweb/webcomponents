@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Гэтая старонка заблакіравана. Каб змяніць стан публікацыі, спачатку разблакіруйце яе.",
   "pageLockedUnlockToDelete": "Гэтая старонка заблакіравана. Каб выдаліць, спачатку разблакіруйце яе.",
   "pageDetails": "Дэталі старонкі",
-  "clickToUnlock": "Націсніце, каб разблакаваць"
+  "clickToUnlock": "Націсніце, каб разблакаваць",
+  "pageSettings": "Налады старонкі",
+  "editingPageSettings": "Рэдагаванне налад старонкі",
+  "published": "Апублікавана",
+  "draft": "Чарнавік",
+  "locked": "Заблакіравана",
+  "unlocked": "Разблакіравана",
+  "noTags": "Няма тэгаў",
+  "oneTag": "1 тэг",
+  "tagCount": "Тэгаў: {count}",
+  "enterKey": "Enter"
 }

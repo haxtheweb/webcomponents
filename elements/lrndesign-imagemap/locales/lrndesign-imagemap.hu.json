@@ -1,0 +1,9 @@
+{
+  "imageMap": "Képtérkép",
+  "interactive": "Interaktív",
+  "hotspot": "Kiemelt pont",
+  "hotspotPosition": "{n} / {total}",
+  "hotspotsExplored": "{n} / {total} kiemelt pont felfedezve",
+  "explored": "Felfedezve",
+  "close": "Bezárás"
+}

@@ -37,6 +37,16 @@
         "title": "Emri i kuizit",
         "description": "Emri i kuizit që përcillet për përdorim në mjedise të drejtuara nga xAPI për identifikimin e këtij elementi"
       }
+    ],
+    "advanced": [
+      {
+        "title": "E palosshme",
+        "description": "Shfaqe këtë pyetje si një rresht që hapet dhe mbyllet. Hapja e njërës mbyll pyetjet e tjera të palosshme pranë saj."
+      },
+      {
+        "title": "Fillo e palosur",
+        "description": "Kur është e palosshme, fillon si rresht i mbyllur që shfaq vetëm pyetjen dhe statusin e saj."
+      }
     ]
   }
 }

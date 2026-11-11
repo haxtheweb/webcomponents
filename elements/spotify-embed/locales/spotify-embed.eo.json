@@ -1,4 +1,9 @@
 {
   "audio": "Sono",
-  "openOnSpotify": "Malfermi en Spotify en nova langeto"
+  "openOnSpotify": "Malfermi en Spotify en nova langeto",
+  "embedTitle": "Spotify-enkorpigo",
+  "trackEmbedTitle": "Spotify-enkorpigo de peco",
+  "albumEmbedTitle": "Spotify-enkorpigo de albumo",
+  "playlistEmbedTitle": "Spotify-enkorpigo de ludlisto",
+  "artistEmbedTitle": "Spotify-enkorpigo de artisto"
 }

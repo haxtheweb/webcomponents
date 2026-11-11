@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "محفظهٔ NodeJS"
+    "title": "محفظهٔ NodeJS",
+    "description": ""
   },
   "settings": {
     "configure": [

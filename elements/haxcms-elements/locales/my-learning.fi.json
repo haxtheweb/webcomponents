@@ -129,5 +129,12 @@
   "cancel": "Peruuta",
   "clearedSite": "Oppimistietosi sivustolta {site} tyhjennettiin.",
   "clearedDevice": "Kaikki tämän laitteen oppimistiedot tyhjennettiin.",
-  "thisSite": "tämä sivusto"
+  "thisSite": "tämä sivusto",
+  "outlineHeading": "Edistyminen sivuittain",
+  "allPages": "Kaikki sivut",
+  "outlinePagesDone": "{done} / {total} sivua valmiina",
+  "outlinePagesCount": "{count} sivua",
+  "outlinePercent": "{percent} %",
+  "outlinePercentComplete": "{percent} % valmis",
+  "outlineComplete": "Valmis"
 }

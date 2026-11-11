@@ -126,6 +126,7 @@ class CodeSample extends I18NMixin(LitElement) {
         .hljs-ln-n:before {
           content: attr(data-line-number);
         }
+        /* physical on purpose: source code is left-to-right in any page */
         td.hljs-ln-code {
           padding-left: 16px;
         }
@@ -309,7 +310,7 @@ class CodeSample extends I18NMixin(LitElement) {
         advanced: [],
       },
       saveOptions: {
-        unsetAttributes: ["theme", "editMode", "_haxstate", "t"],
+        unsetAttributes: ["theme", "edit-mode", "_haxstate", "t"],
       },
       demoSchema: [
         {

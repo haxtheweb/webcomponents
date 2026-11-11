@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title} oleh {creator} dilesenkan di bawah {license}.",
   "permissionsBeyondScope": "Kebenaran di luar skop lesen ini boleh didapati {link}.",
   "author": "(pengarang)",
-  "onTheLicensingDetailsPage": "di halaman butiran pelesenan"
+  "onTheLicensingDetailsPage": "di halaman butiran pelesenan",
+  "licenseLabel": "Lesen"
 }

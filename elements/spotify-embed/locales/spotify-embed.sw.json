@@ -1,4 +1,9 @@
 {
   "audio": "Sauti",
-  "openOnSpotify": "Fungua kwenye Spotify katika kichupo kipya"
+  "openOnSpotify": "Fungua kwenye Spotify katika kichupo kipya",
+  "embedTitle": "Kipachiko cha Spotify",
+  "trackEmbedTitle": "Kipachiko cha Wimbo wa Spotify",
+  "albumEmbedTitle": "Kipachiko cha Albamu ya Spotify",
+  "playlistEmbedTitle": "Kipachiko cha Orodha ya Nyimbo ya Spotify",
+  "artistEmbedTitle": "Kipachiko cha Msanii wa Spotify"
 }

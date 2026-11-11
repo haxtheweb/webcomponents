@@ -59,7 +59,13 @@ const refreshQuestionStacks = (parent) => {
 };
 const releaseQuestionStackParent = (parent) => {
   const observer = parent && questionStackObservers.get(parent);
-  if (observer && stackQuestionsIn(parent).length === 0) {
+  // only connected questions keep the observer: when a whole container (or
+  // an ancestor of it) is removed, its questions disconnect without leaving
+  // the container, and the observer must go with them
+  if (
+    observer &&
+    stackQuestionsIn(parent).filter((q) => q.isConnected).length === 0
+  ) {
     observer.disconnect();
     questionStackObservers.delete(parent);
   }

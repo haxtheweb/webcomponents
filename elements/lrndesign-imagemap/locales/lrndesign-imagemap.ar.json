@@ -1,0 +1,9 @@
+{
+  "imageMap": "خريطة صورة",
+  "interactive": "تفاعلي",
+  "hotspot": "نقطة ساخنة",
+  "hotspotPosition": "{n} من {total}",
+  "hotspotsExplored": "تم استكشاف {n} من {total} نقاط ساخنة",
+  "explored": "تم الاستكشاف",
+  "close": "إغلاق"
+}

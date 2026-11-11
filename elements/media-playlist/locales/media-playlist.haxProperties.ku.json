@@ -15,6 +15,12 @@
         "title": "Ders",
         "description": "Dersa ku ev lîste jê re ye (nasnameya dersê an URL)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Medya",
+        "description": "Vîdyo û deng di lîsteya lêdanê de. Li vir nayê sererastkirin: xêzkirina rûpelê wê bi kar tîne da ku bizane kîjan blok dikarin têkevin hundir."
+      }
     ]
   }
 }

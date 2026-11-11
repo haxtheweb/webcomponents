@@ -3,5 +3,8 @@
   "openInNewTab": "PDFውን በአዲስ ትር ክፈት",
   "downloadPdf": "PDFውን አውርድ",
   "fullScreen": "ሙሉ ማያ",
-  "exitFullScreen": "ከሙሉ ማያ ውጣ"
+  "exitFullScreen": "ከሙሉ ማያ ውጣ",
+  "notSupported": "የድር አሳሽዎ PDF ፋይሎችን ለማሳየት እንዳልተዋቀረ ይመስላል። ችግር የለም፣ ብቻ",
+  "notSupportedLink": "የPDF ፋይሉን ለማውረድ እዚህ ጠቅ ያድርጉ።",
+  "download": "አውርድ"
 }

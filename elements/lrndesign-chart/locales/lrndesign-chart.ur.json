@@ -4,5 +4,8 @@
   "pieChart": "ڈیٹا · پائی چارٹ",
   "showDataTable": "ڈیٹا جدول دکھائیں",
   "downloadData": "ڈیٹا ڈاؤن لوڈ کریں (.csv)",
-  "series": "سیریز {n}"
+  "series": "سیریز {n}",
+  "barChartLabel": "بار چارٹ",
+  "lineChartLabel": "لائن چارٹ",
+  "pieChartLabel": "پائی چارٹ"
 }

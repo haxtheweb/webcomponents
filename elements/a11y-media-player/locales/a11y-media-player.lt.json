@@ -35,5 +35,12 @@
   "youTubeStartLoading": "",
   "youTubeTranscriptLabel": "",
   "audioDescriptionLabel": "Garsinis vaizdavimas",
-  "openOnYouTube": "Atidaryti YouTube"
+  "openOnYouTube": "Atidaryti YouTube",
+  "interactiveLabel": "interaktyvus",
+  "layoutLabel": "Išdėstymas",
+  "sideLabel": "Šone",
+  "belowLabel": "Apačioje",
+  "leftLabel": "Kairėje",
+  "rightLabel": "Dešinėje",
+  "hideTranscriptLabel": "Slėpti transkripciją"
 }

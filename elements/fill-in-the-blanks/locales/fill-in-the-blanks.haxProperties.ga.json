@@ -37,6 +37,16 @@
         "title": "Ainm an tráth na gceist",
         "description": "Ainm an tráth na gceist a sheoltar isteach le húsáid i dtimpeallachtaí xAPI chun an mhír seo a aithint"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Infhillte",
+        "description": "Taispeáin an cheist seo mar shraith a osclaíonn agus a dhúnann. Nuair a osclaítear ceann, dúntar na ceisteanna infhillte eile in aice leis."
+      },
+      {
+        "title": "Tosaigh fillte",
+        "description": "Nuair atá sé infhillte, tosaigh mar shraith dúnta nach dtaispeánann ach an cheist agus a stádas."
+      }
     ]
   }
 }

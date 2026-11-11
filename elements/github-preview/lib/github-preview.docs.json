@@ -214,13 +214,13 @@
       "order": 0,
       "src": "github-preview.motion.json",
       "file": "lib/github-preview.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/github-preview.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

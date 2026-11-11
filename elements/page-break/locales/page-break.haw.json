@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Ua laka ʻia kēia ʻaoʻao. E wehe mua i ka laka e hoʻololi ai i ke kūlana paʻi.",
   "pageLockedUnlockToDelete": "Ua laka ʻia kēia ʻaoʻao. E wehe mua i ka laka e holoi ai.",
   "pageDetails": "Nā kikowaena 'ao'ao",
-  "clickToUnlock": "Kaomi no ka wehe 'ana"
+  "clickToUnlock": "Kaomi no ka wehe 'ana",
+  "pageSettings": "Nā hoʻonohonoho ʻaoʻao",
+  "editingPageSettings": "Ke hoʻoponopono nei i nā hoʻonohonoho ʻaoʻao",
+  "published": "Ua hoʻopuka ʻia",
+  "draft": "Kākau mua",
+  "locked": "Ua laka ʻia",
+  "unlocked": "Ua wehe ʻia ka laka",
+  "noTags": "ʻAʻohe huaʻōlelo hōʻailona",
+  "oneTag": "1 hōʻailona",
+  "tagCount": "{count} hōʻailona",
+  "enterKey": "Enter"
 }

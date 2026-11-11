@@ -1,5 +1,6 @@
 {
   "simulation": "Hoʻohālike",
   "fullScreen": "ʻAoʻao piha",
-  "exitFullScreen": "Haʻalele i ka ʻaoʻao piha"
+  "exitFullScreen": "Haʻalele i ka ʻaoʻao piha",
+  "player": "Mea hoʻokani Unity WebGL"
 }

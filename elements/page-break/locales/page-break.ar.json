@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "هذه الصفحة مقفلة. افتحها أولًا لتغيير حالة النشر.",
   "pageLockedUnlockToDelete": "هذه الصفحة مقفلة. افتحها أولًا لحذفها.",
   "pageDetails": "تفاصيل الصفحة",
-  "clickToUnlock": "انقر لفتح القفل"
+  "clickToUnlock": "انقر لفتح القفل",
+  "pageSettings": "إعدادات الصفحة",
+  "editingPageSettings": "تحرير إعدادات الصفحة",
+  "published": "منشورة",
+  "draft": "مسودة",
+  "locked": "مقفلة",
+  "unlocked": "غير مقفلة",
+  "noTags": "بلا وسوم",
+  "oneTag": "وسم واحد",
+  "tagCount": "{count} وسوم",
+  "enterKey": "Enter"
 }

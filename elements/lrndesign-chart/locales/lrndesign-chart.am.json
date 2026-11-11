@@ -4,5 +4,8 @@
   "pieChart": "ውሂብ · የክብ ገበታ",
   "showDataTable": "የውሂብ ሠንጠረዥ አሳይ",
   "downloadData": "ውሂብ አውርድ (.csv)",
-  "series": "ተከታታይ {n}"
+  "series": "ተከታታይ {n}",
+  "barChartLabel": "የአምድ ቻርት",
+  "lineChartLabel": "የመስመር ቻርት",
+  "pieChartLabel": "የክብ ቻርት"
 }

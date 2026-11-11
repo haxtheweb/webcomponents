@@ -19,5 +19,13 @@
   "copyCode": "Koperani khodi",
   "copied": "Yakopedwa!",
   "invalidCode": "Iyi si khodi ya munthu.",
-  "preview": "Chiwonetsero cha munthu"
+  "preview": "Chiwonetsero cha munthu",
+  "previous": "{name} yapitayi",
+  "next": "{name} yotsatira",
+  "variant": "{current} mwa {total}",
+  "save": "Sungani",
+  "cancel": "Letsani",
+  "unsavedChanges": "Zosintha zosasungidwa",
+  "noUnsavedChanges": "Palibe zosintha zosasungidwa",
+  "codeHelp": "Matani khodi kuti mutsegule munthu, kapena koperani iyi kuti muigwiritse ntchito kulikonse."
 }

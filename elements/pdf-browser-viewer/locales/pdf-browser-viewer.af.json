@@ -3,5 +3,8 @@
   "openInNewTab": "Maak die PDF in 'n nuwe oortjie oop",
   "downloadPdf": "Laai die PDF af",
   "fullScreen": "Volskerm",
-  "exitFullScreen": "Verlaat volskerm"
+  "exitFullScreen": "Verlaat volskerm",
+  "notSupported": "Dit lyk of jou webblaaier nie gekonfigureer is om PDF-lêers te wys nie. Geen probleem, net",
+  "notSupportedLink": "klik hier om die PDF-lêer af te laai.",
+  "download": "Laai af"
 }

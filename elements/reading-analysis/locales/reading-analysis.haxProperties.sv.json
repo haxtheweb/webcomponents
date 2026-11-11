@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Aktivitet",
-        "description": "Flagga belägg: eleverna sätter varje flagga vid belägget för den. Välj ett: eleverna väljer det enda avsnitt som bäst besvarar frågan."
+        "description": "Flagga belägg: eleverna sätter varje flagga vid belägget för den. Välj ett: eleverna väljer det enda avsnitt som bäst besvarar frågan.",
+        "options": {
+          "flag": "Flagga belägg",
+          "one": "Välj ett"
+        }
       },
       {
         "property": "unit",
         "title": "Eleverna markerar",
-        "description": "Vad en elev pekar på i texten. Figurer kan alltid markeras."
+        "description": "Vad en elev pekar på i texten. Figurer kan alltid markeras.",
+        "options": {
+          "sentence": "Meningar",
+          "paragraph": "Stycken",
+          "figure": "Endast figurer"
+        }
       },
       {
         "property": "answers",

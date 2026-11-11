@@ -1,13 +1,20 @@
 {
   "gizmo": {
     "title": "H5P",
-    "description": "Pêçeka h5p ji bo barkirin û pêşkêşkirina pelên .h5p"
+    "description": "Naveroka înteraktîf a H5P ji pelê .h5p yê barkirî lê dide, bêyî pêwistiya serverê H5P"
   },
   "settings": {
     "configure": [
       {
         "slot": "",
-        "description": "Koda bicihkirinê ya iframe ya H5P"
+        "description": "Pelek .h5p bar bike an girêde. Ew di geroka de tê vekirin; serverê H5P ne pêwîst e.",
+        "title": "Pelê H5P"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Koda embed ya iframe ya kevn",
+        "description": "Tenê ji bo naveroka kevn ku iframeyek H5P ji malperek din dihewîne. Dema pelek .h5p li jor hatibe danîn vala bihêle."
       }
     ]
   }

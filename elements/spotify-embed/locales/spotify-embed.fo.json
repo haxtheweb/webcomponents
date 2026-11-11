@@ -1,4 +1,9 @@
 {
   "audio": "Ljóð",
-  "openOnSpotify": "Opna á Spotify í nýggjum faneblaði"
+  "openOnSpotify": "Opna á Spotify í nýggjum faneblaði",
+  "embedTitle": "Spotify innbygging",
+  "trackEmbedTitle": "Spotify løgu innbygging",
+  "albumEmbedTitle": "Spotify album innbygging",
+  "playlistEmbedTitle": "Spotify spælilista innbygging",
+  "artistEmbedTitle": "Spotify listafólks innbygging"
 }

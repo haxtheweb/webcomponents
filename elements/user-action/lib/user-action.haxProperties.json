@@ -1,6 +1,5 @@
 {
   "canScale": false,
-
   "canEditSource": true,
   "gizmo": {
     "title": "User action",
@@ -36,5 +35,12 @@
       }
     ],
     "advanced": []
-  }
+  },
+  "demoSchema": [
+    {
+      "tag": "user-action",
+      "properties": {},
+      "content": ""
+    }
+  ]
 }

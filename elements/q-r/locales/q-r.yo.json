@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "Kóòdù QR fún {title}",
+  "noData": "Kò sí dátà láti fihàn gẹ́gẹ́ bí kóòdù QR",
+  "formatNotSupported": "A kò ṣe àtìlẹ́yìn fún ọ̀nà kóòdù QR {format}",
+  "noCanvas": "Aṣàwákiri yìí kò lè fa kóòdù QR (kò sí àtìlẹ́yìn canvas)"
+}

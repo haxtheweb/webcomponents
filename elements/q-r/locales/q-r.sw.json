@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "Msimbo wa QR wa {title}",
+  "noData": "Hakuna data ya kuonyesha kama msimbo wa QR",
+  "formatNotSupported": "Umbizo la msimbo wa QR {format} halitumiki",
+  "noCanvas": "Kivinjari hiki hakiwezi kuchora msimbo wa QR (hakuna usaidizi wa canvas)"
+}

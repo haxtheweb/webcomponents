@@ -22,6 +22,8 @@
     ],
     "attributes": [],
     "slots": [],
-    "demoTags": []
+    "demoTags": [
+      "figure-label"
+    ]
   }
 }

@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Bu sahifa qulflangan. Nashr holatini oʻzgartirish uchun avval qulfdan chiqaring.",
   "pageLockedUnlockToDelete": "Bu sahifa qulflangan. Oʻchirish uchun avval qulfdan chiqaring.",
   "pageDetails": "Sahifa tafsilotlari",
-  "clickToUnlock": "Ochish uchun bosing"
+  "clickToUnlock": "Ochish uchun bosing",
+  "pageSettings": "Sahifa sozlamalari",
+  "editingPageSettings": "Sahifa sozlamalari tahrirlanmoqda",
+  "published": "Nashr etilgan",
+  "draft": "Qoralama",
+  "locked": "Qulflangan",
+  "unlocked": "Qulfdan ochilgan",
+  "noTags": "Teglar yo'q",
+  "oneTag": "1 ta teg",
+  "tagCount": "{count} ta teg",
+  "enterKey": "Enter"
 }

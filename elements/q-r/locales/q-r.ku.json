@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "Koda QR ji bo {title}",
+  "noData": "Dane tune ye ku wekî koda QR were nîşandan",
+  "formatNotSupported": "Formata koda QR {format} nayê piştgirîkirin",
+  "noCanvas": "Ev gerok nikare koda QR xêz bike (piştgiriya canvas tune)"
+}

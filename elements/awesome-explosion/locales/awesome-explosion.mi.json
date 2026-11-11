@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Pāwhiri, whakamaua rānei te kiore hei purei i te oro pahū",
+  "soundDisabled": "Pānga pahū ā-kite (kua monoa te oro)",
+  "explosionAnimation": "hākoritanga pahū",
+  "explosionAriaLabel": "Hākoritanga pahū {state} {sound}. Pāwhiri hei whakawhiti.",
+  "playing": "e tākaro ana",
+  "stopped": "kua tū",
+  "withSound": "me te oro",
+  "muted": "(kua noho puku)"
+}

@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Hojii xumuruu hin danda'amu ({status})",
   "normalizedPageSlugs": "Slug fuulota {count} idileessameera",
   "createdTitle": "{title} uumameera!",
-  "processing": "Hojjechaa jira"
+  "processing": "Hojjechaa jira",
+  "saveTimedOut": "Olkaa'uun yeroo darbeera: sarvariin hin deebine. Jijjiiramni kee asuma kuufameera, garuu sarvariin ammallee olkaa'uu xumuruu danda'a."
 }

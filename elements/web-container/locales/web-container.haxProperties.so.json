@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Weelka NodeJS"
+    "title": "Weelka NodeJS",
+    "description": ""
   },
   "settings": {
     "configure": [

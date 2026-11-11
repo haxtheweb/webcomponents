@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "QR-koodi: {title}",
+  "noData": "Ei QR-koodina näytettävää dataa",
+  "formatNotSupported": "QR-koodin muotoa {format} ei tueta",
+  "noCanvas": "Tämä selain ei voi piirtää QR-koodia (ei canvas-tukea)"
+}

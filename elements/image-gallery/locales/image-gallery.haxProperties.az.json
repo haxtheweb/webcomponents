@@ -22,6 +22,12 @@
         "title": "Aktiv indeks",
         "description": "Qalereya rejimində başlanacaq aktiv şəklin indeksi."
       }
+    ],
+    "developer": [
+      {
+        "title": "Şəkillər",
+        "description": "Qalereyadakı şəkillər. Burada redaktə olunmur: səhifə konturu hansı blokların buraya buraxıla biləcəyini bilmək üçün ondan istifadə edir."
+      }
     ]
   }
 }

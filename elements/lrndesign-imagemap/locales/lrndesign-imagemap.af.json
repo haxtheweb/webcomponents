@@ -1,0 +1,9 @@
+{
+  "imageMap": "Beeldkaart",
+  "interactive": "Interaktief",
+  "hotspot": "Aktiewe kol",
+  "hotspotPosition": "{n} van {total}",
+  "hotspotsExplored": "{n} van {total} aktiewe kolle verken",
+  "explored": "Verken",
+  "close": "Sluit"
+}

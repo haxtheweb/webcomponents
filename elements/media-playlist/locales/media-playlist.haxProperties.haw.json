@@ -15,6 +15,12 @@
         "title": "Papa",
         "description": "Ka Papa no kēia papa hoʻokani (helu ʻike papa a i ʻole URL)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Pāpāho",
+        "description": "Nā wikiō a me ka leo i loko o ka papa hoʻokani. ʻAʻole hoʻoponopono ʻia ma ʻaneʻi: hoʻohana ka hōʻike o ka ʻaoʻao iā ia e ʻike ai i nā poloka hiki ke hoʻokuʻu ʻia i loko."
+      }
     ]
   }
 }

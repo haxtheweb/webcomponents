@@ -3,5 +3,8 @@
   "openInNewTab": "Buɗe PDF a sabon shafi",
   "downloadPdf": "Zazzage PDF",
   "fullScreen": "Cikakken allo",
-  "exitFullScreen": "Fita daga cikakken allo"
+  "exitFullScreen": "Fita daga cikakken allo",
+  "notSupported": "Da alama ba a saita burauzarka don nuna fayilolin PDF ba. Babu damuwa, kawai",
+  "notSupportedLink": "danna nan don sauke fayil ɗin PDF.",
+  "download": "Sauke"
 }

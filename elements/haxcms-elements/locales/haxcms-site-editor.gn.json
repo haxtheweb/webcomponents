@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Ndaikatúi oñemohu'ã tembiapo ({status})",
   "normalizedPageSlugs": "Oñemohenda {count} kuatiarogue slug",
   "createdTitle": "Oñemoheñói {title}!",
-  "processing": "Ombosako'íhína"
+  "processing": "Ombosako'íhína",
+  "saveTimedOut": "Opa ñeñongatu aravo: servidor nderesaráiri. Ne ñemoambue opyta kóvape, ha katu servidor ikatu gueteri omohu'ã ñeñongatu."
 }

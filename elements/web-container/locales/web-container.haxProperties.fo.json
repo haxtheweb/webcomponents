@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "NodeJS-kassi"
+    "title": "NodeJS-kassi",
+    "description": ""
   },
   "settings": {
     "configure": [

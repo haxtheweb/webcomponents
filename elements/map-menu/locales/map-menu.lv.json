@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Lapa nav publicēta",
   "progressDone": "Pabeigts",
   "progressInProgress": "Procesā",
-  "progressVisited": "Apmeklēts"
+  "progressVisited": "Apmeklēts",
+  "progressPercentComplete": "Pabeigts {percent}%",
+  "progressComplete": "Pabeigts"
 }

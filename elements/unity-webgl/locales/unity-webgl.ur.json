@@ -1,5 +1,6 @@
 {
   "simulation": "نقل (سمیولیشن)",
   "fullScreen": "پوری اسکرین",
-  "exitFullScreen": "پوری اسکرین سے باہر نکلیں"
+  "exitFullScreen": "پوری اسکرین سے باہر نکلیں",
+  "player": "Unity WebGL پلیئر"
 }

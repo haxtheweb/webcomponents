@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Ne eblas plenumi operacion ({status})",
   "normalizedPageSlugs": "Normigis {count} paĝajn slug-ojn",
   "createdTitle": "{title} kreita!",
-  "processing": "Traktado"
+  "processing": "Traktado",
+  "saveTimedOut": "Konservado eksvalidiĝis: la servilo ne respondis. Viaj ŝanĝoj restas ĉi tie, sed la servilo eble ankoraŭ finos konservi ilin."
 }

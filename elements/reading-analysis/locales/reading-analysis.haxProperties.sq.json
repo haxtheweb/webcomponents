@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Aktiviteti",
-        "description": "Shëno provat: nxënësit vendosin çdo shenjë pranë provës për të. Përzgjidh një: nxënësit zgjedhin pjesën e vetme që i përgjigjet më mirë pyetjes."
+        "description": "Shëno provat: nxënësit vendosin çdo shenjë pranë provës për të. Përzgjidh një: nxënësit zgjedhin pjesën e vetme që i përgjigjet më mirë pyetjes.",
+        "options": {
+          "flag": "Shëno provat",
+          "one": "Zgjidh një"
+        }
       },
       {
         "property": "unit",
         "title": "Nxënësit përzgjedhin",
-        "description": "Çfarë tregon nxënësi në tekst. Figurat mund të përzgjidhen gjithmonë."
+        "description": "Çfarë tregon nxënësi në tekst. Figurat mund të përzgjidhen gjithmonë.",
+        "options": {
+          "sentence": "Fjali",
+          "paragraph": "Paragrafë",
+          "figure": "Vetëm figura"
+        }
       },
       {
         "property": "answers",

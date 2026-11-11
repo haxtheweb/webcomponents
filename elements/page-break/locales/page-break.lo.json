@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "ໜ້ານີ້ຖືກລັອກ. ປົດລັອກກ່ອນເພື່ອປ່ຽນສະຖານະການເຜີຍແຜ່.",
   "pageLockedUnlockToDelete": "ໜ້ານີ້ຖືກລັອກ. ປົດລັອກກ່ອນເພື່ອລຶບ.",
   "pageDetails": "ລາຍລະອຽດໜ້າ",
-  "clickToUnlock": "ຄລິກເພື່ອປົດລັອກ"
+  "clickToUnlock": "ຄລິກເພື່ອປົດລັອກ",
+  "pageSettings": "ການຕັ້ງຄ່າໜ້າ",
+  "editingPageSettings": "ກຳລັງແກ້ໄຂການຕັ້ງຄ່າໜ້າ",
+  "published": "ເຜີຍແຜ່ແລ້ວ",
+  "draft": "ສະບັບຮ່າງ",
+  "locked": "ລັອກແລ້ວ",
+  "unlocked": "ປົດລັອກແລ້ວ",
+  "noTags": "ບໍ່ມີແທັກ",
+  "oneTag": "1 ແທັກ",
+  "tagCount": "{count} ແທັກ",
+  "enterKey": "Enter"
 }

@@ -1,0 +1,10 @@
+{
+  "github": "GitHub",
+  "repository": "Αποθετήριο",
+  "stars": "αστέρια",
+  "forks": "forks",
+  "loading": "Φόρτωση",
+  "viewMore": "Προβολή περισσότερων",
+  "assetNotFound": "Το στοιχείο δεν βρέθηκε",
+  "openOnGitHub": "Άνοιγμα του {org}/{repo} στο GitHub"
+}

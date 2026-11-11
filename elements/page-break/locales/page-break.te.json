@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "ఈ పేజీ లాక్ చేయబడింది. ప్రచురణ స్థితిని మార్చడానికి ముందుగా దాన్ని అన్‌లాక్ చేయండి.",
   "pageLockedUnlockToDelete": "ఈ పేజీ లాక్ చేయబడింది. తొలగించడానికి ముందుగా దాన్ని అన్‌లాక్ చేయండి.",
   "pageDetails": "పేజీ వివరాలు",
-  "clickToUnlock": "అన్‌లాక్ చేయడానికి క్లిక్ చేయండి"
+  "clickToUnlock": "అన్‌లాక్ చేయడానికి క్లిక్ చేయండి",
+  "pageSettings": "పేజీ సెట్టింగ్‌లు",
+  "editingPageSettings": "పేజీ సెట్టింగ్‌లను సవరిస్తున్నారు",
+  "published": "ప్రచురించబడింది",
+  "draft": "డ్రాఫ్ట్",
+  "locked": "లాక్ చేయబడింది",
+  "unlocked": "అన్‌లాక్ చేయబడింది",
+  "noTags": "ట్యాగ్‌లు లేవు",
+  "oneTag": "1 ట్యాగ్",
+  "tagCount": "{count} ట్యాగ్‌లు",
+  "enterKey": "Enter"
 }

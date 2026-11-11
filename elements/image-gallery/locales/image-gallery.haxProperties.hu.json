@@ -22,6 +22,12 @@
         "title": "Aktív index",
         "description": "A galéria módban kezdő aktív kép indexe."
       }
+    ],
+    "developer": [
+      {
+        "title": "Képek",
+        "description": "A galéria képei. Itt nem szerkeszthető: az oldalvázlat ebből tudja, mely blokkok ejthetők bele."
+      }
     ]
   }
 }

@@ -22,6 +22,12 @@
         "title": "Isalathiso esisebenzayo",
         "description": "Isalathiso somfanekiso ekuqalwa ngawo kwimowudi yegalari."
       }
+    ],
+    "developer": [
+      {
+        "title": "Imifanekiso",
+        "description": "Imifanekiso ekwigalari. Ayihlelwa apha: isishwankathelo sephepha siyisebenzisela ukwazi ukuba zeziphi iibhloko ezinokuwiselwa ngaphakathi."
+      }
     ]
   }
 }

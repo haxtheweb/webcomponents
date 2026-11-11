@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Ezin da eragiketa osatu ({status})",
   "normalizedPageSlugs": "{count} orri-slug normalizatu dira",
   "createdTitle": "{title} sortu da!",
-  "processing": "Prozesatzen"
+  "processing": "Prozesatzen",
+  "saveTimedOut": "Gordetzeak denbora-muga gainditu du: zerbitzariak ez du erantzun. Zure aldaketak hemen gordetzen dira, baina zerbitzariak oraindik gorde ditzake."
 }

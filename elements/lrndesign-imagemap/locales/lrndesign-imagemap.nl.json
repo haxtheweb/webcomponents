@@ -1,0 +1,9 @@
+{
+  "imageMap": "Afbeeldingskaart",
+  "interactive": "Interactief",
+  "hotspot": "Hotspot",
+  "hotspotPosition": "{n} van {total}",
+  "hotspotsExplored": "{n} van {total} hotspots verkend",
+  "explored": "Verkend",
+  "close": "Sluiten"
+}

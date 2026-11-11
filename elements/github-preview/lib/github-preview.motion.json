@@ -330,10 +330,10 @@
   ],
   "end": {
     "in": 17.8,
-    "line": "Accessible figure with long description",
+    "line": "Preview a GitHub repository: description, language, stars a…",
     "code": "<github-preview></github-preview>"
   },
-  "surfaceHash": "9477b49451d3",
+  "surfaceHash": "f39335c65fab",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title} од {creator} е лиценцирано под {license}.",
   "permissionsBeyondScope": "Дозволи надвор од опсегот на оваа лиценца се достапни {link}.",
   "author": "(автор)",
-  "onTheLicensingDetailsPage": "на страницата со детали за лиценцирање"
+  "onTheLicensingDetailsPage": "на страницата со детали за лиценцирање",
+  "licenseLabel": "Лиценца"
 }

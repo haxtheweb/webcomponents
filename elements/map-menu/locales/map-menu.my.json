@@ -2,5 +2,7 @@
   "pageIsUnpublished": "စာမျက်နှာကို မထုတ်ဝေရသေးပါ",
   "progressDone": "ပြီးပြီ",
   "progressInProgress": "ဆောင်ရွက်နေဆဲ",
-  "progressVisited": "ကြည့်ရှုပြီး"
+  "progressVisited": "ကြည့်ရှုပြီး",
+  "progressPercentComplete": "{percent}% ပြီးစီးပြီ",
+  "progressComplete": "ပြီးစီးပြီ"
 }

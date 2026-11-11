@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "رمز QR لـ {title}",
+  "noData": "لا توجد بيانات لعرضها كرمز QR",
+  "formatNotSupported": "تنسيق رمز QR ‏{format} غير مدعوم",
+  "noCanvas": "لا يستطيع هذا المتصفح رسم رمز QR (لا يوجد دعم لـ canvas)"
+}

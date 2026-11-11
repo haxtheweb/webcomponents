@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Саҳифа нашр нашудааст",
   "progressDone": "Иҷро шуд",
   "progressInProgress": "Дар ҷараён",
-  "progressVisited": "Дидан шуд"
+  "progressVisited": "Дидан шуд",
+  "progressPercentComplete": "{percent}% анҷом ёфт",
+  "progressComplete": "Анҷом ёфт"
 }

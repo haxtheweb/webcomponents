@@ -3,5 +3,8 @@
   "openInNewTab": "Buka PDF dalam tab baharu",
   "downloadPdf": "Muat turun PDF",
   "fullScreen": "Skrin penuh",
-  "exitFullScreen": "Keluar skrin penuh"
+  "exitFullScreen": "Keluar skrin penuh",
+  "notSupported": "Nampaknya pelayar web anda tidak dikonfigurasikan untuk memaparkan fail PDF. Tidak mengapa, cuma",
+  "notSupportedLink": "klik di sini untuk memuat turun fail PDF.",
+  "download": "Muat turun"
 }

@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Mana atikunchu rurayta tukuyta ({status})",
   "normalizedPageSlugs": "{count} p'anqa slugkuna kikinchasqa",
   "createdTitle": "{title} rurasqa!",
-  "processing": "Ruwachkan"
+  "processing": "Ruwachkan",
+  "saveTimedOut": "Waqaychay unay pasarqan: servidorqa mana kutichirqanchu. Tikrasqaykikunaqa kaypi waqaychasqa, ichaqa servidor wakin kuti waqaychayta tukunman."
 }

@@ -1,5 +1,6 @@
 {
   "simulation": "სიმულაცია",
   "fullScreen": "სრული ეკრანი",
-  "exitFullScreen": "სრული ეკრანიდან გასვლა"
+  "exitFullScreen": "სრული ეკრანიდან გასვლა",
+  "player": "Unity WebGL ფლეერი"
 }

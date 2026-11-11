@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "转换失败。",
   "PARAM_REQUIRED": "缺少必填值：{param}。",
   "INVALID_REQUEST": "请求无效。",
-  "PARAM_INVALID": "值无效：{param}。"
+  "PARAM_INVALID": "值无效：{param}。",
+  "BLOCK_RATE_LIMITED": "此站点目前的内容更改过于频繁。请在 {retryAfter} 秒后重试。"
 }

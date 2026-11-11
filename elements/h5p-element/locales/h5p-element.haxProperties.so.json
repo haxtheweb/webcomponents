@@ -1,13 +1,20 @@
 {
   "gizmo": {
     "title": "H5P",
-    "description": "Duub h5p ah oo lagu soo dejiyo laguna soo bandhigo faylasha .h5p"
+    "description": "Wuxuu ciyaaraa nuxurka is-dhexgalka ee H5P ee ka yimid faylka .h5p ee la geliyay, iyadoo aan loo baahnayn server H5P ah"
   },
   "settings": {
     "configure": [
       {
         "slot": "",
-        "description": "Koodhka iframe ee H5P"
+        "description": "Geli ama ku xir fayl .h5p ah. Waxaa lagu furfuraa browserka; server H5P looma baahna.",
+        "title": "Faylka H5P"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Koodhka hore ee gelinta iframe",
+        "description": "Kaliya nuxur ka da'weyn oo gelinaya iframe H5P ah oo ka yimid goob kale. Banaan ka dhig marka fayl .h5p ah la dejiyay kor."
       }
     ]
   }

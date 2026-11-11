@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Teisendamine ebaõnnestus.",
   "PARAM_REQUIRED": "Nõutav väärtus puudub: {param}.",
   "INVALID_REQUEST": "Kehtetu päring.",
-  "PARAM_INVALID": "Kehtetu väärtus: {param}."
+  "PARAM_INVALID": "Kehtetu väärtus: {param}.",
+  "BLOCK_RATE_LIMITED": "Sellel saidil on praegu liiga palju sisemuudatusi. Proovi uuesti {retryAfter} sekundi pärast."
 }

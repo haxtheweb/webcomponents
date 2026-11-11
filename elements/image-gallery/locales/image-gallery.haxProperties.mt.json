@@ -22,6 +22,12 @@
         "title": "Indiċi attiv",
         "description": "Indiċi tal-immaġni attiva li biha tibda fil-modalità tal-gallerija."
       }
+    ],
+    "developer": [
+      {
+        "title": "Stampi",
+        "description": "L-istampi fil-gallerija. Mhux editjat hawn: il-qafas tal-paġna jużah biex ikun jaf liema blokki jistgħu jitqiegħdu ġewwa."
+      }
     ]
   }
 }

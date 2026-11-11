@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Il-konverżjoni ma rnexxietx.",
   "PARAM_REQUIRED": "Valur meħtieġ huwa nieqes: {param}.",
   "INVALID_REQUEST": "Talba mhux valida.",
-  "PARAM_INVALID": "Valur mhux validu: {param}."
+  "PARAM_INVALID": "Valur mhux validu: {param}.",
+  "BLOCK_RATE_LIMITED": "Wisq bidliet fil-kontenut f'dan is-sit bħalissa. Erġa' pprova wara {retryAfter} sekondi."
 }

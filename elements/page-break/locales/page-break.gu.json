@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "આ પેજ લૉક છે. પ્રકાશન સ્થિતિ બદલવા માટે પહેલાં તેને અનલૉક કરો.",
   "pageLockedUnlockToDelete": "આ પેજ લૉક છે. કાઢી નાખવા માટે પહેલાં તેને અનલૉક કરો.",
   "pageDetails": "પૃષ્ઠની વિગતો",
-  "clickToUnlock": "અનલૉક કરવા માટે ક્લિક કરો"
+  "clickToUnlock": "અનલૉક કરવા માટે ક્લિક કરો",
+  "pageSettings": "પૃષ્ઠ સેટિંગ્સ",
+  "editingPageSettings": "પૃષ્ઠ સેટિંગ્સ સંપાદિત થઈ રહી છે",
+  "published": "પ્રકાશિત",
+  "draft": "ડ્રાફ્ટ",
+  "locked": "લૉક કરેલું",
+  "unlocked": "અનલૉક કરેલું",
+  "noTags": "કોઈ ટૅગ નથી",
+  "oneTag": "1 ટૅગ",
+  "tagCount": "{count} ટૅગ",
+  "enterKey": "Enter"
 }

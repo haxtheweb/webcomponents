@@ -3,5 +3,8 @@
   "openInNewTab": "Obre el PDF en una pestanya nova",
   "downloadPdf": "Baixa el PDF",
   "fullScreen": "Pantalla completa",
-  "exitFullScreen": "Surt de la pantalla completa"
+  "exitFullScreen": "Surt de la pantalla completa",
+  "notSupported": "Sembla que el teu navegador web no està configurat per mostrar fitxers PDF. No passa res, només cal",
+  "notSupportedLink": "fer clic aquí per baixar el fitxer PDF.",
+  "download": "Baixa"
 }

@@ -22,6 +22,12 @@
         "title": "Aktiver Index",
         "description": "Index des aktiven Bildes, mit dem im Galeriemodus begonnen wird."
       }
+    ],
+    "developer": [
+      {
+        "title": "Bilder",
+        "description": "Die Bilder in der Galerie. Werden hier nicht bearbeitet: Die Seitenstruktur nutzt sie, um zu wissen, welche Blöcke abgelegt werden können."
+      }
     ]
   }
 }

@@ -2,5 +2,7 @@
   "pageIsUnpublished": "A pagina ùn hè micca publicata",
   "progressDone": "Fattu",
   "progressInProgress": "In corsu",
-  "progressVisited": "Visitatu"
+  "progressVisited": "Visitatu",
+  "progressPercentComplete": "{percent}% cumpletu",
+  "progressComplete": "Cumpletu"
 }

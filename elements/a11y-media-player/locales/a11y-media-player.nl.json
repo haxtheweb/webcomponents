@@ -35,5 +35,12 @@
   "youTubeStartLoading": "Druk op afspelen.",
   "youTubeTranscriptLabel": "Het transcript wordt geladen zodra de media wordt afgespeeld.",
   "audioDescriptionLabel": "Audiodescriptie",
-  "openOnYouTube": "Openen op YouTube"
+  "openOnYouTube": "Openen op YouTube",
+  "interactiveLabel": "interactief",
+  "layoutLabel": "Indeling",
+  "sideLabel": "Zijkant",
+  "belowLabel": "Onder",
+  "leftLabel": "Links",
+  "rightLabel": "Rechts",
+  "hideTranscriptLabel": "Transcript verbergen"
 }

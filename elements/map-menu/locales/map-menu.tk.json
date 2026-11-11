@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Sahypa çap edilmedik",
   "progressDone": "Tamamlandy",
   "progressInProgress": "Dowam edýär",
-  "progressVisited": "Girildi"
+  "progressVisited": "Girildi",
+  "progressPercentComplete": "{percent}% tamamlandy",
+  "progressComplete": "Tamamlandy"
 }

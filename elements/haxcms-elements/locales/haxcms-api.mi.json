@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "I rahua te tahuri.",
   "PARAM_REQUIRED": "Kei te ngaro tētahi uara e hiahiatia ana: {param}.",
   "INVALID_REQUEST": "He tono hē.",
-  "PARAM_INVALID": "He uara hē: {param}."
+  "PARAM_INVALID": "He uara hē: {param}.",
+  "BLOCK_RATE_LIMITED": "He nui rawa ngā whakarerekē ihirangi ki tēnei pae i tēnei wā. Whakamātauria anō i roto i te {retryAfter} hēkona."
 }

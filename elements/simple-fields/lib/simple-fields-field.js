@@ -695,6 +695,19 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
           input[type="range"]:focus::-ms-fill-upper {
             background: var(--simple-fields-border-color-light, #ccc);
           }
+
+          /* nothing moves with prefers-reduced-motion */
+          @media (prefers-reduced-motion: reduce) {
+            :host,
+            *,
+            *::before,
+            *::after {
+              animation-duration: 0.01ms !important;
+              animation-iteration-count: 1 !important;
+              transition-duration: 0.01ms !important;
+              transition-delay: 0ms !important;
+            }
+          }
         `,
       ];
     }

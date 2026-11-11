@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Ta strona jest zablokowana. Najpierw ją odblokuj, aby zmienić stan publikacji.",
   "pageLockedUnlockToDelete": "Ta strona jest zablokowana. Najpierw ją odblokuj, aby usunąć.",
   "pageDetails": "Szczegóły strony",
-  "clickToUnlock": "Kliknij, aby odblokować"
+  "clickToUnlock": "Kliknij, aby odblokować",
+  "pageSettings": "Ustawienia strony",
+  "editingPageSettings": "Edycja ustawień strony",
+  "published": "Opublikowana",
+  "draft": "Wersja robocza",
+  "locked": "Zablokowana",
+  "unlocked": "Odblokowana",
+  "noTags": "Brak tagów",
+  "oneTag": "1 tag",
+  "tagCount": "Tagi: {count}",
+  "enterKey": "Enter"
 }

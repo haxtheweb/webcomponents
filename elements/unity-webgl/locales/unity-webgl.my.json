@@ -1,5 +1,6 @@
 {
   "simulation": "သရုပ်ဖော်မှု",
   "fullScreen": "မျက်နှာပြင်အပြည့်",
-  "exitFullScreen": "မျက်နှာပြင်အပြည့်မှ ထွက်ပါ"
+  "exitFullScreen": "မျက်နှာပြင်အပြည့်မှ ထွက်ပါ",
+  "player": "Unity WebGL ပလေယာ"
 }

@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Ayikwazi ukuqedela ukusebenza ({status})",
   "normalizedPageSlugs": "Kujwayelekiswe ama-slug amakhasi angu-{count}",
   "createdTitle": "Kudalwe i-{title}!",
-  "processing": "Iyacubungula"
+  "processing": "Iyacubungula",
+  "saveTimedOut": "Ukugcina kuphelelwe yisikhathi: iseva ayiphendulanga. Izinguquko zakho ziyagcinwa lapha, kodwa iseva isengase iqedele ukuzigcina."
 }

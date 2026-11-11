@@ -1,0 +1,9 @@
+{
+  "imageMap": "מפת תמונה",
+  "interactive": "אינטראקטיבי",
+  "hotspot": "נקודה חמה",
+  "hotspotPosition": "{n} מתוך {total}",
+  "hotspotsExplored": "{n} מתוך {total} נקודות חמות נחקרו",
+  "explored": "נחקר",
+  "close": "סגור"
+}

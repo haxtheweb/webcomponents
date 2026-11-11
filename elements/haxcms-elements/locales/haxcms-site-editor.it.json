@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Impossibile completare l'operazione ({status})",
   "normalizedPageSlugs": "Normalizzati {count} slug di pagina",
   "createdTitle": "{title} creata!",
-  "processing": "Elaborazione"
+  "processing": "Elaborazione",
+  "saveTimedOut": "Salvataggio scaduto: il server non ha risposto. Le tue modifiche sono conservate qui, ma il server potrebbe ancora completarne il salvataggio."
 }

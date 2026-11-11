@@ -1,4 +1,9 @@
 {
   "audio": "Umsindo",
-  "openOnSpotify": "Vula ku-Spotify kuthebhu entsha"
+  "openOnSpotify": "Vula ku-Spotify kuthebhu entsha",
+  "embedTitle": "Ukufakwa kwe-Spotify",
+  "trackEmbedTitle": "Ukufakwa kwengoma ye-Spotify",
+  "albumEmbedTitle": "Ukufakwa kwe-albhamu ye-Spotify",
+  "playlistEmbedTitle": "Ukufakwa kohlu lokudlala lwe-Spotify",
+  "artistEmbedTitle": "Ukufakwa komculi we-Spotify"
 }

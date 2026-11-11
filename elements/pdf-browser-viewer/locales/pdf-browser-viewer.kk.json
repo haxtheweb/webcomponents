@@ -3,5 +3,8 @@
   "openInNewTab": "PDF-ті жаңа қойындыда ашу",
   "downloadPdf": "PDF жүктеп алу",
   "fullScreen": "Толық экран",
-  "exitFullScreen": "Толық экраннан шығу"
+  "exitFullScreen": "Толық экраннан шығу",
+  "notSupported": "Веб-браузеріңіз PDF файлдарын көрсетуге бапталмаған сияқты. Уайымдамаңыз, жай ғана",
+  "notSupportedLink": "PDF файлын жүктеп алу үшін осы жерді басыңыз.",
+  "download": "Жүктеп алу"
 }

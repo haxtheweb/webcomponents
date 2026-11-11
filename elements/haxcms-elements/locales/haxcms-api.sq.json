@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Konvertimi dështoi.",
   "PARAM_REQUIRED": "Mungon një vlerë e detyrueshme: {param}.",
   "INVALID_REQUEST": "Kërkesë e pavlefshme.",
-  "PARAM_INVALID": "Vlerë e pavlefshme: {param}."
+  "PARAM_INVALID": "Vlerë e pavlefshme: {param}.",
+  "BLOCK_RATE_LIMITED": "Shumë ndryshime përmbajtjeje në këtë sajt tani. Provo përsëri pas {retryAfter} sekondash."
 }

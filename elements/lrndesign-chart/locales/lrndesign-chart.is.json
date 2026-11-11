@@ -4,5 +4,8 @@
   "pieChart": "Gögn · Kökurit",
   "showDataTable": "Sýna gagnatöflu",
   "downloadData": "Sækja gögn (.csv)",
-  "series": "Gagnaröð {n}"
+  "series": "Gagnaröð {n}",
+  "barChartLabel": "súlurit",
+  "lineChartLabel": "línurit",
+  "pieChartLabel": "skífurit"
 }

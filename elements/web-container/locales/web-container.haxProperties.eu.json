@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "NodeJS edukiontzia"
+    "title": "NodeJS edukiontzia",
+    "description": ""
   },
   "settings": {
     "configure": [

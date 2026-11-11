@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "ওয়েব কম্পোনেন্ট ডক প্লেয়ার"
+    "title": "ওয়েব কম্পোনেন্ট ডক প্লেয়ার",
+    "description": ""
   },
   "settings": {
     "configure": [

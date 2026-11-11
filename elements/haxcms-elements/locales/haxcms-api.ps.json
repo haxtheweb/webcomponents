@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "اړول ناکام شول.",
   "PARAM_REQUIRED": "یو اړین ارزښت نشته: {param}.",
   "INVALID_REQUEST": "ناسمه غوښتنه.",
-  "PARAM_INVALID": "ناسم ارزښت: {param}."
+  "PARAM_INVALID": "ناسم ارزښت: {param}.",
+  "BLOCK_RATE_LIMITED": "همدا اوس پدې سایټ کې د منځپانګې ډېر بدلونونه شوي. په {retryAfter} ثانیو کې بیا هڅه وکړئ."
 }

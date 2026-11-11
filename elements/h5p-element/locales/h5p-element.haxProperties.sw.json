@@ -1,13 +1,20 @@
 {
   "gizmo": {
     "title": "H5P",
-    "description": "Kifungashio cha H5P cha kupakia na kuwasilisha faili za .h5p"
+    "description": "Huchezesha maudhui shirikishi ya H5P kutoka faili ya .h5p iliyopakiwa, bila kuhitaji seva ya H5P"
   },
   "settings": {
     "configure": [
       {
         "slot": "",
-        "description": "Msimbo wa kupachika iframe ya H5P"
+        "description": "Pakia au unganisha faili ya .h5p. Hufunguliwa kwenye kivinjari; seva ya H5P haihitajiki.",
+        "title": "Faili ya H5P"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Msimbo wa zamani wa kupachika iframe",
+        "description": "Kwa maudhui ya zamani pekee yanayopachika iframe ya H5P kutoka tovuti nyingine. Acha wazi ikiwa faili ya .h5p imewekwa hapo juu."
       }
     ]
   }

@@ -3,5 +3,8 @@
   "openInNewTab": "Atvērt PDF jaunā cilnē",
   "downloadPdf": "Lejupielādēt PDF",
   "fullScreen": "Pilnekrāna režīms",
-  "exitFullScreen": "Iziet no pilnekrāna režīma"
+  "exitFullScreen": "Iziet no pilnekrāna režīma",
+  "notSupported": "Šķiet, ka jūsu tīmekļa pārlūkprogramma nav konfigurēta PDF failu attēlošanai. Nekas, vienkārši",
+  "notSupportedLink": "noklikšķiniet šeit, lai lejupielādētu PDF failu.",
+  "download": "Lejupielādēt"
 }

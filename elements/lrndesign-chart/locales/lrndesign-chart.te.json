@@ -4,5 +4,8 @@
   "pieChart": "డేటా · పై చార్ట్",
   "showDataTable": "డేటా పట్టికను చూపండి",
   "downloadData": "డేటాను డౌన్‌లోడ్ చేయండి (.csv)",
-  "series": "సిరీస్ {n}"
+  "series": "సిరీస్ {n}",
+  "barChartLabel": "బార్ చార్ట్",
+  "lineChartLabel": "లైన్ చార్ట్",
+  "pieChartLabel": "పై చార్ట్"
 }

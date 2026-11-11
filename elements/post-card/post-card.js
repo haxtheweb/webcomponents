@@ -269,16 +269,16 @@ export class PostCard extends I18NMixin(LitElement) {
       }
 
       .tofrom h3 {
-        text-align: left;
+        text-align: start;
         transform: rotate(-1deg);
         color: #ca8686;
-        padding-left: 20px;
+        padding-inline-start: 20px;
       }
 
       .message {
         grid-column: 1 / 3;
         grid-row: 2 / 5;
-        padding-right: 20px;
+        padding-inline-end: 20px;
         padding-bottom: 20px;
         padding-top: 200px;
         font-size: 22px;

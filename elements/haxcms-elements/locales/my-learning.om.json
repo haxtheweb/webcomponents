@@ -129,5 +129,12 @@
   "cancel": "Haqi",
   "clearedSite": "Daataan barnoota kee kan {site} haqameera.",
   "clearedDevice": "Daataan barnoota hundumtuu meeshaa kana irraa haqameera.",
-  "thisSite": "weebsaayitii kana"
+  "thisSite": "weebsaayitii kana",
+  "outlineHeading": "Adeemsa fuula fuulaan",
+  "allPages": "Fuulawwan hundaa",
+  "outlinePagesDone": "Fuulawwan {total} keessaa {done} xumurameera",
+  "outlinePagesCount": "Fuulawwan {count}",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% xumurameera",
+  "outlineComplete": "Xumurameera"
 }

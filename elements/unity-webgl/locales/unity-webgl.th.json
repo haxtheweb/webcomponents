@@ -1,5 +1,6 @@
 {
   "simulation": "การจำลอง",
   "fullScreen": "เต็มหน้าจอ",
-  "exitFullScreen": "ออกจากโหมดเต็มหน้าจอ"
+  "exitFullScreen": "ออกจากโหมดเต็มหน้าจอ",
+  "player": "เครื่องเล่น Unity WebGL"
 }

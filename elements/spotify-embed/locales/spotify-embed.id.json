@@ -1,4 +1,9 @@
 {
   "audio": "Audio",
-  "openOnSpotify": "Buka di Spotify di tab baru"
+  "openOnSpotify": "Buka di Spotify di tab baru",
+  "embedTitle": "Sematan Spotify",
+  "trackEmbedTitle": "Sematan Lagu Spotify",
+  "albumEmbedTitle": "Sematan Album Spotify",
+  "playlistEmbedTitle": "Sematan Playlist Spotify",
+  "artistEmbedTitle": "Sematan Artis Spotify"
 }

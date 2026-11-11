@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "ແທນທີ່ໄຟລ໌ຕົ້ນສະບັບ",
   "newName": "ຊື່ໃໝ່",
   "deleteAction": "ລຶບ",
-  "renameAction": "ປ່ຽນຊື່"
+  "renameAction": "ປ່ຽນຊື່",
+  "bulkOverwriteConfirm": "{action} {count} ໄຟລ໌ບໍ? ການດຳເນີນການນີ້ຈະແທນທີ່ໄຟລ໌ຕົ້ນສະບັບ ແລະ ບໍ່ສາມາດຍົກເລີກໄດ້.",
+  "actionScale": "ປັບຂະໜາດ",
+  "actionRotate": "ໝຸນ",
+  "actionTransform": "ແປງ",
+  "actionConvertJpg": "ປ່ຽນເປັນ JPG",
+  "actionCompress": "ບີບອັດ"
 }

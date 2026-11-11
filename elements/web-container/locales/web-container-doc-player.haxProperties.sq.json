@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Luajtës dokumentacioni për komponentë web"
+    "title": "Luajtës dokumentacioni për komponentë web",
+    "description": ""
   },
   "settings": {
     "configure": [

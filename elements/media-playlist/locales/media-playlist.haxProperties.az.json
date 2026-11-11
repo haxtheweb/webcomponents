@@ -15,6 +15,12 @@
         "title": "Kurs",
         "description": "Bu pleylistin nəzərdə tutulduğu kurs (kurs identifikatoru və ya URL)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Media",
+        "description": "Oxutma siyahısındakı videolar və audio. Burada redaktə olunmur: səhifə konturu hansı blokların buraya buraxıla biləcəyini bilmək üçün ondan istifadə edir."
+      }
     ]
   }
 }

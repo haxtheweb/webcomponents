@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "QR kod za {title}",
+  "noData": "Nema podataka za prikaz kao QR kod",
+  "formatNotSupported": "Format QR koda {format} nije podržan",
+  "noCanvas": "Ovaj preglednik ne može nacrtati QR kod (nema podrške za canvas)"
+}

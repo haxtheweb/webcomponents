@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "QR-Code fir {title}",
+  "noData": "Keng Daten, déi als QR-Code ugewise kënne ginn",
+  "formatNotSupported": "QR-Code-Format {format} gëtt net ënnerstëtzt",
+  "noCanvas": "Dëse Browser kann de QR-Code net zeechnen (keng Canvas-Ënnerstëtzung)"
+}

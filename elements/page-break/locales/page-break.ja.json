@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "このページはロックされています。公開状態を変更するには先にロックを解除してください。",
   "pageLockedUnlockToDelete": "このページはロックされています。削除するには先にロックを解除してください。",
   "pageDetails": "ページの詳細",
-  "clickToUnlock": "ロックを解除するためにクリック"
+  "clickToUnlock": "ロックを解除するためにクリック",
+  "pageSettings": "ページ設定",
+  "editingPageSettings": "ページ設定を編集中",
+  "published": "公開済み",
+  "draft": "下書き",
+  "locked": "ロック中",
+  "unlocked": "ロック解除",
+  "noTags": "タグなし",
+  "oneTag": "タグ1件",
+  "tagCount": "タグ{count}件",
+  "enterKey": "Enter"
 }

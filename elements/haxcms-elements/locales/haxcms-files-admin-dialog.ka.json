@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "ორიგინალი ფაილების ჩანაცვლება",
   "newName": "ახალი სახელი",
   "deleteAction": "წაშლა",
-  "renameAction": "სახელის გადარქმევა"
+  "renameAction": "სახელის გადარქმევა",
+  "bulkOverwriteConfirm": "{action}: {count} ფაილი? ეს ჩაანაცვლებს ორიგინალ ფაილებს და ვერ გაუქმდება.",
+  "actionScale": "მასშტაბირება",
+  "actionRotate": "ბრუნვა",
+  "actionTransform": "გარდაქმნა",
+  "actionConvertJpg": "JPG-ად გადაკეთება",
+  "actionCompress": "შეკუმშვა"
 }

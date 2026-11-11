@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Trang chưa được xuất bản",
   "progressDone": "Hoàn thành",
   "progressInProgress": "Đang thực hiện",
-  "progressVisited": "Đã xem"
+  "progressVisited": "Đã xem",
+  "progressPercentComplete": "Hoàn thành {percent}%",
+  "progressComplete": "Hoàn thành"
 }

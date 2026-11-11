@@ -3,5 +3,8 @@
   "openInNewTab": "Deschide PDF-ul într-o filă nouă",
   "downloadPdf": "Descarcă PDF-ul",
   "fullScreen": "Ecran complet",
-  "exitFullScreen": "Ieși din ecranul complet"
+  "exitFullScreen": "Ieși din ecranul complet",
+  "notSupported": "Se pare că browserul dvs. nu este configurat să afișeze fișiere PDF. Nicio problemă, doar",
+  "notSupportedLink": "faceți clic aici pentru a descărca fișierul PDF.",
+  "download": "Descarcă"
 }

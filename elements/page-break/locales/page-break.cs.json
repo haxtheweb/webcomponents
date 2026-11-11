@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Tato stránka je zamčená. Pro změnu stavu publikace ji nejprve odemkněte.",
   "pageLockedUnlockToDelete": "Tato stránka je zamčená. Pro smazání ji nejprve odemkněte.",
   "pageDetails": "Podrobnosti stránky",
-  "clickToUnlock": "Klikněte pro odemčení"
+  "clickToUnlock": "Klikněte pro odemčení",
+  "pageSettings": "Nastavení stránky",
+  "editingPageSettings": "Úprava nastavení stránky",
+  "published": "Publikováno",
+  "draft": "Koncept",
+  "locked": "Uzamčeno",
+  "unlocked": "Odemčeno",
+  "noTags": "Žádné štítky",
+  "oneTag": "1 štítek",
+  "tagCount": "Štítků: {count}",
+  "enterKey": "Enter"
 }

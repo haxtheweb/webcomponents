@@ -22,6 +22,12 @@
         "title": "Indize aktiboa",
         "description": "Galeria moduan hasteko irudi aktiboaren indizea."
       }
+    ],
+    "developer": [
+      {
+        "title": "Irudiak",
+        "description": "Galeriako irudiak. Hemen ez da editatzen: orriaren eskemak blokeak non jaregin daitezkeen jakiteko erabiltzen du."
+      }
     ]
   }
 }

@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Faqja nuk është publikuar",
   "progressDone": "Përfunduar",
   "progressInProgress": "Në vazhdim",
-  "progressVisited": "Vizituar"
+  "progressVisited": "Vizituar",
+  "progressPercentComplete": "{percent}% e përfunduar",
+  "progressComplete": "E përfunduar"
 }

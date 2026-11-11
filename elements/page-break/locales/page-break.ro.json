@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Această pagină este blocată. Deblocheaz-o mai întâi pentru a schimba starea de publicare.",
   "pageLockedUnlockToDelete": "Această pagină este blocată. Deblocheaz-o mai întâi pentru a o șterge.",
   "pageDetails": "Detalii pagină",
-  "clickToUnlock": "Faceți clic pentru a debloca"
+  "clickToUnlock": "Faceți clic pentru a debloca",
+  "pageSettings": "Setările paginii",
+  "editingPageSettings": "Se editează setările paginii",
+  "published": "Publicat",
+  "draft": "Ciornă",
+  "locked": "Blocat",
+  "unlocked": "Deblocat",
+  "noTags": "Fără etichete",
+  "oneTag": "1 etichetă",
+  "tagCount": "{count} etichete",
+  "enterKey": "Enter"
 }

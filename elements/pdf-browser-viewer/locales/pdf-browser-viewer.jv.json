@@ -3,5 +3,8 @@
   "openInNewTab": "Bukak PDF ing tab anyar",
   "downloadPdf": "Undhuh PDF",
   "fullScreen": "Layar kebak",
-  "exitFullScreen": "Metu saka layar kebak"
+  "exitFullScreen": "Metu saka layar kebak",
+  "notSupported": "Katone browser web sampeyan ora disetel kanggo nampilake berkas PDF. Ora apa-apa, mung",
+  "notSupportedLink": "klik ing kene kanggo ngundhuh berkas PDF.",
+  "download": "Undhuh"
 }

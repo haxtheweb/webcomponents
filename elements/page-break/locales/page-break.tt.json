@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Бу бит йозакланган. Бастыру халәтен үзгәртү өчен башта аны ачыгыз.",
   "pageLockedUnlockToDelete": "Бу бит йозакланган. Бетерү өчен башта аны ачыгыз.",
   "pageDetails": "Бит тулысыннан мәгълүматлары",
-  "clickToUnlock": "Ачу өчен басыгыз"
+  "clickToUnlock": "Ачу өчен басыгыз",
+  "pageSettings": "Бит көйләүләре",
+  "editingPageSettings": "Бит көйләүләре үзгәртелә",
+  "published": "Бастырылган",
+  "draft": "Кара язма",
+  "locked": "Бикләнгән",
+  "unlocked": "Бикләнмәгән",
+  "noTags": "Тэглар юк",
+  "oneTag": "1 тэг",
+  "tagCount": "{count} тэг",
+  "enterKey": "Enter"
 }

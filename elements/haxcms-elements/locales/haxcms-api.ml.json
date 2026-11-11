@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "പരിവർത്തനം പരാജയപ്പെട്ടു.",
   "PARAM_REQUIRED": "ആവശ്യമായ ഒരു മൂല്യം കാണുന്നില്ല: {param}.",
   "INVALID_REQUEST": "അസാധുവായ അഭ്യർത്ഥന.",
-  "PARAM_INVALID": "അസാധുവായ മൂല്യം: {param}."
+  "PARAM_INVALID": "അസാധുവായ മൂല്യം: {param}.",
+  "BLOCK_RATE_LIMITED": "ഈ സൈറ്റിൽ ഇപ്പോൾ വളരെയധികം ഉള്ളടക്ക മാറ്റങ്ങൾ. {retryAfter} സെക്കൻഡിനുശേഷം വീണ്ടും ശ്രമിക്കുക."
 }

@@ -22,6 +22,12 @@
         "title": "Aktibong index",
         "description": "Index ng aktibong larawang sisimulan sa gallery mode."
       }
+    ],
+    "developer": [
+      {
+        "title": "Mga larawan",
+        "description": "Ang mga larawan sa gallery. Hindi ito ine-edit dito: ginagamit ito ng balangkas ng pahina para malaman kung aling mga block ang puwedeng ihulog sa loob."
+      }
     ]
   }
 }

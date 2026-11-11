@@ -129,5 +129,12 @@
   "cancel": "Annullà",
   "clearedSite": "I to dati d’apprendimentu per {site} sò stati sguassati.",
   "clearedDevice": "Tutti i dati d’apprendimentu nantu à stu dispusitivu sò stati sguassati.",
-  "thisSite": "stu situ"
+  "thisSite": "stu situ",
+  "outlineHeading": "Prugressu per pagina",
+  "allPages": "Tutte e pagine",
+  "outlinePagesDone": "{done} nant'à {total} pagine fatte",
+  "outlinePagesCount": "{count} pagine",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% cumpletu",
+  "outlineComplete": "Cumpletu"
 }

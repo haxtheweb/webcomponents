@@ -2,5 +2,7 @@
   "pageIsUnpublished": "E bipụtabeghị ibe a",
   "progressDone": "Emechala",
   "progressInProgress": "Na-aga n'ihu",
-  "progressVisited": "Eleela anya"
+  "progressVisited": "Eleela anya",
+  "progressPercentComplete": "{percent}% emechaala",
+  "progressComplete": "Emechaala"
 }

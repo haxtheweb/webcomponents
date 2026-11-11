@@ -1,0 +1,5 @@
+{
+  "dragAndDropToReplace": "Korvaa vetämällä ja pudottamalla tiedosto",
+  "dropFileToUpload": "Pudota tiedosto ladattavaksi",
+  "placeholderFor": "Paikkamerkki: {type}"
+}

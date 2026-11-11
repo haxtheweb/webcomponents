@@ -1,13 +1,20 @@
 {
   "gizmo": {
     "title": "H5P",
-    "description": "H5P-wrapper voor het laden en tonen van .h5p-bestanden"
+    "description": "Speelt interactieve H5P-inhoud af vanuit een geüpload .h5p-bestand, zonder H5P-server"
   },
   "settings": {
     "configure": [
       {
         "slot": "",
-        "description": "H5P-iframe-insluitcode"
+        "description": "Upload of koppel een .h5p-bestand. Het wordt in de browser uitgepakt; er is geen H5P-server nodig.",
+        "title": "H5P-bestand"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Verouderde iframe-insluitcode",
+        "description": "Alleen voor oudere inhoud die een H5P-iframe van een andere site insluit. Laat leeg als hierboven een .h5p-bestand is ingesteld."
       }
     ]
   }

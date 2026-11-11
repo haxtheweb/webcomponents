@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{creator} यांचे {title} {license} अंतर्गत परवानाकृत आहे.",
   "permissionsBeyondScope": "या परवान्याच्या कक्षेबाहेरील परवानग्या {link} उपलब्ध आहेत.",
   "author": "(लेखक)",
-  "onTheLicensingDetailsPage": "परवाना तपशील पानावर"
+  "onTheLicensingDetailsPage": "परवाना तपशील पानावर",
+  "licenseLabel": "परवाना"
 }

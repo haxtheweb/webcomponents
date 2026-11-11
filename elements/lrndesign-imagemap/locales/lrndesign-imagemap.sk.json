@@ -1,0 +1,9 @@
+{
+  "imageMap": "Obrázková mapa",
+  "interactive": "Interaktívne",
+  "hotspot": "Aktívna oblasť",
+  "hotspotPosition": "{n} z {total}",
+  "hotspotsExplored": "Preskúmané aktívne oblasti: {n} z {total}",
+  "explored": "Preskúmané",
+  "close": "Zavrieť"
+}

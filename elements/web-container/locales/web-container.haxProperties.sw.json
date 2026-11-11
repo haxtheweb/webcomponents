@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Kisanduku cha NodeJS"
+    "title": "Kisanduku cha NodeJS",
+    "description": ""
   },
   "settings": {
     "configure": [

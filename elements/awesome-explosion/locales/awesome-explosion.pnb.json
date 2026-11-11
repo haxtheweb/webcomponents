@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "دھماکے دی آواز چلاون لئی کلک کرو یا ہوور کرو",
+  "soundDisabled": "دھماکے دا بصری اثر (آواز بند)",
+  "explosionAnimation": "دھماکے دی اینیمیشن",
+  "explosionAriaLabel": "دھماکے دی اینیمیشن {state} {sound}۔ بدلن لئی کلک کرو۔",
+  "playing": "چل رہی",
+  "stopped": "رکی ہوئی",
+  "withSound": "آواز نال",
+  "muted": "(میوٹ)"
+}

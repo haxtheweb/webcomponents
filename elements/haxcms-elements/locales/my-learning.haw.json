@@ -129,5 +129,12 @@
   "cancel": "Kāpae",
   "clearedSite": "Ua holoi ʻia kāu ʻikepili aʻo ʻana no {site}.",
   "clearedDevice": "Ua holoi ʻia nā ʻikepili aʻo ʻana a pau ma kēia pahuhopu.",
-  "thisSite": "kēia pūnaewele"
+  "thisSite": "kēia pūnaewele",
+  "outlineHeading": "Holomua ma ka ʻaoʻao",
+  "allPages": "Nā ʻaoʻao a pau",
+  "outlinePagesDone": "{done} o {total} ʻaoʻao i pau",
+  "outlinePagesCount": "{count} ʻaoʻao",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% i pau",
+  "outlineComplete": "Ua pau"
 }

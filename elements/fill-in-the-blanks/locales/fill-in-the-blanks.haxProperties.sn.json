@@ -37,6 +37,16 @@
         "title": "Zita rekuedzwa",
         "description": "Zita rekuedzwa rinoshandiswa munzvimbo dzinoshandisa xAPI kuziva chinhu ichi"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Inopfupiswa",
+        "description": "Ratidza mubvunzo uyu seurongwa hunovhurika nekuvhara. Kuvhura mumwe kunovhara mimwe mibvunzo inopfupiswa iri padivi."
+      },
+      {
+        "title": "Tanga wapfupiswa",
+        "description": "Kana ichipfupiswa, inotanga seurongwa hwakavharwa hunoratidza mubvunzo nemamiriro awo chete."
+      }
     ]
   }
 }

@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Web osagaien dokumentazio erreproduzigailua"
+    "title": "Web osagaien dokumentazio erreproduzigailua",
+    "description": ""
   },
   "settings": {
     "configure": [

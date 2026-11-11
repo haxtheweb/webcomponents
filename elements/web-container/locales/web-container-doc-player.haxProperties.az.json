@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Veb komponent sənəd pleyeri"
+    "title": "Veb komponent sənəd pleyeri",
+    "description": ""
   },
   "settings": {
     "configure": [

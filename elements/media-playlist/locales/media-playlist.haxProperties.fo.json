@@ -15,6 +15,12 @@
         "title": "Skeið",
         "description": "Skeiðið, sum hesin spælilisti er ætlaður til (eyðmerki ella URL hjá skeiðinum)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Miðlar",
+        "description": "Sjónbondini og ljóðið í spælilistanum. Verður ikki rættað her: síðuyvirlitið nýtir tað at vita, hvørjar blokkar kunnu sleppast inn."
+      }
     ]
   }
 }

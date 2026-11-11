@@ -19,5 +19,13 @@
   "copyCode": "Copia u codice",
   "copied": "Copiatu!",
   "invalidCode": "Quessu ùn hè micca un codice di persunaghju.",
-  "preview": "Anteprima di u persunaghju"
+  "preview": "Anteprima di u persunaghju",
+  "previous": "{name} precedente",
+  "next": "{name} seguente",
+  "variant": "{current} nant'à {total}",
+  "save": "Arregistrà",
+  "cancel": "Annullà",
+  "unsavedChanges": "Mudifiche micca arregistrate",
+  "noUnsavedChanges": "Nisuna mudifica micca arregistrata",
+  "codeHelp": "Incollate un codice per carricà un persunagiu, o cupiate quessu per usallu induve vulete."
 }

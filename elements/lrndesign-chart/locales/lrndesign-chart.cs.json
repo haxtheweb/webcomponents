@@ -4,5 +4,8 @@
   "pieChart": "Data · Výsečový graf",
   "showDataTable": "Zobrazit tabulku dat",
   "downloadData": "Stáhnout data (.csv)",
-  "series": "Řada {n}"
+  "series": "Řada {n}",
+  "barChartLabel": "sloupcový graf",
+  "lineChartLabel": "spojnicový graf",
+  "pieChartLabel": "koláčový graf"
 }

@@ -4,5 +4,6 @@
   "exportCitations": "Eksportēt citātus",
   "copy": "Kopēt",
   "exportCitationFormat": "Citēšanas formāta eksportēšana",
-  "selectCitationFormatBelow": "Zemāk izvēlieties citēšanas formātu"
+  "selectCitationFormatBelow": "Zemāk izvēlieties citēšanas formātu",
+  "addCitationToBibliography": "Pievienot atsauci bibliogrāfijai"
 }

@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title}, müəllif: {creator}, {license} lisenziyası ilə lisenziyalaşdırılıb.",
   "permissionsBeyondScope": "Bu lisenziyanın əhatə dairəsindən kənar icazələr {link} mövcuddur.",
   "author": "(müəllif)",
-  "onTheLicensingDetailsPage": "lisenziya təfərrüatları səhifəsində"
+  "onTheLicensingDetailsPage": "lisenziya təfərrüatları səhifəsində",
+  "licenseLabel": "Lisenziya"
 }

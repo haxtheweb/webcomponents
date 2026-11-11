@@ -15,6 +15,12 @@
         "title": "Kurs",
         "description": "Kurs, dla którego przeznaczona jest ta playlista (identyfikator kursu lub URL)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Multimedia",
+        "description": "Filmy i dźwięk na liście odtwarzania. Nie edytuje się tutaj: struktura strony używa tego, aby wiedzieć, które bloki można do niej upuścić."
+      }
     ]
   }
 }

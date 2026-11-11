@@ -4,5 +4,8 @@
   "pieChart": "தரவு · வட்ட விளக்கப்படம்",
   "showDataTable": "தரவு அட்டவணையைக் காட்டு",
   "downloadData": "தரவைப் பதிவிறக்கு (.csv)",
-  "series": "தொடர் {n}"
+  "series": "தொடர் {n}",
+  "barChartLabel": "பட்டை விளக்கப்படம்",
+  "lineChartLabel": "கோட்டு விளக்கப்படம்",
+  "pieChartLabel": "வட்ட விளக்கப்படம்"
 }

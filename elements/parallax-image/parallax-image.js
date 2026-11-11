@@ -201,6 +201,13 @@ class ParallaxImage extends SchemaBehaviors(LitElement) {
         ],
         advanced: [],
       },
+      demoSchema: [
+        {
+          tag: "parallax-image",
+          properties: {},
+          content: "",
+        },
+      ],
     };
   }
 }

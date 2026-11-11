@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "{title} için QR kodu",
+  "noData": "QR kodu olarak gösterilecek veri yok",
+  "formatNotSupported": "{format} QR kodu biçimi desteklenmiyor",
+  "noCanvas": "Bu tarayıcı QR kodunu çizemiyor (canvas desteği yok)"
+}

@@ -4,5 +4,8 @@
   "pieChart": "Dane · Wykres kołowy",
   "showDataTable": "Pokaż tabelę danych",
   "downloadData": "Pobierz dane (.csv)",
-  "series": "Seria {n}"
+  "series": "Seria {n}",
+  "barChartLabel": "wykres słupkowy",
+  "lineChartLabel": "wykres liniowy",
+  "pieChartLabel": "wykres kołowy"
 }

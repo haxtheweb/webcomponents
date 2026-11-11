@@ -1,4 +1,9 @@
 {
   "audio": "오디오",
-  "openOnSpotify": "Spotify에서 새 탭으로 열기"
+  "openOnSpotify": "Spotify에서 새 탭으로 열기",
+  "embedTitle": "Spotify 임베드",
+  "trackEmbedTitle": "Spotify 트랙 임베드",
+  "albumEmbedTitle": "Spotify 앨범 임베드",
+  "playlistEmbedTitle": "Spotify 플레이리스트 임베드",
+  "artistEmbedTitle": "Spotify 아티스트 임베드"
 }

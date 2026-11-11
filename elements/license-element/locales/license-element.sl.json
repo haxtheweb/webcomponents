@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title}, avtor {creator}, je objavljeno pod licenco {license}.",
   "permissionsBeyondScope": "Dovoljenja, ki presegajo obseg te licence, so na voljo {link}.",
   "author": "(avtor)",
-  "onTheLicensingDetailsPage": "na strani s podrobnostmi licence"
+  "onTheLicensingDetailsPage": "na strani s podrobnostmi licence",
+  "licenseLabel": "Licenca"
 }

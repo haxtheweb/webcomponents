@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Methodd y trosi.",
   "PARAM_REQUIRED": "Mae gwerth gofynnol ar goll: {param}.",
   "INVALID_REQUEST": "Cais annilys.",
-  "PARAM_INVALID": "Gwerth annilys: {param}."
+  "PARAM_INVALID": "Gwerth annilys: {param}.",
+  "BLOCK_RATE_LIMITED": "Gormod o newidiadau cynnwys ar y safle hwn ar hyn o bryd. Rhowch gynnig arall arni ymhen {retryAfter} eiliad."
 }

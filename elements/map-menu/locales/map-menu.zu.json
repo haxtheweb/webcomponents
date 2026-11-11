@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Ikhasi alishicilelwe",
   "progressDone": "Kuqediwe",
   "progressInProgress": "Kuyaqhubeka",
-  "progressVisited": "Kuvakashiwe"
+  "progressVisited": "Kuvakashiwe",
+  "progressPercentComplete": "{percent}% kuqediwe",
+  "progressComplete": "Kuqediwe"
 }

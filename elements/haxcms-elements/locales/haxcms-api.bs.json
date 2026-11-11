@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Konverzija nije uspjela.",
   "PARAM_REQUIRED": "Nedostaje obavezna vrijednost: {param}.",
   "INVALID_REQUEST": "Neispravan zahtjev.",
-  "PARAM_INVALID": "Neispravna vrijednost: {param}."
+  "PARAM_INVALID": "Neispravna vrijednost: {param}.",
+  "BLOCK_RATE_LIMITED": "Trenutno je previše izmjena sadržaja na ovoj stranici. Pokušajte ponovo za {retryAfter} s."
 }

@@ -19,5 +19,13 @@
   "copyCode": "Salin kode",
   "copied": "Tersalin!",
   "invalidCode": "Itu bukan kode karakter.",
-  "preview": "Pratinjau karakter"
+  "preview": "Pratinjau karakter",
+  "previous": "{name} sebelumnya",
+  "next": "{name} berikutnya",
+  "variant": "{current} dari {total}",
+  "save": "Simpan",
+  "cancel": "Batal",
+  "unsavedChanges": "Perubahan belum disimpan",
+  "noUnsavedChanges": "Tidak ada perubahan yang belum disimpan",
+  "codeHelp": "Tempel kode untuk memuat karakter, atau salin kode ini untuk digunakan di mana saja."
 }

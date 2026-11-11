@@ -19,5 +19,13 @@
   "copyCode": "Kopiraj kodo",
   "copied": "Kopirano!",
   "invalidCode": "To ni koda lika.",
-  "preview": "Predogled lika"
+  "preview": "Predogled lika",
+  "previous": "Prejšnji: {name}",
+  "next": "Naslednji: {name}",
+  "variant": "{current} od {total}",
+  "save": "Shrani",
+  "cancel": "Prekliči",
+  "unsavedChanges": "Neshranjene spremembe",
+  "noUnsavedChanges": "Ni neshranjenih sprememb",
+  "codeHelp": "Prilepite kodo za nalaganje lika ali kopirajte to kodo in jo uporabite kjer koli."
 }

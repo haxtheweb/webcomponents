@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Nepavyko atlikti operacijos ({status})",
   "normalizedPageSlugs": "Normalizuota puslapių adresų trumpinių: {count}",
   "createdTitle": "Sukurta: {title}!",
-  "processing": "Apdorojama"
+  "processing": "Apdorojama",
+  "saveTimedOut": "Išsaugojimas baigėsi per ilgai: serveris neatsakė. Jūsų pakeitimai išsaugoti čia, bet serveris vis dar gali baigti juos išsaugoti."
 }

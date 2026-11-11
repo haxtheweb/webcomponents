@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Web 组件文档播放器"
+    "title": "Web 组件文档播放器",
+    "description": ""
   },
   "settings": {
     "configure": [

@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "{title}のQRコード",
+  "noData": "QRコードとして表示するデータがありません",
+  "formatNotSupported": "QRコードの形式{format}はサポートされていません",
+  "noCanvas": "このブラウザーではQRコードを描画できません(canvas非対応)"
+}

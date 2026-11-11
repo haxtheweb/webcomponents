@@ -1,4 +1,9 @@
 {
   "audio": "Fuaim",
-  "openOnSpotify": "Oscail ar Spotify i dtab nua"
+  "openOnSpotify": "Oscail ar Spotify i dtab nua",
+  "embedTitle": "Leabú Spotify",
+  "trackEmbedTitle": "Leabú Rian Spotify",
+  "albumEmbedTitle": "Leabú Albam Spotify",
+  "playlistEmbedTitle": "Leabú Seinmliosta Spotify",
+  "artistEmbedTitle": "Leabú Ealaíontóra Spotify"
 }

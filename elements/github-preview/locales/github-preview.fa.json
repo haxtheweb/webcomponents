@@ -1,0 +1,10 @@
+{
+  "github": "GitHub",
+  "repository": "مخزن",
+  "stars": "ستاره",
+  "forks": "فورک",
+  "loading": "در حال بارگذاری",
+  "viewMore": "مشاهده بیشتر",
+  "assetNotFound": "دارایی پیدا نشد",
+  "openOnGitHub": "باز کردن {org}/{repo} در GitHub"
+}

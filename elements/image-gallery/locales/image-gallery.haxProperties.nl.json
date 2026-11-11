@@ -22,6 +22,12 @@
         "title": "Actieve index",
         "description": "Index van de actieve afbeelding waarmee de galerijmodus begint."
       }
+    ],
+    "developer": [
+      {
+        "title": "Afbeeldingen",
+        "description": "De afbeeldingen in de galerij. Wordt hier niet bewerkt: het paginaoverzicht gebruikt het om te weten welke blokken erin kunnen worden neergezet."
+      }
     ]
   }
 }

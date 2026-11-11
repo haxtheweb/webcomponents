@@ -15,6 +15,12 @@
         "title": "Kursus",
         "description": "Det kursus, som denne playliste er beregnet til (kursus-id eller URL)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Medier",
+        "description": "Videoerne og lyden i afspilningslisten. Redigeres ikke her: sideoversigten bruger dem til at vide, hvilke blokke der kan slippes ind."
+      }
     ]
   }
 }

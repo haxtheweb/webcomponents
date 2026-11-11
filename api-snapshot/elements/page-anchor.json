@@ -24,6 +24,8 @@
     ],
     "attributes": [],
     "slots": [],
-    "demoTags": []
+    "demoTags": [
+      "page-anchor"
+    ]
   }
 }

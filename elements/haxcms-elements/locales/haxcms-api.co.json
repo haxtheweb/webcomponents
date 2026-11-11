@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "A cunversione hè fiascata.",
   "PARAM_REQUIRED": "Manca un valore richiestu: {param}.",
   "INVALID_REQUEST": "Dumanda micca valida.",
-  "PARAM_INVALID": "Valore micca validu: {param}."
+  "PARAM_INVALID": "Valore micca validu: {param}.",
+  "BLOCK_RATE_LIMITED": "Troppu cambiamenti di cuntenutu nant'à stu situ à st'ora. Pruvate torna in {retryAfter} seconde."
 }

@@ -37,6 +37,16 @@
         "title": "Sınavın adı",
         "description": "Bu öğenin tanımlanması için xAPI tabanlı ortamlarda kullanılan sınav adı"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Katlanabilir",
+        "description": "Bu soruyu açılıp kapanan bir satır olarak göster. Birini açmak yanındaki diğer katlanabilir soruları kapatır."
+      },
+      {
+        "title": "Kapalı başla",
+        "description": "Katlanabilir olduğunda, yalnızca soruyu ve durumunu gösteren kapalı bir satır olarak başla."
+      }
     ]
   }
 }

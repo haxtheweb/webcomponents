@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "İşlem tamamlanamıyor ({status})",
   "normalizedPageSlugs": "{count} sayfa slug'ı normalleştirildi",
   "createdTitle": "{title} oluşturuldu!",
-  "processing": "İşleniyor"
+  "processing": "İşleniyor",
+  "saveTimedOut": "Kaydetme zaman aşımına uğradı: sunucu yanıt vermedi. Değişiklikleriniz burada saklanıyor, ancak sunucu kaydetmeyi yine de tamamlayabilir."
 }

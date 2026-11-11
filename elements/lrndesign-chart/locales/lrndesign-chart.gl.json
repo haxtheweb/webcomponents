@@ -4,5 +4,8 @@
   "pieChart": "Datos · Gráfico circular",
   "showDataTable": "Mostrar a táboa de datos",
   "downloadData": "Descargar datos (.csv)",
-  "series": "Serie {n}"
+  "series": "Serie {n}",
+  "barChartLabel": "gráfico de barras",
+  "lineChartLabel": "gráfico de liñas",
+  "pieChartLabel": "gráfico circular"
 }

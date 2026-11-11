@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Kundi ikki fullføra gerð ({status})",
   "normalizedPageSlugs": "Normaliseraði {count} síðuslugs",
   "createdTitle": "Stovnaði {title}!",
-  "processing": "Viðgeri"
+  "processing": "Viðgeri",
+  "saveTimedOut": "Goymslan tók ov long tíð: ambætarin svaraði ikki. Broytingar tínar verða varðveittar her, men ambætarin kann enn avgreiða goymsluna."
 }

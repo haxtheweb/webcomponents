@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Dejavnost",
-        "description": "Označi dokaze: učenci vsako zastavico postavijo ob dokaz zanjo. Izberi enega: učenci izberejo en odlomek, ki najbolje odgovarja na vprašanje."
+        "description": "Označi dokaze: učenci vsako zastavico postavijo ob dokaz zanjo. Izberi enega: učenci izberejo en odlomek, ki najbolje odgovarja na vprašanje.",
+        "options": {
+          "flag": "Označi dokaze",
+          "one": "Izberi enega"
+        }
       },
       {
         "property": "unit",
         "title": "Učenci izbirajo",
-        "description": "Na kaj učenec pokaže v besedilu. Slike je vedno mogoče izbrati."
+        "description": "Na kaj učenec pokaže v besedilu. Slike je vedno mogoče izbrati.",
+        "options": {
+          "sentence": "Stavki",
+          "paragraph": "Odstavki",
+          "figure": "Samo slike"
+        }
       },
       {
         "property": "answers",

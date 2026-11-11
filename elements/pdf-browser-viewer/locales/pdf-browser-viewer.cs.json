@@ -3,5 +3,8 @@
   "openInNewTab": "Otevřít PDF na nové kartě",
   "downloadPdf": "Stáhnout PDF",
   "fullScreen": "Celá obrazovka",
-  "exitFullScreen": "Ukončit celou obrazovku"
+  "exitFullScreen": "Ukončit celou obrazovku",
+  "notSupported": "Zdá se, že váš webový prohlížeč není nastaven k zobrazení souborů PDF. Nevadí, stačí",
+  "notSupportedLink": "kliknout sem a stáhnout soubor PDF.",
+  "download": "Stáhnout"
 }

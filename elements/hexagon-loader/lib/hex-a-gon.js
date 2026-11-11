@@ -26,6 +26,10 @@ class Hexagon extends HTMLElement {
   width: 36px;
 }
 
+/* orange reads on light and dark pages alike */
+:host {
+  color-scheme: light dark;
+}
 :host div,
 :host div:before,
 :host div:after {
@@ -53,6 +57,19 @@ div:after {
   -webkit-transform: rotate(-60deg);
           transform: rotate(-60deg);
 }
+
+  /* nothing moves with prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    :host,
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      transition-delay: 0ms !important;
+    }
+  }
 </style>
     <div></div>`;
   }

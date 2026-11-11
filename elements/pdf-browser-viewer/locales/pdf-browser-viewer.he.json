@@ -3,5 +3,8 @@
   "openInNewTab": "פתיחת ה-PDF בלשונית חדשה",
   "downloadPdf": "הורדת ה-PDF",
   "fullScreen": "מסך מלא",
-  "exitFullScreen": "יציאה ממסך מלא"
+  "exitFullScreen": "יציאה ממסך מלא",
+  "notSupported": "נראה שהדפדפן שלכם לא מוגדר להציג קובצי PDF. אין בעיה, פשוט",
+  "notSupportedLink": "לחצו כאן כדי להוריד את קובץ ה-PDF.",
+  "download": "הורד"
 }

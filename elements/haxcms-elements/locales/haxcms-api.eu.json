@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Bihurketak huts egin du.",
   "PARAM_REQUIRED": "Derrigorrezko balio bat falta da: {param}.",
   "INVALID_REQUEST": "Eskaera ez da baliozkoa.",
-  "PARAM_INVALID": "Balio baliogabea: {param}."
+  "PARAM_INVALID": "Balio baliogabea: {param}.",
+  "BLOCK_RATE_LIMITED": "Eduki-aldaketa gehiegi daude gune honetan orain. Saiatu berriro {retryAfter} segundo barru."
 }

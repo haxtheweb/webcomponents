@@ -37,6 +37,16 @@
         "title": "Testin adı",
         "description": "Bu elementin identifikasiyası üçün xAPI əsaslı mühitlərdə istifadəyə ötürülən test adı"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Yığılan",
+        "description": "Bu sualı açılıb-bağlanan sətir kimi göstərin. Birini açmaq yanındakı digər yığılan sualları bağlayır."
+      },
+      {
+        "title": "Yığılmış başlasın",
+        "description": "Yığılan olduqda, yalnız sualı və statusu göstərən bağlı sətir kimi başlasın."
+      }
     ]
   }
 }

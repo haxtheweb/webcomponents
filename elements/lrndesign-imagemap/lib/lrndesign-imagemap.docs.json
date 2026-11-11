@@ -143,13 +143,13 @@
       "order": 0,
       "src": "lrndesign-imagemap.motion.json",
       "file": "lib/lrndesign-imagemap.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/lrndesign-imagemap.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

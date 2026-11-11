@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title}, {creator}p rurasqan, {license} licenciawan kachkan.",
   "permissionsBeyondScope": "Kay licenciap aswan hawan saqiykunaqa kan {link}.",
   "author": "(qillqaq)",
-  "onTheLicensingDetailsPage": "licencia detallekuna p'anqapi"
+  "onTheLicensingDetailsPage": "licencia detallekuna p'anqapi",
+  "licenseLabel": "Licencia"
 }

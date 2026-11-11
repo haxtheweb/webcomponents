@@ -4,5 +4,6 @@
   "exportCitations": "Exportera källhänvisningar",
   "copy": "Kopiera",
   "exportCitationFormat": "Format för export av källhänvisningar",
-  "selectCitationFormatBelow": "Välj ett format för källhänvisningar nedan"
+  "selectCitationFormatBelow": "Välj ett format för källhänvisningar nedan",
+  "addCitationToBibliography": "Lägg till referens i litteraturförteckningen"
 }

@@ -1,0 +1,10 @@
+{
+  "github": "GitHub",
+  "repository": "Hoidla",
+  "stars": "tähte",
+  "forks": "hargnemist",
+  "loading": "Laadimine",
+  "viewMore": "Näita rohkem",
+  "assetNotFound": "Ressurssi ei leitud",
+  "openOnGitHub": "Ava {org}/{repo} GitHubis"
+}

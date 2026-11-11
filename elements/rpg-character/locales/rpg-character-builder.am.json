@@ -19,5 +19,13 @@
   "copyCode": "ኮድ ቅዳ",
   "copied": "ተቀድቷል!",
   "invalidCode": "ይህ የገጸ ባህሪ ኮድ አይደለም።",
-  "preview": "የገጸ ባህሪ ቅድመ እይታ"
+  "preview": "የገጸ ባህሪ ቅድመ እይታ",
+  "previous": "ቀዳሚ {name}",
+  "next": "ቀጣይ {name}",
+  "variant": "{current} ከ{total}",
+  "save": "አስቀምጥ",
+  "cancel": "ሰርዝ",
+  "unsavedChanges": "ያልተቀመጡ ለውጦች",
+  "noUnsavedChanges": "ያልተቀመጡ ለውጦች የሉም",
+  "codeHelp": "ገጸ ባህሪ ለመጫን ኮድ ይለጥፉ፣ ወይም በየትኛውም ቦታ ለመጠቀም ይህንን ይቅዱ።"
 }

@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Dokumintaasjespiler foar webkomponinten"
+    "title": "Dokumintaasjespiler foar webkomponinten",
+    "description": ""
   },
   "settings": {
     "configure": [

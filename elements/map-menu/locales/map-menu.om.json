@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Fuulli hin maxxanfamne",
   "progressDone": "Xumurameera",
   "progressInProgress": "Adeemsa irra jira",
-  "progressVisited": "Daawwatameera"
+  "progressVisited": "Daawwatameera",
+  "progressPercentComplete": "{percent}% xumurameera",
+  "progressComplete": "Xumurameera"
 }

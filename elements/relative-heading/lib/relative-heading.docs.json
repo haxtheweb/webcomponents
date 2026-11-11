@@ -22,7 +22,7 @@
   "import": "@haxtheweb/relative-heading/relative-heading.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/relative-heading/relative-heading.js",
   "install": "npm i @haxtheweb/relative-heading",
-  "demoHtml": "",
+  "demoHtml": "<relative-heading></relative-heading>",
   "attributes": [
     {
       "name": "closeIcon",
@@ -226,9 +226,16 @@
           "required": false
         }
       ]
-    }
+    },
+    "demoSchema": [
+      {
+        "tag": "relative-heading",
+        "properties": {},
+        "content": ""
+      }
+    ]
   },
-  "surfaceHash": "8e01d50dd22e",
+  "surfaceHash": "fc6663370866",
   "walkthroughs": [
     {
       "id": "",
@@ -236,13 +243,13 @@
       "order": 0,
       "src": "relative-heading.motion.json",
       "file": "lib/relative-heading.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/relative-heading.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

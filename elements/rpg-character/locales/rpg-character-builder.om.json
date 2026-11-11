@@ -19,5 +19,13 @@
   "copyCode": "Koodii waraabi",
   "copied": "Waraabameera!",
   "invalidCode": "Kun koodii fakkii miti.",
-  "preview": "Ilaalcha duraa fakkii"
+  "preview": "Ilaalcha duraa fakkii",
+  "previous": "{name} kan duraa",
+  "next": "{name} itti aanu",
+  "variant": "{total} keessaa {current}",
+  "save": "Olkaa'i",
+  "cancel": "Dhiisi",
+  "unsavedChanges": "Jijjiirama hin kuufamne",
+  "noUnsavedChanges": "Jijjiirama hin kuufamne hin jiru",
+  "codeHelp": "Fakkii fe'uuf koodii maxxansi, yookaan bakka kamittuu fayyadamuuf kana waraabi."
 }

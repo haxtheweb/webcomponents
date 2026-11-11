@@ -22,6 +22,12 @@
         "title": "Faol indeks",
         "description": "Galereya rejimida boshlanadigan faol rasm indeksi."
       }
+    ],
+    "developer": [
+      {
+        "title": "Rasmlar",
+        "description": "Galereyadagi rasmlar. Bu yerda tahrirlanmaydi: sahifa tuzilmasi ichiga qaysi bloklarni tashlash mumkinligini bilish uchun undan foydalanadi."
+      }
     ]
   }
 }

@@ -2,5 +2,7 @@
   "pageIsUnpublished": "پاڼه نه ده خپره شوې",
   "progressDone": "بشپړ شو",
   "progressInProgress": "روان دی",
-  "progressVisited": "لیدل شوی"
+  "progressVisited": "لیدل شوی",
+  "progressPercentComplete": "{percent}% بشپړ",
+  "progressComplete": "بشپړ"
 }

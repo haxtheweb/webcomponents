@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Skipta út upprunalegum skrám",
   "newName": "Nýtt nafn",
   "deleteAction": "Eyða",
-  "renameAction": "Endurnefna"
+  "renameAction": "Endurnefna",
+  "bulkOverwriteConfirm": "{action} {count} skrár? Þetta kemur í stað upprunalegu skránna og er ekki hægt að afturkalla.",
+  "actionScale": "Breyta stærð",
+  "actionRotate": "Snúa",
+  "actionTransform": "Umbreyta",
+  "actionConvertJpg": "Umbreyta í JPG",
+  "actionCompress": "Þjappa"
 }

@@ -129,5 +129,12 @@
   "cancel": "Hætta við",
   "clearedSite": "Námsgögnin þín fyrir {site} voru hreinsuð.",
   "clearedDevice": "Öll námsgögn á þessu tæki voru hreinsuð.",
-  "thisSite": "þessi vefsíða"
+  "thisSite": "þessi vefsíða",
+  "outlineHeading": "Framvinda eftir síðum",
+  "allPages": "Allar síður",
+  "outlinePagesDone": "{done} af {total} síðum lokið",
+  "outlinePagesCount": "{count} síður",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% lokið",
+  "outlineComplete": "Lokið"
 }

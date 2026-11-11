@@ -1,0 +1,8 @@
+{
+  "ordinalOne": "-ci",
+  "ordinalTwo": "-ci",
+  "ordinalFew": "-cü",
+  "ordinalOther": "-cı",
+  "fromTimeToTime": "{start} - {end} aralığında",
+  "atTime": "saat {start}"
+}

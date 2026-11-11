@@ -1,4 +1,9 @@
 {
   "audio": "Audioa",
-  "openOnSpotify": "Ireki Spotifyn fitxa berri batean"
+  "openOnSpotify": "Ireki Spotifyn fitxa berri batean",
+  "embedTitle": "Spotify txertatzea",
+  "trackEmbedTitle": "Spotify pistaren txertatzea",
+  "albumEmbedTitle": "Spotify albumaren txertatzea",
+  "playlistEmbedTitle": "Spotify erreprodukzio-zerrendaren txertatzea",
+  "artistEmbedTitle": "Spotify artistaren txertatzea"
 }

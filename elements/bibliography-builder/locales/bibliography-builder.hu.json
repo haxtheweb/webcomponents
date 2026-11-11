@@ -4,5 +4,6 @@
   "exportCitations": "Hivatkozások exportálása",
   "copy": "Másolás",
   "exportCitationFormat": "Hivatkozásformátum exportálása",
-  "selectCitationFormatBelow": "Válassz alább egy hivatkozásformátumot"
+  "selectCitationFormatBelow": "Válassz alább egy hivatkozásformátumot",
+  "addCitationToBibliography": "Idézet hozzáadása a bibliográfiához"
 }

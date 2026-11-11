@@ -1,4 +1,9 @@
 {
   "audio": "ഓഡിയോ",
-  "openOnSpotify": "Spotify-യിൽ പുതിയ ടാബിൽ തുറക്കുക"
+  "openOnSpotify": "Spotify-യിൽ പുതിയ ടാബിൽ തുറക്കുക",
+  "embedTitle": "Spotify എംബെഡ്",
+  "trackEmbedTitle": "Spotify ട്രാക്ക് എംബെഡ്",
+  "albumEmbedTitle": "Spotify ആൽബം എംബെഡ്",
+  "playlistEmbedTitle": "Spotify പ്ലേലിസ്റ്റ് എംബെഡ്",
+  "artistEmbedTitle": "Spotify ആർട്ടിസ്റ്റ് എംബെഡ്"
 }

@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title}, автору {creator}, {license} боюнча лицензияланган.",
   "permissionsBeyondScope": "Бул лицензиянын чегинен тышкаркы уруксаттар {link} жеткиликтүү.",
   "author": "(автор)",
-  "onTheLicensingDetailsPage": "лицензия маалыматы барагында"
+  "onTheLicensingDetailsPage": "лицензия маалыматы барагында",
+  "licenseLabel": "Лицензия"
 }

@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Partlama sesini ýaňlandyrmak üçin basyň ýa-da syçanjygy üstüne getiriň",
+  "soundDisabled": "Görnüşli partlama effekti (ses öçürilen)",
+  "explosionAnimation": "partlama animasiýasy",
+  "explosionAriaLabel": "Partlama animasiýasy {state} {sound}. Çalyşmak üçin basyň.",
+  "playing": "ýaňlanýar",
+  "stopped": "durdy",
+  "withSound": "ses bilen",
+  "muted": "(sessiz)"
+}

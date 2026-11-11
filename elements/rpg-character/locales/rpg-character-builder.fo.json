@@ -19,5 +19,13 @@
   "copyCode": "Avrita kodu",
   "copied": "Avritað!",
   "invalidCode": "Hetta er ikki ein karakterkoda.",
-  "preview": "Fyrisýning av karakteri"
+  "preview": "Fyrisýning av karakteri",
+  "previous": "Undanfarna {name}",
+  "next": "Næsta {name}",
+  "variant": "{current} av {total}",
+  "save": "Goym",
+  "cancel": "Ógilda",
+  "unsavedChanges": "Ógoymdar broytingar",
+  "noUnsavedChanges": "Eingar ógoymdar broytingar",
+  "codeHelp": "Set eina kotu inn fyri at heinta eina fígur, ella avrita hesa fyri at brúka hana hvar sum helst."
 }

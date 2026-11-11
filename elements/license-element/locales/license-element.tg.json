@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title} аз ҷониби {creator} таҳти {license} иҷозатнома дода шудааст.",
   "permissionsBeyondScope": "Иҷозатҳо берун аз доираи ин иҷозатнома {link} дастрасанд.",
   "author": "(муаллиф)",
-  "onTheLicensingDetailsPage": "дар саҳифаи тафсилоти иҷозатнома"
+  "onTheLicensingDetailsPage": "дар саҳифаи тафсилоти иҷозатнома",
+  "licenseLabel": "Литсензия"
 }

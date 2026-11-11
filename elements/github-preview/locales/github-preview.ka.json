@@ -1,0 +1,10 @@
+{
+  "github": "GitHub",
+  "repository": "საცავი",
+  "stars": "ვარსკვლავი",
+  "forks": "ფორკი",
+  "loading": "იტვირთება",
+  "viewMore": "მეტის ნახვა",
+  "assetNotFound": "რესურსი ვერ მოიძებნა",
+  "openOnGitHub": "გახსენით {org}/{repo} GitHub-ზე"
+}

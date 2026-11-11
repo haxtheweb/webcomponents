@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Ukurasa huu umefungwa. Ufungue kwanza ili kubadilisha hali ya kuchapishwa.",
   "pageLockedUnlockToDelete": "Ukurasa huu umefungwa. Ufungue kwanza ili kufuta.",
   "pageDetails": "Maelezo ya ukurasa",
-  "clickToUnlock": "Bofya ili kufungua"
+  "clickToUnlock": "Bofya ili kufungua",
+  "pageSettings": "Mipangilio ya ukurasa",
+  "editingPageSettings": "Inahariri mipangilio ya ukurasa",
+  "published": "Imechapishwa",
+  "draft": "Rasimu",
+  "locked": "Imefungwa",
+  "unlocked": "Imefunguliwa",
+  "noTags": "Hakuna lebo",
+  "oneTag": "Lebo 1",
+  "tagCount": "Lebo {count}",
+  "enterKey": "Enter"
 }

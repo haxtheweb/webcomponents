@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Operacije ni mogoče dokončati ({status})",
   "normalizedPageSlugs": "Normalizirani slugi strani: {count}",
   "createdTitle": "Ustvarjeno: {title}!",
-  "processing": "Obdelava"
+  "processing": "Obdelava",
+  "saveTimedOut": "Časovna omejitev shranjevanja je potekla: strežnik ni odgovoril. Vaše spremembe so tu ohranjene, vendar jih strežnik morda še vedno dokončno shrani."
 }

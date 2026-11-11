@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title} de {creator} está baixo unha licenza {license}.",
   "permissionsBeyondScope": "Os permisos máis alá do ámbito desta licenza están dispoñibles {link}.",
   "author": "(autor)",
-  "onTheLicensingDetailsPage": "na páxina de detalles da licenza"
+  "onTheLicensingDetailsPage": "na páxina de detalles da licenza",
+  "licenseLabel": "Licenza"
 }

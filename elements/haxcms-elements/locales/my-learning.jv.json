@@ -129,5 +129,12 @@
   "cancel": "Batal",
   "clearedSite": "Data learning-mu kanggo {site} wis dibusak.",
   "clearedDevice": "Kabeh data learning ing piranti iki wis dibusak.",
-  "thisSite": "situs iki"
+  "thisSite": "situs iki",
+  "outlineHeading": "Kemajuan miturut kaca",
+  "allPages": "Kabeh kaca",
+  "outlinePagesDone": "{done} saka {total} kaca rampung",
+  "outlinePagesCount": "{count} kaca",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% rampung",
+  "outlineComplete": "Rampung"
 }

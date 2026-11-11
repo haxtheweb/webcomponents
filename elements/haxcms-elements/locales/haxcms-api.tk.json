@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Öwrülişik şowsuz boldy.",
   "PARAM_REQUIRED": "Hökmany baha ýok: {param}.",
   "INVALID_REQUEST": "Nädogry haýyş.",
-  "PARAM_INVALID": "Nädogry baha: {param}."
+  "PARAM_INVALID": "Nädogry baha: {param}.",
+  "BLOCK_RATE_LIMITED": "Häzir bu sahypada mazmun üýtgetmeleri gaty köp. {retryAfter} sekuntdan soň gaýtadan synanyşyň."
 }

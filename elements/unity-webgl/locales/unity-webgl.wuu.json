@@ -1,5 +1,6 @@
 {
   "simulation": "模拟",
   "fullScreen": "全屏",
-  "exitFullScreen": "退出全屏"
+  "exitFullScreen": "退出全屏",
+  "player": "Unity WebGL 播放器"
 }

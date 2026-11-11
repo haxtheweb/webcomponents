@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "די קאָנווערטירונג איז דורכגעפֿאַלן.",
   "PARAM_REQUIRED": "אַ פֿאַרלאַנגטער ווערט פֿעלט: {param}.",
   "INVALID_REQUEST": "אומגילטיקע בקשה.",
-  "PARAM_INVALID": "אומגילטיקער ווערט: {param}."
+  "PARAM_INVALID": "אומגילטיקער ווערט: {param}.",
+  "BLOCK_RATE_LIMITED": "צו פֿיל אינהאַלט־ענדערונגען אויף דער סײַט איצט. פּרוּװ װידער אין {retryAfter} סעקונדעס."
 }

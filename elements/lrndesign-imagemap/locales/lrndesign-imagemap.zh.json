@@ -1,0 +1,9 @@
+{
+  "imageMap": "图像映射",
+  "interactive": "交互式",
+  "hotspot": "热点",
+  "hotspotPosition": "第 {n} 个，共 {total} 个",
+  "hotspotsExplored": "已浏览 {n} / {total} 个热点",
+  "explored": "已浏览",
+  "close": "关闭"
+}

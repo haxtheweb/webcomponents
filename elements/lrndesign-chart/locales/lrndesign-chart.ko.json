@@ -4,5 +4,8 @@
   "pieChart": "데이터 · 원형 차트",
   "showDataTable": "데이터 표 보기",
   "downloadData": "데이터 다운로드 (.csv)",
-  "series": "계열 {n}"
+  "series": "계열 {n}",
+  "barChartLabel": "막대 차트",
+  "lineChartLabel": "선 차트",
+  "pieChartLabel": "원형 차트"
 }

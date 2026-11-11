@@ -1,0 +1,9 @@
+{
+  "imageMap": "Mapa slike",
+  "interactive": "Interaktivno",
+  "hotspot": "Aktivna tačka",
+  "hotspotPosition": "{n} od {total}",
+  "hotspotsExplored": "Istraženo {n} od {total} aktivnih tačaka",
+  "explored": "Istraženo",
+  "close": "Zatvori"
+}

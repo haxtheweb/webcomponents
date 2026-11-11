@@ -3,5 +3,8 @@
   "openInNewTab": "Abrir o PDF num novo separador",
   "downloadPdf": "Transferir o PDF",
   "fullScreen": "Ecrã inteiro",
-  "exitFullScreen": "Sair do ecrã inteiro"
+  "exitFullScreen": "Sair do ecrã inteiro",
+  "notSupported": "Parece que seu navegador não está configurado para exibir arquivos PDF. Sem problemas, basta",
+  "notSupportedLink": "clicar aqui para baixar o arquivo PDF.",
+  "download": "Baixar"
 }

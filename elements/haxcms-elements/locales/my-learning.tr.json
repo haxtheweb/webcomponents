@@ -129,5 +129,12 @@
   "cancel": "İptal",
   "clearedSite": "{site} için öğrenme verileriniz temizlendi.",
   "clearedDevice": "Bu cihazdaki tüm öğrenme verileri temizlendi.",
-  "thisSite": "bu site"
+  "thisSite": "bu site",
+  "outlineHeading": "Sayfa bazında ilerleme",
+  "allPages": "Tüm sayfalar",
+  "outlinePagesDone": "{total} sayfanın {done} tanesi tamamlandı",
+  "outlinePagesCount": "{count} sayfa",
+  "outlinePercent": "%{percent}",
+  "outlinePercentComplete": "%{percent} tamamlandı",
+  "outlineComplete": "Tamamlandı"
 }

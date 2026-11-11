@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Kushandura kwakundikana.",
   "PARAM_REQUIRED": "Chiyero chinodiwa hachipo: {param}.",
   "INVALID_REQUEST": "Chikumbiro hachina kunaka.",
-  "PARAM_INVALID": "Chiyero hachina kunaka: {param}."
+  "PARAM_INVALID": "Chiyero hachina kunaka: {param}.",
+  "BLOCK_RATE_LIMITED": "Shanduko dzakawanda dzezvirimo pawebhusaiti iyi izvozvi. Edza zvakare mushure memasekonzi {retryAfter}."
 }

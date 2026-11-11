@@ -4,5 +4,8 @@
   "pieChart": "ຂໍ້ມູນ · ແຜນພາບວົງມົນ",
   "showDataTable": "ສະແດງຕາຕະລາງຂໍ້ມູນ",
   "downloadData": "ດາວໂຫຼດຂໍ້ມູນ (.csv)",
-  "series": "ຊຸດ {n}"
+  "series": "ຊຸດ {n}",
+  "barChartLabel": "ແຜນພູມແທ່ງ",
+  "lineChartLabel": "ແຜນພູມເສັ້ນ",
+  "pieChartLabel": "ແຜນພູມວົງມົນ"
 }

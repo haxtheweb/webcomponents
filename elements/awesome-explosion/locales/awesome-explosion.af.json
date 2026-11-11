@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Klik of beweeg oor om ontploffingsgeluid te speel",
+  "soundDisabled": "Visuele ontploffingseffek (klank gedeaktiveer)",
+  "explosionAnimation": "ontploffingsanimasie",
+  "explosionAriaLabel": "Ontploffingsanimasie {state} {sound}. Klik om te wissel.",
+  "playing": "speel",
+  "stopped": "gestop",
+  "withSound": "met klank",
+  "muted": "(gedemp)"
+}

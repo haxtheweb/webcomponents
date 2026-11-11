@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "NodeJS-tároló"
+    "title": "NodeJS-tároló",
+    "description": ""
   },
   "settings": {
     "configure": [

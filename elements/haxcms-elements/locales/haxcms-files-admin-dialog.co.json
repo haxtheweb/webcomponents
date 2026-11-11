@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Rimpiazzà i schedarii originali",
   "newName": "Novu nome",
   "deleteAction": "Squassà",
-  "renameAction": "Rinuminà"
+  "renameAction": "Rinuminà",
+  "bulkOverwriteConfirm": "{action} {count} schedarii? Què rimpiazza i schedarii uriginali è ùn si pò micca annullà.",
+  "actionScale": "Ridimensionà",
+  "actionRotate": "Rotà",
+  "actionTransform": "Trasfurmà",
+  "actionConvertJpg": "Cunvertisce in JPG",
+  "actionCompress": "Cumprime"
 }

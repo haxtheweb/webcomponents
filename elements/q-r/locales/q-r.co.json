@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "Codice QR per {title}",
+  "noData": "Nisun dato da mostrà cum'è codice QR",
+  "formatNotSupported": "U furmatu di codice QR {format} ùn hè micca suppurtatu",
+  "noCanvas": "Stu navigatore ùn pò micca disegnà u codice QR (nisun supportu canvas)"
+}

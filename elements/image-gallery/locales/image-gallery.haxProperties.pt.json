@@ -22,6 +22,12 @@
         "title": "Índice ativo",
         "description": "Índice da imagem ativa inicial no modo galeria."
       }
+    ],
+    "developer": [
+      {
+        "title": "Imagens",
+        "description": "As imagens da galeria. Não é editado aqui: a estrutura da página usa isso para saber quais blocos podem ser soltos nela."
+      }
     ]
   }
 }

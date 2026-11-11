@@ -1,4 +1,9 @@
 {
   "audio": "אַודיאָ",
-  "openOnSpotify": "עפֿנט אין Spotify אין אַ נײַעם טאַב"
+  "openOnSpotify": "עפֿנט אין Spotify אין אַ נײַעם טאַב",
+  "embedTitle": "Spotify איינבעט",
+  "trackEmbedTitle": "Spotify טרעק־איינבעט",
+  "albumEmbedTitle": "Spotify אַלבאָם־איינבעט",
+  "playlistEmbedTitle": "Spotify פּלייליסט־איינבעט",
+  "artistEmbedTitle": "Spotify קינסטלער־איינבעט"
 }

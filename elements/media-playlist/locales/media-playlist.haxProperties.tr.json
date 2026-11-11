@@ -15,6 +15,12 @@
         "title": "Ders",
         "description": "Bu oynatma listesinin hazırlandığı ders (ders tanımlayıcısı veya URL)."
       }
+    ],
+    "developer": [
+      {
+        "title": "Medya",
+        "description": "Oynatma listesindeki videolar ve sesler. Burada düzenlenmez: sayfa ana hattı, içine hangi blokların bırakılabileceğini bilmek için bunu kullanır."
+      }
     ]
   }
 }

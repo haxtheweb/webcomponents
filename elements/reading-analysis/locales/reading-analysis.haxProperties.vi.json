@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Hoạt động",
-        "description": "Cắm cờ bằng chứng: người học đặt mỗi lá cờ cạnh bằng chứng cho nó. Chọn một: người học chọn đoạn duy nhất trả lời câu hỏi tốt nhất."
+        "description": "Cắm cờ bằng chứng: người học đặt mỗi lá cờ cạnh bằng chứng cho nó. Chọn một: người học chọn đoạn duy nhất trả lời câu hỏi tốt nhất.",
+        "options": {
+          "flag": "Đánh dấu bằng chứng",
+          "one": "Chọn một"
+        }
       },
       {
         "property": "unit",
         "title": "Người học chọn",
-        "description": "Thứ người học chỉ vào trong bài đọc. Luôn có thể chọn hình."
+        "description": "Thứ người học chỉ vào trong bài đọc. Luôn có thể chọn hình.",
+        "options": {
+          "sentence": "Câu",
+          "paragraph": "Đoạn văn",
+          "figure": "Chỉ hình minh họa"
+        }
       },
       {
         "property": "answers",

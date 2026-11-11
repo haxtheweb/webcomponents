@@ -19,5 +19,13 @@
   "copyCode": "Kodê kopî bike",
   "copied": "Hat kopîkirin!",
   "invalidCode": "Ev kodeke karakterê nine.",
-  "preview": "Pêşdîtina karakterê"
+  "preview": "Pêşdîtina karakterê",
+  "previous": "{name} ya berê",
+  "next": "{name} ya piştî",
+  "variant": "{current} ji {total}",
+  "save": "Tomar bike",
+  "cancel": "Betal bike",
+  "unsavedChanges": "Guhertinên netomarkirî",
+  "noUnsavedChanges": "Guhertinên netomarkirî tune",
+  "codeHelp": "Kodekê pê ve bike da ku karakterek bar bikî, an vê kopî bike da ku li her derê bikar bînî."
 }

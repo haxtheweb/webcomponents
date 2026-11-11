@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title} waxaa sameeyay {creator} waxaana lagu shatiyay {license}.",
   "permissionsBeyondScope": "Oggolaanshaha ka baxsan baaxadda shatigan waxaa laga heli karaa {link}.",
   "author": "(qoraa)",
-  "onTheLicensingDetailsPage": "bogga faahfaahinta shatiga"
+  "onTheLicensingDetailsPage": "bogga faahfaahinta shatiga",
+  "licenseLabel": "Shatiga"
 }

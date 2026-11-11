@@ -3,5 +3,8 @@
   "openInNewTab": "Ireki PDFa fitxa berri batean",
   "downloadPdf": "Deskargatu PDFa",
   "fullScreen": "Pantaila osoa",
-  "exitFullScreen": "Irten pantaila osotik"
+  "exitFullScreen": "Irten pantaila osotik",
+  "notSupported": "Dirudienez, zure web-nabigatzailea ez dago PDF fitxategiak erakusteko konfiguratuta. Ez kezkatu, besterik gabe",
+  "notSupportedLink": "egin klik hemen PDF fitxategia deskargatzeko.",
+  "download": "Deskargatu"
 }

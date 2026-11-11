@@ -19,5 +19,13 @@
   "copyCode": "Kope i ke kumu",
   "copied": "Ua kope ʻia!",
   "invalidCode": "ʻAʻole kēia he kumu kiʻi.",
-  "preview": "Nānā mua o ke kiʻi"
+  "preview": "Nānā mua o ke kiʻi",
+  "previous": "{name} ma mua",
+  "next": "{name} aʻe",
+  "variant": "{current} o {total}",
+  "save": "Mālama",
+  "cancel": "Kāpae",
+  "unsavedChanges": "Nā hoʻololi i mālama ʻole ʻia",
+  "noUnsavedChanges": "ʻAʻohe hoʻololi i mālama ʻole ʻia",
+  "codeHelp": "Hoʻokomo i kahi kumu e hoʻouka i kekahi ʻano kanaka, a kope paha i kēia e hoʻohana ma nā wahi a pau."
 }

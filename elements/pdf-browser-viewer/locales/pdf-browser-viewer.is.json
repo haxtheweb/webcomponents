@@ -3,5 +3,8 @@
   "openInNewTab": "Opna PDF í nýjum flipa",
   "downloadPdf": "Sækja PDF",
   "fullScreen": "Fullur skjár",
-  "exitFullScreen": "Hætta í fullum skjá"
+  "exitFullScreen": "Hætta í fullum skjá",
+  "notSupported": "Svo virðist sem vafrinn þinn sé ekki stilltur til að sýna PDF-skrár. Engar áhyggjur, bara",
+  "notSupportedLink": "smelltu hér til að sækja PDF-skrána.",
+  "download": "Sækja"
 }

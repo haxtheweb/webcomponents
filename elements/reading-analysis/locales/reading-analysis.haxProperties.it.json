@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Attività",
-        "description": "Segnala le prove: gli studenti attaccano ogni bandierina accanto alle prove corrispondenti. Selezionane uno: gli studenti scelgono l'unico passaggio che risponde meglio alla domanda."
+        "description": "Segnala le prove: gli studenti attaccano ogni bandierina accanto alle prove corrispondenti. Selezionane uno: gli studenti scelgono l'unico passaggio che risponde meglio alla domanda.",
+        "options": {
+          "flag": "Segnala le prove",
+          "one": "Seleziona una"
+        }
       },
       {
         "property": "unit",
         "title": "Gli studenti selezionano",
-        "description": "Cosa indica lo studente nel testo. Le figure si possono sempre selezionare."
+        "description": "Cosa indica lo studente nel testo. Le figure si possono sempre selezionare.",
+        "options": {
+          "sentence": "Frasi",
+          "paragraph": "Paragrafi",
+          "figure": "Solo figure"
+        }
       },
       {
         "property": "answers",

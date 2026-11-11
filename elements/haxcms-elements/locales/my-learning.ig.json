@@ -129,5 +129,12 @@
   "cancel": "Kagbuo",
   "clearedSite": "Ahichapụla data mmụta gị maka {site}.",
   "clearedDevice": "Ahichapụla data mmụta niile n’ngwaọrụ a.",
-  "thisSite": "saịtị a"
+  "thisSite": "saịtị a",
+  "outlineHeading": "Ọganihu site na peeji",
+  "allPages": "Peeji niile",
+  "outlinePagesDone": "Peeji {done} n'ime {total} emechaala",
+  "outlinePagesCount": "Peeji {count}",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% emechaala",
+  "outlineComplete": "Emechaala"
 }

@@ -3,5 +3,8 @@
   "openInNewTab": "De PDF an engem neien Tab opmaachen",
   "downloadPdf": "De PDF eroflueden",
   "fullScreen": "Vollbild",
-  "exitFullScreen": "Vollbild verloossen"
+  "exitFullScreen": "Vollbild verloossen",
+  "notSupported": "Et schéngt, datt Äre Webbrowser net agestallt ass fir PDF-Dateien unzeweisen. Keng Suerg, einfach",
+  "notSupportedLink": "klickt hei fir d'PDF-Datei erofzelueden.",
+  "download": "Eroflueden"
 }

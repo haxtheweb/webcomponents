@@ -3,5 +3,8 @@
   "openInNewTab": "Åpne PDF-en i en ny fane",
   "downloadPdf": "Last ned PDF-en",
   "fullScreen": "Fullskjerm",
-  "exitFullScreen": "Avslutt fullskjerm"
+  "exitFullScreen": "Avslutt fullskjerm",
+  "notSupported": "Det ser ut til at nettleseren din ikke er satt opp til å vise PDF-filer. Ingen fare, bare",
+  "notSupportedLink": "klikk her for å laste ned PDF-filen.",
+  "download": "Last ned"
 }

@@ -3,5 +3,8 @@
   "openInNewTab": "Apre u PDF in una nova scheda",
   "downloadPdf": "Scaricà u PDF",
   "fullScreen": "Schermu sanu",
-  "exitFullScreen": "Esce da u schermu sanu"
+  "exitFullScreen": "Esce da u schermu sanu",
+  "notSupported": "Pare chì u vostru navigatore web ùn hè micca cunfiguratu per mostrà i schedarii PDF. Nisun prublemu, basta",
+  "notSupportedLink": "cliccà quì per scaricà u schedariu PDF.",
+  "download": "Scaricà"
 }

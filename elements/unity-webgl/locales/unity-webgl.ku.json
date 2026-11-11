@@ -1,5 +1,6 @@
 {
   "simulation": "Simulasyon",
   "fullScreen": "Dîmenê tevahî",
-  "exitFullScreen": "Ji dîmenê tevahî derkeve"
+  "exitFullScreen": "Ji dîmenê tevahî derkeve",
+  "player": "Lêdera Unity WebGL"
 }

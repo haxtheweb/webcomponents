@@ -37,6 +37,16 @@
         "title": "Navn á spurnakappingini",
         "description": "Navn á spurnakappingini, sum verður latið inn til brúks í xAPI-stýrdum umhvørvum at eyðmerkja henda lutin"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Kann minkast",
+        "description": "Vís hetta spurningin sum eina røð, ið letur upp og aftur. Tá ein verður latin upp, lokast hinar spurningarnar, sum kunnu minkast, við síðuna av."
+      },
+      {
+        "title": "Byrja minkað",
+        "description": "Tá ið tað kann minkast, byrjar tað sum ein læst røð, ið bert vísir spurningin og støðuna á honum."
+      }
     ]
   }
 }

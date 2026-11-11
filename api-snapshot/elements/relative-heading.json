@@ -35,6 +35,8 @@
     ],
     "attributes": [],
     "slots": [],
-    "demoTags": []
+    "demoTags": [
+      "relative-heading"
+    ]
   }
 }

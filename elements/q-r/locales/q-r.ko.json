@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "{title}의 QR 코드",
+  "noData": "QR 코드로 표시할 데이터가 없습니다",
+  "formatNotSupported": "QR 코드 형식 {format}은(는) 지원되지 않습니다",
+  "noCanvas": "이 브라우저는 QR 코드를 그릴 수 없습니다(canvas 미지원)"
+}

@@ -1,13 +1,20 @@
 {
   "gizmo": {
     "title": "H5P",
-    "description": "H5P omotač za učitavanje i prikaz .h5p datoteka"
+    "description": "Reproducira H5P interaktivni sadržaj iz otpremljene .h5p datoteke, bez potrebe za H5P serverom"
   },
   "settings": {
     "configure": [
       {
         "slot": "",
-        "description": "H5P iframe kôd za ugrađivanje"
+        "description": "Otpremite ili povežite .h5p datoteku. Raspakuje se u pregledniku; H5P server nije potreban.",
+        "title": "H5P datoteka"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Stari kod za ugradnju iframe-a",
+        "description": "Samo za stariji sadržaj koji ugrađuje H5P iframe s druge stranice. Ostavite prazno kada je gore postavljena .h5p datoteka."
       }
     ]
   }

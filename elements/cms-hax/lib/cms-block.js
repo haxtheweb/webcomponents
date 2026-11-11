@@ -125,6 +125,13 @@ class CMSBlock extends CMSBase {
           "block-end-point",
         ],
       },
+      demoSchema: [
+        {
+          tag: "cms-block",
+          properties: {},
+          content: "",
+        },
+      ],
     };
   }
   postProcessgetHaxJSONSchema(schema) {

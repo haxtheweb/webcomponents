@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Napsauta tai vie hiiri päälle toistaaksesi räjähdysäänen",
+  "soundDisabled": "Visuaalinen räjähdystehoste (ääni pois käytöstä)",
+  "explosionAnimation": "räjähdysanimaatio",
+  "explosionAriaLabel": "Räjähdysanimaatio {state} {sound}. Napsauta vaihtaaksesi.",
+  "playing": "toistuu",
+  "stopped": "pysäytetty",
+  "withSound": "äänellä",
+  "muted": "(mykistetty)"
+}

@@ -1,5 +1,6 @@
 {
   "simulation": "Մոդելավորում",
   "fullScreen": "Լիաէկրան",
-  "exitFullScreen": "Դուրս գալ լիաէկրան ռեժիմից"
+  "exitFullScreen": "Դուրս գալ լիաէկրան ռեժիմից",
+  "player": "Unity WebGL նվագարկիչ"
 }

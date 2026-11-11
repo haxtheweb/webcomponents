@@ -35,5 +35,12 @@
   "youTubeStartLoading": "Cofa udlale.",
   "youTubeTranscriptLabel": "Umbhalo uza kulayisha xa imidiya iqala ukudlala.",
   "audioDescriptionLabel": "Inkcazo ngesandi",
-  "openOnYouTube": "Vula kwi-YouTube"
+  "openOnYouTube": "Vula kwi-YouTube",
+  "interactiveLabel": "ukusebenzisana",
+  "layoutLabel": "Ulungiselelo",
+  "sideLabel": "Ecaleni",
+  "belowLabel": "Ngezantsi",
+  "leftLabel": "Ekhohlo",
+  "rightLabel": "Ekunene",
+  "hideTranscriptLabel": "Fihla umbhalo ovela kwindlebe"
 }

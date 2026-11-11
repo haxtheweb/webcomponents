@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Конверзија није успела.",
   "PARAM_REQUIRED": "Недостаје обавезна вредност: {param}.",
   "INVALID_REQUEST": "Неважећи захтев.",
-  "PARAM_INVALID": "Неважећа вредност: {param}."
+  "PARAM_INVALID": "Неважећа вредност: {param}.",
+  "BLOCK_RATE_LIMITED": "Превише измена садржаја на овом сајту у овом тренутку. Покушајте поново за {retryAfter} секунди."
 }

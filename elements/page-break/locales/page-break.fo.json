@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Henda síðan er læst. Lat hana upp fyrst fyri at broyta útgávustøðu.",
   "pageLockedUnlockToDelete": "Henda síðan er læst. Lat hana upp fyrst fyri at strika.",
   "pageDetails": "Síðu smálutir",
-  "clickToUnlock": "Trýst fyri at lása upp"
+  "clickToUnlock": "Trýst fyri at lása upp",
+  "pageSettings": "Síðustillingar",
+  "editingPageSettings": "Rættar síðustillingar",
+  "published": "Almannakunngjørd",
+  "draft": "Uppkast",
+  "locked": "Læst",
+  "unlocked": "Ólæst",
+  "noTags": "Eingi frámerki",
+  "oneTag": "1 frámerki",
+  "tagCount": "{count} frámerki",
+  "enterKey": "Enter"
 }

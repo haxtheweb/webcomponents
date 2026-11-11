@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Thay thế tệp gốc",
   "newName": "Tên mới",
   "deleteAction": "Xóa",
-  "renameAction": "Đổi tên"
+  "renameAction": "Đổi tên",
+  "bulkOverwriteConfirm": "{action} {count} tệp? Thao tác này sẽ thay thế các tệp gốc và không thể hoàn tác.",
+  "actionScale": "Đổi kích thước",
+  "actionRotate": "Xoay",
+  "actionTransform": "Biến đổi",
+  "actionConvertJpg": "Chuyển sang JPG",
+  "actionCompress": "Nén"
 }

@@ -129,5 +129,12 @@
   "cancel": "Ýatyr",
   "clearedSite": "{site} üçin öwrenme maglumatlaryňyz arassalandy.",
   "clearedDevice": "Bu enjamdaky ähli öwrenme maglumatlary arassalandy.",
-  "thisSite": "bu saýt"
+  "thisSite": "bu saýt",
+  "outlineHeading": "Sahypa boýunça ösüş",
+  "allPages": "Ähli sahypalar",
+  "outlinePagesDone": "{total} sahypanyň {done} sanysy tamamlandy",
+  "outlinePagesCount": "{count} sahypa",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% tamamlandy",
+  "outlineComplete": "Tamamlandy"
 }

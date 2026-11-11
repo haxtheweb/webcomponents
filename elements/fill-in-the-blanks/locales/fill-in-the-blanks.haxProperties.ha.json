@@ -37,6 +37,16 @@
         "title": "Sunan jarrabawa",
         "description": "Sunan jarrabawa da ake turawa don amfani a muhallin xAPI don gano wannan abu"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Mai ƙunsuwa",
+        "description": "Nuna wannan tambaya a matsayin jere da ke buɗewa da rufewa. Buɗe ɗaya yana rufe sauran tambayoyi masu ƙunsuwa da ke kusa da shi."
+      },
+      {
+        "title": "Fara a ƙunshe",
+        "description": "Idan mai ƙunsuwa ne, fara a matsayin rufaffen jere da ke nuna tambaya da matsayinta kawai."
+      }
     ]
   }
 }

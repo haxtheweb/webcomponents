@@ -1,0 +1,10 @@
+{
+  "github": "GitHub",
+  "repository": "저장소",
+  "stars": "스타",
+  "forks": "포크",
+  "loading": "로드 중",
+  "viewMore": "더 보기",
+  "assetNotFound": "자산을 찾을 수 없음",
+  "openOnGitHub": "GitHub에서 {org}/{repo} 열기"
+}

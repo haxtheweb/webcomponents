@@ -22,6 +22,12 @@
         "title": "Aktiivne indeks",
         "description": "Galeriirežiimis esimesena kuvatava aktiivse pildi indeks."
       }
+    ],
+    "developer": [
+      {
+        "title": "Pildid",
+        "description": "Galerii pildid. Siin ei muudeta: lehe ülevaade kasutab seda, et teada, milliseid plokke saab sisse lohistada."
+      }
     ]
   }
 }

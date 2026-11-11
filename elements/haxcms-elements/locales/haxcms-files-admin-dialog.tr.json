@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Orijinal dosyaları değiştir",
   "newName": "Yeni ad",
   "deleteAction": "Sil",
-  "renameAction": "Yeniden adlandır"
+  "renameAction": "Yeniden adlandır",
+  "bulkOverwriteConfirm": "{count} dosya için \"{action}\" işlemi uygulansın mı? Bu işlem özgün dosyaların yerine geçer ve geri alınamaz.",
+  "actionScale": "Ölçekle",
+  "actionRotate": "Döndür",
+  "actionTransform": "Dönüştür",
+  "actionConvertJpg": "JPG'ye dönüştür",
+  "actionCompress": "Sıkıştır"
 }

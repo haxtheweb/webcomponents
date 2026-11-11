@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Αντικατάσταση αρχικών αρχείων",
   "newName": "Νέο όνομα",
   "deleteAction": "Διαγραφή",
-  "renameAction": "Μετονομασία"
+  "renameAction": "Μετονομασία",
+  "bulkOverwriteConfirm": "{action} {count} αρχείων; Αυτό αντικαθιστά τα αρχικά αρχεία και δεν μπορεί να αναιρεθεί.",
+  "actionScale": "Αλλαγή κλίμακας",
+  "actionRotate": "Περιστροφή",
+  "actionTransform": "Μετασχηματισμός",
+  "actionConvertJpg": "Μετατροπή σε JPG",
+  "actionCompress": "Συμπίεση"
 }

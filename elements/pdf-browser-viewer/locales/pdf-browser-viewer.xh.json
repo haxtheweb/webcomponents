@@ -3,5 +3,8 @@
   "openInNewTab": "Vula i-PDF kwithebhu entsha",
   "downloadPdf": "Khuphela i-PDF",
   "fullScreen": "Isikrini esipheleleyo",
-  "exitFullScreen": "Phuma kwisikrini esipheleleyo"
+  "exitFullScreen": "Phuma kwisikrini esipheleleyo",
+  "notSupported": "Kubonakala ngathi ibrawuza yakho ye-Web ayilungiselelwanga ukubonisa iifayile ze-PDF. Ungakhathazeki, nje",
+  "notSupportedLink": "cofa apha ukukhuphela ifayile ye-PDF.",
+  "download": "Khuphela"
 }

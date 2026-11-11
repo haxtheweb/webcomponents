@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Kjo faqe është e kyçur. Zhbllokoje fillimisht për të ndryshuar statusin e publikimit.",
   "pageLockedUnlockToDelete": "Kjo faqe është e kyçur. Zhbllokoje fillimisht për ta fshirë.",
   "pageDetails": "Detajet e faqes",
-  "clickToUnlock": "Klikoni për të shkyçur"
+  "clickToUnlock": "Klikoni për të shkyçur",
+  "pageSettings": "Cilësimet e faqes",
+  "editingPageSettings": "Po redaktohen cilësimet e faqes",
+  "published": "Publikuar",
+  "draft": "Skicë",
+  "locked": "E kyçur",
+  "unlocked": "E shkyçur",
+  "noTags": "Pa etiketa",
+  "oneTag": "1 etiketë",
+  "tagCount": "{count} etiketa",
+  "enterKey": "Enter"
 }

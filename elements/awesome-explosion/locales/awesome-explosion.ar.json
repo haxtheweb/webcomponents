@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "انقر أو مرّر المؤشر لتشغيل صوت الانفجار",
+  "soundDisabled": "مؤثر انفجار مرئي (الصوت معطّل)",
+  "explosionAnimation": "رسوم انفجار متحركة",
+  "explosionAriaLabel": "رسوم الانفجار المتحركة {state} {sound}. انقر للتبديل.",
+  "playing": "قيد التشغيل",
+  "stopped": "متوقفة",
+  "withSound": "مع الصوت",
+  "muted": "(مكتوم)"
+}
