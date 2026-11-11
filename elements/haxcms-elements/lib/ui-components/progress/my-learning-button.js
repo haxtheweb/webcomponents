@@ -17,7 +17,26 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { autorun } from "mobx";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { LearnerProgress } from "@haxtheweb/haxcms-elements/lib/core/haxcms-learner-progress.js";
-import "@haxtheweb/haxcms-elements/lib/ui-components/progress/my-learning-panel.js";
+
+// The panel (This page / All pages, with the site outline) loads the first
+// time a learner reaches for it, not with every themed page: hovering or
+// focusing the button starts the download, and opening waits for it.
+const PANEL_TAG = "my-learning-panel";
+let panelLoad = null;
+const panelDefined = () => Boolean(globalThis.customElements.get(PANEL_TAG));
+function loadPanel() {
+  if (!panelLoad) {
+    panelLoad = import("./my-learning-panel.js").then(
+      () => true,
+      () => {
+        // let the next attempt try again (offline, a deploy in progress)
+        panelLoad = null;
+        return false;
+      },
+    );
+  }
+  return panelLoad;
+}
 
 const fill = (str, values) =>
   String(str).replace(/\{([a-zA-Z]+)\}/g, (m, k) =>
@@ -34,7 +53,8 @@ const fill = (str, values) =>
  * filled disc with a check, and the first time that happens while the page
  * is open it bursts once (never on a revisit or a reload; reduced motion:
  * no burst, the ring moves in 25% steps). It opens my-learning-panel (This
- * page / All pages) as a popover; Escape or Close returns focus here.
+ * page / All pages) as a popover; Escape or Close returns focus here. The
+ * panel's code loads on first use (hover, focus or open), not up front.
  * Hidden while editing.
  *
  * Drop it into a theme's toolbar (clean-one: right after the menu button;
@@ -287,6 +307,8 @@ export class MyLearningButton extends I18NMixin(DDDSuper(LitElement)) {
         aria-label="${name}"
         title="${name}"
         @click="${this._clicked}"
+        @pointerenter="${this._warmPanel}"
+        @focus="${this._warmPanel}"
       >
         ${renderDDDProgressRing({
           percent: this.percent,
@@ -308,6 +330,10 @@ export class MyLearningButton extends I18NMixin(DDDSuper(LitElement)) {
   get panel() {
     return this.shadowRoot ? this.shadowRoot.querySelector("#panel") : null;
   }
+  // start loading the panel as soon as the learner reaches for the button
+  _warmPanel() {
+    loadPanel();
+  }
   // browsers without the popover API: toggle it by hand
   _clicked(e) {
     const panel = this.panel;
@@ -315,6 +341,14 @@ export class MyLearningButton extends I18NMixin(DDDSuper(LitElement)) {
       return;
     }
     e.preventDefault();
+    if (!panelDefined()) {
+      loadPanel().then((ok) => {
+        if (ok) {
+          this._clicked({ preventDefault() {} });
+        }
+      });
+      return;
+    }
     if (this._open) {
       this._closePanel(true);
     } else {
@@ -333,6 +367,14 @@ export class MyLearningButton extends I18NMixin(DDDSuper(LitElement)) {
     if (!panel || !this._available) {
       return;
     }
+    if (!panelDefined()) {
+      loadPanel().then((ok) => {
+        if (ok) {
+          this.open(tab);
+        }
+      });
+      return;
+    }
     if (tab) {
       panel.tab = tab;
     }
@@ -345,6 +387,18 @@ export class MyLearningButton extends I18NMixin(DDDSuper(LitElement)) {
     }
   }
   _beforeToggle(e) {
+    // first open before the panel's code arrived: hold it, then open the
+    // defined panel (no empty popover in between)
+    if (e.newState === "open" && !panelDefined()) {
+      e.preventDefault();
+      loadPanel().then((ok) => {
+        const panel = this.panel;
+        if (ok && panel && this._available && !panel.matches(":popover-open")) {
+          panel.showPopover();
+        }
+      });
+      return;
+    }
     if (e.newState === "open") {
       this._place();
     }
