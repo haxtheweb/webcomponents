@@ -58,8 +58,7 @@
     "@haxtheweb/deduping-fix": "^26.8.0",
     "@open-wc/testing": "4.0.0",
     "@web/dev-server": "0.4.6",
-    "concurrently": "9.2.5",
-    "gulp-babel": "8.1.0"
+    "concurrently": "9.2.5"
   },
   "private": false,
   "publishConfig": {

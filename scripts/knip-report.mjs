@@ -34,12 +34,14 @@ function parseArgs(argv) {
 
 // Files that never reach someone who installs the package from npm, or
 // that only run during development: an undeclared import there cannot break
-// an install. Everything else under elements/ ships.
+// an install. Everything else under elements/ ships, including folders with
+// those names inside lib/ (lib/demo/ helpers are published and some are in
+// wc-registry.json), so only the element's own top-level folders count.
 function isDevOnly(file) {
   if (!file.startsWith("elements/")) return true;
   const parts = file.split("/");
   const devDirs = ["demo", "test", "tests", "scripts", "automation"];
-  if (parts.some((p) => devDirs.includes(p))) return true;
+  if (devDirs.includes(parts[2])) return true;
   const base = parts[parts.length - 1];
   return (
     base.startsWith("gulpfile.") ||

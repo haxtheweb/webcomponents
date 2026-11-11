@@ -526,6 +526,8 @@ CI runs it on pull requests and weekly on Sunday as an advisory job summary; it 
 
 Elements are loaded by tag at runtime as well as by import, so [`knip.config.js`](knip.config.js) treats each element's main file, `lib/*.js`, `demo/`, `test/` and every file listed in `wc-registry.json` as entry points. When knip reports something that is in fact loaded another way (by path from a script, a build step or a vendored library), add it to `extraEntries` or `vendored` in `knip.config.js` with a comment saying how it is loaded, rather than deleting it.
 
+An element's top-level `demo/` and `test/` folders may import any `@haxtheweb` package in this repo without declaring it: they run from the monorepo, where yarn workspaces link every element, and they are not published. Declaring those imports would add dependency cycles through most of the repo, so knip does not report unlisted imports there. Third-party packages a demo or test imports still go in that element's `devDependencies` (knip cannot check them there, so check by hand). Root tooling (`scripts/`, the root gulpfile, element `rollup.config.js` files) declares the packages it imports in the root `devDependencies`.
+
 ### Dead code knip cannot see
 
 We don't tree shake, so every line in a shipped element file reaches every browser that loads it. `yarn lint:dead-code` ([`scripts/dead-code-check.mjs`](scripts/dead-code-check.mjs)) reports three patterns knip has no way to model:
