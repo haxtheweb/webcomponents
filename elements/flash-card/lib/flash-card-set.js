@@ -229,14 +229,14 @@ export class FlashCardSet extends I18NMixin(DDD) {
           display: block;
           transition: all 1s ease-in-out;
           top: 0;
-          left: 0;
+          inset-inline-start: 0;
         }
         .hidden {
           transform: scale(0);
           display: none;
           transition: all 1s ease-in-out;
           top: 0;
-          left: 0;
+          inset-inline-start: 0;
         }
         #content {
           position: relative;

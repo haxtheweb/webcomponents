@@ -319,7 +319,13 @@ class DDDocs extends I18NMixin(DDD) {
         }
         .grid-3 {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+        /* longer (translated) column headings wrap inside their column
+           instead of widening it and pushing the samples out of the page */
+        .grid-3 > h4,
+        .grid-3 > h5 {
+          overflow-wrap: anywhere;
         }
         .grid-2 {
           display: grid;
@@ -370,7 +376,11 @@ class DDDocs extends I18NMixin(DDD) {
         }
 
         simple-cta + simple-cta {
-          margin-left: 0 var(--ddd-spacing-4);
+          margin-inline-start: var(--ddd-spacing-4);
+        }
+        /* type samples sit in a narrow inset box; long words wrap in it */
+        .text-sample {
+          overflow-wrap: anywhere;
         }
 
         .my-16 {
@@ -595,7 +605,7 @@ class DDDocs extends I18NMixin(DDD) {
         .pattern-recipe-copy {
           position: absolute;
           top: var(--ddd-spacing-2);
-          right: var(--ddd-spacing-2);
+          inset-inline-end: var(--ddd-spacing-2);
           --simple-icon-height: var(--ddd-icon-xs);
           --simple-icon-width: var(--ddd-icon-xs);
           color: light-dark(
@@ -2297,7 +2307,7 @@ class DDDocs extends I18NMixin(DDD) {
     return html`
       <h2 class="fs-s mt-0 mb-5 pb-5 bb-sm">${this.t.richTextHeading}</h2>
       <h3 class="mx-10">${this.t.basicTextTypes}</h3>
-      <div class="b-xs py-8 px-4 my-10 mx-30">
+      <div class="b-xs py-8 px-4 my-10 mx-30 text-sample">
         <h1>${this.t.headingLevelSample.replace("{level}", "h1")}</h1>
         <h2>${this.t.headingLevelSample.replace("{level}", "h2")}</h2>
         <h3>${this.t.headingLevelSample.replace("{level}", "h3")}</h3>
@@ -2329,7 +2339,7 @@ class DDDocs extends I18NMixin(DDD) {
         </ol>
       </div>
       <h3 class="mx-10">${this.t.otherHtmlTextTypes}</h3>
-      <div class="b-xs py-8 px-4 my-10 mx-30">
+      <div class="b-xs py-8 px-4 my-10 mx-30 text-sample">
         <blockquote>
           The Pennsylvania State University is a multi-campus, land-grant,
           public research university that educates students from around the
@@ -2376,7 +2386,7 @@ class DDDocs extends I18NMixin(DDD) {
         <p><s>My car is blue.</s></p>
       </div>
       <h3 class="mx-10">${this.t.textDesignTreatment}</h3>
-      <div class="b-xs py-8 px-4 my-10 mx-30">
+      <div class="b-xs py-8 px-4 my-10 mx-30 text-sample">
         <h2>${this.t.underlineWays}</h2>
         <h3>${this.t.hrElements}</h3>
         <div class="pl-5">

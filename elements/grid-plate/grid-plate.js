@@ -1,5 +1,9 @@
 import { LitElement, html, css } from "lit";
-import "@haxtheweb/responsive-utility/responsive-utility.js";
+import {
+  registerResponsiveElement,
+  unregisterResponsiveElement,
+  reregisterResponsiveElement,
+} from "@haxtheweb/responsive-utility/responsive-utility.js";
 
 // need to make this an object so that HAX can listen for it correctly
 class GridPlateLayoutOptions {
@@ -116,6 +120,7 @@ class GridPlateLayoutOptions {
  * `A grid plate based on a layout that manipulates it.`
  * @demo demo/index.html
  * @element grid-plate
+ * @fires responsive-element - asks responsive-utility to track this element's size (sent on globalThis by registerResponsiveElement)
  */
 class GridPlate extends LitElement {
   /**
@@ -390,6 +395,16 @@ class GridPlate extends LitElement {
   /**
    * life cycle
    */
+  connectedCallback() {
+    super.connectedCallback();
+    // moved, or removed and added again: observe it again
+    reregisterResponsiveElement(this);
+  }
+  disconnectedCallback() {
+    // the utility's ResizeObserver keeps a registered element alive
+    unregisterResponsiveElement(this);
+    super.disconnectedCallback();
+  }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
     setTimeout(() => {
@@ -402,19 +417,15 @@ class GridPlate extends LitElement {
     // schedule a second update from inside firstUpdated (Lit
     // change-in-update warning); the microtask still runs before paint
     queueMicrotask(() => {
-      globalThis.dispatchEvent(
-        new CustomEvent("responsive-element", {
-          detail: {
-            element: this,
-            attribute: "responsive-size",
-            relativeToParent: false,
-            sm: this.breakpointSm,
-            md: this.breakpointMd,
-            lg: this.breakpointLg,
-            xl: this.breakpointXl,
-          },
-        }),
-      );
+      registerResponsiveElement({
+        element: this,
+        attribute: "responsive-size",
+        relativeToParent: false,
+        sm: this.breakpointSm,
+        md: this.breakpointMd,
+        lg: this.breakpointLg,
+        xl: this.breakpointXl,
+      });
     });
   }
   /**

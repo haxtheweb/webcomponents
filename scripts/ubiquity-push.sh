@@ -23,6 +23,11 @@ git commit -m "ubiquity publish"
 cd ~/haxtheweb/webcomponents
 # this makes a new build available
 yarn run ubiquity
+# .version now holds the release version (version-match). Stop here, before
+# anything is copied into the sibling repos, unless it is past every package
+# (e.g. a haxcms-nodejs hotfix): --release-as in STEP 5 would tag backwards
+# and the npm publishes would fail partway through. Fix: lerna publish first.
+node scripts/check-ecosystem-version.mjs --strict || exit 1
 
 # normalize internal wc-registry.json copies
 # (gulpfile generates these, but ensure they stay in sync for demos)
@@ -159,7 +164,13 @@ cp ~/haxtheweb/webcomponents/elements/haxcms-elements/lib/themes.json ~/haxthewe
 # so the test always checks what the designer actually sends. The fixture is
 # only rewritten when the sessions change; STEP 5 commits it with the rest.
 cd ~/haxtheweb/webcomponents
-node scripts/outline-designer-contract-fixture.mjs --nodejs ~/haxtheweb/haxcms-nodejs --php ~/haxtheweb/haxcms-php || echo "WARNING: outline-designer contract fixture not refreshed"
+# A release must not ship with a fixture that no longer matches the designer,
+# so a failed capture (e.g. Playwright's Chromium missing) stops the push here,
+# before anything is tagged. ubiquity-testing.sh only warns.
+if ! node scripts/outline-designer-contract-fixture.mjs --nodejs ~/haxtheweb/haxcms-nodejs --php ~/haxtheweb/haxcms-php; then
+  echo "ERROR: outline-designer contract fixture not refreshed; fix the error above (often: yarn playwright install chromium) and re-run"
+  exit 1
+fi
 
 ## STEP 4 NODEJS IS BOILERPLATE AND CORECONFIG FOR PHP VERSION
 # mirror_from_nodejs <haxcms-nodejs dir> <haxcms-php dir>
@@ -204,10 +215,6 @@ yarn run build-gallery
 
 
 ## STEP 5 VERSION CONTROL ALL THE THINGS AND TAG
-# stop before tagging anything if a package is already past .version
-# (e.g. a haxcms-nodejs hotfix): --release-as would tag backwards and the
-# npm publishes would fail partway through the run
-node ~/haxtheweb/webcomponents/scripts/check-ecosystem-version.mjs --strict || exit 1
 # read in version from file
 version=$(cat ~/haxtheweb/webcomponents/.version 2>/dev/null || cat ~/haxtheweb/webcomponents/VERSION.txt)
 

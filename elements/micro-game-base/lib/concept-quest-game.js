@@ -755,6 +755,8 @@ export class ConceptQuestGame extends ConceptMapGame {
           letter-spacing: 0.1em;
           line-height: 1;
         }
+        /* sprites are placed by transform from screen x/y; left stays
+           physical on purpose (the board does not mirror) */
         .monster {
           position: absolute;
           left: 0;
@@ -833,7 +835,7 @@ export class ConceptQuestGame extends ConceptMapGame {
           color: var(--micro-game-ink);
           font: inherit;
           font-size: calc(var(--ddd-font-size-4xs) * 0.95);
-          text-align: left;
+          text-align: start;
           cursor: pointer;
         }
         .choice[aria-disabled="false"]:hover {

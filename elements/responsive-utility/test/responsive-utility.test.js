@@ -648,3 +648,55 @@ describe('Test Desktop Responsiveness', () => {
       expect(hidden).to.equal(true);
     })
 }) */
+
+// ResponsiveUtilityBehaviors used to announce its removal under a name the
+// utility does not listen for, from an element already detached, so every
+// removed element stayed observed. A moved element must register again.
+describe("ResponsiveUtilityBehaviors registration across removal and moves", () => {
+  const tracked = (el) =>
+    globalThis.ResponsiveUtility.instance.details.filter(
+      (d) => d.element === el,
+    ).length;
+  const resized = () => new Promise((r) => setTimeout(r, 120));
+
+  it("unregisters on removal and registers again on reconnect, following width", async () => {
+    const wrap = await fixture(
+      html`<div style="width:700px">
+        <test-responsive-mixin style="display:block"></test-responsive-mixin>
+      </div>`,
+    );
+    const el = wrap.querySelector("test-responsive-mixin");
+    expect(tracked(el)).to.equal(1);
+    await resized();
+    expect(el.getAttribute("responsive-size")).to.equal("sm");
+
+    el.remove();
+    expect(tracked(el)).to.equal(0);
+
+    const wide = globalThis.document.createElement("div");
+    wide.style.width = "1300px";
+    wrap.appendChild(wide);
+    wide.appendChild(el);
+    expect(tracked(el)).to.equal(1);
+    await resized();
+    expect(el.getAttribute("responsive-size")).to.equal("lg");
+    wide.style.width = "500px";
+    await resized();
+    expect(el.getAttribute("responsive-size")).to.equal("xs");
+    el.remove();
+  });
+
+  it("a same-tick move keeps exactly one registration", async () => {
+    const wrap = await fixture(
+      html`<div>
+        <p id="a"></p>
+        <p id="b"><test-responsive-mixin></test-responsive-mixin></p>
+      </div>`,
+    );
+    const el = wrap.querySelector("test-responsive-mixin");
+    wrap.querySelector("#a").appendChild(el);
+    expect(tracked(el)).to.equal(1);
+    el.remove();
+    expect(tracked(el)).to.equal(0);
+  });
+});

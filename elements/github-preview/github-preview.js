@@ -223,7 +223,7 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
         }
 
         .header-container div {
-          margin-left: 10px;
+          margin-inline-start: 10px;
           font-size: var(--github-preview-header-font-size, 22px);
           font-weight: bold;
         }

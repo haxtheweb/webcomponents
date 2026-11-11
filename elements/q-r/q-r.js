@@ -21,7 +21,7 @@ class QR extends LitElement {
         }
         #link {
           position: absolute;
-          left: -10000px;
+          inset-inline-start: -10000px;
           top: auto;
           width: 1px;
           height: 1px;

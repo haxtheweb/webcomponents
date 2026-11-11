@@ -29,9 +29,9 @@ class AiUsageLicense extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
         :host:after {
           content: "AI Usage License";
           position: relative;
-          float: right;
+          float: inline-end;
           bottom: var(--ddd-spacing-9);
-          right: var(--ddd-spacing-2);
+          inset-inline-end: var(--ddd-spacing-2);
           font-size: var(--ddd-font-size-ms);
           /* the label floats over the transparent host (page background
              shows through), so pair slateGray with a light equivalent in
@@ -57,7 +57,8 @@ class AiUsageLicense extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
           font-weight: var(--ddd-font-weight-bold);
         }
         .license-badge img {
-          margin: 0 var(--ddd-spacing-2) var(--ddd-spacing-2) 0;
+          margin-block: 0 var(--ddd-spacing-2);
+          margin-inline: 0 var(--ddd-spacing-2);
           height: var(--ddd-icon-3xl);
           vertical-align: middle;
         }

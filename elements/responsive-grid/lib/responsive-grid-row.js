@@ -1,5 +1,9 @@
 import { LitElement, html, css } from "lit";
-import "@haxtheweb/responsive-utility/responsive-utility.js";
+import {
+  registerResponsiveElement,
+  unregisterResponsiveElement,
+  reregisterResponsiveElement,
+} from "@haxtheweb/responsive-utility/responsive-utility.js";
 import "./responsive-grid-col.js";
 import "./responsive-grid-clear.js";
 /**   
@@ -213,6 +217,16 @@ class ResponsiveGridRow extends LitElement {
     this.screen = "xs";
     globalThis.ResponsiveUtility.requestAvailability();
   }
+  connectedCallback() {
+    super.connectedCallback();
+    // moved, or removed and added again: observe it again
+    reregisterResponsiveElement(this);
+  }
+  disconnectedCallback() {
+    // the utility's ResizeObserver keeps a registered element alive
+    unregisterResponsiveElement(this);
+    super.disconnectedCallback();
+  }
   /**
    * LitElement ready
    */
@@ -220,17 +234,16 @@ class ResponsiveGridRow extends LitElement {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    this.dispatchEvent(
-      new CustomEvent("responsive-element", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: {
-          element: this,
-          attribute: "screen",
-          relativeToParent: this.responsiveToParent,
-        },
-      }),
+    registerResponsiveElement(
+      {
+        element: this,
+        attribute: "screen",
+        relativeToParent: this.responsiveToParent,
+      },
+      {
+        target: this,
+        eventInit: { bubbles: true, cancelable: true, composed: true },
+      },
     );
   }
   /**

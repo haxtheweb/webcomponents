@@ -128,6 +128,9 @@ describe("HaxorSlevin theme", function () {
       false,
     );
     expect(root.querySelector("#home h1.home-title") === null).to.equal(false);
+    // one <main> wraps both views so the skip-link target is never hidden
+    expect(root.querySelectorAll("main").length).to.equal(1);
+    expect(root.querySelector("main.wrapper > #home") === null).to.equal(false);
     expect(
       root.querySelector('#home site-query[limit="10"]') === null,
     ).to.equal(false);
@@ -136,7 +139,7 @@ describe("HaxorSlevin theme", function () {
     ).to.equal(false);
     expect(
       root.querySelector(
-        "main.contentcontainer-wrapper article#contentcontainer",
+        "main.wrapper .contentcontainer-wrapper article#contentcontainer",
       ) === null,
     ).to.equal(false);
     expect(

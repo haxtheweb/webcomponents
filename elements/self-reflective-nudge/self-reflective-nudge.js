@@ -160,7 +160,7 @@ export class SelfReflectiveNudge extends DDDSuper(I18NMixin(LitElement)) {
            the box on whatever background the page has (unreadable dark on dark).
            Floating it full width lays it out as a normal block inside the box. */
         legend {
-          float: left;
+          float: inline-start;
           width: 100%;
           box-sizing: border-box;
           padding: var(--ddd-spacing-4) var(--ddd-spacing-4)

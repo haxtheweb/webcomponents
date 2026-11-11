@@ -74,7 +74,8 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             flex-wrap: wrap;
             align-items: stretch;
             justify-content: space-between;
-            margin: 0 var(--simple-fields-margin-small, 8px) 0 0;
+            margin-block: 0;
+            margin-inline: 0 var(--simple-fields-margin-small, 8px);
             width: 100%;
           }
           fieldset.block-options .option {
@@ -296,7 +297,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
           }
           select.field {
             width: calc(100% - 26px);
-            padding-right: 26px;
+            padding-inline-end: 26px;
             background-color: var(
               --simple-fields-input-background-color,
               transparent
@@ -323,7 +324,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
           :host([type="select"]) simple-icon-lite {
             position: absolute;
             pointer-events: none;
-            right: 0px;
+            inset-inline-end: 0px;
           }
           select:focus,
           select:focus-within {
@@ -344,7 +345,8 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             text-overflow: ellipsis;
             white-space: nowrap;
             border-radius: var(--simple-fields-border-radius, 4px);
-            padding: 0 24px 0 4px;
+            padding-block: 0;
+            padding-inline: 4px 24px;
             caret-color: var(--simple-fields-accent-color, #3f51b5);
             line-height: 1.5;
           }

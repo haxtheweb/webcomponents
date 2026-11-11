@@ -163,6 +163,13 @@ export class AppHaxUserMenu extends I18NMixin(DDDSuper(LitElement)) {
           letter-spacing: 0;
           text-transform: none;
         }
+        /* phone: no keyboard expected, so no shortcut hints (same media as
+           KEYBOARD_SHORTCUTS_HIDDEN_MEDIA in @haxtheweb/utils keyboardShortcuts) */
+        @media (max-width: 599px), (pointer: coarse) and (max-height: 599px) {
+          .menu-header .hax-ui-kbd {
+            display: none;
+          }
+        }
         .user-menu.open ::slotted(*) {
           display: block;
           width: 100%;

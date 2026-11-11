@@ -322,6 +322,9 @@ class HAXCMSOutlineEditorDialog extends HaxcmsAdminSectionMixin(
             // fresh items from the manifest carry no change flags, so a
             // saved fingerprint has nothing left to stand in for
             this.__savedItemsKey = null;
+            // the outline is replaced by what the server stored, so an
+            // undo can no longer reach back past it (haxtheweb/issues#3253)
+            this._clearOutlineUndo();
             this.manifestItems = [..._mobx_val_0];
           }
           this.updateComplete.then(() => {
@@ -822,6 +825,19 @@ class HAXCMSOutlineEditorDialog extends HaxcmsAdminSectionMixin(
     return this._saveTap();
   }
 
+  // drop the designer's pending undo; older bundles lack clearUndo()
+  _clearOutlineUndo() {
+    const outline = this._getOutline();
+    if (!outline) {
+      return;
+    }
+    if (typeof outline.clearUndo === "function") {
+      outline.clearUndo();
+    } else {
+      outline._undo = null;
+    }
+  }
+
   /**
    * Section contract: put the outline back as it was loaded, the same way
    * the first load fills it from the site's manifest; nothing is sent.
@@ -836,7 +852,7 @@ class HAXCMSOutlineEditorDialog extends HaxcmsAdminSectionMixin(
     this.__stateKey = "";
     if (outline) {
       outline.selectedPages = [];
-      outline._undo = null;
+      this._clearOutlineUndo();
       if (typeof outline._hideNudge === "function") {
         outline._hideNudge();
       }
