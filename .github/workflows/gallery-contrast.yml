@@ -1,0 +1,63 @@
+name: gallery-contrast
+
+# Blocking: the component gallery's own chrome (header, sidebar, search,
+# filters, toolbar, demo picker) is readable in light and dark mode.
+#
+# The element contrast workflow opens element demos, never the gallery page,
+# and axe cannot see a select's open list (the browser draws it). So this
+# job builds index.html with scripts/build-component-gallery.js, serves the
+# repo locally with the web-dev-server config (never a live site) and runs
+# scripts/gallery-contrast-check.mjs in Chromium, light then dark:
+# axe-core's color-contrast rule on the page (demo iframe excluded) and an
+# open-list check that every select option has an opaque background with
+# text at 4.5:1 or better. No baseline: any finding fails. See
+# CONTRIBUTING.md, "Gallery contrast check".
+#
+# Runs on pull_request (not pull_request_target): no secrets, read-only token.
+on:
+  # No branch filter: stacked PRs (base is another feature branch) must run too.
+  pull_request:
+    paths:
+      - "scripts/build-component-gallery.js"
+      - "scripts/gallery-contrast-check.mjs"
+      - "scripts/lib/contrast.mjs"
+      - "scripts/lib/demo-runner.mjs"
+      # the gallery chrome is built from these elements' styles
+      - "elements/d-d-d/**"
+      - "elements/simple-fields/**"
+      - "elements/simple-icon/**"
+      - "elements/documentation-player/**"
+      - "web-dev-server.config.mjs"
+      - ".github/workflows/gallery-contrast.yml"
+      - ".github/actions/setup-playwright/**"
+permissions:
+  contents: read
+jobs:
+  gallery-contrast:
+    name: Gallery contrast (light and dark)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          cache: yarn
+      - name: Install
+        run: yarn install --frozen-lockfile
+      - name: Install Playwright Chromium
+        # the Playwright version yarn.lock resolves, so the browser build
+        # matches what the check launches; extra fonts since results depend
+        # on how text renders
+        # the local path, not the $/ self-repository form: $/ downloads the
+        # whole repo as an action archive, and that extraction fails here
+        uses: ./.github/actions/setup-playwright # zizmor: ignore[self-repository]
+        timeout-minutes: 12
+        with:
+          fonts: "true"
+      - name: Gallery contrast in light and dark
+        run: node scripts/gallery-contrast-check.mjs

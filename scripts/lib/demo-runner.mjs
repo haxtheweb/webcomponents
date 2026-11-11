@@ -15,6 +15,8 @@
  *   settle, so results are the same offline, locally and in CI. With
  *   { settled: true } it also waits for a settled render (see
  *   waitForSettledRender), for checks that measure the page as it rests.
+ * - openPage(context, origin, urlPath, timeout, options): the same for any
+ *   page the local server serves, e.g. the component gallery (/index.html).
  * - waitForSettledRender(page): stop CSS animations and transitions at
  *   their end state, then wait until the page's layout stops changing.
  * - runPool(jobs, concurrency, work, label): run jobs a few at a time with
@@ -100,13 +102,33 @@ export async function openDemo(
   timeout,
   options = {},
 ) {
+  return openPage(
+    context,
+    origin,
+    `/elements/${element}/demo/index.html`,
+    timeout,
+    options,
+  );
+}
+
+/**
+ * open any page the local server serves (urlPath starts with "/") and wait
+ * for it to settle the same way a demo does
+ */
+export async function openPage(
+  context,
+  origin,
+  urlPath,
+  timeout,
+  options = {},
+) {
   await context.route(
     (url) => !LOCAL.test(url.href),
     (route) => route.abort(),
   );
   const page = await context.newPage();
   page.setDefaultTimeout(timeout);
-  await page.goto(`${origin}/elements/${element}/demo/index.html`, {
+  await page.goto(`${origin}${urlPath}`, {
     waitUntil: "load",
     timeout,
   });
@@ -186,7 +208,7 @@ function freezeMotion() {
     for (const animation of root.getAnimations()) {
       try {
         animation.finish();
-      } catch (e) {
+      } catch {
         // an infinite animation cannot finish
         animation.cancel();
       }
