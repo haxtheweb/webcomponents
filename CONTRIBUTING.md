@@ -272,6 +272,16 @@ Invariant: text in an element's demo meets WCAG AA contrast (4.5:1, 3:1 for larg
 - **Shrink only**: the baseline never grows. After fixing contrast, run `yarn test:contrast --update-baseline --elements <name>` and commit the smaller baseline. `--update-baseline` only removes entries (it runs twice and drops only what neither run shows). `--allow-additions` only adds; it exists to rebuild the baseline, and CI fails a pull request whose baseline grew.
 - **CI**: the `contrast` workflow runs on pull requests touching `elements/**`. It fails if the baseline grew compared with the base branch, then blocks on new failures in the elements the pull request changes. Baselined failures in those elements are listed in the job summary so they can be worked down. Demos that do not load are listed, not failed.
 
+### Gallery contrast check
+
+Invariant: the component gallery's own chrome (header, sidebar, search, filters, toolbar, demo picker) is readable in light and dark mode, including the open list of every select.
+
+- **Why**: the color contrast check opens element demos, never the gallery page, and axe cannot see a select's open list because the browser draws it. A gallery select once showed white options on a white list in dark mode.
+- **What runs**: `scripts/build-component-gallery.js` builds `index.html`; the same local demo runner serves it (never a live site) and Chromium opens it on a component with several demos, light then dark, reduced motion, motion ended and layout settled. axe-core's `color-contrast` rule runs over the page, shadow DOM included and the demo iframe excluded. Then every option of every select (shadow DOM included) must have an opaque background with text at 4.5:1 or better: a transparent option background is what lets the browser paint a light list under dark-scheme text. Build the gallery's controls from the HAX UI fields (`simple-fields-field` with `hax-ui-simple-field`, or `.hax-ui-tool-field`), which set that pair.
+- **Run locally**: `yarn test:gallery-contrast` (`--no-build` reuses an existing `index.html`). Exit 1 means a finding. Set `GALLERY_CONTRAST_CHROMIUM=<path>` to use a Chromium other than Playwright's.
+- **No baseline**: the gallery starts clean, so any finding fails.
+- **CI**: the `gallery-contrast` workflow runs on pull requests touching the gallery build script, the check, the shared runner, or the elements whose styles build the gallery chrome (`d-d-d`, `simple-fields`, `simple-icon`, `documentation-player`), and blocks on any finding.
+
 ### Dark mode and reduced motion check
 
 Invariant: an element responds to dark mode and respects reduced motion. Contrast in dark mode is the color contrast check's job; this one asks whether the element ignores dark mode at all.
