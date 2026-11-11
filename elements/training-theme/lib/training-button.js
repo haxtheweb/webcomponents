@@ -49,6 +49,8 @@ export class TrainingButton extends HAXCMSThemeParts(LitElement) {
         :host {
           display: block;
           margin: var(--ddd-spacing-0, 0px);
+          /* steps live on the theme's navy sidebar in both color schemes */
+          color-scheme: dark;
         }
         a.wrapper {
           display: flex;

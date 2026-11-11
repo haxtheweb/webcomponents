@@ -185,6 +185,19 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
               )
             );
           }
+
+          /* nothing moves with prefers-reduced-motion */
+          @media (prefers-reduced-motion: reduce) {
+            :host,
+            *,
+            *::before,
+            *::after {
+              animation-duration: 0.01ms !important;
+              animation-iteration-count: 1 !important;
+              transition-duration: 0.01ms !important;
+              transition-delay: 0ms !important;
+            }
+          }
         `,
       ];
     }

@@ -48,6 +48,8 @@ export class PostCardPostmark extends LitElement {
           width: var(--post-card-img-width);
           text-transform: uppercase;
           text-align: center;
+          /* the postmark sits on the card's fixed light paper */
+          color-scheme: light;
           color: black;
           margin: 0px;
           font-size: 16px;

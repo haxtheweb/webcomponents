@@ -166,6 +166,19 @@ class MapMenuItem extends I18NMixin(LitElement) {
           margin: 4px;
           color: var(--map-menu-item-a-active-color, black);
         }
+
+        /* nothing moves with prefers-reduced-motion */
+        @media (prefers-reduced-motion: reduce) {
+          :host,
+          *,
+          *::before,
+          *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            transition-delay: 0ms !important;
+          }
+        }
       `,
     ];
   }
