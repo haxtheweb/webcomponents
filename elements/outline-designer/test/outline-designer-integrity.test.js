@@ -1109,7 +1109,7 @@ describe("outline-designer save payload", () => {
     // top-level pages have parent "" the dropped page is alone in its group:
     // Move down does nothing, and its "" siblings move past it two at a time.
     // Un-skip when up/down treat ""/missing/null parents as the same level.
-    it.skip('KNOWN BUG: a page dragged to the top level moves among pages with parent ""', async () => {
+    it('a page dragged to the top level moves among pages with parent ""', async () => {
       await load(rootsAs(""));
       const li = (id) =>
         element.shadowRoot.querySelector(`li[data-item-id="${id}"]`);
@@ -1149,6 +1149,175 @@ describe("outline-designer save payload", () => {
       expect(topIds()).to.equal("A B C D E C1");
       await run(() => element.itemOp(index(element, "E"), "up"));
       expect(topIds()).to.equal("A B C E D C1");
+    });
+
+    // the same outline with every kind of top-level parent at once
+    const mixedRoots = () =>
+      fixedItems().map((item) => {
+        if (item.parent !== null) return item;
+        const copy = { ...item };
+        if (item.id === "B" || item.id === "E") copy.parent = "";
+        if (item.id === "C") delete copy.parent;
+        return copy;
+      });
+    const roots = [
+      ['parent ""', () => rootsAs(""), ""],
+      ["no parent", () => rootsAs(undefined), null],
+      ["mixed top-level parents", mixedRoots, null],
+    ];
+    // sound, and every page not in changedIds is sent exactly as loaded
+    const expectSaved = (items, changedIds, context) => {
+      const problems = outlineProblems(items, original);
+      expect(problems, `${context}\n${problems.join("\n")}`).to.deep.equal([]);
+      expectUntouched(items, changedIds);
+      original
+        .filter((o) => !changedIds.includes(o.id))
+        .forEach((o) =>
+          expect(JSON.stringify(payloadItem(items, o.id)), o.id).to.equal(
+            JSON.stringify(o),
+          ),
+        );
+    };
+    const li = (id) =>
+      element.shadowRoot.querySelector(`li[data-item-id="${id}"]`);
+    // drag a page's title onto part of another row (fy: 0.1 before,
+    // 0.5 inside, 0.9 after), optionally sideways
+    const drop = async (id, targetId, fy, dx = 0) => {
+      const list = element.shadowRoot.querySelector("#list");
+      const at = (el, f) => {
+        el.scrollIntoView({ block: "center" });
+        const r = el.getBoundingClientRect();
+        return { x: r.left + 60, y: r.top + r.height * f };
+      };
+      const pointer = (target, type, p) =>
+        target.dispatchEvent(
+          new PointerEvent(type, {
+            bubbles: true,
+            composed: true,
+            cancelable: true,
+            clientX: p.x,
+            clientY: p.y,
+            pointerId: 41,
+            pointerType: "mouse",
+            isPrimary: true,
+            button: 0,
+            buttons: type === "pointerup" ? 0 : 1,
+          }),
+        );
+      const label = li(id).querySelector(".label.shown");
+      const from = at(label, 0.5);
+      pointer(label, "pointerdown", from);
+      pointer(list, "pointermove", { x: from.x, y: from.y + 8 });
+      const to = at(li(targetId), fy);
+      pointer(list, "pointermove", { x: from.x + dx, y: to.y });
+      await element.updateComplete;
+      pointer(list, "pointerup", { x: from.x + dx, y: to.y });
+      await settle(element, 10);
+      return saved(element);
+    };
+
+    roots.forEach(([label, items, topParent]) => {
+      it(`drags a page out to the top level and back in with ${label}`, async () => {
+        await load(items());
+        // C1 out to the top level, between D and E
+        let saved1 = await drop("C1", "E", 0.1, -30);
+        expect(topIds()).to.equal("A B C D C1 E");
+        const c1 = payloadItem(saved1, "C1");
+        // a moved page matches its new siblings when they all use "",
+        // otherwise it gets null
+        expect(c1.parent).to.equal(topParent);
+        expect(c1.indent).to.equal(0);
+        expectSaved(saved1, ["C1", "E"], `drop C1 (${label})`);
+        // it moves among the other top-level pages, whatever their form
+        await run(() => element.itemOp(index(element, "C1"), "down"));
+        expect(topIds()).to.equal("A B C D E C1");
+        saved1 = await run(() => element.itemOp(index(element, "C1"), "up"));
+        expect(topIds()).to.equal("A B C D C1 E");
+        expectSaved(saved1, ["C1", "E"], `C1 down, up (${label})`);
+        // B into A as its last child, then back out after A
+        saved1 = await drop("B", "A", 0.5);
+        expect(payloadItem(saved1, "B").parent).to.equal("A");
+        expect(payloadItem(saved1, "B").indent).to.equal(1);
+        expect(topIds()).to.equal("A C D C1 E");
+        saved1 = await drop("B", "C", 0.1, -30);
+        expect(topIds()).to.equal("A B C D C1 E");
+        expect(payloadItem(saved1, "B").parent).to.equal(topParent);
+        // B, C1 and the top-level pages renumbered around them changed,
+        // and a drop opens the page it lands in (A gets collapsed: false);
+        // every other page is byte for byte what was loaded
+        expectSaved(
+          saved1,
+          ["A", "B", "C", "C1", "D", "E"],
+          `B in and out (${label})`,
+        );
+        // the size and position screen readers hear count every
+        // top-level page as one group
+        expect(li("C1").getAttribute("aria-setsize")).to.equal("6");
+        expect(li("C1").getAttribute("aria-posinset")).to.equal("5");
+      });
+
+      it(`outdents a page with sub-pages to the top level with ${label}`, async () => {
+        await load(items());
+        let saved1 = await run(() =>
+          element.itemOp(index(element, "A2"), "out"),
+        );
+        expect(topIds()).to.equal("A A2 B C D E");
+        expect(payloadItem(saved1, "A2").parent).to.equal(topParent);
+        expect(payloadItem(saved1, "A2").indent).to.equal(0);
+        // its sub-pages come up a level with it
+        expect(shape(saved1)).to.equal(
+          "A@0 A1@1 A3@1 A2@0 A2a@1 A2b@1 B@0 C@0 C1@1 D@0 E@0",
+        );
+        // A3 and the top-level pages after A were renumbered
+        const renumbered = ["A2", "A2a", "A2b", "A3", "B", "C", "D", "E"];
+        expectSaved(saved1, renumbered, `A2 out (${label})`);
+        // up, down and in see every top-level page as a sibling
+        await run(() => element.itemOp(index(element, "A2"), "down"));
+        expect(topIds()).to.equal("A B A2 C D E");
+        await run(() => element.itemOp(index(element, "A2"), "up"));
+        await run(() => element.itemOp(index(element, "A2"), "up"));
+        expect(topIds()).to.equal("A2 A B C D E");
+        saved1 = await run(() => element.itemOp(index(element, "B"), "in"));
+        expect(payloadItem(saved1, "B").parent).to.equal("A");
+        expect(topIds()).to.equal("A2 A C D E");
+        saved1 = await run(() => element.itemOp(index(element, "A2"), "in"));
+        // the first top-level page has no sibling above to go into
+        expect(payloadItem(saved1, "A2").parent).to.equal(topParent);
+        expect(topIds()).to.equal("A2 A C D E");
+        saved1 = await run(() => element.itemOp(index(element, "A"), "in"));
+        expect(payloadItem(saved1, "A").parent).to.equal("A2");
+        expect(shape(saved1)).to.equal(
+          "A2@0 A2a@1 A2b@1 A@1 A1@2 A3@2 B@2 C@0 C1@1 D@0 E@0",
+        );
+        const problems = outlineProblems(saved1, original);
+        expect(problems, problems.join("\n")).to.deep.equal([]);
+      });
+    });
+
+    it('keeps "" on pages it did not move when another page moves to the top level', async () => {
+      await load(rootsAs(""));
+      const items = await run(() =>
+        element.itemOp(index(element, "C1"), "out"),
+      );
+      expect(payloadItem(items, "C1").parent).to.equal("");
+      // C1 lands after C; D and E move down one
+      expectSaved(items, ["C1", "D", "E"], "C1 out");
+      ["A", "B", "C", "D", "E"].forEach((id) =>
+        expect(payloadItem(items, id).parent, id).to.equal(""),
+      );
+    });
+
+    it("adds a page at the end of a top level with mixed parents", async () => {
+      await load(mixedRoots());
+      element._addInGroup(null);
+      await settle(element);
+      const items = await saved(element);
+      const added = newPages(items);
+      expect(added.length).to.equal(1);
+      // after E, the last top-level page, and in E's form
+      expect(added[0].parent).to.equal("");
+      expect(added[0].order).to.equal(5);
+      expectSaved(items, [added[0].id], "add at the end");
     });
 
     it("keeps every page when none of them is at the top level", async () => {

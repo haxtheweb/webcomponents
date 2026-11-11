@@ -83,6 +83,11 @@ const MOTION = {
 const REVEAL_GAP = 8;
 // Alt+arrow presses that can wait behind a move still being shown
 const MAX_QUEUED_MOVES = 3;
+// A top-level page's parent can be null, "" (older and imported sites) or
+// missing; all three are the same top level. Every parent comparison goes
+// through this so one outline never splits its top level into groups.
+const parentKey = (parent) =>
+  parent === undefined || parent === null || parent === "" ? null : parent;
 // more open pages than this and their "Add" buttons are made on demand
 const LAZY_OPS_MIN = 20;
 const UNDO_MS = 8000;
@@ -1536,7 +1541,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         let itemBuilder = el;
         // walk back through parent tree
         let distance = "- ";
-        while (itemBuilder && itemBuilder.parent != null) {
+        while (itemBuilder && parentKey(itemBuilder.parent) !== null) {
           itemBuilder = rawItemList.find((i) => i.id == itemBuilder.parent);
           // double check structure is sound
           if (itemBuilder) {
@@ -1957,9 +1962,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       // a parent chain that loops is treated as not folded
       memo.set(key, false);
       const parent =
-        item.parent !== null && item.parent !== undefined
-          ? byId.get(String(item.parent))
-          : null;
+        parentKey(item.parent) !== null ? byId.get(String(item.parent)) : null;
       const result = parent
         ? !!(parent.collapsed && parent.id) || underFolded(parent)
         : false;
@@ -2480,7 +2483,9 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     const pressing = this._press && this._press.id === item.id;
     // only the siblings that are drawn count toward size and position
     const siblings = this.items.filter(
-      (i) => i.parent === item.parent && !(this.hideDelete && i.delete),
+      (i) =>
+        parentKey(i.parent) === parentKey(item.parent) &&
+        !(this.hideDelete && i.delete),
     );
     const group = ctx.group || "";
     // the name starts with what the row shows (title, then its pills in
@@ -4252,7 +4257,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       up: this._siblingBefore(index) !== null,
       down: this._siblingAfter(index) !== null,
       in: this._siblingBefore(index) !== null,
-      out: !!item.parent,
+      out: parentKey(item.parent) !== null,
     };
     const button = (action, icon, label) =>
       html`<button
@@ -4297,7 +4302,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     const item = this.items[index];
     for (let i = index - 1; i >= 0; i--) {
       if (this.items[i].id === item.parent) return null;
-      if ((this.items[i].parent || null) === (item.parent || null)) return i;
+      if (parentKey(this.items[i].parent) === parentKey(item.parent)) return i;
     }
     return null;
   }
@@ -4305,8 +4310,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
   _siblingAfter(index) {
     const item = this.items[index];
     for (let i = index + 1; i < this.items.length; i++) {
-      const p = this.items[i].parent || null;
-      if (p === (item.parent || null)) return i;
+      if (parentKey(this.items[i].parent) === parentKey(item.parent)) return i;
       if (parseInt(this.items[i].indent) < parseInt(item.indent)) return null;
     }
     return null;
@@ -4625,7 +4629,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
   // the add row closing a level: a page at the end of that level
   _addInGroup(parentId) {
     const siblings = this.items.filter(
-      (i) => (i.parent || null) === (parentId || null),
+      (i) => parentKey(i.parent) === parentKey(parentId),
     );
     if (siblings.length) {
       const last = siblings.reduce((a, b) =>
@@ -5313,10 +5317,10 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     const arrangement = [...rest];
     arrangement.splice(target.insertIdx, 0, ...placed);
     const root = moved[0].item;
-    const oldParent = root.parent || null;
-    const newParent = target.parentId || null;
+    const oldParent = parentKey(root.parent);
+    const newParent = parentKey(target.parentId);
     if (oldParent !== newParent) {
-      root.parent = newParent;
+      root.parent = newParent === null ? this._topLevelParent(root) : newParent;
       if (!root.new) {
         root.modified = true;
       }
@@ -5326,14 +5330,14 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       arrangement
         .filter(
           (r) =>
-            r.depth === target.depth && (r.item.parent || null) === newParent,
+            r.depth === target.depth && parentKey(r.item.parent) === newParent,
         )
         .map((r) => r.item),
     );
     if (oldParent !== newParent) {
       this._renumber(
         this.items
-          .filter((i) => (i.parent || null) === oldParent)
+          .filter((i) => parentKey(i.parent) === oldParent)
           .sort((a, b) => Number(a.order) - Number(b.order)),
       );
     }
@@ -5349,6 +5353,22 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     this.setAttribute("stop-animation", "true");
     this.__syncUIAndDataModel();
     return root.id;
+  }
+
+  /**
+   * The parent a page gets when the user moves it to the top level: ""
+   * when every other top-level page has "" (an older site keeps one form
+   * in its site.json), otherwise null, the JSON Outline Schema form.
+   * Pages the user did not move keep the parent they came with.
+   */
+  _topLevelParent(moved) {
+    let legacy = false;
+    for (const item of this.items) {
+      if (item === moved || parentKey(item.parent) !== null) continue;
+      if (item.parent !== "") return null;
+      legacy = true;
+    }
+    return legacy ? "" : null;
   }
 
   // give a sibling group the orders 0, 1, 2… in the order given
@@ -5684,7 +5704,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         this.shadowRoot.querySelector("#targetselector").value;
       let count = 0;
       await eventData.items.map(async (item, index) => {
-        if (parentId && item.parent == null) {
+        if (parentId && parentKey(item.parent) === null) {
           // helps in supporting multiple imports at a time
           // capture this import position BEFORE awaiting anything; the
           // shared counter finishes all of its increments by the time any
@@ -5757,7 +5777,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       this.items.forEach((sibling) => {
         if (
           sibling !== item &&
-          (sibling.parent || null) === (newItem.parent || null) &&
+          parentKey(sibling.parent) === parentKey(newItem.parent) &&
           Number(sibling.order) >= newItem.order
         ) {
           sibling.order = Number(sibling.order) + 1;
@@ -5943,7 +5963,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
               if (this.items[i].id === item.parent) {
                 break;
               }
-              if ((this.items[i].parent || null) === (item.parent || null)) {
+              if (parentKey(this.items[i].parent) === parentKey(item.parent)) {
                 sibling = this.items[i];
                 break;
               }
@@ -5970,16 +5990,15 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
             break;
           }
           case "out":
-            if (
-              this.items[index].parent !== null &&
-              this.items[index].parent !== undefined &&
-              this.items[index].parent !== ""
-            ) {
+            if (parentKey(this.items[index].parent) !== null) {
               // move just after parent and take on it's parent
               let sibling = this.items.find(
                 (item) => this.items[index].parent === item.id,
               );
-              this.items[index].parent = sibling.parent;
+              this.items[index].parent =
+                parentKey(sibling.parent) === null
+                  ? this._topLevelParent(this.items[index])
+                  : sibling.parent;
               this.items[index].indent = parseInt(sibling.indent);
               if (!this.items[index].new) {
                 this.items[index].modified = true;
@@ -5991,8 +6010,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
                 this.items
                   .filter(
                     (item) =>
-                      (item.parent || null) ===
-                      (this.items[index].parent || null),
+                      parentKey(item.parent) ===
+                      parentKey(this.items[index].parent),
                   )
                   .sort((a, b) => Number(a.order) - Number(b.order)),
               );
@@ -6006,7 +6025,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
             // find siblings of the current one by finding same parent
             let siblings = [];
             this.items.map((thing) => {
-              if (thing.parent === element.parent) {
+              if (parentKey(thing.parent) === parentKey(element.parent)) {
                 siblings.push(thing);
               }
             });
@@ -6080,8 +6099,16 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
   // never actually used this ability
   _recurseUpdateIndent(topItem = { id: null }, incr = 0) {
     this.items.map((item, deepIndex) => {
-      if (item.parent == topItem.id) {
-        this.items[deepIndex].indent = incr;
+      if (
+        topItem.id === null
+          ? parentKey(item.parent) === null
+          : item.parent == topItem.id
+      ) {
+        // only a wrong depth is rewritten, so a page the user did not
+        // move is saved exactly as it came
+        if (Number(this.items[deepIndex].indent) !== incr) {
+          this.items[deepIndex].indent = incr;
+        }
         this._recurseUpdateIndent(this.items[deepIndex], incr + 1);
       }
     });
@@ -6098,9 +6125,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     // when the backend omits parent or sends "" instead of null
     let normalizedItems = this.items.map((item) => {
       let normalized = { ...item };
-      if (normalized.parent === undefined || normalized.parent === "") {
-        normalized.parent = null;
-      }
+      normalized.parent = parentKey(normalized.parent);
       return normalized;
     });
     // we already have our items, pass them in
