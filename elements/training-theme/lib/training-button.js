@@ -127,18 +127,19 @@ export class TrainingButton extends HAXCMSThemeParts(LitElement) {
 
         /* a locked step reads as muted but its title stays legible (WCAG
            AA): the text takes a muted color instead of being faded with
-           opacity, and only the index and status dot are faded */
+           opacity (the index keeps its usual 0.8), and only the status dot
+           is faded */
         :host([disabled]) {
           cursor: not-allowed;
           pointer-events: none;
         }
-        :host([disabled]) a.wrapper {
+        :host([disabled]) a.wrapper,
+        :host([disabled]) .index {
           color: var(
             --training-theme-navTextMuted,
             var(--ddd-theme-default-slateGray, #314d64)
           );
         }
-        :host([disabled]) .index,
         :host([disabled]) .dot {
           opacity: var(--ddd-state-disabled-opacity, 0.5);
         }
