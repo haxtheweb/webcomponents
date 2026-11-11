@@ -1,4 +1,4 @@
-import { LitElement, html } from "lit";
+import { LitElement } from "lit";
 import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
@@ -43,24 +43,5 @@ export class HAXCMSButton extends HAXCMSThemeParts(
   HAXCMSButtonClick(_e) {
     // stub, the classes implementing this will actually do something
     // you always will call super.HAXCMS
-  }
-
-  renderButton(label, tooltip) {
-    return html`
-      <simple-icon-button
-        .part="simple-icon-button ${this.editMode ? `edit-mode-active` : ``}"
-        tabindex="${this.editMode ? "-1" : ""}"
-        id="button"
-        label="${label}"
-        @click="${this.HAXCMSButtonClick}"
-        ?dark="${!this.darkMode}"
-        icon="${this.icon}"
-        accent-color="${this.accentColor}"
-        voice-command="${this.voiceCommand}"
-      ></simple-icon-button>
-      <simple-tooltip for="button" position="bottom" offset="14">
-        ${tooltip}
-      </simple-tooltip>
-    `;
   }
 }
