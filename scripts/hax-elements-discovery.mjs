@@ -222,9 +222,6 @@ export const EXCLUDED_ELEMENT_TAGS = new Set([
   // are built from, beaker-broker a data broker with no visible output
   "beaker-broker",
   "simple-fields",
-  // a factory for dynamically named elements (createSWC); no element is
-  // defined as simple-wc, the file name was the fallback tag
-  "simple-wc",
   // themes that should not be authorable
   "glossy-portfolio-about",
   "glossy-portfolio-breadcrumb",
