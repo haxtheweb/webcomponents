@@ -69,6 +69,7 @@
     "test:i18n-layout": "node scripts/i18n-layout-check.mjs",
     "test:i18n-layout:baseline": "node scripts/i18n-layout-check.mjs --update-baseline",
     "test:contrast": "node scripts/contrast-check.mjs",
+    "test:haxschema": "node scripts/haxschema-check.mjs",
     "build": "lerna run build && yarn run build-gallery",
     "publish": "echo 'NOTICE: You must run `lerna publish` manually'",
     "gallery": "yarn run build-gallery && npx @web/dev-server --open index.html --root-dir .",
