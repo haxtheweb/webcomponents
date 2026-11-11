@@ -282,7 +282,9 @@ class SimpleColorsPicker extends SimplePickerBehaviors(
           alt: this._readableName("none"),
           value: null,
           style:
-            "--simple-colors-picker-swatch: linear-gradient(135deg, transparent calc(50% - 1px), currentColor calc(50% - 1px), currentColor calc(50% + 1px), transparent calc(50% + 1px))",
+            // the slash is the text color unless a theme sets
+            // --simple-colors-picker-none-color
+            "--simple-colors-picker-swatch: linear-gradient(135deg, transparent calc(50% - 1px), var(--simple-colors-picker-none-color, currentColor) calc(50% - 1px), var(--simple-colors-picker-none-color, currentColor) calc(50% + 1px), transparent calc(50% + 1px))",
         },
       ]);
     } else {

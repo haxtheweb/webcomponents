@@ -3849,6 +3849,21 @@
             },
             {
               "kind": "field",
+              "name": "infoIcon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Icon for the (i) button that opens a long description.\nAdmin panels can match their own icon set.",
+              "default": "\"icons:info-outline\"",
+              "attribute": "info-icon",
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "autovalidate",
               "privacy": "public",
               "type": {
@@ -4319,6 +4334,19 @@
               "description": "Automatically validate field",
               "default": "false",
               "fieldName": "autovalidate",
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "name": "info-icon",
+              "type": {
+                "text": "string"
+              },
+              "description": "Icon for the (i) button that opens a long description.\nAdmin panels can match their own icon set.",
+              "default": "\"icons:info-outline\"",
+              "fieldName": "infoIcon",
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
@@ -6490,6 +6518,21 @@
             },
             {
               "kind": "field",
+              "name": "infoIcon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Icon for the (i) button that opens a long description.\nAdmin panels can match their own icon set.",
+              "default": "\"icons:info-outline\"",
+              "attribute": "info-icon",
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "autovalidate",
               "privacy": "public",
               "type": {
@@ -7267,6 +7310,19 @@
               "description": "Automatically validate field",
               "default": "false",
               "fieldName": "autovalidate",
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "name": "info-icon",
+              "type": {
+                "text": "string"
+              },
+              "description": "Icon for the (i) button that opens a long description.\nAdmin panels can match their own icon set.",
+              "default": "\"icons:info-outline\"",
+              "fieldName": "infoIcon",
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
@@ -8132,6 +8188,17 @@
             },
             {
               "kind": "field",
+              "name": "infoIcon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Icon for the (i) button that opens a long description.\nAdmin panels can match their own icon set.",
+              "default": "\"icons:info-outline\"",
+              "attribute": "info-icon"
+            },
+            {
+              "kind": "field",
               "name": "autovalidate",
               "privacy": "public",
               "type": {
@@ -8443,6 +8510,15 @@
               "fieldName": "autovalidate"
             },
             {
+              "name": "info-icon",
+              "type": {
+                "text": "string"
+              },
+              "description": "Icon for the (i) button that opens a long description.\nAdmin panels can match their own icon set.",
+              "default": "\"icons:info-outline\"",
+              "fieldName": "infoIcon"
+            },
+            {
               "name": "counter",
               "type": {
                 "text": "string"
@@ -8705,6 +8781,19 @@
               "description": "Automatically validate field",
               "default": "false",
               "fieldName": "autovalidate",
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "name": "info-icon",
+              "type": {
+                "text": "string"
+              },
+              "description": "Icon for the (i) button that opens a long description.\nAdmin panels can match their own icon set.",
+              "default": "\"icons:info-outline\"",
+              "fieldName": "infoIcon",
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
@@ -9732,6 +9821,21 @@
               "description": "a counter text and textareas: \"character\", \"word\" or unset for none",
               "default": "\"none\"",
               "attribute": "counter",
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "infoIcon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Icon for the (i) button that opens a long description.\nAdmin panels can match their own icon set.",
+              "default": "\"icons:info-outline\"",
+              "attribute": "info-icon",
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
@@ -11340,6 +11444,21 @@
             },
             {
               "kind": "field",
+              "name": "infoIcon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Icon for the (i) button that opens a long description.\nAdmin panels can match their own icon set.",
+              "default": "\"icons:info-outline\"",
+              "attribute": "info-icon",
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "autovalidate",
               "privacy": "public",
               "type": {
@@ -11933,6 +12052,19 @@
               "description": "Automatically validate field",
               "default": "false",
               "fieldName": "autovalidate",
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "name": "info-icon",
+              "type": {
+                "text": "string"
+              },
+              "description": "Icon for the (i) button that opens a long description.\nAdmin panels can match their own icon set.",
+              "default": "\"icons:info-outline\"",
+              "fieldName": "infoIcon",
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
@@ -12565,6 +12697,19 @@
               "description": "Automatically validate field",
               "default": "false",
               "fieldName": "autovalidate",
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "name": "info-icon",
+              "type": {
+                "text": "string"
+              },
+              "description": "Icon for the (i) button that opens a long description.\nAdmin panels can match their own icon set.",
+              "default": "\"icons:info-outline\"",
+              "fieldName": "infoIcon",
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
@@ -14199,6 +14344,21 @@
               "default": "true",
               "attribute": "is-simple-field-type",
               "reflects": true,
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "infoIcon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Icon for the (i) button that opens a long description.\nAdmin panels can match their own icon set.",
+              "default": "\"icons:info-outline\"",
+              "attribute": "info-icon",
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
@@ -18008,6 +18168,21 @@
             },
             {
               "kind": "field",
+              "name": "infoIcon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Icon for the (i) button that opens a long description.\nAdmin panels can match their own icon set.",
+              "default": "\"icons:info-outline\"",
+              "attribute": "info-icon",
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "autovalidate",
               "privacy": "public",
               "type": {
@@ -18690,6 +18865,19 @@
               "description": "Automatically validate field",
               "default": "false",
               "fieldName": "autovalidate",
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "name": "info-icon",
+              "type": {
+                "text": "string"
+              },
+              "description": "Icon for the (i) button that opens a long description.\nAdmin panels can match their own icon set.",
+              "default": "\"icons:info-outline\"",
+              "fieldName": "infoIcon",
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
@@ -19409,6 +19597,17 @@
             },
             {
               "kind": "field",
+              "name": "infoIcon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Icon for the (i) button that opens a long description.\nAdmin panels can match their own icon set.",
+              "default": "\"icons:info-outline\"",
+              "attribute": "info-icon"
+            },
+            {
+              "kind": "field",
               "name": "voice",
               "type": {
                 "text": "null"
@@ -19723,6 +19922,15 @@
             }
           ],
           "attributes": [
+            {
+              "name": "info-icon",
+              "type": {
+                "text": "string"
+              },
+              "description": "Icon for the (i) button that opens a long description.\nAdmin panels can match their own icon set.",
+              "default": "\"icons:info-outline\"",
+              "fieldName": "infoIcon"
+            },
             {
               "name": "accept",
               "type": {
@@ -21801,6 +22009,21 @@
             },
             {
               "kind": "field",
+              "name": "infoIcon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Icon for the (i) button that opens a long description.\nAdmin panels can match their own icon set.",
+              "default": "\"icons:info-outline\"",
+              "attribute": "info-icon",
+              "inheritedFrom": {
+                "name": "SimpleFieldsCombo",
+                "module": "lib/simple-fields-combo.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "autovalidate",
               "privacy": "public",
               "type": {
@@ -23128,6 +23351,19 @@
               "description": "Automatically validate field",
               "default": "false",
               "fieldName": "autovalidate",
+              "inheritedFrom": {
+                "name": "SimpleFieldsCombo",
+                "module": "lib/simple-fields-combo.js"
+              }
+            },
+            {
+              "name": "info-icon",
+              "type": {
+                "text": "string"
+              },
+              "description": "Icon for the (i) button that opens a long description.\nAdmin panels can match their own icon set.",
+              "default": "\"icons:info-outline\"",
+              "fieldName": "infoIcon",
               "inheritedFrom": {
                 "name": "SimpleFieldsCombo",
                 "module": "lib/simple-fields-combo.js"

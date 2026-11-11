@@ -223,3 +223,18 @@ describe("simple-icon-select", () => {
     }
   });
 });
+
+describe("simple-icon-select styling parts", () => {
+  it("exposes the trigger's tile, name and chevron as parts", async () => {
+    const el = await fixture(
+      html`<simple-icon-select
+        label="Icon"
+        .icons="${ICONS}"
+      ></simple-icon-select>`,
+    );
+    const trigger = el.shadowRoot.querySelector('[part="trigger"]');
+    expect(trigger.querySelector('[part="tile"]')).to.exist;
+    expect(trigger.querySelector('[part="name"]')).to.exist;
+    expect(trigger.querySelector('[part="chevron"]')).to.exist;
+  });
+});

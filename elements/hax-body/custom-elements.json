@@ -128,6 +128,11 @@
             },
             {
               "kind": "method",
+              "name": "_applyQuickActionsText",
+              "description": "The empty-paragraph placeholder is drawn by CSS (::before content),\nwhich cannot read this.t, so pass the translated text in through a\ncustom property that inherits into the slotted paragraphs."
+            },
+            {
+              "kind": "method",
               "name": "_toggleNodeLocking",
               "parameters": [
                 {
@@ -1355,7 +1360,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ addContent: \"Add Content\", cantBeTransformed: \"Sorry, this can not be transformed!\", }"
+              "default": "{ addContent: \"Add Content\", cantBeTransformed: \"Sorry, this can not be transformed!\", typeForQuickActions: \"Type '/' for quick actions\", }"
             },
             {
               "kind": "field",
@@ -4322,6 +4327,16 @@
             },
             {
               "kind": "method",
+              "name": "excerptFor",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ],
+              "description": "A short plain-text excerpt of a block, so rows of the same type (three\nHeadings) can be told apart. Text only, read from the page; a page\nbreak shows its title."
+            },
+            {
+              "kind": "method",
               "name": "indentedElements",
               "parameters": [
                 {
@@ -6476,12 +6491,106 @@
             },
             {
               "kind": "method",
+              "name": "__afterInlineInsert",
+              "parameters": [
+                {
+                  "name": "block",
+                  "type": {
+                    "text": "Element"
+                  }
+                }
+              ],
+              "description": "After Merlin puts text into a block (an emoji or symbol, or what was\ntyped coming back on cancel), clear the block's empty-line hint right\naway rather than waiting on a mutation observer that may not see it"
+            },
+            {
+              "kind": "method",
+              "name": "__caretToEnd",
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": {
+                    "text": "Node"
+                  }
+                }
+              ],
+              "description": "Collapse the selection to the end of a block's contents"
+            },
+            {
+              "kind": "method",
+              "name": "_superDaemonClosed",
+              "parameters": [
+                {
+                  "name": "_e"
+                }
+              ],
+              "description": "Merlin closed (Escape, click away or a result): its cancel may have\nput typed text back into the block, so bring the block's empty-line\nhint up to date once that has landed"
+            },
+            {
+              "kind": "method",
               "name": "_openExternalLink",
               "parameters": [
                 {
                   "name": "link"
                 }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "_haxStoreContributeUrl",
+              "parameters": [
+                {
+                  "name": "title",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "tags",
+                  "description": "comma separated labels",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "body",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "The new-issue link (unified haxtheweb/issues queue) for a report, with\nthe title and body prefilled",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "merlinSuggestionUrl",
+              "parameters": [
+                {
+                  "name": "tags",
+                  "description": "comma separated labels",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "daemonTerm",
+                  "default": "null",
+                  "description": "what was searched in Merlin",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "The new-issue link for a Merlin command request. Synchronous so it can\nbe a real href (keyboard reachable, never caught by pop-up blocking).",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
             },
             {
               "kind": "method",
@@ -6973,7 +7082,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ \"hax-super-daemon-insert-tag\": \"_superDaemonInsert\", \"hax-register-properties\": \"_haxStoreRegisterProperties\", onbeforeunload: \"_onBeforeUnload\", paste: \"_onPaste\", command: \"_onCommand\", \"hax-register-app\": \"_haxStoreRegisterApp\", \"hax-register-stax\": \"_haxStoreRegisterStax\", \"hax-register-core-piece\": \"_haxStorePieceRegistrationManager\", \"hax-register-body\": \"_haxStoreRegisterBody\", \"hax-insert-content\": \"_haxStoreInsertContent\", \"hax-insert-content-array\": \"_haxStoreInsertMultiple\", \"hax-refresh-tray-form\": \"refreshActiveNodeForm\", \"rich-text-editor-prompt-open\": \"_richTextEditorPromptOpen\", \"rich-text-editor-prompt-confirm\": \"_richTextEditorPromptConfirm\", \"rich-text-editor-open-inline-program\": \"_handleRteInlineProgram\", }"
+              "default": "{ \"super-daemon-close\": \"_superDaemonClosed\", \"hax-super-daemon-insert-tag\": \"_superDaemonInsert\", \"hax-register-properties\": \"_haxStoreRegisterProperties\", onbeforeunload: \"_onBeforeUnload\", paste: \"_onPaste\", command: \"_onCommand\", \"hax-register-app\": \"_haxStoreRegisterApp\", \"hax-register-stax\": \"_haxStoreRegisterStax\", \"hax-register-core-piece\": \"_haxStorePieceRegistrationManager\", \"hax-register-body\": \"_haxStoreRegisterBody\", \"hax-insert-content\": \"_haxStoreInsertContent\", \"hax-insert-content-array\": \"_haxStoreInsertMultiple\", \"hax-refresh-tray-form\": \"refreshActiveNodeForm\", \"rich-text-editor-prompt-open\": \"_richTextEditorPromptOpen\", \"rich-text-editor-prompt-confirm\": \"_richTextEditorPromptConfirm\", \"rich-text-editor-open-inline-program\": \"_handleRteInlineProgram\", }"
             },
             {
               "kind": "field",
@@ -9553,6 +9662,31 @@
     },
     {
       "kind": "javascript-module",
+      "path": "lib/hax-tray-browser-styles.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "HaxTrayBrowserStyles",
+          "type": {
+            "text": "array"
+          },
+          "default": "[ css` /* block tiles: no border at rest, the icon in a sunken well, the label under it; hover and focus draw the tile */ hax-tray-button { flex: auto; font-size: var(--hax-ui-admin-font-size-xs); --hax-ui-font-size-sm: var(--hax-ui-admin-font-size-xs); --simple-toolbar-button-height: var(--hax-ui-icon); --simple-toolbar-button-width: var(--hax-ui-icon); --simple-toolbar-button-label-padding: 0; } hax-tray-button::part(button) { box-sizing: border-box; width: 100%; min-height: calc(var(--hax-ui-row-height) * 2); gap: var(--hax-ui-gap); padding: var(--hax-ui-gap) calc(var(--hax-ui-gap) / 2); border: 1px solid transparent; border-radius: var(--hax-ui-radius); background-color: transparent; color: var(--hax-ui-text); font-size: var(--hax-ui-admin-font-size-xs); line-height: 1.2; } hax-tray-button:hover::part(button), hax-tray-button:focus-within::part(button) { background-color: var(--hax-ui-hover); border-color: var(--hax-ui-line-strong); } hax-tray-button::part(icon) { box-sizing: content-box; padding: var(--hax-ui-gap) var(--hax-ui-gap-md); border-radius: var(--hax-ui-radius); background-color: var(--hax-ui-sunken); color: var(--hax-ui-accent-strong); } hax-tray-button:hover::part(icon), hax-tray-button:focus-within::part(icon) { background-color: var(--hax-ui-accent-soft); } hax-tray-button::part(label) { margin: 0; } simple-button-grid { --simple-button-grid-margin: var(--hax-ui-gap); padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg); border-bottom: 1px solid var(--hax-ui-line); box-sizing: border-box; } /* categories are HAX UI fieldset rows: 32px, chevron first, bold label, a line under, like the Configure groups */ a11y-collapse { margin: 0; --a11y-collapse-margin: 0; --a11y-collapse-border: none; --a11y-collapse-border-between: none; --a11y-collapse-vertical-padding: 0; --a11y-collapse-horizontal-padding: 0; --a11y-collapse-padding-left: 0; --a11y-collapse-heading-font-weight: 700; --a11y-collapse-heading-color: var(--hax-ui-text); /* hax:admin-chevron points right: closed as is, open turned down */ --a11y-collapse-transform-deg: 90deg; --a11y-collapse-transform-rotated-deg: 0deg; } a11y-collapse::part(heading-id) { flex-direction: row-reverse; justify-content: flex-end; gap: var(--hax-ui-gap-md); /* 32px with its line */ min-height: calc(var(--hax-ui-row-height) - 1px); padding: 0 var(--hax-ui-gap-lg); border-bottom: 1px solid var(--hax-ui-line); } a11y-collapse::part(heading) { display: block; margin: 0; font-family: var(--ddd-font-primary, sans-serif); font-size: var(--hax-ui-admin-font-size); line-height: calc(var(--hax-ui-row-height) - 1px); } a11y-collapse::part(icon) { --simple-icon-width: var(--hax-ui-icon); --simple-icon-height: var(--hax-ui-icon); } /* an empty list (Recent before anything is added) is just its row */ a11y-collapse[disabled] simple-button-grid { display: none; } a11y-collapse[disabled]::part(heading) { font-weight: 400; color: var(--hax-ui-text-muted); } `, ]",
+          "description": "The look shared by the editor tray's browsers (Blocks and Templates):\nHAX UI tiles and category rows. Tiles have no border at rest; the icon\nsits in a sunken well with its label under it, and hover or focus draws\nthe tile. Categories are HAX UI fieldset rows like the Configure groups:\n32px, chevron first, bold label, a line under. Values come from the\nHAX UI tokens the tray defines, with DDD fallbacks."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "HaxTrayBrowserStyles",
+          "declaration": {
+            "name": "HaxTrayBrowserStyles",
+            "module": "lib/hax-tray-browser-styles.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "lib/hax-tray-button.js",
       "declarations": [
         {
@@ -10878,6 +11012,16 @@
               ]
             },
             {
+              "kind": "method",
+              "name": "_haxUiSettingsForm",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Once simple-fields builds the Configure form: give its groups\n(Configure, Advanced, Developer) the HAX UI admin chevron, pointing\nright when closed and down when open (the rotation is in the\n#settingsform a11y-collapse styles), and the admin info icon on\neach field's (i) button."
+            },
+            {
               "kind": "field",
               "name": "trayStatus",
               "readonly": true
@@ -11189,6 +11333,17 @@
               "default": "true",
               "attribute": "collapsed",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "addView",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "What the add panel browses: \"blocks\" or \"templates\"",
+              "default": "\"blocks\"",
+              "attribute": "add-view"
             },
             {
               "kind": "field",
@@ -11580,6 +11735,15 @@
               "description": "id of toggled section in tray",
               "default": "\"content-edit\"",
               "fieldName": "trayDetail"
+            },
+            {
+              "name": "add-view",
+              "type": {
+                "text": "string"
+              },
+              "description": "What the add panel browses: \"blocks\" or \"templates\"",
+              "default": "\"blocks\"",
+              "fieldName": "addView"
             },
             {
               "name": "trayLabel",

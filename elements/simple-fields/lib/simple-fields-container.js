@@ -188,6 +188,14 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
           type: Boolean,
         },
         /**
+         * Icon for the (i) button that opens a long description.
+         * Admin panels can match their own icon set.
+         */
+        infoIcon: {
+          type: String,
+          attribute: "info-icon",
+        },
+        /**
          * a counter text and textareas: "character", "word" or unset for none
          */
         counter: {
@@ -382,6 +390,7 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
       super();
       this.isSimpleFieldType = true;
       this.counter = "none";
+      this.infoIcon = "icons:info-outline";
       this.autovalidate = false;
       this.disabled = false;
       this.hidden = false;
@@ -802,7 +811,7 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
       return html`
         <simple-icon-button-lite
           id="${infoId}"
-          icon="icons:info-outline"
+          icon="${this.infoIcon}"
           label="${this.label ? `${this.label} details` : `Field details`}"
           part="info-toggle"
           class="info-toggle"

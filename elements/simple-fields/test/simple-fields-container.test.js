@@ -679,3 +679,31 @@ describe("simple-fields-container with slotted field", () => {
     expect(el.field.getAttribute("aria-invalid")).to.equal("true");
   });
 });
+
+describe("simple-fields-container info icon", () => {
+  const long =
+    "A description that is long enough to sit behind the info button instead of under the label";
+  it("uses icons:info-outline by default", async () => {
+    const el = await fixture(
+      html`<simple-fields-container label="Long" description="${long}"
+        ><input slot="field" type="text"
+      /></simple-fields-container>`,
+    );
+    const toggle = el.shadowRoot.querySelector(".info-toggle");
+    expect(toggle).to.exist;
+    expect(toggle.getAttribute("icon")).to.equal("icons:info-outline");
+  });
+  it("takes another icon from info-icon", async () => {
+    const el = await fixture(
+      html`<simple-fields-container
+        label="Long"
+        info-icon="hax:admin-info"
+        description="${long}"
+        ><input slot="field" type="text"
+      /></simple-fields-container>`,
+    );
+    const toggle = el.shadowRoot.querySelector(".info-toggle");
+    expect(el.infoIcon).to.equal("hax:admin-info");
+    expect(toggle.getAttribute("icon")).to.equal("hax:admin-info");
+  });
+});

@@ -513,6 +513,7 @@ const SimplePickerBehaviors = function (SuperClass) {
             </simple-picker-option>
             <simple-icon-lite
               id="icon"
+              part="arrow"
               aria-hidden="true"
               icon="arrow-drop-down"
             ></simple-icon-lite>

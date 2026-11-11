@@ -1,6 +1,7 @@
 import { LitElement, html, css } from "lit";
 import "@haxtheweb/simple-toolbar/lib/simple-button-grid.js";
 import "@haxtheweb/a11y-collapse/a11y-collapse.js";
+import { HaxTrayBrowserStyles } from "./hax-tray-browser-styles.js";
 /**
  * `hax-stax-browser`
  * @element hax-stax-browser
@@ -11,6 +12,7 @@ import "@haxtheweb/a11y-collapse/a11y-collapse.js";
 class HaxStaxBrowser extends LitElement {
   static get styles() {
     return [
+      ...HaxTrayBrowserStyles,
       css`
         :host {
           display: flex;
@@ -21,9 +23,8 @@ class HaxStaxBrowser extends LitElement {
           max-width: 100%;
           min-width: 0;
           box-sizing: border-box;
-          overflow-x: hidden;
-          overflow-y: auto;
-          --a11y-collapse-padding-left: 8px;
+          overflow-x: clip;
+          overflow-y: visible;
         }
         :host > * {
           width: 100%;
@@ -31,36 +32,8 @@ class HaxStaxBrowser extends LitElement {
           min-width: 0;
           box-sizing: border-box;
         }
-        hax-tray-button {
-          flex: auto;
-          font-size: var(--ddd-font-size-6xs, 12px);
-          --hax-ui-font-size-sm: var(--ddd-font-size-6xs, 12px);
-          --simple-toolbar-button-height: var(--ddd-icon-xxs, 24px);
-          --simple-toolbar-button-width: var(--ddd-icon-xxs, 24px);
-        }
         hax-tray-button[small] {
-          font-size: 8px;
-          --hax-ui-font-size-sm: 8px;
-          --simple-toolbar-button-height: 16px;
-          --simple-toolbar-button-width: 16px;
-        }
-        hax-tray-button::part(button) {
-          font-size: var(--ddd-font-size-6xs, var(--hax-ui-font-size-xs));
-        }
-        simple-button-grid {
-          overflow-y: auto;
-          overflow-x: hidden;
-          --simple-button-grid-margin: var(--ddd-spacing-1);
-        }
-        a11y-collapse {
-          margin: 0;
-          --a11y-collapse-margin: 0;
-          --a11y-collapse-vertical-padding: var(--ddd-spacing-0);
-          --a11y-collapse-horizontal-padding: var(--ddd-spacing-1);
-        }
-        a11y-collapse::part(heading) {
-          margin: var(--ddd-spacing-2) 0;
-          display: block;
+          font-size: var(--hax-ui-admin-font-size-xs);
         }
       `,
     ];
@@ -95,7 +68,11 @@ class HaxStaxBrowser extends LitElement {
     }
 
     return html`
-      <a11y-collapse heading="${this.label}" heading-button>
+      <a11y-collapse
+        heading="${this.label}"
+        heading-button
+        icon="hax:admin-chevron"
+      >
         <simple-button-grid columns="4" rows="1" always-expanded>
           ${filteredItems.map(
             (stax) => html`
