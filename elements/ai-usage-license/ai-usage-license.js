@@ -35,9 +35,9 @@ class AiUsageLicense extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
           bottom: var(--ddd-spacing-9);
           inset-inline-end: var(--ddd-spacing-2);
           font-size: var(--ddd-font-size-ms);
-          /* the label is pulled up into the bottom of .license-body, a
-             fixed light card in both color schemes, so it keeps the card's
-             slateGray text in dark mode too */
+          /* bottom pulls the label up into the corner of .license-body,
+             a fixed light card in both color schemes, so it keeps the
+             card's text color in dark mode too */
           color: var(--ddd-theme-default-slateGray);
           font-style: italic;
         }

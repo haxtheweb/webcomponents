@@ -16,8 +16,13 @@
       import '../lib/hal-9000-ui/hal-9000-ui.js';
       import('../hal-9000.js').then(() => {
         window.hal = document.getElementById('hal');
-        // turn hal on
-        window.hal.enabled = true;
+        // turn hal on for a person. A browser driven by automation
+        // (navigator.webdriver, as in the contrast and dark mode gates) has
+        // no microphone to grant, and starting speech recognition there
+        // crashes headless Chromium's renderer, so the demo stays off there.
+        if (!navigator.webdriver) {
+          window.hal.enabled = true;
+        }
         var commands = window.hal.commands;
         var name = document.querySelector('hal-9000').getAttribute('responds-to');
         name = name.slice(1, -1);
@@ -181,16 +186,44 @@
         commands[`${window.hal.respondsTo} go small`] = () => {
           document.querySelector('hal-9000-ui').setAttribute('mini', '');
         };
-        document.querySelector('video-player').shadowRoot.querySelector('a11y-media-player').shadowRoot.querySelectorAll('a11y-media-button').forEach((button) => {
-          console.log(`${window.hal.respondsTo} ${button.label.toLowerCase()}`);
-          console.log(window.hal.commands);
-          commands[`${window.hal.respondsTo} ${button.label.toLowerCase()}`] = button.click.bind(button);
-          window.hal.commands = {... commands};
-        });
+        // video-player draws its media player once it scrolls into view, so
+        // the media button commands are added when those buttons exist
+        const addMediaCommands = () => {
+          const video = document.querySelector('video-player');
+          const media = video && video.shadowRoot ? video.shadowRoot.querySelector('a11y-media-player') : null;
+          if (!media || !media.shadowRoot) {
+            setTimeout(addMediaCommands, 500);
+            return;
+          }
+          media.shadowRoot.querySelectorAll('a11y-media-button').forEach((button) => {
+            console.log(`${window.hal.respondsTo} ${button.label.toLowerCase()}`);
+            console.log(window.hal.commands);
+            commands[`${window.hal.respondsTo} ${button.label.toLowerCase()}`] = button.click.bind(button);
+            window.hal.commands = {... commands};
+          });
+        };
+        addMediaCommands();
         
       });
     </script>
-    
+    <style>
+      /* the page draws its own background in both schemes, as every HAX
+         theme does, so the blocks' light-dark() text is checked against
+         what it really sits on (an unset canvas reads as white) */
+      html {
+        color-scheme: light dark;
+      }
+      body {
+        color: light-dark(
+          var(--ddd-theme-default-coalyGray),
+          var(--ddd-theme-default-white)
+        );
+        background-color: light-dark(
+          var(--ddd-theme-default-white),
+          var(--ddd-theme-default-coalyGray)
+        );
+      }
+    </style>
   </head>
   <body>
     <hal-9000-ui accent-color='blue'></hal-9000-ui>
@@ -220,9 +253,9 @@
       <video-player id="vid2" accent-color="amber" linkable>
         <video>
           <source src="//iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4" type="video/mp4">
-          <track label="English" kind="subtitles" srclang="en" src="./samples/sintel-en.vtt" default="">
-          <track label="Deutsch" kind="subtitles" srclang="de" src="./samples/sintel-de.vtt">
-          <track label="Español" kind="subtitles" srclang="es" src="./samples/sintel-es.vtt">
+          <track label="English" kind="subtitles" srclang="en" src="../../video-player/demo/samples/sintel-en.vtt" default="">
+          <track label="Deutsch" kind="subtitles" srclang="de" src="../../video-player/demo/samples/sintel-de.vtt">
+          <track label="Español" kind="subtitles" srclang="es" src="../../video-player/demo/samples/sintel-es.vtt">
         </video>
       </video-player>
       

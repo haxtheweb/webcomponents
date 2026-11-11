@@ -150,6 +150,12 @@
               "attribute": "title"
             }
           ],
+          "events": [
+            {
+              "description": "asks responsive-utility to track this element's size (sent on globalThis by registerResponsiveElement)",
+              "name": "responsive-element"
+            }
+          ],
           "attributes": [
             {
               "name": "typeof",

@@ -9,10 +9,14 @@
  *   127.0.0.1, never a live site.
  * - launchChromium(executablePath): Playwright's Chromium, or the binary
  *   given (CONTRAST_CHROMIUM and friends).
- * - openDemo(context, origin, element, timeout): a page on the element's
- *   demo with every request that leaves the local server aborted, custom
- *   elements upgraded, the network idle, fonts loaded and a short settle,
- *   so results are the same offline, locally and in CI.
+ * - openDemo(context, origin, element, timeout, options): a page on the
+ *   element's demo with every request that leaves the local server aborted,
+ *   custom elements upgraded, the network idle, fonts loaded and a short
+ *   settle, so results are the same offline, locally and in CI. With
+ *   { settled: true } it also waits for a settled render (see
+ *   waitForSettledRender), for checks that measure the page as it rests.
+ * - waitForSettledRender(page): stop CSS animations and transitions at
+ *   their end state, then wait until the page's layout stops changing.
  * - runPool(jobs, concurrency, work, label): run jobs a few at a time with
  *   progress lines.
  */
@@ -22,6 +26,11 @@ import path from "node:path";
 import process from "node:process";
 
 export const SETTLE_MS = 750;
+// a render counts as settled when the layout is unchanged for this long
+const QUIET_MS = 750;
+const POLL_MS = 250;
+// upper bound for waiting on a settled render (some demos never stop)
+const SETTLED_MAX_MS = 10000;
 
 export const LOCAL =
   /^(https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?\/|data:|blob:|about:)/;
@@ -84,7 +93,13 @@ export async function launchChromium(executablePath) {
 }
 
 /** open an element's demo in a context and wait for it to settle */
-export async function openDemo(context, origin, element, timeout) {
+export async function openDemo(
+  context,
+  origin,
+  element,
+  timeout,
+  options = {},
+) {
   await context.route(
     (url) => !LOCAL.test(url.href),
     (route) => route.abort(),
@@ -108,7 +123,96 @@ export async function openDemo(context, origin, element, timeout) {
     .catch(() => {});
   await page.evaluate(() => (document.fonts ? document.fonts.ready : null));
   await page.waitForTimeout(SETTLE_MS);
+  if (options.settled) {
+    await waitForSettledRender(page);
+  }
   return page;
+}
+
+/**
+ * Invariant: a measurement taken after this sees the page at rest, the same
+ * on a fast or a slow machine.
+ *
+ * Elements that finish rendering after load (a score drawn by a worker, a
+ * chunked list, a fade-in) move and resize what is around them, and a
+ * slower runner can be measured part way through. So: every CSS animation
+ * and transition, shadow trees included, is moved to its end state (one
+ * that never ends is cancelled, which leaves the element's resting style),
+ * then the layout (the box of every element, shadow trees included, and the
+ * scroll position) is sampled until it has not changed for QUIET_MS. That
+ * is done twice, since a render that lands late can start new animations.
+ * Bounded by SETTLED_MAX_MS; a page still changing then is measured as is.
+ */
+async function waitForSettledRender(page) {
+  const deadline = Date.now() + SETTLED_MAX_MS;
+  for (let pass = 0; pass < 2; pass++) {
+    await page.evaluate(freezeMotion).catch(() => {});
+    let last = null;
+    let quietSince = Date.now();
+    while (Date.now() < deadline) {
+      const now = await page.evaluate(layoutFingerprint).catch(() => null);
+      if (now === null) {
+        return;
+      }
+      if (now !== last) {
+        last = now;
+        quietSince = Date.now();
+      } else if (Date.now() - quietSince >= QUIET_MS) {
+        break;
+      }
+      await page.waitForTimeout(POLL_MS);
+    }
+  }
+}
+
+// runs in the page: end every running CSS animation and transition. A
+// document's getAnimations() leaves out shadow trees, so each shadow root
+// is asked too.
+function freezeMotion() {
+  const roots = [document];
+  const walk = (root) => {
+    for (const el of root.querySelectorAll("*")) {
+      if (el.shadowRoot) {
+        roots.push(el.shadowRoot);
+        walk(el.shadowRoot);
+      }
+    }
+  };
+  walk(document);
+  for (const root of roots) {
+    if (!root.getAnimations) {
+      continue;
+    }
+    for (const animation of root.getAnimations()) {
+      try {
+        animation.finish();
+      } catch (e) {
+        // an infinite animation cannot finish
+        animation.cancel();
+      }
+    }
+  }
+}
+
+// runs in the page: one string for the box of every element and the scroll
+function layoutFingerprint() {
+  const parts = [globalThis.scrollX, globalThis.scrollY];
+  const walk = (root) => {
+    for (const el of root.querySelectorAll("*")) {
+      const r = el.getBoundingClientRect();
+      parts.push(
+        Math.round(r.left),
+        Math.round(r.top),
+        Math.round(r.width),
+        Math.round(r.height),
+      );
+      if (el.shadowRoot) {
+        walk(el.shadowRoot);
+      }
+    }
+  };
+  walk(document);
+  return parts.join(",");
 }
 
 /** run jobs with a few workers; work(job) resolves to anything */

@@ -125,13 +125,13 @@
       "order": 0,
       "src": "simple-modal.motion.json",
       "file": "lib/simple-modal.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/simple-modal.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

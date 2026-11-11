@@ -17,9 +17,12 @@
   "slots": [
     "(default)"
   ],
-  "events": [],
+  "events": [
+    "delete-responsive-element",
+    "responsive-element"
+  ],
   "hax": {},
-  "surfaceHash": "eb83b902258f",
+  "surfaceHash": "a2dbae6f58f6",
   "walkthroughs": [],
   "videos": [],
   "motion": {

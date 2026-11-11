@@ -27,7 +27,7 @@
       "name": "t",
       "property": "t",
       "type": "object",
-      "default": "{ label: \"Post Card\", send: \"To\", receive: \"From\", }",
+      "default": "{ ...this.t, label: \"Post Card\", send: \"To\", receive: \"From\", }",
       "description": "",
       "hax": null
     },
@@ -184,7 +184,7 @@
       }
     ]
   },
-  "surfaceHash": "8acd6ee27a4f",
+  "surfaceHash": "820ebcbfddae",
   "walkthroughs": [
     {
       "id": "",
@@ -192,13 +192,13 @@
       "order": 0,
       "src": "post-card.motion.json",
       "file": "lib/post-card.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/post-card.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

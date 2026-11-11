@@ -285,7 +285,7 @@
     {
       "tag": "activity-box",
       "title": "Activity Box",
-      "description": "Small styled heading block.",
+      "description": "Small styled heading block that sets up an activity A DDD block: the icon is the header chip, the tag is the header title under an \"Activity\" label and the slotted content is the body. Custom properties (kept from the original element): --activity-box-container-padding, --activity-box-container-p...",
       "package": "@haxtheweb/course-design",
       "import": "@haxtheweb/course-design/lib/activity-box.js",
       "type": "grid",
@@ -427,12 +427,12 @@
     },
     {
       "tag": "app-hax-site-bar",
-      "title": "App Hax Site Bar",
+      "title": "",
       "description": "",
       "package": "@haxtheweb/app-hax",
       "import": "@haxtheweb/app-hax/lib/v2/app-hax-site-bar.js",
       "type": "element",
-      "haxCapable": true,
+      "haxCapable": false,
       "tags": []
     },
     {
@@ -610,12 +610,12 @@
     },
     {
       "tag": "beaker-broker",
-      "title": "Beaker Broker",
+      "title": "",
       "description": "An element to help check for and broker calls to read and write beaker browser dat sites. This allows for data binding and figuring out if we're in an environment that we can even use this.",
       "package": "@haxtheweb/beaker-broker",
       "import": "@haxtheweb/beaker-broker/beaker-broker.js",
       "type": "element",
-      "haxCapable": true,
+      "haxCapable": false,
       "tags": []
     },
     {
@@ -766,86 +766,6 @@
       "haxCapable": false,
       "tags": [],
       "walkthrough": true
-    },
-    {
-      "tag": "chat-agent",
-      "title": "",
-      "description": "chatbot agent style chat widget",
-      "package": "@haxtheweb/chat-agent",
-      "import": "@haxtheweb/chat-agent/chat-agent.js",
-      "type": "element",
-      "haxCapable": false,
-      "tags": []
-    },
-    {
-      "tag": "chat-button",
-      "title": "",
-      "description": "",
-      "package": "@haxtheweb/chat-agent",
-      "import": "@haxtheweb/chat-agent/lib/chat-button.js",
-      "type": "element",
-      "haxCapable": false,
-      "tags": []
-    },
-    {
-      "tag": "chat-control-bar",
-      "title": "",
-      "description": "",
-      "package": "@haxtheweb/chat-agent",
-      "import": "@haxtheweb/chat-agent/lib/chat-control-bar.js",
-      "type": "element",
-      "haxCapable": false,
-      "tags": []
-    },
-    {
-      "tag": "chat-developer-panel",
-      "title": "",
-      "description": "",
-      "package": "@haxtheweb/chat-agent",
-      "import": "@haxtheweb/chat-agent/lib/chat-developer-panel.js",
-      "type": "element",
-      "haxCapable": false,
-      "tags": []
-    },
-    {
-      "tag": "chat-input",
-      "title": "",
-      "description": "",
-      "package": "@haxtheweb/chat-agent",
-      "import": "@haxtheweb/chat-agent/lib/chat-input.js",
-      "type": "element",
-      "haxCapable": false,
-      "tags": []
-    },
-    {
-      "tag": "chat-interface",
-      "title": "",
-      "description": "",
-      "package": "@haxtheweb/chat-agent",
-      "import": "@haxtheweb/chat-agent/lib/chat-interface.js",
-      "type": "element",
-      "haxCapable": false,
-      "tags": []
-    },
-    {
-      "tag": "chat-message",
-      "title": "",
-      "description": "",
-      "package": "@haxtheweb/chat-agent",
-      "import": "@haxtheweb/chat-agent/lib/chat-message.js",
-      "type": "element",
-      "haxCapable": false,
-      "tags": []
-    },
-    {
-      "tag": "chat-suggestion",
-      "title": "",
-      "description": "",
-      "package": "@haxtheweb/chat-agent",
-      "import": "@haxtheweb/chat-agent/lib/chat-suggestion.js",
-      "type": "element",
-      "haxCapable": false,
-      "tags": []
     },
     {
       "tag": "citation-element",
@@ -1476,7 +1396,7 @@
       "package": "@haxtheweb/example-haxcms-theme",
       "import": "@haxtheweb/example-haxcms-theme/example-haxcms-theme.js",
       "type": "element",
-      "haxCapable": true,
+      "haxCapable": false,
       "tags": ["Other"]
     },
     {
@@ -1551,12 +1471,19 @@
     {
       "tag": "flash-card-set",
       "title": "Flash Card Set",
-      "description": "",
+      "description": "Practice concepts with a deck of front-and-back flash cards.",
       "package": "@haxtheweb/flash-card",
       "import": "@haxtheweb/flash-card/lib/flash-card-set.js",
       "type": "element",
       "haxCapable": true,
-      "tags": []
+      "tags": [
+        "Instructional",
+        "self check",
+        "flash card",
+        "flash cards",
+        "quiz",
+        "educational"
+      ]
     },
     {
       "tag": "full-width-image",
@@ -1614,7 +1541,7 @@
     {
       "tag": "github-preview",
       "title": "Github Preview",
-      "description": "A simple element that displays information about a github repository.",
+      "description": "A simple element that displays information about a github repository. A DDD block: GitHub chip, \"GitHub · Repository\" label, \"org / repo\" title and an open-on-GitHub header action; the description in the body (and the README in extended mode); language, stars and forks in the footer. Fluid up to...",
       "package": "@haxtheweb/github-preview",
       "import": "@haxtheweb/github-preview/github-preview.js",
       "type": "element",
@@ -1842,7 +1769,7 @@
       "package": "@haxtheweb/hax-app-installer",
       "import": "@haxtheweb/hax-app-installer/hax-app-installer.js",
       "type": "element",
-      "haxCapable": true,
+      "haxCapable": false,
       "tags": []
     },
     {
@@ -1982,7 +1909,7 @@
       "package": "@haxtheweb/hax-logo",
       "import": "@haxtheweb/hax-logo/hax-logo.js",
       "type": "element",
-      "haxCapable": true,
+      "haxCapable": false,
       "tags": ["Other", "hax", "promo", "dev", "developer"],
       "walkthrough": true
     },
@@ -2418,12 +2345,12 @@
     },
     {
       "tag": "haxcms-learning-activity-report",
-      "title": "Haxcms Learning Activity Report",
+      "title": "",
       "description": "The Learning activity report of site Insights: what on the selected pages can send learner statements (xAPI), counted from page content against the generated xAPI vocabulary. Works with no learner data; learner results stay an empty state until a server or LRS adapter exists. Self-contained so it...",
       "package": "@haxtheweb/haxcms-elements",
       "import": "@haxtheweb/haxcms-elements/lib/core/insights/learning-activity-report.js",
       "type": "element",
-      "haxCapable": true,
+      "haxCapable": false,
       "tags": []
     },
     {
@@ -2543,7 +2470,7 @@
       "package": "@haxtheweb/disqus-embed",
       "import": "@haxtheweb/disqus-embed/lib/haxcms-site-disqus.js",
       "type": "element",
-      "haxCapable": true,
+      "haxCapable": false,
       "tags": [
         "Other",
         "comment",
@@ -2906,7 +2833,7 @@
     {
       "tag": "insights-accessibility",
       "title": "",
-      "description": "Accessibility screen of Reports (Insights): WCAG 2.0 AA checks a script can make from stored HTML, heading order, theme contrast and an alt text review table whose status updates as a person types. Edits stay on this screen; saving many pages at once is not available yet. See haxtheweb/issues#3180.",
+      "description": "Accessibility screen of Reports (Insights): WCAG 2.0 AA checks a script can make from stored HTML, heading order, theme contrast and an alt text review table whose status updates as a person types. Save alt text writes the edits through the site's block operations API, one change per page and a c...",
       "package": "@haxtheweb/haxcms-elements",
       "import": "@haxtheweb/haxcms-elements/lib/core/insights/sections/insights-accessibility.js",
       "type": "element",
@@ -3291,7 +3218,7 @@
     {
       "tag": "lrn-vocab",
       "title": "Vocab",
-      "description": "Vocabulary term with visual treatment and semantic meaning.",
+      "description": "Vocabulary term with visual treatment and semantic meaning. Reads like vocab-term inside a sentence: a dotted underline (solid on hover, DDD focus ring) that opens the definition in a large modal headed by the same Vocabulary chip and label. --lrn-vocab-border still works: its width, style and co...",
       "package": "@haxtheweb/lrn-vocab",
       "import": "@haxtheweb/lrn-vocab/lrn-vocab.js",
       "type": "element",
@@ -3306,7 +3233,7 @@
       "package": "@haxtheweb/lrndesign-chart",
       "import": "@haxtheweb/lrndesign-chart/lib/lrndesign-bar.js",
       "type": "element",
-      "haxCapable": true,
+      "haxCapable": false,
       "tags": []
     },
     {
@@ -3316,7 +3243,7 @@
       "package": "@haxtheweb/lrndesign-chart",
       "import": "@haxtheweb/lrndesign-chart/lrndesign-chart.js",
       "type": "element",
-      "haxCapable": true,
+      "haxCapable": false,
       "tags": [],
       "walkthrough": true
     },
@@ -3348,7 +3275,7 @@
       "package": "@haxtheweb/lrndesign-chart",
       "import": "@haxtheweb/lrndesign-chart/lib/lrndesign-line.js",
       "type": "element",
-      "haxCapable": true,
+      "haxCapable": false,
       "tags": []
     },
     {
@@ -3358,7 +3285,7 @@
       "package": "@haxtheweb/lrndesign-chart",
       "import": "@haxtheweb/lrndesign-chart/lib/lrndesign-pie.js",
       "type": "element",
-      "haxCapable": true,
+      "haxCapable": false,
       "tags": []
     },
     {
@@ -3727,6 +3654,26 @@
       "import": "@haxtheweb/haxcms-elements/lib/ui-components/progress/my-learning.js",
       "type": "element",
       "haxCapable": true,
+      "tags": []
+    },
+    {
+      "tag": "my-learning-button",
+      "title": "",
+      "description": "My learning: this page's progress, for every visitor A pill button with a ring around a chart icon filled to the percent of the page open now (live as the visitor reads and engages), the label \"My learning\" and the percent (\"49%\"). Once the page is done the ring is a filled disc with a check, and...",
+      "package": "@haxtheweb/haxcms-elements",
+      "import": "@haxtheweb/haxcms-elements/lib/ui-components/progress/my-learning-button.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "my-learning-panel",
+      "title": "",
+      "description": "This page and All pages: what the visitor has done, from this device The panel the My learning button opens (haxtheweb/issues#3267, #3269), built on the DDD block anatomy: a dialog with two tabs. - This page: the page's ring and \"49% · 1 of 4 done\", then one row per item of pageProgress() (readin...",
+      "package": "@haxtheweb/haxcms-elements",
+      "import": "@haxtheweb/haxcms-elements/lib/ui-components/progress/my-learning-panel.js",
+      "type": "element",
+      "haxCapable": false,
       "tags": []
     },
     {
@@ -4173,7 +4120,7 @@
     {
       "tag": "q-r",
       "title": "Q R",
-      "description": "wrapper for a qr code.",
+      "description": "wrapper for a qr code. The code sits on its own white tile (black on white in either colour scheme so phones can scan it) inside a small framed figure, with the title as a link to data under it. The figure is the \"frame\" part and the tile the \"tile\" part, so a surface that already frames it (a th...",
       "package": "@haxtheweb/q-r",
       "import": "@haxtheweb/q-r/q-r.js",
       "type": "element",
@@ -4566,12 +4513,12 @@
     },
     {
       "tag": "rpg-character-builder",
-      "title": "Rpg Character Builder",
+      "title": "",
       "description": "Pick every part of an rpg-character with a live preview, and get back a character code that recreates it anywhere (<rpg-character code=\"...\">).",
       "package": "@haxtheweb/rpg-character",
       "import": "@haxtheweb/rpg-character/lib/rpg-character-builder.js",
       "type": "element",
-      "haxCapable": true,
+      "haxCapable": false,
       "tags": []
     },
     {
@@ -4861,12 +4808,12 @@
     },
     {
       "tag": "simple-fields",
-      "title": "Simple Fields",
+      "title": "",
       "description": "Uses JSON Schema to display a series of fields",
       "package": "@haxtheweb/simple-fields",
       "import": "@haxtheweb/simple-fields/simple-fields.js",
       "type": "element",
-      "haxCapable": true,
+      "haxCapable": false,
       "tags": [],
       "walkthrough": true
     },
@@ -5505,23 +5452,13 @@
       "tags": []
     },
     {
-      "tag": "site-ai-chat",
-      "title": "",
-      "description": "",
-      "package": "@haxtheweb/haxcms-elements",
-      "import": "@haxtheweb/haxcms-elements/lib/ui-components/magic/site-ai-chat.js",
-      "type": "element",
-      "haxCapable": false,
-      "tags": []
-    },
-    {
       "tag": "site-available-themes",
       "title": "",
       "description": "Site Available Themes Displays available HAXcms themes in a gallery or table format for documentation purposes Includes dynamic theme switching capabilities for live preview",
       "package": "@haxtheweb/haxcms-elements",
       "import": "@haxtheweb/haxcms-elements/lib/ui-components/utilities/site-available-themes.js",
       "type": "element",
-      "haxCapable": true,
+      "haxCapable": false,
       "tags": []
     },
     {
@@ -5617,7 +5554,7 @@
     {
       "tag": "site-menu",
       "title": "",
-      "description": "Menu hierarchy Learner progress: once the visitor has engaged with a trackable activity on the site (questions, checklists, games, media), each page gets a mark (done, in progress, visited, not started; spoken after the title) and the menu shows \"N of M pages done\" above it. Vertical menus only;...",
+      "description": "Menu hierarchy Learner progress (haxtheweb/issues#3267): only the item of the page open now shows a ring around its icon area, filled to that page's percent as the visitor reads and engages, and a filled disc with a check once the page is done (it bursts once the first time that happens while it...",
       "package": "@haxtheweb/haxcms-elements",
       "import": "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu.js",
       "type": "element",
@@ -6349,7 +6286,7 @@
       "package": "@haxtheweb/web-container",
       "import": "@haxtheweb/web-container/web-container.js",
       "type": "element",
-      "haxCapable": true,
+      "haxCapable": false,
       "tags": ["Other", "web", "developer", "code"],
       "walkthrough": true
     },
@@ -6360,7 +6297,7 @@
       "package": "@haxtheweb/web-container",
       "import": "@haxtheweb/web-container/lib/web-container-doc-player.js",
       "type": "element",
-      "haxCapable": true,
+      "haxCapable": false,
       "tags": ["Other", "web", "developer", "code", "hax"]
     },
     {
