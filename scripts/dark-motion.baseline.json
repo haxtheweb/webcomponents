@@ -92,9 +92,6 @@
     "hax-body": {
       "dark-ignored": {
         "hax-gizmo-browser": 1
-      },
-      "motion": {
-        "transition opacity on hax-gizmo-browser >> a11y-collapse": 1
       }
     },
     "haxcms-elements": {

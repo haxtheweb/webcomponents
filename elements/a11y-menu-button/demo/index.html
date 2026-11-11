@@ -12,6 +12,17 @@
       import "../a11y-menu-button.js";
       import "../lib/a11y-menu-button-item.js";
     </script>
+      <style>
+      /* an explicit page surface for both color schemes, so the demo (and
+         the contrast check, which reads a transparent page as white) puts
+         dark-mode text on a dark page */
+      body {
+        background-color: light-dark(
+          var(--ddd-theme-default-white),
+          var(--ddd-theme-default-potentialMidnight)
+        );
+      }
+    </style>
   </head>
   <body>
     <div class="vertical-section-container centered">

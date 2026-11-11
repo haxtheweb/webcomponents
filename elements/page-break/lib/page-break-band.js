@@ -152,7 +152,8 @@ export const PageBreakBandStyles = css`
     min-width: 0;
     max-width: 100%;
     gap: var(--ddd-spacing-1) var(--ddd-spacing-2);
-    opacity: 0.55;
+    /* quieter than the title at rest, but the chip text keeps AA contrast */
+    opacity: 0.85;
     transition: opacity var(--page-break-speed) ease;
   }
   .pb-chip {

@@ -94,7 +94,7 @@
       "name": "linkLabel",
       "property": "linkLabel",
       "type": "string",
-      "default": "\"Get link\"",
+      "default": "",
       "description": "label for copy link's button",
       "hax": {
         "input": "textfield",
@@ -228,7 +228,7 @@
       ]
     }
   },
-  "surfaceHash": "88b0cd819ad8",
+  "surfaceHash": "8e01d50dd22e",
   "walkthroughs": [
     {
       "id": "",
@@ -236,13 +236,13 @@
       "order": 0,
       "src": "relative-heading.motion.json",
       "file": "lib/relative-heading.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/relative-heading.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

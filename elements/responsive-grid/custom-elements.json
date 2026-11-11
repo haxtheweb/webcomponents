@@ -402,12 +402,6 @@
           ],
           "events": [
             {
-              "name": "responsive-element",
-              "type": {
-                "text": "CustomEvent"
-              }
-            },
-            {
               "name": "screen-changed",
               "type": {
                 "text": "CustomEvent"

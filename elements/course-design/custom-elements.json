@@ -1264,10 +1264,6 @@
               },
               "default": "false",
               "attribute": "_fullscreen"
-            },
-            {
-              "kind": "field",
-              "name": "_disposer"
             }
           ],
           "attributes": [

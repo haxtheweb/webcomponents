@@ -150,6 +150,14 @@ export class LrndesignSidenote extends DDD {
             var(--ddd-theme-default-white)
           );
         }
+        /* an accent-color header bar takes the accent's paired ink, which
+           stays legible on accent-1 with or without the dark attribute */
+        :host([accent-color]:not([accent-color="grey"])) #label {
+          color: light-dark(
+            var(--simple-colors-default-theme-accent-12),
+            var(--ddd-theme-default-white)
+          );
+        }
         #content {
           display: block;
           padding-block: var(--ddd-spacing-3);

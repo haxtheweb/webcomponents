@@ -3,6 +3,19 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <!-- the page follows the visitor's color scheme with a DDD surface, as a
+         DDD site does, so the demo shows the element on the page it gets -->
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+      body {
+        background-color: light-dark(
+          var(--ddd-theme-default-white),
+          var(--ddd-theme-default-potentialMidnight)
+        );
+      }
+    </style>
     <title>ProductOffering: product-offering Demo</title>
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
 
@@ -18,8 +31,20 @@
         grid-row-gap: 10px; 
         grid-template-columns: 50% 50%;
         border-style: solid;
-        border-color: var(--product-offering-primary-color, #e8f4f8);
-        background-color: var(--product-offering-primary-color, #e8f4f8);
+        border-color: var(
+          --product-offering-primary-color,
+          light-dark(
+            var(--ddd-theme-default-skyMaxLight),
+            var(--ddd-theme-default-potentialMidnight)
+          )
+        );
+        background-color: var(
+          --product-offering-primary-color,
+          light-dark(
+            var(--ddd-theme-default-skyMaxLight),
+            var(--ddd-theme-default-potentialMidnight)
+          )
+        );
         padding: 2%;
         box-shadow: 10px 10px 25px 0 rgb(0 0 0 / 10%);
         margin: 4%;

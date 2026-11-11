@@ -49,7 +49,7 @@
       "name": "directions",
       "property": "directions",
       "type": "string",
-      "default": "\"Drag and drop file to replace\"",
+      "default": "",
       "description": "",
       "hax": null
     },
@@ -162,7 +162,7 @@
       }
     ]
   },
-  "surfaceHash": "b1733a4ef77f",
+  "surfaceHash": "725f5e850abd",
   "walkthroughs": [
     {
       "id": "",
@@ -170,13 +170,13 @@
       "order": 0,
       "src": "place-holder.motion.json",
       "file": "lib/place-holder.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/place-holder.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

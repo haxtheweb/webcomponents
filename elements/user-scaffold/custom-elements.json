@@ -36,6 +36,11 @@
             },
             {
               "kind": "method",
+              "name": "_scheduleInteractionTick",
+              "description": "One step of the idle counter: same cadence and cap as the old\nalways-on 300ms interval, but it stops once the cap is reached instead of\nwaking the page 3 times a second forever. interactionInterval holds the\npending timer id (null when not counting)."
+            },
+            {
+              "kind": "method",
               "name": "_onStorage",
               "parameters": [
                 {

@@ -622,7 +622,13 @@ const ChartistRenderSuper = function (SuperClass) {
             padding: var(--chartist-padding, 0px);
             margin: var(--chartist-margin, 15px 0);
             background-color: var(--chartist-bg-color, transparent);
-            color: var(--chartist-text-color, #000);
+            color: var(
+              --chartist-text-color,
+              light-dark(
+                var(--ddd-theme-default-black),
+                var(--ddd-theme-default-white)
+              )
+            );
           }
 
           .sr-only {
@@ -633,11 +639,11 @@ const ChartistRenderSuper = function (SuperClass) {
           }
 
           .ct-axis-title {
-            fill: var(--chartist-text-color);
+            fill: var(--chartist-text-color, currentColor);
           }
 
           ::slotted(table) {
-            border: 1px solid var(--chartist-text-color);
+            border: 1px solid var(--chartist-text-color, currentColor);
             border-collapse: collapse;
             width: 100%;
             max-width: 100%;
@@ -645,10 +651,30 @@ const ChartistRenderSuper = function (SuperClass) {
           }
 
           .ct-label {
-            fill: var(--chartist-text-color, #000);
-            color: var(--chartist-text-color, #000);
+            fill: var(
+              --chartist-text-color,
+              light-dark(
+                var(--ddd-theme-default-black),
+                var(--ddd-theme-default-white)
+              )
+            );
+            color: var(
+              --chartist-text-color,
+              light-dark(
+                var(--ddd-theme-default-black),
+                var(--ddd-theme-default-white)
+              )
+            );
             font-size: var(--chartist-text-size, 0.75rem);
             line-height: var(--chartist-line-height, 1);
+          }
+
+          /* pie and donut labels sit on the fixed series colors, not on the
+             page, so they stay black in both color schemes */
+          .ct-chart-pie .ct-label,
+          .ct-chart-donut .ct-label {
+            fill: var(--chartist-text-color, var(--ddd-theme-default-black));
+            color: var(--chartist-text-color, var(--ddd-theme-default-black));
           }
 
           .ct-grid {
@@ -1605,9 +1631,9 @@ const ChartistRenderSuper = function (SuperClass) {
  ----------------|-------------|----------
  `--chartist-bg-padding` | padding inside chartist-render | 0px
  `--chartist-bg-margin` | margin chartist chartist-render | 15px 0
- `--chartist-text-color` | default label color for charts | #000
+ `--chartist-text-color` | default label color for charts | black (white in dark mode)
  `--chartist-bg-color` | default label color for charts | #000
- `--chartist-text-color` | default label color for charts | #000
+ `--chartist-text-color` | default label color for charts | black (white in dark mode)
  `--chartist-color-a` | background color for 1st series |  #d70206
  `--chartist-color-label-a` | color for 1st series label |  `--chartist-label-color`
  `--chartist-color-b` | background color for 2nd series |  #f05b4f
