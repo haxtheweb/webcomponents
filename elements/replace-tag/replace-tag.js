@@ -270,7 +270,7 @@ class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
     }
     div {
       font-size: 12px;
-      color: #333333;
+      color: light-dark(var(--ddd-theme-default-coalyGray, #262626), var(--ddd-theme-default-limestoneLight, #e4e5e7));
     }
     :host(:not([import-method="click"])) {
       background-color: #FEFEFE33;

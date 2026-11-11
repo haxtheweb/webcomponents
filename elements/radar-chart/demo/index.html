@@ -8,6 +8,24 @@
     <script type="module">
       import '../radar-chart.js';
     </script>
+    <style>
+      /* the page draws its own background in both schemes, as every HAX
+         theme does, so light-dark() text is checked against what it really
+         sits on (an unset canvas reads as white to axe in dark mode) */
+      html {
+        color-scheme: light dark;
+      }
+      body {
+        color: light-dark(
+          var(--ddd-theme-default-coalyGray, #262626),
+          var(--ddd-theme-default-white, #ffffff)
+        );
+        background-color: light-dark(
+          var(--ddd-theme-default-white, #ffffff),
+          var(--ddd-theme-default-coalyGray, #262626)
+        );
+      }
+    </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
