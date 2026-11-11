@@ -107,6 +107,43 @@ describe("FigureLabel test", () => {
     expect(descriptionConfig.inputMethod).to.equal("textfield");
   });
 
+  it("labels its HAX settings and uses a figure gizmo icon", () => {
+    const haxProps = element.constructor.haxProperties;
+    const configure = haxProps.settings.configure;
+    expect(configure.find((c) => c.property === "title").title).to.equal(
+      "Figure number",
+    );
+    expect(configure.find((c) => c.property === "description").title).to.equal(
+      "Description",
+    );
+    expect(haxProps.gizmo.icon).to.equal("editor:insert-photo");
+    expect(JSON.stringify(haxProps)).to.not.include("icons:android");
+  });
+
+  it("applies authored text colours in light and dark", async () => {
+    const el = await fixture(
+      html`<figure-label
+        title="1.3"
+        description="Microbes"
+        style="--ddd-component-figure-label-title-text: rgb(1, 2, 3); --ddd-component-figure-label-description-text: rgb(4, 5, 6);"
+      ></figure-label>`,
+    );
+    await el.updateComplete;
+    const title = el.shadowRoot.querySelector("#title");
+    const description = el.shadowRoot.querySelector("#description");
+    for (const scheme of ["light", "dark"]) {
+      el.style.colorScheme = scheme;
+      expect(getComputedStyle(title).color).to.equal("rgb(1, 2, 3)");
+      expect(getComputedStyle(description).color).to.equal("rgb(4, 5, 6)");
+    }
+    // without an authored colour the DDD default still switches
+    el.style.removeProperty("--ddd-component-figure-label-title-text");
+    el.style.colorScheme = "light";
+    const light = getComputedStyle(title).color;
+    el.style.colorScheme = "dark";
+    expect(getComputedStyle(title).color).to.not.equal(light);
+  });
+
   // Accessibility tests
   it("passes the a11y audit", async () => {
     await expect(element).shadowDom.to.be.accessible();

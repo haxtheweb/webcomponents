@@ -41,7 +41,6 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/a11y-behaviors": "^26.8.0",
     "@haxtheweb/d-d-d": "^26.8.0",
     "@haxtheweb/i18n-manager": "^26.8.0",
     "@haxtheweb/lazy-image-helpers": "^26.8.0",

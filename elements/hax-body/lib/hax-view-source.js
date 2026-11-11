@@ -46,31 +46,89 @@ class HaxViewSource extends I18NMixin(LitElement) {
           padding: 0;
           height: calc(100vh - 200px);
         }
-        .updatecontent {
-          --hax-ui-color: white;
-          --hax-ui-background-color: var(--ddd-theme-default-skyBlue);
-        }
-
+        /* HAX UI tool row: labeled 32px buttons in their usual order,
+           Update HTML as the one primary, Copy HTML (changes nothing) last
+           and quiet */
         hax-toolbar {
           flex: 0 0 auto;
-          background-color: var(--hax-ui-background-color);
+          background-color: var(
+            --hax-ui-surface,
+            var(--hax-ui-background-color)
+          );
+          border-bottom: 1px solid
+            var(--hax-ui-line, var(--hax-ui-border-color));
         }
         hax-toolbar::part(buttons) {
           display: flex;
-          justify-content: center;
-          align-items: stretch;
-          margin: 0 auto;
+          flex-wrap: nowrap;
+          justify-content: flex-start;
+          align-items: center;
+          gap: var(--hax-ui-gap, 4px);
+          margin: 0;
+          padding: calc(var(--hax-ui-gap, 4px) / 2) var(--hax-ui-gap-lg, 12px);
         }
         hax-tray-button {
-          flex: 1 1 auto;
+          flex: 0 0 auto;
+          --simple-toolbar-button-height: var(--hax-ui-icon, 16px);
+          --simple-toolbar-button-width: var(--hax-ui-icon, 16px);
+        }
+        hax-tray-button.copycontent {
+          margin-inline-start: auto;
+        }
+        hax-tray-button::part(button) {
+          box-sizing: border-box;
+          height: var(--hax-ui-row-height, 32px);
+          gap: var(--hax-ui-gap-md, 8px);
+          padding: 0 var(--hax-ui-gap-lg, 12px);
+          border: 1px solid
+            var(--hax-ui-line-strong, var(--hax-ui-border-color));
+          border-radius: var(--hax-ui-radius, 4px);
+          background-color: var(
+            --hax-ui-surface,
+            var(--hax-ui-background-color)
+          );
+          color: var(--hax-ui-text, var(--hax-ui-color));
+          font-size: var(--hax-ui-admin-font-size, 14px);
+          text-transform: none;
+        }
+        hax-tray-button::part(label) {
+          margin: 0;
+        }
+        hax-tray-button:hover::part(button),
+        hax-tray-button:focus-within::part(button) {
+          background-color: var(
+            --hax-ui-hover,
+            var(--hax-ui-background-color-secondary)
+          );
+        }
+        hax-tray-button.updatecontent::part(button) {
+          border-color: var(--hax-ui-primary);
+          background-color: var(--hax-ui-primary);
+          color: var(--hax-ui-on-primary);
+          font-weight: 700;
+        }
+        hax-tray-button.updatecontent:hover::part(button),
+        hax-tray-button.updatecontent:focus-within::part(button) {
+          border-color: var(--hax-ui-primary-hover);
+          background-color: var(--hax-ui-primary-hover);
+        }
+        hax-tray-button.copycontent::part(button) {
+          border-color: transparent;
+          background-color: transparent;
         }
         simple-toolbar-menu {
           --simple-toolbar-button-border-color: var(--hax-ui-border-color);
         }
         /** This is mobile layout for controls */
         @media screen and (max-width: 800px) {
-          hax-tray-button {
-            flex: 0 1 auto;
+          /* icon-only on a phone; the label stays the accessible name */
+          hax-tray-button::part(label) {
+            display: none;
+          }
+          hax-tray-button::part(button) {
+            width: var(--hax-ui-row-height, 32px);
+            padding: 0;
+            justify-content: center;
           }
         }
       `,
@@ -80,20 +138,22 @@ class HaxViewSource extends I18NMixin(LitElement) {
     return html`${
       this.hidden
         ? ``
-        : html` <hax-toolbar>
+        : html` <hax-toolbar always-expanded>
               <hax-tray-button
                 label="${this.t.updateHTML}"
-                icon="icons:check"
+                icon="hax:admin-check"
                 @click="${this.updateBodyFromHTML}"
-                icon-position="top"
+                icon-position="left"
+                show-text-label
                 class="updatecontent"
               >
               </hax-tray-button>
               <hax-tray-button
                 @click="${this.scrubContent}"
-                icon="editor:format-clear"
+                icon="hax:admin-clear-format"
                 label="${this.t.cleanFormatting}"
-                icon-position="top"
+                icon-position="left"
+                show-text-label
               >
               </hax-tray-button>
               ${
@@ -101,9 +161,10 @@ class HaxViewSource extends I18NMixin(LitElement) {
                   ? html`
                       <hax-tray-button
                         label="${this.t.prettifyHtml}"
-                        icon="hax:format-textblock"
+                        icon="hax:admin-prettify"
                         @click="${this.prettifyContent}"
-                        icon-position="top"
+                        icon-position="left"
+                        show-text-label
                       >
                       </hax-tray-button>
                     `
@@ -111,9 +172,11 @@ class HaxViewSource extends I18NMixin(LitElement) {
               }
               <hax-tray-button
                 @click="${this.selectBody}"
-                icon="icons:content-copy"
+                icon="hax:admin-copy"
                 label="${this.t.copyHTML}"
-                icon-position="top"
+                icon-position="left"
+                show-text-label
+                class="copycontent"
               >
               </hax-tray-button>
             </hax-toolbar>

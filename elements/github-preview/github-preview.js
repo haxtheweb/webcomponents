@@ -644,7 +644,7 @@ class GithubPreview extends I18NMixin(
       forks: "forks",
       loading: "Loading",
       viewMore: "View More",
-      notFound: "Asset not found",
+      assetNotFound: "Asset not found",
       openOnGitHub: "Open {org}/{repo} on GitHub",
     };
     this.registerLocalization({
@@ -653,7 +653,7 @@ class GithubPreview extends I18NMixin(
     });
     // translated defaults; view-more-text / not-found-text still win
     this.i18nDefault("viewMoreText", "viewMore");
-    this.i18nDefault("notFoundText", "notFound");
+    this.i18nDefault("notFoundText", "assetNotFound");
   }
 
   /*

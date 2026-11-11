@@ -5,6 +5,6 @@
   "forks": "forks",
   "loading": "Loading",
   "viewMore": "View More",
-  "notFound": "Asset not found",
+  "assetNotFound": "Asset not found",
   "openOnGitHub": "Open {org}/{repo} on GitHub"
 }

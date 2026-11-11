@@ -53,24 +53,68 @@ describe("full-width-image behavior", () => {
     const toggle = el.shadowRoot.querySelector("#captionToggle");
     // the caption overlay is visible and hoverable by default
     expect(wrapper.hasAttribute("hidden")).to.be.false;
-    expect(toggle.hasAttribute("toggled")).to.be.false;
+    expect(toggle.getAttribute("aria-pressed")).to.equal("false");
     // clicking the toggle dismisses the caption instead of hover hiding it
     toggle.click();
     await el.updateComplete;
     expect(el.captionHidden).to.be.true;
     expect(el.hasAttribute("caption-hidden")).to.be.true;
     expect(wrapper.hasAttribute("hidden")).to.be.true;
-    expect(toggle.hasAttribute("toggled")).to.be.true;
+    expect(toggle.getAttribute("aria-pressed")).to.equal("true");
     // clicking again restores the caption
     toggle.click();
     await el.updateComplete;
     expect(el.captionHidden).to.be.false;
     expect(wrapper.hasAttribute("hidden")).to.be.false;
-    expect(toggle.hasAttribute("toggled")).to.be.false;
+    expect(toggle.getAttribute("aria-pressed")).to.equal("false");
     // hovering the wrapper no longer hides the caption (WCAG 1.4.13)
     wrapper.dispatchEvent(new MouseEvent("mouseenter"));
     await el.updateComplete;
     expect(wrapper.hasAttribute("hidden")).to.be.false;
+  });
+
+  it("renders the toggle as a named native button with a pressed state", async () => {
+    const el = await fixture(
+      html`<full-width-image
+        source="photo.png"
+        caption="A caption"
+      ></full-width-image>`,
+    );
+    await el.updateComplete;
+    const toggle = el.shadowRoot.querySelector("#captionToggle");
+    expect(toggle.tagName.toLowerCase()).to.equal("button");
+    expect(toggle.getAttribute("type")).to.equal("button");
+    expect(toggle.getAttribute("aria-label")).to.equal("toggle caption");
+    expect(
+      toggle.querySelector("simple-icon-lite").getAttribute("icon"),
+    ).to.equal("icons:visibility-off");
+    el.captionHidden = true;
+    await el.updateComplete;
+    expect(toggle.getAttribute("aria-pressed")).to.equal("true");
+    expect(
+      toggle.querySelector("simple-icon-lite").getAttribute("icon"),
+    ).to.equal("icons:visibility");
+  });
+
+  it("keeps the section height and the slot inside the caption", async () => {
+    const el = await fixture(
+      html`<full-width-image source="photo.png" caption="A caption"
+        ><span id="extra">more</span></full-width-image
+      >`,
+    );
+    await el.updateComplete;
+    const image = el.shadowRoot.querySelector("#image");
+    // the section keeps roughly its old height even with the caption hidden
+    el.captionHidden = true;
+    await el.updateComplete;
+    expect(image.getBoundingClientRect().height).to.be.at.least(200);
+    const slot = el.shadowRoot.querySelector(".caption slot");
+    expect(slot).to.exist;
+    // the caption is no longer italic
+    el.captionHidden = false;
+    await el.updateComplete;
+    const caption = el.shadowRoot.querySelector(".caption");
+    expect(getComputedStyle(caption).fontStyle).to.equal("normal");
   });
 
   it("haxHooks maps mediaSourceUpdated", async () => {

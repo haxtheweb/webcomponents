@@ -37,6 +37,9 @@
     ],
     "advanced": []
   },
+  "saveOptions": {
+    "unsetAttributes": ["t"]
+  },
   "demoSchema": [
     {
       "tag": "lrndesign-imagemap",

@@ -23,6 +23,24 @@ describe("hax-gizmo-browser", () => {
     expect(HaxGizmoBrowser.tag).to.equal("hax-gizmo-browser");
   });
 
+  it("filter is a search box: placeholder, search icon, accessible label", () => {
+    const filter = el.shadowRoot.querySelector("#inputfilter");
+    expect(filter.getAttribute("placeholder")).to.equal(
+      el.t.filterContentTypes,
+    );
+    expect(filter.getAttribute("label")).to.equal(el.t.filterContentTypes);
+    const icon = filter.querySelector('simple-icon-lite[slot="prefix"]');
+    expect(icon).to.exist;
+    expect(icon.getAttribute("icon")).to.equal("hax:admin-search");
+  });
+
+  it("has an after-filter slot for the tray's upload box", () => {
+    const toolbar = el.shadowRoot.querySelector(".toolbar-inner");
+    const slot = el.shadowRoot.querySelector('slot[name="after-filter"]');
+    expect(slot).to.exist;
+    expect(toolbar.nextElementSibling).to.equal(slot);
+  });
+
   describe("ucfirst", () => {
     it("capitalizes first letter", () => {
       expect(el.ucfirst("text")).to.equal("Text");

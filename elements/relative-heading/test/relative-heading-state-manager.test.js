@@ -286,3 +286,21 @@ describe("relative-heading-state-manager (direct)", () => {
     expect(closeButton.getAttribute("label")).to.equal("Finished");
   });
 });
+
+describe("relative-heading-state-manager i18n", () => {
+  it("toast defaults come from this.t and follow it until set", async () => {
+    const mgr = await fixture(
+      html`<relative-heading-state-manager></relative-heading-state-manager>`,
+    );
+    expect(mgr.copyMessage).to.equal("Copied to Clipboard");
+    expect(mgr.closeLabel).to.equal("Close");
+    mgr.t = { ...mgr.t, copiedToClipboard: "Kopiert", close: "Schließen" };
+    await mgr.updateComplete;
+    expect(mgr.copyMessage).to.equal("Kopiert");
+    expect(mgr.closeLabel).to.equal("Schließen");
+    mgr.copyMessage = "Mine";
+    mgr.t = { ...mgr.t, copiedToClipboard: "Again" };
+    await mgr.updateComplete;
+    expect(mgr.copyMessage).to.equal("Mine");
+  });
+});

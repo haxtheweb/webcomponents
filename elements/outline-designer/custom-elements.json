@@ -644,7 +644,7 @@
                   "default": "{}"
                 }
               ],
-              "description": "Run a change and show it. run() makes the change and returns\n{ focusId, landed, message, edit, quiet, focusOnly } or false when\nnothing changed. Options: slide (animate positions), undo (offer\nundo), nudge (show touch move buttons afterwards), flips (ids of\npages that may flip into or out of existence, or between kept and\ndeleted; what actually changed is worked out afterwards), rows\n(the change adds or removes rows).\n\nChanges that keep the same rows run as a view transition scoped to\nthe tree. Chromium aborts a scoped transition when a named row is\nadded or removed during it (\"Prepaint layout check failed\"), so\nchanges that add or remove rows animate the rows directly instead,\nas does any transition the browser skips."
+              "description": "Run a change and show it. run() makes the change and returns\n{ focusId, landed, message, edit, quiet, focusOnly } or false when\nnothing changed. Options: slide (animate positions), undo (offer\nundo), nudge (show touch move buttons afterwards), flips (ids of\npages that may flip into or out of existence, or between kept and\ndeleted; what actually changed is worked out afterwards), rows\n(the change adds or removes rows).\n\nRows slide into place (FLIP). With view-transitions set, changes\nthat keep the same rows run as a view transition scoped to the tree\ninstead. Chromium aborts a scoped transition when a named row is\nadded or removed during it (\"Prepaint layout check failed\"), so\nchanges that add or remove rows animate the rows directly instead,\nas does any transition the browser skips."
             },
             {
               "kind": "method",
@@ -787,6 +787,11 @@
             },
             {
               "kind": "method",
+              "name": "clearUndo",
+              "description": "Forget the pending undo (and its toast). Call this when the outline is\nreplaced from outside, e.g. reloaded with saved data: the snapshot\nholds the outline as it was before, so an undo would bring back pages\nthe save already removed, and ids the server never stored."
+            },
+            {
+              "kind": "method",
               "name": "undo",
               "description": "Put the outline back as it was before the last change (the items\nthemselves are restored, so getData() is exactly as it was)"
             },
@@ -872,19 +877,6 @@
                 {
                   "name": "{ fromMenu = false }",
                   "default": "{}"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_focusAfterSync",
-              "parameters": [
-                {
-                  "name": "itemId"
-                },
-                {
-                  "name": "edit",
-                  "default": "false"
                 }
               ]
             },
@@ -1617,6 +1609,17 @@
             },
             {
               "kind": "field",
+              "name": "viewTransitions",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Animate moves with a scoped view transition (element\nstartViewTransition) where the browser has one. Off by default: in\nChromium the tab can lose the transition's snapshot textures\n(\"non-existent mailbox\" in the GPU process) and the renderer dies\nmid-move, taking unsaved outline edits with it\n(haxtheweb/issues#3305). Moves still slide (FLIP) without it.",
+              "default": "false",
+              "attribute": "view-transitions"
+            },
+            {
+              "kind": "field",
               "name": "_lastModality",
               "type": {
                 "text": "null"
@@ -1969,6 +1972,15 @@
               "description": "auto (follow prefers-reduced-motion), reduce or full",
               "default": "\"auto\"",
               "fieldName": "reducedMotion"
+            },
+            {
+              "name": "view-transitions",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Animate moves with a scoped view transition (element\nstartViewTransition) where the browser has one. Off by default: in\nChromium the tab can lose the transition's snapshot textures\n(\"non-existent mailbox\" in the GPU process) and the renderer dies\nmid-move, taking unsaved outline edits with it\n(haxtheweb/issues#3305). Moves still slide (FLIP) without it.",
+              "default": "false",
+              "fieldName": "viewTransitions"
             },
             {
               "name": "_focusId",

@@ -4,7 +4,8 @@
   "source": "elements/moar-sarcasm/moar-sarcasm.js",
   "attributes": {
     "a11y": "a11y",
-    "say": "say"
+    "say": "say",
+    "t": "t"
   },
   "slots": [
     "(default)"

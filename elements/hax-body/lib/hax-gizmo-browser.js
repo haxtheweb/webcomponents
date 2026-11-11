@@ -5,8 +5,10 @@ import { haxElementToNode } from "@haxtheweb/utils/utils.js";
 import { HAXStore } from "./hax-store.js";
 import "./hax-element-demo.js";
 import "./hax-tray-button.js";
+import { HaxTrayBrowserStyles } from "./hax-tray-browser-styles.js";
 import { autorun, toJS } from "mobx";
 import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-toolbar/lib/simple-button-grid.js";
 import "@haxtheweb/simple-popover/lib/simple-popover-selection.js";
 import "@haxtheweb/a11y-collapse/a11y-collapse.js";
@@ -19,6 +21,7 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
   static get styles() {
     return [
+      ...HaxTrayBrowserStyles,
       css`
         :host {
           display: flex;
@@ -29,8 +32,10 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
           max-width: 100%;
           min-width: 0;
           box-sizing: border-box;
-          overflow-x: hidden;
-          overflow-y: auto;
+          /* clip, not hidden or auto: the tray scrolls the list, and a
+             scroll container here would stop the filter from sticking */
+          overflow-x: clip;
+          overflow-y: visible;
         }
         :host > * {
           width: 100%;
@@ -41,38 +46,97 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
         simple-popover-selection {
           display: flex;
         }
-        hax-tray-button {
-          flex: auto;
-          font-size: var(--ddd-font-size-6xs, 12px);
-          --hax-ui-font-size-sm: var(--ddd-font-size-6xs, 12px);
-          --simple-toolbar-button-height: var(--ddd-icon-xxs, 24px);
-          --simple-toolbar-button-width: var(--ddd-icon-xxs, 24px);
-        }
+        /* HAX UI: the filter stays at the top of the list while it scrolls */
         .toolbar-inner {
+          position: sticky;
+          /* under the tray title bar (and the Blocks / Templates switch,
+             when there is one), which also stick */
+          top: calc(
+            var(--hax-ui-titlebar-height, 48px) +
+              var(--hax-gizmo-browser-sticky-offset, 0px)
+          );
+          z-index: 2;
           width: 100%;
           max-width: 100%;
+          box-sizing: border-box;
+          padding: var(
+              --hax-gizmo-browser-toolbar-padding-top,
+              var(--hax-ui-gap-md)
+            )
+            var(--hax-ui-gap-lg) var(--hax-ui-gap-md);
+          background-color: var(--hax-ui-surface);
+          border-bottom: 1px solid var(--hax-ui-line);
         }
-        hax-tray-button::part(button) {
-          font-size: var(--ddd-font-size-6xs, var(--hax-ui-font-size-xs));
+        #inputfilter {
+          margin: 0;
+          padding: 0;
+          --simple-fields-font-size: var(--hax-ui-admin-font-size);
+          --simple-fields-color: var(--hax-ui-text);
+          --simple-fields-input-max-width: 100%;
+          --simple-fields-row-focus-outline-width: var(--hax-ui-focus-width);
+          --simple-fields-row-focus-outline-color: var(--hax-ui-focus);
+          --simple-fields-background-color: var(--hax-ui-surface);
+        }
+        #inputfilter::part(field-main) {
+          gap: 0;
+        }
+        /* a search box: the placeholder names it on screen, the label
+           stays for assistive tech */
+        #inputfilter::part(label) {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          margin: -1px;
+          padding: 0;
+          overflow: hidden;
+          clip: rect(0 0 0 0);
+          white-space: nowrap;
+          border: 0;
+        }
+        #inputfilter::part(field-main-inner) {
+          box-sizing: border-box;
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          flex: 1 1 auto;
+          min-width: 0;
+          height: var(--hax-ui-row-height);
+          padding: 0 var(--hax-ui-gap-md);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius);
+          background-color: var(--hax-ui-surface);
+        }
+        #inputfilter::part(field-main-inner):focus-within {
+          border-color: var(--hax-ui-accent-strong);
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 1px;
+        }
+        #inputfilter::part(option-input) {
+          box-sizing: border-box;
+          flex: 1 1 auto;
+          width: 100%;
+          min-width: 0;
+          height: calc(var(--hax-ui-row-height) - 2px);
+          padding: 0;
+          border: 0;
+          outline: none;
+          background-color: transparent;
+          color: var(--hax-ui-text);
+        }
+        #inputfilter::part(option-input)::placeholder {
+          color: var(--hax-ui-text-muted);
+          font-style: normal;
+          opacity: 1;
+        }
+        #inputfilter simple-icon-lite {
+          flex: 0 0 auto;
+          color: var(--hax-ui-text-muted);
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
         }
         simple-fields-field {
           margin: 0;
-          padding: var(--ddd-spacing-4);
-        }
-        simple-button-grid {
-          --simple-button-grid-margin: var(--ddd-spacing-1);
-        }
-        a11y-collapse {
-          margin: 0;
-          border-top-width: 2px;
-          --a11y-collapse-margin: 0;
-          --a11y-collapse-vertical-padding: var(--ddd-spacing-0);
-          --a11y-collapse-horizontal-padding: var(--ddd-spacing-1);
-          --a11y-collapse-padding-left: 8px;
-        }
-        a11y-collapse::part(heading) {
-          margin: var(--ddd-spacing-2) 0;
-          display: block;
+          padding: 0;
         }
       `,
     ];
@@ -215,11 +279,19 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                 @value-changed="${this.inputfilterChanged}"
                 @keydown="${this._inputKeydown}"
                 label="${this.t.filterContentTypes}"
+                placeholder="${this.t.filterContentTypes}"
                 type="text"
                 auto-validate=""
                 part="filter"
-              ></simple-fields-field>
+              >
+                <simple-icon-lite
+                  slot="prefix"
+                  icon="hax:admin-search"
+                  aria-hidden="true"
+                ></simple-icon-lite>
+              </simple-fields-field>
             </div>
+            <slot name="after-filter"></slot>
 
             ${
               HAXStore.platformAllows("popularGizmos")
@@ -227,6 +299,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                     id="popular"
                     heading="${this.t.popular}"
                     heading-button
+                    icon="hax:admin-chevron"
                     expanded
                     ?disabled="${filteredPopularList.length === 0}"
                   >
@@ -278,6 +351,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                     id="recent"
                     heading="${this.t.recent}"
                     heading-button
+                    icon="hax:admin-chevron"
                     expanded
                     ?disabled="${filteredRecentList.length === 0}"
                   >
@@ -328,6 +402,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                 html` <a11y-collapse
                   heading="${this.ucfirst(tag)}"
                   heading-button
+                  icon="hax:admin-chevron"
                 >
                   <simple-button-grid columns="3" always-expanded part="grid">
                     ${guard(

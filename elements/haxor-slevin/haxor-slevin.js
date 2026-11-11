@@ -3,6 +3,10 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css } from "lit";
+import {
+  DDDReadingSurface,
+  dddReadingProse,
+} from "@haxtheweb/d-d-d/lib/DDDReading.js";
 import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { HAXCMSThemeParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
 import { SimpleColorsSuper } from "@haxtheweb/simple-colors/simple-colors.js";
@@ -31,9 +35,23 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-tit
 class HaxorSlevin extends I18NMixin(
   HAXCMSThemeParts(SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme))),
 ) {
+  HAXCMSGlobalStyleSheetContent() {
+    return [
+      ...super.HAXCMSGlobalStyleSheetContent(),
+      dddReadingProse("haxor-slevin", "start"),
+    ];
+  }
+
   static get styles() {
     return [
       super.styles,
+      DDDReadingSurface,
+      css`
+        /* reading pass adjustments for this theme */
+        #slot {
+          padding-block-start: var(--ddd-spacing-6);
+        }
+      `,
       css`
         :host {
           display: block;
@@ -412,7 +430,7 @@ class HaxorSlevin extends I18NMixin(
           <site-region name="footerPrimary"></site-region>
         </div>
         <div class="contentcontainer-wrapper">
-          <article id="contentcontainer">
+          <article id="contentcontainer" class="ddd-reading">
             <site-region name="contentTop"></site-region>
             <site-git-corner position="right"></site-git-corner>
             ${

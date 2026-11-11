@@ -194,6 +194,25 @@ export class CareerRoleItem extends I18NMixin(DDDSuper(LitElement)) {
       const p = globalThis.document.createElement("p");
       p.textContent = this.t.describeYourRole;
       this.appendChild(p);
+      // translations load after connect; the starter paragraph follows them
+      // until someone edits it
+      this.__starterParagraph = p;
+      this.__starterText = p.textContent;
+    }
+  }
+
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
+    }
+    const p = this.__starterParagraph;
+    if (changedProperties.has("t") && p) {
+      if (p.parentNode !== this || p.textContent !== this.__starterText) {
+        this.__starterParagraph = null;
+      } else if (this.t.describeYourRole !== this.__starterText) {
+        p.textContent = this.t.describeYourRole;
+        this.__starterText = p.textContent;
+      }
     }
   }
 

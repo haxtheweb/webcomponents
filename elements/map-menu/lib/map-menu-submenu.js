@@ -25,10 +25,15 @@ class MapMenuSubmenu extends LitElement {
         #container ::slotted(map-menu-builder) {
           display: var(--map-menu-submenu-display, block);
         }
+        /* the menu draws its own rows: keep the collapse's DDD block row
+           (48px, navy title, round toggle) out of it */
         a11y-collapse {
           --a11y-collapse-border: 0;
+          --a11y-collapse-border-radius: 0;
           --a11y-collapse-horizontal-padding: 0;
           --a11y-collapse-vertical-padding: 0;
+          --a11y-collapse-heading-min-height: 0;
+          --a11y-collapse-heading-color: currentColor;
           color: var(--map-menu-item-a-color, inherit);
           --simple-tooltip-margin: 0 -36px 0 0;
         }
@@ -90,7 +95,15 @@ class MapMenuSubmenu extends LitElement {
           );
         }
 
+        a11y-collapse::part(heading-id) {
+          padding-block: 0;
+        }
         a11y-collapse::part(icon) {
+          width: auto;
+          height: auto;
+          border: 0;
+          color: inherit;
+          background-color: transparent;
           position: var(--a11y-collapse-icon-position, absolute);
           margin-left: 4px;
           --simple-icon-height: 24px;
