@@ -70,11 +70,6 @@
         "example-hax-element[data-accent=\"N\"] > div": 1
       }
     },
-    "figure-label": {
-      "light": {
-        "figure-label[description=\"Component override color set\"] >> #title": 1
-      }
-    },
     "flash-card": {
       "dark": {
         "flash-card-set >> .ddd-block-label[aria-live=\"polite\"]": 1,
@@ -100,12 +95,6 @@
         "github-rpg-contributors >> a": 1
       }
     },
-    "grid-plate": {
-      "dark": {
-        "wikipedia-query >> citation-element >> .license-link[rel=\"noopener noreferrer\"][target=\"_blank\"]": 1,
-        "wikipedia-query >> citation-element >> .license-link[target=\"_blank\"][rel=\"noopener noreferrer\"]": 1
-      }
-    },
     "h5p-element": {
       "dark": {
         ".vertical-section-container > hNp-element >> .hNp-el-frame-label": 1
@@ -115,12 +104,6 @@
       "dark": {
         "h-a-x >> #food-table >> editable-table-display >> .ddd-block-label": 1,
         "h-a-x >> aNy-gif-player >> .ddd-block-label": 1
-      }
-    },
-    "hax-iconset": {
-      "dark": {
-        "demo-snippet >> #codeDisplay >> #copyButton": 1,
-        "demo-snippet >> #codeDisplay >> .ddd-block-label": 1
       }
     },
     "haxcms-elements": {
@@ -418,7 +401,6 @@
         "training-theme >> training-button[title=\"stax\"] >> .index": 1
       },
       "dark": {
-        "replace-tag >> div": 1,
         "training-theme >> training-button[index=\"N\"] >> #title": 6,
         "training-theme >> training-button[index=\"N\"] >> .index": 6,
         "training-theme >> training-button[slug=\"documentation/haxcms\"] >> #title": 1,
@@ -728,11 +710,6 @@
         "ics-render[display-as=\"table\"] >> .ddd-block-label": 1,
         "ics-render[display-as=\"timeline\"] >> .ddd-block-footer": 1,
         "ics-render[display-as=\"timeline\"] >> .ddd-block-label": 1
-      }
-    },
-    "learn-two-theme": {
-      "light": {
-        "learn-two-theme >> site-menu >> .progress-summary": 1
       }
     },
     "lrndesign-sidenote": {
