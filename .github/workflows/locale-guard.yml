@@ -2,16 +2,17 @@ name: locale-guard
 
 # English-only locale changes on pull requests (haxtheweb/issues#3262).
 #
-# Translations now happen nightly: a scheduled job translates new or changed
-# English strings and updates one rolling PR from the branch
-# chore/nightly-translations. Feature PRs change only English sources:
+# Translations arrive in one rolling PR from the branch
+# chore/nightly-translations, made by an optional AI-assisted scheduled task
+# outside CI (nothing in CI needs an AI to run). Feature PRs change only
+# English sources:
 # the strings in the element (this.t, haxProperties) and
 # elements/<name>/locales/<namespace>.en.json.
 #
 # This check warns (it does not fail) when a pull request adds, changes,
 # renames or deletes any non-English locale file
 # (elements/*/locales/<namespace>.<lang>.json where <lang> is not en). The
-# nightly translation job reconciles those files after the fact, so a PR that
+# translation PR reconciles those files after the fact, so a PR that
 # ships its own translations can still merge; the warning just makes it
 # visible. The nightly translation PR from this repository is not flagged.
 #
@@ -67,7 +68,7 @@ jobs:
             exit 0
           fi
 
-          message="Translations are normally handled nightly in the chore/nightly-translations PR. This PR changes non-English locale files directly; that is allowed, and the nightly job reconciles them after merge."
+          message="Translations are normally handled nightly in the chore/nightly-translations PR. This PR changes non-English locale files directly; that is allowed, and the translation PR reconciles them after merge."
           {
             echo "## Non-English locale files changed"
             echo ""

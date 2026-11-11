@@ -1333,12 +1333,12 @@ export class QuestionElement extends SchemaBehaviors(
           margin: var(--ddd-spacing-4) 0 0 0;
         }
         #check {
-          margin-right: var(--ddd-spacing-4);
+          margin-inline-end: var(--ddd-spacing-4);
         }
         .details-icon {
           --simple-icon-height: var(--ddd-icon-xs);
           --simple-icon-width: var(--ddd-icon-xs);
-          margin-right: var(--ddd-spacing-2);
+          margin-inline-end: var(--ddd-spacing-2);
         }
         simple-fields-field {
           view-transition-name: field;
@@ -1387,7 +1387,7 @@ export class QuestionElement extends SchemaBehaviors(
         simple-fields-field::part(select) {
           padding-top: var(--ddd-spacing-1);
           padding-bottom: var(--ddd-spacing-1);
-          padding-left: var(--ddd-spacing-1);
+          padding-inline-start: var(--ddd-spacing-1);
           min-height: var(--ddd-spacing-8);
           line-height: 1.1;
         }
@@ -1446,7 +1446,7 @@ export class QuestionElement extends SchemaBehaviors(
         }
         simple-fields-field:not([type="textfield"])::part(option-inner) {
           position: absolute;
-          right: 0px;
+          inset-inline-end: 0px;
           color: light-dark(
             var(--ddd-theme-primary, var(--ddd-theme-default-link)),
             var(--ddd-theme-default-link)
@@ -1496,16 +1496,17 @@ export class QuestionElement extends SchemaBehaviors(
           border: 0;
         }
         dl .correct {
-          border-left: 4px solid var(--ddd-theme-default-opportunityGreen);
-          padding-left: 8px;
+          border-inline-start: 4px solid
+            var(--ddd-theme-default-opportunityGreen);
+          padding-inline-start: 8px;
         }
         dl .incorrect {
-          border-left: 4px dotted
+          border-inline-start: 4px dotted
             light-dark(
               var(--ddd-theme-default-wonderPurple),
               var(--ddd-theme-default-athertonViolet)
             );
-          padding-left: 8px;
+          padding-inline-start: 8px;
         }
         .tag-option.correct {
           outline: 3px solid var(--ddd-theme-default-opportunityGreen);
@@ -1792,7 +1793,7 @@ export class QuestionElement extends SchemaBehaviors(
           display: none;
         }
         .shell #check {
-          margin-right: 0;
+          margin-inline-end: 0;
         }
         .shell simple-toolbar-button {
           background-color: light-dark(

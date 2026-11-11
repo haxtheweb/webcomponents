@@ -154,7 +154,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
           }
           #tabs .flag-type {
             position: absolute;
-            left: -99999px;
+            inset-inline-start: -99999px;
             height: 0;
             overflow: hidden;
           }
@@ -179,7 +179,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
 
           #tabs span.label,
           #tabs .flag-icon {
-            margin-right: 8px;
+            margin-inline-end: 8px;
           }
 
           :host([icons-only]) #tabs button {
@@ -312,10 +312,11 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
             gap: 0;
             padding: var(--ddd-spacing-2, 8px) 0;
             border-bottom: none;
-            border-right: var(--ddd-border-size-xs, 1px) solid
+            border-inline-end: var(--ddd-border-size-xs, 1px) solid
               var(--a11y-tabs-_line);
-            border-radius: var(--a11y-tabs-vertical-border-radius) 0 0
-              var(--a11y-tabs-vertical-border-radius);
+            border-radius: 0;
+            border-start-start-radius: var(--a11y-tabs-vertical-border-radius);
+            border-end-start-radius: var(--a11y-tabs-vertical-border-radius);
             background-color: var(--a11y-tabs-vertical-background);
             justify-content: var(--a11y-tabs-vertical-justify-tabs);
           }
@@ -350,13 +351,13 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
 
           #tabs span.label,
           #tabs .flag-icon {
-            margin-right: 0;
+            margin-inline-end: 0;
           }
 
           /* the flag reads as a small pill after the label */
           #tabs .flag-type:not([hidden]) {
             position: static;
-            left: auto;
+            inset-inline-start: auto;
             display: inline-flex;
             align-items: center;
             height: var(--ddd-spacing-5, 20px);
@@ -397,7 +398,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
             border-radius: 0;
             border-top: none;
             border-bottom: none;
-            border-left: var(--ddd-border-size-md, 3px) solid
+            border-inline-start: var(--ddd-border-size-md, 3px) solid
               var(--a11y-tabs-border-accent, transparent);
           }
 
@@ -434,7 +435,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
 
           :host([vertical]) #tabs button:focus,
           :host([vertical]) #tabs button:hover {
-            border-left-color: var(
+            border-inline-start-color: var(
               --a11y-tabs-focus-border-accent,
               var(--a11y-tabs-border-accent, transparent)
             );
@@ -472,7 +473,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
           }
 
           :host([vertical]) #tabs button[aria-selected="true"] {
-            border-left-color: var(
+            border-inline-start-color: var(
               --a11y-tabs-selected-border-accent,
               var(--a11y-tabs-_rule)
             );
@@ -507,7 +508,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
           }
 
           :host([vertical]) #tabs button[disabled] {
-            border-left-color: var(
+            border-inline-start-color: var(
               --a11y-tabs-disabled-border-accent,
               var(--a11y-tabs-border-accent, transparent)
             );
@@ -698,8 +699,11 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
    * @returns {object}
    */
   get observer() {
-    let callback = () => this.updateTabs();
-    return new MutationObserver(callback);
+    // one observer per instance, so disconnectedCallback stops the one that observes
+    if (!this.__observer) {
+      this.__observer = new MutationObserver(() => this.updateTabs());
+    }
+    return this.__observer;
   }
 
   /**

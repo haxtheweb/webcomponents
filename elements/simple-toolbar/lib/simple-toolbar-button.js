@@ -697,6 +697,13 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
           #icon + #shortcut {
             margin-inline-start: auto;
           }
+          /* phone: no keyboard expected, so no shortcut hints (same media as
+           KEYBOARD_SHORTCUTS_HIDDEN_MEDIA in @haxtheweb/utils keyboardShortcuts) */
+          @media (max-width: 599px), (pointer: coarse) and (max-height: 599px) {
+            #shortcut {
+              display: none;
+            }
+          }
           .offscreen {
             position: absolute;
             left: -999999px;

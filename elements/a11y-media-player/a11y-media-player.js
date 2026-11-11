@@ -15,7 +15,11 @@ import { FullscreenBehaviors } from "@haxtheweb/fullscreen-behaviors/fullscreen-
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import "@haxtheweb/anchor-behaviors/anchor-behaviors.js";
-import "@haxtheweb/responsive-utility/responsive-utility.js";
+import {
+  registerResponsiveElement,
+  unregisterResponsiveElement,
+  reregisterResponsiveElement,
+} from "@haxtheweb/responsive-utility/responsive-utility.js";
 import { normalizeEventPath } from "@haxtheweb/utils/lib/events.js";
 import {
   activityId,
@@ -4622,19 +4626,15 @@ class A11yMediaPlayer extends SchemaBehaviors(
      * Fires player needs the size of parent container to add responsive styling
      * @event responsive-element
      */
-    globalThis.dispatchEvent(
-      new CustomEvent("responsive-element", {
-        detail: {
-          element: this,
-          attribute: "responsive-size",
-          relativeToParent: true,
-          sm: 400,
-          md: 700,
-          lg: 1000,
-          xl: 1500,
-        },
-      }),
-    );
+    registerResponsiveElement({
+      element: this,
+      attribute: "responsive-size",
+      relativeToParent: true,
+      sm: 400,
+      md: 700,
+      lg: 1000,
+      xl: 1500,
+    });
     /**
      * Fires when a new player is ready for a11y-media-state-manager
      * @event a11y-player
@@ -4936,6 +4936,8 @@ class A11yMediaPlayer extends SchemaBehaviors(
     if (super.connectedCallback) {
       super.connectedCallback();
     }
+    // moved, or removed and added again: observe it again
+    reregisterResponsiveElement(this);
     this._applyLayoutPreference(this._readLayoutPreference());
     if (globalThis.addEventListener) {
       globalThis.addEventListener(
@@ -4946,6 +4948,8 @@ class A11yMediaPlayer extends SchemaBehaviors(
   }
 
   disconnectedCallback() {
+    // the utility's ResizeObserver keeps a registered element alive
+    unregisterResponsiveElement(this);
     if (globalThis.removeEventListener) {
       globalThis.removeEventListener(
         "a11y-media-layout-preference",

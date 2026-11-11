@@ -478,7 +478,7 @@ describe("TwentySixTheme behavior", () => {
 
   it("runs disposers on disconnect", async () => {
     const el = await fixture(html` <twenty-six-theme></twenty-six-theme> `);
-    // 3 HAXCMSLitElementTheme + 2 HAXCMSThemeParts + 5 own constructor
+    // 3 HAXCMSLitElementTheme + 5 own constructor
     // autoruns, plus the connect-time autoruns from the mixin; the manual
     // dispose loop this override used to carry was removed because the
     // shared HAXCMSTheme mixin already disposes everything

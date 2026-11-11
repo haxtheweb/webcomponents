@@ -158,10 +158,15 @@ export class MediaPlaylist extends SchemaBehaviors(
           margin-bottom: var(--ddd-spacing-2);
         }
 
-        /* Runtime layout */
+        /* Runtime layout: the frame is a size container so the playlist
+           stacks under the player whenever the block itself is narrow (a
+           grid-plate column, a sidebar), not only on a narrow viewport */
+        .ddd-block {
+          container: media-playlist / inline-size;
+        }
         .layout {
           display: grid;
-          grid-template-columns: 1fr 320px;
+          grid-template-columns: minmax(0, 1fr) 320px;
           overflow: hidden;
           align-items: start;
         }
@@ -196,6 +201,13 @@ export class MediaPlaylist extends SchemaBehaviors(
         }
         .player-area > *::part(media-header) {
           justify-content: flex-end;
+        }
+
+        /* previous/next chevrons point along the reading direction;
+           simple-icon never mirrors on its own, so flip them in
+           right-to-left */
+        :host(:dir(rtl)) .ddd-block-action simple-icon-lite {
+          transform: scaleX(-1);
         }
 
         /* Hide the default slot that catches non-active children */
@@ -253,7 +265,7 @@ export class MediaPlaylist extends SchemaBehaviors(
 
         .playlist-item {
           display: grid;
-          grid-template-columns: var(--ddd-spacing-4) 80px 1fr;
+          grid-template-columns: var(--ddd-spacing-4) 80px minmax(0, 1fr);
           gap: var(--ddd-spacing-2);
           align-items: center;
           width: 100%;
@@ -364,6 +376,22 @@ export class MediaPlaylist extends SchemaBehaviors(
         @media (max-width: 768px) {
           .layout {
             grid-template-columns: 1fr;
+            grid-template-rows: auto 300px;
+          }
+          .playlist {
+            max-height: 300px;
+            border-inline-start: none;
+            border-top: var(--ddd-border-xs);
+            border-color: light-dark(
+              var(--ddd-theme-default-limestoneLight),
+              var(--ddd-theme-default-slateGray)
+            );
+          }
+        }
+        /* narrow block: same stacked layout as a narrow viewport */
+        @container media-playlist (max-width: 640px) {
+          .layout {
+            grid-template-columns: minmax(0, 1fr);
             grid-template-rows: auto 300px;
           }
           .playlist {
