@@ -6,6 +6,9 @@ node_modules
 # Vercel gallery, never loaded by anything that installs the element
 /demo/
 /index.html
+# the hax.psu.edu landing page (landing/home.html) is deployed to that
+# site's web root, never loaded from the package
+/landing/
 /gulpfile.cjs
 /gulpfile.js
 /gulpfile.mjs
