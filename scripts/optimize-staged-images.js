@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-/* global require, console, process */
 /**
  * Lightweight replacement for `imagemin-lint-staged`.
  *
