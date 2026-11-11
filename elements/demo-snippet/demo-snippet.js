@@ -123,9 +123,16 @@ class DemoSnippet extends DDDSuper(LitElement) {
         }
 
         /* Code sample styling */
+        /* the code frame is transparent by default (it sits on the page
+           colour); give it its own light / dark surface so its header label
+           and copy button keep AA contrast whatever the host page paints */
         code-sample {
           margin: 0;
           border-radius: 0;
+          --ddd-block-background: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
         }
       `,
     ];
