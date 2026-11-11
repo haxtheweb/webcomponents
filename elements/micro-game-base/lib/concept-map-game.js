@@ -807,6 +807,7 @@ export class ConceptMapGame extends MicroGameBase {
           background: var(--micro-game-ink);
         }
 
+        /* physical on purpose: draws the check mark inside the badge */
         .check::after {
           content: "";
           position: absolute;
@@ -863,6 +864,7 @@ export class ConceptMapGame extends MicroGameBase {
           color: var(--micro-game-soft);
         }
 
+        /* physical on purpose: sprites are placed from screen x/y */
         #player {
           position: absolute;
           left: 0;

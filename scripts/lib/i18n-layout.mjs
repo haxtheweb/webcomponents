@@ -125,7 +125,21 @@ export function findPhysicalCss(css) {
   let m;
   while ((m = block.exec(text)) !== null) {
     const selector = m[1];
+    // a comment right before the rule saying it is physical on purpose
+    // (an image overlay, a game board, a code gutter) exempts that rule
+    if (
+      /\/\*[^]*?physical[^]*?on purpose[^]*?\*\//i.test(
+        css.slice(m.index, m.index + m[1].length),
+      )
+    ) {
+      continue;
+    }
     if (/\bdir\s*=|:dir\(/i.test(selector)) {
+      continue;
+    }
+    // a rule scoped to an authored left/right value (offset="left",
+    // data-text-align="right") is physical on purpose: the author picked a side
+    if (/=\s*["']?(left|right)["']?\s*\]/i.test(selector)) {
       continue;
     }
     const bodyStart = m.index + m[1].length + 1;
@@ -147,6 +161,14 @@ export function findPhysicalCss(css) {
     }
     const values = new Map(decls.map((d) => [d.prop, d.value]));
     for (const d of decls) {
+      // the same comment inside the rule, above the declaration
+      if (
+        /\/\*[^]*?physical[^]*?on purpose[^]*?\*\//i.test(
+          css.slice(bodyStart, d.index),
+        )
+      ) {
+        continue;
+      }
       let physical = false;
       if (PHYSICAL_PROPS.has(d.prop)) {
         const mirror = mirrorOf(d.prop);
