@@ -1,4 +1,4 @@
-import { fixture, expect, html } from "@open-wc/testing";
+import { fixture, expect, html, waitUntil } from "@open-wc/testing";
 import "../chartist-render.js";
 
 // The observer getter used to build a new MutationObserver on every read,
@@ -51,11 +51,14 @@ describe("chartist-render chart across removal and moves", () => {
       </div>`,
     );
     const el = wrap.querySelector("chartist-render");
-    const start = Date.now();
-    while (!el.chart && Date.now() - start < 10000) {
-      await new Promise((r) => setTimeout(r, 100));
-    }
-    expect(el.chart).to.exist;
+    // Chartist draws its svg a tick after the chart object exists, so wait
+    // for the drawing itself, not just el.chart
+    const drawn = () =>
+      el.shadowRoot.querySelector("#chart") &&
+      el.shadowRoot.querySelector("#chart").querySelector("svg");
+    await waitUntil(() => el.chart && drawn(), "chart never drew", {
+      timeout: 10000,
+    });
     const first = el.chart;
     let detached = false;
     const detach = first.detach.bind(first);
@@ -70,6 +73,9 @@ describe("chartist-render chart across removal and moves", () => {
     wrap.appendChild(el);
     expect(el.chart).to.exist;
     expect(el.chart).to.not.equal(first);
-    expect(el.shadowRoot.querySelector("#chart").querySelector("svg")).to.exist;
+    // the new chart redraws on its own next tick
+    await waitUntil(drawn, "chart did not redraw on reconnect", {
+      timeout: 5000,
+    });
   });
 });
