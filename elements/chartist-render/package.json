@@ -44,7 +44,6 @@
     "@haxtheweb/es-global-bridge": "^26.8.0",
     "@haxtheweb/utils": "^26.8.0",
     "chartist": "0.11.4",
-    "chartist-plugin-accessibility": "0.0.5",
     "chartist-plugin-axistitle": "0.0.7",
     "chartist-plugin-fill-donut": "0.1.4",
     "chartist-plugin-pointlabels": "0.0.6",
