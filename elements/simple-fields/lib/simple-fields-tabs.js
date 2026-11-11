@@ -25,10 +25,21 @@ class SimpleFieldsTabs extends A11yTabs {
   static get styles() {
     return [
       ...this.A11yTabsCoreStyles,
+      /* the DDD a11y-tabs look (selected = bold label + 3px rule, readable
+         in light and dark); its #tabs button rules outrank the generic
+         simple-fields button styles below, which still style anything else */
+      ...this.A11yTabsThemeStyles,
       ...SimpleFieldsButtonStyles,
       css`
         :host {
-          border: 1px solid var(--simple-fields-border-color-light, #ccc);
+          border: 1px solid
+            var(
+              --simple-fields-border-color-light,
+              light-dark(
+                var(--ddd-theme-default-limestoneLight, #e4e5e7),
+                var(--ddd-theme-default-slateGray, #314d64)
+              )
+            );
           padding: var(--simple-fields-margin-small, 8px)
             var(--simple-fields-margin-small, 8px)
             var(--simple-fields-margin, 16px);

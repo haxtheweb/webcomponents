@@ -199,14 +199,6 @@
         "demo-snippet >> #codeDisplay >> .ddd-block-label": 1
       }
     },
-    "course-design": {
-      "dark": {
-        ".vertical-section-container.centered > demo-snippet >> #codeDisplay >> #copyButton": 3,
-        ".vertical-section-container.centered > demo-snippet >> #codeDisplay >> .ddd-block-label": 3,
-        "demo-snippet >> #codeDisplay >> #copyButton": 12,
-        "demo-snippet >> #codeDisplay >> .ddd-block-label": 12
-      }
-    },
     "course-model": {
       "dark": {
         "demo-snippet >> #codeDisplay >> #copyButton": 1,
@@ -1453,8 +1445,6 @@
     },
     "simple-fields": {
       "dark": {
-        "#alias >> .label-text > span": 1,
-        "#relationships >> #relationships\\.siblings-button > .label[part=\"tab-label\"]": 1,
         "demo-snippet >> #codeDisplay >> #copyButton": 1,
         "demo-snippet >> #codeDisplay >> .ddd-block-label": 1
       }

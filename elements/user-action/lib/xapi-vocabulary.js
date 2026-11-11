@@ -150,7 +150,7 @@ export const XAPI_VOCABULARY = {
     event: "user-engagement",
     verbs: ["progressed", "completed"],
     objectType: "http://adlnet.gov/expapi/activities/interaction",
-    result: ["completion", "score"],
+    result: ["completion", "score", "response"],
     countsTowardCompletion: false,
     done: "never required; completed once every hotspot has been opened",
     source: "elements/lrndesign-imagemap/lrndesign-imagemap.js",

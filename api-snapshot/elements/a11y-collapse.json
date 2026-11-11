@@ -16,6 +16,7 @@
     "is-safari": "isSafari",
     "label": "label",
     "label-expanded": "labelExpanded",
+    "t": "t",
     "tooltip": "tooltip",
     "tooltip-expanded": "tooltipExpanded"
   },

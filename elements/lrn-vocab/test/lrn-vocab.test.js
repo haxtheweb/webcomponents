@@ -149,3 +149,56 @@ describe("lrn-vocab behavior", () => {
     expect(el.getAttribute("typeof")).to.equal("oer:LearningComponent");
   });
 });
+
+describe("lrn-vocab DDD trigger", () => {
+  it("renders the term as a dotted underline, not a box", async () => {
+    const el = await fixture(html`
+      <lrn-vocab term="breaching">whale business</lrn-vocab>
+    `);
+    const cs = getComputedStyle(el.shadowRoot.querySelector("button"));
+    expect(cs.textDecorationLine).to.equal("underline");
+    expect(cs.textDecorationStyle).to.equal("dotted");
+    expect(cs.borderTopStyle).to.equal("none");
+    expect(cs.borderBottomStyle).to.equal("none");
+    expect(cs.backgroundColor).to.equal("rgba(0, 0, 0, 0)");
+  });
+
+  it("maps --lrn-vocab-border onto the underline", async () => {
+    const el = await fixture(html`
+      <lrn-vocab
+        term="breaching"
+        style="--lrn-vocab-border: 3px dashed rgb(255, 0, 0)"
+        >whale business</lrn-vocab
+      >
+    `);
+    const cs = getComputedStyle(el.shadowRoot.querySelector("button"));
+    expect(cs.textDecorationStyle).to.equal("dashed");
+    expect(cs.textDecorationColor).to.equal("rgb(255, 0, 0)");
+    expect(cs.textDecorationThickness).to.equal("3px");
+  });
+
+  it("opens the modal with the Vocabulary label first", async () => {
+    const el = await fixture(html`
+      <lrn-vocab term="breaching"><p>Attacking prey</p></lrn-vocab>
+    `);
+    await new Promise((resolve) => setTimeout(resolve, 50));
+    let captured = null;
+    el.addEventListener("simple-modal-show", (e) => {
+      captured = e;
+    });
+    el.click();
+    const content = captured.detail.elements.content;
+    const label = content.querySelector(".vocab-label");
+    expect(label).to.exist;
+    expect(content.firstElementChild.contains(label)).to.be.true;
+    expect(label.textContent.trim()).to.equal("Vocabulary");
+    expect(content.querySelector("p").textContent).to.equal("Attacking prey");
+  });
+
+  it("turns on the DDD primary design system hook", () => {
+    expect(LrnVocab.haxProperties.designSystem).to.deep.equal({
+      primary: true,
+    });
+    expect(LrnVocab.haxProperties.saveOptions.unsetAttributes).to.include("t");
+  });
+});
