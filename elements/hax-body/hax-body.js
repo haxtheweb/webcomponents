@@ -1219,6 +1219,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     super();
     // Initialize content state manager for coordinating DOM operations
     this._contentState = new ContentStateManager();
+    // window listeners added while in edit mode share this controller's
+    // signal; there is always one, so leaving edit mode (even on a hax-body
+    // that never entered it) can abort it without checking
+    this.windowControllers = new AbortController();
     // lock to ensure we don't flood events on hitting the up / down arrows
     // as we use a mutation observer to manage draggable bindings
     this._useristyping = false;
@@ -6152,7 +6156,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       this._onKeyDown = this._onKeyDown.bind(this);
       this._onKeyUp = this._onKeyUp.bind(this);
       this._keepContextVisible = this._keepContextVisible.bind(this);
-      // helps ensure correct state attachment and detachment
+      // helps ensure correct state attachment and detachment; a listener set
+      // from an earlier entry that never left edit mode is released first so
+      // each window listener is attached once
+      this.windowControllers.abort();
       this.windowControllers = new AbortController();
 
       globalThis.addEventListener(
