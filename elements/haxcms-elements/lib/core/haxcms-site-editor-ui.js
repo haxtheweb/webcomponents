@@ -976,6 +976,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           super-daemon-search.merlin::part(filter) {
             display: none;
           }
+          /* folded to a button there is no room for the Alt⇧ chip */
+          super-daemon-search.merlin::part(shortcut) {
+            display: none;
+          }
           super-daemon-search.merlin::part(field) {
             justify-content: center;
             padding: 0;
@@ -4640,8 +4644,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       case "super-daemon":
         // a phone's bar is too narrow for the field: Merlin is a button
         // that opens the search across the whole bar first
+        // (same query as the CSS that folds the field, so a 600px wide
+        // screen that shows the button also opens across the bar)
         if (
-          this.responsiveSize === "xs" &&
+          (globalThis.matchMedia
+            ? globalThis.matchMedia("(max-width: 600px)").matches
+            : this.responsiveSize === "xs") &&
           e.type === "click" &&
           !this.merlinPhoneOpen
         ) {
