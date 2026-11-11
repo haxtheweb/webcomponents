@@ -92,9 +92,13 @@ class ExampleHaxcmsTheme extends HAXCMSLitElementTheme {
       css`
         :host {
           display: block;
-          padding: var(--ddd-spacing-10) var(--ddd-spacing-20);
+          /* side padding and minimum width give way on narrow screens so
+             the page reflows at 320px (WCAG 1.4.10) */
+          padding: var(--ddd-spacing-10)
+            clamp(var(--ddd-spacing-4), 5vw, var(--ddd-spacing-20));
           max-width: 960px;
-          min-width: 400px;
+          min-width: min(400px, 100%);
+          box-sizing: border-box;
           margin: var(--ddd-spacing-0) auto;
           border: var(--ddd-border-lg);
           border-width: var(--ddd-spacing-5);

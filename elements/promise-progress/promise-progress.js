@@ -31,6 +31,10 @@ export class PromiseProgress extends PromiseProgressLite {
         :host {
           accent-color: var(--ddd-theme-primary, var(--ddd-theme-default-link));
         }
+        /* a set width (::part(progress)) never runs past a narrow screen */
+        progress {
+          max-width: 100%;
+        }
       `,
     ];
   }

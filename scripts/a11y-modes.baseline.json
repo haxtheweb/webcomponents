@@ -12,19 +12,9 @@
         "bullet-check-list >> simple-icon": 1
       }
     },
-    "count-up": {
-      "reflow-overflow": {
-        "count-up": 1
-      }
-    },
     "d-d-docs": {
       "reflow-clipped": {
         "d-d-docs >> summary": 1
-      }
-    },
-    "example-haxcms-theme": {
-      "reflow-overflow": {
-        "example-haxcms-theme": 1
       }
     },
     "flash-card": {
@@ -79,11 +69,6 @@
     "polaris-theme": {
       "reflow-clipped": {
         "polaris-story-card >> div.label": 1
-      }
-    },
-    "promise-progress": {
-      "reflow-overflow": {
-        "promise-progress >> progress": 1
       }
     },
     "resume-theme": {
