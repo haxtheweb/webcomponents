@@ -118,6 +118,12 @@
               ]
             },
             {
+              "kind": "field",
+              "name": "outlineMarks",
+              "description": "What the page outline (hax-map) draws over the content: checked blocks,\nthe hovered branch, a drag and where it lands. See\nlib/hax-outline-marks.js. Null until the body has rendered.",
+              "readonly": true
+            },
+            {
               "kind": "method",
               "name": "calcClasses",
               "parameters": [
@@ -4330,6 +4336,16 @@
         },
         {
           "kind": "function",
+          "name": "isItem",
+          "parameters": [
+            {
+              "name": "node"
+            }
+          ],
+          "description": "A list item: li in ul / ol, dt or dd in dl. Items are checked, deleted\nand reordered on their own but stay in a list."
+        },
+        {
+          "kind": "function",
           "name": "buildRows",
           "parameters": [
             {
@@ -4339,7 +4355,7 @@
               "name": "schemaFor"
             }
           ],
-          "description": "The outline's rows, in page order. Each row:\n{ node, tag, depth, kind, movable, selectable, level, slots, slot,\n  container (the container a block or column belongs to) }\nkind: \"page\" (page break), \"block\" (moves on its own), \"column\" (a\ncontainer's slot when it has more than one), \"child\" (moves with its\nparent)."
+          "description": "The outline's rows, in page order. Each row:\n{ node, tag, depth, kind, movable, selectable, level, slots, slot,\n  container (the container a block or column belongs to) }\nkind: \"page\" (page break), \"block\" (moves on its own), \"column\" (a\ncontainer's slot when it has more than one), \"item\" (a list item), \"child\"\n(moves with its parent)."
         },
         {
           "kind": "function",
@@ -4384,7 +4400,7 @@
               "name": "schemaFor"
             }
           ],
-          "description": "Can these nodes go to target { parent, slot, before }?\nReturns \"\" when they can, otherwise a reason:\n\"locked\", \"self\", \"page\", \"slot\"."
+          "description": "Can these nodes go to target { parent, slot, before }?\nReturns \"\" when they can, otherwise a reason:\n\"locked\", \"self\", \"page\", \"slot\", \"item\" (list items stay in lists and\nblocks stay out of them)."
         },
         {
           "kind": "function",
@@ -4410,16 +4426,19 @@
           "name": "keyboardTarget",
           "parameters": [
             {
-              "name": "node"
+              "name": "nodes"
             },
             {
               "name": "direction"
             },
             {
               "name": "body"
+            },
+            {
+              "name": "schemaFor"
             }
           ],
-          "description": "Where a keyboard move (Alt+Up / Alt+Down) of a block lands, or null.\n- A block moves one step past its neighbor in the same parent and slot\n  (past a heading it joins the section above or below).\n- A heading moves with its section, past the previous heading at its\n  level or higher (or above the blocks before the first heading), or\n  past the next such heading's whole section."
+          "description": "Where a keyboard move of blocks lands, or null. direction:\n-1 / 1 (Alt+Up / Alt+Down), \"in\" (Alt+Right), \"out\" (Alt+Left).\n- Up and down move one step past the neighbor in the same parent and\n  slot (past a heading the blocks join the section above or below). At\n  the end of a layout's slot they go on to the next slot that takes\n  them (the next grid column), and no further.\n- A heading moves with its section, past the previous heading at its\n  level or higher (or above the blocks before the first heading), or\n  past the next such heading's whole section.\n- \"in\" moves the blocks to the end of the layout right above them, when\n  it takes them; \"out\" moves them out of their layout, to just after it.\n- List items move up and down inside their list only.\nSeveral blocks move as one group, gathered where the first (going up) or\nthe last (going down) lands. schemaFor is needed for layouts."
         }
       ],
       "exports": [
@@ -4468,6 +4487,14 @@
           "name": "slotAccepts",
           "declaration": {
             "name": "slotAccepts",
+            "module": "lib/hax-map-tree.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "isItem",
+          "declaration": {
+            "name": "isItem",
             "module": "lib/hax-map-tree.js"
           }
         },
@@ -4530,6 +4557,55 @@
           "description": "`hax-map`",
           "name": "HaxMap",
           "members": [
+            {
+              "kind": "method",
+              "name": "_marksLayer"
+            },
+            {
+              "kind": "method",
+              "name": "_clearMarks"
+            },
+            {
+              "kind": "method",
+              "name": "_syncMarks",
+              "description": "Shows on the page what the outline is doing: checked blocks, the lit\nbranch, a drag and where it would land."
+            },
+            {
+              "kind": "method",
+              "name": "_treeInfo",
+              "description": "The lit branch: the row under the pointer (or, with the tree focused,\nthe focused row) and the blocks that move with it, a heading's section\nincluded. While dragging, what the drag carries."
+            },
+            {
+              "kind": "method",
+              "name": "_rowKey",
+              "parameters": [
+                {
+                  "name": "row"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_rowTops"
+            },
+            {
+              "kind": "method",
+              "name": "_slideRows"
+            },
+            {
+              "kind": "method",
+              "name": "_change",
+              "parameters": [
+                {
+                  "name": "change"
+                },
+                {
+                  "name": "{ flash = [], gone = [] }",
+                  "default": "{}"
+                }
+              ],
+              "description": "Runs change() (which moves or deletes blocks) so that what changed is\neasy to follow: on the page the blocks slide to their new place, moved\nones (flash) light up and deleted ones (gone) leave a fading hatch; in\nthe outline the rows slide and moved rows light up."
+            },
             {
               "kind": "method",
               "name": "_scheduleMapRefresh",
@@ -4610,6 +4686,9 @@
                 },
                 {
                   "name": "index"
+                },
+                {
+                  "name": "tree"
                 }
               ]
             },
@@ -4625,6 +4704,36 @@
                 },
                 {
                   "name": "action"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_toggleKeys"
+            },
+            {
+              "kind": "method",
+              "name": "_onPointerOver",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_onPointerLeave"
+            },
+            {
+              "kind": "method",
+              "name": "_onTreeFocus"
+            },
+            {
+              "kind": "method",
+              "name": "_onTreeBlur",
+              "parameters": [
+                {
+                  "name": "e"
                 }
               ]
             },
@@ -4672,6 +4781,15 @@
             },
             {
               "kind": "method",
+              "name": "_rangeLevel",
+              "parameters": [
+                {
+                  "name": "anchorIndex"
+                }
+              ]
+            },
+            {
+              "kind": "method",
               "name": "_toggleAll",
               "parameters": [
                 {
@@ -4707,6 +4825,25 @@
               "kind": "method",
               "name": "deleteSelected",
               "description": "Deletes the checked blocks that are not locked, in one step that a\nsingle Undo restores."
+            },
+            {
+              "kind": "method",
+              "name": "_delete",
+              "parameters": [
+                {
+                  "name": "picked"
+                }
+              ],
+              "description": "Deletes blocks and list items that are not locked, in one step that a\nsingle Undo restores; a block inside another deleted block goes with\nit. Focus moves to the row after them."
+            },
+            {
+              "kind": "method",
+              "name": "_deleteNode",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ]
             },
             {
               "kind": "method",
@@ -4750,7 +4887,37 @@
                   "name": "direction"
                 }
               ],
-              "description": "Alt+Up / Alt+Down: moves the block (a heading with its section) past\nits neighbor."
+              "description": "Alt+arrows: moves a block (a heading with its section), a list item, or\nseveral checked ones together. direction: -1 (up), 1 (down), \"in\"\n(into the layout above), \"out\" (out of its layout). See keyboardTarget."
+            },
+            {
+              "kind": "method",
+              "name": "_keyboardGroup",
+              "parameters": [
+                {
+                  "name": "row"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_extendSelection",
+              "parameters": [
+                {
+                  "name": "index"
+                },
+                {
+                  "name": "direction"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_toggleLockKey",
+              "parameters": [
+                {
+                  "name": "row"
+                }
+              ]
             },
             {
               "kind": "method",
@@ -4961,6 +5128,46 @@
             },
             {
               "kind": "field",
+              "name": "__hoverIndex",
+              "type": {
+                "text": "number"
+              },
+              "default": "-1"
+            },
+            {
+              "kind": "field",
+              "name": "__treeFocused",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "__flashNodes",
+              "default": "new Set()"
+            },
+            {
+              "kind": "field",
+              "name": "__rowTops",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "showKeys",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether the keyboard shortcuts show",
+              "default": "false",
+              "attribute": "show-keys"
+            },
+            {
+              "kind": "field",
               "name": "__mapMutationObserver",
               "type": {
                 "text": "null"
@@ -4989,7 +5196,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ pageOutline: \"Page outline\", selectAll: \"Select all\", select: \"Select\", blockCount: \"{count} blocks\", blockCountOne: \"1 block\", selectedCount: \"{count} selected\", lockSelected: \"Lock selected\", unlockSelected: \"Unlock selected\", deleteSelected: \"Delete selected\", clearSelection: \"Clear selection\", lockedSkipsOne: \"1 locked: Delete skips it\", lockedSkips: \"{count} locked: Delete skips them\", lockUnlock: \"Lock / Unlock\", delete: \"Delete\", dragToReorder: \"Drag to reorder\", column: \"Column\", andOne: \"{name} and 1 block\", andMore: \"{name} and {count} blocks\", moveAbove: \"Move {what} above {target}\", moveBelow: \"Move {what} below {target}\", moveInto: \"Move {what} into {target}\", moveToEnd: \"Move {what} to the end of the page\", moved: \"Moved {what}\", deleted: \"Deleted {count} blocks\", deletedOne: \"Deleted 1 block\", noDropLocked: \"{target} is locked\", noDropSlot: \"{target} does not take {what}\", noDropSelf: \"A block cannot go inside itself\", noDropPage: \"Page details stays first\", }"
+              "default": "{ pageOutline: \"Page outline\", selectAll: \"Select all\", select: \"Select\", blockCount: \"{count} blocks\", blockCountOne: \"1 block\", selectedCount: \"{count} selected\", lockSelected: \"Lock selected\", unlockSelected: \"Unlock selected\", deleteSelected: \"Delete selected\", clearSelection: \"Clear selection\", lockedSkipsOne: \"1 locked: Delete skips it\", lockedSkips: \"{count} locked: Delete skips them\", lockUnlock: \"Lock / Unlock\", delete: \"Delete\", dragToReorder: \"Drag to reorder\", column: \"Column\", andOne: \"{name} and 1 block\", andMore: \"{name} and {count} blocks\", moveAbove: \"Move {what} above {target}\", moveBelow: \"Move {what} below {target}\", moveInto: \"Move {what} into {target}\", moveToEnd: \"Move {what} to the end of the page\", moved: \"Moved {what}\", deleted: \"Deleted {count} blocks\", deletedOne: \"Deleted 1 block\", noDropLocked: \"{target} is locked\", noDropSlot: \"{target} does not take {what}\", noDropSelf: \"A block cannot go inside itself\", noDropPage: \"Page details stays first\", noDropItem: \"List items move only within lists\", noDropBlock: \"{target} takes only list items\", deletedItem: \"Deleted 1 item\", deletedItems: \"Deleted {count} items\", cannotMove: \"{what} cannot move that way\", keyboardShortcuts: \"Keyboard shortcuts\", keyFocus: \"Move between rows\", keySelect: \"Check or uncheck\", keyRange: \"Check a range\", keySelectAll: \"Check all blocks\", keyMove: \"Move up or down\", keyInOut: \"Move into the layout above, or out of a layout\", keyDelete: \"Delete\", keyLock: \"Lock or unlock\", keyGo: \"Go to it on the page\", keyClear: \"Clear checks\", }"
             },
             {
               "kind": "field",
@@ -5091,6 +5298,15 @@
               "description": "The row that takes Tab focus",
               "default": "0",
               "fieldName": "focusIndex"
+            },
+            {
+              "name": "show-keys",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether the keyboard shortcuts show",
+              "default": "false",
+              "fieldName": "showKeys"
             }
           ],
           "mixins": [
@@ -5121,6 +5337,195 @@
           "declaration": {
             "name": "HaxMap",
             "module": "lib/hax-map.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/hax-outline-marks.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "HaxOutlineMarks",
+          "members": [
+            {
+              "kind": "method",
+              "name": "set",
+              "parameters": [
+                {
+                  "name": "marks"
+                }
+              ],
+              "description": "marks: { selected: [nodes], tree: [nodes], moving: [nodes],\n  drop: { parent, slot, before, into } } or null to clear."
+            },
+            {
+              "kind": "method",
+              "name": "clear"
+            },
+            {
+              "kind": "method",
+              "name": "schedule"
+            },
+            {
+              "kind": "method",
+              "name": "_watch",
+              "parameters": [
+                {
+                  "name": "on"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_origin"
+            },
+            {
+              "kind": "method",
+              "name": "_box",
+              "parameters": [
+                {
+                  "name": "rect"
+                },
+                {
+                  "name": "origin"
+                },
+                {
+                  "name": "pad",
+                  "default": "PAD"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_visible",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_el",
+              "parameters": [
+                {
+                  "name": "kind"
+                },
+                {
+                  "name": "box"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "draw"
+            },
+            {
+              "kind": "method",
+              "name": "_slotRect",
+              "parameters": [
+                {
+                  "name": "parent"
+                },
+                {
+                  "name": "slot"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_dropBox",
+              "parameters": [
+                {
+                  "name": "drop"
+                },
+                {
+                  "name": "origin"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "animate",
+              "parameters": [
+                {
+                  "name": "nodes"
+                },
+                {
+                  "name": "change"
+                },
+                {
+                  "name": "options",
+                  "default": "{}"
+                }
+              ],
+              "description": "Runs change() (which moves or removes content) so that the given nodes\nslide from where they were to where they end up, and the ones in\noptions.flash light up as they land, options.gone leave a fading\nhatch where they were. Returns what change() returns."
+            },
+            {
+              "kind": "method",
+              "name": "_fade",
+              "parameters": [
+                {
+                  "name": "kind"
+                },
+                {
+                  "name": "box"
+                },
+                {
+                  "name": "still"
+                },
+                {
+                  "name": "from",
+                  "default": "{ dx: 0, dy: 0 }"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "host",
+              "default": "host"
+            },
+            {
+              "kind": "field",
+              "name": "layer",
+              "default": "layer"
+            },
+            {
+              "kind": "field",
+              "name": "marks",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "__frame",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "__resize",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "HaxOutlineMarks",
+          "declaration": {
+            "name": "HaxOutlineMarks",
+            "module": "lib/hax-outline-marks.js"
           }
         }
       ]

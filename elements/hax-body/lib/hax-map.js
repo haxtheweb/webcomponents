@@ -2,10 +2,16 @@ import { html, css } from "lit";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
-import { HaxTrayDetailHeadings } from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
+import {
+  HaxTrayDetailHeadings,
+  HaxUiAdminPrimitives,
+} from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
 import {
   buildRows,
+  isItem,
   isLocked,
+  isPageBreak,
+  sectionOf,
   nodesToMove,
   dropProblem,
   moveNodes,
@@ -19,15 +25,23 @@ import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 const DRAG_START = 4;
 // how close to the top or bottom of the scrolling panel a drag scrolls it
 const SCROLL_EDGE = 40;
+// how long a row that just moved stays lit
+const FLASH_MS = 700;
+// how long rows take to slide to their new place
+const SLIDE_MS = 260;
 
 /**
  * `hax-map`
  * @element hax-map
  * The editor tray's page outline (Structure): every block on the page as a
  * tree row, as outline-designer draws pages. Check rows to lock, unlock or
- * delete them together; drag rows (or press Alt+Up / Alt+Down) to move
- * blocks, a heading with its section, into and out of layouts that take
- * them. The rules live in hax-map-tree.js.
+ * delete them together; drag rows (or press Alt+arrows) to move blocks, a
+ * heading with its section, into and out of layouts that take them; list
+ * items are checked, deleted and reordered on their own. What the outline
+ * does shows on the page too (hax-body's outlineMarks): checked blocks get
+ * a blue scrim, the hovered row's branch lights up, a drag shows what it
+ * carries and where it lands, and moves slide into place. The rules live
+ * in hax-map-tree.js.
  */
 class HaxMap extends I18NMixin(SimpleColors) {
   /**
@@ -37,6 +51,7 @@ class HaxMap extends I18NMixin(SimpleColors) {
     return [
       super.styles,
       ...HaxTrayDetailHeadings,
+      ...HaxUiAdminPrimitives,
       css`
         :host {
           display: block;
@@ -144,6 +159,29 @@ class HaxMap extends I18NMixin(SimpleColors) {
         .status:empty {
           display: none;
         }
+        .keys {
+          display: flex;
+          flex-wrap: wrap;
+          gap: var(--hax-ui-gap, 4px) var(--hax-ui-gap-lg, 12px);
+          padding: var(--hax-ui-gap-md, 8px) var(--hax-ui-gap-lg, 12px);
+          border-bottom: 1px solid var(--hax-ui-line);
+          font-size: var(--hax-ui-admin-font-size-xs, 12px);
+          color: var(--hax-ui-text-muted);
+        }
+        .keys[hidden] {
+          display: none;
+        }
+        .bar-btn[aria-pressed="true"] {
+          background-color: var(--hax-ui-selected);
+          border-color: var(--hax-ui-accent-strong);
+        }
+        /* phone: no keyboard expected (as outline-designer) */
+        @media (max-width: 599px), (pointer: coarse) and (max-height: 599px) {
+          .keys-btn,
+          .keys {
+            display: none;
+          }
+        }
         .tree-wrap {
           position: relative;
         }
@@ -196,6 +234,30 @@ class HaxMap extends I18NMixin(SimpleColors) {
         li.drop-into {
           box-shadow: inset 0 0 0 var(--hax-ui-drop-width, 2px)
             var(--hax-ui-drop);
+        }
+        /* the hovered (or focused) row's branch: its rows tint and the
+           guide under it turns into a line, as outline-designer draws a
+           branch; a drag keeps it lit for what it carries */
+        li.in-tree:not([aria-selected="true"]) {
+          background-color: var(--hax-ui-accent-soft);
+        }
+        .guide.hl {
+          border-left: var(--hax-ui-drop-width, 2px) solid var(--hax-ui-drop);
+        }
+        li.flash {
+          animation: hax-map-flash ${FLASH_MS}ms ease-out;
+        }
+        @keyframes hax-map-flash {
+          from {
+            background-color: var(--hax-ui-selected);
+            box-shadow: inset 0 0 0 var(--hax-ui-drop-width, 2px)
+              var(--hax-ui-drop);
+          }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          li.flash {
+            animation-duration: 1ms;
+          }
         }
         .sel {
           position: absolute;
@@ -372,6 +434,12 @@ class HaxMap extends I18NMixin(SimpleColors) {
     this.__drag = null;
     this.__dropTarget = null;
     this.__focusNode = null;
+    // the row whose branch is lit: under the pointer, else the focused row
+    this.__hoverIndex = -1;
+    this.__treeFocused = false;
+    this.__flashNodes = new Set();
+    this.__rowTops = null;
+    this.showKeys = false;
     this.__mapMutationObserver = null;
     this.__mapMutationObserverTarget = null;
     this.__mapRefreshDebounce = null;
@@ -408,6 +476,22 @@ class HaxMap extends I18NMixin(SimpleColors) {
       noDropSlot: "{target} does not take {what}",
       noDropSelf: "A block cannot go inside itself",
       noDropPage: "Page details stays first",
+      noDropItem: "List items move only within lists",
+      noDropBlock: "{target} takes only list items",
+      deletedItem: "Deleted 1 item",
+      deletedItems: "Deleted {count} items",
+      cannotMove: "{what} cannot move that way",
+      keyboardShortcuts: "Keyboard shortcuts",
+      keyFocus: "Move between rows",
+      keySelect: "Check or uncheck",
+      keyRange: "Check a range",
+      keySelectAll: "Check all blocks",
+      keyMove: "Move up or down",
+      keyInOut: "Move into the layout above, or out of a layout",
+      keyDelete: "Delete",
+      keyLock: "Lock or unlock",
+      keyGo: "Go to it on the page",
+      keyClear: "Clear checks",
     };
     this.registerLocalization({
       context: this,
@@ -441,7 +525,9 @@ class HaxMap extends I18NMixin(SimpleColors) {
   disconnectedCallback() {
     this._disconnectBodyObserver();
     this._endDrag();
+    this._clearMarks();
     clearTimeout(this.__mapRefreshDebounce);
+    clearTimeout(this.__flashTimer);
     if (super.disconnectedCallback) {
       super.disconnectedCallback();
     }
@@ -454,11 +540,152 @@ class HaxMap extends I18NMixin(SimpleColors) {
       if (this.hidden) {
         this._disconnectBodyObserver();
         this._endDrag();
+        this._clearMarks();
       } else {
         this._connectBodyObserver();
         this._scheduleMapRefresh(0);
       }
     }
+    if (!this.hidden) {
+      this._slideRows();
+      this._syncMarks();
+    }
+  }
+  _marksLayer() {
+    const body = this._body;
+    return body && body.outlineMarks ? body.outlineMarks : null;
+  }
+  _clearMarks() {
+    const marks = this._marksLayer();
+    if (marks) {
+      marks.clear();
+    }
+  }
+  /**
+   * Shows on the page what the outline is doing: checked blocks, the lit
+   * branch, a drag and where it would land.
+   */
+  _syncMarks() {
+    const marks = this._marksLayer();
+    if (!marks) {
+      return;
+    }
+    const drag = this.__drag && this.__drag.started ? this.__drag : null;
+    const target = this.__dropTarget;
+    const tree = drag ? null : this._treeInfo();
+    marks.set({
+      selected: this._selectedNodes(),
+      tree: tree ? tree.nodes : [],
+      moving: drag ? drag.nodes : [],
+      drop:
+        drag && target && target.dest && !target.problem
+          ? { ...target.dest, into: target.intoIndex > -1 }
+          : null,
+    });
+  }
+  /**
+   * The lit branch: the row under the pointer (or, with the tree focused,
+   * the focused row) and the blocks that move with it, a heading's section
+   * included. While dragging, what the drag carries.
+   */
+  _treeInfo() {
+    const drag = this.__drag && this.__drag.started ? this.__drag : null;
+    if (drag) {
+      const first = this.elementList.find((r) => r.node === drag.nodes[0]);
+      return {
+        index: first ? this.elementList.indexOf(first) : -1,
+        depth: first ? first.depth : 0,
+        nodes: drag.nodes,
+      };
+    }
+    const index =
+      this.__hoverIndex > -1
+        ? this.__hoverIndex
+        : this.__treeFocused
+          ? this.focusIndex
+          : -1;
+    const row = this.elementList[index];
+    if (!row || !row.node || row.kind === "page" || row.kind === "child") {
+      return null;
+    }
+    const nodes =
+      row.kind === "block" ? sectionOf(row.node, this._body) : [row.node];
+    return { index, depth: row.depth, nodes };
+  }
+  // where each row is drawn now, by what it shows
+  _rowKey(row) {
+    return `${row.kind}|${row.slot || ""}`;
+  }
+  _rowTops() {
+    const tops = new Map();
+    if (!this.shadowRoot) {
+      return tops;
+    }
+    this.shadowRoot.querySelectorAll("li[data-index]").forEach((li) => {
+      const row = this.elementList[parseInt(li.getAttribute("data-index"), 10)];
+      if (row && row.node) {
+        if (!tops.has(row.node)) {
+          tops.set(row.node, new Map());
+        }
+        tops
+          .get(row.node)
+          .set(this._rowKey(row), li.getBoundingClientRect().top);
+      }
+    });
+    return tops;
+  }
+  // rows slide from where they were before the last change (FLIP)
+  _slideRows() {
+    const tops = this.__rowTops;
+    if (!tops || !this.__rowsRebuilt || !this.shadowRoot) {
+      return;
+    }
+    this.__rowTops = null;
+    this.__rowsRebuilt = false;
+    if (
+      globalThis.matchMedia &&
+      globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return;
+    }
+    this.shadowRoot.querySelectorAll("li[data-index]").forEach((li) => {
+      const row = this.elementList[parseInt(li.getAttribute("data-index"), 10)];
+      const was = row && tops.get(row.node);
+      const top = was ? was.get(this._rowKey(row)) : undefined;
+      if (top === undefined || typeof li.animate !== "function") {
+        return;
+      }
+      const dy = top - li.getBoundingClientRect().top;
+      if (dy) {
+        li.animate(
+          [{ transform: `translateY(${dy}px)` }, { transform: "none" }],
+          { duration: SLIDE_MS, easing: "cubic-bezier(0.2, 0, 0, 1)" },
+        );
+      }
+    });
+  }
+  /**
+   * Runs change() (which moves or deletes blocks) so that what changed is
+   * easy to follow: on the page the blocks slide to their new place, moved
+   * ones (flash) light up and deleted ones (gone) leave a fading hatch; in
+   * the outline the rows slide and moved rows light up.
+   */
+  _change(change, { flash = [], gone = [] } = {}) {
+    this.__rowTops = this._rowTops();
+    this.__flashNodes = new Set(flash);
+    clearTimeout(this.__flashTimer);
+    this.__flashTimer = setTimeout(() => {
+      this.__flashNodes = new Set();
+      this.requestUpdate();
+    }, FLASH_MS);
+    const nodes = [];
+    this.elementList.forEach((row) => {
+      if (row.node && row.kind !== "column" && !nodes.includes(row.node)) {
+        nodes.push(row.node);
+      }
+    });
+    const marks = this._marksLayer();
+    return marks ? marks.animate(nodes, change, { flash, gone }) : change();
   }
   _scheduleMapRefresh(delay = 75) {
     if (this.hidden) {
@@ -584,13 +811,20 @@ class HaxMap extends I18NMixin(SimpleColors) {
     if (this.focusIndex >= this.elementList.length) {
       this.focusIndex = Math.max(0, this.elementList.length - 1);
     }
+    this.__hoverIndex = -1;
+    if (this.__rowTops) {
+      this.__rowsRebuilt = true;
+    }
     this.requestUpdate();
   }
   get _body() {
     return HAXStore.activeHaxBody;
   }
+  // what Select all checks and the count counts: blocks, not list items
   _selectableRows() {
-    return this.elementList.filter((row) => row.selectable);
+    return this.elementList.filter(
+      (row) => row.selectable && row.kind === "block",
+    );
   }
   _selectedNodes() {
     return this.elementList
@@ -609,8 +843,16 @@ class HaxMap extends I18NMixin(SimpleColors) {
     }
     const selectable = this._selectableRows();
     const selected = this._selectedNodes();
-    const all = selectable.length > 0 && selected.length === selectable.length;
+    const all =
+      selectable.length > 0 &&
+      selectable.every((row) => this.__selected.has(row.node));
     const some = selected.length > 0 && !all;
+    const tree = this._treeInfo();
+    const mod =
+      globalThis.navigator &&
+      /Mac|iPhone|iPad/.test(globalThis.navigator.platform || "")
+        ? "⌘"
+        : "Ctrl";
     const lockedCount = selected.filter((node) =>
       isLocked(node, this._body),
     ).length;
@@ -678,26 +920,72 @@ class HaxMap extends I18NMixin(SimpleColors) {
                   <simple-icon-lite icon="hax:admin-close"></simple-icon-lite>
                 </button>`
             : html`<span class="count"
-                >${
-                  selectable.length === 1
-                    ? this.t.blockCountOne
-                    : this._format(this.t.blockCount, {
-                        count: selectable.length,
-                      })
-                }</span
-              >`
+                  >${
+                    selectable.length === 1
+                      ? this.t.blockCountOne
+                      : this._format(this.t.blockCount, {
+                          count: selectable.length,
+                        })
+                  }</span
+                >
+                <button
+                  type="button"
+                  class="bar-btn ghost keys-btn"
+                  aria-label="${this.t.keyboardShortcuts}"
+                  title="${this.t.keyboardShortcuts}"
+                  aria-pressed="${this.showKeys ? "true" : "false"}"
+                  aria-controls="keys"
+                  @click="${this._toggleKeys}"
+                >
+                  <simple-icon-lite icon="hardware:keyboard"></simple-icon-lite>
+                </button>`
         }
       </div>
       <div class="status" role="status">${status}</div>
+      <div class="keys" id="keys" ?hidden="${!this.showKeys}">
+        <span class="hax-ui-sr-only">${this.t.keyboardShortcuts}:</span>
+        <span
+          ><kbd class="hax-ui-kbd">↑</kbd
+          ><kbd class="hax-ui-kbd">↓</kbd> ${this.t.keyFocus}</span
+        >
+        <span><kbd class="hax-ui-kbd">Space</kbd> ${this.t.keySelect}</span>
+        <span
+          ><kbd class="hax-ui-kbd">Shift</kbd>+<kbd class="hax-ui-kbd">↑</kbd
+          ><kbd class="hax-ui-kbd">↓</kbd> ${this.t.keyRange}</span
+        >
+        <span
+          ><kbd class="hax-ui-kbd">${mod}</kbd>+<kbd class="hax-ui-kbd">A</kbd>
+          ${this.t.keySelectAll}</span
+        >
+        <span
+          ><kbd class="hax-ui-kbd">Alt</kbd>+<kbd class="hax-ui-kbd">↑</kbd
+          ><kbd class="hax-ui-kbd">↓</kbd> ${this.t.keyMove}</span
+        >
+        <span
+          ><kbd class="hax-ui-kbd">Alt</kbd>+<kbd class="hax-ui-kbd">→</kbd
+          ><kbd class="hax-ui-kbd">←</kbd> ${this.t.keyInOut}</span
+        >
+        <span><kbd class="hax-ui-kbd">Del</kbd> ${this.t.keyDelete}</span>
+        <span><kbd class="hax-ui-kbd">L</kbd> ${this.t.keyLock}</span>
+        <span><kbd class="hax-ui-kbd">Enter</kbd> ${this.t.keyGo}</span>
+        <span><kbd class="hax-ui-kbd">Esc</kbd> ${this.t.keyClear}</span>
+      </div>
       <div class="tree-wrap">
         <ul
           role="tree"
           aria-label="${this.t.pageOutline}"
           aria-multiselectable="true"
+          aria-describedby="keys"
           @keydown="${this._onTreeKey}"
           @pointerdown="${this._onPointerDown}"
+          @pointerover="${this._onPointerOver}"
+          @pointerleave="${this._onPointerLeave}"
+          @focusin="${this._onTreeFocus}"
+          @focusout="${this._onTreeBlur}"
         >
-          ${this.elementList.map((row, index) => this._rowTemplate(row, index))}
+          ${this.elementList.map((row, index) =>
+            this._rowTemplate(row, index, tree),
+          )}
         </ul>
         ${
           this.__dropTarget && this.__dropTarget.line
@@ -730,7 +1018,7 @@ class HaxMap extends I18NMixin(SimpleColors) {
       }
     `;
   }
-  _rowTemplate(row, index) {
+  _rowTemplate(row, index, tree) {
     const checked = row.selectable && this.__selected.has(row.node);
     const locked = row.kind !== "column" && isLocked(row.node, this._body);
     const ownLock =
@@ -741,10 +1029,18 @@ class HaxMap extends I18NMixin(SimpleColors) {
       this.__drag &&
       this.__drag.started &&
       this.__drag.nodes.some((n) => n === row.node || n.contains(row.node));
+    // in the lit branch: one of its blocks, or inside one
+    // (a drag lights the dragged row too; hover leaves the hovered row be)
+    const inTree =
+      !!tree &&
+      (index !== tree.index || dragging) &&
+      tree.nodes.some((n) => n === row.node || n.contains(row.node));
     const classes = [
       row.kind,
       row.node === this.activeNode && row.kind !== "column" ? "active" : "",
       dragging ? "dragging" : "",
+      inTree ? "in-tree" : "",
+      this.__flashNodes.has(row.node) && row.kind !== "column" ? "flash" : "",
       this.__dropTarget && this.__dropTarget.intoIndex === index
         ? "drop-into"
         : "",
@@ -774,7 +1070,11 @@ class HaxMap extends I18NMixin(SimpleColors) {
         }
       </span>
       ${Array.from({ length: row.depth }).map(
-        () => html`<span class="guide" aria-hidden="true"></span>`,
+        (_v, level) =>
+          html`<span
+            class="guide ${inTree && level === tree.depth ? "hl" : ""}"
+            aria-hidden="true"
+          ></span>`,
       )}
       ${
         row.movable
@@ -799,6 +1099,23 @@ class HaxMap extends I18NMixin(SimpleColors) {
               icon="hax:admin-lock"
               aria-hidden="true"
             ></simple-icon-lite>`
+          : ``
+      }
+      ${
+        row.kind === "item"
+          ? html`<span class="acts">
+              <button
+                type="button"
+                class="row-btn danger"
+                tabindex="-1"
+                aria-label="${this.t.delete}"
+                title="${this.t.delete}"
+                ?disabled="${locked}"
+                @click="${(e) => this._rowOp(e, index, "delete")}"
+              >
+                <simple-icon-lite icon="hax:admin-delete"></simple-icon-lite>
+              </button>
+            </span>`
           : ``
       }
       ${
@@ -836,6 +1153,40 @@ class HaxMap extends I18NMixin(SimpleColors) {
   _rowOp(e, index, action) {
     e.stopPropagation();
     this.itemOp(index, action);
+  }
+  _toggleKeys() {
+    this.showKeys = !this.showKeys;
+  }
+  // the branch under the pointer lights up, in the outline and the page
+  _onPointerOver(e) {
+    if (this.__drag && this.__drag.started) {
+      return;
+    }
+    const li = e.composedPath().find((el) => el.tagName === "LI");
+    const index = li ? parseInt(li.getAttribute("data-index"), 10) : -1;
+    if (index !== this.__hoverIndex) {
+      this.__hoverIndex = index;
+      this.requestUpdate();
+    }
+  }
+  _onPointerLeave() {
+    if (this.__hoverIndex !== -1) {
+      this.__hoverIndex = -1;
+      this.requestUpdate();
+    }
+  }
+  _onTreeFocus() {
+    if (!this.__treeFocused) {
+      this.__treeFocused = true;
+      this.requestUpdate();
+    }
+  }
+  _onTreeBlur(e) {
+    const ul = e.currentTarget;
+    if (!e.relatedTarget || !ul.contains(e.relatedTarget)) {
+      this.__treeFocused = false;
+      this.requestUpdate();
+    }
   }
   _onRowClick(e, index) {
     if (this.__suppressClick) {
@@ -884,11 +1235,12 @@ class HaxMap extends I18NMixin(SimpleColors) {
       return;
     }
     const on = this.__selected.has(this.__anchor);
+    const level = this._rangeLevel(anchorIndex);
     const [from, to] =
       anchorIndex < index ? [anchorIndex, index] : [index, anchorIndex];
     for (let i = from; i <= to; i++) {
       const row = this.elementList[i];
-      if (row.selectable) {
+      if (level(row)) {
         if (on) {
           this.__selected.add(row.node);
         } else {
@@ -898,6 +1250,12 @@ class HaxMap extends I18NMixin(SimpleColors) {
     }
     this.status = "";
     this.requestUpdate();
+  }
+  // a range checks rows at its anchor's level: blocks, or list items
+  _rangeLevel(anchorIndex) {
+    const anchor = this.elementList[anchorIndex];
+    const items = !!anchor && anchor.kind === "item";
+    return (row) => row.selectable && (row.kind === "item") === items;
   }
   _toggleAll(e) {
     const rows = this._selectableRows();
@@ -955,25 +1313,74 @@ class HaxMap extends I18NMixin(SimpleColors) {
    * single Undo restores.
    */
   deleteSelected() {
+    this._delete(this._selectedNodes());
+  }
+  /**
+   * Deletes blocks and list items that are not locked, in one step that a
+   * single Undo restores; a block inside another deleted block goes with
+   * it. Focus moves to the row after them.
+   */
+  _delete(picked) {
     const body = this._body;
-    let nodes = this._selectedNodes().filter((node) => !isLocked(node, body));
-    // a block inside another deleted block goes with it
+    let nodes = picked.filter((node) => !isLocked(node, body));
     nodes = nodes.filter(
       (node) => !nodes.some((other) => other !== node && other.contains(node)),
     );
-    nodes.forEach((node) => {
-      this.__selected.delete(node);
-      if (body && typeof body.haxDeleteNode === "function") {
-        body.haxDeleteNode(node);
-      } else {
-        node.remove();
-      }
+    if (nodes.length === 0) {
+      return;
+    }
+    const gone = (row) =>
+      nodes.some((n) => n === row.node || n.contains(row.node));
+    const at = this.elementList.findIndex(gone);
+    const next =
+      this.elementList
+        .slice(at)
+        .find((row) => !gone(row) && row.kind !== "column") ||
+      this.elementList
+        .slice(0, at)
+        .reverse()
+        .find((row) => !gone(row) && row.kind !== "column");
+    this.__focusNode = next ? next.node : null;
+    const items = nodes.every((node) => isItem(node));
+    this._change(() => nodes.forEach((node) => this._deleteNode(node)), {
+      gone: nodes,
     });
-    this.status =
-      nodes.length === 1
-        ? this.t.deletedOne
-        : this._format(this.t.deleted, { count: nodes.length });
+    if (items) {
+      this.status =
+        nodes.length === 1
+          ? this.t.deletedItem
+          : this._format(this.t.deletedItems, { count: nodes.length });
+    } else {
+      this.status =
+        nodes.length === 1
+          ? this.t.deletedOne
+          : this._format(this.t.deleted, { count: nodes.length });
+    }
     this._scheduleMapRefresh(0);
+  }
+  _deleteNode(node) {
+    const body = this._body;
+    this.__selected.delete(node);
+    let gone = node;
+    if (isItem(node)) {
+      const list = node.parentElement;
+      node.remove();
+      // a list with no items left goes too
+      if (!list || [...list.children].some((child) => isItem(child))) {
+        return;
+      }
+      this.__selected.delete(list);
+      gone = list;
+      if (list.parentElement && list.parentElement.tagName === "LI") {
+        list.remove();
+        return;
+      }
+    }
+    if (body && typeof body.haxDeleteNode === "function") {
+      body.haxDeleteNode(gone);
+    } else {
+      gone.remove();
+    }
   }
   editItem(index) {
     const row = this.elementList[index];
@@ -1011,14 +1418,14 @@ class HaxMap extends I18NMixin(SimpleColors) {
     const node = row.node;
     const ownLock = node.getAttribute("data-hax-lock") != null;
     if (action === "lock") {
-      // a block inside a locked block unlocks with that block
-      if (ownLock || !isLocked(node, this._body)) {
+      // a block inside a locked block unlocks with that block; list items
+      // lock with their list
+      if (row.kind !== "item" && (ownLock || !isLocked(node, this._body))) {
         this._setLock(node, !ownLock);
       }
     } else if (!isLocked(node, this._body)) {
       if (action === "delete") {
-        this.__selected.delete(node);
-        this._body.haxDeleteNode(node);
+        this._delete([node]);
       } else if (action === "up" || action === "down") {
         this.moveByKeyboard(node, action === "up" ? -1 : 1);
       }
@@ -1026,25 +1433,97 @@ class HaxMap extends I18NMixin(SimpleColors) {
     this._scheduleMapRefresh(50);
   }
   /**
-   * Alt+Up / Alt+Down: moves the block (a heading with its section) past
-   * its neighbor.
+   * Alt+arrows: moves a block (a heading with its section), a list item, or
+   * several checked ones together. direction: -1 (up), 1 (down), "in"
+   * (into the layout above), "out" (out of its layout). See keyboardTarget.
    */
   moveByKeyboard(node, direction) {
     const body = this._body;
-    const target = keyboardTarget(node, direction, body);
-    if (!target) {
+    const picked = Array.isArray(node) ? node : [node];
+    const schemaFor = (tag) => this._schemaFor(tag);
+    const nodes = nodesToMove(picked, body);
+    if (nodes.length === 0) {
       return false;
     }
-    const nodes = nodesToMove([node], body);
-    const moved = moveNodes(nodes, target, body, (tag) => this._schemaFor(tag));
+    const target = keyboardTarget(picked, direction, body, schemaFor);
+    const what = this._whatLabel(nodes);
+    if (!target || dropProblem(nodes, target, body, schemaFor)) {
+      this.status = this._format(this.t.cannotMove, { what });
+      return false;
+    }
+    const moved = this._change(
+      () => moveNodes(nodes, target, body, schemaFor),
+      {
+        flash: nodes,
+      },
+    );
     if (moved) {
-      this.__focusNode = node;
-      this.status = this._format(this.t.moved, {
-        what: this._whatLabel(nodes),
-      });
+      this.__focusNode = picked[0];
+      this.status = this._format(this.t.moved, { what });
       this._scheduleMapRefresh(0);
     }
     return moved;
+  }
+  // what a keyboard action works on: the checked rows when the focused
+  // row is one of them, otherwise the focused row
+  _keyboardGroup(row) {
+    if (row && this.__selected.has(row.node)) {
+      return this._selectedNodes();
+    }
+    return row && row.node ? [row.node] : [];
+  }
+  // Shift+Up / Shift+Down: the checks become the rows from the anchor to
+  // the newly focused row
+  _extendSelection(index, direction) {
+    const next = Math.min(
+      this.elementList.length - 1,
+      Math.max(0, index + direction),
+    );
+    const row = this.elementList[index];
+    if (!this.__anchor || !this.__selected.has(this.__anchor)) {
+      this.__anchor = row && row.selectable ? row.node : null;
+    }
+    const anchorIndex = this.elementList.findIndex(
+      (r) => r.node === this.__anchor && r.selectable,
+    );
+    this.__selected.clear();
+    if (anchorIndex > -1) {
+      const level = this._rangeLevel(anchorIndex);
+      const [from, to] =
+        anchorIndex < next ? [anchorIndex, next] : [next, anchorIndex];
+      for (let i = from; i <= to; i++) {
+        if (level(this.elementList[i])) {
+          this.__selected.add(this.elementList[i].node);
+        }
+      }
+    } else if (this.elementList[next].selectable) {
+      this.__selected.add(this.elementList[next].node);
+      this.__anchor = this.elementList[next].node;
+    }
+    this.status = "";
+    this.focusIndex = next;
+    this.requestUpdate();
+    this.updateComplete.then(() => this._focusRow(next));
+  }
+  // L: locks the checked blocks (or the focused one), or unlocks them when
+  // they are all locked
+  _toggleLockKey(row) {
+    const nodes = this._keyboardGroup(row).filter(
+      (node) => !isItem(node) && !isPageBreak(node),
+    );
+    if (nodes.length === 0) {
+      return;
+    }
+    const allLocked = nodes.every(
+      (node) => node.getAttribute("data-hax-lock") != null,
+    );
+    nodes.forEach((node) => {
+      const own = node.getAttribute("data-hax-lock") != null;
+      if (allLocked ? own : !own && !isLocked(node, this._body)) {
+        this._setLock(node, !allLocked);
+      }
+    });
+    this._scheduleMapRefresh(0);
   }
   /**
    * A short plain-text excerpt of a block, so rows of the same type (three
@@ -1116,19 +1595,38 @@ class HaxMap extends I18NMixin(SimpleColors) {
     if (!row) {
       return;
     }
+    const mod = e.ctrlKey || e.metaKey;
+    const moves = {
+      ArrowUp: -1,
+      ArrowDown: 1,
+      ArrowRight: "in",
+      ArrowLeft: "out",
+    };
     let handled = true;
-    if (e.altKey && (e.key === "ArrowUp" || e.key === "ArrowDown")) {
-      if (row.movable) {
-        this.moveByKeyboard(row.node, e.key === "ArrowUp" ? -1 : 1);
+    if (e.altKey && !mod && moves[e.key] !== undefined) {
+      const group = this._keyboardGroup(row);
+      if (group.length > 1 || row.movable) {
+        this.moveByKeyboard(group, moves[e.key]);
       }
-    } else if (e.key === "ArrowDown" || e.key === "ArrowUp") {
-      const next = Math.min(
-        this.elementList.length - 1,
-        Math.max(0, index + (e.key === "ArrowDown" ? 1 : -1)),
-      );
-      this.focusIndex = next;
+    } else if (mod && !e.altKey && (e.key === "a" || e.key === "A")) {
+      this._selectableRows().forEach((r) => this.__selected.add(r.node));
+      this.status = "";
       this.requestUpdate();
-      this.updateComplete.then(() => this._focusRow(next));
+    } else if (mod || e.altKey) {
+      handled = false;
+    } else if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      const direction = e.key === "ArrowDown" ? 1 : -1;
+      if (e.shiftKey) {
+        this._extendSelection(index, direction);
+      } else {
+        const next = Math.min(
+          this.elementList.length - 1,
+          Math.max(0, index + direction),
+        );
+        this.focusIndex = next;
+        this.requestUpdate();
+        this.updateComplete.then(() => this._focusRow(next));
+      }
     } else if (e.key === "Home" || e.key === "End") {
       const next = e.key === "Home" ? 0 : this.elementList.length - 1;
       this.focusIndex = next;
@@ -1142,6 +1640,13 @@ class HaxMap extends I18NMixin(SimpleColors) {
       }
     } else if (e.key === "Enter") {
       this.goToItem(index);
+    } else if (e.key === "Delete" || e.key === "Backspace") {
+      const group = this._keyboardGroup(row);
+      if (row.kind === "block" || row.kind === "item" || group.length > 1) {
+        this._delete(group);
+      }
+    } else if (e.key === "l" || e.key === "L") {
+      this._toggleLockKey(row);
     } else if (e.key === "Escape" && this.__selected.size > 0) {
       this.clearSelection();
     } else {
@@ -1219,6 +1724,8 @@ class HaxMap extends I18NMixin(SimpleColors) {
     drag.label = this._shortName(nodes[0]);
     drag.more = nodes.length - 1;
     drag.what = this._whatLabel(nodes);
+    drag.items = nodes.every((node) => isItem(node));
+    this.__hoverIndex = -1;
     this.__scroller = this._findScroller();
     this._autoScroll();
     return true;
@@ -1261,8 +1768,12 @@ class HaxMap extends I18NMixin(SimpleColors) {
       }, 0);
       const target = this.__dropTarget;
       if (e.type === "pointerup" && target && target.dest && !target.problem) {
-        const moved = moveNodes(drag.nodes, target.dest, this._body, (tag) =>
-          this._schemaFor(tag),
+        const moved = this._change(
+          () =>
+            moveNodes(drag.nodes, target.dest, this._body, (tag) =>
+              this._schemaFor(tag),
+            ),
+          { flash: drag.nodes },
         );
         if (moved) {
           this.__focusNode = drag.nodes[0];
@@ -1387,7 +1898,27 @@ class HaxMap extends I18NMixin(SimpleColors) {
       const upper = drag.y < hit.rect.top + hit.rect.height / 2;
       const topLine = hit.rect.top - wrapRect.top;
       const bottomLine = hit.rect.bottom - wrapRect.top;
-      if (row.kind === "column") {
+      if (drag.items && row.kind === "item") {
+        // list items: above or below another item
+        dest = {
+          parent: row.node.parentElement,
+          slot: "",
+          before: upper ? row.node : row.node.nextElementSibling,
+        };
+        line = { top: upper ? topLine : bottomLine, left: indent(row.depth) };
+        targetName = this._shortName(row.node);
+        mode = upper ? "above" : "below";
+      } else if (
+        drag.items &&
+        ["UL", "OL"].includes(row.node.tagName) &&
+        drag.y >= hit.rect.top + hit.rect.height / 3
+      ) {
+        // onto a list: to its end
+        dest = { parent: row.node, slot: "", before: null };
+        intoIndex = hit.index;
+        targetName = row.name;
+        mode = "into";
+      } else if (row.kind === "column") {
         dest = { parent: row.node, slot: row.slot, before: null };
         intoIndex = hit.index;
         targetName = row.name;
@@ -1418,7 +1949,7 @@ class HaxMap extends I18NMixin(SimpleColors) {
         line = { top: bottomLine, left: indent(0) };
         targetName = row.excerpt || row.name;
         mode = "below";
-      } else if (row.kind === "child") {
+      } else if (row.kind === "child" || row.kind === "item") {
         // inside a list or a block's own content: below that block
         let owner = row.node.parentElement;
         let ownerRow = null;
@@ -1471,6 +2002,9 @@ class HaxMap extends I18NMixin(SimpleColors) {
       }),
       self: dest ? this.t.noDropSelf : "",
       page: this.t.noDropPage,
+      item: drag.items
+        ? this.t.noDropItem
+        : this._format(this.t.noDropBlock, { target: targetName }),
       same: "",
     };
     if (problem) {
@@ -1524,6 +2058,13 @@ class HaxMap extends I18NMixin(SimpleColors) {
       focusIndex: {
         type: Number,
         attribute: "focus-index",
+      },
+      /**
+       * Whether the keyboard shortcuts show
+       */
+      showKeys: {
+        type: Boolean,
+        attribute: "show-keys",
       },
     };
   }

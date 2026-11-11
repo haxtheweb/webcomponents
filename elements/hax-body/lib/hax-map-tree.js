@@ -18,8 +18,11 @@
  *   Layouts mark the slot they hold blocks in with such a setting, hidden
  *   when it is not for editing (image-gallery: images; media-playlist:
  *   video and audio). Blocks move into, out of and between containers.
- * - Other children (list items, text inside a card) are shown but move,
- *   lock and delete with their parent.
+ * - List items (li in a list, dt and dd in a definition list) are items:
+ *   they can be checked, deleted and reordered on their own, li between any
+ *   lists and dt / dd inside their own list, but never leave a list.
+ * - Other children (text inside a card) are shown but move, lock and
+ *   delete with their parent.
  * - Page breaks (Page details) and locked blocks do not move on their own;
  *   a locked block in a heading's section moves with the section.
  *
@@ -116,7 +119,7 @@ export function containerSlots(node, schemaFor) {
       excluded: ["grid-plate"],
     }));
   }
-  const schema = schemaFor(tag);
+  const schema = typeof schemaFor === "function" ? schemaFor(tag) : null;
   if (!schema || schema.type !== "grid") {
     return null;
   }
@@ -161,13 +164,33 @@ function childRowsOf(node) {
   );
 }
 
+const LISTS = ["ul", "ol"];
+
+/**
+ * A list item: li in ul / ol, dt or dd in dl. Items are checked, deleted
+ * and reordered on their own but stay in a list.
+ */
+export function isItem(node) {
+  const tag = tagOf(node);
+  const parentTag = tagOf(node && node.parentElement);
+  return (
+    (tag === "li" && LISTS.includes(parentTag)) ||
+    ((tag === "dt" || tag === "dd") && parentTag === "dl")
+  );
+}
+
+// lists show their items, and lists inside those items, as rows
+function showsChildrenOf(node) {
+  return [...LISTS, "li", "dl"].includes(tagOf(node));
+}
+
 /**
  * The outline's rows, in page order. Each row:
  * { node, tag, depth, kind, movable, selectable, level, slots, slot,
  *   container (the container a block or column belongs to) }
  * kind: "page" (page break), "block" (moves on its own), "column" (a
- * container's slot when it has more than one), "child" (moves with its
- * parent).
+ * container's slot when it has more than one), "item" (a list item), "child"
+ * (moves with its parent).
  */
 export function buildRows(body, schemaFor) {
   const rows = [];
@@ -203,15 +226,19 @@ export function buildRows(body, schemaFor) {
       }
     } else {
       childRowsOf(parent).forEach((kid) => {
+        const item = isItem(kid);
         rows.push({
           node: kid,
           tag: tagOf(kid),
           depth,
-          kind: "child",
-          movable: false,
-          selectable: false,
+          kind: item ? "item" : "child",
+          movable: item && !locked(kid),
+          selectable: item,
           container: null,
         });
+        if (showsChildrenOf(kid)) {
+          addChildren(kid, depth + 1);
+        }
       });
     }
   };
@@ -311,7 +338,8 @@ export function nodesToMove(nodes, body) {
 /**
  * Can these nodes go to target { parent, slot, before }?
  * Returns "" when they can, otherwise a reason:
- * "locked", "self", "page", "slot".
+ * "locked", "self", "page", "slot", "item" (list items stay in lists and
+ * blocks stay out of them).
  */
 export function dropProblem(nodes, target, body, schemaFor) {
   if (!target || !target.parent || nodes.length === 0) {
@@ -326,6 +354,21 @@ export function dropProblem(nodes, target, body, schemaFor) {
   }
   if (before && nodes.includes(before) && nodes.length === 1) {
     return "self";
+  }
+  const items = nodes.filter((n) => isItem(n));
+  if (items.length > 0) {
+    // li goes into any ul / ol; dt and dd stay in their own dl
+    const ok =
+      items.length === nodes.length &&
+      items.every((n) =>
+        tagOf(n) === "li"
+          ? LISTS.includes(tagOf(parent))
+          : n.parentElement === parent,
+      );
+    return ok ? "" : "item";
+  }
+  if (LISTS.includes(tagOf(parent)) || tagOf(parent) === "dl") {
+    return "item";
   }
   if (parent === body) {
     // nothing goes above the page's own page break
@@ -373,31 +416,95 @@ export function moveNodes(nodes, target, body, schemaFor) {
 }
 
 /**
- * Where a keyboard move (Alt+Up / Alt+Down) of a block lands, or null.
- * - A block moves one step past its neighbor in the same parent and slot
- *   (past a heading it joins the section above or below).
+ * Where a keyboard move of blocks lands, or null. direction:
+ * -1 / 1 (Alt+Up / Alt+Down), "in" (Alt+Right), "out" (Alt+Left).
+ * - Up and down move one step past the neighbor in the same parent and
+ *   slot (past a heading the blocks join the section above or below). At
+ *   the end of a layout's slot they go on to the next slot that takes
+ *   them (the next grid column), and no further.
  * - A heading moves with its section, past the previous heading at its
  *   level or higher (or above the blocks before the first heading), or
  *   past the next such heading's whole section.
+ * - "in" moves the blocks to the end of the layout right above them, when
+ *   it takes them; "out" moves them out of their layout, to just after it.
+ * - List items move up and down inside their list only.
+ * Several blocks move as one group, gathered where the first (going up) or
+ * the last (going down) lands. schemaFor is needed for layouts.
  */
-export function keyboardTarget(node, direction, body) {
-  const parent = node.parentElement;
-  const moving = nodesToMove([node], body);
-  if (!parent || moving.length === 0 || moving[0] !== node) {
+export function keyboardTarget(nodes, direction, body, schemaFor) {
+  const picked = Array.isArray(nodes) ? nodes : [nodes];
+  const moving = nodesToMove(picked, body);
+  if (moving.length === 0 || (picked.length === 1 && moving[0] !== picked[0])) {
     return null;
   }
-  const slot = slotOf(node);
+  const first = moving[0];
+  const last = moving[moving.length - 1];
+  const parent = first.parentElement;
+  if (!parent) {
+    return null;
+  }
+  const slot = slotOf(first);
+  const item = isItem(first);
   const sibling = (n, dir) => {
     let s = dir < 0 ? n.previousElementSibling : n.nextElementSibling;
-    while (s && parent !== body && slotOf(s) !== slot) {
+    while (
+      s &&
+      (moving.includes(s) || (parent !== body && slotOf(s) !== slot))
+    ) {
       s = dir < 0 ? s.previousElementSibling : s.nextElementSibling;
     }
     return s;
   };
-  const level = parent === body ? headingLevel(node) : 0;
+  const accepts = (slotInfo) =>
+    moving.every((n) => slotAccepts(slotInfo, tagOf(n)));
+  if (direction === "in") {
+    const prev = sibling(first, -1);
+    const slots = item || !prev ? null : containerSlots(prev, schemaFor);
+    if (!slots || isLocked(prev, body)) {
+      return null;
+    }
+    const into = [...slots].reverse().find(accepts);
+    return into ? { parent: prev, slot: into.slot, before: null } : null;
+  }
+  if (direction === "out") {
+    if (item || parent === body || !containerSlots(parent, schemaFor)) {
+      return null;
+    }
+    return {
+      parent: parent.parentElement,
+      slot: slotOf(parent),
+      before: parent.nextElementSibling,
+    };
+  }
+  // at the end of a layout's slot: the next slot that takes the blocks
+  const nextSlot = (dir) => {
+    const slots =
+      item || parent === body ? null : containerSlots(parent, schemaFor);
+    if (!slots) {
+      return null;
+    }
+    const at = slots.findIndex((s) => s.slot === slot);
+    for (let j = at + dir; j >= 0 && j < slots.length; j += dir) {
+      if (accepts(slots[j])) {
+        const firstIn = [...parent.children].find(
+          (c) => slotOf(c) === slots[j].slot && !moving.includes(c),
+        );
+        return {
+          parent,
+          slot: slots[j].slot,
+          before: dir < 0 ? null : firstIn || null,
+        };
+      }
+    }
+    return null;
+  };
+  const level = parent === body ? headingLevel(first) : 0;
   if (direction < 0) {
-    let prev = sibling(node, -1);
-    if (!prev || isPageBreak(prev)) {
+    let prev = sibling(first, -1);
+    if (!prev) {
+      return nextSlot(-1);
+    }
+    if (isPageBreak(prev)) {
       return null;
     }
     if (level) {
@@ -410,7 +517,7 @@ export function keyboardTarget(node, direction, body) {
           prev = scan;
           break;
         }
-        const before = scan.previousElementSibling;
+        const before = sibling(scan, -1);
         if (!before || isPageBreak(before)) {
           prev = scan;
           break;
@@ -420,9 +527,11 @@ export function keyboardTarget(node, direction, body) {
     }
     return { parent, slot, before: prev };
   }
-  const last = moving[moving.length - 1];
   const next = sibling(last, 1);
-  if (!next || isPageBreak(next)) {
+  if (!next) {
+    return nextSlot(1);
+  }
+  if (isPageBreak(next)) {
     return null;
   }
   let after = next;

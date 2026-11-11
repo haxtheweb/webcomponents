@@ -2,6 +2,7 @@ import { fixture, expect, html } from "@open-wc/testing";
 import {
   buildRows,
   containerSlots,
+  isItem,
   sectionOf,
   nodesToMove,
   dropProblem,
@@ -94,16 +95,29 @@ describe("hax-map-tree", () => {
     expect(depth("b1")).to.equal(1);
   });
 
-  it("shows list items as rows that move with their list", () => {
+  it("shows list items as rows that are checked and moved on their own", () => {
     const rows = buildRows(body, schemaFor);
     const items = rows.filter((r) => r.tag === "li");
     expect(items.length).to.equal(2);
     items.forEach((r) => {
-      expect(r.kind).to.equal("child");
-      expect(r.movable).to.be.false;
-      expect(r.selectable).to.be.false;
+      expect(r.kind).to.equal("item");
+      expect(r.movable).to.be.true;
+      expect(r.selectable).to.be.true;
       expect(r.depth).to.equal(3);
     });
+    expect(isItem(items[0].node)).to.be.true;
+    expect(isItem(body.querySelector("#a1"))).to.be.false;
+  });
+
+  it("shows nested lists and their items", async () => {
+    const list = body.querySelector("#a3");
+    list.firstElementChild.innerHTML = `Crest<ul id="sub"><li id="s1">Top</li></ul>`;
+    const rows = buildRows(body, schemaFor);
+    const sub = rows.find((r) => r.node.id === "sub");
+    const s1 = rows.find((r) => r.node.id === "s1");
+    expect(sub.kind).to.equal("child");
+    expect(s1.kind).to.equal("item");
+    expect(s1.depth).to.equal(sub.depth + 1);
   });
 
   it("page breaks are rows that cannot be selected or moved", () => {
@@ -285,6 +299,116 @@ describe("hax-map-tree", () => {
     const up = keyboardTarget(body.querySelector("#b"), -1, body);
     expect(up.before.id).to.equal("a");
     expect(keyboardTarget(a, -1, body).before.id).to.equal("intro");
+  });
+
+  it("list items move between lists but never out of one", () => {
+    const li = body.querySelector("#a3").lastElementChild;
+    const other = document.createElement("ol");
+    other.id = "other";
+    other.innerHTML = "<li>One</li>";
+    body.appendChild(other);
+    // a block does not take an item, a list does not take a block
+    expect(
+      dropProblem(
+        [li],
+        { parent: body, slot: "", before: null },
+        body,
+        schemaFor,
+      ),
+    ).to.equal("item");
+    expect(
+      dropProblem(
+        [body.querySelector("#a1")],
+        { parent: other, slot: "", before: null },
+        body,
+        schemaFor,
+      ),
+    ).to.equal("item");
+    // items and blocks do not move together
+    expect(
+      dropProblem(
+        [li, body.querySelector("#a1")],
+        { parent: other, slot: "", before: null },
+        body,
+        schemaFor,
+      ),
+    ).to.equal("item");
+    expect(
+      moveNodes(
+        [li],
+        { parent: other, slot: "", before: other.firstElementChild },
+        body,
+        schemaFor,
+      ),
+    ).to.be.true;
+    expect(other.firstElementChild).to.equal(li);
+  });
+
+  it("Alt+Up and Alt+Down reorder list items inside their list", () => {
+    const [crest, trough] = body.querySelector("#a3").children;
+    expect(keyboardTarget(trough, -1, body, schemaFor).before).to.equal(crest);
+    expect(keyboardTarget(crest, -1, body, schemaFor)).to.be.null;
+    expect(keyboardTarget(trough, 1, body, schemaFor)).to.be.null;
+    // items do not go in or out of layouts
+    expect(keyboardTarget(crest, "out", body, schemaFor)).to.be.null;
+  });
+
+  it("Alt+Right moves a block into the layout above when it takes it", () => {
+    const img2 = body.querySelector("#img2");
+    const into = keyboardTarget(img2, "in", body, schemaFor);
+    expect(into.parent.id).to.equal("gallery");
+    expect(into.before).to.be.null;
+    // the gallery does not take a video, and the image is not a layout
+    expect(keyboardTarget(body.querySelector("#vid"), "in", body, schemaFor)).to
+      .be.null;
+    // without the store, no layouts
+    expect(keyboardTarget(img2, "in", body)).to.be.null;
+  });
+
+  it("Alt+Left moves a block out of its layout, to just after it", () => {
+    const out = keyboardTarget(
+      body.querySelector("#img1"),
+      "out",
+      body,
+      schemaFor,
+    );
+    expect(out.parent).to.equal(body);
+    expect(out.before.id).to.equal("img2");
+    expect(keyboardTarget(body.querySelector("#a1"), "out", body, schemaFor)).to
+      .be.null;
+  });
+
+  it("Alt+Down at the end of a grid column goes on to the next column", () => {
+    const grid = body.querySelector("#grid");
+    const g1 = body.querySelector("#g1");
+    const down = keyboardTarget(g1, 1, body, schemaFor);
+    expect(down.parent).to.equal(grid);
+    expect(down.slot).to.equal("col-2");
+    expect(down.before.id).to.equal("g2");
+    const up = keyboardTarget(body.querySelector("#g2"), -1, body, schemaFor);
+    expect(up.slot).to.equal("col-1");
+    expect(up.before).to.be.null;
+    // the last column is the end of the layout
+    expect(keyboardTarget(body.querySelector("#g2"), 1, body, schemaFor)).to.be
+      .null;
+  });
+
+  it("checked blocks move by keyboard as one group", () => {
+    const intro = body.querySelector("#intro");
+    const a1 = body.querySelector("#a1");
+    const target = keyboardTarget([intro, a1], 1, body, schemaFor);
+    expect(moveNodes(nodesToMove([intro, a1], body), target, body, schemaFor))
+      .to.be.true;
+    const order = [...body.children].map((n) => n.id || n.tagName);
+    // gathered after the next block past the last one
+    expect(order.slice(0, 6)).to.deep.equal([
+      "PAGE-BREAK",
+      "a",
+      "a2",
+      "intro",
+      "a1",
+      "a3",
+    ]);
   });
 
   it("a keyboard move inside a grid column stays in that column", () => {

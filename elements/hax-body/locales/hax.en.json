@@ -225,5 +225,21 @@
   "noDropLocked": "{target} is locked",
   "noDropSlot": "{target} does not take {what}",
   "noDropSelf": "A block cannot go inside itself",
-  "noDropPage": "Page details stays first"
+  "noDropPage": "Page details stays first",
+  "noDropItem": "List items move only within lists",
+  "noDropBlock": "{target} takes only list items",
+  "deletedItem": "Deleted 1 item",
+  "deletedItems": "Deleted {count} items",
+  "cannotMove": "{what} cannot move that way",
+  "keyboardShortcuts": "Keyboard shortcuts",
+  "keyFocus": "Move between rows",
+  "keySelect": "Check or uncheck",
+  "keyRange": "Check a range",
+  "keySelectAll": "Check all blocks",
+  "keyMove": "Move up or down",
+  "keyInOut": "Move into the layout above, or out of a layout",
+  "keyDelete": "Delete",
+  "keyLock": "Lock or unlock",
+  "keyGo": "Go to it on the page",
+  "keyClear": "Clear checks"
 }
