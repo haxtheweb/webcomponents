@@ -19,21 +19,26 @@
 // this code moves.
 const SOURCE = "elements/outline-designer/outline-designer.js";
 const RANGES = [
+  // parentKey: null, "" and a missing parent are one top level
+  "89-90",
   // hasChildren: decides whether sub-pages move and delete with a page
-  "3210-3216",
+  "3215-3221",
+  // _topLevelParent: the parent a page moved to the top level gets
   // _renumber: sibling groups get whole-number orders, changes are flagged
-  "5355-5364",
+  "5364-5384",
   // getData: the items handed to Save Outline
-  "5676-5678",
+  "5696-5698",
   // addNewItem: a new page's parent, order and the siblings it pushes down
-  "5730-5807",
+  "5750-5827",
   // recurseAction: delete / lock carried down to sub-pages
-  "5838-5859",
+  "5858-5879",
   // itemOp: the locked guard, delete/restore, add, in, out, up, down
-  "5861-5865",
-  "5903-6071",
+  "5881-5885",
+  "5923-6090",
+  // _recurseUpdateIndent: the indent (depth) the backend trusts
+  "6100-6115",
   // _schemaOrderUpdate: the item order the outline (and the save) uses
-  "6093-6130",
+  "6120-6155",
 ];
 
 // The tests that drive those operations, plus the Save Outline fault tests
