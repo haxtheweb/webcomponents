@@ -4373,25 +4373,6 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     );
   }
 
-  // focus a row once the pending outline sync has re-rendered
-  _focusAfterSync(itemId, edit = false) {
-    this._focusId = itemId;
-    setTimeout(() => {
-      this.updateComplete.then(() => {
-        if (edit) {
-          const label = this.shadowRoot.querySelector(
-            `[data-item-id="${itemId}"] .label.shown`,
-          );
-          if (label) {
-            this.editTitle({ target: label });
-            return;
-          }
-        }
-        this.focusItem(itemId);
-      });
-    }, 0);
-  }
-
   // add a page after this one, grow it in and start naming it
   _addAfterAndEdit(index) {
     if (this.isLocked(index)) {

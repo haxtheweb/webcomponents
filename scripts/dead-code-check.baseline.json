@@ -45,7 +45,6 @@
   "elements/haxcms-elements/lib/ui-components/routes/site-theme-style-guide-route.js :: unrendered-import :: @haxtheweb/haxcms-elements/lib/core/haxcms-site-editor.js",
   "elements/inline-audio/inline-audio.js :: unrendered-import :: @haxtheweb/simple-colors/simple-colors.js",
   "elements/merit-badge/lib/badge-sticker.js :: unrendered-import :: @haxtheweb/simple-icon/lib/simple-icon-button.js",
-  "elements/outline-designer/outline-designer.js :: uncalled-method :: _focusAfterSync",
   "elements/play-list/play-list.js :: unrendered-import :: @haxtheweb/simple-icon/lib/simple-icon-lite.js",
   "elements/promise-progress/lib/wc-preload-progress.js :: unrendered-import :: @haxtheweb/wc-autoload/wc-autoload.js",
   "elements/rich-text-editor/lib/singletons/rich-text-editor-prompt.js :: unrendered-import :: ./rich-text-editor-highlight.js",
