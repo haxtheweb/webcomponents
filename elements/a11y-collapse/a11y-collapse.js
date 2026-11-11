@@ -35,6 +35,22 @@ class A11yCollapse extends I18NMixin(DDD) {
             var(--ddd-theme-default-limestoneLight),
             var(--ddd-theme-default-slateGray)
           );
+          --a11y-collapse-_tint: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            color-mix(in srgb, var(--ddd-theme-default-white) 6%, transparent)
+          );
+          --a11y-collapse-_title: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-white)
+          );
+          --a11y-collapse-_action: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-linkLight)
+          );
+          --a11y-collapse-_action-ink: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
           margin: var(--a11y-collapse-margin, var(--ddd-spacing-4) 0);
           border: var(--a11y-collapse-border, var(--ddd-border-xs));
           border-color: var(
@@ -115,13 +131,12 @@ class A11yCollapse extends I18NMixin(DDD) {
           border-end-start-radius: 0;
           border-end-end-radius: 0;
         }
+        /* hover tint: a light wash, not a filled bar (a faint white over
+           the dark page, so it also reads on themed dark backgrounds) */
         button:not([disabled]):hover {
           background-color: var(
             --a11y-collapse-heading-hover-background-color,
-            light-dark(
-              var(--ddd-theme-default-limestoneMaxLight),
-              var(--ddd-theme-default-nittanyNavy)
-            )
+            var(--a11y-collapse-_tint)
           );
         }
         button:focus-visible {
@@ -157,10 +172,7 @@ class A11yCollapse extends I18NMixin(DDD) {
           margin: var(--a11y-collapse-margin);
           color: var(
             --a11y-collapse-heading-color,
-            light-dark(
-              var(--ddd-theme-default-nittanyNavy),
-              var(--ddd-theme-default-white)
-            )
+            var(--a11y-collapse-_title)
           );
           background-color: var(--a11y-collapse-heading-background-color);
         }
@@ -196,10 +208,7 @@ class A11yCollapse extends I18NMixin(DDD) {
           border-color: var(--a11y-collapse-_line);
           border-radius: var(--ddd-radius-circle);
           background-color: transparent;
-          color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-linkLight)
-          );
+          color: var(--a11y-collapse-_action);
           --simple-icon-color: currentColor;
           --simple-icon-width: var(--ddd-icon-3xs);
           --simple-icon-height: var(--ddd-icon-3xs);
@@ -215,28 +224,60 @@ class A11yCollapse extends I18NMixin(DDD) {
         }
         simple-icon-button-lite#expand:hover,
         button:not([disabled]):hover #expand {
-          border-color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-linkLight)
-          );
+          border-color: var(--a11y-collapse-_action);
         }
         simple-icon-button-lite#expand:focus-within {
           outline: var(--ddd-focus-ring);
           outline-offset: var(--ddd-focus-offset);
         }
         :host([expanded]) #expand {
-          border-color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-linkLight)
+          border-color: var(--a11y-collapse-_action);
+          background-color: var(--a11y-collapse-_action);
+          color: var(--a11y-collapse-_action-ink);
+        }
+        /* DDD bg treatment (data-design-treatment="bg" + data-primary, as a
+           site style guide may add on insert): the host is filled with the
+           primary colour and DDD sets a contrasting text colour, so the
+           title, lines, tint and toggle follow that colour instead of the
+           page light / dark pair, which would put white on a light fill */
+        :host([data-design-treatment="bg"]) {
+          --a11y-collapse-_line: color-mix(
+            in srgb,
+            currentColor 35%,
+            transparent
           );
-          background-color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-linkLight)
+          --a11y-collapse-_tint: color-mix(
+            in srgb,
+            currentColor 8%,
+            transparent
           );
-          color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-potentialMidnight)
+          --a11y-collapse-_title: currentColor;
+          /* same contrast colour DDD gives the filled host */
+          --a11y-collapse-_action: var(
+            --ddd-theme-bgContrast,
+            var(--lowContrast-override, black)
           );
+          --a11y-collapse-_action-ink: var(
+            --ddd-theme-primary,
+            var(--ddd-primary-0)
+          );
+        }
+        /* tooltip: a dark label (coaly, slate on dark pages so it stands
+           off the page) placed above the toggle, whatever the page or the
+           editor sets for simple-tooltip */
+        simple-tooltip {
+          --simple-tooltip-background: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-slateGray)
+          );
+          --simple-tooltip-text-color: var(--ddd-theme-default-white);
+          --simple-tooltip-opacity: 1;
+          --simple-tooltip-font-size: var(--ddd-font-size-5xs);
+          --simple-tooltip-padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
+          --simple-tooltip-border-radius: var(--ddd-radius-xs);
+          font-family: var(--ddd-font-navigation);
+          font-weight: var(--ddd-font-weight-medium);
+          white-space: nowrap;
         }
         :host([disabled]) #expand {
           border-style: dashed;
@@ -717,6 +758,10 @@ class A11yCollapse extends I18NMixin(DDD) {
     return html`
       <button
         @click="${this._onClick}"
+        @mouseenter="${this._showTooltip}"
+        @mouseleave="${this._hideTooltip}"
+        @focus="${this._showTooltip}"
+        @blur="${this._hideTooltip}"
         aria-controls="content"
         aria-expanded="${this.expanded ? "true" : "false"}"
         ?disabled="${this.disabled}"
@@ -743,7 +788,7 @@ class A11yCollapse extends I18NMixin(DDD) {
           </simple-icon-lite>
         </span>
       </button>
-      <simple-tooltip for="heading"
+      <simple-tooltip for="expand" position="top" offset="8" manual-mode
         >${this._localizeLabel(
           this._getExpanded(this.tooltip, this.tooltipExpanded, this.expanded),
         )}</simple-tooltip
@@ -780,7 +825,7 @@ class A11yCollapse extends I18NMixin(DDD) {
           aria-expanded="${this.expanded ? "true" : "false"}"
         >
         </simple-icon-button-lite>
-        <simple-tooltip for="expand"
+        <simple-tooltip for="expand" position="top" offset="8"
           >${this._localizeLabel(
             this._getExpanded(
               this.tooltip,
@@ -793,6 +838,22 @@ class A11yCollapse extends I18NMixin(DDD) {
     `;
   }
 
+  /**
+   * heading-button: the whole row is the control, so hovering or focusing
+   * anywhere on it shows the tooltip, placed above the toggle
+   */
+  _showTooltip() {
+    const tip = this.shadowRoot.querySelector("simple-tooltip");
+    if (tip) {
+      tip.show();
+    }
+  }
+  _hideTooltip() {
+    const tip = this.shadowRoot.querySelector("simple-tooltip");
+    if (tip) {
+      tip.hide();
+    }
+  }
   /**
    * Handle click
    */

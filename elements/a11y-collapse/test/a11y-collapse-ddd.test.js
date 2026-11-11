@@ -120,4 +120,63 @@ describe("a11y-collapse DDD block row", () => {
     await el.updateComplete;
     await expect(el).shadowDom.to.be.accessible();
   });
+
+  it("places the tooltip above the toggle with the DDD tooltip colours", async () => {
+    for (const markup of [
+      html`<a11y-collapse heading="Q"><div>A</div></a11y-collapse>`,
+      html`<a11y-collapse heading="Q" heading-button
+        ><div>A</div></a11y-collapse
+      >`,
+    ]) {
+      const el = await fixture(markup);
+      const tip = el.shadowRoot.querySelector("simple-tooltip");
+      expect(tip.getAttribute("for")).to.equal("expand");
+      expect(tip.position).to.equal("top");
+      const box = tip.shadowRoot.querySelector("#tooltip");
+      // coaly label with white text, whatever the page sets on body
+      expect(getComputedStyle(box).backgroundColor).to.equal("rgb(38, 38, 38)");
+      expect(getComputedStyle(box).color).to.equal("rgb(255, 255, 255)");
+    }
+  });
+
+  it("heading-button shows the tooltip while the row is hovered or focused", async () => {
+    const el = await fixture(
+      html`<a11y-collapse heading="Q" heading-button
+        ><div>A</div></a11y-collapse
+      >`,
+    );
+    const tip = el.shadowRoot.querySelector("simple-tooltip");
+    const row = el.shadowRoot.querySelector("button");
+    expect(tip.manualMode).to.be.true;
+    row.dispatchEvent(new MouseEvent("mouseenter"));
+    expect(tip._showing).to.be.true;
+    row.dispatchEvent(new MouseEvent("mouseleave"));
+    expect(tip._showing).to.be.false;
+    row.dispatchEvent(new FocusEvent("focus"));
+    expect(tip._showing).to.be.true;
+    row.dispatchEvent(new FocusEvent("blur"));
+    expect(tip._showing).to.be.false;
+  });
+
+  it("follows the DDD bg treatment colour instead of the page light / dark pair", async () => {
+    const el = await fixture(html`
+      <a11y-collapse
+        heading="Q"
+        heading-button
+        expanded
+        data-design-treatment="bg"
+        data-primary="5"
+        style="color: rgb(0, 0, 0); --ddd-theme-primary: rgb(162, 170, 173);"
+        ><div>A</div></a11y-collapse
+      >
+    `);
+    const row = el.shadowRoot.querySelector("#heading");
+    const toggle = el.shadowRoot.querySelector("#expand");
+    expect(getComputedStyle(row).color).to.equal("rgb(0, 0, 0)");
+    // open toggle: filled with the contrast colour, icon in the fill colour
+    expect(getComputedStyle(toggle).backgroundColor).to.equal("rgb(0, 0, 0)");
+    expect(getComputedStyle(toggle).color).to.equal("rgb(162, 170, 173)");
+    // the heading row has no fill of its own
+    expect(getComputedStyle(row).backgroundColor).to.equal("rgba(0, 0, 0, 0)");
+  });
 });
