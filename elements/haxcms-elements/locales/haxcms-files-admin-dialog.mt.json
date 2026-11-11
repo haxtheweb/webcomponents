@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Ibdel il-fajls oriġinali",
   "newName": "Isem ġdid",
   "deleteAction": "Ħassar",
-  "renameAction": "Semmi mill-ġdid"
+  "renameAction": "Semmi mill-ġdid",
+  "bulkOverwriteConfirm": "{action} {count} fajls? Dan jissostitwixxi l-fajls oriġinali u ma jistax jiġi mreġġa' lura.",
+  "actionScale": "Skala",
+  "actionRotate": "Dawwar",
+  "actionTransform": "Ittrasforma",
+  "actionConvertJpg": "Ikkonverti għal JPG",
+  "actionCompress": "Kompressa"
 }

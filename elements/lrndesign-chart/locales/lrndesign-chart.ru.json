@@ -4,5 +4,8 @@
   "pieChart": "Данные · Круговая диаграмма",
   "showDataTable": "Показать таблицу данных",
   "downloadData": "Скачать данные (.csv)",
-  "series": "Ряд {n}"
+  "series": "Ряд {n}",
+  "barChartLabel": "столбчатая диаграмма",
+  "lineChartLabel": "линейный график",
+  "pieChartLabel": "круговая диаграмма"
 }

@@ -1,4 +1,9 @@
 {
   "audio": "Sagalee",
-  "openOnSpotify": "Spotify irratti taabii haaraa keessatti bani"
+  "openOnSpotify": "Spotify irratti taabii haaraa keessatti bani",
+  "embedTitle": "Spotify galfame",
+  "trackEmbedTitle": "Sirboota Spotify galfame",
+  "albumEmbedTitle": "Albamii Spotify galfame",
+  "playlistEmbedTitle": "Tarree sirboota Spotify galfame",
+  "artistEmbedTitle": "Artistii Spotify galfame"
 }

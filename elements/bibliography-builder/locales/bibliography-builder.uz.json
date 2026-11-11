@@ -4,5 +4,6 @@
   "exportCitations": "Iqtiboslarni eksport qilish",
   "copy": "Nusxalash",
   "exportCitationFormat": "Iqtibos formatini eksport qilish",
-  "selectCitationFormatBelow": "Quyidan iqtibos formatini tanlang"
+  "selectCitationFormatBelow": "Quyidan iqtibos formatini tanlang",
+  "addCitationToBibliography": "Bibliografiyaga iqtibos qo'shish"
 }

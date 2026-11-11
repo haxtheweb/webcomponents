@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Cliciwch neu hofran i chwarae sain y ffrwydrad",
+  "soundDisabled": "Effaith ffrwydrad gweledol (sain wedi'i hanalluogi)",
+  "explosionAnimation": "animeiddiad ffrwydrad",
+  "explosionAriaLabel": "Animeiddiad ffrwydrad {state} {sound}. Cliciwch i doglo.",
+  "playing": "yn chwarae",
+  "stopped": "wedi stopio",
+  "withSound": "gyda sain",
+  "muted": "(distawyd)"
+}

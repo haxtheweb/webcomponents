@@ -3,5 +3,8 @@
   "openInNewTab": "Iftaħ il-PDF f'tab ġdid",
   "downloadPdf": "Niżżel il-PDF",
   "fullScreen": "Skrin sħiħ",
-  "exitFullScreen": "Oħroġ mill-iskrin sħiħ"
+  "exitFullScreen": "Oħroġ mill-iskrin sħiħ",
+  "notSupported": "Jidher li l-browser tiegħek mhuwiex ikkonfigurat biex juri fajls PDF. Xejn problema, sempliċement",
+  "notSupportedLink": "ikklikkja hawn biex tniżżel il-fajl PDF.",
+  "download": "Niżżel"
 }

@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Չհաջողվեց ավարտել գործողությունը ({status})",
   "normalizedPageSlugs": "Նորմալացվեց էջերի {count} slug",
   "createdTitle": "{title}-ը ստեղծվեց։",
-  "processing": "Մշակվում է"
+  "processing": "Մշակվում է",
+  "saveTimedOut": "Պահպանման ժամանակը սպառվեց. սերվերը չպատասխանեց։ Ձեր փոփոխությունները պահվում են այստեղ, բայց սերվերը դեռ կարող է ավարտել դրանց պահպանումը։"
 }

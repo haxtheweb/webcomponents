@@ -1,0 +1,8 @@
+{
+  "ordinalOne": "-ум",
+  "ordinalTwo": "-юм",
+  "ordinalFew": "-юм",
+  "ordinalOther": "-ум",
+  "fromTimeToTime": "аз {start} - {end}",
+  "atTime": "соати {start}"
+}

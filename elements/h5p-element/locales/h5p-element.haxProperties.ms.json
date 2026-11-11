@@ -1,13 +1,20 @@
 {
   "gizmo": {
     "title": "H5P",
-    "description": "Pembalut h5p untuk memuatkan dan mempersembahkan fail .h5p"
+    "description": "Memainkan kandungan interaktif H5P daripada fail .h5p yang dimuat naik, tanpa memerlukan pelayan H5P"
   },
   "settings": {
     "configure": [
       {
         "slot": "",
-        "description": "Kod benam iframe H5P"
+        "description": "Muat naik atau pautkan fail .h5p. Ia dibuka dalam pelayar; tiada pelayan H5P diperlukan.",
+        "title": "Fail H5P"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kod benam iframe lama",
+        "description": "Hanya untuk kandungan lama yang membenamkan iframe H5P dari tapak lain. Biarkan kosong apabila fail .h5p ditetapkan di atas."
       }
     ]
   }

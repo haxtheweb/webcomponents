@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "{title} အတွက် QR ကုဒ်",
+  "noData": "QR ကုဒ်အဖြစ် ပြရန် ဒေတာ မရှိပါ",
+  "formatNotSupported": "QR ကုဒ်ပုံစံ {format} ကို မပံ့ပိုးပါ",
+  "noCanvas": "ဤဘရောက်ဇာသည် QR ကုဒ်ကို မဆွဲနိုင်ပါ (canvas ပံ့ပိုးမှု မရှိ)"
+}

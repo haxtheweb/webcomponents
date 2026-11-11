@@ -129,5 +129,12 @@
   "cancel": "ยกเลิก",
   "clearedSite": "ล้างข้อมูลการเรียนรู้ของคุณสำหรับ {site} แล้ว",
   "clearedDevice": "ล้างข้อมูลการเรียนรู้ทั้งหมดบนอุปกรณ์นี้แล้ว",
-  "thisSite": "เว็บไซต์นี้"
+  "thisSite": "เว็บไซต์นี้",
+  "outlineHeading": "ความคืบหน้าตามหน้า",
+  "allPages": "ทุกหน้า",
+  "outlinePagesDone": "เสร็จแล้ว {done} จาก {total} หน้า",
+  "outlinePagesCount": "{count} หน้า",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "เสร็จสมบูรณ์ {percent}%",
+  "outlineComplete": "เสร็จสมบูรณ์"
 }

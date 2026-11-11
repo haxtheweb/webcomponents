@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Faayiloota jalqabaa bakka buusi",
   "newName": "Maqaa haaraa",
   "deleteAction": "Haqi",
-  "renameAction": "Maqaa jijjiiri"
+  "renameAction": "Maqaa jijjiiri",
+  "bulkOverwriteConfirm": "{action}: faayilii {count}? Kun faayilii jalqabaa bakka bu'a, deebi'ees hin deebi'u.",
+  "actionScale": "Hanga jijjiiri",
+  "actionRotate": "Naanneessi",
+  "actionTransform": "Jijjiiri",
+  "actionConvertJpg": "Gara JPG jijjiiri",
+  "actionCompress": "Cuphi"
 }

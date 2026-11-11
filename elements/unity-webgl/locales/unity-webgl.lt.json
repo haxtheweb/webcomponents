@@ -1,5 +1,6 @@
 {
   "simulation": "Simuliacija",
   "fullScreen": "Visas ekranas",
-  "exitFullScreen": "Išeiti iš viso ekrano režimo"
+  "exitFullScreen": "Išeiti iš viso ekrano režimo",
+  "player": "Unity WebGL grotuvas"
 }

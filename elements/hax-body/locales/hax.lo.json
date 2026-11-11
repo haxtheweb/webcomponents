@@ -197,5 +197,6 @@
   "removeSource": "ລຶບແຫຼ່ງ",
   "lockUnlock": "ລັອກ / ປົດລັອກ",
   "toggleFilters": "ສະຫຼັບຕົວກັ່ນຕອງ",
-  "filters": "ຕົວກັ່ນຕອງ"
+  "filters": "ຕົວກັ່ນຕອງ",
+  "typeForQuickActions": "ພິມ '/' ເພື່ອເຮັດວຽກດ່ວນ"
 }

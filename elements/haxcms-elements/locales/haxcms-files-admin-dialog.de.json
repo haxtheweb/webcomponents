@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Originaldateien ersetzen",
   "newName": "Neuer Name",
   "deleteAction": "Löschen",
-  "renameAction": "Umbenennen"
+  "renameAction": "Umbenennen",
+  "bulkOverwriteConfirm": "{action} für {count} Dateien? Dadurch werden die Originaldateien ersetzt; das lässt sich nicht rückgängig machen.",
+  "actionScale": "Skalieren",
+  "actionRotate": "Drehen",
+  "actionTransform": "Transformieren",
+  "actionConvertJpg": "In JPG konvertieren",
+  "actionCompress": "Komprimieren"
 }

@@ -1,4 +1,9 @@
 {
   "audio": "Uyarina",
-  "openOnSpotify": "Musuq ñawpa p'anqapi Spotifypi kichay"
+  "openOnSpotify": "Musuq ñawpa p'anqapi Spotifypi kichay",
+  "embedTitle": "Spotify churasqa",
+  "trackEmbedTitle": "Spotify taki churasqa",
+  "albumEmbedTitle": "Spotify álbum churasqa",
+  "playlistEmbedTitle": "Spotify playlist churasqa",
+  "artistEmbedTitle": "Spotify takiq churasqa"
 }

@@ -197,5 +197,6 @@
   "removeSource": "ដកប្រភពចេញ",
   "lockUnlock": "ចាក់សោ / ដោះសោ",
   "toggleFilters": "បិទ/បើកតម្រង",
-  "filters": "តម្រង"
+  "filters": "តម្រង",
+  "typeForQuickActions": "វាយ '/' សម្រាប់សកម្មភាពរហ័ស"
 }

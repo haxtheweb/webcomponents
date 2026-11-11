@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "Waehere QR mō {title}",
+  "noData": "Kāore he raraunga hei whakaatu hei waehere QR",
+  "formatNotSupported": "Kāore e tautokona te hōputu waehere QR {format}",
+  "noCanvas": "Kāore e taea e tēnei pūtirotiro te tā i te waehere QR (kāore he tautoko canvas)"
+}

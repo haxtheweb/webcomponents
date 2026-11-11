@@ -197,5 +197,6 @@
   "removeSource": "Çavkaniyê rake",
   "lockUnlock": "Kilît bike / Kilîtê veke",
   "toggleFilters": "Parzûnan Veke/Bigire",
-  "filters": "Parzûn"
+  "filters": "Parzûn",
+  "typeForQuickActions": "Ji bo çalakiyên bilez '/' binivîse"
 }

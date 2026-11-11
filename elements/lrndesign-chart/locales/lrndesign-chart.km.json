@@ -4,5 +4,8 @@
   "pieChart": "ទិន្នន័យ · ក្រាហ្វិកវង់មូល",
   "showDataTable": "បង្ហាញតារាងទិន្នន័យ",
   "downloadData": "ទាញយកទិន្នន័យ (.csv)",
-  "series": "ស៊េរី {n}"
+  "series": "ស៊េរី {n}",
+  "barChartLabel": "ដ្យាក្រាមរបារ",
+  "lineChartLabel": "ដ្យាក្រាមបន្ទាត់",
+  "pieChartLabel": "ដ្យាក្រាមរង្វង់"
 }

@@ -197,5 +197,6 @@
   "removeSource": "Удалить источник",
   "lockUnlock": "Заблокировать / разблокировать",
   "toggleFilters": "Переключить фильтры",
-  "filters": "Фильтры"
+  "filters": "Фильтры",
+  "typeForQuickActions": "Введите «/» для быстрых действий"
 }

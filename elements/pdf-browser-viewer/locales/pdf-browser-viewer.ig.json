@@ -3,5 +3,8 @@
   "openInNewTab": "Meghee PDF n'ime taabụ ọhụrụ",
   "downloadPdf": "Budata PDF",
   "fullScreen": "Ihuenyo zuru ezu",
-  "exitFullScreen": "Pụọ na ihuenyo zuru ezu"
+  "exitFullScreen": "Pụọ na ihuenyo zuru ezu",
+  "notSupported": "O yiri ka ihe nchọgharị weebụ gị edobeghị iji gosi faịlụ PDF. Ọ dịghị nsogbu, naanị",
+  "notSupportedLink": "pịa ebe a iji budata faịlụ PDF ahụ.",
+  "download": "Budata"
 }

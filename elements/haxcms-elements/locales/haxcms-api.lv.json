@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Konvertēšana neizdevās.",
   "PARAM_REQUIRED": "Trūkst obligātas vērtības: {param}.",
   "INVALID_REQUEST": "Nederīgs pieprasījums.",
-  "PARAM_INVALID": "Nederīga vērtība: {param}."
+  "PARAM_INVALID": "Nederīga vērtība: {param}.",
+  "BLOCK_RATE_LIMITED": "Šobrīd šajā vietnē veikts pārāk daudz satura izmaiņu. Mēģiniet vēlreiz pēc {retryAfter} sekundēm."
 }

@@ -19,5 +19,13 @@
   "copyCode": "Kodu kopyala",
   "copied": "Kopyalandı!",
   "invalidCode": "Bu bir karakter kodu değil.",
-  "preview": "Karakter önizlemesi"
+  "preview": "Karakter önizlemesi",
+  "previous": "Önceki {name}",
+  "next": "Sonraki {name}",
+  "variant": "{current} / {total}",
+  "save": "Kaydet",
+  "cancel": "İptal",
+  "unsavedChanges": "Kaydedilmemiş değişiklikler",
+  "noUnsavedChanges": "Kaydedilmemiş değişiklik yok",
+  "codeHelp": "Bir karakteri yüklemek için kod yapıştırın veya bunu her yerde kullanmak için kopyalayın."
 }

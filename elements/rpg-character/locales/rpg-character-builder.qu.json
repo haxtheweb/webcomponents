@@ -19,5 +19,13 @@
   "copyCode": "Kodiqota kopiay",
   "copied": "Kopiasqa!",
   "invalidCode": "Kayqa manam runap kodiqunchu.",
-  "preview": "Runa ñawpaqta qhaway"
+  "preview": "Runa ñawpaqta qhaway",
+  "previous": "Ñawpaq {name}",
+  "next": "Qatiq {name}",
+  "variant": "{total}manta {current}",
+  "save": "Waqaychay",
+  "cancel": "Mana ruway",
+  "unsavedChanges": "Mana waqaychasqa tikrakuna",
+  "noUnsavedChanges": "Mana waqaychasqa tikrakuna kanchu",
+  "codeHelp": "Huk runata apamunaykipaq códigota churay, utaq kayta kikinchay maypipas llamk'achinaykipaq."
 }

@@ -3,5 +3,8 @@
   "openInNewTab": "PDF کو نئے ٹیب میں کھولیں",
   "downloadPdf": "PDF ڈاؤن لوڈ کریں",
   "fullScreen": "پوری اسکرین",
-  "exitFullScreen": "پوری اسکرین سے باہر نکلیں"
+  "exitFullScreen": "پوری اسکرین سے باہر نکلیں",
+  "notSupported": "لگتا ہے آپ کا ویب براؤزر PDF فائلیں دکھانے کے لیے ترتیب نہیں دیا گیا۔ کوئی بات نہیں، بس",
+  "notSupportedLink": "PDF فائل ڈاؤن لوڈ کرنے کے لیے یہاں کلک کریں۔",
+  "download": "ڈاؤن لوڈ"
 }

@@ -197,5 +197,6 @@
   "removeSource": "Suprimeix la font",
   "lockUnlock": "Bloqueja / Desbloqueja",
   "toggleFilters": "Mostra/amaga els filtres",
-  "filters": "Filtres"
+  "filters": "Filtres",
+  "typeForQuickActions": "Escriu «/» per a accions ràpides"
 }

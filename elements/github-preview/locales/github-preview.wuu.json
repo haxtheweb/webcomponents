@@ -1,0 +1,10 @@
+{
+  "github": "GitHub",
+  "repository": "仓库",
+  "stars": "星标",
+  "forks": "复刻",
+  "loading": "勒勒加载",
+  "viewMore": "看更多",
+  "assetNotFound": "寻不着资源",
+  "openOnGitHub": "勒 GitHub 浪打开 {org}/{repo}"
+}

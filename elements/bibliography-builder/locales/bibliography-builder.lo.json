@@ -4,5 +4,6 @@
   "exportCitations": "ສົ່ງອອກການອ້າງອີງ",
   "copy": "ສຳເນົາ",
   "exportCitationFormat": "ຮູບແບບການອ້າງອີງທີ່ຈະສົ່ງອອກ",
-  "selectCitationFormatBelow": "ເລືອກຮູບແບບການອ້າງອີງຂ້າງລຸ່ມ"
+  "selectCitationFormatBelow": "ເລືອກຮູບແບບການອ້າງອີງຂ້າງລຸ່ມ",
+  "addCitationToBibliography": "ເພີ່ມການອ້າງອີງເຂົ້າໃນບັນນານຸກົມ"
 }

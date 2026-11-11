@@ -35,5 +35,12 @@
   "youTubeStartLoading": "Lê bide bitikîne.",
   "youTubeTranscriptLabel": "Transkrîpt dema medya dest pê bike wê were barkirin.",
   "audioDescriptionLabel": "Danasîna dengî",
-  "openOnYouTube": "Li YouTube veke"
+  "openOnYouTube": "Li YouTube veke",
+  "interactiveLabel": "înteraktîf",
+  "layoutLabel": "Rêzkirin",
+  "sideLabel": "Alî",
+  "belowLabel": "Jêr",
+  "leftLabel": "Çep",
+  "rightLabel": "Rast",
+  "hideTranscriptLabel": "Transkrîpsiyonê veşêre"
 }

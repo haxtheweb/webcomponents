@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Activiteit",
-        "description": "Bewijs markeren: leerlingen plakken elk vlaggetje naast het bewijs ervoor. Eén selecteren: leerlingen kiezen de ene passage die de vraag het best beantwoordt."
+        "description": "Bewijs markeren: leerlingen plakken elk vlaggetje naast het bewijs ervoor. Eén selecteren: leerlingen kiezen de ene passage die de vraag het best beantwoordt.",
+        "options": {
+          "flag": "Bewijs markeren",
+          "one": "Kies er één"
+        }
       },
       {
         "property": "unit",
         "title": "Leerlingen selecteren",
-        "description": "Waar een leerling in de tekst naar wijst. Afbeeldingen kunnen altijd worden geselecteerd."
+        "description": "Waar een leerling in de tekst naar wijst. Afbeeldingen kunnen altijd worden geselecteerd.",
+        "options": {
+          "sentence": "Zinnen",
+          "paragraph": "Alinea's",
+          "figure": "Alleen figuren"
+        }
       },
       {
         "property": "answers",

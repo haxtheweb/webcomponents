@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Originele bestanden vervangen",
   "newName": "Nieuwe naam",
   "deleteAction": "Verwijderen",
-  "renameAction": "Hernoemen"
+  "renameAction": "Hernoemen",
+  "bulkOverwriteConfirm": "{action}: {count} bestanden? Dit vervangt de originele bestanden en kan niet ongedaan worden gemaakt.",
+  "actionScale": "Schalen",
+  "actionRotate": "Roteren",
+  "actionTransform": "Transformeren",
+  "actionConvertJpg": "Converteren naar JPG",
+  "actionCompress": "Comprimeren"
 }

@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "د چاودنې غږ غږولو لپاره کلیک یا هوور وکړئ",
+  "soundDisabled": "د چاودنې لیدلی اغېز (غږ بند)",
+  "explosionAnimation": "د چاودنې انیمېشن",
+  "explosionAriaLabel": "د چاودنې انیمېشن {state} {sound}. د بدلولو لپاره کلیک وکړئ.",
+  "playing": "روان",
+  "stopped": "ودرېدلی",
+  "withSound": "له غږ سره",
+  "muted": "(غلی)"
+}

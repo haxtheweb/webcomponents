@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "क्रिया पूर्ण करता आली नाही ({status})",
   "normalizedPageSlugs": "{count} पान स्लग सामान्यीकृत केले",
   "createdTitle": "{title} तयार झाले!",
-  "processing": "प्रक्रिया सुरू आहे"
+  "processing": "प्रक्रिया सुरू आहे",
+  "saveTimedOut": "जतन करण्याची वेळ संपली: सर्व्हरने उत्तर दिले नाही. तुमचे बदल येथे ठेवले आहेत, पण सर्व्हर ते अजूनही जतन करू शकतो."
 }

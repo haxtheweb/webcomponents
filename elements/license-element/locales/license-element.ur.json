@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title} از {creator}، {license} کے تحت لائسنس یافتہ ہے۔",
   "permissionsBeyondScope": "اس لائسنس کے دائرے سے باہر اجازتیں {link} دستیاب ہیں۔",
   "author": "(مصنف)",
-  "onTheLicensingDetailsPage": "لائسنس کی تفصیلات کے صفحے پر"
+  "onTheLicensingDetailsPage": "لائسنس کی تفصیلات کے صفحے پر",
+  "licenseLabel": "لائسنس"
 }

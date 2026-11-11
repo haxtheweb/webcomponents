@@ -197,5 +197,6 @@
   "removeSource": "Odstrániť zdroj",
   "lockUnlock": "Zamknúť / odomknúť",
   "toggleFilters": "Prepnúť filtre",
-  "filters": "Filtre"
+  "filters": "Filtre",
+  "typeForQuickActions": "Napíšte „/“ pre rýchle akcie"
 }

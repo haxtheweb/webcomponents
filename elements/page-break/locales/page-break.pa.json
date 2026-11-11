@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "ਇਹ ਪੰਨਾ ਲੌਕ ਹੈ। ਪ੍ਰਕਾਸ਼ਨ ਸਥਿਤੀ ਬਦਲਣ ਲਈ ਪਹਿਲਾਂ ਇਸਨੂੰ ਅਨਲੌਕ ਕਰੋ।",
   "pageLockedUnlockToDelete": "ਇਹ ਪੰਨਾ ਲੌਕ ਹੈ। ਮਿਟਾਉਣ ਲਈ ਪਹਿਲਾਂ ਇਸਨੂੰ ਅਨਲੌਕ ਕਰੋ।",
   "pageDetails": "ਪੰਨੇ ਦੇ ਵੇਰਵੇ",
-  "clickToUnlock": "ਅਨਲਾਕ ਕਰਨ ਲਈ ਕਲਿੱਕ ਕਰੋ"
+  "clickToUnlock": "ਅਨਲਾਕ ਕਰਨ ਲਈ ਕਲਿੱਕ ਕਰੋ",
+  "pageSettings": "ਪੰਨਾ ਸੈਟਿੰਗਾਂ",
+  "editingPageSettings": "ਪੰਨਾ ਸੈਟਿੰਗਾਂ ਸੋਧੀਆਂ ਜਾ ਰਹੀਆਂ ਹਨ",
+  "published": "ਪ੍ਰਕਾਸ਼ਿਤ",
+  "draft": "ਖਰੜਾ",
+  "locked": "ਤਾਲਾਬੰਦ",
+  "unlocked": "ਅਨਲੌਕ",
+  "noTags": "ਕੋਈ ਟੈਗ ਨਹੀਂ",
+  "oneTag": "1 ਟੈਗ",
+  "tagCount": "{count} ਟੈਗ",
+  "enterKey": "Enter"
 }

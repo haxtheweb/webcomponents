@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title} ji aliyê {creator} di bin {license} de lîsansdar e.",
   "permissionsBeyondScope": "Destûrên ji derveyî çarçoveya vê lîsansê {link} hene.",
   "author": "(nivîskar)",
-  "onTheLicensingDetailsPage": "li ser rûpela hûrgiliyên lîsansê"
+  "onTheLicensingDetailsPage": "li ser rûpela hûrgiliyên lîsansê",
+  "licenseLabel": "Lîsans"
 }

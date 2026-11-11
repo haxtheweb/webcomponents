@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Partlayış səsini oxutmaq üçün klikləyin və ya üzərinə gətirin",
+  "soundDisabled": "Vizual partlayış effekti (səs deaktivdir)",
+  "explosionAnimation": "partlayış animasiyası",
+  "explosionAriaLabel": "Partlayış animasiyası {state} {sound}. Dəyişmək üçün klikləyin.",
+  "playing": "oxunur",
+  "stopped": "dayandırılıb",
+  "withSound": "səslə",
+  "muted": "(səssiz)"
+}

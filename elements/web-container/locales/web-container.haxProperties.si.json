@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "NodeJS බහාලුම"
+    "title": "NodeJS බහාලුම",
+    "description": ""
   },
   "settings": {
     "configure": [

@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Boggan waa xidhan yahay. Marka hore fur si aad u beddesho xaaladda daabacaadda.",
   "pageLockedUnlockToDelete": "Boggan waa xidhan yahay. Marka hore fur si aad u tirtirto.",
   "pageDetails": "Faahfaahinta bogga",
-  "clickToUnlock": "Riix si aad u furto"
+  "clickToUnlock": "Riix si aad u furto",
+  "pageSettings": "Dejinta bogga",
+  "editingPageSettings": "Waa la tafatirayaa dejinta bogga",
+  "published": "La daabacay",
+  "draft": "Qabyo",
+  "locked": "La xidhay",
+  "unlocked": "La furay",
+  "noTags": "Calaamado ma jiraan",
+  "oneTag": "1 calaamad",
+  "tagCount": "{count} calaamadood",
+  "enterKey": "Enter"
 }

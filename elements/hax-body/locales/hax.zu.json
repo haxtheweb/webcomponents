@@ -197,5 +197,6 @@
   "removeSource": "Susa umthombo",
   "lockUnlock": "Khiya / Vula",
   "toggleFilters": "Shintsha Izihlungi",
-  "filters": "Izihlungi"
+  "filters": "Izihlungi",
+  "typeForQuickActions": "Thayipha '/' ukuthola izenzo ezisheshayo"
 }

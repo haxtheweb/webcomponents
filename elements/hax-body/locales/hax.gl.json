@@ -197,5 +197,6 @@
   "removeSource": "Quitar fonte",
   "lockUnlock": "Bloquear / Desbloquear",
   "toggleFilters": "Alternar filtros",
-  "filters": "Filtros"
+  "filters": "Filtros",
+  "typeForQuickActions": "Escribe '/' para accións rápidas"
 }

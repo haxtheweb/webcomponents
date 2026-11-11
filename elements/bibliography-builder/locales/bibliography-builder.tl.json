@@ -4,5 +4,6 @@
   "exportCitations": "I-export ang mga Sanggunian",
   "copy": "Kopyahin",
   "exportCitationFormat": "Format ng pag-export ng sanggunian",
-  "selectCitationFormatBelow": "Pumili ng format ng sanggunian sa ibaba"
+  "selectCitationFormatBelow": "Pumili ng format ng sanggunian sa ibaba",
+  "addCitationToBibliography": "Magdagdag ng sipi sa bibliograpiya"
 }

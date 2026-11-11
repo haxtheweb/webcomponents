@@ -1,13 +1,20 @@
 {
   "gizmo": {
     "title": "H5P",
-    "description": "Ihe mkpuchi H5P maka ibudata na igosi faịlụ .h5p"
+    "description": "Na-akpọ ọdịnaya H5P na-emekọrịta site na faịlụ .h5p ebugoro, na-enweghị mkpa maka sava H5P"
   },
   "settings": {
     "configure": [
       {
         "slot": "",
-        "description": "Koodu ntinye iframe H5P"
+        "description": "Bugo ma ọ bụ jikọọ faịlụ .h5p. A na-emepe ya na ihe nchọgharị; achọghị sava H5P.",
+        "title": "Faịlụ H5P"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Koodu ntinye iframe ochie",
+        "description": "Naanị maka ọdịnaya ochie nke na-etinye iframe H5P site na saịtị ọzọ. Hapụ ya efu mgbe edobere faịlụ .h5p n'elu."
       }
     ]
   }

@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Ev rûpel kilîtkirî ye. Pêşî vekilîte da ku rewşa weşanê biguherînî.",
   "pageLockedUnlockToDelete": "Ev rûpel kilîtkirî ye. Pêşî vekilîte da ku jê bibî.",
   "pageDetails": "Hûrguliyên rûpelê",
-  "clickToUnlock": "Ji bo vekirin pêl bike"
+  "clickToUnlock": "Ji bo vekirin pêl bike",
+  "pageSettings": "Mîhengên rûpelê",
+  "editingPageSettings": "Mîhengên rûpelê têne sererastkirin",
+  "published": "Hate weşandin",
+  "draft": "Reşnivîs",
+  "locked": "Girtî",
+  "unlocked": "Vekirî",
+  "noTags": "Etîket tune",
+  "oneTag": "1 etîket",
+  "tagCount": "{count} etîket",
+  "enterKey": "Enter"
 }

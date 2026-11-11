@@ -1,5 +1,6 @@
 {
   "simulation": "ការក្លែងធ្វើ",
   "fullScreen": "អេក្រង់ពេញ",
-  "exitFullScreen": "ចាកចេញពីអេក្រង់ពេញ"
+  "exitFullScreen": "ចាកចេញពីអេក្រង់ពេញ",
+  "player": "កម្មវិធីចាក់ Unity WebGL"
 }

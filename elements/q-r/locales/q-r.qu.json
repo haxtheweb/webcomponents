@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "{title}paq QR código",
+  "noData": "Manan QR código hina rikuchinapaq willay kanchu",
+  "formatNotSupported": "QR código formato {format} manan atiyniyuqchu",
+  "noCanvas": "Kay navegadorqa manan QR códigota siq'iyta atinchu (mana canvas yanapayniyuq)"
+}

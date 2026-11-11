@@ -4,5 +4,8 @@
   "pieChart": "Data · Sektordiagram",
   "showDataTable": "Vis datatabell",
   "downloadData": "Last ned data (.csv)",
-  "series": "Serie {n}"
+  "series": "Serie {n}",
+  "barChartLabel": "stolpediagram",
+  "lineChartLabel": "linjediagram",
+  "pieChartLabel": "sektordiagram"
 }

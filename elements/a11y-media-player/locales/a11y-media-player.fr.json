@@ -35,5 +35,12 @@
   "youTubeStartLoading": "Appuyez sur lecture.",
   "youTubeTranscriptLabel": "La transcription se chargera une fois le média lancé.",
   "audioDescriptionLabel": "Audiodescription",
-  "openOnYouTube": "Ouvrir sur YouTube"
+  "openOnYouTube": "Ouvrir sur YouTube",
+  "interactiveLabel": "interactif",
+  "layoutLabel": "Disposition",
+  "sideLabel": "Côté",
+  "belowLabel": "Dessous",
+  "leftLabel": "Gauche",
+  "rightLabel": "Droite",
+  "hideTranscriptLabel": "Masquer la transcription"
 }

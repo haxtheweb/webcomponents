@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Η σελίδα δεν έχει δημοσιευτεί",
   "progressDone": "Ολοκληρώθηκε",
   "progressInProgress": "Σε εξέλιξη",
-  "progressVisited": "Επισκέφθηκε"
+  "progressVisited": "Επισκέφθηκε",
+  "progressPercentComplete": "{percent}% ολοκληρώθηκε",
+  "progressComplete": "Ολοκληρώθηκε"
 }

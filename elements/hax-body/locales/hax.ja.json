@@ -197,5 +197,6 @@
   "removeSource": "ソースを削除",
   "lockUnlock": "ロック / ロック解除",
   "toggleFilters": "フィルターの切り替え",
-  "filters": "フィルター"
+  "filters": "フィルター",
+  "typeForQuickActions": "「/」を入力するとクイックアクションを表示"
 }

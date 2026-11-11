@@ -35,5 +35,12 @@
   "youTubeStartLoading": "Тоглуулах товчийг дарна уу.",
   "youTubeTranscriptLabel": "Медиа тоглож эхэлмэгц бичвэр ачаалагдана.",
   "audioDescriptionLabel": "Аудио тайлбар",
-  "openOnYouTube": "YouTube-д нээх"
+  "openOnYouTube": "YouTube-д нээх",
+  "interactiveLabel": "интерактив",
+  "layoutLabel": "Байршил",
+  "sideLabel": "Хажуу",
+  "belowLabel": "Доор",
+  "leftLabel": "Зүүн",
+  "rightLabel": "Баруун",
+  "hideTranscriptLabel": "Бичвэрийг нуух"
 }

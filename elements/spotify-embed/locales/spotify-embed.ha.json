@@ -1,4 +1,9 @@
 {
   "audio": "Sauti",
-  "openOnSpotify": "Buɗe a Spotify a sabon shafi"
+  "openOnSpotify": "Buɗe a Spotify a sabon shafi",
+  "embedTitle": "Shigar da Spotify",
+  "trackEmbedTitle": "Shigar da Waƙar Spotify",
+  "albumEmbedTitle": "Shigar da Kundin Spotify",
+  "playlistEmbedTitle": "Shigar da Jerin Waƙoƙin Spotify",
+  "artistEmbedTitle": "Shigar da Mawaƙin Spotify"
 }

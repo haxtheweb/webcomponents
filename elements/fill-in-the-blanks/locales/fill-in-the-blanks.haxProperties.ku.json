@@ -37,6 +37,16 @@
         "title": "Navê quizê",
         "description": "Navê quizê ku ji bo naskirina vê hêmanê di hawîrdorên bi xAPI de tê bikaranîn"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Dikare were girtin",
+        "description": "Vê pirsê wekî rêzek ku vedibe û digire nîşan bide. Vekirina yekê pirsên din ên dikarin werin girtin ên li kêleka wê digire."
+      },
+      {
+        "title": "Girtî dest pê bike",
+        "description": "Dema dikare were girtin, wekî rêzek girtî dest pê dike ku tenê pirs û rewşa wê nîşan dide."
+      }
     ]
   }
 }

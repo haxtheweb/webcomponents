@@ -129,5 +129,12 @@
   "cancel": "Anulo",
   "clearedSite": "Të dhënat e tua të të mësuarit për {site} u pastruan.",
   "clearedDevice": "Të gjitha të dhënat e të mësuarit në këtë pajisje u pastruan.",
-  "thisSite": "ky sajt"
+  "thisSite": "ky sajt",
+  "outlineHeading": "Përparimi sipas faqes",
+  "allPages": "Të gjitha faqet",
+  "outlinePagesDone": "{done} nga {total} faqe të përfunduara",
+  "outlinePagesCount": "{count} faqe",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% e përfunduar",
+  "outlineComplete": "E përfunduar"
 }

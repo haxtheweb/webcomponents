@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Clique ou passe o mouse para tocar o som de explosão",
+  "soundDisabled": "Efeito visual de explosão (som desativado)",
+  "explosionAnimation": "animação de explosão",
+  "explosionAriaLabel": "Animação de explosão {state} {sound}. Clique para alternar.",
+  "playing": "em reprodução",
+  "stopped": "parada",
+  "withSound": "com som",
+  "muted": "(sem som)"
+}

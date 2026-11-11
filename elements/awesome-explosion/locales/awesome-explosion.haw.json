@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Kaomi a kau paha i ka ʻiole e hoʻokani i ke kani pahū",
+  "soundDisabled": "Hopena pahū ʻike maka (kani i hoʻopau ʻia)",
+  "explosionAnimation": "ʻanime pahū",
+  "explosionAriaLabel": "ʻAnime pahū {state} {sound}. Kaomi e hoʻololi.",
+  "playing": "ke hoʻokani nei",
+  "stopped": "ua hoʻōki ʻia",
+  "withSound": "me ke kani",
+  "muted": "(hāmau)"
+}

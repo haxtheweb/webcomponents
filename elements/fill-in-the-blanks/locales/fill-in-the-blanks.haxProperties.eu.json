@@ -37,6 +37,16 @@
         "title": "Galdetegiaren izena",
         "description": "xAPI bidezko inguruneetan elementu hau identifikatzeko pasatzen den galdetegiaren izena"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Tolesgarria",
+        "description": "Erakutsi galdera hau ireki eta ixten den errenkada gisa. Bat irekitzean, alboko galdera tolesgarriak ixten dira."
+      },
+      {
+        "title": "Hasi tolestuta",
+        "description": "Tolesgarria denean, galdera eta bere egoera soilik erakusten dituen errenkada itxi gisa hasten da."
+      }
     ]
   }
 }

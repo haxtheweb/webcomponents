@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Ця сторінка заблокована. Спершу розблокуйте її, щоб змінити стан публікації.",
   "pageLockedUnlockToDelete": "Ця сторінка заблокована. Спершу розблокуйте її, щоб видалити.",
   "pageDetails": "Деталі сторінки",
-  "clickToUnlock": "Натисніть для розблокування"
+  "clickToUnlock": "Натисніть для розблокування",
+  "pageSettings": "Налаштування сторінки",
+  "editingPageSettings": "Редагування налаштувань сторінки",
+  "published": "Опубліковано",
+  "draft": "Чернетка",
+  "locked": "Заблоковано",
+  "unlocked": "Розблоковано",
+  "noTags": "Немає тегів",
+  "oneTag": "1 тег",
+  "tagCount": "Тегів: {count}",
+  "enterKey": "Enter"
 }

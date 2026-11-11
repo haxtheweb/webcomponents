@@ -197,5 +197,6 @@
   "removeSource": "Fjarlægja uppsprettu",
   "lockUnlock": "Læsa / aflæsa",
   "toggleFilters": "Sýna/fela síur",
-  "filters": "Síur"
+  "filters": "Síur",
+  "typeForQuickActions": "Sláðu inn '/' fyrir flýtiaðgerðir"
 }

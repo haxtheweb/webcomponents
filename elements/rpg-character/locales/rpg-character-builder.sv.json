@@ -19,5 +19,13 @@
   "copyCode": "Kopiera kod",
   "copied": "Kopierat!",
   "invalidCode": "Det där är inte en karaktärskod.",
-  "preview": "Förhandsvisning av karaktär"
+  "preview": "Förhandsvisning av karaktär",
+  "previous": "Föregående {name}",
+  "next": "Nästa {name}",
+  "variant": "{current} av {total}",
+  "save": "Spara",
+  "cancel": "Avbryt",
+  "unsavedChanges": "Osparade ändringar",
+  "noUnsavedChanges": "Inga osparade ändringar",
+  "codeHelp": "Klistra in en kod för att ladda en karaktär, eller kopiera den här för att använda den var som helst."
 }

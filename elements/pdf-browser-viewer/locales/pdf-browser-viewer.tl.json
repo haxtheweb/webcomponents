@@ -3,5 +3,8 @@
   "openInNewTab": "Buksan ang PDF sa bagong tab",
   "downloadPdf": "I-download ang PDF",
   "fullScreen": "Full screen",
-  "exitFullScreen": "Lumabas sa full screen"
+  "exitFullScreen": "Lumabas sa full screen",
+  "notSupported": "Mukhang hindi naka-configure ang iyong Web browser para magpakita ng mga PDF file. Walang problema, basta",
+  "notSupportedLink": "i-click ito para i-download ang PDF file.",
+  "download": "I-download"
 }

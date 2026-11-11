@@ -1,0 +1,9 @@
+{
+  "imageMap": "Slikovna karta",
+  "interactive": "Interaktivno",
+  "hotspot": "Žarišna točka",
+  "hotspotPosition": "{n} od {total}",
+  "hotspotsExplored": "Istraženo žarišnih točaka: {n} od {total}",
+  "explored": "Istraženo",
+  "close": "Zatvori"
+}

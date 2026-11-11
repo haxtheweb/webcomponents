@@ -197,5 +197,6 @@
   "removeSource": "Ukloni izvor",
   "lockUnlock": "Zaključaj / Otključaj",
   "toggleFilters": "Prikaži/sakrij filtere",
-  "filters": "Filteri"
+  "filters": "Filteri",
+  "typeForQuickActions": "Upišite „/“ za brze radnje"
 }

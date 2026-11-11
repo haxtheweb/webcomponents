@@ -197,5 +197,6 @@
   "removeSource": "Hapus sumber",
   "lockUnlock": "Kunci / Buka Kunci",
   "toggleFilters": "Alihkan Filter",
-  "filters": "Filter"
+  "filters": "Filter",
+  "typeForQuickActions": "Ketik '/' untuk tindakan cepat"
 }

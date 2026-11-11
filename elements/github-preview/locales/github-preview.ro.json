@@ -1,0 +1,10 @@
+{
+  "github": "GitHub",
+  "repository": "Depozit",
+  "stars": "stele",
+  "forks": "fork-uri",
+  "loading": "Se încarcă",
+  "viewMore": "Vezi mai multe",
+  "assetNotFound": "Resursa nu a fost găsită",
+  "openOnGitHub": "Deschide {org}/{repo} pe GitHub"
+}

@@ -4,5 +4,8 @@
   "pieChart": "Data · Kakuskipan",
   "showDataTable": "Vís dataskipan",
   "downloadData": "Heinta data (.csv)",
-  "series": "Røð {n}"
+  "series": "Røð {n}",
+  "barChartLabel": "súlurit",
+  "lineChartLabel": "linjurit",
+  "pieChartLabel": "kakurit"
 }

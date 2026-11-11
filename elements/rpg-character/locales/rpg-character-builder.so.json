@@ -19,5 +19,13 @@
   "copyCode": "Koobi koodka",
   "copied": "Waa la koobiyeeyay!",
   "invalidCode": "Taasi ma aha koodka jilaaga.",
-  "preview": "Hordhac jilaaga"
+  "preview": "Hordhac jilaaga",
+  "previous": "{name} hore",
+  "next": "{name} xiga",
+  "variant": "{current} ka mid ah {total}",
+  "save": "Keydi",
+  "cancel": "Jooji",
+  "unsavedChanges": "Isbeddello aan la keydin",
+  "noUnsavedChanges": "Isbeddello aan la keydin ma jiraan",
+  "codeHelp": "Dhaji koodh si aad u soo dejiso jilaa, ama koobiyeey kan si aad meel kasta ugu isticmaasho."
 }

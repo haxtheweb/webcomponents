@@ -3,5 +3,8 @@
   "openInNewTab": "De PDF iepenje yn in nij ljepblêd",
   "downloadPdf": "De PDF downloade",
   "fullScreen": "Folslein skerm",
-  "exitFullScreen": "Folslein skerm ferlitte"
+  "exitFullScreen": "Folslein skerm ferlitte",
+  "notSupported": "It liket derop dat jo webbrowser net ynsteld is om PDF-bestannen te toanen. Gjin soargen, jo kinne gewoan",
+  "notSupportedLink": "hjir klikke om it PDF-bestân te downloaden.",
+  "download": "Downloade"
 }

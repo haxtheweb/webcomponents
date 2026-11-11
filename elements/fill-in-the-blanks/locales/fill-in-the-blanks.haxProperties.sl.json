@@ -37,6 +37,16 @@
         "title": "Ime kviza",
         "description": "Ime kviza, posredovano za identifikacijo tega elementa v okoljih, ki jih poganja xAPI"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Strnljivo",
+        "description": "Prikaži to vprašanje kot vrstico, ki se odpira in zapira. Z odprtjem enega se zaprejo druga strnljiva vprašanja ob njem."
+      },
+      {
+        "title": "Začni strnjeno",
+        "description": "Če je vprašanje strnljivo, se začne kot zaprta vrstica, ki prikazuje samo vprašanje in njegov status."
+      }
     ]
   }
 }

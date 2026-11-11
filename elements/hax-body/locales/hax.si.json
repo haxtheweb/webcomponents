@@ -197,5 +197,6 @@
   "removeSource": "මූලාශ්‍රය ඉවත් කරන්න",
   "lockUnlock": "අගුළු දමන්න / අගුළු හරින්න",
   "toggleFilters": "පෙරහන් මාරු කරන්න",
-  "filters": "පෙරහන්"
+  "filters": "පෙරහන්",
+  "typeForQuickActions": "ඉක්මන් ක්‍රියා සඳහා '/' ටයිප් කරන්න"
 }

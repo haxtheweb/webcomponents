@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "ʻAʻole hiki ke hoʻopau i ka hana ({status})",
   "normalizedPageSlugs": "Ua hoʻomaʻamau ʻia {count} slug ʻaoʻao",
   "createdTitle": "Ua hana ʻia ʻo {title}!",
-  "processing": "Ke hana nei"
+  "processing": "Ke hana nei",
+  "saveTimedOut": "Pau ka manawa mālama: ʻaʻole i pane ke kikowaena. Mālama ʻia kāu mau hoʻololi ma ʻaneʻi, akā hiki i ke kikowaena ke hoʻopau i ka mālama ʻana."
 }

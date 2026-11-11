@@ -197,5 +197,6 @@
   "removeSource": "Chotsani gwero",
   "lockUnlock": "Tsekani / Tsegulani",
   "toggleFilters": "Sinthani Zosefera",
-  "filters": "Zosefera"
+  "filters": "Zosefera",
+  "typeForQuickActions": "Lembani '/' kuti mupeze zochita zachangu"
 }

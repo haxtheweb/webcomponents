@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "此页面已锁定。请先解锁再更改发布状态。",
   "pageLockedUnlockToDelete": "此页面已锁定。请先解锁再删除。",
   "pageDetails": "页面详情",
-  "clickToUnlock": "点击解锁"
+  "clickToUnlock": "点击解锁",
+  "pageSettings": "页面设置",
+  "editingPageSettings": "正在编辑页面设置",
+  "published": "已发布",
+  "draft": "草稿",
+  "locked": "已锁定",
+  "unlocked": "未锁定",
+  "noTags": "无标签",
+  "oneTag": "1 个标签",
+  "tagCount": "{count} 个标签",
+  "enterKey": "Enter"
 }

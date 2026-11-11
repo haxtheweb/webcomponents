@@ -129,5 +129,12 @@
   "cancel": "Abbrechen",
   "clearedSite": "Deine Lerndaten für {site} wurden gelöscht.",
   "clearedDevice": "Alle Lerndaten auf diesem Gerät wurden gelöscht.",
-  "thisSite": "diese Website"
+  "thisSite": "diese Website",
+  "outlineHeading": "Fortschritt pro Seite",
+  "allPages": "Alle Seiten",
+  "outlinePagesDone": "{done} von {total} Seiten erledigt",
+  "outlinePagesCount": "{count} Seiten",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% abgeschlossen",
+  "outlineComplete": "Abgeschlossen"
 }

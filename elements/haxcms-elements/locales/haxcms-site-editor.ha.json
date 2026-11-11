@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Ba a iya kammala aiki ba ({status})",
   "normalizedPageSlugs": "An daidaita slugs na shafuka {count}",
   "createdTitle": "An ƙirƙiri {title}!",
-  "processing": "Ana sarrafawa"
+  "processing": "Ana sarrafawa",
+  "saveTimedOut": "Lokacin adanawa ya ƙare: sabar ba ta amsa ba. Ana riƙe canje-canjenka a nan, amma sabar na iya kammala adana su."
 }

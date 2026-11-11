@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Ganti berkas asli",
   "newName": "Jeneng anyar",
   "deleteAction": "Busak",
-  "renameAction": "Ganti jeneng"
+  "renameAction": "Ganti jeneng",
+  "bulkOverwriteConfirm": "{action} {count} berkas? Iki bakal ngganti berkas asli lan ora bisa dibatalake.",
+  "actionScale": "Owahi ukuran",
+  "actionRotate": "Puter",
+  "actionTransform": "Owahi",
+  "actionConvertJpg": "Owahi dadi JPG",
+  "actionCompress": "Kompres"
 }

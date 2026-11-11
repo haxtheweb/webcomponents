@@ -129,5 +129,12 @@
   "cancel": "Canslo",
   "clearedSite": "Cliriwyd eich data dysgu ar gyfer {site}.",
   "clearedDevice": "Cliriwyd yr holl ddata dysgu ar y ddyfais hon.",
-  "thisSite": "y wefan hon"
+  "thisSite": "y wefan hon",
+  "outlineHeading": "Cynnydd fesul tudalen",
+  "allPages": "Pob tudalen",
+  "outlinePagesDone": "{done} o {total} tudalen wedi'u gwneud",
+  "outlinePagesCount": "{count} tudalen",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% wedi'i gwblhau",
+  "outlineComplete": "Wedi'i gwblhau"
 }

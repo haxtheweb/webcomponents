@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{creator} द्वारा {title} {license} अन्तर्गत इजाजतप्राप्त छ।",
   "permissionsBeyondScope": "यस इजाजतपत्रको दायराभन्दा बाहिरका अनुमतिहरू {link} उपलब्ध छन्।",
   "author": "(लेखक)",
-  "onTheLicensingDetailsPage": "इजाजतपत्र विवरण पेजमा"
+  "onTheLicensingDetailsPage": "इजाजतपत्र विवरण पेजमा",
+  "licenseLabel": "इजाजतपत्र"
 }

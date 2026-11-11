@@ -35,5 +35,12 @@
   "youTubeStartLoading": "ਚਲਾਓ ਦਬਾਓ।",
   "youTubeTranscriptLabel": "ਮੀਡੀਆ ਚੱਲਣ 'ਤੇ ਟ੍ਰਾਂਸਕ੍ਰਿਪਟ ਲੋਡ ਹੋਵੇਗੀ।",
   "audioDescriptionLabel": "ਆਡੀਓ ਵੇਰਵਾ",
-  "openOnYouTube": "YouTube 'ਤੇ ਖੋਲ੍ਹੋ"
+  "openOnYouTube": "YouTube 'ਤੇ ਖੋਲ੍ਹੋ",
+  "interactiveLabel": "ਇੰਟਰਐਕਟਿਵ",
+  "layoutLabel": "ਲੇਆਉਟ",
+  "sideLabel": "ਪਾਸੇ",
+  "belowLabel": "ਹੇਠਾਂ",
+  "leftLabel": "ਖੱਬੇ",
+  "rightLabel": "ਸੱਜੇ",
+  "hideTranscriptLabel": "ਟ੍ਰਾਂਸਕ੍ਰਿਪਟ ਲੁਕਾਓ"
 }

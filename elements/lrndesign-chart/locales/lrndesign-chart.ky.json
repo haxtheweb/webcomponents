@@ -4,5 +4,8 @@
   "pieChart": "Маалымат · Тегерек диаграмма",
   "showDataTable": "Маалымат таблицасын көрсөтүү",
   "downloadData": "Маалыматты жүктөп алуу (.csv)",
-  "series": "{n}-катар"
+  "series": "{n}-катар",
+  "barChartLabel": "тилкелүү диаграмма",
+  "lineChartLabel": "сызыктуу диаграмма",
+  "pieChartLabel": "тегерек диаграмма"
 }

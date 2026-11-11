@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Ba a wallafa shafin ba",
   "progressDone": "An gama",
   "progressInProgress": "Ana ci gaba",
-  "progressVisited": "An ziyarta"
+  "progressVisited": "An ziyarta",
+  "progressPercentComplete": "{percent}% an kammala",
+  "progressComplete": "An kammala"
 }

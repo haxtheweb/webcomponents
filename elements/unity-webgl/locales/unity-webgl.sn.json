@@ -1,5 +1,6 @@
 {
   "simulation": "Kuedzesera",
   "fullScreen": "Chiratidziro chizere",
-  "exitFullScreen": "Buda pachiratidziro chizere"
+  "exitFullScreen": "Buda pachiratidziro chizere",
+  "player": "Muridzi weUnity WebGL"
 }

@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "جایگزینی فایل‌های اصلی",
   "newName": "نام جدید",
   "deleteAction": "حذف",
-  "renameAction": "تغییر نام"
+  "renameAction": "تغییر نام",
+  "bulkOverwriteConfirm": "{action} برای {count} فایل؟ این کار فایل‌های اصلی را جایگزین می‌کند و قابل بازگشت نیست.",
+  "actionScale": "تغییر مقیاس",
+  "actionRotate": "چرخاندن",
+  "actionTransform": "تبدیل",
+  "actionConvertJpg": "تبدیل به JPG",
+  "actionCompress": "فشرده‌سازی"
 }

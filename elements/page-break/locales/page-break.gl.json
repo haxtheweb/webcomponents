@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Esta páxina está bloqueada. Desbloquéaa primeiro para cambiar o estado de publicación.",
   "pageLockedUnlockToDelete": "Esta páxina está bloqueada. Desbloquéaa primeiro para eliminala.",
   "pageDetails": "Detalles da páxina",
-  "clickToUnlock": "Faga clic para desbloquear"
+  "clickToUnlock": "Faga clic para desbloquear",
+  "pageSettings": "Configuración da páxina",
+  "editingPageSettings": "Editando a configuración da páxina",
+  "published": "Publicada",
+  "draft": "Borrador",
+  "locked": "Bloqueada",
+  "unlocked": "Desbloqueada",
+  "noTags": "Sen etiquetas",
+  "oneTag": "1 etiqueta",
+  "tagCount": "{count} etiquetas",
+  "enterKey": "Enter"
 }

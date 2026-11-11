@@ -35,5 +35,12 @@
   "youTubeStartLoading": "Dzvanya tamba.",
   "youTubeTranscriptLabel": "Chinyorwa chicharodha kana midhiya yatanga kutamba.",
   "audioDescriptionLabel": "Tsananguro Yeodhiyo",
-  "openOnYouTube": "Vhura paYouTube"
+  "openOnYouTube": "Vhura paYouTube",
+  "interactiveLabel": "inobvumira kuita",
+  "layoutLabel": "Kurongeka",
+  "sideLabel": "Padivi",
+  "belowLabel": "Pazasi",
+  "leftLabel": "Kuruboshwe",
+  "rightLabel": "Kurudyi",
+  "hideTranscriptLabel": "Viga zvakanyorwa"
 }

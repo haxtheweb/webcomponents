@@ -197,5 +197,6 @@
   "removeSource": "سرچینه لرې کړئ",
   "lockUnlock": "قلفول / خلاصول",
   "toggleFilters": "چاڼونه بدل کړئ",
-  "filters": "چاڼونه"
+  "filters": "چاڼونه",
+  "typeForQuickActions": "د چټکو کړنو لپاره '/' ټایپ کړئ"
 }

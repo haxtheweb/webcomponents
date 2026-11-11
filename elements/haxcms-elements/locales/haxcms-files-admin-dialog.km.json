@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "ជំនួសឯកសារដើម",
   "newName": "ឈ្មោះថ្មី",
   "deleteAction": "លុប",
-  "renameAction": "ប្ដូរឈ្មោះ"
+  "renameAction": "ប្ដូរឈ្មោះ",
+  "bulkOverwriteConfirm": "{action} ឯកសារ {count}? ការនេះជំនួសឯកសារដើម ហើយមិនអាចត្រឡប់វិញបានទេ។",
+  "actionScale": "ប្តូរមាត្រដ្ឋាន",
+  "actionRotate": "បង្វិល",
+  "actionTransform": "បំប្លែង",
+  "actionConvertJpg": "បម្លែងទៅ JPG",
+  "actionCompress": "បង្ហាប់"
 }

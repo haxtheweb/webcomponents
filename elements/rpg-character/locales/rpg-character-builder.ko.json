@@ -19,5 +19,13 @@
   "copyCode": "코드 복사",
   "copied": "복사됨!",
   "invalidCode": "캐릭터 코드가 아닙니다.",
-  "preview": "캐릭터 미리보기"
+  "preview": "캐릭터 미리보기",
+  "previous": "이전 {name}",
+  "next": "다음 {name}",
+  "variant": "{total}개 중 {current}번째",
+  "save": "저장",
+  "cancel": "취소",
+  "unsavedChanges": "저장되지 않은 변경 사항",
+  "noUnsavedChanges": "저장되지 않은 변경 사항 없음",
+  "codeHelp": "코드를 붙여넣어 캐릭터를 불러오거나, 이 코드를 복사하여 어디서든 사용하세요."
 }

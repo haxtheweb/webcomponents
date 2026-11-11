@@ -197,5 +197,6 @@
   "removeSource": "ذریعہ ہٹاؤ",
   "lockUnlock": "لاک / ان لاک",
   "toggleFilters": "فلٹر بدلو",
-  "filters": "فلٹر"
+  "filters": "فلٹر",
+  "typeForQuickActions": "تیز کارروائیاں لئی '/' ٹائپ کرو"
 }

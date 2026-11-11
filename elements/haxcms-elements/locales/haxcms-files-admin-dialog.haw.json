@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Pani i nā faila kumu",
   "newName": "Inoa hou",
   "deleteAction": "Holoi",
-  "renameAction": "Kapa hou"
+  "renameAction": "Kapa hou",
+  "bulkOverwriteConfirm": "{action} i nā waihona {count}? Hoʻololi kēia i nā waihona kumu a ʻaʻole hiki ke hoʻihoʻi.",
+  "actionScale": "Hoʻololi i ka nui",
+  "actionRotate": "Hoʻohuli",
+  "actionTransform": "Hoʻololi ʻano",
+  "actionConvertJpg": "Hoʻololi i JPG",
+  "actionCompress": "Hoʻopaʻa"
 }

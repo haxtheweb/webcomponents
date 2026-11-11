@@ -1,0 +1,9 @@
+{
+  "imageMap": "ಚಿತ್ರ ನಕ್ಷೆ",
+  "interactive": "ಸಂವಾದಾತ್ಮಕ",
+  "hotspot": "ಹಾಟ್‌ಸ್ಪಾಟ್",
+  "hotspotPosition": "{total} ರಲ್ಲಿ {n}",
+  "hotspotsExplored": "{total} ಹಾಟ್‌ಸ್ಪಾಟ್‌ಗಳಲ್ಲಿ {n} ಅನ್ವೇಷಿಸಲಾಗಿದೆ",
+  "explored": "ಅನ್ವೇಷಿಸಲಾಗಿದೆ",
+  "close": "ಮುಚ್ಚಿ"
+}

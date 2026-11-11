@@ -3,5 +3,8 @@
   "openInNewTab": "PDF in neuem Tab öffnen",
   "downloadPdf": "PDF herunterladen",
   "fullScreen": "Vollbild",
-  "exitFullScreen": "Vollbild beenden"
+  "exitFullScreen": "Vollbild beenden",
+  "notSupported": "Es sieht so aus, als sei dein Webbrowser nicht für die Anzeige von PDF-Dateien eingerichtet. Kein Problem,",
+  "notSupportedLink": "klicke hier, um die PDF-Datei herunterzuladen.",
+  "download": "Herunterladen"
 }

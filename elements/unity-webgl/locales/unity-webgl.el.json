@@ -1,5 +1,6 @@
 {
   "simulation": "Προσομοίωση",
   "fullScreen": "Πλήρης οθόνη",
-  "exitFullScreen": "Έξοδος από πλήρη οθόνη"
+  "exitFullScreen": "Έξοδος από πλήρη οθόνη",
+  "player": "Πρόγραμμα αναπαραγωγής Unity WebGL"
 }

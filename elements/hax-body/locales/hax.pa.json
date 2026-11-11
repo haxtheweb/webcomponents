@@ -197,5 +197,6 @@
   "removeSource": "ਸਰੋਤ ਹਟਾਓ",
   "lockUnlock": "ਲੌਕ / ਅਨਲੌਕ",
   "toggleFilters": "ਫਿਲਟਰ ਟੌਗਲ ਕਰੋ",
-  "filters": "ਫਿਲਟਰ"
+  "filters": "ਫਿਲਟਰ",
+  "typeForQuickActions": "ਤੁਰੰਤ ਕਾਰਵਾਈਆਂ ਲਈ '/' ਟਾਈਪ ਕਰੋ"
 }

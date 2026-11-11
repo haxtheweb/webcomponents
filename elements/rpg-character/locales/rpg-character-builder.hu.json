@@ -19,5 +19,13 @@
   "copyCode": "Kód másolása",
   "copied": "Másolva!",
   "invalidCode": "Ez nem karakterkód.",
-  "preview": "Karakter előnézete"
+  "preview": "Karakter előnézete",
+  "previous": "Előző: {name}",
+  "next": "Következő: {name}",
+  "variant": "{current} / {total}",
+  "save": "Mentés",
+  "cancel": "Mégse",
+  "unsavedChanges": "Nem mentett módosítások",
+  "noUnsavedChanges": "Nincsenek nem mentett módosítások",
+  "codeHelp": "Illessz be egy kódot egy karakter betöltéséhez, vagy másold ki ezt, hogy bárhol használhasd."
 }

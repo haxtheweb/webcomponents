@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Operation kann nicht abgeschlossen werden ({status})",
   "normalizedPageSlugs": "{count} Seiten-Slugs normalisiert",
   "createdTitle": "{title} erstellt!",
-  "processing": "Wird verarbeitet"
+  "processing": "Wird verarbeitet",
+  "saveTimedOut": "Zeitüberschreitung beim Speichern: Der Server hat nicht geantwortet. Deine Änderungen bleiben hier erhalten, der Server schließt das Speichern aber möglicherweise noch ab."
 }

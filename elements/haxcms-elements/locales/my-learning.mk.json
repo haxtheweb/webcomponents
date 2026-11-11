@@ -129,5 +129,12 @@
   "cancel": "Откажи",
   "clearedSite": "Вашите податоци за учење за {site} се исчистени.",
   "clearedDevice": "Сите податоци за учење на овој уред се исчистени.",
-  "thisSite": "оваа страница"
+  "thisSite": "оваа страница",
+  "outlineHeading": "Напредок по страница",
+  "allPages": "Сите страници",
+  "outlinePagesDone": "{done} од {total} страници завршени",
+  "outlinePagesCount": "{count} страници",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% завршено",
+  "outlineComplete": "Завршено"
 }

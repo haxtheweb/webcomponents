@@ -197,5 +197,6 @@
   "removeSource": "Ta bort källa",
   "lockUnlock": "Lås / lås upp",
   "toggleFilters": "Växla filter",
-  "filters": "Filter"
+  "filters": "Filter",
+  "typeForQuickActions": "Skriv '/' för snabbåtgärder"
 }

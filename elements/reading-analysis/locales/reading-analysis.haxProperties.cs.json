@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Aktivita",
-        "description": "Označit důkazy: studenti přilepí každou vlaječku vedle důkazu pro ni. Vybrat jedno: studenti zvolí jedinou pasáž, která nejlépe odpovídá na otázku."
+        "description": "Označit důkazy: studenti přilepí každou vlaječku vedle důkazu pro ni. Vybrat jedno: studenti zvolí jedinou pasáž, která nejlépe odpovídá na otázku.",
+        "options": {
+          "flag": "Označit důkazy",
+          "one": "Vybrat jednu"
+        }
       },
       {
         "property": "unit",
         "title": "Studenti vybírají",
-        "description": "Na co student v textu ukazuje. Obrázky lze vybrat vždy."
+        "description": "Na co student v textu ukazuje. Obrázky lze vybrat vždy.",
+        "options": {
+          "sentence": "Věty",
+          "paragraph": "Odstavce",
+          "figure": "Pouze obrázky"
+        }
       },
       {
         "property": "answers",

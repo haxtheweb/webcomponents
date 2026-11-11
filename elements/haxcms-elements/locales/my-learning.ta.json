@@ -129,5 +129,12 @@
   "cancel": "ரத்துசெய்",
   "clearedSite": "{site} க்கான உங்கள் கற்றல் தரவு அழிக்கப்பட்டது.",
   "clearedDevice": "இந்தச் சாதனத்தில் உள்ள அனைத்துக் கற்றல் தரவும் அழிக்கப்பட்டது.",
-  "thisSite": "இந்தத் தளம்"
+  "thisSite": "இந்தத் தளம்",
+  "outlineHeading": "பக்க வாரியாக முன்னேற்றம்",
+  "allPages": "அனைத்துப் பக்கங்களும்",
+  "outlinePagesDone": "{total} பக்கங்களில் {done} முடிந்தன",
+  "outlinePagesCount": "{count} பக்கங்கள்",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% முடிந்தது",
+  "outlineComplete": "முடிந்தது"
 }

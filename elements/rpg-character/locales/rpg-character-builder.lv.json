@@ -19,5 +19,13 @@
   "copyCode": "Kopēt kodu",
   "copied": "Nokopēts!",
   "invalidCode": "Tas nav tēla kods.",
-  "preview": "Tēla priekšskatījums"
+  "preview": "Tēla priekšskatījums",
+  "previous": "Iepriekšējais: {name}",
+  "next": "Nākamais: {name}",
+  "variant": "{current} no {total}",
+  "save": "Saglabāt",
+  "cancel": "Atcelt",
+  "unsavedChanges": "Nesaglabātas izmaiņas",
+  "noUnsavedChanges": "Nav nesaglabātu izmaiņu",
+  "codeHelp": "Ielīmējiet kodu, lai ielādētu tēlu, vai nokopējiet šo, lai to izmantotu jebkur."
 }

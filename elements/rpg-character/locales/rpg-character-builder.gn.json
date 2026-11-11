@@ -19,5 +19,13 @@
   "copyCode": "Kódigo mbohasa",
   "copied": "Mbohasapa!",
   "invalidCode": "Ko'ã ndaha'éi personaje kódigo.",
-  "preview": "Personaje ta'anga"
+  "preview": "Personaje ta'anga",
+  "previous": "{name} ohóva",
+  "next": "{name} oútava",
+  "variant": "{current} {total}-gui",
+  "save": "Eñongatu",
+  "cancel": "Eheja",
+  "unsavedChanges": "Ñemoambue ñongatu'ỹ",
+  "noUnsavedChanges": "Ndaipóri ñemoambue ñongatu'ỹ",
+  "codeHelp": "Emoĩ peteĩ ayvu emyanyhẽ hag̃ua peteĩ taʼanga, térã embohasa'asy ko'ã eiporu hag̃ua moõpa."
 }

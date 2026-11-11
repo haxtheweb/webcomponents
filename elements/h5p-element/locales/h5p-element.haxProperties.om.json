@@ -1,13 +1,20 @@
 {
   "gizmo": {
     "title": "H5P",
-    "description": "Marsaa H5P faayilota .h5p fe'uu fi dhiyeessuuf"
+    "description": "Qabiyyee walquunnamtii H5P faayilii .h5p ol-fe'ame irraa taphata, sarvarii H5P malee"
   },
   "settings": {
     "configure": [
       {
         "slot": "",
-        "description": "Koodii galchiinsa iframe H5P"
+        "description": "Faayilii .h5p ol-fe'i yookaan walitti hidhi. Biraauzara keessatti banama; sarvariin H5P hin barbaachisu.",
+        "title": "Faayilii H5P"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Koodii iframe dulloo galchuu",
+        "description": "Qabiyyee duriitiif qofa kan iframe H5P saayitii biraa irraa galchu. Faayiliin .h5p armaan olitti kan kaa'ame yoo ta'e duwwaa dhiisi."
       }
     ]
   }

@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Iphepha alipapashwanga",
   "progressDone": "Kugqityiwe",
   "progressInProgress": "Kuyaqhubeka",
-  "progressVisited": "Kutyelelwe"
+  "progressVisited": "Kutyelelwe",
+  "progressPercentComplete": "{percent}% kugqityiwe",
+  "progressComplete": "Kugqityiwe"
 }

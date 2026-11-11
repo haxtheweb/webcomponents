@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Ñawpaq willañiqikunata rantinchay",
   "newName": "Musuq suti",
   "deleteAction": "Qulluchiy",
-  "renameAction": "Sutita tikray"
+  "renameAction": "Sutita tikray",
+  "bulkOverwriteConfirm": "{action} {count} willaykunata? Kayqa ñawpaq willaykunata rantin, manataqmi kutichiy atikunchu.",
+  "actionScale": "Hatunchay",
+  "actionRotate": "Muyuchiy",
+  "actionTransform": "Tikray",
+  "actionConvertJpg": "JPGman tikray",
+  "actionCompress": "Pisiyachiy"
 }

@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Klõpsa või liiguta kursor peale, et mängida plahvatuse heli",
+  "soundDisabled": "Visuaalne plahvatusefekt (heli on keelatud)",
+  "explosionAnimation": "plahvatuse animatsioon",
+  "explosionAriaLabel": "Plahvatuse animatsioon {state} {sound}. Klõpsa ümberlülitamiseks.",
+  "playing": "mängib",
+  "stopped": "peatatud",
+  "withSound": "heliga",
+  "muted": "(vaigistatud)"
+}

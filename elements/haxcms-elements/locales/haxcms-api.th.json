@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "การแปลงล้มเหลว",
   "PARAM_REQUIRED": "ไม่มีค่าที่จำเป็น: {param}",
   "INVALID_REQUEST": "คำขอไม่ถูกต้อง",
-  "PARAM_INVALID": "ค่าไม่ถูกต้อง: {param}"
+  "PARAM_INVALID": "ค่าไม่ถูกต้อง: {param}",
+  "BLOCK_RATE_LIMITED": "มีการเปลี่ยนแปลงเนื้อหาในไซต์นี้มากเกินไปในขณะนี้ โปรดลองอีกครั้งใน {retryAfter} วินาที"
 }

@@ -197,5 +197,6 @@
   "removeSource": "Ondoa chanzo",
   "lockUnlock": "Funga / Fungua",
   "toggleFilters": "Onyesha/ficha Vichujio",
-  "filters": "Vichujio"
+  "filters": "Vichujio",
+  "typeForQuickActions": "Andika '/' kwa vitendo vya haraka"
 }

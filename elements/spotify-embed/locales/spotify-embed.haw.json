@@ -1,4 +1,9 @@
 {
   "audio": "Leo",
-  "openOnSpotify": "E wehe ma Spotify ma kahi ʻaoʻao hou"
+  "openOnSpotify": "E wehe ma Spotify ma kahi ʻaoʻao hou",
+  "embedTitle": "Hoʻokomo Spotify",
+  "trackEmbedTitle": "Hoʻokomo Mele Spotify",
+  "albumEmbedTitle": "Hoʻokomo Album Spotify",
+  "playlistEmbedTitle": "Hoʻokomo Papa Mele Spotify",
+  "artistEmbedTitle": "Hoʻokomo Mea Hana Mele Spotify"
 }

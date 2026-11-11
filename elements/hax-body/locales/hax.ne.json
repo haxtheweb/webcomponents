@@ -197,5 +197,6 @@
   "removeSource": "स्रोत हटाउनुहोस्",
   "lockUnlock": "लक / अनलक",
   "toggleFilters": "फिल्टरहरू टगल गर्नुहोस्",
-  "filters": "फिल्टरहरू"
+  "filters": "फिल्टरहरू",
+  "typeForQuickActions": "छिटो कार्यहरूका लागि '/' टाइप गर्नुहोस्"
 }

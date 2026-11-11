@@ -129,5 +129,12 @@
   "cancel": "منسوخ کریں",
   "clearedSite": "{site} کے لیے آپ کا سیکھنے کا ڈیٹا صاف کر دیا گیا۔",
   "clearedDevice": "اس آلے پر سیکھنے کا تمام ڈیٹا صاف کر دیا گیا۔",
-  "thisSite": "یہ سائٹ"
+  "thisSite": "یہ سائٹ",
+  "outlineHeading": "صفحہ وار پیش رفت",
+  "allPages": "تمام صفحات",
+  "outlinePagesDone": "{total} میں سے {done} صفحات مکمل",
+  "outlinePagesCount": "{count} صفحات",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% مکمل",
+  "outlineComplete": "مکمل"
 }

@@ -1,0 +1,10 @@
+{
+  "github": "GitHub",
+  "repository": "Хранилище",
+  "stars": "звезди",
+  "forks": "разклонения",
+  "loading": "Зареждане",
+  "viewMore": "Вижте още",
+  "assetNotFound": "Ресурсът не е намерен",
+  "openOnGitHub": "Отваряне на {org}/{repo} в GitHub"
+}

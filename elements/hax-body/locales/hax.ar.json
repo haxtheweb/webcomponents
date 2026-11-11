@@ -197,5 +197,6 @@
   "removeSource": "إزالة المصدر",
   "lockUnlock": "قفل / إلغاء القفل",
   "toggleFilters": "تبديل عوامل التصفية",
-  "filters": "عوامل التصفية"
+  "filters": "عوامل التصفية",
+  "typeForQuickActions": "اكتب '/' للإجراءات السريعة"
 }

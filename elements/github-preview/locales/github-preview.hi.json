@@ -1,0 +1,10 @@
+{
+  "github": "GitHub",
+  "repository": "रिपॉज़िटरी",
+  "stars": "स्टार",
+  "forks": "फ़ोर्क",
+  "loading": "लोड हो रहा है",
+  "viewMore": "और देखें",
+  "assetNotFound": "एसेट नहीं मिला",
+  "openOnGitHub": "GitHub पर {org}/{repo} खोलें"
+}

@@ -35,5 +35,12 @@
   "youTubeStartLoading": "Pindutin ang play.",
   "youTubeTranscriptLabel": "Maglo-load ang transcript kapag nag-play ang media.",
   "audioDescriptionLabel": "Audio Description",
-  "openOnYouTube": "Buksan sa YouTube"
+  "openOnYouTube": "Buksan sa YouTube",
+  "interactiveLabel": "interaktibo",
+  "layoutLabel": "Layout",
+  "sideLabel": "Gilid",
+  "belowLabel": "Ibaba",
+  "leftLabel": "Kaliwa",
+  "rightLabel": "Kanan",
+  "hideTranscriptLabel": "Itago ang transcript"
 }

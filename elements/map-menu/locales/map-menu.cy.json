@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Nid yw'r dudalen wedi'i chyhoeddi",
   "progressDone": "Wedi gorffen",
   "progressInProgress": "Ar y gweill",
-  "progressVisited": "Ymwelwyd"
+  "progressVisited": "Ymwelwyd",
+  "progressPercentComplete": "{percent}% wedi'i gwblhau",
+  "progressComplete": "Wedi'i gwblhau"
 }

@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Hawl",
-        "description": "Calan dhig caddaynta: ardaydu waxay calan kasta dhigaan agta caddayntiisa. Mid dooro: ardaydu waxay doortaan qaybta keliya ee sida ugu fiican uga jawaabaysa su'aasha."
+        "description": "Calan dhig caddaynta: ardaydu waxay calan kasta dhigaan agta caddayntiisa. Mid dooro: ardaydu waxay doortaan qaybta keliya ee sida ugu fiican uga jawaabaysa su'aasha.",
+        "options": {
+          "flag": "Calaamadee caddaymaha",
+          "one": "Dooro mid"
+        }
       },
       {
         "property": "unit",
         "title": "Ardaydu waxay doortaan",
-        "description": "Waxa ardaygu qoraalka ku tilmaamo. Sawirrada mar walba waa la dooran karaa."
+        "description": "Waxa ardaygu qoraalka ku tilmaamo. Sawirrada mar walba waa la dooran karaa.",
+        "options": {
+          "sentence": "Weedho",
+          "paragraph": "Cutubyo",
+          "figure": "Sawirrada oo keliya"
+        }
       },
       {
         "property": "answers",

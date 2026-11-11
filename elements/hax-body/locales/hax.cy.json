@@ -197,5 +197,6 @@
   "removeSource": "Tynnu'r ffynhonnell",
   "lockUnlock": "Cloi / Datgloi",
   "toggleFilters": "Toglo Hidlyddion",
-  "filters": "Hidlyddion"
+  "filters": "Hidlyddion",
+  "typeForQuickActions": "Teipiwch '/' ar gyfer gweithredoedd cyflym"
 }

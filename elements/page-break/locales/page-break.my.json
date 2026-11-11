@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "ဤစာမျက်နှာကို သော့ခတ်ထားသည်။ ထုတ်ဝေမှု အခြေအနေ ပြောင်းရန် ဦးစွာ သော့ဖွင့်ပါ။",
   "pageLockedUnlockToDelete": "ဤစာမျက်နှာကို သော့ခတ်ထားသည်။ ဖျက်ရန် ဦးစွာ သော့ဖွင့်ပါ။",
   "pageDetails": "စာမျက်နှာအသေးစိတ်များ",
-  "clickToUnlock": "သော့ဖွင့်ရန် နှိပ်ပါ"
+  "clickToUnlock": "သော့ဖွင့်ရန် နှိပ်ပါ",
+  "pageSettings": "စာမျက်နှာ ဆက်တင်များ",
+  "editingPageSettings": "စာမျက်နှာ ဆက်တင်များကို တည်းဖြတ်နေသည်",
+  "published": "ထုတ်ဝေပြီး",
+  "draft": "မူကြမ်း",
+  "locked": "လော့ခ်ချထားသည်",
+  "unlocked": "လော့ခ်ဖွင့်ထားသည်",
+  "noTags": "တဂ်များ မရှိပါ",
+  "oneTag": "တဂ် ၁ ခု",
+  "tagCount": "တဂ် {count} ခု",
+  "enterKey": "Enter"
 }

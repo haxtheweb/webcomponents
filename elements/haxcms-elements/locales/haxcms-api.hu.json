@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Az átalakítás sikertelen.",
   "PARAM_REQUIRED": "Hiányzik egy kötelező érték: {param}.",
   "INVALID_REQUEST": "Érvénytelen kérés.",
-  "PARAM_INVALID": "Érvénytelen érték: {param}."
+  "PARAM_INVALID": "Érvénytelen érték: {param}.",
+  "BLOCK_RATE_LIMITED": "Jelenleg túl sok tartalomváltozás történik ezen a webhelyen. Próbáld újra {retryAfter} másodperc múlva."
 }

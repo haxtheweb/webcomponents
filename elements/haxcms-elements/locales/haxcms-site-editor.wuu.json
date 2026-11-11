@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "操作完成勿了 ({status})",
   "normalizedPageSlugs": "规范化了 {count} 只页面短网址",
   "createdTitle": "{title} 建好了!",
-  "processing": "处理当中"
+  "processing": "处理当中",
+  "saveTimedOut": "保存超时：服务器呒没回应。侬额改动还留勒迭搭，不过服务器可能还会保存好。"
 }

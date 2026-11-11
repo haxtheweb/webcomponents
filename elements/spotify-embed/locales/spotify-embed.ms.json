@@ -1,4 +1,9 @@
 {
   "audio": "Audio",
-  "openOnSpotify": "Buka di Spotify dalam tab baharu"
+  "openOnSpotify": "Buka di Spotify dalam tab baharu",
+  "embedTitle": "Benam Spotify",
+  "trackEmbedTitle": "Benam Trek Spotify",
+  "albumEmbedTitle": "Benam Album Spotify",
+  "playlistEmbedTitle": "Benam Senarai Main Spotify",
+  "artistEmbedTitle": "Benam Artis Spotify"
 }

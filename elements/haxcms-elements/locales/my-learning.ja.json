@@ -129,5 +129,12 @@
   "cancel": "キャンセル",
   "clearedSite": "{site}の学習データを消去しました。",
   "clearedDevice": "この端末のすべての学習データを消去しました。",
-  "thisSite": "このサイト"
+  "thisSite": "このサイト",
+  "outlineHeading": "ページ別の進捗",
+  "allPages": "すべてのページ",
+  "outlinePagesDone": "{total}ページ中{done}ページ完了",
+  "outlinePagesCount": "{count}ページ",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}%完了",
+  "outlineComplete": "完了"
 }

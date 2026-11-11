@@ -197,5 +197,6 @@
   "removeSource": "Forigi fonton",
   "lockUnlock": "Ŝlosi / Malŝlosi",
   "toggleFilters": "Baskuligi filtrilojn",
-  "filters": "Filtriloj"
+  "filters": "Filtriloj",
+  "typeForQuickActions": "Tajpu '/' por rapidaj agoj"
 }

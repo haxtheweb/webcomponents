@@ -197,5 +197,6 @@
   "removeSource": "Вилучити джерело",
   "lockUnlock": "Заблокувати / Розблокувати",
   "toggleFilters": "Перемкнути фільтри",
-  "filters": "Фільтри"
+  "filters": "Фільтри",
+  "typeForQuickActions": "Введіть '/' для швидких дій"
 }

@@ -197,5 +197,6 @@
   "removeSource": "Премахване на източника",
   "lockUnlock": "Заключване / Отключване",
   "toggleFilters": "Превключване на филтрите",
-  "filters": "Филтри"
+  "filters": "Филтри",
+  "typeForQuickActions": "Въведете „/“ за бързи действия"
 }

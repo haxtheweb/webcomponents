@@ -197,5 +197,6 @@
   "removeSource": "Хориҷ кардани манбаъ",
   "lockUnlock": "Қулф / Кушодани қулф",
   "toggleFilters": "Нишон/пинҳон кардани филтрҳо",
-  "filters": "Филтрҳо"
+  "filters": "Филтрҳо",
+  "typeForQuickActions": "Барои амалҳои зуд '/' ворид кунед"
 }

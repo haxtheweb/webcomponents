@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "De konverzje is mislearre.",
   "PARAM_REQUIRED": "In fereaske wearde ûntbrekt: {param}.",
   "INVALID_REQUEST": "Ûnjildich fersyk.",
-  "PARAM_INVALID": "Ûnjildige wearde: {param}."
+  "PARAM_INVALID": "Ûnjildige wearde: {param}.",
+  "BLOCK_RATE_LIMITED": "Op it stuit binne der te folle ynhâldswizigingen op dizze side. Besykje it opnij oer {retryAfter} sekonden."
 }

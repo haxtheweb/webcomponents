@@ -1,4 +1,9 @@
 {
   "audio": "Oudio",
-  "openOnSpotify": "Maak oop op Spotify in 'n nuwe oortjie"
+  "openOnSpotify": "Maak oop op Spotify in 'n nuwe oortjie",
+  "embedTitle": "Spotify-insluiting",
+  "trackEmbedTitle": "Spotify-snitinsluiting",
+  "albumEmbedTitle": "Spotify-albuminsluiting",
+  "playlistEmbedTitle": "Spotify-snitlysinsluiting",
+  "artistEmbedTitle": "Spotify-kunstenaarinsluiting"
 }

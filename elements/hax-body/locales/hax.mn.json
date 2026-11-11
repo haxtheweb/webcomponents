@@ -197,5 +197,6 @@
   "removeSource": "Эх сурвалжийг хасах",
   "lockUnlock": "Түгжих / Түгжээ тайлах",
   "toggleFilters": "Шүүлтүүрийг солих",
-  "filters": "Шүүлтүүрүүд"
+  "filters": "Шүүлтүүрүүд",
+  "typeForQuickActions": "Шуурхай үйлдлийн тулд '/' бичнэ үү"
 }

@@ -35,5 +35,12 @@
   "youTubeStartLoading": "",
   "youTubeTranscriptLabel": "",
   "audioDescriptionLabel": "Audioapraksts",
-  "openOnYouTube": "Atvērt YouTube"
+  "openOnYouTube": "Atvērt YouTube",
+  "interactiveLabel": "interaktīvs",
+  "layoutLabel": "Izkārtojums",
+  "sideLabel": "Sānos",
+  "belowLabel": "Apakšā",
+  "leftLabel": "Pa kreisi",
+  "rightLabel": "Pa labi",
+  "hideTranscriptLabel": "Slēpt transkripciju"
 }

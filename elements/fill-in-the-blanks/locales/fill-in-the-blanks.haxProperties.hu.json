@@ -37,6 +37,16 @@
         "title": "A kvíz neve",
         "description": "A kvíz neve, amely xAPI-alapú környezetekben az elem azonosítására szolgál"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Összecsukható",
+        "description": "A kérdés megjelenítése nyitható és zárható sorként. Az egyik megnyitása bezárja a mellette lévő többi összecsukható kérdést."
+      },
+      {
+        "title": "Induljon összecsukva",
+        "description": "Ha összecsukható, zárt sorként indul, amely csak a kérdést és az állapotát mutatja."
+      }
     ]
   }
 }

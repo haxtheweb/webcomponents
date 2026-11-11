@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Tá an leathanach seo faoi ghlas. Díghlasáil ar dtús é chun stádas foilsithe a athrú.",
   "pageLockedUnlockToDelete": "Tá an leathanach seo faoi ghlas. Díghlasáil ar dtús é chun é a scriosadh.",
   "pageDetails": "Sonraí leathanach",
-  "clickToUnlock": "Cliceáil chun díghlasáil"
+  "clickToUnlock": "Cliceáil chun díghlasáil",
+  "pageSettings": "Socruithe leathanaigh",
+  "editingPageSettings": "Socruithe leathanaigh á n-eagrú",
+  "published": "Foilsithe",
+  "draft": "Dréacht",
+  "locked": "Faoi ghlas",
+  "unlocked": "Díghlasáilte",
+  "noTags": "Gan clibeanna",
+  "oneTag": "1 chlib",
+  "tagCount": "{count} clib",
+  "enterKey": "Enter"
 }

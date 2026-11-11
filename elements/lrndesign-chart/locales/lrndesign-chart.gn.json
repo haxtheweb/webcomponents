@@ -4,5 +4,8 @@
   "pieChart": "Mba'ekuaarã · Gráfico circular",
   "showDataTable": "Ehechauka mba'ekuaarã tabla",
   "downloadData": "Emboguejy mba'ekuaarã (.csv)",
-  "series": "Serie {n}"
+  "series": "Serie {n}",
+  "barChartLabel": "ta'ãnga'i yvyra",
+  "lineChartLabel": "ta'ãnga'i tape",
+  "pieChartLabel": "ta'ãnga'i mbojere"
 }

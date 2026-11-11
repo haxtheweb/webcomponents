@@ -1,0 +1,9 @@
+{
+  "imageMap": "Map delwedd",
+  "interactive": "Rhyngweithiol",
+  "hotspot": "Man poeth",
+  "hotspotPosition": "{n} o {total}",
+  "hotspotsExplored": "{n} o {total} man poeth wedi'u harchwilio",
+  "explored": "Archwiliwyd",
+  "close": "Cau"
+}

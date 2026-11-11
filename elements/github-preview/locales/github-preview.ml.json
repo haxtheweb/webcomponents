@@ -1,0 +1,10 @@
+{
+  "github": "GitHub",
+  "repository": "റിപ്പോസിറ്ററി",
+  "stars": "സ്റ്റാറുകൾ",
+  "forks": "ഫോർക്കുകൾ",
+  "loading": "ലോഡ് ചെയ്യുന്നു",
+  "viewMore": "കൂടുതൽ കാണുക",
+  "assetNotFound": "അസറ്റ് കണ്ടെത്തിയില്ല",
+  "openOnGitHub": "GitHub-ൽ {org}/{repo} തുറക്കുക"
+}

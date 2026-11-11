@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "ეს გვერდი ჩაკეტილია. გამოქვეყნების სტატუსის შესაცვლელად ჯერ განბლოკეთ.",
   "pageLockedUnlockToDelete": "ეს გვერდი ჩაკეტილია. წასაშლელად ჯერ განბლოკეთ.",
   "pageDetails": "გვერდის დეტალები",
-  "clickToUnlock": "დააწკაპუნეთ განსაბლოკად"
+  "clickToUnlock": "დააწკაპუნეთ განსაბლოკად",
+  "pageSettings": "გვერდის პარამეტრები",
+  "editingPageSettings": "გვერდის პარამეტრების რედაქტირება",
+  "published": "გამოქვეყნებულია",
+  "draft": "მონახაზი",
+  "locked": "დაბლოკილია",
+  "unlocked": "განბლოკილია",
+  "noTags": "ტეგების გარეშე",
+  "oneTag": "1 ტეგი",
+  "tagCount": "{count} ტეგი",
+  "enterKey": "Enter"
 }

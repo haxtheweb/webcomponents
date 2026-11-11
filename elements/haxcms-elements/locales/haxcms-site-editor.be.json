@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Не ўдалося выканаць аперацыю ({status})",
   "normalizedPageSlugs": "Нармалізавана слагаў старонак: {count}",
   "createdTitle": "Створана {title}!",
-  "processing": "Апрацоўка"
+  "processing": "Апрацоўка",
+  "saveTimedOut": "Час захавання вычарпаны: сервер не адказаў. Вашы змены захаваны тут, але сервер усё яшчэ можа скончыць іх захаванне."
 }

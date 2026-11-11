@@ -37,6 +37,16 @@
         "title": "Magaca imtixaanka",
         "description": "Magaca imtixaanka loo gudbiyo deegaannada xAPI si loo aqoonsado walaxdan"
       }
+    ],
+    "advanced": [
+      {
+        "title": "La isku laabi karo",
+        "description": "U muuji su'aashan sidii safka furmaya oo xidhma. Furista mid waxay xidhaysaa su'aalaha kale ee la isku laabi karo ee ag taagan."
+      },
+      {
+        "title": "Ku bilow isku laaban",
+        "description": "Marka la isku laabi karo, ku bilow saf xidhan oo muujinaya su'aasha iyo xaaladeeda oo keliya."
+      }
     ]
   }
 }

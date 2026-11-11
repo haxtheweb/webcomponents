@@ -1,0 +1,9 @@
+{
+  "imageMap": "გამოსახულების რუკა",
+  "interactive": "ინტერაქტიული",
+  "hotspot": "ცხელი წერტილი",
+  "hotspotPosition": "{n} / {total}",
+  "hotspotsExplored": "გამოკვლეულია {total} ცხელი წერტილიდან {n}",
+  "explored": "გამოკვლეულია",
+  "close": "დახურვა"
+}

@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Taabo ama dul taag si aad u ciyaarto codka qarxa",
+  "soundDisabled": "Saameyn muuqaal ah oo qarax (cod la damiyay)",
+  "explosionAnimation": "xarakaynta qarax",
+  "explosionAriaLabel": "Xarakaynta qarax {state} {sound}. Taabo si aad u beddesho.",
+  "playing": "waa ciyaaraysaa",
+  "stopped": "waa istaagay",
+  "withSound": "cod leh",
+  "muted": "(la aamusiiyay)"
+}

@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Coimeádán NodeJS"
+    "title": "Coimeádán NodeJS",
+    "description": ""
   },
   "settings": {
     "configure": [

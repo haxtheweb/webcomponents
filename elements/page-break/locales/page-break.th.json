@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "หน้านี้ถูกล็อก ปลดล็อกก่อนเพื่อเปลี่ยนสถานะการเผยแพร่",
   "pageLockedUnlockToDelete": "หน้านี้ถูกล็อก ปลดล็อกก่อนเพื่อลบ",
   "pageDetails": "รายละเอียดหน้า",
-  "clickToUnlock": "คลิกเพื่อปลดล็อก"
+  "clickToUnlock": "คลิกเพื่อปลดล็อก",
+  "pageSettings": "การตั้งค่าหน้า",
+  "editingPageSettings": "กำลังแก้ไขการตั้งค่าหน้า",
+  "published": "เผยแพร่แล้ว",
+  "draft": "ฉบับร่าง",
+  "locked": "ล็อกอยู่",
+  "unlocked": "ปลดล็อกแล้ว",
+  "noTags": "ไม่มีแท็ก",
+  "oneTag": "1 แท็ก",
+  "tagCount": "{count} แท็ก",
+  "enterKey": "Enter"
 }

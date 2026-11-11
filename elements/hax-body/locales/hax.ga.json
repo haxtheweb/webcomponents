@@ -197,5 +197,6 @@
   "removeSource": "Bain an fhoinse",
   "lockUnlock": "Glasáil / Díghlasáil",
   "toggleFilters": "Scoránaigh na Scagairí",
-  "filters": "Scagairí"
+  "filters": "Scagairí",
+  "typeForQuickActions": "Clóscríobh '/' le haghaidh gníomhartha tapa"
 }

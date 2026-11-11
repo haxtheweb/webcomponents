@@ -1,0 +1,10 @@
+{
+  "github": "GitHub",
+  "repository": "Tárhely",
+  "stars": "csillag",
+  "forks": "fork",
+  "loading": "Betöltés",
+  "viewMore": "Továbbiak",
+  "assetNotFound": "Az erőforrás nem található",
+  "openOnGitHub": "{org}/{repo} megnyitása a GitHubon"
+}

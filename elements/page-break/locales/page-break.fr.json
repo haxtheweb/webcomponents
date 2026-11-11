@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Cette page est verrouillée. Déverrouillez-la d'abord pour changer son état de publication.",
   "pageLockedUnlockToDelete": "Cette page est verrouillée. Déverrouillez-la d'abord pour la supprimer.",
   "pageDetails": "Détails de la page",
-  "clickToUnlock": "Cliquer pour déverrouiller"
+  "clickToUnlock": "Cliquer pour déverrouiller",
+  "pageSettings": "Paramètres de la page",
+  "editingPageSettings": "Modification des paramètres de la page",
+  "published": "Publiée",
+  "draft": "Brouillon",
+  "locked": "Verrouillée",
+  "unlocked": "Déverrouillée",
+  "noTags": "Aucun tag",
+  "oneTag": "1 tag",
+  "tagCount": "{count} tags",
+  "enterKey": "Enter"
 }

@@ -197,5 +197,6 @@
   "removeSource": "Көзді жою",
   "lockUnlock": "Құлыптау / Құлыпты ашу",
   "toggleFilters": "Сүзгілерді көрсету/жасыру",
-  "filters": "Сүзгілер"
+  "filters": "Сүзгілер",
+  "typeForQuickActions": "Жылдам әрекеттер үшін '/' теріңіз"
 }

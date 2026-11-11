@@ -3,5 +3,8 @@
   "openInNewTab": "Vhura PDF mutebhu itsva",
   "downloadPdf": "Dhaunirodha PDF",
   "fullScreen": "Chiratidziro chizere",
-  "exitFullScreen": "Buda pachiratidziro chizere"
+  "exitFullScreen": "Buda pachiratidziro chizere",
+  "notSupported": "Zvinoita sokunge brouzer yako haina kugadziriswa kuratidza mafaera ePDF. Usanetseke, chete",
+  "notSupportedLink": "dzvanya pano kuti utore faera yePDF.",
+  "download": "Tora"
 }

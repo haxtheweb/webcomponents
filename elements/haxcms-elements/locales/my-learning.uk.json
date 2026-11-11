@@ -129,5 +129,12 @@
   "cancel": "Скасувати",
   "clearedSite": "Дані вашого навчання для {site} очищено.",
   "clearedDevice": "Усі дані навчання на цьому пристрої очищено.",
-  "thisSite": "цей сайт"
+  "thisSite": "цей сайт",
+  "outlineHeading": "Прогрес за сторінками",
+  "allPages": "Усі сторінки",
+  "outlinePagesDone": "Виконано {done} із {total} сторінок",
+  "outlinePagesCount": "Сторінок: {count}",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "Завершено {percent}%",
+  "outlineComplete": "Завершено"
 }

@@ -4,5 +4,8 @@
   "pieChart": "Idatha · Itshathi ye-pie",
   "showDataTable": "Bonisa itheyibhile yedatha",
   "downloadData": "Khuphela idatha (.csv)",
-  "series": "Uluhlu {n}"
+  "series": "Uluhlu {n}",
+  "barChartLabel": "itshathi yeembaleki",
+  "lineChartLabel": "itshathi yomgca",
+  "pieChartLabel": "itshathi yepayi"
 }

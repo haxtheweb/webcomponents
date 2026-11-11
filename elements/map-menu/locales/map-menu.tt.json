@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Бит бастырылмаган",
   "progressDone": "Үтәлде",
   "progressInProgress": "Бара",
-  "progressVisited": "Каралды"
+  "progressVisited": "Каралды",
+  "progressPercentComplete": "{percent}% әзер",
+  "progressComplete": "Әзер"
 }

@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "Kodiċi QR għal {title}",
+  "noData": "L-ebda data biex turi bħala kodiċi QR",
+  "formatNotSupported": "Il-format tal-kodiċi QR {format} mhuwiex appoġġat",
+  "noCanvas": "Dan il-browser ma jistax jiżżewweġ il-kodiċi QR (ebda appoġġ għal canvas)"
+}

@@ -197,5 +197,6 @@
   "removeSource": "Usuń źródło",
   "lockUnlock": "Zablokuj / odblokuj",
   "toggleFilters": "Przełącz filtry",
-  "filters": "Filtry"
+  "filters": "Filtry",
+  "typeForQuickActions": "Wpisz „/”, aby użyć szybkich akcji"
 }

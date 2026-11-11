@@ -3,5 +3,8 @@
   "openInNewTab": "Avaa PDF uudessa välilehdessä",
   "downloadPdf": "Lataa PDF",
   "fullScreen": "Koko näyttö",
-  "exitFullScreen": "Poistu koko näytön tilasta"
+  "exitFullScreen": "Poistu koko näytön tilasta",
+  "notSupported": "Näyttää siltä, ettei selaintasi ole määritetty näyttämään PDF-tiedostoja. Ei hätää, voit vain",
+  "notSupportedLink": "napsauttaa tästä ladataksesi PDF-tiedoston.",
+  "download": "Lataa"
 }

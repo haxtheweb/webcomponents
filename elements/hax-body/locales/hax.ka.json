@@ -197,5 +197,6 @@
   "removeSource": "წყაროს წაშლა",
   "lockUnlock": "ჩაკეტვა / განბლოკვა",
   "toggleFilters": "ფილტრების გადართვა",
-  "filters": "ფილტრები"
+  "filters": "ფილტრები",
+  "typeForQuickActions": "აკრიფეთ „/“ სწრაფი ქმედებებისთვის"
 }

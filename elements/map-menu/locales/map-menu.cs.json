@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Stránka není publikována",
   "progressDone": "Hotovo",
   "progressInProgress": "Probíhá",
-  "progressVisited": "Navštíveno"
+  "progressVisited": "Navštíveno",
+  "progressPercentComplete": "Dokončeno {percent} %",
+  "progressComplete": "Dokončeno"
 }

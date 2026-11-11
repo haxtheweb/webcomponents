@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Tsiva mafaira ekutanga",
   "newName": "Zita idzva",
   "deleteAction": "Dzima",
-  "renameAction": "Tumidza zita idzva"
+  "renameAction": "Tumidza zita idzva",
+  "bulkOverwriteConfirm": "{action} mafaera {count}? Izvi zvinotsiva mafaera epakutanga uye hazvidzoserwi shure.",
+  "actionScale": "Chinja saizi",
+  "actionRotate": "Tenderedza",
+  "actionTransform": "Chinja chimiro",
+  "actionConvertJpg": "Chinja kuita JPG",
+  "actionCompress": "Minya"
 }

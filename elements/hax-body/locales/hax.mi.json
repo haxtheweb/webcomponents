@@ -197,5 +197,6 @@
   "removeSource": "Tango pūtake",
   "lockUnlock": "Raka / Wewete",
   "toggleFilters": "Whakakā/Whakaweto Tātari",
-  "filters": "Ngā tātari"
+  "filters": "Ngā tātari",
+  "typeForQuickActions": "Patohia te '/' mō ngā mahi tere"
 }

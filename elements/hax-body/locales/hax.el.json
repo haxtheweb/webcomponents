@@ -197,5 +197,6 @@
   "removeSource": "Αφαίρεση πηγής",
   "lockUnlock": "Κλείδωμα / Ξεκλείδωμα",
   "toggleFilters": "Εναλλαγή φίλτρων",
-  "filters": "Φίλτρα"
+  "filters": "Φίλτρα",
+  "typeForQuickActions": "Πληκτρολογήστε «/» για γρήγορες ενέργειες"
 }

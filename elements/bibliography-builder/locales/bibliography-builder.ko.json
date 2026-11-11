@@ -4,5 +4,6 @@
   "exportCitations": "인용 내보내기",
   "copy": "복사",
   "exportCitationFormat": "인용 형식 내보내기",
-  "selectCitationFormatBelow": "아래에서 인용 형식을 선택하세요"
+  "selectCitationFormatBelow": "아래에서 인용 형식을 선택하세요",
+  "addCitationToBibliography": "참고 문헌에 인용 추가"
 }

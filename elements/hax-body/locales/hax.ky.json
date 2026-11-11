@@ -197,5 +197,6 @@
   "removeSource": "Булакты алып салуу",
   "lockUnlock": "Кулпулоо / Кулпусун ачуу",
   "toggleFilters": "Чыпкаларды которуу",
-  "filters": "Чыпкалар"
+  "filters": "Чыпкалар",
+  "typeForQuickActions": "Тез аракеттер үчүн '/' териңиз"
 }

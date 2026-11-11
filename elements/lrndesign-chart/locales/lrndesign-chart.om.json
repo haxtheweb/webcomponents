@@ -4,5 +4,8 @@
   "pieChart": "Daataa · Chaartii pay",
   "showDataTable": "Gabatee daataa agarsiisi",
   "downloadData": "Daataa buusi (.csv)",
-  "series": "Tartiiba {n}"
+  "series": "Tartiiba {n}",
+  "barChartLabel": "chaartii utubaa",
+  "lineChartLabel": "chaartii sarara",
+  "pieChartLabel": "chaartii geengoo"
 }

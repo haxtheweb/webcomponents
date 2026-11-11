@@ -197,5 +197,6 @@
   "removeSource": "Rimuovi sorgente",
   "lockUnlock": "Blocca / Sblocca",
   "toggleFilters": "Mostra/nascondi filtri",
-  "filters": "Filtri"
+  "filters": "Filtri",
+  "typeForQuickActions": "Digita '/' per le azioni rapide"
 }

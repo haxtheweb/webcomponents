@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Tevékenység",
-        "description": "Bizonyítékok megjelölése: a tanulók minden zászlót a hozzá tartozó bizonyíték mellé ragasztanak. Egy kiválasztása: a tanulók azt az egy részt választják, amely a legjobban válaszol a kérdésre."
+        "description": "Bizonyítékok megjelölése: a tanulók minden zászlót a hozzá tartozó bizonyíték mellé ragasztanak. Egy kiválasztása: a tanulók azt az egy részt választják, amely a legjobban válaszol a kérdésre.",
+        "options": {
+          "flag": "Bizonyíték megjelölése",
+          "one": "Egy kiválasztása"
+        }
       },
       {
         "property": "unit",
         "title": "A tanulók kijelölik",
-        "description": "Amire a tanuló rámutat a szövegben. Az ábrák mindig kijelölhetők."
+        "description": "Amire a tanuló rámutat a szövegben. Az ábrák mindig kijelölhetők.",
+        "options": {
+          "sentence": "Mondatok",
+          "paragraph": "Bekezdések",
+          "figure": "Csak ábrák"
+        }
       },
       {
         "property": "answers",

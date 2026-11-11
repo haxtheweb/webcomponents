@@ -1,0 +1,10 @@
+{
+  "github": "GitHub",
+  "repository": "Kho lưu trữ",
+  "stars": "sao",
+  "forks": "nhánh fork",
+  "loading": "Đang tải",
+  "viewMore": "Xem thêm",
+  "assetNotFound": "Không tìm thấy tài nguyên",
+  "openOnGitHub": "Mở {org}/{repo} trên GitHub"
+}

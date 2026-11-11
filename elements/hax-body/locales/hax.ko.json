@@ -197,5 +197,6 @@
   "removeSource": "소스 제거",
   "lockUnlock": "잠금 / 잠금 해제",
   "toggleFilters": "필터 전환",
-  "filters": "필터"
+  "filters": "필터",
+  "typeForQuickActions": "빠른 작업은 '/'를 입력하세요"
 }

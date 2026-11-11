@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "{title} üçin QR kody",
+  "noData": "QR kody hökmünde görkezmäge maglumat ýok",
+  "formatNotSupported": "QR kod formaty {format} goldanylmaýar",
+  "noCanvas": "Bu brauzer QR kody çyzyp bilmeýär (canvas goldawy ýok)"
+}

@@ -197,5 +197,6 @@
   "removeSource": "Pukyuta hurquy",
   "lockUnlock": "Wichq'ay / Kichay",
   "toggleFilters": "Ch'aqchukunata T'ikray",
-  "filters": "Ch'aqchukuna"
+  "filters": "Ch'aqchukuna",
+  "typeForQuickActions": "'/' qillqay utqay ruwaykunapaq"
 }

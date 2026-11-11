@@ -5,8 +5,14 @@
   },
   "settings": {
     "configure": [
-      null,
-      null,
+      {
+        "title": "Nombre del artículo",
+        "description": "Palabra que buscar en Wikipedia."
+      },
+      {
+        "title": "Ocultar título",
+        "description": "Si se muestra o no el título del artículo."
+      },
       {
         "title": "Idioma",
         "description": "El idioma del artículo.",

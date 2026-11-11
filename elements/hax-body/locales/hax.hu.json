@@ -197,5 +197,6 @@
   "removeSource": "Forrás eltávolítása",
   "lockUnlock": "Zárolás / feloldás",
   "toggleFilters": "Szűrők váltása",
-  "filters": "Szűrők"
+  "filters": "Szűrők",
+  "typeForQuickActions": "Gépelj '/' jelet a gyorsműveletekhez"
 }

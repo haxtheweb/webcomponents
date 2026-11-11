@@ -35,5 +35,12 @@
   "youTubeStartLoading": "Premi play.",
   "youTubeTranscriptLabel": "La trascrizione verrà caricata all'avvio della riproduzione.",
   "audioDescriptionLabel": "Audiodescrizione",
-  "openOnYouTube": "Apri su YouTube"
+  "openOnYouTube": "Apri su YouTube",
+  "interactiveLabel": "interattivo",
+  "layoutLabel": "Layout",
+  "sideLabel": "Lato",
+  "belowLabel": "Sotto",
+  "leftLabel": "Sinistra",
+  "rightLabel": "Destra",
+  "hideTranscriptLabel": "Nascondi trascrizione"
 }

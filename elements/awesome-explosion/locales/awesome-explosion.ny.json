@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Dinani kapena yendetsani cholozera kuti mumve phokoso la kuphulika",
+  "soundDisabled": "Zotsatira zowoneka za kuphulika (phokoso lazimitsidwa)",
+  "explosionAnimation": "makanema a kuphulika",
+  "explosionAriaLabel": "Makanema a kuphulika {state} {sound}. Dinani kuti musinthe.",
+  "playing": "ikuseweredwa",
+  "stopped": "yayimitsidwa",
+  "withSound": "ndi phokoso",
+  "muted": "(phokoso lazimitsidwa)"
+}

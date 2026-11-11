@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title} dening {creator} dilisensèni miturut {license}.",
   "permissionsBeyondScope": "Idin ngluwihi cakupan lisensi iki kasedhiya {link}.",
   "author": "(penulis)",
-  "onTheLicensingDetailsPage": "ing kaca rincian lisensi"
+  "onTheLicensingDetailsPage": "ing kaca rincian lisensi",
+  "licenseLabel": "Lisensi"
 }

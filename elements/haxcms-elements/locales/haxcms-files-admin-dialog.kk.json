@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Түпнұсқа файлдарды ауыстыру",
   "newName": "Жаңа атау",
   "deleteAction": "Жою",
-  "renameAction": "Атын өзгерту"
+  "renameAction": "Атын өзгерту",
+  "bulkOverwriteConfirm": "{count} файлға {action} әрекетін орындау керек пе? Бұл бастапқы файлдарды ауыстырады және оны болдырмау мүмкін емес.",
+  "actionScale": "Масштабтау",
+  "actionRotate": "Бұру",
+  "actionTransform": "Түрлендіру",
+  "actionConvertJpg": "JPG-ге түрлендіру",
+  "actionCompress": "Сығу"
 }

@@ -1,4 +1,9 @@
 {
   "audio": "Ääni",
-  "openOnSpotify": "Avaa Spotifyssa uudessa välilehdessä"
+  "openOnSpotify": "Avaa Spotifyssa uudessa välilehdessä",
+  "embedTitle": "Spotify-upotus",
+  "trackEmbedTitle": "Spotify-kappaleen upotus",
+  "albumEmbedTitle": "Spotify-albumin upotus",
+  "playlistEmbedTitle": "Spotify-soittolistan upotus",
+  "artistEmbedTitle": "Spotify-artistin upotus"
 }

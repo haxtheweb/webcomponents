@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Orijinal faylları əvəz et",
   "newName": "Yeni ad",
   "deleteAction": "Sil",
-  "renameAction": "Adını dəyiş"
+  "renameAction": "Adını dəyiş",
+  "bulkOverwriteConfirm": "{count} fayl üçün \"{action}\" icra edilsin? Bu, orijinal faylları əvəz edir və geri qaytarıla bilməz.",
+  "actionScale": "Ölçüləndir",
+  "actionRotate": "Döndər",
+  "actionTransform": "Çevir",
+  "actionConvertJpg": "JPG formatına çevir",
+  "actionCompress": "Sıx"
 }

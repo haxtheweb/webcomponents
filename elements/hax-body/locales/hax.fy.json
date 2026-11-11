@@ -197,5 +197,6 @@
   "removeSource": "Boarne fuortsmite",
   "lockUnlock": "Beskoattelje / Untskoattelje",
   "toggleFilters": "Filters skeakelje",
-  "filters": "Filters"
+  "filters": "Filters",
+  "typeForQuickActions": "Typ '/' foar flugge aksjes"
 }

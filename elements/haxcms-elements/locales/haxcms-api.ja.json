@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "変換に失敗しました。",
   "PARAM_REQUIRED": "必須の値がありません: {param}。",
   "INVALID_REQUEST": "無効なリクエストです。",
-  "PARAM_INVALID": "無効な値です: {param}。"
+  "PARAM_INVALID": "無効な値です: {param}。",
+  "BLOCK_RATE_LIMITED": "現在、このサイトでコンテンツの変更が多すぎます。{retryAfter}秒後にもう一度お試しください。"
 }

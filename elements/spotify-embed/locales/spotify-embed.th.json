@@ -1,4 +1,9 @@
 {
   "audio": "เสียง",
-  "openOnSpotify": "เปิดบน Spotify ในแท็บใหม่"
+  "openOnSpotify": "เปิดบน Spotify ในแท็บใหม่",
+  "embedTitle": "Spotify Embed",
+  "trackEmbedTitle": "Spotify Track Embed",
+  "albumEmbedTitle": "Spotify Album Embed",
+  "playlistEmbedTitle": "Spotify Playlist Embed",
+  "artistEmbedTitle": "Spotify Artist Embed"
 }

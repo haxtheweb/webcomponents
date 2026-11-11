@@ -2,5 +2,7 @@
   "pageIsUnpublished": "પેજ અપ્રકાશિત છે",
   "progressDone": "પૂર્ણ",
   "progressInProgress": "ચાલુ છે",
-  "progressVisited": "મુલાકાત લીધી"
+  "progressVisited": "મુલાકાત લીધી",
+  "progressPercentComplete": "{percent}% પૂર્ણ",
+  "progressComplete": "પૂર્ણ"
 }

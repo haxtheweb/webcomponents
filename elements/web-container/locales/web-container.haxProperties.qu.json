@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "NodeJS wiñay"
+    "title": "NodeJS wiñay",
+    "description": ""
   },
   "settings": {
     "configure": [

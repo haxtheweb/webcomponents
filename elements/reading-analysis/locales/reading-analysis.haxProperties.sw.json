@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Shughuli",
-        "description": "Weka bendera kwenye ushahidi: wanafunzi huweka kila bendera kando ya ushahidi wake. Chagua kimoja: wanafunzi huchagua kifungu kimoja kinachojibu swali vizuri zaidi."
+        "description": "Weka bendera kwenye ushahidi: wanafunzi huweka kila bendera kando ya ushahidi wake. Chagua kimoja: wanafunzi huchagua kifungu kimoja kinachojibu swali vizuri zaidi.",
+        "options": {
+          "flag": "Weka alama kwenye ushahidi",
+          "one": "Chagua moja"
+        }
       },
       {
         "property": "unit",
         "title": "Wanafunzi huchagua",
-        "description": "Kile mwanafunzi anachoelekeza katika usomaji. Picha zinaweza kuchaguliwa kila wakati."
+        "description": "Kile mwanafunzi anachoelekeza katika usomaji. Picha zinaweza kuchaguliwa kila wakati.",
+        "options": {
+          "sentence": "Sentensi",
+          "paragraph": "Aya",
+          "figure": "Picha na michoro pekee"
+        }
       },
       {
         "property": "answers",

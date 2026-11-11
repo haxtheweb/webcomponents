@@ -197,5 +197,6 @@
   "removeSource": "Elimină sursa",
   "lockUnlock": "Blochează / Deblochează",
   "toggleFilters": "Comută filtrele",
-  "filters": "Filtre"
+  "filters": "Filtre",
+  "typeForQuickActions": "Tastați „/” pentru acțiuni rapide"
 }

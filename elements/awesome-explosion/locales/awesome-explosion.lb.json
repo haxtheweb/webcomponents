@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Klick oder fuer mat der Maus driwwer fir den Explosiounsgeräisch ofzespillen",
+  "soundDisabled": "Visuellen Explosiounseffekt (Toun desaktivéiert)",
+  "explosionAnimation": "Explosiounsanimatioun",
+  "explosionAriaLabel": "Explosiounsanimatioun {state} {sound}. Klick fir ëmzeschalten.",
+  "playing": "spillt of",
+  "stopped": "gestoppt",
+  "withSound": "mat Toun",
+  "muted": "(stommgeschalt)"
+}

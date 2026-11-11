@@ -3,5 +3,8 @@
   "openInNewTab": "Buka PDF di tab baru",
   "downloadPdf": "Unduh PDF",
   "fullScreen": "Layar penuh",
-  "exitFullScreen": "Keluar dari layar penuh"
+  "exitFullScreen": "Keluar dari layar penuh",
+  "notSupported": "Sepertinya browser web Anda tidak dikonfigurasi untuk menampilkan berkas PDF. Tidak masalah, cukup",
+  "notSupportedLink": "klik di sini untuk mengunduh berkas PDF.",
+  "download": "Unduh"
 }

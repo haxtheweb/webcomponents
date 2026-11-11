@@ -197,5 +197,6 @@
   "removeSource": "Bvisa sosi",
   "lockUnlock": "Kiya / Vhura",
   "toggleFilters": "Batidza/dzima Masefa",
-  "filters": "Masefa"
+  "filters": "Masefa",
+  "typeForQuickActions": "Nyora '/' kuti uwane maitiro akakurumidza"
 }

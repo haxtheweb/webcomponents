@@ -197,5 +197,6 @@
   "removeSource": "Busak sumber",
   "lockUnlock": "Kunci / Bukak Kunci",
   "toggleFilters": "Ganti Saringan",
-  "filters": "Saringan"
+  "filters": "Saringan",
+  "typeForQuickActions": "Ketik '/' kanggo tindakan cepet"
 }

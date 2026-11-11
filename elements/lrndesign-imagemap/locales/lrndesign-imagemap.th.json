@@ -1,0 +1,9 @@
+{
+  "imageMap": "แผนที่ภาพ",
+  "interactive": "โต้ตอบได้",
+  "hotspot": "จุดสนใจ",
+  "hotspotPosition": "{n} จาก {total}",
+  "hotspotsExplored": "สำรวจจุดสนใจแล้ว {n} จาก {total}",
+  "explored": "สำรวจแล้ว",
+  "close": "ปิด"
+}

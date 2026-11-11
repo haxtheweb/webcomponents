@@ -197,5 +197,6 @@
   "removeSource": "Poista lähde",
   "lockUnlock": "Lukitse / avaa lukitus",
   "toggleFilters": "Näytä/piilota suodattimet",
-  "filters": "Suodattimet"
+  "filters": "Suodattimet",
+  "typeForQuickActions": "Kirjoita ”/” pikatoimintoja varten"
 }

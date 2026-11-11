@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Faoliyat",
-        "description": "Dalilni belgilash: o‘quvchilar har bir bayroqchani uning dalili yoniga qo‘yadi. Bittasini tanlash: o‘quvchilar savolga eng yaxshi javob beradigan yagona parchani tanlaydi."
+        "description": "Dalilni belgilash: o‘quvchilar har bir bayroqchani uning dalili yoniga qo‘yadi. Bittasini tanlash: o‘quvchilar savolga eng yaxshi javob beradigan yagona parchani tanlaydi.",
+        "options": {
+          "flag": "Dalilni belgilash",
+          "one": "Birini tanlash"
+        }
       },
       {
         "property": "unit",
         "title": "O‘quvchilar tanlaydi",
-        "description": "O‘quvchi matnda nimani ko‘rsatadi. Rasmlarni har doim tanlash mumkin."
+        "description": "O‘quvchi matnda nimani ko‘rsatadi. Rasmlarni har doim tanlash mumkin.",
+        "options": {
+          "sentence": "Gaplar",
+          "paragraph": "Xatboshilar",
+          "figure": "Faqat rasmlar"
+        }
       },
       {
         "property": "answers",

@@ -35,5 +35,12 @@
   "youTubeStartLoading": "",
   "youTubeTranscriptLabel": "",
   "audioDescriptionLabel": "အသံဖြင့် ဖော်ပြချက်",
-  "openOnYouTube": "YouTube တွင် ဖွင့်ရန်"
+  "openOnYouTube": "YouTube တွင် ဖွင့်ရန်",
+  "interactiveLabel": "အပြန်အလှန်တုံ့ပြန်နိုင်သော",
+  "layoutLabel": "အပြင်အဆင်",
+  "sideLabel": "ဘေးတွင်",
+  "belowLabel": "အောက်တွင်",
+  "leftLabel": "ဘယ်",
+  "rightLabel": "ညာ",
+  "hideTranscriptLabel": "စာသားမှတ်တမ်းကို ဝှက်ရန်"
 }

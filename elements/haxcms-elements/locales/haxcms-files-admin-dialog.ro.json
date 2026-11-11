@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Înlocuiește fișierele originale",
   "newName": "Nume nou",
   "deleteAction": "Șterge",
-  "renameAction": "Redenumește"
+  "renameAction": "Redenumește",
+  "bulkOverwriteConfirm": "{action} {count} fișiere? Aceasta înlocuiește fișierele originale și nu poate fi anulată.",
+  "actionScale": "Scalează",
+  "actionRotate": "Rotește",
+  "actionTransform": "Transformă",
+  "actionConvertJpg": "Convertește în JPG",
+  "actionCompress": "Comprimă"
 }

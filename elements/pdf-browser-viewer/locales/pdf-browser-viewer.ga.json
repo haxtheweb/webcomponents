@@ -3,5 +3,8 @@
   "openInNewTab": "Oscail an PDF i dtab nua",
   "downloadPdf": "Íoslódáil an PDF",
   "fullScreen": "Scáileán iomlán",
-  "exitFullScreen": "Scoir den scáileán iomlán"
+  "exitFullScreen": "Scoir den scáileán iomlán",
+  "notSupported": "Is cosúil nach bhfuil do bhrabhsálaí gréasáin cumraithe chun comhaid PDF a thaispeáint. Ná bí buartha, ní gá ach",
+  "notSupportedLink": "cliceáil anseo chun an comhad PDF a íoslódáil.",
+  "download": "Íoslódáil"
 }

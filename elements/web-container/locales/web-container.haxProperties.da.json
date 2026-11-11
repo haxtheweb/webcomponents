@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "NodeJS-beholder"
+    "title": "NodeJS-beholder",
+    "description": ""
   },
   "settings": {
     "configure": [

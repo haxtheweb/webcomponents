@@ -4,5 +4,8 @@
   "pieChart": "Dejta · Chart tal-pie",
   "showDataTable": "Uri t-tabella tad-dejta",
   "downloadData": "Niżżel id-dejta (.csv)",
-  "series": "Sensiela {n}"
+  "series": "Sensiela {n}",
+  "barChartLabel": "grafiku tal-vireg",
+  "lineChartLabel": "grafiku tal-linji",
+  "pieChartLabel": "grafiku taċ-ċirku"
 }

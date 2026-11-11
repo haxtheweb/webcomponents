@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Akwatin NodeJS"
+    "title": "Akwatin NodeJS",
+    "description": ""
   },
   "settings": {
     "configure": [

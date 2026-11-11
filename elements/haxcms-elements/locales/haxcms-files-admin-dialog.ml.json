@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "യഥാർത്ഥ ഫയലുകൾ മാറ്റിസ്ഥാപിക്കുക",
   "newName": "പുതിയ പേര്",
   "deleteAction": "ഇല്ലാതാക്കുക",
-  "renameAction": "പേര് മാറ്റുക"
+  "renameAction": "പേര് മാറ്റുക",
+  "bulkOverwriteConfirm": "{count} ഫയലുകൾ {action} ചെയ്യണോ? ഇത് യഥാർത്ഥ ഫയലുകളെ മാറ്റിസ്ഥാപിക്കും, പഴയപടിയാക്കാൻ കഴിയില്ല.",
+  "actionScale": "സ്കെയിൽ",
+  "actionRotate": "തിരിക്കുക",
+  "actionTransform": "രൂപാന്തരപ്പെടുത്തുക",
+  "actionConvertJpg": "JPG ആയി പരിവർത്തനം ചെയ്യുക",
+  "actionCompress": "കംപ്രസ് ചെയ്യുക"
 }

@@ -1,0 +1,8 @@
+{
+  "ordinalOne": "日",
+  "ordinalTwo": "日",
+  "ordinalFew": "日",
+  "ordinalOther": "日",
+  "fromTimeToTime": "{start}から{end}まで",
+  "atTime": "{start}に"
+}

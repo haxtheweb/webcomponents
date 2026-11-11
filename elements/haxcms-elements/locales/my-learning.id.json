@@ -129,5 +129,12 @@
   "cancel": "Batal",
   "clearedSite": "Data pembelajaran Anda untuk {site} telah dihapus.",
   "clearedDevice": "Semua data pembelajaran di perangkat ini telah dihapus.",
-  "thisSite": "situs ini"
+  "thisSite": "situs ini",
+  "outlineHeading": "Kemajuan per halaman",
+  "allPages": "Semua halaman",
+  "outlinePagesDone": "{done} dari {total} halaman selesai",
+  "outlinePagesCount": "{count} halaman",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% selesai",
+  "outlineComplete": "Selesai"
 }

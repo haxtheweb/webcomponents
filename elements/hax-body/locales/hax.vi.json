@@ -197,5 +197,6 @@
   "removeSource": "Xóa nguồn",
   "lockUnlock": "Khóa / Mở khóa",
   "toggleFilters": "Bật/tắt bộ lọc",
-  "filters": "Bộ lọc"
+  "filters": "Bộ lọc",
+  "typeForQuickActions": "Nhập '/' để dùng thao tác nhanh"
 }

@@ -1,0 +1,9 @@
+{
+  "imageMap": "Slikovni zemljevid",
+  "interactive": "Interaktivno",
+  "hotspot": "Aktivno območje",
+  "hotspotPosition": "{n} od {total}",
+  "hotspotsExplored": "Raziskanih aktivnih območij: {n} od {total}",
+  "explored": "Raziskano",
+  "close": "Zapri"
+}

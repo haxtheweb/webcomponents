@@ -129,5 +129,12 @@
   "cancel": "Heja",
   "clearedSite": "Ñembogue nde jeporeka mba’ekuaarã {site} rehegua.",
   "clearedDevice": "Ñembogue opa jeporeka mba’ekuaarã ko mba’e’oka.",
-  "thisSite": "ko tenda"
+  "thisSite": "ko tenda",
+  "outlineHeading": "Tapykue kuatiarogue rupi",
+  "allPages": "Opaite kuatiarogue",
+  "outlinePagesDone": "{done} {total}-gui kuatiarogue ojapopyre",
+  "outlinePagesCount": "{count} kuatiarogue",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% opapyre",
+  "outlineComplete": "Opapyre"
 }

@@ -197,5 +197,6 @@
   "removeSource": "ಮೂಲ ತೆಗೆದುಹಾಕಿ",
   "lockUnlock": "ಲಾಕ್ / ಅನ್‌ಲಾಕ್",
   "toggleFilters": "ಫಿಲ್ಟರ್‌ಗಳನ್ನು ಟಾಗಲ್ ಮಾಡಿ",
-  "filters": "ಫಿಲ್ಟರ್‌ಗಳು"
+  "filters": "ಫಿಲ್ಟರ್‌ಗಳು",
+  "typeForQuickActions": "ತ್ವರಿತ ಕ್ರಿಯೆಗಳಿಗಾಗಿ '/' ಟೈಪ್ ಮಾಡಿ"
 }

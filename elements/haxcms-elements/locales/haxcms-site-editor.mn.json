@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Үйлдлийг гүйцэтгэж чадсангүй ({status})",
   "normalizedPageSlugs": "{count} хуудасны slug-ийг хэвжүүллээ",
   "createdTitle": "{title} үүслээ!",
-  "processing": "Боловсруулж байна"
+  "processing": "Боловсруулж байна",
+  "saveTimedOut": "Хадгалах хугацаа хэтэрлээ: сервер хариу өгсөнгүй. Таны өөрчлөлтүүд энд хадгалагдсан хэвээр байгаа ч сервер хадгалж дуусгаж магадгүй."
 }

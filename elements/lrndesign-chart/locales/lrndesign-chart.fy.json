@@ -4,5 +4,8 @@
   "pieChart": "Gegevens · Sirkeldiagram",
   "showDataTable": "Gegevenstabel toane",
   "downloadData": "Gegevens downloade (.csv)",
-  "series": "Searje {n}"
+  "series": "Searje {n}",
+  "barChartLabel": "staafdiagram",
+  "lineChartLabel": "lyndiagram",
+  "pieChartLabel": "sirkeldiagram"
 }

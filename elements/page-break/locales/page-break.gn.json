@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Ko kuatiarogue ojejoko. Embojuruja raẽ emoambue hag̃ua ñemyasãi rekotee.",
   "pageLockedUnlockToDelete": "Ko kuatiarogue ojejoko. Embojuruja raẽ emboguete hag̃ua.",
   "pageDetails": "Kuatiarogue mba'emimi",
-  "clickToUnlock": "Eñemboja eipe'a hag̃ua"
+  "clickToUnlock": "Eñemboja eipe'a hag̃ua",
+  "pageSettings": "Kuatiarogue ñemoĩ",
+  "editingPageSettings": "Oñemoambue kuatiarogue ñemoĩ",
+  "published": "Ojehechaukapyre",
+  "draft": "Ñemoñepyrũ",
+  "locked": "Ojejokopyre",
+  "unlocked": "Ojejokoʼỹ",
+  "noTags": "Etiqueta'ỹ",
+  "oneTag": "1 etiqueta",
+  "tagCount": "{count} etiqueta",
+  "enterKey": "Enter"
 }

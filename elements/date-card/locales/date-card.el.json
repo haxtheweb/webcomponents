@@ -1,0 +1,8 @@
+{
+  "ordinalOne": "η",
+  "ordinalTwo": "η",
+  "ordinalFew": "η",
+  "ordinalOther": "η",
+  "fromTimeToTime": "από {start} - {end}",
+  "atTime": "στις {start}"
+}

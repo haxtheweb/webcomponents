@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Табдилдиҳӣ ноком шуд.",
   "PARAM_REQUIRED": "Қимати ҳатмӣ мавҷуд нест: {param}.",
   "INVALID_REQUEST": "Дархост нодуруст аст.",
-  "PARAM_INVALID": "Қимати нодуруст: {param}."
+  "PARAM_INVALID": "Қимати нодуруст: {param}.",
+  "BLOCK_RATE_LIMITED": "Айни замон дар ин сайт тағйироти мазмун аз ҳад зиёд аст. Пас аз {retryAfter} сония бори дигар кӯшиш кунед."
 }

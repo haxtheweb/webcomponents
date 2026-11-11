@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Etkinlik",
-        "description": "Kanıtı işaretle: öğrenciler her bayrağı ona ait kanıtın yanına koyar. Birini seç: öğrenciler soruyu en iyi yanıtlayan tek bölümü seçer."
+        "description": "Kanıtı işaretle: öğrenciler her bayrağı ona ait kanıtın yanına koyar. Birini seç: öğrenciler soruyu en iyi yanıtlayan tek bölümü seçer.",
+        "options": {
+          "flag": "Kanıtı işaretle",
+          "one": "Birini seç"
+        }
       },
       {
         "property": "unit",
         "title": "Öğrencilerin seçtiği",
-        "description": "Öğrencinin metinde işaret ettiği şey. Şekiller her zaman seçilebilir."
+        "description": "Öğrencinin metinde işaret ettiği şey. Şekiller her zaman seçilebilir.",
+        "options": {
+          "sentence": "Cümleler",
+          "paragraph": "Paragraflar",
+          "figure": "Yalnızca şekiller"
+        }
       },
       {
         "property": "answers",

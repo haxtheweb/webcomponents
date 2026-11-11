@@ -1,5 +1,6 @@
 {
   "simulation": "Szimuláció",
   "fullScreen": "Teljes képernyő",
-  "exitFullScreen": "Kilépés a teljes képernyőből"
+  "exitFullScreen": "Kilépés a teljes képernyőből",
+  "player": "Unity WebGL lejátszó"
 }

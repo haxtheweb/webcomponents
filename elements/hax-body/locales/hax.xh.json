@@ -197,5 +197,6 @@
   "removeSource": "Susa umthombo",
   "lockUnlock": "Tshixa / Vula",
   "toggleFilters": "Tshintsha iZihluzi",
-  "filters": "Izihluzi"
+  "filters": "Izihluzi",
+  "typeForQuickActions": "Chwetheza '/' ukufumana izenzo ezikhawulezayo"
 }

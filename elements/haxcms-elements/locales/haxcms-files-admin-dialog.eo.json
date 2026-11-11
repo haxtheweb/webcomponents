@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Anstataŭigi originalajn dosierojn",
   "newName": "Nova nomo",
   "deleteAction": "Forigi",
-  "renameAction": "Renomi"
+  "renameAction": "Renomi",
+  "bulkOverwriteConfirm": "{action} {count} dosierojn? Ĉi tio anstataŭigas la originalajn dosierojn kaj ne malfareblas.",
+  "actionScale": "Skali",
+  "actionRotate": "Turni",
+  "actionTransform": "Transformi",
+  "actionConvertJpg": "Konverti al JPG",
+  "actionCompress": "Kunpremi"
 }

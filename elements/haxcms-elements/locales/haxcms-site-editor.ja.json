@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "操作を完了できません ({status})",
   "normalizedPageSlugs": "{count} 件のページスラッグを正規化しました",
   "createdTitle": "{title} を作成しました!",
-  "processing": "処理中"
+  "processing": "処理中",
+  "saveTimedOut": "保存がタイムアウトしました。サーバーが応答しませんでした。変更はここに保持されていますが、サーバーが保存を完了する可能性があります。"
 }

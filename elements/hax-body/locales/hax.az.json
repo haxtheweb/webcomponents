@@ -197,5 +197,6 @@
   "removeSource": "Mənbəni sil",
   "lockUnlock": "Kilidlə / Kilidi aç",
   "toggleFilters": "Süzgəcləri göstər/gizlət",
-  "filters": "Süzgəclər"
+  "filters": "Süzgəclər",
+  "typeForQuickActions": "Sürətli əməliyyatlar üçün '/' yazın"
 }

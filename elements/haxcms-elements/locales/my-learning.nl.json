@@ -129,5 +129,12 @@
   "cancel": "Annuleren",
   "clearedSite": "Je leergegevens voor {site} zijn gewist.",
   "clearedDevice": "Alle leergegevens op dit apparaat zijn gewist.",
-  "thisSite": "deze site"
+  "thisSite": "deze site",
+  "outlineHeading": "Voortgang per pagina",
+  "allPages": "Alle pagina's",
+  "outlinePagesDone": "{done} van {total} pagina's voltooid",
+  "outlinePagesCount": "{count} pagina's",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% voltooid",
+  "outlineComplete": "Voltooid"
 }

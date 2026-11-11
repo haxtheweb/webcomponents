@@ -1,0 +1,9 @@
+{
+  "imageMap": "ഇമേജ് മാപ്പ്",
+  "interactive": "സംവേദനാത്മകം",
+  "hotspot": "ഹോട്ട്സ്പോട്ട്",
+  "hotspotPosition": "{total}-ൽ {n}",
+  "hotspotsExplored": "{total} ഹോട്ട്സ്പോട്ടുകളിൽ {n} പര്യവേക്ഷണം ചെയ്തു",
+  "explored": "പര്യവേക്ഷണം ചെയ്തു",
+  "close": "അടയ്ക്കുക"
+}

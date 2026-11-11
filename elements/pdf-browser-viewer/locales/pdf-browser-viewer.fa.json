@@ -3,5 +3,8 @@
   "openInNewTab": "باز کردن PDF در برگه جدید",
   "downloadPdf": "دانلود PDF",
   "fullScreen": "تمام‌صفحه",
-  "exitFullScreen": "خروج از تمام‌صفحه"
+  "exitFullScreen": "خروج از تمام‌صفحه",
+  "notSupported": "به نظر می‌رسد مرورگر وب شما برای نمایش فایل‌های PDF پیکربندی نشده است. مشکلی نیست، فقط",
+  "notSupportedLink": "اینجا کلیک کنید تا فایل PDF را دانلود کنید.",
+  "download": "دانلود"
 }

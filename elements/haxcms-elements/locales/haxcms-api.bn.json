@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "রূপান্তর ব্যর্থ হয়েছে।",
   "PARAM_REQUIRED": "একটি আবশ্যক মান অনুপস্থিত: {param}।",
   "INVALID_REQUEST": "অবৈধ অনুরোধ।",
-  "PARAM_INVALID": "অবৈধ মান: {param}।"
+  "PARAM_INVALID": "অবৈধ মান: {param}।",
+  "BLOCK_RATE_LIMITED": "এই সাইটে এখন অনেক বেশি কন্টেন্ট পরিবর্তন হচ্ছে। {retryAfter} সেকেন্ড পরে আবার চেষ্টা করুন।"
 }

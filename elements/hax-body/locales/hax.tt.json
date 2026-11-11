@@ -197,5 +197,6 @@
   "removeSource": "Чыганакны бетерү",
   "lockUnlock": "Бикләү / Бикне ачу",
   "toggleFilters": "Фильтрларны күчерү",
-  "filters": "Фильтрлар"
+  "filters": "Фильтрлар",
+  "typeForQuickActions": "Тиз гамәлләр өчен '/' языгыз"
 }

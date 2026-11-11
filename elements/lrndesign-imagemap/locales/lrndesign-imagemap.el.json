@@ -1,0 +1,9 @@
+{
+  "imageMap": "Χάρτης εικόνας",
+  "interactive": "Διαδραστικό",
+  "hotspot": "Ενεργό σημείο",
+  "hotspotPosition": "{n} από {total}",
+  "hotspotsExplored": "{n} από {total} ενεργά σημεία εξερευνήθηκαν",
+  "explored": "Εξερευνήθηκε",
+  "close": "Κλείσιμο"
+}

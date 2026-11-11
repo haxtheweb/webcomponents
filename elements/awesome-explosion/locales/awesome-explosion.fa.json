@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "برای پخش صدای انفجار کلیک کنید یا نشانگر را روی آن ببرید",
+  "soundDisabled": "جلوه بصری انفجار (صدا غیرفعال است)",
+  "explosionAnimation": "انیمیشن انفجار",
+  "explosionAriaLabel": "انیمیشن انفجار {state} {sound}. برای تغییر کلیک کنید.",
+  "playing": "در حال پخش",
+  "stopped": "متوقف",
+  "withSound": "با صدا",
+  "muted": "(بی‌صدا)"
+}

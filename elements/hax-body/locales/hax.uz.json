@@ -197,5 +197,6 @@
   "removeSource": "Manbani olib tashlash",
   "lockUnlock": "Qulflash / Qulfdan chiqarish",
   "toggleFilters": "Filtrlarni almashtirish",
-  "filters": "Filtrlar"
+  "filters": "Filtrlar",
+  "typeForQuickActions": "Tezkor amallar uchun '/' kiriting"
 }

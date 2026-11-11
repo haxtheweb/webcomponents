@@ -37,6 +37,16 @@
         "title": "Testo pavadinimas",
         "description": "Testo pavadinimas, perduodamas xAPI pagrįstoms aplinkoms šiam elementui identifikuoti"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Suskleidžiamas",
+        "description": "Rodyti šį klausimą kaip eilutę, kuri atsidaro ir užsidaro. Atidarius vieną, kiti šalia esantys suskleidžiami klausimai užsidaro."
+      },
+      {
+        "title": "Pradėti suskleistą",
+        "description": "Jei suskleidžiamas, pradėti kaip uždarą eilutę, kurioje rodomas tik klausimas ir jo būsena."
+      }
     ]
   }
 }

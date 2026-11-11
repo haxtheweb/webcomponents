@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Pakeisti originalius failus",
   "newName": "Naujas pavadinimas",
   "deleteAction": "Ištrinti",
-  "renameAction": "Pervadinti"
+  "renameAction": "Pervadinti",
+  "bulkOverwriteConfirm": "{action}: {count} failų? Tai pakeičia originalius failus ir negali būti atšaukta.",
+  "actionScale": "Keisti dydį",
+  "actionRotate": "Pasukti",
+  "actionTransform": "Transformuoti",
+  "actionConvertJpg": "Konvertuoti į JPG",
+  "actionCompress": "Suspausti"
 }

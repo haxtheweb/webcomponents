@@ -3,5 +3,8 @@
   "openInNewTab": "افتح ملف PDF في علامة تبويب جديدة",
   "downloadPdf": "تنزيل ملف PDF",
   "fullScreen": "ملء الشاشة",
-  "exitFullScreen": "الخروج من وضع ملء الشاشة"
+  "exitFullScreen": "الخروج من وضع ملء الشاشة",
+  "notSupported": "يبدو أن متصفح الويب لديك غير مهيأ لعرض ملفات PDF. لا بأس، فقط",
+  "notSupportedLink": "انقر هنا لتنزيل ملف PDF.",
+  "download": "تنزيل"
 }

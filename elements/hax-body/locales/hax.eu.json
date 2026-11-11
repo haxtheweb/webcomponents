@@ -197,5 +197,6 @@
   "removeSource": "Kendu iturria",
   "lockUnlock": "Blokeatu / Desblokeatu",
   "toggleFilters": "Aktibatu/desaktibatu iragazkiak",
-  "filters": "Iragazkiak"
+  "filters": "Iragazkiak",
+  "typeForQuickActions": "Idatzi '/' ekintza azkarretarako"
 }

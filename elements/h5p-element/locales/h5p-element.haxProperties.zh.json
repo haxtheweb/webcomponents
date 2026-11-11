@@ -1,13 +1,20 @@
 {
   "gizmo": {
     "title": "H5P",
-    "description": "用于加载和展示 .h5p 文件的 h5p 封装"
+    "description": "通过上传的 .h5p 文件播放 H5P 交互式内容，无需 H5P 服务器"
   },
   "settings": {
     "configure": [
       {
         "slot": "",
-        "description": "H5P iframe 嵌入代码"
+        "description": "上传或链接 .h5p 文件。它会在浏览器中解压，无需 H5P 服务器。",
+        "title": "H5P 文件"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "旧版 iframe 嵌入代码",
+        "description": "仅适用于嵌入其他网站 H5P iframe 的旧内容。上方已设置 .h5p 文件时请留空。"
       }
     ]
   }

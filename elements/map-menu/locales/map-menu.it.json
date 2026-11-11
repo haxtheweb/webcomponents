@@ -2,5 +2,7 @@
   "pageIsUnpublished": "La pagina non è pubblicata",
   "progressDone": "Completato",
   "progressInProgress": "In corso",
-  "progressVisited": "Visitato"
+  "progressVisited": "Visitato",
+  "progressPercentComplete": "{percent}% completato",
+  "progressComplete": "Completato"
 }

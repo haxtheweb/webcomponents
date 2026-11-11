@@ -4,5 +4,6 @@
   "exportCitations": "Bronvermeldingen exporteren",
   "copy": "Kopiëren",
   "exportCitationFormat": "Formaat voor bronvermelding exporteren",
-  "selectCitationFormatBelow": "Selecteer hieronder een formaat voor bronvermeldingen"
+  "selectCitationFormatBelow": "Selecteer hieronder een formaat voor bronvermeldingen",
+  "addCitationToBibliography": "Bronvermelding toevoegen aan bibliografie"
 }

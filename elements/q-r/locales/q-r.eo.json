@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "QR-kodo por {title}",
+  "noData": "Neniuj datumoj por montri kiel QR-kodon",
+  "formatNotSupported": "QR-koda formato {format} ne estas subtenata",
+  "noCanvas": "Ĉi tiu retumilo ne povas desegni la QR-kodon (neniu subteno de canvas)"
+}

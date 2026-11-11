@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Није могуће довршити операцију ({status})",
   "normalizedPageSlugs": "Нормализовано slug-ова страница: {count}",
   "createdTitle": "Направљено {title}!",
-  "processing": "Обрада"
+  "processing": "Обрада",
+  "saveTimedOut": "Чување је истекло: сервер није одговорио. Ваше измене су овде сачуване, али сервер још увек може да заврши чување."
 }

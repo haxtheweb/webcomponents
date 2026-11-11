@@ -4,5 +4,6 @@
   "exportCitations": "Ekspordi viited",
   "copy": "Kopeeri",
   "exportCitationFormat": "Viidete ekspordivorming",
-  "selectCitationFormatBelow": "Vali allpool viitevorming"
+  "selectCitationFormatBelow": "Vali allpool viitevorming",
+  "addCitationToBibliography": "Lisa tsitaat kirjandusloendisse"
 }

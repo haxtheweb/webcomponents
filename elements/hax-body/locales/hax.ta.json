@@ -197,5 +197,6 @@
   "removeSource": "மூலத்தை அகற்று",
   "lockUnlock": "பூட்டு / திற",
   "toggleFilters": "வடிகட்டிகளை மாற்று",
-  "filters": "வடிகட்டிகள்"
+  "filters": "வடிகட்டிகள்",
+  "typeForQuickActions": "விரைவு செயல்களுக்கு '/' ஐ உள்ளிடவும்"
 }

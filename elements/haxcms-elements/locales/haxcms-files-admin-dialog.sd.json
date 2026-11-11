@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "اصل فائلون مٽايو",
   "newName": "نئون نالو",
   "deleteAction": "ڊليٽ ڪريو",
-  "renameAction": "نالو بدلايو"
+  "renameAction": "نالو بدلايو",
+  "bulkOverwriteConfirm": "{count} فائلن کي {action} ڪجي؟ هي اصل فائلن کي بدلائي ٿو ۽ واپس نٿو ٿي سگهي.",
+  "actionScale": "اسڪيل",
+  "actionRotate": "گھمايو",
+  "actionTransform": "تبديل ڪريو",
+  "actionConvertJpg": "JPG ۾ تبديل ڪريو",
+  "actionCompress": "دٻايو"
 }

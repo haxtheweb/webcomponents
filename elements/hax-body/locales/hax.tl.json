@@ -197,5 +197,6 @@
   "removeSource": "Alisin ang source",
   "lockUnlock": "I-lock / I-unlock",
   "toggleFilters": "I-toggle ang mga Filter",
-  "filters": "Mga Filter"
+  "filters": "Mga Filter",
+  "typeForQuickActions": "I-type ang '/' para sa mabilisang aksyon"
 }

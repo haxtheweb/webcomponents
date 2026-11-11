@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Kliknutím nebo najetím přehrajete zvuk exploze",
+  "soundDisabled": "Vizuální efekt exploze (zvuk vypnut)",
+  "explosionAnimation": "animace exploze",
+  "explosionAriaLabel": "Animace exploze {state} {sound}. Kliknutím přepnete.",
+  "playing": "přehrává se",
+  "stopped": "zastaveno",
+  "withSound": "se zvukem",
+  "muted": "(ztlumeno)"
+}

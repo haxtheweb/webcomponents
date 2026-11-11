@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "QR ayvu {title} rehegua",
+  "noData": "Ndaipóri marandu ojehechauka hag̃ua QR ayvu ramo",
+  "formatNotSupported": "QR ayvu {format} ndojepytasóiva",
+  "noCanvas": "Ko navegador ndaikatúi ohai QR ayvu (canvas'ỹ)"
+}

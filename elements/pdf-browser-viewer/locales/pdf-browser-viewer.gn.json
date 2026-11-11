@@ -3,5 +3,8 @@
   "openInNewTab": "Embojepe pe PDF tendayke pyahúpe",
   "downloadPdf": "Emboguejy pe PDF",
   "fullScreen": "Ta'ãnga tuichaveha",
-  "exitFullScreen": "Esẽ ta'ãnga tuichaveha rehegua"
+  "exitFullScreen": "Esẽ ta'ãnga tuichaveha rehegua",
+  "notSupported": "Ojehecha ne navegador ndojejapói ohechauka hag̃ua marandurenda PDF. Ndaipóri problema, ha'e añoite",
+  "notSupportedLink": "eikutu ápe emboguejy hag̃ua marandurenda PDF.",
+  "download": "Emboguejy"
 }

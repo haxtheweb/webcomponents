@@ -35,5 +35,12 @@
   "youTubeStartLoading": "",
   "youTubeTranscriptLabel": "",
   "audioDescriptionLabel": "Deskrizzjoni bl-Awdjo",
-  "openOnYouTube": "Iftaħ fuq YouTube"
+  "openOnYouTube": "Iftaħ fuq YouTube",
+  "interactiveLabel": "interattiv",
+  "layoutLabel": "Disinn",
+  "sideLabel": "Ġenb",
+  "belowLabel": "Taħt",
+  "leftLabel": "Xellug",
+  "rightLabel": "Lemin",
+  "hideTranscriptLabel": "Aħbi t-traskrizzjoni"
 }

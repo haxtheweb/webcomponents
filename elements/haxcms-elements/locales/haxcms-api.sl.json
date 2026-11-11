@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Pretvorba ni uspela.",
   "PARAM_REQUIRED": "Manjka obvezna vrednost: {param}.",
   "INVALID_REQUEST": "Neveljavna zahteva.",
-  "PARAM_INVALID": "Neveljavna vrednost: {param}."
+  "PARAM_INVALID": "Neveljavna vrednost: {param}.",
+  "BLOCK_RATE_LIMITED": "Na tem spletnem mestu je trenutno preveč sprememb vsebine. Poskusite znova čez {retryAfter} s."
 }

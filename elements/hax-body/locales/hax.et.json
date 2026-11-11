@@ -197,5 +197,6 @@
   "removeSource": "Eemalda allikas",
   "lockUnlock": "Lukusta / ava lukust",
   "toggleFilters": "Lülita filtrid",
-  "filters": "Filtrid"
+  "filters": "Filtrid",
+  "typeForQuickActions": "Kiirtoimingute jaoks sisesta „/“"
 }

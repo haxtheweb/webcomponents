@@ -4,5 +4,8 @@
   "pieChart": "Dati · Grafico a torta",
   "showDataTable": "Mostra la tabella dei dati",
   "downloadData": "Scarica i dati (.csv)",
-  "series": "Serie {n}"
+  "series": "Serie {n}",
+  "barChartLabel": "grafico a barre",
+  "lineChartLabel": "grafico a linee",
+  "pieChartLabel": "grafico a torta"
 }

@@ -1,0 +1,9 @@
+{
+  "imageMap": "Kujutise kaart",
+  "interactive": "Interaktiivne",
+  "hotspot": "Kuumpunkt",
+  "hotspotPosition": "{n} / {total}",
+  "hotspotsExplored": "{n} kuumpunkti {total}-st uuritud",
+  "explored": "Uuritud",
+  "close": "Sulge"
+}

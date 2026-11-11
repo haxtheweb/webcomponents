@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title} โดย {creator} อยู่ภายใต้สัญญาอนุญาต {license}",
   "permissionsBeyondScope": "สิทธิ์ที่นอกเหนือจากขอบเขตของสัญญาอนุญาตนี้มีให้ {link}",
   "author": "(ผู้เขียน)",
-  "onTheLicensingDetailsPage": "ในหน้ารายละเอียดสัญญาอนุญาต"
+  "onTheLicensingDetailsPage": "ในหน้ารายละเอียดสัญญาอนุญาต",
+  "licenseLabel": "สัญญาอนุญาต"
 }

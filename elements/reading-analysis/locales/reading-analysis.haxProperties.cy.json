@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Gweithgaredd",
-        "description": "Baneru tystiolaeth: mae dysgwyr yn glynu pob baner wrth ymyl y dystiolaeth drosti. Dewis un: mae dysgwyr yn dewis yr un darn sy'n ateb y cwestiwn orau."
+        "description": "Baneru tystiolaeth: mae dysgwyr yn glynu pob baner wrth ymyl y dystiolaeth drosti. Dewis un: mae dysgwyr yn dewis yr un darn sy'n ateb y cwestiwn orau.",
+        "options": {
+          "flag": "Fflagio tystiolaeth",
+          "one": "Dewis un"
+        }
       },
       {
         "property": "unit",
         "title": "Mae dysgwyr yn dewis",
-        "description": "Yr hyn y mae dysgwr yn pwyntio ato yn y darn. Gellir dewis ffigurau bob amser."
+        "description": "Yr hyn y mae dysgwr yn pwyntio ato yn y darn. Gellir dewis ffigurau bob amser.",
+        "options": {
+          "sentence": "Brawddegau",
+          "paragraph": "Paragraffau",
+          "figure": "Ffigurau yn unig"
+        }
       },
       {
         "property": "answers",

@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Säit ass net publizéiert",
   "progressDone": "Fäerdeg",
   "progressInProgress": "Amgaang",
-  "progressVisited": "Besicht"
+  "progressVisited": "Besicht",
+  "progressPercentComplete": "{percent}% fäerdeg",
+  "progressComplete": "Fäerdeg"
 }

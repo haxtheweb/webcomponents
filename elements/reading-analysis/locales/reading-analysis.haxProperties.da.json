@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Aktivitet",
-        "description": "Flag belæg: eleverne sætter hvert flag ved belægget for det. Vælg én: eleverne vælger den ene passage, der bedst besvarer spørgsmålet."
+        "description": "Flag belæg: eleverne sætter hvert flag ved belægget for det. Vælg én: eleverne vælger den ene passage, der bedst besvarer spørgsmålet.",
+        "options": {
+          "flag": "Markér belæg",
+          "one": "Vælg én"
+        }
       },
       {
         "property": "unit",
         "title": "Elever vælger",
-        "description": "Hvad en elev peger på i teksten. Figurer kan altid vælges."
+        "description": "Hvad en elev peger på i teksten. Figurer kan altid vælges.",
+        "options": {
+          "sentence": "Sætninger",
+          "paragraph": "Afsnit",
+          "figure": "Kun figurer"
+        }
       },
       {
         "property": "answers",

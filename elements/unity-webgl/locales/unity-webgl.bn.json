@@ -1,5 +1,6 @@
 {
   "simulation": "সিমুলেশন",
   "fullScreen": "পূর্ণ পর্দা",
-  "exitFullScreen": "পূর্ণ পর্দা থেকে বের হন"
+  "exitFullScreen": "পূর্ণ পর্দা থেকে বের হন",
+  "player": "Unity WebGL প্লেয়ার"
 }

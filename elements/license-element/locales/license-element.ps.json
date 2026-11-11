@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title} د {creator} لخوا د {license} لاندې جواز لري.",
   "permissionsBeyondScope": "د دې جواز له حدودو هاخوا اجازې {link} شتون لري.",
   "author": "(لیکوال)",
-  "onTheLicensingDetailsPage": "د جواز د جزیاتو په پاڼه کې"
+  "onTheLicensingDetailsPage": "د جواز د جزیاتو په پاڼه کې",
+  "licenseLabel": "جواز"
 }

@@ -19,5 +19,13 @@
   "copyCode": "Detuo koodu",
   "copied": "Edetuola!",
   "invalidCode": "Nke ahụ abụghị koodu agwa.",
-  "preview": "Nlele agwa tupu ọ pụta"
+  "preview": "Nlele agwa tupu ọ pụta",
+  "previous": "{name} gara aga",
+  "next": "{name} na-esote",
+  "variant": "{current} n'ime {total}",
+  "save": "Chekwaa",
+  "cancel": "Kagbuo",
+  "unsavedChanges": "Mgbanwe echekwabeghị",
+  "noUnsavedChanges": "Enweghị mgbanwe echekwabeghị",
+  "codeHelp": "Tinye koodu iji bulite agwa, ma ọ bụ detuo nke a iji jiri ya ebe ọ bụla."
 }

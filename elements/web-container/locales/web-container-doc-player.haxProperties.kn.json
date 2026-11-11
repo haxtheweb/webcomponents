@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "ವೆಬ್ ಘಟಕ ದಾಖಲೆ ಪ್ಲೇಯರ್"
+    "title": "ವೆಬ್ ಘಟಕ ದಾಖಲೆ ಪ್ಲೇಯರ್",
+    "description": ""
   },
   "settings": {
     "configure": [

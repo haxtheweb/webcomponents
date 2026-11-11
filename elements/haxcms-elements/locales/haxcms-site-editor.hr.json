@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Nije moguće dovršiti operaciju ({status})",
   "normalizedPageSlugs": "Normalizirano slugova stranica: {count}",
   "createdTitle": "Stvoreno {title}!",
-  "processing": "Obrada"
+  "processing": "Obrada",
+  "saveTimedOut": "Isteklo je vrijeme spremanja: poslužitelj nije odgovorio. Vaše promjene ostaju ovdje, ali ih poslužitelj još može dovršiti spremati."
 }

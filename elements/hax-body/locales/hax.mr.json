@@ -197,5 +197,6 @@
   "removeSource": "स्रोत काढा",
   "lockUnlock": "लॉक / अनलॉक",
   "toggleFilters": "फिल्टर टॉगल करा",
-  "filters": "फिल्टर"
+  "filters": "फिल्टर",
+  "typeForQuickActions": "जलद क्रियांसाठी '/' टाइप करा"
 }

@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title},作者 {creator},采用 {license} 授权。",
   "permissionsBeyondScope": "超出本许可范围个权限可以{link}获得。",
   "author": "(作者)",
-  "onTheLicensingDetailsPage": "辣许可详情页面"
+  "onTheLicensingDetailsPage": "辣许可详情页面",
+  "licenseLabel": "许可"
 }

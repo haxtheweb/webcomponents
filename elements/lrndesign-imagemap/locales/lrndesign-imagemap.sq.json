@@ -1,0 +1,9 @@
+{
+  "imageMap": "Hartë imazhi",
+  "interactive": "Interaktive",
+  "hotspot": "Pikë e nxehtë",
+  "hotspotPosition": "{n} nga {total}",
+  "hotspotsExplored": "{n} nga {total} pika të nxehta të eksploruara",
+  "explored": "Eksploruar",
+  "close": "Mbyll"
+}

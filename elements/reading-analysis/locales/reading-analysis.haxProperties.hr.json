@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Aktivnost",
-        "description": "Označi dokaze: učenici lijepe svaku zastavicu pokraj dokaza za nju. Odaberi jedno: učenici biraju jedini ulomak koji najbolje odgovara na pitanje."
+        "description": "Označi dokaze: učenici lijepe svaku zastavicu pokraj dokaza za nju. Odaberi jedno: učenici biraju jedini ulomak koji najbolje odgovara na pitanje.",
+        "options": {
+          "flag": "Označi dokaze",
+          "one": "Odaberi jedno"
+        }
       },
       {
         "property": "unit",
         "title": "Učenici odabiru",
-        "description": "Ono na što učenik pokazuje u tekstu. Slike se uvijek mogu odabrati."
+        "description": "Ono na što učenik pokazuje u tekstu. Slike se uvijek mogu odabrati.",
+        "options": {
+          "sentence": "Rečenice",
+          "paragraph": "Odlomci",
+          "figure": "Samo slike"
+        }
       },
       {
         "property": "answers",

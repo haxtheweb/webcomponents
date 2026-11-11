@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Ua hāʻule ka hoʻololi ʻana.",
   "PARAM_REQUIRED": "Nalowale kekahi waiwai e pono ai: {param}.",
   "INVALID_REQUEST": "ʻAʻole kūpono ka noi.",
-  "PARAM_INVALID": "ʻAʻole kūpono ka waiwai: {param}."
+  "PARAM_INVALID": "ʻAʻole kūpono ka waiwai: {param}.",
+  "BLOCK_RATE_LIMITED": "Nui loa nā hoʻololi maʻamau ma kēia pūnaewele i kēia manawa. E ho'āʻo hou ma hope o {retryAfter} kekona."
 }

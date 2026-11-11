@@ -2,5 +2,7 @@
   "pageIsUnpublished": "ገጹ አልታተመም",
   "progressDone": "ተጠናቋል",
   "progressInProgress": "በሂደት ላይ",
-  "progressVisited": "ተጎብኝቷል"
+  "progressVisited": "ተጎብኝቷል",
+  "progressPercentComplete": "{percent}% ተጠናቋል",
+  "progressComplete": "ተጠናቋል"
 }

@@ -19,5 +19,13 @@
   "copyCode": "复制代码",
   "copied": "已复制！",
   "invalidCode": "迭个不是角色代码。",
-  "preview": "角色预览"
+  "preview": "角色预览",
+  "previous": "上一个{name}",
+  "next": "下一个{name}",
+  "variant": "第 {current} 个，一共 {total} 个",
+  "save": "保存",
+  "cancel": "取消",
+  "unsavedChanges": "有未保存额改动",
+  "noUnsavedChanges": "呒没未保存额改动",
+  "codeHelp": "粘贴代码来加载角色，或者复制迭个代码到随便啥地方用。"
 }

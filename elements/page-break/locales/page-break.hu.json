@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Ez az oldal zárolva van. A közzétételi állapot módosításához előbb oldd fel.",
   "pageLockedUnlockToDelete": "Ez az oldal zárolva van. A törléshez előbb oldd fel.",
   "pageDetails": "Oldal részletei",
-  "clickToUnlock": "Kattintson a feloldáshoz"
+  "clickToUnlock": "Kattintson a feloldáshoz",
+  "pageSettings": "Oldalbeállítások",
+  "editingPageSettings": "Oldalbeállítások szerkesztése",
+  "published": "Közzétéve",
+  "draft": "Piszkozat",
+  "locked": "Zárolva",
+  "unlocked": "Feloldva",
+  "noTags": "Nincs címke",
+  "oneTag": "1 címke",
+  "tagCount": "{count} címke",
+  "enterKey": "Enter"
 }

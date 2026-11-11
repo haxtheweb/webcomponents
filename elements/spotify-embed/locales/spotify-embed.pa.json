@@ -1,4 +1,9 @@
 {
   "audio": "ਆਡੀਓ",
-  "openOnSpotify": "Spotify 'ਤੇ ਨਵੀਂ ਟੈਬ ਵਿੱਚ ਖੋਲ੍ਹੋ"
+  "openOnSpotify": "Spotify 'ਤੇ ਨਵੀਂ ਟੈਬ ਵਿੱਚ ਖੋਲ੍ਹੋ",
+  "embedTitle": "Spotify ਏਮਬੈੱਡ",
+  "trackEmbedTitle": "Spotify ਟਰੈਕ ਏਮਬੈੱਡ",
+  "albumEmbedTitle": "Spotify ਐਲਬਮ ਏਮਬੈੱਡ",
+  "playlistEmbedTitle": "Spotify ਪਲੇਲਿਸਟ ਏਮਬੈੱਡ",
+  "artistEmbedTitle": "Spotify ਕਲਾਕਾਰ ਏਮਬੈੱਡ"
 }

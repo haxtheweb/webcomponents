@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Çevirmə uğursuz oldu.",
   "PARAM_REQUIRED": "Tələb olunan dəyər yoxdur: {param}.",
   "INVALID_REQUEST": "Yanlış sorğu.",
-  "PARAM_INVALID": "Yanlış dəyər: {param}."
+  "PARAM_INVALID": "Yanlış dəyər: {param}.",
+  "BLOCK_RATE_LIMITED": "Hazırda bu saytda çox sayda məzmun dəyişikliyi var. {retryAfter} saniyə sonra yenidən cəhd edin."
 }

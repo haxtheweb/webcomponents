@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Ова страница је закључана. Прво је откључајте да бисте променили статус објављивања.",
   "pageLockedUnlockToDelete": "Ова страница је закључана. Прво је откључајте да бисте је обрисали.",
   "pageDetails": "Детаљи странице",
-  "clickToUnlock": "Кликните да откључате"
+  "clickToUnlock": "Кликните да откључате",
+  "pageSettings": "Подешавања странице",
+  "editingPageSettings": "Уређивање подешавања странице",
+  "published": "Објављено",
+  "draft": "Нацрт",
+  "locked": "Закључано",
+  "unlocked": "Откључано",
+  "noTags": "Нема ознака",
+  "oneTag": "1 ознака",
+  "tagCount": "{count} ознака",
+  "enterKey": "Enter"
 }

@@ -4,5 +4,8 @@
   "pieChart": "Idatha · Ishadi le-pie",
   "showDataTable": "Bonisa ithebula ledatha",
   "downloadData": "Landa idatha (.csv)",
-  "series": "Uchungechunge {n}"
+  "series": "Uchungechunge {n}",
+  "barChartLabel": "ishadi lemigoqo",
+  "lineChartLabel": "ishadi lomugqa",
+  "pieChartLabel": "ishadi lephayi"
 }

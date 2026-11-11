@@ -4,5 +4,8 @@
   "pieChart": "Data · Cirkeldiagram",
   "showDataTable": "Vis datatabel",
   "downloadData": "Download data (.csv)",
-  "series": "Serie {n}"
+  "series": "Serie {n}",
+  "barChartLabel": "søjlediagram",
+  "lineChartLabel": "kurvediagram",
+  "pieChartLabel": "cirkeldiagram"
 }

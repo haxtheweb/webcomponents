@@ -197,5 +197,6 @@
   "removeSource": "Fjern kilde",
   "lockUnlock": "Lås / Lås op",
   "toggleFilters": "Vis/skjul filtre",
-  "filters": "Filtre"
+  "filters": "Filtre",
+  "typeForQuickActions": "Skriv '/' for hurtige handlinger"
 }

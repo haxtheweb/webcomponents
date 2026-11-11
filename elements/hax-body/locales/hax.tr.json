@@ -197,5 +197,6 @@
   "removeSource": "Kaynağı kaldır",
   "lockUnlock": "Kilitle / Kilidi Aç",
   "toggleFilters": "Filtreleri Aç/Kapat",
-  "filters": "Filtreler"
+  "filters": "Filtreler",
+  "typeForQuickActions": "Hızlı eylemler için '/' yazın"
 }

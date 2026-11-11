@@ -1,0 +1,10 @@
+{
+  "github": "GitHub",
+  "repository": "Repositorio",
+  "stars": "tähteä",
+  "forks": "haarukkaa",
+  "loading": "Ladataan",
+  "viewMore": "Näytä lisää",
+  "assetNotFound": "Resurssia ei löytynyt",
+  "openOnGitHub": "Avaa {org}/{repo} GitHubissa"
+}

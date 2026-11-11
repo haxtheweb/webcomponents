@@ -35,5 +35,12 @@
   "youTubeStartLoading": "Nhấn phát.",
   "youTubeTranscriptLabel": "Bản ghi sẽ được tải khi phương tiện bắt đầu phát.",
   "audioDescriptionLabel": "Mô tả âm thanh",
-  "openOnYouTube": "Mở trên YouTube"
+  "openOnYouTube": "Mở trên YouTube",
+  "interactiveLabel": "tương tác",
+  "layoutLabel": "Bố cục",
+  "sideLabel": "Bên cạnh",
+  "belowLabel": "Bên dưới",
+  "leftLabel": "Trái",
+  "rightLabel": "Phải",
+  "hideTranscriptLabel": "Ẩn bản ghi"
 }

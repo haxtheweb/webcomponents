@@ -1,4 +1,9 @@
 {
   "audio": "صوت",
-  "openOnSpotify": "باز کردن در Spotify در برگه جدید"
+  "openOnSpotify": "باز کردن در Spotify در برگه جدید",
+  "embedTitle": "جاسازی Spotify",
+  "trackEmbedTitle": "جاسازی آهنگ Spotify",
+  "albumEmbedTitle": "جاسازی آلبوم Spotify",
+  "playlistEmbedTitle": "جاسازی فهرست پخش Spotify",
+  "artistEmbedTitle": "جاسازی هنرمند Spotify"
 }

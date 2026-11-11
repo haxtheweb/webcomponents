@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Тази страница е заключена. Отключете я първо, за да промените статуса на публикуване.",
   "pageLockedUnlockToDelete": "Тази страница е заключена. Отключете я първо, за да я изтриете.",
   "pageDetails": "Детайли на страницата",
-  "clickToUnlock": "Кликнете за отключване"
+  "clickToUnlock": "Кликнете за отключване",
+  "pageSettings": "Настройки на страницата",
+  "editingPageSettings": "Редактиране на настройките на страницата",
+  "published": "Публикувана",
+  "draft": "Чернова",
+  "locked": "Заключена",
+  "unlocked": "Отключена",
+  "noTags": "Няма етикети",
+  "oneTag": "1 етикет",
+  "tagCount": "{count} етикета",
+  "enterKey": "Enter"
 }

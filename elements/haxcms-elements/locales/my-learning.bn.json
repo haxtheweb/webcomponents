@@ -129,5 +129,12 @@
   "cancel": "বাতিল",
   "clearedSite": "{site}-এর জন্য আপনার শেখার ডেটা মুছে ফেলা হয়েছে।",
   "clearedDevice": "এই ডিভাইসের সব শেখার ডেটা মুছে ফেলা হয়েছে।",
-  "thisSite": "এই সাইট"
+  "thisSite": "এই সাইট",
+  "outlineHeading": "পৃষ্ঠাভিত্তিক অগ্রগতি",
+  "allPages": "সব পৃষ্ঠা",
+  "outlinePagesDone": "{total}টির মধ্যে {done}টি পৃষ্ঠা সম্পন্ন",
+  "outlinePagesCount": "{count}টি পৃষ্ঠা",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% সম্পন্ন",
+  "outlineComplete": "সম্পন্ন"
 }

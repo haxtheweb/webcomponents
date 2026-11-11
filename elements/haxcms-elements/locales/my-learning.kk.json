@@ -129,5 +129,12 @@
   "cancel": "Бас тарту",
   "clearedSite": "{site} үшін оқу деректеріңіз тазаланды.",
   "clearedDevice": "Осы құрылғыдағы барлық оқу деректері тазаланды.",
-  "thisSite": "осы сайт"
+  "thisSite": "осы сайт",
+  "outlineHeading": "Беттер бойынша прогресс",
+  "allPages": "Барлық беттер",
+  "outlinePagesDone": "{total} беттің {done} аяқталды",
+  "outlinePagesCount": "{count} бет",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% аяқталды",
+  "outlineComplete": "Аяқталды"
 }

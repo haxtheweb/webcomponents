@@ -197,5 +197,6 @@
   "removeSource": "Supprimer la source",
   "lockUnlock": "Verrouiller / Déverrouiller",
   "toggleFilters": "Afficher/masquer les filtres",
-  "filters": "Filtres"
+  "filters": "Filtres",
+  "typeForQuickActions": "Tapez « / » pour les actions rapides"
 }

@@ -4,5 +4,8 @@
   "pieChart": "データ · 円グラフ",
   "showDataTable": "データ表を表示",
   "downloadData": "データをダウンロード (.csv)",
-  "series": "系列 {n}"
+  "series": "系列 {n}",
+  "barChartLabel": "棒グラフ",
+  "lineChartLabel": "折れ線グラフ",
+  "pieChartLabel": "円グラフ"
 }

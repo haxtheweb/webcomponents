@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Imeshindwa kukamilisha operesheni ({status})",
   "normalizedPageSlugs": "Slug {count} za kurasa zimesawazishwa",
   "createdTitle": "{title} imeundwa!",
-  "processing": "Inachakata"
+  "processing": "Inachakata",
+  "saveTimedOut": "Muda wa kuhifadhi umeisha: seva haikujibu. Mabadiliko yako yamehifadhiwa hapa, lakini seva bado inaweza kumaliza kuyahifadhi."
 }

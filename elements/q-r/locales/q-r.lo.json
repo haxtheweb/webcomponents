@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "QR code ສຳລັບ {title}",
+  "noData": "ບໍ່ມີຂໍ້ມູນທີ່ຈະສະແດງເປັນ QR code",
+  "formatNotSupported": "ບໍ່ຮອງຮັບຮູບແບບ QR code {format}",
+  "noCanvas": "ເບຣົາເຊີນີ້ບໍ່ສາມາດແຕ້ມ QR code ໄດ້ (ບໍ່ຮອງຮັບ canvas)"
+}

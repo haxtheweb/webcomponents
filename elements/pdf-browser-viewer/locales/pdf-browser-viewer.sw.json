@@ -3,5 +3,8 @@
   "openInNewTab": "Fungua PDF katika kichupo kipya",
   "downloadPdf": "Pakua PDF",
   "fullScreen": "Skrini nzima",
-  "exitFullScreen": "Ondoka kwenye skrini nzima"
+  "exitFullScreen": "Ondoka kwenye skrini nzima",
+  "notSupported": "Inaonekana kivinjari chako hakijawekwa kuonyesha faili za PDF. Usijali, tu",
+  "notSupportedLink": "bofya hapa kupakua faili ya PDF.",
+  "download": "Pakua"
 }

@@ -2,5 +2,7 @@
   "pageIsUnpublished": "पृष्ठ अप्रकाशित आहे",
   "progressDone": "पूर्ण",
   "progressInProgress": "प्रगतीपथावर",
-  "progressVisited": "भेट दिली"
+  "progressVisited": "भेट दिली",
+  "progressPercentComplete": "{percent}% पूर्ण",
+  "progressComplete": "पूर्ण"
 }

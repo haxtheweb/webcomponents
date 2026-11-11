@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "এই পেজটি লক করা। প্রকাশের অবস্থা বদলাতে আগে আনলক করুন।",
   "pageLockedUnlockToDelete": "এই পেজটি লক করা। মুছতে আগে আনলক করুন।",
   "pageDetails": "পৃষ্ঠার বিবরণ",
-  "clickToUnlock": "আনলক করতে ক্লিক করুন"
+  "clickToUnlock": "আনলক করতে ক্লিক করুন",
+  "pageSettings": "পৃষ্ঠার সেটিংস",
+  "editingPageSettings": "পৃষ্ঠার সেটিংস সম্পাদনা করা হচ্ছে",
+  "published": "প্রকাশিত",
+  "draft": "খসড়া",
+  "locked": "তালাবদ্ধ",
+  "unlocked": "তালা খোলা",
+  "noTags": "কোনো ট্যাগ নেই",
+  "oneTag": "১টি ট্যাগ",
+  "tagCount": "{count}টি ট্যাগ",
+  "enterKey": "Enter"
 }

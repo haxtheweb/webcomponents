@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Ikklikkja jew għaddi l-kursur biex tisma' l-ħoss tal-isplużjoni",
+  "soundDisabled": "Effett viżiv ta' splużjoni (ħoss diżattivat)",
+  "explosionAnimation": "animazzjoni ta' splużjoni",
+  "explosionAriaLabel": "Animazzjoni ta' splużjoni {state} {sound}. Ikklikkja biex tibdel.",
+  "playing": "qed tindaqq",
+  "stopped": "twaqqfet",
+  "withSound": "bil-ħoss",
+  "muted": "(mutu)"
+}

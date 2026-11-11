@@ -129,5 +129,12 @@
   "cancel": "Annuler",
   "clearedSite": "Vos données d’apprentissage pour {site} ont été effacées.",
   "clearedDevice": "Toutes les données d’apprentissage de cet appareil ont été effacées.",
-  "thisSite": "ce site"
+  "thisSite": "ce site",
+  "outlineHeading": "Progression par page",
+  "allPages": "Toutes les pages",
+  "outlinePagesDone": "{done} pages sur {total} terminées",
+  "outlinePagesCount": "{count} pages",
+  "outlinePercent": "{percent} %",
+  "outlinePercentComplete": "{percent} % terminé",
+  "outlineComplete": "Terminé"
 }

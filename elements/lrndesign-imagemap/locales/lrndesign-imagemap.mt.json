@@ -1,0 +1,9 @@
+{
+  "imageMap": "Mappa tal-immaġni",
+  "interactive": "Interattiv",
+  "hotspot": "Hotspot",
+  "hotspotPosition": "{n} minn {total}",
+  "hotspotsExplored": "{n} minn {total} hotspots esplorati",
+  "explored": "Esplorat",
+  "close": "Agħlaq"
+}

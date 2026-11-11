@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Pịa ma ọ bụ debe cursor iji kpọọ ụda mgbawa",
+  "soundDisabled": "Mmetụta ihe nlele mgbawa (emechiela ụda)",
+  "explosionAnimation": "ihe osise mgbawa",
+  "explosionAriaLabel": "Ihe osise mgbawa {state} {sound}. Pịa iji gbanwee.",
+  "playing": "na-akpọ",
+  "stopped": "kwụsịrị",
+  "withSound": "na ụda",
+  "muted": "(ọ dịghị ụda)"
+}

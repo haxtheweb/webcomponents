@@ -19,5 +19,13 @@
   "copyCode": "Salin kod",
   "copied": "Disalin!",
   "invalidCode": "Itu bukan kod watak.",
-  "preview": "Pratonton watak"
+  "preview": "Pratonton watak",
+  "previous": "{name} sebelumnya",
+  "next": "{name} seterusnya",
+  "variant": "{current} daripada {total}",
+  "save": "Simpan",
+  "cancel": "Batal",
+  "unsavedChanges": "Perubahan belum disimpan",
+  "noUnsavedChanges": "Tiada perubahan belum disimpan",
+  "codeHelp": "Tampal kod untuk memuatkan watak, atau salin yang ini untuk digunakan di mana-mana."
 }

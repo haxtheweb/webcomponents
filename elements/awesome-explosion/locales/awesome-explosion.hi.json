@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "विस्फोट की ध्वनि चलाने के लिए क्लिक करें या कर्सर ले जाएँ",
+  "soundDisabled": "दृश्य विस्फोट प्रभाव (ध्वनि बंद)",
+  "explosionAnimation": "विस्फोट एनिमेशन",
+  "explosionAriaLabel": "विस्फोट एनिमेशन {state} {sound}। बदलने के लिए क्लिक करें।",
+  "playing": "चल रहा है",
+  "stopped": "रुका हुआ है",
+  "withSound": "ध्वनि के साथ",
+  "muted": "(म्यूट)"
+}

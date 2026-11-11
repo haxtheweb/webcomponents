@@ -19,5 +19,13 @@
   "copyCode": "Code kopiëren",
   "copied": "Gekopieerd!",
   "invalidCode": "Dit is geen personagecode.",
-  "preview": "Voorbeeld van personage"
+  "preview": "Voorbeeld van personage",
+  "previous": "Vorige {name}",
+  "next": "Volgende {name}",
+  "variant": "{current} van {total}",
+  "save": "Opslaan",
+  "cancel": "Annuleren",
+  "unsavedChanges": "Niet-opgeslagen wijzigingen",
+  "noUnsavedChanges": "Geen niet-opgeslagen wijzigingen",
+  "codeHelp": "Plak een code om een personage te laden, of kopieer deze om hem overal te gebruiken."
 }

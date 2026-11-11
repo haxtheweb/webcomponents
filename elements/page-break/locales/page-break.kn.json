@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "ಈ ಪುಟ ಲಾಕ್ ಆಗಿದೆ. ಪ್ರಕಟಣೆ ಸ್ಥಿತಿಯನ್ನು ಬದಲಾಯಿಸಲು ಮೊದಲು ಅನ್‌ಲಾಕ್ ಮಾಡಿ.",
   "pageLockedUnlockToDelete": "ಈ ಪುಟ ಲಾಕ್ ಆಗಿದೆ. ಅಳಿಸಲು ಮೊದಲು ಅನ್‌ಲಾಕ್ ಮಾಡಿ.",
   "pageDetails": "ಪುಟದ ವಿವರಗಳು",
-  "clickToUnlock": "ಅನ್‌ಲಾಕ್ ಮಾಡಲು ಕ್ಲಿಕ್ ಮಾಡಿ"
+  "clickToUnlock": "ಅನ್‌ಲಾಕ್ ಮಾಡಲು ಕ್ಲಿಕ್ ಮಾಡಿ",
+  "pageSettings": "ಪುಟ ಸೆಟ್ಟಿಂಗ್‌ಗಳು",
+  "editingPageSettings": "ಪುಟ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಸಂಪಾದಿಸಲಾಗುತ್ತಿದೆ",
+  "published": "ಪ್ರಕಟಿಸಲಾಗಿದೆ",
+  "draft": "ಕರಡು",
+  "locked": "ಲಾಕ್ ಮಾಡಲಾಗಿದೆ",
+  "unlocked": "ಅನ್‌ಲಾಕ್ ಮಾಡಲಾಗಿದೆ",
+  "noTags": "ಟ್ಯಾಗ್‌ಗಳಿಲ್ಲ",
+  "oneTag": "1 ಟ್ಯಾಗ್",
+  "tagCount": "{count} ಟ್ಯಾಗ್‌ಗಳು",
+  "enterKey": "Enter"
 }

@@ -4,5 +4,8 @@
   "pieChart": "נתונים · תרשים עוגה",
   "showDataTable": "הצגת טבלת נתונים",
   "downloadData": "הורדת נתונים (.csv)",
-  "series": "סדרה {n}"
+  "series": "סדרה {n}",
+  "barChartLabel": "תרשים עמודות",
+  "lineChartLabel": "תרשים קווי",
+  "pieChartLabel": "תרשים עוגה"
 }

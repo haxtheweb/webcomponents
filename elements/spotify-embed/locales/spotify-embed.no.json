@@ -1,4 +1,9 @@
 {
   "audio": "Lyd",
-  "openOnSpotify": "Åpne på Spotify i en ny fane"
+  "openOnSpotify": "Åpne på Spotify i en ny fane",
+  "embedTitle": "Spotify-innbygging",
+  "trackEmbedTitle": "Spotify-sporinnbygging",
+  "albumEmbedTitle": "Spotify-albuminnbygging",
+  "playlistEmbedTitle": "Spotify-spillelisteinnbygging",
+  "artistEmbedTitle": "Spotify-artistinnbygging"
 }

@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Asenda originaalfailid",
   "newName": "Uus nimi",
   "deleteAction": "Kustuta",
-  "renameAction": "Nimeta ümber"
+  "renameAction": "Nimeta ümber",
+  "bulkOverwriteConfirm": "{action}: {count} faili? See asendab algsed failid ja seda ei saa tagasi võtta.",
+  "actionScale": "Skaleeri",
+  "actionRotate": "Pööra",
+  "actionTransform": "Teisenda",
+  "actionConvertJpg": "Teisenda JPG-ks",
+  "actionCompress": "Tihenda"
 }

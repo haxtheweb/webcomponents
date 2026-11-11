@@ -1,4 +1,9 @@
 {
   "audio": "Àudio",
-  "openOnSpotify": "Obre a Spotify en una pestanya nova"
+  "openOnSpotify": "Obre a Spotify en una pestanya nova",
+  "embedTitle": "Contingut incrustat de Spotify",
+  "trackEmbedTitle": "Cançó incrustada de Spotify",
+  "albumEmbedTitle": "Àlbum incrustat de Spotify",
+  "playlistEmbedTitle": "Llista de reproducció incrustada de Spotify",
+  "artistEmbedTitle": "Artista incrustat de Spotify"
 }

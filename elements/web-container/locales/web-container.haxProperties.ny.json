@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Bokosi la NodeJS"
+    "title": "Bokosi la NodeJS",
+    "description": ""
   },
   "settings": {
     "configure": [

@@ -2,5 +2,7 @@
   "pageIsUnpublished": "หน้านี้ยังไม่ได้เผยแพร่",
   "progressDone": "เสร็จแล้ว",
   "progressInProgress": "กำลังดำเนินการ",
-  "progressVisited": "เยี่ยมชมแล้ว"
+  "progressVisited": "เยี่ยมชมแล้ว",
+  "progressPercentComplete": "เสร็จสมบูรณ์ {percent}%",
+  "progressComplete": "เสร็จสมบูรณ์"
 }

@@ -1,4 +1,9 @@
 {
   "audio": "Awdjo",
-  "openOnSpotify": "Iftaħ fuq Spotify f'tab ġdid"
+  "openOnSpotify": "Iftaħ fuq Spotify f'tab ġdid",
+  "embedTitle": "Embed ta' Spotify",
+  "trackEmbedTitle": "Embed ta' Kanzunetta ta' Spotify",
+  "albumEmbedTitle": "Embed ta' Album ta' Spotify",
+  "playlistEmbedTitle": "Embed ta' Playlist ta' Spotify",
+  "artistEmbedTitle": "Embed ta' Artist ta' Spotify"
 }

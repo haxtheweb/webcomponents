@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "Cod QR pentru {title}",
+  "noData": "Nu există date de afișat ca cod QR",
+  "formatNotSupported": "Formatul de cod QR {format} nu este acceptat",
+  "noCanvas": "Acest browser nu poate desena codul QR (fără suport canvas)"
+}

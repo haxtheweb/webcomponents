@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Umsebenzi",
-        "description": "Phawula ubungqina: abafundi babeka iflegi nganye ecaleni kobungqina bayo. Khetha enye: abafundi bakhetha isicatshulwa esinye esiphendula umbuzo ngokona kulungileyo."
+        "description": "Phawula ubungqina: abafundi babeka iflegi nganye ecaleni kobungqina bayo. Khetha enye: abafundi bakhetha isicatshulwa esinye esiphendula umbuzo ngokona kulungileyo.",
+        "options": {
+          "flag": "Phawula ubungqina",
+          "one": "Khetha enye"
+        }
       },
       {
         "property": "unit",
         "title": "Abafundi bakhetha",
-        "description": "Oko umfundi akwalathayo ekufundwayo. Imifanekiso inokukhethwa ngalo lonke ixesha."
+        "description": "Oko umfundi akwalathayo ekufundwayo. Imifanekiso inokukhethwa ngalo lonke ixesha.",
+        "options": {
+          "sentence": "Izivakalisi",
+          "paragraph": "Iiparagrafu",
+          "figure": "Imizobo kuphela"
+        }
       },
       {
         "property": "answers",

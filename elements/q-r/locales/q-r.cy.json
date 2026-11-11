@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "Cod QR ar gyfer {title}",
+  "noData": "Dim data i'w ddangos fel cod QR",
+  "formatNotSupported": "Nid yw fformat cod QR {format} yn cael ei gefnogi",
+  "noCanvas": "Ni all y porwr hwn dynnu'r cod QR (dim cefnogaeth canvas)"
+}

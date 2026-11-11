@@ -1,0 +1,9 @@
+{
+  "imageMap": "Պատկերի քարտեզ",
+  "interactive": "Ինտերակտիվ",
+  "hotspot": "Թեժ կետ",
+  "hotspotPosition": "{total}-ից {n}-րդը",
+  "hotspotsExplored": "{total} թեժ կետից {n}-ն ուսումնասիրված է",
+  "explored": "Ուսումնասիրված",
+  "close": "Փակել"
+}

@@ -37,6 +37,16 @@
         "title": "Naam van die vasvra",
         "description": "Vasvranaam wat deurgegee word vir gebruik in xAPI-gedrewe omgewings om hierdie item te identifiseer"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Opvoubaar",
+        "description": "Wys hierdie vraag as 'n ry wat oop- en toemaak. As een oopgemaak word, sluit die ander opvoubare vrae daarnaas."
+      },
+      {
+        "title": "Begin toegevou",
+        "description": "Wanneer opvoubaar, begin as 'n toe ry wat net die vraag en sy status wys."
+      }
     ]
   }
 }

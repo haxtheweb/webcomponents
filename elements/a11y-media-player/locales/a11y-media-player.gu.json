@@ -35,5 +35,12 @@
   "youTubeStartLoading": "પ્લે દબાવો.",
   "youTubeTranscriptLabel": "મીડિયા ચાલુ થયા પછી ટ્રાન્સક્રિપ્ટ લોડ થશે.",
   "audioDescriptionLabel": "ઑડિયો વર્ણન",
-  "openOnYouTube": "YouTube પર ખોલો"
+  "openOnYouTube": "YouTube પર ખોલો",
+  "interactiveLabel": "ઇન્ટરેક્ટિવ",
+  "layoutLabel": "લેઆઉટ",
+  "sideLabel": "બાજુમાં",
+  "belowLabel": "નીચે",
+  "leftLabel": "ડાબે",
+  "rightLabel": "જમણે",
+  "hideTranscriptLabel": "ટ્રાન્સક્રિપ્ટ છુપાવો"
 }

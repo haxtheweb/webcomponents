@@ -197,5 +197,6 @@
   "removeSource": "Noņemt avotu",
   "lockUnlock": "Bloķēt / atbloķēt",
   "toggleFilters": "Pārslēgt filtrus",
-  "filters": "Filtri"
+  "filters": "Filtri",
+  "typeForQuickActions": "Ierakstiet “/” ātrajām darbībām"
 }

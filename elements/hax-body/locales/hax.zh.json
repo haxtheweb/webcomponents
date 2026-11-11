@@ -197,5 +197,6 @@
   "removeSource": "删除来源",
   "lockUnlock": "锁定 / 解锁",
   "toggleFilters": "切换筛选条件",
-  "filters": "筛选条件"
+  "filters": "筛选条件",
+  "typeForQuickActions": "输入“/”以使用快捷操作"
 }

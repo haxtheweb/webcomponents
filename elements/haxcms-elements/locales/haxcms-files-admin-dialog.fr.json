@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Remplacer les fichiers originaux",
   "newName": "Nouveau nom",
   "deleteAction": "Supprimer",
-  "renameAction": "Renommer"
+  "renameAction": "Renommer",
+  "bulkOverwriteConfirm": "{action} {count} fichiers ? Cela remplace les fichiers d'origine et ne peut pas être annulé.",
+  "actionScale": "Redimensionner",
+  "actionRotate": "Pivoter",
+  "actionTransform": "Transformer",
+  "actionConvertJpg": "Convertir en JPG",
+  "actionCompress": "Compresser"
 }

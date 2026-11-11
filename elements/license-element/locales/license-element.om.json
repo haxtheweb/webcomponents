@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title} kan {creator} hayyama {license} jalatti hayyamameera.",
   "permissionsBeyondScope": "Hayyamni daangaa hayyama kanaa ol ta'e {link} ni argama.",
   "author": "(barreessaa)",
-  "onTheLicensingDetailsPage": "fuula bal'ina hayyamaa irratti"
+  "onTheLicensingDetailsPage": "fuula bal'ina hayyamaa irratti",
+  "licenseLabel": "Hayyama"
 }

@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Kliknite ili zadržite pokazivač za reprodukciju zvuka eksplozije",
+  "soundDisabled": "Vizualni efekt eksplozije (zvuk je isključen)",
+  "explosionAnimation": "animacija eksplozije",
+  "explosionAriaLabel": "Animacija eksplozije {state} {sound}. Kliknite za promjenu.",
+  "playing": "reproducira se",
+  "stopped": "zaustavljeno",
+  "withSound": "sa zvukom",
+  "muted": "(bez zvuka)"
+}

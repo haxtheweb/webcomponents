@@ -197,5 +197,6 @@
   "removeSource": "הסרת מקור",
   "lockUnlock": "נעילה / ביטול נעילה",
   "toggleFilters": "הצגה/הסתרה של מסננים",
-  "filters": "מסננים"
+  "filters": "מסננים",
+  "typeForQuickActions": "הקלידו '/' לפעולות מהירות"
 }

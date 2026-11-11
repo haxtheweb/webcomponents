@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "작업을 완료할 수 없습니다 ({status})",
   "normalizedPageSlugs": "페이지 슬러그 {count}개를 정규화했습니다",
   "createdTitle": "{title} 생성됨!",
-  "processing": "처리 중"
+  "processing": "처리 중",
+  "saveTimedOut": "저장 시간이 초과되었습니다. 서버가 응답하지 않았습니다. 변경 내용은 여기에 보관되지만 서버가 저장을 마칠 수도 있습니다."
 }

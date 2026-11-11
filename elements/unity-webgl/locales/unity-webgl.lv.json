@@ -1,5 +1,6 @@
 {
   "simulation": "Simulācija",
   "fullScreen": "Pilnekrāna režīms",
-  "exitFullScreen": "Iziet no pilnekrāna režīma"
+  "exitFullScreen": "Iziet no pilnekrāna režīma",
+  "player": "Unity WebGL atskaņotājs"
 }

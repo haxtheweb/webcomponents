@@ -19,5 +19,13 @@
   "copyCode": "Copiază codul",
   "copied": "Copiat!",
   "invalidCode": "Acesta nu este un cod de personaj.",
-  "preview": "Previzualizare personaj"
+  "preview": "Previzualizare personaj",
+  "previous": "{name} anterior",
+  "next": "{name} următor",
+  "variant": "{current} din {total}",
+  "save": "Salvează",
+  "cancel": "Anulează",
+  "unsavedChanges": "Modificări nesalvate",
+  "noUnsavedChanges": "Nicio modificare nesalvată",
+  "codeHelp": "Lipiți un cod pentru a încărca un personaj sau copiați-l pe acesta pentru a-l folosi oriunde."
 }

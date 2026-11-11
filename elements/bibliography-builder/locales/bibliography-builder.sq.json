@@ -4,5 +4,6 @@
   "exportCitations": "Eksporto citimet",
   "copy": "Kopjo",
   "exportCitationFormat": "Formati i eksportit të citimeve",
-  "selectCitationFormatBelow": "Zgjidh një format citimi më poshtë"
+  "selectCitationFormatBelow": "Zgjidh një format citimi më poshtë",
+  "addCitationToBibliography": "Shto citim në bibliografi"
 }

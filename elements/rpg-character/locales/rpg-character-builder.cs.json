@@ -19,5 +19,13 @@
   "copyCode": "Kopírovat kód",
   "copied": "Zkopírováno!",
   "invalidCode": "Toto není kód postavy.",
-  "preview": "Náhled postavy"
+  "preview": "Náhled postavy",
+  "previous": "Předchozí {name}",
+  "next": "Další {name}",
+  "variant": "{current} z {total}",
+  "save": "Uložit",
+  "cancel": "Zrušit",
+  "unsavedChanges": "Neuložené změny",
+  "noUnsavedChanges": "Žádné neuložené změny",
+  "codeHelp": "Vložte kód a načtěte postavu, nebo tento zkopírujte a použijte kdekoli."
 }

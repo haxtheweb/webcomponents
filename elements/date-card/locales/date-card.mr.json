@@ -1,0 +1,8 @@
+{
+  "ordinalOne": "ला",
+  "ordinalTwo": "वा",
+  "ordinalFew": "वा",
+  "ordinalOther": "वा",
+  "fromTimeToTime": "{start} ते {end}",
+  "atTime": "{start} वाजता"
+}

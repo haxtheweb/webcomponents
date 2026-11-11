@@ -197,5 +197,6 @@
   "removeSource": "Çeşmäni aýyr",
   "lockUnlock": "Gulpla / Gulpy aç",
   "toggleFilters": "Süzgüçleri aç/ýap",
-  "filters": "Süzgüçler"
+  "filters": "Süzgüçler",
+  "typeForQuickActions": "Çalt hereketler üçin '/' ýazyň"
 }

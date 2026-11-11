@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "የፍንዳታ ድምፅ ለማጫወት ጠቅ ያድርጉ ወይም ያንዣብቡ",
+  "soundDisabled": "የፍንዳታ ምስላዊ ውጤት (ድምፅ ጠፍቷል)",
+  "explosionAnimation": "የፍንዳታ እነማ",
+  "explosionAriaLabel": "የፍንዳታ እነማ {state} {sound}። ለመቀያየር ጠቅ ያድርጉ።",
+  "playing": "እየተጫወተ ነው",
+  "stopped": "ቆሟል",
+  "withSound": "በድምፅ",
+  "muted": "(ድምፅ ጠፍቷል)"
+}

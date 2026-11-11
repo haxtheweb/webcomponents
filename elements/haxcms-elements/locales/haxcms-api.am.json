@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "መቀየሩ አልተሳካም።",
   "PARAM_REQUIRED": "አስፈላጊ እሴት ይጎድላል፦ {param}።",
   "INVALID_REQUEST": "ልክ ያልሆነ ጥያቄ።",
-  "PARAM_INVALID": "ልክ ያልሆነ እሴት፦ {param}።"
+  "PARAM_INVALID": "ልክ ያልሆነ እሴት፦ {param}።",
+  "BLOCK_RATE_LIMITED": "በዚህ ጣቢያ ላይ አሁን በጣም ብዙ የይዘት ለውጦች አሉ። ከ{retryAfter} ሰከንዶች በኋላ እንደገና ይሞክሩ።"
 }

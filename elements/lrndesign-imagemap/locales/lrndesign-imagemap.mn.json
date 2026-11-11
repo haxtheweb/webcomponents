@@ -1,0 +1,9 @@
+{
+  "imageMap": "Зургийн газрын зураг",
+  "interactive": "Интерактив",
+  "hotspot": "Идэвхтэй цэг",
+  "hotspotPosition": "{total}-ийн {n}",
+  "hotspotsExplored": "{total} идэвхтэй цэгийн {n}-г судалсан",
+  "explored": "Судалсан",
+  "close": "Хаах"
+}

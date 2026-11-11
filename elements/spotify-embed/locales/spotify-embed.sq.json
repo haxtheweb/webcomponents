@@ -1,4 +1,9 @@
 {
   "audio": "Audio",
-  "openOnSpotify": "Hape në Spotify në një skedë të re"
+  "openOnSpotify": "Hape në Spotify në një skedë të re",
+  "embedTitle": "Ngulitje Spotify",
+  "trackEmbedTitle": "Ngulitje këngë Spotify",
+  "albumEmbedTitle": "Ngulitje album Spotify",
+  "playlistEmbedTitle": "Ngulitje listë luajtjeje Spotify",
+  "artistEmbedTitle": "Ngulitje artisti Spotify"
 }

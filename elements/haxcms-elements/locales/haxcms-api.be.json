@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Пераўтварэнне не ўдалося.",
   "PARAM_REQUIRED": "Адсутнічае абавязковае значэнне: {param}.",
   "INVALID_REQUEST": "Няправільны запыт.",
-  "PARAM_INVALID": "Няправільнае значэнне: {param}."
+  "PARAM_INVALID": "Няправільнае значэнне: {param}.",
+  "BLOCK_RATE_LIMITED": "Зараз на гэтым сайце занадта шмат змен зместу. Паўтарыце спробу праз {retryAfter} с."
 }

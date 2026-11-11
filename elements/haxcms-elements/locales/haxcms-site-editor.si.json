@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "මෙහෙයුම සම්පූර්ණ කළ නොහැක ({status})",
   "normalizedPageSlugs": "පිටු slug {count} ක් සාමාන්‍යකරණය කරන ලදී",
   "createdTitle": "{title} සාදන ලදී!",
-  "processing": "සකසමින්"
+  "processing": "සකසමින්",
+  "saveTimedOut": "සුරැකීම කල් ඉකුත් විය: සේවාදායකය පිළිතුරු දුන්නේ නැත. ඔබේ වෙනස්කම් මෙහි තබා ඇත, නමුත් සේවාදායකය තවමත් ඒවා සුරැකීම අවසන් කළ හැක."
 }

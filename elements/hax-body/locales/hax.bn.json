@@ -197,5 +197,6 @@
   "removeSource": "সোর্স সরান",
   "lockUnlock": "লক / আনলক",
   "toggleFilters": "ফিল্টার টগল করুন",
-  "filters": "ফিল্টারসমূহ"
+  "filters": "ফিল্টারসমূহ",
+  "typeForQuickActions": "দ্রুত কাজের জন্য '/' টাইপ করুন"
 }

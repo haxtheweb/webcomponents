@@ -197,5 +197,6 @@
   "removeSource": "ምንጭ አስወግድ",
   "lockUnlock": "ቆልፍ / ክፈት",
   "toggleFilters": "ማጣሪያዎችን ቀያይር",
-  "filters": "ማጣሪያዎች"
+  "filters": "ማጣሪያዎች",
+  "typeForQuickActions": "ለፈጣን እርምጃዎች '/' ይጻፉ"
 }

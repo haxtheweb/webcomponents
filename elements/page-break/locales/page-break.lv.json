@@ -30,5 +30,15 @@
   "pageLockedUnlockToChangePublishStatus": "Šī lapa ir bloķēta. Lai mainītu publicēšanas statusu, vispirms atbloķējiet to.",
   "pageLockedUnlockToDelete": "Šī lapa ir bloķēta. Lai dzēstu, vispirms atbloķējiet to.",
   "pageDetails": "Lapas detaļas",
-  "clickToUnlock": "Noklikšķiniet, lai atslēgtu"
+  "clickToUnlock": "Noklikšķiniet, lai atslēgtu",
+  "pageSettings": "Lapas iestatījumi",
+  "editingPageSettings": "Rediģē lapas iestatījumus",
+  "published": "Publicēts",
+  "draft": "Melnraksts",
+  "locked": "Bloķēta",
+  "unlocked": "Atbloķēta",
+  "noTags": "Nav atzīmju",
+  "oneTag": "1 atzīme",
+  "tagCount": "Atzīmes: {count}",
+  "enterKey": "Enter"
 }

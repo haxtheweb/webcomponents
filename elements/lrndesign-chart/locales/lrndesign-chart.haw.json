@@ -4,5 +4,8 @@
   "pieChart": "Ka ʻikepili · Pakuhi pai",
   "showDataTable": "Hōʻike i ka papa ʻikepili",
   "downloadData": "Hoʻoiho i ka ʻikepili (.csv)",
-  "series": "Pūʻulu {n}"
+  "series": "Pūʻulu {n}",
+  "barChartLabel": "pakuhi kolamu",
+  "lineChartLabel": "pakuhi laina",
+  "pieChartLabel": "pakuhi pai"
 }

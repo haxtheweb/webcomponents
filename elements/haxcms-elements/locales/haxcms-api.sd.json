@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "تبديلي ناڪام ٿي.",
   "PARAM_REQUIRED": "هڪ گهربل قدر موجود ناهي: {param}.",
   "INVALID_REQUEST": "غلط درخواست.",
-  "PARAM_INVALID": "غلط قدر: {param}."
+  "PARAM_INVALID": "غلط قدر: {param}.",
+  "BLOCK_RATE_LIMITED": "هن وقت هن سائيٽ تي مواد جون تمام گهڻيون تبديليون آهن. {retryAfter} سيڪنڊن کان پوءِ ٻيهر ڪوشش ڪريو."
 }

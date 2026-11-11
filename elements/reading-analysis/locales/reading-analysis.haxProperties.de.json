@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Aktivität",
-        "description": "Belege markieren: Lernende kleben jedes Fähnchen neben den Beleg dafür. Eins auswählen: Lernende wählen die eine Passage, die die Frage am besten beantwortet."
+        "description": "Belege markieren: Lernende kleben jedes Fähnchen neben den Beleg dafür. Eins auswählen: Lernende wählen die eine Passage, die die Frage am besten beantwortet.",
+        "options": {
+          "flag": "Belege markieren",
+          "one": "Eines auswählen"
+        }
       },
       {
         "property": "unit",
         "title": "Lernende wählen aus",
-        "description": "Worauf Lernende im Text zeigen. Abbildungen können immer ausgewählt werden."
+        "description": "Worauf Lernende im Text zeigen. Abbildungen können immer ausgewählt werden.",
+        "options": {
+          "sentence": "Sätze",
+          "paragraph": "Absätze",
+          "figure": "Nur Abbildungen"
+        }
       },
       {
         "property": "answers",

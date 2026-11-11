@@ -37,6 +37,16 @@
         "title": "Quizzens navn",
         "description": "Quiznavn, der videregives til brug i xAPI-drevne miljøer til identifikation af dette element"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Sammenklappelig",
+        "description": "Vis dette spørgsmål som en række, der kan åbnes og lukkes. Når du åbner ét, lukkes de andre sammenklappelige spørgsmål ved siden af."
+      },
+      {
+        "title": "Start sammenklappet",
+        "description": "Når det er sammenklappeligt, starter spørgsmålet som en lukket række, der kun viser spørgsmålet og dets status."
+      }
     ]
   }
 }

@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "活动",
-        "description": "标证据:学生子拿每只标记摆到伊证据旁边。拣一只:学生子拣最能回答问题个唯一一段。"
+        "description": "标证据:学生子拿每只标记摆到伊证据旁边。拣一只:学生子拣最能回答问题个唯一一段。",
+        "options": {
+          "flag": "标记证据",
+          "one": "选一个"
+        }
       },
       {
         "property": "unit",
         "title": "学生子拣",
-        "description": "学生子拉阅读材料里指个物事。图片总归好拣个。"
+        "description": "学生子拉阅读材料里指个物事。图片总归好拣个。",
+        "options": {
+          "sentence": "句子",
+          "paragraph": "段落",
+          "figure": "只要图表"
+        }
       },
       {
         "property": "answers",

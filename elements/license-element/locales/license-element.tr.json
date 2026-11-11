@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{creator} tarafından hazırlanan {title}, {license} ile lisanslanmıştır.",
   "permissionsBeyondScope": "Bu lisansın kapsamı dışındaki izinlere {link} ulaşılabilir.",
   "author": "(yazar)",
-  "onTheLicensingDetailsPage": "lisans ayrıntıları sayfasından"
+  "onTheLicensingDetailsPage": "lisans ayrıntıları sayfasından",
+  "licenseLabel": "Lisans"
 }

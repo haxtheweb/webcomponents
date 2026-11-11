@@ -1,0 +1,10 @@
+{
+  "github": "GitHub",
+  "repository": "Репозитор",
+  "stars": "од",
+  "forks": "салаа",
+  "loading": "Ачаалж байна",
+  "viewMore": "Дэлгэрэнгүй",
+  "assetNotFound": "Файл олдсонгүй",
+  "openOnGitHub": "{org}/{repo}-г GitHub дээр нээх"
+}

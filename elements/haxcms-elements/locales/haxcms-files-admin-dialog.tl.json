@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Palitan ang mga orihinal na file",
   "newName": "Bagong pangalan",
   "deleteAction": "Burahin",
-  "renameAction": "Palitan ang pangalan"
+  "renameAction": "Palitan ang pangalan",
+  "bulkOverwriteConfirm": "{action} ang {count} file? Papalitan nito ang mga orihinal na file at hindi na ito mababawi.",
+  "actionScale": "I-scale",
+  "actionRotate": "I-rotate",
+  "actionTransform": "I-transform",
+  "actionConvertJpg": "I-convert sa JPG",
+  "actionCompress": "I-compress"
 }

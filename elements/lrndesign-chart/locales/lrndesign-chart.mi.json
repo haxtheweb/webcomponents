@@ -4,5 +4,8 @@
   "pieChart": "Raraunga · Tūtohi porowhita",
   "showDataTable": "Whakaatu i te ripanga raraunga",
   "downloadData": "Tikiake i ngā raraunga (.csv)",
-  "series": "Raupapa {n}"
+  "series": "Raupapa {n}",
+  "barChartLabel": "hoahoa pou",
+  "lineChartLabel": "hoahoa rārangi",
+  "pieChartLabel": "hoahoa porowhita"
 }

@@ -1,4 +1,9 @@
 {
   "audio": "Oro",
-  "openOnSpotify": "Huaki i Spotify i tētahi ripa hou"
+  "openOnSpotify": "Huaki i Spotify i tētahi ripa hou",
+  "embedTitle": "Tāmi Spotify",
+  "trackEmbedTitle": "Tāmi Ara Spotify",
+  "albumEmbedTitle": "Tāmi Pukaemi Spotify",
+  "playlistEmbedTitle": "Tāmi Rārangi Waiata Spotify",
+  "artistEmbedTitle": "Tāmi Kaitoi Spotify"
 }

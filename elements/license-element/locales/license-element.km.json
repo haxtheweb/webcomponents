@@ -10,5 +10,6 @@
   "workByCreatorLicensed": "{title} ដោយ {creator} ត្រូវបានផ្ដល់អាជ្ញាប័ណ្ណក្រោម {license}។",
   "permissionsBeyondScope": "ការអនុញ្ញាតលើសពីវិសាលភាពនៃអាជ្ញាប័ណ្ណនេះអាចរកបាន {link}។",
   "author": "(អ្នកនិពន្ធ)",
-  "onTheLicensingDetailsPage": "នៅលើទំព័រព័ត៌មានលម្អិតអាជ្ញាប័ណ្ណ"
+  "onTheLicensingDetailsPage": "នៅលើទំព័រព័ត៌មានលម្អិតអាជ្ញាប័ណ្ណ",
+  "licenseLabel": "អាជ្ញាប័ណ្ណ"
 }

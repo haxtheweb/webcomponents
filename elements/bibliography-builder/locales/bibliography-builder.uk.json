@@ -4,5 +4,6 @@
   "exportCitations": "Експорт цитувань",
   "copy": "Копіювати",
   "exportCitationFormat": "Формат експорту цитувань",
-  "selectCitationFormatBelow": "Виберіть формат цитування нижче"
+  "selectCitationFormatBelow": "Виберіть формат цитування нижче",
+  "addCitationToBibliography": "Додати цитату до бібліографії"
 }

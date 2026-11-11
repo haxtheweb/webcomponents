@@ -197,5 +197,6 @@
   "removeSource": "Hiq burimin",
   "lockUnlock": "Kyç / Zhblloko",
   "toggleFilters": "Shfaq/fshih filtrat",
-  "filters": "Filtrat"
+  "filters": "Filtrat",
+  "typeForQuickActions": "Shkruaj '/' për veprime të shpejta"
 }

@@ -1,0 +1,8 @@
+{
+  "ordinalOne": "-nji",
+  "ordinalTwo": "-nji",
+  "ordinalFew": "-nji",
+  "ordinalOther": "-nji",
+  "fromTimeToTime": "{start} - {end} aralygynda",
+  "atTime": "sagat {start}"
+}

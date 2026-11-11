@@ -197,5 +197,6 @@
   "removeSource": "Bron verwijderen",
   "lockUnlock": "Vergrendelen / ontgrendelen",
   "toggleFilters": "Filters aan/uit",
-  "filters": "Filters"
+  "filters": "Filters",
+  "typeForQuickActions": "Typ '/' voor snelle acties"
 }

@@ -197,5 +197,6 @@
   "removeSource": "સ્રોત દૂર કરો",
   "lockUnlock": "લૉક / અનલૉક",
   "toggleFilters": "ફિલ્ટર્સ ટૉગલ કરો",
-  "filters": "ફિલ્ટર્સ"
+  "filters": "ફિલ્ટર્સ",
+  "typeForQuickActions": "ઝડપી ક્રિયાઓ માટે '/' ટાઇપ કરો"
 }

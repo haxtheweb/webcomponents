@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "विस्फोटको आवाज बजाउन क्लिक गर्नुहोस् वा होभर गर्नुहोस्",
+  "soundDisabled": "दृश्यात्मक विस्फोट प्रभाव (आवाज बन्द)",
+  "explosionAnimation": "विस्फोट एनिमेसन",
+  "explosionAriaLabel": "विस्फोट एनिमेसन {state} {sound}। टगल गर्न क्लिक गर्नुहोस्।",
+  "playing": "बज्दै छ",
+  "stopped": "रोकिएको",
+  "withSound": "आवाजसहित",
+  "muted": "(म्युट गरिएको)"
+}

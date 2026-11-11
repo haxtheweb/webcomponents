@@ -197,5 +197,6 @@
   "removeSource": "Caccià a fonte",
   "lockUnlock": "Bloccà / Sbloccà",
   "toggleFilters": "Mustrà/piattà i filtri",
-  "filters": "Filtri"
+  "filters": "Filtri",
+  "typeForQuickActions": "Scrivite '/' per l'azzioni rapide"
 }

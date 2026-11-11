@@ -129,5 +129,12 @@
   "cancel": "ሰርዝ",
   "clearedSite": "የ{site} የትምህርት ውሂብዎ ተጠርጓል።",
   "clearedDevice": "በዚህ መሣሪያ ላይ ያለው ሁሉም የትምህርት ውሂብ ተጠርጓል።",
-  "thisSite": "ይህ ጣቢያ"
+  "thisSite": "ይህ ጣቢያ",
+  "outlineHeading": "በገጽ ሂደት",
+  "allPages": "ሁሉም ገጾች",
+  "outlinePagesDone": "{done} ከ{total} ገጾች ተጠናቀዋል",
+  "outlinePagesCount": "{count} ገጾች",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% ተጠናቋል",
+  "outlineComplete": "ተጠናቋል"
 }

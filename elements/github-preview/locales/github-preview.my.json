@@ -1,0 +1,10 @@
+{
+  "github": "GitHub",
+  "repository": "ပင်မသိုလှောင်ရုံ",
+  "stars": "ကြယ်များ",
+  "forks": "ဖောက်များ",
+  "loading": "ဖွင့်နေသည်",
+  "viewMore": "ပိုမိုကြည့်ရန်",
+  "assetNotFound": "ဖိုင်ကို ရှာမတွေ့ပါ",
+  "openOnGitHub": "{org}/{repo} ကို GitHub တွင် ဖွင့်ရန်"
+}

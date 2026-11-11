@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Aktywność",
-        "description": "Oznacz dowody: uczniowie przyklejają każdą flagę obok dowodu na nią. Wybierz jeden: uczniowie wybierają jedyny fragment, który najlepiej odpowiada na pytanie."
+        "description": "Oznacz dowody: uczniowie przyklejają każdą flagę obok dowodu na nią. Wybierz jeden: uczniowie wybierają jedyny fragment, który najlepiej odpowiada na pytanie.",
+        "options": {
+          "flag": "Oznacz dowody",
+          "one": "Wybierz jedno"
+        }
       },
       {
         "property": "unit",
         "title": "Uczniowie zaznaczają",
-        "description": "Na co uczeń wskazuje w tekście. Ilustracje zawsze można zaznaczyć."
+        "description": "Na co uczeń wskazuje w tekście. Ilustracje zawsze można zaznaczyć.",
+        "options": {
+          "sentence": "Zdania",
+          "paragraph": "Akapity",
+          "figure": "Tylko rysunki"
+        }
       },
       {
         "property": "answers",

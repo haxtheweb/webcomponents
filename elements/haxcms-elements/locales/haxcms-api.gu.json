@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "રૂપાંતરણ નિષ્ફળ થયું.",
   "PARAM_REQUIRED": "જરૂરી મૂલ્ય ખૂટે છે: {param}.",
   "INVALID_REQUEST": "અમાન્ય વિનંતી.",
-  "PARAM_INVALID": "અમાન્ય મૂલ્ય: {param}."
+  "PARAM_INVALID": "અમાન્ય મૂલ્ય: {param}.",
+  "BLOCK_RATE_LIMITED": "અત્યારે આ સાઇટ પર સામગ્રીમાં ઘણા બધા ફેરફારો થયા છે. {retryAfter} સેકન્ડ પછી ફરી પ્રયાસ કરો."
 }

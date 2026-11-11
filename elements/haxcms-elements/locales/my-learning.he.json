@@ -129,5 +129,12 @@
   "cancel": "ביטול",
   "clearedSite": "נתוני הלמידה שלך עבור {site} נוקו.",
   "clearedDevice": "כל נתוני הלמידה במכשיר זה נוקו.",
-  "thisSite": "האתר הזה"
+  "thisSite": "האתר הזה",
+  "outlineHeading": "התקדמות לפי דף",
+  "allPages": "כל הדפים",
+  "outlinePagesDone": "{done} מתוך {total} דפים הושלמו",
+  "outlinePagesCount": "{count} דפים",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% הושלמו",
+  "outlineComplete": "הושלם"
 }

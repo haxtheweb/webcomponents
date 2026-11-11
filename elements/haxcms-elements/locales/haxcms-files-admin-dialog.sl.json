@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Zamenjaj izvirne datoteke",
   "newName": "Novo ime",
   "deleteAction": "Izbriši",
-  "renameAction": "Preimenuj"
+  "renameAction": "Preimenuj",
+  "bulkOverwriteConfirm": "{action} {count} datotek? Izvirne datoteke bodo zamenjane, tega ni mogoče razveljaviti.",
+  "actionScale": "Spremeni velikost",
+  "actionRotate": "Zavrti",
+  "actionTransform": "Preoblikuj",
+  "actionConvertJpg": "Pretvori v JPG",
+  "actionCompress": "Stisni"
 }

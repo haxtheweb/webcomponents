@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "QR kodas: {title}",
+  "noData": "Nėra duomenų, kuriuos būtų galima rodyti kaip QR kodą",
+  "formatNotSupported": "QR kodo formatas {format} nepalaikomas",
+  "noCanvas": "Ši naršyklė negali nupiešti QR kodo (nėra canvas palaikymo)"
+}

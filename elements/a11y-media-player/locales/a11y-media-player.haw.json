@@ -35,5 +35,12 @@
   "youTubeStartLoading": "Kaomi i ka hoʻokani.",
   "youTubeTranscriptLabel": "E hoʻouka ʻia ka palapala leo ke hoʻokani ʻia ka media.",
   "audioDescriptionLabel": "Wehewehe leo",
-  "openOnYouTube": "Wehe ma YouTube"
+  "openOnYouTube": "Wehe ma YouTube",
+  "interactiveLabel": "launa pāpā",
+  "layoutLabel": "Hoʻokumu",
+  "sideLabel": "Ka ʻaoʻao",
+  "belowLabel": "Ma lalo",
+  "leftLabel": "Hema",
+  "rightLabel": "ʻAkau",
+  "hideTranscriptLabel": "Hūnā i ka kope ʻōlelo"
 }

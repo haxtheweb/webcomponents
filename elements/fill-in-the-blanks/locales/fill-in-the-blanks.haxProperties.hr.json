@@ -37,6 +37,16 @@
         "title": "Naziv kviza",
         "description": "Naziv kviza koji se prosljeđuje za identifikaciju ove stavke u okruženjima temeljenima na xAPI-ju"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Sažimanje",
+        "description": "Prikaži ovo pitanje kao redak koji se otvara i zatvara. Otvaranjem jednog zatvaraju se ostala pitanja koja se mogu sažimati uz njega."
+      },
+      {
+        "title": "Započni sažeto",
+        "description": "Kada se može sažimati, započni kao zatvoreni redak koji prikazuje samo pitanje i njegov status."
+      }
     ]
   }
 }

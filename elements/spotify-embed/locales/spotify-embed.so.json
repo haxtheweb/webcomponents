@@ -1,4 +1,9 @@
 {
   "audio": "Maqal",
-  "openOnSpotify": "Ku fur Spotify tab cusub"
+  "openOnSpotify": "Ku fur Spotify tab cusub",
+  "embedTitle": "Gelinta Spotify",
+  "trackEmbedTitle": "Gelinta Heesta Spotify",
+  "albumEmbedTitle": "Gelinta Albamka Spotify",
+  "playlistEmbedTitle": "Gelinta Liiska Ciyaarta Spotify",
+  "artistEmbedTitle": "Gelinta Fanaanka Spotify"
 }

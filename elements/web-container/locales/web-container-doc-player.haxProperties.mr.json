@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "वेब घटक दस्तऐवज प्लेअर"
+    "title": "वेब घटक दस्तऐवज प्लेअर",
+    "description": ""
   },
   "settings": {
     "configure": [

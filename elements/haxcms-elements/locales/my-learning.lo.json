@@ -129,5 +129,12 @@
   "cancel": "ຍົກເລີກ",
   "clearedSite": "ຂໍ້ມູນການຮຽນຂອງທ່ານສຳລັບ {site} ຖືກລຶບລ້າງແລ້ວ.",
   "clearedDevice": "ຂໍ້ມູນການຮຽນທັງໝົດໃນອຸປະກອນນີ້ຖືກລຶບລ້າງແລ້ວ.",
-  "thisSite": "ເວັບໄຊນີ້"
+  "thisSite": "ເວັບໄຊນີ້",
+  "outlineHeading": "ຄວາມຄືບໜ້າຕາມໜ້າ",
+  "allPages": "ທຸກໜ້າ",
+  "outlinePagesDone": "ສຳເລັດ {done} ຈາກ {total} ໜ້າ",
+  "outlinePagesCount": "{count} ໜ້າ",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "ສຳເລັດ {percent}%",
+  "outlineComplete": "ສຳເລັດ"
 }

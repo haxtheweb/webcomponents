@@ -197,5 +197,6 @@
   "removeSource": "Quell ewechhuelen",
   "lockUnlock": "Spären / Entspären",
   "toggleFilters": "Filteren ëmschalten",
-  "filters": "Filteren"
+  "filters": "Filteren",
+  "typeForQuickActions": "Tipp '/' fir séier Aktiounen"
 }

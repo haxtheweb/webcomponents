@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Tsamba silinasindikizidwe",
   "progressDone": "Zatha",
   "progressInProgress": "Akuchitika",
-  "progressVisited": "Anayendera"
+  "progressVisited": "Anayendera",
+  "progressPercentComplete": "{percent}% yatha",
+  "progressComplete": "Yatha"
 }

@@ -58,5 +58,10 @@
   "audioDescriptionDescription": "URL sa isang audio description track (MP3 file) na nagsasalaysay ng mga biswal na elemento.",
   "video": "Video",
   "audio": "Audio",
-  "interactive": "interactive"
+  "interactive": "interactive",
+  "closedCaptionsTitle": "Closed caption",
+  "closedCaptionsDescription": "Ang URL ng file ng mga caption.",
+  "missingTitle": "Nawawalang Pamagat",
+  "closeLecturePlayer": "Isara ang Lecture Player",
+  "openLecturePlayer": "Buksan ang Lecture Player"
 }

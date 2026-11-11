@@ -197,5 +197,6 @@
   "removeSource": "سورس ہٹائیں",
   "lockUnlock": "مقفل / غیر مقفل",
   "toggleFilters": "فلٹرز ٹوگل کریں",
-  "filters": "فلٹرز"
+  "filters": "فلٹرز",
+  "typeForQuickActions": "فوری اقدامات کے لیے '/' ٹائپ کریں"
 }

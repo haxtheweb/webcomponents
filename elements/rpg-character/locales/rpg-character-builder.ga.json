@@ -19,5 +19,13 @@
   "copyCode": "Cóipeáil an cód",
   "copied": "Cóipeáilte!",
   "invalidCode": "Ní cód carachtair é sin.",
-  "preview": "Réamhamharc carachtair"
+  "preview": "Réamhamharc carachtair",
+  "previous": "{name} roimhe seo",
+  "next": "{name} eile",
+  "variant": "{current} as {total}",
+  "save": "Sábháil",
+  "cancel": "Cealaigh",
+  "unsavedChanges": "Athruithe gan sábháil",
+  "noUnsavedChanges": "Gan athruithe gan sábháil",
+  "codeHelp": "Greamaigh cód chun carachtar a luchtú, nó cóipeáil an ceann seo chun é a úsáid áit ar bith."
 }

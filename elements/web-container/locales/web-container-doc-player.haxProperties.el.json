@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Πρόγραμμα αναπαραγωγής τεκμηρίωσης web component"
+    "title": "Πρόγραμμα αναπαραγωγής τεκμηρίωσης web component",
+    "description": ""
   },
   "settings": {
     "configure": [

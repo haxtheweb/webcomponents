@@ -129,5 +129,12 @@
   "cancel": "Chinkachiy",
   "clearedSite": "{site}pa yachay willayniykikuna pichasqa karqan.",
   "clearedDevice": "Kay llamk’ana ruwanapi llapa yachay willaykuna pichasqa karqan.",
-  "thisSite": "kay llika"
+  "thisSite": "kay llika",
+  "outlineHeading": "P'anqa p'anqamanta ñawpaqay",
+  "allPages": "Llapa p'anqakuna",
+  "outlinePagesDone": "{total}manta {done} p'anqa tukusqa",
+  "outlinePagesCount": "{count} p'anqa",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% tukusqa",
+  "outlineComplete": "Tukusqa"
 }

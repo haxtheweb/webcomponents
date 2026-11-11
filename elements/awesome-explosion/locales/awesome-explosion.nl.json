@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Klik of beweeg eroverheen om het explosiegeluid af te spelen",
+  "soundDisabled": "Visueel explosie-effect (geluid uitgeschakeld)",
+  "explosionAnimation": "explosieanimatie",
+  "explosionAriaLabel": "Explosieanimatie {state} {sound}. Klik om te wisselen.",
+  "playing": "speelt af",
+  "stopped": "gestopt",
+  "withSound": "met geluid",
+  "muted": "(gedempt)"
+}

@@ -197,5 +197,6 @@
   "removeSource": "Verwyder bron",
   "lockUnlock": "Sluit / Ontsluit",
   "toggleFilters": "Wissel filters",
-  "filters": "Filters"
+  "filters": "Filters",
+  "typeForQuickActions": "Tik '/' vir vinnige aksies"
 }

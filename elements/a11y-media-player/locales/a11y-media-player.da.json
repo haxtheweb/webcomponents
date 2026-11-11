@@ -35,5 +35,12 @@
   "youTubeStartLoading": "",
   "youTubeTranscriptLabel": "",
   "audioDescriptionLabel": "Synstolkning",
-  "openOnYouTube": "Åbn på YouTube"
+  "openOnYouTube": "Åbn på YouTube",
+  "interactiveLabel": "interaktiv",
+  "layoutLabel": "Layout",
+  "sideLabel": "Ved siden af",
+  "belowLabel": "Nedenunder",
+  "leftLabel": "Venstre",
+  "rightLabel": "Højre",
+  "hideTranscriptLabel": "Skjul transskription"
 }

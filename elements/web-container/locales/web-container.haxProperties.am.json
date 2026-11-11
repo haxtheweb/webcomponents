@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "የNodeJS መያዣ"
+    "title": "የNodeJS መያዣ",
+    "description": ""
   },
   "settings": {
     "configure": [

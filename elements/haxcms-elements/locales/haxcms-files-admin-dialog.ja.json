@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "元のファイルを置き換える",
   "newName": "新しい名前",
   "deleteAction": "削除",
-  "renameAction": "名前を変更"
+  "renameAction": "名前を変更",
+  "bulkOverwriteConfirm": "{count}個のファイルに対して「{action}」を実行しますか?元のファイルが置き換えられ、元に戻せません。",
+  "actionScale": "拡大縮小",
+  "actionRotate": "回転",
+  "actionTransform": "変換",
+  "actionConvertJpg": "JPGに変換",
+  "actionCompress": "圧縮"
 }

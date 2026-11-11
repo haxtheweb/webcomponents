@@ -1,13 +1,20 @@
 {
   "gizmo": {
     "title": "H5P",
-    "description": "Obal H5P pro načítání a zobrazování souborů .h5p"
+    "description": "Přehrává interaktivní obsah H5P z nahraného souboru .h5p, bez potřeby serveru H5P"
   },
   "settings": {
     "configure": [
       {
         "slot": "",
-        "description": "Kód pro vložení H5P přes iframe"
+        "description": "Nahrajte nebo propojte soubor .h5p. Rozbalí se v prohlížeči; server H5P není potřeba.",
+        "title": "Soubor H5P"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Starší kód pro vložení iframe",
+        "description": "Pouze pro starší obsah, který vkládá iframe H5P z jiného webu. Pokud je nahoře nastaven soubor .h5p, nechte prázdné."
       }
     ]
   }

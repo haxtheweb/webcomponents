@@ -19,5 +19,13 @@
   "copyCode": "Kopieer kode",
   "copied": "Gekopieer!",
   "invalidCode": "Dit is nie 'n karakterkode nie.",
-  "preview": "Karaktervoorskou"
+  "preview": "Karaktervoorskou",
+  "previous": "Vorige {name}",
+  "next": "Volgende {name}",
+  "variant": "{current} van {total}",
+  "save": "Stoor",
+  "cancel": "Kanselleer",
+  "unsavedChanges": "Onbewaarde veranderinge",
+  "noUnsavedChanges": "Geen onbewaarde veranderinge nie",
+  "codeHelp": "Plak 'n kode om 'n karakter te laai, of kopieer hierdie een om dit oral te gebruik."
 }

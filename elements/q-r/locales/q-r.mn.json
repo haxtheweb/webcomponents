@@ -1,0 +1,6 @@
+{
+  "qrCodeFor": "{title}-н QR код",
+  "noData": "QR кодоор харуулах өгөгдөл алга",
+  "formatNotSupported": "QR кодын {format} формат дэмжигдэхгүй",
+  "noCanvas": "Энэ хөтөч QR кодыг зурж чадахгүй (canvas дэмжлэггүй)"
+}

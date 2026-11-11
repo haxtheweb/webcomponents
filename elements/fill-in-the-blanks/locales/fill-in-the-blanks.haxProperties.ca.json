@@ -37,6 +37,16 @@
         "title": "Nom del qüestionari",
         "description": "Nom del qüestionari que es passa per identificar aquest element en entorns basats en xAPI"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Plegable",
+        "description": "Mostra aquesta pregunta com una fila que s'obre i es tanca. En obrir-ne una es tanquen les altres preguntes plegables que hi ha al costat."
+      },
+      {
+        "title": "Comença plegada",
+        "description": "Quan és plegable, comença com una fila tancada que només mostra la pregunta i el seu estat."
+      }
     ]
   }
 }

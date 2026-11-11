@@ -1,0 +1,9 @@
+{
+  "imageMap": "Peta imej",
+  "interactive": "Interaktif",
+  "hotspot": "Titik panas",
+  "hotspotPosition": "{n} daripada {total}",
+  "hotspotsExplored": "{n} daripada {total} titik panas diterokai",
+  "explored": "Diterokai",
+  "close": "Tutup"
+}

@@ -1,0 +1,9 @@
+{
+  "imageMap": "نقشه تصویری",
+  "interactive": "تعاملی",
+  "hotspot": "نقطه فعال",
+  "hotspotPosition": "{n} از {total}",
+  "hotspotsExplored": "{n} از {total} نقطه فعال بررسی شد",
+  "explored": "بررسی شده",
+  "close": "بستن"
+}

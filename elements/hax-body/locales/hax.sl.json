@@ -197,5 +197,6 @@
   "removeSource": "Odstrani vir",
   "lockUnlock": "Zakleni / odkleni",
   "toggleFilters": "Preklopi filtre",
-  "filters": "Filtri"
+  "filters": "Filtri",
+  "typeForQuickActions": "Vnesite »/« za hitra dejanja"
 }

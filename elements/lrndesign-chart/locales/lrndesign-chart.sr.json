@@ -4,5 +4,8 @@
   "pieChart": "Подаци · Кружни дијаграм",
   "showDataTable": "Прикажи табелу података",
   "downloadData": "Преузми податке (.csv)",
-  "series": "Серија {n}"
+  "series": "Серија {n}",
+  "barChartLabel": "стубичасти дијаграм",
+  "lineChartLabel": "линијски дијаграм",
+  "pieChartLabel": "кружни дијаграм"
 }

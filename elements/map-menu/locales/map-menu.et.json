@@ -2,5 +2,7 @@
   "pageIsUnpublished": "Leht on avaldamata",
   "progressDone": "Tehtud",
   "progressInProgress": "Pooleli",
-  "progressVisited": "Külastatud"
+  "progressVisited": "Külastatud",
+  "progressPercentComplete": "{percent}% valmis",
+  "progressComplete": "Valmis"
 }

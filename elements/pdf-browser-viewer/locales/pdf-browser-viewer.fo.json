@@ -3,5 +3,8 @@
   "openInNewTab": "Opna PDF í nýggjum faneblaði",
   "downloadPdf": "Tak PDF niður",
   "fullScreen": "Fullur skíggi",
-  "exitFullScreen": "Far úr fullskíggja"
+  "exitFullScreen": "Far úr fullskíggja",
+  "notSupported": "Tað sær út til, at kagarin hjá tær ikki er stillaður til at vísa PDF-fílur. Eingin ræðsla, tú kanst bara",
+  "notSupportedLink": "klikkja her fyri at taka PDF-fíluna niður.",
+  "download": "Tak niður"
 }

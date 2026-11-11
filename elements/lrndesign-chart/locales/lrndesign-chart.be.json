@@ -4,5 +4,8 @@
   "pieChart": "Даныя · Кругавая дыяграма",
   "showDataTable": "Паказаць табліцу даных",
   "downloadData": "Спампаваць даныя (.csv)",
-  "series": "Шэраг {n}"
+  "series": "Шэраг {n}",
+  "barChartLabel": "слупковая дыяграма",
+  "lineChartLabel": "лінейная дыяграма",
+  "pieChartLabel": "кругавая дыяграма"
 }

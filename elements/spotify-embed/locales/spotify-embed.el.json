@@ -1,4 +1,9 @@
 {
   "audio": "Ήχος",
-  "openOnSpotify": "Άνοιγμα στο Spotify σε νέα καρτέλα"
+  "openOnSpotify": "Άνοιγμα στο Spotify σε νέα καρτέλα",
+  "embedTitle": "Ενσωμάτωση Spotify",
+  "trackEmbedTitle": "Ενσωμάτωση κομματιού Spotify",
+  "albumEmbedTitle": "Ενσωμάτωση άλμπουμ Spotify",
+  "playlistEmbedTitle": "Ενσωμάτωση λίστας αναπαραγωγής Spotify",
+  "artistEmbedTitle": "Ενσωμάτωση καλλιτέχνη Spotify"
 }

@@ -4,5 +4,6 @@
   "exportCitations": "Esportatu aipamenak",
   "copy": "Kopiatu",
   "exportCitationFormat": "Aipamenen esportazio-formatua",
-  "selectCitationFormatBelow": "Hautatu aipamen-formatu bat behean"
+  "selectCitationFormatBelow": "Hautatu aipamen-formatu bat behean",
+  "addCitationToBibliography": "Gehitu aipua bibliografiara"
 }

@@ -197,5 +197,6 @@
   "removeSource": "حذف منبع",
   "lockUnlock": "قفل / باز کردن قفل",
   "toggleFilters": "تغییر نمایش فیلترها",
-  "filters": "فیلترها"
+  "filters": "فیلترها",
+  "typeForQuickActions": "برای کنش‌های سریع «/» را تایپ کنید"
 }

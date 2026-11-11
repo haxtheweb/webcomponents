@@ -197,5 +197,6 @@
   "removeSource": "Quelle entfernen",
   "lockUnlock": "Sperren / Entsperren",
   "toggleFilters": "Filter ein-/ausblenden",
-  "filters": "Filter"
+  "filters": "Filter",
+  "typeForQuickActions": "„/“ eingeben für Schnellaktionen"
 }

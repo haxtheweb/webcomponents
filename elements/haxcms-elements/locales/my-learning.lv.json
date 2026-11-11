@@ -129,5 +129,12 @@
   "cancel": "Atcelt",
   "clearedSite": "Jūsu mācīšanās dati vietnei {site} ir notīrīti.",
   "clearedDevice": "Visi mācīšanās dati šajā ierīcē ir notīrīti.",
-  "thisSite": "šī vietne"
+  "thisSite": "šī vietne",
+  "outlineHeading": "Progress pa lapām",
+  "allPages": "Visas lapas",
+  "outlinePagesDone": "Pabeigtas {done} no {total} lapām",
+  "outlinePagesCount": "Lapas: {count}",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "Pabeigts {percent}%",
+  "outlineComplete": "Pabeigts"
 }

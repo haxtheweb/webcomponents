@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "변환에 실패했습니다.",
   "PARAM_REQUIRED": "필수 값이 없습니다: {param}.",
   "INVALID_REQUEST": "잘못된 요청입니다.",
-  "PARAM_INVALID": "잘못된 값: {param}."
+  "PARAM_INVALID": "잘못된 값: {param}.",
+  "BLOCK_RATE_LIMITED": "현재 이 사이트에서 콘텐츠 변경이 너무 많습니다. {retryAfter}초 후에 다시 시도하세요."
 }

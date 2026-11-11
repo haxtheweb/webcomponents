@@ -1,13 +1,20 @@
 {
   "gizmo": {
     "title": "H5P",
-    "description": "H5P-Wrapper fir .h5p-Fichieren ze lueden an ze presentéieren"
+    "description": "Spillt interaktiven H5P-Inhalt vun enger eropgeluedener .h5p-Datei of, ouni H5P-Server"
   },
   "settings": {
     "configure": [
       {
         "slot": "",
-        "description": "H5P-iframe-Abannungscode"
+        "description": "Eng .h5p-Datei eroplueden oder verlinken. Si gëtt am Browser entpaakt; et gëtt kee H5P-Server gebraucht.",
+        "title": "H5P-Datei"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ale iframe-Embed-Code",
+        "description": "Nëmme fir méi ale Inhalt, deen en H5P-iframe vun enger anerer Websäit abett. Eidel loossen, wann uewen eng .h5p-Datei festgeluecht ass."
       }
     ]
   }

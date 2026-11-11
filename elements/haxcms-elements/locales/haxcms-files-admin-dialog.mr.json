@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "मूळ फायली बदला",
   "newName": "नवीन नाव",
   "deleteAction": "हटवा",
-  "renameAction": "नाव बदला"
+  "renameAction": "नाव बदला",
+  "bulkOverwriteConfirm": "{count} फाइल्सवर {action}? हे मूळ फाइल्स बदलते आणि पूर्ववत करता येत नाही.",
+  "actionScale": "आकार बदला",
+  "actionRotate": "फिरवा",
+  "actionTransform": "रूपांतर करा",
+  "actionConvertJpg": "JPG मध्ये रूपांतरित करा",
+  "actionCompress": "संकुचित करा"
 }

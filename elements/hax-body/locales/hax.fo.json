@@ -197,5 +197,6 @@
   "removeSource": "Tak keldu burtur",
   "lockUnlock": "Lás / Lat upp",
   "toggleFilters": "Skift filtur",
-  "filters": "Filtur"
+  "filters": "Filtur",
+  "typeForQuickActions": "Skriva '/' fyri skjótar atgerðir"
 }

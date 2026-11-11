@@ -1,0 +1,9 @@
+{
+  "imageMap": "Mapa íomhá",
+  "interactive": "Idirghníomhach",
+  "hotspot": "Pointe te",
+  "hotspotPosition": "{n} as {total}",
+  "hotspotsExplored": "{n} as {total} pointe te iniúchta",
+  "explored": "Iniúchta",
+  "close": "Dún"
+}

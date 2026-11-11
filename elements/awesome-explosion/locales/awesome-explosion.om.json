@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Sagalee tarkaanfii dhaga'uuf cuqaasi yookaan olitti qabi",
+  "soundDisabled": "Dhiibbaa mul'ataa tarkaanfii (sagaleen cufameera)",
+  "explosionAnimation": "animeeshinii tarkaanfii",
+  "explosionAriaLabel": "Animeeshinii tarkaanfii {state} {sound}. Jijjiiruuf cuqaasi.",
+  "playing": "taphachaa jira",
+  "stopped": "dhaabbateera",
+  "withSound": "sagalee waliin",
+  "muted": "(callisiisameera)"
+}

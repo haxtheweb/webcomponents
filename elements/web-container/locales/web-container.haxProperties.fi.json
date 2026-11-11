@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "NodeJS-säilö"
+    "title": "NodeJS-säilö",
+    "description": ""
   },
   "settings": {
     "configure": [

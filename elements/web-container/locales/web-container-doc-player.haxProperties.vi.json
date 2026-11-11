@@ -1,6 +1,7 @@
 {
   "gizmo": {
-    "title": "Trình phát tài liệu web component"
+    "title": "Trình phát tài liệu web component",
+    "description": ""
   },
   "settings": {
     "configure": [

@@ -197,5 +197,6 @@
   "removeSource": "మూలాన్ని తీసివేయండి",
   "lockUnlock": "లాక్ / అన్‌లాక్",
   "toggleFilters": "ఫిల్టర్‌లను టోగుల్ చేయండి",
-  "filters": "ఫిల్టర్‌లు"
+  "filters": "ఫిల్టర్‌లు",
+  "typeForQuickActions": "త్వరిత చర్యల కోసం '/' టైప్ చేయండి"
 }

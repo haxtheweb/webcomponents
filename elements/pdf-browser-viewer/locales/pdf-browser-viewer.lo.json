@@ -3,5 +3,8 @@
   "openInNewTab": "ເປີດ PDF ໃນແຖບໃໝ່",
   "downloadPdf": "ດາວໂຫຼດ PDF",
   "fullScreen": "ເຕັມຈໍ",
-  "exitFullScreen": "ອອກຈາກໂໝດເຕັມຈໍ"
+  "exitFullScreen": "ອອກຈາກໂໝດເຕັມຈໍ",
+  "notSupported": "ເບິ່ງຄືວ່າເວັບເບຣົາເຊີຂອງທ່ານບໍ່ໄດ້ຕັ້ງຄ່າໃຫ້ສະແດງໄຟລ໌ PDF. ບໍ່ເປັນຫຍັງ, ພຽງແຕ່",
+  "notSupportedLink": "ກົດບ່ອນນີ້ເພື່ອດາວໂຫຼດໄຟລ໌ PDF.",
+  "download": "ດາວໂຫຼດ"
 }

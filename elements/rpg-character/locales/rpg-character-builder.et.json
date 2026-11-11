@@ -19,5 +19,13 @@
   "copyCode": "Kopeeri kood",
   "copied": "Kopeeritud!",
   "invalidCode": "See ei ole tegelaskuju kood.",
-  "preview": "Tegelaskuju eelvaade"
+  "preview": "Tegelaskuju eelvaade",
+  "previous": "Eelmine: {name}",
+  "next": "Järgmine: {name}",
+  "variant": "{current} / {total}",
+  "save": "Salvesta",
+  "cancel": "Tühista",
+  "unsavedChanges": "Salvestamata muudatused",
+  "noUnsavedChanges": "Salvestamata muudatusi pole",
+  "codeHelp": "Tegelase laadimiseks kleebi kood või kopeeri see kood, et seda kus tahes kasutada."
 }

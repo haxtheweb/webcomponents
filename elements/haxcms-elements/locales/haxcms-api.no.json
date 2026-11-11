@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Konverteringen mislyktes.",
   "PARAM_REQUIRED": "En påkrevd verdi mangler: {param}.",
   "INVALID_REQUEST": "Ugyldig forespørsel.",
-  "PARAM_INVALID": "Ugyldig verdi: {param}."
+  "PARAM_INVALID": "Ugyldig verdi: {param}.",
+  "BLOCK_RATE_LIMITED": "For mange innholdsendringer på dette nettstedet akkurat nå. Prøv igjen om {retryAfter} sekunder."
 }

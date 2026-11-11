@@ -4,5 +4,8 @@
   "pieChart": "Data · Cirkeldiagram",
   "showDataTable": "Visa datatabell",
   "downloadData": "Ladda ner data (.csv)",
-  "series": "Serie {n}"
+  "series": "Serie {n}",
+  "barChartLabel": "stapeldiagram",
+  "lineChartLabel": "linjediagram",
+  "pieChartLabel": "cirkeldiagram"
 }

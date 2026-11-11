@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Sitinathe kumaliza ntchito ({status})",
   "normalizedPageSlugs": "Ma slug a masamba {count} akonzedwa",
   "createdTitle": "{title} lapangidwa!",
-  "processing": "Tikukonza"
+  "processing": "Tikukonza",
+  "saveTimedOut": "Kusunga kwatenga nthawi yayitali: seva siyinayankhe. Zosintha zanu zasungidwa pano, koma seva ikhoza kumaliza kusunga."
 }

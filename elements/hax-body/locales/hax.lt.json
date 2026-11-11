@@ -197,5 +197,6 @@
   "removeSource": "Pašalinti šaltinį",
   "lockUnlock": "Užrakinti / atrakinti",
   "toggleFilters": "Perjungti filtrus",
-  "filters": "Filtrai"
+  "filters": "Filtrai",
+  "typeForQuickActions": "Įveskite „/“ greitiems veiksmams"
 }

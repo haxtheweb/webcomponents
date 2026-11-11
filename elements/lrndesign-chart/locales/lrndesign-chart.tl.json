@@ -4,5 +4,8 @@
   "pieChart": "Data · Pie chart",
   "showDataTable": "Ipakita ang talahanayan ng data",
   "downloadData": "I-download ang data (.csv)",
-  "series": "Serye {n}"
+  "series": "Serye {n}",
+  "barChartLabel": "bar chart",
+  "lineChartLabel": "line chart",
+  "pieChartLabel": "pie chart"
 }

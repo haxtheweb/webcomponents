@@ -19,5 +19,13 @@
   "copyCode": "复制代码",
   "copied": "已复制！",
   "invalidCode": "这不是有效的角色代码。",
-  "preview": "角色预览"
+  "preview": "角色预览",
+  "previous": "上一个{name}",
+  "next": "下一个{name}",
+  "variant": "第 {current} 个，共 {total} 个",
+  "save": "保存",
+  "cancel": "取消",
+  "unsavedChanges": "有未保存的更改",
+  "noUnsavedChanges": "没有未保存的更改",
+  "codeHelp": "粘贴代码以加载角色，或复制此代码以在任何地方使用。"
 }

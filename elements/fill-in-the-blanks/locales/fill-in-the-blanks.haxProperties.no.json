@@ -37,6 +37,16 @@
         "title": "Navn på quizen",
         "description": "Quiznavn som sendes inn i xAPI-baserte miljøer for å identifisere dette elementet"
       }
+    ],
+    "advanced": [
+      {
+        "title": "Sammenleggbar",
+        "description": "Vis dette spørsmålet som en rad som kan åpnes og lukkes. Når du åpner ett, lukkes de andre sammenleggbare spørsmålene ved siden av."
+      },
+      {
+        "title": "Start sammenlagt",
+        "description": "Når sammenleggbar, start som en lukket rad som bare viser spørsmålet og statusen."
+      }
     ]
   }
 }

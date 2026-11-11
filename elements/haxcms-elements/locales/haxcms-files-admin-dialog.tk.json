@@ -81,5 +81,11 @@
   "replaceOriginalsTitle": "Asyl faýllary çalyşmak",
   "newName": "Täze at",
   "deleteAction": "Pozmak",
-  "renameAction": "Adyny üýtget"
+  "renameAction": "Adyny üýtget",
+  "bulkOverwriteConfirm": "{count} faýl üçin {action}? Bu asyl faýllary çalyşýar we yzyna gaýtaryp bolmaýar.",
+  "actionScale": "Ölçegi üýtget",
+  "actionRotate": "Aýla",
+  "actionTransform": "Öwür",
+  "actionConvertJpg": "JPG-e öwür",
+  "actionCompress": "Gysyp"
 }

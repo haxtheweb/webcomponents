@@ -35,5 +35,12 @@
   "youTubeStartLoading": "አጫውትን ይጫኑ።",
   "youTubeTranscriptLabel": "ሚዲያው መጫወት ሲጀምር ግልባጩ ይጫናል።",
   "audioDescriptionLabel": "የድምፅ መግለጫ",
-  "openOnYouTube": "በYouTube ክፈት"
+  "openOnYouTube": "በYouTube ክፈት",
+  "interactiveLabel": "በይነተገናኝ",
+  "layoutLabel": "አቀማመጥ",
+  "sideLabel": "ጎን",
+  "belowLabel": "ታች",
+  "leftLabel": "ግራ",
+  "rightLabel": "ቀኝ",
+  "hideTranscriptLabel": "ጽሑፍ ቅጂ ደብቅ"
 }

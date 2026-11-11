@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "לא ניתן להשלים את הפעולה ({status})",
   "normalizedPageSlugs": "נורמלו {count} slugs של דפים",
   "createdTitle": "{title} נוצר!",
-  "processing": "מעבד"
+  "processing": "מעבד",
+  "saveTimedOut": "השמירה נכשלה בגלל זמן קצוב: השרת לא ענה. השינויים שלכם נשמרים כאן, אך ייתכן שהשרת עדיין יסיים לשמור אותם."
 }

@@ -19,5 +19,13 @@
   "copyCode": "نسخ الرمز",
   "copied": "تم النسخ!",
   "invalidCode": "هذا ليس رمز شخصية.",
-  "preview": "معاينة الشخصية"
+  "preview": "معاينة الشخصية",
+  "previous": "{name} السابق",
+  "next": "{name} التالي",
+  "variant": "{current} من {total}",
+  "save": "حفظ",
+  "cancel": "إلغاء",
+  "unsavedChanges": "تغييرات غير محفوظة",
+  "noUnsavedChanges": "لا توجد تغييرات غير محفوظة",
+  "codeHelp": "الصق رمزًا لتحميل شخصية، أو انسخ هذا الرمز لاستخدامه في أي مكان."
 }

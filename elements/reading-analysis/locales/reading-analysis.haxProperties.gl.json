@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Actividade",
-        "description": "Marcar evidencias: o alumnado pega cada bandeiriña xunto á súa evidencia. Seleccionar un: o alumnado escolle o único fragmento que mellor responde á pregunta."
+        "description": "Marcar evidencias: o alumnado pega cada bandeiriña xunto á súa evidencia. Seleccionar un: o alumnado escolle o único fragmento que mellor responde á pregunta.",
+        "options": {
+          "flag": "Marcar evidencias",
+          "one": "Seleccionar unha"
+        }
       },
       {
         "property": "unit",
         "title": "O alumnado selecciona",
-        "description": "O que un estudante sinala na lectura. As figuras sempre se poden seleccionar."
+        "description": "O que un estudante sinala na lectura. As figuras sempre se poden seleccionar.",
+        "options": {
+          "sentence": "Oracións",
+          "paragraph": "Parágrafos",
+          "figure": "Só figuras"
+        }
       },
       {
         "property": "answers",

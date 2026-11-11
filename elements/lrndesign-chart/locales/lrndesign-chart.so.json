@@ -4,5 +4,8 @@
   "pieChart": "Xog · Jaantuska goobaha",
   "showDataTable": "Muuji shaxda xogta",
   "downloadData": "Soo deji xogta (.csv)",
-  "series": "Taxane {n}"
+  "series": "Taxane {n}",
+  "barChartLabel": "jaantus tiirar ah",
+  "lineChartLabel": "jaantus xariiq ah",
+  "pieChartLabel": "jaantus goobo ah"
 }

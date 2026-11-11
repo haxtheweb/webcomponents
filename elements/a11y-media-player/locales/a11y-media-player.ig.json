@@ -35,5 +35,12 @@
   "youTubeStartLoading": "Pịa kpọọ.",
   "youTubeTranscriptLabel": "Ihe ndekọ ga-ebugo ozugbo mgbasa ozi malitere ịkpọ.",
   "audioDescriptionLabel": "Nkọwa ụda",
-  "openOnYouTube": "Mepee na YouTube"
+  "openOnYouTube": "Mepee na YouTube",
+  "interactiveLabel": "nke na-emekọrịta",
+  "layoutLabel": "Nhazi",
+  "sideLabel": "Akụkụ",
+  "belowLabel": "N'okpuru",
+  "leftLabel": "Aka ekpe",
+  "rightLabel": "Aka nri",
+  "hideTranscriptLabel": "Zoo ederede olu"
 }

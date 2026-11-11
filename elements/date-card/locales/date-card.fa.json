@@ -1,0 +1,8 @@
+{
+  "ordinalOne": "ام",
+  "ordinalTwo": "ام",
+  "ordinalFew": "ام",
+  "ordinalOther": "ام",
+  "fromTimeToTime": "از {start} تا {end}",
+  "atTime": "در {start}"
+}

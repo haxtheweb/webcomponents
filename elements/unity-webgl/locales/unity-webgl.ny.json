@@ -1,5 +1,6 @@
 {
   "simulation": "Kutsanzira",
   "fullScreen": "Sikirini yonse",
-  "exitFullScreen": "Tulukani pa sikirini yonse"
+  "exitFullScreen": "Tulukani pa sikirini yonse",
+  "player": "Pulogalamu yosewera ya Unity WebGL"
 }

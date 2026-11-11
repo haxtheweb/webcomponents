@@ -197,5 +197,6 @@
   "removeSource": "นำแหล่งที่มาออก",
   "lockUnlock": "ล็อก / ปลดล็อก",
   "toggleFilters": "สลับตัวกรอง",
-  "filters": "ตัวกรอง"
+  "filters": "ตัวกรอง",
+  "typeForQuickActions": "พิมพ์ '/' เพื่อดูการดำเนินการด่วน"
 }

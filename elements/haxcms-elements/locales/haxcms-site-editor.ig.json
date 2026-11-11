@@ -45,5 +45,6 @@
   "unableToCompleteOperationStatus": "Enweghị ike imecha ọrụ ({status})",
   "normalizedPageSlugs": "Ahazila slug ibe {count}",
   "createdTitle": "Emepụtala {title}!",
-  "processing": "Na-edozi"
+  "processing": "Na-edozi",
+  "saveTimedOut": "Nchekwa agafeela oge: sava ahụ azaghị. A na-edebe mgbanwe gị ebe a, mana sava ahụ nwere ike ịmechaa ichekwa ha."
 }

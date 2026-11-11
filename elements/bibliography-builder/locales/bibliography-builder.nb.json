@@ -4,5 +4,6 @@
   "exportCitations": "Eksporter kildehenvisninger",
   "copy": "Kopier",
   "exportCitationFormat": "Format for eksport av kildehenvisninger",
-  "selectCitationFormatBelow": "Velg et format for kildehenvisninger nedenfor"
+  "selectCitationFormatBelow": "Velg et format for kildehenvisninger nedenfor",
+  "addCitationToBibliography": "Legg til kildehenvisning i litteraturlisten"
 }

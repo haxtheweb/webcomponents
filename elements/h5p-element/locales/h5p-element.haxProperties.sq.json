@@ -1,13 +1,20 @@
 {
   "gizmo": {
     "title": "H5P",
-    "description": "Mbështjellës H5P për ngarkimin dhe paraqitjen e skedarëve .h5p"
+    "description": "Luan përmbajtje interaktive H5P nga një skedar .h5p i ngarkuar, pa nevojën e një serveri H5P"
   },
   "settings": {
     "configure": [
       {
         "slot": "",
-        "description": "Kodi i ngulitjes iframe i H5P"
+        "description": "Ngarko ose lidh një skedar .h5p. Zhpaketohet në shfletues; nuk kërkohet server H5P.",
+        "title": "Skedar H5P"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kod i vjetër për ngulitje me iframe",
+        "description": "Vetëm për përmbajtje më të vjetër që ngulit një iframe H5P nga një sajt tjetër. Lëre bosh kur është caktuar një skedar .h5p më sipër."
       }
     ]
   }

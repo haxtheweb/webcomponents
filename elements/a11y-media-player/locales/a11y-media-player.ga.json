@@ -35,5 +35,12 @@
   "youTubeStartLoading": "",
   "youTubeTranscriptLabel": "",
   "audioDescriptionLabel": "Closcur",
-  "openOnYouTube": "Oscail ar YouTube"
+  "openOnYouTube": "Oscail ar YouTube",
+  "interactiveLabel": "idirghníomhach",
+  "layoutLabel": "Leagan amach",
+  "sideLabel": "Ar an taobh",
+  "belowLabel": "Thíos",
+  "leftLabel": "Ar chlé",
+  "rightLabel": "Ar dheis",
+  "hideTranscriptLabel": "Folaigh an scríbhinn"
 }

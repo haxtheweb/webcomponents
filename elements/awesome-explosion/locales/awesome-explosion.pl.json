@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Kliknij lub najedź, aby odtworzyć dźwięk eksplozji",
+  "soundDisabled": "Wizualny efekt eksplozji (dźwięk wyłączony)",
+  "explosionAnimation": "animacja eksplozji",
+  "explosionAriaLabel": "Animacja eksplozji {state} {sound}. Kliknij, aby przełączyć.",
+  "playing": "odtwarzana",
+  "stopped": "zatrzymana",
+  "withSound": "z dźwiękiem",
+  "muted": "(wyciszona)"
+}

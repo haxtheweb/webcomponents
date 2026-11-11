@@ -1,13 +1,20 @@
 {
   "gizmo": {
     "title": "H5P",
-    "description": "מעטפת H5P לטעינה ולהצגה של קובצי .h5p"
+    "description": "מפעיל תוכן אינטראקטיבי של H5P מקובץ h5p. שהועלה, ללא צורך בשרת H5P"
   },
   "settings": {
     "configure": [
       {
         "slot": "",
-        "description": "קוד הטמעה של iframe עבור H5P"
+        "description": "העלו או קשרו קובץ h5p. הקובץ נפתח בדפדפן; אין צורך בשרת H5P.",
+        "title": "קובץ H5P"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "קוד הטמעה ישן של iframe",
+        "description": "רק עבור תוכן ישן שמטמיע iframe של H5P מאתר אחר. השאירו ריק כאשר מוגדר קובץ h5p. למעלה."
       }
     ]
   }

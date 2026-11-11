@@ -197,5 +197,6 @@
   "removeSource": "Alih keluar sumber",
   "lockUnlock": "Kunci / Buka Kunci",
   "toggleFilters": "Togol Penapis",
-  "filters": "Penapis"
+  "filters": "Penapis",
+  "typeForQuickActions": "Taip '/' untuk tindakan pantas"
 }

@@ -122,5 +122,6 @@
   "CONVERSION_FAILED": "Үзгәртеп кору барып чыкмады.",
   "PARAM_REQUIRED": "Мәҗбүри кыйммәт юк: {param}.",
   "INVALID_REQUEST": "Дөрес булмаган сорау.",
-  "PARAM_INVALID": "Дөрес булмаган кыйммәт: {param}."
+  "PARAM_INVALID": "Дөрес булмаган кыйммәт: {param}.",
+  "BLOCK_RATE_LIMITED": "Хәзер бу сайтта эчтәлеккә бик күп үзгәртү кертелә. {retryAfter} секундтан кабатлап карагыз."
 }

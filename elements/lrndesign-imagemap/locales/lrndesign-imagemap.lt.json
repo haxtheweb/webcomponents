@@ -1,0 +1,9 @@
+{
+  "imageMap": "Vaizdo žemėlapis",
+  "interactive": "Interaktyvus",
+  "hotspot": "Aktyvi vieta",
+  "hotspotPosition": "{n} iš {total}",
+  "hotspotsExplored": "Ištirta aktyvių vietų: {n} iš {total}",
+  "explored": "Ištirta",
+  "close": "Uždaryti"
+}

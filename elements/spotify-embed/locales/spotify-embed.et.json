@@ -1,4 +1,9 @@
 {
   "audio": "Heli",
-  "openOnSpotify": "Ava Spotifys uuel vahelehel"
+  "openOnSpotify": "Ava Spotifys uuel vahelehel",
+  "embedTitle": "Spotify manus",
+  "trackEmbedTitle": "Spotify loo manus",
+  "albumEmbedTitle": "Spotify albumi manus",
+  "playlistEmbedTitle": "Spotify esitusloendi manus",
+  "artistEmbedTitle": "Spotify esineja manus"
 }

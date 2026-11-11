@@ -129,5 +129,12 @@
   "cancel": "ပယ်ဖျက်ရန်",
   "clearedSite": "{site} အတွက် သင့်သင်ယူမှုဒေတာကို ရှင်းလင်းပြီးပါပြီ။",
   "clearedDevice": "ဤစက်ပေါ်ရှိ သင်ယူမှုဒေတာအားလုံးကို ရှင်းလင်းပြီးပါပြီ။",
-  "thisSite": "ဤဆိုက်"
+  "thisSite": "ဤဆိုက်",
+  "outlineHeading": "စာမျက်နှာအလိုက် တိုးတက်မှု",
+  "allPages": "စာမျက်နှာအားလုံး",
+  "outlinePagesDone": "စာမျက်နှာ {total} ခုအနက် {done} ခု ပြီးပြီ",
+  "outlinePagesCount": "စာမျက်နှာ {count} ခု",
+  "outlinePercent": "{percent}%",
+  "outlinePercentComplete": "{percent}% ပြီးစီးပြီ",
+  "outlineComplete": "ပြီးစီးပြီ"
 }

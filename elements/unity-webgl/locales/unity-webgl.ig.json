@@ -1,5 +1,6 @@
 {
   "simulation": "Ngosi ihe atụ",
   "fullScreen": "Ihuenyo zuru ezu",
-  "exitFullScreen": "Pụọ na ihuenyo zuru ezu"
+  "exitFullScreen": "Pụọ na ihuenyo zuru ezu",
+  "player": "Ihe nkpọpụta Unity WebGL"
 }

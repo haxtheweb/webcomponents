@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "I-click o i-hover para i-play ang tunog ng pagsabog",
+  "soundDisabled": "Visual na epekto ng pagsabog (naka-disable ang tunog)",
+  "explosionAnimation": "animation ng pagsabog",
+  "explosionAriaLabel": "Animation ng pagsabog {state} {sound}. I-click para i-toggle.",
+  "playing": "nagpe-play",
+  "stopped": "huminto",
+  "withSound": "may tunog",
+  "muted": "(naka-mute)"
+}

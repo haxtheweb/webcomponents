@@ -1,13 +1,20 @@
 {
   "gizmo": {
     "title": "H5P",
-    "description": "Ovoj H5P za nalaganje in predstavitev datotek .h5p"
+    "description": "Predvaja interaktivno vsebino H5P iz naložene datoteke .h5p brez strežnika H5P"
   },
   "settings": {
     "configure": [
       {
         "slot": "",
-        "description": "Koda za vdelavo H5P prek iframe"
+        "description": "Naložite datoteko .h5p ali vstavite povezavo do nje. Razpakira se v brskalniku; strežnik H5P ni potreben.",
+        "title": "Datoteka H5P"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Stara koda za vdelavo iframe",
+        "description": "Samo za starejšo vsebino, ki vdeluje iframe H5P z drugega spletnega mesta. Pustite prazno, če je zgoraj nastavljena datoteka .h5p."
       }
     ]
   }

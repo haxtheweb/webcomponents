@@ -13,12 +13,21 @@
       {
         "property": "mode",
         "title": "Aktivitāte",
-        "description": "Atzīmēt pierādījumus: izglītojamie pielīmē katru karodziņu blakus tā pierādījumam. Atlasīt vienu: izglītojamie izvēlas vienīgo fragmentu, kas vislabāk atbild uz jautājumu."
+        "description": "Atzīmēt pierādījumus: izglītojamie pielīmē katru karodziņu blakus tā pierādījumam. Atlasīt vienu: izglītojamie izvēlas vienīgo fragmentu, kas vislabāk atbild uz jautājumu.",
+        "options": {
+          "flag": "Atzīmēt pierādījumus",
+          "one": "Atlasīt vienu"
+        }
       },
       {
         "property": "unit",
         "title": "Izglītojamie atlasa",
-        "description": "Uz ko izglītojamais norāda tekstā. Attēlus vienmēr var atlasīt."
+        "description": "Uz ko izglītojamais norāda tekstā. Attēlus vienmēr var atlasīt.",
+        "options": {
+          "sentence": "Teikumi",
+          "paragraph": "Rindkopas",
+          "figure": "Tikai attēli"
+        }
       },
       {
         "property": "answers",
