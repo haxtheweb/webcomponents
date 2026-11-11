@@ -3169,8 +3169,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       else if (children[i].nodeType === 8) {
         content += "<!-- " + children[i].textContent + " -->";
       }
-      // Sanitize fake-hax-line-break when saving
-      else if (children[i].querySelector(":scope > fake-hax-list-break")) {
+      // Sanitize fake-hax-line-break when saving (elements only: text in
+      // the page falls through to be kept as text below)
+      else if (
+        children[i].nodeType === 1 &&
+        children[i].querySelector(":scope > fake-hax-list-break")
+      ) {
         for (const node of children[i].children) {
           if (
             node.tagName.toLowerCase() === "ul" ||

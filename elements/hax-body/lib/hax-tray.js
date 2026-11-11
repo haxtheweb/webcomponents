@@ -1705,8 +1705,12 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
       const oldValue = changedProperties.get("activeGizmo");
       if (this.activeGizmo) {
         this.activeTagName = this.activeGizmo.title;
+        // Structure stays open while blocks get selected from it (or the
+        // active block is put back after the content is exported, as on
+        // save and View source); anywhere else, a block selected from
+        // nothing opens Configure
         if (
-          !oldValue ||
+          (!oldValue && this.trayDetail !== "content-map") ||
           !["content-map", "content-edit", "content-add"].includes(
             this.trayDetail,
           )
