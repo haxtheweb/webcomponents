@@ -54,5 +54,4 @@ test("mentions in comments and non-schema code are not", () => {
 test("placeholder schemas that are not content blocks are excluded", () => {
   assert.equal(EXCLUDED_ELEMENT_TAGS.has("simple-fields"), true);
   assert.equal(EXCLUDED_ELEMENT_TAGS.has("beaker-broker"), true);
-  assert.equal(EXCLUDED_ELEMENT_TAGS.has("simple-wc"), true);
 });

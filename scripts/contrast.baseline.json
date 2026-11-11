@@ -1535,12 +1535,6 @@
         "demo-snippet >> #codeDisplay >> .ddd-block-label": 1
       }
     },
-    "simple-wc": {
-      "dark": {
-        "demo-snippet >> #codeDisplay >> #copyButton": 2,
-        "demo-snippet >> #codeDisplay >> .ddd-block-label": 2
-      }
-    },
     "slide-deck": {
       "dark": {
         "slide-deck >> .ddd-block-label": 1
