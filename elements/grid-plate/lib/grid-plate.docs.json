@@ -7,11 +7,7 @@
   "title": "Column layout",
   "description": "Layout material in simple columns",
   "icon": "hax:3-3-3-3",
-  "tags": [
-    "Layout",
-    "content",
-    "grid"
-  ],
+  "tags": ["Layout", "content", "grid"],
   "haxCapable": true,
   "import": "@haxtheweb/grid-plate/grid-plate.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/grid-plate/grid-plate.js",
@@ -46,7 +42,7 @@
       "name": "breakpoint-sm",
       "property": "breakpointSm",
       "type": "number",
-      "default": "600",
+      "default": "480",
       "description": "Custom small breakpoint for the layouts; only updated on attached",
       "hax": null
     },
@@ -54,7 +50,7 @@
       "name": "breakpoint-md",
       "property": "breakpointMd",
       "type": "number",
-      "default": "900",
+      "default": "640",
       "description": "Custom medium breakpoint for the layouts; only updated on attached",
       "hax": null
     },
@@ -152,15 +148,8 @@
       "hax": null
     }
   ],
-  "slots": [
-    "col-1",
-    "col-2",
-    "col-N"
-  ],
-  "events": [
-    "disable-responsive-changed",
-    "responsive-element"
-  ],
+  "slots": ["col-1", "col-2", "col-N"],
+  "events": ["disable-responsive-changed", "responsive-element"],
   "hax": {
     "type": "grid",
     "canScale": true,
@@ -176,11 +165,7 @@
       "description": "Layout material in simple columns",
       "icon": "hax:3-3-3-3",
       "color": "grey",
-      "tags": [
-        "Layout",
-        "content",
-        "grid"
-      ],
+      "tags": ["Layout", "content", "grid"],
       "handles": [],
       "meta": {
         "author": "HAXTheWeb core team",
@@ -264,7 +249,7 @@
       }
     ]
   },
-  "surfaceHash": "d33d459a020a",
+  "surfaceHash": "3986c2093530",
   "walkthroughs": [
     {
       "id": "",

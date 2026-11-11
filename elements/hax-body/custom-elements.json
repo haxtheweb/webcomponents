@@ -134,6 +134,248 @@
             },
             {
               "kind": "method",
+              "name": "_handleBarMore",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "More tools on the block bar was opened or closed; remember it for this\nperson in this browser"
+            },
+            {
+              "kind": "field",
+              "name": "_reducedMotion",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_motionCapture",
+              "parameters": [
+                {
+                  "name": "container"
+                }
+              ],
+              "description": "where each element child of a container is before a change"
+            },
+            {
+              "kind": "method",
+              "name": "_motionPlay",
+              "parameters": [
+                {
+                  "name": "rects"
+                },
+                {
+                  "name": "duration",
+                  "default": "240"
+                }
+              ],
+              "description": "slide each element from where it was to where it is now (FLIP);\ntransform only, so it runs on the compositor every frame"
+            },
+            {
+              "kind": "method",
+              "name": "_closeOtherBarPopups",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "the bar travels with a block that moves (Move up / Move down): it is\nplaced at the block's new spot before the block starts sliding, slides\nthere over the same time, and is not re-measured mid-slide (which would\ncatch the block half way)"
+            },
+            {
+              "kind": "method",
+              "name": "_barGlideStart"
+            },
+            {
+              "kind": "method",
+              "name": "_barGlideTo",
+              "parameters": [
+                {
+                  "name": "glide"
+                },
+                {
+                  "name": "duration",
+                  "default": "240"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_motionBox",
+              "parameters": [
+                {
+                  "name": "node"
+                },
+                {
+                  "name": "cls"
+                }
+              ],
+              "description": "a box drawn over a block in the motion layer, in this element's\ncoordinates, so nothing is written into the content itself"
+            },
+            {
+              "kind": "method",
+              "name": "_motionLand",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ],
+              "description": "the landing wash: a tint over the block that fades, so the eye finds\nwhere something went"
+            },
+            {
+              "kind": "method",
+              "name": "_motionGrowIn",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_motionHatch",
+              "parameters": [
+                {
+                  "name": "node"
+                },
+                {
+                  "name": "on"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_motionCollapse",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ],
+              "description": "fold a block away before it is removed"
+            },
+            {
+              "kind": "method",
+              "name": "_haxUiIsDark",
+              "description": "HAX UI follows its own theme setting (haxdark, or system = the OS)"
+            },
+            {
+              "kind": "method",
+              "name": "_stripEditorAttributes",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ],
+              "description": "attributes HAX adds while editing; they are not part of the content"
+            },
+            {
+              "kind": "method",
+              "name": "_sizeSourceEditor",
+              "parameters": [
+                {
+                  "name": "editor"
+                },
+                {
+                  "name": "node"
+                }
+              ],
+              "description": "the HTML editor takes the block's width and a height that fits its\ncode, so it sits where the block was"
+            },
+            {
+              "kind": "method",
+              "name": "_blockDragStart",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "the block lifts and follows the pointer. A drop line glides between the\nplaces it can land; when the pointer rests, the blocks around that place\nmove apart to show the gap the block would fill. It can land among the\npage's blocks or in any grid-plate column. On release everything slides\ninto place and the block gets the landing wash. Escape cancels."
+            },
+            {
+              "kind": "method",
+              "name": "_dragZones",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ],
+              "description": "where a dragged block can land: the page's own blocks, and each column\nof each grid-plate (not the block's own grid when it is a grid-plate)"
+            },
+            {
+              "kind": "method",
+              "name": "_blockDragMove",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_blockDragFrame"
+            },
+            {
+              "kind": "method",
+              "name": "_dragPlaceLine",
+              "parameters": [
+                {
+                  "name": "zone"
+                },
+                {
+                  "name": "to"
+                }
+              ],
+              "description": "the drop line sits in the gap the block would land in (or at the top of\nan empty column)"
+            },
+            {
+              "kind": "method",
+              "name": "_dragMakeRoom",
+              "parameters": [
+                {
+                  "name": "zone"
+                },
+                {
+                  "name": "to"
+                }
+              ],
+              "description": "move blocks apart to show where the block would go. In its own list the\nblocks after its old place close up and the blocks from the new place on\nmove down by its height. In a grid column the column's blocks from the\nnew place move down, and if that runs past the grid, the page below the\ngrid moves down too. Transform only; nothing is written to content."
+            },
+            {
+              "kind": "method",
+              "name": "_liftFrame",
+              "parameters": [
+                {
+                  "name": "dy"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_blockDragKey",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_blockDragEnd"
+            },
+            {
+              "kind": "method",
+              "name": "haxSetGridLayout",
+              "parameters": [
+                {
+                  "name": "node"
+                },
+                {
+                  "name": "layout"
+                }
+              ],
+              "description": "set a grid-plate layout for the active block: change the layout of the\ngrid it is in, or wrap it in a new one (the block lands in column 1)"
+            },
+            {
+              "kind": "method",
               "name": "_applyQuickActionsText",
               "description": "The empty-paragraph placeholder is drawn by CSS (::before content),\nwhich cannot read this.t, so pass the translated text in through a\ncustom property that inherits into the slotted paragraphs."
             },
@@ -1262,6 +1504,17 @@
             },
             {
               "kind": "field",
+              "name": "barMore",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "More tools is open on the block bar (remembered per browser)",
+              "default": "false",
+              "attribute": "bar-more"
+            },
+            {
+              "kind": "field",
               "name": "editMode",
               "privacy": "public",
               "type": {
@@ -1482,6 +1735,15 @@
               "description": "Is active node in view source mode?",
               "default": "false",
               "fieldName": "viewSourceToggle"
+            },
+            {
+              "name": "bar-more",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "More tools is open on the block bar (remembered per browser)",
+              "default": "false",
+              "fieldName": "barMore"
             }
           ],
           "mixins": [
@@ -5751,7 +6013,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "`hax-plate-context`\n`A context menu that provides common grid plate based authoring options.`",
+          "description": "`hax-plate-context`\n`The block bar: one row of block operations above the active block.`",
           "name": "HaxPlateContext",
           "members": [
             {
@@ -5765,22 +6027,253 @@
               }
             },
             {
-              "kind": "field",
-              "name": "filteredBlocks",
-              "description": "get a list of valid blocks for active node\n(if active node is a slot, some blockes may not be permitted)",
-              "readonly": true,
-              "return": {
-                "type": {
-                  "text": "array"
+              "kind": "method",
+              "name": "_ic",
+              "parameters": [
+                {
+                  "name": "icon"
                 }
-              }
+              ]
             },
             {
               "kind": "method",
-              "name": "__updatePlatePosition",
+              "name": "_drop"
+            },
+            {
+              "kind": "method",
+              "name": "_fire",
               "parameters": [
                 {
-                  "name": "active"
+                  "name": "el"
+                },
+                {
+                  "name": "eventName"
+                },
+                {
+                  "name": "value"
+                },
+                {
+                  "name": "eventData"
+                }
+              ],
+              "description": "send an operation to hax-body from the element that was used, so\nhax-body can read data-slot / eventData off it as it always has"
+            },
+            {
+              "kind": "field",
+              "name": "_isText",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "_tag",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "_gridPlate",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "_allFormatBlocks",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "_formatBlocks",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_allows",
+              "parameters": [
+                {
+                  "name": "tag"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "_chipLabel",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "_siblings",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "_reducedMotion",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_sourceTemplate",
+              "description": "while a block's HTML is being edited the bar only offers Apply changes\nand Cancel, so it is clear the edit has to be finished first"
+            },
+            {
+              "kind": "method",
+              "name": "attention",
+              "description": "draw the eye to the bar (e.g. another block was clicked while the\nHTML editor is open)"
+            },
+            {
+              "kind": "method",
+              "name": "_toggleMenu",
+              "parameters": [
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "anchor"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_openMenu",
+              "parameters": [
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "anchor"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_closeMenu",
+              "parameters": [
+                {
+                  "name": "refocus",
+                  "default": "true"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_outsideClick",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_menuKeydown",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_mi",
+              "parameters": [
+                {
+                  "name": "icon"
+                },
+                {
+                  "name": "label"
+                },
+                {
+                  "name": "onClick"
+                },
+                {
+                  "name": "opts",
+                  "default": "{}"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_menuTemplate"
+            },
+            {
+              "kind": "method",
+              "name": "_formatMenu"
+            },
+            {
+              "kind": "method",
+              "name": "_insertMenu"
+            },
+            {
+              "kind": "field",
+              "name": "commonBlocks",
+              "description": "the common blocks, Paragraph first, then Blocks… for everything else",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_blocksMenu",
+              "parameters": [
+                {
+                  "name": "where"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_layoutMenu"
+            },
+            {
+              "kind": "method",
+              "name": "_nameLayout",
+              "parameters": [
+                {
+                  "name": "text"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_toggleMore"
+            },
+            {
+              "kind": "method",
+              "name": "_removeClick",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_disarm"
+            },
+            {
+              "kind": "method",
+              "name": "_removeBlur"
+            },
+            {
+              "kind": "method",
+              "name": "_removeKeydown",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_dragPointerDown",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "the grip only drags, it has no menu: hax-body lifts the block and it\nfollows the pointer. Arrow keys on the grip move the block one place."
+            },
+            {
+              "kind": "method",
+              "name": "_dragKeydown",
+              "parameters": [
+                {
+                  "name": "e"
                 }
               ]
             },
@@ -5789,7 +6282,7 @@
               "name": "__dblClickFireInsert",
               "parameters": [
                 {
-                  "name": "event"
+                  "name": "e"
                 }
               ]
             },
@@ -5801,26 +6294,6 @@
                   "name": "e"
                 }
               ]
-            },
-            {
-              "kind": "method",
-              "name": "_dragEnd",
-              "parameters": [
-                {
-                  "name": "e"
-                }
-              ],
-              "description": "When we end dragging ensure we remove the mover class."
-            },
-            {
-              "kind": "method",
-              "name": "_dragStart",
-              "parameters": [
-                {
-                  "name": "e"
-                }
-              ],
-              "description": "Drag start so we know what target to set"
             },
             {
               "kind": "method",
@@ -5905,11 +6378,43 @@
             },
             {
               "kind": "field",
+              "name": "moreOpen",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "More tools is open: the rest of the bar shows in the same row",
+              "default": "false",
+              "attribute": "more-open",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "_confirmRemove",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "_confirmRemove"
+            },
+            {
+              "kind": "field",
+              "name": "_menu",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "_menu"
+            },
+            {
+              "kind": "field",
               "name": "t",
               "type": {
                 "text": "object"
               },
-              "default": "{ edit: \"Edit\", dragHandle: \"Drag handle\", moveUp: \"Move up\", moveDown: \"Move down\", addColumn: \"Add column\", removeColumn: \"Remove column\", remove: \"Remove\", duplicate: \"Duplicate\", confirmDelete: \"Confirm delete\", changeTo: \"Change to\", editElement: \"Edit Mode\", modifyHTMLSource: \"Modify HTML source\", regions: \"Available regions\", insertItemAbove: \"Insert item above\", insertItemAboveOrBelow: \"Insert item above or below\", insertItemBelow: \"Insert item below\", selectLayout: \"Select Layout Element\", lockContent: \"Lock content\", unlockContent: \"Unlock content\", }"
+              "default": "{ edit: \"Edit\", dragHandle: \"Drag handle\", moveUp: \"Move up\", moveDown: \"Move down\", addColumn: \"Add column\", removeColumn: \"Remove column\", remove: \"Remove\", duplicate: \"Duplicate\", confirmDelete: \"Confirm delete\", changeTo: \"Change to\", editElement: \"Edit Mode\", modifyHTMLSource: \"Modify HTML source\", regions: \"Available regions\", insertItemAbove: \"Insert item above\", insertItemAboveOrBelow: \"Insert item above or below\", insertItemBelow: \"Insert item below\", selectLayout: \"Select Layout Element\", lockContent: \"Lock content\", unlockContent: \"Unlock content\", layout: \"Layout\", columnLayout: \"Column Layout\", moreTools: \"More tools\", fewerTools: \"Fewer tools\", format: \"Format\", textAlignment: \"Text alignment\", left: \"Left\", center: \"Center\", right: \"Right\", blockP: \"Paragraph\", blockH2: \"Heading 2\", blockH3: \"Heading 3\", blockH4: \"Heading 4\", blockH5: \"Heading 5\", blockH6: \"Heading 6\", blockquote: \"Blockquote\", blockPre: \"Preformatted\", bulletedList: \"Bulleted list\", numberedList: \"Numbered list\", heading: \"Heading\", image: \"Image\", columns: \"Columns\", blocks: \"Blocks…\", allBlocks: \"all blocks\", back: \"Back\", indent: \"Indent\", outdent: \"Outdent\", listsOnly: \"Lists only\", notInLayout: \"Not inside a layout\", moveToColumn: \"Move to column\", dragHint: \"Drag, or use the up and down arrow keys\", confirmHint: \"Click again to remove, Escape to keep\", editingHTML: \"Editing HTML\", applyChanges: \"Apply changes\", cancel: \"Cancel\", layout1: \"1: full width\", \"layout1-1\": \"2: equal width\", \"layout2-1\": \"2: wide & narrow\", \"layout1-2\": \"2: narrow & wide\", \"layout3-1\": \"2: wider & narrower\", \"layout1-3\": \"2: narrower & wider\", \"layout1-1-1\": \"3: equal width\", \"layout2-1-1\": \"3: wide, narrow, and narrow\", \"layout1-2-1\": \"3: narrow, wide, and narrow\", \"layout1-1-2\": \"3: narrow, narrow, and wide\", \"layout2-1-2\": \"3: wide, narrow, and wide\", \"layout1-1-1-1\": \"4: equal width\", }"
             },
             {
               "kind": "field",
@@ -6008,6 +6513,17 @@
                 "text": "boolean"
               },
               "attribute": "isLocked"
+            },
+            {
+              "kind": "field",
+              "name": "dragging",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "hax-body sets this while a block is being dragged",
+              "attribute": "dragging",
+              "reflects": true
             },
             {
               "kind": "field",
@@ -6219,7 +6735,13 @@
           ],
           "events": [
             {
-              "name": "hax-context-item-selected",
+              "name": "hax-block-bar-more",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "hax-block-drag-start",
               "type": {
                 "text": "CustomEvent"
               }
@@ -6348,6 +6870,39 @@
                 "text": "boolean"
               },
               "fieldName": "isLocked"
+            },
+            {
+              "name": "more-open",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "More tools is open: the rest of the bar shows in the same row",
+              "default": "false",
+              "fieldName": "moreOpen"
+            },
+            {
+              "name": "dragging",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "hax-body sets this while a block is being dragged",
+              "fieldName": "dragging"
+            },
+            {
+              "name": "_confirmRemove",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "_confirmRemove"
+            },
+            {
+              "name": "_menu",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "_menu"
             },
             {
               "name": "activeNode",
@@ -9143,6 +9698,52 @@
             },
             {
               "kind": "field",
+              "name": "compactConfig",
+              "description": "the block bar's text part: block format, lists and alignment live in\nhax-plate-context's format menu, so this toolbar keeps the\ninsert-at-cursor tools (shown with More tools) and the inline\nformatting bubble that appears only while text is selected",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "usesBubble",
+              "description": "the bubble layout applies (not for the novice audience)",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "activeConfig",
+              "description": "config for the active bar size",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_compactConfigWithInlineElements",
+              "parameters": [
+                {
+                  "name": "buttons",
+                  "default": "[]"
+                }
+              ],
+              "description": "compact bar: inline elements that wrap selected text join the bubble's\nMore formats; ones that insert at the cursor stay in the bar"
+            },
+            {
+              "kind": "field",
+              "name": "selectionBubbleGroup",
+              "description": "Bold, Italic, Link and Remove Link up front; the rest of the inline\nformats behind More formats",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "bubbleLinkButton",
+              "description": "Link in the bubble edits the link in place (see _startLinkEdit)",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "selectionMoreToggle",
+              "readonly": true
+            },
+            {
+              "kind": "field",
               "name": "filteredBlocks",
               "readonly": true
             },
@@ -9309,11 +9910,172 @@
             },
             {
               "kind": "field",
+              "name": "selectionBubble",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_handleBubbleToggle",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "More formats / Fewer formats in the selection bubble"
+            },
+            {
+              "kind": "method",
+              "name": "_listenForBubbleMoves",
+              "parameters": [
+                {
+                  "name": "listen"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_hideSelectionBubble",
+              "parameters": [
+                {
+                  "name": "bubble",
+                  "default": "this.selectionBubble"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_linkFromRange",
+              "parameters": [
+                {
+                  "name": "range"
+                }
+              ],
+              "description": "the link the range sits in, inside the block being edited"
+            },
+            {
+              "kind": "method",
+              "name": "_positionSelectionBubble",
+              "description": "In the compact bar, show the inline formatting bubble just below the\nselected text (above it when there is no room below), with its tip\npointing at the middle of the selection. A caret in a link shows the\nlink's address with Edit and Remove Link instead."
+            },
+            {
+              "kind": "method",
+              "name": "_bubbleButton",
+              "parameters": [
+                {
+                  "name": "icon"
+                },
+                {
+                  "name": "label"
+                },
+                {
+                  "name": "onClick"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_showLinkCard",
+              "parameters": [
+                {
+                  "name": "bubble"
+                },
+                {
+                  "name": "link"
+                }
+              ],
+              "description": "a caret in a link: its address (opens in a new tab), Edit link and\nRemove Link"
+            },
+            {
+              "kind": "method",
+              "name": "_removeLinkCard",
+              "parameters": [
+                {
+                  "name": "bubble",
+                  "default": "this.selectionBubble"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_unwrapLink",
+              "parameters": [
+                {
+                  "name": "link"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_safeHref",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ],
+              "description": "links may be web addresses, mail, phone, in-page anchors or site\npaths; anything else (e.g. script URLs) is not accepted"
+            },
+            {
+              "kind": "method",
+              "name": "_startLinkEdit",
+              "parameters": [
+                {
+                  "name": "existing"
+                }
+              ],
+              "description": "Link turns the bubble into a link field in place; the selected text\nstays highlighted while the field has focus"
+            },
+            {
+              "kind": "field",
+              "name": "_reducedMotion",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_restoreRange",
+              "parameters": [
+                {
+                  "name": "range"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_applyLink",
+              "parameters": [
+                {
+                  "name": "href"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_endLinkEdit",
+              "parameters": [
+                {
+                  "name": "restore"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleShortcutKeys",
+              "parameters": [
+                {
+                  "name": "e"
+                },
+                {
+                  "name": "key"
+                }
+              ],
+              "description": "Ctrl / Cmd + K edits the link in place in the bubble layout"
+            },
+            {
+              "kind": "field",
               "name": "t",
               "type": {
                 "text": "object"
               },
-              "default": "{ undoButton: \"Undo\", redoButton: \"Redo\", formatButton: \"Format\", blockP: \"Paragraph\", blockH1: \"Heading 1\", blockH2: \"Heading 2\", blockH3: \"Heading 3\", blockH4: \"Heading 4\", blockH5: \"Heading 5\", blockH6: \"Heading 6\", blockPre: \"Preformatted\", h1Button: \"Header 1\", h2Button: \"Header 2\", italicButton: \"Italic\", boldButton: \"Bold\", underlineButton: \"Underline\", strikethroughButton: \"Cross out\", codeButton: \"Code\", markButton: \"Highlight\", abbrButton: \"Abbreviation\", removeFormatButton: \"Remove format\", linkButton: \"Link\", unlinkButton: \"Remove Link\", cutButton: \"Cut\", copyButton: \"Copy\", pasteButton: \"Paste Clipboard\", subscriptButton: \"Subscript\", superscriptButton: \"Superscript\", symbolButton: \"Insert Symbol\", emojiButton: \"Insert Emoticon\", imageButton: \"Insert Image\", orderedListButton: \"Numbered list\", unorderedListButton: \"Bulleted list\", blockquoteButton: \"Blockquote\", indentButton: \"Indent\", outdentButton: \"Outdent\", alignmentPicker: \"Text alignment\", }"
+              "default": "{ undoButton: \"Undo\", redoButton: \"Redo\", formatButton: \"Format\", blockP: \"Paragraph\", blockH1: \"Heading 1\", blockH2: \"Heading 2\", blockH3: \"Heading 3\", blockH4: \"Heading 4\", blockH5: \"Heading 5\", blockH6: \"Heading 6\", blockPre: \"Preformatted\", h1Button: \"Header 1\", h2Button: \"Header 2\", italicButton: \"Italic\", boldButton: \"Bold\", underlineButton: \"Underline\", strikethroughButton: \"Cross out\", codeButton: \"Code\", markButton: \"Highlight\", abbrButton: \"Abbreviation\", removeFormatButton: \"Remove format\", linkButton: \"Link\", unlinkButton: \"Remove Link\", cutButton: \"Cut\", copyButton: \"Copy\", pasteButton: \"Paste Clipboard\", subscriptButton: \"Subscript\", superscriptButton: \"Superscript\", symbolButton: \"Insert Symbol\", emojiButton: \"Insert Emoticon\", imageButton: \"Insert Image\", orderedListButton: \"Numbered list\", unorderedListButton: \"Bulleted list\", blockquoteButton: \"Blockquote\", indentButton: \"Indent\", outdentButton: \"Outdent\", alignmentPicker: \"Text alignment\", moreFormats: \"More formats\", fewerFormats: \"Fewer formats\", addLink: \"Add link\", editLink: \"Edit link\", applyLink: \"Apply link\", updateLink: \"Update link\", linkAddress: \"Link address\", linkPlaceholder: \"Paste or type a link\", cancel: \"Cancel\", }"
             },
             {
               "kind": "field",
@@ -9363,6 +10125,18 @@
             },
             {
               "kind": "field",
+              "name": "barSize",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "\"compact\": block format, lists, alignment and inserts in the bar,\ninline formatting in a bubble on text selection;\n\"full\": every button in the bar",
+              "default": "\"full\"",
+              "attribute": "bar-size",
+              "reflects": true
+            },
+            {
+              "kind": "field",
               "name": "__updated",
               "type": {
                 "text": "boolean"
@@ -9384,6 +10158,17 @@
                 "text": "boolean"
               },
               "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "bubbleMode",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "set when inline formatting is in the selection bubble",
+              "attribute": "bubble-mode",
+              "reflects": true
             },
             {
               "kind": "field",
@@ -9593,27 +10378,24 @@
               }
             }
           ],
-          "mixins": [
-            {
-              "name": "RichTextEditorToolbarBehaviors",
-              "package": "@haxtheweb/rich-text-editor/lib/toolbars/rich-text-editor-toolbar.js"
-            },
-            {
-              "name": "I18NMixin",
-              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
-            },
-            {
-              "name": "HaxContextBehaviors",
-              "module": "/lib/hax-context-behaviors.js"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "hax-text-editor-toolbar",
-          "customElement": true,
           "attributes": [
+            {
+              "name": "bar-size",
+              "type": {
+                "text": "string"
+              },
+              "description": "\"compact\": block format, lists, alignment and inserts in the bar,\ninline formatting in a bubble on text selection;\n\"full\": every button in the bar",
+              "default": "\"full\"",
+              "fieldName": "barSize"
+            },
+            {
+              "name": "bubble-mode",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "set when inline formatting is in the selection bubble",
+              "fieldName": "bubbleMode"
+            },
             {
               "name": "activeNode",
               "type": {
@@ -9670,7 +10452,27 @@
                 "module": "lib/hax-context-behaviors.js"
               }
             }
-          ]
+          ],
+          "mixins": [
+            {
+              "name": "RichTextEditorToolbarBehaviors",
+              "package": "@haxtheweb/rich-text-editor/lib/toolbars/rich-text-editor-toolbar.js"
+            },
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            },
+            {
+              "name": "HaxContextBehaviors",
+              "module": "/lib/hax-context-behaviors.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "hax-text-editor-toolbar",
+          "customElement": true
         }
       ],
       "exports": [
@@ -12790,7 +13592,7 @@
           "type": {
             "text": "array"
           },
-          "default": "[ css` simple-modal[mode=\"hax-ui\"], simple-popover-manager[mode=\"hax\"] { font-family: var(--hax-ui-font-family); font-size: var(--hax-ui-font-size); --simple-modal-height: 80vh; --simple-modal-width: 80vw; --simple-popover-background-color: light-dark( var(--ddd-primary-4), var(--ddd-accent-6) ); --simple-popover-padding: var(--hax-ui-spacing); --simple-popover-border-color: light-dark( var(--ddd-accent-6), var(--ddd-primary-4) ); --simple-popover-color: light-dark( var(--ddd-accent-6), var(--ddd-primary-4) ); --simple-modal-border-color: var(--hax-ui-color); } rich-text-editor-prompt { z-index: calc(var(--hax-ui-focus-z-index) - 1); } simple-modal[mode=\"hax-ui\"]::part(dialog) { --simple-modal-z-index: 100000001 !important; } simple-modal[opened] { z-index: 100000001 !important; position: fixed; } /* the editor's dialogs (app picker, view source, cancel) wear the HAX UI dialog frame, the look of every admin modal; their titlebar and surface come from the frame's custom properties, which each dialog passes to the modal (see @haxtheweb/d-d-d/lib/HaxUiDialogFrame.js). Only the title font is set here; the close button is simple-modal's own, as in the admin dialogs. */ simple-modal[mode=\"hax-ui\"]::part(title) { font-family: var(--hax-ui-font-family); margin: 0 var(--hax-ui-spacing-sm) 0 0; padding: 0; } /* the cancel prompt is the confirm card: its buttons close it */ simple-modal[mode=\"hax-ui\"]#hax-cancel::part(close) { display: none; } simple-popover-manager[mode=\"hax\"]::part(simple-popover-heading), simple-popover-manager[mode=\"hax\"] h1[slot=\"heading\"] { color: var(--hax-ui-background-color); background-color: var(--hax-ui-color-accent); padding: var(--hax-ui-spacing-sm) var(--hax-ui-spacing); margin: 0; } simple-popover-manager[mode=\"hax\"] #close { color: var(--hax-ui-background-color); background-color: var(--hax-ui-color-accent); outline: 1px solid var(--hax-ui-color-accent); --simple-icon-button-border: 0px solid transparent; --simple-icon-button-border-radius: var(--hax-ui-border-radius); width: 24px; height: 24px; padding: 0; } simple-popover-manager[mode=\"hax\"] #close:focus, simple-popover-manager[mode=\"hax\"] #close:hover { background-color: var(--hax-ui-color-accent-secondary); --simple-icon-button-border: 0px solid transparent; } simple-popover-manager[mode=\"hax\"] h1 { font-family: var(--hax-ui-font-family); font-size: var(--hax-ui-font-size); font-weight: normal; margin: 0 var(--hax-ui-spacing-sm) 0 0; padding: 0; } simple-popover-manager[mode=\"hax\"] h2 { font-family: var(--hax-ui-font-family); font-size: var(--hax-ui-font-size-lg); font-weight: normal; color: var(--hax-ui-color-accent-secondary); margin: 0 0 var(--hax-ui-spacing-lg); } simple-modal[mode=\"hax-ui\"]::part(content), simple-modal[mode=\"hax-ui\"]::part(custom) { font-size: var(--hax-ui-font-size); } simple-modal[mode=\"hax-ui\"]::part(content) { padding: 0 var(--hax-ui-spacing); } simple-modal[mode=\"hax-ui\"]#hax-cancel::part(content), simple-modal[mode=\"hax-ui\"]::part(custom) { padding: 0; } simple-popover-manager[mode=\"hax\"]::part(simple-popover-body) { font-size: var(--hax-ui-font-size); color: var(--hax-ui-color); background-color: var(--hax-ui-background-color); padding: var(--hax-ui-spacing); } simple-popover-manager[mode=\"hax\"]::part(simple-popover-nav) { background-color: var(--hax-ui-background-color); } simple-popover-manager[mode=\"hax\"] simple-icon-button-lite[slot=\"nav\"]::part(button) { text-transform: capitalize; font-size: var(--hax-ui-font-size-sm); padding: var(--hax-ui-spacing-sm); color: var(--hax-ui-color); background-color: var(--hax-ui-background-color); border: 1px solid var(--hax-ui-border-color); border-radius: var(--hax-ui-border-radius); background-color: var(--hax-ui-background-color); } simple-popover-manager[mode=\"hax\"] simple-icon-button-lite[slot=\"nav\"]::part(button):hover, simple-popover-manager[mode=\"hax\"] simple-icon-button-lite[slot=\"nav\"]::part(button):focus-within { color: var(--hax-ui-color); background-color: var(--hax-ui-background-color-accent); border-color: var(--hax-ui-color-accent); } simple-popover-manager[mode=\"hax\"] simple-icon-button-lite[slot=\"nav\"][disabled]::part(button) { opacity: var(--ddd-state-disabled-opacity, 0.5); border: 1px solid var(--hax-ui-border-color); } `, ]"
+          "default": "[ css` simple-modal[mode=\"hax-ui\"], simple-popover-manager[mode=\"hax\"] { font-family: var(--hax-ui-font-family); font-size: var(--hax-ui-font-size); --simple-modal-height: 80vh; --simple-modal-width: 80vw; --simple-popover-background-color: light-dark( var(--ddd-primary-4), var(--ddd-accent-6) ); --simple-popover-padding: var(--hax-ui-spacing); --simple-popover-border-color: light-dark( var(--ddd-accent-6), var(--ddd-primary-4) ); --simple-popover-color: light-dark( var(--ddd-accent-6), var(--ddd-primary-4) ); --simple-modal-border-color: var(--hax-ui-color); } rich-text-editor-prompt { z-index: calc(var(--hax-ui-focus-z-index) - 1); /* same surface, text and edge as the in-context block bar */ --rich-text-editor-prompt-bg: var(--hax-ui-background-color); --rich-text-editor-prompt-color: var(--hax-ui-color); --rich-text-editor-prompt-border-color: light-dark( var(--ddd-theme-default-limestoneLight, #e4e5e7), color-mix( in srgb, var(--ddd-theme-default-white, #ffffff) 18%, transparent ) ); } simple-modal[mode=\"hax-ui\"]::part(dialog) { --simple-modal-z-index: 100000001 !important; } simple-modal[opened] { z-index: 100000001 !important; position: fixed; } /* the editor's dialogs (app picker, view source, cancel) wear the HAX UI dialog frame, the look of every admin modal; their titlebar and surface come from the frame's custom properties, which each dialog passes to the modal (see @haxtheweb/d-d-d/lib/HaxUiDialogFrame.js). Only the title font is set here; the close button is simple-modal's own, as in the admin dialogs. */ simple-modal[mode=\"hax-ui\"]::part(title) { font-family: var(--hax-ui-font-family); margin: 0 var(--hax-ui-spacing-sm) 0 0; padding: 0; } /* the cancel prompt is the confirm card: its buttons close it */ simple-modal[mode=\"hax-ui\"]#hax-cancel::part(close) { display: none; } simple-popover-manager[mode=\"hax\"]::part(simple-popover-heading), simple-popover-manager[mode=\"hax\"] h1[slot=\"heading\"] { color: var(--hax-ui-background-color); background-color: var(--hax-ui-color-accent); padding: var(--hax-ui-spacing-sm) var(--hax-ui-spacing); margin: 0; } simple-popover-manager[mode=\"hax\"] #close { color: var(--hax-ui-background-color); background-color: var(--hax-ui-color-accent); outline: 1px solid var(--hax-ui-color-accent); --simple-icon-button-border: 0px solid transparent; --simple-icon-button-border-radius: var(--hax-ui-border-radius); width: 24px; height: 24px; padding: 0; } simple-popover-manager[mode=\"hax\"] #close:focus, simple-popover-manager[mode=\"hax\"] #close:hover { background-color: var(--hax-ui-color-accent-secondary); --simple-icon-button-border: 0px solid transparent; } simple-popover-manager[mode=\"hax\"] h1 { font-family: var(--hax-ui-font-family); font-size: var(--hax-ui-font-size); font-weight: normal; margin: 0 var(--hax-ui-spacing-sm) 0 0; padding: 0; } simple-popover-manager[mode=\"hax\"] h2 { font-family: var(--hax-ui-font-family); font-size: var(--hax-ui-font-size-lg); font-weight: normal; color: var(--hax-ui-color-accent-secondary); margin: 0 0 var(--hax-ui-spacing-lg); } simple-modal[mode=\"hax-ui\"]::part(content), simple-modal[mode=\"hax-ui\"]::part(custom) { font-size: var(--hax-ui-font-size); } simple-modal[mode=\"hax-ui\"]::part(content) { padding: 0 var(--hax-ui-spacing); } simple-modal[mode=\"hax-ui\"]#hax-cancel::part(content), simple-modal[mode=\"hax-ui\"]::part(custom) { padding: 0; } simple-popover-manager[mode=\"hax\"]::part(simple-popover-body) { font-size: var(--hax-ui-font-size); color: var(--hax-ui-color); background-color: var(--hax-ui-background-color); padding: var(--hax-ui-spacing); } simple-popover-manager[mode=\"hax\"]::part(simple-popover-nav) { background-color: var(--hax-ui-background-color); } simple-popover-manager[mode=\"hax\"] simple-icon-button-lite[slot=\"nav\"]::part(button) { text-transform: capitalize; font-size: var(--hax-ui-font-size-sm); padding: var(--hax-ui-spacing-sm); color: var(--hax-ui-color); background-color: var(--hax-ui-background-color); border: 1px solid var(--hax-ui-border-color); border-radius: var(--hax-ui-border-radius); background-color: var(--hax-ui-background-color); } simple-popover-manager[mode=\"hax\"] simple-icon-button-lite[slot=\"nav\"]::part(button):hover, simple-popover-manager[mode=\"hax\"] simple-icon-button-lite[slot=\"nav\"]::part(button):focus-within { color: var(--hax-ui-color); background-color: var(--hax-ui-background-color-accent); border-color: var(--hax-ui-color-accent); } simple-popover-manager[mode=\"hax\"] simple-icon-button-lite[slot=\"nav\"][disabled]::part(button) { opacity: var(--ddd-state-disabled-opacity, 0.5); border: 1px solid var(--hax-ui-border-color); } `, ]"
         },
         {
           "kind": "variable",

@@ -114,6 +114,14 @@ describe("keyboard flow: hax-tray menu bar and panel buttons", function () {
     HAXStore.editMode = true;
     await waitFor(() => tray.editMode, 2000);
     await settle(200);
+    // the tray slides in (--ddd-duration-slow, 0.6s); its buttons are only
+    // on screen once the slide ends, so a slow runner must not Tab earlier
+    await waitFor(
+      () =>
+        !tray.shadowRoot.getAnimations ||
+        tray.shadowRoot.getAnimations().length === 0,
+      3000,
+    );
     startBeforeTray();
   });
 

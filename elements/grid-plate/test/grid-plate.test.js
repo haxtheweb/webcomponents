@@ -24,8 +24,8 @@ describe("GridPlate test", () => {
     expect(element.layout).to.equal("1-1");
     expect(element.columns).to.equal(4);
     expect(element.disableResponsive).to.be.false;
-    expect(element.breakpointSm).to.equal(600);
-    expect(element.breakpointMd).to.equal(900);
+    expect(element.breakpointSm).to.equal(480);
+    expect(element.breakpointMd).to.equal(640);
     expect(element.breakpointLg).to.equal(1200);
     expect(element.breakpointXl).to.equal(1440);
   });
@@ -652,7 +652,7 @@ describe("GridPlate responsive width across moves", () => {
             <p slot="col-2">Two</p>
           </grid-plate>
         </div>
-        <div id="second" style="width:700px"></div>
+        <div id="second" style="width:560px"></div>
       </div>`,
     );
     const el = wrap.querySelector("grid-plate");
@@ -660,7 +660,7 @@ describe("GridPlate responsive width across moves", () => {
     await resized();
     expect(el.responsiveSize).to.equal("lg");
 
-    wrap.querySelector("#first").style.width = "500px";
+    wrap.querySelector("#first").style.width = "400px";
     await resized();
     expect(el.responsiveSize).to.equal("xs");
 

@@ -245,6 +245,17 @@ export const HaxUiSingletons = [
     }
     rich-text-editor-prompt {
       z-index: calc(var(--hax-ui-focus-z-index) - 1);
+      /* same surface, text and edge as the in-context block bar */
+      --rich-text-editor-prompt-bg: var(--hax-ui-background-color);
+      --rich-text-editor-prompt-color: var(--hax-ui-color);
+      --rich-text-editor-prompt-border-color: light-dark(
+        var(--ddd-theme-default-limestoneLight, #e4e5e7),
+        color-mix(
+          in srgb,
+          var(--ddd-theme-default-white, #ffffff) 18%,
+          transparent
+        )
+      );
     }
     simple-modal[mode="hax-ui"]::part(dialog) {
       --simple-modal-z-index: 100000001 !important;

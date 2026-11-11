@@ -1,27 +1,43 @@
-import { LitElement, css, html } from "lit";
-import "@haxtheweb/hax-body/lib/hax-toolbar.js";
-import "@haxtheweb/simple-toolbar/lib/simple-toolbar-menu-item.js";
+import { LitElement, css, html, nothing } from "lit";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import { HAXStore } from "./hax-store.js";
-import "./hax-toolbar-menu.js";
-import "./hax-toolbar.js";
-import "./hax-context-item.js";
 import { wipeSlot } from "@haxtheweb/utils/lib/slot.js";
 import { autorun, toJS } from "mobx";
 import { HaxContextBehaviors } from "./hax-context-behaviors.js";
-import { normalizeEventPath } from "@haxtheweb/utils/lib/events.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 /**
+ * grid-plate layouts offered by the Layout menu, in grid-plate's own order
+ */
+const GRID_LAYOUTS = [
+  "1",
+  "1-1",
+  "2-1",
+  "1-2",
+  "3-1",
+  "1-3",
+  "1-1-1",
+  "2-1-1",
+  "1-2-1",
+  "1-1-2",
+  "2-1-2",
+  "1-1-1-1",
+];
+const EASE_MOVE = "cubic-bezier(0.2, 0, 0, 1)";
+
+/**
  * `hax-plate-context`
- * `A context menu that provides common grid plate based authoring options.`
+ * `The block bar: one row of block operations above the active block.`
  * @microcopy - the mental model for this element
- * - context menu - this is a menu of text based buttons and events for use in a larger solution.
+ * - block bar - drag handle, move, block format, insert, layout, remove and
+ *   More tools for the active block
  * - grid plate - the container / full HTML tag which can have operations applied to it.
+ *
+ * Every operation is sent as a `hax-context-item-selected` event, the same
+ * event hax-body has always handled, so the operations themselves live in
+ * hax-body.
  */
 class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
-  /**
-   * LitElement constructable styles enhancement
-   */
   constructor() {
     super();
     this.disableOps = false;
@@ -30,6 +46,9 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
     this.disableDuplicate = false;
     this.hasActiveEditingElement = false;
     this.haxUIElement = true;
+    this.moreOpen = false;
+    this._confirmRemove = false;
+    this._menu = null;
     this.t = {
       edit: "Edit",
       dragHandle: "Drag handle",
@@ -50,6 +69,53 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       selectLayout: "Select Layout Element",
       lockContent: "Lock content",
       unlockContent: "Unlock content",
+      layout: "Layout",
+      columnLayout: "Column Layout",
+      moreTools: "More tools",
+      fewerTools: "Fewer tools",
+      format: "Format",
+      textAlignment: "Text alignment",
+      left: "Left",
+      center: "Center",
+      right: "Right",
+      blockP: "Paragraph",
+      blockH2: "Heading 2",
+      blockH3: "Heading 3",
+      blockH4: "Heading 4",
+      blockH5: "Heading 5",
+      blockH6: "Heading 6",
+      blockquote: "Blockquote",
+      blockPre: "Preformatted",
+      bulletedList: "Bulleted list",
+      numberedList: "Numbered list",
+      heading: "Heading",
+      image: "Image",
+      columns: "Columns",
+      blocks: "Blocks…",
+      allBlocks: "all blocks",
+      back: "Back",
+      indent: "Indent",
+      outdent: "Outdent",
+      listsOnly: "Lists only",
+      notInLayout: "Not inside a layout",
+      moveToColumn: "Move to column",
+      dragHint: "Drag, or use the up and down arrow keys",
+      confirmHint: "Click again to remove, Escape to keep",
+      editingHTML: "Editing HTML",
+      applyChanges: "Apply changes",
+      cancel: "Cancel",
+      layout1: "1: full width",
+      "layout1-1": "2: equal width",
+      "layout2-1": "2: wide & narrow",
+      "layout1-2": "2: narrow & wide",
+      "layout3-1": "2: wider & narrower",
+      "layout1-3": "2: narrower & wider",
+      "layout1-1-1": "3: equal width",
+      "layout2-1-1": "3: wide, narrow, and narrow",
+      "layout1-2-1": "3: narrow, wide, and narrow",
+      "layout1-1-2": "3: narrow, narrow, and wide",
+      "layout2-1-2": "3: wide, narrow, and wide",
+      "layout1-1-1-1": "4: equal width",
     };
     this.registerLocalization({
       context: this,
@@ -62,6 +128,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       "hax-context-item-selected",
       this.handleCECustomEvent.bind(this),
     );
+    this._outsideClick = this._outsideClick.bind(this);
   }
   static get tag() {
     return "hax-plate-context";
@@ -71,441 +138,1257 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       super.styles,
       css`
         :host {
-          width: calc(100% - 2px);
-          min-width: 375px;
-          align-items: stretch;
+          width: auto;
+          max-width: 100%;
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size, 14px);
+          color: var(--hax-ui-color);
         }
-        hax-toolbar::part(morebutton) {
-          --simple-toolbar-button-color: var(--hax-ui-color);
-          --simple-toolbar-button-bg: var(--hax-ui-background-color);
-          --simple-toolbar-button-border-color: var(--hax-ui-border-color);
-          --simple-toolbar-button-border-width: 1px;
-          --simple-toolbar-button-hover-color: var(--hax-ui-color);
-          --simple-toolbar-button-hover-bg: var(
-            --hax-ui-background-color-secondary
-          );
-          --simple-toolbar-button-toggled-color: var(--hax-ui-color-accent);
-          --simple-toolbar-button-toggled-bg: var(--hax-ui-background-color);
-          --simple-toolbar-button-toggled-border-color: var(
-            --hax-ui-color-accent
-          );
-          --simple-toolbar-button-disabled-opacity: 1;
-          --simple-toolbar-button-disabled-color: var(--hax-ui-disabled-color);
-          --simple-toolbar-button-disabled-bg: var(--hax-ui-background-color);
-          --simple-toolbar-button-disabled-border-color: unset;
-          --simple-toolbar-border-radius: 0;
-          align-self: flex-end;
-          justify-self: stretch;
-          margin: 0px -2px 0px 2px;
-        }
-        #remove {
-          max-width: 44px;
-          overflow: visible;
-        }
-        hax-toolbar {
-          max-width: calc(100% - 2px);
+        .bar {
+          position: relative;
           display: flex;
-          align-items: stretch;
-          justify-content: flex-start;
+          align-items: center;
+          flex-wrap: nowrap;
         }
-
-        .group {
+        .grp,
+        .extra {
           display: flex;
-          align-items: stretch;
-          flex: 0 0 auto;
-          justify-content: center;
-          border: 1px solid var(--rich-text-editor-border-color, #ddd);
-          padding: 0;
+          align-items: center;
+          flex: none;
         }
-        .group,
-        .group > * {
-          z-index: 1;
+        .grp + .grp,
+        .extra,
+        .extra > .grp + .grp {
+          border-left: 1px solid var(--hax-ui-line);
+          margin-left: 2px;
+          padding-left: 2px;
         }
-        .group:empty {
+        .extra {
+          overflow: hidden;
+        }
+        .extra[hidden] {
           display: none;
         }
-        .group > *,
-        :host([collapsed]) .group {
-          flex: 0 0 auto;
+        button {
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: var(--hax-ui-gap, 4px);
+          height: var(--hax-ui-row-height, 32px);
+          min-width: var(--hax-ui-row-height, 32px);
+          padding: 0 6px;
+          margin: 0;
+          border: 0;
+          border-radius: var(--hax-ui-radius, 4px);
+          background: transparent;
+          color: inherit;
+          font: inherit;
+          cursor: pointer;
+          white-space: nowrap;
+          transition: background-color var(--hax-ui-duration, 150ms)
+            var(--hax-ui-easing, ease);
+          --simple-icon-width: var(--hax-ui-icon, 16px);
+          --simple-icon-height: var(--hax-ui-icon, 16px);
         }
-        .group *:not([toggled])::part(button) {
-          border-color: transparent;
+        button:hover:not(:disabled) {
+          background-color: var(--hax-ui-hover);
         }
-        :host .group:focus,
-        :host .group:focus-within,
-        :host .group > *:focus,
-        :host .group > *:focus-within {
-          z-index: 2;
+        button:focus-visible {
+          outline: var(--hax-ui-focus-width, 2px) solid var(--hax-ui-focus);
+          outline-offset: 1px;
         }
-        :host .group:hover,
-        :host .group > *:hover {
+        button:disabled {
+          color: var(--hax-ui-disabled-color);
+          cursor: default;
+        }
+        button[hidden] {
+          display: none;
+        }
+        button[aria-pressed="true"],
+        button[aria-expanded="true"] {
+          background-color: var(--hax-ui-selected);
+        }
+        .drop {
+          --simple-icon-width: 12px;
+          --simple-icon-height: 12px;
+          margin: 0 -4px;
+          opacity: 0.75;
+        }
+        #drag {
+          cursor: grab;
+          touch-action: none;
+        }
+        #chip {
+          font-weight: 700;
+          min-width: 112px;
+          justify-content: space-between;
+          padding: 0 6px 0 10px;
+          gap: 8px;
+        }
+        #chip .drop {
+          margin: 0;
+        }
+        #remove {
+          color: var(--hax-ui-danger);
+          overflow: hidden;
+        }
+        #remove:hover:not(:disabled) {
+          background-color: var(--hax-ui-danger-soft);
+        }
+        #remove:disabled {
+          color: var(--hax-ui-disabled-color);
+        }
+        /* solid fill and white label so Confirm delete reads at a glance;
+           the block itself carries the hatch */
+        #remove[data-confirm] {
+          color: var(--ddd-theme-default-white, #fff);
+          background-color: var(--hax-ui-danger);
+          padding: 0 12px 0 8px;
+          gap: 6px;
+          font-weight: 700;
+          letter-spacing: 0.01em;
+        }
+        #remove[data-confirm]:hover {
+          filter: brightness(1.08);
+        }
+        #more simple-icon-lite {
+          transition: transform 200ms var(--hax-ui-easing-move, ease);
+        }
+        #more[aria-expanded="true"] simple-icon-lite {
+          transform: rotate(90deg);
+        }
+        /* tooltip: the button's name after a short hover */
+        button[data-tip]::after {
+          content: attr(data-tip);
+          position: absolute;
+          left: 50%;
+          bottom: calc(100% + 8px);
+          transform: translateX(-50%);
+          padding: 3px 8px;
+          border-radius: var(--hax-ui-radius, 4px);
+          background: var(--ddd-theme-default-coalyGray, #262626);
+          color: var(--ddd-theme-default-white, #fff);
+          font-size: var(--hax-ui-admin-font-size-xs, 12px);
+          line-height: 1.4;
+          font-weight: 400;
+          white-space: nowrap;
+          pointer-events: none;
+          opacity: 0;
           z-index: 3;
+          transition: opacity 100ms;
         }
-        .first-slot:not(:first-child) {
-          border-top: 1px solid black;
+        button[data-tip]:hover::after {
+          opacity: 1;
+          transition-delay: 450ms;
         }
-        hax-toolbar-menu,
-        hax-context-item {
-          line-height: 30px;
+        button[aria-expanded="true"]::after,
+        :host([dragging]) button::after {
+          display: none;
         }
-        hax-context-item {
-          --simple-toolbar-button-width: 26px;
-          --simple-toolbar-button-height: 26px;
+        /* menus */
+        .pop {
+          position: absolute;
+          top: calc(100% + 6px);
+          z-index: 4;
+          width: max-content;
+          min-width: 220px;
+          max-width: calc(100vw - 32px);
+          padding: 4px;
+          display: grid;
+          gap: 1px;
+          background: var(--hax-ui-surface);
+          color: var(--hax-ui-color);
+          border: 1px solid var(--hax-ui-line);
+          border-radius: var(--hax-ui-radius-lg, 8px);
+          box-shadow: var(--hax-ui-shadow-popover);
+          transform-origin: top left;
+          animation: hax-plate-pop 140ms var(--hax-ui-easing-move, ease);
+        }
+        .pop.up {
+          top: auto;
+          bottom: calc(100% + 6px);
+          transform-origin: bottom left;
+        }
+        @keyframes hax-plate-pop {
+          from {
+            opacity: 0;
+            transform: translateY(-4px) scale(0.98);
+          }
+        }
+        .mh {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          padding: 6px 8px 2px;
+          font-size: var(--hax-ui-admin-font-size-xs, 12px);
+          font-weight: 500;
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          color: var(--hax-ui-color-faded);
+        }
+        .mh button {
+          height: 24px;
+          min-width: 24px;
+          margin-left: -4px;
+        }
+        .sep {
+          height: 1px;
+          background: var(--hax-ui-line);
+          margin: 3px 0;
+        }
+        .mi {
+          display: grid;
+          grid-template-columns: 20px minmax(0, 1fr) auto;
+          justify-content: stretch;
+          text-align: left;
+          gap: 10px;
+          min-height: 30px;
+          height: auto;
+          padding: 2px 8px;
+          line-height: 1.3;
+          white-space: nowrap;
+        }
+        .mi:focus-visible {
+          outline: none;
+          box-shadow: inset 0 0 0 2px var(--hax-ui-focus);
+        }
+        .mi[aria-checked="true"] {
+          background-color: var(--hax-ui-selected);
+        }
+        .mi::after {
+          display: none;
+        }
+        .why {
+          font-size: var(--hax-ui-admin-font-size-xs, 12px);
+          color: var(--hax-ui-color-faded);
+        }
+        .pv-h2 {
+          font-size: 18px;
+          font-weight: 700;
+        }
+        .pv-h3 {
+          font-size: 16px;
+          font-weight: 700;
+        }
+        .pv-h4,
+        .pv-h5,
+        .pv-h6 {
+          font-size: 15px;
+          font-weight: 700;
+        }
+        .pv-blockquote {
+          font-style: italic;
+        }
+        .pv-pre {
+          font-family: var(--ddd-font-secondary, monospace);
+          font-size: 13px;
+        }
+        .seg {
+          display: flex;
+          gap: 2px;
+          padding: 2px 4px 4px;
+        }
+        .seg button {
+          flex: 1;
+          border: 1px solid var(--hax-ui-line);
+        }
+        .lgrid {
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 4px;
+          padding: 2px 4px 4px;
+        }
+        .lgrid button {
+          height: 36px;
+          border: 1px solid var(--hax-ui-line);
+        }
+        .lgrid button[aria-checked="true"] {
+          background-color: var(--hax-ui-selected);
+          border-color: var(--hax-ui-accent-strong);
+        }
+        .lt {
+          display: inline-flex;
+          gap: 2px;
+          width: 40px;
+          height: 18px;
+        }
+        .lt i {
+          display: block;
+          height: 100%;
+          border-radius: 1px;
+          background: currentColor;
+          opacity: 0.55;
+        }
+        .lname {
+          padding: 0 8px 4px;
+          min-height: 18px;
+          font-size: var(--hax-ui-admin-font-size-xs, 12px);
+          color: var(--hax-ui-color-faded);
+        }
+        .bar.source {
+          gap: 4px;
+          padding-left: 6px;
+        }
+        .srclabel {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          margin-right: 8px;
+          font-weight: 700;
+          --simple-icon-width: var(--hax-ui-icon, 16px);
+          --simple-icon-height: var(--hax-ui-icon, 16px);
+        }
+        .bar.source button {
+          padding: 0 12px 0 8px;
+          border: 1px solid var(--hax-ui-line-strong);
+        }
+        .bar.source button.primary {
+          color: var(--ddd-theme-default-white, #fff);
+          background-color: var(--hax-ui-accent-strong);
+          border-color: var(--hax-ui-accent-strong);
+          font-weight: 700;
+        }
+        .bar.source button.primary:hover {
+          filter: brightness(1.08);
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .pop,
+          #more simple-icon-lite {
+            animation: none;
+            transition: none;
+          }
         }
       `,
     ];
   }
-  render() {
-    return html`
-      <hax-toolbar
-        always-expanded
-        ?hidden=${HAXStore.isPlatformAudience("novice") && HAXStore.isTextElement(this.activeNode)}
-      >
-        <div class="group">
-          <hax-toolbar-menu
-            ?disabled="${
-              this.hasActiveEditingElement ||
-              !this.canMoveElement ||
-              this.viewSource
-            }"
-            id="drag"
-            action
-            icon="hax:arrow-all"
-            label="${this.t.dragHandle}"
-            draggable="true"
-            reset-on-select
-            ?hidden="${!this.canMoveElement}"
-          >
-            <simple-toolbar-menu-item slot="menuitem">
-              <hax-context-item
-                action
-                align-horizontal="left"
-                ?disabled="${this.hasActiveEditingElement}"
-                show-text-label
-                role="menuitem"
-                icon="hax:keyboard-arrow-up"
-                label="${this.t.moveUp}"
-                event-name="hax-plate-up"
-              ></hax-context-item>
-            </simple-toolbar-menu-item>
-            <simple-toolbar-menu-item slot="menuitem">
-              <hax-context-item
-                action
-                align-horizontal="left"
-                ?disabled="${this.hasActiveEditingElement}"
-                role="menuitem"
-                show-text-label
-                icon="hax:keyboard-arrow-down"
-                label="${this.t.moveDown}"
-                event-name="hax-plate-down"
-              ></hax-context-item>
-            </simple-toolbar-menu-item>
-            ${
-              !this.activeNode ||
-              !this.activeNode.parentNode ||
-              !HAXStore.isLayoutElement(this.activeNode.parentNode)
-                ? ""
-                : (this.slottedItems || []).map(
-                    (slot, i) => html`
-                      <simple-toolbar-menu-item
-                        slot="menuitem"
-                        class="move-to-slot ${i < 1 ? "first-slot" : ""}"
-                      >
-                        <hax-context-item
-                          action
-                          align-horizontal="left"
-                          ?disabled="${this.viewSource}"
-                          label="${slot.label}"
-                          event-name="move-to-slot"
-                          data-slot="${slot.slot}"
-                          role="menuitem"
-                          show-text-label
-                        >
-                        </hax-context-item>
-                      </simple-toolbar-menu-item>
-                    `,
-                  )
-            }
-          </hax-toolbar-menu>
-          <hax-toolbar-menu
-            action
-            align-horizontal="left"
-            ?disabled="${
-              this.viewSource ||
-              this.disableOps ||
-              ((!this.layoutParent || this.activeNode !== this.layoutElement) &&
-                !this.layoutElement)
-            }"
-            ?hidden="${HAXStore.isPlatformAudience("novice")}"
-            icon="hax:select-element"
-            label="${this.t.selectLayout}"
-          >
-            <simple-toolbar-menu-item slot="menuitem">
-              <hax-context-item
-                action
-                align-horizontal="left"
-                ?hidden="${
-                  !this.layoutParent || this.activeNode !== this.layoutElement
-                }"
-                .icon="${this.elementIcon(this.layoutParent)}"
-                label="${this.elementLabel(this.layoutParent)}"
-                event-name="hax-select-grid"
-                .eventData="${this.layoutParent}"
-                role="menuitem"
-                show-text-label
-              >
-              </hax-context-item>
-              <hax-context-item
-                action
-                align-horizontal="left"
-                ?disabled="${this.activeNode === this.layoutElement}"
-                ?hidden="${!this.layoutElement}"
-                .icon="${this.elementIcon(this.layoutElement)}"
-                label="${this.elementLabel(this.layoutElement)}"
-                event-name="hax-select-grid"
-                .eventData="${this.layoutElement}"
-                role="menuitem"
-                show-text-label
-              >
-              </hax-context-item>
-            </simple-toolbar-menu-item>
-            ${(this.slottedItems || []).map((slot, i) =>
-              (slot.items || []).map(
-                (item, j) => html`
-                  <simple-toolbar-menu-item
-                    slot="menuitem"
-                    class="hax-select-grid-item ${
-                      i < 1 && j < 1 ? "first-slot" : ""
-                    }"
-                  >
-                    <hax-context-item
-                      action
-                      align-horizontal="left"
-                      ?disabled="${this.viewSource || this.activeNode === item}"
-                      label="${slot.title || slot.id}${
-                        slot.items.length > 1 ? ` (${j + 1})` : ""
-                      }"
-                      event-name="hax-select-grid-item"
-                      .eventData="${{
-                        target: item,
-                        grid: slot.grid,
-                        slot: slot.slot,
-                        index: j,
-                        editMode: slot.editMode,
-                      }}"
-                      role="menuitem"
-                      show-text-label
-                    >
-                    </hax-context-item>
-                  </simple-toolbar-menu-item>
-                `,
-              ),
-            )}
-          </hax-toolbar-menu>
-          <slot name="primary"></slot>
-          <hax-toolbar-menu
-            icon="add-box"
-            label="${this.t.insertItemAboveOrBelow}"
-            ?disabled="${this.viewSource}"
-            @dblclick="${this.__dblClickFireInsert}"
-          >
-            <simple-toolbar-menu-item slot="menuitem">
-              <hax-context-item
-                action
-                align-horizontal="left"
-                show-text-label
-                role="menuitem"
-                ?disabled="${!this.insertAbove}"
-                icon="hardware:keyboard-arrow-up"
-                event-name="insert-above-active"
-                label="${this.t.insertItemAbove}"
-              ></hax-context-item>
-            </simple-toolbar-menu-item>
-            <simple-toolbar-menu-item slot="menuitem">
-              <hax-context-item
-                action
-                align-horizontal="left"
-                show-text-label
-                role="menuitem"
-                icon="hardware:keyboard-arrow-down"
-                event-name="insert-below-active"
-                label="${this.t.insertItemBelow}"
-                ?disabled="${this.viewSource}"
-              ></hax-context-item>
-            </simple-toolbar-menu-item>
-            ${
-              !HAXStore.isLayoutElement(this.activeNode)
-                ? ""
-                : (this.slottedItems || []).map(
-                    (slot, i) => html`
-                      <simple-toolbar-menu-item
-                        slot="menuitem"
-                        class="insert-into-active ${i < 1 ? "first-slot" : ""}"
-                      >
-                        <hax-context-item
-                          action
-                          align-horizontal="left"
-                          ?disabled="${this.viewSource}"
-                          label="${slot.label}"
-                          event-name="insert-into-active"
-                          data-slot="${slot.slot}"
-                          role="menuitem"
-                          show-text-label
-                        >
-                        </hax-context-item>
-                      </simple-toolbar-menu-item>
-                    `,
-                  )
-            }
-          </hax-toolbar-menu>
-          <hax-context-item
-            action
-            ?disabled="${
-              this.hasActiveEditingElement ||
-              this.viewSource ||
-              this.disableOps ||
-              this.disableDuplicate
-            }"
-            ?hidden="${HAXStore.isPlatformAudience("novice")}"
-            label="${this.t.duplicate}"
-            icon="icons:content-copy"
-            event-name="hax-plate-duplicate"
-          >
-          </hax-context-item>
-        </div>
-        <div class="group">
-          <hax-context-item
-            action
-            icon="delete"
-            ?disabled="${
-              this.hasActiveEditingElement || this.viewSource || this.disableOps
-            }"
-            label="${this.t.remove}"
-            event-name="hax-plate-delete"
-          >
-          </hax-context-item>
-          <hax-context-item
-            action
-            id="right"
-            class="paddle"
-            icon="hax:table-column-remove"
-            label="${this.t.addColumn}"
-            ?disabled="${
-              this.hasActiveEditingElement || this.viewSource || this.disableOps
-            }"
-            ?hidden="${HAXStore.isPlatformAudience("novice")}"
-            event-name="hax-plate-create-right"
-          >
-          </hax-context-item>
-          <hax-context-item
-            action
-            class="paddle"
-            icon="hax:table-column-plus-after"
-            label="${this.t.removeColumn}"
-            ?disabled="${
-              this.hasActiveEditingElement || this.viewSource || this.disableOps
-            }"
-            event-name="hax-plate-remove-right"
-            ?hidden="${!this.activeNode || HAXStore.isPlatformAudience("novice")}"
-            id="rightremove"
-          >
-          </hax-context-item>
-          ${this.ceButtons.map((el) => {
-            return html` <hax-context-item
-              action
-              icon="${el.icon}"
-              label="${el.label}"
-              event-name="hax-ce-custom-button"
-              value="${el.callback}"
-              ?disabled="${el.disabled || this.disableItemOps}"
-            ></hax-context-item>`;
-          })}
-          <slot name="secondary"></slot>
-        </div>
-        <div class="group" ?hidden="${HAXStore.isPlatformAudience("novice")}">
-          <hax-context-item
-            action
-            label="${this.t.editElement}"
-            ?disabled="${this.viewSource || this.disableOps}"
-            ?hidden="${!this.editElementProperty}"
-            event-name="hax-edit-element-toggle"
-            .eventData="${{
-              target: this.activeNode,
-              editMode: this.editElementProperty,
-            }}"
-            toggles
-            ?toggled="${this.editElementToggled}"
-          ></hax-context-item>
-          <hax-context-item
-            action
-            icon="icons:code"
-            label="${this.t.modifyHTMLSource}"
-            ?disabled="${
-              !this.sourceView || this.disableOps || this.editElementToggled
-            }"
-            event-name="hax-source-view-toggle"
-            toggles
-            ?toggled="${this.viewSource}"
-          ></hax-context-item>
-          <hax-context-item
-            action
-            icon="${this.isLocked ? "icons:lock" : "icons:lock-open"}"
-            label="${this.isLocked ? this.t.unlockContent : this.t.lockContent}"
-            ?disabled="${this.viewSource}"
-            @click="${this._toggleActiveNodeLock}"
-            toggles
-            ?toggled="${this.isLocked}"
-          ></hax-context-item>
-          <slot name="more"></slot>
-        </div>
-      </hax-toolbar>
-    `;
-  }
 
+  // ---------- helpers ----------
+  _ic(icon) {
+    return html`<simple-icon-lite
+      icon="${icon}"
+      aria-hidden="true"
+    ></simple-icon-lite>`;
+  }
+  _drop() {
+    return html`<simple-icon-lite
+      class="drop"
+      icon="arrow-drop-down"
+      aria-hidden="true"
+    ></simple-icon-lite>`;
+  }
   /**
-   * get a list of valid blocks for active node
-   * (if active node is a slot, some blockes may not be permitted)
-   *
-   * @readonly
-   * @returns {array}
-   * @memberof HaxPlateContext
+   * send an operation to hax-body from the element that was used, so
+   * hax-body can read data-slot / eventData off it as it always has
    */
-  get filteredBlocks() {
-    return this.getFilteredBlocks(this.formatBlocks);
-  }
-
-  __updatePlatePosition(active) {
-    let right = this.shadowRoot.querySelector("#right");
-    let rightremove = this.shadowRoot.querySelector("#rightremove");
-    // support for enabling or disabling
-    // @note this is a hacky way of evaluating this
-    right.disabled = false;
-    rightremove.disabled = false;
-    if (active && active.tagName === "GRID-PLATE") {
-      if (active.layout == "1-1-1-1") {
-        right.disabled = true;
-      }
-    } else {
-      rightremove.disabled = true;
-    }
-  }
-
-  __dblClickFireInsert(event) {
-    this.dispatchEvent(
+  _fire(el, eventName, value, eventData) {
+    if (eventData !== undefined) el.eventData = eventData;
+    el.dispatchEvent(
       new CustomEvent("hax-context-item-selected", {
         bubbles: true,
         cancelable: true,
         composed: true,
+        detail: { target: el, eventName: eventName, value: value },
+      }),
+    );
+  }
+  get _isText() {
+    return !!this.activeNode && HAXStore.isTextElement(this.activeNode);
+  }
+  get _tag() {
+    return this.activeNode && this.activeNode.tagName
+      ? this.activeNode.tagName.toLowerCase()
+      : "";
+  }
+  get _gridPlate() {
+    const node = this.activeNode;
+    if (!node) return null;
+    if (node.tagName === "GRID-PLATE") return node;
+    if (node.parentNode && node.parentNode.tagName === "GRID-PLATE")
+      return node.parentNode;
+    return null;
+  }
+  get _allFormatBlocks() {
+    return [
+      { tag: "p", label: this.t.blockP },
+      { tag: "h2", label: this.t.blockH2 },
+      { tag: "h3", label: this.t.blockH3 },
+      { tag: "h4", label: this.t.blockH4 },
+      { tag: "h5", label: this.t.blockH5 },
+      { tag: "h6", label: this.t.blockH6 },
+      { tag: "blockquote", label: this.t.blockquote },
+      { tag: "pre", label: this.t.blockPre },
+    ];
+  }
+  get _formatBlocks() {
+    return this.getFilteredBlocks(this._allFormatBlocks).filter((block) =>
+      this._allows(block.tag),
+    );
+  }
+  _allows(tag) {
+    if (HAXStore.requiredPrimitives && HAXStore.requiredPrimitives.has(tag))
+      return true;
+    return HAXStore.platformAllows ? HAXStore.platformAllows(tag) : true;
+  }
+  get _chipLabel() {
+    const tag = this._tag;
+    if (tag === "ul") return this.t.bulletedList;
+    if (tag === "ol") return this.t.numberedList;
+    const block = this._allFormatBlocks.find((b) => b.tag === tag);
+    if (block) return block.label;
+    // with no block selected the chip still needs a name
+    return (
+      (this.activeNode ? this.elementLabel(this.activeNode) : "") ||
+      this.t.format
+    );
+  }
+  get _siblings() {
+    const node = this.activeNode;
+    if (!node || !node.parentNode) return { prev: null, next: null };
+    return {
+      prev: node.previousElementSibling,
+      next: node.nextElementSibling,
+    };
+  }
+  get _reducedMotion() {
+    return (
+      !!globalThis.matchMedia &&
+      globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches
+    );
+  }
+
+  // ---------- render ----------
+  /**
+   * while a block's HTML is being edited the bar only offers Apply changes
+   * and Cancel, so it is clear the edit has to be finished first
+   */
+  _sourceTemplate() {
+    return html`
+      <div class="bar source" role="toolbar" aria-label="${this.t.editingHTML}">
+        <span class="srclabel"
+          >${this._ic("icons:code")}${this.t.editingHTML}</span
+        >
+        <button
+          id="srcapply"
+          type="button"
+          class="primary"
+          @click="${(e) =>
+            this._fire(e.currentTarget, "hax-source-view-toggle")}"
+        >
+          ${this._ic("icons:check")}<span>${this.t.applyChanges}</span>
+        </button>
+        <button
+          id="srccancel"
+          type="button"
+          @click="${(e) =>
+            this._fire(e.currentTarget, "hax-source-view-cancel")}"
+        >
+          ${this._ic("icons:close")}<span>${this.t.cancel}</span>
+        </button>
+      </div>
+    `;
+  }
+  /**
+   * draw the eye to the bar (e.g. another block was clicked while the
+   * HTML editor is open)
+   */
+  attention() {
+    const bar = this.shadowRoot && this.shadowRoot.querySelector(".bar");
+    if (!bar || !bar.animate) return;
+    const apply = this.shadowRoot.querySelector("#srcapply");
+    if (apply) apply.focus({ preventScroll: true });
+    if (this._reducedMotion) return;
+    bar.animate(
+      [
+        { transform: "translateX(0)" },
+        { transform: "translateX(-6px)" },
+        { transform: "translateX(5px)" },
+        { transform: "translateX(-3px)" },
+        { transform: "translateX(0)" },
+      ],
+      { duration: 320, easing: "ease-out" },
+    );
+  }
+  render() {
+    const novice = HAXStore.isPlatformAudience("novice");
+    const moveDisabled =
+      this.hasActiveEditingElement || !this.canMoveElement || this.viewSource;
+    const sib = this._siblings;
+    const upDisabled =
+      moveDisabled || !sib.prev || sib.prev.tagName === "PAGE-BREAK";
+    const downDisabled = moveDisabled || !sib.next;
+    const opsDisabled =
+      this.hasActiveEditingElement ||
+      this.viewSource ||
+      this.disableOps ||
+      this.isLocked;
+    if (this.viewSource) return this._sourceTemplate();
+    return html`
+      <div class="bar" role="toolbar" aria-label="${this._chipLabel}">
+        <div class="grp" role="group" aria-label="${this.t.dragHandle}">
+          <button
+            id="drag"
+            type="button"
+            aria-label="${this.t.dragHandle}"
+            aria-description="${this.t.dragHint}"
+            data-tip="${this.t.dragHandle}"
+            ?disabled="${moveDisabled}"
+            ?hidden="${!this.canMoveElement}"
+            @pointerdown="${this._dragPointerDown}"
+            @keydown="${this._dragKeydown}"
+          >
+            ${this._ic("hax:admin-drag")}
+          </button>
+          <button
+            id="up"
+            type="button"
+            aria-label="${this.t.moveUp}"
+            data-tip="${this.t.moveUp}"
+            ?disabled="${upDisabled}"
+            ?hidden="${!this.canMoveElement}"
+            @click="${(e) => this._fire(e.currentTarget, "hax-plate-up")}"
+          >
+            ${this._ic("icons:arrow-upward")}
+          </button>
+          <button
+            id="down"
+            type="button"
+            aria-label="${this.t.moveDown}"
+            data-tip="${this.t.moveDown}"
+            ?disabled="${downDisabled}"
+            ?hidden="${!this.canMoveElement}"
+            @click="${(e) => this._fire(e.currentTarget, "hax-plate-down")}"
+          >
+            ${this._ic("icons:arrow-downward")}
+          </button>
+        </div>
+        <div class="grp" role="group" aria-label="${this.t.format}">
+          <button
+            id="chip"
+            type="button"
+            aria-haspopup="${this._isText ? "menu" : nothing}"
+            aria-expanded="${
+              this._isText ? String(this._menu === "format") : nothing
+            }"
+            aria-label="${
+              this._isText
+                ? `${this.t.format}: ${this._chipLabel}`
+                : this._chipLabel
+            }"
+            ?disabled="${!this._isText || this.viewSource || this.isLocked}"
+            @click="${(e) => this._toggleMenu("format", e.currentTarget)}"
+          >
+            <span>${this._chipLabel}</span>${
+              this._isText ? this._drop() : nothing
+            }
+          </button>
+        </div>
+        <div class="grp" role="group" aria-label="${this.t.edit}">
+          <slot name="primary"></slot>
+          <button
+            id="insert"
+            type="button"
+            aria-haspopup="menu"
+            aria-expanded="${String(
+              !!this._menu && this._menu.indexOf("insert") === 0,
+            )}"
+            aria-label="${this.t.insertItemAboveOrBelow}"
+            data-tip="${this.t.insertItemAboveOrBelow}"
+            ?disabled="${this.viewSource}"
+            @click="${(e) => this._toggleMenu("insert", e.currentTarget)}"
+            @dblclick="${this.__dblClickFireInsert}"
+          >
+            ${this._ic("icons:add-box")}${this._drop()}
+          </button>
+          <button
+            id="layout"
+            type="button"
+            aria-haspopup="menu"
+            aria-expanded="${String(this._menu === "layout")}"
+            aria-label="${this.t.layout}"
+            data-tip="${this.t.layout}"
+            ?disabled="${this.viewSource || this.disableOps || this.isLocked}"
+            ?hidden="${novice}"
+            @click="${(e) => this._toggleMenu("layout", e.currentTarget)}"
+          >
+            ${this._ic("icons:view-column")}${this._drop()}
+          </button>
+          <button
+            id="remove"
+            type="button"
+            ?data-confirm="${this._confirmRemove}"
+            aria-label="${
+              this._confirmRemove ? this.t.confirmDelete : this.t.remove
+            }"
+            data-tip="${
+              this._confirmRemove ? this.t.confirmHint : this.t.remove
+            }"
+            ?disabled="${opsDisabled}"
+            @click="${this._removeClick}"
+            @blur="${this._removeBlur}"
+            @keydown="${this._removeKeydown}"
+          >
+            ${this._ic("icons:delete")}${
+              this._confirmRemove
+                ? html`<span class="lbl">${this.t.confirmDelete}</span>`
+                : nothing
+            }
+          </button>
+          <slot name="secondary"></slot>
+        </div>
+        <div class="grp" role="group" aria-label="${this.t.moreTools}">
+          <button
+            id="more"
+            type="button"
+            aria-expanded="${String(!!this.moreOpen)}"
+            aria-controls="extra"
+            aria-label="${this.moreOpen ? this.t.fewerTools : this.t.moreTools}"
+            data-tip="${this.moreOpen ? this.t.fewerTools : this.t.moreTools}"
+            @click="${this._toggleMore}"
+          >
+            ${this._ic("icons:more-horiz")}
+          </button>
+        </div>
+        <div class="extra" id="extra" ?hidden="${!this.moreOpen}">
+          <div class="grp" role="group" aria-label="${this.t.moreTools}">
+            <button
+              id="duplicate"
+              type="button"
+              aria-label="${this.t.duplicate}"
+              data-tip="${this.t.duplicate}"
+              ?disabled="${opsDisabled || this.disableDuplicate}"
+              ?hidden="${novice}"
+              @click="${(e) =>
+                this._fire(e.currentTarget, "hax-plate-duplicate")}"
+            >
+              ${this._ic("icons:content-copy")}
+            </button>
+            ${
+              this.editElementProperty
+                ? html`<button
+                    id="editmode"
+                    type="button"
+                    aria-pressed="${String(!!this.editElementToggled)}"
+                    aria-label="${this.t.editElement}"
+                    data-tip="${this.t.editElement}"
+                    ?disabled="${
+                      this.viewSource || this.disableOps || this.isLocked
+                    }"
+                    @click="${(e) =>
+                      this._fire(
+                        e.currentTarget,
+                        "hax-edit-element-toggle",
+                        undefined,
+                        {
+                          target: this.activeNode,
+                          editMode: this.editElementProperty,
+                        },
+                      )}"
+                  >
+                    ${this._ic("editor:mode-edit")}
+                  </button>`
+                : nothing
+            }
+            <button
+              id="source"
+              type="button"
+              aria-pressed="${String(!!this.viewSource)}"
+              aria-label="${this.t.modifyHTMLSource}"
+              data-tip="${this.t.modifyHTMLSource}"
+              ?disabled="${
+                !this.sourceView ||
+                this.disableOps ||
+                this.isLocked ||
+                this.editElementToggled
+              }"
+              ?hidden="${novice}"
+              @click="${(e) =>
+                this._fire(e.currentTarget, "hax-source-view-toggle")}"
+            >
+              ${this._ic("icons:code")}
+            </button>
+            <button
+              id="lock"
+              type="button"
+              aria-pressed="${String(!!this.isLocked)}"
+              aria-label="${
+                this.isLocked ? this.t.unlockContent : this.t.lockContent
+              }"
+              data-tip="${
+                this.isLocked ? this.t.unlockContent : this.t.lockContent
+              }"
+              ?disabled="${this.viewSource}"
+              ?hidden="${novice}"
+              @click="${this._toggleActiveNodeLock}"
+            >
+              ${this._ic(this.isLocked ? "icons:lock" : "icons:lock-open")}
+            </button>
+            ${this.ceButtons.map(
+              (el) =>
+                html`<button
+                  type="button"
+                  aria-label="${el.label}"
+                  data-tip="${el.label}"
+                  ?disabled="${el.disabled || this.disableItemOps}"
+                  @click="${(e) =>
+                    this._fire(
+                      e.currentTarget,
+                      "hax-ce-custom-button",
+                      el.callback,
+                    )}"
+                >
+                  ${this._ic(el.icon)}
+                </button>`,
+            )}
+            <slot name="more"></slot>
+          </div>
+        </div>
+        ${this._menuTemplate()}
+      </div>
+    `;
+  }
+
+  // ---------- menus ----------
+  _toggleMenu(name, anchor) {
+    if (this._menu && this._menu.split(":")[0] === name) {
+      this._closeMenu();
+      return;
+    }
+    this._openMenu(name, anchor);
+  }
+  _openMenu(name, anchor) {
+    if (anchor) this._menuAnchor = anchor;
+    const a = this._menuAnchor;
+    this._menuLeft = a ? a.offsetLeft : 0;
+    const r = a ? a.getBoundingClientRect() : { top: 0, bottom: 0 };
+    this._menuUp = globalThis.innerHeight - r.bottom < 360 && r.top > 360;
+    this._menu = name;
+    globalThis.document.addEventListener(
+      "pointerdown",
+      this._outsideClick,
+      true,
+    );
+    this.updateComplete.then(() => {
+      const pop = this.shadowRoot.querySelector(".pop");
+      if (!pop) return;
+      // keep the menu inside the screen
+      const pr = pop.getBoundingClientRect();
+      if (pr.right > globalThis.innerWidth - 8) {
+        this._menuLeft = Math.max(
+          -this.offsetLeft,
+          this._menuLeft - (pr.right - globalThis.innerWidth + 8),
+        );
+        pop.style.left = `${this._menuLeft}px`;
+      }
+      const first = pop.querySelector(
+        '[aria-checked="true"]:not(:disabled), .mi:not(:disabled), .lgrid button:not(:disabled)',
+      );
+      if (first) first.focus({ preventScroll: true });
+    });
+  }
+  _closeMenu(refocus = true) {
+    if (!this._menu) return;
+    const anchor = this._menuAnchor;
+    this._menu = null;
+    globalThis.document.removeEventListener(
+      "pointerdown",
+      this._outsideClick,
+      true,
+    );
+    if (refocus && anchor) anchor.focus({ preventScroll: true });
+  }
+  _outsideClick(e) {
+    const path = e.composedPath ? e.composedPath() : [];
+    const pop = this.shadowRoot.querySelector(".pop");
+    if (pop && path.includes(pop)) return;
+    if (this._menuAnchor && path.includes(this._menuAnchor)) return;
+    this._closeMenu(false);
+  }
+  _menuKeydown(e) {
+    const pop = e.currentTarget;
+    const items = [
+      ...pop.querySelectorAll(
+        ".mi:not(:disabled), .seg button, .lgrid button:not(:disabled), .mh button",
+      ),
+    ];
+    const k = items.indexOf(this.shadowRoot.activeElement);
+    if (e.key === "ArrowDown" || e.key === "ArrowRight") {
+      e.preventDefault();
+      items[(k + 1) % items.length].focus();
+    } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
+      e.preventDefault();
+      items[(k - 1 + items.length) % items.length].focus();
+    } else if (e.key === "Escape") {
+      e.preventDefault();
+      e.stopPropagation();
+      this._closeMenu();
+    } else if (e.key === "Tab") {
+      this._closeMenu(false);
+    }
+  }
+  _mi(icon, label, onClick, opts = {}) {
+    return html`<button
+      type="button"
+      class="mi"
+      role="${opts.checked !== undefined ? "menuitemradio" : "menuitem"}"
+      aria-checked="${
+        opts.checked !== undefined ? String(!!opts.checked) : nothing
+      }"
+      ?disabled="${!!opts.disabled}"
+      data-slot="${opts.slot || nothing}"
+      @click="${(e) => {
+        if (!opts.keepOpen) this._closeMenu(false);
+        onClick(e);
+      }}"
+    >
+      ${icon ? this._ic(icon) : html`<span></span>`}
+      <span class="${opts.cls || ""}">${label}</span>
+      ${
+        opts.disabled && typeof opts.disabled === "string"
+          ? html`<span class="why">${opts.disabled}</span>`
+          : opts.hint
+            ? html`<span class="why">${opts.hint}</span>`
+            : opts.checked
+              ? this._ic("icons:check")
+              : html`<span></span>`
+      }
+    </button>`;
+  }
+  _menuTemplate() {
+    if (!this._menu) return nothing;
+    let body = nothing;
+    const parts = this._menu.split(":");
+    if (parts[0] === "format") body = this._formatMenu();
+    if (parts[0] === "insert")
+      body = parts[1] ? this._blocksMenu(parts[1]) : this._insertMenu();
+    if (parts[0] === "layout") body = this._layoutMenu();
+    return html`<div
+      class="pop ${this._menuUp ? "up" : ""}"
+      role="menu"
+      style="left:${this._menuLeft || 0}px"
+      @keydown="${this._menuKeydown}"
+    >
+      ${body}
+    </div>`;
+  }
+  _formatMenu() {
+    const tag = this._tag;
+    const align = this.activeNode
+      ? this.activeNode.getAttribute("data-text-align") || ""
+      : "";
+    return html`
+      <div class="mh">${this.t.format}</div>
+      ${this._formatBlocks.map((b) =>
+        this._mi(
+          null,
+          b.label,
+          (e) => this._fire(e.currentTarget, "text-tag", b.tag),
+          { checked: tag === b.tag, cls: `pv-${b.tag}` },
+        ),
+      )}
+      <div class="sep"></div>
+      ${
+        this._allows("ul")
+          ? this._mi(
+              "editor:format-list-bulleted",
+              this.t.bulletedList,
+              (e) =>
+                tag === "ul"
+                  ? this._fire(e.currentTarget, "text-tag", "p")
+                  : this._fire(e.currentTarget, "text-tag-ul"),
+              { checked: tag === "ul" },
+            )
+          : nothing
+      }
+      ${
+        this._allows("ol")
+          ? this._mi(
+              "editor:format-list-numbered",
+              this.t.numberedList,
+              (e) =>
+                tag === "ol"
+                  ? this._fire(e.currentTarget, "text-tag", "p")
+                  : this._fire(e.currentTarget, "text-tag-ol"),
+              { checked: tag === "ol" },
+            )
+          : nothing
+      }
+      <div class="mh">${this.t.textAlignment}</div>
+      <div class="seg" role="radiogroup" aria-label="${this.t.textAlignment}">
+        ${[
+          ["", "editor:format-align-left", this.t.left],
+          ["center", "editor:format-align-center", this.t.center],
+          ["right", "editor:format-align-right", this.t.right],
+        ].map(
+          ([value, icon, label]) =>
+            html`<button
+              type="button"
+              role="radio"
+              aria-checked="${String(align === value)}"
+              aria-label="${label}"
+              @click="${(e) => {
+                this._closeMenu(false);
+                this._fire(e.currentTarget, "hax-text-align", value);
+              }}"
+            >
+              ${this._ic(icon)}
+            </button>`,
+        )}
+      </div>
+    `;
+  }
+  _insertMenu() {
+    return html`
+      ${this._mi(
+        "hardware:keyboard-arrow-up",
+        this.t.insertItemAbove,
+        () => this._openMenu("insert:above"),
+        { disabled: !this.insertAbove, keepOpen: true },
+      )}
+      ${this._mi(
+        "hardware:keyboard-arrow-down",
+        this.t.insertItemBelow,
+        () => this._openMenu("insert:below"),
+        { keepOpen: true },
+      )}
+      ${
+        HAXStore.isLayoutElement(this.activeNode)
+          ? (this.slottedItems || []).map(
+              (slot, i) => html`
+                ${i < 1 ? html`<div class="sep"></div>` : nothing}
+                ${this._mi(
+                  null,
+                  slot.label,
+                  (e) => this._fire(e.currentTarget, "insert-into-active"),
+                  { slot: slot.slot },
+                )}
+              `,
+            )
+          : nothing
+      }
+    `;
+  }
+  /**
+   * the common blocks, Paragraph first, then Blocks… for everything else
+   */
+  get commonBlocks() {
+    return [
+      { tag: "p", label: this.t.blockP, icon: "hax:paragraph" },
+      { tag: "h2", label: this.t.heading, icon: "editor:title" },
+      {
+        tag: "ul",
+        label: this.t.bulletedList,
+        icon: "editor:format-list-bulleted",
+      },
+      {
+        tag: "ol",
+        label: this.t.numberedList,
+        icon: "editor:format-list-numbered",
+      },
+      { tag: "media-image", label: this.t.image, icon: "image:image" },
+      { tag: "grid-plate", label: this.t.columns, icon: "icons:view-column" },
+      {
+        tag: "blockquote",
+        label: this.t.blockquote,
+        icon: "editor:format-quote",
+      },
+    ].filter(
+      (b) =>
+        this._allows(b.tag) &&
+        (b.tag.indexOf("-") === -1 ||
+          (!!HAXStore.elementList && !!HAXStore.elementList[b.tag])),
+    );
+  }
+  _blocksMenu(where) {
+    return html`
+      <div class="mh">
+        <button
+          type="button"
+          aria-label="${this.t.back}"
+          @click="${() => this._openMenu("insert")}"
+        >
+          ${this._ic("icons:chevron-left")}
+        </button>
+        ${where === "above" ? this.t.insertItemAbove : this.t.insertItemBelow}
+      </div>
+      ${this.commonBlocks.map((b) =>
+        this._mi(b.icon, b.label, (e) =>
+          this._fire(e.currentTarget, "insert-block", {
+            tag: b.tag,
+            above: where === "above",
+          }),
+        ),
+      )}
+      <div class="sep"></div>
+      ${this._mi(
+        "icons:view-quilt",
+        this.t.blocks,
+        (e) =>
+          this._fire(e.currentTarget, "insert-block-picker", {
+            above: where === "above",
+          }),
+        { hint: this.t.allBlocks },
+      )}
+    `;
+  }
+  _layoutMenu() {
+    const grid = this._gridPlate;
+    const otherLayout =
+      !grid && !!this.layoutElement && this.layoutElement !== this.activeNode;
+    const current = grid ? grid.layout : null;
+    const cols = current ? current.split("-").length : 1;
+    const isList = ["UL", "OL", "LI"].includes(
+      this.activeNode ? this.activeNode.tagName : "",
+    );
+    const inGrid = !!grid && grid !== this.activeNode;
+    const label = (key) => this.t[`layout${key}`] || key;
+    // the icon files are named the other way round from what they draw:
+    // table-column-remove draws a column with +, plus-after draws one with x
+    return html`
+      <div class="mh">${this.t.columnLayout}</div>
+      <div class="lgrid" role="radiogroup" aria-label="${this.t.columnLayout}">
+        ${GRID_LAYOUTS.map(
+          (key) =>
+            html`<button
+              type="button"
+              role="radio"
+              aria-checked="${String(key === current)}"
+              aria-label="${label(key)}"
+              ?disabled="${otherLayout || !this._allows("grid-plate")}"
+              @mouseenter="${() => this._nameLayout(label(key))}"
+              @focus="${() => this._nameLayout(label(key))}"
+              @click="${(e) => {
+                this._closeMenu(false);
+                this._fire(e.currentTarget, "hax-plate-layout", key);
+              }}"
+            >
+              <span class="lt" aria-hidden="true"
+                >${key
+                  .split("-")
+                  .map((n) => html`<i style="flex: ${n} 1 0"></i>`)}</span
+              >
+            </button>`,
+        )}
+      </div>
+      <div class="lname">${current ? label(current) : this.t.notInLayout}</div>
+      <div class="sep"></div>
+      ${this._mi(
+        "hax:table-column-remove",
+        this.t.addColumn,
+        (e) => this._fire(e.currentTarget, "hax-plate-create-right"),
+        { disabled: cols >= 4 || otherLayout },
+      )}
+      ${this._mi(
+        "hax:table-column-plus-after",
+        this.t.removeColumn,
+        (e) => this._fire(e.currentTarget, "hax-plate-remove-right"),
+        { disabled: !grid ? this.t.notInLayout : cols < 2 },
+      )}
+      ${this._mi(
+        "hax:select-element",
+        this.t.selectLayout,
+        (e) =>
+          this._fire(
+            e.currentTarget,
+            "hax-select-grid",
+            undefined,
+            this.layoutElement,
+          ),
+        {
+          disabled:
+            this.layoutElement && this.layoutElement !== this.activeNode
+              ? false
+              : this.t.notInLayout,
+        },
+      )}
+      ${
+        inGrid
+          ? html`<div class="mh">${this.t.moveToColumn}</div>
+              ${(this.slottedItems || []).map((slot) =>
+                this._mi(
+                  null,
+                  slot.label,
+                  (e) => this._fire(e.currentTarget, "move-to-slot"),
+                  {
+                    slot: slot.slot,
+                    checked: this.activeNode.getAttribute("slot") === slot.slot,
+                  },
+                ),
+              )}`
+          : nothing
+      }
+      <div class="sep"></div>
+      ${this._mi(
+        "editor:format-indent-increase",
+        this.t.indent,
+        (e) => this._fire(e.currentTarget, "indent"),
+        { disabled: isList ? false : this.t.listsOnly },
+      )}
+      ${this._mi(
+        "editor:format-indent-decrease",
+        this.t.outdent,
+        (e) => this._fire(e.currentTarget, "outdent"),
+        { disabled: isList ? false : this.t.listsOnly },
+      )}
+    `;
+  }
+  _nameLayout(text) {
+    const el = this.shadowRoot.querySelector(".lname");
+    if (el) el.textContent = text;
+  }
+
+  // ---------- More tools ----------
+  _toggleMore() {
+    this._closeMenu(false);
+    const extra = this.shadowRoot.querySelector("#extra");
+    const from = extra && !extra.hidden ? extra.offsetWidth : 0;
+    this.dispatchEvent(
+      new CustomEvent("hax-block-bar-more", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: { open: !this.moreOpen },
+      }),
+    );
+    if (this._reducedMotion || !extra) return;
+    this.updateComplete.then(() => {
+      if (this.moreOpen) {
+        extra.animate(
+          [
+            { width: "0px", opacity: 0 },
+            { width: `${extra.scrollWidth}px`, opacity: 1 },
+          ],
+          { duration: 200, easing: EASE_MOVE },
+        );
+      } else if (from) {
+        // keep it on screen just long enough to fold away
+        extra.hidden = false;
+        extra
+          .animate(
+            [
+              { width: `${from}px`, opacity: 1 },
+              { width: "0px", opacity: 0 },
+            ],
+            { duration: 160, easing: EASE_MOVE },
+          )
+          .finished.then(() => {
+            extra.hidden = !this.moreOpen;
+          })
+          .catch(() => {});
+      }
+    });
+  }
+
+  // ---------- Remove: arm, then confirm ----------
+  async _removeClick(e) {
+    const button = e.currentTarget;
+    if (this._confirmRemove) {
+      clearTimeout(this.__armTimer);
+      this._confirmRemove = false;
+      this._fire(button, "hax-plate-delete");
+      return;
+    }
+    const from = button.offsetWidth;
+    this._confirmRemove = true;
+    this._fire(button, "hax-plate-delete-arm");
+    await this.updateComplete;
+    if (!this._reducedMotion) {
+      button.animate(
+        [{ width: `${from}px` }, { width: `${button.offsetWidth}px` }],
+        { duration: 200, easing: EASE_MOVE },
+      );
+      const lbl = button.querySelector(".lbl");
+      if (lbl) {
+        lbl.animate(
+          [
+            { opacity: 0, transform: "translateX(-6px)" },
+            { opacity: 1, transform: "none" },
+          ],
+          { duration: 200, delay: 60, fill: "backwards", easing: EASE_MOVE },
+        );
+      }
+    }
+  }
+  async _disarm() {
+    clearTimeout(this.__armTimer);
+    if (!this._confirmRemove) return;
+    const button = this.shadowRoot
+      ? this.shadowRoot.querySelector("#remove")
+      : null;
+    const from = button ? button.offsetWidth : 0;
+    this._confirmRemove = false;
+    if (button) this._fire(button, "hax-plate-delete-disarm");
+    await this.updateComplete;
+    if (button && from && !this._reducedMotion) {
+      button.animate(
+        [{ width: `${from}px` }, { width: `${button.offsetWidth}px` }],
+        { duration: 160, easing: EASE_MOVE },
+      );
+    }
+  }
+  _removeBlur() {
+    setTimeout(() => {
+      if (
+        this._confirmRemove &&
+        this.shadowRoot.activeElement !==
+          this.shadowRoot.querySelector("#remove")
+      ) {
+        this._disarm();
+      }
+    }, 0);
+  }
+  _removeKeydown(e) {
+    if (e.key === "Escape" && this._confirmRemove) {
+      e.preventDefault();
+      e.stopPropagation();
+      this._disarm();
+    }
+  }
+
+  // ---------- drag ----------
+  /**
+   * the grip only drags, it has no menu: hax-body lifts the block and it
+   * follows the pointer. Arrow keys on the grip move the block one place.
+   */
+  _dragPointerDown(e) {
+    if (e.button !== 0 || !this.canMoveElement) return;
+    e.preventDefault();
+    this._closeMenu(false);
+    this._disarm();
+    this.dispatchEvent(
+      new CustomEvent("hax-block-drag-start", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
         detail: {
-          target: event.target,
-          eventName: "insert-below-active",
+          node: this.activeNode,
+          clientX: e.clientX,
+          clientY: e.clientY,
         },
       }),
     );
   }
+  _dragKeydown(e) {
+    if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+      e.preventDefault();
+      this._fire(
+        e.currentTarget,
+        e.key === "ArrowUp" ? "hax-plate-up" : "hax-plate-down",
+      );
+      // keep focus on the grip so the next press moves again
+      setTimeout(() => {
+        const g = this.shadowRoot.querySelector("#drag");
+        if (g) g.focus({ preventScroll: true });
+      }, 80);
+    }
+  }
+
+  __dblClickFireInsert(e) {
+    this._closeMenu(false);
+    this._fire(e.currentTarget, "insert-below-active");
+  }
   handleCECustomEvent(e) {
     let detail = e.detail;
-    // support a simple insert event to bubble up or everything else
     switch (detail.eventName) {
       case "hax-ce-custom-button":
         if (
@@ -528,6 +1411,18 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
     // update (Lit change-in-update warning).
     if (changedProperties.has("activeNode")) {
       this.isLocked = this._isNodeLocked(this.activeNode);
+      if (this._confirmRemove) {
+        clearTimeout(this.__armTimer);
+        this._confirmRemove = false;
+      }
+      if (this._menu) {
+        this._menu = null;
+        globalThis.document.removeEventListener(
+          "pointerdown",
+          this._outsideClick,
+          true,
+        );
+      }
     }
     if (
       changedProperties.has("activeNode") ||
@@ -554,71 +1449,33 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       }
     });
   }
+  disconnectedCallback() {
+    globalThis.document.removeEventListener(
+      "pointerdown",
+      this._outsideClick,
+      true,
+    );
+    clearTimeout(this.__armTimer);
+    if (super.disconnectedCallback) super.disconnectedCallback();
+  }
 
   firstUpdated(changedProperties) {
-    super.firstUpdated(changedProperties);
+    if (super.firstUpdated) super.firstUpdated(changedProperties);
     autorun(() => {
       const _mobx_val_0 = toJS(HAXStore.activeNode);
-      const _mobx_val_1 = toJS(HAXStore.editMode);
       Promise.resolve().then(() => {
         this.activeNode = _mobx_val_0;
         if (this.activeNode && this.activeNode.classList) {
           this._resetCEMenu();
-        }
-        // if active, and we are editing, then make suree plate ops match expectation
-        if (this.activeNode && _mobx_val_1) {
-          setTimeout(() => {
-            this.__updatePlatePosition(this.activeNode);
-          }, 0);
         }
       });
     });
     autorun(() => {
       const _mobx_val_0 = toJS(HAXStore.activeEditingElement);
       Promise.resolve().then(() => {
-        if (_mobx_val_0) {
-          this.hasActiveEditingElement = true;
-        } else {
-          this.hasActiveEditingElement = false;
-        }
+        this.hasActiveEditingElement = !!_mobx_val_0;
       });
     });
-    this.shadowRoot
-      .querySelector("#drag")
-      .addEventListener("dragstart", this._dragStart);
-    this.shadowRoot
-      .querySelector("#drag")
-      .addEventListener("dragend", this._dragEnd);
-  }
-  /**
-   * When we end dragging ensure we remove the mover class.
-   */
-  _dragEnd(e) {
-    let menu = normalizeEventPath(e) ? normalizeEventPath(e)[0] : undefined;
-    if (menu) menu.close(true);
-    HAXStore._lockContextPosition = false;
-  }
-  /**
-   * Drag start so we know what target to set
-   */
-  _dragStart(e) {
-    let target = toJS(HAXStore.activeNode),
-      menu = normalizeEventPath(e) ? normalizeEventPath(e)[0] : undefined;
-    if (menu) menu.close(true);
-    HAXStore.__dragTarget = target;
-    HAXStore._lockContextPosition = true;
-    // wipe the add context menu for motion
-    HAXStore.activeHaxBody.__activeHover = null;
-    HAXStore.activeHaxBody._hideContextMenu(
-      HAXStore.activeHaxBody.contextMenus.add,
-    );
-    if (e.dataTransfer) {
-      e.dataTransfer.effectAllowed = "move";
-      e.dataTransfer.dropEffect = "move";
-      e.dataTransfer.setDragImage(target, -20, -20);
-    }
-    e.stopPropagation();
-    e.stopImmediatePropagation();
   }
   /**
    * HAX properties changed, update buttons available.
@@ -742,6 +1599,29 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       },
       isLocked: {
         type: Boolean,
+      },
+      /**
+       * More tools is open: the rest of the bar shows in the same row
+       */
+      moreOpen: {
+        type: Boolean,
+        attribute: "more-open",
+        reflect: true,
+      },
+      /**
+       * hax-body sets this while a block is being dragged
+       */
+      dragging: {
+        type: Boolean,
+        reflect: true,
+      },
+      _confirmRemove: {
+        type: Boolean,
+        state: true,
+      },
+      _menu: {
+        type: String,
+        state: true,
       },
     };
   }

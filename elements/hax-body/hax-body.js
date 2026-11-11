@@ -20,6 +20,7 @@ import {
   normalizeEventPath,
 } from "@haxtheweb/utils/utils.js";
 import { HaxUiBaseStyles } from "./lib/hax-ui-styles.js";
+import { HaxUiAdminTokens } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/absolute-position-behavior/absolute-position-behavior.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
@@ -39,6 +40,29 @@ import { HaxOutlineMarks } from "./lib/hax-outline-marks.js";
 let gravityScrollTimer = null;
 const maxStep = 25;
 const edgeSize = 200;
+// per-browser memory of whether More tools is open on the block bar
+const HAX_BLOCK_BAR_MORE_KEY = "hax-block-bar-more";
+const HAX_MOTION_EASE = "cubic-bezier(0.2, 0, 0, 1)";
+// inline text formatting: clicking inside one of these activates the block
+// around it (a link is edited from the selection bubble, not as a block)
+const HAX_INLINE_TEXT_TAGS = new Set([
+  "A",
+  "ABBR",
+  "B",
+  "CODE",
+  "DEL",
+  "EM",
+  "I",
+  "INS",
+  "MARK",
+  "S",
+  "SMALL",
+  "STRIKE",
+  "STRONG",
+  "SUB",
+  "SUP",
+  "U",
+]);
 
 /**
  * ContentStateManager - Centralized state coordination for content operations
@@ -165,6 +189,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   static get styles() {
     return [
       super.styles,
+      ...HaxUiAdminTokens,
       // inlined sr-only helper (the same rule ships in DDDReset) so the
       // undo status region stays visually hidden without a styles-package
       // import for this single selector
@@ -231,6 +256,371 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           bottom: 0;
           margin-bottom: 10px;
           margin-left: -10px;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 1px;
+          padding: 1px;
+          box-sizing: border-box;
+          font-family: var(--hax-ui-admin-font-family);
+          color: var(--hax-ui-color);
+          background-color: var(--hax-ui-surface);
+          border: 1px solid var(--hax-ui-line);
+          border-radius: var(--hax-ui-radius-lg);
+          box-shadow: var(--hax-ui-shadow-popover);
+        }
+        /* the bar's surface fades with its tools (e.g. while typing);
+           only the surface, so the selection bubble inside it is unaffected */
+        #topcontextmenu {
+          transition:
+            background-color var(--ddd-duration-normal, 0.3s) ease-in-out,
+            border-color var(--ddd-duration-normal, 0.3s) ease-in-out,
+            box-shadow var(--ddd-duration-normal, 0.3s) ease-in-out;
+        }
+        #topcontextmenu:not(
+          :has(
+            > hax-plate-context.hax-context-visible,
+            > hax-plate-context.hax-context-menu-active
+          )
+        ) {
+          background-color: transparent;
+          border-color: transparent;
+          box-shadow: none;
+          pointer-events: none;
+        }
+        /* one row: the block tools, then (with More tools open) the
+           insert-at-cursor tools; inline formatting is in the selection
+           bubble */
+        #topcontextmenu {
+          flex-direction: row;
+          flex-wrap: wrap;
+          align-items: center;
+          padding: 2px;
+          width: max-content;
+          max-width: calc(100vw - 16px);
+        }
+        #topcontextmenu[more-open] #textcontextmenu[bubble-mode] {
+          border-left: 1px solid var(--hax-ui-line);
+          padding-left: 2px;
+          margin-left: 2px;
+        }
+        #topcontextmenu:not([more-open])
+          #textcontextmenu[bubble-mode]
+          > :not(.hax-selection-bubble) {
+          display: none !important;
+        }
+        #topcontextmenu:not([more-open]) #textcontextmenu[bubble-mode] {
+          width: 0;
+          min-width: 0;
+          padding: 0;
+          border: 0;
+          overflow: visible;
+        }
+        #topcontextmenu #textcontextmenu:not([bubble-mode]) {
+          flex-basis: 100%;
+          border-top: 1px solid var(--hax-ui-line);
+          padding-top: 1px;
+        }
+        /* inline formatting bubble: lives in the text toolbar so its
+           buttons keep the toolbar's range and commands, but floats by the
+           selected text with a tip pointing at it */
+        #textcontextmenu > .hax-selection-bubble {
+          display: none;
+        }
+        #textcontextmenu > .hax-selection-bubble[data-open] {
+          display: flex;
+          align-items: center;
+          gap: 1px;
+          position: fixed;
+          z-index: var(--hax-ui-focus-z-index);
+          padding: 1px;
+          background-color: var(--hax-ui-surface);
+          color: var(--hax-ui-color);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius-lg);
+          box-shadow: var(--hax-ui-shadow-popover);
+          animation: hax-selection-bubble-in var(--hax-ui-duration)
+            var(--hax-ui-easing-move);
+        }
+        #textcontextmenu > .hax-selection-bubble[data-open]::before,
+        #textcontextmenu > .hax-selection-bubble[data-open]::after {
+          content: "";
+          position: absolute;
+          left: var(--hax-selection-bubble-tip-x, 50%);
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-color: transparent;
+          pointer-events: none;
+        }
+        #textcontextmenu > .hax-selection-bubble[data-open]::before {
+          margin-left: -9px;
+          border-width: 9px;
+        }
+        #textcontextmenu > .hax-selection-bubble[data-open]::after {
+          margin-left: -8px;
+          border-width: 8px;
+        }
+        #textcontextmenu > .hax-selection-bubble[data-tip="up"]::before {
+          bottom: 100%;
+          border-bottom-color: var(--hax-ui-line-strong);
+        }
+        #textcontextmenu > .hax-selection-bubble[data-tip="up"]::after {
+          bottom: 100%;
+          border-bottom-color: var(--hax-ui-surface);
+        }
+        #textcontextmenu > .hax-selection-bubble[data-tip="down"]::before {
+          top: 100%;
+          border-top-color: var(--hax-ui-line-strong);
+        }
+        #textcontextmenu > .hax-selection-bubble[data-tip="down"]::after {
+          top: 100%;
+          border-top-color: var(--hax-ui-surface);
+        }
+        #textcontextmenu > .hax-selection-bubble > .hax-selection-more {
+          display: none;
+        }
+        #textcontextmenu
+          > .hax-selection-bubble[data-more]
+          > .hax-selection-more {
+          display: flex;
+          border-left: 1px solid var(--hax-ui-line);
+          padding-left: 1px;
+        }
+        /* the extra formats slide out from the toggle one after another,
+           so it is clear what was added */
+        #textcontextmenu
+          > .hax-selection-bubble[data-more]
+          > .hax-selection-more
+          > * {
+          animation: hax-selection-more-in 180ms var(--hax-ui-easing-move) both;
+          animation-delay: calc(var(--hax-more-i, 0) * 18ms);
+        }
+        #textcontextmenu .hax-selection-more-toggle::part(icon) {
+          transition: transform var(--hax-ui-duration-move)
+            var(--hax-ui-easing-move);
+        }
+        #textcontextmenu
+          > .hax-selection-bubble[data-more]
+          .hax-selection-more-toggle::part(icon) {
+          transform: rotate(180deg);
+        }
+        /* the bubble and the insert-at-cursor tools use the block bar's
+           buttons: 16px icons in 32px buttons, no borders, the same hover,
+           pressed and disabled states */
+        #textcontextmenu[hidden] {
+          display: none;
+        }
+        #textcontextmenu[bubble-mode] {
+          border: 0;
+          outline: 0;
+          background-color: transparent;
+        }
+        #textcontextmenu[bubble-mode] > .group {
+          --simple-toolbar-button-width: var(--hax-ui-icon);
+          --simple-toolbar-button-height: var(--hax-ui-icon);
+          --simple-toolbar-button-padding: 8px;
+          --simple-toolbar-button-border-width: 0;
+          --simple-toolbar-border-radius: var(--hax-ui-radius);
+          --simple-toolbar-button-color: var(--hax-ui-color);
+          --simple-toolbar-button-bg: transparent;
+          --simple-toolbar-button-opacity: 1;
+          --simple-toolbar-button-hover-color: var(--hax-ui-color);
+          --simple-toolbar-button-hover-bg: var(--hax-ui-hover);
+          --simple-toolbar-button-hover-border-color: transparent;
+          --simple-toolbar-button-hover-opacity: 1;
+          --simple-toolbar-button-toggled-color: var(--hax-ui-color);
+          --simple-toolbar-button-toggled-bg: var(--hax-ui-selected);
+          --simple-toolbar-button-toggled-border-color: transparent;
+          --simple-toolbar-button-toggled-opacity: 1;
+          --simple-toolbar-button-disabled-color: var(--hax-ui-disabled-color);
+          --simple-toolbar-button-disabled-bg: transparent;
+          --simple-toolbar-button-disabled-border-color: transparent;
+          --simple-toolbar-button-disabled-opacity: 1;
+          --rich-text-editor-button-toggled-bg: var(--hax-ui-selected);
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
+          border: 0;
+          gap: 0;
+          line-height: normal;
+          height: auto;
+        }
+        #textcontextmenu[bubble-mode] > .group .group {
+          border: 0;
+          gap: 0;
+          height: auto;
+        }
+        #textcontextmenu > .hax-selection-bubble[data-open] {
+          pointer-events: auto;
+        }
+        /* link field and link card take the bubble's place */
+        #textcontextmenu
+          > .hax-selection-bubble[data-mode]
+          > :not(.hax-link-form):not(.hax-link-card) {
+          display: none !important;
+        }
+        #textcontextmenu .hax-link-form,
+        #textcontextmenu .hax-link-card {
+          display: flex;
+          align-items: center;
+          gap: 2px;
+          padding-left: 6px;
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size);
+        }
+        #textcontextmenu .hax-link-form > simple-icon-lite {
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
+          color: var(--hax-ui-color-faded);
+          margin-right: 2px;
+        }
+        #textcontextmenu .hax-link-form input {
+          width: 260px;
+          max-width: 52vw;
+          height: 28px;
+          padding: 0 8px;
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius);
+          background: transparent;
+          color: var(--hax-ui-color);
+          font: inherit;
+        }
+        #textcontextmenu .hax-link-form input:focus {
+          outline: var(--hax-ui-focus-width, 2px) solid var(--hax-ui-focus);
+          outline-offset: -1px;
+          border-color: transparent;
+        }
+        #textcontextmenu .hax-link-form input[aria-invalid="true"] {
+          border-color: var(--hax-ui-danger);
+        }
+        #textcontextmenu .hax-link-card a {
+          display: inline-block;
+          max-width: 240px;
+          padding: 0 6px;
+          line-height: 28px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          border-radius: var(--hax-ui-radius);
+          color: var(--hax-ui-accent-strong);
+        }
+        #textcontextmenu .hax-link-card a:hover {
+          background-color: var(--hax-ui-hover);
+        }
+        #textcontextmenu .hax-bubble-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          height: var(--hax-ui-row-height);
+          min-width: var(--hax-ui-row-height);
+          padding: 0 6px;
+          border: 0;
+          border-radius: var(--hax-ui-radius);
+          background: transparent;
+          color: inherit;
+          cursor: pointer;
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
+        }
+        #textcontextmenu .hax-bubble-btn:hover:not(:disabled) {
+          background-color: var(--hax-ui-hover);
+        }
+        #textcontextmenu .hax-bubble-btn:disabled {
+          color: var(--hax-ui-disabled-color);
+          cursor: default;
+        }
+        #textcontextmenu .hax-bubble-btn.apply:not(:disabled) {
+          color: var(--hax-ui-accent-strong);
+        }
+        #textcontextmenu .hax-bubble-btn:focus-visible {
+          outline: var(--hax-ui-focus-width, 2px) solid var(--hax-ui-focus);
+        }
+        @keyframes hax-selection-more-in {
+          from {
+            opacity: 0;
+            transform: translateX(-8px);
+          }
+        }
+        @keyframes hax-selection-bubble-in {
+          from {
+            opacity: 0;
+            transform: translateY(4px);
+          }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          #textcontextmenu > .hax-selection-bubble[data-open],
+          #textcontextmenu > .hax-selection-bubble > .hax-selection-more > *,
+          #textcontextmenu .hax-selection-more-toggle::part(icon) {
+            animation: none;
+            transition: none;
+          }
+        }
+        #motion {
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          z-index: 2;
+        }
+        #motion > div {
+          position: absolute;
+          border-radius: var(--hax-ui-radius, 4px);
+          pointer-events: none;
+        }
+        #motion > .landed {
+          background-color: var(--hax-ui-landed);
+        }
+        #motion > .doomed {
+          background-color: color-mix(
+            in srgb,
+            var(--hax-ui-danger) 10%,
+            transparent
+          );
+          background-image: repeating-linear-gradient(
+            -45deg,
+            color-mix(in srgb, var(--hax-ui-danger) 22%, transparent) 0 1px,
+            transparent 1px 10px
+          );
+          outline: 2px solid var(--hax-ui-danger);
+          animation: hax-motion-fade 140ms ease-out;
+        }
+        #motion > .drop-line {
+          border-radius: 2px;
+          background-color: var(--hax-ui-drop);
+          box-shadow: 0 0 0 2px var(--hax-ui-surface);
+          transition: transform 90ms var(--hax-ui-easing-move);
+        }
+        #motion > .drop-hole {
+          border: 2px dashed
+            color-mix(in srgb, var(--hax-ui-drop) 60%, transparent);
+          background-color: color-mix(
+            in srgb,
+            var(--hax-ui-drop) 8%,
+            transparent
+          );
+          transition:
+            transform 160ms var(--hax-ui-easing-move),
+            opacity 120ms ease-out;
+        }
+        #motion > .drop-line::before,
+        #motion > .drop-line::after {
+          content: "";
+          position: absolute;
+          top: -3px;
+          width: 9px;
+          height: 9px;
+          border-radius: 50%;
+          background-color: var(--hax-ui-drop);
+        }
+        #motion > .drop-line::before {
+          left: -4px;
+        }
+        #motion > .drop-line::after {
+          right: -4px;
+        }
+        @keyframes hax-motion-fade {
+          from {
+            opacity: 0;
+          }
         }
         .hax-context-menu {
           visibility: hidden;
@@ -828,6 +1218,16 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     this.___moveLock = false;
     this.__addAbove = true;
     this.viewSourceToggle = false;
+    this.barMore = false;
+    try {
+      this.barMore =
+        globalThis.localStorage.getItem(HAX_BLOCK_BAR_MORE_KEY) === "1";
+    } catch {
+      // storage can be unavailable (private mode, blocked site data)
+    }
+    this._blockDragMove = this._blockDragMove.bind(this);
+    this._blockDragEnd = this._blockDragEnd.bind(this);
+    this._blockDragKey = this._blockDragKey.bind(this);
     this.editMode = false;
     this.haxMover = false;
     this.activeNode = null;
@@ -1132,6 +1532,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       <div id="outlinemarks" aria-hidden="true"></div>
       <absolute-position-behavior
         id="topcontext"
+        @pointerdown="${this._closeOtherBarPopups}"
         fit-to-visible-bounds
         justify
         position="top"
@@ -1158,8 +1559,15 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         .trayStatus="${this.trayStatus}"
         ?hidden="${!this.activeNode || !this.editMode}"
       >
-        <div id="topcontextmenu" @mouseenter="${this.revealMenuIfHidden}">
+        <div
+          id="topcontextmenu"
+          ?more-open="${this.barMore}"
+          @mouseenter="${this.revealMenuIfHidden}"
+          @hax-block-bar-more="${this._handleBarMore}"
+          @hax-block-drag-start="${this._blockDragStart}"
+        >
           <hax-plate-context
+            ?more-open="${this.barMore}"
             always-expanded
             id="platecontextmenu"
             class="hax-context-menu ignore-activation"
@@ -1175,6 +1583,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               this.activeNode,
             )}"
             .activeNode="${this.activeNode}"
+            ?hidden="${this.viewSourceToggle}"
+            bar-size="compact"
+            always-expanded
             show="always"
           >
           </hax-text-editor-toolbar>
@@ -1184,6 +1595,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
            the announcement state comes from the UndoManagerBehaviors mixin so
            mixin consumers self-announce without a nested undo-manager element -->
       <div class="sr-only" aria-live="polite">${this.__undoAnnouncement}</div>
+      <!-- block motion: drop line, landing wash, remove hatch -->
+      <div id="motion" aria-hidden="true"></div>
     `;
   }
   calcClasses(activeNode) {
@@ -1267,7 +1680,616 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         type: Boolean,
         reflect: true,
       },
+      /**
+       * More tools is open on the block bar (remembered per browser)
+       */
+      barMore: {
+        type: Boolean,
+        attribute: "bar-more",
+      },
     };
+  }
+  /**
+   * More tools on the block bar was opened or closed; remember it for this
+   * person in this browser
+   */
+  _handleBarMore(e) {
+    this.barMore = !!(e.detail && e.detail.open);
+    try {
+      globalThis.localStorage.setItem(
+        HAX_BLOCK_BAR_MORE_KEY,
+        this.barMore ? "1" : "0",
+      );
+    } catch {
+      // storage can be unavailable (private mode, blocked site data)
+    }
+  }
+  // ---------- block motion ----------
+  get _reducedMotion() {
+    return (
+      !!globalThis.matchMedia &&
+      globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches
+    );
+  }
+  /**
+   * where each element child of a container is before a change
+   */
+  _motionCapture(container) {
+    const rects = new Map();
+    if (!container || !container.children) return rects;
+    [...container.children].forEach((child) => {
+      rects.set(child, child.getBoundingClientRect());
+    });
+    return rects;
+  }
+  /**
+   * slide each element from where it was to where it is now (FLIP);
+   * transform only, so it runs on the compositor every frame
+   */
+  _motionPlay(rects, duration = 240) {
+    if (this._reducedMotion || !rects) return;
+    rects.forEach((was, el) => {
+      if (!el.isConnected || !el.animate) return;
+      const now = el.getBoundingClientRect(),
+        dx = was.left - now.left,
+        dy = was.top - now.top;
+      if (Math.abs(dx) < 1 && Math.abs(dy) < 1) return;
+      el.animate(
+        [{ transform: `translate(${dx}px, ${dy}px)` }, { transform: "none" }],
+        { duration: duration, easing: HAX_MOTION_EASE },
+      );
+    });
+  }
+  /**
+   * the bar travels with a block that moves (Move up / Move down): it is
+   * placed at the block's new spot before the block starts sliding, slides
+   * there over the same time, and is not re-measured mid-slide (which would
+   * catch the block half way)
+   */
+  _closeOtherBarPopups(e) {
+    // one popup at a time: using another tool on the bar closes an open
+    // inline element prompt (e.g. Icon) unless it is that prompt's button
+    const prompt =
+      globalThis.RichTextEditorPrompt &&
+      globalThis.RichTextEditorPrompt.instance;
+    if (
+      prompt &&
+      prompt.__opened &&
+      prompt.button &&
+      !e.composedPath().includes(prompt.button) &&
+      prompt._cancel
+    ) {
+      prompt._cancel();
+    }
+  }
+  _barGlideStart() {
+    const bar = this.contextMenus && this.contextMenus.parent;
+    if (!bar || !bar.animate || this._reducedMotion) return null;
+    clearTimeout(this.__barGlideTimer);
+    if (this.__barGlide) this.__barGlide.cancel();
+    const locked = this.__barGlideLocked
+      ? this.__barGlideLocked.was
+      : HAXStore._lockContextPosition;
+    this.__barGlideLocked = { was: locked };
+    HAXStore._lockContextPosition = true;
+    if (bar.unsetPosition) bar.unsetPosition();
+    return { bar: bar, from: bar.getBoundingClientRect(), locked: locked };
+  }
+  _barGlideTo(glide, duration = 240) {
+    if (!glide) return;
+    const bar = glide.bar;
+    const manager =
+      globalThis.AbsolutePositionStateManager &&
+      globalThis.AbsolutePositionStateManager.requestAvailability();
+    if (manager) manager.positionElement(bar);
+    const to = bar.getBoundingClientRect();
+    const dx = glide.from.left - to.left,
+      dy = glide.from.top - to.top;
+    if (Math.abs(dx) > 0.5 || Math.abs(dy) > 0.5) {
+      this.__barGlide = bar.animate(
+        [{ transform: `translate(${dx}px, ${dy}px)` }, { transform: "none" }],
+        { duration: duration, easing: HAX_MOTION_EASE },
+      );
+    }
+    this.__barGlideTimer = setTimeout(() => {
+      this.__barGlide = null;
+      HAXStore._lockContextPosition = glide.locked;
+      this.__barGlideLocked = null;
+      if (bar.setPosition) bar.setPosition();
+    }, duration + 20);
+  }
+  /**
+   * a box drawn over a block in the motion layer, in this element's
+   * coordinates, so nothing is written into the content itself
+   */
+  _motionBox(node, cls) {
+    const layer = this.shadowRoot && this.shadowRoot.querySelector("#motion");
+    if (!layer || !node || !node.getBoundingClientRect) return null;
+    const host = this.getBoundingClientRect(),
+      r = node.getBoundingClientRect(),
+      box = globalThis.document.createElement("div");
+    box.className = cls;
+    box.style.left = `${r.left - host.left - 6}px`;
+    box.style.top = `${r.top - host.top - 6}px`;
+    box.style.width = `${r.width + 12}px`;
+    box.style.height = `${r.height + 12}px`;
+    layer.appendChild(box);
+    return box;
+  }
+  /**
+   * the landing wash: a tint over the block that fades, so the eye finds
+   * where something went
+   */
+  _motionLand(node) {
+    if (this._reducedMotion) return;
+    requestAnimationFrame(() => {
+      const box = this._motionBox(node, "landed");
+      if (!box) return;
+      box
+        .animate([{ opacity: 1 }, { opacity: 0 }], {
+          duration: 900,
+          easing: "ease-out",
+        })
+        .finished.then(() => box.remove())
+        .catch(() => box.remove());
+    });
+  }
+  _motionGrowIn(node) {
+    if (this._reducedMotion || !node || !node.animate) return;
+    const h = node.getBoundingClientRect().height;
+    if (!h) return;
+    node.animate(
+      [
+        { height: "0px", opacity: 0, overflow: "hidden" },
+        { height: `${h}px`, opacity: 1, overflow: "hidden" },
+      ],
+      { duration: 220, easing: HAX_MOTION_EASE },
+    );
+  }
+  _motionHatch(node, on) {
+    if (this.__hatch) {
+      this.__hatch.remove();
+      this.__hatch = null;
+    }
+    if (on && node) this.__hatch = this._motionBox(node, "doomed");
+  }
+  /**
+   * fold a block away before it is removed
+   */
+  _motionCollapse(node) {
+    if (this._reducedMotion || !node || !node.animate) {
+      return Promise.resolve();
+    }
+    const h = node.getBoundingClientRect().height;
+    return node
+      .animate(
+        [
+          { height: `${h}px`, opacity: 1, overflow: "hidden" },
+          { height: `${h}px`, opacity: 0.35, overflow: "hidden", offset: 0.35 },
+          { height: "0px", opacity: 0, overflow: "hidden" },
+        ],
+        { duration: 300, easing: HAX_MOTION_EASE },
+      )
+      .finished.catch(() => {});
+  }
+  /**
+   * HAX UI follows its own theme setting (haxdark, or system = the OS)
+   */
+  _haxUiIsDark() {
+    const body = globalThis.document.body;
+    const theme = body ? body.getAttribute("hax-ui-theme") : null;
+    if (theme === "haxdark") return true;
+    if (theme && theme !== "system") return false;
+    return (
+      !!globalThis.matchMedia &&
+      globalThis.matchMedia("(prefers-color-scheme: dark)").matches
+    );
+  }
+  /**
+   * attributes HAX adds while editing; they are not part of the content
+   */
+  _stripEditorAttributes(node) {
+    if (!node || !node.querySelectorAll) return;
+    [node, ...node.querySelectorAll("*")].forEach((el) => {
+      [
+        "data-hax-layout",
+        "data-hax-grid",
+        "data-hax-ray",
+        "data-hax-active",
+      ].forEach((attr) => el.removeAttribute(attr));
+      el.removeAttribute("contenteditable");
+      if (el.getAttribute("role") === "textbox") el.removeAttribute("role");
+    });
+  }
+  /**
+   * the HTML editor takes the block's width and a height that fits its
+   * code, so it sits where the block was
+   */
+  _sizeSourceEditor(editor, node) {
+    if (!editor || !node || !node.getBoundingClientRect) return;
+    const width = node.getBoundingClientRect().width;
+    const html = node.outerHTML || "";
+    // roughly 7px per character of 12px monospace, 18px per line
+    const perLine = Math.max(20, Math.floor((width - 64) / 7));
+    const lines = html
+      .split("\n")
+      .reduce(
+        (n, line) => n + Math.max(1, Math.ceil(line.length / perLine)),
+        0,
+      );
+    const height = Math.round(
+      Math.min(Math.max(lines * 18 + 24, 120), globalThis.innerHeight * 0.6),
+    );
+    if (width) editor.style.width = `${Math.round(width)}px`;
+    editor.style.maxWidth = "100%";
+    editor.style.height = `${height}px`;
+    editor.style.display = "flex";
+    editor.style.flexDirection = "column";
+    editor.style.boxSizing = "border-box";
+    // sit exactly where the block was: no outer margin, and let the code
+    // area fill the box instead of its 250px floor
+    editor.style.setProperty("--code-pen-margin", "0");
+    editor.style.setProperty("--monaco-element-iframe-floor", "0px");
+  }
+  // ---------- dragging a block by its grip ----------
+  /**
+   * the block lifts and follows the pointer. A drop line glides between the
+   * places it can land; when the pointer rests, the blocks around that place
+   * move apart to show the gap the block would fill. It can land among the
+   * page's blocks or in any grid-plate column. On release everything slides
+   * into place and the block gets the landing wash. Escape cancels.
+   */
+  _blockDragStart(e) {
+    const node = e.detail && e.detail.node;
+    if (!node || !node.parentNode || !this.editMode) return;
+    this._blockDrag = {
+      node: node,
+      x0: e.detail.clientX,
+      y0: e.detail.clientY,
+      x: e.detail.clientX,
+      y: e.detail.clientY,
+      dy: 0,
+      moved: false,
+      raf: 0,
+    };
+    globalThis.addEventListener("pointermove", this._blockDragMove);
+    globalThis.addEventListener("pointerup", this._blockDragEnd);
+    globalThis.addEventListener("pointercancel", this._blockDragEnd);
+    globalThis.addEventListener("keydown", this._blockDragKey, true);
+  }
+  /**
+   * where a dragged block can land: the page's own blocks, and each column
+   * of each grid-plate (not the block's own grid when it is a grid-plate)
+   */
+  _dragZones(node) {
+    const zones = [];
+    const pageItems = [...this.children].filter(
+      (el) => el !== node && el.tagName !== "PAGE-BREAK",
+    );
+    zones.push({
+      container: this,
+      slot: null,
+      items: pageItems,
+      rects: pageItems.map((el) => el.getBoundingClientRect()),
+      box: this.getBoundingClientRect(),
+    });
+    if (node.tagName === "GRID-PLATE") return zones;
+    [...this.querySelectorAll("grid-plate")].forEach((grid) => {
+      if (!grid.shadowRoot || node.contains(grid)) return;
+      const cols = (grid.layout || "1-1").split("-").length;
+      [...grid.shadowRoot.querySelectorAll(".column")].forEach((col) => {
+        const slot = col.getAttribute("data-layout-slotname");
+        const n = parseInt((slot || "").replace("col-", ""), 10);
+        const box = col.getBoundingClientRect();
+        if (!slot || n > cols || box.width < 2) return;
+        const items = [...grid.children].filter(
+          (el) => el !== node && (el.getAttribute("slot") || "col-1") === slot,
+        );
+        zones.push({
+          container: grid,
+          slot: slot,
+          items: items,
+          rects: items.map((el) => el.getBoundingClientRect()),
+          box: box,
+        });
+      });
+    });
+    return zones;
+  }
+  _blockDragMove(e) {
+    const d = this._blockDrag;
+    if (!d) return;
+    d.dy = e.clientY - d.y0;
+    d.x = e.clientX;
+    d.y = e.clientY;
+    if (!d.moved) {
+      if (Math.abs(d.dy) < 4 && Math.abs(e.clientX - d.x0) < 4) return;
+      d.moved = true;
+      d.start = d.node.getBoundingClientRect();
+      // the gap a block leaves or takes: its height plus the space between
+      const next = d.node.nextElementSibling;
+      const gap = next
+        ? Math.max(0, next.getBoundingClientRect().top - d.start.bottom)
+        : 0;
+      d.size = d.start.height + Math.min(gap, 48);
+      d.home = d.node.parentNode;
+      d.homeSlot = d.node.getAttribute("slot") || null;
+      d.zones = this._dragZones(d.node);
+      d.shifts = new Map();
+      HAXStore._lockContextPosition = true;
+      this.contextMenus.plate.dragging = true;
+      this.shadowRoot.querySelector("#topcontext").style.opacity = "0";
+      d.line = this._motionBox(d.node, "drop-line");
+      d.hole = this._motionBox(d.node, "drop-hole");
+      if (d.hole) d.hole.style.opacity = "0";
+      if (d.node.animate) {
+        d.lift = d.node.animate([this._liftFrame(0)], {
+          duration: 0,
+          fill: "forwards",
+        });
+      }
+    }
+    if (!d.raf) d.raf = requestAnimationFrame(() => this._blockDragFrame());
+  }
+  _blockDragFrame() {
+    const d = this._blockDrag;
+    if (!d || !d.moved) return;
+    d.raf = 0;
+    if (d.lift && d.lift.effect && d.lift.effect.setKeyframes) {
+      d.lift.effect.setKeyframes([this._liftFrame(d.dy)]);
+    }
+    // the innermost zone under the pointer: a grid column wins over the page
+    let zone = d.zones[0];
+    for (let k = d.zones.length - 1; k > 0; k--) {
+      const b = d.zones[k].box;
+      if (d.x >= b.left && d.x <= b.right && d.y >= b.top && d.y <= b.bottom) {
+        zone = d.zones[k];
+        break;
+      }
+    }
+    const center = d.start.top + d.start.height / 2 + d.dy;
+    let to = zone.items.length;
+    for (let i = 0; i < zone.rects.length; i++) {
+      if (center < zone.rects[i].top + zone.rects[i].height / 2) {
+        to = i;
+        break;
+      }
+    }
+    if (zone !== d.zone || to !== d.to) {
+      // moving to another list: close the room right away
+      if (d.roomFor && d.roomFor !== zone) this._dragMakeRoom(null);
+      d.zone = zone;
+      d.to = to;
+      // first only the line moves; if the pointer rests, make room
+      clearTimeout(d.roomTimer);
+      d.roomTimer = setTimeout(() => {
+        if (this._blockDrag === d && d.zone === zone && d.to === to) {
+          this._dragMakeRoom(zone, to);
+        }
+      }, 140);
+    }
+    this._dragPlaceLine(zone, to);
+  }
+  /**
+   * the drop line sits in the gap the block would land in (or at the top of
+   * an empty column)
+   */
+  _dragPlaceLine(zone, to) {
+    const d = this._blockDrag;
+    if (!d || !d.line) return;
+    const host = this.getBoundingClientRect();
+    const open = d.roomFor === zone && d.roomTo === to;
+    let left, width, y;
+    if (!zone.rects.length) {
+      left = zone.box.left + 8;
+      width = zone.box.width - 16;
+      y = zone.box.top + 8;
+    } else {
+      const ref = zone.rects[Math.min(to, zone.rects.length - 1)];
+      const shift =
+        d.shifts.get(zone.items[Math.min(to, zone.items.length - 1)]) || 0;
+      left = ref.left;
+      width = ref.width;
+      if (to < zone.rects.length) {
+        // in the opened gap, or just above the block it would go before
+        y = open ? ref.top + shift - d.size : ref.top + shift - 9;
+      } else {
+        y = ref.bottom + shift + 7;
+      }
+    }
+    d.line.style.left = `${left - host.left}px`;
+    d.line.style.width = `${width}px`;
+    d.line.style.height = "3px";
+    d.line.style.transform = `translateY(${Math.round(y - host.top) - parseFloat(d.line.style.top)}px)`;
+    if (d.hole) {
+      d.hole.style.opacity = open ? "1" : "0";
+      if (open) {
+        d.hole.style.left = `${left - host.left}px`;
+        d.hole.style.width = `${width}px`;
+        d.hole.style.height = `${Math.max(8, d.start.height)}px`;
+        d.hole.style.transform = `translateY(${Math.round(y + 2 - host.top) - parseFloat(d.hole.style.top)}px)`;
+      }
+    }
+  }
+  /**
+   * move blocks apart to show where the block would go. In its own list the
+   * blocks after its old place close up and the blocks from the new place on
+   * move down by its height. In a grid column the column's blocks from the
+   * new place move down, and if that runs past the grid, the page below the
+   * grid moves down too. Transform only; nothing is written to content.
+   */
+  _dragMakeRoom(zone, to) {
+    const d = this._blockDrag;
+    if (!d) return;
+    const want = new Map();
+    if (zone) {
+      const add = (el, px) => want.set(el, (want.get(el) || 0) + px);
+      const home = d.zones.find(
+        (z) => z.container === d.home && z.slot === d.homeSlot,
+      );
+      if (home === zone) {
+        const fromIndex = home.items.findIndex(
+          (el, i) => home.rects[i].top > d.start.top - 1,
+        );
+        const from = fromIndex === -1 ? home.items.length : fromIndex;
+        home.items.forEach((el, i) => {
+          if (i >= from) add(el, -d.size);
+        });
+      }
+      zone.items.forEach((el, i) => {
+        if (i >= to) add(el, d.size);
+      });
+      const page = d.zones[0];
+      if (home !== zone && zone !== page) {
+        const last = zone.rects.length
+          ? zone.rects[zone.rects.length - 1].bottom
+          : zone.box.top;
+        const over = Math.round(last + d.size - zone.box.bottom);
+        const at = page.items.indexOf(zone.container);
+        if (over > 0 && at > -1) {
+          page.items.forEach((el, i) => {
+            if (i > at) add(el, over);
+          });
+        }
+      }
+    }
+    new Set([...d.shifts.keys(), ...want.keys()]).forEach((el) => {
+      const shift = want.get(el) || 0;
+      const was = d.shifts.get(el) || 0;
+      if (was === shift) return;
+      d.shifts.set(el, shift);
+      if (!el.animate || this._reducedMotion) return;
+      const prev = d.shiftAnims && d.shiftAnims.get(el);
+      if (prev) prev.cancel();
+      const anim = el.animate(
+        [
+          { transform: `translate3d(0, ${was}px, 0)` },
+          { transform: `translate3d(0, ${shift}px, 0)` },
+        ],
+        { duration: 160, easing: HAX_MOTION_EASE, fill: "forwards" },
+      );
+      if (!d.shiftAnims) d.shiftAnims = new Map();
+      d.shiftAnims.set(el, anim);
+    });
+    d.roomFor = zone;
+    d.roomTo = zone ? to : null;
+    if (d.zone) this._dragPlaceLine(d.zone, d.to);
+  }
+  _liftFrame(dy) {
+    return {
+      transform: `translate3d(0, ${dy}px, 0) scale(1.01)`,
+      boxShadow: "var(--hax-ui-shadow-popover)",
+      outline: "2px solid var(--hax-ui-drop)",
+      opacity: 0.94,
+      zIndex: 2,
+    };
+  }
+  _blockDragKey(e) {
+    if (e.key === "Escape" && this._blockDrag) {
+      e.preventDefault();
+      e.stopPropagation();
+      this._blockDrag.cancel = true;
+      this._blockDragEnd();
+    }
+  }
+  _blockDragEnd() {
+    globalThis.removeEventListener("pointermove", this._blockDragMove);
+    globalThis.removeEventListener("pointerup", this._blockDragEnd);
+    globalThis.removeEventListener("pointercancel", this._blockDragEnd);
+    globalThis.removeEventListener("keydown", this._blockDragKey, true);
+    const d = this._blockDrag;
+    this._blockDrag = null;
+    if (!d) return;
+    cancelAnimationFrame(d.raf);
+    clearTimeout(d.roomTimer);
+    if (!d.moved) return;
+    if (d.line) d.line.remove();
+    if (d.hole) d.hole.remove();
+    const node = d.node,
+      zone = d.zone || d.zones[0],
+      to = typeof d.to === "number" ? d.to : -1;
+    const before = to >= 0 && to < zone.items.length ? zone.items[to] : null;
+    const sameSpot =
+      zone.container === d.home &&
+      zone.slot === d.homeSlot &&
+      (before === node.nextElementSibling ||
+        (!before && !node.nextElementSibling));
+    const noop = d.cancel || to < 0 || sameSpot;
+    // measure everything while it still shows the drag (lifted block, the
+    // opened gap), then move the block and let it all slide into place
+    const rects = this._motionCapture(this);
+    [d.home, zone.container].forEach((c) => {
+      if (c && c !== this) {
+        this._motionCapture(c).forEach((r, el) => rects.set(el, r));
+      }
+    });
+    if (d.shiftAnims) d.shiftAnims.forEach((a) => a.cancel());
+    if (d.lift) d.lift.cancel();
+    if (!noop) {
+      if (zone.slot) {
+        node.setAttribute("slot", zone.slot);
+      } else if (zone.container === this) {
+        node.removeAttribute("slot");
+      }
+      if (before) {
+        zone.container.insertBefore(node, before);
+      } else if (zone.container === this) {
+        // after the last block of the page, but keep page-break rules: a
+        // block never goes in front of the first page-break
+        this.appendChild(node);
+      } else {
+        zone.container.appendChild(node);
+      }
+      if (zone.container.tagName === "GRID-PLATE" && this.sortGridSlots) {
+        this.sortGridSlots(zone.container);
+      }
+    }
+    this._motionPlay(rects, 260);
+    if (!noop) this._motionLand(node);
+    HAXStore._lockContextPosition = false;
+    this.contextMenus.plate.dragging = false;
+    this.shadowRoot.querySelector("#topcontext").style.opacity = "";
+    HAXStore.activeNode = node;
+    this.positionContextMenus(node);
+  }
+  /**
+   * set a grid-plate layout for the active block: change the layout of the
+   * grid it is in, or wrap it in a new one (the block lands in column 1)
+   */
+  async haxSetGridLayout(node, layout) {
+    if (!node || !layout || node.tagName === "PAGE-BREAK") return;
+    let grid =
+      node.tagName === "GRID-PLATE"
+        ? node
+        : node.parentNode && node.parentNode.tagName === "GRID-PLATE"
+          ? node.parentNode
+          : null;
+    const cols = layout.split("-").length;
+    if (grid) {
+      // blocks in columns that go away join the last remaining column
+      [...grid.children].forEach((child) => {
+        const n = parseInt(
+          (child.getAttribute("slot") || "col-1").replace("col-", ""),
+          10,
+        );
+        if (n > cols) child.setAttribute("slot", `col-${cols}`);
+      });
+      grid.layout = layout;
+      this.sortGridSlots(grid);
+    } else {
+      grid = globalThis.document.createElement("grid-plate");
+      grid.layout = layout;
+      if (node.getAttribute("slot")) {
+        grid.setAttribute("slot", node.getAttribute("slot"));
+      }
+      node.parentNode.insertBefore(grid, node);
+      node.setAttribute("slot", "col-1");
+      grid.appendChild(node);
+      await this.__applyNodeEditableStateWhenReady(grid, this.editMode);
+    }
+    HAXStore.activeNode = node;
+    this._motionLand(grid);
+    this.positionContextMenus(node);
   }
   /**
    * LitElement life cycle - ready
@@ -3370,6 +4392,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         HAXStore.elementList[tag] &&
         HAXStore.elementList[tag].contentEditable &&
         node.getAttribute("data-hax-lock") === null &&
+        !node.__haxSourceView &&
         node.parentNode &&
         node.parentNode.getAttribute("data-hax-lock") === null
       ) {
@@ -3619,14 +4642,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       }
       // if left, nudge everything over 1, right simple
       if (changed) {
-        let right = this.contextMenus.plate.shadowRoot.querySelector("#right");
-        let rightremove =
-          this.contextMenus.plate.shadowRoot.querySelector("#rightremove");
-        right.disabled = false;
-        rightremove.disabled = false;
-        if (node.layout == "1-1-1-1") {
-          right.disabled = true;
-        }
         if (side == "left") {
           node.childNodes.forEach((el) => {
             if (el.tagName) {
@@ -3739,6 +4754,36 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         console.warn(node.attributes);
         console.warn(e);
       }
+    }
+
+    // attributes that only mean something for the old kind of block do not
+    // carry over: heading treatments (vert / horz-*) are not list styles and
+    // ul and ol styles differ, and data-original-level is for headings only
+    const blockFamily = (tag) => {
+      const t = (tag || "").toUpperCase();
+      if (/^H[1-6]$/.test(t)) return "heading";
+      if (t === "UL" || t === "OL") return t;
+      return "other";
+    };
+    if (blockFamily(node.tagName) !== blockFamily(tagName)) {
+      const guide =
+        styleGuideOverride &&
+        styleGuideOverride.demoSchema &&
+        styleGuideOverride.demoSchema[0] &&
+        styleGuideOverride.demoSchema[0].properties
+          ? styleGuideOverride.demoSchema[0].properties
+          : {};
+      if (guide.designTreatment || guide["data-design-treatment"]) {
+        replacement.setAttribute(
+          "data-design-treatment",
+          guide.designTreatment || guide["data-design-treatment"],
+        );
+      } else {
+        replacement.removeAttribute("data-design-treatment");
+      }
+    }
+    if (blockFamily(tagName) !== "heading") {
+      replacement.removeAttribute("data-original-level");
     }
 
     // Ensure slot attribute is explicitly preserved for grid plate elements
@@ -4257,7 +5302,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             globalThis.document.createElement("code-editor");
           HAXStore.activeEditingElement.language = "html";
           HAXStore.activeEditingElement.title = "";
-          HAXStore.activeEditingElement.theme = "vs";
+          HAXStore.activeEditingElement.theme = this._haxUiIsDark()
+            ? "vs-dark"
+            : "vs";
           HAXStore.activeEditingElement.fontSize = 12;
           HAXStore.activeEditingElement.wordWrap = true;
           this.viewSourceToggle = true;
@@ -4287,6 +5334,13 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               [this.activeNode],
             );
           }
+          // the editor shows the block's own HTML: editing-only attributes
+          // are put back by the editable state when the edit ends
+          this._stripEditorAttributes(this.activeNode);
+          this._sizeSourceEditor(
+            HAXStore.activeEditingElement,
+            this.activeNode,
+          );
           wrap(this.activeNode, HAXStore.activeEditingElement);
           HAXStore.activeEditingElement.focus();
         } else {
@@ -4344,6 +5398,23 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           unwrap(HAXStore.activeEditingElement);
           HAXStore.activeEditingElement = null;
           this.viewSourceToggle = false;
+        }
+        break;
+      // leave the HTML editor without applying what was typed
+      case "hax-source-view-cancel":
+        if (
+          this.activeNode &&
+          this.activeNode.__haxSourceView &&
+          HAXStore.activeEditingElement
+        ) {
+          const node = this.activeNode;
+          node.__haxSourceView = false;
+          unwrap(HAXStore.activeEditingElement);
+          HAXStore.activeEditingElement = null;
+          this.viewSourceToggle = false;
+          this.__applyNodeEditableState(node, this.editMode);
+          HAXStore.activeNode = node;
+          this.positionContextMenus(node);
         }
         break;
       case "hax-full-text-editor-toggle":
@@ -4426,18 +5497,21 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           detail.value,
         );
         this.positionContextMenus();
+        this._motionLand(HAXStore.activeNode);
         break;
       case "text-tag-ul":
         // trigger the default selected value in context menu to match
         this.contextMenus.text.realSelectedValue = "ul";
         HAXStore.activeNode = this.haxChangeTagName(this.activeNode, "ul");
         this.positionContextMenus();
+        this._motionLand(HAXStore.activeNode);
         break;
       case "text-tag-ol":
         // trigger the default selected value in context menu to match
         this.contextMenus.text.realSelectedValue = "ol";
         HAXStore.activeNode = this.haxChangeTagName(this.activeNode, "ol");
         this.positionContextMenus();
+        this._motionLand(HAXStore.activeNode);
         break;
       // grid plate based operations
       // allow for transforming this haxElement into another one
@@ -4449,11 +5523,18 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         break;
       // duplicate the active item or container
       case "hax-plate-duplicate":
-        this.haxDuplicateNode(this.activeNode);
+        if (await this.haxDuplicateNode(this.activeNode)) {
+          const copy = HAXStore.activeNode;
+          this._motionGrowIn(copy);
+          this._motionLand(copy);
+        }
         break;
       case "hax-plate-delete":
         if (this.activeNode != null) {
-          this.haxDeleteNode(this.activeNode);
+          const doomed = this.activeNode;
+          this._motionHatch(null, false);
+          await this._motionCollapse(doomed);
+          this.haxDeleteNode(doomed);
         }
         break;
       case "hax-plate-up":
@@ -4461,12 +5542,87 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           this.activeNode.previousElementSibling &&
           this.activeNode.previousElementSibling.tagName !== "PAGE-BREAK"
         ) {
-          this.haxMoveGridPlate(this.activeNode, -1);
+          const rects = this._motionCapture(this.activeNode.parentNode);
+          const moved = this.activeNode;
+          const glide = this._barGlideStart();
+          this.haxMoveGridPlate(moved, -1);
+          this._barGlideTo(glide);
+          this._motionPlay(rects);
+          this._motionLand(moved);
         }
         break;
       case "hax-plate-down":
         if (this.activeNode.nextElementSibling) {
-          this.haxMoveGridPlate(this.activeNode);
+          const rects = this._motionCapture(this.activeNode.parentNode);
+          const moved = this.activeNode;
+          const glide = this._barGlideStart();
+          this.haxMoveGridPlate(moved);
+          this._barGlideTo(glide);
+          this._motionPlay(rects);
+          this._motionLand(moved);
+        }
+        break;
+      // the bar's Remove was pressed once: show what would go
+      case "hax-plate-delete-arm":
+        this._motionHatch(this.activeNode, true);
+        break;
+      case "hax-plate-delete-disarm":
+        this._motionHatch(null, false);
+        break;
+      case "hax-plate-layout":
+        if (this.activeNode && detail.value) {
+          this.haxSetGridLayout(this.activeNode, detail.value);
+        }
+        break;
+      case "hax-text-align":
+        if (this.activeNode && this.activeNode.setAttribute) {
+          if (detail.value) {
+            this.activeNode.setAttribute("data-text-align", detail.value);
+          } else {
+            this.activeNode.removeAttribute("data-text-align");
+          }
+          this._motionLand(this.activeNode);
+          this.positionContextMenus();
+        }
+        break;
+      // insert one of the common blocks above or below the active block
+      case "insert-block":
+        if (detail.value && detail.value.tag) {
+          const tag = detail.value.tag;
+          let content = "",
+            properties = {};
+          if (tag === "ul" || tag === "ol") {
+            content = "<li></li>";
+          } else if (
+            tag.indexOf("-") !== -1 &&
+            HAXStore.elementList &&
+            HAXStore.elementList[tag] &&
+            HAXStore.elementList[tag].demoSchema &&
+            HAXStore.elementList[tag].demoSchema[0]
+          ) {
+            const demo = HAXStore.elementList[tag].demoSchema[0];
+            content = demo.content || "";
+            properties = { ...(demo.properties || {}) };
+          }
+          this.__addAbove = !!detail.value.above;
+          const node = this.haxInsert(
+            tag,
+            content,
+            properties,
+            this.activeNode,
+          );
+          if (node && node.isConnected) {
+            this._motionGrowIn(node);
+            this._motionLand(node);
+          }
+        }
+        break;
+      // Blocks… opens the Blocks tray; what is picked lands above or below
+      case "insert-block-picker":
+        this.__addAbove = !!(detail.value && detail.value.above);
+        if (HAXStore.haxTray) {
+          HAXStore.haxTray.trayDetail = "content-add";
+          HAXStore.haxTray.collapsed = false;
         }
         break;
       case "content-edit":
@@ -4520,6 +5676,20 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    */
   __focusLogic(target, autoFocus = true) {
     let stopProp = false;
+    // while a block's HTML is being edited, other blocks wait: the bar asks
+    // to apply or cancel first
+    if (
+      this.viewSourceToggle &&
+      HAXStore.activeEditingElement &&
+      target &&
+      !HAXStore.activeEditingElement.contains(target) &&
+      !target.haxUIElement
+    ) {
+      if (this.contextMenus && this.contextMenus.plate) {
+        this.contextMenus.plate.attention();
+      }
+      return true;
+    }
     // only worry about these when we are in edit mode
     // and there is no drawer open
     if (this.editMode && !this.__tabTrap) {
@@ -4558,14 +5728,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         if (
           containerNode.parentNode.tagName === "P" &&
           containerNode.parentNode.getAttribute("slot") === "" &&
-          containerNode.tagName !== "B" &&
-          containerNode.tagName !== "I" &&
-          containerNode.tagName !== "STRONG" &&
-          containerNode.tagName !== "EM" &&
-          containerNode.tagName !== "U" &&
-          containerNode.tagName !== "SUB" &&
-          containerNode.tagName !== "SUP" &&
-          containerNode.tagName !== "CODE"
+          !HAX_INLINE_TEXT_TAGS.has(containerNode.tagName)
         ) {
           activeNode = containerNode;
           stopProp = true;
@@ -4578,14 +5741,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             // make sure active is set after closest legit element
             if (
               activeNode === null &&
-              containerNode.tagName !== "B" &&
-              containerNode.tagName !== "I" &&
-              containerNode.tagName !== "STRONG" &&
-              containerNode.tagName !== "EM" &&
-              containerNode.tagName !== "U" &&
-              containerNode.tagName !== "SUB" &&
-              containerNode.tagName !== "SUP" &&
-              containerNode.tagName !== "CODE"
+              !HAX_INLINE_TEXT_TAGS.has(containerNode.tagName)
             ) {
               activeNode = containerNode;
             }

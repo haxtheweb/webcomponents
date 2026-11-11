@@ -36,9 +36,20 @@ class RichTextEditorPrompt extends I18NMixin(
           max-width: 300px;
           --simple-popover-padding: 0px;
           --simple-popover-max-height: auto;
-          --simple-popover-color: light-dark(#222, #e4e5e7);
-          --simple-popover-background-color: light-dark(#ffffff, #262626);
-          --simple-popover-border-color: light-dark(#bbb, #444);
+          /* an embedding app can match its own surfaces (HAX sets these
+             so the prompt matches its in-context bar) */
+          --simple-popover-color: var(
+            --rich-text-editor-prompt-color,
+            light-dark(#222, #e4e5e7)
+          );
+          --simple-popover-background-color: var(
+            --rich-text-editor-prompt-bg,
+            light-dark(#ffffff, #262626)
+          );
+          --simple-popover-border-color: var(
+            --rich-text-editor-prompt-border-color,
+            light-dark(#bbb, #444)
+          );
           /* Keep the field surface flush with the popover and align the
              simple-fields spacing to DDD tokens so the row-layout
              hover/focus affordance reads edge-to-edge (issue #2996). */

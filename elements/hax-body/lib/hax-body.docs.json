@@ -77,6 +77,14 @@
       "default": "false",
       "description": "Is active node in view source mode?",
       "hax": null
+    },
+    {
+      "name": "bar-more",
+      "property": "barMore",
+      "type": "boolean",
+      "default": "false",
+      "description": "More tools is open on the block bar (remembered per browser)",
+      "hax": null
     }
   ],
   "slots": [],
@@ -87,7 +95,7 @@
     "place-holder-file-drop"
   ],
   "hax": {},
-  "surfaceHash": "7acfbfcab999",
+  "surfaceHash": "67e11313e68e",
   "walkthroughs": [],
   "videos": [],
   "motion": {

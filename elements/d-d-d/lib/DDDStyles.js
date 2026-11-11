@@ -2032,6 +2032,21 @@ const DDDResetEnd = css`
   ol[type="I"] {
     list-style-type: upper-roman;
   }
+  /* wider markers (iii., VIII., 01.) need more room than the default
+     indent so they stay inside the list's box */
+  ol[data-design-treatment="lower-roman"],
+  ol[data-design-treatment="list-lower-roman"],
+  ol[type="i"],
+  ol[data-design-treatment="decimal-leading-zero"],
+  ol[data-design-treatment="list-decimal-leading-zero"],
+  ol[type="01"] {
+    padding-inline-start: var(--ddd-spacing-14);
+  }
+  ol[data-design-treatment="upper-roman"],
+  ol[data-design-treatment="list-upper-roman"],
+  ol[type="I"] {
+    padding-inline-start: var(--ddd-spacing-16);
+  }
   ul li::marker {
     color: var(
       --lowContrast-override,
