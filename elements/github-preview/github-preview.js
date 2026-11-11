@@ -6,13 +6,14 @@ import { LitElement, html, css } from "lit";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 /**
  * `github-preview`
  * `A simple element that displays information about a github repository.`
  * @demo demo/index.html
  * @element github-preview
  */
-class GithubPreview extends IntersectionObserverMixin(LitElement) {
+class GithubPreview extends I18NMixin(IntersectionObserverMixin(LitElement)) {
   static get properties() {
     let props = {};
     if (super.properties) {
@@ -505,8 +506,20 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
     this.extended = false;
     this.readMe = "README.md";
     this.branch = "master";
-    this.viewMoreText = "View More";
-    this.notFoundText = "Asset not found";
+    this.t = {
+      ...this.t,
+      viewMore: "View More",
+      assetNotFound: "Asset not found",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath:
+        new URL("./locales/github-preview.en.json", import.meta.url).href +
+        "/../",
+    });
+    // translated defaults; authored values are left alone
+    this.i18nDefault("viewMoreText", "viewMore");
+    this.i18nDefault("notFoundText", "assetNotFound");
     this.headers = {
       cache: "force-cache",
     };

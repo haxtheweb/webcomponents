@@ -13,6 +13,7 @@
     "location": "location",
     "month": "month",
     "start-time": "startTime",
+    "t": "t",
     "title": "title"
   },
   "slots": [],

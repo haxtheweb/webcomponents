@@ -5,6 +5,7 @@
   "licenseByNc": "Attribution non-commercial",
   "licenseByNcSa": "Attribution non-commercial share a like",
   "licenseByNcNd": "Attribution Non-commercial No derivatives",
+  "licenseLabel": "License",
   "licenseGraphic": "{license} graphic",
   "workByCreator": "{title} by {creator}",
   "workByCreatorLicensed": "{title} by {creator} is licensed under a {license}.",
