@@ -19,23 +19,23 @@
       <h3>Basic figure-label demo</h3>
       <demo-snippet>
         <template>
-          <figure-label title="1.3" description="Microbs under microscope">
-            1.3 - Microbs under microscope
-          </figure-label>
+          <figure-label title="1.3" description="Microbs under microscope"></figure-label>
         </template>
       </demo-snippet>
       <demo-snippet>
         <template>
           <div>
-            <figure-label accent-color="red" title="1.3" description="Default color styling (accent color enabled)">
+            <figure-label title="1.3" description="Default color styling">
             </figure-label>
             <div style="--ddd-theme-accent: var(--ddd-theme-default-pughBlue);">
               <figure-label title="1.3" description="Application override color set">
               </figure-label> <!-- application override -->
               <div style="
-              --ddd-component-figure-label-title: var(--ddd-theme-default-link);
+              --ddd-component-figure-label-title: var(--ddd-theme-default-skyBlue);
               --ddd-component-figure-label-title-text: var(--ddd-theme-default-white);
-              --ddd-component-figure-label-background: var(--ddd-theme-default-infoLight);
+              --ddd-component-figure-label-description-text: var(--ddd-theme-default-limestoneMaxLight);
+              background-color: var(--ddd-theme-default-nittanyNavy);
+              padding: var(--ddd-spacing-4);
               ">
                 <figure-label title="1.3" description="Component override color set">
                 </figure-label> <!-- component override -->

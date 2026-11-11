@@ -4,5 +4,6 @@
   "exportCitations": "Export Citations",
   "copy": "Copy",
   "exportCitationFormat": "Export citation format",
-  "selectCitationFormatBelow": "Select a citation format below"
+  "selectCitationFormatBelow": "Select a citation format below",
+  "addCitationToBibliography": "Add citation to bibliography"
 }

@@ -56,12 +56,14 @@ class FigureLabel extends DDD {
           font-weight: var(--ddd-font-weight-bold);
           letter-spacing: 0.06em;
           text-transform: uppercase;
-          color: light-dark(
-            var(
-              --ddd-component-figure-label-title-text,
-              var(--ddd-theme-default-nittanyNavy)
-            ),
-            var(--ddd-theme-default-white)
+          /* an authored colour applies in both schemes; light-dark() only
+             supplies the DDD default */
+          color: var(
+            --ddd-component-figure-label-title-text,
+            light-dark(
+              var(--ddd-theme-default-nittanyNavy),
+              var(--ddd-theme-default-white)
+            )
           );
         }
         :host(:lang(ar)) #title,
@@ -73,12 +75,12 @@ class FigureLabel extends DDD {
         #description {
           font-family: var(--ddd-font-primary);
           font-size: var(--ddd-font-size-4xs);
-          color: light-dark(
-            var(
-              --ddd-component-figure-label-description-text,
-              var(--ddd-theme-default-coalyGray)
-            ),
-            var(--ddd-theme-default-white)
+          color: var(
+            --ddd-component-figure-label-description-text,
+            light-dark(
+              var(--ddd-theme-default-coalyGray),
+              var(--ddd-theme-default-white)
+            )
           );
           background-color: var(
             --ddd-component-figure-label-description-background,
@@ -107,7 +109,7 @@ class FigureLabel extends DDD {
         title: "Figure label",
         description:
           "Figure label element to mark media assets within content.",
-        icon: "icons:android",
+        icon: "editor:insert-photo",
         color: "green",
         tags: [
           "Content",
@@ -127,17 +129,19 @@ class FigureLabel extends DDD {
         configure: [
           {
             property: "title",
-            description: "",
+            title: "Figure number",
+            description: "Number or short label for the figure, e.g. 1.3",
             inputMethod: "textfield",
             required: false,
-            icon: "icons:android",
+            icon: "editor:format-list-numbered",
           },
           {
             property: "description",
-            description: "",
+            title: "Description",
+            description: "Short description of the figure",
             inputMethod: "textfield",
             required: false,
-            icon: "icons:android",
+            icon: "editor:short-text",
           },
         ],
         advanced: [],
