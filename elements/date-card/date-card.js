@@ -5,6 +5,10 @@
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { DDDAccentStyles } from "@haxtheweb/d-d-d/lib/DDDAccent.js";
+import {
+  I18NMixin,
+  I18NManagerStore,
+} from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 /**
  * `date-card`
  * `simple presentation of a date`
@@ -12,7 +16,7 @@ import { DDDAccentStyles } from "@haxtheweb/d-d-d/lib/DDDAccent.js";
  * @demo demo/index.html
  * @element date-card
  */
-class DateCard extends DDD {
+class DateCard extends I18NMixin(DDD) {
   static get tag() {
     return "date-card";
   }
@@ -38,6 +42,22 @@ class DateCard extends DDD {
   }
   constructor() {
     super();
+    // ordinal suffixes are keyed by Intl.PluralRules ordinal category
+    // (one / two / few / many / other) of the active language
+    this.t = {
+      ...this.t,
+      ordinalOne: "st",
+      ordinalTwo: "nd",
+      ordinalFew: "rd",
+      ordinalOther: "th",
+      fromTimeToTime: "from {start} - {end}",
+      atTime: "at {start}",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath:
+        new URL("./locales/date-card.en.json", import.meta.url).href + "/../",
+    });
     this.borderSpacing = 5;
     this.accentColor = "light-blue";
   }
@@ -46,17 +66,30 @@ class DateCard extends DDD {
     if (!d) {
       return "";
     }
-    if (d > 3 && d < 21) return "th";
-    switch (d % 10) {
-      case 1:
-        return "st";
-      case 2:
-        return "nd";
-      case 3:
-        return "rd";
-      default:
-        return "th";
+    const n = Number(d);
+    let category = "other";
+    if (Number.isFinite(n)) {
+      try {
+        category = new Intl.PluralRules(this._ordinalLang(), {
+          type: "ordinal",
+        }).select(n);
+      } catch {
+        category = new Intl.PluralRules("en", { type: "ordinal" }).select(n);
+      }
     }
+    const key = `ordinal${category.charAt(0).toUpperCase()}${category.slice(1)}`;
+    return typeof this.t[key] === "string" ? this.t[key] : this.t.ordinalOther;
+  }
+
+  /**
+   * Language whose ordinal rules match the suffixes in this.t: the active
+   * language once a translation for it is loaded, English otherwise.
+   */
+  _ordinalLang() {
+    const en = this._t;
+    const translated =
+      en && Object.keys(en).some((key) => this.t[key] !== en[key]);
+    return (translated && I18NManagerStore && I18NManagerStore.lang) || "en";
   }
 
   static get styles() {
@@ -222,8 +255,17 @@ class DateCard extends DDD {
                       ? html`
                           ${
                             this.endTime
-                              ? html` from ${this.startTime} - ${this.endTime} `
-                              : html` at ${this.startTime} `
+                              ? html`
+                                  ${this.t.fromTimeToTime
+                                    .replace("{start}", () => this.startTime)
+                                    .replace("{end}", () => this.endTime)}
+                                `
+                              : html`
+                                  ${this.t.atTime.replace(
+                                    "{start}",
+                                    () => this.startTime,
+                                  )}
+                                `
                           }
                         `
                       : html``

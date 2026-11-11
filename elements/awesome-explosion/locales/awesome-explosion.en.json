@@ -1,0 +1,10 @@
+{
+  "clickOrHoverToPlay": "Click or hover to play explosion sound",
+  "soundDisabled": "Visual explosion effect (sound disabled)",
+  "explosionAnimation": "explosion animation",
+  "explosionAriaLabel": "Explosion animation {state} {sound}. Click to toggle.",
+  "playing": "playing",
+  "stopped": "stopped",
+  "withSound": "with sound",
+  "muted": "(muted)"
+}

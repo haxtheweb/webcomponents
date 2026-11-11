@@ -26,8 +26,10 @@ class AiUsageLicense extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
           line-height: var(--ddd-lh-140);
           background-color: var(--ai-usage-license-background-color);
         }
-        :host:after {
-          content: "AI Usage License";
+        /* the "AI Usage License" tag: real text (not CSS generated content)
+           so it can be translated and is read consistently by screen
+           readers; last in the shadow root, styled as the old :host::after */
+        .license-label {
           position: relative;
           float: inline-end;
           bottom: var(--ddd-spacing-9);
@@ -88,7 +90,10 @@ class AiUsageLicense extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
                   target="_blank"
                   href="${this.licenseLink}"
                   rel="noopener noreferrer"
-                  aria-label="${this.licenseName} - AI Usage License"
+                  aria-label="${this.t.licenseNameLabel.replace(
+                    "{license}",
+                    () => this.licenseName,
+                  )}"
                   ><img
                     loading="lazy"
                     alt="${this.licenseTag} - ${this.licenseName}"
@@ -125,6 +130,7 @@ class AiUsageLicense extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
             : ``
         }
       </div>
+      <span class="license-label">${this.t.aiUsageLicense}</span>
     `;
   }
 
@@ -202,6 +208,18 @@ class AiUsageLicense extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      aiUsageLicense: "AI Usage License",
+      licenseNameLabel: "{license} - AI Usage License",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath:
+        new URL("./locales/ai-usage-license.en.json", import.meta.url).href +
+        "/../",
+    });
     this.typeof = "oer:SupportingMaterial";
     this.license = null;
     this.modifier = null;

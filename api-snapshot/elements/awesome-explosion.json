@@ -14,7 +14,8 @@
     "sound": "sound",
     "sound-enabled": "soundEnabled",
     "state": "state",
-    "stopped": "stopped"
+    "stopped": "stopped",
+    "t": "t"
   },
   "slots": [],
   "events": [

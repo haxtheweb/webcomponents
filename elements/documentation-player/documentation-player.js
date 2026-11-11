@@ -784,7 +784,8 @@ export class DocumentationPlayer extends DDDSuper(I18NMixin(LitElement)) {
     } catch {
       // the motion file is optional; a missing docs file is worth saying
       if (prop === "docs") {
-        this.loadError = `${this.t.loadFailed} ${src}`;
+        // follows the language until the next load replaces it
+        this.i18nDefault("loadError", (t) => `${t.loadFailed} ${src}`);
       }
     }
   }
