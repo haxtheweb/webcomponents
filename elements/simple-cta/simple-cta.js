@@ -144,7 +144,8 @@ class SimpleCta extends DDDPulseEffectSuper(
         }
 
         .large {
-          padding: 1rem 2.75rem 1rem 3.25rem;
+          padding-block: 1rem;
+          padding-inline: 3.25rem 2.75rem;
         }
         .large.hideIcon {
           padding: 1rem 3.25rem;

@@ -47,8 +47,8 @@ export class DddStepsListItem extends DDDSuper(LitElement) {
             )
           );
           display: flex;
-          border-left: 2px dashed var(--ddd-steps-list-item-primary);
-          padding-left: 36px;
+          border-inline-start: 2px dashed var(--ddd-steps-list-item-primary);
+          padding-inline-start: 36px;
         }
 
         .circle {
@@ -72,7 +72,7 @@ export class DddStepsListItem extends DDDSuper(LitElement) {
           align-items: center;
           justify-content: center;
           font-weight: bold;
-          margin-left: -56px;
+          margin-inline-start: -56px;
           position: absolute;
           padding: 0px;
         }
@@ -97,18 +97,18 @@ export class DddStepsListItem extends DDDSuper(LitElement) {
         }
 
         :host(:last-of-type) {
-          border-left: unset;
+          border-inline-start: unset;
         }
 
         @media (max-width: 768px) {
           :host {
-            border-left: unset;
-            padding-left: unset;
+            border-inline-start: unset;
+            padding-inline-start: unset;
             display: block;
           }
           .circle {
             position: relative;
-            margin-left: unset;
+            margin-inline-start: unset;
           }
         }
       `,

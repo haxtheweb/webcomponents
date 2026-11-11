@@ -119,6 +119,7 @@ export class BlockQuote extends DDD {
           );
         }
 
+        /* an authored left/right alignment is a physical choice; it stays */
         :host([data-text-align="left"]) #wrap {
           text-align: left;
         }
@@ -163,7 +164,7 @@ export class BlockQuote extends DDD {
 
         #wrap {
           display: flex;
-          border-left: var(--ddd-border-lg);
+          border-inline-start: var(--ddd-border-lg);
           border-color: var(
             --ddd-component-block-quote-border-color,
             var(--ddd-component-block-quote-border-color-default)
@@ -181,7 +182,7 @@ export class BlockQuote extends DDD {
           border-width: var(--ddd-theme-border-size);
         }
         :host([no-border]) #wrap {
-          border-left: none;
+          border-inline-start: none;
         }
         :host([data-padding]) #wrap {
           padding: inherit;
@@ -219,7 +220,7 @@ export class BlockQuote extends DDD {
 
         .dash {
           letter-spacing: -0.5em;
-          margin-right: var(--ddd-spacing-2);
+          margin-inline-end: var(--ddd-spacing-2);
         }
 
         simple-icon-lite {

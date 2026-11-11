@@ -31,7 +31,7 @@ export class PolarisCta extends LitElement {
       css`
         :host {
           display: block;
-          margin-left: 32px;
+          margin-inline-start: 32px;
           /* PSU palette remapped onto DDD tokens (exact matches, original
              hex kept as the fallback). psu-darkgray has no clean DDD
              mapping so it stays raw. */

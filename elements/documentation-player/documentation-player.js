@@ -194,7 +194,7 @@ export class DocumentationPlayer extends DDDSuper(I18NMixin(LitElement)) {
           border: 1px solid var(--dp-line);
           border-radius: var(--ddd-radius-xs);
           overflow: hidden;
-          text-align: left;
+          text-align: start;
           container-type: inline-size;
         }
         .head {
@@ -360,7 +360,7 @@ export class DocumentationPlayer extends DDDSuper(I18NMixin(LitElement)) {
           font-size: var(--ddd-font-size-4xs);
           color: var(--dp-second);
           min-width: 6rem;
-          text-align: right;
+          text-align: end;
         }
         summary {
           font-family: inherit;
@@ -375,7 +375,7 @@ export class DocumentationPlayer extends DDDSuper(I18NMixin(LitElement)) {
         }
         details ol {
           margin: var(--ddd-spacing-2) 0 0;
-          padding-left: var(--ddd-spacing-5);
+          padding-inline-start: var(--ddd-spacing-5);
         }
         h3 {
           margin: var(--ddd-spacing-5) 0 var(--ddd-spacing-2);
@@ -419,7 +419,7 @@ export class DocumentationPlayer extends DDDSuper(I18NMixin(LitElement)) {
         }
         th,
         td {
-          text-align: left;
+          text-align: start;
           vertical-align: top;
           padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
           border-bottom: 1px solid var(--dp-line);
@@ -462,7 +462,7 @@ export class DocumentationPlayer extends DDDSuper(I18NMixin(LitElement)) {
           letter-spacing: 0.1em;
           text-transform: uppercase;
           color: var(--dp-second);
-          margin-right: var(--ddd-spacing-1);
+          margin-inline-end: var(--ddd-spacing-1);
         }
         .foot .grow {
           flex: 1;

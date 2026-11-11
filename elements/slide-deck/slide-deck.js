@@ -537,7 +537,7 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
           gap: var(--ddd-spacing-3);
           padding: var(--ddd-spacing-2);
           border: var(--ddd-border-xs);
-          text-align: left;
+          text-align: start;
           background: none;
           font: inherit;
           color: inherit;

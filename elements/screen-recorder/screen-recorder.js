@@ -176,7 +176,7 @@ export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
           font-family: var(--ddd-font-navigation);
         }
         .checkbox-container input[type="checkbox"] {
-          margin-right: var(--ddd-spacing-1);
+          margin-inline-end: var(--ddd-spacing-1);
           cursor: pointer;
         }
       `,

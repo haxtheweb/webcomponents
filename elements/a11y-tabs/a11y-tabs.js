@@ -150,7 +150,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
           }
           #tabs .flag-type {
             position: absolute;
-            left: -99999px;
+            inset-inline-start: -99999px;
             height: 0;
             overflow: hidden;
           }
@@ -175,7 +175,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
 
           #tabs span.label,
           #tabs .flag-icon {
-            margin-right: 8px;
+            margin-inline-end: 8px;
           }
 
           :host([icons-only]) #tabs button {
@@ -263,7 +263,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
           }
 
           :host([vertical]) #tabs {
-            border-left: none;
+            border-inline-start: none;
             background-color: var(--a11y-tabs-vertical-background);
             justify-content: var(--a11y-tabs-vertical-justify-tabs);
           }
@@ -300,12 +300,12 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
           }
 
           :host(:not([vertical])) #tabs li:not(:first-of-type) button {
-            border-left: none;
+            border-inline-start: none;
           }
 
           :host([vertical]) #tabs button {
             border-top: none;
-            border-left-color: var(--a11y-tabs-border-accent);
+            border-inline-start-color: var(--a11y-tabs-border-accent);
           }
 
           #tabs button:focus,
@@ -326,7 +326,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
 
           :host([vertical]) #tabs button:focus,
           :host([vertical]) #tabs button:hover {
-            border-left-color: var(--a11y-tabs-focus-border-accent);
+            border-inline-start-color: var(--a11y-tabs-focus-border-accent);
           }
 
           #tabs button[aria-selected="true"] {
@@ -348,8 +348,8 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
           }
 
           :host([vertical]) #tabs button[aria-selected="true"] {
-            border-right-color: var(--a11y-tabs-background);
-            border-left-color: var(--a11y-tabs-selected-border-accent);
+            border-inline-end-color: var(--a11y-tabs-background);
+            border-inline-start-color: var(--a11y-tabs-selected-border-accent);
           }
 
           #tabs button[disabled] {
@@ -369,7 +369,10 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
           }
 
           :host(:not([vertical])) #tabs button[disabled] {
-            border-left-color: var(--a11y-tabs-disabled-border-accent, unset);
+            border-inline-start-color: var(
+              --a11y-tabs-disabled-border-accent,
+              unset
+            );
           }
 
           :host([vertical]) #tabs button[disabled] {
