@@ -124,46 +124,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "lib/SimpleTourFinder.js",
-      "declarations": [
-        {
-          "kind": "mixin",
-          "description": "",
-          "name": "SimpleTourFinder",
-          "members": [
-            {
-              "kind": "method",
-              "name": "discoverSimpleTourStops"
-            },
-            {
-              "kind": "field",
-              "name": "tourName",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"default\""
-            }
-          ],
-          "parameters": [
-            {
-              "name": "SuperClass"
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "SimpleTourFinder",
-          "declaration": {
-            "name": "SimpleTourFinder",
-            "module": "lib/SimpleTourFinder.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "lib/simple-popover-manager.js",
       "declarations": [
         {
