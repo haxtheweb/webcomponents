@@ -272,13 +272,13 @@
       "order": 0,
       "src": "grid-plate.motion.json",
       "file": "lib/grid-plate.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/grid-plate.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

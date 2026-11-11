@@ -372,7 +372,7 @@
     "line": "Embed a PDF file inline with an optional card layout and do…",
     "code": "<pdf-browser-viewer></pdf-browser-viewer>"
   },
-  "surfaceHash": "d3f3bbb1ad0d",
+  "surfaceHash": "5ae3e1f51608",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

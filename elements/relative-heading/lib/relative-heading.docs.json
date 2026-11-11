@@ -236,13 +236,13 @@
       "order": 0,
       "src": "relative-heading.motion.json",
       "file": "lib/relative-heading.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/relative-heading.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

@@ -151,17 +151,12 @@
         {
           "name": "accent-color",
           "desc": "Color"
-        },
-        {
-          "name": "dark",
-          "desc": "Use the dark theme of the color."
         }
       ],
       "active": [
         [5, 0],
         [7.4, 1],
         [10, 2],
-        [12.4, 3],
         [14.8, 0]
       ]
     },
@@ -199,14 +194,6 @@
     },
     {
       "type": "text",
-      "x": 1022,
-      "y": 368,
-      "c": "code",
-      "in": 12.4,
-      "s": "dark"
-    },
-    {
-      "type": "text",
       "x": 1000,
       "y": 272,
       "c": "code",
@@ -231,13 +218,6 @@
           10,
           {
             "y": 368
-          },
-          0.4
-        ],
-        [
-          12.4,
-          {
-            "y": 400
           },
           0.4
         ]
@@ -269,13 +249,6 @@
           10,
           {
             "y": 400
-          },
-          0.4
-        ],
-        [
-          12.4,
-          {
-            "y": 432
           },
           0.4
         ]
@@ -316,18 +289,6 @@
       "dir": 1,
       "in": 10.2,
       "out": 12.2
-    },
-    {
-      "type": "callout",
-      "px": 770,
-      "py": 448,
-      "ex": 796,
-      "ey": 500,
-      "label": "dark",
-      "sub": "on or off",
-      "dir": 1,
-      "in": 12.6,
-      "out": 14.600000000000001
     }
   ],
   "beats": [
@@ -346,8 +307,8 @@
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set color and dark",
-      "text": "The color the side note is tinted with. Use the dark theme of the color."
+      "title": "Set color",
+      "text": "The color the side note is tinted with."
     },
     {
       "t": 14.8,
@@ -361,7 +322,7 @@
     "line": "A note set apart from the surrounding content, with an opti…",
     "code": "<lrndesign-sidenote label=\"Instructor note\" icon=\"icons:bookmark\">"
   },
-  "surfaceHash": "12dc492b9152",
+  "surfaceHash": "b9465668a5c8",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

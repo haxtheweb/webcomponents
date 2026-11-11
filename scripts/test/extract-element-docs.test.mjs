@@ -156,3 +156,29 @@ test("without the analyzer it warns instead of silently thinning the data", () =
   assert.match(r.stderr, /analyzer not found/);
   fs.rmSync(elements, { recursive: true, force: true });
 });
+
+test("an apostrophe in a comment does not hide inline haxProperties", () => {
+  const { elements, dir } = probe();
+  const src = ELEMENT.replace(
+    "  render() {",
+    `  static get haxProperties() {
+    return {
+      designSystem: {
+        // the probe's layout is fixed, so no text alignment
+        textAlign: false,
+      },
+      /* it's a "probe" */
+      gizmo: { title: "Probe" },
+      settings: {
+        configure: [{ property: "label", title: "Label", inputMethod: "textfield" }],
+      },
+    };
+  }
+  render() {`,
+  );
+  fs.writeFileSync(path.join(dir, "docs-probe.js"), src);
+  const docs = extractElementDocs("docs-probe", elements);
+  assert.equal(docs.hax.gizmo.title, "Probe");
+  assert.equal(docs.hax.settings.configure[0].property, "label");
+  fs.rmSync(elements, { recursive: true, force: true });
+});
