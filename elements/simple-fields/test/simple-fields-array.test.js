@@ -181,6 +181,26 @@ describe("simple-fields-array-item", () => {
     expect(el.isArrayItem).to.equal(true);
   });
 
+  it("gives the reorder menu a surface and a DDD tooltip that follow the color scheme", async () => {
+    const handle = el.shadowRoot.querySelector("#drag-handle");
+    const cs = getComputedStyle(handle);
+    // light scheme in tests: white menu surface, coaly tooltip, white text
+    expect(
+      cs.getPropertyValue("--simple-toolbar-button-bg").trim(),
+    ).to.not.equal("");
+    handle.style.colorScheme = "light";
+    expect(
+      getComputedStyle(handle).getPropertyValue("--simple-toolbar-button-bg"),
+    ).to.include("light-dark");
+    await handle.updateComplete;
+    const tip = handle.shadowRoot.querySelector("simple-tooltip");
+    const box = tip.shadowRoot.querySelector("#tooltip");
+    expect(getComputedStyle(box).backgroundColor).to.equal("rgb(38, 38, 38)");
+    expect(getComputedStyle(box).color).to.equal("rgb(255, 255, 255)");
+    handle.style.colorScheme = "dark";
+    expect(getComputedStyle(box).backgroundColor).to.equal("rgb(49, 77, 100)");
+  });
+
   it("toggle changes expanded state", () => {
     expect(el.expanded).to.equal(false);
     el.toggle();

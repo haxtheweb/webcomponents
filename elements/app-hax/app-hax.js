@@ -25,7 +25,13 @@ import "./lib/v2/app-hax-scroll-button.js";
 import "@haxtheweb/haxcms-elements/lib/core/ui/app-hax-user-menu.js";
 import { trimSlashes } from "@haxtheweb/utils/lib/safe-html.js";
 import { settleOnce } from "@haxtheweb/utils/lib/events.js";
-import { SITE_ADMIN_MODAL_STYLES } from "@haxtheweb/haxcms-elements/lib/core/admin/site-admin-sections.js";
+import { siteAdminDockedModalStyles } from "@haxtheweb/haxcms-elements/lib/core/admin/site-admin-sections.js";
+import {
+  handleDockedMerlinRow,
+  guardDockedAdminLeave,
+  isDockedAdminOpen,
+  closeDockedAdmin,
+} from "@haxtheweb/haxcms-elements/lib/core/admin/docked-admin.js";
 import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminIcons.js";
 import {
   HaxUiAdminTokens,
@@ -262,6 +268,22 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
 
   connectedCallback() {
     super.connectedCallback();
+    // Merlin sits above the admin dialog and the bar, on the layer a site's
+    // base.css gives it (the dashboard does not load base.css); a value the
+    // page already set wins
+    if (
+      SuperDaemonInstance &&
+      SuperDaemonInstance.style &&
+      !globalThis
+        .getComputedStyle(SuperDaemonInstance)
+        .getPropertyValue("--simple-modal-z-index")
+        .trim()
+    ) {
+      SuperDaemonInstance.style.setProperty(
+        "--simple-modal-z-index",
+        "100000002",
+      );
+    }
     globalThis
       .matchMedia("(prefers-color-scheme: dark)")
       .addEventListener("change", darkToggle, {
@@ -303,6 +325,22 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     globalThis.addEventListener(
       "simple-modal-breadcrumb-click",
       this._simpleModalBreadcrumbClick.bind(this),
+      { signal: this.windowControllers.signal },
+    );
+    // System Settings docks below the bar, as Site Settings does in a site
+    globalThis.addEventListener(
+      "simple-modal-opened",
+      this._syncAdminDocked.bind(this),
+      { signal: this.windowControllers.signal },
+    );
+    globalThis.addEventListener(
+      "simple-modal-show",
+      this._queueSyncAdminDocked.bind(this),
+      { signal: this.windowControllers.signal },
+    );
+    globalThis.addEventListener(
+      "super-daemon-row-selected",
+      this._merlinRowSelectedWhileDocked.bind(this),
       { signal: this.windowControllers.signal },
     );
   }
@@ -672,6 +710,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       });
     });
     this.userMenuOpen = false;
+    this.adminDocked = false;
     this.hasHeaderPre = false;
     this.isHAXiamDeployment = false;
     this.__currentAdminRoutePath = null;
@@ -889,6 +928,15 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         attribute: "has-header-pre",
       },
       siteReady: { type: Boolean },
+      /**
+       * System Settings is open, docked below the bar. The bar stays
+       * usable; the dashboard behind the dialog is inert.
+       */
+      adminDocked: {
+        type: Boolean,
+        reflect: true,
+        attribute: "admin-docked",
+      },
       basePath: { type: String, attribute: "base-path" },
       token: { type: String },
     };
@@ -1031,6 +1079,15 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
           overflow: visible;
           border-bottom: 1px solid var(--hax-ui-line);
+        }
+        /* System Settings is docked below the bar: the bar stays on screen
+           and it (and its user menu) stays above the dialog, which
+           hax-ui-styles can pin at 100000001. Merlin (super-daemon) shares
+           this layer and comes later in the page, so it stays on top. */
+        :host([admin-docked]) .bar-wrap {
+          position: sticky;
+          top: 0;
+          z-index: 100000002;
         }
 
         /* the same bar as the site editor's: Coaly gray and HAX UI dark
@@ -1949,8 +2006,86 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
   }
 
   _systemSettingsModalStyles() {
-    // one admin dialog look: the same titlebar, size and padding as site admin
-    return Object.assign({}, SITE_ADMIN_MODAL_STYLES);
+    // one admin dialog look: the same titlebar, size and padding as site
+    // admin, docked below the bar as site admin is
+    return siteAdminDockedModalStyles(this._systemSettingsDockTop());
+  }
+
+  /**
+   * Where the docked dialog starts: the bar's height, since the bar sticks
+   * to the top of the screen while the dialog is docked.
+   */
+  _systemSettingsDockTop() {
+    const bar =
+      this.shadowRoot && this.shadowRoot.querySelector
+        ? this.shadowRoot.querySelector("app-hax-top-bar")
+        : null;
+    const rect =
+      bar && typeof bar.getBoundingClientRect === "function"
+        ? bar.getBoundingClientRect()
+        : null;
+    return rect && rect.height > 0 ? rect.height : 64;
+  }
+
+  _queueSyncAdminDocked() {
+    // simple-modal handles the show first; read its state after
+    setTimeout(() => this._syncAdminDocked(), 0);
+  }
+
+  /**
+   * adminDocked follows the modal: true only while it is open, docked and
+   * holding System Settings.
+   */
+  _syncAdminDocked() {
+    const docked = isDockedAdminOpen(this._currentSystemSettingsDialog());
+    if (this.adminDocked !== docked) {
+      this.adminDocked = docked;
+    }
+  }
+
+  /**
+   * Run `proceed`, first asking System Settings to confirm leaving when its
+   * open panel has unsaved changes and it is docked below the bar.
+   */
+  _systemSettingsGuard(proceed) {
+    if (!this.adminDocked) {
+      proceed();
+      return;
+    }
+    guardDockedAdminLeave(this._currentSystemSettingsDialog(), proceed);
+  }
+
+  _openCharacterBuilderGuarded(e) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    this.closeMenu();
+    this._systemSettingsGuard(() => this._openCharacterBuilder());
+  }
+
+  _logoutGuarded() {
+    this.closeMenu();
+    this._systemSettingsGuard(() => this.logout());
+  }
+
+  /**
+   * Merlin stays live above the docked dialog: the System Settings command
+   * moves it, anything else closes it first, and unsaved changes are asked
+   * about first (docked-admin.js has the rules).
+   */
+  _merlinRowSelectedWhileDocked(e) {
+    if (!this.adminDocked) {
+      return;
+    }
+    handleDockedMerlinRow(e, {
+      host: this,
+      dialog: this._currentSystemSettingsDialog(),
+      isAdminCommand: (path) => path.indexOf("HAX/action/systemSettings") === 0,
+      closeDialog: () => closeDockedAdmin(),
+      guard: (proceed) => this._systemSettingsGuard(proceed),
+      closeMerlin: () => SuperDaemonInstance.close(),
+    });
   }
 
   _currentSystemSettingsDialog() {
@@ -2008,6 +2143,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           clone: false,
           modal: true,
           showClose: true,
+          docked: true,
         },
       }),
     );
@@ -2138,6 +2274,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
   }
 
   _simpleModalClosed() {
+    this._syncAdminDocked();
     const hasSystemSettingsContext =
       (typeof this.__currentAdminRoutePath === "string" &&
         this.__currentAdminRoutePath.indexOf("admin") === 0) ||
@@ -2386,7 +2523,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       <!-- plain div: app-hax-top-bar provides the banner landmark itself, a
            wrapping <header> would nest/duplicate banner landmarks (axe:
            landmark-banner-is-top-level, landmark-no-duplicate-banner) -->
-      <div>
+      <div class="bar-wrap">
         <app-hax-top-bar>
           <div slot="left" class="left-group">
             <slot
@@ -2471,13 +2608,13 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                 slot="main-menu"
                 icon="face"
                 label="${this.t.customizeCharacter}"
-                @click="${this._openCharacterBuilder}"
+                @click="${this._openCharacterBuilderGuarded}"
               ></app-hax-user-menu-button>
               <app-hax-user-menu-button
                 slot="post-menu"
                 class="logout"
                 label="${this.t.logOut}"
-                @click=${this.logout}
+                @click=${this._logoutGuarded}
               ></app-hax-user-menu-button>
             </app-hax-user-menu>
           </div>
@@ -2499,7 +2636,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           </div>
         </app-hax-top-bar>
       </div>
-      <main @click="${this.closeMenu}">
+      <main @click="${this.closeMenu}" ?inert="${this.adminDocked}">
         <confetti-container id="confetti">
           <section class="content">
             <div class="start-journey">

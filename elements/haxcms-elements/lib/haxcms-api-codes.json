@@ -430,7 +430,10 @@
       "en": "The outline is invalid.",
       "match": [
         "outline payload requires an items array",
-        "each outline item requires an id"
+        "each outline item requires an id",
+        "each outline item must be an object",
+        "each new outline item requires its own id",
+        "outline item parents cannot form a cycle"
       ]
     },
     {

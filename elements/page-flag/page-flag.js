@@ -62,9 +62,9 @@ class PageFlag extends SimpleColors {
       css`
         :host {
           display: none;
-          float: right;
+          float: inline-end;
           z-index: var(--simple-modal-z-index, 1000);
-          margin-right: -80px;
+          margin-inline-end: -80px;
           position: relative;
         }
         :host([show]) {
@@ -93,11 +93,11 @@ class PageFlag extends SimpleColors {
           position: absolute;
           pointer-events: none;
           width: 0;
-          right: 100%;
+          inset-inline-end: 100%;
         }
         .arrow::before {
           border-color: rgba(255, 255, 255, 0);
-          border-right-color: var(
+          border-inline-end-color: var(
             --simple-colors-default-theme-accent-4,
             #97d4e8
           );
@@ -107,7 +107,7 @@ class PageFlag extends SimpleColors {
         }
         .arrow::after {
           border-color: rgba(255, 255, 255, 0);
-          border-right-color: var(
+          border-inline-end-color: var(
             --simple-colors-default-theme-accent-1,
             #c8e7f1
           );
@@ -130,7 +130,7 @@ class PageFlag extends SimpleColors {
           );
           font-size: var(--ddd-font-size-6xs, 12px);
           width: 300px;
-          margin-left: 160px;
+          margin-inline-start: 160px;
           padding-top: 8px;
         }
       `,
@@ -240,6 +240,25 @@ class PageFlag extends SimpleColors {
     return true;
   }
   /**
+   * The manager shows every flag on the page when a user logs in. It only
+   * lists flags that are on the page: a removed flag is dropped so the list
+   * does not keep it alive, and one moved by the HAX editor (removed and
+   * re-added) is listed again.
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    if (this.hasUpdated && !pageFlagManager.allFlags.includes(this)) {
+      pageFlagManager.allFlags.push(this);
+    }
+  }
+  disconnectedCallback() {
+    const i = pageFlagManager.allFlags.indexOf(this);
+    if (i !== -1) {
+      pageFlagManager.allFlags.splice(i, 1);
+    }
+    super.disconnectedCallback();
+  }
+  /**
    * LitElement ready
    */
   firstUpdated(changedProperties) {
@@ -255,8 +274,10 @@ class PageFlag extends SimpleColors {
     // arrow node for pointing to w/ the tooltip container
     this.shadowRoot.querySelector("absolute-position-behavior").target =
       this.shadowRoot.querySelector(".arrow");
-    // ensure we have content, if not let's add a boilerplate one to get writing
-    if (!this.querySelector("page-flag-comment")) {
+    // ensure we have content, if not let's add a boilerplate one to get
+    // writing; not for a flag that just removed itself (no user), where
+    // the comment would never be shown or released
+    if (this.isConnected && !this.querySelector("page-flag-comment")) {
       const comment = globalThis.document.createElement("page-flag-comment");
       comment.seed = pageFlagManager.activeUser;
       comment.timestamp = Date.now() / 1000;

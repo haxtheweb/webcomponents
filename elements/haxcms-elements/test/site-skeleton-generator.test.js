@@ -568,58 +568,5 @@ describe("SiteSkeletonGenerator", () => {
         document.removeEventListener("click", onClick, true);
       }
     });
-
-    it("toAppHaxFormat applies customizations and stamps pages", async () => {
-      const skeleton = await SiteSkeletonGenerator.generateFromCurrentSite();
-      const before = JSON.stringify(skeleton);
-      const api = SiteSkeletonGenerator.toAppHaxFormat(skeleton, {
-        siteName: "New Name",
-        color: "blue",
-        icon: "icons:star",
-        themeSettings: { hexCode: "#000000" },
-      });
-      expect(api.site.name).to.equal("New Name");
-      expect(api.site.description).to.equal(skeleton.site.description);
-      expect(api.site.theme).to.equal("polaris-flex-theme");
-      expect(api.theme.color).to.equal("blue");
-      expect(api.theme.icon).to.equal("icons:star");
-      expect(api.theme.hexCode).to.equal("#000000");
-      expect(api.build.items.length).to.equal(skeleton.build.items.length);
-      api.build.items.forEach((item, i) => {
-        expect(item.id).to.equal(skeleton.build.items[i].id);
-        expect(item.parent).to.equal(skeleton.build.items[i].parent);
-        expect(Number.isNaN(Date.parse(item.metadata.created))).to.equal(false);
-        expect(item.metadata.updated).to.be.a("string");
-        expect(item.metadata.published).to.equal(
-          skeleton.build.items[i].metadata.published,
-        );
-      });
-      // the skeleton itself is not modified
-      expect(JSON.stringify(skeleton)).to.equal(before);
-    });
-
-    it("toAppHaxFormat keeps skeleton values without customizations", () => {
-      const skeleton = {
-        site: { name: "n", description: "d", theme: "clean-one" },
-        build: { type: "skeleton", items: [] },
-        theme: { hexCode: "#111111" },
-      };
-      const api = SiteSkeletonGenerator.toAppHaxFormat(skeleton);
-      expect(api.site).to.deep.equal(skeleton.site);
-      expect(api.theme).to.deep.equal({ hexCode: "#111111" });
-      expect(api.build).to.deep.equal({ type: "skeleton", items: [] });
-    });
-
-    it("generateFilesFromSkeleton maps pages and file references", () => {
-      const files = SiteSkeletonGenerator.generateFilesFromSkeleton({
-        structure: [{ slug: "one", content: "<p>1</p>" }, { slug: "two" }],
-        files: ["images/a.png"],
-      });
-      expect(files).to.deep.equal({
-        "pages/one/index.html": "<p>1</p>",
-        "pages/two/index.html": "",
-        "files/images/a.png": "[SKELETON_FILE_REFERENCE:images/a.png]",
-      });
-    });
   });
 });

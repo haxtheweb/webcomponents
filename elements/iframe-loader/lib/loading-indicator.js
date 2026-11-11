@@ -30,16 +30,16 @@ class LoadingIndicator extends LitElement {
       }
       @keyframes running-progress {
         0% {
-          margin-left: 0px;
-          margin-right: 100%;
+          margin-inline-start: 0px;
+          margin-inline-end: 100%;
         }
         50% {
-          margin-left: 25%;
-          margin-right: 0%;
+          margin-inline-start: 25%;
+          margin-inline-end: 0%;
         }
         100% {
-          margin-left: 100%;
-          margin-right: 0;
+          margin-inline-start: 100%;
+          margin-inline-end: 0;
         }
       }
       @keyframes fade-out {

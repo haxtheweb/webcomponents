@@ -12,6 +12,34 @@ on:
 permissions:
   contents: read
 jobs:
+  # Fast lint feedback: the same `yarn lint` as the ESLint step in
+  # build-and-test, on its own so a lint error shows up in about a minute
+  # instead of after the full test run. build-and-test keeps its ESLint step
+  # because that job is the required check that gates merging.
+  lint:
+    name: "ESLint (fast)"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "dir=$(yarn cache dir)" >> "$GITHUB_OUTPUT"
+      - name: Cache Yarn
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-node-24-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-24-yarn-
+      - name: Install
+        run: yarn install --frozen-lockfile
+      - name: ESLint
+        run: yarn lint
   build-and-test:
     name: "${{ matrix.platform }}: node.js ${{ matrix.node-version }}"
     strategy:
@@ -51,12 +79,19 @@ jobs:
       - name: Stylelint check
         run: npx stylelint **/*.css
       - name: Install Playwright Chromium
-        # Use the Playwright resolved by yarn.lock (pulled in by
-        # @web/test-runner-playwright) so the downloaded browser build always
-        # matches what the test runner launches. A hard-coded version here
-        # drifts every time the lockfile bumps Playwright and fails with
-        # "Executable doesn't exist ... chromium_headless_shell-NNNN".
-        run: yarn playwright install --with-deps chromium
+        # the Playwright version yarn.lock resolves (pulled in by
+        # @web/test-runner-playwright), so the browser build matches what the
+        # tests launch; cached per version. A hard-coded version drifts every
+        # time the lockfile bumps Playwright and fails with "Executable
+        # doesn't exist ... chromium_headless_shell-NNNN".
+        # no extra fonts: Chromium runs on the runner image's libraries, so
+        # this job does not depend on the Ubuntu package mirrors
+        # the local path, not the $/ self-repository form: $/ downloads the
+        # whole repo as an action archive, and that extraction fails here
+        uses: ./.github/actions/setup-playwright # zizmor: ignore[self-repository]
+        timeout-minutes: 12
+        with:
+          fonts: "false"
       - name: Test all elements
         # Quiet reporter: progress ticks, then every failure grouped at the
         # end of this step's log instead of buried among ~13k passing tests.

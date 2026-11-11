@@ -10,7 +10,8 @@
     "label": "label",
     "parent": "parent",
     "src": "src",
-    "subtopic-of": "subtopicOf"
+    "subtopic-of": "subtopicOf",
+    "t": "t"
   },
   "slots": [
     "(default)",
@@ -21,6 +22,7 @@
     "svg"
   ],
   "events": [
+    "learner-progress-request",
     "user-engagement"
   ],
   "cssParts": [],

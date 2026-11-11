@@ -97,7 +97,6 @@ class CMSEntity extends CMSBase {
         handles: [
           {
             type: "cmsentity",
-            entity: "entity",
           },
         ],
         meta: {

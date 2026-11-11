@@ -100,7 +100,7 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
             flex: 1 1 auto;
           }
           #fieldmeta {
-            text-align: right;
+            text-align: end;
           }
           .field,
           ::slotted([slot="field"]) {
@@ -126,7 +126,8 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
           .field-main.inline ::slotted([slot="field"]) {
             min-width: var(--simple-fields-detail-line-height, 22px);
             height: var(--simple-fields-detail-line-height, 22px);
-            margin: 0 var(--simple-fields-margin-small, 8px) 0 0;
+            margin-block: 0;
+            margin-inline: 0 var(--simple-fields-margin-small, 8px);
           }
           .field[disabled],
           :host([readonly]) ::slotted([slot="field"]) {
@@ -143,7 +144,13 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
           ::slotted(label:hover),
           ::slotted(label:focus),
           ::slotted(label:focus-within) {
-            color: var(--simple-fields-accent-color, #3f51b5);
+            color: var(
+              --simple-fields-accent-color,
+              light-dark(
+                var(--ddd-theme-default-link, #005fa9),
+                var(--ddd-theme-default-linkLight, #cce9ff)
+              )
+            );
             transition: background-color var(--ddd-duration-normal, 0.3s)
               ease-in-out;
           }
@@ -170,7 +177,13 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
           ::slotted(fieldset[slot="field"]:hover),
           ::slotted(fieldset[slot="field"]:focus),
           ::slotted(fieldset[slot="field"]:focus-within) {
-            color: var(--simple-fields-accent-color, #3f51b5);
+            color: var(
+              --simple-fields-accent-color,
+              light-dark(
+                var(--ddd-theme-default-link, #005fa9),
+                var(--ddd-theme-default-linkLight, #cce9ff)
+              )
+            );
           }
         `,
       ];
@@ -185,6 +198,14 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
          */
         autovalidate: {
           type: Boolean,
+        },
+        /**
+         * Icon for the (i) button that opens a long description.
+         * Admin panels can match their own icon set.
+         */
+        infoIcon: {
+          type: String,
+          attribute: "info-icon",
         },
         /**
          * a counter text and textareas: "character", "word" or unset for none
@@ -381,6 +402,7 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
       super();
       this.isSimpleFieldType = true;
       this.counter = "none";
+      this.infoIcon = "icons:info-outline";
       this.autovalidate = false;
       this.disabled = false;
       this.hidden = false;
@@ -801,7 +823,7 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
       return html`
         <simple-icon-button-lite
           id="${infoId}"
-          icon="icons:info-outline"
+          icon="${this.infoIcon}"
           label="${this.label ? `${this.label} details` : `Field details`}"
           part="info-toggle"
           class="info-toggle"

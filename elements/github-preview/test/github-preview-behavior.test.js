@@ -122,9 +122,11 @@ describe("github-preview", () => {
       "https://api.github.com/repos/undefined/undefined",
     );
     expect(element.__assetAvailable).to.equal(false);
-    expect(element.shadowRoot.querySelector("h1").textContent).to.equal(
-      "Asset not found",
-    );
+    // shown as body text, not a heading
+    expect(element.shadowRoot.querySelector("h1")).to.not.exist;
+    expect(
+      element.shadowRoot.querySelector(".message").textContent.trim(),
+    ).to.equal("Asset not found");
   });
 
   it("fetches repo data and renders the basic card", async () => {
@@ -143,27 +145,37 @@ describe("github-preview", () => {
     expect(element.getAttribute("repo-lang")).to.equal("JavaScript");
     expect(element.__stars).to.equal(42);
     expect(element.__forks).to.equal(7);
-    const link = element.shadowRoot.querySelector("a");
+    // the open-in-GitHub link is a header action, not the whole card
+    const link = element.shadowRoot.querySelector("a.ddd-block-action");
     expect(link.getAttribute("href")).to.equal(
       "https://github.com/haxtheweb/webcomponents",
     );
     expect(link.getAttribute("rel")).to.equal("noopener noreferrer");
+    expect(link.getAttribute("aria-label")).to.equal(
+      "Open haxtheweb/webcomponents on GitHub",
+    );
+    expect(element.shadowRoot.querySelectorAll("a").length).to.equal(1);
     expect(
-      element.shadowRoot.querySelector("div.header-container div").textContent,
-    ).to.equal("webcomponents");
+      element.shadowRoot.querySelector(".ddd-block-label").textContent,
+    ).to.equal("GitHub · Repository");
     expect(
-      element.shadowRoot.querySelector("div.description").textContent,
+      element.shadowRoot.querySelector(".ddd-block-title").textContent.trim(),
+    ).to.equal("haxtheweb / webcomponents");
+    expect(
+      element.shadowRoot.querySelector(".description").textContent,
     ).to.equal("A repo about web components");
+    const stats = element.shadowRoot.querySelectorAll(".stats-text");
+    expect(stats[0].textContent).to.equal("JavaScript");
+    expect(stats[1].textContent).to.equal("42 stars");
+    expect(stats[2].textContent).to.equal("7 forks");
     expect(
-      element.shadowRoot.querySelectorAll("div.stats-text")[0].textContent,
-    ).to.equal("JavaScript");
+      element.shadowRoot.querySelector(".lang-circle").getAttribute("part"),
+    ).to.equal("github-preview-lang-circle");
     expect(
-      element.shadowRoot.querySelectorAll("div.stats-text")[1].textContent,
-    ).to.equal("42");
-    expect(
-      element.shadowRoot.querySelectorAll("div.stats-text")[2].textContent,
-    ).to.equal("7");
-    expect(element.shadowRoot.querySelector(".lang-circle")).to.exist;
+      element.shadowRoot.querySelector(
+        'simple-icon-lite[icon="communication:call-split"]',
+      ),
+    ).to.exist;
   });
 
   it("fetches the readme and renders the extended card", async () => {
@@ -187,7 +199,7 @@ describe("github-preview", () => {
     expect(element.wcmarkdown).to.exist;
     const container = element.shadowRoot.querySelector("div.container");
     expect(container).to.exist;
-    const links = element.shadowRoot.querySelectorAll("div.header-container a");
+    const links = element.shadowRoot.querySelectorAll(".ddd-block-title a");
     expect(links[0].getAttribute("href")).to.equal(
       "https://github.com/haxtheweb",
     );
@@ -229,6 +241,57 @@ describe("github-preview", () => {
     await element.updateComplete;
     await aTimeout(100);
     expect(element.__assetAvailable).to.equal(false);
+    expect(element.__failed).to.equal(true);
+  });
+
+  it("shows a loading state, not the not-found text, until data arrives", async () => {
+    let release;
+    const pending = new Promise((r) => {
+      release = r;
+    });
+    stubFetch((url) => (url === repoApiUrl ? pending : notFoundResponse()));
+    const element = await fixture(html`
+      <github-preview org="haxtheweb" repo="webcomponents"></github-preview>
+    `);
+    element.elementVisible = true;
+    await element.updateComplete;
+    await aTimeout(20);
+    const block = element.shadowRoot.querySelector(".ddd-block");
+    expect(block.getAttribute("aria-busy")).to.equal("true");
+    expect(element.shadowRoot.querySelectorAll(".skeleton").length).to.equal(2);
+    expect(
+      element.shadowRoot.querySelector("[role=status]").textContent,
+    ).to.equal("Loading");
+    expect(element.shadowRoot.querySelector(".message")).to.not.exist;
+    release(repoResponse());
+    await aTimeout(50);
+    await element.updateComplete;
+    expect(block.getAttribute("aria-busy")).to.equal("false");
+    expect(element.shadowRoot.querySelector(".skeleton")).to.not.exist;
+  });
+
+  it("shows not-found-text after a real 404", async () => {
+    stubFetch(() => notFoundResponse());
+    const element = await fixture(html`
+      <github-preview
+        org="haxtheweb"
+        repo="nope"
+        not-found-text="No such repo"
+      ></github-preview>
+    `);
+    element.elementVisible = true;
+    await aTimeout(100);
+    await element.updateComplete;
+    expect(element.__failed).to.equal(true);
+    expect(
+      element.shadowRoot.querySelector(".message").textContent.trim(),
+    ).to.equal("No such repo");
+  });
+
+  it("describes the repo preview in the gizmo", () => {
+    expect(GithubPreview.haxProperties.gizmo.description).to.not.include(
+      "long description",
+    );
   });
 
   it("tolerates a failed readme fetch in extended mode", async () => {

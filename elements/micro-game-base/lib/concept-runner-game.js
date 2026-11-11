@@ -814,6 +814,8 @@ export class ConceptRunnerGame extends MicroGameBase {
           background-repeat: repeat-x;
           background-position-y: 14px;
         }
+        /* sprites are placed by transform from screen x/y; left stays
+           physical on purpose (the board does not mirror) */
         #player {
           position: absolute;
           left: 0;

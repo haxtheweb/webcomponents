@@ -60,9 +60,9 @@ export class CareerRoleItem extends I18NMixin(DDDSuper(LitElement)) {
       css`
         :host {
           display: flex;
-          border-left: var(--ddd-border-sm);
-          padding-left: 45px;
-          margin-left: var(--ddd-spacing-6, 24px);
+          border-inline-start: var(--ddd-border-sm);
+          padding-inline-start: 45px;
+          margin-inline-start: var(--ddd-spacing-6, 24px);
           position: relative;
           scroll-margin-top: var(--ddd-spacing-28, 112px);
         }
@@ -80,7 +80,7 @@ export class CareerRoleItem extends I18NMixin(DDDSuper(LitElement)) {
           height: var(--ddd-icon-4xs, 16px);
           border-radius: 50%;
           background-color: var(--ddd-theme-default-limestoneLight);
-          margin-left: -50px;
+          margin-inline-start: -50px;
           position: absolute;
         }
 
@@ -105,14 +105,14 @@ export class CareerRoleItem extends I18NMixin(DDDSuper(LitElement)) {
         }
 
         :host(:last-of-type) {
-          border-left: unset;
-          margin-left: 26px;
+          border-inline-start: unset;
+          margin-inline-start: 26px;
         }
 
         @media (max-width: 768px) {
           :host {
-            border-left: unset;
-            padding-left: unset;
+            border-inline-start: unset;
+            padding-inline-start: unset;
             display: block;
           }
           .circle {
@@ -194,6 +194,25 @@ export class CareerRoleItem extends I18NMixin(DDDSuper(LitElement)) {
       const p = globalThis.document.createElement("p");
       p.textContent = this.t.describeYourRole;
       this.appendChild(p);
+      // translations load after connect; the starter paragraph follows them
+      // until someone edits it
+      this.__starterParagraph = p;
+      this.__starterText = p.textContent;
+    }
+  }
+
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
+    }
+    const p = this.__starterParagraph;
+    if (changedProperties.has("t") && p) {
+      if (p.parentNode !== this || p.textContent !== this.__starterText) {
+        this.__starterParagraph = null;
+      } else if (this.t.describeYourRole !== this.__starterText) {
+        p.textContent = this.t.describeYourRole;
+        this.__starterText = p.textContent;
+      }
     }
   }
 

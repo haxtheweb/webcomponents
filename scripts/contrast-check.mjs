@@ -39,6 +39,13 @@ import process from "node:process";
 import { fileURLToPath } from "node:url";
 import { changedFiles, changedFolders } from "./lib/i18n-layout.mjs";
 import {
+  demoElements as listDemoElements,
+  launchChromium,
+  openDemo,
+  runPool,
+  startServer,
+} from "./lib/demo-runner.mjs";
+import {
   MODES,
   baselineGrowth,
   baselineSize,
@@ -55,12 +62,12 @@ const BASELINE = path.join(root, BASELINE_REL);
 const AXE = path.join(root, "node_modules", "axe-core", "axe.min.js");
 const CONCURRENCY = Number(process.env.CONTRAST_CONCURRENCY) || 4;
 const PAGE_TIMEOUT = Number(process.env.CONTRAST_PAGE_TIMEOUT) || 45000;
-const SETTLE_MS = 750;
 const LIST_LIMIT = 8;
 // changes to the check itself re-check every demo
 const TOOLING = [
   /^scripts\/contrast/,
   /^scripts\/lib\/contrast\.mjs$/,
+  /^scripts\/lib\/demo-runner\.mjs$/,
   /^web-dev-server\.config\.mjs$/,
   /^\.github\/workflows\/contrast\.yml$/,
 ];
@@ -122,19 +129,7 @@ function writeBaseline(elements) {
 }
 
 /** element folders that have a demo page */
-function demoElements() {
-  return fs
-    .readdirSync(path.join(root, "elements"), { withFileTypes: true })
-    .filter(
-      (d) =>
-        d.isDirectory() &&
-        fs.existsSync(
-          path.join(root, "elements", d.name, "demo", "index.html"),
-        ),
-    )
-    .map((d) => d.name)
-    .sort();
-}
+const demoElements = () => listDemoElements(root);
 
 function selectElements(all) {
   if (ELEMENTS) {
@@ -186,39 +181,6 @@ function checkBaselineShrinkOnly(ref) {
   return 1;
 }
 
-async function startServer() {
-  const { startDevServer } = await import("@web/dev-server");
-  const repoConfig = (
-    await import(path.join(root, "web-dev-server.config.mjs"))
-  ).default;
-  // the repo config is for `yarn start` in an element folder; serve the
-  // repo root over plain http, without opening a browser or watching files
-  const config = {
-    ...repoConfig,
-    rootDir: root,
-    appIndex: undefined,
-    open: false,
-    watch: false,
-    https: false,
-    hostname: "127.0.0.1",
-    port: Number(process.env.CONTRAST_PORT) || 8765,
-  };
-  const server = await startDevServer({
-    config,
-    readCliArgs: false,
-    readFileConfig: false,
-    autoExitProcess: false,
-    logStartMessage: false,
-  });
-  return {
-    server,
-    origin: `http://127.0.0.1:${server.config.port}`,
-  };
-}
-
-const LOCAL =
-  /^(https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?\/|data:|blob:|about:)/;
-
 async function auditDemo(browser, origin, element, mode, axeSource) {
   const context = await browser.newContext({
     colorScheme: mode,
@@ -226,29 +188,7 @@ async function auditDemo(browser, origin, element, mode, axeSource) {
     viewport: { width: 1280, height: 900 },
   });
   try {
-    await context.route(
-      (url) => !LOCAL.test(url.href),
-      (route) => route.abort(),
-    );
-    const page = await context.newPage();
-    page.setDefaultTimeout(PAGE_TIMEOUT);
-    await page.goto(`${origin}/elements/${element}/demo/index.html`, {
-      waitUntil: "load",
-      timeout: PAGE_TIMEOUT,
-    });
-    // let custom elements upgrade and render (bounded: some never define)
-    await page
-      .waitForFunction(
-        () => document.querySelectorAll(":not(:defined)").length === 0,
-        null,
-        { timeout: 10000 },
-      )
-      .catch(() => {});
-    await page
-      .waitForLoadState("networkidle", { timeout: 10000 })
-      .catch(() => {});
-    await page.evaluate(() => (document.fonts ? document.fonts.ready : null));
-    await page.waitForTimeout(SETTLE_MS);
+    const page = await openDemo(context, origin, element, PAGE_TIMEOUT);
     await page.addScriptTag({ content: axeSource });
     const violations = await page.evaluate(async () => {
       const res = await globalThis.axe.run(document, {
@@ -269,23 +209,15 @@ async function auditDemo(browser, origin, element, mode, axeSource) {
 }
 
 async function runAudits(picked) {
-  let chromium;
-  try {
-    ({ chromium } = await import("playwright"));
-  } catch {
-    throw new Error(
-      "playwright is not installed in this monorepo (yarn install), then yarn playwright install chromium",
-    );
-  }
   const axeSource = fs.readFileSync(AXE, "utf8");
-  const launch = process.env.CONTRAST_CHROMIUM
-    ? { executablePath: process.env.CONTRAST_CHROMIUM }
-    : {};
-  const browser = await chromium.launch(launch);
+  const browser = await launchChromium(process.env.CONTRAST_CHROMIUM);
   let server;
   let origin;
   try {
-    ({ server, origin } = await startServer());
+    ({ server, origin } = await startServer(
+      root,
+      Number(process.env.CONTRAST_PORT) || 8765,
+    ));
   } catch (e) {
     await browser.close().catch(() => {});
     throw e;
@@ -301,28 +233,21 @@ async function runAudits(picked) {
   );
   const results = {};
   const errors = {};
-  let next = 0;
-  let done = 0;
-  async function worker() {
-    while (next < jobs.length) {
-      const { element, mode } = jobs[next++];
-      const r = await auditDemo(browser, origin, element, mode, axeSource);
-      done += 1;
-      if (r.error) {
-        errors[element] = errors[element] || {};
-        errors[element][mode] = r.error;
-      } else {
-        results[element] = results[element] || {};
-        results[element][mode] = r.counts;
-      }
-      if (process.stdout.isTTY || done % 25 === 0 || done === jobs.length) {
-        console.log(`contrast: ${done}/${jobs.length}`);
-      }
-    }
-  }
   try {
-    await Promise.all(
-      Array.from({ length: Math.min(CONCURRENCY, jobs.length) }, worker),
+    await runPool(
+      jobs,
+      CONCURRENCY,
+      async ({ element, mode }) => {
+        const r = await auditDemo(browser, origin, element, mode, axeSource);
+        if (r.error) {
+          errors[element] = errors[element] || {};
+          errors[element][mode] = r.error;
+        } else {
+          results[element] = results[element] || {};
+          results[element][mode] = r.counts;
+        }
+      },
+      "contrast",
     );
   } finally {
     await browser.close().catch(() => {});

@@ -3,6 +3,10 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { css, html } from "lit";
+import {
+  DDDReadingSurface,
+  dddReadingProse,
+} from "@haxtheweb/d-d-d/lib/DDDReading.js";
 import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { I18NManagerStore } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
@@ -80,6 +84,7 @@ class JourneyTopbarTheme extends HAXCMSLitElementTheme {
   HAXCMSGlobalStyleSheetContent() {
     return [
       ...super.HAXCMSGlobalStyleSheetContent(),
+      dddReadingProse("journey-topbar-theme", "start"),
       css`
         :root {
           color-scheme: light dark;
@@ -109,7 +114,20 @@ class JourneyTopbarTheme extends HAXCMSLitElementTheme {
 
   //styles function
   static get styles() {
-    return [super.styles, JourneyTopbarThemeStyles];
+    return [
+      super.styles,
+      DDDReadingSurface,
+      css`
+        /* reading pass adjustments for this theme */
+        .ddd-reading {
+          --ddd-theme-measure: var(--ddd-content-width-md);
+        }
+        #slot {
+          padding-block-start: var(--ddd-spacing-5);
+        }
+      `,
+      JourneyTopbarThemeStyles,
+    ];
   }
 
   // render function
@@ -136,7 +154,7 @@ class JourneyTopbarTheme extends HAXCMSLitElementTheme {
         <site-active-title></site-active-title>
         <article>
           <!-- this block and names are required for HAX to edit the content of the page. contentcontainer, slot, and wrapping the slot. -->
-          <div id="contentcontainer">
+          <div id="contentcontainer" class="ddd-reading">
             <div id="slot"><slot></slot></div>
           </div>
         </article>

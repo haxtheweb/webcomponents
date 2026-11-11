@@ -39,8 +39,8 @@
     {
       "tag": "web-container-doc-player",
       "properties": {
-        "element": "simple-wc",
-        "project": "@haxtheweb/simple-wc",
+        "element": "count-up",
+        "project": "@haxtheweb/count-up",
         "version": "latest"
       },
       "content": ""

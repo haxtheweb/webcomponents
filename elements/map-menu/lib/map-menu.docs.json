@@ -135,6 +135,14 @@
       "hax": null
     },
     {
+      "name": "lazy-children",
+      "property": "lazyChildren",
+      "type": "boolean",
+      "default": "false",
+      "description": "Opt-in for large menus: a submenu's children are rendered the first time it opens (or when it holds the selected item) instead of all at once. Off by default; nothing changes for menus that don't set it.",
+      "hax": null
+    },
+    {
       "name": "active-indicator",
       "property": "activeIndicator",
       "type": "boolean",
@@ -150,7 +158,7 @@
     null
   ],
   "hax": {},
-  "surfaceHash": "7772828d19db",
+  "surfaceHash": "b5c188063422",
   "walkthroughs": [
     {
       "id": "",

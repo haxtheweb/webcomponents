@@ -6,14 +6,14 @@ This audit covers all elements in `elements/` and categorizes them by demo quali
 
 ## Summary
 
-- **Total elements audited:** 224
-- **Good demos (element shown with attributes):** 158 visual elements (+ `chat-agent`, which is driven via JS/ChatStore, and `outline-player` theme)
+- **Total elements audited:** 220
+- **Good demos (element shown with attributes):** 157 visual elements (+ `chat-agent`, which is driven via JS/ChatStore, and `outline-player` theme)
 - **Bare-tag demos remaining:** 8 non-theme entries — every one verified legitimate (slot-, CSS-variable-, app-page-, or JS-driven); plus 10 themes whose preview lives in the root `index.html`
 - **Package/hub demos (own tag not rendered, demo exercises sub-tags/sub-pages):** 12 — all legitimate
 - **Broken demos:** 0
 - **Dangling root stubs (redirect to missing demo):** 0
 - **Polymer-style demos:** 0
-- **Utilities/behaviors/mixins (no demo, by convention):** 26
+- **Utilities/behaviors/mixins (no demo, by convention):** 23
 - **Themes (`HAXCMSLitElement`):** 20 — all with full root `index.html` site previews
 
 ## Changes since the 2026-09-29 audit
@@ -39,9 +39,9 @@ This audit covers all elements in `elements/` and categorizes them by demo quali
 
 ## 1. Demo-less Utilities (convention: no demo)
 
-These 26 non-visual infrastructure packages ship no `demo/` and no root `index.html`:
+These 23 non-visual infrastructure packages ship no `demo/` and no root `index.html`:
 
-- `a11y-behaviors`, `a11y-utils`, `anchor-behaviors`, `baseline-build-hax`, `deduping-fix`, `dl-behavior`, `dynamic-import-registry`, `es-global-bridge`, `fullscreen-behaviors`, `hax-body-behaviors`, `intersection-element`, `json-outline-schema`, `lazy-image-helpers`, `lazy-import-discover`, `media-behaviors`, `micro-frontend-registry`, `mutation-observer-import-mixin`, `pouch-db`, `radio-behaviors`, `schema-behaviors`, `shadow-style`, `simple-colors-shared-styles`, `simple-filter`, `utils`, `wc-autoload`
+- `anchor-behaviors`, `baseline-build-hax`, `deduping-fix`, `dynamic-import-registry`, `es-global-bridge`, `fullscreen-behaviors`, `hax-body-behaviors`, `intersection-element`, `json-outline-schema`, `lazy-image-helpers`, `lazy-import-discover`, `media-behaviors`, `micro-frontend-registry`, `mutation-observer-import-mixin`, `pouch-db`, `radio-behaviors`, `schema-behaviors`, `shadow-style`, `simple-colors-shared-styles`, `simple-filter`, `utils`, `wc-autoload`
 
 *Note:* ~10 of these still carry `@demo` JSDoc tags in their source pointing at the deleted demos — harmless documentation boilerplate; can be stripped in a follow-up.
 
@@ -99,7 +99,7 @@ No action needed.
 
 ---
 
-## 6. Good Demos (element shown with attributes) — 158 visual elements
+## 6. Good Demos (element shown with attributes) — 157 visual elements
 
 - `a11y-carousel`
 - `a11y-collapse`
@@ -236,7 +236,6 @@ No action needed.
 - `simple-toast`
 - `simple-toolbar`
 - `simple-tooltip`
-- `simple-wc`
 - `slide-deck`
 - `social-share-link`
 - `sorting-question`

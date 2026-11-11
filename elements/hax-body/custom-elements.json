@@ -128,154 +128,8 @@
             },
             {
               "kind": "method",
-              "name": "_handleBarMore",
-              "parameters": [
-                {
-                  "name": "e"
-                }
-              ],
-              "description": "More tools on the block bar was opened or closed; remember it for this\nperson in this browser"
-            },
-            {
-              "kind": "field",
-              "name": "_reducedMotion",
-              "readonly": true
-            },
-            {
-              "kind": "method",
-              "name": "_motionCapture",
-              "parameters": [
-                {
-                  "name": "container"
-                }
-              ],
-              "description": "where each element child of a container is before a change"
-            },
-            {
-              "kind": "method",
-              "name": "_motionPlay",
-              "parameters": [
-                {
-                  "name": "rects"
-                },
-                {
-                  "name": "duration",
-                  "default": "240"
-                }
-              ],
-              "description": "slide each element from where it was to where it is now (FLIP);\ntransform only, so it runs on the compositor every frame"
-            },
-            {
-              "kind": "method",
-              "name": "_motionBox",
-              "parameters": [
-                {
-                  "name": "node"
-                },
-                {
-                  "name": "cls"
-                }
-              ],
-              "description": "a box drawn over a block in the motion layer, in this element's\ncoordinates, so nothing is written into the content itself"
-            },
-            {
-              "kind": "method",
-              "name": "_motionLand",
-              "parameters": [
-                {
-                  "name": "node"
-                }
-              ],
-              "description": "the landing wash: a tint over the block that fades, so the eye finds\nwhere something went"
-            },
-            {
-              "kind": "method",
-              "name": "_motionGrowIn",
-              "parameters": [
-                {
-                  "name": "node"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_motionHatch",
-              "parameters": [
-                {
-                  "name": "node"
-                },
-                {
-                  "name": "on"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_motionCollapse",
-              "parameters": [
-                {
-                  "name": "node"
-                }
-              ],
-              "description": "fold a block away before it is removed"
-            },
-            {
-              "kind": "method",
-              "name": "_blockDragStart",
-              "parameters": [
-                {
-                  "name": "e"
-                }
-              ],
-              "description": "the block lifts and follows the pointer; a drop line glides between\nthe places it can land among its siblings; on release the others\nslide into place and the block gets the landing wash"
-            },
-            {
-              "kind": "method",
-              "name": "_blockDragMove",
-              "parameters": [
-                {
-                  "name": "e"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_blockDragFrame"
-            },
-            {
-              "kind": "method",
-              "name": "_liftFrame",
-              "parameters": [
-                {
-                  "name": "dy"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_blockDragKey",
-              "parameters": [
-                {
-                  "name": "e"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_blockDragEnd"
-            },
-            {
-              "kind": "method",
-              "name": "haxSetGridLayout",
-              "parameters": [
-                {
-                  "name": "node"
-                },
-                {
-                  "name": "layout"
-                }
-              ],
-              "description": "set a grid-plate layout for the active block: change the layout of the\ngrid it is in, or wrap it in a new one (the block lands in column 1)"
+              "name": "_applyQuickActionsText",
+              "description": "The empty-paragraph placeholder is drawn by CSS (::before content),\nwhich cannot read this.t, so pass the translated text in through a\ncustom property that inherits into the slotted paragraphs."
             },
             {
               "kind": "method",
@@ -517,11 +371,6 @@
             },
             {
               "kind": "method",
-              "name": "elementMidViewport",
-              "description": "Only true if we are scrolling and part way through an element"
-            },
-            {
-              "kind": "method",
               "name": "replacePlaceholder",
               "parameters": [
                 {
@@ -529,31 +378,6 @@
                 }
               ],
               "description": "Replace place holder after an event has called for it in the element itself"
-            },
-            {
-              "kind": "method",
-              "name": "canTansformNode",
-              "parameters": [
-                {
-                  "name": "node",
-                  "default": "null"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "insertElementWorkflow",
-              "parameters": [
-                {
-                  "name": "_activeNode",
-                  "default": "null"
-                },
-                {
-                  "name": "_testOnly",
-                  "default": "false"
-                }
-              ],
-              "description": "Whole workflow of replacing something in place contextually.\nThis can fire for things like events needing this workflow to\ninvoke whether it's a \"convert\" event or a \"replace placeholder\" event"
             },
             {
               "kind": "field",
@@ -575,27 +399,6 @@
               "kind": "method",
               "name": "__ensureTrailingTextAffordance",
               "description": "Ensure that when the last valid child of the body is not a text\nprimitive (eg an image, video, grid-plate, or other non-text\nelement), we append a blank `<p data-hax-auto>` after it so the\nuser has an obvious way to keep typing / adding text content.\nIf left empty, this paragraph is stripped from saved output via\nthe `data-hax-auto` marker (see haxToContent); if the user types\ninto it, it's treated as normal saved paragraph content."
-            },
-            {
-              "kind": "method",
-              "name": "getAllSlotConfig",
-              "parameters": [
-                {
-                  "name": "node"
-                },
-                {
-                  "name": "grid",
-                  "type": {
-                    "text": "object"
-                  }
-                }
-              ],
-              "description": "\ngets configuration for all of given grid's slots",
-              "return": {
-                "type": {
-                  "text": "array"
-                }
-              }
             },
             {
               "kind": "method",
@@ -1453,17 +1256,6 @@
             },
             {
               "kind": "field",
-              "name": "barMore",
-              "privacy": "public",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "More tools is open on the block bar (remembered per browser)",
-              "default": "false",
-              "attribute": "bar-more"
-            },
-            {
-              "kind": "field",
               "name": "editMode",
               "privacy": "public",
               "type": {
@@ -1517,7 +1309,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ addContent: \"Add Content\", cantBeTransformed: \"Sorry, this can not be transformed!\", }"
+              "default": "{ addContent: \"Add Content\", cantBeTransformed: \"Sorry, this can not be transformed!\", typeForQuickActions: \"Type '/' for quick actions\", }"
             },
             {
               "kind": "field",
@@ -1684,15 +1476,6 @@
               "description": "Is active node in view source mode?",
               "default": "false",
               "fieldName": "viewSourceToggle"
-            },
-            {
-              "name": "bar-more",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "More tools is open on the block bar (remembered per browser)",
-              "default": "false",
-              "fieldName": "barMore"
             }
           ],
           "mixins": [
@@ -4493,6 +4276,16 @@
             },
             {
               "kind": "method",
+              "name": "excerptFor",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ],
+              "description": "A short plain-text excerpt of a block, so rows of the same type (three\nHeadings) can be told apart. Text only, read from the page; a page\nbreak shows its title."
+            },
+            {
+              "kind": "method",
               "name": "indentedElements",
               "parameters": [
                 {
@@ -4965,7 +4758,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "`hax-plate-context`\n`The block bar: one row of block operations above the active block.`",
+          "description": "`hax-plate-context`\n`A context menu that provides common grid plate based authoring options.`",
           "name": "HaxPlateContext",
           "members": [
             {
@@ -4979,243 +4772,22 @@
               }
             },
             {
-              "kind": "method",
-              "name": "_ic",
-              "parameters": [
-                {
-                  "name": "icon"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_drop"
-            },
-            {
-              "kind": "method",
-              "name": "_fire",
-              "parameters": [
-                {
-                  "name": "el"
-                },
-                {
-                  "name": "eventName"
-                },
-                {
-                  "name": "value"
-                },
-                {
-                  "name": "eventData"
-                }
-              ],
-              "description": "send an operation to hax-body from the element that was used, so\nhax-body can read data-slot / eventData off it as it always has"
-            },
-            {
               "kind": "field",
-              "name": "_isText",
-              "readonly": true
-            },
-            {
-              "kind": "field",
-              "name": "_tag",
-              "readonly": true
-            },
-            {
-              "kind": "field",
-              "name": "_gridPlate",
-              "readonly": true
-            },
-            {
-              "kind": "field",
-              "name": "_allFormatBlocks",
-              "readonly": true
-            },
-            {
-              "kind": "field",
-              "name": "_formatBlocks",
-              "readonly": true
-            },
-            {
-              "kind": "method",
-              "name": "_allows",
-              "parameters": [
-                {
-                  "name": "tag"
+              "name": "filteredBlocks",
+              "description": "get a list of valid blocks for active node\n(if active node is a slot, some blockes may not be permitted)",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "array"
                 }
-              ]
-            },
-            {
-              "kind": "field",
-              "name": "_chipLabel",
-              "readonly": true
-            },
-            {
-              "kind": "field",
-              "name": "_siblings",
-              "readonly": true
-            },
-            {
-              "kind": "field",
-              "name": "_reducedMotion",
-              "readonly": true
+              }
             },
             {
               "kind": "method",
-              "name": "_toggleMenu",
+              "name": "__updatePlatePosition",
               "parameters": [
                 {
-                  "name": "name"
-                },
-                {
-                  "name": "anchor"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_openMenu",
-              "parameters": [
-                {
-                  "name": "name"
-                },
-                {
-                  "name": "anchor"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_closeMenu",
-              "parameters": [
-                {
-                  "name": "refocus",
-                  "default": "true"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_outsideClick",
-              "parameters": [
-                {
-                  "name": "e"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_menuKeydown",
-              "parameters": [
-                {
-                  "name": "e"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_mi",
-              "parameters": [
-                {
-                  "name": "icon"
-                },
-                {
-                  "name": "label"
-                },
-                {
-                  "name": "onClick"
-                },
-                {
-                  "name": "opts",
-                  "default": "{}"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_menuTemplate"
-            },
-            {
-              "kind": "method",
-              "name": "_formatMenu"
-            },
-            {
-              "kind": "method",
-              "name": "_insertMenu"
-            },
-            {
-              "kind": "field",
-              "name": "commonBlocks",
-              "description": "the common blocks, Paragraph first, then Blocks… for everything else",
-              "readonly": true
-            },
-            {
-              "kind": "method",
-              "name": "_blocksMenu",
-              "parameters": [
-                {
-                  "name": "where"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_layoutMenu"
-            },
-            {
-              "kind": "method",
-              "name": "_nameLayout",
-              "parameters": [
-                {
-                  "name": "text"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_toggleMore"
-            },
-            {
-              "kind": "method",
-              "name": "_removeClick",
-              "parameters": [
-                {
-                  "name": "e"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_disarm"
-            },
-            {
-              "kind": "method",
-              "name": "_removeBlur"
-            },
-            {
-              "kind": "method",
-              "name": "_removeKeydown",
-              "parameters": [
-                {
-                  "name": "e"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_dragPointerDown",
-              "parameters": [
-                {
-                  "name": "e"
-                }
-              ],
-              "description": "the grip only drags, it has no menu: hax-body lifts the block and it\nfollows the pointer. Arrow keys on the grip move the block one place."
-            },
-            {
-              "kind": "method",
-              "name": "_dragKeydown",
-              "parameters": [
-                {
-                  "name": "e"
+                  "name": "active"
                 }
               ]
             },
@@ -5224,7 +4796,7 @@
               "name": "__dblClickFireInsert",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "event"
                 }
               ]
             },
@@ -5236,6 +4808,26 @@
                   "name": "e"
                 }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "_dragEnd",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "When we end dragging ensure we remove the mover class."
+            },
+            {
+              "kind": "method",
+              "name": "_dragStart",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Drag start so we know what target to set"
             },
             {
               "kind": "method",
@@ -5320,43 +4912,11 @@
             },
             {
               "kind": "field",
-              "name": "moreOpen",
-              "privacy": "public",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "More tools is open: the rest of the bar shows in the same row",
-              "default": "false",
-              "attribute": "more-open",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "_confirmRemove",
-              "privacy": "public",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "_confirmRemove"
-            },
-            {
-              "kind": "field",
-              "name": "_menu",
-              "privacy": "public",
-              "type": {
-                "text": "null"
-              },
-              "default": "null",
-              "attribute": "_menu"
-            },
-            {
-              "kind": "field",
               "name": "t",
               "type": {
                 "text": "object"
               },
-              "default": "{ edit: \"Edit\", dragHandle: \"Drag handle\", moveUp: \"Move up\", moveDown: \"Move down\", addColumn: \"Add column\", removeColumn: \"Remove column\", remove: \"Remove\", duplicate: \"Duplicate\", confirmDelete: \"Confirm delete\", changeTo: \"Change to\", editElement: \"Edit Mode\", modifyHTMLSource: \"Modify HTML source\", regions: \"Available regions\", insertItemAbove: \"Insert item above\", insertItemAboveOrBelow: \"Insert item above or below\", insertItemBelow: \"Insert item below\", selectLayout: \"Select Layout Element\", lockContent: \"Lock content\", unlockContent: \"Unlock content\", layout: \"Layout\", columnLayout: \"Column Layout\", moreTools: \"More tools\", fewerTools: \"Fewer tools\", format: \"Format\", textAlignment: \"Text alignment\", left: \"Left\", center: \"Center\", right: \"Right\", blockP: \"Paragraph\", blockH2: \"Heading 2\", blockH3: \"Heading 3\", blockH4: \"Heading 4\", blockH5: \"Heading 5\", blockH6: \"Heading 6\", blockquote: \"Blockquote\", blockPre: \"Preformatted\", bulletedList: \"Bulleted list\", numberedList: \"Numbered list\", heading: \"Heading\", image: \"Image\", columns: \"Columns\", blocks: \"Blocks…\", allBlocks: \"all blocks\", back: \"Back\", indent: \"Indent\", outdent: \"Outdent\", listsOnly: \"Lists only\", notInLayout: \"Not inside a layout\", moveToColumn: \"Move to column\", dragHint: \"Drag, or use the up and down arrow keys\", confirmHint: \"Click again to remove, Escape to keep\", layout1: \"1: full width\", \"layout1-1\": \"2: equal width\", \"layout2-1\": \"2: wide & narrow\", \"layout1-2\": \"2: narrow & wide\", \"layout3-1\": \"2: wider & narrower\", \"layout1-3\": \"2: narrower & wider\", \"layout1-1-1\": \"3: equal width\", \"layout2-1-1\": \"3: wide, narrow, and narrow\", \"layout1-2-1\": \"3: narrow, wide, and narrow\", \"layout1-1-2\": \"3: narrow, narrow, and wide\", \"layout2-1-2\": \"3: wide, narrow, and wide\", \"layout1-1-1-1\": \"4: equal width\", }"
+              "default": "{ edit: \"Edit\", dragHandle: \"Drag handle\", moveUp: \"Move up\", moveDown: \"Move down\", addColumn: \"Add column\", removeColumn: \"Remove column\", remove: \"Remove\", duplicate: \"Duplicate\", confirmDelete: \"Confirm delete\", changeTo: \"Change to\", editElement: \"Edit Mode\", modifyHTMLSource: \"Modify HTML source\", regions: \"Available regions\", insertItemAbove: \"Insert item above\", insertItemAboveOrBelow: \"Insert item above or below\", insertItemBelow: \"Insert item below\", selectLayout: \"Select Layout Element\", lockContent: \"Lock content\", unlockContent: \"Unlock content\", }"
             },
             {
               "kind": "field",
@@ -5455,17 +5015,6 @@
                 "text": "boolean"
               },
               "attribute": "isLocked"
-            },
-            {
-              "kind": "field",
-              "name": "dragging",
-              "privacy": "public",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "hax-body sets this while a block is being dragged",
-              "attribute": "dragging",
-              "reflects": true
             },
             {
               "kind": "field",
@@ -5677,13 +5226,7 @@
           ],
           "events": [
             {
-              "name": "hax-block-bar-more",
-              "type": {
-                "text": "CustomEvent"
-              }
-            },
-            {
-              "name": "hax-block-drag-start",
+              "name": "hax-context-item-selected",
               "type": {
                 "text": "CustomEvent"
               }
@@ -5812,39 +5355,6 @@
                 "text": "boolean"
               },
               "fieldName": "isLocked"
-            },
-            {
-              "name": "more-open",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "More tools is open: the rest of the bar shows in the same row",
-              "default": "false",
-              "fieldName": "moreOpen"
-            },
-            {
-              "name": "dragging",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "hax-body sets this while a block is being dragged",
-              "fieldName": "dragging"
-            },
-            {
-              "name": "_confirmRemove",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "_confirmRemove"
-            },
-            {
-              "name": "_menu",
-              "type": {
-                "text": "null"
-              },
-              "default": "null",
-              "fieldName": "_menu"
             },
             {
               "name": "activeNode",
@@ -6930,12 +6440,106 @@
             },
             {
               "kind": "method",
+              "name": "__afterInlineInsert",
+              "parameters": [
+                {
+                  "name": "block",
+                  "type": {
+                    "text": "Element"
+                  }
+                }
+              ],
+              "description": "After Merlin puts text into a block (an emoji or symbol, or what was\ntyped coming back on cancel), clear the block's empty-line hint right\naway rather than waiting on a mutation observer that may not see it"
+            },
+            {
+              "kind": "method",
+              "name": "__caretToEnd",
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": {
+                    "text": "Node"
+                  }
+                }
+              ],
+              "description": "Collapse the selection to the end of a block's contents"
+            },
+            {
+              "kind": "method",
+              "name": "_superDaemonClosed",
+              "parameters": [
+                {
+                  "name": "_e"
+                }
+              ],
+              "description": "Merlin closed (Escape, click away or a result): its cancel may have\nput typed text back into the block, so bring the block's empty-line\nhint up to date once that has landed"
+            },
+            {
+              "kind": "method",
               "name": "_openExternalLink",
               "parameters": [
                 {
                   "name": "link"
                 }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "_haxStoreContributeUrl",
+              "parameters": [
+                {
+                  "name": "title",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "tags",
+                  "description": "comma separated labels",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "body",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "The new-issue link (unified haxtheweb/issues queue) for a report, with\nthe title and body prefilled",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "merlinSuggestionUrl",
+              "parameters": [
+                {
+                  "name": "tags",
+                  "description": "comma separated labels",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "daemonTerm",
+                  "default": "null",
+                  "description": "what was searched in Merlin",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "The new-issue link for a Merlin command request. Synchronous so it can\nbe a real href (keyboard reachable, never caught by pop-up blocking).",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
             },
             {
               "kind": "method",
@@ -7427,7 +7031,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ \"hax-super-daemon-insert-tag\": \"_superDaemonInsert\", \"hax-register-properties\": \"_haxStoreRegisterProperties\", onbeforeunload: \"_onBeforeUnload\", paste: \"_onPaste\", command: \"_onCommand\", \"hax-register-app\": \"_haxStoreRegisterApp\", \"hax-register-stax\": \"_haxStoreRegisterStax\", \"hax-register-core-piece\": \"_haxStorePieceRegistrationManager\", \"hax-register-body\": \"_haxStoreRegisterBody\", \"hax-insert-content\": \"_haxStoreInsertContent\", \"hax-insert-content-array\": \"_haxStoreInsertMultiple\", \"hax-refresh-tray-form\": \"refreshActiveNodeForm\", \"rich-text-editor-prompt-open\": \"_richTextEditorPromptOpen\", \"rich-text-editor-prompt-confirm\": \"_richTextEditorPromptConfirm\", \"rich-text-editor-open-inline-program\": \"_handleRteInlineProgram\", }"
+              "default": "{ \"super-daemon-close\": \"_superDaemonClosed\", \"hax-super-daemon-insert-tag\": \"_superDaemonInsert\", \"hax-register-properties\": \"_haxStoreRegisterProperties\", onbeforeunload: \"_onBeforeUnload\", paste: \"_onPaste\", command: \"_onCommand\", \"hax-register-app\": \"_haxStoreRegisterApp\", \"hax-register-stax\": \"_haxStoreRegisterStax\", \"hax-register-core-piece\": \"_haxStorePieceRegistrationManager\", \"hax-register-body\": \"_haxStoreRegisterBody\", \"hax-insert-content\": \"_haxStoreInsertContent\", \"hax-insert-content-array\": \"_haxStoreInsertMultiple\", \"hax-refresh-tray-form\": \"refreshActiveNodeForm\", \"rich-text-editor-prompt-open\": \"_richTextEditorPromptOpen\", \"rich-text-editor-prompt-confirm\": \"_richTextEditorPromptConfirm\", \"rich-text-editor-open-inline-program\": \"_handleRteInlineProgram\", }"
             },
             {
               "kind": "field",
@@ -8546,52 +8150,6 @@
             },
             {
               "kind": "field",
-              "name": "compactConfig",
-              "description": "the block bar's text part: block format, lists and alignment live in\nhax-plate-context's format menu, so this toolbar keeps the\ninsert-at-cursor tools (shown with More tools) and the inline\nformatting bubble that appears only while text is selected",
-              "readonly": true
-            },
-            {
-              "kind": "field",
-              "name": "usesBubble",
-              "description": "the bubble layout applies (not for the novice audience)",
-              "readonly": true
-            },
-            {
-              "kind": "field",
-              "name": "activeConfig",
-              "description": "config for the active bar size",
-              "readonly": true
-            },
-            {
-              "kind": "method",
-              "name": "_compactConfigWithInlineElements",
-              "parameters": [
-                {
-                  "name": "buttons",
-                  "default": "[]"
-                }
-              ],
-              "description": "compact bar: inline elements that wrap selected text join the bubble's\nMore formats; ones that insert at the cursor stay in the bar"
-            },
-            {
-              "kind": "field",
-              "name": "selectionBubbleGroup",
-              "description": "Bold, Italic, Link and Remove Link up front; the rest of the inline\nformats behind More formats",
-              "readonly": true
-            },
-            {
-              "kind": "field",
-              "name": "bubbleLinkButton",
-              "description": "Link in the bubble edits the link in place (see _startLinkEdit)",
-              "readonly": true
-            },
-            {
-              "kind": "field",
-              "name": "selectionMoreToggle",
-              "readonly": true
-            },
-            {
-              "kind": "field",
               "name": "filteredBlocks",
               "readonly": true
             },
@@ -8758,172 +8316,11 @@
             },
             {
               "kind": "field",
-              "name": "selectionBubble",
-              "readonly": true
-            },
-            {
-              "kind": "method",
-              "name": "_handleBubbleToggle",
-              "parameters": [
-                {
-                  "name": "e"
-                }
-              ],
-              "description": "More formats / Fewer formats in the selection bubble"
-            },
-            {
-              "kind": "method",
-              "name": "_listenForBubbleMoves",
-              "parameters": [
-                {
-                  "name": "listen"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_hideSelectionBubble",
-              "parameters": [
-                {
-                  "name": "bubble",
-                  "default": "this.selectionBubble"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_linkFromRange",
-              "parameters": [
-                {
-                  "name": "range"
-                }
-              ],
-              "description": "the link the range sits in, inside the block being edited"
-            },
-            {
-              "kind": "method",
-              "name": "_positionSelectionBubble",
-              "description": "In the compact bar, show the inline formatting bubble just below the\nselected text (above it when there is no room below), with its tip\npointing at the middle of the selection. A caret in a link shows the\nlink's address with Edit and Remove Link instead."
-            },
-            {
-              "kind": "method",
-              "name": "_bubbleButton",
-              "parameters": [
-                {
-                  "name": "icon"
-                },
-                {
-                  "name": "label"
-                },
-                {
-                  "name": "onClick"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_showLinkCard",
-              "parameters": [
-                {
-                  "name": "bubble"
-                },
-                {
-                  "name": "link"
-                }
-              ],
-              "description": "a caret in a link: its address (opens in a new tab), Edit link and\nRemove Link"
-            },
-            {
-              "kind": "method",
-              "name": "_removeLinkCard",
-              "parameters": [
-                {
-                  "name": "bubble",
-                  "default": "this.selectionBubble"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_unwrapLink",
-              "parameters": [
-                {
-                  "name": "link"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_safeHref",
-              "parameters": [
-                {
-                  "name": "value"
-                }
-              ],
-              "description": "links may be web addresses, mail, phone, in-page anchors or site\npaths; anything else (e.g. script URLs) is not accepted"
-            },
-            {
-              "kind": "method",
-              "name": "_startLinkEdit",
-              "parameters": [
-                {
-                  "name": "existing"
-                }
-              ],
-              "description": "Link turns the bubble into a link field in place; the selected text\nstays highlighted while the field has focus"
-            },
-            {
-              "kind": "field",
-              "name": "_reducedMotion",
-              "readonly": true
-            },
-            {
-              "kind": "method",
-              "name": "_restoreRange",
-              "parameters": [
-                {
-                  "name": "range"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_applyLink",
-              "parameters": [
-                {
-                  "name": "href"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_endLinkEdit",
-              "parameters": [
-                {
-                  "name": "restore"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_handleShortcutKeys",
-              "parameters": [
-                {
-                  "name": "e"
-                },
-                {
-                  "name": "key"
-                }
-              ],
-              "description": "Ctrl / Cmd + K edits the link in place in the bubble layout"
-            },
-            {
-              "kind": "field",
               "name": "t",
               "type": {
                 "text": "object"
               },
-              "default": "{ undoButton: \"Undo\", redoButton: \"Redo\", formatButton: \"Format\", blockP: \"Paragraph\", blockH1: \"Heading 1\", blockH2: \"Heading 2\", blockH3: \"Heading 3\", blockH4: \"Heading 4\", blockH5: \"Heading 5\", blockH6: \"Heading 6\", blockPre: \"Preformatted\", h1Button: \"Header 1\", h2Button: \"Header 2\", italicButton: \"Italic\", boldButton: \"Bold\", underlineButton: \"Underline\", strikethroughButton: \"Cross out\", codeButton: \"Code\", markButton: \"Highlight\", abbrButton: \"Abbreviation\", removeFormatButton: \"Remove format\", linkButton: \"Link\", unlinkButton: \"Remove Link\", cutButton: \"Cut\", copyButton: \"Copy\", pasteButton: \"Paste Clipboard\", subscriptButton: \"Subscript\", superscriptButton: \"Superscript\", symbolButton: \"Insert Symbol\", emojiButton: \"Insert Emoticon\", imageButton: \"Insert Image\", orderedListButton: \"Numbered list\", unorderedListButton: \"Bulleted list\", blockquoteButton: \"Blockquote\", indentButton: \"Indent\", outdentButton: \"Outdent\", alignmentPicker: \"Text alignment\", moreFormats: \"More formats\", fewerFormats: \"Fewer formats\", addLink: \"Add link\", editLink: \"Edit link\", applyLink: \"Apply link\", updateLink: \"Update link\", linkAddress: \"Link address\", linkPlaceholder: \"Paste or type a link\", cancel: \"Cancel\", }"
+              "default": "{ undoButton: \"Undo\", redoButton: \"Redo\", formatButton: \"Format\", blockP: \"Paragraph\", blockH1: \"Heading 1\", blockH2: \"Heading 2\", blockH3: \"Heading 3\", blockH4: \"Heading 4\", blockH5: \"Heading 5\", blockH6: \"Heading 6\", blockPre: \"Preformatted\", h1Button: \"Header 1\", h2Button: \"Header 2\", italicButton: \"Italic\", boldButton: \"Bold\", underlineButton: \"Underline\", strikethroughButton: \"Cross out\", codeButton: \"Code\", markButton: \"Highlight\", abbrButton: \"Abbreviation\", removeFormatButton: \"Remove format\", linkButton: \"Link\", unlinkButton: \"Remove Link\", cutButton: \"Cut\", copyButton: \"Copy\", pasteButton: \"Paste Clipboard\", subscriptButton: \"Subscript\", superscriptButton: \"Superscript\", symbolButton: \"Insert Symbol\", emojiButton: \"Insert Emoticon\", imageButton: \"Insert Image\", orderedListButton: \"Numbered list\", unorderedListButton: \"Bulleted list\", blockquoteButton: \"Blockquote\", indentButton: \"Indent\", outdentButton: \"Outdent\", alignmentPicker: \"Text alignment\", }"
             },
             {
               "kind": "field",
@@ -8973,18 +8370,6 @@
             },
             {
               "kind": "field",
-              "name": "barSize",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "description": "\"compact\": block format, lists, alignment and inserts in the bar,\ninline formatting in a bubble on text selection;\n\"full\": every button in the bar",
-              "default": "\"full\"",
-              "attribute": "bar-size",
-              "reflects": true
-            },
-            {
-              "kind": "field",
               "name": "__updated",
               "type": {
                 "text": "boolean"
@@ -9006,17 +8391,6 @@
                 "text": "boolean"
               },
               "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "bubbleMode",
-              "privacy": "public",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "set when inline formatting is in the selection bubble",
-              "attribute": "bubble-mode",
-              "reflects": true
             },
             {
               "kind": "field",
@@ -9226,24 +8600,27 @@
               }
             }
           ],
+          "mixins": [
+            {
+              "name": "RichTextEditorToolbarBehaviors",
+              "package": "@haxtheweb/rich-text-editor/lib/toolbars/rich-text-editor-toolbar.js"
+            },
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            },
+            {
+              "name": "HaxContextBehaviors",
+              "module": "/lib/hax-context-behaviors.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "hax-text-editor-toolbar",
+          "customElement": true,
           "attributes": [
-            {
-              "name": "bar-size",
-              "type": {
-                "text": "string"
-              },
-              "description": "\"compact\": block format, lists, alignment and inserts in the bar,\ninline formatting in a bubble on text selection;\n\"full\": every button in the bar",
-              "default": "\"full\"",
-              "fieldName": "barSize"
-            },
-            {
-              "name": "bubble-mode",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "set when inline formatting is in the selection bubble",
-              "fieldName": "bubbleMode"
-            },
             {
               "name": "activeNode",
               "type": {
@@ -9300,27 +8677,7 @@
                 "module": "lib/hax-context-behaviors.js"
               }
             }
-          ],
-          "mixins": [
-            {
-              "name": "RichTextEditorToolbarBehaviors",
-              "package": "@haxtheweb/rich-text-editor/lib/toolbars/rich-text-editor-toolbar.js"
-            },
-            {
-              "name": "I18NMixin",
-              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
-            },
-            {
-              "name": "HaxContextBehaviors",
-              "module": "/lib/hax-context-behaviors.js"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "hax-text-editor-toolbar",
-          "customElement": true
+          ]
         }
       ],
       "exports": [
@@ -10248,6 +9605,31 @@
           "declaration": {
             "name": "HaxToolbarBehaviors",
             "module": "lib/hax-toolbar.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/hax-tray-browser-styles.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "HaxTrayBrowserStyles",
+          "type": {
+            "text": "array"
+          },
+          "default": "[ css` /* block tiles: no border at rest, the icon in a sunken well, the label under it; hover and focus draw the tile */ hax-tray-button { flex: auto; font-size: var(--hax-ui-admin-font-size-xs); --hax-ui-font-size-sm: var(--hax-ui-admin-font-size-xs); --simple-toolbar-button-height: var(--hax-ui-icon); --simple-toolbar-button-width: var(--hax-ui-icon); --simple-toolbar-button-label-padding: 0; } hax-tray-button::part(button) { box-sizing: border-box; width: 100%; min-height: calc(var(--hax-ui-row-height) * 2); gap: var(--hax-ui-gap); padding: var(--hax-ui-gap) calc(var(--hax-ui-gap) / 2); border: 1px solid transparent; border-radius: var(--hax-ui-radius); background-color: transparent; color: var(--hax-ui-text); font-size: var(--hax-ui-admin-font-size-xs); line-height: 1.2; } hax-tray-button:hover::part(button), hax-tray-button:focus-within::part(button) { background-color: var(--hax-ui-hover); border-color: var(--hax-ui-line-strong); } hax-tray-button::part(icon) { box-sizing: content-box; padding: var(--hax-ui-gap) var(--hax-ui-gap-md); border-radius: var(--hax-ui-radius); background-color: var(--hax-ui-sunken); color: var(--hax-ui-accent-strong); } hax-tray-button:hover::part(icon), hax-tray-button:focus-within::part(icon) { background-color: var(--hax-ui-accent-soft); } hax-tray-button::part(label) { margin: 0; } simple-button-grid { --simple-button-grid-margin: var(--hax-ui-gap); padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg); border-bottom: 1px solid var(--hax-ui-line); box-sizing: border-box; } /* categories are HAX UI fieldset rows: 32px, chevron first, bold label, a line under, like the Configure groups */ a11y-collapse { margin: 0; --a11y-collapse-margin: 0; --a11y-collapse-border: none; --a11y-collapse-border-between: none; --a11y-collapse-vertical-padding: 0; --a11y-collapse-horizontal-padding: 0; --a11y-collapse-padding-left: 0; --a11y-collapse-heading-font-weight: 700; --a11y-collapse-heading-color: var(--hax-ui-text); /* hax:admin-chevron points right: closed as is, open turned down */ --a11y-collapse-transform-deg: 90deg; --a11y-collapse-transform-rotated-deg: 0deg; } a11y-collapse::part(heading-id) { flex-direction: row-reverse; justify-content: flex-end; gap: var(--hax-ui-gap-md); /* 32px with its line */ min-height: calc(var(--hax-ui-row-height) - 1px); padding: 0 var(--hax-ui-gap-lg); border-bottom: 1px solid var(--hax-ui-line); } a11y-collapse::part(heading) { display: block; margin: 0; font-family: var(--ddd-font-primary, sans-serif); font-size: var(--hax-ui-admin-font-size); line-height: calc(var(--hax-ui-row-height) - 1px); } a11y-collapse::part(icon) { --simple-icon-width: var(--hax-ui-icon); --simple-icon-height: var(--hax-ui-icon); } /* an empty list (Recent before anything is added) is just its row */ a11y-collapse[disabled] simple-button-grid { display: none; } a11y-collapse[disabled]::part(heading) { font-weight: 400; color: var(--hax-ui-text-muted); } `, ]",
+          "description": "The look shared by the editor tray's browsers (Blocks and Templates):\nHAX UI tiles and category rows. Tiles have no border at rest; the icon\nsits in a sunken well with its label under it, and hover or focus draws\nthe tile. Categories are HAX UI fieldset rows like the Configure groups:\n32px, chevron first, bold label, a line under. Values come from the\nHAX UI tokens the tray defines, with DDD fallbacks."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "HaxTrayBrowserStyles",
+          "declaration": {
+            "name": "HaxTrayBrowserStyles",
+            "module": "lib/hax-tray-browser-styles.js"
           }
         }
       ]
@@ -11579,6 +10961,16 @@
               ]
             },
             {
+              "kind": "method",
+              "name": "_haxUiSettingsForm",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Once simple-fields builds the Configure form: give its groups\n(Configure, Advanced, Developer) the HAX UI admin chevron, pointing\nright when closed and down when open (the rotation is in the\n#settingsform a11y-collapse styles), and the admin info icon on\neach field's (i) button."
+            },
+            {
               "kind": "field",
               "name": "trayStatus",
               "readonly": true
@@ -11890,6 +11282,17 @@
               "default": "true",
               "attribute": "collapsed",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "addView",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "What the add panel browses: \"blocks\" or \"templates\"",
+              "default": "\"blocks\"",
+              "attribute": "add-view"
             },
             {
               "kind": "field",
@@ -12281,6 +11684,15 @@
               "description": "id of toggled section in tray",
               "default": "\"content-edit\"",
               "fieldName": "trayDetail"
+            },
+            {
+              "name": "add-view",
+              "type": {
+                "text": "string"
+              },
+              "description": "What the add panel browses: \"blocks\" or \"templates\"",
+              "default": "\"blocks\"",
+              "fieldName": "addView"
             },
             {
               "name": "trayLabel",

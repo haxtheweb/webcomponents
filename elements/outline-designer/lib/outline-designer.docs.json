@@ -181,6 +181,14 @@
       "default": "\"auto\"",
       "description": "auto (follow prefers-reduced-motion), reduce or full",
       "hax": null
+    },
+    {
+      "name": "view-transitions",
+      "property": "viewTransitions",
+      "type": "boolean",
+      "default": "false",
+      "description": "Animate moves with a scoped view transition (element startViewTransition) where the browser has one. Off by default: in Chromium the tab can lose the transition's snapshot textures (\"non-existent mailbox\" in the GPU process) and the renderer dies mid-move, taking unsaved outline edits with it (haxtheweb/issues#3305). Moves still slide (FLIP) without it.",
+      "hax": null
     }
   ],
   "slots": [
@@ -193,7 +201,7 @@
     "simple-modal-hide"
   ],
   "hax": {},
-  "surfaceHash": "86d9194845e2",
+  "surfaceHash": "920b3fc071d4",
   "walkthroughs": [],
   "videos": [],
   "motion": {

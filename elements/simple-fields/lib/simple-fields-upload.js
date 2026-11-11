@@ -13,7 +13,11 @@ import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import "@haxtheweb/simple-toolbar/simple-toolbar.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import "./simple-file-upload.js";
-import "@haxtheweb/responsive-utility/responsive-utility.js";
+import {
+  registerResponsiveElement,
+  unregisterResponsiveElement,
+  reregisterResponsiveElement,
+} from "@haxtheweb/responsive-utility/responsive-utility.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 /**
  * `simple-fields-upload` takes in a JSON schema of type array and builds a form,
@@ -273,6 +277,7 @@ class SimpleFieldsUpload extends I18NMixin(
    */
   constructor() {
     super();
+    this.infoIcon = "icons:info-outline";
     this.voice = null;
     this.t = this.t || {};
     this.t = {
@@ -362,7 +367,7 @@ class SimpleFieldsUpload extends I18NMixin(
           this._hasInfoTooltip
             ? html`<simple-icon-button-lite
                   id="${infoId}"
-                  icon="icons:info-outline"
+                  icon="${this.infoIcon}"
                   label="${
                     this.label ? `${this.label} details` : `Upload details`
                   }"
@@ -462,12 +467,14 @@ class SimpleFieldsUpload extends I18NMixin(
           @upload-before="${this._fileAboutToUpload}"
           @upload-response="${this._fileUploadResponse}"
           part="upload"
+          exportparts="drop-zone"
           ?nodrop="${this.disabled}"
         >
           <button
             ?disabled="${this.disabled}"
             id="add-hidden"
             slot="add-button"
+            part="add-button"
           >
             ${this.t.upload}..
           </button>
@@ -489,6 +496,7 @@ class SimpleFieldsUpload extends I18NMixin(
               type="url"
               auto-validate=""
               part="url"
+              exportparts="label: url-label, field-main: url-main, field-main-inner: url-inner, option-input: url-input"
               ?disabled="${this.disabled}"
               display-as="${
                 this.responsiveSize.indexOf("l") > -1 ? "grid" : ""
@@ -501,7 +509,7 @@ class SimpleFieldsUpload extends I18NMixin(
             >
             </simple-fields-url-combo>
           </div>
-          <div id="upload">
+          <div id="upload" part="source-row">
             <span part="drop-area-text">${this.t.dropMediaHereOr}</span>
             <div class="sources" part="sources">${this.sources}</div>
           </div>
@@ -633,6 +641,14 @@ class SimpleFieldsUpload extends I18NMixin(
     return {
       ...super.properties,
       /**
+       * Icon for the (i) button that opens a long description.
+       * Admin panels can match their own icon set.
+       */
+      infoIcon: {
+        type: String,
+        attribute: "info-icon",
+      },
+      /**
        * Hint for expected file type in file upload controls
        */
       accept: {
@@ -763,12 +779,21 @@ class SimpleFieldsUpload extends I18NMixin(
       this.option = this.value ? "url" : "fileupload";
     }
   }
+  disconnectedCallback() {
+    // the utility's ResizeObserver keeps a registered element alive
+    unregisterResponsiveElement(this);
+    super.disconnectedCallback();
+  }
   connectedCallback() {
     super.connectedCallback();
     // Register on first connect (not firstUpdated) so the synchronous
     // responsive-size / responsive-width writes batch into the first update
     // instead of scheduling a redundant second one (Lit change-in-update).
-    if (this.__responsiveRegistered) return;
+    // Moved, or removed and added again: observe it again.
+    if (this.__responsiveRegistered) {
+      reregisterResponsiveElement(this);
+      return;
+    }
     this.__responsiveRegistered = true;
     globalThis.ResponsiveUtility.requestAvailability();
 
@@ -776,19 +801,15 @@ class SimpleFieldsUpload extends I18NMixin(
      * needs the size of parent container to add responsive styling
      * @event responsive-element
      */
-    globalThis.dispatchEvent(
-      new CustomEvent("responsive-element", {
-        detail: {
-          element: this,
-          attribute: "responsive-size",
-          relativeToParent: true,
-          sm: 150,
-          md: 300,
-          lg: 600,
-          xl: 1200,
-        },
-      }),
-    );
+    registerResponsiveElement({
+      element: this,
+      attribute: "responsive-size",
+      relativeToParent: true,
+      sm: 150,
+      md: 300,
+      lg: 600,
+      xl: 1200,
+    });
   }
   /**
    * We got a new photo

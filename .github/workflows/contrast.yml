@@ -22,8 +22,10 @@ on:
       - "elements/**"
       - "scripts/contrast*"
       - "scripts/lib/contrast.mjs"
+      - "scripts/lib/demo-runner.mjs"
       - "web-dev-server.config.mjs"
       - ".github/workflows/contrast.yml"
+      - ".github/actions/setup-playwright/**"
 permissions:
   contents: read
 jobs:
@@ -50,7 +52,14 @@ jobs:
         run: node scripts/contrast-check.mjs --check-baseline HEAD^1
       - name: Install Playwright Chromium
         # the Playwright version yarn.lock resolves, so the browser build
-        # matches what the check launches
-        run: yarn playwright install --with-deps chromium
+        # matches what the tests launch; cached per version
+        # results depend on how text renders, so this job installs the extra
+        # fonts through apt (retried, time-boxed); see the action for details
+        # the local path, not the $/ self-repository form: $/ downloads the
+        # whole repo as an action archive, and that extraction fails here
+        uses: ./.github/actions/setup-playwright # zizmor: ignore[self-repository]
+        timeout-minutes: 12
+        with:
+          fonts: "true"
       - name: Color contrast of changed elements
         run: node scripts/contrast-check.mjs --base HEAD^1

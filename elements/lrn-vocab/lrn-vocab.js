@@ -2,16 +2,25 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { LitElement, html, css, render } from "lit";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-modal/simple-modal.js";
 /**
 `lrn-vocab`
 Vocabulary term with visual treatment and semantic meaning.
 
+Reads like vocab-term inside a sentence: a dotted underline (solid on
+hover, DDD focus ring) that opens the definition in a large modal headed
+by the same Vocabulary chip and label. `--lrn-vocab-border` still works: its
+width, style and colour become the underline's (for example
+`--lrn-vocab-border: 2px dashed red`).
+
 * @demo demo/index.html
 */
-class LrnVocab extends SchemaBehaviors(LitElement) {
+class LrnVocab extends SchemaBehaviors(I18NMixin(LitElement)) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -21,43 +30,53 @@ class LrnVocab extends SchemaBehaviors(LitElement) {
         :host {
           display: inline;
           color-scheme: light dark;
-          --lrn-vocab-border: 1px dashed
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-theme-default-slateLight)
-            );
         }
+        /* a real button for keyboard and screen readers, without the box:
+           vocab-term's dotted underline is the cue */
         button {
+          all: unset;
+          display: inline;
+          box-sizing: border-box;
+          cursor: pointer;
+          color: inherit;
+          font: inherit;
           text-transform: none;
-          min-width: unset;
-          margin: 0;
-          position: relative;
-          top: 0px;
-          border-radius: 0;
-          border-bottom: var(--lrn-vocab-border);
-          background: light-dark(
-            var(--ddd-theme-default-limestoneMaxLight),
-            var(--ddd-theme-default-potentialMidnight)
-          );
-          font-size: 1.1em;
-          padding: 2px;
+          border-radius: var(--ddd-radius-xs, 4px);
+          text-decoration: underline
+            var(
+              --lrn-vocab-border,
+              dotted var(--ddd-border-size-sm, 2px)
+                light-dark(
+                  var(--ddd-theme-default-beaverBlue, #1e407c),
+                  var(--ddd-theme-default-pughBlue, #96bee6)
+                )
+            );
+          text-underline-offset: 0.2em;
+        }
+        /* an author picked DDD primary colours the underline cue */
+        :host([data-primary]) button {
+          text-decoration-color: var(--ddd-theme-primary);
         }
         button:hover {
-          background: light-dark(
-            var(--ddd-theme-default-pughBlue),
-            var(--ddd-theme-default-slateGray)
-          );
-          border-bottom: 1px dashed
-            light-dark(
-              var(--ddd-theme-default-skyBlue),
-              var(--ddd-theme-default-skyLight)
-            );
+          text-decoration-style: solid;
+        }
+        button:focus-visible {
+          outline: var(--ddd-focus-ring, 2px solid #005fa9);
+          outline-offset: var(--ddd-focus-offset, 2px);
         }
       `,
     ];
   }
   constructor() {
     super();
+    this.t = {
+      ...this.t,
+      vocabulary: "Vocabulary",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     this.typeof = "oer:LearningComponent";
     this.description = "";
     setTimeout(() => {
@@ -118,6 +137,22 @@ class LrnVocab extends SchemaBehaviors(LitElement) {
     this._haxstate = val;
   }
   /**
+   * Vocabulary chip and label for the top of the modal (matches vocab-term)
+   */
+  renderLabel() {
+    return html`<div
+      class="vocab-label"
+      style="display: flex; align-items: center; gap: var(--ddd-spacing-2, 8px); margin: 0 0 var(--ddd-spacing-3, 12px); font-family: var(--ddd-font-navigation, sans-serif); font-size: var(--ddd-font-size-4xs, 16px); font-weight: var(--ddd-font-weight-bold, 700); letter-spacing: 0.06em; text-transform: uppercase; color: light-dark(var(--ddd-theme-default-nittanyNavy, #001e44), var(--ddd-theme-default-linkLight, #cfeceb));"
+    >
+      <span
+        aria-hidden="true"
+        style="display: inline-flex; align-items: center; justify-content: center; flex: none; width: var(--ddd-icon-xxs, 24px); height: var(--ddd-icon-xxs, 24px); border-radius: 50%; background-color: light-dark(var(--ddd-theme-default-beaverBlue, #1e407c), var(--ddd-theme-default-skyBlue, #009cde)); color: light-dark(white, var(--ddd-theme-default-potentialMidnight, #000321)); --simple-icon-width: 14px; --simple-icon-height: 14px;"
+        ><simple-icon-lite icon="icons:book"></simple-icon-lite
+      ></span>
+      <span>${this.t.vocabulary}</span>
+    </div>`;
+  }
+  /**
    * Request the singleton dialog open
    */
   openDialog(e) {
@@ -129,6 +164,11 @@ class LrnVocab extends SchemaBehaviors(LitElement) {
       return false;
     }
     let c = globalThis.document.createElement("div");
+    // the same Vocabulary chip and label vocab-term's modal opens with; the
+    // modal content is light DOM, so it carries its own styles
+    const label = globalThis.document.createElement("div");
+    render(this.renderLabel(), label);
+    c.appendChild(label);
     for (let id in this.children) {
       if (this.children[id].cloneNode) {
         c.appendChild(this.children[id].cloneNode(true));
@@ -171,6 +211,10 @@ class LrnVocab extends SchemaBehaviors(LitElement) {
       canScale: false,
 
       canEditSource: true,
+      // like vocab-term: an author picked primary colours the underline
+      designSystem: {
+        primary: true,
+      },
       gizmo: {
         title: "Vocab",
         description: "Vocabulary term",
@@ -223,6 +267,9 @@ class LrnVocab extends SchemaBehaviors(LitElement) {
           },
         ],
         advanced: [],
+      },
+      saveOptions: {
+        unsetAttributes: ["t"],
       },
     };
   }

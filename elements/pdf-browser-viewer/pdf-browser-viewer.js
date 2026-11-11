@@ -143,10 +143,18 @@ class PdfBrowserViewer extends I18NMixin(LitElement) {
   connectedCallback() {
     super.connectedCallback();
     listenDDDBlockFullscreen(this._fullscreenChanged, true);
+    this._detached = false;
   }
 
+  /**
+   * Chromium's PDF plugin keeps its <object> alive after removal, and with
+   * it this shadow root and element; drop the <object> while off the page.
+   * Re-adding (a HAX move) renders it again, which a moved plugin does
+   * anyway.
+   */
   disconnectedCallback() {
     listenDDDBlockFullscreen(this._fullscreenChanged, false);
+    this._detached = true;
     super.disconnectedCallback();
   }
 
@@ -202,6 +210,9 @@ class PdfBrowserViewer extends I18NMixin(LitElement) {
   }
 
   renderObject() {
+    if (this._detached) {
+      return nothing;
+    }
     return html`<object
       aria-label="${this.heading || "PDF document"}"
       data="${this.file}"
@@ -390,6 +401,7 @@ class PdfBrowserViewer extends I18NMixin(LitElement) {
         type: String,
       },
       _fullscreen: { type: Boolean, state: true },
+      _detached: { type: Boolean, state: true },
     };
   }
 
@@ -403,6 +415,10 @@ class PdfBrowserViewer extends I18NMixin(LitElement) {
       downloadPdf: "Download the PDF",
       fullScreen: "Full screen",
       exitFullScreen: "Exit full screen",
+      notSupported:
+        "It appears your Web browser is not configured to display PDF files. No worries, just",
+      notSupportedLink: "click here to download the PDF file.",
+      download: "Download",
     };
     this.registerLocalization({
       context: this,
@@ -411,13 +427,13 @@ class PdfBrowserViewer extends I18NMixin(LitElement) {
     this._fullscreen = false;
     this._fullscreenChanged = this._fullscreenChanged.bind(this);
     this.file = undefined;
-    this.notSupportedMessage =
-      "It appears your Web browser is not configured to display PDF files. No worries, just";
-    this.notSupportedLinkMessage = "click here to download the PDF file.";
+    // translated defaults; authored values are left alone
+    this.i18nDefault("notSupportedMessage", "notSupported");
+    this.i18nDefault("notSupportedLinkMessage", "notSupportedLink");
     this.height = "400px";
     this.width = "100%";
     this.card = false;
-    this.downloadLabel = "Download";
+    this.i18nDefault("downloadLabel", "download");
     this.elevation = "1";
   }
   /**

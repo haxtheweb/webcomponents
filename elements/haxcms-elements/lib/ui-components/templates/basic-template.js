@@ -21,6 +21,8 @@ let BasicTemplate = (superclass) =>
         searchSite: "Search site",
         search: "Search",
         backToTop: "Back to top",
+        skipToContent: "Skip to content",
+        siteNavigation: "Site navigation",
       };
       import("@haxtheweb/simple-icon/simple-icon.js");
       import("@haxtheweb/simple-icon/lib/simple-icons.js");
@@ -101,25 +103,32 @@ let BasicTemplate = (superclass) =>
     // render function
     render() {
       return html`
-        <site-top-menu noink indicator="arrow" arrow-size="8">
-          <site-title slot="prefix" class="spacing"></site-title>
-          <site-modal
-            slot="suffix"
-            icon="maps:directions"
-            title="${this.t.viewSiteMap}"
-            button-label="${this.t.siteMap}"
-          >
-            <site-menu></site-menu>
-          </site-modal>
-          <site-modal
-            slot="suffix"
-            icon="icons:search"
-            title="${this.t.searchSite}"
-            button-label="${this.t.search}"
-          >
-            <site-search></site-search>
-          </site-modal>
-        </site-top-menu>
+        <a class="skip-link" href="#contentcontainer"
+          >${this.t.skipToContent}</a
+        >
+        <header>
+          <nav aria-label="${this.t.siteNavigation}">
+            <site-top-menu noink indicator="arrow" arrow-size="8">
+              <site-title slot="prefix" class="spacing"></site-title>
+              <site-modal
+                slot="suffix"
+                icon="maps:directions"
+                title="${this.t.viewSiteMap}"
+                button-label="${this.t.siteMap}"
+              >
+                <site-menu></site-menu>
+              </site-modal>
+              <site-modal
+                slot="suffix"
+                icon="icons:search"
+                title="${this.t.searchSite}"
+                button-label="${this.t.search}"
+              >
+                <site-search></site-search>
+              </site-modal>
+            </site-top-menu>
+          </nav>
+        </header>
         <div class="container">
           <site-breadcrumb></site-breadcrumb>
           <grid-plate layout="1-3" class="grid-wrapper" ignore-hax>
@@ -144,12 +153,12 @@ let BasicTemplate = (superclass) =>
                 ></site-print-button>
               </div>
             </div>
-            <div id="contentcontainer" slot="col-2">
+            <main id="contentcontainer" slot="col-2">
               <div id="slot"><slot></slot></div>
-            </div>
+            </main>
           </grid-plate>
         </div>
-        <site-footer></site-footer>
+        <footer><site-footer></site-footer></footer>
         <scroll-button
           position="right"
           label="${this.t.backToTop}"

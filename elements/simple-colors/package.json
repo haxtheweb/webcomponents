@@ -46,10 +46,14 @@
     "lit": "3.3.3"
   },
   "peerDependencies": {
-    "@haxtheweb/simple-picker": ">=26.8.0"
+    "@haxtheweb/simple-picker": ">=26.8.0",
+    "@haxtheweb/simple-modal": ">=26.8.0"
   },
   "peerDependenciesMeta": {
     "@haxtheweb/simple-picker": {
+      "optional": true
+    },
+    "@haxtheweb/simple-modal": {
       "optional": true
     }
   },

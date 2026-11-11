@@ -21,6 +21,12 @@ export const SimpleIconBehaviors = function (SuperClass) {
             width: var(--simple-icon-width, 24px);
             color: var(--simple-icon-color, currentColor);
           }
+          /* icons are drawn the same in every direction on purpose: most
+             glyphs (media controls, checkmarks, logos, clocks) must not
+             mirror. An element whose arrow means "next in reading order"
+             flips that icon itself, for example
+             :host(:dir(rtl)) simple-icon-lite[icon="arrow-forward"] with
+             transform: scaleX(-1) */
           :host([dir="rtl"]) svg {
             direction: rtl;
           }
@@ -163,6 +169,27 @@ export const SimpleIconBehaviors = function (SuperClass) {
       const randomId = "f-" + Math.random().toString().slice(2, 10);
       this.shadowRoot.querySelector("image").style.filter = `url(#${randomId})`;
       this.shadowRoot.querySelector("filter").setAttribute("id", randomId);
+    }
+    /**
+     * An icon whose iconset has not registered yet waits in the iconset's
+     * hydration list; leave it when removed and ask again when re-added
+     * (the HAX editor moves elements by removing and re-adding them).
+     */
+    connectedCallback() {
+      if (super.connectedCallback) {
+        super.connectedCallback();
+      }
+      if (this.hasUpdated && this.icon && !this.src) {
+        this.setSrcByIcon(this);
+      }
+    }
+    disconnectedCallback() {
+      if (SimpleIconsetStore && SimpleIconsetStore.cancelHydration) {
+        SimpleIconsetStore.cancelHydration(this);
+      }
+      if (super.disconnectedCallback) {
+        super.disconnectedCallback();
+      }
     }
     /**
      * Set the src by the icon property

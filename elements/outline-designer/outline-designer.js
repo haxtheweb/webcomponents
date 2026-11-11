@@ -857,6 +857,14 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           border-radius: var(--hax-ui-radius);
           background-color: var(--hax-ui-surface);
         }
+        /* phone: no keyboard expected, so no shortcut hints (same media as
+           KEYBOARD_SHORTCUTS_HIDDEN_MEDIA in @haxtheweb/utils keyboardShortcuts) */
+        @media (max-width: 599px), (pointer: coarse) and (max-height: 599px) {
+          .keyboard-help-btn,
+          :host([show-hints]) .footer .hints {
+            display: none;
+          }
+        }
         .more-summary {
           display: none;
           font-size: var(--hax-ui-admin-font-size-xs);
@@ -1267,6 +1275,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     // motion: which input made the last change, and preview overrides
     this.motionProfile = "auto";
     this.reducedMotion = "auto";
+    this.viewTransitions = false;
     this._lastModality = null;
     this._vtActive = false;
     // rows whose title flips with the row instead of sliding on its own
@@ -1696,7 +1705,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           </div>
           <slot name="controls"></slot>
           <simple-toolbar-button
-            class="control options-btn"
+            class="control options-btn keyboard-help-btn"
             icon="hardware:keyboard"
             label="${
               this.showHints ? this.t.hideKeyboardHelp : this.t.showKeyboardHelp
@@ -2362,20 +2371,33 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     }
   }
 
-  _toggleActionsMenu(e, _index) {
+  // A row's menu entries are rendered only once its menu is opened: they
+  // were four fifths of every row's DOM (523 of 652 nodes), so a 1,000-page
+  // outline built ~680,000 nodes for menus nobody opened. The row that
+  // last opened its menu keeps its entries.
+  async _menuReady(listItem) {
+    const id = listItem && listItem.getAttribute("data-item-id");
+    if (id && this._menuRowId !== id) {
+      this._menuRowId = id;
+      await this.updateComplete;
+    }
+    return listItem ? listItem.querySelector(".actions-menu") : null;
+  }
+
+  async _toggleActionsMenu(e, _index) {
     e.stopPropagation();
     const button = e.target.closest("button") || e.target;
     const listItem = button.closest("li");
-    const menu = listItem.querySelector(".actions-menu");
+    const menu = await this._menuReady(listItem);
     if (menu) {
       menu.toggle(button);
     }
   }
 
   // Shift+F10, the context menu key or a right click
-  _openActionsMenu(listItem) {
+  async _openActionsMenu(listItem) {
     if (!listItem) return;
-    const menu = listItem.querySelector(".actions-menu");
+    const menu = await this._menuReady(listItem);
     if (menu && !menu.open) {
       menu.openMenu(listItem.querySelector(".actions-menu-button") || listItem);
     }
@@ -2682,7 +2704,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           title="${this.t.pageActions}"
           @simple-context-menu-closed="${this._onMenuClosed}"
         >
-          ${PAGE_MENU_ITEMS.map((m) => {
+          ${(this._menuRowId === item.id ? PAGE_MENU_ITEMS : []).map((m) => {
             if (m.content && (this.hideContentOps || !item.contents)) {
               return nothing;
             }
@@ -3599,8 +3621,9 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
    * deleted; what actually changed is worked out afterwards), rows
    * (the change adds or removes rows).
    *
-   * Changes that keep the same rows run as a view transition scoped to
-   * the tree. Chromium aborts a scoped transition when a named row is
+   * Rows slide into place (FLIP). With view-transitions set, changes
+   * that keep the same rows run as a view transition scoped to the tree
+   * instead. Chromium aborts a scoped transition when a named row is
    * added or removed during it ("Prepaint layout check failed"), so
    * changes that add or remove rows animate the rows directly instead,
    * as does any transition the browser skips.
@@ -3633,6 +3656,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     // instead
     const useVT =
       slideOn &&
+      this.viewTransitions &&
       wrap &&
       typeof wrap.startViewTransition === "function" &&
       !rows &&
@@ -4145,6 +4169,18 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
   }
 
   /**
+   * Forget the pending undo (and its toast). Call this when the outline is
+   * replaced from outside, e.g. reloaded with saved data: the snapshot
+   * holds the outline as it was before, so an undo would bring back pages
+   * the save already removed, and ids the server never stored.
+   */
+  clearUndo() {
+    clearTimeout(this._undoTimer);
+    this._undoTimer = null;
+    this._undo = null;
+  }
+
+  /**
    * Put the outline back as it was before the last change (the items
    * themselves are restored, so getData() is exactly as it was)
    */
@@ -4351,25 +4387,6 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       },
       { undo: true, nudge: fromMenu },
     );
-  }
-
-  // focus a row once the pending outline sync has re-rendered
-  _focusAfterSync(itemId, edit = false) {
-    this._focusId = itemId;
-    setTimeout(() => {
-      this.updateComplete.then(() => {
-        if (edit) {
-          const label = this.shadowRoot.querySelector(
-            `[data-item-id="${itemId}"] .label.shown`,
-          );
-          if (label) {
-            this.editTitle({ target: label });
-            return;
-          }
-        }
-        this.focusItem(itemId);
-      });
-    }, 0);
   }
 
   // add a page after this one, grow it in and start naming it
@@ -5473,9 +5490,19 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
        * auto (follow prefers-reduced-motion), reduce or full
        */
       reducedMotion: { type: String, attribute: "reduced-motion" },
+      /**
+       * Animate moves with a scoped view transition (element
+       * startViewTransition) where the browser has one. Off by default: in
+       * Chromium the tab can lose the transition's snapshot textures
+       * ("non-existent mailbox" in the GPU process) and the renderer dies
+       * mid-move, taking unsaved outline edits with it
+       * (haxtheweb/issues#3305). Moves still slide (FLIP) without it.
+       */
+      viewTransitions: { type: Boolean, attribute: "view-transitions" },
       _focusId: { state: true },
       _statusText: { state: true },
       _vtActive: { state: true },
+      _menuRowId: { state: true },
       _flashGroup: { state: true },
       _nudgeId: { state: true },
       _undo: { state: true },

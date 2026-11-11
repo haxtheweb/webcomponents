@@ -795,6 +795,9 @@ export class ConceptMapGame extends MicroGameBase {
           }
         }
 
+        /* game board positions stay physical (left/right) on purpose: the
+           board, its sprites and pointer hit-testing use screen x/y and do
+           not mirror in right-to-left */
         .check {
           position: absolute;
           top: -10px;

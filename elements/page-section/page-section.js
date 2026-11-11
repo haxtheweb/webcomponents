@@ -4,15 +4,26 @@
  */
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { DDDAccentMap } from "@haxtheweb/d-d-d/lib/DDDAccent.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
+
+// background each preset sets; shown through --page-section-preset-bg so
+// it gets a dark pair while the saved bg value stays the same
+const PRESET_BG = {
+  antihero: "var(--ddd-theme-default-limestoneLight)",
+  video: "var(--ddd-theme-default-limestoneLight)",
+  "antihero-light": "var(--ddd-theme-default-slateMaxLight)",
+  lines: "var(--ddd-theme-default-white)",
+};
 /**
  * `page-section`
  * `A well designed section of a page with many options for marketing purposes`
  * @demo demo/index.html
  * @element page-section
  */
-class PageSection extends DDD {
+class PageSection extends I18NMixin(DDD) {
   /**
    * HTMLElement
    */
@@ -26,9 +37,23 @@ class PageSection extends DDD {
     this.bg = null;
     this.image = null;
     this.accentColor = "blue";
-    this.scrollerLabel = "Scroll to reveal content";
     this.preset = null;
     this.anchor = null;
+    // bg / image as the author set them, restored when the preset goes
+    // back to custom; and the last values a preset wrote
+    this.__authoredBg = null;
+    this.__authoredImage = null;
+    this.__presetBg = null;
+    this.__presetImage = null;
+    this.t = {
+      scrollerLabel: "Scroll to reveal content",
+    };
+    this.registerLocalization({
+      context: this,
+      basePath: import.meta.url,
+    });
+    // translated default; an authored scroller-label still wins
+    this.i18nDefault("scrollerLabel", "scrollerLabel");
   }
 
   static get properties() {
@@ -59,27 +84,82 @@ class PageSection extends DDD {
       css`
         :host {
           display: block;
+          /* the page colour: the fold wedge is drawn in it so it blends
+             into the page in either colour scheme */
+          --page-section-fold-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+          --page-section-image-veil: transparent;
         }
 
-        /** presets */
+        /** presets: each background gets a dark pair */
+        :host([preset="antihero"]),
+        :host([preset="video"]) {
+          --page-section-preset-bg: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            color-mix(
+              in srgb,
+              var(--ddd-theme-default-slateGray) 22%,
+              var(--ddd-theme-default-potentialMidnight)
+            )
+          );
+        }
+        :host([preset="antihero-light"]) {
+          --page-section-preset-bg: light-dark(
+            var(--ddd-theme-default-slateMaxLight),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+        }
+        :host([preset="lines"]) {
+          --page-section-preset-bg: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+        }
+        /* the preset textures are light; in dark mode a veil over them
+           keeps the pattern at low contrast */
+        :host([preset="antihero"]),
+        :host([preset="lines"]) {
+          --page-section-image-veil: light-dark(
+            transparent,
+            color-mix(
+              in srgb,
+              var(--ddd-theme-default-potentialMidnight) 82%,
+              transparent
+            )
+          );
+        }
         :host([preset="antihero"]) section div.text ::slotted(h1),
         :host([preset="antihero"]) section div.text ::slotted(h2),
         :host([preset="antihero"]) section div.text ::slotted(h3) {
-          color: var(--ddd-theme-default-beaverBlue);
+          color: light-dark(
+            var(--ddd-theme-default-beaverBlue),
+            var(--ddd-theme-default-pughBlue)
+          );
         }
         :host([image][preset="antihero"]) .scroller,
         :host([image][preset="antihero"]) section div ::slotted(p) {
-          color: var(--ddd-theme-default-beaverBlue);
+          color: light-dark(
+            var(--ddd-theme-default-beaverBlue),
+            var(--ddd-theme-default-skyLight)
+          );
         }
         /** lines add texture to blank bg */
         :host([preset="lines"]) section div.text ::slotted(h1),
         :host([preset="lines"]) section div.text ::slotted(h2),
         :host([preset="lines"]) section div.text ::slotted(h3) {
-          color: var(--ddd-theme-default-coalyGray);
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
         }
         :host([image][preset="lines"]) .scroller,
         :host([image][preset="lines"]) section div ::slotted(p) {
-          color: var(--ddd-theme-default-coalyGray);
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
         }
         /** video can allow visualization to go beyond readability limit bc its watching */
 
@@ -110,6 +190,11 @@ class PageSection extends DDD {
           background-size: cover;
           transition: background-color 1s linear;
         }
+        /* veil over the background image (preset textures in dark mode);
+           painted above the background, under the content */
+        :host([image]) .section {
+          box-shadow: inset 0 0 0 100vmax var(--page-section-image-veil);
+        }
         :host([full]) .section {
           height: 100vh;
         }
@@ -139,22 +224,47 @@ class PageSection extends DDD {
         .scroller {
           position: relative;
           margin: 0 auto;
-          --simple-icon-width: var(--ddd-icon-lg);
-          --simple-icon-height: var(--ddd-icon-lg);
-          color: var(--simple-colors-default-theme-accent-12);
+          --simple-icon-width: var(--ddd-icon-xs);
+          --simple-icon-height: var(--ddd-icon-xs);
+          color: light-dark(
+            var(--simple-colors-default-theme-accent-12),
+            var(--ddd-theme-default-white)
+          );
           display: flex;
-          width: var(--ddd-icon-xl);
-          height: var(--ddd-icon-xl);
-          margin-top: calc(var(--ddd-icon-xl) * -1);
+          align-items: center;
+          justify-content: center;
+          box-sizing: border-box;
+          width: var(--ddd-icon-lg);
+          height: var(--ddd-icon-lg);
+          margin-top: calc(var(--ddd-icon-lg) * -1);
+          border: var(--ddd-border-xs);
+          border-color: color-mix(in srgb, currentColor 60%, transparent);
+          border-radius: var(--ddd-radius-circle);
+          background-color: var(--ddd-theme-default-potential0);
           z-index: 11;
-          animation: fullwidth-header-bounce 2.8s ease-out infinite;
+          transition: var(--ddd-duration-normal, 0.3s) background-color
+            ease-in-out;
+          /* a few bounces to hint, then it rests */
+          animation: fullwidth-header-bounce 2.8s ease-out 3;
         }
-        .scroller:focus-within::part(icon),
-        .scroller:focus::part(icon),
-        .scroller:hover::part(icon) {
-          transition: var(--ddd-duration-normal, 0.3s) all ease-in-out;
-          --simple-icon-width: var(--ddd-icon-xl);
-          --simple-icon-height: var(--ddd-icon-xl);
+        :host([image]) .scroller {
+          background-color: color-mix(
+            in srgb,
+            var(--ddd-theme-default-potentialMidnight) 35%,
+            transparent
+          );
+        }
+        .scroller:focus-within,
+        .scroller:focus,
+        .scroller:hover {
+          border-color: currentColor;
+          background-color: color-mix(in srgb, currentColor 15%, transparent);
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .scroller {
+            animation: none;
+            transition: none;
+          }
         }
 
         @keyframes fullwidth-header-bounce {
@@ -196,9 +306,7 @@ class PageSection extends DDD {
         }
 
         .fold {
-          background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDBweCIgdmlld0JveD0iMCAwIDEyODAgMTQwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGZpbGw9IiNGRkZGRkYiPjxwYXRoIGQ9Ik02NDAgMTM5TDAgMHYxNDBoMTI4MFYwTDY0MCAxMzl6Ii8+PC9nPjwvc3ZnPg==");
-          background-size: 100% var(--ddd-spacing-25);
-          background-repeat: no-repeat;
+          fill: var(--page-section-fold-color);
           bottom: -1px; /* ensures no line clip on smaller devices */
           height: var(--ddd-spacing-25);
           z-index: 10;
@@ -276,9 +384,16 @@ class PageSection extends DDD {
           display: flex;
         }
         :host section div.entice ::slotted(*) {
-          padding: var(--ddd-spacing-2);
-          background-color: rgba(0, 0, 0, 0.533);
-          color: black;
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+          border-radius: var(--ddd-radius-rounded);
+          background-color: color-mix(
+            in srgb,
+            var(--ddd-theme-default-nittanyNavy) 88%,
+            transparent
+          );
+          box-shadow: inset 0 0 0 1px
+            light-dark(transparent, var(--ddd-theme-default-slateGray));
+          color: var(--ddd-theme-default-white);
           margin: 0 !important;
           margin-bottom: var(--ddd-spacing-4) !important;
           font-size: var(--ddd-font-size-3xs) !important;
@@ -348,17 +463,11 @@ class PageSection extends DDD {
             height: var(--ddd-spacing-22);
           }
           .scroller {
-            --simple-icon-width: var(--ddd-icon-sm);
-            --simple-icon-height: var(--ddd-icon-sm);
+            --simple-icon-width: var(--ddd-icon-xxs);
+            --simple-icon-height: var(--ddd-icon-xxs);
             width: var(--ddd-icon-md);
             height: var(--ddd-icon-md);
             margin-top: calc(var(--ddd-icon-md) * -1);
-          }
-          .scroller:focus-within::part(icon),
-          .scroller:focus::part(icon),
-          .scroller:hover::part(icon) {
-            --simple-icon-width: var(--ddd-icon-md);
-            --simple-icon-height: var(--ddd-icon-md);
           }
           :host([fold]) .scroller {
             margin-top: calc(var(--ddd-spacing-15) * -1);
@@ -373,35 +482,43 @@ class PageSection extends DDD {
   }
 
   videoPlay(_e) {
-    this.bg = "var(--ddd-theme-default-coalyGray)";
+    this.__presetBg = "var(--ddd-theme-default-coalyGray)";
+    this.bg = this.__presetBg;
   }
 
   videoPause(_e) {
-    this.bg = "var(--ddd-theme-default-limestoneLight)";
+    this.__presetBg = PRESET_BG.video;
+    this.bg = this.__presetBg;
   }
 
   willUpdate(changedProperties) {
     if (super.willUpdate) {
       super.willUpdate(changedProperties);
     }
+    // remember what the author set (not what a preset wrote) so choosing
+    // "custom" can give it back
+    if (changedProperties.has("bg") && this.bg !== this.__presetBg) {
+      this.__authoredBg = this.bg;
+    }
+    if (changedProperties.has("image") && this.image !== this.__presetImage) {
+      this.__authoredImage = this.image;
+    }
     // presets force certain design consistency; derive the reactive bg and
     // image state in willUpdate so it batches into the current update cycle
     // instead of scheduling a second one (Lit change-in-update warning)
     if (changedProperties.has("preset") && this.preset) {
+      // only the video preset listens for play / pause
+      this.AbortControllers.abort();
+      this.AbortControllers = new AbortController();
       switch (this.preset) {
         case "antihero":
-          this.bg = "var(--ddd-theme-default-limestoneLight)";
-          this.image = new URL(
-            "./lib/assets/geo-bkg.png",
-            import.meta.url,
-          ).href;
+          this._applyPreset(
+            PRESET_BG.antihero,
+            new URL("./lib/assets/geo-bkg.png", import.meta.url).href,
+          );
           break;
         case "video":
-          this.bg = "var(--ddd-theme-default-limestoneLight)";
-          this.image = null;
-          // force all previous to be lost if set
-          this.AbortControllers.abort();
-          this.AbortControllers = new AbortController();
+          this._applyPreset(PRESET_BG.video, null);
           this.addEventListener("play", this.videoPlay.bind(this), {
             signal: this.AbortControllers.signal,
           });
@@ -410,18 +527,37 @@ class PageSection extends DDD {
           });
           break;
         case "antihero-light":
-          this.bg = "var(--ddd-theme-default-slateMaxLight)";
-          this.image = null;
+          this._applyPreset(PRESET_BG["antihero-light"], null);
           break;
         case "lines":
-          this.bg = "var(--ddd-theme-default-white)";
-          this.image = new URL(
-            "./lib/assets/texture-lines.svg",
-            import.meta.url,
-          ).href;
+          this._applyPreset(
+            PRESET_BG.lines,
+            new URL("./lib/assets/texture-lines.svg", import.meta.url).href,
+          );
+          break;
+        case "custom":
+          // give back the author's own values where a preset replaced them
+          if (this.__presetBg !== null && this.bg === this.__presetBg) {
+            this.bg = this.__authoredBg;
+          }
+          if (
+            this.__presetImage !== null &&
+            this.image === this.__presetImage
+          ) {
+            this.image = this.__authoredImage;
+          }
+          this.__presetBg = null;
+          this.__presetImage = null;
           break;
       }
     }
+  }
+
+  _applyPreset(bg, image) {
+    this.__presetBg = bg;
+    this.__presetImage = image;
+    this.bg = bg;
+    this.image = image;
   }
 
   updated(changedProperties) {
@@ -436,12 +572,38 @@ class PageSection extends DDD {
     }
   }
 
-  bgStyle(bg, filter, image) {
-    if (filter) {
-      return `background-color: ${bg};background-image:var(--ddd-theme-default-gradient-antihero),url("${image}");`;
-    } else {
-      return `background-color: ${bg};background-image: url("${image}");`;
+  /**
+   * The colour bg paints: a preset background shows through its light /
+   * dark pair, SimpleColors names (blue, light-blue...) map to the DDD
+   * accent palette, anything else (hex, rgb, var()) is used as authored.
+   */
+  bgColor(bg) {
+    if (!bg) {
+      return bg;
     }
+    if (PRESET_BG[this.preset] && bg === PRESET_BG[this.preset]) {
+      return `var(--page-section-preset-bg, ${bg})`;
+    }
+    const name = String(bg).trim().toLowerCase();
+    if (Object.prototype.hasOwnProperty.call(DDDAccentMap, name)) {
+      return `var(--ddd-theme-default-${DDDAccentMap[name][0]})`;
+    }
+    return bg;
+  }
+
+  bgStyle(bg, filter, image) {
+    const color = `background-color: ${this.bgColor(bg)};`;
+    // no image, no url(): url("null") would request a file named null
+    if (!image) {
+      return filter
+        ? `${color}background-image:var(--ddd-theme-default-gradient-antihero);`
+        : color;
+    }
+    const url = `url("${String(image).replace(/["\\\n\r]/g, encodeURIComponent)}")`;
+    if (filter) {
+      return `${color}background-image:var(--ddd-theme-default-gradient-antihero),${url};`;
+    }
+    return `${color}background-image: ${url};`;
   }
   /**
    * LitElement render callback
@@ -477,7 +639,19 @@ class PageSection extends DDD {
                 >`
             : ``
         }
-        ${this.fold ? html`<div class="fold"></div>` : ``}
+        ${
+          this.fold
+            ? html`<svg
+                class="fold"
+                viewBox="0 0 1280 140"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M640 139L0 0v140h1280V0L640 139z"></path>
+              </svg>`
+            : ``
+        }
       </section>
     `;
   }

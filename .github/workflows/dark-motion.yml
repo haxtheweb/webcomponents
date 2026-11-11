@@ -1,0 +1,69 @@
+name: dark-motion
+
+# Blocking for the elements a pull request touches: an element responds to
+# dark mode and respects reduced motion.
+#
+# For every element folder the pull request changes, the repo's
+# web-dev-server config serves elements/<name>/demo/index.html locally (never
+# a live site) and scripts/dark-motion-check.mjs opens it in Chromium with
+# prefers-reduced-motion: reduce, once with prefers-color-scheme light and
+# once dark. dark-ignored: the element sets colors of its own and renders
+# them unchanged in dark mode, with no light-dark(), prefers-color-scheme or
+# color-scheme in its styles (contrast is the contrast workflow's job).
+# motion: a CSS animation, transition or element.animate() longer than 10ms
+# runs on the element or in its shadow root after load or on hover/focus.
+# Only a failure missing from scripts/dark-motion.baseline.json fails the
+# job; baselined ones are listed in the job summary. The baseline only
+# shrinks: the first step fails if this pull request adds entries to it.
+# See CONTRIBUTING.md, "Dark mode and reduced motion check".
+#
+# Runs on pull_request (not pull_request_target): no secrets, read-only token.
+on:
+  # No branch filter: stacked PRs (base is another feature branch) must run too.
+  pull_request:
+    paths:
+      - "elements/**"
+      - "scripts/dark-motion*"
+      - "scripts/lib/dark-motion.mjs"
+      - "scripts/lib/demo-runner.mjs"
+      - "scripts/lib/gate-baseline.mjs"
+      - "web-dev-server.config.mjs"
+      - ".github/workflows/dark-motion.yml"
+      - ".github/actions/setup-playwright/**"
+permissions:
+  contents: read
+jobs:
+  dark-motion:
+    name: Dark mode and reduced motion
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      # the PR merge commit with its base as first parent, so HEAD^1..HEAD is
+      # exactly this pull request's change
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 2
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          cache: yarn
+      - name: Install
+        run: yarn install --frozen-lockfile
+      - name: Baseline only shrinks
+        run: node scripts/dark-motion-check.mjs --check-baseline HEAD^1
+      - name: Install Playwright Chromium
+        # the Playwright version yarn.lock resolves, so the browser build
+        # matches what the tests launch; cached per version
+        # results depend on how text renders, so this job installs the extra
+        # fonts through apt (retried, time-boxed); see the action for details
+        # the local path, not the $/ self-repository form: $/ downloads the
+        # whole repo as an action archive, and that extraction fails here
+        uses: ./.github/actions/setup-playwright # zizmor: ignore[self-repository]
+        timeout-minutes: 12
+        with:
+          fonts: "true"
+      - name: Dark mode and reduced motion of changed elements
+        run: node scripts/dark-motion-check.mjs --base HEAD^1

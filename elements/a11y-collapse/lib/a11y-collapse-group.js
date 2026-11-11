@@ -12,6 +12,7 @@ for styling:
 Custom property | Description | Default
 ----------------|-------------|----------
 `--a11y-collapse-group-margin` | margin around the a11y-collapse-group | 15px 0
+`--a11y-collapse-group-radius` | corner radius of the shared frame (first and last item) | var(--ddd-radius-md)
  *
  * @customElement
  * @extends LitElement
@@ -33,11 +34,16 @@ class A11yCollapseGroup extends LitElement {
         #heading {
           font-weight: var(--ddd-font-weight-bold);
         }
+        /* items stack flush in one shared frame: no gap, 1px dividers
+           (each item keeps its bottom line), and only the first and last
+           item round their outer corners */
         .wrapper {
           border-radius: 0;
           display: block;
           --a11y-collapse-margin: 0 0;
           --a11y-collapse-border-between: none;
+          --a11y-collapse-border-radius: 0;
+          --a11y-collapse-group-radius: var(--ddd-radius-md);
         }
       `,
     ];

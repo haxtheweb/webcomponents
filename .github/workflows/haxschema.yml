@@ -1,0 +1,57 @@
+name: haxschema
+
+# Blocking for the HAX-capable elements a pull request touches: their HAX
+# editing schema (haxProperties) is valid and matches the element.
+#
+# scripts/haxschema-check.mjs reads every authorable tag's HAXSchema and
+# what the element declares the same way the API snapshot gate does, then
+# checks the tags in element folders this pull request changes: the schema
+# validates against the HAX properties JSON Schema
+# (scripts/lib/haxProperties.schema.json, from haxtheweb/hax-schema), every
+# settings field edits a property, attribute or slot the element declares,
+# and every demoSchema entry inserts the element's own tag. Only a problem
+# missing from scripts/haxschema.baseline.json fails the job; baselined ones
+# are listed in the job summary. The baseline only shrinks: the first step
+# fails if this pull request adds entries to it. See CONTRIBUTING.md,
+# "HAXSchema check".
+#
+# Runs on pull_request (not pull_request_target): no secrets, read-only token.
+on:
+  # No branch filter: stacked PRs (base is another feature branch) must run too.
+  pull_request:
+    paths:
+      - "elements/**"
+      - "hax-elements-registry.json"
+      - "scripts/haxschema*"
+      - "scripts/lib/haxschema.mjs"
+      - "scripts/lib/haxProperties.schema.json"
+      - "scripts/lib/gate-baseline.mjs"
+      - "scripts/lib/i18n-layout.mjs"
+      - "scripts/api-snapshot.mjs"
+      - ".github/workflows/haxschema.yml"
+permissions:
+  contents: read
+jobs:
+  haxschema:
+    name: HAXSchema of changed elements
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      # the PR merge commit with its base as first parent, so HEAD^1..HEAD is
+      # exactly this pull request's change
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 2
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          cache: yarn
+      - name: Install
+        run: yarn install --frozen-lockfile
+      - name: Baseline only shrinks
+        run: node scripts/haxschema-check.mjs --check-baseline HEAD^1
+      - name: HAXSchema of changed elements
+        run: node scripts/haxschema-check.mjs --base HEAD^1

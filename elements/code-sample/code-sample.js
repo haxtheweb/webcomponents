@@ -84,6 +84,8 @@ class CodeSample extends I18NMixin(LitElement) {
           margin: 0;
           border: 0;
         }
+        /* line-number gutter stays physical on purpose: source code is
+           left-to-right, so its gutter stays on the left in any page */
         td.hljs-ln-numbers {
           text-align: right;
           color: var(

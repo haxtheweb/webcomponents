@@ -50,9 +50,10 @@ jobs:
             exit 0
           fi
 
-          # Collect unique element slugs changed by the PR.
+          # Collect unique element slugs changed by the PR. The PR files API
+          # names each file "filename" (there is no "path" field).
           mapfile -t changed < <(gh api "repos/${REPO}/pulls/${PR_NUMBER}/files" \
-            --paginate --jq '.[].path')
+            --paginate --jq '.[].filename')
 
           declare -A seen=()
           affected=()
@@ -74,7 +75,9 @@ jobs:
             exit 0
           fi
 
+          MARKER='<!-- gallery-deeplinks -->'
           {
+            echo "${MARKER}"
             echo '## 🧱 Component gallery deep links'
             echo ''
             echo "Vercel preview for this PR: ${PREVIEW_URL}"
@@ -93,4 +96,13 @@ jobs:
             echo '- The gallery is regenerated on every Vercel preview deploy via `yarn build-gallery` and served at the preview'"'"'s root URL.'
           } > comment.md
 
-          gh pr comment "${PR_NUMBER}" --body-file comment.md
+          # One comment per PR: every push makes a new preview deploy, so update
+          # the earlier comment in place instead of adding another one.
+          EXISTING=$(gh api "repos/${REPO}/issues/${PR_NUMBER}/comments" --paginate \
+            --jq "[.[] | select(.user.login == \"github-actions[bot]\" and (.body | startswith(\"${MARKER}\")))][0].id // empty")
+          if [[ -n "${EXISTING}" ]]; then
+            gh api -X PATCH "repos/${REPO}/issues/comments/${EXISTING}" -F body=@comment.md >/dev/null
+            echo "Updated gallery deep links comment ${EXISTING} on PR ${PR_NUMBER}."
+          else
+            gh pr comment "${PR_NUMBER}" --repo "${REPO}" --body-file comment.md
+          fi

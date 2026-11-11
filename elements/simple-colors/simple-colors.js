@@ -1079,7 +1079,7 @@ const SimpleColorsSuper = function (SuperClass) {
             --simple-colors-default-theme-accent-12: #e7eff1;
           }
 
-          /* from a11y-utils */
+          /* visually hidden, still read by screen readers */
           .sr-only {
             position: absolute;
             left: -10000px;

@@ -112,7 +112,6 @@ class SiteUuidLink extends I18NMixin(LitElement) {
         handles: [
           {
             type: "inline",
-            text: "term",
           },
         ],
         meta: {

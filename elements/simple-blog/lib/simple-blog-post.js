@@ -1,4 +1,5 @@
 import { html, css } from "lit";
+import { DDDReadingSurface } from "@haxtheweb/d-d-d/lib/DDDReading.js";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
@@ -14,6 +15,13 @@ class SimpleBlogPost extends SimpleColors {
   static get styles() {
     return [
       super.styles,
+      DDDReadingSurface,
+      css`
+        /* reading pass adjustments for this theme */
+        #slot {
+          padding-block-start: var(--ddd-spacing-4);
+        }
+      `,
       css`
         :host {
           display: block;
@@ -152,7 +160,7 @@ class SimpleBlogPost extends SimpleColors {
               <site-active-title></site-active-title>
             </div>
           </div>
-          <section id="contentcontainer">
+          <section id="contentcontainer" class="ddd-reading">
             <div id="slot"><slot></slot></div>
           </section>
         </article>

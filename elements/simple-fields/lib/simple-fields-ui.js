@@ -40,7 +40,13 @@ export const SimpleFieldsBaseStyles = [
           var(--simple-fields-border-color, #999)
         );
       --simple-picker-options-focus-border: 1px solid
-        var(--simple-fields-accent-color, #3f51b5);
+        var(
+          --simple-fields-accent-color,
+          light-dark(
+            var(--ddd-theme-default-link, #005fa9),
+            var(--ddd-theme-default-linkLight, #cce9ff)
+          )
+        );
     }
     ::slotted([slot="field"]) {
       --simple-picker-options-left: 0;
@@ -52,7 +58,14 @@ export const SimpleFieldsBaseStyles = [
         )
         solid;
       --simple-picker-options-focus-border: 1px
-        var(--simple-fields-accent-color, #3f51b5) solid;
+        var(
+          --simple-fields-accent-color,
+          light-dark(
+            var(--ddd-theme-default-link, #005fa9),
+            var(--ddd-theme-default-linkLight, #cce9ff)
+          )
+        )
+        solid;
     }
     :host([hidden]),
     :host [hidden],
@@ -79,7 +92,13 @@ export const SimpleFieldsBaseStyles = [
     ul[role="listbox"].focus,
     ul[role="listbox"]:focus,
     ul[role="listbox"]:focus-within {
-      border-color: var(--simple-fields-accent-color, #3f51b5);
+      border-color: var(
+        --simple-fields-accent-color,
+        light-dark(
+          var(--ddd-theme-default-link, #005fa9),
+          var(--ddd-theme-default-linkLight, #cce9ff)
+        )
+      );
     }
     :host([disabled]),
     *[disabled] {
@@ -94,7 +113,13 @@ export const SimpleFieldsLabelStyles = [
     }
     :host([focused]) .label-main,
     :host(:focus-within) .label-main {
-      color: var(--simple-fields-accent-color, #3f51b5);
+      color: var(
+        --simple-fields-accent-color,
+        light-dark(
+          var(--ddd-theme-default-link, #005fa9),
+          var(--ddd-theme-default-linkLight, #cce9ff)
+        )
+      );
       transition: color var(--ddd-duration-normal, 0.3s) ease-in-out;
       font-weight: var(--ddd-font-weight-bold);
     }
@@ -110,7 +135,8 @@ export const SimpleFieldsLabelStyles = [
     }
     .inline label,
     .option label {
-      margin: 0 var(--simple-fields-margin-small, 8px) 0 0;
+      margin-block: 0;
+      margin-inline: 0 var(--simple-fields-margin-small, 8px);
       flex: 0 1 var(--simple-fields-label-width, auto);
     }
     .inline label,
@@ -127,8 +153,23 @@ export const SimpleFieldsLabelStyles = [
 ];
 export const SimpleFieldsTooltipStyles = [
   css`
+    /* DDD tooltip: white text on coaly (light) / slate (dark), the same
+       label the DDD block tooltips use */
     simple-tooltip,
-    simple-toolbar-button::part(tooltip) {
+    simple-toolbar-button::part(tooltip),
+    simple-toolbar-menu::part(tooltip) {
+      --simple-tooltip-background: var(
+        --simple-fields-tooltip-background-color,
+        light-dark(
+          var(--ddd-theme-default-coalyGray, #262626),
+          var(--ddd-theme-default-slateGray, #314d64)
+        )
+      );
+      --simple-tooltip-text-color: var(
+        --simple-fields-tooltip-color,
+        var(--ddd-theme-default-white, #ffffff)
+      );
+      --simple-tooltip-opacity: 1;
       text-transform: var(--simple-fields-tooltip-text-transform, unset);
       font-family: var(
         --simple-fields-detail-font-family,
@@ -199,7 +240,13 @@ export const SimpleFieldsButtonStyles = [
     simple-toolbar-button[toggled]::part(button) {
       color: var(
         --simple-fields-button-toggled-color,
-        var(--simple-fields-accent-color, #3f51b5)
+        var(
+          --simple-fields-accent-color,
+          light-dark(
+            var(--ddd-theme-default-link, #005fa9),
+            var(--ddd-theme-default-linkLight, #cce9ff)
+          )
+        )
       );
       background-color: var(
         --simple-fields-button-toggled-background-color,
@@ -225,11 +272,23 @@ export const SimpleFieldsButtonStyles = [
       color: var(--simple-fields-button-focus-color, unset);
       background-color: var(
         --simple-fields-button-focus-background-color,
-        var(--simple-fields-accent-color-light, #d9eaff)
+        var(
+          --simple-fields-accent-color-light,
+          light-dark(
+            var(--ddd-theme-default-linkLight, #cce9ff),
+            var(--ddd-theme-default-nittanyNavy, #001e44)
+          )
+        )
       );
       border-color: var(
         --simple-fields-button-focus-border-color,
-        var(--simple-fields-accent-color, #3f51b5)
+        var(
+          --simple-fields-accent-color,
+          light-dark(
+            var(--ddd-theme-default-link, #005fa9),
+            var(--ddd-theme-default-linkLight, #cce9ff)
+          )
+        )
       );
       opacity: var(--simple-fields-button-focus-opacity, 1);
       text-decoration: var(--simple-fields-button-focus-text-decoration, unset);
@@ -299,7 +358,13 @@ export const SimpleFieldsRowStyles = [
       outline: var(--simple-fields-row-focus-outline-width, 1px) solid
         var(
           --simple-fields-row-focus-outline-color,
-          var(--simple-fields-accent-color, #3f51b5)
+          var(
+            --simple-fields-accent-color,
+            light-dark(
+              var(--ddd-theme-default-link, #005fa9),
+              var(--ddd-theme-default-linkLight, #cce9ff)
+            )
+          )
         );
       outline-offset: -1px;
       transition: outline-color var(--ddd-duration-normal, 0.3s) ease-in-out;

@@ -7,10 +7,14 @@
  * Two pieces:
  * - DDDReadingSurface: put inside a theme's static styles and apply it to
  *   the element that wraps the content slot (add the class ddd-reading).
- *   Sets the reading text color and line height.
+ *   Sets the line height and the measure. A theme widens the measure by
+ *   setting --ddd-theme-measure on .ddd-reading in its own styles, after
+ *   this one.
  * - dddReadingProse(tag, align): returns global (document level) CSS for the
- *   theme's HAXCMSGlobalStyleSheetContent(). It also adds a little tracking
- *   in dark mode, where light text on a dark ground reads tighter. Page content lives in the
+ *   theme's HAXCMSGlobalStyleSheetContent(). It sets the reading text color
+ *   on running text only, so headings keep the theme's own color, and adds a
+ *   little tracking in dark mode, where light text on a dark ground reads
+ *   tighter. Page content lives in the
  *   light DOM as direct children of the theme element, so prose rules target
  *   "tag > p" and friends. Only running text (paragraphs, lists, headings,
  *   blockquotes, definition lists) is capped at the reading measure; media,
@@ -25,10 +29,6 @@ import { css, unsafeCSS } from "lit";
 export const DDDReadingSurface = css`
   .ddd-reading {
     --ddd-theme-measure: var(--ddd-content-width-sm);
-    color: light-dark(
-      var(--ddd-theme-default-coalyGray),
-      var(--ddd-theme-default-limestoneMaxLight)
-    );
     line-height: var(--ddd-lh-170);
     text-align: start;
   }
@@ -48,15 +48,36 @@ export function dddReadingProse(tag, align = "center") {
     return css``;
   }
   const t = unsafeCSS(tag);
-  const inline =
-    align === "start"
-      ? unsafeCSS("margin-inline-end: auto;")
-      : unsafeCSS("margin-inline: auto;");
+  const start = align === "start";
+  const inline = start
+    ? unsafeCSS("margin-inline-end: auto;")
+    : unsafeCSS("margin-inline: auto;");
+  // a start-aligned blockquote keeps its indent inside the measure instead of
+  // pushing its right edge past the paragraphs around it
+  const quote = start
+    ? css`
+        ${t} > blockquote {
+          margin-inline-start: var(--ddd-spacing-10);
+          max-width: calc(
+            var(--ddd-theme-measure, var(--ddd-content-width-sm)) - var(
+                --ddd-spacing-10
+              )
+          );
+        }
+      `
+    : css``;
   return css`
     ${t} > :is(p, ul, ol, dl, blockquote, h1, h2, h3, h4, h5, h6) {
       max-width: var(--ddd-theme-measure, var(--ddd-content-width-sm));
       box-sizing: border-box;
       ${inline}
+    }
+    ${quote}
+    ${t} > :is(p, ul, ol, dl, blockquote) {
+      color: light-dark(
+        var(--ddd-theme-default-coalyGray),
+        var(--ddd-theme-default-limestoneMaxLight)
+      );
     }
     ${t} > p {
       margin-block: 0 var(--ddd-spacing-8);

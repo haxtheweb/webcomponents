@@ -1,0 +1,98 @@
+name: fuzz-nightly
+
+# Nightly fuzz hunt (haxtheweb/issues#3262). Plain scripting, no AI.
+#
+# Runs `yarn test:fuzz` (web-test-runner, Chromium) with an explicit random
+# HAX_FUZZ_SEED (in the job summary, so any run can be replayed), replays
+# each failing property with its seed and path to confirm it, and fails red.
+# With the optional HAX_ISSUES_TOKEN secret (Issues: read and write on
+# haxtheweb/issues) it also opens or comments on a
+# `[fuzz] webcomponents: <property>` issue there; without it, issue filing
+# is skipped with a note in the summary.
+#
+# Logic: scripts/fuzz-nightly.mjs (same file in create and haxcms-nodejs).
+# Seed convention: scripts/test-setup/fuzz-config.mjs (haxtheweb/issues#3272).
+on:
+  schedule:
+    - cron: "23 8 * * *" # 3:23 AM America/New_York (EST); 4:23 AM during EDT
+  workflow_dispatch:
+    inputs:
+      seed:
+        description: "Replay a seed (integer); leave empty for a random one"
+        required: false
+        default: ""
+permissions:
+  contents: read
+concurrency:
+  group: fuzz-nightly
+  cancel-in-progress: false
+jobs:
+  fuzz:
+    name: fuzz hunt
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "dir=$(yarn cache dir)" >> "$GITHUB_OUTPUT"
+      - name: Cache Yarn
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-node-24-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-24-yarn-
+      - name: Install
+        id: install
+        run: |
+          set -o pipefail
+          yarn install --frozen-lockfile 2>&1 | tee "$RUNNER_TEMP/install.log"
+      - name: Install Playwright Chromium
+        id: playwright
+        # the Playwright version yarn.lock resolves, so the browser build
+        # matches what the tests launch; cached per version
+        # no extra fonts: Chromium runs on the runner image's libraries, so
+        # this job does not depend on the Ubuntu package mirrors
+        # the local path, not the $/ self-repository form: $/ downloads the
+        # whole repo as an action archive, and that extraction fails here
+        uses: ./.github/actions/setup-playwright # zizmor: ignore[self-repository]
+        timeout-minutes: 12
+        with:
+          fonts: "false"
+          log-file: ${{ runner.temp }}/install.log
+      - name: Fuzz hunt
+        id: fuzz
+        env:
+          HAX_FUZZ_SEED_INPUT: ${{ inputs.seed }}
+          HAX_ISSUES_TOKEN: ${{ secrets.HAX_ISSUES_TOKEN }}
+          # quiet reporter: names each failing test, then its fast-check report
+          WTR_REPORTER: failures
+        run: node scripts/fuzz-nightly.mjs -- yarn test:fuzz
+      - name: Report a failed setup step
+        if: failure() && steps.fuzz.outcome != 'failure'
+        env:
+          INSTALL_OUTCOME: ${{ steps.install.outcome }}
+          PLAYWRIGHT_OUTCOME: ${{ steps.playwright.outcome }}
+        run: |
+          {
+            echo "## Nightly fuzz hunt: setup failed"
+            echo
+            echo "- Install: $INSTALL_OUTCOME"
+            echo "- Install Playwright Chromium: $PLAYWRIGHT_OUTCOME"
+            if [ -f "$RUNNER_TEMP/install.log" ]; then
+              echo
+              echo "Last lines of the setup output:"
+              echo
+              echo '~~~text'
+              tail -n 40 "$RUNNER_TEMP/install.log"
+              echo '~~~'
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"

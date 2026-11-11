@@ -6,7 +6,11 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-menu.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-menu-item.js";
-import "@haxtheweb/responsive-utility/responsive-utility.js";
+import {
+  registerResponsiveElement,
+  unregisterResponsiveElement,
+  reregisterResponsiveElement,
+} from "@haxtheweb/responsive-utility/responsive-utility.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 /**
  * `simple-fields-array-item`
@@ -85,8 +89,12 @@ class SimpleFieldsArrayItem extends I18NMixin(
         #preview {
           flex: 1 0 auto;
           margin: 0;
-          margin-right: calc(0 - var(--simple-fields-margin-small, 8px) / 2);
-          margin-left: calc(50px + var(--simple-fields-margin-small, 8px) / 2);
+          margin-inline-end: calc(
+            0 - var(--simple-fields-margin-small, 8px) / 2
+          );
+          margin-inline-start: calc(
+            50px + var(--simple-fields-margin-small, 8px) / 2
+          );
           max-width: calc(
             100% - 72px - 2 * var(--simple-fields-margin-small, 8px) / 2
           );
@@ -133,17 +141,27 @@ class SimpleFieldsArrayItem extends I18NMixin(
           flex: 0 0 auto;
         }
         #expand {
-          margin-left: calc(var(--simple-fields-margin-small, 8px) / 2);
+          margin-inline-start: calc(var(--simple-fields-margin-small, 8px) / 2);
         }
         #drag-handle {
           position: absolute;
-          left: 2px;
+          inset-inline-start: 2px;
           top: 2px;
           --simple-toolbar-button-white-space: normal !important;
+          /* the Up / Down menu: a surface that follows the color scheme,
+             so its labels (inherited text colour) stay readable */
+          --simple-toolbar-button-bg: light-dark(
+            var(--ddd-theme-default-white, #ffffff),
+            var(--ddd-theme-default-coalyGray, #262626)
+          );
+          --simple-toolbar-border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight, #e4e5e7),
+            var(--ddd-theme-default-slateGray, #314d64)
+          );
         }
         :host([aria-expanded="true"]) #drag-handle {
           top: var(--simple-fields-margin, 16px);
-          left: var(--simple-fields-margin-small, 8px);
+          inset-inline-start: var(--simple-fields-margin-small, 8px);
         }
         #dropzone {
           height: 0px;
@@ -163,12 +181,18 @@ class SimpleFieldsArrayItem extends I18NMixin(
         }
         :host([dragging]) #preview,
         :host([droppable]) #preview {
-          margin-left: calc(var(--simple-fields-margin-small, 8px) / 2);
+          margin-inline-start: calc(var(--simple-fields-margin-small, 8px) / 2);
         }
         :host([dropzone]) #dropzone {
           background-color: var(
             --simple-fields-button-focus-background-color,
-            var(--simple-fields-accent-color-light, #d9eaff)
+            var(
+              --simple-fields-accent-color-light,
+              light-dark(
+                var(--ddd-theme-default-linkLight, #cce9ff),
+                var(--ddd-theme-default-nittanyNavy, #001e44)
+              )
+            )
           );
           height: 80px;
         }
@@ -508,6 +532,8 @@ class SimpleFieldsArrayItem extends I18NMixin(
   }
   connectedCallback() {
     super.connectedCallback();
+    // moved, or removed and added again: observe it again
+    reregisterResponsiveElement(this);
     setTimeout(() => {
       /**
        * Fires when constructed, so that parent radio group can listen for it.
@@ -532,19 +558,15 @@ class SimpleFieldsArrayItem extends I18NMixin(
      * needs the size of parent container to add responsive styling
      * @event responsive-element
      */
-    globalThis.dispatchEvent(
-      new CustomEvent("responsive-element", {
-        detail: {
-          element: this,
-          attribute: "responsive-size",
-          relativeToParent: true,
-          sm: 250,
-          md: 500,
-          lg: 1000,
-          xl: 2000,
-        },
-      }),
-    );
+    registerResponsiveElement({
+      element: this,
+      attribute: "responsive-size",
+      relativeToParent: true,
+      sm: 250,
+      md: 500,
+      lg: 1000,
+      xl: 2000,
+    });
   }
   updated(changedProperties) {
     if (super.updated) {
@@ -602,6 +624,8 @@ class SimpleFieldsArrayItem extends I18NMixin(
    * Let the group know that this is gone.
    */
   disconnectedCallback() {
+    // the utility's ResizeObserver keeps a registered element alive
+    unregisterResponsiveElement(this);
     /**
      * Fires when detatched, so that parent radio group will no longer listen for it.
      *

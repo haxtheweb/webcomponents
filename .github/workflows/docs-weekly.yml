@@ -1,0 +1,142 @@
+name: docs-weekly
+
+# Weekly documentation report (haxtheweb/issues#3262). Plain scripting, no
+# AI: it reports and never opens a PR or fixes anything.
+#
+# Job summary sections:
+# - Walkthrough status for every element
+#   (scripts/extract-element-docs.mjs --status): stale storyboards need a
+#   person to update and re-approve them. Informational.
+# - Docs data drift: elements whose committed lib/<tag>.docs.json differs from
+#   what the extractor builds now (run the element's build and commit it).
+#   Informational.
+# - Broken in-repo links in element READMEs and demos
+#   (scripts/check-element-links.mjs). This is the only part that fails the
+#   run.
+#
+# Redrafting walkthroughs and writing docs prose need judgment, so they are
+# not part of CI; people (optionally with an AI assistant) do them from this
+# report.
+on:
+  schedule:
+    - cron: "13 1 * * 1" # Sunday 8:13 PM America/New_York (EST); 9:13 PM during EDT
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: docs-weekly
+  cancel-in-progress: false
+jobs:
+  docs-report:
+    name: Docs report
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Setup node
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+
+      # same analyzer install as walkthrough-status.yml, so surface hashes
+      # match a local run after a build
+      - name: Install custom elements manifest analyzer
+        id: cem
+        run: |
+          set -o pipefail
+          npm install --prefix "$RUNNER_TEMP/cem" --no-save --no-package-lock \
+            --ignore-scripts --no-audit --no-fund \
+            @custom-elements-manifest/analyzer@0.11.0 2>&1 | tee "$RUNNER_TEMP/cem-install.log"
+
+      - name: Walkthrough status (informational)
+        env:
+          CEM_ANALYZER_DIR: ${{ runner.temp }}/cem
+        run: |
+          set -uo pipefail
+          # exits 1 when any walkthrough is stale; that is reported, not failed
+          status_exit=0
+          node scripts/extract-element-docs.mjs --status > status.txt 2> status.err || status_exit=$?
+          {
+            echo "## Walkthrough status"
+            echo ""
+            if [[ $status_exit -gt 1 || ( $status_exit -eq 1 && ! -s status.txt ) ]]; then
+              echo "extract-element-docs.mjs --status exited with $status_exit:"
+              echo ""
+              echo '~~~text'
+              tail -n 40 status.err
+              echo '~~~'
+            else
+              awk -F'\t' 'NF >= 3 { n[$2]++ } END { for (s in n) printf "- %s: %d\n", s, n[s] }' status.txt | sort
+              echo ""
+              if awk -F'\t' '$2 == "stale" { found = 1 } END { exit !found }' status.txt; then
+                echo "Stale (the element changed since the walkthrough was written):"
+                echo ""
+                echo "| Walkthrough | Storyboard |"
+                echo "| --- | --- |"
+                awk -F'\t' '$2 == "stale" { print "| `" $1 "` | `" $4 "` |" }' status.txt
+                echo ""
+                echo "Update the storyboard, or redraft a generated one with \`node scripts/draft-element-walkthrough.mjs <element>\`, then check it with \`node scripts/extract-element-docs.mjs --status <element>\`."
+              else
+                echo "No stale walkthroughs."
+              fi
+            fi
+            echo ""
+          } >> "$GITHUB_STEP_SUMMARY"
+          exit 0
+
+      - name: Docs data drift (informational)
+        env:
+          CEM_ANALYZER_DIR: ${{ runner.temp }}/cem
+        run: |
+          set -uo pipefail
+          # rewrite every lib/<tag>.docs.json in this throwaway checkout and
+          # list what changed; nothing is committed or pushed
+          write_exit=0
+          node scripts/extract-element-docs.mjs --write > write.log 2>&1 || write_exit=$?
+          {
+            echo "## Docs data drift"
+            echo ""
+            if [[ $write_exit -ne 0 ]]; then
+              echo "extract-element-docs.mjs --write exited with $write_exit:"
+              echo ""
+              echo '~~~text'
+              tail -n 40 write.log
+              echo '~~~'
+            else
+              git status --porcelain --untracked-files=all -- 'elements/*/lib/*.docs.json' > drift.txt
+              if [[ -s drift.txt ]]; then
+                echo "Committed docs data that no longer matches the element (M: changed, ??: never committed). Run \`yarn run build\` in the element and commit \`lib/<tag>.docs.json\`."
+                echo ""
+                echo '~~~text'
+                cat drift.txt
+                echo '~~~'
+              else
+                echo "All committed docs data is current."
+              fi
+            fi
+            echo ""
+          } >> "$GITHUB_STEP_SUMMARY"
+          git checkout -- elements
+          exit 0
+
+      - name: Broken in-repo links (blocking)
+        run: |
+          set -o pipefail
+          node scripts/check-element-links.mjs --markdown | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Report a failed setup step
+        if: failure() && steps.cem.outcome == 'failure'
+        run: |
+          {
+            echo "## Docs report: setup failed"
+            echo ""
+            echo "Installing @custom-elements-manifest/analyzer failed. Last lines:"
+            echo ""
+            echo '~~~text'
+            tail -n 40 "$RUNNER_TEMP/cem-install.log"
+            echo '~~~'
+          } >> "$GITHUB_STEP_SUMMARY"

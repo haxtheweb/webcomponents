@@ -11,7 +11,7 @@
  * This file is the one entry point for the layer. Its pieces live next to
  * it, split by what elements import, so a page loads only what it uses:
  * HaxUiAdminTokens.js (Tokens, Scheme, Primitives), HaxUiAdminIcons.js,
- * HaxUiAdminControls.js (Controls, SimpleFields), HaxUiAdminShell.js and
+ * HaxUiAdminControls.js (Controls, SimpleFields, SidePanelFields), HaxUiAdminShell.js and
  * HaxUiDialogFrame.js (the one modal frame).
  * This file re-exports all of them plus the combined HaxUiAdminStyles, so
  * existing imports keep working. The layer lives in d-d-d so every
@@ -28,6 +28,7 @@ import {
 import {
   HaxUiAdminControls,
   HaxUiAdminSimpleFields,
+  HaxUiAdminSidePanelFields,
 } from "./HaxUiAdminControls.js";
 
 export {
@@ -36,6 +37,7 @@ export {
   HaxUiAdminScheme,
   HaxUiAdminControls,
   HaxUiAdminSimpleFields,
+  HaxUiAdminSidePanelFields,
 };
 export {
   HAX_UI_DARK_CHROME,

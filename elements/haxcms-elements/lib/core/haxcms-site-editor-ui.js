@@ -35,6 +35,10 @@ import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServ
 import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
 import { HAXCMSKeyboardShortcutsInstance } from "./utils/HAXCMSKeyboardShortcuts.js";
 import {
+  KEYBOARD_SHORTCUTS_HIDDEN_MEDIA,
+  labelWithShortcut,
+} from "@haxtheweb/utils/lib/keyboardShortcuts.js";
+import {
   PREVIEW_DEVICES,
   previewFrameName,
   previewFrameSrc,
@@ -54,11 +58,16 @@ import { urlHostMatches } from "./utils/urlHost.js";
 import { trimSlashes } from "@haxtheweb/utils/lib/safe-html.js";
 import { settleOnce } from "@haxtheweb/utils/lib/events.js";
 import {
-  SITE_ADMIN_MODAL_STYLES,
   SITE_ADMIN_CONFIRM_STYLES,
+  siteAdminDockedModalStyles,
   resolveSiteAdminRoute,
   siteAdminRouteCapability,
 } from "./admin/site-admin-sections.js";
+import {
+  handleDockedMerlinRow,
+  isDockedAdminOpen,
+  closeDockedAdmin,
+} from "./admin/docked-admin.js";
 
 const ADMIN_ROUTE_QUERY_PATHS = {
   admin: "admin",
@@ -131,6 +140,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         }
         :host([edit-mode]) {
           z-index: 9999;
+        }
+        /* the admin dialog is docked below the bar: the bar (and its user
+           and site menus) stays above the dialog, which hax-ui-styles pins
+           at 100000001 once the editor loads. Merlin (super-daemon) shares
+           this layer and comes later in the page, so it stays on top. */
+        :host([admin-docked]) {
+          z-index: 100000002;
         }
         :host *[hidden] {
           display: none;
@@ -970,6 +986,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             justify-content: flex-end;
           }
           super-daemon-search.merlin::part(filter) {
+            display: none;
+          }
+          /* folded to a button there is no room for the Alt⇧ chip */
+          super-daemon-search.merlin::part(shortcut) {
             display: none;
           }
           super-daemon-search.merlin::part(field) {
@@ -2244,7 +2264,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       popstate: "_adminRoutePopState",
       "simple-modal-breadcrumb-click": "_simpleModalBreadcrumbClick",
       "simple-modal-closed": "_simpleModalClosed",
+      "simple-modal-opened": "_syncAdminDocked",
+      "simple-modal-show": "_queueSyncAdminDocked",
       "super-daemon-close": "sdCloseEvent",
+      "super-daemon-row-selected": "_merlinRowSelectedWhileDocked",
       "super-daemon-konami-code": "_konamiCodeActivated",
     };
     this.rpgWalk = false;
@@ -2256,6 +2279,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.__editText = "Edit";
     this.userMenuOpen = false;
     this.siteMenuOpen = false;
+    this.adminDocked = false;
+    this.__inertSiteBuilders = [];
     this.__menuHoverTimers = {};
     this.soundIcon = "";
     this.__disposer = this.__disposer || [];
@@ -3834,20 +3859,26 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
    */
   _siteHomeTap(e) {
     this.siteMenuOpen = false;
-    if (this._adminRouteAllowed("reports")) {
-      store.playSound("click");
-      this.setAdminPath("reports", "push", false);
-    } else {
-      this._manifestButtonTap(e);
-    }
+    // with the admin dialog docked below, the house moves it to another
+    // section, so unsaved changes are asked about first
+    this._siteAdminGuard(() => {
+      if (this._adminRouteAllowed("reports")) {
+        store.playSound("click");
+        this.setAdminPath("reports", "push", false);
+      } else {
+        this._manifestButtonTap(e);
+      }
+    });
   }
   _siteMenuItemTap(e) {
     const route =
       e && e.currentTarget ? e.currentTarget.getAttribute("data-route") : null;
     this.siteMenuOpen = false;
     if (route && this._adminRouteAllowed(route)) {
-      store.playSound("click");
-      this.setAdminPath(route, "push", false);
+      this._siteAdminGuard(() => {
+        store.playSound("click");
+        this.setAdminPath(route, "push", false);
+      });
     }
   }
   _siteMenuOpenChanged(e) {
@@ -4066,6 +4097,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               slot="main-menu"
               part="mysiteslink"
               tabindex="-1"
+              @click="${this._sitesDashboardLinkClick}"
             >
               <app-hax-user-menu-button
                 icon="hax:world-traveler-plain"
@@ -4079,14 +4111,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               part="mylearningbtn"
               id="mylearningbtn"
               label="${this.t.myLearning}"
-              @click="${this._openMyLearning}"
+              @click="${this._openMyLearningGuarded}"
             ></app-hax-user-menu-button>
             <app-hax-user-menu-button
               slot="main-menu"
               icon="face"
               part="customizecharacterbtn"
               label="${this.t.customizeCharacter}"
-              @click="${this._openCharacterBuilder}"
+              @click="${this._openCharacterBuilderGuarded}"
             ></app-hax-user-menu-button>
             <slot
               slot="post-menu"
@@ -4098,7 +4130,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               class="logout"
               icon="icons:exit-to-app"
               label="${this.t.logOut}"
-              @click=${this._logout}
+              @click=${this._logoutGuarded}
             ></app-hax-user-menu-button>
           </app-hax-user-menu>
           <span class="topbar-divider" aria-hidden="true"></span>
@@ -4124,13 +4156,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 @keydown="${this._siteHomeKeydown}"
                 icon="hax:home-edit"
                 part="manifestbtn"
+                ?active="${this.adminDocked}"
                 class="top-bar-button"
                 role="menuitem"
                 id="manifestbtn"
                 aria-haspopup="true"
                 aria-expanded="${this.siteMenuOpen ? "true" : "false"}"
                 ?disabled="${this.editMode}"
-                label="${this.t.siteSettings} • Ctrl⇧2"
+                label="${labelWithShortcut(this.t.siteSettings, "Ctrl⇧2")}"
               ></simple-toolbar-button>
               ${this.siteMenuItems.map(
                 (item) =>
@@ -4149,12 +4182,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               this.__haxcmsButtonAddReady
                 ? html`<haxcms-button-add
                     ?hidden="${this.editMode || !store.platformAllows("addPage")}"
-                    ?disabled="${this.editMode}"
+                    ?disabled="${this.editMode || this.adminDocked}"
                     id="addpagebutton"
                     class="top-bar-button"
                     align-horizontal="center"
                     icon="hax:add-page"
-                    label="${this.t.addPage} • Ctrl⇧3"
+                    label="${labelWithShortcut(this.t.addPage, "Ctrl⇧3")}"
                     merlin
                     role="menuitem"
                   ></haxcms-button-add>`
@@ -4169,7 +4202,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               id="exportbtn"
               role="menuitem"
               icon="hax:html-code"
-              label="${this.t.viewSource} • Ctrl⇧2"
+              label="${labelWithShortcut(this.t.viewSource, "Ctrl⇧2")}"
               data-event="view-source"
               class="top-bar-button"
               @click="${this.haxButtonOp}"
@@ -4188,7 +4221,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               icon="editor:format-line-spacing"
               id="content-map"
               class="top-bar-button"
-              label="${this.t.pageOutline} • Ctrl⇧3"
+              label="${labelWithShortcut(this.t.pageOutline, "Ctrl⇧3")}"
               voice-command="select content outline (menu)"
               @click="${this.haxButtonOp}"
               ?active="${this.trayDetail === "content-map"}"
@@ -4203,7 +4236,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               icon="hax:add-brick"
               id="content-add"
               class="top-bar-button"
-              label="${this.t.addBlock} • Ctrl⇧4"
+              label="${labelWithShortcut(this.t.addBlock, "Ctrl⇧4")}"
               voice-command="select blocks (menu)"
               ?active="${this.trayDetail === "content-add"}"
               icon-position="${this.getIconPosition(this.responsiveSize)}"
@@ -4216,7 +4249,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               class="top-bar-button"
               @click="${this.haxButtonOp}"
               id="content-edit"
-              label="${this.t.configureBlock} • Ctrl⇧5"
+              label="${labelWithShortcut(this.t.configureBlock, "Ctrl⇧5")}"
               ?hidden="${!this.editMode}"
               ?disabled="${
                 !this.activeTagName ||
@@ -4244,7 +4277,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               icon-position="${this.getIconPosition(this.responsiveSize)}"
               ?disabled="${!this.canUndo}"
               @click="${this.haxButtonOp}"
-              label="${this.t.undo} • Ctrl Z"
+              label="${labelWithShortcut(this.t.undo, "Ctrl Z")}"
               data-event="undo"
               id="undo"
               ?hidden="${!this.editMode}"
@@ -4258,7 +4291,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               @click="${this.haxButtonOp}"
               ?disabled="${!this.canRedo}"
               ?hidden="${!this.editMode}"
-              label="${this.t.redo} • Ctrl⇧Z"
+              label="${labelWithShortcut(this.t.redo, "Ctrl⇧Z")}"
               data-event="redo"
               id="redo"
               voice-command="redo"
@@ -4279,16 +4312,17 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               ?hidden="${!this.editMode}"
               ?disabled="${!this.editMode}"
               role="menuitem"
-              label="${this.t.cancel} • Ctrl⇧/"
+              label="${labelWithShortcut(this.t.cancel, "Ctrl⇧/")}"
               voice-command="cancel (editing)"
             ></simple-toolbar-button>
             <simple-toolbar-button
               ?hidden="${!this.pageAllowed}"
               ?disabled="${
-                this.activeItem &&
-                this.activeItem.metadata &&
-                this.activeItem.metadata.locked &&
-                !this.editMode
+                this.adminDocked ||
+                (this.activeItem &&
+                  this.activeItem.metadata &&
+                  this.activeItem.metadata.locked &&
+                  !this.editMode)
               }"
               class="top-bar-button"
               role="menuitem"
@@ -4307,6 +4341,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 this.editMode
               }"
               id="lockbutton"
+              ?disabled="${this.adminDocked}"
               class="top-bar-button"
               icon="icons:lock"
               icon-position="${this.getIconPosition(this.responsiveSize)}"
@@ -4636,8 +4671,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       case "super-daemon":
         // a phone's bar is too narrow for the field: Merlin is a button
         // that opens the search across the whole bar first
+        // (same query as the CSS that folds the field, so a 600px wide
+        // screen that shows the button also opens across the bar)
         if (
-          this.responsiveSize === "xs" &&
+          (globalThis.matchMedia
+            ? globalThis.matchMedia("(max-width: 600px)").matches
+            : this.responsiveSize === "xs") &&
           e.type === "click" &&
           !this.merlinPhoneOpen
         ) {
@@ -6590,6 +6629,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (super.updated) {
       super.updated(changedProperties);
     }
+    if (changedProperties.has("adminDocked")) {
+      this._setSiteContentInert(this.adminDocked);
+    }
     // a preview of edits is only good while those edits are open
     if (
       changedProperties.has("editMode") &&
@@ -6752,6 +6794,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       siteMenuOpen: {
         type: Boolean,
       },
+      /**
+       * The one admin dialog is open, docked below the bar. The bar stays
+       * usable; the page behind the dialog is inert.
+       */
+      adminDocked: {
+        type: Boolean,
+        reflect: true,
+        attribute: "admin-docked",
+      },
       soundIcon: { type: String },
       darkMode: { type: Boolean, reflect: true, attribute: "dark-mode" },
       backLink: {
@@ -6855,6 +6906,21 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.__boundSyncMerlinPopover = this._syncMerlinPopover.bind(this);
     globalThis.addEventListener("resize", this.__boundSyncMerlinPopover);
     this.updateComplete.then(() => this._syncMerlinPopover());
+    // shortcut suffixes on labels and tooltips are dropped on a phone; redo
+    // them when the viewport crosses that line (rotation, resize)
+    if (globalThis.matchMedia) {
+      this.__shortcutsMedia = globalThis.matchMedia(
+        KEYBOARD_SHORTCUTS_HIDDEN_MEDIA,
+      );
+      this.__boundShortcutsMediaChange = () => {
+        this._updateEditButtonLabel();
+        this.requestUpdate();
+      };
+      this.__shortcutsMedia.addEventListener(
+        "change",
+        this.__boundShortcutsMediaChange,
+      );
+    }
 
     // Register keyboard shortcuts
     this._registerKeyboardShortcuts();
@@ -7029,6 +7095,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     );
   }
   disconnectedCallback() {
+    this._setSiteContentInert(false);
     if (this.__previewAbort) {
       this.__previewAbort.abort();
       this.__previewAbort = null;
@@ -7074,6 +7141,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       }
     }
     this.__disposer = [];
+    if (this.__shortcutsMedia && this.__boundShortcutsMediaChange) {
+      this.__shortcutsMedia.removeEventListener(
+        "change",
+        this.__boundShortcutsMediaChange,
+      );
+    }
     super.disconnectedCallback();
   }
 
@@ -7082,9 +7155,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
    */
   _updateEditButtonLabel() {
     if (this.editMode) {
-      this.__editText = `${this.t.save} • Ctrl⇧S`;
+      this.__editText = labelWithShortcut(this.t.save, "Ctrl⇧S");
     } else {
-      this.__editText = `${this.t.edit} • Ctrl⇧E`;
+      this.__editText = labelWithShortcut(this.t.edit, "Ctrl⇧E");
     }
   }
   _closeOpenContextMenus(excludeMenu = null, root = globalThis.document) {
@@ -7653,7 +7726,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           class="top-bar-button"
           role="menuitem"
           icon="icons:visibility"
-          label="${this.previewMode ? this.t.exitPreview : this.t.preview} • Ctrl⇧8"
+          label="${labelWithShortcut(this.previewMode ? this.t.exitPreview : this.t.preview, "Ctrl⇧8")}"
           voice-command="preview (site)"
           ?active="${this.previewMode}"
           icon-position="${this.getIconPosition(this.responsiveSize)}"
@@ -8596,6 +8669,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     }
   }
   _simpleModalClosed(_e) {
+    this._syncAdminDocked();
     const initialRoutePath = this._getAdminRoutePathFromLocation();
     if (
       this.__currentAdminRoutePath === "theme-preview" ||
@@ -9267,7 +9341,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             title: meta.title,
             titleIcon: meta.titleIcon,
             breadcrumbs: meta.breadcrumbs,
-            styles: Object.assign({}, SITE_ADMIN_MODAL_STYLES),
+            styles: siteAdminDockedModalStyles(this._siteAdminDockTop()),
             elements: {
               content: shell,
             },
@@ -9275,6 +9349,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             clone: false,
             modal: true,
             showClose: true,
+            docked: true,
           },
         }),
       );
@@ -9458,6 +9533,127 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       default:
         break;
     }
+  }
+  /**
+   * Where the docked admin dialog starts: the bottom edge of the bar.
+   */
+  _siteAdminDockTop() {
+    const bar =
+      this.shadowRoot && this.shadowRoot.querySelector
+        ? this.shadowRoot.querySelector("app-hax-top-bar")
+        : null;
+    const rect =
+      bar && typeof bar.getBoundingClientRect === "function"
+        ? bar.getBoundingClientRect()
+        : null;
+    return rect && rect.bottom > 0 ? rect.bottom : 64;
+  }
+  _queueSyncAdminDocked() {
+    // simple-modal handles the show first; read its state after
+    setTimeout(() => this._syncAdminDocked(), 0);
+  }
+  /**
+   * adminDocked follows the modal: true only while it is open, docked and
+   * holding the one admin dialog.
+   */
+  _syncAdminDocked() {
+    const docked = isDockedAdminOpen(this.__siteAdminShell);
+    if (this.adminDocked !== docked) {
+      this.adminDocked = docked;
+    }
+  }
+  /**
+   * While the admin dialog is docked, the bar and the dialog are the only
+   * things a keyboard or screen reader can reach. The dialog is not
+   * aria-modal and does not trap focus (so the bar stays reachable), so the
+   * site content behind it is made inert instead. Only the elements this
+   * made inert are restored.
+   */
+  _setSiteContentInert(on) {
+    if (!on) {
+      this.__inertSiteBuilders.forEach((el) => {
+        el.inert = false;
+      });
+      this.__inertSiteBuilders = [];
+      return;
+    }
+    if (!(globalThis.document && globalThis.document.querySelectorAll)) {
+      return;
+    }
+    const modal =
+      globalThis.SimpleModal && globalThis.SimpleModal.instance
+        ? globalThis.SimpleModal.instance
+        : null;
+    globalThis.document
+      .querySelectorAll("haxcms-site-builder")
+      .forEach((el) => {
+        if (
+          el.inert ||
+          el.contains(this) ||
+          (modal && el.contains(modal)) ||
+          this.__inertSiteBuilders.indexOf(el) !== -1
+        ) {
+          return;
+        }
+        el.inert = true;
+        this.__inertSiteBuilders.push(el);
+      });
+  }
+  /**
+   * Leaving the site from the bar while the docked admin dialog holds
+   * unsaved changes asks first, as leaving a section does.
+   */
+  _sitesDashboardLinkClick(e) {
+    if (this.__sitesLinkAllowed) {
+      this.__sitesLinkAllowed = false;
+      return;
+    }
+    const shell = this.__siteAdminShell;
+    if (
+      !this.adminDocked ||
+      !(shell && shell.isConnected && shell.needsLeaveCheck)
+    ) {
+      return;
+    }
+    const link = e.currentTarget;
+    e.preventDefault();
+    this._siteAdminGuard(() => {
+      this.__sitesLinkAllowed = true;
+      link.click();
+    });
+  }
+  _openMyLearningGuarded(e) {
+    this._siteAdminGuard(() => this._openMyLearning(e));
+  }
+  _openCharacterBuilderGuarded(e) {
+    this._siteAdminGuard(() => this._openCharacterBuilder(e));
+  }
+  _logoutGuarded(_e) {
+    this._siteAdminGuard(() => this._logout());
+  }
+  /**
+   * Merlin stays live above the docked dialog: admin commands (CMS/admin/...)
+   * move it, anything else closes it first, and unsaved changes are asked
+   * about first (docked-admin.js has the rules).
+   */
+  _merlinRowSelectedWhileDocked(e) {
+    if (!this.adminDocked) {
+      return;
+    }
+    handleDockedMerlinRow(e, {
+      host: this,
+      dialog: this.__siteAdminShell,
+      isAdminCommand: (path) => path.indexOf("CMS/admin/") === 0,
+      closeDialog: () => this._closeDockedAdmin(),
+      guard: (proceed) => this._siteAdminGuard(proceed),
+      closeMerlin: () => SuperDaemonInstance.close(),
+    });
+  }
+  _closeDockedAdmin() {
+    if (!this.adminDocked) {
+      return;
+    }
+    closeDockedAdmin();
   }
   /**
    * Run `proceed`, first asking the one admin dialog to confirm leaving

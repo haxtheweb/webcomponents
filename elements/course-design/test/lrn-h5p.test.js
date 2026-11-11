@@ -115,4 +115,30 @@ describe("lrn-h5p", () => {
       "Edit this H5P",
     );
   });
+
+  // the HAX editor moves blocks by removing and re-adding them: a removed
+  // lrn-h5p stops following the store, a re-added one follows it again
+  it("stops following edit mode when removed and follows it again after a move", async () => {
+    store.editMode = false;
+    const wrap = await fixture(
+      html`<div>
+        <lrn-h5p><p>Moves</p></lrn-h5p>
+      </div>`,
+    );
+    const el = wrap.querySelector("lrn-h5p");
+    await settle();
+    expect(el._editing).to.equal(false);
+
+    el.remove();
+    store.editMode = true;
+    await settle();
+    expect(el._editing).to.equal(false);
+
+    wrap.appendChild(el);
+    await settle();
+    expect(el._editing).to.equal(true);
+    store.editMode = false;
+    await settle();
+    expect(el._editing).to.equal(false);
+  });
 });

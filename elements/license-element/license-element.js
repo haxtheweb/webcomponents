@@ -86,12 +86,14 @@ class LicenseElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
           line-height: var(--ddd-lh-140);
           background-color: var(--license-background-color);
         }
-        :host:after {
-          content: "License";
+        /* the "License" tag: real text (not CSS generated content) so it
+           can be translated and is read consistently by screen readers;
+           last in the shadow root, styled as the old :host::after was */
+        .license-label {
           position: relative;
-          float: right;
+          float: inline-end;
           bottom: var(--ddd-spacing-9);
-          right: var(--ddd-spacing-2);
+          inset-inline-end: var(--ddd-spacing-2);
           font-size: var(--ddd-font-size-ms);
           color: var(--ddd-theme-default-slateGray);
           font-style: italic;
@@ -119,7 +121,7 @@ class LicenseElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
           font-weight: var(--ddd-font-weight-bold);
         }
         .big-license-link img {
-          margin-right: 0 var(--ddd-spacing-2) var(--ddd-spacing-2) 0;
+          margin-inline-end: var(--ddd-spacing-2);
           width: var(--ddd-icon-3xl);
           height: var(--ddd-icon-xs);
           vertical-align: middle;
@@ -203,6 +205,7 @@ class LicenseElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
             : ``
         }
       </div>
+      <span class="license-label">${this.t.licenseLabel}</span>
     `;
   }
 
@@ -295,6 +298,7 @@ class LicenseElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
     this.t = this.t || {};
     this.t = {
       ...this.t,
+      licenseLabel: "License",
       licenseGraphic: "{license} graphic",
       workByCreator: "{title} by {creator}",
       workByCreatorLicensed:

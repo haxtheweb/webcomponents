@@ -75,6 +75,7 @@
     "heading"
   ],
   "events": [
+    "learner-progress-request",
     "user-engagement"
   ],
   "hax": {
@@ -121,6 +122,11 @@
       ],
       "advanced": []
     },
+    "saveOptions": {
+      "unsetAttributes": [
+        "t"
+      ]
+    },
     "demoSchema": [
       {
         "tag": "lrndesign-imagemap",
@@ -129,7 +135,7 @@
       }
     ]
   },
-  "surfaceHash": "1bc18f3880d9",
+  "surfaceHash": "9768729ddada",
   "walkthroughs": [
     {
       "id": "",
@@ -137,13 +143,13 @@
       "order": 0,
       "src": "lrndesign-imagemap.motion.json",
       "file": "lib/lrndesign-imagemap.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/lrndesign-imagemap.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

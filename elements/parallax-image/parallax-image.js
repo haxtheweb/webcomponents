@@ -173,7 +173,7 @@ class ParallaxImage extends SchemaBehaviors(LitElement) {
         handles: [
           {
             type: "image",
-            url: "source",
+            url: "imageBg",
           },
         ],
         meta: {

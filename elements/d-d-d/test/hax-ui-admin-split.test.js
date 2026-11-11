@@ -17,6 +17,7 @@ const HOME = {
   HaxUiAdminIcons: iconsModule,
   HaxUiAdminControls: controlsModule,
   HaxUiAdminSimpleFields: controlsModule,
+  HaxUiAdminSidePanelFields: controlsModule,
   HaxUiAdminShell: shellModule,
   HaxUiDialogTitlebar: dialogModule,
   HaxUiDialogSurface: dialogModule,

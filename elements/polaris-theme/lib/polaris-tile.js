@@ -45,7 +45,7 @@ export class PolarisTile extends I18NMixin(LitElement) {
       :host .button {
         position: absolute;
         bottom: 14px;
-        right: 14px;
+        inset-inline-end: 14px;
         width: 24px;
         height: 24px;
         color: var(--ddd-theme-default-white, #fff);

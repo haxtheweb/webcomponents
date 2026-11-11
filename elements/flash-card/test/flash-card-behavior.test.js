@@ -515,3 +515,30 @@ describe("flash-card accent color setting", () => {
     expect(el.accentColor).to.equal("green");
   });
 });
+
+describe("flash-card-set HAX schema", () => {
+  it("has its own schema, not flash-card's", async () => {
+    const url = FlashCardSet.haxProperties;
+    expect(url).to.match(/\/lib\/flash-card-set\.haxProperties\.json$/);
+    const schema = await (await fetch(url)).json();
+    expect(schema.gizmo.title).to.equal("Flash card set");
+    // flash-card's settings (imgSource, imgKeyword, front / back slots...)
+    // never applied to the set; none are offered
+    const settings = [
+      ...schema.settings.configure,
+      ...schema.settings.advanced,
+    ];
+    expect(settings).to.have.length(0);
+    // the demo inserts a set of cards, not a single flash-card
+    expect(schema.demoSchema[0].tag).to.equal("flash-card-set");
+    // the set reads its list positionally, so the demo keeps the
+    // whitespace between list items and paragraphs that it relies on
+    const el = await fixture(
+      `<flash-card-set>${schema.demoSchema[0].content}</flash-card-set>`,
+    );
+    await el.updateComplete;
+    expect(el.questions).to.have.length(8);
+    expect(el.questions[0]).to.equal("What is strawberry in Spanish?");
+    expect(el.questions[5]).to.equal("comida");
+  });
+});

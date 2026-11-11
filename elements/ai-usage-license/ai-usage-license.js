@@ -26,12 +26,14 @@ class AiUsageLicense extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
           line-height: var(--ddd-lh-140);
           background-color: var(--ai-usage-license-background-color);
         }
-        :host:after {
-          content: "AI Usage License";
+        /* the "AI Usage License" tag: real text (not CSS generated content)
+           so it can be translated and is read consistently by screen
+           readers; last in the shadow root, styled as the old :host::after */
+        .license-label {
           position: relative;
-          float: right;
+          float: inline-end;
           bottom: var(--ddd-spacing-9);
-          right: var(--ddd-spacing-2);
+          inset-inline-end: var(--ddd-spacing-2);
           font-size: var(--ddd-font-size-ms);
           /* the label floats over the transparent host (page background
              shows through), so pair slateGray with a light equivalent in
@@ -57,7 +59,8 @@ class AiUsageLicense extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
           font-weight: var(--ddd-font-weight-bold);
         }
         .license-badge img {
-          margin: 0 var(--ddd-spacing-2) var(--ddd-spacing-2) 0;
+          margin-block: 0 var(--ddd-spacing-2);
+          margin-inline: 0 var(--ddd-spacing-2);
           height: var(--ddd-icon-3xl);
           vertical-align: middle;
         }
@@ -87,7 +90,10 @@ class AiUsageLicense extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
                   target="_blank"
                   href="${this.licenseLink}"
                   rel="noopener noreferrer"
-                  aria-label="${this.licenseName} - AI Usage License"
+                  aria-label="${this.t.licenseNameLabel.replace(
+                    "{license}",
+                    () => this.licenseName,
+                  )}"
                   ><img
                     loading="lazy"
                     alt="${this.licenseTag} - ${this.licenseName}"
@@ -124,6 +130,7 @@ class AiUsageLicense extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
             : ``
         }
       </div>
+      <span class="license-label">${this.t.aiUsageLicense}</span>
     `;
   }
 
@@ -201,6 +208,18 @@ class AiUsageLicense extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      aiUsageLicense: "AI Usage License",
+      licenseNameLabel: "{license} - AI Usage License",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath:
+        new URL("./locales/ai-usage-license.en.json", import.meta.url).href +
+        "/../",
+    });
     this.typeof = "oer:SupportingMaterial";
     this.license = null;
     this.modifier = null;

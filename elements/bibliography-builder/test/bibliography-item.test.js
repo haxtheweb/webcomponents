@@ -290,6 +290,101 @@ describe("BibliographyItem test", () => {
     });
   });
 
+  describe("APA fixes", () => {
+    it("omits the empty parts of a book source instead of (, pp. )", async () => {
+      element.citationType = "book";
+      element.title = "Book Title";
+      element.publicationDate = "03/07/2020";
+      await element.updateComplete;
+      expect(element._formatSource().getBookSource("APA")).to.equal("");
+      const text = renderText(element.exportAPA());
+      expect(text).to.not.include("(,");
+      expect(text).to.not.include("pp.");
+      expect(text).to.include("Book Title. HAX PSU.");
+    });
+
+    it("prints only the book parts that are set", async () => {
+      element.citationType = "book";
+      element.parentVer = 3;
+      await element.updateComplete;
+      expect(renderText(element._formatSource().getBookSource("APA"))).to.equal(
+        "(3 ed.)",
+      );
+      element.parentVer = undefined;
+      element.startPage = 10;
+      element.endPage = 20;
+      await element.updateComplete;
+      expect(renderText(element._formatSource().getBookSource("APA"))).to.equal(
+        "(pp. 10 - 20)",
+      );
+      element.childVer = 2;
+      await element.updateComplete;
+      expect(renderText(element._formatSource().getBookSource("APA"))).to.equal(
+        "(Vol. 2, pp. 10 - 20)",
+      );
+    });
+
+    it("reads the journal volume and issue the journal form edits", async () => {
+      element.citationType = "journal";
+      element.volume = "12";
+      element.issue = "3";
+      element.startPage = "45";
+      element.endPage = "60";
+      await element.updateComplete;
+      expect(
+        renderText(element._formatSource().getJournalSource("APA")),
+      ).to.equal("12(3), 45 - 60");
+      // volume / issue win over the older parent-ver / child-ver values
+      element.parentVer = 5;
+      element.childVer = 2;
+      await element.updateComplete;
+      expect(
+        renderText(element._formatSource().getJournalSource("APA")),
+      ).to.equal("12(3), 45 - 60");
+    });
+
+    it("falls back to parent-ver / child-ver for saved journal items", async () => {
+      const el = await fixture(
+        html`<bibliography-item
+          citation-type="journal"
+          parent-ver="5"
+          child-ver="2"
+        ></bibliography-item>`,
+      );
+      expect(renderText(el._formatSource().getJournalSource("APA"))).to.equal(
+        "5(2)",
+      );
+      expect(renderText(el.exportBibtex())).to.include("volume = {5}");
+      expect(renderText(el.exportBibtex())).to.include("number = {2}");
+    });
+
+    it("leaves no dangling comma when a journal has no volume or pages", async () => {
+      element.citationType = "journal";
+      element.title = "Journal Title";
+      await element.updateComplete;
+      const text = renderText(element.exportAPA());
+      expect(text).to.include("HAX PSU.");
+      expect(text).to.not.include(", .");
+    });
+  });
+
+  describe("row and copy button", () => {
+    it("names the copy button for assistive technology", () => {
+      const button = element.shadowRoot.querySelector("button.copy-button");
+      expect(button).to.exist;
+      expect(button.getAttribute("type")).to.equal("button");
+      expect(button.getAttribute("aria-label")).to.equal("Copy");
+      expect(button.classList.contains("ddd-block-action")).to.be.true;
+    });
+
+    it("describes the authors field correctly in HAX", () => {
+      const authors = BibliographyItem.haxProperties.settings.configure.find(
+        (field) => field.property === "authors",
+      );
+      expect(authors.description).to.not.include("timeline");
+    });
+  });
+
   describe("exportAPA", () => {
     it("renders a web citation by default", async () => {
       element.title = "Test Title";

@@ -147,7 +147,8 @@ class RetroCard extends SimpleColors {
           padding: 0 0.5rem;
           text-transform: uppercase;
           margin-bottom: 2rem;
-          margin: 0 0.25rem 2rem 0;
+          margin-block: 0 2rem;
+          margin-inline: 0 0.25rem;
         }
 
         hr {

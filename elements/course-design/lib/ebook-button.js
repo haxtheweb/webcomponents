@@ -86,6 +86,7 @@ export class EbookButton extends I18NMixin(LitElement) {
       ...this.t,
       reading: "Reading",
       ebook: "Ebook",
+      opensInNewTab: "Opens in a new tab",
     };
     this.registerLocalization({
       context: this,
@@ -109,16 +110,8 @@ export class EbookButton extends I18NMixin(LitElement) {
         .title {
           color: var(--link-color);
         }
-        .end {
-          flex: none;
-          color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-linkLight)
-          );
-          --simple-icon-height: var(--ddd-icon-4xs);
-          --simple-icon-width: var(--ddd-icon-4xs);
-        }
-        :host(:dir(rtl)) .end {
+        /* the forward arrow points along the reading direction */
+        :host(:dir(rtl)) .action.forward simple-icon-lite {
           transform: scaleX(-1);
         }
       `,
@@ -161,6 +154,21 @@ export class EbookButton extends I18NMixin(LitElement) {
       e.stopImmediatePropagation();
     }
   }
+  /**
+   * Where the link opens; the ebook always opens in a new tab
+   */
+  get target() {
+    return "_blank";
+  }
+  /**
+   * Trailing icon that says where a click goes: out to a new tab, or on
+   * to the linked page
+   */
+  get endIcon() {
+    return this.target === "_blank"
+      ? "icons:open-in-new"
+      : "icons:arrow-forward";
+  }
   render() {
     return html`
       <div id="button-wrapper">
@@ -169,7 +177,7 @@ export class EbookButton extends I18NMixin(LitElement) {
           class="link-row"
           property="oer:uri"
           href="${this.link}"
-          target="_blank"
+          target="${this.target}"
           rel="noopener noreferrer"
           @click="${this._clickLink}"
         >
@@ -183,11 +191,13 @@ export class EbookButton extends I18NMixin(LitElement) {
             <span class="eyebrow">${this.t.reading} · ${this.t.ebook}</span>
             <span class="title" property="oer:name">${this.title}</span>
           </span>
-          <simple-icon-lite
-            class="end"
-            icon="icons:chevron-right"
-            aria-hidden="true"
-          ></simple-icon-lite>
+          <span class="action ${this.target === "_blank" ? "" : "forward"}"
+            ><simple-icon-lite
+              icon="${this.endIcon}"
+              aria-hidden="true"
+            ></simple-icon-lite
+            ><span class="tip">${this.t.opensInNewTab}</span></span
+          >
         </a>
       </div>
     `;

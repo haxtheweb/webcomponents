@@ -303,6 +303,14 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
         :host([active]) .enter-icon {
           visibility: visible;
         }
+        /* phone: no keyboard expected, so no shortcut hints (same media as
+           KEYBOARD_SHORTCUTS_HIDDEN_MEDIA in @haxtheweb/utils keyboardShortcuts) */
+        @media (max-width: 599px), (pointer: coarse) and (max-height: 599px) {
+          .shortcut,
+          .enter-icon {
+            display: none;
+          }
+        }
         .more {
           flex: none;
           --simple-icon-width: var(--hax-ui-icon);
@@ -373,15 +381,21 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
   }
 
   selected() {
+    // a listener that cancels the selection takes over running the command
+    // (the HAXcms admin dialog asks to leave unsaved changes first)
+    if (
+      !this.dispatchEvent(
+        new CustomEvent("super-daemon-row-selected", {
+          composed: true,
+          bubbles: true,
+          cancelable: true,
+          detail: this,
+        }),
+      )
+    ) {
+      return;
+    }
     // execute the event
-    this.dispatchEvent(
-      new CustomEvent("super-daemon-row-selected", {
-        composed: true,
-        bubbles: true,
-        cancelable: true,
-        detail: this,
-      }),
-    );
     this.dispatchEvent(
       new CustomEvent(this.eventName, {
         composed: true,

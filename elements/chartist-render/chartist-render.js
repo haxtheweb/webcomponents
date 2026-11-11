@@ -871,7 +871,12 @@ const ChartistRenderSuper = function (SuperClass) {
         .map((node) => node.textContent)
         .join(" ")
         .trim();
-      return label || `${this.type} chart`;
+      if (label) return label;
+      // subclasses with translations (lrndesign-chart) supply
+      // this.t.<type>ChartLabel; plain chartist-render stays English
+      const t = this.t || {};
+      const key = `${this.type}ChartLabel`;
+      return typeof t[key] === "string" ? t[key] : `${this.type} chart`;
     }
 
     /**
@@ -1146,9 +1151,13 @@ const ChartistRenderSuper = function (SuperClass) {
      * @returns {object}
      */
     get observer() {
-      let callback = (mutationsList, observer) =>
-        this._updateData(mutationsList, observer);
-      return new MutationObserver(callback);
+      // one observer per instance, so disconnectedCallback stops the one that observes
+      if (!this.__observer) {
+        this.__observer = new MutationObserver((mutationsList, observer) =>
+          this._updateData(mutationsList, observer),
+        );
+      }
+      return this.__observer;
     }
 
     updated(changedProperties) {
@@ -1214,7 +1223,33 @@ const ChartistRenderSuper = function (SuperClass) {
       return this.chart;
     }
 
+    /**
+     * life cycle, element is (re)added to the DOM; the HAX editor moves
+     * blocks by removing and re-adding them, so restore what
+     * disconnectedCallback stopped
+     */
+    connectedCallback() {
+      super.connectedCallback();
+      if (this.windowControllers.signal.aborted) {
+        this.windowControllers = new AbortController();
+      }
+      this.observer.observe(this, {
+        attributes: false,
+        childList: true,
+        subtree: true,
+      });
+      // disconnectedCallback detached the chart; draw it again
+      if (this.hasUpdated && !this.chart) {
+        this._getChart();
+      }
+    }
+
     disconnectedCallback() {
+      // Chartist listens for window resize until its chart is detached
+      if (this.chart && this.chart.detach) {
+        this.chart.detach();
+      }
+      this.chart = null;
       this.windowControllers.abort();
       if (this.observer && this.observer.disconnect) this.observer.disconnect();
       super.disconnectedCallback();

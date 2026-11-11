@@ -135,12 +135,24 @@ function generateTitle(elementName) {
 const HAX_PROPERTIES_DEFINITION =
   /static\s+(get\s+)?haxProperties\b|(^|[^.\w])haxProperties\s*\(\s*\)\s*\{|(^|[^.\w])haxProperties\s*[:=](?!=)/m;
 
-function definesHaxProperties(content) {
+export function definesHaxProperties(content) {
   return HAX_PROPERTIES_DEFINITION.test(content);
 }
 
-function hasHaxSchema(content) {
+export function hasHaxSchema(content) {
   return definesHaxProperties(content) || content.includes("setHaxProperties");
+}
+
+/**
+ * Source without block comments and whole-line // comments, so a schema
+ * definition or setHaxProperties call that only appears in documentation
+ * (hax-store.js documents an 'instruction-card' example that way) does not
+ * register a tag.
+ */
+export function stripComments(content) {
+  return content
+    .replace(/\/\*[\s\S]*?\*\//g, "")
+    .replace(/^[ \t]*\/\/.*$/gm, "");
 }
 
 /**
@@ -184,7 +196,7 @@ function isValidCustomElementName(name) {
  * first primitive title found in its source, which is why it was registered
  * as "Basic Image".)
  */
-const EXCLUDED_ELEMENT_TAGS = new Set([
+export const EXCLUDED_ELEMENT_TAGS = new Set([
   // HAX editor internals, only exist inside the editing interface
   "hax-app-installer",
   "hax-autoloader",
@@ -205,6 +217,11 @@ const EXCLUDED_ELEMENT_TAGS = new Set([
   "lrndesign-pie",
   // branding element, not authorable content
   "hax-logo",
+  // haxProperties is an empty placeholder ({}) and they are not blocks
+  // authors place in content: simple-fields is the form system HAX editors
+  // are built from, beaker-broker a data broker with no visible output
+  "beaker-broker",
+  "simple-fields",
   // themes that should not be authorable
   "glossy-portfolio-about",
   "glossy-portfolio-breadcrumb",
@@ -402,7 +419,7 @@ async function discoverHaxElements() {
 
     for (const file of files) {
       try {
-        const content = fs.readFileSync(file, "utf8");
+        const content = stripComments(fs.readFileSync(file, "utf8"));
 
         // Check if this file contains HAX schema definitions
         if (hasHaxSchema(content)) {
@@ -459,14 +476,20 @@ async function discoverHaxElements() {
 
     // Write hax-elements-registry.json file
     const outputPath = "./hax-elements-registry.json";
-    fs.writeFileSync(outputPath, JSON.stringify(sortedElements, null, 2));
+    fs.writeFileSync(
+      outputPath,
+      JSON.stringify(sortedElements, null, 2) + "\n",
+    );
 
     console.log(`📄 HAX elements registry written to: ${outputPath}`);
 
     // Also write to dist for local development
     const distPath = "./dist/hax-elements-registry.json";
     try {
-      fs.writeFileSync(distPath, JSON.stringify(sortedElements, null, 2));
+      fs.writeFileSync(
+        distPath,
+        JSON.stringify(sortedElements, null, 2) + "\n",
+      );
       console.log(`📄 Registry also written to: ${distPath}`);
     } catch (error) {
       console.warn(`⚠️  Could not write to dist: ${error.message}`);
@@ -476,7 +499,10 @@ async function discoverHaxElements() {
     const haxcmsPath =
       "./elements/haxcms-elements/lib/hax-elements-registry.json";
     try {
-      fs.writeFileSync(haxcmsPath, JSON.stringify(sortedElements, null, 2));
+      fs.writeFileSync(
+        haxcmsPath,
+        JSON.stringify(sortedElements, null, 2) + "\n",
+      );
       console.log(`📄 Registry also written to: ${haxcmsPath}`);
     } catch (error) {
       console.warn(`⚠️  Could not write to haxcms-elements: ${error.message}`);

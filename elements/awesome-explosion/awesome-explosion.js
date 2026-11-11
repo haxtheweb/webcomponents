@@ -4,6 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 /**
  * `awesome-explosion`
  * `An awesome, explosion.`
@@ -12,7 +13,7 @@ import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
  * @demo demo/index.html
  * @element awesome-explosion
  */
-class AwesomeExplosion extends DDDSuper(LitElement) {
+class AwesomeExplosion extends I18NMixin(DDDSuper(LitElement)) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -120,6 +121,24 @@ class AwesomeExplosion extends DDDSuper(LitElement) {
   }
   constructor() {
     super();
+    this.t = {
+      ...this.t,
+      clickOrHoverToPlay: "Click or hover to play explosion sound",
+      soundDisabled: "Visual explosion effect (sound disabled)",
+      explosionAnimation: "explosion animation",
+      explosionAriaLabel:
+        "Explosion animation {state} {sound}. Click to toggle.",
+      playing: "playing",
+      stopped: "stopped",
+      withSound: "with sound",
+      muted: "(muted)",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath:
+        new URL("./locales/awesome-explosion.en.json", import.meta.url).href +
+        "/../",
+    });
     this.state = "stop";
     this.image = new URL("./assets/explode.gif", import.meta.url).href;
     this.sound = new URL(
@@ -163,11 +182,7 @@ class AwesomeExplosion extends DDDSuper(LitElement) {
         aria-label="${this._getAriaLabel()}"
       />
       <span class="visually-hidden">
-        ${
-          this.soundEnabled
-            ? "Click or hover to play explosion sound"
-            : "Visual explosion effect (sound disabled)"
-        }
+        ${this.soundEnabled ? this.t.clickOrHoverToPlay : this.t.soundDisabled}
       </span>
     `;
   }
@@ -427,16 +442,19 @@ class AwesomeExplosion extends DDDSuper(LitElement) {
   _getAltText() {
     const colorText = this.color ? ` ${this.color}` : "";
     const sizeText = this.size !== "medium" ? ` ${this.size}` : "";
-    return `${sizeText}${colorText} explosion animation`;
+    // size and color are attribute values (keywords), not translated
+    return `${sizeText}${colorText} ${this.t.explosionAnimation}`;
   }
 
   /**
    * Get appropriate ARIA label
    */
   _getAriaLabel() {
-    const stateText = this.playing ? "playing" : "stopped";
-    const soundText = this.soundEnabled ? " with sound" : " (muted)";
-    return `Explosion animation ${stateText}${soundText}. Click to toggle.`;
+    const stateText = this.playing ? this.t.playing : this.t.stopped;
+    const soundText = this.soundEnabled ? this.t.withSound : this.t.muted;
+    return this.t.explosionAriaLabel
+      .replace("{state}", () => stateText)
+      .replace("{sound}", () => soundText);
   }
 
   /**

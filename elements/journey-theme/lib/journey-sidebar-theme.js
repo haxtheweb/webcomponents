@@ -3,6 +3,10 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { css, html } from "lit";
+import {
+  DDDReadingSurface,
+  dddReadingProse,
+} from "@haxtheweb/d-d-d/lib/DDDReading.js";
 import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { I18NManagerStore } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
@@ -82,6 +86,7 @@ class JourneySidebarTheme extends HAXCMSLitElementTheme {
   HAXCMSGlobalStyleSheetContent() {
     return [
       ...super.HAXCMSGlobalStyleSheetContent(),
+      dddReadingProse("journey-sidebar-theme", "start"),
       css`
         :root {
           --journey-theme-bg-light: var(
@@ -144,7 +149,17 @@ class JourneySidebarTheme extends HAXCMSLitElementTheme {
 
   //styles function
   static get styles() {
-    return [super.styles, JourneySidebarThemeStyles];
+    return [
+      super.styles,
+      DDDReadingSurface,
+      css`
+        /* reading pass adjustments for this theme */
+        #slot {
+          padding-block-start: var(--ddd-spacing-6);
+        }
+      `,
+      JourneySidebarThemeStyles,
+    ];
   }
 
   render() {
@@ -157,7 +172,7 @@ class JourneySidebarTheme extends HAXCMSLitElementTheme {
         <site-active-title></site-active-title>
         <article>
           <!-- this block and names are required for HAX to edit the content of the page. contentcontainer, slot, and wrapping the slot. -->
-          <div id="contentcontainer" tabindex="-1">
+          <div id="contentcontainer" class="ddd-reading" tabindex="-1">
             <div id="slot"><slot></slot></div>
           </div>
         </article>
