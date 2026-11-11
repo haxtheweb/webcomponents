@@ -5613,7 +5613,7 @@
       "events": [],
       "menuOpen": false,
       "editing": null,
-      "active": null,
+      "active": "li.item indent-1     locked    @c2",
       "data": [
         {
           "id": "p1",
@@ -5768,7 +5768,7 @@
       "events": [],
       "menuOpen": false,
       "editing": null,
-      "active": null,
+      "active": "li.item indent-1         @c2",
       "data": [
         {
           "id": "p1",
@@ -6078,7 +6078,7 @@
       "events": [],
       "menuOpen": false,
       "editing": null,
-      "active": null,
+      "active": "li.item indent-1  modified       @c3",
       "data": [
         {
           "id": "p1",
@@ -6233,7 +6233,7 @@
       "events": [],
       "menuOpen": false,
       "editing": null,
-      "active": null,
+      "active": "li.item indent-1         @c3",
       "data": [
         {
           "id": "p1",
@@ -6388,7 +6388,7 @@
       "events": [],
       "menuOpen": false,
       "editing": null,
-      "active": null,
+      "active": "li.item indent-2  modified       @c3",
       "data": [
         {
           "id": "p1",
@@ -6543,7 +6543,7 @@
       "events": [],
       "menuOpen": false,
       "editing": null,
-      "active": null,
+      "active": "li.item indent-0  modified       @c3",
       "data": [
         {
           "id": "p1",
@@ -6698,7 +6698,7 @@
       "events": [],
       "menuOpen": false,
       "editing": "c3",
-      "active": null,
+      "active": "span.label-edit shown@c3",
       "data": [
         {
           "id": "p1",
@@ -6853,7 +6853,7 @@
       "events": [],
       "menuOpen": false,
       "editing": "new-0",
-      "active": null,
+      "active": "span.label-edit shown@new-0",
       "data": [
         {
           "id": "p1",
@@ -7021,7 +7021,7 @@
       "events": [],
       "menuOpen": false,
       "editing": "new-0",
-      "active": null,
+      "active": "span.label-edit shown@new-0",
       "data": [
         {
           "id": "p1",
@@ -7344,7 +7344,7 @@
       "events": [],
       "menuOpen": false,
       "editing": null,
-      "active": null,
+      "active": "li.item indent-1         @new-0",
       "data": [
         {
           "id": "p1",
@@ -7512,7 +7512,7 @@
       "events": ["outline-designer-request-navigate:child-last-empty"],
       "menuOpen": false,
       "editing": null,
-      "active": null,
+      "active": "li.item indent-1         @c3",
       "data": [
         {
           "id": "p1",
@@ -7667,7 +7667,7 @@
       "events": [],
       "menuOpen": false,
       "editing": null,
-      "active": null,
+      "active": "li.item indent-1     locked    @c3",
       "data": [
         {
           "id": "p1",
@@ -7822,7 +7822,7 @@
       "events": [],
       "menuOpen": false,
       "editing": null,
-      "active": null,
+      "active": "li.item indent-1         @c3",
       "data": [
         {
           "id": "p1",
@@ -7977,7 +7977,7 @@
       "events": [],
       "menuOpen": false,
       "editing": null,
-      "active": null,
+      "active": "li.item indent-0  modified       @p3",
       "data": [
         {
           "id": "p1",
@@ -8132,7 +8132,7 @@
       "events": [],
       "menuOpen": false,
       "editing": null,
-      "active": null,
+      "active": "li.item indent-0  modified       @p3",
       "data": [
         {
           "id": "p1",
@@ -8287,7 +8287,7 @@
       "events": [],
       "menuOpen": false,
       "editing": null,
-      "active": null,
+      "active": "li.item indent-1  modified       @p3",
       "data": [
         {
           "id": "p1",
@@ -8442,7 +8442,7 @@
       "events": [],
       "menuOpen": false,
       "editing": null,
-      "active": null,
+      "active": "li.item indent-0         @p3",
       "data": [
         {
           "id": "p1",
@@ -8597,7 +8597,7 @@
       "events": [],
       "menuOpen": false,
       "editing": "p3",
-      "active": null,
+      "active": "span.label-edit shown@p3",
       "data": [
         {
           "id": "p1",
@@ -8752,7 +8752,7 @@
       "events": [],
       "menuOpen": false,
       "editing": "new-0",
-      "active": null,
+      "active": "span.label-edit shown@new-0",
       "data": [
         {
           "id": "p1",
@@ -8920,7 +8920,7 @@
       "events": [],
       "menuOpen": false,
       "editing": null,
-      "active": null,
+      "active": "li.item indent-0         @p3",
       "data": [
         {
           "id": "p1",
@@ -9075,7 +9075,7 @@
       "events": [],
       "menuOpen": false,
       "editing": null,
-      "active": null,
+      "active": "li.item indent-0 content-open        @p3",
       "data": [
         {
           "id": "p1",
@@ -9230,7 +9230,7 @@
       "events": [],
       "menuOpen": false,
       "editing": null,
-      "active": null,
+      "active": "li.item indent-0         @new-0",
       "data": [
         {
           "id": "p1",
@@ -9398,7 +9398,7 @@
       "events": ["outline-designer-request-navigate:top-deleted"],
       "menuOpen": false,
       "editing": null,
-      "active": null,
+      "active": "li.item indent-0         @p3",
       "data": [
         {
           "id": "p1",
@@ -9553,7 +9553,7 @@
       "events": [],
       "menuOpen": false,
       "editing": null,
-      "active": null,
+      "active": "li.item indent-0     locked    @p3",
       "data": [
         {
           "id": "p1",
@@ -9708,7 +9708,7 @@
       "events": [],
       "menuOpen": false,
       "editing": null,
-      "active": null,
+      "active": "li.item indent-0         @p3",
       "data": [
         {
           "id": "p1",
@@ -11258,7 +11258,7 @@
       "events": [],
       "menuOpen": false,
       "editing": null,
-      "active": null,
+      "active": "li.item indent-0     locked    @p6",
       "data": [
         {
           "id": "p1",
@@ -11413,7 +11413,7 @@
       "events": [],
       "menuOpen": false,
       "editing": null,
-      "active": null,
+      "active": "li.item indent-0         @p6",
       "data": [
         {
           "id": "p1",

@@ -1,4 +1,4 @@
-import { fixture, expect, html } from "@open-wc/testing";
+import { fixture, expect, html, waitUntil } from "@open-wc/testing";
 import { writeFile } from "@web/test-runner-commands";
 import "../outline-designer.js";
 
@@ -178,10 +178,11 @@ function serialize(node) {
   return `<${tag}${attrs ? " " + attrs : ""}>${inner}</${tag}>`;
 }
 
-function menuSnapshot(element) {
+// each row's menu as it is once opened (entries are rendered on open)
+async function menuSnapshot(element) {
   const out = {};
-  element.shadowRoot.querySelectorAll("li[data-item-id]").forEach((li) => {
-    const menu = li.querySelector(".actions-menu");
+  for (const li of element.shadowRoot.querySelectorAll("li[data-item-id]")) {
+    const menu = await element._menuReady(li);
     const attrs = [...menu.attributes]
       .map((a) => `${a.name}="${a.value}"`)
       .sort()
@@ -190,7 +191,7 @@ function menuSnapshot(element) {
       menu: attrs,
       items: [...menu.children].map(serialize),
     };
-  });
+  }
   return out;
 }
 
@@ -277,7 +278,10 @@ async function captureActions() {
       };
       const li = element.shadowRoot.querySelector(`li[data-item-id="${id}"]`);
       li.querySelector(".actions-menu-button").click();
-      await element.updateComplete;
+      await waitUntil(
+        () => li.querySelector(".actions-menu").open,
+        "menu opens",
+      );
       const btn = li.querySelector(
         `.actions-menu simple-toolbar-button[value="${action}"]`,
       );
@@ -314,6 +318,12 @@ async function captureActions() {
         data,
       };
       element.dispatchEvent = dispatch;
+      // one outline per action: a menu left open (a disabled entry was
+      // pressed) is modal and would make the next outline inert
+      element.shadowRoot.querySelectorAll(".actions-menu").forEach((m) => {
+        if (m.open) m.close();
+      });
+      element.remove();
     }
   }
   return results;
@@ -332,8 +342,8 @@ describe("outline-designer page actions menu snapshot", function () {
     // round-trip through JSON so undefined fields compare like the fixture
     const current = JSON.parse(
       JSON.stringify({
-        menus: menuSnapshot(await build(false)),
-        menusHideContentOps: menuSnapshot(await build(true)),
+        menus: await menuSnapshot(await build(false)),
+        menusHideContentOps: await menuSnapshot(await build(true)),
         actions: await captureActions(),
       }),
     );
