@@ -263,6 +263,31 @@ describe("HaxUiAdminStyles: the one HAX UI admin layer", () => {
     expect(thumb.backgroundColor).to.equal("rgb(255, 255, 255)");
   });
 
+  it("a toolbar field's open list keeps readable text in dark mode", async () => {
+    // the browser draws the list; an unset option took the dark-scheme
+    // text color (white) over a light list, white on white
+    el.style.colorScheme = "dark";
+    await aTimeout(0);
+    const option = box("tool").querySelector("option");
+    const o = globalThis.getComputedStyle(option);
+    // --hax-ui-text over --hax-ui-surface: white on coalyGray #262626
+    expect(o.color).to.equal("rgb(255, 255, 255)");
+    expect(o.backgroundColor).to.equal("rgb(38, 38, 38)");
+    const select = globalThis.getComputedStyle(
+      box("tool").querySelector("select"),
+    );
+    expect(select.backgroundColor).to.equal("rgb(38, 38, 38)");
+  });
+
+  it("a simple-fields select draws its options on the HAX UI surface", () => {
+    const sf = style("sf");
+    expect(
+      sf
+        .getPropertyValue("--simple-fields-select-option-background-color")
+        .trim(),
+    ).to.equal(sf.getPropertyValue("--hax-ui-surface").trim());
+  });
+
   it("a simple-fields field stacks its description under the control", () => {
     expect(style("sf").flexDirection).to.equal("column");
     expect(style("sf").minHeight).to.equal("40px");

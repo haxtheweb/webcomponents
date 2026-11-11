@@ -455,7 +455,7 @@ ${loader.styles}
     // the title bar gets the dark chrome every HAX admin top bar wears.
     import { DDDVariables, DDDGlobalStyles, DDDReset, DDDDataAttributes } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
     import { HaxUiAdminTokens, HaxUiAdminPrimitives, HaxUiDarkChromeDeclarations } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
-    import { HaxUiAdminControls } from "@haxtheweb/d-d-d/lib/HaxUiAdminControls.js";
+    import { HaxUiAdminControls, HaxUiAdminSimpleFields } from "@haxtheweb/d-d-d/lib/HaxUiAdminControls.js";
 
     const toPage = (sheets) => sheets.map((s) => s.cssText.split(':host').join(':root, .hax-ui-dark-chrome')).join('\\n');
     const dddStyles = document.createElement('style');
@@ -469,6 +469,7 @@ ${loader.styles}
       '.hax-ui-dark-chrome {' + HaxUiDarkChromeDeclarations.cssText + '}',
       toPage(HaxUiAdminPrimitives),
       toPage(HaxUiAdminControls),
+      toPage(HaxUiAdminSimpleFields),
     ].join('\\n');
     // before the gallery's own styles, so its rules win ties
     document.head.insertBefore(dddStyles, document.getElementById('gallery-styles'));
@@ -476,6 +477,9 @@ ${loader.styles}
     globalThis.dispatchEvent(new CustomEvent('gallery-styled'));
   </script>
   <script type="module" src="./elements/documentation-player/documentation-player.js"></script>
+  <!-- dogfood: the gallery's form controls are the same elements the HAX
+       admin screens use, so their light/dark handling is the shared one -->
+  <script type="module" src="./elements/simple-fields/lib/simple-fields-field.js"></script>
   <style id="gallery-styles">
     /* Gallery styles: the HAX UI admin layer (the --hax-ui-* tokens and
        .hax-ui-* controls from d-d-d), so the gallery reads like the rest of
@@ -781,12 +785,25 @@ ${loader.styles}
       box-shadow: inset 0 -3px 0 var(--hax-ui-accent-strong);
     }
 
+    /* demo picker: a simple-fields-field select in the shared HAX UI
+       field style (hax-ui-simple-field compact), as in outline-designer.
+       The field names its select itself (a label for= cannot reach into
+       its shadow root); the visible word stays beside it. */
+    .demo-selector-container {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--hax-ui-gap-md);
+      font-size: var(--hax-ui-admin-font-size-xs);
+      color: var(--hax-ui-text-muted);
+    }
+    .demo-selector-container.hidden {
+      display: none;
+    }
     .demo-selector {
-      all: unset;
-      cursor: pointer;
-      max-width: 16rem;
-      font-size: 13px;
-      color: var(--hax-ui-text);
+      width: 10rem;
+    }
+    .demo-selector::part(label) {
+      display: none;
     }
 
     .demo-actions {
@@ -1122,10 +1139,10 @@ ${
               <button class="view-tab" role="tab" id="tabDemo" data-view="demo" aria-selected="true">Live demo</button>
               <button class="view-tab" role="tab" id="tabDocs" data-view="docs" aria-selected="false">Documentation</button>
             </div>
-            <label class="hax-ui-tool-field demo-selector-container hidden" id="demoSelectorContainer">
-              Demo
-              <select class="demo-selector" id="demoSelector"></select>
-            </label>
+            <div class="demo-selector-container hidden" id="demoSelectorContainer">
+              <span aria-hidden="true">Demo</span>
+              <simple-fields-field class="hax-ui-simple-field compact demo-selector" id="demoSelector" type="select" label="Demo"></simple-fields-field>
+            </div>
           </div>
           <div class="demo-actions">
             <a class="hax-ui-btn" id="newTabBtn" href="#" target="_blank" rel="noopener">Open in new tab</a>
@@ -1306,22 +1323,14 @@ ${
 
       if (demos.length <= 1) {
         demoSelectorContainer.classList.add('hidden');
-        demoSelector.innerHTML = '';
+        demoSelector.itemsList = [];
         return;
       }
 
       demoSelectorContainer.classList.remove('hidden');
-      demoSelector.innerHTML = '';
-
-      for (let i = 0; i < demos.length; i++) {
-        const option = document.createElement('option');
-        option.value = demos[i].value;
-        option.textContent = demos[i].label;
-        if (i === 0) {
-          option.selected = true;
-        }
-        demoSelector.appendChild(option);
-      }
+      // simple-fields-field draws the options; the main demo is first
+      demoSelector.itemsList = demos.map(d => ({ text: d.label, value: d.value }));
+      demoSelector.value = demos[0].value;
     }
 
     // Render component list
@@ -1433,11 +1442,17 @@ ${
     });
     
     if (demoSelector) {
-      demoSelector.addEventListener('change', function () {
+      // value-changed also fires when the gallery sets the value itself, so
+      // only a pick that differs from the loaded demo loads a new one
+      demoSelector.addEventListener('value-changed', function () {
         if (!currentComponent) {
           return;
         }
-        currentDemoPath = demoSelector.value || currentComponent.demoPath;
+        const picked = demoSelector.value || currentComponent.demoPath;
+        if (picked === currentDemoPath) {
+          return;
+        }
+        currentDemoPath = picked;
         loadDemo(currentDemoPath);
         updateUrlForCurrentDemo();
       });
@@ -1567,8 +1582,9 @@ ${
       if (!component) {
         return;
       }
-      selectComponent(component);
+      // read ?demo= first: selecting the component rewrites the URL
       const demoName = getQueryParam('demo');
+      selectComponent(component);
       if (demoName && demoName !== 'index') {
         let match = null;
         if (component.additionalDemos && component.additionalDemos.length > 0) {
@@ -1581,7 +1597,7 @@ ${
         }
         if (match) {
           currentDemoPath = match.path;
-          if (demoSelector && demoSelector.options.length > 0) {
+          if (demoSelector) {
             demoSelector.value = match.path;
           }
           loadDemo(currentDemoPath);
