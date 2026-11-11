@@ -17,29 +17,6 @@
         "bootstrap-theme >> bootstrap-breadcrumb >> .active > span": 1
       }
     },
-    "chamfer-theme": {
-      "light": {
-        "chamfer-theme >> #sitemenu >> map-menu >> #item-NbNcNdNe-N-NbNb-NbNb-chamferhomeN >> .title": 1
-      }
-    },
-    "example-hax-element": {
-      "light": {
-        "example-hax-element[data-accent=\"N\"] > div": 1
-      },
-      "dark": {
-        "example-hax-element[data-accent=\"N\"] > div": 1
-      }
-    },
-    "future-terminal-text": {
-      "dark": {
-        "div > future-terminal-text[glitch-duration=\"N\"][glitch=\"\"] >> span": 4,
-        "div > future-terminal-text[glitch-duration=\"N\"][glitch=\"\"][fadein=\"\"] >> span": 5,
-        "div > future-terminal-text[glitch=\"\"] >> span": 3,
-        "div > future-terminal-text[glitch=\"\"][fadein=\"\"] >> span": 1,
-        "div > future-terminal-text[red=\"\"][fadein=\"\"] >> span": 13,
-        "future-terminal-text-lite >> span[part=\"text\"]": 2
-      }
-    },
     "haxcms-elements": {
       "light": {
         "training-theme >> training-button[index=\"N\"] >> #title": 6,
