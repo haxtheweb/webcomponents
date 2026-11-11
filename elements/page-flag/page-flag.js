@@ -129,10 +129,8 @@ class PageFlag extends SimpleColors {
             var(--ddd-theme-default-coalyGray, #262626)
           );
           font-size: var(--ddd-font-size-6xs, 12px);
-          /* narrows (and loses its offset) on small screens instead of
-             running off the page */
-          width: min(300px, calc(100vw - 32px));
-          margin-inline-start: clamp(0px, calc(100vw - 480px), 160px);
+          width: 300px;
+          margin-inline-start: 160px;
           padding-top: 8px;
         }
       `,
