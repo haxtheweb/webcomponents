@@ -62,6 +62,12 @@ class SiteRenderQuery extends LitElement {
     `;
   }
   resultEvent(e) {
+    // site-query also reports the result this element passed down to it;
+    // copying that one back made a new array, which went back down, which
+    // was reported again: an endless update loop that froze the page
+    if (e.detail.value === this.result) {
+      return;
+    }
     this.result = [...e.detail.value];
   }
   /**
