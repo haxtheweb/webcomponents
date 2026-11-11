@@ -50,7 +50,10 @@ class MdBlock extends DDD {
 
         /* user-visible fallback when a remote source fails to load */
         .source-error {
-          color: var(--ddd-theme-default-error, #b1040e);
+          color: light-dark(
+            var(--ddd-theme-default-error, #b1040e),
+            var(--ddd-theme-default-errorLight)
+          );
           font-size: var(--ddd-font-size-xs, 0.8rem);
         }
       `,

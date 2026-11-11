@@ -3,6 +3,19 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <!-- the page follows the visitor's color scheme with a DDD surface, as a
+         DDD site does, so the demo shows the element on the page it gets -->
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+      body {
+        background-color: light-dark(
+          var(--ddd-theme-default-white),
+          var(--ddd-theme-default-potentialMidnight)
+        );
+      }
+    </style>
     <title>MatchingQuestion: matching-question Demo</title>
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
     

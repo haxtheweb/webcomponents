@@ -20,7 +20,19 @@ class FutureTerminalText extends SimpleColorsSuper(FutureTerminalTextLite) {
     return [
       super.styles,
       css`
+        /* the accent's dark shade on light pages, its light shade on dark
+           pages; with the dark attribute SimpleColors already flips the
+           shades, so it keeps accent-9 */
         span {
+          color: var(
+            --future-terminal-text-color,
+            light-dark(
+              var(--simple-colors-default-theme-accent-9),
+              var(--simple-colors-default-theme-accent-3)
+            )
+          );
+        }
+        :host([dark]:not([red])) span {
           color: var(
             --future-terminal-text-color,
             var(--simple-colors-default-theme-accent-9, inherit)
