@@ -39,6 +39,7 @@ class QRCodeElement extends HTMLElement {
       format: "png",
       modulesize: 5,
       margin: 4,
+      alt: null,
     };
   }
   static get observedAttributes() {
@@ -90,31 +91,60 @@ class QRCodeElement extends HTMLElement {
       } else {
         this.shadowRoot.innerHTML =
           "<div>qr-code: " + this.format + " not supported!</div>";
+        this._error("format");
       }
     } else {
       this.shadowRoot.innerHTML = "<div>qr-code: no data!</div>";
+      this._error("data");
     }
+  }
+  /**
+   * Tell a wrapper (q-r) why no code was drawn, so it can say so in the
+   * reader's language: "data", "format" or "canvas".
+   */
+  _error(reason) {
+    this.dispatchEvent(
+      new CustomEvent("qr-code-error", { detail: { reason: reason } }),
+    );
+  }
+  /**
+   * Accessible name of the code: the alt attribute, else the data
+   */
+  get label() {
+    return this.alt ? this.alt : "QR code for " + this.data;
   }
   generatePNG() {
     try {
       let img = globalThis.document.createElement("img");
       img.src = globalThis.QRCode.generatePNG(this.data, this.getOptions());
-      img.alt = "QR code for " + this.data;
+      img.alt = this.label;
+      img.setAttribute("part", "code");
       this.clear();
       this.shadowRoot.appendChild(img);
     } catch {
       this.shadowRoot.innerHTML = "<div>qr-code: no canvas support!</div>";
+      this._error("canvas");
     }
   }
   generateHTML() {
     let div = globalThis.QRCode.generateHTML(this.data, this.getOptions());
+    this._label(div);
     this.clear();
     this.shadowRoot.appendChild(div);
   }
   generateSVG() {
     let div = globalThis.QRCode.generateSVG(this.data, this.getOptions());
+    this._label(div);
     this.clear();
     this.shadowRoot.appendChild(div);
+  }
+  // name the generated svg / html code like the png's alt
+  _label(node) {
+    if (node && node.setAttribute) {
+      node.setAttribute("role", "img");
+      node.setAttribute("aria-label", this.label);
+      node.setAttribute("part", "code");
+    }
   }
   clear() {
     while (this.shadowRoot.lastChild) {

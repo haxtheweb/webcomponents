@@ -693,7 +693,7 @@ class PolarisInventTheme extends LTIResizingMixin(
                   part="print-btn"
                 ></replace-tag>`
           }
-          ${this.QRCodeButton("right")}
+          ${this.QRCodeButton("right", "below")}
           <div
             class="left-col ddd-font-navigation"
             part="left-col"

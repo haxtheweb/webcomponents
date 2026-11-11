@@ -193,3 +193,127 @@ describe("page-section scroller and fold", () => {
     await expect(el).shadowDom.to.be.accessible();
   });
 });
+
+describe("page-section round 10 fixes", () => {
+  it("never writes url(null) without an image", async () => {
+    const el = await fixture(
+      html`<page-section bg="#123456" filter></page-section>`,
+    );
+    await el.updateComplete;
+    const style = el.shadowRoot
+      .querySelector("section.section")
+      .getAttribute("style");
+    expect(style).to.not.include("url(");
+    expect(style).to.include("background-color: #123456");
+  });
+
+  it("maps SimpleColors names to the DDD accent map and keeps hex", async () => {
+    const el = await fixture(html`<page-section bg="blue"></page-section>`);
+    await el.updateComplete;
+    const style = () =>
+      el.shadowRoot.querySelector("section.section").getAttribute("style");
+    expect(style()).to.include("var(--ddd-theme-default-beaverBlue)");
+    el.bg = "light-blue";
+    await el.updateComplete;
+    expect(style()).to.include("var(--ddd-theme-default-skyBlue)");
+    el.bg = "#0000ff";
+    await el.updateComplete;
+    expect(style()).to.include("background-color: #0000ff");
+    el.bg = "rgb(1, 2, 3)";
+    await el.updateComplete;
+    expect(style()).to.include("background-color: rgb(1, 2, 3)");
+    // the property keeps what the author set
+    expect(el.bg).to.equal("rgb(1, 2, 3)");
+  });
+
+  it("shows preset backgrounds through their light / dark pair", async () => {
+    const el = await fixture(
+      html`<page-section preset="lines"></page-section>`,
+    );
+    await el.updateComplete;
+    const style = el.shadowRoot
+      .querySelector("section.section")
+      .getAttribute("style");
+    expect(style).to.include("var(--page-section-preset-bg");
+    expect(
+      getComputedStyle(el).getPropertyValue("--page-section-preset-bg").trim(),
+    ).to.not.equal("");
+  });
+
+  it("gives the author's bg and image back when the preset becomes custom", async () => {
+    const el = await fixture(
+      html`<page-section
+        bg="#ff0000"
+        image="https://example.com/a.jpg"
+      ></page-section>`,
+    );
+    await el.updateComplete;
+    el.preset = "antihero";
+    await el.updateComplete;
+    expect(el.bg).to.equal("var(--ddd-theme-default-limestoneLight)");
+    expect(el.image.endsWith("/lib/assets/geo-bkg.png")).to.equal(true);
+    el.preset = "custom";
+    await el.updateComplete;
+    expect(el.bg).to.equal("#ff0000");
+    expect(el.image).to.equal("https://example.com/a.jpg");
+  });
+
+  it("leaves authored values alone under the custom preset", async () => {
+    const el = await fixture(
+      html`<page-section preset="custom" bg="#00ff00"></page-section>`,
+    );
+    await el.updateComplete;
+    expect(el.bg).to.equal("#00ff00");
+    expect(el.image).to.equal(null);
+    // the video preset's play / pause stop once another preset is chosen
+    el.preset = "video";
+    await el.updateComplete;
+    el.preset = "custom";
+    await el.updateComplete;
+    expect(el.bg).to.equal("#00ff00");
+    el.dispatchEvent(new Event("play"));
+    expect(el.bg).to.equal("#00ff00");
+  });
+
+  it("lists the lines preset in the HAX settings", async () => {
+    const el = await fixture(html`<page-section></page-section>`);
+    const res = await fetch(el.constructor.haxProperties);
+    const props = await res.json();
+    const preset = props.settings.configure.find(
+      (p) => p.property === "preset",
+    );
+    const lines = preset.itemsList.find((i) => i.value === "lines");
+    expect(lines.text).to.equal("Lines");
+  });
+
+  it("translates the scroller label default, authored labels win", async () => {
+    const el = await fixture(html`<page-section scroller></page-section>`);
+    expect(el.scrollerLabel).to.equal(el.t.scrollerLabel);
+    const el2 = await fixture(
+      html`<page-section scroller scroller-label="Next"></page-section>`,
+    );
+    el2.t = { ...el2.t, scrollerLabel: "Desplazarse" };
+    await el2.updateComplete;
+    expect(el2.scrollerLabel).to.equal("Next");
+    el.t = { ...el.t, scrollerLabel: "Desplazarse" };
+    await el.updateComplete;
+    expect(el.scrollerLabel).to.equal("Desplazarse");
+  });
+
+  it("draws the fold as a decorative wedge in the page colour", async () => {
+    const el = await fixture(html`<page-section fold></page-section>`);
+    await el.updateComplete;
+    const fold = el.shadowRoot.querySelector("svg.fold");
+    expect(fold.getAttribute("aria-hidden")).to.equal("true");
+    expect(
+      getComputedStyle(el).getPropertyValue("--page-section-fold-color").trim(),
+    ).to.not.equal("");
+  });
+
+  it("bounces the scroller a few times, not forever", async () => {
+    const el = await fixture(html`<page-section scroller></page-section>`);
+    await el.updateComplete;
+    const s = getComputedStyle(el.shadowRoot.querySelector("#scroller"));
+    expect(s.animationIterationCount).to.not.equal("infinite");
+  });
+});

@@ -36,7 +36,7 @@
       "name": "scroller-label",
       "property": "scrollerLabel",
       "type": "string",
-      "default": "\"Scroll to reveal content\"",
+      "default": "",
       "description": "",
       "hax": null
     },
@@ -176,6 +176,10 @@
               "text": "Anti-hero: Light"
             },
             {
+              "value": "lines",
+              "text": "Lines"
+            },
+            {
               "value": "video",
               "text": "Video"
             }
@@ -273,7 +277,7 @@
       }
     ]
   },
-  "surfaceHash": "9029dce3b694",
+  "surfaceHash": "9f5134dbdd06",
   "walkthroughs": [
     {
       "id": "",
@@ -281,13 +285,13 @@
       "order": 0,
       "src": "page-section.motion.json",
       "file": "lib/page-section.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/page-section.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {
