@@ -41,6 +41,11 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
     this.t.noPage = "No page selected";
     this.t.shuffle = "Shuffle content";
     this.t.loading = "Loading content...";
+    // own namespace (locales/{tag}.*.json) on top of the shared haxcms one
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../../locales/", import.meta.url).href,
+    });
 
     this.__disposer = this.__disposer ? this.__disposer : [];
 
