@@ -28,6 +28,8 @@
     ],
     "attributes": [],
     "slots": [],
-    "demoTags": []
+    "demoTags": [
+      "cms-entity"
+    ]
   }
 }

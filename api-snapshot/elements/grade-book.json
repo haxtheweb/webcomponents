@@ -47,6 +47,8 @@
     ],
     "attributes": [],
     "slots": [],
-    "demoTags": []
+    "demoTags": [
+      "grade-book"
+    ]
   }
 }
