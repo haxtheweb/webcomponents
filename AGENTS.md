@@ -102,6 +102,7 @@ Before starting any work, check the unified issue queue:
   - Prefer functional programming patterns
   - Use Prettier for consistent formatting
 - **ES Modules**: Use standard ES6 import/export syntax
+- **License header**: every new `.js` source file under `elements/<name>/` starts with the Apache-2.0 header `hax webcomponent` writes (`Copyright <year> <holder>` and `@license Apache-2.0, see License.md for full text.` in a leading `/** */` block). The `license-check` workflow and `yarn precheck` fail a PR that adds a file without it; tests, demos, generated and vendored files are exempt. See CONTRIBUTING.md, "License header on new files".
 - **Modern JavaScript**: Leverage ES2018+ features while maintaining browser compatibility
 - **CSS template literals**: Never write a backtick (`` ` ``) character inside a `css` comment block (or anywhere else in a LitElement `css\`...\`` tagged template), including in prose like "don't" or "it's". A stray backtick terminates the template literal early and breaks the build/parse.
 

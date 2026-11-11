@@ -121,6 +121,13 @@ const CONFIG = {
       label: "Color vision action pairs",
       args: ["scripts/vision-pairs-check.mjs", "--strict", "--quiet"],
     },
+    {
+      // .js source files this branch adds under elements/<name>/ start with
+      // the Apache-2.0 header `hax webcomponent` writes; existing files are
+      // never checked. Also run by the license-check workflow on PRs.
+      label: "License header on new element files",
+      args: ["scripts/license-header-check.mjs"],
+    },
   ],
 };
 
