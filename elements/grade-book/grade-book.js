@@ -854,6 +854,13 @@ class GradeBook extends UIRenderPieces(
           },
         ],
       },
+      demoSchema: [
+        {
+          tag: "grade-book",
+          properties: {},
+          content: "",
+        },
+      ],
     };
   }
 }

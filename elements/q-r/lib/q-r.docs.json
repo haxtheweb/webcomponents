@@ -21,7 +21,7 @@
   "import": "@haxtheweb/q-r/q-r.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/q-r/q-r.js",
   "install": "npm i @haxtheweb/q-r",
-  "demoHtml": "",
+  "demoHtml": "<q-r></q-r>",
   "attributes": [
     {
       "name": "data",
@@ -176,9 +176,16 @@
           "icon": "editor:bubble-chart"
         }
       ]
-    }
+    },
+    "demoSchema": [
+      {
+        "tag": "q-r",
+        "properties": {},
+        "content": ""
+      }
+    ]
   },
-  "surfaceHash": "91f29139406c",
+  "surfaceHash": "5fb2eef78d14",
   "walkthroughs": [
     {
       "id": "",

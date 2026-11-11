@@ -21,7 +21,7 @@
   "import": "@haxtheweb/aframe-player/aframe-player.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/aframe-player/aframe-player.js",
   "install": "npm i @haxtheweb/aframe-player",
-  "demoHtml": "",
+  "demoHtml": "<aframe-player></aframe-player>",
   "attributes": [
     {
       "name": "source",
@@ -195,9 +195,16 @@
         }
       ],
       "advanced": []
-    }
+    },
+    "demoSchema": [
+      {
+        "tag": "aframe-player",
+        "properties": {},
+        "content": ""
+      }
+    ]
   },
-  "surfaceHash": "0194e5d761f9",
+  "surfaceHash": "4c5894885402",
   "walkthroughs": [
     {
       "id": "",

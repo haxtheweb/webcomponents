@@ -20,7 +20,7 @@
   "import": "@haxtheweb/user-action/user-action.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/user-action/user-action.js",
   "install": "npm i @haxtheweb/user-action",
-  "demoHtml": "",
+  "demoHtml": "<user-action></user-action>",
   "attributes": [
     {
       "name": "track",
@@ -114,9 +114,16 @@
         }
       ],
       "advanced": []
-    }
+    },
+    "demoSchema": [
+      {
+        "tag": "user-action",
+        "properties": {},
+        "content": ""
+      }
+    ]
   },
-  "surfaceHash": "e919d389a60a",
+  "surfaceHash": "6ade127d3c55",
   "walkthroughs": [],
   "videos": [],
   "motion": {

@@ -168,6 +168,13 @@ class A11yTab extends I18NMixin(LitElement) {
           },
         ],
       },
+      demoSchema: [
+        {
+          tag: "a11y-tab",
+          properties: {},
+          content: "",
+        },
+      ],
     };
   }
   // properties available to the custom element for data binding

@@ -386,6 +386,13 @@ export class CareerRoleItem extends I18NMixin(DDDSuper(LitElement)) {
         advanced: [],
         developer: [],
       },
+      demoSchema: [
+        {
+          tag: "career-role-item",
+          properties: {},
+          content: "",
+        },
+      ],
     };
   }
 }

@@ -296,6 +296,13 @@ export class CareerOrgItem extends I18NMixin(DDDSuper(LitElement)) {
         advanced: [],
         developer: [],
       },
+      demoSchema: [
+        {
+          tag: "career-org-item",
+          properties: {},
+          content: "",
+        },
+      ],
     };
   }
 }

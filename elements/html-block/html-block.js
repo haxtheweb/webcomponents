@@ -58,6 +58,13 @@ class HtmlBlock extends HTMLElement {
         ],
         advanced: [],
       },
+      demoSchema: [
+        {
+          tag: "html-block",
+          properties: {},
+          content: "",
+        },
+      ],
     };
   }
 

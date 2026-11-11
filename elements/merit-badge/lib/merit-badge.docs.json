@@ -17,7 +17,7 @@
   "import": "@haxtheweb/merit-badge/merit-badge.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/merit-badge/merit-badge.js",
   "install": "npm i @haxtheweb/merit-badge",
-  "demoHtml": "",
+  "demoHtml": "<merit-badge></merit-badge>",
   "attributes": [
     {
       "name": "typeof",
@@ -204,9 +204,16 @@
         }
       ],
       "advanced": []
-    }
+    },
+    "demoSchema": [
+      {
+        "tag": "merit-badge",
+        "properties": {},
+        "content": ""
+      }
+    ]
   },
-  "surfaceHash": "dcaa59af3684",
+  "surfaceHash": "11081bb9e557",
   "walkthroughs": [
     {
       "id": "",

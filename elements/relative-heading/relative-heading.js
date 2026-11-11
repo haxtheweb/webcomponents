@@ -201,6 +201,13 @@ class RelativeHeading extends I18NMixin(RelativeHeadingLite) {
           },
         ],
       },
+      demoSchema: [
+        {
+          tag: "relative-heading",
+          properties: {},
+          content: "",
+        },
+      ],
     };
   }
   // properties available to the custom element for data binding

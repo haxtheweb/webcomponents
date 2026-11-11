@@ -161,13 +161,13 @@
       "order": 0,
       "src": "media-playlist.motion.json",
       "file": "lib/media-playlist.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/media-playlist.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

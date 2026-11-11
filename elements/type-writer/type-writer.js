@@ -165,6 +165,13 @@ class TypeWriter extends IntersectionObserverMixin(LitElement) {
       saveOptions: {
         unsetAttributes: ["element-visible"],
       },
+      demoSchema: [
+        {
+          tag: "type-writer",
+          properties: {},
+          content: "",
+        },
+      ],
     };
   }
   // properties available to the custom element for data binding

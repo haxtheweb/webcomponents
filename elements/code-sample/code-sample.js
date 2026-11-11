@@ -309,7 +309,7 @@ class CodeSample extends I18NMixin(LitElement) {
         advanced: [],
       },
       saveOptions: {
-        unsetAttributes: ["theme", "editMode", "_haxstate", "t"],
+        unsetAttributes: ["theme", "edit-mode", "_haxstate", "t"],
       },
       demoSchema: [
         {

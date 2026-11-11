@@ -18,7 +18,7 @@
   "import": "@haxtheweb/grade-book/grade-book.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/grade-book/grade-book.js",
   "install": "npm i @haxtheweb/grade-book",
-  "demoHtml": "",
+  "demoHtml": "<grade-book></grade-book>",
   "attributes": [
     {
       "name": "displayMode",
@@ -235,9 +235,16 @@
           "inputMethod": "textfield"
         }
       ]
-    }
+    },
+    "demoSchema": [
+      {
+        "tag": "grade-book",
+        "properties": {},
+        "content": ""
+      }
+    ]
   },
-  "surfaceHash": "ff4fe7c634e8",
+  "surfaceHash": "a3c9946ef462",
   "walkthroughs": [
     {
       "id": "",

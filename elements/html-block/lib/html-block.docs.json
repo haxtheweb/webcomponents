@@ -16,7 +16,7 @@
   "import": "@haxtheweb/html-block/html-block.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/html-block/html-block.js",
   "install": "npm i @haxtheweb/html-block",
-  "demoHtml": "",
+  "demoHtml": "<html-block></html-block>",
   "attributes": [
     {
       "name": "allowscript",
@@ -68,9 +68,16 @@
         }
       ],
       "advanced": []
-    }
+    },
+    "demoSchema": [
+      {
+        "tag": "html-block",
+        "properties": {},
+        "content": ""
+      }
+    ]
   },
-  "surfaceHash": "2875b08fca5a",
+  "surfaceHash": "d5af77c256cb",
   "walkthroughs": [
     {
       "id": "",

@@ -452,13 +452,7 @@ export class SiteView extends I18NMixin(DDD) {
         ],
       },
       saveOptions: {
-        unsetAttributes: [
-          "editMode",
-          "edit-mode",
-          "loading",
-          "error",
-          "results",
-        ],
+        unsetAttributes: ["edit-mode", "loading", "error", "results"],
       },
       demoSchema: [
         {

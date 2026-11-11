@@ -146,6 +146,13 @@ class CMSEntity extends CMSBase {
           "entity-end-point",
         ],
       },
+      demoSchema: [
+        {
+          tag: "cms-entity",
+          properties: {},
+          content: "",
+        },
+      ],
     };
   }
   postProcessgetHaxJSONSchema(schema) {

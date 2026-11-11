@@ -159,7 +159,7 @@
     "saveOptions": {
       "unsetAttributes": [
         "theme",
-        "editMode",
+        "edit-mode",
         "_haxstate",
         "t"
       ]

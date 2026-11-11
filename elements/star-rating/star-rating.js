@@ -77,6 +77,13 @@ class StarRating extends I18NMixin(SchemaBehaviors(SimpleColors)) {
           },
         ],
       },
+      demoSchema: [
+        {
+          tag: "star-rating",
+          properties: {},
+          content: "",
+        },
+      ],
     };
   }
 

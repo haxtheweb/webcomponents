@@ -19,7 +19,7 @@
   "import": "@haxtheweb/lrn-math/lrn-math.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/lrn-math/lrn-math.js",
   "install": "npm i @haxtheweb/lrn-math",
-  "demoHtml": "",
+  "demoHtml": "<lrn-math></lrn-math>",
   "attributes": [],
   "slots": [],
   "events": [],
@@ -66,9 +66,16 @@
         }
       ],
       "advanced": []
-    }
+    },
+    "demoSchema": [
+      {
+        "tag": "lrn-math",
+        "properties": {},
+        "content": ""
+      }
+    ]
   },
-  "surfaceHash": "f63465c9b6a0",
+  "surfaceHash": "c9524417b74b",
   "walkthroughs": [
     {
       "id": "",

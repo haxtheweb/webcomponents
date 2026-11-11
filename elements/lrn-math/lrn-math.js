@@ -376,6 +376,13 @@ class LrnMath extends HTMLElement {
         ],
         advanced: [],
       },
+      demoSchema: [
+        {
+          tag: "lrn-math",
+          properties: {},
+          content: "",
+        },
+      ],
     };
   }
 }

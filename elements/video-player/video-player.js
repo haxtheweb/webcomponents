@@ -629,7 +629,7 @@ class VideoPlayer extends IntersectionObserverMixin(
           "__stand-alone",
           "colors",
           "playing",
-          "__forcePaused",
+          "__force-paused",
           "t",
           "source-type",
         ],

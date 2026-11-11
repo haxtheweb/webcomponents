@@ -18,7 +18,7 @@
   "import": "@haxtheweb/lrn-vocab/lrn-vocab.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/lrn-vocab/lrn-vocab.js",
   "install": "npm i @haxtheweb/lrn-vocab",
-  "demoHtml": "",
+  "demoHtml": "<lrn-vocab></lrn-vocab>",
   "attributes": [
     {
       "name": "typeof",
@@ -124,9 +124,16 @@
       "unsetAttributes": [
         "t"
       ]
-    }
+    },
+    "demoSchema": [
+      {
+        "tag": "lrn-vocab",
+        "properties": {},
+        "content": ""
+      }
+    ]
   },
-  "surfaceHash": "ce8eef977cf1",
+  "surfaceHash": "2aaeabcc33db",
   "walkthroughs": [
     {
       "id": "",
