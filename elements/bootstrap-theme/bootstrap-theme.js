@@ -65,8 +65,18 @@ class BootstrapTheme extends HAXCMSThemeParts(
         /* var declaration and default styles */
         :host {
           color-scheme: light;
-          --bootstrap-theme-link-color: #007bff;
+          /* Bootstrap-family blues that keep 4.5:1 on every light surface
+             (white, #f2f4f4, #e9ecef) and on the dark surfaces */
+          --bootstrap-theme-link-color: #0a58ca;
+          --bootstrap-theme-link-color-dark: #6ea8fe;
+          --bootstrap-theme-breadcrumb-active-color: #495057;
+          --bootstrap-theme-breadcrumb-active-color-dark: #adb5bd;
           --map-menu-item-a-color: var(--bootstrap-theme-link-color);
+          /* hovered / active menu items sit on map-menu's black highlight,
+             where the lighter blue keeps the blue-on-black look readable */
+          --map-menu-item-a-active-color: var(
+            --bootstrap-theme-link-color-dark
+          );
           --bootstrap-theme-light-color: var(
             --ddd-theme-default-coalyGray,
             #000000
@@ -121,8 +131,21 @@ class BootstrapTheme extends HAXCMSThemeParts(
           outline: 2px solid currentColor;
           outline-offset: 2px;
         }
-        a {
-          color: #007bff;
+        /* :host raises specificity above the adopted Bootstrap sheet's own
+           a rule, which loads after these styles; the skip link keeps the
+           focus colors HAXCMSLitElementTheme gives it */
+        :host a:not(.skip-link) {
+          color: var(--bootstrap-theme-link-color);
+        }
+        :host([color-theme="1"]) a:not(.skip-link),
+        :host([dark-mode][color-theme="0"]) a:not(.skip-link),
+        :host([color-theme="2"]) a:not(.skip-link) {
+          color: var(--bootstrap-theme-link-color-dark);
+        }
+        @media (prefers-color-scheme: dark) {
+          :host([color-theme="0"]) a:not(.skip-link) {
+            color: var(--bootstrap-theme-link-color-dark);
+          }
         }
         /* menu styles */
         :host([menu-open]) .menu-outline {
@@ -345,6 +368,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
           background-color: var(--bootstrap-theme-dark-background-color);
           --simple-fields-background-color: transparent;
           --map-menu-item-a-color: var(--bootstrap-theme-dark-color);
+          --map-menu-item-a-active-color: var(--bootstrap-theme-dark-color);
           --haxcms-user-styles-color-theme-color-color: var(
             --bootstrap-theme-dark-color
           );
@@ -442,6 +466,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
           :host([color-theme="0"]) {
             background-color: var(--bootstrap-theme-dark-background-color);
             --map-menu-item-a-color: var(--bootstrap-theme-dark-color);
+            --map-menu-item-a-active-color: var(--bootstrap-theme-dark-color);
             --site-menu-background-color: var(
               --bootstrap-theme-dark-background-color
             );
@@ -480,6 +505,9 @@ class BootstrapTheme extends HAXCMSThemeParts(
           background-color: var(--bootstrap-theme-palenight-background-color);
           --simple-fields-background-color: transparent;
           --map-menu-item-a-color: var(--bootstrap-theme-palenight-color);
+          --map-menu-item-a-active-color: var(
+            --bootstrap-theme-palenight-color
+          );
           --haxcms-user-styles-color-theme-color-color: var(
             --bootstrap-theme-palenight-color
           );
