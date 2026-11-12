@@ -89,6 +89,12 @@ export const HaxSchematizer = {
         format: "fileupload",
       },
     },
+    doodle: {
+      defaultSettings: {
+        type: "string",
+        format: "doodle",
+      },
+    },
     iconpicker: {
       defaultSettings: {
         type: "string",
@@ -534,6 +540,17 @@ export const HaxElementizer = {
             properties: {
               accepts: "accepts",
               fileActions: "file-actions",
+            },
+          },
+        },
+        doodle: {
+          defaultSettings: {
+            import: "@haxtheweb/doodle-board/lib/doodle-board-field.js",
+            element: "doodle-board-field",
+            noWrap: true,
+            properties: {
+              backgroundProperty: "backgroundProperty",
+              modeProperty: "modeProperty",
             },
           },
         },
