@@ -614,3 +614,55 @@ describe("sheet-music stubbed-api surface", () => {
     expect(calls.destroyed).to.equal(1);
   });
 });
+
+describe("sheet-music inside another element's shadow root", () => {
+  it("copies its glyph and cursor CSS into that shadow root", async function () {
+    // alphaTab loads a 1.1MB core on init, so allow ample time.
+    this.timeout(20000);
+    const host = await fixture(html`<div></div>`);
+    const root = host.attachShadow({ mode: "open" });
+    const el = globalThis.document.createElement("sheet-music");
+    const t = globalThis.document.createElement("template");
+    t.setAttribute("preserve-content", "preserve-content");
+    t.content.appendChild(
+      globalThis.document.createTextNode('\\title "Test" . :4 0.5 2.5'),
+    );
+    el.appendChild(t);
+    root.appendChild(el);
+    await el.updateComplete;
+    // the cursor CSS is copied as soon as the element sets up its surface
+    const copyOf = (id) =>
+      Array.from(root.querySelectorAll("style[data-sheet-music-style]")).find(
+        (s) => s.getAttribute("data-sheet-music-style") === id,
+      );
+    expect(copyOf("sheet-music-cursor-styles")).to.exist;
+    el.elementVisible = true;
+    await el._initAlphaTab();
+    expect(el.api).to.exist;
+    const glyphs = Array.from(
+      root.querySelectorAll("style[data-sheet-music-style]"),
+    ).filter(
+      (s) =>
+        s.getAttribute("data-sheet-music-style").indexOf("alphaTabStyle") === 0,
+    );
+    expect(glyphs.length).to.be.greaterThan(0);
+    // one copy per style, even when set up again
+    const count = root.querySelectorAll("style[data-sheet-music-style]").length;
+    el._shareScoreStyles();
+    expect(
+      root.querySelectorAll("style[data-sheet-music-style]").length,
+    ).to.equal(count);
+    // the document keeps its own copy for light-DOM scores
+    expect(globalThis.document.getElementById("sheet-music-cursor-styles")).to
+      .exist;
+  });
+
+  it("adds nothing to the document when rendered in the light DOM", async () => {
+    const el = await fixture(html`<sheet-music></sheet-music>`);
+    el._shareScoreStyles();
+    expect(
+      globalThis.document.querySelectorAll("style[data-sheet-music-style]")
+        .length,
+    ).to.equal(0);
+  });
+});

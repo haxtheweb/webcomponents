@@ -11,10 +11,12 @@ import {
 } from "./xapi.js";
 
 // user-action tracks whose user-engagement events are learner records:
-// seeing something (visibility) or deliberately using it (click, keypress).
-// Hover, focus, mouse and key up/down events still fire for the page but
-// carry no statement, so they never flood a learning record store.
-export const XAPI_RECORDED_TRACKS = ["visibility", "click", "keypress"];
+// seeing something (visibility) or deliberately using it (click, or a key
+// press: keydown, the value HAX writes for "Press a key here"). Hover, focus,
+// mouse and keyup events still fire for the page but carry no statement, so
+// they never flood a learning record store. The deprecated keypress event is
+// not a track: saved track="keypress" is read as keydown by user-action.
+export const XAPI_RECORDED_TRACKS = ["visibility", "click", "keydown"];
 
 /**
  * Broker user actions in a normalized way which is abstracted from xAPI
@@ -131,7 +133,6 @@ export class UserActionBroker {
       "mousedown",
       "mouseup",
       "visibility",
-      "keypress",
       "keydown",
       "keyup",
       "focusin",
