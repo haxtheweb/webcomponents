@@ -181,7 +181,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "color-only"
+      "s": "color-only=\"false\""
     },
     {
       "type": "text",
@@ -266,8 +266,8 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set goal and color only",
-      "text": "Fill in the Goal field in the sidebar. Show only the goal color."
+      "title": "Set color only",
+      "text": "Show only the goal color."
     },
     {
       "t": 14.8,

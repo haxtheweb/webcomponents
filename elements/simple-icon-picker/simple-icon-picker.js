@@ -57,7 +57,7 @@ class SimpleIconPicker extends SimplePicker {
     return {
       ...super.properties,
       /**
-       * Allow a null option to be selected?
+       * Offer a "no icon" choice so the value can be cleared.
        */
       allowNull: {
         type: Boolean,

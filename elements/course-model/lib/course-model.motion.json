@@ -305,13 +305,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set title and src",
-      "text": "Fill in the Title and Src fields in the sidebar."
+      "text": "Set Title and Src in the HAX sidebar."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set alt",
-      "text": "Fill in the Alt field in the sidebar."
+      "text": "Set Alt in the HAX sidebar."
     },
     {
       "t": 14.8,

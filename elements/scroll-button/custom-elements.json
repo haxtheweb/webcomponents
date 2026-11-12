@@ -35,6 +35,7 @@
               "type": {
                 "text": "string"
               },
+              "description": "Icon on the button; an arrow pointing up by default.",
               "default": "\"icons:expand-less\"",
               "attribute": "icon"
             },
@@ -64,6 +65,7 @@
               "type": {
                 "text": "string"
               },
+              "description": "Tooltip and accessible name; defaults to \"Back to top\".",
               "default": "\"\"",
               "attribute": "label"
             },
@@ -74,6 +76,7 @@
               "type": {
                 "text": "string"
               },
+              "description": "Side the tooltip shows on: top, right, bottom or left.",
               "default": "\"top\"",
               "attribute": "position"
             },
@@ -100,6 +103,7 @@
               "type": {
                 "text": "string"
               },
+              "description": "Icon on the button; an arrow pointing up by default.",
               "default": "\"icons:expand-less\"",
               "fieldName": "icon"
             },
@@ -108,6 +112,7 @@
               "type": {
                 "text": "string"
               },
+              "description": "Tooltip and accessible name; defaults to \"Back to top\".",
               "default": "\"\"",
               "fieldName": "label"
             },
@@ -123,6 +128,7 @@
               "type": {
                 "text": "string"
               },
+              "description": "Side the tooltip shows on: top, right, bottom or left.",
               "default": "\"top\"",
               "fieldName": "position"
             },

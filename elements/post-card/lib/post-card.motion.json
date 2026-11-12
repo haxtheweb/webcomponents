@@ -345,13 +345,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set to and from",
-      "text": "Fill in the To and From fields in the sidebar."
+      "text": "Set To and From in the HAX sidebar."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set message",
-      "text": "Fill in the Message and Postmarked From fields in the sidebar."
+      "text": "Set Message and Postmarked From in the HAX sidebar."
     },
     {
       "t": 14.8,

@@ -54,9 +54,21 @@ export class SimplePager extends I18NMixin(DDD) {
   static get properties() {
     return {
       ...super.properties,
+      /**
+       * Items per page.
+       */
       limit: { type: Number },
+      /**
+       * Index of the first item on the current page, starting at 0.
+       */
       offset: { type: Number },
+      /**
+       * Total number of items across all pages.
+       */
       total: { type: Number },
+      /**
+       * Number of items on the current page.
+       */
       count: { type: Number },
       mode: { type: String, reflect: true },
       maxPageButtons: { type: Number, attribute: "max-page-buttons" },

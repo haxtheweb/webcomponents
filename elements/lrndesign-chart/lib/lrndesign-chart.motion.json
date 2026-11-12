@@ -337,7 +337,7 @@
       "ex": 616,
       "ey": 540,
       "label": "scale",
-      "sub": "ct-square · ct-minor-second · ct-…",
+      "sub": "ct-square (1:1) · ct-minor-second…",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -390,7 +390,7 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set scale name and csv file",
-      "text": "Choose ct-square, ct-minor-second, ct-major-second and more for Scale Name."
+      "text": "The ratio of width:height of the chart. Load data from a CSV."
     },
     {
       "t": 10,

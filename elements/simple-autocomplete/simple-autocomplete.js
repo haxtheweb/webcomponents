@@ -464,6 +464,10 @@ class SimpleAutocomplete extends I18NMixin(SimpleFilterMixin(LitElement)) {
         type: Boolean,
         reflect: true,
       },
+      /**
+       * Hide the built-in text box when the element is driven by another
+       * input.
+       */
       hideInput: {
         type: Boolean,
         attribute: "hide-input",
@@ -475,6 +479,9 @@ class SimpleAutocomplete extends I18NMixin(SimpleFilterMixin(LitElement)) {
       value: {
         type: String,
       },
+      /**
+       * Most suggestions to list at once.
+       */
       itemLimit: {
         type: Number,
         attribute: "item-limit",

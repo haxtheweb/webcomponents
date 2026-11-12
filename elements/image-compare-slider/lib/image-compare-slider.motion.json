@@ -151,16 +151,16 @@
           "desc": "Top image"
         },
         {
-          "name": "top-alt",
-          "desc": "Top image alt text"
-        },
-        {
           "name": "bottom-src",
           "desc": "Bottom image"
         },
         {
-          "name": "bottom-alt",
-          "desc": "Bottom image alt text"
+          "name": "opacity",
+          "desc": "Behavior"
+        },
+        {
+          "name": "top-alt",
+          "desc": "Top image alt text"
         }
       ],
       "active": [
@@ -193,7 +193,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "top-alt=\"Top image alt text\""
+      "s": "bottom-src=\"https://cdn2.thecatapi.…\""
     },
     {
       "type": "text",
@@ -201,7 +201,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "bottom-src=\"https://cdn2.thecatapi.…\""
+      "s": "opacity"
     },
     {
       "type": "text",
@@ -209,7 +209,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "bottom-alt=\"Bottom image alt…\""
+      "s": "top-alt=\"Top image alt text\""
     },
     {
       "type": "text",
@@ -305,8 +305,8 @@
       "py": 518,
       "ex": 796,
       "ey": 570,
-      "label": "top-alt",
-      "sub": "\"Top image alt text\"",
+      "label": "bottom-src",
+      "sub": "upload or link",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -317,8 +317,8 @@
       "py": 518,
       "ex": 616,
       "ey": 570,
-      "label": "bottom-src",
-      "sub": "upload or link",
+      "label": "opacity",
+      "sub": "on or off",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -329,8 +329,8 @@
       "py": 518,
       "ex": 796,
       "ey": 570,
-      "label": "bottom-alt",
-      "sub": "\"Bottom image alt…\"",
+      "label": "top-alt",
+      "sub": "\"Top image alt text\"",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -347,13 +347,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set top image",
-      "text": "Top image to swipe over the bottom image. Required alt text for accessibility."
+      "text": "Top image to swipe over the bottom image."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set bottom image",
-      "text": "Bottom image shown under the top image. Required alt text for accessibility."
+      "title": "Set behavior",
+      "text": "Choose wipe mode or top-image opacity mode."
     },
     {
       "t": 14.8,

@@ -174,10 +174,6 @@
       "in": 4.6,
       "rows": [
         {
-          "name": "bordered",
-          "desc": "Bordered"
-        },
-        {
           "name": "condensed",
           "desc": "Condense Rows"
         },
@@ -188,6 +184,10 @@
         {
           "name": "downloadable",
           "desc": "Download Button"
+        },
+        {
+          "name": "copyable",
+          "desc": "Copy Button"
         }
       ],
       "active": [
@@ -212,7 +212,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "bordered"
+      "s": "condensed"
     },
     {
       "type": "text",
@@ -220,7 +220,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "condensed"
+      "s": "striped"
     },
     {
       "type": "text",
@@ -228,7 +228,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "striped"
+      "s": "downloadable"
     },
     {
       "type": "text",
@@ -236,7 +236,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "downloadable"
+      "s": "copyable"
     },
     {
       "type": "text",
@@ -320,7 +320,7 @@
       "py": 518,
       "ex": 616,
       "ey": 570,
-      "label": "bordered",
+      "label": "condensed",
       "sub": "on or off",
       "dir": 1,
       "in": 5.2,
@@ -332,7 +332,7 @@
       "py": 518,
       "ex": 796,
       "ey": 570,
-      "label": "condensed",
+      "label": "striped",
       "sub": "on or off",
       "dir": 1,
       "in": 7.6000000000000005,
@@ -344,7 +344,7 @@
       "py": 518,
       "ex": 616,
       "ey": 570,
-      "label": "striped",
+      "label": "downloadable",
       "sub": "on or off",
       "dir": 1,
       "in": 10.2,
@@ -356,7 +356,7 @@
       "py": 518,
       "ex": 796,
       "ey": 570,
-      "label": "downloadable",
+      "label": "copyable",
       "sub": "on or off",
       "dir": 1,
       "in": 12.6,
@@ -373,14 +373,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set bordered and condense rows",
-      "text": "Switch Bordered on or off in the sidebar. Reduce row height."
+      "title": "Set condense rows",
+      "text": "Reduce row height. Shade every other row."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set striped rows",
-      "text": "Shade every other row. Add a button to download the table."
+      "title": "Set download button",
+      "text": "Add a button to download the table. Add a button to copy table CSV data."
     },
     {
       "t": 14.8,

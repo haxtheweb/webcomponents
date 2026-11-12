@@ -252,8 +252,8 @@ class SocialShareLink extends DDD {
         type: String,
       },
       /**
-       * the type of social; currently supports
-       * Facebook, LinkedIn, Pinterest, and Twitter (default)
+       * Network to share to: Facebook, LinkedIn, Pinterest or Twitter
+       * (default).
        */
       type: {
         type: String,

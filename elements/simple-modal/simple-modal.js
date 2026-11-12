@@ -565,21 +565,21 @@ class SimpleModal extends I18NMixin(LitElement) {
         type: String,
       },
       /**
-       * open state
+       * Whether the modal is open; set by the simple-modal-show event.
        */
       opened: {
         type: Boolean,
         reflect: true,
       },
       /**
-       * Close label
+       * Label of the close button.
        */
       closeLabel: {
         attribute: "close-label",
         type: String,
       },
       /**
-       * Close icon
+       * Icon on the close button.
        */
       closeIcon: {
         type: String,

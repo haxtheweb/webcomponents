@@ -81,20 +81,20 @@
       "in": 2.4,
       "rows": [
         {
+          "name": "linkable",
+          "desc": "has link button"
+        },
+        {
+          "name": "thumbnail-src",
+          "desc": "Source of optional thumbnail im…"
+        },
+        {
           "name": "allow-concurrent",
-          "desc": "Allow this media to play concur…"
+          "desc": "Keep playing when another playe…"
         },
         {
           "name": "audio-only",
-          "desc": "Is this an audio file?"
-        },
-        {
-          "name": "autoplay",
-          "desc": "autoplay is an option, but gene…"
-        },
-        {
-          "name": "captions-track",
-          "desc": "the selected track"
+          "desc": "Treat the source as audio: no v…"
         }
       ],
       "active": [
@@ -119,7 +119,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "allow-concurrent=\"false\""
+      "s": "linkable"
     },
     {
       "type": "text",
@@ -127,7 +127,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "audio-only=\"false\""
+      "s": "thumbnail-src=\"https://haxtheweb.org/f…\""
     },
     {
       "type": "text",
@@ -135,7 +135,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "autoplay=\"false\""
+      "s": "allow-concurrent=\"false\""
     },
     {
       "type": "text",
@@ -143,7 +143,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "captions-track=\"null\""
+      "s": "audio-only=\"false\""
     },
     {
       "type": "text",
@@ -227,7 +227,7 @@
       "py": 494,
       "ex": 616,
       "ey": 546,
-      "label": "allow-concurrent",
+      "label": "linkable",
       "sub": "on or off",
       "dir": 1,
       "in": 5.2,
@@ -239,8 +239,8 @@
       "py": 494,
       "ex": 796,
       "ey": 546,
-      "label": "audio-only",
-      "sub": "on or off",
+      "label": "thumbnail-src",
+      "sub": "text",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -251,7 +251,7 @@
       "py": 494,
       "ex": 616,
       "ey": 546,
-      "label": "autoplay",
+      "label": "allow-concurrent",
       "sub": "on or off",
       "dir": 1,
       "in": 10.2,
@@ -263,8 +263,8 @@
       "py": 494,
       "ex": 796,
       "ey": 546,
-      "label": "captions-track",
-      "sub": "\"null\"",
+      "label": "audio-only",
+      "sub": "on or off",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -280,14 +280,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set allow concurrent",
-      "text": "Add the allow-concurrent attribute to switch it on."
+      "title": "Set linkable",
+      "text": "Has link button."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set autoplay",
-      "text": "Autoplay is an option, but generally not recommended for a11y."
+      "title": "Set allow concurrent",
+      "text": "Keep playing when another player on the page starts, instead of pausing."
     },
     {
       "t": 14.8,
@@ -301,7 +301,7 @@
     "line": "A feature rich, highly accessible video player",
     "code": ""
   },
-  "surfaceHash": "942049ac621f",
+  "surfaceHash": "cbd8bdf99797",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

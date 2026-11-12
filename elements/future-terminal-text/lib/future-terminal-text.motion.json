@@ -49,27 +49,17 @@
       "in": 2.4,
       "rows": [
         {
-          "name": "glitch",
-          "desc": "glitch"
-        },
-        {
           "name": "red",
-          "desc": "red"
+          "desc": "Use the red alert color for the…"
         },
         {
           "name": "fadein",
-          "desc": "fadein"
-        },
-        {
-          "name": "glitch-max",
-          "desc": "glitch max"
+          "desc": "Fade the text in, then flicker…"
         }
       ],
       "active": [
         [5, 0],
         [7.4, 1],
-        [10, 2],
-        [12.4, 3],
         [14.8, 0]
       ]
     },
@@ -87,7 +77,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "glitch"
+      "s": "red"
     },
     {
       "type": "text",
@@ -95,23 +85,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "red"
-    },
-    {
-      "type": "text",
-      "x": 1022,
-      "y": 336,
-      "c": "code",
-      "in": 10,
       "s": "fadein"
-    },
-    {
-      "type": "text",
-      "x": 1022,
-      "y": 368,
-      "c": "code",
-      "in": 12.4,
-      "s": "glitch-max=\"3\""
     },
     {
       "type": "text",
@@ -132,20 +106,6 @@
           7.4,
           {
             "y": 336
-          },
-          0.4
-        ],
-        [
-          10,
-          {
-            "y": 368
-          },
-          0.4
-        ],
-        [
-          12.4,
-          {
-            "y": 400
           },
           0.4
         ]
@@ -172,20 +132,6 @@
             "y": 368
           },
           0.4
-        ],
-        [
-          10,
-          {
-            "y": 400
-          },
-          0.4
-        ],
-        [
-          12.4,
-          {
-            "y": 432
-          },
-          0.4
         ]
       ]
     },
@@ -195,7 +141,7 @@
       "py": 468,
       "ex": 616,
       "ey": 520,
-      "label": "glitch",
+      "label": "red",
       "sub": "on or off",
       "dir": 1,
       "in": 5.2,
@@ -207,35 +153,11 @@
       "py": 468,
       "ex": 796,
       "ey": 520,
-      "label": "red",
+      "label": "fadein",
       "sub": "on or off",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
-    },
-    {
-      "type": "callout",
-      "px": 590,
-      "py": 468,
-      "ex": 616,
-      "ey": 520,
-      "label": "fadein",
-      "sub": "on or off",
-      "dir": 1,
-      "in": 10.2,
-      "out": 12.2
-    },
-    {
-      "type": "callout",
-      "px": 770,
-      "py": 468,
-      "ex": 796,
-      "ey": 520,
-      "label": "glitch-max",
-      "sub": "a number",
-      "dir": 1,
-      "in": 12.6,
-      "out": 14.600000000000001
     }
   ],
   "beats": [
@@ -248,14 +170,8 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set glitch and red",
-      "text": "Add the glitch attribute to switch it on. Add the red attribute to switch it on."
-    },
-    {
-      "t": 10,
-      "out": 14.6,
-      "title": "Set fadein and glitch max",
-      "text": "Add the fadein attribute to switch it on. Add a glitch-max attribute to the tag."
+      "title": "Set red",
+      "text": "Use the red alert color for the text instead of the normal color."
     },
     {
       "t": 14.8,

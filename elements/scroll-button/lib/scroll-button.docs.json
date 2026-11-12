@@ -27,7 +27,7 @@
       "property": "icon",
       "type": "string",
       "default": "\"icons:expand-less\"",
-      "description": "",
+      "description": "Icon on the button; an arrow pointing up by default.",
       "hax": null
     },
     {
@@ -35,7 +35,7 @@
       "property": "label",
       "type": "string",
       "default": "\"\"",
-      "description": "",
+      "description": "Tooltip and accessible name; defaults to \"Back to top\".",
       "hax": null
     },
     {
@@ -43,7 +43,7 @@
       "property": "position",
       "type": "string",
       "default": "\"top\"",
-      "description": "",
+      "description": "Side the tooltip shows on: top, right, bottom or left.",
       "hax": null
     },
     {

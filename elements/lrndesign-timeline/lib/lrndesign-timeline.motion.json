@@ -391,7 +391,7 @@
       "t": 10,
       "out": 14.6,
       "title": "Set accent color",
-      "text": "An optional accent color. Optional text describing the timeline."
+      "text": "An optional accent color. Text describing the timeline."
     },
     {
       "t": 14.8,

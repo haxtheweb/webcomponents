@@ -409,14 +409,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set heading and heading button",
+      "title": "Set heading",
       "text": "Text for the collapse."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set icon",
-      "text": "Icon for the expand/collapse toggle button."
+      "text": "Icon for the expand/collapse toggle button. Icon for the expanded toggle state."
     },
     {
       "t": 14.8,

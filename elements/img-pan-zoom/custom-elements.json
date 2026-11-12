@@ -491,7 +491,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "image source",
+              "description": "Address of the image to pan and zoom.",
               "attribute": "src"
             },
             {
@@ -707,7 +707,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "image source",
+              "description": "Address of the image to pan and zoom.",
               "fieldName": "src"
             },
             {

@@ -60,6 +60,10 @@ class LinkedinEmbed extends I18NMixin(DDD) {
 
   static get properties() {
     return {
+      /**
+       * LinkedIn profile name from the profile address
+       * (linkedin.com/in/<name>).
+       */
       vanityname: { type: String, reflect: true },
       locale: { type: String },
       _haxstate: { type: Boolean },

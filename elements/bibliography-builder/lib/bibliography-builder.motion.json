@@ -282,7 +282,7 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set course",
-      "text": "Fill in the Course field in the sidebar."
+      "text": "Identifier or name of the Course this bibliography is for."
     },
     {
       "t": 14.8,

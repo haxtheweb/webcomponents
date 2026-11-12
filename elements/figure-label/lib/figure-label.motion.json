@@ -106,11 +106,11 @@
       "rows": [
         {
           "name": "title",
-          "desc": "title"
+          "desc": "Figure number"
         },
         {
           "name": "description",
-          "desc": "description"
+          "desc": "Short description of the figure"
         }
       ],
       "active": [
@@ -133,7 +133,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "title=\"title\""
+      "s": "title=\"Figure number\""
     },
     {
       "type": "text",
@@ -141,7 +141,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "description=\"description\""
+      "s": "description=\"Description\""
     },
     {
       "type": "text",
@@ -198,7 +198,7 @@
       "ex": 616,
       "ey": 540,
       "label": "title",
-      "sub": "\"title\"",
+      "sub": "\"Figure number\"",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -210,7 +210,7 @@
       "ex": 796,
       "ey": 540,
       "label": "description",
-      "sub": "\"description\"",
+      "sub": "\"Description\"",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -226,8 +226,8 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set title and description",
-      "text": "Fill in the Title and Description fields in the sidebar."
+      "title": "Set figure number",
+      "text": "Number or short label for the figure, e.g. 1.3. Short description of the figure."
     },
     {
       "t": 14.8,
@@ -239,7 +239,7 @@
   "end": {
     "in": 17.8,
     "line": "Figure label element to mark media assets within content.",
-    "code": ""
+    "code": "<figure-label></figure-label>"
   },
   "surfaceHash": "0c2c75e22de1",
   "review": {

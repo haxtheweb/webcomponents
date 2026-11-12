@@ -188,7 +188,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "no-waterfall"
+      "s": "no-waterfall=\"false\""
     },
     {
       "type": "text",
@@ -271,7 +271,7 @@
       "ex": 796,
       "ey": 460,
       "label": "visualizer",
-      "sub": "staff · piano-roll · waterfall",
+      "sub": "Staff · Piano roll · Piano + wate…",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001

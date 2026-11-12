@@ -82,7 +82,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Loading state",
+              "description": "Show the loader; set it while content loads and remove it when done.",
               "attribute": "loading",
               "reflects": true
             }
@@ -109,7 +109,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Loading state",
+              "description": "Show the loader; set it while content loads and remove it when done.",
               "fieldName": "loading"
             },
             {

@@ -34,7 +34,11 @@
       "y": 348,
       "c": "vt",
       "a": "middle",
-      "in": 1.7999999999999998
+      "in": 1.7999999999999998,
+      "states": [
+        [1.4, "simple-picker"],
+        [7.4, "Pick a Font-Family"]
+      ]
     },
     {
       "type": "cursor",
@@ -57,19 +61,19 @@
       "rows": [
         {
           "name": "allow-null",
-          "desc": "allow a null value? Default beh…"
+          "desc": "Allow no selection; otherwise t…"
+        },
+        {
+          "name": "label",
+          "desc": "Optional. Label for picker input"
         },
         {
           "name": "align-right",
-          "desc": "Align right edges of listbox an…"
+          "desc": "Align the right edges of the li…"
         },
         {
           "name": "block-label",
-          "desc": "Position label above select dro…"
-        },
-        {
-          "name": "disabled",
-          "desc": "Is picker disabled?"
+          "desc": "Put the label above the dropdow…"
         }
       ],
       "active": [
@@ -94,7 +98,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "allow-null=\"false\""
+      "s": "allow-null"
     },
     {
       "type": "text",
@@ -102,7 +106,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "align-right=\"false\""
+      "s": "label=\"Pick a Font-Family\""
     },
     {
       "type": "text",
@@ -110,7 +114,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "block-label=\"false\""
+      "s": "align-right=\"false\""
     },
     {
       "type": "text",
@@ -118,7 +122,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "disabled=\"false\""
+      "s": "block-label=\"false\""
     },
     {
       "type": "text",
@@ -214,8 +218,8 @@
       "py": 382,
       "ex": 796,
       "ey": 434,
-      "label": "align-right",
-      "sub": "on or off",
+      "label": "label",
+      "sub": "\"Pick a Font-Family\"",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -226,7 +230,7 @@
       "py": 382,
       "ex": 616,
       "ey": 434,
-      "label": "block-label",
+      "label": "align-right",
       "sub": "on or off",
       "dir": 1,
       "in": 10.2,
@@ -238,7 +242,7 @@
       "py": 382,
       "ex": 796,
       "ey": 434,
-      "label": "disabled",
+      "label": "block-label",
       "sub": "on or off",
       "dir": 1,
       "in": 12.6,
@@ -255,14 +259,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set allow null and align right",
-      "text": "Add the allow-null attribute to switch it on."
+      "title": "Set allow null",
+      "text": "Allow no selection; otherwise the first option is selected."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set block label and disabled",
-      "text": "Add the block-label attribute to switch it on."
+      "title": "Set align right",
+      "text": "Align the right edges of the list and button instead of the left."
     },
     {
       "t": 14.8,

@@ -47,7 +47,7 @@
       "in": 1.7999999999999998,
       "states": [
         [1.4, "product-offering"],
-        [12.4, "title"]
+        [12.4, "Real-world projects from indu…"]
       ],
       "typed": true
     },
@@ -93,19 +93,19 @@
       "rows": [
         {
           "name": "alt",
-          "desc": "alt"
+          "desc": "Alternative text for the image."
         },
         {
           "name": "source",
-          "desc": "source"
+          "desc": "Address of the image shown besi…"
         },
         {
           "name": "icon",
-          "desc": "icon"
+          "desc": "Icon shown next to the title."
         },
         {
           "name": "title",
-          "desc": "title"
+          "desc": "Title of the offering; its firs…"
         }
       ],
       "active": [
@@ -130,7 +130,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "alt=\"alt\""
+      "s": "alt=\"Alt\""
     },
     {
       "type": "text",
@@ -138,7 +138,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "source=\"source\""
+      "s": "source=\"./assets/Images/placeho…\""
     },
     {
       "type": "text",
@@ -146,7 +146,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "icon=\"icon\""
+      "s": "icon=\"communication:business\""
     },
     {
       "type": "text",
@@ -154,7 +154,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "title=\"title\""
+      "s": "title=\"Real-world projects fro…\""
     },
     {
       "type": "text",
@@ -239,7 +239,7 @@
       "ex": 616,
       "ey": 570,
       "label": "alt",
-      "sub": "\"alt\"",
+      "sub": "\"Alt\"",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -251,7 +251,7 @@
       "ex": 796,
       "ey": 570,
       "label": "source",
-      "sub": "\"source\"",
+      "sub": "text",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -263,7 +263,7 @@
       "ex": 616,
       "ey": 570,
       "label": "icon",
-      "sub": "\"icon\"",
+      "sub": "\"communication:business\"",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -275,7 +275,7 @@
       "ex": 796,
       "ey": 570,
       "label": "title",
-      "sub": "\"title\"",
+      "sub": "\"Real-world projects from ind…",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -292,13 +292,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set alt and source",
-      "text": "Add alt and source attributes to the tag."
+      "text": "Alternative text for the image. Address of the image shown beside the offering."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set icon and title",
-      "text": "Add icon and title attributes to the tag."
+      "title": "Set icon",
+      "text": "Icon shown next to the title."
     },
     {
       "t": 14.8,

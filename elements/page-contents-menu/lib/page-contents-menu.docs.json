@@ -59,7 +59,7 @@
       "property": "mobile",
       "type": "boolean",
       "default": "false",
-      "description": "",
+      "description": "Collapse to an icon button that opens the contents in a popover.",
       "hax": null
     },
     {
