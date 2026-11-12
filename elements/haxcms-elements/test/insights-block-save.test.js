@@ -2,15 +2,16 @@ import { fixture, expect, html, waitUntil } from "@open-wc/testing";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { analyzeSite } from "../lib/core/insights/insights-analyzer.js";
 import {
-  ALT_LIST_OPERATION,
   ALT_SAVE_NOTE,
-  ALT_SAVE_OPERATION,
-  altSaveAvailable,
-  groupAltEdits,
+  BLOCK_LIST_OPERATION as ALT_LIST_OPERATION,
+  BLOCK_SAVE_OPERATION as ALT_SAVE_OPERATION,
+  altSaveOptions,
+  blockSaveAvailable as altSaveAvailable,
+  groupBlockEdits,
   imageSrcAttributes,
-  matchAltBlocks,
-  saveAltEdits,
-} from "../lib/core/insights/insights-alt-save.js";
+  matchBlocks,
+  saveBlockEdits,
+} from "../lib/core/insights/insights-block-save.js";
 import "../lib/core/insights/sections/insights-accessibility.js";
 import {
   loadSpec,
@@ -23,6 +24,14 @@ import {
 // images, one PATCH per page sets their alt. A fake backend holds each
 // page's images and answers both operations like haxcms-nodejs does.
 let spec;
+
+// the accessibility screen's alt rows, read through the generic save
+const groupAltEdits = (rows, edits) =>
+  groupBlockEdits(rows, edits, altSaveOptions(spec));
+const matchAltBlocks = (page, blocks) =>
+  matchBlocks(page, blocks, altSaveOptions(spec));
+const saveAltEdits = (rows, edits, o) =>
+  saveBlockEdits(rows, edits, Object.assign(altSaveOptions(spec), o || {}));
 
 function row(pageId, src, alt, extra) {
   return Object.assign(
@@ -135,7 +144,7 @@ before(async () => {
   spec = await loadSpec();
 });
 
-describe("insights-alt-save: matching", () => {
+describe("insights-block-save, alt rows: matching", () => {
   it("groups edited rows by page and drops edits equal to storage", () => {
     const rows = [
       row("a", "/files/1.png", null),
@@ -191,7 +200,7 @@ describe("insights-alt-save: matching", () => {
       [1, "<img b>", "second"],
       [2, "<img c>", "why"],
     ]);
-    expect(m.opRows).to.deep.equal([1, 2]);
+    expect(m.opRows).to.deep.equal([[1], [2]]);
     // a third copy on the server: which one the person saw is unclear
     const extra = blocks.concat([
       {
@@ -203,7 +212,7 @@ describe("insights-alt-save: matching", () => {
     ]);
     const m2 = matchAltBlocks(page, extra, srcAttrs);
     expect(m2.unmatched).to.deep.equal([1]);
-    expect(m2.opRows).to.deep.equal([2]);
+    expect(m2.opRows).to.deep.equal([[2]]);
   });
 
   it("reads media-image sources from the attribute the rules name", () => {
@@ -228,7 +237,7 @@ describe("insights-alt-save: matching", () => {
   });
 });
 
-describe("insights-alt-save: saving", () => {
+describe("insights-block-save, alt rows: saving", () => {
   it("saves one PATCH per page with the note, and reports progress", async () => {
     const rows = [
       row("a", "/files/1.png", null),
@@ -489,7 +498,7 @@ describe("insights-alt-save: saving", () => {
   });
 });
 
-describe("insights-alt-save: accessibility screen", () => {
+describe("insights-block-save, alt rows: accessibility screen", () => {
   let results;
   let realHas;
   let realCall;
@@ -510,7 +519,7 @@ describe("insights-alt-save: accessibility screen", () => {
     const pages = {};
     rows.forEach((r) => {
       const attrs = {};
-      attrs[srcAttrs[r.tag] || "src"] = r.src;
+      attrs[(srcAttrs[r.tag] || ["src"])[0]] = r.src;
       if (r.alt !== null) {
         attrs.alt = r.alt;
       }

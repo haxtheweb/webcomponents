@@ -1,10 +1,6 @@
 /**
  * Copyright 2026 The Pennsylvania State University
  * @license Apache-2.0, see LICENSE for full text.
- */
-/**
- * Copyright 2026 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
  *
  * HAX Insights analyzer: pure functions, no network, no DOM globals beyond
  * DOMParser (and not even that inside a Web Worker; see insights-html.js).
@@ -69,6 +65,9 @@
  *             headingErrorPages, extraH1Pages, skipPages, themeContrast },
  *     altRows: [{ pageId, pageTitle, slug, tag, src, file, alt|null, inLink,
  *                 hasCaption, status: "fix"|"check"|"ok", reason, reasonText }],
+ *     descRows: [attrRow + { status: "missing"|"ok" }] (gif titles and long
+ *                descriptions, img longdesc),
+ *     descSave: { note, srcAttributes, maxPagesPerSave },
  *     altCounts: { all, fix, check, ok },
  *     criteria: [{ sc, name, state: "fails"|"check"|"passes", found, how,
  *                  params, unavailable? }],
@@ -91,11 +90,16 @@
  *            outsideLinks: { total, hosts,
  *                            urls: [{ href, host, pages: [{ pageId, slug,
  *                                     title }] }] },
- *            outsideLinkStatus: unavailable },
+ *            outsideLinkStatus: unavailable,
+ *            blockUrls: [attrRow] (every URL the block API can change),
+ *            urlSave: { note, maxPagesPerSave } },
  *   media: { kpis, videosPerPage: [bucket],
  *            noMedia: [{ pageId, slug, title }],
  *            bySection: [row], mediaIndex: { videos, images }, pages: [row],
- *            videoMinutes: unavailable, rebuildIndex: unavailable },
+ *            videoMinutes: unavailable, rebuildIndex: unavailable,
+ *            titleRows: [attrRow + { status: "missing"|"generic"|"ok" }],
+ *            titleSave: { note, srcAttributes, genericWords,
+ *                         maxPagesPerSave } },
  *   instructional: { kpis, columns, activityMap: [row],
  *                    practice: [{ pageId, slug, title, section, embeds,
  *                                 videos, paragraphs, worksheets,
@@ -126,6 +130,9 @@
  *                 suggestions: [row] },
  *   unavailable: { <key>: { available: false, needs } }
  * }
+ * An attrRow is one attribute on one element: { pageId, pageTitle, title,
+ * slug, tag, attribute, value|null, src } (insights-block-save.js saves
+ * edits to them).
  * A finding is { code, severity: "error"|"warning"|"info", section, count,
  * pages, title, detail, params, pageList: [ref] }. pageList holds up to
  * thresholds.pageListLimit of the pages it is about; site-wide findings and
@@ -645,6 +652,7 @@ export function pageFacts(html, item, spec, options = {}) {
   const ytHosts = tagSet(spec.media.youtubeHosts);
   const trackKinds = tagSet(spec.media.captionTrackKinds);
   const containers = spec.instructional.objectiveContainers || [];
+  const blockTags = getIn(spec, ["blockAttributes", "tags"]) || {};
 
   const tags = {};
   const headings = [];
@@ -653,12 +661,24 @@ export function pageFacts(html, item, spec, options = {}) {
   const videos = [];
   const links = [];
   const objectives = [];
+  const blockEls = [];
   const tables = { count: 0, withoutHeaders: 0 };
   let paragraphs = 0;
 
   walk(root, (el) => {
     const tag = el.tag;
     tags[tag] = (tags[tag] || 0) + 1;
+    if (Object.prototype.hasOwnProperty.call(blockTags, tag)) {
+      // what the block operations API can change on this element
+      const attrs = {};
+      Object.keys(blockTags[tag]).forEach((name) => {
+        const value = attr(el, name);
+        if (value !== null) {
+          attrs[name] = value;
+        }
+      });
+      blockEls.push({ tag, attrs });
+    }
     if (tag === "p") {
       // a paragraph has text, or holds something (an equation, an image)
       if (
@@ -848,7 +868,67 @@ export function pageFacts(html, item, spec, options = {}) {
     tags,
     objectives,
     termHits,
+    blockEls,
   });
+}
+
+/**
+ * Rows for one attribute of each matching element, in page order:
+ * { pageId, pageTitle, title, slug, tag, attribute, value|null, src }.
+ * `fields` is [{ tag, attribute, src: [names] }]; `keep(field, value)`
+ * decides whether a row is listed.
+ */
+function blockAttributeRows(facts, fields, pageLabel, keep) {
+  const rows = [];
+  facts.forEach((f) => {
+    (f.blockEls || []).forEach((el) => {
+      fields.forEach((field) => {
+        if (!field || field.tag !== el.tag) {
+          return;
+        }
+        const value = Object.prototype.hasOwnProperty.call(
+          el.attrs,
+          field.attribute,
+        )
+          ? el.attrs[field.attribute]
+          : null;
+        if (!keep(field, value)) {
+          return;
+        }
+        let src = "";
+        (field.src || []).forEach((name) => {
+          if (src === "" && el.attrs[name]) {
+            src = el.attrs[name];
+          }
+        });
+        rows.push({
+          pageId: f.id,
+          pageTitle: pageLabel(f),
+          title: pageLabel(f),
+          slug: f.slug,
+          tag: el.tag,
+          attribute: field.attribute,
+          value,
+          src,
+        });
+      });
+    });
+  });
+  return rows;
+}
+
+/**
+ * How a media title reads: "missing" (absent or blank), "generic" (only
+ * words like "video" or "embed") or "ok".
+ */
+export function titleStatus(value, spec) {
+  const text = squash(value).toLowerCase();
+  if (text === "") {
+    return "missing";
+  }
+  const generic = tagSet(getIn(spec, ["media", "genericTitleWords"]) || []);
+  const words = text.split(/[^a-z0-9]+/).filter((w) => w !== "");
+  return words.length && words.every((w) => generic.has(w)) ? "generic" : "ok";
 }
 
 // ------------------------------------------------- llms.txt / robots.txt
@@ -1595,6 +1675,49 @@ export function siteResults(factsList, manifest, spec, options = {}) {
       });
     });
   });
+  // descriptions and titles the block operations API can set
+  // (haxtheweb/issues#3321)
+  const descRows = blockAttributeRows(
+    facts,
+    getIn(spec, ["accessibility", "descriptionFields"]) || [],
+    pageLabel,
+    (field, value) => !!field.listMissing || squash(value) !== "",
+  ).map((r) =>
+    Object.assign(r, { status: squash(r.value) === "" ? "missing" : "ok" }),
+  );
+  const titleRows = blockAttributeRows(
+    facts,
+    getIn(spec, ["media", "titleFields"]) || [],
+    pageLabel,
+    () => true,
+  ).map((r) => Object.assign(r, { status: titleStatus(r.value, spec) }));
+  const urlFields = [];
+  const blockTagRules = getIn(spec, ["blockAttributes", "tags"]) || {};
+  Object.keys(blockTagRules).forEach((tag) => {
+    Object.keys(blockTagRules[tag]).forEach((attribute) => {
+      if (blockTagRules[tag][attribute] === "url") {
+        urlFields.push({ tag, attribute, src: [] });
+      }
+    });
+  });
+  const blockUrls = blockAttributeRows(
+    facts,
+    urlFields,
+    pageLabel,
+    (field, value) => squash(value) !== "",
+  );
+  // what a screen needs to save edits to those rows
+  const savePages =
+    getIn(spec, ["bulkAltSave", "maxPagesPerSave"]) || ALT_SAVE_PAGES;
+  const srcAttributesOf = (fields) => {
+    const out = {};
+    (fields || []).forEach((field) => {
+      if (field && field.tag && Array.isArray(field.src)) {
+        out[field.tag] = field.src.slice();
+      }
+    });
+    return out;
+  };
   let untitledIframes = 0;
   let untitledIframePages = 0;
   facts.forEach((f) => {
@@ -3130,6 +3253,14 @@ export function siteResults(factsList, manifest, spec, options = {}) {
       },
       altRows,
       altCounts,
+      descRows,
+      descSave: {
+        note: getIn(spec, ["bulkAltSave", "descriptionsNote"]) || "",
+        srcAttributes: srcAttributesOf(
+          getIn(spec, ["accessibility", "descriptionFields"]),
+        ),
+        maxPagesPerSave: savePages,
+      },
       criteria,
       headingErrors,
       contrast,
@@ -3196,6 +3327,11 @@ export function siteResults(factsList, manifest, spec, options = {}) {
           ),
       },
       outsideLinkStatus: unavailable(spec, "outsideLinkStatus"),
+      blockUrls,
+      urlSave: {
+        note: getIn(spec, ["bulkAltSave", "replaceUrlsNote"]) || "",
+        maxPagesPerSave: savePages,
+      },
     },
     media: {
       kpis: {
@@ -3242,6 +3378,15 @@ export function siteResults(factsList, manifest, spec, options = {}) {
       })),
       videoMinutes: unavailable(spec, "videoDuration"),
       rebuildIndex: unavailable(spec, "mediaIndexRebuild"),
+      titleRows,
+      titleSave: {
+        note: getIn(spec, ["bulkAltSave", "titlesNote"]) || "",
+        srcAttributes: srcAttributesOf(getIn(spec, ["media", "titleFields"])),
+        genericWords: (
+          getIn(spec, ["media", "genericTitleWords"]) || []
+        ).slice(),
+        maxPagesPerSave: savePages,
+      },
     },
     instructional: {
       kpis: {
