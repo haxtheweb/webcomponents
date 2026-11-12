@@ -132,3 +132,12 @@ test("targets come from the admin contracts, not shared form-element ones", () =
   ]);
   assert.deepEqual(tags, ["a-dialog", "b-dialog"]);
 });
+
+test("a relative import of the layer counts (files inside d-d-d)", () => {
+  assert.deepEqual(
+    rules('import { HaxUiAdminTokens } from "./HaxUiAdminTokens.js";', {
+      target: true,
+    }),
+    [],
+  );
+});

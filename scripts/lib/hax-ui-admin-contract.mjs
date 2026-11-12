@@ -43,7 +43,7 @@
 
 /** imports that bring in the HAX UI layer */
 const LAYER_IMPORT =
-  /@haxtheweb\/d-d-d\/lib\/(HaxUiAdmin\w*|HaxUiDialogFrame)\.js|@haxtheweb\/hax-body\/lib\/hax-ui-styles\.js|HaxcmsAdminPanelStyles\.js|admin\/site-admin-sections\.js/;
+  /(@haxtheweb\/d-d-d\/lib\/|["']\.{1,2}\/(?:[\w.-]+\/)*)(HaxUiAdmin\w*|HaxUiDialogFrame)\.js|@haxtheweb\/hax-body\/lib\/hax-ui-styles\.js|HaxcmsAdminPanelStyles\.js|admin\/site-admin-sections\.js/;
 
 /** style maps that carry the one dialog frame into a simple-modal */
 const FRAME_REF =

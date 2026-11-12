@@ -32,9 +32,6 @@
     }
   },
   "elements/d-d-d/lib/hax-confirm-dialog.js": {
-    "layer": {
-      "no HAX UI import": 1
-    },
     "px-type": {
       "13px": 1
     }
