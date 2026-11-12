@@ -38,7 +38,8 @@
   "cssParts": [
     "heading",
     "heading-id",
-    "icon"
+    "icon",
+    "tooltip"
   ],
   "cssProperties": [],
   "hax": {

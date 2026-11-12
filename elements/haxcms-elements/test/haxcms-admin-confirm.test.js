@@ -38,6 +38,13 @@ describe("haxcms-admin-confirm", () => {
     expect(root.querySelector(".ok").classList.contains("danger-fill")).to.be
       .true;
     expect(root.querySelector(".ok").textContent.trim()).to.equal("Delete");
+    // meaning channels: the destructive action and cancel carry their icons
+    expect(
+      root.querySelector(".ok simple-icon-lite").getAttribute("icon"),
+    ).to.equal("hax:admin-delete");
+    expect(
+      root.querySelector(".cancel simple-icon-lite").getAttribute("icon"),
+    ).to.equal("hax:admin-close");
     root.querySelector(".ok").click();
     expect(await answer).to.equal(true);
     expect(document.querySelector("haxcms-admin-confirm")).to.equal(null);

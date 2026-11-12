@@ -4,6 +4,8 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { HaxUiAdminStyles } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
+import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminIcons.js";
 import { store } from "./AppHaxStore.js";
 
 export class AppHaxConfirmationModal extends I18NMixin(DDDSuper(LitElement)) {
@@ -244,6 +246,10 @@ export class AppHaxConfirmationModal extends I18NMixin(DDDSuper(LitElement)) {
             class="hax-ui-btn ghost button-cancel"
             @click="${this.closeModal}"
           >
+            <simple-icon-lite
+              icon="${HaxUiAdminIcons.close}"
+              aria-hidden="true"
+            ></simple-icon-lite>
             ${this.cancelText}
           </button>
           <button
@@ -253,6 +259,12 @@ export class AppHaxConfirmationModal extends I18NMixin(DDDSuper(LitElement)) {
             } button-confirm"
             @click="${this.confirmModal}"
           >
+            <simple-icon-lite
+              icon="${
+                this.dangerous ? HaxUiAdminIcons.delete : HaxUiAdminIcons.check
+              }"
+              aria-hidden="true"
+            ></simple-icon-lite>
             ${this.confirmText}
           </button>
         </div>

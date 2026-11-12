@@ -1498,7 +1498,8 @@ export const INTERNAL_CONTRACTS = [
       "haxcms-about-dialog-ui",
       "haxcms-site-import-export-dashboard",
       "haxcms-page-revisions-dialog",
-      "haxcms-site-insights",
+      "haxcms-site-reports",
+      "haxcms-system-settings",
     ],
     example:
       '<div style="font-family: var(--ddd-font-navigation); font-size: 14px; color: light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-white)); border: 1px solid light-dark(var(--ddd-theme-default-limestoneLight), rgba(255, 255, 255, 0.18)); border-radius: var(--ddd-radius-sm)"><div style="height: 32px; display: flex; align-items: center; padding: 0 var(--ddd-spacing-3); font-size: 12px; color: light-dark(var(--ddd-theme-default-slateGray), var(--ddd-theme-default-white65))">Title</div><div style="height: 36px; display: flex; align-items: center; padding: 0 var(--ddd-spacing-3); border-top: 1px solid light-dark(var(--ddd-theme-default-limestoneLight), rgba(255, 255, 255, 0.18))">Cell membranes</div><div style="height: 36px; display: flex; align-items: center; padding: 0 var(--ddd-spacing-3); border-top: 1px solid light-dark(var(--ddd-theme-default-limestoneLight), rgba(255, 255, 255, 0.18)); background: rgba(0, 95, 169, 0.18)">Osmosis lab (selected)</div></div>',

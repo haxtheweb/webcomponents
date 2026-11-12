@@ -105,7 +105,7 @@ class CMSToken extends CMSBase {
       }
       wipeSlot(this);
       let template = globalThis.document.createElement("template");
-      // security (JS-XSS-001): CMS token content is remote/backend-sourced;
+      // security (JS-XSS): CMS token content is remote/backend-sourced;
       // sanitize before writing to innerHTML
       template.innerHTML = sanitizeHTMLString(data.content);
       this.appendChild(globalThis.document.importNode(template.content, true));

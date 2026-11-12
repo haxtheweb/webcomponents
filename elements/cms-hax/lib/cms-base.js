@@ -148,7 +148,7 @@ export class CMSBase extends LitElement {
       this._updateEditLink(data);
       wipeSlot(this);
       let frag = globalThis.document.createElement("span");
-      // security (JS-XSS-001): CMS content is remote/backend-sourced; sanitize
+      // security (JS-XSS): CMS content is remote/backend-sourced; sanitize
       // before writing to innerHTML
       frag.innerHTML = sanitizeHTMLString(data.content);
       this.appendChild(frag.cloneNode(true));
@@ -172,7 +172,7 @@ export class CMSBase extends LitElement {
       const link = globalThis.document.getElementById("cmstokenidtolockonto");
       link.setAttribute("href", data.editEndpoint);
       if (data.editText) {
-        // security (JS-XSS-001): CMS-provided edit link text; sanitize before
+        // security (JS-XSS): CMS-provided edit link text; sanitize before
         // writing to innerHTML
         link.innerHTML = sanitizeHTMLString(data.editText);
       }

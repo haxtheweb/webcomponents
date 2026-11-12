@@ -1930,7 +1930,7 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
     );
     let body;
     if (this.viewMode === "rendered") {
-      // security (JS-XSS-001): revision HTML is stored editor content, so it
+      // security (JS-XSS): revision HTML is stored editor content, so it
       // is sanitized before the unsafeHTML sink
       body = html`<div class="rendered">
         ${unsafeHTML(sanitizeHTMLString(cmp.after.content || ""))}

@@ -1,4 +1,4 @@
-import { html, css } from "lit";
+import { html, css, nothing } from "lit";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
@@ -1049,7 +1049,7 @@ class HaxMap extends I18NMixin(SimpleColors) {
       role="treeitem"
       class="${classes}"
       aria-level="${row.depth + 1}"
-      aria-selected="${row.selectable ? (checked ? "true" : "false") : ""}"
+      aria-selected="${row.selectable ? (checked ? "true" : "false") : nothing}"
       tabindex="${index === this.focusIndex ? "0" : "-1"}"
       data-index="${index}"
       @click="${(e) => this._onRowClick(e, index)}"

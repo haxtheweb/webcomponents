@@ -565,7 +565,7 @@ export function sanitizeHTMLString(
  * @param {String} raw - raw navigation target (absolute href or relative path)
  * @returns {String} validated href safe for globalThis.location assignment
  */
-// security (F7/JS-URL-001): validate scheme before navigation
+// security (JS-URL): validate scheme before navigation
 export function safeNavigateHref(raw) {
   try {
     const u = new URL(raw, globalThis.location.href);

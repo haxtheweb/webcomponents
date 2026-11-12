@@ -378,7 +378,7 @@ class CmsHax extends LitElement {
     // if there's a redirect on save, then redirect to it bc of the cancel event
     if (this.redirectOnSave) {
       setTimeout(() => {
-        // security (F7/JS-URL-001): validate scheme before navigation; block javascript:/data:/vbscript:
+        // security (JS-URL): validate scheme before navigation; block javascript:/data:/vbscript:
         globalThis.location = safeNavigateHref(this.redirectLocation);
       }, 0);
     }
@@ -440,7 +440,7 @@ class CmsHax extends LitElement {
       // in the integration point
       if (this.redirectOnSave) {
         setTimeout(() => {
-          // security (F7/JS-URL-001): validate scheme before navigation; block javascript:/data:/vbscript:
+          // security (JS-URL): validate scheme before navigation; block javascript:/data:/vbscript:
           globalThis.location = safeNavigateHref(this.redirectLocation);
         }, 2000);
       }

@@ -86,7 +86,7 @@
   
     // Listen for messages from iframes
     globalThis.addEventListener('message', function receiveMessage(event) {
-      // security: ignore non-object message data (JS-MSG-001)
+      // security: ignore non-object message data (JS-MSG)
       if (!event.data || typeof event.data !== 'object') { return; }
   
       // Find out who sent the message
@@ -104,7 +104,7 @@
 
       // security: the message origin must match the origin the iframe was
       // loaded from, so a navigated / hijacked frame can not drive resizes
-      // (JS-MSG-001)
+      // (JS-MSG)
       try {
         if (event.origin !== new URL(iframe.src, globalThis.location.href).origin) {
           return;
@@ -114,7 +114,7 @@
       }
   
       // Find action handler handler
-      // security: standard h5p resize messages require context === 'h5p' (JS-MSG-001)
+      // security: standard h5p resize messages require context === 'h5p' (JS-MSG)
       if (event.data.context === 'h5p' && actionHandlers[event.data.action]) {
         actionHandlers[event.data.action](iframe, event.data, function respond(action, data) {
           if (data === undefined) {
@@ -153,7 +153,7 @@
     };
     for (var i = 0; i < iframes.length; i++) {
       if (iframes[i].src.indexOf('h5p') !== -1) {
-        // security: target the iframe's own origin instead of '*' (JS-MSG-001)
+        // security: target the iframe's own origin instead of '*' (JS-MSG)
         try { iframes[i].contentWindow.postMessage(ready, new URL(iframes[i].src).origin); } catch (e) {}
       }
     }

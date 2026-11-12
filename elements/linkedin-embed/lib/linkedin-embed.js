@@ -407,19 +407,27 @@ class LinkedinEmbed extends I18NMixin(DDD) {
     };
     globalThis.addEventListener("message", this.__badgeSizeHandler);
     badgeHost.appendChild(iframe);
+    // security (JS-MSG): the badge only reports its size to this page's own
+    // origin, never "*"; a page with an opaque origin (file://, sandboxed)
+    // has no origin to name, so the badge keeps its default size there
+    const pageOrigin =
+      globalThis.location &&
+      globalThis.location.origin &&
+      globalThis.location.origin !== "null"
+        ? globalThis.location.origin
+        : "";
     // JSON.stringify alone does not make a value safe inside <script>:
     // also escape <, > and line separators (CodeQL js/bad-code-sanitization)
-    const parentOrigin = JSON.stringify(
-      globalThis.location &&
-        globalThis.location.origin &&
-        globalThis.location.origin !== "null"
-        ? globalThis.location.origin
-        : "*",
-    ).replace(/[<>\u2028\u2029]/g, (c) => {
-      return "\\u" + c.charCodeAt(0).toString(16).padStart(4, "0");
-    });
-    const sizeScript = `<script>(function(){function s(){var b=document.body;if(!b)return;parent.postMessage({type:"linkedin-embed-size",height:b.scrollHeight||300,width:b.scrollWidth||330},${parentOrigin});}window.addEventListener("load",s);setTimeout(s,500);setTimeout(s,2000);})();</script>`;
-    // security: write badge via srcdoc instead of document.write (avoids JS-XSS-002 document.write sink)
+    const parentOrigin = JSON.stringify(pageOrigin).replace(
+      /[<>\u2028\u2029]/g,
+      (c) => {
+        return "\\u" + c.charCodeAt(0).toString(16).padStart(4, "0");
+      },
+    );
+    const sizeScript = pageOrigin
+      ? `<script>(function(){function s(){var b=document.body;if(!b)return;parent.postMessage({type:"linkedin-embed-size",height:b.scrollHeight||300,width:b.scrollWidth||330},${parentOrigin});}window.addEventListener("load",s);setTimeout(s,500);setTimeout(s,2000);})();</script>`
+      : "";
+    // security: write badge via srcdoc instead of document.write (JS-XSS: no document.write sink)
     iframe.srcdoc = `<!doctype html><html><head><base target="_blank"><style>html,body{margin:0;padding:0;overflow:hidden;background:transparent;line-height:0;}</style></head><body>${badgeHtml}${sizeScript}</body></html>`;
   }
 

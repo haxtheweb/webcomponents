@@ -521,7 +521,7 @@ class JwtLogin extends LitElement {
     this._dispatchLogoutComplete(ok, status);
     if (redirect && this.redirectUrl) {
       setTimeout(() => {
-        // security: validate scheme before navigation (JS-URL-001)
+        // security: validate scheme before navigation (JS-URL)
         globalThis.location.href = this.safeRedirect(this.redirectUrl);
       }, 100);
     }
@@ -581,7 +581,7 @@ class JwtLogin extends LitElement {
       this.logoutUrl !== "undefined"
     ) {
       if (this.isDifferentDomain(this.logoutUrl)) {
-        // security: validate scheme before navigation (JS-URL-001)
+        // security: validate scheme before navigation (JS-URL)
         globalThis.location.href = this.safeRedirect(this.logoutUrl);
       } else {
         this.generateRequest(
@@ -609,7 +609,7 @@ class JwtLogin extends LitElement {
     }
   }
 
-  // security: only allow http(s) navigation; blocks javascript:/data: schemes that would execute on location.href assignment (JS-URL-001)
+  // security: only allow http(s) navigation; blocks javascript:/data: schemes that would execute on location.href assignment (JS-URL)
   safeRedirect(raw) {
     try {
       const u = new URL(raw, globalThis.location.href);

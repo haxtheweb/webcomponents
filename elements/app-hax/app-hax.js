@@ -346,7 +346,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
   }
 
   goToLocation(location) {
-    // security (F7/JS-URL-001): validate scheme before navigation; block javascript:/data:/vbscript:
+    // security (JS-URL): validate scheme before navigation; block javascript:/data:/vbscript:
     globalThis.location = safeNavigateHref(location);
   }
 
@@ -816,7 +816,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           if (location.route.slug) {
             this.reset();
             setTimeout(() => {
-              // security (F7/JS-URL-001): validate scheme before navigation; block javascript:/data:/vbscript:
+              // security (JS-URL): validate scheme before navigation; block javascript:/data:/vbscript:
               globalThis.location = safeNavigateHref(location.route.slug);
             }, 0);
           }

@@ -5,6 +5,9 @@
 import { LitElement, html, css, nothing } from "lit";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { HaxUiAdminStyles } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
+import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminIcons.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 
 /**
  * `haxcms-admin-confirm`
@@ -267,6 +270,10 @@ export class HAXCMSAdminConfirm extends I18NMixin(LitElement) {
               class="hax-ui-btn ghost cancel"
               @click="${this._cancel}"
             >
+              <simple-icon-lite
+                icon="${HaxUiAdminIcons.close}"
+                aria-hidden="true"
+              ></simple-icon-lite>
               ${cancelLabel}
             </button>
             <button
@@ -274,6 +281,10 @@ export class HAXCMSAdminConfirm extends I18NMixin(LitElement) {
               class="hax-ui-btn ${this.danger ? "danger-fill" : "primary"} ok"
               ?disabled="${!this._canConfirm()}"
             >
+              <simple-icon-lite
+                icon="${this.danger ? HaxUiAdminIcons.delete : HaxUiAdminIcons.check}"
+                aria-hidden="true"
+              ></simple-icon-lite>
               ${confirmLabel}
             </button>
           </div>

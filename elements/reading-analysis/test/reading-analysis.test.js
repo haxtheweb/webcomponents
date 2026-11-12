@@ -198,6 +198,72 @@ describe("reading-analysis", () => {
       expect(el._placed.length).to.equal(0);
     });
 
+    it("is one tab stop; the arrow keys, Home and End move between passages", async () => {
+      const stops = () =>
+        Array.from(el.shadowRoot.querySelectorAll('[data-t][tabindex="0"]'));
+      expect(stops().length).to.equal(1);
+      expect(stops()[0].getAttribute("data-t")).to.equal(sid(0));
+      const key = (k) =>
+        el.shadowRoot.activeElement.dispatchEvent(
+          new KeyboardEvent("keydown", {
+            key: k,
+            bubbles: true,
+            composed: true,
+            cancelable: true,
+          }),
+        );
+      target(el, sid(0)).focus();
+      key("ArrowDown");
+      expect(el.shadowRoot.activeElement.getAttribute("data-t")).to.equal(
+        sid(1),
+      );
+      expect(stops().length).to.equal(1);
+      key("End");
+      expect(el.shadowRoot.activeElement.getAttribute("data-t")).to.equal(fid);
+      key("ArrowDown");
+      expect(el.shadowRoot.activeElement.getAttribute("data-t")).to.equal(fid);
+      key("Home");
+      expect(el.shadowRoot.activeElement.getAttribute("data-t")).to.equal(
+        sid(0),
+      );
+      key("ArrowUp");
+      expect(el.shadowRoot.activeElement.getAttribute("data-t")).to.equal(
+        sid(0),
+      );
+      // the passage reached last keeps the tab stop
+      key("ArrowRight");
+      expect(stops().map((n) => n.getAttribute("data-t"))).to.deep.equal([
+        sid(1),
+      ]);
+      expect(
+        el.shadowRoot
+          .querySelector("#reading")
+          .getAttribute("aria-describedby"),
+      ).to.equal("ra-keys");
+      expect(el.shadowRoot.querySelector("#ra-keys").textContent).to.include(
+        "sentence",
+      );
+      expect(
+        el.shadowRoot.querySelector("#ra-live").getAttribute("aria-live"),
+      ).to.equal("polite");
+    });
+
+    it("names correct and incorrect placements in words, not only the mark", async () => {
+      await place(el, "Racism", sid(0));
+      await place(el, "Communism", sid(2));
+      el.checkAnswer();
+      await flush(150);
+      await el.updateComplete;
+      const rows = Array.from(
+        el.shadowRoot.querySelectorAll("ul.placements li"),
+      );
+      const ok = rows.find((r) => r.classList.contains("res-correct"));
+      const bad = rows.find((r) => r.classList.contains("res-incorrect"));
+      expect(ok.textContent).to.include("evidence for this flag");
+      expect(ok.textContent).to.not.include("not evidence");
+      expect(bad.textContent).to.include("not evidence for this flag");
+    });
+
     it("scores, marks each tab, and sends a conformant matching statement", async () => {
       await place(el, "Racism", sid(0));
       await place(el, "Racism", sid(1));
