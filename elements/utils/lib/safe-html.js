@@ -179,10 +179,12 @@ function restoreTemplateScripts(input) {
     const end = e.index + e[0].length;
     const match = input
       .slice(t.index, end)
-      .replace("&lt;script&gt;", "<script>")
-      .replace("&lt;/script&gt;", "</script>")
-      .replace("&lt;style&gt;", "<style>")
-      .replace("&lt;/style&gt;", "</style>");
+      // case-insensitive like the scan above, so an upper-case marker the
+      // scan matched is restored too (first occurrence, as before)
+      .replace(/&lt;script&gt;/i, "<script>")
+      .replace(/&lt;\/script&gt;/i, "</script>")
+      .replace(/&lt;style&gt;/i, "<style>")
+      .replace(/&lt;\/style&gt;/i, "</style>");
     out += input.slice(pos, t.index) + match;
     pos = end;
   }
