@@ -260,3 +260,57 @@ describe("image-gallery behavior gaps", () => {
     ).to.equal(true);
   });
 });
+
+describe("image-gallery keeps media-image card and box (issues#2981)", () => {
+  async function gallery(mode) {
+    const el = await fixture(
+      html`<image-gallery mode="${mode}">
+        <media-image
+          source="https://placehold.co/200x100"
+          alt="carded"
+          card
+        ></media-image>
+        <media-image
+          source="https://placehold.co/100x200"
+          alt="boxed"
+          box
+        ></media-image>
+        <img src="https://placehold.co/100x100" alt="plain" />
+      </image-gallery>`,
+    );
+    await el.updateComplete;
+    await flush(150);
+    await el.updateComplete;
+    return el;
+  }
+
+  ["grid", "masonry"].forEach((mode) => {
+    it(`shows card and box on ${mode} items when published`, async () => {
+      const el = await gallery(mode);
+      const items = el.shadowRoot.querySelectorAll(`.${mode}-item`);
+      expect(items.length).to.equal(3);
+      expect(items[0].classList.contains("card")).to.be.true;
+      expect(items[1].classList.contains("box")).to.be.true;
+      expect(items[2].classList.contains("card")).to.be.false;
+      expect(items[2].classList.contains("box")).to.be.false;
+    });
+  });
+
+  it("shows the active image's card in gallery mode", async () => {
+    const el = await gallery("gallery");
+    const main = el.shadowRoot.querySelector(".gallery-main");
+    expect(main.classList.contains("card")).to.be.true;
+    el.setActiveIndex(2);
+    await el.updateComplete;
+    expect(main.classList.contains("card")).to.be.false;
+  });
+
+  it("follows card being turned off on a media-image", async () => {
+    const el = await gallery("grid");
+    el.querySelector("media-image").removeAttribute("card");
+    await flush(150);
+    await el.updateComplete;
+    const item = el.shadowRoot.querySelector(".grid-item");
+    expect(item.classList.contains("card")).to.be.false;
+  });
+});

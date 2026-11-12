@@ -56,7 +56,7 @@ export class ImageGallery extends I18NMixin(DDD) {
       childList: true,
       attributes: true,
       subtree: true,
-      attributeFilter: ["src", "alt", "source"],
+      attributeFilter: ["src", "alt", "source", "card", "box"],
     });
     this.addEventListener("keydown", this._handleKeydown);
     this.addEventListener("drop", this._onDrop, true);
@@ -312,6 +312,44 @@ export class ImageGallery extends I18NMixin(DDD) {
           outline-offset: var(--ddd-spacing-1);
         }
 
+        /* A media-image's card or box setting is shown on its gallery item
+           too, as it is in edit mode, where the media-image itself renders.
+           The whole image shows (contain), so a transparent image sits on
+           the card rather than being cropped against the tile. */
+        .grid-item.card,
+        .masonry-item.card,
+        .gallery-main.card {
+          box-shadow: var(--ddd-boxShadow-sm);
+          border: var(--ddd-border-xs);
+          border-color: var(--ddd-theme-default-limestoneLight);
+          padding: var(--ddd-spacing-3);
+          background-color: light-dark(
+            var(
+              --ddd-component-media-image-card-color,
+              var(--ddd-theme-default-white)
+            ),
+            var(
+              --ddd-component-media-image-card-color-dark,
+              var(--ddd-theme-default-coalyGray)
+            )
+          );
+        }
+
+        .grid-item.box,
+        .masonry-item.box,
+        .gallery-main.box {
+          padding: var(--ddd-spacing-3);
+          background-color: light-dark(
+            var(--ddd-theme-accent, var(--ddd-accent-2)),
+            var(--ddd-theme-accent, var(--ddd-primary-4))
+          );
+        }
+
+        .grid-item.card img,
+        .grid-item.box img {
+          object-fit: contain;
+        }
+
         .slot-hidden {
           display: none;
         }
@@ -418,7 +456,9 @@ export class ImageGallery extends I18NMixin(DDD) {
             <button
               class="grid-item ${
                 image.element === this._newImageElement ? "new-image" : ""
-              } ${image.uploading ? "uploading" : ""}"
+              } ${image.uploading ? "uploading" : ""} ${this._frameClass(
+                image,
+              )}"
               aria-label="${this.t.openImage}: ${image.alt || ""}"
               title="${this.t.openImage}: ${image.alt || ""}"
               @click="${(e) => this._handleImageClick(e, image, index)}"
@@ -446,7 +486,9 @@ export class ImageGallery extends I18NMixin(DDD) {
             <button
               class="masonry-item ${
                 image.element === this._newImageElement ? "new-image" : ""
-              } ${image.uploading ? "uploading" : ""}"
+              } ${image.uploading ? "uploading" : ""} ${this._frameClass(
+                image,
+              )}"
               aria-label="${this.t.openImage}: ${image.alt || ""}"
               title="${this.t.openImage}: ${image.alt || ""}"
               @click="${(e) => this._handleImageClick(e, image, index)}"
@@ -465,7 +507,7 @@ export class ImageGallery extends I18NMixin(DDD) {
     const activeImage = this.images[this.activeIndex];
     return html`
       <div class="gallery-layout">
-        <div class="gallery-main">
+        <div class="gallery-main ${this._frameClass(activeImage)}">
           ${
             activeImage
               ? html`
@@ -553,9 +595,24 @@ export class ImageGallery extends I18NMixin(DDD) {
         tagName: el.tagName,
         src: src,
         alt: alt,
+        // media-image reflects both, so they are in the saved markup
+        card: el.tagName === "MEDIA-IMAGE" && el.hasAttribute("card"),
+        box: el.tagName === "MEDIA-IMAGE" && el.hasAttribute("box"),
         uploading: el.hasAttribute("uploading"),
       };
     });
+  }
+
+  /**
+   * The card / box class an image's gallery item gets from its media-image
+   * @param {object} image an entry of this.images
+   * @returns {string}
+   */
+  _frameClass(image) {
+    if (!image) {
+      return "";
+    }
+    return image.card ? "card" : image.box ? "box" : "";
   }
 
   _setActiveIndex(index) {
