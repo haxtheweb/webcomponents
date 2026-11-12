@@ -146,8 +146,13 @@ class CodeSample extends I18NMixin(LitElement) {
           padding: var(--code-sample-demo-padding, 0);
         }
 
+        /* long lines scroll inside the block instead of widening the page
+           (reflow at 320px, WCAG 1.4.10) */
         #code-container {
           position: relative;
+          max-width: 100%;
+          min-width: 0;
+          overflow-x: auto;
         }
 
         /* copy keeps its visible word (Copy / Done / Error), so it is a

@@ -274,6 +274,18 @@ export class MarkTheWords extends QuestionElement {
             var(--ddd-theme-default-slateGray)
           );
         }
+
+        /* a focus ring that reads on light and dark surfaces; outlines also
+           survive forced colors, where box-shadows and backgrounds vanish */
+        /* specific enough to win over the sentence words' outline: none */
+        :host(:not([show-answer])) button.tag-option.tag-option:focus-visible {
+          outline: 2px solid
+            light-dark(
+              var(--ddd-theme-default-link, #005fa9),
+              var(--ddd-theme-default-linkLight, #cce9ff)
+            );
+          outline-offset: 2px;
+        }
       `,
     ];
   }

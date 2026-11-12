@@ -51,6 +51,22 @@ class HaxorSlevin extends I18NMixin(
         #slot {
           padding-block-start: var(--ddd-spacing-6);
         }
+
+        /* a focus ring that reads on light and dark surfaces; outlines also
+           survive forced colors, where box-shadows and backgrounds vanish */
+        /* the link wraps a whole card: a block box gives its focus ring a
+           real outline instead of one around empty inline fragments */
+        .article-link {
+          display: block;
+        }
+        .article-link:focus-visible {
+          outline: 2px solid
+            light-dark(
+              var(--ddd-theme-default-link, #005fa9),
+              var(--ddd-theme-default-linkLight, #cce9ff)
+            );
+          outline-offset: 2px;
+        }
       `,
       css`
         :host {

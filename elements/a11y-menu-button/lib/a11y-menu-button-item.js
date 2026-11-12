@@ -24,6 +24,10 @@ const A11yMenuButtonItemBehaviors = function (SuperClass) {
           *[role="menuitem"],
           *[role="menuitem"]:visited {
             display: block;
+            /* at least a 24px target (WCAG 2.5.8) when items have no
+               vertical padding */
+            min-height: 24px;
+            box-sizing: border-box;
             margin: 0;
             border-radius: 0;
             font-family: inherit;

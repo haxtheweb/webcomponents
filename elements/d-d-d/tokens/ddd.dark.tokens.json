@@ -74,6 +74,22 @@
         }
       }
     },
+    "focus": {
+      "ring": {
+        "$type": "border",
+        "$value": {
+          "color": "{ddd.color.linkLight}",
+          "width": "2px",
+          "style": "solid"
+        },
+        "$description": "Focus ring style",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-focus-ring"
+          }
+        }
+      }
+    },
     "eyebrow": {
       "color": {
         "$type": "color",

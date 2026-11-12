@@ -891,7 +891,13 @@ export const DDDVariables = css`
        Standardized focus indicators for accessibility
        Usage: outline: var(--ddd-focus-ring); outline-offset: var(--ddd-focus-offset);
        =========================================== */
-    --ddd-focus-ring: 2px solid var(--ddd-theme-default-link); /* Focus ring style */
+    /* link blue on light surfaces, linkLight on dark ones: the dark blue
+       ring is under 3:1 against dark pages (WCAG 1.4.11) */
+    --ddd-focus-ring: 2px solid
+      light-dark(
+        var(--ddd-theme-default-link),
+        var(--ddd-theme-default-linkLight)
+      ); /* Focus ring style */
     --ddd-focus-offset: 2px; /* Focus ring offset distance */
 
     /* ===========================================

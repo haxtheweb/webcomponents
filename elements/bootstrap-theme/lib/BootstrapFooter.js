@@ -138,6 +138,17 @@ class BootstrapFooter extends I18NMixin(LitElement) {
           box-shadow: inset 0 2px 4px 0
             rgb(var(--bootstrap-theme-light-secondary-background-color), 0.7);
         }
+
+        /* a focus ring that reads on light and dark surfaces; outlines also
+           survive forced colors, where box-shadows and backgrounds vanish */
+        :host .btn-outline-primary:focus-visible {
+          outline: 2px solid
+            light-dark(
+              var(--ddd-theme-default-link, #005fa9),
+              var(--ddd-theme-default-linkLight, #cce9ff)
+            );
+          outline-offset: 2px;
+        }
       `,
     ];
   }

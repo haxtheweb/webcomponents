@@ -102,6 +102,17 @@ class GitCorner extends LitElement {
             transition-delay: 0ms !important;
           }
         }
+
+        /* a focus ring that reads on light and dark surfaces; outlines also
+           survive forced colors, where box-shadows and backgrounds vanish */
+        a.github-corner:focus-visible {
+          outline: 2px solid
+            light-dark(
+              var(--ddd-theme-default-link, #005fa9),
+              var(--ddd-theme-default-linkLight, #cce9ff)
+            );
+          outline-offset: 2px;
+        }
       `,
     ];
   }

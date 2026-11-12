@@ -673,9 +673,16 @@ export class ConceptMapGame extends MicroGameBase {
         }
 
         .stage:focus-visible {
-          outline: var(--ddd-border-md);
-          outline-color: var(--micro-game-accent);
-          outline-offset: -6px;
+          /* a ring in the link blue that reads in light, dark and forced
+             colors */
+          outline: 3px solid
+            light-dark(
+              var(--ddd-theme-default-link, #005fa9),
+              var(--ddd-theme-default-linkLight, #cce9ff)
+            );
+          /* outside the board: sprites and layers inside it would cover an
+             inset ring */
+          outline-offset: 2px;
         }
 
         .spokes {

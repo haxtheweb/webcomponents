@@ -29,6 +29,13 @@ class LoremData extends I18NMixin(LoremDataBehaviors(LitElement)) {
           font-size: var(--ddd-font-size-4xs, 14px);
           font-family: var(--ddd-font-primary, sans-serif);
         }
+        /* the download links are standalone targets, not words in a
+           sentence: give them a 24px box (WCAG 2.5.8) */
+        a {
+          display: inline-block;
+          min-height: 24px;
+          line-height: 24px;
+        }
         textarea {
           width: 100%;
           min-height: var(--ddd-textfield-height-lg, 200px);
