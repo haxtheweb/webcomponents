@@ -362,7 +362,7 @@ export default function build() {
   const files = {
     "ddd.tokens.json": {
       ...head(
-        "DDD (Design, Develop, Destroy) design tokens for HAXTheWeb, light values. Generated from elements/d-d-d/lib/DDDStyles.js and SimpleColors; do not edit by hand.",
+        "DDD (Design, Develop, Deliver) design tokens for HAXTheWeb, light values. Generated from elements/d-d-d/lib/DDDStyles.js and SimpleColors; do not edit by hand.",
       ),
       ...light,
     },

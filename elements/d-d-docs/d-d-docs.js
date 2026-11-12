@@ -87,7 +87,7 @@ import { unsafeHTML } from "lit/directives/unsafe-html.js";
 
 /**
  * `d-d-docs`
- * `design, develop, destroy the competition, documentation`
+ * `design, develop, deliver: documentation`
  * @demo demo/index.html
  * @element d-d-docs
  */
@@ -3314,7 +3314,7 @@ class DDDocs extends I18NMixin(DDD) {
       canEditSource: true,
       contentEditable: false,
       gizmo: {
-        title: "Design, Develop, Destroy",
+        title: "Design, Develop, Deliver",
         description: "Design system implementation for HAX",
         icon: "hax:hax2022",
         color: "purple",
