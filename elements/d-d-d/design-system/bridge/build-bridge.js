@@ -653,7 +653,7 @@ function toHex(value) {
     return `#${[rgb[1], rgb[2], rgb[3]].map((n) => byte(Number(n) / 255)).join("")}`;
   }
   const ok =
-    /^oklch\(\s*([\d.]+)(%?)\s+([\d.]+)\s+([\d.]+)\s*(?:\/\s*([\d.]+%?))?\s*\)$/i.exec(
+    /^oklch\(\s*([\d.]+)(%?)\s+([\d.]+|none)\s+([\d.]+|none)\s*(?:\/\s*([\d.]+%?))?\s*\)$/i.exec(
       v,
     );
   if (ok) {
@@ -665,8 +665,9 @@ function toHex(value) {
     }
     // OKLCH → OKLab → linear sRGB → sRGB (Björn Ottosson's matrices)
     const L = ok[2] ? Number(ok[1]) / 100 : Number(ok[1]);
-    const C = Number(ok[3]);
-    const H = (Number(ok[4]) * Math.PI) / 180;
+    // "none" is a missing component (Tailwind writes neutrals that way): 0
+    const C = ok[3] === "none" ? 0 : Number(ok[3]);
+    const H = ok[4] === "none" ? 0 : (Number(ok[4]) * Math.PI) / 180;
     const a = C * Math.cos(H);
     const b = C * Math.sin(H);
     const l = (L + 0.3963377774 * a + 0.2158037573 * b) ** 3;
