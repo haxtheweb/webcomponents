@@ -125,26 +125,38 @@ describe("user-action behaviors", () => {
     globalThis.document.removeEventListener("user-engagement", handler);
   });
 
-  it('legacy track="keypress" attaches a keydown listener', async () => {
+  it('saved track="keypress" is read as keydown and records like it', async () => {
     const el = await fixture(
       html`<user-action track="keypress"></user-action>`,
     );
-    // the authored track value is kept for reporting and validity
-    expect(el.track).to.equal("keypress");
+    // the saved attribute is left as authored; the element tracks keydown
+    expect(el.getAttribute("track")).to.equal("keypress");
+    expect(el.track).to.equal("keydown");
     expect(el.__trackedEventName).to.equal("keydown");
     const events = [];
     const handler = (e) => events.push(e);
     globalThis.document.addEventListener("user-engagement", handler);
-    // the deprecated keypress event is no longer listened for
+    // the deprecated keypress event is not listened for
     el.dispatchEvent(
       new KeyboardEvent("keypress", { key: "a", bubbles: true }),
     );
     expect(events.length).to.equal(0);
-    // keydown fires the engagement event and reports the authored eventType
+    // keydown fires one engagement event, reported and recorded as keydown
     el.dispatchEvent(new KeyboardEvent("keydown", { key: "a", bubbles: true }));
     expect(events.length).to.equal(1);
-    expect(events[0].detail.eventType).to.equal("keypress");
+    expect(events[0].detail.eventType).to.equal("keydown");
+    expect(events[0].detail.statement.verb.id).to.contain("interacted");
     globalThis.document.removeEventListener("user-engagement", handler);
+  });
+
+  it('a "keypress" track set as a property is read as keydown', async () => {
+    const el = await fixture(html`<user-action track="click"></user-action>`);
+    el._setTracking("keypress");
+    expect(el.track).to.equal("keydown");
+    expect(el.__trackedEventName).to.equal("keydown");
+    expect(UserAction.normalizeTrack("keypress")).to.equal("keydown");
+    expect(UserAction.normalizeTrack("")).to.equal("visibility");
+    expect(UserAction.normalizeTrack("click")).to.equal("click");
   });
 
   it("clears tracking via _setTracking(null)", async () => {
@@ -307,7 +319,6 @@ describe("user-action behaviors", () => {
       "mousedown",
       "mouseup",
       "visibility",
-      "keypress",
       "keydown",
       "keyup",
       "focusin",
@@ -316,6 +327,9 @@ describe("user-action behaviors", () => {
     for (const k of known) {
       expect(UABroker.valid(k)).to.equal(true, `expected ${k} to be valid`);
     }
+    // the deprecated keypress event is not a track (user-action reads a
+    // saved track="keypress" as keydown before it gets here)
+    expect(UABroker.valid("keypress")).to.equal(false);
     expect(UABroker.valid("bogus")).to.equal(false);
     expect(UABroker.valid("")).to.equal(false);
   });
@@ -347,21 +361,20 @@ describe("user-action behaviors", () => {
     const events = [];
     const handler = (e) => events.push(e);
     globalThis.document.addEventListener("user-engagement", handler);
-    ["visibility", "click", "keypress", "keydown"].forEach((t) =>
+    ["visibility", "click", "keydown"].forEach((t) =>
       UABroker.fire("user-engagement", t, {}, el, false),
     );
     ["hover", "focusin", "keyup", "mousedown"].forEach((t) =>
       UABroker.fire("user-engagement", t, {}, el, false),
     );
     globalThis.document.removeEventListener("user-engagement", handler);
-    expect(events.length).to.equal(8);
-    const recorded = events.slice(0, 4);
-    const skipped = events.slice(4);
+    expect(events.length).to.equal(7);
+    const recorded = events.slice(0, 3);
+    const skipped = events.slice(3);
     expect(recorded[0].detail.statement.verb.id).to.contain("experienced");
     expect(recorded[1].detail.statement.verb.id).to.contain("interacted");
-    expect(recorded[2].detail.statement.verb.id).to.contain("interacted");
     // track="keydown" ("Press a key here" in HAX) is a deliberate use too
-    expect(recorded[3].detail.statement.verb.id).to.contain("interacted");
+    expect(recorded[2].detail.statement.verb.id).to.contain("interacted");
     skipped.forEach((e) => {
       expect(e.detail.statement).to.equal(undefined);
       expect(e.detail.xapi).to.equal(false);

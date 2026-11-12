@@ -404,7 +404,7 @@ export const XAPI_VOCABULARY = {
     objectType: "http://adlnet.gov/expapi/activities/interaction",
     result: [],
     countsTowardCompletion: false,
-    done: "never; records that something was seen (visibility) or used (click, keypress)",
+    done: "never; records that something was seen (visibility) or used (click, key press)",
     source: "elements/user-action/user-action.js",
   },
   "video-player": {

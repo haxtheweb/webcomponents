@@ -32,7 +32,7 @@ class UserAction extends HTMLElement {
       objectType: "http://adlnet.gov/expapi/activities/interaction",
       result: [],
       countsTowardCompletion: false,
-      done: "never; records that something was seen (visibility) or used (click, keypress)",
+      done: "never; records that something was seen (visibility) or used (click, key press)",
     };
   }
   /**
@@ -68,6 +68,9 @@ class UserAction extends HTMLElement {
     if (!track) {
       return;
     }
+    // a track set as a property can still be the legacy "keypress"
+    track = UserAction.normalizeTrack(track);
+    this.track = track;
     if (!UABroker.valid(track)) {
       // issues#3102 #53: validate track strings BEFORE installing listeners
       // so typos are caught at install time instead of only at fire time.
@@ -88,9 +91,7 @@ class UserAction extends HTMLElement {
         this.observer.observe(this);
         break;
       default:
-        // legacy track="keypress" attaches keydown (keypress is deprecated);
-        // this.track is unchanged so the fired event still reports keypress
-        this.__trackedEventName = track === "keypress" ? "keydown" : track;
+        this.__trackedEventName = track;
         this.addEventListener(
           this.__trackedEventName,
           this.__boundUserActionEvent,
@@ -142,9 +143,22 @@ class UserAction extends HTMLElement {
     return ["track", "eventname", "every", "demo"];
   }
 
+  /**
+   * The track an attribute value means. Saved content may still say
+   * track="keypress" (the deprecated keypress event); it is read as keydown,
+   * which HAX writes for "Press a key here", so it listens, reports and
+   * records the same way. The attribute itself is left as saved.
+   */
+  static normalizeTrack(value) {
+    if (!value) {
+      return "visibility";
+    }
+    return value === "keypress" ? "keydown" : value;
+  }
+
   attributeChangedCallback(attr, oldValue, newValue) {
     if (attr === "track") {
-      this.track = newValue || "visibility";
+      this.track = UserAction.normalizeTrack(newValue);
       this._setTracking(this.track);
     } else if (attr === "eventname" && newValue) {
       this.eventname = newValue;
