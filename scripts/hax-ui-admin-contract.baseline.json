@@ -1,0 +1,205 @@
+{
+  "elements/app-hax/app-hax.js": {
+    "modal-close": {
+      "modal without close": 1
+    }
+  },
+  "elements/app-hax/lib/v2/admin/haxcms-system-settings.js": {
+    "px-type": {
+      "11px": 2,
+      "13px": 1,
+      "15px": 1,
+      "18px": 1
+    }
+  },
+  "elements/app-hax/lib/v2/app-hax-confirmation-modal.js": {
+    "own-dialog": {
+      "dialog": 1
+    },
+    "px-type": {
+      "13px": 1,
+      "15px": 1
+    }
+  },
+  "elements/app-hax/lib/v2/app-hax-site-creation-modal.js": {
+    "content-type": {
+      "--ddd-font-size-4xs": 1
+    }
+  },
+  "elements/app-hax/lib/v2/app-hax-user-access-modal.js": {
+    "px-type": {
+      "15px": 1
+    }
+  },
+  "elements/d-d-d/lib/hax-confirm-dialog.js": {
+    "layer": {
+      "no HAX UI import": 1
+    },
+    "px-type": {
+      "13px": 1
+    }
+  },
+  "elements/haxcms-elements/lib/core/admin/haxcms-admin-confirm.js": {
+    "own-dialog": {
+      "dialog": 1
+    },
+    "px-type": {
+      "13px": 1,
+      "15px": 1
+    }
+  },
+  "elements/haxcms-elements/lib/core/admin/haxcms-site-admin.js": {
+    "px-type": {
+      "13px": 1,
+      "15px": 1,
+      "17px": 1,
+      "22px": 1
+    }
+  },
+  "elements/haxcms-elements/lib/core/haxcms-appearance-admin-dialog.js": {
+    "content-type": {
+      "--ddd-font-size-xs": 1
+    },
+    "simple-colors": {
+      "--simple-colors-default-theme-": 2
+    }
+  },
+  "elements/haxcms-elements/lib/core/haxcms-content-admin-dialog.js": {
+    "px-type": {
+      "13px": 8
+    }
+  },
+  "elements/haxcms-elements/lib/core/haxcms-files-admin-dialog.js": {
+    "px-type": {
+      "12px": 1,
+      "13px": 2,
+      "16px": 1,
+      "18px": 1,
+      "22px": 1
+    }
+  },
+  "elements/haxcms-elements/lib/core/haxcms-outline-editor-dialog.js": {
+    "px-type": {
+      "14px": 1
+    }
+  },
+  "elements/haxcms-elements/lib/core/haxcms-page-revisions-dialog.js": {
+    "px-type": {
+      "11px": 1,
+      "12px": 1,
+      "13px": 1,
+      "16px": 1,
+      "17px": 1,
+      "18px": 1
+    }
+  },
+  "elements/haxcms-elements/lib/core/haxcms-seo-admin-dialog.js": {
+    "px-type": {
+      "13px": 1
+    }
+  },
+  "elements/haxcms-elements/lib/core/haxcms-site-details-dialog.js": {
+    "px-type": {
+      "13px": 1
+    }
+  },
+  "elements/haxcms-elements/lib/core/haxcms-site-import-export-dashboard.js": {
+    "px-type": {
+      "13px": 1
+    }
+  },
+  "elements/haxcms-elements/lib/core/haxcms-site-insights.js": {
+    "content-type": {
+      "--ddd-font-size-6xs": 3,
+      "--ddd-font-size-m": 3,
+      "--ddd-font-size-s": 7,
+      "--ddd-font-size-xs": 4
+    },
+    "layer": {
+      "no HAX UI import": 1
+    },
+    "simple-colors": {
+      "--simple-colors-default-theme-accent-10": 1,
+      "--simple-colors-default-theme-accent-11": 1,
+      "--simple-colors-default-theme-accent-12": 1,
+      "--simple-colors-default-theme-accent-8": 1,
+      "--simple-colors-default-theme-accent-9": 1,
+      "--simple-colors-default-theme-grey-1": 1,
+      "--simple-colors-default-theme-grey-10": 1,
+      "--simple-colors-default-theme-grey-12": 1,
+      "--simple-colors-default-theme-grey-4": 1,
+      "--simple-colors-default-theme-grey-8": 1
+    }
+  },
+  "elements/haxcms-elements/lib/core/haxcms-site-settings-dashboard.js": {
+    "content-type": {
+      "--ddd-font-size-m": 1,
+      "--ddd-font-size-s": 1,
+      "--ddd-font-size-xs": 1
+    },
+    "layer": {
+      "no HAX UI import": 1
+    }
+  },
+  "elements/haxcms-elements/lib/core/haxcms-views-admin-dialog.js": {
+    "content-type": {
+      "--ddd-font-size-4xs": 2,
+      "--ddd-font-size-5xs": 6,
+      "--ddd-font-size-s": 1
+    },
+    "px-type": {
+      "15px": 1
+    }
+  },
+  "elements/haxcms-elements/lib/core/ui/app-hax-user-menu-toggle.js": {
+    "modal-close": {
+      "modal without close": 1
+    }
+  },
+  "elements/haxcms-elements/lib/core/ui/haxcms-about-dialog-ui.js": {
+    "content-type": {
+      "--ddd-font-size-xs": 1
+    },
+    "px-type": {
+      "13px": 3
+    }
+  },
+  "elements/haxcms-elements/lib/core/ui/haxcms-allowed-blocks-ui.js": {
+    "px-type": {
+      "13px": 2,
+      "18px": 1
+    }
+  },
+  "elements/haxcms-elements/lib/core/ui/haxcms-editor-settings-dialog-ui.js": {
+    "content-type": {
+      "--ddd-font-size-xs": 1
+    }
+  },
+  "elements/haxcms-elements/lib/core/ui/haxcms-site-platform-ui.js": {
+    "content-type": {
+      "--ddd-font-size-3xs": 2,
+      "--ddd-font-size-4xs": 2,
+      "--ddd-font-size-m": 1,
+      "--ddd-font-size-s": 3,
+      "--ddd-font-size-xs": 4
+    },
+    "px-type": {
+      "13px": 1
+    }
+  },
+  "elements/haxcms-elements/lib/core/ui/haxcms-theme-preview-panel.js": {
+    "px-type": {
+      "11px": 1,
+      "18px": 1
+    }
+  },
+  "elements/rpg-character/lib/rpg-character-builder.js": {
+    "px-type": {
+      "11px": 1,
+      "12px": 4,
+      "13px": 1,
+      "14px": 1,
+      "16px": 1
+    }
+  }
+}

@@ -48,6 +48,7 @@
     "lint": "eslint elements",
     "lint:fix": "eslint elements --fix",
     "lint:ddd-tokens": "node scripts/ddd-token-lint.js",
+    "lint:hax-ui-admin": "node scripts/hax-ui-admin-contract-check.mjs",
     "lint:css-templates": "node scripts/css-template-check.mjs",
     "lint:runtime-deps": "node scripts/runtime-deps-check.mjs",
     "lint:html-templates": "node scripts/html-template-check.mjs",
