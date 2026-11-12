@@ -140,7 +140,10 @@ test("encapScript: template restore matches markers case-insensitively, like its
   const html =
     "<template>&lt;SCRIPT&gt;alert(1)&lt;/SCRIPT&gt;</template><SCRIPT>x</SCRIPT>";
   const out = encapScript(html);
-  assert.ok(out.startsWith("<template><script>alert(1)</script></template>"), out);
+  assert.ok(
+    out.startsWith("<template><script>alert(1)</script></template>"),
+    out,
+  );
   assert.ok(!/<script>x/i.test(out), out);
 });
 

@@ -152,6 +152,18 @@ export function unwrapSpans(input) {
   return out + input.slice(pos);
 }
 
+// the encapsulated markers turned back into tags inside a <template>
+const TEMPLATE_MARKERS = ["script", "/script", "style", "/style"];
+
+/**
+ * Turn the first `&lt;name&gt;` marker back into `<name>`. Case-insensitive
+ * like the scan that found the template, so an upper-case marker is restored
+ * too.
+ */
+function restoreMarker(html, name) {
+  return html.replace(new RegExp(`&lt;${name}&gt;`, "i"), `<${name}>`);
+}
+
 /**
  * Linear replacement for
  * `/<template[\s\S]*?>[\s\S]*?&lt;script[\s\S]*?&gt;[\s\S]*?&lt;\/script&gt;/gi`
@@ -177,14 +189,10 @@ function restoreTemplateScripts(input) {
     const e = execFrom(ltClose, input, g.index + g[0].length);
     if (!e) break;
     const end = e.index + e[0].length;
-    const match = input
-      .slice(t.index, end)
-      // case-insensitive like the scan above, so an upper-case marker the
-      // scan matched is restored too (first occurrence, as before)
-      .replace(/&lt;script&gt;/i, "<script>")
-      .replace(/&lt;\/script&gt;/i, "</script>")
-      .replace(/&lt;style&gt;/i, "<style>")
-      .replace(/&lt;\/style&gt;/i, "</style>");
+    const match = TEMPLATE_MARKERS.reduce(
+      restoreMarker,
+      input.slice(t.index, end),
+    );
     out += input.slice(pos, t.index) + match;
     pos = end;
   }
