@@ -126,6 +126,9 @@ export class ReadingAnalysis extends QuestionElement {
     this._marking = false;
     this._targets = [];
     this._rovingId = "";
+    // a flag being dragged with a pointer (mouse, touch or pen)
+    this._drag = null;
+    this._skipClick = false;
     this._selectKey = [];
     this._readingDirty = true;
     this._onKeyUp = this._onKeyUp.bind(this);
@@ -202,6 +205,10 @@ export class ReadingAnalysis extends QuestionElement {
     super.disconnectedCallback();
   }
   _onKeyUp(e) {
+    if (e.key === "Escape" && this._drag) {
+      this._endDrag(false);
+      return;
+    }
     if (e.key === "Escape" && this._held) {
       this._held = "";
     }
@@ -1026,39 +1033,147 @@ export class ReadingAnalysis extends QuestionElement {
       );
     }
   }
-  _dragStart(e, id) {
-    this._held = id;
+  // ---------- dragging a flag ----------
+  // Flags drag with pointer events (not the browser's own drag and drop) so
+  // the flag visibly follows the pointer with mouse, touch or pen, and the
+  // passage under it lights up in the flag's color before it is dropped.
+  // A press that does not move is still a click, which picks the flag up.
+  _flagPointerDown(e, id) {
+    if (this._locked() || (e.pointerType === "mouse" && e.button !== 0)) {
+      return;
+    }
+    this._drag = {
+      id,
+      pointerId: e.pointerId,
+      x: e.clientX,
+      y: e.clientY,
+      held: this._held,
+      button: e.currentTarget,
+      ghost: null,
+      over: "",
+    };
     try {
-      e.dataTransfer.setData("text/plain", id);
-      e.dataTransfer.effectAllowed = "copy";
+      e.currentTarget.setPointerCapture(e.pointerId);
     } catch {
-      // some browsers refuse custom drag data; the held flag still works
+      // capture is a nicety; moves still arrive while over the flag pad
     }
   }
-  _dragOver(e) {
-    if (this.mode !== "flag" || this._locked()) {
+  _flagPointerMove(e) {
+    const d = this._drag;
+    if (!d || e.pointerId !== d.pointerId) {
       return;
     }
-    if (this._targetIn(e.composedPath())) {
-      e.preventDefault();
-    }
-  }
-  _drop(e) {
-    const el = this._targetIn(e.composedPath());
-    if (!el) {
-      return;
+    if (!d.ghost) {
+      // a small threshold keeps an ordinary click a click
+      if (Math.hypot(e.clientX - d.x, e.clientY - d.y) < 6) {
+        return;
+      }
+      this._liftFlag(d);
     }
     e.preventDefault();
-    let id = "";
+    d.ghost.style.transform = `translate(${e.clientX - d.dx}px, ${
+      e.clientY - d.dy
+    }px)`;
+    const el = this._targetIn(
+      this.shadowRoot.elementsFromPoint(e.clientX, e.clientY),
+    );
+    const over = el ? el.getAttribute("data-t") : "";
+    if (over !== d.over) {
+      this._markDrop(over, d);
+    }
+  }
+  _flagPointerUp(e) {
+    const d = this._drag;
+    if (!d || e.pointerId !== d.pointerId) {
+      return;
+    }
+    this._endDrag(!!d.ghost && !!d.over);
+  }
+  _flagPointerCancel(e) {
+    if (this._drag && e.pointerId === this._drag.pointerId) {
+      this._endDrag(false);
+    }
+  }
+  _liftFlag(d) {
+    const rect = d.button.getBoundingClientRect();
+    d.dx = d.x - rect.left;
+    d.dy = d.y - rect.top;
+    const ghost = globalThis.document.createElement("div");
+    ghost.className = "flag drag-ghost";
+    ghost.setAttribute("aria-hidden", "true");
+    ghost.setAttribute("data-style", d.button.getAttribute("data-style"));
+    Array.from(d.button.childNodes).forEach((n) => {
+      if (!(n.classList && n.classList.contains("sr-only"))) {
+        ghost.appendChild(n.cloneNode(true));
+      }
+    });
+    ghost.style.width = `${rect.width}px`;
+    ghost.style.transform = `translate(${rect.left}px, ${rect.top}px)`;
+    this.shadowRoot.appendChild(ghost);
+    d.ghost = ghost;
+    d.button.classList.add("lifted");
+    // while dragging, the desk shows what can take the flag (as when held)
+    this._held = d.id;
+  }
+  _markDrop(targetId, d) {
+    this._clearDrop();
+    d.over = targetId;
+    const target = targetId ? this._targetById(targetId) : null;
+    if (!target) {
+      return;
+    }
+    const style = d.button.getAttribute("data-style");
+    target.els.forEach((el) => {
+      el.setAttribute("data-drop", "");
+      el.setAttribute("data-style", style);
+    });
+  }
+  _clearDrop() {
+    if (!this.shadowRoot) {
+      return;
+    }
+    this.shadowRoot.querySelectorAll("[data-drop]").forEach((el) => {
+      el.removeAttribute("data-drop");
+      if (!el.hasAttribute("data-lit")) {
+        el.removeAttribute("data-style");
+      }
+    });
+  }
+  _endDrag(place) {
+    const d = this._drag;
+    this._drag = null;
+    if (!d) {
+      return;
+    }
     try {
-      id = e.dataTransfer.getData("text/plain");
+      if (d.button.hasPointerCapture(d.pointerId)) {
+        d.button.releasePointerCapture(d.pointerId);
+      }
     } catch {
-      id = "";
+      // the flag may already be gone after a re-render
     }
-    if (id && this._flagById(id)) {
-      this._held = id;
+    this._clearDrop();
+    if (!d.ghost) {
+      return;
     }
-    this._act(el.getAttribute("data-t"));
+    // the click that follows a drag must not pick the flag up as well
+    this._skipClick = true;
+    d.ghost.remove();
+    d.button.classList.remove("lifted");
+    if (place) {
+      this._held = d.id;
+      this._act(d.over);
+    }
+    // a dragged flag goes back where it came from; whatever was held by a
+    // click before the drag stays held
+    this._held = d.held;
+  }
+  _flagClick(id) {
+    if (this._skipClick) {
+      this._skipClick = false;
+      return;
+    }
+    this._pick(id);
   }
 
   // ---------- render ----------
@@ -1118,6 +1233,8 @@ export class ReadingAnalysis extends QuestionElement {
         <div class="author-reading"><slot></slot></div>
       </div>`;
     }
+    const heldFlag = this._locked() ? null : this._flagById(this._held);
+    const held = heldFlag ? heldFlag.style : -1;
     const cls = [
       "desk",
       this._held && !this._locked() ? "holding" : "",
@@ -1128,8 +1245,7 @@ export class ReadingAnalysis extends QuestionElement {
       class="${cls}"
       @click="${this._onReadingClick}"
       @keydown="${this._onReadingKey}"
-      @dragover="${this._dragOver}"
-      @drop="${this._drop}"
+      style="${held >= 0 ? `--ra-held: var(--ra-flag-${held})` : nothing}"
       @mouseover="${this._onTipShow}"
       @mouseout="${this._onTipHide}"
       @focusin="${this._onReadingFocus}"
@@ -1188,12 +1304,14 @@ export class ReadingAnalysis extends QuestionElement {
         return html`<button
           type="button"
           class="flag"
-          draggable="true"
           data-style="${f.style}"
           aria-pressed="${this._held === f.id ? "true" : "false"}"
           ?disabled="${this._locked()}"
-          @click="${() => this._pick(f.id)}"
-          @dragstart="${(e) => this._dragStart(e, f.id)}"
+          @click="${() => this._flagClick(f.id)}"
+          @pointerdown="${(e) => this._flagPointerDown(e, f.id)}"
+          @pointermove="${this._flagPointerMove}"
+          @pointerup="${this._flagPointerUp}"
+          @pointercancel="${this._flagPointerCancel}"
         >
           <svg viewBox="0 0 14 14" aria-hidden="true">
             <path d="${FLAG_SHAPES[f.style]}"></path></svg
@@ -1491,6 +1609,42 @@ export class ReadingAnalysis extends QuestionElement {
         .ra-t[data-lit] {
           background-color: color-mix(in srgb, var(--ra-fc) 22%, transparent);
         }
+        /* a held flag colors the passage it would go to (hover or focus), so
+           the learner sees the association before placing it; the bar under
+           it keeps the cue without color */
+        .desk.holding .ra-t:hover,
+        .desk.holding .ra-t:focus-visible {
+          background-color: color-mix(
+            in srgb,
+            var(--ra-held, var(--ddd-status-answered-line)) 30%,
+            transparent
+          );
+          box-shadow: inset 0 calc(-1 * var(--ddd-border-size-md)) 0
+            var(--ra-held, var(--ddd-status-answered-line));
+        }
+        .ra-t[data-drop] {
+          background-color: color-mix(in srgb, var(--ra-fc) 30%, transparent);
+          box-shadow: inset 0 calc(-1 * var(--ddd-border-size-md)) 0
+            var(--ra-fc);
+        }
+        /* the dragged copy of a flag follows the pointer above everything */
+        .flag.drag-ghost {
+          position: fixed;
+          inset-block-start: 0;
+          inset-inline-start: 0;
+          z-index: 1000;
+          margin: 0;
+          pointer-events: none;
+          box-sizing: border-box;
+          cursor: grabbing;
+          box-shadow: var(--ddd-boxShadow-md);
+          opacity: 0.95;
+          transition: none;
+        }
+        /* its place in the pad stays, faded, until the flag is dropped */
+        .flag.lifted {
+          opacity: 0.4;
+        }
         /* margin flags: tucked under the page edge, hanging into the desk */
         .margin {
           position: absolute;
@@ -1652,7 +1806,8 @@ export class ReadingAnalysis extends QuestionElement {
           flex: 1 1 100%;
           order: -1;
         }
-        .pad .flag {
+        .pad .flag,
+        .flag.drag-ghost {
           display: inline-flex;
           align-items: center;
           gap: var(--ddd-spacing-2);
