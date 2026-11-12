@@ -130,8 +130,8 @@ export class DddCard extends I18NMixin(DDDSuper(LitElement)) {
           height: 44px;
         }
 
-        .button-wrapper:hover button,
-        .button-wrapper:focus-within button {
+        .button-wrapper:hover .button,
+        .button-wrapper:focus-within .button {
           background-color: var(--ddd-theme-primary, var(--ddd-primary-1));
           color: var(
             --lowContrast-override,
@@ -147,7 +147,7 @@ export class DddCard extends I18NMixin(DDDSuper(LitElement)) {
           outline-width: var(--ddd-button-outline-width, 2px);
         }
 
-        button {
+        .button {
           transition: var(--ddd-card-button-transition, 0.3s all ease-in-out);
           color: var(--ddd-card-button-color, white);
           background-color: var(--ddd-theme-default-nittanyNavy);
@@ -160,6 +160,8 @@ export class DddCard extends I18NMixin(DDDSuper(LitElement)) {
           cursor: pointer;
           width: 100%;
           display: block;
+          box-sizing: border-box;
+          line-height: normal;
         }
       `,
     ];
@@ -193,15 +195,18 @@ export class DddCard extends I18NMixin(DDDSuper(LitElement)) {
                   <a
                     @click="${this._clickCard}"
                     href="${this.href}"
-                    role="button"
                     rel="${this.rel}"
                     target="${this.target}"
                     part="a"
                   >
-                    <button part="button" tabindex="-1">
+                    <span class="button" part="button">
                       ${this.label || this.t.explore}
-                      ${!this.noArrow ? `>` : nothing}
-                    </button>
+                      ${
+                        !this.noArrow
+                          ? html`<span aria-hidden="true">&gt;</span>`
+                          : nothing
+                      }
+                    </span>
                   </a>
                 `
               : nothing

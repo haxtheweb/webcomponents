@@ -63,8 +63,18 @@ describe("ddd-card", () => {
     const link = el.shadowRoot.querySelector("a");
     expect(link).to.exist;
     expect(link.getAttribute("href")).to.equal("https://example.com");
-    const button = el.shadowRoot.querySelector("button");
+    const button = el.shadowRoot.querySelector('[part="button"]');
     expect(button.textContent).to.include("Go");
+  });
+
+  it("has one interactive control when linked (no nested button)", async () => {
+    const el = await fixture(
+      html`<ddd-card href="https://example.com" label="Go"></ddd-card>`,
+    );
+    await el.updateComplete;
+    expect(el.shadowRoot.querySelector("button")).to.be.null;
+    expect(el.shadowRoot.querySelector("a").hasAttribute("role")).to.be.false;
+    await expect(el).shadowDom.to.be.accessible();
   });
 
   it("does not render a link when href is null", async () => {
@@ -79,7 +89,7 @@ describe("ddd-card", () => {
       html`<ddd-card href="https://example.com"></ddd-card>`,
     );
     await el.updateComplete;
-    const button = el.shadowRoot.querySelector("button");
+    const button = el.shadowRoot.querySelector('[part="button"]');
     expect(button.textContent).to.include("Explore");
   });
 
@@ -88,7 +98,7 @@ describe("ddd-card", () => {
       html`<ddd-card href="https://example.com"></ddd-card>`,
     );
     await el.updateComplete;
-    const button = el.shadowRoot.querySelector("button");
+    const button = el.shadowRoot.querySelector('[part="button"]');
     expect(button.textContent).to.include(">");
   });
 
@@ -97,7 +107,7 @@ describe("ddd-card", () => {
       html`<ddd-card href="https://example.com" no-arrow></ddd-card>`,
     );
     await el.updateComplete;
-    const button = el.shadowRoot.querySelector("button");
+    const button = el.shadowRoot.querySelector('[part="button"]');
     expect(button.textContent).to.not.include(">");
   });
 
