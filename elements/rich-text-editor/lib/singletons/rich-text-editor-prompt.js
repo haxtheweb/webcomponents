@@ -6,7 +6,6 @@ import { LitElement, html, css } from "lit";
 import { RichTextToolbarStyles } from "@haxtheweb/rich-text-editor/lib/buttons/rich-text-editor-button.js";
 import "@haxtheweb/simple-popover/simple-popover.js";
 import "@haxtheweb/simple-fields/simple-fields.js";
-import "./rich-text-editor-highlight.js";
 import { RichTextEditorRangeBehaviors } from "./rich-text-editor-range-behaviors.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 /**

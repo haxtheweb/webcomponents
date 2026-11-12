@@ -5,7 +5,6 @@
 import { html, css } from "lit";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
 import "@haxtheweb/absolute-position-behavior/absolute-position-behavior.js";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";

@@ -4,7 +4,6 @@
  */
 import { html, css, LitElement } from "lit";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
-import "@haxtheweb/d-d-d/d-d-d.js";
 import { autorun, toJS } from "mobx";
 import "./course-intro-header.js";
 import "./course-intro-lesson-plans.js";

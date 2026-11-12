@@ -10,7 +10,6 @@ import { HaxComponentStyles } from "./hax-ui-styles.js";
 import { autorun, toJS } from "mobx";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-menu.js";
-import "@haxtheweb/simple-toolbar/lib/simple-toolbar-menu-item.js";
 import "./hax-tray-button.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { trimLineEdges } from "@haxtheweb/utils/lib/safe-html.js";

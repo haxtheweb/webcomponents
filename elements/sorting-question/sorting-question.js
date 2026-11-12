@@ -11,7 +11,6 @@ import {
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import "@haxtheweb/simple-toast/simple-toast.js";
-import "@haxtheweb/grid-plate/grid-plate.js";
 import "./lib/sorting-option.js";
 
 export class SortingQuestion extends QuestionElement {

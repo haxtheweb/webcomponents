@@ -16,7 +16,6 @@ import {
 } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
-import "@haxtheweb/hax-body/lib/hax-text-editor-toolbar.js";
 
 const FEATURE_DEFS = [
   {

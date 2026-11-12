@@ -25,7 +25,6 @@ import { openCharacterBuilder } from "@haxtheweb/haxcms-elements/lib/core/ui/app
 import "./lib/v2/app-hax-use-case.js";
 import "./lib/v2/app-hax-use-case-filter.js";
 import "./lib/v2/app-hax-search-results.js";
-import "./lib/v2/app-hax-scroll-button.js";
 import "@haxtheweb/haxcms-elements/lib/core/ui/app-hax-user-menu.js";
 import { trimSlashes } from "@haxtheweb/utils/lib/safe-html.js";
 import { settleOnce } from "@haxtheweb/utils/lib/events.js";

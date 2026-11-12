@@ -3,7 +3,6 @@
  * @license Apache-2.0, see LICENSE for full text.
  */
 import { html, css } from "lit";
-import "@haxtheweb/simple-colors/simple-colors.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button.js";

@@ -7,7 +7,6 @@ import {
   QuestionElement,
   choiceResponse,
 } from "@haxtheweb/multiple-choice/lib/QuestionElement.js";
-import "@haxtheweb/d-d-d/d-d-d.js";
 
 /**
  * `tagging-question`

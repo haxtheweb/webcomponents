@@ -8,7 +8,6 @@ import { html, css, nothing } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import "./lib/play-list-slide.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import {
   DDDBlockStyles,

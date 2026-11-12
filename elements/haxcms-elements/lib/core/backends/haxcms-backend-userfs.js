@@ -4,7 +4,6 @@
  */
 import { LitElement } from "lit";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
-import "@haxtheweb/file-system-broker/file-system-broker.js";
 import {
   store,
   HAXcmsStore,

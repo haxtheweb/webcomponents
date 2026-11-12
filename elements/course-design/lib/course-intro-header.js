@@ -7,7 +7,6 @@ import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js"
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
 import { autorun, toJS } from "mobx";
 class CourseIntroHeader extends DDD {
   static get properties() {

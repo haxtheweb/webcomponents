@@ -16,7 +16,6 @@ import {
   interactionComponents,
   XAPI_EXTENSIONS,
 } from "@haxtheweb/user-action/lib/xapi.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 
 /**

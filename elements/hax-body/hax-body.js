@@ -28,8 +28,6 @@ import { HaxUiAdminTokens } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/absolute-position-behavior/absolute-position-behavior.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
-import "@haxtheweb/simple-icon/lib/simple-iconset.js";
-import "./lib/hax-context-behaviors.js";
 import "./lib/hax-plate-context.js";
 // our default way of handing grids
 import "@haxtheweb/grid-plate/grid-plate.js";

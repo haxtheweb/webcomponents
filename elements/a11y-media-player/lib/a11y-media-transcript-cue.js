@@ -3,7 +3,6 @@
  * @license Apache-2.0, see LICENSE for full text.
  */
 import { LitElement, html, css } from "lit";
-import "@haxtheweb/simple-search/lib/simple-search-content.js";
 
 /**
  * Short form of a cue start time: "0s", "4s", "1m 20s", "1h 2m".
