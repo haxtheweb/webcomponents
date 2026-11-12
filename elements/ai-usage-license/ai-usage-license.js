@@ -42,7 +42,10 @@ class AiUsageLicense extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
           color: var(--ddd-theme-default-slateGray);
           font-style: italic;
         }
+        /* the card is light in both color schemes, so DDD tokens that
+           use light-dark() (the focus ring) resolve for a light surface */
         .license-body {
+          color-scheme: light;
           padding: var(--ddd-spacing-8);
           background-color: var(--ddd-theme-default-limestoneMaxLight);
           color: var(--ddd-theme-default-slateGray);
