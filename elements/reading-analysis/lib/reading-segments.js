@@ -9,7 +9,6 @@
  * a container the element owns (its shadow root) and wraps targets there, so
  * nothing it adds can be saved back into content.
  */
-
 // media a learner can point at as a whole; an img inside a figure belongs to
 // the figure
 export const MEDIA_SELECTOR =
@@ -36,12 +35,10 @@ export function sentenceRanges(text, lang) {
   if (globalThis.Intl && typeof globalThis.Intl.Segmenter === "function") {
     let seg = null;
     try {
-      // eslint-disable-next-line baseline-js/use-baseline -- feature checked above; a punctuation rule covers browsers without it
       seg = new globalThis.Intl.Segmenter(lang || undefined, {
         granularity: "sentence",
       });
     } catch {
-      // eslint-disable-next-line baseline-js/use-baseline -- feature checked above; a punctuation rule covers browsers without it
       seg = new globalThis.Intl.Segmenter(undefined, {
         granularity: "sentence",
       });

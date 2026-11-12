@@ -4,7 +4,8 @@
   "description": "Webcomponent sheet-music following hax / open-wc recommendations",
   "license": "Apache-2.0",
   "author": {
-    "name": "haxtheweb"
+    "name": "haxtheweb",
+    "url": "https://hax.psu.edu/"
   },
   "keywords": [
     "webcomponents",

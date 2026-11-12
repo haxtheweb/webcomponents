@@ -1,4 +1,8 @@
 /**
+ * Copyright 2025 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
+/**
  * Print Program for Merlin - Provides multiple print options for HAXcms sites
  * This program works on any HAXcms site when logged in, using the PrintBranchMixin functionality
  */

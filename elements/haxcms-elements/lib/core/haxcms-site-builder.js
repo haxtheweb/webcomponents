@@ -1,3 +1,7 @@
+/**
+ * Copyright 2026 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { LitElement, html, css } from "lit";
 // deep imports keep the whole utils barrel off the first-paint path
 import { encapScript, findTagsInHTML } from "@haxtheweb/utils/lib/safe-html.js";
@@ -886,7 +890,13 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       if (
         designSystemManager &&
         designSystemManager.systems &&
-        designSystemManager.systems.ddd
+        designSystemManager.systems.ddd &&
+        // a DDD-capable dialect (extends "ddd") already carries the palette
+        // styles, so keep it active instead of falling back to plain DDD
+        !(
+          typeof designSystemManager.isActiveCompatible === "function" &&
+          designSystemManager.isActiveCompatible("ddd")
+        )
       ) {
         designSystemManager.active = "ddd";
       }

@@ -1,3 +1,7 @@
+/**
+ * Copyright 2024 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 // superclass that can be used to more rapidly build question based components
 import { LitElement, html, css, nothing } from "lit";
 import { cache } from "lit/directives/cache.js";

@@ -4,7 +4,8 @@
   "description": "HAXma theme for HAXcms inspired by Figma documentation design",
   "license": "Apache-2.0",
   "author": {
-    "name": "haxtheweb"
+    "name": "haxtheweb",
+    "url": "https://hax.psu.edu/"
   },
   "keywords": [
     "webcomponents",

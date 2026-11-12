@@ -1,3 +1,7 @@
+/**
+ * Copyright 2020 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { html, css } from "lit";
 import {
   winEventsElement,
@@ -35,11 +39,9 @@ import "./hax-view-source.js";
 import "./hax-stax-browser.js";
 import "./hax-map.js";
 import "./hax-tray-button.js";
-import "./hax-toolbar-menu.js";
 import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/undo-manager/undo-manager.js";
-import "@haxtheweb/simple-toolbar/lib/simple-toolbar-menu-item.js";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 
 /**
@@ -74,6 +76,10 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
     this.t = {
       structure: "Structure",
       htmlSource: "HTML Source",
+      markdownSource: "Markdown Source",
+      sourceFormat: "Source format",
+      html: "HTML",
+      markdown: "Markdown",
       structureTip: "View Page Structure",
       edit: "Edit",
       save: "Save",
@@ -509,6 +515,56 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
         .tray-detail-titlebar-actions {
           flex: 0 0 auto;
           display: flex;
+        }
+        /* Source format switch: quiet on the dark title bar, the chosen
+           format filled */
+        .source-format {
+          flex: 0 0 auto;
+          display: inline-flex;
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius, 4px);
+          overflow: hidden;
+        }
+        .source-format button {
+          padding: var(--hax-ui-gap, 4px) var(--hax-ui-gap-md, 8px);
+          border: 0;
+          background-color: transparent;
+          color: var(--hax-ui-on-titlebar, var(--ddd-theme-default-white));
+          font-family: var(--hax-ui-font-family);
+          font-size: var(--hax-ui-admin-font-size-xs, 12px);
+          font-weight: 400;
+          line-height: 1.3;
+          cursor: pointer;
+        }
+        .source-format button + button {
+          border-inline-start: 1px solid var(--hax-ui-line-strong);
+        }
+        .source-format button[aria-pressed="true"] {
+          background-color: var(
+            --hax-ui-on-titlebar,
+            var(--ddd-theme-default-white)
+          );
+          color: var(--hax-ui-titlebar);
+          font-weight: 700;
+        }
+        .source-format button:focus-visible {
+          outline: var(--hax-ui-focus-width, 2px) solid var(--hax-ui-focus);
+          outline-offset: -2px;
+        }
+        /* phone: the Markdown mark alone stands in for the long title */
+        @media screen and (max-width: 800px) {
+          :host([tray-detail="view-source"][view-source-format="markdown"])
+            .tray-detail-titlebar-label {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            white-space: nowrap;
+          }
+          :host([tray-detail="view-source"]) .source-format {
+            margin-inline-start: auto;
+          }
         }
         #haxMenuAlign::part(button) {
           width: var(--hax-ui-row-height);
@@ -1300,6 +1356,7 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
         <div class="tray-detail-titlebar-label">
           ${title ? `${lockPrefix}${title}` : ""}
         </div>
+        ${this.trayDetail === "view-source" ? this.sourceFormatSwitch : ""}
         <div class="tray-detail-titlebar-actions">${this.menuButtons}</div>
       </h4>
       ${this.viewSourceTemplate} ${this.contentMapTemplate}
@@ -1310,7 +1367,46 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
     return html` <hax-view-source
       id="view-source"
       ?hidden="${this.trayDetail !== "view-source"}"
+      ?tray-active="${
+        this.trayDetail === "view-source" && !this.collapsed && this.editMode
+      }"
+      @source-format-changed="${this._sourceFormatChanged}"
     ></hax-view-source>`;
+  }
+  /**
+   * HTML / Markdown switch for Source, in the panel title bar
+   */
+  get sourceFormatSwitch() {
+    const md = this.viewSourceFormat === "markdown";
+    return html`<div
+      class="source-format"
+      role="group"
+      aria-label="${this.t.sourceFormat}"
+    >
+      <button
+        type="button"
+        aria-pressed="${!md}"
+        @click="${() => this._setSourceFormat("html")}"
+      >
+        ${this.t.html}
+      </button>
+      <button
+        type="button"
+        aria-pressed="${md}"
+        @click="${() => this._setSourceFormat("markdown")}"
+      >
+        ${this.t.markdown}
+      </button>
+    </div>`;
+  }
+  _setSourceFormat(format) {
+    const source = this.shadowRoot.querySelector("#view-source");
+    if (source) {
+      source.setFormat(format);
+    }
+  }
+  _sourceFormatChanged(e) {
+    this.viewSourceFormat = e.detail.value;
   }
   get contentEditTemplate() {
     return html` <simple-fields
@@ -1663,6 +1759,14 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
       trayLabel: {
         type: String,
       },
+      /**
+       * Format Source is in (html or markdown), mirrored from hax-view-source
+       */
+      viewSourceFormat: {
+        type: String,
+        reflect: true,
+        attribute: "view-source-format",
+      },
     };
   }
   /**
@@ -1673,6 +1777,10 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
       super.firstUpdated(changedProperties);
     }
     if (!this.__setup) {
+      const source = this.shadowRoot.querySelector("#view-source");
+      if (source) {
+        this.viewSourceFormat = source.sourceFormat;
+      }
       this.shadowRoot.querySelector("#settingsform").schematizer =
         HaxSchematizer;
       this.shadowRoot.querySelector("#settingsform").elementizer =
@@ -1744,7 +1852,10 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
       }
     }
     // trayDetail -> trayIcon + trayLabel (pure mapping)
-    if (changedProperties.has("trayDetail")) {
+    if (
+      changedProperties.has("trayDetail") ||
+      changedProperties.has("viewSourceFormat")
+    ) {
       const v = this.trayDetail;
       if (v == "content-add") {
         this.trayIcon = "hax:add-brick";
@@ -1753,8 +1864,9 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
         this.trayIcon = "editor:format-line-spacing";
         this.trayLabel = this.t.structure;
       } else if (v == "view-source") {
-        this.trayIcon = "hax:html-code";
-        this.trayLabel = this.t.htmlSource;
+        const md = this.viewSourceFormat === "markdown";
+        this.trayIcon = md ? "hax:markdown" : "hax:html-code";
+        this.trayLabel = md ? this.t.markdownSource : this.t.htmlSource;
       } else if (v == "content-edit") {
         this.trayIcon = "image:tune";
         this.trayLabel = null;

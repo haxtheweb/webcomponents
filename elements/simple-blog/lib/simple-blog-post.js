@@ -1,3 +1,7 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { html, css } from "lit";
 import { DDDReadingSurface } from "@haxtheweb/d-d-d/lib/DDDReading.js";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";

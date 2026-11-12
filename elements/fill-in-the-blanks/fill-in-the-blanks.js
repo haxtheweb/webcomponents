@@ -1,6 +1,6 @@
 /**
- * Copyright 2024
- * @license Apache-2.0, see License.md for full text.
+ * Copyright 2024 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
  */
 import { html, css } from "lit";
 import { MarkTheWords } from "@haxtheweb/mark-the-words/mark-the-words.js";
@@ -209,34 +209,25 @@ class FillInTheBlanks extends MarkTheWords {
     this.numberCorrect = 0;
     this.numberGuessed = 0;
     for (let i in this.answers) {
+      // every check grades the current answers: a blank that was right last
+      // time and has since been changed is not still shown as right
+      this.answers[i].userGuessCorrect = false;
       let input =
         this.shadowRoot &&
         this.shadowRoot.querySelector(`[data-answer-index="${i}"]`);
-      if (
-        typeof this.answers[i].answer === "object" &&
-        input &&
-        typeof input.value !== "undefined" &&
-        input.value !== ""
-      ) {
+      if (input && typeof input.value !== "undefined" && input.value !== "") {
         this.numberGuessed++;
-        for (let j in this.answers[i].answer) {
-          if (
-            input.value.toLowerCase().trim() ===
-            this.answers[i].answer[j].toLowerCase().trim()
-          ) {
-            this.answers[i].userGuessCorrect = true;
-            this.numberCorrect++;
-          }
-        }
-      } else if (
-        input &&
-        typeof input.value !== "undefined" &&
-        input.value !== ""
-      ) {
-        this.numberGuessed++;
+        const guess = input.value.toLowerCase().trim();
+        // a blank with synonyms is right when any of them matches, and
+        // counts once even when two synonyms differ only by case
+        const accepted = [].concat(this.answers[i].answer);
         if (
-          input.value.toLowerCase().trim() ===
-          this.answers[i].answer.toLowerCase().trim()
+          accepted.some(
+            (item) =>
+              String(item == null ? "" : item)
+                .toLowerCase()
+                .trim() === guess,
+          )
         ) {
           this.answers[i].userGuessCorrect = true;
           this.numberCorrect++;
@@ -317,8 +308,12 @@ class FillInTheBlanks extends MarkTheWords {
         }
         this.answers.push(answer);
       }
+      // which answer this token's field is: blanks with the same text (two
+      // drop-downs with the same options, a word asked twice) are separate
+      // answers, so a field is never found by its text
       this.wordList.push({
         text: wordList[i],
+        answerIndex: blank ? this.answers.length - 1 : -1,
       });
     }
     this.requestUpdate();
@@ -403,10 +398,18 @@ class FillInTheBlanks extends MarkTheWords {
 
   renderFillInBlankField(word) {
     const blank = word.text.match(/^\[?([^[\]]*)\](.*)$/);
-    const index = this.answers.findIndex(
-      (answer) => blank && answer.text === `[${blank[1]}]`,
-    );
-    if (index < 0) {
+    const index =
+      typeof word.answerIndex === "number"
+        ? word.answerIndex
+        : this.answers.findIndex(
+            (answer) => blank && answer.text === `[${blank[1]}]`,
+          );
+    if (
+      !blank ||
+      index < 0 ||
+      !this.answers[index] ||
+      this.answers[index].text !== `[${blank[1]}]`
+    ) {
       return html`${word.text} `;
     }
     // punctuation that trailed the closing bracket renders after the field

@@ -1,6 +1,6 @@
 /**
  * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * @license Apache-2.0, see LICENSE for full text.
  */
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
@@ -150,7 +150,6 @@ class AwesomeExplosion extends I18NMixin(DDDSuper(LitElement)) {
     this.resetSound = false;
     this.soundEnabled = true;
     this.disabled = false;
-    this.tabIndex = 0;
 
     // Check for user preferences
     this._checkUserPreferences();
@@ -168,6 +167,18 @@ class AwesomeExplosion extends I18NMixin(DDDSuper(LitElement)) {
         this.addEventListener("mouseout", this._handleMouseOut.bind(this));
       }
     }, 0);
+  }
+  /**
+   * Focusable by default. Set here, not in the constructor: setting
+   * tabIndex adds a tabindex attribute, and an element made with
+   * document.createElement (as HAX inserts it) must not gain attributes
+   * while it is being constructed. An author's own tabindex is kept.
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    if (!this.hasAttribute("tabindex")) {
+      this.tabIndex = 0;
+    }
   }
   render() {
     return html`

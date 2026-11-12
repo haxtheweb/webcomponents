@@ -1,4 +1,8 @@
 /**
+ * Copyright 2025 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
+/**
  * Edit Slug Program for Merlin - Provides slug editing capability for HAXcms pages
  * This program allows editing the URL slug on the active page
  */

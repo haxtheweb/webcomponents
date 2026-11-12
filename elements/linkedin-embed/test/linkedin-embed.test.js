@@ -168,6 +168,19 @@ describe("linkedin-embed test", () => {
       expect(element._effectiveTheme).to.equal("light");
     });
 
+    it("follows the page's own dark mode, not only the OS setting", async () => {
+      // HAXcms puts dark-mode on body, which DDD turns into this color-scheme
+      document.body.style.colorScheme = "only dark";
+      await aTimeout(20);
+      expect(element._prefersDark).to.be.true;
+      expect(element._effectiveTheme).to.equal("dark");
+      document.body.style.colorScheme = "only light";
+      await aTimeout(20);
+      expect(element._prefersDark).to.be.false;
+      document.body.style.colorScheme = "";
+      await aTimeout(20);
+    });
+
     it("tracks the preferred color scheme", async () => {
       element.__darkModeHandler({ matches: true });
       expect(element._prefersDark).to.be.true;
@@ -310,6 +323,17 @@ describe("linkedin-embed test", () => {
       expect(iframe.getAttribute("frameborder")).to.equal("0");
       expect(iframe.getAttribute("scrolling")).to.equal("no");
       expect(iframe.srcdoc).to.include("<p>badge content</p>");
+      // a frame needs a name for screen readers
+      expect(iframe.getAttribute("title")).to.equal(
+        "LinkedIn profile badge for btopro",
+      );
+      // the frame and its document share the page's scheme (no white box)
+      expect(iframe.style.colorScheme).to.equal(element._effectiveTheme);
+      expect(iframe.srcdoc).to.include(
+        `<meta name="color-scheme" content="${element._effectiveTheme}">`,
+      );
+      // capped at the container so narrow columns can shrink it
+      expect(iframe.style.width).to.equal("min(330px, 100%)");
       // once the srcdoc loads, the iframe is sized to its content
       await aTimeout(300);
       expect(iframe.getAttribute("height")).to.exist;

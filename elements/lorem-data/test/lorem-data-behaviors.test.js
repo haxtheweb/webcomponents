@@ -119,24 +119,38 @@ describe("lorem-data element", () => {
     }
   });
 
-  it("saveAll clicks every link only after confirm", async () => {
+  it("saveAll asks in the element and clicks every link only after Save", async () => {
     const el = await fixture(html`<lorem-data></lorem-data>`);
     el.schemas = SCHEMAS;
     await el.updateComplete;
     const clickStub = sinon.stub(HTMLAnchorElement.prototype, "click");
-    const confirmStub = sinon.stub(globalThis, "confirm");
+    const confirmSpy = sinon.spy(globalThis, "confirm");
     try {
-      confirmStub.returns(false);
       el.saveAll();
+      await el.updateComplete;
+      const ask = el.shadowRoot.querySelector(".confirm");
+      expect(ask).to.exist;
+      expect(ask.textContent).to.include("Save the following");
+      // the safe-to-take action is focused, nothing is saved yet
+      expect(el.shadowRoot.activeElement).to.equal(
+        el.shadowRoot.querySelector(".confirm-save"),
+      );
       expect(clickStub.callCount).to.equal(0);
-      confirmStub.returns(true);
+      el.shadowRoot.querySelector(".confirm-cancel").click();
+      await el.updateComplete;
+      expect(el.shadowRoot.querySelector(".confirm")).to.equal(null);
+      expect(clickStub.callCount).to.equal(0);
       el.saveAll();
+      await el.updateComplete;
+      el.shadowRoot.querySelector(".confirm-save").click();
+      await el.updateComplete;
       expect(clickStub.callCount).to.equal(2);
-      // one confirm per saveAll invocation
-      expect(confirmStub.callCount).to.equal(2);
+      expect(el.shadowRoot.querySelector(".confirm")).to.equal(null);
+      // never the browser's own confirm()
+      expect(confirmSpy.callCount).to.equal(0);
     } finally {
       clickStub.restore();
-      confirmStub.restore();
+      confirmSpy.restore();
     }
   });
 

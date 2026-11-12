@@ -1,4 +1,8 @@
 /**
+ * Copyright 2026 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
+/**
  * A collection of utility functions exported for convenience
  */
 import { isWebKit, isSafari } from "./lib/browser.js";

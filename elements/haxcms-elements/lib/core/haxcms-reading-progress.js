@@ -1,6 +1,6 @@
 /**
  * Copyright 2026 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * @license Apache-2.0, see LICENSE for full text.
  *
  * Page reading progress for HAXcms learner progress: how far through the
  * content of the page open now the learner has scrolled.
@@ -25,7 +25,6 @@
  * call however many it crossed, or the visit ended part way) or "completed"
  * (the end of the content was seen), once per visit each.
  */
-
 // shares that send a progressed statement as they are crossed
 export const READING_THRESHOLDS = [0.25, 0.5, 0.75];
 // pixels of slack at the end of the content (bottom padding, rounding)

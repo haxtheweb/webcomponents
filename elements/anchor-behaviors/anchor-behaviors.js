@@ -1,8 +1,7 @@
 /**
  * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * @license Apache-2.0, see LICENSE for full text.
  */
-
 // register globally so we can make sure there is only one
 globalThis.AnchorBehaviors = globalThis.AnchorBehaviors || {};
 // request if this exists. This helps invoke the el existing in the dom

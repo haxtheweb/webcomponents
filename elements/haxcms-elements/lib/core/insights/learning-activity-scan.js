@@ -1,6 +1,6 @@
 /**
  * Copyright 2026 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * @license Apache-2.0, see LICENSE for full text.
  *
  * Learning activity scan: which elements on a site's pages can send xAPI
  * statements, counted from the page HTML alone (no learner data).

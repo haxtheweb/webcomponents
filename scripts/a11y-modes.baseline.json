@@ -30,11 +30,6 @@
         "journey-theme >> div.article-wrap": 1
       }
     },
-    "linkedin-embed": {
-      "reflow-overflow": {
-        "linkedin-embed": 1
-      }
-    },
     "meme-maker": {
       "reflow-overlap": {
         "meme-maker >> div.bottom-text / div.top-text": 1

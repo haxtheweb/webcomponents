@@ -174,7 +174,7 @@ The following tables list every custom element in the package, grouped by the `l
 | `haxcms-site-dashboard` | `lib/core/haxcms-site-dashboard.js` | Site dashboard. |
 | `haxcms-site-settings-dashboard` | `lib/core/haxcms-site-settings-dashboard.js` | Site settings dashboard. |
 | `haxcms-site-import-export-dashboard` | `lib/core/haxcms-site-import-export-dashboard.js` | Import/export dashboard. |
-| `haxcms-site-insights` | `lib/core/haxcms-site-insights.js` | Site analytics/insights. |
+| `haxcms-site-reports` | `lib/core/insights/haxcms-site-reports.js` | Site Reports (Insights) admin section. |
 | `haxcms-theme-picker` | `lib/core/haxcms-theme-picker.js` | Theme selector. |
 | `haxcms-toast` | `lib/core/haxcms-toast.js` | Global toast notification. |
 | `haxcms-darkmode-toggle` | `lib/core/haxcms-darkmode-toggle.js` | Dark-mode toggle. |

@@ -1,8 +1,7 @@
 /**
  * Copyright 2026 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * @license Apache-2.0, see LICENSE for full text.
  */
-
 // elements that can run script or load active content from inside an svg
 const blockedSvgElements = [
   "script",

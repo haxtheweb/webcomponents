@@ -1,4 +1,5 @@
 /**
+ * Copyright 2026 The Pennsylvania State University
  * Copyright 2026 haxtheweb
  * @license Apache-2.0, see LICENSE for full text.
  *
@@ -21,7 +22,6 @@
  *  - Platform gating: respect HAXStore.platformAllows('blockTemplates') and
  *    HAXStore.platformAllows('pageTemplates') before registering.
  */
-
 import {
   DDDPATTERNS,
   HAX_CAPABILITY,
@@ -88,7 +88,14 @@ function isDDDActive() {
   ) {
     try {
       const manager = globalThis.DesignSystemManager.requestAvailability();
-      return !!manager && manager.active === "ddd";
+      if (!manager) {
+        return false;
+      }
+      // DDD-capable dialects (systems that extend "ddd") keep DDD patterns
+      if (typeof manager.isActiveCompatible === "function") {
+        return manager.isActiveCompatible("ddd");
+      }
+      return manager.active === "ddd";
     } catch {
       return false;
     }

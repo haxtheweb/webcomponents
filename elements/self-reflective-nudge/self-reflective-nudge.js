@@ -1,4 +1,5 @@
 /**
+ * Copyright 2026 The Pennsylvania State University
  * Copyright 2026 haxtheweb
  * @license Apache-2.0, see LICENSE for full text.
  */
@@ -15,7 +16,6 @@ import {
   interactionComponents,
   XAPI_EXTENSIONS,
 } from "@haxtheweb/user-action/lib/xapi.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 
 /**

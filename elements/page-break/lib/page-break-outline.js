@@ -1,3 +1,7 @@
+/**
+ * Copyright 2021 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { pageBreakManager } from "./page-break-manager.js";
 import { normalizeEventPath } from "@haxtheweb/utils/lib/events.js";
 

@@ -1,3 +1,7 @@
+/**
+ * Copyright 2021 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { SimpleTagLiteSuper } from "./simple-tag-lite.js";

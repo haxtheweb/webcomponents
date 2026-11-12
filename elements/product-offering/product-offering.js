@@ -1,14 +1,13 @@
+/**
+ * Copyright 2021 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { DDDAccentStyles } from "@haxtheweb/d-d-d/lib/DDDAccent.js";
 import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
-
-/**
- * Copyright 2021 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
 
 /**
  * `product-offering`

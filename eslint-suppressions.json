@@ -576,11 +576,6 @@
       "count": 1
     }
   },
-  "elements/haxcms-elements/lib/core/haxcms-site-insights.js": {
-    "eqeqeq": {
-      "count": 11
-    }
-  },
   "elements/haxcms-elements/lib/core/haxcms-site-router.js": {
     "haxtheweb-leaks/autorun-in-constructor": {
       "count": 1

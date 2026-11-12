@@ -1,3 +1,7 @@
+/**
+ * Copyright 2022 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { LitElement, html, css } from "lit";
 const postCardStampBg = new URL(
   "./assets/postcard-stamp-bg.png",

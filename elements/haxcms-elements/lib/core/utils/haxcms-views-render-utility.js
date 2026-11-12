@@ -1,6 +1,6 @@
 /**
  * Copyright 2025 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * @license Apache-2.0, see LICENSE for full text.
  */
 import { html, css } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
@@ -305,7 +305,7 @@ export const renderRecordElementPreview = (record) => {
   const content =
     schema && typeof schema.content === "string" ? schema.content : "";
   const attributeString = attributeStringFromProperties(properties);
-  // security (F3/JS-XSS-001): attribute names and URL values are filtered in
+  // security (JS-XSS): attribute names and URL values are filtered in
   // attributeStringFromProperties; the whole element (not only the slotted
   // body) then goes through the shared sanitizer before reaching unsafeHTML,
   // because records can come from a remote feed.
@@ -760,7 +760,7 @@ export const renderRecordBody = (record, maxLength = 240) => {
     return html``;
   }
   if (recordBodyIsHtml(record)) {
-    // security (F3/JS-XSS-001): sanitize record body HTML before unsafeHTML sink
+    // security (JS-XSS): sanitize record body HTML before unsafeHTML sink
     return html`<div class="record-html">
       ${unsafeHTML(sanitizeHTMLString(body))}
     </div>`;

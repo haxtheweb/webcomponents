@@ -1,8 +1,8 @@
 /**
+ * Copyright 2026 The Pennsylvania State University
  * Copyright 2026 haxtheweb
  * @license Apache-2.0, see LICENSE for full text.
  */
-
 /**
  * The page outline's model: which rows the editor tray's Structure panel
  * shows for the blocks in a hax-body, what each row can do, and the rules

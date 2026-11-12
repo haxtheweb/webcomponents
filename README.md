@@ -201,7 +201,7 @@ This generates the component gallery as a single HTML file: `index.html`, so it'
 ### Component Gallery Features
 
 - **HAX Integration**: Built-in support for HAX-enabled components
-- **DDD Design System**: Uses our Design, Develop, Destroy design tokens
+- **DDD Design System**: Uses our Design, Develop, Deliver design tokens
 - **Live Demos**: Interactive component demonstrations
 - **CodePen Export**: Direct export to CodePen for experimentation
 - **Search & Filter**: Easy component discovery

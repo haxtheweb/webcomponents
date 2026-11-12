@@ -1,4 +1,8 @@
 /**
+ * Copyright 2026 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
+/**
  * DDD long-form reading styles, shared by the course-content themes
  * (clean-one, clean-two, learn-two-theme, polaris-invent-theme) so they
  * read the same way: one line height, one measure, one paragraph rhythm and

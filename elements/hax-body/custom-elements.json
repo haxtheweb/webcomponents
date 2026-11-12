@@ -282,6 +282,79 @@
             },
             {
               "kind": "method",
+              "name": "_gutterIsEmpty",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ],
+              "description": "an empty text block the + can open Merlin in directly"
+            },
+            {
+              "kind": "method",
+              "name": "_gutterMove",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "pointer over the editing area: find the spot under it, once a frame.\nTouch has no hover, and nothing shows while a block is dragged or\nMerlin is open"
+            },
+            {
+              "kind": "method",
+              "name": "_gutterFind",
+              "description": "the spot under the pointer among the top level blocks: the gap between\ntwo blocks (drop line plus +) or an empty block (+ beside it)"
+            },
+            {
+              "kind": "method",
+              "name": "_gutterShow",
+              "parameters": [
+                {
+                  "name": "spot"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_gutterLeave",
+              "description": "the + sits just outside the blocks, so crossing the few pixels between\nthem and it leaves the editing area: wait a moment before hiding"
+            },
+            {
+              "kind": "method",
+              "name": "_gutterHide"
+            },
+            {
+              "kind": "method",
+              "name": "_gutterPress",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "pressing the + must not reach the block underneath (activation, drag)"
+            },
+            {
+              "kind": "method",
+              "name": "_gutterAdd",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "the +: in a gap, add an empty paragraph there first; then put the\ncursor in the empty block and open Merlin, the same as typing /"
+            },
+            {
+              "kind": "method",
+              "name": "_openInlineMerlin",
+              "parameters": [
+                {
+                  "name": "rng"
+                }
+              ],
+              "description": "open Merlin inline at the cursor in an empty block: the / shortcut\nand the gutter + both come here. Blocks used recently lead the list"
+            },
+            {
+              "kind": "method",
               "name": "_blockDragStart",
               "parameters": [
                 {
@@ -403,6 +476,26 @@
               "kind": "method",
               "name": "_isFocusOutsideEditingContext",
               "description": "Determine if keyboard focus is currently outside the editable hax-body\ncontext (e.g. in the hax-tray settings form, a modal, or the document\nbody). Shared by keydown/keyup handlers so shortcuts scoped to body\nediting never fire while the user is interacting with tray form fields."
+            },
+            {
+              "kind": "method",
+              "name": "__setKeyboardFocusRing",
+              "parameters": [
+                {
+                  "name": "show"
+                }
+              ],
+              "description": "Show / hide the keyboard focus ring on the editing area. The ring is a\nprivate host attribute (never serialized: haxToContent reads children)\nbecause :focus-visible always matches a contenteditable host, mouse\nfocus included."
+            },
+            {
+              "kind": "method",
+              "name": "_isFocusInEditableContent",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "True when keyboard focus is inside this body's editable content: the\nkey event came from this hax-body itself or from a block in its light\nDOM (including a block's own shadow DOM, such as a field in a HAX\nelement). Focus elsewhere on the page, or in hax-body's own UI (the\ncontext menus and text toolbar live in its shadow root), is outside\nthe editing area, so those keys are not the editor's to take."
             },
             {
               "kind": "method",
@@ -1450,6 +1543,11 @@
             },
             {
               "kind": "field",
+              "name": "windowControllers",
+              "default": "new AbortController()"
+            },
+            {
+              "kind": "field",
               "name": "_useristyping",
               "privacy": "public",
               "type": {
@@ -1568,7 +1666,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ addContent: \"Add Content\", cantBeTransformed: \"Sorry, this can not be transformed!\", typeForQuickActions: \"Type '/' for quick actions\", }"
+              "default": "{ addContent: \"Add Content\", cantBeTransformed: \"Sorry, this can not be transformed!\", typeForQuickActions: \"Type '/' for quick actions\", addBlockHere: \"Add a block here (/)\", }"
             },
             {
               "kind": "field",
@@ -12849,6 +12947,30 @@
             },
             {
               "kind": "field",
+              "name": "sourceFormatSwitch",
+              "description": "HTML / Markdown switch for Source, in the panel title bar",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_setSourceFormat",
+              "parameters": [
+                {
+                  "name": "format"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_sourceFormatChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
               "name": "contentEditTemplate",
               "readonly": true
             },
@@ -13046,7 +13168,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ structure: \"Structure\", htmlSource: \"HTML Source\", structureTip: \"View Page Structure\", edit: \"Edit\", save: \"Save\", saveAndEdit: \"Save and edit\", move: \"Move\", close: \"Close\", menuAlignment: \"Menu Alignment\", menuLeft: \"Move\", menuRight: \"Move\", menuPosition: \"Menu position\", changeSideVisually: \"Change which side of the screen the menu is affixed to visually.\", expand: \"Expand\", collapse: \"Collapse\", menuSize: \"Menu size\", menuSizeDescription: \"Expand or collapse the menu visually.\", merlin: \"Merlin\", summonMerlin: \"Summon Merlin\", settings: \"Settings\", source: \"Source\", undo: \"Undo\", redo: \"Redo\", media: \"Media\", blocks: \"Blocks\", cancel: \"Cancel\", cancelWithoutSaving: \"Cancel without saving\", configure: \"Configure\", advanced: \"Advanced\", developer: \"Developer\", alignment: \"Alignment\", left: \"Left\", center: \"Center\", right: \"Right\", search: \"Search\", pages: \"Pages\", templates: \"Templates\", width: \"Width\", content: \"Content\", linkHtmlContentDescription: \"HTML inside this link. Nested elements like images are preserved; edit carefully.\", }"
+              "default": "{ structure: \"Structure\", htmlSource: \"HTML Source\", markdownSource: \"Markdown Source\", sourceFormat: \"Source format\", html: \"HTML\", markdown: \"Markdown\", structureTip: \"View Page Structure\", edit: \"Edit\", save: \"Save\", saveAndEdit: \"Save and edit\", move: \"Move\", close: \"Close\", menuAlignment: \"Menu Alignment\", menuLeft: \"Move\", menuRight: \"Move\", menuPosition: \"Menu position\", changeSideVisually: \"Change which side of the screen the menu is affixed to visually.\", expand: \"Expand\", collapse: \"Collapse\", menuSize: \"Menu size\", menuSizeDescription: \"Expand or collapse the menu visually.\", merlin: \"Merlin\", summonMerlin: \"Summon Merlin\", settings: \"Settings\", source: \"Source\", undo: \"Undo\", redo: \"Redo\", media: \"Media\", blocks: \"Blocks\", cancel: \"Cancel\", cancelWithoutSaving: \"Cancel without saving\", configure: \"Configure\", advanced: \"Advanced\", developer: \"Developer\", alignment: \"Alignment\", left: \"Left\", center: \"Center\", right: \"Right\", search: \"Search\", pages: \"Pages\", templates: \"Templates\", width: \"Width\", content: \"Content\", linkHtmlContentDescription: \"HTML inside this link. Nested elements like images are preserved; edit carefully.\", }"
             },
             {
               "kind": "field",
@@ -13273,6 +13395,17 @@
               },
               "description": "heading of toggled section in tray",
               "attribute": "trayLabel"
+            },
+            {
+              "kind": "field",
+              "name": "viewSourceFormat",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Format Source is in (html or markdown), mirrored from hax-view-source",
+              "attribute": "view-source-format",
+              "reflects": true
             }
           ],
           "events": [
@@ -13496,6 +13629,14 @@
               },
               "description": "heading of toggled section in tray",
               "fieldName": "trayLabel"
+            },
+            {
+              "name": "view-source-format",
+              "type": {
+                "text": "string"
+              },
+              "description": "Format Source is in (html or markdown), mirrored from hax-view-source",
+              "fieldName": "viewSourceFormat"
             }
           ],
           "mixins": [
@@ -14491,6 +14632,21 @@
           "members": [
             {
               "kind": "field",
+              "name": "htmlTools",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "markdownTools",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "helpTemplate",
+              "readonly": true
+            },
+            {
+              "kind": "field",
               "name": "tag",
               "static": true,
               "readonly": true
@@ -14510,9 +14666,128 @@
               "parameters": [
                 {
                   "name": "_e"
+                },
+                {
+                  "name": "html"
                 }
               ],
               "description": "Import content into body area."
+            },
+            {
+              "kind": "method",
+              "name": "_withPageBreak",
+              "parameters": [
+                {
+                  "name": "htmlBody"
+                }
+              ],
+              "description": "The page-break that opens a HAXcms page carries its settings; content\nimported without it would drop them, so put the current one back on top."
+            },
+            {
+              "kind": "method",
+              "name": "updateBodyFromMarkdown",
+              "parameters": [
+                {
+                  "name": "_e"
+                }
+              ],
+              "description": "Turn the Markdown back into HTML, with the attributes HAX manages put\nback, and import it the same way Update HTML does."
+            },
+            {
+              "kind": "method",
+              "name": "_markdownToPageHTML",
+              "parameters": [
+                {
+                  "name": "md"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "isMarkdown",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setFormat",
+              "parameters": [
+                {
+                  "name": "format"
+                }
+              ],
+              "description": "Switch between HTML and Markdown. What is in the editor converts across,\nso nothing typed is lost; the page itself changes only on Update."
+            },
+            {
+              "kind": "method",
+              "name": "toggleHelp",
+              "parameters": [
+                {
+                  "name": "_e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "closeHelp",
+              "parameters": [
+                {
+                  "name": "_e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_helpKeydown",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_setMarkdownView",
+              "parameters": [
+                {
+                  "name": "view"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_sourceChanged",
+              "parameters": [
+                {
+                  "name": "_e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "_previewVisible",
+              "description": "Live preview: what Update from Markdown would put on the page, labeled\nby block. It lives in the page document (not this shadow root) so the\npage's content styles apply, beside the tray on wide screens and over\nthe editor on a phone. It never touches the page or undo history.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_ensurePreview"
+            },
+            {
+              "kind": "method",
+              "name": "_placePreview"
+            },
+            {
+              "kind": "method",
+              "name": "_renderPreview"
+            },
+            {
+              "kind": "method",
+              "name": "_fitPreview",
+              "description": "Lay the preview out at the page's own content width, so lines break\nwhere they will on the page, and scale it down to fit the pane."
+            },
+            {
+              "kind": "method",
+              "name": "_syncPreview"
             },
             {
               "kind": "method",
@@ -14543,7 +14818,7 @@
               "name": "selectBody",
               "parameters": [
                 {
-                  "name": "_e"
+                  "name": "e"
                 }
               ],
               "description": "selectBody"
@@ -14568,11 +14843,74 @@
             },
             {
               "kind": "field",
+              "name": "sourceFormat",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Format the source is shown and edited in: html or markdown",
+              "default": "\"html\"",
+              "attribute": "source-format",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "markdownView",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Phone only: write the Markdown or preview it",
+              "default": "\"write\"",
+              "attribute": "markdown-view"
+            },
+            {
+              "kind": "field",
+              "name": "helpOpen",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "help-open"
+            },
+            {
+              "kind": "field",
+              "name": "trayActive",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Set by the tray: Source is the open, visible panel in edit mode",
+              "default": "false",
+              "attribute": "tray-active"
+            },
+            {
+              "kind": "field",
+              "name": "narrow",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "narrow",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "_managed",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
               "name": "t",
               "type": {
                 "text": "object"
               },
-              "default": "{ updateHTML: \"Update HTML\", copyHTML: \"Copy HTML\", copiedToClipboard: \"Copied to clipboard\", prettifyHtml: \"Prettify HTML\", cleanFormatting: \"Clean Formatting\", haxSchema: \"HAX schema JSON\", revisionHistory: \"Revision history\", scrubbedContentUpdated: \"Scrubbed. Content updated.\", formattingUpdated: \"Formatting updated. Content updated.\", }"
+              "default": "{ updateHTML: \"Update HTML\", copyHTML: \"Copy HTML\", updateMarkdown: \"Update from Markdown\", copyMarkdown: \"Copy Markdown\", markdownHelp: \"Markdown help\", markdownView: \"Markdown view\", write: \"Write\", preview: \"Preview\", livePreview: \"Live preview\", notSavedUntilUpdate: \"Not saved until Update from Markdown\", fromHTML: \"from HTML\", close: \"Close\", mdType: \"Type\", mdMakes: \"Makes\", mdHeading: \"Heading (# to ####)\", mdBoldItalic: \"Bold and italic text\", mdLink: \"Link\", mdBulleted: \"Bulleted list\", mdNumbered: \"Numbered list\", mdQuote: \"Quote\", mdInlineCode: \"Inline code\", mdDivider: \"Divider\", mdTable: \"Table (GFM)\", mdAnyBlock: \"Any HAX block, written as HTML\", mdHelpFooter: \"Blank line between blocks. Anything you write as HTML stays a HAX block, and Update from Markdown turns the rest into blocks.\", copiedToClipboard: \"Copied to clipboard\", prettifyHtml: \"Prettify HTML\", cleanFormatting: \"Clean Formatting\", haxSchema: \"HAX schema JSON\", revisionHistory: \"Revision history\", scrubbedContentUpdated: \"Scrubbed. Content updated.\", formattingUpdated: \"Formatting updated. Content updated.\", }"
             },
             {
               "kind": "field",
@@ -14604,6 +14942,14 @@
               "attribute": "theme"
             }
           ],
+          "events": [
+            {
+              "name": "source-format-changed",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
           "attributes": [
             {
               "name": "globalPreferences",
@@ -14626,6 +14972,49 @@
                 "text": "string"
               },
               "fieldName": "theme"
+            },
+            {
+              "name": "source-format",
+              "type": {
+                "text": "string"
+              },
+              "description": "Format the source is shown and edited in: html or markdown",
+              "default": "\"html\"",
+              "fieldName": "sourceFormat"
+            },
+            {
+              "name": "markdown-view",
+              "type": {
+                "text": "string"
+              },
+              "description": "Phone only: write the Markdown or preview it",
+              "default": "\"write\"",
+              "fieldName": "markdownView"
+            },
+            {
+              "name": "help-open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "helpOpen"
+            },
+            {
+              "name": "tray-active",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Set by the tray: Source is the open, visible panel in edit mode",
+              "default": "false",
+              "fieldName": "trayActive"
+            },
+            {
+              "name": "narrow",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "narrow"
             }
           ],
           "mixins": [

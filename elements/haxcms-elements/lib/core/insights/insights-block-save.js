@@ -1,6 +1,6 @@
 /**
  * Copyright 2026 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * @license Apache-2.0, see LICENSE for full text.
  *
  * Saves attribute edits made on Reports screens through the site's block
  * operations API (haxtheweb/issues#3270, haxtheweb/issues#3321):

@@ -1068,7 +1068,7 @@
     {
       "tag": "d-d-d",
       "title": "",
-      "description": "design, develop, destroy the competition",
+      "description": "design, develop, deliver",
       "package": "@haxtheweb/d-d-d",
       "import": "@haxtheweb/d-d-d/d-d-d.js",
       "type": "element",
@@ -1087,7 +1087,7 @@
     },
     {
       "tag": "d-d-docs",
-      "title": "Design, Develop, Destroy",
+      "title": "Design, Develop, Deliver",
       "description": "Webcomponent d-d-docs following hax / open-wc recommendations",
       "package": "@haxtheweb/d-d-docs",
       "import": "@haxtheweb/d-d-docs/d-d-docs.js",

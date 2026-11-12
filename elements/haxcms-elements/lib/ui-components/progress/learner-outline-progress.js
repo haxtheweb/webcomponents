@@ -1,6 +1,6 @@
 /**
  * Copyright 2026 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * @license Apache-2.0, see LICENSE for full text.
  *
  * The "All pages" view of learner progress (haxtheweb/issues#3267), shared
  * by the My learning panel (my-learning-panel.js, All pages tab) and the

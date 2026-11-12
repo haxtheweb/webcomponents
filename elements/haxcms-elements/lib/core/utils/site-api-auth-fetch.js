@@ -1,6 +1,6 @@
 /**
  * Copyright 2026 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * @license Apache-2.0, see LICENSE for full text.
  *
  * Authenticated fetch for direct HAXcms site API calls (x/api/v1/...).
  *
@@ -20,7 +20,6 @@
  * buttons) load it on published sites, where pulling in the full registry
  * would be wasted weight.
  */
-
 // Shared with haxcms-site-api-registry.js, which owns and writes this state.
 export const SITE_API_STATE_KEY = "__HAXCMSSiteApiRegistryState";
 

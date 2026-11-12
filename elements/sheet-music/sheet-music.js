@@ -1,4 +1,5 @@
 /**
+ * Copyright 2026 The Pennsylvania State University
  * Copyright 2026 haxtheweb
  * @license Apache-2.0, see LICENSE for full text.
  */
@@ -7,7 +8,6 @@ import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import {
   DDDBlockStyles,
   renderDDDBlockHeader,

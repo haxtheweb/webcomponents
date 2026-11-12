@@ -1,4 +1,8 @@
 /**
+ * Copyright 2026 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
+/**
  * Share Page Program for Merlin
  * Returns a single result for sharing the currently active page link.
  */

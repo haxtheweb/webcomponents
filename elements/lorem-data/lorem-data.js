@@ -1,3 +1,7 @@
+/**
+ * Copyright 2020 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { LitElement, html, css } from "lit";
 import { LoremDataBehaviors } from "./lib/lorem-data-behaviors.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
@@ -68,6 +72,7 @@ class LoremData extends I18NMixin(LoremDataBehaviors(LitElement)) {
       schemas: {
         type: Object,
       },
+      _confirming: { type: Boolean, state: true },
     };
   }
 
@@ -78,6 +83,8 @@ class LoremData extends I18NMixin(LoremDataBehaviors(LitElement)) {
       ...this.t,
       saveAll: "Save All",
       saveTheFollowing: "Save the following: {list}?",
+      save: "Save",
+      cancel: "Cancel",
     };
     this.registerLocalization({
       context: this,
@@ -85,11 +92,37 @@ class LoremData extends I18NMixin(LoremDataBehaviors(LitElement)) {
     });
     this.schemas = {};
     this.__downloadUrls = {};
+    this._confirming = false;
   }
 
   render() {
     return html`
       <button @click="${this.saveAll}">${this.t.saveAll}</button>
+      ${
+        this._confirming
+          ? html`<p class="confirm" role="group" aria-labelledby="confirm-q">
+              <span id="confirm-q"
+                >${this.t.saveTheFollowing.replace("{list}", () =>
+                  Object.keys(this.schemas || {}).join(", "),
+                )}</span
+              >
+              <button
+                type="button"
+                class="confirm-save"
+                @click="${this._confirmSave}"
+              >
+                ${this.t.save}
+              </button>
+              <button
+                type="button"
+                class="confirm-cancel"
+                @click="${this._cancelSave}"
+              >
+                ${this.t.cancel}
+              </button>
+            </p>`
+          : ""
+      }
       ${Object.keys(this.schemas || []).map(
         (key) => html`
           <p>
@@ -114,17 +147,24 @@ class LoremData extends I18NMixin(LoremDataBehaviors(LitElement)) {
    * @memberof LoremData
    */
   saveAll() {
-    if (
-      this.shadowRoot &&
-      this.shadowRoot.querySelectorAll("a") &&
-      confirm(
-        this.t.saveTheFollowing.replace("{list}", () =>
-          Object.keys(this.schemas).join(", "),
-        ),
-      )
-    ) {
+    // asks in the element itself (no browser confirm()), then waits for Save
+    this._confirming = true;
+    this.updateComplete.then(() => {
+      const save =
+        this.shadowRoot && this.shadowRoot.querySelector(".confirm-save");
+      if (save) {
+        save.focus();
+      }
+    });
+  }
+  _confirmSave() {
+    this._confirming = false;
+    if (this.shadowRoot) {
       this.shadowRoot.querySelectorAll("a").forEach((a) => a.click());
     }
+  }
+  _cancelSave() {
+    this._confirming = false;
   }
 
   /**

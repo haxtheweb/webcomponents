@@ -1,3 +1,7 @@
+/**
+ * Copyright 2026 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 // the style guide pickers render HAXOptionSampleFactory previews, which
 // are d-d-d-sample elements; d-d-d.js no longer defines it
 import "./d-d-d-sample.js";
@@ -182,7 +186,14 @@ function isDDDActiveSystem(manager = null) {
   ) {
     activeManager = globalThis.DesignSystemManager.requestAvailability();
   }
-  return !!activeManager && activeManager.active === "ddd";
+  if (!activeManager) {
+    return false;
+  }
+  // DDD-capable dialects (systems that extend "ddd") keep DDD's authoring
+  if (typeof activeManager.isActiveCompatible === "function") {
+    return activeManager.isActiveCompatible("ddd");
+  }
+  return activeManager.active === "ddd";
 }
 
 function refreshDesignSystemProperties(HAXStore) {

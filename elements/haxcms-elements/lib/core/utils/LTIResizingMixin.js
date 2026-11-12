@@ -1,10 +1,14 @@
+/**
+ * Copyright 2024 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 // this helps with resizing on learning management systems
 // like cantvas and h4p
 import "@haxtheweb/es-global-bridge/es-global-bridge.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun } from "mobx";
 
-// security: resolve the known LMS origin to use as postMessage targetOrigin instead of '*' (JS-MSG-001)
+// security: resolve the known LMS origin to use as postMessage targetOrigin instead of '*' (JS-MSG)
 // never returns '*': if the origin can't be resolved confidently, the post is
 // dropped (browser requires an exact origin match) rather than sent to any parent
 function getLtiTargetOrigin() {

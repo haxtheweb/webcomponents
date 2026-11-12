@@ -1,3 +1,7 @@
+/**
+ * Copyright 2026 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { LitElement, html, css } from "lit";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
@@ -9,8 +13,6 @@ import { HaxUiAdminTokens } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
 import { adminPrompt } from "@haxtheweb/haxcms-elements/lib/core/admin/haxcms-admin-confirm.js";
 import "./app-hax-use-case.js";
 import "./app-hax-search-results.js";
-import "./app-hax-filter-tag.js";
-import "./app-hax-scroll-button.js";
 import "./app-hax-site-creation-modal.js";
 import { trimChars } from "@haxtheweb/utils/lib/safe-html.js";
 

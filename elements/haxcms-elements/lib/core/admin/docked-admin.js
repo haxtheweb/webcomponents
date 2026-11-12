@@ -1,4 +1,8 @@
 /**
+ * Copyright 2026 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
+/**
  * Shared rules for the one admin dialog docked below a live top bar: the
  * site editor's Site Settings and the dashboard's System Settings.
  *

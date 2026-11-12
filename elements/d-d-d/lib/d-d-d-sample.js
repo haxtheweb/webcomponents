@@ -1,6 +1,6 @@
 /**
- * Copyright 2024
- * @license Apache-2.0, see License.md for full details.
+ * Copyright 2024 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
  *
  * `d-d-d-sample`: a small swatch + label used to preview a DDD option
  * (a color, spacing, border, font...) in pickers and docs. It is not part

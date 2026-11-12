@@ -1,3 +1,7 @@
+/**
+ * Copyright 2026 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { autorun, toJS } from "mobx";
 import { DarkmodeToggle } from "@haxtheweb/haxcms-elements/lib/core/ui/darkmode-toggle/darkmode-toggle.js";
 import { store } from "./AppHaxStore.js";

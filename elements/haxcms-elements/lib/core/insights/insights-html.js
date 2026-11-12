@@ -1,6 +1,6 @@
 /**
  * Copyright 2026 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * @license Apache-2.0, see LICENSE for full text.
  *
  * HTML to a small, plain tree for the Insights analyzer.
  *
@@ -19,7 +19,6 @@
  * end tags of p, li, dt/dd, tr/td/th, option and headings. It does not do
  * table foster-parenting or full adoption-agency repair.
  */
-
 const VOID = new Set([
   "area",
   "base",

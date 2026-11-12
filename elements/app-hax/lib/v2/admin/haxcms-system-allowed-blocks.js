@@ -1,3 +1,7 @@
+/**
+ * Copyright 2026 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { autorun, toJS } from "mobx";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { HAXCMSAllowedBlocksUI } from "@haxtheweb/haxcms-elements/lib/core/ui/haxcms-allowed-blocks-ui.js";

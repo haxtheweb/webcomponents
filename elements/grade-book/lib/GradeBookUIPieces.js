@@ -1,3 +1,7 @@
+/**
+ * Copyright 2021 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { html, nothing } from "lit";
 import { toJS } from "mobx";
 import { renderDDDBlockHeader } from "@haxtheweb/d-d-d/lib/DDDBlock.js";

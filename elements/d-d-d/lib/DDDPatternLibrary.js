@@ -1,4 +1,5 @@
 /**
+ * Copyright 2026 The Pennsylvania State University
  * Copyright 2026 haxtheweb
  * @license Apache-2.0, see LICENSE for full text.
  *
@@ -27,7 +28,6 @@
  * Internal contract shape (cross-cutting; applies to element internals, not compositions):
  *   id, title, description, surface, tokens, structure, targetElements: [tag, ...]
  */
-
 /**
  * HAX-capability knowledge for components referenced by patterns.
  * `true` = verified to ship haxProperties (external lib JSON or inline).
@@ -1498,7 +1498,13 @@ export const INTERNAL_CONTRACTS = [
       "haxcms-about-dialog-ui",
       "haxcms-site-import-export-dashboard",
       "haxcms-page-revisions-dialog",
-      "haxcms-site-insights",
+      "haxcms-site-reports",
+      "haxcms-system-settings",
+      "haxcms-theme-preview-panel",
+      "rpg-character-builder",
+      "app-hax-site-creation-modal",
+      "app-hax-user-access-modal",
+      "app-hax-confirmation-modal",
     ],
     example:
       '<div style="font-family: var(--ddd-font-navigation); font-size: 14px; color: light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-white)); border: 1px solid light-dark(var(--ddd-theme-default-limestoneLight), rgba(255, 255, 255, 0.18)); border-radius: var(--ddd-radius-sm)"><div style="height: 32px; display: flex; align-items: center; padding: 0 var(--ddd-spacing-3); font-size: 12px; color: light-dark(var(--ddd-theme-default-slateGray), var(--ddd-theme-default-white65))">Title</div><div style="height: 36px; display: flex; align-items: center; padding: 0 var(--ddd-spacing-3); border-top: 1px solid light-dark(var(--ddd-theme-default-limestoneLight), rgba(255, 255, 255, 0.18))">Cell membranes</div><div style="height: 36px; display: flex; align-items: center; padding: 0 var(--ddd-spacing-3); border-top: 1px solid light-dark(var(--ddd-theme-default-limestoneLight), rgba(255, 255, 255, 0.18)); background: rgba(0, 95, 169, 0.18)">Osmosis lab (selected)</div></div>',
@@ -1551,6 +1557,82 @@ export const INTERNAL_CONTRACTS = [
       "haxcms-files-admin-dialog",
       "haxcms-views-admin-dialog",
       "haxcms-page-revisions-dialog",
+    ],
+  },
+  {
+    id: "contract-admin-dialog-frame",
+    title: "Admin dialog frame",
+    surface:
+      "Every modal or side panel a signed-in editor opens to change settings or data, in HAXcms and app-hax: site admin, system settings, Merlin, site creation, user access, the character builder, page history, the theme preview panel, the login prompt and the editor's own dialogs. Not theme modals a visitor sees (site-modal, img-view-modal).",
+    tokens: [
+      "HaxUiDialogFrame",
+      "HaxUiDialogTitlebar",
+      "HaxUiDialogTitlebarStyles",
+      "SITE_ADMIN_MODAL_SIZE",
+      "--hax-ui-titlebar",
+      "--hax-ui-titlebar-height",
+      "--hax-ui-on-titlebar",
+      "--hax-ui-surface",
+      "--hax-ui-radius-lg",
+    ],
+    structure:
+      "One frame for every admin dialog, from HaxUiDialogFrame.js and nowhere else: a 48px --hax-ui-titlebar band holding the title (16px bold; a breadcrumb such as Site Settings / Content when the dialog has sections) and, at its right end, one 32px close button with a 20px HaxUiAdminIcons.close icon. Every dialog keeps that close button (a simple-modal opened with modal: true passes showClose: true), so each one is left the same way: close, Esc or the action bar's Cancel / Discard. Open a simple-modal with styles spread from HaxUiDialogFrame (or the SITE_ADMIN_* maps built on it); a web-dialog or hand-drawn dialog uses HaxUiDialogTitlebarStyles' .hax-ui-dialog-titlebar, .hax-ui-dialog-title and .hax-ui-dialog-close. A dialog that changes data docks below the app or editor top bar like site admin and system settings, never over it, and sizes from SITE_ADMIN_MODAL_SIZE (a smaller dialog keeps the same margins and corners and changes only its width and height). A side panel that previews or changes settings (theme preview) wears the same titlebar and close, and puts its actions in an action bar, not a full-width button at the top. Body text inside is HAX UI (--hax-ui-admin-font-size), never DDD's content scale.",
+    targetElements: [
+      "haxcms-site-admin",
+      "haxcms-system-settings",
+      "rpg-character-builder",
+      "app-hax-site-creation-modal",
+      "app-hax-user-access-modal",
+      "haxcms-theme-preview-panel",
+      "haxcms-page-revisions-dialog",
+      "super-daemon",
+    ],
+  },
+  {
+    id: "contract-admin-confirm",
+    title: "Admin confirm and prompt",
+    surface:
+      "Every question an admin surface asks before it acts: discard changes, delete, archive, copy, leave with unsaved changes, and every prompt for a value.",
+    tokens: [
+      "hax-confirm-dialog",
+      "HaxUiDialogConfirm",
+      "SITE_ADMIN_CONFIRM_STYLES",
+      "adminConfirm",
+      "adminPrompt",
+      "--hax-ui-danger",
+      "--hax-ui-danger-hatch",
+    ],
+    structure:
+      "One confirm card: hax-confirm-dialog in a simple-modal opened with HaxUiDialogConfirm (SITE_ADMIN_CONFIRM_STYLES), or adminConfirm / adminPrompt from haxcms-admin-confirm.js, which draw the same card. No dark titlebar: the question is the bold heading, a short message under it, the actions at the bottom right. The safe choice is plain and focused first; the destructive one is a danger fill (with the danger hatch) whose label names the action and its scope (Delete page, Archive site), never a bare Confirm or OK. A question with two constructive answers (Download skeleton / Save to templates) still offers Cancel. Never the browser's confirm(), prompt() or alert(), and never a second hand-drawn confirm element.",
+    targetElements: [
+      "hax-confirm-dialog",
+      "haxcms-admin-confirm",
+      "app-hax-confirmation-modal",
+    ],
+  },
+  {
+    id: "contract-admin-shell-areas",
+    title: "Admin shell: the eight areas",
+    surface:
+      "The site admin dialog (haxcms-site-admin) and system admin (haxcms-system-settings), and every section either shell shows.",
+    tokens: [
+      "HaxUiAdminShell",
+      "HaxcmsAdminSectionMixin",
+      "--hax-ui-rail-width",
+      "--hax-ui-rail-width-collapsed",
+      "--hax-ui-sunken",
+      "--hax-ui-action-bar-height",
+    ],
+    structure:
+      "Every section uses the same eight areas, drawn by the shell from one registry: 1 title bar (breadcrumb, close), 2 section rail (sections and their parts, badges, collapse; nothing that changes data), 3 page header (title, one line of purpose, a Beta pill), 4 toolbar (search, filters, sort, view, density, count; nothing that changes data), 5 workspace with 5a selector column, 6 detail panel, 7 action bar (status left; every action that changes data right, then Discard and Save, primary last), 8 item menu (right click, the row's ⋯, long press, Shift+F10 or the menu key, from admin-row-menu.js). A section supplies the toolbar, workspace and detail panel and never draws its own titlebar, rail or Save button. Record panels that take new records (Content, Files) add 9, the add area, at the top right of the page header. Unfinished parts say so where people look first: status: beta on the registry entry, soon: true on an action. A dialog outside the shells with sections or bulk actions (the character builder's groups, a site's options) borrows the same areas rather than inventing a layout.",
+    targetElements: [
+      "haxcms-site-admin",
+      "haxcms-system-settings",
+      "haxcms-content-admin-dialog",
+      "haxcms-files-admin-dialog",
+      "haxcms-outline-editor-dialog",
+      "haxcms-views-admin-dialog",
+      "haxcms-site-reports",
     ],
   },
   // ---- Phase 3: site-* and theme conformance contracts ----

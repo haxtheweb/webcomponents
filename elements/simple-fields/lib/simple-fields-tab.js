@@ -1,3 +1,7 @@
+/**
+ * Copyright 2020 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import "lit";
 import { SimpleFieldsFieldsetBehaviors } from "./simple-fields-fieldset.js";
 import { A11yTab } from "@haxtheweb/a11y-tabs/lib/a11y-tab.js";
