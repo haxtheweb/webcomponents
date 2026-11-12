@@ -230,12 +230,13 @@ export function areaOfUrl(url) {
 
 // What the magic script (build.js) sets up on any page: the process shim
 // mobx and friends need, then wc-autoload with the registry, so nested tags
-// in content load. That is not the editor or HAXcms, and both levels get
+// in content load. The check serves /wc-registry.json with paths relative to
+// the server root (see without-hax-check.mjs), hence basePath "/". That is not the editor or HAXcms, and both levels get
 // it so elements are held to what HAX really serves.
 const MAGIC_SCRIPT = `<script>
 globalThis.process = globalThis.process || { env: { NODE_ENV: "production" } };
 globalThis.WCAutoloadRegistryFile = "/wc-registry.json";
-globalThis.WCGlobalBasePath = "/node_modules/";
+globalThis.WCGlobalBasePath = "/";
 </script>
 <script type="module" src="/elements/wc-autoload/wc-autoload.js"></script>`;
 

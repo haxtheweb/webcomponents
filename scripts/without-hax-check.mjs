@@ -223,6 +223,25 @@ function staticLevel(t) {
   return { findings, hard, lazy };
 }
 
+let registryCache = null;
+/** wc-registry.json with paths the local server serves as-is (basePath "/") */
+function monorepoRegistry() {
+  if (!registryCache) {
+    const reg = JSON.parse(
+      fs.readFileSync(path.join(root, "wc-registry.json"), "utf8"),
+    );
+    registryCache = {};
+    for (const [tag, spec] of Object.entries(reg)) {
+      const m = String(spec).match(/^@haxtheweb\/([^/]+)\/(.*)$/);
+      registryCache[tag] =
+        m && fs.existsSync(path.join(root, "elements", m[1], "package.json"))
+          ? `elements/${m[1]}/${m[2]}`
+          : `node_modules/${spec}`;
+    }
+  }
+  return registryCache;
+}
+
 /** open a generated page on the local origin; outside requests aborted */
 async function openGenerated(browser, origin, name, html, watch) {
   const context = await browser.newContext({
@@ -238,6 +257,19 @@ async function openGenerated(browser, origin, name, html, watch) {
       }
       return route.abort();
     },
+  );
+  // One URL per module, as in a built site. The dev server resolves a
+  // package's own imports to /elements/<pkg>/..., so the autoloader must ask
+  // for the same URLs: a module requested under two URLs (even through a
+  // redirect, since module identity is the requested URL) runs twice and its
+  // second customElements.define throws. Serve the registry with monorepo
+  // packages pointed at elements/ and the rest at node_modules/.
+  await context.route(`${origin}/wc-registry.json`, (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify(monorepoRegistry()),
+    }),
   );
   // registered last, so it wins for the generated page
   await context.route(url, (route) =>
