@@ -356,62 +356,8 @@ export class InstructionalCadence extends DDDSuper(I18NMixin(LitElement)) {
     template.setAttribute("preserve-content", "preserve-content");
     template.content.appendChild(globalThis.document.createTextNode(tex));
     sheet.appendChild(template);
+    // sheet-music copies its score CSS into this shadow root itself
     container.replaceChildren(sheet);
-    this._mirrorScoreStyles();
-  }
-
-  /**
-   * alphaTab and sheet-music add their glyph and cursor CSS to document.head.
-   * The score lives inside this element's shadow root, where document styles
-   * do not reach, so copy those style elements in as they appear. The
-   * @font-face rules stay registered at the document level.
-   */
-  _mirrorScoreStyles() {
-    if (!this.shadowRoot || !globalThis.document || !globalThis.document.head) {
-      return;
-    }
-    const copy = () => {
-      globalThis.document.head
-        .querySelectorAll("style[id]")
-        .forEach((style) => {
-          const id = style.id;
-          if (
-            id.indexOf("alphaTabStyle") !== 0 &&
-            id !== "sheet-music-cursor-styles"
-          ) {
-            return;
-          }
-          let mirror = null;
-          this.shadowRoot
-            .querySelectorAll("style[data-mirror-of]")
-            .forEach((el) => {
-              if (el.getAttribute("data-mirror-of") === id) {
-                mirror = el;
-              }
-            });
-          if (!mirror) {
-            mirror = globalThis.document.createElement("style");
-            mirror.setAttribute("data-mirror-of", id);
-            this.shadowRoot.appendChild(mirror);
-          }
-          if (mirror.textContent !== style.textContent) {
-            mirror.textContent = style.textContent;
-          }
-        });
-    };
-    copy();
-    if (!this._headObserver) {
-      this._headObserver = new MutationObserver(copy);
-      this._headObserver.observe(globalThis.document.head, { childList: true });
-    }
-  }
-
-  disconnectedCallback() {
-    if (this._headObserver) {
-      this._headObserver.disconnect();
-      this._headObserver = null;
-    }
-    super.disconnectedCallback();
   }
 
   _beatForPart(lesson, part) {

@@ -119,6 +119,9 @@ describe("user-action behaviors", () => {
     el.dispatchEvent(new KeyboardEvent("keydown", { bubbles: true }));
     expect(events.length).to.equal(1);
     expect(events[0].detail.eventType).to.equal("keydown");
+    // "Press a key here" (track="keydown") is a learner record
+    expect(events[0].detail.xapi).to.equal(undefined);
+    expect(events[0].detail.statement.verb.id).to.contain("interacted");
     globalThis.document.removeEventListener("user-engagement", handler);
   });
 
@@ -344,19 +347,21 @@ describe("user-action behaviors", () => {
     const events = [];
     const handler = (e) => events.push(e);
     globalThis.document.addEventListener("user-engagement", handler);
-    ["visibility", "click", "keypress"].forEach((t) =>
+    ["visibility", "click", "keypress", "keydown"].forEach((t) =>
       UABroker.fire("user-engagement", t, {}, el, false),
     );
     ["hover", "focusin", "keyup", "mousedown"].forEach((t) =>
       UABroker.fire("user-engagement", t, {}, el, false),
     );
     globalThis.document.removeEventListener("user-engagement", handler);
-    expect(events.length).to.equal(7);
-    const recorded = events.slice(0, 3);
-    const skipped = events.slice(3);
+    expect(events.length).to.equal(8);
+    const recorded = events.slice(0, 4);
+    const skipped = events.slice(4);
     expect(recorded[0].detail.statement.verb.id).to.contain("experienced");
     expect(recorded[1].detail.statement.verb.id).to.contain("interacted");
     expect(recorded[2].detail.statement.verb.id).to.contain("interacted");
+    // track="keydown" ("Press a key here" in HAX) is a deliberate use too
+    expect(recorded[3].detail.statement.verb.id).to.contain("interacted");
     skipped.forEach((e) => {
       expect(e.detail.statement).to.equal(undefined);
       expect(e.detail.xapi).to.equal(false);

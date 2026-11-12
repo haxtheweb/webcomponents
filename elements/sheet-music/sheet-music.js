@@ -39,7 +39,9 @@ const SURFACE_SLOT = "sheet-music-surface";
  * alphaTab renders into a LIGHT-DOM container (not the shadow root) because it
  * injects its Bravura @font-face and .at-surface CSS into document.head, which
  * only applies to light DOM. That container is slotted into a shadow-DOM
- * viewport frame. Dark mode is handled purely via CSS light-dark() and
+ * viewport frame. When sheet-music itself sits in another element's shadow
+ * root, its light DOM is in that root, so the glyph and cursor CSS is copied
+ * into that root as well (see _shareScoreStyles). Dark mode is handled purely via CSS light-dark() and
  * prefers-color-scheme (no JS detection). Notation text (alphaTex) lives in a
  * light-DOM <template preserve-content> which survives replace-tag swaps.
  *
@@ -460,6 +462,7 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
     this._surfaceWrap.classList.add("at-surface-wrap");
     this.appendChild(this._surfaceWrap);
     this._injectCursorStyles();
+    this._shareScoreStyles();
     this._readTex();
     this._observeContent();
     // elementVisible may already be true (IntersectionObserver fired) before
@@ -479,6 +482,10 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
   connectedCallback() {
     super.connectedCallback();
     this.addEventListener("drop", this._onDrop, true);
+    // moved into a different (shadow) root after alphaTab was set up
+    if (this.api) {
+      this._shareScoreStyles();
+    }
   }
 
   /**
@@ -517,6 +524,51 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
     if (globalThis.document.head) {
       globalThis.document.head.appendChild(style);
     }
+  }
+
+  /**
+   * alphaTab adds its glyph CSS (style#alphaTabStyle...) and this element adds
+   * its cursor CSS (style#sheet-music-cursor-styles) to document.head, which
+   * does not reach into a shadow root. When this element renders inside
+   * another element's shadow root, keep one copy of each of those styles in
+   * that root so the score shows its clef, notes and rests there too. The
+   * @font-face rules stay registered at the document level, where fonts
+   * apply globally. In the light DOM this does nothing.
+   */
+  _shareScoreStyles() {
+    const root = this.getRootNode ? this.getRootNode() : null;
+    if (
+      !root ||
+      !globalThis.ShadowRoot ||
+      !(root instanceof globalThis.ShadowRoot) ||
+      !globalThis.document ||
+      !globalThis.document.head
+    ) {
+      return;
+    }
+    globalThis.document.head.querySelectorAll("style[id]").forEach((style) => {
+      const id = style.id;
+      if (
+        id.indexOf("alphaTabStyle") !== 0 &&
+        id !== "sheet-music-cursor-styles"
+      ) {
+        return;
+      }
+      let copy = null;
+      root.querySelectorAll("style[data-sheet-music-style]").forEach((el) => {
+        if (el.getAttribute("data-sheet-music-style") === id) {
+          copy = el;
+        }
+      });
+      if (!copy) {
+        copy = globalThis.document.createElement("style");
+        copy.setAttribute("data-sheet-music-style", id);
+        root.appendChild(copy);
+      }
+      if (copy.textContent !== style.textContent) {
+        copy.textContent = style.textContent;
+      }
+    });
   }
 
   /**
@@ -699,6 +751,8 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
         },
       };
       this.api = new AlphaTabApi(this._surfaceWrap, settings);
+      // alphaTab adds its glyph CSS to document.head while it sets up
+      this._shareScoreStyles();
       if (!this.source && this._tex) {
         this.api.tex(this._tex);
       }
