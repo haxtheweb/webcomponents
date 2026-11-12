@@ -23,7 +23,7 @@ export const XAPI_VOCABULARY = {
       "extensions.https://w3id.org/xapi/video/extensions/progress",
     ],
     countsTowardCompletion: true,
-    done: "95% of the media actually watched, or played on into the end after watching 80% (seeking ahead does not count)",
+    done: "every quarter of the media actually watched (90% of its seconds), or the first three and the player reaching its end; seeking ahead does not count, and each milestone is sent once per learner",
     source: "elements/a11y-media-player/a11y-media-player.js",
   },
   "audio-player": {
@@ -37,7 +37,7 @@ export const XAPI_VOCABULARY = {
       "extensions.https://w3id.org/xapi/video/extensions/progress",
     ],
     countsTowardCompletion: true,
-    done: "95% of the media actually watched, or played on into the end after watching 80% (seeking ahead does not count)",
+    done: "every quarter of the media actually watched (90% of its seconds), or the first three and the player reaching its end; seeking ahead does not count, and each milestone is sent once per learner",
     source: "elements/audio-player/audio-player.js",
   },
   "bullet-check-list": {
@@ -322,9 +322,13 @@ export const XAPI_VOCABULARY = {
     event: "user-engagement",
     verbs: ["attempted", "progressed", "completed"],
     objectType: "http://adlnet.gov/expapi/activities/interaction",
-    result: ["completion", "score"],
+    result: [
+      "completion",
+      "score",
+      "extensions.https://haxtheweb.org/xapi/extensions/progress",
+    ],
     countsTowardCompletion: false,
-    done: "never required; completed once every slide has been shown",
+    done: "never required; progressed as each quarter of the slides is shown, completed once every slide has been shown; each once per learner",
     source: "elements/slide-deck/slide-deck.js",
   },
   "sorting-question": {
@@ -418,7 +422,7 @@ export const XAPI_VOCABULARY = {
       "extensions.https://w3id.org/xapi/video/extensions/progress",
     ],
     countsTowardCompletion: true,
-    done: "95% of the media actually watched, or played on into the end after watching 80% (seeking ahead does not count)",
+    done: "every quarter of the media actually watched (90% of its seconds), or the first three and the player reaching its end; seeking ahead does not count, and each milestone is sent once per learner",
     source: "elements/video-player/video-player.js",
   },
   "vocab-term": {

@@ -888,7 +888,7 @@ class VideoPlayer extends IntersectionObserverMixin(
         "extensions.https://w3id.org/xapi/video/extensions/progress",
       ],
       countsTowardCompletion: true,
-      done: "95% of the media actually watched, or played on into the end after watching 80% (seeking ahead does not count)",
+      done: "every quarter of the media actually watched (90% of its seconds), or the first three and the player reaching its end; seeking ahead does not count, and each milestone is sent once per learner",
     };
   }
   /**

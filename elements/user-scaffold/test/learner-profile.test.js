@@ -1,5 +1,5 @@
 import { expect } from "@open-wc/testing";
-import "../user-scaffold.js";
+import { mergeRanges, milestoneKey } from "../user-scaffold.js";
 import {
   IndexedDBStatementAdapter,
   LocalStorageMemoryAdapter,
@@ -868,5 +868,124 @@ describe("user-scaffold data saved before reading was tracked", () => {
     // p2 now has every trackable done, but it was not read
     expect(us.pageStatus(SITE, "p2")).to.equal("in-progress");
     us.disconnectedCallback();
+  });
+});
+
+describe("user-scaffold activity state (where the learner is)", () => {
+  let us;
+  beforeEach(() => {
+    us = freshScaffold();
+  });
+  afterEach(() => {
+    us.disconnectedCallback();
+  });
+  const media = (verb, share) =>
+    st(
+      "vid",
+      verb,
+      share == null
+        ? {}
+        : {
+            completion: verb === "completed",
+            extensions: { [VIDEO_PROGRESS]: share },
+          },
+      "video-player",
+    );
+
+  it("keeps each milestone sent, once", () => {
+    us.recordStatement(SITE, media("attempted"), { page: "p1" });
+    us.recordStatement(SITE, media("progressed", 0.25), { page: "p1" });
+    us.recordStatement(SITE, media("progressed", 0.5), { page: "p1" });
+    us.recordStatement(SITE, media("progressed", 0.5), { page: "p1" });
+    const act = us.readActivity(SITE, "vid");
+    expect(act.milestones).to.deep.equal([
+      "attempted",
+      "progressed@0.25",
+      "progressed@0.5",
+    ]);
+    expect(milestoneKey("completed", 1)).to.equal("completed");
+    expect(milestoneKey("progressed", 0.75)).to.equal("progressed@0.75");
+  });
+
+  it("saves state without adding a statement", async () => {
+    us.recordStatement(SITE, media("attempted"), { page: "p1" });
+    const before = us.readSite(SITE).statementCount;
+    const act = us.updateActivityState(
+      SITE,
+      "vid",
+      { covered: [[0, 9]], resume: 9.5, progress: 0.1 },
+      { page: "p1", tag: "video-player" },
+    );
+    expect(act.state).to.deep.equal({ covered: [[0, 9]], resume: 9.5 });
+    expect(act.progress).to.equal(0.1);
+    expect(us.readSite(SITE).statementCount).to.equal(before);
+    expect((await us.statements(SITE)).length).to.equal(1);
+  });
+
+  it("coverage only grows, progress never goes back, resume is replaced", () => {
+    us.updateActivityState(SITE, "vid", {
+      covered: [[0, 20]],
+      resume: 20,
+      progress: 0.4,
+    });
+    const act = us.updateActivityState(SITE, "vid", {
+      covered: [
+        [10, 12],
+        [30, 35],
+      ],
+      resume: 12,
+      progress: 0.2,
+    });
+    expect(act.state.covered).to.deep.equal([
+      [0, 20],
+      [30, 35],
+    ]);
+    expect(act.state.resume).to.equal(12);
+    expect(act.progress).to.equal(0.4);
+  });
+
+  it("links the activity to its page and ignores bad ids", () => {
+    us.updateActivityState(SITE, "vid", { resume: 3 }, { page: "p1" });
+    expect(us.readSite(SITE).pages.p1.activities).to.include("vid");
+    expect(us.updateActivityState(SITE, "__proto__", { resume: 1 })).to.equal(
+      null,
+    );
+    expect(us.updateActivityState("", "vid", { resume: 1 })).to.equal(null);
+    expect(us.updateActivityState(SITE, "vid", null)).to.equal(null);
+  });
+
+  it("keeps state when the activity is rebuilt from its statements", () => {
+    us.updateActivityState(SITE, "vid", {
+      covered: [[0, 50]],
+      resume: 50,
+      progress: 0.5,
+    });
+    const stored = [media("attempted"), media("progressed", 0.25)];
+    us.repairSite(SITE, stored, { pageOf: () => "p1" });
+    const act = us.readActivity(SITE, "vid");
+    expect(act.count).to.equal(2);
+    expect(act.state.covered).to.deep.equal([[0, 50]]);
+    expect(act.progress).to.equal(0.5);
+  });
+
+  it("merges ranges and caps how many are kept", () => {
+    expect(
+      mergeRanges([
+        [5, 7],
+        [0, 2],
+        [3, 4],
+        [9, 9],
+        ["x", 1],
+        [12, 10],
+      ]),
+    ).to.deep.equal([
+      [0, 7],
+      [9, 12],
+    ]);
+    const many = [];
+    for (let i = 0; i < 500; i++) {
+      many.push([i * 3, i * 3]);
+    }
+    expect(mergeRanges(many).length).to.equal(200);
   });
 });
