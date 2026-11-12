@@ -628,6 +628,50 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         #motion > .drop-line::after {
           right: -4px;
         }
+        /* gutter +: a HAX UI icon button in the left gutter, on the drop
+           line between blocks or beside an empty block. It opens Merlin
+           there, the same as typing / */
+        .gutter-add {
+          position: absolute;
+          z-index: 3;
+          box-sizing: border-box;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: var(--hax-ui-target);
+          height: var(--hax-ui-target);
+          margin: 0;
+          padding: 0;
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius);
+          background-color: var(--hax-ui-surface);
+          color: var(--hax-ui-accent-strong);
+          cursor: pointer;
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
+          transition:
+            background-color var(--hax-ui-duration) var(--hax-ui-easing),
+            border-color var(--hax-ui-duration) var(--hax-ui-easing),
+            color var(--hax-ui-duration) var(--hax-ui-easing);
+        }
+        .gutter-add[hidden],
+        :host(:not([edit-mode])) .gutter-add {
+          display: none;
+        }
+        .gutter-add:hover {
+          background-color: var(--hax-ui-accent-strong);
+          border-color: var(--hax-ui-accent-strong);
+          color: var(--hax-ui-on-accent);
+        }
+        .gutter-add:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 1px;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .gutter-add {
+            transition: none;
+          }
+        }
         @keyframes hax-motion-fade {
           from {
             opacity: 0;
@@ -1243,6 +1287,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     this._blockDragMove = this._blockDragMove.bind(this);
     this._blockDragEnd = this._blockDragEnd.bind(this);
     this._blockDragKey = this._blockDragKey.bind(this);
+    this._gutterMove = this._gutterMove.bind(this);
+    this._gutterHide = this._gutterHide.bind(this);
+    this._gutterLeave = this._gutterLeave.bind(this);
     this.editMode = false;
     this.haxMover = false;
     this.activeNode = null;
@@ -1253,6 +1300,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       addContent: "Add Content",
       cantBeTransformed: "Sorry, this can not be transformed!",
       typeForQuickActions: "Type '/' for quick actions",
+      addBlockHere: "Add a block here (/)",
     };
     // double key press counter
     this.timesClickedArrowDown = 0;
@@ -1286,6 +1334,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     this.addEventListener("focusin", this._focusIn.bind(this));
     this.addEventListener("mousemove", this._mouseMove.bind(this));
     this.addEventListener("mouseleave", this._mouseLeave.bind(this));
+    // gutter +: hovering a gap between blocks, or an empty block, offers
+    // a + that opens Merlin there, the same as typing /
+    this.addEventListener("pointermove", this._gutterMove);
+    this.addEventListener("pointerleave", this._gutterLeave);
+    this.addEventListener("wheel", this._gutterHide, { passive: true });
+    this.addEventListener("keydown", this._gutterHide);
     this.addEventListener("touchstart", this._mouseMove.bind(this), {
       passive: true,
     });
@@ -1612,6 +1666,26 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       <div class="sr-only" aria-live="polite">${this.__undoAnnouncement}</div>
       <!-- block motion: drop line, landing wash, remove hatch -->
       <div id="motion" aria-hidden="true"></div>
+      <!-- gutter +: add a block where the pointer rests, the same as /.
+           A pointer affordance only: keyboard users already have / in an
+           empty block, so it stays out of the Tab order -->
+      <button
+        id="gutteradd"
+        class="gutter-add"
+        type="button"
+        tabindex="-1"
+        hidden
+        aria-label="${this.t.addBlockHere}"
+        title="${this.t.addBlockHere}"
+        @pointerdown="${this._gutterPress}"
+        @mousedown="${this._gutterPress}"
+        @click="${this._gutterAdd}"
+      >
+        <simple-icon-lite
+          icon="icons:add"
+          aria-hidden="true"
+        ></simple-icon-lite>
+      </button>
     `;
   }
   calcClasses(activeNode) {
@@ -1945,6 +2019,222 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // area fill the box instead of its 250px floor
     editor.style.setProperty("--code-pen-margin", "0");
     editor.style.setProperty("--monaco-element-iframe-floor", "0px");
+  }
+  // ---------- gutter +: add a block here, the same as typing / ----------
+  /**
+   * an empty text block the + can open Merlin in directly
+   */
+  _gutterIsEmpty(node) {
+    return (
+      !!node &&
+      HAXStore.isTextElement(node) &&
+      !node.getAttribute("data-hax-lock") &&
+      this.__isEffectivelyEmptyTextBlock(node)
+    );
+  }
+  /**
+   * pointer over the editing area: find the spot under it, once a frame.
+   * Touch has no hover, and nothing shows while a block is dragged or
+   * Merlin is open
+   */
+  _gutterMove(e) {
+    if (
+      !this.editMode ||
+      !HAXStore.ready ||
+      this._blockDrag ||
+      this.viewSourceToggle ||
+      e.pointerType === "touch" ||
+      SuperDaemonInstance.opened
+    ) {
+      this._gutterHide();
+      return;
+    }
+    clearTimeout(this.__gutterLeaveTimer);
+    const btn = this.shadowRoot && this.shadowRoot.querySelector("#gutteradd");
+    // resting on the + itself keeps the spot it was shown for
+    if (btn && e.composedPath && e.composedPath().includes(btn)) return;
+    this.__gutterXY = [e.clientX, e.clientY];
+    if (!this.__gutterRaf) {
+      this.__gutterRaf = requestAnimationFrame(() => {
+        this.__gutterRaf = 0;
+        this._gutterFind();
+      });
+    }
+  }
+  /**
+   * the spot under the pointer among the top level blocks: the gap between
+   * two blocks (drop line plus +) or an empty block (+ beside it)
+   */
+  _gutterFind() {
+    if (!this.__gutterXY) return;
+    const [x, y] = this.__gutterXY;
+    const items = [...this.children]
+      .map((el) => ({ el: el, r: el.getBoundingClientRect() }))
+      .filter((item) => item.r.height > 0 && item.r.width > 0);
+    let spot = null;
+    for (let i = 0; i < items.length; i++) {
+      const { el, r } = items[i];
+      const next = items[i + 1];
+      // the gutter to the left counts, so the pointer can reach the +
+      if (x < r.left - 48 || x > r.right) continue;
+      if (
+        next &&
+        y >= r.bottom - 6 &&
+        y <= next.r.top + 6 &&
+        !this._gutterIsEmpty(el) &&
+        !this._gutterIsEmpty(next.el)
+      ) {
+        spot = { mode: "gap", after: el, r: r, next: next.r };
+        break;
+      }
+      if (y >= r.top && y <= r.bottom) {
+        if (this._gutterIsEmpty(el)) {
+          spot = { mode: "block", node: el, r: r };
+        }
+        break;
+      }
+    }
+    this._gutterShow(spot);
+  }
+  _gutterShow(spot) {
+    const btn = this.shadowRoot && this.shadowRoot.querySelector("#gutteradd");
+    const layer = this.shadowRoot && this.shadowRoot.querySelector("#motion");
+    if (!spot || !btn || !layer) {
+      this._gutterHide();
+      return;
+    }
+    this.__gutterSpot = spot;
+    const host = this.getBoundingClientRect();
+    const size = btn.offsetHeight || 24;
+    let mid;
+    if (spot.mode === "gap") {
+      mid = (spot.r.bottom + spot.next.top) / 2;
+      if (!this.__gutterLine) {
+        this.__gutterLine = globalThis.document.createElement("div");
+        this.__gutterLine.className = "drop-line";
+      }
+      if (this.__gutterLine.parentNode !== layer) {
+        layer.appendChild(this.__gutterLine);
+      }
+      const left = Math.min(spot.r.left, spot.next.left);
+      const right = Math.max(spot.r.right, spot.next.right);
+      this.__gutterLine.style.left = `${left - host.left}px`;
+      this.__gutterLine.style.top = `${Math.round(mid - host.top) - 1}px`;
+      this.__gutterLine.style.width = `${right - left}px`;
+      this.__gutterLine.style.height = "3px";
+      this.__gutterLine.hidden = false;
+    } else {
+      mid = spot.r.top + Math.min(spot.r.height, 40) / 2;
+      if (this.__gutterLine) this.__gutterLine.hidden = true;
+    }
+    btn.style.left = `${spot.r.left - host.left - size - 8}px`;
+    btn.style.top = `${Math.round(mid - host.top - size / 2)}px`;
+    btn.hidden = false;
+  }
+  /**
+   * the + sits just outside the blocks, so crossing the few pixels between
+   * them and it leaves the editing area: wait a moment before hiding
+   */
+  _gutterLeave() {
+    clearTimeout(this.__gutterLeaveTimer);
+    this.__gutterLeaveTimer = setTimeout(this._gutterHide, 250);
+  }
+  _gutterHide() {
+    clearTimeout(this.__gutterLeaveTimer);
+    if (this.__gutterRaf) {
+      cancelAnimationFrame(this.__gutterRaf);
+      this.__gutterRaf = 0;
+    }
+    this.__gutterSpot = null;
+    if (this.__gutterLine) this.__gutterLine.hidden = true;
+    const btn = this.shadowRoot && this.shadowRoot.querySelector("#gutteradd");
+    if (btn) btn.hidden = true;
+  }
+  /**
+   * pressing the + must not reach the block underneath (activation, drag)
+   */
+  _gutterPress(e) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+  /**
+   * the +: in a gap, add an empty paragraph there first; then put the
+   * cursor in the empty block and open Merlin, the same as typing /
+   */
+  async _gutterAdd(e) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    const spot = this.__gutterSpot;
+    this._gutterHide();
+    if (!spot || !this.editMode) return;
+    let node = spot.node;
+    if (spot.mode === "gap") {
+      if (!spot.after || !spot.after.isConnected) return;
+      node = globalThis.document.createElement("p");
+      spot.after.insertAdjacentElement("afterend", node);
+      // let the observer make it editable before it takes the cursor
+      await new Promise((resolve) => requestAnimationFrame(resolve));
+      this.__gutterCreated = node;
+    }
+    if (!node || !node.isConnected) return;
+    this.__focusLogic(node);
+    const rng = globalThis.document.createRange();
+    rng.selectNodeContents(node);
+    rng.collapse(true);
+    const sel = HAXStore.getSelection();
+    if (sel) {
+      sel.removeAllRanges();
+      sel.addRange(rng);
+    }
+    this._openInlineMerlin(rng);
+    if (this.__gutterCreated) {
+      // closed with nothing chosen: take back the paragraph the + added,
+      // so a + that was only a look leaves the content as it was
+      globalThis.addEventListener(
+        "super-daemon-close",
+        () => {
+          setTimeout(() => {
+            const made = this.__gutterCreated;
+            this.__gutterCreated = null;
+            if (made && made.isConnected && this._gutterIsEmpty(made)) {
+              if (this.activeNode === made) this.__focusLogic(spot.after);
+              made.remove();
+            }
+          }, 0);
+        },
+        { once: true },
+      );
+    }
+  }
+  /**
+   * open Merlin inline at the cursor in an empty block: the / shortcut
+   * and the gutter + both come here. Blocks used recently lead the list
+   */
+  _openInlineMerlin(rng) {
+    SuperDaemonInstance.mini = true;
+    SuperDaemonInstance.inlineMode = true;
+    SuperDaemonInstance.activeRange = rng;
+    SuperDaemonInstance.activeSelection = HAXStore.getSelection();
+    SuperDaemonInstance.activeNode = rng.commonAncestorContainer;
+    const recent = [];
+    toJS(HAXStore.recentGizmoList || [])
+      .slice()
+      .reverse()
+      .forEach((gizmo) => {
+        if (gizmo && gizmo.tag && !recent.includes(gizmo.tag)) {
+          recent.push(gizmo.tag);
+        }
+      });
+    SuperDaemonInstance.priorityPaths = recent
+      .slice(0, 5)
+      .map((tag) => `HAX/insert/block/${tag}`);
+    SuperDaemonInstance.runProgram(
+      rng.commonAncestorContainer.textContent.trim(),
+      "*",
+    );
+    SuperDaemonInstance.open();
   }
   // ---------- dragging a block by its grip ----------
   /**
@@ -3114,17 +3404,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 this.__isEffectivelyEmptyTextBlock(slashTarget)
               ) {
                 e.preventDefault();
-                SuperDaemonInstance.mini = true;
-                SuperDaemonInstance.inlineMode = true;
-                SuperDaemonInstance.activeRange = rng;
-                SuperDaemonInstance.activeSelection = HAXStore.getSelection();
-
-                SuperDaemonInstance.activeNode = rng.commonAncestorContainer;
-                SuperDaemonInstance.runProgram(
-                  rng.commonAncestorContainer.textContent.trim(),
-                  "*",
-                );
-                SuperDaemonInstance.open();
+                this._openInlineMerlin(rng);
               }
               break;
             }
