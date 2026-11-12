@@ -1,0 +1,371 @@
+{
+  "$comment": "DDD bridge for Material Design 3 (baseline scheme) from the Sass token files @material/web ships. Tiers follow elements/d-d-d/design-system/bridge/contract.json. Named DDD colors map onto the M3 reference palettes (mode-free); the theme chrome uses the sys color roles, light and dark. M3's baseline primary is purple, so brand roles are purple; incorrect stays on the purple static palette and correct on green, which with HAX's labels, icons and line styles keeps the meaning channels. Kept as DDD on purpose: light and black font weights (Roboto ships 400/500/700 as M3 tokens), control heights, border widths, and heading/body sizes.",
+  "system": "material",
+  "title": "Material 3",
+  "prefix": "Material",
+  "homepage": "https://m3.material.io",
+  "sources": [
+    {
+      "package": "@material/web",
+      "version": "2.5.0",
+      "license": "Apache-2.0",
+      "copyright": "Copyright 2026 Google LLC",
+      "repository": "https://github.com/material-components/material-web",
+      "format": "scss-vars",
+      "prefix": "--md-ref-palette-",
+      "file": "tokens/versions/latest/sass/_md-ref-palette.scss"
+    },
+    {
+      "package": "@material/web",
+      "version": "2.5.0",
+      "license": "Apache-2.0",
+      "copyright": "Copyright 2026 Google LLC",
+      "repository": "https://github.com/material-components/material-web",
+      "format": "scss-vars",
+      "prefix": "--md-sys-color-",
+      "files": {
+        "light": "tokens/versions/latest/sass/_md-sys-color.scss",
+        "dark": "tokens/versions/latest/sass/_md-sys-color__dark.scss"
+      }
+    },
+    {
+      "package": "@material/web",
+      "version": "2.5.0",
+      "license": "Apache-2.0",
+      "copyright": "Copyright 2026 Google LLC",
+      "repository": "https://github.com/material-components/material-web",
+      "format": "scss-vars",
+      "prefix": "--md-sys-shape-",
+      "file": "tokens/versions/latest/sass/_md-sys-shape.scss"
+    },
+    {
+      "package": "@material/web",
+      "version": "2.5.0",
+      "license": "Apache-2.0",
+      "copyright": "Copyright 2026 Google LLC",
+      "repository": "https://github.com/material-components/material-web",
+      "format": "scss-vars",
+      "prefix": "--md-sys-motion-",
+      "file": "tokens/versions/latest/sass/_md-sys-motion.scss"
+    },
+    {
+      "package": "@material/web",
+      "version": "2.5.0",
+      "license": "Apache-2.0",
+      "copyright": "Copyright 2026 Google LLC",
+      "repository": "https://github.com/material-components/material-web",
+      "format": "scss-vars",
+      "prefix": "--md-sys-state-",
+      "file": "tokens/versions/latest/sass/_md-sys-state.scss"
+    },
+    {
+      "package": "@material/web",
+      "version": "2.5.0",
+      "license": "Apache-2.0",
+      "copyright": "Copyright 2026 Google LLC",
+      "repository": "https://github.com/material-components/material-web",
+      "format": "scss-vars",
+      "prefix": "--md-ref-typeface-",
+      "file": "tokens/versions/latest/sass/_md-ref-typeface.scss"
+    }
+  ],
+  "fonts": [
+    {
+      "family": "Roboto",
+      "license": "OFL-1.1",
+      "url": "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap"
+    },
+    {
+      "family": "Roboto Mono",
+      "license": "Apache-2.0",
+      "url": "https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap"
+    }
+  ],
+  "ddd": {
+    "--ddd-theme-default-beaverBlue": {
+      "token": "--md-ref-palette-primary40",
+      "note": "M3 baseline primary"
+    },
+    "--ddd-theme-default-nittanyNavy": {
+      "token": "--md-ref-palette-primary20"
+    },
+    "--ddd-theme-default-potentialMidnight": {
+      "token": "--md-ref-palette-primary10"
+    },
+    "--ddd-theme-default-pughBlue": {
+      "token": "--md-ref-palette-primary80"
+    },
+    "--ddd-theme-default-accent": {
+      "token": "--md-ref-palette-primary80"
+    },
+    "--ddd-theme-default-skyBlue": {
+      "token": "--md-ref-palette-blue60"
+    },
+    "--ddd-theme-default-skyLight": {
+      "token": "--md-ref-palette-blue90"
+    },
+    "--ddd-theme-default-skyMaxLight": {
+      "token": "--md-ref-palette-blue95"
+    },
+    "--ddd-theme-default-slateGray": {
+      "token": "--md-ref-palette-neutral-variant40"
+    },
+    "--ddd-theme-default-slateLight": {
+      "token": "--md-ref-palette-neutral-variant80"
+    },
+    "--ddd-theme-default-slateMaxLight": {
+      "token": "--md-ref-palette-neutral-variant95"
+    },
+    "--ddd-theme-default-coalyGray": {
+      "token": "--md-ref-palette-neutral10",
+      "note": "M3 on-surface"
+    },
+    "--ddd-theme-default-black": {
+      "token": "--md-ref-palette-neutral0"
+    },
+    "--ddd-theme-default-white": {
+      "token": "--md-ref-palette-neutral100"
+    },
+    "--ddd-theme-default-limestoneGray": {
+      "token": "--md-ref-palette-neutral60"
+    },
+    "--ddd-theme-default-limestoneLight": {
+      "token": "--md-ref-palette-neutral90"
+    },
+    "--ddd-theme-default-limestoneMaxLight": {
+      "token": "--md-ref-palette-neutral95"
+    },
+    "--ddd-theme-default-background": {
+      "token": "--md-ref-palette-neutral98"
+    },
+    "--ddd-theme-default-disabled": {
+      "token": "--md-ref-palette-neutral94"
+    },
+    "--ddd-theme-default-keystoneYellow": {
+      "token": "--md-ref-palette-yellow80"
+    },
+    "--ddd-theme-default-globalNeon": {
+      "token": "--md-ref-palette-yellow90"
+    },
+    "--ddd-theme-default-roarGolden": {
+      "token": "--md-ref-palette-yellow50"
+    },
+    "--ddd-theme-default-roarLight": {
+      "token": "--md-ref-palette-yellow90"
+    },
+    "--ddd-theme-default-roarMaxlight": {
+      "token": "--md-ref-palette-yellow95"
+    },
+    "--ddd-theme-default-shrineTan": {
+      "token": "--md-ref-palette-tertiary60",
+      "note": "M3 has no tan; the baseline tertiary is a warm mauve"
+    },
+    "--ddd-theme-default-shrineLight": {
+      "token": "--md-ref-palette-tertiary90"
+    },
+    "--ddd-theme-default-shrineMaxLight": {
+      "token": "--md-ref-palette-tertiary95"
+    },
+    "--ddd-theme-default-inventOrange": {
+      "token": "--md-ref-palette-orange70"
+    },
+    "--ddd-theme-default-landgrantBrown": {
+      "token": "--md-ref-palette-orange20"
+    },
+    "--ddd-theme-default-creekTeal": {
+      "token": "--md-ref-palette-cyan40"
+    },
+    "--ddd-theme-default-creekLight": {
+      "token": "--md-ref-palette-cyan90"
+    },
+    "--ddd-theme-default-creekMaxLight": {
+      "token": "--md-ref-palette-cyan95"
+    },
+    "--ddd-theme-default-opportunityGreen": {
+      "token": "--md-ref-palette-green30",
+      "note": "correct signal (light)"
+    },
+    "--ddd-theme-default-forestGreen": {
+      "token": "--md-ref-palette-green40"
+    },
+    "--ddd-theme-default-futureLime": {
+      "token": "--md-ref-palette-green80",
+      "note": "correct signal (dark)"
+    },
+    "--ddd-theme-default-athertonViolet": {
+      "token": "--md-ref-palette-purple80",
+      "note": "incorrect signal (dark)"
+    },
+    "--ddd-theme-default-wonderPurple": {
+      "token": "--md-ref-palette-purple30",
+      "note": "incorrect signal (light)"
+    },
+    "--ddd-theme-default-original87Pink": {
+      "token": "--md-ref-palette-pink40"
+    },
+    "--ddd-theme-default-discoveryCoral": {
+      "token": "--md-ref-palette-red70"
+    },
+    "--ddd-theme-default-link": {
+      "token": "--md-ref-palette-primary40"
+    },
+    "--ddd-theme-default-linkLight": {
+      "token": "--md-ref-palette-primary80"
+    },
+    "--ddd-theme-default-error": {
+      "token": "--md-ref-palette-error30"
+    },
+    "--ddd-theme-default-errorLight": {
+      "token": "--md-ref-palette-error95"
+    },
+    "--ddd-theme-default-warning": {
+      "token": "--md-ref-palette-yellow30"
+    },
+    "--ddd-theme-default-warningLight": {
+      "token": "--md-ref-palette-yellow95"
+    },
+    "--ddd-theme-default-info": {
+      "token": "--md-ref-palette-blue30"
+    },
+    "--ddd-theme-default-infoLight": {
+      "token": "--md-ref-palette-blue95"
+    },
+    "--ddd-theme-default-success": {
+      "token": "--md-ref-palette-green30"
+    },
+    "--ddd-theme-default-successLight": {
+      "token": "--md-ref-palette-green95"
+    },
+    "--ddd-theme-default-alertImmediate": {
+      "token": "--md-ref-palette-error90"
+    },
+    "--ddd-theme-default-alertUrgent": {
+      "token": "--md-ref-palette-yellow90"
+    },
+    "--ddd-theme-default-alertAllClear": {
+      "token": "--md-ref-palette-green90"
+    },
+    "--ddd-theme-default-alertNonEmergency": {
+      "token": "--md-ref-palette-blue90"
+    },
+    "--ddd-font-primary": {
+      "value": "var(--md-ref-typeface-plain), system-ui, sans-serif"
+    },
+    "--ddd-font-secondary": {
+      "value": "var(--md-ref-typeface-brand), system-ui, sans-serif"
+    },
+    "--ddd-font-navigation": {
+      "value": "var(--md-ref-typeface-plain), system-ui, sans-serif"
+    },
+    "--ddd-font-mono": {
+      "value": "\"Roboto Mono\", ui-monospace, monospace"
+    },
+    "--ddd-font-weight-regular": {
+      "token": "--md-ref-typeface-weight-regular"
+    },
+    "--ddd-font-weight-medium": {
+      "token": "--md-ref-typeface-weight-medium"
+    },
+    "--ddd-font-weight-bold": {
+      "token": "--md-ref-typeface-weight-bold"
+    },
+    "--ddd-radius-xs": {
+      "token": "--md-sys-shape-corner-extra-small",
+      "note": "4px"
+    },
+    "--ddd-radius-sm": {
+      "token": "--md-sys-shape-corner-small",
+      "note": "8px"
+    },
+    "--ddd-radius-md": {
+      "token": "--md-sys-shape-corner-medium",
+      "note": "12px"
+    },
+    "--ddd-radius-lg": {
+      "token": "--md-sys-shape-corner-large",
+      "note": "16px"
+    },
+    "--ddd-radius-xl": {
+      "token": "--md-sys-shape-corner-extra-large",
+      "note": "28px"
+    },
+    "--ddd-boxShadow-sm": {
+      "value": "0 1px 2px 0 rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15)",
+      "note": "M3 elevation level 1 (@material/web elevation)"
+    },
+    "--ddd-boxShadow-md": {
+      "value": "0 1px 2px 0 rgba(0, 0, 0, 0.3), 0 2px 6px 2px rgba(0, 0, 0, 0.15)",
+      "note": "level 2"
+    },
+    "--ddd-boxShadow-lg": {
+      "value": "0 4px 8px 3px rgba(0, 0, 0, 0.15), 0 1px 3px 0 rgba(0, 0, 0, 0.3)",
+      "note": "level 3"
+    },
+    "--ddd-boxShadow-xl": {
+      "value": "0 6px 10px 4px rgba(0, 0, 0, 0.15), 0 2px 3px 0 rgba(0, 0, 0, 0.3)",
+      "note": "level 4"
+    },
+    "--ddd-focus-ring": {
+      "value": "3px solid var(--md-sys-color-secondary)",
+      "note": "M3 focus indicator: 3px, secondary"
+    },
+    "--ddd-focus-offset": {
+      "value": "2px"
+    },
+    "--ddd-duration-fast": {
+      "token": "--md-sys-motion-duration-short3",
+      "note": "150ms"
+    },
+    "--ddd-duration-normal": {
+      "token": "--md-sys-motion-duration-medium2",
+      "note": "300ms"
+    },
+    "--ddd-duration-slow": {
+      "token": "--md-sys-motion-duration-long2",
+      "note": "500ms"
+    },
+    "--ddd-timing-ease": {
+      "token": "--md-sys-motion-easing-standard"
+    },
+    "--ddd-timing-enter": {
+      "token": "--md-sys-motion-easing-standard-decelerate"
+    },
+    "--ddd-timing-exit": {
+      "token": "--md-sys-motion-easing-standard-accelerate"
+    },
+    "--ddd-timing-emphasized": {
+      "token": "--md-sys-motion-easing-emphasized-decelerate"
+    },
+    "--ddd-state-hover-opacity": {
+      "token": "--md-sys-state-hover-state-layer-opacity"
+    },
+    "--ddd-state-focus-opacity": {
+      "token": "--md-sys-state-focus-state-layer-opacity"
+    },
+    "--ddd-state-pressed-opacity": {
+      "token": "--md-sys-state-pressed-state-layer-opacity"
+    },
+    "--ddd-state-selected-opacity": {
+      "token": "--md-sys-state-dragged-state-layer-opacity",
+      "note": "M3 has no selected layer; dragged (0.16) matches DDD's"
+    },
+    "--ddd-state-disabled-opacity": {
+      "token": "--md-sys-state-disabled-state-layer-opacity"
+    }
+  },
+  "extraTokens": [
+    "--md-sys-color-surface",
+    "--md-sys-color-surface-container",
+    "--md-sys-color-surface-container-low",
+    "--md-sys-color-surface-container-high",
+    "--md-sys-color-on-surface",
+    "--md-sys-color-on-surface-variant",
+    "--md-sys-color-primary",
+    "--md-sys-color-on-primary",
+    "--md-sys-color-secondary-container",
+    "--md-sys-color-on-secondary-container",
+    "--md-sys-color-outline-variant",
+    "--md-sys-shape-corner-full",
+    "--md-sys-shape-corner-large"
+  ]
+}
