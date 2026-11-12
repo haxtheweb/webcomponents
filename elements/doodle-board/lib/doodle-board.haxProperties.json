@@ -1,0 +1,129 @@
+{
+  "api": "1",
+  "type": "element",
+  "editingElement": "core",
+  "hideDefaultSettings": false,
+  "canScale": true,
+  "canEditSource": true,
+  "contentEditable": false,
+  "designSystem": {
+    "primary": false,
+    "accent": false,
+    "text": false
+  },
+  "gizmo": {
+    "title": "Doodle board",
+    "description": "Draw a picture, mark up an image with feedback, or collect a signature.",
+    "icon": "image:brush",
+    "color": "blue",
+    "tags": [
+      "Media",
+      "Interactive",
+      "drawing",
+      "annotation",
+      "feedback",
+      "signature",
+      "canvas"
+    ],
+    "handles": [
+      {
+        "type": "image",
+        "type_exclusive": false,
+        "source": "src",
+        "alt": "alt"
+      }
+    ],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Use",
+        "description": "Drawing for pictures, Feedback to mark up a submission, Signature for a signature pad.",
+        "inputMethod": "select",
+        "options": {
+          "draw": "Drawing",
+          "feedback": "Feedback",
+          "signature": "Signature"
+        }
+      },
+      {
+        "property": "drawing",
+        "title": "Drawing",
+        "description": "Opens the editor. Pen, highlighter, boxes, circles, arrows and text.",
+        "inputMethod": "doodle",
+        "backgroundProperty": "src",
+        "modeProperty": "mode",
+        "noVoiceRecord": true
+      },
+      {
+        "property": "src",
+        "title": "Background image",
+        "description": "A submission to give feedback on, or a picture to draw over.",
+        "inputMethod": "haxupload",
+        "noVoiceRecord": true
+      },
+      {
+        "property": "alt",
+        "title": "Alt text",
+        "description": "Describe the drawing and what it marks for people who cannot see it.",
+        "inputMethod": "alt"
+      },
+      {
+        "property": "caption",
+        "title": "Caption",
+        "description": "Shown under the drawing.",
+        "inputMethod": "textfield"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "interactive",
+        "title": "Visitors can draw",
+        "description": "Shows the editor on the published page so visitors can draw and download their picture. Nothing they draw is saved to the site.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "width",
+        "title": "Width",
+        "description": "Surface width in pixels when there is no background image.",
+        "inputMethod": "number"
+      },
+      {
+        "property": "height",
+        "title": "Height",
+        "description": "Surface height in pixels when there is no background image.",
+        "inputMethod": "number"
+      }
+    ],
+    "developer": []
+  },
+  "saveOptions": {
+    "unsetAttributes": []
+  },
+  "documentation": {
+    "howTo": null,
+    "purpose": "Lets authors and visitors draw, mark up a submission with feedback, or sign, in one element."
+  },
+  "demoSchema": [
+    {
+      "tag": "doodle-board",
+      "content": "",
+      "properties": {
+        "mode": "draw",
+        "alt": "An empty drawing"
+      }
+    },
+    {
+      "tag": "doodle-board",
+      "content": "",
+      "properties": {
+        "mode": "signature",
+        "alt": "Signature"
+      }
+    }
+  ]
+}

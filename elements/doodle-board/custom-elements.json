@@ -1,0 +1,1300 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "doodle-board.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`doodle-board`\nA drawing on an optional background image. One element covers three\nuses through `mode`:\n\n- draw: a picture made in HAX, or by visitors when `interactive`\n- feedback: marks, highlight zones and comments over a submission\n  (the submission is `src`, the marks are `drawing`)\n- signature: a signature pad\n\nThe marks are a transparent PNG kept apart from the background, so the\nbackground can be swapped without losing them. In HAX the Drawing\nsetting uses the \"doodle\" input method: a preview in the settings\npanel and a dialog with the full editor.",
+          "name": "DoodleBoard",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_renderCanvas"
+            },
+            {
+              "kind": "method",
+              "name": "_renderPicture"
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "mode",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "draw, feedback or signature",
+              "default": "\"draw\"",
+              "attribute": "mode",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "src",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "background image: a submission to mark up, or a picture to draw on",
+              "default": "\"\"",
+              "attribute": "src"
+            },
+            {
+              "kind": "field",
+              "name": "drawing",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "the marks, a transparent PNG data URL",
+              "default": "\"\"",
+              "attribute": "drawing"
+            },
+            {
+              "kind": "field",
+              "name": "alt",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "describes the drawing and its background for people who cannot see it",
+              "default": "\"\"",
+              "attribute": "alt"
+            },
+            {
+              "kind": "field",
+              "name": "caption",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "caption"
+            },
+            {
+              "kind": "field",
+              "name": "interactive",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "visitors draw on the published page and can download their picture",
+              "default": "false",
+              "attribute": "interactive",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "width",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "surface size when there is no background image",
+              "default": "0",
+              "attribute": "width"
+            },
+            {
+              "kind": "field",
+              "name": "height",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "height"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, empty: \"Nothing drawn yet\", drawing: \"Drawing\", }"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "mode",
+              "type": {
+                "text": "string"
+              },
+              "description": "draw, feedback or signature",
+              "default": "\"draw\"",
+              "fieldName": "mode"
+            },
+            {
+              "name": "src",
+              "type": {
+                "text": "string"
+              },
+              "description": "background image: a submission to mark up, or a picture to draw on",
+              "default": "\"\"",
+              "fieldName": "src"
+            },
+            {
+              "name": "drawing",
+              "type": {
+                "text": "string"
+              },
+              "description": "the marks, a transparent PNG data URL",
+              "default": "\"\"",
+              "fieldName": "drawing"
+            },
+            {
+              "name": "alt",
+              "type": {
+                "text": "string"
+              },
+              "description": "describes the drawing and its background for people who cannot see it",
+              "default": "\"\"",
+              "fieldName": "alt"
+            },
+            {
+              "name": "caption",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "caption"
+            },
+            {
+              "name": "interactive",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "visitors draw on the published page and can download their picture",
+              "default": "false",
+              "fieldName": "interactive"
+            },
+            {
+              "name": "width",
+              "type": {
+                "text": "number"
+              },
+              "description": "surface size when there is no background image",
+              "default": "0",
+              "fieldName": "width"
+            },
+            {
+              "name": "height",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "height"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "DDDSuper",
+              "package": "@haxtheweb/d-d-d/d-d-d.js"
+            },
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "doodle-board",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DoodleBoard",
+          "declaration": {
+            "name": "DoodleBoard",
+            "module": "doodle-board.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "DoodleBoard",
+            "module": "doodle-board.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/doodle-board-canvas.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`doodle-board-canvas`\nThe drawing surface: pen, highlighter, eraser, line, arrow, filled\nboxes and circles (translucent by default), text and fill, over an\noptional background image. Three modes set the tools and defaults: draw,\nfeedback (mark up a submission) and signature (a signature pad).\n\nThe drawing is kept as a transparent layer apart from the background,\nso getValue() returns only the marks and the background can be any\nimage. download() saves the two combined.",
+          "name": "DoodleBoardCanvas",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "tools",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_glyph",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_palette"
+            },
+            {
+              "kind": "method",
+              "name": "_hint"
+            },
+            {
+              "kind": "method",
+              "name": "_liveOpacity",
+              "description": "the in-progress mark previews at the opacity it will be saved at"
+            },
+            {
+              "kind": "method",
+              "name": "_renderTextEntry"
+            },
+            {
+              "kind": "method",
+              "name": "_applyModeDefaults"
+            },
+            {
+              "kind": "method",
+              "name": "_setupSurface",
+              "description": "size the surface (from the background image, or width/height) and\nload the saved marks into the layer"
+            },
+            {
+              "kind": "method",
+              "name": "_loadImage",
+              "parameters": [
+                {
+                  "name": "src"
+                },
+                {
+                  "name": "cors"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "setTool",
+              "parameters": [
+                {
+                  "name": "tool"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "setColor",
+              "parameters": [
+                {
+                  "name": "hex"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_toolbarKey",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_key",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_point",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_displayScale"
+            },
+            {
+              "kind": "method",
+              "name": "_fontPx"
+            },
+            {
+              "kind": "method",
+              "name": "_width"
+            },
+            {
+              "kind": "method",
+              "name": "_style",
+              "parameters": [
+                {
+                  "name": "ctx"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_down",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_penWidth",
+              "parameters": [
+                {
+                  "name": "pt"
+                }
+              ],
+              "description": "signatures follow pen pressure; other modes keep an even line"
+            },
+            {
+              "kind": "method",
+              "name": "_move",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_up",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_flattenLive",
+              "description": "move the in-progress mark onto the layer at the chosen opacity"
+            },
+            {
+              "kind": "method",
+              "name": "_shape",
+              "parameters": [
+                {
+                  "name": "ctx"
+                },
+                {
+                  "name": "a"
+                },
+                {
+                  "name": "b"
+                },
+                {
+                  "name": "lock"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_openText",
+              "parameters": [
+                {
+                  "name": "pt"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_textKey",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_commitText"
+            },
+            {
+              "kind": "method",
+              "name": "_flood",
+              "parameters": [
+                {
+                  "name": "x"
+                },
+                {
+                  "name": "y"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_commit"
+            },
+            {
+              "kind": "method",
+              "name": "_syncHistory"
+            },
+            {
+              "kind": "method",
+              "name": "_changed"
+            },
+            {
+              "kind": "method",
+              "name": "undo"
+            },
+            {
+              "kind": "method",
+              "name": "redo"
+            },
+            {
+              "kind": "method",
+              "name": "_clearYes"
+            },
+            {
+              "kind": "method",
+              "name": "clear",
+              "description": "remove every mark; undo brings them back"
+            },
+            {
+              "kind": "method",
+              "name": "isEmpty",
+              "description": "true when the layer has no marks"
+            },
+            {
+              "kind": "method",
+              "name": "getValue",
+              "description": "the marks as a transparent PNG data URL, or \"\" when empty"
+            },
+            {
+              "kind": "method",
+              "name": "toBlob",
+              "description": "the background (white paper outside signature mode) with the marks\non top, as a PNG blob"
+            },
+            {
+              "kind": "method",
+              "name": "download",
+              "description": "save the picture as a PNG file"
+            },
+            {
+              "kind": "method",
+              "name": "_pickImage"
+            },
+            {
+              "kind": "method",
+              "name": "_imagePicked",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "mode",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "draw, feedback or signature",
+              "default": "\"draw\"",
+              "attribute": "mode",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "src",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "background image drawn under the marks",
+              "default": "\"\"",
+              "attribute": "src"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "the marks: a transparent PNG data URL",
+              "default": "\"\"",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "width",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "surface size when there is no background image",
+              "default": "0",
+              "attribute": "width"
+            },
+            {
+              "kind": "field",
+              "name": "height",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "height"
+            },
+            {
+              "kind": "field",
+              "name": "filename",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "file name for download(), without the extension",
+              "default": "\"doodle\"",
+              "attribute": "filename"
+            },
+            {
+              "kind": "field",
+              "name": "backgroundUpload",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "show the Image button to pick a background",
+              "default": "false",
+              "attribute": "background-upload"
+            },
+            {
+              "kind": "field",
+              "name": "downloadable",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "show the Download button",
+              "default": "false",
+              "attribute": "downloadable"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "accessible name for the surface",
+              "default": "\"\"",
+              "attribute": "label"
+            },
+            {
+              "kind": "field",
+              "name": "tool",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"pen\"",
+              "attribute": "tool"
+            },
+            {
+              "kind": "field",
+              "name": "color",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "color"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "attribute": "size"
+            },
+            {
+              "kind": "field",
+              "name": "opacity",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "100",
+              "attribute": "opacity"
+            },
+            {
+              "kind": "field",
+              "name": "dirty",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "dirty",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "_surfaceW",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "1200",
+              "attribute": "_surfaceW"
+            },
+            {
+              "kind": "field",
+              "name": "_surfaceH",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "800",
+              "attribute": "_surfaceH"
+            },
+            {
+              "kind": "field",
+              "name": "_undo",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "_redo",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "_text",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "_text"
+            },
+            {
+              "kind": "field",
+              "name": "_confirmClear",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "_confirmClear"
+            },
+            {
+              "kind": "field",
+              "name": "_status",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "_status"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, tools: \"Drawing tools\", pen: \"Pen\", highlighter: \"Highlighter\", eraser: \"Eraser\", line: \"Line\", arrow: \"Arrow\", box: \"Box\", circle: \"Circle\", text: \"Text\", fill: \"Fill\", size: \"Size\", opacity: \"Opacity\", color: \"Color\", customColor: \"Custom color\", undo: \"Undo\", redo: \"Redo\", clear: \"Clear\", clearConfirm: \"Clear the whole drawing?\", clearYes: \"Clear drawing\", cancel: \"Cancel\", cleared: \"Drawing cleared\", image: \"Image\", imageHelp: \"Draw over an image\", download: \"Download\", downloadLayerOnly: \"The image could not be combined, so only the marks were saved\", surface: \"Drawing surface\", signHere: \"Sign above the line\", textHint: \"Type, then press Enter. Shift+Enter adds a line.\", shapeHint: \"Hold Shift for a square, circle or straight angle\", coalyGray: \"Coaly gray\", nittanyNavy: \"Nittany navy\", beaverBlue: \"Beaver blue\", skyBlue: \"Sky blue\", creekTeal: \"Creek teal\", opportunityGreen: \"Opportunity green\", keystoneYellow: \"Keystone yellow\", inventOrange: \"Invent orange\", original87Pink: \"Original 87 pink\", athertonViolet: \"Atherton violet\", white: \"White\", }"
+            },
+            {
+              "kind": "field",
+              "name": "_canUndo",
+              "privacy": "public",
+              "attribute": "_canUndo"
+            },
+            {
+              "kind": "field",
+              "name": "_canRedo",
+              "privacy": "public",
+              "attribute": "_canRedo"
+            }
+          ],
+          "events": [
+            {
+              "name": "doodle-board-change",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "after each completed mark, with `{ dirty }`"
+            },
+            {
+              "name": "doodle-board-background",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "a background image was picked, `{ src }`"
+            },
+            {
+              "description": "cancelable, `{ blob, filename }`; when not cancelled the element saves the file with a download link",
+              "name": "doodle-board-download"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "mode",
+              "type": {
+                "text": "string"
+              },
+              "description": "draw, feedback or signature",
+              "default": "\"draw\"",
+              "fieldName": "mode"
+            },
+            {
+              "name": "src",
+              "type": {
+                "text": "string"
+              },
+              "description": "background image drawn under the marks",
+              "default": "\"\"",
+              "fieldName": "src"
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "description": "the marks: a transparent PNG data URL",
+              "default": "\"\"",
+              "fieldName": "value"
+            },
+            {
+              "name": "width",
+              "type": {
+                "text": "number"
+              },
+              "description": "surface size when there is no background image",
+              "default": "0",
+              "fieldName": "width"
+            },
+            {
+              "name": "height",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "height"
+            },
+            {
+              "name": "filename",
+              "type": {
+                "text": "string"
+              },
+              "description": "file name for download(), without the extension",
+              "default": "\"doodle\"",
+              "fieldName": "filename"
+            },
+            {
+              "name": "background-upload",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "show the Image button to pick a background",
+              "default": "false",
+              "fieldName": "backgroundUpload"
+            },
+            {
+              "name": "downloadable",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "show the Download button",
+              "default": "false",
+              "fieldName": "downloadable"
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "accessible name for the surface",
+              "default": "\"\"",
+              "fieldName": "label"
+            },
+            {
+              "name": "tool",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"pen\"",
+              "fieldName": "tool"
+            },
+            {
+              "name": "color",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "color"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "number"
+              },
+              "fieldName": "size"
+            },
+            {
+              "name": "opacity",
+              "type": {
+                "text": "number"
+              },
+              "default": "100",
+              "fieldName": "opacity"
+            },
+            {
+              "name": "dirty",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "dirty"
+            },
+            {
+              "name": "_surfaceW",
+              "type": {
+                "text": "number"
+              },
+              "default": "1200",
+              "fieldName": "_surfaceW"
+            },
+            {
+              "name": "_surfaceH",
+              "type": {
+                "text": "number"
+              },
+              "default": "800",
+              "fieldName": "_surfaceH"
+            },
+            {
+              "name": "_text",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "_text"
+            },
+            {
+              "name": "_confirmClear",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "_confirmClear"
+            },
+            {
+              "name": "_status",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "_status"
+            },
+            {
+              "name": "_canUndo",
+              "fieldName": "_canUndo"
+            },
+            {
+              "name": "_canRedo",
+              "fieldName": "_canRedo"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "DDDSuper",
+              "package": "@haxtheweb/d-d-d/d-d-d.js"
+            },
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "doodle-board-canvas",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DoodleBoardCanvas",
+          "declaration": {
+            "name": "DoodleBoardCanvas",
+            "module": "lib/doodle-board-canvas.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "DoodleBoardCanvas",
+            "module": "lib/doodle-board-canvas.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/doodle-board-field.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`doodle-board-field`\nThe \"doodle\" input method: a field that shows a preview of a drawing in\nthe HAX settings panel, with Edit drawing opening a dialog that holds the\nfull doodle-board-canvas. Saving fires value-changed with the marks as a\ntransparent PNG data URL (\"\" when nothing is drawn).\n\nIn a HAX settings form it reads the background image and the mode from\nsibling settings, named by background-property and mode-property, so a\nteacher marks up the submission the element already shows.",
+          "name": "DoodleBoardField",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_findForm",
+              "description": "the simple-fields form this field sits in, across shadow roots"
+            },
+            {
+              "kind": "method",
+              "name": "_readForm",
+              "description": "follow the background image and mode settings beside this one"
+            },
+            {
+              "kind": "method",
+              "name": "open",
+              "description": "open the editor dialog; the editor loads on first use"
+            },
+            {
+              "kind": "method",
+              "name": "close"
+            },
+            {
+              "kind": "field",
+              "name": "_canvas",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_requestClose"
+            },
+            {
+              "kind": "method",
+              "name": "_dialogCancel",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Escape asks before throwing work away"
+            },
+            {
+              "kind": "method",
+              "name": "_save"
+            },
+            {
+              "kind": "method",
+              "name": "_remove"
+            },
+            {
+              "kind": "method",
+              "name": "_setValue",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "label"
+            },
+            {
+              "kind": "field",
+              "name": "description",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "description"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "src",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "background image; filled from background-property in a form",
+              "default": "\"\"",
+              "attribute": "src"
+            },
+            {
+              "kind": "field",
+              "name": "mode",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "draw, feedback or signature; filled from mode-property in a form",
+              "default": "\"draw\"",
+              "attribute": "mode"
+            },
+            {
+              "kind": "field",
+              "name": "backgroundProperty",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "background-property"
+            },
+            {
+              "kind": "field",
+              "name": "modeProperty",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "mode-property"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "_open",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "_open"
+            },
+            {
+              "kind": "field",
+              "name": "_confirmDiscard",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "_confirmDiscard"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, drawing: \"Drawing\", edit: \"Edit drawing\", start: \"Start drawing\", remove: \"Remove drawing\", empty: \"Nothing drawn yet\", save: \"Save\", cancel: \"Cancel\", close: \"Close\", discard: \"Discard changes\", discardConfirm: \"Discard your unsaved changes?\", keepEditing: \"Keep editing\", draw: \"Drawing\", feedback: \"Feedback\", signature: \"Signature\", }"
+            }
+          ],
+          "events": [
+            {
+              "name": "value-changed",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "`{ value }` after Save or Remove"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "label"
+            },
+            {
+              "name": "description",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "description"
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "value"
+            },
+            {
+              "name": "src",
+              "type": {
+                "text": "string"
+              },
+              "description": "background image; filled from background-property in a form",
+              "default": "\"\"",
+              "fieldName": "src"
+            },
+            {
+              "name": "mode",
+              "type": {
+                "text": "string"
+              },
+              "description": "draw, feedback or signature; filled from mode-property in a form",
+              "default": "\"draw\"",
+              "fieldName": "mode"
+            },
+            {
+              "name": "background-property",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "backgroundProperty"
+            },
+            {
+              "name": "mode-property",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "modeProperty"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "_open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "_open"
+            },
+            {
+              "name": "_confirmDiscard",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "_confirmDiscard"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "DDDSuper",
+              "package": "@haxtheweb/d-d-d/d-d-d.js"
+            },
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "doodle-board-field",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DoodleBoardField",
+          "declaration": {
+            "name": "DoodleBoardField",
+            "module": "lib/doodle-board-field.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "DoodleBoardField",
+            "module": "lib/doodle-board-field.js"
+          }
+        }
+      ]
+    }
+  ]
+}

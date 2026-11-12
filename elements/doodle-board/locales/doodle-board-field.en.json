@@ -1,0 +1,16 @@
+{
+  "drawing": "Drawing",
+  "edit": "Edit drawing",
+  "start": "Start drawing",
+  "remove": "Remove drawing",
+  "empty": "Nothing drawn yet",
+  "save": "Save",
+  "cancel": "Cancel",
+  "close": "Close",
+  "discard": "Discard changes",
+  "discardConfirm": "Discard your unsaved changes?",
+  "keepEditing": "Keep editing",
+  "draw": "Drawing",
+  "feedback": "Feedback",
+  "signature": "Signature"
+}

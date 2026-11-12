@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"
+    />
+    <title>doodle-board demo</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import "../doodle-board.js";
+      import "../lib/doodle-board-canvas.js";
+      import "../lib/doodle-board-field.js";
+    </script>
+    <style>
+      body {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: var(--ddd-spacing-6, 24px) var(--ddd-spacing-4, 16px);
+        font-family: var(--ddd-font-navigation, sans-serif);
+      }
+      .field-demo {
+        max-width: 320px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Drawing (visitors can draw)</h2>
+    <doodle-board
+      mode="draw"
+      interactive
+      alt="A visitor drawing"
+    ></doodle-board>
+
+    <h2>Feedback over a submission</h2>
+    <doodle-board-canvas
+      mode="feedback"
+      background-upload
+      downloadable
+    ></doodle-board-canvas>
+
+    <h2>Signature</h2>
+    <doodle-board-canvas mode="signature" downloadable></doodle-board-canvas>
+
+    <h2>HAX "doodle" input method</h2>
+    <div class="field-demo">
+      <doodle-board-field
+        label="Drawing"
+        description="Opens the editor."
+        mode="feedback"
+      ></doodle-board-field>
+    </div>
+  </body>
+</html>
