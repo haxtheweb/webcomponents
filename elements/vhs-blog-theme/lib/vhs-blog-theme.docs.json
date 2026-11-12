@@ -55,10 +55,18 @@
       "hax": null
     },
     {
-      "name": "held",
-      "property": "held",
-      "type": "null",
-      "default": "null",
+      "name": "phase",
+      "property": "phase",
+      "type": "string",
+      "default": "\"idle\"",
+      "description": "tape load state: idle, open, insert, press, playing",
+      "hax": null
+    },
+    {
+      "name": "loadingTitle",
+      "property": "loadingTitle",
+      "type": "string",
+      "default": "\"\"",
       "description": "",
       "hax": null
     }
@@ -69,7 +77,7 @@
   ],
   "events": [],
   "hax": {},
-  "surfaceHash": "e8c9fe8c2469",
+  "surfaceHash": "f44c62d7f2fe",
   "walkthroughs": [],
   "videos": [],
   "motion": {

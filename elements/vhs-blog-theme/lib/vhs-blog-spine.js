@@ -241,14 +241,15 @@ export class VhsBlogSpine extends LitElement {
         .badge {
           flex: none;
           font-family: "Archivo Black", sans-serif;
-          font-size: 11px;
-          letter-spacing: 0.06em;
+          font-size: 10px;
+          letter-spacing: 0.04em;
           text-transform: uppercase;
           border: 1.5px solid currentColor;
-          padding: 2px 4px;
-          line-height: 1.1;
-          max-width: 76px;
-          text-align: center;
+          padding: 3px 5px;
+          line-height: 1;
+          /* one line, sized to its text: a fixed width let long badges
+             like REMASTERED spill out of the box */
+          white-space: nowrap;
         }
         .bar {
           flex: none;

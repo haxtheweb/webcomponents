@@ -93,41 +93,57 @@ describe("VhsBlogTheme", () => {
     });
   });
 
-  it("stacks loose posts into aisles and children into a box set", () => {
-    const stacks = element._stacks();
-    expect(stacks.length).to.equal(2);
-    expect(stacks[0].box).to.equal(false);
-    expect(stacks[0].items.map((i) => i.id)).to.deep.equal(["a", "b"]);
-    expect(stacks[1].box).to.equal(true);
-    expect(stacks[1].items.map((i) => i.id)).to.deep.equal(["c", "d", "e"]);
+  it("fills the tape tower first, then aisles and box sets", () => {
+    const shelf = element._shelf();
+    expect(shelf.tower.map((i) => i.id)).to.deep.equal(["a", "b"]);
+    expect(shelf.aisles.length).to.equal(1);
+    expect(shelf.aisles[0].box).to.equal(true);
+    expect(shelf.aisles[0].items.map((i) => i.id)).to.deep.equal([
+      "c",
+      "d",
+      "e",
+    ]);
   });
 
-  it("makes every case a keyboard reachable link named by its title", () => {
-    const links = element.shadowRoot.querySelectorAll(".stack a.case-link");
-    expect(links.length).to.equal(5);
-    links.forEach((a) => {
+  it("makes every tape a keyboard reachable link named by its title", () => {
+    const tapes = element.shadowRoot.querySelectorAll(".tower a.tape");
+    expect(tapes.length).to.equal(2);
+    tapes.forEach((a) => {
       expect(a.getAttribute("href")).to.not.equal("");
       expect(a.tabIndex).to.equal(0);
-      const name = a.querySelector(".sr-only").textContent;
-      expect(name.length).to.be.above(0);
-      expect(
-        a.querySelector("vhs-blog-spine").getAttribute("aria-hidden"),
-      ).to.equal("true");
+      expect(a.querySelector(".vt").getAttribute("aria-hidden")).to.equal(
+        "true",
+      );
     });
-    expect(links[0].querySelector(".sr-only").textContent).to.equal(
+    expect(tapes[0].querySelector(".sr-only").textContent).to.equal(
       "Reclaim the web, 6 min read",
     );
   });
 
-  it("holds the focused case on the back cover panel", async () => {
-    const links = element.shadowRoot.querySelectorAll(".stack a.case-link");
-    links[1].focus();
+  it("sits the VCR on the console with the TV off at the shelf", () => {
+    const root = element.shadowRoot;
+    const vcr = root.querySelector("vhs-blog-console vhs-blog-vcr");
+    expect(vcr.getAttribute("slot")).to.equal("vcr");
+    expect(vcr.phase).to.equal("idle");
+    expect(vcr.disabled).to.equal("eject prev skip");
+    expect(root.querySelector("vhs-blog-tv").hasAttribute("off")).to.equal(
+      true,
+    );
+  });
+
+  it("drops a tape into the VCR before routing", async () => {
+    element._loadTape(ITEMS[1]);
     await element.updateComplete;
-    expect(element.held).to.equal("b");
+    const vcr = element.shadowRoot.querySelector("vhs-blog-vcr");
+    expect(element.phase).to.equal("open");
+    expect(vcr.tapeTitle).to.equal("Pure Joy");
+    expect(vcr.disabled).to.equal("eject prev play skip next");
     expect(
-      element.shadowRoot.querySelector("#held-title").textContent,
-    ).to.equal("Pure Joy");
-    expect(links[1].classList.contains("held")).to.equal(true);
+      element.shadowRoot.querySelector(".tower a.tape.out").textContent,
+    ).to.contain("Pure Joy");
+    element._clearTimers();
+    element.phase = "idle";
+    element.loadingTitle = "";
   });
 
   it("is dark by design", () => {
@@ -154,9 +170,37 @@ describe("VhsBlogTheme", () => {
       "pure-joy",
     );
     expect(root.querySelector(".pager .prev") === null).to.equal(true);
+    expect(root.querySelector("vhs-blog-tv").hasAttribute("off")).to.equal(
+      false,
+    );
+    expect(root.querySelector("vhs-blog-vcr").disabled).to.equal("prev");
     await expect(element).shadowDom.to.be.accessible({
       ignoredRules: ["skip-link"],
     });
+  });
+
+  it("keeps HAX wired to the live content area after the shelf swap", async () => {
+    const before = element.contentContainer;
+    store.activeId = "a";
+    element._noticeLocation({ route: { name: "reclaim-the-web" } });
+    await tick();
+    await element.updateComplete;
+    const live = element.shadowRoot.querySelector("#contentcontainer");
+    expect(live.tagName).to.equal("ARTICLE");
+    expect(element.contentContainer).to.equal(live);
+    expect(element.contentContainer).to.not.equal(before);
+    expect(live.isConnected).to.equal(true);
+  });
+
+  it("edits on the post layout even at the site root", async () => {
+    element.editMode = true;
+    await element.updateComplete;
+    await tick();
+    const live = element.shadowRoot.querySelector("#contentcontainer");
+    expect(live.tagName).to.equal("ARTICLE");
+    expect(element.contentContainer).to.equal(live);
+    element.editMode = false;
+    await element.updateComplete;
   });
 
   it("skip intro stills the TV and moves focus to the content", async () => {
@@ -164,7 +208,10 @@ describe("VhsBlogTheme", () => {
     element._noticeLocation({ route: { name: "reclaim-the-web" } });
     await tick();
     await element.updateComplete;
-    element._skipIntro();
+    element.shadowRoot
+      .querySelector("vhs-blog-vcr")
+      .shadowRoot.querySelectorAll("button")[3]
+      .click();
     const tv = element.shadowRoot.querySelector("vhs-blog-tv");
     expect(tv.still).to.equal(true);
     expect(element.shadowRoot.activeElement.id).to.equal("contentcontainer");

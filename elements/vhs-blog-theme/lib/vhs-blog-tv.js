@@ -11,6 +11,8 @@ import { LitElement, html, css } from "lit";
  * asked for reduced motion; otherwise (and after skip()) the final frame
  * shows with no motion. The screen is one image to assistive tech, named
  * by the post title; the real heading lives in the page content.
+ * "bare" renders only the screen (for the console cabinet) and "off"
+ * shows dark glass until a tape plays.
  *
  * @element vhs-blog-tv
  */
@@ -32,6 +34,9 @@ export class VhsBlogTv extends LitElement {
       sequenceLabel: { type: String, attribute: "sequence-label" },
       presentsLabel: { type: String, attribute: "presents-label" },
       still: { type: Boolean, reflect: true },
+      bare: { type: Boolean, reflect: true },
+      off: { type: Boolean, reflect: true },
+      offLabel: { type: String, attribute: "off-label" },
       _run: { type: Number, state: true },
     };
   }
@@ -49,6 +54,9 @@ export class VhsBlogTv extends LitElement {
     this.sequenceLabel = "Title sequence for";
     this.presentsLabel = "presents";
     this.still = false;
+    this.bare = false;
+    this.off = false;
+    this.offLabel = "The TV is off";
     this._run = 0;
   }
 
@@ -167,9 +175,27 @@ export class VhsBlogTv extends LitElement {
         .screen {
           position: relative;
           aspect-ratio: 4 / 3;
+          container-type: inline-size;
           border-radius: 28px / 36px;
           overflow: hidden;
           background: #000;
+        }
+        :host([bare]) .screen {
+          border-radius: 34px / 42px;
+        }
+        :host([off]) .screen {
+          background: radial-gradient(
+            ellipse at 38% 30%,
+            #3a403c 0,
+            #151816 55%,
+            #0a0b0a 100%
+          );
+        }
+        :host([off]) .scene,
+        :host([off]) .crawl,
+        :host([off]) .noise,
+        :host([off]) .osd {
+          display: none;
         }
         .scene {
           position: absolute;
@@ -244,13 +270,13 @@ export class VhsBlogTv extends LitElement {
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          gap: 14px;
+          gap: clamp(6px, 2.4cqi, 14px);
           text-align: center;
           padding: 0 8%;
         }
         .k {
           font-family: "Russo One", sans-serif;
-          font-size: clamp(12px, 2vw, 18px);
+          font-size: clamp(9px, 2.6cqi, 18px);
           letter-spacing: 0.3em;
           text-transform: uppercase;
           color: #cfe9ff;
@@ -261,7 +287,7 @@ export class VhsBlogTv extends LitElement {
         }
         .chrome {
           font-family: "Russo One", sans-serif;
-          font-size: clamp(32px, 6vw, 72px);
+          font-size: clamp(22px, 9cqi, 72px);
           line-height: 0.95;
           text-transform: uppercase;
           font-style: italic;
@@ -284,7 +310,7 @@ export class VhsBlogTv extends LitElement {
         .osd {
           position: absolute;
           font-family: "VT323", monospace;
-          font-size: clamp(18px, 2.4vw, 28px);
+          font-size: clamp(14px, 4cqi, 28px);
           color: #5dff8a;
           text-shadow: 0 0 6px rgba(93, 255, 138, 0.8);
           letter-spacing: 0.06em;
@@ -515,40 +541,48 @@ export class VhsBlogTv extends LitElement {
     ];
   }
 
-  render() {
+  _renderScreen() {
+    const label = this.off
+      ? this.offLabel
+      : `${this.sequenceLabel} ${this.crawlTitle}`;
     return html`
-      <div class="tv run-${this._run % 2 === 0 ? "a" : "b"}" part="tv">
-        <div class="bezel">
-          <div
-            class="screen"
-            role="img"
-            aria-label="${this.sequenceLabel} ${this.crawlTitle}"
-          >
-            <div class="scene">
-              <div class="stars"></div>
-              <div class="sun"></div>
-              <div class="floor"></div>
-            </div>
-            <div class="crawl">
-              <span class="k">${this.presenter} ${this.presentsLabel}</span>
-              <span class="k">${this.kicker}</span>
-              <span class="chrome">${this.crawlTitle}</span>
-              ${
-                this.runtime
-                  ? html`<span class="k"
-                      >${this.runtimeLabel} ${this.runtime}
-                      ${this.minLabel}</span
-                    >`
-                  : ""
-              }
-            </div>
-            <div class="noise"></div>
-            <span class="osd ch">${this.channelLabel}</span>
-            <span class="osd pl">${this.playLabel} &#9654;</span>
-            <div class="scan"></div>
-            <div class="glass"></div>
-          </div>
+      <div class="screen" role="img" aria-label="${label}">
+        <div class="scene">
+          <div class="stars"></div>
+          <div class="sun"></div>
+          <div class="floor"></div>
         </div>
+        <div class="crawl">
+          <span class="k">${this.presenter} ${this.presentsLabel}</span>
+          <span class="k">${this.kicker}</span>
+          <span class="chrome">${this.crawlTitle}</span>
+          ${
+            this.runtime
+              ? html`<span class="k"
+                  >${this.runtimeLabel} ${this.runtime} ${this.minLabel}</span
+                >`
+              : ""
+          }
+        </div>
+        <div class="noise"></div>
+        <span class="osd ch">${this.channelLabel}</span>
+        <span class="osd pl">${this.playLabel} &#9654;</span>
+        <div class="scan"></div>
+        <div class="glass"></div>
+      </div>
+    `;
+  }
+
+  render() {
+    const run = this._run % 2 === 0 ? "a" : "b";
+    if (this.bare) {
+      return html`<div class="run-${run}" part="tv">
+        ${this._renderScreen()}
+      </div>`;
+    }
+    return html`
+      <div class="tv run-${run}" part="tv">
+        <div class="bezel">${this._renderScreen()}</div>
         <div class="side" aria-hidden="true">
           <span class="led"></span>
           <span class="knob"></span>
