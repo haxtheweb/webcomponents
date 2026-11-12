@@ -13,6 +13,7 @@ export class DesignSystem extends LitElement {
     this.active = null;
     this.systems = [];
     this.__loadedIntegrations = {};
+    this.__pendingIntegrations = {};
   }
   static get tag() {
     return "design-system";
@@ -39,8 +40,8 @@ export class DesignSystem extends LitElement {
           globalThis.document.head
         ) {
           this.applyDesignSystem(
-            oldValue ? this.systems[oldValue] : null,
-            this.systems[this.active],
+            oldValue ? this.resolvedSystem(oldValue) : null,
+            this.resolvedSystem(this.active),
           );
           const context = this._integrationContextFromRuntime();
           Promise.resolve(this.loadActiveSystemIntegrations(context))
@@ -71,6 +72,64 @@ export class DesignSystem extends LitElement {
     if (system.name && system.styles && system.fonts) {
       this.systems[system.name] = system;
     }
+  }
+  /**
+   * A system can declare `extends: "<other system>"` to be a dialect of it:
+   * it keeps every style and HAX integration of the base and adds its own
+   * styles after them (a DDD-capable bridge such as patternfly maps the
+   * --ddd-* tokens onto its own and leaves DDD's authoring untouched).
+   * @param {String} name system name
+   * @returns {Array<Object>} the system and its bases, base first
+   */
+  systemChain(name) {
+    const chain = [];
+    let current = this.systems[name];
+    while (current && !chain.includes(current)) {
+      chain.unshift(current);
+      current = current.extends ? this.systems[current.extends] : null;
+    }
+    return chain;
+  }
+  /**
+   * Whether the active system is `name` or a dialect that extends it, so
+   * integrations written for a base (DDD's authoring) keep working
+   * @param {String} name system name
+   * @returns {Boolean}
+   */
+  isActiveCompatible(name) {
+    if (!this.active) {
+      return false;
+    }
+    return this.systemChain(this.active).some((system) => system.name === name);
+  }
+  /**
+   * The system as applied: a dialect's styles follow its bases', its fonts
+   * replace theirs when it has any, and anything it doesn't set is inherited
+   * @param {String} name system name
+   * @returns {Object|null}
+   */
+  resolvedSystem(name) {
+    const chain = this.systemChain(name);
+    if (chain.length === 0) {
+      return null;
+    }
+    const resolved = { ...chain[chain.length - 1] };
+    resolved.styles = [];
+    chain.forEach((system) => {
+      resolved.styles = [...resolved.styles, ...(system.styles || [])];
+      if (system.fonts && system.fonts.length > 0) {
+        resolved.fonts = system.fonts;
+      }
+      ["hax", "onload"].forEach((key) => {
+        if (system[key] !== undefined) {
+          resolved[key] = system[key];
+        }
+      });
+    });
+    if (!resolved.fonts) {
+      resolved.fonts = [];
+    }
+    return resolved;
   }
   _integrationContextFromRuntime() {
     let editMode = false;
@@ -129,6 +188,33 @@ export class DesignSystem extends LitElement {
     if (this.__loadedIntegrations[cacheKey]) {
       return;
     }
+    // a second request while the first is still loading (an active change
+    // and an explicit load together) waits on it instead of loading again
+    if (this.__pendingIntegrations[cacheKey]) {
+      return this.__pendingIntegrations[cacheKey];
+    }
+    this.__pendingIntegrations[cacheKey] = this._runSystemIntegration(
+      system,
+      systemName,
+      integrationName,
+      integration,
+      context,
+      cacheKey,
+    );
+    try {
+      await this.__pendingIntegrations[cacheKey];
+    } finally {
+      delete this.__pendingIntegrations[cacheKey];
+    }
+  }
+  async _runSystemIntegration(
+    system,
+    systemName,
+    integrationName,
+    integration,
+    context,
+    cacheKey,
+  ) {
     try {
       const mod =
         typeof integration.importer === "function"
@@ -160,7 +246,12 @@ export class DesignSystem extends LitElement {
     if (!this.active) {
       return;
     }
-    await this.loadSystemIntegration(this.active, integrationName, context);
+    // a dialect also runs its bases' integrations (base first); each is
+    // cached under the system that owns it, so a base loads only once
+    const chain = this.systemChain(this.active);
+    for (const system of chain) {
+      await this.loadSystemIntegration(system.name, integrationName, context);
+    }
   }
   _rehydrateHAXElementList() {
     if (

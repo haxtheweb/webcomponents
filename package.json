@@ -59,6 +59,7 @@
     "codeql": "node scripts/codeql-local.mjs",
     "codeql:install": "node scripts/codeql-local.mjs --install",
     "tokens:ddd": "node elements/d-d-d/design-system/build-tokens.js",
+    "ddd:bridge": "node elements/d-d-d/design-system/bridge/build-bridge.js",
     "design-system:sync": "node elements/d-d-d/design-system/sync.js",
     "test": "lerna run test --concurrency=1",
     "test:all": "web-test-runner \"elements/*/test/*.test.js\" --node-resolve --root-dir . --playwright --browsers chromium --static-logging",

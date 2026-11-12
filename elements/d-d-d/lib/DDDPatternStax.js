@@ -88,7 +88,14 @@ function isDDDActive() {
   ) {
     try {
       const manager = globalThis.DesignSystemManager.requestAvailability();
-      return !!manager && manager.active === "ddd";
+      if (!manager) {
+        return false;
+      }
+      // DDD-capable dialects (systems that extend "ddd") keep DDD patterns
+      if (typeof manager.isActiveCompatible === "function") {
+        return manager.isActiveCompatible("ddd");
+      }
+      return manager.active === "ddd";
     } catch {
       return false;
     }

@@ -886,7 +886,13 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       if (
         designSystemManager &&
         designSystemManager.systems &&
-        designSystemManager.systems.ddd
+        designSystemManager.systems.ddd &&
+        // a DDD-capable dialect (extends "ddd") already carries the palette
+        // styles, so keep it active instead of falling back to plain DDD
+        !(
+          typeof designSystemManager.isActiveCompatible === "function" &&
+          designSystemManager.isActiveCompatible("ddd")
+        )
       ) {
         designSystemManager.active = "ddd";
       }
