@@ -76,13 +76,24 @@
       "id": "semantic",
       "title": "Semantic",
       "mapping": "optional",
-      "why": "Named roles a system can size without touching the scales. Guarded: body text never below 16px, headings never below body text and never growing as the level goes down.",
+      "why": "Named roles a system can size without touching the scales: type sizes and density (surface padding, the gap between stacked blocks, inline gaps, control padding). Guarded: body text never below 16px, headings never below body text and never growing as the level goes down, and density never below the floors in densityMinPx.",
       "families": {
-        "type": "^ddd-theme-(h[1-6]|body)-font-size$"
+        "type": "^ddd-theme-(h[1-6]|body)-font-size$",
+        "density": "^ddd-(surface-padding|surface-padding-lg|stack-gap|inline-gap|control-padding-inline)$"
       },
-      "patterns": ["^ddd-theme-(h[1-6]|body)-font-size$"],
+      "patterns": [
+        "^ddd-theme-(h[1-6]|body)-font-size$",
+        "^ddd-(surface-padding|surface-padding-lg|stack-gap|inline-gap|control-padding-inline)$"
+      ],
       "guards": {
-        "bodyMinPx": 16
+        "bodyMinPx": 16,
+        "densityMinPx": {
+          "--ddd-surface-padding": 8,
+          "--ddd-surface-padding-lg": 16,
+          "--ddd-stack-gap": 8,
+          "--ddd-inline-gap": 4,
+          "--ddd-control-padding-inline": 8
+        }
       }
     }
   ]

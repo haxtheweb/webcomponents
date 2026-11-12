@@ -102,6 +102,11 @@ export const CarbonDDDMap = css`
     --ddd-textfield-height-sm: var(--cds-layout-size-height-sm);
     --ddd-textfield-height-md: var(--cds-layout-size-height-md);
     --ddd-textfield-height-lg: var(--cds-layout-size-height-lg);
+    --ddd-surface-padding: 1rem;
+    --ddd-surface-padding-lg: 2rem;
+    --ddd-stack-gap: 1rem;
+    --ddd-inline-gap: 0.5rem;
+    --ddd-control-padding-inline: 1rem;
     /* rgb channels follow their mapped color */
     --ddd-primary-0-rgb: 166, 200, 255, 0.7;
     --ddd-primary-1-rgb: 15, 98, 254;
