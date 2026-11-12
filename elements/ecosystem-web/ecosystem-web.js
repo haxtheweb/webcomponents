@@ -514,6 +514,37 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
         .focus .node.rel .lb {
           display: block !important;
         }
+        @media (forced-colors: active) {
+          .node .tl {
+            fill: Canvas;
+            stroke: CanvasText;
+          }
+          .node .rim,
+          .node .inset {
+            stroke: CanvasText;
+          }
+          .node .ic simple-icon-lite,
+          .mapctl simple-icon-lite {
+            /* the glyph is an image tinted by an SVG flood, which forced
+               colors drops: keep the tint and give it a system color */
+            forced-color-adjust: none;
+            color: CanvasText;
+          }
+          .node .mono,
+          .node .lb {
+            fill: CanvasText;
+          }
+          .node .halo {
+            stroke: Highlight;
+          }
+          .node .badge.pre,
+          .node .badge.web {
+            fill: CanvasText;
+          }
+          .edge {
+            stroke: CanvasText;
+          }
+        }
         @media (prefers-reduced-motion: no-preference) {
           .node,
           .edge {
