@@ -252,7 +252,7 @@ class SimpleTour extends I18NMixin(LitElement) {
             ? el.querySelector("[data-stop-content]").innerHTML
             : "";
         }
-        // security (JS-XSS-001): title/description can come from DOM attributes
+        // security (JS-XSS): title/description can come from DOM attributes
         // in live mode, so sanitize before the unsafeHTML sink. Styles are set
         // as text on a real node so they are never parsed as markup.
         let tourStyle = "";

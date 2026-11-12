@@ -102,6 +102,8 @@ export class ReadingAnalysis extends QuestionElement {
       flagsFound: "{correct} of {total} found",
       toRethink: "{count} to rethink",
       notEvidence: "not evidence for this flag",
+      isEvidence: "evidence for this flag",
+      readingKeys: "Use the arrow keys to move from one {unit} to the next.",
       markAnswers: "Mark answers",
       doneMarking: "Done marking answers",
       editHint:
@@ -123,6 +125,7 @@ export class ReadingAnalysis extends QuestionElement {
     this._held = "";
     this._marking = false;
     this._targets = [];
+    this._rovingId = "";
     this._selectKey = [];
     this._readingDirty = true;
     this._onKeyUp = this._onKeyUp.bind(this);
@@ -612,11 +615,16 @@ export class ReadingAnalysis extends QuestionElement {
         label: this._fill(words[t.kind], { n: n[t.kind] }),
       };
     });
+    // one tab stop for the whole reading (the last one reached, or the
+    // first); the arrow keys move between passages from there
+    if (!this._targetById(this._rovingId)) {
+      this._rovingId = this._targets.length ? this._targets[0].id : "";
+    }
     this._targets.forEach((t) => {
       t.els.forEach((el, i) => {
         el.setAttribute("data-t", t.id);
         if (i === 0) {
-          el.setAttribute("tabindex", "0");
+          el.setAttribute("tabindex", t.id === this._rovingId ? "0" : "-1");
           // the passage itself is the accessible name, so what is read
           // matches what is seen
           el.setAttribute("role", "button");
@@ -916,14 +924,61 @@ export class ReadingAnalysis extends QuestionElement {
     }
   }
   _onReadingKey(e) {
-    if (e.key !== "Enter" && e.key !== " ") {
+    const el = e.composedPath()[0];
+    if (!el || !el.getAttribute || !el.getAttribute("data-t")) {
       return;
     }
-    const el = e.composedPath()[0];
-    if (el && el.getAttribute && el.getAttribute("data-t")) {
+    if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
       this._act(el.getAttribute("data-t"));
+      return;
     }
+    const step = {
+      ArrowDown: 1,
+      ArrowRight: 1,
+      ArrowUp: -1,
+      ArrowLeft: -1,
+    };
+    const last = this._targets.length - 1;
+    const at = this._targets.findIndex(
+      (t) => t.id === el.getAttribute("data-t"),
+    );
+    let next = -1;
+    if (e.key in step) {
+      next = Math.min(last, Math.max(0, at + step[e.key]));
+    } else if (e.key === "Home") {
+      next = 0;
+    } else if (e.key === "End") {
+      next = last;
+    }
+    if (next < 0 || next === at) {
+      return;
+    }
+    e.preventDefault();
+    this._rove(this._targets[next].id, true);
+  }
+  // move the reading's single tab stop to a passage
+  _rove(targetId, focus) {
+    const target = this._targetById(targetId);
+    if (!target || !target.els[0]) {
+      return;
+    }
+    this._targets.forEach((t) => {
+      if (t.els[0]) {
+        t.els[0].setAttribute("tabindex", t.id === targetId ? "0" : "-1");
+      }
+    });
+    this._rovingId = targetId;
+    if (focus) {
+      target.els[0].focus();
+    }
+  }
+  _onReadingFocus(e) {
+    const el = this._targetIn(e.composedPath());
+    if (el && el.getAttribute("data-t") !== this._rovingId) {
+      this._rove(el.getAttribute("data-t"), false);
+    }
+    this._onTipShow(e);
   }
   _onTipShow(e) {
     const tab = this._tabIn(e.composedPath());
@@ -1077,7 +1132,7 @@ export class ReadingAnalysis extends QuestionElement {
       @drop="${this._drop}"
       @mouseover="${this._onTipShow}"
       @mouseout="${this._onTipHide}"
-      @focusin="${this._onTipShow}"
+      @focusin="${this._onReadingFocus}"
       @focusout="${this._onTipHide}"
     >
       ${
@@ -1087,7 +1142,15 @@ export class ReadingAnalysis extends QuestionElement {
       }
       <div class="sheet" id="sheet">
         <div class="margin" id="margin"></div>
-        <div class="reading" id="reading"></div>
+        <div
+          class="reading"
+          id="reading"
+          role="group"
+          aria-describedby="ra-keys"
+        ></div>
+        <span id="ra-keys" class="sr-only"
+          >${this._fill(this.t.readingKeys, { unit: this._unitWord() })}</span
+        >
         <div class="tip" id="tip" hidden aria-hidden="true">
           <i></i><span class="tip-label"></span
           ><small class="tip-target"></small>
@@ -1098,7 +1161,7 @@ export class ReadingAnalysis extends QuestionElement {
           ? html`<p class="empty">${this.t.noTargets}</p>`
           : nothing
       }
-      <span id="ra-live" class="sr-only" aria-live="assertive"></span>
+      <span id="ra-live" class="sr-only" aria-live="polite"></span>
     </div>`;
   }
 
@@ -1183,7 +1246,8 @@ export class ReadingAnalysis extends QuestionElement {
             ${this._fill(this.t.flagOnTarget, {
               flag: normalizeText(f.flag.label),
               target: t.label,
-            })}${ok ? nothing : html`: ${this.t.notEvidence}`}
+            })}:
+            ${ok ? this.t.isEvidence : this.t.notEvidence}
           </li>`;
         })}
       </ul>

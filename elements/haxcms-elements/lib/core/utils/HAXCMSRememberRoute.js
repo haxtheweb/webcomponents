@@ -60,7 +60,7 @@ const HAXCMSRememberRoute = function (SuperClass) {
             toJS(store.location.pathname)
         ) {
           let btn = globalThis.document.createElement("a");
-          // security (JS-STORAGE-001/JS-URL-002): validate scheme before wiring
+          // security (JS-STORAGE, JS-URL): validate scheme before wiring
           // a persisted value into href (blocks javascript:/data: URL payloads)
           btn.setAttribute(
             "href",

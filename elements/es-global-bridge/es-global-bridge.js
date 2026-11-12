@@ -26,7 +26,7 @@ export class ESGlobalBridge {
       if (!importing && !imported) {
         // security: script.src executes code, so only http(s) URLs (relative
         // ones resolve against the page) are accepted; javascript:, data: and
-        // other schemes are rejected (JS-URL-002)
+        // other schemes are rejected (JS-URL)
         let safeLocation = null;
         try {
           if (typeof location !== "string" || location.trim() === "") {

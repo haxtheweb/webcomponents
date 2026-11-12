@@ -565,6 +565,14 @@ describe("app-hax-confirmation-modal rendered", () => {
     const confirm = el.shadowRoot.querySelector(".button-confirm");
     expect(confirm.classList.contains("danger-fill")).to.be.true;
     expect(confirm.classList.contains("primary")).to.be.false;
+    expect(
+      confirm.querySelector("simple-icon-lite").getAttribute("icon"),
+    ).to.equal("hax:admin-delete");
+    expect(
+      el.shadowRoot
+        .querySelector(".button-cancel simple-icon-lite")
+        .getAttribute("icon"),
+    ).to.equal("hax:admin-close");
   });
 
   it("opens when created and opened in one go, and Escape cancels", async () => {

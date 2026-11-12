@@ -102,7 +102,7 @@ class PlayList extends I18NMixin(DDD) {
     if (item.properties && item.properties.innerHTML) {
       delete item.properties.innerHTML;
     }
-    // security (JS-XSS-001): items is a public property, so sanitize before the sink
+    // security (JS-XSS): items is a public property, so sanitize before the sink
     return html`${unsafeHTML(
       sanitizeHTMLString(haxElementToNode(item).outerHTML),
     )}`;

@@ -3,13 +3,29 @@ import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { haxElementToNode } from "@haxtheweb/utils/utils.js";
 
+// this page's origin as a JS string literal for the preview frame's resize
+// script, or "" when the page has an opaque origin (file://, sandboxed);
+// <, > and line separators are escaped so it is safe inside <script>
+function parentOriginLiteral() {
+  const origin =
+    globalThis.location &&
+    globalThis.location.origin &&
+    globalThis.location.origin !== "null"
+      ? globalThis.location.origin
+      : "";
+  return JSON.stringify(origin).replace(
+    /[<>\u2028\u2029]/g,
+    (c) => "\\u" + c.charCodeAt(0).toString(16).padStart(4, "0"),
+  );
+}
+
 export class WebContainerDocPlayer extends DDDSuper(LitElement) {
   static get tag() {
     return "web-container-doc-player";
   }
   __onFrameResizeMessage(e) {
     // security: only accept resize messages from our own preview iframe
-    // (JS-MSG-001)
+    // (JS-MSG)
     const wc = this.shadowRoot
       ? this.shadowRoot.querySelector("web-container")
       : null;
@@ -140,6 +156,7 @@ export class WebContainerDocPlayer extends DDDSuper(LitElement) {
     import "@haxtheweb/code-sample/code-sample.js";
     import "@haxtheweb/code-editor/lib/code-pen-button.js";
     import { haxElementToNode } from "@haxtheweb/utils/utils.js";
+    const PARENT_ORIGIN = ${parentOriginLiteral()};
     // take tag and convert it to a demo implementation
     async function getExample() {
       let el = globalThis.document.createElement("${this.element}");
@@ -169,10 +186,14 @@ export class WebContainerDocPlayer extends DDDSuper(LitElement) {
         for (const entry of entries) {
           if (entry.target === globalThis.document.body) {
             const newHeight = entry.contentRect.height;
-            parent.postMessage(
-              '{"subject":"frameResize", "height":"' + entry.contentRect.height + '" }',
-              ${JSON.stringify(globalThis.location && globalThis.location.origin && globalThis.location.origin !== "null" ? globalThis.location.origin : "*")},
-            );
+            // security (JS-MSG): report only to the docs page's own origin,
+            // never "*"; an opaque-origin page gets no resize messages
+            if (PARENT_ORIGIN) {
+              parent.postMessage(
+                '{"subject":"frameResize", "height":"' + entry.contentRect.height + '" }',
+                PARENT_ORIGIN,
+              );
+            }
           }
         }
       });

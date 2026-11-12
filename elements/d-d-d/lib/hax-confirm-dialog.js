@@ -3,6 +3,9 @@ import { DDD } from "../d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { HaxUiAdminTokens } from "./HaxUiAdminTokens.js";
 import { HaxUiAdminControls } from "./HaxUiAdminControls.js";
+import { HaxUiAdminIcons } from "./HaxUiAdminIcons.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 
 /**
  * `hax-confirm-dialog`
@@ -123,6 +126,10 @@ class HAXConfirmDialog extends I18NMixin(DDD) {
             autofocus
             @click=${this._cancelTap}
           >
+            <simple-icon-lite
+              icon="${HaxUiAdminIcons.close}"
+              aria-hidden="true"
+            ></simple-icon-lite>
             ${this.cancelLabel || this.t.cancel}
           </button>
           <button
@@ -133,6 +140,14 @@ class HAXConfirmDialog extends I18NMixin(DDD) {
             }"
             @click=${this._confirmTap}
           >
+            <simple-icon-lite
+              icon="${
+                this.destructive
+                  ? HaxUiAdminIcons.delete
+                  : HaxUiAdminIcons.check
+              }"
+              aria-hidden="true"
+            ></simple-icon-lite>
             ${this.confirmLabel || this.t.confirm}
           </button>
         </div>
