@@ -477,6 +477,8 @@ ${loader.styles}
     globalThis.dispatchEvent(new CustomEvent('gallery-styled'));
   </script>
   <script type="module" src="./elements/documentation-player/documentation-player.js"></script>
+  <!-- the strip that links every hax.cloud site (hax.cloud, this gallery, the live demo, RPG me) -->
+  <script type="module" src="./elements/hax-network-bar/hax-network-bar.js"></script>
   <!-- dogfood: the gallery's form controls are the same elements the HAX
        admin screens use, so their light/dark handling is the shared one -->
   <script type="module" src="./elements/simple-fields/lib/simple-fields-field.js"></script>
@@ -589,6 +591,26 @@ ${loader.styles}
       display: flex;
       flex-wrap: wrap;
       gap: var(--hax-ui-gap-md);
+    }
+
+    hax-network-bar {
+      flex: none;
+      --hax-network-bar-max-width: none;
+      --hax-network-bar-gutter: var(--ddd-spacing-4, 16px);
+    }
+
+    /* the live demo is the gallery's main call to action, in the same
+       Keystone yellow as hax.cloud's "Try the live demo" */
+    body a.hax-ui-btn#haxcmsDemoBtn,
+    body a.hax-ui-btn#haxcmsDemoBtn:any-link {
+      font-weight: var(--ddd-font-weight-bold, 700);
+      color: var(--ddd-theme-default-nittanyNavy);
+      background-color: var(--ddd-theme-default-keystoneYellow);
+      border-color: var(--ddd-theme-default-keystoneYellow);
+    }
+
+    body a.hax-ui-btn#haxcmsDemoBtn:hover {
+      background-color: var(--ddd-theme-default-white);
     }
 
     .titlebar .hax-ui-btn {
@@ -1070,6 +1092,7 @@ ${loader.styles}
 <body>
 ${loader.markup}
   <d-d-d></d-d-d>
+  <hax-network-bar current="elements"></hax-network-bar>
 
   <header class="titlebar hax-ui-dark-chrome" id="mobileBar">
     <div class="brand">
@@ -1084,7 +1107,7 @@ ${
     ? `    <nav class="shortcuts" aria-label="System demos">
 ${
   haxcmsDemo
-    ? `      <a class="hax-ui-btn" id="haxcmsDemoBtn" href="${haxcmsDemo.demoPath}" target="haxcms-demo" rel="noopener" title="Open the full HAXcms system demo (haxcms-elements) in its own window">Open HAXcms demo</a>
+    ? `      <a class="hax-ui-btn" id="haxcmsDemoBtn" href="${haxcmsDemo.demoPath}" target="haxcms-demo" rel="noopener" title="Open the full HAXcms system demo (haxcms-elements) in its own window">Try HAXcms</a>
 `
     : ""
 }${
