@@ -330,6 +330,16 @@
             },
             {
               "kind": "method",
+              "name": "_cancelListbox",
+              "description": "closes the listbox without changing the value: the active option goes\nback to the selected one (so the list reopens on it) and focus returns\nto the listbox",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
               "name": "setOptions",
               "parameters": [
                 {
@@ -1441,6 +1451,20 @@
             },
             {
               "kind": "method",
+              "name": "_cancelListbox",
+              "description": "closes the listbox without changing the value: the active option goes\nback to the selected one (so the list reopens on it) and focus returns\nto the listbox",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimplePickerBehaviors",
+                "module": "simple-picker.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "setOptions",
               "parameters": [
                 {
@@ -2368,6 +2392,20 @@
                 }
               ],
               "description": "toggles listbox",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimplePickerBehaviors",
+                "module": "simple-picker.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_cancelListbox",
+              "description": "closes the listbox without changing the value: the active option goes\nback to the selected one (so the list reopens on it) and focus returns\nto the listbox",
               "return": {
                 "type": {
                   "text": "void"
@@ -3797,6 +3835,20 @@
                 }
               ],
               "description": "toggles listbox",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimplePickerBehaviors",
+                "module": "simple-picker.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_cancelListbox",
+              "description": "closes the listbox without changing the value: the active option goes\nback to the selected one (so the list reopens on it) and focus returns\nto the listbox",
               "return": {
                 "type": {
                   "text": "void"
