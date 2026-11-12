@@ -59,6 +59,12 @@ const BUNDLE = {
     "tile:main:cms": "ecosystem/haxcms",
     "tour:main:everyone": "tours/everyone",
   },
+  icons: {
+    "hax:hax2022": {
+      vb: "0 0 24 24",
+      d: '<path d="M2 2h20v20H2z" onclick="alert(1)"/><script>alert(1)</script>',
+    },
+  },
 };
 
 describe("ecosystem-web", () => {
@@ -92,6 +98,8 @@ describe("ecosystem-web", () => {
 
   it("opens a sub-web and offers the way back", async () => {
     element.openWeb("sub");
+    // the old web fades out before the new one opens
+    await new Promise((r) => setTimeout(r, 250));
     await element.updateComplete;
     expect(element.web).to.equal("sub");
     expect(element.shadowRoot.querySelector("h2").textContent).to.equal(
@@ -119,6 +127,37 @@ describe("ecosystem-web", () => {
     expect(element.shadowRoot.querySelectorAll(".list button").length).to.equal(
       3,
     );
+  });
+
+  it("draws tile glyphs inline from the bundle, without markup it does not know", () => {
+    const gl = element.shadowRoot.querySelector(".node .gl");
+    expect(gl).to.exist;
+    expect(gl.querySelector("path").getAttribute("d")).to.equal(
+      "M2 2h20v20H2z",
+    );
+    expect(gl.querySelector("path").hasAttribute("onclick")).to.be.false;
+    expect(element.shadowRoot.querySelector("script")).to.equal(null);
+    expect(element.shadowRoot.querySelector("foreignObject")).to.equal(null);
+  });
+
+  it("moves the camera without re-rendering and lifts a selected tile's connections", async () => {
+    const net = element.shadowRoot.querySelector("svg.net");
+    expect(net.getAttribute("viewBox")).to.match(
+      /^-?[\d.]+ -?[\d.]+ [\d.]+ [\d.]+$/,
+    );
+    element.select("cms");
+    await element.updateComplete;
+    expect(net.classList.contains("focus")).to.be.true;
+    const lifted = element.shadowRoot.querySelectorAll(".lift .edge");
+    expect(lifted.length).to.equal(1);
+    expect(lifted[0].getAttribute("pathLength")).to.equal("1");
+    // the lifted copies are for sight only: the real tiles stay the buttons
+    expect(
+      element.shadowRoot.querySelector(".lift").getAttribute("aria-hidden"),
+    ).to.equal("true");
+    expect(
+      element.shadowRoot.querySelectorAll(".lift [role=button]").length,
+    ).to.equal(0);
   });
 
   it("passes the a11y audit", async () => {

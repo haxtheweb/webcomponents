@@ -538,3 +538,72 @@ export function buildWebs(bundle) {
   order.forEach((id) => lookup(id));
   return models;
 }
+
+/** The SVG shapes a glyph may use, and the attributes kept on each. */
+const GLYPH_ATTRS = {
+  path: ["d", "fill-rule", "clip-rule"],
+  circle: ["cx", "cy", "r"],
+  ellipse: ["cx", "cy", "rx", "ry"],
+  rect: ["x", "y", "width", "height", "rx", "ry"],
+  polygon: ["points"],
+  polyline: ["points"],
+  line: ["x1", "y1", "x2", "y2"],
+};
+const GLYPH_COMMON = ["transform", "opacity", "fill", "stroke", "stroke-width"];
+
+/**
+ * Turn an icon's SVG markup into plain shape records ({tag, a: {attr: value}})
+ * so the drawing can render it with templates instead of injecting markup.
+ * Only basic shapes and their geometry survive; scripts, links, styles and
+ * event attributes are dropped. Groups are flattened (their transform is
+ * not kept, which the HAX iconsets do not use).
+ * @param {string} markup the inner markup of an <svg>, or a whole <svg> file
+ * @param {string} [vb] viewBox, when the markup has no <svg> root
+ * @returns {{vb: string, shapes: Array<{tag: string, a: Object}>}|null}
+ */
+export function parseGlyph(markup, vb) {
+  if (!markup || typeof globalThis.DOMParser === "undefined") return null;
+  const whole = markup.trim().startsWith("<svg") || markup.includes("<svg ");
+  const text = whole
+    ? markup
+    : `<svg xmlns="http://www.w3.org/2000/svg">${markup}</svg>`;
+  const doc = new globalThis.DOMParser().parseFromString(text, "image/svg+xml");
+  const root = doc.documentElement;
+  if (!root || root.nodeName !== "svg") return null;
+  const shapes = [];
+  root.querySelectorAll("*").forEach((el) => {
+    const keep = GLYPH_ATTRS[el.nodeName];
+    if (!keep) return;
+    const a = {};
+    keep.concat(GLYPH_COMMON).forEach((k) => {
+      const v = el.getAttribute(k);
+      if (v == null) return;
+      // paint is either "none" or the icon's own color, never a URL
+      if ((k === "fill" || k === "stroke") && v !== "none") {
+        a[k] = "currentColor";
+        return;
+      }
+      a[k] = v;
+    });
+    shapes.push({ tag: el.nodeName, a });
+  });
+  if (!shapes.length) return null;
+  return {
+    vb: vb || root.getAttribute("viewBox") || "0 0 24 24",
+    shapes,
+  };
+}
+
+/** Ease-out cubic, for camera moves. */
+export function easeOut(p) {
+  return 1 - Math.pow(1 - p, 3);
+}
+
+/** The camera part way (e, 0..1) from view a to view b. */
+export function lerpView(a, b, e) {
+  return {
+    x: a.x + (b.x - a.x) * e,
+    y: a.y + (b.y - a.y) * e,
+    w: a.w + (b.w - a.w) * e,
+  };
+}

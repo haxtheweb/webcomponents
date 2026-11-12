@@ -11,7 +11,7 @@ The HAX ecosystem web as a web component: every part of HAX as a tile on concent
 
 | Attribute | What it does |
 | --- | --- |
-| `src` | URL of the JSON bundle of webs PRAW builds: `{order, webs: {id: {mmd, json}}, slugs, images}` |
+| `src` | URL of the JSON bundle of webs PRAW builds: `{order, webs: {id: {mmd, json}}, slugs, images, icons}` |
 | `web` | The web shown; `main` is the ecosystem web |
 | `node` | The selected tile's id in that web |
 | `tour` | The tour being played |
@@ -22,6 +22,12 @@ The HAX ecosystem web as a web component: every part of HAX as a tile on concent
 `web`, `node`, `tour` and `step` reflect, so setting any of them routes the web, and every change made in the web fires `ecosystem-web-changed` with `{web, node, tour, step, path}`. `path` is the page for that view when the bundle has `slugs` (hax.cloud's `/penn-state/strategic-plan/aa-plan`, `/tours/everyone/step-3`), so a HAXcms theme can keep the address bar and the web in step.
 
 `loadBundle(bundle)` takes a bundle already in memory instead of `src`.
+
+### Motion and drawing
+
+The camera moves by rewriting the drawing's `viewBox` once a frame, so panning, pinching and zooming never re-render the tiles. Selecting a tile, opening a web and stepping a tour ease the camera over about half a second; a selected tile's connections draw in from it, as do the ones a tour step adds and a newly opened web's. Under `prefers-reduced-motion: reduce` the camera jumps and nothing draws in.
+
+Tile glyphs are drawn as plain SVG shapes. The bundle's `icons` (`{"hax:wand": {vb, d}}`, the markup of each glyph the webs name) are used when present; any other icon is read once from its HAX iconset file. Only basic shapes and their geometry are kept from that markup.
 
 ## The data
 

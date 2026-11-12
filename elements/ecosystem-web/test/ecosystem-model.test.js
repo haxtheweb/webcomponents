@@ -8,6 +8,9 @@ import {
   safeUrl,
   visibleAt,
   buildWebs,
+  parseGlyph,
+  lerpView,
+  easeOut,
 } from "../lib/ecosystem-model.js";
 
 const MMD = [
@@ -82,6 +85,29 @@ describe("ecosystem-model", () => {
     expect(glyphFor("#ffd100")).to.equal("#000");
     expect(safeUrl("javascript:alert(1)")).to.equal("#");
     expect(safeUrl("https://hax.psu.edu")).to.equal("https://hax.psu.edu");
+  });
+
+  it("keeps only basic shapes and geometry from glyph markup", () => {
+    const g = parseGlyph(
+      '<path d="M0 0h4" fill="#f00" onload="x()"/><a href="javascript:x()"><circle cx="1" cy="2" r="3"/></a><image href="x.png"/>',
+      "0 0 4 4",
+    );
+    expect(g.vb).to.equal("0 0 4 4");
+    expect(g.shapes.map((x) => x.tag)).to.deep.equal(["path", "circle"]);
+    expect(g.shapes[0].a).to.deep.equal({ d: "M0 0h4", fill: "currentColor" });
+    expect(
+      parseGlyph('<svg viewBox="0 0 8 8"><rect width="8" height="8"/></svg>')
+        .vb,
+    ).to.equal("0 0 8 8");
+    expect(parseGlyph("<script>x()</script>")).to.equal(null);
+  });
+
+  it("eases the camera between views", () => {
+    const a = { x: 0, y: 0, w: 100 };
+    const b = { x: 100, y: 50, w: 300 };
+    expect(lerpView(a, b, 0)).to.deep.equal(a);
+    expect(lerpView(a, b, easeOut(1))).to.deep.equal(b);
+    expect(easeOut(0.5)).to.be.above(0.5);
   });
 
   it("shows everything before a tour and builds up during it", () => {

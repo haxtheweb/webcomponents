@@ -109,9 +109,7 @@
               "label": "haxtheweb.org: Why HAXcms",
               "url": "https://haxtheweb.org"
             },
-            "links": {
-              "docs": "https://haxtheweb.org/documentation"
-            },
+            "links": { "docs": "https://haxtheweb.org/documentation" },
             "status": "released",
             "year": 2019,
             "yearNote": "HAXcms announced at DrupalCon; the first site goes live",
@@ -194,9 +192,7 @@
               "label": "haxtheweb.org",
               "url": "https://haxtheweb.org"
             },
-            "links": {
-              "repo": "https://github.com/haxtheweb/haxcms-php"
-            },
+            "links": { "repo": "https://github.com/haxtheweb/haxcms-php" },
             "release": "git:haxtheweb/haxcms-php",
             "status": "released",
             "version": "26.8.2",
@@ -225,22 +221,15 @@
               "label": "haxiam on GitHub",
               "url": "https://github.com/haxtheweb/haxiam"
             },
-            "links": {
-              "repo": "https://github.com/haxtheweb/haxiam"
-            },
+            "links": { "repo": "https://github.com/haxtheweb/haxiam" },
             "status": "deployed",
             "year": 2020,
             "yearNote": "HAXiam: many HAXcms sites behind one login"
           },
           "haxpsu": {
             "desc": "Penn State's HAXcms service, run on HAXiam behind Penn State login: 302 sites, 368 users and 17,100 pages. \"Free, open source, forever, transformative, unleashing creativity in a sustainable way.\" Open its web for courses by college.",
-            "source": {
-              "label": "hax.psu.edu",
-              "url": "https://hax.psu.edu"
-            },
-            "links": {
-              "site": "https://hax.psu.edu"
-            },
+            "source": { "label": "hax.psu.edu", "url": "https://hax.psu.edu" },
+            "links": { "site": "https://hax.psu.edu" },
             "status": "deployed",
             "year": 2020,
             "yearNote": "hax.psu.edu opens on HAXiam"
@@ -298,9 +287,7 @@
           "ubiquity": {
             "desc": "The webcomponents release build that ships every element, as one tested set, to haxcms-nodejs and the other backends.",
             "source": null,
-            "links": {
-              "repo": "https://github.com/haxtheweb/webcomponents"
-            },
+            "links": { "repo": "https://github.com/haxtheweb/webcomponents" },
             "release": "git:haxtheweb/webcomponents",
             "status": "released",
             "version": "26.8.1",
@@ -386,9 +373,7 @@
               "label": "WINS.md: Agents with context",
               "url": "https://github.com/haxtheweb/praw/blob/main/WINS.md#agents-with-context-90-then-211"
             },
-            "links": {
-              "repo": "https://github.com/haxtheweb/praw"
-            },
+            "links": { "repo": "https://github.com/haxtheweb/praw" },
             "status": "released",
             "year": 2025,
             "yearNote": "Agent skills for HAX"
@@ -399,9 +384,7 @@
               "label": "haxtheweb/haxcms-mcp",
               "url": "https://github.com/haxtheweb/haxcms-mcp"
             },
-            "links": {
-              "repo": "https://github.com/haxtheweb/haxcms-mcp"
-            },
+            "links": { "repo": "https://github.com/haxtheweb/haxcms-mcp" },
             "release": "git:haxtheweb/haxcms-mcp",
             "status": "prerelease",
             "year": 2026,
@@ -413,18 +396,14 @@
               "label": "PRAW README",
               "url": "https://github.com/haxtheweb/praw"
             },
-            "links": {
-              "repo": "https://github.com/haxtheweb/praw"
-            },
+            "links": { "repo": "https://github.com/haxtheweb/praw" },
             "status": "living",
             "year": 2025,
             "yearNote": "praw started September 2025"
           },
           "issues": {
             "desc": "The unified HAX issue queue for every project, including published security advisories.",
-            "links": {
-              "repo": "https://github.com/haxtheweb/issues"
-            },
+            "links": { "repo": "https://github.com/haxtheweb/issues" },
             "status": "living",
             "year": 2020,
             "yearNote": "haxtheweb/issues created February 2020"
@@ -461,9 +440,7 @@
               "label": "WINS.md: 640+ open HTML tags",
               "url": "https://github.com/haxtheweb/praw/blob/main/WINS.md#640-open-html-tags-used-across-penn-state"
             },
-            "links": {
-              "repo": "https://github.com/haxtheweb/webcomponents"
-            },
+            "links": { "repo": "https://github.com/haxtheweb/webcomponents" },
             "release": "git:haxtheweb/webcomponents",
             "status": "released",
             "year": 2017,
@@ -558,9 +535,7 @@
               "label": "btopro/edtechjoker README",
               "url": "https://github.com/btopro/edtechjoker"
             },
-            "links": {
-              "repo": "https://github.com/btopro/edtechjoker"
-            },
+            "links": { "repo": "https://github.com/btopro/edtechjoker" },
             "year": 2019,
             "yearNote": "Bryan's first IST 256 semester"
           },
@@ -614,9 +589,7 @@
               "label": "elmsln/elmsln pull requests from buttercupstraining",
               "url": "https://github.com/elmsln/elmsln/pull/2698"
             },
-            "links": {
-              "site": "https://github.com/buttercupstraining"
-            },
+            "links": { "site": "https://github.com/buttercupstraining" },
             "year": 2019,
             "yearNote": "Buttercups Training starts contributing to ELMS:LN",
             "yearSource": {
@@ -630,9 +603,7 @@
               "label": "innovationhub.launchbox.psu.edu",
               "url": "https://innovationhub.launchbox.psu.edu/about/"
             },
-            "links": {
-              "site": "https://innovationhub.launchbox.psu.edu"
-            },
+            "links": { "site": "https://innovationhub.launchbox.psu.edu" },
             "year": 2024,
             "yearNote": "Innovation Hub connects"
           },
@@ -882,9 +853,7 @@
               "label": "WINS.md: Learn to Flourish Hub",
               "url": "https://github.com/haxtheweb/praw/blob/main/WINS.md#learn-to-flourish-hub-flourishhhdpsuedu-2026"
             },
-            "links": {
-              "example": "https://flourish.hhd.psu.edu"
-            },
+            "links": { "example": "https://flourish.hhd.psu.edu" },
             "year": 2026,
             "yearNote": "flourish.hhd.psu.edu launches",
             "yearSource": {
@@ -902,13 +871,8 @@
           },
           "psu": {
             "desc": "Where HAX was founded and is backed. \"HAX at Penn State is hosted and supported by a collaboration of several Penn State colleges and outside contributors.\"",
-            "source": {
-              "label": "hax.psu.edu",
-              "url": "https://hax.psu.edu"
-            },
-            "links": {
-              "site": "https://hax.psu.edu"
-            },
+            "source": { "label": "hax.psu.edu", "url": "https://hax.psu.edu" },
+            "links": { "site": "https://hax.psu.edu" },
             "year": 2015,
             "yearNote": "HAX starts as a note card at Penn State",
             "yearSource": {
@@ -987,9 +951,7 @@
               "label": "WINS.md: Student clubs",
               "url": "https://github.com/haxtheweb/praw/blob/main/WINS.md#student-clubs-30-security-fixes"
             },
-            "links": {
-              "site": "https://psuccso.org/"
-            },
+            "links": { "site": "https://psuccso.org/" },
             "year": 2025,
             "yearNote": "CCSO runs the 2025 HAX pentest",
             "yearSource": {
@@ -1003,9 +965,7 @@
               "label": "WINS.md: Student clubs (listed as UXPA)",
               "url": "https://github.com/haxtheweb/praw/blob/main/WINS.md#student-clubs-30-security-fixes"
             },
-            "links": {
-              "site": "https://discover.psu.edu/organization/uxdc"
-            },
+            "links": { "site": "https://discover.psu.edu/organization/uxdc" },
             "year": 2025,
             "yearNote": "UXDC joins the design work"
           },
@@ -1029,9 +989,7 @@
           },
           "github": {
             "desc": "Hosts every HAX repository, the issue queue and its security advisories.",
-            "links": {
-              "site": "https://github.com/haxtheweb"
-            },
+            "links": { "site": "https://github.com/haxtheweb" },
             "always": true
           },
           "npm": {
@@ -1040,24 +998,18 @@
               "label": "WINS.md: 289 packages",
               "url": "https://github.com/haxtheweb/praw/blob/main/WINS.md#289-packages-about-49000-downloads-a-month"
             },
-            "links": {
-              "site": "https://www.npmjs.com/org/haxtheweb"
-            },
+            "links": { "site": "https://www.npmjs.com/org/haxtheweb" },
             "always": true
           },
           "reclaim": {
             "desc": "Reclaim Hosting, the hosting company that hosted HAX Camp at Duke; HAXcms installs on its hosting.",
-            "links": {
-              "site": "https://www.reclaimhosting.com/"
-            },
+            "links": { "site": "https://www.reclaimhosting.com/" },
             "year": 2019,
             "yearNote": "Reclaim Hosting hosts HAX Camp at Duke"
           },
           "uvic": {
             "desc": "University of Victoria, where Jennifer Frank is now.",
-            "links": {
-              "site": "https://www.uvic.ca/"
-            },
+            "links": { "site": "https://www.uvic.ca/" },
             "year": 2026
           },
           "duke": {
@@ -1095,9 +1047,7 @@
               "label": "WINS.md: Foundations",
               "url": "https://github.com/haxtheweb/praw/blob/main/WINS.md#foundations-before-hax"
             },
-            "links": {
-              "repo": "https://github.com/elmsln/elmsln"
-            },
+            "links": { "repo": "https://github.com/elmsln/elmsln" },
             "release": "git:elmsln/elmsln",
             "status": "legacy",
             "version": "1.7.0",
@@ -1107,9 +1057,7 @@
           "bryan": {
             "desc": "Creator of HAX and its lead; teaches IST 256 and runs HAX Lab. The rpg-character and the Future Traveler are caricatures of him.",
             "role": "staff",
-            "links": {
-              "profile": "https://github.com/btopro"
-            },
+            "links": { "profile": "https://github.com/btopro" },
             "source": {
               "label": "WORLDVIEW.md",
               "url": "https://github.com/haxtheweb/praw/blob/main/WORLDVIEW.md"
@@ -1159,9 +1107,7 @@
               "url": "https://github.com/haxtheweb/praw/blob/main/WORLDVIEW.md"
             },
             "github": "heyMP",
-            "links": {
-              "profile": "https://github.com/heyMP"
-            }
+            "links": { "profile": "https://github.com/heyMP" }
           },
           "mcollins": {
             "desc": "Faculty member in Arts and Architecture who taught with ELMS:LN and now HAX, and builds his own flavor on it: the admin dashboard UI and the updated outline designer.",
@@ -1177,16 +1123,12 @@
               "url": "https://github.com/haxtheweb/praw/blob/main/WINS.md#faculty-building-on-hax-michael-collins"
             },
             "github": "michael-collins",
-            "links": {
-              "profile": "https://github.com/michael-collins"
-            }
+            "links": { "profile": "https://github.com/michael-collins" }
           },
           "fusco": {
             "desc": "xAPI and AI integration (fall 2016); later funded Canvas AI analysis built by students through the HAX CLI.",
             "role": "faculty",
-            "links": {
-              "profile": "https://github.com/djfusco"
-            },
+            "links": { "profile": "https://github.com/djfusco" },
             "source": {
               "label": "hax-lab README; WINS.md: faculty grants",
               "url": "https://github.com/haxtheweb/praw/blob/main/WINS.md#hax-lab-faculty-grants"
@@ -1225,9 +1167,7 @@
           "nikkimk": {
             "desc": "The second-largest contributor to the webcomponents monorepo (1,885 commits); co-presented HAX at DrupalCon Nashville 2018.",
             "role": "contributor",
-            "links": {
-              "profile": "https://github.com/nikkimk"
-            },
+            "links": { "profile": "https://github.com/nikkimk" },
             "source": {
               "label": "webcomponents contributors",
               "url": "https://github.com/haxtheweb/webcomponents/graphs/contributors"
@@ -1238,9 +1178,7 @@
           "gh_cgldevel": {
             "desc": "Chuck Lavera (@cgldevel), a contributor to webcomponents and haxcms-php.",
             "role": "community",
-            "links": {
-              "profile": "https://github.com/cgldevel"
-            },
+            "links": { "profile": "https://github.com/cgldevel" },
             "source": {
               "label": "GitHub contributors",
               "url": "https://github.com/haxtheweb/webcomponents/graphs/contributors"
@@ -1251,9 +1189,7 @@
           "gh_jalbert2": {
             "desc": "Jonah Albert (@JAlbert2), a contributor to webcomponents.",
             "role": "community",
-            "links": {
-              "profile": "https://github.com/JAlbert2"
-            },
+            "links": { "profile": "https://github.com/JAlbert2" },
             "source": {
               "label": "GitHub contributors",
               "url": "https://github.com/haxtheweb/webcomponents/graphs/contributors"
@@ -1264,9 +1200,7 @@
           "gh_sanikaa3": {
             "desc": "Sanika Ainchwar (@SanikaA3), a contributor to webcomponents, haxcms-php, haxcms-nodejs and create.",
             "role": "community",
-            "links": {
-              "profile": "https://github.com/SanikaA3"
-            },
+            "links": { "profile": "https://github.com/SanikaA3" },
             "source": {
               "label": "GitHub contributors",
               "url": "https://github.com/haxtheweb/webcomponents/graphs/contributors"
@@ -1277,9 +1211,7 @@
           "gh_christianmurphy": {
             "desc": "Christian Murphy (@ChristianMurphy), a contributor to webcomponents and haxcms-php.",
             "role": "community",
-            "links": {
-              "profile": "https://github.com/ChristianMurphy"
-            },
+            "links": { "profile": "https://github.com/ChristianMurphy" },
             "source": {
               "label": "GitHub contributors",
               "url": "https://github.com/haxtheweb/webcomponents/graphs/contributors"
@@ -1290,9 +1222,7 @@
           "gh_aam198": {
             "desc": "Allie Martz (@aam198), a contributor to webcomponents.",
             "role": "community",
-            "links": {
-              "profile": "https://github.com/aam198"
-            },
+            "links": { "profile": "https://github.com/aam198" },
             "source": {
               "label": "GitHub contributors",
               "url": "https://github.com/haxtheweb/webcomponents/graphs/contributors"
@@ -1303,9 +1233,7 @@
           "gh_firaol4": {
             "desc": "Firaol Tulu (@firaol4), a contributor to webcomponents and haxcms-nodejs.",
             "role": "community",
-            "links": {
-              "profile": "https://github.com/firaol4"
-            },
+            "links": { "profile": "https://github.com/firaol4" },
             "source": {
               "label": "GitHub contributors",
               "url": "https://github.com/haxtheweb/webcomponents/graphs/contributors"
@@ -1330,9 +1258,7 @@
           "jackdavis": {
             "desc": "Buttercups Training developer; 59 commits to ELMS:LN from 2019 to 2022, including HAX content hooks and the TinCan bridge.",
             "role": "community",
-            "links": {
-              "profile": "https://github.com/buttercupstraining"
-            },
+            "links": { "profile": "https://github.com/buttercupstraining" },
             "source": {
               "label": "elmsln commit history",
               "url": "https://github.com/elmsln/elmsln"
@@ -1399,9 +1325,7 @@
           "sara": {
             "desc": "Media dashboard UX prototype (2020).",
             "role": "student",
-            "links": {
-              "profile": "https://www.linkedin.com/in/saracunn/"
-            },
+            "links": { "profile": "https://www.linkedin.com/in/saracunn/" },
             "source": {
               "label": "hax-lab README",
               "url": "https://github.com/haxtheweb/hax-lab"
@@ -1416,9 +1340,7 @@
           "collin": {
             "desc": "Bootstrap theme for HAXcms (spring 2021).",
             "role": "student",
-            "links": {
-              "profile": "https://github.com/collinkleest"
-            },
+            "links": { "profile": "https://github.com/collinkleest" },
             "source": {
               "label": "hax-lab README",
               "url": "https://github.com/haxtheweb/hax-lab"
@@ -1434,9 +1356,7 @@
           "hanna": {
             "desc": "Built the vocab web component for presenting terms (2021); 15 commits to webcomponents as hvk5388.",
             "role": "student",
-            "links": {
-              "profile": "https://www.linkedin.com/in/hannah-kern/"
-            },
+            "links": { "profile": "https://www.linkedin.com/in/hannah-kern/" },
             "source": {
               "label": "hax-lab README",
               "url": "https://github.com/haxtheweb/hax-lab"
@@ -1452,9 +1372,7 @@
           "jimmykane": {
             "desc": "Led the team that built Dashboard 1.0 and the 8-bit aesthetic HAX still uses (spring 2022); now an iOS engineer at Ford Motor Credit.",
             "role": "student",
-            "links": {
-              "profile": "https://github.com/liljimmyk99"
-            },
+            "links": { "profile": "https://github.com/liljimmyk99" },
             "source": {
               "label": "hax-lab README; WINS.md",
               "url": "https://github.com/haxtheweb/praw/blob/main/WINS.md#site-dashboard-three-generations-of-students-20222026"
@@ -1470,9 +1388,7 @@
           "drewronk": {
             "desc": "8-bit video game aesthetic and site creation flow (spring 2022).",
             "role": "student",
-            "links": {
-              "profile": "https://github.com/dronk6"
-            },
+            "links": { "profile": "https://github.com/dronk6" },
             "source": {
               "label": "hax-lab README",
               "url": "https://github.com/haxtheweb/hax-lab"
@@ -1487,9 +1403,7 @@
           "edelor": {
             "desc": "8-bit video game aesthetic and site creation flow (spring 2022).",
             "role": "student",
-            "links": {
-              "profile": "https://github.com/elizabeth-delor"
-            },
+            "links": { "profile": "https://github.com/elizabeth-delor" },
             "source": {
               "label": "hax-lab README",
               "url": "https://github.com/haxtheweb/hax-lab"
@@ -1504,9 +1418,7 @@
           "liz": {
             "desc": "HAX Camp 2022 planning committee.",
             "role": "student",
-            "links": {
-              "profile": "https://www.linkedin.com/in/lizblake17/"
-            },
+            "links": { "profile": "https://www.linkedin.com/in/lizblake17/" },
             "source": {
               "label": "hax-lab README",
               "url": "https://github.com/haxtheweb/hax-lab"
@@ -1538,9 +1450,7 @@
           "andrew": {
             "desc": "HAX Camp 2022 planning; JWT policy review and a headless login prototype (2023).",
             "role": "student",
-            "links": {
-              "profile": "https://www.linkedin.com/in/maier-andrew/"
-            },
+            "links": { "profile": "https://www.linkedin.com/in/maier-andrew/" },
             "source": {
               "label": "hax-lab README",
               "url": "https://github.com/haxtheweb/hax-lab"
@@ -1555,9 +1465,7 @@
           "kcharlton": {
             "desc": "Turned a class project into the DDD design system (spring 2024).",
             "role": "student",
-            "links": {
-              "profile": "https://github.com/kchar601"
-            },
+            "links": { "profile": "https://github.com/kchar601" },
             "source": {
               "label": "hax-lab README; WINS.md",
               "url": "https://github.com/haxtheweb/praw/blob/main/WINS.md#students-built-the-design-system"
@@ -1573,9 +1481,7 @@
           "zach": {
             "desc": "AI chat agent (summer 2024); sent the pull request that added the DDD audit to the CLI.",
             "role": "student",
-            "links": {
-              "profile": "https://github.com/zdodson21"
-            },
+            "links": { "profile": "https://github.com/zdodson21" },
             "source": {
               "label": "hax-lab README; WINS.md",
               "url": "https://github.com/haxtheweb/praw/blob/main/WINS.md#students-built-the-design-system"
@@ -1591,9 +1497,7 @@
           "kai": {
             "desc": "Audited DDD usage and QA'd elements in the monorepo (fall 2024).",
             "role": "student",
-            "links": {
-              "profile": "https://github.com/klh6157"
-            },
+            "links": { "profile": "https://github.com/klh6157" },
             "source": {
               "label": "hax-lab README",
               "url": "https://github.com/haxtheweb/hax-lab"
@@ -1623,9 +1527,7 @@
           "winston": {
             "desc": "Polaris themes (fall 2024), the theme CLI workflow and much of the HAX CLI (2025), skeleton templating (2026); TA'd the class after.",
             "role": "student",
-            "links": {
-              "profile": "https://github.com/winstonwumbo"
-            },
+            "links": { "profile": "https://github.com/winstonwumbo" },
             "source": {
               "label": "hax-lab README; WINS.md",
               "url": "https://github.com/haxtheweb/praw/blob/main/WINS.md#winston-white-student-to-trainer"
@@ -1641,9 +1543,7 @@
           "skyler": {
             "desc": "Start Journey screen (spring 2025); designed and built Dashboard 2.0 for HAX 25.",
             "role": "student",
-            "links": {
-              "profile": "https://github.com/SkylerKoba88"
-            },
+            "links": { "profile": "https://github.com/SkylerKoba88" },
             "source": {
               "label": "hax-lab README; WINS.md",
               "url": "https://github.com/haxtheweb/praw/blob/main/WINS.md#site-dashboard-three-generations-of-students-20222026"
@@ -1659,9 +1559,7 @@
           "isabella": {
             "desc": "Start Journey screen (spring 2025); designed and built Dashboard 2.0 for HAX 25.",
             "role": "student",
-            "links": {
-              "profile": "https://github.com/izzabizz5"
-            },
+            "links": { "profile": "https://github.com/izzabizz5" },
             "source": {
               "label": "hax-lab README; WINS.md",
               "url": "https://github.com/haxtheweb/praw/blob/main/WINS.md#site-dashboard-three-generations-of-students-20222026"
@@ -1677,9 +1575,7 @@
           "josh": {
             "desc": "Portfolio theme (spring 2025).",
             "role": "student",
-            "links": {
-              "profile": "https://github.com/jno-de"
-            },
+            "links": { "profile": "https://github.com/jno-de" },
             "source": {
               "label": "hax-lab README",
               "url": "https://github.com/haxtheweb/hax-lab"
@@ -1742,9 +1638,7 @@
               "url": "https://github.com/haxtheweb/praw/blob/main/WINS.md#site-dashboard-three-generations-of-students-20222026"
             },
             "github": "chloemartin312",
-            "links": {
-              "profile": "https://github.com/chloemartin312"
-            }
+            "links": { "profile": "https://github.com/chloemartin312" }
           },
           "alyssa": {
             "desc": "Palettes and admin design thinking for Dashboard 3.0.",
@@ -1763,9 +1657,7 @@
           "jskeete": {
             "desc": "CCSO 2025 HAX pentest: Lead, discovery and reporting.",
             "role": "student",
-            "links": {
-              "profile": "https://indigosec.dev/"
-            },
+            "links": { "profile": "https://indigosec.dev/" },
             "source": {
               "label": "hax-lab README",
               "url": "https://github.com/haxtheweb/hax-lab"
@@ -1782,9 +1674,7 @@
           "liam": {
             "desc": "CCSO 2025 HAX pentest: Lead, discovery and reporting.",
             "role": "student",
-            "links": {
-              "profile": "https://lfgberg.org"
-            },
+            "links": { "profile": "https://lfgberg.org" },
             "source": {
               "label": "hax-lab README",
               "url": "https://github.com/haxtheweb/hax-lab"
@@ -1800,9 +1690,7 @@
           "asa": {
             "desc": "CCSO 2025 HAX pentest: Discovery and reporting.",
             "role": "student",
-            "links": {
-              "profile": "https://asareynolds.com/"
-            },
+            "links": { "profile": "https://asareynolds.com/" },
             "source": {
               "label": "hax-lab README",
               "url": "https://github.com/haxtheweb/hax-lab"
@@ -1818,9 +1706,7 @@
           "robert": {
             "desc": "CCSO 2025 HAX pentest: Discovery and reporting.",
             "role": "student",
-            "links": {
-              "profile": "https://github.com/userRPR"
-            },
+            "links": { "profile": "https://github.com/userRPR" },
             "source": {
               "label": "hax-lab README",
               "url": "https://github.com/haxtheweb/hax-lab"
@@ -1836,9 +1722,7 @@
           "maguire": {
             "desc": "CCSO 2025 HAX pentest: Discovery and reporting.",
             "role": "student",
-            "links": {
-              "profile": "https://maguireyounes.com/"
-            },
+            "links": { "profile": "https://maguireyounes.com/" },
             "source": {
               "label": "hax-lab README",
               "url": "https://github.com/haxtheweb/hax-lab"
@@ -1891,9 +1775,7 @@
           "kekoa": {
             "desc": "CCSO 2025 HAX pentest: Reporting.",
             "role": "student",
-            "links": {
-              "profile": "https://www.linkedin.com/in/kekoa-merez/"
-            },
+            "links": { "profile": "https://www.linkedin.com/in/kekoa-merez/" },
             "source": {
               "label": "hax-lab README",
               "url": "https://github.com/haxtheweb/hax-lab"
@@ -1928,9 +1810,7 @@
               "label": "Apereo: HAX project page",
               "url": "https://www.apereo.org/programs/software/HAX"
             },
-            "links": {
-              "site": "https://www.gatech.edu/"
-            }
+            "links": { "site": "https://www.gatech.edu/" }
           },
           "cd101": {
             "desc": "Customer Discovery 101, a public entrepreneurship training program from Invent Penn State LaunchBox, built on HAX by a team with limited design experience; users have praised both its functionality and design.",
@@ -1960,27 +1840,19 @@
               "label": "Apereo: HAX project page",
               "url": "https://www.apereo.org/programs/software/HAX"
             },
-            "links": {
-              "story": "https://www.apereo.org/programs/software/HAX"
-            }
+            "links": { "story": "https://www.apereo.org/programs/software/HAX" }
           },
           "blog": {
             "always": true,
             "desc": "Blogs and journals on HAXcms, like btopro.com, written in the same editor as courses."
           },
-          "docs": {
-            "always": true
-          },
+          "docs": { "always": true },
           "files": {
             "always": true,
             "desc": "Upload and manage a site's images, documents and media from the HAXcms admin; files stay in the site's files/ folder."
           },
-          "whatsnew": {
-            "year": 2026
-          },
-          "tips": {
-            "year": 2026
-          }
+          "whatsnew": { "year": 2026 },
+          "tips": { "year": 2026 }
         },
         "evidence": {
           "ccso>security": [
@@ -3160,10 +3032,7 @@
             "kind": "story",
             "message": "For students and new contributors: the path from coursework to real contributions.",
             "scenes": [
-              {
-                "caption": "A class project in IST 256.",
-                "nodes": ["ist256"]
-              },
+              { "caption": "A class project in IST 256.", "nodes": ["ist256"] },
               {
                 "caption": "Becomes a HAX component.",
                 "nodes": ["components", "wcstandard", "ddd"]
@@ -3317,10 +3186,7 @@
             "kind": "story",
             "message": "HAX's AI-forward direction: humans and AI remixing each other's work in a standards-compliant, accessible way.",
             "scenes": [
-              {
-                "caption": "A person.",
-                "nodes": ["human"]
-              },
+              { "caption": "A person.", "nodes": ["human"] },
               {
                 "caption": "Works alongside the Future Traveler.",
                 "nodes": ["traveler", "bryan"]
@@ -3377,10 +3243,7 @@
                 "caption": "Start from the course skeleton.",
                 "nodes": ["skeletons", "course"]
               },
-              {
-                "caption": "Pick a theme.",
-                "nodes": ["themes", "ddd"]
-              },
+              { "caption": "Pick a theme.", "nodes": ["themes", "ddd"] },
               {
                 "caption": "Drop in instructional blocks.",
                 "nodes": ["components", "editor", "oerschema"]
@@ -3799,10 +3662,7 @@
                   "w_haxcms_announced_at_drupalcon"
                 ]
               },
-              {
-                "caption": "All of it.",
-                "nodes": []
-              }
+              { "caption": "All of it.", "nodes": [] }
             ]
           }
         ]
@@ -3825,15 +3685,11 @@
           }
         },
         "nodes": {
-          "psu": {
-            "always": true
-          },
+          "psu": { "always": true },
           "psuplan": {
             "desc": "Penn State's strategic plan, limited to the priorities and objectives HAX meets. A&A's Strategic Plan 2030 opens from inside it.",
             "kind": "work",
-            "links": {
-              "plan": "https://strategicplan.psu.edu/engage/"
-            }
+            "links": { "plan": "https://strategicplan.psu.edu/engage/" }
           },
           "sites_hub": {
             "desc": "Snapshot of hax.psu.edu: 302 sites, 368 users, 17,100 pages. Courses are deduplicated by course code (largest copy counts) and grouped by college; blogs, tests and general sites are left out. Open the hax.psu.edu web for every college and course.",
@@ -3886,10 +3742,7 @@
                   "agearhart"
                 ]
               },
-              {
-                "caption": "All of HAX at Penn State.",
-                "nodes": []
-              }
+              { "caption": "All of HAX at Penn State.", "nodes": [] }
             ]
           }
         ]
@@ -3914,9 +3767,7 @@
             "rel": "priorities, objectives and wins",
             "schema": "met through"
           },
-          "links": {
-            "plan": "https://strategicplan.psu.edu/engage/"
-          }
+          "links": { "plan": "https://strategicplan.psu.edu/engage/" }
         },
         "nodes": {
           "psuplan": {
@@ -3930,86 +3781,62 @@
           "pp_success": {
             "desc": "Prepare students to be engaged citizens, employable, further educated, and able to drive positive change.",
             "kind": "priority",
-            "links": {
-              "plan": "https://strategicplan.psu.edu/engage/"
-            }
+            "links": { "plan": "https://strategicplan.psu.edu/engage/" }
           },
           "pp_research": {
             "desc": "Use the University's scholarship to address major challenges facing the Commonwealth, the nation and the world. HAX meets this through A&A Goal 4: arts and design as research and practice.",
             "kind": "priority",
-            "links": {
-              "plan": "https://strategicplan.psu.edu/engage/"
-            }
+            "links": { "plan": "https://strategicplan.psu.edu/engage/" }
           },
           "pp_landgrant": {
             "desc": "Contribute to the Commonwealth's economic development, workforce growth and overall vitality.",
             "kind": "priority",
-            "links": {
-              "plan": "https://strategicplan.psu.edu/engage/"
-            }
+            "links": { "plan": "https://strategicplan.psu.edu/engage/" }
           },
           "pp_deib": {
             "desc": "An inclusive environment where all students, faculty and staff can flourish.",
             "kind": "priority",
-            "links": {
-              "plan": "https://strategicplan.psu.edu/engage/"
-            }
+            "links": { "plan": "https://strategicplan.psu.edu/engage/" }
           },
           "pp_tio": {
             "desc": "The supporting element: initiatives that provide the infrastructure and support to carry out the plan's goals. The plan lists no objectives for it; HAX does more with less, and A&A Goal 1 aligns to it.",
             "kind": "priority",
-            "links": {
-              "plan": "https://strategicplan.psu.edu/engage/"
-            }
+            "links": { "plan": "https://strategicplan.psu.edu/engage/" }
           },
           "po_o1": {
             "desc": "Advising, research advising, mentoring and class experiences that prepare students for their academic and professional futures. (Paraphrased; see the plan for its words.)",
             "kind": "objective",
-            "links": {
-              "plan": "https://strategicplan.psu.edu/engage/"
-            }
+            "links": { "plan": "https://strategicplan.psu.edu/engage/" }
           },
           "po_o2": {
             "desc": "Co-curricular experiences that align students' passions, aptitudes and ambitions and lead them to success in school and work. (Paraphrased; see the plan for its words.)",
             "kind": "objective",
-            "links": {
-              "plan": "https://strategicplan.psu.edu/engage/"
-            }
+            "links": { "plan": "https://strategicplan.psu.edu/engage/" }
           },
           "po_o3": {
             "desc": "Student, faculty and staff health and wellness, cultivated in a caring community focused on flourishing. HAX is the platform behind the Learn to Flourish Hub's public site. (Paraphrased; see the plan for its words.)",
             "kind": "objective",
-            "links": {
-              "plan": "https://strategicplan.psu.edu/engage/"
-            }
+            "links": { "plan": "https://strategicplan.psu.edu/engage/" }
           },
           "po_o6": {
             "desc": "Use the University's assets and strategic partnerships to build resilient, sustainable communities for Pennsylvania. hax.psu.edu is a shared asset: the Innovation Hub's site and the LaunchBox small-business training site started there. (Paraphrased; see the plan for its words.)",
             "kind": "objective",
-            "links": {
-              "plan": "https://strategicplan.psu.edu/engage/"
-            }
+            "links": { "plan": "https://strategicplan.psu.edu/engage/" }
           },
           "po_o7": {
             "desc": "Extend the academic enterprise through partnerships with business and industry, non-profits, communities and residents. (Paraphrased; see the plan for its words.)",
             "kind": "objective",
-            "links": {
-              "plan": "https://strategicplan.psu.edu/engage/"
-            }
+            "links": { "plan": "https://strategicplan.psu.edu/engage/" }
           },
           "po_o8": {
             "desc": "Galvanize an engaged and effective network of advocates and investors in Penn State. (Paraphrased; see the plan for its words.)",
             "kind": "objective",
-            "links": {
-              "plan": "https://strategicplan.psu.edu/engage/"
-            }
+            "links": { "plan": "https://strategicplan.psu.edu/engage/" }
           },
           "po_o9": {
             "desc": "Address institutional barriers to close student outcome gaps. (Paraphrased; see the plan for its words.)",
             "kind": "objective",
-            "links": {
-              "plan": "https://strategicplan.psu.edu/engage/"
-            }
+            "links": { "plan": "https://strategicplan.psu.edu/engage/" }
           },
           "aaplan": {
             "desc": "The College of Arts and Architecture's plan (2026–2030). Each of its five goals aligns to a Penn State priority, in A&A's own words. Open it to see the sub-objectives HAX meets.",
@@ -4229,10 +4056,7 @@
                   "pp_tio"
                 ]
               },
-              {
-                "caption": "All of it.",
-                "nodes": []
-              }
+              { "caption": "All of it.", "nodes": [] }
             ]
           }
         ]
@@ -4646,16 +4470,14 @@
                   "w_fast_without_a_build_step"
                 ]
               },
-              {
-                "caption": "All of it.",
-                "nodes": []
-              }
+              { "caption": "All of it.", "nodes": [] }
             ]
           }
         ]
       }
     }
   },
+  "images": { "world-traveler-15": "./future-traveler.jpg" },
   "slugs": {
     "web:main": "ecosystem",
     "web:psu": "penn-state",
@@ -4890,7 +4712,222 @@
     "tour:psuplan:psuplan": "tours/penn-state-strategic-plan-how-hax-meets-penn-state-s-plan",
     "tour:aaplan:aaplan": "tours/a-and-a-strategic-plan-2030-how-hax-meets-a-and-a-s-plan"
   },
-  "images": {
-    "world-traveler-15": "./future-traveler.jpg"
+  "icons": {
+    "device:devices": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M4 6h18V4H4c-1.1 0-2 .9-2 2v11H0v3h14v-3H4V6zm19 2h-6c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h6c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1zm-1 9h-4v-7h4v7z\"/>"
+    },
+    "editor:attach-money": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z\"/>"
+    },
+    "hardware:memory": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M15 9H9v6h6V9zm-2 4h-2v-2h2v2zm8-2V9h-2V7c0-1.1-.9-2-2-2h-2V3h-2v2h-2V3H9v2H7c-1.1 0-2 .9-2 2v2H3v2h2v2H3v2h2v2c0 1.1.9 2 2 2h2v2h2v-2h2v2h2v-2h2c1.1 0 2-.9 2-2v-2h2v-2h-2v-2h2zm-4 6H7V7h10v10z\"/>"
+    },
+    "hax:add-brick": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M18 5V4c0-1.1-.9-2-2-2h-2c-1.1 0-2 .9-2 2v1h-2V4c0-1.1-.9-2-2-2H6c-1.1 0-2 .9-2 2v1H2v14h10.1c-.1-.3-.1-.7-.1-1 0-3.3 2.7-6 6-6 .7 0 1.4.1 2 .3V5m-1 9v3h3v2h-3v3h-2v-3h-3v-2h3v-3h2z\"/>"
+    },
+    "hax:apps": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M22 6v16h-20v-16h20zm2-6h-24v24h24v-24zm-16 9h-4v4h4v-4zm6 0h-4v4h4v-4zm6 0h-4v4h4v-4zm-12 6h-4v4h4v-4zm6 0h-4v4h4v-4z\"/>\n"
+    },
+    "hax:blocks": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M19 6V5A2 2 0 0 0 17 3H15A2 2 0 0 0 13 5V6H11V5A2 2 0 0 0 9 3H7A2 2 0 0 0 5 5V6H3V20H21V6Z\"/>"
+    },
+    "hax:bricks": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M3 16h9v5H3v-5m-1-6h6v5H2v-5m7 0h6v5H9v-5m7 0h6v5h-6v-5m-3 6h8v5h-8v-5M3 4h8v5H3V4m9 0h9v5h-9V4z\"/>"
+    },
+    "hax:clipboard-pulse": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M5,15H8.11L9.62,12.15L10.38,17.92L14.07,13.21L15.89,15H19V19H5V15M19,13.46H16.53L13.93,10.86L11.44,14.05L10.5,7.08L7.17,13.46H5V5H7V6H17V5H19V6L19,13.46Z\" />"
+    },
+    "hax:code-json": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M5 3h2v2H5v5a2 2 0 01-2 2 2 2 0 012 2v5h2v2H5c-1.07-.27-2-.9-2-2v-4a2 2 0 00-2-2H0v-2h1a2 2 0 002-2V5a2 2 0 012-2m14 0a2 2 0 012 2v4a2 2 0 002 2h1v2h-1a2 2 0 00-2 2v4a2 2 0 01-2 2h-2v-2h2v-5a2 2 0 012-2 2 2 0 01-2-2V5h-2V3h2m-7 12a1 1 0 011 1 1 1 0 01-1 1 1 1 0 01-1-1 1 1 0 011-1m-4 0a1 1 0 011 1 1 1 0 01-1 1 1 1 0 01-1-1 1 1 0 011-1m8 0a1 1 0 011 1 1 1 0 01-1 1 1 1 0 01-1-1 1 1 0 011-1z\"/>"
+    },
+    "hax:collaborate": {
+      "vb": "0 0 24 24",
+      "d": "<g>\n<path d=\"M23 18h-2v2h-1v-2h-2v-1h2v-2h1v2h2v1zm-15.999-10c-2.493 0-4.227 2.383-1.866 6.839.774 1.464-.826 1.812-2.545 2.209-1.491.345-1.59 1.072-1.59 2.334l.002.618h1.329c0-1.918-.186-1.385 1.824-1.973 1.014-.295 1.91-.723 2.316-1.612.212-.463.355-1.22-.162-2.197-.952-1.798-1.219-3.374-.712-4.215.547-.909 2.27-.908 2.819.015.935 1.567-.793 3.982-1.02 4.982h1.396c.44-1 1.206-2.208 1.206-3.9.001-2.01-1.31-3.1-2.997-3.1zm7.754-1.556c.895-1.487 3.609-1.494 4.512.022.77 1.291.423 3.484-.949 6.017-.098.18-.17.351-.232.517h1.464c3.057-5.744.816-9-2.548-9-3.323 0-5.635 3.177-2.488 9.119 1.033 1.952-1.101 2.416-3.394 2.946-1.988.458-2.12 1.429-2.12 3.11l.003.825h1.331c0-2.069-.08-2.367 1.173-2.657 1.918-.442 3.729-.86 4.39-2.305.241-.527.401-1.397-.206-2.543-1.362-2.572-1.704-4.777-.936-6.051z\"/>\n</g>\n"
+    },
+    "hax:console-line": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M13,19V16H21V19H13M8.5,13L2.47,7H6.71L11.67,11.95C12.25,12.54 12.25,13.5 11.67,14.07L6.74,19H2.5L8.5,13Z\" />"
+    },
+    "hax:file-ai": {
+      "vb": "0 0 24 24",
+      "d": "<style>.st0{fill:#fff;stroke:#000;stroke-miterlimit:10}</style><path d=\"M13 9V2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V9h-7z\"/><path d=\"M20 8.5L13.2 2H13v7h7z\"/><path d=\"M11.6 15.4h-1.5l-.2.7H8.6l1.6-4.3h1.4l1.6 4.3h-1.3l-.3-.7zm-.2-.9l-.5-1.5-.5 1.5h1zm2.7-2.7h1.3v4.3h-1.3v-4.3z\"/>"
+    },
+    "hax:file-html": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M13 9V2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V9h-7z\" fill=\"#fff\" stroke=\"#000\" stroke-miterlimit=\"10\"/><path fill=\"#fff\" stroke=\"#000\" stroke-miterlimit=\"10\" d=\"M20 8.5L13.2 2H13v7h7z\"/><path d=\"M6 13.76h.88v1h1v-1h.89v2.86h-.95v-1.16h-1v1.16H6zm3.09 0h2.69v.71h-.9v2.15H10v-2.15h-.91zm3.08 0h1.17l.45 1.74.44-1.74h1.16v2.86h-.72v-2.18l-.56 2.18h-.65l-.56-2.18v2.18h-.73zm3.83 0h.88v2.16h1.38v.7H16z\"/>"
+    },
+    "hax:graph": {
+      "vb": "-5 -4 33 34",
+      "d": "<path d=\"M7 24h-6v-6h6v6zm8-9h-6v9h6v-9zm8-4h-6v13h6v-13zm0-11l-6 1.221 1.716 1.708-6.85 6.733-3.001-3.002-7.841 7.797 1.41 1.418 6.427-6.39 2.991 2.993 8.28-8.137 1.667 1.66 1.201-6.001z\"/>\n"
+    },
+    "hax:hax2022": {
+      "vb": "0 0 948 952",
+      "d": "<path d=\"M355.71 0v354.64H0V0h355.71l-57.24 57.39H56.95v241.52h242.52l-1-241.52M88.08 782.95h83.35l-.5-428.31H89.09l-1.01 428.31zm83.35 0H592.2v79.33H171.43zM592.21 952l56.16-57.02h243.01V652.15H948V952H592.21z\" fill=\"#962c2c\"/><path d=\"M948 652.15v-55.2H592.21V952l56.59-56.59V652.15h294.44\" fill=\"#962c2c\"/><path d=\"M653.13 299.19v297.76h-56.7V355.34H355.71v-56.15h297.42z\" fill=\"#962c2c\"/><path d=\"M355.71 355.34v241.61h236.5v55.2H299.42V348.83h54.79l1.5 6.51zm0-264.36H780.7v81.61H355.71zm424.99 83.23h78.03v422.74H780.7z\" fill=\"#962c2c\"/><path d=\"M414.16 439.23h-23.1v121.66h48.18v-47.52h73.04v47.52h46.64V440.55h-45.98v48.62h-73.7v-49.94h23.54v-24.2h26.62v23.54h23.32v15.4l22.44-13.42v-24.42h-24.2v-25.52h-71.94v24.64h-24.64l-.22 23.98zM89.06 258.56h47.91V184.8h74.57v73.76h47.9V88.73H211v74.3h-74.03v-74.3H89.06v169.83zm619.12 552.8h-23.36v47.6H733v-47.6h23.95v-24.53h25.99v24.24h23.66v47.89h48.76v-47.89h-24.23v-24.24h-25.7v-23.65h25.7V736.9h21.9v-46.44h-46.14v48.48h-23.95v24.53h-26.28v-24.53h-23.95v-48.48h-46.14v46.14h21.91v28.04h24.23v22.78h-23.94l-.59 23.94z\" fill=\"#962c2c\"/>"
+    },
+    "hax:html-code": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M16.3 4l4.1 8-4.2 8h3.1l4.2-8-4.1-8h-3.1zM7.7 20l-4.1-8 4.2-8H4.7L.5 12l4.1 8h3.1zm3.4 0l4.3-16h-2.5L8.6 20h2.5z\"/>"
+    },
+    "hax:lesson": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M2 14H8V20H2M16 8H10V10H16M2 10H8V4H2M10 4V6H22V4M10 20H16V18H10M10 16H22V14H10\" />"
+    },
+    "hax:ngdle": {
+      "vb": "0 0 24 24",
+      "d": "<g>\n<path d=\"M5 9c1.654 0 3 1.346 3 3s-1.346 3-3 3-3-1.346-3-3 1.346-3 3-3zm0-2c-2.762 0-5 2.239-5 5s2.238 5 5 5 5-2.239 5-5-2.238-5-5-5zm15 9c-1.165 0-2.204.506-2.935 1.301l-5.488-2.927c-.23.636-.549 1.229-.944 1.764l5.488 2.927c-.072.301-.121.611-.121.935 0 2.209 1.791 4 4 4s4-1.791 4-4-1.791-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2zm0-22c-2.209 0-4 1.791-4 4 0 .324.049.634.121.935l-5.488 2.927c.395.536.713 1.128.944 1.764l5.488-2.927c.731.795 1.77 1.301 2.935 1.301 2.209 0 4-1.791 4-4s-1.791-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z\"/>\n</g>\n"
+    },
+    "hax:oerschema": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M14.42 14.68v2.18c-1.1.03-2.53-.38-3.75-1.74-.83.95-1.87 1.54-3.13 1.71-1.4.19-2.65-.18-3.73-1.07-2.32-1.91-2.28-5.15-.51-7.08 1.84-2 5.19-2.27 7.38.18 1-1.12 2.24-1.75 3.76-1.75 1.52 0 2.76.63 3.77 1.76.98-1.13 2.22-1.74 3.76-1.77v2.14c-.44.15-.89.24-1.28.45-.75.4-1.24 1.05-1.31 1.9-.07.91-.05 1.84-.06 2.75v.3H17.1v-1.53h-3.74v-2.25h3.46c-.36-.95-1.48-1.63-2.56-1.53-1.38.13-2.28 1.11-2.44 2.27-.18 1.27.61 2.96 2.6 3.08zm-4.87-2.67c.04-1.42-1.13-2.66-2.62-2.67-1.5 0-2.65 1.17-2.66 2.6-.02 1.59 1.2 2.71 2.66 2.71 1.47 0 2.64-1.18 2.62-2.64z\"/>"
+    },
+    "hax:outline-designer-indent": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M20,18H22V6H20M11.59,7.41L15.17,11H1V13H15.17L11.59,16.58L13,18L19,12L13,6L11.59,7.41Z\" />\n"
+    },
+    "hax:page-edit": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M5 1.5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-1.9l2.1-2.1H5v-2h8.1l2-2H5v-2h12.1L19 9.6V7.5l-6-6H5M12 3l5.5 5.5H12V3m7.2 9.5c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.2-.1-.3-.2-.4-.2m-2.1 1.8L11 20.4v2.1h2.1l6.2-6.1-2.2-2.1z\"/>"
+    },
+    "hax:remix": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M8 17l4-4h3.2c.4 1.2 1.5 2 2.8 2 1.7 0 3-1.3 3-3s-1.3-3-3-3c-1.3 0-2.4.8-2.8 2H12L8 7V3H3v5h3l4.2 4L6 16H3v5h5v-4z\"/>"
+    },
+    "hax:remote": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M21,2H3A2,2 0 0,0 1,4V20A2,2 0 0,0 3,22H21A2,2 0 0,0 23,20V4A2,2 0 0,0 21,2M11,17.5L9.5,19L5,14.5L9.5,10L11,11.5L8,14.5L11,17.5M14.5,19L13,17.5L16,14.5L13,11.5L14.5,10L19,14.5L14.5,19M21,7H3V4H21V7Z\" />"
+    },
+    "hax:select-element": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M15.6 2.5H4.2c-.9 0-1.7.7-1.7 1.7v11.2c0 .9.8 1.7 1.7 1.7h11.4c.9 0 1.7-.7 1.7-1.7V4.1c0-.9-.8-1.6-1.7-1.6zm.2 12.8c0 .2-.1.3-.3.3H4.2c-.2 0-.3-.1-.3-.3V4.2c0-.2.1-.3.3-.3h11.3c.2 0 .3.1.3.3v11.1z\"/><path d=\"M21.4 18.9L18 15.3c-.1-.1-.1-.3.1-.4l3.2-.9.1-.8L7.9 6.3c-.2-.1-.4.1-.3.3l4.7 14.2.8.1 1.6-3.3c.1-.1.2-.2.3-.1l3.7 3.9c.1.1.2.1.3 0l2.3-2.1c.1-.2.1-.3.1-.4z\"/>"
+    },
+    "hax:site-map": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M9 2v6h2v3H5c-1.11 0-2 .89-2 2v3H1v6h6v-6H5v-3h6v3H9v6h6v-6h-2v-3h6v3h-2v6h6v-6h-2v-3c0-1.11-.89-2-2-2h-6V8h2V2H9z\"/>"
+    },
+    "hax:templates": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M2 4v14s0 2 2 2h16s2 0 2-2V4H2m7 9H5V7h4v6m10 0h-8v-2h8v2m0-4h-8V7h8v2z\"/>"
+    },
+    "hax:view-gallery": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M21 3H2V16H21V3M2 17H6V21H2V17M7 17H11V21H7V17M12 17H16V21H12V17M17 17H21V21H17V17Z\" />"
+    },
+    "hax:wand": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M7.5,5.6L5,7L6.4,4.5L5,2L7.5,3.4L10,2L8.6,4.5L10,7L7.5,5.6M19.5,15.4L22,14L20.6,16.5L22,19L19.5,17.6L17,19L18.4,16.5L17,14L19.5,15.4M22,2L20.6,4.5L22,7L19.5,5.6L17,7L18.4,4.5L17,2L19.5,3.4L22,2M13.34,12.78L15.78,10.34L13.66,8.22L11.22,10.66L13.34,12.78M14.37,7.29L16.71,9.63C17.1,10 17.1,10.65 16.71,11.04L5.04,22.71C4.65,23.1 4,23.1 3.63,22.71L1.29,20.37C0.9,20 0.9,19.35 1.29,18.96L12.96,7.29C13.35,6.9 14,6.9 14.37,7.29Z\" />"
+    },
+    "icons:accessibility": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z\"/>"
+    },
+    "icons:account-balance": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z\"/>"
+    },
+    "icons:assignment-turned-in": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm-2 14l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z\"/>"
+    },
+    "icons:book": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z\"/>"
+    },
+    "icons:bug-report": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M20 8h-2.81a5.985 5.985 0 00-1.82-1.96L17 4.41 15.59 3l-2.17 2.17C12.96 5.06 12.49 5 12 5c-.49 0-.96.06-1.41.17L8.41 3 7 4.41l1.62 1.63C7.88 6.55 7.26 7.22 6.81 8H4v2h2.09c-.05.33-.09.66-.09 1v1H4v2h2v1c0 .34.04.67.09 1H4v2h2.81c1.04 1.79 2.97 3 5.19 3s4.15-1.21 5.19-3H20v-2h-2.09c.05-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.04-.67-.09-1H20V8zm-6 8h-4v-2h4v2zm0-4h-4v-2h4v2z\"/>"
+    },
+    "icons:build": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z\"/>"
+    },
+    "icons:check-circle": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\"/>"
+    },
+    "icons:cloud-upload": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M19.35 10.04A7.49 7.49 0 0012 4C9.11 4 6.6 5.64 5.35 8.04A5.994 5.994 0 000 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z\"/>"
+    },
+    "icons:dashboard": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z\"/>"
+    },
+    "icons:dns": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M20 13H4c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h16c.55 0 1-.45 1-1v-6c0-.55-.45-1-1-1zM7 19c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zM20 3H4c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h16c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1zM7 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z\"/>"
+    },
+    "icons:extension": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M20.5 11H19V7c0-1.1-.9-2-2-2h-4V3.5a2.5 2.5 0 00-5 0V5H4c-1.1 0-1.99.9-1.99 2v3.8H3.5c1.49 0 2.7 1.21 2.7 2.7s-1.21 2.7-2.7 2.7H2V20c0 1.1.9 2 2 2h3.8v-1.5c0-1.49 1.21-2.7 2.7-2.7 1.49 0 2.7 1.21 2.7 2.7V22H17c1.1 0 2-.9 2-2v-4h1.5a2.5 2.5 0 000-5z\"/>"
+    },
+    "icons:gavel": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M1 21h12v2H1zM5.245 8.07l2.83-2.827 14.14 14.142-2.828 2.828zM12.317 1l5.657 5.656-2.83 2.83-5.654-5.66zM3.825 9.485l5.657 5.657-2.828 2.828-5.657-5.657z\"/>"
+    },
+    "icons:lock": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z\"/>"
+    },
+    "icons:lock-open": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M12 17c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm6-9h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6h1.9c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm0 12H6V10h12v10z\"/>"
+    },
+    "icons:report": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M15.73 3H8.27L3 8.27v7.46L8.27 21h7.46L21 15.73V8.27L15.73 3zM12 17.3c-.72 0-1.3-.58-1.3-1.3 0-.72.58-1.3 1.3-1.3.72 0 1.3.58 1.3 1.3 0 .72-.58 1.3-1.3 1.3zm1-4.3h-2V7h2v6z\"/>"
+    },
+    "icons:stars": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/>"
+    },
+    "icons:translate": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M12.87 15.07l-2.54-2.51.03-.03A17.52 17.52 0 0014.07 6H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z\"/>"
+    },
+    "icons:verified-user": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z\"/>"
+    },
+    "image:brush": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M7 14c-1.66 0-3 1.34-3 3 0 1.31-1.16 2-2 2 .92 1.22 2.49 2 4 2 2.21 0 4-1.79 4-4 0-1.66-1.34-3-3-3zm13.71-9.37l-1.34-1.34a.996.996 0 00-1.41 0L9 12.25 11.75 15l8.96-8.96a.996.996 0 000-1.41z\"/>"
+    },
+    "image:flash-on": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M7 2v11h3v9l7-12h-4l4-8z\"/>"
+    },
+    "image:nature": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M13 16.12a7 7 0 006.17-6.95c0-3.87-3.13-7-7-7s-7 3.13-7 7A6.98 6.98 0 0011 16.06V20H5v2h14v-2h-6v-3.88z\"/>"
+    },
+    "image:slideshow": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M10 8v8l5-4-5-4zm9-5H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z\"/>"
+    },
+    "lrn:palette": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M12 3a9 9 0 000 18c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z\"/>"
+    },
+    "places:casino": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM7.5 18c-.83 0-1.5-.67-1.5-1.5S6.67 15 7.5 15s1.5.67 1.5 1.5S8.33 18 7.5 18zm0-9C6.67 9 6 8.33 6 7.5S6.67 6 7.5 6 9 6.67 9 7.5 8.33 9 7.5 9zm4.5 4.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4.5 4.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm0-9c-.83 0-1.5-.67-1.5-1.5S15.67 6 16.5 6s1.5.67 1.5 1.5S17.33 9 16.5 9z\"/>"
+    },
+    "social:people": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z\"/>"
+    },
+    "social:school": {
+      "vb": "0 0 24 24",
+      "d": "<path d=\"M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z\"/>"
+    }
   }
 }

@@ -3,11 +3,13 @@
  * @license Apache-2.0, see LICENSE for full text.
  */
 import { LitElement, html, svg, css, nothing } from "lit";
+import { repeat } from "lit/directives/repeat.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
+import { SimpleIconsetStore } from "@haxtheweb/simple-icon/lib/simple-iconset.js";
 import {
   buildWebs,
   edgePath,
@@ -19,7 +21,24 @@ import {
   visibleAt,
   safeUrl,
   KIND_ORDER,
+  parseGlyph,
+  easeOut,
+  lerpView,
 } from "./lib/ecosystem-model.js";
+
+/** Glyphs by icon name, shared by every ecosystem-web on the page. */
+const GLYPHS = new Map();
+/** How long a camera move takes, in ms. */
+const CAM_MS = 460;
+/** How long the web fades out before a new one opens, in ms. */
+const SWAP_MS = 160;
+
+function reducedMotion() {
+  return !!(
+    globalThis.matchMedia &&
+    globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
+}
 
 const LINK_LABEL = {
   repo: "Repo",
@@ -33,6 +52,30 @@ const LINK_LABEL = {
   recording: "Recording",
   slides: "Slides",
 };
+
+/** One glyph shape as an SVG template (attributes come from parseGlyph). */
+function glyphShape(sh) {
+  const a = sh.a;
+  const v = (k) => (a[k] == null ? nothing : a[k]);
+  switch (sh.tag) {
+    case "path":
+      return svg`<path d="${v("d")}" fill-rule="${v("fill-rule")}" clip-rule="${v("clip-rule")}" transform="${v("transform")}" opacity="${v("opacity")}" fill="${v("fill")}" stroke="${v("stroke")}" stroke-width="${v("stroke-width")}"></path>`;
+    case "circle":
+      return svg`<circle cx="${v("cx")}" cy="${v("cy")}" r="${v("r")}" transform="${v("transform")}" opacity="${v("opacity")}" fill="${v("fill")}" stroke="${v("stroke")}" stroke-width="${v("stroke-width")}"></circle>`;
+    case "ellipse":
+      return svg`<ellipse cx="${v("cx")}" cy="${v("cy")}" rx="${v("rx")}" ry="${v("ry")}" transform="${v("transform")}" opacity="${v("opacity")}" fill="${v("fill")}" stroke="${v("stroke")}" stroke-width="${v("stroke-width")}"></ellipse>`;
+    case "rect":
+      return svg`<rect x="${v("x")}" y="${v("y")}" width="${v("width")}" height="${v("height")}" rx="${v("rx")}" ry="${v("ry")}" transform="${v("transform")}" opacity="${v("opacity")}" fill="${v("fill")}" stroke="${v("stroke")}" stroke-width="${v("stroke-width")}"></rect>`;
+    case "polygon":
+      return svg`<polygon points="${v("points")}" transform="${v("transform")}" opacity="${v("opacity")}" fill="${v("fill")}" stroke="${v("stroke")}" stroke-width="${v("stroke-width")}"></polygon>`;
+    case "polyline":
+      return svg`<polyline points="${v("points")}" transform="${v("transform")}" opacity="${v("opacity")}" fill="${v("fill")}" stroke="${v("stroke")}" stroke-width="${v("stroke-width")}"></polyline>`;
+    case "line":
+      return svg`<line x1="${v("x1")}" y1="${v("y1")}" x2="${v("x2")}" y2="${v("y2")}" transform="${v("transform")}" opacity="${v("opacity")}" stroke="${v("stroke")}" stroke-width="${v("stroke-width")}"></line>`;
+    default:
+      return nothing;
+  }
+}
 
 /**
  * `ecosystem-web`
@@ -68,7 +111,9 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
     this._bundle = null;
     this._models = null;
     this._error = "";
-    this._view = null;
+    this._cam = null;
+    this._raf = 0;
+    this._edgePrev = null;
     this._drag = null;
     this._timer = null;
     this.t = this.t || {};
@@ -136,7 +181,6 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
       playing: { type: Boolean, reflect: true },
       _models: { type: Object, state: true },
       _error: { type: String, state: true },
-      _view: { type: Object, state: true },
     };
   }
 
@@ -310,7 +354,7 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
           min-width: 0;
           cursor: grab;
         }
-        .stage.dragging {
+        .stage[data-dragging] {
           cursor: grabbing;
         }
         svg.net {
@@ -385,12 +429,20 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
           stroke-width: 1.1;
           opacity: 0.3;
         }
-        .focus .edge {
-          opacity: 0.06;
-        }
-        .focus .edge.hot {
+        .lift .edge {
           opacity: 1;
           stroke-width: 3;
+        }
+        .scrim {
+          fill: var(--surface);
+          opacity: 0;
+          pointer-events: none;
+        }
+        .net.focus .scrim {
+          opacity: 0.84;
+        }
+        .lift {
+          pointer-events: none;
         }
         .edge.off {
           opacity: 0 !important;
@@ -485,33 +537,31 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
           stroke-width: 2;
           pointer-events: none;
         }
-        .node .ic simple-icon-lite {
-          color: var(--glyph);
-          --simple-icon-width: 100%;
-          --simple-icon-height: 100%;
-          display: block;
-          width: 100%;
-          height: 100%;
+        .node .gl {
+          fill: var(--glyph);
+          stroke: none;
+          overflow: visible;
+          pointer-events: none;
         }
-        .focus .node {
-          opacity: 0.16;
+        .node .gl [stroke] {
+          stroke: var(--glyph);
         }
-        .focus .node.sel,
-        .focus .node.rel {
-          opacity: 1;
+        .node .gl [fill="none"] {
+          fill: none;
         }
+
         .node.off {
           opacity: 0 !important;
           pointer-events: none;
         }
-        .far .node.t2 .lb,
-        .far .node.t3 .lb,
-        .far .node.t4 .lb,
-        .mid .node.t4 .lb {
+        .net[data-zoom="far"] .node.t2 .lb,
+        .net[data-zoom="far"] .node.t3 .lb,
+        .net[data-zoom="far"] .node.t4 .lb,
+        .net[data-zoom="mid"] .node.t4 .lb {
           display: none;
         }
         .node.sel .lb,
-        .focus .node.rel .lb {
+        .lift .node .lb {
           display: block !important;
         }
         @media (forced-colors: active) {
@@ -523,7 +573,12 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
           .node .inset {
             stroke: CanvasText;
           }
-          .node .ic simple-icon-lite,
+          .node .gl {
+            fill: CanvasText;
+          }
+          .node .gl [stroke] {
+            stroke: CanvasText;
+          }
           .mapctl simple-icon-lite {
             /* the glyph is an image tinted by an SVG flood, which forced
                colors drops: keep the tint and give it a system color */
@@ -544,12 +599,36 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
           .edge {
             stroke: CanvasText;
           }
+          .scrim {
+            fill: Canvas;
+          }
         }
         @media (prefers-reduced-motion: no-preference) {
           .node,
-          .edge {
+          .edge,
+          .scrim {
             transition: opacity var(--ddd-duration-normal, 300ms)
               var(--ddd-timing-ease, ease);
+          }
+          svg.net {
+            transition: opacity 160ms ease-out;
+          }
+          svg.net[data-swap] {
+            opacity: 0;
+          }
+          /* connections draw in from the tile they leave */
+          .edge.enter {
+            stroke-dasharray: 1 !important;
+            stroke-dashoffset: 1;
+            animation: ew-draw 0.9s ease-out forwards;
+          }
+          .edge.enter.rev {
+            stroke-dashoffset: -1;
+          }
+          @keyframes ew-draw {
+            to {
+              stroke-dashoffset: 0;
+            }
           }
         }
         .rail {
@@ -707,10 +786,14 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
     ) {
       this._announce();
     }
+    this._applyCam();
+    this._drawIn();
   }
   disconnectedCallback() {
     clearInterval(this._timer);
     this._timer = null;
+    clearTimeout(this._swapTimer);
+    globalThis.cancelAnimationFrame(this._raf);
     super.disconnectedCallback();
   }
   async _load() {
@@ -728,6 +811,8 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
     this._bundle = bundle || {};
     this._models = buildWebs(this._bundle);
     if (!this._models[this.web]) this.web = "main";
+    this._edgePrev = null;
+    this._cam = null;
     this._fit(false);
   }
   get _M() {
@@ -737,6 +822,14 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
     if (id === "main") return this.t.ecosystemWeb;
     const M = this._models && this._models[id];
     return (M && M.meta.name) || id;
+  }
+  /** "<title> web", without doubling the word when the title already ends in it */
+  _webName(id) {
+    const title = this._webTitle(id);
+    const w = this.t.web;
+    return title.toLowerCase().endsWith(w.toLowerCase())
+      ? title
+      : `${title} ${w}`;
   }
   _parentOf(id) {
     if (id === "main") return null;
@@ -777,34 +870,151 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
   openWeb(id, nodeId) {
     if (!this._models || !this._models[id]) return;
     this.playing = false;
-    this.web = id;
-    this.tour = "";
-    this.step = -1;
-    this.node = nodeId || "";
-    this.updateComplete.then(() =>
-      nodeId ? this._focusOn(nodeId) : this._fit(true),
-    );
+    const net = this._net();
+    const go = () => {
+      this.web = id;
+      this.tour = "";
+      this.step = -1;
+      this.node = nodeId || "";
+      this.updateComplete.then(() => {
+        // start a little zoomed in and fade the new web in while the camera
+        // pulls back, so the swap reads as one movement instead of a blink
+        const target = this._target(nodeId);
+        if (!target) return;
+        const n = this._net();
+        if (n && !reducedMotion()) {
+          const w = target.w * 0.72;
+          this._cam = {
+            x: target.x + (target.w - w) / 2,
+            y: target.y + (target.w - w) / 2,
+            w,
+          };
+          this._applyCam();
+          n.removeAttribute("data-swap");
+        }
+        this._camTo(target);
+      });
+    };
+    clearTimeout(this._swapTimer);
+    if (net && id !== this.web && !reducedMotion()) {
+      net.setAttribute("data-swap", "");
+      this._swapTimer = setTimeout(go, SWAP_MS);
+    } else {
+      go();
+    }
   }
   select(id) {
     this.node = id && id !== this.node ? id : "";
     if (this.node) this._focusOn(this.node);
   }
-  _focusOn(id) {
+  /** Where the camera goes for a tile (and its connections), or the whole web. */
+  _target(id) {
     const M = this._M;
-    if (!M || !M.nodes.has(id)) return;
-    const rel = new Set([id]);
-    M.edges.forEach((e) => {
-      if (e.from === id) rel.add(e.to);
-      if (e.to === id) rel.add(e.from);
-    });
-    this._view = boxOf(M, [...rel], 110, 620, M.geo.width);
-  }
-  _fit() {
-    const M = this._M;
-    if (!M) return;
+    if (!M) return null;
+    if (id && M.nodes.has(id)) {
+      const rel = new Set([id]);
+      M.edges.forEach((e) => {
+        if (e.from === id) rel.add(e.to);
+        if (e.to === id) rel.add(e.from);
+      });
+      return boxOf(M, [...rel], 110, 620, M.geo.width);
+    }
     const vis = visibleAt(this._steps(), this.step);
-    const ids = [...M.nodes.keys()].filter((id) => !vis || vis.has(id));
-    this._view = boxOf(M, ids, 90, 600, M.geo.width);
+    const ids = [...M.nodes.keys()].filter((k) => !vis || vis.has(k));
+    return boxOf(M, ids, 90, 600, M.geo.width);
+  }
+  _focusOn(id) {
+    const t = this._target(id);
+    if (t) this._camTo(t);
+  }
+  _fit(animate) {
+    const t = this._target("");
+    if (t) this._camTo(t, animate !== false);
+  }
+
+  // ---------- camera ----------
+  _net() {
+    return this.shadowRoot ? this.shadowRoot.querySelector("svg.net") : null;
+  }
+  _clampW(w) {
+    const M = this._M;
+    const max = M ? M.geo.width * 1.15 : w;
+    return Math.max(260, Math.min(max, w));
+  }
+  /** Write the camera straight to the drawing; no re-render. */
+  _applyCam() {
+    const net = this._net();
+    const v = this._cam;
+    if (!net || !v) return;
+    net.setAttribute(
+      "viewBox",
+      `${v.x.toFixed(1)} ${v.y.toFixed(1)} ${v.w.toFixed(1)} ${v.w.toFixed(1)}`,
+    );
+    const k = 800 / v.w;
+    const zoom = k < 0.5 ? "far" : k < 0.8 ? "mid" : "near";
+    if (net.getAttribute("data-zoom") !== zoom)
+      net.setAttribute("data-zoom", zoom);
+  }
+  /** Move the camera to t, eased over CAM_MS (at once under reduced motion). */
+  _camTo(t, animate) {
+    globalThis.cancelAnimationFrame(this._raf);
+    const to = { x: t.x, y: t.y, w: this._clampW(t.w) };
+    to.x = t.x + (t.w - to.w) / 2;
+    to.y = t.y + (t.w - to.w) / 2;
+    if (animate === false || !this._cam || reducedMotion()) {
+      this._cam = to;
+      this._applyCam();
+      return;
+    }
+    const from = { ...this._cam };
+    const t0 = globalThis.performance.now();
+    const tick = (now) => {
+      const p = Math.min(1, (now - t0) / CAM_MS);
+      this._cam = lerpView(from, to, easeOut(p));
+      this._applyCam();
+      if (p < 1) this._raf = globalThis.requestAnimationFrame(tick);
+    };
+    this._raf = globalThis.requestAnimationFrame(tick);
+  }
+  /** Apply the camera on the next frame (pointer moves come faster than frames). */
+  _queueCam() {
+    if (this._queued) return;
+    this._queued = true;
+    globalThis.requestAnimationFrame(() => {
+      this._queued = false;
+      this._applyCam();
+    });
+  }
+  /** Screen-to-drawing scale and the letterbox offsets of the square viewBox. */
+  _metrics() {
+    const net = this._net();
+    const r = net.getBoundingClientRect();
+    const k = Math.min(r.width, r.height) / this._cam.w;
+    return {
+      r,
+      k,
+      ox: (r.width - this._cam.w * k) / 2,
+      oy: (r.height - this._cam.w * k) / 2,
+    };
+  }
+  /** Zoom by f around a screen point (the middle when none is given). */
+  _zoomAt(f, px, py, animate) {
+    if (!this._cam || !this._net()) return;
+    const { r, k, ox, oy } = this._metrics();
+    const sx = (px == null ? r.left + r.width / 2 : px) - r.left - ox;
+    const sy = (py == null ? r.top + r.height / 2 : py) - r.top - oy;
+    const ux = this._cam.x + sx / k;
+    const uy = this._cam.y + sy / k;
+    const nw = this._clampW(this._cam.w * f);
+    const k2 = (k * this._cam.w) / nw;
+    const t = { x: ux - sx / k2, y: uy - sy / k2, w: nw };
+    if (animate) {
+      this._camTo(t);
+    } else {
+      globalThis.cancelAnimationFrame(this._raf);
+      this._cam = t;
+      this._queueCam();
+    }
   }
   _steps() {
     const M = this._M;
@@ -826,12 +1036,14 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
     const M = this._M;
     if (!vis) this._fit();
     else
-      this._view = boxOf(
-        M,
-        steps[this.step].ids.length ? steps[this.step].ids : [...vis],
-        100,
-        560,
-        M.geo.width,
+      this._camTo(
+        boxOf(
+          M,
+          steps[this.step].ids.length ? steps[this.step].ids : [...vis],
+          100,
+          560,
+          M.geo.width,
+        ),
       );
     if (this.step >= steps.length - 1) this.playing = false;
   }
@@ -858,45 +1070,72 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
       this._timer = setInterval(() => this.goStep(this.step + 1), 3200);
   }
   _zoom(f) {
-    const v = this._view;
-    if (!v) return;
-    const M = this._M;
-    const nw = Math.max(260, Math.min(M.geo.width * 1.15, v.w * f));
-    this._view = { x: v.x + (v.w - nw) / 2, y: v.y + (v.w - nw) / 2, w: nw };
+    this._zoomAt(f, null, null, true);
   }
 
   // ---------- pointer: pan, pinch, wheel ----------
-  _svgPoint(e) {
-    const r = e.currentTarget.getBoundingClientRect();
-    return { r, k: Math.min(r.width, r.height) / this._view.w };
-  }
   _down(e) {
+    if (!this._cam) return;
     this._ptrs = this._ptrs || new Map();
     this._ptrs.set(e.pointerId, { x: e.clientX, y: e.clientY });
-    this._moved = false;
-    this._drag = { x: e.clientX, y: e.clientY, v: { ...this._view } };
+    globalThis.cancelAnimationFrame(this._raf);
+    if (this._ptrs.size === 1) {
+      this._moved = false;
+      this._drag = { x: e.clientX, y: e.clientY, v: { ...this._cam } };
+    } else if (this._ptrs.size === 2) {
+      const [a, b] = [...this._ptrs.values()];
+      this._moved = true;
+      this._drag = {
+        pinch: Math.hypot(a.x - b.x, a.y - b.y) || 1,
+        w: this._cam.w,
+      };
+    }
   }
   _move(e) {
     if (!this._drag || !this._ptrs || !this._ptrs.has(e.pointerId)) return;
+    this._ptrs.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (this._drag.pinch) {
+      if (this._ptrs.size < 2) return;
+      const [a, b] = [...this._ptrs.values()];
+      const d = Math.hypot(a.x - b.x, a.y - b.y) || 1;
+      const want = this._drag.w * (this._drag.pinch / d);
+      this._zoomAt(want / this._cam.w, (a.x + b.x) / 2, (a.y + b.y) / 2);
+      return;
+    }
     const dx = e.clientX - this._drag.x;
     const dy = e.clientY - this._drag.y;
     if (!this._moved && Math.hypot(dx, dy) < 5) return;
-    this._moved = true;
-    const { k } = this._svgPoint(e);
-    this._view = {
+    if (!this._moved) {
+      this._moved = true;
+      const stage = e.currentTarget.parentElement;
+      if (stage) stage.setAttribute("data-dragging", "");
+      if (e.currentTarget.setPointerCapture)
+        e.currentTarget.setPointerCapture(e.pointerId);
+    }
+    const { k } = this._metrics();
+    this._cam = {
       x: this._drag.v.x - dx / k,
       y: this._drag.v.y - dy / k,
       w: this._drag.v.w,
     };
+    this._queueCam();
   }
   _up(e) {
     if (this._ptrs) this._ptrs.delete(e.pointerId);
+    if (this._ptrs && this._ptrs.size === 1 && this._drag && this._drag.pinch) {
+      // one finger left after a pinch: carry on panning from here
+      const [p] = [...this._ptrs.values()];
+      this._drag = { x: p.x, y: p.y, v: { ...this._cam } };
+      return;
+    }
     this._drag = null;
+    const stage = e.currentTarget && e.currentTarget.parentElement;
+    if (stage) stage.removeAttribute("data-dragging");
   }
   _wheel(e) {
     if (!(e.ctrlKey || e.metaKey)) return;
     e.preventDefault();
-    this._zoom(Math.exp(e.deltaY * 0.0025));
+    this._zoomAt(Math.exp(e.deltaY * 0.0025), e.clientX, e.clientY);
   }
   _tileClick(id) {
     if (this._moved) return;
@@ -986,15 +1225,43 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
     const z = s * k;
     const dy = n.shape === "cyl" ? s * 0.06 : 0;
     const dx = n.shape === "talk" ? 4 : 0;
-    return svg`<foreignObject x="${(-z / 2 + dx).toFixed(1)}" y="${(-z / 2 + dy).toFixed(1)}" width="${z.toFixed(1)}" height="${z.toFixed(1)}"><simple-icon-lite icon="${n.icon || "icons:help"}" aria-hidden="true"></simple-icon-lite></foreignObject>`;
+    const g = this._glyph(n.icon || "icons:help");
+    if (!g) return nothing;
+    return svg`<svg class="gl" x="${(-z / 2 + dx).toFixed(1)}" y="${(-z / 2 + dy).toFixed(1)}" width="${z.toFixed(1)}" height="${z.toFixed(1)}" viewBox="${g.vb}" aria-hidden="true">${g.shapes.map(glyphShape)}</svg>`;
   }
-  _tile(n, vis, rel) {
+  /**
+   * A tile glyph as plain SVG shapes. The bundle carries the glyphs the webs
+   * use; any other icon is read once from its HAX iconset file.
+   */
+  _glyph(name) {
+    if (GLYPHS.has(name)) return GLYPHS.get(name);
+    const icons = (this._bundle && this._bundle.icons) || {};
+    const b = icons[name];
+    if (b && b.d) {
+      const g = parseGlyph(b.d, b.vb);
+      GLYPHS.set(name, g);
+      return g;
+    }
+    const url = SimpleIconsetStore.getIcon(name);
+    if (typeof url !== "string") return null;
+    GLYPHS.set(name, null);
+    fetch(url)
+      .then((r) => (r.ok ? r.text() : ""))
+      .then((text) => {
+        GLYPHS.set(name, parseGlyph(text));
+        this.requestUpdate();
+      })
+      .catch(() => {});
+    return null;
+  }
+  _tile(n, vis, rel, ghost) {
     const t = n.tier;
     const sizes = this._M.geo.sizes;
     const s = sizes[t] != null ? sizes[t] : sizes[sizes.length - 1];
     const h = s / 2;
     const st = n.doc.status;
-    const lines = labelLines(n.label, labelWidth(n, t));
+    if (!n._lines) n._lines = labelLines(n.label, labelWidth(n, t));
+    const lines = n._lines;
     const ly =
       (n.shape === "pill" ? h * 0.86 : n.shape === "hex" ? h * 1.1 : h) + 16;
     const cls = [
@@ -1009,37 +1276,43 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
       .join(" ");
     const style = `--tile:${n.color};--glyph:${glyphFor(n.color)}`;
     const open = this._canOpen(n);
-    return svg`<g class="${cls}" transform="translate(${n.x.toFixed(1)} ${n.y.toFixed(1)})" style="${style}"
-      tabindex="${vis && !vis.has(n.id) ? -1 : 0}" role="button" aria-pressed="${this.node === n.id ? "true" : "false"}"
-      aria-label="${n.label}${open ? `, ${this.t.open} ${this._webTitle(n.web)} ${this.t.web}` : ""}"
-      @click="${() => this._tileClick(n.id)}" @dblclick="${() => this._tileOpen(n)}" @keydown="${(e) => this._tileKey(e, n.id)}">
-      ${this._halo(n, s)}${this._shape(n, s)}<g class="ic">${this._icon(n, s)}</g>
+    const body = svg`${this._halo(n, s)}${this._shape(n, s)}<g class="ic">${this._icon(n, s)}</g>
       ${st === "prerelease" ? svg`<circle class="badge pre" cx="${h - 1}" cy="${-h + 1}" r="7"></circle>` : nothing}
       ${open ? svg`<circle class="badge web" cx="${h - 1}" cy="${h - 1}" r="9"></circle><path class="badge-ic" d="M${h - 5} ${h - 1}h8M${h - 1} ${h - 5}v8"></path>` : nothing}
-      <text class="lb" y="${ly}">${lines.map((l, i) => svg`<tspan x="0" dy="${i ? 14 : 0}">${l}${i < lines.length - 1 ? " " : ""}</tspan>`)}</text>
+      <text class="lb" y="${ly}">${lines.map((l, i) => svg`<tspan x="0" dy="${i ? 14 : 0}">${l}${i < lines.length - 1 ? " " : ""}</tspan>`)}</text>`;
+    // the copy drawn above the scrim: seen, not focused or clicked (the
+    // tile underneath, in the same place, takes the click)
+    if (ghost)
+      return svg`<g class="${cls}" transform="translate(${n.x.toFixed(1)} ${n.y.toFixed(1)})" style="${style}">${body}</g>`;
+    return svg`<g class="${cls}" transform="translate(${n.x.toFixed(1)} ${n.y.toFixed(1)})" style="${style}"
+      tabindex="${vis && !vis.has(n.id) ? -1 : 0}" role="button" aria-pressed="${this.node === n.id ? "true" : "false"}"
+      aria-label="${n.label}${open ? `, ${this.t.open} ${this._webName(n.web)}` : ""}"
+      @click="${() => this._tileClick(n.id)}" @dblclick="${() => this._tileOpen(n)}" @keydown="${(e) => this._tileKey(e, n.id)}">
+      ${body}
     </g>`;
   }
   _drawing() {
     const M = this._M;
     const vis = visibleAt(this._steps(), this.step);
-    const R = this.node
-      ? M.edges.filter((e) => e.from === this.node || e.to === this.node)
-      : [];
-    const rel = new Set(R.flatMap((e) => [e.from, e.to]));
-    const v = this._view || { x: 0, y: 0, w: M.geo.width };
-    const k = 800 / v.w;
-    const zoom = k < 0.5 ? "far" : k < 0.8 ? "mid" : "near";
-    const ordered = [...M.nodes.values()].sort(
-      (a, b) =>
-        b.tier - a.tier ||
-        (a.id === this.node ? 1 : b.id === this.node ? -1 : 0),
+    const R = new Set(
+      this.node
+        ? M.edges.filter((e) => e.from === this.node || e.to === this.node)
+        : [],
     );
-    return html`<div
-      class="stage ${this._drag && this._moved ? "dragging" : ""}"
-    >
+    const rel = new Set([...R].flatMap((e) => [e.from, e.to]));
+    if (!M._ordered)
+      M._ordered = [...M.nodes.values()].sort((a, b) => b.tier - a.tier);
+    const ordered = M._ordered;
+    const C = M.geo.center;
+    // a selected tile dims the rest with one scrim and redraws itself, its
+    // neighbours and their connections above it: a handful of elements
+    // change instead of every tile and connection in the web
+    const ghosts = ordered.filter((n) => rel.has(n.id) && n.id !== this.node);
+    if (this.node && M.nodes.has(this.node))
+      ghosts.push(M.nodes.get(this.node));
+    return html`<div class="stage">
       <svg
-        class="net ${this.node ? "focus" : ""} ${zoom}"
-        viewBox="${v.x.toFixed(1)} ${v.y.toFixed(1)} ${v.w.toFixed(1)} ${v.w.toFixed(1)}"
+        class="net ${this.node ? "focus" : ""}"
         role="group"
         aria-label="${this._webTitle(this.web)}"
         @pointerdown="${this._down}"
@@ -1049,12 +1322,43 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
         @wheel="${this._wheel}"
       >
         <g class="edges">
-          ${M.edges.map((e) => {
-            const off = vis && !(vis.has(e.from) && vis.has(e.to));
-            return svg`<path class="edge k-${e.kind} ${R.includes(e) ? "hot" : ""} ${off ? "off" : ""}" d="${edgePath(M, e, M.geo.center)}"></path>`;
-          })}
+          ${repeat(
+            M.edges,
+            (e, i) => `${this.web}:${i}`,
+            (e, i) => {
+              const off = vis && !(vis.has(e.from) && vis.has(e.to));
+              if (!e._d) e._d = edgePath(M, e, C);
+              return svg`<path class="edge k-${e.kind} ${off ? "off" : ""}" data-i="${i}" d="${e._d}"></path>`;
+            },
+          )}
         </g>
-        <g class="nodes">${ordered.map((n) => this._tile(n, vis, rel))}</g>
+        <g class="nodes">
+          ${repeat(
+            ordered,
+            (n) => `${this.web}:${n.id}`,
+            (n) => this._tile(n, vis, rel),
+          )}
+        </g>
+        <rect
+          class="scrim"
+          x="-100000"
+          y="-100000"
+          width="200000"
+          height="200000"
+        ></rect>
+        <g class="lift" aria-hidden="true">
+          ${repeat(
+            [...R],
+            (e) => `${this.web}:${this.node}:${M.edges.indexOf(e)}`,
+            (e) =>
+              svg`<path class="edge k-${e.kind} hot enter ${e.to === this.node ? "rev" : ""}" pathLength="1" d="${e._d || edgePath(M, e, C)}" @animationend="${this._edgeDone}"></path>`,
+          )}
+          ${repeat(
+            ghosts,
+            (n) => `${this.web}:${this.node}:${n.id}`,
+            (n) => this._tile(n, vis, rel, true),
+          )}
+        </g>
       </svg>
       <p class="hint zoomhint">${this.t.dragHint}</p>
       <div class="mapctl">
@@ -1088,6 +1392,59 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
       </div>
     </div>`;
   }
+  /**
+   * Connections that just came into play draw in: the ones a tour step adds
+   * and, when a web opens, its own. (A selected tile's connections draw in
+   * as they are added above the scrim.) Works on the rendered paths, so it
+   * costs nothing when nothing changed.
+   */
+  _drawIn() {
+    const net = this._net();
+    if (!net) {
+      this._edgePrev = null;
+      return;
+    }
+    const paths = net.querySelectorAll(".edges path.edge");
+    const now = new Map();
+    paths.forEach((p) =>
+      now.set(p.dataset.i, p.classList.contains("off") ? 0 : 1),
+    );
+    const had = this._edgePrev;
+    const prev = had && had.web === this.web ? had.map : null;
+    this._edgePrev = { web: this.web, map: now };
+    if (!had || reducedMotion()) return;
+    const fresh = [];
+    if (!prev) {
+      // a web was just opened: its connections draw in (on a big web only
+      // the pillar ones, so phones keep their frame rate)
+      const on = [...paths].filter((p) => now.get(p.dataset.i) >= 1);
+      fresh.push(
+        ...(on.length <= 160
+          ? on
+          : on.filter((p) => p.classList.contains("k-pillar"))),
+      );
+    } else {
+      paths.forEach((p) => {
+        const a = prev.get(p.dataset.i);
+        const b = now.get(p.dataset.i);
+        if (b === 1 && a === 0) fresh.push(p);
+      });
+    }
+    if (!fresh.length) return;
+    fresh.forEach((p) => p.classList.remove("enter", "rev"));
+    // one reflow for the batch, so the animation restarts on every path
+    net.getBoundingClientRect();
+    fresh.forEach((p) => {
+      p.setAttribute("pathLength", "1");
+      p.classList.add("enter");
+      p.addEventListener("animationend", this._edgeDone, { once: true });
+    });
+  }
+  /** After drawing in, a connection goes back to its own line style. */
+  _edgeDone(e) {
+    e.target.classList.remove("enter", "rev");
+    e.target.removeAttribute("pathLength");
+  }
   _sentence(e, id) {
     const M = this._M;
     const a = M.nodes.get(e.from);
@@ -1111,7 +1468,7 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
         <p class="hint">
           ${this.web === "main" ? this.t.howToReadText : M.meta.about || ""}
         </p>
-        ${parent ? html`<button class="act" type="button" @click="${() => this.openWeb(parent)}">${this.t.backTo} ${this._webTitle(parent)} ${this.t.web}</button>` : nothing}
+        ${parent ? html`<button class="act" type="button" @click="${() => this.openWeb(parent)}">${this.t.backTo} ${this._webName(parent)}</button>` : nothing}
       </aside>`;
     }
     const n = M.nodes.get(this.node);
@@ -1134,8 +1491,8 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
       ${d.desc ? html`<p>${d.desc}</p>` : nothing}
       ${d.source && d.source.url ? html`<p class="hint">${this.t.source}: <a href="${safeUrl(d.source.url)}" target="_blank" rel="noopener">${d.source.label}</a></p>` : nothing}
       ${Object.keys(d.links || {}).length ? html`<div class="lnks">${Object.entries(d.links).map(([k, u]) => html`<a href="${safeUrl(u)}" target="_blank" rel="noopener">${LINK_LABEL[k] || k}</a>`)}</div>` : nothing}
-      ${this._canOpen(n) ? html`<button class="act primary" type="button" @click="${() => this.openWeb(n.web)}">${this.t.open} ${this._webTitle(n.web)} ${this.t.web}</button>` : nothing}
-      ${this.web !== "main" && home && this._models[home] ? html`<button class="act" type="button" @click="${() => this.openWeb(home, n.id)}">${this.t.showIn} ${this._webTitle(home)} ${this.t.web}</button>` : nothing}
+      ${this._canOpen(n) ? html`<button class="act primary" type="button" @click="${() => this.openWeb(n.web)}">${this.t.open} ${this._webName(n.web)}</button>` : nothing}
+      ${this.web !== "main" && home && this._models[home] ? html`<button class="act" type="button" @click="${() => this.openWeb(home, n.id)}">${this.t.showIn} ${this._webName(home)}</button>` : nothing}
       ${d.note ? html`<p class="note">${d.note}</p>` : nothing}
       ${KIND_ORDER.map((k) => {
         const L = R.filter((e) => e.kind === k);
