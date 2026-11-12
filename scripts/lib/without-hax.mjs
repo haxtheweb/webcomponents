@@ -30,6 +30,23 @@ export const AREAS = {
 // progress): exempt, they are allowed to need one
 export const SITE_PACKAGES = ["haxcms-elements"];
 
+// Authorable tags outside those packages that are also built for a HAX site,
+// each with why. Add a tag here only when needing HAX is the point of it;
+// anything else that needs HAX is a finding to fix.
+// https://github.com/haxtheweb/issues/issues/3324
+export const SITE_TAGS = {
+  "page-break":
+    "page metadata HAX itself reads to split and route content, not visual content",
+  "page-anchor":
+    "page metadata HAX itself reads for in-page anchors, not visual content",
+  "h5p-element":
+    "works in the context of the HAX system (H5P content served by a HAXcms site)",
+  "lrn-h5p":
+    "works in the context of the HAX system (H5P content served by a HAXcms site)",
+  "page-flag":
+    "reviewer flags for signed-in users in a site; future interface for backend plugin systems",
+};
+
 export const CHECKS = {
   "editor-import":
     "imports editor code (hax-body, h-a-x, super-daemon) at load: talk to HAX only through haxProperties()/haxHooks(), or import() it when editing starts",
@@ -118,7 +135,10 @@ export function authorableTags(root) {
       file,
       folder,
       spec,
-      site: SITE_PACKAGES.includes(folder),
+      site: SITE_PACKAGES.includes(folder) || !!SITE_TAGS[tag],
+      siteReason:
+        SITE_TAGS[tag] ||
+        (SITE_PACKAGES.includes(folder) ? `in ${folder}` : ""),
     });
   }
   return out;

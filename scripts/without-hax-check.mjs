@@ -11,8 +11,9 @@
  * HAXcms, and (3) still works when its HTML is pasted onto a plain page
  * that only has the wc-autoload magic script; or the failure is already
  * listed in scripts/without-hax.baseline.json. The baseline only shrinks.
- * Elements built for a HAX site (the haxcms-elements package: site-*
- * blocks, learner progress) are exempt.
+ * Elements built for a HAX site are exempt: the haxcms-elements package
+ * (site-* blocks, learner progress) and the tags in SITE_TAGS
+ * (scripts/lib/without-hax.mjs), each listed with why.
  *
  * Which tags: hax-elements-registry.json, with the module that defines
  * each from wc-registry.json. Checks, per tag:
@@ -540,11 +541,13 @@ function writeReport(file, all, picked, results, lazyByTag, errors, extras) {
   rows.push(`# Works with or without HAX: report`);
   rows.push("");
   rows.push(
-    `${tags.length} authorable tag(s) checked, ${clean.length} with no findings. Exempt (built for a HAX site): ${all
-      .filter((t) => t.site)
-      .map((t) => `\`${t.tag}\``)
-      .join(", ")}.`,
+    `${tags.length} authorable tag(s) checked, ${clean.length} with no findings.`,
   );
+  rows.push("");
+  rows.push("## Exempt, built for a HAX site");
+  for (const t of all.filter((x) => x.site)) {
+    rows.push(`- \`${t.tag}\`: ${t.siteReason}`);
+  }
   rows.push("");
   rows.push("| Tag | Check | Finding |");
   rows.push("| --- | --- | --- |");
@@ -699,6 +702,13 @@ async function main() {
     results = mergeResults(results, second.results, Math.max);
     const allow = flag("--allow-additions");
     const next = shrinkBaseline(baseline, results, { allowAdditions: allow });
+    // tags the gate no longer checks (exempt, or gone from the registry)
+    const checkable = new Set(all.filter((t) => !t.site).map((t) => t.tag));
+    for (const tag of Object.keys(next)) {
+      if (!checkable.has(tag)) {
+        delete next[tag];
+      }
+    }
     writeBaseline(next);
     console.log(
       `without-hax: baseline ${baselineSize(baseline)} -> ${baselineSize(next)} for ${Object.keys(results).length} checked tag(s)${allow ? `, ${baselineGrowth(baseline, next).length} added (--allow-additions)` : " (only removes; --allow-additions only adds)"}.`,
