@@ -865,7 +865,12 @@ class RpgCharacter extends SimpleColors {
     const base = shaved
       ? new URL(`./lib/base/shaved${this.leg}.svg`, import.meta.url).href
       : new URL(`./lib/base/${this.base}${this.leg}.svg`, import.meta.url).href;
-    const leg = new URL(`./lib/base/${this.leg}.svg`, import.meta.url).href;
+    // only a walking step has a leg piece; asking for "./lib/base/.svg" throws
+    // in bundlers that resolve these URLs at build time (rollup import-meta-assets)
+    const leg =
+      this.leg !== ""
+        ? new URL(`./lib/base/${this.leg}.svg`, import.meta.url).href
+        : "";
     const makeup = this._gear("makeup");
     const face = makeupList.includes(makeup)
       ? new URL(`./lib/makeup/${makeup}.svg`, import.meta.url).href
