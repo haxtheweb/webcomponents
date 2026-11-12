@@ -588,7 +588,11 @@ const mapJs =
 const report = {
   system: config.system,
   title: config.title,
-  sources: sources.map(({ scopes, ...rest }) => rest),
+  sources: sources.map((source) => {
+    const listed = { ...source };
+    delete listed.scopes;
+    return listed;
+  }),
   fonts: config.fonts || [],
   coverage,
   contrast: contrastReport,

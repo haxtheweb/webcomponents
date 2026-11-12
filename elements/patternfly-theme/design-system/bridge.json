@@ -15,13 +15,8 @@
       "format": "css",
       "file": "base/patternfly-variables.css",
       "scopes": {
-        "light": [
-          ":root"
-        ],
-        "dark": [
-          ":root",
-          ":root:where(.pf-v6-theme-dark)"
-        ]
+        "light": [":root"],
+        "dark": [":root", ":root:where(.pf-v6-theme-dark)"]
       }
     }
   ],
