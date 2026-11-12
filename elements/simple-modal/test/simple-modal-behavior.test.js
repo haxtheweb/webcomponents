@@ -549,4 +549,41 @@ describe("simple-modal behavior", () => {
   it("lists --simple-modal-dock-top among the variables it reads", () => {
     expect(SimpleModalCssVars).to.include("--simple-modal-dock-top");
   });
+
+  // callers lazy-import simple-modal and dispatch simple-modal-show as soon
+  // as the import resolves; a listener attached later dropped that first show
+  it("hears simple-modal-show dispatched in the same tick it connects", async () => {
+    const el = globalThis.document.createElement("simple-modal");
+    const shown = [];
+    el.showEvent = (e) => shown.push(e.detail.title);
+    globalThis.document.body.appendChild(el);
+    globalThis.dispatchEvent(
+      new CustomEvent("simple-modal-show", {
+        detail: { title: "same tick", elements: {} },
+      }),
+    );
+    el.remove();
+    expect(shown).to.deep.equal(["same tick"]);
+    // the shared singleton heard it too; put it back the way it was
+    globalThis.dispatchEvent(new CustomEvent("simple-modal-hide"));
+    await tick();
+  });
+
+  it("listens again after it is moved (disconnect then connect)", async () => {
+    const el = globalThis.document.createElement("simple-modal");
+    const shown = [];
+    el.showEvent = (e) => shown.push(e.detail.title);
+    globalThis.document.body.appendChild(el);
+    el.remove();
+    globalThis.document.body.appendChild(el);
+    globalThis.dispatchEvent(
+      new CustomEvent("simple-modal-show", {
+        detail: { title: "after move", elements: {} },
+      }),
+    );
+    el.remove();
+    expect(shown).to.deep.equal(["after move"]);
+    globalThis.dispatchEvent(new CustomEvent("simple-modal-hide"));
+    await tick();
+  });
 });

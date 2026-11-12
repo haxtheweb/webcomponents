@@ -750,15 +750,18 @@ class SimpleModal extends I18NMixin(LitElement) {
     super.connectedCallback();
     this.close = this.close.bind(this);
     this.showEvent = this.showEvent.bind(this);
-    setTimeout(() => {
-      globalThis.addEventListener("simple-modal-hide", this.close, {
-        signal: this.windowControllers.signal,
-      });
-
-      globalThis.addEventListener("simple-modal-show", this.showEvent, {
-        signal: this.windowControllers.signal,
-      });
-    }, 0);
+    // listen right away: callers lazy-import this module and dispatch
+    // simple-modal-show as soon as the import resolves, which is before a
+    // deferred listener would be attached, so the first show was dropped
+    if (this.windowControllers.signal.aborted) {
+      this.windowControllers = new AbortController();
+    }
+    globalThis.addEventListener("simple-modal-hide", this.close, {
+      signal: this.windowControllers.signal,
+    });
+    globalThis.addEventListener("simple-modal-show", this.showEvent, {
+      signal: this.windowControllers.signal,
+    });
   }
   /**
    * HTMLElement

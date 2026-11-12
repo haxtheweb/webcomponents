@@ -2403,8 +2403,12 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     this.__systemSettingsActivePanel = panelKey;
     if (this.__systemSettingsModalOpen) {
       this._setSystemSettingsDialogPanel(panelKey);
-      this._showSystemSettingsModal(null, panelKey);
-      return true;
+      if (this._showSystemSettingsModal(null, panelKey)) {
+        return true;
+      }
+      // marked open but the dialog never made it on screen: open it fresh
+      // rather than leaving Settings stuck until a reload
+      this.__systemSettingsDialog = null;
     }
     this.__systemSettingsModalOpen = true;
     this.closeMenu();
