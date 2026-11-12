@@ -62,6 +62,12 @@
         "title": "Start in list view",
         "description": "Show the web as nested lists instead of the drawing.",
         "inputMethod": "boolean"
+      },
+      {
+        "property": "compact",
+        "title": "Drawing only",
+        "description": "Show just the drawing, as a figure: no header, tours, details or step bar.",
+        "inputMethod": "boolean"
       }
     ],
     "advanced": []

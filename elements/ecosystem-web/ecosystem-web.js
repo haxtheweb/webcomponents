@@ -108,6 +108,7 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
     this.step = -1;
     this.listView = false;
     this.playing = false;
+    this.compact = false;
     this._bundle = null;
     this._models = null;
     this._error = "";
@@ -179,6 +180,8 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
       listView: { type: Boolean, reflect: true, attribute: "list-view" },
       /** Advance the tour on its own */
       playing: { type: Boolean, reflect: true },
+      /** Only the drawing: no header, tours, details or step bar (a figure on a page) */
+      compact: { type: Boolean, reflect: true },
       _models: { type: Object, state: true },
       _error: { type: String, state: true },
     };
@@ -339,6 +342,19 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
           color: var(--muted);
           margin-inline-end: var(--ddd-spacing-1);
         }
+        /* on a phone each row of tours is one line that scrolls sideways,
+           so the drawing is on the first screen */
+        @media (max-width: 600px) {
+          .tours .chips {
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            padding-block: var(--ddd-spacing-1);
+            scrollbar-width: thin;
+          }
+          .tours .chips > * {
+            flex: none;
+          }
+        }
         .body {
           display: grid;
           grid-template-columns: minmax(0, 1fr) 360px;
@@ -356,6 +372,13 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
         }
         .stage[data-dragging] {
           cursor: grabbing;
+        }
+        :host([compact]) svg.net {
+          aspect-ratio: 16 / 9;
+          max-height: none;
+        }
+        :host([compact]) .zoomhint {
+          display: none;
         }
         svg.net {
           display: block;
@@ -1609,6 +1632,7 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
       return html`<p class="msg" role="status" aria-busy="true">
         ${this.t.loading}
       </p>`;
+    if (this.compact) return this._drawing();
     return html`<header>
         <div class="titles">
           <p class="eyebrow">${this._crumbs()}</p>

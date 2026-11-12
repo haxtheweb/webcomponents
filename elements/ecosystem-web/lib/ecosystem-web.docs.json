@@ -97,6 +97,18 @@
       "default": "false",
       "description": "Advance the tour on its own",
       "hax": null
+    },
+    {
+      "name": "compact",
+      "property": "compact",
+      "type": "boolean",
+      "default": "false",
+      "description": "Only the drawing: no header, tours, details or step bar (a figure on a page)",
+      "hax": {
+        "title": "Drawing only",
+        "input": "boolean",
+        "options": null
+      }
     }
   ],
   "slots": [],
@@ -167,6 +179,12 @@
           "title": "Start in list view",
           "description": "Show the web as nested lists instead of the drawing.",
           "inputMethod": "boolean"
+        },
+        {
+          "property": "compact",
+          "title": "Drawing only",
+          "description": "Show just the drawing, as a figure: no header, tours, details or step bar.",
+          "inputMethod": "boolean"
         }
       ],
       "advanced": []
@@ -188,7 +206,7 @@
       }
     ]
   },
-  "surfaceHash": "755c25092110",
+  "surfaceHash": "e6b0d27a8d4a",
   "walkthroughs": [],
   "videos": [],
   "motion": {
