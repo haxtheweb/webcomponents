@@ -7,11 +7,13 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { InsightsStyles } from "../insights-styles.js";
 import { altStatus } from "../insights-analyzer.js";
 import { loadInsightsSpec } from "../insights-loader.js";
+import "../insights-block-editor.js";
 import {
-  altSaveAvailable,
-  groupAltEdits,
-  saveAltEdits,
-} from "../insights-alt-save.js";
+  altSaveOptions,
+  blockSaveAvailable,
+  groupBlockEdits,
+  saveBlockEdits,
+} from "../insights-block-save.js";
 
 const LIST_LIMIT = 50;
 const ALT_TONE = { fix: "danger", check: "warning", ok: "success" };
@@ -186,6 +188,15 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
       themeBlack: "The same colour with dark text",
       dddWhite: "DDD default {name}, if the theme colour is dropped",
       noTheme: "No theme colour set",
+      descHeading: "Titles and long descriptions",
+      descHint:
+        "Animated GIF titles and descriptions, and image longdesc links",
+      descCaption: "Animated GIFs and images with their descriptions",
+      descValue: "Value",
+      saveDescriptions: "Save descriptions",
+      noDescriptions: "No animated GIFs or long descriptions on these pages.",
+      descMissing: "Missing",
+      descSet: "Set",
     };
     this.registerLocalization({
       context: this,
@@ -206,7 +217,7 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
           // without rules, edited rows keep their scanned status
         });
     }
-    altSaveAvailable()
+    blockSaveAvailable()
       .then((ok) => {
         this._canSave = ok;
       })
@@ -470,6 +481,7 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
     return html`<div class="sec">
       ${this._renderKpis(r.accessibility, items)}
       ${this._renderAlt(r.accessibility, items)}
+      ${this._renderDescriptions(r.accessibility)}
       ${this._renderCriteria(r.accessibility)}
       <div class="grid-2">
         ${this._renderHeadings(r.accessibility)}
@@ -690,7 +702,11 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
   /** edited rows grouped by page, only the ones that differ from storage */
   _pendingPages() {
     const a = (this.results && this.results.accessibility) || {};
-    return groupAltEdits(a.altRows || [], this._edits);
+    return groupBlockEdits(
+      a.altRows || [],
+      this._edits,
+      altSaveOptions(this.spec),
+    );
   }
 
   _askSave() {
@@ -726,20 +742,23 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
     this._progress = { done: 0, total: 0, title: "" };
     let outcome = null;
     try {
-      outcome = await saveAltEdits(rows, this._edits, {
-        spec: this.spec,
-        maxPages: maxPages,
-        onProgress: (p) => {
-          this._progress = p;
-          if (p.title) {
-            this._announce = this._f(this.t.savingPage, {
-              done: p.done + 1,
-              total: p.total,
-              title: p.title,
-            });
-          }
-        },
-      });
+      outcome = await saveBlockEdits(
+        rows,
+        this._edits,
+        Object.assign(altSaveOptions(this.spec), {
+          maxPages: maxPages,
+          onProgress: (p) => {
+            this._progress = p;
+            if (p.title) {
+              this._announce = this._f(this.t.savingPage, {
+                done: p.done + 1,
+                total: p.total,
+                title: p.title,
+              });
+            }
+          },
+        }),
+      );
     } catch (e) {
       outcome = {
         saved: {},
@@ -1020,6 +1039,37 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
         </button>
       </td>
     </tr>`;
+  }
+
+  _renderDescriptions(a) {
+    const save = a.descSave || {};
+    const labels = {
+      heading: this.t.descHeading,
+      hint: this.t.descHint,
+      caption: this.t.descCaption,
+      value: this.t.descValue,
+      save: this.t.saveDescriptions,
+      empty: this.t.noDescriptions,
+      statuses: { missing: this.t.descMissing, ok: this.t.descSet },
+    };
+    return html`<insights-block-editor
+      class="descriptions"
+      .rows="${a.descRows || []}"
+      .labels="${labels}"
+      .srcAttributes="${save.srcAttributes || {}}"
+      .statuses="${["missing", "ok"]}"
+      .statusOf="${(row, value) => {
+        const missing = String(value || "").trim() === "";
+        return {
+          status: missing ? "missing" : "ok",
+          tone: missing ? "warning" : "success",
+          text: "",
+        };
+      }}"
+      note="${save.note || ""}"
+      max-pages="${save.maxPagesPerSave || 20}"
+      density="${this.density}"
+    ></insights-block-editor>`;
   }
 
   _stateLabel(state) {

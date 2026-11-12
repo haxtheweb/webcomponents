@@ -5,6 +5,10 @@
 import { LitElement, html, css, nothing } from "lit";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { InsightsStyles } from "../insights-styles.js";
+import { titleStatus } from "../insights-analyzer.js";
+import "../insights-block-editor.js";
+
+const TITLE_TONE = { missing: "danger", generic: "warning", ok: "success" };
 
 const LIMIT = 50;
 
@@ -92,6 +96,15 @@ class InsightsMedia extends I18NMixin(LitElement) {
       lengthTitle: "Video length needs a server lookup.",
       lengthBody:
         "Until then, video counts come from the page HTML and lengths are not shown.",
+      titlesHeading: "Video and embed titles",
+      titlesHint: "Screen readers announce these titles; WCAG 2.4.1 and 4.1.2",
+      titlesCaption: "Videos and embeds with their titles",
+      titleValue: "Title",
+      saveTitles: "Save titles",
+      noTitledMedia: "No videos or embeds on these pages.",
+      titleMissing: "Missing",
+      titleGeneric: "Generic",
+      titleOk: "Looks OK",
     };
     this.registerLocalization({
       context: this,
@@ -300,8 +313,40 @@ class InsightsMedia extends I18NMixin(LitElement) {
         ${this._renderVpp(media)} ${this._renderNoMedia(media)}
       </div>
       ${this._renderBySection(media)} ${this._renderIndex(media)}
-      ${this._renderLengthSoon(media)}
+      ${this._renderTitles(media)} ${this._renderLengthSoon(media)}
     </div>`;
+  }
+
+  _renderTitles(media) {
+    const save = media.titleSave || {};
+    const rules = { media: { genericTitleWords: save.genericWords || [] } };
+    const labels = {
+      heading: this.t.titlesHeading,
+      hint: this.t.titlesHint,
+      caption: this.t.titlesCaption,
+      value: this.t.titleValue,
+      save: this.t.saveTitles,
+      empty: this.t.noTitledMedia,
+      statuses: {
+        missing: this.t.titleMissing,
+        generic: this.t.titleGeneric,
+        ok: this.t.titleOk,
+      },
+    };
+    return html`<insights-block-editor
+      class="titles"
+      .rows="${media.titleRows || []}"
+      .labels="${labels}"
+      .srcAttributes="${save.srcAttributes || {}}"
+      .statuses="${["missing", "generic", "ok"]}"
+      .statusOf="${(row, value) => {
+        const status = titleStatus(value, rules);
+        return { status, tone: TITLE_TONE[status], text: "" };
+      }}"
+      note="${save.note || ""}"
+      max-pages="${save.maxPagesPerSave || 20}"
+      density="${this.density}"
+    ></insights-block-editor>`;
   }
 
   _renderKpis(media) {
