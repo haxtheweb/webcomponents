@@ -1,0 +1,22 @@
+carbon-theme
+Copyright 2026 The Pennsylvania State University
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This package contains design token values derived from IBM Carbon
+(https://github.com/carbon-design-system/carbon), licensed under the
+Apache License, Version 2.0 (the same license as this package):
+
+  @carbon/styles 1.119.0  Copyright IBM Corp. 2015, 2026
+  @carbon/colors 11.62.0  Copyright IBM Corp. 2018, 2026
+  @carbon/motion 11.56.0  Copyright IBM Corp. 2018, 2026
+
+The token values were re-expressed as CSS custom properties by
+elements/d-d-d/design-system/bridge/build-bridge.js; font stacks and
+font weights were copied from @carbon/type (Apache-2.0).
+
+Fonts (loaded at runtime from Google Fonts, not distributed in this package):
+IBM Plex Sans and IBM Plex Mono, SIL Open Font License 1.1.
+
+IBM and Carbon are trademarks of International Business Machines
+Corporation. This package is an independent integration and is not
+affiliated with or endorsed by IBM.

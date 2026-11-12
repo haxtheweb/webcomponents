@@ -1,0 +1,364 @@
+{
+  "$comment": "DDD bridge for IBM Carbon v11. Tiers follow elements/d-d-d/design-system/bridge/contract.json. Named DDD colors point at fixed Carbon palette values (@carbon/colors DTCG) by role; theme chrome uses Carbon's white (light) and g100 (dark) theme tokens. Font stacks and weights are copied from @carbon/type (it ships them as JS, not tokens). Kept as DDD on purpose: font weights medium and black (Carbon has light, regular and semibold only), state opacities (Carbon uses hover colors, not opacity), border widths (same 1-4px values), and heading/body sizes (Carbon body-01 is 14px, below the 16px floor; body size is an open decision for every bridge). Carbon's spacing scale (2, 4, 8, 12, 16, 24, 32, 40, 48px...) sits on DDD's 4px grid, so the theme chrome uses DDD spacing tokens with the same values; @carbon/styles only exposes its spacing variables inside component scopes.",
+  "system": "carbon",
+  "title": "Carbon",
+  "prefix": "Carbon",
+  "homepage": "https://carbondesignsystem.com",
+  "sources": [
+    {
+      "package": "@carbon/styles",
+      "version": "1.119.0",
+      "license": "Apache-2.0",
+      "copyright": "Copyright IBM Corp. 2018, 2026",
+      "homepage": "https://carbondesignsystem.com",
+      "repository": "https://github.com/carbon-design-system/carbon",
+      "format": "css",
+      "file": "css/styles.css",
+      "scopes": {
+        "light": [":root", ".cds--white"],
+        "dark": [":root", ".cds--g100"]
+      }
+    },
+    {
+      "package": "@carbon/colors",
+      "version": "11.62.0",
+      "license": "Apache-2.0",
+      "copyright": "Copyright IBM Corp. 2018, 2026",
+      "homepage": "https://carbondesignsystem.com",
+      "repository": "https://github.com/carbon-design-system/carbon",
+      "format": "dtcg",
+      "file": "tokens/colors.tokens.json",
+      "prefix": "--carbon-"
+    },
+    {
+      "package": "@carbon/motion",
+      "version": "11.56.0",
+      "license": "Apache-2.0",
+      "copyright": "Copyright IBM Corp. 2018, 2026",
+      "homepage": "https://carbondesignsystem.com",
+      "repository": "https://github.com/carbon-design-system/carbon",
+      "format": "dtcg",
+      "file": "tokens/motion.tokens.json",
+      "prefix": "--carbon-"
+    }
+  ],
+  "fonts": [
+    {
+      "family": "IBM Plex Sans",
+      "license": "OFL-1.1",
+      "url": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap"
+    },
+    {
+      "family": "IBM Plex Mono",
+      "license": "OFL-1.1",
+      "url": "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+    }
+  ],
+  "ddd": {
+    "--ddd-theme-default-beaverBlue": {
+      "token": "--carbon-blue-60",
+      "note": "Carbon interactive / primary button blue"
+    },
+    "--ddd-theme-default-nittanyNavy": {
+      "token": "--carbon-blue-80"
+    },
+    "--ddd-theme-default-potentialMidnight": {
+      "token": "--carbon-blue-90"
+    },
+    "--ddd-theme-default-pughBlue": {
+      "token": "--carbon-blue-30"
+    },
+    "--ddd-theme-default-accent": {
+      "token": "--carbon-blue-30"
+    },
+    "--ddd-theme-default-skyBlue": {
+      "token": "--carbon-blue-40"
+    },
+    "--ddd-theme-default-skyLight": {
+      "token": "--carbon-blue-20"
+    },
+    "--ddd-theme-default-skyMaxLight": {
+      "token": "--carbon-blue-10"
+    },
+    "--ddd-theme-default-slateGray": {
+      "token": "--carbon-cool-gray-70"
+    },
+    "--ddd-theme-default-slateLight": {
+      "token": "--carbon-cool-gray-30"
+    },
+    "--ddd-theme-default-slateMaxLight": {
+      "token": "--carbon-cool-gray-10"
+    },
+    "--ddd-theme-default-coalyGray": {
+      "token": "--carbon-gray-100",
+      "note": "Carbon text-primary / g100 background"
+    },
+    "--ddd-theme-default-black": {
+      "token": "--carbon-black"
+    },
+    "--ddd-theme-default-white": {
+      "token": "--carbon-white"
+    },
+    "--ddd-theme-default-limestoneGray": {
+      "token": "--carbon-gray-40"
+    },
+    "--ddd-theme-default-limestoneLight": {
+      "token": "--carbon-gray-20"
+    },
+    "--ddd-theme-default-limestoneMaxLight": {
+      "token": "--carbon-gray-10"
+    },
+    "--ddd-theme-default-background": {
+      "token": "--carbon-gray-10"
+    },
+    "--ddd-theme-default-disabled": {
+      "token": "--carbon-gray-10"
+    },
+    "--ddd-theme-default-keystoneYellow": {
+      "token": "--carbon-yellow-30"
+    },
+    "--ddd-theme-default-globalNeon": {
+      "token": "--carbon-yellow-20"
+    },
+    "--ddd-theme-default-roarGolden": {
+      "token": "--carbon-yellow-50"
+    },
+    "--ddd-theme-default-roarLight": {
+      "token": "--carbon-yellow-20"
+    },
+    "--ddd-theme-default-roarMaxlight": {
+      "token": "--carbon-yellow-10"
+    },
+    "--ddd-theme-default-shrineTan": {
+      "token": "--carbon-warm-gray-50",
+      "note": "Carbon has no tan; warm gray is the closest neutral"
+    },
+    "--ddd-theme-default-shrineLight": {
+      "token": "--carbon-warm-gray-20"
+    },
+    "--ddd-theme-default-shrineMaxLight": {
+      "token": "--carbon-warm-gray-10"
+    },
+    "--ddd-theme-default-inventOrange": {
+      "token": "--carbon-orange-40"
+    },
+    "--ddd-theme-default-landgrantBrown": {
+      "token": "--carbon-orange-80"
+    },
+    "--ddd-theme-default-creekTeal": {
+      "token": "--carbon-teal-50"
+    },
+    "--ddd-theme-default-creekLight": {
+      "token": "--carbon-teal-20"
+    },
+    "--ddd-theme-default-creekMaxLight": {
+      "token": "--carbon-teal-10"
+    },
+    "--ddd-theme-default-opportunityGreen": {
+      "token": "--carbon-green-60",
+      "note": "correct signal (light)"
+    },
+    "--ddd-theme-default-forestGreen": {
+      "token": "--carbon-green-50"
+    },
+    "--ddd-theme-default-futureLime": {
+      "token": "--carbon-green-40",
+      "note": "correct signal (dark)"
+    },
+    "--ddd-theme-default-athertonViolet": {
+      "token": "--carbon-purple-40",
+      "note": "incorrect signal (dark)"
+    },
+    "--ddd-theme-default-wonderPurple": {
+      "token": "--carbon-purple-70",
+      "note": "incorrect signal (light); keeps HAX purple-for-incorrect"
+    },
+    "--ddd-theme-default-original87Pink": {
+      "token": "--carbon-magenta-60"
+    },
+    "--ddd-theme-default-discoveryCoral": {
+      "token": "--carbon-red-40"
+    },
+    "--ddd-theme-default-link": {
+      "token": "--carbon-blue-60",
+      "note": "Carbon link-primary (white theme)"
+    },
+    "--ddd-theme-default-linkLight": {
+      "token": "--carbon-blue-40",
+      "note": "Carbon link-primary (g100 theme)"
+    },
+    "--ddd-theme-default-error": {
+      "token": "--carbon-red-70"
+    },
+    "--ddd-theme-default-errorLight": {
+      "token": "--carbon-red-10"
+    },
+    "--ddd-theme-default-warning": {
+      "token": "--carbon-yellow-70"
+    },
+    "--ddd-theme-default-warningLight": {
+      "token": "--carbon-yellow-10"
+    },
+    "--ddd-theme-default-info": {
+      "token": "--carbon-blue-70"
+    },
+    "--ddd-theme-default-infoLight": {
+      "token": "--carbon-blue-10"
+    },
+    "--ddd-theme-default-success": {
+      "token": "--carbon-green-70"
+    },
+    "--ddd-theme-default-successLight": {
+      "token": "--carbon-green-10"
+    },
+    "--ddd-theme-default-alertImmediate": {
+      "token": "--carbon-red-20"
+    },
+    "--ddd-theme-default-alertUrgent": {
+      "token": "--carbon-yellow-10"
+    },
+    "--ddd-theme-default-alertAllClear": {
+      "token": "--carbon-green-10"
+    },
+    "--ddd-theme-default-alertNonEmergency": {
+      "token": "--carbon-blue-10"
+    },
+    "--ddd-font-primary": {
+      "value": "'IBM Plex Sans', system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif",
+      "note": "@carbon/type sans"
+    },
+    "--ddd-font-secondary": {
+      "value": "'IBM Plex Sans', system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif",
+      "note": "Carbon sets headings in the same Plex Sans"
+    },
+    "--ddd-font-navigation": {
+      "value": "'IBM Plex Sans', system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif"
+    },
+    "--ddd-font-mono": {
+      "value": "'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace",
+      "note": "@carbon/type mono"
+    },
+    "--ddd-font-weight-light": {
+      "value": "300",
+      "note": "@carbon/type fontWeights.light"
+    },
+    "--ddd-font-weight-regular": {
+      "value": "400",
+      "note": "@carbon/type fontWeights.regular"
+    },
+    "--ddd-font-weight-bold": {
+      "value": "600",
+      "note": "@carbon/type fontWeights.semibold; Carbon's heaviest weight"
+    },
+    "--ddd-radius-xs": {
+      "value": "0",
+      "note": "Carbon components are square"
+    },
+    "--ddd-radius-sm": {
+      "value": "0"
+    },
+    "--ddd-radius-md": {
+      "value": "0"
+    },
+    "--ddd-radius-lg": {
+      "value": "0"
+    },
+    "--ddd-radius-xl": {
+      "value": "0"
+    },
+    "--ddd-boxShadow-sm": {
+      "value": "0 2px 6px var(--cds-shadow)",
+      "note": "Carbon has one elevation shadow"
+    },
+    "--ddd-boxShadow-md": {
+      "value": "0 2px 6px var(--cds-shadow)"
+    },
+    "--ddd-boxShadow-lg": {
+      "value": "0 2px 6px var(--cds-shadow)"
+    },
+    "--ddd-boxShadow-xl": {
+      "value": "0 2px 6px var(--cds-shadow)"
+    },
+    "--ddd-focus-ring": {
+      "value": "2px solid var(--cds-focus)"
+    },
+    "--ddd-focus-offset": {
+      "value": "0px",
+      "note": "Carbon draws focus inset (-2px); 0 keeps the ring visible around inline links"
+    },
+    "--ddd-duration-fast": {
+      "token": "--carbon-duration-fast-02"
+    },
+    "--ddd-duration-normal": {
+      "token": "--carbon-duration-moderate-02"
+    },
+    "--ddd-duration-slow": {
+      "token": "--carbon-duration-slow-01"
+    },
+    "--ddd-timing-ease": {
+      "token": "--carbon-easing-standard-productive"
+    },
+    "--ddd-timing-enter": {
+      "token": "--carbon-easing-entrance-productive"
+    },
+    "--ddd-timing-exit": {
+      "token": "--carbon-easing-exit-productive"
+    },
+    "--ddd-timing-emphasized": {
+      "token": "--carbon-easing-standard-expressive"
+    },
+    "--ddd-control-height-xs": {
+      "token": "--cds-layout-size-height-sm",
+      "note": "Carbon sm control, 32px"
+    },
+    "--ddd-control-height-sm": {
+      "token": "--cds-layout-size-height-md",
+      "note": "Carbon md control, 40px"
+    },
+    "--ddd-control-height-md": {
+      "token": "--cds-layout-size-height-lg",
+      "note": "Carbon lg control, 48px"
+    },
+    "--ddd-control-height-lg": {
+      "token": "--cds-layout-size-height-xl",
+      "note": "Carbon xl control, 64px"
+    },
+    "--ddd-textfield-height-sm": {
+      "token": "--cds-layout-size-height-sm",
+      "note": "Carbon fields: sm 32px"
+    },
+    "--ddd-textfield-height-md": {
+      "token": "--cds-layout-size-height-md",
+      "note": "md 40px"
+    },
+    "--ddd-textfield-height-lg": {
+      "token": "--cds-layout-size-height-lg",
+      "note": "lg 48px"
+    }
+  },
+  "extraTokens": [
+    "--cds-background",
+    "--cds-background-hover",
+    "--cds-background-selected",
+    "--cds-text-primary",
+    "--cds-text-secondary",
+    "--cds-text-on-color",
+    "--cds-link-primary",
+    "--cds-link-primary-hover",
+    "--cds-interactive",
+    "--cds-focus",
+    "--cds-layer-01",
+    "--cds-layer-hover-01",
+    "--cds-layer-selected-01",
+    "--cds-border-subtle-01",
+    "--cds-border-strong-01",
+    "--cds-icon-primary",
+    "--cds-icon-secondary",
+    "--carbon-gray-100",
+    "--carbon-gray-80",
+    "--carbon-gray-70",
+    "--carbon-gray-10",
+    "--carbon-white",
+    "--carbon-blue-60"
+  ]
+}
