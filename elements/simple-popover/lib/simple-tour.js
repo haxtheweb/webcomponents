@@ -1,8 +1,10 @@
+/**
+ * Copyright 2020 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { LitElement, html, render } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
-import "@haxtheweb/simple-toolbar/simple-toolbar.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
-import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import "./simple-popover-manager.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { sanitizeHTMLString } from "@haxtheweb/utils/utils.js";
@@ -252,7 +254,7 @@ class SimpleTour extends I18NMixin(LitElement) {
             ? el.querySelector("[data-stop-content]").innerHTML
             : "";
         }
-        // security (JS-XSS-001): title/description can come from DOM attributes
+        // security (JS-XSS): title/description can come from DOM attributes
         // in live mode, so sanitize before the unsafeHTML sink. Styles are set
         // as text on a real node so they are never parsed as markup.
         let tourStyle = "";

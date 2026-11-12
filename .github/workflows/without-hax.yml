@@ -1,0 +1,71 @@
+name: without-hax
+
+# Blocking for the HAX-capable elements a pull request touches: content made
+# with HAX works when HAX is not there (praw RULES.md, "Works With or
+# Without HAX"; https://github.com/haxtheweb/issues/issues/3324).
+#
+# For every authorable tag (hax-elements-registry.json) whose folder the
+# pull request changes, scripts/without-hax-check.mjs:
+# - walks the element's import graph and flags a static import of editor
+#   code (hax-body, h-a-x, super-daemon) or HAXcms code (haxcms-elements,
+#   app-hax); a path through import() is lazy and only listed
+# - serves a bare page locally with the repo's web-dev-server config (never
+#   a live site, every outside request aborted), imports only the element
+#   and renders its demoSchema in Chromium: it must define, not throw,
+#   render, and not pull editor or HAXcms modules in at runtime
+# - pastes that HTML onto a plain page with only the wc-autoload magic
+#   script: it must upgrade, not throw and render
+# Elements built for a HAX site (haxcms-elements) are exempt. Only a
+# finding missing from scripts/without-hax.baseline.json fails the job;
+# baselined ones are listed in the job summary. The baseline only shrinks:
+# the first step fails if this pull request adds entries to it.
+# See CONTRIBUTING.md, "Works with or without HAX check".
+#
+# Runs on pull_request (not pull_request_target): no secrets, read-only token.
+on:
+  # No branch filter: stacked PRs (base is another feature branch) must run too.
+  pull_request:
+    paths:
+      - "elements/**"
+      - "hax-elements-registry.json"
+      - "wc-registry.json"
+      - "scripts/without-hax*"
+      - "scripts/lib/without-hax.mjs"
+      - "scripts/lib/demo-runner.mjs"
+      - "scripts/lib/gate-baseline.mjs"
+      - "web-dev-server.config.mjs"
+      - ".github/workflows/without-hax.yml"
+      - ".github/actions/setup-playwright/**"
+permissions:
+  contents: read
+jobs:
+  without-hax:
+    name: Works with or without HAX
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      # the PR merge commit with its base as first parent, so HEAD^1..HEAD is
+      # exactly this pull request's change
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 2
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          cache: yarn
+      - name: Install
+        run: yarn install --frozen-lockfile
+      - name: Baseline only shrinks
+        run: node scripts/without-hax-check.mjs --check-baseline HEAD^1
+      - name: Install Playwright Chromium
+        # the Playwright version yarn.lock resolves, so the browser build
+        # matches what the check launches; cached per version
+        # the local path, not the $/ self-repository form: $/ downloads the
+        # whole repo as an action archive, and that extraction fails here
+        uses: ./.github/actions/setup-playwright # zizmor: ignore[self-repository]
+        timeout-minutes: 12
+      - name: Works with or without HAX, changed elements
+        run: node scripts/without-hax-check.mjs --base HEAD^1

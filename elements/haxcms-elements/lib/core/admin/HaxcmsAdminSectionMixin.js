@@ -1,4 +1,8 @@
 /**
+ * Copyright 2026 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
+/**
  * Shared helpers for the sections of the one admin dialog
  * (haxcms-site-admin). Each section reports its staged edits to the shell
  * with a `haxcms-admin-section-state` event; these helpers hold the

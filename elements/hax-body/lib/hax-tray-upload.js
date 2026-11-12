@@ -1,3 +1,7 @@
+/**
+ * Copyright 2020 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import "lit";
 import { HAXStore } from "./hax-store.js";
 import { HaxUploadField } from "./hax-upload-field.js";

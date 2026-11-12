@@ -1,8 +1,8 @@
 /**
+ * Copyright 2026 The Pennsylvania State University
  * Copyright 2026 haxtheweb
  * @license Apache-2.0, see LICENSE for full text.
  */
-
 /**
  * Draws what the page outline (hax-map) is doing onto the page itself, in a
  * layer of hax-body's shadow DOM that sits over the content:

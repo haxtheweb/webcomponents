@@ -21,7 +21,9 @@
  *                      referencing the unminified copy.
  *
  * Not reported (deliberate patterns): imports of singletons used through
- * globalThis or a named export, imports in files that only re-export
+ * globalThis or a named export, imports of tags the file renders through
+ * unsafeHTML/innerHTML from HTML in a module it imports by name (d-d-docs
+ * rendering the DDD pattern library), imports in files that only re-export
  * (aggregators like haxcms-elements.js), imports in a base class whose
  * subclasses render the tag, and imports of a child that a sibling file in
  * the same package renders.
@@ -355,6 +357,15 @@ function unrenderedImports(file, ast, findings) {
   }
   const isBase = exported.some((n) => extendsNames.has(n));
   const pkg = packageOf(file);
+  // HTML this file renders from data it imports by name (a pattern library,
+  // a list of demo recipes): a tag in that data is rendered here
+  const dataSources = body
+    .filter((n) => n.type === "ImportDeclaration" && n.specifiers.length)
+    .map((n) => resolveSpec(file, n.source.value))
+    .filter(Boolean);
+  const renderedFromData = (t) =>
+    /unsafeHTML|innerHTML/.test(src) &&
+    dataSources.some((f) => text(f).includes(`<${t}`));
   for (const n of body) {
     if (n.type !== "ImportDeclaration" || n.specifiers.length) continue;
     const target = resolveSpec(file, n.source.value);
@@ -363,6 +374,7 @@ function unrenderedImports(file, ast, findings) {
     if (!tags.length) continue;
     const rest = src.slice(0, n.start) + src.slice(n.end);
     if (tags.some((t) => mentionsTag(rest, t))) continue;
+    if (tags.some(renderedFromData)) continue;
     if (
       namesOf(target, tags).some((name) =>
         new RegExp(`(?<![\\w$])${escapeRe(name)}(?![\\w$])`).test(rest),

@@ -1,4 +1,8 @@
 /**
+ * Copyright 2019 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
+/**
  * Class to provide updated OERSchema definitions
  */
 class OERSchema {

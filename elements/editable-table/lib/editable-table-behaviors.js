@@ -1,6 +1,6 @@
 /**
  * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * @license Apache-2.0, see LICENSE for full text.
  */
 import {
   sanitizeHTMLForImport,
@@ -997,7 +997,7 @@ export const displayBehaviors = function (SuperClass) {
      * (rather than escaping) preserves legitimate rich-text formatting
      * (bold/italic/links) authored via the cell editor while stripping
      * scripts, event handler attributes, and unsafe URLs.
-     * security (JS-XSS-001)
+     * security (JS-XSS)
      * @param {string} cell cell contents
      * @returns {string} sanitized cell contents, safe for innerHTML
      */

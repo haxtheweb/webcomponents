@@ -1,4 +1,8 @@
 /**
+ * Copyright 2026 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
+/**
  * HTML / DOM sanitizing helpers for authored and imported content.
  * Split out of utils.js so first-paint code can import them without the
  * rest of the utils barrel; utils.js re-exports them unchanged.
@@ -565,7 +569,7 @@ export function sanitizeHTMLString(
  * @param {String} raw - raw navigation target (absolute href or relative path)
  * @returns {String} validated href safe for globalThis.location assignment
  */
-// security (F7/JS-URL-001): validate scheme before navigation
+// security (JS-URL): validate scheme before navigation
 export function safeNavigateHref(raw) {
   try {
     const u = new URL(raw, globalThis.location.href);

@@ -1,4 +1,8 @@
 /**
+ * Copyright 2025 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
+/**
  * Export Page Program for Merlin
  * Allows users to export the current page in multiple formats:
  * - HTML

@@ -1,6 +1,6 @@
 /**
- * Copyright 2024
- * @license Apache-2.0, see License.md for full details.
+ * Copyright 2024 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
  */
 import { LitElement, css } from "lit";
 import { SimpleColorsSuper } from "@haxtheweb/simple-colors/simple-colors.js";
@@ -16,7 +16,7 @@ import { DesignSystemManager } from "./lib/DesignSystemManager.js";
 
 /**
  * `d-d-d`
- * `design, develop, destroy the competition`
+ * `design, develop, deliver`
  * @demo demo/index.html
  */
 

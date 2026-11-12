@@ -1,8 +1,8 @@
 /**
+ * Copyright 2026 The Pennsylvania State University
  * Copyright 2026 haxtheweb
  * @license Apache-2.0, see LICENSE for full text.
  */
-
 /**
  * iCalendar (RFC 5545) reader, in the spirit of `CSVtoArray` in csv-render:
  * small, dependency free, and run client side so a calendar renders offline.

@@ -1,3 +1,7 @@
+/**
+ * Copyright 2020 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import "@haxtheweb/simple-colors/simple-colors.js";
 import "@haxtheweb/simple-icon/lib/simple-iconset-demo.js";
 import "@haxtheweb/simple-icon/simple-icon.js";

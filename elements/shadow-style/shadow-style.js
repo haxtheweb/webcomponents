@@ -1,8 +1,7 @@
 /**
  * Copyright 2021 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * @license Apache-2.0, see LICENSE for full text.
  */
-
 /**
  * `shadow-style`
  * `write css that is for piercing shadow roots and applying CSS automatically`

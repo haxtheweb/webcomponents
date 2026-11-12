@@ -1,4 +1,8 @@
 /**
+ * Copyright 2026 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
+/**
  * copy to clipboard w/ toast and authorization
  * based on https://www.freecodecamp.org/news/copy-text-to-clipboard-javascript/
  */

@@ -13,6 +13,13 @@ describe("hax-confirm-dialog: the admin leave prompt look", () => {
     expect(cancel.classList.contains("ghost")).to.equal(true);
     expect(confirm.classList.contains("primary")).to.equal(true);
     expect(globalThis.getComputedStyle(confirm).height).to.equal("32px");
+    // meaning channels: confirm and cancel each carry their own icon
+    expect(
+      cancel.querySelector("simple-icon-lite").getAttribute("icon"),
+    ).to.equal("hax:admin-close");
+    expect(
+      confirm.querySelector("simple-icon-lite").getAttribute("icon"),
+    ).to.equal("hax:admin-check");
     expect(el.shadowRoot.querySelector(".message").textContent).to.equal(
       "Leave?",
     );
@@ -32,6 +39,9 @@ describe("hax-confirm-dialog: the admin leave prompt look", () => {
     );
     const confirm = el.shadowRoot.querySelector('[data-action="confirm"]');
     expect(confirm.classList.contains("danger-fill")).to.equal(true);
+    expect(
+      confirm.querySelector("simple-icon-lite").getAttribute("icon"),
+    ).to.equal("hax:admin-delete");
     confirm.click();
     el.shadowRoot.querySelector('[data-action="cancel"]').click();
     expect([confirmed, cancelled]).to.deep.equal([1, 1]);

@@ -105,29 +105,6 @@
       "13px": 1
     }
   },
-  "elements/haxcms-elements/lib/core/haxcms-site-insights.js": {
-    "content-type": {
-      "--ddd-font-size-6xs": 3,
-      "--ddd-font-size-m": 3,
-      "--ddd-font-size-s": 7,
-      "--ddd-font-size-xs": 4
-    },
-    "layer": {
-      "no HAX UI import": 1
-    },
-    "simple-colors": {
-      "--simple-colors-default-theme-accent-10": 1,
-      "--simple-colors-default-theme-accent-11": 1,
-      "--simple-colors-default-theme-accent-12": 1,
-      "--simple-colors-default-theme-accent-8": 1,
-      "--simple-colors-default-theme-accent-9": 1,
-      "--simple-colors-default-theme-grey-1": 1,
-      "--simple-colors-default-theme-grey-10": 1,
-      "--simple-colors-default-theme-grey-12": 1,
-      "--simple-colors-default-theme-grey-4": 1,
-      "--simple-colors-default-theme-grey-8": 1
-    }
-  },
   "elements/haxcms-elements/lib/core/haxcms-site-settings-dashboard.js": {
     "content-type": {
       "--ddd-font-size-m": 1,

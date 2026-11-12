@@ -1,3 +1,7 @@
+/**
+ * Copyright 2021 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import("@haxtheweb/simple-icon/lib/simple-iconset.js").then(() => {
   if (
     globalThis.Drupal &&

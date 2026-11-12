@@ -185,7 +185,7 @@ describe("d-d-docs wiring", function () {
   it("exposes the HAX schema for the editor", () => {
     const props = DDDocs.haxProperties;
     expect(props.api).to.equal("1");
-    expect(props.gizmo.title).to.equal("Design, Develop, Destroy");
+    expect(props.gizmo.title).to.equal("Design, Develop, Deliver");
     expect(props.gizmo.icon).to.equal("hax:hax2022");
     expect(props.settings.configure[0].property).to.equal("option");
     expect(props.settings.configure[0].options["*"]).to.equal(

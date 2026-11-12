@@ -1,3 +1,7 @@
+/**
+ * Copyright 2025 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { LitElement, html } from "lit";
 import { settleOnce } from "@haxtheweb/utils/lib/events.js";
 import "@haxtheweb/jwt-login/jwt-login.js";

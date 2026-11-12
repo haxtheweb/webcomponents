@@ -1,5 +1,9 @@
 #!/usr/bin/env node
 /**
+ * Copyright 2026 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
+/**
  * DDD design system sync
  *
  * Rebuilds the files of the DDD Design System artifact (the claude.ai design

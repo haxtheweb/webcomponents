@@ -1,3 +1,7 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { CMSBase } from "./cms-base.js";
 // wipeSlot is used by _handleResponse but was never imported, so every
 // successful token fetch threw a silent ReferenceError inside _doRequest
@@ -105,7 +109,7 @@ class CMSToken extends CMSBase {
       }
       wipeSlot(this);
       let template = globalThis.document.createElement("template");
-      // security (JS-XSS-001): CMS token content is remote/backend-sourced;
+      // security (JS-XSS): CMS token content is remote/backend-sourced;
       // sanitize before writing to innerHTML
       template.innerHTML = sanitizeHTMLString(data.content);
       this.appendChild(globalThis.document.importNode(template.content, true));

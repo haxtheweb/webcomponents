@@ -1,3 +1,7 @@
+/**
+ * Copyright 2021 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { LitElement, html, css } from "lit";
 import { A11yMenuButtonBehaviors } from "@haxtheweb/a11y-menu-button/a11y-menu-button.js";
 import { SimpleToolbarButtonBehaviors } from "./simple-toolbar-button.js";

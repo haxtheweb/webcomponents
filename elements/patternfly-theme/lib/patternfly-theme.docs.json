@@ -1,0 +1,43 @@
+{
+  "tag": "patternfly-theme",
+  "folder": "patternfly-theme",
+  "package": "@haxtheweb/patternfly-theme",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "patternfly-theme",
+  "description": "PatternFly 6 theme for HAXcms, built on the DDD-capable PatternFly design system bridge",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/patternfly-theme/patternfly-theme.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/patternfly-theme/patternfly-theme.js",
+  "install": "npm i @haxtheweb/patternfly-theme",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "sidebar-open",
+      "property": "sidebarOpen",
+      "type": "boolean",
+      "default": "true",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "508e449de653",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/patternfly-theme",
+    "file": "patternfly-theme.js"
+  }
+}

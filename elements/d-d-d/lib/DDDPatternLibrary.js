@@ -1,4 +1,5 @@
 /**
+ * Copyright 2026 The Pennsylvania State University
  * Copyright 2026 haxtheweb
  * @license Apache-2.0, see LICENSE for full text.
  *
@@ -27,7 +28,6 @@
  * Internal contract shape (cross-cutting; applies to element internals, not compositions):
  *   id, title, description, surface, tokens, structure, targetElements: [tag, ...]
  */
-
 /**
  * HAX-capability knowledge for components referenced by patterns.
  * `true` = verified to ship haxProperties (external lib JSON or inline).
@@ -1498,7 +1498,6 @@ export const INTERNAL_CONTRACTS = [
       "haxcms-about-dialog-ui",
       "haxcms-site-import-export-dashboard",
       "haxcms-page-revisions-dialog",
-      "haxcms-site-insights",
       "haxcms-site-reports",
       "haxcms-system-settings",
       "haxcms-theme-preview-panel",

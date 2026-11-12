@@ -169,7 +169,6 @@ Every element in the webcomponents monorepo that extends DDD has a card here, re
 
 ## Known gaps
 
-- The source does not agree on what DDD stands for. The docs site says "Develop, Design, Destroy!". The package README says "design, develop, destroy the competition". The PRAW skill says "Design, Develop, Deliver".
 - The PRAW guidance says headlines are set in Roboto Slab. The reset sets `h1`–`h6` in `--ddd-font-primary` (Roboto). This system follows the code.
 - The comment on `--ddd-font-size-3xs` says "body default" (18px). The applied body size is `--ddd-theme-body-font-size` = `xxs` (20px).
 - PRAW notes mention `--ddd-inset-*`, `--ddd-gap-*`, `--ddd-text-*` and `--ddd-duration-instant/rapid`. None of these exist in `DDDStyles.js`, so do not use them.

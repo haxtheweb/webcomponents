@@ -1,3 +1,7 @@
+/**
+ * Copyright 2026 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 // Icons: the published SVGs ship with this design system as JSON maps of
 // data: URIs under project/runtime/icons/. Registering an iconset as an object
 // makes SimpleIconsetStore return those URIs and re-hydrates waiting icons.

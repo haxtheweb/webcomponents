@@ -1,13 +1,12 @@
 /**
- * Copyright 2024
- * @license Apache-2.0, see License.md for full text.
+ * Copyright 2024 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
  */
 import { html, css } from "lit";
 import {
   QuestionElement,
   choiceResponse,
 } from "@haxtheweb/multiple-choice/lib/QuestionElement.js";
-import "@haxtheweb/d-d-d/d-d-d.js";
 
 /**
  * `tagging-question`

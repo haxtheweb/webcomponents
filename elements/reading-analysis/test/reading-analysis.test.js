@@ -1,5 +1,9 @@
 import { fixture, expect, html } from "@open-wc/testing";
-import { executeServerCommand } from "@web/test-runner-commands";
+import {
+  executeServerCommand,
+  sendMouse,
+  resetMouse,
+} from "@web/test-runner-commands";
 import "../reading-analysis.js";
 import {
   componentId,
@@ -40,6 +44,39 @@ const flag = (el, label) =>
   Array.from(el.shadowRoot.querySelectorAll("button.flag")).find((b) =>
     b.textContent.includes(label),
   );
+// the middle of an element's first line box (a wrapped sentence's bounding
+// box can be centered on blank space)
+const center = (node) => {
+  const r = node.getClientRects()[0] || node.getBoundingClientRect();
+  return [Math.round(r.left + r.width / 2), Math.round(r.top + r.height / 2)];
+};
+// drag a flag with the real mouse: press on it, move in steps, release
+async function drag(el, label, to, { release = true } = {}) {
+  const b = flag(el, label);
+  b.scrollIntoView({ block: "center" });
+  await sendMouse({ type: "move", position: center(b) });
+  await sendMouse({ type: "down" });
+  const end = to ? center(to) : [5, 5];
+  const start = center(b);
+  for (let i = 1; i <= 4; i++) {
+    await sendMouse({
+      type: "move",
+      position: [
+        Math.round(start[0] + ((end[0] - start[0]) * i) / 4),
+        Math.round(start[1] + ((end[1] - start[1]) * i) / 4),
+      ],
+    });
+  }
+  // lifting the flag can shift the layout a little; end where the target is now
+  if (to) {
+    await sendMouse({ type: "move", position: center(to) });
+  }
+  if (release) {
+    await sendMouse({ type: "up" });
+  }
+  await el.updateComplete;
+  return b;
+}
 async function place(el, label, id) {
   // a held flag stays held after placing, so only pick it up when needed
   const b = flag(el, label);
@@ -191,11 +228,156 @@ describe("reading-analysis", () => {
       expect(target(el, sid(1)).hasAttribute("data-lit")).to.equal(true);
     });
 
+    describe("dragging a flag", () => {
+      afterEach(() => resetMouse());
+
+      it("moves a copy of the flag with the pointer and colors the passage under it", async () => {
+        const passage = target(el, sid(1));
+        const b = await drag(el, "Racism", passage, { release: false });
+        const ghost = el.shadowRoot.querySelector(".flag.drag-ghost");
+        expect(ghost, "dragged flag").to.exist;
+        expect(ghost.getAttribute("aria-hidden")).to.equal("true");
+        expect(ghost.textContent).to.include("Racism");
+        expect(b.classList.contains("lifted")).to.equal(true);
+        // the passage under the pointer previews the drop in the flag's color
+        expect(passage.hasAttribute("data-drop")).to.equal(true);
+        expect(passage.getAttribute("data-style")).to.equal(
+          b.getAttribute("data-style"),
+        );
+        expect(getComputedStyle(passage).backgroundColor).to.not.equal(
+          "rgba(0, 0, 0, 0)",
+        );
+        await sendMouse({ type: "up" });
+        await el.updateComplete;
+        expect(el.shadowRoot.querySelector(".flag.drag-ghost")).to.equal(null);
+        expect(b.classList.contains("lifted")).to.equal(false);
+        expect(passage.hasAttribute("data-drop")).to.equal(false);
+        expect(el._placed).to.deep.equal([
+          {
+            f: el._flagIds().find((f) => f.flag.label.includes("Racism")).id,
+            t: sid(1),
+          },
+        ]);
+        // the flag goes back to the pad; the drag does not leave it held
+        expect(b.getAttribute("aria-pressed")).to.equal("false");
+      });
+
+      it("places nothing when dropped away from the reading", async () => {
+        await drag(el, "Racism", null);
+        expect(el._placed.length).to.equal(0);
+        expect(el.shadowRoot.querySelector(".flag.drag-ghost")).to.equal(null);
+        expect(el.shadowRoot.querySelectorAll("[data-drop]").length).to.equal(
+          0,
+        );
+      });
+
+      it("Escape cancels a drag", async () => {
+        await drag(el, "Racism", target(el, sid(0)), { release: false });
+        globalThis.dispatchEvent(new KeyboardEvent("keyup", { key: "Escape" }));
+        await el.updateComplete;
+        expect(el.shadowRoot.querySelector(".flag.drag-ghost")).to.equal(null);
+        await sendMouse({ type: "up" });
+        await el.updateComplete;
+        expect(el._placed.length).to.equal(0);
+      });
+
+      it("a press without moving still picks the flag up", async () => {
+        const b = flag(el, "Racism");
+        b.scrollIntoView({ block: "center" });
+        await sendMouse({ type: "click", position: center(b) });
+        await el.updateComplete;
+        expect(b.getAttribute("aria-pressed")).to.equal("true");
+        expect(el.shadowRoot.querySelector(".flag.drag-ghost")).to.equal(null);
+      });
+
+      it("a held flag colors the passage it would go to", async () => {
+        const b = flag(el, "Communism");
+        b.click();
+        await el.updateComplete;
+        const desk = el.shadowRoot.querySelector(".desk");
+        expect(desk.getAttribute("style")).to.include(
+          `--ra-flag-${b.getAttribute("data-style")}`,
+        );
+        const passage = target(el, sid(3));
+        passage.scrollIntoView({ block: "center" });
+        await sendMouse({ type: "move", position: center(passage) });
+        expect(getComputedStyle(passage).backgroundColor).to.not.equal(
+          "rgba(0, 0, 0, 0)",
+        );
+      });
+    });
+
     it("removes a flag when its tab is activated", async () => {
       await place(el, "Racism", sid(0));
       el.shadowRoot.querySelector("#margin .tab").click();
       await el.updateComplete;
       expect(el._placed.length).to.equal(0);
+    });
+
+    it("is one tab stop; the arrow keys, Home and End move between passages", async () => {
+      const stops = () =>
+        Array.from(el.shadowRoot.querySelectorAll('[data-t][tabindex="0"]'));
+      expect(stops().length).to.equal(1);
+      expect(stops()[0].getAttribute("data-t")).to.equal(sid(0));
+      const key = (k) =>
+        el.shadowRoot.activeElement.dispatchEvent(
+          new KeyboardEvent("keydown", {
+            key: k,
+            bubbles: true,
+            composed: true,
+            cancelable: true,
+          }),
+        );
+      target(el, sid(0)).focus();
+      key("ArrowDown");
+      expect(el.shadowRoot.activeElement.getAttribute("data-t")).to.equal(
+        sid(1),
+      );
+      expect(stops().length).to.equal(1);
+      key("End");
+      expect(el.shadowRoot.activeElement.getAttribute("data-t")).to.equal(fid);
+      key("ArrowDown");
+      expect(el.shadowRoot.activeElement.getAttribute("data-t")).to.equal(fid);
+      key("Home");
+      expect(el.shadowRoot.activeElement.getAttribute("data-t")).to.equal(
+        sid(0),
+      );
+      key("ArrowUp");
+      expect(el.shadowRoot.activeElement.getAttribute("data-t")).to.equal(
+        sid(0),
+      );
+      // the passage reached last keeps the tab stop
+      key("ArrowRight");
+      expect(stops().map((n) => n.getAttribute("data-t"))).to.deep.equal([
+        sid(1),
+      ]);
+      expect(
+        el.shadowRoot
+          .querySelector("#reading")
+          .getAttribute("aria-describedby"),
+      ).to.equal("ra-keys");
+      expect(el.shadowRoot.querySelector("#ra-keys").textContent).to.include(
+        "sentence",
+      );
+      expect(
+        el.shadowRoot.querySelector("#ra-live").getAttribute("aria-live"),
+      ).to.equal("polite");
+    });
+
+    it("names correct and incorrect placements in words, not only the mark", async () => {
+      await place(el, "Racism", sid(0));
+      await place(el, "Communism", sid(2));
+      el.checkAnswer();
+      await flush(150);
+      await el.updateComplete;
+      const rows = Array.from(
+        el.shadowRoot.querySelectorAll("ul.placements li"),
+      );
+      const ok = rows.find((r) => r.classList.contains("res-correct"));
+      const bad = rows.find((r) => r.classList.contains("res-incorrect"));
+      expect(ok.textContent).to.include("evidence for this flag");
+      expect(ok.textContent).to.not.include("not evidence");
+      expect(bad.textContent).to.include("not evidence for this flag");
     });
 
     it("scores, marks each tab, and sends a conformant matching statement", async () => {

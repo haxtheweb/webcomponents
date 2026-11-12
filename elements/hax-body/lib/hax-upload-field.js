@@ -1,3 +1,7 @@
+/**
+ * Copyright 2019 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { html, css } from "lit";
 import { SimpleFieldsUpload } from "@haxtheweb/simple-fields/lib/simple-fields-upload.js";
 import { winEventsElement, localStorageGet } from "@haxtheweb/utils/utils.js";

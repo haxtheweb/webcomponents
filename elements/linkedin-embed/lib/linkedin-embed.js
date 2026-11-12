@@ -1,3 +1,7 @@
+/**
+ * Copyright 2026 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
@@ -112,10 +116,6 @@ class LinkedinEmbed extends I18NMixin(DDD) {
           overflow: hidden;
           background-color: transparent;
         }
-        @container (max-width: 500px) {
-          .badge-shell {
-          }
-        }
       `,
     ];
   }
@@ -126,6 +126,7 @@ class LinkedinEmbed extends I18NMixin(DDD) {
     this.t = {
       ...this.t,
       viewOnLinkedin: "View {name} on LinkedIn",
+      badgeTitle: "LinkedIn profile badge for {name}",
     };
     this.registerLocalization({
       context: this,
@@ -139,6 +140,7 @@ class LinkedinEmbed extends I18NMixin(DDD) {
     this.__resizeObserver = null;
     this.__darkModeMediaQuery = null;
     this.__darkModeHandler = null;
+    this.__schemeObserver = null;
     this.__lastRequestUid = null;
   }
 
@@ -158,6 +160,10 @@ class LinkedinEmbed extends I18NMixin(DDD) {
     }
     if (this.__resizeObserver) {
       this.__resizeObserver.disconnect();
+    }
+    if (this.__schemeObserver) {
+      this.__schemeObserver.disconnect();
+      this.__schemeObserver = null;
     }
     if (this.__darkModeMediaQuery && this.__darkModeHandler) {
       if (this.__darkModeMediaQuery.removeEventListener) {
@@ -234,11 +240,33 @@ class LinkedinEmbed extends I18NMixin(DDD) {
     this.__darkModeMediaQuery = globalThis.matchMedia(
       "(prefers-color-scheme: dark)",
     );
-    this._prefersDark = this.__darkModeMediaQuery.matches;
+    this._prefersDark = this.__resolveDark(this.__darkModeMediaQuery.matches);
     this.__darkModeHandler = (event) => {
-      this._prefersDark = event.matches;
+      this._prefersDark = this.__resolveDark(event.matches);
       this.requestUpdate();
     };
+    // a site's own light / dark switch (HAXcms puts dark-mode on body, which
+    // DDD turns into color-scheme) changes the page without changing the OS
+    // setting, so watch the page as well
+    if (
+      typeof MutationObserver === "function" &&
+      !this.__schemeObserver &&
+      globalThis.document &&
+      globalThis.document.body
+    ) {
+      this.__schemeObserver = new MutationObserver(() => {
+        this._prefersDark = this.__resolveDark(
+          this.__darkModeMediaQuery ? this.__darkModeMediaQuery.matches : false,
+        );
+      });
+      [globalThis.document.documentElement, globalThis.document.body].forEach(
+        (node) =>
+          this.__schemeObserver.observe(node, {
+            attributes: true,
+            attributeFilter: ["class", "style", "data-theme"],
+          }),
+      );
+    }
     if (this.__darkModeMediaQuery.addEventListener) {
       this.__darkModeMediaQuery.addEventListener(
         "change",
@@ -247,6 +275,27 @@ class LinkedinEmbed extends I18NMixin(DDD) {
     } else if (this.__darkModeMediaQuery.addListener) {
       this.__darkModeMediaQuery.addListener(this.__darkModeHandler);
     }
+  }
+
+  /**
+   * Whether the badge should be dark: the page's own color-scheme where it
+   * forces one (a site's dark mode), otherwise the visitor's OS setting.
+   * @param {boolean} osDark prefers-color-scheme: dark
+   */
+  __resolveDark(osDark) {
+    let scheme = "";
+    if (this.isConnected && globalThis.getComputedStyle) {
+      scheme = globalThis.getComputedStyle(this).colorScheme || "";
+    }
+    const dark = /\bdark\b/.test(scheme);
+    const light = /\blight\b/.test(scheme);
+    if (dark && !light) {
+      return true;
+    }
+    if (light && !dark) {
+      return false;
+    }
+    return !!osDark;
   }
 
   __watchContainer() {
@@ -371,6 +420,18 @@ class LinkedinEmbed extends I18NMixin(DDD) {
     iframe.style.maxWidth = "100%";
     iframe.setAttribute("height", "300");
     iframe.setAttribute("width", "330");
+    // the width comes from CSS, capped at the container: a fixed width would
+    // be the frame's minimum size and push narrow layouts (grid-plate columns
+    // on a phone) wider than the screen
+    iframe.style.width = "min(330px, 100%)";
+    // a frame needs a name for screen readers (WCAG 4.1.2)
+    iframe.setAttribute(
+      "title",
+      this.t.badgeTitle.replace("{name}", () => this.vanityname),
+    );
+    // the frame and its page share one color-scheme, or the browser paints
+    // an opaque white box behind a dark badge
+    iframe.style.colorScheme = this._effectiveTheme;
     // security: the badge HTML is third-party content, so it runs in a
     // sandboxed (opaque origin) frame with no access to this page's DOM,
     // cookies or storage. Popups stay allowed so profile links still open.
@@ -404,23 +465,32 @@ class LinkedinEmbed extends I18NMixin(DDD) {
       const width = Math.max(1, Math.min(2000, Math.round(data.width)));
       iframe.setAttribute("height", `${height}`);
       iframe.setAttribute("width", `${width}`);
+      iframe.style.width = `min(${width}px, 100%)`;
     };
     globalThis.addEventListener("message", this.__badgeSizeHandler);
     badgeHost.appendChild(iframe);
+    // security (JS-MSG): the badge only reports its size to this page's own
+    // origin, never "*"; a page with an opaque origin (file://, sandboxed)
+    // has no origin to name, so the badge keeps its default size there
+    const pageOrigin =
+      globalThis.location &&
+      globalThis.location.origin &&
+      globalThis.location.origin !== "null"
+        ? globalThis.location.origin
+        : "";
     // JSON.stringify alone does not make a value safe inside <script>:
     // also escape <, > and line separators (CodeQL js/bad-code-sanitization)
-    const parentOrigin = JSON.stringify(
-      globalThis.location &&
-        globalThis.location.origin &&
-        globalThis.location.origin !== "null"
-        ? globalThis.location.origin
-        : "*",
-    ).replace(/[<>\u2028\u2029]/g, (c) => {
-      return "\\u" + c.charCodeAt(0).toString(16).padStart(4, "0");
-    });
-    const sizeScript = `<script>(function(){function s(){var b=document.body;if(!b)return;parent.postMessage({type:"linkedin-embed-size",height:b.scrollHeight||300,width:b.scrollWidth||330},${parentOrigin});}window.addEventListener("load",s);setTimeout(s,500);setTimeout(s,2000);})();</script>`;
-    // security: write badge via srcdoc instead of document.write (avoids JS-XSS-002 document.write sink)
-    iframe.srcdoc = `<!doctype html><html><head><base target="_blank"><style>html,body{margin:0;padding:0;overflow:hidden;background:transparent;line-height:0;}</style></head><body>${badgeHtml}${sizeScript}</body></html>`;
+    const parentOrigin = JSON.stringify(pageOrigin).replace(
+      /[<>\u2028\u2029]/g,
+      (c) => {
+        return "\\u" + c.charCodeAt(0).toString(16).padStart(4, "0");
+      },
+    );
+    const sizeScript = pageOrigin
+      ? `<script>(function(){function s(){var b=document.body;if(!b)return;parent.postMessage({type:"linkedin-embed-size",height:b.scrollHeight||300,width:b.scrollWidth||330},${parentOrigin});}window.addEventListener("load",s);setTimeout(s,500);setTimeout(s,2000);})();</script>`
+      : "";
+    // security: write badge via srcdoc instead of document.write (JS-XSS: no document.write sink)
+    iframe.srcdoc = `<!doctype html><html><head><meta name="color-scheme" content="${this._effectiveTheme}"><base target="_blank"><style>:root{color-scheme:${this._effectiveTheme};}html,body{margin:0;padding:0;overflow:hidden;background:transparent;line-height:0;}</style></head><body>${badgeHtml}${sizeScript}</body></html>`;
   }
 
   get _effectiveTheme() {

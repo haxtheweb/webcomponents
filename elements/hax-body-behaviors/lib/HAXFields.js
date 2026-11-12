@@ -1,4 +1,8 @@
 /**
+ * Copyright 2020 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
+/**
  * fields array of input methods to JSON schema object conversion configuration
  * that can be reused outside of Simple Fields
  */

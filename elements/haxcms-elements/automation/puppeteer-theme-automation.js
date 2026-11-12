@@ -1,5 +1,8 @@
 #!/usr/bin/env node
-
+/**
+ * Copyright 2025 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 /**
  * HAX Theme Screenshot Automation with Puppeteer
  *

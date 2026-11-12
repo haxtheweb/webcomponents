@@ -1,6 +1,6 @@
 /**
  * Copyright 2026 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * @license Apache-2.0, see LICENSE for full text.
  *
  * Page history (revisions) model: what a revision did, who made it and how
  * two versions differ. Pure functions, no DOM except HTML-to-text, so the
@@ -14,7 +14,6 @@
  * History from before op codes has no prefix; its HAX-written messages are
  * still recognised by their wording, so old revisions get a label too.
  */
-
 /** same pattern the backends use (haxcms-nodejs commitContext.js) */
 const PREFIX_PATTERN =
   /^\[([HAS]):([A-Za-z][A-Za-z0-9]{0,47})(?::([a-z0-9]{4}))?\] (.*)$/;
