@@ -15,8 +15,10 @@
  * the same page renders in DDD in any other theme.
  *
  * Input: <theme>/design-system/bridge.json (see README.md in this folder).
- * The upstream package is fetched with `npm pack` at the pinned version, so
+ * Each upstream source is fetched with `npm pack` at its pinned version, so
  * nothing from the upstream system is added to the monorepo's dependencies.
+ * Sources are compiled CSS (custom properties per light/dark selector) or
+ * DTCG token JSON (written out as custom properties under a given prefix).
  *
  * Output (in <theme>/lib/):
  *   <Prefix>Tokens.js        upstream tokens as CSS (light-dark() pairs)
@@ -28,7 +30,7 @@
  *
  * Usage:
  *   node elements/d-d-d/design-system/bridge/build-bridge.js <theme-dir> [--upstream <dir>] [--check]
- *     --upstream  an already-extracted upstream package (skips npm pack)
+ *     --upstream  an already-extracted package for the first source (skips npm pack)
  *     --check     exit 1 if the committed outputs are out of date
  */
 import fs from "fs";
@@ -58,16 +60,23 @@ const config = JSON.parse(
   fs.readFileSync(path.join(themeDir, "design-system", "bridge.json"), "utf8"),
 );
 
+// one or more upstream sources; a single legacy "upstream" is the first
+const sources = config.sources || [
+  { ...config.upstream, format: "css", scopes: config.scopes },
+];
+
 // licenses that can ship inside an Apache-2.0 project; anything else stops
 // the build so an incompatible system never lands in the monorepo
 const SHIPPABLE = ["MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause", "ISC"];
 const SHIPPABLE_FONTS = ["OFL-1.1", "Apache-2.0", "MIT"];
-if (!SHIPPABLE.includes(config.upstream.license)) {
-  console.error(
-    `License ${config.upstream.license} for ${config.upstream.package} is not on the shippable list (${SHIPPABLE.join(", ")}).`,
-  );
-  process.exit(1);
-}
+sources.forEach((source) => {
+  if (!SHIPPABLE.includes(source.license)) {
+    console.error(
+      `License ${source.license} for ${source.package} is not on the shippable list (${SHIPPABLE.join(", ")}).`,
+    );
+    process.exit(1);
+  }
+});
 (config.fonts || []).forEach((font) => {
   if (!SHIPPABLE_FONTS.includes(font.license)) {
     console.error(`Font ${font.family} is ${font.license}, which can't ship.`);
@@ -77,11 +86,13 @@ if (!SHIPPABLE.includes(config.upstream.license)) {
 
 /* ---------------------------------------------------------------- upstream */
 
-function fetchUpstream() {
+const packed = {};
+function fetchSource(source, index) {
   const given = option("--upstream");
-  if (given) return path.resolve(given);
+  if (given && index === 0) return path.resolve(given);
+  const spec = `${source.package}@${source.version}`;
+  if (packed[spec]) return packed[spec];
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "ddd-bridge-"));
-  const spec = `${config.upstream.package}@${config.upstream.version}`;
   const tgz = execFileSync(
     "npm",
     ["pack", spec, "--pack-destination", tmp, "--silent"],
@@ -97,13 +108,62 @@ function fetchUpstream() {
   const pkg = JSON.parse(
     fs.readFileSync(path.join(tmp, "package", "package.json"), "utf8"),
   );
-  if (pkg.license !== config.upstream.license) {
+  if (pkg.license !== source.license) {
     console.error(
-      `bridge.json says ${config.upstream.license} but ${spec} declares ${pkg.license}.`,
+      `bridge.json says ${source.license} but ${spec} declares ${pkg.license}.`,
     );
     process.exit(1);
   }
-  return path.join(tmp, "package");
+  packed[spec] = path.join(tmp, "package");
+  return packed[spec];
+}
+
+const kebab = (key) =>
+  String(key)
+    .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
+    .toLowerCase();
+
+/** a DTCG $value as CSS */
+function dtcgValue(token, prefix) {
+  const value = token.$value;
+  if (typeof value === "string") {
+    // {group.token} aliases point at another token in the same file
+    const alias = /^\{([^}]+)\}$/.exec(value);
+    if (alias) {
+      return `var(${prefix}${alias[1].split(".").map(kebab).join("-")})`;
+    }
+    return value;
+  }
+  if (typeof value === "number") return String(value);
+  if (Array.isArray(value)) {
+    if (token.$type === "cubicBezier")
+      return `cubic-bezier(${value.join(", ")})`;
+    if (token.$type === "fontFamily") {
+      return value.map((f) => (/\s/.test(f) ? `"${f}"` : f)).join(", ");
+    }
+    return value.join(" ");
+  }
+  if (value && typeof value === "object") {
+    if (value.hex) return value.hex;
+    if (value.value !== undefined && value.unit) {
+      return `${value.value}${value.unit}`;
+    }
+  }
+  throw new Error(`unsupported DTCG value ${JSON.stringify(value)}`);
+}
+
+/** DTCG JSON → { --prefix-group-token: css } */
+function flattenDTCG(json, prefix, pathParts = [], out = {}) {
+  Object.entries(json).forEach(([key, node]) => {
+    if (key.startsWith("$") || !node || typeof node !== "object") return;
+    const parts = [...pathParts, kebab(key)];
+    if (node.$value !== undefined) {
+      out[`${prefix}${parts.join("-")}`] = dtcgValue(node, prefix);
+    } else {
+      flattenDTCG(node, prefix, parts, out);
+    }
+  });
+  return out;
 }
 
 /** custom property declarations per selector, in source order */
@@ -184,12 +244,23 @@ function resolve(value, env, seen = []) {
 
 /* -------------------------------------------------------------------- build */
 
-const upstreamDir = fetchUpstream();
-const blocks = parseBlocks(
-  fs.readFileSync(path.join(upstreamDir, config.upstream.file), "utf8"),
-);
-const light = scopeEnv(blocks, config.scopes.light);
-const dark = scopeEnv(blocks, config.scopes.dark);
+// light and dark environments, merged across sources in order
+const light = {};
+const dark = {};
+sources.forEach((source, index) => {
+  const dir = fetchSource(source, index);
+  const text = fs.readFileSync(path.join(dir, source.file), "utf8");
+  if (source.format === "dtcg") {
+    // DTCG files here are mode-free (palettes, motion): same in both modes
+    const flat = flattenDTCG(JSON.parse(text), source.prefix);
+    Object.assign(light, flat);
+    Object.assign(dark, flat);
+  } else {
+    const blocks = parseBlocks(text);
+    Object.assign(light, scopeEnv(blocks, source.scopes.light));
+    Object.assign(dark, scopeEnv(blocks, source.scopes.dark));
+  }
+});
 
 const ddd = dddVariables();
 const dddByName = Object.fromEntries(ddd.map((v) => ["--" + v.name, v]));
@@ -427,7 +498,7 @@ const contrastReport = PAIRS.map(([fg, bg, min]) => {
 
 const prefix = config.prefix;
 const header = (what) =>
-  `/**\n * ${what}\n * GENERATED by elements/d-d-d/design-system/bridge/build-bridge.js from\n * ${config.upstream.package}@${config.upstream.version} (${config.upstream.license}, ${config.upstream.homepage}).\n * Do not edit by hand: change design-system/bridge.json and rebuild.\n */\n`;
+  `/**\n * ${what}\n * GENERATED by elements/d-d-d/design-system/bridge/build-bridge.js from\n * ${sources.map((src) => `${src.package}@${src.version} (${src.license})`).join(", ")}, ${config.homepage || sources[0].homepage}.\n * Do not edit by hand: change design-system/bridge.json and rebuild.\n */\n`;
 /** split on a separator at paren depth 0 */
 function splitTop(value, sep) {
   const parts = [];
@@ -517,7 +588,7 @@ const mapJs =
 const report = {
   system: config.system,
   title: config.title,
-  upstream: config.upstream,
+  sources: sources.map(({ scopes, ...rest }) => rest),
   fonts: config.fonts || [],
   coverage,
   contrast: contrastReport,

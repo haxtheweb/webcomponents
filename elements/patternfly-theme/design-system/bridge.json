@@ -3,18 +3,28 @@
   "system": "patternfly",
   "title": "PatternFly",
   "prefix": "Patternfly",
-  "upstream": {
-    "package": "@patternfly/patternfly",
-    "version": "6.7.0",
-    "license": "MIT",
-    "homepage": "https://www.patternfly.org",
-    "repository": "https://github.com/patternfly/patternfly",
-    "file": "base/patternfly-variables.css"
-  },
-  "scopes": {
-    "light": [":root"],
-    "dark": [":root", ":root:where(.pf-v6-theme-dark)"]
-  },
+  "homepage": "https://www.patternfly.org",
+  "sources": [
+    {
+      "package": "@patternfly/patternfly",
+      "version": "6.7.0",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2019 Red Hat, Inc.",
+      "homepage": "https://www.patternfly.org",
+      "repository": "https://github.com/patternfly/patternfly",
+      "format": "css",
+      "file": "base/patternfly-variables.css",
+      "scopes": {
+        "light": [
+          ":root"
+        ],
+        "dark": [
+          ":root",
+          ":root:where(.pf-v6-theme-dark)"
+        ]
+      }
+    }
+  ],
   "fonts": [
     {
       "family": "Red Hat Text",

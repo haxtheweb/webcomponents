@@ -1,14 +1,18 @@
 {
   "system": "patternfly",
   "title": "PatternFly",
-  "upstream": {
-    "package": "@patternfly/patternfly",
-    "version": "6.7.0",
-    "license": "MIT",
-    "homepage": "https://www.patternfly.org",
-    "repository": "https://github.com/patternfly/patternfly",
-    "file": "base/patternfly-variables.css"
-  },
+  "sources": [
+    {
+      "package": "@patternfly/patternfly",
+      "version": "6.7.0",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2019 Red Hat, Inc.",
+      "homepage": "https://www.patternfly.org",
+      "repository": "https://github.com/patternfly/patternfly",
+      "format": "css",
+      "file": "base/patternfly-variables.css"
+    }
+  ],
   "fonts": [
     {
       "family": "Red Hat Text",
