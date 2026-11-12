@@ -1,3 +1,7 @@
+/**
+ * Copyright 2021 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 // H5P iframe Resizer
 (function () {
     if (!globalThis.postMessage || !globalThis.addEventListener || globalThis.h5pResizerInitialized) {

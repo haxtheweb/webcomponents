@@ -1,8 +1,8 @@
 /**
+ * Copyright 2026 The Pennsylvania State University
  * Copyright 2026 haxtheweb
  * @license Apache-2.0, see LICENSE for full text.
  */
-
 /**
  * Thin wrapper around the browser build of @aiden0z/pptx-renderer.
  *

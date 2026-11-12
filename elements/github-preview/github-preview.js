@@ -1,6 +1,6 @@
 /**
- * Copyright 2021
- * @license MIT, see License.md for full text.
+ * Copyright 2021 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
  */
 import { LitElement, html, css, nothing } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";

@@ -1,4 +1,8 @@
 /**
+ * Copyright 2026 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
+/**
  * HTML / DOM sanitizing helpers for authored and imported content.
  * Split out of utils.js so first-paint code can import them without the
  * rest of the utils barrel; utils.js re-exports them unchanged.

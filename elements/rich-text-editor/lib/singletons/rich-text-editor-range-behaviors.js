@@ -1,6 +1,6 @@
 /**
- * Copyright 2018 Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
  */
 import "./rich-text-editor-highlight.js";
 import "./rich-text-editor-clipboard.js";

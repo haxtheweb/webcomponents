@@ -1,3 +1,7 @@
+/**
+ * Copyright 2026 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 // Runs before any element module: makes customElements.define idempotent so the
 // main bundle and the separately bundled libraries can share tags safely.
 // Icons ship as data: URI maps (runtime/icons/). Until they load, an element asking

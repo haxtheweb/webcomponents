@@ -1,3 +1,7 @@
+/**
+ * Copyright 2021 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { LitElement } from "lit";
 import { observable, makeObservable, configure, computed, toJS } from "mobx";
 configure({ enforceActions: false }); // strict mode off

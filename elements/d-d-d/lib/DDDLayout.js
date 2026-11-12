@@ -1,4 +1,8 @@
 /**
+ * Copyright 2026 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
+/**
  * DDD layout scale: the single source of truth for breakpoints and the
  * named widths used to build themes and layout elements (content column,
  * sidebar, outer container, gutters).

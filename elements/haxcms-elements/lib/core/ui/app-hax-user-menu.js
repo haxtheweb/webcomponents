@@ -1,3 +1,7 @@
+/**
+ * Copyright 2025 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 // TODO: Create app-hax-user-menu-button to be tossed into this
 // TODO: Create prefix and suffix sections for sound/light toggles and other shtuff
 

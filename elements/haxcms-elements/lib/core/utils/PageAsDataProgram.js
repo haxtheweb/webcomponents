@@ -1,4 +1,8 @@
 /**
+ * Copyright 2026 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
+/**
  * Page as Data Program for Merlin
  * Presents format options and applies ?format={selected} to the current page route.
  */

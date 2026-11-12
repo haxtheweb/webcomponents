@@ -1,6 +1,6 @@
 /**
  * Copyright 2026 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * @license Apache-2.0, see LICENSE for full text.
  *
  * Session request tokens (SEC-SESSION, haxcms-nodejs#71 / haxcms-php#655).
  *
@@ -19,7 +19,6 @@
  * Nested objects are replaced, never mutated, so observable / frozen copies
  * are safe to pass in.
  */
-
 export const USER_TOKEN_HEADER = "X-HAXCMS-User-Token";
 export const SITE_TOKEN_HEADER = "X-HAXCMS-Site-Token";
 

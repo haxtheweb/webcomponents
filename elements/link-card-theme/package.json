@@ -4,7 +4,8 @@
   "description": "HAXcms link-card theme for single-page personal profile and menu-link hubs",
   "license": "Apache-2.0",
   "author": {
-    "name": "haxtheweb"
+    "name": "haxtheweb",
+    "url": "https://hax.psu.edu/"
   },
   "keywords": [
     "webcomponents",

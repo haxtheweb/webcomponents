@@ -1,6 +1,7 @@
 /**
+ * Copyright 2021 The Pennsylvania State University
  * Copyright 2021 collinkleest
- * @license MIT, see License.md for full text.
+ * @license Apache-2.0, see LICENSE for full text.
  */
 import { LitElement, html, css, nothing } from "lit";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";

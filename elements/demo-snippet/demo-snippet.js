@@ -1,11 +1,10 @@
 /**
  * Copyright 2025 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * @license Apache-2.0, see LICENSE for full text.
  *
  * Inspired by p_lymer version, updated for lit, DDD,
  * dark mode and to leverage the HAX ecosystem.
  */
-
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import "@haxtheweb/code-sample/code-sample.js";

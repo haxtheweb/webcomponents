@@ -1,4 +1,8 @@
 /**
+ * Copyright 2025 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
+/**
  * Edit Tags Program for Merlin - Provides tag editing capability for HAXcms pages
  * This program allows editing tags on the active page
  */

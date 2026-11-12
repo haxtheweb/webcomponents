@@ -1,6 +1,6 @@
 /**
  * Copyright 2026 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * @license Apache-2.0, see LICENSE for full text.
  *
  * HAX UI admin layer: the admin shell (rail, page header, action bar,
  * overflow menu, leave prompt).

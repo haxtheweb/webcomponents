@@ -1,6 +1,6 @@
 /**
- * Copyright 2024
- * @license , see License.md for full fs.
+ * Copyright 2024 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
  */
 import "@haxtheweb/accent-card/accent-card.js";
 import "@haxtheweb/course-design/lib/block-quote.js";

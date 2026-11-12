@@ -1,6 +1,6 @@
 /**
  * Copyright 2026 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * @license Apache-2.0, see LICENSE for full text.
  *
  * Pure analysis of UX study sessions recorded by UXStudyRecorder.js.
  * No DOM access, so it runs in the viewer page, in Node, or in an agent.
@@ -11,7 +11,6 @@
  * Findings are heuristics, not verdicts: each one carries its evidence
  * (how many participants, how often, which control) so a human can judge it.
  */
-
 export const UX_STUDY_ANALYZER_VERSION = 1;
 
 const RAGE_WINDOW_MS = 1000;

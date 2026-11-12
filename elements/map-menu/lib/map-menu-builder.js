@@ -1,3 +1,7 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { LitElement, html, css } from "lit";
 import "@haxtheweb/map-menu/lib/map-menu-submenu.js";
 import "@haxtheweb/map-menu/lib/map-menu-item.js";

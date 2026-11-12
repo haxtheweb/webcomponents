@@ -1,5 +1,6 @@
 /**
- * @license MIT, see License.md for full text.
+ * Copyright 2019 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
  */
 import { LitElement, html, css, render } from "lit";
 import { oneDark } from "./lib/themes/one-dark.js";

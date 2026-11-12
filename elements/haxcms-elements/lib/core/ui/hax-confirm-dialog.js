@@ -1,4 +1,8 @@
 /**
+ * Copyright 2026 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
+/**
  * hax-confirm-dialog moved to @haxtheweb/d-d-d/lib/hax-confirm-dialog.js
  * with the rest of the HAX UI layer, so hax-body can use it too. This path
  * keeps working for existing imports.

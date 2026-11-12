@@ -1,3 +1,7 @@
+/**
+ * Copyright 2020 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { LitElement, html, render } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import "@haxtheweb/simple-toolbar/simple-toolbar.js";

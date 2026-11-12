@@ -1,6 +1,6 @@
 /**
  * Copyright 2024 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * @license Apache-2.0, see LICENSE for full text.
  */
 import { LitElement, html, css, nothing } from "lit";
 import { ESGlobalBridgeStore } from "@haxtheweb/es-global-bridge/es-global-bridge.js";

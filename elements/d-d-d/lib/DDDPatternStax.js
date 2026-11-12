@@ -1,4 +1,5 @@
 /**
+ * Copyright 2026 The Pennsylvania State University
  * Copyright 2026 haxtheweb
  * @license Apache-2.0, see LICENSE for full text.
  *
@@ -21,7 +22,6 @@
  *  - Platform gating: respect HAXStore.platformAllows('blockTemplates') and
  *    HAXStore.platformAllows('pageTemplates') before registering.
  */
-
 import {
   DDDPATTERNS,
   HAX_CAPABILITY,

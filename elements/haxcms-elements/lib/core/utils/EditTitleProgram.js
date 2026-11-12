@@ -1,4 +1,8 @@
 /**
+ * Copyright 2025 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
+/**
  * Edit Title Program for Merlin - Provides title editing capability for HAXcms pages
  * This program allows editing the title on the active page
  */

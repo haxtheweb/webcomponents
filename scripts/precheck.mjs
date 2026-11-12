@@ -122,11 +122,11 @@ const CONFIG = {
       args: ["scripts/vision-pairs-check.mjs", "--strict", "--quiet"],
     },
     {
-      // .js source files this branch adds under elements/<name>/ start with
-      // the Apache-2.0 header `hax webcomponent` writes; existing files are
-      // never checked. Also run by the license-check workflow on PRs.
-      label: "License header on new element files",
-      args: ["scripts/license-header-check.mjs"],
+      // every .js source file under elements/<name>/ starts with the
+      // Apache-2.0 header `hax webcomponent` writes (third-party code listed
+      // in THIRD_PARTY is skipped). Also run by the license-check workflow.
+      label: "License header on element files",
+      args: ["scripts/license-header-check.mjs", "--all"],
     },
   ],
 };

@@ -1,6 +1,6 @@
 /**
  * Copyright 2026 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * @license Apache-2.0, see LICENSE for full text.
  *
  * Code shared by grade-book and grade-book-lite so a fix lands once:
  * - GradeBookSharedStyles: the one stylesheet both elements use (DDD

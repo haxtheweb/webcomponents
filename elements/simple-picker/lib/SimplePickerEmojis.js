@@ -1,3 +1,7 @@
+/**
+ * Copyright 2023 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 globalThis.SimplePickerEmojis = globalThis.SimplePickerEmojis || {
   emotions: [
     { value: "&#x1F600;", alt: "&#x1F600;", description: "grinning face" },

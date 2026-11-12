@@ -1,3 +1,7 @@
+/**
+ * Copyright 2022 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { css, html } from "lit";
 import { toJS, autorun } from "mobx";
 import {

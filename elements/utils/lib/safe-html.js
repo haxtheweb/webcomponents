@@ -1,4 +1,8 @@
 /**
+ * Copyright 2026 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
+/**
  * Linear-time string helpers for HTML clean up.
  *
  * These replace lazy / nested-quantifier regular expressions such as

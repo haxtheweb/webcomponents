@@ -1,6 +1,6 @@
 /**
  * Copyright 2019 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * @license Apache-2.0, see LICENSE for full text.
  *
  * H5P content is rendered with the MIT-licensed h5p-standalone player
  * (https://www.npmjs.com/package/h5p-standalone), loaded at runtime as a

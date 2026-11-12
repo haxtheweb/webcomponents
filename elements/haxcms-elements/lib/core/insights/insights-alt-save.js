@@ -1,6 +1,6 @@
 /**
  * Copyright 2026 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * @license Apache-2.0, see LICENSE for full text.
  *
  * Saves alt text edited on the Reports accessibility screen through the
  * site's block operations API (haxtheweb/issues#3270):

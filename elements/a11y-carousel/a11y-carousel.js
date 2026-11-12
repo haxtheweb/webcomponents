@@ -1,3 +1,7 @@
+/**
+ * Copyright 2020 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { LitElement, html, css } from "lit";
 import { RadioBehaviors } from "@haxtheweb/radio-behaviors/radio-behaviors.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";

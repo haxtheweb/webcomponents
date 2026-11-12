@@ -18,10 +18,10 @@ name: license-check
 #   LICENSE.md and package.json are still Apache-2.0. Findings go to the job
 #   summary; the job fails on any problem. Nothing is opened or changed.
 # - pull_request (only when element .js files change): every .js source file
-#   the pull request adds under elements/<name>/ must open with the Apache-2.0
-#   header `hax webcomponent` scaffolds (Copyright <year> <holder> /
-#   @license Apache-2.0). Existing files are never checked; tests, demos,
-#   generated and vendored files are skipped. scripts/license-header-check.mjs.
+#   under elements/<name>/ must open with the Apache-2.0 header `hax
+#   webcomponent` scaffolds (Copyright <year> <holder> / @license Apache-2.0).
+#   Tests, demos, generated files and the third-party code listed in
+#   THIRD_PARTY are skipped. scripts/license-header-check.mjs --all.
 on:
   # No branch filter: stacked PRs (base is another feature branch) must run too.
   pull_request:
@@ -82,25 +82,22 @@ jobs:
           printf '%s' "$INVALID" > "$RUNNER_TEMP/invalid-licenses.json"
           node scripts/license-check.mjs --pr "$RUNNER_TEMP/invalid-licenses.json"
 
-  new-file-headers:
-    name: License header on new element files
+  license-headers:
+    name: License header on element files
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      # the PR merge commit with its base as first parent, so HEAD^1..HEAD is
-      # exactly this pull request's change
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-          fetch-depth: 2
       - name: Set up Node.js
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 24
-      - name: New element source files carry the license header
-        run: node scripts/license-header-check.mjs --base HEAD^1
+      - name: Element source files carry the license header
+        run: node scripts/license-header-check.mjs --all
 
   weekly-sweep:
     name: Dependency license sweep
