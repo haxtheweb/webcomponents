@@ -174,6 +174,16 @@ describe("ecosystem-web", () => {
     ).to.equal(0);
   });
 
+  it("draws tile art from a web's own images", async () => {
+    const b = JSON.parse(JSON.stringify(BUNDLE));
+    b.webs.main.mmd += "\n  %%@ node open image=pic";
+    b.webs.main.json.images = { pic: "data:image/png;base64,AAAA" };
+    element.loadBundle(b);
+    await element.updateComplete;
+    const img = element.shadowRoot.querySelector(".node image");
+    expect(img.getAttribute("href")).to.equal("data:image/png;base64,AAAA");
+  });
+
   it("passes the a11y audit", async () => {
     await expect(element).shadowDom.to.be.accessible();
   });

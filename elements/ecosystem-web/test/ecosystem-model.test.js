@@ -11,6 +11,7 @@ import {
   parseGlyph,
   lerpView,
   easeOut,
+  safeImage,
 } from "../lib/ecosystem-model.js";
 
 const MMD = [
@@ -100,6 +101,30 @@ describe("ecosystem-model", () => {
         .vb,
     ).to.equal("0 0 8 8");
     expect(parseGlyph("<script>x()</script>")).to.equal(null);
+  });
+
+  it("keeps a many-ink glyph whole as static art, without script", () => {
+    const g = parseGlyph(
+      '<defs><mask id="a"><path d="M0 0h24v24H0z"/></mask></defs><script>x()</script><path mask="url(#a)" d="M0 0h24v24H0z"/>',
+      "0 0 24 24",
+    );
+    expect(g.shapes).to.equal(undefined);
+    expect(g.art.startsWith("data:image/svg+xml;charset=utf-8,")).to.be.true;
+    const svgText = decodeURIComponent(g.art.split(",").slice(1).join(","));
+    expect(svgText).to.contain("<mask");
+    expect(svgText).to.not.contain("script");
+    expect(parseGlyph('<text x="1">HAX</text>').art).to.exist;
+  });
+
+  it("allows tile art as http(s) or a carried image, nothing else", () => {
+    expect(safeImage("data:image/png;base64,AAAA")).to.equal(
+      "data:image/png;base64,AAAA",
+    );
+    expect(safeImage("https://hax.cloud/a.jpg")).to.equal(
+      "https://hax.cloud/a.jpg",
+    );
+    expect(safeImage("data:text/html,<script>x()</script>")).to.equal("#");
+    expect(safeImage("javascript:x()")).to.equal("#");
   });
 
   it("eases the camera between views", () => {

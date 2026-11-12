@@ -515,6 +515,13 @@ export function safeUrl(u) {
   return /^https?:\/\//i.test(u || "") ? u : "#";
 }
 
+/** Tile art is http(s), or an image carried in the bundle as a data: URL. */
+export function safeImage(u) {
+  return /^data:image\/(png|jpeg|gif|webp|svg\+xml)[;,]/i.test(u || "")
+    ? u
+    : safeUrl(u);
+}
+
 /**
  * Build every web in a bundle ({order: [...ids], webs: {id: {mmd, json}}}) into
  * laid-out models. The main web is built first, so portals can find their home.
@@ -550,6 +557,9 @@ const GLYPH_ATTRS = {
   line: ["x1", "y1", "x2", "y2"],
 };
 const GLYPH_COMMON = ["transform", "opacity", "fill", "stroke", "stroke-width"];
+/** What makes a glyph art rather than one ink of basic shapes. */
+const ART_TAGS =
+  "mask, text, linearGradient, radialGradient, pattern, clipPath";
 
 /**
  * Turn an icon's SVG markup into plain shape records ({tag, a: {attr: value}})
@@ -557,9 +567,14 @@ const GLYPH_COMMON = ["transform", "opacity", "fill", "stroke", "stroke-width"];
  * Only basic shapes and their geometry survive; scripts, links, styles and
  * event attributes are dropped. Groups are flattened (their transform is
  * not kept, which the HAX iconsets do not use).
+ *
+ * A glyph that needs more than one ink (masks, lettering, gradients, like
+ * the World Traveler marks) comes back as `art` instead: the SVG as a
+ * data: URL for an <image>, which draws it exactly but statically (an SVG
+ * drawn as an image runs no script and loads nothing).
  * @param {string} markup the inner markup of an <svg>, or a whole <svg> file
  * @param {string} [vb] viewBox, when the markup has no <svg> root
- * @returns {{vb: string, shapes: Array<{tag: string, a: Object}>}|null}
+ * @returns {{vb: string, shapes: Array<{tag: string, a: Object}>}|{vb: string, art: string}|null}
  */
 export function parseGlyph(markup, vb) {
   if (!markup || typeof globalThis.DOMParser === "undefined") return null;
@@ -570,6 +585,18 @@ export function parseGlyph(markup, vb) {
   const doc = new globalThis.DOMParser().parseFromString(text, "image/svg+xml");
   const root = doc.documentElement;
   if (!root || root.nodeName !== "svg") return null;
+  const box = vb || root.getAttribute("viewBox") || "0 0 24 24";
+  if (root.querySelector(ART_TAGS)) {
+    root
+      .querySelectorAll("script, foreignObject, style")
+      .forEach((el) => el.remove());
+    root.setAttribute("viewBox", box);
+    const out = new globalThis.XMLSerializer().serializeToString(root);
+    return {
+      vb: box,
+      art: `data:image/svg+xml;charset=utf-8,${encodeURIComponent(out)}`,
+    };
+  }
   const shapes = [];
   root.querySelectorAll("*").forEach((el) => {
     const keep = GLYPH_ATTRS[el.nodeName];
@@ -588,10 +615,7 @@ export function parseGlyph(markup, vb) {
     shapes.push({ tag: el.nodeName, a });
   });
   if (!shapes.length) return null;
-  return {
-    vb: vb || root.getAttribute("viewBox") || "0 0 24 24",
-    shapes,
-  };
+  return { vb: box, shapes };
 }
 
 /** Ease-out cubic, for camera moves. */

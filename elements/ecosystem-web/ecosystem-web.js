@@ -24,6 +24,7 @@ import {
   parseGlyph,
   easeOut,
   lerpView,
+  safeImage,
 } from "./lib/ecosystem-model.js";
 
 /** Glyphs by icon name, shared by every ecosystem-web on the page. */
@@ -52,6 +53,16 @@ const LINK_LABEL = {
   recording: "Recording",
   slides: "Slides",
 };
+
+/** Up to three initials of a label, as a stand-in for art. */
+function initials(label) {
+  return String(label || "")
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 3)
+    .map((w) => w[0].toUpperCase())
+    .join("");
+}
 
 /** One glyph shape as an SVG template (attributes come from parseGlyph). */
 function glyphShape(sh) {
@@ -581,6 +592,9 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
         .node .gl [fill="none"] {
           fill: none;
         }
+        .node .art-fb {
+          display: none;
+        }
 
         .node.off {
           opacity: 0 !important;
@@ -607,6 +621,12 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
           }
           .node .gl {
             fill: CanvasText;
+          }
+          .node image.art {
+            display: none;
+          }
+          .node .art-fb {
+            display: block;
           }
           .node .gl [stroke] {
             stroke: CanvasText;
@@ -842,6 +862,14 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
   loadBundle(bundle) {
     this._bundle = bundle || {};
     this._models = buildWebs(this._bundle);
+    // tile art: each web's own images (theme thumbnails live in the themes
+    // web), then the bundle's, which win
+    const webs = this._bundle.webs || {};
+    this._images = Object.assign(
+      {},
+      ...Object.values(webs).map((w) => (w && w.json && w.json.images) || {}),
+      this._bundle.images || {},
+    );
     if (!this._models[this.web]) this.web = "main";
     this._edgePrev = null;
     this._cam = null;
@@ -1234,15 +1262,16 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
   }
   /** an image path from the bundle, resolved against the bundle's own URL; only http(s) is followed */
   _asset(u) {
+    if (/^data:/i.test(u || "")) return safeImage(u);
     try {
       const base = new URL(this.src || "./", globalThis.document.baseURI);
-      return safeUrl(new URL(u, base).href);
+      return safeImage(new URL(u, base).href);
     } catch {
       return "#";
     }
   }
   _icon(n, s) {
-    const images = (this._bundle && this._bundle.images) || {};
+    const images = this._images || {};
     if (n.image && images[n.image]) {
       const r = s / 2 - 4;
       return svg`<image href="${this._asset(images[n.image])}" x="${-r}" y="${-r}" width="${r * 2}" height="${r * 2}" preserveAspectRatio="xMidYMid slice"></image>`;
@@ -1260,6 +1289,13 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
     const dx = n.shape === "talk" ? 4 : 0;
     const g = this._glyph(n.icon || "icons:help");
     if (!g) return nothing;
+    if (g.art) {
+      // drawn as designed; under forced colors the tile's initials stand in,
+      // since an image keeps its own colors there
+      const fb = initials(n.label);
+      const fs = s * (fb.length <= 2 ? 0.36 : 0.28);
+      return svg`<image class="art" href="${safeImage(g.art)}" x="${(-z / 2 + dx).toFixed(1)}" y="${(-z / 2 + dy).toFixed(1)}" width="${z.toFixed(1)}" height="${z.toFixed(1)}" aria-hidden="true"></image><text class="mono art-fb" style="font-size:${fs.toFixed(1)}px">${fb}</text>`;
+    }
     return svg`<svg class="gl" x="${(-z / 2 + dx).toFixed(1)}" y="${(-z / 2 + dy).toFixed(1)}" width="${z.toFixed(1)}" height="${z.toFixed(1)}" viewBox="${g.vb}" aria-hidden="true">${g.shapes.map(glyphShape)}</svg>`;
   }
   /**
