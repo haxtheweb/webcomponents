@@ -283,15 +283,14 @@ export class VhsBlogVcr extends LitElement {
               box-shadow 0.12s;
           }
           :host([phase="idle"]) .clock {
-            animation: vhs-vcr-blink 1s steps(2) infinite;
+            animation: vhs-vcr-blink 1s step-end infinite;
           }
         }
+        /* the clock blinks on and off; it is never shown at partial
+           strength, so it always keeps its full contrast */
         @keyframes vhs-vcr-blink {
-          0% {
-            opacity: 1;
-          }
-          100% {
-            opacity: 0.15;
+          50% {
+            visibility: hidden;
           }
         }
         @media (max-width: 760px) {
