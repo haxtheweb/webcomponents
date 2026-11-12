@@ -295,6 +295,43 @@ describe("SuperDaemon core behavior", () => {
     );
   });
 
+  it("filterItems puts priorityPaths first, in their order, and close clears them", () => {
+    element.defineOption({
+      title: "Apple",
+      path: "HAX/insert/block/apple",
+      value: {},
+      eventName: "e",
+    });
+    element.defineOption({
+      title: "Mango",
+      path: "HAX/insert/block/mango",
+      value: {},
+      eventName: "e",
+    });
+    element.defineOption({
+      title: "Zebra",
+      path: "HAX/insert/block/zebra",
+      value: {},
+      eventName: "e",
+    });
+    element.priorityPaths = [
+      "HAX/insert/block/zebra",
+      "HAX/insert/block/mango",
+    ];
+    const led = element.filterItems(element.allItems, []);
+    expect(led.map((i) => i.title).join(",")).to.equal("Zebra,Mango,Apple");
+    // an exact title match still wins over a priority path
+    element.value = "apple";
+    expect(element.filterItems(element.allItems, [])[0].title).to.equal(
+      "Apple",
+    );
+    element.value = "";
+    element.close();
+    expect(element.priorityPaths).to.deep.equal([]);
+    const plain = element.filterItems(element.allItems, []);
+    expect(plain.map((i) => i.title).join(",")).to.equal("Apple,Mango,Zebra");
+  });
+
   it("filterItems drops hidden items and honors inline gating", () => {
     element.defineOption({
       title: "Hidden gem",
