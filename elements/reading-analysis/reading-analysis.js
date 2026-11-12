@@ -1693,7 +1693,10 @@ export class ReadingAnalysis extends QuestionElement {
           transform: translateY(-3px);
           box-shadow: inset 0 0 0 var(--ddd-border-size-md) var(--ra-page);
         }
+        /* the flag shape clips its own outline, so a focused flag drops
+           the clip and shows the ring around its box (forced colors too) */
         .flag:focus-visible {
+          clip-path: none;
           outline: var(--ddd-focus-ring);
           outline-offset: var(--ddd-focus-offset);
         }
