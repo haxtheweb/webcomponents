@@ -529,6 +529,8 @@ describe("video-player learner data across re-renders", () => {
     expect(seen.map((d) => d.activityDisplay)).to.deep.equal([
       "attempted",
       "progressed",
+      "progressed",
+      "progressed",
       "completed",
     ]);
   });

@@ -1,0 +1,65 @@
+{
+  "title": "Eight slide deck",
+  "source": null,
+  "pptx": null,
+  "thumbnail": null,
+  "renderTier": "client",
+  "slides": [
+    {
+      "number": 1,
+      "title": "Slide 1",
+      "html": "<h1>Slide 1</h1>",
+      "image": null,
+      "notes": null
+    },
+    {
+      "number": 2,
+      "title": "Slide 2",
+      "html": "<h1>Slide 2</h1>",
+      "image": null,
+      "notes": null
+    },
+    {
+      "number": 3,
+      "title": "Slide 3",
+      "html": "<h1>Slide 3</h1>",
+      "image": null,
+      "notes": null
+    },
+    {
+      "number": 4,
+      "title": "Slide 4",
+      "html": "<h1>Slide 4</h1>",
+      "image": null,
+      "notes": null
+    },
+    {
+      "number": 5,
+      "title": "Slide 5",
+      "html": "<h1>Slide 5</h1>",
+      "image": null,
+      "notes": null
+    },
+    {
+      "number": 6,
+      "title": "Slide 6",
+      "html": "<h1>Slide 6</h1>",
+      "image": null,
+      "notes": null
+    },
+    {
+      "number": 7,
+      "title": "Slide 7",
+      "html": "<h1>Slide 7</h1>",
+      "image": null,
+      "notes": null
+    },
+    {
+      "number": 8,
+      "title": "Slide 8",
+      "html": "<h1>Slide 8</h1>",
+      "image": null,
+      "notes": null
+    }
+  ]
+}
