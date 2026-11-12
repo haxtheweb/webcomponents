@@ -584,6 +584,11 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
           /* hax:admin-chevron points right: closed as is, open turned down */
           --a11y-collapse-transform-deg: 90deg;
           --a11y-collapse-transform-rotated-deg: 0deg;
+          /* square rows with no hover wash: the content look (rounded
+             frame, tinted hover) is for collapses on the page */
+          --a11y-collapse-border-radius: 0;
+          --a11y-collapse-group-radius: 0;
+          --a11y-collapse-heading-hover-background-color: transparent;
         }
         #settingsform a11y-collapse::part(heading-id) {
           flex-direction: row-reverse;
@@ -593,9 +598,21 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
           padding: 0 var(--hax-ui-gap-lg);
           border-bottom: 1px solid var(--hax-ui-line);
         }
+        /* a plain chevron, not the round toggle collapses get on the
+           page */
         #settingsform a11y-collapse::part(icon) {
           --simple-icon-width: var(--hax-ui-icon);
           --simple-icon-height: var(--hax-ui-icon);
+          width: var(--hax-ui-icon);
+          height: var(--hax-ui-icon);
+          border: none;
+          border-radius: 0;
+          background-color: transparent;
+          color: inherit;
+        }
+        /* the row names itself; no "expand" / "collapse" tooltip */
+        #settingsform a11y-collapse::part(tooltip) {
+          display: none;
         }
         #settingsform a11y-collapse span[slot="heading"] {
           display: block;

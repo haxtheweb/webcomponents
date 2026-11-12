@@ -73,6 +73,10 @@ export const HaxTrayBrowserStyles = [
       /* hax:admin-chevron points right: closed as is, open turned down */
       --a11y-collapse-transform-deg: 90deg;
       --a11y-collapse-transform-rotated-deg: 0deg;
+      /* square rows with no hover wash: the content look (rounded frame,
+         tinted hover) is for collapses on the page */
+      --a11y-collapse-border-radius: 0;
+      --a11y-collapse-heading-hover-background-color: transparent;
     }
     a11y-collapse::part(heading-id) {
       flex-direction: row-reverse;
@@ -90,9 +94,20 @@ export const HaxTrayBrowserStyles = [
       font-size: var(--hax-ui-admin-font-size);
       line-height: calc(var(--hax-ui-row-height) - 1px);
     }
+    /* a plain chevron, not the round toggle collapses get on the page */
     a11y-collapse::part(icon) {
       --simple-icon-width: var(--hax-ui-icon);
       --simple-icon-height: var(--hax-ui-icon);
+      width: var(--hax-ui-icon);
+      height: var(--hax-ui-icon);
+      border: none;
+      border-radius: 0;
+      background-color: transparent;
+      color: inherit;
+    }
+    /* the row names itself; no "expand" / "collapse" tooltip */
+    a11y-collapse::part(tooltip) {
+      display: none;
     }
     /* an empty list (Recent before anything is added) is just its row */
     a11y-collapse[disabled] simple-button-grid {
