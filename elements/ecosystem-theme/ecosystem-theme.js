@@ -17,6 +17,7 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-region.js";
 import "@haxtheweb/ecosystem-web/ecosystem-web.js";
+import "@haxtheweb/hax-network-bar/hax-network-bar.js";
 
 const VIEW_KEY = "hax-cloud-view";
 
@@ -368,6 +369,10 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
         }
 
         /* ---------- header ---------- */
+        hax-network-bar {
+          --hax-network-bar-max-width: var(--eco-wrap);
+          --hax-network-bar-gutter: var(--eco-gutter);
+        }
         header.top {
           background-color: var(--ddd-theme-default-nittanyNavy);
           color: var(--ddd-theme-default-white);
@@ -743,6 +748,7 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     const footer = Array.isArray(this._vars.footer) ? this._vars.footer : [];
     return html`
       <a class="skip-link" href="#contentcontainer">${this.t.skip}</a>
+      <hax-network-bar current="cloud"></hax-network-bar>
       <header class="top">
         <div class="wrap">
           <a

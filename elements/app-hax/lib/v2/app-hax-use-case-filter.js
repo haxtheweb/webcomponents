@@ -2373,7 +2373,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
                 theme.description || this.t.startWithBlankSiteUsingTheme,
               useCaseIcon: icons,
               useCaseTag: tags,
-              demoLink: `https://playground.hax.cloud/site.html?theme=${themeMachineName}`,
+              demoLink: `https://webcomponents.hax.cloud/elements/haxcms-elements/demo/index.html?theme=${themeMachineName}`,
               originalData: theme,
             };
           },

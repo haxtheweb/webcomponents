@@ -13,7 +13,7 @@ If you need help with this project, please use the following resources:
 ### Getting Started
 
 - Check out our [documentation](https://haxtheweb.org/documentation) for guides and tutorials
-- Explore and play with HAX components: [HAX Magic Script Playground](https://hax.cloud/magicscript.html)
+- Explore and play with HAX components: [the HAX magic script](https://hax.cloud/magic-script)
 - Join the discussion on [Discord](https://discord.gg/aCGxmRHEJP) to connect with other developers
 
 ### Before Opening an Issue

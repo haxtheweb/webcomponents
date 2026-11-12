@@ -33,6 +33,7 @@
   "dependencies": {
     "@haxtheweb/d-d-d": "^26.8.0",
     "@haxtheweb/ecosystem-web": "^26.8.0",
+    "@haxtheweb/hax-network-bar": "^26.8.0",
     "@haxtheweb/haxcms-elements": "^26.8.0",
     "lit": "3.3.3",
     "mobx": "6.16.1"

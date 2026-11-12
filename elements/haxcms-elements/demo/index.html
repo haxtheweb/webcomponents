@@ -396,6 +396,48 @@
       <h1>Loading...</h1>
     </div>
   </section>
+  <script>
+    // ?theme=<machine name> previews this demo site in any theme listed in
+    // ../lib/themes.json (theme preview links from app-hax and hax.cloud). It
+    // only changes the theme of the site.json this page loads; nothing is saved.
+    (function () {
+      var requested = new URLSearchParams(globalThis.location.search).get('theme');
+      if (!requested || !/^[a-z0-9-]+$/.test(requested)) {
+        return;
+      }
+      var nativeFetch = globalThis.fetch.bind(globalThis);
+      var themes = nativeFetch(new URL('../lib/themes.json', globalThis.location.href).href)
+        .then(function (r) { return r.ok ? r.json() : {}; })
+        .catch(function () { return {}; });
+      globalThis.fetch = function (input, init) {
+        var url = typeof input === 'string' ? input : (input && input.url) || '';
+        var path = url.split('?')[0].split('#')[0];
+        if (!/(^|\/)site\.json$/.test(path)) {
+          return nativeFetch(input, init);
+        }
+        return Promise.all([nativeFetch(input, init), themes]).then(function (both) {
+          var res = both[0];
+          var theme = Object.prototype.hasOwnProperty.call(both[1], requested) ? both[1][requested] : null;
+          if (!res.ok || !theme || !theme.element || !theme.path) {
+            return res;
+          }
+          return res.clone().json().then(function (manifest) {
+            var current = manifest.metadata && manifest.metadata.theme ? manifest.metadata.theme : {};
+            manifest.metadata = manifest.metadata || {};
+            manifest.metadata.theme = Object.assign({}, current, {
+              element: theme.element,
+              path: theme.path,
+              name: theme.name || theme.element,
+            });
+            return new Response(JSON.stringify(manifest), {
+              status: res.status,
+              headers: { 'Content-Type': 'application/json' },
+            });
+          }, function () { return res; });
+        });
+      };
+    })();
+  </script>
   <haxcms-site-builder id="site" file="site.json"></haxcms-site-builder>
   <script>
       // reduce FOUC for dark mode so it starts in dark rapidly if selected

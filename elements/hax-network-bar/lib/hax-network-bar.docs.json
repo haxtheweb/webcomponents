@@ -1,0 +1,41 @@
+{
+  "tag": "hax-network-bar",
+  "folder": "hax-network-bar",
+  "package": "@haxtheweb/hax-network-bar",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "hax-network-bar",
+  "description": "The strip across the top of every hax.cloud site that links them as one network",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/hax-network-bar/hax-network-bar.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/hax-network-bar/hax-network-bar.js",
+  "install": "npm i @haxtheweb/hax-network-bar",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "current",
+      "property": "current",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Which site this is: cloud, elements, demo, rpg or docs.",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "377aeab6f518",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/hax-network-bar",
+    "file": "hax-network-bar.js"
+  }
+}
