@@ -1,6 +1,7 @@
 /**
  * Copyright 2021 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * @license Apache-2.0, see LICENSE for full text.
+ *
  * @demo demo/index.html
  */
 // dependencies / things imported

@@ -1,3 +1,7 @@
+/**
+ * Copyright 2026 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { waitForHAXCMSSiteApiRegistryReady } from "./haxcms-site-api-registry.js";
 import { trimTrailingSlashes } from "@haxtheweb/utils/lib/safe-html.js";

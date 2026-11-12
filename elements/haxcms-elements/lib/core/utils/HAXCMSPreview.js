@@ -1,6 +1,6 @@
 /**
  * Copyright 2026 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * @license Apache-2.0, see LICENSE for full text.
  *
  * Preview: a logged in author sees the site as a visitor would, at the size
  * of the device they pick, including edits they have not saved yet
@@ -13,7 +13,6 @@
  * same-origin frame. The frame is named PREVIEW_FRAME_NAME; a page loaded
  * under that name starts in preview and never loads the editor.
  */
-
 export const PREVIEW_FRAME_NAME = "haxcms-preview-frame";
 
 /**

@@ -1,3 +1,7 @@
+/**
+ * Copyright 2022 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { store } from "../haxcms-site-store.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { HAXCMSButton } from "../utils/HAXCMSButton.js";

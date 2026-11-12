@@ -1,3 +1,7 @@
+/**
+ * Copyright 2025 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { HaxRouter } from "@haxtheweb/haxcms-elements/lib/core/hax-router.js";
 import { autorun, toJS } from "mobx";
 import { store } from "./AppHaxStore.js";

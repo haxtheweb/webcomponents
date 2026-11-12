@@ -1,6 +1,6 @@
 /**
  * Copyright 2026 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * @license Apache-2.0, see LICENSE for full text.
  *
  * Site admin section registry: one ordered list of every section the
  * Site settings launcher shows. The launcher, the section rail, Features

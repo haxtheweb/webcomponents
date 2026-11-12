@@ -1,3 +1,7 @@
+/**
+ * Copyright 2026 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 const windowControllers = new AbortController();
 // loader that uses a CSS selector and variables in order to auto generate outlines
 let WCRegistryLoaderCSSDebounce;

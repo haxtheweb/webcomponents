@@ -1,4 +1,8 @@
 /**
+ * Copyright 2026 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
+/**
  * `hax-router`
  * Lightweight router replacement for router
  * Implements only the API surface used by HAXcms and app-hax.

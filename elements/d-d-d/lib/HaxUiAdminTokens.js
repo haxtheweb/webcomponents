@@ -1,6 +1,6 @@
 /**
  * Copyright 2026 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * @license Apache-2.0, see LICENSE for full text.
  *
  * HAX UI admin layer: tokens, the color-scheme follower and the small
  * primitives (pills, keyboard hints, visually hidden text, focus ring).

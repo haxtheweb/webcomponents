@@ -1,8 +1,7 @@
 /**
  * Copyright 2026 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * @license Apache-2.0, see LICENSE for full text.
  */
-
 /**
  * Merlin's spoken search, without AI: plain string math that turns what
  * the speech engine heard into a ranked list of commands, plus a small

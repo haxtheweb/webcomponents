@@ -1,13 +1,12 @@
 /**
  * Copyright 2026 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * @license Apache-2.0, see LICENSE for full text.
  *
  * HAX UI admin layer: the admin icon names (hax:admin-*), one per meaning.
  * Part of @haxtheweb/d-d-d/lib/HaxUiAdminStyles.js, which re-exports it
  * with the rest of the layer. Import this file directly when an element
  * needs only this piece, so a page does not download the whole layer.
  */
-
 /**
  * One name per admin meaning. Admin chrome uses the hax:admin-* family
  * only (see "Admin icons" in hax-ui-admin.md); pick the icon by what it

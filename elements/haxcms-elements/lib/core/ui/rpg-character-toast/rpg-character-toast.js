@@ -1,3 +1,7 @@
+/**
+ * Copyright 2025 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { css, html, unsafeCSS } from "lit";
 import { SimpleToastEl } from "@haxtheweb/simple-toast/lib/simple-toast-el.js";
 import "@haxtheweb/rpg-character/rpg-character.js";

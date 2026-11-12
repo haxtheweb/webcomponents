@@ -1,3 +1,7 @@
+/**
+ * Copyright 2024 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { html, css, LitElement } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";

@@ -1,6 +1,6 @@
 /**
  * Copyright 2026 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * @license Apache-2.0, see LICENSE for full text.
  *
  * HAX UI dialog frame: the one look for every HAX modal (site admin, system
  * settings, Merlin, the editor's dialogs, the image pop up). A 48px dark

@@ -1,3 +1,7 @@
+/**
+ * Copyright 2024 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 // this helps with resizing on learning management systems
 // like cantvas and h4p
 import "@haxtheweb/es-global-bridge/es-global-bridge.js";

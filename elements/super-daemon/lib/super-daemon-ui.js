@@ -1,3 +1,7 @@
+/**
+ * Copyright 2023 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { html, css, nothing } from "lit";
 import { SimpleFilterMixin } from "@haxtheweb/simple-filter/simple-filter.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";

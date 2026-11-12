@@ -1,6 +1,6 @@
 /**
- * Copyright 2023
- * @license , see License.md for full text.
+ * Copyright 2023 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
  */
 import { html, css } from "lit";
 import "@haxtheweb/responsive-utility/responsive-utility.js";

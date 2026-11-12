@@ -1,3 +1,7 @@
+/**
+ * Copyright 2026 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 // the style guide pickers render HAXOptionSampleFactory previews, which
 // are d-d-d-sample elements; d-d-d.js no longer defines it
 import "./d-d-d-sample.js";

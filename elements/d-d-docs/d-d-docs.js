@@ -1,6 +1,6 @@
 /**
- * Copyright 2024
- * @license , see License.md for full fs.
+ * Copyright 2024 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
  */
 import "@haxtheweb/accent-card/accent-card.js";
 import "@haxtheweb/course-design/lib/block-quote.js";
@@ -47,7 +47,6 @@ import "@haxtheweb/author-card/author-card.js";
 import "@haxtheweb/audio-player/audio-player.js";
 import "@haxtheweb/editable-table/editable-table.js";
 import "@haxtheweb/grid-plate/grid-plate.js";
-import "@haxtheweb/image-compare-slider/image-compare-slider.js";
 import "@haxtheweb/image-gallery/image-gallery.js";
 import "@haxtheweb/lrndesign-timeline/lrndesign-timeline.js";
 import "@haxtheweb/media-playlist/media-playlist.js";
@@ -58,14 +57,11 @@ import "@haxtheweb/simple-fields/simple-fields.js";
 import "@haxtheweb/count-up/count-up.js";
 import "@haxtheweb/simple-pager/simple-pager.js";
 import "@haxtheweb/page-contents-menu/page-contents-menu.js";
-import "@haxtheweb/simple-login/simple-login.js";
 import "@haxtheweb/simple-toast/simple-toast.js";
 import "@haxtheweb/simple-progress/simple-progress.js";
 import "@haxtheweb/multiple-choice/multiple-choice.js";
 import "@haxtheweb/flash-card/lib/flash-card-set.js";
-import "@haxtheweb/progress-donut/progress-donut.js";
 import "@haxtheweb/a11y-carousel/a11y-carousel.js";
-import "@haxtheweb/lrndesign-chart/lib/lrndesign-bar.js";
 import "@haxtheweb/social-share-link/social-share-link.js";
 import "@haxtheweb/q-r/q-r.js";
 import "@haxtheweb/date-card/date-card.js";

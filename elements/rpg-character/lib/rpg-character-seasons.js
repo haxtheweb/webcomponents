@@ -1,12 +1,11 @@
 /**
  * Copyright 2026 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * @license Apache-2.0, see LICENSE for full text.
  *
  * Opt-in seasonal costumes for rpg-character. A season offers a few presets
  * (or a hat); which one a character wears is picked from its seed, so a
  * person keeps the same costume for the whole season.
  */
-
 /**
  * Easter Sunday (Western) for a year: the anonymous Gregorian algorithm.
  * Returns [month (1-12), day].

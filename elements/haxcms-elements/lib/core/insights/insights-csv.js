@@ -1,6 +1,6 @@
 /**
  * Copyright 2026 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * @license Apache-2.0, see LICENSE for full text.
  *
  * CSV builders for the Insights "Export CSV" button: one pure function per
  * section, each taking the siteResults() object and returning CSV text
@@ -8,7 +8,6 @@
  * with = + - @ (or a tab / carriage return) get a leading apostrophe so a
  * spreadsheet never runs them as formulas.
  */
-
 function cell(value) {
   if (value === null || value === undefined) {
     return "";

@@ -1,3 +1,7 @@
+/**
+ * Copyright 2026 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { compareCategories } from "../utils/haxcms-admin-helpers.js";
 import { HaxcmsAdminSectionMixin } from "../admin/HaxcmsAdminSectionMixin.js";
 import { html, css, nothing } from "lit";

@@ -1,4 +1,5 @@
 /**
+ * Copyright 2026 The Pennsylvania State University
  * Copyright 2026 haxtheweb
  * @license Apache-2.0, see LICENSE for full text.
  *
@@ -21,7 +22,6 @@
  * A blank page is a rest. Light pages are never marked down for being light;
  * what is measured is the shape, not the intensity.
  */
-
 // Effort weights, in minutes of learner effort. A video counts once as an
 // activity to engage with, whatever its length or how many player tags wrap
 // it: very long videos are not more helpful, and this view never changes

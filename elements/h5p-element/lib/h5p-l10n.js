@@ -1,3 +1,7 @@
+/**
+ * Copyright 2026 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 /** Default H5P core UI strings (English); mirrors the strings h5p-standalone ships. */
 export const H5P_L10N = {
   "H5P": {

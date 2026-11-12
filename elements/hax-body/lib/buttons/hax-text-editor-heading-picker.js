@@ -1,4 +1,8 @@
 /**
+ * Copyright 2026 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
+/**
  * HAX-specific heading picker that mirrors rich-text-editor-heading-picker
  * but converts blocks using HAX's haxChangeTagName flow instead of
  * relying on document.execCommand('formatBlock'), which can drop

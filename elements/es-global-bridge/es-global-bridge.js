@@ -1,8 +1,7 @@
 /**
  * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * @license Apache-2.0, see LICENSE for full text.
  */
-
 /**
  * Object to help load things in globally scoped and fire events when ready
  */
@@ -74,8 +73,8 @@ export class ESGlobalBridge {
           script.onerror = () => {
             reject(
               new Error(
-                `Failed to load ${name} script with location ${location}.`
-              )
+                `Failed to load ${name} script with location ${location}.`,
+              ),
             );
             // see note in onload above: don't clobber a newer attempt's state
             if (this.imports[name] === location) {
@@ -102,4 +101,5 @@ globalThis.ESGlobalBridge.requestAvailability = () => {
   }
   return globalThis.ESGlobalBridge.instance;
 };
-export const ESGlobalBridgeStore = globalThis.ESGlobalBridge.requestAvailability();
+export const ESGlobalBridgeStore =
+  globalThis.ESGlobalBridge.requestAvailability();

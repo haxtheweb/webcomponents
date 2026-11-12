@@ -1,4 +1,8 @@
 /**
+ * Copyright 2026 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
+/**
  * Edit Icon Program for Merlin - Provides icon editing capability for HAXcms pages
  * This program allows editing the icon on the active page
  */

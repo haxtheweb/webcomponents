@@ -1,3 +1,7 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { html, css } from "lit";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import { UndoManagerBehaviors } from "@haxtheweb/undo-manager/undo-manager.js";
@@ -24,8 +28,6 @@ import { HaxUiAdminTokens } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/absolute-position-behavior/absolute-position-behavior.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
-import "@haxtheweb/simple-icon/lib/simple-iconset.js";
-import "./lib/hax-context-behaviors.js";
 import "./lib/hax-plate-context.js";
 // our default way of handing grids
 import "@haxtheweb/grid-plate/grid-plate.js";
