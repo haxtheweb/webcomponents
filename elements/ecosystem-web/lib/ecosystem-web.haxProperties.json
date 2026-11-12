@@ -1,0 +1,83 @@
+{
+  "api": "1",
+  "canScale": false,
+  "canEditSource": true,
+  "type": "element",
+  "designSystem": {
+    "accent": false,
+    "primary": false,
+    "card": false,
+    "text": false,
+    "designTreatment": false
+  },
+  "gizmo": {
+    "title": "Ecosystem web",
+    "description": "An interactive web of how the parts of a project connect, with sub-webs and step-by-step tours.",
+    "icon": "social:share",
+    "color": "blue",
+    "tags": [
+      "Media",
+      "Data",
+      "Interactive",
+      "Visualization",
+      "ecosystem",
+      "graph",
+      "tour"
+    ],
+    "handles": [],
+    "meta": {
+      "author": "haxtheweb"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Web data",
+        "description": "URL of the JSON bundle of webs (built in PRAW, ecosystem-webs.json).",
+        "inputMethod": "textfield",
+        "icon": "icons:link",
+        "required": true
+      },
+      {
+        "property": "web",
+        "title": "Web",
+        "description": "Id of the web to show first; main is the ecosystem web.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "node",
+        "title": "Selected tile",
+        "description": "Id of a tile to select when the web opens.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "tour",
+        "title": "Tour",
+        "description": "Id of a tour to start on.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "listView",
+        "title": "Start in list view",
+        "description": "Show the web as nested lists instead of the drawing.",
+        "inputMethod": "boolean"
+      }
+    ],
+    "advanced": []
+  },
+  "saveOptions": {
+    "wipeSlot": true,
+    "unsetAttributes": ["playing"]
+  },
+  "demoSchema": [
+    {
+      "tag": "ecosystem-web",
+      "properties": {
+        "src": "https://hax.cloud/ecosystem-webs.json",
+        "web": "main"
+      },
+      "content": ""
+    }
+  ]
+}

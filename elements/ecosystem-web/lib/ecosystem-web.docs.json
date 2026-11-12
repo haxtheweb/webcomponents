@@ -1,0 +1,203 @@
+{
+  "tag": "ecosystem-web",
+  "folder": "ecosystem-web",
+  "package": "@haxtheweb/ecosystem-web",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Ecosystem web",
+  "description": "An interactive web of how the parts of a project connect, with sub-webs and step-by-step tours.",
+  "icon": "social:share",
+  "tags": [
+    "Media",
+    "Data",
+    "Interactive",
+    "Visualization",
+    "ecosystem",
+    "graph",
+    "tour"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/ecosystem-web/ecosystem-web.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/ecosystem-web/ecosystem-web.js",
+  "install": "npm i @haxtheweb/ecosystem-web",
+  "demoHtml": "<ecosystem-web src=\"https://hax.cloud/ecosystem-webs.json\" web=\"main\"></ecosystem-web>",
+  "attributes": [
+    {
+      "name": "src",
+      "property": "src",
+      "type": "string",
+      "default": "\"\"",
+      "description": "URL of the JSON bundle built in PRAW: {order, webs: {id: {mmd, json}}, slugs, images}",
+      "hax": {
+        "title": "Web data",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "web",
+      "property": "web",
+      "type": "string",
+      "default": "\"main\"",
+      "description": "The web shown (\"main\" is the ecosystem web)",
+      "hax": {
+        "title": "Web",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "node",
+      "property": "node",
+      "type": "string",
+      "default": "\"\"",
+      "description": "The selected tile's id in that web",
+      "hax": {
+        "title": "Selected tile",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "tour",
+      "property": "tour",
+      "type": "string",
+      "default": "\"\"",
+      "description": "The tour being played",
+      "hax": {
+        "title": "Tour",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "step",
+      "property": "step",
+      "type": "number",
+      "default": "-1",
+      "description": "The tour step shown, from 0; -1 shows the whole web",
+      "hax": null
+    },
+    {
+      "name": "list-view",
+      "property": "listView",
+      "type": "boolean",
+      "default": "false",
+      "description": "Show the web as nested lists instead of the drawing",
+      "hax": {
+        "title": "Start in list view",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "playing",
+      "property": "playing",
+      "type": "boolean",
+      "default": "false",
+      "description": "Advance the tour on its own",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [
+    "ecosystem-web-changed"
+  ],
+  "hax": {
+    "api": "1",
+    "canScale": false,
+    "canEditSource": true,
+    "type": "element",
+    "designSystem": {
+      "accent": false,
+      "primary": false,
+      "card": false,
+      "text": false,
+      "designTreatment": false
+    },
+    "gizmo": {
+      "title": "Ecosystem web",
+      "description": "An interactive web of how the parts of a project connect, with sub-webs and step-by-step tours.",
+      "icon": "social:share",
+      "color": "blue",
+      "tags": [
+        "Media",
+        "Data",
+        "Interactive",
+        "Visualization",
+        "ecosystem",
+        "graph",
+        "tour"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "haxtheweb"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "src",
+          "title": "Web data",
+          "description": "URL of the JSON bundle of webs (built in PRAW, ecosystem-webs.json).",
+          "inputMethod": "textfield",
+          "icon": "icons:link",
+          "required": true
+        },
+        {
+          "property": "web",
+          "title": "Web",
+          "description": "Id of the web to show first; main is the ecosystem web.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "node",
+          "title": "Selected tile",
+          "description": "Id of a tile to select when the web opens.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "tour",
+          "title": "Tour",
+          "description": "Id of a tour to start on.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "listView",
+          "title": "Start in list view",
+          "description": "Show the web as nested lists instead of the drawing.",
+          "inputMethod": "boolean"
+        }
+      ],
+      "advanced": []
+    },
+    "saveOptions": {
+      "wipeSlot": true,
+      "unsetAttributes": [
+        "playing"
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "ecosystem-web",
+        "properties": {
+          "src": "https://hax.cloud/ecosystem-webs.json",
+          "web": "main"
+        },
+        "content": ""
+      }
+    ]
+  },
+  "surfaceHash": "755c25092110",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/ecosystem-web",
+    "file": "ecosystem-web.js"
+  }
+}

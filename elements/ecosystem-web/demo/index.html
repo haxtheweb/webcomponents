@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"
+    />
+    <title>EcosystemWeb: ecosystem-web Demo</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import "../ecosystem-web.js";
+      // route events: a HAXcms theme maps detail.path to a page; here we show it
+      document.addEventListener("ecosystem-web-changed", (e) => {
+        document.getElementById("route").textContent =
+          e.detail.path || `${e.detail.web} ${e.detail.node}`;
+      });
+    </script>
+    <style>
+      html {
+        color-scheme: light dark;
+      }
+      body {
+        margin: 0;
+        padding: var(--ddd-spacing-4, 16px);
+        background: light-dark(#ffffff, #262626);
+        color: light-dark(#262626, #ffffff);
+        font-family: Roboto, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>ecosystem-web</h1>
+    <p>
+      A snapshot of five webs from PRAW (the ecosystem web, the UN goals HAX
+      meets, Penn State, its strategic plan and A&amp;A's). Path for this view:
+      <code id="route">/ecosystem</code>
+    </p>
+    <ecosystem-web src="./ecosystem-webs.json" web="main"></ecosystem-web>
+  </body>
+</html>
