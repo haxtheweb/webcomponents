@@ -107,7 +107,7 @@ Before starting any work, check the unified issue queue:
 - **CSS template literals**: Never write a backtick (`` ` ``) character inside a `css` comment block (or anywhere else in a LitElement `css\`...\`` tagged template), including in prose like "don't" or "it's". A stray backtick terminates the template literal early and breaks the build/parse.
 
 ### Design System Integration
-- **DDD System**: All components MUST adhere to the DDD (Design, Develop, Destroy) design system
+- **DDD System**: All components MUST adhere to the DDD (Design, Develop, Deliver) design system
   - Location: `elements/d-d-d` in the webcomponents repository
   - Use DDD for fonts, colors, padding, spacing, margins, and other design tokens
   - Inherit from `DDDSuper` class for automatic DDD integration

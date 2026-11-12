@@ -16,7 +16,7 @@ import { DesignSystemManager } from "./lib/DesignSystemManager.js";
 
 /**
  * `d-d-d`
- * `design, develop, destroy the competition`
+ * `design, develop, deliver`
  * @demo demo/index.html
  */
 
