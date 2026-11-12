@@ -253,6 +253,7 @@ export const HaxIconsetManifest = [
       "lowkeychloe",
       "map-legend",
       "map",
+      "markdown",
       "math",
       "meme",
       "menu-open",
