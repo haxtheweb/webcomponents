@@ -35,6 +35,24 @@ describe("awesome-explosion test", () => {
       expect(el.paused).to.be.false;
     });
 
+    it("can be made with document.createElement, as HAX inserts it", async () => {
+      // a constructor that adds attributes throws "The result must not have
+      // attributes" here; the default tabindex is set once connected
+      const el = globalThis.document.createElement("awesome-explosion");
+      expect(el.hasAttribute("tabindex")).to.be.false;
+      globalThis.document.body.appendChild(el);
+      await el.updateComplete;
+      expect(el.getAttribute("tabindex")).to.equal("0");
+      el.remove();
+    });
+
+    it("keeps an author's own tabindex", async () => {
+      const el = await fixture(
+        html`<awesome-explosion tabindex="-1"></awesome-explosion>`,
+      );
+      expect(el.getAttribute("tabindex")).to.equal("-1");
+    });
+
     it("has haxProperties pointing at its schema file", async () => {
       expect(AwesomeExplosion.haxProperties).to.be.a("string");
       expect(AwesomeExplosion.haxProperties).to.include(
