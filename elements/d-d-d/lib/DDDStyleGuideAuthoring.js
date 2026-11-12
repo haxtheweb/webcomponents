@@ -186,7 +186,14 @@ function isDDDActiveSystem(manager = null) {
   ) {
     activeManager = globalThis.DesignSystemManager.requestAvailability();
   }
-  return !!activeManager && activeManager.active === "ddd";
+  if (!activeManager) {
+    return false;
+  }
+  // DDD-capable dialects (systems that extend "ddd") keep DDD's authoring
+  if (typeof activeManager.isActiveCompatible === "function") {
+    return activeManager.isActiveCompatible("ddd");
+  }
+  return activeManager.active === "ddd";
 }
 
 function refreshDesignSystemProperties(HAXStore) {

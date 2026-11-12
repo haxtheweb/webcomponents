@@ -378,3 +378,117 @@ describe("DesignSystemManager global singleton", () => {
     );
   });
 });
+
+describe("DesignSystem dialects (extends)", () => {
+  const base = {
+    name: "base-system",
+    styles: [{ cssText: ":root{--base:1;}" }],
+    fonts: ["https://example.com/base-font.css"],
+    hax: true,
+    integrations: {
+      hax: { importer: () => Promise.resolve({ default: () => {} }) },
+    },
+  };
+  const dialect = {
+    name: "dialect-system",
+    extends: "base-system",
+    styles: [{ cssText: ":root{--dialect:1;}" }],
+    fonts: ["https://example.com/dialect-font.css"],
+  };
+
+  it("resolves a dialect's chain base first", async () => {
+    const el = await fixture(html`<design-system></design-system>`);
+    el.addDesignSystem(base);
+    el.addDesignSystem(dialect);
+    expect(el.systemChain("dialect-system").map((s) => s.name)).to.deep.equal([
+      "base-system",
+      "dialect-system",
+    ]);
+  });
+
+  it("layers dialect styles after the base and replaces fonts", async () => {
+    const el = await fixture(html`<design-system></design-system>`);
+    el.addDesignSystem(base);
+    el.addDesignSystem(dialect);
+    const resolved = el.resolvedSystem("dialect-system");
+    expect(resolved.styles.map((s) => s.cssText)).to.deep.equal([
+      ":root{--base:1;}",
+      ":root{--dialect:1;}",
+    ]);
+    expect(resolved.fonts).to.deep.equal([
+      "https://example.com/dialect-font.css",
+    ]);
+    expect(resolved.hax).to.be.true;
+  });
+
+  it("keeps base fonts when a dialect adds none", async () => {
+    const el = await fixture(html`<design-system></design-system>`);
+    el.addDesignSystem(base);
+    el.addDesignSystem({
+      name: "plain-dialect",
+      extends: "base-system",
+      styles: [],
+      fonts: [],
+    });
+    expect(el.resolvedSystem("plain-dialect").fonts).to.deep.equal([
+      "https://example.com/base-font.css",
+    ]);
+  });
+
+  it("reports compatibility with the systems it extends", async () => {
+    const el = await fixture(html`<design-system></design-system>`);
+    el.addDesignSystem(base);
+    el.addDesignSystem(dialect);
+    expect(el.isActiveCompatible("base-system")).to.be.false;
+    el.active = "dialect-system";
+    await el.updateComplete;
+    expect(el.isActiveCompatible("base-system")).to.be.true;
+    expect(el.isActiveCompatible("dialect-system")).to.be.true;
+    expect(el.isActiveCompatible("other-system")).to.be.false;
+  });
+
+  it("does not loop on a circular extends", async () => {
+    const el = await fixture(html`<design-system></design-system>`);
+    el.addDesignSystem({
+      name: "loop-a",
+      extends: "loop-b",
+      styles: [],
+      fonts: [],
+    });
+    el.addDesignSystem({
+      name: "loop-b",
+      extends: "loop-a",
+      styles: [],
+      fonts: [],
+    });
+    expect(el.systemChain("loop-a").length).to.equal(2);
+  });
+
+  it("loads the base's integration for an active dialect", async () => {
+    const el = await fixture(html`<design-system></design-system>`);
+    let loaded = 0;
+    el.addDesignSystem({
+      ...base,
+      name: "base-with-hook",
+      integrations: {
+        hax: {
+          importer: () =>
+            Promise.resolve({
+              default: () => {
+                loaded++;
+              },
+            }),
+        },
+      },
+    });
+    el.addDesignSystem({
+      ...dialect,
+      name: "dialect-with-hook",
+      extends: "base-with-hook",
+    });
+    el.active = "dialect-with-hook";
+    await el.loadActiveSystemIntegrations({ editMode: true });
+    await el.loadActiveSystemIntegrations({ editMode: true });
+    expect(loaded).to.equal(1);
+  });
+});
