@@ -1,0 +1,170 @@
+{
+  "id": "1ac46203-b98d-5525-bc89-3e1c7f921803",
+  "title": "hax.cloud",
+  "author": "HAXTheWeb",
+  "description": "The HAX ecosystem: every part, the people behind it, and how it all connects.",
+  "license": "by-sa",
+  "metadata": {
+    "author": {
+      "name": "HAXTheWeb",
+      "socialLink": "https://github.com/haxtheweb"
+    },
+    "site": {
+      "name": "ecosystem-theme-demo",
+      "domain": "https://hax.cloud",
+      "lang": "en",
+      "created": 1794484829,
+      "updated": 1794484829,
+      "settings": {
+        "pathauto": false,
+        "publishPagesOn": true,
+        "sw": false,
+        "lang": "en"
+      }
+    },
+    "theme": {
+      "element": "ecosystem-theme",
+      "path": "@haxtheweb/ecosystem-theme/ecosystem-theme.js",
+      "name": "Ecosystem",
+      "variables": {
+        "ecosystemSrc": "../../ecosystem-web/demo/ecosystem-webs.json",
+        "nav": [
+          {
+            "label": "Explore",
+            "slug": "ecosystem"
+          },
+          {
+            "label": "Tours",
+            "slug": "tours"
+          }
+        ],
+        "links": [
+          {
+            "kind": "docs",
+            "label": "Docs",
+            "href": "https://haxtheweb.org"
+          },
+          {
+            "kind": "portfolio",
+            "label": "Element portfolio",
+            "href": "https://webcomponents.hax.cloud"
+          },
+          {
+            "kind": "demo",
+            "label": "Try the live demo",
+            "href": "https://webcomponents.hax.cloud/elements/haxcms-elements/demo/index.html"
+          }
+        ],
+        "footerNote": "Built from PRAW on every push to main.",
+        "footer": [
+          {
+            "label": "Source: praw/ecosystem",
+            "href": "https://github.com/haxtheweb/praw/tree/main/ecosystem"
+          },
+          {
+            "label": "Roadmap",
+            "href": "https://github.com/haxtheweb/issues/issues/3310"
+          }
+        ]
+      }
+    },
+    "build": {
+      "structure": "ecosystem-web",
+      "type": "praw"
+    },
+    "node": {
+      "fields": {}
+    }
+  },
+  "items": [
+    {
+      "id": "item-c5def989-403f-5f54-af1b-0befa31f8491",
+      "indent": 0,
+      "location": "pages/item-c5def989-403f-5f54-af1b-0befa31f8491/index.html",
+      "slug": "ecosystem",
+      "order": 0,
+      "parent": null,
+      "title": "Ecosystem web",
+      "description": "Details for hax-ecosystem.mmd. Structure lives in the Mermaid file; this file holds descriptions, links, releases, evidence, tours and timeline years. Run scripts/graph-drift.mjs after each release to",
+      "metadata": {
+        "created": 1794484829,
+        "updated": 1794484829,
+        "published": true,
+        "ecosystem": {
+          "web": "main"
+        }
+      }
+    },
+    {
+      "id": "item-72e060bc-dbb6-5365-9158-fff99ae25f87",
+      "indent": 1,
+      "location": "pages/item-72e060bc-dbb6-5365-9158-fff99ae25f87/index.html",
+      "slug": "un-sdgs",
+      "order": 1,
+      "parent": "item-c5def989-403f-5f54-af1b-0befa31f8491",
+      "title": "UN Sustainable Development Goals",
+      "description": "The UN Sustainable Development Goals HAX meets (7 of 17), generated from sdg-links.json. Only goals with evidence are shown: the point is how HAX meets them, not covering all 17. Each goal links to th",
+      "metadata": {
+        "created": 1794484829,
+        "updated": 1794484829,
+        "published": true,
+        "ecosystem": {
+          "web": "sdgs"
+        }
+      }
+    },
+    {
+      "id": "item-0b18f2ea-adac-56d4-a98b-6469001e3645",
+      "indent": 1,
+      "location": "pages/item-0b18f2ea-adac-56d4-a98b-6469001e3645/index.html",
+      "slug": "un-sdgs/4-quality-education",
+      "order": 2,
+      "parent": "item-72e060bc-dbb6-5365-9158-fff99ae25f87",
+      "title": "4. Quality Education",
+      "description": "Education-led, accessible and open by default, and students learn by building a real product. Targets: 4.3 equal access to affordable tertiary education; 4.4 skills for employment; 4.5 equal access, i",
+      "metadata": {
+        "created": 1794484829,
+        "updated": 1794484829,
+        "published": true,
+        "ecosystem": {
+          "web": "sdgs",
+          "node": "sdg_4"
+        }
+      }
+    },
+    {
+      "id": "item-a4b1614e-c1b7-5ace-98ad-f24e8d793f2c",
+      "indent": 0,
+      "location": "pages/item-a4b1614e-c1b7-5ace-98ad-f24e8d793f2c/index.html",
+      "slug": "tours",
+      "order": 3,
+      "parent": null,
+      "title": "Tours",
+      "description": "Walks through the ecosystem web, one step at a time.",
+      "metadata": {
+        "created": 1794484829,
+        "updated": 1794484829,
+        "published": true
+      }
+    },
+    {
+      "id": "item-1de63fa5-c411-560e-9b2f-19526ca1addd",
+      "indent": 1,
+      "location": "pages/item-1de63fa5-c411-560e-9b2f-19526ca1addd/index.html",
+      "slug": "tours/everyone",
+      "order": 4,
+      "parent": "item-a4b1614e-c1b7-5ace-98ad-f24e8d793f2c",
+      "title": "Everyone",
+      "description": "HAX in one pass: people at the center, the pillars they hold, and everything that connects to them.",
+      "metadata": {
+        "created": 1794484829,
+        "updated": 1794484829,
+        "published": true,
+        "ecosystem": {
+          "web": "main",
+          "tour": "everyone"
+        }
+      }
+    }
+  ]
+}
