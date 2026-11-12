@@ -126,7 +126,6 @@ export class DoodleBoardField extends DDDSuper(I18NMixin(LitElement)) {
           border-radius: var(--hax-ui-radius);
           overflow: hidden;
           background-color: var(--ddd-theme-default-white, #ffffff);
-          color-scheme: light;
         }
         .preview:hover {
           border-color: var(--hax-ui-text-muted);
