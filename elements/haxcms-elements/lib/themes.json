@@ -95,6 +95,18 @@
     "terrible": false,
     "supportedPalettes": null
   },
+  "ecosystem-theme": {
+    "element": "ecosystem-theme",
+    "path": "@haxtheweb/ecosystem-theme/ecosystem-theme.js",
+    "name": "Ecosystem",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-ecosystem-theme-thumb.jpg",
+    "description": "Start with a blank site using the Ecosystem",
+    "category": ["Website", "Course"],
+    "hidden": false,
+    "priority": 5,
+    "terrible": false,
+    "supportedPalettes": null
+  },
   "glossy-portfolio-theme": {
     "element": "glossy-portfolio-theme",
     "path": "@haxtheweb/glossy-portfolio-theme/glossy-portfolio-theme.js",
@@ -236,6 +248,18 @@
     "category": ["Website"],
     "hidden": true,
     "priority": 0,
+    "terrible": false,
+    "supportedPalettes": null
+  },
+  "patternfly-theme": {
+    "element": "patternfly-theme",
+    "path": "@haxtheweb/patternfly-theme/patternfly-theme.js",
+    "name": "PatternFly",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-patternfly-theme-thumb.jpg",
+    "description": "Start with a blank site using the PatternFly",
+    "category": ["Website", "Course", "Documentation"],
+    "hidden": false,
+    "priority": 50,
     "terrible": false,
     "supportedPalettes": null
   },
@@ -402,6 +426,18 @@
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-twenty-six-theme-thumb.jpg",
     "description": "Start with a blank site using the Twenty Six",
     "category": ["Website"],
+    "hidden": false,
+    "priority": 0,
+    "terrible": false,
+    "supportedPalettes": null
+  },
+  "vhs-blog-theme": {
+    "element": "vhs-blog-theme",
+    "path": "@haxtheweb/vhs-blog-theme/vhs-blog-theme.js",
+    "name": "VHS Blog",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-vhs-blog-theme-thumb.jpg",
+    "description": "Start with a blank site using the VHS Blog",
+    "category": ["Blog", "Website"],
     "hidden": false,
     "priority": 0,
     "terrible": false,

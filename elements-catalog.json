@@ -67,7 +67,7 @@
     {
       "tag": "a11y-collapse",
       "title": "A11y Collapse",
-      "description": "Accessible expand / collapse panel with heading and toggle",
+      "description": "Single expandable and collapsible container.",
       "package": "@haxtheweb/a11y-collapse",
       "import": "@haxtheweb/a11y-collapse/a11y-collapse.js",
       "type": "grid",
@@ -1274,6 +1274,34 @@
       "type": "element",
       "haxCapable": true,
       "tags": []
+    },
+    {
+      "tag": "ecosystem-theme",
+      "title": "",
+      "description": "The hax.cloud theme: the HAX ecosystem as a website. Every page is a web, a tile or a tour from PRAW's ecosystem webs (its metadata.ecosystem says which), and every page has two views: - **Web**: the interactive <ecosystem-web> routed to that page, with a link bar to copy the page's address, and...",
+      "package": "@haxtheweb/ecosystem-theme",
+      "import": "@haxtheweb/ecosystem-theme/ecosystem-theme.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "ecosystem-web",
+      "title": "Ecosystem Web",
+      "description": "The HAX ecosystem web: every part of HAX as a tile on concentric rings, the connections between them, sub-webs that open from a tile, and tours that walk through it a step at a time. Data comes from one JSON bundle built in PRAW (src); the web, tile, tour and step shown are attributes, so a page...",
+      "package": "@haxtheweb/ecosystem-web",
+      "import": "@haxtheweb/ecosystem-web/ecosystem-web.js",
+      "type": "element",
+      "haxCapable": true,
+      "tags": [
+        "Media",
+        "Data",
+        "Interactive",
+        "Visualization",
+        "ecosystem",
+        "graph",
+        "tour"
+      ]
     },
     {
       "tag": "editable-table",
@@ -3694,7 +3722,8 @@
       "import": "@haxtheweb/outline-designer/outline-designer.js",
       "type": "element",
       "haxCapable": false,
-      "tags": []
+      "tags": [],
+      "walkthrough": true
     },
     {
       "tag": "outline-player",
@@ -3827,6 +3856,16 @@
       "haxCapable": true,
       "tags": [],
       "walkthrough": true
+    },
+    {
+      "tag": "patternfly-theme",
+      "title": "",
+      "description": "A HAXcms theme in the PatternFly 6 page layout (masthead, sidebar navigation, inset main container), built on the PatternFly DDD bridge: every HAX block reads --ddd-* tokens, which point at PatternFly tokens while this theme is active.",
+      "package": "@haxtheweb/patternfly-theme",
+      "import": "@haxtheweb/patternfly-theme/patternfly-theme.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
     },
     {
       "tag": "pdf-browser-viewer",
@@ -5931,7 +5970,8 @@
       "import": "@haxtheweb/super-daemon/super-daemon.js",
       "type": "element",
       "haxCapable": false,
-      "tags": []
+      "tags": [],
+      "walkthrough": true
     },
     {
       "tag": "super-daemon-row",
@@ -6165,7 +6205,8 @@
         "analytics",
         "user",
         "track"
-      ]
+      ],
+      "walkthrough": true
     },
     {
       "tag": "user-scaffold",
@@ -6187,6 +6228,46 @@
       "haxCapable": true,
       "tags": ["Content", "contacts", "vcard", "vcf", "directory", "people"],
       "walkthrough": true
+    },
+    {
+      "tag": "vhs-blog-cover",
+      "title": "",
+      "description": "The front cover of a generated video case, from the same hash as its spine. Exposed to assistive tech as one image named by the post title.",
+      "package": "@haxtheweb/vhs-blog-theme",
+      "import": "@haxtheweb/vhs-blog-theme/lib/vhs-blog-cover.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "vhs-blog-spine",
+      "title": "",
+      "description": "The spine of a generated video case. Purely visual: the theme wraps it in a real link that carries the post title as its accessible name, so this element renders with aria-hidden on its host.",
+      "package": "@haxtheweb/vhs-blog-theme",
+      "import": "@haxtheweb/vhs-blog-theme/lib/vhs-blog-spine.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "vhs-blog-theme",
+      "title": "",
+      "description": "A dark, bargain-bin video shelf for blogs and vlogs. Every post is a one-of-a-kind video case generated from a hash of its title; posts with child pages become box sets. Opening a post powers on an old CRT that rolls an 80s title sequence before the page content. - case: the generated spine + cov...",
+      "package": "@haxtheweb/vhs-blog-theme",
+      "import": "@haxtheweb/vhs-blog-theme/vhs-blog-theme.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "vhs-blog-tv",
+      "title": "",
+      "description": "An old CRT that powers on and rolls an 80s style title sequence for the active post. All motion is CSS and only runs when the visitor has not asked for reduced motion; otherwise (and after skip()) the final frame shows with no motion. The screen is one image to assistive tech, named by the post t...",
+      "package": "@haxtheweb/vhs-blog-theme",
+      "import": "@haxtheweb/vhs-blog-theme/lib/vhs-blog-tv.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
     },
     {
       "tag": "video-player",

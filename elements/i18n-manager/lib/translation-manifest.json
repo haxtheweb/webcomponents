@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "elementsScanned": 228,
-    "elementsWithTranslations": 148,
-    "translationFilesFound": 42251,
+    "elementsScanned": 238,
+    "elementsWithTranslations": 150,
+    "translationFilesFound": 42253,
     "languagesSupported": [
       "af",
       "am",
@@ -33356,6 +33356,7 @@
       "zh",
       "zu"
     ],
+    "patternfly-theme": ["en"],
     "pdf-browser-viewer": [
       "af",
       "am",
@@ -41929,6 +41930,7 @@
       "zh",
       "zu"
     ],
+    "vhs-blog-theme": ["en"],
     "audio-player": [
       "af",
       "am",

@@ -1497,6 +1497,22 @@
   resolved "https://registry.yarnpkg.com/@csstools/selector-specificity/-/selector-specificity-3.1.1.tgz#63085d2995ca0f0e55aa8b8a07d69bfd48b844fe"
   integrity sha512-a7cxGcJ2wIlMFLlh8z2ONm+715QkPHiyJcxwQlKOz/03GPw1COpfhcmC9wm4xlZfp//jWHNNMwzjtqHXVWU9KA==
 
+"@custom-elements-manifest/analyzer@0.10.4":
+  version "0.10.4"
+  resolved "https://registry.yarnpkg.com/@custom-elements-manifest/analyzer/-/analyzer-0.10.4.tgz#7bd063cd1249a75b13d5bcc6ed4302dd72dd1f88"
+  integrity sha512-hse8o20Jd82BwWank29/J9OC4PmSTwUoEmll3LEjDF3WLY/Lc8g3TUYSib/3GARCS8Q5myT2RPqEWfRa+6bkIg==
+  dependencies:
+    "@custom-elements-manifest/find-dependencies" "^0.0.5"
+    "@github/catalyst" "^1.6.0"
+    "@web/config-loader" "0.1.3"
+    chokidar "3.5.2"
+    command-line-args "5.1.2"
+    comment-parser "1.2.4"
+    custom-elements-manifest "1.0.0"
+    debounce "1.2.1"
+    globby "11.0.4"
+    typescript "~5.4.2"
+
 "@custom-elements-manifest/analyzer@0.11.0":
   version "0.11.0"
   resolved "https://registry.yarnpkg.com/@custom-elements-manifest/analyzer/-/analyzer-0.11.0.tgz#021d88b319c06d42b89796ade22126b7bf54c4cd"
@@ -1512,6 +1528,13 @@
     debounce "1.2.1"
     globby "11.0.4"
     typescript "~5.4.2"
+
+"@custom-elements-manifest/find-dependencies@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@custom-elements-manifest/find-dependencies/-/find-dependencies-0.0.5.tgz#ebc11672019de3d52bb8f29f76efe510b8401fbd"
+  integrity sha512-fKIMMZCDFSoL2ySUoz8knWgpV4jpb0lUXgLOvdZQMQFHxgxz1PqOJpUIypwvEVyKk3nEHRY4f10gNol02HjeCg==
+  dependencies:
+    es-module-lexer "^0.9.3"
 
 "@custom-elements-manifest/find-dependencies@^0.0.7":
   version "0.0.7"
@@ -8884,6 +8907,19 @@ concat-stream@^2.0.0:
     readable-stream "^3.0.2"
     typedarray "^0.0.6"
 
+concurrently@9.1.2:
+  version "9.1.2"
+  resolved "https://registry.yarnpkg.com/concurrently/-/concurrently-9.1.2.tgz#22d9109296961eaee773e12bfb1ce9a66bc9836c"
+  integrity sha512-H9MWcoPsYddwbOGM6difjVwVZHl63nwMEwDJG/L7VGtuaJhb12h2caPG2tVPWs7emuYix252iGfqOyrz1GczTQ==
+  dependencies:
+    chalk "^4.1.2"
+    lodash "^4.17.21"
+    rxjs "^7.8.1"
+    shell-quote "^1.8.1"
+    supports-color "^8.1.1"
+    tree-kill "^1.2.2"
+    yargs "^17.7.2"
+
 concurrently@9.2.5:
   version "9.2.5"
   resolved "https://registry.yarnpkg.com/concurrently/-/concurrently-9.2.5.tgz#1ed7fad6079255975435dcdb55789a12255deaeb"
@@ -10528,6 +10564,11 @@ es-errors@1.3.0, es-errors@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/es-errors/-/es-errors-1.3.0.tgz#05f75a25dab98e4fb1dcd5e1472c0546d5057c8f"
   integrity sha512-Zf5H2Kxt2xjTvbJvP2ZWLEICxA6j+hAmMzIlypy4xcBg1vKVnx89Wy0GbS+kf5cwCVFFzdCFh2XSCFNULS6csw==
+
+es-module-lexer@^0.9.3:
+  version "0.9.3"
+  resolved "https://registry.yarnpkg.com/es-module-lexer/-/es-module-lexer-0.9.3.tgz#6f13db00cc38417137daf74366f535c8eb438f19"
+  integrity sha512-1HQ2M2sPtxwnvOvT1ZClHyQDiggdNjURWpY2we6aMKCQiUVxTmVs2UYPLIrD84sS+kMdUwfBSylbJPwNnBrnHQ==
 
 es-module-lexer@^1.0.0, es-module-lexer@^1.6.0:
   version "1.7.0"
@@ -19227,7 +19268,7 @@ rx@^4.1.0:
   resolved "https://registry.yarnpkg.com/rx/-/rx-4.1.0.tgz#a5f13ff79ef3b740fe30aa803fb09f98805d4782"
   integrity sha512-CiaiuN6gapkdl+cZUr67W6I8jquN4lkak3vtIsIWCl4XIPP8ffsoyN6/+PuGXnQy8Cu8W2y9Xxh31Rq4M6wUug==
 
-rxjs@7.8.2, rxjs@^7.2.0, rxjs@^7.8.2, rxjs@~7.8.1:
+rxjs@7.8.2, rxjs@^7.2.0, rxjs@^7.8.1, rxjs@^7.8.2, rxjs@~7.8.1:
   version "7.8.2"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.8.2.tgz#955bc473ed8af11a002a2be52071bf475638607b"
   integrity sha512-dhKf903U/PQZY6boNNtAGdWbG85WAbjT/1xYoZIC7FAY0yWapOBQVsVrDl58W86//e1VpMNBtRV4MaXfdMySFA==
@@ -19539,7 +19580,7 @@ shebang-regex@^3.0.0:
   resolved "https://registry.yarnpkg.com/shebang-regex/-/shebang-regex-3.0.0.tgz#ae16f1644d873ecad843b0307b143362d4c42172"
   integrity sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==
 
-shell-quote@1.12.0, shell-quote@^1.6.1:
+shell-quote@1.12.0, shell-quote@^1.6.1, shell-quote@^1.8.1:
   version "1.12.0"
   resolved "https://registry.yarnpkg.com/shell-quote/-/shell-quote-1.12.0.tgz#e98fdfd2e921d8a58ae2820f4fc0f75c39f09675"
   integrity sha512-PcByqNyT/38F2kDNi006HAMRJaULuBzq/FOsw3qdZvX/GA9W/jamDaRskgHjubHiftXK5sIFxLNkvrXUwcof6Q==
@@ -21021,7 +21062,7 @@ tr46@~0.0.3:
   resolved "https://registry.yarnpkg.com/tr46/-/tr46-0.0.3.tgz#8184fd347dac9cdc185992f3a6622e14b9d9ab6a"
   integrity sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==
 
-tree-kill@1.2.2, tree-kill@~1.2.2:
+tree-kill@1.2.2, tree-kill@^1.2.2, tree-kill@~1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/tree-kill/-/tree-kill-1.2.2.tgz#4ca09a9092c88b73a7cdc5e8a01b507b0790a0cc"
   integrity sha512-L0Orpi8qGpRG//Nd+H90vFB+3iHnue1zSSGmNOOCh1GLJ7rUKVwV2HvijphGQS2UmhUZewS9VgvxYIdgr+fG1A==

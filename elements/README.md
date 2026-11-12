@@ -3,7 +3,7 @@
 <!-- GENERATED FILE: do not edit by hand. Run `yarn run elements-readme` -->
 <!-- Descriptions come from each element's package.json; edit them there. -->
 
-Every element in this monorepo (224 packages). Browse them live with `yarn gallery`, or open an element's folder for its own README.
+Every element in this monorepo (228 packages). Browse them live with `yarn gallery`, or open an element's folder for its own README.
 
 | Element | Description | Package | Demo |
 | --- | --- | --- | --- |
@@ -56,6 +56,8 @@ Every element in this monorepo (224 packages). Browse them live with `yarn galle
 | [disqus-embed](./disqus-embed/) | Disqus service integration | `@haxtheweb/disqus-embed` | [demo](./disqus-embed/demo/) |
 | [documentation-player](./documentation-player/) | Living documentation for a web component: animated walkthrough, video tutorial, demo, docs and schema | `@haxtheweb/documentation-player` | [demo](./documentation-player/demo/) |
 | [dynamic-import-registry](./dynamic-import-registry/) | maintain manage the registration and usage of dynamic imports | `@haxtheweb/dynamic-import-registry` |  |
+| [ecosystem-theme](./ecosystem-theme/) | The hax.cloud theme: the HAX ecosystem web as a website, with a Web view and a Site view of every page | `@haxtheweb/ecosystem-theme` | [demo](./ecosystem-theme/demo/) |
+| [ecosystem-web](./ecosystem-web/) | The HAX ecosystem web: tiles on rings, their connections, sub-webs and step-by-step tours, routable by attribute. | `@haxtheweb/ecosystem-web` | [demo](./ecosystem-web/demo/) |
 | [editable-table](./editable-table/) | A table that's editable | `@haxtheweb/editable-table` | [demo](./editable-table/demo/) |
 | [elmsln-loading](./elmsln-loading/) | Basic loading spinner based on the ELMS:LN icon | `@haxtheweb/elmsln-loading` | [demo](./elmsln-loading/demo/) |
 | [enhanced-text](./enhanced-text/) | take text and process it with various enhancements | `@haxtheweb/enhanced-text` | [demo](./enhanced-text/demo/) |
@@ -146,6 +148,7 @@ Every element in this monorepo (224 packages). Browse them live with `yarn galle
 | [page-section](./page-section/) | A well designed section of a page with many options for marketing purposes | `@haxtheweb/page-section` | [demo](./page-section/demo/) |
 | [paper-input-flagged](./paper-input-flagged/) | Text input that flags and gives feedback on what the user enters, such as alt text quality | `@haxtheweb/paper-input-flagged` | [demo](./paper-input-flagged/demo/) |
 | [parallax-image](./parallax-image/) | Image with a parallax scrolling effect and title overlay | `@haxtheweb/parallax-image` | [demo](./parallax-image/demo/) |
+| [patternfly-theme](./patternfly-theme/) | PatternFly 6 theme for HAXcms, built on the DDD-capable PatternFly design system bridge | `@haxtheweb/patternfly-theme` | [demo](./patternfly-theme/demo/) |
 | [pdf-browser-viewer](./pdf-browser-viewer/) | Embeds a PDF using the browser's built-in viewer | `@haxtheweb/pdf-browser-viewer` | [demo](./pdf-browser-viewer/demo/) |
 | [person-testimonial](./person-testimonial/) | Quote / testimonial card with a person's photo, name and title | `@haxtheweb/person-testimonial` | [demo](./person-testimonial/demo/) |
 | [place-holder](./place-holder/) | Drop target placeholder for media that has not been added yet | `@haxtheweb/place-holder` | [demo](./place-holder/demo/) |
@@ -222,6 +225,7 @@ Every element in this monorepo (224 packages). Browse them live with `yarn galle
 | [user-scaffold](./user-scaffold/) | memory and context to establish and maintain appropriate user scaffolding | `@haxtheweb/user-scaffold` | [demo](./user-scaffold/demo/) |
 | [utils](./utils/) | Helper functions to clean up web component data handling. | `@haxtheweb/utils` |  |
 | [vcf-render](./vcf-render/) | Render a contact file (.vcf) in place as person cards, quotes, a table or a list. | `@haxtheweb/vcf-render` | [demo](./vcf-render/demo/) |
+| [vhs-blog-theme](./vhs-blog-theme/) | A dark, bargain-bin video shelf theme for HAXcms blogs: every post is a one-of-a-kind video case generated from a hash of its title, and posts open with a CRT title sequence. | `@haxtheweb/vhs-blog-theme` | [demo](./vhs-blog-theme/demo/) |
 | [video-player](./video-player/) | Accessible video playback across multiple sources | `@haxtheweb/video-player` | [demo](./video-player/demo/) |
 | [vocab-term](./vocab-term/) | a vocabulary term visualized in the page | `@haxtheweb/vocab-term` | [demo](./vocab-term/demo/) |
 | [voice-recorder](./voice-recorder/) | Records audio from the microphone and exports it as an MP3 | `@haxtheweb/voice-recorder` | [demo](./voice-recorder/demo/) |
