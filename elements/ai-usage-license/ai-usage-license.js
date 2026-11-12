@@ -47,77 +47,102 @@ class AiUsageLicense extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
           background-color: var(--ddd-theme-default-limestoneMaxLight);
           color: var(--ddd-theme-default-slateGray);
         }
-        .license-link {
-          font-style: italic;
-        }
         a,
         a:any-link,
         a:-webkit-any-link {
           color: var(--ddd-theme-default-link);
           font-weight: var(--ddd-font-weight-bold);
         }
-        .license-badge img {
-          margin-block: 0 var(--ddd-spacing-2);
-          margin-inline: 0 var(--ddd-spacing-2);
-          height: var(--ddd-icon-3xl);
-          vertical-align: middle;
+        a:focus-visible {
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
+        }
+        /* one link: the DDD badge followed by the license name, so the
+           tag is shown once and the link text matches license-element */
+        .license-badge {
+          display: inline-flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: var(--ddd-spacing-1) var(--ddd-spacing-3);
+          max-width: 100%;
+          text-decoration: none;
+        }
+        .license-badge:hover .license-link,
+        .license-badge:focus-visible .license-link {
+          text-decoration: underline;
+        }
+        .license-link {
+          font-style: italic;
+          text-decoration: underline;
+        }
+        /* the AIUL code drawn with DDD tokens in place of the third-party
+           badge art; navy on white because the card is light in both
+           color schemes */
+        .license-chip {
+          display: inline-flex;
+          align-items: stretch;
+          border: var(--ddd-border-sm);
+          border-color: var(--ddd-theme-default-nittanyNavy);
+          border-radius: var(--ddd-radius-xs);
+          overflow: hidden;
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-4xs);
+          font-style: normal;
+          font-weight: var(--ddd-font-weight-bold);
+          line-height: var(--ddd-lh-120);
+          white-space: nowrap;
+        }
+        .license-tag,
+        .license-modifier {
+          padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
         }
         .license-tag {
-          font-family: var(--ddd-font-navigation);
-          font-weight: var(--ddd-font-weight-bold);
-          font-size: var(--ddd-font-size-s);
-          letter-spacing: 0.05em;
+          background-color: var(--ddd-theme-default-white);
+          color: var(--ddd-theme-default-nittanyNavy);
+        }
+        .license-modifier {
+          background-color: var(--ddd-theme-default-nittanyNavy);
+          color: var(--ddd-theme-default-white);
         }
         .license-description {
           margin-top: var(--ddd-spacing-2);
-          font-size: var(--ddd-font-size-s);
+          font-size: var(--ddd-font-size-4xs);
         }
       `,
     ];
   }
 
   render() {
+    const badge = this._badgeParts();
     return html`
       <meta property="oer:uri" content="${this.uri || this.licenseLink}" />
       <div class="license-body">
         ${
-          this.licenseImage
-            ? html`
-                <a
-                  class="license-badge"
-                  target="_blank"
-                  href="${this.licenseLink}"
-                  rel="noopener noreferrer"
-                  aria-label="${this.t.licenseNameLabel.replace(
-                    "{license}",
-                    () => this.licenseName,
-                  )}"
-                  ><img
-                    loading="lazy"
-                    alt="${this.licenseTag} - ${this.licenseName}"
-                    src="${this.licenseImage}"
-                /></a>
-              `
-            : ``
-        }
-        ${
           this.licenseTag
-            ? html`
-                <span class="license-tag"
-                  ><a
-                    class="license-link"
-                    target="_blank"
-                    href="${this.licenseLink}"
-                    rel="noopener noreferrer"
-                    >${this.licenseTag}</a
-                  ></span
-                >
-              `
-            : ``
-        }
-        ${
-          this.licenseName
-            ? html`<span> &mdash; ${this.licenseName}</span>`
+            ? html`<a
+                class="license-badge"
+                target="_blank"
+                href="${this.licenseLink}"
+                rel="noopener noreferrer"
+                aria-label="${this.t.licenseNameLabel.replace("{license}", () =>
+                  `${this.licenseTag} ${this.licenseName || ""}`.trim(),
+                )}"
+                ><span class="license-chip"
+                  ><span class="license-tag">${badge.tag}</span>${
+                    badge.modifier
+                      ? html`<span class="license-modifier"
+                          >${badge.modifier}</span
+                        >`
+                      : ``
+                  }</span
+                >${
+                  this.licenseName
+                    ? html`<span class="license-link"
+                        >${this.licenseName}</span
+                      >`
+                    : ``
+                }</a
+              >`
             : ``
         }
         ${
@@ -130,6 +155,19 @@ class AiUsageLicense extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
       </div>
       <span class="license-label">${this.t.aiUsageLicense}</span>
     `;
+  }
+
+  /**
+   * Split licenseTag ("AIUL-CD" or "AIUL-CD-IM") into the license part and
+   * the media modifier part drawn as the two halves of the badge.
+   */
+  _badgeParts() {
+    const tag = this.licenseTag || "";
+    const suffix = this.modifier ? `-${this.modifier}` : "";
+    if (suffix && tag.endsWith(suffix) && tag.length > suffix.length) {
+      return { tag: tag.slice(0, -suffix.length), modifier: this.modifier };
+    }
+    return { tag: tag, modifier: null };
   }
 
   static get tag() {
@@ -164,7 +202,8 @@ class AiUsageLicense extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
         attribute: "license-name",
       },
       /**
-       * License badge image URL.
+       * URL of the official AIUL badge art for this license. Kept as data
+       * for integrations; the element draws its own DDD badge instead.
        */
       licenseImage: {
         type: String,
@@ -326,7 +365,7 @@ class AiUsageLicense extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
         title: "AI Usage License",
         description: "Display an AI Usage License (AIUL) badge for your work",
         icon: "hardware:memory",
-        color: "blue",
+        color: "grey",
         tags: [
           "Other",
           "content",
