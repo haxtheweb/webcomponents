@@ -392,8 +392,10 @@ const SimpleToolbarBehaviors = function (SuperClass) {
         if (propName === "hidden")
           this.setAttribute("aria-hidden", this.hidden ? "true" : "false");
       });
-      if (!this.currentItem && this.buttons)
-        this.setCurrentItem(this.buttons[0]);
+      if (this.buttons) {
+        if (!this.currentItem) this.setCurrentItem(this.buttons[0]);
+        this.refreshCurrentItem();
+      }
       this.resizeToolbar();
     }
     /**
@@ -483,6 +485,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
         );
       }
       if (!this.currentItem) this.setCurrentItem(button);
+      this.refreshCurrentItem();
     }
     /**
      * resizes toolbar based on element positions
@@ -508,6 +511,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       // as the current update cycle completes.
       queueMicrotask(() => (this.collapseDisabled = !!shown));
       if (!this.currentItem) this.setCurrentItem(this.firstItem);
+      this.refreshCurrentItem();
     }
     /**
      * gets first main menu item
@@ -577,13 +581,56 @@ const SimpleToolbarBehaviors = function (SuperClass) {
         : this.mainItems[index];
     }
     /**
+     * whether an item can be the current item: arrow keys and the roving
+     * tabindex skip disabled and hidden items
+     *
+     * @param {object} item
+     * @returns {boolean}
+     */
+    _isNavigable(item) {
+      return !!item && !item.disabled && !item.hidden;
+    }
+    /**
+     * finds the first navigable main item, starting at an index and stepping
+     * through the items (wrapping around) at most once
+     *
+     * @param {number} [start=0] index to start from
+     * @param {number} [step=1] 1 to search forward, -1 backward
+     * @returns {object|undefined} the item, or undefined when none can be
+     * navigated to
+     */
+    _findNavigableItem(start = 0, step = 1) {
+      let items = this.buttons ? this.mainItems : [],
+        count = items.length;
+      for (let i = 0; i < count; i++) {
+        let index = (((start + i * step) % count) + count) % count;
+        if (this._isNavigable(items[index])) return items[index];
+      }
+      return undefined;
+    }
+    /**
+     * keeps the roving tabindex off a disabled or hidden item: when the
+     * current item can no longer take focus, the first item that can becomes
+     * current (with none, the current item stays as it is)
+     */
+    refreshCurrentItem() {
+      if (this._isNavigable(this.currentItem)) return;
+      let item = this._findNavigableItem(0, 1);
+      if (item) this.setCurrentItem(item);
+    }
+    /**
      * sets current item
      *
      * @param {object} item
      */
     setCurrentItem(item) {
       if (this.currentItem) this.currentItem.isCurrentItem = false;
-      if (item && item.closest("[collapse-hide=true]")) this.collapsed = false;
+      if (
+        item &&
+        typeof item.closest === "function" &&
+        item.closest("[collapse-hide=true]")
+      )
+        this.collapsed = false;
       this.currentItem = item;
       if (this.currentItem) this.currentItem.isCurrentItem = true;
     }
@@ -687,102 +734,33 @@ const SimpleToolbarBehaviors = function (SuperClass) {
         }
       }
 
-      let c, startIndex;
+      // the arrow keys, Home and End only ever land on an item that can take
+      // focus (not disabled, not hidden), wrapping around the ends. With no
+      // such item to move to, focus stays where it is.
+      let c,
+        found = true;
       switch (e.keyCode) {
         case this.keyCode.RIGHT:
-          startIndex = this.getItemIndex();
-          c = this.nextItem || this.firstItem;
-          // Keep searching for next non-hidden, non-disabled item
-          while (c && (c.disabled || c.hidden)) {
-            this.setCurrentItem(c);
-            c = this.nextItem || this.firstItem;
-            // Prevent infinite loop - if we've wrapped around
-            if (this.getItemIndex() === startIndex) {
-              c = null;
-              break;
-            }
-          }
-          if (c) this.focusOn(c);
-          finished = true;
-          break;
-
-        case this.keyCode.LEFT:
-          startIndex = this.getItemIndex();
-          c = this.previousItem || this.lastItem;
-          while (c && (c.disabled || c.hidden)) {
-            this.setCurrentItem(c);
-            c = this.previousItem || this.lastItem;
-            if (this.getItemIndex() === startIndex) {
-              c = null;
-              break;
-            }
-          }
-          if (c) this.focusOn(c);
-          finished = true;
-          break;
-
-        case this.keyCode.HOME:
-          c = this.firstItem;
-          startIndex = this.getItemIndex(c);
-          while (c && (c.disabled || c.hidden)) {
-            this.setCurrentItem(c);
-            c = this.nextItem || this.firstItem;
-            if (this.getItemIndex() === startIndex) {
-              c = null;
-              break;
-            }
-          }
-          if (c) this.focusOn(c);
-          finished = true;
-          break;
-
-        case this.keyCode.END:
-          c = this.lastItem;
-          startIndex = this.getItemIndex(c);
-          while (c && (c.disabled || c.hidden)) {
-            this.setCurrentItem(c);
-            c = this.previousItem || this.lastItem;
-            if (this.getItemIndex() === startIndex) {
-              c = null;
-              break;
-            }
-          }
-          if (c) this.focusOn(c);
-          finished = true;
-          break;
-
-        case this.keyCode.UP:
-          startIndex = this.getItemIndex();
-          c = this.previousItem || this.lastItem;
-          while (c && (c.disabled || c.hidden)) {
-            this.setCurrentItem(c);
-            c = this.previousItem || this.lastItem;
-            if (this.getItemIndex() === startIndex) {
-              c = null;
-              break;
-            }
-          }
-          if (c) this.focusOn(c);
-          finished = true;
-          break;
-
         case this.keyCode.DOWN:
-          startIndex = this.getItemIndex();
-          c = this.nextItem || this.firstItem;
-          while (c && (c.disabled || c.hidden)) {
-            this.setCurrentItem(c);
-            c = this.nextItem || this.firstItem;
-            if (this.getItemIndex() === startIndex) {
-              c = null;
-              break;
-            }
-          }
-          if (c) this.focusOn(c);
-          finished = true;
+          c = this._findNavigableItem(this.getItemIndex() + 1, 1);
           break;
-
+        case this.keyCode.LEFT:
+        case this.keyCode.UP:
+          c = this._findNavigableItem(this.getItemIndex() - 1, -1);
+          break;
+        case this.keyCode.HOME:
+          c = this._findNavigableItem(0, 1);
+          break;
+        case this.keyCode.END:
+          c = this._findNavigableItem(this.mainItems.length - 1, -1);
+          break;
         default:
+          found = false;
           break;
+      }
+      if (found) {
+        if (c) this.focusOn(c);
+        finished = true;
       }
 
       if (finished) {

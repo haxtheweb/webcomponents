@@ -336,6 +336,19 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
       this.__managingToolbar = toolbar;
       if (this.requestUpdate) this.requestUpdate();
     }
+    updated(changedProperties) {
+      if (super.updated) super.updated(changedProperties);
+      // a disabled item is never the toolbar's tab stop: let the toolbar
+      // move its roving tabindex when this one is disabled or enabled
+      let toolbar = this.__managingToolbar;
+      if (
+        changedProperties.has("disabled") &&
+        toolbar &&
+        typeof toolbar.refreshCurrentItem === "function"
+      ) {
+        toolbar.refreshCurrentItem();
+      }
+    }
     /**
      * tabindex for the inner control. Inside a simple-toolbar only the
      * current item is a tab stop (roving tabindex, arrow keys move between

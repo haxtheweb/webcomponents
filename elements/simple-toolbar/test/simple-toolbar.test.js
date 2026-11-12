@@ -172,6 +172,11 @@ describe("simple-toolbar button registration", () => {
 
   it("sets isCurrentItem=false for non-menuitem buttons on register", async () => {
     const el = await fixture(html`<simple-toolbar></simple-toolbar>`);
+    // an enabled current item is already there, so the new one is not it
+    const first = globalThis.document.createElement("div");
+    first.role = "button";
+    el.registerButton(first);
+    el.setCurrentItem(first);
     const btn = globalThis.document.createElement("div");
     btn.id = "test-btn-role";
     btn.role = "button";
@@ -652,7 +657,12 @@ describe("simple-toolbar _handleKeydown", () => {
     el.setCurrentItem(btnC);
     const e = new KeyboardEvent("keydown", { keyCode: 36 });
     el._handleKeydown(e);
-    expect(el.getItemIndex()).to.equal(0);
+    // the first enabled item: the toolbar's own "more" button comes first
+    // and is disabled while nothing is collapsed
+    expect(el.currentItem).to.equal(
+      el.mainItems.filter((b) => !b.disabled && !b.hidden)[0],
+    );
+    expect(el.currentItem).to.equal(btnA);
   });
 
   it("navigates to last item with END", () => {
