@@ -73,6 +73,8 @@ import {
   areaOfUrl,
   authorableTags,
   importFindings,
+  isEmptyMarkup,
+  isServiceRequest,
   normalizeError,
   pageBare,
   pageRendered,
@@ -229,7 +231,13 @@ async function openGenerated(browser, origin, name, html, watch) {
   const url = `${origin}/__without-hax/${name}.html`;
   await context.route(
     (u) => !LOCAL.test(u.href),
-    (route) => route.abort(),
+    (route) => {
+      const u = route.request().url();
+      if (isServiceRequest(u) && !watch.services.includes(u)) {
+        watch.services.push(u);
+      }
+      return route.abort();
+    },
   );
   // registered last, so it wins for the generated page
   await context.route(url, (route) =>
@@ -259,7 +267,7 @@ async function settle(page) {
 
 /** bare level: no editor, no HAXcms, only the element's module */
 async function bareLevel(browser, origin, t, staticHard) {
-  const watch = { errors: [], areas: {} };
+  const watch = { errors: [], areas: {}, services: [] };
   const findings = {};
   let context;
   try {
@@ -292,12 +300,9 @@ async function bareLevel(browser, origin, t, staticHard) {
       add(findings, "undefined", t.tag);
     } else {
       const seen = await page.evaluate(pageRendered, t.tag);
-      if (!seen.rendered) {
-        add(
-          findings,
-          "blank",
-          r.noDemoSchema ? "bare tag (no demoSchema)" : "demoSchema",
-        );
+      // a bare tag with nothing set has nothing to show
+      if (!seen.rendered && !isEmptyMarkup(r.html)) {
+        add(findings, "blank", "demoSchema");
       }
     }
     for (const e of new Set(watch.errors)) {
@@ -313,6 +318,8 @@ async function bareLevel(browser, origin, t, staticHard) {
       findings,
       html: r.defined ? r.html : "",
       noDemoSchema: !!r.noDemoSchema,
+      emptyMarkup: !!r.defined && isEmptyMarkup(r.html),
+      services: watch.services,
     };
   } catch (e) {
     return { error: String((e && e.message) || e).split("\n")[0] };
@@ -325,7 +332,7 @@ async function bareLevel(browser, origin, t, staticHard) {
 
 /** paste level: the inserted HTML on a page with only wc-autoload */
 async function pasteLevel(browser, origin, t, html, bareFindings) {
-  const watch = { errors: [], areas: {} };
+  const watch = { errors: [], areas: {}, services: [] };
   const findings = {};
   let context;
   try {
@@ -347,7 +354,7 @@ async function pasteLevel(browser, origin, t, html, bareFindings) {
     const seen = await page.evaluate(pageRendered, t.tag);
     if (!seen.defined) {
       add(findings, "paste-undefined", t.tag);
-    } else if (!seen.rendered && !bareFindings.blank) {
+    } else if (!seen.rendered && !bareFindings.blank && !isEmptyMarkup(html)) {
       add(findings, "paste-blank", "demoSchema");
     }
     const bareErrors = new Set(Object.keys(bareFindings.throws || {}));
@@ -356,7 +363,7 @@ async function pasteLevel(browser, origin, t, html, bareFindings) {
         add(findings, "paste-throws", e);
       }
     }
-    return { findings };
+    return { findings, services: watch.services };
   } catch (e) {
     return { error: String((e && e.message) || e).split("\n")[0] };
   } finally {
@@ -365,6 +372,18 @@ async function pasteLevel(browser, origin, t, html, bareFindings) {
     }
   }
 }
+
+// runtime checks that an offline run can't judge when the element needs an
+// outside service (CI aborts every outside request); static and loads-*
+// findings are about HAX and always count
+const NETWORK_GROUPS = [
+  "throws",
+  "blank",
+  "undefined",
+  "paste-throws",
+  "paste-blank",
+  "paste-undefined",
+];
 
 async function runRuntime(picked, staticByTag) {
   const browser = await launchChromium(process.env.WITHOUT_HAX_CHROMIUM);
@@ -385,6 +404,8 @@ async function runRuntime(picked, staticByTag) {
   const results = {};
   const errors = {};
   const noDemo = [];
+  const emptyMarkup = [];
+  const needsNetwork = {};
   try {
     await runPool(
       picked,
@@ -398,6 +419,9 @@ async function runRuntime(picked, staticByTag) {
         }
         if (bare.noDemoSchema) {
           noDemo.push(t.tag);
+        }
+        if (bare.emptyMarkup) {
+          emptyMarkup.push(t.tag);
         }
         let paste = { findings: {} };
         if (bare.html) {
@@ -413,7 +437,23 @@ async function runRuntime(picked, staticByTag) {
             paste = { findings: {} };
           }
         }
-        results[t.tag] = { ...bare.findings, ...paste.findings };
+        const found = { ...bare.findings, ...paste.findings };
+        const services = [
+          ...new Set([...bare.services, ...(paste.services || [])]),
+        ];
+        if (services.length) {
+          const held = NETWORK_GROUPS.filter((g) => found[g]);
+          if (held.length) {
+            needsNetwork[t.tag] = {
+              service: services[0].split("?")[0],
+              findings: held.flatMap((g) =>
+                Object.keys(found[g]).map((k) => `${g}: ${k}`),
+              ),
+            };
+            held.forEach((g) => delete found[g]);
+          }
+        }
+        results[t.tag] = found;
       },
       "without-hax",
     );
@@ -421,7 +461,13 @@ async function runRuntime(picked, staticByTag) {
     await browser.close().catch(() => {});
     await server.stop().catch(() => {});
   }
-  return { results, errors, noDemo: noDemo.sort() };
+  return {
+    results,
+    errors,
+    noDemo: noDemo.sort(),
+    emptyMarkup: emptyMarkup.sort(),
+    needsNetwork,
+  };
 }
 
 function line(out, text) {
@@ -452,7 +498,8 @@ function listItems(out, items) {
 }
 
 /** every finding per tag as a markdown report (for the issue) */
-function writeReport(file, all, picked, results, lazyByTag, errors, noDemo) {
+function writeReport(file, all, picked, results, lazyByTag, errors, extras) {
+  const { noDemo, emptyMarkup, needsNetwork } = extras;
   const rows = [];
   const tags = picked.map((t) => t.tag);
   const clean = tags.filter(
@@ -490,6 +537,23 @@ function writeReport(file, all, picked, results, lazyByTag, errors, noDemo) {
         rows.push(`- \`${tag}\` ${area}: ${chain.join(" > ")}`);
       }
     }
+  }
+  const network = Object.keys(needsNetwork);
+  if (network.length) {
+    rows.push("");
+    rows.push(
+      "## Needs an outside service, not judged offline (CI aborts every outside request)",
+    );
+    for (const tag of network) {
+      const n = needsNetwork[tag];
+      rows.push(`- \`${tag}\` (${n.service}): ${n.findings.join("; ")}`);
+    }
+  }
+  if (emptyMarkup.length) {
+    rows.push("");
+    rows.push(
+      `## demoSchema is a bare tag with nothing set (nothing to render, so not judged blank)\n${emptyMarkup.map((t) => `\`${t}\``).join(", ")}`,
+    );
   }
   if (noDemo.length) {
     rows.push("");
@@ -534,7 +598,8 @@ async function main() {
   }
   let results = {};
   let errors = {};
-  let noDemo = [];
+  const noExtras = { noDemo: [], emptyMarkup: [], needsNetwork: {} };
+  let extras = noExtras;
   const runtime = !flag("--static");
   const collect = async (tags) => {
     const out = {};
@@ -542,7 +607,7 @@ async function main() {
       out[t.tag] = { ...staticByTag[t.tag].findings };
     }
     if (!runtime) {
-      return { results: out, errors: {}, noDemo: [] };
+      return { results: out, errors: {}, extras: noExtras };
     }
     const r = await runRuntime(tags, staticByTag);
     for (const tag of Object.keys(out)) {
@@ -554,9 +619,17 @@ async function main() {
         delete out[tag];
       }
     }
-    return { results: out, errors: r.errors, noDemo: r.noDemo };
+    return {
+      results: out,
+      errors: r.errors,
+      extras: {
+        noDemo: r.noDemo,
+        emptyMarkup: r.emptyMarkup,
+        needsNetwork: r.needsNetwork,
+      },
+    };
   };
-  ({ results, errors, noDemo } = await collect(picked));
+  ({ results, errors, extras } = await collect(picked));
   if (!runtime) {
     // a static-only run compares only the static groups
     for (const tag of Object.keys(results)) {
@@ -606,7 +679,7 @@ async function main() {
         results,
         lazyByTag,
         errors,
-        noDemo,
+        extras,
       );
     }
     return 0;
@@ -636,7 +709,7 @@ async function main() {
       results,
       lazyByTag,
       errors,
-      noDemo,
+      extras,
     );
   }
   if (known.length) {
@@ -658,6 +731,16 @@ async function main() {
       for (const [area, chain] of Object.entries(l)) {
         line(out, `  ${tag}  ${area}: ${chain.join(" > ")}`);
       }
+    }
+  }
+  const network = Object.keys(extras.needsNetwork);
+  if (network.length) {
+    line(
+      out,
+      `\nAdvisory: ${network.length} tag(s) need an outside service, so their runtime checks were not judged offline:`,
+    );
+    for (const tag of network) {
+      line(out, `  ${tag}  ${extras.needsNetwork[tag].service}`);
     }
   }
   const errNames = Object.keys(errors);

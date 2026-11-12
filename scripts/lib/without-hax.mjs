@@ -228,36 +228,59 @@ export function areaOfUrl(url) {
   return null;
 }
 
-// the first thing the magic script (build.js) does, for mobx and friends;
-// both levels get it so they hold elements to what HAX really serves
-const PROCESS_SHIM = `<script>globalThis.process = globalThis.process || { env: { NODE_ENV: "production" } };</script>`;
+// What the magic script (build.js) sets up on any page: the process shim
+// mobx and friends need, then wc-autoload with the registry, so nested tags
+// in content load. That is not the editor or HAXcms, and both levels get
+// it so elements are held to what HAX really serves.
+const MAGIC_SCRIPT = `<script>
+globalThis.process = globalThis.process || { env: { NODE_ENV: "production" } };
+globalThis.WCAutoloadRegistryFile = "/wc-registry.json";
+globalThis.WCGlobalBasePath = "/node_modules/";
+</script>
+<script type="module" src="/elements/wc-autoload/wc-autoload.js"></script>`;
 
+/** the bare level: the magic script, and the element imported directly */
 export const BARE_HTML = `<!doctype html>
 <html lang="en">
 <head><meta charset="utf-8"><title>without HAX</title>
-${PROCESS_SHIM}
+${MAGIC_SCRIPT}
 </head>
 <body><main id="host"></main></body>
 </html>`;
 
 /**
- * A plain page with only the magic script: the autoloader, the registry
- * and the pasted HTML. Nothing from the element is imported directly.
+ * The paste level: a plain page with only the magic script and the pasted
+ * HTML. Nothing from the element is imported directly.
  */
 export function pasteHtml(content) {
   return `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8"><title>without HAX: pasted</title>
-${PROCESS_SHIM}
-<script>
-globalThis.WCAutoloadRegistryFile = "/wc-registry.json";
-globalThis.WCGlobalBasePath = "/node_modules/";
-</script>
-<script type="module" src="/elements/wc-autoload/wc-autoload.js"></script>
+${MAGIC_SCRIPT}
 </head>
 <body><main id="host">${content}</main></body>
 </html>`;
+}
+
+// outside requests an element makes on its own (a CDN library, an API, an
+// embed). Web fonts are left out: DDD asks for them on every page.
+const FONT_HOSTS = /^https?:\/\/(fonts\.googleapis\.com|fonts\.gstatic\.com)\//;
+export function isServiceRequest(url) {
+  return (
+    /^https?:\/\//.test(url) && !LOCAL_HOST.test(url) && !FONT_HOSTS.test(url)
+  );
+}
+const LOCAL_HOST = /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?\//;
+
+/**
+ * Inserted markup with nothing to show: a bare tag with no attributes and no
+ * content, so rendering nothing is not a failure.
+ */
+export function isEmptyMarkup(html) {
+  return String(html || "")
+    .split("\n")
+    .every((h) => /^<([a-z][a-z0-9-]*)><\/\1>$/.test(h.trim()));
 }
 
 /**
@@ -335,6 +358,11 @@ export async function pageBare({ tag, moduleUrl, waitMs }) {
     out.noDemoSchema = true;
   }
   out.html = htmls.join("\n");
+  // content inserted after load: have the magic script sweep it, as it
+  // does for content that is on the page when it loads
+  if (globalThis.WCAutoload && globalThis.WCAutoload.process) {
+    await globalThis.WCAutoload.process().catch(() => {});
+  }
   return out;
 }
 

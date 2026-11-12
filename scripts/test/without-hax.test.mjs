@@ -7,6 +7,8 @@ import path from "node:path";
 import {
   areaOfUrl,
   importFindings,
+  isEmptyMarkup,
+  isServiceRequest,
   normalizeError,
   pasteHtml,
 } from "../lib/without-hax.mjs";
@@ -155,4 +157,34 @@ test("the pasted page has only the magic script setup and the content", () => {
   assert.match(html, /WCAutoloadRegistryFile = "\/wc-registry\.json"/);
   assert.match(html, /<video-player source="x"><\/video-player>/);
   assert.doesNotMatch(html, /hax-body|haxcms-elements/);
+});
+
+test("a bare tag with nothing set is empty markup; anything set is not", () => {
+  assert.equal(isEmptyMarkup("<lrn-vocab></lrn-vocab>"), true);
+  assert.equal(isEmptyMarkup("<a-b></a-b>\n<a-b></a-b>"), true);
+  assert.equal(isEmptyMarkup('<page-flag opened=""></page-flag>'), false);
+  assert.equal(isEmptyMarkup("<a-b>text</a-b>"), false);
+  assert.equal(isEmptyMarkup('<a-b></a-b>\n<a-b x="1"></a-b>'), false);
+});
+
+test("outside services count, the local server and web fonts do not", () => {
+  assert.equal(
+    isServiceRequest(
+      "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js",
+    ),
+    true,
+  );
+  assert.equal(
+    isServiceRequest("https://en.wikipedia.org/w/api.php?x=1"),
+    true,
+  );
+  assert.equal(
+    isServiceRequest("https://fonts.googleapis.com/css2?family=Roboto"),
+    false,
+  );
+  assert.equal(
+    isServiceRequest("http://127.0.0.1:8767/wc-registry.json"),
+    false,
+  );
+  assert.equal(isServiceRequest("data:image/png;base64,AAAA"), false);
 });
