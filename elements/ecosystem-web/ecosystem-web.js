@@ -109,6 +109,7 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
     this.listView = false;
     this.playing = false;
     this.compact = false;
+    this._toursOpen = false;
     this._bundle = null;
     this._models = null;
     this._error = "";
@@ -124,6 +125,7 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
       ecosystemWeb: "Ecosystem web",
       loading: "Loading the web",
       loadError: "The web could not be loaded.",
+      tours: "Tours",
       tourFor: "Tour for",
       followAStory: "Follow a story",
       overview: "Overview",
@@ -184,6 +186,7 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
       compact: { type: Boolean, reflect: true },
       _models: { type: Object, state: true },
       _error: { type: String, state: true },
+      _toursOpen: { type: Boolean, state: true },
     };
   }
 
@@ -342,17 +345,23 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
           color: var(--muted);
           margin-inline-end: var(--ddd-spacing-1);
         }
-        /* on a phone each row of tours is one line that scrolls sideways,
-           so the drawing is on the first screen */
+        .tourlist {
+          display: grid;
+          gap: var(--ddd-spacing-2);
+        }
+        .tours-toggle {
+          display: none;
+          justify-self: start;
+        }
+        /* on a phone the tours fold behind one button, so the drawing is
+           on the first screen */
         @media (max-width: 600px) {
-          .tours .chips {
-            flex-wrap: nowrap;
-            overflow-x: auto;
-            padding-block: var(--ddd-spacing-1);
-            scrollbar-width: thin;
+          .tours-toggle {
+            display: inline-flex;
+            align-items: center;
           }
-          .tours .chips > * {
-            flex: none;
+          .tours:not([data-open]) .tourlist {
+            display: none;
           }
         }
         .body {
@@ -1044,6 +1053,7 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
     return M && this.tour ? tourSteps(M, this.tour) : [];
   }
   pickTour(id) {
+    this._toursOpen = false;
     this.playing = false;
     this.node = "";
     this.tour = id;
@@ -1560,9 +1570,23 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
       >
         ${t.label}
       </button>`;
-    return html`<div class="tours">
-      ${aud.length ? html`<div class="chips"><span class="lab">${this.t.tourFor}</span>${aud.map(chip)}</div>` : nothing}
-      ${story.length ? html`<div class="chips"><span class="lab">${this.t.followAStory}</span>${story.map(chip)}</div>` : nothing}
+    const picked = M.tours.find((t) => t.id === this.tour);
+    return html`<div class="tours" ?data-open="${this._toursOpen}">
+      <button
+        class="act tours-toggle"
+        type="button"
+        aria-expanded="${this._toursOpen ? "true" : "false"}"
+        aria-controls="tourlist"
+        @click="${() => {
+          this._toursOpen = !this._toursOpen;
+        }}"
+      >
+        ${this.t.tours}${picked ? `: ${picked.label}` : ""}
+      </button>
+      <div class="tourlist" id="tourlist">
+        ${aud.length ? html`<div class="chips"><span class="lab">${this.t.tourFor}</span>${aud.map(chip)}</div>` : nothing}
+        ${story.length ? html`<div class="chips"><span class="lab">${this.t.followAStory}</span>${story.map(chip)}</div>` : nothing}
+      </div>
     </div>`;
   }
   _bar() {

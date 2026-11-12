@@ -121,6 +121,20 @@ describe("ecosystem-web", () => {
     );
   });
 
+  it("folds the tours behind one button that names the tour picked", async () => {
+    const r = element.shadowRoot;
+    const btn = r.querySelector(".tours-toggle");
+    expect(btn.getAttribute("aria-expanded")).to.equal("false");
+    expect(btn.getAttribute("aria-controls")).to.equal("tourlist");
+    btn.click();
+    await element.updateComplete;
+    expect(btn.getAttribute("aria-expanded")).to.equal("true");
+    element.pickTour("everyone");
+    await element.updateComplete;
+    expect(btn.getAttribute("aria-expanded")).to.equal("false");
+    expect(btn.textContent.trim()).to.equal("Tours: Everyone");
+  });
+
   it("offers the same web as lists", async () => {
     element.listView = true;
     await element.updateComplete;
