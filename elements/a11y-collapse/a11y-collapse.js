@@ -30,9 +30,11 @@ class A11yCollapse extends I18NMixin(DDD) {
         /* DDD frame: 1px line, medium radius; a11y-collapse-group sets
            --a11y-collapse-border-radius to 0 and --a11y-collapse-group-radius
            so its items share one frame (first and last keep the corners) */
+        /* color-scheme is inherited from the page (DDD sets it, and HAX
+           dark mode forces it), so light-dark() here follows the site's
+           mode rather than the operating system's */
         :host {
           display: block;
-          color-scheme: light dark;
           --a11y-collapse-_radius-top: var(
             --a11y-collapse-border-radius,
             var(--ddd-radius-md)

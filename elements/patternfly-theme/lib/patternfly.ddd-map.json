@@ -1,14 +1,18 @@
 {
   "system": "patternfly",
   "title": "PatternFly",
-  "upstream": {
-    "package": "@patternfly/patternfly",
-    "version": "6.7.0",
-    "license": "MIT",
-    "homepage": "https://www.patternfly.org",
-    "repository": "https://github.com/patternfly/patternfly",
-    "file": "base/patternfly-variables.css"
-  },
+  "sources": [
+    {
+      "package": "@patternfly/patternfly",
+      "version": "6.7.0",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2019 Red Hat, Inc.",
+      "homepage": "https://www.patternfly.org",
+      "repository": "https://github.com/patternfly/patternfly",
+      "format": "css",
+      "file": "base/patternfly-variables.css"
+    }
+  ],
   "fonts": [
     {
       "family": "Red Hat Text",
@@ -27,35 +31,104 @@
     }
   ],
   "coverage": {
-    "color": {
-      "mapped": 50,
-      "total": 52,
-      "keptDDD": [
-        "--ddd-theme-default-shrineMaxLight",
-        "--ddd-theme-default-roarMaxlight"
-      ]
+    "identity": {
+      "mapping": "expected",
+      "percent": 92,
+      "families": {
+        "color": {
+          "mapped": 50,
+          "total": 52,
+          "keptDDD": [
+            "--ddd-theme-default-shrineMaxLight",
+            "--ddd-theme-default-roarMaxlight"
+          ]
+        },
+        "font": {
+          "mapped": 4,
+          "total": 4,
+          "keptDDD": []
+        },
+        "weight": {
+          "mapped": 3,
+          "total": 5,
+          "keptDDD": ["--ddd-font-weight-light", "--ddd-font-weight-medium"]
+        },
+        "radius": {
+          "mapped": 4,
+          "total": 5,
+          "keptDDD": ["--ddd-radius-xl"]
+        },
+        "shadow": {
+          "mapped": 3,
+          "total": 4,
+          "keptDDD": ["--ddd-boxShadow-xl"]
+        },
+        "focus": {
+          "mapped": 2,
+          "total": 2,
+          "keptDDD": []
+        }
+      }
     },
-    "font": {
-      "mapped": 4,
-      "total": 4,
-      "keptDDD": []
+    "feel": {
+      "mapping": "optional",
+      "percent": 43,
+      "families": {
+        "motion": {
+          "mapped": 6,
+          "total": 7,
+          "keptDDD": ["--ddd-timing-emphasized"]
+        },
+        "state": {
+          "mapped": 0,
+          "total": 5,
+          "keptDDD": [
+            "--ddd-state-hover-opacity",
+            "--ddd-state-focus-opacity",
+            "--ddd-state-pressed-opacity",
+            "--ddd-state-selected-opacity",
+            "--ddd-state-disabled-opacity"
+          ]
+        },
+        "control": {
+          "mapped": 0,
+          "total": 7,
+          "keptDDD": [
+            "--ddd-textfield-height-sm",
+            "--ddd-textfield-height-md",
+            "--ddd-textfield-height-lg",
+            "--ddd-control-height-xs",
+            "--ddd-control-height-sm",
+            "--ddd-control-height-md",
+            "--ddd-control-height-lg"
+          ]
+        },
+        "border": {
+          "mapped": 4,
+          "total": 4,
+          "keptDDD": []
+        }
+      }
     },
-    "radius": {
-      "mapped": 4,
-      "total": 5,
-      "keptDDD": ["--ddd-radius-xl"]
-    },
-    "shadow": {
-      "mapped": 3,
-      "total": 4,
-      "keptDDD": ["--ddd-boxShadow-xl"]
-    },
-    "focus": {
-      "mapped": 1,
-      "total": 1,
-      "keptDDD": []
-    },
-    "percent": 94
+    "semantic": {
+      "mapping": "optional",
+      "percent": 0,
+      "families": {
+        "type": {
+          "mapped": 0,
+          "total": 7,
+          "keptDDD": [
+            "--ddd-theme-h1-font-size",
+            "--ddd-theme-h2-font-size",
+            "--ddd-theme-h3-font-size",
+            "--ddd-theme-h4-font-size",
+            "--ddd-theme-h5-font-size",
+            "--ddd-theme-h6-font-size",
+            "--ddd-theme-body-font-size"
+          ]
+        }
+      }
+    }
   },
   "contrast": [
     {
@@ -126,9 +199,11 @@
     }
   ],
   "problems": [],
+  "contract": 1,
   "map": [
     {
       "ddd": "--ddd-theme-default-beaverBlue",
+      "tier": "identity",
       "token": "--pf-t--color--blue--50",
       "light": "#0066cc",
       "dark": "#0066cc",
@@ -136,6 +211,7 @@
     },
     {
       "ddd": "--ddd-theme-default-nittanyNavy",
+      "tier": "identity",
       "token": "--pf-t--color--blue--70",
       "light": "#003366",
       "dark": "#003366",
@@ -143,6 +219,7 @@
     },
     {
       "ddd": "--ddd-theme-default-potentialMidnight",
+      "tier": "identity",
       "token": "--pf-t--color--blue--80",
       "light": "#032142",
       "dark": "#032142",
@@ -150,6 +227,7 @@
     },
     {
       "ddd": "--ddd-theme-default-pughBlue",
+      "tier": "identity",
       "token": "--pf-t--color--blue--30",
       "light": "#92c5f9",
       "dark": "#92c5f9",
@@ -157,6 +235,7 @@
     },
     {
       "ddd": "--ddd-theme-default-accent",
+      "tier": "identity",
       "token": "--pf-t--color--blue--30",
       "light": "#92c5f9",
       "dark": "#92c5f9",
@@ -164,6 +243,7 @@
     },
     {
       "ddd": "--ddd-theme-default-skyBlue",
+      "tier": "identity",
       "token": "--pf-t--color--blue--40",
       "light": "#4394e5",
       "dark": "#4394e5",
@@ -171,6 +251,7 @@
     },
     {
       "ddd": "--ddd-theme-default-skyLight",
+      "tier": "identity",
       "token": "--pf-t--color--blue--20",
       "light": "#b9dafc",
       "dark": "#b9dafc",
@@ -178,6 +259,7 @@
     },
     {
       "ddd": "--ddd-theme-default-skyMaxLight",
+      "tier": "identity",
       "token": "--pf-t--color--blue--10",
       "light": "#e0f0ff",
       "dark": "#e0f0ff",
@@ -185,6 +267,7 @@
     },
     {
       "ddd": "--ddd-theme-default-slateGray",
+      "tier": "identity",
       "token": "--pf-t--color--gray--70",
       "light": "#383838",
       "dark": "#383838",
@@ -192,6 +275,7 @@
     },
     {
       "ddd": "--ddd-theme-default-slateLight",
+      "tier": "identity",
       "token": "--pf-t--color--gray--30",
       "light": "#c7c7c7",
       "dark": "#c7c7c7",
@@ -199,6 +283,7 @@
     },
     {
       "ddd": "--ddd-theme-default-slateMaxLight",
+      "tier": "identity",
       "token": "--pf-t--color--blue--10",
       "light": "#e0f0ff",
       "dark": "#e0f0ff",
@@ -206,6 +291,7 @@
     },
     {
       "ddd": "--ddd-theme-default-coalyGray",
+      "tier": "identity",
       "token": "--pf-t--color--gray--95",
       "light": "#151515",
       "dark": "#151515",
@@ -213,6 +299,7 @@
     },
     {
       "ddd": "--ddd-theme-default-black",
+      "tier": "identity",
       "token": "--pf-t--color--black",
       "light": "#000000",
       "dark": "#000000",
@@ -220,6 +307,7 @@
     },
     {
       "ddd": "--ddd-theme-default-white",
+      "tier": "identity",
       "token": "--pf-t--color--white",
       "light": "#ffffff",
       "dark": "#ffffff",
@@ -227,6 +315,7 @@
     },
     {
       "ddd": "--ddd-theme-default-limestoneGray",
+      "tier": "identity",
       "token": "--pf-t--color--gray--40",
       "light": "#a3a3a3",
       "dark": "#a3a3a3",
@@ -234,6 +323,7 @@
     },
     {
       "ddd": "--ddd-theme-default-limestoneLight",
+      "tier": "identity",
       "token": "--pf-t--color--gray--20",
       "light": "#e0e0e0",
       "dark": "#e0e0e0",
@@ -241,6 +331,7 @@
     },
     {
       "ddd": "--ddd-theme-default-limestoneMaxLight",
+      "tier": "identity",
       "token": "--pf-t--color--gray--10",
       "light": "#f2f2f2",
       "dark": "#f2f2f2",
@@ -248,6 +339,7 @@
     },
     {
       "ddd": "--ddd-theme-default-background",
+      "tier": "identity",
       "token": "--pf-t--color--gray--10",
       "light": "#f2f2f2",
       "dark": "#f2f2f2",
@@ -255,6 +347,7 @@
     },
     {
       "ddd": "--ddd-theme-default-disabled",
+      "tier": "identity",
       "token": "--pf-t--color--gray--10",
       "light": "#f2f2f2",
       "dark": "#f2f2f2",
@@ -262,6 +355,7 @@
     },
     {
       "ddd": "--ddd-theme-default-keystoneYellow",
+      "tier": "identity",
       "token": "--pf-t--color--yellow--30",
       "light": "#ffcc17",
       "dark": "#ffcc17",
@@ -269,6 +363,7 @@
     },
     {
       "ddd": "--ddd-theme-default-globalNeon",
+      "tier": "identity",
       "token": "--pf-t--color--yellow--20",
       "light": "#ffe072",
       "dark": "#ffe072",
@@ -276,6 +371,7 @@
     },
     {
       "ddd": "--ddd-theme-default-roarGolden",
+      "tier": "identity",
       "token": "--pf-t--color--yellow--50",
       "light": "#b98412",
       "dark": "#b98412",
@@ -283,6 +379,7 @@
     },
     {
       "ddd": "--ddd-theme-default-roarLight",
+      "tier": "identity",
       "token": "--pf-t--color--yellow--10",
       "light": "#fff4cc",
       "dark": "#fff4cc",
@@ -290,6 +387,7 @@
     },
     {
       "ddd": "--ddd-theme-default-shrineTan",
+      "tier": "identity",
       "token": "--pf-t--color--orange--50",
       "light": "#ca6c0f",
       "dark": "#ca6c0f",
@@ -297,6 +395,7 @@
     },
     {
       "ddd": "--ddd-theme-default-shrineLight",
+      "tier": "identity",
       "token": "--pf-t--color--orange--10",
       "light": "#ffe8cc",
       "dark": "#ffe8cc",
@@ -304,6 +403,7 @@
     },
     {
       "ddd": "--ddd-theme-default-inventOrange",
+      "tier": "identity",
       "token": "--pf-t--color--orange--40",
       "light": "#f5921b",
       "dark": "#f5921b",
@@ -311,6 +411,7 @@
     },
     {
       "ddd": "--ddd-theme-default-landgrantBrown",
+      "tier": "identity",
       "token": "--pf-t--color--orange--70",
       "light": "#732e00",
       "dark": "#732e00",
@@ -318,6 +419,7 @@
     },
     {
       "ddd": "--ddd-theme-default-creekTeal",
+      "tier": "identity",
       "token": "--pf-t--color--teal--50",
       "light": "#37a3a3",
       "dark": "#37a3a3",
@@ -325,6 +427,7 @@
     },
     {
       "ddd": "--ddd-theme-default-creekLight",
+      "tier": "identity",
       "token": "--pf-t--color--teal--20",
       "light": "#b9e5e5",
       "dark": "#b9e5e5",
@@ -332,6 +435,7 @@
     },
     {
       "ddd": "--ddd-theme-default-creekMaxLight",
+      "tier": "identity",
       "token": "--pf-t--color--teal--10",
       "light": "#daf2f2",
       "dark": "#daf2f2",
@@ -339,6 +443,7 @@
     },
     {
       "ddd": "--ddd-theme-default-opportunityGreen",
+      "tier": "identity",
       "token": "--pf-t--color--green--60",
       "light": "#3d7317",
       "dark": "#3d7317",
@@ -346,6 +451,7 @@
     },
     {
       "ddd": "--ddd-theme-default-forestGreen",
+      "tier": "identity",
       "token": "--pf-t--color--green--50",
       "light": "#63993d",
       "dark": "#63993d",
@@ -353,6 +459,7 @@
     },
     {
       "ddd": "--ddd-theme-default-futureLime",
+      "tier": "identity",
       "token": "--pf-t--color--green--40",
       "light": "#87bb62",
       "dark": "#87bb62",
@@ -360,6 +467,7 @@
     },
     {
       "ddd": "--ddd-theme-default-athertonViolet",
+      "tier": "identity",
       "token": "--pf-t--color--purple--30",
       "light": "#b6a6e9",
       "dark": "#b6a6e9",
@@ -367,6 +475,7 @@
     },
     {
       "ddd": "--ddd-theme-default-wonderPurple",
+      "tier": "identity",
       "token": "--pf-t--color--purple--60",
       "light": "#3d2785",
       "dark": "#3d2785",
@@ -374,6 +483,7 @@
     },
     {
       "ddd": "--ddd-theme-default-original87Pink",
+      "tier": "identity",
       "token": "--pf-t--color--red--60",
       "light": "#a60000",
       "dark": "#a60000",
@@ -381,6 +491,7 @@
     },
     {
       "ddd": "--ddd-theme-default-discoveryCoral",
+      "tier": "identity",
       "token": "--pf-t--color--red--40",
       "light": "#f56e6e",
       "dark": "#f56e6e",
@@ -388,6 +499,7 @@
     },
     {
       "ddd": "--ddd-theme-default-link",
+      "tier": "identity",
       "token": "--pf-t--color--blue--50",
       "light": "#0066cc",
       "dark": "#0066cc",
@@ -395,6 +507,7 @@
     },
     {
       "ddd": "--ddd-theme-default-linkLight",
+      "tier": "identity",
       "token": "--pf-t--color--blue--20",
       "light": "#b9dafc",
       "dark": "#b9dafc",
@@ -402,6 +515,7 @@
     },
     {
       "ddd": "--ddd-theme-default-error",
+      "tier": "identity",
       "token": "--pf-t--color--red--70",
       "light": "#5f0000",
       "dark": "#5f0000",
@@ -409,6 +523,7 @@
     },
     {
       "ddd": "--ddd-theme-default-errorLight",
+      "tier": "identity",
       "token": "--pf-t--color--red--10",
       "light": "#fce3e3",
       "dark": "#fce3e3",
@@ -416,6 +531,7 @@
     },
     {
       "ddd": "--ddd-theme-default-warning",
+      "tier": "identity",
       "token": "--pf-t--color--yellow--70",
       "light": "#73480b",
       "dark": "#73480b",
@@ -423,6 +539,7 @@
     },
     {
       "ddd": "--ddd-theme-default-warningLight",
+      "tier": "identity",
       "token": "--pf-t--color--yellow--10",
       "light": "#fff4cc",
       "dark": "#fff4cc",
@@ -430,6 +547,7 @@
     },
     {
       "ddd": "--ddd-theme-default-info",
+      "tier": "identity",
       "token": "--pf-t--color--blue--70",
       "light": "#003366",
       "dark": "#003366",
@@ -437,6 +555,7 @@
     },
     {
       "ddd": "--ddd-theme-default-infoLight",
+      "tier": "identity",
       "token": "--pf-t--color--blue--10",
       "light": "#e0f0ff",
       "dark": "#e0f0ff",
@@ -444,6 +563,7 @@
     },
     {
       "ddd": "--ddd-theme-default-success",
+      "tier": "identity",
       "token": "--pf-t--color--green--70",
       "light": "#204d00",
       "dark": "#204d00",
@@ -451,6 +571,7 @@
     },
     {
       "ddd": "--ddd-theme-default-successLight",
+      "tier": "identity",
       "token": "--pf-t--color--green--10",
       "light": "#e9f7df",
       "dark": "#e9f7df",
@@ -458,6 +579,7 @@
     },
     {
       "ddd": "--ddd-theme-default-alertImmediate",
+      "tier": "identity",
       "token": "--pf-t--color--red--20",
       "light": "#fbc5c5",
       "dark": "#fbc5c5",
@@ -465,6 +587,7 @@
     },
     {
       "ddd": "--ddd-theme-default-alertUrgent",
+      "tier": "identity",
       "token": "--pf-t--color--yellow--10",
       "light": "#fff4cc",
       "dark": "#fff4cc",
@@ -472,6 +595,7 @@
     },
     {
       "ddd": "--ddd-theme-default-alertAllClear",
+      "tier": "identity",
       "token": "--pf-t--color--green--10",
       "light": "#e9f7df",
       "dark": "#e9f7df",
@@ -479,6 +603,7 @@
     },
     {
       "ddd": "--ddd-theme-default-alertNonEmergency",
+      "tier": "identity",
       "token": "--pf-t--color--blue--10",
       "light": "#e0f0ff",
       "dark": "#e0f0ff",
@@ -486,6 +611,7 @@
     },
     {
       "ddd": "--ddd-font-primary",
+      "tier": "identity",
       "token": "--pf-t--global--font--family--body",
       "light": "\"Red Hat Text\", \"RedHatText\", \"Noto Sans Arabic\", \"Noto Sans Hebrew\", \"Noto Sans JP\", \"Noto Sans KR\", \"Noto Sans Malayalam\", \"Noto Sans SC\", \"Noto Sans TC\", \"Noto Sans Thai\", Helvetica, Arial, sans-serif",
       "dark": "\"Red Hat Text\", \"RedHatText\", \"Noto Sans Arabic\", \"Noto Sans Hebrew\", \"Noto Sans JP\", \"Noto Sans KR\", \"Noto Sans Malayalam\", \"Noto Sans SC\", \"Noto Sans TC\", \"Noto Sans Thai\", Helvetica, Arial, sans-serif",
@@ -493,6 +619,7 @@
     },
     {
       "ddd": "--ddd-font-secondary",
+      "tier": "identity",
       "token": "--pf-t--global--font--family--heading",
       "light": "\"Red Hat Display\", \"RedHatDisplay\", \"Noto Sans Arabic\", \"Noto Sans Hebrew\", \"Noto Sans JP\", \"Noto Sans KR\", \"Noto Sans Malayalam\", \"Noto Sans SC\", \"Noto Sans TC\", \"Noto Sans Thai\", Helvetica, Arial, sans-serif",
       "dark": "\"Red Hat Display\", \"RedHatDisplay\", \"Noto Sans Arabic\", \"Noto Sans Hebrew\", \"Noto Sans JP\", \"Noto Sans KR\", \"Noto Sans Malayalam\", \"Noto Sans SC\", \"Noto Sans TC\", \"Noto Sans Thai\", Helvetica, Arial, sans-serif",
@@ -500,6 +627,7 @@
     },
     {
       "ddd": "--ddd-font-navigation",
+      "tier": "identity",
       "token": "--pf-t--global--font--family--body",
       "light": "\"Red Hat Text\", \"RedHatText\", \"Noto Sans Arabic\", \"Noto Sans Hebrew\", \"Noto Sans JP\", \"Noto Sans KR\", \"Noto Sans Malayalam\", \"Noto Sans SC\", \"Noto Sans TC\", \"Noto Sans Thai\", Helvetica, Arial, sans-serif",
       "dark": "\"Red Hat Text\", \"RedHatText\", \"Noto Sans Arabic\", \"Noto Sans Hebrew\", \"Noto Sans JP\", \"Noto Sans KR\", \"Noto Sans Malayalam\", \"Noto Sans SC\", \"Noto Sans TC\", \"Noto Sans Thai\", Helvetica, Arial, sans-serif",
@@ -507,6 +635,7 @@
     },
     {
       "ddd": "--ddd-font-mono",
+      "tier": "identity",
       "token": "--pf-t--global--font--family--mono",
       "light": "\"Red Hat Mono\", \"RedHatMono\", \"Courier New\", Courier, monospace",
       "dark": "\"Red Hat Mono\", \"RedHatMono\", \"Courier New\", Courier, monospace",
@@ -514,6 +643,7 @@
     },
     {
       "ddd": "--ddd-radius-xs",
+      "tier": "identity",
       "token": "--pf-t--global--border--radius--tiny",
       "light": "4px",
       "dark": "4px",
@@ -521,6 +651,7 @@
     },
     {
       "ddd": "--ddd-radius-sm",
+      "tier": "identity",
       "token": "--pf-t--global--border--radius--small",
       "light": "6px",
       "dark": "6px",
@@ -528,6 +659,7 @@
     },
     {
       "ddd": "--ddd-radius-md",
+      "tier": "identity",
       "token": "--pf-t--global--border--radius--medium",
       "light": "16px",
       "dark": "16px",
@@ -535,6 +667,7 @@
     },
     {
       "ddd": "--ddd-radius-lg",
+      "tier": "identity",
       "token": "--pf-t--global--border--radius--large",
       "light": "24px",
       "dark": "24px",
@@ -542,6 +675,7 @@
     },
     {
       "ddd": "--ddd-boxShadow-sm",
+      "tier": "identity",
       "token": "--pf-t--global--box-shadow--sm",
       "light": "0px 1px 6px 0px rgb(41, 41, 41, 0.1500)",
       "dark": "0px 1px 6px 0px rgb(0, 0, 0, 0.5000)",
@@ -549,6 +683,7 @@
     },
     {
       "ddd": "--ddd-boxShadow-md",
+      "tier": "identity",
       "token": "--pf-t--global--box-shadow--md",
       "light": "0px 4px 10px 0px rgb(41, 41, 41, 0.1500)",
       "dark": "0px 4px 10px 0px rgb(0, 0, 0, 0.5000)",
@@ -556,6 +691,7 @@
     },
     {
       "ddd": "--ddd-boxShadow-lg",
+      "tier": "identity",
       "token": "--pf-t--global--box-shadow--lg",
       "light": "0px 10px 20px 0px rgb(41, 41, 41, 0.1500)",
       "dark": "0px 10px 20px 0px rgb(0, 0, 0, 0.5000)",
@@ -563,9 +699,122 @@
     },
     {
       "ddd": "--ddd-focus-ring",
+      "tier": "identity",
       "token": null,
       "light": "2px solid #0066cc",
       "dark": "2px solid #92c5f9",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-font-weight-regular",
+      "tier": "identity",
+      "token": "--pf-t--global--font--weight--body--default",
+      "light": "400",
+      "dark": "400",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-font-weight-bold",
+      "tier": "identity",
+      "token": "--pf-t--global--font--weight--body--bold",
+      "light": "600",
+      "dark": "600",
+      "note": "PatternFly bold is 600"
+    },
+    {
+      "ddd": "--ddd-font-weight-black",
+      "tier": "identity",
+      "token": "--pf-t--global--font--weight--heading--bold",
+      "light": "800",
+      "dark": "800",
+      "note": "PatternFly heavy heading weight, 800"
+    },
+    {
+      "ddd": "--ddd-focus-offset",
+      "tier": "identity",
+      "token": "--pf-t--global--focus-ring--position--offset",
+      "light": "2px",
+      "dark": "2px",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-duration-fast",
+      "tier": "feel",
+      "token": "--pf-t--global--motion--duration--sm",
+      "light": "100ms",
+      "dark": "100ms",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-duration-normal",
+      "tier": "feel",
+      "token": "--pf-t--global--motion--duration--lg",
+      "light": "300ms",
+      "dark": "300ms",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-duration-slow",
+      "tier": "feel",
+      "token": "--pf-t--global--motion--duration--2xl",
+      "light": "500ms",
+      "dark": "500ms",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-timing-ease",
+      "tier": "feel",
+      "token": "--pf-t--global--motion--timing-function--default",
+      "light": "cubic-bezier(.4, 0, .2, 1)",
+      "dark": "cubic-bezier(.4, 0, .2, 1)",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-timing-enter",
+      "tier": "feel",
+      "token": "--pf-t--global--motion--timing-function--decelerate",
+      "light": "cubic-bezier(0, 0, .2, 1)",
+      "dark": "cubic-bezier(0, 0, .2, 1)",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-timing-exit",
+      "tier": "feel",
+      "token": "--pf-t--global--motion--timing-function--accelerate",
+      "light": "cubic-bezier(.4, 0, .7, .2)",
+      "dark": "cubic-bezier(.4, 0, .7, .2)",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-border-size-xs",
+      "tier": "feel",
+      "token": "--pf-t--global--border--width--regular",
+      "light": "1px",
+      "dark": "1px",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-border-size-sm",
+      "tier": "feel",
+      "token": "--pf-t--global--border--width--strong",
+      "light": "2px",
+      "dark": "2px",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-border-size-md",
+      "tier": "feel",
+      "token": "--pf-t--global--border--width--extra-strong",
+      "light": "3px",
+      "dark": "3px",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-border-size-lg",
+      "tier": "feel",
+      "token": "--pf-t--global--border--width--400",
+      "light": "4px",
+      "dark": "4px",
       "note": ""
     }
   ]

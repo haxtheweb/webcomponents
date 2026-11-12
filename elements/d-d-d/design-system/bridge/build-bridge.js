@@ -15,17 +15,22 @@
  * the same page renders in DDD in any other theme.
  *
  * Input: <theme>/design-system/bridge.json (see README.md in this folder).
- * The upstream package is fetched with `npm pack` at the pinned version, so
+ * Each upstream source is fetched with `npm pack` at its pinned version, so
  * nothing from the upstream system is added to the monorepo's dependencies.
+ * Sources are compiled CSS (custom properties per light/dark selector) or
+ * DTCG token JSON (written out as custom properties under a given prefix).
  *
  * Output (in <theme>/lib/):
  *   <Prefix>Tokens.js        upstream tokens as CSS (light-dark() pairs)
  *   <Prefix>DDDMap.js        --ddd-* → upstream token remap as CSS
- *   <system>.ddd-map.json    machine-readable map + coverage + contrast report
+ *   <system>.ddd-map.json    machine-readable map + per-tier coverage + contrast report
+ *
+ * What a bridge may map is set by contract.json (structure is locked;
+ * identity is expected; feel and semantic are optional and guarded).
  *
  * Usage:
  *   node elements/d-d-d/design-system/bridge/build-bridge.js <theme-dir> [--upstream <dir>] [--check]
- *     --upstream  an already-extracted upstream package (skips npm pack)
+ *     --upstream  an already-extracted package for the first source (skips npm pack)
  *     --check     exit 1 if the committed outputs are out of date
  */
 import fs from "fs";
@@ -55,16 +60,23 @@ const config = JSON.parse(
   fs.readFileSync(path.join(themeDir, "design-system", "bridge.json"), "utf8"),
 );
 
+// one or more upstream sources; a single legacy "upstream" is the first
+const sources = config.sources || [
+  { ...config.upstream, format: "css", scopes: config.scopes },
+];
+
 // licenses that can ship inside an Apache-2.0 project; anything else stops
 // the build so an incompatible system never lands in the monorepo
 const SHIPPABLE = ["MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause", "ISC"];
 const SHIPPABLE_FONTS = ["OFL-1.1", "Apache-2.0", "MIT"];
-if (!SHIPPABLE.includes(config.upstream.license)) {
-  console.error(
-    `License ${config.upstream.license} for ${config.upstream.package} is not on the shippable list (${SHIPPABLE.join(", ")}).`,
-  );
-  process.exit(1);
-}
+sources.forEach((source) => {
+  if (!SHIPPABLE.includes(source.license)) {
+    console.error(
+      `License ${source.license} for ${source.package} is not on the shippable list (${SHIPPABLE.join(", ")}).`,
+    );
+    process.exit(1);
+  }
+});
 (config.fonts || []).forEach((font) => {
   if (!SHIPPABLE_FONTS.includes(font.license)) {
     console.error(`Font ${font.family} is ${font.license}, which can't ship.`);
@@ -74,11 +86,13 @@ if (!SHIPPABLE.includes(config.upstream.license)) {
 
 /* ---------------------------------------------------------------- upstream */
 
-function fetchUpstream() {
+const packed = {};
+function fetchSource(source, index) {
   const given = option("--upstream");
-  if (given) return path.resolve(given);
+  if (given && index === 0) return path.resolve(given);
+  const spec = `${source.package}@${source.version}`;
+  if (packed[spec]) return packed[spec];
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "ddd-bridge-"));
-  const spec = `${config.upstream.package}@${config.upstream.version}`;
   const tgz = execFileSync(
     "npm",
     ["pack", spec, "--pack-destination", tmp, "--silent"],
@@ -94,13 +108,62 @@ function fetchUpstream() {
   const pkg = JSON.parse(
     fs.readFileSync(path.join(tmp, "package", "package.json"), "utf8"),
   );
-  if (pkg.license !== config.upstream.license) {
+  if (pkg.license !== source.license) {
     console.error(
-      `bridge.json says ${config.upstream.license} but ${spec} declares ${pkg.license}.`,
+      `bridge.json says ${source.license} but ${spec} declares ${pkg.license}.`,
     );
     process.exit(1);
   }
-  return path.join(tmp, "package");
+  packed[spec] = path.join(tmp, "package");
+  return packed[spec];
+}
+
+const kebab = (key) =>
+  String(key)
+    .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
+    .toLowerCase();
+
+/** a DTCG $value as CSS */
+function dtcgValue(token, prefix) {
+  const value = token.$value;
+  if (typeof value === "string") {
+    // {group.token} aliases point at another token in the same file
+    const alias = /^\{([^}]+)\}$/.exec(value);
+    if (alias) {
+      return `var(${prefix}${alias[1].split(".").map(kebab).join("-")})`;
+    }
+    return value;
+  }
+  if (typeof value === "number") return String(value);
+  if (Array.isArray(value)) {
+    if (token.$type === "cubicBezier")
+      return `cubic-bezier(${value.join(", ")})`;
+    if (token.$type === "fontFamily") {
+      return value.map((f) => (/\s/.test(f) ? `"${f}"` : f)).join(", ");
+    }
+    return value.join(" ");
+  }
+  if (value && typeof value === "object") {
+    if (value.hex) return value.hex;
+    if (value.value !== undefined && value.unit) {
+      return `${value.value}${value.unit}`;
+    }
+  }
+  throw new Error(`unsupported DTCG value ${JSON.stringify(value)}`);
+}
+
+/** DTCG JSON → { --prefix-group-token: css } */
+function flattenDTCG(json, prefix, pathParts = [], out = {}) {
+  Object.entries(json).forEach(([key, node]) => {
+    if (key.startsWith("$") || !node || typeof node !== "object") return;
+    const parts = [...pathParts, kebab(key)];
+    if (node.$value !== undefined) {
+      out[`${prefix}${parts.join("-")}`] = dtcgValue(node, prefix);
+    } else {
+      flattenDTCG(node, prefix, parts, out);
+    }
+  });
+  return out;
 }
 
 /** custom property declarations per selector, in source order */
@@ -181,12 +244,23 @@ function resolve(value, env, seen = []) {
 
 /* -------------------------------------------------------------------- build */
 
-const upstreamDir = fetchUpstream();
-const blocks = parseBlocks(
-  fs.readFileSync(path.join(upstreamDir, config.upstream.file), "utf8"),
-);
-const light = scopeEnv(blocks, config.scopes.light);
-const dark = scopeEnv(blocks, config.scopes.dark);
+// light and dark environments, merged across sources in order
+const light = {};
+const dark = {};
+sources.forEach((source, index) => {
+  const dir = fetchSource(source, index);
+  const text = fs.readFileSync(path.join(dir, source.file), "utf8");
+  if (source.format === "dtcg") {
+    // DTCG files here are mode-free (palettes, motion): same in both modes
+    const flat = flattenDTCG(JSON.parse(text), source.prefix);
+    Object.assign(light, flat);
+    Object.assign(dark, flat);
+  } else {
+    const blocks = parseBlocks(text);
+    Object.assign(light, scopeEnv(blocks, source.scopes.light));
+    Object.assign(dark, scopeEnv(blocks, source.scopes.dark));
+  }
+});
 
 const ddd = dddVariables();
 const dddByName = Object.fromEntries(ddd.map((v) => ["--" + v.name, v]));
@@ -278,29 +352,107 @@ ddd
     rgbRows.push({ ddd: "--" + v.name, css: `${r}, ${g}, ${b}${alpha}` });
   });
 
-/* coverage: the DDD surface a design system is expected to answer */
-const FAMILIES = {
-  color: (n) => /^ddd-theme-default-[a-zA-Z]+$/.test(n),
-  font: (n) => /^ddd-font-(primary|secondary|navigation|mono)$/.test(n),
-  radius: (n) => /^ddd-radius-(xs|sm|md|lg|xl)$/.test(n),
-  shadow: (n) => /^ddd-boxShadow-(sm|md|lg|xl)$/.test(n),
-  focus: (n) => n === "ddd-focus-ring",
+/* contract: which DDD tokens a bridge may answer (contract.json, by tier) */
+const contract = JSON.parse(
+  fs.readFileSync(new URL("./contract.json", import.meta.url), "utf8"),
+);
+const tierOf = (name) =>
+  contract.tiers.find((tier) =>
+    tier.patterns.some((pattern) => new RegExp(pattern).test(name)),
+  ) || null;
+const px = (value) => {
+  const m = /^(-?[\d.]+)(px|rem|em)$/.exec(String(value).trim());
+  if (!m) return null;
+  return m[2] === "px" ? Number(m[1]) : Number(m[1]) * 16;
 };
-const coverage = {};
-let totalAll = 0;
-let mappedAll = 0;
-Object.keys(FAMILIES).forEach((family) => {
-  const names = ddd.map((v) => v.name).filter(FAMILIES[family]);
-  const mapped = names.filter((n) => map["--" + n]);
-  totalAll += names.length;
-  mappedAll += mapped.length;
-  coverage[family] = {
-    mapped: mapped.length,
-    total: names.length,
-    keptDDD: names.filter((n) => !map["--" + n]).map((n) => "--" + n),
-  };
+rows.forEach((row) => {
+  const tier = tierOf(row.ddd.slice(2));
+  row.tier = tier ? tier.id : null;
+  if (!tier) {
+    problems.push(
+      `${row.ddd} is not in the bridge contract; add it to a tier in contract.json before mapping it`,
+    );
+  } else if (tier.mapping === "forbidden") {
+    problems.push(`${row.ddd} is ${tier.title}: ${tier.why}`);
+  }
 });
-coverage.percent = Math.round((mappedAll / Math.max(totalAll, 1)) * 100);
+
+/* guards: the contract's floors, checked against the resolved values */
+const resolvedDDD = (name, mode) => {
+  const row = rows.find((r) => r.ddd === name);
+  if (row) return mode === "dark" ? row.dark : row.light;
+  const v = dddByName[name];
+  if (!v) return null;
+  // DDD aliases such as var(--ddd-font-size-l) resolve through DDD itself
+  const alias = /^var\((--ddd-[\w-]+)\)$/.exec(v.value.trim());
+  return alias ? resolvedDDD(alias[1], mode) : v.value;
+};
+const guards = Object.assign(
+  {},
+  ...contract.tiers.map((tier) => tier.guards || {}),
+);
+if (guards.bodyMinPx) {
+  const body = px(resolvedDDD("--ddd-theme-body-font-size", "light"));
+  if (body !== null && body < guards.bodyMinPx) {
+    problems.push(
+      `--ddd-theme-body-font-size resolves to ${body}px, below the ${guards.bodyMinPx}px floor`,
+    );
+  }
+  let previous = Infinity;
+  [1, 2, 3, 4, 5, 6].forEach((level) => {
+    const name = `--ddd-theme-h${level}-font-size`;
+    const size = px(resolvedDDD(name, "light"));
+    if (size === null) return;
+    if (body !== null && size < body) {
+      problems.push(
+        `${name} (${size}px) is smaller than body text (${body}px)`,
+      );
+    }
+    if (size > previous) {
+      problems.push(`${name} (${size}px) is larger than the level above it`);
+    }
+    previous = size;
+  });
+}
+if (guards.controlMinPx) {
+  rows
+    .filter((row) => /^--ddd-(control|textfield)-height-/.test(row.ddd))
+    .forEach((row) => {
+      const size = px(row.light);
+      if (size !== null && size < guards.controlMinPx) {
+        problems.push(
+          `${row.ddd} resolves to ${size}px, below the ${guards.controlMinPx}px minimum target`,
+        );
+      }
+    });
+}
+
+/* coverage per tier and family, so every system reports the same surface */
+const coverage = {};
+contract.tiers
+  .filter((tier) => tier.families)
+  .forEach((tier) => {
+    let total = 0;
+    let mapped = 0;
+    const families = {};
+    Object.entries(tier.families).forEach(([family, pattern]) => {
+      const re = new RegExp(pattern);
+      const names = ddd.map((v) => v.name).filter((n) => re.test(n));
+      const hit = names.filter((n) => map["--" + n]);
+      total += names.length;
+      mapped += hit.length;
+      families[family] = {
+        mapped: hit.length,
+        total: names.length,
+        keptDDD: names.filter((n) => !map["--" + n]).map((n) => "--" + n),
+      };
+    });
+    coverage[tier.id] = {
+      mapping: tier.mapping,
+      percent: Math.round((mapped / Math.max(total, 1)) * 100),
+      families,
+    };
+  });
 
 /* contrast: the pairings DDD elements lean on, re-checked with mapped values */
 const value = (name, mode) => {
@@ -346,7 +498,7 @@ const contrastReport = PAIRS.map(([fg, bg, min]) => {
 
 const prefix = config.prefix;
 const header = (what) =>
-  `/**\n * ${what}\n * GENERATED by elements/d-d-d/design-system/bridge/build-bridge.js from\n * ${config.upstream.package}@${config.upstream.version} (${config.upstream.license}, ${config.upstream.homepage}).\n * Do not edit by hand: change design-system/bridge.json and rebuild.\n */\n`;
+  `/**\n * ${what}\n * GENERATED by elements/d-d-d/design-system/bridge/build-bridge.js from\n * ${sources.map((src) => `${src.package}@${src.version} (${src.license})`).join(", ")}, ${config.homepage || sources[0].homepage}.\n * Do not edit by hand: change design-system/bridge.json and rebuild.\n */\n`;
 /** split on a separator at paren depth 0 */
 function splitTop(value, sep) {
   const parts = [];
@@ -436,13 +588,19 @@ const mapJs =
 const report = {
   system: config.system,
   title: config.title,
-  upstream: config.upstream,
+  sources: sources.map((source) => {
+    const listed = { ...source };
+    delete listed.scopes;
+    return listed;
+  }),
   fonts: config.fonts || [],
   coverage,
   contrast: contrastReport,
   problems,
-  map: rows.map(({ ddd: d, token, light: l, dark: dk, note }) => ({
+  contract: contract.version,
+  map: rows.map(({ ddd: d, tier, token, light: l, dark: dk, note }) => ({
     ddd: d,
+    tier,
     token,
     light: l,
     dark: dk,
@@ -486,10 +644,15 @@ if (flag("--check")) {
 }
 
 console.log(
-  `${config.title}: ${tokens.length} upstream tokens, ${rows.length} DDD tokens mapped, ` +
-    `coverage ${coverage.percent}% (${Object.keys(FAMILIES)
-      .map((f) => `${f} ${coverage[f].mapped}/${coverage[f].total}`)
-      .join(", ")})`,
+  `${config.title}: ${tokens.length} upstream tokens, ${rows.length} DDD tokens mapped\n` +
+    Object.entries(coverage)
+      .map(
+        ([tier, c]) =>
+          `  ${tier} ${c.percent}% (${Object.entries(c.families)
+            .map(([f, v]) => `${f} ${v.mapped}/${v.total}`)
+            .join(", ")})`,
+      )
+      .join("\n"),
 );
 if (problems.length) {
   console.error("Problems:\n  " + problems.join("\n  "));

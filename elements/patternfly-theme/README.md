@@ -13,9 +13,13 @@ The design system registers as `patternfly` with `extends: "ddd"` in `DesignSyst
 | `design-system/bridge.json` | The authored mapping: upstream package and version, light/dark scopes, fonts, and each DDD token → PatternFly token |
 | `lib/PatternflyTokens.js` | Generated: the PatternFly tokens the map and theme use, as `light-dark()` pairs |
 | `lib/PatternflyDDDMap.js` | Generated: the `--ddd-*` → `--pf-t--*` remap |
-| `lib/patternfly.ddd-map.json` | Generated: the full map with resolved values, coverage and a contrast report |
+| `lib/patternfly.ddd-map.json` | Generated: the full map with resolved values, coverage per contract tier and a contrast report |
 | `lib/PatternflyDesignSystem.js` | Registers and activates the `patternfly` design system |
 | `patternfly-theme.js` | The theme |
+
+## Coverage
+
+Checked against the shared [bridge contract](../d-d-d/design-system/bridge/README.md): identity 92%, feel 43%, semantic 0%, structure locked. Kept as DDD on purpose: font weights light and medium (no PatternFly 300 or 500 step), radius-xl and boxShadow-xl, emphasized easing, state opacities and control heights (PatternFly has no tokens for them), and the heading/body sizes (PatternFly body text is 14px, under the 16px floor, and its h3-h6 would fall below DDD's 20px body text).
 
 ## Rebuilding the tokens
 
