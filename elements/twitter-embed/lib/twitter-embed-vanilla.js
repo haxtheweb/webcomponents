@@ -1,4 +1,8 @@
 /**
+ * Copyright 2020 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
+/**
  * `twitter-embed-vanilla`
  * `A simple way to embed tweets from twitter without their whole API.
  *

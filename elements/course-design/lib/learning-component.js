@@ -1,6 +1,6 @@
 /**
- * Copyright 2021
- * @license Apache-2.0, see License.md for full text.
+ * Copyright 2021 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
  */
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { DDDBlockStyles } from "@haxtheweb/d-d-d/lib/DDDBlock.js";

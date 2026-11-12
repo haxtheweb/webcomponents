@@ -1,3 +1,7 @@
+/**
+ * Copyright 2023 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { css, html, LitElement } from "lit";
 import "./simple-tag.js";
 export class SimpleTags extends LitElement {

@@ -1,4 +1,5 @@
 // node --test scripts/test/*.test.mjs
+import process from "node:process";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { classify, inScope } from "../license-header-check.mjs";
@@ -84,4 +85,22 @@ test("generated and vendored files carry their own headers", () => {
     classify(`/**\n * Copyright 2020 Someone\n * @license MIT\n */\n`),
     "third-party",
   );
+});
+
+test("third-party code is listed by path, and only those paths are skipped", async () => {
+  const { isThirdParty } = await import("../license-header-check.mjs");
+  assert.ok(isThirdParty("elements/utils/lib/marked.js"));
+  assert.ok(isThirdParty("elements/code-sample/lib/highlightjs/languages/css.js"));
+  assert.equal(isThirdParty("elements/utils/utils.js"), false);
+  assert.equal(isThirdParty("elements/code-sample/code-sample.js"), false);
+});
+
+test("every element source file carries the header (--all)", async () => {
+  const { execFileSync } = await import("node:child_process");
+  const { fileURLToPath } = await import("node:url");
+  const script = fileURLToPath(
+    new URL("../license-header-check.mjs", import.meta.url),
+  );
+  // throws (exit 1) when any first-party file lacks the header
+  execFileSync(process.execPath, [script, "--all"], { stdio: "pipe" });
 });

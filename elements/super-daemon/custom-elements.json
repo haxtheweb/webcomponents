@@ -926,6 +926,14 @@
             },
             {
               "kind": "field",
+              "name": "priorityPaths",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
               "name": "_programValues",
               "type": {
                 "text": "object"

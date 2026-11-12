@@ -1,3 +1,7 @@
+/**
+ * Copyright 2023 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { html, css, nothing } from "lit";
 import { SimpleFilterMixin } from "@haxtheweb/simple-filter/simple-filter.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
@@ -463,6 +467,14 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           outline-offset: 2px;
         }
 
+        /* no keyboard hints on phones, a phone held in landscape included
+           (the same query as KEYBOARD_SHORTCUTS_HIDDEN_MEDIA in
+           @haxtheweb/utils keyboardShortcuts) */
+        @media (max-width: 599px), (pointer: coarse) and (max-height: 599px) {
+          .footer .hint {
+            display: none;
+          }
+        }
         @media screen and (max-width: 800px) {
           super-daemon-search {
             margin: var(--hax-ui-gap-md) var(--hax-ui-gap-md) 0;

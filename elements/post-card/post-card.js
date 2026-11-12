@@ -1,6 +1,7 @@
 /**
  * Copyright 2021 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * @license Apache-2.0, see LICENSE for full text.
+ *
  * CREATIVE COMMONS CREDIT: All graphics and visuals gathered from: https://remixer.visualthinkery.com/a/OEG-postcard based on: https://creativecommons.org/licenses/by-sa/4.0/?ref=fahim.pages.dev
  * Work originally produced as part of edtechjoker class 5 - Web component development course
  * Group: 3b4b.

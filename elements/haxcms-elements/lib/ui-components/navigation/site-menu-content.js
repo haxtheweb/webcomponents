@@ -1,3 +1,7 @@
+/**
+ * Copyright 2020 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { PageContentsMenu } from "@haxtheweb/page-contents-menu/page-contents-menu.js";
 import { HAXCMSThemeParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";

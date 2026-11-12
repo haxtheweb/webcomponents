@@ -1,3 +1,7 @@
+/**
+ * Copyright 2022 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { enableCoreServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
 

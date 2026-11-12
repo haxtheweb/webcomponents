@@ -1,3 +1,7 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { html, css } from "lit";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import { lazyImageLoader } from "@haxtheweb/lazy-image-helpers/lazy-image-helpers.js";

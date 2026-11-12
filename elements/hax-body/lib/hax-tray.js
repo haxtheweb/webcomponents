@@ -1,3 +1,7 @@
+/**
+ * Copyright 2020 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { html, css } from "lit";
 import {
   winEventsElement,
@@ -35,11 +39,9 @@ import "./hax-view-source.js";
 import "./hax-stax-browser.js";
 import "./hax-map.js";
 import "./hax-tray-button.js";
-import "./hax-toolbar-menu.js";
 import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/undo-manager/undo-manager.js";
-import "@haxtheweb/simple-toolbar/lib/simple-toolbar-menu-item.js";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 
 /**

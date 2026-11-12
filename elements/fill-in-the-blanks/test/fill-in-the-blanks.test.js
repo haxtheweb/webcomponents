@@ -537,14 +537,16 @@ describe("FillInTheBlanks gap coverage", () => {
     element.statement = "Choose [red|blue|green].";
     await element.updateComplete;
 
-    element.answers[0].userGuessCorrect = true;
+    // the status comes from grading what is selected
+    let selectField = element.shadowRoot.querySelector("select");
+    selectField.value = "red";
     element.showAnswer = true;
     await element.updateComplete;
 
-    let selectField = element.shadowRoot.querySelector("select");
+    selectField = element.shadowRoot.querySelector("select");
     expect(selectField.classList.contains("correct")).to.be.true;
 
-    element.answers[0].userGuessCorrect = false;
+    selectField.value = "blue";
     element.requestUpdate();
     await element.updateComplete;
 
@@ -569,5 +571,85 @@ describe("FillInTheBlanks gap coverage", () => {
     ).to.equal(0);
     const text = element.shadowRoot.querySelector(".text");
     expect(text.textContent).to.include("[cat]");
+  });
+});
+
+describe("fill-in-the-blanks scoring (issues#3206)", () => {
+  it("gives blanks with the same options their own fields", async () => {
+    const el = await fixture(
+      html`<fill-in-the-blanks
+        statement="Music is [sung|played] by [voices|strings] and [sung|played] in [voices|strings]."
+      ></fill-in-the-blanks>`,
+    );
+    await el.updateComplete;
+    const fields = Array.from(
+      el.shadowRoot.querySelectorAll("[data-answer-index]"),
+    );
+    expect(fields.length).to.equal(4);
+    expect(
+      fields.map((f) => f.getAttribute("data-answer-index")),
+    ).to.deep.equal(["0", "1", "2", "3"]);
+    fields[0].value = "sung";
+    fields[1].value = "voices";
+    fields[2].value = "sung";
+    fields[3].value = "voices";
+    expect(el.isCorrect()).to.be.true;
+    expect(el.numberCorrect).to.equal(4);
+    expect(el.numberGuessed).to.equal(4);
+  });
+
+  it("gives repeated text blanks their own fields", async () => {
+    const el = await fixture(
+      html`<fill-in-the-blanks
+        statement="A [cat] sat by a [cat] and a [dog]."
+      ></fill-in-the-blanks>`,
+    );
+    await el.updateComplete;
+    const fields = el.shadowRoot.querySelectorAll('input[type="text"]');
+    expect(fields.length).to.equal(3);
+    fields[0].value = "cat";
+    fields[1].value = "cat";
+    fields[2].value = "dog";
+    expect(el.isCorrect()).to.be.true;
+    expect(el.numberCorrect).to.equal(3);
+  });
+
+  it("marks a blank wrong again after it is changed to a wrong answer", async () => {
+    const el = await fixture(
+      html`<fill-in-the-blanks
+        statement="The [cat] is on the [mat]."
+      ></fill-in-the-blanks>`,
+    );
+    await el.updateComplete;
+    const fields = el.shadowRoot.querySelectorAll('input[type="text"]');
+    fields[0].value = "cat";
+    fields[1].value = "floor";
+    expect(el.isCorrect()).to.be.false;
+    expect(el.answers[0].userGuessCorrect).to.be.true;
+    // the learner changes the right answer to a wrong one and checks again
+    fields[0].value = "dog";
+    fields[1].value = "mat";
+    expect(el.isCorrect()).to.be.false;
+    expect(el.numberCorrect).to.equal(1);
+    expect(el.answers[0].userGuessCorrect).to.be.false;
+    expect(el.answers[1].userGuessCorrect).to.be.true;
+    // what is shown green matches the count
+    el.showAnswer = true;
+    await el.updateComplete;
+    expect(el.shadowRoot.querySelectorAll(".blank.correct").length).to.equal(
+      el.numberCorrect,
+    );
+  });
+
+  it("counts a synonym blank once even when synonyms repeat", async () => {
+    const el = await fixture(
+      html`<fill-in-the-blanks
+        statement="It is [big~Big~large]."
+      ></fill-in-the-blanks>`,
+    );
+    await el.updateComplete;
+    el.shadowRoot.querySelector('input[type="text"]').value = "big";
+    expect(el.isCorrect()).to.be.true;
+    expect(el.numberCorrect).to.equal(1);
   });
 });

@@ -1,6 +1,7 @@
 /**
+ * Copyright 2025 The Pennsylvania State University
  * Copyright 2025 The HAX team
- * @license MIT, see License.md for full text.
+ * @license Apache-2.0, see LICENSE for full text.
  *
  * Shared Bootstrap CSS stylesheet manager for the bootstrap-theme family.
  *

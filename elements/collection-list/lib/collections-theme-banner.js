@@ -1,3 +1,7 @@
+/**
+ * Copyright 2023 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { LitElement, html, css } from "lit";
 class CollectionsThemeBanner extends LitElement {
   static get properties() {

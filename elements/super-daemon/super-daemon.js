@@ -1,6 +1,6 @@
 /**
  * Copyright 2023 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * @license Apache-2.0, see LICENSE for full text.
  */
 import { html, css } from "lit";
 import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
@@ -226,6 +226,10 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     this.mini = false;
     this.wand = false;
     this.inlineMode = false;
+    // option paths (e.g. HAX/insert/block/<tag>) that lead the results for
+    // this opening, in order: hax-body sets recently used blocks here when
+    // / or its gutter + opens Merlin inline. Reset on close
+    this.priorityPaths = [];
     this._programValues = {};
     this.programSearch = "";
     this.allItems = [];
@@ -958,6 +962,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     this.mini = false;
     this.wand = false;
     this.inlineMode = false;
+    this.priorityPaths = [];
     this._programValues = {};
     this.programSearch = "";
     this.voiceCommands = {};
@@ -1107,10 +1112,15 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     // sort, not written onto the option: writing it stuck, so an option
     // once matched exactly (a cheat code, say) stayed at the top forever
     const value = (this.value || "").toLocaleLowerCase();
-    const rank = (item) =>
-      value !== "" && item.title.toLocaleLowerCase() === value
-        ? -10000000
-        : item.priority;
+    // priority paths lead, in the order given (recent blocks, say)
+    const lead = Array.isArray(this.priorityPaths) ? this.priorityPaths : [];
+    const rank = (item) => {
+      if (value !== "" && item.title.toLocaleLowerCase() === value) {
+        return -10000000;
+      }
+      const at = lead.indexOf(item.path);
+      return at === -1 ? item.priority : -1000000 + at;
+    };
     return tmpItems.sort((a, b) => {
       const pa = rank(a);
       const pb = rank(b);

@@ -1,6 +1,6 @@
 /**
  * Copyright 2019 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * @license Apache-2.0, see LICENSE for full text.
  */
 import { sanitizeHTMLString } from "@haxtheweb/utils/utils.js";
 /**
@@ -193,7 +193,7 @@ class HtmlBlock extends HTMLElement {
     }
   }
   __sanitizeHTML() {
-    // security (F2/JS-XSS-001): route untrusted slotted HTML through the shared
+    // security (JS-XSS): route untrusted slotted HTML through the shared
     // sanitizer before writing back to innerHTML; preserve the raw value in
     // __rawHTML so toggling allowscript back on restores it (attributeChangedCallback).
     const rawHTML = this.innerHTML;

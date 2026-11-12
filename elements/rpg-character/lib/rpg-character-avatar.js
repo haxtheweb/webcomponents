@@ -1,6 +1,6 @@
 /**
  * Copyright 2026 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * @license Apache-2.0, see LICENSE for full text.
  *
  * A person's saved avatar, as a character code. A backend that stores it
  * supplies it as userData.avatarCode; until then it is kept per user in this

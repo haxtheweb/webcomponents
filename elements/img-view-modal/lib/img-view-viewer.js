@@ -1,3 +1,7 @@
+/**
+ * Copyright 2020 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { html, css } from "lit";
 import { ImgPanZoom } from "@haxtheweb/img-pan-zoom/img-pan-zoom.js";
 import { FullscreenBehaviors } from "@haxtheweb/fullscreen-behaviors/fullscreen-behaviors.js";

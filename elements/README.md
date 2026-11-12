@@ -47,7 +47,7 @@ Every element in this monorepo (224 packages). Browse them live with `yarn galle
 | [course-design](./course-design/) | some different elements specific to the design of educational materials. Lots of small elements and a catch all repo | `@haxtheweb/course-design` | [demo](./course-design/demo/) |
 | [course-model](./course-model/) | view 3d models with multiple angel rotation for a course experience | `@haxtheweb/course-model` | [demo](./course-model/demo/) |
 | [csv-render](./csv-render/) | Remote render a CSV file in place as an accessible table. | `@haxtheweb/csv-render` | [demo](./csv-render/demo/) |
-| [d-d-d](./d-d-d/) | design, develop, destroy the competition | `@haxtheweb/d-d-d` | [demo](./d-d-d/demo/) |
+| [d-d-d](./d-d-d/) | design, develop, deliver | `@haxtheweb/d-d-d` | [demo](./d-d-d/demo/) |
 | [d-d-docs](./d-d-docs/) | Webcomponent d-d-docs following hax / open-wc recommendations | `@haxtheweb/d-d-docs` | [demo](./d-d-docs/demo/) |
 | [date-card](./date-card/) | A simple presentation of a date | `@haxtheweb/date-card` | [demo](./date-card/demo/) |
 | [deduping-fix](./deduping-fix/) | A very simple fix for Failed to execute 'define' on 'CustomElementRegistry' | `@haxtheweb/deduping-fix` |  |

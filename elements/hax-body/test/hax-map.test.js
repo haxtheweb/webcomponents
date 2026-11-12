@@ -62,6 +62,21 @@ describe("hax-map", () => {
       const boxes = el.shadowRoot.querySelectorAll("li input[type=checkbox]");
       // intro, a, a1, list, its two items, b, b1 (the page break has none)
       expect(boxes.length).to.equal(8);
+      // a row that can't be selected leaves aria-selected off (an empty
+      // value is not a valid state)
+      const rows = Array.from(
+        el.shadowRoot.querySelectorAll('li[role="treeitem"]'),
+      );
+      const unselectable = rows.filter(
+        (r) => !r.querySelector("input[type=checkbox]"),
+      );
+      expect(unselectable.length).to.equal(1);
+      expect(unselectable[0].hasAttribute("aria-selected")).to.equal(false);
+      rows
+        .filter((r) => r.querySelector("input[type=checkbox]"))
+        .forEach((r) =>
+          expect(["true", "false"]).to.include(r.getAttribute("aria-selected")),
+        );
       // the count is of blocks
       expect(el.shadowRoot.querySelector(".count").textContent).to.contain(
         "6 blocks",

@@ -1,3 +1,7 @@
+/**
+ * Copyright 2021 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { markdownToHTML } from "@haxtheweb/utils/lib/markdown.js";
 import { sanitizeHTMLString } from "@haxtheweb/utils/utils.js";
 import { replaceLazyRun } from "@haxtheweb/utils/lib/safe-html.js";

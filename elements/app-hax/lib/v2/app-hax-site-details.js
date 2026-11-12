@@ -1,3 +1,7 @@
+/**
+ * Copyright 2025 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 // dependencies / things imported
 import { html, css } from "lit";
 import "@haxtheweb/simple-datetime/simple-datetime.js";

@@ -1,3 +1,7 @@
+/**
+ * Copyright 2026 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { sanitizeURLValue } from "@haxtheweb/utils/lib/url.js";
 
 // One inert document, shared. Elements created in a document with no browsing

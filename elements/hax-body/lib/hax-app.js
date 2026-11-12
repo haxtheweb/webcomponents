@@ -1,4 +1,8 @@
 /**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
+/**
  `hax-app`
  An app registered with HAX. This provides all the information needed for HAX
  to understand how to talk to this backend as well as represent it in listings.

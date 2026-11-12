@@ -1,3 +1,7 @@
+/**
+ * Copyright 2026 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 export const DDDPaletteSwatches = Object.freeze([1, 2, 3, 4, 5, 6, 7]);
 
 export const DDDPaletteRegistry = Object.freeze([

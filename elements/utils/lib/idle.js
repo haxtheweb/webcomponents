@@ -1,4 +1,8 @@
 /**
+ * Copyright 2026 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
+/**
  * Run non-critical work when the browser is idle instead of on a fixed
  * timer, so it never competes with first paint, input, or navigation.
  *

@@ -1,6 +1,6 @@
 /**
  * Copyright 2026 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * @license Apache-2.0, see LICENSE for full text.
  *
  * Expressions and poses are drawn as cells on the same 22x28 grid as the art
  * files (cell col c, row r covers x = 3 + 5c, y = 2 + 5r, 5x5) so they can be

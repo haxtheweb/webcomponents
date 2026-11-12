@@ -1,3 +1,7 @@
+/**
+ * Copyright 2023 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { LitElement, css, html } from "lit";
 import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";

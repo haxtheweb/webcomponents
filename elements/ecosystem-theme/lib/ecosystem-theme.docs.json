@@ -1,0 +1,49 @@
+{
+  "tag": "ecosystem-theme",
+  "folder": "ecosystem-theme",
+  "package": "@haxtheweb/ecosystem-theme",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "ecosystem-theme",
+  "description": "The hax.cloud theme: the HAX ecosystem web as a website, with a Web view and a Site view of every page",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/ecosystem-theme/ecosystem-theme.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/ecosystem-theme/ecosystem-theme.js",
+  "install": "npm i @haxtheweb/ecosystem-theme",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "view",
+      "property": "view",
+      "type": "string",
+      "default": "\"web\"",
+      "description": "\"web\" or \"site\": the interactive web or the reading layout",
+      "hax": null
+    },
+    {
+      "name": "menu-open",
+      "property": "menuOpen",
+      "type": "boolean",
+      "default": "false",
+      "description": "the header menu on narrow screens",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "7360fcc72010",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/ecosystem-theme",
+    "file": "ecosystem-theme.js"
+  }
+}

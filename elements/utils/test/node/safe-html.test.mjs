@@ -134,6 +134,19 @@ test("encapScript: template special case round-trips like before", () => {
   assert.ok(encapScript(html).includes("<template><script>"));
 });
 
+test("encapScript: template restore matches markers case-insensitively, like its scan", () => {
+  // the scan for markers inside <template> is case-insensitive, so restoring
+  // them is too (CodeQL js/bad-tag-filter)
+  const html =
+    "<template>&lt;SCRIPT&gt;alert(1)&lt;/SCRIPT&gt;</template><SCRIPT>x</SCRIPT>";
+  const out = encapScript(html);
+  assert.ok(
+    out.startsWith("<template><script>alert(1)</script></template>"),
+    out,
+  );
+  assert.ok(!/<script>x/i.test(out), out);
+});
+
 test("encapScript neutralises browser-tolerated closers like </script > and </script foo>", () => {
   for (const closer of [
     "</script >",

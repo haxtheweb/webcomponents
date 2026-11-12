@@ -282,6 +282,79 @@
             },
             {
               "kind": "method",
+              "name": "_gutterIsEmpty",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ],
+              "description": "an empty text block the + can open Merlin in directly"
+            },
+            {
+              "kind": "method",
+              "name": "_gutterMove",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "pointer over the editing area: find the spot under it, once a frame.\nTouch has no hover, and nothing shows while a block is dragged or\nMerlin is open"
+            },
+            {
+              "kind": "method",
+              "name": "_gutterFind",
+              "description": "the spot under the pointer among the top level blocks: the gap between\ntwo blocks (drop line plus +) or an empty block (+ beside it)"
+            },
+            {
+              "kind": "method",
+              "name": "_gutterShow",
+              "parameters": [
+                {
+                  "name": "spot"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_gutterLeave",
+              "description": "the + sits just outside the blocks, so crossing the few pixels between\nthem and it leaves the editing area: wait a moment before hiding"
+            },
+            {
+              "kind": "method",
+              "name": "_gutterHide"
+            },
+            {
+              "kind": "method",
+              "name": "_gutterPress",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "pressing the + must not reach the block underneath (activation, drag)"
+            },
+            {
+              "kind": "method",
+              "name": "_gutterAdd",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "the +: in a gap, add an empty paragraph there first; then put the\ncursor in the empty block and open Merlin, the same as typing /"
+            },
+            {
+              "kind": "method",
+              "name": "_openInlineMerlin",
+              "parameters": [
+                {
+                  "name": "rng"
+                }
+              ],
+              "description": "open Merlin inline at the cursor in an empty block: the / shortcut\nand the gutter + both come here. Blocks used recently lead the list"
+            },
+            {
+              "kind": "method",
               "name": "_blockDragStart",
               "parameters": [
                 {
@@ -1593,7 +1666,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ addContent: \"Add Content\", cantBeTransformed: \"Sorry, this can not be transformed!\", typeForQuickActions: \"Type '/' for quick actions\", }"
+              "default": "{ addContent: \"Add Content\", cantBeTransformed: \"Sorry, this can not be transformed!\", typeForQuickActions: \"Type '/' for quick actions\", addBlockHere: \"Add a block here (/)\", }"
             },
             {
               "kind": "field",

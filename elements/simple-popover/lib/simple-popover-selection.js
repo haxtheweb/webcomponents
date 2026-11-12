@@ -1,3 +1,7 @@
+/**
+ * Copyright 2020 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { html, LitElement, render } from "lit";
 import "./simple-popover-manager.js";
 
@@ -91,7 +95,7 @@ class SimplePopoverSelection extends LitElement {
         }
       }
       let content;
-      // security (JS-XSS-001): render the cloned nodes directly instead of
+      // security (JS-XSS): render the cloned nodes directly instead of
       // serializing to a string and re-parsing it, which could activate
       // previously inert markup inside the popover singleton.
       const options = Array.from(div.childNodes);

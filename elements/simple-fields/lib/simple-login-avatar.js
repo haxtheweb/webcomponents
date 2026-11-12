@@ -1,4 +1,8 @@
 /**
+ * Copyright 2026 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
+/**
  * `simple-login-avatar`
  * @element simple-login-avatar
  * Inspiration from https://clicknathan.com/web-design/css-avatar-icons/

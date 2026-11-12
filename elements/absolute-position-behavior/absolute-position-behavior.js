@@ -1,6 +1,6 @@
 /**
  * Copyright 2019 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * @license Apache-2.0, see LICENSE for full text.
  */
 import { LitElement, html, css } from "lit";
 import "./lib/absolute-position-state-manager.js";

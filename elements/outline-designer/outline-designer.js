@@ -1,6 +1,6 @@
 /**
  * Copyright 2022 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * @license Apache-2.0, see LICENSE for full text.
  */
 import { LitElement, css, html, nothing } from "lit";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
@@ -2221,7 +2221,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         for (let i = 0; i < div.childNodes.length; i++) {
           let node = div.childNodes[i];
           if (i === targetNodeIndex) {
-            // security (JS-XSS-001): full sanitizer (also strips on* handlers
+            // security (JS-XSS): full sanitizer (also strips on* handlers
             // and javascript: URLs), not just script encapsulation
             return html`${unsafeHTML(sanitizeHTMLString(node.outerHTML))}`;
           }

@@ -1,6 +1,6 @@
 /**
- * Copyright 2023
- * @license , see License.md for full text.
+ * Copyright 2023 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
  */
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
@@ -8,7 +8,6 @@ import { html, css, nothing } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import "./lib/play-list-slide.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import {
   DDDBlockStyles,
@@ -102,7 +101,7 @@ class PlayList extends I18NMixin(DDD) {
     if (item.properties && item.properties.innerHTML) {
       delete item.properties.innerHTML;
     }
-    // security (JS-XSS-001): items is a public property, so sanitize before the sink
+    // security (JS-XSS): items is a public property, so sanitize before the sink
     return html`${unsafeHTML(
       sanitizeHTMLString(haxElementToNode(item).outerHTML),
     )}`;

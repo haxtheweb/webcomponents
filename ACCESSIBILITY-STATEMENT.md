@@ -23,7 +23,7 @@ The `haxtheweb/webcomponents` monorepo is committed to ensuring that all web com
 - All elements tested automatically on every PR
 
 ### Design System
-- **DDD (Design, Develop, Destroy) design system** provides contrast tooling and tokens targeting WCAG 2.0 AA
+- **DDD (Design, Develop, Deliver) design system** provides contrast tooling and tokens targeting WCAG 2.0 AA
 - **a11y-* element family** (a11y-collapse, a11y-tabs, a11y-details, a11y-figure...) makes accessibility a first-class surface
 - Components built on **W3C web components standards** (custom elements, shadow DOM)
 - **HAXSchema (haxProperties)** provides documented authoring-interoperability standard

@@ -1,4 +1,8 @@
 /**
+ * Copyright 2025 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
+/**
  * Site Skeleton Generator - Part of HAXcms Elements
  * Extracts live site data into reusable skeleton templates
  */

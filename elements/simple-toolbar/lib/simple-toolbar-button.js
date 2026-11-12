@@ -1,6 +1,6 @@
 /**
- * Copyright 2019 Penn State University
- * @license Apache-2.0, see License.md for full text.
+ * Copyright 2019 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
  */
 import { LitElement, html, css, nothing } from "lit";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";

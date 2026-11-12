@@ -1,4 +1,8 @@
 /**
+ * Copyright 2026 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
+/**
  * Small JSON helpers around localStorage that never throw (private mode,
  * blocked storage and quota errors return the default / false instead).
  * Split out of utils.js so first-paint code can import them without the

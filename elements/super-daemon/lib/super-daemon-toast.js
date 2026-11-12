@@ -1,3 +1,7 @@
+/**
+ * Copyright 2023 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { css, html, nothing } from "lit";
 import { SimpleToastEl } from "@haxtheweb/simple-toast/lib/simple-toast-el.js";
 import "@haxtheweb/future-terminal-text/future-terminal-text.js";

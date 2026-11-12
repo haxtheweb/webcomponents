@@ -1,3 +1,7 @@
+/**
+ * Copyright 2021 The Pennsylvania State University
+ * @license Apache-2.0, see LICENSE for full text.
+ */
 import { html, css } from "lit";
 import "./simple-fields-field.js";
 import { SimpleFieldsCombo } from "./simple-fields-combo.js";

@@ -60,6 +60,8 @@
   "flagsFound": "{correct} of {total} found",
   "toRethink": "{count} to rethink",
   "notEvidence": "not evidence for this flag",
+  "isEvidence": "evidence for this flag",
+  "readingKeys": "Use the arrow keys to move from one {unit} to the next.",
   "markAnswers": "Mark answers",
   "doneMarking": "Done marking answers",
   "editHint": "Edit the reading below. Use Mark answers in the block menu to choose where each flag belongs.",

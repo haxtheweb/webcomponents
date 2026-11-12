@@ -4,7 +4,8 @@
   "description": "Wrapper that makes the web-platform-dx baseline-status widget usable in HAX",
   "license": "Apache-2.0",
   "author": {
-    "name": "haxtheweb"
+    "name": "haxtheweb",
+    "url": "https://hax.psu.edu/"
   },
   "keywords": [
     "webcomponents",
