@@ -279,3 +279,54 @@ describe("app-hax with System Settings docked", () => {
     });
   });
 });
+
+describe("app-hax opening System Settings from the user menu", () => {
+  let el;
+  const AppHaxClass = customElements.get("app-hax");
+  const realLogin = AppHaxClass.prototype.login;
+  const startUrl = globalThis.location.href;
+
+  before(() => {
+    AppHaxClass.prototype.login = function () {};
+  });
+
+  after(() => {
+    AppHaxClass.prototype.login = realLogin;
+  });
+
+  beforeEach(async () => {
+    el = await fixture(html`<app-hax base-path="/test/"></app-hax>`);
+    await el.updateComplete;
+    el._allowSystemSettings = () => true;
+  });
+
+  afterEach(async () => {
+    hideModal();
+    await settle();
+    document
+      .querySelectorAll("haxcms-system-settings")
+      .forEach((node) => node.remove());
+    globalThis.history.replaceState(globalThis.history.state, "", startUrl);
+  });
+
+  it("opens on the first click", async () => {
+    el._openSystemSettingsMenuTap();
+    await settle(400);
+    expect(document.querySelector("simple-modal").opened).to.equal(true);
+    expect(document.querySelector("haxcms-system-settings")).to.not.equal(null);
+  });
+
+  it("opens fresh when marked open but nothing is on screen", async () => {
+    // a show that was never heard left the flag set with no dialog
+    el.__systemSettingsModalOpen = true;
+    el.__systemSettingsDialog = document.createElement(
+      "haxcms-system-settings",
+    );
+    expect(el.openSystemSettings(false)).to.equal(true);
+    await settle(400);
+    expect(document.querySelector("simple-modal").opened).to.equal(true);
+    expect(
+      document.querySelector("haxcms-system-settings").isConnected,
+    ).to.equal(true);
+  });
+});
