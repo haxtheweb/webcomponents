@@ -1,0 +1,89 @@
+{
+  "$comment": "Which DDD tokens a design system bridge may answer, by tier. Every bridge is checked against this one contract so systems are comparable and authored content keeps its layout. Patterns are matched against the DDD token name without the leading --. Tiers are checked in order; the first match wins.",
+  "version": 1,
+  "tiers": [
+    {
+      "id": "structure",
+      "title": "Structure (locked)",
+      "mapping": "forbidden",
+      "why": "Numeric scales that authored content and block layouts depend on (spacing alone is used thousands of times across elements). Remapping them reflows content that was authored against DDD, and reading sizes, line heights and target sizes are accessibility decisions, not brand ones. A system's own spacing belongs in its theme chrome, using its own tokens.",
+      "patterns": [
+        "^ddd-spacing-",
+        "^ddd-font-size-",
+        "^ddd-lh-",
+        "^ddd-ls-",
+        "^ddd-icon-",
+        "^ddd-z-",
+        "^ddd-breakpoint-",
+        "^ddd-opacity-",
+        "^ddd-target-",
+        "^ddd-duration-reduced$",
+        "^ddd-(theme-)?(content|container|sidebar)-width",
+        "^ddd-theme-measure$",
+        "^ddd-measure",
+        "^ddd-grid-",
+        "^ddd-theme-layout-gutter$",
+        "^ddd-aspect-",
+        "^ddd-primary-\\d+-rgb$"
+      ]
+    },
+    {
+      "id": "identity",
+      "title": "Identity",
+      "mapping": "expected",
+      "why": "What makes the system recognizable: color, type families and weights, corners, elevation, focus.",
+      "families": {
+        "color": "^ddd-theme-default-[a-zA-Z]+$",
+        "font": "^ddd-font-(primary|secondary|navigation|mono)$",
+        "weight": "^ddd-font-weight-(light|regular|medium|bold|black)$",
+        "radius": "^ddd-radius-(xs|sm|md|lg|xl)$",
+        "shadow": "^ddd-boxShadow-(sm|md|lg|xl)$",
+        "focus": "^ddd-focus-(ring|offset)$"
+      },
+      "patterns": [
+        "^ddd-theme-default-",
+        "^ddd-font-(primary|secondary|navigation|mono)$",
+        "^ddd-font-weight-",
+        "^ddd-radius-",
+        "^ddd-boxShadow-",
+        "^ddd-focus-"
+      ]
+    },
+    {
+      "id": "feel",
+      "title": "Feel",
+      "mapping": "optional",
+      "why": "How the system behaves and how dense its controls are. Map when the upstream defines it. Guarded: control heights never below the 24px minimum target size.",
+      "families": {
+        "motion": "^ddd-(duration-(fast|normal|slow)|timing-(ease|enter|exit|emphasized))$",
+        "state": "^ddd-state-(hover|focus|pressed|selected|disabled)-opacity$",
+        "control": "^ddd-(control-height-(xs|sm|md|lg)|textfield-height-(sm|md|lg))$",
+        "border": "^ddd-border-size-(xs|sm|md|lg)$"
+      },
+      "patterns": [
+        "^ddd-duration-",
+        "^ddd-timing-",
+        "^ddd-state-",
+        "^ddd-control-height-",
+        "^ddd-textfield-height-",
+        "^ddd-border-size-"
+      ],
+      "guards": {
+        "controlMinPx": 24
+      }
+    },
+    {
+      "id": "semantic",
+      "title": "Semantic",
+      "mapping": "optional",
+      "why": "Named roles a system can size without touching the scales. Guarded: body text never below 16px, headings never below body text and never growing as the level goes down.",
+      "families": {
+        "type": "^ddd-theme-(h[1-6]|body)-font-size$"
+      },
+      "patterns": ["^ddd-theme-(h[1-6]|body)-font-size$"],
+      "guards": {
+        "bodyMinPx": 16
+      }
+    }
+  ]
+}

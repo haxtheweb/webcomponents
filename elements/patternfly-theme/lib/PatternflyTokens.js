@@ -71,6 +71,10 @@ export const PatternflyTokens = css`
     --pf-t--global--border--radius--pill: 999px;
     --pf-t--global--border--radius--small: 6px;
     --pf-t--global--border--radius--tiny: 4px;
+    --pf-t--global--border--width--400: 4px;
+    --pf-t--global--border--width--extra-strong: 3px;
+    --pf-t--global--border--width--regular: 1px;
+    --pf-t--global--border--width--strong: 2px;
     --pf-t--global--box-shadow--lg: 0px 10px 20px 0px
       light-dark(rgb(41, 41, 41, 0.15), rgb(0, 0, 0, 0.5));
     --pf-t--global--box-shadow--md: 0px 4px 10px 0px
@@ -80,6 +84,7 @@ export const PatternflyTokens = css`
     --pf-t--global--color--brand--default: light-dark(#0066cc, #92c5f9);
     --pf-t--global--color--brand--hover: light-dark(#004d99, #b9dafc);
     --pf-t--global--focus-ring--color--default: light-dark(#0066cc, #92c5f9);
+    --pf-t--global--focus-ring--position--offset: 2px;
     --pf-t--global--font--family--body:
       "Red Hat Text", "RedHatText", "Noto Sans Arabic", "Noto Sans Hebrew",
       "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC",
@@ -99,9 +104,31 @@ export const PatternflyTokens = css`
     --pf-t--global--font--size--heading--h3: 1.125rem;
     --pf-t--global--font--weight--body--bold: 600;
     --pf-t--global--font--weight--body--default: 400;
+    --pf-t--global--font--weight--heading--bold: 800;
     --pf-t--global--font--weight--heading--default: 600;
     --pf-t--global--icon--color--regular: light-dark(#1f1f1f, #f2f2f2);
     --pf-t--global--icon--color--subtle: light-dark(#707070, #a3a3a3);
+    --pf-t--global--motion--duration--2xl: 500ms;
+    --pf-t--global--motion--duration--lg: 300ms;
+    --pf-t--global--motion--duration--sm: 100ms;
+    --pf-t--global--motion--timing-function--accelerate: cubic-bezier(
+      0.4,
+      0,
+      0.7,
+      0.2
+    );
+    --pf-t--global--motion--timing-function--decelerate: cubic-bezier(
+      0,
+      0,
+      0.2,
+      1
+    );
+    --pf-t--global--motion--timing-function--default: cubic-bezier(
+      0.4,
+      0,
+      0.2,
+      1
+    );
     --pf-t--global--spacer--2xl: 3rem;
     --pf-t--global--spacer--lg: 1.5rem;
     --pf-t--global--spacer--md: 1rem;

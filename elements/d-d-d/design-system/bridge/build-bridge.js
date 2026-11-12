@@ -21,7 +21,10 @@
  * Output (in <theme>/lib/):
  *   <Prefix>Tokens.js        upstream tokens as CSS (light-dark() pairs)
  *   <Prefix>DDDMap.js        --ddd-* → upstream token remap as CSS
- *   <system>.ddd-map.json    machine-readable map + coverage + contrast report
+ *   <system>.ddd-map.json    machine-readable map + per-tier coverage + contrast report
+ *
+ * What a bridge may map is set by contract.json (structure is locked;
+ * identity is expected; feel and semantic are optional and guarded).
  *
  * Usage:
  *   node elements/d-d-d/design-system/bridge/build-bridge.js <theme-dir> [--upstream <dir>] [--check]
@@ -278,29 +281,107 @@ ddd
     rgbRows.push({ ddd: "--" + v.name, css: `${r}, ${g}, ${b}${alpha}` });
   });
 
-/* coverage: the DDD surface a design system is expected to answer */
-const FAMILIES = {
-  color: (n) => /^ddd-theme-default-[a-zA-Z]+$/.test(n),
-  font: (n) => /^ddd-font-(primary|secondary|navigation|mono)$/.test(n),
-  radius: (n) => /^ddd-radius-(xs|sm|md|lg|xl)$/.test(n),
-  shadow: (n) => /^ddd-boxShadow-(sm|md|lg|xl)$/.test(n),
-  focus: (n) => n === "ddd-focus-ring",
+/* contract: which DDD tokens a bridge may answer (contract.json, by tier) */
+const contract = JSON.parse(
+  fs.readFileSync(new URL("./contract.json", import.meta.url), "utf8"),
+);
+const tierOf = (name) =>
+  contract.tiers.find((tier) =>
+    tier.patterns.some((pattern) => new RegExp(pattern).test(name)),
+  ) || null;
+const px = (value) => {
+  const m = /^(-?[\d.]+)(px|rem|em)$/.exec(String(value).trim());
+  if (!m) return null;
+  return m[2] === "px" ? Number(m[1]) : Number(m[1]) * 16;
 };
-const coverage = {};
-let totalAll = 0;
-let mappedAll = 0;
-Object.keys(FAMILIES).forEach((family) => {
-  const names = ddd.map((v) => v.name).filter(FAMILIES[family]);
-  const mapped = names.filter((n) => map["--" + n]);
-  totalAll += names.length;
-  mappedAll += mapped.length;
-  coverage[family] = {
-    mapped: mapped.length,
-    total: names.length,
-    keptDDD: names.filter((n) => !map["--" + n]).map((n) => "--" + n),
-  };
+rows.forEach((row) => {
+  const tier = tierOf(row.ddd.slice(2));
+  row.tier = tier ? tier.id : null;
+  if (!tier) {
+    problems.push(
+      `${row.ddd} is not in the bridge contract; add it to a tier in contract.json before mapping it`,
+    );
+  } else if (tier.mapping === "forbidden") {
+    problems.push(`${row.ddd} is ${tier.title}: ${tier.why}`);
+  }
 });
-coverage.percent = Math.round((mappedAll / Math.max(totalAll, 1)) * 100);
+
+/* guards: the contract's floors, checked against the resolved values */
+const resolvedDDD = (name, mode) => {
+  const row = rows.find((r) => r.ddd === name);
+  if (row) return mode === "dark" ? row.dark : row.light;
+  const v = dddByName[name];
+  if (!v) return null;
+  // DDD aliases such as var(--ddd-font-size-l) resolve through DDD itself
+  const alias = /^var\((--ddd-[\w-]+)\)$/.exec(v.value.trim());
+  return alias ? resolvedDDD(alias[1], mode) : v.value;
+};
+const guards = Object.assign(
+  {},
+  ...contract.tiers.map((tier) => tier.guards || {}),
+);
+if (guards.bodyMinPx) {
+  const body = px(resolvedDDD("--ddd-theme-body-font-size", "light"));
+  if (body !== null && body < guards.bodyMinPx) {
+    problems.push(
+      `--ddd-theme-body-font-size resolves to ${body}px, below the ${guards.bodyMinPx}px floor`,
+    );
+  }
+  let previous = Infinity;
+  [1, 2, 3, 4, 5, 6].forEach((level) => {
+    const name = `--ddd-theme-h${level}-font-size`;
+    const size = px(resolvedDDD(name, "light"));
+    if (size === null) return;
+    if (body !== null && size < body) {
+      problems.push(
+        `${name} (${size}px) is smaller than body text (${body}px)`,
+      );
+    }
+    if (size > previous) {
+      problems.push(`${name} (${size}px) is larger than the level above it`);
+    }
+    previous = size;
+  });
+}
+if (guards.controlMinPx) {
+  rows
+    .filter((row) => /^--ddd-(control|textfield)-height-/.test(row.ddd))
+    .forEach((row) => {
+      const size = px(row.light);
+      if (size !== null && size < guards.controlMinPx) {
+        problems.push(
+          `${row.ddd} resolves to ${size}px, below the ${guards.controlMinPx}px minimum target`,
+        );
+      }
+    });
+}
+
+/* coverage per tier and family, so every system reports the same surface */
+const coverage = {};
+contract.tiers
+  .filter((tier) => tier.families)
+  .forEach((tier) => {
+    let total = 0;
+    let mapped = 0;
+    const families = {};
+    Object.entries(tier.families).forEach(([family, pattern]) => {
+      const re = new RegExp(pattern);
+      const names = ddd.map((v) => v.name).filter((n) => re.test(n));
+      const hit = names.filter((n) => map["--" + n]);
+      total += names.length;
+      mapped += hit.length;
+      families[family] = {
+        mapped: hit.length,
+        total: names.length,
+        keptDDD: names.filter((n) => !map["--" + n]).map((n) => "--" + n),
+      };
+    });
+    coverage[tier.id] = {
+      mapping: tier.mapping,
+      percent: Math.round((mapped / Math.max(total, 1)) * 100),
+      families,
+    };
+  });
 
 /* contrast: the pairings DDD elements lean on, re-checked with mapped values */
 const value = (name, mode) => {
@@ -441,8 +522,10 @@ const report = {
   coverage,
   contrast: contrastReport,
   problems,
-  map: rows.map(({ ddd: d, token, light: l, dark: dk, note }) => ({
+  contract: contract.version,
+  map: rows.map(({ ddd: d, tier, token, light: l, dark: dk, note }) => ({
     ddd: d,
+    tier,
     token,
     light: l,
     dark: dk,
@@ -486,10 +569,15 @@ if (flag("--check")) {
 }
 
 console.log(
-  `${config.title}: ${tokens.length} upstream tokens, ${rows.length} DDD tokens mapped, ` +
-    `coverage ${coverage.percent}% (${Object.keys(FAMILIES)
-      .map((f) => `${f} ${coverage[f].mapped}/${coverage[f].total}`)
-      .join(", ")})`,
+  `${config.title}: ${tokens.length} upstream tokens, ${rows.length} DDD tokens mapped\n` +
+    Object.entries(coverage)
+      .map(
+        ([tier, c]) =>
+          `  ${tier} ${c.percent}% (${Object.entries(c.families)
+            .map(([f, v]) => `${f} ${v.mapped}/${v.total}`)
+            .join(", ")})`,
+      )
+      .join("\n"),
 );
 if (problems.length) {
   console.error("Problems:\n  " + problems.join("\n  "));
