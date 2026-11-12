@@ -1,0 +1,84 @@
+{
+  "tag": "vhs-blog-theme",
+  "folder": "vhs-blog-theme",
+  "package": "@haxtheweb/vhs-blog-theme",
+  "version": "26.8.1",
+  "license": "Apache-2.0",
+  "title": "vhs-blog-theme",
+  "description": "A dark, bargain-bin video shelf theme for HAXcms blogs: every post is a one-of-a-kind video case generated from a hash of its title, and posts open with a CRT title sequence.",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/vhs-blog-theme/vhs-blog-theme.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/vhs-blog-theme/vhs-blog-theme.js",
+  "install": "npm i @haxtheweb/vhs-blog-theme",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "siteTitle",
+      "property": "siteTitle",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "items",
+      "property": "items",
+      "type": "array",
+      "default": "[]",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "activeId",
+      "property": "activeId",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "activeItem",
+      "property": "activeItem",
+      "type": "object",
+      "default": "{}",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "is-home",
+      "property": "isHome",
+      "type": "boolean",
+      "default": "true",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "held",
+      "property": "held",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)",
+    "footer"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "e8c9fe8c2469",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/vhs-blog-theme",
+    "file": "vhs-blog-theme.js"
+  }
+}
