@@ -4,13 +4,17 @@
  */
 import { toJS } from "mobx";
 import { mimeTypeToName } from "@haxtheweb/utils/utils.js";
+import { isImportUrl } from "./app-hax-import-url-dialog.js";
+
+export { isImportUrl };
 
 /**
  * Merlin programs that only exist on the HAX site dashboard (app-hax).
  * They run what the dashboard's cards and menus already do, so anything
  * you would scroll the page for can be reached from Merlin: making a site
  * from a file (also what dropping a file on the dashboard runs), each
- * importer, templates, themes, going to a site and sorting.
+ * importer, templates, themes, the site options menu, going to a site
+ * and sorting.
  *
  * Paths are what Merlin shows under each row and its first part is the
  * group heading (Create, Import, Sites, Dashboard).
@@ -61,23 +65,6 @@ export function dragTypeLabel(mimeType) {
 export function dragTypeMakesSite(mimeType) {
   const label = dragTypeLabel(mimeType);
   return label !== "" && SITE_FILE_EXTENSIONS.includes(label.substring(1));
-}
-
-/**
- * Whether text is an http(s) URL an importer can be handed.
- * @param {string} value
- * @returns {boolean}
- */
-export function isImportUrl(value) {
-  if (!value || typeof value !== "string") {
-    return false;
-  }
-  try {
-    const url = new URL(value.trim());
-    return url.protocol === "https:" || url.protocol === "http:";
-  } catch {
-    return false;
-  }
 }
 
 function importerIcon(item) {
@@ -395,6 +382,76 @@ export function defineDashboardPrograms(host, SuperDaemonInstance) {
   });
 }
 
+// the site options menu on each site card, as programs: [op, title key,
+// icon, Merlin context]. User access only shows where the backend has it
+// (the site-user-access context, which app-hax keeps in step).
+export const SITE_OPTIONS = [
+  ["copy", "copyASite", "icons:content-copy", "*"],
+  ["download", "downloadASite", "icons:file-download", "*"],
+  ["archive", "archiveASite", "icons:archive", "*"],
+  ["template", "createTemplateFromSite", "icons:add-circle", "*"],
+  ["access", "manageUserAccess", "social:group-add", "site-user-access"],
+];
+
+/**
+ * The site options as programs: each lists the sites (filtered by what is
+ * typed) and runs that option on the one picked.
+ * @param {Object} host app-hax
+ * @param {Object} SuperDaemonInstance
+ * @param {Object} store
+ */
+export function defineSiteOptionPrograms(host, SuperDaemonInstance, store) {
+  const t = host.t;
+  SITE_OPTIONS.forEach(([op, titleKey, icon, context]) => {
+    const name = t[`${titleKey}Name`];
+    SuperDaemonInstance.defineOption({
+      i18n: { context: host, title: titleKey, "value.name": `${titleKey}Name` },
+      title: t[titleKey],
+      icon: icon,
+      tags: ["Sites", "site", "options", op],
+      eventName: "super-daemon-run-program",
+      path: `Sites/${name}`,
+      value: {
+        name: name,
+        program: async (input) =>
+          siteRows(store, input).map((site) => ({
+            title: site.title,
+            icon: icon,
+            tags: ["site"],
+            value: {
+              target: host,
+              method: "siteOptionFromMerlin",
+              args: [op, site.id],
+            },
+            eventName: "super-daemon-element-method",
+            path: `Sites/${name}/${site.title}`,
+          })),
+      },
+      context: [context],
+    });
+  });
+}
+
+/**
+ * The sites whose title or machine name has what was typed in it.
+ * @param {Object} store
+ * @param {string} input
+ * @returns {Array}
+ */
+export function siteRows(store, input) {
+  const items = toJS(store.manifest && store.manifest.items) || [];
+  const like = (input || "").toLowerCase();
+  return items.filter(
+    (site) =>
+      like === "" ||
+      (site.title || "").toLowerCase().includes(like) ||
+      (site.metadata &&
+        site.metadata.site &&
+        site.metadata.site.name &&
+        site.metadata.site.name.toLowerCase().includes(like)),
+  );
+}
+
 /**
  * The rows of the Go to site program.
  * @param {Object} host app-hax
@@ -403,34 +460,22 @@ export function defineDashboardPrograms(host, SuperDaemonInstance) {
  * @returns {Array}
  */
 export function goToSiteRows(host, store, input) {
-  const items = toJS(store.manifest && store.manifest.items) || [];
-  const like = (input || "").toLowerCase();
-  return items
-    .filter(
-      (site) =>
-        like === "" ||
-        (site.title || "").toLowerCase().includes(like) ||
-        (site.metadata &&
-          site.metadata.site &&
-          site.metadata.site.name &&
-          site.metadata.site.name.toLowerCase().includes(like)),
-    )
-    .map((site) => ({
-      title: site.title,
-      icon:
-        site.metadata &&
-        site.metadata.theme &&
-        site.metadata.theme.variables &&
-        site.metadata.theme.variables.icon
-          ? site.metadata.theme.variables.icon
-          : "hax:hax2022",
-      tags: ["site", site.description],
-      value: {
-        target: host,
-        method: "goToLocation",
-        args: [site.slug],
-      },
-      eventName: "super-daemon-element-method",
-      path: `Sites/Go to/${site.title}`,
-    }));
+  return siteRows(store, input).map((site) => ({
+    title: site.title,
+    icon:
+      site.metadata &&
+      site.metadata.theme &&
+      site.metadata.theme.variables &&
+      site.metadata.theme.variables.icon
+        ? site.metadata.theme.variables.icon
+        : "hax:hax2022",
+    tags: ["site", site.description],
+    value: {
+      target: host,
+      method: "goToLocation",
+      args: [site.slug],
+    },
+    eventName: "super-daemon-element-method",
+    path: `Sites/Go to/${site.title}`,
+  }));
 }

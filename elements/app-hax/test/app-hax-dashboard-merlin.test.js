@@ -8,7 +8,11 @@ const { AppHaxUseCaseFilter } =
   await import("../lib/v2/app-hax-use-case-filter.js");
 const { MicroFrontendRegistry } =
   await import("@haxtheweb/micro-frontend-registry/micro-frontend-registry.js");
+const { AppHaxImportUrlDialog } =
+  await import("../lib/v2/app-hax-import-url-dialog.js");
 const {
+  siteRows,
+  SITE_OPTIONS,
   fileExtension,
   dragTypeLabel,
   dragTypeMakesSite,
@@ -212,5 +216,194 @@ describe("app-hax: Merlin in the dashboard bar", () => {
     } finally {
       store.manifest = original;
     }
+  });
+});
+
+describe("app-hax-use-case-filter: the two import cards", () => {
+  let el;
+  beforeEach(async () => {
+    el = document.createElement("app-hax-use-case-filter");
+    document.body.appendChild(el);
+    await el.updateComplete;
+  });
+  afterEach(() => el.remove());
+
+  it("renders one file card and one URL card", async () => {
+    el.filteredItems = el.getImportItems();
+    el.items = el.getImportItems();
+    await el.updateComplete;
+    const cards = el.shadowRoot.querySelectorAll(".import-card");
+    expect(cards.length).to.equal(2);
+    const fileNames = Array.from(
+      cards[0].querySelectorAll(".import-kind-name"),
+    ).map((n) => n.textContent.trim());
+    expect(fileNames).to.deep.equal([
+      "Word Doc",
+      "PDF",
+      "PowerPoint",
+      "Excel",
+      "HTML File",
+    ]);
+    const urlNames = Array.from(
+      cards[1].querySelectorAll(".import-kind-name"),
+    ).map((n) => n.textContent.trim());
+    expect(urlNames[0]).to.equal("WordPress Pages");
+    expect(urlNames[urlNames.length - 1]).to.equal("HTML URL");
+    expect(urlNames.length).to.equal(11);
+    expect(
+      el.shadowRoot.querySelectorAll(
+        "app-hax-use-case[data-data-type='import']",
+      ).length,
+    ).to.equal(0);
+  });
+
+  it("shows only the card whose importers match", async () => {
+    el.items = el.getImportItems();
+    await el.updateComplete;
+    el.filteredItems = el
+      .getImportItems()
+      .filter((i) => i.importKind === "url");
+    await el.updateComplete;
+    const cards = el.shadowRoot.querySelectorAll(".import-card");
+    expect(cards.length).to.equal(1);
+    expect(cards[0].querySelector("h4").textContent).to.equal("From a URL");
+  });
+
+  it("says when no importer takes a picked file", async () => {
+    const toasts = [];
+    const originalToast = store.toast;
+    store.toast = (msg) => toasts.push(msg);
+    let started = 0;
+    el.startImport = async () => (started += 1);
+    try {
+      await el.importFile(new File(["x"], "campus-map.png"));
+      expect(started).to.equal(0);
+      expect(toasts[0]).to.contain("HAX can't make a site from a .png file.");
+      await el.importFile(new File(["x"], "notes.docx"));
+      expect(started).to.equal(1);
+    } finally {
+      store.toast = originalToast;
+    }
+  });
+
+  it("runs the importer for the kind of site picked in the URL dialog", async () => {
+    const started = [];
+    el.startImport = async (item, preset) =>
+      started.push([item.importType, preset.url]);
+    const pending = el.importFromUrl();
+    await new Promise((r) => setTimeout(r, 0));
+    const dialog = document.querySelector("app-hax-import-url-dialog");
+    await dialog.updateComplete;
+    expect(dialog.kinds.length).to.equal(11);
+    dialog.url = "https://news.example.edu";
+    dialog.importType = "drupal";
+    await dialog.updateComplete;
+    dialog._continue();
+    await pending;
+    expect(started).to.deep.equal([["drupal", "https://news.example.edu"]]);
+    expect(document.querySelector("app-hax-import-url-dialog")).to.equal(null);
+  });
+});
+
+describe("app-hax-import-url-dialog", () => {
+  it("continues only with an http(s) URL and a kind of site", async () => {
+    const el = new AppHaxImportUrlDialog();
+    el.kinds = [
+      {
+        importType: "wordpress",
+        title: "WordPress Pages",
+        icon: "hax:wordpress",
+      },
+    ];
+    expect(el._canContinue()).to.equal(false);
+    el.url = "javascript:alert(1)";
+    el.importType = "wordpress";
+    expect(el._canContinue()).to.equal(false);
+    el.url = "https://news.example.edu";
+    expect(el._canContinue()).to.equal(true);
+    el.importType = "";
+    expect(el._canContinue()).to.equal(false);
+  });
+
+  it("resolves null when cancelled", async () => {
+    const el = new AppHaxImportUrlDialog();
+    el.labels = { title: "Import from a URL" };
+    document.body.appendChild(el);
+    const pending = el.ask();
+    await el.updateComplete;
+    el._cancel();
+    expect(await pending).to.equal(null);
+  });
+});
+
+describe("dashboard Merlin: site options", () => {
+  let el;
+  let original;
+  beforeEach(async () => {
+    original = store.manifest;
+    store.manifest = {
+      items: [
+        {
+          id: "s1",
+          title: "Lab Safety",
+          slug: "/sites/lab",
+          metadata: { site: { name: "lab" } },
+        },
+      ],
+    };
+    el = document.createElement("app-hax");
+    document.body.appendChild(el);
+    await el.updateComplete;
+  });
+  afterEach(() => {
+    store.manifest = original;
+    el.remove();
+  });
+
+  it("covers every item of the site options menu", () => {
+    expect(SITE_OPTIONS.map((o) => o[0])).to.deep.equal([
+      "copy",
+      "download",
+      "archive",
+      "template",
+      "access",
+    ]);
+    expect(siteRows(store, "lab").length).to.equal(1);
+    expect(siteRows(store, "zzz").length).to.equal(0);
+  });
+
+  it("runs the site bar's own option code for the picked site", () => {
+    const Bar = customElements.get("app-hax-site-bar");
+    const calls = [];
+    const saved = {};
+    ["copySite", "downloadSite", "archiveSite", "createTemplate"].forEach(
+      (m) => {
+        saved[m] = Bar.prototype[m];
+        Bar.prototype[m] = function () {
+          calls.push([m, this.siteId, this.isConnected]);
+        };
+      },
+    );
+    try {
+      el.siteOptionFromMerlin("copy", "s1");
+      el.siteOptionFromMerlin("download", "s1");
+      el.siteOptionFromMerlin("archive", "s1");
+      el.siteOptionFromMerlin("template", "s1");
+      el.siteOptionFromMerlin("copy", "missing");
+    } finally {
+      Object.keys(saved).forEach((m) => (Bar.prototype[m] = saved[m]));
+    }
+    expect(calls).to.deep.equal([
+      ["copySite", "s1", false],
+      ["downloadSite", "s1", false],
+      ["archiveSite", "s1", false],
+      ["createTemplate", "s1", false],
+    ]);
+  });
+
+  it("closing the menu of a site bar off the page does nothing", () => {
+    const bar = document.createElement("app-hax-site-bar");
+    expect(() => bar.closeOptionsMenu()).not.to.throw();
+    expect(() => bar.toggleOptionsMenu()).not.to.throw();
   });
 });

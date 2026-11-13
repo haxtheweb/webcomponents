@@ -20,6 +20,7 @@ import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
 import "@haxtheweb/super-daemon/lib/super-daemon-search.js";
 import {
   defineDashboardPrograms,
+  defineSiteOptionPrograms,
   goToSiteRows,
   dragTypeLabel,
   dragTypeMakesSite,
@@ -496,6 +497,16 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       createSiteFromUrl: "Create a site from {url}",
       sortSitesBy: "Sort sites by…",
       sortSitesByName: "Sort sites by",
+      copyASite: "Copy a site…",
+      copyASiteName: "Copy a site",
+      downloadASite: "Download a site…",
+      downloadASiteName: "Download a site",
+      archiveASite: "Archive a site…",
+      archiveASiteName: "Archive a site",
+      createTemplateFromSite: "Create a template from a site…",
+      createTemplateFromSiteName: "Create a template from a site",
+      manageUserAccess: "Manage user access to a site…",
+      manageUserAccessName: "Manage user access",
       userMenuFor: "User menu for {name}",
       customizeCharacter: "Customize character",
       toggleSoundEffectsOff: "Toggle sound effects off",
@@ -1816,6 +1827,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     if (!this.__dashboardProgramsDefined && this._useCaseFilter()) {
       this.__dashboardProgramsDefined = true;
       defineDashboardPrograms(this, SuperDaemonInstance);
+      defineSiteOptionPrograms(this, SuperDaemonInstance, store);
     }
     autorun(() => {
       const _mobx_val_0 = toJS(store.appReady);
@@ -1943,6 +1955,62 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       SuperDaemonInstance.appendContext("system-settings");
     } else {
       SuperDaemonInstance.removeContext("system-settings");
+    }
+    // Manage user access shows in Merlin only where the site options
+    // menu shows User Access (a backend that has the call)
+    if (this._supportsUserAccess()) {
+      SuperDaemonInstance.appendContext("site-user-access");
+    } else {
+      SuperDaemonInstance.removeContext("site-user-access");
+    }
+  }
+
+  _supportsUserAccess() {
+    return !!(
+      store.AppHaxAPI &&
+      typeof store.AppHaxAPI.supportsCall === "function" &&
+      store.AppHaxAPI.supportsCall("haxiamAddUserAccess")
+    );
+  }
+
+  /**
+   * Run a site's options menu item from Merlin: the same site bar code
+   * the card's menu runs, on a site bar that is never put on the page.
+   * @param {string} op copy, download, archive, template or access
+   * @param {string} siteId
+   */
+  siteOptionFromMerlin(op, siteId) {
+    SuperDaemonInstance.close();
+    const items = toJS(store.manifest && store.manifest.items) || [];
+    const site = items.find((item) => item.id === siteId);
+    if (!site) {
+      return;
+    }
+    const bar = globalThis.document.createElement("app-hax-site-bar");
+    bar.siteId = site.id;
+    bar.title = site.title;
+    bar.slug = site.slug;
+    bar.returnFocusTo = this.shadowRoot
+      ? this.shadowRoot.querySelector("#merlinsearch")
+      : null;
+    switch (op) {
+      case "copy":
+        bar.copySite();
+        break;
+      case "download":
+        bar.downloadSite();
+        break;
+      case "archive":
+        bar.archiveSite();
+        break;
+      case "template":
+        bar.createTemplate();
+        break;
+      case "access":
+        if (this._supportsUserAccess()) {
+          bar.openUserAccess();
+        }
+        break;
     }
   }
 
@@ -2751,7 +2819,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     const broker = globalThis.FileSystemBroker.requestAvailability();
     let file = null;
     try {
-      file = await broker.loadFile("*", false, false);
+      // the plain file input: any file, the type is worked out after
+      file = await broker.loadFileFallback("*");
     } catch {
       // cancelled the picker
       return;
@@ -2764,10 +2833,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
   // run the importer a file's type picks, with that file
   importFileToSite(file) {
     const filter = this._useCaseFilter();
-    const importer = filter ? filter.importItemForFileName(file.name) : null;
-    if (importer) {
+    if (filter) {
       SuperDaemonInstance.close();
-      filter.startImport(importer, { file: file });
+      filter.importFile(file);
     }
   }
 
