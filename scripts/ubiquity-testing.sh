@@ -148,3 +148,17 @@ node ~/haxtheweb/webcomponents/scripts/refresh-haxsite.mjs --haxsite ~/haxtheweb
 
 cd ~/haxtheweb/create
 npm run build
+
+# haxcms-desktop (renamed from desktop): confirm it still builds
+cd ~/haxtheweb/haxcms-desktop
+npm run build || echo "WARNING: haxcms-desktop build failed"
+
+# haxcms-browser: build the Worker from the local haxcms-nodejs checkout, the
+# same way ubiquity-push.sh builds the release
+cd ~/haxtheweb/haxcms-browser
+HAXCMS_NODEJS_SRC=~/haxtheweb/haxcms-nodejs/src npm run build || echo "WARNING: haxcms-browser build failed"
+
+# haxcms-mcp: report whether its vendored OpenAPI specs trail haxcms-nodejs
+# (ubiquity-push.sh re-syncs and regenerates them; nothing is written here)
+cd ~/haxtheweb/haxcms-mcp
+uv run python scripts/sync_specs.py --from ~/haxtheweb/haxcms-nodejs --check || echo "NOTE: haxcms-mcp specs will be re-synced by ubiquity-push.sh"
