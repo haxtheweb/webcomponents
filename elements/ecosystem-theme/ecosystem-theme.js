@@ -2,14 +2,10 @@
  * Copyright 2026 haxtheweb
  * @license Apache-2.0, see LICENSE for full text.
  */
-import {
-  HAXCMSLitElementTheme,
-  css,
-  html,
-  store,
-  autorun,
-  toJS,
-} from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
+import { css, html } from "lit";
+import { autorun, toJS } from "mobx";
+import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { HAXCMSThemeParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu.js";
