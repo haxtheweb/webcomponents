@@ -1330,8 +1330,35 @@ export class QuestionElement extends SchemaBehaviors(
         }
         img {
           max-width: var(--question-element-img-max-width, 250px);
-          height: var(--question-element-img-height, 100px);
+          height: var(--question-element-img-height, 120px);
           vertical-align: middle;
+        }
+        /* image answers sit in a uniform 4:3 frame so every option's
+           label starts in the same column; contain keeps the whole
+           image visible since learners must see all of it to choose */
+        simple-fields-field img[part="image"] {
+          box-sizing: border-box;
+          width: auto;
+          aspect-ratio: 4 / 3;
+          object-fit: contain;
+          flex: none;
+          padding: var(--ddd-spacing-1);
+          margin-inline-end: var(--ddd-spacing-4);
+          border: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneGray),
+            var(--ddd-primary-5)
+          );
+          border-radius: var(--ddd-radius-xs);
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            var(--ddd-theme-default-coalyGray)
+          );
+        }
+        @media (max-width: 480px) {
+          simple-fields-field img[part="image"] {
+            height: var(--question-element-img-height, 90px);
+          }
         }
         simple-icon {
           display: inline-flex;
