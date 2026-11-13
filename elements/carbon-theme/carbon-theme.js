@@ -103,6 +103,7 @@ class CarbonTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       sidebarOpen: { type: Boolean, reflect: true, attribute: "sidebar-open" },
       _mobile: { type: Boolean, state: true },
       _dark: { type: Boolean, state: true },
+      _lead: { type: String, state: true },
     };
   }
 
@@ -131,7 +132,8 @@ class CarbonTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           outline-offset: -2px;
         }
 
-        /* UI Shell header: stays dark in both modes, as Carbon's does */
+        /* UI Shell header, light as on carbondesignsystem.com; it follows
+           the theme into g100 in dark mode */
         .header {
           position: sticky;
           top: 0;
@@ -139,9 +141,9 @@ class CarbonTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           display: flex;
           align-items: center;
           height: var(--carbon-theme-header-height);
-          background-color: var(--carbon-gray-100);
-          color: var(--carbon-gray-10);
-          border-bottom: 1px solid var(--carbon-gray-80);
+          background-color: var(--cds-background);
+          color: var(--cds-text-primary);
+          border-bottom: 1px solid var(--cds-border-subtle-01);
         }
         .header-name {
           flex: 1 1 auto;
@@ -154,8 +156,8 @@ class CarbonTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           --site-title-heading-font-weight: var(--ddd-font-weight-bold);
           --site-title-heading-margin: 0;
           --site-title-link-display: inline;
-          --site-title-link-color: var(--carbon-gray-10);
-          color: var(--carbon-gray-10);
+          --site-title-link-color: var(--cds-text-primary);
+          color: var(--cds-text-primary);
           letter-spacing: 0.1px;
         }
         .header-action,
@@ -163,8 +165,11 @@ class CarbonTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           --simple-icon-width: 20px;
           --simple-icon-height: 20px;
           --simple-icon-button-border-radius: 0;
-          --site-modal-icon-color: var(--carbon-gray-10);
-          color: var(--carbon-gray-10);
+          --site-modal-icon-color: var(
+            --cds-icon-primary,
+            var(--cds-text-primary)
+          );
+          color: var(--cds-icon-primary, var(--cds-text-primary));
         }
         .header-action {
           width: var(--carbon-theme-header-height);
@@ -173,10 +178,7 @@ class CarbonTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
         }
         .header-action:hover,
         .header-action:focus-visible {
-          background-color: var(--carbon-gray-80);
-        }
-        .header-action:focus-visible {
-          outline-color: var(--carbon-white);
+          background-color: var(--cds-background-hover);
         }
         .header-actions {
           display: flex;
@@ -197,7 +199,7 @@ class CarbonTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           overflow-y: auto;
           padding: var(--ddd-spacing-4) 0;
           box-sizing: border-box;
-          background-color: var(--cds-layer-01);
+          background-color: var(--cds-background);
           border-right: 1px solid var(--cds-border-subtle-01);
         }
         :host(:not([sidebar-open])) .sidenav {
@@ -215,7 +217,7 @@ class CarbonTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           --map-menu-item-a-color: var(--cds-text-secondary);
           --map-menu-item-a-active-color: var(--cds-text-primary);
           --map-menu-item-a-active-background-color: var(
-            --cds-layer-selected-01
+            --cds-background-selected
           );
           --map-menu-item-active-item-color: var(--cds-text-primary);
           /* Carbon marks the selected side nav item with a 3px bar */
@@ -236,13 +238,13 @@ class CarbonTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
         main {
           flex: 1 1 auto;
           min-width: 0;
-          background-color: var(--cds-background);
+          background-color: var(--cds-layer-01);
           min-height: calc(100vh - var(--carbon-theme-header-height));
           display: flex;
           flex-direction: column;
         }
         .content {
-          padding: var(--ddd-spacing-8) var(--ddd-spacing-8) 0;
+          padding: 0 var(--ddd-spacing-16) 0;
           max-width: var(--carbon-theme-content-max-width, 1056px);
           box-sizing: border-box;
           width: 100%;
@@ -260,12 +262,34 @@ class CarbonTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           --site-active-title-margin: 0 0 var(--ddd-spacing-8) 0;
           --site-active-title-padding: 0;
         }
+        /* page header: a background-colored panel with a light display
+           title and the page description as lead text */
+        .page-header {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          min-height: 18rem;
+          margin: 0 var(--ddd-spacing-8) var(--ddd-spacing-12);
+          padding: var(--ddd-spacing-12) var(--ddd-spacing-8)
+            var(--ddd-spacing-8);
+          box-sizing: border-box;
+          max-width: var(--carbon-theme-content-max-width, 1056px);
+          background-color: var(--cds-background);
+        }
         site-active-title h1 {
-          margin: 0 0 var(--ddd-spacing-8) 0;
+          margin: 0;
           font-family: var(--ddd-font-primary);
-          font-size: var(--ddd-font-size-m);
+          font-size: var(--ddd-font-size-xl);
           font-weight: var(--ddd-font-weight-light);
-          line-height: 1.25;
+          line-height: 1.2;
+          color: var(--cds-text-primary);
+        }
+        .lead {
+          max-width: 40rem;
+          margin: var(--ddd-spacing-12) 0 0;
+          font-size: var(--ddd-font-size-xs);
+          font-weight: var(--ddd-font-weight-regular);
+          line-height: 1.4;
           color: var(--cds-text-primary);
         }
         #slot {
@@ -318,7 +342,16 @@ class CarbonTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
         }
         @media (max-width: 672px) {
           .content {
-            padding: var(--ddd-spacing-6) var(--ddd-spacing-4) 0;
+            padding: 0 var(--ddd-spacing-4) 0;
+          }
+          .page-header {
+            min-height: 12rem;
+            margin: 0 0 var(--ddd-spacing-8);
+            padding: var(--ddd-spacing-8) var(--ddd-spacing-4)
+              var(--ddd-spacing-6);
+          }
+          .lead {
+            margin-top: var(--ddd-spacing-6);
           }
           .pager,
           footer {
@@ -329,7 +362,7 @@ class CarbonTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
             width: min(var(--carbon-theme-sidenav-width), 85vw);
           }
           site-active-title h1 {
-            font-size: var(--ddd-font-size-s);
+            font-size: var(--ddd-font-size-l);
           }
         }
         @media (prefers-reduced-motion: reduce) {
@@ -392,9 +425,14 @@ class CarbonTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           </nav>
         </div>
         <main>
+          <div class="page-header" part="page-header">
+            <div>
+              <site-breadcrumb part="page-breadcrumb"></site-breadcrumb>
+              <site-active-title part="page-title"></site-active-title>
+            </div>
+            ${this._lead ? html`<p class="lead">${this._lead}</p>` : ""}
+          </div>
           <div class="content">
-            <site-breadcrumb part="page-breadcrumb"></site-breadcrumb>
-            <site-active-title part="page-title"></site-active-title>
             <article id="contentcontainer">
               <section id="slot"><slot></slot></section>
             </article>
@@ -424,6 +462,13 @@ class CarbonTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     this.__carbonDisposers.push(
       autorun(() => {
         this._dark = !!toJS(store.darkMode);
+      }),
+    );
+    this.__carbonDisposers.push(
+      autorun(() => {
+        // the page description is the page header's lead text
+        const item = toJS(store.activeItem);
+        this._lead = item && item.description ? item.description : "";
       }),
     );
     this.__carbonDisposers.push(
