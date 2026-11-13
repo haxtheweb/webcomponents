@@ -491,6 +491,18 @@
     "terrible": false,
     "supportedPalettes": null
   },
+  "uswds-theme": {
+    "element": "uswds-theme",
+    "path": "@haxtheweb/uswds-theme/uswds-theme.js",
+    "name": "USWDS",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-uswds-theme-thumb.jpg",
+    "description": "Start with a blank site using the USWDS",
+    "category": ["Website", "Course", "Documentation"],
+    "hidden": false,
+    "priority": 50,
+    "terrible": false,
+    "supportedPalettes": null
+  },
   "vhs-blog-theme": {
     "element": "vhs-blog-theme",
     "path": "@haxtheweb/vhs-blog-theme/vhs-blog-theme.js",

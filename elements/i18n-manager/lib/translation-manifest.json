@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "elementsScanned": 245,
-    "elementsWithTranslations": 157,
-    "translationFilesFound": 42262,
+    "elementsScanned": 247,
+    "elementsWithTranslations": 159,
+    "translationFilesFound": 42265,
     "languagesSupported": [
       "af",
       "am",
@@ -35768,6 +35768,7 @@
       "zh",
       "zu"
     ],
+    "retro-tv": ["en"],
     "rich-text-editor-prompt": [
       "af",
       "am",
@@ -39641,6 +39642,7 @@
       "zh",
       "zu"
     ],
+    "stop-note-group": ["en"],
     "stop-note": [
       "af",
       "am",
@@ -41314,6 +41316,7 @@
       "zh",
       "zu"
     ],
+    "uswds-theme": ["en"],
     "vcf-render": [
       "af",
       "am",

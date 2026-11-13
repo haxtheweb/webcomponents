@@ -2,7 +2,7 @@
   "tag": "self-reflective-nudge",
   "folder": "self-reflective-nudge",
   "package": "@haxtheweb/self-reflective-nudge",
-  "version": "0.0.0",
+  "version": "26.8.0",
   "license": "Apache-2.0",
   "title": "Self-reflective nudge",
   "description": "Ask a student to reflect on a grade or mood and offer a self-corrective nudge based on the answer.",

@@ -1974,7 +1974,7 @@
     {
       "tag": "hax-network-bar",
       "title": "",
-      "description": "The thin strip across the top of every hax.cloud site (hax.cloud, the element portfolio, the live demo, RPG me) that links them as one network and marks the one you are on. Each site keeps its own header under it. Merlin sits in the strip too: it opens HAX's command palette with every place in th...",
+      "description": "The top bar of every hax.cloud site (hax.cloud, the element portfolio, HAXcms in the browser, RPG me), drawn like the HAX editor's own top bar: your character and the network's sites on the left, Merlin in the middle, Install HAX, GitHub and the Future Traveler on the right. Each site keeps its o...",
       "package": "@haxtheweb/hax-network-bar",
       "import": "@haxtheweb/hax-network-bar/hax-network-bar.js",
       "type": "element",
@@ -3528,7 +3528,7 @@
     {
       "tag": "material-theme",
       "title": "",
-      "description": "A HAXcms theme in the Material Design 3 layout (top app bar, navigation drawer, content surface), built on the Material DDD bridge: every HAX block reads --ddd-* tokens, which point at Material 3 tokens while it is active.",
+      "description": "A HAXcms theme laid out like the Material Design 3 site itself: a navigation rail of top-level sections, a navigation drawer for the whole outline, and content on a rounded surface, built on the Material DDD bridge: every HAX block reads --ddd-* tokens, which point at Material 3 tokens while it i...",
       "package": "@haxtheweb/material-theme",
       "import": "@haxtheweb/material-theme/material-theme.js",
       "type": "element",
@@ -6112,7 +6112,7 @@
     {
       "tag": "spectrum-theme",
       "title": "",
-      "description": "A HAXcms theme in an Adobe Spectrum 2 app frame (header, side navigation, rounded content panel), built on the Spectrum DDD bridge: every HAX block reads --ddd-* tokens, which point at Spectrum tokens while it is active.",
+      "description": "A HAXcms theme laid out like Adobe's own Spectrum 2 documentation: a header, a floating rounded navigation panel, a rounded content panel with a centered reading column and an \"On this page\" list, built on the Spectrum DDD bridge: every HAX block reads --ddd-* tokens, which point at Spectrum toke...",
       "package": "@haxtheweb/spectrum-theme",
       "import": "@haxtheweb/spectrum-theme/spectrum-theme.js",
       "type": "element",

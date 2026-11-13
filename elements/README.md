@@ -3,7 +3,7 @@
 <!-- GENERATED FILE: do not edit by hand. Run `yarn run elements-readme` -->
 <!-- Descriptions come from each element's package.json; edit them there. -->
 
-Every element in this monorepo (235 packages). Browse them live with `yarn gallery`, or open an element's folder for its own README.
+Every element in this monorepo (237 packages). Browse them live with `yarn gallery`, or open an element's folder for its own README.
 
 | Element | Description | Package | Demo |
 | --- | --- | --- | --- |
@@ -87,7 +87,7 @@ Every element in this monorepo (235 packages). Browse them live with `yarn galle
 | [hax-body-behaviors](./hax-body-behaviors/) | Wire any element up to HAX | `@haxtheweb/hax-body-behaviors` |  |
 | [hax-iconset](./hax-iconset/) | HAX-specific icons | `@haxtheweb/hax-iconset` | [demo](./hax-iconset/demo/) |
 | [hax-logo](./hax-logo/) | logo element for hax, obviously as a hax capable element. | `@haxtheweb/hax-logo` | [demo](./hax-logo/demo/) |
-| [hax-network-bar](./hax-network-bar/) | The strip across the top of every hax.cloud site that links them as one network | `@haxtheweb/hax-network-bar` | [demo](./hax-network-bar/demo/) |
+| [hax-network-bar](./hax-network-bar/) | The top bar of every hax.cloud site: your character and the network sites, Merlin to jump anywhere, and Install HAX with every way to get it | `@haxtheweb/hax-network-bar` | [demo](./hax-network-bar/demo/) |
 | [haxcms-elements](./haxcms-elements/) | HAX CMS series of elements to provide a full on CMS | `@haxtheweb/haxcms-elements` | [demo](./haxcms-elements/demo/) |
 | [haxma-theme](./haxma-theme/) | HAXma theme for HAXcms inspired by Figma documentation design | `@haxtheweb/haxma-theme` | [demo](./haxma-theme/demo/) |
 | [haxor-slevin](./haxor-slevin/) | Tech blogger theme | `@haxtheweb/haxor-slevin` | [demo](./haxor-slevin/demo/) |
@@ -175,6 +175,7 @@ Every element in this monorepo (235 packages). Browse them live with `yarn galle
 | [responsive-utility](./responsive-utility/) | Singleton that manages responsive breakpoint events for elements | `@haxtheweb/responsive-utility` | [demo](./responsive-utility/demo/) |
 | [resume-theme](./resume-theme/) | Single-page résumé theme for HAXcms | `@haxtheweb/resume-theme` | [demo](./resume-theme/demo/) |
 | [retro-card](./retro-card/) | Simple card in a cool retro design | `@haxtheweb/retro-card` | [demo](./retro-card/demo/) |
+| [retro-tv](./retro-tv/) | An old CRT with channels: the cabinet, knobs, static and on-screen display, with programs (HAX TV, credits, loading screens, a title sequence) that play on it | `@haxtheweb/retro-tv` | [demo](./retro-tv/demo/) |
 | [rich-text-editor](./rich-text-editor/) | a standalone rich text editor | `@haxtheweb/rich-text-editor` | [demo](./rich-text-editor/demo/) |
 | [rpg-character](./rpg-character/) | Little RPG character that&#39;s remixable | `@haxtheweb/rpg-character` | [demo](./rpg-character/demo/) |
 | [schema-behaviors](./schema-behaviors/) | Apply schema helper behaviors to your custom elements | `@haxtheweb/schema-behaviors` |  |
@@ -230,6 +231,7 @@ Every element in this monorepo (235 packages). Browse them live with `yarn galle
 | [unity-webgl](./unity-webgl/) | Unity WebGL player | `@haxtheweb/unity-webgl` | [demo](./unity-webgl/demo/) |
 | [user-action](./user-action/) | track user actions and allow them to talk to xAPI stores easily | `@haxtheweb/user-action` | [demo](./user-action/demo/) |
 | [user-scaffold](./user-scaffold/) | memory and context to establish and maintain appropriate user scaffolding | `@haxtheweb/user-scaffold` | [demo](./user-scaffold/demo/) |
+| [uswds-theme](./uswds-theme/) | U.S. Web Design System (USWDS) theme for HAXcms, built on the DDD-capable USWDS design system bridge | `@haxtheweb/uswds-theme` | [demo](./uswds-theme/demo/) |
 | [utils](./utils/) | Helper functions to clean up web component data handling. | `@haxtheweb/utils` |  |
 | [vcf-render](./vcf-render/) | Render a contact file (.vcf) in place as person cards, quotes, a table or a list. | `@haxtheweb/vcf-render` | [demo](./vcf-render/demo/) |
 | [vhs-blog-theme](./vhs-blog-theme/) | A dark, bargain-bin video shelf theme for HAXcms blogs: every post is a one-of-a-kind video case generated from a hash of its title, and posts open with a CRT title sequence. | `@haxtheweb/vhs-blog-theme` | [demo](./vhs-blog-theme/demo/) |

@@ -1,6 +1,6 @@
 {
   "name": "@haxtheweb/radar-chart",
-  "version": "0.0.0",
+  "version": "26.8.0",
   "description": "Webcomponent radar-chart following hax / open-wc recommendations",
   "license": "Apache-2.0",
   "author": {

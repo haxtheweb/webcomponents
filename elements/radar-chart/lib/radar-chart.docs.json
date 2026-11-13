@@ -2,7 +2,7 @@
   "tag": "radar-chart",
   "folder": "radar-chart",
   "package": "@haxtheweb/radar-chart",
-  "version": "0.0.0",
+  "version": "26.8.0",
   "license": "Apache-2.0",
   "title": "Radar chart",
   "description": "Radar (spider) chart for maturity models and facet scoring, such as HEOSAT. Includes a text alternative and data table.",

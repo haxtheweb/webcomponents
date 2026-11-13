@@ -1,6 +1,6 @@
 {
   "name": "@haxtheweb/micro-game-base",
-  "version": "0.0.0",
+  "version": "26.8.0",
   "description": "Shared shell for short browser games that live inside a page: input, pause rules, progress events, OER Schema, player character, finish panel with slots, and i18n",
   "license": "Apache-2.0",
   "author": {

@@ -2,7 +2,7 @@
   "tag": "web-baseline-status",
   "folder": "web-baseline-status",
   "package": "@haxtheweb/web-baseline-status",
-  "version": "0.0.0",
+  "version": "26.8.0",
   "license": "Apache-2.0",
   "title": "Baseline status",
   "description": "Show the Baseline browser support status of a web platform feature.",
