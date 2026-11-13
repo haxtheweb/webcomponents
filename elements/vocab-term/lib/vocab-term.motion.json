@@ -106,16 +106,16 @@
       "in": 4.6,
       "rows": [
         {
+          "name": "term",
+          "desc": "The word or phrase readers clic…"
+        },
+        {
           "name": "information",
           "desc": "Definition"
         },
         {
           "name": "popover-mode",
           "desc": "Popover"
-        },
-        {
-          "name": "term",
-          "desc": "Term"
         },
         {
           "name": "links",
@@ -144,7 +144,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "information=\"An event dedicated to s…\""
+      "s": "term=\"HAX Camp\""
     },
     {
       "type": "text",
@@ -152,7 +152,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "popover-mode"
+      "s": "information=\"An event dedicated to s…\""
     },
     {
       "type": "text",
@@ -160,7 +160,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "term=\"HAX Camp\""
+      "s": "popover-mode"
     },
     {
       "type": "text",
@@ -252,8 +252,8 @@
       "py": 378,
       "ex": 616,
       "ey": 430,
-      "label": "information",
-      "sub": "\"An event dedicated to spread…",
+      "label": "term",
+      "sub": "\"HAX Camp\"",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -264,8 +264,8 @@
       "py": 378,
       "ex": 796,
       "ey": 430,
-      "label": "popover-mode",
-      "sub": "on or off",
+      "label": "information",
+      "sub": "\"An event dedicated to spread…",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -276,8 +276,8 @@
       "py": 378,
       "ex": 616,
       "ey": 430,
-      "label": "term",
-      "sub": "\"HAX Camp\"",
+      "label": "popover-mode",
+      "sub": "on or off",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -305,14 +305,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set definition",
-      "text": "Definition shown when the term is clicked."
+      "title": "Set term",
+      "text": "The word or phrase readers click to see its definition."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set links",
-      "text": "List of supplemental links associated with this term."
+      "title": "Set popover",
+      "text": "Display the definition in a popover instead of inline."
     },
     {
       "t": 14.8,

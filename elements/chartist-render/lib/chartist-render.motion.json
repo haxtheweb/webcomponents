@@ -147,7 +147,7 @@
       "rows": [
         {
           "name": "scale",
-          "desc": "The scale of the chart. (See ht…"
+          "desc": "Aspect ratio of the chart, as a…"
         },
         {
           "name": "type",
@@ -155,7 +155,7 @@
         },
         {
           "name": "show-table",
-          "desc": "The show data in table form as…"
+          "desc": "Show the data table below the c…"
         }
       ],
       "active": [
@@ -306,14 +306,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set type",
-      "text": "The type of chart:bar, line, or pie."
+      "title": "Set scale",
+      "text": "Aspect ratio of the chart, as a Chartist ct-* class such as ct-square."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set show table",
-      "text": "The show data in table form as well? Default is false."
+      "text": "Show the data table below the chart; otherwise only screen readers get it."
     },
     {
       "t": 14.8,

@@ -140,7 +140,7 @@
         {
           "property": "source",
           "title": "Resource URL",
-          "description": "Resource URL.",
+          "description": "Address of the web page to embed.",
           "inputMethod": "textfield",
           "icon": "link",
           "required": true,
@@ -149,13 +149,13 @@
         {
           "property": "height",
           "title": "Height",
-          "description": "Iframe height.",
+          "description": "Height of the embedded page.",
           "inputMethod": "textfield"
         },
         {
           "property": "width",
           "title": "Width",
-          "description": "Iframe width.",
+          "description": "Width of the embedded page.",
           "inputMethod": "textfield"
         }
       ],

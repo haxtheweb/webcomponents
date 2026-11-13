@@ -114,16 +114,19 @@
         {
           "property": "title",
           "title": "title",
+          "description": "Heading shown above the course model.",
           "inputMethod": "textfield"
         },
         {
           "property": "src",
           "title": "src",
+          "description": "Address of the 3D model file (.glb or .gltf) to show.",
           "inputMethod": "textfield"
         },
         {
           "property": "alt",
           "title": "alt",
+          "description": "Describe the 3D model for people who cannot see it.",
           "inputMethod": "textfield"
         },
         {

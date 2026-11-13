@@ -597,17 +597,18 @@ class MapMenu extends SchemaBehaviors(LitElement) {
         attribute: "auto-scroll",
       },
       /**
-       * Learner progress marks by item id: { <id>: "done" | "in-progress" |
-       * "visited" | "not-started" }. Empty (the default) shows no marks.
+       * Learner progress mark for each item, keyed by item id.
+       * Shape: { <id>: "done" | "in-progress" | "visited" | "not-started" }.
+       * Empty (the default) shows no marks.
        */
       progress: {
         type: Object,
       },
       /**
-       * Percent (0 to 1) of the page open now (the selected item): that item
-       * shows a ring around its icon area filled to it, a check once it is
-       * done, and says the percent on hover and to screen readers. null
-       * (the default) shows no ring.
+       * How much of the open page is done, from 0 to 1, shown as a ring.
+       * The selected item's ring fills to this value, turns into a check once
+       * it is done, and the percent is said on hover and to screen readers.
+       * null (the default) shows no ring.
        */
       activeProgress: {
         type: Number,
