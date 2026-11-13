@@ -386,6 +386,16 @@
       "tags": []
     },
     {
+      "tag": "app-hax-import-url-dialog",
+      "title": "",
+      "description": "The From a URL import: one HAX UI dialog that takes the URL and asks what kind of site it is, which picks the importer. Same card as the HAX UI confirm (haxcms-admin-confirm) on a native modal dialog. Use the helper rather than the element: const answer = await askImportUrl({ kinds, labels }); //...",
+      "package": "@haxtheweb/app-hax",
+      "import": "@haxtheweb/app-hax/lib/v2/app-hax-import-url-dialog.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
       "tag": "app-hax-router",
       "title": "",
       "description": "",
@@ -1979,6 +1989,16 @@
       "tags": []
     },
     {
+      "tag": "hax-image-crop",
+      "title": "",
+      "description": "Crop an image in the browser (haxtheweb/issues#1149). Shows the image with a crop box (drag it, drag a handle, or use the arrow keys), an aspect choice and X / Y / Width / Height in image pixels. It only edits; the host puts its own buttons in the actions slot and calls toBlob() or download(). Us...",
+      "package": "@haxtheweb/hax-body",
+      "import": "@haxtheweb/hax-body/lib/hax-image-crop.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
       "tag": "hax-logo",
       "title": "HAX word art",
       "description": "logo element for hax, obviously as a hax capable element.",
@@ -3558,7 +3578,7 @@
     {
       "tag": "material-theme",
       "title": "",
-      "description": "A HAXcms theme in the Material Design 3 layout (top app bar, navigation drawer, content surface), built on the Material DDD bridge: every HAX block reads --ddd-* tokens, which point at Material 3 tokens while it is active.",
+      "description": "A HAXcms theme laid out like the Material Design 3 site itself: a navigation rail of top-level sections, a navigation drawer for the whole outline, and content on a rounded surface, built on the Material DDD bridge: every HAX block reads --ddd-* tokens, which point at Material 3 tokens while it i...",
       "package": "@haxtheweb/material-theme",
       "import": "@haxtheweb/material-theme/material-theme.js",
       "type": "element",
@@ -4415,6 +4435,146 @@
       "haxCapable": true,
       "tags": [],
       "walkthrough": true
+    },
+    {
+      "tag": "retro-console",
+      "title": "",
+      "description": "The HAX 64: a game deck in a HAX TV kit colorway with a cartridge in the slot. The cartridge has a real cart shape and a colorful label: the game's name over four rpg-character fighters (HAX Blocks by default). Power (with a green lamp) and Reset sit on the front left, the \"HAX 64\" badge on the r...",
+      "package": "@haxtheweb/retro-tv",
+      "import": "@haxtheweb/retro-tv/lib/retro-console.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "retro-controller",
+      "title": "",
+      "description": "An old-school game pad: D-pad, Select, Start, B and A on a dark faceplate, the body in a HAX TV kit colorway and a small \"HAX\" at the top right. Every button is a real button named for what it does; pressing one (or calling press()) lights it for a moment and fires retro-controller-press with det...",
+      "package": "@haxtheweb/retro-tv",
+      "import": "@haxtheweb/retro-tv/lib/retro-controller.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "retro-tv",
+      "title": "",
+      "description": "An old CRT with channels. Each child with a channel attribute is a program; the one whose number matches channel is on air and the rest wait off screen. Programs can be any element: the ones in lib/retro-tv-programs.js (HAX TV, credits, loading screens, the title sequence) or a plain element with...",
+      "package": "@haxtheweb/retro-tv",
+      "import": "@haxtheweb/retro-tv/retro-tv.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "retro-tv-blocks",
+      "title": "",
+      "description": "HAX Blocks, the game on the HAX 64 cartridge. You and three rival rpg-characters race for the HAX blocks (paragraph, image, video, quiz, gallery) floating overhead. Call press(button) with a controller button: arrows move, A (or up) grabs the block above you or bonks a rival next to you, B (or do...",
+      "package": "@haxtheweb/retro-tv",
+      "import": "@haxtheweb/retro-tv/lib/programs/retro-tv-blocks.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "retro-tv-credits",
+      "title": "",
+      "description": "End credits starring the Future Traveler, with a tape label. Pass lines ([{ role, name }]) to write your own credits and tape for the label (for example the install date); otherwise the HAX credits roll.",
+      "package": "@haxtheweb/retro-tv",
+      "import": "@haxtheweb/retro-tv/lib/programs/retro-tv-credits.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "retro-tv-disc",
+      "title": "",
+      "description": "A mid 90s disc console boot that has drifted into a late-night anthology: black and white, a hypnotic spiral turning behind a Future Traveler disc that slowly sinks away, an oscilloscope line drawing across, the picture losing its horizontal hold, a glowing HAX wordmark and a \"please stand by\" ca...",
+      "package": "@haxtheweb/retro-tv",
+      "import": "@haxtheweb/retro-tv/lib/programs/retro-tv-disc.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "retro-tv-handheld",
+      "title": "",
+      "description": "A boot screen in the style of a late 80s green-screen handheld: a pixel HAX wordmark drops in, then a line under it.",
+      "package": "@haxtheweb/retro-tv",
+      "import": "@haxtheweb/retro-tv/lib/programs/retro-tv-handheld.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "retro-tv-hax-tv",
+      "title": "",
+      "description": "HAX TV: Future Traveler stickers (art from haxtheweb/art) bounce around the screen like an old screensaver. With reduced motion, or when the program is not on air, they sit still.",
+      "package": "@haxtheweb/retro-tv",
+      "import": "@haxtheweb/retro-tv/lib/programs/retro-tv-hax-tv.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "retro-tv-home-computer",
+      "title": "",
+      "description": "A loading screen in the style of an early 80s home computer: a BASIC prompt types itself out and, while loading, the border runs loading stripes. what is the name on the LOAD line.",
+      "package": "@haxtheweb/retro-tv",
+      "import": "@haxtheweb/retro-tv/lib/programs/retro-tv-home-computer.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "retro-tv-pc",
+      "title": "",
+      "description": "A DOS-style prompt from the early 90s. While loading, a block progress bar fills under message; command is what was typed at the prompt.",
+      "package": "@haxtheweb/retro-tv",
+      "import": "@haxtheweb/retro-tv/lib/programs/retro-tv-pc.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "retro-tv-sign-on",
+      "title": "",
+      "description": "Channel 1: the station sign-on card. Color bars, the Future Traveler in the station circle, \"HAX TV\" and the line under it (ten years to lift off, by default). A soft sweep runs down the bars unless motion is off.",
+      "package": "@haxtheweb/retro-tv",
+      "import": "@haxtheweb/retro-tv/lib/programs/retro-tv-sign-on.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "retro-tv-static",
+      "title": "",
+      "description": "No tape: grey static with a cast of rpg-characters tumbling through it and a little RGB glitch. The static moves at a constant average brightness, so it never flashes. The cast loads the first time the program goes on air. cast is a list of rpg-character seeds.",
+      "package": "@haxtheweb/retro-tv",
+      "import": "@haxtheweb/retro-tv/lib/programs/retro-tv-static.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "retro-tv-title-sequence",
+      "title": "",
+      "description": "An 80s style title sequence: a synthwave sunset, a chrome title rolling up and a Play cue. Every word comes in through attributes, so the host passes translated text. vhs-blog-theme shows it on channel 3.",
+      "package": "@haxtheweb/retro-tv",
+      "import": "@haxtheweb/retro-tv/lib/programs/retro-tv-title-sequence.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "retro-vcr",
+      "title": "",
+      "description": "HAXVISION, a dark top-loading VCR with silver piano keys, a green display and a stripe in its HAX TV kit colorway. phase drives a tape load: idle (the clock blinks) -> lift (lid up) -> open (cassette over the slot) -> insert (it drops in) -> press (lid down, PLAY goes down) -> playing. rew and ff...",
+      "package": "@haxtheweb/retro-tv",
+      "import": "@haxtheweb/retro-tv/lib/retro-vcr.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
     },
     {
       "tag": "rich-text-editor",
@@ -5909,16 +6069,6 @@
       "tags": []
     },
     {
-      "tag": "site-theme-style-guide-route",
-      "title": "",
-      "description": "Route for editing theme style guide content via HAX editor",
-      "package": "@haxtheweb/haxcms-elements",
-      "import": "@haxtheweb/haxcms-elements/lib/ui-components/routes/site-theme-style-guide-route.js",
-      "type": "element",
-      "haxCapable": false,
-      "tags": []
-    },
-    {
       "tag": "site-title",
       "title": "",
       "description": "Title of the site",
@@ -6021,7 +6171,7 @@
     {
       "tag": "spectrum-theme",
       "title": "",
-      "description": "A HAXcms theme in an Adobe Spectrum 2 app frame (header, side navigation, rounded content panel), built on the Spectrum DDD bridge: every HAX block reads --ddd-* tokens, which point at Spectrum tokens while it is active.",
+      "description": "A HAXcms theme laid out like Adobe's own Spectrum 2 documentation: a header, a floating rounded navigation panel, a rounded content panel with a centered reading column and an \"On this page\" list, built on the Spectrum DDD bridge: every HAX block reads --ddd-* tokens, which point at Spectrum toke...",
       "package": "@haxtheweb/spectrum-theme",
       "import": "@haxtheweb/spectrum-theme/spectrum-theme.js",
       "type": "element",
@@ -6071,6 +6221,23 @@
       "walkthrough": true
     },
     {
+      "tag": "stop-note-group",
+      "title": "Stop Note Group",
+      "description": "Stacks several stop-notes into one block that shows a note at a time, with previous and next buttons and a count laid over the note's header (\"Did you know? ← 2 / 5 →\"). Made for Tips and What's new, but any statuses can be mixed. The notes stay ordinary light DOM children: the group never change...",
+      "package": "@haxtheweb/stop-note",
+      "import": "@haxtheweb/stop-note/lib/stop-note-group.js",
+      "type": "grid",
+      "haxCapable": true,
+      "tags": [
+        "Instructional",
+        "content",
+        "layout",
+        "note",
+        "tip",
+        "what's new"
+      ]
+    },
+    {
       "tag": "super-daemon",
       "title": "",
       "description": "",
@@ -6104,7 +6271,7 @@
     {
       "tag": "super-daemon-toast",
       "title": "",
-      "description": "Merlin's voice card in the HAX UI admin style: the World Traveler mark, a state pill (Listening, Speaking, Santa mode), the message, a hint of what can be said, and a way to stop. Sits bottom left, apart from the haxcms-toast that drops from the top bar. Same API as before: the super-daemon-toast...",
+      "description": "Merlin's voice card in the HAX UI admin style: the Future Traveler mark, a state pill (Listening, Speaking, Santa mode), the message, a hint of what can be said, and a way to stop. Sits bottom left, apart from the haxcms-toast that drops from the top bar. Same API as before: the super-daemon-toas...",
       "package": "@haxtheweb/super-daemon",
       "import": "@haxtheweb/super-daemon/lib/super-daemon-toast.js",
       "type": "element",
@@ -6337,6 +6504,16 @@
       "tags": []
     },
     {
+      "tag": "uswds-theme",
+      "title": "",
+      "description": "A HAXcms theme in the U.S. Web Design System layout (basic header, side navigation, slim footer), built on the USWDS DDD bridge: every HAX block reads --ddd-* tokens, which point at the USWDS palette while it is active. An independent integration: it carries no official government banner, seal or...",
+      "package": "@haxtheweb/uswds-theme",
+      "import": "@haxtheweb/uswds-theme/uswds-theme.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
       "tag": "vcf-render",
       "title": "Vcf Render",
       "description": "Render a contact file (.vcf) in place, in the shape that suits the content: person cards, quotes, a table or a list. It follows csv-render: point data-source at a file, it is fetched once the element is on screen, parsed client side and rendered. Parsing is local, so contact details are never sen...",
@@ -6346,6 +6523,26 @@
       "haxCapable": true,
       "tags": ["Content", "contacts", "vcard", "vcf", "directory", "people"],
       "walkthrough": true
+    },
+    {
+      "tag": "vhs-blog-back",
+      "title": "",
+      "description": "The back of a generated video case: distributor and catalog number, a real QR code that opens the post, the title, the post's description as the blurb, and the running time. Same hash as the cover and spine, so it is always the back of that box. Unlike the cover it is real text, so a screen reade...",
+      "package": "@haxtheweb/vhs-blog-theme",
+      "import": "@haxtheweb/vhs-blog-theme/lib/vhs-blog-back.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "vhs-blog-console",
+      "title": "",
+      "description": "A walnut console TV cabinet: the \"vcr\" slot sits on top of the cabinet, the default slot is the screen, with a control panel and drawers around it, and an open cubby between the drawers for the \"game\" slot (the HAX 64 and its controller). The panel has the HAX TV family's controls: the channel di...",
+      "package": "@haxtheweb/vhs-blog-theme",
+      "import": "@haxtheweb/vhs-blog-theme/lib/vhs-blog-console.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
     },
     {
       "tag": "vhs-blog-cover",
@@ -6370,7 +6567,7 @@
     {
       "tag": "vhs-blog-theme",
       "title": "",
-      "description": "A dark, bargain-bin video shelf for blogs and vlogs. Every post is a one-of-a-kind video case generated from a hash of its title; posts with child pages become box sets. Opening a post powers on an old CRT that rolls an 80s title sequence before the page content. - case: the generated spine + cov...",
+      "description": "A dark, bargain-bin video shelf for blogs and vlogs. Every post is a one-of-a-kind video case generated from a hash of its title; posts with child pages become box sets. Picking a tape drops it into a top-loading VCR on a console TV, which rolls an 80s title sequence while the post loads below. -...",
       "package": "@haxtheweb/vhs-blog-theme",
       "import": "@haxtheweb/vhs-blog-theme/vhs-blog-theme.js",
       "type": "element",
